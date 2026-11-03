@@ -2,8 +2,9 @@ name: Forecast on Metaculus Cup
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 */2 * *" # runs at midnight every 2 days
+  # Planification désactivée : le bot alphabet (run_alphabet_bot.yaml) poste sur ce compte.
+  # schedule:
+  #   - cron: "0 0 */2 * *" # runs at midnight every 2 days
 
 # Add concurrency group to prevent parallel runs
 concurrency:

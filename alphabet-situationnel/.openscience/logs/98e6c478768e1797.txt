@@ -1,0 +1,16 @@
+2: """Alphabet situationnel 0.7.9 - calcul exp�rimental, validation et tra�abilit�.
+193:     0.7.2 (s�mantique inquisitive : Ciardelli, Groenendijk et Roelofsen 2019, ch. 2 et 5). Une question
+286:     # 0.7.10 (Toulmin, lu par Plantin : une r�futation qui n'annule rien n'est pas une r�futation). Un
+302:     """0.7.10. Support du m�canisme (*backing* de Toulmin 1958, ch. III ; Plantin 2021). Le m�canisme est
+306:     Disponible au plus tard � la date d'information (B1). Requis pour un mot F de cas r�el cod� sous 0.7.10
+313:         return [f'{k} : garantie.support requis depuis 0.7.10 ({{type: {"|".join(SUPPORTS)}, reference, disponible_le}}) : sur quoi repose le m�canisme'] if requis else []
+339:     """0.7.0. Tests de process tracing (Van Evera 1997 ; Collier 2011, PS 44(4), p. 825-827). Hypoth�se
+357:     """0.7.1 (audit hacker.ai) : tra�abilit� facultative d'un fait. `source_url` (http ou https, sans
+--- bilan ---
+Bilan de la feuille de route · version 0.7.33
+Étape 2 · cas réels : 0 actifs · 0 propositions (sources à lire) · 4 archives → à commencer : premier cas sous les règles courantes, de préférence avant son issue
+Étape 3 · strate pilote : 13/16 équivalents Documentés ou Attestés (meilleure : strate 7) ; 0 strate(s) complète(s) (Vide clos et Hors domaine comptés) ; 1/14 cases Vides closes (3 recherches documentées) ; emprunt T4 fermé
+Étape 4 · références externes : aucun fichier fourni (--references)
+Étape 5 · base réelle : aucun cas actif
+Test à l'aveugle : aucun journal fourni (--journal)
+Étapes 0, 1 et 6 (installation, décisions d’auteur, code différé) : état déclaré dans references/feuille-de-route.md

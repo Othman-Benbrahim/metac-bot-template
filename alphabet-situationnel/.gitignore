@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+# Secrets et exports locaux : ne jamais versionner
+.env
+.env.*
+*.pem
+*.key
+id_rsa*

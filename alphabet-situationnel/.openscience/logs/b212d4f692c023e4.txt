@@ -1,0 +1,91 @@
+TOPIC ai-ml count 267
+1055u  1439n 1979 | G�del, Escher, Bach -- Douglas R. Hofstadter
+ 227u   266n 2001 | The Elements of Statistical Learning -- Trevor Hastie, Robert Tibshirani
+ 204u   249n 2007 | I Am a Strange Loop -- Douglas R. Hofstadter
+ 178u   234n 2014 | Superintelligence -- Nick Bostrom
+ 173u   228n 2005 | On intelligence -- Jeff Hawkins, Sandra Blakeslee
+ 153u   225n 1986 | The society of mind -- Marvin Minsky
+ 136u   153n 1994 | Artificial Intelligence -- Stuart J. Russell, Peter Norvig
+ 119u   135n 2007 | Programming Collective Intelligence -- Toby Segaran
+ 112u   142n 1999 | Emperor's New Mind -- Roger Penrose
+ 112u   132n 2016 | Weapons of Math Destruction -- Cathy O'Neil
+ 108u   169n 1991 | Paradigms of Artificial Intelligence -- Peter Norvig
+ 108u   120n 2021 | Introduction to Statistical Learning -- Gareth James, Daniela Witten
+ 104u   121n 2008 | Pattern Recognition and Machine Learning -- Christopher M. Bishop
+ 103u   123n 2005 | The Singularity Is Near -- Ray Kurzweil
+  93u   111n 2003 | Information Theory, Inference & Learning Algorithms -- David J.C. MacKay
+  84u    98n 1985 | Metamagical Themas -- Douglas R. Hofstadter
+  82u    86n 2016 | Deep Learning -- Ian Goodfellow, Yoshua Bengio
+  74u    94n 2018 | Neural Networks and Deep Learning -- Charu C. Aggarwal
+  53u    64n 2017 | Deep Learning with Python -- Francois Chollet, Matthew Watson
+  52u    58n 2012 | Python For Data Analysis -- Wes McKinney
+  50u    57n 1999 | The age of spiritual machines -- Ray Kurzweil
+  47u    56n 2021 | A Thousand Brains -- Jeff Hawkins
+  45u    56n 2000 | Speech and language processing -- Dan Jurafsky, Daniel Jurafsky
+  45u    48n 2017 | Life 3.0 -- Max Tegmark
+  44u    45n 2008 | Introduction to information retrieval -- Christopher D. Manning, Prabhakar Raghavan
+  43u    56n 2017 | R for Data Science -- Hadley Wickham, Garrett Grolemund
+  41u    49n 2012 | Learning From Data -- Yaser S. Abu-Mostafa
+  40u    54n 2015 | The Master Algorithm -- Pedro Domingos
+  39u    48n 1969 | Perceptrons -- Marvin Minsky, Seymour Papert
+  36u    45n 2012 | How to Create a Mind -- Ray Kurzweil
+  35u    43n 2025 | If Anyone Builds It, Everyone Dies -- Eliezer Yudkowsky, Nathaniel Soares
+  35u    42n 2023 | Dive into Deep Learning -- Aston Zhang, Zachary C. Lipton
+  35u    40n 2022 | Probabilistic Machine Learning -- Kevin P. Murphy
+  34u    39n 2005 | Probabilistic robotics -- Sebastian Thrun, Dieter Fox
+  33u    48n 2015 | Data science from scratch -- Joel Grus
+  32u    37n 2025 | Empire of AI -- Karen Hao
+  31u    45n 1995 | Fluid Concepts and Creative Analogies -- Douglas R. Hofstadter, Fluid Analogies Research Group
+  31u    43n 1994 | Shadows of the mind -- Roger Penrose
+  31u    41n 2006 | The emotion machine -- Marvin Minsky, Mercedes Garc�a Garmilla
+  30u    34n 1992 | Reinforcement Learning -- Richard S. Sutton
+  28u    31n 2012 | Machine learning -- Kevin P. Murphy
+  28u    31n 2018 | AI superpowers -- Kai-Fu Lee
+  28u    30n 2009 | Natural Language Processing With Python -- Edward Loper, Steven Bird
+  27u    29n 1997 | Machine Learning -- Tom M. Mitchell
+  27u    27n 2002 | Prey -- Michael Crichton
+  24u    25n 2020 | Foundations of Data Science -- Avrim Blum, John Hopcroft
+  23u    37n ? | What computers can't do -- Hubert L. Dreyfus
+  22u    26n 2013 | Data Smart -- John W. Foreman
+  21u    27n 1969 | The sciences of the artificial -- Herbert Alexander Simon
+  21u    21n 1997 | Visual Explanations -- Edward R. Tufte
+  20u    23n 2012 | Mining of massive datasets -- Anand Rajaraman, Jeffrey D. Ullman
+  20u    22n 2011 | Bayesian reasoning and machine learning -- David Barber
+  20u    21n 2019 | Mathematics for Machine Learning -- Marc Peter Deisenroth, A. Aldo Faisal
+  18u    23n 2019 | Invisible Women -- Caroline Criado Perez
+  18u    21n 2012 | Machine learning for hackers -- Drew Conway
+  18u    21n 2017 | Hands-On Machine Learning with Scikit-Learn and TensorFlow -- Aur�lien G�ron
+  18u    20n 2019 | Human Compatible -- Stuart J. Russell
+  17u    21n 2016 | The age of em -- Robin Hanson
+  16u    19n 1999 | Foundations of Statistical Natural Language Processing -- Christopher Manning, Hinrich Sch�tze
+  16u    18n 2014 | Understanding Machine Learning -- Shai Shalev-Shwartz, Shai Ben-David
+  15u    20n 2017 | Everybody Lies -- Seth Stephens-Davidowitz
+  15u    17n 2013 | An Introduction To Statistical Learning With Applications In R -- Gareth James
+  15u    15n 2023 | Understanding Deep Learning -- Simon J. D. Prince
+  14u    26n 1992 | Artificial life -- Steven Levy
+  14u    20n 1999 | Data mining -- I. H. Witten, Ian H. Witten
+  14u    14n 2024 | Nexus -- Yuval Noah Harari
+  13u    13n 1977 | Digital image processing -- Rafael C. Gonzalez, Richard E. Woods
+  12u    17n 1986 | Prolog programming for artificial intelligence -- Ivan Bratko, Bratko, Ivan.
+  12u    16n 2019 | Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow -- Aur�lien G�ron
+  12u    15n 1994 | Turtles, termites, and traffic jams -- Mitchel Resnick
+  12u    14n 2016 | Make your own neural network -- Tariq Rashid
+  12u    12n 2016 | Python Data Science Handbook -- Jake VanderPlas
+  12u    12n 2010 | Data Analysis with Open Source Tools -- Philipp K. Janert
+  11u    18n 2019 | Rebooting AI -- Gary Marcus, Ernest Davis
+  11u    13n 2019 | Algorithms for Optimization -- Mykel J. Kochenderfer, Tim A. Wheeler
+  11u    12n 2020 | The Alignment Problem -- Brian Christian
+  11u    11n 2015 | Python machine learning -- Sebastian Raschka
+  11u    11n 2023 | The maniac -- Benjam�n Labatut
+  10u    16n 1972 | What computers still can't do -- Hubert L. Dreyfus
+  10u    15n 2019 | Grokking Deep Learning -- Andrew Trask
+  10u    11n 2015 | Big Data -- Nathan Marz
+  10u    11n 2008 | Learning OpenCV -- Gary Bradski, Adrian Kaehler
+  10u    11n 2019 | The Hundred-Page Machine Learning Book -- Andriy Burkov
+  10u    11n 1990 | The Age of Intelligent Machines -- Ray Kurzweil
+  10u    10n 2010 | Computer Vision -- Richard Szeliski
+  10u    10n 1997 | Darwin among the machines -- George Dyson
+   9u    25n 2012 | Handbook Of Neuroevolution Through Erlang -- Gene I. Sher
+   9u    13n 1988 | Mind children -- Hans Moravec
+   9u    12n 2019 | Deep Learning from Scratch -- Seth Weidman
+   9u    12n 2001 | Blondie24 -- David B. Fogel

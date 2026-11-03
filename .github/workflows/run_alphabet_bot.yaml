@@ -1,0 +1,55 @@
+name: Bot alphabet situationnel
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "tournament, minibench ou test_questions"
+        default: "minibench"
+  # Planification à activer APRÈS les essais manuels (test_questions, puis minibench) : retirer les « # » ci-dessous.
+  # schedule:
+  #   - cron: "17 * * * *"   # toutes les heures ; les questions déjà prévues sont sautées
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write          # pour enregistrer le registre (journal scellé et dossiers) dans le dépôt
+
+jobs:
+  prevoir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Contrôle du skill
+        run: python alphabet-situationnel/scripts/moteur.py audit
+      - name: Prévoir
+        run: uv run python alphabet_bot.py --mode "${{ github.event.inputs.mode || 'minibench' }}"
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ASKNEWS_CLIENT_ID: ${{ secrets.ASKNEWS_CLIENT_ID }}
+          ASKNEWS_SECRET: ${{ secrets.ASKNEWS_SECRET }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
+          ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
+      - name: Enregistrer le registre
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain registre)" ]; then
+            git config user.name "alphabet-bot"
+            git config user.email "alphabet-bot@users.noreply.github.com"
+            git add registre
+            git commit -m "registre : prévisions du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

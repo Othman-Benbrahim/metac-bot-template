@@ -1,0 +1,3 @@
+audit : conforme — fichiers, versions, 208 statuts, paramètres exhaustifs (chacun référencé par le code), JSONL et dossier d’exemple validés, manifeste SHA256SUMS (47 fichiers), matrice et inerties, 363 renvois §, voisines A6, incompatibilités G6, schéma de fiche validé, répartition des statuts, index des cartes, répétitions ; contrôle de forme et de recoupement interne, pas de la justesse du contenu ni certification empirique
+----
+Python 3.12.4

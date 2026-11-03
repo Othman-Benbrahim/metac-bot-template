@@ -1,0 +1,85 @@
+count 321
+ 666u   862n 2007 | The Black Swan -- Nassim Nicholas Taleb, David Chandler
+ 227u   266n 2001 | The Elements of Statistical Learning -- Trevor Hastie, Robert Tibshirani
+ 160u   229n 2018 | Factfulness -- Hans Rosling, Ola Rosling
+ 138u   193n 2003 | Probability Theory -- E. T. Jaynes
+ 138u   150n 1983 | The Visual Display of Quantitative Information -- Edward R. Tufte
+ 126u   180n 1954 | How to Lie with Statistics -- Darrell Huff, Irving Geis
+ 108u   120n 2021 | Introduction to Statistical Learning -- Gareth James, Daniela Witten
+ 103u   144n 2018 | The Book of Why -- Judea Pearl, Dana Mackenzie
+  92u   113n 2015 | Statistical Rethinking -- Richard McElreath
+  81u   133n 2018 | The Age of Surveillance Capitalism -- Shoshana Zuboff
+  79u    97n 2012 | The Signal and the Noise -- Nate Silver
+  71u   101n 2015 | Superforecasting -- Philip E. Tetlock, Dan Gardner
+  60u    70n 2004 | All of Statistics -- Larry Wasserman
+  58u   102n 2007 | How to Measure Anything -- Douglas W. Hubbard
+  49u    57n 1997 | The Sovereign Individual -- James Dale Davidson, William Rees-Mogg
+  49u    56n 1995 | Bayesian data analysis -- Andrew Gelman, John B. Carlin
+  47u    55n 1999 | The grammar of graphics -- Leland Wilkinson, D. Rope
+  45u    50n 2013 | Think Bayes -- Allen B. Downey
+  43u    56n 2017 | R for Data Science -- Hadley Wickham, Garrett Grolemund
+  42u    49n 2011 | Think Stats -- Allen B. Downey
+  37u    42n 2009 | Probabilistic Graphical Models -- Daphne Koller, Nir Friedman
+  36u    45n 1996 | Against the gods -- Peter L. Bernstein
+  35u    42n 2014 | Dataclysm -- Christian Rudder
+  35u    38n 2015 | Bayesian methods for hackers -- Cameron Davidson-Pilon
+  34u    39n 2005 | Probabilistic robotics -- Sebastian Thrun, Dieter Fox
+  34u    37n 2000 | Causality -- Judea Pearl
+  33u    48n 2015 | Data science from scratch -- Joel Grus
+  28u    34n 2006 | Elements of Information Theory -- T. M. Cover, Joy A. Thomas
+  28u    31n 2012 | Machine learning -- Kevin P. Murphy
+  25u    33n 2010 | Doing Bayesian Data Analysis -- John K. Kruschke
+  24u    25n 2020 | Foundations of Data Science -- Avrim Blum, John Hopcroft
+  22u    26n 2013 | Data Smart -- John W. Foreman
+  21u    25n 2007 | Super Crunchers -- Ian Ayres
+  21u    23n 2011 | The Theory That Would Not Die -- Sharon Bertsch McGrayne
+  21u    22n 1990 | Statistical inference -- George Casella
+  20u    22n 2011 | Bayesian reasoning and machine learning -- David Barber
+  19u    23n 2015 | Statistics Done Wrong -- Alex Reinhart
+  18u    23n 2019 | Invisible Women -- Caroline Criado Perez
+  18u    21n 1997 | The Dilbert future -- Scott Adams
+  17u    26n 1993 | The cartoon guide to statistics -- Larry Gonick
+  17u    20n 2016 | Computer Age Statistical Inference -- Bradley Efron, Trevor Hastie
+  16u    20n 2012 | Spillover -- David Quammen, C�cile Dutheil de La Roch�re
+  16u    19n 1999 | Foundations of Statistical Natural Language Processing -- Christopher Manning, Hinrich Sch�tze
+  16u    16n 1976 | A first course in probability -- Sheldon M. Ross
+  16u    16n 2002 | Unrestricted warfare -- Qiao Liang, Wang Xiangsui
+  15u    24n 2014 | Data Science at the Command Line -- Jeroen Janssens
+  15u    20n 2017 | Everybody Lies -- Seth Stephens-Davidowitz
+  15u    19n 2018 | The Model Thinker -- Scott E. Page
+  15u    18n 1978 | Statistics -- David Freedman, Robert Pisani
+  15u    17n 2013 | An Introduction To Statistical Learning With Applications In R -- Gareth James
+  15u    17n 2013 | Naked Statistics -- Charles J. Wheelan
+  15u    17n 2008 | The Next 100 Years -- George Friedman
+  15u    16n 2012 | Abundance -- Peter H. Diamandis, Steven Kotler
+  15u    16n 1982 | The fractal geometry of nature -- Beno�t B. Mandelbrot, Josep Maria Llosa
+  15u    15n 2001 | The Lady Tasting Tea -- David Salsburg
+  14u    20n 2020 | Regression and Other Stories -- Andrew Gelman, Jennifer Hill
+  14u    15n 2016 | The End of Average -- Todd Rose
+  14u    15n 2022 | What We Owe the Future -- William MacAskill
+  13u    30n 2013 | The New Digital Age -- Eric Schmidt . Jared Cohen
+  12u    13n 2006 | Data analysis using regression and multilevel/hierarchical models -- Andrew Gelman
+  12u    12n 2016 | Python Data Science Handbook -- Jake VanderPlas
+  12u    12n 2008 | Visualizing Data -- Ben Fry
+  12u    12n 2010 | Data Analysis with Open Source Tools -- Philipp K. Janert
+  12u    12n 2017 | Doughnut Economics -- Kate Raworth
+  11u    12n 2010 | R in a nutshell -- Adler, Joseph M.Eng, Joseph Adler
+  11u    11n 1988 | Probabilistic reasoning in intelligent systems -- Judea Pearl
+  11u    11n 2011 | The art of R programming -- Norman S. Matloff
+  11u    11n 2019 | The Art of Statistics -- David Spiegelhalter
+  11u    11n 2020 | Statistical Consequences of Fat Tails -- Nassim Nicholas Taleb
+  11u    11n 1971 | Introduction to probability theory -- Paul Gerhard Hoel
+  10u    13n 1962 | Profiles of the future -- Arthur C. Clarke
+  10u    13n 1998 | Biological sequence analysis -- Richard M. Durbin, Sean R. Eddy
+  10u    12n 2008 | Statistics in a nutshell -- Sarah Boslaugh
+  10u    11n 2015 | Big Data -- Nathan Marz
+  10u    11n 1972 | A mathematical introduction to logic -- Herbert B. Enderton
+  10u    11n 2020 | Calling Bullshit -- Carl T. Bergstrom, Jevin D. West
+  10u    10n 1993 | An introduction to Kolmogorov complexity and its applications -- Ming Li, Paul Vitanyi
+   9u    13n 2001 | Regression Modeling Strategies -- Frank E. Jr. Harrell
+   9u    11n 1950 | An introduction to probability theory and its applications -- William Feller
+   9u    11n 2004 | Dark age ahead -- Jane Jacobs
+=== ALL 321 TITLES ===
+ 666u | 2007 | The Black Swan | Nassim Nicholas Taleb | tp=psychology,philosophy,data-statistics
+ 227u | 2001 | The Elements of Statistical Learning | Trevor Hastie | tp=ai-ml,data-statistics
+ 160u | 2018 | Factfulness | Hans Rosling | tp=business,productivity,data-statistics

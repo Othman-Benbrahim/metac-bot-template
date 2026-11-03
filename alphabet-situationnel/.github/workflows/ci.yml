@@ -1,0 +1,40 @@
+# Contrôles à chaque push et pull request. Contrat : Python ≥ 3.8, bibliothèque standard seule, sur
+# Linux, Windows et macOS. Sous Windows, avec et sans PYTHONUTF8 : la sortie en cp1252 est le cas qui
+# plantait avant 0.7.1 (test_console_cp1252).
+name: controles
+on: [push, pull_request]
+jobs:
+  moteur:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-22.04, python: '3.8', utf8: '0'}
+          - {os: ubuntu-22.04, python: '3.12', utf8: '0'}
+          - {os: windows-latest, python: '3.12', utf8: '0'}
+          - {os: windows-latest, python: '3.12', utf8: '1'}
+          - {os: macos-latest, python: '3.12', utf8: '0'}
+    env:
+      PYTHONUTF8: ${{ matrix.utf8 }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Manifeste
+        run: |
+          if command -v sha256sum >/dev/null; then sha256sum -c SHA256SUMS --quiet; else shasum -a 256 -c SHA256SUMS --quiet; fi
+      - name: Audit
+        run: python scripts/moteur.py audit
+      - name: Autotests
+        run: python scripts/moteur.py autotest
+      - name: Bases livrées
+        run: |
+          python scripts/moteur.py valider assets/base-de-cas.exemple.jsonl
+          python scripts/moteur.py valider assets/cas-reels.jsonl
+      - name: Journal d'exemple
+        run: python scripts/moteur.py scorer assets/journal.exemple.jsonl > /dev/null

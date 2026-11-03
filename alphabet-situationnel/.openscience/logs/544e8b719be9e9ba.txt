@@ -1,0 +1,30 @@
+[31;1mtest_scorer_csv (__main__.autotest.<locals>.Tests.test_scorer_csv) ... ok[0m
+[31;1mtest_sensibilite (__main__.autotest.<locals>.Tests.test_sensibilite) ... ok[0m
+[31;1mtest_sensibilite_classe_vide (__main__.autotest.<locals>.Tests.test_sensibilite_classe_vide) ... ok[0m
+[31;1mtest_single_step_invalid_semantics (__main__.autotest.<locals>.Tests.test_single_step_invalid_semantics) ... ok[0m
+[31;1mtest_sonde (__main__.autotest.<locals>.Tests.test_sonde) ... ok[0m
+[31;1mtest_sortie_doree (__main__.autotest.<locals>.Tests.test_sortie_doree) ... ok[0m
+[31;1mtest_sorties_audit_v34 (__main__.autotest.<locals>.Tests.test_sorties_audit_v34) ... ok[0m
+[31;1mtest_source_url (__main__.autotest.<locals>.Tests.test_source_url) ... ok[0m
+[31;1mtest_strate_13 (__main__.autotest.<locals>.Tests.test_strate_13) ... ok[0m
+[31;1mtest_support_garantie (__main__.autotest.<locals>.Tests.test_support_garantie) ... ok[0m
+[31;1mtest_temporalite (__main__.autotest.<locals>.Tests.test_temporalite) ... ok[0m
+[31;1mtest_temporalite_avec_base (__main__.autotest.<locals>.Tests.test_temporalite_avec_base) ... ok[0m
+[31;1mtest_ten_year_transition (__main__.autotest.<locals>.Tests.test_ten_year_transition) ... ok[0m
+[31;1mtest_tests_exacts (__main__.autotest.<locals>.Tests.test_tests_exacts) ... ok[0m
+[31;1mtest_tests_preuve (__main__.autotest.<locals>.Tests.test_tests_preuve) ... ok[0m
+[31;1mtest_trajectory_mass (__main__.autotest.<locals>.Tests.test_trajectory_mass) ... ok[0m
+[31;1mtest_unverified_never_validated (__main__.autotest.<locals>.Tests.test_unverified_never_validated) ... ok[0m
+[31;1mtest_v4_reference_defaut (__main__.autotest.<locals>.Tests.test_v4_reference_defaut) ... ok[0m
+[31;1mtest_v4_sceau_dossier (__main__.autotest.<locals>.Tests.test_v4_sceau_dossier) ... ok[0m
+[31;1mtest_v4_statut (__main__.autotest.<locals>.Tests.test_v4_statut) ... ok[0m
+[31;1mtest_valid_case (__main__.autotest.<locals>.Tests.test_valid_case) ... ok[0m
+[31;1mtest_variantes_codage (__main__.autotest.<locals>.Tests.test_variantes_codage) ... ok[0m
+[31;1mtest_version_illisible (__main__.autotest.<locals>.Tests.test_version_illisible) ... ok[0m
+[31;1mtest_voisins (__main__.autotest.<locals>.Tests.test_voisins) ... ok[0m
+[31;1mtest_window_invalid (__main__.autotest.<locals>.Tests.test_window_invalid) ... ok[0m
+[31;1m[0m
+[31;1m----------------------------------------------------------------------[0m
+[31;1mRan 157 tests in 20.483s[0m
+[31;1m[0m
+[31;1mOK[0m
