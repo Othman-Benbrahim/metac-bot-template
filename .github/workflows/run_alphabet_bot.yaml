@@ -40,9 +40,12 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ASKNEWS_CLIENT_ID: ${{ secrets.ASKNEWS_CLIENT_ID }}
           ASKNEWS_SECRET: ${{ secrets.ASKNEWS_SECRET }}
+          ASKNEWS_API_KEY: ${{ secrets.ASKNEWS_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
           ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
+          ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
       - name: Enregistrer le registre
         if: always()
         run: |
