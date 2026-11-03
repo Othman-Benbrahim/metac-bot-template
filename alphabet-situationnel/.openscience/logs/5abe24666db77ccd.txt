@@ -1,0 +1,5 @@
+[31;1mParserError: [0m
+[31;1m[36;1mLine |[0m
+[31;1m[36;1m[36;1m   8 | [0m .  {b.get('n',0):>5}n {b.get('y','?')} | {b['t']} - {', '.join([36;1mb[0m.get('a .[0m
+[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m                                                                ~[0m
+[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mParenth�se fermante ��)�� manquante dans l'appel de m�thode.[0m

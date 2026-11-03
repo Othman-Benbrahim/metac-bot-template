@@ -1,0 +1,4 @@
+  File "<string>", line 8
+    print(f\"{b.get('u',0):>4}u {b.get('y','?')} | {b['t']} -- {', '.join(b.get('a',[])[:2])}\")
+            ^
+SyntaxError: unexpected character after line continuation character

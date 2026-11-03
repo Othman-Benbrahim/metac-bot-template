@@ -1,0 +1,27 @@
+ 136u 1994 | Artificial Intelligence -- Stuart J. Russell, Peter Norvig
+ 108u 1991 | Paradigms of Artificial Intelligence -- Peter Norvig
+  35u 2022 | Probabilistic Machine Learning -- Kevin P. Murphy
+  34u 2005 | Probabilistic robotics -- Sebastian Thrun, Dieter Fox
+  21u 1969 | The sciences of the artificial -- Herbert Alexander Simon
+  20u 2011 | Bayesian reasoning and machine learning -- David Barber
+  14u 1992 | Artificial life -- Steven Levy
+  12u 1986 | Prolog programming for artificial intelligence -- Ivan Bratko, Bratko, Ivan.
+  11u 2020 | The Alignment Problem -- Brian Christian
+   8u 2004 | Universal Artificial Intelligence -- Marcus Hutter
+   8u 2019 | Artificial Intelligence -- Melanie Mitchell
+   7u 1995 | The Nature of Statistical Learning Theory -- Vladimir Naumovich Vapnik
+   6u 1977 | Artificial intelligence -- Patrick Henry Winston
+   5u 2008 | Global catastrophic risks -- Nick Bostrom
+   4u 1985 | Introduction to artificial intelligence -- Eugene Charniak
+   4u 2007 | Artificial general intelligence -- Ben Goertzel, Cassio Pennachin
+   3u 2010 | The Quest for Artificial Intelligence a history of ideas and achievements -- Nils J. Nilsson
+   3u 2006 | Artificial intelligence for games -- Ian Millington
+   3u 1990 | Handbook of artificial intelligence -- Avron Barr, Paul R. Cohen
+   3u 2008 | Multiagent systems -- Yoav Shoham
+   3u 2018 | Prediction machines -- Ajay Agrawal
+   2u 2002 | An introduction to multiagent systems -- Michael J. Wooldridge
+   2u ? | Understanding Artificial Intelligence -- Radio Shack
+   2u 2020 | AI Ethics -- Mark Coeckelbergh
+   2u 2016 | Artificial intelligence -- Jerry Kaplan
+   2u 2016 | Generalized Low Rank Models -- Madeleine Udell, Corinne Horn
+   2u ? | The quest for artificial intelligence -- Nilsson, Nils J.

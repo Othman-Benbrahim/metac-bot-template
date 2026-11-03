@@ -1,0 +1,218 @@
+{
+ "version": "0.7.48",
+ "nombre_strates": 13,
+ "cartes": {
+  "SEU": "SEUIL",
+  "REC": "RÉCIPROCITÉ",
+  "PER": "PÉRIODICITÉ",
+  "RCS": "RÉCURSIVITÉ",
+  "EME": "ÉMERGENCE",
+  "HIE": "HIÉRARCHIE",
+  "RES": "RÉSEAU",
+  "POL": "POLARITÉ",
+  "INC": "INCERTITUDE",
+  "CTR": "CONTRAINTE",
+  "PRO": "PROPORTION",
+  "TRA": "TRANSFORMATION",
+  "TRC": "TRACE·MÉMOIRE",
+  "CRO": "CROISSANCE",
+  "COM": "COMMUNAUTÉ",
+  "RSN": "RÉSONANCE"
+ },
+ "lambda": {
+  "F": 3.0,
+  "M": 1.8,
+  "f": 1.2
+ },
+ "f_defaut": 0.05,
+ "plafond_p0": 0.95,
+ "plafond_LR": 10.0,
+ "multiplicateur_bouge": 1.5,
+ "inertie": {
+  "SEU": 0.97,
+  "TRC": 0.96,
+  "PER": 0.9,
+  "RES": 0.9,
+  "CTR": 0.9,
+  "HIE": 0.88,
+  "POL": 0.85,
+  "PRO": 0.85,
+  "RSN": 0.85,
+  "REC": 0.65,
+  "RCS": 0.65,
+  "EME": 0.65,
+  "TRA": 0.65,
+  "COM": 0.65,
+  "CRO": 0.65,
+  "INC": 0.4
+ },
+ "inertie_contrainte_materielle": 0.65,
+ "k": 2.0,
+ "seuil_rho0_cas_distincts": 30,
+ "w_emprunt": 0.5,
+ "jaccard_H15": 0.7,
+ "seuil_affichage": 0.05,
+ "intervalle": 0.8,
+ "largeur_max_affichage": 0.3,
+ "ecart_niveaux_max": 0.1,
+ "placebo_tirages": 200,
+ "ratio_duree_fenetre": 0.5,
+ "delta_discriminant": 0.02,
+ "weibull_occasions_min": 30,
+ "attenuation_w_f": 0.5,
+ "v4_dossier_depuis": "2026-10-29",
+ "demi_vie_ans": 20,
+ "ratio_non_stationnarite": 2.0,
+ "min_transitions_par_moitie": 5,
+ "partage_test": "01234",
+ "double_codage_part": 0.2,
+ "double_codage_min_cas": 20,
+ "kappa_min": 0.67,
+ "kappa_rapportable": 0.8,
+ "fnr_max": 0.2,
+ "accord_min_ancrages": 5,
+ "repetabilite_ecart_min_jours": 30,
+ "jugement_procedure_depuis": "2026-10-31",
+ "rejets_tirage": 100,
+ "v4_gain_abs": 0.025,
+ "v4_alpha": 0.05,
+ "v4_puissance": 0.8,
+ "v4_test": "signe",
+ "v4_reference": "vue_exterieure",
+ "v4_n": 50,
+ "v4_equivalence_delta": 0.025,
+ "v4_autocorrelation_max": 0.3,
+ "v4_e_seuil_primaire": 20,
+ "v4_effectif_equivalence": 0,
+ "strates_prevision": [7],
+ "vue_exterieure_rapport_max": 10.0,
+ "matrice": {
+  "SEU": {
+   "PER": "f",
+   "TRA": "M",
+   "TRC": "F"
+  },
+  "REC": {
+   "SEU": "f",
+   "HIE": "M",
+   "POL": "M",
+   "COM": "f"
+  },
+  "PER": {
+   "SEU": "f",
+   "RSN": "M"
+  },
+  "RCS": {
+   "SEU": "M",
+   "CTR": "f",
+   "CRO": "M"
+  },
+  "EME": {
+   "HIE": "M",
+   "CTR": "M",
+   "TRC": "F",
+   "CRO": "M",
+   "COM": "f",
+   "RES": "f"
+  },
+  "HIE": {
+   "SEU": "f",
+   "POL": "M",
+   "TRA": "f",
+   "RCS": "f",
+   "INC": "f"
+  },
+  "RES": {
+   "SEU": "M",
+   "POL": "f",
+   "PRO": "M",
+   "EME": "f",
+   "CRO": "f",
+   "RSN": "f",
+   "RCS": "f",
+   "INC": "f"
+  },
+  "POL": {
+   "SEU": "M",
+   "REC": "f",
+   "HIE": "M",
+   "CRO": "M",
+   "CTR": "f"
+  },
+  "INC": {
+   "SEU": "f",
+   "EME": "M",
+   "CTR": "M",
+   "RCS": "f"
+  },
+  "CTR": {
+   "SEU": "M",
+   "RES": "M",
+   "TRA": "f",
+   "INC": "f",
+   "COM": "f",
+   "PER": "f"
+  },
+  "PRO": {
+   "SEU": "f",
+   "POL": "f",
+   "TRA": "M"
+  },
+  "TRA": {
+   "SEU": "M",
+   "EME": "f",
+   "TRC": "M"
+  },
+  "TRC": {
+   "SEU": "f",
+   "PER": "f",
+   "POL": "f"
+  },
+  "CRO": {
+   "SEU": "M",
+   "EME": "f",
+   "CTR": "F",
+   "RES": "f",
+   "PRO": "f"
+  },
+  "COM": {
+   "SEU": "M",
+   "REC": "f",
+   "HIE": "M",
+   "RES": "f"
+  },
+  "RSN": {
+   "SEU": "M",
+   "CRO": "M"
+  }
+ },
+ "barreau": {
+  "defaut": "A",
+  "exceptions": {}
+ },
+ "autre_strate": {
+  "SEU": {
+   "SEU": "M"
+  },
+  "RES": {
+   "SEU": "M"
+  },
+  "CRO": {
+   "CTR": "F"
+  },
+  "RSN": {
+   "SEU": "M"
+  }
+ },
+ "faisceau_max": 300,
+ "fenetre_reference_jours": 91.3125,
+ "k0_frequence": 20,
+ "n_min_publication": 1,
+ "n_min_ancrage": 20,
+ "c_min_rho1": 3,
+ "c_min_niveau": 3,
+ "alerte_R2": 0.3,
+ "seuil_decision": 0.5,
+ "vide_recherches_cloture": 3,
+ "pas_max": 20
+}
