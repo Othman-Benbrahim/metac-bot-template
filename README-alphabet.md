@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.0 · skill alphabet-situationnel 0.7.48 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.1.1 · skill alphabet-situationnel 0.7.48 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -47,17 +47,28 @@ Reste à faire :
 1. Créer le compte bot sur <https://www.metaculus.com/futureeval/participate/>, copier le jeton, remplir le formulaire de
    participation (obligatoire ; demande de crédits au même endroit).
 2. *Settings → Secrets and variables → Actions* :
-   - onglet **Secrets** : `METACULUS_TOKEN` ; si tu en as, `OPENROUTER_API_KEY` (ou `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`),
-     `ASKNEWS_CLIENT_ID` et `ASKNEWS_SECRET` (ou `PERPLEXITY_API_KEY`). Avec le seul jeton Metaculus, la bibliothèque
-     utilise les modèles du proxy Metaculus (`metaculus/gpt-4o`…), sous réserve des crédits accordés ;
-   - onglet **Variables** (facultatif) : `ALPHABET_LLM` (modèle du raisonnement, format litellm), `ALPHABET_CHERCHEUR`
-     (par exemple `asknews/news-summaries`).
+   - onglet **Secrets** : `METACULUS_TOKEN` ; une clé de modèle (`ANTHROPIC_API_KEY`, `OPENROUTER_API_KEY` ou
+     `OPENAI_API_KEY`) ; une recherche web : `EXA_API_KEY` (niveau gratuit d'Exa) ou une clé AskNews
+     (`ASKNEWS_API_KEY`, ou `ASKNEWS_CLIENT_ID` et `ASKNEWS_SECRET`). **Le proxy de modèles de Metaculus n'existe plus** :
+     sans clé de modèle, le bot s'arrête en rouge ;
+   - onglet **Variables** : `ALPHABET_LLM` (plan et dossier, ex. `anthropic/claude-sonnet-5-5`), `ALPHABET_PETIT_LLM`
+     (lecture des réponses et résumés, ex. `anthropic/claude-haiku-5-5` ; par défaut, `ALPHABET_LLM`),
+     `ALPHABET_CHERCHEUR` (ex. `smart-searcher/anthropic/claude-haiku-5-5` avec Exa, ou `asknews/news-summaries`).
+     Avec une clé Anthropic seule, ces variables sont **nécessaires** : les modèles par défaut de la bibliothèque sont
+     anciens, et sa recherche par défaut passe par le proxy disparu.
 3. Onglet **Actions** : autoriser les workflows, puis **Bot alphabet situationnel → Run workflow**, mode `test_questions`.
    Vérifier sur Metaculus (compte bot) et dans `registre/`. Puis mode `minibench`.
 4. Une fois les essais concluants, activer la planification dans `.github/workflows/run_alphabet_bot.yaml` (retirer les
    « # » devant `schedule`).
 
 En local : `cp .env.template .env`, remplir, puis `uv run python alphabet_bot.py --mode test_questions --sans-publier`.
+
+## Ce que dit un passage
+
+Au démarrage, le bot vérifie le jeton, la clé de modèle et la recherche : une configuration qui ne peut rien poster
+s'arrête en rouge avec la liste des problèmes. À la fin, un **BILAN DU PASSAGE** donne les questions traitées, les
+prévisions postées, les questions binaires journalisées (bras C ou A posté) et les statuts de l'alphabet. Le passage
+échoue en rouge si des questions ont été trouvées et qu'aucune n'a pu être prévue.
 
 ## Scorer
 

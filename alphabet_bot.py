@@ -11,8 +11,10 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import json
 import logging
 import os
+import sys
 from datetime import timezone
 
 from forecasting_tools import (
@@ -24,6 +26,7 @@ from forecasting_tools import (
     SmartSearcher,
 )
 
+from bot_helpers import check_environment
 from main import FallTemplateBot2026  # le bot modèle de Metaculus (fork de metac-bot-template)
 import alphabet_pipeline as ap
 
@@ -77,16 +80,50 @@ class AlphabetBot(FallTemplateBot2026):
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
 
 
-def construire(publier: bool) -> AlphabetBot:
-    # Modèles : ceux de forecasting-tools par défaut ; ALPHABET_LLM et ALPHABET_CHERCHEUR les remplacent
-    # (ex. ALPHABET_LLM="openrouter/<fournisseur>/<modèle>", ALPHABET_CHERCHEUR="asknews/news-summaries").
+def configuration(env=os.environ) -> dict:
+    """Modèles imposés par les variables du dépôt ; vide = défauts de forecasting-tools.
+
+    ALPHABET_LLM         raisonnement, plan et dossier (ex. « anthropic/claude-sonnet-5-5 ») ;
+    ALPHABET_PETIT_LLM   lecture des réponses et résumés (par défaut : ALPHABET_LLM) ;
+    ALPHABET_CHERCHEUR   recherche (ex. « smart-searcher/anthropic/claude-haiku-5-5 » avec EXA_API_KEY,
+                         ou « asknews/news-summaries » avec une clé AskNews).
+    """
     llms = {}
-    if os.environ.get("ALPHABET_LLM"):
-        llms["default"] = GeneralLlm(model=os.environ["ALPHABET_LLM"], temperature=0.2, timeout=180, allowed_tries=2)
-    if os.environ.get("ALPHABET_CHERCHEUR"):
-        llms["researcher"] = os.environ["ALPHABET_CHERCHEUR"]
+    if env.get("ALPHABET_LLM"):
+        llms["default"] = GeneralLlm(model=env["ALPHABET_LLM"], temperature=0.2, timeout=180, allowed_tries=2)
+        petit = env.get("ALPHABET_PETIT_LLM") or env["ALPHABET_LLM"]
+        for role in ("parser", "summarizer"):
+            llms[role] = GeneralLlm(model=petit, temperature=0.2, timeout=120, allowed_tries=2)
+    if env.get("ALPHABET_CHERCHEUR"):
+        llms["researcher"] = env["ALPHABET_CHERCHEUR"]
+    return llms
+
+
+def problemes(bot: AlphabetBot, env=os.environ) -> tuple[list[str], list[str]]:
+    """(bloquants, avertissements) avant de lancer : un passage qui ne peut rien poster doit échouer en rouge."""
+    bloquants, avertissements = [], []
+    for role in ("default", "parser", "summarizer", "researcher"):
+        m = bot.get_llm(role)
+        nom = GeneralLlm.to_model_name(m) if isinstance(m, GeneralLlm) else str(m or "")
+        if nom.startswith("metaculus/"):
+            bloquants.append(f"modèle « {role} » = {nom} : le proxy de Metaculus n'existe plus. "
+                             "Renseigner ALPHABET_LLM (et ALPHABET_CHERCHEUR pour la recherche).")
+    cherche = bot.get_llm("researcher")
+    nom = GeneralLlm.to_model_name(cherche) if isinstance(cherche, GeneralLlm) else str(cherche or "")
+    if nom.startswith("smart-searcher") and not env.get("EXA_API_KEY"):
+        bloquants.append("ALPHABET_CHERCHEUR utilise Exa (smart-searcher) mais le secret EXA_API_KEY est absent.")
+    if nom.startswith("asknews/") and not (env.get("ASKNEWS_API_KEY")
+                                          or (env.get("ASKNEWS_CLIENT_ID") and env.get("ASKNEWS_SECRET"))):
+        bloquants.append("ALPHABET_CHERCHEUR utilise AskNews mais aucune clé AskNews n'est présente.")
+    if not bot._recherche_reelle():
+        avertissements.append(f"chercheur « {nom} » : pas de vraie recherche web ; les requêtes de l'alphabet seront "
+                              "marquées non exécutées et les lectures resteront Spéculatives.")
+    return bloquants, avertissements
+
+
+def construire(publier: bool) -> AlphabetBot:
     return AlphabetBot(
-        llms=llms or None,
+        llms=configuration() or None,
         research_reports_per_question=1,
         predictions_per_research_report=1,  # une seule lecture par question : le pipeline est coûteux et scellé
         use_research_summary_to_forecast=False,
@@ -97,20 +134,62 @@ def construire(publier: bool) -> AlphabetBot:
     )
 
 
+def lignes_registre() -> list[dict]:
+    f = ap.REGISTRE / "journal-bot.jsonl"
+    if not f.is_file():
+        return []
+    return [json.loads(x) for x in f.read_text(encoding="utf-8").splitlines() if x.strip()]
+
+
+def bilan(rapports: list, nouvelles: list[dict], publier: bool) -> tuple[str, int]:
+    """Bilan lisible du passage et code de sortie : 1 si des questions ont été trouvées mais rien n'a été prévu."""
+    ok = [r for r in rapports if not isinstance(r, BaseException)]
+    ko = [r for r in rapports if isinstance(r, BaseException)]
+    bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in "AC"}
+    statuts = {}
+    for x in nouvelles:
+        s = x["bras"]["C"].get("statut")
+        statuts[s] = statuts.get(s, 0) + 1
+    texte = "\n".join([
+        "=" * 70,
+        "BILAN DU PASSAGE",
+        f"  questions traitées : {len(rapports)}  (prévues : {len(ok)}, en échec : {len(ko)})",
+        f"  {'postées sur Metaculus' if publier else 'NON postées (--sans-publier)'} : {len(ok)}",
+        f"  questions binaires journalisées : {len(nouvelles)}  (bras C posté : {bras['C']}, bras A posté : {bras['A']})",
+        f"  statuts de l'alphabet : {statuts or '—'}",
+        *[f"  échec : {type(e).__name__} : {str(e)[:300]}" for e in ko[:10]],
+        "  aucune question ouverte trouvée : rien à faire pour l'instant." if not rapports else "",
+        "=" * 70])
+    return texte, (1 if rapports and not ok else 0)
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     p = argparse.ArgumentParser(description="Bot de l'alphabet situationnel")
     p.add_argument("--mode", choices=["tournament", "minibench", "test_questions"], default="test_questions")
     p.add_argument("--sans-publier", action="store_true", help="calculer et journaliser sans poster sur Metaculus")
     args = p.parse_args()
+    check_environment(strict=True)  # jeton Metaculus et clé de modèle, sinon arrêt en rouge
     bot = construire(publier=not args.sans_publier)
+    bloquants, avertissements = problemes(bot)
+    for a_ in avertissements:
+        print(f"⚠️  {a_}")
+    if bloquants:
+        print("❌  Configuration :")
+        for b_ in bloquants:
+            print(f"    • {b_}")
+        sys.exit(1)
     client = MetaculusClient()
     cibles = {"tournament": [client.CURRENT_AI_COMPETITION_ID, client.CURRENT_MINIBENCH_ID],
               "minibench": [client.CURRENT_MINIBENCH_ID],
               "test_questions": ["bot-testing-area"]}[args.mode]
     if args.mode == "test_questions":
         bot.skip_previously_forecasted_questions = False
+    avant = len(lignes_registre())
     rapports = []
     for cible in cibles:
         rapports += asyncio.run(bot.forecast_on_tournament(cible, return_exceptions=True))
-    bot.log_report_summary(rapports)
+    bot.log_report_summary(rapports, raise_errors=False)
+    texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier)
+    print(texte)
+    sys.exit(code)
