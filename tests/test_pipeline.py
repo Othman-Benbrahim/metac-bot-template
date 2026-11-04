@@ -152,6 +152,38 @@ class Tests(unittest.TestCase):
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "refuse")
         self.assertIn("déjà présente", r.ligne["bras"]["C"]["motif"])
 
+    def test_hors_strate_chiffree(self):
+        plan = dict(PLAN, evenement={"carte": "CRO", "strate": 6, "type": "apparait"})   # économie : non chiffrée (L7)
+        r, llm = lancer([plan, vue(0.03)])
+        self.assertEqual(r.bras_poste, "A")
+        self.assertEqual(r.ligne["bras"]["C"]["statut"], "hors_strate")
+        self.assertAlmostEqual(r.p_B, 0.03)                       # la vue extérieure est enregistrée
+        self.assertEqual(len(llm.consignes), 2)                   # lecture non lancée : pas de coût de lecture
+        self.assertIn("[7]", llm.consignes[0])                    # le plan connaît les strates chiffrées
+
+    def test_lecture_hors_strate_scellee(self):
+        ancien = ap.LECTURE_HORS_STRATE
+        ap.LECTURE_HORS_STRATE = True
+        try:
+            plan = dict(PLAN, evenement={"carte": "SEU", "strate": 6, "type": "apparait"})
+            r, _ = lancer([plan, vue(0.03), lecture()])
+            self.assertEqual(r.ligne["bras"]["C"]["statut"], "lu_non_chiffre")
+            self.assertEqual(r.bras_poste, "A")
+            self.assertTrue(r.ligne.get("dossier_fichier"))          # lecture scellée, chiffrable après une levée
+            self.assertIsNone(r.p_C)
+        finally:
+            ap.LECTURE_HORS_STRATE = ancien
+
+    def test_refus_structurel_sans_correction(self):
+        ancien = ap.appeler_moteur
+        ap.appeler_moteur = lambda *a, **k: {"erreur": "prévision chiffrée limitée aux strates [7] (décision L7, 0.7.34)"}
+        try:
+            r, llm = lancer([PLAN, vue(), lecture()])
+            self.assertEqual(r.ligne["bras"]["C"]["tentatives"], 1)   # aucune correction payée pour rien
+            self.assertEqual(len(llm.consignes), 3)
+        finally:
+            ap.appeler_moteur = ancien
+
     def test_journal(self):
         lancer([PLAN, vue(), lecture()])
         x = json.loads((ap.REGISTRE / "journal-bot.jsonl").read_text(encoding="utf-8").splitlines()[-1])
@@ -176,6 +208,11 @@ class Tests(unittest.TestCase):
             x = json.loads(lignes[0]); x["p_poste"] = 0.5            # une ligne retouchée est écartée
             (reg / "journal-bot.jsonl").write_text("\n".join([json.dumps(x)] + lignes[1:]) + "\n", encoding="utf-8")
             self.assertEqual(len(sr.scorer(reg, {"4242": 0})["retouchees"]), 1)
+            # Issues gardées dans le registre, jamais réécrites.
+            self.assertEqual(sr.enregistrer(reg, {"4242": 0}, {"n": 1}), 1)
+            self.assertEqual(sr.enregistrer(reg, {"4242": 1}, {"n": 1}), 0)
+            self.assertEqual(sr.issues_enregistrees(reg), {"4242": 0})
+            self.assertTrue((reg / "score.json").is_file())
         finally:
             ap.REGISTRE = ancien
 

@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.1.2"
+VERSION_BOT = "0.1.3"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -60,6 +60,15 @@ def noms_cartes() -> dict[str, str]:
 
 def version_skill() -> str:
     return _moteur().P["version"]
+
+
+def strates_chiffrees() -> list[int]:
+    """Strates où le skill accepte de chiffrer (décision L7 ; critère de levée : validation.md §27)."""
+    return list(_moteur().P["strates_prevision"])
+
+
+LECTURE_HORS_STRATE = os.environ.get("ALPHABET_LECTURE_HORS_STRATE", "") in ("1", "oui", "true")
+ERREURS_STRUCTURELLES = ("limitée aux strates",)  # refus qu'aucune correction de la lecture ne peut lever
 
 
 def lire_ref(rel: str) -> str:
@@ -183,6 +192,8 @@ Rends UNIQUEMENT un objet JSON :
      d'événements comparables : combien de fois, sur quelle période, dans quelle population de cas),
  "recherches": [{{"famille": "observation|discrimination|contradiction", "cartes": ["ABR@s", ...], "requete": "..."}}]
 }}
+Strates chiffrées aujourd'hui par le skill : {strates_chiffrees()} (décision L7). Choisis la strate de l'événement
+d'après le mécanisme des faits, sans la forcer : hors de ces strates, le bot pose la vue extérieure et s'arrête.
 Règles : « apparait » vise une carte ABSENTE de l'état actuel, « persiste » ou « disparait » une carte PRÉSENTE.
 Sémantiques admises : apparait → presence ou au-moins-une-fois ; persiste → presence ou continue ;
 disparait → presence ou au-moins-une-fois. Si le OUI ne correspond à aucun événement de carte, mets
@@ -393,7 +404,8 @@ async def executer_recherches(plan: dict, chercher: Chercheur, recherche_reelle:
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
                    aujourdhui: str, jours: int) -> dict:
-    """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet."""
+    """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet | hors_strate
+    | lu_non_chiffre."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
     try:
         plan = extraire_json(await llm(consigne_plan(q, recherche, aujourdhui)))
@@ -418,6 +430,11 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         return dict(trace, statut="sans_vue", motif=motif)
     trace["p_B"] = float(vue["frequence"])
     evt, evenement = evenement_depuis(plan, vue)
+    hors_strate = int(plan["evenement"]["strate"]) not in strates_chiffrees()
+    if hors_strate and not LECTURE_HORS_STRATE:
+        return dict(trace, statut="hors_strate", evenement=evenement, semantique=plan["semantique"],
+                    motif=f"strate {plan['evenement']['strate']} non chiffrée (L7 : {strates_chiffrees()}) ; "
+                          "vue extérieure enregistrée, lecture non lancée")
 
     # 2. Lecture (bras C).
     executees = await executer_recherches(plan, chercher, recherche_reelle)
@@ -437,6 +454,12 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
                          motif="aucune carte ancrée : pas d'ajustement du taux de base")
             return trace
         erreur = controle_etat(dossier, plan)
+        if not erreur and hors_strate:
+            # Lecture scellée, non chiffrée (mode LIRE ; validation.md §27) : chiffrable après une levée de L7.
+            trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
+                         statut="lu_non_chiffre",
+                         motif=f"strate {plan['evenement']['strate']} non chiffrée (L7) : lecture scellée sans chiffre")
+            return trace
         sortie = None
         if not erreur:
             sortie = appeler_moteur(dossier, dossier["etat"], evenement, plan["semantique"], aujourdhui,
@@ -451,7 +474,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
                 trace["motif"] = next((x for x in sortie.get("drapeaux", []) if x.startswith("Non estimé")), "non estimé")
             return trace
         trace["derniere_erreur"] = erreur
-        if tentative == MAX_CORRECTIONS:
+        if tentative == MAX_CORRECTIONS or any(x in erreur for x in ERREURS_STRUCTURELLES):
             break
         try:
             lecture = extraire_json(await llm(consigne_correction({k: dossier[k] for k in CLES_LECTURE}, erreur)))

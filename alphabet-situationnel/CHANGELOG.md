@@ -1,9 +1,20 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.48
+> Version : 0.7.49
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.49 — 2026-11-04 · critère de levée de L7, avant les données
+
+Décision d'auteur après le premier passage réel du bot Metaculus (deux questions sur trois en strate 6, refusées par L7).
+**Aucun paramètre touché, aucune règle de calcul changée** : `strates_prevision` reste [7].
+
+- `validation.md` §27 : une strate s'ajoute à `strates_prevision` si (1) en strate 7, sur au moins 20 questions
+  géopolitiques résolues et prospectives où B et C existent, la différence appariée de Brier C − B est ≤ 0, et (2) la
+  condition d'origine de L7 (accord mesuré, équivalents Documentés) est remplie dans la strate visée. Lectures scellées
+  hors strate 7 admises, chiffrables après une levée, jamais comptées dans la condition 1.
+- `SKILL.md` : renvoi et ligne de table.
 
 ## 0.7.48 — 2026-11-03 · fuites temporelles des tests régressifs
 

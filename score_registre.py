@@ -1,6 +1,7 @@
 """Score du registre du bot : Brier et score logarithmique des bras A, B et C sur les questions résolues.
 
     python score_registre.py --metaculus               # récupère les issues sur Metaculus (METACULUS_TOKEN)
+    python score_registre.py --metaculus --enregistrer # et les garde : registre/issues.jsonl, registre/score.json
     python score_registre.py --resolutions issues.json # {"<question_id>": 0 ou 1, ...}, hors ligne
 
 Le test qui compte est C contre B (l'apport des cartes au taux de base) et C contre A (l'alphabet contre le modèle
@@ -42,6 +43,58 @@ def issues_metaculus(ids_urls: list[tuple[str, str]]) -> dict[str, int]:
         if r in ("yes", "no"):
             out[qid] = 1 if r == "yes" else 0
     return out
+
+
+def issues_enregistrees(registre: Path) -> dict[str, int]:
+    f = registre / "issues.jsonl"
+    if not f.is_file():
+        return {}
+    return {x["question_id"]: int(x["issue"]) for x in map(json.loads, f.read_text(encoding="utf-8").splitlines()) if x}
+
+
+def enregistrer(registre: Path, nouvelles: dict[str, int], score: dict) -> int:
+    """Ajoute les issues nouvelles (jamais de réécriture d'une issue déjà notée) et remplace registre/score.json."""
+    from datetime import datetime, timezone
+    deja = issues_enregistrees(registre)
+    maintenant = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    ajout = {k: v for k, v in nouvelles.items() if k not in deja}
+    with open(registre / "issues.jsonl", "a", encoding="utf-8", newline="\n") as f:
+        for k, v in sorted(ajout.items()):
+            f.write(json.dumps({"question_id": k, "issue": v, "constatee_le": maintenant}, sort_keys=True) + "\n")
+    (registre / "score.json").write_text(json.dumps(dict(score, calcule_le=maintenant), ensure_ascii=False, indent=2) + "\n",
+                                          encoding="utf-8")
+    return len(ajout)
+
+
+def issues_autres(registre: Path) -> int:
+    """Questions hors alphabet : leur issue brute (texte de Metaculus : yes/no, une valeur, une option…) dans
+    registre/issues-autres.jsonl, jamais réécrite. Le score de ces questions reste celui de Metaculus."""
+    from datetime import datetime, timezone
+    from forecasting_tools import MetaculusClient
+    f = registre / "journal-autres.jsonl"
+    if not f.is_file():
+        return 0
+    sortie = registre / "issues-autres.jsonl"
+    deja = {json.loads(x)["question_id"] for x in sortie.read_text(encoding="utf-8").splitlines() if x.strip()} \
+        if sortie.is_file() else set()
+    client, n = MetaculusClient(), 0
+    maintenant = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    vus = set()
+    for x in map(json.loads, f.read_text(encoding="utf-8").splitlines()):
+        qid = x["question_id"]
+        if qid in deja or qid in vus:
+            continue
+        vus.add(qid)
+        try:
+            r = client.get_question_by_url(x["url"]).resolution_string
+        except Exception:
+            continue
+        if r:
+            with open(sortie, "a", encoding="utf-8", newline="\n") as g:
+                g.write(json.dumps({"question_id": qid, "type": x["type"], "issue": r, "constatee_le": maintenant},
+                                   ensure_ascii=False, sort_keys=True) + "\n")
+            n += 1
+    return n
 
 
 def brier(p: float, y: int) -> float:
@@ -98,10 +151,18 @@ if __name__ == "__main__":
     g.add_argument("--metaculus", action="store_true")
     g.add_argument("--resolutions")
     a.add_argument("--registre", default=os.environ.get("ALPHABET_REGISTRE", str(ap.REGISTRE)))
+    a.add_argument("--enregistrer", action="store_true", help="garder les issues et le score dans le registre")
     args = a.parse_args()
     reg = Path(args.registre)
+    connues = issues_enregistrees(reg)
     if args.metaculus:
-        iss = issues_metaculus([(x["question_id"], x["url"]) for x in lignes(reg)])
+        a_chercher = {(x["question_id"], x["url"]) for x in lignes(reg) if x["question_id"] not in connues}
+        iss = dict(connues, **issues_metaculus(sorted(a_chercher)))
     else:
-        iss = {str(k): int(v) for k, v in json.loads(Path(args.resolutions).read_text(encoding="utf-8")).items()}
-    print(json.dumps(scorer(reg, iss), ensure_ascii=False, indent=2))
+        iss = dict(connues, **{str(k): int(v) for k, v in json.loads(Path(args.resolutions).read_text(encoding="utf-8")).items()})
+    s = scorer(reg, iss)
+    if args.enregistrer:
+        s["issues_ajoutees"] = enregistrer(reg, iss, s)
+        if args.metaculus:
+            s["issues_autres_ajoutees"] = issues_autres(reg)
+    print(json.dumps(s, ensure_ascii=False, indent=2))

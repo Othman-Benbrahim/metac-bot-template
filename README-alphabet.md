@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.2 · skill alphabet-situationnel 0.7.48 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.1.3 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -35,6 +35,12 @@ comme le bot modèle de Metaculus : bras A.
    seuls résultats, avec les fiches des candidates et les équivalents des strates. Un état nul est admis.
 4. **Moteur** : `calculer --dossier`. Un refus est renvoyé au modèle pour correction (2 fois au plus), avec la consigne
    de descendre à f ou de retirer un mot plutôt que d'inventer. Le moteur reste juge : aucun chiffre n'est fabriqué.
+
+**Strates chiffrées (décision L7 du skill).** Le moteur ne chiffre aujourd'hui que la strate 7 (géopolitique). Hors de
+cette strate, le bot pose la vue extérieure (bras B, enregistrée), ne lance pas la lecture, et poste le bras A. Avec la
+variable `ALPHABET_LECTURE_HORS_STRATE` = `1`, il fait quand même la lecture et la scelle sans chiffre : elle pourra être
+chiffrée après une levée de L7 (critère : `alphabet-situationnel/references/validation.md` §27). Un refus structurel du
+moteur n'est jamais renvoyé en correction.
 
 Chaque question binaire laisse une ligne scellée (SHA-256) dans `registre/journal-bot.jsonl` et son dossier dans
 `registre/dossiers/`. Le workflow les enregistre dans le dépôt après chaque passage.
@@ -72,6 +78,19 @@ Au démarrage, le bot vérifie le jeton, la clé de modèle et la recherche : un
 s'arrête en rouge avec la liste des problèmes. À la fin, un **BILAN DU PASSAGE** donne les questions traitées, les
 prévisions postées, les questions binaires journalisées (bras C ou A posté) et les statuts de l'alphabet. Le passage
 échoue en rouge si des questions ont été trouvées et qu'aucune n'a pu être prévue.
+
+## Ce que garde le registre
+
+| Fichier | Contenu | Écrit par |
+|---|---|---|
+| `registre/journal-bot.jsonl` | une ligne scellée par question binaire : bras A, B et C, bras posté, statut de l'alphabet | chaque passage du bot |
+| `registre/dossiers/` | le dossier de lecture de chaque question | chaque passage du bot |
+| `registre/journal-autres.jsonl` | une ligne scellée par question non binaire (numérique, choix multiple, date, conditionnelle) : la prévision postée (bras A) et l'empreinte du raisonnement | chaque passage du bot |
+| `registre/issues-autres.jsonl` | l'issue brute de ces questions, telle que Metaculus la donne, jamais réécrite | le workflow « Score du bot alphabet » |
+| `registre/issues.jsonl` | l'issue de chaque question résolue (0 ou 1), jamais réécrite | le workflow « Score du bot alphabet », chaque lundi |
+| `registre/score.json` | Brier et score logarithmique par bras, comparaison appariée C − B et C − A | le même workflow |
+
+Ce sont ces fichiers qui serviront à calibrer : ils restent dans le dépôt, datés par l'historique Git.
 
 ## Scorer
 

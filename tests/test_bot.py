@@ -56,6 +56,31 @@ class TestsConfiguration(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("aucune question ouverte", texte)
 
+    def test_journal_autres(self):
+        import asyncio, json, tempfile
+        from datetime import datetime, timedelta, timezone
+        import alphabet_pipeline as ap
+        from forecasting_tools import MultipleChoiceQuestion, PredictedOptionList, ReasonedPrediction
+        ancien, ap.REGISTRE = ap.REGISTRE, Path(tempfile.mkdtemp(prefix="registre-autres-"))
+        try:
+            b, _ = bot(dict(BASE, EXA_API_KEY="x", ALPHABET_LLM="anthropic/claude-sonnet-5-5",
+                            ALPHABET_CHERCHEUR="smart-searcher/anthropic/claude-sonnet-5-5"))
+            q = MultipleChoiceQuestion(question_text="Who?", id_of_question=99, page_url="https://www.metaculus.com/questions/99/",
+                                       options=["a", "b"], scheduled_resolution_time=datetime.now(timezone.utc) + timedelta(days=9))
+            pred = PredictedOptionList(predicted_options=[{"option_name": "a", "probability": 0.6},
+                                                          {"option_name": "b", "probability": 0.4}])
+            rp = b._journaliser_autre(q, "choix_multiple", ReasonedPrediction(prediction_value=pred, reasoning="r"))
+            self.assertIs(rp.prediction_value, pred)            # la prévision postée est inchangée
+            x = json.loads((ap.REGISTRE / "journal-autres.jsonl").read_text(encoding="utf-8").splitlines()[0])
+            s = x.pop("sceau")
+            self.assertEqual(s, ap.sceau(x))
+            self.assertEqual(x["type"], "choix_multiple")
+            self.assertEqual(x["prediction"]["predicted_options"][0]["option_name"], "a")
+            texte, _ = ab.bilan([object()], [], True, [x])
+            self.assertIn("autres questions journalisées (bras A seul) : 1", texte)
+        finally:
+            ap.REGISTRE = ancien
+
 
 if __name__ == "__main__":
     unittest.main()
