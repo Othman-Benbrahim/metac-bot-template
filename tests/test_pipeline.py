@@ -484,6 +484,18 @@ class Tests(unittest.TestCase):
         self.assertGreater(sr._questions_sequentiel(20, 40, sr.borne_gain_C_B(), essais=20),
                            p["test_classique"]["20 points"])           # le séquentiel en demande davantage
 
+    def test_biais_C(self):                                   # 0.4.2
+        import score_registre as sr
+        apparies = [({"C": 0.2, "B": 0.1, "A": 0.1}, 0)] * 9 + [({"C": 0.2, "B": 0.1, "A": 0.1}, 1)]
+        b = sr.biais_C(apparies)
+        self.assertGreater(b["deplacement_logit_moyen"], 0)
+        self.assertEqual(b["part_C_au_dessus_de_B"], 1.0)
+        self.assertGreater(b["gain_sur_les_OUI"]["moyen"], 0)
+        self.assertLess(b["gain_sur_les_NON"]["moyen"], 0)
+        self.assertAlmostEqual(b["taux_de_OUI"], 0.1)
+        self.assertGreater(b["C_moyen"], b["taux_de_OUI"])        # B juste, C au-dessus : biais à la hausse
+        self.assertIsNone(sr.biais_C([]))
+
     def test_borne_depassee_retombe(self):                    # 0.4.1
         import score_registre as sr
         apparies = [({"C": 0.9, "B": 0.01, "A": 0.5}, 1)] * 3     # cote ×891 : borne C−B dépassée
