@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.4.2 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.5.0 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -178,6 +178,28 @@ ALPHABET_SKILL_DIR=alphabet-situationnel python -m unittest discover -s tests
 Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit du skill, à chaque modification du dépôt
 (workflow « Contrôle du bot alphabet »).
 
+## Tests rétrospectifs : corriger le biais de C
+
+Avec des multiplicateurs tous ≥ 1 (décision 9 du skill), C ne peut que monter au-dessus de B : sur une classe qui
+mêle situations avec et sans cartes, il surestime en moyenne. Pour **ce seul point**, le bot apprend une correction sur
+des questions déjà résolues (*Actions → Tests rétrospectifs de l'alphabet → Run workflow*, nombre de questions et date
+au choix ; rien n'est posté) :
+
+- **fuite limitée** : questions résolues après la date choisie (à fixer après la date de connaissance du modèle) ;
+  recherche Exa bornée à la date d'information (pages non datées écartées), et le moteur du skill refuse de lui-même
+  toute pièce postérieure ; une sonde demande d'abord au modèle s'il connaît l'issue, et la question est exclue s'il
+  la connaît ; le bras A n'est pas calculé ;
+- **sens de la fuite résiduelle** : un modèle qui devine l'issue fait paraître C meilleur ; le décalage appris est donc
+  au pire trop faible, jamais trop fort ;
+- **correction à un seul paramètre** : logit p' = logit p_C + b, apprise sur les tests rétrospectifs, évaluée hors
+  échantillon, écrite dans `registre/correction-retro.json` seulement à partir de 15 questions chiffrées et si elle
+  gagne hors échantillon ;
+- **appliquée en ombre** : chaque prévision réelle porte alors `p_C_corrige`, scellé et scoré (`C_corrige_sur_B`),
+  **jamais posté** : la règle de postage ne change pas avant la levée de L7.
+
+Coût : celui d'une question réelle par question testée (environ 7 appels au modèle, 15 recherches Exa). Exige la
+recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
+
 ## Décisions en attente
 
 - **Plafonner la valeur postée ?** Les bots les mieux classés plafonnent leurs probabilités extrêmes (par exemple
@@ -192,6 +214,8 @@ Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit 
 
 ## Historique utile
 
+- **0.5.0** : tests rétrospectifs (manuels, rien de posté) pour mesurer le biais de C et apprendre un décalage
+  correctif ; C corrigé scellé en ombre dans chaque prévision réelle et scoré à part.
 - **0.4.2** : mesure du sens unique de C (`biais_C` : déplacement moyen par rapport à B, gain séparé sur les OUI et
   sur les NON, taux de OUI réel contre B et C moyens), pour trancher sur données la décision d'auteur 9 du skill.
 - **0.4.1** : borne structurelle C − B pour le test séquentiel, mise adaptative en plus de la grille, puissance du

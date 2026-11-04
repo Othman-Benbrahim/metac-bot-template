@@ -409,6 +409,81 @@ def statuts_par_version(tout: list[dict]) -> dict:
     return out
 
 
+MIN_CORRECTION = 15   # tests rétrospectifs (C chiffré) avant d'écrire une correction
+
+
+def ajuster_decalage(paires: list[tuple[float, int]], rappel: float = 1.0) -> float:
+    """Décalage seul, b dans logit p' = logit p + b (pente fixée à 1) : la correction d'un biais global de niveau,
+    et rien d'autre. Newton à une dimension, rappel vers b = 0."""
+    b = 0.0
+    for _ in range(50):
+        g, h = rappel * b, rappel
+        for p, y in paires:
+            q = _sigmoide(_logit(p) + b)
+            g += q - y
+            h += q * (1 - q)
+        pas = g / h
+        b -= pas
+        if abs(pas) < 1e-10:
+            break
+    return b
+
+
+def lignes_retro(registre: Path) -> list[dict]:
+    f = registre / "retro.jsonl"
+    if not f.is_file():
+        return []
+    sortie = []
+    for brut in f.read_text(encoding="utf-8").splitlines():
+        if brut.strip():
+            x = json.loads(brut)
+            s = x.pop("sceau", None)
+            x["_intacte"] = s == ap.sceau(x)
+            sortie.append(x)
+    return sortie
+
+
+def scorer_retro(registre: Path) -> dict:
+    """0.5.0 : biais de C mesuré sur les tests rétrospectifs, et décalage qui le corrige (évalué hors échantillon).
+    La correction n'est proposée qu'à partir de MIN_CORRECTION questions et si elle gagne hors échantillon."""
+    tout = lignes_retro(registre)
+    intactes = [x for x in tout if x["_intacte"]]
+    statuts = {}
+    for x in intactes:
+        statuts[x.get("statut")] = statuts.get(x.get("statut"), 0) + 1
+    chiffres = [x for x in intactes if x.get("p_C") is not None and x.get("p_B") is not None and x.get("issue") in (0, 1)]
+    apparies = [({"C": ap.borner(x["p_C"]), "B": ap.borner(x["p_B"])}, x["issue"]) for x in chiffres]
+    paires_c = [(p["C"], y) for p, y in apparies]
+    sortie = {"lignes": len(tout), "retouchees": [x["question_id"] for x in tout if not x["_intacte"]],
+              "statuts": statuts, "n_chiffres": len(apparies), "biais_C": biais_C(apparies),
+              "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()) if apparies else None,
+              "correction": None}
+    if len(paires_c) >= 2:
+        b = ajuster_decalage(paires_c)
+        gains = []
+        for i, (p, y) in enumerate(paires_c):
+            bi = ajuster_decalage(paires_c[:i] + paires_c[i + 1:])
+            gains.append(gain_pair(_sigmoide(_logit(p) + bi), p, y))
+        hors = sum(gains) / len(gains)
+        sortie["correction"] = {"decalage_logit": b, "n": len(paires_c), "gain_hors_echantillon": hors,
+                                "proposee": len(paires_c) >= MIN_CORRECTION and hors > 0,
+                                "lecture": f"b < 0 : C surestime ; proposée à partir de {MIN_CORRECTION} questions et "
+                                           "si elle gagne hors échantillon ; elle ne touche que C_corrige, jamais le "
+                                           "bras posté"}
+    return sortie
+
+
+def enregistrer_correction(registre: Path, s: dict) -> bool:
+    c = s.get("correction")
+    if not c or not c["proposee"]:
+        return False
+    from datetime import datetime, timezone
+    (registre / "correction-retro.json").write_text(json.dumps(
+        {"decalage_logit": c["decalage_logit"], "n": c["n"], "gain_hors_echantillon": c["gain_hors_echantillon"],
+         "calcule_le": datetime.now(timezone.utc).isoformat(timespec="seconds")}, indent=2) + "\n", encoding="utf-8")
+    return True
+
+
 def est_essai(x: dict) -> bool:
     """Passage à blanc (publie=False) ou zone de test. Les lignes antérieures à 0.2.0 n'ont pas ces champs :
     elles comptent (le registre d'avant 0.2.0 ne contient que des passages publiés)."""
@@ -430,9 +505,12 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
     questions = une_par_question(retenues)
     resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
-    apparies = []
+    apparies, corriges = [], []
     for x in resolues:
         y = issues[x["question_id"]]
+        pcc, pb = x["bras"]["C"].get("p_C_corrige"), x["bras"]["B"].get("p")
+        if pcc is not None and pb is not None:   # 0.5.0 : C corrigé du biais, scellé, jamais posté
+            corriges.append(({"C": ap.borner(pcc), "B": ap.borner(pb)}, y))
         p = {"A": x["bras"]["A"].get("p"), "B": x["bras"]["B"].get("p"), "C": x["bras"]["C"].get("p_C")}
         p = {b: (ap.borner(v) if v is not None else None) for b, v in p.items()}
         for b, v in p.items():
@@ -453,6 +531,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
     if apparies:
         comp = {"n": len(apparies), "biais_C": biais_C(apparies), "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()),
                 "C_sur_A": comparer(apparies, "C", "A"),
+                "C_corrige_sur_B": comparer(corriges, "C", "B") if corriges else None,
                 "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "
                            "(100 × écart de ln p). Si gain_sans_pire_question change de signe, le résultat tient à une "
                            "seule question. brier_critere_L7 : le critère du skill (§27, C − B ≤ 0) ; s'il contredit le "
@@ -504,11 +583,18 @@ if __name__ == "__main__":
     g = a.add_mutually_exclusive_group(required=True)
     g.add_argument("--metaculus", action="store_true")
     g.add_argument("--resolutions")
+    g.add_argument("--retro", action="store_true", help="tests rétrospectifs : biais de C et correction")
     a.add_argument("--registre", default=os.environ.get("ALPHABET_REGISTRE", str(ap.REGISTRE)))
     a.add_argument("--enregistrer", action="store_true", help="garder les issues et le score dans le registre")
     a.add_argument("--inclure-essais", action="store_true", help="compter aussi passages à blanc et zone de test")
     args = a.parse_args()
     reg = Path(args.registre)
+    if args.retro:
+        s = scorer_retro(reg)
+        if args.enregistrer:
+            s["correction_ecrite"] = enregistrer_correction(reg, s)
+        print(json.dumps(s, ensure_ascii=False, indent=2))
+        raise SystemExit(0)
     connues = issues_enregistrees(reg)
     if args.metaculus:
         a_chercher = {(x["question_id"], x["url"]) for x in lignes(reg) if x["question_id"] not in connues}
