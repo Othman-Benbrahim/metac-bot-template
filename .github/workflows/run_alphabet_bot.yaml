@@ -9,10 +9,10 @@ on:
       max_questions:
         description: "questions nouvelles au plus pour ce passage (budget)"
         default: "3"
-  # Mode minibench, une fois par jour, au plus 3 questions nouvelles par passage (budget : ALPHABET_MAX_QUESTIONS).
-  # Les questions déjà prévues sont sautées et ne coûtent rien.
+  # Mode minibench. Contrôle toutes les 3 heures, au plus 3 questions nouvelles PAR JOUR (ALPHABET_MAX_QUESTIONS,
+  # compté dans registre/passages.jsonl). Un contrôle sans question nouvelle, ou après le plafond, ne coûte rien.
   schedule:
-    - cron: "17 9 * * *"   # chaque jour à 9 h 17 UTC
+    - cron: "17 */3 * * *"
 
 concurrency:
   group: bot-alphabet-registre   # partagé avec le score : une seule écriture du registre à la fois

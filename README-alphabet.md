@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.6 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.1.8 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -70,8 +70,10 @@ Reste à faire :
      anciens, et sa recherche par défaut passe par le proxy disparu.
 3. Onglet **Actions** : autoriser les workflows, puis **Bot alphabet situationnel → Run workflow**, mode `test_questions`.
    Vérifier sur Metaculus (compte bot) et dans `registre/`. Puis mode `minibench`.
-4. La planification est active : mode `minibench`, **une fois par jour, au plus 3 questions nouvelles par passage**
-   (champ `max_questions` au lancement manuel, ou variable `ALPHABET_MAX_QUESTIONS`). Pour la suspendre :
+4. La planification est active : mode `minibench`, **contrôle toutes les 3 heures, au plus 3 questions nouvelles par
+   jour** (variable `ALPHABET_MAX_QUESTIONS`), comptées dans `registre/passages.jsonl` avant toute prévision. Un
+   contrôle sans question, ou après le plafond, ne coûte rien. Un lancement manuel a son propre plafond (champ
+   `max_questions`), hors plafond quotidien. Pour la suspendre :
    *Actions → Bot alphabet situationnel → ⋯ → Disable workflow*.
 
 En local : `cp .env.template .env`, remplir, puis `uv run python alphabet_bot.py --mode test_questions --sans-publier`.
@@ -91,6 +93,7 @@ prévisions postées, les questions binaires journalisées (bras C ou A posté) 
 | `registre/dossiers/` | le dossier de lecture de chaque question | chaque passage du bot |
 | `registre/journal-autres.jsonl` | une ligne scellée par question non binaire (numérique, choix multiple, date, conditionnelle) : la prévision postée (bras A) et l'empreinte du raisonnement | chaque passage du bot |
 | `registre/issues-autres.jsonl` | l'issue brute de ces questions, telle que Metaculus la donne, jamais réécrite | le workflow « Score du bot alphabet » |
+| `registre/passages.jsonl` | une ligne par passage : date, déclencheur, questions trouvées et envoyées ; sert au plafond quotidien | chaque passage du bot |
 | `registre/issues.jsonl` | l'issue de chaque question résolue (0 ou 1), jamais réécrite | le workflow « Score du bot alphabet », chaque lundi |
 | `registre/score.json` | Brier et score logarithmique par bras, comparaison appariée C − B et C − A | le même workflow |
 

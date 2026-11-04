@@ -208,6 +208,27 @@ def lignes_registre() -> list[dict]:
     return [json.loads(x) for x in f.read_text(encoding="utf-8").splitlines() if x.strip()]
 
 
+def deja_envoyees_aujourdhui(jour: str | None = None) -> int:
+    """Questions envoyées aux modèles aujourd'hui (UTC), tous passages confondus, d'après registre/passages.jsonl."""
+    jour = jour or datetime.now(timezone.utc).date().isoformat()
+    f = ap.REGISTRE / "passages.jsonl"
+    if not f.is_file():
+        return 0
+    return sum(x.get("envoyees", 0) for x in map(json.loads, f.read_text(encoding="utf-8").splitlines())
+               if x.get("date") == jour)
+
+
+def noter_passage(mode: str, declencheur: str, trouvees: int, lot: list) -> None:
+    """Une ligne par passage, écrite AVANT les prévisions : une question qui échoue compte quand même dans le budget."""
+    ap.REGISTRE.mkdir(parents=True, exist_ok=True)
+    maintenant = datetime.now(timezone.utc)
+    ligne = {"date": maintenant.date().isoformat(), "horodatage": maintenant.isoformat(timespec="seconds"),
+             "mode": mode, "declencheur": declencheur, "trouvees": trouvees, "envoyees": len(lot),
+             "questions": [getattr(q, "page_url", None) for q in lot]}
+    with open(ap.REGISTRE / "passages.jsonl", "a", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True) + "\n")
+
+
 def lignes_autres() -> list[dict]:
     f = ap.REGISTRE / "journal-autres.jsonl"
     if not f.is_file():
@@ -264,17 +285,28 @@ if __name__ == "__main__":
     if args.mode == "test_questions":
         bot.skip_previously_forecasted_questions = False
     avant, avant_autres = len(lignes_registre()), len(lignes_autres())
-    # 0.1.6 (budget) : au plus ALPHABET_MAX_QUESTIONS questions nouvelles par passage, toutes cibles confondues. Le coût
-    # dépend du nombre de questions traitées ; les questions déjà prévues ne coûtent rien et ne comptent pas.
+    # 0.1.8 (budget) : passage planifié = plafond QUOTIDIEN (questions envoyées aujourd'hui, comptées dans
+    # registre/passages.jsonl, avant toute prévision) ; passage manuel = plafond du passage (champ max_questions).
+    # Un contrôle sans question nouvelle, ou après épuisement du plafond, ne coûte rien.
     plafond = int(os.environ.get("ALPHABET_MAX_QUESTIONS") or 3)
+    planifie = os.environ.get("GITHUB_EVENT_NAME") == "schedule"
+    deja = deja_envoyees_aujourdhui() if planifie else 0
+    reste = max(0, plafond - deja)
     questions = []
     for cible in cibles:
         ouvertes = client.get_all_open_questions_from_tournament(cible)
         if bot.skip_previously_forecasted_questions:
             ouvertes = [q for q in ouvertes if not q.already_forecasted]
         questions += ouvertes
-    print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond du passage : {plafond}")
-    rapports = asyncio.run(bot.forecast_questions(questions[:plafond], return_exceptions=True)) if questions else []
+    if planifie:
+        print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond quotidien : {plafond}, déjà envoyées aujourd'hui : "
+              f"{deja}, reste : {reste}")
+    else:
+        print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond du passage : {plafond}")
+    lot = questions[:reste if planifie else plafond]
+    if lot:  # un contrôle sans question n'écrit rien : pas de commit inutile toutes les 3 heures
+        noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot)
+    rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True)) if lot else []
     bot.log_report_summary(rapports, raise_errors=False)
     texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
     print(texte)
