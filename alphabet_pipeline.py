@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.2.3"
+VERSION_BOT = "0.3.0"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -43,6 +43,11 @@ FAMILLES = ("observation", "discrimination", "contradiction")
 
 Llm = Callable[[str], Awaitable[str]]
 Chercheur = Callable[[str], Awaitable[str]]
+# 0.3.0 : questions Metaculus RÉSOLUES et comparables, pour la classe de référence du bras B. Rend une liste de
+# {"titre", "issue" (yes/no), "resolue_le"} : les issues seulement, jamais les prévisions de la communauté (§26).
+Historique = Callable[[list[str], str], Awaitable[list[dict]]]
+NB_VUES = max(1, int(os.environ.get("ALPHABET_VUES") or "3"))
+MAX_HISTORIQUE = int(os.environ.get("ALPHABET_MAX_HISTORIQUE") or "15")
 
 
 # --------------------------------------------------------------------------- moteur et références
@@ -224,6 +229,8 @@ Rends UNIQUEMENT un objet JSON :
  "pourquoi_evenement": "en quoi le OUI de la question correspond à cet événement de carte",
  "recherches_reference": ["requête", ...]  (1 à {MAX_RECHERCHES_REFERENCE} requêtes pour trouver la FRÉQUENCE HISTORIQUE
      d'événements comparables : combien de fois, sur quelle période, dans quelle population de cas),
+ "recherches_historique": ["2 à 4 mots-clés en anglais", ...]  (pour retrouver des questions de prévision DÉJÀ
+     RÉSOLUES portant sur des événements du même type : acteurs ou types d'acte, sans date),
  "recherches": [{{"famille": "observation|discrimination|contradiction", "cartes": ["ABR@s", ...], "requete": "..."}}]
 }}
 Strates chiffrées aujourd'hui par le skill : {strates_chiffrees()} (décision L7). Choisis la strate de l'événement
@@ -242,8 +249,11 @@ observable, l'objet et la période, JAMAIS sur le nom d'une carte, ni sur une pr
 """
 
 
-def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: str, jours: int) -> str:
+def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: str, jours: int,
+                 historique: list[dict] | None = None) -> str:
     res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{r['resultat'][:3000]}" for i, r in enumerate(references))
+    hist = "\n".join(f"[M{i + 1}] {h['titre']} → {str(h['issue']).upper()} (résolue le {h.get('resolue_le', '?')})"
+                     for i, h in enumerate(historique or []))
     return f"""Étape 2 : la VUE EXTÉRIEURE, avant toute carte. Elle ne doit pas être choisie d'après l'état présent.
 
 QUESTION : {q.titre}
@@ -254,7 +264,13 @@ DATE D'INFORMATION : {aujourdhui} ; fenêtre : {jours} jours (jusqu'au {q.resolu
 RÉSULTATS DES RECHERCHES SUR LE TAUX DE BASE :
 {res or "(aucun)"}
 
-La fréquence se tire, au choix : (a) des résultats ci-dessus (cite [R1], [R2]…) ; (b) d'un registre historique
+QUESTIONS DE PRÉVISION DÉJÀ RÉSOLUES, d'apparence voisine (issue seulement) :
+{hist or "(aucune)"}
+
+La fréquence se tire, au choix : (a) des résultats ci-dessus (cite [R1], [R2]…) ; (a') des questions résolues
+ci-dessus, en ne gardant que celles qui comptent le MÊME type d'événement sur une fenêtre comparable (cite [M1]… ;
+fréquence = OUI / questions gardées, ramenée à la fenêtre ; moins de 5 questions gardées : ne l'utilise pas seule) ;
+(b) d'un registre historique
 notoire et vérifiable, que tu NOMMES précisément (ex. « liste des retraits de l'Union européenne depuis 1957 : un seul,
 le Royaume-Uni en 2020 »). Compte des cas sur une période, puis ramène à une fenêtre de {jours} jours. N'invente
 aucun chiffre : si aucune base honnête n'existe, mets "frequence": null et explique-le dans "motif".
@@ -264,7 +280,7 @@ Rends UNIQUEMENT un objet JSON :
  "frequence": nombre dans ]0, 1[ ou null,
  "classe_de_reference": "les cas comptés, dans le vocabulaire de la source, SANS aucun nom de carte de l'alphabet",
  "source": "base, étude ou registre nommé",
- "fondement": "recherche [Rn] | registre historique",
+ "fondement": "recherche [Rn] | questions résolues [Mn] | registre historique",
  "periode": "AAAA-AAAA",
  "disponible_le": "AAAA-MM-JJ (au plus tard le {aujourdhui})",
  "calcul": "comptage et mise à l'échelle de la fenêtre",
@@ -554,7 +570,7 @@ def controle_vue(vue: dict, aujourdhui: str | None = None) -> str | None:
 
 def fondement_memoire(vue: dict) -> bool:
     """La vue s'appuie-t-elle sur un registre cité de mémoire plutôt que sur un résultat de recherche [Rn] ?"""
-    return not re.search(r"\[R\d+\]", f"{vue.get('fondement', '')} {vue.get('calcul', '')} {vue.get('source', '')}")
+    return not re.search(r"\[[RM]\d+\]", f"{vue.get('fondement', '')} {vue.get('calcul', '')} {vue.get('source', '')}")
 
 
 def controle_etat(dossier: dict, plan: dict) -> str | None:
@@ -598,8 +614,50 @@ async def executer_recherches(plan: dict, chercher: Chercheur, recherche_reelle:
                                    chercher, recherche_reelle, MAX_RECHERCHES)
 
 
+async def chercher_historique(plan: dict, historique: Historique | None, aujourdhui: str) -> tuple[list[dict], dict]:
+    """Questions résolues comparables (issues seules), dédoublonnées, résolues AVANT la date d'information."""
+    cles = [x for x in (plan.get("recherches_historique") or []) if isinstance(x, str) and x.strip()][:4]
+    if historique is None or not cles:
+        return [], {"cles": cles, "trouvees": 0}
+    try:
+        brut = await historique(cles, aujourdhui)
+    except Exception as e:
+        return [], {"cles": cles, "trouvees": 0, "erreur": f"{type(e).__name__}: {e}"[:200]}
+    vus, garde = set(), []
+    for h in brut:
+        issue = str(h.get("issue") or "").lower()
+        if issue not in ("yes", "no") or h.get("titre") in vus or str(h.get("resolue_le") or "9999")[:10] >= aujourdhui:
+            continue
+        vus.add(h.get("titre"))
+        garde.append({"titre": h["titre"], "issue": issue, "resolue_le": str(h.get("resolue_le") or "")[:10]})
+    return garde[:MAX_HISTORIQUE], {"cles": cles, "trouvees": len(garde[:MAX_HISTORIQUE])}
+
+
+async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list[dict], llm: Llm, aujourdhui: str,
+                           jours: int) -> tuple[dict | None, dict]:
+    """0.3.0 : NB_VUES estimations indépendantes du taux de base ; on garde la vue MÉDIANE (une vraie vue, avec sa
+    source : aucun chiffre n'est fabriqué par moyenne). La dispersion est journalisée : c'est la mesure de stabilité
+    de B demandée avant toute autre décision sur B."""
+    valides, refus = [], []
+    for _ in range(NB_VUES):
+        try:
+            v = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours, hist)))
+        except Exception as e:
+            refus.append(f"illisible : {e}"[:200])
+            continue
+        m = controle_vue(v, aujourdhui)
+        (refus.append(m) if m else valides.append(v))
+    freqs = sorted(float(v["frequence"]) for v in valides)
+    suivi = {"demandees": NB_VUES, "valides": len(valides), "frequences": freqs, "refus": refus,
+             "dispersion": (freqs[-1] - freqs[0]) if len(freqs) > 1 else None}
+    if not valides:
+        return None, suivi
+    valides.sort(key=lambda v: float(v["frequence"]))
+    return valides[(len(valides) - 1) // 2], suivi    # médiane basse si nombre pair
+
+
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
-                   aujourdhui: str, jours: int) -> dict:
+                   aujourdhui: str, jours: int, historique: Historique | None = None) -> dict:
     """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet | hors_strate
     | lu_non_chiffre (et « erreur », posé par prevoir_binaire si une exception échappe)."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
@@ -624,14 +682,12 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     refs = await executer_requetes([{"requete": x} for x in (plan.get("recherches_reference") or []) if isinstance(x, str)],
                                    chercher, recherche_reelle, MAX_RECHERCHES_REFERENCE)
     trace["recherches_reference"] = [{k: v for k, v in r.items() if k != "resultat"} for r in refs]
-    try:
-        vue = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours)))
-    except Exception as e:
-        return dict(trace, statut="sans_vue", motif=f"vue extérieure illisible : {e}")
+    hist, trace["historique"] = await chercher_historique(plan, historique, aujourdhui)
+    vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours)
+    if vue is None:
+        refus = trace["vues"]["refus"]
+        return dict(trace, statut="sans_vue", motif=(refus[0] if refus else "vue extérieure absente"))
     trace["vue"] = vue
-    motif = controle_vue(vue, aujourdhui)
-    if motif:
-        return dict(trace, statut="sans_vue", motif=motif)
     trace["p_B"] = float(vue["frequence"])
     evt, evenement = evenement_depuis(plan, vue)
     hors_strate = int(plan["evenement"]["strate"]) not in strates_chiffrees()
@@ -763,14 +819,14 @@ def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
 
 async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str, llm: Llm, chercher: Chercheur,
                           recherche_reelle: bool, maintenant: datetime | None = None, publie: bool = True,
-                          mode: str | None = None) -> Resultat:
+                          mode: str | None = None, historique: Historique | None = None) -> Resultat:
     maintenant = maintenant or datetime.now(timezone.utc)
     aujourdhui = maintenant.date().isoformat()
     jours = max(1, (q.resolution - maintenant.date()).days)
     bras_a = {"p": p_A, "horodatage": maintenant.isoformat(timespec="seconds")}
     bras_a["sceau"] = sceau({"question": str(q.id), "date": aujourdhui, **bras_a})  # A scellé avant l'alphabet
     try:
-        c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours)
+        c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique)
     except Exception as e:  # 0.1.7 : une erreur de l'alphabet laisse quand même sa ligne au registre (bras A posté)
         c = {"statut": "erreur", "motif": f"{type(e).__name__} : {str(e)[:300]}"}
     poste, p_poste = choisir_bras(c, p_A)
@@ -783,7 +839,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                       "B": {"p": c.get("p_B"), **{k: vue.get(k) for k in ("classe_de_reference", "source", "fondement",
                                                                          "periode", "calcul", "disponible_le") if vue.get(k)},
                             "fondement_memoire": fondement_memoire(vue) if vue else None,
-                            "recherches": c.get("recherches_reference")},
+                            "recherches": c.get("recherches_reference"),
+                            "vues": c.get("vues"), "historique": c.get("historique")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "recherches",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},

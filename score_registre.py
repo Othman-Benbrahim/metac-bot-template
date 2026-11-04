@@ -28,6 +28,9 @@ from pathlib import Path
 import alphabet_pipeline as ap
 
 MODES_ESSAI = {"test_questions"}
+MIN_RECALIBRATION = 20                   # en dessous, une recalibration n'apprend que du bruit
+PLAFOND_ETUDIE = (0.02, 0.98)            # plafonnement de la valeur postée : étudié, PAS appliqué (décision réservée)
+RAPPEL_PLAFONNEMENT = 30                 # questions résolues à partir desquelles le score rappelle cette décision
 
 
 def lignes(registre: Path) -> list[dict]:
@@ -163,6 +166,77 @@ def comparer(apparies: list, x: str, ref: str) -> dict:
                                "accord_avec_log": (total > 0) == (sum(d_brier) < 0)}}
 
 
+def _logit(p: float) -> float:
+    p = ap.borner(p)
+    return math.log(p / (1 - p))
+
+
+def _sigmoide(z: float) -> float:
+    return 1 / (1 + math.exp(-z)) if z >= 0 else math.exp(z) / (1 + math.exp(z))
+
+
+def ajuster_recalibration(paires: list[tuple[float, int]], rappel: float = 1.0) -> tuple[float, float]:
+    """Recalibration logistique p' = σ(a·logit p + b), par Newton, avec un rappel vers l'identité (a = 1, b = 0) :
+    deux paramètres seulement, et sur peu de questions on reste près de « ne rien changer »."""
+    a, b = 1.0, 0.0
+    for _ in range(50):
+        ga, gb = rappel * (a - 1), rappel * b
+        haa, hab, hbb = rappel, 0.0, rappel
+        for p, y in paires:
+            x = _logit(p)
+            q = _sigmoide(a * x + b)
+            ga += (q - y) * x
+            gb += q - y
+            w = q * (1 - q)
+            haa += w * x * x
+            hab += w * x
+            hbb += w
+        det = haa * hbb - hab * hab
+        if det <= 1e-12:
+            break
+        da, db = (hbb * ga - hab * gb) / det, (haa * gb - hab * ga) / det
+        a, b = a - da, b - db
+        if abs(da) + abs(db) < 1e-9:
+            break
+    return a, b
+
+
+def recalibration(paires: list[tuple[float, int]]) -> dict | None:
+    """Ce que gagnerait une recalibration logistique, mesuré HORS échantillon (on ajuste sans la question, on la
+    prévoit, pour chaque question). Rapport seulement : rien n'est appliqué aux prévisions."""
+    if len(paires) < MIN_RECALIBRATION:
+        return None
+    a, b = ajuster_recalibration(paires)
+    gains = []
+    for i, (p, y) in enumerate(paires):
+        ai, bi = ajuster_recalibration(paires[:i] + paires[i + 1:])
+        gains.append(gain_pair(_sigmoide(ai * _logit(p) + bi), p, y))
+    return {"n": len(paires), "a": a, "b": b, "gain_hors_echantillon": sum(gains) / len(gains),
+            "lecture": "a < 1 : prévisions trop tranchées ; a > 1 : trop timides ; b ≠ 0 : biais vers OUI ou NON. "
+                       "Le gain hors échantillon (points de score de pair) dit si la correction vaudrait d'être "
+                       "appliquée."}
+
+
+def plafonnement_etudie(resolues: list[dict], issues: dict) -> dict | None:
+    """Ce qu'aurait changé un plafonnement de la valeur POSTÉE (étude, pas application)."""
+    bas, haut = PLAFOND_ETUDIE
+    gains, touchees = [], 0
+    for x in resolues:
+        p = x.get("p_poste")
+        if p is None:
+            continue
+        y = issues[x["question_id"]]
+        pc = min(max(p, bas), haut)
+        touchees += pc != p
+        gains.append(gain_pair(pc, p, y))
+    if not gains:
+        return None
+    return {"bornes": list(PLAFOND_ETUDIE), "n": len(gains), "questions_touchees": touchees,
+            "gain_moyen": sum(gains) / len(gains),
+            "lecture": "positif = le plafonnement aurait amélioré le score posté. Étude seulement : la décision de "
+                       "plafonner est réservée à Othman."}
+
+
 def est_essai(x: dict) -> bool:
     """Passage à blanc (publie=False) ou zone de test. Les lignes antérieures à 0.2.0 n'ont pas ces champs :
     elles comptent (le registre d'avant 0.2.0 ne contient que des passages publiés)."""
@@ -234,6 +308,11 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
     return {"lignes": len(tout), "lignes_essai_exclues": 0 if inclure_essais else sum(est_essai(x) for x in tout),
             "questions": len(questions), "resolues": len(resolues), "retouchees": retouchees,
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
+            "recalibration_etudiee": {b: recalibration(v) for b, v in par_bras.items()},
+            "plafonnement_etudie": plafonnement_etudie(resolues, issues),
+            **({"rappel": f"{len(resolues)} questions résolues : décider du plafonnement de la valeur postée "
+                          f"(voir plafonnement_etudie et README-alphabet.md, « Décisions en attente »)."}
+               if len(resolues) >= RAPPEL_PLAFONNEMENT else {}),
             "statuts_alphabet": statuts,
             "etats_nuls": {"par_nature": suivi_nuls,
                            "lecture": "structure_absente = candidates écartées sur pièces ; angle_mort = au moins une "

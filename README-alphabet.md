@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.2.3 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.3.0 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -30,8 +30,12 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
 2. **Bras A** : le modèle seul répond, comme le bot modèle de Metaculus. La réponse est scellée.
 3. **Plan** : le modèle dit quel événement correspond au OUI, ce qu'il faut chercher pour le taux de base, et ce qu'il
    faut chercher pour la lecture. Le bot vérifie le plan et le renvoie une fois s'il est mal formé.
-4. **Bras B** : le bot lance les recherches de taux de base (moteur de recherche web) ; le modèle en tire une fréquence
-   sourcée et datée, ou déclare qu'il n'y a pas de base honnête. Une source postérieure à la date du jour est refusée.
+4. **Bras B** : le bot lance les recherches de taux de base (moteur de recherche web) et retrouve sur Metaculus des
+   questions **déjà résolues** d'apparence voisine (leur issue seulement : jamais les prévisions de la communauté).
+   Le modèle en tire une fréquence sourcée et datée, ou déclare qu'il n'y a pas de base honnête ; il n'utilise les
+   questions résolues que si au moins cinq comptent le même type d'événement. Une source postérieure à la date du jour
+   est refusée. L'estimation est faite **trois fois, indépendamment** ; B est la vue médiane (une vraie vue, avec sa
+   source : aucune moyenne fabriquée), et l'écart entre les trois est enregistré.
 5. **Bras C** : le bot lance les recherches de lecture (12 au plus, les autres sont notées « non cherchées ») ; le
    modèle écrit un dossier à partir des seuls résultats ; le moteur du skill le juge et calcule. Un refus est renvoyé
    au modèle pour correction, deux fois au plus. **Le moteur reste juge : le bot ne fabrique aucun chiffre.**
@@ -69,8 +73,9 @@ taux de base B et poste A. Cette règle ne changera pas avant la levée de L7, s
 - **Lancement manuel** (*Actions → Bot alphabet situationnel → Run workflow*) : son propre plafond (champ
   `max_questions`), hors quota quotidien. Le mode `test_questions` (zone de test de Metaculus) est enregistré comme essai
   et n'entre pas dans le score.
-- Par question binaire : environ trois appels au modèle principal, quelques appels au petit modèle, jusqu'à quinze
-  recherches, plus le bras A.
+- Par question binaire : environ cinq appels au modèle principal (dont trois estimations du taux de base), quelques
+  appels au petit modèle, jusqu'à quinze recherches (doublées si une seconde source est configurée), quelques appels
+  gratuits à l'API de Metaculus, plus le bras A.
 
 ## Comment il est jugé
 
@@ -119,8 +124,9 @@ Chaque carte écartée par la lecture porte un motif, compté au score : `aucun_
   précisément ce que la comparaison C contre B éprouve.
 - **Prévisions publiées** : le plan, qui commande les recherches des bras B et C, interdit cotes de marché et
   prévisions publiées, mais la recherche peut en ramener ; le bras A n'a pas cette consigne.
-- **Stabilité du taux de base** : sur une même question, B a varié d'un passage à l'autre (2,5 % puis 8 %). Décision :
-  mesurer la dispersion sur les passages répétés avant de changer quoi que ce soit.
+- **Stabilité du taux de base** : sur une même question, B a varié d'un passage à l'autre (2,5 % puis 8 %). Depuis
+  0.3.0, B est la médiane de trois estimations et leur dispersion est mesurée à chaque question (`vues` au registre) :
+  si elle reste forte, la classe de référence sera à contraindre davantage.
 - **Commentaire public en anglais**, avec les indicateurs du moteur en français.
 
 ## Installation
@@ -136,7 +142,11 @@ plus qu'à la main, pour que deux bots ne postent pas sur le même compte.
      n'existe plus : sans clé de modèle, le bot s'arrête en rouge.
    - **Variables** : `ALPHABET_LLM` (ex. `anthropic/claude-sonnet-5-5`), `ALPHABET_PETIT_LLM`
      (ex. `anthropic/claude-haiku-5-5`), `ALPHABET_CHERCHEUR` (ex. `smart-searcher/anthropic/claude-haiku-5-5` avec
-     Exa, ou `asknews/news-summaries`) ; facultatives : `ALPHABET_MAX_QUESTIONS`, `ALPHABET_LECTURE_HORS_STRATE`.
+     Exa, ou `asknews/news-summaries`) ; facultatives : `ALPHABET_MAX_QUESTIONS`, `ALPHABET_LECTURE_HORS_STRATE`,
+     `ALPHABET_CHERCHEUR_2` (seconde source de recherche, interrogée en plus de la première, par exemple
+     `asknews/news-summaries` quand les crédits AskNews seront obtenus), `ALPHABET_VUES` (estimations du taux de
+     base, 3 par défaut ; 1 pour économiser), `ALPHABET_HISTORIQUE` (`0` pour couper la recherche des questions
+     résolues).
 3. *Actions* : lancer d'abord en mode `test_questions`, vérifier sur Metaculus et dans `registre/`.
 
 Au démarrage, le bot vérifie sa configuration et s'arrête en rouge si elle ne peut rien poster ; à la fin, il affiche
@@ -152,8 +162,23 @@ ALPHABET_SKILL_DIR=alphabet-situationnel python -m unittest discover -s tests
 Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit du skill, à chaque modification du dépôt
 (workflow « Contrôle du bot alphabet »).
 
+## Décisions en attente
+
+- **Plafonner la valeur postée ?** Les bots les mieux classés plafonnent leurs probabilités extrêmes (par exemple
+  0,02–0,98) : avec un score log, un 0,001 qui se trompe coûte très cher. Le registre garde 0,001–0,999 pour mesurer ;
+  la question est de plafonner **ce qui est envoyé**. Décision reportée par Othman après des tests de prédiction
+  suffisants : le score étudie chaque semaine ce qu'aurait changé le plafonnement (`plafonnement_etudie`) et affiche
+  un **rappel** à partir de 30 questions résolues.
+- **Recalibrer ?** Le score calcule chaque semaine, à partir de 20 questions résolues par bras, ce que gagnerait une
+  recalibration logistique (deux paramètres, mesurée hors échantillon : `recalibration_etudiee`). Rien n'est appliqué :
+  c'est la méthode prévue pour calibrer l'alphabet, quand les données le permettront.
+
 ## Historique utile
 
+- **0.3.0** : taux de base estimé trois fois (vue médiane, dispersion mesurée) ; questions Metaculus résolues comme
+  classe de référence possible (issues seulement) ; seconde source de recherche facultative ; étude hebdomadaire de
+  la recalibration et du plafonnement, avec rappel. Principes inspirés des constats publiés sur les meilleurs bots,
+  adaptés au dispositif à trois bras, sans reprise de code.
 - **0.2.3** : `dynamique_observee` dans les états nuls (matériau pour une éventuelle carte manquante, hors calcul).
 - **0.2.2** : relance ciblée des angles morts avant d'accepter un état nul ; nature de l'état nul au registre et au
   score ; plafond porté à 5 questions par jour ; le Brier apparié reste le critère L7 du skill.

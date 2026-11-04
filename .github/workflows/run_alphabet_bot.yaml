@@ -51,6 +51,9 @@ jobs:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
           ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
+          ALPHABET_CHERCHEUR_2: ${{ vars.ALPHABET_CHERCHEUR_2 }}
+          ALPHABET_VUES: ${{ vars.ALPHABET_VUES }}
+          ALPHABET_HISTORIQUE: ${{ vars.ALPHABET_HISTORIQUE }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_LECTURE_HORS_STRATE: ${{ vars.ALPHABET_LECTURE_HORS_STRATE }}
           ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '5' }}

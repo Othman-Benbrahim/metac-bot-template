@@ -20,6 +20,7 @@ import hashlib
 from datetime import datetime, timezone
 
 from forecasting_tools import (
+    ApiFilter,
     AskNewsSearcher,
     BinaryQuestion,
     GeneralLlm,
@@ -49,10 +50,11 @@ def echelle_explicite(question) -> str:
 class AlphabetBot(FallTemplateBot2026):
     """Bras A sur tout ; alphabet (bras B et C) sur les binaires."""
 
-    def _genre_chercheur(self) -> tuple[str, object]:
+    def _genre_chercheur(self, r: object = "__principal__") -> tuple[str, object]:
         """0.2.0 (audit, B9) : UNE classification du chercheur, partagée par _recherche_reelle et _chercher.
         Rend (genre, chercheur) ; genre : asknews | smart_searcher | llm_web | memoire."""
-        r = self.get_llm("researcher")
+        if r == "__principal__":
+            r = self.get_llm("researcher")
         if isinstance(r, str) and r.startswith("asknews/"):
             return "asknews", r
         if isinstance(r, str) and r.startswith("smart-searcher"):
@@ -68,9 +70,44 @@ class AlphabetBot(FallTemplateBot2026):
     def _recherche_reelle(self) -> bool:
         return self._genre_chercheur()[0] != "memoire"
 
+    def _second_chercheur(self) -> tuple[str, object] | None:
+        """0.3.0 : une seconde source de recherche facultative (ALPHABET_CHERCHEUR_2), interrogée en plus de la
+        première : plusieurs sources valent mieux qu'une, aucune n'étant meilleure seule. Ignorée si elle ne cherche
+        pas vraiment sur le web."""
+        r2 = os.environ.get("ALPHABET_CHERCHEUR_2")
+        if not r2:
+            return None
+        g = self._genre_chercheur(r2)
+        return g if g[0] != "memoire" else None
+
     async def _chercher(self, requete: str) -> str:
-        """Une requête du plan, par le même chercheur que la recherche générale du bot modèle."""
-        genre, r = self._genre_chercheur()
+        """Une requête du plan : la source principale, et la seconde si elle est configurée."""
+        texte = await self._chercher_avec(self._genre_chercheur(), requete)
+        second = self._second_chercheur()
+        if second is None:
+            return texte
+        try:
+            texte2 = await self._chercher_avec(second, requete)
+        except Exception as e:  # la seconde source n'est qu'un complément
+            texte2 = f"(seconde source indisponible : {type(e).__name__})"
+        return f"{texte}\n\n--- SECONDE SOURCE ---\n{texte2}"
+
+    async def _historique(self, cles: list[str], aujourdhui: str) -> list[dict]:
+        """0.3.0 : questions binaires RÉSOLUES de Metaculus, cherchées par mots-clés. Rend les issues seulement :
+        ni prévision de la communauté ni score ne sont lus (§26)."""
+        client, sortie = MetaculusClient(), []
+        avant = datetime.fromisoformat(aujourdhui).replace(tzinfo=timezone.utc)
+        for cle in cles:
+            f = ApiFilter(allowed_types=["binary"], allowed_statuses=["resolved"], scheduled_resolve_time_lt=avant,
+                          other_url_parameters={"search": cle})
+            for q in (await client.get_questions_matching_filter(f))[:10]:
+                fin = q.actual_resolution_time or q.scheduled_resolution_time
+                sortie.append({"titre": q.question_text, "issue": q.resolution_string,
+                               "resolue_le": fin.date().isoformat() if fin else None})
+        return sortie
+
+    async def _chercher_avec(self, chercheur: tuple[str, object], requete: str) -> str:
+        genre, r = chercheur
         if genre == "asknews":
             return await AskNewsSearcher().call_preconfigured_version(r, requete)
         if genre == "smart_searcher":
@@ -152,7 +189,9 @@ class AlphabetBot(FallTemplateBot2026):
         try:
             r = await ap.prevoir_binaire(q, research, a.prediction_value, a.reasoning, self._llm, self._chercher,
                                          self._recherche_reelle(), publie=bool(self.publish_reports_to_metaculus),
-                                         mode=os.environ.get("ALPHABET_MODE"))
+                                         mode=os.environ.get("ALPHABET_MODE"),
+                                         historique=None if os.environ.get("ALPHABET_HISTORIQUE") == "0"
+                                         else self._historique)
         except Exception as e:  # l'alphabet ne doit jamais empêcher de répondre : bras A, signalé
             logger.exception("alphabet : échec sur %s", question.page_url)
             return ReasonedPrediction(prediction_value=a.prediction_value,
@@ -198,6 +237,14 @@ def problemes(bot: AlphabetBot, env=os.environ) -> tuple[list[str], list[str]]:
     if nom.startswith("asknews/") and not (env.get("ASKNEWS_API_KEY")
                                           or (env.get("ASKNEWS_CLIENT_ID") and env.get("ASKNEWS_SECRET"))):
         bloquants.append("ALPHABET_CHERCHEUR utilise AskNews mais aucune clé AskNews n'est présente.")
+    r2 = env.get("ALPHABET_CHERCHEUR_2") or ""
+    if r2.startswith("smart-searcher") and not env.get("EXA_API_KEY"):
+        bloquants.append("ALPHABET_CHERCHEUR_2 utilise Exa (smart-searcher) mais le secret EXA_API_KEY est absent.")
+    if r2.startswith("asknews/") and not (env.get("ASKNEWS_API_KEY")
+                                         or (env.get("ASKNEWS_CLIENT_ID") and env.get("ASKNEWS_SECRET"))):
+        bloquants.append("ALPHABET_CHERCHEUR_2 utilise AskNews mais aucune clé AskNews n'est présente.")
+    if r2 and bot._second_chercheur() is None:
+        avertissements.append(f"ALPHABET_CHERCHEUR_2 = « {r2} » ne cherche pas sur le web : ignoré.")
     if not bot._recherche_reelle():
         avertissements.append(f"chercheur « {nom} » : pas de vraie recherche web ; les requêtes de l'alphabet seront "
                               "marquées non exécutées et les lectures resteront Spéculatives.")
