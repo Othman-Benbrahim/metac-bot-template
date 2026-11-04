@@ -125,6 +125,17 @@ class TestsConfiguration(unittest.TestCase):
         finally:
             ap.REGISTRE = ancien
 
+    def test_genre_chercheur(self):                                # 0.2.0 (audit, B9)
+        cas = {"smart-searcher/anthropic/claude-haiku-5-5": ("smart_searcher", True),
+               "asknews/news-summaries": ("asknews", True),
+               "perplexity/sonar": ("llm_web", True),
+               "anthropic/claude-sonnet-5-5": ("memoire", False)}
+        for chercheur, (genre, reelle) in cas.items():
+            env = dict(BASE, EXA_API_KEY="x", ALPHABET_LLM="anthropic/claude-sonnet-5-5", ALPHABET_CHERCHEUR=chercheur)
+            b, _ = bot(env)
+            self.assertEqual(b._genre_chercheur()[0], genre, chercheur)
+            self.assertEqual(b._recherche_reelle(), reelle, chercheur)   # classification et exécution alignées
+
 
 if __name__ == "__main__":
     unittest.main()

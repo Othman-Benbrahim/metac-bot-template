@@ -7,6 +7,10 @@
 Le test qui compte est C contre B (l'apport des cartes au taux de base) et C contre A (l'alphabet contre le modèle
 seul), sur les mêmes questions : seules les questions où les trois bras existent entrent dans la comparaison appariée.
 Chaque ligne est vérifiée (sceau) avant d'être scorée ; une ligne retouchée est écartée et signalée.
+
+0.2.0 (audit) : une QUESTION compte une fois (dernière ligne publiée) ; les passages à blanc et la zone de test sont
+exclus par défaut (--inclure-essais pour les compter) ; chaque probabilité est bornée à [0,001 ; 0,999], les bornes
+du bot ; une issue introuvable est signalée, jamais avalée en silence.
 """
 from __future__ import annotations
 
@@ -17,6 +21,8 @@ import os
 from pathlib import Path
 
 import alphabet_pipeline as ap
+
+MODES_ESSAI = {"test_questions"}
 
 
 def lignes(registre: Path) -> list[dict]:
@@ -31,13 +37,29 @@ def lignes(registre: Path) -> list[dict]:
     return sortie
 
 
-def issues_metaculus(ids_urls: list[tuple[str, str]]) -> dict[str, int]:
+def question_metaculus(client, qid: str, url: str):
+    """0.2.0 (audit, B2) : une URL de groupe rend une LISTE de sous-questions ; on garde celle dont l'identifiant
+    est celui de la ligne. Rend None si aucune ne correspond."""
+    q = client.get_question_by_url(url, group_question_mode="unpack_subquestions")
+    candidates = q if isinstance(q, list) else [q]
+    for c in candidates:
+        if str(getattr(c, "id_of_question", None)) == str(qid):
+            return c
+    return candidates[0] if len(candidates) == 1 else None
+
+
+def issues_metaculus(ids_urls: list[tuple[str, str]], erreurs: list | None = None) -> dict[str, int]:
     from forecasting_tools import MetaculusClient
     client, out = MetaculusClient(), {}
+    erreurs = [] if erreurs is None else erreurs
     for qid, url in ids_urls:
         try:
-            q = client.get_question_by_url(url)
-        except Exception:
+            q = question_metaculus(client, qid, url)
+        except Exception as e:  # signalée, pas avalée
+            erreurs.append({"question_id": qid, "url": url, "erreur": f"{type(e).__name__}: {e}"[:300]})
+            continue
+        if q is None:
+            erreurs.append({"question_id": qid, "url": url, "erreur": "aucune sous-question à cet identifiant"})
             continue
         r = (q.resolution_string or "").lower()
         if r in ("yes", "no"):
@@ -66,7 +88,7 @@ def enregistrer(registre: Path, nouvelles: dict[str, int], score: dict) -> int:
     return len(ajout)
 
 
-def issues_autres(registre: Path) -> int:
+def issues_autres(registre: Path, erreurs: list | None = None) -> int:
     """Questions hors alphabet : leur issue brute (texte de Metaculus : yes/no, une valeur, une option…) dans
     registre/issues-autres.jsonl, jamais réécrite. Le score de ces questions reste celui de Metaculus."""
     from datetime import datetime, timezone
@@ -78,6 +100,7 @@ def issues_autres(registre: Path) -> int:
     deja = {json.loads(x)["question_id"] for x in sortie.read_text(encoding="utf-8").splitlines() if x.strip()} \
         if sortie.is_file() else set()
     client, n = MetaculusClient(), 0
+    erreurs = [] if erreurs is None else erreurs
     maintenant = datetime.now(timezone.utc).isoformat(timespec="seconds")
     vus = set()
     for x in map(json.loads, f.read_text(encoding="utf-8").splitlines()):
@@ -86,9 +109,11 @@ def issues_autres(registre: Path) -> int:
             continue
         vus.add(qid)
         try:
-            r = client.get_question_by_url(x["url"]).resolution_string
-        except Exception:
+            q = question_metaculus(client, qid, x["url"])
+        except Exception as e:
+            erreurs.append({"question_id": qid, "url": x["url"], "erreur": f"{type(e).__name__}: {e}"[:300]})
             continue
+        r = q.resolution_string if q is not None else None
         if r:
             with open(sortie, "a", encoding="utf-8", newline="\n") as g:
                 g.write(json.dumps({"question_id": qid, "type": x["type"], "issue": r, "constatee_le": maintenant},
@@ -102,19 +127,36 @@ def brier(p: float, y: int) -> float:
 
 
 def log_score(p: float, y: int) -> float:
-    p = min(max(p, 1e-6), 1 - 1e-6)
+    p = ap.borner(p)
     return -math.log(p if y == 1 else 1 - p)
 
 
-def scorer(registre: Path, issues: dict[str, int]) -> dict:
+def est_essai(x: dict) -> bool:
+    """Passage à blanc (publie=False) ou zone de test. Les lignes antérieures à 0.2.0 n'ont pas ces champs :
+    elles comptent (le registre d'avant 0.2.0 ne contient que des passages publiés)."""
+    return x.get("publie") is False or x.get("mode") in MODES_ESSAI
+
+
+def une_par_question(tout: list[dict]) -> list[dict]:
+    """0.2.0 (audit, B4) : la dernière ligne intacte de chaque question (ordre du journal = ordre chronologique)."""
+    derniere = {}
+    for x in tout:
+        derniere[x["question_id"]] = x
+    return list(derniere.values())
+
+
+def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False) -> dict:
     tout = lignes(registre)
     retouchees = [x["question_id"] for x in tout if not x["_intacte"]]
-    resolues = [x for x in tout if x["_intacte"] and x["question_id"] in issues]
+    retenues = [x for x in tout if x["_intacte"] and (inclure_essais or not est_essai(x))]
+    questions = une_par_question(retenues)
+    resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
     apparies = []
     for x in resolues:
         y = issues[x["question_id"]]
         p = {"A": x["bras"]["A"].get("p"), "B": x["bras"]["B"].get("p"), "C": x["bras"]["C"].get("p_C")}
+        p = {b: (ap.borner(v) if v is not None else None) for b, v in p.items()}
         for b, v in p.items():
             if v is not None:
                 par_bras[b].append((v, y))
@@ -136,18 +178,19 @@ def scorer(registre: Path, issues: dict[str, int]) -> dict:
                 "C_moins_A_brier": sum(d_ca) / len(d_ca), "C_bat_A": sum(d < 0 for d in d_ca),
                 "lecture": "négatif = C meilleur ; sur moins de quelques dizaines de questions, aucune conclusion"}
     statuts, motifs = {}, {}
-    for x in tout:
+    for x in questions:
         s = x["bras"]["C"].get("statut")
         statuts[s] = statuts.get(s, 0) + 1
         for cat in (x["bras"]["C"].get("rejets_classes") or {}).values():
             motifs[cat] = motifs.get(cat, 0) + 1
-    return {"lignes": len(tout), "resolues": len(resolues), "retouchees": retouchees,
+    return {"lignes": len(tout), "lignes_essai_exclues": 0 if inclure_essais else sum(est_essai(x) for x in tout),
+            "questions": len(questions), "resolues": len(resolues), "retouchees": retouchees,
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "statuts_alphabet": statuts,
             "motifs_rejet": {"compte": motifs,
                              "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; "
                                         "contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"},
-            "bras_poste": {b: sum(x["bras_poste"] == b for x in tout) for b in "ABC"}}
+            "bras_poste": {b: sum(x["bras_poste"] == b for x in questions) for b in "ABC"}}
 
 
 if __name__ == "__main__":
@@ -157,17 +200,21 @@ if __name__ == "__main__":
     g.add_argument("--resolutions")
     a.add_argument("--registre", default=os.environ.get("ALPHABET_REGISTRE", str(ap.REGISTRE)))
     a.add_argument("--enregistrer", action="store_true", help="garder les issues et le score dans le registre")
+    a.add_argument("--inclure-essais", action="store_true", help="compter aussi passages à blanc et zone de test")
     args = a.parse_args()
     reg = Path(args.registre)
     connues = issues_enregistrees(reg)
     if args.metaculus:
         a_chercher = {(x["question_id"], x["url"]) for x in lignes(reg) if x["question_id"] not in connues}
-        iss = dict(connues, **issues_metaculus(sorted(a_chercher)))
+        erreurs = []
+        iss = dict(connues, **issues_metaculus(sorted(a_chercher), erreurs))
     else:
         iss = dict(connues, **{str(k): int(v) for k, v in json.loads(Path(args.resolutions).read_text(encoding="utf-8")).items()})
-    s = scorer(reg, iss)
+    s = scorer(reg, iss, args.inclure_essais)
     if args.enregistrer:
         s["issues_ajoutees"] = enregistrer(reg, iss, s)
         if args.metaculus:
-            s["issues_autres_ajoutees"] = issues_autres(reg)
+            s["issues_autres_ajoutees"] = issues_autres(reg, erreurs)
+    if args.metaculus:
+        s["issues_introuvables"] = erreurs
     print(json.dumps(s, ensure_ascii=False, indent=2))

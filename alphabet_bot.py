@@ -49,25 +49,39 @@ def echelle_explicite(question) -> str:
 class AlphabetBot(FallTemplateBot2026):
     """Bras A sur tout ; alphabet (bras B et C) sur les binaires."""
 
-    def _recherche_reelle(self) -> bool:
+    def _genre_chercheur(self) -> tuple[str, object]:
+        """0.2.0 (audit, B9) : UNE classification du chercheur, partagée par _recherche_reelle et _chercher.
+        Rend (genre, chercheur) ; genre : asknews | smart_searcher | llm_web | memoire."""
         r = self.get_llm("researcher")
-        nom = GeneralLlm.to_model_name(r) if isinstance(r, GeneralLlm) else str(r or "")
-        # Un modèle « search » (gpt-4o-search-preview, perplexity/sonar…) interroge le web ; un modèle seul répond de mémoire.
-        return any(k in nom for k in ("asknews/", "smart-searcher", "perplexity", "sonar", "search"))
+        if isinstance(r, str) and r.startswith("asknews/"):
+            return "asknews", r
+        if isinstance(r, str) and r.startswith("smart-searcher"):
+            return "smart_searcher", r
+        if isinstance(r, str) and r and r not in ("None", "no_research"):
+            r = GeneralLlm(model=r, temperature=0.1)          # ex. « perplexity/sonar » donné en variable
+        if isinstance(r, GeneralLlm):
+            nom = GeneralLlm.to_model_name(r)
+            # Un modèle « search » (gpt-4o-search-preview, perplexity/sonar…) interroge le web lui-même.
+            return ("llm_web" if any(k in nom for k in ("perplexity", "sonar", "search")) else "memoire"), r
+        return "memoire", None
+
+    def _recherche_reelle(self) -> bool:
+        return self._genre_chercheur()[0] != "memoire"
 
     async def _chercher(self, requete: str) -> str:
         """Une requête du plan, par le même chercheur que la recherche générale du bot modèle."""
-        r = self.get_llm("researcher")
-        if isinstance(r, GeneralLlm):
-            return await r.invoke(f"Find recent factual news (no forecasts, no market odds) about: {requete}")
-        if isinstance(r, str) and r.startswith("asknews/"):
+        genre, r = self._genre_chercheur()
+        if genre == "asknews":
             return await AskNewsSearcher().call_preconfigured_version(r, requete)
-        if isinstance(r, str) and r.startswith("smart-searcher"):
+        if genre == "smart_searcher":
             s = SmartSearcher(model=r.removeprefix("smart-searcher/"), temperature=0, num_searches_to_run=1,
                               num_sites_per_search=6, use_advanced_filters=False)
             return await s.invoke(requete)
+        if genre == "llm_web":
+            return await r.invoke(f"Find recent factual news (no forecasts, no market odds) about: {requete}")
         # Sans moteur de recherche : réponse du modèle de mémoire, consignée comme requête non exécutée.
-        return await self.get_llm("default", "llm").invoke(f"From what you know, list dated facts about: {requete}")
+        modele = r if isinstance(r, GeneralLlm) else self.get_llm("default", "llm")
+        return await modele.invoke(f"From what you know, list dated facts about: {requete}")
 
     def _journaliser_autre(self, question, genre: str, rp: ReasonedPrediction):
         """Questions hors alphabet (numériques, choix multiples, dates, conditionnelles) : bras A seul, journalisé et scellé
@@ -84,6 +98,7 @@ class AlphabetBot(FallTemplateBot2026):
                      "horodatage": maintenant.isoformat(timespec="seconds"),
                      "resolution_prevue": fin.astimezone(timezone.utc).date().isoformat() if fin else None,
                      "bras_poste": "A", "prediction": valeur,
+                     "publie": bool(self.publish_reports_to_metaculus), "mode": os.environ.get("ALPHABET_MODE"),
                      "raisonnement_sha256": hashlib.sha256((rp.reasoning or "").encode("utf-8")).hexdigest()}
             ligne["sceau"] = ap.sceau(ligne)
             ap.REGISTRE.mkdir(parents=True, exist_ok=True)
@@ -136,7 +151,8 @@ class AlphabetBot(FallTemplateBot2026):
                         resolution=fin.astimezone(timezone.utc).date())
         try:
             r = await ap.prevoir_binaire(q, research, a.prediction_value, a.reasoning, self._llm, self._chercher,
-                                         self._recherche_reelle())
+                                         self._recherche_reelle(), publie=bool(self.publish_reports_to_metaculus),
+                                         mode=os.environ.get("ALPHABET_MODE"))
         except Exception as e:  # l'alphabet ne doit jamais empêcher de répondre : bras A, signalé
             logger.exception("alphabet : échec sur %s", question.page_url)
             return ReasonedPrediction(prediction_value=a.prediction_value,
@@ -268,6 +284,7 @@ if __name__ == "__main__":
     p.add_argument("--mode", choices=["tournament", "minibench", "test_questions"], default="test_questions")
     p.add_argument("--sans-publier", action="store_true", help="calculer et journaliser sans poster sur Metaculus")
     args = p.parse_args()
+    os.environ["ALPHABET_MODE"] = args.mode  # 0.2.0 (audit, B5/rec. 11) : chaque ligne du registre porte son mode
     check_environment(strict=True)  # jeton Metaculus et clé de modèle, sinon arrêt en rouge
     bot = construire(publier=not args.sans_publier)
     bloquants, avertissements = problemes(bot)
@@ -297,7 +314,8 @@ if __name__ == "__main__":
         ouvertes = client.get_all_open_questions_from_tournament(cible)
         if bot.skip_previously_forecasted_questions:
             ouvertes = [q for q in ouvertes if not q.already_forecasted]
-        questions += ouvertes
+        vus = {getattr(q, "id_of_question", None) or q.page_url for q in questions}
+        questions += [q for q in ouvertes if (getattr(q, "id_of_question", None) or q.page_url) not in vus]
     if planifie:
         print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond quotidien : {plafond}, déjà envoyées aujourd'hui : "
               f"{deja}, reste : {reste}")

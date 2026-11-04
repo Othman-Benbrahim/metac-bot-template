@@ -4,6 +4,7 @@
 """
 import asyncio
 import copy
+import dataclasses
 import json
 import os
 import sys
@@ -75,10 +76,10 @@ async def chercher(req):
     return f"Résultat factuel daté pour : {req}"
 
 
-def lancer(reponses, p_A=0.3, reelle=True):
+def lancer(reponses, p_A=0.3, reelle=True, q=Q, publie=True, mode="minibench", maintenant=MAINTENANT):
     llm = LlmSimule(reponses)
-    r = asyncio.run(ap.prevoir_binaire(Q, "recherche générale", p_A, "raisonnement du modèle seul", llm, chercher,
-                                       reelle, MAINTENANT))
+    r = asyncio.run(ap.prevoir_binaire(q, "recherche générale", p_A, "raisonnement du modèle seul", llm, chercher,
+                                       reelle, maintenant, publie=publie, mode=mode))
     return r, llm
 
 
@@ -261,11 +262,13 @@ class Tests(unittest.TestCase):
         import score_registre as sr
         reg = Path(tempfile.mkdtemp(prefix="registre-score-"))
         ancien, ap.REGISTRE = ap.REGISTRE, reg
+        q1, q2, q3 = (dataclasses.replace(Q, id=i, url=f"https://www.metaculus.com/questions/{i}/") for i in (1, 2, 3))
         try:
-            lancer([PLAN, vue(0.2), lecture()])
-            lancer([PLAN, vue(0.05), lecture_vide()])
-            lancer([dict(PLAN, evenement=None)])
-            s = sr.scorer(reg, {"4242": 0})
+            lancer([PLAN, vue(0.2), lecture()], q=q1)
+            lancer([PLAN, vue(0.05), lecture_vide()], q=q2)
+            lancer([dict(PLAN, evenement=None)], q=q3)
+            issues = {"1": 0, "2": 0, "3": 1}
+            s = sr.scorer(reg, issues)
             self.assertEqual(s["resolues"], 3)
             self.assertEqual(s["apparie_ABC"]["n"], 1)               # seule la ligne aux trois bras est appariée
             self.assertEqual(s["bras_poste"], {"A": 1, "B": 1, "C": 1})
@@ -273,7 +276,7 @@ class Tests(unittest.TestCase):
             lignes = (reg / "journal-bot.jsonl").read_text(encoding="utf-8").splitlines()
             x = json.loads(lignes[0]); x["p_poste"] = 0.5            # une ligne retouchée est écartée
             (reg / "journal-bot.jsonl").write_text("\n".join([json.dumps(x)] + lignes[1:]) + "\n", encoding="utf-8")
-            self.assertEqual(len(sr.scorer(reg, {"4242": 0})["retouchees"]), 1)
+            self.assertEqual(len(sr.scorer(reg, issues)["retouchees"]), 1)
             # Issues gardées dans le registre, jamais réécrites.
             self.assertEqual(sr.enregistrer(reg, {"4242": 0}, {"n": 1}), 1)
             self.assertEqual(sr.enregistrer(reg, {"4242": 1}, {"n": 1}), 0)
@@ -282,6 +285,94 @@ class Tests(unittest.TestCase):
         finally:
             ap.REGISTRE = ancien
 
+    # --- 0.2.0 : correctifs de l'audit ---
+
+    def test_bornes_api(self):                                    # B1
+        self.assertEqual(ap.borner(0.0004), 0.001)
+        self.assertEqual(ap.borner(0.9999), 0.999)
+        self.assertEqual(ap.borner(0.004), 0.004)                 # n'est plus écrasé à 0,01
+        r, _ = lancer([PLAN, vue(0.004), lecture_vide()])         # f_B < 0,01 : B posté tel quel
+        self.assertEqual(r.bras_poste, "B")
+        self.assertAlmostEqual(r.p_poste, 0.004)
+
+    def test_une_ligne_par_question(self):                        # B4
+        import score_registre as sr
+        reg = Path(tempfile.mkdtemp(prefix="registre-dedup-"))
+        ancien, ap.REGISTRE = ap.REGISTRE, reg
+        try:
+            lancer([dict(PLAN, evenement=None)], p_A=0.9)
+            lancer([dict(PLAN, evenement=None)], p_A=0.2, maintenant=MAINTENANT.replace(hour=19))
+            lancer([dict(PLAN, evenement=None)], p_A=0.7, publie=False)              # passage à blanc
+            lancer([dict(PLAN, evenement=None)], p_A=0.6, mode="test_questions")     # zone de test
+            s = sr.scorer(reg, {"4242": 0})
+            self.assertEqual((s["lignes"], s["lignes_essai_exclues"], s["questions"]), (4, 2, 1))
+            self.assertAlmostEqual(s["bras"]["A"]["brier"], 0.04)                    # la dernière publiée : 0,2
+            s = sr.scorer(reg, {"4242": 0}, inclure_essais=True)
+            self.assertAlmostEqual(s["bras"]["A"]["brier"], 0.36)                    # la dernière tout court : 0,6
+        finally:
+            ap.REGISTRE = ancien
+
+    def test_publie_et_mode(self):                                # B5
+        r, _ = lancer([PLAN, vue(0.2), lecture()], publie=False, mode="test_questions")
+        self.assertIs(r.ligne["publie"], False)
+        self.assertEqual(r.ligne["mode"], "test_questions")
+        self.assertIn("dry run, not posted", r.commentaire)
+        self.assertNotIn("Posted arm:", r.commentaire)
+
+    def test_issues_sous_questions(self):                         # B2
+        import score_registre as sr
+
+        class Sq:
+            def __init__(self, i, res):
+                self.id_of_question, self.resolution_string = i, res
+
+        class Client:
+            def __init__(self):
+                self.appels = []
+
+            def get_question_by_url(self, url, group_question_mode=None):
+                self.appels.append(group_question_mode)
+                if "panne" in url:
+                    raise RuntimeError("404")
+                return [Sq(10, "no"), Sq(11, "yes")]
+
+        c = Client()
+        self.assertEqual(sr.question_metaculus(c, "11", "https://x/groupe").resolution_string, "yes")
+        self.assertEqual(c.appels, ["unpack_subquestions"])
+        self.assertIsNone(sr.question_metaculus(c, "12", "https://x/groupe"))
+
+    def test_requetes_coupees_consignees(self):                   # B10
+        reqs = [{"famille": "f", "cartes": ["POL@7"], "requete": f"r{i}"} for i in range(5)]
+        out = asyncio.run(ap.executer_requetes(reqs, chercher, True, 3))
+        self.assertEqual(len(out), 5)
+        self.assertEqual([x.get("non_lancee") for x in out], [None, None, None, "plafond", "plafond"])
+        self.assertFalse(any(x["executee"] for x in out[3:]))
+        self.assertIn("non_cherchee", ap.CATEGORIES_REJET)
+
+    def test_temporalite(self):                                   # B11
+        self.assertEqual(ap.temporalite_de({}), "generique")
+        self.assertEqual(ap.temporalite_de({"temporalite": "programmee"}), "programmee")
+        self.assertEqual(ap.temporalite_de({"temporalite": "n'importe"}), "generique")
+        r, _ = lancer([dict(PLAN, temporalite="programmee"), vue(0.2), lecture()])
+        self.assertNotEqual(r.ligne["bras"]["C"]["statut"], "estime")   # sans référence propre : non estimé
+
+    def test_vue_date_information(self):                          # B6
+        self.assertIsNone(ap.controle_vue(vue(), "2026-11-03"))
+        self.assertIn("postérieur", ap.controle_vue(dict(vue(), disponible_le="2027-01-01"), "2026-11-03"))
+        self.assertIn("illisible", ap.controle_vue(dict(vue(), disponible_le="récent"), "2026-11-03"))
+        self.assertFalse(ap.fondement_memoire(vue()))
+        self.assertTrue(ap.fondement_memoire(dict(vue(), fondement="de mémoire", calcul="env. 20 %")))
+
+    def test_dossiers_horodates(self):                            # B8
+        reg = Path(tempfile.mkdtemp(prefix="registre-dossiers-"))
+        ancien, ap.REGISTRE = ap.REGISTRE, reg
+        try:
+            r1, _ = lancer([PLAN, vue(0.2), lecture()])
+            r2, _ = lancer([PLAN, vue(0.2), lecture()], maintenant=MAINTENANT.replace(hour=21))
+            self.assertNotEqual(r1.ligne["dossier_fichier"], r2.ligne["dossier_fichier"])
+            self.assertEqual(len(list((reg / "dossiers").iterdir())), 2)
+        finally:
+            ap.REGISTRE = ancien
 
 if __name__ == "__main__":
     unittest.main()

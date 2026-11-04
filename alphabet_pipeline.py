@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.1.8"
+VERSION_BOT = "0.2.0"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -68,7 +68,7 @@ def strates_chiffrees() -> list[int]:
 
 
 POIDS = {"F": 3, "M": 2, "f": 1}
-CATEGORIES_REJET = ("aucun_fait", "marqueur_non_rempli", "contredit")
+CATEGORIES_REJET = ("aucun_fait", "marqueur_non_rempli", "contredit", "non_cherchee")
 MIN_SOURCES = 2  # candidates exigées parmi les cartes qui, selon la matrice, agissent sur l'événement « apparait »
 
 
@@ -111,13 +111,14 @@ def equivalences(strates: list[int]) -> str:
     return "\n\n".join(out)
 
 
-def appeler_moteur(dossier: dict, etat: str, evenement: str, semantique: str, date_info: str, vue: dict) -> dict:
+def appeler_moteur(dossier: dict, etat: str, evenement: str, semantique: str, date_info: str, vue: dict,
+                   temporalite: str = "generique") -> dict:
     """Lance `moteur.py calculer --dossier` ; la fréquence de la vue extérieure entre comme référence (--fref)."""
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
         json.dump(dossier, f, ensure_ascii=False)
         chemin = f.name
     cmd = [sys.executable, str(MOTEUR), "calculer", "--etat", etat, "--evenement", evenement,
-           "--temporalite", "generique", "--semantique", semantique, "--dossier", chemin,
+           "--temporalite", temporalite, "--semantique", semantique, "--dossier", chemin,
            "--date-information", date_info, "--fref", str(vue["frequence"]),
            "--source-ref", str(vue.get("source", "")), "--periode-ref", str(vue.get("periode", "")),
            "--disponible-ref", str(vue.get("disponible_le", date_info)),
@@ -169,8 +170,13 @@ def extraire_json(texte: str) -> dict:
     return json.loads(brut)
 
 
+BORNE_BASSE, BORNE_HAUTE = 0.001, 0.999  # bornes de l'API Metaculus pour une question binaire
+
+
 def borner(p: float) -> float:
-    return max(0.01, min(0.99, float(p)))
+    """0.2.0 (audit, B1) : les bornes de l'API (0,001–0,999), et non 0,01–0,99, qui effaçait C − B sur les événements
+    rares (A = B = C = 0,01)."""
+    return max(BORNE_BASSE, min(BORNE_HAUTE, float(p)))
 
 
 # --------------------------------------------------------------------------- consignes
@@ -207,6 +213,8 @@ Rends UNIQUEMENT un objet JSON :
  "contre_candidate": ["ABR@strate", ...]  (au moins une par strate, parmi les candidats),
  "evenement": {{"carte": "ABR", "strate": n, "type": "apparait|persiste|disparait"}},
  "semantique": "presence|au-moins-une-fois|continue",
+ "temporalite": "generique (l'événement peut survenir à tout moment) | programmee (échéance fixée d'avance : vote, sommet, date
+     légale) | duree_de_vie (l'objet a une durée de vie propre)",
  "pourquoi_evenement": "en quoi le OUI de la question correspond à cet événement de carte",
  "recherches_reference": ["requête", ...]  (1 à {MAX_RECHERCHES_REFERENCE} requêtes pour trouver la FRÉQUENCE HISTORIQUE
      d'événements comparables : combien de fois, sur quelle période, dans quelle population de cas),
@@ -277,8 +285,8 @@ def regles_dossier() -> str:
 - contredirait ≠ attendu, sans nommer la carte. option : un fait qui ne change l'espace d'action de personne ne s'ancre pas.
 - rejets_classes : pour chaque candidate non ancrée, {"categorie": …, "motif": …}, catégorie au choix :
   "aucun_fait" (aucun fait pertinent dans les résultats), "marqueur_non_rempli" (des faits existent mais ne remplissent
-  pas le marqueur local), "contredit" (un fait de la situation contredit la carte). Choisis la catégorie d'après les
-  résultats de recherche, pas d'après ton intuition.
+  pas le marqueur local), "contredit" (un fait de la situation contredit la carte), "non_cherchee" (ses requêtes n'ont
+  pas été lancées). Choisis la catégorie d'après les résultats de recherche, pas d'après ton intuition.
 - questions : au moins une question ouverte et datée qui départagerait la lecture (si_oui, si_non, resolution, statut).
 - Ne cite que des faits trouvés dans les résultats de recherche fournis ; n'invente ni source, ni URL, ni date.
 - ÉTAT NUL ADMIS : si aucun fait ne remplit le marqueur d'une carte, "mots" est une liste vide et chaque candidate va
@@ -290,8 +298,14 @@ def consigne_dossier(q: Question, plan: dict, resultats: list[dict], aujourdhui:
     cartes = [c.split("@")[0] for c in plan.get("candidats", [])]
     exemple = json.loads(lire_ref("assets/dossier.exemple.json"))
     exemple = {k: exemple[k] for k in CLES_LECTURE if k in exemple}
+    lancees = [r for r in resultats if not r.get("non_lancee")]
     res = "\n\n".join(f"[{i + 1}] ({r['famille']}, {', '.join(r['cartes'])}) « {r['requete']} »\n{r['resultat'][:3000]}"
-                      for i, r in enumerate(resultats))
+                      for i, r in enumerate(lancees))
+    coupees = [r for r in resultats if r.get("non_lancee")]
+    if coupees:
+        res += ("\n\nREQUÊTES NON LANCÉES (plafond de recherches) : "
+                + " ; ".join(f"« {r['requete']} » ({', '.join(r['cartes'])})" for r in coupees)
+                + ". Une candidate qui n'a pas été cherchée se classe « non_cherchee », jamais « aucun_fait ».")
     ev = plan["evenement"]
     return f"""Étape 3 : la lecture (mots ancrés) pour la question ci-dessous. La vue extérieure est déjà posée.
 
@@ -365,6 +379,16 @@ def etat_depuis(mots: list[dict], aujourdhui: str, jours: int) -> str:
     return f"[{aujourdhui} | {jours} jours] {corps}" if corps else ""
 
 
+TEMPORALITES = ("generique", "programmee", "duree_de_vie")
+
+
+def temporalite_de(plan: dict) -> str:
+    """0.2.0 (audit, B11) : la temporalité est déclarée par le plan ; « programmee » (échéance fixée d'avance) ou
+    « duree_de_vie » rendent le moteur « non estimé » sans référence propre, comme le veut le skill."""
+    t_ = plan.get("temporalite")
+    return t_ if t_ in TEMPORALITES else "generique"
+
+
 def evenement_depuis(plan: dict, vue: dict) -> tuple[dict, str]:
     """La partie « événement » du dossier, construite par le bot : une correction ne peut pas l'effacer."""
     noms = noms_cartes()
@@ -374,8 +398,9 @@ def evenement_depuis(plan: dict, vue: dict) -> tuple[dict, str]:
               "motif_sans_alternative", "ecart_critere")
     ve = {k: vue.get(k) for k in champs if vue.get(k) is not None or k == "classe_alternative"}
     if ve.get("classe_alternative") is None:
-        ve["motif_sans_alternative"] = vue.get("motif_sans_alternative") or "aucune classe alternative honnête trouvée"
-    return {"evenement": evenement, "semantique": plan["semantique"], "temporalite": "generique",
+        ve["motif_sans_alternative"] = (vue.get("motif_sans_alternative")
+                                        or "non fourni par le modèle (champ vide ; inscrit par le bot, 0.2.0)")
+    return {"evenement": evenement, "semantique": plan["semantique"], "temporalite": temporalite_de(plan),
             "resolution": vue.get("resolution") or "", "source_resolution": vue.get("source_resolution") or {},
             "vue_exterieure": ve}, evenement
 
@@ -417,14 +442,25 @@ def plan_corrigeable(motif: str) -> bool:
     return motif.startswith("candidates :") or motif.startswith("la carte visée")
 
 
-def controle_vue(vue: dict) -> str | None:
+def controle_vue(vue: dict, aujourdhui: str | None = None) -> str | None:
     f = vue.get("frequence")
     if not isinstance(f, (int, float)) or isinstance(f, bool) or not 0 < f < 1:
         return vue.get("motif") or "vue extérieure sans fréquence"
     for k in ("classe_de_reference", "source", "periode", "disponible_le"):
         if not vue.get(k):
             return f"vue extérieure incomplète : {k} manquant"
+    if aujourdhui:  # 0.2.0 (audit, B6) : une source postérieure à la date d'information ne fonde pas un taux de base
+        d = str(vue["disponible_le"])[:10]
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
+            return f"vue extérieure : disponible_le illisible ({vue['disponible_le']})"
+        if d > aujourdhui:
+            return f"vue extérieure : disponible_le {d} postérieur à la date d'information {aujourdhui}"
     return None
+
+
+def fondement_memoire(vue: dict) -> bool:
+    """La vue s'appuie-t-elle sur un registre cité de mémoire plutôt que sur un résultat de recherche [Rn] ?"""
+    return not re.search(r"\[R\d+\]", f"{vue.get('fondement', '')} {vue.get('calcul', '')} {vue.get('source', '')}")
 
 
 def controle_etat(dossier: dict, plan: dict) -> str | None:
@@ -444,8 +480,12 @@ async def executer_requetes(requetes: list[dict], chercher: Chercheur, recherche
         if not req or req.lower() in vues:
             continue
         vues.add(req.lower())
-        if len(sortie) >= plafond:
-            break
+        if sum(1 for x in sortie if not x.get("non_lancee")) >= plafond:
+            # 0.2.0 (audit, B10) : une requête coupée par le plafond est consignée, non lancée, avec son motif ; une
+            # candidate qui n'a pas été cherchée ne doit pas passer pour « aucun_fait ».
+            sortie.append({"famille": r.get("famille", "reference"), "cartes": r.get("cartes", []), "requete": req,
+                           "resultat": "", "executee": False, "non_lancee": "plafond"})
+            continue
         try:
             texte = await chercher(req)
         except Exception as e:  # une recherche qui échoue est consignée, non lancée
@@ -493,7 +533,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     except Exception as e:
         return dict(trace, statut="sans_vue", motif=f"vue extérieure illisible : {e}")
     trace["vue"] = vue
-    motif = controle_vue(vue)
+    motif = controle_vue(vue, aujourdhui)
     if motif:
         return dict(trace, statut="sans_vue", motif=motif)
     trace["p_B"] = float(vue["frequence"])
@@ -531,7 +571,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         sortie = None
         if not erreur:
             sortie = appeler_moteur({k: v for k, v in dossier.items() if not k.startswith("_")}, dossier["etat"],
-                                    evenement, plan["semantique"], aujourdhui, evt["vue_exterieure"])
+                                    evenement, plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"])
             erreur = sortie.get("erreur")
         if not erreur:
             trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
@@ -603,7 +643,8 @@ def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
     if dossier is not None:
         d = REGISTRE / "dossiers"
         d.mkdir(exist_ok=True)
-        nom = f"{ligne['question_id']}-{ligne['date_information']}.json"
+        # 0.2.0 (audit, B8) : horodatage dans le nom ; deux passages le même jour n'écrasent plus une preuve scellée.
+        nom = f"{ligne['question_id']}-{ligne['bras']['A']['horodatage'].replace(':', '').replace('+0000', 'Z')}.json"
         (d / nom).write_text(json.dumps(dossier, ensure_ascii=False, indent=1), encoding="utf-8")
         ligne["dossier_fichier"] = f"dossiers/{nom}"
         ligne["dossier_sha256"] = sceau(dossier)
@@ -613,7 +654,8 @@ def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
 
 
 async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str, llm: Llm, chercher: Chercheur,
-                          recherche_reelle: bool, maintenant: datetime | None = None) -> Resultat:
+                          recherche_reelle: bool, maintenant: datetime | None = None, publie: bool = True,
+                          mode: str | None = None) -> Resultat:
     maintenant = maintenant or datetime.now(timezone.utc)
     aujourdhui = maintenant.date().isoformat()
     jours = max(1, (q.resolution - maintenant.date()).days)
@@ -628,13 +670,18 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
     ligne = {"version_bot": VERSION_BOT, "version_skill": version_skill(), "question_id": str(q.id), "url": q.url,
              "titre": q.titre, "date_information": aujourdhui, "resolution_prevue": q.resolution.isoformat(),
              "fenetre_jours": jours, "recherche_reelle": recherche_reelle,
+             "publie": publie, "mode": mode or os.environ.get("ALPHABET_MODE"),
              "bras": {"A": bras_a,
                       "B": {"p": c.get("p_B"), **{k: vue.get(k) for k in ("classe_de_reference", "source", "fondement",
-                                                                         "periode", "calcul") if vue.get(k)},
+                                                                         "periode", "calcul", "disponible_le") if vue.get(k)},
+                            "fondement_memoire": fondement_memoire(vue) if vue else None,
                             "recherches": c.get("recherches_reference")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "recherches")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet")}},
              "bras_poste": poste, "p_poste": p_poste}
     ecrire_registre(ligne, c.get("dossier"))
-    return Resultat(p_A, c.get("p_B"), c.get("p_C"), poste, p_poste, commentaire(q, p_A, a_raison, c, poste), ligne)
+    texte = commentaire(q, p_A, a_raison, c, poste)
+    if not publie:  # 0.2.0 (audit, B5) : un passage à blanc ne prétend pas avoir posté
+        texte = texte.replace("Posted arm:", "Arm selected (dry run, not posted):", 1)
+    return Resultat(p_A, c.get("p_B"), c.get("p_C"), poste, p_poste, texte, ligne)
