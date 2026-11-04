@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.48
+> Version : 0.7.49
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -1914,3 +1914,31 @@ base différentes (§1, §23 point 3) ; score logarithmique en regard du Brier (
 **Limites.** Un instantané peut lui-même porter des encadrés chargés plus tard par le navigateur ; les instantanés
 manquent pour beaucoup de pages, surtout hors des grands médias ; la note de fuite est un jugement du codeur, non
 vérifié. La seule évaluation sans fuite reste le test **prospectif**, publié avant l'échéance (§14).
+
+## 27. Critère de levée de L7, fixé avant les données (0.7.49)
+
+**Décision d'auteur, le 2026-11-04, avant toute question géopolitique résolue par le bot Metaculus.** L7 (§14) limite
+la prévision chiffrée aux strates de `strates_prevision`, aujourd'hui la seule strate 7, et prévoyait qu'une strate
+s'ajoute « quand ses cartes ont un accord mesuré ». Le premier passage réel du bot (zone de test, 2026-11-04) l'a rendu
+concret : deux questions sur trois relevaient de la strate 6 et ont été refusées. Le critère de levée est écrit
+**maintenant**, avant de voir des résultats, pour que le moment de la levée ne soit pas choisi d'après eux.
+
+**Deux conditions, toutes deux nécessaires, pour ajouter une strate s à `strates_prevision` :**
+
+1. **En strate 7, les cartes n'abîment pas le taux de base.** Sur au moins **20 questions géopolitiques résolues**
+   (prospectives : prévision publiée chez un tiers horodaté avant l'échéance, §14), où les bras B (classe de référence)
+   et C (alphabet) existent tous deux, la différence appariée de Brier **C − B est ≤ 0** (C ne fait pas moins bien que B).
+   Les questions comptent une fois par épisode (`episodes_suspects`, §22). Si C − B > 0, L7 reste en l'état pour toutes
+   les strates : des cartes qui dégradent le taux de base dans leur seule strate documentée ne s'étendent pas.
+2. **En strate s, les cartes sont lisibles à deux** : la condition d'origine de L7 (accord mesuré, A4) sur les cartes
+   de s, et des équivalents de s au statut Documenté pour les cartes que la lecture y ancre.
+
+**Ce que la levée n'autorise pas.** Elle ouvre le chiffre dans s, elle ne valide pas les multiplicateurs : C − B ≤ 0 en
+strate 7 dit seulement que les cartes ne nuisent pas. « C bat B » (C − B < 0 avec un intervalle qui exclut 0) est un
+résultat distinct, à publier comme tel, et non une condition de levée. La levée est une décision d'auteur datée,
+consignée ici avec la sortie de `score_registre.py` (ou de `scorer`) qui la fonde.
+
+**Lectures scellées hors strate 7.** Une lecture faite hors de `strates_prevision`, scellée avant l'issue et non chiffrée,
+reste admise (mode LIRE). Si s est levée plus tard, ces lectures peuvent être chiffrées après coup par le moteur, à
+paramètres fixés : le dossier est daté et scellé, le calcul déterministe. Elles comptent alors comme un premier test de
+s, à part des questions prospectives, et jamais dans la condition 1.

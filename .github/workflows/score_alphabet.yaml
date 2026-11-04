@@ -1,0 +1,45 @@
+name: Score du bot alphabet
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "43 5 * * 1"   # chaque lundi : issues des questions résolues, score des bras A, B et C
+
+concurrency:
+  group: bot-alphabet-registre   # jamais en même temps qu'une écriture du registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scorer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Scorer
+        run: |
+          if [ -f registre/journal-bot.jsonl ]; then
+            uv run python score_registre.py --metaculus --enregistrer
+          else
+            echo "Registre vide : rien à scorer."
+          fi
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+      - name: Enregistrer
+        run: |
+          if [ -n "$(git status --porcelain registre)" ]; then
+            git config user.name "alphabet-bot"
+            git config user.email "alphabet-bot@users.noreply.github.com"
+            git add registre
+            git commit -m "registre : issues et score du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

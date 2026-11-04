@@ -3,7 +3,7 @@ name: alphabet-situationnel
 description: "Lecture structurelle et exploration conditionnelle de situations par 16 cartes transversales candidates et 13 strates (dont la politique intérieure). Utiliser pour lire une situation factuelle, explorer ses suites à un horizon défini, coder un cas historique ou scorer un journal. Modes LIRE, PRÉVOIR, CODER, SCORER. Le moteur calcule des probabilités expérimentales quand les entrées sont recevables ; aucune performance prédictive n'est acquise. Ne pas utiliser pour un tirage symbolique, un diagnostic, une décision sur une personne, ou transformer un ressenti seul en fait. Une lecture sans prévision est explicitement admise."
 license: MIT
 metadata:
-  version: '0.7.48'
+  version: '0.7.49'
   author: Othman Ben Brahim
 ---
 
@@ -23,7 +23,7 @@ ce `SKILL.md`), puis `python3 scripts/moteur.py audit`.
 
 ## Contrôle d'intégrité
 
-Version 0.7.48. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
+Version 0.7.49. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
 les 13 fichiers `references/equivalences/strate-NN.md`, les bases, journaux et dossier d'exemple.
 Prérequis : Python ≥ 3.8, bibliothèque standard seule (aucune installation). Exécuter depuis le dossier
 du skill ; `--base`, `--journal` et `--references` sont relatifs au dossier courant. *Le dossier du skill est celui qui
@@ -49,6 +49,7 @@ second teste les régressions. Aucun ne certifie les faits ou l'utilité scienti
 fiche Markdown (`fiche-test`) ; après l'échéance, son résultat donne la seconde partie (`fiche-resultat`) ; les deux se
 collent dans `assets/registre-tests.md`, que `ingerer` vérifie et score (`validation.md` §14). Hors démonstration, la
 prévision chiffrée est limitée à la strate 7 (`strates_prevision`, décision L7) ; les autres strates se lisent.
+Critère de levée fixé avant les données (0.7.49) : `validation.md` §27.
 
 ## Ce qu'il faut charger
 
@@ -74,6 +75,7 @@ prévision chiffrée est limitée à la strate 7 (`strates_prevision`, décision
 | La lecture tient-elle à l'événement ou au récit ? Deux sources indépendantes, un même cas | `validation.md` §24 |
 | Le codeur suit-il la fiche ou le nom de la carte ? Noms neutres, recouvrement lexical | `validation.md` §25 |
 | Test régressif : pièces figées, contrôle de fuite, choix de la question | `validation.md` §26 |
+| Quand lever L7 (chiffrer une autre strate que la 7) | `validation.md` §27 |
 | Politique intérieure (gouvernement, Parlement, partis, élections, mobilisations) | strate 13 : `strates.md` §2 et §4, `equivalences/strate-13.md` |
 
 Lire par rubrique (`rg -n '^##|^\*\*[OAGBTSV][0-9]' references/protocole.md`, ou `grep -nE` avec le même
