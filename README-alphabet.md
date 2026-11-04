@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.4 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.1.5 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -25,8 +25,11 @@ commentaire. Pour les **autres types de questions** (numériques, choix multiple
 comme le bot modèle de Metaculus : bras A.
 
 Étapes des bras B et C :
-1. **Plan** : le modèle choisit les strates, 2 à 4 candidates par strate (dont une contre-candidate), l'événement de carte
-   qui correspond au OUI, sa sémantique, 1 à 3 requêtes sur le **taux de base**, et les requêtes de lecture (trois
+1. **Plan** : le modèle choisit les strates, l'événement de carte qui correspond au OUI, et 2 à 4 candidates par strate
+   (dont une contre-candidate). Pour un événement « apparait », au moins deux candidates sont **tirées de la matrice des
+   dynamiques du skill** : les cartes qui, selon elle, font apparaître la carte visée (les seules qui peuvent déplacer le
+   taux de base) ; la carte visée n'est jamais candidate. Un plan qui ne respecte pas cette règle est renvoyé une fois au
+   modèle, puis refusé. Le plan fixe aussi la sémantique, 1 à 3 requêtes sur le **taux de base**, et les requêtes de lecture (trois
    familles par candidate, une discrimination par paire), formées sur le phénomène, jamais sur le nom d'une carte.
 2. **Vue extérieure d'abord** (bras B) : le bot lance les requêtes de taux de base ; le modèle en tire une fréquence, ou
    d'un registre historique notoire qu'il nomme, sans chiffre inventé. Le bot construit lui-même la partie « événement »
@@ -102,6 +105,19 @@ Brier et score logarithmique de chaque bras, et la comparaison **appariée** sur
 C − B (l'apport des cartes) et C − A (l'alphabet contre le modèle seul). Les lignes dont le sceau ne correspond plus sont
 écartées et listées. Sur quelques dizaines de questions, aucune conclusion : le nombre de questions décide de ce qu'on
 peut dire.
+
+## Motifs de rejet classés
+
+Chaque candidate écartée porte une catégorie, gardée au registre (`rejets_classes`) et comptée par le bilan et par
+`score_registre.py` (`motifs_rejet`) :
+
+| Catégorie | Ce qu'elle dit |
+|---|---|
+| `aucun_fait` | aucun fait pertinent dans les résultats : un problème de **recherche** |
+| `marqueur_non_rempli` | des faits existent mais ne remplissent pas le marqueur : un problème de **marqueur**, ou une vraie absence |
+| `contredit` | un fait de la situation contredit la carte : une **vraie absence de structure** |
+
+Seule la dernière renseigne sur l'alphabet lui-même ; les deux autres renseignent d'abord sur l'outil.
 
 ## Points ouverts
 

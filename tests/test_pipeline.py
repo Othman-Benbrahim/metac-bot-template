@@ -22,7 +22,7 @@ Q = ap.Question(id=4242, url="https://www.metaculus.com/questions/4242/", titre=
                 contexte="Fictitious test question.", criteres="Resolves YES if a recognized escalation threshold is crossed.",
                 precisions="", resolution=date(2027, 1, 31))
 
-PLAN = {"strates": [7, 6], "candidats": ["POL@7", "SEU@7", "CTR@6", "HIE@6"], "contre_candidate": ["SEU@7", "HIE@6"],
+PLAN = {"strates": [7, 6], "candidats": ["POL@7", "INC@7", "CTR@6", "HIE@6"], "contre_candidate": ["INC@7", "HIE@6"],
         "evenement": {"carte": "SEU", "strate": 7, "type": "apparait"}, "semantique": "au-moins-une-fois",
         "pourquoi_evenement": "YES = a threshold is crossed",
         "recherches_reference": ["fréquence historique des crises bilatérales avec rupture en trois mois"],
@@ -48,12 +48,16 @@ def lecture():
     d = json.loads(ap.lire_ref("assets/dossier.exemple.json"))
     for m in d["mots"]:
         m["date_consultation"] = "2026-11-03"
-    return {k: d[k] for k in ap.CLES_LECTURE}
+    lec = {k: d[k] for k in ("candidats", "contre_candidate", "mots", "liaisons", "questions")}
+    lec["rejets"] = d["rejets"]          # format ancien (texte simple) : admis, catégorie « non_classe »
+    return lec
 
 
 def lecture_vide():
+    cats = ["aucun_fait", "marqueur_non_rempli", "contredit", "aucun_fait"]
     return {"candidats": PLAN["candidats"], "contre_candidate": PLAN["contre_candidate"],
-            "rejets": {c: "aucun fait ne remplit le marqueur" for c in PLAN["candidats"]},
+            "rejets_classes": {c: {"categorie": k, "motif": "aucun fait ne remplit le marqueur"}
+                               for c, k in zip(PLAN["candidats"], cats)},
             "mots": [], "liaisons": [], "questions": []}
 
 
@@ -102,6 +106,40 @@ class Tests(unittest.TestCase):
         self.assertIn("Posted arm: B", r.commentaire)
         self.assertIn("none anchored", r.commentaire)
 
+    def test_rejets_classes(self):
+        r, _ = lancer([PLAN, vue(0.04), lecture_vide()])
+        cats = r.ligne["bras"]["C"]["rejets_classes"]
+        self.assertEqual(cats["CTR@6"], "contredit")
+        self.assertEqual(sorted(set(cats.values())), ["aucun_fait", "contredit", "marqueur_non_rempli"])
+        self.assertIn("[contredit]", r.commentaire)              # le motif public garde sa catégorie
+
+    def test_rejet_non_classe_admis(self):
+        lec = lecture()                                          # format ancien : rejets en texte simple
+        r, _ = lancer([PLAN, vue(), lec])
+        self.assertEqual(r.bras_poste, "C")
+        self.assertTrue(all(v == "non_classe" for v in r.ligne["bras"]["C"]["rejets_classes"].values()))
+
+    def test_candidates_hors_matrice_corrigees(self):
+        mauvais = dict(PLAN, candidats=["PER@7", "SEU@7"], contre_candidate=["PER@7"])   # SEU visée, PER seule source
+        r, llm = lancer([mauvais, PLAN, vue(0.2), lecture()])
+        self.assertEqual(r.bras_poste, "C")
+        self.assertIn("TON PLAN PRÉCÉDENT A ÉTÉ REFUSÉ", llm.consignes[1])
+        self.assertIn("MATRICE DES DYNAMIQUES", llm.consignes[0])
+
+    def test_candidates_hors_matrice_refus(self):
+        mauvais = dict(PLAN, candidats=["PER@7", "SEU@7"], contre_candidate=["PER@7"])
+        r, _ = lancer([mauvais, mauvais])
+        self.assertEqual(r.bras_poste, "A")
+        self.assertEqual(r.ligne["bras"]["C"]["statut"], "refuse")
+        self.assertIn("matrice", r.ligne["bras"]["C"]["motif"])
+
+    def test_sources_matrice(self):
+        src = dict(ap.sources_matrice("SEU"))
+        self.assertIn("POL", src)
+        self.assertNotIn("SEU", src)
+        poids = [ap.POIDS[w] for _, w in ap.sources_matrice("SEU")]
+        self.assertEqual(poids, sorted(poids, reverse=True))     # la plus forte d'abord
+
     def test_sans_vue_poste_a(self):
         r, _ = lancer([PLAN, {"frequence": None, "motif": "aucune base honnête"}])
         self.assertEqual(r.bras_poste, "A")
@@ -147,13 +185,19 @@ class Tests(unittest.TestCase):
         self.assertIn("plan illisible", r.ligne["bras"]["C"]["motif"])
 
     def test_evenement_incoherent(self):
-        plan = dict(PLAN, evenement={"carte": "POL", "strate": 7, "type": "apparait"})   # POL déjà présente
-        r, _ = lancer([plan, vue()] + [lecture() for _ in range(ap.MAX_CORRECTIONS + 1)])
+        # POL visée en « apparait » alors qu'elle est candidate : refusé dès le plan (0.1.5), avant toute recherche.
+        plan = dict(PLAN, evenement={"carte": "POL", "strate": 7, "type": "apparait"})
+        r, llm = lancer([plan, plan])
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "refuse")
-        self.assertIn("déjà présente", r.ligne["bras"]["C"]["motif"])
+        self.assertTrue(r.ligne["bras"]["C"]["motif"].startswith(("candidates :", "la carte visée")))
+        self.assertEqual(len(llm.consignes), 2)
+        # Filet de sécurité conservé : une lecture qui ancre la carte visée est refusée au contrôle de l'état.
+        self.assertIn("déjà présente", ap.controle_etat({"mots": [{"carte": "POL", "strate": 7}]},
+                                                         {"evenement": {"carte": "POL", "strate": 7, "type": "apparait"}}))
 
     def test_hors_strate_chiffree(self):
-        plan = dict(PLAN, evenement={"carte": "CRO", "strate": 6, "type": "apparait"})   # économie : non chiffrée (L7)
+        plan = dict(PLAN, evenement={"carte": "CRO", "strate": 6, "type": "apparait"},   # économie : non chiffrée (L7)
+                    candidats=["POL@6", "EME@6", "RES@6"], contre_candidate=["RES@6"])
         r, llm = lancer([plan, vue(0.03)])
         self.assertEqual(r.bras_poste, "A")
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "hors_strate")

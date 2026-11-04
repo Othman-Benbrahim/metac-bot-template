@@ -220,10 +220,12 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dic
     ok = [r for r in rapports if not isinstance(r, BaseException)]
     ko = [r for r in rapports if isinstance(r, BaseException)]
     bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in "ABC"}
-    statuts = {}
+    statuts, motifs = {}, {}
     for x in nouvelles:
         s = x["bras"]["C"].get("statut")
         statuts[s] = statuts.get(s, 0) + 1
+        for cat in (x["bras"]["C"].get("rejets_classes") or {}).values():
+            motifs[cat] = motifs.get(cat, 0) + 1
     texte = "\n".join([
         "=" * 70,
         "BILAN DU PASSAGE",
@@ -231,6 +233,7 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dic
         f"  {'postées sur Metaculus' if publier else 'NON postées (--sans-publier)'} : {len(ok)}",
         f"  questions binaires journalisées : {len(nouvelles)}  (bras C posté : {bras['C']}, bras B : {bras['B']}, bras A : {bras['A']})",
         f"  statuts de l'alphabet : {statuts or '—'}",
+        f"  motifs de rejet des candidates : {motifs or '—'}",
         f"  autres questions journalisées (bras A seul) : {len(autres or [])}",
         *[f"  échec : {type(e).__name__} : {str(e)[:300]}" for e in ko[:10]],
         "  aucune question ouverte trouvée : rien à faire pour l'instant." if not rapports else "",

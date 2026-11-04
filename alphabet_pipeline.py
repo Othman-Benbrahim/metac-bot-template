@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.1.4"
+VERSION_BOT = "0.1.5"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -65,6 +65,23 @@ def version_skill() -> str:
 def strates_chiffrees() -> list[int]:
     """Strates où le skill accepte de chiffrer (décision L7 ; critère de levée : validation.md §27)."""
     return list(_moteur().P["strates_prevision"])
+
+
+POIDS = {"F": 3, "M": 2, "f": 1}
+CATEGORIES_REJET = ("aucun_fait", "marqueur_non_rempli", "contredit")
+MIN_SOURCES = 2  # candidates exigées parmi les cartes qui, selon la matrice, agissent sur l'événement « apparait »
+
+
+def sources_matrice(cible: str) -> list[tuple[str, str]]:
+    """Cartes qui agissent sur la carte `cible` selon la matrice des dynamiques du skill, la plus forte d'abord."""
+    m = _moteur().P["matrice"]
+    s = [(a, v[cible]) for a, v in m.items() if cible in v and a != cible]
+    return sorted(s, key=lambda x: (-POIDS.get(x[1], 0), x[0]))
+
+
+def table_matrice() -> str:
+    noms = noms_cartes()
+    return "\n".join(f"{ab} {noms[ab]} ← " + ", ".join(f"{a}({w})" for a, w in sources_matrice(ab)) for ab in noms)
 
 
 LECTURE_HORS_STRATE = os.environ.get("ALPHABET_LECTURE_HORS_STRATE", "") in ("1", "oui", "true")
@@ -180,6 +197,9 @@ STRATES : 1 Matière, 2 Vivant, 3 Psyché, 4 Relations, 5 Organisations, 6 Écon
 INDEX DES CARTES :
 {lire_ref("references/cartes-index.md")}
 
+MATRICE DES DYNAMIQUES (carte visée ← cartes qui la font apparaître, poids F fort, M moyen, f faible) :
+{table_matrice()}
+
 Rends UNIQUEMENT un objet JSON :
 {{
  "strates": [entiers, 1 ou 2 strates selon le mécanisme des faits],
@@ -198,6 +218,10 @@ Règles : « apparait » vise une carte ABSENTE de l'état actuel, « persiste �
 Sémantiques admises : apparait → presence ou au-moins-une-fois ; persiste → presence ou continue ;
 disparait → presence ou au-moins-une-fois. Si le OUI ne correspond à aucun événement de carte, mets
 "evenement": null et explique-le dans "pourquoi_evenement" (le bot s'abstiendra d'utiliser l'alphabet).
+Candidates : pour un événement « apparait », le moteur ne déplace le taux de base QUE par les cartes présentes qui,
+d'après la matrice ci-dessus, agissent sur la carte visée. Choisis donc au moins {MIN_SOURCES} candidates parmi ces cartes
+(les plus fortes d'abord, si les faits s'y prêtent), plus une contre-candidate. Ne mets pas la carte visée elle-même
+parmi les candidates d'un événement « apparait ».
 Recherches : pour chaque candidate, une requête de chaque famille ; pour chaque paire de candidates d'une même strate,
 une requête de discrimination. Au plus {MAX_RECHERCHES} requêtes au total. Une requête se forme sur le phénomène
 observable, l'objet et la période, JAMAIS sur le nom d'une carte, ni sur une prémisse.
@@ -251,7 +275,10 @@ def regles_dossier() -> str:
 - a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines de la fiche, sans « ? ».
 - contre_observation : la plus forte trouvée DANS la situation ; portee marginale|substantielle|dominante|aucune.
 - contredirait ≠ attendu, sans nommer la carte. option : un fait qui ne change l'espace d'action de personne ne s'ancre pas.
-- rejets : pour chaque candidate non ancrée, le motif.
+- rejets_classes : pour chaque candidate non ancrée, {"categorie": …, "motif": …}, catégorie au choix :
+  "aucun_fait" (aucun fait pertinent dans les résultats), "marqueur_non_rempli" (des faits existent mais ne remplissent
+  pas le marqueur local), "contredit" (un fait de la situation contredit la carte). Choisis la catégorie d'après les
+  résultats de recherche, pas d'après ton intuition.
 - questions : au moins une question ouverte et datée qui départagerait la lecture (si_oui, si_non, resolution, statut).
 - Ne cite que des faits trouvés dans les résultats de recherche fournis ; n'invente ni source, ni URL, ni date.
 - ÉTAT NUL ADMIS : si aucun fait ne remplit le marqueur d'une carte, "mots" est une liste vide et chaque candidate va
@@ -307,7 +334,22 @@ Rends UNIQUEMENT l'objet JSON corrigé, avec les clés : {", ".join(CLES_LECTURE
 
 # --------------------------------------------------------------------------- assemblage
 
-CLES_LECTURE = ("candidats", "contre_candidate", "rejets", "mots", "liaisons", "questions")
+CLES_LECTURE = ("candidats", "contre_candidate", "rejets_classes", "mots", "liaisons", "questions")
+
+
+def rejets_moteur(lecture: dict) -> tuple[dict, dict]:
+    """(rejets au format du moteur : {carte: motif}, catégories : {carte: catégorie}). Un rejet non classé reste admis
+    (catégorie « non_classe ») : le moteur ne lit que le motif."""
+    brut = lecture.get("rejets_classes") or lecture.get("rejets") or {}
+    rejets, cats = {}, {}
+    for k, v in brut.items():
+        if isinstance(v, dict):
+            cat = v.get("categorie") if v.get("categorie") in CATEGORIES_REJET else "non_classe"
+            rejets[k] = f"[{cat}] {v.get('motif') or ''}".strip()
+        else:
+            cat, rejets[k] = "non_classe", str(v)
+        cats[k] = cat
+    return rejets, cats
 MAX_RECHERCHES_REFERENCE = int(os.environ.get("ALPHABET_MAX_RECHERCHES_REFERENCE", "3"))
 
 
@@ -333,8 +375,8 @@ def evenement_depuis(plan: dict, vue: dict) -> tuple[dict, str]:
 
 
 def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujourdhui: str, jours: int) -> dict:
-    d = {k: lecture.get(k, [] if k in ("mots", "liaisons", "questions", "candidats", "contre_candidate") else {})
-         for k in CLES_LECTURE}
+    d = {k: lecture.get(k, []) for k in ("candidats", "contre_candidate", "mots", "liaisons", "questions")}
+    d["rejets"], d["_categories_rejet"] = rejets_moteur(lecture)
     d["etat"] = etat_depuis(d.get("mots") or [], aujourdhui, jours)
     d["disponible_le"] = aujourdhui
     d["recherches"] = [{"famille": r["famille"], "cartes": r["cartes"], "requete": r["requete"],
@@ -354,7 +396,19 @@ def controle_plan(plan: dict) -> str | None:
         return f"type d'événement non pris en charge : {ev.get('type')}"
     if plan.get("semantique") not in SEMANTIQUES[ev["type"]]:
         return f"sémantique {plan.get('semantique')} incompatible avec {ev['type']}"
+    if ev["type"] == "apparait":
+        src = {a for a, _ in sources_matrice(ev["carte"])}
+        cand = {str(c).split("@")[0] for c in plan.get("candidats", [])}
+        if len(cand & src) < MIN_SOURCES:
+            return (f"candidates : au moins {MIN_SOURCES} parmi les cartes qui agissent sur {ev['carte']} selon la matrice "
+                    f"({', '.join(a for a, _ in sources_matrice(ev['carte']))}) ; reçu : {', '.join(sorted(cand)) or 'aucune'}")
+        if ev["carte"] in cand:
+            return f"la carte visée {ev['carte']} ne peut pas être candidate d'un événement « apparait »"
     return None
+
+
+def plan_corrigeable(motif: str) -> bool:
+    return motif.startswith("candidates :") or motif.startswith("la carte visée")
 
 
 def controle_vue(vue: dict) -> str | None:
@@ -411,10 +465,18 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         plan = extraire_json(await llm(consigne_plan(q, recherche, aujourdhui)))
     except Exception as e:
         return dict(trace, motif=f"plan illisible : {e}")
-    trace["plan"] = plan
     motif = controle_plan(plan)
+    if motif and plan_corrigeable(motif):
+        try:  # une seule correction du plan, sur la règle des candidates
+            plan = extraire_json(await llm(consigne_plan(q, recherche, aujourdhui)
+                                           + f"\n\nTON PLAN PRÉCÉDENT A ÉTÉ REFUSÉ : {motif}\nPLAN REFUSÉ : "
+                                           + json.dumps(plan, ensure_ascii=False)))
+        except Exception as e:
+            return dict(trace, plan=plan, motif=f"plan corrigé illisible : {e}")
+        motif = controle_plan(plan)
+    trace["plan"] = plan
     if motif:
-        return dict(trace, statut="hors_alphabet", motif=motif)
+        return dict(trace, statut="refuse" if plan_corrigeable(motif) else "hors_alphabet", motif=motif)
 
     # 1. Vue extérieure d'abord, sur ses propres recherches (bras B).
     refs = await executer_requetes([{"requete": x} for x in (plan.get("recherches_reference") or []) if isinstance(x, str)],
@@ -462,8 +524,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
             return trace
         sortie = None
         if not erreur:
-            sortie = appeler_moteur(dossier, dossier["etat"], evenement, plan["semantique"], aujourdhui,
-                                    evt["vue_exterieure"])
+            sortie = appeler_moteur({k: v for k, v in dossier.items() if not k.startswith("_")}, dossier["etat"],
+                                    evenement, plan["semantique"], aujourdhui, evt["vue_exterieure"])
             erreur = sortie.get("erreur")
         if not erreur:
             trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
@@ -477,7 +539,10 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         if tentative == MAX_CORRECTIONS or any(x in erreur for x in ERREURS_STRUCTURELLES):
             break
         try:
-            lecture = extraire_json(await llm(consigne_correction({k: dossier[k] for k in CLES_LECTURE}, erreur)))
+            lecture = extraire_json(await llm(consigne_correction(
+                {k: dossier[k] for k in CLES_LECTURE if k in dossier}
+                | {"rejets_classes": {c: {"categorie": dossier["_categories_rejet"].get(c), "motif": m}
+                                      for c, m in dossier["rejets"].items()}}, erreur)))
         except Exception as e:
             trace["derniere_erreur"] = f"correction illisible : {e}"
             break
@@ -558,8 +623,9 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                       "B": {"p": c.get("p_B"), **{k: vue.get(k) for k in ("classe_de_reference", "source", "fondement",
                                                                          "periode", "calcul") if vue.get(k)},
                             "recherches": c.get("recherches_reference")},
-                      "C": {k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
-                                                     "rho", "motif", "tentatives", "recherches")}},
+                      "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
+                                                        "rho", "motif", "tentatives", "recherches")},
+                            "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet")}},
              "bras_poste": poste, "p_poste": p_poste}
     ecrire_registre(ligne, c.get("dossier"))
     return Resultat(p_A, c.get("p_B"), c.get("p_C"), poste, p_poste, commentaire(q, p_A, a_raison, c, poste), ligne)
