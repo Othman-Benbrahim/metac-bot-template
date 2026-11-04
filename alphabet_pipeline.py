@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.1.6"
+VERSION_BOT = "0.1.7"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -341,6 +341,12 @@ def rejets_moteur(lecture: dict) -> tuple[dict, dict]:
     """(rejets au format du moteur : {carte: motif}, catégories : {carte: catégorie}). Un rejet non classé reste admis
     (catégorie « non_classe ») : le moteur ne lit que le motif."""
     brut = lecture.get("rejets_classes") or lecture.get("rejets") or {}
+    if isinstance(brut, list):
+        # 0.1.7 (passage du 2026-11-04) : le modèle rend parfois une liste [{"carte": …, "categorie": …, "motif": …}].
+        brut = {str(x.get("carte") or x.get("candidate") or x.get("cle") or x.get("id") or f"?{i}"): x
+                for i, x in enumerate(brut) if isinstance(x, dict)}
+    if not isinstance(brut, dict):
+        brut = {}
     rejets, cats = {}, {}
     for k, v in brut.items():
         if isinstance(v, dict):
@@ -459,7 +465,7 @@ async def executer_recherches(plan: dict, chercher: Chercheur, recherche_reelle:
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
                    aujourdhui: str, jours: int) -> dict:
     """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet | hors_strate
-    | lu_non_chiffre."""
+    | lu_non_chiffre (et « erreur », posé par prevoir_binaire si une exception échappe)."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
     try:
         plan = extraire_json(await llm(consigne_plan(q, recherche, aujourdhui)))
@@ -613,7 +619,10 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
     jours = max(1, (q.resolution - maintenant.date()).days)
     bras_a = {"p": p_A, "horodatage": maintenant.isoformat(timespec="seconds")}
     bras_a["sceau"] = sceau({"question": str(q.id), "date": aujourdhui, **bras_a})  # A scellé avant l'alphabet
-    c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours)
+    try:
+        c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours)
+    except Exception as e:  # 0.1.7 : une erreur de l'alphabet laisse quand même sa ligne au registre (bras A posté)
+        c = {"statut": "erreur", "motif": f"{type(e).__name__} : {str(e)[:300]}"}
     poste, p_poste = choisir_bras(c, p_A)
     vue = c.get("vue") or {}
     ligne = {"version_bot": VERSION_BOT, "version_skill": version_skill(), "question_id": str(q.id), "url": q.url,

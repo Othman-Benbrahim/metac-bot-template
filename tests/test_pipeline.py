@@ -113,6 +113,28 @@ class Tests(unittest.TestCase):
         self.assertEqual(sorted(set(cats.values())), ["aucun_fait", "contredit", "marqueur_non_rempli"])
         self.assertIn("[contredit]", r.commentaire)              # le motif public garde sa catégorie
 
+    def test_rejets_en_liste(self):
+        lec = lecture_vide()
+        lec["rejets_classes"] = [{"carte": c, **v} for c, v in lec["rejets_classes"].items()]   # forme vue en vrai
+        r, _ = lancer([PLAN, vue(0.04), lec])
+        self.assertEqual(r.bras_poste, "B")
+        self.assertEqual(r.ligne["bras"]["C"]["rejets_classes"]["CTR@6"], "contredit")
+
+    def test_erreur_alphabet_journalisee(self):
+        ancien = ap.alphabet
+
+        async def panne(*a, **k):
+            raise AttributeError("'list' object has no attribute 'items'")
+        ap.alphabet = panne
+        try:
+            r, _ = lancer([])
+        finally:
+            ap.alphabet = ancien
+        self.assertEqual(r.bras_poste, "A")
+        self.assertEqual(r.ligne["bras"]["C"]["statut"], "erreur")
+        self.assertIn("AttributeError", r.ligne["bras"]["C"]["motif"])
+        self.assertEqual(len(r.ligne["sceau"]), 64)               # la ligne existe, scellée
+
     def test_rejet_non_classe_admis(self):
         lec = lecture()                                          # format ancien : rejets en texte simple
         r, _ = lancer([PLAN, vue(), lec])
