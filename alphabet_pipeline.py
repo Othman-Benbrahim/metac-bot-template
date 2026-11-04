@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.4.0"
+VERSION_BOT = "0.4.1"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -749,6 +749,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     hist, trace["historique"] = await chercher_historique(plan, historique, aujourdhui)
     classe = await definir_classe(q, plan, refs, hist, llm, aujourdhui, jours) if CLASSE_FIGEE else None
     trace["classe"] = classe
+    # 0.4.1 : distinguer au registre « classe figée », « échec de la définition » et « étape désactivée ».
+    trace["classe_statut"] = "desactivee" if not CLASSE_FIGEE else ("figee" if classe else "echec")
     vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe)
     if vue is None:
         refus = trace["vues"]["refus"]
@@ -906,7 +908,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                                          "periode", "calcul", "disponible_le") if vue.get(k)},
                             "fondement_memoire": fondement_memoire(vue) if vue else None,
                             "recherches": c.get("recherches_reference"),
-                            "vues": c.get("vues"), "historique": c.get("historique"), "classe": c.get("classe")},
+                            "vues": c.get("vues"), "historique": c.get("historique"), "classe": c.get("classe"),
+                            "classe_statut": c.get("classe_statut")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "recherches",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
