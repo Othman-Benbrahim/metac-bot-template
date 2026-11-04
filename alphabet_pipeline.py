@@ -17,6 +17,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import math
 import os
 import re
 import subprocess
@@ -27,7 +28,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.4.2"
+VERSION_BOT = "0.5.0"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -171,6 +172,27 @@ class Resultat:
 
 def sceau(obj: dict) -> str:
     return hashlib.sha256(json.dumps(obj, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def correction_retro() -> dict | None:
+    """0.5.0 : le décalage de C appris sur les tests rétrospectifs (registre/correction-retro.json, écrit par
+    score_registre.py --retro --enregistrer). None s'il n'existe pas encore."""
+    f = REGISTRE / "correction-retro.json"
+    try:
+        c = json.loads(f.read_text(encoding="utf-8"))
+        return c if isinstance(c.get("decalage_logit"), (int, float)) else None
+    except Exception:
+        return None
+
+
+def corriger_C(p_C: float | None, corr: dict | None) -> float | None:
+    """C corrigé du biais à la hausse : logit p' = logit p + b (b ≤ 0 attendu). Scellé au registre, JAMAIS posté :
+    la règle de postage ne change pas avant la levée de L7."""
+    if p_C is None or corr is None:
+        return None
+    p = borner(p_C)
+    z = math.log(p / (1 - p)) + float(corr["decalage_logit"])
+    return borner(1 / (1 + math.exp(-z)))
 
 
 def extraire_json(texte: str) -> dict:
@@ -899,6 +921,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
         c = {"statut": "erreur", "motif": f"{type(e).__name__} : {str(e)[:300]}"}
     poste, p_poste = choisir_bras(c, p_A)
     vue = c.get("vue") or {}
+    corr = correction_retro()
     ligne = {"version_bot": VERSION_BOT, "version_skill": version_skill(), "question_id": str(q.id), "url": q.url,
              "titre": q.titre, "date_information": aujourdhui, "resolution_prevue": q.resolution.isoformat(),
              "fenetre_jours": jours, "recherche_reelle": recherche_reelle,
@@ -914,7 +937,10 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                         "rho", "motif", "tentatives", "recherches",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
-                            "rejets_details": (c.get("dossier") or {}).get("_details_rejet")}},
+                            "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
+                            "p_C_corrige": corriger_C(c.get("p_C"), corr),
+                            "correction": ({k: corr.get(k) for k in ("decalage_logit", "n", "calcule_le")}
+                                           if corr and c.get("p_C") is not None else None)}},
              "bras_poste": poste, "p_poste": p_poste}
     ecrire_registre(ligne, c.get("dossier"))
     texte = commentaire(q, p_A, a_raison, c, poste)

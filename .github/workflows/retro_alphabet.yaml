@@ -1,0 +1,62 @@
+name: Tests rétrospectifs de l'alphabet (biais de C)
+
+# 0.5.0 : manuel uniquement. Teste l'alphabet sur des questions Metaculus DÉJÀ résolues, avec une recherche bornée à
+# la date d'information, pour mesurer le biais de C et apprendre le décalage qui le corrige. Rien n'est posté.
+# Coût : comme une question réelle (environ 7 appels au modèle et 15 recherches Exa par question), à la main.
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "questions à tester (budget)"
+        default: "5"
+      apres:
+        description: "questions résolues après cette date (AAAA-MM-JJ), après la date de connaissance du modèle"
+        default: "2026-07-01"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  retro:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Contrôle du skill
+        run: python alphabet-situationnel/scripts/moteur.py audit
+      - name: Tests rétrospectifs
+        run: uv run python alphabet_retro.py --n "${{ github.event.inputs.n }}" --apres "${{ github.event.inputs.apres }}"
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
+          ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
+          ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
+          ALPHABET_VUES: ${{ vars.ALPHABET_VUES }}
+      - name: Biais de C et correction
+        if: always()
+        run: uv run python score_registre.py --retro --enregistrer
+      - name: Enregistrer le registre
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain registre)" ]; then
+            git config user.name "alphabet-bot"
+            git config user.email "alphabet-bot@users.noreply.github.com"
+            git add registre
+            git commit -m "registre : tests rétrospectifs du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
