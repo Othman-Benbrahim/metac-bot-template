@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.2.1 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.2.2 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -35,6 +35,10 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
 5. **Bras C** : le bot lance les recherches de lecture (12 au plus, les autres sont notées « non cherchées ») ; le
    modèle écrit un dossier à partir des seuls résultats ; le moteur du skill le juge et calcule. Un refus est renvoyé
    au modèle pour correction, deux fois au plus. **Le moteur reste juge : le bot ne fabrique aucun chiffre.**
+   **Angles morts** : si la lecture n'ancre aucune carte alors que certaines candidates ont été écartées faute de
+   recherche (`aucun_fait`, `non_cherchee`), le bot relance une fois des recherches ciblées sur elles (6 au plus),
+   formées sur le phénomène que décrit leur marqueur, puis fait relire. L'état nul n'est accepté qu'ensuite, et il est
+   qualifié : `structure_absente` (chaque candidate écartée sur pièces) ou `angle_mort` (il en reste une non vérifiée).
 6. **Choix du bras posté** (voir ci-dessous), commentaire public expliquant le choix, envoi à Metaculus.
 7. **Registre** : une ligne scellée (SHA-256) avec les trois bras, et le dossier de lecture complet, enregistrés dans
    le dépôt par le workflow.
@@ -47,7 +51,7 @@ Metaculus (bras A) et journalise sa prévision à part.
 | Situation | Bras posté |
 |---|---|
 | Le moteur du skill donne une probabilité | **C** |
-| La lecture ne trouve aucune structure (« état nul », résultat légitime) | **B**, le taux de base non ajusté |
+| La lecture ne trouve aucune structure (« état nul »), y compris après la relance de ses angles morts | **B**, le taux de base non ajusté |
 | Pas de taux de base honnête, question hors du champ du skill, lecture refusée, erreur | **A** |
 
 Aujourd'hui, le skill ne chiffre que la géopolitique (décision L7 du skill). Hors de ce domaine, le bot enregistre le
@@ -57,7 +61,7 @@ taux de base B et poste A. Cette règle ne changera pas avant la levée de L7, s
 
 - **Toutes les 20 minutes**, il regarde s'il y a des questions nouvelles (elles ne restent ouvertes que 3 heures, à
   heure aléatoire). Un contrôle sans question nouvelle ne coûte rien et n'écrit rien.
-- **3 questions nouvelles par jour au plus** (variable `ALPHABET_MAX_QUESTIONS`), comptées dans
+- **5 questions nouvelles par jour au plus** (variable `ALPHABET_MAX_QUESTIONS`), comptées dans
   `registre/passages.jsonl` avant toute prévision.
 - **Lancement manuel** (*Actions → Bot alphabet situationnel → Run workflow*) : son propre plafond (champ
   `max_questions`), hors quota quotidien. Le mode `test_questions` (zone de test de Metaculus) est enregistré comme essai
@@ -75,8 +79,11 @@ alphabet ») :
 - **comparaison appariée**, sur les questions où les trois bras existent : **gain de C sur B** et de C sur A, en points
   de score de pair (100 × écart de ln p sur l'issue réelle ; positif = C meilleur), questions gagnées et perdues, et le
   gain **sans la pire question** : s'il change de signe, le résultat tient à une seule question ;
-- **le Brier n'est qu'un contrôle** : borné, il signale quand le log est dominé par une ou deux probabilités extrêmes
-  qui se sont trompées (`accord_avec_log`).
+- **le Brier apparié** (`brier_critere_L7`) reste calculé : c'est le critère de levée de L7 du skill
+  (`validation.md` §27, C − B ≤ 0), qui est propre au skill et ne dépend pas du règlement de Metaculus. Borné, il
+  signale aussi quand le log est dominé par une ou deux probabilités extrêmes qui se sont trompées (`accord_avec_log`) ;
+- **les états nuls** ne sont pas assimilés à C = B : ils sont suivis à part, par nature (`structure_absente` ou
+  `angle_mort`), avec la tenue du taux de base et son gain sur le modèle seul.
 
 Une question compte une fois (sa dernière prévision publiée) ; toute probabilité est bornée à [0,001 ; 0,999], comme
 à l'envoi ; une ligne dont le sceau ne correspond plus est écartée et listée. Sur quelques dizaines de questions, aucune
@@ -144,6 +151,8 @@ Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit 
 
 ## Historique utile
 
+- **0.2.2** : relance ciblée des angles morts avant d'accepter un état nul ; nature de l'état nul au registre et au
+  score ; plafond porté à 5 questions par jour ; le Brier apparié reste le critère L7 du skill.
 - **0.2.1** : le score logarithmique devient la base du score (règle de Metaculus) ; le Brier passe en contrôle.
 - **0.2.0** : correctifs d'un audit externe (bornes 0,001–0,999, questions de groupe, contrôle toutes les 20 minutes,
   une ligne par question au score, champs `publie` et `mode`, dossiers horodatés, recherches coupées tracées,

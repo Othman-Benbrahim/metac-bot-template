@@ -305,7 +305,7 @@ if __name__ == "__main__":
     # 0.1.8 (budget) : passage planifié = plafond QUOTIDIEN (questions envoyées aujourd'hui, comptées dans
     # registre/passages.jsonl, avant toute prévision) ; passage manuel = plafond du passage (champ max_questions).
     # Un contrôle sans question nouvelle, ou après épuisement du plafond, ne coûte rien.
-    plafond = int(os.environ.get("ALPHABET_MAX_QUESTIONS") or 3)
+    plafond = int(os.environ.get("ALPHABET_MAX_QUESTIONS") or 5)
     planifie = os.environ.get("GITHUB_EVENT_NAME") == "schedule"
     deja = deja_envoyees_aujourdhui() if planifie else 0
     reste = max(0, plafond - deja)
