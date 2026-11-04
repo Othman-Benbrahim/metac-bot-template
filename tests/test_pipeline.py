@@ -6,6 +6,7 @@ import asyncio
 import copy
 import dataclasses
 import json
+import math
 import os
 import sys
 import tempfile
@@ -287,6 +288,20 @@ class Tests(unittest.TestCase):
 
     # --- 0.2.0 : correctifs de l'audit ---
 
+    def test_score_log_base(self):                                # 0.2.1 : le log, règle de Metaculus
+        import score_registre as sr
+        self.assertAlmostEqual(sr.score_reference(0.5, 1), 0)
+        self.assertAlmostEqual(sr.score_reference(0.999, 1), 100 * (math.log2(0.999) + 1))
+        self.assertAlmostEqual(sr.gain_pair(0.8, 0.5, 1), 100 * math.log(0.8 / 0.5))
+        # Le log punit l'extrême faux bien plus que le Brier : un seul 0,001 manqué domine.
+        apparies = [({"C": 0.1, "B": 0.2, "A": 0.2}, 0)] * 9 + [({"C": 0.001, "B": 0.05, "A": 0.05}, 1)]
+        c = sr.comparer(apparies, "C", "B")
+        self.assertLess(c["gain_log_moyen"], 0)                   # C perd en log, à cause d'une seule question
+        self.assertGreater(c["gain_sans_pire_question"], 0)       # sans elle, C gagne : le résultat tient à une question
+        self.assertEqual((c["questions_gagnees"], c["questions_perdues"]), (9, 1))
+        self.assertLess(c["controle_brier"]["ecart_moyen"], 0)    # le Brier, lui, donne C meilleur...
+        self.assertFalse(c["controle_brier"]["accord_avec_log"])  # ... et le désaccord est signalé
+
     def test_bornes_api(self):                                    # B1
         self.assertEqual(ap.borner(0.0004), 0.001)
         self.assertEqual(ap.borner(0.9999), 0.999)
@@ -306,9 +321,9 @@ class Tests(unittest.TestCase):
             lancer([dict(PLAN, evenement=None)], p_A=0.6, mode="test_questions")     # zone de test
             s = sr.scorer(reg, {"4242": 0})
             self.assertEqual((s["lignes"], s["lignes_essai_exclues"], s["questions"]), (4, 2, 1))
-            self.assertAlmostEqual(s["bras"]["A"]["brier"], 0.04)                    # la dernière publiée : 0,2
+            self.assertAlmostEqual(s["bras"]["A"]["log"], -math.log(0.8))            # la dernière publiée : 0,2
             s = sr.scorer(reg, {"4242": 0}, inclure_essais=True)
-            self.assertAlmostEqual(s["bras"]["A"]["brier"], 0.36)                    # la dernière tout court : 0,6
+            self.assertAlmostEqual(s["bras"]["A"]["log"], -math.log(0.4))            # la dernière tout court : 0,6
         finally:
             ap.REGISTRE = ancien
 
