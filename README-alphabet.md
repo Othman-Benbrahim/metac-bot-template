@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.5.0 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.5.1 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -90,9 +90,13 @@ alphabet ») :
 - **par bras** : perte log, et score de référence de Metaculus (100 × (log₂ p + 1) ; 0 = pile ou face) ;
 - **comparaison appariée**, sur les questions où les trois bras existent : **gain de C sur B** et de C sur A, en points
   de score de pair (100 × écart de ln p sur l'issue réelle ; positif = C meilleur), questions gagnées et perdues ;
-- **un test séquentiel** (`test_sequentiel`) : une valeur e pour « C fait mieux » et une pour « C fait moins bien ».
-  Au-delà de 20, l'écart est établi au niveau 5 %, **quel que soit le moment où l'on regarde** : on peut lire le score
-  chaque semaine sans fausser la conclusion. En dessous, rien n'est établi ;
+- **un verdict** (`verdict`) : « meilleur (établi) », « moins bon (établi) » ou « **indéterminé** », et une
+  **séquence de confiance** à 95 % sur le gain moyen (`intervalle_sequentiel_95`), valide **quel que soit le moment
+  où l'on regarde** : on peut lire le score chaque semaine sans fausser la conclusion. Derrière, un test séquentiel
+  (`test_sequentiel`) : une valeur e pour « fait mieux », une pour « fait moins bien ». L'hypothèse pré-enregistrée,
+  C meilleur que B, est établie au-delà de 20 (niveau 5 %) ; les trois autres comparaisons faites sur les mêmes
+  questions (C moins bon que B, C contre A dans les deux sens) au-delà de 60, pour ne pas multiplier les fausses
+  conclusions ;
 - **la puissance** (`puissance`) : combien de questions appariées il faudrait pour détecter un gain de 5, 10 ou 20
   points, avec l'écart-type observé (ou supposé, tant qu'il y a moins de 5 questions), pour le test séquentiel
   réellement appliqué (simulé) et, pour mémoire, pour un test classique lu une seule fois. Pour C contre B, le test
@@ -117,10 +121,10 @@ conclusion.
 
 | Fichier | Contenu |
 |---|---|
-| `registre/journal-bot.jsonl` | une ligne scellée par question binaire : bras A, B, C, bras posté, statut, `publie`, `mode` |
+| `registre/journal-bot.jsonl` | une ligne scellée par question binaire : bras A, B, C, bras posté, statut, `publie`, `mode`, et le commentaire envoyé (couvert par le sceau) |
 | `registre/dossiers/` | le dossier de lecture de chaque question, nommé `<question>-<horodatage>.json` |
 | `registre/journal-autres.jsonl` | une ligne scellée par question non binaire (bras A) |
-| `registre/passages.jsonl` | une ligne par passage : date, déclencheur, questions trouvées et envoyées |
+| `registre/passages.jsonl` | une ligne par passage qui envoie des questions : date, déclencheur, identifiants de toutes les questions reçues (`trouvees_ids`), questions envoyées ; un contrôle sans question n'écrit rien |
 | `registre/issues.jsonl`, `registre/issues-autres.jsonl` | les issues constatées, jamais réécrites |
 | `registre/score.json` | le dernier score calculé |
 
@@ -167,7 +171,9 @@ plus qu'à la main, pour que deux bots ne postent pas sur le même compte.
 
 Au démarrage, le bot vérifie sa configuration et s'arrête en rouge si elle ne peut rien poster ; à la fin, il affiche
 un bilan du passage. En local : `cp .env.template .env`, remplir, puis
-`uv run python alphabet_bot.py --mode test_questions --sans-publier`.
+`uv run python alphabet_bot.py --mode test_questions --sans-publier`. Le passage à blanc (`--sans-publier`) est
+refusé hors de la zone de test : regarder les sorties du bot sur des questions ouvertes du tournoi, puis l'ajuster,
+est interdit par le règlement.
 
 ## Tests
 
@@ -214,6 +220,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.5.1** : verdict et séquence de confiance sur le gain moyen ; seuils corrigés pour les comparaisons multiples ;
+  commentaire envoyé scellé avec la prévision ; jeu de questions reçu consigné à chaque passage ; passage à blanc
+  réservé à la zone de test.
 - **0.5.0** : tests rétrospectifs (manuels, rien de posté) pour mesurer le biais de C et apprendre un décalage
   correctif ; C corrigé scellé en ombre dans chaque prévision réelle et scoré à part.
 - **0.4.2** : mesure du sens unique de C (`biais_C` : déplacement moyen par rapport à B, gain séparé sur les OUI et

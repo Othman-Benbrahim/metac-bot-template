@@ -281,13 +281,15 @@ def deja_envoyees_aujourdhui(jour: str | None = None) -> int:
                if x.get("date") == jour)
 
 
-def noter_passage(mode: str, declencheur: str, trouvees: int, lot: list) -> None:
+def noter_passage(mode: str, declencheur: str, trouvees: int, lot: list, vus: list | None = None) -> None:
     """Une ligne par passage, écrite AVANT les prévisions : une question qui échoue compte quand même dans le budget."""
     ap.REGISTRE.mkdir(parents=True, exist_ok=True)
     maintenant = datetime.now(timezone.utc)
     ligne = {"date": maintenant.date().isoformat(), "horodatage": maintenant.isoformat(timespec="seconds"),
              "mode": mode, "declencheur": declencheur, "trouvees": trouvees, "envoyees": len(lot),
-             "questions": [getattr(q, "page_url", None) for q in lot]}
+             "questions": [getattr(q, "page_url", None) for q in lot],
+             # 0.5.1 : le jeu de questions REÇU, pas seulement celui traité : ce qui était visible à cette date.
+             "trouvees_ids": sorted(str(getattr(q, "id_of_question", None) or getattr(q, "page_url", "")) for q in (vus or lot))}
     with open(ap.REGISTRE / "passages.jsonl", "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True) + "\n")
 
@@ -331,6 +333,12 @@ if __name__ == "__main__":
     p.add_argument("--mode", choices=["tournament", "minibench", "test_questions"], default="test_questions")
     p.add_argument("--sans-publier", action="store_true", help="calculer et journaliser sans poster sur Metaculus")
     args = p.parse_args()
+    if args.sans_publier and args.mode != "test_questions":
+        # 0.5.1 : regarder les sorties du bot sur des questions OUVERTES du tournoi sans les poster, puis ajuster le bot,
+        # est interdit par le règlement : le passage à blanc est réservé à la zone de test.
+        print("❌  --sans-publier n'est admis qu'en mode test_questions (règlement : pas de prévisualisation sur les "
+              "questions ouvertes du tournoi).")
+        sys.exit(1)
     os.environ["ALPHABET_MODE"] = args.mode  # 0.2.0 (audit, B5/rec. 11) : chaque ligne du registre porte son mode
     check_environment(strict=True)  # jeton Metaculus et clé de modèle, sinon arrêt en rouge
     bot = construire(publier=not args.sans_publier)
@@ -370,7 +378,7 @@ if __name__ == "__main__":
         print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond du passage : {plafond}")
     lot = questions[:reste if planifie else plafond]
     if lot:  # un contrôle sans question n'écrit rien : pas de commit inutile toutes les 3 heures
-        noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot)
+        noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot, questions)
     rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True)) if lot else []
     bot.log_report_summary(rapports, raise_errors=False)
     texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
