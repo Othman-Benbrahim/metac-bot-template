@@ -111,6 +111,20 @@ class TestsConfiguration(unittest.TestCase):
         self.assertIn("NOT percentages", vues[1])
         self.assertEqual(q.unit_of_measure, "")                 # l'unité d'origine est rétablie
 
+    def test_plafond_quotidien(self):
+        import tempfile
+        import alphabet_pipeline as ap
+        ancien, ap.REGISTRE = ap.REGISTRE, Path(tempfile.mkdtemp(prefix="registre-budget-"))
+        try:
+            self.assertEqual(ab.deja_envoyees_aujourdhui(), 0)
+            q = type("Q", (), {"page_url": "https://www.metaculus.com/questions/1/"})()
+            ab.noter_passage("minibench", "planifie", 5, [q, q])
+            ab.noter_passage("minibench", "planifie", 3, [q])
+            self.assertEqual(ab.deja_envoyees_aujourdhui(), 3)
+            self.assertEqual(ab.deja_envoyees_aujourdhui("2000-01-01"), 0)   # un autre jour ne compte pas
+        finally:
+            ap.REGISTRE = ancien
+
 
 if __name__ == "__main__":
     unittest.main()
