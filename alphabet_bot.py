@@ -3,7 +3,7 @@
 À placer à la racine d'un fork de Metaculus/metac-bot-template, à côté de `main.py`, avec le dossier du skill
 `alphabet-situationnel/`. Le bot hérite du bot modèle de Metaculus et ne remplace que les questions binaires :
   - binaires : bras A (modèle seul, le raisonnement du modèle Metaculus, scellé d'abord), puis l'alphabet (bras B et C) ;
-    le bras C est posté s'il est estimé, sinon le bras A, signalé dans le commentaire ;
+    le bras C est posté s'il est estimé, le bras B si aucune carte n'est ancrée (état nul), sinon le bras A ;
   - numériques, choix multiples, dates, conditionnelles : le bot modèle, inchangé (bras A).
 Chaque question binaire laisse une ligne scellée dans registre/journal-bot.jsonl et son dossier dans registre/dossiers/.
 """
@@ -145,7 +145,7 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool) -> tuple[str, in
     """Bilan lisible du passage et code de sortie : 1 si des questions ont été trouvées mais rien n'a été prévu."""
     ok = [r for r in rapports if not isinstance(r, BaseException)]
     ko = [r for r in rapports if isinstance(r, BaseException)]
-    bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in "AC"}
+    bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in "ABC"}
     statuts = {}
     for x in nouvelles:
         s = x["bras"]["C"].get("statut")
@@ -155,7 +155,7 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool) -> tuple[str, in
         "BILAN DU PASSAGE",
         f"  questions traitées : {len(rapports)}  (prévues : {len(ok)}, en échec : {len(ko)})",
         f"  {'postées sur Metaculus' if publier else 'NON postées (--sans-publier)'} : {len(ok)}",
-        f"  questions binaires journalisées : {len(nouvelles)}  (bras C posté : {bras['C']}, bras A posté : {bras['A']})",
+        f"  questions binaires journalisées : {len(nouvelles)}  (bras C posté : {bras['C']}, bras B : {bras['B']}, bras A : {bras['A']})",
         f"  statuts de l'alphabet : {statuts or '—'}",
         *[f"  échec : {type(e).__name__} : {str(e)[:300]}" for e in ko[:10]],
         "  aucune question ouverte trouvée : rien à faire pour l'instant." if not rapports else "",
