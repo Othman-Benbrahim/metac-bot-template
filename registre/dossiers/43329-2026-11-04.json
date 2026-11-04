@@ -1,0 +1,149 @@
+{
+ "candidats": [
+  "SEU@6",
+  "CRO@6"
+ ],
+ "contre_candidate": [
+  "CRO@6"
+ ],
+ "rejets": {
+  "SEU@6": "Aucun franchissement irréversible daté n'est observé. Les baisses de 2026 (DJT, cryptos) sont des mouvements de prix réversibles, sans défaut déclaré ni retrait massif. La série montre d'ailleurs des rebonds (DJT à 9,12 $ vers le 2026-09-21). La strate 6 se lit sans prévision chiffrée (décision L7, 0.7.34) : aucun seuil ni échéance n'est posé. L'apparition de SEU@6 n'est pas lue dans l'état actuel, et la carte ne figure pas dans les mots."
+ },
+ "mots": [
+  {
+   "carte": "CRO",
+   "strate": 6,
+   "intensite": "f",
+   "fait": "L'action Trump Media (DJT), actif principal de la fortune estimée de Trump, est passée d'environ 13,77 $ au début de 2026 à 7,06 $ le 2026-06-25, puis à un plus bas historique intrajournalier de 6,29 $ le 2026-10-20 et à 5,95 $ à la clôture du 2026-11-03. L'estimation Forbes de la fortune suit en partie ce déclin : 5,9 Md$ au 2026-06-25, 6,6 Md$ le 2026-10-20, 6,5 Md$ le 2026-11-03.",
+   "objet": "cours de DJT et fortune estimée de Trump (Forbes temps réel)",
+   "source": "Forbes, Fiona Riley (2026-10-20) ; Exa.ai, série quotidienne DJT (2026-11-03)",
+   "source_url": "https://www.forbes.com/sites/fionariley/2026/10/20/trump-media-stock-hits-new-all-time-intraday-low/",
+   "date_consultation": "2026-11-04",
+   "classe_source": "contemporain",
+   "contre_observation": "La série n'est pas monotone : DJT a rebondi à 9,12 $ vers le 2026-09-21 et l'article Forbes de septembre 2026 donne 7 Md$, au-dessus des 5,9 Md$ de juin. Les estimations Forbes sont incohérentes entre elles (6,5 à 7 Md$). Le taux de baisse n'est pas montré comme dépendant du niveau atteint.",
+   "portee": "substantielle",
+   "test": "cerceau",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "un média financier (Forbes) rend compte du plus bas de l'action ; un agrégateur de données de marché (Exa.ai) fournit la clôture quotidienne. Ce sont deux producteurs distincts, mais la série reste un simple relevé de prix sans lien établi entre taux et niveau."
+   },
+   "passage": [
+    {
+     "localisation": "article Forbes du 2026-10-20, premier paragraphe",
+     "relation": "soutient",
+     "extrait": "record intraday low of $6.29"
+    },
+    {
+     "localisation": "page DJT Exa.ai, ligne de clôture du 2026-11-03",
+     "relation": "soutient",
+     "extrait": "Close: $5.95"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "une grandeur évolue à un taux qui dépend de son propre niveau (régime de déclin d'une valorisation adossée à des actifs volatils)",
+    "support": {
+     "type": "donnee",
+     "reference": "série de cours DJT 2025-2026 (TickerGuard : 34,02 $ ouverture 2025, 13,24 $ fin 2025, 6,99 $ le 2026-10-16) et estimations Forbes datées de la fortune",
+     "disponible_le": "2026-11-03"
+    },
+    "attendu": "une série datée d'une même source dont les variations suivent le niveau atteint",
+    "contredirait": "des variations ponctuelles indépendantes du niveau, ou une remontée soutenue sans lien avec le niveau"
+   },
+   "option": {
+    "acteur": "Trump Media & Technology Group",
+    "avant": "disposer d'une trésorerie crypto de 836 M$ en BTC (9 542 BTC, fin 2025)",
+    "apres": "disposer de 557,1 M$ en BTC (9 477,16 BTC, fin juin 2026), avec 360,6 M$ de pertes sur actifs numériques au premier semestre"
+   }
+  }
+ ],
+ "liaisons": [],
+ "questions": [],
+ "etat": "[2026-11-04 | 58 jours] CROISSANCE@6[f]",
+ "disponible_le": "2026-11-04",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Forbes real-time net worth Donald Trump October November 2026",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Trump net worth decline 2026 Trump Media stock crypto holdings losses Forbes Bloomberg",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Trump Media DJT share price and Trump family crypto holdings value trend 2026",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "DJT stock record low 2026 bitcoin and World Liberty Financial token price drop",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "CRO@6"
+   ],
+   "requete": "Trump net worth Forbes 2024 baseline estimates January April 2024 versus peak September 2025",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "CRO@6"
+   ],
+   "requete": "Bloomberg Billionaires Index Trump net worth 2026 compared to Forbes estimate",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "OUI si une capture archivée de la page Forbes (ou à défaut Bloomberg) montre, à un moment de 2025-2026, une fortune nette du président en exercice supérieure ou égale à 4 fois la valeur archivée la plus ancienne de l'année précédant son investiture.",
+   "source_resolution": {
+    "emetteur": "Forbes (profil et calculateur de fortune en temps réel), via les captures de l'Internet Archive (Wayback Machine)",
+    "document": "Page forbes.com/profile/donald-trump/ : capture la plus ancienne de l'année précédant l'investiture comme référence (par exemple 2,6 Md$ au 12 janvier 2024), comparée aux captures de 2025-2026.",
+    "regle_ambiguite": "Si les données Forbes manquent, utiliser le Bloomberg Billionaires Index. Si aucune des deux sources n'est disponible, se référer aux déclarations financières fédérales obligatoires et à d'autres sources crédibles. En cas d'estimations divergentes le même jour, retenir la capture Forbes datée la plus proche."
+   },
+   "vue_exterieure": {
+    "frequence": 0.003,
+    "classe_de_reference": "Périodes de deux ans de mandat présidentiel américain (depuis le premier classement Forbes 400 de 1982) au cours desquelles la fortune nette estimée du président en exercice a atteint au moins 4 fois sa valeur estimée l'année précédant son entrée en fonction : 0 cas sur environ 22 périodes (Reagan, Bush père, Clinton, Bush fils, Obama, Trump 1er mandat, Biden).",
+    "source": "Estimations Forbes et Bloomberg Billionaires Index de la fortune des présidents américains ; comparatif Newsweek « net worth of US presidents before/after office » ; recherche [R2] ; recherche [R1] (aucun dirigeant milliardaire n'a quadruplé sa fortune en deux ans).",
+    "periode": "1982-2024",
+    "disponible_le": "2025-10-01",
+    "classe_alternative": {
+     "frequence": 0.005,
+     "classe_de_reference": "Dirigeants en exercice ou nouvellement élus figurant parmi les milliardaires Forbes dont la fortune a quadruplé en moins de deux ans : 0 cas sur environ 8 examinés (Berlusconi, Piñera, Babiš, Mikati, Akhannouch, Ivanishvili, Trump 1er mandat…).",
+     "source": "Forbes Middle East, « Meet seven billionaires who took power positions » ; recherche [R1].",
+     "pourquoi_ecartee": "Échantillon plus petit et hétérogène, sans période commune ni référence américaine. Il est utile surtout pour confirmer qu'un quadruplement en fonction n'a pas de précédent connu."
+    },
+    "ecart_critere": "La classe compte le quadruplement de la fortune estimée en cours de mandat, comme le critère. Elle diffère sur deux points : les estimations Forbes et Bloomberg ne sont pas toutes archivées de façon comparable avant 1982, et le critère exige la valeur archivée la plus ancienne de l'année précédant l'entrée en fonction, alors que le comptage historique s'appuie sur des estimations annuelles approximatives."
+   }
+  }
+ ]
+}

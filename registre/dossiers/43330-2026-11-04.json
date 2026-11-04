@@ -1,0 +1,190 @@
+{
+ "candidats": [
+  "SEU@6",
+  "CRO@6",
+  "CTR@6"
+ ],
+ "contre_candidate": [
+  "CRO@6"
+ ],
+ "rejets": {
+  "SEU@6": "aucun franchissement irréversible daté dans les résultats : la fortune de Trump (6,5 Md$ selon Forbes au 2026-11-03) reste loin du seuil, et la fusion TMTG-TAE est proposée, pas conclue (le formulaire S-4 n'est pas déclaré effectif ; une annonce n'est pas une réalisation). Les ventes de jetons WLF de 2025 sont réalisées, mais ce sont des flux de revenus, pas un point de non-retour de la valeur nette. La base de référence est elle-même contestée (2,6 Md$, 2,5 Md$, 2,3 Md$ ou 4,3 Md$ selon les sources), donc aucune structure SEUIL n'est lue. Carte absente, ce qui est cohérent avec l'événement attendu.",
+  "CRO@6": "la série Forbes (7,3 Md$ en 2025-09, 6,5 Md$ en 2026-03, 7 Md$ en 2026-09, 6,5 Md$ au 2026-11-03) n'est pas monotone. Ses variations viennent de chocs extérieurs (ventes de jetons, cours du DJT, pertes crypto), pas d'un taux qui dépendrait du niveau atteint. Aucune limite de capacité n'est identifiée. La série ne change l'espace d'action de personne, donc rien à ancrer (la garantie attendue, un accroissement qui suit le niveau, n'est pas observée). Série citée seulement comme contre-lecture : elle ne soutient pas de hausse auto-entretenue."
+ },
+ "mots": [
+  {
+   "carte": "CTR",
+   "strate": 6,
+   "intensite": "f",
+   "fait": "Le 19 mai 2026, six portefeuilles d'initiés ont déplacé 30 milliards de jetons WLFI dans un contrat de vesting qui bloque les ventes jusqu'en mai 2028. Une proposition de gouvernance adoptée vers le 6 mai (11 537 portefeuilles favorables) impose aux fondateurs et initiés une brûlure de 10 %, un cliff de deux ans puis un vesting linéaire de trois ans. Les détenteurs qui n'ont pas opté restent bloqués indéfiniment. La participation de Trump (environ 800 M$ de revenus WLF en 2025) ne devient donc vendable qu'à partir de mai 2028.",
+   "objet": "jetons WLFI détenus par les initiés, dont la famille Trump",
+   "source": "CoinDesk, « Trump's $800 million stake in World Liberty Financial's token now has a timeline to becoming sellable » (2026-09-14) ; Startup Fortune, article sur le prêt en jeton propre de WLF (2026)",
+   "source_url": "https://www.coindesk.com/business/2026/09/14/trump-s-usd800-million-stake-into-world-liberty-financial-s-token-now-has-a-timeline-to-becoming-sellable",
+   "date_consultation": "2026-11-04",
+   "classe_source": "contemporain",
+   "contre_observation": "Les actions DJT de la fiducie Trump (114,75 M d'actions, environ 41 %) ne sont plus soumises à un verrou documenté : les verrous de 2024 ont expiré et la fiducie pourrait vendre, sous réserve des règles d'initiés. Par ailleurs, le titre de CoinDesk annonce un calendrier vers la vendabilité, donc une option rouverte en mai 2028.",
+   "portee": "marginale",
+   "test": "cerceau",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "origine",
+    "motif": "CoinDesk et Startup Fortune relatent probablement la même proposition de gouvernance et le même contrat de vesting : une seule origine, donc la corroboration reste faible et l'intensité est f"
+   },
+   "passage": [
+    {
+     "localisation": "résultat [9], puce « Vesting contract »",
+     "relation": "soutient",
+     "extrait": "On May 19, six insider wallets moved 30 billion WLFI into the vesting contract, which locks sales until May 2028"
+    },
+    {
+     "localisation": "résultat [9], puce « Founders and insiders »",
+     "relation": "soutient",
+     "extrait": "Holders who did not opt in stay locked indefinitely under the old terms"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "un contrat de vesting et une règle de gouvernance retirent la vente des jetons de l'ensemble admissible jusqu'à une date fixée",
+    "support": {
+     "type": "texte",
+     "reference": "proposition de gouvernance WLFI (adoptée vers 2026-05-06) et contrat de vesting (2026-05-19), tels que rapportés par CoinDesk le 2026-09-14",
+     "disponible_le": "2026-05-19"
+    },
+    "attendu": "aucune vente on-chain des jetons placés dans le contrat avant mai 2028, ou un contournement tenté ou sanctionné",
+    "contredirait": "une vente documentée de ces jetons avant mai 2028, sans modification de la règle"
+   },
+   "option": {
+    "acteur": "famille Trump et autres initiés de WLF",
+    "avant": "vendre les jetons WLFI dès que le marché le permet",
+    "apres": "ne pouvoir vendre qu'à partir de mai 2028, ou rester bloqué si l'on n'a pas opté pour le nouveau régime"
+   }
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le contrat de vesting WLFI inclut-il bien les portefeuilles de la famille Trump ?",
+   "type": "documentation",
+   "carte": "CTR@6",
+   "manque": "les résultats mentionnent six portefeuilles d'initiés sans identifier ceux de la famille Trump : cette identification est l'attendu de la garantie et ferait passer la lecture de f à F",
+   "resolution": "explorateur on-chain du contrat de vesting, divulgations de WLF et reportages de CoinDesk ou Reuters"
+  },
+  {
+   "question": "La fusion TMTG-TAE est-elle conclue (S-4 déclaré effectif, vote des actionnaires tenu) ?",
+   "type": "documentation",
+   "carte": "SEU@6",
+   "manque": "aucune date de clôture de la fusion n'est établie : sans cet état, la valeur de la participation de Trump reste hypothétique",
+   "resolution": "dépôts SEC de TMTG (S-4/A, 8-K)"
+  }
+ ],
+ "etat": "[2026-11-04 | 789 jours] CONTRAINTE@6[f]",
+ "disponible_le": "2026-11-04",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Forbes Trump net worth DJT share price crypto holdings November 2026",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Forbes earliest 2024 estimate Trump net worth January 2024 baseline $2.3 billion or $2.6 billion",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Trump Media merger fusion company shares valuation closing timeline 2026 2027",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Trump Media DJT stock decline losses 2026 crypto treasury writedown",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "lock-up restrictions Trump Media shares Trump trust stake sale limits 2026",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "World Liberty Financial token sales unlocked Trump family crypto income 2026 value",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "CRO@6"
+   ],
+   "requete": "Trump net worth Forbes changes 2025 2026 contributions from DJT, World Liberty Financial and Trump memecoin",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "CTR@6"
+   ],
+   "requete": "DJT share price needed for Trump net worth to reach $9 billion, Forbes valuation method and discounts on illiquid holdings",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "requete": "World Liberty Financial WLFI token trading restrictions and price 2026 Trump family holdings",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "OUI si, à un moment quelconque entre 2027 et 2028, une estimation Forbes en temps réel (archivée sur la Wayback Machine) donne au président en exercice une fortune nette supérieure ou égale à 4 fois la première estimation Forbes archivée de l'année précédant son entrée en fonction.",
+   "source_resolution": {
+    "emetteur": "Forbes (profil de la fortune en temps réel du président), avec Bloomberg Billionaires Index en repli",
+    "document": "Pages archivées du profil Forbes du président sur la Wayback Machine (web.archive.org), comparées à la première estimation archivée de l'année précédant son entrée en fonction (ex. 2,6 Md$ au 12 janvier 2024 pour Trump).",
+    "regle_ambiguite": "Si Forbes n'est pas disponible, utiliser le Bloomberg Billionaires Index. Si aucun des deux n'est disponible ou à jour, se fier aux déclarations financières fédérales obligatoires et aux autres sources crédibles. En cas d'estimations divergentes, la source primaire Forbes prévaut."
+   },
+   "vue_exterieure": {
+    "frequence": 0.025,
+    "classe_de_reference": "Périodes de deux ans de mandat d'un président américain en exercice, de Truman à Biden (présidences de 1945 à 2025), où la fortune nette estimée a atteint au moins 4 fois sa valeur de l'année précédant l'entrée en fonction. Aucun cas n'est recensé.",
+    "source": "Registre historique : « List of Presidents of the United States by net worth » (Wikipedia), qui agrège les estimations de patrimoine et les déclarations financières. Il est cité dans [R2] et complété par les estimations Forbes pour les présidents depuis 2016.",
+    "periode": "1945-2025",
+    "disponible_le": "2026-11-04",
+    "classe_alternative": null,
+    "motif_sans_alternative": "[R1] et [R3] ne fournissent aucune fréquence chiffrée utilisable (pas de comptage des quadruplements en deux ans parmi les milliardaires). Elles ne permettent donc pas de construire une seconde classe de référence honnête.",
+    "ecart_critere": "La classe compte les présidents en exercice sur des périodes de deux ans, avec des estimations de nature hétérogène (déclarations, presse, Forbes). Le critère exige en plus une référence précise (première estimation Forbes archivée de l'année précédant l'entrée en fonction) et un seuil atteint à un moment quelconque de la période, ce qui est un peu plus permissif qu'une valeur en fin de période. Le petit échantillon (environ 14 présidents) rend l'estimation très incertaine."
+   }
+  }
+ ]
+}
