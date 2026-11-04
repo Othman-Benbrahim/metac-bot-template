@@ -66,6 +66,37 @@ def enregistrer(registre: Path, nouvelles: dict[str, int], score: dict) -> int:
     return len(ajout)
 
 
+def issues_autres(registre: Path) -> int:
+    """Questions hors alphabet : leur issue brute (texte de Metaculus : yes/no, une valeur, une option…) dans
+    registre/issues-autres.jsonl, jamais réécrite. Le score de ces questions reste celui de Metaculus."""
+    from datetime import datetime, timezone
+    from forecasting_tools import MetaculusClient
+    f = registre / "journal-autres.jsonl"
+    if not f.is_file():
+        return 0
+    sortie = registre / "issues-autres.jsonl"
+    deja = {json.loads(x)["question_id"] for x in sortie.read_text(encoding="utf-8").splitlines() if x.strip()} \
+        if sortie.is_file() else set()
+    client, n = MetaculusClient(), 0
+    maintenant = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    vus = set()
+    for x in map(json.loads, f.read_text(encoding="utf-8").splitlines()):
+        qid = x["question_id"]
+        if qid in deja or qid in vus:
+            continue
+        vus.add(qid)
+        try:
+            r = client.get_question_by_url(x["url"]).resolution_string
+        except Exception:
+            continue
+        if r:
+            with open(sortie, "a", encoding="utf-8", newline="\n") as g:
+                g.write(json.dumps({"question_id": qid, "type": x["type"], "issue": r, "constatee_le": maintenant},
+                                   ensure_ascii=False, sort_keys=True) + "\n")
+            n += 1
+    return n
+
+
 def brier(p: float, y: int) -> float:
     return (p - y) ** 2
 
@@ -132,4 +163,6 @@ if __name__ == "__main__":
     s = scorer(reg, iss)
     if args.enregistrer:
         s["issues_ajoutees"] = enregistrer(reg, iss, s)
+        if args.metaculus:
+            s["issues_autres_ajoutees"] = issues_autres(reg)
     print(json.dumps(s, ensure_ascii=False, indent=2))

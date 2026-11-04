@@ -85,6 +85,8 @@ prévisions postées, les questions binaires journalisées (bras C ou A posté) 
 |---|---|---|
 | `registre/journal-bot.jsonl` | une ligne scellée par question binaire : bras A, B et C, bras posté, statut de l'alphabet | chaque passage du bot |
 | `registre/dossiers/` | le dossier de lecture de chaque question | chaque passage du bot |
+| `registre/journal-autres.jsonl` | une ligne scellée par question non binaire (numérique, choix multiple, date, conditionnelle) : la prévision postée (bras A) et l'empreinte du raisonnement | chaque passage du bot |
+| `registre/issues-autres.jsonl` | l'issue brute de ces questions, telle que Metaculus la donne, jamais réécrite | le workflow « Score du bot alphabet » |
 | `registre/issues.jsonl` | l'issue de chaque question résolue (0 ou 1), jamais réécrite | le workflow « Score du bot alphabet », chaque lundi |
 | `registre/score.json` | Brier et score logarithmique par bras, comparaison appariée C − B et C − A | le même workflow |
 

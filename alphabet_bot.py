@@ -4,7 +4,8 @@
 `alphabet-situationnel/`. Le bot hérite du bot modèle de Metaculus et ne remplace que les questions binaires :
   - binaires : bras A (modèle seul, le raisonnement du modèle Metaculus, scellé d'abord), puis l'alphabet (bras B et C) ;
     le bras C est posté s'il est estimé, le bras B si aucune carte n'est ancrée (état nul), sinon le bras A ;
-  - numériques, choix multiples, dates, conditionnelles : le bot modèle, inchangé (bras A).
+  - numériques, choix multiples, dates, conditionnelles : le bot modèle, inchangé (bras A), journalisé et scellé dans
+    registre/journal-autres.jsonl.
 Chaque question binaire laisse une ligne scellée dans registre/journal-bot.jsonl et son dossier dans registre/dossiers/.
 """
 from __future__ import annotations
@@ -15,7 +16,8 @@ import json
 import logging
 import os
 import sys
-from datetime import timezone
+import hashlib
+from datetime import datetime, timezone
 
 from forecasting_tools import (
     AskNewsSearcher,
@@ -55,6 +57,44 @@ class AlphabetBot(FallTemplateBot2026):
             return await s.invoke(requete)
         # Sans moteur de recherche : réponse du modèle de mémoire, consignée comme requête non exécutée.
         return await self.get_llm("default", "llm").invoke(f"From what you know, list dated facts about: {requete}")
+
+    def _journaliser_autre(self, question, genre: str, rp: ReasonedPrediction):
+        """Questions hors alphabet (numériques, choix multiples, dates, conditionnelles) : bras A seul, journalisé et scellé
+        dans registre/journal-autres.jsonl, pour garder l'historique complet du bot. Un échec d'écriture ne bloque rien."""
+        try:
+            v = rp.prediction_value
+            valeur = v.model_dump(mode="json") if hasattr(v, "model_dump") else v
+            fin = getattr(question, "scheduled_resolution_time", None) or getattr(question, "close_time", None)
+            maintenant = datetime.now(timezone.utc)
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(question.id_of_question or question.id_of_post
+                                                                         or question.page_url),
+                     "url": question.page_url or "", "titre": question.question_text, "type": genre,
+                     "date_information": maintenant.date().isoformat(),
+                     "horodatage": maintenant.isoformat(timespec="seconds"),
+                     "resolution_prevue": fin.astimezone(timezone.utc).date().isoformat() if fin else None,
+                     "bras_poste": "A", "prediction": valeur,
+                     "raisonnement_sha256": hashlib.sha256((rp.reasoning or "").encode("utf-8")).hexdigest()}
+            ligne["sceau"] = ap.sceau(ligne)
+            ap.REGISTRE.mkdir(parents=True, exist_ok=True)
+            with open(ap.REGISTRE / "journal-autres.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+        except Exception:
+            logger.exception("registre : question %s non journalisée", getattr(question, "page_url", "?"))
+        return rp
+
+    async def _run_forecast_on_numeric(self, question, research):
+        return self._journaliser_autre(question, "numerique", await super()._run_forecast_on_numeric(question, research))
+
+    async def _run_forecast_on_multiple_choice(self, question, research):
+        return self._journaliser_autre(question, "choix_multiple",
+                                       await super()._run_forecast_on_multiple_choice(question, research))
+
+    async def _run_forecast_on_date(self, question, research):
+        return self._journaliser_autre(question, "date", await super()._run_forecast_on_date(question, research))
+
+    async def _run_forecast_on_conditional(self, question, research):
+        return self._journaliser_autre(question, "conditionnelle",
+                                       await super()._run_forecast_on_conditional(question, research))
 
     async def _llm(self, consigne: str) -> str:
         return await self.get_llm("default", "llm").invoke(consigne)
@@ -141,7 +181,14 @@ def lignes_registre() -> list[dict]:
     return [json.loads(x) for x in f.read_text(encoding="utf-8").splitlines() if x.strip()]
 
 
-def bilan(rapports: list, nouvelles: list[dict], publier: bool) -> tuple[str, int]:
+def lignes_autres() -> list[dict]:
+    f = ap.REGISTRE / "journal-autres.jsonl"
+    if not f.is_file():
+        return []
+    return [json.loads(x) for x in f.read_text(encoding="utf-8").splitlines() if x.strip()]
+
+
+def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dict] | None = None) -> tuple[str, int]:
     """Bilan lisible du passage et code de sortie : 1 si des questions ont été trouvées mais rien n'a été prévu."""
     ok = [r for r in rapports if not isinstance(r, BaseException)]
     ko = [r for r in rapports if isinstance(r, BaseException)]
@@ -157,6 +204,7 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool) -> tuple[str, in
         f"  {'postées sur Metaculus' if publier else 'NON postées (--sans-publier)'} : {len(ok)}",
         f"  questions binaires journalisées : {len(nouvelles)}  (bras C posté : {bras['C']}, bras B : {bras['B']}, bras A : {bras['A']})",
         f"  statuts de l'alphabet : {statuts or '—'}",
+        f"  autres questions journalisées (bras A seul) : {len(autres or [])}",
         *[f"  échec : {type(e).__name__} : {str(e)[:300]}" for e in ko[:10]],
         "  aucune question ouverte trouvée : rien à faire pour l'instant." if not rapports else "",
         "=" * 70])
@@ -185,11 +233,11 @@ if __name__ == "__main__":
               "test_questions": ["bot-testing-area"]}[args.mode]
     if args.mode == "test_questions":
         bot.skip_previously_forecasted_questions = False
-    avant = len(lignes_registre())
+    avant, avant_autres = len(lignes_registre()), len(lignes_autres())
     rapports = []
     for cible in cibles:
         rapports += asyncio.run(bot.forecast_on_tournament(cible, return_exceptions=True))
     bot.log_report_summary(rapports, raise_errors=False)
-    texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier)
+    texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
     print(texte)
     sys.exit(code)
