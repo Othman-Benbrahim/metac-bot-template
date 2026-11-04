@@ -19,6 +19,8 @@ sys.path.insert(0, str(RACINE))
 os.environ.setdefault("ALPHABET_REGISTRE", tempfile.mkdtemp(prefix="registre-"))
 import alphabet_pipeline as ap  # noqa: E402
 
+ap.NB_VUES = 1   # les tests historiques fournissent une seule vue ; les vues multiples ont leurs propres tests
+
 MAINTENANT = datetime(2026, 11, 3, 18, 0, tzinfo=timezone.utc)
 Q = ap.Question(id=4242, url="https://www.metaculus.com/questions/4242/", titre="Will A and B cross an escalation threshold before 2027?",
                 contexte="Fictitious test question.", criteres="Resolves YES if a recognized escalation threshold is crossed.",
@@ -368,6 +370,67 @@ class Tests(unittest.TestCase):
             self.assertAlmostEqual(nul["gain_B_sur_A"], 100 * math.log(0.96 / 0.7))
         finally:
             ap.REGISTRE = ancien
+
+    # --- 0.3.0 : taux de base médian sur plusieurs vues, questions résolues comparables ---
+
+    def test_vue_mediane(self):
+        ancien, ap.NB_VUES = ap.NB_VUES, 3
+        try:
+            r, llm = lancer([PLAN, vue(0.30), vue(0.02), {"frequence": None, "motif": "rien"}, lecture()])
+            b = r.ligne["bras"]["B"]
+            self.assertEqual(b["vues"]["valides"], 2)
+            self.assertEqual(b["vues"]["frequences"], [0.02, 0.30])
+            self.assertAlmostEqual(b["vues"]["dispersion"], 0.28)
+            self.assertAlmostEqual(r.p_B, 0.02)                    # médiane basse : une vraie vue, aucun chiffre fabriqué
+            r, _ = lancer([PLAN, vue(0.3), vue(0.1), vue(0.2), lecture()])
+            self.assertAlmostEqual(r.p_B, 0.2)                     # médiane de trois
+            r, _ = lancer([PLAN] + [{"frequence": None, "motif": "aucune base"}] * 3)
+            self.assertEqual(r.ligne["bras"]["C"]["statut"], "sans_vue")
+            self.assertEqual(r.ligne["bras"]["C"]["motif"], "aucune base")
+        finally:
+            ap.NB_VUES = ancien
+
+    def test_historique_metaculus(self):
+        vus = {}
+
+        async def historique(cles, aujourdhui):
+            vus["cles"] = cles
+            return [{"titre": "Will X happen by 2025?", "issue": "yes", "resolue_le": "2025-06-01"},
+                    {"titre": "Will X happen by 2025?", "issue": "yes", "resolue_le": "2025-06-01"},   # doublon
+                    {"titre": "Will Y happen?", "issue": "annulled", "resolue_le": "2025-01-01"},      # pas oui/non
+                    {"titre": "Will Z happen?", "issue": "no", "resolue_le": "2027-01-01"}]            # après la date
+        plan = dict(PLAN, recherches_historique=["border clash", "ceasefire"])
+        llm = LlmSimule([plan, vue(0.2), lecture()])
+        r = asyncio.run(ap.prevoir_binaire(Q, "r", 0.3, "a", llm, chercher, True, MAINTENANT, historique=historique))
+        self.assertEqual(vus["cles"], ["border clash", "ceasefire"])
+        self.assertEqual(r.ligne["bras"]["B"]["historique"]["trouvees"], 1)
+        self.assertIn("[M1] Will X happen by 2025? → YES", llm.consignes[1])
+        self.assertNotIn("Will Z", llm.consignes[1])
+        self.assertFalse(ap.fondement_memoire(dict(vue(), fondement="questions résolues [M1]", calcul="3/9", source="Metaculus")))
+
+        async def panne(cles, aujourdhui):
+            raise RuntimeError("API indisponible")
+        r = asyncio.run(ap.prevoir_binaire(Q, "r", 0.3, "a", LlmSimule([plan, vue(0.2), lecture()]), chercher, True,
+                                           MAINTENANT, historique=panne))
+        self.assertIn("API indisponible", r.ligne["bras"]["B"]["historique"]["erreur"])
+        self.assertEqual(r.bras_poste, "C")                         # une panne de l'historique ne bloque rien
+
+    def test_recalibration_et_plafonnement_etudies(self):         # 0.3.0 : rapport seulement
+        import random
+        import score_registre as sr
+        self.assertIsNone(sr.recalibration([(0.5, 1)] * 5))        # trop peu de questions : rien
+        rnd = random.Random(1)
+        paires = []
+        for _ in range(200):                                       # prévisions trop tranchées : vrai p = 0,5 + (p-0,5)/2
+            p = rnd.choice([0.05, 0.2, 0.8, 0.95])
+            paires.append((p, int(rnd.random() < 0.5 + (p - 0.5) / 2)))
+        r = sr.recalibration(paires)
+        self.assertLess(r["a"], 1)                                 # détecte l'excès de confiance
+        self.assertGreater(r["gain_hors_echantillon"], 0)
+        lignes = [{"question_id": "1", "p_poste": 0.001}, {"question_id": "2", "p_poste": 0.5}]
+        e = sr.plafonnement_etudie(lignes, {"1": 1, "2": 0})
+        self.assertEqual(e["questions_touchees"], 1)
+        self.assertGreater(e["gain_moyen"], 0)                     # 0,02 au lieu de 0,001 sur un OUI : gain
 
     def test_bornes_api(self):                                    # B1
         self.assertEqual(ap.borner(0.0004), 0.001)

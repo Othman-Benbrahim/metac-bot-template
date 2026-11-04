@@ -1,6 +1,6 @@
 # Situational Alphabet Bot — Abstract
 
-*Othman Ben Brahim · bot version 0.2.3 · skill alphabet-situationnel 0.7.49 · Metaculus FutureEval*
+*Othman Ben Brahim · bot version 0.3.0 · skill alphabet-situationnel 0.7.49 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?
 This bot tests that question in the open, on Metaculus, against questions whose answers nobody knows yet.
@@ -17,7 +17,7 @@ The skill, its engine and its validation rules are documented in
 | Arm | Probability produced by | Purpose |
 |---|---|---|
 | **A** | the language model alone (Metaculus template bot) | control, sealed before any reading |
-| **B** | a reference class found by web search ("how often did this happen in comparable cases?") | base rate |
+| **B** | a reference class found by web search and among already-resolved Metaculus questions (outcomes only); median of three independent estimates | base rate |
 | **C** | the alphabet: reading of the situation, then the engine, starting from B | C vs B = what the reading adds |
 
 The bot posts C when the engine produces a number, B when the reading finds no structure, and A otherwise (no honest

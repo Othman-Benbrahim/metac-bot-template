@@ -136,6 +136,40 @@ class TestsConfiguration(unittest.TestCase):
             self.assertEqual(b._genre_chercheur()[0], genre, chercheur)
             self.assertEqual(b._recherche_reelle(), reelle, chercheur)   # classification et exécution alignées
 
+    def test_second_chercheur(self):                               # 0.3.0
+        base = dict(BASE, EXA_API_KEY="x", ALPHABET_LLM="anthropic/claude-sonnet-5-5",
+                    ALPHABET_CHERCHEUR="smart-searcher/anthropic/claude-haiku-5-5")
+        b, (bloquants, _) = bot(base)
+        self.assertIsNone(b._second_chercheur())
+        with mock.patch.dict(os.environ, dict(base, ALPHABET_CHERCHEUR_2="asknews/news-summaries"), clear=True):
+            b = ab.construire(publier=False)
+            self.assertEqual(b._second_chercheur()[0], "asknews")
+            bloquants, _ = ab.problemes(b, os.environ)
+            self.assertTrue(any("ALPHABET_CHERCHEUR_2" in x for x in bloquants))   # clé AskNews absente
+        with mock.patch.dict(os.environ, dict(base, ALPHABET_CHERCHEUR_2="anthropic/claude-haiku-5-5"), clear=True):
+            b = ab.construire(publier=False)
+            self.assertIsNone(b._second_chercheur())                                # pas de web : ignoré
+            _, avert = ab.problemes(b, os.environ)
+            self.assertTrue(any("ignoré" in x for x in avert))
+
+    def test_historique_issues_seules(self):                       # 0.3.0
+        import asyncio
+        from datetime import datetime, timezone
+        q = mock.Mock(question_text="Will A happen?", resolution_string="no", community_prediction_at_access_time=0.9,
+                      actual_resolution_time=datetime(2025, 3, 1, tzinfo=timezone.utc), scheduled_resolution_time=None)
+        filtres = []
+
+        async def faux(self, f, *a, **k):
+            filtres.append(f)
+            return [q]
+        b, _ = bot(dict(BASE, EXA_API_KEY="x", ALPHABET_LLM="anthropic/claude-sonnet-5-5",
+                        ALPHABET_CHERCHEUR="smart-searcher/anthropic/claude-haiku-5-5"))
+        with mock.patch.object(ab.MetaculusClient, "get_questions_matching_filter", faux):
+            out = asyncio.run(b._historique(["border clash"], "2026-11-03"))
+        self.assertEqual(out, [{"titre": "Will A happen?", "issue": "no", "resolue_le": "2025-03-01"}])  # rien d'autre
+        self.assertEqual(filtres[0].other_url_parameters, {"search": "border clash"})
+        self.assertEqual(filtres[0].allowed_statuses, ["resolved"])
+
 
 if __name__ == "__main__":
     unittest.main()
