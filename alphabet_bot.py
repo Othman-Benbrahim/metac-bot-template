@@ -264,9 +264,17 @@ if __name__ == "__main__":
     if args.mode == "test_questions":
         bot.skip_previously_forecasted_questions = False
     avant, avant_autres = len(lignes_registre()), len(lignes_autres())
-    rapports = []
+    # 0.1.6 (budget) : au plus ALPHABET_MAX_QUESTIONS questions nouvelles par passage, toutes cibles confondues. Le coût
+    # dépend du nombre de questions traitées ; les questions déjà prévues ne coûtent rien et ne comptent pas.
+    plafond = int(os.environ.get("ALPHABET_MAX_QUESTIONS") or 3)
+    questions = []
     for cible in cibles:
-        rapports += asyncio.run(bot.forecast_on_tournament(cible, return_exceptions=True))
+        ouvertes = client.get_all_open_questions_from_tournament(cible)
+        if bot.skip_previously_forecasted_questions:
+            ouvertes = [q for q in ouvertes if not q.already_forecasted]
+        questions += ouvertes
+    print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond du passage : {plafond}")
+    rapports = asyncio.run(bot.forecast_questions(questions[:plafond], return_exceptions=True)) if questions else []
     bot.log_report_summary(rapports, raise_errors=False)
     texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
     print(texte)

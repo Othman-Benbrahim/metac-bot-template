@@ -6,10 +6,13 @@ on:
       mode:
         description: "tournament, minibench ou test_questions"
         default: "minibench"
-  # Activée le 2026-11-04 après trois passages manuels en test_questions. Mode minibench (valeur par défaut ci-dessous) ;
-  # les questions déjà prévues sont sautées : le coût dépend du nombre de questions nouvelles, pas de la fréquence.
+      max_questions:
+        description: "questions nouvelles au plus pour ce passage (budget)"
+        default: "3"
+  # Mode minibench, une fois par jour, au plus 3 questions nouvelles par passage (budget : ALPHABET_MAX_QUESTIONS).
+  # Les questions déjà prévues sont sautées et ne coûtent rien.
   schedule:
-    - cron: "17 */4 * * *"   # toutes les 4 heures
+    - cron: "17 9 * * *"   # chaque jour à 9 h 17 UTC
 
 concurrency:
   group: bot-alphabet-registre   # partagé avec le score : une seule écriture du registre à la fois
@@ -48,6 +51,7 @@ jobs:
           ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_LECTURE_HORS_STRATE: ${{ vars.ALPHABET_LECTURE_HORS_STRATE }}
+          ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '3' }}
       - name: Enregistrer le registre
         if: always()
         run: |

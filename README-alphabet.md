@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.5 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.1.6 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -70,7 +70,8 @@ Reste à faire :
      anciens, et sa recherche par défaut passe par le proxy disparu.
 3. Onglet **Actions** : autoriser les workflows, puis **Bot alphabet situationnel → Run workflow**, mode `test_questions`.
    Vérifier sur Metaculus (compte bot) et dans `registre/`. Puis mode `minibench`.
-4. La planification est active depuis le 2026-11-04 : mode `minibench`, toutes les 4 heures. Pour la suspendre :
+4. La planification est active : mode `minibench`, **une fois par jour, au plus 3 questions nouvelles par passage**
+   (champ `max_questions` au lancement manuel, ou variable `ALPHABET_MAX_QUESTIONS`). Pour la suspendre :
    *Actions → Bot alphabet situationnel → ⋯ → Disable workflow*.
 
 En local : `cp .env.template .env`, remplir, puis `uv run python alphabet_bot.py --mode test_questions --sans-publier`.
