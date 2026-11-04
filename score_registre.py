@@ -244,6 +244,26 @@ def puissance_a_priori(gains: list[float], m: float | None = None, simuler: bool
     return sortie
 
 
+def biais_C(apparies: list) -> dict | None:
+    """0.4.2 : le sens unique de C. Avec des multiplicateurs tous ≥ 1 (décision d'auteur 9 du skill), C ne peut que
+    monter au-dessus de B : il gagne sur les OUI et perd sur les NON. Mesure : déplacement moyen de C par rapport à B
+    (en logit), gain de C sur B séparé selon l'issue, et taux de OUI observé contre la moyenne de B et de C. Si C est
+    au-dessus du taux de OUI réel alors que B y est, le biais est établi et c'est la décision 9 qu'il faut rouvrir."""
+    if not apparies:
+        return None
+    deplacement = [_logit(p["C"]) - _logit(p["B"]) for p, _ in apparies]
+    oui = [gain_pair(p["C"], p["B"], y) for p, y in apparies if y == 1]
+    non = [gain_pair(p["C"], p["B"], y) for p, y in apparies if y == 0]
+    n = len(apparies)
+    return {"n": n, "deplacement_logit_moyen": sum(deplacement) / n,
+            "part_C_au_dessus_de_B": sum(d > 1e-9 for d in deplacement) / n,
+            "gain_sur_les_OUI": {"n": len(oui), "moyen": sum(oui) / len(oui) if oui else None},
+            "gain_sur_les_NON": {"n": len(non), "moyen": sum(non) / len(non) if non else None},
+            "taux_de_OUI": sum(y for _, y in apparies) / n,
+            "B_moyen": sum(p["B"] for p, _ in apparies) / n, "C_moyen": sum(p["C"] for p, _ in apparies) / n,
+            "lecture": "C_moyen au-dessus du taux de OUI quand B_moyen en est proche : C surestime (biais à la hausse)"}
+
+
 def comparer(apparies: list, x: str, ref: str, borne: float | None = None) -> dict:
     g = [gain_pair(p[x], p[ref], y) for p, y in apparies]
     d_brier = [brier(p[x], y) - brier(p[ref], y) for p, y in apparies]
@@ -431,7 +451,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
 
     comp = None
     if apparies:
-        comp = {"n": len(apparies), "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()),
+        comp = {"n": len(apparies), "biais_C": biais_C(apparies), "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()),
                 "C_sur_A": comparer(apparies, "C", "A"),
                 "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "
                            "(100 × écart de ln p). Si gain_sans_pire_question change de signe, le résultat tient à une "
