@@ -332,6 +332,20 @@ class Tests(unittest.TestCase):
         self.assertIsNone(r.ligne["bras"]["C"]["relance"])
         self.assertIn("set aside on evidence", r.commentaire)
 
+    def test_dynamique_observee(self):                            # 0.2.3
+        lec = lecture_vide(("contredit",) * 4)
+        lec["dynamique_observee"] = "Les deux gouvernements multiplient les déclarations sans acte, en attendant l'élection."
+        r, _ = lancer([PLAN, vue(0.04), lec])
+        d = r.ligne["bras"]["C"]["dynamique_observee"]
+        self.assertIn("déclarations", d["texte"])
+        self.assertEqual(d["cartes_nommees"], [])
+        nom = ap.noms_cartes()["SEU"]
+        lec["dynamique_observee"] = f"On approche d'un {nom.lower()}."
+        r, _ = lancer([PLAN, vue(0.04), lec])
+        self.assertEqual(r.ligne["bras"]["C"]["dynamique_observee"]["cartes_nommees"], ["SEU"])   # signalé, gardé
+        r, _ = lancer([PLAN, vue(0.04), lecture_vide(("contredit",) * 4)])
+        self.assertIsNone(r.ligne["bras"]["C"]["dynamique_observee"])                         # absente : rien
+
     def test_relance_desactivable(self):
         ancien, ap.RELANCE_ETAT_NUL = ap.RELANCE_ETAT_NUL, False
         try:

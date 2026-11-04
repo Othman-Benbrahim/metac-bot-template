@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.2.2 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.2.3 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -39,6 +39,9 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
    recherche (`aucun_fait`, `non_cherchee`), le bot relance une fois des recherches ciblées sur elles (6 au plus),
    formées sur le phénomène que décrit leur marqueur, puis fait relire. L'état nul n'est accepté qu'ensuite, et il est
    qualifié : `structure_absente` (chaque candidate écartée sur pièces) ou `angle_mort` (il en reste une non vérifiée).
+   Le lecteur décrit aussi, en une ou deux phrases et sans nommer de carte, la dynamique que montrent les faits
+   (`dynamique_observee`, hors calcul ; une description qui nomme une carte est gardée mais signalée). Ce corpus servira,
+   après évaluation, à chercher une structure qui manquerait à l'alphabet.
 6. **Choix du bras posté** (voir ci-dessous), commentaire public expliquant le choix, envoi à Metaculus.
 7. **Registre** : une ligne scellée (SHA-256) avec les trois bras, et le dossier de lecture complet, enregistrés dans
    le dépôt par le workflow.
@@ -151,6 +154,7 @@ Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit 
 
 ## Historique utile
 
+- **0.2.3** : `dynamique_observee` dans les états nuls (matériau pour une éventuelle carte manquante, hors calcul).
 - **0.2.2** : relance ciblée des angles morts avant d'accepter un état nul ; nature de l'état nul au registre et au
   score ; plafond porté à 5 questions par jour ; le Brier apparié reste le critère L7 du skill.
 - **0.2.1** : le score logarithmique devient la base du score (règle de Metaculus) ; le Brier passe en contrôle.

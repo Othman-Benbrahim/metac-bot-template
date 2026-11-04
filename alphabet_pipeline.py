@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.2.2"
+VERSION_BOT = "0.2.3"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -297,6 +297,10 @@ def regles_dossier() -> str:
 - Ne cite que des faits trouvés dans les résultats de recherche fournis ; n'invente ni source, ni URL, ni date.
 - ÉTAT NUL ADMIS : si aucun fait ne remplit le marqueur d'une carte, "mots" est une liste vide et chaque candidate va
   dans rejets. C'est une lecture légitime (« aucune structure lue »), jamais un échec : ne force pas une carte.
+- dynamique_observee (seulement si "mots" est vide) : en une ou deux phrases, la dynamique que les faits trouvés
+  montrent malgré tout (qui agit, sur quoi, dans quel sens), SANS nommer aucune carte ni structure de l'alphabet ;
+  "aucune" si les faits ne montrent aucune dynamique. Elle n'entre pas dans le calcul : elle sert à chercher plus tard
+  une structure qui manquerait à l'alphabet.
 """
 
 
@@ -335,7 +339,7 @@ FICHES DES CANDIDATES :
 FORMAT (exemple fictif, à suivre pour la structure seulement) :
 {json.dumps(exemple, ensure_ascii=False, indent=1)}
 
-Rends UNIQUEMENT un objet JSON avec les clés : {", ".join(CLES_LECTURE)}.
+Rends UNIQUEMENT un objet JSON avec les clés : {", ".join(CLES_LECTURE)} (et dynamique_observee si "mots" est vide).
 L'événement prévu est {ev['carte']}@{ev['strate']} {ev['type']} : {"cette carte ne doit PAS figurer dans les mots" if ev['type'] == "apparait" else "cette carte doit figurer dans les mots"}."""
 
 
@@ -363,6 +367,19 @@ Interdit : cotes de marché, prévisions de plateformes, avis de prévisionniste
 le {aujourdhui} comptent.
 
 Rends UNIQUEMENT un objet JSON : {{"recherches": [{{"cartes": ["CARTE@strate"], "requete": "..."}}]}}"""
+
+
+def dynamique_observee(lecture: dict) -> dict | None:
+    """0.2.3 : la dynamique décrite par le lecteur dans un état nul, hors calcul, pour chercher plus tard une structure
+    manquante. Une description qui nomme une carte est gardée mais signalée (elle ne vaut pas description neutre)."""
+    texte = lecture.get("dynamique_observee")
+    if not isinstance(texte, str) or not texte.strip():
+        return None
+    texte = texte.strip()[:600]
+    bas = texte.lower()
+    nommees = sorted({code for code, nom in noms_cartes().items()
+                      if re.search(rf"\b{re.escape(code)}\b", texte) or str(nom).lower() in bas})
+    return {"texte": texte, "cartes_nommees": nommees}
 
 
 def nature_etat_nul(categories: dict) -> str:
@@ -644,6 +661,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
             # le bot postera le taux de base (bras B).
             nature = nature_etat_nul(dossier.get("_categories_rejet"))
             trace.update(dossier=dossier, statut="etat_nul", nature_etat_nul=nature, evenement=evenement,
+                         dynamique_observee=dynamique_observee(lecture),
                          semantique=plan["semantique"],
                          motif=f"aucune carte ancrée ({nature.replace('_', ' ')}) : pas d'ajustement du taux de base")
             return trace
@@ -768,7 +786,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "recherches": c.get("recherches_reference")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "recherches",
-                                                        "nature_etat_nul", "relance")},
+                                                        "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet")}},
              "bras_poste": poste, "p_poste": p_poste}
     ecrire_registre(ligne, c.get("dossier"))
