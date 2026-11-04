@@ -159,50 +159,107 @@ def gain_pair(p_x: float, p_ref: float, y: int) -> float:
 
 
 def borne_gain() -> float:
-    """Écart maximal possible entre deux bras sur une question, en points : les probabilités sont bornées."""
+    """Écart maximal possible entre deux bras quelconques sur une question, en points : les probabilités sont bornées."""
     return 100 * math.log(ap.BORNE_HAUTE / ap.BORNE_BASSE)
 
 
-def e_valeur(gains: list[float]) -> float:
-    """0.4.0 : test séquentiel valide à tout instant d'arrêt (pari, mélange de mises) de H0 « le bras ne fait pas
-    mieux, en moyenne, que sa référence ». Les écarts sont bornés, donc ∏(1 + λ·d/M) est une surmartingale sous H0 ;
-    la moyenne sur une grille de λ fixée d'avance l'est aussi. Rejet au niveau α quand e ≥ 1/α, quel que soit le moment
-    où l'on regarde : on peut consulter le score chaque semaine sans tricher."""
-    m = borne_gain()
-    richesses = []
+def borne_gain_C_B() -> float:
+    """0.4.1 : écart maximal entre C et B. Le moteur plafonne le produit des multiplicateurs à plafond_LR (10) et rend
+    « non estimé » tout a priori dont la cote s'écarte de plus de ce facteur de celle du taux de base déclaré : la cote
+    de C reste dans un facteur 10 de celle de B, donc |ln p_C − ln p_B| ≤ ln 10 sur chaque issue (≈ 230 points). Borne
+    structurelle du skill gelé ; le score vérifie qu'elle tient (borne_depassee), sinon il retombe sur la borne générale."""
+    try:
+        r = float(ap._moteur().P["plafond_LR"])
+    except Exception:
+        r = 10.0
+    return 100 * math.log(r)
+
+
+def _mises_adaptatives(gains: list[float], m: float, plafond: float = 0.9) -> float:
+    """Pari à mise prévisible (type aGRAPA, Waudby-Smith et Ramdas) : la mise de chaque question se fixe sur les
+    questions PRÉCÉDENTES seulement, ce qui garde la validité ; elle grandit quand l'écart observé est net."""
+    k, s1, s2, n = 1.0, 0.0, 0.0, 0
+    for d in gains:
+        x = max(-1.0, min(1.0, d / m))
+        moy = s1 / n if n else 0.0
+        var = (s2 / n - moy * moy) if n else 0.25
+        lam = max(0.0, min(plafond, moy / (var + moy * moy))) if n and (var + moy * moy) > 0 else 0.0
+        k *= 1 + lam * x
+        s1, s2, n = s1 + x, s2 + x * x, n + 1
+    return k
+
+
+def e_valeur(gains: list[float], m: float | None = None) -> float:
+    """Test séquentiel valide à tout instant d'arrêt de H0 « le bras ne fait pas mieux, en moyenne, que sa
+    référence ». Les écarts sont bornés par m, donc chaque ∏(1 + λₜ·d/m) à mise prévisible est une surmartingale sous
+    H0, et leur moyenne aussi. Rejet au niveau α quand e ≥ 1/α, quel que soit le moment où l'on regarde.
+    0.4.1 : moyenne à parts égales d'une grille de mises fixes (0.4.0) et d'une mise adaptative, plus puissante."""
+    m = m or borne_gain()
+    grille = []
     for lam in LAMBDAS:
         k = 1.0
         for d in gains:
             k *= 1 + lam * max(-1.0, min(1.0, d / m))
-        richesses.append(k)
-    return sum(richesses) / len(richesses)
+        grille.append(k)
+    return 0.5 * sum(grille) / len(grille) + 0.5 * _mises_adaptatives(gains, m)
 
 
-def puissance_a_priori(gains: list[float]) -> dict:
-    """Questions appariées nécessaires pour détecter un gain moyen donné (test unilatéral α = 5 %, puissance 80 %),
-    avec l'écart-type observé si le registre en a assez, sinon une hypothèse déclarée. Ordre de grandeur seulement :
-    le test séquentiel, plus prudent, en demande davantage."""
+def _questions_sequentiel(delta: float, sigma: float, m: float, essais: int = 60, n_max: int = 1500,
+                          graine: int = 7) -> int | None:
+    """Questions nécessaires pour que le test séquentiel conclue dans 80 % des cas, par simulation (écarts normaux
+    d'écart-type sigma, tronqués à ±m). None si au-delà de n_max."""
+    import random
+    rnd = random.Random(graine)
+    temps = []
+    for _ in range(essais):
+        g, atteint = [], None
+        for n in range(1, n_max + 1):
+            g.append(max(-m, min(m, rnd.gauss(delta, sigma))))
+            if n % 10 == 0 and e_valeur(g, m) >= 1 / ALPHA:
+                atteint = n
+                break
+        temps.append(atteint or n_max + 1)
+    temps.sort()
+    q80 = temps[int(0.8 * len(temps)) - 1]
+    return None if q80 > n_max else q80
+
+
+def puissance_a_priori(gains: list[float], m: float | None = None, simuler: bool = True) -> dict:
+    """Questions appariées nécessaires pour détecter un gain moyen de 5, 10 ou 20 points (α = 5 %, puissance 80 %),
+    avec l'écart-type observé (dès 5 questions) ou supposé. 0.4.1 : deux colonnes, car elles diffèrent d'un facteur
+    allant jusqu'à 10 : le test classique à effectif fixé (à ne lire qu'une fois, à la fin) et le test séquentiel
+    réellement utilisé (lisible chaque semaine), estimé par simulation."""
+    m = m or borne_gain()
     if len(gains) >= 5:
         moy = sum(gains) / len(gains)
         sigma, origine = math.sqrt(sum((g - moy) ** 2 for g in gains) / (len(gains) - 1)), "observé"
     else:
         sigma, origine = ECART_TYPE_SUPPOSE, "supposé (moins de 5 questions appariées)"
-    return {"ecart_type": sigma, "origine": origine,
-            "questions_necessaires": {f"{d} points": math.ceil(((1.645 + 0.842) * sigma / d) ** 2) for d in (5, 10, 20)}}
+    sortie = {"ecart_type": sigma, "origine": origine, "borne": m,
+              "test_classique": {f"{d} points": math.ceil(((1.645 + 0.842) * sigma / d) ** 2) for d in (5, 10, 20)}}
+    if simuler:
+        sortie["test_sequentiel"] = {f"{d} points": (_questions_sequentiel(d, sigma, m) or "> 1500") for d in (5, 10, 20)}
+    sortie["lecture"] = ("le test séquentiel est celui que le score applique ; le test classique n'est valide que si "
+                         "l'on fixe le nombre de questions d'avance et qu'on ne regarde qu'une fois")
+    return sortie
 
 
-def comparer(apparies: list, x: str, ref: str) -> dict:
+def comparer(apparies: list, x: str, ref: str, borne: float | None = None) -> dict:
     g = [gain_pair(p[x], p[ref], y) for p, y in apparies]
     d_brier = [brier(p[x], y) - brier(p[ref], y) for p, y in apparies]
     total = sum(g)
     pire = min(g)
+    m = borne or borne_gain()
+    depassee = any(abs(v) > m + 1e-9 for v in g)
+    if depassee:  # la borne structurelle ne tient pas : on retombe sur la borne générale, toujours vraie
+        m = borne_gain()
     return {"gain_log_moyen": total / len(g),            # LA mesure (unités de score de pair Metaculus)
             "questions_gagnees": sum(v > 0 for v in g), "questions_perdues": sum(v < 0 for v in g),
-            "test_sequentiel": {"e_mieux": e_valeur(g), "e_moins_bien": e_valeur([-v for v in g]),
-                                "seuil": 1 / ALPHA,
+            "test_sequentiel": {"e_mieux": e_valeur(g, m), "e_moins_bien": e_valeur([-v for v in g], m),
+                                "seuil": 1 / ALPHA, "borne": m, "borne_depassee": depassee,
                                 "lecture": f"e ≥ {1 / ALPHA:g} : écart établi au niveau {ALPHA:g}, valide à tout moment "
                                            "de consultation ; en dessous, rien n'est établi dans un sens ni dans l'autre"},
-            "puissance": puissance_a_priori(g),
+            "puissance": puissance_a_priori(g, m),
             "fragilite": {"pire_question": pire,
                           "gain_sans_pire_question": (total - pire) / (len(g) - 1) if len(g) > 1 else None,
                           "lecture": "diagnostic d'influence, pas un test"},
@@ -292,19 +349,44 @@ def plafonnement_etudie(resolues: list[dict], issues: dict) -> dict | None:
 
 def stabilite_strate(tout: list[dict]) -> dict:
     """0.4.0 : la strate de l'événement est posée par le modèle et commande le droit de chiffrer (L7). Sur les
-    questions passées plusieurs fois (essais compris), part des passages qui reprennent la strate du premier."""
+    questions passées plusieurs fois (essais compris), part des passages qui reprennent la strate du premier.
+    0.4.1 : comparaison À VERSION ÉGALE seulement (un changement de consigne n'est pas une instabilité) ; la base de
+    comparaison repart donc à zéro avec chaque version."""
     par_q = {}
     for x in tout:
         ev = x["bras"]["C"].get("evenement")
         m = re.search(r"@(\d+)", ev) if isinstance(ev, str) else None
         if m:
-            par_q.setdefault(x["question_id"], []).append(int(m.group(1)))
+            par_q.setdefault(f"{x['question_id']} ({x.get('version_bot', '?')})", []).append(int(m.group(1)))
     repetees = {q: s for q, s in par_q.items() if len(s) > 1}
     paires = [(s[0], v) for s in repetees.values() for v in s[1:]]
     return {"questions_repetees": len(repetees),
             "accord": (sum(a == b for a, b in paires) / len(paires)) if paires else None,
             "strates_par_question": repetees,
             "lecture": "accord bas : l'étiquette de strate, donc le droit de chiffrer, dépend du tirage"}
+
+
+def statuts_par_version(tout: list[dict]) -> dict:
+    """0.4.1 : statuts de l'alphabet par version du bot, essais compris. Effets attendus après 0.4.0, à vérifier :
+    hors_strate devrait monter (strate à l'aveugle) ; si sans_vue monte en même temps que la dispersion de B baisse,
+    la classe figée est trop étroite."""
+    out = {}
+    for x in tout:
+        v = x.get("version_bot", "?")
+        s = x["bras"]["C"].get("statut")
+        d = out.setdefault(v, {"lignes": 0, "statuts": {}, "dispersion_B": [], "classe": {}})
+        d["lignes"] += 1
+        d["statuts"][s] = d["statuts"].get(s, 0) + 1
+        disp = (x["bras"]["B"].get("vues") or {}).get("dispersion")
+        if disp is not None:
+            d["dispersion_B"].append(disp)
+        cs = x["bras"]["B"].get("classe_statut")
+        if cs:
+            d["classe"][cs] = d["classe"].get(cs, 0) + 1
+    for d in out.values():
+        disp = d.pop("dispersion_B")
+        d["dispersion_B_moyenne"] = sum(disp) / len(disp) if disp else None
+    return out
 
 
 def est_essai(x: dict) -> bool:
@@ -349,7 +431,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
 
     comp = None
     if apparies:
-        comp = {"n": len(apparies), "C_sur_B": comparer(apparies, "C", "B"), "C_sur_A": comparer(apparies, "C", "A"),
+        comp = {"n": len(apparies), "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()),
+                "C_sur_A": comparer(apparies, "C", "A"),
                 "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "
                            "(100 × écart de ln p). Si gain_sans_pire_question change de signe, le résultat tient à une "
                            "seule question. brier_critere_L7 : le critère du skill (§27, C − B ≤ 0) ; s'il contredit le "
@@ -381,6 +464,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
             "recalibration_etudiee": {b: recalibration(v) for b, v in par_bras.items()},
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
             "stabilite_strate": stabilite_strate(tout),
+            "statuts_par_version": statuts_par_version(tout),
             **({"rappel": f"{len(resolues)} questions résolues : décider du plafonnement de la valeur postée "
                           f"(voir plafonnement_etudie et README-alphabet.md, « Décisions en attente »)."}
                if len(resolues) >= RAPPEL_PLAFONNEMENT else {}),

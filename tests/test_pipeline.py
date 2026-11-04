@@ -473,11 +473,37 @@ class Tests(unittest.TestCase):
         self.assertAlmostEqual(sr.e_valeur([]), 1.0)
         self.assertLess(sr.e_valeur([0.0] * 50), 1.0001)            # aucun écart : aucune preuve
         self.assertGreater(sr.e_valeur([40.0] * 200), 20)           # écart constant et net : établi
+        self.assertGreater(sr.e_valeur([10.0] * 150, sr.borne_gain_C_B()),
+                           sr.e_valeur([10.0] * 150))                # 0.4.1 : borne structurelle C−B, plus puissant
+        self.assertAlmostEqual(sr.borne_gain_C_B(), 100 * math.log(10))
         self.assertLess(sr.e_valeur([40.0, -40.0] * 100), 20)       # bruit symétrique : rien d'établi
-        p = sr.puissance_a_priori([])
+        p = sr.puissance_a_priori([], simuler=False)
         self.assertEqual(p["origine"][:7], "supposé")
-        self.assertGreater(p["questions_necessaires"]["5 points"], p["questions_necessaires"]["20 points"])
-        self.assertEqual(sr.puissance_a_priori([10, -10, 10, -10, 10])["origine"], "observé")
+        self.assertGreater(p["test_classique"]["5 points"], p["test_classique"]["20 points"])
+        self.assertEqual(sr.puissance_a_priori([10, -10, 10, -10, 10], simuler=False)["origine"], "observé")
+        self.assertGreater(sr._questions_sequentiel(20, 40, sr.borne_gain_C_B(), essais=20),
+                           p["test_classique"]["20 points"])           # le séquentiel en demande davantage
+
+    def test_borne_depassee_retombe(self):                    # 0.4.1
+        import score_registre as sr
+        apparies = [({"C": 0.9, "B": 0.01, "A": 0.5}, 1)] * 3     # cote ×891 : borne C−B dépassée
+        c = sr.comparer(apparies, "C", "B", sr.borne_gain_C_B())
+        self.assertTrue(c["test_sequentiel"]["borne_depassee"])
+        self.assertAlmostEqual(c["test_sequentiel"]["borne"], sr.borne_gain())
+
+    def test_classe_statut_et_versions(self):                 # 0.4.1
+        import score_registre as sr
+        r, _ = lancer([PLAN, vue(0.2), lecture()])
+        self.assertEqual(r.ligne["bras"]["B"]["classe_statut"], "desactivee")
+        anciens = ap.CLASSE_FIGEE
+        ap.CLASSE_FIGEE = True
+        try:
+            r, _ = lancer([PLAN, "illisible", vue(0.2), lecture()])
+            self.assertEqual(r.ligne["bras"]["B"]["classe_statut"], "echec")
+        finally:
+            ap.CLASSE_FIGEE = anciens
+        v = sr.statuts_par_version([r.ligne | {"_intacte": True}])
+        self.assertEqual(v[ap.VERSION_BOT]["classe"], {"echec": 1})
 
     def test_stabilite_strate(self):                         # 0.4.0
         import score_registre as sr
@@ -489,6 +515,8 @@ class Tests(unittest.TestCase):
         s = sr.stabilite_strate(lignes)
         self.assertEqual(s["questions_repetees"], 2)
         self.assertAlmostEqual(s["accord"], 0.5)
+        lignes[1]["version_bot"] = "0.4.1"                         # 0.4.1 : versions différentes, pas comparées
+        self.assertEqual(sr.stabilite_strate(lignes)["questions_repetees"], 1)
 
     def test_bornes_api(self):                                    # B1
         self.assertEqual(ap.borner(0.0004), 0.001)

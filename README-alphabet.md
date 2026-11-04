@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.4.0 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.4.1 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -94,10 +94,15 @@ alphabet ») :
   Au-delà de 20, l'écart est établi au niveau 5 %, **quel que soit le moment où l'on regarde** : on peut lire le score
   chaque semaine sans fausser la conclusion. En dessous, rien n'est établi ;
 - **la puissance** (`puissance`) : combien de questions appariées il faudrait pour détecter un gain de 5, 10 ou 20
-  points, avec l'écart-type observé (ou supposé, tant qu'il y a moins de 5 questions) ;
+  points, avec l'écart-type observé (ou supposé, tant qu'il y a moins de 5 questions), pour le test séquentiel
+  réellement appliqué (simulé) et, pour mémoire, pour un test classique lu une seule fois. Pour C contre B, le test
+  utilise la borne structurelle du moteur (cote de C dans un facteur 10 de celle de B, soit ≈ 230 points par
+  question) ; si elle était un jour dépassée, il le signale (`borne_depassee`) et retombe sur la borne générale ;
 - **la fragilité** : le gain sans la pire question, simple diagnostic d'influence, pas un test ;
-- **la stabilité de la strate** : sur les questions passées plusieurs fois, la part des passages qui reprennent la
-  même strate (elle commande le droit de chiffrer) ;
+- **la stabilité de la strate** : sur les questions passées plusieurs fois **sous la même version**, la part des
+  passages qui reprennent la même strate (elle commande le droit de chiffrer) ;
+- **les statuts par version** (`statuts_par_version`) : taux de `hors_strate`, `sans_vue`, dispersion moyenne de B et
+  sort de la classe figée (`figee`, `echec`, `desactivee`), pour vérifier les effets attendus de chaque version ;
 - **le Brier apparié** (`brier_critere_L7`) reste calculé : c'est le critère de levée de L7 du skill
   (`validation.md` §27, C − B ≤ 0), qui est propre au skill et ne dépend pas du règlement de Metaculus. Borné, il
   signale aussi quand le log est dominé par une ou deux probabilités extrêmes qui se sont trompées (`accord_avec_log`) ;
@@ -177,7 +182,8 @@ Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit 
 
 - **Plafonner la valeur postée ?** Les bots les mieux classés plafonnent leurs probabilités extrêmes (par exemple
   0,02–0,98) : avec un score log, un 0,001 qui se trompe coûte très cher. Le registre garde 0,001–0,999 pour mesurer ;
-  la question est de plafonner **ce qui est envoyé**. Décision reportée par Othman après des tests de prédiction
+  la question est de plafonner **ce qui est envoyé**. Ce plafonnement change le score Metaculus, pas la mesure de
+  C − B, qui se fait sur les bras bornés à 0,001–0,999 : il n'aide donc pas la puissance du test. Décision reportée par Othman après des tests de prédiction
   suffisants : le score étudie chaque semaine ce qu'aurait changé le plafonnement (`plafonnement_etudie`) et affiche
   un **rappel** à partir de 30 questions résolues.
 - **Recalibrer ?** Le score calcule chaque semaine, à partir de 20 questions résolues par bras, ce que gagnerait une
@@ -186,6 +192,8 @@ Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit 
 
 ## Historique utile
 
+- **0.4.1** : borne structurelle C − B pour le test séquentiel, mise adaptative en plus de la grille, puissance du
+  test séquentiel simulée ; sort de la classe figée au registre ; statuts et stabilité de strate par version.
 - **0.4.0** : classe de référence définie avant les trois comptages ; source « de mémoire » refusée ; strate choisie
   à l'aveugle ; pour chaque carte écartée, le fait attendu et l'extrait le plus proche (`rejets_details`) ; score :
   test séquentiel valide à tout moment, puissance a priori, grille de plafonds, stabilité de la strate. Pistes tirées
