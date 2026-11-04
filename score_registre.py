@@ -204,6 +204,31 @@ def e_valeur(gains: list[float], m: float | None = None) -> float:
     return 0.5 * sum(grille) / len(grille) + 0.5 * _mises_adaptatives(gains, m)
 
 
+def intervalle_sequentiel(gains: list[float], m: float, alpha: float = ALPHA) -> tuple[float, float] | None:
+    """0.5.1 : séquence de confiance (valide à tout moment de consultation) sur le gain MOYEN, par inversion du test
+    par pari : μ est gardé tant qu'aucun des deux tests unilatéraux « moyenne ≤ μ » et « moyenne ≥ μ » ne le rejette
+    au niveau α/2. Les écarts décalés de μ restent bornés par m + |μ|."""
+    if not gains:
+        return None
+
+    def e_dessus(mu):   # contre « moyenne ≤ μ »
+        return e_valeur([d - mu for d in gains], m + abs(mu))
+
+    def e_dessous(mu):  # contre « moyenne ≥ μ »
+        return e_valeur([mu - d for d in gains], m + abs(mu))
+    seuil = 2 / alpha
+    bas, haut = -m, m
+    for _ in range(40):                       # plus petit μ non rejeté par le test « ≤ μ » (e décroît avec μ)
+        mil = (bas + haut) / 2
+        bas, haut = (mil, haut) if e_dessus(mil) >= seuil else (bas, mil)
+    borne_basse = haut
+    bas, haut = -m, m
+    for _ in range(40):                       # plus grand μ non rejeté par le test « ≥ μ » (e croît avec μ)
+        mil = (bas + haut) / 2
+        bas, haut = (bas, mil) if e_dessous(mil) >= seuil else (mil, haut)
+    return borne_basse, bas
+
+
 def _questions_sequentiel(delta: float, sigma: float, m: float, essais: int = 60, n_max: int = 1500,
                           graine: int = 7) -> int | None:
     """Questions nécessaires pour que le test séquentiel conclue dans 80 % des cas, par simulation (écarts normaux
@@ -264,7 +289,7 @@ def biais_C(apparies: list) -> dict | None:
             "lecture": "C_moyen au-dessus du taux de OUI quand B_moyen en est proche : C surestime (biais à la hausse)"}
 
 
-def comparer(apparies: list, x: str, ref: str, borne: float | None = None) -> dict:
+def comparer(apparies: list, x: str, ref: str, borne: float | None = None, principal: bool = False) -> dict:
     g = [gain_pair(p[x], p[ref], y) for p, y in apparies]
     d_brier = [brier(p[x], y) - brier(p[ref], y) for p, y in apparies]
     total = sum(g)
@@ -273,10 +298,20 @@ def comparer(apparies: list, x: str, ref: str, borne: float | None = None) -> di
     depassee = any(abs(v) > m + 1e-9 for v in g)
     if depassee:  # la borne structurelle ne tient pas : on retombe sur la borne générale, toujours vraie
         m = borne_gain()
+    # 0.5.1 : plusieurs comparaisons sur les mêmes questions. Seule l'hypothèse pré-enregistrée (C fait mieux que
+    # B) est testée au niveau α ; les trois autres (C moins bien que B, C contre A dans les deux sens) au niveau α/3.
+    e_mieux, e_moins = e_valeur(g, m), e_valeur([-v for v in g], m)
+    s_mieux, s_moins = (1 / ALPHA, 3 / ALPHA) if principal else (3 / ALPHA, 3 / ALPHA)
+    cs = intervalle_sequentiel(g, m)
+    verdict = ("meilleur (établi)" if e_mieux >= s_mieux else "moins bon (établi)" if e_moins >= s_moins
+               else "indéterminé")
     return {"gain_log_moyen": total / len(g),            # LA mesure (unités de score de pair Metaculus)
             "questions_gagnees": sum(v > 0 for v in g), "questions_perdues": sum(v < 0 for v in g),
-            "test_sequentiel": {"e_mieux": e_valeur(g, m), "e_moins_bien": e_valeur([-v for v in g], m),
-                                "seuil": 1 / ALPHA, "borne": m, "borne_depassee": depassee,
+            "verdict": f"{x} {verdict} par rapport à {ref}",
+            "intervalle_sequentiel_95": cs,
+            "test_sequentiel": {"e_mieux": e_mieux, "e_moins_bien": e_moins,
+                                "seuil_mieux": s_mieux, "seuil_moins_bien": s_moins,
+                                "hypothese_principale": principal, "borne": m, "borne_depassee": depassee,
                                 "lecture": f"e ≥ {1 / ALPHA:g} : écart établi au niveau {ALPHA:g}, valide à tout moment "
                                            "de consultation ; en dessous, rien n'est établi dans un sens ni dans l'autre"},
             "puissance": puissance_a_priori(g, m),
@@ -529,7 +564,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
 
     comp = None
     if apparies:
-        comp = {"n": len(apparies), "biais_C": biais_C(apparies), "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()),
+        comp = {"n": len(apparies), "biais_C": biais_C(apparies),
+                "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B(), principal=True),
                 "C_sur_A": comparer(apparies, "C", "A"),
                 "C_corrige_sur_B": comparer(corriges, "C", "B") if corriges else None,
                 "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "

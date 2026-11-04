@@ -28,7 +28,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.5.0"
+VERSION_BOT = "0.5.1"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -942,8 +942,10 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "correction": ({k: corr.get(k) for k in ("decalage_logit", "n", "calcule_le")}
                                            if corr and c.get("p_C") is not None else None)}},
              "bras_poste": poste, "p_poste": p_poste}
-    ecrire_registre(ligne, c.get("dossier"))
     texte = commentaire(q, p_A, a_raison, c, poste)
     if not publie:  # 0.2.0 (audit, B5) : un passage à blanc ne prétend pas avoir posté
         texte = texte.replace("Posted arm:", "Arm selected (dry run, not posted):", 1)
+    # 0.5.1 : le commentaire envoyé est scellé avec la prévision (identifiant de question, bras, texte).
+    ligne["commentaire"] = texte
+    ecrire_registre(ligne, c.get("dossier"))
     return Resultat(p_A, c.get("p_B"), c.get("p_C"), poste, p_poste, texte, ligne)

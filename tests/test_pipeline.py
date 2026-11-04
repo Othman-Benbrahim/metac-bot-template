@@ -496,6 +496,31 @@ class Tests(unittest.TestCase):
         self.assertGreater(b["C_moyen"], b["taux_de_OUI"])        # B juste, C au-dessus : biais à la hausse
         self.assertIsNone(sr.biais_C([]))
 
+    def test_intervalle_et_verdict(self):                     # 0.5.1
+        import random
+        import score_registre as sr
+        m = sr.borne_gain_C_B()
+        rnd = random.Random(1)
+        g = [rnd.gauss(15, 40) for _ in range(150)]
+        lo, hi = sr.intervalle_sequentiel(g, m)
+        self.assertLess(lo, sum(g) / len(g))
+        self.assertGreater(hi, sum(g) / len(g))
+        self.assertGreater(lo, 0)                                 # écart net et assez de questions : 0 exclu
+        lo, hi = sr.intervalle_sequentiel([10.0] * 3, m)
+        self.assertLess(lo, 0)                                    # trois questions : rien d'établi
+        apparies = [({"C": 0.3, "B": 0.1, "A": 0.1}, 1)] * 3 + [({"C": 0.3, "B": 0.1, "A": 0.1}, 0)] * 3
+        c = sr.comparer(apparies, "C", "B", m, principal=True)
+        self.assertEqual(c["verdict"], "C indéterminé par rapport à B")
+        self.assertEqual(c["test_sequentiel"]["seuil_mieux"], 20)
+        self.assertEqual(sr.comparer(apparies, "C", "A")["test_sequentiel"]["seuil_mieux"], 60)   # secondaire
+
+    def test_commentaire_scelle(self):                        # 0.5.1
+        r, _ = lancer([PLAN, vue(0.2), lecture()])
+        self.assertEqual(r.ligne["commentaire"], r.commentaire)
+        x = dict(r.ligne)
+        s = x.pop("sceau")
+        self.assertEqual(s, ap.sceau(x))                          # le texte envoyé est couvert par le sceau
+
     def test_borne_depassee_retombe(self):                    # 0.4.1
         import score_registre as sr
         apparies = [({"C": 0.9, "B": 0.01, "A": 0.5}, 1)] * 3     # cote ×891 : borne C−B dépassée

@@ -170,6 +170,28 @@ class TestsConfiguration(unittest.TestCase):
         self.assertEqual(filtres[0].other_url_parameters, {"search": "border clash"})
         self.assertEqual(filtres[0].allowed_statuses, ["resolved"])
 
+    def test_sans_publier_reserve_a_la_zone_de_test(self):          # 0.5.1
+        import subprocess
+        r = subprocess.run([sys.executable, str(Path(ab.__file__)), "--mode", "minibench", "--sans-publier"],
+                           capture_output=True, text=True, env=dict(os.environ, METACULUS_TOKEN="", ANTHROPIC_API_KEY=""))
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("test_questions", r.stdout)
+
+    def test_passage_garde_les_questions_recues(self):              # 0.5.1
+        import tempfile
+        import alphabet_pipeline as ap
+        ancien, ap.REGISTRE = ap.REGISTRE, Path(tempfile.mkdtemp(prefix="registre-recues-"))
+        try:
+            q1 = type("Q", (), {"page_url": "u1", "id_of_question": 1})()
+            q2 = type("Q", (), {"page_url": "u2", "id_of_question": 2})()
+            ab.noter_passage("minibench", "planifie", 2, [q1], [q1, q2])
+            import json as js
+            x = js.loads((ap.REGISTRE / "passages.jsonl").read_text(encoding="utf-8"))
+            self.assertEqual(x["trouvees_ids"], ["1", "2"])
+            self.assertEqual(x["envoyees"], 1)
+        finally:
+            ap.REGISTRE = ancien
+
 
 if __name__ == "__main__":
     unittest.main()
