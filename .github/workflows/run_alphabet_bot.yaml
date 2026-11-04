@@ -6,9 +6,10 @@ on:
       mode:
         description: "tournament, minibench ou test_questions"
         default: "minibench"
-  # Planification à activer APRÈS les essais manuels (test_questions, puis minibench) : retirer les « # » ci-dessous.
-  # schedule:
-  #   - cron: "17 * * * *"   # toutes les heures ; les questions déjà prévues sont sautées
+  # Activée le 2026-11-04 après trois passages manuels en test_questions. Mode minibench (valeur par défaut ci-dessous) ;
+  # les questions déjà prévues sont sautées : le coût dépend du nombre de questions nouvelles, pas de la fréquence.
+  schedule:
+    - cron: "17 */4 * * *"   # toutes les 4 heures
 
 concurrency:
   group: bot-alphabet-registre   # partagé avec le score : une seule écriture du registre à la fois
