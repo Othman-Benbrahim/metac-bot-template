@@ -55,8 +55,7 @@ def lecture():
     return lec
 
 
-def lecture_vide():
-    cats = ["aucun_fait", "marqueur_non_rempli", "contredit", "aucun_fait"]
+def lecture_vide(cats=("aucun_fait", "marqueur_non_rempli", "contredit", "aucun_fait")):
     return {"candidats": PLAN["candidats"], "contre_candidate": PLAN["contre_candidate"],
             "rejets_classes": {c: {"categorie": k, "motif": "aucun fait ne remplit le marqueur"}
                                for c, k in zip(PLAN["candidats"], cats)},
@@ -69,6 +68,8 @@ class LlmSimule:
 
     async def __call__(self, consigne):
         self.consignes.append(consigne)
+        if not self.reponses:
+            raise RuntimeError("modèle simulé : plus de réponse prévue")
         r = self.reponses.pop(0)
         return r if isinstance(r, str) else "```json\n" + json.dumps(r, ensure_ascii=False) + "\n```"
 
@@ -299,8 +300,60 @@ class Tests(unittest.TestCase):
         self.assertLess(c["gain_log_moyen"], 0)                   # C perd en log, à cause d'une seule question
         self.assertGreater(c["gain_sans_pire_question"], 0)       # sans elle, C gagne : le résultat tient à une question
         self.assertEqual((c["questions_gagnees"], c["questions_perdues"]), (9, 1))
-        self.assertLess(c["controle_brier"]["ecart_moyen"], 0)    # le Brier, lui, donne C meilleur...
-        self.assertFalse(c["controle_brier"]["accord_avec_log"])  # ... et le désaccord est signalé
+        self.assertLess(c["brier_critere_L7"]["ecart_moyen"], 0)    # le Brier, lui, donne C meilleur...
+        self.assertFalse(c["brier_critere_L7"]["accord_avec_log"])  # ... et le désaccord est signalé
+
+    # --- 0.2.2 : angles morts de l'état nul ---
+
+    RELANCE = {"recherches": [{"cartes": ["POL@7"], "requete": "nouvelle requête sur le phénomène politique"},
+                              {"cartes": ["HIE@6"], "requete": "nouvelle requête sur la hiérarchie"}]}
+
+    def test_relance_ancre_des_cartes(self):
+        r, llm = lancer([PLAN, vue(0.2), lecture_vide(), self.RELANCE, lecture()])
+        self.assertEqual(r.bras_poste, "C")                       # la relance a trouvé : le moteur juge, C posté
+        rel = r.ligne["bras"]["C"]["relance"]
+        self.assertEqual(sorted(rel["cibles"]), ["HIE@6", "POL@7"])   # seules les candidates « aucun_fait »
+        self.assertGreater(rel["mots_apres"], 0)
+        self.assertIn("Étape 3 bis", llm.consignes[3])
+        self.assertTrue(any(x.get("relance") for x in r.ligne["bras"]["C"]["recherches"]))
+
+    def test_relance_toujours_nul_angle_mort(self):
+        r, _ = lancer([PLAN, vue(0.04), lecture_vide(), self.RELANCE, lecture_vide()])
+        self.assertEqual(r.bras_poste, "B")                       # règle de postage inchangée
+        c = r.ligne["bras"]["C"]
+        self.assertEqual(c["nature_etat_nul"], "angle_mort")
+        self.assertEqual(c["relance"]["mots_apres"], 0)
+        self.assertIn("blind spot", r.commentaire)
+
+    def test_structure_absente_sans_relance(self):
+        r, llm = lancer([PLAN, vue(0.04), lecture_vide(("contredit", "marqueur_non_rempli", "contredit", "contredit"))])
+        self.assertEqual(len(llm.consignes), 3)                   # aucune relance payée pour rien
+        self.assertEqual(r.ligne["bras"]["C"]["nature_etat_nul"], "structure_absente")
+        self.assertIsNone(r.ligne["bras"]["C"]["relance"])
+        self.assertIn("set aside on evidence", r.commentaire)
+
+    def test_relance_desactivable(self):
+        ancien, ap.RELANCE_ETAT_NUL = ap.RELANCE_ETAT_NUL, False
+        try:
+            r, llm = lancer([PLAN, vue(0.04), lecture_vide()])
+            self.assertEqual(len(llm.consignes), 3)
+            self.assertEqual(r.ligne["bras"]["C"]["nature_etat_nul"], "angle_mort")
+        finally:
+            ap.RELANCE_ETAT_NUL = ancien
+
+    def test_etat_nul_suivi_a_part(self):
+        import score_registre as sr
+        reg = Path(tempfile.mkdtemp(prefix="registre-nuls-"))
+        ancien, ap.REGISTRE = ap.REGISTRE, reg
+        try:
+            lancer([PLAN, vue(0.04), lecture_vide(("contredit",) * 4)], p_A=0.3)
+            s = sr.scorer(reg, {"4242": 0})
+            self.assertIsNone(s["apparie_ABC"])                   # pas d'équivalence C = B
+            nul = s["etats_nuls"]["par_nature"]["structure_absente"]
+            self.assertEqual(nul["n"], 1)
+            self.assertAlmostEqual(nul["gain_B_sur_A"], 100 * math.log(0.96 / 0.7))
+        finally:
+            ap.REGISTRE = ancien
 
     def test_bornes_api(self):                                    # B1
         self.assertEqual(ap.borner(0.0004), 0.001)

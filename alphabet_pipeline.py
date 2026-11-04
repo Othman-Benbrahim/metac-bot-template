@@ -27,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.2.1"
+VERSION_BOT = "0.2.2"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -69,6 +69,12 @@ def strates_chiffrees() -> list[int]:
 
 POIDS = {"F": 3, "M": 2, "f": 1}
 CATEGORIES_REJET = ("aucun_fait", "marqueur_non_rempli", "contredit", "non_cherchee")
+# 0.2.2 : catégories qui disent « on n'a pas regardé » plutôt que « il n'y a rien » : un état nul qui en contient est un
+# ANGLE MORT possible, relancé une fois par des recherches ciblées avant d'être accepté.
+ANGLES_MORTS = ("aucun_fait", "non_cherchee")
+STRUCTURE_ABSENTE = ("contredit", "marqueur_non_rempli")
+MAX_RECHERCHES_RELANCE = int(os.environ.get("ALPHABET_MAX_RECHERCHES_RELANCE", "6"))
+RELANCE_ETAT_NUL = os.environ.get("ALPHABET_RELANCE_ETAT_NUL", "1") != "0"
 MIN_SOURCES = 2  # candidates exigées parmi les cartes qui, selon la matrice, agissent sur l'événement « apparait »
 
 
@@ -333,6 +339,77 @@ Rends UNIQUEMENT un objet JSON avec les clés : {", ".join(CLES_LECTURE)}.
 L'événement prévu est {ev['carte']}@{ev['strate']} {ev['type']} : {"cette carte ne doit PAS figurer dans les mots" if ev['type'] == "apparait" else "cette carte doit figurer dans les mots"}."""
 
 
+def consigne_relance(q: Question, plan: dict, cibles: dict, deja: list[dict], aujourdhui: str) -> str:
+    """0.2.2 : demande de requêtes nouvelles pour les candidates écartées faute de recherche (angles morts)."""
+    cartes = sorted({c.split("@")[0] for c in cibles})
+    lignes_ = "\n".join(f"- {c} : [{v}]" for c, v in cibles.items())
+    return f"""Étape 3 bis : la lecture n'a ancré aucune carte, mais certaines candidates ont été écartées faute de
+recherche, pas faute de structure. Avant d'accepter l'état nul, propose des requêtes NOUVELLES pour elles.
+
+QUESTION : {q.titre}
+CRITÈRES DE RÉSOLUTION : {q.criteres}
+DATE D'INFORMATION : {aujourdhui}
+CANDIDATES À RECHERCHER (catégorie de rejet) :
+{lignes_}
+REQUÊTES DÉJÀ LANCÉES (ne pas les répéter ni les paraphraser) :
+{chr(10).join("- " + r["requete"] for r in deja)}
+
+FICHES DES CANDIDATES (marqueurs à remplir) :
+{fiches(cartes)}
+
+Règles : au plus {MAX_RECHERCHES_RELANCE} requêtes au total, 1 ou 2 par candidate ; chacune formée sur le PHÉNOMÈNE
+observable que décrit le marqueur, avec les acteurs et la période de la question, jamais sur le nom d'une carte.
+Interdit : cotes de marché, prévisions de plateformes, avis de prévisionnistes. Seuls des faits datés au plus tard
+le {aujourdhui} comptent.
+
+Rends UNIQUEMENT un objet JSON : {{"recherches": [{{"cartes": ["CARTE@strate"], "requete": "..."}}]}}"""
+
+
+def nature_etat_nul(categories: dict) -> str:
+    """structure_absente : chaque candidate a été regardée et écartée sur pièces (contredit, marqueur non rempli) ;
+    angle_mort : au moins une candidate n'a pas été vraiment cherchée ; indetermine : rejets non classés."""
+    cats = set((categories or {}).values())
+    if cats & set(ANGLES_MORTS):
+        return "angle_mort"
+    if cats and cats <= set(STRUCTURE_ABSENTE):
+        return "structure_absente"
+    return "indetermine"
+
+
+async def relancer_angles_morts(q: Question, plan: dict, executees: list[dict], lecture: dict, llm: Llm,
+                                chercher: Chercheur, recherche_reelle: bool, aujourdhui: str,
+                                jours: int) -> tuple[dict, list[dict], dict | None]:
+    """0.2.2 : un état nul n'est accepté qu'après une relance ciblée sur ses angles morts (une seule). Rend
+    (lecture, recherches, trace de la relance ou None). La règle de postage ne change pas : si la relance ancre des
+    cartes, le moteur juge comme d'habitude."""
+    rejets, cats = rejets_moteur(lecture)
+    mots = lecture.get("mots") or []
+    cibles = {c: k for c, k in cats.items() if k in ANGLES_MORTS}
+    if not RELANCE_ETAT_NUL or mots or not cibles:
+        return lecture, executees, None
+    relance = {"cibles": cibles}
+    try:
+        demande = extraire_json(await llm(consigne_relance(q, plan, cibles, executees, aujourdhui)))
+        # Famille « observation » (seules familles admises par le moteur) ; l'origine est gardée dans « relance ».
+        reqs = [{"famille": "observation", "relance": True, "cartes": r.get("cartes") or [], "requete": r.get("requete")}
+                for r in (demande.get("recherches") or []) if isinstance(r, dict)]
+    except Exception as e:
+        return lecture, executees, dict(relance, echec=f"requêtes de relance illisibles : {e}")
+    deja = {r["requete"].lower() for r in executees}
+    reqs = [r for r in reqs if isinstance(r["requete"], str) and r["requete"].strip().lower() not in deja]
+    nouvelles = await executer_requetes(reqs, chercher, recherche_reelle, MAX_RECHERCHES_RELANCE)
+    relance["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in nouvelles]
+    if not any(r.get("executee") for r in nouvelles):
+        return lecture, executees, dict(relance, echec="aucune recherche de relance exécutée")
+    toutes = executees + nouvelles
+    try:
+        relue = extraire_json(await llm(consigne_dossier(q, plan, toutes, aujourdhui, jours)))
+    except Exception as e:
+        return lecture, executees, dict(relance, echec=f"relecture illisible : {e}")
+    relance["mots_apres"] = len(relue.get("mots") or [])
+    return relue, toutes, relance
+
+
 def consigne_correction(lecture: dict, erreur: str) -> str:
     return f"""Le moteur du skill a refusé cette lecture. Corrige-la sans inventer de fait, de source ni d'URL : si un
 élément manque, descends l'intensité à f, ou retire le mot et motive-le dans rejets. Une lecture sans aucun mot (état
@@ -484,6 +561,7 @@ async def executer_requetes(requetes: list[dict], chercher: Chercheur, recherche
             # 0.2.0 (audit, B10) : une requête coupée par le plafond est consignée, non lancée, avec son motif ; une
             # candidate qui n'a pas été cherchée ne doit pas passer pour « aucun_fait ».
             sortie.append({"famille": r.get("famille", "reference"), "cartes": r.get("cartes", []), "requete": req,
+                           **({"relance": True} if r.get("relance") else {}),
                            "resultat": "", "executee": False, "non_lancee": "plafond"})
             continue
         try:
@@ -493,6 +571,7 @@ async def executer_requetes(requetes: list[dict], chercher: Chercheur, recherche
         else:
             ok = recherche_reelle
         sortie.append({"famille": r.get("famille", "reference"), "cartes": r.get("cartes", []), "requete": req,
+                           **({"relance": True} if r.get("relance") else {}),
                        "resultat": texte or "", "executee": ok})
     return sortie
 
@@ -551,6 +630,11 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         lecture = extraire_json(await llm(consigne_dossier(q, plan, executees, aujourdhui, jours)))
     except Exception as e:
         return dict(trace, motif=f"lecture illisible : {e}")
+    lecture, executees, relance = await relancer_angles_morts(q, plan, executees, lecture, llm, chercher,
+                                                              recherche_reelle, aujourdhui, jours)
+    if relance:
+        trace["relance"] = relance
+        trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
     dossier = None
     for tentative in range(MAX_CORRECTIONS + 1):
         trace["tentatives"] = tentative + 1
@@ -558,8 +642,10 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         if not dossier["mots"]:
             # État nul : aucune carte ancrée. Le moteur ne calcule pas un état vide ; sans carte, pas d'ajustement :
             # le bot postera le taux de base (bras B).
-            trace.update(dossier=dossier, statut="etat_nul", evenement=evenement, semantique=plan["semantique"],
-                         motif="aucune carte ancrée : pas d'ajustement du taux de base")
+            nature = nature_etat_nul(dossier.get("_categories_rejet"))
+            trace.update(dossier=dossier, statut="etat_nul", nature_etat_nul=nature, evenement=evenement,
+                         semantique=plan["semantique"],
+                         motif=f"aucune carte ancrée ({nature.replace('_', ' ')}) : pas d'ajustement du taux de base")
             return trace
         erreur = controle_etat(dossier, plan)
         if not erreur and hors_strate:
@@ -629,7 +715,11 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
         rejets = c["dossier"].get("rejets") or {}
         lignes = [tete,
                   f"Candidate patterns examined for {c['evenement']}: none anchored in the facts found, so the base rate "
-                  "is not adjusted.",
+                  "is not adjusted."
+                  + {"structure_absente": " Each candidate was checked against the facts and set aside on evidence.",
+                     "angle_mort": " Caution: some candidates could not be checked against facts, even after a targeted "
+                                   "second search (blind spot).",
+                     }.get(c.get("nature_etat_nul"), ""),
                   *[f"- {k}: {str(v)[:300]}" for k, v in list(rejets.items())[:4]],
                   ligne_b,
                   f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}."]
@@ -677,7 +767,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "fondement_memoire": fondement_memoire(vue) if vue else None,
                             "recherches": c.get("recherches_reference")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
-                                                        "rho", "motif", "tentatives", "recherches")},
+                                                        "rho", "motif", "tentatives", "recherches",
+                                                        "nature_etat_nul", "relance")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet")}},
              "bras_poste": poste, "p_poste": p_poste}
     ecrire_registre(ligne, c.get("dossier"))

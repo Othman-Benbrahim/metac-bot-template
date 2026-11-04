@@ -4,10 +4,10 @@
     python score_registre.py --metaculus --enregistrer # et les garde : registre/issues.jsonl, registre/score.json
     python score_registre.py --resolutions issues.json # {"<question_id>": 0 ou 1, ...}, hors ligne
 
-0.2.1 : la BASE est le score logarithmique, celui de Metaculus (scores de pair = différences de scores log). Le gain
-de C sur B se lit comme un score de pair entre bras : 100 × moyenne(ln p_C − ln p_B) sur l'issue réelle ; positif = C
-meilleur. Le Brier n'est plus qu'un CONTRÔLE de robustesse : borné, il dit si un gain ou une perte en log tient à une
-ou deux questions extrêmes.
+0.2.1 : la base, pour Metaculus, est le score logarithmique (scores de pair = différences de scores log). Le gain de C
+sur B se lit comme un score de pair entre bras : 100 × moyenne(ln p_C − ln p_B) sur l'issue réelle ; positif = C
+meilleur. Le Brier apparié reste calculé : c'est le critère de levée de L7 du skill (validation.md §27), qui ne dépend
+pas du règlement de Metaculus ; borné, il dit aussi si un résultat en log tient à une ou deux questions extrêmes.
 
 Le test qui compte est C contre B (l'apport des cartes au taux de base) et C contre A (l'alphabet contre le modèle
 seul), sur les mêmes questions : seules les questions où les trois bras existent entrent dans la comparaison appariée.
@@ -159,7 +159,7 @@ def comparer(apparies: list, x: str, ref: str) -> dict:
             "questions_gagnees": sum(v > 0 for v in g), "questions_perdues": sum(v < 0 for v in g),
             "pire_question": pire,
             "gain_sans_pire_question": (total - pire) / (len(g) - 1) if len(g) > 1 else None,
-            "controle_brier": {"ecart_moyen": sum(d_brier) / len(d_brier),   # négatif = x meilleur
+            "brier_critere_L7": {"ecart_moyen": sum(d_brier) / len(d_brier),   # négatif = x meilleur (§27)
                                "accord_avec_log": (total > 0) == (sum(d_brier) < 0)}}
 
 
@@ -201,15 +201,30 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
         n = len(paires)
         return {"n": n, "log": sum(log_score(p, y) for p, y in paires) / n,
                 "score_reference_metaculus": sum(score_reference(p, y) for p, y in paires) / n,
-                "brier_controle": sum(brier(p, y) for p, y in paires) / n}
+                "brier": sum(brier(p, y) for p, y in paires) / n}
 
     comp = None
     if apparies:
         comp = {"n": len(apparies), "C_sur_B": comparer(apparies, "C", "B"), "C_sur_A": comparer(apparies, "C", "A"),
                 "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "
                            "(100 × écart de ln p). Si gain_sans_pire_question change de signe, le résultat tient à une "
-                           "seule question. Le Brier est un contrôle : s'il contredit le log, regarder les questions "
-                           "extrêmes. Sur moins de quelques dizaines de questions, aucune conclusion."}
+                           "seule question. brier_critere_L7 : le critère du skill (§27, C − B ≤ 0) ; s'il contredit le "
+                           "log, regarder les questions extrêmes. Sur moins de quelques dizaines de questions, aucune "
+                           "conclusion."}
+    # 0.2.2 : l'état nul n'est PAS compté comme C = B. Il est suivi à part, par nature : le taux de base tient-il quand
+    # l'alphabet dit « pas de structure » sur pièces, et quand il le dit par angle mort ?
+    etats_nuls = {}
+    for x in resolues:
+        cx = x["bras"]["C"]
+        if cx.get("statut") != "etat_nul" or x["bras"]["B"].get("p") is None:
+            continue
+        nat = cx.get("nature_etat_nul") or "non_renseignee"
+        etats_nuls.setdefault(nat, []).append((ap.borner(x["bras"]["B"]["p"]), issues[x["question_id"]],
+                                               x["bras"]["A"].get("p")))
+    suivi_nuls = {nat: {"n": len(v), "log_B": sum(log_score(p, y) for p, y, _ in v) / len(v),
+                        "gain_B_sur_A": (sum(gain_pair(p, a, y) for p, y, a in v if a is not None)
+                                         / max(1, sum(a is not None for _, _, a in v)))}
+                  for nat, v in etats_nuls.items()}
     statuts, motifs = {}, {}
     for x in questions:
         s = x["bras"]["C"].get("statut")
@@ -220,6 +235,10 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
             "questions": len(questions), "resolues": len(resolues), "retouchees": retouchees,
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "statuts_alphabet": statuts,
+            "etats_nuls": {"par_nature": suivi_nuls,
+                           "lecture": "structure_absente = candidates écartées sur pièces ; angle_mort = au moins une "
+                                      "candidate non vraiment cherchée, même après relance. gain_B_sur_A positif : le "
+                                      "« pas de structure » de l'alphabet a mieux valu que le modèle seul."},
             "motifs_rejet": {"compte": motifs,
                              "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; "
                                         "contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"},
