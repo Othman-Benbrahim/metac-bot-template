@@ -1,34 +1,41 @@
 {
  "candidats": [
-  "SEU@13",
-  "TRC@13"
+  "SEU@7",
+  "CTR@7",
+  "TRC@7"
  ],
- "contre_candidate": [
-  "TRC@13"
- ],
+ "contre_candidate": [],
  "rejets": {
-  "SEU@13": "aucun franchissement irréversible daté dans les faits lus : aucun des six gouvernements n'a annoncé de référendum ni de procédure de sortie (recherche 1). L'AfD, hors gouvernement, ne prévoit un référendum que comme « option ultime », avec pour horizon les élections de 2029. Le RN et le PVV ont retiré la sortie de leur programme, et le Frexit de Dupont-Aignan n'est qu'une candidature. Une annonce ou un programme n'est pas une réalisation, et un scrutin de continuité n'est pas un seuil. L'événement attendu (la notification au titre de l'article 50) est absent de l'état actuel et ne peut donc pas figurer dans les mots.",
-  "TRC@13": "aucun répertoire ni symbole d'un mouvement passé n'est repris explicitement dans une mobilisation présente d'après les passages lus. Les sources comparent l'opinion actuelle à celle du Brexit en 2016 (Euronews, Marianne), mais cette comparaison est un constat d'opinion et non une mobilisation qui reprend un répertoire. La pétition Frexit (1 534 signatures fin octobre 2026) ne montre aucune filiation revendiquée avec le Brexit. Les termes « Dexit », « Nexit » et « Frexit » sont calqués sur « Brexit », mais aucun passage ne l'établit comme reprise explicite. Cela ne dépasse pas le cerceau, d'où aucune carte ancrée."
+  "SEU@7": "aucun franchissement irréversible daté à la date du 2026-11-04 : aucune notification de l'article 50 par l'un des six États n'apparaît dans les sources. La motion néerlandaise du 2026-10-12 est une demande adressée au cabinet, dont le résultat du vote est inconnu. Une demande n'est pas une réalisation. C'est l'événement attendu, il ne figure donc pas dans les mots.",
+  "CTR@7": "mot retiré. Le titre XV (« La République participe à l'Union européenne ») et l'article 89 existent bien, mais la source est unique (Kohen Avocats, 2026-10-29) et doctrinale. Aucune source ne montre que la contrainte a été activée, c'est-à-dire qu'un acteur a tenté une sortie et a été bloqué. L'abandon du Frexit par le RN n'est pas relié à la règle. Le même article précise que l'article 50 n'impose pas la révision du titre XV, et une autre analyse doctrinale soutient que le retrait serait irrégulier mais effectif. Dans ces conditions, la lecture ne dépasse pas f et ne peut pas porter une portée « substantielle ». La force initiale n'étant pas établie à F avant A7, on ne la déclare pas. La question de documentation sur le dépôt d'un projet de révision reste ouverte.",
+  "TRC@7": "les chiffres de coût (ifo, CEPR) sont des simulations de scénarios hypothétiques, pas un résidu daté observé. Aucune source ne montre un élément hérité, daté, qui ne serait pas choisi tel quel en repartant de zéro. L'équivalent local (frontières héritées, uti possidetis) ne correspond pas à l'imbrication économique. Le seul passage sur l'irréversibilité « de fait » est une analyse doctrinale, sans fait daté."
  },
  "mots": [],
  "liaisons": [],
  "questions": [
   {
-   "question": "L'un des six États (Belgique, France, Italie, Luxembourg, Pays-Bas, Allemagne) notifie-t-il formellement le Conseil européen de sa sortie au titre de l'article 50 avant le 2027-01-01 ?",
-   "si_oui": "SEU@13",
+   "question": "L'un des six États (Belgique, France, Italie, Luxembourg, Pays-Bas, Allemagne) notifie-t-il l'article 50 au Conseil européen entre le 2026-11-04 et le 2026-12-31 ?",
+   "si_oui": "SEU@7",
    "si_non": "indetermine",
-   "resolution": "communiqués du Conseil européen et des gouvernements concernés, du 2026-11-04 au 2026-12-31",
+   "resolution": "communiqués du Conseil européen et de la Commission, et publications officielles des gouvernements concernés, du 2026-11-04 au 2026-12-31",
    "justification": {
-    "oui": "une notification datée est un acte juridique sans retour par le même chemin : l'État ne peut plus rester membre sans un autre chemin (nouvelle adhésion), ce qui est l'attendu de la garantie."
+    "oui": "une notification datée est l'acte juridique sans mécanisme de retour par le même chemin : elle déclenche le délai de deux ans de l'article 50"
    },
    "statut": "ouverte"
   },
   {
-   "question": "Les campagnes pour une sortie (Dupont-Aignan en France, AfD en Allemagne, PVV aux Pays-Bas) invoquent-elles explicitement le Brexit comme modèle ou symbole dans leurs mobilisations ?",
+   "question": "La motion déposée le 2026-10-12 à la Tweede Kamer demandant d'annoncer un « nexit » et d'activer l'article 50 est-elle adoptée, puis suivie d'une décision du cabinet, avant le 2026-12-31 ?",
    "type": "documentation",
-   "carte": "TRC@13",
-   "manque": "un texte de campagne, un tract ou un discours daté qui cite le Brexit comme précédent repris ; les résultats montrent seulement des programmes et des sondages",
-   "resolution": "programmes, discours et publications de campagne de ces acteurs, novembre à décembre 2026"
+   "carte": "SEU@7",
+   "manque": "le résultat du vote de la motion (kst-21501-20-2445) : le document établit le dépôt, pas l'adoption ni la suite donnée par le gouvernement",
+   "resolution": "compte rendu des votes de la Tweede Kamer et réponse du gouvernement néerlandais, octobre à décembre 2026"
+  },
+  {
+   "question": "Un projet de révision constitutionnelle du titre XV est-il déposé en France avant le 2026-12-31 ?",
+   "type": "documentation",
+   "carte": "CTR@7",
+   "manque": "aucune source ne montre que la contrainte constitutionnelle est active, c'est-à-dire qu'un acteur a tenté une sortie et a été bloqué ; l'abandon du Frexit par le RN n'est pas relié à la règle",
+   "resolution": "dépôts de projets ou propositions de loi constitutionnelle sur le site de l'Assemblée nationale et du Sénat, novembre à décembre 2026"
   }
  ],
  "etat": "",
@@ -37,74 +44,112 @@
   {
    "famille": "observation",
    "cartes": [
-    "SEU@13"
+    "SEU@7"
    ],
-   "requete": "gouvernement France Italie Pays-Bas Allemagne Belgique Luxembourg référendum ou procédure de sortie de l'UE annoncée octobre novembre 2026",
-   "executee": true,
-   "date_execution": "2026-11-04"
-  },
-  {
-   "famille": "contradiction",
-   "cartes": [
-    "SEU@13"
-   ],
-   "requete": "partis eurosceptiques abandon de la sortie de l'UE programme électoral 2026 sondage soutien au maintien dans l'UE",
+   "requete": "notification article 50 retrait UE gouvernement France Italie Allemagne Pays-Bas Belgique Luxembourg octobre novembre 2026",
    "executee": true,
    "date_execution": "2026-11-04"
   },
   {
    "famille": "observation",
    "cartes": [
-    "TRC@13"
+    "CTR@7"
    ],
-   "requete": "coût économique estimé d'une sortie de l'UE pour la France, l'Italie ou les Pays-Bas, dépendance au marché unique et à l'euro, étude 2025 2026",
+   "requete": "procédure constitutionnelle de sortie de l'Union européenne référendum révision constitution France Pays-Bas Italie Allemagne 2026",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@7"
+   ],
+   "requete": "coût économique de sortie de l'UE et de l'euro, dépendance au marché unique, France Italie Pays-Bas 2026 leçons du Brexit",
    "executee": true,
    "date_execution": "2026-11-04"
   },
   {
    "famille": "contradiction",
    "cartes": [
-    "TRC@13"
+    "SEU@7"
    ],
-   "requete": "rupture soudaine d'un engagement international par un gouvernement européen malgré les coûts, élection ou référendum 2026",
+   "requete": "gouvernement ou parti majoritaire annonce engagement de sortie de l'UE ou référendum de sortie 2026 Pays-Bas Italie France",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@7"
+   ],
+   "requete": "parlement adopte loi organisant un référendum sur l'appartenance à l'UE 2026 pays fondateur",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@7"
+   ],
+   "requete": "projet de dissolution ou de refonte de l'Union européenne en nouvelle union entre quelques États 2026",
    "executee": true,
    "date_execution": "2026-11-04"
   },
   {
    "famille": "discrimination",
    "cartes": [
-    "SEU@13",
-    "TRC@13"
+    "SEU@7",
+    "CTR@7"
    ],
-   "requete": "extrême droite aux sondages et élections 2026 France Allemagne Italie Pays-Bas : projet de sortie de l'UE ou réforme de l'intérieur, calendrier électoral avant 2027",
+   "requete": "délai minimal pour notifier l'article 50 après un vote populaire ou parlementaire dans un pays fondateur de l'UE",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@7",
+    "TRC@7"
+   ],
+   "requete": "sondages 2026 majorité pour quitter l'UE dans les pays fondateurs et position des gouvernements en place",
+   "executee": true,
+   "date_execution": "2026-11-04"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@7",
+    "TRC@7"
+   ],
+   "requete": "obstacles juridiques ou coûts économiques : principal frein à une sortie de l'UE d'un pays fondateur, analyses 2026",
    "executee": true,
    "date_execution": "2026-11-04"
   }
  ],
  "evenements": [
   {
-   "evenement": "SEUIL@13 apparait",
+   "evenement": "SEUIL@7 apparait",
    "semantique": "au-moins-une-fois",
    "temporalite": "generique",
-   "resolution": "Avant le 1er janvier 2027, la Belgique, la France, l'Italie, le Luxembourg, les Pays-Bas ou l'Allemagne notifie officiellement au Conseil européen son intention de se retirer (article 50 TUE), ou l'UE est dissoute ou remplacée par une union sous un autre nom.",
+   "resolution": "OUI si, avant le 1er janvier 2027, la Belgique, la France, l'Italie, le Luxembourg, les Pays-Bas ou l'Allemagne notifie formellement au Conseil européen son intention de se retirer de l'UE (article 50 TUE), ou si l'UE est dissoute ou remplacée par une autre union sous un autre nom.",
    "source_resolution": {
-    "emetteur": "Conseil européen / Conseil de l'Union européenne (communiqués officiels du président du Conseil européen) et Journal officiel de l'UE",
-    "document": "Lettre de notification au président du Conseil européen au titre de l'article 50 TUE, ou acte officiel de dissolution ou de remplacement de l'UE",
-    "regle_ambiguite": "Seule une notification formelle au Conseil européen compte. Un référendum, une annonce gouvernementale ou une promesse électorale ne suffisent pas. Une dissolution doit être juridiquement effective avant le 1er janvier 2027."
+    "emetteur": "Conseil européen (Bruxelles), complété par le Journal officiel de l'Union européenne",
+    "document": "Lettre de notification officielle d'un chef de gouvernement au président du Conseil européen au titre de l'article 50 TUE, ou acte juridique de dissolution de l'UE",
+    "regle_ambiguite": "Seule une notification formelle écrite adressée au Conseil européen compte. Une annonce politique, un référendum, un vote parlementaire ou une promesse de campagne sans notification ne comptent pas. Pour la clause de dissolution, il faut un acte juridique achevé et non une simple proposition."
    },
    "vue_exterieure": {
     "frequence": 0.003,
-    "classe_de_reference": "Notifications de retrait au titre de l'article 50 du TUE par un État membre de l'UE, rapportées aux années-État membre depuis l'entrée en vigueur de l'article 50 (1 notification : le Royaume-Uni, 29 mars 2017)",
-    "source": "Registre des retraits de l'Union européenne (article 50 TUE, en vigueur depuis le 1er décembre 2009) ; confirmé par [R1] (Wikipédia, « Withdrawal from the European Union » ; Parlement européen, EPRS)",
+    "classe_de_reference": "Notifications de retrait au titre de l'article 50 du traité sur l'Union européenne (TUE) par un État membre, rapportées aux années-État-membre depuis l'entrée en vigueur du traité de Lisbonne (1 notification : Royaume-Uni, 29 mars 2017). Cette classe est appliquée à chacun des six États fondateurs.",
+    "source": "Registre historique : article 50 TUE (en vigueur depuis le 1er décembre 2009), utilisé une seule fois, par le Royaume-Uni (notification du 29 mars 2017, sortie effective le 31 janvier 2020). Voir [R1] et la fiche vie-publique.fr citée dans [R1].",
     "periode": "2009-2026",
     "disponible_le": "2020-01-31",
     "classe_alternative": {
-     "frequence": 0.0035,
-     "classe_de_reference": "Notifications de retrait par l'un des six États fondateurs (BE, FR, IT, LU, NL, DE) depuis 1957 : 0 cas en environ 414 années-État fondateur",
-     "source": "Registre historique des retraits et notifications article 50 depuis 1957 (un seul retrait, le Royaume-Uni en 2020)",
-     "pourquoi_ecartee": "Avec zéro cas observé, il faut une règle de succession de Laplace, (0+1)/(414+2) ≈ 0,0024 par État-an, soit environ 0,0035 pour la fenêtre. Ce chiffre dépend davantage d'un a priori statistique que d'un comptage d'événements réels. Il donne un ordre de grandeur voisin, ce qui conforte la valeur retenue."
+     "frequence": 0.01,
+     "classe_de_reference": "Notifications de sortie par l'un des six États fondateurs (Belgique, France, Allemagne, Italie, Luxembourg, Pays-Bas) depuis 1957 : 0 cas en environ 414 années-État",
+     "source": "[R1] et [R2] : aucun référendum ni vote de sortie dans les six pays fondateurs depuis 1957. Les consultations recensées portent sur des traités ou l'élargissement.",
+     "pourquoi_ecartee": "Avec 0 cas, on n'obtient qu'une borne supérieure (règle de trois : 3/414 ≈ 0,7 % par État et par an, soit environ 1 % pour six États sur 88 jours). Cette borne est trop conservatrice, et le taux poolé de la classe principale s'appuie sur un événement réel."
     },
-    "ecart_critere": "Écart faible mais réel. La classe compte les notifications de n'importe quel État membre, dont le Royaume-Uni, qui n'est pas l'un des six États visés. Les six États fondateurs ont un attachement institutionnel plus fort à l'UE, ce qui rend le taux réel probablement plus bas. La clause de dissolution de l'UE ou de création d'une union successeure n'a aucun précédent. [R3] montre que les dissolutions d'organisations régionales sont rares (5 sur 76 jusqu'en 2015), mais elles ne sont pas comparables à l'UE. Cette clause ajoute une probabilité négligeable."
+    "ecart_critere": "Écart modéré. La classe compte les notifications article 50 de tous les États membres, dont le seul cas est le Royaume-Uni, alors que le critère ne vise que six États fondateurs (aucun cas historique) et ajoute une clause de dissolution de l'UE sans précédent. Le Royaume-Uni avait par ailleurs un contexte eurosceptique spécifique. La classe sert donc de borne haute prudente."
    }
   }
  ]
