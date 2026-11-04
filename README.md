@@ -1,3 +1,8 @@
+> **This fork runs the *Situational Alphabet* bot.** It tests whether a structural reading of a situation improves on a
+> plain base rate, with three sealed forecasts per question (model alone, base rate, alphabet) scored by log score.
+> Abstract: [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md) · full description (French): [`README-alphabet.md`](README-alphabet.md).
+> The rest of this page is the original Metaculus template README.
+
 # Simple Metaculus forecasting bot
 This repository contains a simple bot meant to get you started with creating your own bot for the AI Forecasting Tournament. Go to https://www.metaculus.com/futureeval/participate/ for more info and tournament rules (and then go to the  "Getting Started" section of our [resources](https://www.metaculus.com/notebooks/38928/ai-benchmark-resources/#want-to-join-the-ai-forecasting-benchmark) page).
 

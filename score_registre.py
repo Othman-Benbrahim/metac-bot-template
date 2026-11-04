@@ -1,8 +1,13 @@
-"""Score du registre du bot : Brier et score logarithmique des bras A, B et C sur les questions résolues.
+"""Score du registre du bot : score logarithmique (règle de Metaculus) des bras A, B et C sur les questions résolues.
 
     python score_registre.py --metaculus               # récupère les issues sur Metaculus (METACULUS_TOKEN)
     python score_registre.py --metaculus --enregistrer # et les garde : registre/issues.jsonl, registre/score.json
     python score_registre.py --resolutions issues.json # {"<question_id>": 0 ou 1, ...}, hors ligne
+
+0.2.1 : la BASE est le score logarithmique, celui de Metaculus (scores de pair = différences de scores log). Le gain
+de C sur B se lit comme un score de pair entre bras : 100 × moyenne(ln p_C − ln p_B) sur l'issue réelle ; positif = C
+meilleur. Le Brier n'est plus qu'un CONTRÔLE de robustesse : borné, il dit si un gain ou une perte en log tient à une
+ou deux questions extrêmes.
 
 Le test qui compte est C contre B (l'apport des cartes au taux de base) et C contre A (l'alphabet contre le modèle
 seul), sur les mêmes questions : seules les questions où les trois bras existent entrent dans la comparaison appariée.
@@ -127,8 +132,35 @@ def brier(p: float, y: int) -> float:
 
 
 def log_score(p: float, y: int) -> float:
+    """Perte logarithmique (plus bas = mieux), en logarithme naturel, comme les scores de pair de Metaculus."""
     p = ap.borner(p)
     return -math.log(p if y == 1 else 1 - p)
+
+
+def score_reference(p: float, y: int) -> float:
+    """Score de référence (« baseline ») de Metaculus pour une question binaire : 100 × (log2 p + 1) ; 0 = pile ou face,
+    100 = certitude juste. Plus haut = mieux."""
+    p = ap.borner(p)
+    return 100 * (math.log2(p if y == 1 else 1 - p) + 1)
+
+
+def gain_pair(p_x: float, p_ref: float, y: int) -> float:
+    """Écart de type « score de pair » entre deux bras sur une question : 100 × (ln p_x − ln p_ref) sur l'issue
+    réelle. Positif = x meilleur que ref."""
+    return 100 * (log_score(p_ref, y) - log_score(p_x, y))
+
+
+def comparer(apparies: list, x: str, ref: str) -> dict:
+    g = [gain_pair(p[x], p[ref], y) for p, y in apparies]
+    d_brier = [brier(p[x], y) - brier(p[ref], y) for p, y in apparies]
+    total = sum(g)
+    pire = min(g)
+    return {"gain_log_moyen": total / len(g),            # LA mesure (unités de score de pair Metaculus)
+            "questions_gagnees": sum(v > 0 for v in g), "questions_perdues": sum(v < 0 for v in g),
+            "pire_question": pire,
+            "gain_sans_pire_question": (total - pire) / (len(g) - 1) if len(g) > 1 else None,
+            "controle_brier": {"ecart_moyen": sum(d_brier) / len(d_brier),   # négatif = x meilleur
+                               "accord_avec_log": (total > 0) == (sum(d_brier) < 0)}}
 
 
 def est_essai(x: dict) -> bool:
@@ -166,17 +198,18 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
     def resume(paires):
         if not paires:
             return None
-        return {"n": len(paires), "brier": sum(brier(p, y) for p, y in paires) / len(paires),
-                "log": sum(log_score(p, y) for p, y in paires) / len(paires)}
+        n = len(paires)
+        return {"n": n, "log": sum(log_score(p, y) for p, y in paires) / n,
+                "score_reference_metaculus": sum(score_reference(p, y) for p, y in paires) / n,
+                "brier_controle": sum(brier(p, y) for p, y in paires) / n}
 
     comp = None
     if apparies:
-        d_cb = [brier(p["C"], y) - brier(p["B"], y) for p, y in apparies]
-        d_ca = [brier(p["C"], y) - brier(p["A"], y) for p, y in apparies]
-        comp = {"n": len(apparies),
-                "C_moins_B_brier": sum(d_cb) / len(d_cb), "C_bat_B": sum(d < 0 for d in d_cb),
-                "C_moins_A_brier": sum(d_ca) / len(d_ca), "C_bat_A": sum(d < 0 for d in d_ca),
-                "lecture": "négatif = C meilleur ; sur moins de quelques dizaines de questions, aucune conclusion"}
+        comp = {"n": len(apparies), "C_sur_B": comparer(apparies, "C", "B"), "C_sur_A": comparer(apparies, "C", "A"),
+                "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "
+                           "(100 × écart de ln p). Si gain_sans_pire_question change de signe, le résultat tient à une "
+                           "seule question. Le Brier est un contrôle : s'il contredit le log, regarder les questions "
+                           "extrêmes. Sur moins de quelques dizaines de questions, aucune conclusion."}
     statuts, motifs = {}, {}
     for x in questions:
         s = x["bras"]["C"].get("statut")
