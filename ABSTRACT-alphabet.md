@@ -1,6 +1,6 @@
 # Situational Alphabet Bot — Abstract
 
-*Othman Ben Brahim · bot version 0.3.0 · skill alphabet-situationnel 0.7.49 · Metaculus FutureEval*
+*Othman Ben Brahim · bot version 0.4.0 · skill alphabet-situationnel 0.7.49 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?
 This bot tests that question in the open, on Metaculus, against questions whose answers nobody knows yet.
@@ -30,8 +30,9 @@ log committed to this repository before the question resolves. Git history times
 detected and excluded from scoring.
 
 **Evaluation.** Forecasts are scored with the logarithmic score, as Metaculus does. The key result is the paired gain
-of C over B (and of C over A), in peer-score points: 100 × the mean difference in ln p on the realized outcome, with a
-check on whether a single question drives the result. The paired Brier score is also reported: it is the skill's own,
+of C over B (and of C over A), in peer-score points: 100 × the mean difference in ln p on the realized outcome, with an
+anytime-valid sequential test (betting e-values), so the score can be checked weekly without inflating false
+positives, and an a-priori power estimate. The paired Brier score is also reported: it is the skill's own,
 Metaculus-independent criterion for widening the engine's scope. A "null state" (no structure read) is never scored as
 if it were a reading; before one is accepted, candidates dismissed only for lack of search get a targeted second
 search, and null states are tracked separately by kind (evidence-based vs. blind spot). In a null state the reader also

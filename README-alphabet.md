@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.3.0 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.4.0 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -29,13 +29,17 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
 1. **Question** : le bot récupère les questions ouvertes du tournoi (MiniBench par défaut).
 2. **Bras A** : le modèle seul répond, comme le bot modèle de Metaculus. La réponse est scellée.
 3. **Plan** : le modèle dit quel événement correspond au OUI, ce qu'il faut chercher pour le taux de base, et ce qu'il
-   faut chercher pour la lecture. Le bot vérifie le plan et le renvoie une fois s'il est mal formé.
+   faut chercher pour la lecture. Le bot vérifie le plan et le renvoie une fois s'il est mal formé. La strate de
+   l'événement est choisie **à l'aveugle** : le plan ne sait pas quelles strates le moteur chiffre (L7), pour que
+   l'étiquette ne soit pas tirée vers celle qui ouvre le calcul.
 4. **Bras B** : le bot lance les recherches de taux de base (moteur de recherche web) et retrouve sur Metaculus des
    questions **déjà résolues** d'apparence voisine (leur issue seulement : jamais les prévisions de la communauté).
    Le modèle en tire une fréquence sourcée et datée, ou déclare qu'il n'y a pas de base honnête ; il n'utilise les
    questions résolues que si au moins cinq comptent le même type d'événement. Une source postérieure à la date du jour
-   est refusée. L'estimation est faite **trois fois, indépendamment** ; B est la vue médiane (une vraie vue, avec sa
-   source : aucune moyenne fabriquée), et l'écart entre les trois est enregistré.
+   est refusée, de même qu'une source qui se déclare « de mémoire ». **La classe de référence est d'abord définie une
+   fois** (ce qui compte pour un cas, sur quelle population, quelle période) ; puis le comptage est fait **trois fois,
+   indépendamment, sur cette même classe**. B est la vue médiane (une vraie vue, avec sa source : aucune moyenne
+   fabriquée), et l'écart entre les trois est enregistré : c'est alors un écart de mesure, non un changement de classe.
 5. **Bras C** : le bot lance les recherches de lecture (12 au plus, les autres sont notées « non cherchées ») ; le
    modèle écrit un dossier à partir des seuls résultats ; le moteur du skill le juge et calcule. Un refus est renvoyé
    au modèle pour correction, deux fois au plus. **Le moteur reste juge : le bot ne fabrique aucun chiffre.**
@@ -85,8 +89,15 @@ alphabet ») :
 
 - **par bras** : perte log, et score de référence de Metaculus (100 × (log₂ p + 1) ; 0 = pile ou face) ;
 - **comparaison appariée**, sur les questions où les trois bras existent : **gain de C sur B** et de C sur A, en points
-  de score de pair (100 × écart de ln p sur l'issue réelle ; positif = C meilleur), questions gagnées et perdues, et le
-  gain **sans la pire question** : s'il change de signe, le résultat tient à une seule question ;
+  de score de pair (100 × écart de ln p sur l'issue réelle ; positif = C meilleur), questions gagnées et perdues ;
+- **un test séquentiel** (`test_sequentiel`) : une valeur e pour « C fait mieux » et une pour « C fait moins bien ».
+  Au-delà de 20, l'écart est établi au niveau 5 %, **quel que soit le moment où l'on regarde** : on peut lire le score
+  chaque semaine sans fausser la conclusion. En dessous, rien n'est établi ;
+- **la puissance** (`puissance`) : combien de questions appariées il faudrait pour détecter un gain de 5, 10 ou 20
+  points, avec l'écart-type observé (ou supposé, tant qu'il y a moins de 5 questions) ;
+- **la fragilité** : le gain sans la pire question, simple diagnostic d'influence, pas un test ;
+- **la stabilité de la strate** : sur les questions passées plusieurs fois, la part des passages qui reprennent la
+  même strate (elle commande le droit de chiffrer) ;
 - **le Brier apparié** (`brier_critere_L7`) reste calculé : c'est le critère de levée de L7 du skill
   (`validation.md` §27, C − B ≤ 0), qui est propre au skill et ne dépend pas du règlement de Metaculus. Borné, il
   signale aussi quand le log est dominé par une ou deux probabilités extrêmes qui se sont trompées (`accord_avec_log`) ;
@@ -175,6 +186,10 @@ Modèle et recherche simulés, vrai moteur du skill. Ils tournent, avec l'audit 
 
 ## Historique utile
 
+- **0.4.0** : classe de référence définie avant les trois comptages ; source « de mémoire » refusée ; strate choisie
+  à l'aveugle ; pour chaque carte écartée, le fait attendu et l'extrait le plus proche (`rejets_details`) ; score :
+  test séquentiel valide à tout moment, puissance a priori, grille de plafonds, stabilité de la strate. Pistes tirées
+  d'une analyse externe (azrivo), retenues ou écartées une à une.
 - **0.3.0** : taux de base estimé trois fois (vue médiane, dispersion mesurée) ; questions Metaculus résolues comme
   classe de référence possible (issues seulement) ; seconde source de recherche facultative ; étude hebdomadaire de
   la recalibration et du plafonnement, avec rappel. Principes inspirés des constats publiés sur les meilleurs bots,
