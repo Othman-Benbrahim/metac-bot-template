@@ -1,6 +1,6 @@
 # Situational Alphabet Bot — Abstract
 
-*Othman Ben Brahim · bot version 0.2.2 · skill alphabet-situationnel 0.7.49 · Metaculus FutureEval*
+*Othman Ben Brahim · bot version 0.2.3 · skill alphabet-situationnel 0.7.49 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?
 This bot tests that question in the open, on Metaculus, against questions whose answers nobody knows yet.
@@ -34,7 +34,9 @@ of C over B (and of C over A), in peer-score points: 100 × the mean difference 
 check on whether a single question drives the result. The paired Brier score is also reported: it is the skill's own,
 Metaculus-independent criterion for widening the engine's scope. A "null state" (no structure read) is never scored as
 if it were a reading; before one is accepted, candidates dismissed only for lack of search get a targeted second
-search, and null states are tracked separately by kind (evidence-based vs. blind spot). Each question counts once; dry
+search, and null states are tracked separately by kind (evidence-based vs. blind spot). In a null state the reader also
+describes, without naming any card, the dynamic the facts show: a corpus for later searching for a structure the
+alphabet may lack. Each question counts once; dry
 runs and test-area questions are excluded.
 
 **Limits, stated up front.** No human in the loop (tournament rule): this measures *the skill as played by a language
