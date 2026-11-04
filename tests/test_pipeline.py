@@ -20,6 +20,7 @@ os.environ.setdefault("ALPHABET_REGISTRE", tempfile.mkdtemp(prefix="registre-"))
 import alphabet_pipeline as ap  # noqa: E402
 
 ap.NB_VUES = 1   # les tests historiques fournissent une seule vue ; les vues multiples ont leurs propres tests
+ap.CLASSE_FIGEE = False   # idem pour l'étape « définir la classe » (0.4.0), testée à part
 
 MAINTENANT = datetime(2026, 11, 3, 18, 0, tzinfo=timezone.utc)
 Q = ap.Question(id=4242, url="https://www.metaculus.com/questions/4242/", titre="Will A and B cross an escalation threshold before 2027?",
@@ -230,7 +231,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "hors_strate")
         self.assertAlmostEqual(r.p_B, 0.03)                       # la vue extérieure est enregistrée
         self.assertEqual(len(llm.consignes), 2)                   # lecture non lancée : pas de coût de lecture
-        self.assertIn("[7]", llm.consignes[0])                    # le plan connaît les strates chiffrées
+        self.assertNotIn("Strates chiffrées", llm.consignes[0])  # 0.4.0 : étiquette de strate posée à l'aveugle
 
     def test_lecture_hors_strate_scellee(self):
         ancien = ap.LECTURE_HORS_STRATE
@@ -300,7 +301,7 @@ class Tests(unittest.TestCase):
         apparies = [({"C": 0.1, "B": 0.2, "A": 0.2}, 0)] * 9 + [({"C": 0.001, "B": 0.05, "A": 0.05}, 1)]
         c = sr.comparer(apparies, "C", "B")
         self.assertLess(c["gain_log_moyen"], 0)                   # C perd en log, à cause d'une seule question
-        self.assertGreater(c["gain_sans_pire_question"], 0)       # sans elle, C gagne : le résultat tient à une question
+        self.assertGreater(c["fragilite"]["gain_sans_pire_question"], 0)   # sans elle, C gagne : fragile
         self.assertEqual((c["questions_gagnees"], c["questions_perdues"]), (9, 1))
         self.assertLess(c["brier_critere_L7"]["ecart_moyen"], 0)    # le Brier, lui, donne C meilleur...
         self.assertFalse(c["brier_critere_L7"]["accord_avec_log"])  # ... et le désaccord est signalé
@@ -431,6 +432,63 @@ class Tests(unittest.TestCase):
         e = sr.plafonnement_etudie(lignes, {"1": 1, "2": 0})
         self.assertEqual(e["questions_touchees"], 1)
         self.assertGreater(e["gain_moyen"], 0)                     # 0,02 au lieu de 0,001 sur un OUI : gain
+
+    # --- 0.4.0 ---
+
+    CLASSE = {"classe_de_reference": "crises bilatérales à deux blocs (fictif)", "unite": "une rupture reconnue",
+              "population": "40 crises", "periode": "2000-2025", "mise_a_l_echelle": "proportionnelle",
+              "sources_visees": "[R1]"}
+
+    def test_classe_figee_avant_comptage(self):
+        anciens = ap.CLASSE_FIGEE, ap.NB_VUES
+        ap.CLASSE_FIGEE, ap.NB_VUES = True, 2
+        try:
+            r, llm = lancer([PLAN, self.CLASSE, vue(0.2), vue(0.25), lecture()])
+            self.assertIn("Étape 2a", llm.consignes[1])
+            self.assertIn("CLASSE DE RÉFÉRENCE IMPOSÉE", llm.consignes[2])
+            self.assertIn("crises bilatérales à deux blocs (fictif)", llm.consignes[3])   # même classe pour chaque vue
+            self.assertEqual(r.ligne["bras"]["B"]["classe"]["unite"], "une rupture reconnue")
+            r, llm = lancer([PLAN, "illisible", vue(0.2), vue(0.2), lecture()])           # classe ratée : vues libres
+            self.assertIsNone(r.ligne["bras"]["B"]["classe"])
+            self.assertNotIn("IMPOSÉE", llm.consignes[2])
+        finally:
+            ap.CLASSE_FIGEE, ap.NB_VUES = anciens
+
+    def test_registre_mental_refuse(self):
+        self.assertIn("mémoire", ap.controle_vue(dict(vue(), source="registre mental des présidents, sans consultation en ligne")))
+        self.assertIn("mémoire", ap.controle_vue(dict(vue(), fondement="from memory")))
+        self.assertIsNone(ap.controle_vue(dict(vue(), source="liste officielle des retraits de l'UE (registre nommé)")))
+
+    def test_details_rejets(self):
+        lec = lecture_vide(("contredit",) * 4)
+        lec["rejets_classes"]["POL@7"]["fait_attendu"] = "un vote de défiance daté"
+        lec["rejets_classes"]["POL@7"]["extrait_proche"] = "[3] débat parlementaire sans vote"
+        r, _ = lancer([PLAN, vue(0.04), lec])
+        d = r.ligne["bras"]["C"]["rejets_details"]
+        self.assertEqual(d["POL@7"]["fait_attendu"], "un vote de défiance daté")
+        self.assertNotIn("INC@7", d)                              # rien fourni : rien inscrit
+
+    def test_test_sequentiel_et_puissance(self):               # 0.4.0
+        import score_registre as sr
+        self.assertAlmostEqual(sr.e_valeur([]), 1.0)
+        self.assertLess(sr.e_valeur([0.0] * 50), 1.0001)            # aucun écart : aucune preuve
+        self.assertGreater(sr.e_valeur([40.0] * 200), 20)           # écart constant et net : établi
+        self.assertLess(sr.e_valeur([40.0, -40.0] * 100), 20)       # bruit symétrique : rien d'établi
+        p = sr.puissance_a_priori([])
+        self.assertEqual(p["origine"][:7], "supposé")
+        self.assertGreater(p["questions_necessaires"]["5 points"], p["questions_necessaires"]["20 points"])
+        self.assertEqual(sr.puissance_a_priori([10, -10, 10, -10, 10])["origine"], "observé")
+
+    def test_stabilite_strate(self):                         # 0.4.0
+        import score_registre as sr
+        lignes = [{"question_id": "1", "bras": {"C": {"evenement": "SEUIL@13 apparait"}}},
+                  {"question_id": "1", "bras": {"C": {"evenement": "SEUIL@7 apparait"}}},
+                  {"question_id": "2", "bras": {"C": {"evenement": "SEUIL@6 apparait"}}},
+                  {"question_id": "2", "bras": {"C": {"evenement": "SEUIL@6 apparait"}}},
+                  {"question_id": "3", "bras": {"C": {"evenement": None}}}]
+        s = sr.stabilite_strate(lignes)
+        self.assertEqual(s["questions_repetees"], 2)
+        self.assertAlmostEqual(s["accord"], 0.5)
 
     def test_bornes_api(self):                                    # B1
         self.assertEqual(ap.borner(0.0004), 0.001)

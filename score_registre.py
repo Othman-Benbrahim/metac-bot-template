@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import os
 from pathlib import Path
 
@@ -31,6 +32,10 @@ MODES_ESSAI = {"test_questions"}
 MIN_RECALIBRATION = 20                   # en dessous, une recalibration n'apprend que du bruit
 PLAFOND_ETUDIE = (0.02, 0.98)            # plafonnement de la valeur postée : étudié, PAS appliqué (décision réservée)
 RAPPEL_PLAFONNEMENT = 30                 # questions résolues à partir desquelles le score rappelle cette décision
+GRILLE_PLAFONDS = (0.01, 0.02, 0.03, 0.05)
+ALPHA = 0.05
+LAMBDAS = (0.01, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5, 0.7, 0.9)
+ECART_TYPE_SUPPOSE = 40.0                 # points de score de pair par question, tant que le registre n'en dit rien
 
 
 def lignes(registre: Path) -> list[dict]:
@@ -153,6 +158,39 @@ def gain_pair(p_x: float, p_ref: float, y: int) -> float:
     return 100 * (log_score(p_ref, y) - log_score(p_x, y))
 
 
+def borne_gain() -> float:
+    """Écart maximal possible entre deux bras sur une question, en points : les probabilités sont bornées."""
+    return 100 * math.log(ap.BORNE_HAUTE / ap.BORNE_BASSE)
+
+
+def e_valeur(gains: list[float]) -> float:
+    """0.4.0 : test séquentiel valide à tout instant d'arrêt (pari, mélange de mises) de H0 « le bras ne fait pas
+    mieux, en moyenne, que sa référence ». Les écarts sont bornés, donc ∏(1 + λ·d/M) est une surmartingale sous H0 ;
+    la moyenne sur une grille de λ fixée d'avance l'est aussi. Rejet au niveau α quand e ≥ 1/α, quel que soit le moment
+    où l'on regarde : on peut consulter le score chaque semaine sans tricher."""
+    m = borne_gain()
+    richesses = []
+    for lam in LAMBDAS:
+        k = 1.0
+        for d in gains:
+            k *= 1 + lam * max(-1.0, min(1.0, d / m))
+        richesses.append(k)
+    return sum(richesses) / len(richesses)
+
+
+def puissance_a_priori(gains: list[float]) -> dict:
+    """Questions appariées nécessaires pour détecter un gain moyen donné (test unilatéral α = 5 %, puissance 80 %),
+    avec l'écart-type observé si le registre en a assez, sinon une hypothèse déclarée. Ordre de grandeur seulement :
+    le test séquentiel, plus prudent, en demande davantage."""
+    if len(gains) >= 5:
+        moy = sum(gains) / len(gains)
+        sigma, origine = math.sqrt(sum((g - moy) ** 2 for g in gains) / (len(gains) - 1)), "observé"
+    else:
+        sigma, origine = ECART_TYPE_SUPPOSE, "supposé (moins de 5 questions appariées)"
+    return {"ecart_type": sigma, "origine": origine,
+            "questions_necessaires": {f"{d} points": math.ceil(((1.645 + 0.842) * sigma / d) ** 2) for d in (5, 10, 20)}}
+
+
 def comparer(apparies: list, x: str, ref: str) -> dict:
     g = [gain_pair(p[x], p[ref], y) for p, y in apparies]
     d_brier = [brier(p[x], y) - brier(p[ref], y) for p, y in apparies]
@@ -160,8 +198,14 @@ def comparer(apparies: list, x: str, ref: str) -> dict:
     pire = min(g)
     return {"gain_log_moyen": total / len(g),            # LA mesure (unités de score de pair Metaculus)
             "questions_gagnees": sum(v > 0 for v in g), "questions_perdues": sum(v < 0 for v in g),
-            "pire_question": pire,
-            "gain_sans_pire_question": (total - pire) / (len(g) - 1) if len(g) > 1 else None,
+            "test_sequentiel": {"e_mieux": e_valeur(g), "e_moins_bien": e_valeur([-v for v in g]),
+                                "seuil": 1 / ALPHA,
+                                "lecture": f"e ≥ {1 / ALPHA:g} : écart établi au niveau {ALPHA:g}, valide à tout moment "
+                                           "de consultation ; en dessous, rien n'est établi dans un sens ni dans l'autre"},
+            "puissance": puissance_a_priori(g),
+            "fragilite": {"pire_question": pire,
+                          "gain_sans_pire_question": (total - pire) / (len(g) - 1) if len(g) > 1 else None,
+                          "lecture": "diagnostic d'influence, pas un test"},
             "brier_critere_L7": {"ecart_moyen": sum(d_brier) / len(d_brier),   # négatif = x meilleur (§27)
                                "accord_avec_log": (total > 0) == (sum(d_brier) < 0)}}
 
@@ -217,9 +261,7 @@ def recalibration(paires: list[tuple[float, int]]) -> dict | None:
                        "appliquée."}
 
 
-def plafonnement_etudie(resolues: list[dict], issues: dict) -> dict | None:
-    """Ce qu'aurait changé un plafonnement de la valeur POSTÉE (étude, pas application)."""
-    bas, haut = PLAFOND_ETUDIE
+def _effet_plafond(resolues: list[dict], issues: dict, bas: float, haut: float) -> tuple[list[float], int]:
     gains, touchees = [], 0
     for x in resolues:
         p = x.get("p_poste")
@@ -229,12 +271,40 @@ def plafonnement_etudie(resolues: list[dict], issues: dict) -> dict | None:
         pc = min(max(p, bas), haut)
         touchees += pc != p
         gains.append(gain_pair(pc, p, y))
+    return gains, touchees
+
+
+def plafonnement_etudie(resolues: list[dict], issues: dict) -> dict | None:
+    """Ce qu'aurait changé un plafonnement de la valeur POSTÉE (étude, pas application), pour le plafond de référence
+    et pour une grille de plafonds (0.4.0) : la décision devient un choix chiffré sur le registre."""
+    gains, touchees = _effet_plafond(resolues, issues, *PLAFOND_ETUDIE)
     if not gains:
         return None
+    grille = {}
+    for b in GRILLE_PLAFONDS:
+        g, k = _effet_plafond(resolues, issues, b, 1 - b)
+        grille[f"{b:g}–{1 - b:g}"] = {"gain_moyen": sum(g) / len(g), "questions_touchees": k}
     return {"bornes": list(PLAFOND_ETUDIE), "n": len(gains), "questions_touchees": touchees,
-            "gain_moyen": sum(gains) / len(gains),
+            "gain_moyen": sum(gains) / len(gains), "grille": grille,
             "lecture": "positif = le plafonnement aurait amélioré le score posté. Étude seulement : la décision de "
                        "plafonner est réservée à Othman."}
+
+
+def stabilite_strate(tout: list[dict]) -> dict:
+    """0.4.0 : la strate de l'événement est posée par le modèle et commande le droit de chiffrer (L7). Sur les
+    questions passées plusieurs fois (essais compris), part des passages qui reprennent la strate du premier."""
+    par_q = {}
+    for x in tout:
+        ev = x["bras"]["C"].get("evenement")
+        m = re.search(r"@(\d+)", ev) if isinstance(ev, str) else None
+        if m:
+            par_q.setdefault(x["question_id"], []).append(int(m.group(1)))
+    repetees = {q: s for q, s in par_q.items() if len(s) > 1}
+    paires = [(s[0], v) for s in repetees.values() for v in s[1:]]
+    return {"questions_repetees": len(repetees),
+            "accord": (sum(a == b for a, b in paires) / len(paires)) if paires else None,
+            "strates_par_question": repetees,
+            "lecture": "accord bas : l'étiquette de strate, donc le droit de chiffrer, dépend du tirage"}
 
 
 def est_essai(x: dict) -> bool:
@@ -310,6 +380,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "recalibration_etudiee": {b: recalibration(v) for b, v in par_bras.items()},
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
+            "stabilite_strate": stabilite_strate(tout),
             **({"rappel": f"{len(resolues)} questions résolues : décider du plafonnement de la valeur postée "
                           f"(voir plafonnement_etudie et README-alphabet.md, « Décisions en attente »)."}
                if len(resolues) >= RAPPEL_PLAFONNEMENT else {}),
