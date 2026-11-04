@@ -1,0 +1,107 @@
+{
+ "candidats": [
+  "SEU@6",
+  "CRO@6",
+  "INC@6"
+ ],
+ "contre_candidate": [
+  "INC@6"
+ ],
+ "rejets": {
+  "SEU@6": "le franchissement du seuil de 4x n'a pas eu lieu : l'estimation Forbes est de 6,52 Md$ au 2026-11-03, contre un seuil d'environ 9,2 à 10,4 Md$. L'événement est donc futur et aucun fait daté ne l'ancre. Même un franchissement serait réversible, car la valeur Forbes en temps réel fluctue avec DJT et la crypto. La fiche SEUIL exige l'irréversibilité, pas seulement un niveau atteint. L'événement de résolution ne vaut donc pas ancrage de la carte. De plus, la prévision chiffrée est limitée à la strate 7 (décision L7, 0.7.34) : la strate 6 se lit sans chiffre.",
+  "INC@6": "contre-candidate écartée. L'indétermination décrite est celle de l'analyste : on ne sait pas si la valeur atteindra 4x. Aucune conduite d'acteur conditionnée à une issue non tranchée n'est établie dans les résultats. Le seul fait daté est un calendrier de fusion TMTG-TAE (assemblée le 2026-12-14, date limite contractuelle le 2026-12-18, clôture évoquée « fin 2026 ou début 2027 »). Il ne montre ni couverture ni report lié au patrimoine de Trump. La contre-observation la plus forte serait la forte volatilité de la part sensible au marché (environ 50 % de la fortune), mais elle décrit un risque de marché, pas une conduite organisée par l'indétermination.",
+  "CRO@6": "carte retirée faute de vue extérieure : aucune fréquence de classe de référence n'est établie dans le dossier et elle ne peut pas être fabriquée. L'intensité était déjà au minimum (f). La contre-observation du dossier va d'ailleurs contre la carte : la série Forbes évolue par sauts ponctuels liés à des événements (2,3 à 6,4 Md$ le 2024-03-26, jour de la cotation de TMTG), et la baisse de DJT (-980 M$ sur un an) coexiste avec des hausses de liquidités issues de ventes de crypto (+800 M$). Cela ne ressemble pas à une croissance auto-entretenue à taux dépendant du niveau."
+ },
+ "mots": [],
+ "liaisons": [],
+ "questions": [],
+ "evenements": [],
+ "etat": "",
+ "disponible_le": "2026-11-03",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Valeur de la participation de Donald Trump dans Trump Media & Technology Group et cours de l'action DJT, octobre-novembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Estimation Forbes du patrimoine de Donald Trump dans les archives Wayback en 2024 (2,3, 2,6 ou 4,3 milliards de dollars) et seuil de résolution qui en découle",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Évolution mensuelle du patrimoine de Donald Trump selon Forbes et Bloomberg, de janvier à novembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Plafonnement ou recul en 2026 des revenus de licences, de crypto et de World Liberty Financial pour la famille Trump",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@6"
+   ],
+   "requete": "Volatilité en 2026 du bitcoin, du jeton WLFI et du mémecoin TRUMP, et effet sur la fortune de la famille Trump",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@6"
+   ],
+   "requete": "Événements financiers déjà programmés pour 2027-2028 qui pourraient réévaluer fortement les actifs de Trump (introductions en bourse, fusions, cotations, procès) à la date du 3 novembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "CRO@6"
+   ],
+   "requete": "Historique des hausses du patrimoine de Trump selon Forbes de 2024 à 2026: sauts ponctuels liés à des événements (cotation, décision de justice, lancement crypto) ou progression régulière proportionnelle à la valeur",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "INC@6"
+   ],
+   "requete": "Amplitude des écarts entre estimations Forbes et Bloomberg du patrimoine de Trump en 2025-2026 et fréquence des fluctuations de plus de 1 milliard de dollars en quelques semaines",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "INC@6"
+   ],
+   "requete": "Part du patrimoine de Trump sensible aux cours de marché (DJT, crypto) comparée à la part stable (immobilier, golf, licences) dans l'estimation Forbes de 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  }
+ ]
+}

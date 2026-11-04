@@ -1,0 +1,148 @@
+{
+ "candidats": [
+  "SEU@13",
+  "TRC@13"
+ ],
+ "contre_candidate": [],
+ "rejets": {
+  "SEU@13": "Aucun franchissement irréversible daté dans les six États : pas de référendum annoncé par un gouvernement ou une majorité, pas de notification de l'article 50, pas de procédure de retrait engagée en 2026 (recherches 2 et 6). Les seules promesses de sortie viennent de candidats hors pouvoir (Dupont-Aignan, 2026-09-01), conditionnées à une élection en 2027. Une promesse n'est pas une réalisation. Le RN, première force dans les intentions de vote, a écarté la sortie de son programme.",
+  "TRC@13": "Les sources montrent que le Brexit coexiste avec un soutien à l'UE plus élevé (Pew, 2016-2026). Elles n'établissent pas que le souvenir du Brexit soit le motif cité par les partis pour renoncer à la sortie. Une corrélation de dates ne suffit pas à ancrer un résidu du passé qui agit, et le lien causal manque."
+ },
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Un gouvernement ou une majorité parlementaire de Belgique, France, Italie, Luxembourg, Pays-Bas ou Allemagne annonce-t-il, par acte officiel daté, un référendum sur l'appartenance à l'UE ou une notification au titre de l'article 50 entre le 2026-11-03 et le 2026-12-31 ?",
+   "si_oui": "SEU@13",
+   "si_non": "indetermine",
+   "resolution": "Journal officiel de chacun des six États, communiqués des gouvernements, et registre ou communiqués du Conseil européen sur les notifications de l'article 50, entre le 2026-11-03 et le 2026-12-31",
+   "justification": {
+    "oui": "un acte officiel daté de ce type serait un franchissement institutionnel qui ferme le retour par le même chemin, c'est-à-dire l'attendu de SEU@13"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "Les sondages d'octobre-décembre 2026 sur un référendum de sortie divergent-ils fortement en France (54 % pour la sortie selon Eupinions, relayé le 2026-09-02, contre 27 % selon YouGov) ?",
+   "type": "documentation",
+   "carte": "SEU@13",
+   "manque": "un sondage harmonisé et récent sur le vote de sortie dans les six États. Les chiffres disponibles diffèrent par la méthode et la date, et aucun sondage d'octobre 2026 ne porte directement sur ce vote.",
+   "resolution": "publications d'Eupinions, de YouGov et de l'Eurobaromètre (novembre-décembre 2026)"
+  }
+ ],
+ "evenements": [],
+ "etat": "",
+ "disponible_le": "2026-11-03",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "SEU@13"
+   ],
+   "requete": "sondages soutien à la sortie de l'UE France Italie Pays-Bas Allemagne Belgique octobre 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@13"
+   ],
+   "requete": "gouvernement ou majorité parlementaire annonçant un référendum sur l'appartenance à l'UE dans un pays fondateur 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "SEU@13"
+   ],
+   "requete": "partis eurosceptiques renonçant à la sortie de l'UE programme électoral 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "obstacles constitutionnels et procéduraux à un référendum ou à un retrait de l'UE France Allemagne Italie Pays-Bas 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "calendrier électoral et délais légaux avant une notification de retrait de l'UE d'ici fin 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "procédure de retrait de l'UE engagée ou contournement des règles constitutionnelles par un gouvernement membre 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@13"
+   ],
+   "requete": "effets du Brexit sur l'opinion publique et les partis des États fondateurs de l'UE 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRC@13"
+   ],
+   "requete": "dépendance des économies et des budgets nationaux aux règles du marché unique et de l'euro, coût estimé d'une sortie 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@13"
+   ],
+   "requete": "retour de la défiance envers l'UE malgré l'expérience britannique, hausse du vote pour les partis favorables à la sortie 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@13",
+    "CTR@13"
+   ],
+   "requete": "seuil de voix ou de sièges nécessaire à un parti favorable à la sortie pour lancer un référendum, rapporté aux scores obtenus 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@13",
+    "TRC@13"
+   ],
+   "requete": "bascule rapide de l'opinion sur l'UE après un choc politique ou économique dans un pays fondateur 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@13",
+    "TRC@13"
+   ],
+   "requete": "poids des traités et des engagements passés dans les débats nationaux sur la sortie de l'UE 2026",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+ "candidats": [
+  "CRO@6",
+  "SEU@6",
+  "INC@6"
+ ],
+ "contre_candidate": [],
+ "rejets": {
+  "CRO@6": "Aucune fréquence de classe de référence (vue extérieure) n'est établie dans le dossier, et elle ne peut pas être fabriquée : le mot est retiré. Les faits restent peu favorables à la carte : la série Forbes (7,3 Md$ en sept. 2025, 6,5 Md$ en mars 2026, 5,9 Md$ le 25 juin 2026, environ 7,0 Md$ en sept. 2026, 6,5 Md$ le 3 nov. 2026) n'a que cinq points, avec des écarts de source. Les variations de 2026 viennent surtout de prix exogènes (DJT, memecoin $TRUMP, WLFI) et non d'un taux dépendant du niveau de la fortune.",
+  "SEU@6": "Aucun franchissement daté du seuil n'est observé, et la fortune n'a pas non plus changé d'état de façon irréversible. Le maximum Forbes est de 7,3 Md$ (sept. 2025), soit environ 2,8 fois la base de 2,6 Md$. Le seuil de 4x vaut 10,4 Md$ (et non 9,2 Md$ comme dans la note du plan). Le niveau a ensuite reculé à 6,5 Md$ (3 nov. 2026). Un recul sans retour impossible n'est pas un seuil.",
+  "INC@6": "Les résultats ne montrent aucune conduite d'acteur organisée par l'indétermination de la fortune de Trump. Les prévisions de cours de DJT sont algorithmiques (blockchainreporter), donc c'est l'incertitude de l'analyste. L'échéance du 30 novembre sur les obligations convertibles concerne la société, pas le franchissement du seuil de 4x."
+ },
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le widget temps réel de Forbes ou une capture Wayback affiche-t-il un patrimoine net de Trump d'au moins 10,4 Md$ (4 x 2,6 Md$) à une date comprise entre le 2026-11-03 et le 2026-12-31 ?",
+   "si_oui": "SEU@6",
+   "si_non": "indetermine",
+   "resolution": "profil Forbes de Donald Trump et captures du Wayback Machine, 2026-11-03 au 2026-12-31",
+   "justification": {
+    "oui": "un franchissement daté de la valeur critique est l'événement attendu",
+    "non": "un maximum resté sous le seuil ne constitue pas un franchissement et ne désigne aucune autre carte"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "Quelle est la base de référence retenue par la résolution : 2,6 Md$ (capture Forbes du 2024-01-12) ou environ 4,3 Md$ (valeur de début 2024 déduite des tableaux Forbes de 2026) ?",
+   "type": "documentation",
+   "carte": "SEU@6",
+   "manque": "la capture la plus ancienne de 2024 sur le Wayback Machine. Avec 2,6 Md$ le seuil est de 10,4 Md$, avec 4,3 Md$ il est d'environ 17,2 Md$. Dans les deux cas le maximum observé de 7,3 Md$ est loin sous le seuil.",
+   "resolution": "captures Wayback du profil Forbes de Donald Trump, janvier à décembre 2024"
+  }
+ ],
+ "evenements": [],
+ "etat": "",
+ "disponible_le": "2026-11-03",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Forbes patrimoine net Donald Trump estimation en temps réel octobre novembre 2026 milliards de dollars",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "CRO@6"
+   ],
+   "requete": "Trump net worth Forbes 2026 multiple of 2024 baseline 2.6 billion trajectory since January 2025",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "SEU@6"
+   ],
+   "requete": "Trump net worth decline 2026 Trump Media shares fall crypto holdings lose value Forbes Bloomberg estimate",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "évolution mensuelle de la fortune de Trump selon Forbes de 2025 à 2026, rythme de hausse",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "INC@6"
+   ],
+   "requete": "Trump net worth 2026 changes driven by gradual gains versus sudden jumps from stock moves, court rulings or token launches",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Trump net worth jump 2026 new valuation World Liberty Financial Trump Media stock surge record",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@6"
+   ],
+   "requete": "volatilité du cours de Trump Media (DJT) et des actifs crypto liés à Trump en 2026, plus haut et plus bas",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@6",
+    "INC@6"
+   ],
+   "requete": "Trump Media DJT share price range 2026 and World Liberty token price range, levels needed for Trump net worth above 9 billion",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@6"
+   ],
+   "requete": "Forbes méthodologie fortune de Trump décote actifs illiquides actions bloquées Trump Media 2026 révision de l'estimation",
+   "executee": true,
+   "date_execution": "2026-11-03"
+  }
+ ]
+}
