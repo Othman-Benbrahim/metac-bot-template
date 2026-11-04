@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.3 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.1.4 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -67,8 +67,8 @@ Reste à faire :
      anciens, et sa recherche par défaut passe par le proxy disparu.
 3. Onglet **Actions** : autoriser les workflows, puis **Bot alphabet situationnel → Run workflow**, mode `test_questions`.
    Vérifier sur Metaculus (compte bot) et dans `registre/`. Puis mode `minibench`.
-4. Une fois les essais concluants, activer la planification dans `.github/workflows/run_alphabet_bot.yaml` (retirer les
-   « # » devant `schedule`).
+4. La planification est active depuis le 2026-11-04 : mode `minibench`, toutes les 4 heures. Pour la suspendre :
+   *Actions → Bot alphabet situationnel → ⋯ → Disable workflow*.
 
 En local : `cp .env.template .env`, remplir, puis `uv run python alphabet_bot.py --mode test_questions --sans-publier`.
 
@@ -102,6 +102,13 @@ Brier et score logarithmique de chaque bras, et la comparaison **appariée** sur
 C − B (l'apport des cartes) et C − A (l'alphabet contre le modèle seul). Les lignes dont le sceau ne correspond plus sont
 écartées et listées. Sur quelques dizaines de questions, aucune conclusion : le nombre de questions décide de ce qu'on
 peut dire.
+
+## Points ouverts
+
+- **Stabilité du bras B** (décidé le 2026-11-04 : ne rien changer avant d'avoir des données). Sur la même question, la vue
+  extérieure a donné 2,5 % puis 8 % d'un passage à l'autre. Les passages répétés en `test_questions` fournissent
+  gratuitement des estimations répétées de B pour les mêmes questions : quand il y en aura assez, mesurer la dispersion,
+  puis choisir entre une classe de référence plus contrainte et une médiane de plusieurs estimations.
 
 ## Limites, à dire avec les résultats
 

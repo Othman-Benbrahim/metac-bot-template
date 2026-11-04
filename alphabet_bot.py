@@ -35,6 +35,17 @@ import alphabet_pipeline as ap
 logger = logging.getLogger(__name__)
 
 
+def echelle_explicite(question) -> str:
+    """Unité réécrite pour une seconde tentative : l'échelle exacte des bornes, et l'interdiction des pourcentages
+    quand les bornes sont des fractions."""
+    bas, haut = question.lower_bound, question.upper_bound
+    unite = question.unit_of_measure or "same scale as the bounds"
+    note = f"{unite} — answer on the SAME numeric scale as the bounds ({bas} to {haut})"
+    if haut is not None and abs(haut) <= 1 and abs(bas or 0) <= 1:
+        note += "; values are decimal fractions (e.g. 0.25), NOT percentages (not 25)"
+    return note
+
+
 class AlphabetBot(FallTemplateBot2026):
     """Bras A sur tout ; alphabet (bras B et C) sur les binaires."""
 
@@ -83,7 +94,23 @@ class AlphabetBot(FallTemplateBot2026):
         return rp
 
     async def _run_forecast_on_numeric(self, question, research):
-        return self._journaliser_autre(question, "numerique", await super()._run_forecast_on_numeric(question, research))
+        try:
+            rp = await super()._run_forecast_on_numeric(question, research)
+        except Exception as e:
+            if "far exceeding the bounds" not in str(e):
+                raise
+            # 0.1.4 (passage du 2026-11-04, question 45517) : réponse en pourcentages (5, 15, 40) pour une question bornée
+            # entre 0,095 et 0,805. Une seconde tentative, avec l'échelle des bornes écrite dans l'unité, que le modèle
+            # et le lecteur de la réponse voient tous deux.
+            logger.warning("numérique : valeurs hors bornes sur %s, seconde tentative avec l'échelle explicite",
+                           question.page_url)
+            unite = question.unit_of_measure
+            question.unit_of_measure = echelle_explicite(question)
+            try:
+                rp = await super()._run_forecast_on_numeric(question, research)
+            finally:
+                question.unit_of_measure = unite
+        return self._journaliser_autre(question, "numerique", rp)
 
     async def _run_forecast_on_multiple_choice(self, question, research):
         return self._journaliser_autre(question, "choix_multiple",

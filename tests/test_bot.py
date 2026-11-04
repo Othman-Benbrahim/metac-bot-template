@@ -81,6 +81,36 @@ class TestsConfiguration(unittest.TestCase):
         finally:
             ap.REGISTRE = ancien
 
+    def test_numerique_seconde_tentative(self):
+        import asyncio, tempfile
+        from datetime import datetime, timedelta, timezone
+        import alphabet_pipeline as ap
+        import main
+        from forecasting_tools import NumericQuestion, ReasonedPrediction
+        q = NumericQuestion(question_text="Share?", id_of_question=7, page_url="https://www.metaculus.com/questions/7/",
+                            upper_bound=0.805, lower_bound=0.095, open_upper_bound=False, open_lower_bound=False,
+                            unit_of_measure="", scheduled_resolution_time=datetime.now(timezone.utc) + timedelta(days=9))
+        vues = []
+
+        async def faux(self, question, research):
+            vues.append(question.unit_of_measure)
+            if len(vues) == 1:
+                raise ValueError("Some declared percentiles are far exceeding the bounds of the question.")
+            return ReasonedPrediction(prediction_value=0.5, reasoning="r")
+
+        ancien_reg, ap.REGISTRE = ap.REGISTRE, Path(tempfile.mkdtemp(prefix="registre-num-"))
+        with mock.patch.object(main.FallTemplateBot2026, "_run_forecast_on_numeric", faux):
+            b, _ = bot(dict(BASE, EXA_API_KEY="x", ALPHABET_LLM="anthropic/claude-sonnet-5-5",
+                            ALPHABET_CHERCHEUR="smart-searcher/anthropic/claude-sonnet-5-5"))
+            try:
+                rp = asyncio.run(b._run_forecast_on_numeric(q, "recherche"))
+            finally:
+                ap.REGISTRE = ancien_reg
+        self.assertEqual(rp.prediction_value, 0.5)
+        self.assertEqual(len(vues), 2)
+        self.assertIn("NOT percentages", vues[1])
+        self.assertEqual(q.unit_of_measure, "")                 # l'unité d'origine est rétablie
+
 
 if __name__ == "__main__":
     unittest.main()
