@@ -135,13 +135,18 @@ def scorer(registre: Path, issues: dict[str, int]) -> dict:
                 "C_moins_B_brier": sum(d_cb) / len(d_cb), "C_bat_B": sum(d < 0 for d in d_cb),
                 "C_moins_A_brier": sum(d_ca) / len(d_ca), "C_bat_A": sum(d < 0 for d in d_ca),
                 "lecture": "négatif = C meilleur ; sur moins de quelques dizaines de questions, aucune conclusion"}
-    statuts = {}
+    statuts, motifs = {}, {}
     for x in tout:
         s = x["bras"]["C"].get("statut")
         statuts[s] = statuts.get(s, 0) + 1
+        for cat in (x["bras"]["C"].get("rejets_classes") or {}).values():
+            motifs[cat] = motifs.get(cat, 0) + 1
     return {"lignes": len(tout), "resolues": len(resolues), "retouchees": retouchees,
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "statuts_alphabet": statuts,
+            "motifs_rejet": {"compte": motifs,
+                             "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; "
+                                        "contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"},
             "bras_poste": {b: sum(x["bras_poste"] == b for x in tout) for b in "ABC"}}
 
 
