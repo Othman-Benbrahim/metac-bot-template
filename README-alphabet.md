@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.8 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.2.0 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -70,9 +70,10 @@ Reste à faire :
      anciens, et sa recherche par défaut passe par le proxy disparu.
 3. Onglet **Actions** : autoriser les workflows, puis **Bot alphabet situationnel → Run workflow**, mode `test_questions`.
    Vérifier sur Metaculus (compte bot) et dans `registre/`. Puis mode `minibench`.
-4. La planification est active : mode `minibench`, **contrôle toutes les 3 heures, au plus 3 questions nouvelles par
-   jour** (variable `ALPHABET_MAX_QUESTIONS`), comptées dans `registre/passages.jsonl` avant toute prévision. Un
-   contrôle sans question, ou après le plafond, ne coûte rien. Un lancement manuel a son propre plafond (champ
+4. La planification est active : mode `minibench`, **contrôle toutes les 20 minutes, au plus 3 questions nouvelles
+   par jour** (variable `ALPHABET_MAX_QUESTIONS`), comptées dans `registre/passages.jsonl` avant toute prévision. Un
+   contrôle sans question, ou après le plafond, ne coûte rien et n'écrit rien. (Les questions MiniBench ne restent
+   ouvertes que 3 heures, à heure aléatoire : un contrôle toutes les 3 heures en manquait.) Un lancement manuel a son propre plafond (champ
    `max_questions`), hors plafond quotidien. Pour la suspendre :
    *Actions → Bot alphabet situationnel → ⋯ → Disable workflow*.
 
@@ -89,8 +90,8 @@ prévisions postées, les questions binaires journalisées (bras C ou A posté) 
 
 | Fichier | Contenu | Écrit par |
 |---|---|---|
-| `registre/journal-bot.jsonl` | une ligne scellée par question binaire : bras A, B et C, bras posté, statut de l'alphabet | chaque passage du bot |
-| `registre/dossiers/` | le dossier de lecture de chaque question | chaque passage du bot |
+| `registre/journal-bot.jsonl` | une ligne scellée par question binaire : bras A, B et C, bras posté, statut de l'alphabet, `publie` (faux pour un passage à blanc) et `mode` du passage | chaque passage du bot |
+| `registre/dossiers/` | le dossier de lecture de chaque question, nommé `<question>-<horodatage>.json` (un second passage n'écrase plus le premier) | chaque passage du bot |
 | `registre/journal-autres.jsonl` | une ligne scellée par question non binaire (numérique, choix multiple, date, conditionnelle) : la prévision postée (bras A) et l'empreinte du raisonnement | chaque passage du bot |
 | `registre/issues-autres.jsonl` | l'issue brute de ces questions, telle que Metaculus la donne, jamais réécrite | le workflow « Score du bot alphabet » |
 | `registre/passages.jsonl` | une ligne par passage : date, déclencheur, questions trouvées et envoyées ; sert au plafond quotidien | chaque passage du bot |
@@ -107,7 +108,10 @@ python score_registre.py --metaculus
 
 Brier et score logarithmique de chaque bras, et la comparaison **appariée** sur les questions où les trois bras existent :
 C − B (l'apport des cartes) et C − A (l'alphabet contre le modèle seul). Les lignes dont le sceau ne correspond plus sont
-écartées et listées. Sur quelques dizaines de questions, aucune conclusion : le nombre de questions décide de ce qu'on
+écartées et listées. Depuis 0.2.0 : **une question compte une fois** (sa dernière ligne publiée) ; passages à blanc et
+zone de test sont exclus (`--inclure-essais` pour les compter) ; toute probabilité est bornée à [0,001 ; 0,999] comme
+au postage ; les questions de groupe sont retrouvées par leur sous-question ; une issue introuvable est listée
+(`issues_introuvables`) au lieu d'être ignorée en silence. Sur quelques dizaines de questions, aucune conclusion : le nombre de questions décide de ce qu'on
 peut dire.
 
 ## Motifs de rejet classés
@@ -120,11 +124,22 @@ Chaque candidate écartée porte une catégorie, gardée au registre (`rejets_cl
 | `aucun_fait` | aucun fait pertinent dans les résultats : un problème de **recherche** |
 | `marqueur_non_rempli` | des faits existent mais ne remplissent pas le marqueur : un problème de **marqueur**, ou une vraie absence |
 | `contredit` | un fait de la situation contredit la carte : une **vraie absence de structure** |
+| `non_cherchee` | la requête de la candidate a été coupée par le plafond de 12 recherches : **rien n'a été cherché** (0.2.0) |
 
 Seule la dernière renseigne sur l'alphabet lui-même ; les deux autres renseignent d'abord sur l'outil.
 
 ## Points ouverts
 
+- **Audit externe du 2026-11-04 (version 0.2.0).** Corrigés : bornes 0,001–0,999 au lieu de 0,01–0,99 (B1) ; issues des
+  questions de groupe et erreurs signalées (B2) ; contrôle toutes les 20 minutes (B3) ; une ligne par question au score
+  (B4) ; champs `publie` et `mode` (B5) ; date de disponibilité de la vue extérieure contrôlée, et vue « de mémoire »
+  marquée `fondement_memoire` (B6, en partie) ; dossiers horodatés (B8) ; chercheur classé par une seule fonction (B9) ;
+  requêtes coupées consignées, catégorie `non_cherchee` (B10) ; temporalité déclarée par le plan et passée au moteur
+  (B11) ; motif d'absence d'alternative inscrit par le bot signalé comme tel, questions dédoublonnées entre cibles (B12) ;
+  tests et audit du skill à chaque push (CI). **Non appliqués, volontairement** : stabilisation de B (point suivant,
+  décidée sur données) ; B7 (dépend du skill, pas du bot) ; postage d'un autre bras que celui d'aujourd'hui (pas avant
+  la levée de L7) ; *pastcasting* (questions déjà résolues : le modèle et la recherche connaissent l'issue, fuite §26) ;
+  plafond manuel hors quota (voulu : un essai manuel se décide et se paie à la main).
 - **Stabilité du bras B** (décidé le 2026-11-04 : ne rien changer avant d'avoir des données). Sur la même question, la vue
   extérieure a donné 2,5 % puis 8 % d'un passage à l'autre. Les passages répétés en `test_questions` fournissent
   gratuitement des estimations répétées de B pour les mêmes questions : quand il y en aura assez, mesurer la dispersion,
@@ -151,4 +166,7 @@ ALPHABET_SKILL_DIR=alphabet-situationnel python -m unittest discover -s tests
 ```
 
 Modèle et recherche simulés, vrai moteur : bras C posté, correction après refus, refus définitif (bras A, B conservé),
-question hors alphabet, réponse illisible, événement incompatible avec l'état, sceau du journal, score apparié.
+question hors alphabet, réponse illisible, événement incompatible avec l'état, sceau du journal, score apparié ; depuis
+0.2.0, les correctifs de l'audit (bornes, une ligne par question, publie/mode, sous-questions de groupe, requêtes
+coupées, temporalité, date de la vue, dossiers horodatés, classification du chercheur). Ils tournent à chaque push
+(workflow « Contrôle du bot alphabet »).
