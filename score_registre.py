@@ -89,7 +89,7 @@ def scorer(registre: Path, issues: dict[str, int]) -> dict:
     return {"lignes": len(tout), "resolues": len(resolues), "retouchees": retouchees,
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "statuts_alphabet": statuts,
-            "bras_poste": {b: sum(x["bras_poste"] == b for x in tout) for b in "AC"}}
+            "bras_poste": {b: sum(x["bras_poste"] == b for x in tout) for b in "ABC"}}
 
 
 if __name__ == "__main__":

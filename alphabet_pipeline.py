@@ -5,11 +5,12 @@ Indépendant de forecasting-tools : il reçoit deux fonctions asynchrones, `llm(
 
 Trois bras par question (audit des concurrents, §6.3) :
   A  le modèle seul, sans le skill (calculé avant, et scellé, par le bot) ;
-  B  la classe de référence seule (vue extérieure du dossier) ;
+  B  la classe de référence seule (vue extérieure, posée avant toute carte, sur ses propres recherches) ;
   C  l'alphabet complet (moteur.py, la fréquence de B passée en référence : C - B = l'apport des cartes).
 
 Le moteur reste juge : un dossier refusé ou une probabilité « non estimée » ne sont jamais remplacés par un
-chiffre inventé. Le bot poste alors le bras A, et le registre garde la trace du refus.
+chiffre inventé. Le bot poste alors le bras A, et le registre garde la trace du refus. Un état nul (aucune
+carte ancrée) n'ajuste pas le taux de base : le bot poste alors le bras B.
 """
 from __future__ import annotations
 
@@ -26,7 +27,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.1.1"
+VERSION_BOT = "0.1.2"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -178,6 +179,8 @@ Rends UNIQUEMENT un objet JSON :
  "evenement": {{"carte": "ABR", "strate": n, "type": "apparait|persiste|disparait"}},
  "semantique": "presence|au-moins-une-fois|continue",
  "pourquoi_evenement": "en quoi le OUI de la question correspond à cet événement de carte",
+ "recherches_reference": ["requête", ...]  (1 à {MAX_RECHERCHES_REFERENCE} requêtes pour trouver la FRÉQUENCE HISTORIQUE
+     d'événements comparables : combien de fois, sur quelle période, dans quelle population de cas),
  "recherches": [{{"famille": "observation|discrimination|contradiction", "cartes": ["ABR@s", ...], "requete": "..."}}]
 }}
 Règles : « apparait » vise une carte ABSENTE de l'état actuel, « persiste » ou « disparait » une carte PRÉSENTE.
@@ -188,6 +191,41 @@ Recherches : pour chaque candidate, une requête de chaque famille ; pour chaque
 une requête de discrimination. Au plus {MAX_RECHERCHES} requêtes au total. Une requête se forme sur le phénomène
 observable, l'objet et la période, JAMAIS sur le nom d'une carte, ni sur une prémisse.
 """
+
+
+def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: str, jours: int) -> str:
+    res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{r['resultat'][:3000]}" for i, r in enumerate(references))
+    return f"""Étape 2 : la VUE EXTÉRIEURE, avant toute carte. Elle ne doit pas être choisie d'après l'état présent.
+
+QUESTION : {q.titre}
+CRITÈRES DE RÉSOLUTION : {q.criteres}
+PRÉCISIONS : {q.precisions}
+DATE D'INFORMATION : {aujourdhui} ; fenêtre : {jours} jours (jusqu'au {q.resolution.isoformat()}).
+
+RÉSULTATS DES RECHERCHES SUR LE TAUX DE BASE :
+{res or "(aucun)"}
+
+La fréquence se tire, au choix : (a) des résultats ci-dessus (cite [R1], [R2]…) ; (b) d'un registre historique
+notoire et vérifiable, que tu NOMMES précisément (ex. « liste des retraits de l'Union européenne depuis 1957 : un seul,
+le Royaume-Uni en 2020 »). Compte des cas sur une période, puis ramène à une fenêtre de {jours} jours. N'invente
+aucun chiffre : si aucune base honnête n'existe, mets "frequence": null et explique-le dans "motif".
+
+Rends UNIQUEMENT un objet JSON :
+{{
+ "frequence": nombre dans ]0, 1[ ou null,
+ "classe_de_reference": "les cas comptés, dans le vocabulaire de la source, SANS aucun nom de carte de l'alphabet",
+ "source": "base, étude ou registre nommé",
+ "fondement": "recherche [Rn] | registre historique",
+ "periode": "AAAA-AAAA",
+ "disponible_le": "AAAA-MM-JJ (au plus tard le {aujourdhui})",
+ "calcul": "comptage et mise à l'échelle de la fenêtre",
+ "classe_alternative": {{"frequence": …, "classe_de_reference": "…", "source": "…", "pourquoi_ecartee": "…"}} ou null,
+ "motif_sans_alternative": "si classe_alternative est null",
+ "ecart_critere": "en quoi la classe compte autre chose que le critère de résolution, ou « identique : … »",
+ "resolution": "ce qui fera dire OUI, en une phrase",
+ "source_resolution": {{"emetteur": "nommé, jamais « la presse »", "document": "…", "regle_ambiguite": "…"}},
+ "motif": "si frequence est null"
+}}"""
 
 
 def regles_dossier() -> str:
@@ -202,32 +240,28 @@ def regles_dossier() -> str:
 - a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines de la fiche, sans « ? ».
 - contre_observation : la plus forte trouvée DANS la situation ; portee marginale|substantielle|dominante|aucune.
 - contredirait ≠ attendu, sans nommer la carte. option : un fait qui ne change l'espace d'action de personne ne s'ancre pas.
-- rejets : pour chaque contre-candidate écartée, le motif.
+- rejets : pour chaque candidate non ancrée, le motif.
 - questions : au moins une question ouverte et datée qui départagerait la lecture (si_oui, si_non, resolution, statut).
-- evenements[0] : evenement, semantique, temporalite "generique", resolution (texte), source_resolution {emetteur nommé,
-  document, regle_ambiguite}, vue_exterieure {frequence (0-1, taux de base de la classe pour une fenêtre de même durée),
-  classe_de_reference, source (base ou étude nommée), periode (ex. "2000-2025"), disponible_le (AAAA-MM-JJ, avant la date
-  d'information), classe_alternative {frequence, classe_de_reference, source, pourquoi_ecartee} ou null avec
-  motif_sans_alternative, ecart_critere (en quoi la classe compte autre chose que le critère de résolution, ou
-  « identique : … »)}.
-- La vue extérieure se pose AVANT toute carte : elle ne doit pas être choisie d'après l'état présent.
-- classe_de_reference : dans le vocabulaire de la source, sans aucun nom de carte (le moteur refuse une classe tautologique).
 - Ne cite que des faits trouvés dans les résultats de recherche fournis ; n'invente ni source, ni URL, ni date.
+- ÉTAT NUL ADMIS : si aucun fait ne remplit le marqueur d'une carte, "mots" est une liste vide et chaque candidate va
+  dans rejets. C'est une lecture légitime (« aucune structure lue »), jamais un échec : ne force pas une carte.
 """
 
 
 def consigne_dossier(q: Question, plan: dict, resultats: list[dict], aujourdhui: str, jours: int) -> str:
     cartes = [c.split("@")[0] for c in plan.get("candidats", [])]
-    exemple = lire_ref("assets/dossier.exemple.json")
+    exemple = json.loads(lire_ref("assets/dossier.exemple.json"))
+    exemple = {k: exemple[k] for k in CLES_LECTURE if k in exemple}
     res = "\n\n".join(f"[{i + 1}] ({r['famille']}, {', '.join(r['cartes'])}) « {r['requete']} »\n{r['resultat'][:3000]}"
                       for i, r in enumerate(resultats))
-    return f"""Étape 2 : le dossier de lecture (mode PRÉVOIR) pour la question ci-dessous.
+    ev = plan["evenement"]
+    return f"""Étape 3 : la lecture (mots ancrés) pour la question ci-dessous. La vue extérieure est déjà posée.
 
 QUESTION : {q.titre}
 CRITÈRES DE RÉSOLUTION : {q.criteres}
 PRÉCISIONS : {q.precisions}
 DATE D'INFORMATION : {aujourdhui} ; fenêtre : {jours} jours (jusqu'au {q.resolution.isoformat()}).
-PLAN RETENU : {json.dumps(plan, ensure_ascii=False)}
+PLAN RETENU : {json.dumps({k: v for k, v in plan.items() if k != "recherches_reference"}, ensure_ascii=False)}
 
 RÉSULTATS DES RECHERCHES EXÉCUTÉES :
 {res}
@@ -241,28 +275,30 @@ FICHES DES CANDIDATES :
 {equivalences(plan.get("strates", []))}
 
 FORMAT (exemple fictif, à suivre pour la structure seulement) :
-{exemple}
+{json.dumps(exemple, ensure_ascii=False, indent=1)}
 
-Rends UNIQUEMENT l'objet JSON du dossier, avec les clés : candidats, contre_candidate, rejets, mots, liaisons (liste,
-souvent vide), questions, evenements. N'écris PAS etat, disponible_le ni recherches : le bot les remplit.
-Les mots ne contiennent que les cartes réellement ancrées ; une candidate non ancrée va dans rejets.
-L'événement est {plan['evenement']['carte']}@{plan['evenement']['strate']} {plan['evenement']['type']}, sémantique
-{plan['semantique']}."""
+Rends UNIQUEMENT un objet JSON avec les clés : {", ".join(CLES_LECTURE)}.
+L'événement prévu est {ev['carte']}@{ev['strate']} {ev['type']} : {"cette carte ne doit PAS figurer dans les mots" if ev['type'] == "apparait" else "cette carte doit figurer dans les mots"}."""
 
 
-def consigne_correction(dossier: dict, erreur: str) -> str:
-    return f"""Le moteur du skill a refusé ce dossier. Corrige-le sans inventer de fait, de source ni d'URL : si un
-élément manque, descends l'intensité à f, retire le mot ou la carte, plutôt que de le fabriquer.
+def consigne_correction(lecture: dict, erreur: str) -> str:
+    return f"""Le moteur du skill a refusé cette lecture. Corrige-la sans inventer de fait, de source ni d'URL : si un
+élément manque, descends l'intensité à f, ou retire le mot et motive-le dans rejets. Une lecture sans aucun mot (état
+nul) est admise si rien ne tient.
 
 ERREUR DU MOTEUR : {erreur}
 
-DOSSIER :
-{json.dumps(dossier, ensure_ascii=False, indent=1)}
+LECTURE :
+{json.dumps(lecture, ensure_ascii=False, indent=1)}
 
-Rends UNIQUEMENT l'objet JSON corrigé (mêmes clés)."""
+Rends UNIQUEMENT l'objet JSON corrigé, avec les clés : {", ".join(CLES_LECTURE)}."""
 
 
 # --------------------------------------------------------------------------- assemblage
+
+CLES_LECTURE = ("candidats", "contre_candidate", "rejets", "mots", "liaisons", "questions")
+MAX_RECHERCHES_REFERENCE = int(os.environ.get("ALPHABET_MAX_RECHERCHES_REFERENCE", "3"))
+
 
 def etat_depuis(mots: list[dict], aujourdhui: str, jours: int) -> str:
     noms = noms_cartes()
@@ -270,23 +306,31 @@ def etat_depuis(mots: list[dict], aujourdhui: str, jours: int) -> str:
     return f"[{aujourdhui} | {jours} jours] {corps}" if corps else ""
 
 
-def completer_dossier(d: dict, plan: dict, executees: list[dict], aujourdhui: str, jours: int) -> tuple[dict, str, str]:
+def evenement_depuis(plan: dict, vue: dict) -> tuple[dict, str]:
+    """La partie « événement » du dossier, construite par le bot : une correction ne peut pas l'effacer."""
     noms = noms_cartes()
-    d = dict(d)
-    d["etat"] = etat_depuis(d.get("mots", []), aujourdhui, jours)
+    ev = plan["evenement"]
+    evenement = f"{noms.get(ev['carte'], ev['carte'])}@{ev['strate']} {ev['type']}"
+    champs = ("frequence", "classe_de_reference", "source", "periode", "disponible_le", "classe_alternative",
+              "motif_sans_alternative", "ecart_critere")
+    ve = {k: vue.get(k) for k in champs if vue.get(k) is not None or k == "classe_alternative"}
+    if ve.get("classe_alternative") is None:
+        ve["motif_sans_alternative"] = vue.get("motif_sans_alternative") or "aucune classe alternative honnête trouvée"
+    return {"evenement": evenement, "semantique": plan["semantique"], "temporalite": "generique",
+            "resolution": vue.get("resolution") or "", "source_resolution": vue.get("source_resolution") or {},
+            "vue_exterieure": ve}, evenement
+
+
+def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujourdhui: str, jours: int) -> dict:
+    d = {k: lecture.get(k, [] if k in ("mots", "liaisons", "questions", "candidats", "contre_candidate") else {})
+         for k in CLES_LECTURE}
+    d["etat"] = etat_depuis(d.get("mots") or [], aujourdhui, jours)
     d["disponible_le"] = aujourdhui
     d["recherches"] = [{"famille": r["famille"], "cartes": r["cartes"], "requete": r["requete"],
                         "executee": r["executee"], **({"date_execution": aujourdhui} if r["executee"] else {})}
                        for r in executees]
-    d.setdefault("liaisons", [])
-    ev = plan["evenement"]
-    evenement = f"{noms.get(ev['carte'], ev['carte'])}@{ev['strate']} {ev['type']}"
-    if d.get("evenements"):
-        d["evenements"][0]["evenement"] = evenement
-        d["evenements"][0]["semantique"] = plan["semantique"]
-        d["evenements"][0]["temporalite"] = "generique"
-        d["evenements"] = d["evenements"][:1]
-    return d, d["etat"], evenement
+    d["evenements"] = [evt]
+    return d
 
 
 def controle_plan(plan: dict) -> str | None:
@@ -302,29 +346,34 @@ def controle_plan(plan: dict) -> str | None:
     return None
 
 
+def controle_vue(vue: dict) -> str | None:
+    f = vue.get("frequence")
+    if not isinstance(f, (int, float)) or isinstance(f, bool) or not 0 < f < 1:
+        return vue.get("motif") or "vue extérieure sans fréquence"
+    for k in ("classe_de_reference", "source", "periode", "disponible_le"):
+        if not vue.get(k):
+            return f"vue extérieure incomplète : {k} manquant"
+    return None
+
+
 def controle_etat(dossier: dict, plan: dict) -> str | None:
     ev = plan["evenement"]
     present = any(m["carte"] == ev["carte"] and int(m["strate"]) == int(ev["strate"]) for m in dossier.get("mots", []))
     if ev["type"] == "apparait" and present:
         return "événement « apparait » sur une carte déjà présente dans l'état : retirer ce mot ou changer d'événement"
-    if ev["type"] != "apparait" and not present:
+    if ev["type"] != "apparait" and dossier.get("mots") and not present:
         return f"événement « {ev['type']} » sur une carte absente de l'état"
-    if not dossier.get("mots"):
-        return "aucun mot ancré : état vide"
-    vue = (dossier.get("evenements") or [{}])[0].get("vue_exterieure") or {}
-    if not isinstance(vue.get("frequence"), (int, float)) or not 0 < vue["frequence"] < 1:
-        return "vue_exterieure.frequence manquante ou hors de ]0, 1["
     return None
 
 
-async def executer_recherches(plan: dict, chercher: Chercheur, recherche_reelle: bool) -> list[dict]:
+async def executer_requetes(requetes: list[dict], chercher: Chercheur, recherche_reelle: bool, plafond: int) -> list[dict]:
     vues, sortie = set(), []
-    for r in plan.get("recherches", []):
+    for r in requetes:
         req = (r.get("requete") or "").strip()
-        if not req or req.lower() in vues or r.get("famille") not in FAMILLES:
+        if not req or req.lower() in vues:
             continue
         vues.add(req.lower())
-        if len(sortie) >= MAX_RECHERCHES:
+        if len(sortie) >= plafond:
             break
         try:
             texte = await chercher(req)
@@ -332,14 +381,19 @@ async def executer_recherches(plan: dict, chercher: Chercheur, recherche_reelle:
             texte, ok = f"(échec : {e})", False
         else:
             ok = recherche_reelle
-        sortie.append({"famille": r["famille"], "cartes": r.get("cartes", []), "requete": req,
+        sortie.append({"famille": r.get("famille", "reference"), "cartes": r.get("cartes", []), "requete": req,
                        "resultat": texte or "", "executee": ok})
     return sortie
 
 
+async def executer_recherches(plan: dict, chercher: Chercheur, recherche_reelle: bool) -> list[dict]:
+    return await executer_requetes([r for r in plan.get("recherches", []) if r.get("famille") in FAMILLES],
+                                   chercher, recherche_reelle, MAX_RECHERCHES)
+
+
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
                    aujourdhui: str, jours: int) -> dict:
-    """Bras C. Rend {statut, p_B, p_C, …} ; statut : estime | non_estime | refuse | hors_alphabet."""
+    """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
     try:
         plan = extraire_json(await llm(consigne_plan(q, recherche, aujourdhui)))
@@ -349,24 +403,48 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     motif = controle_plan(plan)
     if motif:
         return dict(trace, statut="hors_alphabet", motif=motif)
+
+    # 1. Vue extérieure d'abord, sur ses propres recherches (bras B).
+    refs = await executer_requetes([{"requete": x} for x in (plan.get("recherches_reference") or []) if isinstance(x, str)],
+                                   chercher, recherche_reelle, MAX_RECHERCHES_REFERENCE)
+    trace["recherches_reference"] = [{k: v for k, v in r.items() if k != "resultat"} for r in refs]
+    try:
+        vue = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours)))
+    except Exception as e:
+        return dict(trace, statut="sans_vue", motif=f"vue extérieure illisible : {e}")
+    trace["vue"] = vue
+    motif = controle_vue(vue)
+    if motif:
+        return dict(trace, statut="sans_vue", motif=motif)
+    trace["p_B"] = float(vue["frequence"])
+    evt, evenement = evenement_depuis(plan, vue)
+
+    # 2. Lecture (bras C).
     executees = await executer_recherches(plan, chercher, recherche_reelle)
     trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
     try:
-        brut = extraire_json(await llm(consigne_dossier(q, plan, executees, aujourdhui, jours)))
+        lecture = extraire_json(await llm(consigne_dossier(q, plan, executees, aujourdhui, jours)))
     except Exception as e:
-        return dict(trace, motif=f"dossier illisible : {e}")
+        return dict(trace, motif=f"lecture illisible : {e}")
+    dossier = None
     for tentative in range(MAX_CORRECTIONS + 1):
         trace["tentatives"] = tentative + 1
-        dossier, etat, evenement = completer_dossier(brut, plan, executees, aujourdhui, jours)
+        dossier = assembler(lecture, plan, executees, evt, aujourdhui, jours)
+        if not dossier["mots"]:
+            # État nul : aucune carte ancrée. Le moteur ne calcule pas un état vide ; sans carte, pas d'ajustement :
+            # le bot postera le taux de base (bras B).
+            trace.update(dossier=dossier, statut="etat_nul", evenement=evenement, semantique=plan["semantique"],
+                         motif="aucune carte ancrée : pas d'ajustement du taux de base")
+            return trace
         erreur = controle_etat(dossier, plan)
         sortie = None
         if not erreur:
-            vue = dossier["evenements"][0]["vue_exterieure"]
-            sortie = appeler_moteur(dossier, etat, evenement, plan["semantique"], aujourdhui, vue)
+            sortie = appeler_moteur(dossier, dossier["etat"], evenement, plan["semantique"], aujourdhui,
+                                    evt["vue_exterieure"])
             erreur = sortie.get("erreur")
         if not erreur:
-            trace.update(dossier=dossier, etat=etat, evenement=evenement, semantique=plan["semantique"],
-                         p_B=vue["frequence"], p_C=sortie.get("p"), p_sans_cartes=sortie.get("p_sans_cartes"),
+            trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
+                         p_C=sortie.get("p"), p_sans_cartes=sortie.get("p_sans_cartes"),
                          drapeaux=sortie.get("drapeaux", []), rho=sortie.get("rho"))
             trace["statut"] = "estime" if sortie.get("p") is not None else "non_estime"
             if sortie.get("p") is None:
@@ -376,33 +454,52 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         if tentative == MAX_CORRECTIONS:
             break
         try:
-            brut = extraire_json(await llm(consigne_correction(dossier, erreur)))
+            lecture = extraire_json(await llm(consigne_correction({k: dossier[k] for k in CLES_LECTURE}, erreur)))
         except Exception as e:
             trace["derniere_erreur"] = f"correction illisible : {e}"
             break
     trace["dossier"] = dossier
     trace["motif"] = trace.get("derniere_erreur")
-    # Un dossier refusé garde sa vue extérieure, si elle est lisible : le bras B reste scoré.
-    vue = ((dossier.get("evenements") or [{}])[0].get("vue_exterieure") or {}).get("frequence")
-    if isinstance(vue, (int, float)) and 0 < vue < 1:
-        trace["p_B"] = vue
     return trace
+
+
+def choisir_bras(c: dict, p_A: float) -> tuple[str, float]:
+    """C si l'alphabet est estimé ; B si l'état est nul (sans carte, pas d'ajustement) ; A sinon."""
+    if c.get("statut") == "estime":
+        return "C", borner(c["p_C"])
+    if c.get("statut") == "etat_nul" and c.get("p_B") is not None:
+        return "B", borner(c["p_B"])
+    return "A", borner(p_A)
 
 
 def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> str:
     """Le commentaire publié : il dit quel bras a été posté et pourquoi (règle FutureEval : refléter le raisonnement)."""
+    libelle = {"C": "C, structural alphabet", "B": "B, reference-class base rate (no structure read)",
+               "A": "A, model alone (outside the alphabet)"}[poste]
     tete = ("Situational-alphabet bot (experimental; no predictive performance established). "
-            f"Posted arm: {'C, structural alphabet' if poste == 'C' else 'A, model alone (outside the alphabet)'}.")
+            f"Posted arm: {libelle}.")
+    vue = c.get("vue") or {}
+    ligne_b = (f"Arm B, reference class: {c['p_B']:.3f} — {vue.get('classe_de_reference')} "
+               f"({vue.get('source')}; {vue.get('calcul') or 'count over the period, scaled to the window'})."
+               if c.get("p_B") is not None else None)
     if poste == "C":
-        vue = c["dossier"]["evenements"][0]["vue_exterieure"]
         lignes = [tete,
                   f"State read on {c['dossier']['disponible_le']}: {c['etat']}",
                   f"Event: {c['evenement']} ({c['semantique']}).",
-                  f"Arm B, reference class: {c['p_B']:.3f} — {vue.get('classe_de_reference')} ({vue.get('source')}).",
+                  ligne_b,
                   f"Arm C, alphabet: {c['p_C']:.3f} (base rate adjusted by the cards read in the state).",
                   f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}.",
                   "Engine flags (French): " + " | ".join(x if len(x) <= 220 else x[:217] + "…" for x in c.get("drapeaux", [])[:4])]
-        return "\n".join(lignes)
+        return "\n".join(x for x in lignes if x)
+    if poste == "B":
+        rejets = c["dossier"].get("rejets") or {}
+        lignes = [tete,
+                  f"Candidate patterns examined for {c['evenement']}: none anchored in the facts found, so the base rate "
+                  "is not adjusted.",
+                  *[f"- {k}: {str(v)[:300]}" for k, v in list(rejets.items())[:4]],
+                  ligne_b,
+                  f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}."]
+        return "\n".join(x for x in lignes if x)
     motif = c.get("motif") or "unknown"
     return f"{tete}\nAlphabet not used on this question ({c.get('statut')}: {motif}).\n\nModel-alone reasoning:\n{a_raison}"
 
@@ -429,12 +526,15 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
     bras_a = {"p": p_A, "horodatage": maintenant.isoformat(timespec="seconds")}
     bras_a["sceau"] = sceau({"question": str(q.id), "date": aujourdhui, **bras_a})  # A scellé avant l'alphabet
     c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours)
-    poste = "C" if c.get("statut") == "estime" else "A"
-    p_poste = borner(c["p_C"]) if poste == "C" else borner(p_A)
+    poste, p_poste = choisir_bras(c, p_A)
+    vue = c.get("vue") or {}
     ligne = {"version_bot": VERSION_BOT, "version_skill": version_skill(), "question_id": str(q.id), "url": q.url,
              "titre": q.titre, "date_information": aujourdhui, "resolution_prevue": q.resolution.isoformat(),
              "fenetre_jours": jours, "recherche_reelle": recherche_reelle,
-             "bras": {"A": bras_a, "B": {"p": c.get("p_B")},
+             "bras": {"A": bras_a,
+                      "B": {"p": c.get("p_B"), **{k: vue.get(k) for k in ("classe_de_reference", "source", "fondement",
+                                                                         "periode", "calcul") if vue.get(k)},
+                            "recherches": c.get("recherches_reference")},
                       "C": {k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                      "rho", "motif", "tentatives", "recherches")}},
              "bras_poste": poste, "p_poste": p_poste}

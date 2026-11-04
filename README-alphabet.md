@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.1.1 · skill alphabet-situationnel 0.7.48 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.1.2 · skill alphabet-situationnel 0.7.48 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, `run_alphabet_bot.yaml`) ; le reste du dépôt
 est le modèle de Metaculus, sous ses propres conditions
 
@@ -18,18 +18,21 @@ Pour chaque **question binaire**, trois bras, dans cet ordre :
 | **B** | la classe de référence seule (vue extérieure du dossier) | le taux de base |
 | **C** | l'alphabet : `moteur.py calculer --dossier`, la fréquence de B passée en référence | C − B = l'apport des cartes |
 
-Le bot **poste le bras C** quand le moteur l'estime. Sinon (question sans événement de carte, dossier refusé par le moteur,
-probabilité « non estimée »), il poste le bras A et le dit dans le commentaire. Pour les **autres types de questions**
-(numériques, choix multiples, dates), il se comporte exactement comme le bot modèle de Metaculus : bras A.
+Le bot **poste le bras C** quand le moteur l'estime. Si aucune carte n'est ancrée (**état nul**, lecture légitime :
+« aucune structure lue »), il poste le **bras B**, le taux de base non ajusté. Dans les autres cas (question sans
+événement de carte, pas de taux de base honnête, lecture refusée par le moteur), il poste le bras A et le dit dans le
+commentaire. Pour les **autres types de questions** (numériques, choix multiples, dates), il se comporte exactement
+comme le bot modèle de Metaculus : bras A.
 
-Étapes du bras C :
+Étapes des bras B et C :
 1. **Plan** : le modèle choisit les strates, 2 à 4 candidates par strate (dont une contre-candidate), l'événement de carte
-   qui correspond au OUI de la question, sa sémantique, et les requêtes (trois familles par candidate, une
-   discrimination par paire), formées sur le phénomène, jamais sur le nom d'une carte.
-2. **Recherches** : le bot lance lui-même chaque requête (12 au plus) ; seules celles lancées par un vrai moteur de
-   recherche comptent comme exécutées.
-3. **Dossier** : le modèle écrit le dossier de lecture à partir des seuls résultats, avec les fiches des candidates et les
-   équivalents des strates ; le bot remplit lui-même l'état daté, la date de disponibilité et les recherches.
+   qui correspond au OUI, sa sémantique, 1 à 3 requêtes sur le **taux de base**, et les requêtes de lecture (trois
+   familles par candidate, une discrimination par paire), formées sur le phénomène, jamais sur le nom d'une carte.
+2. **Vue extérieure d'abord** (bras B) : le bot lance les requêtes de taux de base ; le modèle en tire une fréquence, ou
+   d'un registre historique notoire qu'il nomme, sans chiffre inventé. Le bot construit lui-même la partie « événement »
+   du dossier : les corrections ne peuvent plus l'effacer.
+3. **Lecture** (bras C) : le bot lance les requêtes de lecture (12 au plus) ; le modèle écrit les mots ancrés à partir des
+   seuls résultats, avec les fiches des candidates et les équivalents des strates. Un état nul est admis.
 4. **Moteur** : `calculer --dossier`. Un refus est renvoyé au modèle pour correction (2 fois au plus), avec la consigne
    de descendre à f ou de retirer un mot plutôt que d'inventer. Le moteur reste juge : aucun chiffre n'est fabriqué.
 
