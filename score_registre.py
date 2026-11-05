@@ -435,6 +435,9 @@ def statuts_par_version(tout: list[dict]) -> dict:
         disp = (x["bras"]["B"].get("vues") or {}).get("dispersion")
         if disp is not None:
             d["dispersion_B"].append(disp)
+        att = x["bras"]["C"].get("attribution") or {}
+        d["mots_ancres"] = d.get("mots_ancres", 0) + (att.get("mots") or 0)
+        d["mots_non_attribues"] = d.get("mots_non_attribues", 0) + (att.get("non_attribues") or 0)
         cs = x["bras"]["B"].get("classe_statut")
         if cs:
             d["classe"][cs] = d["classe"].get(cs, 0) + 1

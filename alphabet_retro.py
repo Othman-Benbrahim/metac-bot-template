@@ -98,7 +98,8 @@ async def un_test(mq, llm, deja: set[str]) -> dict | None:
     c = await ap.alphabet(q, "", llm, chercher, True, info.date().isoformat(), jours, historique_avant)
     ligne.update(statut=c.get("statut"), p_B=c.get("p_B"), p_C=c.get("p_C"), motif=c.get("motif"),
                  evenement=c.get("evenement"), etat=c.get("etat"), vues=c.get("vues"), classe_statut=c.get("classe_statut"),
-                 nature_etat_nul=c.get("nature_etat_nul"))
+                 nature_etat_nul=c.get("nature_etat_nul"),
+                 attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
     if c.get("dossier") is not None:
         d = ap.REGISTRE / "dossiers-retro"
         d.mkdir(parents=True, exist_ok=True)
