@@ -3,7 +3,7 @@ name: alphabet-situationnel
 description: "Lecture structurelle et exploration conditionnelle de situations par 16 cartes transversales candidates et 13 strates (dont la politique intérieure). Utiliser pour lire une situation factuelle, explorer ses suites à un horizon défini, coder un cas historique ou scorer un journal. Modes LIRE, PRÉVOIR, CODER, SCORER. Le moteur calcule des probabilités expérimentales quand les entrées sont recevables ; aucune performance prédictive n'est acquise. Ne pas utiliser pour un tirage symbolique, un diagnostic, une décision sur une personne, ou transformer un ressenti seul en fait. Une lecture sans prévision est explicitement admise."
 license: MIT
 metadata:
-  version: '0.7.49'
+  version: '0.7.50'
   author: Othman Ben Brahim
 ---
 
@@ -23,7 +23,7 @@ ce `SKILL.md`), puis `python3 scripts/moteur.py audit`.
 
 ## Contrôle d'intégrité
 
-Version 0.7.49. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
+Version 0.7.50. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
 les 13 fichiers `references/equivalences/strate-NN.md`, les bases, journaux et dossier d'exemple.
 Prérequis : Python ≥ 3.8, bibliothèque standard seule (aucune installation). Exécuter depuis le dossier
 du skill ; `--base`, `--journal` et `--references` sont relatifs au dossier courant. *Le dossier du skill est celui qui
@@ -76,6 +76,7 @@ Critère de levée fixé avant les données (0.7.49) : `validation.md` §27.
 | Le codeur suit-il la fiche ou le nom de la carte ? Noms neutres, recouvrement lexical | `validation.md` §25 |
 | Test régressif : pièces figées, contrôle de fuite, choix de la question | `validation.md` §26 |
 | Quand lever L7 (chiffrer une autre strate que la 7) | `validation.md` §27 |
+| Bot Metaculus : vue extérieure en deux temps, état nul qualifié, mesure séquentielle, biais de C | `validation.md` §28 |
 | Politique intérieure (gouvernement, Parlement, partis, élections, mobilisations) | strate 13 : `strates.md` §2 et §4, `equivalences/strate-13.md` |
 
 Lire par rubrique (`rg -n '^##|^\*\*[OAGBTSV][0-9]' references/protocole.md`, ou `grep -nE` avec le même
@@ -218,6 +219,24 @@ d'information (page mise à jour, encadrés, horodatage faux, chronologie qui ta
 instantané Wayback antérieur, déclaré au carnet par `--archive` ; noter de 0 à 4 toute pièce lue en direct et écarter
 celles notées 2 ou plus ; lister les questions candidates avant toute recherche sur la fenêtre ; ne lire aucune cote de
 marché ni prévision publiée avant le jugement scellé. Le score d'un test régressif est une borne haute. `validation.md` §26.
+
+**Aligné sur le bot Metaculus (0.7.50, enregistrement et mesure ; aucun paramètre ni probabilité changés).**
+(1) *Vue extérieure en deux temps* : définir la classe d'abord (ce qui compte pour un cas, la population, la période,
+la mise à l'échelle, où sont les cas), compter ensuite, sur cette classe seulement ; plusieurs comptages indépendants
+donnent la vue **médiane** (une vraie vue, avec sa source, jamais une moyenne) et leur dispersion. Une source qui se
+déclare « de mémoire » ne fonde pas un taux de base ; des questions de prévision **déjà résolues** et comparables
+peuvent en fonder un (leurs issues seulement, cinq au moins du même type). (2) *Strate à l'aveugle* : choisir la
+strate de l'événement d'après le mécanisme des faits, **avant** de regarder `strates_prevision`. (3) *État nul
+qualifié* : chaque rejet commence par sa catégorie, `[aucun_fait]`, `[non_cherchee]`, `[marqueur_non_rempli]` ou
+`[contredit]`, et dit ce qu'aurait montré un fait suffisant et l'extrait le plus proche trouvé ; si l'état est nul
+alors que des candidates n'ont pas vraiment été cherchées, une relance ciblée sur leur marqueur précède l'état nul,
+qui se déclare ensuite `structure_absente` ou `angle_mort` ; la dynamique que les faits montrent, décrite sans nom de
+carte, se consigne hors calcul. Un état nul n'est jamais compté comme une prévision égale au taux de base.
+(4) *Mesure* : le tournoi note en score logarithmique, §27 reste en Brier ; une question compte une fois ; la
+comparaison C − B se lit par une séquence de confiance valide à tout moment, et « indéterminé » est un verdict.
+(5) *Sens unique de C* : avec des λ tous ≥ 1, C ne peut que monter au-dessus de B pour un événement « apparait » ;
+le biais se mesure, et sa correction (un décalage appris sur tests régressifs) reste en ombre, hors du calcul.
+`validation.md` §28, `graphe.md` §2.1.
 
 **Requêtes exécutées, test régressif déclaré (0.7.45).** Chaque requête de `recherches` porte `executee` (true ou false)
 et, si elle a été lancée, `date_execution` : une requête non lancée est consignée mais ne couvre rien, et le dossier reste

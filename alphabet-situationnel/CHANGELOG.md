@@ -1,9 +1,24 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.49
+> Version : 0.7.50
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.50 — 2026-11-05 · alignement avec le bot Metaculus
+
+Décision d'auteur : reporter dans le skill ce que le bot Metaculus (0.5.1) a changé dans l'enregistrement et la mesure,
+après un audit externe, deux relectures et une veille. Même statut que le §15. **Aucun paramètre touché, aucune règle
+de calcul changée, aucune probabilité changée ; le gel (§14) reste la règle ; aucun outil ajouté au moteur.**
+
+- `validation.md` §28 : vue extérieure en deux temps (classe définie, puis comptée ; vue médiane ; source « de
+  mémoire » refusée ; questions déjà résolues admises, issues seulement) ; strate choisie à l'aveugle de L7 ; état nul
+  qualifié (rejets classés, relance des angles morts, `structure_absente` / `angle_mort`, dynamique observée hors
+  calcul, jamais compté comme C = B) ; mesure (log pour le tournoi, Brier pour le §27 inchangé ; séquence de
+  confiance valide à tout moment ; verdict « indéterminé » ; puissance) ; sens unique de C et correction en ombre
+  apprise sur tests régressifs ; recalibration et plafonnement étudiés, non appliqués.
+- `graphe.md` §2.1 : conséquence des λ ≥ 1 (C au moins égal à la référence pour « apparait »), à mesurer.
+- `SKILL.md` : paragraphe PRÉVOIR et ligne de table.
 
 ## 0.7.49 — 2026-11-04 · critère de levée de L7, avant les données
 

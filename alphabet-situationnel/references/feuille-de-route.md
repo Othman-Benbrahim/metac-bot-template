@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.49
+> Version : 0.7.50
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -44,6 +44,7 @@ carte, une définition abstraite commune et ce que chaque traduction locale en c
 |---|---|---|---|
 | 0.6.0 (faite) | Déclarer et mesurer | barreau, garantie et option, questions, jugement scellé, sensibilité, difficulté, angles morts, rabbits | — |
 | 0.7.0 (faite) | Prouver et décomposer | tests de preuve du process tracing (F exige un fait suffisant) ; décomposition de Murphy du Brier | — |
+| 0.7.50 (faite) | Alignement avec le bot Metaculus | décision d'auteur : vue extérieure en deux temps, strate à l'aveugle, état nul qualifié, mesure séquentielle (log pour le tournoi, Brier pour le §27 inchangé), sens unique de C mesuré et corrigé en ombre ; aucun paramètre, aucune probabilité, aucun outil touchés (`validation.md` §28) | — |
 | 0.7.49 (faite) | Critère de levée de L7 | décision d'auteur avant les données : C − B ≤ 0 sur 20 questions géopolitiques prospectives, plus la condition d'origine (accord mesuré) dans la strate visée ; aucun paramètre touché | — |
 | 0.7.48 (faite) | Fuites temporelles des tests régressifs | décision d'auteur d'après El Lahib et al. 2026 et Paleka et al. 2026 : instantané Wayback au carnet (`--archive`, contrôlé), note de fuite 0–4, choix des questions avant recherche, aucune cote lue avant scellement ; score régressif = borne haute ; aucune probabilité touchée | — |
 | 0.7.47 (faite) | Tests du codeur : la fiche ou le nom | décision d'auteur d'après Halterman et Keith 2025 : test des noms neutres (C01–C16, `depouiller`) et du recouvrement lexical (racines du nom dans le passage d'un ancrage F) ; descriptifs, hors V4 ; aucune règle ni probabilité touchée | — |

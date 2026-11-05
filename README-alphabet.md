@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.5.1 · skill alphabet-situationnel 0.7.49 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.5.1 · skill alphabet-situationnel 0.7.50 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -220,6 +220,8 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **skill 0.7.50** (bot inchangé) : le skill reprend les changements d'enregistrement et de mesure du bot
+  (`alphabet-situationnel/references/validation.md` §28), pour que les deux s'élaborent de la même façon.
 - **0.5.1** : verdict et séquence de confiance sur le gain moyen ; seuils corrigés pour les comparaisons multiples ;
   commentaire envoyé scellé avec la prévision ; jeu de questions reçu consigné à chaque passage ; passage à blanc
   réservé à la zone de test.

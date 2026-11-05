@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.49
+> Version : 0.7.50
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -1942,3 +1942,100 @@ consignée ici avec la sortie de `score_registre.py` (ou de `scorer`) qui la fon
 reste admise (mode LIRE). Si s est levée plus tard, ces lectures peuvent être chiffrées après coup par le moteur, à
 paramètres fixés : le dossier est daté et scellé, le calcul déterministe. Elles comptent alors comme un premier test de
 s, à part des questions prospectives, et jamais dans la condition 1.
+
+---
+
+## 28. Alignement avec le bot Metaculus (0.7.50)
+
+**Décision d'auteur, le 2026-11-05.** Le bot Metaculus (dépôt `Othman-Benbrahim/metac-bot-template`, version 0.5.1)
+joue ce skill sur des questions réelles. Entre ses versions 0.1 et 0.5.1, il a changé sa façon d'enregistrer et de
+mesurer, après un audit externe, deux relectures et une veille documentaire. Cette section reporte ces changements dans
+le skill, pour que les deux s'élaborent de la même façon. Même statut que le §15 : ce sont des contrôles
+d'**enregistrement** et de **mesure**. Aucune règle d'interprétation nouvelle, aucun paramètre touché, aucune
+probabilité changée ; le gel du §14 reste la règle. Les outils de mesure décrits au point 4 vivent dans le bot
+(`score_registre.py`), non dans le moteur : le skill ne gagne pas d'outil.
+
+**1. La vue extérieure en deux temps.** Constat du registre du bot : sur une même question, trois estimations du taux
+de base allaient de 0,2 % à 8 %, parce qu'elles ne comptaient pas la même classe (« 0 cas sur 22 périodes biennales »,
+« 0 sur 46 présidences », « 1 sur 11 fenêtres glissantes »). Une médiane de trois classes n'est pas une médiane : c'est
+un tirage (Hájek, « The reference class problem is your problem too », *Synthese* 156, 2007). Procédure :
+- **définir** la classe avant de compter : ce qui compte pour un cas (et ce qui n'en est pas un), la population ou les
+  périodes du dénominateur, la période, la mise à l'échelle vers la fenêtre, où se trouvent les cas ;
+- **compter** ensuite, sur cette classe seulement ; quand plusieurs comptages indépendants sont faits, retenir la vue
+  **médiane** (médiane basse si leur nombre est pair) : une vraie vue, avec sa source, jamais une moyenne qui fabriquerait
+  un chiffre ; consigner l'écart entre les comptages, qui mesure alors la variance de mesure et non un changement de
+  classe ;
+- une source qui se déclare elle-même « de mémoire », « registre mental » ou « sans consultation » ne fonde pas un taux
+  de base ; un registre **nommé** et vérifiable le peut ;
+- des questions de prévision **déjà résolues** et comparables (par exemple sur Metaculus) peuvent fonder la classe,
+  à trois conditions : on n'en lit que l'**issue**, jamais les prévisions publiées (§26) ; elles sont résolues avant la
+  date d'information ; cinq au moins comptent le même type d'événement sur une fenêtre comparable ;
+- `disponible_le` de la vue ne dépasse pas la date d'information.
+
+**2. La strate à l'aveugle.** La strate de l'événement commande le droit de chiffrer (L7). Constat du bot : la même
+question a été lue SEUIL@13, puis SEUIL@7 après que la consigne eut mentionné que seule la strate 7 se chiffre. Le
+codeur choisit donc la strate d'après le mécanisme des faits, **avant** de consulter `strates_prevision`. La stabilité de
+l'étiquette se mesure sur les questions lues plusieurs fois, **à version égale** seulement : un changement de consigne
+n'est pas une instabilité.
+
+**3. L'état nul qualifié.** Un état nul est une lecture légitime (« aucune structure lue ») ; il peut aussi être un
+angle mort de la recherche. Pour les distinguer :
+- chaque rejet commence par sa catégorie : `[aucun_fait]` (aucun fait pertinent dans les résultats : problème de
+  recherche), `[non_cherchee]` (la requête n'a pas été lancée), `[marqueur_non_rempli]` (des faits existent mais ne
+  remplissent pas le marqueur), `[contredit]` (un fait de la situation contredit la carte : la seule catégorie qui
+  renseigne sur l'alphabet lui-même) ; et il dit ce qu'aurait montré un fait suffisant, avec l'extrait le plus proche
+  trouvé. C'est la mesure de l'écart entre ce que le codeur sait et ce qu'il ancre ;
+- si l'état est nul alors que des candidates sont `[aucun_fait]` ou `[non_cherchee]`, une **relance** de recherches
+  nouvelles, formées sur le phénomène que décrit leur marqueur, précède l'état nul (une seule fois) ;
+- l'état nul se déclare ensuite `structure_absente` (chaque candidate écartée sur pièces) ou `angle_mort` (il en reste
+  une non vérifiée), et la **dynamique observée** se décrit en une ou deux phrases, sans nom de carte, hors calcul ;
+- un état nul n'est **jamais** compté comme une prévision égale au taux de base : il se suit à part, par nature.
+
+Ces descriptions sont la matière d'une éventuelle carte manquante. Elle ne se cherche qu'**après** l'évaluation des
+situations prédites, dans le respect des règles de création des cartes, et une carte née d'échecs passés n'est éprouvée
+que sur des questions nouvelles : les questions qui l'ont fait naître ne comptent pas pour elle.
+
+**4. La mesure.** Le tournoi Metaculus note au **score logarithmique** (les scores de pair sont des différences de
+scores log) ; le critère du §27 reste en **Brier**, inchangé (décision du 2026-11-04 : le skill ne dépend pas du
+règlement d'un tournoi). Le bot rapporte les deux, et le lecteur ne les confond pas. Dans le bot :
+- une question compte **une fois** (sa dernière prévision publiée) ; les passages à blanc et la zone de test sont
+  exclus ; chaque probabilité est bornée à [0,001 ; 0,999], pour la mesure comme à l'envoi ;
+- l'écart C − B se lit par une **séquence de confiance** et un test séquentiel par pari, valides à tout moment de
+  consultation (Waudby-Smith et Ramdas, *JRSS-B* 2024 ; Choe et Ramdas, *Operations Research* 2024) : on peut lire le
+  score chaque semaine sans fausser la conclusion. Le verdict est « meilleur », « moins bon » ou **« indéterminé »**.
+  Seule l'hypothèse fixée d'avance (C fait mieux que B) est testée au niveau α ; les trois autres comparaisons faites sur
+  les mêmes questions, au niveau α/3 ;
+- pour C contre B, l'écart par question est borné par la structure du moteur : la cote de C reste dans un facteur
+  `plafond_LR` (10) de celle de B (§15), soit au plus 100 × ln 10 ≈ 230 points ; si cette borne était dépassée, le test
+  le signale et reprend la borne générale ;
+- ordre de grandeur de la puissance (écart-type supposé de 40 points par question, à remplacer par l'écart-type
+  observé) : environ 80 questions appariées pour établir un gain de 20 points, 180 pour 10, 660 pour 5.
+
+**Ce que cela dit du §27.** Vingt questions sont un **seuil d'examen** de la levée de L7, non une preuve : sur vingt
+questions, un gain de 10 points ne se distingue pas du hasard. Le §27 le disait déjà (la levée n'est pas une
+validation) ; les chiffres ci-dessus le rendent mesurable.
+
+**5. Le sens unique de C.** Tous les λ étant ≥ 1 (décision d'auteur 9), pour un événement « apparait » C ne peut que
+monter au-dessus de B : il gagne sur les OUI, perd sur toutes les NON, et surestime en moyenne si B est la fréquence
+d'une classe qui mêle situations avec et sans cartes (`graphe.md` §2.1). Le bot mesure ce biais (déplacement moyen de C
+par rapport à B, gain séparé selon l'issue, taux de OUI réel contre B et C moyens). Pour le corriger sans chiffre
+inventé, il apprend sur des **tests régressifs** un seul paramètre, un décalage b (logit p′ = logit p_C + b) :
+- contrôles de fuite du §26, plus une recherche bornée à la date d'information (pages non datées écartées) et une
+  **sonde** : la question est exclue si le modèle connaît déjà l'issue ; le moteur refuse de lui-même toute pièce
+  postérieure à la date d'information ;
+- la fuite résiduelle va dans un sens connu : un codeur qui devine l'issue ancre des cartes sur les OUI et n'en trouve
+  pas sur les NON, ce qui flatte C ; le décalage appris est donc au pire trop faible, jamais trop fort ;
+- la correction n'est écrite qu'à partir de 15 questions où C est chiffré, et si elle gagne hors échantillon ;
+- elle reste **en ombre** : la prévision corrigée est scellée et scorée à part, jamais publiée, et elle ne modifie pas
+  le p du moteur. Si le biais n'est pas un décalage global (certaines cartes coûtent sur les NON, d'autres non), c'est la
+  décision 9 qu'il faudra rouvrir, sur données.
+
+**6. Étudié, non appliqué.** Le bot calcule chaque semaine ce que gagneraient une recalibration logistique à deux
+paramètres (mesurée hors échantillon, à partir de 20 questions) et un plafonnement de la valeur publiée (grille
+0,01–0,05). Rien n'est appliqué : ce sont des décisions d'auteur réservées. Le plafonnement change le score du
+tournoi, pas la mesure de C − B, qui se fait sur les bras enregistrés.
+
+**7. Ce qui reste propre au bot.** Les règles du tournoi (pas d'humain dans la boucle, commentaire privé obligatoire,
+une prévision par question, passage à blanc réservé à la zone de test), la cadence (contrôle toutes les 20 minutes,
+plafond quotidien), le budget, le scellement du commentaire envoyé et du jeu de questions reçu à chaque passage.
+Ces points n'ont pas d'équivalent dans le skill, qui ne publie rien lui-même : le registre du §14 en tient lieu.

@@ -1,6 +1,6 @@
 # Alphabet situationnel — Graphe de transitions (couche 4)
 
-> Version : 0.7.49
+> Version : 0.7.50
 
 > Procédure expérimentale. Le moteur produit les chiffres et le JSON ; l'interprétation des sources
 > et des objets reste à vérifier. Règles : T1–T6 ; paramètres : `protocole.md` §H.
@@ -36,6 +36,12 @@ plafonné à 10. Ces règles ne démontrent ni causalité ni indépendance ; ell
 modèle `--sans-cartes`. Ce dernier désactive également les homologues : il mesure l'apport conjoint
 de la modulation et de la sélection structurelle, pas l'effet isolé d'un seul mécanisme.
 Les effets inhibiteurs ne sont pas estimés dans cette version ; ne pas en inventer.
+**Conséquence, à mesurer (0.7.50).** Tous les λ étant ≥ 1, pour un événement « apparait » la probabilité avec cartes
+est toujours au moins égale à la fréquence de référence : elle gagne sur les issues OUI et perd sur toutes les NON.
+Si la fréquence de référence est celle d'une classe qui mêle situations avec et sans cartes, la probabilité est en
+moyenne trop haute. Ce n'est pas une découverte empirique, c'est une propriété du modèle ; ce qui est empirique, c'est
+sa taille. Elle se mesure (`validation.md` §28) ; si elle n'est pas un simple décalage global, c'est la décision
+d'auteur 9 qu'il faudra rouvrir, sur données.
 
 **Ce que le calcul lit, et ce qu'il ne lit pas (0.7.14).** La grammaire écrit plus que l'inférence n'en
 utilise. Tout symbole qui n'entre pas dans le calcul est **déclaré non inférentiel** (P7 : la confiance
