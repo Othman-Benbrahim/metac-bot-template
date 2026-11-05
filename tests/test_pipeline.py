@@ -521,6 +521,27 @@ class Tests(unittest.TestCase):
         s = x.pop("sceau")
         self.assertEqual(s, ap.sceau(x))                          # le texte envoyé est couvert par le sceau
 
+    def test_controle_attribution(self):                      # 0.5.2 (idée EnVrai)
+        dossier = {"mots": [{"carte": "SEU", "strate": 7, "fait": "Le 3 novembre, 2 295 soldats sont déployés.",
+                             "passage": [{"extrait": "toute concession serait une capitulation"}]},
+                            {"carte": "POL", "strate": 7, "fait": "Un vote de défiance est déposé.",
+                             "passage": [{"extrait": "motion déposée par l'opposition"}]}]}
+        textes = "[R1] Le ministre déclare que « toute concession serait une capitulation ». 2295 soldats déployés."
+        a = ap.controle_attribution(dossier, textes)
+        self.assertTrue(a["detail"]["SEU@7"]["attribue"])            # extrait et nombre retrouvés
+        self.assertFalse(a["detail"]["POL@7"]["attribue"])           # extrait introuvable
+        self.assertEqual(a["non_attribues"], 1)
+        dossier["mots"][0]["fait"] = "Le 3 novembre, 4 100 soldats sont déployés."
+        self.assertEqual(ap.controle_attribution(dossier, textes)["detail"]["SEU@7"]["chiffres_absents"], ["4100"])
+        self.assertIsNone(ap.controle_attribution(None, textes))
+        self.assertIsNone(ap.controle_attribution({"mots": []}, textes))
+        r, _ = lancer([PLAN, vue(0.2), lecture()])                   # résultats simulés : extraits introuvables
+        att = r.ligne["bras"]["C"]["attribution"]
+        self.assertFalse(att["detail"]["POL@7"]["attribue"])         # ses extraits ne sont pas dans les résultats
+        self.assertIsNone(att["detail"]["CTR@6"]["attribue"])        # sans extrait ni nombre : non vérifiable
+        self.assertEqual(att["non_verifiables"], 1)
+        self.assertEqual(r.bras_poste, "C")                          # diagnostic seulement : rien ne change
+
     def test_borne_depassee_retombe(self):                    # 0.4.1
         import score_registre as sr
         apparies = [({"C": 0.9, "B": 0.01, "A": 0.5}, 1)] * 3     # cote ×891 : borne C−B dépassée

@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.5.1 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.5.2 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -50,6 +50,10 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
    Le lecteur décrit aussi, en une ou deux phrases et sans nommer de carte, la dynamique que montrent les faits
    (`dynamique_observee`, hors calcul ; une description qui nomme une carte est gardée mais signalée). Ce corpus servira,
    après évaluation, à chercher une structure qui manquerait à l'alphabet.
+   **Contrôle d'attribution, sans modèle** (`attribution` au registre) : pour chaque carte ancrée, le bot vérifie que
+   les extraits cités se retrouvent dans les résultats de recherche et que chaque nombre du fait y figure. Un mot qui
+   échoue est « non attribué » ; un mot sans extrait ni nombre, « non vérifiable ». Diagnostic seulement : la lecture et
+   le calcul ne changent pas.
 6. **Choix du bras posté** (voir ci-dessous), commentaire public expliquant le choix, envoi à Metaculus.
 7. **Registre** : une ligne scellée (SHA-256) avec les trois bras, et le dossier de lecture complet, enregistrés dans
    le dépôt par le workflow.
@@ -220,6 +224,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.5.2** : contrôle d'attribution déterministe des mots ancrés (extraits et nombres retrouvés dans les résultats),
+  idée reprise des contrôles locaux d'EnVrai ; compté par version au score. Les deux autres idées examinées ne sont
+  pas reprises : le test de la surprise fait double emploi avec les tests de Van Evera que le dossier porte déjà
+  (`pistolet`, `cerceau`, `double`) ; un étage numérique branché sur des séries officielles sortirait du dispositif à
+  trois bras et demanderait une source de données par type de question.
 - **skill 0.7.51** (bot inchangé) : le skill reprend les changements d'enregistrement et de mesure du bot
   (`alphabet-situationnel/references/validation.md` §28), et son `scorer` publie la même séquence de confiance et le
   même verdict (meilleur / moins bon / indéterminé) que `score_registre.py` : les deux outils ne peuvent plus conclure

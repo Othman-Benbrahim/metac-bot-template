@@ -23,12 +23,13 @@ import re
 import subprocess
 import sys
 import tempfile
+import unicodedata
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.5.1"
+VERSION_BOT = "0.5.2"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -426,6 +427,53 @@ def dynamique_observee(lecture: dict) -> dict | None:
     return {"texte": texte, "cartes_nommees": nommees}
 
 
+def _normal(texte: str) -> str:
+    t = unicodedata.normalize("NFD", str(texte or "")).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", " ", t).strip()
+
+
+def _chiffres(texte: str) -> list[str]:
+    """Nombres d'au moins deux chiffres, séparateurs de milliers retirés (« 2 295 » → 2295)."""
+    t = re.sub(r"(?<=\d)[\s\u00a0\u202f.](?=\d{3}\b)", "", str(texte or ""))
+    return sorted(set(re.findall(r"\d{2,}", t)))
+
+
+def controle_attribution(dossier: dict | None, textes: str | None) -> dict | None:
+    """0.5.2, idée reprise d'EnVrai (contrôles locaux du repérage) : vérifier SANS modèle que ce que la lecture cite
+    vient bien des résultats de recherche. Pour chaque mot ancré : (1) chaque extrait du passage se retrouve-t-il dans
+    les résultats (70 % au moins de ses mots de quatre lettres ou plus) ? (2) chaque nombre du fait y figure-t-il ?
+    Diagnostic scellé au registre : il ne change ni la lecture ni le calcul. Un mot sans extrait retrouvé, ou avec un
+    nombre absent des résultats, est « non attribué » : la règle « ne cite que des faits trouvés » n'est pas tenue."""
+    if not dossier or not dossier.get("mots") or textes is None:
+        return None
+    corpus = _normal(textes)
+    mots_corpus = set(corpus.split())
+    chiffres_corpus = set(_chiffres(textes))
+    detail, non_attribues, non_verifiables = {}, 0, 0
+    for m in dossier["mots"]:
+        cle = f"{m.get('carte')}@{m.get('strate')}"
+        extraits = [x.get("extrait") for x in (m.get("passage") or []) if isinstance(x, dict) and x.get("extrait")]
+        retrouves = 0
+        for e in extraits:
+            ne = _normal(e)
+            longs = [w for w in ne.split() if len(w) >= 4]
+            if (ne and ne in corpus) or (longs and sum(w in mots_corpus for w in longs) / len(longs) >= 0.7):
+                retrouves += 1
+        nombres = _chiffres(m.get("fait"))
+        absents = [c for c in nombres if c not in chiffres_corpus]
+        if not extraits and not nombres:
+            attribue = None                    # rien de littéral à retrouver : non vérifiable, pas « attribué »
+            non_verifiables += 1
+        else:
+            attribue = (not extraits or retrouves > 0) and not absents
+            non_attribues += not attribue
+        detail[cle] = {"extraits": len(extraits), "extraits_retrouves": retrouves, "chiffres_absents": absents,
+                       "attribue": attribue}
+    return {"mots": len(dossier["mots"]), "non_attribues": non_attribues, "non_verifiables": non_verifiables,
+            "detail": detail,
+            "lecture": "diagnostic sans modèle ; un faux positif est possible quand la recherche résume au lieu de citer"}
+
+
 def nature_etat_nul(categories: dict) -> str:
     """structure_absente : chaque candidate a été regardée et écartée sur pièces (contredit, marqueur non rempli) ;
     angle_mort : au moins une candidate n'a pas été vraiment cherchée ; indetermine : rejets non classés."""
@@ -795,6 +843,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         return dict(trace, motif=f"lecture illisible : {e}")
     lecture, executees, relance = await relancer_angles_morts(q, plan, executees, lecture, llm, chercher,
                                                               recherche_reelle, aujourdhui, jours)
+    # 0.5.2 : le texte des résultats, gardé hors registre pour le contrôle d'attribution (controle_attribution).
+    trace["_textes"] = "\n".join(str(r.get("resultat") or "") for r in executees if r.get("executee"))
     if relance:
         trace["relance"] = relance
         trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
@@ -939,6 +989,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
                             "p_C_corrige": corriger_C(c.get("p_C"), corr),
+                            "attribution": controle_attribution(c.get("dossier"), c.get("_textes")),
                             "correction": ({k: corr.get(k) for k in ("decalage_logit", "n", "calcule_le")}
                                            if corr and c.get("p_C") is not None else None)}},
              "bras_poste": poste, "p_poste": p_poste}
