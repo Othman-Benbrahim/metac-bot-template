@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.50 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.51 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -3100,6 +3100,33 @@ def e_processus(d,decalage=0.):
     return {'e_valeur':e,'e_max':e_max,'seuil':1/P['v4_alpha'],'franchi_a_l_episode':franchi,'decalage':decalage}
 
 
+def sequence_confiance(d,alpha=None):
+    """0.7.51 (validation.md §28, levée du gel pour cet outil seul). Séquence de confiance sur la moyenne des d
+    d'épisodes (Brier − référence), valide à tout moment de relecture : μ est gardé tant qu'aucun des deux
+    e-processus unilatéraux, « E[d] ≥ μ » et « E[d] ≤ μ », ne franchit 2/α (inversion des tests par pari de
+    `e_processus`, Waudby-Smith et Ramdas 2024). Même inférence que le bot Metaculus (`score_registre.py`), pour que
+    les deux outils ne concluent pas différemment sur le §27. Verdict à trois valeurs ; « indéterminé » en est une."""
+    if not d:return None
+    a=alpha or P['v4_alpha'];s=2/a
+    e_haut=lambda mu:e_processus(d,-mu)['e_valeur']                 # contre « E[d] ≥ μ » : croît avec μ
+    e_bas=lambda mu:e_processus([-x for x in d],mu)['e_valeur']     # contre « E[d] ≤ μ » : décroît avec μ
+    lo,hi=-2.,2.
+    for _ in range(40):
+        m_=(lo+hi)/2
+        lo,hi=(lo,m_) if e_haut(m_)>=s else (m_,hi)
+    haut=hi
+    lo,hi=-2.,2.
+    for _ in range(40):
+        m_=(lo+hi)/2
+        lo,hi=(m_,hi) if e_bas(m_)>=s else (lo,m_)
+    bas=lo
+    verdict=('meilleur que la référence (établi)' if haut<0 else 'moins bon que la référence (établi)' if bas>0
+             else 'indéterminé')
+    return {'intervalle':[bas,haut],'niveau':1-a,'verdict':verdict,
+            'lecture':'d = Brier − Brier de référence, par épisode ; négatif = mieux que la référence ; valide quel que '
+                      'soit le moment de relecture, sous indépendance des épisodes ; « indéterminé » tant que 0 est dedans'}
+
+
 def differentiel(units,champ):
     """0.7.5. Différentiel de perte par épisode (d̄ de Diebold-Mariano : le numérateur ; on publie aussi sa
     dispersion et les tests exacts). Les questions liées d'un épisode sont moyennées : un épisode, une
@@ -3117,7 +3144,8 @@ def differentiel(units,champ):
     return {'episodes':n,'d_moyen':m_,'sigma_d':sd,'erreur_type':None if sd is None else sd/math.sqrt(n),
             'autocorrelation_1':r1,'test_signe':test_signe(d),'test_wilcoxon':test_wilcoxon(d),
             # 0.7.12 : lecture séquentielle, valide à tout instant (e_processus) ; s'ajoute aux tests exacts.
-            'e_amelioration':e_processus(d),'e_gain_v4':e_processus(d,P['v4_gain_abs'])}
+            'e_amelioration':e_processus(d),'e_gain_v4':e_processus(d,P['v4_gain_abs']),
+            'sequence_confiance':sequence_confiance(d)}
 
 
 def lecture_test(dm,nom):
@@ -3276,7 +3304,8 @@ def v4_statut(dm):
               'regle':(f"gain : e_gain_v4 ≥ {P['v4_e_seuil_primaire']} ; pas d'apport > {de} : borne basse unilatérale à {1-P['v4_alpha']:.0%} de d̄ > −{de} (nuisance : > +{de}), "
                        f"lu à épisodes ≥ max({P['v4_n']}, ⌈({zt:.2f}·σ̂/{de})²⌉) ; barrière ρ̂₁ > {P['v4_autocorrelation_max']} ; test du signe descriptif")}
     return {'statut':st,'episodes':dm['episodes'],'effectif_requis':req,'effectif_cible':cible,'d_moyen':dm['d_moyen'],
-            'intervalle_95_approche':ic,'p_test':p_,'sigma_d':sd,'regle':regle,'sequentiel':seq,'decision':decision}
+            'intervalle_95_approche':ic,'p_test':p_,'sigma_d':sd,'regle':regle,'sequentiel':seq,'decision':decision,
+            'sequence_confiance':dm.get('sequence_confiance')}
 
 
 def dossier_publie(x):
@@ -3788,7 +3817,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.50','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.51','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -6133,6 +6162,16 @@ def autotest():
             self.assertAlmostEqual(cv['taux_de_repli'],.5)
             self.assertIn('v4_avec_repli',cv)                                              # 0.7.25 : d̄ primaire avec repli
             self.assertNotIn('decision',v4_statut(None))                    # aucun épisode : pas de décision
+            # 0.7.51 (§28) : séquence de confiance et verdict à trois valeurs.
+            self.assertIsNone(sequence_confiance([]))
+            sc=sequence_confiance([-.1]*3)
+            self.assertEqual(sc['verdict'],'indéterminé');self.assertLess(sc['intervalle'][0],0)
+            sc=sequence_confiance([-.1]*400)
+            self.assertEqual(sc['verdict'],'meilleur que la référence (établi)');self.assertLess(sc['intervalle'][1],0)
+            self.assertGreater(sc['intervalle'][1],-.1-1e-9)
+            self.assertEqual(sequence_confiance([.1]*400)['verdict'],'moins bon que la référence (établi)')
+            sc=sequence_confiance([.05,-.05]*300)
+            self.assertEqual(sc['verdict'],'indéterminé');self.assertLess(sc['intervalle'][0],0);self.assertGreater(sc['intervalle'][1],0)
             dm={'episodes':60,'d_moyen':0.0,'sigma_d':.05,'erreur_type':.05/math.sqrt(60),'autocorrelation_1':.1,
                 'test_signe':None,'test_wilcoxon':None,'e_gain_v4':{'e_valeur':1,'e_max':2,'seuil':20,'franchi_a_l_episode':None}}
             self.assertIn('non fixé',v4_statut(dm)['decision']['conclusion'])                # 0.7.24 : effectif non déclaré

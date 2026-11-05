@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.50
+> Version : 0.7.51
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2039,3 +2039,14 @@ tournoi, pas la mesure de C − B, qui se fait sur les bras enregistrés.
 une prévision par question, passage à blanc réservé à la zone de test), la cadence (contrôle toutes les 20 minutes,
 plafond quotidien), le budget, le scellement du commentaire envoyé et du jeu de questions reçu à chaque passage.
 Ces points n'ont pas d'équivalent dans le skill, qui ne publie rien lui-même : le registre du §14 en tient lieu.
+
+**Levée du gel pour un seul outil (0.7.51, décision d'auteur du 2026-11-05).** Le §27 fonde la levée de L7 sur la
+sortie de `score_registre.py` (bot) **ou** de `scorer` (skill). Si seul le bot portait une inférence valide à tout
+moment de relecture, les deux outils pourraient conclure différemment sur la même décision. `scorer` publie donc, pour
+chaque différentiel par épisode (dont `v4_vue_exterieure`, la comparaison C contre B), une **séquence de confiance** à
+1 − α sur la moyenne de d (Brier − référence), obtenue en inversant les e-processus qu'il calculait déjà depuis la
+0.7.12, et un verdict à trois valeurs : « meilleur que la référence (établi) », « moins bon que la référence
+(établi) », « indéterminé ». Rien d'autre ne change : ni les paramètres, ni les règles de décision de V4 (§11), ni le
+critère du §27, qui reste « C − B ≤ 0 sur 20 questions » ; le verdict se lit à côté. Les autres outils de mesure du bot
+(test séquentiel détaillé, puissance, correction du biais en ombre, recalibration, plafonnement) restent dans le bot :
+pour eux, le gel tient.

@@ -1,9 +1,19 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.50
+> Version : 0.7.51
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.51 — 2026-11-05 · séquence de confiance dans `scorer`
+
+Décision d'auteur : levée du gel pour **un seul outil**, afin que `scorer` et le bot Metaculus ne puissent pas conclure
+différemment sur le §27. **Aucun paramètre, aucune règle de décision, aucune probabilité changés.**
+
+- `moteur.py` : `sequence_confiance` (inversion des e-processus de la 0.7.12) ; chaque différentiel par épisode et
+  chaque statut V4 portent `sequence_confiance` (intervalle à 1 − α, verdict meilleur / moins bon / indéterminé).
+- `validation.md` §28 : paragraphe « Levée du gel pour un seul outil » ; `SKILL.md` : phrase.
+- 167 autotests (le test V4 couvre la séquence de confiance).
 
 ## 0.7.50 — 2026-11-05 · alignement avec le bot Metaculus
 
