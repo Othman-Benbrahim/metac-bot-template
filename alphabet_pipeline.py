@@ -29,11 +29,31 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.7.4"
+VERSION_BOT = "0.8.0"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
 REGISTRE = Path(os.environ.get("ALPHABET_REGISTRE", Path(__file__).parent / "registre")).resolve()
+VRAI_REGISTRE = (Path(__file__).parent / "registre").resolve()
+
+
+class RegistreInterdit(RuntimeError):
+    """0.8.0 (audit B-01) : écriture refusée dans le vrai registre depuis un test."""
+
+
+def sous_test() -> bool:
+    return (bool(os.environ.get("ALPHABET_TESTS")) or "pytest" in sys.modules
+            or "unittest" in Path(sys.argv[0] if sys.argv else "").as_posix())
+
+
+def registre_ecrivable(dossier: Path | None = None) -> Path:
+    """Le répertoire du registre, après la garde : AUCUNE écriture dans le vrai registre quand un test tourne
+    (des lignes fictives y avaient été écrites puis publiées, 0.6.3 à 0.7.3). Tout point d'écriture passe ici."""
+    d = Path(dossier or REGISTRE).resolve()
+    if sous_test() and (d == VRAI_REGISTRE or VRAI_REGISTRE in d.parents):
+        raise RegistreInterdit(f"écriture dans le vrai registre refusée pendant un test ({d})")
+    d.mkdir(parents=True, exist_ok=True)
+    return d
 MAX_RECHERCHES = int(os.environ.get("ALPHABET_MAX_RECHERCHES", "12"))
 MAX_CORRECTIONS = int(os.environ.get("ALPHABET_MAX_CORRECTIONS", "2"))
 
@@ -191,9 +211,20 @@ def correction_retro() -> dict | None:
     f = REGISTRE / "correction-retro.json"
     try:
         c = json.loads(f.read_text(encoding="utf-8"))
-        return c if isinstance(c.get("decalage_logit"), (int, float)) else None
     except Exception:
         return None
+    if not isinstance(c.get("decalage_logit"), (int, float)):
+        return None
+    # 0.8.0 (audit m-15) : une correction a une durée de vie (VALIDITE_CORRECTION jours) ; au-delà, il faut la
+    # réestimer sur de nouveaux tests rétrospectifs.
+    try:
+        age = (datetime.now(timezone.utc) - datetime.fromisoformat(c["calcule_le"])).days
+    except (KeyError, ValueError, TypeError):
+        return None
+    return c if age <= VALIDITE_CORRECTION else None
+
+
+VALIDITE_CORRECTION = int(os.environ.get("ALPHABET_VALIDITE_CORRECTION") or "120")
 
 
 def corriger_C(p_C: float | None, corr: dict | None) -> float | None:
@@ -207,12 +238,17 @@ def corriger_C(p_C: float | None, corr: dict | None) -> float | None:
 
 
 def extraire_json(texte: str) -> dict:
-    """Le premier objet JSON complet d'une réponse de modèle (bloc ```json``` ou accolades)."""
+    """Le premier objet JSON complet d'une réponse de modèle (bloc ```json``` ou accolades). 0.8.0 (audit m-01) :
+    lecture par raw_decode (un second objet ou du texte après ne gênent plus) ; virgules finales tolérées."""
     m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", texte, re.S)
-    brut = m.group(1) if m else texte[texte.find("{"): texte.rfind("}") + 1]
+    brut = m.group(1) if m else texte[texte.find("{"):] if "{" in texte else ""
     if not brut:
         raise ValueError("aucun objet JSON dans la réponse")
-    return json.loads(brut)
+    dec = json.JSONDecoder()
+    try:
+        return dec.raw_decode(brut)[0]
+    except json.JSONDecodeError:
+        return dec.raw_decode(re.sub(r",\s*([}\]])", r"\1", brut))[0]
 
 
 BORNE_BASSE, BORNE_HAUTE = 0.001, 0.999  # bornes de l'API Metaculus pour une question binaire
@@ -282,6 +318,16 @@ observable, l'objet et la période, JAMAIS sur le nom d'une carte, ni sur une pr
 """
 
 
+def bloc_sources_prises(sources: list[str] | None) -> str:
+    """0.8.0 (audit M-01) : trois appels du même prompt donnaient trois fois le même chiffre (dispersion 0). Chaque vue
+    après la première doit compter sur une AUTRE source : trois mesures, pas trois tirages."""
+    if not sources:
+        return ""
+    return ("\nSOURCES DÉJÀ UTILISÉES par d'autres estimations (ne les reprends pas : compte sur une AUTRE source "
+            "indépendante ; s'il n'en existe aucune d'honnête, mets \"frequence\": null et \"motif\": "
+            "\"source unique\") :\n" + "\n".join(f"  - {x}" for x in sources) + "\n")
+
+
 def bloc_ancrage(ancrage: dict | None) -> str:
     """0.7.2 : un compte calculé sur une série PROCHE du critère : chaque vue part de lui et dit ce qu'elle en fait."""
     if not ancrage:
@@ -299,7 +345,7 @@ celle du compte), « ajuste » (corrige-le dans le sens de l'écart nommé, et d
 
 def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: str, jours: int,
                  historique: list[dict] | None = None, classe: dict | None = None,
-                 ancrage: dict | None = None) -> str:
+                 ancrage: dict | None = None, sources_prises: list[str] | None = None) -> str:
     res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{r['resultat'][:3000]}" for i, r in enumerate(references))
     hist = "\n".join(f"[M{i + 1}] {h['titre']} → {str(h['issue']).upper()} (résolue le {h.get('resolue_le', '?')})"
                      for i, h in enumerate(historique or []))
@@ -319,7 +365,7 @@ RÉSULTATS DES RECHERCHES SUR LE TAUX DE BASE :
 
 QUESTIONS DE PRÉVISION DÉJÀ RÉSOLUES, d'apparence voisine (issue seulement) :
 {hist or "(aucune)"}
-{bloc_ancrage(ancrage)}
+{bloc_ancrage(ancrage)}{bloc_sources_prises(sources_prises)}
 La fréquence se tire, au choix : (a) des résultats ci-dessus (cite [R1], [R2]…) ; (a') des questions résolues
 ci-dessus, en ne gardant que celles qui comptent le MÊME type d'événement sur une fenêtre comparable (cite [M1]… ;
 fréquence = OUI / questions gardées, ramenée à la fenêtre ; moins de 5 questions gardées : ne l'utilise pas seule) ;
@@ -336,7 +382,9 @@ Rends UNIQUEMENT un objet JSON :
  "fondement": "recherche [Rn] | questions résolues [Mn] | registre historique",
  "periode": "AAAA-AAAA",
  "disponible_le": "AAAA-MM-JJ (au plus tard le {aujourdhui})",
- "calcul": "comptage et mise à l'échelle de la fenêtre",
+ "calcul": "comptage et mise à l'échelle de la fenêtre, en mots",
+ "expression": "le MÊME calcul en arithmétique pure, que le code refera (nombres, + - * / ** et parenthèses ;
+     ex. « 1 - (1 - 3/40) ** (120/365) ») ; il doit redonner frequence",
  "classe_alternative": {{"frequence": …, "classe_de_reference": "…", "source": "…", "pourquoi_ecartee": "…"}} ou null,
  "motif_sans_alternative": "si classe_alternative est null",
  "ecart_critere": "en quoi la classe compte autre chose que le critère de résolution, ou « identique : … »",
@@ -459,9 +507,16 @@ def _normal(texte: str) -> str:
 
 
 def _chiffres(texte: str) -> list[str]:
-    """Nombres d'au moins deux chiffres, séparateurs de milliers retirés (« 2 295 » → 2295)."""
-    t = re.sub(r"(?<=\d)[\s\u00a0\u202f.](?=\d{3}\b)", "", str(texte or ""))
-    return sorted(set(re.findall(r"\d{2,}", t)))
+    """Nombres d'au moins deux chiffres, séparateurs de milliers retirés (« 2 295 », « 2,295 » → 2295). 0.8.0 (audit
+    m-02) : les décimales sont gardées et normalisées (« 10,4 » et « 10.4 » → 10.4 ; « 6,3 » → 6.3)."""
+    t = re.sub(r"(?<=\d)[\s\u00a0\u202f.,](?=\d{3}\b)", "", str(texte or ""))
+    t = re.sub(r"(?<=\d),(?=\d)", ".", t)
+    nombres = set()
+    for n in re.findall(r"\d+(?:\.\d+)?", t):
+        n = n.rstrip("0").rstrip(".") if "." in n else n
+        if len(n.replace(".", "")) >= 2:
+            nombres.add(n)
+    return sorted(nombres)
 
 
 def controle_attribution(dossier: dict | None, textes: str | None) -> dict | None:
@@ -476,6 +531,9 @@ def controle_attribution(dossier: dict | None, textes: str | None) -> dict | Non
     mots_corpus = set(corpus.split())
     chiffres_corpus = set(_chiffres(textes))
     detail, non_attribues, non_verifiables = {}, 0, 0
+    # 0.8.0 (audit M-04) : il ne suffit plus que les extraits existent et que les nombres du fait figurent QUELQUE
+    # PART : les nombres du fait doivent être dans les extraits CITÉS, et le fait lui-même doit se retrouver dans le
+    # corpus (la moitié au moins de ses mots de quatre lettres ou plus).
     for m in dossier["mots"]:
         cle = f"{m.get('carte')}@{m.get('strate')}"
         extraits = [x.get("extrait") for x in (m.get("passage") or []) if isinstance(x, dict) and x.get("extrait")]
@@ -487,13 +545,20 @@ def controle_attribution(dossier: dict | None, textes: str | None) -> dict | Non
                 retrouves += 1
         nombres = _chiffres(m.get("fait"))
         absents = [c for c in nombres if c not in chiffres_corpus]
+        chiffres_cites = set(_chiffres(" ".join(extraits)))
+        hors_extraits = [c for c in nombres if c not in chiffres_cites] if extraits else []
+        mots_fait = [w for w in _normal(m.get("fait")).split() if len(w) >= 4]
+        part_fait = sum(w in mots_corpus for w in mots_fait) / len(mots_fait) if mots_fait else None
         if not extraits and not nombres:
             attribue = None                    # rien de littéral à retrouver : non vérifiable, pas « attribué »
             non_verifiables += 1
         else:
-            attribue = (not extraits or retrouves > 0) and not absents
+            attribue = ((not extraits or retrouves > 0) and not absents and not hors_extraits
+                        and (part_fait is None or part_fait >= 0.5))
             non_attribues += not attribue
         detail[cle] = {"extraits": len(extraits), "extraits_retrouves": retrouves, "chiffres_absents": absents,
+                       "chiffres_hors_extraits": hors_extraits,
+                       "part_fait_retrouvee": round(part_fait, 2) if part_fait is not None else None,
                        "attribue": attribue}
     return {"mots": len(dossier["mots"]), "non_attribues": non_attribues, "non_verifiables": non_verifiables,
             "detail": detail,
@@ -717,7 +782,7 @@ async def puits(q: Question, plan: dict, llm: Llm, aujourdhui: str, jours: int,
             seuil = spec.get("seuil")
             seuil = float(seuil) if isinstance(seuil, (int, float)) and not isinstance(seuil, bool) else None
             res = apz.compter(r, jours, str(spec.get("mode") or "atteint"), seuil, str(spec.get("sens") or ">="),
-                              spec.get("agregation"), fin=avant)
+                              spec.get("agregation"), fin=avant, nature=apz.CATALOGUE[src].get("nature"))
             trace["compte"] = {"spec": spec, **res}
             if res.get("frequence") is not None:
                 a0, a1 = res["periode"][:4], res["periode"][11:15]
@@ -796,6 +861,55 @@ def controle_vue(vue: dict, aujourdhui: str | None = None) -> str | None:
             return f"vue extérieure : disponible_le illisible ({vue['disponible_le']})"
         if d > aujourdhui:
             return f"vue extérieure : disponible_le {d} postérieur à la date d'information {aujourdhui}"
+    return controle_calcul(vue)
+
+
+ECART_CALCUL = 0.20     # 0.8.0 (audit M-07) : écart relatif admis entre la fréquence déclarée et son expression
+
+
+def evaluer_expression(expr: str) -> float:
+    """Évalue SANS eval() une expression arithmétique (nombres, + - * / **, parenthèses)."""
+    import ast
+    import operator as op
+    ops = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul, ast.Div: op.truediv, ast.Pow: op.pow}
+
+    def ev(n):
+        if isinstance(n, ast.Expression):
+            return ev(n.body)
+        if isinstance(n, ast.Constant) and isinstance(n.value, (int, float)) and not isinstance(n.value, bool):
+            return float(n.value)
+        if isinstance(n, ast.UnaryOp) and isinstance(n.op, (ast.USub, ast.UAdd)):
+            v = ev(n.operand)
+            return -v if isinstance(n.op, ast.USub) else v
+        if isinstance(n, ast.BinOp) and type(n.op) in ops:
+            a, b = ev(n.left), ev(n.right)
+            if isinstance(n.op, ast.Pow) and abs(b) > 1e4:
+                raise ValueError("exposant trop grand")
+            return ops[type(n.op)](a, b)
+        raise ValueError(f"élément non admis : {type(n).__name__}")
+    texte = str(expr).replace("×", "*").replace("^", "**").replace("−", "-").replace(",", ".")
+    return float(ev(ast.parse(texte, mode="eval")))
+
+
+def controle_calcul(vue: dict) -> str | None:
+    """0.8.0 (audit M-07) : l'arithmétique du taux de base est REFAITE par le code. La vue rend « expression » (ex.
+    « 1 - (1 - 3/40) ** (120/365) ») ; si elle ne redonne pas la fréquence déclarée à 20 % près, la vue est refusée.
+    Sinon la fréquence retenue est celle de l'expression. Une vue calculée par le code (compte des puits) est exemptée."""
+    if vue.get("compte_calcule"):
+        return None
+    expr = vue.get("expression")
+    if not expr:
+        return "vue extérieure : calcul sans expression reproductible"
+    try:
+        f = evaluer_expression(expr)
+    except (ValueError, SyntaxError, ZeroDivisionError, OverflowError, TypeError) as e:
+        return f"vue extérieure : expression illisible ({type(e).__name__})"
+    d = float(vue["frequence"])
+    if not 0 < f < 1:
+        return f"vue extérieure : l'expression donne {f:.4g}, hors de ]0, 1["
+    if abs(f - d) > ECART_CALCUL * max(f, d):
+        return f"vue extérieure : calcul non reproductible (déclaré {d:.4g}, expression {f:.4g})"
+    vue["frequence_declaree"], vue["frequence"] = d, f
     return None
 
 
@@ -911,30 +1025,48 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
     """0.3.0 : NB_VUES estimations indépendantes du taux de base ; on garde la vue MÉDIANE (une vraie vue, avec sa
     source : aucun chiffre n'est fabriqué par moyenne). La dispersion est journalisée : c'est la mesure de stabilité
     de B demandée avant toute autre décision sur B."""
-    valides, refus = [], []
-    for _ in range(NB_VUES):
+    # 0.8.0 (audit M-01) : chaque vue sur une source différente des précédentes. (M-03) : un compte « proche » n'ancre
+    # que la PREMIÈRE vue ; les autres restent aveugles, ce qui garde une mesure de B indépendante du compte.
+    valides, refus, sources = [], [], []
+    for i in range(NB_VUES):
+        anc = ancrage if i == 0 else None
         try:
-            v = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours, hist, classe, ancrage)))
+            v = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours, hist, classe, anc, sources)))
         except Exception as e:
             refus.append(f"illisible : {e}"[:200])
             continue
         m = controle_vue(v, aujourdhui)
-        (refus.append(m) if m else valides.append(v))
+        if m:
+            refus.append(m)
+            continue
+        v["_ancree"] = anc is not None
+        valides.append(v)
+        sources.append(str(v.get("source"))[:200])
     calc = None
-    if vue_calculee is not None:     # 0.7.0 : le compte du code rejoint les vues du modèle, contrôlé comme elles
+    if vue_calculee is not None:
         m = controle_vue(vue_calculee, aujourdhui)
         calc = {"frequence": vue_calculee.get("frequence"), "refus": m}
-        if not m:
-            valides.append(vue_calculee)
     freqs = sorted(float(v["frequence"]) for v in valides)
+
+    def mediane(vs):
+        vs = sorted(vs, key=lambda v: float(v["frequence"]))
+        return vs[(len(vs) - 1) // 2] if vs else None     # médiane basse si nombre pair
+    aveugles = [v for v in valides if not v["_ancree"]]
     suivi = {"demandees": NB_VUES, "valides": len(valides), "frequences": freqs, "refus": refus,
-             "dispersion": (freqs[-1] - freqs[0]) if len(freqs) > 1 else None, "vue_calculee": calc,
-             **({"usages_compte": [v.get("usage_compte") for v in valides if not v.get("compte_calcule")]}
-                if ancrage else {})}
-    if not valides:
-        return None, suivi
-    valides.sort(key=lambda v: float(v["frequence"]))
-    return valides[(len(valides) - 1) // 2], suivi    # médiane basse si nombre pair
+             "dispersion": (freqs[-1] - freqs[0]) if len(freqs) > 1 else None,
+             "dispersion_nulle": len(freqs) > 1 and freqs[-1] == freqs[0],
+             "sources": sources, "vue_calculee": calc,
+             **({"usages_compte": [v.get("usage_compte") for v in valides if v["_ancree"]],
+                 "p_sans_ancre": float(mediane(aveugles)["frequence"]) if aveugles else None} if ancrage else {})}
+    choisie = mediane(valides)
+    if vue_calculee is not None and not calc["refus"]:
+        # 0.8.0 (audit M-02) : un compte EXACT ne se glisse plus dans une médiane de vues d'une autre nature : il EST
+        # le taux de base (calculé par le code sur la grandeur même du critère). La médiane du modèle reste en ombre.
+        suivi["p_modele"] = float(choisie["frequence"]) if choisie else None
+        choisie = vue_calculee
+    for v in valides:
+        v.pop("_ancree", None)
+    return choisie, suivi
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
@@ -948,8 +1080,12 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     except Exception as e:
         return dict(trace, motif=f"plan illisible : {e}")
     motif = controle_plan(plan)
-    if motif and plan_corrigeable(motif):
-        try:  # une seule correction du plan, sur la règle des candidates
+    # 0.8.0 (audit M-12, m-03) : jusqu'à deux corrections du plan (le refus du plan était la seule cause de refus
+    # observée en 0.7.x), comptées dans « reprises_plan ».
+    trace["reprises_plan"] = 0
+    while motif and plan_corrigeable(motif) and trace["reprises_plan"] < 2:
+        trace["reprises_plan"] += 1
+        try:
             plan = extraire_json(await llm(consigne_plan(q, recherche, aujourdhui)
                                            + f"\n\nTON PLAN PRÉCÉDENT A ÉTÉ REFUSÉ : {motif}\nPLAN REFUSÉ : "
                                            + json.dumps(plan, ensure_ascii=False)))
@@ -1183,9 +1319,9 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
 
 
 def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
-    REGISTRE.mkdir(parents=True, exist_ok=True)
+    reg = registre_ecrivable()
     if dossier is not None:
-        d = REGISTRE / "dossiers"
+        d = reg / "dossiers"
         d.mkdir(exist_ok=True)
         # 0.2.0 (audit, B8) : horodatage dans le nom ; deux passages le même jour n'écrasent plus une preuve scellée.
         nom = f"{ligne['question_id']}-{ligne['bras']['A']['horodatage'].replace(':', '').replace('+0000', 'Z')}.json"
@@ -1193,7 +1329,7 @@ def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
         ligne["dossier_fichier"] = f"dossiers/{nom}"
         ligne["dossier_sha256"] = sceau(dossier)
     ligne["sceau"] = sceau(ligne)
-    with open(REGISTRE / "journal-bot.jsonl", "a", encoding="utf-8", newline="\n") as f:
+    with open(reg / "journal-bot.jsonl", "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True) + "\n")
 
 
@@ -1227,9 +1363,11 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "vues": c.get("vues"), "historique": c.get("historique"), "classe": c.get("classe"),
                             "classe_statut": c.get("classe_statut"),
                             "compte_calcule": bool(vue.get("compte_calcule")), "puits": c.get("puits"),
-                            "p_compte": c.get("p_compte"), "correspondance": c.get("correspondance")},
+                            "p_compte": c.get("p_compte"), "correspondance": c.get("correspondance"),
+                            "p_modele": (c.get("vues") or {}).get("p_modele"),
+                            "p_sans_ancre": (c.get("vues") or {}).get("p_sans_ancre")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
-                                                        "rho", "motif", "tentatives", "recherches",
+                                                        "rho", "motif", "tentatives", "reprises_plan", "recherches",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

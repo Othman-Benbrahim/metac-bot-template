@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.7.4 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.8.0 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -37,18 +37,23 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
    Le modèle en tire une fréquence sourcée et datée, ou déclare qu'il n'y a pas de base honnête ; il n'utilise les
    questions résolues que si au moins cinq comptent le même type d'événement. Une source postérieure à la date du jour
    est refusée, de même qu'une source qui se déclare « de mémoire ». **La classe de référence est d'abord définie une
-   fois** (ce qui compte pour un cas, sur quelle population, quelle période) ; puis le comptage est fait **trois fois,
-   indépendamment, sur cette même classe**. B est la vue médiane (une vraie vue, avec sa source : aucune moyenne
-   fabriquée), et l'écart entre les trois est enregistré : c'est alors un écart de mesure, non un changement de classe.
+   fois** (ce qui compte pour un cas, sur quelle population, quelle période) ; puis le comptage est fait **trois fois
+   sur cette même classe, chaque fois sur une source différente des précédentes** (0.8.0 : avant, trois appels du même
+   prompt rendaient trois fois le même chiffre). Chaque estimation rend aussi son calcul en arithmétique pure
+   (`expression`) : **le code le refait** et refuse l'estimation si l'écart dépasse 20 %. B est la vue médiane (une
+   vraie vue, avec sa source : aucune moyenne fabriquée), et l'écart entre les trois est enregistré : c'est alors un
+   écart de mesure, non un changement de classe.
    **Puits de données (0.7.0)** : avant de compter, le modèle choisit jusqu'à trois appels à des bases ouvertes (voir
    « Puits de données » plus bas). Leurs relevés datés rejoignent les résultats de recherche. Si une série mesure
    exactement le critère de résolution, le **code** compte combien de fenêtres de la durée de la question ont vu le
-   seuil atteint. Si la série mesure **exactement** la grandeur du critère, ce compte devient une vue de plus, contrôlée
-   comme les autres (`compte_calcule` au registre). Si elle mesure une grandeur **proche** (autre pays, mesure voisine,
-   série plus large), le compte est montré aux trois estimations, qui doivent partir de lui : le retenir, l'ajuster
-   en nommant l'écart, ou l'écarter en disant pourquoi (`usages_compte`). Dans les deux cas, le compte est scellé à
-   part (`p_compte`, `correspondance`) et scoré en ombre contre B (`compte_sur_B`, par correspondance) : il ne prendra
-   plus de poids que si le registre montre qu'il aide.
+   seuil atteint. Si la série mesure **exactement** la grandeur du critère, **ce compte est le taux de base** ; la
+   médiane des estimations du modèle reste en ombre (`p_modele`) (0.8.0 : le compte n'entre plus dans une médiane de
+   vues d'une autre nature). Si elle mesure une grandeur **proche** (autre pays, mesure voisine, série plus large), le
+   compte est montré à la **première** estimation seulement, qui le retient, l'ajuste en nommant l'écart, ou l'écarte
+   (`usages_compte`) ; les deux autres restent aveugles, et leur médiane (`p_sans_ancre`) sert de mesure indépendante.
+   Le compte est scellé à part (`p_compte`, `correspondance`) et scoré en ombre (`compte_sur_B`) contre une mesure
+   qui ne le contient pas (`p_modele` ou `p_sans_ancre`). Une série de niveaux (taux, indice) ne se somme pas par mois
+   ou par an, et « atteint » ou « franchit » exigent un seuil.
 5. **Bras C** : le bot lance les recherches de lecture (12 au plus, les autres sont notées « non cherchées ») ; le
    modèle écrit un dossier à partir des seuls résultats ; le moteur du skill le juge et calcule. Un refus est renvoyé
    au modèle pour correction, deux fois au plus. **Le moteur reste juge : le bot ne fabrique aucun chiffre.**
@@ -201,13 +206,17 @@ conclusion.
 | Fichier | Contenu |
 |---|---|
 | `registre/journal-bot.jsonl` | une ligne scellée par question binaire : bras A, B, C, bras posté, statut, `publie`, `mode`, et le commentaire envoyé (couvert par le sceau) |
-| `registre/dossiers/` | le dossier de lecture de chaque question, nommé `<question>-<horodatage>.json` |
-| `registre/journal-autres.jsonl` | une ligne scellée par question non binaire (bras A) |
-| `registre/passages.jsonl` | une ligne par passage qui envoie des questions : date, déclencheur, identifiants de toutes les questions reçues (`trouvees_ids`), questions envoyées ; un contrôle sans question n'écrit rien |
+| `registre/dossiers/` | le dossier de lecture de chaque question, nommé `<question>-<horodatage>.json` ; son sceau (`dossier_sha256`) est **relu** au score : une ligne dont le dossier a changé ou disparu sort du score (`dossiers_non_conformes`) |
+| `registre/journal-autres.jsonl` | une ligne scellée par question non binaire (bras A), avec le commentaire envoyé |
+| `registre/passages.jsonl` | une ligne par passage qui envoie des questions : date, déclencheur, identifiants de toutes les questions reçues (`trouvees_ids`), questions envoyées ; puis une ligne `fin` (prévues, en échec, remplacements de modèles, usage des moteurs de recherche) ; un passage arrêté faute de modèle ou de configuration écrit `sans_modele` ou `configuration` ; un contrôle sans question n'écrit rien |
 | `registre/issues.jsonl`, `registre/issues-autres.jsonl` | les issues constatées, jamais réécrites |
 | `registre/score.json` | le dernier score calculé |
 
 L'historique Git date chaque écriture : c'est ce qui rend les prévisions vérifiables après coup.
+
+**Aucune prévision sans sa ligne (0.8.0)** : si la ligne ne peut pas s'écrire, la question n'est pas postée ; elle
+échoue et sera reprise au passage suivant. **Aucune ligne de test dans le registre** : toute écriture passe par une
+garde qui refuse le vrai registre pendant un test (des lignes fictives y avaient été publiées de la 0.6.3 à la 0.7.3).
 
 ### Motifs d'écartement d'une carte
 
@@ -272,7 +281,8 @@ mêle situations avec et sans cartes, il surestime en moyenne. Pour **ce seul po
 des questions déjà résolues (*Actions → Tests rétrospectifs de l'alphabet → Run workflow*, nombre de questions et date
 au choix ; rien n'est posté) :
 
-- **fuite limitée** : questions résolues après la date choisie (à fixer après la date de connaissance du modèle) ;
+- **fuite limitée** : questions **ouvertes** après la date choisie (0.8.0 : le filtre portait sur la résolution, alors
+  que la date d'information est l'ouverture), à fixer après la date de connaissance du modèle ;
   recherche Exa bornée à la date d'information (pages non datées écartées), et le moteur du skill refuse de lui-même
   toute pièce postérieure ; une sonde demande d'abord au modèle s'il connaît l'issue, et la question est exclue s'il
   la connaît ; le bras A n'est pas calculé ;
@@ -280,9 +290,14 @@ au choix ; rien n'est posté) :
   au pire trop faible, jamais trop fort ;
 - **correction à un seul paramètre** : logit p' = logit p_C + b, apprise sur les tests rétrospectifs, évaluée hors
   échantillon, écrite dans `registre/correction-retro.json` seulement à partir de 15 questions chiffrées et si elle
-  gagne hors échantillon ;
+  gagne hors échantillon, **borne basse à 95 % comprise** (0.8.0) ; elle expire au bout de 120 jours ;
 - **appliquée en ombre** : chaque prévision réelle porte alors `p_C_corrige`, scellé et scoré (`C_corrige_sur_B`),
   **jamais posté** : la règle de postage ne change pas avant la levée de L7.
+
+Les puits de données sont bornés à la **date de publication**, pas à la date de la période : une valeur annuelle
+n'est connue que des mois après la fin de l'année (Banque mondiale +200 j, HCR +170 j, BLS +45 j, Eurostat et BCE
+selon la fréquence, Trésor +15 j). FTS, sans millésime, est refusé pour une date passée. Ces séries restent sans
+millésime : une valeur révisée depuis peut entrer ; seul FRED (ALFRED) donne la valeur telle qu'elle était publiée.
 
 Coût : celui d'une question réelle par question testée (environ 7 appels au modèle, 15 recherches Exa). Exige la
 recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
@@ -301,6 +316,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.8.0** : audit d'Azrivo. Intégrité : garde du registre contre toute écriture de test, sceau des dossiers relu
+  au score (un dossier écrasé le 2026-11-04 a été trouvé), aucune prévision postée sans sa ligne, passage arrêté
+  journalisé, workflows du bot modèle d'origine désarmés. Fuite : tests rétrospectifs filtrés sur l'ouverture, puits
+  bornés à la date de publication, fin de mandat future masquée. Bras B : trois sources distinctes, calcul refait par
+  le code, compte exact = taux de base, compte proche montré à une seule vue, agrégation typée. Attribution : nombres
+  du fait dans les extraits cités, fait retrouvé dans le corpus, décimales lues. Score : diagnostics sur toutes les
+  lignes publiées, dernière ligne selon l'horodatage, avertissements (modèles mélangés, erreur familiale, unités).
+  Divers : JSON lu par `raw_decode`, deux corrections du plan, délais d'appel réduits.
 - **0.7.4** : saturation en cours de passage : le modèle principal est attendu puis ressayé (30 s, 90 s), sans
   changer de codeur ; les rôles légers passent au reste de leur suite, puis au principal (`modèles légers remplacés`
   au bilan). Registre nettoyé : 392 lignes fictives des tests hors ligne (question 4242), publiées par erreur

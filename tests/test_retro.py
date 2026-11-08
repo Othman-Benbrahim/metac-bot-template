@@ -12,10 +12,12 @@ from unittest import mock
 import os as _os  # noqa: E402
 import tempfile as _tempfile  # noqa: E402
 # 0.7.4 : JAMAIS le vrai registre dans les tests (des lignes fictives y avaient été écrites puis publiées).
-_os.environ.setdefault("ALPHABET_REGISTRE", _tempfile.mkdtemp(prefix="registre-test-"))
+_os.environ["ALPHABET_REGISTRE"] = _tempfile.mkdtemp(prefix="registre-test-")  # 0.8.0 : forcé, pas setdefault
+_os.environ["ALPHABET_TESTS"] = "1"
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-os.environ.setdefault("ALPHABET_REGISTRE", tempfile.mkdtemp(prefix="registre-"))
+os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-")  # 0.8.0 : forcé, pas setdefault
+os.environ["ALPHABET_TESTS"] = "1"
 import alphabet_pipeline as ap  # noqa: E402
 import test_pipeline as tp  # noqa: E402  (données fictives communes ; règle NB_VUES = 1, classe non figée)
 import alphabet_retro as ar  # noqa: E402
@@ -67,13 +69,21 @@ class TestsRetro(unittest.TestCase):
     def test_question_deja_faite_ou_annulee(self):
         self.assertIsNone(asyncio.run(ar.un_test(mq(), tp.LlmSimule([]), {"501"})))
         self.assertIsNone(asyncio.run(ar.un_test(mq(issue="annulled"), tp.LlmSimule([]), set())))
+        # 0.8.0 (audit B-03) : ouverte AVANT l'horizon de connaissance → écartée, quelle que soit la date de résolution
+        self.assertIsNone(asyncio.run(ar.un_test(mq(), tp.LlmSimule([]), set(),
+                                                 datetime(2026, 11, 1, tzinfo=timezone.utc))))
 
     def test_score_retro_et_correction(self):
-        for i in range(20):    # C surestime : 0,30 quand B dit 0,10 et que l'issue est OUI une fois sur dix
+        # 0.8.0 (audit O-06) : 20 questions ne suffisent plus (borne basse du gain négative) ; 60 si.
+        for i in range(20):
+            ar.ecrire({"type": "retro", "question_id": f"p{i}", "statut": "estime", "p_B": 0.1, "p_C": 0.3,
+                       "issue": 1 if i % 10 == 0 else 0})
+        self.assertFalse(sr.scorer_retro(ap.REGISTRE)["correction"]["proposee"])
+        for i in range(60):    # C surestime : 0,30 quand B dit 0,10 et que l'issue est OUI une fois sur dix
             ar.ecrire({"type": "retro", "question_id": str(i), "statut": "estime", "p_B": 0.1, "p_C": 0.3,
                        "issue": 1 if i % 10 == 0 else 0})
         s = sr.scorer_retro(ap.REGISTRE)
-        self.assertEqual(s["n_chiffres"], 20)
+        self.assertEqual(s["n_chiffres"], 80)
         c = s["correction"]
         self.assertLess(c["decalage_logit"], 0)
         self.assertTrue(c["proposee"])

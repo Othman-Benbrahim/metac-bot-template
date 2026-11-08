@@ -1,6 +1,6 @@
 # Situational Alphabet Bot — Abstract
 
-*Othman Ben Brahim · bot version 0.7.4 · skill alphabet-situationnel 0.7.51 · Metaculus FutureEval*
+*Othman Ben Brahim · bot version 0.8.0 · skill alphabet-situationnel 0.7.51 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?
 This bot tests that question in the open, on Metaculus, against questions whose answers nobody knows yet.
@@ -17,7 +17,7 @@ The skill, its engine and its validation rules are documented in
 | Arm | Probability produced by | Purpose |
 |---|---|---|
 | **A** | the language model alone (Metaculus template bot) | control, sealed before any reading |
-| **B** | a reference class found by web search, open databases and already-resolved Metaculus questions (outcomes only); median of three independent estimates, plus a count computed by code on a dated series: it joins the estimates when the series measures the resolution criterion exactly, anchors them when it measures a close quantity, and is scored separately against B | base rate |
+| **B** | a reference class found by web search, open databases and already-resolved Metaculus questions (outcomes only); median of three estimates, each on a different source, whose arithmetic is recomputed by code; when a dated open-data series measures the resolution criterion exactly, a count computed by code is the base rate instead (the model's median kept in shadow) | base rate |
 | **C** | the alphabet: reading of the situation, then the engine, starting from B | C vs B = what the reading adds |
 
 The bot posts C when the engine produces a number, B when the reading finds no structure, and A otherwise (no honest
@@ -26,8 +26,8 @@ geopolitics only; that restriction will be lifted only on measured evidence. The
 number: the engine accepts or rejects the reading, and rejections are logged.
 
 **Pre-registration.** Every forecast is written, with all three arms and the full reading dossier, to a SHA-256-sealed
-log committed to this repository before the question resolves. Git history timestamps each entry; a tampered line is
-detected and excluded from scoring.
+log committed to this repository before the question resolves. Git history timestamps each entry; a tampered line, or a reading dossier that no
+longer matches its seal, is detected and excluded from scoring. No forecast is posted without its sealed line.
 
 **Evaluation.** Forecasts are scored with the logarithmic score, as Metaculus does. The key result is the paired gain
 of C over B (and of C over A), in peer-score points: 100 × the mean difference in ln p on the realized outcome, with an
