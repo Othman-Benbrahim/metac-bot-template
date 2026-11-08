@@ -49,7 +49,7 @@ _CHAINE = None
 
 async def chercher_avant(requete: str, avant: datetime) -> str:
     """0.6.1 : Exa borné à la date d'information (seconde clé si la première échoue), puis GDELT, borné lui aussi.
-    Brave et Tavily ne sont pas utilisés ici : leur bornage par date est moins sûr, et la fuite est le risque n° 1."""
+    Tavily n'est pas utilisé ici : leur bornage par date est moins sûr, et la fuite est le risque n° 1."""
     global _CHAINE
     import alphabet_recherche as ar_
     if _CHAINE is None:
