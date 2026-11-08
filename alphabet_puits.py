@@ -328,8 +328,11 @@ async def wikidata_poste(poste: str, avant: date | None = None) -> dict:
 # --------------------------------------------------------------------------- textes à une date
 
 def _texte_wiki(w: str) -> str:
-    w = re.sub(r"\{\{[^{}]*\}\}", "", w)
-    w = re.sub(r"\{\{[^{}]*\}\}", "", w)
+    for _ in range(12):                                   # modèles imbriqués (infobox) : du plus intérieur au plus extérieur
+        w, n = re.subn(r"\{\{[^{}]*\}\}", "", w)
+        if not n:
+            break
+    w = re.sub(r"\{\|.*?\|\}", "", w, flags=re.S)         # tableaux
     w = re.sub(r"<ref[^>]*/>|<ref[^>]*>.*?</ref>", "", w, flags=re.S)
     w = re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]*)\]\]", r"\1", w)
     w = re.sub(r"<[^>]+>|'''?|\[https?://\S+ ([^\]]*)\]", lambda m: m.group(1) or "", w)

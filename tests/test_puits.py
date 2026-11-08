@@ -99,6 +99,10 @@ class TestsConnecteurs(unittest.TestCase):
         self.assertIn("X est un pays", r["points"][0]["extrait"])
         self.assertIn("oldid=7", r["url"])
 
+    def test_wikitexte_imbrique(self):
+        t = apz._texte_wiki("{{Infobox conflict\n| date = {{start date|2023|4|15}}\n| place = [[Sudan]]}}\nThe war began.")
+        self.assertEqual(t, "The war began.")
+
     def test_catalogue_sans_cle_cache_la_source(self):
         t = apz.catalogue_texte({"FRED_API_KEY": "k"})
         self.assertIn("- fred", t)

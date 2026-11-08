@@ -296,7 +296,8 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
-- **0.7.1** : en-tête User-Agent conforme à la politique de Wikimedia (Wikipedia, Wikidata).
+- **0.7.1** : en-tête User-Agent conforme à la politique de Wikimedia (Wikipedia, Wikidata) ; texte des articles
+  nettoyé des modèles imbriqués.
 - **0.7.0** : puits de données (`alphabet_puits.py`) : 18 bases ouvertes bornées à la date d'information ; compte
   calculé par le code comme vue du bras B ; relevés citables par le lecteur ; sonde par workflow.
 - **0.6.3** : TinyFish ajouté à la chaîne de recherche, entre Tavily et GDELT.
