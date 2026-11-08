@@ -1,0 +1,245 @@
+{
+ "candidats": [
+  "CTR@7",
+  "POL@7",
+  "TRC@7",
+  "HIE@13",
+  "COM@13",
+  "INC@13"
+ ],
+ "contre_candidate": [
+  "EME@7",
+  "EME@13"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Un des six États (Belgique, France, Italie, Luxembourg, Pays-Bas, Allemagne) a-t-il notifié le Conseil européen de son intention de quitter l'UE au plus tard le 2027-01-31 ?",
+   "si_oui": "SEU@7",
+   "si_non": "indetermine",
+   "resolution": "communiqué officiel du Conseil européen ou du gouvernement concerné, daté entre le 2026-11-08 et le 2027-01-31",
+   "justification": {
+    "oui": "une notification datée est le franchissement irréversible exigé par la résolution"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "L'UE a-t-elle été dissoute ou refondée sous un autre nom avant le 2027-01-31 ?",
+   "si_oui": "SEU@7",
+   "si_non": "indetermine",
+   "resolution": "acte constitutif ou traité daté, publié au Journal officiel de l'UE, entre le 2026-11-08 et le 2027-01-31",
+   "justification": {
+    "oui": "la dissolution ou refondation est le second chemin du OUI"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "Un référendum ou un scrutin national sur la sortie de l'UE est-il convoqué dans un des six États avant le 2027-01-31 ?",
+   "type": "documentation",
+   "carte": "POL@7",
+   "manque": "aucun fait de convocation de scrutin sur l'appartenance dans les résultats ; le calendrier 2027 est général",
+   "resolution": "décret de convocation ou loi référendaire publiée dans un des six États, 2026-11-08 à 2027-01-31"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats montrent des barrières constitutionnelles et des débats sur des seuils de majorité renforcés (Belgique), mais aucun fait d'une option effectivement retirée par une règle active : la sortie reste juridiquement possible, seulement plus coûteuse politiquement. Le marqueur local (sanction, traité de limitation retirant une option) n'est pas rempli.",
+  "?1": "[marqueur_non_rempli] Les résultats donnent des scores de partis eurosceptiques agrégés au Parlement européen et des déclarations de dirigeants radicaux (« changer tout sans rien casser »), mais aucun fait où deux camps nommés s'opposent exclusivement sur l'appartenance à l'UE dans un des six États. Le clivage observé est immigration/souveraineté, pas deux pôles d'appartenance.",
+  "?2": "[marqueur_non_rempli] Les résultats évoquent la dépendance au chemin et le coût de sortie de manière générique (Carnegie sur l'intégration sans ratification, coûts Mercosur), mais aucun fait daté montrant qu'un trait présent de l'appartenance des six s'explique par un événement passé et ne serait pas choisi aujourd'hui. Le marqueur local (frontière héritée invoquée) n'a pas d'équivalent transposé ici.",
+  "?3": "[marqueur_non_rempli] Les résultats ne contiennent aucune relation verticale de supériorité/subordination entre États des six, ni arbitrage d'un exécutif s'imposant à un autre sur la question. Les positions parlementaires et gouvernementales ne sont pas documentées dans les résultats (les extraits portent sur le Royaume-Uni ou des généralités).",
+  "?4": "[marqueur_non_rempli] Les résultats donnent un soutien élevé à l'appartenance (74 % dans l'UE, Eurobaromètre printemps 2026) et des écarts élites/opinion en Pologne et au Royaume-Uni, mais aucun fait de coopération à plus de deux membres des six autour d'un bien commun avec règles de contribution et passager clandestin reproché sur la question de la sortie.",
+  "?5": "[marqueur_non_rempli] Les résultats mentionnent un calendrier électoral 2026-2027 (France, Italie, Allemagne, etc.) et une instabilité coalitionnaire générale, mais aucun fait de conduite conditionnée à une issue non tranchée sur la sortie de l'UE (report, couverture, scénarios concurrents tenus par les acteurs des six).",
+  "?6": "[contredit] Les résultats indiquent qu'aucun État des six n'a notifié l'article 50 et que le Royaume-Uni reste le seul à avoir quitté l'UE ; l'UE n'est pas dissoute. L'événement SEU@7 (franchissement) n'est donc pas apparu, ce qui contredit la lecture d'un franchissement en cours.",
+  "?7": "[contredit] Même constat : aucun fait de dissolution de l'UE ni de création d'une nouvelle union politique sous un autre nom dans les résultats ; l'UE est décrite comme une union de 27 États en 2026."
+ },
+ "_categories_rejet": {
+  "?0": "marqueur_non_rempli",
+  "?1": "marqueur_non_rempli",
+  "?2": "marqueur_non_rempli",
+  "?3": "marqueur_non_rempli",
+  "?4": "marqueur_non_rempli",
+  "?5": "marqueur_non_rempli",
+  "?6": "contredit",
+  "?7": "contredit"
+ },
+ "_details_rejet": {
+  "?0": {
+   "fait_attendu": "Un acte juridique ou une sanction datée retirant effectivement à un des six États l'option de notifier l'article 50 (par exemple une clause constitutionnelle verrouillée adoptée, ou une sanction empêchant la procédure).",
+   "extrait_proche": "[1] « Currently, Belgium could theoretically exit the EU with a simple majority vote »"
+  },
+  "?1": {
+   "fait_attendu": "Deux camps nommés (sortie vs maintien) s'affrontant lors d'un scrutin ou référendum dans un des six États, avec alignements exclusifs.",
+   "extrait_proche": "[9] « regarding Europe, I am in favor of changing everything but without breaking anything »"
+  },
+  "?2": {
+   "fait_attendu": "Un élément daté de l'appartenance (traité, institution, arrangement) qui continue d'orienter les conduites des six et ne serait pas reproduit tel quel aujourd'hui.",
+   "extrait_proche": "[3] « The EU is based on the rule of law... treaties that have been approved voluntarily »"
+  },
+  "?3": {
+   "fait_attendu": "Un arbitrage daté où un État ou une institution des six impose ou bloque la décision d'un autre sur l'appartenance à l'UE, effectivement suivi.",
+   "extrait_proche": "[4] « National parliaments of EU Member States... play a role in EU decision-making » (généralité, sans cas des six)"
+  },
+  "?4": {
+   "fait_attendu": "Une plateforme ou un engagement commun daté de plus de deux des six États autour du maintien dans l'UE, avec contribution inégale reprochée.",
+   "extrait_proche": "[5] « EU membership is seen as beneficial by 74% of Europeans »"
+  },
+  "?5": {
+   "fait_attendu": "Une décision datée reportée dans l'attente d'une information nommée (résultat électoral, sondage, avis juridique) sur l'appartenance à l'UE dans un des six États.",
+   "extrait_proche": "[6] « 2027 will be a special year... populist and radical-right parties are expected to do well »"
+  },
+  "?6": {
+   "fait_attendu": "Une notification de l'article 50 par un des six États ou une dissolution de l'UE datée avant le 2027-01-01.",
+   "extrait_proche": "[Wikipedia 2026-11-08] « Currently, the United Kingdom is the only state to have withdrawn from membership of the European Union. »"
+  },
+  "?7": {
+   "fait_attendu": "Un acte daté de dissolution de l'UE ou de refondation sous un nouveau nom avant le 2027-01-01.",
+   "extrait_proche": "[Wikipedia 2026-11-08] « The European Union (EU) is a political and economic union of member states... »"
+  }
+ },
+ "etat": "",
+ "disponible_le": "2026-11-08",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@7"
+   ],
+   "requete": "constitutional or statutory barriers to EU withdrawal in Belgium France Italy Luxembourg Netherlands Germany 2024-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@7"
+   ],
+   "requete": "eurosceptic party polling and referendum pledges in founding EU states 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@7"
+   ],
+   "requete": "path dependence of EU integration treaties and cost of exit for founding members 2024-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "HIE@13"
+   ],
+   "requete": "national parliament and government positions on EU membership in founding states 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "COM@13"
+   ],
+   "requete": "public support for EU membership Eurobarometer founding member states 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@13"
+   ],
+   "requete": "electoral calendar and coalition instability in Belgium France Italy Netherlands Germany 2026-2027",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@7",
+    "POL@7"
+   ],
+   "requete": "legal obstacles versus political pressure for EU exit in founding member states 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@7",
+    "TRC@7"
+   ],
+   "requete": "formal withdrawal clauses versus sunk-cost integration in EU founding states 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@7",
+    "TRC@7"
+   ],
+   "requete": "eurosceptic surge versus institutional inertia in EU founding states 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@13",
+    "COM@13"
+   ],
+   "requete": "elite versus public opinion divergence on EU membership in founding states 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@13",
+    "INC@13"
+   ],
+   "requete": "government stability and EU policy continuity in founding states 2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@7",
+    "POL@7",
+    "TRC@7"
+   ],
+   "requete": "cases where strong eurosceptic movements failed to trigger Article 50 in EU member states 2016-2026",
+   "executee": true,
+   "date_execution": "2026-11-08"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@7 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "OUI si, avant le 1er janvier 2027, l'un des six États (Belgique, France, Italie, Luxembourg, Pays-Bas, Allemagne) notifie formellement le Conseil européen de son intention de quitter l'UE au titre de l'article 50, ou si l'UE se dissout complètement ou se refonde sous un nouveau nom regroupant certains États européens.",
+   "source_resolution": {
+    "emetteur": "Conseil européen / Commission européenne (registre officiel des notifications de l'article 50)",
+    "document": "Notification formelle adressée au Conseil européen au titre de l'article 50 du TUE, publiée au Journal officiel de l'UE",
+    "regle_ambiguite": "Seule une notification formelle écrite au Conseil européen compte ; les annonces politiques, référendums consultatifs sans notification, et menaces de retrait ne suffisent pas. Pour la dissolution/refondation, il faut un acte juridique unique et daté dissolvant l'UE ou la remplaçant par une nouvelle entité sous un autre nom."
+   },
+   "vue_exterieure": {
+    "frequence": 0.002707493956486704,
+    "classe_de_reference": "Notifications d'intention de retrait adressées au Conseil européen au titre de l'article 50 du TUE par un État membre de l'UE, ainsi que les dissolutions complètes de l'UE ou refondations de celle-ci sous un nouveau nom regroupant certains États européens",
+    "source": "Registre des notifications de l'article 50 (Commission européenne, notification du Royaume-Uni du 29 mars 2017) et historique de l'UE (aucune dissolution/refondation depuis 2009) — [R1], [R4], [R5], [R6]",
+    "periode": "2009-2026",
+    "disponible_le": "2026-11-08",
+    "classe_alternative": {
+     "frequence": 0.0135,
+     "classe_de_reference": "Notifications d'intention de retrait adressées au Conseil européen au titre de l'article 50 du TUE par un État membre de l'UE (tous États membres confondus), sans ajustement qualitatif",
+     "source": "Registre des notifications de l'article 50 (Commission européenne) — [R1], [R4]",
+     "pourquoi_ecartee": "Ne tient pas compte du fait que les six États visés sont des membres fondateurs/historiques sans mouvement Article 50 crédible ; donne une borne haute non ajustée"
+    },
+    "ecart_critere": "Identique : la classe compte exactement les notifications Article 50 par un État membre et les dissolutions/refondations de l'UE, ce qui correspond au critère de résolution (déclenchement de l'article 50 par l'un des six États, ou dissolution/refondation de l'UE)"
+   }
+  }
+ ]
+}
