@@ -1,23 +1,23 @@
-"""Chaîne de recherche (0.6.2) : Exa, puis la seconde clé Exa, puis Tavily, puis GDELT.
+"""Chaîne de recherche (0.6.3) : Exa, puis la seconde clé Exa, puis Tavily, puis TinyFish, puis GDELT.
 
 Chaque requête essaie les moteurs dans l'ordre et s'arrête au premier qui rend un résultat. Un moteur sans clé est
 sauté. Quand la première clé Exa échoue (quota épuisé, erreur), le bot passe à la seconde pour le reste du passage.
 Chaque résultat commence par « [moteur : …] » : le registre sait quel moteur a servi chaque requête.
 
-Ordre modifiable par la variable ALPHABET_RECHERCHE_ORDRE (par défaut « exa,tavily,gdelt »).
-Secrets : EXA_API_KEY, EXA_API_KEY_2, TAVILY_API_KEY ; GDELT n'a pas de clé. (Brave Search, qui exige une carte
+Ordre modifiable par la variable ALPHABET_RECHERCHE_ORDRE (par défaut « exa,tavily,tinyfish,gdelt »).
+Secrets : EXA_API_KEY, EXA_API_KEY_2, TAVILY_API_KEY, TINYFISH_API_KEY ; GDELT n'a pas de clé. (Brave Search, qui exige une carte
 bancaire même en offre gratuite, a été retiré en 0.6.2.)
 """
 from __future__ import annotations
 
 import os
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Awaitable, Callable
 
 import httpx
 
-ORDRE_DEFAUT = "exa,tavily,gdelt"
+ORDRE_DEFAUT = "exa,tavily,tinyfish,gdelt"
 DELAI = 40
 
 
@@ -35,6 +35,50 @@ async def tavily(requete: str, avant: datetime | None = None) -> str:
         r.raise_for_status()
         res = r.json().get("results") or []
     return "\n\n".join(_ligne(x.get("published_date"), x.get("title"), x.get("url"), x.get("content")) for x in res)
+
+
+def _premiere(x: dict, *cles):
+    for k in cles:
+        v = x.get(k)
+        if v:
+            return v
+    return None
+
+
+def _date_iso(v) -> datetime | None:
+    try:
+        d = datetime.fromisoformat(str(v).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return d if d.tzinfo else d.replace(tzinfo=timezone.utc)
+
+
+async def tinyfish(requete: str, avant: datetime | None = None) -> str:
+    """TinyFish Search (0.6.3) : gratuit, sans carte, clé X-API-Key. La doc publique ne fixe pas le nom des champs
+    de la réponse : on lit les noms courants. TinyFish ne sait pas borner par date ; quand une date limite est
+    donnée, seuls les résultats DATÉS et antérieurs sont gardés (sinon rien, et la chaîne passe au moteur suivant)."""
+    cle = os.environ.get("TINYFISH_API_KEY")
+    params = {"query": requete}
+    async with httpx.AsyncClient(timeout=DELAI) as c:
+        r = await c.get("https://api.search.tinyfish.ai", params=params, headers={"X-API-Key": cle})
+        r.raise_for_status()
+        corps = r.json()
+    res = corps if isinstance(corps, list) else (
+        _premiere(corps, "results", "organic", "data", "items", "web") or [])
+    if isinstance(res, dict):
+        res = _premiere(res, "results", "items") or []
+    lignes = []
+    for x in res:
+        if not isinstance(x, dict):
+            continue
+        date = _premiere(x, "published_date", "publishedDate", "date", "published_at", "age")
+        if avant is not None:
+            d = _date_iso(date) if date else None
+            if d is None or d > avant:
+                continue
+        lignes.append(_ligne(date, _premiere(x, "title", "name"), _premiere(x, "url", "link"),
+                             _premiere(x, "snippet", "description", "content", "text")))
+    return "\n\n".join(lignes)
 
 
 async def gdelt(requete: str, avant: datetime | None = None) -> str:
@@ -55,7 +99,8 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
                        for x in res)
 
 
-MOTEURS_HTTP = {"tavily": ("TAVILY_API_KEY", tavily), "gdelt": (None, gdelt)}
+MOTEURS_HTTP = {"tavily": ("TAVILY_API_KEY", tavily), "tinyfish": ("TINYFISH_API_KEY", tinyfish),
+                "gdelt": (None, gdelt)}
 
 
 class Chaine:
