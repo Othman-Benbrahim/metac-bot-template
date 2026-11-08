@@ -1,11 +1,12 @@
-"""Chaîne de recherche (0.6.1) : Exa, puis la seconde clé Exa, puis Brave Search, puis Tavily, puis GDELT.
+"""Chaîne de recherche (0.6.2) : Exa, puis la seconde clé Exa, puis Tavily, puis GDELT.
 
 Chaque requête essaie les moteurs dans l'ordre et s'arrête au premier qui rend un résultat. Un moteur sans clé est
 sauté. Quand la première clé Exa échoue (quota épuisé, erreur), le bot passe à la seconde pour le reste du passage.
 Chaque résultat commence par « [moteur : …] » : le registre sait quel moteur a servi chaque requête.
 
-Ordre modifiable par la variable ALPHABET_RECHERCHE_ORDRE (par défaut « exa,brave,tavily,gdelt »).
-Secrets : EXA_API_KEY, EXA_API_KEY_2, BRAVE_API_KEY, TAVILY_API_KEY ; GDELT n'a pas de clé.
+Ordre modifiable par la variable ALPHABET_RECHERCHE_ORDRE (par défaut « exa,tavily,gdelt »).
+Secrets : EXA_API_KEY, EXA_API_KEY_2, TAVILY_API_KEY ; GDELT n'a pas de clé. (Brave Search, qui exige une carte
+bancaire même en offre gratuite, a été retiré en 0.6.2.)
 """
 from __future__ import annotations
 
@@ -16,27 +17,12 @@ from typing import Awaitable, Callable
 
 import httpx
 
-ORDRE_DEFAUT = "exa,brave,tavily,gdelt"
+ORDRE_DEFAUT = "exa,tavily,gdelt"
 DELAI = 40
 
 
 def _ligne(date, titre, url, extrait) -> str:
     return f"[{date or 's.d.'}] {titre or ''} — {url or ''}\n{(extrait or '').strip()}"
-
-
-async def brave(requete: str, avant: datetime | None = None) -> str:
-    cle = os.environ.get("BRAVE_API_KEY")
-    params = {"q": requete, "count": 8}
-    if avant is not None:                     # plage de fraîcheur bornée à la date d'information
-        params["freshness"] = f"2000-01-01to{avant.date().isoformat()}"
-    async with httpx.AsyncClient(timeout=DELAI) as c:
-        r = await c.get("https://api.search.brave.com/res/v1/web/search", params=params,
-                        headers={"X-Subscription-Token": cle, "Accept": "application/json"})
-        r.raise_for_status()
-        res = (r.json().get("web") or {}).get("results") or []
-    return "\n\n".join(_ligne(x.get("age") or x.get("page_age"), x.get("title"), x.get("url"),
-                              " ".join([x.get("description") or ""] + (x.get("extra_snippets") or [])[:2]))
-                       for x in res)
 
 
 async def tavily(requete: str, avant: datetime | None = None) -> str:
@@ -69,7 +55,7 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
                        for x in res)
 
 
-MOTEURS_HTTP = {"brave": ("BRAVE_API_KEY", brave), "tavily": ("TAVILY_API_KEY", tavily), "gdelt": (None, gdelt)}
+MOTEURS_HTTP = {"tavily": ("TAVILY_API_KEY", tavily), "gdelt": (None, gdelt)}
 
 
 class Chaine:

@@ -13,7 +13,7 @@ import alphabet_recherche as ar  # noqa: E402
 
 class TestsChaine(unittest.TestCase):
     def test_bascule_seconde_cle_puis_moteurs(self):
-        env = {"EXA_API_KEY": "k1", "EXA_API_KEY_2": "k2", "BRAVE_API_KEY": "b"}
+        env = {"EXA_API_KEY": "k1", "EXA_API_KEY_2": "k2", "TAVILY_API_KEY": "t"}
         vues = []
 
         async def exa(q):
@@ -32,22 +32,23 @@ class TestsChaine(unittest.TestCase):
         async def exa_mort(q):
             raise RuntimeError("402")
 
-        async def brave(q, avant=None):
+        async def tavily(q, avant=None):
             return "[2026-11-01] titre — https://x\nextrait"
         ch = ar.Chaine(exa_mort, dict(env, EXA_API_KEY_2=""))
-        with mock.patch.dict(ar.MOTEURS_HTTP, {"brave": ("BRAVE_API_KEY", brave)}):
+        with mock.patch.dict(ar.MOTEURS_HTTP, {"tavily": ("TAVILY_API_KEY", tavily)}):
             t = asyncio.run(ch.chercher("q"))
-        self.assertTrue(t.startswith("[moteur : brave]"))
-        self.assertEqual(ar.moteur_de(t), "brave")
+        self.assertTrue(t.startswith("[moteur : tavily]"))
+        self.assertEqual(ar.moteur_de(t), "tavily")
+        self.assertNotIn("brave", ar.MOTEURS_HTTP)                 # 0.6.2 : Brave retiré
 
     def test_sans_cle_saute_et_tout_echoue(self):
         async def vide(q, avant=None):
             return ""
-        ch = ar.Chaine(None, {}, ordre="exa,brave,tavily,gdelt")
+        ch = ar.Chaine(None, {}, ordre="exa,tavily,gdelt")
         with mock.patch.dict(ar.MOTEURS_HTTP, {"gdelt": (None, vide)}):
             with self.assertRaises(RuntimeError) as e:
                 asyncio.run(ch.chercher("q"))
-        self.assertIn("gdelt : aucun résultat", str(e.exception))     # exa, brave, tavily sautés (pas de clé)
+        self.assertIn("gdelt : aucun résultat", str(e.exception))     # exa et tavily sautés (pas de clé)
 
     def test_gdelt_borne_dans_le_temps(self):
         vu = {}

@@ -52,7 +52,6 @@ jobs:
           ASKNEWS_API_KEY: ${{ secrets.ASKNEWS_API_KEY }}
           EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
           EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
-          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           ALPHABET_RECHERCHE_ORDRE: ${{ vars.ALPHABET_RECHERCHE_ORDRE }}
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}

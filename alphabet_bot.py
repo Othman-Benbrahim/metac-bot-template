@@ -81,7 +81,7 @@ class AlphabetBot(FallTemplateBot2026):
         return g if g[0] != "memoire" else None
 
     def _chaine(self):
-        """0.6.1 : chaîne de recherche du passage (Exa, seconde clé Exa, Brave, Tavily, GDELT)."""
+        """0.6.1 : chaîne de recherche du passage (Exa, seconde clé Exa, Tavily, GDELT)."""
         if getattr(self, "_chaine_", None) is None:
             import alphabet_recherche as ar_
             genre = self._genre_chercheur()
@@ -90,7 +90,7 @@ class AlphabetBot(FallTemplateBot2026):
         return self._chaine_
 
     async def run_research(self, question) -> str:
-        """Recherche générale du bras A (bot modèle). 0.6.1 : si Exa échoue, seconde clé Exa, puis Brave, Tavily, GDELT."""
+        """Recherche générale du bras A (bot modèle). 0.6.1 : si Exa échoue, seconde clé Exa, puis Tavily, GDELT."""
         try:
             return await super().run_research(question)
         except Exception as e:
