@@ -236,6 +236,47 @@ class AlphabetBot(FallTemplateBot2026):
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
 
 
+BASCULES: list[dict] = []     # 0.7.4 : remplacements en cours de passage (journal du bilan)
+
+
+class LlmTenace(GeneralLlm):
+    """0.7.4 : un modèle saturé en cours de passage. D'abord on attend et on réessaie le MÊME modèle (`attentes`, en
+    secondes) ; ensuite seulement, on passe aux modèles de `secours`. Le modèle principal n'a pas de secours : il est
+    le codeur du passage, et une question n'est jamais lue par deux codeurs. Les rôles légers (lecture des réponses,
+    résumés) en ont : changer de lecteur de format ne change pas la lecture."""
+
+    def __init__(self, model: str, *, secours=(), attentes=(), **kwargs) -> None:
+        super().__init__(model=model, **kwargs)
+        self._secours, self._attentes, self._kw = list(secours), list(attentes), dict(kwargs)
+
+    async def invoke(self, prompt, system_prompt: str | None = None) -> str:
+        import alphabet_modeles as am
+        try:
+            return await super().invoke(prompt, system_prompt)
+        except Exception as e:
+            if not am.PASSAGERE.search(f"{type(e).__name__}: {e}"):
+                raise
+            derniere = e
+        for s_ in self._attentes:
+            await asyncio.sleep(s_)
+            try:
+                return await super().invoke(prompt, system_prompt)
+            except Exception as e:
+                if not am.PASSAGERE.search(f"{type(e).__name__}: {e}"):
+                    raise
+                derniere = e
+        for m in self._secours:
+            try:
+                r = await GeneralLlm(model=m, **self._kw).invoke(prompt, system_prompt)
+            except Exception as e:
+                derniere = e
+                continue
+            BASCULES.append({"de": self.model, "vers": m})
+            logger.warning("modèle %s saturé : remplacé par %s pour cet appel", self.model, m)
+            return r
+        raise derniere
+
+
 def configuration(env=os.environ) -> dict:
     """Modèles imposés par les variables du dépôt ; vide = défauts de forecasting-tools.
 
@@ -246,10 +287,13 @@ def configuration(env=os.environ) -> dict:
     """
     llms = {}
     if env.get("ALPHABET_LLM"):
-        llms["default"] = GeneralLlm(model=env["ALPHABET_LLM"], temperature=0.2, timeout=180, allowed_tries=3)
+        llms["default"] = LlmTenace(env["ALPHABET_LLM"], attentes=(30, 90), temperature=0.2, timeout=180,
+                                    allowed_tries=3)
         petit = env.get("ALPHABET_PETIT_LLM") or env["ALPHABET_LLM"]
+        secours = [m for m in (env.get("ALPHABET_PETIT_SECOURS") or "").split(",") if m.strip() and m != petit]
         for role in ("parser", "summarizer"):
-            llms[role] = GeneralLlm(model=petit, temperature=0.2, timeout=120, allowed_tries=2)
+            llms[role] = LlmTenace(petit, attentes=(20,), secours=secours, temperature=0.2, timeout=120,
+                                   allowed_tries=2)
     if env.get("ALPHABET_CHERCHEUR"):
         llms["researcher"] = env["ALPHABET_CHERCHEUR"]
     return llms
@@ -356,6 +400,8 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dic
         f"  statuts de l'alphabet : {statuts or '—'}",
         f"  motifs de rejet des candidates : {motifs or '—'}",
         f"  autres questions journalisées (bras A seul) : {len(autres or [])}",
+        *([f"  modèles légers remplacés en cours de passage (saturation) : {len(BASCULES)} appel(s), "
+           + ", ".join(sorted({f"{b['de']} → {b['vers']}" for b in BASCULES}))] if BASCULES else []),
         *[f"  échec : {type(e).__name__} : {str(e)[:300]}" for e in ko[:10]],
         "  aucune question ouverte trouvée : rien à faire pour l'instant." if not rapports else "",
         "=" * 70])

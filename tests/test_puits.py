@@ -8,6 +8,10 @@ from datetime import date
 from pathlib import Path
 from unittest import mock
 
+import os as _os  # noqa: E402
+import tempfile as _tempfile  # noqa: E402
+# 0.7.4 : JAMAIS le vrai registre dans les tests (des lignes fictives y avaient été écrites puis publiées).
+_os.environ.setdefault("ALPHABET_REGISTRE", _tempfile.mkdtemp(prefix="registre-test-"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import alphabet_pipeline as ap  # noqa: E402
 import alphabet_puits as apz  # noqa: E402
@@ -190,6 +194,13 @@ class TestsPipeline(unittest.TestCase):
             tr, donnees, vue = asyncio.run(ap.puits(q, {}, llm, "2026-01-01", 30, 1))
         self.assertEqual(tr["appels"][0]["statut"], "sans_cle")
         self.assertEqual((donnees, vue), ([], None))
+
+
+
+class TestsIsolement(unittest.TestCase):
+    def test_le_vrai_registre_est_hors_de_portee(self):
+        vrai = (Path(__file__).resolve().parents[1] / "registre").resolve()
+        self.assertNotEqual(ap.REGISTRE.resolve(), vrai)
 
 
 if __name__ == "__main__":
