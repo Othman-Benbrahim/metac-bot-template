@@ -80,9 +80,36 @@ class AlphabetBot(FallTemplateBot2026):
         g = self._genre_chercheur(r2)
         return g if g[0] != "memoire" else None
 
+    def _chaine(self):
+        """0.6.1 : chaîne de recherche du passage (Exa, seconde clé Exa, Brave, Tavily, GDELT)."""
+        if getattr(self, "_chaine_", None) is None:
+            import alphabet_recherche as ar_
+            genre = self._genre_chercheur()
+            exa = (lambda q: self._chercher_avec(genre, q)) if genre[0] == "smart_searcher" else None
+            self._chaine_ = ar_.Chaine(exa)
+        return self._chaine_
+
+    async def run_research(self, question) -> str:
+        """Recherche générale du bras A (bot modèle). 0.6.1 : si Exa échoue, seconde clé Exa, puis Brave, Tavily, GDELT."""
+        try:
+            return await super().run_research(question)
+        except Exception as e:
+            ch = self._chaine()
+            if ch._passer_seconde_cle():
+                try:
+                    return await super().run_research(question)
+                except Exception:
+                    pass
+            secours = type(ch)(None, ch.env)
+            return await secours.chercher(question.question_text[:300])
+
     async def _chercher(self, requete: str) -> str:
-        """Une requête du plan : la source principale, et la seconde si elle est configurée."""
-        texte = await self._chercher_avec(self._genre_chercheur(), requete)
+        """Une requête du plan : la chaîne de recherche (0.6.1), puis la seconde source si elle est configurée."""
+        genre = self._genre_chercheur()
+        if genre[0] == "smart_searcher":
+            texte = await self._chaine().chercher(requete)
+        else:
+            texte = await self._chercher_avec(genre, requete)
         second = self._second_chercheur()
         if second is None:
             return texte

@@ -44,7 +44,21 @@ CRITÈRES : {criteres}
 Réponds honnêtement. Rends UNIQUEMENT un objet JSON : {{"connait": true ou false, "issue": "yes" | "no" | null}}"""
 
 
+_CHAINE = None
+
+
 async def chercher_avant(requete: str, avant: datetime) -> str:
+    """0.6.1 : Exa borné à la date d'information (seconde clé si la première échoue), puis GDELT, borné lui aussi.
+    Brave et Tavily ne sont pas utilisés ici : leur bornage par date est moins sûr, et la fuite est le risque n° 1."""
+    global _CHAINE
+    import alphabet_recherche as ar_
+    if _CHAINE is None:
+        _CHAINE = ar_.Chaine(None, ordre="exa,gdelt")
+    _CHAINE.exa = lambda q: _exa_avant(q, avant)
+    return await _CHAINE.chercher(requete, avant)
+
+
+async def _exa_avant(requete: str, avant: datetime) -> str:
     """Recherche Exa bornée à la date d'information : seules les pages DATÉES et publiées avant comptent."""
     from forecasting_tools.ai_models.exa_searcher import ExaSearcher, SearchInput
     s = SearchInput(web_search_query=requete, highlight_query=requete, include_domains=[], exclude_domains=[],
@@ -52,7 +66,7 @@ async def chercher_avant(requete: str, avant: datetime) -> str:
     sources = await ExaSearcher(include_text=False, include_highlights=True, num_results=6).invoke(s)
     garde = [x for x in sources if x.published_date is not None and x.published_date.astimezone(timezone.utc) <= avant]
     return "\n\n".join(f"[{x.readable_publish_date}] {x.title or ''} — {x.url or ''}\n" + " … ".join(x.highlights[:3])
-                       for x in garde) or "(aucun résultat daté avant la date d'information)"
+                       for x in garde)
 
 
 async def historique_avant(cles: list[str], aujourdhui: str) -> list[dict]:
