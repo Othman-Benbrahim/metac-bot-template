@@ -1,0 +1,160 @@
+"""Tests hors ligne des puits de données (0.7.0)."""
+import asyncio
+import json
+import os
+import sys
+import unittest
+from datetime import date
+from pathlib import Path
+from unittest import mock
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import alphabet_pipeline as ap  # noqa: E402
+import alphabet_puits as apz  # noqa: E402
+
+
+def releve(points, debut=None, limite=None):
+    return {"source": "S", "titre": "T", "url": "https://s", "debut": debut, "date_limite": limite, "points": points}
+
+
+class TestsCompte(unittest.TestCase):
+    def test_evenement_fenetres_disjointes(self):
+        # un événement par an pendant 10 ans, fenêtres de 365 jours : chaque fenêtre en contient un → k = n
+        pts = [{"date": f"{2015 + i}-06-01", "valeur": None} for i in range(10)]
+        r = apz.compter(releve(pts, debut="2015-01-01"), 365, "evenement", fin=date(2025, 1, 1))
+        self.assertEqual(r["n"], 10)
+        self.assertEqual(r["k"], 10)
+        self.assertAlmostEqual(r["frequence"], 1 - 1 / 20)             # jamais 1 : le moteur exige ]0, 1[
+
+    def test_atteint_et_franchit(self):
+        pts = [{"date": f"20{a:02d}-01-01", "valeur": v} for a, v in zip(range(10, 22), [1, 1, 5, 5, 1, 1, 1, 5, 1, 1, 1, 1])]
+        att = apz.compter(releve(pts), 365, "atteint", 4, ">=", fin=date(2021, 1, 2))
+        fr = apz.compter(releve(pts), 365, "franchit", 4, ">=", fin=date(2021, 1, 2))
+        self.assertEqual((att["k"], att["n"]), (3, 11))
+        self.assertEqual(fr["k"], 2)                                   # 2013 était déjà au-dessus : pas un franchissement
+        self.assertIsNone(apz.compter(releve(pts[:3]), 365, "atteint", 4)["frequence"])    # < 5 fenêtres
+
+    def test_agregation_mensuelle(self):
+        pts = [{"date": "2024-01-03", "valeur": 30}, {"date": "2024-01-20", "valeur": 30}, {"date": "2024-02-10", "valeur": 10}]
+        ag = apz._agreger(pts, "mois")
+        self.assertEqual(ag, [{"date": "2024-01-01", "valeur": 60.0}, {"date": "2024-02-01", "valeur": 10.0}])
+
+    def test_borne_a_la_date(self):
+        r = apz._releve("S", "T", "u", [{"date": "2026-01-01"}, {"date": "2026-12-01"}], date(2026, 6, 1))
+        self.assertEqual([p["date"] for p in r["points"]], ["2026-01-01"])
+
+
+class Rep:
+    def __init__(self, corps):
+        self.corps = corps
+
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return self.corps
+
+    @property
+    def text(self):
+        return self.corps if isinstance(self.corps, str) else json.dumps(self.corps)
+
+
+def client(corps, vu):
+    class Client:
+        def __init__(self, *a, **k):
+            pass
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *a):
+            pass
+
+        async def get(self, url, params=None):
+            vu.append((url, params))
+            return Rep(corps)
+    return Client
+
+
+class TestsConnecteurs(unittest.TestCase):
+    def test_fred_millesime_et_cle(self):
+        vu = []
+        corps = {"observations": [{"date": "2026-01-01", "value": "4.1"}, {"date": "2026-02-01", "value": "."}]}
+        with mock.patch.dict(os.environ, {"FRED_API_KEY": "k"}), mock.patch.object(apz.httpx, "AsyncClient", client(corps, vu)):
+            r = asyncio.run(apz.fred("UNRATE", date(2026, 3, 1)))
+        self.assertEqual(vu[0][1]["realtime_end"], "2026-03-01")     # ALFRED : la série telle qu'elle était publiée
+        self.assertEqual(len(r["points"]), 1)                          # « . » (valeur manquante) écarté
+        with mock.patch.dict(os.environ, {"FRED_API_KEY": ""}):
+            with self.assertRaises(apz.SansCle):
+                asyncio.run(apz.fred("UNRATE"))
+
+    def test_wikipedia_revision_anterieure(self):
+        vu = []
+        corps = {"query": {"pages": [{"title": "X", "revisions": [{"revid": 7, "timestamp": "2026-05-01T10:00:00Z",
+                                                                    "slots": {"main": {"content": "'''X''' est [[Y|un pays]]."}}}]}]}}
+        with mock.patch.object(apz.httpx, "AsyncClient", client(corps, vu)):
+            r = asyncio.run(apz.wikipedia("X", "en", date(2026, 6, 1)))
+        self.assertEqual(vu[0][1]["rvstart"], "2026-06-01T23:59:59Z")
+        self.assertEqual(vu[0][1]["rvdir"], "older")
+        self.assertIn("X est un pays", r["points"][0]["extrait"])
+        self.assertIn("oldid=7", r["url"])
+
+    def test_catalogue_sans_cle_cache_la_source(self):
+        t = apz.catalogue_texte({"FRED_API_KEY": "k"})
+        self.assertIn("- fred", t)
+        self.assertNotIn("- ucdp", t)                                  # UCDP_TOKEN absent : non proposé
+        self.assertNotIn("- firms", t)
+
+
+class TestsPipeline(unittest.TestCase):
+    def test_compte_devient_une_vue_controlee(self):
+        q = ap.Question(id=1, url="u", titre="Le chômage dépassera-t-il 5 % ?", contexte="", criteres="UNRATE ≥ 5",
+                        precisions="", resolution=date(2027, 1, 1))
+        demande = {"appels": [{"source": "fred", "params": {"serie": "UNRATE"}}],
+                   "compte": {"appel": 0, "mode": "atteint", "seuil": 5, "sens": ">=", "agregation": None,
+                              "classe_de_reference": "fenêtres de 120 jours où le chômage américain a atteint 5 %",
+                              "ecart_critere": "identique : même série", "resolution": "UNRATE ≥ 5",
+                              "source_resolution": {"emetteur": "BLS"}}}
+
+        async def llm(c):
+            return json.dumps(demande)
+        pts = [{"date": f"{2000 + i // 12}-{i % 12 + 1:02d}-01", "valeur": 6.0 if (i // 12) % 4 == 0 else 4.0}
+               for i in range(26 * 12)]
+
+        async def appeler(src, params, avant):
+            return releve(pts, limite=avant.isoformat())
+        with mock.patch.object(apz, "appeler", appeler):
+            tr, donnees, vue = asyncio.run(ap.puits(q, {"evenement": None}, llm, "2026-01-01", 120, 3))
+        self.assertEqual(tr["appels"][0]["statut"], "ok")
+        self.assertTrue(vue["compte_calcule"])
+        self.assertIn("[R3]", vue["fondement"])
+        self.assertTrue(0 < vue["frequence"] < 1)
+        self.assertIsNone(ap.controle_vue(vue, "2026-01-01"))
+        self.assertEqual(donnees[0]["moteur"], "puits-fred")
+
+        async def llm_vue(c):
+            return json.dumps({"frequence": 0.9, "classe_de_reference": "c", "source": "s", "fondement": "[R1]",
+                               "periode": "2000-2025", "disponible_le": "2025-12-01"})
+        anciens = ap.NB_VUES
+        ap.NB_VUES = 1
+        try:
+            choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [], [], llm_vue, "2026-01-01", 120, None, vue))
+        finally:
+            ap.NB_VUES = anciens
+        self.assertEqual(suivi["valides"], 2)
+        self.assertIsNone(suivi["vue_calculee"]["refus"])
+        self.assertTrue(choisie.get("compte_calcule"))               # médiane basse : le compte (≈ 0,25) l'emporte ici
+
+    def test_sans_cle_ne_bloque_pas(self):
+        q = ap.Question(id=1, url="u", titre="t", contexte="", criteres="c", precisions="", resolution=date(2027, 1, 1))
+
+        async def llm(c):
+            return json.dumps({"appels": [{"source": "ucdp", "params": {}}], "compte": None})
+        with mock.patch.dict(os.environ, {"UCDP_TOKEN": ""}):
+            tr, donnees, vue = asyncio.run(ap.puits(q, {}, llm, "2026-01-01", 30, 1))
+        self.assertEqual(tr["appels"][0]["statut"], "sans_cle")
+        self.assertEqual((donnees, vue), ([], None))
+
+
+if __name__ == "__main__":
+    unittest.main()

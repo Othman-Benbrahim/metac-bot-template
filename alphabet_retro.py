@@ -114,6 +114,7 @@ async def un_test(mq, llm, deja: set[str]) -> dict | None:
     ligne.update(statut=c.get("statut"), p_B=c.get("p_B"), p_C=c.get("p_C"), motif=c.get("motif"),
                  evenement=c.get("evenement"), etat=c.get("etat"), vues=c.get("vues"), classe_statut=c.get("classe_statut"),
                  nature_etat_nul=c.get("nature_etat_nul"),
+                 puits=c.get("puits"), compte_calcule=bool((c.get("vue") or {}).get("compte_calcule")),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
     if c.get("dossier") is not None:
         d = ap.REGISTRE / "dossiers-retro"

@@ -21,6 +21,7 @@ import alphabet_pipeline as ap  # noqa: E402
 
 ap.NB_VUES = 1   # les tests historiques fournissent une seule vue ; les vues multiples ont leurs propres tests
 ap.CLASSE_FIGEE = False   # idem pour l'étape « définir la classe » (0.4.0), testée à part
+ap.PUITS = False   # idem pour les puits de données (0.7.0), testés dans test_puits.py
 
 MAINTENANT = datetime(2026, 11, 3, 18, 0, tzinfo=timezone.utc)
 Q = ap.Question(id=4242, url="https://www.metaculus.com/questions/4242/", titre="Will A and B cross an escalation threshold before 2027?",
