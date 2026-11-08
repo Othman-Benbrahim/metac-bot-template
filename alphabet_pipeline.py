@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.8.2"
+VERSION_BOT = "0.8.3"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -318,6 +318,18 @@ observable, l'objet et la période, JAMAIS sur le nom d'une carte, ni sur une pr
 """
 
 
+def controle_references(vue: dict, n_refs: int, n_hist: int) -> str | None:
+    """0.8.3 (synthèse du 4 novembre, O1) : fondement_memoire() ne testait que la PRÉSENCE d'une étiquette [Rn] ou
+    [Mn] ; un [R7] inventé quand quatre résultats ont été fournis faisait passer une vue pour sourcée. Toute étiquette
+    citée doit désigner un résultat ou une question réellement fournis."""
+    texte = f"{vue.get('fondement', '')} {vue.get('calcul', '')} {vue.get('source', '')}"
+    for genre, i in re.findall(r"\[([RM])(\d+)\]", texte):
+        borne = n_refs if genre == "R" else n_hist
+        if not 1 <= int(i) <= borne:
+            return f"vue extérieure : référence [{genre}{i}] inexistante ({borne} fournie(s))"
+    return None
+
+
 def source_reprise(vue: dict, sources: list[str]) -> str | None:
     """0.8.1 : la consigne « une autre source » n'a pas suffi (passage 42489373511 : trois vues de 43332 sur le même
     registre). Contrôle sans modèle : une source dont les mots significatifs recouvrent à 60 % ceux d'une source déjà
@@ -544,6 +556,7 @@ def controle_attribution(dossier: dict | None, textes: str | None) -> dict | Non
     corpus = _normal(textes)
     mots_corpus = set(corpus.split())
     chiffres_corpus = set(_chiffres(textes))
+    textes_bas = str(textes).lower()
     detail, non_attribues, non_verifiables = {}, 0, 0
     # 0.8.0 (audit M-04) : il ne suffit plus que les extraits existent et que les nombres du fait figurent QUELQUE
     # PART : les nombres du fait doivent être dans les extraits CITÉS, et le fait lui-même doit se retrouver dans le
@@ -561,6 +574,9 @@ def controle_attribution(dossier: dict | None, textes: str | None) -> dict | Non
         absents = [c for c in nombres if c not in chiffres_corpus]
         chiffres_cites = set(_chiffres(" ".join(extraits)))
         hors_extraits = [c for c in nombres if c not in chiffres_cites] if extraits else []
+        url = str(m.get("source_url") or "").strip()
+        cle_url = re.sub(r"^https?://(www\.)?", "", url).split("#")[0].split("?")[0].rstrip("/").lower()
+        url_retrouvee = (cle_url in textes_bas) if cle_url else None     # 0.8.3 (O1) : l'URL citée a-t-elle été vue ?
         mots_fait = [w for w in _normal(m.get("fait")).split() if len(w) >= 4]
         part_fait = sum(w in mots_corpus for w in mots_fait) / len(mots_fait) if mots_fait else None
         if not extraits and not nombres:
@@ -571,7 +587,7 @@ def controle_attribution(dossier: dict | None, textes: str | None) -> dict | Non
                         and (part_fait is None or part_fait >= 0.5))
             non_attribues += not attribue
         detail[cle] = {"extraits": len(extraits), "extraits_retrouves": retrouves, "chiffres_absents": absents,
-                       "chiffres_hors_extraits": hors_extraits,
+                       "chiffres_hors_extraits": hors_extraits, "url_retrouvee": url_retrouvee,
                        "part_fait_retrouvee": round(part_fait, 2) if part_fait is not None else None,
                        "attribue": attribue}
     return {"mots": len(dossier["mots"]), "non_attribues": non_attribues, "non_verifiables": non_verifiables,
@@ -1052,7 +1068,7 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
         except Exception as e:
             refus.append(f"illisible : {e}"[:200])
             continue
-        m = controle_vue(v, aujourdhui) or source_reprise(v, sources)
+        m = controle_vue(v, aujourdhui) or controle_references(v, len(refs), len(hist or [])) or source_reprise(v, sources)
         if m:
             refus.append(m)
             continue

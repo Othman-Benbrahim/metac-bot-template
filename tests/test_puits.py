@@ -169,7 +169,7 @@ class TestsPipeline(unittest.TestCase):
         anciens = ap.NB_VUES
         ap.NB_VUES = 1
         try:
-            choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [], [], llm_vue, "2026-01-01", 120, None, vue))
+            choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [{"requete": "r", "resultat": "x"}] * 2, [], llm_vue, "2026-01-01", 120, None, vue))
         finally:
             ap.NB_VUES = anciens
         self.assertEqual(suivi["valides"], 1)                        # 0.8.0 (audit M-02) : le compte n'est plus une vue
@@ -197,7 +197,7 @@ class TestsPipeline(unittest.TestCase):
         anciens = ap.NB_VUES
         ap.NB_VUES = 2
         try:
-            choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [], [], llm_vue, "2026-01-01", 120, None, None, ancrage))
+            choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [{"requete": "r", "resultat": "x"}] * 2, [], llm_vue, "2026-01-01", 120, None, None, ancrage))
         finally:
             ap.NB_VUES = anciens
         self.assertEqual(vus, [True, False])                         # 0.8.0 (audit M-03) : seule la 1re vue est ancrée
@@ -221,6 +221,17 @@ class TestsPipeline(unittest.TestCase):
         self.assertIsNone(ap.source_reprise({"source": "Forbes 400"}, ["Bloomberg Billionaires Index"]))
         self.assertIn("sans expression", ap.controle_calcul({"frequence": 0.2}))
         self.assertIn("illisible", ap.controle_calcul({"frequence": 0.2, "expression": "__import__('os')"}))
+
+    def test_references_inexistantes(self):
+        self.assertIn("[R7] inexistante", ap.controle_references({"fondement": "recherche [R7]"}, 4, 0))
+        self.assertIn("[M2]", ap.controle_references({"calcul": "2 OUI sur [M1] [M2]"}, 4, 1))
+        self.assertIsNone(ap.controle_references({"fondement": "[R2] et [M1]"}, 4, 1))
+        d = {"mots": [{"carte": "SEU", "strate": 7, "fait": "Exercice militaire annoncé.", "source_url":
+                       "https://www.reuters.com/world/x/?utm=1", "passage": [{"extrait": "exercice militaire annonce"}]}]}
+        a_ = ap.controle_attribution(d, "[R1] exercice militaire annoncé — https://www.reuters.com/world/x")
+        self.assertTrue(a_["detail"]["SEU@7"]["url_retrouvee"])
+        d["mots"][0]["source_url"] = "https://exemple.org/invente"
+        self.assertFalse(ap.controle_attribution(d, "[R1] exercice militaire annoncé")["detail"]["SEU@7"]["url_retrouvee"])
 
     def test_extraire_json_robuste(self):
         self.assertEqual(ap.extraire_json('voici {"a": 1} puis {"b": 2}'), {"a": 1})
