@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.8.3"
+VERSION_BOT = "0.9.0"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -121,6 +121,9 @@ def table_matrice() -> str:
 
 
 LECTURE_HORS_STRATE = os.environ.get("ALPHABET_LECTURE_HORS_STRATE", "") in ("1", "oui", "true")
+# 0.9.0 (décision d'auteur du 2026-11-08 ; skill validation.md §29) : hors strate 7, l'alphabet lit et le moteur chiffre
+# avec --exploratoire. Le chiffre est scellé (C.exploratoire), jamais posté, scoré à part. « 0 » pour couper.
+EXPLORATOIRE = os.environ.get("ALPHABET_EXPLORATOIRE", "1") not in ("0", "non", "false")
 ERREURS_STRUCTURELLES = ("limitée aux strates",)  # refus qu'aucune correction de la lecture ne peut lever
 
 
@@ -148,7 +151,7 @@ def equivalences(strates: list[int]) -> str:
 
 
 def appeler_moteur(dossier: dict, etat: str, evenement: str, semantique: str, date_info: str, vue: dict,
-                   temporalite: str = "generique") -> dict:
+                   temporalite: str = "generique", exploratoire: bool = False) -> dict:
     """Lance `moteur.py calculer --dossier` ; la fréquence de la vue extérieure entre comme référence (--fref)."""
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
         json.dump(dossier, f, ensure_ascii=False)
@@ -158,7 +161,7 @@ def appeler_moteur(dossier: dict, etat: str, evenement: str, semantique: str, da
            "--date-information", date_info, "--fref", str(vue["frequence"]),
            "--source-ref", str(vue.get("source", "")), "--periode-ref", str(vue.get("periode", "")),
            "--disponible-ref", str(vue.get("disponible_le", date_info)),
-           "--definition-ref", str(vue.get("classe_de_reference", "")), "--json"]
+           "--definition-ref", str(vue.get("classe_de_reference", "")), "--json"] + (["--exploratoire"] if exploratoire else [])
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, cwd=str(DOSSIER_SKILL))
     finally:
@@ -1105,6 +1108,26 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
                    aujourdhui: str, jours: int, historique: Historique | None = None,
                    critique: Llm | None = None) -> dict:
+    """0.9.0 : hors strate 7, la lecture exploratoire est rangée dans « exploratoire » et le statut reste
+    « hors_strate » : la règle de publication ne voit rien (A posté, jamais B ni C), le registre garde tout."""
+    c = await _alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique, critique)
+    if not c.pop("_explo", False):
+        return c
+    strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
+    explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
+                                   "etat", "drapeaux") if c.get(k) is not None}
+    explo["strate"] = strate
+    for k in ("p_C", "p_sans_cartes", "rho", "nature_etat_nul"):
+        c.pop(k, None)
+    c.update(statut="hors_strate", exploratoire=explo,
+             motif=f"strate {strate} non chiffrée (L7) : lecture exploratoire scellée, non postée "
+                   f"({explo.get('statut')})")
+    return c
+
+
+async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
+                    aujourdhui: str, jours: int, historique: Historique | None = None,
+                    critique: Llm | None = None) -> dict:
     """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet | hors_strate
     | lu_non_chiffre (et « erreur », posé par prevoir_binaire si une exception échappe)."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
@@ -1156,7 +1179,9 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     trace["p_B"] = float(vue["frequence"])
     evt, evenement = evenement_depuis(plan, vue)
     hors_strate = int(plan["evenement"]["strate"]) not in strates_chiffrees()
-    if hors_strate and not LECTURE_HORS_STRATE:
+    if hors_strate and EXPLORATOIRE:
+        trace["_explo"] = True
+    if hors_strate and not (LECTURE_HORS_STRATE or EXPLORATOIRE):
         return dict(trace, statut="hors_strate", evenement=evenement, semantique=plan["semantique"],
                     motif=f"strate {plan['evenement']['strate']} non chiffrée (L7 : {strates_chiffrees()}) ; "
                           "vue extérieure enregistrée, lecture non lancée")
@@ -1190,7 +1215,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
                          motif=f"aucune carte ancrée ({nature.replace('_', ' ')}) : pas d'ajustement du taux de base")
             return trace
         erreur = controle_etat(dossier, plan)
-        if not erreur and hors_strate:
+        if not erreur and hors_strate and not EXPLORATOIRE:
             # Lecture scellée, non chiffrée (mode LIRE ; validation.md §27) : chiffrable après une levée de L7.
             trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
                          statut="lu_non_chiffre",
@@ -1199,7 +1224,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         sortie = None
         if not erreur:
             sortie = appeler_moteur({k: v for k, v in dossier.items() if not k.startswith("_")}, dossier["etat"],
-                                    evenement, plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"])
+                                    evenement, plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"],
+                                    exploratoire=hors_strate)
             erreur = sortie.get("erreur")
         if not erreur:
             trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
@@ -1348,6 +1374,14 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
                   f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}."]
         return "\n".join(x for x in lignes if x)
     motif = c.get("motif") or "unknown"
+    ex = c.get("exploratoire") or {}
+    if ex:
+        # 0.9.0 : le chiffre exploratoire est horodaté ici aussi (§29), avec la mention qu'il n'est PAS posté.
+        val = (f"{ex['p_C']:.3f}" if isinstance(ex.get("p_C"), (int, float)) else f"no number ({ex.get('statut')})")
+        explo_ligne = (f"Exploratory alphabet reading (stratum {ex.get('strate')}, outside the engine's validated "
+                       f"scope; recorded for measurement, NOT the posted forecast): {val}.")
+        return (f"{tete}\nAlphabet not used for the posted forecast ({c.get('statut')}).\n{explo_ligne}\n"
+                + (f"{ligne_b}\n" if ligne_b else "") + f"\nModel-alone reasoning:\n{a_raison}")
     return f"{tete}\nAlphabet not used on this question ({c.get('statut')}: {motif}).\n\nModel-alone reasoning:\n{a_raison}"
 
 
@@ -1401,6 +1435,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "p_sans_ancre": (c.get("vues") or {}).get("p_sans_ancre")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
+                                                        "exploratoire",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

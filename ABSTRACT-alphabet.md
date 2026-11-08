@@ -1,6 +1,6 @@
 # Situational Alphabet Bot — Abstract
 
-*Othman Ben Brahim · bot version 0.8.3 · skill alphabet-situationnel 0.7.51 · Metaculus FutureEval*
+*Othman Ben Brahim · bot version 0.9.0 · skill alphabet-situationnel 0.7.52 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?
 This bot tests that question in the open, on Metaculus, against questions whose answers nobody knows yet.
@@ -22,7 +22,9 @@ The skill, its engine and its validation rules are documented in
 
 The bot posts C when the engine produces a number, B when the reading finds no structure, and A otherwise (no honest
 base rate, question outside the skill's scope, reading rejected by the engine). The engine currently quantifies
-geopolitics only; that restriction will be lifted only on measured evidence. The language model never invents a
+geopolitics only; that restriction will be lifted only on measured evidence. Outside geopolitics, the alphabet still
+reads every binary question and the engine computes an *exploratory* C (scope restriction lifted for that computation
+only): it is sealed and scored separately, by stratum, but never posted and never counted in the main result. The language model never invents a
 number: the engine accepts or rejects the reading, and rejections are logged.
 
 **Pre-registration.** Every forecast is written, with all three arms and the full reading dossier, to a SHA-256-sealed

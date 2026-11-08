@@ -229,7 +229,11 @@ class Tests(unittest.TestCase):
     def test_hors_strate_chiffree(self):
         plan = dict(PLAN, evenement={"carte": "CRO", "strate": 6, "type": "apparait"},   # économie : non chiffrée (L7)
                     candidats=["POL@6", "EME@6", "RES@6"], contre_candidate=["RES@6"])
-        r, llm = lancer([plan, vue(0.03)])
+        ancien, ap.EXPLORATOIRE = ap.EXPLORATOIRE, False          # comportement d'avant 0.9.0
+        try:
+            r, llm = lancer([plan, vue(0.03)])
+        finally:
+            ap.EXPLORATOIRE = ancien
         self.assertEqual(r.bras_poste, "A")
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "hors_strate")
         self.assertAlmostEqual(r.p_B, 0.03)                       # la vue extérieure est enregistrée
@@ -237,8 +241,8 @@ class Tests(unittest.TestCase):
         self.assertNotIn("Strates chiffrées", llm.consignes[0])  # 0.4.0 : étiquette de strate posée à l'aveugle
 
     def test_lecture_hors_strate_scellee(self):
-        ancien = ap.LECTURE_HORS_STRATE
-        ap.LECTURE_HORS_STRATE = True
+        ancien, ancien_x = ap.LECTURE_HORS_STRATE, ap.EXPLORATOIRE
+        ap.LECTURE_HORS_STRATE, ap.EXPLORATOIRE = True, False
         try:
             plan = dict(PLAN, evenement={"carte": "SEU", "strate": 6, "type": "apparait"})
             r, _ = lancer([plan, vue(0.03), lecture()])
@@ -247,7 +251,54 @@ class Tests(unittest.TestCase):
             self.assertTrue(r.ligne.get("dossier_fichier"))          # lecture scellée, chiffrable après une levée
             self.assertIsNone(r.p_C)
         finally:
-            ap.LECTURE_HORS_STRATE = ancien
+            ap.LECTURE_HORS_STRATE, ap.EXPLORATOIRE = ancien, ancien_x
+
+    def test_bras_exploratoire_hors_strate(self):
+        # 0.9.0 (décision d'auteur ; skill §29) : hors strate 7, l'alphabet lit et le moteur chiffre en exploratoire ;
+        # le chiffre est scellé, JAMAIS posté (A posté), et l'état nul exploratoire ne fait pas poster B.
+        plan = dict(PLAN, evenement={"carte": "SEU", "strate": 6, "type": "apparait"})
+        appels = []
+        ancien = ap.appeler_moteur
+
+        def moteur(*a, **k):
+            appels.append(k.get("exploratoire"))
+            return {"p": 0.41, "p_sans_cartes": 0.03, "drapeaux": ["EXPLORATOIRE (§29)"]}
+        ap.appeler_moteur = moteur
+        try:
+            r, _ = lancer([plan, vue(0.03), lecture()])
+        finally:
+            ap.appeler_moteur = ancien
+        c = r.ligne["bras"]["C"]
+        self.assertEqual(appels, [True])
+        self.assertEqual(c["statut"], "hors_strate")
+        self.assertEqual(c["exploratoire"]["statut"], "estime")
+        self.assertAlmostEqual(c["exploratoire"]["p_C"], 0.41)
+        self.assertEqual(c["exploratoire"]["strate"], 6)
+        self.assertIsNone(c.get("p_C"))
+        self.assertEqual(r.bras_poste, "A")
+        self.assertIn("NOT the posted forecast", r.ligne["commentaire"])
+        self.assertTrue(r.ligne.get("dossier_fichier"))
+        r, _ = lancer([plan, vue(0.03), lecture_vide(("contredit",) * 4)])    # état nul exploratoire
+        self.assertEqual(r.ligne["bras"]["C"]["exploratoire"]["statut"], "etat_nul")
+        self.assertEqual(r.bras_poste, "A")                               # pas B : hors strate 7, rien ne change
+
+    def test_score_exploratoire_a_part(self):
+        import score_registre as sr
+        reg = Path(tempfile.mkdtemp(prefix="registre-explo-"))
+        ancien, ap.REGISTRE = ap.REGISTRE, reg
+        ancien_m = ap.appeler_moteur
+        ap.appeler_moteur = lambda *a, **k: {"p": 0.41, "p_sans_cartes": 0.03, "drapeaux": []}
+        plan = dict(PLAN, evenement={"carte": "SEU", "strate": 6, "type": "apparait"})
+        try:
+            lancer([plan, vue(0.03), lecture()], q=dataclasses.replace(Q, id=9, url="https://www.metaculus.com/questions/9/"))
+            s = sr.scorer(reg, {"9": 1})
+        finally:
+            ap.REGISTRE, ap.appeler_moteur = ancien, ancien_m
+        self.assertEqual(s["C_exploratoire_sur_B"]["n"], 1)
+        self.assertGreater(s["C_exploratoire_sur_B"]["tous"]["questions_gagnees"], 0)   # 0,41 contre 0,03, issue OUI
+        self.assertIn("6", s["C_exploratoire_sur_B"]["par_strate"])
+        self.assertEqual(s["statuts_exploratoires"], {"estime": 1})
+        self.assertIsNone(s["apparie_ABC"])                          # hors verdict principal : C n'est pas apparié
 
     def test_refus_structurel_sans_correction(self):
         ancien = ap.appeler_moteur

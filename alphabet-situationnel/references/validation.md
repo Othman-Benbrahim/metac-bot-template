@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.51
+> Version : 0.7.52
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2050,3 +2050,33 @@ chaque différentiel par épisode (dont `v4_vue_exterieure`, la comparaison C co
 critère du §27, qui reste « C − B ≤ 0 sur 20 questions » ; le verdict se lit à côté. Les autres outils de mesure du bot
 (test séquentiel détaillé, puissance, correction du biais en ombre, recalibration, plafonnement) restent dans le bot :
 pour eux, le gel tient.
+
+---
+
+## 29. Bras exploratoire hors L7 (0.7.52)
+
+**Décision d'auteur, le 2026-11-08.** Sur les premières questions réelles du bot Metaculus, l'alphabet n'a produit
+aucun chiffre : la prévision chiffrée exige une question binaire, en strate 7 (L7), hors état nul. À ce rythme, la
+lecture n'est jamais mesurée hors de sa seule strate documentée, et la condition 2 du §27 ne peut pas se préparer.
+L'auteur lève donc L7 **pour un calcul à part**, sans toucher à la règle de publication.
+
+**Ce que fait `--exploratoire`.** Sur `calculer` (et `sonde`, `attribuer`), l'option lève le seul refus L7 : le moteur
+chiffre une lecture hors de `strates_prevision`, avec les mêmes paramètres, les mêmes contrôles (dossier, A1 à A7,
+dates) et le même calcul. Le résultat porte `exploratoire: true` et un drapeau en tête. L'option refuse `--journal` (le
+chiffre ne va pas au journal prospectif) et `--demo`.
+
+**Ce qu'elle ne change pas.**
+
+1. **Rien n'est publié** : le bot scelle le chiffre exploratoire dans son registre, avant l'issue, et poste comme avant
+   (C en strate 7, B en état nul, A sinon). `strates_prevision` reste `[7]`.
+2. **Hors du verdict et du calibrage** : le chiffre exploratoire est scoré dans une section à part, par strate (C
+   exploratoire contre B), jamais dans le verdict principal, la correction rétrospective, la recalibration ni la
+   condition 1 du §27.
+3. **Statut pour le §27** : ces chiffres sont des lectures scellées hors strate 7, chiffrées au moment même plutôt
+   qu'après coup (§27, dernier paragraphe). Ils comptent comme un premier test de leur strate, à part des questions
+   prospectives de la strate 7. La levée d'une strate reste une décision d'auteur datée, sur les deux conditions du §27.
+4. **Ni état nul chiffré ni C = B** : sans carte ancrée, il n'y a pas de chiffre exploratoire.
+
+**Ce qu'il faut savoir en le lisant.** Hors de la strate 7, les équivalents des cartes sont moins souvent Documentés : le
+chiffre exploratoire mesure la lecture **telle qu'elle est**, multiplicateurs hypothétiques compris. Un C exploratoire
+moins bon que B dans une strate dit que cette strate n'est pas prête, pas que l'alphabet est faux.

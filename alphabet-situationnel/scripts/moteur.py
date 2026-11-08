@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.51 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.52 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -3580,7 +3580,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -3817,7 +3817,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.51','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.52','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -4282,6 +4282,8 @@ def main():
         c.add_argument('--echeance');c.add_argument('--journal');c.add_argument('--strates',default='')
         c.add_argument('--json',action='store_true');c.add_argument('--demo',action='store_true')
         c.add_argument('--sans-cartes',action='store_true')
+        c.add_argument('--exploratoire',action='store_true',
+                       help='0.7.52 (validation.md §29) : lève L7 pour CE calcul seul ; résultat marqué, jamais publié, compté à part')
         c.add_argument('--temporalite',choices=TEMPORALITES,default=None)
         if name in ('calculer','sonde','attribuer'):c.add_argument('--evenement',required=True)
         if name=='noyau':c.add_argument('--evenement',action='append',required=True);c.add_argument('--exclusion',action='append',default=[])
@@ -4526,7 +4528,12 @@ def main():
     active=base_active(base,asof,a.demo)
     # 0.7.34 (décision d'auteur, L7) : hors démonstration, la prévision chiffrée est limitée aux strates de
     # strates_prevision (la strate 7 : 13 équivalents sur 16 sourcés) tant qu'aucune autre n'a d'accord mesuré.
-    if not a.demo:
+    # 0.7.52 (décision d'auteur, §29) : --exploratoire lève L7 pour ce calcul seul. Le chiffre est marqué, n'est pas
+    # écrit au journal prospectif et ne compte jamais dans la condition 1 du §27.
+    explo=bool(getattr(a,'exploratoire',False))
+    exiger(not (explo and getattr(a,'journal',None)),'--exploratoire : pas de --journal (le chiffre exploratoire ne va pas au journal prospectif, §29)')
+    exiger(not (explo and a.demo),'--exploratoire et --demo sont exclusifs (§29)')
+    if not a.demo and not explo:
         evs_cli=[a.evenement] if isinstance(getattr(a,'evenement',None),str) else list(getattr(a,'evenement',None) or [])
         sts_=[int(k.split('@')[1].split()[0]) for k in evs_cli if '@' in k and k.split('@')[1].split()[0].isdigit()]
         if a.cmd=='trajectoires':sts_+=[int(x) for x in a.strates.split(',') if x.strip().isdigit()]
@@ -4761,6 +4768,10 @@ def main():
     nv=[cle(m) for m in etat['mots'] if m['i']=='F' and st.get((m['c'],m['s'])) not in ('Attesté','Documenté')]
     if nv:result.setdefault('drapeaux',[]).append('Ancrage F sur équivalent non vérifié (Proposé) : '+', '.join(nv)+' — la lecture est tranchée, la correspondance reste à documenter (A3).')
     if a.demo:result.setdefault('drapeaux',[]).insert(0,'DÉMONSTRATION FICTIVE — ne constitue ni une prévision réelle ni une preuve de calibration.')
+    if explo:
+        result['exploratoire']=True;result['contexte']['exploratoire']=True
+        result.setdefault('drapeaux',[]).insert(0,f"EXPLORATOIRE (§29) : L7 levée pour ce calcul seul, hors des strates {P['strates_prevision']} — "
+                                                  'chiffre scellé pour mesure, à ne pas publier, compté à part du §27.')
     afficher(result,a.json)
 
 # ───────────────────────── tests de régression intégrés ─────────────────────────
@@ -5071,6 +5082,12 @@ def autotest():
             # 0.7.34 (L7) : hors démonstration, une prévision chiffrée hors de la strate 7 est refusée.
             r=subprocess.run([sys.executable,__file__,'calculer','--etat','[2026-09-26 | 7 jours] ÉMERGENCE@11[f]','--evenement','ÉMERGENCE@11 persiste','--temporalite','generique','--json'],capture_output=True,text=True,stdin=subprocess.DEVNULL,encoding='utf-8')
             self.assertEqual(r.returncode,2);self.assertIn('strates [7]',json.loads(r.stdout)['erreur'])
+            # 0.7.52 (§29) : --exploratoire lève L7 pour ce calcul seul (le refus suivant est celui du dossier manquant),
+            # et refuse --journal.
+            r=subprocess.run([sys.executable,__file__,'calculer','--etat','[2026-09-26 | 7 jours] ÉMERGENCE@11[f]','--evenement','ÉMERGENCE@11 persiste','--temporalite','generique','--exploratoire','--json'],capture_output=True,text=True,stdin=subprocess.DEVNULL,encoding='utf-8')
+            self.assertNotIn('strates [7]',json.loads(r.stdout).get('erreur',''))
+            r=subprocess.run([sys.executable,__file__,'calculer','--etat','[2026-09-26 | 7 jours] ÉMERGENCE@11[f]','--evenement','ÉMERGENCE@11 persiste','--temporalite','generique','--exploratoire','--journal','j.jsonl','--json'],capture_output=True,text=True,stdin=subprocess.DEVNULL,encoding='utf-8')
+            self.assertEqual(r.returncode,2);self.assertIn('§29',json.loads(r.stdout)['erreur'])
         def test_console_cp1252(self):
             # 0.7.1 (audit hacker.ai) : sortie Windows en cp1252, redirigée. Erreur JSON et sortie humaine.
             import subprocess
