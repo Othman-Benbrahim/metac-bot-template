@@ -246,7 +246,7 @@ def configuration(env=os.environ) -> dict:
     """
     llms = {}
     if env.get("ALPHABET_LLM"):
-        llms["default"] = GeneralLlm(model=env["ALPHABET_LLM"], temperature=0.2, timeout=180, allowed_tries=2)
+        llms["default"] = GeneralLlm(model=env["ALPHABET_LLM"], temperature=0.2, timeout=180, allowed_tries=3)
         petit = env.get("ALPHABET_PETIT_LLM") or env["ALPHABET_LLM"]
         for role in ("parser", "summarizer"):
             llms[role] = GeneralLlm(model=petit, temperature=0.2, timeout=120, allowed_tries=2)
