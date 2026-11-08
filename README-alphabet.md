@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.5.2 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.6.0 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -76,14 +76,43 @@ taux de base B et poste A. Cette règle ne changera pas avant la levée de L7, s
 
 - **Toutes les 20 minutes**, il regarde s'il y a des questions nouvelles (elles ne restent ouvertes que 3 heures, à
   heure aléatoire). Un contrôle sans question nouvelle ne coûte rien et n'écrit rien.
-- **5 questions nouvelles par jour au plus** (variable `ALPHABET_MAX_QUESTIONS`), comptées dans
-  `registre/passages.jsonl` avant toute prévision.
-- **Lancement manuel** (*Actions → Bot alphabet situationnel → Run workflow*) : son propre plafond (champ
-  `max_questions`), hors quota quotidien. Le mode `test_questions` (zone de test de Metaculus) est enregistré comme essai
+- **Toutes les questions ouvertes sont traitées** depuis 0.6.0 (`ALPHABET_MAX_QUESTIONS` vide ou `0`). Un plafond
+  quotidien reste possible : donner un nombre à cette variable.
+- **Lancement manuel** (*Actions → Bot alphabet situationnel → Run workflow*) : champ `max_questions` (`0` = toutes). Le mode `test_questions` (zone de test de Metaculus) est enregistré comme essai
   et n'entre pas dans le score.
 - Par question binaire : environ cinq appels au modèle principal (dont trois estimations du taux de base), quelques
   appels au petit modèle, jusqu'à quinze recherches (doublées si une seconde source est configurée), quelques appels
   gratuits à l'API de Metaculus, plus le bras A.
+
+## Modèles : suites de secours et contradicteur (0.6.0)
+
+Chaque rôle reçoit une **suite** de modèles, séparés par des virgules. Au début d'un passage qui a des questions, le
+bot sonde chaque suite dans l'ordre par un appel minuscule et garde, **pour tout le passage**, le premier modèle qui
+rend un JSON correct : une question n'est jamais lue par deux codeurs. Les modèles retenus sont écrits dans chaque
+ligne du registre (`modeles`), et le score est séparé par modèle (`par_modele`, option `--modele`) : changer de
+modèle, c'est changer de codeur.
+
+| Variable | Rôle | Configuration provisoire (Fantasy AI) |
+|---|---|---|
+| `ALPHABET_LLM` | réflexion : plan, taux de base, lecture, bras A | `openai/mistral-large-3,openai/mistral-large-latest` |
+| `ALPHABET_PETIT_LLM` | tâches légères : résumés, analyse des réponses | `openai/mistral-small3.2:24b,openai/mistral-large-3` |
+| `ALPHABET_CHERCHEUR` | recherche ; `{petit}` = le petit modèle retenu | `smart-searcher/{petit}` |
+| `ALPHABET_CONTRADICTEUR` | contradicteur, en ombre (facultatif) | `openai/qwen3.8:27b,openai/gpt-oss:latest` |
+| `ALPHABET_API_BASE` | adresse d'une passerelle compatible OpenAI | `https://fantasyai.cloud/api/v1` |
+| secret `FANTASY_API_KEY` | clé de la passerelle (remplace `OPENAI_API_KEY`) | — |
+
+Pour revenir à Claude : remettre `ALPHABET_LLM`, `ALPHABET_PETIT_LLM` et `ALPHABET_CHERCHEUR` sur les modèles
+`anthropic/…`, et vider `ALPHABET_API_BASE` ; rien d'autre ne change.
+
+**Le contradicteur** (d'une autre famille que le lecteur) relit chaque dossier chiffré face aux résultats de
+recherche et ne peut que **contester** : maintenir, affaiblir (F → f) ou retirer une carte. Il n'ajoute rien et ne
+donne aucun chiffre ; le moteur recalcule sur une copie du dossier. Le résultat (`bras.C.critique`, `p_C_critique`)
+est **scellé en ombre et jamais posté** ; le score le compare à C (`C_critique_sur_C`). Il ne sera posté que si le
+registre montre qu'il améliore le score.
+
+**Surveillance** (workflow « Santé des modèles », toutes les 3 heures) : chaque modèle des suites est sondé, la liste
+des modèles de la passerelle est relue, et une ligne s'ajoute à `registre/sante-modeles.jsonl` si l'état change. Si
+aucun modèle principal ne répond, le workflow passe en rouge et GitHub prévient par e-mail.
 
 ## Comment il est jugé
 
@@ -224,6 +253,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.6.0** : suites de modèles avec bascule au début du passage, modèles notés au registre et score par modèle,
+  contradicteur en ombre, surveillance toutes les 3 heures, passerelle compatible OpenAI (Fantasy AI, provisoire
+  jusqu'au tournoi), toutes les questions traitées par défaut.
 - **0.5.2** : contrôle d'attribution déterministe des mots ancrés (extraits et nombres retrouvés dans les résultats),
   idée reprise des contrôles locaux d'EnVrai ; compté par version au score. Les deux autres idées examinées ne sont
   pas reprises : le test de la surprise fait double emploi avec les tests de Van Evera que le dossier porte déjà

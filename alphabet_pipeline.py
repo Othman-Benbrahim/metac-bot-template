@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.5.2"
+VERSION_BOT = "0.6.0"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -173,6 +173,14 @@ class Resultat:
 
 def sceau(obj: dict) -> str:
     return hashlib.sha256(json.dumps(obj, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def modeles_actifs() -> dict | None:
+    """0.6.0 : modèles retenus pour ce passage, par rôle (alphabet_modeles.appliquer)."""
+    try:
+        return json.loads(os.environ["ALPHABET_MODELES"])
+    except Exception:
+        return None
 
 
 def correction_retro() -> dict | None:
@@ -791,7 +799,8 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
-                   aujourdhui: str, jours: int, historique: Historique | None = None) -> dict:
+                   aujourdhui: str, jours: int, historique: Historique | None = None,
+                   critique: Llm | None = None) -> dict:
     """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet | hors_strate
     | lu_non_chiffre (et « erreur », posé par prevoir_binaire si une exception échappe)."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
@@ -880,6 +889,10 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
             trace["statut"] = "estime" if sortie.get("p") is not None else "non_estime"
             if sortie.get("p") is None:
                 trace["motif"] = next((x for x in sortie.get("drapeaux", []) if x.startswith("Non estimé")), "non estimé")
+            if critique is not None and trace["statut"] == "estime":   # 0.6.0 : contradicteur, en ombre
+                cr = await critiquer(q, dossier, trace.get("_textes"), critique, evenement, plan["semantique"],
+                                     aujourdhui, jours, evt, trace.get("p_B"))
+                trace["critique"] = dict(cr, modele=(modeles_actifs() or {}).get("contradicteur"))
             return trace
         trace["derniere_erreur"] = erreur
         if tentative == MAX_CORRECTIONS or any(x in erreur for x in ERREURS_STRUCTURELLES):
@@ -895,6 +908,83 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     trace["dossier"] = dossier
     trace["motif"] = trace.get("derniere_erreur")
     return trace
+
+
+def consigne_critique(q: Question, dossier: dict, textes: str) -> str:
+    """0.6.0 : le contradicteur, d'une autre famille de modèle que le lecteur. Il ne peut que CONTESTER : maintenir,
+    affaiblir (F → f) ou retirer une carte ancrée. Il n'ajoute rien, ne renforce rien, ne donne aucun chiffre :
+    le moteur reste juge et recalcule."""
+    mots = [{k: m.get(k) for k in ("carte", "strate", "intensite", "fait", "source", "test", "corroboration",
+                                   "contre_observation", "passage")} for m in dossier.get("mots") or []]
+    return f"""Tu es le CONTRADICTEUR d'une lecture structurelle. Une autre IA a ancré les cartes ci-dessous dans des
+faits. Ton seul travail : vérifier chaque ancrage contre les RÉSULTATS DE RECHERCHE, et le contester s'il ne tient pas.
+
+QUESTION : {q.titre}
+
+CARTES ANCRÉES (intensité F = fait suffisant, test « pistolet » ou « double » ; f = fait qui remplit seulement le
+marqueur, test « cerceau ») :
+{json.dumps(mots, ensure_ascii=False, indent=1)[:12000]}
+
+RÉSULTATS DE RECHERCHE (seule base admise) :
+{(textes or "(aucun)")[:14000]}
+
+Pour chaque carte, décide :
+- "maintenir" : le fait figure dans les résultats, daté, et il porte bien l'intensité déclarée ;
+- "affaiblir" : le fait figure, mais il n'est pas suffisant (on l'observerait aussi sans la structure) : F devient f ;
+- "retirer" : le fait ne figure pas dans les résultats, ou il est contredit, ou il ne remplit pas le marqueur.
+Tu ne peux NI ajouter une carte, NI renforcer une intensité, NI donner une probabilité. Dans le doute, maintiens.
+
+Rends UNIQUEMENT un objet JSON :
+{{"verdicts": {{"CARTE@strate": {{"decision": "maintenir|affaiblir|retirer", "motif": "une phrase, avec [n] si un
+résultat le justifie"}}}}}}"""
+
+
+async def critiquer(q: Question, dossier: dict, textes: str, critique: Llm, evenement: str, semantique: str,
+                    aujourdhui: str, jours: int, evt: dict, p_B: float | None) -> dict:
+    """Applique les verdicts du contradicteur à une COPIE du dossier et refait calculer le moteur. En ombre : rien de
+    ce qui est posté ne change. Statuts : estime, etat_nul (toutes les cartes retirées : la règle donnerait B),
+    inchange, refuse (le moteur refuse le dossier contesté), illisible."""
+    import copy
+    try:
+        brut = extraire_json(await critique(consigne_critique(q, dossier, textes)))
+        verdicts = brut.get("verdicts") or {}
+        if not isinstance(verdicts, dict):
+            raise ValueError("verdicts absents")
+    except Exception as e:
+        return {"statut": "illisible", "motif": f"{type(e).__name__}: {e}"[:200]}
+    d = copy.deepcopy({k: v for k, v in dossier.items() if not k.startswith("_")})
+    mots, retires, affaiblis = [], [], []
+    for m in d.get("mots") or []:
+        cle = f"{m.get('carte')}@{m.get('strate')}"
+        dec = str((verdicts.get(cle) or {}).get("decision") or "maintenir").lower()
+        if dec == "retirer":
+            retires.append(cle)
+            d.setdefault("rejets", {})[cle] = "[contredit] retiré par le contradicteur : " + str(
+                (verdicts.get(cle) or {}).get("motif") or "")[:300]
+            continue
+        if dec == "affaiblir" and m.get("intensite") == "F":
+            m["intensite"], m["test"] = "f", "cerceau"
+            affaiblis.append(cle)
+        mots.append(m)
+    sortie_ = {"verdicts": {k: v for k, v in verdicts.items() if isinstance(v, dict)}, "retires": retires,
+               "affaiblis": affaiblis}
+    if not retires and not affaiblis:
+        return dict(sortie_, statut="inchange")
+    if not mots:
+        return dict(sortie_, statut="etat_nul", p_C_critique=p_B)
+    d["mots"] = mots
+    # Une liaison qui touche une carte retirée n'a plus d'objet ; une question ne garde son objet que si elle porte
+    # encore sur une carte présente. Si plus aucune question ne départage, le moteur refuse : c'est consigné.
+    presentes = {f"{m.get('carte')}@{m.get('strate')}" for m in mots}
+    d["liaisons"] = [x for x in (d.get("liaisons") or [])
+                     if not any(r_ in json.dumps(x, ensure_ascii=False) for r_ in retires)]
+    d["questions"] = [x for x in (d.get("questions") or [])
+                      if any(c_ in json.dumps(x, ensure_ascii=False) for c_ in presentes)]
+    d["etat"] = etat_depuis(mots, aujourdhui, jours)
+    r = appeler_moteur(d, d["etat"], evenement, semantique, aujourdhui, evt["vue_exterieure"], evt["temporalite"])
+    if r.get("erreur"):
+        return dict(sortie_, statut="refuse", motif=str(r["erreur"])[:300])
+    return dict(sortie_, statut="estime" if r.get("p") is not None else "non_estime", p_C_critique=r.get("p"))
 
 
 def choisir_bras(c: dict, p_A: float) -> tuple[str, float]:
@@ -959,23 +1049,26 @@ def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
 
 async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str, llm: Llm, chercher: Chercheur,
                           recherche_reelle: bool, maintenant: datetime | None = None, publie: bool = True,
-                          mode: str | None = None, historique: Historique | None = None) -> Resultat:
+                          mode: str | None = None, historique: Historique | None = None,
+                          critique: Llm | None = None) -> Resultat:
     maintenant = maintenant or datetime.now(timezone.utc)
     aujourdhui = maintenant.date().isoformat()
     jours = max(1, (q.resolution - maintenant.date()).days)
     bras_a = {"p": p_A, "horodatage": maintenant.isoformat(timespec="seconds")}
     bras_a["sceau"] = sceau({"question": str(q.id), "date": aujourdhui, **bras_a})  # A scellé avant l'alphabet
     try:
-        c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique)
+        c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique, critique)
     except Exception as e:  # 0.1.7 : une erreur de l'alphabet laisse quand même sa ligne au registre (bras A posté)
         c = {"statut": "erreur", "motif": f"{type(e).__name__} : {str(e)[:300]}"}
     poste, p_poste = choisir_bras(c, p_A)
     vue = c.get("vue") or {}
     corr = correction_retro()
+    modeles = modeles_actifs()
     ligne = {"version_bot": VERSION_BOT, "version_skill": version_skill(), "question_id": str(q.id), "url": q.url,
              "titre": q.titre, "date_information": aujourdhui, "resolution_prevue": q.resolution.isoformat(),
              "fenetre_jours": jours, "recherche_reelle": recherche_reelle,
              "publie": publie, "mode": mode or os.environ.get("ALPHABET_MODE"),
+             "modeles": modeles,
              "bras": {"A": bras_a,
                       "B": {"p": c.get("p_B"), **{k: vue.get(k) for k in ("classe_de_reference", "source", "fondement",
                                                                          "periode", "calcul", "disponible_le") if vue.get(k)},
@@ -990,6 +1083,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
                             "p_C_corrige": corriger_C(c.get("p_C"), corr),
                             "attribution": controle_attribution(c.get("dossier"), c.get("_textes")),
+                            "critique": c.get("critique"),
                             "correction": ({k: corr.get(k) for k in ("decalage_logit", "n", "calcule_le")}
                                            if corr and c.get("p_C") is not None else None)}},
              "bras_poste": poste, "p_poste": p_poste}

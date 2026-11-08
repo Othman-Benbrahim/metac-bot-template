@@ -1,0 +1,50 @@
+name: Santé des modèles
+
+# 0.6.0 : toutes les 3 heures, sonde chaque modèle des suites ALPHABET_LLM, ALPHABET_PETIT_LLM et
+# ALPHABET_CONTRADICTEUR (un appel minuscule chacun). Le registre n'est écrit que si l'état change. Si aucun modèle
+# principal ne répond, le workflow passe en rouge : GitHub envoie un e-mail.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 */3 * * *"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sante:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Sonder les modèles
+        id: sonde
+        run: uv run python sante_modeles.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ vars.ALPHABET_API_BASE }}
+          ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
+          ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
+          ALPHABET_CONTRADICTEUR: ${{ vars.ALPHABET_CONTRADICTEUR }}
+      - name: Enregistrer le registre
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain registre)" ]; then
+            git config user.name "alphabet-bot"
+            git config user.email "alphabet-bot@users.noreply.github.com"
+            git add registre
+            git commit -m "registre : santé des modèles du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

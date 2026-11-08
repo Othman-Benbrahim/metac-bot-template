@@ -7,12 +7,12 @@ on:
         description: "tournament, minibench ou test_questions"
         default: "minibench"
       max_questions:
-        description: "questions nouvelles au plus pour ce passage (budget)"
-        default: "5"
-  # Mode minibench. 0.2.0 (audit, B3) : les questions ne restent ouvertes que 3 heures, à heure aléatoire ; un contrôle
-  # toutes les 3 heures en manquait. Contrôle toutes les 20 minutes, au plus 5 questions nouvelles PAR JOUR
-  # (ALPHABET_MAX_QUESTIONS, compté dans registre/passages.jsonl). Un contrôle sans question nouvelle, ou après le
-  # plafond, ne coûte rien en crédit de modèle et n'écrit rien dans le dépôt.
+        description: "questions nouvelles au plus pour ce passage (0 = toutes)"
+        default: "0"
+  # Mode minibench. Les questions ne restent ouvertes que 3 heures, à heure aléatoire : contrôle toutes les 20 minutes.
+  # 0.6.0 : aucun plafond par défaut (ALPHABET_MAX_QUESTIONS = 0 : toutes les questions ouvertes) ; un plafond
+  # quotidien reste possible en donnant un nombre à cette variable. Un contrôle sans question nouvelle ne sonde aucun
+  # modèle, ne coûte rien et n'écrit rien dans le dépôt.
   schedule:
     - cron: "*/20 * * * *"
 
@@ -43,7 +43,10 @@ jobs:
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # 0.6.0 : avec une passerelle compatible OpenAI (Fantasy AI), sa clé (secret FANTASY_API_KEY) et son adresse
+          # (variable ALPHABET_API_BASE) ; les modèles s'écrivent alors « openai/<identifiant> ».
+          OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ vars.ALPHABET_API_BASE }}
           ASKNEWS_CLIENT_ID: ${{ secrets.ASKNEWS_CLIENT_ID }}
           ASKNEWS_SECRET: ${{ secrets.ASKNEWS_SECRET }}
           ASKNEWS_API_KEY: ${{ secrets.ASKNEWS_API_KEY }}
@@ -51,12 +54,13 @@ jobs:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
           ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
+          ALPHABET_CONTRADICTEUR: ${{ vars.ALPHABET_CONTRADICTEUR }}
           ALPHABET_CHERCHEUR_2: ${{ vars.ALPHABET_CHERCHEUR_2 }}
           ALPHABET_VUES: ${{ vars.ALPHABET_VUES }}
           ALPHABET_HISTORIQUE: ${{ vars.ALPHABET_HISTORIQUE }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_LECTURE_HORS_STRATE: ${{ vars.ALPHABET_LECTURE_HORS_STRATE }}
-          ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '5' }}
+          ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '0' }}
       - name: Enregistrer le registre
         if: always()
         run: |
