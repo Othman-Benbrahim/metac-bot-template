@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.6.0"
+VERSION_BOT = "0.6.1"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -706,8 +706,10 @@ async def executer_requetes(requetes: list[dict], chercher: Chercheur, recherche
             texte, ok = f"(échec : {e})", False
         else:
             ok = recherche_reelle
+        moteur = re.match(r"\[moteur : ([\w-]+)\]", texte or "")   # 0.6.1 : quel moteur a servi la requête
         sortie.append({"famille": r.get("famille", "reference"), "cartes": r.get("cartes", []), "requete": req,
                            **({"relance": True} if r.get("relance") else {}),
+                       **({"moteur": moteur.group(1)} if moteur else {}),
                        "resultat": texte or "", "executee": ok})
     return sortie
 
