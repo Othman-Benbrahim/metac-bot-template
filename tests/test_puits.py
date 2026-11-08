@@ -212,7 +212,13 @@ class TestsPipeline(unittest.TestCase):
         self.assertIsNone(ap.controle_calcul(v))
         self.assertAlmostEqual(v["frequence"], 1 - (1 - 3 / 40) ** (120 / 365))
         # registre, question 43329 : déclaré 0,00037 pour un calcul qui donne 0,0016
-        self.assertIn("non reproductible", ap.controle_calcul({"frequence": 0.00037, "expression": "0.0435 * 54/1461"}))
+        v = {"frequence": 0.00037, "expression": "0.0435 * 54/1461"}       # 43329 : 0,00037 pour un calcul à 0,0016
+        self.assertIsNone(ap.controle_calcul(v))                            # 0.8.1 : la formule l'emporte
+        self.assertAlmostEqual(v["frequence"], 0.0435 * 54 / 1461)
+        self.assertTrue(v["calcul_corrige"])
+        self.assertIn("déjà utilisée", ap.source_reprise({"source": "Registre des notifications de l'article 50 (Commission)"},
+                                                         ["Registre des notifications de l'article 50 du TUE"]))
+        self.assertIsNone(ap.source_reprise({"source": "Forbes 400"}, ["Bloomberg Billionaires Index"]))
         self.assertIn("sans expression", ap.controle_calcul({"frequence": 0.2}))
         self.assertIn("illisible", ap.controle_calcul({"frequence": 0.2, "expression": "__import__('os')"}))
 

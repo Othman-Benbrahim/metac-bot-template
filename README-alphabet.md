@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.8.0 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.8.1 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -40,7 +40,8 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
    fois** (ce qui compte pour un cas, sur quelle population, quelle période) ; puis le comptage est fait **trois fois
    sur cette même classe, chaque fois sur une source différente des précédentes** (0.8.0 : avant, trois appels du même
    prompt rendaient trois fois le même chiffre). Chaque estimation rend aussi son calcul en arithmétique pure
-   (`expression`) : **le code le refait** et refuse l'estimation si l'écart dépasse 20 %. B est la vue médiane (une
+   (`expression`) : **le code le refait**, et c'est la valeur de la formule qui est retenue (un écart de plus de 20 %
+   avec le chiffre déclaré est marqué `calcul_corrige`) ; une source trop proche d'une source déjà prise est refusée. B est la vue médiane (une
    vraie vue, avec sa source : aucune moyenne fabriquée), et l'écart entre les trois est enregistré : c'est alors un
    écart de mesure, non un changement de classe.
    **Puits de données (0.7.0)** : avant de compter, le modèle choisit jusqu'à trois appels à des bases ouvertes (voir
@@ -316,6 +317,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.8.1** : premier passage réel de la 0.8.0 : les trois vues d'une question refusées pour une erreur de calcul
+  de tête du modèle → la valeur de la formule est retenue (`calcul_corrige`) ; trois vues sur la même source → contrôle
+  sans modèle de la reprise de source.
 - **0.8.0** : audit d'Azrivo. Intégrité : garde du registre contre toute écriture de test, sceau des dossiers relu
   au score (un dossier écrasé le 2026-11-04 a été trouvé), aucune prévision postée sans sa ligne, passage arrêté
   journalisé, workflows du bot modèle d'origine désarmés. Fuite : tests rétrospectifs filtrés sur l'ouverture, puits
