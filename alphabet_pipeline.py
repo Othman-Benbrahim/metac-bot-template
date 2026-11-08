@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.8.0"
+VERSION_BOT = "0.8.1"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -316,6 +316,20 @@ Recherches : pour chaque candidate, une requête de chaque famille ; pour chaque
 une requête de discrimination. Au plus {MAX_RECHERCHES} requêtes au total. Une requête se forme sur le phénomène
 observable, l'objet et la période, JAMAIS sur le nom d'une carte, ni sur une prémisse.
 """
+
+
+def source_reprise(vue: dict, sources: list[str]) -> str | None:
+    """0.8.1 : la consigne « une autre source » n'a pas suffi (passage 42489373511 : trois vues de 43332 sur le même
+    registre). Contrôle sans modèle : une source dont les mots significatifs recouvrent à 60 % ceux d'une source déjà
+    prise est refusée."""
+    def mots(x):
+        return {w for w in _normal(x).split() if len(w) >= 4}
+    m = mots(vue.get("source"))
+    for s_ in sources:
+        a = mots(s_)
+        if m and a and len(m & a) / min(len(m), len(a)) >= 0.6:
+            return f"vue extérieure : source déjà utilisée ({str(vue.get('source'))[:80]})"
+    return None
 
 
 def bloc_sources_prises(sources: list[str] | None) -> str:
@@ -893,8 +907,9 @@ def evaluer_expression(expr: str) -> float:
 
 def controle_calcul(vue: dict) -> str | None:
     """0.8.0 (audit M-07) : l'arithmétique du taux de base est REFAITE par le code. La vue rend « expression » (ex.
-    « 1 - (1 - 3/40) ** (120/365) ») ; si elle ne redonne pas la fréquence déclarée à 20 % près, la vue est refusée.
-    Sinon la fréquence retenue est celle de l'expression. Une vue calculée par le code (compte des puits) est exemptée."""
+    « 1 - (1 - 3/40) ** (120/365) ») ; la fréquence retenue est TOUJOURS celle de l'expression (0.8.1) ; un écart de
+    plus de 20 % avec la fréquence déclarée est marqué « calcul_corrige ». Une expression absente ou illisible fait
+    refuser la vue. Une vue calculée par le code (compte des puits) est exemptée."""
     if vue.get("compte_calcule"):
         return None
     expr = vue.get("expression")
@@ -907,9 +922,11 @@ def controle_calcul(vue: dict) -> str | None:
     d = float(vue["frequence"])
     if not 0 < f < 1:
         return f"vue extérieure : l'expression donne {f:.4g}, hors de ]0, 1["
-    if abs(f - d) > ECART_CALCUL * max(f, d):
-        return f"vue extérieure : calcul non reproductible (déclaré {d:.4g}, expression {f:.4g})"
+    # 0.8.1 : passage réel 42489373511, les trois vues de 43329 refusées pour une erreur d'ARITHMÉTIQUE (le modèle écrit
+    # la bonne formule et se trompe en la calculant). La formule est le raisonnement explicite ; le chiffre déclaré, un
+    # calcul de tête. On retient donc la valeur de la formule, et l'écart est scellé (« calcul_corrige »).
     vue["frequence_declaree"], vue["frequence"] = d, f
+    vue["calcul_corrige"] = abs(f - d) > ECART_CALCUL * max(f, d)
     return None
 
 
@@ -1035,7 +1052,7 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
         except Exception as e:
             refus.append(f"illisible : {e}"[:200])
             continue
-        m = controle_vue(v, aujourdhui)
+        m = controle_vue(v, aujourdhui) or source_reprise(v, sources)
         if m:
             refus.append(m)
             continue

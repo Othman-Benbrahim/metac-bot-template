@@ -39,9 +39,9 @@ PLAN = {"strates": [7, 6], "candidats": ["POL@7", "INC@7", "CTR@6", "HIE@6"], "c
            {"famille": "discrimination", "cartes": ["CTR@6", "HIE@6"], "requete": "discrimination CTR HIE"}]}
 
 
-def vue(freq=0.2):
+def vue(freq=0.2, source="registre fictif de démonstration"):
     return {"frequence": freq, "classe_de_reference": "crises bilatérales à deux blocs : rupture ou frappe reconnue en 3 mois (fictif)",
-            "source": "registre fictif de démonstration", "fondement": "recherche [R1]", "periode": "2000-2025",
+            "source": source, "fondement": "recherche [R1]", "periode": "2000-2025",
             "disponible_le": "2026-01-01", "calcul": "8 cas sur 40 crises", "expression": repr(freq),
             "classe_alternative": {"frequence": min(0.9, freq * 1.5), "classe_de_reference": "crises avec représailles annoncées (fictif)",
                                    "source": "fictif", "pourquoi_ecartee": "classe choisie d'après l'état présent"},
@@ -380,14 +380,17 @@ class Tests(unittest.TestCase):
     def test_vue_mediane(self):
         ancien, ap.NB_VUES = ap.NB_VUES, 3
         try:
-            r, llm = lancer([PLAN, vue(0.30), vue(0.02), {"frequence": None, "motif": "rien"}, lecture()])
+            r, llm = lancer([PLAN, vue(0.30, "annuaire Alpha"), vue(0.02, "base Bravo"), {"frequence": None, "motif": "rien"},
+                             lecture()])
             b = r.ligne["bras"]["B"]
             self.assertEqual(b["vues"]["valides"], 2)
             self.assertEqual(b["vues"]["frequences"], [0.02, 0.30])
             self.assertAlmostEqual(b["vues"]["dispersion"], 0.28)
             self.assertAlmostEqual(r.p_B, 0.02)                    # médiane basse : une vraie vue, aucun chiffre fabriqué
-            r, _ = lancer([PLAN, vue(0.3), vue(0.1), vue(0.2), lecture()])
+            r, _ = lancer([PLAN, vue(0.3, "annuaire Alpha"), vue(0.1, "base Bravo"), vue(0.2, "corpus Charlie"), lecture()])
             self.assertAlmostEqual(r.p_B, 0.2)                     # médiane de trois
+            r, _ = lancer([PLAN, vue(0.3), vue(0.1), vue(0.2), lecture()])
+            self.assertEqual(r.ligne["bras"]["B"]["vues"]["valides"], 1)   # 0.8.1 : même source → refusée
             r, _ = lancer([PLAN] + [{"frequence": None, "motif": "aucune base"}] * 3)
             self.assertEqual(r.ligne["bras"]["C"]["statut"], "sans_vue")
             self.assertEqual(r.ligne["bras"]["C"]["motif"], "aucune base")
