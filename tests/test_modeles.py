@@ -127,5 +127,40 @@ class TestsSante(unittest.TestCase):
         self.assertEqual(len((reg / "sante-modeles.jsonl").read_text().splitlines()), 2)
 
 
+
+class TestsSaturation(unittest.TestCase):
+    def test_reessaie_si_sature_puis_trouve(self):
+        import alphabet_modeles as am_
+        tours = {"n": 0}
+        attentes = []
+
+        async def appel(m, c):
+            if m == "p1":
+                tours["n"] += 1
+                if tours["n"] < 3:
+                    raise RuntimeError("ServiceUnavailableError: This model is temporarily at capacity")
+            return '{"ok": true}'
+
+        async def attendre(s):
+            attentes.append(s)
+        env = {"ALPHABET_LLM": "p1", "ALPHABET_PETIT_LLM": "s1"}
+        choix, essais = asyncio.run(am_.choisir(env, appel, attendre))
+        self.assertEqual(choix["principal"], "p1")
+        self.assertEqual(attentes, [60, 120])
+
+    def test_echec_durable_ne_fait_pas_attendre(self):
+        import alphabet_modeles as am_
+        attentes = []
+
+        async def appel(m, c):
+            raise RuntimeError("NotFoundError: model does not exist")
+
+        async def attendre(s):
+            attentes.append(s)
+        choix, _ = asyncio.run(am_.choisir({"ALPHABET_LLM": "x"}, appel, attendre))
+        self.assertIsNone(choix["principal"])
+        self.assertEqual(attentes, [])
+
+
 if __name__ == "__main__":
     unittest.main()

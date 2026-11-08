@@ -57,17 +57,40 @@ async def sonder(modele: str, appel=None) -> dict:
                 "secondes": round(time.monotonic() - debut, 1), "erreur": f"{type(e).__name__}: {e}"[:200]}
 
 
-async def choisir(env=os.environ, appel=None) -> tuple[dict, list[dict]]:
-    """Premier modèle valide de chaque suite. Le petit rôle retombe sur le principal ; le contradicteur peut manquer."""
+PASSAGERE = re.compile(r"at capacity|ServiceUnavailable|\b50[234]\b|RateLimit|\b429\b|Timeout|timed out|overloaded",
+                      re.I)
+
+
+def passagere(r: dict) -> bool:
+    """Une indisponibilité qui passe (saturation, quota par minute, délai) : on peut réessayer plus tard."""
+    return bool(r.get("erreur")) and not r.get("disponible") and bool(PASSAGERE.search(r["erreur"]))
+
+
+async def choisir(env=os.environ, appel=None, attendre=asyncio.sleep) -> tuple[dict, list[dict]]:
+    """Premier modèle valide de chaque suite. Le petit rôle retombe sur le principal ; le contradicteur peut manquer.
+
+    0.7.3 : si AUCUN modèle principal ne répond et que tous les échecs sont passagers (modèle saturé, quota par
+    minute), la suite principale est ressayée après une attente (ALPHABET_SONDE_TOURS tours, 3 par défaut ; 60 s
+    puis 120 s). Un échec durable (modèle inconnu, clé refusée) ne fait pas attendre."""
     choix, essais = {}, []
+    tours = max(1, int(env.get("ALPHABET_SONDE_TOURS") or "3"))
     for role, var in ROLES.items():
         choix[role] = None
-        for m in suite(env.get(var)):
-            r = await sonder(m, appel)
-            r["role"] = role
-            essais.append(r)
-            if r["json_ok"]:
-                choix[role] = m
+        for tour in range(tours if role == "principal" else 1):
+            if tour:
+                await attendre(60 * tour)
+            ce_tour = []
+            for m in suite(env.get(var)):
+                r = await sonder(m, appel)
+                r["role"] = role
+                if tour:
+                    r["tour"] = tour + 1
+                essais.append(r)
+                ce_tour.append(r)
+                if r["json_ok"]:
+                    choix[role] = m
+                    break
+            if choix[role] or not ce_tour or not all(passagere(r) for r in ce_tour):
                 break
     if choix["petit"] is None:
         choix["petit"] = choix["principal"]
