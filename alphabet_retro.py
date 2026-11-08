@@ -79,6 +79,7 @@ async def un_test(mq, llm, deja: set[str]) -> dict | None:
         return None
     info = debut.astimezone(timezone.utc)
     ligne = {"type": "retro", "version_bot": ap.VERSION_BOT, "version_skill": ap.version_skill(), "question_id": qid,
+             "modeles": ap.modeles_actifs(),
              "url": mq.page_url, "titre": mq.question_text, "date_information": info.date().isoformat(),
              "resolution": fin.date().isoformat(), "issue": 1 if issue == "yes" else 0}
     try:
@@ -125,6 +126,14 @@ async def principal(n: int, apres: str) -> int:
         print("Tests rétrospectifs : la recherche doit être Exa (smart-searcher + EXA_API_KEY), seule bornable dans le "
               "temps ici. Rien n'est lancé.")
         return 1
+    import alphabet_modeles as am
+    choix, essais = await am.choisir()       # 0.6.0 : suites de modèles, le premier qui répond
+    for e_ in essais:
+        print(f"{'✅' if e_['json_ok'] else '❌'}  {e_['role']} : {e_['modele']}")
+    if not choix["principal"]:
+        print("Aucun modèle principal disponible. Rien n'est lancé.")
+        return 1
+    am.appliquer(choix)
     llm_modele = ab.configuration().get("default")
     if llm_modele is None:
         print("ALPHABET_LLM manquant.")

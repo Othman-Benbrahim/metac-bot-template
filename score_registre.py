@@ -536,16 +536,26 @@ def une_par_question(tout: list[dict]) -> list[dict]:
     return list(derniere.values())
 
 
-def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False) -> dict:
-    tout = lignes(registre)
+def modele_principal(x: dict) -> str:
+    """0.6.0 : le codeur d'une ligne. Les lignes antérieures ne le disent pas."""
+    return ((x.get("modeles") or {}).get("principal")) or "non_renseigne (avant 0.6.0)"
+
+
+def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False, modele: str | None = None) -> dict:
+    """0.6.0 : `modele` restreint le score aux lignes d'un seul modèle principal : changer de modèle, c'est changer de
+    codeur, et deux codeurs ne se mélangent pas dans une même mesure."""
+    tout = [x for x in lignes(registre) if modele is None or modele_principal(x) == modele]
     retouchees = [x["question_id"] for x in tout if not x["_intacte"]]
     retenues = [x for x in tout if x["_intacte"] and (inclure_essais or not est_essai(x))]
     questions = une_par_question(retenues)
     resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
-    apparies, corriges = [], []
+    apparies, corriges, critiques = [], [], []
     for x in resolues:
         y = issues[x["question_id"]]
+        cr = x["bras"]["C"].get("critique") or {}
+        if cr.get("p_C_critique") is not None and x["bras"]["C"].get("p_C") is not None:   # 0.6.0 : en ombre
+            critiques.append(({"C_critique": ap.borner(cr["p_C_critique"]), "C": ap.borner(x["bras"]["C"]["p_C"])}, y))
         pcc, pb = x["bras"]["C"].get("p_C_corrige"), x["bras"]["B"].get("p")
         if pcc is not None and pb is not None:   # 0.5.0 : C corrigé du biais, scellé, jamais posté
             corriges.append(({"C": ap.borner(pcc), "B": ap.borner(pb)}, y))
@@ -571,6 +581,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False)
                 "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B(), principal=True),
                 "C_sur_A": comparer(apparies, "C", "A"),
                 "C_corrige_sur_B": comparer(corriges, "C", "B") if corriges else None,
+                "C_critique_sur_C": comparer(critiques, "C_critique", "C") if critiques else None,
                 "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "
                            "(100 × écart de ln p). Si gain_sans_pire_question change de signe, le résultat tient à une "
                            "seule question. brier_critere_L7 : le critère du skill (§27, C − B ≤ 0) ; s'il contredit le "
@@ -626,8 +637,10 @@ if __name__ == "__main__":
     a.add_argument("--registre", default=os.environ.get("ALPHABET_REGISTRE", str(ap.REGISTRE)))
     a.add_argument("--enregistrer", action="store_true", help="garder les issues et le score dans le registre")
     a.add_argument("--inclure-essais", action="store_true", help="compter aussi passages à blanc et zone de test")
+    a.add_argument("--modele", help="ne scorer que les lignes de ce modèle principal (0.6.0)")
     args = a.parse_args()
     reg = Path(args.registre)
+    a_modele = getattr(args, "modele", None)
     if args.retro:
         s = scorer_retro(reg)
         if args.enregistrer:
@@ -641,7 +654,13 @@ if __name__ == "__main__":
         iss = dict(connues, **issues_metaculus(sorted(a_chercher), erreurs))
     else:
         iss = dict(connues, **{str(k): int(v) for k, v in json.loads(Path(args.resolutions).read_text(encoding="utf-8")).items()})
-    s = scorer(reg, iss, args.inclure_essais)
+    s = scorer(reg, iss, args.inclure_essais, a_modele)
+    s["par_modele"] = {}
+    for m_ in sorted({modele_principal(x) for x in lignes(reg)}):
+        sm = scorer(reg, iss, args.inclure_essais, m_)
+        sm_c = (sm.get("apparie_ABC") or {}).get("C_sur_B") or {}
+        s["par_modele"][m_] = {"questions": sm["questions"], "resolues": sm["resolues"],
+                               "C_sur_B_gain_log_moyen": sm_c.get("gain_log_moyen"), "C_sur_B_verdict": sm_c.get("verdict")}
     if args.enregistrer:
         s["issues_ajoutees"] = enregistrer(reg, iss, s)
         if args.metaculus:

@@ -136,6 +136,7 @@ class AlphabetBot(FallTemplateBot2026):
                      "resolution_prevue": fin.astimezone(timezone.utc).date().isoformat() if fin else None,
                      "bras_poste": "A", "prediction": valeur,
                      "publie": bool(self.publish_reports_to_metaculus), "mode": os.environ.get("ALPHABET_MODE"),
+                     "modeles": ap.modeles_actifs(),
                      "raisonnement_sha256": hashlib.sha256((rp.reasoning or "").encode("utf-8")).hexdigest()}
             ligne["sceau"] = ap.sceau(ligne)
             ap.REGISTRE.mkdir(parents=True, exist_ok=True)
@@ -175,6 +176,11 @@ class AlphabetBot(FallTemplateBot2026):
         return self._journaliser_autre(question, "conditionnelle",
                                        await super()._run_forecast_on_conditional(question, research))
 
+    async def _critique(self, consigne: str) -> str:
+        """0.6.0 : le contradicteur (ALPHABET_CONTRADICTEUR), d'une autre famille que le lecteur ; en ombre."""
+        m = GeneralLlm(model=os.environ["ALPHABET_CONTRADICTEUR"], temperature=0.1, timeout=180, allowed_tries=2)
+        return await m.invoke(consigne)
+
     async def _llm(self, consigne: str) -> str:
         return await self.get_llm("default", "llm").invoke(consigne)
 
@@ -191,7 +197,8 @@ class AlphabetBot(FallTemplateBot2026):
                                          self._recherche_reelle(), publie=bool(self.publish_reports_to_metaculus),
                                          mode=os.environ.get("ALPHABET_MODE"),
                                          historique=None if os.environ.get("ALPHABET_HISTORIQUE") == "0"
-                                         else self._historique)
+                                         else self._historique,
+                                         critique=self._critique if os.environ.get("ALPHABET_CONTRADICTEUR") else None)
         except Exception as e:  # l'alphabet ne doit jamais empêcher de répondre : bras A, signalé
             logger.exception("alphabet : échec sur %s", question.page_url)
             return ReasonedPrediction(prediction_value=a.prediction_value,
@@ -287,6 +294,7 @@ def noter_passage(mode: str, declencheur: str, trouvees: int, lot: list, vus: li
     maintenant = datetime.now(timezone.utc)
     ligne = {"date": maintenant.date().isoformat(), "horodatage": maintenant.isoformat(timespec="seconds"),
              "mode": mode, "declencheur": declencheur, "trouvees": trouvees, "envoyees": len(lot),
+             "modeles": ap.modeles_actifs(),
              "questions": [getattr(q, "page_url", None) for q in lot],
              # 0.5.1 : le jeu de questions REÇU, pas seulement celui traité : ce qui était visible à cette date.
              "trouvees_ids": sorted(str(getattr(q, "id_of_question", None) or getattr(q, "page_url", "")) for q in (vus or lot))}
@@ -341,7 +349,54 @@ if __name__ == "__main__":
         sys.exit(1)
     os.environ["ALPHABET_MODE"] = args.mode  # 0.2.0 (audit, B5/rec. 11) : chaque ligne du registre porte son mode
     check_environment(strict=True)  # jeton Metaculus et clé de modèle, sinon arrêt en rouge
+    client = MetaculusClient()
+    cibles = {"tournament": [client.CURRENT_AI_COMPETITION_ID, client.CURRENT_MINIBENCH_ID],
+              "minibench": [client.CURRENT_MINIBENCH_ID],
+              "test_questions": ["bot-testing-area"]}[args.mode]
+    sauter_deja_prevues = args.mode != "test_questions"
+    avant, avant_autres = len(lignes_registre()), len(lignes_autres())
+    # 0.1.8 (budget) : passage planifié = plafond QUOTIDIEN (questions envoyées aujourd'hui, comptées dans
+    # registre/passages.jsonl, avant toute prévision) ; passage manuel = plafond du passage (champ max_questions).
+    # Un contrôle sans question nouvelle, ou après épuisement du plafond, ne coûte rien.
+    # 0.6.0 : 0 (ou vide) = aucun plafond, toutes les questions ouvertes sont traitées.
+    plafond = int(os.environ.get("ALPHABET_MAX_QUESTIONS") or 0)
+    planifie = os.environ.get("GITHUB_EVENT_NAME") == "schedule"
+    deja = deja_envoyees_aujourdhui() if planifie else 0
+    reste = max(0, plafond - deja) if plafond > 0 else None
+    questions = []
+    for cible in cibles:
+        ouvertes = client.get_all_open_questions_from_tournament(cible)
+        if sauter_deja_prevues:
+            ouvertes = [q for q in ouvertes if not q.already_forecasted]
+        vus = {getattr(q, "id_of_question", None) or q.page_url for q in questions}
+        questions += [q for q in ouvertes if (getattr(q, "id_of_question", None) or q.page_url) not in vus]
+    if plafond <= 0:
+        print(f"🔎  {len(questions)} question(s) nouvelle(s) ; aucun plafond")
+        lot = list(questions)
+    elif planifie:
+        print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond quotidien : {plafond}, déjà envoyées aujourd'hui : "
+              f"{deja}, reste : {reste}")
+        lot = questions[:reste]
+    else:
+        print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond du passage : {plafond}")
+        lot = questions[:plafond]
+    if not lot:
+        print(bilan([], [], not args.sans_publier, [])[0])
+        sys.exit(0)
+    # 0.6.0 : les modèles ne sont sondés que s'il y a des questions ; le premier de chaque suite qui répond est gardé
+    # pour tout le passage.
+    import alphabet_modeles as am
+    choix, essais = asyncio.run(am.choisir())
+    for e_ in essais:
+        print(f"{'✅' if e_['json_ok'] else '❌'}  {e_['role']} : {e_['modele']} ({e_['secondes']} s)"
+              + (f" — {e_['erreur']}" if e_['erreur'] else ""))
+    if not choix["principal"]:
+        print("❌  Aucun modèle principal disponible (ALPHABET_LLM) : passage arrêté, rien n'est posté.")
+        sys.exit(1)
+    am.appliquer(choix)
+    print(f"🧠  Modèles du passage : {os.environ['ALPHABET_MODELES']}")
     bot = construire(publier=not args.sans_publier)
+    bot.skip_previously_forecasted_questions = sauter_deja_prevues
     bloquants, avertissements = problemes(bot)
     for a_ in avertissements:
         print(f"⚠️  {a_}")
@@ -350,36 +405,8 @@ if __name__ == "__main__":
         for b_ in bloquants:
             print(f"    • {b_}")
         sys.exit(1)
-    client = MetaculusClient()
-    cibles = {"tournament": [client.CURRENT_AI_COMPETITION_ID, client.CURRENT_MINIBENCH_ID],
-              "minibench": [client.CURRENT_MINIBENCH_ID],
-              "test_questions": ["bot-testing-area"]}[args.mode]
-    if args.mode == "test_questions":
-        bot.skip_previously_forecasted_questions = False
-    avant, avant_autres = len(lignes_registre()), len(lignes_autres())
-    # 0.1.8 (budget) : passage planifié = plafond QUOTIDIEN (questions envoyées aujourd'hui, comptées dans
-    # registre/passages.jsonl, avant toute prévision) ; passage manuel = plafond du passage (champ max_questions).
-    # Un contrôle sans question nouvelle, ou après épuisement du plafond, ne coûte rien.
-    plafond = int(os.environ.get("ALPHABET_MAX_QUESTIONS") or 5)
-    planifie = os.environ.get("GITHUB_EVENT_NAME") == "schedule"
-    deja = deja_envoyees_aujourdhui() if planifie else 0
-    reste = max(0, plafond - deja)
-    questions = []
-    for cible in cibles:
-        ouvertes = client.get_all_open_questions_from_tournament(cible)
-        if bot.skip_previously_forecasted_questions:
-            ouvertes = [q for q in ouvertes if not q.already_forecasted]
-        vus = {getattr(q, "id_of_question", None) or q.page_url for q in questions}
-        questions += [q for q in ouvertes if (getattr(q, "id_of_question", None) or q.page_url) not in vus]
-    if planifie:
-        print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond quotidien : {plafond}, déjà envoyées aujourd'hui : "
-              f"{deja}, reste : {reste}")
-    else:
-        print(f"🔎  {len(questions)} question(s) nouvelle(s) ; plafond du passage : {plafond}")
-    lot = questions[:reste if planifie else plafond]
-    if lot:  # un contrôle sans question n'écrit rien : pas de commit inutile toutes les 3 heures
-        noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot, questions)
-    rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True)) if lot else []
+    noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot, questions)
+    rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True))
     bot.log_report_summary(rapports, raise_errors=False)
     texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
     print(texte)
