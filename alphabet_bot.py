@@ -138,9 +138,27 @@ class AlphabetBot(FallTemplateBot2026):
         if genre == "asknews":
             return await AskNewsSearcher().call_preconfigured_version(r, requete)
         if genre == "smart_searcher":
-            s = SmartSearcher(model=r.removeprefix("smart-searcher/"), temperature=0, num_searches_to_run=1,
-                              num_sites_per_search=6, use_advanced_filters=False)
-            return await s.invoke(requete)
+            # 0.8.2 : le « moteur exa » est Exa PLUS le petit modèle qui rédige la synthèse. Passage 42489373511 :
+            # 15 échecs comptés à Exa venaient du petit modèle saturé. Sur une saturation, on reprend la synthèse avec
+            # les secours des rôles légers, sans toucher à Exa.
+            import alphabet_modeles as am
+            premier = r.removeprefix("smart-searcher/")
+            secours = [m for m in (os.environ.get("ALPHABET_PETIT_SECOURS") or "").split(",") if m.strip() and m != premier]
+            derniere = None
+            for m in [premier] + secours:
+                s = SmartSearcher(model=m, temperature=0, num_searches_to_run=1, num_sites_per_search=6,
+                                  use_advanced_filters=False)
+                try:
+                    texte = await s.invoke(requete)
+                except Exception as e:
+                    if not am.PASSAGERE.search(f"{type(e).__name__}: {e}"):
+                        raise
+                    derniere = e
+                    continue
+                if m != premier:
+                    BASCULES.append({"de": premier, "vers": m, "role": "synthese_recherche"})
+                return texte
+            raise derniere
         if genre == "llm_web":
             return await r.invoke(f"Find recent factual news (no forecasts, no market odds) about: {requete}")
         # Sans moteur de recherche : réponse du modèle de mémoire, consignée comme requête non exécutée.
@@ -504,5 +522,6 @@ if __name__ == "__main__":
                   detail={"prevues": sum(not isinstance(r, BaseException) for r in rapports),
                           "en_echec": sum(isinstance(r, BaseException) for r in rapports),
                           "bascules_modeles": BASCULES,
-                          "recherche_usage": getattr(ch, "usage", None), "recherche_echecs": getattr(ch, "echecs", None)})
+                          "recherche_usage": getattr(ch, "usage", None), "recherche_echecs": getattr(ch, "echecs", None),
+                          "recherche_erreurs": getattr(ch, "erreurs", None)})
     sys.exit(code)
