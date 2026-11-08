@@ -119,6 +119,7 @@ async def un_test(mq, llm, deja: set[str], apres: datetime | None = None) -> dic
                  evenement=c.get("evenement"), etat=c.get("etat"), vues=c.get("vues"), classe_statut=c.get("classe_statut"),
                  nature_etat_nul=c.get("nature_etat_nul"),
                  puits=c.get("puits"), compte_calcule=bool((c.get("vue") or {}).get("compte_calcule")),
+                 exploratoire=c.get("exploratoire"), symetrique=c.get("symetrique"),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
     if c.get("dossier") is not None:
         d = ap.registre_ecrivable() / "dossiers-retro"

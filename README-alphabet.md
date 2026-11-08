@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.9.0 · skill alphabet-situationnel 0.7.52 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.9.1 · skill alphabet-situationnel 0.7.52 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -96,6 +96,27 @@ n'est **jamais posté** : le statut reste `hors_strate` et A est posté, y compr
 verdict principal, de la correction rétrospective, de la recalibration et de la condition 1 du §27. Un état nul
 exploratoire ne donne pas de chiffre (pas de C = B). Coût : une lecture complète de plus par question binaire hors
 strate 7. `ALPHABET_EXPLORATOIRE=0` pour couper.
+
+**Correction du biais à la hausse, en ombre (0.9.1, décision d'auteur du 2026-11-08).** Le moteur ne fait que monter
+la probabilité (multiplicateurs ≥ 1, décision 9 du skill) : sans correction, C ne peut gagner que sur les questions
+résolues OUI. Deux corrections, scellées, jamais postées :
+
+- **symétrique** (`bras.C.symetrique`, `p_C_symetrique`) : une candidate écartée parce que les faits la
+  **contredisent** compte **contre** l'événement : elle divise la cote par le λ qu'elle aurait apporté (mêmes
+  multiplicateurs, même matrice, même plafond, lus dans le skill). Elle vaut en strate 7 comme en exploratoire, et
+  même en état nul : la lecture peut enfin **abaisser** B. Sans carte ancrée ni candidate contredite, pas de chiffre.
+  Hypothèse déclarée : la symétrie des preuves, à mesurer. Score : `C_symetrique_sur_B`, par canal ;
+- **décalage appris** (`p_C_corrige`), appliqué aussi au C exploratoire, et appris sur les tests rétrospectifs, C
+  exploratoires compris (`n_exploratoires`). Score : `C_exploratoire_corrige_sur_B`.
+
+**Questions non binaires, en exploratoire (0.9.1).** Une question numérique, à date ou à choix multiple est ramenée à
+**une question binaire dérivée**, au point le plus informatif de la prévision du bras A : la médiane (« strictement
+au-dessus ? », « strictement après ? », p_A = 0,5) ou l'option la plus probable (« sera-ce elle ? », p_A = sa
+probabilité). Tout le pipeline (B, puits, lecture, moteur) s'y applique ; **tout y est exploratoire**, même en strate 7 :
+rien n'est posté, la prévision postée reste celle de A. Le résultat est scellé dans `journal-autres.jsonl`
+(`exploratoire`), le dossier dans `dossiers-explo/`, et une ligne du commentaire Metaculus l'horodate. L'issue de la
+question dérivée se déduit sans ambiguïté de l'issue d'origine. Score à part : `exploratoire_non_binaire` (C contre B,
+C contre A au même seuil, symétrique contre B). `ALPHABET_EXPLORATOIRE_AUTRES=0` pour couper.
 
 ## Quand il tourne et ce qu'il coûte
 
@@ -327,6 +348,8 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.9.1** : correction symétrique du biais à la hausse (candidates contredites comptées contre), décalage appliqué au
+  C exploratoire, questions non binaires lues en exploratoire par une question binaire dérivée.
 - **0.9.0** : bras C exploratoire hors strate 7 (skill 0.7.52, `--exploratoire`) : chiffre scellé, jamais posté,
   scoré à part par strate (`C_exploratoire_sur_B`, `statuts_exploratoires`).
 - **0.8.3** : une vue qui cite une référence inexistante ([R7] quand quatre résultats ont été fournis) est
