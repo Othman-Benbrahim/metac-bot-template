@@ -282,6 +282,73 @@ class Tests(unittest.TestCase):
         self.assertEqual(r.ligne["bras"]["C"]["exploratoire"]["statut"], "etat_nul")
         self.assertEqual(r.bras_poste, "A")                               # pas B : hors strate 7, rien ne change
 
+    def test_correction_symetrique(self):
+        # 0.9.1 : une candidate CONTREDITE par les faits abaisse la cote (même λ, inversé) ; en ombre, jamais postée.
+        r, _ = lancer([PLAN, vue(0.10), lecture_vide(("contredit",) * 4)])        # état nul, candidates contredites
+        sy = r.ligne["bras"]["C"]["symetrique"]
+        self.assertEqual(r.bras_poste, "B")                                     # la publication ne change pas
+        self.assertLess(sy["p"], 0.10)                                          # la lecture abaisse enfin B
+        self.assertGreater(sy["lr_contre"], 1)
+        self.assertTrue(sy["contredites"])
+        r, _ = lancer([PLAN, vue(0.10), lecture_vide(("aucun_fait",) * 4)])       # rien de contredit : pas de chiffre
+        self.assertIsNone(r.ligne["bras"]["C"]["symetrique"])
+        r, _ = lancer([PLAN, vue(0.03), lecture()])                              # estimé : C symétrique ≤ C
+        c = r.ligne["bras"]["C"]
+        if c.get("symetrique"):
+            self.assertLessEqual(c["symetrique"]["p"], ap.borner(c["p_C"]) + 1e-9)
+
+    def test_questions_derivees(self):
+        # 0.9.1 : non binaires ramenées à une question binaire au point le plus informatif de A
+        num = {"declared_percentiles": [{"percentile": 0.1, "value": 10}, {"percentile": 0.4, "value": 40},
+                                        {"percentile": 0.6, "value": 60}, {"percentile": 0.9, "value": 90}]}
+        d = ap.question_derivee("numerique", "Combien ?", "valeur officielle", num, "kt")
+        self.assertAlmostEqual(d["seuil"], 50)
+        self.assertEqual(d["p_A"], 0.5)
+        self.assertIn("greater than 50 kt", d["titre"])
+        self.assertEqual(ap.issue_derivee(d, "61.2"), 1)
+        self.assertEqual(ap.issue_derivee(d, "12"), 0)
+        self.assertEqual(ap.issue_derivee(d, "above_upper_bound"), 1)
+        self.assertIsNone(ap.issue_derivee(d, "annulled"))
+        mc = {"predicted_options": [{"option_name": "Alpha", "probability": 0.2}, {"option_name": "Beta", "probability": 0.7},
+                                    {"option_name": "Gamma", "probability": 0.1}]}
+        d = ap.question_derivee("choix_multiple", "Qui ?", "c", mc)
+        self.assertEqual((d["option"], d["p_A"]), ("Beta", 0.7))
+        self.assertEqual(ap.issue_derivee(d, "Beta"), 1)
+        self.assertEqual(ap.issue_derivee(d, "Alpha"), 0)
+        t0 = datetime(2027, 3, 1, tzinfo=timezone.utc).timestamp()
+        dt = {"declared_percentiles": [{"percentile": 0.25, "value": t0 - 86400 * 30}, {"percentile": 0.75, "value": t0 + 86400 * 30}]}
+        d = ap.question_derivee("date", "Quand ?", "c", dt)
+        self.assertEqual(d["seuil_lisible"], "2027-03-01")
+        self.assertEqual(ap.issue_derivee(d, "2027-05-01T00:00:00Z"), 1)
+        self.assertEqual(ap.issue_derivee(d, "2027-01-01"), 0)
+
+    def test_exploration_non_binaire_et_score(self):
+        import score_registre as sr
+        reg = Path(tempfile.mkdtemp(prefix="registre-autres-"))
+        ancien, ap.REGISTRE = ap.REGISTRE, reg
+        ancien_m = ap.appeler_moteur
+        ap.appeler_moteur = lambda *a, **k: {"p": 0.7, "p_sans_cartes": 0.4, "drapeaux": []}
+        d = ap.question_derivee("choix_multiple", "Qui ?", "c", {"predicted_options": [
+            {"option_name": "Beta", "probability": 0.6}, {"option_name": "Alpha", "probability": 0.4}]})
+        try:
+            ex = asyncio.run(ap.explorer_derivee(d, "77", "u", "", "", date(2027, 1, 1), "recherche", LlmSimule(
+                [PLAN, vue(0.4), lecture()]), chercher, True))
+            self.assertEqual(ex["statut"], "estime")                # strate 7 : chiffré normalement, mais JAMAIS posté
+            self.assertAlmostEqual(ex["p_C"], 0.7)
+            self.assertTrue((reg / ex["dossier_fichier"]).is_file())
+            self.assertIn("NOT the posted forecast", ap.ligne_exploratoire_autre(ex))
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": "77", "url": "u", "type": "choix_multiple",
+                     "mode": "minibench", "publie": True, "exploratoire": ex}
+            ligne["sceau"] = ap.sceau(ligne)
+            (reg / "journal-autres.jsonl").write_text(json.dumps(ligne) + "\n", encoding="utf-8")
+            (reg / "issues-autres.jsonl").write_text(json.dumps({"question_id": "77", "issue": "Beta"}) + "\n", encoding="utf-8")
+            r = sr.scorer_explo_autres(reg)
+        finally:
+            ap.REGISTRE, ap.appeler_moteur = ancien, ancien_m
+        self.assertEqual(r["resolues_chiffrees"], 1)
+        self.assertGreater(r["C_exploratoire_sur_B"]["questions_gagnees"], 0)   # 0,7 contre 0,4, issue OUI
+        self.assertIsNotNone(r["C_exploratoire_sur_A"])
+
     def test_score_exploratoire_a_part(self):
         import score_registre as sr
         reg = Path(tempfile.mkdtemp(prefix="registre-explo-"))

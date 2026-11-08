@@ -504,6 +504,41 @@ def lignes_retro(registre: Path) -> list[dict]:
     return sortie
 
 
+def scorer_explo_autres(registre: Path) -> dict | None:
+    """0.9.1 (décision d'auteur) : les questions non binaires lues en exploratoire, via leur question binaire dérivée.
+    À PART de tout verdict : C exploratoire contre B et contre A (la probabilité que A donnait au même seuil)."""
+    f, fi = registre / "journal-autres.jsonl", registre / "issues-autres.jsonl"
+    if not f.is_file():
+        return None
+    issues = {}
+    if fi.is_file():
+        for x in map(json.loads, filter(str.strip, fi.read_text(encoding="utf-8").splitlines())):
+            issues[x["question_id"]] = x["issue"]
+    derniere = {}
+    for x in map(json.loads, filter(str.strip, f.read_text(encoding="utf-8").splitlines())):
+        s_ = x.pop("sceau", None)
+        if s_ == ap.sceau(x) and not est_essai(x) and (x.get("exploratoire") or {}).get("derivee"):
+            derniere[x["question_id"]] = x
+    statuts, paires_b, paires_a, paires_s = {}, [], [], []
+    for qid, x in derniere.items():
+        ex = x["exploratoire"]
+        statuts[str(ex.get("statut"))] = statuts.get(str(ex.get("statut")), 0) + 1
+        y = ap.issue_derivee(ex["derivee"], issues.get(qid)) if qid in issues else None
+        if y is None:
+            continue
+        if isinstance(ex.get("p_C"), (int, float)) and isinstance(ex.get("p_B"), (int, float)):
+            paires_b.append(({"C_exploratoire": ap.borner(ex["p_C"]), "B": ap.borner(ex["p_B"])}, y))
+        if isinstance(ex.get("p_C"), (int, float)):
+            paires_a.append(({"C_exploratoire": ap.borner(ex["p_C"]), "A": ap.borner(ex["derivee"]["p_A"])}, y))
+        if isinstance(ex.get("p_C_symetrique"), (int, float)) and isinstance(ex.get("p_B"), (int, float)):
+            paires_s.append(({"C_symetrique": ap.borner(ex["p_C_symetrique"]), "B": ap.borner(ex["p_B"])}, y))
+    return {"note": "hors verdict ; questions non binaires ramenées à une question binaire dérivée (§29)",
+            "questions": len(derniere), "statuts": statuts, "resolues_chiffrees": len(paires_b),
+            "C_exploratoire_sur_B": comparer(paires_b, "C_exploratoire", "B", borne_gain_C_B()) if paires_b else None,
+            "C_exploratoire_sur_A": comparer(paires_a, "C_exploratoire", "A") if paires_a else None,
+            "C_symetrique_sur_B": comparer(paires_s, "C_symetrique", "B", borne_gain_C_B()) if paires_s else None}
+
+
 def scorer_retro(registre: Path) -> dict:
     """0.5.0 : biais de C mesuré sur les tests rétrospectifs, et décalage qui le corrige (évalué hors échantillon).
     La correction n'est proposée qu'à partir de MIN_CORRECTION questions et si elle gagne hors échantillon."""
@@ -512,11 +547,23 @@ def scorer_retro(registre: Path) -> dict:
     statuts = {}
     for x in intactes:
         statuts[x.get("statut")] = statuts.get(x.get("statut"), 0) + 1
-    chiffres = [x for x in intactes if x.get("p_C") is not None and x.get("p_B") is not None and x.get("issue") in (0, 1)]
-    apparies = [({"C": ap.borner(x["p_C"]), "B": ap.borner(x["p_B"])}, x["issue"]) for x in chiffres]
+    # 0.9.1 : le biais à corriger est celui du MOTEUR, le même en strate 7 et hors strate 7 : les C exploratoires des
+    # tests rétrospectifs servent aussi à l'apprendre (comptés à part : n_exploratoires).
+    def p_c(x):
+        if x.get("p_C") is not None:
+            return x["p_C"]
+        ex = x.get("exploratoire") or {}
+        return ex.get("p_C") if ex.get("statut") == "estime" else None
+    chiffres = [x for x in intactes if p_c(x) is not None and x.get("p_B") is not None and x.get("issue") in (0, 1)]
+    apparies = [({"C": ap.borner(p_c(x)), "B": ap.borner(x["p_B"])}, x["issue"]) for x in chiffres]
+    syms = [({"C_symetrique": ap.borner(x["symetrique"]["p"]), "B": ap.borner(x["p_B"])}, x["issue"])
+            for x in intactes if (x.get("symetrique") or {}).get("p") is not None and x.get("p_B") is not None
+            and x.get("issue") in (0, 1)]
     paires_c = [(p["C"], y) for p, y in apparies]
     sortie = {"lignes": len(tout), "retouchees": [x["question_id"] for x in tout if not x["_intacte"]],
-              "statuts": statuts, "n_chiffres": len(apparies), "biais_C": biais_C(apparies),
+              "statuts": statuts, "n_chiffres": len(apparies),
+              "n_exploratoires": sum(x.get("p_C") is None for x in chiffres), "biais_C": biais_C(apparies),
+              "C_symetrique_sur_B": comparer(syms, "C_symetrique", "B", borne_gain_C_B()) if syms else None,
               "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()) if apparies else None,
               "correction": None}
     if len(paires_c) >= 2:
@@ -588,6 +635,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
     apparies, corriges, critiques, comptes, explos = [], [], [], [], []
+    symetriques, explos_corr = [], []
     for x in resolues:
         y = issues[x["question_id"]]
         cr = x["bras"]["C"].get("critique") or {}
@@ -595,6 +643,12 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             critiques.append(({"C_critique": ap.borner(cr["p_C_critique"]), "C": ap.borner(x["bras"]["C"]["p_C"])}, y))
         bx = x["bras"]["B"]
         ex = x["bras"]["C"].get("exploratoire") or {}
+        sy = (x["bras"]["C"].get("symetrique") or {}).get("p")
+        if sy is not None and bx.get("p") is not None:      # 0.9.1 : version symétrique, en ombre
+            symetriques.append(({"C_symetrique": ap.borner(sy), "B": ap.borner(bx["p"]),
+                                 "_canal": "exploratoire" if ex else "strate_7"}, y))
+        if isinstance(ex.get("p_C_corrige"), (int, float)) and bx.get("p") is not None:
+            explos_corr.append(({"C_exploratoire_corrige": ap.borner(ex["p_C_corrige"]), "B": ap.borner(bx["p"])}, y))
         if isinstance(ex.get("p_C"), (int, float)) and bx.get("p") is not None:   # 0.9.0 (§29) : à part, par strate
             explos.append(({"C_exploratoire": ap.borner(ex["p_C"]), "B": ap.borner(bx["p"]), "_strate": ex.get("strate")}, y))
         pk = bx.get("p_compte")
@@ -691,6 +745,17 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                                                                               "C_exploratoire", "B", borne_gain_C_B()))
                                                      for st in sorted({p_["_strate"] for p_, _ in explos}, key=str)}}
                                      if explos else None),
+            "exploratoire_non_binaire": scorer_explo_autres(registre),
+            "C_symetrique_sur_B": ({"note": "en ombre : candidates contredites comptées CONTRE l'événement (symétrie)",
+                                    "n": len(symetriques),
+                                    "tous": comparer(symetriques, "C_symetrique", "B", borne_gain_C_B()),
+                                    "par_canal": {k: comparer([(p_, y_) for p_, y_ in symetriques if p_["_canal"] == k],
+                                                              "C_symetrique", "B", borne_gain_C_B())
+                                                  for k in ("strate_7", "exploratoire")
+                                                  if any(p_["_canal"] == k for p_, _ in symetriques)}}
+                                   if symetriques else None),
+            "C_exploratoire_corrige_sur_B": (comparer(explos_corr, "C_exploratoire_corrige", "B", borne_gain_C_B())
+                                             if explos_corr else None),
             "compte_sur_B": ({c: comparer([(p, y) for p, y in comptes if c == "tous" or p["_corr"] == c], "compte", "B")
                               for c in ("tous", "exacte", "proche")
                               if any(c == "tous" or p["_corr"] == c for p, _ in comptes)} or None),

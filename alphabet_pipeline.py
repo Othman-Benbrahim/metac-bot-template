@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.9.0"
+VERSION_BOT = "0.9.1"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -228,6 +228,43 @@ def correction_retro() -> dict | None:
 
 
 VALIDITE_CORRECTION = int(os.environ.get("ALPHABET_VALIDITE_CORRECTION") or "120")
+
+
+def symetrique(c: dict) -> dict | None:
+    """0.9.1 (décision d'auteur du 2026-11-08 : « normaliser » le biais à la hausse). Le moteur ne fait que MONTER la
+    probabilité (multiplicateurs ≥ 1, décision 9 du skill) : une lecture ne peut pas dire « les faits vont contre ».
+    Or elle le dit déjà : une candidate écartée parce que les faits la CONTREDISENT (catégorie « contredit ») est une
+    preuve contre l'événement. Version symétrique, en ombre : chaque candidate contredite DIVISE la cote par le λ
+    qu'elle aurait apporté si elle avait été ancrée (mêmes multiplicateurs, même matrice, même plafond, lus dans le
+    skill). Hypothèse déclarée : la symétrie des preuves (qui reste à mesurer).
+
+    Calculée pour tout événement « apparait » qui a un taux de base, y compris en état nul : sans carte ancrée mais
+    avec des candidates contredites, la lecture ABAISSE B ; sans carte ni contredite, pas de chiffre (pas de C = B)."""
+    ev = (c.get("plan") or {}).get("evenement") or {}
+    p_b = c.get("p_B")
+    if ev.get("type") != "apparait" or p_b is None:
+        return None
+    cats = (c.get("dossier") or {}).get("_categories_rejet") or {}
+    contre = sorted(k for k, v in cats.items() if v == "contredit" and "@" in str(k))
+    p_c = c.get("p_C")
+    if p_c is None and not contre:
+        return None
+    M = _moteur()
+    mots = [{"c": k.split("@")[0], "s": int(k.split("@")[1])} for k in contre if k.split("@")[1].isdigit()]
+    src, _ = M.sources_de({"mots": mots}, f"{ev['carte']}@{ev['strate']}", [], set(), set())
+    lr_contre = math.prod(x["lambda"] for x in src) if src else 1.0
+    cote = lambda q: q / (1 - q)
+    b = borner(p_b)
+    lr_pour = cote(borner(p_c)) / cote(b) if p_c is not None else 1.0
+    plafond = float(M.P["plafond_LR"])
+    lr = min(plafond, max(1 / plafond, lr_pour / lr_contre))
+    o = cote(b) * lr
+    p = o / (1 + o)
+    if p > b:
+        p = min(p, max(b, float(M.P["plafond_p0"])))
+    return {"p": borner(p), "lr_pour": lr_pour, "lr_contre": lr_contre, "lr": lr,
+            "contredites": [x["mot"] for x in src], "contredites_sans_action": sorted(set(contre) - {x["mot"] for x in src}),
+            "hypothese": "symétrie : une candidate contredite par les faits divise la cote par le λ qu'elle aurait apporté"}
 
 
 def corriger_C(p_C: float | None, corr: dict | None) -> float | None:
@@ -1111,12 +1148,18 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     """0.9.0 : hors strate 7, la lecture exploratoire est rangée dans « exploratoire » et le statut reste
     « hors_strate » : la règle de publication ne voit rien (A posté, jamais B ni C), le registre garde tout."""
     c = await _alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique, critique)
+    try:
+        c["symetrique"] = symetrique(c)        # 0.9.1 : en ombre, partout où c'est calculable
+    except Exception as e:
+        c["symetrique"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
     if not c.pop("_explo", False):
         return c
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
                                    "etat", "drapeaux") if c.get(k) is not None}
     explo["strate"] = strate
+    explo["p_C_corrige"] = corriger_C(explo.get("p_C"), correction_retro())   # 0.9.1 : la correction en ombre aussi
+    explo["p_C_symetrique"] = (c.get("symetrique") or {}).get("p")
     for k in ("p_C", "p_sans_cartes", "rho", "nature_etat_nul"):
         c.pop(k, None)
     c.update(statut="hors_strate", exploratoire=explo,
@@ -1385,6 +1428,114 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
     return f"{tete}\nAlphabet not used on this question ({c.get('statut')}: {motif}).\n\nModel-alone reasoning:\n{a_raison}"
 
 
+# --------------------------------------------------------------------------- 0.9.1 : non binaires, en exploratoire
+
+EXPLORATOIRE_AUTRES = os.environ.get("ALPHABET_EXPLORATOIRE_AUTRES", "1") not in ("0", "non", "false")
+
+
+def mediane_percentiles(pcts: list[tuple[float, float]]) -> float | None:
+    """La médiane d'une distribution donnée par percentiles [(0,1 ; v), …] (interpolation linéaire)."""
+    pts = sorted((float(a), float(b)) for a, b in pcts)
+    for (p0, v0), (p1, v1) in zip(pts, pts[1:]):
+        if p0 <= 0.5 <= p1:
+            return v0 if p1 == p0 else v0 + (v1 - v0) * (0.5 - p0) / (p1 - p0)
+    return None
+
+
+def question_derivee(genre: str, titre: str, criteres: str, prediction, unite: str = "") -> dict | None:
+    """0.9.1 (décision d'auteur du 2026-11-08) : une question non binaire ramenée à UNE question binaire, au point le
+    plus informatif de la prévision du bras A : la médiane (numérique, date : « strictement au-dessus / après ? »,
+    p_A = 0,5) ou l'option la plus probable (choix multiple : « sera-ce elle ? », p_A = sa probabilité). Elle se
+    résout sans ambiguïté à partir de l'issue de la question d'origine."""
+    if genre in ("numerique", "date"):
+        pcts = [(x["percentile"], x["value"]) for x in (prediction or {}).get("declared_percentiles") or []]
+        t = mediane_percentiles(pcts)
+        if t is None:
+            return None
+        if genre == "date":
+            from datetime import datetime as _dt
+            jour = _dt.fromtimestamp(t, tz=timezone.utc).date().isoformat()
+            return {"genre": genre, "seuil": t, "seuil_lisible": jour, "sens": ">", "p_A": 0.5,
+                    "titre": f"Derived from: « {titre} » — will the date that resolves this question be strictly after {jour}?",
+                    "criteres": f"YES if the resolving date is after {jour}; NO otherwise. Original criteria: {criteres}"}
+        return {"genre": genre, "seuil": t, "seuil_lisible": f"{t:g} {unite}".strip(), "sens": ">", "p_A": 0.5,
+                "titre": f"Derived from: « {titre} » — will the resolved value be strictly greater than {t:g} {unite}?".strip(),
+                "criteres": f"YES if the resolving value is > {t:g} {unite}; NO otherwise. Original criteria: {criteres}"}
+    if genre == "choix_multiple":
+        opts = [(o["option_name"], float(o["probability"])) for o in (prediction or {}).get("predicted_options") or []]
+        if not opts:
+            return None
+        nom, pr = max(opts, key=lambda x: x[1])
+        return {"genre": genre, "option": nom, "p_A": pr,
+                "titre": f"Derived from: « {titre} » — will the outcome be « {nom} »?",
+                "criteres": f"YES if the question resolves to « {nom} »; NO otherwise. Original criteria: {criteres}"}
+    return None
+
+
+def issue_derivee(derivee: dict, issue: str) -> int | None:
+    """L'issue (0/1) de la question dérivée, à partir de l'issue brute de la question d'origine ; None si annulée."""
+    i = str(issue or "").strip()
+    if i.lower() in ("annulled", "ambiguous", ""):
+        return None
+    if derivee["genre"] == "choix_multiple":
+        return int(i == derivee["option"])
+    if i.lower() in ("above_upper_bound", "below_lower_bound"):
+        return int(i.lower() == "above_upper_bound")
+    if derivee["genre"] == "date":
+        try:
+            t = datetime.fromisoformat(i.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+        t = t if t.tzinfo else t.replace(tzinfo=timezone.utc)
+        return int(t.timestamp() > float(derivee["seuil"]))
+    try:
+        return int(float(i) > float(derivee["seuil"]))
+    except ValueError:
+        return None
+
+
+async def explorer_derivee(derivee: dict, ident: str, url: str, contexte: str, precisions: str, resolution: date,
+                           recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
+                           historique: Historique | None = None) -> dict:
+    """Le pipeline complet (B, puits, lecture, moteur) sur la question dérivée. TOUT y est exploratoire, quelle que
+    soit la strate : rien n'est posté. Le dossier est scellé à part (dossiers-explo/)."""
+    maintenant = datetime.now(timezone.utc)
+    aujourdhui = maintenant.date().isoformat()
+    jours = max(1, (resolution - maintenant.date()).days)
+    q = Question(id=f"{ident}-derivee", url=url, titre=derivee["titre"], contexte=contexte, criteres=derivee["criteres"],
+                 precisions=precisions, resolution=resolution)
+    try:
+        c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique)
+    except Exception as e:
+        return {"derivee": derivee, "statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:300]}
+    ex = c.get("exploratoire") or {}
+    p_c = c.get("p_C") if c.get("p_C") is not None else ex.get("p_C")
+    sortie = {"derivee": derivee, "statut": ex.get("statut") or c.get("statut"), "motif": (c.get("motif") or "")[:300],
+              "strate": ((c.get("plan") or {}).get("evenement") or {}).get("strate"),
+              "p_B": c.get("p_B"), "p_C": p_c, "p_C_corrige": corriger_C(p_c, correction_retro()),
+              "p_C_symetrique": (c.get("symetrique") or {}).get("p"), "symetrique": c.get("symetrique"),
+              "nature_etat_nul": c.get("nature_etat_nul") or ex.get("nature_etat_nul"), "modeles": modeles_actifs()}
+    dossier = c.get("dossier")
+    if dossier is not None:
+        d = {k: v for k, v in dossier.items() if not str(k).startswith("_")}
+        rep = registre_ecrivable() / "dossiers-explo"
+        rep.mkdir(exist_ok=True)
+        nom = f"{ident}-{maintenant.strftime('%Y-%m-%dT%H%M%SZ')}.json"
+        (rep / nom).write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+        sortie.update(dossier_fichier=f"dossiers-explo/{nom}", dossier_sha256=sceau(d))
+    return sortie
+
+
+def ligne_exploratoire_autre(ex: dict) -> str:
+    """La ligne ajoutée au commentaire posté : le chiffre exploratoire est horodaté, et dit NON posté."""
+    d = ex.get("derivee") or {}
+    v = ex.get("p_C")
+    cible = d.get("option") or d.get("seuil_lisible")
+    return (f"\n\nExploratory alphabet reading (derived binary question at {cible}; recorded for measurement, NOT the "
+            f"posted forecast): " + (f"{v:.3f}" if isinstance(v, (int, float)) else f"no number ({ex.get('statut')})")
+            + (f"; base rate B {ex['p_B']:.3f}" if isinstance(ex.get("p_B"), (int, float)) else "") + ".")
+
+
 def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
     reg = registre_ecrivable()
     if dossier is not None:
@@ -1435,7 +1586,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "p_sans_ancre": (c.get("vues") or {}).get("p_sans_ancre")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
-                                                        "exploratoire",
+                                                        "exploratoire", "symetrique",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

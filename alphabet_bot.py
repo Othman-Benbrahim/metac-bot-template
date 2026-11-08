@@ -165,7 +165,31 @@ class AlphabetBot(FallTemplateBot2026):
         modele = r if isinstance(r, GeneralLlm) else self.get_llm("default", "llm")
         return await modele.invoke(f"From what you know, list dated facts about: {requete}")
 
-    def _journaliser_autre(self, question, genre: str, rp: ReasonedPrediction):
+    async def _explorer_autre(self, question, genre: str, rp: ReasonedPrediction, research: str):
+        """0.9.1 (décision d'auteur du 2026-11-08) : l'alphabet lit aussi les questions non binaires, ramenées à une
+        question binaire dérivée (médiane ou option la plus probable du bras A). Chiffre scellé, jamais posté."""
+        if not ap.EXPLORATOIRE_AUTRES or genre not in ("numerique", "date", "choix_multiple"):
+            return rp, None
+        try:
+            v = rp.prediction_value
+            valeur = v.model_dump(mode="json") if hasattr(v, "model_dump") else v
+            d = ap.question_derivee(genre, question.question_text, question.resolution_criteria or "", valeur,
+                                    getattr(question, "unit_of_measure", "") or "")
+            if d is None:
+                return rp, {"statut": "sans_derivee"}
+            fin = getattr(question, "scheduled_resolution_time", None) or getattr(question, "close_time", None)
+            ex = await ap.explorer_derivee(
+                d, str(question.id_of_question or question.id_of_post or question.page_url), question.page_url or "",
+                question.background_info or "", question.fine_print or "", fin.astimezone(timezone.utc).date(),
+                research, self._llm, self._chercher, self._recherche_reelle(),
+                None if os.environ.get("ALPHABET_HISTORIQUE") == "0" else self._historique)
+        except Exception as e:      # l'exploratoire ne doit jamais empêcher de répondre
+            logger.exception("exploratoire : échec sur %s", question.page_url)
+            return rp, {"statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:300]}
+        return ReasonedPrediction(prediction_value=rp.prediction_value,
+                                  reasoning=(rp.reasoning or "") + ap.ligne_exploratoire_autre(ex)), ex
+
+    def _journaliser_autre(self, question, genre: str, rp: ReasonedPrediction, exploratoire: dict | None = None):
         """Questions hors alphabet (numériques, choix multiples, dates, conditionnelles) : bras A seul, journalisé et scellé
         dans registre/journal-autres.jsonl, pour garder l'historique complet du bot. Un échec d'écriture ne bloque rien."""
         try:
@@ -182,7 +206,8 @@ class AlphabetBot(FallTemplateBot2026):
                      "bras_poste": "A", "prediction": valeur,
                      "publie": bool(self.publish_reports_to_metaculus), "mode": os.environ.get("ALPHABET_MODE"),
                      "modeles": ap.modeles_actifs(),
-                     "raisonnement_sha256": hashlib.sha256((rp.reasoning or "").encode("utf-8")).hexdigest()}
+                     "raisonnement_sha256": hashlib.sha256((rp.reasoning or "").encode("utf-8")).hexdigest(),
+                     **({"exploratoire": exploratoire} if exploratoire else {})}
             # 0.8.0 (audit m-13) : le commentaire envoyé est scellé, comme pour les binaires.
             ligne["commentaire"] = rp.reasoning or ""
             ligne["sceau"] = ap.sceau(ligne)
@@ -213,14 +238,18 @@ class AlphabetBot(FallTemplateBot2026):
                 rp = await super()._run_forecast_on_numeric(question, research)
             finally:
                 question.unit_of_measure = unite
-        return self._journaliser_autre(question, "numerique", rp)
+        rp, ex = await self._explorer_autre(question, "numerique", rp, research)
+        return self._journaliser_autre(question, "numerique", rp, ex)
 
     async def _run_forecast_on_multiple_choice(self, question, research):
-        return self._journaliser_autre(question, "choix_multiple",
-                                       await super()._run_forecast_on_multiple_choice(question, research))
+        rp = await super()._run_forecast_on_multiple_choice(question, research)
+        rp, ex = await self._explorer_autre(question, "choix_multiple", rp, research)
+        return self._journaliser_autre(question, "choix_multiple", rp, ex)
 
     async def _run_forecast_on_date(self, question, research):
-        return self._journaliser_autre(question, "date", await super()._run_forecast_on_date(question, research))
+        rp = await super()._run_forecast_on_date(question, research)
+        rp, ex = await self._explorer_autre(question, "date", rp, research)
+        return self._journaliser_autre(question, "date", rp, ex)
 
     async def _run_forecast_on_conditional(self, question, research):
         return self._journaliser_autre(question, "conditionnelle",
