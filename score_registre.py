@@ -437,6 +437,13 @@ def stabilite_strate(tout: list[dict]) -> dict:
             "lecture": "accord bas : l'étiquette de strate, donc le droit de chiffrer, dépend du tirage"}
 
 
+def _compter(valeurs: list) -> dict:
+    d: dict = {}
+    for v in valeurs:
+        d[str(v)] = d.get(str(v), 0) + 1
+    return d
+
+
 def statuts_par_version(tout: list[dict]) -> dict:
     """0.4.1 : statuts de l'alphabet par version du bot, essais compris. Effets attendus après 0.4.0, à vérifier :
     hors_strate devrait monter (strate à l'aveugle) ; si sans_vue monte en même temps que la dispersion de B baisse,
@@ -580,13 +587,16 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     questions = une_par_question(retenues)
     resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
-    apparies, corriges, critiques, comptes = [], [], [], []
+    apparies, corriges, critiques, comptes, explos = [], [], [], [], []
     for x in resolues:
         y = issues[x["question_id"]]
         cr = x["bras"]["C"].get("critique") or {}
         if cr.get("p_C_critique") is not None and x["bras"]["C"].get("p_C") is not None:   # 0.6.0 : en ombre
             critiques.append(({"C_critique": ap.borner(cr["p_C_critique"]), "C": ap.borner(x["bras"]["C"]["p_C"])}, y))
         bx = x["bras"]["B"]
+        ex = x["bras"]["C"].get("exploratoire") or {}
+        if isinstance(ex.get("p_C"), (int, float)) and bx.get("p") is not None:   # 0.9.0 (§29) : à part, par strate
+            explos.append(({"C_exploratoire": ap.borner(ex["p_C"]), "B": ap.borner(bx["p"]), "_strate": ex.get("strate")}, y))
         pk = bx.get("p_compte")
         # 0.8.0 (audit M-02, M-03) : le compte se juge contre une mesure qui ne le contient pas : la médiane du modèle
         # (compte exact, devenu B) ou la médiane des vues non ancrées (compte proche).
@@ -669,6 +679,18 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             **({"rappel": f"{len(resolues)} questions résolues : décider du plafonnement de la valeur postée "
                           f"(voir plafonnement_etudie et README-alphabet.md, « Décisions en attente »)."}
                if len(resolues) >= RAPPEL_PLAFONNEMENT else {}),
+            # 0.9.0 (décision d'auteur, skill validation.md §29) : le bras C exploratoire, hors strate 7, jamais posté.
+            # Section À PART : hors verdict principal, hors correction, hors recalibration, hors condition 1 du §27.
+            "statuts_exploratoires": _compter([((x["bras"]["C"].get("exploratoire") or {}).get("statut"))
+                                               for x in publiees if x["bras"]["C"].get("exploratoire")]),
+            "C_exploratoire_sur_B": ({"note": "hors verdict ; lecture hors strate 7, chiffre scellé non posté (§29)",
+                                      "n": len(explos),
+                                      "tous": comparer(explos, "C_exploratoire", "B", borne_gain_C_B()),
+                                      "par_strate": {str(st): dict(n=sum(p_["_strate"] == st for p_, _ in explos),
+                                                                   **comparer([(p_, y_) for p_, y_ in explos if p_["_strate"] == st],
+                                                                              "C_exploratoire", "B", borne_gain_C_B()))
+                                                     for st in sorted({p_["_strate"] for p_, _ in explos}, key=str)}}
+                                     if explos else None),
             "compte_sur_B": ({c: comparer([(p, y) for p, y in comptes if c == "tous" or p["_corr"] == c], "compte", "B")
                               for c in ("tous", "exacte", "proche")
                               if any(c == "tous" or p["_corr"] == c for p, _ in comptes)} or None),

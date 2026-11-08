@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.8.3 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.9.0 · skill alphabet-situationnel 0.7.52 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -86,6 +86,16 @@ Metaculus (bras A) et journalise sa prévision à part.
 
 Aujourd'hui, le skill ne chiffre que la géopolitique (décision L7 du skill). Hors de ce domaine, le bot enregistre le
 taux de base B et poste A. Cette règle ne changera pas avant la levée de L7, sur mesures.
+
+**Bras C exploratoire (0.9.0, décision d'auteur du 2026-11-08 ; skill `validation.md` §29).** Pour laisser sa chance
+à l'alphabet hors de la géopolitique, le bot lit **aussi** chaque question binaire hors strate 7, et le moteur la
+chiffre avec `--exploratoire` (L7 levée pour ce seul calcul). Ce chiffre est **scellé** au registre
+(`bras.C.exploratoire` : statut, `p_C`, strate) et noté dans le commentaire comme « not the posted forecast » ; il
+n'est **jamais posté** : le statut reste `hors_strate` et A est posté, y compris quand la lecture exploratoire est un
+état nul (pas de B hors strate 7). Il est scoré **à part** (`C_exploratoire_sur_B`, au total et par strate), hors du
+verdict principal, de la correction rétrospective, de la recalibration et de la condition 1 du §27. Un état nul
+exploratoire ne donne pas de chiffre (pas de C = B). Coût : une lecture complète de plus par question binaire hors
+strate 7. `ALPHABET_EXPLORATOIRE=0` pour couper.
 
 ## Quand il tourne et ce qu'il coûte
 
@@ -317,6 +327,8 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.9.0** : bras C exploratoire hors strate 7 (skill 0.7.52, `--exploratoire`) : chiffre scellé, jamais posté,
+  scoré à part par strate (`C_exploratoire_sur_B`, `statuts_exploratoires`).
 - **0.8.3** : une vue qui cite une référence inexistante ([R7] quand quatre résultats ont été fournis) est
   refusée ; le contrôle d'attribution note si l'URL citée par chaque mot figure dans les résultats (`url_retrouvee`).
 - **0.8.2** : le moteur « exa » (Exa + petit modèle de synthèse) : une saturation du petit modèle n'est plus comptée

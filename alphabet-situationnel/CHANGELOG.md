@@ -1,9 +1,18 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.51
+> Version : 0.7.52
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.52 — 2026-11-08 · bras exploratoire hors L7
+
+Décision d'auteur : laisser sa chance à l'alphabet hors de la strate 7, **sans changer ce qui est publié**.
+
+- `moteur.py` : option `--exploratoire` (`calculer`, `sonde`, `attribuer`) : lève le seul refus L7 pour ce calcul ;
+  résultat marqué `exploratoire: true` et drapeau en tête ; refuse `--journal` et `--demo`.
+- `validation.md` §29 : ce que fait et ne fait pas l'option ; statut des chiffres pour le §27.
+- `SKILL.md` : phrase. Autotest de l'option.
 
 ## 0.7.51 — 2026-11-05 · séquence de confiance dans `scorer`
 
