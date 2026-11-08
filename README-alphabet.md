@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.7.1 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.7.2 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -43,7 +43,12 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
    **Puits de données (0.7.0)** : avant de compter, le modèle choisit jusqu'à trois appels à des bases ouvertes (voir
    « Puits de données » plus bas). Leurs relevés datés rejoignent les résultats de recherche. Si une série mesure
    exactement le critère de résolution, le **code** compte combien de fenêtres de la durée de la question ont vu le
-   seuil atteint ; ce compte devient une vue de plus, contrôlée comme les autres (`compte_calcule` au registre).
+   seuil atteint. Si la série mesure **exactement** la grandeur du critère, ce compte devient une vue de plus, contrôlée
+   comme les autres (`compte_calcule` au registre). Si elle mesure une grandeur **proche** (autre pays, mesure voisine,
+   série plus large), le compte est montré aux trois estimations, qui doivent partir de lui : le retenir, l'ajuster
+   en nommant l'écart, ou l'écarter en disant pourquoi (`usages_compte`). Dans les deux cas, le compte est scellé à
+   part (`p_compte`, `correspondance`) et scoré en ombre contre B (`compte_sur_B`, par correspondance) : il ne prendra
+   plus de poids que si le registre montre qu'il aide.
 5. **Bras C** : le bot lance les recherches de lecture (12 au plus, les autres sont notées « non cherchées ») ; le
    modèle écrit un dossier à partir des seuls résultats ; le moteur du skill le juge et calcule. Un refus est renvoyé
    au modèle pour correction, deux fois au plus. **Le moteur reste juge : le bot ne fabrique aucun chiffre.**
@@ -296,6 +301,8 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.7.2** : compte « proche » : une série voisine du critère ancre les estimations de B, et le compte est scoré
+  en ombre (`compte_sur_B`).
 - **0.7.1** : en-tête User-Agent conforme à la politique de Wikimedia (Wikipedia, Wikidata) ; texte des articles
   nettoyé des modèles imbriqués.
 - **0.7.0** : puits de données (`alphabet_puits.py`) : 18 bases ouvertes bornées à la date d'information ; compte

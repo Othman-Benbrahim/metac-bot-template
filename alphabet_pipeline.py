@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.7.1"
+VERSION_BOT = "0.7.2"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -282,8 +282,24 @@ observable, l'objet et la période, JAMAIS sur le nom d'une carte, ni sur une pr
 """
 
 
+def bloc_ancrage(ancrage: dict | None) -> str:
+    """0.7.2 : un compte calculé sur une série PROCHE du critère : chaque vue part de lui et dit ce qu'elle en fait."""
+    if not ancrage:
+        return ""
+    return f"""
+COMPTE CALCULÉ PAR LE CODE sur une série PROCHE du critère (pas identique) :
+  {ancrage['fondement']} · {ancrage['source']}
+  {ancrage['calcul']} → fréquence {ancrage['frequence']:.4g} sur {ancrage['periode']}
+  écart déclaré avec le critère : {ancrage.get('ecart_critere')}
+PARS DE CE COMPTE. Trois choix, à dire dans "usage_compte" : « retenu » (l'écart est négligeable : ta fréquence est
+celle du compte), « ajuste » (corrige-le dans le sens de l'écart nommé, et dis dans "calcul" de combien et pourquoi),
+« ecarte » (une meilleure base existe ci-dessous : dis laquelle et pourquoi le compte ne vaut pas ici).
+"""
+
+
 def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: str, jours: int,
-                 historique: list[dict] | None = None, classe: dict | None = None) -> str:
+                 historique: list[dict] | None = None, classe: dict | None = None,
+                 ancrage: dict | None = None) -> str:
     res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{r['resultat'][:3000]}" for i, r in enumerate(references))
     hist = "\n".join(f"[M{i + 1}] {h['titre']} → {str(h['issue']).upper()} (résolue le {h.get('resolue_le', '?')})"
                      for i, h in enumerate(historique or []))
@@ -303,7 +319,7 @@ RÉSULTATS DES RECHERCHES SUR LE TAUX DE BASE :
 
 QUESTIONS DE PRÉVISION DÉJÀ RÉSOLUES, d'apparence voisine (issue seulement) :
 {hist or "(aucune)"}
-
+{bloc_ancrage(ancrage)}
 La fréquence se tire, au choix : (a) des résultats ci-dessus (cite [R1], [R2]…) ; (a') des questions résolues
 ci-dessus, en ne gardant que celles qui comptent le MÊME type d'événement sur une fenêtre comparable (cite [M1]… ;
 fréquence = OUI / questions gardées, ramenée à la fenêtre ; moins de 5 questions gardées : ne l'utilise pas seule) ;
@@ -326,7 +342,7 @@ Rends UNIQUEMENT un objet JSON :
  "ecart_critere": "en quoi la classe compte autre chose que le critère de résolution, ou « identique : … »",
  "resolution": "ce qui fera dire OUI, en une phrase",
  "source_resolution": {{"emetteur": "nommé, jamais « la presse »", "document": "…", "regle_ambiguite": "…"}},
- "motif": "si frequence est null"
+ "motif": "si frequence est null"{', "usage_compte": "retenu|ajuste|ecarte"' if ancrage else ""}
 }}"""
 
 
@@ -636,8 +652,11 @@ CATALOGUE (source : usage ; paramètres) :
 {catalogue}
 
 Le COMPTE (facultatif) sert le taux de base : le code comptera lui-même, sur un appel « comptable », combien de
-fenêtres de {jours} jours ont vu la condition remplie. N'en propose un que si la série mesure EXACTEMENT la grandeur du
-critère de résolution, et prends le seuil dans le critère, jamais ailleurs. Modes : "evenement" (au moins un
+fenêtres de {jours} jours ont vu la condition remplie. Propose-le dès qu'une série mesure la grandeur du critère de
+résolution OU une grandeur proche (autre pays, autre mesure de la même chose, série plus large qui la contient), et
+déclare honnêtement la correspondance : "exacte" (même grandeur, même source ou équivalente) ou "proche" (une grandeur
+voisine : dis l'écart dans "ecart_critere"). Le seuil se prend dans le critère (converti dans l'unité de la série si
+besoin, en le disant), jamais ailleurs. Modes : "evenement" (au moins un
 événement dans la fenêtre, éventuellement filtré par le seuil), "atteint" (au moins une valeur remplit la condition),
 "franchit" (la condition n'était pas remplie au début de la fenêtre et l'est ensuite). "agregation" : "mois" ou
 "annee" pour sommer d'abord les valeurs (morts par mois, par exemple), sinon null.
@@ -647,6 +666,7 @@ Rends UNIQUEMENT un objet JSON :
  "appels": [{{"source": "nom du catalogue", "params": {{...}}, "pourquoi": "ce que l'appel mesure ici"}}],
  "compte": null ou {{"appel": indice (0 pour le premier appel), "mode": "evenement|atteint|franchit",
      "seuil": nombre ou null, "sens": ">=|>|<=|<", "agregation": null | "mois" | "annee",
+     "correspondance": "exacte|proche",
      "classe_de_reference": "les fenêtres comptées, sans nom de carte",
      "ecart_critere": "en quoi ce compte diffère du critère de résolution, ou « identique : … »",
      "resolution": "ce qui fera dire OUI, en une phrase",
@@ -713,7 +733,8 @@ async def puits(q: Question, plan: dict, llm: Llm, aujourdhui: str, jours: int,
                        "motif_sans_alternative": "compte calculé sur une seule série du catalogue ; pas de seconde classe",
                        "ecart_critere": spec.get("ecart_critere") or "non précisé",
                        "resolution": spec.get("resolution") or "", "source_resolution": spec.get("source_resolution") or {},
-                       "compte_calcule": True}
+                       "compte_calcule": True,
+                       "correspondance": "exacte" if spec.get("correspondance") == "exacte" else "proche"}
     elif spec is not None:
         trace["compte"] = {"spec": spec, "motif": "appel du compte absent ou en échec"}
     return trace, resultats, vue
@@ -886,14 +907,14 @@ async def definir_classe(q: Question, plan: dict, refs: list[dict], hist: list[d
 
 async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list[dict], llm: Llm, aujourdhui: str,
                            jours: int, classe: dict | None = None,
-                           vue_calculee: dict | None = None) -> tuple[dict | None, dict]:
+                           vue_calculee: dict | None = None, ancrage: dict | None = None) -> tuple[dict | None, dict]:
     """0.3.0 : NB_VUES estimations indépendantes du taux de base ; on garde la vue MÉDIANE (une vraie vue, avec sa
     source : aucun chiffre n'est fabriqué par moyenne). La dispersion est journalisée : c'est la mesure de stabilité
     de B demandée avant toute autre décision sur B."""
     valides, refus = [], []
     for _ in range(NB_VUES):
         try:
-            v = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours, hist, classe)))
+            v = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours, hist, classe, ancrage)))
         except Exception as e:
             refus.append(f"illisible : {e}"[:200])
             continue
@@ -907,7 +928,9 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
             valides.append(vue_calculee)
     freqs = sorted(float(v["frequence"]) for v in valides)
     suivi = {"demandees": NB_VUES, "valides": len(valides), "frequences": freqs, "refus": refus,
-             "dispersion": (freqs[-1] - freqs[0]) if len(freqs) > 1 else None, "vue_calculee": calc}
+             "dispersion": (freqs[-1] - freqs[0]) if len(freqs) > 1 else None, "vue_calculee": calc,
+             **({"usages_compte": [v.get("usage_compte") for v in valides if not v.get("compte_calcule")]}
+                if ancrage else {})}
     if not valides:
         return None, suivi
     valides.sort(key=lambda v: float(v["frequence"]))
@@ -950,7 +973,13 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     trace["classe"] = classe
     # 0.4.1 : distinguer au registre « classe figée », « échec de la définition » et « étape désactivée ».
     trace["classe_statut"] = "desactivee" if not CLASSE_FIGEE else ("figee" if classe else "echec")
-    vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe, vue_calc)
+    # 0.7.2 : un compte « exact » rejoint les vues ; un compte « proche » les ancre, et reste scellé en ombre (p_compte).
+    ancrage = None
+    if vue_calc is not None:
+        trace["p_compte"], trace["correspondance"] = vue_calc["frequence"], vue_calc["correspondance"]
+        if vue_calc["correspondance"] != "exacte":
+            ancrage, vue_calc = vue_calc, None
+    vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe, vue_calc, ancrage)
     if vue is None:
         refus = trace["vues"]["refus"]
         return dict(trace, statut="sans_vue", motif=(refus[0] if refus else "vue extérieure absente"))
@@ -1197,7 +1226,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "recherches": c.get("recherches_reference"),
                             "vues": c.get("vues"), "historique": c.get("historique"), "classe": c.get("classe"),
                             "classe_statut": c.get("classe_statut"),
-                            "compte_calcule": bool(vue.get("compte_calcule")), "puits": c.get("puits")},
+                            "compte_calcule": bool(vue.get("compte_calcule")), "puits": c.get("puits"),
+                            "p_compte": c.get("p_compte"), "correspondance": c.get("correspondance")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "recherches",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},

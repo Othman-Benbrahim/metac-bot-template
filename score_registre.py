@@ -550,12 +550,16 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     questions = une_par_question(retenues)
     resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
-    apparies, corriges, critiques = [], [], []
+    apparies, corriges, critiques, comptes = [], [], [], []
     for x in resolues:
         y = issues[x["question_id"]]
         cr = x["bras"]["C"].get("critique") or {}
         if cr.get("p_C_critique") is not None and x["bras"]["C"].get("p_C") is not None:   # 0.6.0 : en ombre
             critiques.append(({"C_critique": ap.borner(cr["p_C_critique"]), "C": ap.borner(x["bras"]["C"]["p_C"])}, y))
+        pk = x["bras"]["B"].get("p_compte")
+        if pk is not None and x["bras"]["B"].get("p") is not None:   # 0.7.2 : compte des puits, en ombre
+            comptes.append(({"compte": ap.borner(pk), "B": ap.borner(x["bras"]["B"]["p"]),
+                             "_corr": x["bras"]["B"].get("correspondance")}, y))
         pcc, pb = x["bras"]["C"].get("p_C_corrige"), x["bras"]["B"].get("p")
         if pcc is not None and pb is not None:   # 0.5.0 : C corrigé du biais, scellé, jamais posté
             corriges.append(({"C": ap.borner(pcc), "B": ap.borner(pb)}, y))
@@ -617,6 +621,9 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             **({"rappel": f"{len(resolues)} questions résolues : décider du plafonnement de la valeur postée "
                           f"(voir plafonnement_etudie et README-alphabet.md, « Décisions en attente »)."}
                if len(resolues) >= RAPPEL_PLAFONNEMENT else {}),
+            "compte_sur_B": ({c: comparer([(p, y) for p, y in comptes if c == "tous" or p["_corr"] == c], "compte", "B")
+                              for c in ("tous", "exacte", "proche")
+                              if any(c == "tous" or p["_corr"] == c for p, _ in comptes)} or None),
             "statuts_alphabet": statuts,
             "etats_nuls": {"par_nature": suivi_nuls,
                            "lecture": "structure_absente = candidates écartées sur pièces ; angle_mort = au moins une "

@@ -149,6 +149,38 @@ class TestsPipeline(unittest.TestCase):
         self.assertIsNone(suivi["vue_calculee"]["refus"])
         self.assertTrue(choisie.get("compte_calcule"))               # médiane basse : le compte (≈ 0,25) l'emporte ici
 
+    def test_compte_proche_ancre_les_vues(self):
+        q = ap.Question(id=1, url="u", titre="t", contexte="", criteres="c", precisions="", resolution=date(2027, 1, 1))
+        ancrage = {"frequence": 0.25, "fondement": "[R2] compte calculé par le code (puits de données)",
+                   "source": "FRED — UNRATE", "calcul": "3 fenêtre(s) sur 12", "periode": "2000-2025",
+                   "ecart_critere": "série nationale, la question vise un État", "correspondance": "proche"}
+        t = ap.consigne_vue(q, {}, [], "2026-01-01", 120, None, None, ancrage)
+        self.assertIn("PARS DE CE COMPTE", t)
+        self.assertIn("usage_compte", t)
+        self.assertNotIn("usage_compte", ap.consigne_vue(q, {}, [], "2026-01-01", 120))
+        vus = []
+
+        async def llm_vue(c):
+            vus.append("PARS DE CE COMPTE" in c)
+            return json.dumps({"frequence": 0.3, "classe_de_reference": "c", "source": "s", "fondement": "[R2]",
+                               "periode": "2000-2025", "disponible_le": "2025-12-01", "usage_compte": "ajuste"})
+        anciens = ap.NB_VUES
+        ap.NB_VUES = 2
+        try:
+            choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [], [], llm_vue, "2026-01-01", 120, None, None, ancrage))
+        finally:
+            ap.NB_VUES = anciens
+        self.assertEqual(vus, [True, True])
+        self.assertEqual(suivi["valides"], 2)                        # le compte proche n'entre pas dans les vues
+        self.assertEqual(suivi["usages_compte"], ["ajuste", "ajuste"])
+        self.assertFalse(choisie.get("compte_calcule"))
+
+    def test_score_compte_en_ombre(self):
+        import score_registre as sr
+        paires = [({"compte": 0.8, "B": 0.5, "_corr": "proche"}, 1) for _ in range(6)]
+        r = sr.comparer(paires, "compte", "B")
+        self.assertGreater(r["gain_log_moyen"], 0)
+
     def test_sans_cle_ne_bloque_pas(self):
         q = ap.Question(id=1, url="u", titre="t", contexte="", criteres="c", precisions="", resolution=date(2027, 1, 1))
 
