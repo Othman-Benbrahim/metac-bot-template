@@ -83,5 +83,42 @@ class TestsChaine(unittest.TestCase):
         self.assertIn("T — u", t)
 
 
+    def test_tinyfish_lit_et_borne(self):
+        vu = {}
+
+        class Rep:
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"results": [{"title": "Ancien", "url": "u1", "snippet": "s1", "published_date": "2026-10-01"},
+                                    {"title": "Récent", "url": "u2", "snippet": "s2", "published_date": "2026-11-01"},
+                                    {"title": "Sans date", "url": "u3", "snippet": "s3"}]}
+
+        class Client:
+            def __init__(self, *a, **k):
+                pass
+
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *a):
+                pass
+
+            async def get(self, url, params=None, headers=None):
+                vu.update(headers)
+                return Rep()
+        with mock.patch.dict(os.environ, {"TINYFISH_API_KEY": "tf"}), \
+                mock.patch.object(ar.httpx, "AsyncClient", Client):
+            libre = asyncio.run(ar.tinyfish("q"))
+            borne = asyncio.run(ar.tinyfish("q", datetime(2026, 10, 15, tzinfo=timezone.utc)))
+        self.assertEqual(vu["X-API-Key"], "tf")
+        self.assertIn("Sans date — u3", libre)
+        self.assertIn("Ancien — u1", borne)
+        self.assertNotIn("Récent", borne)
+        self.assertNotIn("Sans date", borne)                       # pas de date : écarté quand on borne
+        self.assertEqual(ar.ORDRE_DEFAUT, "exa,tavily,tinyfish,gdelt")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.6.2 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.6.3 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -110,10 +110,11 @@ donne aucun chiffre ; le moteur recalcule sur une copie du dossier. Le résultat
 est **scellé en ombre et jamais posté** ; le score le compare à C (`C_critique_sur_C`). Il ne sera posté que si le
 registre montre qu'il améliore le score.
 
-**Recherche (0.6.1, 0.6.2)** : chaque requête essaie, dans l'ordre, Exa (première clé, puis seconde clé
-`EXA_API_KEY_2` quand la première échoue, pour le reste du passage), Tavily (`TAVILY_API_KEY`), puis GDELT (sans
+**Recherche (0.6.1 à 0.6.3)** : chaque requête essaie, dans l'ordre, Exa (première clé, puis seconde clé
+`EXA_API_KEY_2` quand la première échoue, pour le reste du passage), Tavily (`TAVILY_API_KEY`), TinyFish (`TINYFISH_API_KEY`, gratuit, sans carte), puis GDELT (sans
 clé). Un moteur sans clé est sauté ; l'ordre se change par la variable `ALPHABET_RECHERCHE_ORDRE`
-(`exa,tavily,gdelt` par défaut). Brave Search, qui exige une carte bancaire même en offre gratuite, a été retiré. Chaque recherche du registre porte son `moteur`. La
+(`exa,tavily,tinyfish,gdelt` par défaut). TinyFish ne sait pas borner par date : quand une date limite
+s'applique, il ne garde que les résultats datés et antérieurs. Brave Search, qui exige une carte bancaire même en offre gratuite, a été retiré. Chaque recherche du registre porte son `moteur`. La
 recherche générale du bras A suit le même secours. Les tests rétrospectifs n'utilisent qu'Exa et GDELT, les deux
 qu'on sait borner à une date passée.
 
@@ -260,6 +261,7 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.6.3** : TinyFish ajouté à la chaîne de recherche, entre Tavily et GDELT.
 - **0.6.2** : Brave Search retiré (carte bancaire exigée).
 - **0.6.1** : chaîne de recherche Exa → seconde clé Exa → Brave Search → Tavily → GDELT ; moteur noté pour chaque
   recherche.

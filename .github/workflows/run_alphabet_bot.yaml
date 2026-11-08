@@ -53,6 +53,7 @@ jobs:
           EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
           EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
           ALPHABET_RECHERCHE_ORDRE: ${{ vars.ALPHABET_RECHERCHE_ORDRE }}
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
