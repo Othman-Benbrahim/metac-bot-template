@@ -1,6 +1,6 @@
 # Situational Alphabet Bot — Abstract
 
-*Othman Ben Brahim · bot version 0.6.3 · skill alphabet-situationnel 0.7.51 · Metaculus FutureEval*
+*Othman Ben Brahim · bot version 0.7.0 · skill alphabet-situationnel 0.7.51 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?
 This bot tests that question in the open, on Metaculus, against questions whose answers nobody knows yet.
@@ -17,7 +17,7 @@ The skill, its engine and its validation rules are documented in
 | Arm | Probability produced by | Purpose |
 |---|---|---|
 | **A** | the language model alone (Metaculus template bot) | control, sealed before any reading |
-| **B** | a reference class found by web search and among already-resolved Metaculus questions (outcomes only); median of three independent estimates | base rate |
+| **B** | a reference class found by web search, open databases and already-resolved Metaculus questions (outcomes only); median of three independent estimates, plus a count computed by code when a dated series measures the resolution criterion | base rate |
 | **C** | the alphabet: reading of the situation, then the engine, starting from B | C vs B = what the reading adds |
 
 The bot posts C when the engine produces a number, B when the reading finds no structure, and A otherwise (no honest
@@ -44,7 +44,7 @@ runs and test-area questions are excluded.
 model*. The engine's card multipliers are still hypothetical; testing them is the point. Results on a few dozen
 questions support no conclusion either way.
 
-**Run.** Every 20 minutes the bot checks for new MiniBench questions, with a hard cap of five new questions per day.
-Code: `alphabet_bot.py`, `alphabet_pipeline.py`, `score_registre.py`; offline tests in `tests/`, run on every push.
+**Run.** Every 20 minutes the bot checks for new MiniBench questions and forecasts every new open one (no daily cap since 0.6.0).
+Code: `alphabet_bot.py`, `alphabet_pipeline.py`, `alphabet_puits.py`, `score_registre.py`; offline tests in `tests/`, run on every push.
 Full description (French): [`README-alphabet.md`](README-alphabet.md). License: MIT for the bot files
 (`LICENSE-alphabet`).

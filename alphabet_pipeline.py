@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.6.3"
+VERSION_BOT = "0.7.0"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -51,6 +51,8 @@ Historique = Callable[[list[str], str], Awaitable[list[dict]]]
 NB_VUES = max(1, int(os.environ.get("ALPHABET_VUES") or "3"))
 CLASSE_FIGEE = os.environ.get("ALPHABET_CLASSE_FIGEE", "1") != "0"   # 0.4.0 : définir la classe avant de compter
 MAX_HISTORIQUE = int(os.environ.get("ALPHABET_MAX_HISTORIQUE") or "15")
+PUITS = os.environ.get("ALPHABET_PUITS", "1") != "0"   # 0.7.0 : puits de données (alphabet_puits.py)
+MAX_APPELS_PUITS = int(os.environ.get("ALPHABET_PUITS_MAX") or "3")
 
 
 # --------------------------------------------------------------------------- moteur et références
@@ -376,11 +378,11 @@ QUESTION : {q.titre}
 CRITÈRES DE RÉSOLUTION : {q.criteres}
 PRÉCISIONS : {q.precisions}
 DATE D'INFORMATION : {aujourdhui} ; fenêtre : {jours} jours (jusqu'au {q.resolution.isoformat()}).
-PLAN RETENU : {json.dumps({k: v for k, v in plan.items() if k != "recherches_reference"}, ensure_ascii=False)}
+PLAN RETENU : {json.dumps({k: v for k, v in plan.items() if k != "recherches_reference" and not k.startswith("_")}, ensure_ascii=False)}
 
 RÉSULTATS DES RECHERCHES EXÉCUTÉES :
 {res}
-
+{donnees_puits(plan)}
 {regles_dossier()}
 
 FICHES DES CANDIDATES :
@@ -612,6 +614,111 @@ def evenement_depuis(plan: dict, vue: dict) -> tuple[dict, str]:
             "vue_exterieure": ve}, evenement
 
 
+def donnees_puits(plan: dict) -> str:
+    """0.7.0 : les relevés des bases ouvertes, citables comme source d'un fait (avec leur URL)."""
+    t = plan.get("_donnees")
+    return ("\nDONNÉES DATÉES DES BASES OUVERTES (citables comme source d'un fait, avec leur nom et leur URL ; "
+            "aucun nombre ne s'invente à partir d'elles) :\n" + t + "\n") if t else ""
+
+
+def consigne_puits(q: Question, plan: dict, aujourdhui: str, jours: int, catalogue: str) -> str:
+    return f"""Étape 1b : les BASES DE DONNÉES OUVERTES. Choisis au plus {MAX_APPELS_PUITS} appels dans le catalogue
+ci-dessous, et seulement ceux qui mesurent ce que demande la question ou son contexte. Aucun appel est une réponse
+admise : rends alors "appels": [].
+
+QUESTION : {q.titre}
+CRITÈRES DE RÉSOLUTION : {q.criteres}
+PRÉCISIONS : {q.precisions}
+DATE D'INFORMATION : {aujourdhui} ; fenêtre : {jours} jours (jusqu'au {q.resolution.isoformat()}).
+ÉVÉNEMENT DU PLAN : {json.dumps(plan.get("evenement"), ensure_ascii=False)}
+
+CATALOGUE (source : usage ; paramètres) :
+{catalogue}
+
+Le COMPTE (facultatif) sert le taux de base : le code comptera lui-même, sur un appel « comptable », combien de
+fenêtres de {jours} jours ont vu la condition remplie. N'en propose un que si la série mesure EXACTEMENT la grandeur du
+critère de résolution, et prends le seuil dans le critère, jamais ailleurs. Modes : "evenement" (au moins un
+événement dans la fenêtre, éventuellement filtré par le seuil), "atteint" (au moins une valeur remplit la condition),
+"franchit" (la condition n'était pas remplie au début de la fenêtre et l'est ensuite). "agregation" : "mois" ou
+"annee" pour sommer d'abord les valeurs (morts par mois, par exemple), sinon null.
+
+Rends UNIQUEMENT un objet JSON :
+{{
+ "appels": [{{"source": "nom du catalogue", "params": {{...}}, "pourquoi": "ce que l'appel mesure ici"}}],
+ "compte": null ou {{"appel": indice (0 pour le premier appel), "mode": "evenement|atteint|franchit",
+     "seuil": nombre ou null, "sens": ">=|>|<=|<", "agregation": null | "mois" | "annee",
+     "classe_de_reference": "les fenêtres comptées, sans nom de carte",
+     "ecart_critere": "en quoi ce compte diffère du critère de résolution, ou « identique : … »",
+     "resolution": "ce qui fera dire OUI, en une phrase",
+     "source_resolution": {{"emetteur": "…", "document": "…", "regle_ambiguite": "…"}}}}
+}}"""
+
+
+async def puits(q: Question, plan: dict, llm: Llm, aujourdhui: str, jours: int,
+                rang_premier: int) -> tuple[dict, list[dict], dict | None]:
+    """0.7.0 : appels aux bases ouvertes, bornés à la date d'information. Rend (trace, résultats à joindre aux
+    recherches du taux de base, vue calculée ou None). Le texte des relevés est aussi gardé dans plan["_donnees"]
+    pour la lecture. `rang_premier` : numéro [Rn] du premier relevé dans la consigne de la vue extérieure."""
+    import alphabet_puits as apz
+    cat = apz.catalogue_texte()
+    trace: dict = {"appels": [], "compte": None}
+    try:
+        demande = extraire_json(await llm(consigne_puits(q, plan, aujourdhui, jours, cat)))
+    except Exception as e:
+        return dict(trace, erreur=f"plan des données illisible : {e}"[:200]), [], None
+    avant = date.fromisoformat(aujourdhui)
+    resultats, releves = [], {}
+    for i, a in enumerate([x for x in (demande.get("appels") or []) if isinstance(x, dict)][:MAX_APPELS_PUITS]):
+        src, params = str(a.get("source") or ""), a.get("params") if isinstance(a.get("params"), dict) else {}
+        journal = {"source": src, "params": params}
+        try:
+            r = await apz.appeler(src, params, avant)
+        except apz.SansCle as e:
+            trace["appels"].append(dict(journal, statut="sans_cle", motif=str(e)))
+            continue
+        except Exception as e:
+            trace["appels"].append(dict(journal, statut="echec", motif=f"{type(e).__name__}: {e}"[:200]))
+            continue
+        if not r["points"]:
+            trace["appels"].append(dict(journal, statut="vide"))
+            continue
+        releves[i] = (r, rang_premier + len(resultats), src)
+        trace["appels"].append(dict(journal, statut="ok", points=len(r["points"]), url=r["url"],
+                                    premier=r["points"][0]["date"], dernier=r["points"][-1]["date"]))
+        resultats.append({"famille": "reference", "cartes": [], "requete": f"puits : {src} {json.dumps(params, ensure_ascii=False)}",
+                          "resultat": apz.texte_releve(r), "executee": True, "moteur": f"puits-{src}"})
+    plan["_donnees"] = "\n\n".join(x["resultat"] for x in resultats)
+    spec, vue = demande.get("compte"), None
+    if isinstance(spec, dict) and isinstance(spec.get("appel"), int) and spec["appel"] in releves:
+        r, rang, src = releves[spec["appel"]]
+        if not apz.CATALOGUE[src]["comptable"]:
+            trace["compte"] = {"spec": spec, "motif": f"{src} n'est pas comptable"}
+        else:
+            seuil = spec.get("seuil")
+            seuil = float(seuil) if isinstance(seuil, (int, float)) and not isinstance(seuil, bool) else None
+            res = apz.compter(r, jours, str(spec.get("mode") or "atteint"), seuil, str(spec.get("sens") or ">="),
+                              spec.get("agregation"), fin=avant)
+            trace["compte"] = {"spec": spec, **res}
+            if res.get("frequence") is not None:
+                a0, a1 = res["periode"][:4], res["periode"][11:15]
+                vue = {"frequence": res["frequence"],
+                       "classe_de_reference": spec.get("classe_de_reference") or f"fenêtres de {jours} jours ({r['titre']})",
+                       "source": f"{r['source']} — {r['titre']} ({r['url']})",
+                       "fondement": f"[R{rang}] compte calculé par le code (puits de données)",
+                       "periode": f"{a0}-{a1}", "disponible_le": res["dernier_point"],
+                       "calcul": (f"{res['k']} fenêtre(s) sur {res['n']} de {jours} jours, disjointes, mode {res['mode']}"
+                                  + (f", seuil {res['sens']} {res['seuil']:g}" if res.get("seuil") is not None else "")
+                                  + (f", agrégation par {res['agregation']}" if res.get("agregation") else "")),
+                       "classe_alternative": None,
+                       "motif_sans_alternative": "compte calculé sur une seule série du catalogue ; pas de seconde classe",
+                       "ecart_critere": spec.get("ecart_critere") or "non précisé",
+                       "resolution": spec.get("resolution") or "", "source_resolution": spec.get("source_resolution") or {},
+                       "compte_calcule": True}
+    elif spec is not None:
+        trace["compte"] = {"spec": spec, "motif": "appel du compte absent ou en échec"}
+    return trace, resultats, vue
+
+
 def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujourdhui: str, jours: int) -> dict:
     d = {k: lecture.get(k, []) for k in ("candidats", "contre_candidate", "mots", "liaisons", "questions")}
     d["rejets"], d["_categories_rejet"] = rejets_moteur(lecture)
@@ -778,7 +885,8 @@ async def definir_classe(q: Question, plan: dict, refs: list[dict], hist: list[d
 
 
 async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list[dict], llm: Llm, aujourdhui: str,
-                           jours: int, classe: dict | None = None) -> tuple[dict | None, dict]:
+                           jours: int, classe: dict | None = None,
+                           vue_calculee: dict | None = None) -> tuple[dict | None, dict]:
     """0.3.0 : NB_VUES estimations indépendantes du taux de base ; on garde la vue MÉDIANE (une vraie vue, avec sa
     source : aucun chiffre n'est fabriqué par moyenne). La dispersion est journalisée : c'est la mesure de stabilité
     de B demandée avant toute autre décision sur B."""
@@ -791,9 +899,15 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
             continue
         m = controle_vue(v, aujourdhui)
         (refus.append(m) if m else valides.append(v))
+    calc = None
+    if vue_calculee is not None:     # 0.7.0 : le compte du code rejoint les vues du modèle, contrôlé comme elles
+        m = controle_vue(vue_calculee, aujourdhui)
+        calc = {"frequence": vue_calculee.get("frequence"), "refus": m}
+        if not m:
+            valides.append(vue_calculee)
     freqs = sorted(float(v["frequence"]) for v in valides)
     suivi = {"demandees": NB_VUES, "valides": len(valides), "frequences": freqs, "refus": refus,
-             "dispersion": (freqs[-1] - freqs[0]) if len(freqs) > 1 else None}
+             "dispersion": (freqs[-1] - freqs[0]) if len(freqs) > 1 else None, "vue_calculee": calc}
     if not valides:
         return None, suivi
     valides.sort(key=lambda v: float(v["frequence"]))
@@ -827,12 +941,16 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     refs = await executer_requetes([{"requete": x} for x in (plan.get("recherches_reference") or []) if isinstance(x, str)],
                                    chercher, recherche_reelle, MAX_RECHERCHES_REFERENCE)
     trace["recherches_reference"] = [{k: v for k, v in r.items() if k != "resultat"} for r in refs]
+    vue_calc = None
+    if PUITS:                        # 0.7.0 : bases ouvertes, bornées à la date d'information
+        trace["puits"], donnees, vue_calc = await puits(q, plan, llm, aujourdhui, jours, len(refs) + 1)
+        refs = refs + donnees
     hist, trace["historique"] = await chercher_historique(plan, historique, aujourdhui)
     classe = await definir_classe(q, plan, refs, hist, llm, aujourdhui, jours) if CLASSE_FIGEE else None
     trace["classe"] = classe
     # 0.4.1 : distinguer au registre « classe figée », « échec de la définition » et « étape désactivée ».
     trace["classe_statut"] = "desactivee" if not CLASSE_FIGEE else ("figee" if classe else "echec")
-    vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe)
+    vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe, vue_calc)
     if vue is None:
         refus = trace["vues"]["refus"]
         return dict(trace, statut="sans_vue", motif=(refus[0] if refus else "vue extérieure absente"))
@@ -855,7 +973,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     lecture, executees, relance = await relancer_angles_morts(q, plan, executees, lecture, llm, chercher,
                                                               recherche_reelle, aujourdhui, jours)
     # 0.5.2 : le texte des résultats, gardé hors registre pour le contrôle d'attribution (controle_attribution).
-    trace["_textes"] = "\n".join(str(r.get("resultat") or "") for r in executees if r.get("executee"))
+    trace["_textes"] = "\n".join(str(r.get("resultat") or "") for r in executees if r.get("executee")) + (
+        "\n" + plan["_donnees"] if plan.get("_donnees") else "")
     if relance:
         trace["relance"] = relance
         trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
@@ -1077,7 +1196,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "fondement_memoire": fondement_memoire(vue) if vue else None,
                             "recherches": c.get("recherches_reference"),
                             "vues": c.get("vues"), "historique": c.get("historique"), "classe": c.get("classe"),
-                            "classe_statut": c.get("classe_statut")},
+                            "classe_statut": c.get("classe_statut"),
+                            "compte_calcule": bool(vue.get("compte_calcule")), "puits": c.get("puits")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "recherches",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},

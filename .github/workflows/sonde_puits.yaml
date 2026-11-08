@@ -1,0 +1,33 @@
+name: Sonde des puits de données
+
+# 0.7.0 : un appel réel par source de données ouverte (alphabet_puits.py), borné à une date passée. N'écrit rien et
+# ne poste rien : sert à vérifier que les connecteurs lisent bien les réponses réelles.
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "date limite des appels (AAAA-MM-JJ)"
+        default: "2026-06-01"
+
+permissions:
+  contents: read
+
+jobs:
+  sonde:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Sonder les sources
+        run: uv run python sonde_puits.py "${{ github.event.inputs.date || '2026-06-01' }}"
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+          UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}

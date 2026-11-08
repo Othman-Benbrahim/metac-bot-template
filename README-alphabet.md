@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.6.3 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.7.0 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -40,6 +40,10 @@ A est calculé et scellé **avant** toute lecture : il ne peut pas être influen
    fois** (ce qui compte pour un cas, sur quelle population, quelle période) ; puis le comptage est fait **trois fois,
    indépendamment, sur cette même classe**. B est la vue médiane (une vraie vue, avec sa source : aucune moyenne
    fabriquée), et l'écart entre les trois est enregistré : c'est alors un écart de mesure, non un changement de classe.
+   **Puits de données (0.7.0)** : avant de compter, le modèle choisit jusqu'à trois appels à des bases ouvertes (voir
+   « Puits de données » plus bas). Leurs relevés datés rejoignent les résultats de recherche. Si une série mesure
+   exactement le critère de résolution, le **code** compte combien de fenêtres de la durée de la question ont vu le
+   seuil atteint ; ce compte devient une vue de plus, contrôlée comme les autres (`compte_calcule` au registre).
 5. **Bras C** : le bot lance les recherches de lecture (12 au plus, les autres sont notées « non cherchées ») ; le
    modèle écrit un dossier à partir des seuls résultats ; le moteur du skill le juge et calcule. Un refus est renvoyé
    au modèle pour correction, deux fois au plus. **Le moteur reste juge : le bot ne fabrique aucun chiffre.**
@@ -121,6 +125,35 @@ qu'on sait borner à une date passée.
 **Surveillance** (workflow « Santé des modèles », toutes les 3 heures) : chaque modèle des suites est sondé, la liste
 des modèles de la passerelle est relue, et une ligne s'ajoute à `registre/sante-modeles.jsonl` si l'état change. Si
 aucun modèle principal ne répond, le workflow passe en rouge et GitHub prévient par e-mail.
+
+## Puits de données (0.7.0)
+
+Le module `alphabet_puits.py` interroge directement des bases ouvertes. Chaque appel est **borné à la date
+d'information** : en prévision réelle, la date du jour ; en test rétrospectif, la date passée de la question. Le
+modèle ne choisit que la source, ses paramètres et, pour un compte, le seuil (pris dans le critère de résolution) ; il
+ne fournit aucun nombre. Les relevés sont aussi donnés au lecteur du bras C, comme faits citables, et le contrôle
+d'attribution les inclut.
+
+| Source | Clé | Usage |
+|---|---|---|
+| FRED, et ses millésimes ALFRED | `FRED_API_KEY` | séries américaines, telles qu'elles étaient publiées à la date d'information |
+| Banque mondiale, BCE, Eurostat | aucune | indicateurs par pays, monnaie, statistiques européennes |
+| Treasury FiscalData, BLS | aucune (`BLS_API_KEY` facultative) | finances fédérales, emploi et prix américains |
+| UNHCR, OCHA FTS, catalogue HDX | aucune | réfugiés, financement humanitaire, jeux de données humanitaires |
+| UCDP | `UCDP_TOKEN` (en attente) | violence organisée et morts estimés |
+| USGS, GDACS, NASA EONET | aucune | séismes, alertes de catastrophes, événements naturels |
+| NASA FIRMS | `FIRMS_MAP_KEY` | feux actifs |
+| Federal Register, Wikidata | aucune | documents présidentiels américains, titulaires d'un poste |
+| Wikipedia, Wayback Machine | aucune | un article ou une page **tels qu'ils étaient** à la date d'information |
+
+Une source sans sa clé n'est pas proposée au modèle. Un appel qui échoue est noté et n'arrête rien. Variables :
+`ALPHABET_PUITS` (`0` pour couper), `ALPHABET_PUITS_MAX` (appels par question, 3 par défaut). Le workflow « Sonde des
+puits de données » fait un appel réel par source, sans rien écrire ni poster.
+
+**Le compte** : fenêtres disjointes de la durée de la question, comptées à rebours depuis la date d'information.
+Mode `evenement` (au moins un événement dans la fenêtre), `atteint` (au moins une valeur remplit la condition) ou
+`franchit` (la condition n'était pas remplie au début, elle l'est ensuite). Moins de cinq fenêtres : pas de compte. À
+0 ou à n fenêtres sur n, la fréquence est ramenée à 1/(2n) ou 1 − 1/(2n), car le moteur exige une fréquence dans ]0, 1[.
 
 ## Comment il est jugé
 
@@ -208,6 +241,8 @@ plus qu'à la main, pour que deux bots ne postent pas sur le même compte.
      `asknews/news-summaries` quand les crédits AskNews seront obtenus), `ALPHABET_VUES` (estimations du taux de
      base, 3 par défaut ; 1 pour économiser), `ALPHABET_HISTORIQUE` (`0` pour couper la recherche des questions
      résolues).
+   - **Puits de données** (secrets, tous gratuits) : `FRED_API_KEY`, `FIRMS_MAP_KEY`, `UCDP_TOKEN` (quand il
+     arrivera), `BLS_API_KEY` (facultative). Les autres sources n'ont pas de clé.
 3. *Actions* : lancer d'abord en mode `test_questions`, vérifier sur Metaculus et dans `registre/`.
 
 Au démarrage, le bot vérifie sa configuration et s'arrête en rouge si elle ne peut rien poster ; à la fin, il affiche
@@ -261,6 +296,8 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.7.0** : puits de données (`alphabet_puits.py`) : 18 bases ouvertes bornées à la date d'information ; compte
+  calculé par le code comme vue du bras B ; relevés citables par le lecteur ; sonde par workflow.
 - **0.6.3** : TinyFish ajouté à la chaîne de recherche, entre Tavily et GDELT.
 - **0.6.2** : Brave Search retiré (carte bancaire exigée).
 - **0.6.1** : chaîne de recherche Exa → seconde clé Exa → Brave Search → Tavily → GDELT ; moteur noté pour chaque
