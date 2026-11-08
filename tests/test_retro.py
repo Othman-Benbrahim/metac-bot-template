@@ -9,6 +9,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from unittest import mock
 
+import os as _os  # noqa: E402
+import tempfile as _tempfile  # noqa: E402
+# 0.7.4 : JAMAIS le vrai registre dans les tests (des lignes fictives y avaient été écrites puis publiées).
+_os.environ.setdefault("ALPHABET_REGISTRE", _tempfile.mkdtemp(prefix="registre-test-"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 os.environ.setdefault("ALPHABET_REGISTRE", tempfile.mkdtemp(prefix="registre-"))

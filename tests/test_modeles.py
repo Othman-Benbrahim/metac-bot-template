@@ -162,5 +162,38 @@ class TestsSaturation(unittest.TestCase):
         self.assertEqual(attentes, [])
 
 
+
+class TestsTenace(unittest.TestCase):
+    def test_leger_passe_au_secours(self):
+        import alphabet_bot as ab
+        appels = []
+
+        async def faux(self, prompt, system_prompt=None):
+            appels.append(self.model)
+            if self.model == "openai/s1":
+                raise RuntimeError("ServiceUnavailableError: at capacity")
+            return "ok"
+        with mock.patch.object(ab.GeneralLlm, "invoke", faux), mock.patch.object(ab.asyncio, "sleep", mock.AsyncMock()):
+            m = ab.LlmTenace("openai/s1", attentes=(20,), secours=["openai/s2"])
+            ab.BASCULES.clear()
+            self.assertEqual(asyncio.run(m.invoke("x")), "ok")
+        self.assertEqual(appels, ["openai/s1", "openai/s1", "openai/s2"])
+        self.assertEqual(ab.BASCULES, [{"de": "openai/s1", "vers": "openai/s2"}])
+
+    def test_erreur_durable_remonte(self):
+        import alphabet_bot as ab
+
+        async def faux(self, prompt, system_prompt=None):
+            raise ValueError("mauvaise requête")
+        with mock.patch.object(ab.GeneralLlm, "invoke", faux):
+            with self.assertRaises(ValueError):
+                asyncio.run(ab.LlmTenace("openai/p", secours=["openai/q"]).invoke("x"))
+
+    def test_secours_du_petit(self):
+        env = {"ALPHABET_LLM": "p1,p2", "ALPHABET_PETIT_LLM": "s1,s2"}
+        am.appliquer({"principal": "p1", "petit": "s1", "contradicteur": None}, env)
+        self.assertEqual(env["ALPHABET_PETIT_SECOURS"], "s2,p1")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -100,6 +100,9 @@ async def choisir(env=os.environ, appel=None, attendre=asyncio.sleep) -> tuple[d
 def appliquer(choix: dict, env=os.environ) -> None:
     """Remplace chaque suite par le modèle retenu, pour la configuration du bot ; « {petit} » dans
     ALPHABET_CHERCHEUR devient le petit modèle retenu (ex. « smart-searcher/{petit} »)."""
+    # 0.7.4 : secours des rôles légers en cours de passage : le reste de la suite légère, puis le principal retenu.
+    reste = [m for m in suite(env.get("ALPHABET_PETIT_LLM")) if m != choix.get("petit")]
+    env["ALPHABET_PETIT_SECOURS"] = ",".join(dict.fromkeys(reste + [choix.get("principal") or ""]).keys()).strip(",")
     if choix.get("principal"):
         env["ALPHABET_LLM"] = choix["principal"]
     if choix.get("petit"):

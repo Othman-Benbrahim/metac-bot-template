@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.7.3 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.7.4 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -301,6 +301,10 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.7.4** : saturation en cours de passage : le modèle principal est attendu puis ressayé (30 s, 90 s), sans
+  changer de codeur ; les rôles légers passent au reste de leur suite, puis au principal (`modèles légers remplacés`
+  au bilan). Registre nettoyé : 392 lignes fictives des tests hors ligne (question 4242), publiées par erreur
+  de la 0.6.3 à la 0.7.3, retirées ; les tests n'écrivent plus jamais dans le vrai registre.
 - **0.7.3** : modèle principal saturé : la suite est ressayée après 60 s puis 120 s avant d'arrêter le passage ;
   trois essais par appel au lieu de deux.
 - **0.7.2** : compte « proche » : une série voisine du critère ancre les estimations de B, et le compte est scoré
