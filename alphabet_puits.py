@@ -72,14 +72,24 @@ def _num(v) -> float | None:
     return x if math.isfinite(x) else None
 
 
-def _borne(points: list[dict], avant: date | None) -> list[dict]:
-    garde = [p for p in points if p.get("date") and (avant is None or p["date"] <= avant.isoformat())]
+def _publie_le(p: dict, retard: int) -> str:
+    """0.8.0 (audit M-05) : la date à laquelle un point était CONNU. La date d'un point est celle de sa période (un mois,
+    une année) ; la valeur n'est publiée qu'après. Un point peut porter sa propre date de publication (`publie_le`)."""
+    if p.get("publie_le"):
+        return p["publie_le"]
+    return (date.fromisoformat(p["date"]) + timedelta(days=retard)).isoformat() if retard else p["date"]
+
+
+def _borne(points: list[dict], avant: date | None, retard: int = 0) -> list[dict]:
+    garde = [p for p in points if p.get("date") and (avant is None or _publie_le(p, retard) <= avant.isoformat())]
     return sorted(garde, key=lambda p: p["date"])[-MAX_POINTS:]
 
 
 def _releve(source: str, titre: str, url: str, points: list[dict], avant: date | None, debut: str | None = None,
-            **extra) -> dict:
-    pts = _borne(points, avant)
+            retard: int = 0, **extra) -> dict:
+    pts = _borne(points, avant, retard)
+    if retard:
+        extra.setdefault("retard_publication_jours", retard)
     return {"source": source, "titre": titre, "url": url, "debut": debut or (pts[0]["date"] if pts else None),
             "date_limite": avant.isoformat() if avant else None, "points": pts, **extra}
 
@@ -107,8 +117,10 @@ async def banque_mondiale(pays: str, indicateur: str, avant: date | None = None)
     # Une valeur annuelle n'est publiée qu'après l'année : bornée, on ne garde que les années closes avant `avant`.
     pts = [{"date": f"{x['date']}-12-31", "valeur": _num(x.get("value"))} for x in lignes if _num(x.get("value")) is not None]
     titre = (lignes[0].get("indicator") or {}).get("value", indicateur) if lignes else indicateur
+    # Indicateurs du Développement dans le monde : l'année N paraît vers juillet de N+1 (≈ 200 jours après le 31/12).
     return _releve("Banque mondiale", f"{titre} — {pays}",
-                   f"https://data.worldbank.org/indicator/{indicateur}?locations={pays}", pts, avant)
+                   f"https://data.worldbank.org/indicator/{indicateur}?locations={pays}", pts, avant, retard=200,
+                   revisions="valeurs actuelles, sans millésime : révisions possibles")
 
 
 async def bce(cle: str, avant: date | None = None) -> dict:
@@ -118,9 +130,23 @@ async def bce(cle: str, avant: date | None = None) -> dict:
     if avant:
         p["endPeriod"] = avant.isoformat()
     t = await _get(f"https://data-api.ecb.europa.eu/service/data/{flux}/{k}", p, json_=False)
-    pts = [{"date": _jour(r.get("TIME_PERIOD")), "valeur": _num(r.get("OBS_VALUE"))} for r in csv.DictReader(io.StringIO(t))]
+    pts = []
+    for r in csv.DictReader(io.StringIO(t)):
+        per, j = str(r.get("TIME_PERIOD") or ""), None
+        m = re.fullmatch(r"(\d{4})-?Q([1-4])", per)
+        if m:                                        # trimestre : connu ≈ 60 jours après sa fin
+            fin_t = date(int(m.group(1)), 3 * int(m.group(2)), 1) + timedelta(days=31)
+            j, pub = date(int(m.group(1)), 3 * int(m.group(2)) - 2, 1).isoformat(), (fin_t + timedelta(days=60)).isoformat()
+        else:
+            j = _jour(per)
+            if j is None:
+                continue
+            jours_ = {10: 1, 7: 35, 4: 400}.get(len(per), 1)   # jour : le lendemain ; mois : +35 j ; année : +400 j
+            pub = (date.fromisoformat(j) + timedelta(days=jours_)).isoformat()
+        pts.append({"date": j, "valeur": _num(r.get("OBS_VALUE")), "publie_le": pub})
     return _releve("BCE", cle, f"https://data.ecb.europa.eu/data/datasets/{flux}/{cle.replace('/', '.')}",
-                   [x for x in pts if x["date"] and x["valeur"] is not None], avant)
+                   [x for x in pts if x["date"] and x["valeur"] is not None], avant,
+                   revisions="publication estimée selon la fréquence (jour +1, mois +35, trimestre +60 après la fin)")
 
 
 async def eurostat(jeu: str, filtres: dict | None = None, avant: date | None = None) -> dict:
@@ -141,7 +167,11 @@ async def eurostat(jeu: str, filtres: dict | None = None, avant: date | None = N
         j = _jour(periode.replace("-Q", "Q").replace("M", "-").replace("Q1", "-03").replace("Q2", "-06").replace("Q3", "-09")
                   .replace("Q4", "-12"))
         if j and _num(v) is not None:
-            pts.append({"date": j, "valeur": _num(v)})
+            # 0.8.0 (audit M-05) : connu ≈ 60 j après le début du mois (mois, ou dernier mois du trimestre), ≈ 450 j
+            # après le début d'une année.
+            retard_ = 450 if re.fullmatch(r"\d{4}", periode) else 60
+            pts.append({"date": j, "valeur": _num(v),
+                        "publie_le": (date.fromisoformat(j) + timedelta(days=retard_)).isoformat()})
     return _releve("Eurostat", f"{d.get('label', jeu)} {json.dumps(filtres or {}, ensure_ascii=False)}",
                    f"https://ec.europa.eu/eurostat/databrowser/view/{jeu}/default/table", pts, avant)
 
@@ -155,7 +185,8 @@ async def tresor(jeu: str, champ: str, filtre: str | None = None, avant: date | 
     d = await _get(f"https://api.fiscaldata.treasury.gov/services/api/fiscal_service/{jeu.strip('/')}", p)
     pts = [{"date": x.get("record_date"), "valeur": _num(x.get(champ))} for x in d.get("data", [])]
     return _releve("U.S. Treasury FiscalData", f"{jeu} · {champ}" + (f" · {filtre}" if filtre else ""),
-                   "https://fiscaldata.treasury.gov/datasets/", [x for x in pts if x["valeur"] is not None], avant)
+                   "https://fiscaldata.treasury.gov/datasets/", [x for x in pts if x["valeur"] is not None], avant,
+                   retard=15, revisions="valeurs actuelles, sans millésime : révisions possibles")
 
 
 async def bls(serie: str, avant: date | None = None) -> dict:
@@ -173,8 +204,10 @@ async def bls(serie: str, avant: date | None = None) -> dict:
         per = x.get("period", "")
         if per.startswith("M") and per != "M13":
             pts.append({"date": f"{x['year']}-{per[1:]}-01", "valeur": _num(x.get("value"))})
+    # Le mois M paraît vers le milieu de M+1 : ≈ 45 jours après le 1er du mois.
     return _releve("U.S. Bureau of Labor Statistics", serie, f"https://data.bls.gov/timeseries/{serie}",
-                   [x for x in pts if x["valeur"] is not None], avant)
+                   [x for x in pts if x["valeur"] is not None], avant, retard=45,
+                   revisions="valeurs actuelles, sans millésime : révisions possibles (FRED/ALFRED les a)")
 
 
 async def unhcr(pays_origine: str | None = None, pays_asile: str | None = None, champ: str = "refugees",
@@ -187,12 +220,17 @@ async def unhcr(pays_origine: str | None = None, pays_asile: str | None = None, 
         p["coa"] = pays_asile
     d = await _get("https://api.unhcr.org/population/v1/population/", p)
     pts = [{"date": f"{x.get('year')}-12-31", "valeur": _num(x.get(champ))} for x in d.get("items", [])]
+    # Global Trends : l'année N paraît vers la mi-juin de N+1 (≈ 170 jours).
     return _releve("UNHCR Refugee Data Finder", f"{champ} · origine {pays_origine or 'toutes'} · asile {pays_asile or 'tous'}",
-                   "https://www.unhcr.org/refugee-statistics/", [x for x in pts if x["valeur"] is not None], avant)
+                   "https://www.unhcr.org/refugee-statistics/", [x for x in pts if x["valeur"] is not None], avant,
+                   retard=170)
 
 
 async def fts(pays: str, annees: list[int] | None = None, avant: date | None = None) -> dict:
-    """OCHA Financial Tracking Service : financement humanitaire reçu par année (pays ISO3)."""
+    """OCHA Financial Tracking Service : financement humanitaire reçu par année (pays ISO3). Totaux VIVANTS, sans
+    millésime : inutilisable pour une date d'information passée (0.8.0, audit M-05)."""
+    if avant is not None and avant < date.today() - timedelta(days=7):
+        raise RuntimeError("FTS : totaux vivants sans millésime, refusés pour une date d'information passée")
     fin = (avant or date.today()).year
     pts = []
     for a in sorted(set(annees or range(fin - 5, fin + 1)))[-8:]:
@@ -319,6 +357,8 @@ async def wikidata_poste(poste: str, avant: date | None = None) -> dict:
     pts = []
     for b in d.get("results", {}).get("bindings", []):
         fin = _jour((b.get("fin") or {}).get("value"))
+        if fin and avant is not None and fin > avant.isoformat():
+            fin = None                                    # 0.8.0 (audit M-06) : une fin de mandat future ne se voit pas
         pts.append({"date": _jour(b["debut"]["value"]), "valeur": None,
                     "titre": f"{b['pLabel']['value']} entre en fonction" + (f" (fin : {fin})" if fin else ""),
                     "url": b["p"]["value"]})
@@ -389,53 +429,53 @@ async def hdx(terme: str, avant: date | None = None) -> dict:
 # --------------------------------------------------------------------------- catalogue
 
 CATALOGUE: dict[str, dict] = {
-    "fred": {"fn": fred, "cle": "FRED_API_KEY", "comptable": True,
+    "fred": {"fn": fred, "nature": "niveau", "cle": "FRED_API_KEY", "comptable": True,
              "params": '{"serie": "identifiant FRED, ex. UNRATE, CPIAUCSL, DGS10, FEDFUNDS", "debut": "AAAA-MM-JJ facultatif"}',
              "pour": "séries économiques et financières américaines (taux, chômage, prix, dette, marchés)"},
-    "banque_mondiale": {"fn": banque_mondiale, "comptable": True,
+    "banque_mondiale": {"fn": banque_mondiale, "nature": "niveau", "comptable": True,
                         "params": '{"pays": "ISO3 ou WLD", "indicateur": "code, ex. NY.GDP.MKTP.KD.ZG"}',
                         "pour": "indicateurs annuels par pays (PIB, inflation, population, dette)"},
-    "bce": {"fn": bce, "comptable": True, "params": '{"cle": "flux/clé SDMX, ex. EXR/D.USD.EUR.SP00.A"}',
+    "bce": {"fn": bce, "nature": "niveau", "comptable": True, "params": '{"cle": "flux/clé SDMX, ex. EXR/D.USD.EUR.SP00.A"}',
             "pour": "taux de change, taux directeurs et monnaie de la zone euro"},
-    "eurostat": {"fn": eurostat, "comptable": True,
+    "eurostat": {"fn": eurostat, "nature": "niveau", "comptable": True,
                  "params": '{"jeu": "code, ex. une_rt_m", "filtres": {"geo": "FR", "...": "une valeur par dimension"}}',
                  "pour": "statistiques européennes (chômage, inflation HICP, PIB) par pays"},
-    "tresor": {"fn": tresor, "comptable": True,
+    "tresor": {"fn": tresor, "nature": "niveau", "comptable": True,
                "params": '{"jeu": "ex. v2/accounting/od/avg_interest_rates", "champ": "ex. avg_interest_rate_amt", '
                          '"filtre": "facultatif, ex. security_desc:eq:Total Marketable"}',
                "pour": "finances fédérales américaines (dette, taux moyens, dépenses)"},
-    "bls": {"fn": bls, "comptable": True, "params": '{"serie": "identifiant BLS, ex. CUUR0000SA0, LNS14000000"}',
+    "bls": {"fn": bls, "nature": "niveau", "comptable": True, "params": '{"serie": "identifiant BLS, ex. CUUR0000SA0, LNS14000000"}',
             "pour": "emploi et prix américains"},
-    "unhcr": {"fn": unhcr, "comptable": True,
+    "unhcr": {"fn": unhcr, "nature": "niveau", "comptable": True,
               "params": '{"pays_origine": "ISO3 facultatif", "pays_asile": "ISO3 facultatif", "champ": "refugees|asylum_seekers|idps"}',
               "pour": "réfugiés et déplacés par année"},
-    "fts": {"fn": fts, "comptable": True, "params": '{"pays": "ISO3", "annees": [2021, 2022, "..."]}',
+    "fts": {"fn": fts, "nature": "flux", "comptable": True, "params": '{"pays": "ISO3", "annees": [2021, 2022, "..."]}',
             "pour": "financement humanitaire reçu par année"},
-    "ucdp": {"fn": ucdp, "cle": "UCDP_TOKEN", "comptable": True,
+    "ucdp": {"fn": ucdp, "nature": "flux", "cle": "UCDP_TOKEN", "comptable": True,
              "params": '{"pays": "nom ou code UCDP facultatif", "debut": "AAAA-MM-JJ"}',
              "pour": "événements de violence organisée et morts estimés (à agréger par mois ou par an)"},
-    "usgs_seismes": {"fn": usgs_seismes, "comptable": True,
+    "usgs_seismes": {"fn": usgs_seismes, "nature": "evenements", "comptable": True,
                      "params": '{"magnitude_min": 6.0, "debut": "AAAA-MM-JJ", "latitude": "…", "longitude": "…", "rayon_km": "…"}',
                      "pour": "séismes (dates et magnitudes)"},
-    "gdacs": {"fn": gdacs, "comptable": True,
+    "gdacs": {"fn": gdacs, "nature": "evenements", "comptable": True,
               "params": '{"types": "EQ;TC;FL;VO;DR;WF;TS", "debut": "AAAA-MM-JJ", "alerte": "Orange;Red"}',
               "pour": "alertes de catastrophes (séismes, cyclones, inondations, volcans, sécheresses, feux, tsunamis)"},
-    "eonet": {"fn": eonet, "comptable": True,
+    "eonet": {"fn": eonet, "nature": "evenements", "comptable": True,
               "params": '{"categorie": "wildfires|severeStorms|volcanoes|floods|… facultatif", "jours": 60}',
               "pour": "événements naturels en cours (état présent)"},
-    "federal_register": {"fn": federal_register, "comptable": True,
+    "federal_register": {"fn": federal_register, "nature": "evenements", "comptable": True,
                          "params": '{"terme": "mots-clés", "type_doc": "PRESDOCU|RULE|PRORULE|NOTICE facultatif"}',
                          "pour": "décrets, règles et documents présidentiels américains"},
-    "firms": {"fn": firms, "cle": "FIRMS_MAP_KEY", "comptable": True,
+    "firms": {"fn": firms, "nature": "flux", "cle": "FIRMS_MAP_KEY", "comptable": True,
               "params": '{"pays": "ISO3", "jours": "1 à 10"}', "pour": "feux actifs détectés par satellite (10 derniers jours)"},
-    "wikidata_poste": {"fn": wikidata_poste, "comptable": True,
+    "wikidata_poste": {"fn": wikidata_poste, "nature": "evenements", "comptable": True,
                        "params": '{"poste": "intitulé en anglais ou QID, ex. President of France"}',
                        "pour": "titulaires successifs d'un poste (durées en fonction, changements)"},
-    "wikipedia": {"fn": wikipedia, "comptable": False, "params": '{"titre": "titre exact de l\'article", "langue": "en"}',
+    "wikipedia": {"fn": wikipedia, "nature": "texte", "comptable": False, "params": '{"titre": "titre exact de l\'article", "langue": "en"}',
                   "pour": "l'article tel qu'il était à la date d'information"},
-    "wayback": {"fn": wayback, "comptable": False, "params": '{"url": "adresse exacte d\'une page"}',
+    "wayback": {"fn": wayback, "nature": "texte", "comptable": False, "params": '{"url": "adresse exacte d\'une page"}',
                 "pour": "une page officielle telle qu'elle était à la date d'information"},
-    "hdx": {"fn": hdx, "comptable": False, "params": '{"terme": "mots-clés"}', "pour": "jeux de données humanitaires (HDX)"},
+    "hdx": {"fn": hdx, "nature": "texte", "comptable": False, "params": '{"terme": "mots-clés"}', "pour": "jeux de données humanitaires (HDX)"},
 }
 
 
@@ -497,7 +537,7 @@ def _remplit(v: float | None, seuil: float | None, sens: str) -> bool:
 
 
 def compter(releve: dict, fenetre_jours: int, mode: str = "atteint", seuil: float | None = None, sens: str = ">=",
-            agregation: str | None = None, fin: date | None = None) -> dict:
+            agregation: str | None = None, fin: date | None = None, nature: str | None = None) -> dict:
     """Fenêtres DISJOINTES de la durée de la question, comptées à rebours depuis `fin` jusqu'au début du relevé.
 
     mode « evenement » : la fenêtre compte si au moins un point (filtré par le seuil s'il y en a un) y tombe ;
@@ -505,9 +545,15 @@ def compter(releve: dict, fenetre_jours: int, mode: str = "atteint", seuil: floa
     mode « franchit »  : si la condition n'était PAS remplie au début de la fenêtre et l'est ensuite.
     Fréquence = k / n ; à 0 ou n, ramenée à 1/(2n) ou 1 - 1/(2n) (le moteur exige ]0, 1[). Moins de 5 fenêtres :
     pas de fréquence."""
-    pts = _agreger([p for p in releve.get("points") or [] if p.get("date")], agregation)
     if mode not in ("evenement", "atteint", "franchit"):
         return {"frequence": None, "motif": f"mode inconnu : {mode}"}
+    # 0.8.0 (audit M-13) : sommer une série de NIVEAUX (taux, indice, PIB) n'a pas de sens ; « atteint » et « franchit »
+    # sans seuil non plus.
+    if agregation in ("mois", "annee") and nature == "niveau":
+        return {"frequence": None, "motif": "agrégation refusée : série de niveaux (seuls flux et événements se somment)"}
+    if mode in ("atteint", "franchit") and seuil is None:
+        return {"frequence": None, "motif": f"mode {mode} sans seuil"}
+    pts = _agreger([p for p in releve.get("points") or [] if p.get("date")], agregation)
     if not pts or fenetre_jours < 1:
         return {"frequence": None, "motif": "relevé vide"}
     fin = fin or date.fromisoformat(releve.get("date_limite") or pts[-1]["date"])

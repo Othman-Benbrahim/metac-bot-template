@@ -45,8 +45,8 @@ async def principal() -> int:
                       if m.startswith("openai/") and cat is not None and m.removeprefix("openai/") not in cat})
     etat = {r: sorted(e["modele"] for e in essais if e["role"] == r and e["json_ok"]) for r in am.ROLES}
     resume = {"disponibles": etat, "absents_du_catalogue": absents}
-    REGISTRE.mkdir(parents=True, exist_ok=True)
-    f = REGISTRE / "sante-modeles.jsonl"
+    import alphabet_pipeline as ap
+    f = ap.registre_ecrivable(REGISTRE) / "sante-modeles.jsonl"
     derniere = None
     if f.is_file():
         lignes = [x for x in f.read_text(encoding="utf-8").splitlines() if x.strip()]

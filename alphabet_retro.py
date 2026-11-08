@@ -4,7 +4,9 @@ décalage qui le corrige (0.5.0). Rien n'est posté sur Metaculus.
     uv run python alphabet_retro.py --n 5 --apres 2026-07-01
 
 Le risque d'un test rétrospectif est la fuite : le modèle ou la recherche connaissent l'issue (§26). Trois parades :
-  1. questions résolues APRÈS --apres (à choisir après la date de connaissance du modèle) ;
+  1. questions OUVERTES après --apres (à choisir après la date de connaissance du modèle). 0.8.0 (audit B-03) : le
+     filtre portait sur la date de RÉSOLUTION alors que la date d'information est l'OUVERTURE : une question ouverte
+     en 2025 et résolue en 2026 était rejouée au 2025, en pleine connaissance du modèle ;
   2. recherche web bornée à la date d'information (Exa, date de publication ; les pages sans date sont écartées) ;
   3. sonde : avant tout, on demande au modèle s'il connaît l'issue ; s'il la connaît et a raison, la question est exclue.
 Le bras A n'est pas calculé (sa recherche n'est pas bornée dans le temps). Les lignes vont dans registre/retro.jsonl,
@@ -83,7 +85,7 @@ async def historique_avant(cles: list[str], aujourdhui: str) -> list[dict]:
     return sortie
 
 
-async def un_test(mq, llm, deja: set[str]) -> dict | None:
+async def un_test(mq, llm, deja: set[str], apres: datetime | None = None) -> dict | None:
     """Une question résolue : sonde, puis bras B et C à la date d'information, scellés avec l'issue."""
     qid = str(mq.id_of_question)
     issue = (mq.resolution_string or "").lower()
@@ -91,6 +93,8 @@ async def un_test(mq, llm, deja: set[str]) -> dict | None:
     fin = mq.scheduled_resolution_time or mq.actual_resolution_time
     if qid in deja or issue not in ("yes", "no") or debut is None or fin is None or fin <= debut:
         return None
+    if apres is not None and debut.astimezone(timezone.utc) <= apres:
+        return None                                  # 0.8.0 (audit B-03) : ouverte avant l'horizon, donc connue
     info = debut.astimezone(timezone.utc)
     ligne = {"type": "retro", "version_bot": ap.VERSION_BOT, "version_skill": ap.version_skill(), "question_id": qid,
              "modeles": ap.modeles_actifs(),
@@ -117,7 +121,7 @@ async def un_test(mq, llm, deja: set[str]) -> dict | None:
                  puits=c.get("puits"), compte_calcule=bool((c.get("vue") or {}).get("compte_calcule")),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
     if c.get("dossier") is not None:
-        d = ap.REGISTRE / "dossiers-retro"
+        d = ap.registre_ecrivable() / "dossiers-retro"
         d.mkdir(parents=True, exist_ok=True)
         nom = f"{qid}-{info.date().isoformat()}.json"
         (d / nom).write_text(json.dumps(c["dossier"], ensure_ascii=False, indent=1), encoding="utf-8")
@@ -127,9 +131,9 @@ async def un_test(mq, llm, deja: set[str]) -> dict | None:
 
 
 def ecrire(ligne: dict) -> None:
-    ap.REGISTRE.mkdir(parents=True, exist_ok=True)
+    reg = ap.registre_ecrivable()
     ligne["sceau"] = ap.sceau(ligne)
-    with open(ap.REGISTRE / RETRO, "a", encoding="utf-8", newline="\n") as f:
+    with open(reg / RETRO, "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True) + "\n")
 
 
@@ -157,7 +161,7 @@ async def principal(n: int, apres: str) -> int:
     async def llm(consigne: str) -> str:
         return await llm_modele.invoke(consigne)
     seuil = datetime.fromisoformat(apres).replace(tzinfo=timezone.utc)
-    f = ApiFilter(allowed_types=["binary"], allowed_statuses=["resolved"], scheduled_resolve_time_gt=seuil,
+    f = ApiFilter(allowed_types=["binary"], allowed_statuses=["resolved"], open_time_gt=seuil,
                   scheduled_resolve_time_lt=datetime.now(timezone.utc))
     candidates = await MetaculusClient().get_questions_matching_filter(f, num_questions=max(4 * n, 20),
                                                                        randomly_sample=True,
@@ -167,7 +171,7 @@ async def principal(n: int, apres: str) -> int:
         if faites >= n:
             break
         try:
-            ligne = await un_test(mq, llm, deja)
+            ligne = await un_test(mq, llm, deja, seuil)
         except Exception as e:
             ligne = {"type": "retro", "version_bot": ap.VERSION_BOT, "question_id": str(mq.id_of_question),
                      "url": mq.page_url, "statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:300]}
@@ -186,6 +190,6 @@ if __name__ == "__main__":
     a = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     a.add_argument("--n", type=int, default=int(os.environ.get("ALPHABET_RETRO_N") or 5), help="questions à tester")
     a.add_argument("--apres", default=os.environ.get("ALPHABET_RETRO_APRES") or "2026-07-01",
-                   help="questions résolues après cette date (après la date de connaissance du modèle)")
+                   help="questions OUVERTES après cette date (après la date de connaissance du modèle)")
     args = a.parse_args()
     sys.exit(asyncio.run(principal(args.n, args.apres)))

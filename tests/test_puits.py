@@ -11,7 +11,8 @@ from unittest import mock
 import os as _os  # noqa: E402
 import tempfile as _tempfile  # noqa: E402
 # 0.7.4 : JAMAIS le vrai registre dans les tests (des lignes fictives y avaient été écrites puis publiées).
-_os.environ.setdefault("ALPHABET_REGISTRE", _tempfile.mkdtemp(prefix="registre-test-"))
+_os.environ["ALPHABET_REGISTRE"] = _tempfile.mkdtemp(prefix="registre-test-")  # 0.8.0 : forcé, pas setdefault
+_os.environ["ALPHABET_TESTS"] = "1"
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import alphabet_pipeline as ap  # noqa: E402
 import alphabet_puits as apz  # noqa: E402
@@ -37,6 +38,13 @@ class TestsCompte(unittest.TestCase):
         self.assertEqual((att["k"], att["n"]), (3, 11))
         self.assertEqual(fr["k"], 2)                                   # 2013 était déjà au-dessus : pas un franchissement
         self.assertIsNone(apz.compter(releve(pts[:3]), 365, "atteint", 4)["frequence"])    # < 5 fenêtres
+
+    def test_agregation_typee(self):
+        pts = [{"date": f"20{a:02d}-01-01", "valeur": 5.0} for a in range(10, 22)]
+        r = apz.compter(releve(pts), 365, "atteint", 50, ">=", "annee", fin=date(2021, 1, 2), nature="niveau")
+        self.assertIsNone(r["frequence"])
+        self.assertIn("niveaux", r["motif"])
+        self.assertIn("sans seuil", apz.compter(releve(pts), 365, "franchit", None)["motif"])
 
     def test_agregation_mensuelle(self):
         pts = [{"date": "2024-01-03", "valeur": 30}, {"date": "2024-01-20", "valeur": 30}, {"date": "2024-02-10", "valeur": 10}]
@@ -107,6 +115,21 @@ class TestsConnecteurs(unittest.TestCase):
         t = apz._texte_wiki("{{Infobox conflict\n| date = {{start date|2023|4|15}}\n| place = [[Sudan]]}}\nThe war began.")
         self.assertEqual(t, "The war began.")
 
+    def test_retard_de_publication(self):
+        # 0.8.0 (audit M-05) : un point n'est connu qu'après sa publication, pas à la date de sa période
+        pts = [{"date": "2025-12-31", "valeur": 1.0}, {"date": "2024-12-31", "valeur": 2.0}]
+        r = apz._releve("S", "T", "u", pts, date(2026, 6, 1), retard=200)
+        self.assertEqual([p["date"] for p in r["points"]], ["2024-12-31"])     # 2025 paraît vers juillet 2026
+        vu = []
+        csv_ = "TIME_PERIOD,OBS_VALUE\n2026-04,1.1\n2026-05,1.2\n2026-05-29,1.3\n"
+        with mock.patch.object(apz.httpx, "AsyncClient", client(csv_, vu)):
+            r = asyncio.run(apz.bce("EXR/M.USD.EUR.SP00.A", date(2026, 6, 1)))
+        self.assertEqual([p["date"] for p in r["points"]], ["2026-04-01", "2026-05-29"])   # mai (mensuel) pas encore
+
+    def test_fts_refuse_le_passe(self):
+        with self.assertRaises(RuntimeError):
+            asyncio.run(apz.fts("SDN", None, date(2025, 1, 1)))
+
     def test_catalogue_sans_cle_cache_la_source(self):
         t = apz.catalogue_texte({"FRED_API_KEY": "k"})
         self.assertIn("- fred", t)
@@ -142,16 +165,17 @@ class TestsPipeline(unittest.TestCase):
 
         async def llm_vue(c):
             return json.dumps({"frequence": 0.9, "classe_de_reference": "c", "source": "s", "fondement": "[R1]",
-                               "periode": "2000-2025", "disponible_le": "2025-12-01"})
+                               "periode": "2000-2025", "disponible_le": "2025-12-01", "expression": "9/10"})
         anciens = ap.NB_VUES
         ap.NB_VUES = 1
         try:
             choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [], [], llm_vue, "2026-01-01", 120, None, vue))
         finally:
             ap.NB_VUES = anciens
-        self.assertEqual(suivi["valides"], 2)
+        self.assertEqual(suivi["valides"], 1)                        # 0.8.0 (audit M-02) : le compte n'est plus une vue
         self.assertIsNone(suivi["vue_calculee"]["refus"])
-        self.assertTrue(choisie.get("compte_calcule"))               # médiane basse : le compte (≈ 0,25) l'emporte ici
+        self.assertTrue(choisie.get("compte_calcule"))               # compte exact : il EST le taux de base
+        self.assertAlmostEqual(suivi["p_modele"], 0.9)               # la médiane du modèle reste en ombre
 
     def test_compte_proche_ancre_les_vues(self):
         q = ap.Question(id=1, url="u", titre="t", contexte="", criteres="c", precisions="", resolution=date(2027, 1, 1))
@@ -166,18 +190,35 @@ class TestsPipeline(unittest.TestCase):
 
         async def llm_vue(c):
             vus.append("PARS DE CE COMPTE" in c)
-            return json.dumps({"frequence": 0.3, "classe_de_reference": "c", "source": "s", "fondement": "[R2]",
-                               "periode": "2000-2025", "disponible_le": "2025-12-01", "usage_compte": "ajuste"})
+            f = 0.3 if len(vus) == 1 else 0.4
+            return json.dumps({"frequence": f, "classe_de_reference": "c", "source": f"s{len(vus)}", "fondement": "[R2]",
+                               "periode": "2000-2025", "disponible_le": "2025-12-01", "usage_compte": "ajuste",
+                               "expression": repr(f)})
         anciens = ap.NB_VUES
         ap.NB_VUES = 2
         try:
             choisie, suivi = asyncio.run(ap.vues_exterieures(q, {}, [], [], llm_vue, "2026-01-01", 120, None, None, ancrage))
         finally:
             ap.NB_VUES = anciens
-        self.assertEqual(vus, [True, True])
+        self.assertEqual(vus, [True, False])                         # 0.8.0 (audit M-03) : seule la 1re vue est ancrée
         self.assertEqual(suivi["valides"], 2)                        # le compte proche n'entre pas dans les vues
-        self.assertEqual(suivi["usages_compte"], ["ajuste", "ajuste"])
+        self.assertEqual(suivi["usages_compte"], ["ajuste"])
+        self.assertAlmostEqual(suivi["p_sans_ancre"], 0.4)           # la mesure aveugle, pour juger le compte
+        self.assertEqual(suivi["sources"], ["s1", "s2"])
         self.assertFalse(choisie.get("compte_calcule"))
+
+    def test_expression_recalculee(self):
+        v = {"frequence": 0.025, "expression": "1 - (1 - 3/40) ** (120/365)"}
+        self.assertIsNone(ap.controle_calcul(v))
+        self.assertAlmostEqual(v["frequence"], 1 - (1 - 3 / 40) ** (120 / 365))
+        # registre, question 43329 : déclaré 0,00037 pour un calcul qui donne 0,0016
+        self.assertIn("non reproductible", ap.controle_calcul({"frequence": 0.00037, "expression": "0.0435 * 54/1461"}))
+        self.assertIn("sans expression", ap.controle_calcul({"frequence": 0.2}))
+        self.assertIn("illisible", ap.controle_calcul({"frequence": 0.2, "expression": "__import__('os')"}))
+
+    def test_extraire_json_robuste(self):
+        self.assertEqual(ap.extraire_json('voici {"a": 1} puis {"b": 2}'), {"a": 1})
+        self.assertEqual(ap.extraire_json('{"a": 1,}'), {"a": 1})
 
     def test_score_compte_en_ombre(self):
         import score_registre as sr
@@ -201,6 +242,27 @@ class TestsIsolement(unittest.TestCase):
     def test_le_vrai_registre_est_hors_de_portee(self):
         vrai = (Path(__file__).resolve().parents[1] / "registre").resolve()
         self.assertNotEqual(ap.REGISTRE.resolve(), vrai)
+
+    def test_garde_refuse_le_vrai_registre(self):
+        ancien, ap.REGISTRE = ap.REGISTRE, ap.VRAI_REGISTRE
+        try:
+            with self.assertRaises(ap.RegistreInterdit):
+                ap.ecrire_registre({"question_id": "x", "bras": {"A": {"horodatage": "t"}}}, None)
+        finally:
+            ap.REGISTRE = ancien
+
+    def test_sceau_du_dossier_relu(self):
+        import score_registre as sr
+        import tempfile as tf
+        reg = Path(tf.mkdtemp(prefix="registre-dossier-"))
+        (reg / "dossiers").mkdir()
+        d = {"mots": [1]}
+        (reg / "dossiers" / "q.json").write_text(json.dumps(d), encoding="utf-8")
+        x = {"dossier_fichier": "dossiers/q.json", "dossier_sha256": ap.sceau(d)}
+        self.assertEqual(sr.etat_dossier(reg, x), "conforme")
+        (reg / "dossiers" / "q.json").write_text(json.dumps({"mots": [2]}), encoding="utf-8")
+        self.assertEqual(sr.etat_dossier(reg, x), "different")
+        self.assertEqual(sr.etat_dossier(reg, {"dossier_fichier": "dossiers/r.json"}), "absent")
 
 
 if __name__ == "__main__":

@@ -10,7 +10,8 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-os.environ.setdefault("ALPHABET_REGISTRE", tempfile.mkdtemp(prefix="registre-"))
+os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-")  # 0.8.0 : forcé, pas setdefault
+os.environ["ALPHABET_TESTS"] = "1"
 import alphabet_modeles as am  # noqa: E402
 import alphabet_pipeline as ap  # noqa: E402
 import test_pipeline as tp  # noqa: E402

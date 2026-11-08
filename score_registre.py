@@ -46,8 +46,23 @@ def lignes(registre: Path) -> list[dict]:
         x = json.loads(brut)
         s = x.pop("sceau", None)
         x["_intacte"] = s == ap.sceau(x)
+        x["_dossier"] = etat_dossier(registre, x)
         sortie.append(x)
     return sortie
+
+
+def etat_dossier(registre: Path, x: dict) -> str | None:
+    """0.8.0 (audit B-02) : le sceau du dossier est RELU. None = pas de dossier ; « conforme » ; « different » (le
+    fichier ne correspond plus au sceau de la ligne : écrasé ou modifié) ; « absent » (fichier disparu)."""
+    if not x.get("dossier_fichier"):
+        return None
+    f = registre / x["dossier_fichier"]
+    if not f.is_file():
+        return "absent"
+    try:
+        return "conforme" if ap.sceau(json.loads(f.read_text(encoding="utf-8"))) == x.get("dossier_sha256") else "different"
+    except ValueError:
+        return "different"
 
 
 def question_metaculus(client, qid: str, url: str):
@@ -90,6 +105,7 @@ def issues_enregistrees(registre: Path) -> dict[str, int]:
 def enregistrer(registre: Path, nouvelles: dict[str, int], score: dict) -> int:
     """Ajoute les issues nouvelles (jamais de réécriture d'une issue déjà notée) et remplace registre/score.json."""
     from datetime import datetime, timezone
+    registre = ap.registre_ecrivable(registre)
     deja = issues_enregistrees(registre)
     maintenant = datetime.now(timezone.utc).isoformat(timespec="seconds")
     ajout = {k: v for k, v in nouvelles.items() if k not in deja}
@@ -109,7 +125,7 @@ def issues_autres(registre: Path, erreurs: list | None = None) -> int:
     f = registre / "journal-autres.jsonl"
     if not f.is_file():
         return 0
-    sortie = registre / "issues-autres.jsonl"
+    sortie = ap.registre_ecrivable(registre) / "issues-autres.jsonl"
     deja = {json.loads(x)["question_id"] for x in sortie.read_text(encoding="utf-8").splitlines() if x.strip()} \
         if sortie.is_file() else set()
     client, n = MetaculusClient(), 0
@@ -503,8 +519,13 @@ def scorer_retro(registre: Path) -> dict:
             bi = ajuster_decalage(paires_c[:i] + paires_c[i + 1:])
             gains.append(gain_pair(_sigmoide(_logit(p) + bi), p, y))
         hors = sum(gains) / len(gains)
+        # 0.8.0 (audit O-06) : « hors > 0 » passe une fois sur deux sous l'absence d'effet. On exige aussi que la borne
+        # basse unilatérale à 95 % du gain hors échantillon soit positive.
+        et = (sum((g - hors) ** 2 for g in gains) / max(1, len(gains) - 1)) ** 0.5
+        basse = hors - 1.645 * et / len(gains) ** 0.5
         sortie["correction"] = {"decalage_logit": b, "n": len(paires_c), "gain_hors_echantillon": hors,
-                                "proposee": len(paires_c) >= MIN_CORRECTION and hors > 0,
+                                "borne_basse_95": basse,
+                                "proposee": len(paires_c) >= MIN_CORRECTION and hors > 0 and basse > 0,
                                 "lecture": f"b < 0 : C surestime ; proposée à partir de {MIN_CORRECTION} questions et "
                                            "si elle gagne hors échantillon ; elle ne touche que C_corrige, jamais le "
                                            "bras posté"}
@@ -516,6 +537,7 @@ def enregistrer_correction(registre: Path, s: dict) -> bool:
     if not c or not c["proposee"]:
         return False
     from datetime import datetime, timezone
+    registre = ap.registre_ecrivable(registre)
     (registre / "correction-retro.json").write_text(json.dumps(
         {"decalage_logit": c["decalage_logit"], "n": c["n"], "gain_hors_echantillon": c["gain_hors_echantillon"],
          "calcule_le": datetime.now(timezone.utc).isoformat(timespec="seconds")}, indent=2) + "\n", encoding="utf-8")
@@ -529,11 +551,14 @@ def est_essai(x: dict) -> bool:
 
 
 def une_par_question(tout: list[dict]) -> list[dict]:
-    """0.2.0 (audit, B4) : la dernière ligne intacte de chaque question (ordre du journal = ordre chronologique)."""
+    """0.2.0 (audit, B4) : la dernière ligne de chaque question. 0.8.0 (audit Azrivo) : « dernière » selon
+    l'horodatage scellé du bras A, pas selon l'ordre du fichier (qu'un rebase git pourrait inverser)."""
     derniere = {}
-    for x in tout:
-        derniere[x["question_id"]] = x
-    return list(derniere.values())
+    for i, x in enumerate(tout):
+        cle = ((x.get("bras") or {}).get("A") or {}).get("horodatage") or "", i
+        if x["question_id"] not in derniere or cle >= derniere[x["question_id"]][0]:
+            derniere[x["question_id"]] = (cle, x)
+    return [x for _, x in derniere.values()]
 
 
 def modele_principal(x: dict) -> str:
@@ -546,7 +571,12 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     codeur, et deux codeurs ne se mélangent pas dans une même mesure."""
     tout = [x for x in lignes(registre) if modele is None or modele_principal(x) == modele]
     retouchees = [x["question_id"] for x in tout if not x["_intacte"]]
-    retenues = [x for x in tout if x["_intacte"] and (inclure_essais or not est_essai(x))]
+    # 0.8.0 (audit B-02) : une ligne dont le dossier ne correspond plus à son sceau perd sa preuve : hors score.
+    dossiers_non_conformes = [{"question_id": x["question_id"], "fichier": x.get("dossier_fichier"),
+                               "etat": x["_dossier"]} for x in tout if x["_dossier"] in ("different", "absent")]
+    retenues = [x for x in tout if x["_intacte"] and x["_dossier"] not in ("different", "absent")
+                and (inclure_essais or not est_essai(x))]
+    publiees = [x for x in tout if x["_intacte"] and (inclure_essais or not est_essai(x))]
     questions = une_par_question(retenues)
     resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
@@ -556,10 +586,16 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         cr = x["bras"]["C"].get("critique") or {}
         if cr.get("p_C_critique") is not None and x["bras"]["C"].get("p_C") is not None:   # 0.6.0 : en ombre
             critiques.append(({"C_critique": ap.borner(cr["p_C_critique"]), "C": ap.borner(x["bras"]["C"]["p_C"])}, y))
-        pk = x["bras"]["B"].get("p_compte")
-        if pk is not None and x["bras"]["B"].get("p") is not None:   # 0.7.2 : compte des puits, en ombre
-            comptes.append(({"compte": ap.borner(pk), "B": ap.borner(x["bras"]["B"]["p"]),
-                             "_corr": x["bras"]["B"].get("correspondance")}, y))
+        bx = x["bras"]["B"]
+        pk = bx.get("p_compte")
+        # 0.8.0 (audit M-02, M-03) : le compte se juge contre une mesure qui ne le contient pas : la médiane du modèle
+        # (compte exact, devenu B) ou la médiane des vues non ancrées (compte proche).
+        if bx.get("correspondance") == "exacte":
+            ref = bx.get("p_modele") if bx.get("compte_calcule") else bx.get("p")
+        else:
+            ref = bx.get("p_sans_ancre") if bx.get("p_sans_ancre") is not None else bx.get("p")
+        if pk is not None and ref is not None:
+            comptes.append(({"compte": ap.borner(pk), "B": ap.borner(ref), "_corr": bx.get("correspondance")}, y))
         pcc, pb = x["bras"]["C"].get("p_C_corrige"), x["bras"]["B"].get("p")
         if pcc is not None and pb is not None:   # 0.5.0 : C corrigé du biais, scellé, jamais posté
             corriges.append(({"C": ap.borner(pcc), "B": ap.borner(pb)}, y))
@@ -605,19 +641,31 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                         "gain_B_sur_A": (sum(gain_pair(p, a, y) for p, y, a in v if a is not None)
                                          / max(1, sum(a is not None for _, _, a in v)))}
                   for nat, v in etats_nuls.items()}
+    # 0.8.0 (audit M-09) : les diagnostics comptent TOUTES les lignes publiées (pas dédoublonnées) : un refus suivi
+    # d'une reprise réussie reste visible. Le dédoublonnage ne sert qu'au score.
     statuts, motifs = {}, {}
-    for x in questions:
+    for x in publiees:
         s = x["bras"]["C"].get("statut")
         statuts[s] = statuts.get(s, 0) + 1
         for cat in (x["bras"]["C"].get("rejets_classes") or {}).values():
             motifs[cat] = motifs.get(cat, 0) + 1
+    princ = sorted({modele_principal(x) for x in resolues})
     return {"lignes": len(tout), "lignes_essai_exclues": 0 if inclure_essais else sum(est_essai(x) for x in tout),
             "questions": len(questions), "resolues": len(resolues), "retouchees": retouchees,
+            "dossiers_non_conformes": dossiers_non_conformes,
+            # 0.8.0 (audit m-07, m-08, m-09) : avertissements de lecture.
+            "avertissements": {
+                "modeles_melanges": (f"{len(princ)} modèles principaux dans ce score : verdict MÉLANGÉ, lire par_modele"
+                                     if len(princ) > 1 else None),
+                "erreur_familiale_max": "10 % (α = 5 % pour C mieux que B, α/3 pour chacune des trois autres)",
+                "unites": "score_reference_metaculus : 100 × (log2 p + 1) ; gain_log_moyen et gain_pair : 100 × écart "
+                          "de ln p (points de score de pair). Ne pas comparer les deux."},
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "recalibration_etudiee": {b: recalibration(v) for b, v in par_bras.items()},
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
-            "stabilite_strate": stabilite_strate(tout),
-            "statuts_par_version": statuts_par_version(tout),
+            "stabilite_strate": stabilite_strate(publiees),
+            "statuts_par_version": statuts_par_version(publiees),
+            "effectifs_diagnostics": {"lignes_publiees": len(publiees), "questions_scorees": len(questions)},
             **({"rappel": f"{len(resolues)} questions résolues : décider du plafonnement de la valeur postée "
                           f"(voir plafonnement_etudie et README-alphabet.md, « Décisions en attente »)."}
                if len(resolues) >= RAPPEL_PLAFONNEMENT else {}),

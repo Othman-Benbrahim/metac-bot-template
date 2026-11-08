@@ -16,7 +16,8 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RACINE))
-os.environ.setdefault("ALPHABET_REGISTRE", tempfile.mkdtemp(prefix="registre-"))
+os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-")  # 0.8.0 : forcé, pas setdefault
+os.environ["ALPHABET_TESTS"] = "1"
 import alphabet_pipeline as ap  # noqa: E402
 
 ap.NB_VUES = 1   # les tests historiques fournissent une seule vue ; les vues multiples ont leurs propres tests
@@ -41,7 +42,7 @@ PLAN = {"strates": [7, 6], "candidats": ["POL@7", "INC@7", "CTR@6", "HIE@6"], "c
 def vue(freq=0.2):
     return {"frequence": freq, "classe_de_reference": "crises bilatérales à deux blocs : rupture ou frappe reconnue en 3 mois (fictif)",
             "source": "registre fictif de démonstration", "fondement": "recherche [R1]", "periode": "2000-2025",
-            "disponible_le": "2026-01-01", "calcul": "8 cas sur 40 crises",
+            "disponible_le": "2026-01-01", "calcul": "8 cas sur 40 crises", "expression": repr(freq),
             "classe_alternative": {"frequence": min(0.9, freq * 1.5), "classe_de_reference": "crises avec représailles annoncées (fictif)",
                                    "source": "fictif", "pourquoi_ecartee": "classe choisie d'après l'état présent"},
             "ecart_critere": "identique : rupture reconnue par une partie",
@@ -157,8 +158,9 @@ class Tests(unittest.TestCase):
 
     def test_candidates_hors_matrice_refus(self):
         mauvais = dict(PLAN, candidats=["PER@7", "SEU@7"], contre_candidate=["PER@7"])
-        r, _ = lancer([mauvais, mauvais])
+        r, _ = lancer([mauvais, mauvais, mauvais])                 # 0.8.0 : deux corrections du plan
         self.assertEqual(r.bras_poste, "A")
+        self.assertEqual(r.ligne["bras"]["C"]["reprises_plan"], 2)
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "refuse")
         self.assertIn("matrice", r.ligne["bras"]["C"]["motif"])
 
@@ -216,10 +218,10 @@ class Tests(unittest.TestCase):
     def test_evenement_incoherent(self):
         # POL visée en « apparait » alors qu'elle est candidate : refusé dès le plan (0.1.5), avant toute recherche.
         plan = dict(PLAN, evenement={"carte": "POL", "strate": 7, "type": "apparait"})
-        r, llm = lancer([plan, plan])
+        r, llm = lancer([plan, plan, plan])
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "refuse")
         self.assertTrue(r.ligne["bras"]["C"]["motif"].startswith(("candidates :", "la carte visée")))
-        self.assertEqual(len(llm.consignes), 2)
+        self.assertEqual(len(llm.consignes), 3)
         # Filet de sécurité conservé : une lecture qui ancre la carte visée est refusée au contrôle de l'état.
         self.assertIn("déjà présente", ap.controle_etat({"mots": [{"carte": "POL", "strate": 7}]},
                                                          {"evenement": {"carte": "POL", "strate": 7, "type": "apparait"}}))
@@ -524,7 +526,8 @@ class Tests(unittest.TestCase):
 
     def test_controle_attribution(self):                      # 0.5.2 (idée EnVrai)
         dossier = {"mots": [{"carte": "SEU", "strate": 7, "fait": "Le 3 novembre, 2 295 soldats sont déployés.",
-                             "passage": [{"extrait": "toute concession serait une capitulation"}]},
+                             "passage": [{"extrait": "toute concession serait une capitulation"},
+                                         {"extrait": "2295 soldats déployés"}]},
                             {"carte": "POL", "strate": 7, "fait": "Un vote de défiance est déposé.",
                              "passage": [{"extrait": "motion déposée par l'opposition"}]}]}
         textes = "[R1] Le ministre déclare que « toute concession serait une capitulation ». 2295 soldats déployés."
@@ -534,6 +537,13 @@ class Tests(unittest.TestCase):
         self.assertEqual(a["non_attribues"], 1)
         dossier["mots"][0]["fait"] = "Le 3 novembre, 4 100 soldats sont déployés."
         self.assertEqual(ap.controle_attribution(dossier, textes)["detail"]["SEU@7"]["chiffres_absents"], ["4100"])
+        # 0.8.0 (audit M-04) : un fait inventé, avec des extraits authentiques et des nombres présents AILLEURS
+        dossier["mots"][0]["fait"] = "Trump a vendu 6,3 milliards d'actifs à un fonds souverain en octobre 2026."
+        dossier["mots"][0]["passage"] = [{"extrait": "toute concession serait une capitulation"}]
+        d0 = ap.controle_attribution(dossier, textes + " Forbes estime sa fortune à 6,3 milliards en 2026.")["detail"]["SEU@7"]
+        self.assertFalse(d0["attribue"])
+        self.assertEqual(sorted(d0["chiffres_hors_extraits"]), ["2026", "6.3"])
+        self.assertEqual(ap._chiffres("10,4 Md$ ; 2,295 ; 6.30"), ["10.4", "2295", "6.3"])
         self.assertIsNone(ap.controle_attribution(None, textes))
         self.assertIsNone(ap.controle_attribution({"mots": []}, textes))
         r, _ = lancer([PLAN, vue(0.2), lecture()])                   # résultats simulés : extraits introuvables
@@ -592,13 +602,18 @@ class Tests(unittest.TestCase):
         try:
             lancer([dict(PLAN, evenement=None)], p_A=0.9)
             lancer([dict(PLAN, evenement=None)], p_A=0.2, maintenant=MAINTENANT.replace(hour=19))
-            lancer([dict(PLAN, evenement=None)], p_A=0.7, publie=False)              # passage à blanc
-            lancer([dict(PLAN, evenement=None)], p_A=0.6, mode="test_questions")     # zone de test
+            lancer([dict(PLAN, evenement=None)], p_A=0.7, publie=False, maintenant=MAINTENANT.replace(hour=20))
+            lancer([dict(PLAN, evenement=None)], p_A=0.6, mode="test_questions", maintenant=MAINTENANT.replace(hour=21))
             s = sr.scorer(reg, {"4242": 0})
             self.assertEqual((s["lignes"], s["lignes_essai_exclues"], s["questions"]), (4, 2, 1))
             self.assertAlmostEqual(s["bras"]["A"]["log"], -math.log(0.8))            # la dernière publiée : 0,2
             s = sr.scorer(reg, {"4242": 0}, inclure_essais=True)
             self.assertAlmostEqual(s["bras"]["A"]["log"], -math.log(0.4))            # la dernière tout court : 0,6
+            # 0.8.0 : « dernière » selon l'horodatage scellé, pas selon l'ordre du fichier
+            f = reg / "journal-bot.jsonl"
+            l_ = f.read_text(encoding="utf-8").splitlines()
+            f.write_text("\n".join([l_[1], l_[0]] + l_[2:]) + "\n", encoding="utf-8")
+            self.assertAlmostEqual(sr.scorer(reg, {"4242": 0})["bras"]["A"]["log"], -math.log(0.8))
         finally:
             ap.REGISTRE = ancien
 

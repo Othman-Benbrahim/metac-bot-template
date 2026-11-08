@@ -165,12 +165,17 @@ class AlphabetBot(FallTemplateBot2026):
                      "publie": bool(self.publish_reports_to_metaculus), "mode": os.environ.get("ALPHABET_MODE"),
                      "modeles": ap.modeles_actifs(),
                      "raisonnement_sha256": hashlib.sha256((rp.reasoning or "").encode("utf-8")).hexdigest()}
+            # 0.8.0 (audit m-13) : le commentaire envoyé est scellé, comme pour les binaires.
+            ligne["commentaire"] = rp.reasoning or ""
             ligne["sceau"] = ap.sceau(ligne)
-            ap.REGISTRE.mkdir(parents=True, exist_ok=True)
-            with open(ap.REGISTRE / "journal-autres.jsonl", "a", encoding="utf-8", newline="\n") as f:
+            reg = ap.registre_ecrivable()
+            with open(reg / "journal-autres.jsonl", "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
-        except Exception:
-            logger.exception("registre : question %s non journalisée", getattr(question, "page_url", "?"))
+        except Exception as e:
+            # 0.8.0 (audit M-10) : jamais de prévision postée sans sa ligne scellée. La question échoue ; elle sera
+            # reprise au passage suivant (elle n'est pas marquée « déjà prévue »).
+            logger.exception("registre : question %s non journalisée, non postée", getattr(question, "page_url", "?"))
+            raise RuntimeError(f"registre non écrit : prévision non postée ({type(e).__name__})") from e
         return rp
 
     async def _run_forecast_on_numeric(self, question, research):
@@ -226,11 +231,12 @@ class AlphabetBot(FallTemplateBot2026):
                                          historique=None if os.environ.get("ALPHABET_HISTORIQUE") == "0"
                                          else self._historique,
                                          critique=self._critique if os.environ.get("ALPHABET_CONTRADICTEUR") else None)
-        except Exception as e:  # l'alphabet ne doit jamais empêcher de répondre : bras A, signalé
-            logger.exception("alphabet : échec sur %s", question.page_url)
-            return ReasonedPrediction(prediction_value=a.prediction_value,
-                                      reasoning=f"Situational-alphabet bot. Posted arm: A, model alone "
-                                                f"(alphabet failed: {type(e).__name__}).\n\n{a.reasoning}")
+        except Exception as e:
+            # 0.8.0 (audit M-10) : les erreurs de l'alphabet sont déjà journalisées par prevoir_binaire (statut
+            # « erreur », bras A posté). Une exception qui arrive ici veut dire que la ligne n'a PAS été écrite :
+            # on ne poste pas une prévision hors registre. La question échoue et sera reprise au passage suivant.
+            logger.exception("alphabet : ligne non écrite sur %s : prévision non postée", question.page_url)
+            raise RuntimeError(f"registre non écrit : prévision non postée ({type(e).__name__}: {e})"[:300]) from e
         logger.info("alphabet : %s bras %s p=%.3f (A=%.3f B=%s C=%s)", question.page_url, r.bras_poste, r.p_poste,
                     r.p_A, r.p_B, r.p_C)
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
@@ -287,8 +293,9 @@ def configuration(env=os.environ) -> dict:
     """
     llms = {}
     if env.get("ALPHABET_LLM"):
-        llms["default"] = LlmTenace(env["ALPHABET_LLM"], attentes=(30, 90), temperature=0.2, timeout=180,
-                                    allowed_tries=3)
+        # 0.8.0 (audit M-11) : pire cas d'un appel ramené de 11 min à ≈ 6 min (2 × 120 s + attentes 30 + 90 s).
+        llms["default"] = LlmTenace(env["ALPHABET_LLM"], attentes=(30, 90), temperature=0.2, timeout=120,
+                                    allowed_tries=2)
         petit = env.get("ALPHABET_PETIT_LLM") or env["ALPHABET_LLM"]
         secours = [m for m in (env.get("ALPHABET_PETIT_SECOURS") or "").split(",") if m.strip() and m != petit]
         for role in ("parser", "summarizer"):
@@ -356,20 +363,24 @@ def deja_envoyees_aujourdhui(jour: str | None = None) -> int:
     if not f.is_file():
         return 0
     return sum(x.get("envoyees", 0) for x in map(json.loads, f.read_text(encoding="utf-8").splitlines())
-               if x.get("date") == jour)
+               if x.get("date") == jour and x.get("statut", "lance") == "lance")   # 0.8.0 : « fin » ne recompte pas
 
 
-def noter_passage(mode: str, declencheur: str, trouvees: int, lot: list, vus: list | None = None) -> None:
+def noter_passage(mode: str, declencheur: str, trouvees: int, lot: list, vus: list | None = None,
+                  statut: str = "lance", detail: dict | None = None) -> None:
     """Une ligne par passage, écrite AVANT les prévisions : une question qui échoue compte quand même dans le budget."""
-    ap.REGISTRE.mkdir(parents=True, exist_ok=True)
+    reg = ap.registre_ecrivable()
     maintenant = datetime.now(timezone.utc)
     ligne = {"date": maintenant.date().isoformat(), "horodatage": maintenant.isoformat(timespec="seconds"),
              "mode": mode, "declencheur": declencheur, "trouvees": trouvees, "envoyees": len(lot),
              "modeles": ap.modeles_actifs(),
              "questions": [getattr(q, "page_url", None) for q in lot],
              # 0.5.1 : le jeu de questions REÇU, pas seulement celui traité : ce qui était visible à cette date.
-             "trouvees_ids": sorted(str(getattr(q, "id_of_question", None) or getattr(q, "page_url", "")) for q in (vus or lot))}
-    with open(ap.REGISTRE / "passages.jsonl", "a", encoding="utf-8", newline="\n") as f:
+             "trouvees_ids": sorted(str(getattr(q, "id_of_question", None) or getattr(q, "page_url", "")) for q in (vus or lot)),
+             # 0.8.0 (audit M-14) : un passage arrêté (sans modèle, configuration) laisse sa trace ; « fin » ferme un
+             # passage lancé avec les remplacements de modèles et l'usage des moteurs de recherche.
+             "statut": statut, **({"detail": detail} if detail else {})}
+    with open(reg / "passages.jsonl", "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True) + "\n")
 
 
@@ -465,6 +476,9 @@ if __name__ == "__main__":
               + (f" — {e_['erreur']}" if e_['erreur'] else ""))
     if not choix["principal"]:
         print("❌  Aucun modèle principal disponible (ALPHABET_LLM) : passage arrêté, rien n'est posté.")
+        noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), [], questions,
+                      statut="sans_modele", detail={"essais": [{k: e_.get(k) for k in ("role", "modele", "erreur")}
+                                                                for e_ in essais if e_.get("role") == "principal"]})
         sys.exit(1)
     am.appliquer(choix)
     print(f"🧠  Modèles du passage : {os.environ['ALPHABET_MODELES']}")
@@ -477,10 +491,18 @@ if __name__ == "__main__":
         print("❌  Configuration :")
         for b_ in bloquants:
             print(f"    • {b_}")
+        noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), [], questions,
+                      statut="configuration", detail={"bloquants": bloquants})
         sys.exit(1)
     noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot, questions)
     rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True))
     bot.log_report_summary(rapports, raise_errors=False)
     texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
     print(texte)
+    ch = getattr(bot, "_chaine_", None)
+    noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot, questions, statut="fin",
+                  detail={"prevues": sum(not isinstance(r, BaseException) for r in rapports),
+                          "en_echec": sum(isinstance(r, BaseException) for r in rapports),
+                          "bascules_modeles": BASCULES,
+                          "recherche_usage": getattr(ch, "usage", None), "recherche_echecs": getattr(ch, "echecs", None)})
     sys.exit(code)
