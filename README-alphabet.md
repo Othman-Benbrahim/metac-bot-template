@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.7.0 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.7.1 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -296,6 +296,7 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.7.1** : en-tête User-Agent conforme à la politique de Wikimedia (Wikipedia, Wikidata).
 - **0.7.0** : puits de données (`alphabet_puits.py`) : 18 bases ouvertes bornées à la date d'information ; compte
   calculé par le code comme vue du bras B ; relevés citables par le lecteur ; sonde par workflow.
 - **0.6.3** : TinyFish ajouté à la chaîne de recherche, entre Tavily et GDELT.

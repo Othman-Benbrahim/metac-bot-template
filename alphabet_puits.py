@@ -28,7 +28,9 @@ import httpx
 
 DELAI = 40
 MAX_POINTS = 5000
-AGENT = "alphabet-bot/0.7 (open-source forecasting research; github.com/Othman-Benbrahim/metac-bot-template)"
+# Politique de Wikimedia : « nom/version (contact) bibliothèque/version », contact = une URL.
+AGENT = (f"AlphabetForecastBot/0.7 (https://github.com/Othman-Benbrahim/metac-bot-template; open-source forecasting "
+         f"research) httpx/{httpx.__version__}")
 
 
 class SansCle(RuntimeError):
