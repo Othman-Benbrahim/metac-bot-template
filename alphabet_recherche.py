@@ -111,6 +111,7 @@ class Chaine:
         self.seconde_cle = False
         self.usage: dict[str, int] = {}
         self.echecs: dict[str, int] = {}
+        self.erreurs: dict[str, str] = {}      # 0.8.2 : la dernière erreur de chaque moteur, pour savoir QUI échoue
 
     def ordre(self) -> list[str]:
         brut = self._ordre or self.env.get("ALPHABET_RECHERCHE_ORDRE") or ORDRE_DEFAUT
@@ -126,8 +127,10 @@ class Chaine:
     async def _exa(self, requete: str) -> str:
         try:
             return await self.exa(requete)
-        except Exception:
-            if self._passer_seconde_cle():
+        except Exception as e:
+            # 0.8.2 : on ne change de clé que pour une erreur d'Exa lui-même (clé, crédits, quota), pas pour une
+            # saturation du modèle qui rédige la synthèse.
+            if erreur_de_cle_exa(e) and self._passer_seconde_cle():
                 return await self.exa(requete)
             raise
 
@@ -149,6 +152,7 @@ class Chaine:
                 texte = await appel(requete)
             except Exception as e:
                 self.echecs[nom] = self.echecs.get(nom, 0) + 1
+                self.erreurs[nom] = f"{type(e).__name__}: {e}"[:200]
                 erreurs.append(f"{nom} : {type(e).__name__}")
                 continue
             if texte and texte.strip():
@@ -157,6 +161,17 @@ class Chaine:
                 return f"[moteur : {etiquette}]\n{texte}"
             erreurs.append(f"{nom} : aucun résultat")
         raise RuntimeError("aucun moteur de recherche n'a répondu (" + " ; ".join(erreurs) + ")")
+
+
+CLE_EXA = re.compile(r"\b40[123]\b|unauthori[sz]ed|invalid api key|api[_ ]key|credits?|quota|payment|exa", re.I)
+
+
+def erreur_de_cle_exa(e: BaseException) -> bool:
+    """Erreur qui vient d'Exa (clé refusée, crédits ou quota épuisés), pas du modèle de synthèse."""
+    texte = f"{type(e).__name__}: {e}"
+    if re.search(r"at capacity|ServiceUnavailable|litellm|openai", texte, re.I):
+        return False
+    return bool(CLE_EXA.search(texte))
 
 
 def moteur_de(texte: str) -> str | None:

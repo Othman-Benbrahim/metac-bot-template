@@ -125,5 +125,21 @@ class TestsChaine(unittest.TestCase):
         self.assertEqual(ar.ORDRE_DEFAUT, "exa,tavily,tinyfish,gdelt")
 
 
+
+class TestsCleExa(unittest.TestCase):
+    def test_saturation_ne_change_pas_de_cle(self):
+        self.assertFalse(ar.erreur_de_cle_exa(RuntimeError("litellm.ServiceUnavailableError: at capacity")))
+        self.assertTrue(ar.erreur_de_cle_exa(RuntimeError("Exa API error 402: insufficient credits")))
+        env = {"EXA_API_KEY": "k1", "EXA_API_KEY_2": "k2"}
+
+        async def exa(q):
+            raise RuntimeError("litellm.ServiceUnavailableError: This model is temporarily at capacity")
+        ch = ar.Chaine(exa, env, ordre="exa")
+        with self.assertRaises(RuntimeError):
+            asyncio.run(ch.chercher("q"))
+        self.assertEqual(env["EXA_API_KEY"], "k1")                     # clé inchangée
+        self.assertIn("at capacity", ch.erreurs["exa"])
+
+
 if __name__ == "__main__":
     unittest.main()

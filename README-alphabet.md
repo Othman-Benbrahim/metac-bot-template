@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.8.1 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.8.2 · skill alphabet-situationnel 0.7.51 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -317,6 +317,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.8.2** : le moteur « exa » (Exa + petit modèle de synthèse) : une saturation du petit modèle n'est plus comptée
+  comme un échec d'Exa ; la synthèse reprend avec les secours des rôles légers, et la seconde clé Exa ne sert plus
+  qu'aux erreurs d'Exa (clé, crédits, quota) ; la dernière erreur de chaque moteur est gardée au registre.
 - **0.8.1** : premier passage réel de la 0.8.0 : les trois vues d'une question refusées pour une erreur de calcul
   de tête du modèle → la valeur de la formule est retenue (`calcul_corrige`) ; trois vues sur la même source → contrôle
   sans modèle de la reprise de source.
