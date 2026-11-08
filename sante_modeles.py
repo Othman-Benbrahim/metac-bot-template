@@ -39,6 +39,8 @@ async def principal() -> int:
             essais.append(r)
             print(f"{'✅' if r['json_ok'] else '❌'}  {role} : {m} ({r['secondes']} s)" + (f" — {r['erreur']}" if r['erreur'] else ""))
     cat = catalogue()
+    if cat is not None:                      # 0.7.3 : le catalogue de la passerelle, pour choisir les suites
+        print(f"📚  {len(cat)} modèles à la passerelle : " + ", ".join(cat))
     absents = sorted({m.removeprefix("openai/") for m in (e["modele"] for e in essais)
                       if m.startswith("openai/") and cat is not None and m.removeprefix("openai/") not in cat})
     etat = {r: sorted(e["modele"] for e in essais if e["role"] == r and e["json_ok"]) for r in am.ROLES}
