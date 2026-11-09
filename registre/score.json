@@ -1,0 +1,132 @@
+{
+  "lignes": 17,
+  "lignes_essai_exclues": 6,
+  "questions": 3,
+  "resolues": 0,
+  "retouchees": [],
+  "dossiers_non_conformes": [
+    {
+      "question_id": "43332",
+      "fichier": "dossiers/43332-2026-11-04.json",
+      "etat": "different"
+    }
+  ],
+  "avertissements": {
+    "modeles_melanges": null,
+    "erreur_familiale_max": "10 % (α = 5 % pour C mieux que B, α/3 pour chacune des trois autres)",
+    "unites": "score_reference_metaculus : 100 × (log2 p + 1) ; gain_log_moyen et gain_pair : 100 × écart de ln p (points de score de pair). Ne pas comparer les deux."
+  },
+  "bras": {
+    "A": null,
+    "B": null,
+    "C": null
+  },
+  "apparie_ABC": null,
+  "recalibration_etudiee": {
+    "A": null,
+    "B": null,
+    "C": null
+  },
+  "plafonnement_etudie": null,
+  "stabilite_strate": {
+    "questions_repetees": 0,
+    "accord": null,
+    "strates_par_question": {},
+    "lecture": "accord bas : l'étiquette de strate, donc le droit de chiffrer, dépend du tirage"
+  },
+  "statuts_par_version": {
+    "0.1.1": {
+      "lignes": 3,
+      "statuts": {
+        "refuse": 3
+      },
+      "classe": {},
+      "mots_ancres": 0,
+      "mots_non_attribues": 0,
+      "dispersion_B_moyenne": null
+    },
+    "0.1.2": {
+      "lignes": 3,
+      "statuts": {
+        "etat_nul": 1,
+        "refuse": 2
+      },
+      "classe": {},
+      "mots_ancres": 0,
+      "mots_non_attribues": 0,
+      "dispersion_B_moyenne": null
+    },
+    "0.1.3": {
+      "lignes": 3,
+      "statuts": {
+        "hors_strate": 2,
+        "etat_nul": 1
+      },
+      "classe": {},
+      "mots_ancres": 0,
+      "mots_non_attribues": 0,
+      "dispersion_B_moyenne": null
+    },
+    "0.1.6": {
+      "lignes": 2,
+      "statuts": {
+        "hors_strate": 2
+      },
+      "classe": {},
+      "mots_ancres": 0,
+      "mots_non_attribues": 0,
+      "dispersion_B_moyenne": null
+    }
+  },
+  "effectifs_diagnostics": {
+    "lignes_publiees": 11,
+    "questions_scorees": 3
+  },
+  "statuts_exploratoires": {},
+  "C_exploratoire_sur_B": null,
+  "exploratoire_non_binaire": {
+    "note": "hors verdict ; questions non binaires ramenées à une question binaire dérivée (§29)",
+    "questions": 0,
+    "statuts": {},
+    "resolues_chiffrees": 0,
+    "C_exploratoire_sur_B": null,
+    "C_exploratoire_sur_A": null,
+    "C_symetrique_sur_B": null
+  },
+  "C_symetrique_sur_B": null,
+  "C_exploratoire_corrige_sur_B": null,
+  "compte_sur_B": null,
+  "statuts_alphabet": {
+    "refuse": 5,
+    "etat_nul": 2,
+    "hors_strate": 4
+  },
+  "etats_nuls": {
+    "par_nature": {},
+    "lecture": "structure_absente = candidates écartées sur pièces ; angle_mort = au moins une candidate non vraiment cherchée, même après relance. gain_B_sur_A positif : le « pas de structure » de l'alphabet a mieux valu que le modèle seul."
+  },
+  "motifs_rejet": {
+    "compte": {},
+    "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"
+  },
+  "bras_poste": {
+    "A": 2,
+    "B": 1,
+    "C": 0
+  },
+  "par_modele": {
+    "non_renseigne (avant 0.6.0)": {
+      "questions": 3,
+      "resolues": 0,
+      "C_sur_B_gain_log_moyen": null,
+      "C_sur_B_verdict": null
+    },
+    "openai/deepseek-v4": {
+      "questions": 0,
+      "resolues": 0,
+      "C_sur_B_gain_log_moyen": null,
+      "C_sur_B_verdict": null
+    }
+  },
+  "calcule_le": "2026-11-09T14:21:55+00:00"
+}
