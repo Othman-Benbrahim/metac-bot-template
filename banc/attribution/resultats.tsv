@@ -1,0 +1,11 @@
+essai	score	faux_acceptes	faux_refus	decision	description
+1	1.9714	0.0	0.9714	garde	départ : contrôle 0.8.3 inchangé
+2	1.1286	0.178	0.1286	garde	retirer le recouvrement des mots du fait (dépend de la langue)
+3	0.1949	0.1949	0.0286	garde	nombres du fait : tous dans les résultats, au moins un dans l'extrait cité
+4	0.1949	0.1949	0.0286	non appliqué (erreur de mon script de modification)	noms propres du fait comme ancres (lexique générique pays, villes, mois)
+5	1.1857	0.0678	0.1857	annule	noms propres du fait comme ancres (lexique générique pays, villes, mois)
+6	0.0678	0.0678	0.0714	garde	noms propres comme ancres + noms traduits entiers, pluriels, sigles courts ignorés
+7	0.0339	0.0339	0.0714	garde	nombres liés à une unité (pour cent, jour+mois traduit), un chiffre compris
+8	0.0085	0.0085	0.0714	garde	noms composés gardés entiers (pas de filtrage des mots courants)
+9	1.1143	0.0	0.1143	annule	sans extrait : au moins une ancre spécifique (ni année, ni pays/ville/mois)
+10	0.0000	0.0	0.0571	garde	ancre spécifique sans extrait + noms de ministères ignorés + lexique des partis

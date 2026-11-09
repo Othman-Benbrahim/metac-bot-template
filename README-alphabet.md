@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.9.3 · skill alphabet-situationnel 0.7.52 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.9.4 · skill alphabet-situationnel 0.7.52 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,8 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.9.4** : contrôle d'attribution réécrit par la boucle du banc d'essai : ancres indépendantes de la langue
+  (nombres, noms propres, unités) ; faux refus de 97 % à 10 % sur la partie cachée, faux acceptés 3,8 %.
 - **0.9.3** : contrôle d'attribution sorti dans `alphabet_attribution.py`, sans changement de comportement ; banc
   d'essai `banc/attribution/` (juge et corpus verrouillés) pour l'améliorer.
 - **0.9.2** : `MISTRAL_API_KEY` transmise aux workflows : une suite de modèles peut finir par un modèle de l'API

@@ -651,7 +651,8 @@ class Tests(unittest.TestCase):
                                          {"extrait": "2295 soldats déployés"}]},
                             {"carte": "POL", "strate": 7, "fait": "Un vote de défiance est déposé.",
                              "passage": [{"extrait": "motion déposée par l'opposition"}]}]}
-        textes = "[R1] Le ministre déclare que « toute concession serait une capitulation ». 2295 soldats déployés."
+        textes = ("[R1] Le ministre déclare que « toute concession serait une capitulation ». Le 3 novembre, 2295 soldats "
+                  "déployés.")    # 0.9.4 : la date du fait doit figurer dans les résultats
         a = ap.controle_attribution(dossier, textes)
         self.assertTrue(a["detail"]["SEU@7"]["attribue"])            # extrait et nombre retrouvés
         self.assertFalse(a["detail"]["POL@7"]["attribue"])           # extrait introuvable
