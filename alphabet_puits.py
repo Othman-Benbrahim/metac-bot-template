@@ -518,76 +518,7 @@ def texte_releve(r: dict, n: int = 40) -> str:
 
 # --------------------------------------------------------------------------- le compte (bras B)
 
-def _agreger(points: list[dict], agregation: str | None) -> list[dict]:
-    if agregation not in ("mois", "annee"):
-        return points
-    cles: dict[str, float] = {}
-    for p in points:
-        k = p["date"][:7] + "-01" if agregation == "mois" else p["date"][:4] + "-01-01"
-        cles[k] = cles.get(k, 0.0) + (p["valeur"] if p.get("valeur") is not None else 1.0)
-    return [{"date": k, "valeur": v} for k, v in sorted(cles.items())]
-
-
-def _remplit(v: float | None, seuil: float | None, sens: str) -> bool:
-    if seuil is None:
-        return True                                         # un événement suffit
-    if v is None:
-        return False
-    return v >= seuil if sens == ">=" else v > seuil if sens == ">" else v <= seuil if sens == "<=" else v < seuil
-
-
-def compter(releve: dict, fenetre_jours: int, mode: str = "atteint", seuil: float | None = None, sens: str = ">=",
-            agregation: str | None = None, fin: date | None = None, nature: str | None = None) -> dict:
-    """Fenêtres DISJOINTES de la durée de la question, comptées à rebours depuis `fin` jusqu'au début du relevé.
-
-    mode « evenement » : la fenêtre compte si au moins un point (filtré par le seuil s'il y en a un) y tombe ;
-    mode « atteint »   : si au moins une valeur de la fenêtre remplit la condition ;
-    mode « franchit »  : si la condition n'était PAS remplie au début de la fenêtre et l'est ensuite.
-    Fréquence = k / n ; à 0 ou n, ramenée à 1/(2n) ou 1 - 1/(2n) (le moteur exige ]0, 1[). Moins de 5 fenêtres :
-    pas de fréquence."""
-    if mode not in ("evenement", "atteint", "franchit"):
-        return {"frequence": None, "motif": f"mode inconnu : {mode}"}
-    # 0.8.0 (audit M-13) : sommer une série de NIVEAUX (taux, indice, PIB) n'a pas de sens ; « atteint » et « franchit »
-    # sans seuil non plus.
-    if agregation in ("mois", "annee") and nature == "niveau":
-        return {"frequence": None, "motif": "agrégation refusée : série de niveaux (seuls flux et événements se somment)"}
-    if mode in ("atteint", "franchit") and seuil is None:
-        return {"frequence": None, "motif": f"mode {mode} sans seuil"}
-    pts = _agreger([p for p in releve.get("points") or [] if p.get("date")], agregation)
-    if not pts or fenetre_jours < 1:
-        return {"frequence": None, "motif": "relevé vide"}
-    fin = fin or date.fromisoformat(releve.get("date_limite") or pts[-1]["date"])
-    debut = date.fromisoformat(_jour(releve.get("debut")) or pts[0]["date"])
-    W = timedelta(days=int(fenetre_jours))
-    k = n = 0
-    b = fin
-    while b - W >= debut:
-        a = b - W
-        dans = [p for p in pts if a.isoformat() < p["date"] <= b.isoformat()]
-        if mode == "evenement":
-            ok = any(_remplit(p.get("valeur"), seuil, sens) for p in dans)
-        else:
-            avant = [p for p in pts if p["date"] <= a.isoformat()]
-            if mode == "franchit" and not avant:
-                b = a
-                continue                                    # pas d'état initial connu : fenêtre non comptée
-            ok = any(_remplit(p.get("valeur"), seuil, sens) for p in dans)
-            if mode == "franchit":
-                ok = ok and not _remplit(avant[-1].get("valeur"), seuil, sens)
-        n += 1
-        k += 1 if ok else 0
-        b = a
-    if n < 5:
-        return {"frequence": None, "k": k, "n": n,
-                "motif": f"trop peu de fenêtres de {fenetre_jours} jours dans le relevé ({n} < 5)"}
-    f = k / n
-    if k == 0:
-        f = 1 / (2 * n)
-    elif k == n:
-        f = 1 - 1 / (2 * n)
-    return {"frequence": f, "k": k, "n": n, "fenetre_jours": int(fenetre_jours), "mode": mode, "seuil": seuil,
-            "sens": sens, "agregation": agregation, "periode": f"{debut.isoformat()}/{fin.isoformat()}",
-            "dernier_point": pts[-1]["date"]}
+from alphabet_compte import _agreger, _remplit, compter  # noqa: E402,F401  (0.9.5)
 
 
 Llm = Callable[[str], Awaitable[str]]

@@ -1,6 +1,7 @@
 """Tests hors ligne des puits de données (0.7.0)."""
 import asyncio
 import json
+import math
 import os
 import sys
 import unittest
@@ -27,9 +28,15 @@ class TestsCompte(unittest.TestCase):
         # un événement par an pendant 10 ans, fenêtres de 365 jours : chaque fenêtre en contient un → k = n
         pts = [{"date": f"{2015 + i}-06-01", "valeur": None} for i in range(10)]
         r = apz.compter(releve(pts, debut="2015-01-01"), 365, "evenement", fin=date(2025, 1, 1))
-        self.assertEqual(r["n"], 10)
+        # 0.9.5 (banc du compte) : taux de Poisson sur tout l'historique, P(au moins un en un an) = 1 − exp(−taux·365)
+        self.assertEqual(r["methode"], "taux_poisson")
         self.assertEqual(r["k"], 10)
-        self.assertAlmostEqual(r["frequence"], 1 - 1 / 20)             # jamais 1 : le moteur exige ]0, 1[
+        self.assertAlmostEqual(r["frequence"], 1 - math.exp(-10.5 / 3653 * 365), places=4)   # ≈ 0,65 (vrai : 0,63)
+        # niveaux : écart au seuil depuis la DERNIÈRE valeur, bootstrap des pas observés
+        niv = [{"date": f"20{10 + i // 12:02d}-{i % 12 + 1:02d}-01", "valeur": float(i % 5)} for i in range(120)]
+        r = apz.compter(releve(niv), 90, "atteint", 100.0, ">=", fin=date(2020, 1, 1), nature="niveau")
+        self.assertEqual(r["methode"], "bootstrap_pas")
+        self.assertLess(r["frequence"], 0.01)                            # seuil hors d'atteinte en 90 jours
 
     def test_atteint_et_franchit(self):
         pts = [{"date": f"20{a:02d}-01-01", "valeur": v} for a, v in zip(range(10, 22), [1, 1, 5, 5, 1, 1, 1, 5, 1, 1, 1, 1])]
