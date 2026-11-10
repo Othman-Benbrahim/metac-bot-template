@@ -1,5 +1,5 @@
 {
- "version": "0.7.60",
+ "version": "0.7.61",
  "nombre_strates": 13,
  "cartes": {
   "SEU": "SEUIL",
@@ -221,7 +221,14 @@
   "sens_f": 0.3,
   "fp_F": 0.01,
   "fp_f": 0.05,
-  "facteur_exclusion": 0.1
+  "facteur_exclusion": 0.1,
+  "effort_rejet": {
+   "contredit": 1.0,
+   "marqueur_non_rempli": 1.0,
+   "aucun_fait": 0.5,
+   "non_classe": 0.5,
+   "non_cherchee": 0.0
+  }
  },
  "vide_recherches_cloture": 3,
  "pas_max": 20

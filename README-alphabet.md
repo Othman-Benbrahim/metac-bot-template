@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.8 · skill alphabet-situationnel 0.7.60 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.9 · skill alphabet-situationnel 0.7.61 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,10 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.9** : skill 0.7.61 (§38, relecture par Murphy, ch. 4, 9, 29, 30). Les catégories de rejet vont au moteur
+  (l'ombre générative pèse un rejet selon l'effort de recherche) ; ombre `sans_plafond` au registre et au score
+  (`C_sans_plafond_sur_C`) ; export de la matrice d'épisodes N × D (`episodes.py`, `registre/episodes.csv`, chaque
+  lundi), entrée des apprentissages futurs.
 - **0.10.8** : deux outils tirés de Wong et al. (2023, §4). **Pépinière** (`pepiniere.py`, chaque lundi après le
   score, `registre/pepiniere.json`) : les relations traduites (lien, bloque, exclut) agrégées sur tout le registre ;
   celles absentes de la matrice, affirmées dans 3 questions et 2 sources distinctes au moins, sont candidates à une

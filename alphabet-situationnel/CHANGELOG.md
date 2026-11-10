@@ -1,9 +1,21 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.60
+> Version : 0.7.61
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.61 — 2026-11-10 · relecture par Murphy (ch. 4, 9, 29, 30)
+
+Décision d'auteur. **Aucun chiffre publié ne change.**
+
+- `validation.md` §38 : le tri (retenu, rejeté, reporté) ; le calcul publié nommé : score log-linéaire à coefficients
+  stipulés, plafond = troncature ; génératif = graphe en chaîne ; matrice = structure inter-tranches ; trajectoires
+  jamais évaluées au-delà d'un pas. `graphe.md` §2.1 : renvoi.
+- `moteur.py` : couplage unique par paire dans `p0_generatif` ; rejets pondérés par catégorie (`effort_rejet`) ;
+  ombre `sans_plafond` ; `largeur_arbre`, `audit_largeur` et commande `largeur` ; `calculer --dossier` lit
+  `rejets_categories` ; un autotest.
+- `parametres.json` : `generatif.effort_rejet` (ne touche aucun p publié).
 
 ## 0.7.60 — 2026-11-10 · lecture probabiliste en ombre
 

@@ -11,6 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import alphabet_pipeline as ap  # noqa: E402
+import episodes as ep  # noqa: E402
 import pepiniere as pp  # noqa: E402
 import reconstruction_matrice as rm  # noqa: E402
 
@@ -39,6 +40,21 @@ class Tests(unittest.TestCase):
         lignes[0]["bras"]["C"]["traduction"]["programme"] = [dict(nouvelle, source="")]  # une source de moins
         (reg / "journal-bot.jsonl").write_text("\n".join(json.dumps(l_) for l_ in lignes[:2]) + "\n", encoding="utf-8")
         self.assertFalse(pp.pepiniere(reg)["candidates"][0]["seuil_atteint"])           # 2 questions : sous le seuil
+
+    def test_episodes(self):
+        # 0.10.9 (§38) : une ligne par lecture, une colonne par carte ; F/f ancrée, R:<catégorie> rejetée, vide sinon.
+        reg = Path(tempfile.mkdtemp(prefix="registre-ep-"))
+        l_ = {"question_id": "9", "date_information": "2026-11-10", "bras": {
+            "B": {"p": 0.2}, "C": {"evenement": "SEUIL@7 apparait", "statut": "estime", "p_C": 0.3,
+                                   "etat": "[2026-11 | 3 mois] POLARITÉ@7[F] + CONTRAINTE@6[f]",
+                                   "rejets_classes": {"INC@7": "aucun_fait", "HIE@6": "contredit"}}}}
+        (reg / "journal-bot.jsonl").write_text(json.dumps(l_) + "\n", encoding="utf-8")
+        (reg / "issues.jsonl").write_text(json.dumps({"question_id": "9", "issue": 1}) + "\n", encoding="utf-8")
+        rows = ep.episodes(reg)
+        self.assertEqual(len(rows), 1)
+        r = rows[0]
+        self.assertEqual((r["POL"], r["INC"], r["CTR"], r["HIE"], r["SEU"]), ("F", "R:aucun_fait", "", "", ""))
+        self.assertEqual((r["strate"], r["issue"], r["p_C"], r["date"]), (7, 1, 0.3, "2026-11-10"))
 
     def test_reconstruction(self):
         m = ap._moteur()

@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.8"
+VERSION_BOT = "0.10.9"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1241,10 +1241,12 @@ def ombre_causale(sortie: dict) -> dict | None:
             "valeur_information": {k: vi.get(k) for k in ("borne", "seuil", "arret", "plus_influentes")} if vi else None,
             "tempere": sb.get("tempere"),
             # 0.10.6 (skill 0.7.59, §36) : programme génératif conditionné sur ancrages ET rejets ; bande sur π et le lecteur
-            "generatif": ({k: (sb.get("generatif") or {}).get(k) for k in ("p", "bande", "rejets_utilises")}
+            "generatif": ({k: (sb.get("generatif") or {}).get(k) for k in ("p", "bande", "rejets_utilises",
+                                                                           "rejets_categories")}
                           if sb.get("generatif") else None),
             # 0.10.7 (skill 0.7.60, §37) : lecture probabiliste (traducteur → instructions → programme génératif)
-            "lecture_probabiliste": sb.get("lecture_probabiliste")}   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
+            "lecture_probabiliste": sb.get("lecture_probabiliste"),
+            "sans_plafond": sb.get("sans_plafond")}   # 0.10.9 (§38) : le même calcul sans troncature   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
@@ -1415,7 +1417,10 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
             return trace
         sortie = None
         if not erreur:
-            sortie = appeler_moteur({k: v for k, v in dossier.items() if not k.startswith("_")}, dossier["etat"],
+            # 0.10.9 (skill 0.7.61, §38) : les catégories de rejet vont au moteur (ombre générative : un rejet pèse selon
+            # l'effort de recherche) ; elles ne touchent ni la validation du dossier ni le p publié.
+            sortie = appeler_moteur({**{k: v for k, v in dossier.items() if not k.startswith("_")},
+                                     "rejets_categories": dict(dossier.get("_categories_rejet") or {})}, dossier["etat"],
                                     evenement, plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"],
                                     exploratoire=hors_strate)
             erreur = sortie.get("erreur")

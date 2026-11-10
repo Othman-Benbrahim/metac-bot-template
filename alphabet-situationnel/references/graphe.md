@@ -1,6 +1,6 @@
 # Alphabet situationnel — Graphe de transitions (couche 4)
 
-> Version : 0.7.60
+> Version : 0.7.61
 
 > Procédure expérimentale. Le moteur produit les chiffres et le JSON ; l'interprétation des sources
 > et des objets reste à vérifier. Règles : T1–T6 ; paramètres : `protocole.md` §H.
@@ -40,7 +40,9 @@ le *noisy-or* (Poole & Mackworth, 3ᵉ éd., §9.3) traite chaque carte comme un
 l'événement avec sa chance propre, w = (p_i − f)/(1 − f), et p = 1 − (1 − f)·Π(1 − w_i). Il est calculé en ombre,
 jamais publié ; avec une seule carte il rend le même p que le produit. **Le tempérage** (0.7.58, §35) élève le produit
 des λ à une puissance α fixée d'avance (0,5 ; 0,25 et 0,75 descriptifs), en ombre. **Le programme génératif** (0.7.59,
-§36) lit les arêtes comme effets directs, conditionne sur ancrages et rejets, et règle la fuite sur f ; en ombre. La règle de
+§36) lit les arêtes comme effets directs, conditionne sur ancrages et rejets, et règle la fuite sur f ; en ombre.
+**Nommé exactement (0.7.61, §38)** : le calcul publié est un modèle log-linéaire à coefficients stipulés (logit p₀ =
+logit f + Σ log λ), un score et non un produit de vraisemblances ; le plafond en est une troncature. La règle de
 redondance ci-dessous ne couvre que les liens sémantiques déclarés (inclusion, renforcement, transfert). Même strate : valeur de la table. Autre strate :
 abaissement d'un cran, sauf propagation explicitement admise ou transfert ancré. Sources liées par
 inclusion, renforcement ou transfert : garder la plus forte, pour limiter le double comptage.
