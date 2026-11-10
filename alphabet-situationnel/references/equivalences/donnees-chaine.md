@@ -1,6 +1,6 @@
 # Équivalents · strate 6 — données de jetons (banc sans texte)
 
-> Version : 0.7.63
+> Version : 0.7.64
 
 > Décision d'auteur du 2026-11-10 (`validation.md` §32). Ces équivalents traduisent les marqueurs des cartes en
 > termes de **relevés de données** (faits de série, §31) pour les jetons de la chaîne Solana du banc
