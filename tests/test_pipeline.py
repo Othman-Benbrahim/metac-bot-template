@@ -797,6 +797,8 @@ class Tests(unittest.TestCase):
         self.assertIn("AU MOINS UN", r)
         self.assertIn("CONTREDIT ≠ MARQUEUR NON REMPLI", r)
         self.assertIn("INCOMPLET", r)
+        self.assertIn("ALTERNATIVES", r)                            # 0.9.9 : un marqueur suffit pour f
+        self.assertIn("ne dépend PAS de l'objet de la question", r)
 
     def test_vue_et_donnees_fixees(self):                         # 0.9.7 : banc sans texte (alphabet-chaine)
         llm = LlmSimule([PLAN, lecture()])

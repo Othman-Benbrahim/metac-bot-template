@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.9.8 · skill alphabet-situationnel 0.7.55 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.9.9 · skill alphabet-situationnel 0.7.55 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,10 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.9.9** : consigne de lecture précisée (§30, déjà décidé) : les marqueurs d'une fiche sont des alternatives, un
+  seul suffit pour f ; l'ancrage d'une carte ne dépend pas de l'objet de la question (le moteur décide de l'effet).
+  Constaté sur le banc sans texte : CROISSANCE refusée faute de « limite » alors que trois bougies montaient, ou
+  parce que « la question porte sur la réserve, non sur le prix ».
 - **0.9.8** : skill 0.7.55 ; les équivalents de données pour les jetons (`donnees-chaine.md`, §32) ne sont chargés
   que si `ALPHABET_EQUIV_DONNEES` est activé (banc `alphabet-chaine`). Le bot Metaculus ne l'active pas : il le fera
   après une décision d'auteur datée (verdict du banc à 200 questions par type, ou équivalents Documentés).
