@@ -34,6 +34,10 @@ EXEMPLES = {
     "wikipedia": {"titre": "Sudanese civil war (2023–present)"},
     "wayback": {"url": "https://www.state.gov/"},
     "hdx": {"terme": "Sudan food security"},
+    "gaza": {"champ": "killed_cum"},
+    "sanctions_ue": {"programme": "RUS"},
+    "oms": {"indicateur": "WHOSIS_000001", "pays": "FRA", "dimension": "SEX_BTSX"},
+    "ecosystemes": {"registre": "pypi.org", "paquet": "numpy"},
 }
 
 

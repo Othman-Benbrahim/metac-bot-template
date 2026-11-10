@@ -133,6 +133,48 @@ class TestsConnecteurs(unittest.TestCase):
             r = asyncio.run(apz.bce("EXR/M.USD.EUR.SP00.A", date(2026, 6, 1)))
         self.assertEqual([p["date"] for p in r["points"]], ["2026-04-01", "2026-05-29"])   # mai (mensuel) pas encore
 
+    def test_gaza_borne_et_retard(self):                          # 0.10.0
+        vu = []
+        corps = [{"report_date": "2026-05-30", "killed_cum": 100}, {"report_date": "2026-05-31", "killed_cum": 110},
+                 {"report_date": "2026-06-01", "killed_cum": 120}]
+        with mock.patch.object(apz.httpx, "AsyncClient", client(corps, vu)):
+            r = asyncio.run(apz.gaza("killed_cum", "gaza", date(2026, 6, 1)))
+        self.assertEqual([p["valeur"] for p in r["points"]], [100, 110])      # le rapport du jour paraît le lendemain
+        self.assertIn("ministère de la Santé de Gaza", r["source"])
+        self.assertTrue(vu[0][0].endswith("casualties_daily.json"))
+
+    def test_sanctions_ue_une_entree_par_entite(self):
+        vu = []
+        csv_ = ("\ufefffileGenerationDate;Entity_LogicalId;Entity_DesignationDate;Entity_SubjectType;"
+                "Entity_Regulation_Programme;NameAlias_WholeName\n"
+                "2026-11-01;1;2022-03-15;person;RUS;Ivan Petrov\n"
+                "2026-11-01;1;2022-03-15;person;RUS;Ivan PETROV\n"
+                "2026-11-01;2;2026-07-01;enterprise;RUS;Acme LLC\n"
+                "2026-11-01;3;2023-01-10;person;IRN;Ali X\n")
+        with mock.patch.object(apz.httpx, "AsyncClient", client(csv_, vu)):
+            r = asyncio.run(apz.sanctions_ue(programme="RUS", avant=date(2026, 6, 1)))
+        self.assertEqual(len(r["points"]), 1)                                   # Acme désignée après la borne ; IRN exclu
+        self.assertEqual(r["points"][0]["date"], "2022-03-15")
+        self.assertIn("biais", r)
+
+    def test_oms_annuel_retarde(self):
+        vu = []
+        corps = {"value": [{"TimeDim": 2024, "NumericValue": 82.5, "Dim1": "SEX_BTSX"},
+                           {"TimeDim": 2025, "NumericValue": 82.7, "Dim1": "SEX_BTSX"}]}
+        with mock.patch.object(apz.httpx, "AsyncClient", client(corps, vu)):
+            r = asyncio.run(apz.oms("WHOSIS_000001", "FRA", "SEX_BTSX", date(2026, 6, 1)))
+        self.assertEqual([p["date"] for p in r["points"]], ["2024-12-31"])     # 2025 pas encore publiée
+        self.assertIn("Dim1 eq 'SEX_BTSX'", vu[0][1]["$filter"])
+
+    def test_ecosystemes_versions(self):
+        vu = []
+        corps = [{"number": "2.0.0", "published_at": "2026-01-10T00:00:00Z"},
+                 {"number": "2.1.0", "published_at": "2026-07-01T00:00:00Z"}]
+        with mock.patch.object(apz.httpx, "AsyncClient", client(corps, vu)):
+            r = asyncio.run(apz.ecosystemes("pypi.org", "numpy", date(2026, 6, 1)))
+        self.assertEqual([p["titre"] for p in r["points"]], ["version 2.0.0"])
+        self.assertIn("pypi.org/packages/numpy/versions", vu[0][0])
+
     def test_fts_refuse_le_passe(self):
         with self.assertRaises(RuntimeError):
             asyncio.run(apz.fts("SDN", None, date(2025, 1, 1)))

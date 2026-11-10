@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.9.9 · skill alphabet-situationnel 0.7.55 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.0 · skill alphabet-situationnel 0.7.55 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.0** : quatre puits de données de plus, sans clé : `gaza` (Tech for Palestine, d'après le ministère de la
+  Santé de Gaza et l'OCHA, séries quotidiennes), `sanctions_ue` (liste consolidée des sanctions financières de l'UE,
+  une entrée par désignation ; radiations absentes, biais de survie signalé), `oms` (Global Health Observatory,
+  indicateurs annuels, retard d'un an), `ecosystemes` (ecosyste.ms, versions datées d'un logiciel open source).
+  Noms des champs à confirmer par la sonde des puits.
 - **0.9.9** : consigne de lecture précisée (§30, déjà décidé) : les marqueurs d'une fiche sont des alternatives, un
   seul suffit pour f ; l'ancrage d'une carte ne dépend pas de l'objet de la question (le moteur décide de l'effet).
   Constaté sur le banc sans texte : CROISSANCE refusée faute de « limite » alors que trois bougies montaient, ou

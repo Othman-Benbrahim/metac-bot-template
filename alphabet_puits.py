@@ -426,6 +426,95 @@ async def hdx(terme: str, avant: date | None = None) -> dict:
     return _releve("HDX (OCHA)", f"jeux de données « {terme} »", "https://data.humdata.org/", pts, avant)
 
 
+# --------------------------------------------------------------------------- 0.10.0 : quatre sources de plus
+
+async def gaza(champ: str = "killed_cum", zone: str = "gaza", avant: date | None = None) -> dict:
+    """Tech for Palestine : séries quotidiennes reprises des rapports officiels (Gaza : ministère de la Santé de Gaza ;
+    Cisjordanie : OCHA). Valeurs actuelles, sans millésime : un rapport peut être corrigé après coup."""
+    fichier = "west_bank_daily.json" if zone == "cisjordanie" else "casualties_daily.json"
+    d = await _get(f"https://data.techforpalestine.org/api/v2/{fichier}")
+    lignes = d if isinstance(d, list) else []
+    pts = []
+    for x in lignes:
+        if not isinstance(x, dict):
+            continue
+        j = _jour(x.get("report_date"))
+        v = _num(x.get(champ))
+        if j and v is not None:
+            pts.append({"date": j, "valeur": v})
+    primaire = "OCHA (Cisjordanie)" if zone == "cisjordanie" else "ministère de la Santé de Gaza"
+    return _releve(f"Tech for Palestine, d'après {primaire}", f"{champ} — {zone}",
+                   f"https://data.techforpalestine.org/api/v2/{fichier}", pts, avant, retard=1,
+                   revisions="valeurs actuelles, sans millésime : corrections possibles")
+
+
+async def sanctions_ue(terme: str | None = None, programme: str | None = None, avant: date | None = None) -> dict:
+    """Liste consolidée des sanctions financières de l'UE (fichier ouvert de la Commission) : une entrée par personne ou
+    entité, datée de sa désignation. La liste ne garde que les désignations EN VIGUEUR : une radiation disparaît,
+    d'où un biais de survie en rétrospectif (signalé dans le relevé)."""
+    t = await _get("https://webgate.ec.europa.eu/fsd/fsf/public/files/csvFullSanctionsList_1_1/content",
+                   {"token": "dG9rZW4tMjAxNw"}, json_=False)
+    lecteur = csv.DictReader(io.StringIO(t.lstrip("\ufeff")), delimiter=";")
+    champs = {k.lower(): k for k in (lecteur.fieldnames or [])}
+
+    def col(*mots: str) -> str | None:
+        return next((v for k, v in champs.items() if all(m in k for m in mots)), None)
+    c_id, c_nom = col("logical", "id"), col("wholename")
+    c_date = col("designation", "date") or col("publication", "date")
+    c_prog, c_type = col("programme"), col("subjecttype")
+    vus: dict[str, dict] = {}
+    for r in lecteur:
+        ident = (r.get(c_id) if c_id else None) or r.get(c_nom or "", "")
+        nom, prog = (r.get(c_nom) or "").strip() if c_nom else "", (r.get(c_prog) or "").strip() if c_prog else ""
+        if programme and programme.upper() not in prog.upper():
+            continue
+        if terme and terme.lower() not in nom.lower() and ident not in vus:
+            continue
+        j = _jour(r.get(c_date)) if c_date else None
+        e = vus.setdefault(ident, {"date": j, "valeur": None, "noms": set(), "programme": prog,
+                                   "type": (r.get(c_type) or "") if c_type else ""})
+        if j and (not e["date"] or j < e["date"]):
+            e["date"] = j
+        if nom:
+            e["noms"].add(nom)
+    pts = [{"date": e["date"], "valeur": None,
+            "titre": f"{' / '.join(sorted(e['noms'])[:2])} [{e['programme']}{(' · ' + e['type']) if e['type'] else ''}]"}
+           for e in vus.values() if e["date"]]
+    return _releve("Commission européenne, liste consolidée des sanctions financières",
+                   "désignations en vigueur" + (f" · programme {programme}" if programme else "")
+                   + (f" · « {terme} »" if terme else ""),
+                   "https://data.europa.eu/data/datasets/consolidated-list-of-persons-groups-and-entities-subject-to-eu-financial-sanctions",
+                   pts, avant, biais="radiations absentes (liste des désignations en vigueur)")
+
+
+async def oms(indicateur: str, pays: str, dimension: str | None = None, avant: date | None = None) -> dict:
+    """OMS, Global Health Observatory (OData) : indicateurs annuels par pays (ex. WHOSIS_000001, espérance de vie)."""
+    filtre = f"SpatialDim eq '{pays}'" + (f" and Dim1 eq '{dimension}'" if dimension else "")
+    d = await _get(f"https://ghoapi.azureedge.net/api/{indicateur}", {"$filter": filtre})
+    pts = []
+    for x in (d.get("value") or []) if isinstance(d, dict) else []:
+        v, a = _num(x.get("NumericValue")), x.get("TimeDim")
+        if v is None or not a:
+            continue
+        pts.append({"date": f"{int(a)}-12-31", "valeur": v,
+                    "titre": " · ".join(str(x.get(k)) for k in ("Dim1", "Dim2") if x.get(k)) or None})
+    # Les estimations de l'OMS paraissent avec un an de retard au moins.
+    return _releve("OMS, Global Health Observatory", f"{indicateur} — {pays}" + (f" ({dimension})" if dimension else ""),
+                   f"https://www.who.int/data/gho/data/indicators/indicator-details/GHO/{indicateur}", pts, avant,
+                   retard=365, revisions="estimations actuelles, révisées d'une édition à l'autre")
+
+
+async def ecosystemes(registre: str, paquet: str, avant: date | None = None) -> dict:
+    """ecosyste.ms : versions publiées d'un paquet open source (registre, ex. npmjs.org, pypi.org, crates.io), datées."""
+    from urllib.parse import quote
+    base = f"https://packages.ecosyste.ms/api/v1/registries/{quote(registre, safe='')}/packages/{quote(paquet, safe='')}"
+    d = await _get(base + "/versions", {"per_page": 1000, "sort": "published_at", "order": "asc"})
+    pts = [{"date": _jour(x.get("published_at")), "valeur": None, "titre": f"version {x.get('number')}",
+            "publie_le": _jour(x.get("published_at"))}
+           for x in (d if isinstance(d, list) else []) if isinstance(x, dict) and _jour(x.get("published_at"))]
+    return _releve("ecosyste.ms", f"versions de {paquet} ({registre})", base, pts, avant)
+
+
 # --------------------------------------------------------------------------- catalogue
 
 CATALOGUE: dict[str, dict] = {
@@ -476,6 +565,18 @@ CATALOGUE: dict[str, dict] = {
     "wayback": {"fn": wayback, "nature": "texte", "comptable": False, "params": '{"url": "adresse exacte d\'une page"}',
                 "pour": "une page officielle telle qu'elle était à la date d'information"},
     "hdx": {"fn": hdx, "nature": "texte", "comptable": False, "params": '{"terme": "mots-clés"}', "pour": "jeux de données humanitaires (HDX)"},
+    "gaza": {"fn": gaza, "nature": "niveau", "comptable": True,
+             "params": '{"champ": "killed_cum|injured_cum|killed|killed_children_cum|…", "zone": "gaza|cisjordanie"}',
+             "pour": "victimes à Gaza et en Cisjordanie, séries quotidiennes (cumuls et quotidiens)"},
+    "sanctions_ue": {"fn": sanctions_ue, "nature": "evenements", "comptable": True,
+                     "params": '{"terme": "nom facultatif", "programme": "code facultatif, ex. RUS, IRN, BLR"}',
+                     "pour": "désignations aux sanctions financières de l'UE (qui, quand, quel programme)"},
+    "oms": {"fn": oms, "nature": "niveau", "comptable": True,
+            "params": '{"indicateur": "code GHO, ex. WHOSIS_000001", "pays": "ISO3", "dimension": "facultatif, ex. SEX_BTSX"}',
+            "pour": "indicateurs de santé annuels par pays (OMS)"},
+    "ecosystemes": {"fn": ecosystemes, "nature": "evenements", "comptable": True,
+                    "params": '{"registre": "npmjs.org|pypi.org|crates.io|…", "paquet": "nom exact"}',
+                    "pour": "versions publiées d'un logiciel open source (dates de sortie)"},
 }
 
 
