@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.7 · skill alphabet-situationnel 0.7.60 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.8 · skill alphabet-situationnel 0.7.60 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.8** : deux outils tirés de Wong et al. (2023, §4). **Pépinière** (`pepiniere.py`, chaque lundi après le
+  score, `registre/pepiniere.json`) : les relations traduites (lien, bloque, exclut) agrégées sur tout le registre ;
+  celles absentes de la matrice, affirmées dans 3 questions et 2 sources distinctes au moins, sont candidates à une
+  nouvelle arête, qui n'entre que par décision d'auteur datée. Le traducteur donne désormais la source de chaque extrait.
+  **Reconstruction** (`reconstruction_matrice.py`, workflow manuel) : un modèle reçoit les seules définitions des 16
+  cartes et propose les arêtes ; accord avec la matrice (κ, précision, rappel, forces) et liste des arêtes à réexaminer.
 - **0.10.7** : skill 0.7.60 (§37), d'après Wong, Goodman, Tenenbaum et al. (2023). En ombre, si la variable
   `ALPHABET_TRADUCTION` vaut 1 (allumé par défaut dans le workflow ; « 0 » l'éteint) : un TRADUCTEUR (appel séparé, après la lecture, qui ne change donc pas C) traduit ce que
   les textes affirment des liens entre structures en instructions (lien, bloque, exclut), chacune avec un extrait cité ;

@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.7"
+VERSION_BOT = "0.10.8"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1188,8 +1188,9 @@ Trois instructions possibles, et seulement celles-ci :
 - {{"instruction": "exclut", "a": "CARTE@{s}", "b": "CARTE@{s}", "extrait": "..."}} : le texte dit que les deux ne
   peuvent coexister DANS CE CAS.
 
-Règles : chaque instruction cite un « extrait » recopié MOT POUR MOT des textes ; aucune instruction sans phrase qui
-l'affirme ; une connaissance générale n'est pas une affirmation du texte ; zéro instruction est une réponse normale.
+Règles : chaque instruction cite un « extrait » recopié MOT POUR MOT des textes, et « source » : l'adresse (URL) du
+résultat d'où vient l'extrait si elle figure dans les textes, sinon "" ; aucune instruction sans phrase qui l'affirme ;
+une connaissance générale n'est pas une affirmation du texte ; zéro instruction est une réponse normale.
 
 Réponds par un seul objet JSON : {{"programme": [ ... ]}}
 
