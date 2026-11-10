@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.58
+> Version : 0.7.59
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2247,4 +2247,39 @@ pour nous** : si C ne bat qu'un A tiré une seule fois, une partie de l'écart p
 cartes. La comparaison honnête est C contre A moyenné.
 
 **Ce qui ne change pas.** Le p publié, les λ, la règle de publication, L7. Toute adoption passe par une décision datée.
+
+## 36. Un programme génératif conditionné sur la lecture (0.7.59)
+
+**Décision d'auteur, le 2026-11-10**, après la lecture de Murphy (2026) et de la programmation probabiliste (van de
+Meent, Paige, Yang & Wood, *An Introduction to Probabilistic Programming*, 2018), consignée dans
+`reference-wood-programmes-probabilistes.md` du projet.
+
+**Le problème.** Murphy nomme deux conditions d'une mise à jour exacte : des vraisemblances bien spécifiées, et la prise
+en compte de la dépendance entre indices. Le produit des λ échoue à la seconde par construction (§33). Un programme
+génératif la traite par construction ; il ne règle pas la première, il la rend nommée et mesurable.
+
+**Le programme** (`p0_generatif`, en ombre, dans `sensibilite`). Dans la strate de la cible :
+1. chaque carte est une variable latente, présente avec la probabilité π ;
+2. une arête A → B de la matrice, lue comme **effet direct**, multiplie par λ(A → B) la cote que A et B soient présentes
+   ensemble : un médiateur non observé est inféré de sa cause, un médiateur observé n'ajoute que son effet direct ;
+3. le lecteur ancre une carte présente en F ou f (sensibilités sF, sf), une carte absente par erreur (pF, pf) ; **une
+   candidate examinée puis rejetée est une observation** (« cherchée, pas trouvée ») ; une carte non examinée n'apprend
+   rien ;
+4. l'événement survient par noisy-or (§34), la fuite étant réglée pour que, **sans aucune observation, p₀ = f** : la
+   fréquence de base contient déjà les structures non vues.
+
+L'inférence est **exacte** : énumération des 2¹⁵ états de la strate, en Python standard, sans tirage aléatoire. Les
+sources d'autres strates restent des causes certaines. La révision par les cas homologues est celle du calcul publié.
+
+**Paramètres stipulés, nommés** (`generatif` : π = 0,1 ; sF = 0,5 ; sf = 0,3 ; pF = 0,01 ; pf = 0,05), avec une bande
+(π ÷ 2, π × 2, lecteur deux fois plus bruité). Ils pourront être **estimés** : les taux du lecteur par double lecture et
+accord entre codeurs (modèle de Dawid et Skene), π par la base de cas. C'est le gain sur les λ, qui mêlent tout en un
+nombre.
+
+**Ce que l'ombre apporte de neuf.** Les rejets entrent dans le calcul (ils n'y entraient pas) ; deux cartes reliées ne
+se comptent plus deux fois. Sur l'exemple (CROISSANCE + CONTRAINTE → SEUIL@7, f = 0,121) : produit 0,306 sur p₀,
+génératif 0,225 ; avec CONTRAINTE non lue et CROISSANCE seule, 0,172, et 0,145 si CONTRAINTE a été cherchée et rejetée.
+
+**Ce qui ne change pas.** Le p publié, les λ, la matrice. Toute adoption passe par une décision datée, sur issues
+réelles (bot et banc, `generatif` scellé à côté de C).
 

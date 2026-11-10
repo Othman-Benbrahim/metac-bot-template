@@ -1,9 +1,18 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.58
+> Version : 0.7.59
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.59 — 2026-11-10 · programme génératif en ombre
+
+Décision d'auteur, après Murphy (2026) et Wood et al. (2018). **Aucun chiffre publié ne change.**
+
+- `validation.md` §36 : la décision ; `graphe.md` §2.1 : renvoi.
+- `moteur.py` : `p0_generatif` (énumération exacte, fuite réglée sur f) ; `sensibilite` ajoute `generatif` (p, effet,
+  bande sur π et sur le lecteur, rejets utilisés) ; `calculer --dossier` transmet les rejets ; un autotest.
+- `parametres.json` : `generatif` (π, sensibilités, faux positifs du lecteur ; ne touche aucun p publié).
 
 ## 0.7.58 — 2026-11-10 · tempérage des cartes en ombre
 

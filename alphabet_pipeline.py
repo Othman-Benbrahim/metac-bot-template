@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.5"
+VERSION_BOT = "0.10.6"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1171,7 +1171,10 @@ def ombre_causale(sortie: dict) -> dict | None:
     return {"p_mediation": med.get("p"), "mediateurs_retires": med.get("mediateurs_retires"),
             "ablation": sb.get("ablation"), "p_noisy_or": (sb.get("noisy_or") or {}).get("p"),
             "valeur_information": {k: vi.get(k) for k in ("borne", "seuil", "arret", "plus_influentes")} if vi else None,
-            "tempere": sb.get("tempere")}   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
+            "tempere": sb.get("tempere"),
+            # 0.10.6 (skill 0.7.59, §36) : programme génératif conditionné sur ancrages ET rejets ; bande sur π et le lecteur
+            "generatif": ({k: (sb.get("generatif") or {}).get(k) for k in ("p", "bande", "rejets_utilises")}
+                          if sb.get("generatif") else None)}   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,

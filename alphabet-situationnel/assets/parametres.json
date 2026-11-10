@@ -1,5 +1,5 @@
 {
- "version": "0.7.58",
+ "version": "0.7.59",
  "nombre_strates": 13,
  "cartes": {
   "SEU": "SEUIL",
@@ -215,6 +215,13 @@
  "seuil_decision": 0.5,
  "seuil_valeur_information": 0.02,
  "alphas_temperage": [0.25, 0.5, 0.75],
+ "generatif": {
+  "pi_presence": 0.1,
+  "sens_F": 0.5,
+  "sens_f": 0.3,
+  "fp_F": 0.01,
+  "fp_f": 0.05
+ },
  "vide_recherches_cloture": 3,
  "pas_max": 20
 }
