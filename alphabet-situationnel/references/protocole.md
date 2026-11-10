@@ -1,6 +1,6 @@
 # Alphabet situationnel — Protocole
 
-> Version : 0.7.53
+> Version : 0.7.54
 >
 > **Source de vérité des règles.** Chaque règle est définie une seule fois, ici. Les autres fichiers
 > donnent des données (cartes, équivalents, dynamiques), des formats (fiche de cas, journal, sortie)
@@ -686,7 +686,7 @@ modification impose une version et une nouvelle évaluation, sans réécriture d
 <!-- PARAMETRES:BEGIN -->
 | Paramètre | Valeur |
 |---|---|
-| `version` | `"0.7.53"` |
+| `version` | `"0.7.54"` |
 | `nombre_strates` | `13` |
 | `cartes.SEU` | `"SEUIL"` |
 | `cartes.REC` | `"RÉCIPROCITÉ"` |

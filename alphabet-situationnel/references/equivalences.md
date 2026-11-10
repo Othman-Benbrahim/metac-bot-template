@@ -1,6 +1,6 @@
 # Alphabet situationnel — Équivalents par strate (index, couche 1)
 
-> Version : 0.7.53
+> Version : 0.7.54
 
 > Les équivalents locaux des 16 cartes sont rangés **par strate**, un fichier par strate :
 > `equivalences/strate-01.md` à `equivalences/strate-13.md`. Raison : la procédure va des faits vers les
