@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.62
+> Version : 0.7.63
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -49,6 +49,7 @@ carte, une définition abstraite commune et ce que chaque traduction locale en c
 | 0.7.53 (faite) | Le marqueur décide de l'intensité | Définition + un marqueur observable → f ; « contredit » distinct d'« incomplet » (§30) |
 | 0.7.54 (faite) | Fait de série | Un relevé de données daté et sourcé est un fait ; banc sans texte `alphabet-chaine` (§31) |
 | 0.7.55 (faite) | Équivalents de données | Marqueurs de dix cartes traduits en relevés de jetons, six Vides ; banc seul (§32) |
+| 0.7.63 (faite) | Surprise d'une lecture | Lecture improbable selon la matrice, mesurée en ombre par le programme génératif (§40) |
 | 0.7.62 (faite) | Invariance du lecteur | Deux vues aux sources disjointes, mêmes cartes attendues ; κ mesuré en ombre par le bot (§39) |
 | 0.7.61 (faite) | Relecture Murphy ch. 4, 9, 29, 30 | Couplage unique par paire, rejets selon l'effort, ombre sans plafond, largeurs d'arbre mesurées ; calcul publié nommé (score log-linéaire) (§38) |
 | 0.7.60 (faite) | Lecture probabiliste | Traduction des textes en instructions (lien, bloque, exclut) du programme génératif, d'après Wong et al. 2023, en ombre (§37) |

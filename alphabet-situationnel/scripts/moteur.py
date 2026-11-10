@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.62 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.63 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -663,6 +663,8 @@ COMBINAISON = "produit"
 TEMPERAGE = 1.0
 # 0.7.59 (§36) : modèle génératif, posé seulement le temps d'une sonde : {'params': ..., 'rejets': [...]}.
 GENERATIF = None
+# 0.7.63 (§40) : surprise de la dernière lecture passée au programme génératif (log-probabilités), lue par `sensibilite`.
+DERNIERE_SURPRISE = {}
 
 
 INSTRUCTIONS_PROGRAMME = ("lien", "bloque", "exclut")
@@ -774,6 +776,7 @@ def p0_generatif(etat, cible, f, src, params, rejets, programme=None):
                 couple[k_] = couple.get(k_, 0.0) + math.log(params["facteur_exclusion"])
     paires = [(i, j, l) for (i, j), l in couple.items()]
     Z = S = Z0 = S0 = 0.0
+    marg = [0.0] * n          # 0.7.63 : masse a priori (couplée) où chaque carte est présente
     for etat_ in range(1 << n):
         lw = lw0 = 0.0; reste = 1.0
         for i in range(n):
@@ -785,8 +788,21 @@ def p0_generatif(etat, cible, f, src, params, rejets, programme=None):
             if etat_ >> i & 1 and etat_ >> j & 1: lw += l; lw0 += l
         e = math.exp(lw); Z += e; S += e * reste
         e0 = math.exp(lw0); Z0 += e0; S0 += e0 * reste
+        for i in range(n):
+            if etat_ >> i & 1: marg[i] += e0
     reste_ext = math.prod(1 - (odds_module(f, x["lambda"]) - f) / (1 - f)
                           for x in src if "@" in x["mot"] and int(x["mot"].split("@")[1]) != s)
+    # 0.7.63 (§40) : surprise de la lecture. P(observations) = Z/Z0 dans le modèle couplé ; la même lecture si chaque carte
+    # était tirée SEULE avec sa probabilité marginale a priori q_i (les mêmes marges, sans dépendance) :
+    # Π [q_i·v_présente + (1−q_i)·v_absente]. L'écart (surprise relative) dit si la COMBINAISON lue est plus ou moins
+    # plausible que ses éléments pris un à un : positif, la matrice jugeait cet assemblage improbable (lecteur fautif ou
+    # situation hors du modèle), comme le signal de surprise d'un modèle du monde devant un événement impossible.
+    lp_obs = math.log(Z / Z0)
+    q = [x / Z0 for x in marg]
+    lp_ind = sum(math.log(q[i] * math.exp(un[i][0] - lp) + (1 - q[i]) * math.exp(un[i][1] - la)) for i in range(n))
+    DERNIERE_SURPRISE.clear()
+    DERNIERE_SURPRISE.update({"log_p_lecture": lp_obs, "log_p_lecture_independante": lp_ind,
+                              "surprise_relative": lp_ind - lp_obs, "observations": sum(1 for u in un if u != (lp, la))})
     return 1 - (1 - f) * (S / Z) / (S0 / Z0) * reste_ext
 
 
@@ -2686,8 +2702,15 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None,rejets=None,pr
                     out_[nom_]=horizon_result(etat,typ,cible,base,opts,h,semantique)['p']
                 except ValueError:pass
                 finally:GENERATIF=None
+            surprise_=None
+            try:
+                GENERATIF={'params':g_,'rejets':rejets if isinstance(rejets,dict) else list(rejets or [])}
+                DERNIERE_SURPRISE.clear();horizon_result(etat,typ,cible,base,opts,h,semantique)
+                surprise_=dict(DERNIERE_SURPRISE) or None
+            except ValueError:pass
+            finally:GENERATIF=None
             if 'reference' in out_:
-                generatif={'p':out_['reference'],'effet':out_['reference']-reference,'variantes':out_,
+                generatif={'p':out_['reference'],'effet':out_['reference']-reference,'variantes':out_,'surprise':surprise_,
                            'rejets_utilises':sorted(rejets or []),
                            'rejets_categories':dict(rejets) if isinstance(rejets,dict) else None,
                            'bande':[min(out_.values()),max(out_.values())]}
@@ -3899,7 +3922,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4136,7 +4159,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.62','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.63','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -5810,6 +5833,20 @@ def autotest():
             e2=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + ÉMERGENCE@7[f]')  # paire mutuelle : rien d'écarté
             sb2=sensibilite(e2,'apparait','CTR@7',base,{'asof':'2026-09-20'},1,'presence')
             self.assertEqual(sb2['mediation']['mediateurs_retires'],[])
+        def test_surprise(self):
+            # 0.7.63 (§40) : sans observation, aucune surprise ; une seule observation, surprise relative nulle ; deux cartes
+            # reliées ancrées ensemble : < 0 (cohérent) ; une carte ancrée et sa conséquence forte contredite : > 0.
+            G=P['generatif'];vide={'date':'2026-09','fenetre':'3 mois','mots':[]}
+            p0_generatif(vide,'SEU@7',.12,[],G,[]);self.assertAlmostEqual(DERNIERE_SURPRISE['log_p_lecture'],0.0)
+            e2=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + CONTRAINTE@7[f]')          # CRO → CTR dans la matrice
+            p0_generatif(e2,'SEU@7',.12,[],G,[]);self.assertLess(DERNIERE_SURPRISE['surprise_relative'],0)
+            self.assertEqual(DERNIERE_SURPRISE['observations'],2)
+            e1=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[F]')
+            p0_generatif(e1,'SEU@7',.12,[],G,[]);self.assertAlmostEqual(DERNIERE_SURPRISE['surprise_relative'],0.0,places=9)
+            p0_generatif(e1,'SEU@7',.12,[],G,{'CTR@7':'contredit'});self.assertGreater(DERNIERE_SURPRISE['surprise_relative'],0.1)
+            base=base_active(charger(RACINE/'assets/base-de-cas.exemple.jsonl'),'2026-09-20',True)
+            sb=sensibilite(e2,'apparait','SEU@7',base,{'asof':'2026-09-20'},1,'presence')
+            self.assertLess(sb['generatif']['surprise']['surprise_relative'],0)
         def test_relecture_murphy(self):
             # 0.7.61 (§38) : largeur min-fill exacte sur des graphes connus ; une paire mutuelle compte une fois ; un rejet
             # « aucun fait » pèse moins qu'un rejet « contredit », « non cherchée » ne pèse rien ; ombre sans plafond.

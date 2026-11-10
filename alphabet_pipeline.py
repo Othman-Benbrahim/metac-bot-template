@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.11"
+VERSION_BOT = "0.10.12"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1311,7 +1311,7 @@ def ombre_causale(sortie: dict) -> dict | None:
             "tempere": sb.get("tempere"),
             # 0.10.6 (skill 0.7.59, §36) : programme génératif conditionné sur ancrages ET rejets ; bande sur π et le lecteur
             "generatif": ({k: (sb.get("generatif") or {}).get(k) for k in ("p", "bande", "rejets_utilises",
-                                                                           "rejets_categories")}
+                                                                           "rejets_categories", "surprise")}
                           if sb.get("generatif") else None),
             # 0.10.7 (skill 0.7.60, §37) : lecture probabiliste (traducteur → instructions → programme génératif)
             "lecture_probabiliste": sb.get("lecture_probabiliste"),

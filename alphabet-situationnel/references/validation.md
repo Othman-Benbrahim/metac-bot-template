@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.62
+> Version : 0.7.63
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2393,4 +2393,24 @@ dans un texte et dans une série chiffrée) ; apprendre cette correspondance au 
 décision.
 
 **Ce qui ne change pas.** Le p publié, la lecture publiée, les λ, la matrice.
+
+## 40. Surprise d'une lecture (0.7.63)
+
+**Décision d'auteur, le 2026-11-10**, d'après le signal de « surprise » des modèles du monde de type JEPA (LeWorldModel,
+2026, présenté par M.-M. Maudet, « JEPA et modèles du monde ») : un modèle du monde signale qu'il ne s'attendait pas à ce
+qu'il voit. C'est le contrôle de mauvaise spécification noté dans la lecture de Wood et de Schmitt et al.
+
+**Mesure** (`generatif.surprise`, en ombre). Le programme génératif (§36) donne la probabilité de la lecture observée
+(ancrages et rejets), P = Z/Z₀. On la compare à celle de la même lecture si chaque carte était tirée seule avec sa
+probabilité marginale a priori. **Surprise relative** = log P(indépendantes, mêmes marges) − log P(couplées).
+- **≈ 0** : une seule observation, ou des cartes que la matrice ne relie pas.
+- **< 0** : l'assemblage est plus cohérent que ses éléments pris un à un (deux cartes reliées, ancrées ensemble).
+- **> 0** : la matrice jugeait l'assemblage improbable (exemple : CROISSANCE ancrée, CONTRAINTE, sa conséquence forte,
+  contredite : +0,16). Deux lectures possibles, à départager : le lecteur s'est trompé, ou la situation sort de ce que la
+  matrice sait représenter.
+
+**Usage.** Le bot scelle la surprise avec C ; le score dira si C se trompe davantage quand la surprise est forte. Aucune
+règle ne s'appuie dessus avant une décision datée.
+
+**Ce qui ne change pas.** Le p publié, la lecture, les λ, la matrice.
 
