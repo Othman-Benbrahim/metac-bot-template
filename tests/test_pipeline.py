@@ -91,6 +91,38 @@ def lancer(reponses, p_A=0.3, reelle=True, q=Q, publie=True, mode="minibench", m
 
 
 class Tests(unittest.TestCase):
+    def test_invariance_en_ombre(self):
+        # 0.10.11 (§39) : deux vues aux sources disjointes, deux lectures de plus ; accord mesuré ; C inchangé.
+        import hashlib as _h
+        doms = [f"site{i}.org" for i in range(20)]
+        pair = lambda d: int(_h.sha256(d.encode()).hexdigest(), 16) % 2
+        da = next(d for d in doms if pair(d) == 0)
+        db = next(d for d in doms if pair(d) == 1)
+
+        async def chercher2(req):
+            return (f"[moteur : test]\n\n[2026-11-01] A — https://{da}/x\nfait A pour {req}\n\n"
+                    f"[2026-11-02] B — https://www.{db}/y\nfait B pour {req}")
+        va, vb, n = ap.vues_disjointes([{"resultat": asyncio.run(chercher2("q")), "executee": True}])
+        self.assertEqual((n["A"], n["B"]), (1, 1))
+        self.assertIn(da, va[0]["resultat"]); self.assertNotIn(da, vb[0]["resultat"])
+        lec_b = lecture(); lec_b["mots"] = lec_b["mots"][:1]
+        ancien = ap.INVARIANCE_TAUX
+        ap.INVARIANCE_TAUX = 1.0
+        try:
+            llm = LlmSimule([PLAN, vue(0.2), lecture(), lecture(), lec_b])
+            r = asyncio.run(ap.prevoir_binaire(Q, "recherche générale", 0.3, "raisonnement", llm, chercher2, True,
+                                               MAINTENANT, publie=True, mode="minibench"))
+        finally:
+            ap.INVARIANCE_TAUX = ancien
+        inv = r.ligne["bras"]["C"]["invariance"]
+        self.assertEqual(inv["statut"], "teste")
+        self.assertLess(inv["jaccard"], 1.0)
+        r0, _ = lancer([PLAN, vue(0.2), lecture()])
+        self.assertAlmostEqual(r.p_C, r0.p_C)                     # le chiffre publié ne bouge pas
+        import score_registre as sr_
+        s_ = sr_.invariance_lecteur([inv, {"statut": "non_teste"}])
+        self.assertEqual(s_["questions"], 1)
+
     def test_lecture_probabiliste_en_ombre(self):
         # 0.10.7 (§37) : le traducteur est un appel séparé, après la lecture ; un extrait non retrouvé est écarté sans
         # modèle ; le moteur calcule l'ombre ; C ne change pas.

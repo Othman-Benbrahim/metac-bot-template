@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.61
+> Version : 0.7.62
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2364,4 +2364,33 @@ révision Beta « double comptage » (p₀ est la moyenne a priori que les cas a
 couplages de co-présence entre cartes, eux, s'apprendront sans issues, sur les lectures, quand il y en aura assez.
 
 **Ce qui ne change pas.** Le p publié, les λ, la matrice, le plafond publié, L7.
+
+## 39. Invariance du lecteur : deux vues, mêmes cartes (0.7.62)
+
+**Décision d'auteur, le 2026-11-10**, d'après R. Balestriero & Y. LeCun, « Proving and Improving the Platonic
+Representation Hypothesis with JEPAs », arXiv 2610.39302 (29 octobre 2026).
+
+**L'idée reprise.** Une représentation saisit la situation, et non le style du document, si deux observations distinctes
+d'un même état du monde (de « bonnes vues ») y tombent au même point. Les auteurs montrent que les objectifs qui
+rapprochent les morceaux d'un même document (« mauvaises vues ») encodent la « nuisance » propre au document : son
+registre, sa forme.
+
+**Transposé au lecteur.** Le lecteur de l'alphabet est un encodeur vers un vocabulaire fermé : il doit ancrer les mêmes
+cartes quelle que soit la source qui décrit la situation. **Test** (bot, en ombre, sur une part des questions) : les
+mêmes requêtes, le même plan, la même consigne, mais deux vues aux **sources disjointes** (chaque site va à une seule
+vue). Mesures : Jaccard des cartes ancrées, part des lectures identiques, κ de Cohen sur les décisions « ancrée / non
+ancrée » des candidates. C'est un accord **d'un codeur avec lui-même sur deux textes**, à côté de l'accord de deux
+codeurs sur un même texte (`reference-accord-codeurs.md`).
+
+**Lecture.** Un κ faible dit que le lecteur suit le registre des sources plus que la situation ; c'est alors le lecteur,
+pas la matrice, qu'il faut corriger. **Réserve, celle des auteurs :** leur théorème suppose que chaque observation
+détermine l'état ; une vue partielle (moins de sources, un aspect seulement) peut légitimement ancrer moins de cartes.
+Le registre garde donc le nombre d'items de chaque vue, et un désaccord par **absence** (une vue n'ancre pas ce que
+l'autre ancre) se lit autrement qu'un désaccord par **contradiction** (deux intensités ou deux cartes opposées).
+
+**À noter, sans changement :** les équivalents de données (§32) sont déjà des paires de bonnes vues (le même marqueur lu
+dans un texte et dans une série chiffrée) ; apprendre cette correspondance au lieu de l'écrire est une piste, pas une
+décision.
+
+**Ce qui ne change pas.** Le p publié, la lecture publiée, les λ, la matrice.
 
