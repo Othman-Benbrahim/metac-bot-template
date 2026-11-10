@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.9.6 · skill alphabet-situationnel 0.7.53 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.9.7 · skill alphabet-situationnel 0.7.53 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.9.7** : `alphabet()` accepte une vue extérieure fixée et des relevés de données fixés (`vue_fixee`,
+  `donnees_fixees`), pour le banc « sans texte » `alphabet-chaine` ; le bot Metaculus ne les passe jamais, son
+  comportement est inchangé.
 - **0.9.6** : skill 0.7.53 (le marqueur décide de l'intensité) : la définition d'une carte + un marqueur observable
   suffisent pour f, sans la forme complète de l'attendu ; « contredit » distingué de « marqueur non rempli », avec
   exemples (le premier passage exploratoire a fini en état nul sur 16 rejets sur 16 « marqueur non rempli ») ; la
