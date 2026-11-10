@@ -146,15 +146,17 @@ class TestsConnecteurs(unittest.TestCase):
     def test_sanctions_ue_une_entree_par_entite(self):
         vu = []
         csv_ = ("\ufefffileGenerationDate;Entity_LogicalId;Entity_DesignationDate;Entity_SubjectType;"
-                "Entity_Regulation_Programme;NameAlias_WholeName\n"
-                "2026-11-01;1;2022-03-15;person;RUS;Ivan Petrov\n"
-                "2026-11-01;1;2022-03-15;person;RUS;Ivan PETROV\n"
-                "2026-11-01;2;2026-07-01;enterprise;RUS;Acme LLC\n"
-                "2026-11-01;3;2023-01-10;person;IRN;Ali X\n")
+                "Entity_Regulation_PublicationDate;Entity_Regulation_Programme;NameAlias_WholeName\n"
+                "2026-11-01;1;2022-03-15;person;2022-03-16;RUS;Ivan Petrov\n"
+                "2026-11-01;1;2022-03-15;person;2022-03-16;RUS;Ivan PETROV\n"
+                "2026-11-01;2;2026-07-01;enterprise;2026-07-02;RUS;Acme LLC\n"
+                "2026-11-01;4;;person;2023-05-01;RUS;Sans Date\n"
+                "2026-11-01;3;2023-01-10;person;2023-01-11;IRN;Ali X\n")
         with mock.patch.object(apz.httpx, "AsyncClient", client(csv_, vu)):
             r = asyncio.run(apz.sanctions_ue(programme="RUS", avant=date(2026, 6, 1)))
-        self.assertEqual(len(r["points"]), 1)                                   # Acme désignée après la borne ; IRN exclu
+        self.assertEqual(len(r["points"]), 2)                                   # Acme désignée après la borne ; IRN exclu
         self.assertEqual(r["points"][0]["date"], "2022-03-15")
+        self.assertEqual(r["points"][1]["date"], "2023-05-01")                  # 0.10.1 : repli sur la publication
         self.assertIn("biais", r)
 
     def test_oms_annuel_retarde(self):
