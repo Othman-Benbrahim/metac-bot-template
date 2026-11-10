@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.6 · skill alphabet-situationnel 0.7.59 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.7 · skill alphabet-situationnel 0.7.60 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.7** : skill 0.7.60 (§37), d'après Wong, Goodman, Tenenbaum et al. (2023). En ombre, si la variable
+  `ALPHABET_TRADUCTION` vaut 1 : un TRADUCTEUR (appel séparé, après la lecture, qui ne change donc pas C) traduit ce que
+  les textes affirment des liens entre structures en instructions (lien, bloque, exclut), chacune avec un extrait cité ;
+  les extraits non retrouvés sont écartés sans modèle ; le moteur en tire `lecture_probabiliste`. Le score compare
+  `C_lecture_probabiliste` à C. Les variables `ALPHABET_TRADUCTION` et `ALPHABET_A_ESSAIS` sont lues par le workflow.
 - **0.10.6** : skill 0.7.59 (§36). En ombre : `generatif`, un programme génératif conditionné sur la lecture (cartes
   latentes, lecteur bruité, rejets du dossier comptés comme observations, inférence exacte), avec sa bande ; le score
   compare `C_generatif` à C.

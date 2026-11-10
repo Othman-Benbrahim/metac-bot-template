@@ -1,6 +1,6 @@
 # Alphabet situationnel — Registre des angles morts
 
-> Version : 0.7.59
+> Version : 0.7.60
 
 > Ce qu'aucune des 16 cartes ne peut exprimer, strate par strate. Le registre applique P8 (couverture
 > non présumée) : une lecture qui le consulte dit, en une ligne, ce que l'alphabet ne voit pas dans la

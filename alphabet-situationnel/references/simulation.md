@@ -1,6 +1,6 @@
 # Alphabet situationnel — Simulation et sortie (couche 5)
 
-> Version : 0.7.59
+> Version : 0.7.60
 
 > Les chiffres et empreintes viennent du moteur. Format des restitutions, sans transformer une
 > simulation conditionnelle en prévision empiriquement validée.
