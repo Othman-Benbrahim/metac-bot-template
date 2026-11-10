@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.9.8"
+VERSION_BOT = "0.9.9"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -480,6 +480,12 @@ def regles_dossier() -> str:
   ancre la carte en f (test "cerceau" ou "paille"). N'exige PAS la forme complète de l'« attendu » pour f : par exemple,
   pour CROISSANCE, une hausse mesurée qui s'accélère suffit pour f, sans trois mesures ni saturation nommée.
 - F exige un fait SUFFISANT : test "pistolet" ou "double". La forme complète de l'attendu, corroborée, sert à F.
+- Les « Marqueurs observables » d'une fiche, et le « marqueur local » d'un équivalent, sont des ALTERNATIVES : un seul
+  rempli suffit pour f (avec la définition). Ne réclame pas les autres lignes de la liste pour f. Quand un équivalent
+  local donne un marqueur précis (par exemple un seuil chiffré), le remplir suffit pour f.
+- L'ancrage d'une carte ne dépend PAS de l'objet de la question : une carte s'ancre si la situation la montre, même si
+  le fait porte sur une autre grandeur que celle que vise la question. C'est le moteur, par la matrice, qui décide de
+  son effet sur l'événement ; ne rejette jamais une carte parce qu'elle « ne porte pas sur » l'objet de la question.
 - F exige corroboration "independantes" (deux sources nommées séparées par « ; », et independance {critere origine|
   producteur|transmission, motif}) ou "unique" pour une source primaire. Deux relais d'une même origine = une source.
 - a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines de la fiche, sans « ? ».
