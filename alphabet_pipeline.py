@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.12"
+VERSION_BOT = "0.10.13"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1202,7 +1202,13 @@ def accord_vues(plan: dict, lec_a: dict, lec_b: dict) -> dict:
     xb = {norm(k): v for k, v in ancres(lec_b).items()}
     cands = [norm(c) for c in plan.get("candidats") or []]
     union = set(xa) | set(xb)
-    return {"ancrees_A": sorted(xa), "ancrees_B": sorted(xb),
+    m_ = _moteur()
+    code = lambda k: f"{m_.carte_id(k.split('@')[0])}@{k.split('@')[1]}"
+    try:   # 0.10.13 (skill 0.7.65, §42) : accord au niveau de la famille (carte et voisines A6)
+        famille = m_.accord_deux_niveaux([code(k) for k in xa], [code(k) for k in xb])["accord_famille"]
+    except (ValueError, IndexError):
+        famille = None
+    return {"ancrees_A": sorted(xa), "ancrees_B": sorted(xb), "accord_famille": famille,
             "jaccard": (len(set(xa) & set(xb)) / len(union)) if union else 1.0,
             "candidates": [{"carte": c, "A": c in xa, "B": c in xb} for c in cands],
             "meme_intensite": sum(1 for k in set(xa) & set(xb) if xa[k] == xb[k]),

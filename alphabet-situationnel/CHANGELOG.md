@@ -1,9 +1,16 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.64
+> Version : 0.7.65
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.65 — 2026-11-11 · SSSOM et accord à deux niveaux
+
+D'après asago-policy-mapper. **Aucun chiffre publié ne change.**
+
+- `validation.md` §42.
+- `moteur.py` : `sssom` et commande `sssom` ; `familles` ; `accord_deux_niveaux` ; un autotest.
 
 ## 0.7.64 — 2026-11-11 · relecture par Murphy (ch. 3, 13)
 

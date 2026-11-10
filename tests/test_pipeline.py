@@ -117,6 +117,7 @@ class Tests(unittest.TestCase):
         inv = r.ligne["bras"]["C"]["invariance"]
         self.assertEqual(inv["statut"], "teste")
         self.assertLess(inv["jaccard"], 1.0)
+        self.assertIsInstance(inv["accord_famille"], float)        # 0.10.13 (§42) : second niveau
         r0, _ = lancer([PLAN, vue(0.2), lecture()])
         self.assertAlmostEqual(r.p_C, r0.p_C)                     # le chiffre publié ne bouge pas
         import score_registre as sr_
