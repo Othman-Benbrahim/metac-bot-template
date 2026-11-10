@@ -1,0 +1,200 @@
+{
+ "candidats": [
+  "CTR@8",
+  "HIE@8",
+  "POL@8",
+  "TRC@8",
+  "CTR@13",
+  "HIE@13",
+  "POL@13",
+  "INC@13"
+ ],
+ "contre_candidate": [
+  "TRC@8",
+  "INC@13"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "La Verkhovna Rada vote-t-elle avant le 2027-04-10 une modification de la loi n° 389-VIII introduisant une procédure de levée géographiquement différenciée de la loi martiale ?",
+   "si_oui": "CTR@8",
+   "si_non": "indetermine",
+   "resolution": "texte de loi adopté et publié par la Rada entre le 2026-11-10 et le 2027-04-10",
+   "justification": {
+    "oui": "une telle modification créerait une option juridique nouvelle, signal d'une levée partielle possible avant l'échéance"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "Un décret présidentiel daté entre le 2026-11-10 et le 2027-04-10 lève-t-il la loi martiale dans au moins un oblast non occupé, avec approbation parlementaire dans les deux jours ?",
+   "type": "documentation",
+   "carte": "CTR@8",
+   "manque": "aucun fait ne montre une levée partielle effective ; le cadre actuel ne prévoit pas de procédure différenciée",
+   "resolution": "décret publié au Journal officiel ukrainien et vote d'approbation de la Rada"
+  },
+  {
+   "question": "Les États-Unis et l'UE annoncent-ils avant le 2027-04-10 des garanties de sécurité « fiables, claires et solides » que Zelensky cite comme condition d'élections ou de levée de la loi martiale ?",
+   "si_oui": "INC@13",
+   "si_non": "indetermine",
+   "resolution": "déclarations officielles datées de la Maison-Blanche, de la Commission européenne ou du Conseil européen",
+   "justification": {
+    "oui": "une condition nommée levée déclencherait des conduites conditionnées à cette issue, ancrant l'incertitude"
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats décrivent le cadre légal de la loi martiale (décret présidentiel, approbation parlementaire, absence de procédure de levée géographiquement différenciée) mais aucun fait ne montre une option nommée devenue inaccessible avec contournement tenté ou sanction prévue. La loi martiale est présentée comme un régime en vigueur, non comme une contrainte active dont la levée changerait ce que font les acteurs dans la fenêtre.",
+  "?1": "[marqueur_non_rempli] Le partage de compétences Président/Rada est décrit (initiative présidentielle, approbation parlementaire sous deux jours), mais aucun arbitrage effectivement suivi n'est daté dans la fenêtre : les faits montrent une procédure, pas un ordre de préséance qui s'impose à un acteur récalcitrant.",
+  "?2": "[marqueur_non_rempli] Les résultats mentionnent un consensus large contre les élections en temps de guerre et des positions de factions, mais aucun fait ne montre deux camps nommés s'organisant exclusivement l'un contre l'autre : le clivage porte sur le calendrier et les conditions, pas sur deux pôles qui se définissent l'un par l'autre.",
+  "?3": "[marqueur_non_rempli] Les résultats évoquent la 21e prolongation et des précédents de prolongation, mais aucun fait ne montre un résidu du passé (règle héritée, précédent cité comme liant) qui oriente les conduites présentes et ne serait pas choisi tel quel aujourd'hui. La prolongation est expliquée par la situation actuelle (guerre en cours), pas par la dépendance au chemin.",
+  "?4": "[marqueur_non_rempli] Les résultats décrivent des conditions politiques internes (consensus contre les élections, positions de Zelensky, pression américaine) mais aucun fait ne montre une option politique exclue faute de majorité ou par une règle de procédure citée dans un choix daté. Le report des élections est présenté comme une conséquence légale, pas comme une contrainte active sur une décision nommée.",
+  "?5": "[marqueur_non_rempli] Les résultats mentionnent la centralisation autour de l'administration présidentielle et du CSND, mais aucun fait ne montre un arbitrage de l'exécutif s'imposant effectivement à un ministre ou à un groupe parlementaire dans la fenêtre, ni une consigne de vote suivie sur la levée de la loi martiale.",
+  "?6": "[marqueur_non_rempli] Les résultats décrivent des positions de factions (SN, opposition) et un consensus, mais aucun fait ne montre deux camps nommés avec alignements exclusifs sur la levée de la loi martiale : les positions sont présentées comme des nuances sur le calendrier, pas comme une polarité.",
+  "?7": "[marqueur_non_rempli] Les résultats évoquent l'incertitude sur le calendrier de fin de guerre et des scénarios concurrents, mais aucun fait ne montre des conduites organisées par cette indétermination (décision reportée dans l'attente d'une information nommée, dispositifs provisoires). Les acteurs agissent comme si la guerre durait, sans report conditionné à une issue non tranchée."
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@8"
+   ],
+   "requete": "conditions légales de levée de la loi martiale en Ukraine article 8 loi 2022-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@8",
+    "HIE@8"
+   ],
+   "requete": "qui décide de lever la loi martiale Ukraine président Rada Conseil de sécurité 2022-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@8"
+   ],
+   "requete": "obstacles juridiques à une levée partielle de la loi martiale par oblast Ukraine 2022-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "HIE@8"
+   ],
+   "requete": "répartition des compétences levée loi martiale Ukraine décret présidentiel approbation parlement 2022-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@8",
+    "POL@8"
+   ],
+   "requete": "clivage politique sur la levée de la loi martiale Ukraine 2025-2026 débats Rada",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "HIE@8"
+   ],
+   "requete": "conflit institutionnel Ukraine sur la prolongation ou levée de la loi martiale 2022-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@8"
+   ],
+   "requete": "position des factions politiques ukrainiennes sur la fin de la loi martiale 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@8",
+    "TRC@8"
+   ],
+   "requete": "effet des précédents de prolongation sur la probabilité d'une levée Ukraine 2022-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "POL@8"
+   ],
+   "requete": "opposition politique à la levée de la loi martiale Ukraine élections reportées 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "conditions politiques internes d'une levée de la loi martiale Ukraine 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@13",
+    "INC@13"
+   ],
+   "requete": "incertitude sur le calendrier de fin de guerre Ukraine 2026-2027",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@13"
+   ],
+   "requete": "scénarios de gel du conflit Ukraine sans levée de la loi martiale 2026-2027",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@8 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "OUI si la date de résolution est strictement après le 2027-04-10, y compris l'absence de levée au 2027-05-28 qui donne > 2027-05-28 ; NON si une levée remplissant le critère intervient au plus tard le 2027-04-10.",
+   "source_resolution": {
+    "emetteur": "Verkhovna Rada d'Ukraine et Président de l'Ukraine",
+    "document": "Textes officiels publiés de prolongation ou de levée de la loi martiale, et règle d'échéance de la question",
+    "regle_ambiguite": "Si aucune levée au 2027-05-28, résolution > 2027-05-28 ; si le gouvernement ukrainien cesse d'exister ou ne contrôle plus aucun territoire reconnu ukrainien au 1er janvier 2022, résolution Ambiguous."
+   },
+   "vue_exterieure": {
+    "frequence": 0.04417559243021255,
+    "classe_de_reference": "les cas de levée d'un régime d'exception (loi martiale ou état d'urgence) territorialement délimité ou national, survenus dans un pays engagé dans un conflit armé ou une guerre, et documentés comme événements de fin de ce régime",
+    "source": "Conseil de l'Europe, tableau des dérogations CEDH (R3) ; Wikipedia « Martial law in Ukraine » (R4/R1)",
+    "periode": "1990-2026",
+    "disponible_le": "2026-11-10",
+    "classe_alternative": {
+     "frequence": 0.0294504,
+     "classe_de_reference": "les levées de loi martiale ou d'état d'urgence en pays en guerre documentées dans le seul tableau CEDH R3, sans le cas ukrainien de 2018",
+     "source": "Conseil de l'Europe, tableau des dérogations CEDH (R3)",
+     "pourquoi_ecartee": "Compte seulement l'Azerbaïdjan 2020 et la Turquie 2002, alors que R1/R4 documentent aussi la fin de la loi martiale ukrainienne de 2018 ; sous-compte donc un cas pertinent."
+    },
+    "ecart_critere": "La classe compte toute levée d'un régime d'exception dans tout pays en guerre, nationale ou partielle, y compris hors Ukraine ; la résolution exige une levée de la loi martiale ukrainienne couvrant au moins 3/4 des oblasts non occupés. La classe est donc plus large et ne mesure pas la condition territoriale ukrainienne."
+   }
+  }
+ ]
+}

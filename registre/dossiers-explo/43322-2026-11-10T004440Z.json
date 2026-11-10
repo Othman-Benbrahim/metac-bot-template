@@ -1,0 +1,152 @@
+{
+ "candidats": [
+  "POL@13",
+  "CTR@13",
+  "HIE@13"
+ ],
+ "contre_candidate": [
+  "HIE@13"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Un quatrième haut responsable parmi les 15 (autre que Susie Wiles déjà partie) annonce-t-il formellement son départ ou est-il démis avant le 2026-12-31 ?",
+   "si_oui": "SEU@13",
+   "si_non": "indetermine",
+   "resolution": "communiqués officiels de la Maison-Blanche ou des agences concernées entre le 2026-11-10 et le 2026-12-31",
+   "justification": {
+    "oui": "un quatrième départ franchit strictement le seuil de 3,65 et réalise l'événement SEU@13"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "Les appels de sénateurs républicains (Tillis) et démocrates (Reed, Schumer, Durbin) au départ de Hegseth ou Patel se traduisent-ils par une procédure formelle (vote d'impeachment, convocation) avant le 2026-12-31 ?",
+   "type": "documentation",
+   "carte": "CTR@13",
+   "manque": "une procédure formelle engagée ; les résultats ne montrent que des déclarations et le dépôt d'une résolution par Massie",
+   "resolution": "calendrier des votes ou convocations au Sénat et à la Chambre entre le 2026-11-10 et le 2026-12-31"
+  }
+ ],
+ "rejets": {
+  "POL@13": "[marqueur_non_rempli] Les résultats montrent des appels à la démission (Tillis, Reed, Schumer, Durbin) et une procédure d'impeachment déposée par Massie, mais aucun fait ne montre un champ organisé autour de deux pôles exclusifs où les acteurs se classent eux-mêmes dans deux camps. Les critiques et les soutiens se croisent (Trump soutient Hegseth, Tillis critique), sans alignement exclusif stable.",
+  "CTR@13": "[marqueur_non_rempli] Les résultats décrivent le pouvoir discrétionnaire du président de renvoyer un secrétaire et les règles de confirmation, mais aucun fait ne montre une option politique explicitement exclue par une règle de procédure citée dans un choix. La contrainte n'est pas active : le président peut licencier sans justification formelle.",
+  "HIE@13": "[marqueur_non_rempli] Les résultats montrent un soutien présidentiel affiché à Hegseth et des appels à la démission, mais aucun fait ne montre un arbitrage de l'exécutif qui s'impose effectivement à un ministre ou à un groupe, ni une consigne de vote suivie. Le soutien est déclaratif, pas un ordre hiérarchique suivi d'effet."
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@13"
+   ],
+   "requete": "appels de sénateurs républicains et démocrates au départ de Hegseth, Patel ou d'un secrétaire, novembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "menace de destitution, règles de confirmation sénatoriale et limites légales au renvoi d'un secrétaire en exercice, 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "HIE@13"
+   ],
+   "requete": "déclarations de la Maison-Blanche et de Trump soutenant Hegseth et Patel, novembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@13",
+    "CTR@13"
+   ],
+   "requete": "pression politique publique pour une démission contre procédure formelle de destitution ou de révocation d'un membre du cabinet, 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@13",
+    "HIE@13"
+   ],
+   "requete": "ce qui détermine le départ d'un responsable sous pression : soutien présidentiel affiché ou rapport de force politique, 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@13",
+    "HIE@13"
+   ],
+   "requete": "pouvoir discrétionnaire du président de renvoyer un secrétaire contre obstacles statutaires ou procéduraux, 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "POL@13"
+   ],
+   "requete": "affaiblissement des critiques contre Hegseth et retour du soutien républicain, novembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "absence de vote de destitution ou de procédure engagée contre un membre du cabinet, fin 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "HIE@13"
+   ],
+   "requete": "Trump retire son soutien à un responsable qui démissionne sous pression, novembre-décembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@13 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "programmee",
+   "resolution": "OUI si, au 1er janvier 2027, au moins 4 des 15 responsables listés ont quitté leur poste, annoncé formellement leur départ, ou fait l'objet d'une annonce d'agence en ce sens depuis l'ouverture de la question.",
+   "source_resolution": {
+    "emetteur": "Maison-Blanche, départements et agences exécutives américaines (communiqués officiels), confirmés par le Federal Register et les biographies officielles",
+    "document": "Communiqués de presse de la Maison-Blanche et des agences, Federal Register (nominations et vacances), biographies officielles des départements",
+    "regle_ambiguite": "Une personne cumulant deux rôles listés doit quitter les deux pour compter ; une annonce formelle de départ compte même si la date effective est postérieure au 1er janvier 2027, tant que l'annonce intervient avant cette date."
+   },
+   "vue_exterieure": {
+    "frequence": 0.42,
+    "classe_de_reference": "départs (effectifs ou annoncés) de hauts responsables de l'exécutif américain — secrétaires de cabinet, directeurs d'agence, chefs de cabinet et conseillers de premier rang — sur une fenêtre de fin de première année / début de deuxième année d'un mandat présidentiel",
+    "source": "Partnership for Public Service, « Quiet chaos: Record turnover in the second Trump administration » (18 premiers mois) + Brookings/FiveThirtyEight cabinet-turnover dataset (départs de secrétaires de cabinet par année, 1981-2020)",
+    "periode": "1981-2026",
+    "disponible_le": "2026-11-10",
+    "classe_alternative": {
+     "frequence": 0.28,
+     "classe_de_reference": "départs de secrétaires de cabinet (15 départements exécutifs) par année calendaire, toutes administrations 1981-2020",
+     "source": "FiveThirtyEight cabinet-turnover dataset / Brookings tracker [R3]",
+     "pourquoi_ecartee": "Compte uniquement les secrétaires de cabinet Senate-confirmed, alors que la question inclut des postes non-cabinet (FBI Director, Border Czar, Senior Counselor, Deputy Chief of Staff, DNI, CIA) et des annonces formelles de départ ; sous-estime donc le taux pertinent."
+    },
+    "motif_sans_alternative": "",
+    "ecart_critere": "La classe historique compte les départs effectifs de secrétaires de cabinet sur une année entière ; le critère de résolution compte aussi les annonces formelles de départ et inclut des postes non-cabinet (FBI, Border Czar, conseillers), sur une fenêtre courte de 52 jours en fin de première année."
+   }
+  }
+ ]
+}

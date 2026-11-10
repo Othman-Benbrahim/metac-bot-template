@@ -1,0 +1,190 @@
+{
+ "candidats": [
+  "CTR@13",
+  "TRC@13",
+  "INC@13",
+  "HIE@5"
+ ],
+ "contre_candidate": [
+  "INC@13"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Un acteur institutionnel nommé (gouverneur, législature d'État ou vice-président) tente-t-il entre le 2026-11-10 et le 2028-12-12 une action que l'ECRA lui interdit, avec sanction ou contournement daté ?",
+   "si_oui": "CTR@13",
+   "si_non": "indetermine",
+   "resolution": "actes datés publiés par l'acteur et réactions officielles (Congrès, tribunaux fédéraux) entre le 2026-11-10 et le 2028-12-12",
+   "justification": {
+    "oui": "une option nommée serait devenue inaccessible avec contournement tenté, remplissant le marqueur de CONTRAINTE"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "Une décision de campagne ou d'État datée est-elle reportée explicitement dans l'attente d'un résultat nommé (certification, recomptage) entre le 2026-11-10 et le 2028-11-08 ?",
+   "si_oui": "INC@13",
+   "si_non": "indetermine",
+   "resolution": "communiqués de campagne ou d'État mentionnant le report et l'information attendue",
+   "justification": {
+    "oui": "un report conditionné à une issue non tranchée est l'attendu de la garantie d'INCERTITUDE"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "Une règle ou infrastructure héritée d'une décision datée d'avant 2026 (redécoupage, loi électorale) oriente-t-elle une conduite électorale de 2028 qui ne serait pas choisie si l'on repartait de zéro ?",
+   "si_oui": "TRC@13",
+   "si_non": "indetermine",
+   "resolution": "comparaison entre la règle héritée citée et les conduites de 2028 documentées par source nommée",
+   "justification": {
+    "oui": "un résidu du passé continuant d'agir remplirait le marqueur de TRACE·MÉMOIRE"
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats décrivent le cadre de certification (seuil de 270, safe harbor au 12 décembre 2028, ECRA) mais aucun fait ne montre une option nommée devenue inaccessible avec contournement tenté ou sanction prévue ; la règle borne le décompte, elle ne retire pas une option d'action à un acteur identifié dans la fenêtre.",
+  "?1": "[marqueur_non_rempli] Les résultats montrent une dépendance au chemin (gerrymandering 2025-2026, biais structurel post-1964, calendrier des primaires DNC) mais aucun trait présent n'est expliqué par un événement passé daté comme résidu continuant d'orienter les conduites vers l'issue 2028 ; le lien causal reste programmatique, pas observé.",
+  "?2": "[marqueur_non_rempli] Les résultats mentionnent des sondages et des scénarios concurrents (égalité 269-269, candidat tiers, faithless electors) mais aucun fait ne montre des acteurs de la situation 2028 organisant leurs conduites en attente d'une information nommée (report de décision, couverture, dispositifs provisoires) ; l'indétermination décrite est celle de l'analyste.",
+  "?3": "[marqueur_non_rempli] Les résultats décrivent l'avance de Vance dans les primaires (38,6 %) et la possibilité d'un candidat non-Vance, mais aucun fait ne montre un arbitrage ou une validation d'une position sur une autre effectivement suivie dans une chaîne de préséance ; la primaire est une compétition, pas un ordre de préséance observé."
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "règles de certification des grands électeurs et seuil de 270, Electoral Count Reform Act, application 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@13"
+   ],
+   "requete": "avantage structurel démocrate au collège électoral et dépendance au chemin des cartes d'États, 2026-2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@13"
+   ],
+   "requete": "sondages tête-à-tête présidentielle 2028 et marges d'incertitude, novembre 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "HIE@5"
+   ],
+   "requete": "avance de JD Vance dans les primaires républicaines 2028 et organisation du parti, 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@13",
+    "TRC@13"
+   ],
+   "requete": "effet des règles de certification sur l'issue vs effet de la géographie électorale, présidentielle 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@13",
+    "INC@13"
+   ],
+   "requete": "contestation des résultats et objections au Congrès vs incertitude des sondages, élections américaines 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRC@13",
+    "INC@13"
+   ],
+   "requete": "victoire démocrate due à un avantage structurel de long terme vs basculement conjoncturel, 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@5",
+    "CTR@13"
+   ],
+   "requete": "candidat républicain et règles de certification, interaction primaire et collège électoral 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "retard de résolution ou incertitude matérielle sur la certification des votes 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@13"
+   ],
+   "requete": "précédents où l'avantage structurel d'un parti au collège électoral ne s'est pas concrétisé, 2000-2024",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@13"
+   ],
+   "requete": "scénarios où aucun candidat n'atteint 270 grands électeurs en 2028, élection contingente à la Chambre",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "HIE@5"
+   ],
+   "requete": "candidat républicain non-Vance ou primaire contestée changeant la dynamique générale 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "POLARITÉ@13 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "programmee",
+   "resolution": "Le résultat sera OUI si le candidat du Parti démocrate obtient au moins 270 voix au Collège électoral et est élu président en 2028, sinon NON.",
+   "source_resolution": {
+    "emetteur": "Metaculus",
+    "document": "Règles de résolution de la question « Which party's nominee will win the 2028 US presidential election? »",
+    "regle_ambiguite": "En cas d'incertitude matérielle, la résolution est différée jusqu'à la certification des votes par le Congrès ; si aucun candidat n'obtient 270 voix, la résolution intervient lorsque la Chambre des représentants élit le président."
+   },
+   "vue_exterieure": {
+    "frequence": 0.25,
+    "classe_de_reference": "élections présidentielles américaines ouvertes (président sortant non candidat) tenues entre 1952 et 2024, soit 8 cas : 1952, 1960, 1968, 1988, 2000, 2008, 2016 et 2024 ; issue classée comme victoire du Parti démocrate ou non-victoire démocrate",
+    "source": "The American Presidency Project (University of California, Santa Barbara), tableaux des élections présidentielles et des candidatures des présidents sortants, 1952-2024 ; vérification croisée avec [R1]",
+    "periode": "1952-2024",
+    "disponible_le": "2026-11-10",
+    "classe_alternative": null,
+    "motif_sans_alternative": "La classe de référence imposée fournit 8 cas comptables et une fréquence directe ; aucune classe alternative n'est nécessaire.",
+    "ecart_critere": "identique : la classe compte précisément les élections présidentielles américaines ouvertes depuis 1952 et l'issue binaire victoire du Parti démocrate vs non-victoire démocrate, ce qui correspond au critère de résolution YES/NO (les issues Other ou non tenue étant assimilées à non-victoire démocrate)."
+   }
+  }
+ ]
+}

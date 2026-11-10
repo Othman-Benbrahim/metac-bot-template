@@ -1,0 +1,185 @@
+{
+ "candidats": [
+  "CRO@6",
+  "CTR@6",
+  "PRO@6",
+  "TRC@6",
+  "HIE@13",
+  "POL@13",
+  "CTR@13",
+  "EME@13"
+ ],
+ "contre_candidate": [
+  "CTR@6",
+  "POL@13"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "La première publication FRED de FYONET pour l'exercice 2028 (unités millions, fréquence annuelle) dépasse-t-elle 8 150 000 ?",
+   "si_oui": "SEU@6",
+   "si_non": "indetermine",
+   "resolution": "série FRED FYONET, première mise à jour incorporant FY2028, unités Millions of Dollars, fréquence Annual Fiscal Year",
+   "statut": "ouverte"
+  },
+  {
+   "question": "Les outlays fédéraux nets FY2027 publiés par FRED dépassent-ils 7 800 000 millions de dollars, signalant une trajectoire compatible avec le franchissement du seuil en FY2028 ?",
+   "type": "documentation",
+   "carte": "CRO@6",
+   "manque": "une mesure FY2027 publiée par FRED, absente des résultats fournis",
+   "resolution": "série FRED FYONET, valeur FY2027 à la première publication"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats donnent une série FYONET (2023-2026) et un TCAM, mais aucun fait ne montre un taux dépendant du niveau atteint ni une limite de capacité identifiée ; la croissance est décrite comme tendancielle, pas comme auto-entretenue par le niveau.",
+  "?1": "[marqueur_non_rempli] Les faits montrent que les économies DOGE revendiquées sont contestées et que les outlays augmentent, mais aucun fait ne nomme une option rendue inaccessible par une règle ou un plafond actif, avec contournement tenté ou sanction prévue.",
+  "?2": "[marqueur_non_rempli] Les résultats donnent des ratios outlays/PIB (23,1 % en 2024, 23,3 % en 2026, stable vers 2028) et la part des intérêts nets, mais aucun fait ne montre la conservation ou la rupture d'un rapport entre parties à deux échelles ou deux dates comme mécanisme structurant.",
+  "?3": "[marqueur_non_rempli] Les résultats évoquent la dépendance au chemin des dépenses obligatoires (Social Security, Medicare) et des engagements antérieurs, mais aucun fait ne montre un élément présent datable qui oriente les conduites et ne serait pas choisi aujourd'hui, avec un état présent inexplicable par les seules forces actuelles.",
+  "?4": "[marqueur_non_rempli] Les résultats décrivent le processus législatif (reconciliation, lame-duck, majorités) mais aucun fait ne montre un arbitrage ou une validation d'une position sur une autre effectivement suivi, ni une chaîne de préséance observée.",
+  "?5": "[marqueur_non_rempli] Les résultats montrent un clivage Républicains/Démocrates et des alignements exclusifs, mais aucun fait ne montre que les acteurs se classent eux-mêmes dans deux camps définis l'un par l'autre avec positions intermédiaires rares ou disqualifiées ; le paysage décrit inclut des positions tierces et des négociations.",
+  "?6": "[marqueur_non_rempli] Les résultats mentionnent des règles de procédure (60 voix au Sénat, filibuster, CR expirant) mais aucun fait ne montre une option explicitement exclue par une règle citée dans un choix, avec action tentée et bloquée ou sanction observée.",
+  "?7": "[marqueur_non_rempli] Les résultats décrivent des coalitions et des véhicules budgétaires (réconciliation, supplemental) mais aucun fait ne montre une régularité collective apparue sans prescripteur central, adoptée par imitation ou convergence observée."
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "croissance des dépenses fédérales nettes américaines 2023-2026 taux annuel FYONET",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "requete": "dépenses fédérales américaines croissance tendancielle vs consolidation budgétaire DOGE économies réalisées 2025-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "ralentissement des outlays fédéraux américains FY2026 vs FY2025 FRED données",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "économies DOGE réalisées montant vérifié 2025 2026 budget fédéral",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "DOGE savings overstated actual federal outlays increase 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "part des dépenses fédérales américaines en pourcentage du PIB 2024 2026 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "net interest share of US federal outlays growth 2026 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@6"
+   ],
+   "requete": "dépendance au chemin dépenses fédérales américaines engagements antérieurs Social Security Medicare 2028",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "HIE@13"
+   ],
+   "requete": "Congress reconciliation bill 2025 2026 spending levels FY2028 effect",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@13",
+    "POL@13"
+   ],
+   "requete": "Republican Congress budget reconciliation spending cuts vs partisan gridlock 2026 2027",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@13"
+   ],
+   "requete": "polarisation Congrès américain budget 2026 2027 shutdown risque",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "EME@13"
+   ],
+   "requete": "coalition budgétaire imprévue Congrès américain 2027 2028 supplemental appropriations",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "OUI si la première valeur publiée par FRED pour FYONET en FY2028 (unités : millions de dollars, fréquence annuelle, exercice fiscal) est strictement supérieure à 8 150 000.",
+   "source_resolution": {
+    "emetteur": "Federal Reserve Bank of St. Louis (FRED)",
+    "document": "Série FRED FYONET — Federal Net Outlays, première mise à jour incorporant l'exercice FY2028",
+    "regle_ambiguite": "On retient la première publication FRED pour FY2028 ; les révisions ultérieures ne sont pas prises en compte. Unités : millions de dollars ; fréquence : annuelle, exercice fiscal."
+   },
+   "vue_exterieure": {
+    "frequence": 0.5,
+    "classe_de_reference": "Valeurs résolues (montants des dépenses nettes fédérales, en millions de dollars, telles que publiées par FRED pour l'exercice fiscal concerné) strictement supérieures à 8,15e+06",
+    "source": "Série FRED FYONET (Federal Net Outlays), niveaux annuels FY2015–FY2026, complétée par la trajectoire de croissance observée et la baseline CBO février 2026",
+    "periode": "2015-2026",
+    "disponible_le": "2026-11-10",
+    "classe_alternative": {
+     "frequence": 0.25,
+     "classe_de_reference": "Exercices fiscaux fédéraux américains où les dépenses nettes publiées par FRED (FYONET) dépassent la projection de base CBO de l'année précédente (sous-estimation avérée)",
+     "source": "CBO, Accuracy of Projections (1993–2019) et épisodes documentés FY2019–FY2023",
+     "pourquoi_ecartee": "Cette classe mesure l'écart projection/actualité, pas le franchissement d'un seuil absolu ; elle ne dit rien directement du niveau FY2028 par rapport à 8,15e+06 et ne peut être convertie en probabilité de dépassement sans hypothèse supplémentaire."
+    },
+    "ecart_critere": "La classe de référence compte les années dont la valeur FRED FYONET dépasse 8,15e+06 millions ; c'est exactement le critère de résolution (valeur résolue > 8,15e+06). L'écart tient uniquement à l'extrapolation nécessaire pour FY2028, absent de l'échantillon observé."
+   }
+  }
+ ]
+}

@@ -1,0 +1,196 @@
+{
+ "candidats": [
+  "CTR@8",
+  "RES@8",
+  "TRC@8"
+ ],
+ "contre_candidate": [
+  "RES@8"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Un État membre parmi Belgique, France, Italie, Luxembourg, Pays-Bas ou Allemagne notifie-t-il le Conseil européen de son intention de quitter l'UE (article 50 TUE) avant le 2027-01-01 ?",
+   "si_oui": "SEU@8",
+   "si_non": "indetermine",
+   "resolution": "communiqué officiel du Conseil européen ou du gouvernement concerné annonçant la notification au titre de l'article 50 TUE, entre le 2026-11-10 et le 2027-01-01",
+   "justification": {
+    "oui": "la notification au Conseil européen est le franchissement de seuil juridique irréversible qui déclenche la procédure de retrait"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "L'Union européenne se dissout-elle ou est-elle remplacée par une nouvelle union politico-économique sous un autre nom avant le 2027-01-01 ?",
+   "si_oui": "SEU@8",
+   "si_non": "indetermine",
+   "resolution": "acte constitutif ou déclaration officielle des institutions européennes ou des États membres actant la dissolution ou la création d'une nouvelle entité, entre le 2026-11-10 et le 2027-01-01",
+   "justification": {
+    "oui": "la dissolution complète ou la recréation sous un autre nom est le second chemin prévu par les critères de résolution"
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats documentent des contraintes réglementaires actives (transposition, procédures d'infraction, surréglementation) et des concessions obtenues par les États membres, mais aucun fait ne montre qu'une option de sortie de l'UE est retirée ou bloquée par une règle : l'article 50 consacre au contraire un droit de retrait unilatéral, et les contraintes observées bornent l'action sans exclure l'option de sortie.",
+  "?1": "[marqueur_non_rempli] Les résultats décrivent des interdépendances juridiques (primauté, coopération loyale, autonomie procédurale) et des indicateurs de connectivité économique, mais aucun fait ne nomme un pont ou un lien précis dont la disparition couperait la circulation entre États membres et rendrait une sortie bloquante ; les liens sont généraux et ne constituent pas une topologie de graphe avec nœuds et ponts identifiés.",
+  "?2": "[marqueur_non_rempli] Les résultats montrent que le Brexit a refroidi les velléités de sortie (aucun effet domino, soutien minoritaire à une sortie dans les sondages 2025-2026), mais aucun fait ne présente un résidu datable du passé (par exemple une clause héritée, un précédent contraignant) qui orienterait aujourd'hui les conduites en faveur ou en défaveur d'une sortie de manière inexplicable par les forces présentes."
+ },
+ "_categories_rejet": {
+  "?0": "marqueur_non_rempli",
+  "?1": "marqueur_non_rempli",
+  "?2": "marqueur_non_rempli"
+ },
+ "_details_rejet": {
+  "?0": {
+   "fait_attendu": "Un État membre se voit juridiquement interdire ou rendre impossible le déclenchement de l'article 50 par une règle de l'UE ou de son droit constitutionnel, avec sanction ou contournement documenté.",
+   "extrait_proche": "[6] « Le droit de l’UE ne rend pas la sortie impossible : l’article 50 TUE consacre un droit de retrait unilatéral »"
+  },
+  "?1": {
+   "fait_attendu": "Un lien juridique nommé entre un État membre et l'UE (par exemple un mécanisme de vote, un financement ou une procédure) dont la rupture est décrite comme coupant un flux essentiel et rendant la sortie matériellement impossible.",
+   "extrait_proche": "[4] « L'UE ne dispose ni d'un budget important ni d'une capacité administrative significative : elle dépend des administrations nationales pour mettre en œuvre ses politiques »"
+  },
+  "?2": {
+   "fait_attendu": "Un élément datable (traité, précédent, règle héritée) continue d'orienter les décisions des États membres sur une éventuelle sortie, alors qu'il ne serait pas choisi tel quel aujourd'hui.",
+   "extrait_proche": "[7] « fears of a “domino effect” never materialised: Since then, no other country has chosen to leave »"
+  }
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@8"
+   ],
+   "requete": "contraintes réglementaires UE imposées aux États membres 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@8"
+   ],
+   "requete": "pays où les contraintes UE sont perçues comme plus lourdes 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@8"
+   ],
+   "requete": "contraintes UE acceptées par les États membres 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "RES@8"
+   ],
+   "requete": "interdépendances juridiques entre États membres UE 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "RES@8"
+   ],
+   "requete": "pays les plus interconnectés au sein de l'UE 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "RES@8"
+   ],
+   "requete": "liens juridiques UE qui dissuadent la sortie 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@8"
+   ],
+   "requete": "conséquences du Brexit sur les opinions publiques des États membres 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRC@8"
+   ],
+   "requete": "pays où le Brexit a renforcé le sentiment anti-UE 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@8"
+   ],
+   "requete": "pays où le Brexit a refroidi les velléités de sortie 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@8",
+    "RES@8"
+   ],
+   "requete": "contraintes réglementaires versus interdépendances juridiques dans la décision de quitter l'UE 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@8",
+    "TRC@8"
+   ],
+   "requete": "contraintes UE versus effet Brexit sur la volonté de quitter l'UE 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "RES@8",
+    "TRC@8"
+   ],
+   "requete": "interdépendances juridiques versus précédent Brexit sur la volonté de quitter l'UE 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@8 apparait",
+   "semantique": "presence",
+   "temporalite": "generique",
+   "resolution": "OUI si l'un des six États (Belgique, France, Italie, Luxembourg, Pays-Bas, Allemagne) notifie au Conseil européen son intention de se retirer au titre de l'article 50, ou si l'Union européenne se dissout complètement, avant le 1er janvier 2027.",
+   "source_resolution": {
+    "emetteur": "Conseil européen ou gouvernement de l'État membre concerné",
+    "document": "Notification officielle au titre de l'article 50 TUE ou traité/acte officialisant la dissolution de l'Union européenne",
+    "regle_ambiguite": "La date de notification officielle fait foi, pas la date d'un référendum ou d'une annonce politique."
+   },
+   "vue_exterieure": {
+    "frequence": 0.0017913593256059011,
+    "classe_de_reference": "notifications d'intention de retrait d'un État membre de l'Union européenne au titre de l'article 50 du traité sur l'Union européenne, ou dissolution complète de l'Union européenne",
+    "source": "Liste des notifications au titre de l'article 50 TUE et des retraits de l'Union européenne (Wikipedia, Withdrawal from the European Union, révision du 2026-11-08)",
+    "periode": "2009-2026",
+    "disponible_le": "2026-11-10",
+    "classe_alternative": null,
+    "motif_sans_alternative": "La classe de référence imposée est directement alignée sur le critère de résolution ; aucune classe alternative plus pertinente n'a été identifiée.",
+    "ecart_critere": "identique : la classe compte les notifications Article 50 par un État membre et la dissolution complète de l'UE, exactement ce que le critère de résolution spécifie."
+   }
+  }
+ ]
+}

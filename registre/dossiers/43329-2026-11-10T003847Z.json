@@ -1,0 +1,213 @@
+{
+ "candidats": [
+  "CRO@6",
+  "PRO@6",
+  "CTR@6",
+  "POL@13",
+  "HIE@13"
+ ],
+ "contre_candidate": [
+  "CTR@6",
+  "HIE@13"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le patrimoine de Trump tel qu'estimé par Forbes (calculateur temps réel) atteint-il ou dépasse-t-il 10,4 Md$ (4 × 2,6 Md$) à un moment quelconque entre le 2025-01-01 et le 2026-12-31 ?",
+   "si_oui": "SEU@6 (franchissement du seuil)",
+   "si_non": "aucune structure de l'alphabet n'est lue",
+   "resolution": "captures Wayback Machine de forbes.com/profile/donald-trump/ sur la période 2025-2026, ou à défaut Bloomberg Billionaires Index",
+   "statut": "ouverte"
+  },
+  {
+   "question": "Les estimations Forbes du patrimoine de Trump montrent-elles une série datée dont le taux d'accroissement augmente avec le niveau atteint (croissance auto-entretenue) plutôt qu'une simple volatilité autour d'un plateau ?",
+   "type": "documentation",
+   "carte": "CRO@6",
+   "manque": "une série de patrimoine Forbes à fréquence au moins trimestrielle sur 2025-2026, avec calcul des taux",
+   "resolution": "relevés Forbes archivés (Wayback Machine) de janvier 2025 à décembre 2026"
+  },
+  {
+   "question": "Existe-t-il un fait daté où une règle ou sanction a effectivement retiré à Trump une option d'accumulation patrimoniale (cession forcée, amende, blocage de transaction) avec contournement tenté ou sanction appliquée ?",
+   "type": "documentation",
+   "carte": "CTR@6",
+   "manque": "un cas de contrainte active sur le patrimoine de Trump, les résultats ne montrant que l'exemption présidentielle",
+   "resolution": "décisions de justice, communiqués de l'OGE ou de la SEC entre 2025 et 2026"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats fournissent des mesures datées du patrimoine de Trump (5,5 Md$ juin 2025 ; 7,3 Md$ sept. 2025 ; 6,2 Md$ nov. 2025 ; 6,5 Md$ mars 2026 ; 7,0 Md$ sept. 2026) mais aucune série ne montre un taux d'accroissement dépendant du niveau atteint ni une limite de capacité identifiée ; la trajectoire est une hausse puis un repli, compatible avec une volatilité d'actifs, pas avec une dynamique de croissance auto-entretenue.",
+  "?1": "[marqueur_non_rempli] Les résultats donnent des valeurs absolues et des parts (crypto + DJT ≈ 60 % en sept. 2025) mais aucun rapport entre deux grandeurs mesuré à deux dates n'est fourni pour établir une conservation ou une rupture de proportion ; le seuil de 4× est un rapport à une référence, mais la référence (valeur avant prise de fonction) n'est pas mesurée dans les résultats, et aucun ratio daté n'est calculé.",
+  "?2": "[marqueur_non_rempli] Les résultats décrivent une exemption présidentielle aux règles de conflits d'intérêts (18 U.S.C. § 208 ne s'applique pas au président) et des conflits d'intérêts matériels, mais aucun fait ne montre une option nommée devenue inaccessible avec contournement tenté ou sanction prévue ; au contraire, l'absence de contrainte est le fait dominant.",
+  "?3": "[marqueur_non_rempli] Les résultats mentionnent un alignement entre décisions politiques pro-crypto et valorisation des actifs Trump, mais aucun fait ne montre deux pôles se définissant l'un par l'autre avec alignements exclusifs ; le champ décrit est un alignement d'intérêts, pas une polarité.",
+  "?4": "[marqueur_non_rempli] Les résultats évoquent une hiérarchie de sources (Forbes vs Bloomberg vs déclarations) et des divergences d'estimation, mais aucun fait ne montre un ordre de préséance effectif où une position prime sur une autre avec arbitrage suivi ; la hiérarchie décrite est méthodologique, pas un ordre de positions entre acteurs."
+ },
+ "_categories_rejet": {
+  "?0": "marqueur_non_rempli",
+  "?1": "marqueur_non_rempli",
+  "?2": "marqueur_non_rempli",
+  "?3": "marqueur_non_rempli",
+  "?4": "marqueur_non_rempli"
+ },
+ "_details_rejet": {
+  "?0": {
+   "fait_attendu": "Une série de patrimoine datée, de même source, où l'accroissement annuel augmente avec le niveau atteint (ex. : +1,4 Md$ puis +1,8 Md$ puis +2,3 Md$), avec une saturation ou un plafond nommé.",
+   "extrait_proche": "[4] « Juin 2025 5,5 Md$ ; Septembre 2025 7,3 Md$ (record) ; Novembre 2025 6,2 Md$ ; Mars 2026 6,5 Md$ ; Septembre 2026 7,0 Md$ »"
+  },
+  "?1": {
+   "fait_attendu": "Un rapport mesuré entre le patrimoine de Trump à deux dates (ex. : 7,3 Md$ / 2,6 Md$ = 2,8×) ou entre la part DJT et le total à deux dates, montrant conservation ou rupture.",
+   "extrait_proche": "[4] « Crypto + DJT ≈ 60 % du patrimoine total en septembre 2025 »"
+  },
+  "?2": {
+   "fait_attendu": "Un fait où une règle ou sanction retire explicitement une option d'accumulation patrimoniale à Trump (ex. : cession forcée d'un actif, amende, blocage d'une transaction), avec contournement tenté ou sanction appliquée.",
+   "extrait_proche": "[7] « la loi fédérale sur les conflits d'intérêts (18 U.S.C. § 208) ne s'applique ni au président ni au vice-président »"
+  },
+  "?3": {
+   "fait_attendu": "Deux camps nommés (ex. : pro-crypto vs anti-crypto) dont les acteurs se classent eux-mêmes et où rejoindre un pôle écarte de l'autre, avec positions intermédiaires disqualifiées.",
+   "extrait_proche": "[10] « alignement quasi systématique entre l'action publique et l'intérêt privé »"
+  },
+  "?4": {
+   "fait_attendu": "Un fait où une source (ex. : Forbes) prime effectivement sur une autre dans la résolution d'un différend, avec un arbitrage suivi et un acteur qui s'y soumet.",
+   "extrait_proche": "[11] « la déclaration officielle prend la priorité sur les estimations journalistiques »"
+  }
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "croissance du patrimoine de Trump 2025-2026 Forbes 400 et temps réel, valorisation Trump Media DJT et crypto",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "PRO@6"
+   ],
+   "requete": "ratio patrimoine Trump 2026 sur patrimoine janvier 2024, multiple atteint vs seuil 4x",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "baisse de la fortune de Trump fin 2026, chute DJT et tokens crypto, révision Forbes à la baisse",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "composition du patrimoine Trump 2025-2026, part DJT et crypto dans le total Forbes",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "PRO@6",
+    "CTR@6"
+   ],
+   "requete": "plafond de valorisation DJT et liquidité des participations Trump limitant le multiple",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "concentration du patrimoine Trump en actifs volatils, drawdown 2026, effet sur le ratio vs baseline",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "contraintes pesant sur l'accumulation patrimoniale de Trump : conflits d'intérêts, règles déontologiques, décotes de participation",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "POL@13"
+   ],
+   "requete": "rôle des politiques publiques pro-crypto de l'administration Trump dans la hausse de son patrimoine 2025",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "cas où les contraintes légales et éthiques ont empêché un président d'accroître sa fortune au-delà d'un multiple",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@13"
+   ],
+   "requete": "lien entre décisions politiques de Trump 2025-2026 et valorisation de ses actifs (DJT, World Liberty Financial, memecoin)",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@13",
+    "HIE@13"
+   ],
+   "requete": "hiérarchie des sources de résolution Forbes vs Bloomberg vs déclarations financières pour le patrimoine présidentiel",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "HIE@13"
+   ],
+   "requete": "divergences entre estimations Forbes, Bloomberg et Axios sur la fortune de Trump, fiabilité de la source de résolution",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "Un sous-question sera résolue OUI si, pendant la période de deux ans, la fortune nette du président en exercice atteint ou dépasse 4 fois l'estimation archivée la plus ancienne de l'année précédant sa prise de fonction, selon Forbes (ou Bloomberg à défaut).",
+   "source_resolution": {
+    "emetteur": "Forbes",
+    "document": "Forbes Real Time Net Worth Calculator via Wayback Machine",
+    "regle_ambiguite": "Si Forbes indisponible, Bloomberg Billionaires Index ; sinon déclarations financières fédérales et autres sources crédibles."
+   },
+   "vue_exterieure": {
+    "frequence": 0.0019786910197869103,
+    "classe_de_reference": "cas documentés où un président des États-Unis en exercice a vu sa fortune nette atteindre au moins quatre fois sa valeur de référence, définie comme la valeur la plus basse de l'année précédant son entrée en fonction, à un moment quelconque de son mandat présidentiel",
+    "source": "Forbes, Bloomberg Billionaires Index, séries historiques (24/7 Wall St., Town & Country, Cheapism) compilées dans [R1][R2][R3]",
+    "periode": "1969-2026",
+    "disponible_le": "2026-11-10",
+    "classe_alternative": null,
+    "motif_sans_alternative": "Aucune classe alternative crédible plus proche du critère n'a été retenue ; la classe imposée est déjà la plus pertinente.",
+    "ecart_critere": "quasi identique : la classe utilise la valeur la plus basse de l'année précédant l'entrée en fonction comme référence, tandis que le critère utilise l'estimation archivée la plus ancienne de cette même année ; aucun cas positif n'est affecté."
+   }
+  }
+ ]
+}

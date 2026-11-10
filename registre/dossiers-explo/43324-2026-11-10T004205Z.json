@@ -1,0 +1,174 @@
+{
+ "candidats": [
+  "CRO@6",
+  "TRA@6",
+  "TRC@6"
+ ],
+ "contre_candidate": [
+  "TRC@6"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le taux d'intérêt moyen sur la dette totale (Total Interest-bearing Debt) dépasse-t-il 3,75 % à une date publiée entre le 2026-11-10 et le 2028-09-30 ?",
+   "si_oui": "SEU@6",
+   "si_non": "indetermine",
+   "resolution": "série avg_interest_rate_amt, security_desc = Total Interest-bearing Debt, U.S. Treasury FiscalData, publications mensuelles jusqu'au 2028-09-30",
+   "justification": {
+    "oui": "le franchissement du seuil de 3,75 % constituerait l'apparition de l'état de seuil visé par la question"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "La part de la dette à coupon hérité (émise avant 2022) reste-t-elle supérieure à 50 % de l'encours à la fin de FY2027, freinant la remontée du taux moyen ?",
+   "type": "documentation",
+   "carte": "TRC@6",
+   "manque": "une série datée de la composition par année d'émission de l'encours, absente des résultats",
+   "resolution": "Monthly Statement of the Public Debt et rapports de maturité du Trésor américain, 2026-2028"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats donnent des séries datées de dette et de taux, mais aucun taux estimable ni limite de capacité identifiée pour le taux d'intérêt moyen lui-même ; la croissance de la dette est décrite, pas la dynamique auto-entretenue du taux.",
+  "?1": "[marqueur_non_rempli] Les résultats décrivent des changements de composition (maturité, part de dette ancienne) mais aucun état de départ et état en cours d'une même entité avec invariant explicitement conservé et étapes intermédiaires observées.",
+  "?2": "[marqueur_non_rempli] La dépendance au chemin est évoquée qualitativement (dette ancienne à bas taux), mais aucun fait daté ne montre un élément présent dont l'origine est datable et qui oriente encore les conduites en ne serait pas choisi aujourd'hui, avec corroboration indépendante."
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "US federal debt growth and average interest rate trend 2015-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "does faster debt growth lead to higher average interest rate on US debt",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "cases where US federal debt grew but average interest rate fell",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRA@6"
+   ],
+   "requete": "US Treasury debt maturity structure and refinancing rates 2020-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRA@6"
+   ],
+   "requete": "does maturity structure transformation raise average interest rate on US debt",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRA@6"
+   ],
+   "requete": "cases where US debt maturity shift did not raise average interest rate",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@6"
+   ],
+   "requete": "US debt legacy low-rate securities share and refinancing impact 2020-2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRC@6"
+   ],
+   "requete": "does legacy low-rate debt delay average interest rate increase on US debt",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@6"
+   ],
+   "requete": "cases where legacy low-rate debt did not prevent average rate rise on US debt",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "TRA@6"
+   ],
+   "requete": "distinguish effect of debt growth vs maturity structure on average interest rate",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "TRC@6"
+   ],
+   "requete": "distinguish debt growth vs legacy debt effect on average interest rate",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRA@6",
+    "TRC@6"
+   ],
+   "requete": "distinguish maturity transformation vs legacy debt effect on average interest rate",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "presence",
+   "temporalite": "generique",
+   "resolution": "OUI si le taux d'intérêt moyen sur la dette totale portant intérêt enregistré au 30 septembre 2028 (ou date la plus proche) est strictement supérieur à 3,75 % ; NO sinon.",
+   "source_resolution": {
+    "emetteur": "U.S. Department of the Treasury — Bureau of the Fiscal Service (Fiscal Data)",
+    "document": "Average Interest Rates on U.S. Treasury Securities — Security Description « Total Interest-bearing Debt »",
+    "regle_ambiguite": "En cas de valeur manquante à la date exacte, retenir la valeur publiée la plus proche du 30 septembre 2028 ; si la source est déplacée ou retirée, Metaculus peut utiliser une source de substitution dont la méthodologie est substantiellement similaire (titres de créance négociables et non négociables inclus, intérêts agrégés divisés par l'encours total de dette)."
+   },
+   "vue_exterieure": {
+    "frequence": 0.055222388805597204,
+    "classe_de_reference": "Fenêtres de 691 jours (jusqu'au 1er octobre 2028) évaluées sur le taux d'intérêt moyen de la dette fédérale totale portant intérêt, mesuré à la fin de chaque exercice fiscal américain (30 septembre) et comparé à 3,75 %.",
+    "source": "U.S. Treasury FiscalData — v2/accounting/od/avg_interest_rates · avg_interest_rate_amt · security_desc:eq:Total Interest-bearing Debt (https://fiscaldata.treasury.gov/datasets/)",
+    "periode": "2001-2026",
+    "disponible_le": "2026-09-30",
+    "classe_alternative": null,
+    "motif_sans_alternative": "compte calculé sur une seule série du catalogue ; pas de seconde classe",
+    "ecart_critere": "identique : même série (Average Interest Rates on U.S. Treasury Securities), même champ (avg_interest_rate_amt), même filtre (security_desc = Total Interest-bearing Debt) et même date de référence (clôture de l'exercice fiscal, 30 septembre) que le critère de résolution ; la valeur de référence FY2024 au 30/09/2024 est 3,324 %, sous le seuil."
+   }
+  }
+ ]
+}

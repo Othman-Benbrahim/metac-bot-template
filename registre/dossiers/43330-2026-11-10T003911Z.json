@@ -1,0 +1,234 @@
+{
+ "candidats": [
+  "CRO@6",
+  "CTR@6",
+  "PRO@6",
+  "TRC@6",
+  "HIE@13",
+  "POL@13",
+  "CTR@13",
+  "INC@13"
+ ],
+ "contre_candidate": [
+  "PRO@6",
+  "POL@13"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "La fortune nette de Trump atteint-elle ou dépasse-t-elle 10,4 Md$ (4 × 2,6 Md$) à un moment quelconque entre le 2027-01-01 et le 2028-12-31, selon une capture Forbes archivée par la Wayback Machine ?",
+   "si_oui": "SEU@6",
+   "si_non": "indetermine",
+   "resolution": "captures Wayback Machine de forbes.com/profile/donald-trump/ entre le 2027-01-01 et le 2028-12-31, avec seuil 10,4 Md$",
+   "justification": {
+    "oui": "le franchissement du seuil de 10,4 Md$ est l'événement SEU@6 prévu ; une fois franchi, il compte même si la valeur redescend ensuite"
+   },
+   "statut": "ouverte"
+  },
+  {
+   "question": "La valeur de référence de 2,6 Md$ (capture du 2024-01-12) est-elle bien la plus ancienne estimation Forbes archivée pour l'année précédant la prise de fonction de Trump en 2025 ?",
+   "type": "documentation",
+   "carte": "PRO@6",
+   "manque": "une capture Wayback Machine antérieure au 2024-01-12 pour l'année 2024",
+   "resolution": "liste des captures Wayback Machine de forbes.com/profile/donald-trump/ pour l'année 2024, antérieures au 2024-01-12"
+  }
+ ],
+ "rejets": {
+  "?0": "[marqueur_non_rempli] Les résultats donnent une trajectoire de patrimoine (4,3 → 7,3 → 7,0 Md$) mais pas de série à trois mesures d'une même grandeur avec taux dépendant du niveau et limite de capacité identifiée ; la hausse est attribuée à des chocs (élection, lancements crypto) et non à un taux auto-entretenu. Le marqueur CROISSANCE (série datée, taux estimable, saturation) n'est pas rempli.",
+  "?1": "[marqueur_non_rempli] Les résultats décrivent des contraintes actives sur la fortune de Trump (décote DJT, illiquidité, chute du cours à 4,02 $, revenus ~4 M$/an) mais ces contraintes pèsent sur la valorisation d'actifs, pas sur l'espace d'options d'un acteur nommé dans une décision ; aucune option explicitement retirée à un acteur n'est documentée.",
+  "?2": "[marqueur_non_rempli] Les résultats fournissent des ratios (7,3/2,6 ≈ 2,81 ; 7,0/2,6 ≈ 2,69) mais aucun rapport entre parties d'un ensemble conservé ou rompu à deux échelles ; le ratio 4x est un seuil de résolution, pas une proportion observée entre grandeurs comparables.",
+  "?3": "[marqueur_non_rempli] Les résultats montrent une dépendance au chemin (lancements crypto 2024-2025 conditionnant la valeur 2026) mais le fait présenté est une explication par les forces actuelles (choc politique 2026, perte de confiance) et non un résidu du passé qui ne serait pas choisi aujourd'hui ; le marqueur TRACE (trait présent inexplicable par les forces actuelles) n'est pas rempli de façon autonome.",
+  "?4": "[marqueur_non_rempli] Les résultats mentionnent le pouvoir présidentiel et la régulation crypto, mais aucun arbitrage ou validation d'une position sur une autre, effectivement suivi, n'est documenté ; l'organigramme effectif de préséance n'apparaît pas.",
+  "?5": "[marqueur_non_rempli] Les résultats décrivent une corrélation entre soutien partisan et cours DJT, mais pas deux camps nommés aux alignements exclusifs organisant le champ ; la polarisation est mesurée comme corrélation statistique, pas comme structure à deux pôles avec positions intermédiaires disqualifiées.",
+  "?6": "[marqueur_non_rempli] Les résultats décrivent l'absence de règles de conflits d'intérêts applicables au président, mais aucune option explicitement retirée à un acteur par une règle active n'est documentée ; l'absence de contrainte n'est pas une contrainte active.",
+  "?7": "[marqueur_non_rempli] Les résultats décrivent des scénarios concurrents (tarifs → inflation → Fed) mais aucun acteur nommé ne reporte une décision dans l'attente d'une information nommée, ni ne tient des scénarios concurrents explicitement, ni ne dépense des ressources pour réduire l'indétermination ; l'incertitude est celle de l'analyste, pas une conduite organisée."
+ },
+ "_categories_rejet": {
+  "?0": "marqueur_non_rempli",
+  "?1": "marqueur_non_rempli",
+  "?2": "marqueur_non_rempli",
+  "?3": "marqueur_non_rempli",
+  "?4": "marqueur_non_rempli",
+  "?5": "marqueur_non_rempli",
+  "?6": "marqueur_non_rempli",
+  "?7": "marqueur_non_rempli"
+ },
+ "_details_rejet": {
+  "?0": {
+   "fait_attendu": "Trois mesures Forbes datées de la fortune nette de Trump montrant un accroissement dont le taux croît avec le niveau atteint, avec une limite de capacité nommée (saturation du marché des memecoins, plafond de valorisation DJT).",
+   "extrait_proche": "[3] « 2024 (élection, nov.) ~4,3 Md$ ; 2025 (sept.) ~7,3 Md$ ; 2026 (sept.) ~7,0 Md$ »"
+  },
+  "?1": {
+   "fait_attendu": "Un acteur nommé (Trump, DJT, WLFI) dont une option d'action est explicitement exclue par une règle ou une limite active, avec contournement tenté ou sanction prévue.",
+   "extrait_proche": "[2] « la participation de Trump (114 à 114,75 millions d'actions) valait théoriquement plus de 6 milliards $ près du sommet, mais seulement environ 460 millions $ au cours de 4,02 $ »"
+  },
+  "?2": {
+   "fait_attendu": "Deux mesures datées du même rapport entre composantes du patrimoine Trump (par exemple part crypto / part immobilier) montrant sa conservation ou sa rupture lors d'un changement d'échelle.",
+   "extrait_proche": "[3] « 7,3 / 2,6 ≈ 2,81 ; 7,0 / 2,6 ≈ 2,69 »"
+  },
+  "?3": {
+   "fait_attendu": "Un élément du patrimoine Trump présent en 2026 dont l'origine est datable (par exemple un token lancé en 2024) et qui continue d'orienter les conduites alors qu'il ne serait pas recréé tel quel aujourd'hui.",
+   "extrait_proche": "[4] « La fortune de Trump est devenue structurellement dépendante des actifs crypto lancés en 2024-2025 »"
+  },
+  "?4": {
+   "fait_attendu": "Un arbitrage nommé de l'exécutif (Trump ou un ministre) qui s'impose à une autre position (agence régulatrice, groupe parlementaire) et est effectivement suivi.",
+   "extrait_proche": "[5] « L'administration Trump a converti la promesse de faire des États-Unis la capitale mondiale du crypto en une série d'actes réglementaires »"
+  },
+  "?5": {
+   "fait_attendu": "Deux camps nommés (par exemple pro-Trump / anti-Trump) dont les alignements sont exclusifs et où une troisième position stable est absente ou disqualifiée, cités dans une décision datée.",
+   "extrait_proche": "[6] « DJT ne se valorise pas sur ses fondamentaux mais fonctionne comme un indice de sentiment politique à effet de levier »"
+  },
+  "?6": {
+   "fait_attendu": "Une règle écrite ou une sanction observée retirant une option nommée à un acteur (par exemple interdiction de divestiture, amende, disclosure obligatoire) avec contournement tenté ou sanction prévue.",
+   "extrait_proche": "[7] « La plupart des dispositions du chapitre 11 du Code des États-Unis ne s'appliquent pas au président »"
+  },
+  "?7": {
+   "fait_attendu": "Un acteur nommé (Trump, la Fed, un investisseur) qui reporte une décision datée dans l'attente d'une information nommée (par exemple décision de vente d'actifs suspendue jusqu'à la publication de l'inflation).",
+   "extrait_proche": "[8] « L'horizon 2027-2028 est dominé par un enchaînement : tarifs → inflation retardée → Fed → taux longs/dollar → actifs risqués »"
+  }
+ },
+ "etat": "",
+ "disponible_le": "2026-11-10",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "croissance du patrimoine de Trump 2024-2026 : contributions de Trump Media, World Liberty Financial, crypto, immobilier (Forbes)",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "contraintes pesant sur la fortune de Trump : décotes DJT, liquidité des participations, dettes, amendes, conflits d'intérêts (2024-2026)",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "ratio net worth Trump / baseline 2,6 Md$ : trajectoire 2024-2026 et composition du portefeuille",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@6"
+   ],
+   "requete": "dépendance au chemin de la fortune de Trump : effet des lancements crypto 2024-2025 sur la valeur 2026",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "HIE@13"
+   ],
+   "requete": "pouvoir présidentiel et régulation des marchés : influence de l'administration Trump sur la valorisation de DJT et des ventures crypto",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@13"
+   ],
+   "requete": "polarisation politique et valorisation de Trump Media : corrélation entre soutien partisan et cours DJT",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@13"
+   ],
+   "requete": "contraintes légales et éthiques sur l'enrichissement présidentiel : emoluments, divestiture, disclosures fédérales",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@13"
+   ],
+   "requete": "incertitude sur la politique économique 2027-2028 : tarifs, Fed, régulation crypto et effet sur les actifs de Trump",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "requete": "distinguer croissance organique du patrimoine Trump vs plafonnement par contraintes structurelles (2024-2026)",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "PRO@6",
+    "TRC@6"
+   ],
+   "requete": "distinguer effet d'échelle (ratio 4x) et effet de chemin (actifs accumulés 2024-2025) dans la fortune de Trump",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@13",
+    "POL@13"
+   ],
+   "requete": "distinguer effet du pouvoir institutionnel et effet de la polarisation partisane sur la valeur des actifs de Trump",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "requete": "cas où une fortune présidentielle a fortement augmenté puis s'est effondrée : preuves contraires à une trajectoire 4x",
+   "executee": true,
+   "date_execution": "2026-11-10"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "OUI si, à un moment quelconque de 2027-2028, la fortune nette du président en exercice selon Forbes (ou à défaut Bloomberg Billionaires Index, ou à défaut déclarations financières) atteint ou dépasse 4 fois l'estimation Forbes archivée la plus ancienne de l'année précédant sa prise de fonction.",
+   "source_resolution": {
+    "emetteur": "Forbes (avec recours à Internet Archive/Wayback Machine pour l'historique ; Bloomberg Billionaires Index en secours ; déclarations financières fédérales en dernier recours)",
+    "document": "Profil Forbes du président (ex. forbes.com/profile/donald-trump/) et captures Wayback Machine de l'année précédant l'entrée en fonction",
+    "regle_ambiguite": "En cas de divergence entre Forbes et Bloomberg, Forbes prévaut ; si Forbes ne fournit pas d'estimation actualisée pour la période, Bloomberg est utilisé ; à défaut, les déclarations financières fédérales et autres sources crédibles tranchent. Pour un président à deux mandats non consécutifs, la référence est l'année précédant le second mandat."
+   },
+   "vue_exterieure": {
+    "frequence": 0.049888499522140806,
+    "classe_de_reference": "chefs d'État en exercice (présidents américains) dont la fortune personnelle nette, telle qu'estimée par Forbes, atteint ou dépasse 4 fois sa valeur de référence (année précédant l'entrée en fonction) à un moment quelconque d'une période de deux ans",
+    "source": "Forbes (estimations de net worth présidentiel, profil Forbes de Donald Trump, archives Wayback Machine) ; synthèse [R1] et [R3]",
+    "periode": "1982-2025",
+    "disponible_le": "2026-11-10",
+    "classe_alternative": {
+     "frequence": 0.0,
+     "classe_de_reference": "présidents américains dont la fortune Forbes a quadruplé en deux ans pendant leur mandat",
+     "source": "[R1] et [R3]",
+     "pourquoi_ecartee": "Comptage strict donnant 0/8, fréquence nulle non exploitable pour une prévision ; la classe principale retient une borne supérieure prudente intégrant le cas limite Trump (×2,8) comme quasi-événement."
+    },
+    "ecart_critere": "identique : la classe compte exactement les présidents dont la fortune Forbes atteint ≥4× la valeur de référence de l'année précédant l'entrée en fonction, sur une fenêtre de deux ans, ce qui correspond au critère de résolution de la question (2027-2028)."
+   }
+  }
+ ]
+}
