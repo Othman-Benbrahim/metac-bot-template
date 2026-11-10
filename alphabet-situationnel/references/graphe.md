@@ -1,6 +1,6 @@
 # Alphabet situationnel — Graphe de transitions (couche 4)
 
-> Version : 0.7.56
+> Version : 0.7.57
 
 > Procédure expérimentale. Le moteur produit les chiffres et le JSON ; l'interprétation des sources
 > et des objets reste à vérifier. Règles : T1–T6 ; paramètres : `protocole.md` §H.
@@ -35,7 +35,10 @@ estimés sur des données ; le moteur les emploie *comme* des rapports de vraise
 leur cause commune), faux quand elles en sont des *causes* — ce que la matrice énonce. Dans ce cas l'événement est un
 point de convergence (« collider ») et le produit se trompe : il surestime pour des causes substituables ou corrélées
 (cause commune non lue), il sous-estime pour des causes conjointement nécessaires. Ordres de grandeur sur exemple
-construit, non robustes, seul le signe l'est : ×1,5 à ×2,6 (`reference-murphy-causalite.md`, §3.3). La règle de
+construit, non robustes, seul le signe l'est : ×1,5 à ×2,6 (`reference-murphy-causalite.md`, §3.3). **Le modèle des causes** (0.7.57, §34) :
+le *noisy-or* (Poole & Mackworth, 3ᵉ éd., §9.3) traite chaque carte comme une cause qui, seule, produirait
+l'événement avec sa chance propre, w = (p_i − f)/(1 − f), et p = 1 − (1 − f)·Π(1 − w_i). Il est calculé en ombre,
+jamais publié ; avec une seule carte il rend le même p que le produit. La règle de
 redondance ci-dessous ne couvre que les liens sémantiques déclarés (inclusion, renforcement, transfert). Même strate : valeur de la table. Autre strate :
 abaissement d'un cran, sauf propagation explicitement admise ou transfert ancré. Sources liées par
 inclusion, renforcement ou transfert : garder la plus forte, pour limiter le double comptage.

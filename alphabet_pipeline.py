@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.3"
+VERSION_BOT = "0.10.4"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1154,8 +1154,12 @@ def ombre_causale(sortie: dict) -> dict | None:
     if not sb:
         return None
     med = sb.get("mediation") or {}
+    # 0.10.4 (skill 0.7.57, §34) : cartes lues comme des causes (noisy-or), et borne de ce qu'une carte de plus
+    # pourrait changer (« arret » : la recherche aurait pu s'arrêter ; elle ne s'arrête pas, le nombre de tours est fixe).
+    vi = sb.get("valeur_information") or {}
     return {"p_mediation": med.get("p"), "mediateurs_retires": med.get("mediateurs_retires"),
-            "ablation": sb.get("ablation")}
+            "ablation": sb.get("ablation"), "p_noisy_or": (sb.get("noisy_or") or {}).get("p"),
+            "valeur_information": {k: vi.get(k) for k in ("borne", "seuil", "arret", "plus_influentes")} if vi else None}
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,

@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.56
+> Version : 0.7.57
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2189,4 +2189,38 @@ pourra remplacer le calcul actuel que par une nouvelle décision datée, si elle
 (banc `alphabet-chaine` et bot Metaculus, où elle est scellée à côté de C). Refusé : présenter la porte dérobée ou le
 do-calcul comme une validation de la matrice ; ils disent ce qui est identifiable *étant donné* un graphe, pas si le
 graphe est vrai.
+
+## 34. Causes ou indices, et quand cesser de chercher : deux ombres de plus (0.7.57)
+
+**Décision d'auteur, le 2026-11-10**, après lecture de Poole et Mackworth, *Artificial Intelligence: Foundations of
+Computational Agents*, 3ᵉ éd., Cambridge University Press, en accès libre (artint.info), consignée dans
+`reference-poole-mackworth.md` du projet.
+
+**Ombre `noisy_or` : les cartes lues comme des causes.** Le §33 écrit que le produit des λ suppose les cartes
+indépendantes sachant l'événement (des indices), et qu'il se trompe quand elles en sont des causes. Le *noisy-or*
+(§9.3 du livre) est le modèle standard de ce second cas : chaque cause active a sa propre chance, indépendante des
+autres, de produire l'événement, et l'événement survient si l'une d'elles réussit. Pour chaque source, p_i est le p
+qu'elle donnerait seule (le calcul actuel) ; son poids est w_i = (p_i − f)/(1 − f) ; la combinaison est
+p = 1 − (1 − f)·Π(1 − w_i). Une source qui baisse (λ < 1, aucune aujourd'hui) laisse passer la fraction p_i/f. **Avec
+une seule carte, les deux combinaisons rendent le même p** ; elles divergent à partir de deux, le noisy-or montant
+moins vite (exemple du livre : 0,35 contre 0,86 pour la combinaison additive sur la cote). Le reste du calcul (révision
+par les cas, plafond) est inchangé.
+
+**Ombre `valeur_information` : borne de ce qu'une recherche de plus pourrait changer.** La valeur d'une information
+n'est jamais négative, et elle est **nulle si la décision reste la même quelle que soit l'information obtenue** (§12.4
+du livre). Transposé au moteur : pour chaque carte absente de la strate de la cible (hors « Hors domaine »), on
+calcule p si elle était ancrée, en f puis en F. La **borne** est le plus grand écart absolu à p. Si elle est sous
+`seuil_valeur_information` (0,02, nouveau paramètre, sans effet sur aucun p), aucune lecture supplémentaire ne peut
+déplacer la prévision du moteur de plus de deux points : `arret` vaut vrai. Ce n'est pas la valeur de l'information au
+sens strict, qui pondérerait chaque issue par sa chance d'être trouvée : c'est sa **borne haute dans le modèle**. Elle ne
+dit rien de ce que le bras A pourrait apprendre hors de l'alphabet.
+
+**Usage.** Les deux ombres sont calculées dans `sensibilite`, hors bande et hors p publié, et scellées à côté de C par le
+bot et le banc. Le critère d'arrêt n'arrête rien : le nombre de tours de recherche reste fixé (6 dans le bot). On
+mesurera sur les issues réelles (a) si le noisy-or fait mieux que le produit là où deux cartes ou plus sont ancrées, et
+(b) si les questions où `arret` était vrai dès le premier tour ont des C aussi bons que les autres. Toute adoption passe
+par une décision datée.
+
+**Code tiers.** Le code Python du livre (AIPython) est sous licence Creative Commons BY-NC-SA, incompatible avec la
+licence MIT du skill : rien n'en est copié. Les deux formules sont réécrites ici, en quelques lignes, à partir du texte.
 
