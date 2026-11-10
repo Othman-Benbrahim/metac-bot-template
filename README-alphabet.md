@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.4 · skill alphabet-situationnel 0.7.57 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.5 · skill alphabet-situationnel 0.7.58 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,10 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.5** : skill 0.7.58 (§35), d'après Murphy (2026). En ombre : `tempere` (produit des λ à la puissance α fixée
+  d'avance, 0,5 principal) comparé à C ; et, si `ALPHABET_A_ESSAIS` > 1 (1 par défaut, éteint : chaque essai coûte un
+  appel au modèle principal), K essais du bras A scellés avec lui, moyenne comparée à A et C comparé à A moyenné. Le
+  premier essai reste le bras A publié.
 - **0.10.4** : skill 0.7.57 (§34). Deux ombres de plus dans `ombre_causale`, jamais publiées : `p_noisy_or` (les
   cartes lues comme des causes, au lieu d'indices) et `valeur_information` (borne de ce qu'une carte de plus pourrait
   changer ; `arret` vrai si sous 0,02). Le nombre de tours de recherche reste fixe. Le score compare `C_noisy_or` à C et

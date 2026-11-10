@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.57
+> Version : 0.7.58
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2223,4 +2223,28 @@ par une décision datée.
 
 **Code tiers.** Le code Python du livre (AIPython) est sous licence Creative Commons BY-NC-SA, incompatible avec la
 licence MIT du skill : rien n'en est copié. Les deux formules sont réécrites ici, en quelques lignes, à partir du texte.
+
+## 35. Tempérer les cartes, et répéter le modèle seul : deux ombres d'après Murphy (0.7.58)
+
+**Décision d'auteur, le 2026-11-10**, après lecture de Kevin Murphy, « Agentic Forecasting using Sequential Bayesian
+Updating of Linguistic Beliefs », arXiv 2604.18576 (ICML 2026), consignée dans `reference-murphy-blf.md` du projet.
+
+**Le constat qui motive la décision.** L'article teste une forme explicite très proche du bras C : logit p = logit b₀ +
+α·Σ log λ, les λ demandés au modèle observation par observation. Elle bat le seul taux de base (Brier Index 65,7 contre
+63,1) mais perd contre la croyance laissée en langage naturel (70,4), sur 80 questions. Le meilleur α est 0,35 : les
+rapports de vraisemblance bruts étaient trop forts. Deux réserves de l'auteur lui-même : α a été choisi **sur
+l'échantillon même**, et l'échantillon est petit.
+
+**Ombre `tempere` (moteur).** Le même calcul avec le produit des λ élevé à la puissance α, avant la révision par les cas.
+Les α sont **fixés ici, avant toute donnée** : 0,5 pour la comparaison principale, 0,25 et 0,75 à titre descriptif
+(`alphas_temperage`, sans effet sur aucun p publié). α = 1 est le calcul publié. Choisir α d'après les issues, puis le
+mesurer sur ces mêmes issues, est exclu : c'est l'erreur que l'article signale chez lui.
+
+**Ombre « A répété » (bot).** L'article gagne en moyennant plusieurs essais indépendants du modèle seul (moyenne
+simple, un peu mieux que la moyenne des logits). Le bot peut sceller K essais du bras A (`ALPHABET_A_ESSAIS`, 1 par
+défaut, donc éteint) ; le premier reste le bras A publié ; la moyenne est comparée à part. **Pourquoi c'est nécessaire
+pour nous** : si C ne bat qu'un A tiré une seule fois, une partie de l'écart peut venir du bruit d'un tirage, pas des
+cartes. La comparaison honnête est C contre A moyenné.
+
+**Ce qui ne change pas.** Le p publié, les λ, la règle de publication, L7. Toute adoption passe par une décision datée.
 

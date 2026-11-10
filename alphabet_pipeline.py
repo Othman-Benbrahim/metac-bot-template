@@ -22,6 +22,7 @@ import os
 import re
 import subprocess
 import sys
+import statistics
 import tempfile
 import unicodedata
 from dataclasses import dataclass, field
@@ -29,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.4"
+VERSION_BOT = "0.10.5"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1146,6 +1147,16 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
     return choisie, suivi
 
 
+def repetition_A(ps: list[float]) -> dict:
+    """0.10.5 (skill 0.7.58, §35) : K essais indépendants du bras A (Murphy 2026 : la moyenne simple de 5 essais
+    améliore le score, un peu plus que la moyenne des logits). En ombre : sert de référence honnête pour C."""
+    ps = [borner(float(x)) for x in ps if isinstance(x, (int, float))]
+    lg = [math.log(x / (1 - x)) for x in ps]
+    return {"n": len(ps), "p": ps, "moyenne": sum(ps) / len(ps),
+            "moyenne_logit": 1 / (1 + math.exp(-sum(lg) / len(lg))),
+            "ecart_type": statistics.pstdev(ps) if len(ps) > 1 else 0.0}
+
+
 def ombre_causale(sortie: dict) -> dict | None:
     """0.10.3 (skill 0.7.56, validation §33) : deux sondes du moteur, en ombre, jamais publiées. `p_mediation` : p
     sous la règle des médiateurs (arête lue comme effet total ; le médiateur est écarté) ; `ablation` : p quand chaque
@@ -1159,7 +1170,8 @@ def ombre_causale(sortie: dict) -> dict | None:
     vi = sb.get("valeur_information") or {}
     return {"p_mediation": med.get("p"), "mediateurs_retires": med.get("mediateurs_retires"),
             "ablation": sb.get("ablation"), "p_noisy_or": (sb.get("noisy_or") or {}).get("p"),
-            "valeur_information": {k: vi.get(k) for k in ("borne", "seuil", "arret", "plus_influentes")} if vi else None}
+            "valeur_information": {k: vi.get(k) for k in ("borne", "seuil", "arret", "plus_influentes")} if vi else None,
+            "tempere": sb.get("tempere")}   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
@@ -1617,11 +1629,13 @@ def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
 async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str, llm: Llm, chercher: Chercheur,
                           recherche_reelle: bool, maintenant: datetime | None = None, publie: bool = True,
                           mode: str | None = None, historique: Historique | None = None,
-                          critique: Llm | None = None) -> Resultat:
+                          critique: Llm | None = None, essais_A: list[float] | None = None) -> Resultat:
     maintenant = maintenant or datetime.now(timezone.utc)
     aujourdhui = maintenant.date().isoformat()
     jours = max(1, (q.resolution - maintenant.date()).days)
     bras_a = {"p": p_A, "horodatage": maintenant.isoformat(timespec="seconds")}
+    if essais_A:   # 0.10.5 (skill §35, Murphy 2026) : K essais du modèle seul, en ombre ; le premier reste le bras A
+        bras_a["essais"] = repetition_A([p_A] + list(essais_A))
     bras_a["sceau"] = sceau({"question": str(q.id), "date": aujourdhui, **bras_a})  # A scellé avant l'alphabet
     try:
         c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique, critique)

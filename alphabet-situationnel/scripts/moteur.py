@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.57 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.58 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -658,6 +658,9 @@ MEDIATION_RETIRES = []
 # suppose les cartes indépendantes sachant l'événement (des indices). « noisy_or » (ombre) : chaque carte
 # est une cause qui, seule, produirait l'événement avec une chance propre (Poole & Mackworth, 3e éd., §9.3).
 COMBINAISON = "produit"
+# 0.7.58 (§35) : tempérage des cartes, posé seulement le temps d'une sonde. logit p₀ = logit f + α·log Πλ
+# (Murphy 2026, §6, forme explicite) ; α = 1 est le calcul publié.
+TEMPERAGE = 1.0
 
 
 def combiner_noisy_or(f, src):
@@ -1988,6 +1991,7 @@ def apriori(etat,typ,cible,base,liaisons=(),bouge=(),manque=(),refs=None,ctr_mat
     src,removed=sources_de(etat,cible,liaisons,bouge,manque) if typ=='apparait' and not sans_cartes else ([],[])
     lr=math.prod(x['lambda'] for x in src)
     capped=lr>P['plafond_LR'];lr=min(lr,P['plafond_LR'])
+    if TEMPERAGE!=1.0: lr=lr**TEMPERAGE
     p=odds_module(f,lr) if COMBINAISON=='produit' else combiner_noisy_or(f,src)
     # Exact externally supplied boundaries are supported; never manufacture a beta law with zero parameters.
     # 0.6.9 : le plafond borne l'effet des cartes, pas la fréquence. Appliqué à toute p, il ramenait une
@@ -2480,6 +2484,16 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None):
             noisy_or={'p':rn_['p'],'effet':rn_['p']-reference}
         except ValueError:pass
         finally:COMBINAISON='produit'
+        # 0.7.58 (§35) : tempérage des cartes, α fixés avant toute donnée (0,5 comparaison principale ; 0,25 et
+        # 0,75 descriptifs), hors p publié. Murphy (2026) a choisi α = 0,35 sur l'échantillon même : erreur évitée.
+        global TEMPERAGE
+        tempere=[]
+        for a_ in P['alphas_temperage']:
+            try:
+                TEMPERAGE=a_
+                tempere.append({'alpha':a_,'p':horizon_result(etat,typ,cible,base,opts,h,semantique)['p']})
+            except ValueError:pass
+            finally:TEMPERAGE=1.0
         # 0.7.57 (§34) : valeur de l'information, borne dans le modèle. Pour chaque carte absente de la
         # strate de la cible, p si elle était ancrée (f, puis F). Si aucune ne déplace p de plus du seuil,
         # chercher encore ne peut pas changer la prévision du moteur : la recherche peut s'arrêter. Ne
@@ -2533,7 +2547,7 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None):
                       'effectifs':sorted({x['c_A'] for x in sortie if x['groupe']=='classe' if x['c_A'] is not None})},
             'effet_force':rf['p']-reference,'effet_attenuation':attenuations,
             'mediation':mediation,'ablation':ablation,
-            'noisy_or':noisy_or,'valeur_information':valeur_information,
+            'noisy_or':noisy_or,'valeur_information':valeur_information,'tempere':tempere,
             'bande_large':max(ps)-min(ps)>P['largeur_max_affichage'],
             'saturee':any(abs(p-P['plafond_p0'])<1e-12 for p in ps)}
     # Deux bandes qui traversent le seuil ne se lisent pas de la même façon : on nomme celle qui décide.
@@ -3664,7 +3678,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -3901,7 +3915,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.57','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.58','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -5568,6 +5582,16 @@ def autotest():
             e2=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + ÉMERGENCE@7[f]')  # paire mutuelle : rien d'écarté
             sb2=sensibilite(e2,'apparait','CTR@7',base,{'asof':'2026-09-20'},1,'presence')
             self.assertEqual(sb2['mediation']['mediateurs_retires'],[])
+        def test_tempere(self):
+            # 0.7.58 (§35) : α = 1 rend le p publié ; α < 1 rapproche p de la fréquence ; hors du p publié.
+            base=base_active(charger(RACINE/'assets/base-de-cas.exemple.jsonl'),'2026-09-20',True)
+            e=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + CONTRAINTE@7[f]')
+            r=calculer(e,'apparait','SEU@7',base,asof='2026-09-20')
+            sb=sensibilite(e,'apparait','SEU@7',base,{'asof':'2026-09-20'},1,'presence')
+            t={x['alpha']:x['p'] for x in sb['tempere']};f=r['a_priori']['reference_interne']
+            self.assertEqual(sorted(t),[.25,.5,.75]);self.assertEqual(globals().get('TEMPERAGE'),1.0)
+            self.assertTrue(f<t[.25]<t[.5]<t[.75]<r['p'])                       # les cartes montent ici
+            self.assertEqual(r['p'],calculer(e,'apparait','SEU@7',base,asof='2026-09-20')['p'])
         def test_noisy_or_vdi(self):
             # 0.7.57 (§34) : noisy-or = produit avec une seule source ; plus bas que le produit à deux sources
             # qui montent ; valeur de l'information bornée, hors du p publié.
