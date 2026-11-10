@@ -265,6 +265,14 @@ class AlphabetBot(FallTemplateBot2026):
 
     async def _run_forecast_on_binary(self, question: BinaryQuestion, research: str) -> ReasonedPrediction[float]:
         a = await super()._run_forecast_on_binary(question, research)  # bras A, avant toute carte
+        # 0.10.5 (skill §35, Murphy 2026) : K − 1 essais de plus du modèle seul, en ombre, avant toute carte. Éteint
+        # par défaut (ALPHABET_A_ESSAIS = 1) : chaque essai coûte un appel au modèle principal.
+        essais_A: list[float] = []
+        for _ in range(max(0, int(os.environ.get("ALPHABET_A_ESSAIS") or 1) - 1)):
+            try:
+                essais_A.append((await super()._run_forecast_on_binary(question, research)).prediction_value)
+            except Exception as e:  # un essai en ombre qui échoue ne bloque rien
+                logger.warning("alphabet : essai A en ombre échoué (%s)", type(e).__name__)
         fin = question.scheduled_resolution_time or question.close_time
         q = ap.Question(id=question.id_of_question or question.id_of_post or question.page_url,
                         url=question.page_url or "", titre=question.question_text,
@@ -277,7 +285,8 @@ class AlphabetBot(FallTemplateBot2026):
                                          mode=os.environ.get("ALPHABET_MODE"),
                                          historique=None if os.environ.get("ALPHABET_HISTORIQUE") == "0"
                                          else self._historique,
-                                         critique=self._critique if os.environ.get("ALPHABET_CONTRADICTEUR") else None)
+                                         critique=self._critique if os.environ.get("ALPHABET_CONTRADICTEUR") else None,
+                                         essais_A=essais_A or None)
         except Exception as e:
             # 0.8.0 (audit M-10) : les erreurs de l'alphabet sont déjà journalisées par prevoir_binaire (statut
             # « erreur », bras A posté). Une exception qui arrive ici veut dire que la ligne n'a PAS été écrite :

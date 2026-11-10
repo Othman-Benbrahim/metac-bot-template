@@ -91,6 +91,19 @@ def lancer(reponses, p_A=0.3, reelle=True, q=Q, publie=True, mode="minibench", m
 
 
 class Tests(unittest.TestCase):
+    def test_a_repete_en_ombre(self):
+        # 0.10.5 (§35) : K essais du modèle seul scellés avec A ; le premier reste le bras A, rien d'autre ne change.
+        llm = LlmSimule([PLAN, vue(0.2), lecture()])
+        r = asyncio.run(ap.prevoir_binaire(Q, "recherche générale", 0.3, "raisonnement", llm, chercher, True,
+                                           MAINTENANT, publie=True, mode="minibench", essais_A=[0.5, 0.4]))
+        e = r.ligne["bras"]["A"]["essais"]
+        self.assertEqual(e["n"], 3)
+        self.assertAlmostEqual(e["moyenne"], 0.4)
+        self.assertAlmostEqual(r.p_A, 0.3)
+        self.assertTrue(0.3 < e["moyenne_logit"] < 0.5)
+        self.assertEqual(r.ligne["bras"]["A"]["sceau"], ap.sceau({"question": str(Q.id), "date": MAINTENANT.date().isoformat(),
+                                                                  **{k: v for k, v in r.ligne["bras"]["A"].items() if k != "sceau"}}))
+
     def test_bras_c_poste(self):
         r, llm = lancer([PLAN, vue(0.2), lecture()])
         self.assertEqual(r.bras_poste, "C")
@@ -108,6 +121,7 @@ class Tests(unittest.TestCase):
         self.assertTrue(om["ablation"])
         self.assertIsInstance(om["p_noisy_or"], float)      # 0.10.4 (§34) : en ombre
         self.assertIsInstance(om["valeur_information"]["arret"], bool)
+        self.assertEqual([t["alpha"] for t in om["tempere"]], [0.25, 0.5, 0.75])   # 0.10.5 (§35) : en ombre
         self.assertAlmostEqual(r.p_C, c["p_C"])          # le chiffre posté reste celui du calcul actuel
         self.assertTrue(all(x["executee"] for x in c["recherches"]))
         self.assertEqual(r.ligne["bras"]["B"]["source"], "registre fictif de démonstration")
@@ -408,7 +422,8 @@ class Tests(unittest.TestCase):
             self.assertEqual(s["apparie_ABC"]["n"], 1)               # seule la ligne aux trois bras est appariée
             self.assertEqual(s["bras_poste"], {"A": 1, "B": 1, "C": 1})
             self.assertEqual(s["bras"]["B"]["n"], 2)
-            self.assertIn("C_noisy_or", s["C_noisy_or_sur_C"]["verdict"])   # 0.10.4 (§34) : ombres comparées à C
+            self.assertIn("C_noisy_or", s["C_noisy_or_sur_C"]["verdict"])
+            self.assertIn("C_tempere", s["C_tempere_sur_C"]["verdict"])        # 0.10.5 (§35)   # 0.10.4 (§34) : ombres comparées à C
             self.assertEqual(sum(v["questions"] for k, v in s["C_selon_arret_vdi"].items() if k != "note"), 1)
             lignes = (reg / "journal-bot.jsonl").read_text(encoding="utf-8").splitlines()
             x = json.loads(lignes[0]); x["p_poste"] = 0.5            # une ligne retouchée est écartée

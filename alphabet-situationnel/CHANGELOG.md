@@ -1,9 +1,17 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.57
+> Version : 0.7.58
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.58 — 2026-11-10 · tempérage des cartes en ombre
+
+Décision d'auteur, après Murphy (2026), « Agentic Forecasting… ». **Aucun chiffre publié ne change.**
+
+- `validation.md` §35 : la décision ; α fixés avant les données ; A répété (bot) comme référence de C.
+- `moteur.py` : `sensibilite` ajoute `tempere` (p pour α = 0,25, 0,5, 0,75), hors bande et hors p publié ; un autotest.
+- `parametres.json` : `alphas_temperage` = [0,25 ; 0,5 ; 0,75] (ne touche aucun p).
 
 ## 0.7.57 — 2026-11-10 · noisy-or et valeur de l'information, en ombre
 
