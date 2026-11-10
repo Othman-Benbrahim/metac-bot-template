@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.11 · skill alphabet-situationnel 0.7.62 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.12 · skill alphabet-situationnel 0.7.63 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.12** : skill 0.7.63 (§40). **Surprise d'une lecture** scellée avec C (`generatif.surprise`) ; le score rend
+  `C_selon_surprise` (Brier de C quand la surprise est forte ou faible). **Diversité des lectures** (`diversite_lectures` :
+  part des états nuls, états distincts, entropie des cartes ancrées) pour surveiller un lecteur qui « s'effondre ».
 - **0.10.11** : skill 0.7.62 (§39), d'après Balestriero & LeCun (2026). **Test d'invariance du lecteur**, en ombre :
   sur une part des questions (`ALPHABET_INVARIANCE_TAUX`, 0,2 par défaut dans le workflow, tirage déterministe par
   question), le même lecteur relit la situation sur deux vues aux SOURCES disjointes (mêmes requêtes, sites séparés).

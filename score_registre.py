@@ -394,6 +394,44 @@ def invariance_lecteur(lignes: list[dict]) -> dict | None:
             "lecture": "κ faible : le lecteur suit le registre des sources plus que la situation (§39)"}
 
 
+def diversite_lectures(lignes: list[dict]) -> dict | None:
+    """0.10.12 : surveiller l'« effondrement » du lecteur (l'équivalent d'une JEPA qui rend la même sortie pour tout) :
+    part des états nuls, nombre d'états distincts, entropie normalisée des cartes ancrées, part de la carte la plus
+    fréquente. Descriptif, sans issue."""
+    import math as _m
+    c = [((x.get("bras") or {}).get("C") or {}) for x in lignes]
+    c = [b for b in c if b.get("statut") in ("estime", "non_estime", "etat_nul", "lu_non_chiffre")]
+    if not c:
+        return None
+    nuls = sum(1 for b in c if b.get("statut") == "etat_nul")
+    etats = [str(b.get("etat") or "") for b in c if b.get("etat")]
+    cartes: dict[str, int] = {}
+    for e in etats:
+        for m_ in re.findall(r"([A-ZÀ-Ý ·]+)@\d+", e.split("]", 1)[-1]):
+            k = m_.strip()
+            cartes[k] = cartes.get(k, 0) + 1
+    tot = sum(cartes.values())
+    h = -sum(v / tot * _m.log(v / tot) for v in cartes.values()) if tot else 0.0
+    return {"lectures": len(c), "part_etats_nuls": round(nuls / len(c), 4), "etats_distincts": len(set(etats)),
+            "entropie_normalisee": round(h / _m.log(16), 4) if tot else None,
+            "carte_la_plus_frequente": (max(cartes, key=cartes.get) if cartes else None),
+            "part_carte_la_plus_frequente": round(max(cartes.values()) / tot, 4) if tot else None,
+            "lecture": "entropie basse, états distincts rares ou états nuls quasi constants : le lecteur s'effondre"}
+
+
+def c_selon_surprise(paires: list[tuple[float, float, int]]) -> dict | None:
+    """0.10.12 (§40) : Brier de C selon la surprise relative de la lecture (au-dessus et au-dessous de la médiane).
+    Descriptif : une surprise forte devrait annoncer un C moins fiable."""
+    if len(paires) < 4:
+        return None
+    med = sorted(s for s, _, _ in paires)[len(paires) // 2]
+    haut = [(p - y) ** 2 for s, p, y in paires if s >= med]
+    bas = [(p - y) ** 2 for s, p, y in paires if s < med]
+    return {"mediane_surprise": round(med, 4),
+            "surprise_forte": {"questions": len(haut), "brier_C": round(sum(haut) / len(haut), 4) if haut else None},
+            "surprise_faible": {"questions": len(bas), "brier_C": round(sum(bas) / len(bas), 4) if bas else None}}
+
+
 def calibration_queues(paires: list[tuple[float, int]], seuil: float = 0.1) -> dict:
     """0.10.10 : calibration dans les QUEUES (p < 0,1 et p > 0,9). Epoch AI (méthode bayésienne de l'ECI, nov. 2026)
     trouve sa couverture la plus faible près des bornes (80,5 % contre 90 % visés sous 0,05) ; au score logarithmique,
@@ -672,6 +710,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     noisy, arrets = [], {True: [], False: []}   # 0.10.4 (§34), en ombre
     temperes, a_moyens, c_sur_a_moyen = [], [], []   # 0.10.5 (§35), en ombre
     generatifs = []                                   # 0.10.6 (§36), en ombre
+    surprises = []                                    # 0.10.12 (§40), en ombre
     lectures_proba = []                               # 0.10.7 (§37), en ombre
     sans_plafond = []                                 # 0.10.9 (§38), en ombre
     for x in resolues:
@@ -694,6 +733,9 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         t5 = [t_ for t_ in (om.get("tempere") or []) if t_.get("alpha") == 0.5 and isinstance(t_.get("p"), (int, float))]
         if t5 and isinstance(pc_, (int, float)):   # 0.10.5 (§35) : α = 0,5, fixé d'avance
             temperes.append(({"C_tempere": ap.borner(t5[0]["p"]), "C": ap.borner(pc_)}, y))
+        su_ = ((om.get("generatif") or {}).get("surprise") or {}).get("surprise_relative")
+        if isinstance(su_, (int, float)) and isinstance(pc_, (int, float)):   # 0.10.12 (§40)
+            surprises.append((su_, ap.borner(pc_), y))
         g_ = (om.get("generatif") or {}).get("p")
         if isinstance(g_, (int, float)) and isinstance(pc_, (int, float)):   # 0.10.6 (§36)
             generatifs.append(({"C_generatif": ap.borner(g_), "C": ap.borner(pc_)}, y))
@@ -792,6 +834,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "recalibration_etudiee": {b: recalibration(v) for b, v in par_bras.items()},
             "calibration_queues": {b: calibration_queues(v) for b, v in par_bras.items()},   # 0.10.10
             "invariance_lecteur": invariance_lecteur([(x["bras"]["C"].get("invariance") or {}) for x in publiees]),
+            "diversite_lectures": diversite_lectures(publiees),                 # 0.10.12
+            "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
             "stabilite_strate": stabilite_strate(publiees),
             "statuts_par_version": statuts_par_version(publiees),

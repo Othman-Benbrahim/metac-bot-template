@@ -178,6 +178,7 @@ class Tests(unittest.TestCase):
         self.assertTrue(om["generatif"]["rejets_utilises"])                        # les rejets du dossier arrivent au moteur
         self.assertTrue(om["generatif"]["rejets_categories"])                      # 0.10.9 (§38) : avec leur catégorie
         self.assertIsInstance(om["sans_plafond"]["p"], float)
+        self.assertIn("surprise_relative", om["generatif"]["surprise"])        # 0.10.12 (§40)
         self.assertAlmostEqual(r.p_C, c["p_C"])          # le chiffre posté reste celui du calcul actuel
         self.assertTrue(all(x["executee"] for x in c["recherches"]))
         self.assertEqual(r.ligne["bras"]["B"]["source"], "registre fictif de démonstration")
@@ -484,6 +485,11 @@ class Tests(unittest.TestCase):
             self.assertIsNone(s["C_lecture_probabiliste_sur_C"])               # 0.10.7 : traducteur éteint par défaut
             self.assertIn("C_sans_plafond", s["C_sans_plafond_sur_C"]["verdict"])  # 0.10.9 (§38)
             self.assertIn("bas", s["calibration_queues"]["B"])                 # 0.10.10
+            self.assertEqual(s["diversite_lectures"]["lectures"], 2)           # 0.10.12 (la 3e ligne : aucune lecture)
+            d_ = sr.diversite_lectures([{"bras": {"C": {"statut": "estime", "etat": "[2026-11 | 3 mois] POLARITÉ@7[F] + CONTRAINTE@6[f]"}}},
+                                         {"bras": {"C": {"statut": "etat_nul"}}}])
+            self.assertEqual((d_["part_etats_nuls"], d_["etats_distincts"]), (0.5, 1))
+            self.assertIsNotNone(sr.c_selon_surprise([(0.1, 0.2, 0), (0.3, 0.6, 1), (-0.1, 0.3, 0), (0.5, 0.9, 0)]))
             import score_registre as sr_
             q = sr_.calibration_queues([(0.05, 0), (0.02, 1), (0.95, 1), (0.5, 1)])
             self.assertEqual((q["bas"]["n"], q["bas"]["frequence_observee"], q["haut"]["n"]), (2, 0.5, 1))   # 0.10.4 (§34) : ombres comparées à C

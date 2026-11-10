@@ -1,9 +1,17 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.62
+> Version : 0.7.63
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.63 — 2026-11-10 · surprise d'une lecture
+
+Décision d'auteur, d'après le signal de surprise des modèles du monde (JEPA). **Aucun chiffre publié ne change.**
+
+- `validation.md` §40 : la mesure et sa lecture.
+- `moteur.py` : `p0_generatif` calcule log P(lecture) et sa version à marges indépendantes ; `sensibilite` rend
+  `generatif.surprise` ; un autotest.
 
 ## 0.7.62 — 2026-11-10 · invariance du lecteur
 
