@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.53
+> Version : 0.7.54
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2110,4 +2110,30 @@ nul, A sinon) ; L7 ne se lève que par le §27.
 **Ce qu'il faut savoir en le lisant.** Plus d'ancrages f veut dire plus de chiffres, donc plus de mesures, mais aussi
 plus de cartes faiblement ancrées : les chiffres produits après cette version sont scorés à part de ceux d'avant
 (`version` dans le registre), et un C moins bon que B après 0.7.53 désignerait cette règle comme première suspecte.
+
+## 31. Fait de série : l'alphabet lu dans des données (0.7.54)
+
+**Décision d'auteur, le 2026-11-10.** Les cartes sont des structures mathématiques ; la lecture ne les cherchait que
+dans des faits rédigés (presse, documents). L'auteur admet qu'un **relevé de données** soit un fait au sens de la
+règle d'ancrage, pour tester l'alphabet **sans texte** (banc `alphabet-chaine` : jetons de la chaîne Solana,
+protocole fixé avant les données dans `protocole-alphabet-sans-texte.md` du projet).
+
+**Ce qu'est un fait de série.** Une valeur relevée, avec : le **champ** et sa **valeur** (`fait`), le **producteur**
+(`source`, par exemple « RugCheck »), le **point d'accès** (`source_url`), l'**heure du relevé** (date du fait et
+`date_consultation`), et l'emplacement dans la réponse (`passage.localisation`, par exemple `topHolders[0].pct`).
+Il obéit aux mêmes règles que tout fait : daté au plus tard à la date d'information, jamais inventé, jamais calculé
+par le lecteur (un ratio se cite s'il est fourni par la source ou calculé par le code du banc, avec sa formule).
+
+**Ce qui en découle.**
+
+1. **Corroboration** : un relevé d'API est une source primaire (`unique`) ; deux API qui relaient la même chaîne ne
+   sont pas indépendantes pour une valeur sur la chaîne (même origine, §24).
+2. **Statut des équivalents** : en strate 6 (Économie), les équivalents des cartes lues dans ces données sont
+   « proposés », pas Documentés ; les chiffres restent exploratoires (§29), jamais publiés.
+3. **Règle §30 inchangée** : définition + un marqueur observable → f ; F exige un test suffisant. Une valeur seule
+   (« 45 % des jetons chez dix portefeuilles ») est un marqueur ; le mécanisme de la carte doit se lire dans la
+   configuration des relevés, pas dans le nom du champ.
+
+**Ce qui ne change pas.** Aucun paramètre, aucune règle de décision ; `moteur.py` ne vérifie que la forme. Les
+chiffres du banc sont scorés à part de ceux du bot Metaculus.
 

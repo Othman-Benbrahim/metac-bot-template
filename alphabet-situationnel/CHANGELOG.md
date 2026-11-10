@@ -1,9 +1,17 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.53
+> Version : 0.7.54
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.54 — 2026-11-10 · fait de série
+
+Décision d'auteur : un relevé de données (champ, valeur, producteur, point d'accès, heure) est un fait au sens de la
+règle d'ancrage, pour tester l'alphabet sans texte (banc `alphabet-chaine`). **Aucun paramètre changé.**
+
+- `validation.md` §31 : définition, corroboration (relevé d'API = source primaire), statut « proposé » en strate 6.
+- `SKILL.md` : phrase. `feuille-de-route.md` : ligne.
 
 ## 0.7.53 — 2026-11-10 · le marqueur décide de l'intensité
 
