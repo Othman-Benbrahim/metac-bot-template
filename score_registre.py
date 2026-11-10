@@ -640,6 +640,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     temperes, a_moyens, c_sur_a_moyen = [], [], []   # 0.10.5 (§35), en ombre
     generatifs = []                                   # 0.10.6 (§36), en ombre
     lectures_proba = []                               # 0.10.7 (§37), en ombre
+    sans_plafond = []                                 # 0.10.9 (§38), en ombre
     for x in resolues:
         y = issues[x["question_id"]]
         cr = x["bras"]["C"].get("critique") or {}
@@ -666,6 +667,9 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         lp_ = (om.get("lecture_probabiliste") or {}).get("p")
         if isinstance(lp_, (int, float)) and isinstance(pc_, (int, float)):   # 0.10.7 (§37)
             lectures_proba.append(({"C_lecture_probabiliste": ap.borner(lp_), "C": ap.borner(pc_)}, y))
+        sp_ = (om.get("sans_plafond") or {}).get("p")
+        if isinstance(sp_, (int, float)) and isinstance(pc_, (int, float)):   # 0.10.9 (§38)
+            sans_plafond.append(({"C_sans_plafond": ap.borner(sp_), "C": ap.borner(pc_)}, y))
         ea_ = x["bras"]["A"].get("essais") or {}
         if isinstance(ea_.get("moyenne"), (int, float)) and x["bras"]["A"].get("p") is not None:
             a_moyens.append(({"A_moyen": ap.borner(ea_["moyenne"]), "A": ap.borner(x["bras"]["A"]["p"])}, y))
@@ -793,6 +797,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                                                       "traduites des textes (Wong et al. 2023) contre C",
                                               **comparer(lectures_proba, "C_lecture_probabiliste", "C")}
                                              if lectures_proba else None),
+            "C_sans_plafond_sur_C": ({"note": "en ombre (§38) : le même calcul sans troncature du score contre C",
+                                      **comparer(sans_plafond, "C_sans_plafond", "C")} if sans_plafond else None),
             "A_moyen_sur_A": ({"note": "en ombre (§35) : moyenne de K essais du modèle seul contre le premier essai",
                                **comparer(a_moyens, "A_moyen", "A")} if a_moyens else None),
             "C_sur_A_moyen": ({"note": "en ombre (§35) : C contre A moyenné, la référence qui retire le bruit d'un tirage",

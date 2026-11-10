@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.60
+> Version : 0.7.61
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2314,4 +2314,54 @@ et déterministe. Ombre `lecture_probabiliste` dans `sensibilite` : p, effet sur
 retenues et écartées.
 
 **Ce qui ne change pas.** Le p publié, la consigne de lecture, les λ, la matrice. Toute adoption par décision datée.
+
+## 38. Relecture par Murphy, ch. 4, 9, 29 et 30 : ce qui est retenu, ce qui est rejeté (0.7.61)
+
+**Décision d'auteur, le 2026-11-10**, après quatre synthèses critiques de K. P. Murphy, *Probabilistic Machine
+Learning: Advanced Topics* (MIT Press, 2023) : ch. 4 (modèles graphiques), 9 (passage de messages), 29 (modèles
+d'espace d'états), 30 (apprentissage de graphes, extrait). Chaque critique a été vérifiée contre le code ; le tri complet
+est dans `relecture-murphy-pgm.md` du projet.
+
+**Ce que le calcul publié est, nommé exactement** (ch. 4, §4.3.4.1). Le produit des λ sur la cote est un **modèle
+log-linéaire à coefficients stipulés** : logit p₀ = logit f + Σ log λ, une régression logistique dont les poids et la
+constante sont fixés, jamais estimés. C'est un **score**, pas un produit de vraisemblances : l'indépendance des cartes
+sachant l'événement est fausse pour des causes (explaining away, §4.2.4.2), comme le §33 l'écrivait déjà. Le plafond à
+10 est une **troncature** de ce score : avec f = 0,1, p₀ ne dépasse pas 0,53, et il mord dès la troisième carte forte.
+
+**Ce que le programme génératif est** (§4.5.4.1) : un **graphe en chaîne**, champ de Markov sur les cartes normalisé par
+Z, puis lois conditionnelles dirigées pour l'événement (noisy-or) et pour les observations. Le joint est bien défini
+(une critique le disait non normalisé : elle est rejetée, le code normalise sur toutes les configurations des cartes).
+
+**Ce que la matrice est** (§29.5.5) : la structure **entre deux tranches** d'un réseau bayésien dynamique, en
+association (barreau A). Ce qui manque pour dérouler proprement plusieurs pas : des transitions normalisées, et une
+évaluation à plusieurs pas. `trajectoires` déroule (noyau à risques concurrents, chemins entiers pondérés), mais **aucune
+trajectoire n'est scellée ni scorée au-delà d'un pas** : un score à un pas ne dit rien de la dynamique (§29.13.3).
+
+**Corrigé dans le code (ombres seulement).**
+1. **Couplage unique par paire** (§4.3.2.1, §9.4.2) : les 10 paires mutuelles étaient couplées deux fois dans le même pas
+   (λ(A→B) × λ(B→A)) ; un seul couplage, le plus fort des deux.
+2. **Rejets selon l'effort de recherche** (§29, observé ou manquant) : contredit et marqueur non rempli 1 ; aucun fait
+   trouvé et non classé 0,5 ; non cherchée 0 (`generatif.effort_rejet`). Le bot transmet les catégories
+   (`rejets_categories` du dossier) ; sans catégories, l'effort reste 1.
+3. **Ombre `sans_plafond`** : le même calcul sans troncature, pour mesurer ce qu'elle coûte sur les issues.
+4. **Largeurs d'arbre mesurées** (§9.5.3, `moteur.py largeur`, élimination min-fill), au lieu d'« exact par
+   énumération » :
+
+| Graphe | Nœuds | Largeur | Lecture |
+|---|---|---|---|
+| cartes d'une strate (56 arêtes non orientées) | 16 | 7 | l'exact coûte ~16 × 2⁸ : trivial |
+| génératif moralisé, pire cible (SEUIL, 14 parents) | 16 | 14 | le noisy-or à 14 parents marie tout : c'est lui, pas la matrice, qui rend l'énumération nécessaire ; décomposé (variables d'activation en chaîne), il redescendrait près de 8 |
+| 13 strates reliées comme dans le calcul publié | 208 | 103 | **l'exact est hors de portée** : tout programme inter-strates exigera une méthode approchée, validée d'abord contre l'exact d'une strate |
+
+**Rejeté, avec la raison.** Tempérage « sans statut hors Gibbs » (c'est le Bayes généralisé, Grünwald & van Ommen 2017) ;
+« bloque A » comme do(A) (bloque coupe l'arête A → cible, ne fixe pas A) ; exclusion « en potentiel nul » (facteur 0,1) ;
+révision Beta « double comptage » (p₀ est la moyenne a priori que les cas actualisent) ; « taux de base compté deux fois »
+(λ ne contient pas la fréquence de la carte) ; « MPM pris pour MAP » (`trajectoires` pondère des chemins entiers) ;
+« prévision scellée = contrefactuel ».
+
+**Reporté, faute de données.** Apprendre les λ (comptage, pseudo-vraisemblance, gradient de log Z) et la structure
+(ch. 30) : il faut des issues, et une matrice d'épisodes N × D que le bot exporte désormais (`episodes.csv`). Les
+couplages de co-présence entre cartes, eux, s'apprendront sans issues, sur les lectures, quand il y en aura assez.
+
+**Ce qui ne change pas.** Le p publié, les λ, la matrice, le plafond publié, L7.
 

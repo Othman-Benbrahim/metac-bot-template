@@ -36,6 +36,7 @@ jobs:
       - name: Pépinière de l'arbre (0.10.8)
         run: |
           if [ -f registre/journal-bot.jsonl ]; then uv run python pepiniere.py --enregistrer; fi
+          if [ -f registre/journal-bot.jsonl ]; then uv run python episodes.py --enregistrer; fi   # 0.10.9 : N × D
       - name: Enregistrer
         run: |
           if [ -n "$(git status --porcelain registre)" ]; then

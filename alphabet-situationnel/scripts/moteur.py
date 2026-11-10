@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.60 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.61 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -717,11 +717,20 @@ def p0_generatif(etat, cible, f, src, params, rejets, programme=None):
     0.7.60 (§37) : `programme` (validé par `programme_valide`) modifie le modèle de CE cas, comme les « define » de
     Wong et al. (2023) : « lien » ajoute une arête (cote de co-présence × λ_M, ou cause de la cible de poids λ_M),
     « bloque » coupe la voie d'une carte vers la cible, « exclut » divise la cote de co-présence. La normalisation
-    sur f est refaite sur le modèle modifié : le programme change ce que les observations impliquent, pas f."""
+    sur f est refaite sur le modèle modifié : le programme change ce que les observations impliquent, pas f.
+    0.7.61 (§38, relecture de Murphy, ch. 4, 9, 29) : (1) UN couplage par paire non ordonnée (le plus fort de A → B et
+    B → A) : une paire mutuelle n'est plus comptée deux fois dans le même pas ; (2) un rejet pèse selon l'effort de
+    recherche de sa catégorie (`effort_rejet`) : contredit et marqueur non rempli 1, aucun fait trouvé 0,5, non cherchée
+    0 ; une liste sans catégories garde l'effort 1. Le modèle est un graphe en chaîne (Murphy §4.5.4.1) : champ de Markov
+    sur les cartes, normalisé par Z, puis lois conditionnelles dirigées pour l'événement et pour les observations."""
     cc, s = cible.split("@")
     s = int(s)
     obs = {m["c"]: m["i"] for m in etat["mots"] if m["s"] == s}
-    rej = {k.split("@")[0] for k in (rejets or []) if int(k.split("@")[1]) == s}
+    if isinstance(rejets, dict):
+        rej = {k.split("@")[0]: params["effort_rejet"].get(str(v), params["effort_rejet"]["non_classe"])
+               for k, v in rejets.items() if int(k.split("@")[1]) == s}
+    else:
+        rej = {k.split("@")[0]: 1.0 for k in (rejets or []) if int(k.split("@")[1]) == s}
     cartes = [c for c in sorted(NOMS) if c != cc and not hors_domaine(f"{c}@{s}")]
     n = len(cartes)
     idx = {c: i for i, c in enumerate(cartes)}
@@ -731,11 +740,17 @@ def p0_generatif(etat, cible, f, src, params, rejets, programme=None):
         o = obs.get(c)
         if o == "F": vp, va = params["sens_F"], params["fp_F"]
         elif o == "f": vp, va = params["sens_f"], params["fp_f"]
-        elif c in rej: vp, va = 1 - params["sens_F"] - params["sens_f"], 1 - params["fp_F"] - params["fp_f"]
+        elif c in rej:
+            e_ = rej[c]
+            vp, va = 1 - e_ * (params["sens_F"] + params["sens_f"]), 1 - e_ * (params["fp_F"] + params["fp_f"])
         else: vp, va = 1.0, 1.0
         un.append((lp + math.log(vp), la + math.log(va)))
-    paires = [(idx[a], idx[b], math.log(P["lambda"][I])) for a, d in P["matrice"].items() if a in idx
-              for b, I in d.items() if b in idx]
+    couple = {}   # paire non ordonnée → log du couplage le plus fort des deux sens (0.7.61, §38)
+    for a, d in P["matrice"].items():
+        for b, I in d.items():
+            if a in idx and b in idx:
+                k_ = tuple(sorted((idx[a], idx[b])))
+                couple[k_] = max(couple.get(k_, 0.0), math.log(P["lambda"][I]))
     w = [0.0] * n
     for c in cartes:
         I = P["matrice"].get(c, {}).get(cc)
@@ -747,14 +762,17 @@ def p0_generatif(etat, cible, f, src, params, rejets, programme=None):
             if b == cc and a in idx:
                 w[idx[a]] = max(w[idx[a]], (odds_module(f, P["lambda"]["M"]) - f) / (1 - f))
             elif a in idx and b in idx:
-                paires.append((idx[a], idx[b], math.log(P["lambda"]["M"])))
+                k_ = tuple(sorted((idx[a], idx[b])))
+                couple[k_] = max(couple.get(k_, 0.0), math.log(P["lambda"]["M"]))
         elif ins == "bloque":
             a = x["de"].split("@")[0]
             if a in idx: w[idx[a]] = 0.0
         elif ins == "exclut":
             a, b = x["a"].split("@")[0], x["b"].split("@")[0]
             if a in idx and b in idx:
-                paires.append((idx[a], idx[b], math.log(params["facteur_exclusion"])))
+                k_ = tuple(sorted((idx[a], idx[b])))
+                couple[k_] = couple.get(k_, 0.0) + math.log(params["facteur_exclusion"])
+    paires = [(i, j, l) for (i, j), l in couple.items()]
     Z = S = Z0 = S0 = 0.0
     for etat_ in range(1 << n):
         lw = lw0 = 0.0; reste = 1.0
@@ -770,6 +788,54 @@ def p0_generatif(etat, cible, f, src, params, rejets, programme=None):
     reste_ext = math.prod(1 - (odds_module(f, x["lambda"]) - f) / (1 - f)
                           for x in src if "@" in x["mot"] and int(x["mot"].split("@")[1]) != s)
     return 1 - (1 - f) * (S / Z) / (S0 / Z0) * reste_ext
+
+
+def largeur_arbre(noeuds, aretes):
+    """0.7.61 (§38, Murphy §9.5.3) : largeur induite par l'élimination « min-fill » (heuristique gloutonne : éliminer
+    le nœud qui crée le moins d'arêtes de remplissage). Borne haute de la largeur d'arbre ; le coût de l'inférence
+    exacte est O(N·2^(w+1)) pour des variables binaires. Arêtes non orientées."""
+    v = {x: set() for x in noeuds}
+    for a, b in aretes:
+        if a != b: v[a].add(b); v[b].add(a)
+    w = 0
+    while v:
+        def remplissage(x):
+            nb = list(v[x]); return sum(1 for i in range(len(nb)) for j in range(i + 1, len(nb)) if nb[j] not in v[nb[i]])
+        x = min(sorted(v), key=lambda y: (remplissage(y), len(v[y])))
+        nb = list(v[x]); w = max(w, len(nb))
+        for i in range(len(nb)):
+            for j in range(i + 1, len(nb)): v[nb[i]].add(nb[j]); v[nb[j]].add(nb[i])
+        for y in nb: v[y].discard(x)
+        del v[x]
+    return w
+
+
+def audit_largeur():
+    """0.7.61 (§38) : largeurs mesurées, au lieu d'« exact par énumération ». (1) graphe des 16 cartes d'une strate,
+    paires mutuelles fusionnées ; (2) graphe moralisé du programme génératif (cartes + événement, parents de l'événement
+    mariés), pour la pire cible ; (3) les 13 strates reliées comme dans le calcul publié (une arête de la matrice vaut
+    aussi d'une strate à l'autre, abaissée) : 208 nœuds."""
+    M = P["matrice"]
+    cartes = sorted(NOMS)
+    ar = {tuple(sorted((a, b))) for a, d in M.items() for b in d}
+    w1 = largeur_arbre(cartes, ar)
+    pire = (None, -1)
+    for c in cartes:
+        autres = [x for x in cartes if x != c]
+        parents = [a for a in autres if c in M.get(a, {})]
+        ar2 = {e for e in ar if c not in e} | {(a, "EVT") for a in parents} | \
+              {tuple(sorted((a, b))) for i, a in enumerate(parents) for b in parents[i + 1:]}
+        w2 = largeur_arbre(autres + ["EVT"], ar2)
+        if w2 > pire[1]: pire = (c, w2)
+    noeuds = [f"{c}@{s}" for s in range(1, NS + 1) for c in cartes]
+    ar3 = {tuple(sorted((f"{a}@{s}", f"{b}@{t}"))) for a, d in M.items() for b in d
+           for s in range(1, NS + 1) for t in range(1, NS + 1)}
+    w3 = largeur_arbre(noeuds, ar3)
+    return {"strate_cartes": {"noeuds": len(cartes), "aretes_non_orientees": len(ar), "largeur": w1},
+            "generatif_moralise": {"pire_cible": pire[0], "largeur": pire[1]},
+            "toutes_strates": {"noeuds": len(noeuds), "aretes": len(ar3), "largeur": w3},
+            "lecture": "coût exact O(N·2^(w+1)) en binaire ; au-delà de w ≈ 20, l'exact est hors de portée et toute "
+                       "méthode approchée doit d'abord être validée contre l'exact d'une strate"}
 
 
 def combiner_noisy_or(f, src):
@@ -2616,13 +2682,14 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None,rejets=None,pr
             out_={}
             for nom_,pr_ in var_.items():
                 try:
-                    GENERATIF={'params':pr_,'rejets':list(rejets or [])}
+                    GENERATIF={'params':pr_,'rejets':rejets if isinstance(rejets,dict) else list(rejets or [])}
                     out_[nom_]=horizon_result(etat,typ,cible,base,opts,h,semantique)['p']
                 except ValueError:pass
                 finally:GENERATIF=None
             if 'reference' in out_:
                 generatif={'p':out_['reference'],'effet':out_['reference']-reference,'variantes':out_,
                            'rejets_utilises':sorted(rejets or []),
+                           'rejets_categories':dict(rejets) if isinstance(rejets,dict) else None,
                            'bande':[min(out_.values()),max(out_.values())]}
         # 0.7.60 (§37) : lecture probabiliste (Wong et al. 2023) : le même programme génératif, modifié par les
         # instructions que le traducteur a tirées des textes (lien, bloque, exclut), hors p publié.
@@ -2632,12 +2699,22 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None,rejets=None,pr
             lecture_probabiliste={'instructions':garde_,'ecartees':ecart_,'p':None,'effet_sur_generatif':None}
             if garde_:
                 try:
-                    GENERATIF={'params':P['generatif'],'rejets':list(rejets or []),'programme':garde_}
+                    GENERATIF={'params':P['generatif'],'rejets':rejets if isinstance(rejets,dict) else list(rejets or []),'programme':garde_}
                     pl_=horizon_result(etat,typ,cible,base,opts,h,semantique)['p']
                     lecture_probabiliste.update(p=pl_,effet=pl_-reference,
                         effet_sur_generatif=None if not generatif else pl_-generatif['p'])
                 except ValueError:pass
                 finally:GENERATIF=None
+        # 0.7.61 (§38) : le même calcul sans plafond (ni sur le produit des λ, ni sur p₀), hors p publié : mesure ce que
+        # coûte la troncature (avec f = 0,1, le plafond borne p₀ à 0,53 et mord dès la troisième carte forte).
+        sans_plafond=None
+        _pl=(P['plafond_LR'],P['plafond_p0'])
+        try:
+            P['plafond_LR']=float('inf');P['plafond_p0']=1.0
+            sp_=horizon_result(etat,typ,cible,base,opts,h,semantique)['p']
+            sans_plafond={'p':sp_,'effet':sp_-reference}
+        except ValueError:pass
+        finally:P['plafond_LR'],P['plafond_p0']=_pl
         # 0.7.57 (§34) : valeur de l'information, borne dans le modèle. Pour chaque carte absente de la
         # strate de la cible, p si elle était ancrée (f, puis F). Si aucune ne déplace p de plus du seuil,
         # chercher encore ne peut pas changer la prévision du moteur : la recherche peut s'arrêter. Ne
@@ -2691,7 +2768,7 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None,rejets=None,pr
                       'effectifs':sorted({x['c_A'] for x in sortie if x['groupe']=='classe' if x['c_A'] is not None})},
             'effet_force':rf['p']-reference,'effet_attenuation':attenuations,
             'mediation':mediation,'ablation':ablation,
-            'noisy_or':noisy_or,'valeur_information':valeur_information,'tempere':tempere,'generatif':generatif,'lecture_probabiliste':lecture_probabiliste,
+            'noisy_or':noisy_or,'valeur_information':valeur_information,'tempere':tempere,'generatif':generatif,'lecture_probabiliste':lecture_probabiliste,'sans_plafond':sans_plafond,
             'bande_large':max(ps)-min(ps)>P['largeur_max_affichage'],
             'saturee':any(abs(p-P['plafond_p0'])<1e-12 for p in ps)}
     # Deux bandes qui traversent le seuil ne se lisent pas de la même façon : on nomme celle qui décide.
@@ -3822,7 +3899,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4059,7 +4136,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.60','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.61','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -4507,6 +4584,7 @@ def main():
     ac.add_argument('--repetabilite',action='store_true');ac.add_argument('--ecart-jours',type=int);ac.add_argument('--llm',action='store_true')
     cv=subs.add_parser('conservativite');cv.add_argument('--base',required=True);cv.add_argument('--sortie');cv.add_argument('--contre');cv.add_argument('--empreinte')
     rj=subs.add_parser('rejets');rj.add_argument('--dossier',required=True);rj.add_argument('--audit')
+    subs.add_parser('largeur')   # 0.7.61 (§38) : largeurs d'arbre mesurées (min-fill)
     vr_=subs.add_parser('valider-references');vr_.add_argument('fichier')
     cf=subs.add_parser('confronter');cf.add_argument('fichier');cf.add_argument('--json',action='store_true')
     vo=subs.add_parser('voisins');vo.add_argument('fichier');vo.add_argument('--json',action='store_true')
@@ -4535,6 +4613,7 @@ def main():
     if a.cmd=='audit':audit();return
     if a.cmd=='autotest':autotest();return
     if a.cmd=='parametres':print(parametres_markdown());return
+    if a.cmd=='largeur':print(json.dumps(audit_largeur(),ensure_ascii=False,indent=2));return
     if a.cmd=='valider':valider(a.fichier,a.registre);return
     if a.cmd=='dossier':
         dr=dossier_valider(lire_json(a.fichier,'--fichier'))
@@ -4970,7 +5049,10 @@ def main():
                         pieces[cle_valide(f"{it_.get('carte')}@{it_.get('strate')}")]={'corroboration':it_.get('corroboration'),
                             'passage':'soutient' if any(isinstance(x,dict) and x.get('relation')=='soutient' for x in ps_) else 'partiel'}
                 result['sensibilite']=sensibilite(etat,typ,cible,active,opts,a.pas,sem,pieces,
-                                                  sorted(cle_valide(str(k)) for k in (dd.get('rejets') or {})) if dossier else None,
+                                                  ({cle_valide(str(k)):(dd.get('rejets_categories') or {}).get(k,'non_classe')
+                                                    for k in (dd.get('rejets') or {})} if dd.get('rejets_categories')
+                                                   else sorted(cle_valide(str(k)) for k in (dd.get('rejets') or {})))
+                                                  if dossier else None,
                                                   dd.get('programme') if dossier else None)
         result['echeance']=end;result['journal']=a.journal;result['etat']=a.etat
         if result.get('p') is not None:
@@ -5728,6 +5810,24 @@ def autotest():
             e2=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + ÉMERGENCE@7[f]')  # paire mutuelle : rien d'écarté
             sb2=sensibilite(e2,'apparait','CTR@7',base,{'asof':'2026-09-20'},1,'presence')
             self.assertEqual(sb2['mediation']['mediateurs_retires'],[])
+        def test_relecture_murphy(self):
+            # 0.7.61 (§38) : largeur min-fill exacte sur des graphes connus ; une paire mutuelle compte une fois ; un rejet
+            # « aucun fait » pèse moins qu'un rejet « contredit », « non cherchée » ne pèse rien ; ombre sans plafond.
+            self.assertEqual(largeur_arbre([1,2,3,4],[(1,2),(2,3),(3,4)]),1)
+            self.assertEqual(largeur_arbre([1,2,3,4],[(1,2),(2,3),(3,4),(4,1)]),2)
+            self.assertEqual(largeur_arbre(list(range(5)),[(i,j) for i in range(5) for j in range(i+1,5)]),4)
+            G=P['generatif'];vide={'date':'2026-09','fenetre':'3 mois','mots':[]}
+            e1=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f]')
+            pc,pa,pn=(p0_generatif(e1,'SEU@7',.12,[],G,{'CTR@7':c}) for c in ('contredit','aucun_fait','non_cherchee'))
+            self.assertTrue(pc<pa<pn);self.assertAlmostEqual(pn,p0_generatif(e1,'SEU@7',.12,[],G,[]))
+            self.assertAlmostEqual(pc,p0_generatif(e1,'SEU@7',.12,[],G,['CTR@7']))
+            self.assertAlmostEqual(p0_generatif(vide,'SEU@7',.12,[],G,[]),.12)
+            base=base_active(charger(RACINE/'assets/base-de-cas.exemple.jsonl'),'2026-09-20',True)
+            e3=lire_etat('[2026-09 | 3 mois] POLARITÉ@7[F] + CONTRAINTE@7[F] + CROISSANCE@7[F]')
+            r=calculer(e3,'apparait','SEU@7',base,asof='2026-09-20')
+            sb=sensibilite(e3,'apparait','SEU@7',base,{'asof':'2026-09-20'},1,'presence',None,{'RES@7':'aucun_fait'})
+            self.assertGreaterEqual(sb['sans_plafond']['p'],r['p']);self.assertEqual(P['plafond_LR'],10.0)
+            self.assertEqual(sb['generatif']['rejets_categories'],{'RES@7':'aucun_fait'})
         def test_lecture_probabiliste(self):
             # 0.7.60 (§37) : instructions triées sans lever ; « lien » vers la cible monte, « bloque » baisse ; sans
             # observation, p₀ = f même avec un programme ; hors du p publié.
