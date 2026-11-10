@@ -1,9 +1,15 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.63
+> Version : 0.7.64
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.64 — 2026-11-11 · relecture par Murphy (ch. 3, 13)
+
+Documentation seule (`validation.md` §41) : double comptage possible entre f et la révision par les cas homologues ;
+condition préquentielle du score ; rejets et données manquantes ; grille plus fine que les données ; limites d'un
+déroulé à plusieurs pas. **Aucun chiffre ni ligne de calcul ne change.**
 
 ## 0.7.63 — 2026-11-10 · surprise d'une lecture
 

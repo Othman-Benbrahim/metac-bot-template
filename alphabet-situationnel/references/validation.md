@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.63
+> Version : 0.7.64
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2413,4 +2413,43 @@ probabilité marginale a priori. **Surprise relative** = log P(indépendantes, m
 règle ne s'appuie dessus avant une décision datée.
 
 **Ce qui ne change pas.** Le p publié, la lecture, les λ, la matrice.
+
+## 41. Relecture par Murphy, ch. 3 et 13 : tri (0.7.64)
+
+**Décision d'auteur, le 2026-11-11**, après deux synthèses critiques de Murphy, *Probabilistic Machine Learning:
+Advanced Topics* : ch. 3 (statistique) et ch. 13 (Monte Carlo séquentiel). Vérifié contre le code ; documentation seule.
+
+**Retenu, écrit ici.**
+1. **Double comptage possible entre f et la révision par les cas** (ch. 3, §3.2.1). f est la moyenne a posteriori d'une
+   Beta(k₀·réf, k₀·(1 − réf)) révisée sur l'échantillon de la base (`frequence_de_base`) ; les cas homologues de la
+   révision sont tirés **du même échantillon**. Leurs issues pèsent donc deux fois : dans f, diluées, puis dans la
+   révision. L'effet est faible tant que les homologues sont une petite part de la base ; la correction (f calculée hors
+   des homologues) est à faire avant tout usage chiffré au-delà de L7.
+2. **Condition préquentielle** (§3.8.4) : le score logarithmique cumulé n'est la vraisemblance marginale séquentielle que
+   si chaque prévision n'utilise que le passé. C'est le cas : paramètres versionnés, prévisions scellées, correction
+   rétrospective calculée sur les seules questions déjà résolues. Toute révision qui utiliserait une issue postérieure
+   ferait du score un score adaptatif, à déclarer comme tel.
+3. **Rejets et données manquantes** (§3.11) : un rejet est un indicateur de révélation, pas une valeur nulle ; s'il
+   dépend de ce que le lecteur attendait, le manque est non ignorable. Le poids par effort (§38) l'atténue sans le régler.
+4. **Une grille plus fine que les données** (§3.2.1.6) : avec une dizaine de cas, l'incertitude sur f (± 0,3 environ)
+   est de l'ordre de l'effet d'une carte forte. Les écarts entre F, M et f ne sont pas mesurables aujourd'hui.
+5. **Plusieurs pas** (ch. 13, §13.2.3.2) : un déroulé par particules perd la diversité des chemins en remontant le temps
+   (dégénérescence des chemins) ; aucune trajectoire longue ne sera promise sans étape de rafraîchissement (resample-move)
+   et contrôle de la taille effective d'échantillon (ESS).
+
+**Rejeté, avec la raison.** « f est un estimateur plug-in, nul si aucun événement » : non, c'est une moyenne a
+posteriori avec k₀ pseudo-observations, jamais nulle si la référence ne l'est pas. « Aucune quantité ne décroît avec les
+données » : le poids de l'a priori dans la révision vaut k/(n_A + k). « Intervalle de crédibilité présenté comme une
+couverture » : le moteur parle de crédibilité, le score du bot de suites de confiance (fréquentistes), chacun à sa place.
+« Notre score serait log Ẑ, biaisé » : le score est le score logarithmique de prévisions scellées contre des issues, pas
+une constante de normalisation estimée. « Le tempérage doit être un chemin adaptatif » : notre α est une puissance de
+vraisemblance (Bayes généralisé, §35), pas un recuit d'échantillonneur.
+
+**Reporté, faute de données.** Rétrécissement hiérarchique de f entre strates (§3.6) ; lignes de transition en
+Dirichlet estimées par Bayes empirique (§3.7.3), qui remplaceraient les λ ; contrôles prédictifs sur des statistiques non
+suffisantes (§3.9) ; échantillonneur SMC à tempérage adaptatif pour l'arbre entier (§13.6.2). Piste notée : avec π = 0,1,
+la masse se concentre sur les configurations à peu de cartes présentes, ce qui permettrait une énumération tronquée
+au-delà d'une strate, à valider contre l'exact.
+
+**Ce qui ne change pas.** Le p publié, le code du moteur, les λ, la matrice.
 
