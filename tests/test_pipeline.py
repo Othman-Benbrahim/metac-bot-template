@@ -91,6 +91,26 @@ def lancer(reponses, p_A=0.3, reelle=True, q=Q, publie=True, mode="minibench", m
 
 
 class Tests(unittest.TestCase):
+    def test_lecture_probabiliste_en_ombre(self):
+        # 0.10.7 (§37) : le traducteur est un appel séparé, après la lecture ; un extrait non retrouvé est écarté sans
+        # modèle ; le moteur calcule l'ombre ; C ne change pas.
+        r0, _ = lancer([PLAN, vue(0.2), lecture()])
+        prog = {"programme": [{"instruction": "bloque", "de": "POL@7", "extrait": "Résultat factuel daté pour"},
+                              {"instruction": "lien", "de": "INC@7", "vers": "cible", "extrait": "phrase inventée absente"}]}
+        ancien, ap.TRADUCTION = ap.TRADUCTION, True
+        try:
+            r, llm = lancer([PLAN, vue(0.2), lecture(), prog])
+        finally:
+            ap.TRADUCTION = ancien
+        c = r.ligne["bras"]["C"]
+        self.assertIn("TRADUCTEUR", llm.consignes[-1])
+        self.assertEqual(len(c["traduction"]["programme"]), 1)
+        self.assertEqual(len(c["traduction"]["ecartees"]), 1)
+        lp = c["ombre_causale"]["lecture_probabiliste"]
+        self.assertEqual([x["instruction"] for x in lp["instructions"]], ["bloque"])
+        self.assertIsInstance(lp["p"], float)
+        self.assertAlmostEqual(r.p_C, r0.p_C)                      # le chiffre publié ne bouge pas
+
     def test_a_repete_en_ombre(self):
         # 0.10.5 (§35) : K essais du modèle seul scellés avec A ; le premier reste le bras A, rien d'autre ne change.
         llm = LlmSimule([PLAN, vue(0.2), lecture()])
@@ -426,7 +446,8 @@ class Tests(unittest.TestCase):
             self.assertEqual(s["bras"]["B"]["n"], 2)
             self.assertIn("C_noisy_or", s["C_noisy_or_sur_C"]["verdict"])
             self.assertIn("C_tempere", s["C_tempere_sur_C"]["verdict"])        # 0.10.5 (§35)
-            self.assertIn("C_generatif", s["C_generatif_sur_C"]["verdict"])    # 0.10.6 (§36)   # 0.10.4 (§34) : ombres comparées à C
+            self.assertIn("C_generatif", s["C_generatif_sur_C"]["verdict"])    # 0.10.6 (§36)
+            self.assertIsNone(s["C_lecture_probabiliste_sur_C"])               # 0.10.7 : traducteur éteint par défaut   # 0.10.4 (§34) : ombres comparées à C
             self.assertEqual(sum(v["questions"] for k, v in s["C_selon_arret_vdi"].items() if k != "note"), 1)
             lignes = (reg / "journal-bot.jsonl").read_text(encoding="utf-8").splitlines()
             x = json.loads(lignes[0]); x["p_poste"] = 0.5            # une ligne retouchée est écartée

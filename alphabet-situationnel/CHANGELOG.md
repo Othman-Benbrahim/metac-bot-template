@@ -1,9 +1,18 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.59
+> Version : 0.7.60
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.60 — 2026-11-10 · lecture probabiliste en ombre
+
+Décision d'auteur, d'après Wong, Goodman, Tenenbaum et al. (2023). **Aucun chiffre publié ne change.**
+
+- `validation.md` §37 : la décision et le langage (lien, bloque, exclut).
+- `moteur.py` : `programme_valide` (tri sans lever) ; `p0_generatif` accepte un programme ; `sensibilite` ajoute
+  `lecture_probabiliste` ; `calculer --dossier` transmet `programme` ; un autotest.
+- `parametres.json` : `generatif.facteur_exclusion` = 0,1 (ne touche aucun p publié).
 
 ## 0.7.59 — 2026-11-10 · programme génératif en ombre
 

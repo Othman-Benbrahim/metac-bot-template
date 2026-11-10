@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.59
+> Version : 0.7.60
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2282,4 +2282,36 @@ génératif 0,225 ; avec CONTRAINTE non lue et CROISSANCE seule, 0,172, et 0,145
 
 **Ce qui ne change pas.** Le p publié, les λ, la matrice. Toute adoption passe par une décision datée, sur issues
 réelles (bot et banc, `generatif` scellé à côté de C).
+
+## 37. Lecture probabiliste : traduire les textes en instructions du programme (0.7.60)
+
+**Décision d'auteur, le 2026-11-10**, d'après L. Wong, G. Grand, A. K. Lew, N. D. Goodman, V. K. Mansinghka,
+J. Andreas, J. B. Tenenbaum, « From Word Models to World Models: Translating from Natural Language to the Probabilistic
+Language of Thought », arXiv 2306.12672 (2023) ; consignée dans `reference-wong-goodman-lecture-probabiliste.md` du projet.
+
+**L'idée.** Le modèle de langue ne raisonne pas : il **traduit** des phrases en instructions d'un langage probabiliste,
+et l'inférence raisonne sur le programme obtenu (« rational meaning construction »). Chez les auteurs, deux sortes
+d'instructions : des définitions qui modifient le modèle du monde, et des conditions qui l'observent. Chez nous, les
+conditions existent déjà : les ancrages (F, f) et les rejets (§36). Il manquait les **définitions propres au cas** : ce
+que le texte dit des liens entre structures, que la matrice générale ne sait pas.
+
+**Le langage, volontairement petit** (`programme` du dossier, trié par `programme_valide`, jamais bloquant) :
+
+| Instruction | Sens | Effet dans le programme génératif |
+|---|---|---|
+| `lien` A → B | le texte dit que A produit B dans ce cas | cote de co-présence × λ_M |
+| `lien` A → cible | le texte dit que A mène à l'événement ici | A devient une cause de poids λ_M (si la matrice ne dit pas plus) |
+| `bloque` A | le texte dit que la voie de A vers l'événement est coupée ici | poids de A vers la cible = 0 |
+| `exclut` A, B | le texte dit que A et B ne peuvent coexister ici | cote de co-présence × `facteur_exclusion` (0,1) |
+
+Chaque instruction cite un **extrait** des textes trouvés ; l'appelant (le bot) vérifie l'attribution sans modèle et
+écarte ce qui n'est pas retrouvé. Les cartes doivent être dans la strate de la cible. La normalisation sur f est refaite
+sur le modèle modifié : sans aucune observation, p₀ reste f.
+
+**Garanties.** Le traducteur est un appel **séparé**, après la lecture : la consigne de lecture ne change pas, donc C non
+plus. Le programme n'écrit aucun chiffre ; il ne fait que dire quelles relations le texte affirme. Le calcul reste exact
+et déterministe. Ombre `lecture_probabiliste` dans `sensibilite` : p, effet sur C, effet sur `generatif`, instructions
+retenues et écartées.
+
+**Ce qui ne change pas.** Le p publié, la consigne de lecture, les λ, la matrice. Toute adoption par décision datée.
 

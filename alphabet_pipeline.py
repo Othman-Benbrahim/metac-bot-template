@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.6"
+VERSION_BOT = "0.10.7"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -125,6 +125,8 @@ LECTURE_HORS_STRATE = os.environ.get("ALPHABET_LECTURE_HORS_STRATE", "") in ("1"
 # 0.9.0 (décision d'auteur du 2026-11-08 ; skill validation.md §29) : hors strate 7, l'alphabet lit et le moteur chiffre
 # avec --exploratoire. Le chiffre est scellé (C.exploratoire), jamais posté, scoré à part. « 0 » pour couper.
 EXPLORATOIRE = os.environ.get("ALPHABET_EXPLORATOIRE", "1") not in ("0", "non", "false")
+# 0.10.7 (skill 0.7.60, §37) : traducteur de lecture probabiliste, un appel de plus par question lue, en ombre.
+TRADUCTION = os.environ.get("ALPHABET_TRADUCTION", "0") in ("1", "oui", "true")
 ERREURS_STRUCTURELLES = ("limitée aux strates",)  # refus qu'aucune correction de la lecture ne peut lever
 
 
@@ -1157,6 +1159,71 @@ def repetition_A(ps: list[float]) -> dict:
             "ecart_type": statistics.pstdev(ps) if len(ps) > 1 else 0.0}
 
 
+def consigne_traduction(q: Question, plan: dict, lecture: dict, textes: str) -> str:
+    """0.10.7 (skill §37, Wong et al. 2023) : le TRADUCTEUR. Il ne lit pas la situation et ne chiffre rien : il traduit
+    en instructions ce que les textes AFFIRMENT des liens entre structures dans CE cas. Appel séparé, après la lecture :
+    la consigne de lecture, donc C, ne change pas."""
+    ev = plan["evenement"]
+    noms = noms_cartes()
+    s = ev["strate"]
+    cible = f"{noms.get(ev['carte'], ev['carte'])}@{s}"
+    ancrees = [f"{m.get('carte')}@{m.get('strate')}" for m in lecture.get("mots") or []]
+    rejetees = list((lecture.get("rejets") or {}).keys()) if isinstance(lecture.get("rejets"), dict) else []
+    cartes = ", ".join(f"{n}@{s}" for c, n in sorted(noms.items()) if c != ev["carte"])
+    return f"""Tu es un TRADUCTEUR, pas un analyste. Une lecture structurelle a été faite ; tu ne la refais pas, tu ne
+donnes aucune probabilité. Tu traduis seulement, en instructions, ce que les TEXTES CI-DESSOUS affirment explicitement
+des liens entre structures dans ce cas précis.
+
+Question : {q.titre}
+Événement visé (la cible) : {cible} ({ev['type']})
+Cartes ancrées par la lecture : {", ".join(ancrees) or "aucune"}
+Cartes examinées et rejetées : {", ".join(rejetees) or "aucune"}
+Cartes de la strate : {cartes}
+
+Trois instructions possibles, et seulement celles-ci :
+- {{"instruction": "lien", "de": "CARTE@{s}", "vers": "CARTE@{s}" ou "cible", "extrait": "..."}} : le texte dit que
+  l'une produit l'autre (ou mène à l'événement) DANS CE CAS ;
+- {{"instruction": "bloque", "de": "CARTE@{s}", "extrait": "..."}} : le texte dit que la voie de cette structure vers
+  l'événement est coupée ou neutralisée DANS CE CAS ;
+- {{"instruction": "exclut", "a": "CARTE@{s}", "b": "CARTE@{s}", "extrait": "..."}} : le texte dit que les deux ne
+  peuvent coexister DANS CE CAS.
+
+Règles : chaque instruction cite un « extrait » recopié MOT POUR MOT des textes ; aucune instruction sans phrase qui
+l'affirme ; une connaissance générale n'est pas une affirmation du texte ; zéro instruction est une réponse normale.
+
+Réponds par un seul objet JSON : {{"programme": [ ... ]}}
+
+TEXTES :
+{textes[:12000]}"""
+
+
+def extrait_retrouve(extrait: str, textes: str) -> bool:
+    """0.10.7 : même règle que le contrôle d'attribution (0.5.2) : l'extrait est dans les textes, ou 70 % au moins de
+    ses mots de quatre lettres ou plus y figurent."""
+    ne, corpus = _normal(extrait), _normal(textes)
+    if not ne:
+        return False
+    longs = [w for w in ne.split() if len(w) >= 4]
+    mots = set(corpus.split())
+    return ne in corpus or bool(longs and sum(w in mots for w in longs) / len(longs) >= 0.7)
+
+
+async def traduire(q: Question, plan: dict, lecture: dict, textes: str, llm: Llm) -> dict:
+    """0.10.7 : un appel, en ombre. Les instructions dont l'extrait n'est pas retrouvé dans les textes sont écartées
+    ici, sans modèle ; le moteur trie ensuite la forme (programme_valide). Toute erreur rend un programme vide."""
+    try:
+        brut = extraire_json(await llm(consigne_traduction(q, plan, lecture, textes))).get("programme")
+    except Exception as e:
+        return {"programme": [], "ecartees": [], "erreur": f"{type(e).__name__}: {e}"[:200]}
+    garde, ecartees = [], []
+    for x in brut if isinstance(brut, list) else []:
+        if isinstance(x, dict) and extrait_retrouve(str(x.get("extrait") or ""), textes):
+            garde.append(x)
+        else:
+            ecartees.append({"instruction": x, "motif": "extrait non retrouvé dans les textes"})
+    return {"programme": garde, "ecartees": ecartees}
+
+
 def ombre_causale(sortie: dict) -> dict | None:
     """0.10.3 (skill 0.7.56, validation §33) : deux sondes du moteur, en ombre, jamais publiées. `p_mediation` : p
     sous la règle des médiateurs (arête lue comme effet total ; le médiateur est écarté) ; `ablation` : p quand chaque
@@ -1174,7 +1241,9 @@ def ombre_causale(sortie: dict) -> dict | None:
             "tempere": sb.get("tempere"),
             # 0.10.6 (skill 0.7.59, §36) : programme génératif conditionné sur ancrages ET rejets ; bande sur π et le lecteur
             "generatif": ({k: (sb.get("generatif") or {}).get(k) for k in ("p", "bande", "rejets_utilises")}
-                          if sb.get("generatif") else None)}   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
+                          if sb.get("generatif") else None),
+            # 0.10.7 (skill 0.7.60, §37) : lecture probabiliste (traducteur → instructions → programme génératif)
+            "lecture_probabiliste": sb.get("lecture_probabiliste")}   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
@@ -1313,10 +1382,17 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
     if relance:
         trace["relance"] = relance
         trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
+    programme = None
+    if TRADUCTION and isinstance(lecture, dict) and (lecture.get("mots") or lecture.get("rejets")):
+        tr = await traduire(q, plan, lecture, trace.get("_textes") or "", llm)
+        trace["traduction"] = tr
+        programme = tr.get("programme") or None
     dossier = None
     for tentative in range(MAX_CORRECTIONS + 1):
         trace["tentatives"] = tentative + 1
         dossier = assembler(lecture, plan, executees, evt, aujourdhui, jours)
+        if programme:
+            dossier["programme"] = programme      # 0.10.7 : lu par le moteur en ombre seulement (§37)
         futurs = retirer_faits_futurs(dossier, trace.get("_textes") or "", aujourdhui, jours)
         if futurs:
             trace["faits_futurs_retires"] = futurs
@@ -1666,7 +1742,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "p_sans_ancre": (c.get("vues") or {}).get("p_sans_ancre")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
-                                                        "exploratoire", "symetrique", "ombre_causale",
+                                                        "exploratoire", "symetrique", "ombre_causale", "traduction",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
