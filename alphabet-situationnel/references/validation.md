@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.52
+> Version : 0.7.53
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2080,3 +2080,34 @@ chiffre ne va pas au journal prospectif) et `--demo`.
 **Ce qu'il faut savoir en le lisant.** Hors de la strate 7, les équivalents des cartes sont moins souvent Documentés : le
 chiffre exploratoire mesure la lecture **telle qu'elle est**, multiplicateurs hypothétiques compris. Un C exploratoire
 moins bon que B dans une strate dit que cette strate n'est pas prête, pas que l'alphabet est faux.
+
+## 30. Le marqueur décide de l'intensité, pas de l'existence (0.7.53)
+
+**Décision d'auteur, le 2026-11-10.** Sur le premier passage du bras exploratoire (§29), neuf lectures — trois binaires,
+six non binaires dérivées — ont toutes fini en état nul : seize rejets sur seize classés « marqueur non rempli ». Le
+lecteur exigeait la forme complète de l'`attendu` (par exemple, pour CROISSANCE, trois mesures aux incréments
+croissants et une saturation nommée) avant d'ancrer la moindre carte. Lue ainsi, la règle d'A6 rend f presque
+impossible : le cerceau devient aussi exigeant que le pistolet, et l'alphabet ne produit jamais de chiffre. L'auteur
+juge que la sévérité du marqueur n'est pas ce qui définit une carte : la *Définition* et la *Structure mathématique*
+la définissent ; le marqueur dit à quel point elle est visible.
+
+**La règle.**
+
+1. **Ancrage f (cerceau ou paille).** Un fait de la situation, sourcé et daté, qui montre le mécanisme de la
+   *Définition* et remplit **au moins un** des *Marqueurs observables* de la fiche ancre la carte en f. La forme
+   complète de l'`attendu` n'est pas exigée pour f.
+2. **Ancrage F (pistolet ou double).** Inchangé : test suffisant, ligne A6 qui écarte les voisines, passage pour les
+   cas réels. C'est là que la forme complète de l'`attendu`, corroborée, sert.
+3. **Rejet « marqueur non rempli ».** Réservé aux cartes pour lesquelles des faits existent mais n'en remplissent
+   **aucun** marqueur observable.
+4. **Rejet « contredit ».** Un fait qui dit le contraire de l'`attendu` ou réalise ce que nomme `contredirait`
+   élimine la carte (cerceau échoué). Un `attendu` seulement **incomplet** n'est pas contredit.
+
+**Ce qui ne change pas.** Aucun paramètre, aucun multiplicateur, aucune règle de décision ; `moteur.py` ne vérifie
+toujours que la forme (F exige `pistolet` ou `double`). La publication reste celle du §28 (C en strate 7, B en état
+nul, A sinon) ; L7 ne se lève que par le §27.
+
+**Ce qu'il faut savoir en le lisant.** Plus d'ancrages f veut dire plus de chiffres, donc plus de mesures, mais aussi
+plus de cartes faiblement ancrées : les chiffres produits après cette version sont scorés à part de ceux d'avant
+(`version` dans le registre), et un C moins bon que B après 0.7.53 désignerait cette règle comme première suspecte.
+

@@ -1,6 +1,6 @@
 # Alphabet situationnel — Protocole
 
-> Version : 0.7.52
+> Version : 0.7.53
 >
 > **Source de vérité des règles.** Chaque règle est définie une seule fois, ici. Les autres fichiers
 > donnent des données (cartes, équivalents, dynamiques), des formats (fiche de cas, journal, sortie)
@@ -284,8 +284,12 @@ dans la strate ». Le champ `test` le déclare :
 
 **F exige un test suffisant** (`pistolet` ou `double`), contrôlé par `valider` pour tout mot F de cas
 réel. Remplir le marqueur est un cerceau : nécessaire, jamais suffisant ; un fait qui ne fait que le
-remplir donne f. La garantie se lit dans ces termes : `attendu` est un cerceau (s'il manque, la carte
-tombe), `contredirait` nomme ce qui ferait échouer ce cerceau ; la ligne A6, qui écarte chaque
+remplir donne f. **Depuis 0.7.53, le marqueur décide de l'intensité, pas de l'existence** (`validation.md`
+§30) : le cerceau est passé par un fait qui montre le mécanisme de la *Définition* et **au moins un** des
+*Marqueurs observables* de la fiche, sans exiger la forme complète de l'`attendu` ; la forme complète,
+avec un test suffisant, est ce qui mène à F. La garantie se lit dans ces termes : l'`attendu` décrit la
+forme pleine de la carte (s'il est **contredit**, la carte tombe ; s'il est seulement **incomplet**, elle
+reste en f), `contredirait` nomme ce qui ferait échouer le cerceau ; la ligne A6, qui écarte chaque
 voisine, est ce qui rend un fait suffisant. Côté A7, une contre-observation de portée dominante est un
 cerceau échoué : la carte est éliminée. Le moteur vérifie la cohérence de la déclaration, pas sa
 justesse.
@@ -682,7 +686,7 @@ modification impose une version et une nouvelle évaluation, sans réécriture d
 <!-- PARAMETRES:BEGIN -->
 | Paramètre | Valeur |
 |---|---|
-| `version` | `"0.7.52"` |
+| `version` | `"0.7.53"` |
 | `nombre_strates` | `13` |
 | `cartes.SEU` | `"SEUIL"` |
 | `cartes.REC` | `"RÉCIPROCITÉ"` |

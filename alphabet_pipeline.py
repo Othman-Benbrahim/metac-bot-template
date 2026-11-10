@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.9.5"
+VERSION_BOT = "0.9.6"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -466,21 +466,31 @@ def regles_dossier() -> str:
   date_consultation, classe_source ("contemporain"), passage (localisation + relation "soutient"), test, contre_observation
   + portee, garantie {mecanisme, support {type texte|loi|donnee|cas, reference, disponible_le}, attendu, contredirait},
   option {acteur, avant, apres}, corroboration, et pour F une ligne a6.
-- F exige un fait SUFFISANT : test "pistolet" ou "double". Un fait qui remplit seulement le marqueur est un "cerceau" : f.
+- ANCRAGE f (skill 0.7.53, validation §30 : le marqueur décide de l'INTENSITÉ, pas de l'existence) : un fait daté et
+  sourcé qui montre le mécanisme de la DÉFINITION de la carte et remplit AU MOINS UN de ses « Marqueurs observables »
+  ancre la carte en f (test "cerceau" ou "paille"). N'exige PAS la forme complète de l'« attendu » pour f : par exemple,
+  pour CROISSANCE, une hausse mesurée qui s'accélère suffit pour f, sans trois mesures ni saturation nommée.
+- F exige un fait SUFFISANT : test "pistolet" ou "double". La forme complète de l'attendu, corroborée, sert à F.
 - F exige corroboration "independantes" (deux sources nommées séparées par « ; », et independance {critere origine|
   producteur|transmission, motif}) ou "unique" pour une source primaire. Deux relais d'une même origine = une source.
 - a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines de la fiche, sans « ? ».
 - contre_observation : la plus forte trouvée DANS la situation ; portee marginale|substantielle|dominante|aucune.
 - contredirait ≠ attendu, sans nommer la carte. option : un fait qui ne change l'espace d'action de personne ne s'ancre pas.
 - rejets_classes : pour chaque candidate non ancrée, {"categorie": …, "motif": …}, catégorie au choix :
-  "aucun_fait" (aucun fait pertinent dans les résultats), "marqueur_non_rempli" (des faits existent mais ne remplissent
-  pas le marqueur local), "contredit" (un fait de la situation contredit la carte), "non_cherchee" (ses requêtes n'ont
-  pas été lancées). Choisis la catégorie d'après les résultats de recherche, pas d'après ton intuition. Ajoute
+  "aucun_fait" (aucun fait pertinent dans les résultats), "marqueur_non_rempli" (des faits pertinents existent mais
+  n'en remplissent AUCUN marqueur observable), "contredit" (un fait de la situation dit le CONTRAIRE de ce que la carte
+  rend attendu, ou réalise ce que nomme « contredirait »), "non_cherchee" (ses requêtes n'ont pas été lancées).
+  CONTREDIT ≠ MARQUEUR NON REMPLI : un fait qui nie ou dément le mécanisme est « contredit », même s'il est formulé
+  négativement. Exemples (question « le pays X sortira-t-il de l'UE ? ») : « le droit de l'UE ne rend pas la sortie
+  impossible » contredit une CONTRAINTE qui bloquerait la sortie ; « aucun autre pays n'a choisi de partir » contredit
+  une CONTAGION. En revanche, un attendu seulement INCOMPLET (une mesure au lieu de trois) n'est pas contredit : la
+  carte reste en f si la définition et un marqueur sont là. Choisis la catégorie d'après les résultats de recherche,
+  pas d'après ton intuition. Ajoute
   "fait_attendu" (une phrase : ce que dirait un fait qui remplirait le marqueur ici) et "extrait_proche" (le passage
   le plus proche trouvé, avec son numéro [n], ou null).
 - questions : au moins une question ouverte et datée qui départagerait la lecture (si_oui, si_non, resolution, statut).
 - Ne cite que des faits trouvés dans les résultats de recherche fournis ; n'invente ni source, ni URL, ni date.
-- ÉTAT NUL ADMIS : si aucun fait ne remplit le marqueur d'une carte, "mots" est une liste vide et chaque candidate va
+- ÉTAT NUL ADMIS : si aucun fait ne remplit la définition et au moins un marqueur d'une carte, "mots" est une liste vide et chaque candidate va
   dans rejets. C'est une lecture légitime (« aucune structure lue »), jamais un échec : ne force pas une carte.
 - dynamique_observee (seulement si "mots" est vide) : en une ou deux phrases, la dynamique que les faits trouvés
   montrent malgré tout (qui agit, sur quoi, dans quel sens), SANS nommer aucune carte ni structure de l'alphabet ;
@@ -543,7 +553,7 @@ CANDIDATES À RECHERCHER (catégorie de rejet) :
 REQUÊTES DÉJÀ LANCÉES (ne pas les répéter ni les paraphraser) :
 {chr(10).join("- " + r["requete"] for r in deja)}
 
-FICHES DES CANDIDATES (marqueurs à remplir) :
+FICHES DES CANDIDATES (la définition + au moins un marqueur observable suffisent pour f) :
 {fiches(cartes)}
 
 Règles : au plus {MAX_RECHERCHES_RELANCE} requêtes au total, 1 ou 2 par candidate ; chacune formée sur le PHÉNOMÈNE
@@ -1244,8 +1254,9 @@ faits. Ton seul travail : vérifier chaque ancrage contre les RÉSULTATS DE RECH
 
 QUESTION : {q.titre}
 
-CARTES ANCRÉES (intensité F = fait suffisant, test « pistolet » ou « double » ; f = fait qui remplit seulement le
-marqueur, test « cerceau ») :
+CARTES ANCRÉES (intensité F = fait suffisant, test « pistolet » ou « double » ; f = fait qui montre la définition
+de la carte et au moins un marqueur observable, test « cerceau » ou « paille », sans exiger la forme complète de
+l'attendu) :
 {json.dumps(mots, ensure_ascii=False, indent=1)[:12000]}
 
 RÉSULTATS DE RECHERCHE (seule base admise) :
@@ -1254,7 +1265,8 @@ RÉSULTATS DE RECHERCHE (seule base admise) :
 Pour chaque carte, décide :
 - "maintenir" : le fait figure dans les résultats, daté, et il porte bien l'intensité déclarée ;
 - "affaiblir" : le fait figure, mais il n'est pas suffisant (on l'observerait aussi sans la structure) : F devient f ;
-- "retirer" : le fait ne figure pas dans les résultats, ou il est contredit, ou il ne remplit pas le marqueur.
+- "retirer" : le fait ne figure pas dans les résultats, ou il est contredit, ou il ne remplit AUCUN marqueur
+  observable de la carte (un attendu seulement incomplet ne justifie pas un retrait d'un f).
 Tu ne peux NI ajouter une carte, NI renforcer une intensité, NI donner une probabilité. Dans le doute, maintiens.
 
 Rends UNIQUEMENT un objet JSON :
@@ -1449,7 +1461,9 @@ async def explorer_derivee(derivee: dict, ident: str, url: str, contexte: str, p
               "strate": ((c.get("plan") or {}).get("evenement") or {}).get("strate"),
               "p_B": c.get("p_B"), "p_C": p_c, "p_C_corrige": corriger_C(p_c, correction_retro()),
               "p_C_symetrique": (c.get("symetrique") or {}).get("p"), "symetrique": c.get("symetrique"),
-              "nature_etat_nul": c.get("nature_etat_nul") or ex.get("nature_etat_nul"), "modeles": modeles_actifs()}
+              "nature_etat_nul": c.get("nature_etat_nul") or ex.get("nature_etat_nul"), "modeles": modeles_actifs(),
+              "puits": c.get("puits"), "compte_calcule": bool((c.get("vue") or {}).get("compte_calcule")),
+              "p_compte": c.get("p_compte"), "rejets_classes": (c.get("dossier") or {}).get("rejets_classes")}
     dossier = c.get("dossier")
     if dossier is not None:
         d = {k: v for k, v in dossier.items() if not str(k).startswith("_")}

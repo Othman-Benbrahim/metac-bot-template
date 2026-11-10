@@ -1,6 +1,6 @@
 # Alphabet situationnel — Sources françaises par thème et par strate
 
-> Version : 0.7.52
+> Version : 0.7.53
 
 > Où trouver, pour une situation française, les **faits** qui ancrent une carte (A5), la **source de
 > résolution** d'une prévision (S1) et les **séries chiffrées** qui servent de grandeur à « s'intensifie »
