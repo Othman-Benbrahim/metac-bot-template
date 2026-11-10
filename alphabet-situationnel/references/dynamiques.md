@@ -1,6 +1,6 @@
 # Alphabet situationnel — Dynamiques des cartes (couche 4, a priori)
 
-> Version : 0.7.56
+> Version : 0.7.57
 
 > Ce que chaque structure **tend à produire au pas suivant**, proposé comme hypothèse à partir de sa représentation structurelle.
 > Ces intensités **modulent** une fréquence de base (T2) : elles ne sont pas des probabilités. Valeurs
@@ -32,7 +32,8 @@
   suivant** (A en *t* rend B plus probable en *t+1*, et réciproquement) : le graphe déplié dans le temps est
   acyclique, et le moteur calcule **un pas**, par arêtes directes, sans chaînage. Une boucle **dans un même état**
   (un équilibre où deux structures se tiennent mutuellement) n'est **pas** couverte : si une lecture la suppose, elle
-  l'écrit comme une hypothèse d'équilibre, hors du calcul.
+  l'écrit comme une hypothèse d'équilibre, hors du calcul. C'est la construction standard du réseau bayésien
+  dynamique (Poole & Mackworth, 3ᵉ éd., §9.6) : une variable par pas de temps, les arcs d'un pas vers le suivant.
 
 ---
 

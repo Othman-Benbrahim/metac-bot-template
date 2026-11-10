@@ -636,6 +636,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     par_bras = {b: [] for b in "ABC"}
     apparies, corriges, critiques, comptes, explos = [], [], [], [], []
     symetriques, explos_corr, mediations = [], [], []
+    noisy, arrets = [], {True: [], False: []}   # 0.10.4 (§34), en ombre
     for x in resolues:
         y = issues[x["question_id"]]
         cr = x["bras"]["C"].get("critique") or {}
@@ -651,6 +652,11 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         pc_ = x["bras"]["C"].get("p_C") if x["bras"]["C"].get("p_C") is not None else ex.get("p_C")
         if isinstance(om.get("p_mediation"), (int, float)) and isinstance(pc_, (int, float)):
             mediations.append(({"C_mediation": ap.borner(om["p_mediation"]), "C": ap.borner(pc_)}, y))
+        if isinstance(om.get("p_noisy_or"), (int, float)) and isinstance(pc_, (int, float)):   # 0.10.4 (§34)
+            noisy.append(({"C_noisy_or": ap.borner(om["p_noisy_or"]), "C": ap.borner(pc_)}, y))
+        vi_ = om.get("valeur_information") or {}
+        if isinstance(vi_.get("arret"), bool) and isinstance(pc_, (int, float)):
+            arrets[vi_["arret"]].append(((ap.borner(pc_) - (1 if y else 0)) ** 2))
         if isinstance(ex.get("p_C_corrige"), (int, float)) and bx.get("p") is not None:
             explos_corr.append(({"C_exploratoire_corrige": ap.borner(ex["p_C_corrige"]), "B": ap.borner(bx["p"])}, y))
         if isinstance(ex.get("p_C"), (int, float)) and bx.get("p") is not None:   # 0.9.0 (§29) : à part, par strate
@@ -760,6 +766,12 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                                    if symetriques else None),
             "C_mediation_sur_C": ({"note": "en ombre (§33) : règle des médiateurs contre le calcul actuel, mêmes questions",
                                    **comparer(mediations, "C_mediation", "C")} if mediations else None),
+            "C_noisy_or_sur_C": ({"note": "en ombre (§34) : cartes lues comme des causes (noisy-or) contre le produit, mêmes questions",
+                                  **comparer(noisy, "C_noisy_or", "C")} if noisy else None),
+            "C_selon_arret_vdi": ({"note": "en ombre (§34) : Brier de C selon que la borne de valeur de l'information "
+                                           "était sous le seuil (arret) ou non ; descriptif, pas un test",
+                                   **{("arret" if k else "non_arret"): {"questions": len(v), "brier_C": sum(v) / len(v)}
+                                      for k, v in arrets.items() if v}} if arrets[True] or arrets[False] else None),
             "C_exploratoire_corrige_sur_B": (comparer(explos_corr, "C_exploratoire_corrige", "B", borne_gain_C_B())
                                              if explos_corr else None),
             "compte_sur_B": ({c: comparer([(p, y) for p, y in comptes if c == "tous" or p["_corr"] == c], "compte", "B")

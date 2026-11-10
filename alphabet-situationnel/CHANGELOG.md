@@ -1,9 +1,19 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.56
+> Version : 0.7.57
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.57 — 2026-11-10 · noisy-or et valeur de l'information, en ombre
+
+Décision d'auteur, après Poole et Mackworth, 3ᵉ éd. **Aucun chiffre publié ne change.**
+
+- `validation.md` §34 : la décision ; `graphe.md` §2.1 : le modèle des causes ; `dynamiques.md` §0 : les paires
+  mutuelles comme réseau bayésien dynamique.
+- `moteur.py` : `combiner_noisy_or` ; `sensibilite` ajoute `noisy_or` et `valeur_information` (borne, seuil, arrêt,
+  cartes les plus influentes), hors bande et hors p publié ; un autotest.
+- `parametres.json` : `seuil_valeur_information` = 0,02 (ne touche aucun p).
 
 ## 0.7.56 — 2026-11-10 · lecture causale de la matrice, deux sondes en ombre
 

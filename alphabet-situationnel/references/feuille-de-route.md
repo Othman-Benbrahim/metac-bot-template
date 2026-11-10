@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.56
+> Version : 0.7.57
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -49,6 +49,7 @@ carte, une définition abstraite commune et ce que chaque traduction locale en c
 | 0.7.53 (faite) | Le marqueur décide de l'intensité | Définition + un marqueur observable → f ; « contredit » distinct d'« incomplet » (§30) |
 | 0.7.54 (faite) | Fait de série | Un relevé de données daté et sourcé est un fait ; banc sans texte `alphabet-chaine` (§31) |
 | 0.7.55 (faite) | Équivalents de données | Marqueurs de dix cartes traduits en relevés de jetons, six Vides ; banc seul (§32) |
+| 0.7.57 (faite) | Causes ou indices | Noisy-or et borne de la valeur de l'information en ombre ; aucun p publié touché (§34) |
 | 0.7.56 (faite) | Lecture causale | λ stipulés, hypothèse du produit, paires mutuelles d'un pas au suivant ; médiateurs et ablation en ombre (§33) |
 | 0.7.50 (faite) | Alignement avec le bot Metaculus | décision d'auteur : vue extérieure en deux temps, strate à l'aveugle, état nul qualifié, mesure séquentielle (log pour le tournoi, Brier pour le §27 inchangé), sens unique de C mesuré et corrigé en ombre ; aucun paramètre, aucune probabilité, aucun outil touchés (`validation.md` §28) | — |
 | 0.7.49 (faite) | Critère de levée de L7 | décision d'auteur avant les données : C − B ≤ 0 sur 20 questions géopolitiques prospectives, plus la condition d'origine (accord mesuré) dans la strate visée ; aucun paramètre touché | — |
