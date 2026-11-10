@@ -1,6 +1,6 @@
 # Alphabet situationnel — Dynamiques des cartes (couche 4, a priori)
 
-> Version : 0.7.55
+> Version : 0.7.56
 
 > Ce que chaque structure **tend à produire au pas suivant**, proposé comme hypothèse à partir de sa représentation structurelle.
 > Ces intensités **modulent** une fréquence de base (T2) : elles ne sont pas des probabilités. Valeurs
@@ -27,6 +27,12 @@
 - **Entrées** : cartes qui mènent le plus souvent à celle-ci (lecture inverse des transitions).
 - Les transitions vers « retour à l'état antérieur » ne sont listées que lorsqu'elles sont
   structurellement improbables (SEUIL) ; ailleurs, elles sont couvertes par l'inertie.
+- **Paires mutuelles (0.7.56, §33).** La matrice contient dix paires A → B et B → A (20 arêtes sur 66) : SEU↔TRA,
+  SEU↔TRC, PER↔SEU, EME↔RES, HIE↔POL, POL↔REC, CTR↔INC, CRO↔EME, CRO↔RES, COM↔REC. Elles se lisent **d'un pas au
+  suivant** (A en *t* rend B plus probable en *t+1*, et réciproquement) : le graphe déplié dans le temps est
+  acyclique, et le moteur calcule **un pas**, par arêtes directes, sans chaînage. Une boucle **dans un même état**
+  (un équilibre où deux structures se tiennent mutuellement) n'est **pas** couverte : si une lecture la suppose, elle
+  l'écrit comme une hypothèse d'équilibre, hors du calcul.
 
 ---
 

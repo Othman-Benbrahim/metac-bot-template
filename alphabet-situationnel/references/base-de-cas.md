@@ -1,6 +1,6 @@
 # Alphabet situationnel — Base de cas (couche 3)
 
-> Version : 0.7.55
+> Version : 0.7.56
 
 > Format, codage et contrôles. `valider` et `calculer` appellent le même validateur. Une base valide
 > syntaxiquement n'est pas une base factuellement certifiée. Règles : B1–B5.

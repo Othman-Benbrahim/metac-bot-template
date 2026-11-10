@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.55 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.56 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -649,6 +649,11 @@ def issue_evenement(typ, cible, a, b):
 
 
 ATTENUATION = None   # {CARTE@strate: w}, posé seulement le temps d'une sonde (sensibilite)
+# 0.7.56 (§33, ombre) : règle des médiateurs, posée seulement le temps d'une sonde. Si A et M sont deux sources de la
+# cible et que la matrice porte A → M (sans M → A), l'arête A → cible est lue comme un effet TOTAL qui inclut le
+# chemin par M : M est écarté. Une paire mutuelle (A ↔ M) est ambiguë : rien n'est écarté.
+MEDIATION = False
+MEDIATION_RETIRES = []
 
 
 def sources_de(etat, cible, liaisons, bouge, manque):
@@ -673,6 +678,15 @@ def sources_de(etat, cible, liaisons, bouge, manque):
                 # 0.7.6 : sonde d'atténuation (décision 5, réservée) : λ_eff = 1 + (λ − 1)·w, hors du p publié.
                 lam = 1 + (lam - 1) * ATTENUATION.get(cle(m), 1.0)
             src.append({"mot": cle(m), "intensite": I, "lambda": lam, "note": note})
+    if MEDIATION:
+        cartes_src = {x["mot"].split("@")[0] for x in src}
+        def mediateur(x):
+            mc = x["mot"].split("@")[0]
+            return any(a != mc and P["matrice"].get(a, {}).get(mc) and not P["matrice"].get(mc, {}).get(a)
+                       for a in cartes_src)
+        retires = [x for x in src if mediateur(x)]
+        MEDIATION_RETIRES.extend(x["mot"] for x in retires)
+        src = [x for x in src if x not in retires]
     if cible in manque:
         src.append({"mot": "position manque", "intensite": "M", "lambda": P["lambda"]["M"], "note": "G4"})
     # redondance : sources liées par inclusion, renforcement ou transfert → on garde la plus forte
@@ -2428,6 +2442,25 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None):
                              for k,v in pieces.items()}
                 attenuations['corroboration_passage']=horizon_result(etat,typ,cible,base,opts,h,semantique)['p']-reference
         finally:ATTENUATION=None
+        # 0.7.56 (§33) : deux sondes causales, hors bande et hors p publié. Règle des médiateurs (effet total),
+        # puis ablation carte par carte : chaque mot retiré seul, toutes choses égales (contraste dans le modèle,
+        # pas contrefactuel dans le monde).
+        global MEDIATION
+        mediation=None
+        try:
+            MEDIATION=True;MEDIATION_RETIRES.clear()
+            rm_=horizon_result(etat,typ,cible,base,opts,h,semantique)
+            mediation={'p':rm_['p'],'effet':rm_['p']-reference,'mediateurs_retires':sorted(set(MEDIATION_RETIRES))}
+        except ValueError:pass
+        finally:MEDIATION=False;MEDIATION_RETIRES.clear()
+        ablation=[]
+        for m_ in etat['mots']:
+            k_=cle(m_)
+            if k_==cible:continue
+            try:
+                pa_=horizon_result(appliquer(etat,'disparait',k_),typ,cible,base,opts,h,semantique)['p']
+                ablation.append({'retire':k_,'p':pa_,'apport':reference-pa_})
+            except ValueError:pass
         sortie.append({'variante':'forces d’ancrage abaissées d’un cran (F → f)','groupe':'lecture',
                        'p':rf['p'],'c_A':rf.get('c_A'),'homologie':rf.get('homologie'),'frappee':True})
     finally:
@@ -2450,6 +2483,7 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None):
                       'niveaux':sorted({str(x['homologie']) for x in sortie if x['groupe']=='classe'}),
                       'effectifs':sorted({x['c_A'] for x in sortie if x['groupe']=='classe' if x['c_A'] is not None})},
             'effet_force':rf['p']-reference,'effet_attenuation':attenuations,
+            'mediation':mediation,'ablation':ablation,
             'bande_large':max(ps)-min(ps)>P['largeur_max_affichage'],
             'saturee':any(abs(p-P['plafond_p0'])<1e-12 for p in ps)}
     # Deux bandes qui traversent le seuil ne se lisent pas de la même façon : on nomme celle qui décide.
@@ -3580,7 +3614,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -3817,7 +3851,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.55','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.56','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -5471,6 +5505,19 @@ def autotest():
             self.assertIn('corroboration_passage',sb['effet_attenuation'])
             self.assertIsNone(globals().get('ATTENUATION'))                     # crochet retiré après la sonde
             self.assertEqual(r['p'],calculer(e,'apparait','SEU@7',base,asof='2026-09-20')['p'])
+        def test_ombre_causale(self):
+            # 0.7.56 (§33) : règle des médiateurs et ablation, hors du p publié.
+            base=base_active(charger(RACINE/'assets/base-de-cas.exemple.jsonl'),'2026-09-20',True)
+            e=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + CONTRAINTE@7[f]')
+            r=calculer(e,'apparait','SEU@7',base,asof='2026-09-20')
+            sb=sensibilite(e,'apparait','SEU@7',base,{'asof':'2026-09-20'},1,'presence')
+            self.assertEqual(sb['mediation']['mediateurs_retires'],['CTR@7'])     # CRO → CTR → SEU et CRO → SEU
+            self.assertEqual(sorted(x['retire'] for x in sb['ablation']),['CRO@7','CTR@7'])
+            self.assertFalse(globals().get('MEDIATION'))                         # crochet retiré après la sonde
+            self.assertEqual(r['p'],calculer(e,'apparait','SEU@7',base,asof='2026-09-20')['p'])
+            e2=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + ÉMERGENCE@7[f]')  # paire mutuelle : rien d'écarté
+            sb2=sensibilite(e2,'apparait','CTR@7',base,{'asof':'2026-09-20'},1,'presence')
+            self.assertEqual(sb2['mediation']['mediateurs_retires'],[])
         def test_circularite_ideologie(self):
             d=self._dossier();d['mots'][0]['garantie']['mecanisme']='c’est une polarité parce que deux camps'
             r=dossier_valider(d);self.assertTrue(any('nomme la carte' in m for m in r['manques']));self.assertFalse(r['complet'])

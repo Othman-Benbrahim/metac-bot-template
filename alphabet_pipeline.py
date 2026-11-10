@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.2"
+VERSION_BOT = "0.10.3"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1146,6 +1146,18 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
     return choisie, suivi
 
 
+def ombre_causale(sortie: dict) -> dict | None:
+    """0.10.3 (skill 0.7.56, validation §33) : deux sondes du moteur, en ombre, jamais publiées. `p_mediation` : p
+    sous la règle des médiateurs (arête lue comme effet total ; le médiateur est écarté) ; `ablation` : p quand chaque
+    carte est retirée seule (contraste dans le modèle, pas contrefactuel)."""
+    sb = (sortie or {}).get("sensibilite") or {}
+    if not sb:
+        return None
+    med = sb.get("mediation") or {}
+    return {"p_mediation": med.get("p"), "mediateurs_retires": med.get("mediateurs_retires"),
+            "ablation": sb.get("ablation")}
+
+
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
                    aujourdhui: str, jours: int, historique: Historique | None = None,
                    critique: Llm | None = None, vue_fixee: dict | None = None,
@@ -1164,11 +1176,11 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         return c
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
-                                   "etat", "drapeaux") if c.get(k) is not None}
+                                   "etat", "drapeaux", "ombre_causale") if c.get(k) is not None}
     explo["strate"] = strate
     explo["p_C_corrige"] = corriger_C(explo.get("p_C"), correction_retro())   # 0.9.1 : la correction en ombre aussi
     explo["p_C_symetrique"] = (c.get("symetrique") or {}).get("p")
-    for k in ("p_C", "p_sans_cartes", "rho", "nature_etat_nul"):
+    for k in ("p_C", "p_sans_cartes", "rho", "nature_etat_nul", "ombre_causale"):
         c.pop(k, None)
     c.update(statut="hors_strate", exploratoire=explo,
              motif=f"strate {strate} non chiffrée (L7) : lecture exploratoire scellée, non postée "
@@ -1314,7 +1326,8 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         if not erreur:
             trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
                          p_C=sortie.get("p"), p_sans_cartes=sortie.get("p_sans_cartes"),
-                         drapeaux=sortie.get("drapeaux", []), rho=sortie.get("rho"))
+                         drapeaux=sortie.get("drapeaux", []), rho=sortie.get("rho"),
+                         ombre_causale=ombre_causale(sortie))
             trace["statut"] = "estime" if sortie.get("p") is not None else "non_estime"
             if sortie.get("p") is None:
                 trace["motif"] = next((x for x in sortie.get("drapeaux", []) if x.startswith("Non estimé")), "non estimé")
@@ -1559,7 +1572,8 @@ async def explorer_derivee(derivee: dict, ident: str, url: str, contexte: str, p
               "p_C_symetrique": (c.get("symetrique") or {}).get("p"), "symetrique": c.get("symetrique"),
               "nature_etat_nul": c.get("nature_etat_nul") or ex.get("nature_etat_nul"), "modeles": modeles_actifs(),
               "puits": c.get("puits"), "compte_calcule": bool((c.get("vue") or {}).get("compte_calcule")),
-              "p_compte": c.get("p_compte"), "rejets_classes": (c.get("dossier") or {}).get("rejets_classes")}
+              "p_compte": c.get("p_compte"), "rejets_classes": (c.get("dossier") or {}).get("rejets_classes"),
+              "ombre_causale": c.get("ombre_causale") or ex.get("ombre_causale")}
     dossier = c.get("dossier")
     if dossier is not None:
         d = {k: v for k, v in dossier.items() if not str(k).startswith("_")}
@@ -1631,7 +1645,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "p_sans_ancre": (c.get("vues") or {}).get("p_sans_ancre")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
-                                                        "exploratoire", "symetrique",
+                                                        "exploratoire", "symetrique", "ombre_causale",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

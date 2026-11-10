@@ -635,7 +635,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     resolues = [x for x in questions if x["question_id"] in issues]
     par_bras = {b: [] for b in "ABC"}
     apparies, corriges, critiques, comptes, explos = [], [], [], [], []
-    symetriques, explos_corr = [], []
+    symetriques, explos_corr, mediations = [], [], []
     for x in resolues:
         y = issues[x["question_id"]]
         cr = x["bras"]["C"].get("critique") or {}
@@ -647,6 +647,10 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         if sy is not None and bx.get("p") is not None:      # 0.9.1 : version symétrique, en ombre
             symetriques.append(({"C_symetrique": ap.borner(sy), "B": ap.borner(bx["p"]),
                                  "_canal": "exploratoire" if ex else "strate_7"}, y))
+        om = x["bras"]["C"].get("ombre_causale") or ex.get("ombre_causale") or {}   # 0.10.3 (§33), en ombre
+        pc_ = x["bras"]["C"].get("p_C") if x["bras"]["C"].get("p_C") is not None else ex.get("p_C")
+        if isinstance(om.get("p_mediation"), (int, float)) and isinstance(pc_, (int, float)):
+            mediations.append(({"C_mediation": ap.borner(om["p_mediation"]), "C": ap.borner(pc_)}, y))
         if isinstance(ex.get("p_C_corrige"), (int, float)) and bx.get("p") is not None:
             explos_corr.append(({"C_exploratoire_corrige": ap.borner(ex["p_C_corrige"]), "B": ap.borner(bx["p"])}, y))
         if isinstance(ex.get("p_C"), (int, float)) and bx.get("p") is not None:   # 0.9.0 (§29) : à part, par strate
@@ -754,6 +758,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                                                   for k in ("strate_7", "exploratoire")
                                                   if any(p_["_canal"] == k for p_, _ in symetriques)}}
                                    if symetriques else None),
+            "C_mediation_sur_C": ({"note": "en ombre (§33) : règle des médiateurs contre le calcul actuel, mêmes questions",
+                                   **comparer(mediations, "C_mediation", "C")} if mediations else None),
             "C_exploratoire_corrige_sur_B": (comparer(explos_corr, "C_exploratoire_corrige", "B", borne_gain_C_B())
                                              if explos_corr else None),
             "compte_sur_B": ({c: comparer([(p, y) for p, y in comptes if c == "tous" or p["_corr"] == c], "compte", "B")
