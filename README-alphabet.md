@@ -349,7 +349,7 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 ## Historique utile
 
 - **0.10.7** : skill 0.7.60 (§37), d'après Wong, Goodman, Tenenbaum et al. (2023). En ombre, si la variable
-  `ALPHABET_TRADUCTION` vaut 1 : un TRADUCTEUR (appel séparé, après la lecture, qui ne change donc pas C) traduit ce que
+  `ALPHABET_TRADUCTION` vaut 1 (allumé par défaut dans le workflow ; « 0 » l'éteint) : un TRADUCTEUR (appel séparé, après la lecture, qui ne change donc pas C) traduit ce que
   les textes affirment des liens entre structures en instructions (lien, bloque, exclut), chacune avec un extrait cité ;
   les extraits non retrouvés sont écartés sans modèle ; le moteur en tire `lecture_probabiliste`. Le score compare
   `C_lecture_probabiliste` à C. Les variables `ALPHABET_TRADUCTION` et `ALPHABET_A_ESSAIS` sont lues par le workflow.

@@ -74,7 +74,7 @@ jobs:
           ALPHABET_HISTORIQUE: ${{ vars.ALPHABET_HISTORIQUE }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_LECTURE_HORS_STRATE: ${{ vars.ALPHABET_LECTURE_HORS_STRATE }}
-          ALPHABET_TRADUCTION: ${{ vars.ALPHABET_TRADUCTION }}   # 0.10.7 (§37) : « 1 » allume le traducteur (un appel de plus)
+          ALPHABET_TRADUCTION: ${{ vars.ALPHABET_TRADUCTION || '1' }}   # 0.10.7 (§37) : allumé par défaut (un appel de plus) ; « 0 » l'éteint
           ALPHABET_A_ESSAIS: ${{ vars.ALPHABET_A_ESSAIS }}       # 0.10.5 (§35) : K essais du bras A en ombre (1 = éteint)
           ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '0' }}
       - name: Enregistrer le registre
