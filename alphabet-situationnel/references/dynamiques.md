@@ -1,6 +1,6 @@
 # Alphabet situationnel — Dynamiques des cartes (couche 4, a priori)
 
-> Version : 0.7.64
+> Version : 0.7.65
 
 > Ce que chaque structure **tend à produire au pas suivant**, proposé comme hypothèse à partir de sa représentation structurelle.
 > Ces intensités **modulent** une fréquence de base (T2) : elles ne sont pas des probabilités. Valeurs

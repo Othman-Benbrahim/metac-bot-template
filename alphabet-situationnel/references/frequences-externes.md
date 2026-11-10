@@ -1,6 +1,6 @@
 # Alphabet situationnel — Fréquences externes (étape 4)
 
-> Version : 0.7.64
+> Version : 0.7.65
 
 > Comment établir une fréquence de référence que l'on passe à `--references`. Charger ce fichier pour
 > constituer ou relire un fichier de références ; il ne sert pas à lire une situation.

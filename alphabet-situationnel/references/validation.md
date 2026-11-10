@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.64
+> Version : 0.7.65
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2452,4 +2452,25 @@ la masse se concentre sur les configurations à peu de cartes présentes, ce qui
 au-delà d'une strate, à valider contre l'exact.
 
 **Ce qui ne change pas.** Le p publié, le code du moteur, les λ, la matrice.
+
+## 42. Équivalents en SSSOM, accord à deux niveaux (0.7.65)
+
+**Décision d'auteur, le 2026-11-11**, d'après `asago-policy-mapper` (asago-ai, Apache 2.0), qui relie des textes de
+politique à des catalogues de risques.
+
+**SSSOM.** Les équivalents (carte abstraite → traduction locale par strate) s'exportent au format SSSOM, standard ouvert
+de correspondances entre vocabulaires (`moteur.py sssom`) : prédicat SKOS qualifié (Attesté et Documenté →
+`closeMatch`, Proposé → `relatedMatch`), confiance (0,9 / 0,7 / 0,4, qui traduit le statut de preuve, pas une mesure),
+justification `semapv:ManualMappingCuration`. Vide et Hors domaine ne sont pas des correspondances et sont exclus. Les
+fichiers de strate restent la source ; l'export permet de les relire et de les comparer avec des outils standards.
+
+**Accord à deux niveaux.** Comme leur évaluation (risque exact, puis catégorie), l'accord entre deux lectures se mesure
+au niveau de la **carte**, puis de la **famille** : la carte et ses voisines A6 (« à ne pas confondre avec »), dans la
+même strate (`accord_deux_niveaux`). Deux lectures qui ancrent deux voisines se trompent de carte, pas de famille : le
+second niveau sépare une confusion fine d'un désaccord de fond. Le bot l'applique au test d'invariance (§39).
+
+**Reporté.** Présélectionner les candidates par recherche hybride (mots-clés et sens) : les questions sont en anglais,
+les fiches en français, et la recherche par le sens demande un modèle de plongement que le dépôt n'embarque pas.
+
+**Ce qui ne change pas.** Le p publié, les fichiers d'équivalents, la lecture.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.64 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.65 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -852,6 +852,51 @@ def audit_largeur():
             "toutes_strates": {"noeuds": len(noeuds), "aretes": len(ar3), "largeur": w3},
             "lecture": "coût exact O(N·2^(w+1)) en binaire ; au-delà de w ≈ 20, l'exact est hors de portée et toute "
                        "méthode approchée doit d'abord être validée contre l'exact d'une strate"}
+
+
+SSSOM_PREDICAT = {"Attesté": ("skos:closeMatch", 0.9), "Documenté": ("skos:closeMatch", 0.7),
+                  "Proposé": ("skos:relatedMatch", 0.4)}
+
+
+def sssom():
+    """0.7.65 (§42) : les équivalents (carte abstraite → traduction locale dans une strate) au format SSSOM, standard
+    ouvert de correspondances entre vocabulaires (prédicats SKOS qualifiés, confiance, justification). Attesté et
+    Documenté → closeMatch, Proposé → relatedMatch ; Vide et Hors domaine ne sont pas des correspondances (exclus).
+    La confiance traduit le statut de preuve, pas une mesure. Rend le texte TSV, en-tête YAML commenté compris."""
+    tete = ["# curie_map:", "#   alphabet: https://github.com/Othman-Benbrahim/alphabet-situationnel#",
+            "#   skos: http://www.w3.org/2004/02/skos/core#", "#   semapv: https://w3id.org/semapv/vocab/",
+            f"# mapping_set_id: alphabet:equivalences-{P['version']}", f"# mapping_set_version: {P['version']}",
+            "# license: https://opensource.org/licenses/MIT",
+            "subject_id\tsubject_label\tpredicate_id\tobject_id\tobject_label\tmapping_justification\tconfidence\tcomment"]
+    lignes = []
+    for (c, s), st in sorted(statuts().items(), key=lambda x: (x[0][1], x[0][0])):
+        if st not in SSSOM_PREDICAT:
+            continue
+        pred, conf = SSSOM_PREDICAT[st]
+        lignes.append("\t".join([f"alphabet:{c}", NOMS[c], pred, f"alphabet:{c}@{s}", f"{NOMS[c]} (strate {s})",
+                                 "semapv:ManualMappingCuration", f"{conf}", f"statut {st}"]))
+    return "\n".join(tete + lignes) + "\n"
+
+
+def familles():
+    """0.7.65 (§42) : famille d'une carte = la carte et ses voisines (A6, « à ne pas confondre avec »). Sert à l'accord
+    au second niveau : deux lectures qui ancrent deux voisines se trompent de carte, pas de famille."""
+    v = voisines()
+    return {c: {c} | set(v.get(c, set())) for c in NOMS}
+
+
+def accord_deux_niveaux(a, b):
+    """0.7.65 (§42) : accord de deux ensembles d'ancrages (clés CARTE@strate), au niveau de la carte puis de la famille.
+    Niveau 2 : une clé de a compte si b ancre la même carte ou une voisine dans la même strate, et réciproquement."""
+    a, b = set(a), set(b)
+    u = a | b
+    j1 = len(a & b) / len(u) if u else 1.0
+    fam = familles()
+    def couvert(k, autre):
+        c, s = k.split("@")
+        return any(x.split("@")[1] == s and x.split("@")[0] in fam.get(c, {c}) for x in autre)
+    ok = sum(1 for k in a if couvert(k, b)) + sum(1 for k in b if couvert(k, a))
+    return {"jaccard_carte": j1, "accord_famille": ok / (len(a) + len(b)) if (a or b) else 1.0}
 
 
 def combiner_noisy_or(f, src):
@@ -3922,7 +3967,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4159,7 +4204,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.64','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.65','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -4608,6 +4653,7 @@ def main():
     cv=subs.add_parser('conservativite');cv.add_argument('--base',required=True);cv.add_argument('--sortie');cv.add_argument('--contre');cv.add_argument('--empreinte')
     rj=subs.add_parser('rejets');rj.add_argument('--dossier',required=True);rj.add_argument('--audit')
     subs.add_parser('largeur')   # 0.7.61 (§38) : largeurs d'arbre mesurées (min-fill)
+    subs.add_parser('sssom')     # 0.7.65 (§42) : équivalents au format SSSOM
     vr_=subs.add_parser('valider-references');vr_.add_argument('fichier')
     cf=subs.add_parser('confronter');cf.add_argument('fichier');cf.add_argument('--json',action='store_true')
     vo=subs.add_parser('voisins');vo.add_argument('fichier');vo.add_argument('--json',action='store_true')
@@ -4637,6 +4683,7 @@ def main():
     if a.cmd=='autotest':autotest();return
     if a.cmd=='parametres':print(parametres_markdown());return
     if a.cmd=='largeur':print(json.dumps(audit_largeur(),ensure_ascii=False,indent=2));return
+    if a.cmd=='sssom':print(sssom(),end='');return
     if a.cmd=='valider':valider(a.fichier,a.registre);return
     if a.cmd=='dossier':
         dr=dossier_valider(lire_json(a.fichier,'--fichier'))
@@ -5833,6 +5880,16 @@ def autotest():
             e2=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + ÉMERGENCE@7[f]')  # paire mutuelle : rien d'écarté
             sb2=sensibilite(e2,'apparait','CTR@7',base,{'asof':'2026-09-20'},1,'presence')
             self.assertEqual(sb2['mediation']['mediateurs_retires'],[])
+        def test_sssom_familles(self):
+            # 0.7.65 (§42) : SSSOM bien formé (8 colonnes, prédicats SKOS, ni Vide ni Hors domaine) ; accord à deux niveaux.
+            t=sssom().splitlines();corps=[l for l in t if not l.startswith('#')]
+            self.assertEqual(corps[0].split('\t')[0],'subject_id');self.assertTrue(len(corps)>1)
+            self.assertTrue(all(len(l.split('\t'))==8 for l in corps))
+            self.assertTrue(all(l.split('\t')[2] in ('skos:closeMatch','skos:relatedMatch') for l in corps[1:]))
+            v=sorted(familles()['SEU']-{'SEU'})[0]
+            r=accord_deux_niveaux(['SEU@7'],[f'{v}@7'])
+            self.assertEqual(r['jaccard_carte'],0.0);self.assertEqual(r['accord_famille'],1.0)
+            self.assertEqual(accord_deux_niveaux(['SEU@7'],[f'{v}@6'])['accord_famille'],0.0)   # autre strate
         def test_surprise(self):
             # 0.7.63 (§40) : sans observation, aucune surprise ; une seule observation, surprise relative nulle ; deux cartes
             # reliées ancrées ensemble : < 0 (cohérent) ; une carte ancrée et sa conséquence forte contredite : > 0.

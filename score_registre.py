@@ -388,7 +388,9 @@ def invariance_lecteur(lignes: list[dict]) -> dict | None:
         pa, pb = sum(a for a, _ in paires) / n, sum(b for _, b in paires) / n
         pe = pa * pb + (1 - pa) * (1 - pb)
         kappa = None if pe == 1 else (po - pe) / (1 - pe)
+    fam = [t["accord_famille"] for t in tests if isinstance(t.get("accord_famille"), (int, float))]
     return {"questions": len(tests), "jaccard_moyen": round(sum(t["jaccard"] for t in tests) / len(tests), 4),
+            "accord_famille_moyen": round(sum(fam) / len(fam), 4) if fam else None,   # 0.10.13 (§42)
             "part_identiques": round(sum(set(t["ancrees_A"]) == set(t["ancrees_B"]) for t in tests) / len(tests), 4),
             "kappa_candidates": None if kappa is None else round(kappa, 4), "decisions": n,
             "lecture": "κ faible : le lecteur suit le registre des sources plus que la situation (§39)"}
