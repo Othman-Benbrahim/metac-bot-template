@@ -450,7 +450,11 @@ class Tests(unittest.TestCase):
             self.assertIn("C_tempere", s["C_tempere_sur_C"]["verdict"])        # 0.10.5 (§35)
             self.assertIn("C_generatif", s["C_generatif_sur_C"]["verdict"])    # 0.10.6 (§36)
             self.assertIsNone(s["C_lecture_probabiliste_sur_C"])               # 0.10.7 : traducteur éteint par défaut
-            self.assertIn("C_sans_plafond", s["C_sans_plafond_sur_C"]["verdict"])  # 0.10.9 (§38)   # 0.10.4 (§34) : ombres comparées à C
+            self.assertIn("C_sans_plafond", s["C_sans_plafond_sur_C"]["verdict"])  # 0.10.9 (§38)
+            self.assertIn("bas", s["calibration_queues"]["B"])                 # 0.10.10
+            import score_registre as sr_
+            q = sr_.calibration_queues([(0.05, 0), (0.02, 1), (0.95, 1), (0.5, 1)])
+            self.assertEqual((q["bas"]["n"], q["bas"]["frequence_observee"], q["haut"]["n"]), (2, 0.5, 1))   # 0.10.4 (§34) : ombres comparées à C
             self.assertEqual(sum(v["questions"] for k, v in s["C_selon_arret_vdi"].items() if k != "note"), 1)
             lignes = (reg / "journal-bot.jsonl").read_text(encoding="utf-8").splitlines()
             x = json.loads(lignes[0]); x["p_poste"] = 0.5            # une ligne retouchée est écartée

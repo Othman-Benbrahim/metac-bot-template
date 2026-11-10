@@ -373,6 +373,18 @@ def ajuster_recalibration(paires: list[tuple[float, int]], rappel: float = 1.0) 
     return a, b
 
 
+def calibration_queues(paires: list[tuple[float, int]], seuil: float = 0.1) -> dict:
+    """0.10.10 : calibration dans les QUEUES (p < 0,1 et p > 0,9). Epoch AI (méthode bayésienne de l'ECI, nov. 2026)
+    trouve sa couverture la plus faible près des bornes (80,5 % contre 90 % visés sous 0,05) ; au score logarithmique,
+    c'est là qu'une erreur coûte le plus. Descriptif : fréquence observée contre p moyen, et effectif."""
+    out = {}
+    for nom, garde in (("bas", lambda p: p < seuil), ("haut", lambda p: p > 1 - seuil)):
+        q = [(p, y) for p, y in paires if garde(p)]
+        out[nom] = ({"n": len(q), "p_moyen": round(sum(p for p, _ in q) / len(q), 4),
+                     "frequence_observee": round(sum(y for _, y in q) / len(q), 4)} if q else {"n": 0})
+    return out
+
+
 def recalibration(paires: list[tuple[float, int]]) -> dict | None:
     """Ce que gagnerait une recalibration logistique, mesuré HORS échantillon (on ajuste sans la question, on la
     prévoit, pour chaque question). Rapport seulement : rien n'est appliqué aux prévisions."""
@@ -757,6 +769,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                           "de ln p (points de score de pair). Ne pas comparer les deux."},
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "recalibration_etudiee": {b: recalibration(v) for b, v in par_bras.items()},
+            "calibration_queues": {b: calibration_queues(v) for b, v in par_bras.items()},   # 0.10.10
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
             "stabilite_strate": stabilite_strate(publiees),
             "statuts_par_version": statuts_par_version(publiees),
