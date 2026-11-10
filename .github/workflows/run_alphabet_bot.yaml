@@ -38,6 +38,9 @@ jobs:
       - name: Contrôle du skill
         run: python alphabet-situationnel/scripts/moteur.py audit
       - name: Prévoir
+        # 0.9.6 : un vrai blocage s'arrête ici, et l'étape « Enregistrer le registre » (if: always()) garde ce qui a été
+        # écrit. Un passage de test complet (exploratoire, non binaires) prend 30 à 50 minutes : ne pas l'annuler.
+        timeout-minutes: 120
         run: uv run python alphabet_bot.py --mode "${{ github.event.inputs.mode || 'minibench' }}"
         env:
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
