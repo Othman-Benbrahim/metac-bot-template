@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.9.7 · skill alphabet-situationnel 0.7.54 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.9.8 · skill alphabet-situationnel 0.7.55 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.9.8** : skill 0.7.55 ; les équivalents de données pour les jetons (`donnees-chaine.md`, §32) ne sont chargés
+  que si `ALPHABET_EQUIV_DONNEES` est activé (banc `alphabet-chaine`). Le bot Metaculus ne l'active pas : il le fera
+  après une décision d'auteur datée (verdict du banc à 200 questions par type, ou équivalents Documentés).
 - **0.9.7** : `alphabet()` accepte une vue extérieure fixée et des relevés de données fixés (`vue_fixee`,
   `donnees_fixees`), pour le banc « sans texte » `alphabet-chaine` ; le bot Metaculus ne les passe jamais, son
   comportement est inchangé.

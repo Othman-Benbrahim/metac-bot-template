@@ -3,7 +3,7 @@ name: alphabet-situationnel
 description: "Lecture structurelle et exploration conditionnelle de situations par 16 cartes transversales candidates et 13 strates (dont la politique intérieure). Utiliser pour lire une situation factuelle, explorer ses suites à un horizon défini, coder un cas historique ou scorer un journal. Modes LIRE, PRÉVOIR, CODER, SCORER. Le moteur calcule des probabilités expérimentales quand les entrées sont recevables ; aucune performance prédictive n'est acquise. Ne pas utiliser pour un tirage symbolique, un diagnostic, une décision sur une personne, ou transformer un ressenti seul en fait. Une lecture sans prévision est explicitement admise."
 license: MIT
 metadata:
-  version: '0.7.54'
+  version: '0.7.55'
   author: Othman Ben Brahim
 ---
 
@@ -23,7 +23,7 @@ ce `SKILL.md`), puis `python3 scripts/moteur.py audit`.
 
 ## Contrôle d'intégrité
 
-Version 0.7.54. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
+Version 0.7.55. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
 les 13 fichiers `references/equivalences/strate-NN.md`, les bases, journaux et dossier d'exemple.
 Prérequis : Python ≥ 3.8, bibliothèque standard seule (aucune installation). Exécuter depuis le dossier
 du skill ; `--base`, `--journal` et `--references` sont relatifs au dossier courant. *Le dossier du skill est celui qui
@@ -241,7 +241,8 @@ le biais se mesure, et sa correction (un décalage appris sur tests régressifs)
 meilleur, moins bon ou indéterminé (levée du gel pour cet outil seul).* *Depuis 0.7.52, `calculer --exploratoire` lève L7 pour un
 calcul à part : le chiffre est marqué, jamais publié, scoré à part de la strate 7 (`validation.md` §29).* *Depuis 0.7.53, le marqueur décide de l'intensité,
 pas de l'existence : Définition + un marqueur observable → f ; F inchangé (`validation.md` §30).* *Depuis 0.7.54, un relevé de données daté et sourcé est un fait
-(`validation.md` §31).*
+(`validation.md` §31).* *Depuis 0.7.55, des équivalents de données pour les jetons
+(`references/equivalences/donnees-chaine.md`, `validation.md` §32), chargés par le banc seul.*
 
 **Requêtes exécutées, test régressif déclaré (0.7.45).** Chaque requête de `recherches` porte `executee` (true ou false)
 et, si elle a été lancée, `date_execution` : une requête non lancée est consignée mais ne couvre rien, et le dossier reste
