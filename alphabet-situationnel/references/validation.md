@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.54
+> Version : 0.7.55
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2136,4 +2136,25 @@ par le lecteur (un ratio se cite s'il est fourni par la source ou calculé par l
 
 **Ce qui ne change pas.** Aucun paramètre, aucune règle de décision ; `moteur.py` ne vérifie que la forme. Les
 chiffres du banc sont scorés à part de ceux du bot Metaculus.
+
+## 32. Équivalents de données pour les jetons (0.7.55)
+
+**Décision d'auteur, le 2026-11-10.** Premier passage du banc `alphabet-chaine` en protocole 2 : relevés riches
+(série de bougies, fenêtres de transactions, distribution des détenteurs), lecture rigoureuse, mais état nul. Les
+marqueurs du noyau sont écrits pour des situations rédigées (« les acteurs se classent eux-mêmes dans deux camps »,
+« un chemin de transmission nommable ») ; aucun texte ne disait quel relevé vaut marqueur. Le lecteur a aussi classé
+CROISSANCE « contredit » sur une série qui monte puis s'effondre, alors que la définition inclut saturation et déclin.
+
+**La règle.** `references/equivalences/donnees-chaine.md` traduit les marqueurs de dix cartes en termes de relevés
+(seuils fixés avant toute issue) et laisse six cartes Vides, faute de marqueur visible dans ces données. Tous les
+équivalents sont **Proposés** (plafond A3, aucun emprunt). Choix consignés : la concentration est une PROPORTION, pas
+une HIÉRARCHIE (détenir n'est pas commander) ; un plafond sans cause nommée est une saturation (CROISSANCE), pas une
+CONTRAINTE.
+
+**Chargement.** Le fichier n'est lu que lorsque le réglage `ALPHABET_EQUIV_DONNEES` est activé (banc seulement). Le
+bot Metaculus ne le charge pas. Il le chargera après une **décision d'auteur datée**, sur l'un de ces fondements :
+verdict « C meilleur que A et que B » du banc à 200 questions par type, ou équivalents promus Documentés.
+
+**Garde-fou.** Le bras A du banc (même modèle, mêmes relevés, sans alphabet) dit si ces équivalents ajoutent une
+lecture ou ne font que nommer ce que le modèle voit déjà. Aucun paramètre ni règle de décision ne change.
 

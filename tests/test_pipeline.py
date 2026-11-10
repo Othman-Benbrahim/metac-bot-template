@@ -818,6 +818,17 @@ class Tests(unittest.TestCase):
                                      vue_fixee={"frequence": 0.3}))
         self.assertEqual(c2["statut"], "sans_vue")                      # une vue fixée incomplète est refusée
 
+    def test_equivalences_donnees_sous_reglage(self):           # 0.9.8 : banc seulement
+        ancien = ap.EQUIV_DONNEES
+        try:
+            ap.EQUIV_DONNEES = False
+            self.assertNotIn("données de jetons", ap.equivalences([6]))
+            ap.EQUIV_DONNEES = True
+            self.assertIn("données de jetons", ap.equivalences([6]))
+            self.assertNotIn("données de jetons", ap.equivalences([7]))
+        finally:
+            ap.EQUIV_DONNEES = ancien
+
     def test_dossiers_horodates(self):                            # B8
         reg = Path(tempfile.mkdtemp(prefix="registre-dossiers-"))
         ancien, ap.REGISTRE = ap.REGISTRE, reg

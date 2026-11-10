@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.9.7"
+VERSION_BOT = "0.9.8"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -141,10 +141,19 @@ def fiches(cartes: list[str]) -> str:
     return "\n".join("## " + b.strip() for b in gardes)
 
 
+# 0.9.8 (skill 0.7.55, validation §32) : équivalents de données pour les jetons, chargés seulement si ce réglage est
+# activé (banc alphabet-chaine). Le bot Metaculus ne l'active pas avant une décision d'auteur datée.
+EQUIV_DONNEES = os.environ.get("ALPHABET_EQUIV_DONNEES", "") in ("1", "oui", "true")
+
+
 def equivalences(strates: list[int]) -> str:
     out = []
     for s in sorted(set(strates)):
         f = DOSSIER_SKILL / "references" / "equivalences" / f"strate-{s:02}.md"
+        if f.is_file():
+            out.append(f.read_text(encoding="utf-8"))
+    if EQUIV_DONNEES and 6 in set(strates):
+        f = DOSSIER_SKILL / "references" / "equivalences" / "donnees-chaine.md"
         if f.is_file():
             out.append(f.read_text(encoding="utf-8"))
     return "\n\n".join(out)

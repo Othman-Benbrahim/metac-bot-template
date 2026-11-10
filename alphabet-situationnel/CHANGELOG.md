@@ -1,9 +1,18 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.54
+> Version : 0.7.55
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.55 — 2026-11-10 · équivalents de données pour les jetons
+
+Décision d'auteur : les marqueurs de dix cartes traduits en relevés de données (banc `alphabet-chaine`), six cartes
+Vides ; chargés par le banc seul. **Aucun paramètre changé.**
+
+- `references/equivalences/donnees-chaine.md` : la table (statut Proposé, seuils fixés avant toute issue).
+- `validation.md` §32 : la règle, le chargement, le critère d'entrée dans le bot Metaculus.
+- `SKILL.md` : phrase. `feuille-de-route.md` : ligne.
 
 ## 0.7.54 — 2026-11-10 · fait de série
 
