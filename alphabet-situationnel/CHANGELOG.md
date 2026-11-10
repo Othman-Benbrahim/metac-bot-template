@@ -1,9 +1,19 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.52
+> Version : 0.7.53
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.53 — 2026-11-10 · le marqueur décide de l'intensité
+
+Décision d'auteur : sur neuf lectures exploratoires, seize rejets sur seize « marqueur non rempli » ; f était devenu
+aussi exigeant que F. **Aucun paramètre, aucune règle de décision, aucune probabilité changés.**
+
+- `protocole.md` (test de preuve) : f exige la *Définition* et **au moins un** marqueur observable, pas la forme
+  complète de l'`attendu` ; un `attendu` incomplet n'est pas contredit.
+- `validation.md` §30 : la règle, ce qui ne change pas, comment lire les chiffres d'après.
+- `SKILL.md` : phrase. `feuille-de-route.md` : ligne.
 
 ## 0.7.52 — 2026-11-08 · bras exploratoire hors L7
 

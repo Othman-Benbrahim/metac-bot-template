@@ -336,6 +336,8 @@ class Tests(unittest.TestCase):
             self.assertEqual(ex["statut"], "estime")                # strate 7 : chiffré normalement, mais JAMAIS posté
             self.assertAlmostEqual(ex["p_C"], 0.7)
             self.assertTrue((reg / ex["dossier_fichier"]).is_file())
+            self.assertIn("puits", ex)                              # 0.9.6 : trace des puits enregistrée
+            self.assertIn("compte_calcule", ex)
             self.assertIn("NOT the posted forecast", ap.ligne_exploratoire_autre(ex))
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": "77", "url": "u", "type": "choix_multiple",
                      "mode": "minibench", "publie": True, "exploratoire": ex}
@@ -789,6 +791,12 @@ class Tests(unittest.TestCase):
         self.assertIn("illisible", ap.controle_vue(dict(vue(), disponible_le="récent"), "2026-11-03"))
         self.assertFalse(ap.fondement_memoire(vue()))
         self.assertTrue(ap.fondement_memoire(dict(vue(), fondement="de mémoire", calcul="env. 20 %")))
+
+    def test_regles_ancrage_f(self):                              # 0.9.6 / skill 0.7.53 §30
+        r = ap.regles_dossier()
+        self.assertIn("AU MOINS UN", r)
+        self.assertIn("CONTREDIT ≠ MARQUEUR NON REMPLI", r)
+        self.assertIn("INCOMPLET", r)
 
     def test_dossiers_horodates(self):                            # B8
         reg = Path(tempfile.mkdtemp(prefix="registre-dossiers-"))
