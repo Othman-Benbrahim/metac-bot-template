@@ -1,9 +1,15 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.61
+> Version : 0.7.62
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.62 — 2026-11-10 · invariance du lecteur
+
+Décision d'auteur, d'après Balestriero & LeCun (2026). **Aucun chiffre publié ne change ; aucune ligne de code du moteur.**
+
+- `validation.md` §39 : le test d'invariance (deux vues aux sources disjointes), ses mesures et sa réserve (vue partielle).
 
 ## 0.7.61 — 2026-11-10 · relecture par Murphy (ch. 4, 9, 29, 30)
 

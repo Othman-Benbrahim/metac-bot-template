@@ -373,6 +373,27 @@ def ajuster_recalibration(paires: list[tuple[float, int]], rappel: float = 1.0) 
     return a, b
 
 
+def invariance_lecteur(lignes: list[dict]) -> dict | None:
+    """0.10.11 (§39) : accord du lecteur avec lui-même sur deux vues aux sources disjointes. Jaccard moyen des cartes
+    ancrées, part des questions où les deux vues ancrent exactement les mêmes cartes, et κ de Cohen sur les décisions
+    « ancrée / non ancrée » de toutes les candidates. Descriptif ; ne dépend d'aucune issue."""
+    tests = [x for x in lignes if x.get("statut") == "teste"]
+    if not tests:
+        return None
+    paires = [(c["A"], c["B"]) for t in tests for c in t.get("candidates") or []]
+    n = len(paires)
+    kappa = None
+    if n:
+        po = sum(a == b for a, b in paires) / n
+        pa, pb = sum(a for a, _ in paires) / n, sum(b for _, b in paires) / n
+        pe = pa * pb + (1 - pa) * (1 - pb)
+        kappa = None if pe == 1 else (po - pe) / (1 - pe)
+    return {"questions": len(tests), "jaccard_moyen": round(sum(t["jaccard"] for t in tests) / len(tests), 4),
+            "part_identiques": round(sum(set(t["ancrees_A"]) == set(t["ancrees_B"]) for t in tests) / len(tests), 4),
+            "kappa_candidates": None if kappa is None else round(kappa, 4), "decisions": n,
+            "lecture": "κ faible : le lecteur suit le registre des sources plus que la situation (§39)"}
+
+
 def calibration_queues(paires: list[tuple[float, int]], seuil: float = 0.1) -> dict:
     """0.10.10 : calibration dans les QUEUES (p < 0,1 et p > 0,9). Epoch AI (méthode bayésienne de l'ECI, nov. 2026)
     trouve sa couverture la plus faible près des bornes (80,5 % contre 90 % visés sous 0,05) ; au score logarithmique,
@@ -770,6 +791,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "bras": {b: resume(v) for b, v in par_bras.items()}, "apparie_ABC": comp,
             "recalibration_etudiee": {b: recalibration(v) for b, v in par_bras.items()},
             "calibration_queues": {b: calibration_queues(v) for b, v in par_bras.items()},   # 0.10.10
+            "invariance_lecteur": invariance_lecteur([(x["bras"]["C"].get("invariance") or {}) for x in publiees]),
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
             "stabilite_strate": stabilite_strate(publiees),
             "statuts_par_version": statuts_par_version(publiees),

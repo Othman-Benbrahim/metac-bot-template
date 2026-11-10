@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.10"
+VERSION_BOT = "0.10.11"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -127,6 +127,11 @@ LECTURE_HORS_STRATE = os.environ.get("ALPHABET_LECTURE_HORS_STRATE", "") in ("1"
 EXPLORATOIRE = os.environ.get("ALPHABET_EXPLORATOIRE", "1") not in ("0", "non", "false")
 # 0.10.7 (skill 0.7.60, §37) : traducteur de lecture probabiliste, un appel de plus par question lue, en ombre.
 TRADUCTION = os.environ.get("ALPHABET_TRADUCTION", "0") in ("1", "oui", "true")
+# 0.10.11 (skill 0.7.62, §39) : test d'invariance du lecteur, sur une part des questions (deux lectures de plus).
+try:
+    INVARIANCE_TAUX = max(0.0, min(1.0, float(os.environ.get("ALPHABET_INVARIANCE_TAUX") or 0)))
+except ValueError:
+    INVARIANCE_TAUX = 0.0
 ERREURS_STRUCTURELLES = ("limitée aux strates",)  # refus qu'aucune correction de la lecture ne peut lever
 
 
@@ -1159,6 +1164,70 @@ def repetition_A(ps: list[float]) -> dict:
             "ecart_type": statistics.pstdev(ps) if len(ps) > 1 else 0.0}
 
 
+def _domaine_url(ligne: str) -> str | None:
+    m = re.search(r"https?://(?:www\.)?([^/\s?#]+)", ligne or "")
+    return m.group(1).lower() if m else None
+
+
+def vues_disjointes(executees: list[dict]) -> tuple[list[dict], list[dict], dict]:
+    """0.10.11 (§39) : deux « bonnes vues » de la même situation (Balestriero & LeCun 2026) : les mêmes requêtes, mais
+    des SOURCES disjointes. Chaque résultat est découpé en items (« [date] titre — url », séparés par une ligne vide) ;
+    un item va à la vue A ou B selon l'empreinte de son domaine, donc un même site ne nourrit jamais les deux vues."""
+    a, b, n = [], [], {"A": 0, "B": 0, "sans_domaine": 0}
+    for r in executees:
+        if not r.get("executee") or not r.get("resultat"):
+            continue
+        items = [x for x in re.split(r"\n\s*\n", str(r["resultat"])) if x.strip()]
+        va, vb = [], []
+        for it in items:
+            d = _domaine_url(it.splitlines()[0] if it.splitlines() else it)
+            if d is None:
+                n["sans_domaine"] += 1
+                continue
+            (va if int(hashlib.sha256(d.encode()).hexdigest(), 16) % 2 == 0 else vb).append(it)
+        n["A"] += len(va); n["B"] += len(vb)
+        a.append(dict(r, resultat="\n\n".join(va), executee=bool(va)))
+        b.append(dict(r, resultat="\n\n".join(vb), executee=bool(vb)))
+    return a, b, n
+
+
+def accord_vues(plan: dict, lec_a: dict, lec_b: dict) -> dict:
+    """0.10.11 (§39) : sur les candidates du plan, ancrée ou non dans chaque vue ; Jaccard des ensembles ancrés, accord
+    par candidate, intensités comparées là où les deux vues ancrent."""
+    def ancres(lec):
+        return {f"{m.get('carte')}@{m.get('strate')}": m.get("intensite") for m in (lec or {}).get("mots") or []}
+    noms = noms_cartes()
+    norm = lambda k: k if "@" not in k else f"{noms.get(k.split('@')[0], k.split('@')[0])}@{k.split('@')[1]}"
+    xa = {norm(k): v for k, v in ancres(lec_a).items()}
+    xb = {norm(k): v for k, v in ancres(lec_b).items()}
+    cands = [norm(c) for c in plan.get("candidats") or []]
+    union = set(xa) | set(xb)
+    return {"ancrees_A": sorted(xa), "ancrees_B": sorted(xb),
+            "jaccard": (len(set(xa) & set(xb)) / len(union)) if union else 1.0,
+            "candidates": [{"carte": c, "A": c in xa, "B": c in xb} for c in cands],
+            "meme_intensite": sum(1 for k in set(xa) & set(xb) if xa[k] == xb[k]),
+            "communes": len(set(xa) & set(xb))}
+
+
+def tirage_invariance(qid) -> bool:
+    """Sélection déterministe d'une part INVARIANCE_TAUX des questions (empreinte de l'identifiant)."""
+    return INVARIANCE_TAUX > 0 and int(hashlib.sha256(f"invariance:{qid}".encode()).hexdigest()[:8], 16) / 0xFFFFFFFF < INVARIANCE_TAUX
+
+
+async def tester_invariance(q: Question, plan: dict, executees: list[dict], llm: Llm, aujourdhui: str, jours: int) -> dict:
+    """0.10.11 (§39), en ombre : le même lecteur, la même consigne, sur deux vues aux sources disjointes. Si les cartes
+    ancrées diffèrent, le lecteur lit le registre des sources, pas la situation. Ne touche ni C ni le dossier."""
+    va, vb, n = vues_disjointes(executees)
+    if not n["A"] or not n["B"]:
+        return {"statut": "non_teste", "motif": "une vue sans source", "items": n}
+    try:
+        la = extraire_json(await llm(consigne_dossier(q, plan, va, aujourdhui, jours)))
+        lb = extraire_json(await llm(consigne_dossier(q, plan, vb, aujourdhui, jours)))
+    except Exception as e:
+        return {"statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:200], "items": n}
+    return {"statut": "teste", "items": n, **accord_vues(plan, la, lb)}
+
+
 def consigne_traduction(q: Question, plan: dict, lecture: dict, textes: str) -> str:
     """0.10.7 (skill §37, Wong et al. 2023) : le TRADUCTEUR. Il ne lit pas la situation et ne chiffre rien : il traduit
     en instructions ce que les textes AFFIRMENT des liens entre structures dans CE cas. Appel séparé, après la lecture :
@@ -1385,6 +1454,8 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
     if relance:
         trace["relance"] = relance
         trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
+    if donnees_fixees is None and tirage_invariance(q.id):      # 0.10.11 (§39) : test d'invariance, en ombre
+        trace["invariance"] = await tester_invariance(q, plan, executees, llm, aujourdhui, jours)
     programme = None
     if TRADUCTION and isinstance(lecture, dict) and (lecture.get("mots") or lecture.get("rejets")):
         tr = await traduire(q, plan, lecture, trace.get("_textes") or "", llm)
@@ -1749,6 +1820,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
+                                                        "invariance",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

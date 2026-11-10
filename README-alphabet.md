@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.10 · skill alphabet-situationnel 0.7.61 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.11 · skill alphabet-situationnel 0.7.62 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.11** : skill 0.7.62 (§39), d'après Balestriero & LeCun (2026). **Test d'invariance du lecteur**, en ombre :
+  sur une part des questions (`ALPHABET_INVARIANCE_TAUX`, 0,2 par défaut dans le workflow, tirage déterministe par
+  question), le même lecteur relit la situation sur deux vues aux SOURCES disjointes (mêmes requêtes, sites séparés).
+  Le registre garde les cartes ancrées dans chaque vue ; le score rend `invariance_lecteur` (Jaccard moyen, part des
+  lectures identiques, κ sur les candidates). Coût : deux lectures de plus par question testée.
 - **0.10.10** : deux puits Epoch AI (CC BY 4.0) pour les questions sur l'IA : `epoch_modeles` (sorties de modèles,
   calcul d'entraînement, filtrables par organisation, domaine, pays, frontière ; lignes modifiées après la date
   d'information comptées et signalées) et `epoch_benchmarks` (scores datés de la sortie du modèle). Score :
