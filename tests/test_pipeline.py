@@ -831,6 +831,17 @@ class Tests(unittest.TestCase):
         finally:
             ap.EQUIV_DONNEES = ancien
 
+    def test_faits_futurs_retires(self):                          # 0.10.2
+        self.assertEqual(ap.dates_citees("le 11 novembre 2026, puis November 3, 2026 et 2026-12-01T00:00Z"),
+                         ["2026-12-01", "2026-11-11", "2026-11-03"])
+        d = {"mots": [{"carte": "SEU", "strate": 6, "intensite": "f", "fait": "la réserve chute avant l'échéance du 2026-11-11T03:31Z"},
+                      {"carte": "CTR", "strate": 6, "intensite": "f", "fait": "vote prévu le 5 décembre 2026"},
+                      {"carte": "CRO", "strate": 6, "intensite": "f", "fait": "hausse relevée le 2026-11-09"}], "rejets": {}}
+        r = ap.retirer_faits_futurs(d, "Le vote est prévu le 2026-12-05.", "2026-11-10", 1)
+        self.assertEqual(r, ["SEU@6"])                                 # date future absente des résultats : inventée
+        self.assertEqual([m["carte"] for m in d["mots"]], ["CTR", "CRO"])   # échéance annoncée dans les résultats : admise
+        self.assertIn("fait daté après la date d'information", d["rejets"]["SEU@6"])
+
     def test_dossiers_horodates(self):                            # B8
         reg = Path(tempfile.mkdtemp(prefix="registre-dossiers-"))
         ancien, ap.REGISTRE = ap.REGISTRE, reg
