@@ -1,6 +1,6 @@
 # Équivalents · strate 2 — Vivant
 
-> Version : 0.7.55
+> Version : 0.7.56
 
 > Les 16 cartes traduites dans la strate 2. Statuts et règles : `equivalences.md` (index) et A3.
 > Bilan : 0 Documenté, 15 Proposé, 1 Vide, 0 Hors domaine, 0 Attesté.

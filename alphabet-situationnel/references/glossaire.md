@@ -1,6 +1,6 @@
 # Alphabet situationnel — Glossaire
 
-> Version : 0.7.55
+> Version : 0.7.56
 
 > Un terme, un sens. Le mot « niveau » est réservé à trois usages, toujours qualifiés : *niveau de
 > risque* (ρ), *niveau d'homologie* (H1–H3), *niveau 2* de la taxonomie (disciplines). La force d'un

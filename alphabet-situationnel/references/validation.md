@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.55
+> Version : 0.7.56
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2157,4 +2157,36 @@ verdict « C meilleur que A et que B » du banc à 200 questions par type, ou é
 
 **Garde-fou.** Le bras A du banc (même modèle, mêmes relevés, sans alphabet) dit si ces équivalents ajoutent une
 lecture ou ne font que nommer ce que le modèle voit déjà. Aucun paramètre ni règle de décision ne change.
+
+## 33. Lecture causale de la matrice, et deux sondes en ombre (0.7.56)
+
+**Décision d'auteur, le 2026-11-10**, après lecture du chapitre « Causality » de Veitch et D'Amour (dans Murphy,
+*Probabilistic Machine Learning: Advanced Topics*, ch. 36), consignée dans `reference-murphy-causalite.md`.
+
+**Quatre précisions de doctrine, sans effet sur aucun chiffre.**
+
+1. **Les λ sont stipulés** (`graphe.md` §2.1) : posés par l'auteur, employés *comme* des rapports de vraisemblance.
+2. **L'hypothèse du produit est écrite** (`graphe.md` §2.1) : indépendance des cartes conditionnellement à
+   l'événement, vraie si elles en sont des symptômes, fausse si elles en sont des causes ; le signe de l'erreur suit
+   la structure (substituables ou cause commune : surestimation ; conjointement nécessaires : sous-estimation).
+3. **Les paires mutuelles se lisent d'un pas au suivant** (`dynamiques.md` §0) : un pas de calcul, arêtes directes ;
+   l'équilibre dans un même état n'est pas couvert.
+4. **L'écart C − B est un contraste du dispositif**, jamais un contrefactuel : C est la lecture entière (toutes cartes
+   ensemble) appliquée à B ; « ce qui se serait passé sans telle carte » exigerait la forme fonctionnelle d'un modèle
+   causal complet, que le moteur n'a pas.
+
+**Deux sondes en ombre, dans `sensibilite`, hors bande et hors p publié** (à titre comparatif, pour l'avenir) :
+
+- **Règle des médiateurs** (`mediation`) : si A et M sont deux sources de la cible et que la matrice porte A → M
+  sans M → A, l'arête A → cible est lue comme un effet **total**, qui inclut le chemin par M ; M est écarté. Une
+  paire mutuelle est ambiguë : rien n'est écarté. La matrice compte 81 configurations de ce type, dont 39 vers SEUIL :
+  appliquée au chiffre publié, la règle en changerait la plupart, d'où l'ombre.
+- **Ablation** (`ablation`) : chaque carte retirée seule, toutes choses égales ; `apport` = p de référence − p sans
+  elle. C'est un contraste **dans le modèle**, pas un contrefactuel dans le monde.
+
+**Ce qui ne change pas.** Le p publié, les λ, la matrice, les règles de décision, L7. La règle des médiateurs ne
+pourra remplacer le calcul actuel que par une nouvelle décision datée, si elle fait mieux sur des issues réelles
+(banc `alphabet-chaine` et bot Metaculus, où elle est scellée à côté de C). Refusé : présenter la porte dérobée ou le
+do-calcul comme une validation de la matrice ; ils disent ce qui est identifiable *étant donné* un graphe, pas si le
+graphe est vrai.
 

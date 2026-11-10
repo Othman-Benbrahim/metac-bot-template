@@ -102,6 +102,11 @@ class Tests(unittest.TestCase):
         self.assertNotIn("FICHES DES CANDIDATES", llm.consignes[1])
         c = r.ligne["bras"]["C"]
         self.assertEqual(c["statut"], "estime")
+        om = c["ombre_causale"]                           # 0.10.3 (§33) : sondes du moteur, en ombre
+        self.assertIsNotNone(om)
+        self.assertIn("p_mediation", om)
+        self.assertTrue(om["ablation"])
+        self.assertAlmostEqual(r.p_C, c["p_C"])          # le chiffre posté reste celui du calcul actuel
         self.assertTrue(all(x["executee"] for x in c["recherches"]))
         self.assertEqual(r.ligne["bras"]["B"]["source"], "registre fictif de démonstration")
         self.assertEqual(len(r.ligne["sceau"]), 64)

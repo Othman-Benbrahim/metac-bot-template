@@ -1,9 +1,19 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.55
+> Version : 0.7.56
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.56 — 2026-11-10 · lecture causale de la matrice, deux sondes en ombre
+
+Décision d'auteur, après le chapitre « Causality » de Murphy (dir.). **Aucun chiffre publié ne change.**
+
+- `graphe.md` §2.1 : λ stipulés ; hypothèse du produit (indépendance conditionnelle à l'événement) et signe de l'erreur.
+- `dynamiques.md` §0 : les dix paires mutuelles se lisent d'un pas au suivant ; l'équilibre n'est pas couvert.
+- `validation.md` §33 : la décision ; C − B est un contraste du dispositif, jamais un contrefactuel.
+- `moteur.py` : `sensibilite` ajoute `mediation` (règle des médiateurs, effet total) et `ablation` (chaque carte
+  retirée seule), hors bande et hors p publié ; un autotest.
 
 ## 0.7.55 — 2026-11-10 · équivalents de données pour les jetons
 
