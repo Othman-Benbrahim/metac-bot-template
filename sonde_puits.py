@@ -38,6 +38,8 @@ EXEMPLES = {
     "sanctions_ue": {"programme": "RUS"},
     "oms": {"indicateur": "WHOSIS_000001", "pays": "FRA", "dimension": "SEX_BTSX"},
     "ecosystemes": {"registre": "pypi.org", "paquet": "numpy"},
+    "epoch_modeles": {"frontiere": True},
+    "epoch_benchmarks": {"benchmark": "GPQA Diamond"},
 }
 
 

@@ -52,6 +52,14 @@ async def _get(url: str, params: dict | None = None, headers: dict | None = None
         return r.json() if json_ else r.text
 
 
+async def _get_octets(url: str) -> bytes:
+    """0.10.10 : un fichier binaire (archive ZIP)."""
+    async with httpx.AsyncClient(timeout=DELAI, follow_redirects=True, headers={"User-Agent": AGENT}) as c:
+        r = await c.get(url)
+        r.raise_for_status()
+        return r.content
+
+
 def _jour(v) -> str | None:
     """Une date lisible en AAAA-MM-JJ (années et mois complétés au premier jour), ou None."""
     s = str(v or "").strip()
@@ -522,6 +530,93 @@ async def ecosystemes(registre: str, paquet: str, avant: date | None = None) -> 
     return _releve("ecosyste.ms", f"versions de {paquet} ({registre})", base, pts, avant)
 
 
+EPOCH_LICENCE = "CC BY 4.0 — Epoch AI (epoch.ai), citer la source"
+
+
+def _vrai(v) -> bool:
+    return str(v or "").strip().lower() not in ("", "0", "false", "no", "non", "none", "nan")
+
+
+async def epoch_modeles(organisation: str | None = None, domaine: str | None = None, pays: str | None = None,
+                        frontiere: bool = False, calcul_min: float | None = None, mesure: str = "sorties",
+                        avant: date | None = None) -> dict:
+    """0.10.10 : base des modèles d'IA d'Epoch AI (plus de 3 200 notables, 1950 à aujourd'hui), CC BY 4.0. Une ligne par
+    modèle, datée de sa publication. `mesure` : « sorties » (événements : compter les sorties) ou « calcul » (calcul
+    d'entraînement en FLOP, pour suivre la croissance). Instantané du jour, sans millésime : une ligne peut être ajoutée
+    ou corrigée après la date d'information (colonne « Last modified ») ; le relevé compte ces lignes et le signale."""
+    t = await _get("https://epoch.ai/data/all_ai_models.csv", json_=False)
+    pts, modifiees_apres = [], 0
+    for r in csv.DictReader(io.StringIO(t.lstrip("\ufeff"))):
+        j = _jour(r.get("Publication date"))
+        if not j:
+            continue
+        if organisation and organisation.lower() not in str(r.get("Organization") or "").lower():
+            continue
+        if domaine and domaine.lower() not in str(r.get("Domain") or "").lower():
+            continue
+        if pays and pays.lower() not in str(r.get("Country (of organization)") or "").lower():
+            continue
+        if frontiere and not _vrai(r.get("Frontier model")):
+            continue
+        flop = _num(r.get("Training compute (FLOP)"))
+        if calcul_min is not None and (flop is None or flop < calcul_min):
+            continue
+        if mesure == "calcul" and flop is None:
+            continue
+        if avant and j <= avant.isoformat() and (_jour(r.get("Last modified")) or "") > avant.isoformat():
+            modifiees_apres += 1
+        pts.append({"date": j, "valeur": flop if mesure == "calcul" else None, "publie_le": j,
+                    "titre": f"{r.get('Model')} ({r.get('Organization')})"})
+    filtres = " · ".join(x for x in (organisation, domaine, pays, "frontière" if frontiere else None,
+                                     f"≥ {calcul_min:g} FLOP" if calcul_min else None) if x)
+    return _releve("Epoch AI, base des modèles d'IA", ("calcul d'entraînement (FLOP)" if mesure == "calcul"
+                                                       else "sorties de modèles") + (f" — {filtres}" if filtres else ""),
+                   "https://epoch.ai/data/ai-models", pts, avant, licence=EPOCH_LICENCE,
+                   revisions=f"instantané du jour ; {modifiees_apres} ligne(s) antérieure(s) modifiée(s) après la date "
+                             "d'information" if avant else "instantané du jour, sans millésime")
+
+
+def _colonne(champs: list[str], *mots: str) -> str | None:
+    bas = {c.lower(): c for c in champs}
+    return next((v for k, v in bas.items() if all(m in k for m in mots)), None)
+
+
+async def epoch_benchmarks(benchmark: str, modele: str | None = None, avant: date | None = None) -> dict:
+    """0.10.10 : résultats de benchmarks d'Epoch AI (archive ZIP de CSV, CC BY 4.0). Une ligne par résultat : date de
+    sortie du modèle, score, modèle. Les colonnes sont repérées par leur nom (modèle, score, date), le fichier par le nom
+    du benchmark : la sonde vérifie qu'elles existent. Le score d'un modèle peut être mesuré bien après sa sortie : la
+    date retenue est celle de la sortie (le relevé le signale)."""
+    import zipfile
+    z = zipfile.ZipFile(io.BytesIO(await _get_octets("https://epoch.ai/data/benchmark_data.zip")))
+    cible = benchmark.lower().replace(" ", "_")
+    noms = [n for n in z.namelist() if n.lower().endswith(".csv")]
+    fichier = next((n for n in noms if cible in n.lower().replace(" ", "_").replace("-", "_")), None)
+    pts = []
+    for n in ([fichier] if fichier else noms):
+        lecteur = csv.DictReader(io.StringIO(z.read(n).decode("utf-8", "replace").lstrip("\ufeff")))
+        ch = lecteur.fieldnames or []
+        c_mod = _colonne(ch, "model")
+        c_score = _colonne(ch, "best", "score") or _colonne(ch, "score")
+        c_date = _colonne(ch, "release", "date") or _colonne(ch, "date")
+        c_bench = None if fichier else _colonne(ch, "benchmark")
+        if not (c_mod and c_score and c_date) or (not fichier and not c_bench):
+            continue
+        for r in lecteur:
+            if c_bench and cible not in str(r.get(c_bench) or "").lower().replace(" ", "_").replace("-", "_"):
+                continue
+            if modele and modele.lower() not in str(r.get(c_mod) or "").lower():
+                continue
+            brut = str(r.get(c_score) or "").strip()
+            j, v = _jour(r.get(c_date)), _num(brut.rstrip("%"))
+            if v is not None and brut.endswith("%"):
+                v /= 100                                    # même échelle que les scores écrits en fraction
+            if j and v is not None:
+                pts.append({"date": j, "valeur": v, "titre": str(r.get(c_mod))})
+    return _releve("Epoch AI, résultats de benchmarks", f"{benchmark}" + (f" — {modele}" if modele else ""),
+                   "https://epoch.ai/benchmarks", pts, avant, licence=EPOCH_LICENCE, fichier=fichier,
+                   revisions="date = sortie du modèle ; le score peut avoir été mesuré plus tard")
+
+
 # --------------------------------------------------------------------------- catalogue
 
 CATALOGUE: dict[str, dict] = {
@@ -584,6 +679,13 @@ CATALOGUE: dict[str, dict] = {
     "ecosystemes": {"fn": ecosystemes, "nature": "evenements", "comptable": True,
                     "params": '{"registre": "npmjs.org|pypi.org|crates.io|…", "paquet": "nom exact"}',
                     "pour": "versions publiées d'un logiciel open source (dates de sortie)"},
+    "epoch_modeles": {"fn": epoch_modeles, "nature": "evenements", "comptable": True,
+                      "params": '{"organisation": "facultatif, ex. OpenAI", "domaine": "facultatif, ex. Language", '
+                                '"pays": "facultatif", "frontiere": true, "calcul_min": 1e25, "mesure": "sorties|calcul"}',
+                      "pour": "sorties de modèles d'IA et calcul d'entraînement (Epoch AI, CC BY 4.0)"},
+    "epoch_benchmarks": {"fn": epoch_benchmarks, "nature": "niveau", "comptable": True,
+                         "params": '{"benchmark": "nom, ex. GPQA Diamond, FrontierMath, SWE-bench", "modele": "facultatif"}',
+                         "pour": "scores des modèles d'IA aux benchmarks, datés de la sortie du modèle (Epoch AI, CC BY 4.0)"},
 }
 
 

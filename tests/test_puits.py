@@ -177,6 +177,34 @@ class TestsConnecteurs(unittest.TestCase):
         self.assertEqual([p["titre"] for p in r["points"]], ["version 2.0.0"])
         self.assertIn("pypi.org/packages/numpy/versions", vu[0][0])
 
+    def test_epoch_modeles(self):                                  # 0.10.10
+        csv_ = ("Model,Organization,Publication date,Domain,Country (of organization),Training compute (FLOP),"
+                "Frontier model,Last modified\n"
+                "A1,OpenAI,2025-03-01,Language,United States,3e25,True,2025-03-05\n"
+                "B1,Google,2026-02-01,Language,United States,5e25,True,2026-02-02\n"
+                "C1,OpenAI,2025-09-01,Language,United States,1e24,False,2026-08-01\n"
+                "D1,OpenAI,2026-08-01,Language,United States,9e25,True,2026-08-01\n")
+        with mock.patch.object(apz, "_get", mock.AsyncMock(return_value=csv_)):
+            r = asyncio.run(apz.epoch_modeles(organisation="openai", avant=date(2026, 6, 1)))
+            self.assertEqual([p["titre"] for p in r["points"]], ["A1 (OpenAI)", "C1 (OpenAI)"])   # D1 après la date
+            self.assertIn("1 ligne(s) antérieure(s) modifiée(s)", r["revisions"])
+            self.assertIn("CC BY 4.0", r["licence"])
+            f = asyncio.run(apz.epoch_modeles(frontiere=True, mesure="calcul", avant=date(2026, 6, 1)))
+            self.assertEqual([p["valeur"] for p in f["points"]], [3e25, 5e25])
+
+    def test_epoch_benchmarks(self):                               # 0.10.10
+        import io as _io
+        import zipfile as _zf
+        b = _io.BytesIO()
+        with _zf.ZipFile(b, "w") as z:
+            z.writestr("benchmarks/gpqa_diamond.csv", "Model version,Best score (across scorers),Release date\n"
+                                                      "m1,0.61,2025-01-10\nm2,72%,2026-03-01\nm3,0.9,2026-09-01\n")
+            z.writestr("benchmarks/other.csv", "Model version,Best score (across scorers),Release date\nx,0.1,2025-01-01\n")
+        with mock.patch.object(apz, "_get_octets", mock.AsyncMock(return_value=b.getvalue())):
+            r = asyncio.run(apz.epoch_benchmarks("GPQA Diamond", avant=date(2026, 6, 1)))
+        self.assertEqual([(p["titre"], p["valeur"]) for p in r["points"]], [("m1", 0.61), ("m2", 0.72)])
+        self.assertEqual(r["fichier"], "benchmarks/gpqa_diamond.csv")
+
     def test_fts_refuse_le_passe(self):
         with self.assertRaises(RuntimeError):
             asyncio.run(apz.fts("SDN", None, date(2025, 1, 1)))
