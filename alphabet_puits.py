@@ -197,7 +197,8 @@ async def bls(serie: str, avant: date | None = None) -> dict:
     async with httpx.AsyncClient(timeout=DELAI, headers={"User-Agent": AGENT}) as c:
         r = await c.post("https://api.bls.gov/publicAPI/v2/timeseries/data/", json=corps)
         r.raise_for_status()
-        d = r.json()
+        # 0.10.1 : la réponse du BLS contient parfois des caractères de contrôle dans ses messages (sonde du 10/11).
+        d = json.loads(r.text, strict=False)
     series = (d.get("Results") or {}).get("series") or []
     pts = []
     for x in (series[0].get("data") if series else []) or []:
@@ -327,6 +328,10 @@ async def firms(pays: str, jours: int = 10, capteur: str = "VIIRS_SNPP_NRT", ava
     """NASA FIRMS : nombre de détections de feux actifs par jour (pays ISO3, 1 à 10 jours)."""
     cle = _cle("FIRMS_MAP_KEY")
     jours = max(1, min(10, int(jours)))
+    # 0.10.1 : les produits « temps réel » (NRT) ne couvrent que les derniers mois ; au-delà, le produit standard (SP)
+    # (sonde du 10/11 : 400 pour une date de juin en NRT).
+    if avant and (date.today() - avant).days > 60 and capteur.endswith("_NRT"):
+        capteur = capteur[:-4] + "_SP"
     url = f"https://firms.modaps.eosdis.nasa.gov/api/country/csv/{cle}/{capteur}/{pays}/{jours}"
     if avant:
         url += f"/{(avant - timedelta(days=jours - 1)).isoformat()}"
@@ -460,7 +465,7 @@ async def sanctions_ue(terme: str | None = None, programme: str | None = None, a
     def col(*mots: str) -> str | None:
         return next((v for k, v in champs.items() if all(m in k for m in mots)), None)
     c_id, c_nom = col("logical", "id"), col("wholename")
-    c_date = col("designation", "date") or col("publication", "date")
+    c_date, c_pub = col("designation", "date"), col("publication", "date")
     c_prog, c_type = col("programme"), col("subjecttype")
     vus: dict[str, dict] = {}
     for r in lecteur:
@@ -470,7 +475,9 @@ async def sanctions_ue(terme: str | None = None, programme: str | None = None, a
             continue
         if terme and terme.lower() not in nom.lower() and ident not in vus:
             continue
-        j = _jour(r.get(c_date)) if c_date else None
+        # 0.10.1 : la date de désignation manque souvent (sonde : 158 entrées seulement) ; repli sur la date de
+        # publication du règlement qui l'inscrit.
+        j = (_jour(r.get(c_date)) if c_date else None) or (_jour(r.get(c_pub)) if c_pub else None)
         e = vus.setdefault(ident, {"date": j, "valeur": None, "noms": set(), "programme": prog,
                                    "type": (r.get(c_type) or "") if c_type else ""})
         if j and (not e["date"] or j < e["date"]):
