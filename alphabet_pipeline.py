@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.1"
+VERSION_BOT = "0.10.2"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -835,6 +835,50 @@ async def puits(q: Question, plan: dict, llm: Llm, aujourdhui: str, jours: int,
     return trace, resultats, vue
 
 
+MOIS = {m: i for i, ms in enumerate((("janvier", "january", "jan"), ("février", "fevrier", "february", "feb"),
+                                     ("mars", "march", "mar"), ("avril", "april", "apr"), ("mai", "may"),
+                                     ("juin", "june", "jun"), ("juillet", "july", "jul"), ("août", "aout", "august", "aug"),
+                                     ("septembre", "september", "sep", "sept"), ("octobre", "october", "oct"),
+                                     ("novembre", "november", "nov"), ("décembre", "decembre", "december", "dec")), 1)
+        for m in ms}
+
+
+def dates_citees(texte: str) -> list[str]:
+    """Dates complètes citées dans un texte (AAAA-MM-JJ, « 11 novembre 2026 », « November 11, 2026 »), en ISO."""
+    t = str(texte or "")
+    sortie = [f"{a}-{m}-{j}" for a, m, j in re.findall(r"\b(\d{4})-(\d{2})-(\d{2})", t)]
+    for j, mo, a in re.findall(r"\b(\d{1,2})(?:er)?\s+([A-Za-zéûô]+)\.?\s+(\d{4})\b", t):
+        if mo.lower() in MOIS:
+            sortie.append(f"{a}-{MOIS[mo.lower()]:02d}-{int(j):02d}")
+    for mo, j, a in re.findall(r"\b([A-Za-z]+)\.?\s+(\d{1,2}),?\s+(\d{4})\b", t):
+        if mo.lower() in MOIS:
+            sortie.append(f"{a}-{MOIS[mo.lower()]:02d}-{int(j):02d}")
+    return sortie
+
+
+def retirer_faits_futurs(dossier: dict, textes: str, aujourdhui: str, jours: int) -> list[str]:
+    """0.10.2 (Paleka et al., ICLR 2026, fuites temporelles ; banc sans texte, 10/11 : le lecteur de secours a ancré
+    l'issue elle-même comme fait). Un mot dont le fait cite une date POSTÉRIEURE à la date d'information, absente des
+    résultats fournis, est une invention : il est retiré, et le retrait est consigné. Une date future qui figure dans
+    les résultats (un vote prévu, une échéance annoncée) reste admise : c'est un fait présent sur l'avenir."""
+    corpus = set(dates_citees(textes))
+    gardes, retires = [], []
+    for m in dossier.get("mots") or []:
+        futures = [d for d in dates_citees(m.get("fait")) if d[:10] > aujourdhui and d not in corpus]
+        if futures:
+            cle = f"{m.get('carte')}@{m.get('strate')}"
+            retires.append(cle)
+            dossier.setdefault("rejets", {})[cle] = (f"[non_classe] fait daté après la date d'information "
+                                                     f"({', '.join(sorted(set(futures)))}) et absent des résultats : retiré")
+            dossier.setdefault("_categories_rejet", {})[cle] = "non_classe"
+            continue
+        gardes.append(m)
+    if retires:
+        dossier["mots"] = gardes
+        dossier["etat"] = etat_depuis(gardes, aujourdhui, jours)
+    return retires
+
+
 def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujourdhui: str, jours: int) -> dict:
     d = {k: lecture.get(k, []) for k in ("candidats", "contre_candidate", "mots", "liaisons", "questions")}
     d["rejets"], d["_categories_rejet"] = rejets_moteur(lecture)
@@ -1242,6 +1286,9 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
     for tentative in range(MAX_CORRECTIONS + 1):
         trace["tentatives"] = tentative + 1
         dossier = assembler(lecture, plan, executees, evt, aujourdhui, jours)
+        futurs = retirer_faits_futurs(dossier, trace.get("_textes") or "", aujourdhui, jours)
+        if futurs:
+            trace["faits_futurs_retires"] = futurs
         if not dossier["mots"]:
             # État nul : aucune carte ancrée. Le moteur ne calcule pas un état vide ; sans carte, pas d'ajustement :
             # le bot postera le taux de base (bras B).

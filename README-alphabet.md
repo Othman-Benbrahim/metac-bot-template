@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.1 · skill alphabet-situationnel 0.7.55 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.2 · skill alphabet-situationnel 0.7.55 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.2** : un mot dont le fait cite une date postérieure à la date d'information, absente des résultats fournis,
+  est retiré avant le moteur (`faits_futurs_retires` au registre) : garde contre les fuites temporelles (Paleka et al.,
+  ICLR 2026) et contre l'invention de l'issue, observée sur le banc sans texte le 10 novembre.
 - **0.10.1** : après la sonde du 10 novembre (16 sources sur 22, les quatre nouvelles comprises) : `sanctions_ue` se
   replie sur la date de publication du règlement quand la date de désignation manque ; `bls` tolère les caractères de
   contrôle de la réponse ; `firms` passe au produit standard (SP) pour une date de plus de 60 jours.
