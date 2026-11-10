@@ -638,6 +638,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     symetriques, explos_corr, mediations = [], [], []
     noisy, arrets = [], {True: [], False: []}   # 0.10.4 (§34), en ombre
     temperes, a_moyens, c_sur_a_moyen = [], [], []   # 0.10.5 (§35), en ombre
+    generatifs = []                                   # 0.10.6 (§36), en ombre
     for x in resolues:
         y = issues[x["question_id"]]
         cr = x["bras"]["C"].get("critique") or {}
@@ -658,6 +659,9 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         t5 = [t_ for t_ in (om.get("tempere") or []) if t_.get("alpha") == 0.5 and isinstance(t_.get("p"), (int, float))]
         if t5 and isinstance(pc_, (int, float)):   # 0.10.5 (§35) : α = 0,5, fixé d'avance
             temperes.append(({"C_tempere": ap.borner(t5[0]["p"]), "C": ap.borner(pc_)}, y))
+        g_ = (om.get("generatif") or {}).get("p")
+        if isinstance(g_, (int, float)) and isinstance(pc_, (int, float)):   # 0.10.6 (§36)
+            generatifs.append(({"C_generatif": ap.borner(g_), "C": ap.borner(pc_)}, y))
         ea_ = x["bras"]["A"].get("essais") or {}
         if isinstance(ea_.get("moyenne"), (int, float)) and x["bras"]["A"].get("p") is not None:
             a_moyens.append(({"A_moyen": ap.borner(ea_["moyenne"]), "A": ap.borner(x["bras"]["A"]["p"])}, y))
@@ -779,6 +783,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                                   **comparer(noisy, "C_noisy_or", "C")} if noisy else None),
             "C_tempere_sur_C": ({"note": "en ombre (§35) : produit des λ à la puissance 0,5, fixée d'avance, contre C",
                                  **comparer(temperes, "C_tempere", "C")} if temperes else None),
+            "C_generatif_sur_C": ({"note": "en ombre (§36) : programme génératif (lecteur bruité, rejets comme preuves) contre C",
+                                   **comparer(generatifs, "C_generatif", "C")} if generatifs else None),
             "A_moyen_sur_A": ({"note": "en ombre (§35) : moyenne de K essais du modèle seul contre le premier essai",
                                **comparer(a_moyens, "A_moyen", "A")} if a_moyens else None),
             "C_sur_A_moyen": ({"note": "en ombre (§35) : C contre A moyenné, la référence qui retire le bruit d'un tirage",

@@ -122,6 +122,8 @@ class Tests(unittest.TestCase):
         self.assertIsInstance(om["p_noisy_or"], float)      # 0.10.4 (§34) : en ombre
         self.assertIsInstance(om["valeur_information"]["arret"], bool)
         self.assertEqual([t["alpha"] for t in om["tempere"]], [0.25, 0.5, 0.75])   # 0.10.5 (§35) : en ombre
+        self.assertIsInstance(om["generatif"]["p"], float)                          # 0.10.6 (§36) : en ombre
+        self.assertTrue(om["generatif"]["rejets_utilises"])                        # les rejets du dossier arrivent au moteur
         self.assertAlmostEqual(r.p_C, c["p_C"])          # le chiffre posté reste celui du calcul actuel
         self.assertTrue(all(x["executee"] for x in c["recherches"]))
         self.assertEqual(r.ligne["bras"]["B"]["source"], "registre fictif de démonstration")
@@ -423,7 +425,8 @@ class Tests(unittest.TestCase):
             self.assertEqual(s["bras_poste"], {"A": 1, "B": 1, "C": 1})
             self.assertEqual(s["bras"]["B"]["n"], 2)
             self.assertIn("C_noisy_or", s["C_noisy_or_sur_C"]["verdict"])
-            self.assertIn("C_tempere", s["C_tempere_sur_C"]["verdict"])        # 0.10.5 (§35)   # 0.10.4 (§34) : ombres comparées à C
+            self.assertIn("C_tempere", s["C_tempere_sur_C"]["verdict"])        # 0.10.5 (§35)
+            self.assertIn("C_generatif", s["C_generatif_sur_C"]["verdict"])    # 0.10.6 (§36)   # 0.10.4 (§34) : ombres comparées à C
             self.assertEqual(sum(v["questions"] for k, v in s["C_selon_arret_vdi"].items() if k != "note"), 1)
             lignes = (reg / "journal-bot.jsonl").read_text(encoding="utf-8").splitlines()
             x = json.loads(lignes[0]); x["p_poste"] = 0.5            # une ligne retouchée est écartée
