@@ -29,7 +29,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.9.6"
+VERSION_BOT = "0.9.7"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1089,10 +1089,14 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
                    aujourdhui: str, jours: int, historique: Historique | None = None,
-                   critique: Llm | None = None) -> dict:
+                   critique: Llm | None = None, vue_fixee: dict | None = None,
+                   donnees_fixees: str | None = None) -> dict:
     """0.9.0 : hors strate 7, la lecture exploratoire est rangée dans « exploratoire » et le statut reste
-    « hors_strate » : la règle de publication ne voit rien (A posté, jamais B ni C), le registre garde tout."""
-    c = await _alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique, critique)
+    « hors_strate » : la règle de publication ne voit rien (A posté, jamais B ni C), le registre garde tout.
+    0.9.7 : `vue_fixee` et `donnees_fixees` servent le banc « sans texte » (alphabet-chaine) : le taux de base vient
+    du banc et les faits sont des relevés de données, cités par source ; le bot Metaculus ne les passe jamais."""
+    c = await _alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique, critique,
+                        vue_fixee, donnees_fixees)
     try:
         c["symetrique"] = symetrique(c)        # 0.9.1 : en ombre, partout où c'est calculable
     except Exception as e:
@@ -1115,7 +1119,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
 
 async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
                     aujourdhui: str, jours: int, historique: Historique | None = None,
-                    critique: Llm | None = None) -> dict:
+                    critique: Llm | None = None, vue_fixee: dict | None = None,
+                    donnees_fixees: str | None = None) -> dict:
     """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet | hors_strate
     | lu_non_chiffre (et « erreur », posé par prevoir_binaire si une exception échappe)."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
@@ -1140,6 +1145,25 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
     if motif:
         return dict(trace, statut="refuse" if plan_corrigeable(motif) else "hors_alphabet", motif=motif)
 
+    if vue_fixee is not None:          # 0.9.7 : banc sans texte, taux de base fourni par le banc
+        motif = controle_vue(vue_fixee, aujourdhui)
+        if motif:
+            return dict(trace, plan=plan, statut="sans_vue", motif=motif)
+        vue, trace["vues"] = vue_fixee, {"fixee": True}
+    else:
+        vue, trace = await _vue_par_recherche(q, plan, llm, chercher, recherche_reelle, aujourdhui, jours,
+                                              historique, trace)
+        if vue is None:
+            return trace
+    trace["vue"] = vue
+    trace["p_B"] = float(vue["frequence"])
+    return await _lecture(q, plan, vue, llm, chercher, recherche_reelle, aujourdhui, jours, critique, trace,
+                          donnees_fixees)
+
+
+async def _vue_par_recherche(q: Question, plan: dict, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
+                             aujourdhui: str, jours: int, historique: Historique | None,
+                             trace: dict) -> tuple[dict | None, dict]:
     # 1. Vue extérieure d'abord, sur ses propres recherches (bras B).
     refs = await executer_requetes([{"requete": x} for x in (plan.get("recherches_reference") or []) if isinstance(x, str)],
                                    chercher, recherche_reelle, MAX_RECHERCHES_REFERENCE)
@@ -1162,9 +1186,13 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
     vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe, vue_calc, ancrage)
     if vue is None:
         refus = trace["vues"]["refus"]
-        return dict(trace, statut="sans_vue", motif=(refus[0] if refus else "vue extérieure absente"))
-    trace["vue"] = vue
-    trace["p_B"] = float(vue["frequence"])
+        return None, dict(trace, statut="sans_vue", motif=(refus[0] if refus else "vue extérieure absente"))
+    return vue, trace
+
+
+async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
+                   aujourdhui: str, jours: int, critique: Llm | None, trace: dict,
+                   donnees_fixees: str | None = None) -> dict:
     evt, evenement = evenement_depuis(plan, vue)
     hors_strate = int(plan["evenement"]["strate"]) not in strates_chiffrees()
     if hors_strate and EXPLORATOIRE:
@@ -1175,14 +1203,20 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
                           "vue extérieure enregistrée, lecture non lancée")
 
     # 2. Lecture (bras C).
-    executees = await executer_recherches(plan, chercher, recherche_reelle)
+    if donnees_fixees is not None:      # 0.9.7 : les faits sont les relevés fournis ; ni recherche ni relance
+        plan["_donnees"] = donnees_fixees
+        executees = []
+    else:
+        executees = await executer_recherches(plan, chercher, recherche_reelle)
     trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
     try:
         lecture = extraire_json(await llm(consigne_dossier(q, plan, executees, aujourdhui, jours)))
     except Exception as e:
         return dict(trace, motif=f"lecture illisible : {e}")
-    lecture, executees, relance = await relancer_angles_morts(q, plan, executees, lecture, llm, chercher,
-                                                              recherche_reelle, aujourdhui, jours)
+    relance = None
+    if donnees_fixees is None:
+        lecture, executees, relance = await relancer_angles_morts(q, plan, executees, lecture, llm, chercher,
+                                                                  recherche_reelle, aujourdhui, jours)
     # 0.5.2 : le texte des résultats, gardé hors registre pour le contrôle d'attribution (controle_attribution).
     trace["_textes"] = "\n".join(str(r.get("resultat") or "") for r in executees if r.get("executee")) + (
         "\n" + plan["_donnees"] if plan.get("_donnees") else "")

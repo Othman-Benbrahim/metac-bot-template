@@ -798,6 +798,26 @@ class Tests(unittest.TestCase):
         self.assertIn("CONTREDIT ≠ MARQUEUR NON REMPLI", r)
         self.assertIn("INCOMPLET", r)
 
+    def test_vue_et_donnees_fixees(self):                         # 0.9.7 : banc sans texte (alphabet-chaine)
+        llm = LlmSimule([PLAN, lecture()])
+        appels = []
+
+        async def ne_pas_chercher(req):
+            appels.append(req)
+            return ""
+        c = asyncio.run(ap.alphabet(Q, "relevés", llm, ne_pas_chercher, True, "2026-11-03", 30,
+                                    vue_fixee=vue(0.25, source="registre du banc"),
+                                    donnees_fixees="[D1] relevé fictif daté (source : API fictive)"))
+        self.assertEqual(appels, [])                                    # aucune recherche lancée
+        self.assertEqual(len(llm.consignes), 2)                         # plan + lecture, ni vue ni relance
+        self.assertIn("[D1] relevé fictif", llm.consignes[1])
+        self.assertEqual(c["vues"], {"fixee": True})
+        self.assertAlmostEqual(c["p_B"], 0.25)
+        llm2 = LlmSimule([PLAN])
+        c2 = asyncio.run(ap.alphabet(Q, "r", llm2, ne_pas_chercher, True, "2026-11-03", 30,
+                                     vue_fixee={"frequence": 0.3}))
+        self.assertEqual(c2["statut"], "sans_vue")                      # une vue fixée incomplète est refusée
+
     def test_dossiers_horodates(self):                            # B8
         reg = Path(tempfile.mkdtemp(prefix="registre-dossiers-"))
         ancien, ap.REGISTRE = ap.REGISTRE, reg
