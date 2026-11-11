@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.38 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.39 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.39** : **gain de C selon la marge de B, et partition de Murphy**, descriptifs (d'après Jenkins et Cardei,
+  arXiv 2611.10325 : un gain se mesure à la place qui restait). Score : `comparaison.marge_B` (gain normalisé de Hake
+  en Brier, (Brier_B − Brier_C) / Brier_B, et gain log de C sur B par tiers de marge de B) et
+  `comparaison.partition_murphy` (fiabilité, résolution, incertitude pour A, B, C, sur cinq bacs). Le test principal
+  reste le gain apparié C − B ; rien ne change au calcul ni au chiffre posté.
 - **0.10.38** : **provenance des F vérifiée hors du modèle**, en ombre (décision d'auteur du 2026-11-11, d'après
   « The Corroboration Illusion », arXiv 2609.22246 : un LLM prend tout texte pertinent pour une preuve forte et ignore
   l'éditeur). La consigne demande, pour chaque F « independantes », `source_urls` (une URL par source, copiée des
