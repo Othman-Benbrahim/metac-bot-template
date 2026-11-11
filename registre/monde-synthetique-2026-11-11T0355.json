@@ -1,0 +1,531 @@
+{
+  "calcule_le": "2026-11-11T03:55:28+00:00",
+  "version_skill": "0.7.67",
+  "version_bot": "0.10.22",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    12,
+    23
+  ],
+  "consigne_lecteur_sha256": "a2f80edfcd8302a4d1d06d5715eee0ea9cd73c54435d2b18596ccbf7f066e9e1",
+  "reserve": "narrateur et lecteur de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 12,
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 41,
+    "cartes_absentes": 45,
+    "mesure": {
+      "sens_F": 0.2683,
+      "sens_f": 0.6098,
+      "sens": 0.878,
+      "fp_F": 0.0444,
+      "fp_f": 0.1333,
+      "fp": 0.1778
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 4,
+      "aucun_fait": 1
+    },
+    "etats_nuls_justes": 0,
+    "situations_vides": 0,
+    "par_carte": {
+      "COM": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "CRO": {
+        "presente": 6,
+        "lue_si_presente": 5,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 3,
+        "lue_si_absente": 3
+      },
+      "EME": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 8,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 3,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "INC": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "PER": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "POL": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 1,
+        "lue_si_absente": 1
+      },
+      "PRO": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "RCS": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "REC": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 5,
+        "lue_si_absente": 0
+      },
+      "RES": {
+        "presente": 4,
+        "lue_si_presente": 4,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "RSN": {
+        "presente": 2,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 0
+      },
+      "SEU": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 2
+      },
+      "TRA": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "TRC": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 1
+      }
+    }
+  },
+  "situations": [
+    {
+      "graine": 12,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "POL@7",
+        "PRO@7",
+        "RES@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "HIE@7",
+        "PER@7",
+        "RSN@7",
+        "TRA@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-12] Expansion du réseau ferroviaire de Valdoris : troisième ligne inaugurée — https://agence-meridiem.example/transport/valdoris-ligne3\n\nL'Office des infrastructures de Valdoris a inauguré le 12 septembre sa troisième ligne de fret longue distance. Le réseau comptait 1 200 km de voies en 2022, 1 850 km en 2024, et atteint désormais 2 610 km. Le taux d'accroissement annuel, stable autour de 18 %, reste proportionnel à la longueur déjà en service. Les ingénieurs estiment que la capacité maximale du territoire, fixée à 4 000 km par les études géologiques, sera atteinte d'ici 2031 si le rythme se maintient.\n\n[2026-09-28] Traité de Morcavel : Brenne interdit tout survol militaire étranger — https://presse-continentale.example/diplomatie/morcavel-survol\n\nLe Parlement de Brenne a ratifié le 28 septembre le Traité de Morcavel, qui retire explicitement aux forces armées étrangères le droit de transit aérien au-dessus du territoire national. Deux demandes de survol déposées par la République de Thurac ont été rejetées le jour même, leurs dossiers classés « irrecevables » par le ministère compétent. Le texte prévoit une amende de 40 millions de crédits et le retrait immédiat de l'appareil pour toute violation constatée.\n\n[2026-10-07] Crise de Selthar : les États choisissent leur camp, les neutres marginalisés — https://quotidien-orbis.example/international/selthar-polarisation\n\nDepuis l'incident naval du 3 octobre au large de Selthar, les quarante-deux États membres de l'Union de Corentie se sont répartis en deux blocs déclarés : vingt-six ont signé la déclaration de soutien à Valdoris, seize ont adhéré au mémorandum de Thurac. Les quatre États qui avaient refusé de signer l'un ou l'autre texte n'ont reçu aucune invitation aux réunions de crise tenues les 5 et 6 octobre. Leurs ambassadeurs décrivent une « invisibilité totale » dans les couloirs de négociation.\n\n[2026-10-19] Financement militaire de Thurac : l'écart entre budget défense et budget social se creuse — https://agence-meridiem.example/economie/thurac-budget-2027\n\nLe projet de budget 2027 de Thurac, présenté le 19 octobre, alloue 31 % des dépenses publiques à la défense contre 14 % aux services sociaux. En 2023, ces parts étaient respectivement de 22 % et 21 %. Le rapport défense/social est ainsi passé de 1,05 à 2,21 en trois exercices budgétaires. Le ministre des finances a confirmé que ces proportions seront reconduites à l'identique en 2028 selon le plan pluriannuel adopté en séance.\n\n[2026-11-04] Corridor de Peltane : trois capitales, un seul point de passage — https://presse-continentale.example/geopolitique/peltane-corridor\n\nLes chancelleries de Valdoris, de Brenne et de la Confédération de Mauges entretiennent chacune des liaisons diplomatiques bilatérales actives, mais les trois États ne disposent d'aucun canal trilatéral direct. Tous les échanges entre Brenne et Mauges transitent exclusivement par l'ambassade de Valdoris à Peltane, identifiée dans un rapport du 4 novembre comme « nœud unique de transmission ». Le document note qu'une rupture des relations entre Valdoris et l'un des deux autres États suffirait à interrompre l'ensemble des communications entre les trois capitales.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "CRO@7": "f",
+        "CTR@7": "f",
+        "POL@7": "f",
+        "PRO@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 13,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "PRO@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "POL@7",
+        "REC@7",
+        "RES@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-12] Expansion du réseau ferroviaire de Valdoris : troisième phase lancée — https://agence-teluria.example/transport/valdoris-rail-phase3\n\nLe ministère des Infrastructures de Valdoris a inauguré vendredi 47 kilomètres de voie supplémentaires, portant le réseau à 312 kilomètres. En 2022, il en comptait 180 ; en 2024, 265. Le budget alloué progresse selon le même rythme : 1,2 milliard de dalvars en 2022, 1,9 milliard en 2024, 2,8 milliards pour 2026. Les ingénieurs estiment que la capacité maximale du corridor central, fixée à 500 kilomètres, sera atteinte d'ici 2031.\n\n[2026-10-03] Accord de Merthane : les exportations de gaz de Sorvénie plafonnées à 4 Gm³ annuels — https://presse-continentale.example/energie/accord-merthane-sorvenie\n\nEntré en vigueur le 1er octobre, l'accord de Merthane interdit à la Sorvénie d'exporter plus de 4 milliards de mètres cubes de gaz par an vers les pays signataires du Pacte de Luvorn. La Sorvénie avait acheminé 5,7 Gm³ en 2025. Une cargaison de 0,4 Gm³ prévue pour le port de Drassek a été bloquée le 2 octobre par les autorités douanières ; l'opérateur Sorvgaz a déposé une réclamation formelle auprès du secrétariat du Pacte.\n\n[2026-10-17] Valdoris et Sorvénie : l'écart de dépenses militaires se creuse — https://observatoire-geostrategique.example/defense/valdoris-sorvenie-ratio-2026\n\nSelon le rapport annuel de l'Institut Felbrun publié le 15 octobre, Valdoris consacre désormais 4,1 % de son produit intérieur brut à la défense, contre 1,8 % pour la Sorvénie. En 2021, les deux pays affichaient respectivement 2,3 % et 1,6 %. Le rapport note que l'écart de ratio, de 0,7 point en 2021, atteint 2,3 points en 2026, sans que le PIB global des deux États ait varié dans des proportions comparables.\n\n[2026-11-04] L'Agence commerciale de Luvorn devient autorité de régulation régionale — https://fil-luvorn.example/institutions/agence-commerciale-mutation\n\nFondée en 2009 comme organe consultatif chargé de faciliter les échanges entre membres du Pacte, l'Agence commerciale de Luvorn a adopté le 3 novembre un nouveau statut lui conférant un pouvoir de sanction contraignant. En 2019, elle avait reçu compétence d'arbitrage ; en 2023, un droit d'enquête unilatérale. Sa mission de promotion des échanges reste inscrite à l'article premier de sa charte, inchangé depuis 2009. Ses effectifs permanents sont passés de 40 agents en 2009 à 214 en 2026.\n\n[2026-11-11] Sorvénie : le projet de loi sur les investissements étrangers rejeté en commission — https://agence-teluria.example/politique/sorvenie-loi-investissements-rejet\n\nLa commission parlementaire de Sorvénie a rejeté le 10 novembre un projet de loi qui aurait autorisé des participations étrangères supérieures à 49 % dans les entreprises du secteur énergétique. Le texte avait été déposé en réponse à une offre de rachat de 62 % du capital de Sorvgaz par le consortium Altrek. Le rejet maintient le plafond légal existant à 49 % ; le consortium a déclaré suspendre ses négociations, l'opération étant « juridiquement impraticable » dans ce cadre.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "f",
+        "PRO@7": "F",
+        "TRA@7": "F",
+        "POL@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 14,
+      "presentes": [
+        "TRC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "EME@7",
+        "SEU@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-12] Valdorek maintient le protocole douanier de 1947 malgré l'accord régional — https://gazetteorientale.example/valdorek-douanes-1947\n\nLe ministère du Commerce de Valdorek a confirmé vendredi que les formulaires D-47, instaurés par le traité bilatéral de Kessenburg signé en octobre 1947, resteront obligatoires pour tout transit de marchandises vers le port de Miravel. Les négociateurs de l'accord régional Tharsis, entré en vigueur en janvier 2025, avaient proposé un formulaire unifié. Valdorek a refusé, invoquant 79 ans de jurisprudence administrative adossée aux D-47. Aucun avantage logistique actuel ne justifie ce doublon documentaire, selon le rapport de l'Institut Tharsis daté du 8 septembre 2026.\n\n[2026-09-29] Lenteborg conserve son réseau ferroviaire à écartement impérial de 1891 — https://chroniquesducentre.example/lenteborg-rail-ecartement\n\nLes ingénieurs de Lenteborg Rail ont présenté le 29 septembre leur plan quinquennal sans modification de l'écartement de voie hérité du réseau impérial Dravek, posé entre 1891 et 1904. Adopter l'écartement standard régional coûterait 2,1 milliards de florins ; le maintien de l'écartement actuel impose en revanche des bogies de conversion à chaque frontière, facturés 340 millions par an. Les responsables techniques ont reconnu devant la commission parlementaire qu'un réseau construit aujourd'hui n'utiliserait pas cet écartement.\n\n[2026-10-14] La clause Morvaine de 1953 bloque toujours les investissements miniers à Sultrec — https://agencepresseveldane.example/sultrec-clause-morvaine\n\nLe conseil municipal de Sultrec a rejeté le 14 octobre trois dossiers d'investissement minier étrangers en application de la clause Morvaine, disposition inscrite dans la charte foncière de 1953 après la nationalisation forcée des mines de cuivre par l'administration coloniale Drevath. La clause interdit toute cession de droits souterrains à des entités non résidentes pour une durée illimitée. Les juristes consultés par le Fonds de développement de Sultrec estiment que cette restriction n'aurait pas été rédigée en ces termes dans le contexte juridique actuel.\n\n[2026-10-31] Harvenstadt célèbre le serment des Cendres, rituel de deuil lié à la défaite de 1683 — https://nouvellesdunord.example/harvenstadt-serment-cendres-2026\n\nQuelque 12 000 habitants de Harvenstadt ont participé le 31 octobre à la procession du Serment des Cendres, commémorant la capitulation de la ville devant les armées de Kolvrath en novembre 1683. Les délégués des sept quartiers historiques ont déposé des urnes de cendres devant la porte Brenfeld, conformément au protocole fixé par le conseil municipal en 1701. Cette cérémonie conditionne depuis lors la légitimité des élus locaux : tout maire absent est passible d'une motion de défiance selon le règlement intérieur de 1923.\n\n[2026-11-11] Trelova applique encore la loi de réquisition de 1938 pour loger ses délégations étrangères — https://observateurtelvar.example/trelova-requisition-1938\n\nLe gouvernement de Trelova a notifié le 11 novembre à quatre propriétaires privés du quartier Aldenmoor la réquisition temporaire de leurs immeubles pour accueillir les délégations du sommet Velnar. La procédure s'appuie sur la loi d'urgence diplomatique du 17 mars 1938, jamais abrogée. Le ministère du Logement a indiqué dans un communiqué interne, consulté par l'Agence Telvar, qu'aucun texte équivalent n'a été rédigé depuis, faute de consensus parlementaire, et que la loi de 1938 demeure le seul instrument juridique disponible pour ce type d'opération.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "TRC@7": "f",
+        "SEU@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 15,
+      "presentes": [
+        "CRO@7",
+        "POL@7",
+        "RCS@7",
+        "RES@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "HIE@7",
+        "INC@7",
+        "PER@7",
+        "REC@7"
+      ],
+      "evenement": "PRO@7",
+      "texte": "[2026-09-12] Adhésions à l'Alliance de Vareth : 4, 11, 23 membres en dix-huit mois — https://agence-meridiem.example/vareth-adhesions-sept26\n\nL'Alliance de Vareth comptait 4 États membres en mars 2025, 11 en décembre 2025, puis 23 en septembre 2026. Le secrétariat général a confirmé vendredi que dix-neuf candidatures supplémentaires sont en cours d'examen. Le budget collectif suit la même courbe : 340 millions de dalvars en 2025, 890 millions projetés pour 2027. Les analystes de l'Institut Corvel estiment que la capacité logistique du secrétariat constitue désormais le plafond effectif de toute nouvelle intégration.\n\n[2026-09-28] Sommet de Brelvane : les délégations se répartissent en deux blocs sans position commune — https://fil-kontara.example/brelvane-sommet-280926\n\nAu sommet de Brelvane, les vingt-deux délégations présentes se sont réparties en deux groupes distincts dès la séance d'ouverture. Le bloc dit « des États souverains » a refusé tout mécanisme de contrôle supranational ; le bloc « intégrationniste » a conditionné sa signature à l'inverse. Aucune délégation n'a maintenu de position intermédiaire au-delà de la première journée. Les trois observateurs neutres invités ont quitté la salle sans prendre la parole, selon le compte rendu officiel publié le 29 septembre.\n\n[2026-10-07] Rapport Delvox : l'indice de stabilité du Conseil de Tarenne modifie ses propres critères d'évaluation — https://presse-orvane.example/delvox-tarenne-071026\n\nLe Conseil de Tarenne publie depuis 2021 un indice annuel mesurant sa propre stabilité institutionnelle. Dans l'édition du 7 octobre 2026, le Conseil a constaté que la publication des éditions précédentes avait conduit ses membres à modifier leurs comportements de vote pour améliorer le score. En réponse, le Conseil a révisé trois des sept critères de l'indice le jour même de sa publication. Le nouveau barème entre en vigueur immédiatement et s'applique rétroactivement au calcul du score courant.\n\n[2026-10-19] Corridor de Meltz : trois États, deux accords, un pont ferroviaire unique — https://agence-meridiem.example/corridor-meltz-191026\n\nLe flux de matières premières entre Solkanie, Drevan et la République de Hurst transite exclusivement par le pont ferroviaire de Meltz-Sud, géré par la société Orfen Rail. Solkanie et Drevan sont liées par un accord bilatéral de transit signé en 2019 ; Drevan et Hurst par un second accord conclu en 2023. Aucun lien direct n'existe entre Solkanie et Hurst. Le 19 octobre, Orfen Rail a suspendu ses opérations pour maintenance, interrompant l'intégralité des échanges entre les trois États pendant soixante-douze heures.\n\n[2026-11-08] L'Organisation de Sécurité de Valdren : de forum consultatif à structure exécutive en quatre étapes — https://fil-kontara.example/valdren-transformation-081126\n\nCréée en 2018 comme forum consultatif sans pouvoir contraignant, l'Organisation de Sécurité de Valdren a adopté en 2020 un secrétariat permanent, en 2022 un mécanisme de sanctions économiques, puis en avril 2026 une force d'intervention rapide de 4 000 soldats. Le 8 novembre 2026, son conseil directeur a voté l'instauration d'un droit de veto à majorité qualifiée. L'organisation conserve depuis l'origine sa charte fondatrice de 2018 et ses trente-et-un États membres initiaux, invariants à travers chacune de ces étapes.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "CRO@7": "f",
+        "RCS@7": "f",
+        "RES@7": "f",
+        "POL@7": "f",
+        "TRA@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 16,
+      "presentes": [
+        "RES@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "EME@7",
+        "RSN@7"
+      ],
+      "evenement": "PRO@7",
+      "texte": "[2026-09-12] Accord trilatéral entre Valdoris, Menkara et le port franc de Suleth — https://agencepresseorient.example/diplomatie/accord-trilatéral-sept26\n\nLes ministres des affaires étrangères de Valdoris et de Menkara ont signé le 12 septembre à Suleth un protocole de transit commercial. Suleth, cité-État portuaire, relie les deux pays par sa zone franche : sans son infrastructure douanière, aucun échange direct n'existe entre Valdoris et Menkara, qui ne partagent pas de frontière commune. Le texte prévoit 14 convois hebdomadaires transitant par le terminal nord de Suleth dès le 1er octobre 2026.\n\n[2026-09-28] Rupture du câble sous-marin entre Orvane et Thelka : les données redirigées via Menkara — https://techpresseconfluent.example/infra/cable-orvane-thelka-sept26\n\nLe 28 septembre, l'opérateur Nexocom a confirmé la section du câble sous-marin reliant Orvane à Thelka. Le trafic de données entre les deux territoires est désormais acheminé par le nœud de routage de Menkara, seul point de connexion alternatif disponible. Orvane et Thelka n'entretiennent aucun lien câblé direct de substitution. Nexocom estime la durée de dépendance envers Menkara à six semaines minimum.\n\n[2026-10-14] Sommet de Drevna : Caldesh rejoint le couloir énergétique Valdoris–Suleth — https://quotidiengeopolitique.example/energie/caldesh-drevna-oct26\n\nLe 14 octobre à Drevna, Caldesh a paraphé son adhésion au couloir gazier Valdoris–Suleth. Le réseau compte désormais quatre nœuds explicites : Valdoris (producteur), Suleth (transit), Menkara (financement) et Caldesh (consommateur terminal). Les délégués ont consigné que la suppression du terminal de Suleth interromprait la totalité des flux vers Caldesh et Menkara, aucune liaison directe n'existant entre ces deux derniers et Valdoris.\n\n[2026-10-31] Menkara suspend ses liaisons aériennes avec Orvane, Thelka maintient les siennes — https://agencepresseorient.example/transport/menkara-orvane-suspension-oct26\n\nDepuis le 31 octobre, Menkara n'opère plus aucun vol vers Orvane. Thelka, qui maintient trois rotations hebdomadaires avec Orvane, devient le seul intermédiaire aérien entre Menkara et Orvane : les passagers menkaris à destination d'Orvane transitent désormais obligatoirement par l'aéroport de Thelka-Centrale. Le volume de correspondances enregistré à Thelka-Centrale a augmenté de 340 passagers par semaine selon les données de l'autorité aéroportuaire thelkaise.\n\n[2026-11-09] Conférence de Suleth : cartographie officielle des liaisons diplomatiques régionales — https://diplomatiemonde.example/conferences/suleth-nov26\n\nLe 9 novembre, vingt-deux délégations ont remis à la présidence de Suleth une carte des canaux diplomatiques actifs dans la région. Le document identifie Suleth comme point de contact entre sept États qui n'entretiennent pas de relations bilatérales directes entre eux. Valdoris et Caldesh, par exemple, n'ont échangé aucune communication officielle sans passer par Suleth depuis 2019. La carte recense également trois paires d'États — dont Orvane et Menkara — sans aucun lien répertorié.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "F",
+        "CTR@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 17,
+      "presentes": [
+        "COM@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "PRO@7",
+        "RCS@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-12] Fonds climatique de Valderra : trois nations fixent les règles de contribution — https://agencepresseorient.example/valderra-fonds-climatique\n\nLes gouvernements de Valderra, Morcène et Thalspie ont signé vendredi la Charte du Fonds Vert Tripartite, dotée de 2,4 milliards de crédits communs destinés à la reforestation du bassin du fleuve Orrène. Chaque membre s'engage à verser 0,3 % de son PIB annuel. Un comité d'audit indépendant, siégeant à Morcène, est habilité à suspendre les droits de vote de tout État dont la contribution accuse un retard supérieur à 90 jours.\n\n[2026-09-28] Réseau portuaire de l'Archipel Delvane : Kestoria exclue pour non-paiement — https://portinfodelvane.example/kestoria-exclusion\n\nL'Autorité portuaire commune des cinq îles de l'Archipel Delvane a voté mardi l'exclusion temporaire de Kestoria de l'accès aux infrastructures partagées. Kestoria n'avait versé aucune cotisation au fonds d'entretien des quais depuis dix-huit mois, accumulant un déficit de 47 millions d'unités de compte. Les quatre membres restants — Alvène, Prouche, Seltimar et Dorrec — ont invoqué l'article 12 de la Charte portuaire commune, qui prévoit la suspension des droits d'amarrage en cas d'impayé prolongé.\n\n[2026-10-14] Programme spatial Aurvane : Brelquie accusée de sous-contribution — https://cosmospress-aurvane.example/brelquie-litige\n\nLors de la session plénière du Consortium spatial Aurvane, réunissant six États membres, les délégués de Fornac, Seltavar et Midrène ont formellement reproché à Brelquie de n'avoir fourni que 11 % de sa quote-part technique pour la station orbitale commune, contre 30 % attendus selon le protocole fondateur de 2024. Le directeur exécutif du Consortium a annoncé l'ouverture d'une procédure de mise en conformité, assortie d'une amende journalière de 200 000 crédits à compter du 1er novembre.\n\n[2026-10-31] Réserve alimentaire du Pacte de Grenvois : audit révèle des prélèvements non déclarés — https://agencegrenvois.example/audit-reserve\n\nL'organe de contrôle du Pacte de Grenvois, qui regroupe huit États continentaux autour d'un stock stratégique de céréales commun, a publié vendredi un rapport signalant que deux membres non identifiés ont prélevé 340 000 tonnes de blé entre janvier et août 2026 sans en informer le secrétariat. Le règlement intérieur du Pacte impose une déclaration préalable pour tout retrait supérieur à 5 000 tonnes. Une réunion extraordinaire est convoquée pour le 15 novembre afin de statuer sur d'éventuelles sanctions.\n\n[2026-11-11] Observatoire astronomique de Halvène : quatre pays adoptent un barème de temps d'antenne — https://sciencepressehalvene.example/barème-antenne\n\nLes quatre États copropriétaires de l'Observatoire de Halvène — Dorrec, Midrène, Fornac et Thalspie — ont ratifié lundi un barème révisé d'allocation du temps d'observation sur le télescope commun. Chaque membre obtient un nombre d'heures annuelles strictement proportionnel à sa contribution financière de l'année précédente. Tout État n'ayant pas honoré sa cotisation avant le 31 janvier se voit automatiquement exclu du calendrier d'observation pour le semestre suivant, selon l'article 7 du nouveau protocole.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "COM@7": "F",
+        "CTR@7": "F",
+        "PRO@7": "F"
+      },
+      "rejets_categories": {
+        "RCS@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 18,
+      "presentes": [
+        "INC@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "evenement": "CTR@7",
+      "texte": "[2026-09-12] Valdoris suspend la signature du traité minier en attendant les résultats du recensement frontalier — https://agence-meridial.example/valdoris-traite-minier-report\n\nLe gouvernement de Valdoris a annoncé vendredi le report de la signature du traité d'exploitation minière avec la République de Kethara. Le ministre des Ressources, Orvane Dultec, a déclaré que la délégation attendait les conclusions du recensement des populations frontalières, dont les résultats sont attendus pour le 30 octobre. Deux scénarios restent officiellement ouverts : signature immédiate ou renégociation des clauses de partage. Aucune date de reprise des négociations n'a été fixée.\n\n[2026-09-28] Belvane déploie trois unités d'observation supplémentaires le long du couloir de Mertash — https://fil-continents.example/belvane-mertash-observation\n\nL'état-major de Belvane a confirmé dimanche le déploiement de trois unités d'observation légère dans le couloir de Mertash, portant leur effectif total à sept cents hommes. Le porte-parole militaire, colonel Sira Fontec, a précisé que ces unités resteraient en position « jusqu'à clarification des intentions de la coalition Druven ». Aucune manœuvre offensive n'a été ordonnée. Le budget alloué à cette présence provisoire s'élève à 4,2 millions de laris pour les six prochaines semaines.\n\n[2026-10-14] La Fédération de Cauren mandate un cabinet d'analyse pour évaluer trois scénarios électoraux en Ostrevie — https://presse-cauren.example/ostrevie-scenarios-mandat\n\nLe ministère des Affaires extérieures de Cauren a signé le 14 octobre un contrat de 870 000 unités avec le cabinet Prolexis pour l'analyse de trois scénarios issus des élections générales d'Ostrevie prévues en janvier 2027 : victoire du bloc nationaliste, coalition centriste, ou scrutin invalidé. Les conclusions sont attendues avant le 15 novembre. Cauren conditionne explicitement l'ouverture de ses négociations commerciales avec Ostrevie à la réception de ce rapport.\n\n[2026-10-31] Kethara maintient ses troupes en alerte de niveau deux dans l'attente d'une réponse officielle de Valdoris — https://agence-meridial.example/kethara-alerte-valdoris\n\nLes forces armées de Kethara sont maintenues en alerte de niveau deux depuis le 28 octobre, selon un communiqué publié vendredi par le commandement central. Le général Pavo Ulresh a indiqué que ce dispositif resterait actif « jusqu'à réception de la position formelle de Valdoris sur le traité minier ». Deux cent quarante véhicules blindés légers demeurent stationnés à moins de quarante kilomètres de la zone contestée. Aucun incident n'a été signalé.\n\n[2026-11-08] Druven consulte quatre capitales régionales avant de statuer sur son adhésion au Pacte de Lenvarre — https://observateur-druven.example/pacte-lenvarre-consultations\n\nLa chancellerie de Druven a confirmé samedi avoir dépêché des émissaires dans quatre capitales — Cauren, Belvane, Ostrevie et Morthac — pour recueillir des garanties écrites avant tout vote sur l'adhésion au Pacte de Lenvarre, dont la date limite est fixée au 30 novembre. Le chef de la diplomatie, Ansel Vroque, a déclaré que deux options restaient sur la table : adhésion pleine ou statut d'observateur provisoire. Les frais de mission sont estimés à 310 000 unités.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "F"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 19,
+      "presentes": [
+        "CRO@7",
+        "RSN@7"
+      ],
+      "absentes": [
+        "INC@7",
+        "RCS@7",
+        "REC@7"
+      ],
+      "evenement": "COM@7",
+      "texte": "[2026-09-12] Adhésions à l'Alliance de Vareskia : nouveau palier franchi — https://gazettedulevant.example/politique/vareskia-adhesions-sept26\n\nLe secrétariat de l'Alliance de Vareskia a publié vendredi ses chiffres d'adhésion : 14 États membres en janvier 2025, 23 en janvier 2026, 31 au 1er septembre 2026. Le taux d'entrée annuel suit le nombre d'États déjà membres, selon le rapport interne consulté par la rédaction. Le secrétaire général Dovan Pretch a indiqué que le traité fondateur plafonne l'adhésion à 40 membres, seuil jugé nécessaire pour préserver l'équilibre des votes au Conseil.\n\n[2026-10-03] Troupes de Vareskia et de Meldoria : exercices désormais calés sur le même cycle — https://observateurmilitaire.example/exercices/vareskia-meldoria-oct26\n\nJusqu'en 2024, Vareskia tenait ses manœuvres interarmées tous les huit mois, Meldoria tous les onze mois. Après la signature d'un protocole de coordination opérationnelle le 14 mars 2026, les deux armées ont conduit leur premier exercice conjoint du 28 septembre au 2 octobre 2026, sur la base de Tolven. Les états-majors ont confirmé que les cycles nationaux seront désormais alignés sur une cadence commune de neuf mois, effective dès janvier 2027.\n\n[2026-10-19] Réseau diplomatique de Vareskia : croissance accélérée des ambassades — https://diplomatiehebdo.example/reseau/vareskia-ambassades-oct26\n\nLe ministère des Affaires étrangères de Vareskia recensait 18 ambassades en 2022, 27 en 2024 et 41 au 15 octobre 2026. Le budget d'ouverture de postes est proportionnel au nombre de postes existants, selon le document budgétaire transmis au Parlement de Vareskia. Des analystes du ministère notent que la capacité logistique nationale plafonne à environ 55 postes, limite fixée par les effectifs formés disponibles.\n\n[2026-11-04] Fréquences de patrouille navale : Meldoria et Ostrevane s'alignent après accord de Tolven — https://mersetfrontieres.example/naval/meldoria-ostrevane-nov26\n\nLa marine de Meldoria patrouillait le détroit de Cassen toutes les 72 heures ; celle d'Ostrevane, toutes les 96 heures. Depuis l'accord de Tolven signé le 9 octobre 2026, les deux flottes partagent un canal radio crypté commun. Au 1er novembre 2026, les relevés de position publiés par les deux états-majors montrent des patrouilles conjointes espacées de 84 heures, rythme intermédiaire adopté par les deux marines sans directive extérieure.\n\n[2026-11-11] Adhésions à l'Alliance de Vareskia : approche du plafond statutaire — https://gazettedulevant.example/politique/vareskia-adhesions-nov26\n\nLe secrétariat de l'Alliance de Vareskia a enregistré trois nouvelles demandes d'adhésion entre le 1er et le 10 novembre 2026, portant le total à 37 États. Le rythme mensuel d'adhésion, qui atteignait quatre États par mois en juillet, est tombé à une moyenne de 1,5 en octobre-novembre. Dovan Pretch a rappelé que le traité fondateur fixe le plafond à 40 membres ; deux candidatures sont en cours d'examen.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "CRO@7": "F"
+      },
+      "rejets_categories": {
+        "INC@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 20,
+      "presentes": [
+        "PER@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "EME@7",
+        "TRC@7"
+      ],
+      "evenement": "POL@7",
+      "texte": "[2026-09-14] Sommet de Varethie : troisième édition consécutive du forum annuel sur les détroits — https://agencepressealtane.example/geopolitique/varethie-sommet-2026\n\nLe forum de Varethie sur la liberté de navigation s'est ouvert dimanche pour la troisième année consécutive : première session en septembre 2024, deuxième en septembre 2025, troisième ce 14 septembre 2026. Quarante-deux délégations issues du bloc de la mer de Solène ont pris place dans la salle plénière. La phase d'ouverture, consacrée aux déclarations nationales, dure trois jours ; la phase de négociation suit pendant cinq jours. Les organisateurs ont confirmé la date de la prochaine édition : septembre 2027.\n\n[2026-10-03] Exercices navals de la Coalition de Mervante : quatrième manœuvre automnale en quatre ans — https://bulletindiplomatique-orvane.example/defense/mervante-exercices-oct2026\n\nLa Coalition de Mervante a lancé vendredi ses manœuvres annuelles en mer de Thulle. L'exercice s'est tenu en octobre 2023, octobre 2024 et octobre 2025 ; il débute cette année le 3 octobre 2026. La phase d'approche côtière, première des trois phases du protocole, mobilise dix-huit frégates. La phase de débarquement simulé commencera le 9 octobre, la phase de retrait le 14. Aucun incident n'a été signalé lors des trois éditions précédentes.\n\n[2026-10-21] Conférence budgétaire de l'Union de Delvarne : cycle bisannuel, sixième session — https://correspondantsdumond.example/economie/delvarne-budget-oct2026\n\nL'Union de Delvarne a ouvert mardi à Ponteclair sa sixième conférence budgétaire bisannuelle. Les sessions précédentes se sont tenues en octobre 2016, 2018, 2020, 2022 et 2024, soit un intervalle constant de vingt-quatre mois. La phase actuelle, dite « phase de cadrage », doit s'achever le 28 octobre ; la phase d'arbitrage suivra en novembre. Dix-neuf États membres ont soumis leurs projections fiscales avant la date limite fixée au 15 octobre.\n\n[2026-11-04] Rotation trimestrielle des observateurs de l'Accord de Selvane : douzième relève depuis 2023 — https://infodiplomatique-telvare.example/securite/selvane-rotation-nov2026\n\nLa douzième rotation trimestrielle des observateurs civils postés sur la ligne de cessez-le-feu de Selvane a été effectuée mardi 4 novembre 2026. Les relèves précédentes ont eu lieu en août 2026, mai 2026 et février 2026, chacune à quatre-vingt-dix jours d'intervalle. Soixante observateurs issus de sept pays membres ont quitté leurs postes ; soixante nouveaux ont pris position. La prochaine rotation est prévue pour le 3 février 2027, conformément au calendrier établi lors de la signature de l'accord en janvier 2023.\n\n[2026-11-10] Rapport semestriel sur les flux migratoires en mer de Thulle : cinquième publication depuis 2024 — https://agencepressealtane.example/migrations/thulle-rapport-nov2026\n\nL'Observatoire de Thulle a publié lundi son cinquième rapport semestriel sur les flux migratoires en mer de Thulle. Les quatre rapports précédents ont paru en novembre 2024, mai 2025, novembre 2025 et mai 2026, à intervalles de six mois. Le rapport actuel couvre la période mai–octobre 2026 et constitue la phase de bilan ; la phase de recommandations sera publiée en annexe le 17 novembre. Trois cent douze traversées ont été recensées sur la période, contre deux cent quatre-vingt-sept lors du semestre précédent.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "PER@7": "F"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "EME@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 21,
+      "presentes": [
+        "CRO@7",
+        "HIE@7",
+        "RCS@7",
+        "REC@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "EME@7",
+        "RES@7",
+        "RSN@7"
+      ],
+      "evenement": "SEU@7",
+      "texte": "[2026-09-12] Adhésions à l'Alliance de Varenne : le cap des 40 membres franchi — https://agencepresseorient.example/geopolitique/varenne-adhesions-sept2026\n\nL'Alliance de Varenne comptait 18 États membres en janvier 2025, 31 en janvier 2026, et atteint 43 membres au 12 septembre 2026 depuis l'adhésion simultanée de la République de Solange et du Duché de Merveil. Le secrétariat général, basé à Port-Halvane, indique que 11 candidatures supplémentaires sont en cours d'examen. La charte de l'Alliance plafonne le nombre de sièges au Conseil plénier à 60.\n\n[2026-09-28] Valdorie et Kestran : Nuvara livre 400 techniciens, Kestran ouvre ses ports — https://quotidiendiplomatique.example/valdorie-kestran-accord-sept2026\n\nEn application de l'accord bilatéral signé le 3 mars 2026, la République de Nuvara a acheminé le 28 septembre 400 techniciens spécialisés vers les chantiers navals de Kestran. En contrepartie, le gouvernement kestranais a accordé à la marine marchande nuvaraise un accès prioritaire aux ports de Delvort et Sarrène, conformément à l'article 7 dudit accord. Le ministre kestranais des Affaires maritimes a rappelé publiquement que cette ouverture portuaire constituait « le retour convenu » à la mise à disposition de personnel.\n\n[2026-10-07] Sommet de Halvane : le Conseil plénier invalide la décision du comité régional Sud — https://agencepresseorient.example/geopolitique/halvane-conseil-plenierOct2026\n\nRéuni le 7 octobre à Port-Halvane, le Conseil plénier de l'Alliance de Varenne a annulé par 31 voix contre 9 la résolution adoptée le 19 septembre par le comité régional Sud, qui autorisait des sanctions commerciales unilatérales contre le Duché de Merveil. Le règlement intérieur de l'Alliance dispose qu'aucune décision d'un comité régional ne devient exécutoire sans validation du Conseil plénier. Le Duché de Merveil a suspendu sa participation aux travaux du comité régional dans l'attente de la décision plénière.\n\n[2026-10-22] Rapport Halvane sur lui-même : l'Alliance publie son audit interne et révise ses procédures de vote — https://observateurdesalliances.example/audit-varenne-oct2026\n\nLe secrétariat de l'Alliance de Varenne a rendu public le 22 octobre un audit de 214 pages portant sur ses propres mécanismes de décision, commandé après la crise du comité régional Sud. Le document conclut que le seuil de majorité qualifiée de 60 % favorise les blocages. Dès le 29 octobre, le Conseil plénier a adopté un nouveau règlement portant ce seuil à 55 %, modifiant directement la procédure que l'audit venait de décrire.\n\n[2026-11-11] Nuvara–Kestran : Delvort fermé après l'annulation du second contingent de techniciens — https://quotidiendiplomatique.example/nuvara-kestran-rupture-nov2026\n\nLe gouvernement de Kestran a annoncé le 11 novembre la fermeture du port de Delvort aux navires nuvarais, invoquant le non-envoi du second contingent de 200 techniciens prévu pour le 1er novembre. Nuvara avait notifié le 27 octobre qu'elle suspendait ce transfert en raison d'un différend budgétaire interne. Le ministre kestranais des Affaires maritimes a déclaré que « l'accès aux ports était conditionné à la livraison intégrale du personnel convenu » et que la fermeture resterait en vigueur jusqu'à exécution complète de l'accord du 3 mars 2026.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "REC@7": "f",
+        "HIE@7": "f",
+        "RCS@7": "f",
+        "CTR@7": "f",
+        "CRO@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "contredit",
+        "RSN@7": "marqueur_non_rempli",
+        "RES@7": "aucun_fait"
+      }
+    },
+    {
+      "graine": 22,
+      "presentes": [
+        "EME@7",
+        "HIE@7",
+        "INC@7",
+        "RCS@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "PRO@7",
+        "REC@7",
+        "RSN@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "evenement": "RES@7",
+      "texte": "[2026-09-12] Accord de Valdris : cinq capitales adoptent spontanément le même format de notification d'incident — https://agence-novapress.example/international/valdris-format-incident\n\nSans qu'aucun traité ni directive ne l'ait prescrit, les ministères des affaires étrangères de Caldonie, Mervath, Ostrek, Tulanis et Brenfeld ont commencé, entre le 3 et le 11 septembre 2026, à transmettre leurs alertes frontalières selon un formulaire identique à 14 champs. Les diplomates interrogés citent tous l'imitation de voisins, non une consigne commune. Aucun vote, aucun secrétariat central n'a été identifié à l'origine du format.\n\n[2026-09-28] Crise de Mervath : le Conseil de sécurité de l'Union de Valdris bloque la résolution du Parlement régional — https://telexvaldris.example/politique/conseil-veto-parlement\n\nLe 27 septembre 2026, le Conseil de sécurité de l'Union de Valdris a opposé son veto à la résolution 114-B adoptée la veille par le Parlement régional, suspendant le déploiement de 400 observateurs à la frontière nord de Mervath. Conformément à l'article 9 de la Charte de Valdris, le Conseil prime sur le Parlement pour toute décision impliquant des personnels en uniforme. Le Parlement ne peut soumettre un nouveau texte qu'après un délai de 30 jours.\n\n[2026-10-14] Ostrek reporte la signature du pacte énergétique dans l'attente des résultats électoraux de Tulanis — https://meridieninfo.example/economie/ostrek-pacte-energie-report\n\nLe gouvernement d'Ostrek a annoncé le 13 octobre 2026 le report sine die de la signature du pacte énergétique trilatéral prévu pour le 20 octobre. Le ministre Davan Korel a déclaré attendre « la clarification de la situation politique à Tulanis » après le premier tour du 9 octobre, dont les résultats n'ont pas dégagé de majorité. Deux scénarios de coalition restent explicitement ouverts, selon les notes internes transmises aux partenaires.\n\n[2026-10-31] L'analyse de l'Union de Valdris sur sa propre crédibilité modifie la conduite de ses membres — https://observateurvaldris.example/institutions/rapport-credibilite-effet\n\nLe 28 octobre 2026, le secrétariat de l'Union de Valdris a publié un rapport interne évaluant à 34 % la confiance des États membres dans ses mécanismes d'arbitrage. Dans les 48 heures suivant la diffusion du document, Caldonie et Brenfeld ont chacune annoncé la suspension de leurs contributions volontaires au fonds de médiation, invoquant explicitement les chiffres du rapport. Le secrétariat a convoqué une session extraordinaire pour le 5 novembre.\n\n[2026-11-11] L'Union de Valdris abandonne le modèle confédéral pour une structure à gouvernance intégrée — https://agence-novapress.example/international/valdris-reforme-gouvernance\n\nFondée en 2011 comme confédération d'États souverains à secrétariat tournant, l'Union de Valdris a adopté le 10 novembre 2026 une charte révisée instituant une présidence permanente et un budget propre. Les États membres conservent leur siège individuel dans les instances internationales, invariant explicitement garanti à l'article 2 de la nouvelle charte. Des étapes intermédiaires avaient été documentées : création d'un tribunal arbitral permanent en 2019, puis d'une agence statistique commune en 2023.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "EME@7": "F",
+        "HIE@7": "F",
+        "INC@7": "F",
+        "RCS@7": "F",
+        "SEU@7": "f",
+        "TRA@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "PRO@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 23,
+      "presentes": [
+        "COM@7",
+        "CRO@7",
+        "CTR@7",
+        "EME@7",
+        "HIE@7",
+        "PER@7",
+        "POL@7",
+        "RES@7",
+        "RSN@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "INC@7",
+        "RCS@7",
+        "REC@7",
+        "TRA@7"
+      ],
+      "evenement": "PRO@7",
+      "texte": "[2026-09-12] Adhésion de Valdoria à l'Union Continentale : les frontières douanières supprimées dès minuit — https://gazetteorient.example/politique/valdoria-uc-adhesion\n\nValdoria a déposé vendredi à 23 h 59 son instrument de ratification auprès du secrétariat de l'Union Continentale à Merevka. Les postes frontières des six points de passage ont été démantelés dans la nuit. Le ministre valdorien du Commerce a déclaré samedi matin que « le retour à un régime douanier national exigerait une procédure de retrait d'au moins sept ans et l'accord unanime des 34 membres ». Aucun mécanisme de suspension unilatérale n'est prévu par le traité.\n\n[2026-09-28] Sommet de Kelvara : Nordalie et Surmonde campent sur des positions irréconciliables — https://tribuneplanetaire.example/diplomatie/kelvara-sommet-echec\n\nÀ l'issue de trois jours de négociations à Kelvara, les délégations de Nordalie et de Surmonde ont quitté la salle sans communiqué commun. Les observateurs présents ont relevé que chaque camp désignait l'autre comme « puissance révisionniste » dans ses propres notes de séance. Aucune délégation tierce n'a obtenu de temps de parole lors des séances plénières ; les représentants des États côtiers ont été systématiquement renvoyés vers l'un ou l'autre bloc pour toute demande de médiation.\n\n[2026-10-07] Réseau ferroviaire transsaharien : Belvane devient nœud obligatoire pour six corridors — https://agencemondiale.example/infrastructure/belvane-noeud-ferroviaire\n\nL'Autorité des transports de l'Arc méridional a publié mardi les nouvelles cartes de routage du réseau transsaharien. Belvane concentre désormais les connexions entre Orvala, Tindrek, Cassoumar, Port-Lethis, Mafara et Djoulane. Selon le document technique, toute coupure du nœud de Belvane isolerait les six corridors simultanément, aucune voie de contournement n'étant opérationnelle avant 2031. Le trafic de fret transitant par Belvane a atteint 4,2 millions de tonnes en septembre, contre 1,1 million en janvier 2025 et 2,7 millions en janvier 2026.\n\n[2026-10-19] Fonds climatique de Delvara : 61 États versent leur quote-part, trois suspendus pour non-contribution — https://pressedelvara.example/environnement/fonds-climatique-suspension\n\nLe conseil de gouvernance du Fonds climatique de Delvara a annoncé lundi la suspension des droits de vote de Monteclair, Ursanie et Brelford, qui n'ont versé aucune contribution depuis l'exercice 2024. Les 61 États à jour ont maintenu leur calendrier de versement trimestriel — avril, juillet et octobre — conformément au règlement adopté en 2019. Le mécanisme de suspension, activé pour la première fois, prévoit une exclusion définitive après deux exercices consécutifs sans versement. Un représentant d'Ursanie a contesté le calcul de sa quote-part devant le conseil.\n\n[2026-11-04] Dialecte commercial de la zone Arvane : les négociants adoptent un lexique unifié sans concertation formelle — https://observateurarvane.example/economie/lexique-commercial-emergence\n\nUne étude publiée par l'Institut de linguistique appliquée de Sorvène recense 214 termes commerciaux identiques relevés dans les contrats conclus entre négociants de huit ports de la zone Arvane entre mars et octobre 2026. Aucune chambre de commerce, aucune autorité portuaire ni aucun gouvernement n'a émis de glossaire officiel. Les chercheurs documentent une diffusion par imitation directe entre courtiers lors des foires de Sorvène, Haltreck et Mivane, les mêmes termes apparaissant d'abord dans les ports les plus fréquentés, puis dans les escales secondaires.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "SEU@7": "f",
+        "CTR@7": "f",
+        "RES@7": "f",
+        "POL@7": "f",
+        "EME@7": "f",
+        "CRO@7": "f",
+        "COM@7": "f",
+        "PER@7": "f"
+      },
+      "rejets_categories": {
+        "HIE@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "TRA@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    }
+  ],
+  "narrateur": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "meme_famille": true,
+  "cumul": {
+    "passages": 2,
+    "narrateur": "bedrock/global.anthropic.claude-sonnet-4-6",
+    "situations": 24,
+    "lues": 22,
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 70,
+    "cartes_absentes": 81,
+    "mesure": {
+      "sens_F": 0.3286,
+      "sens_f": 0.5429,
+      "sens": 0.8714,
+      "fp_F": 0.037,
+      "fp_f": 0.1235,
+      "fp": 0.1605
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 7,
+      "aucun_fait": 2
+    },
+    "etats_nuls_justes": 1,
+    "situations_vides": 1
+  }
+}
