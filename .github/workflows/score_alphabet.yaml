@@ -37,6 +37,9 @@ jobs:
         run: |
           if [ -f registre/journal-bot.jsonl ]; then uv run python pepiniere.py --enregistrer; fi
           if [ -f registre/journal-bot.jsonl ]; then uv run python episodes.py --enregistrer; fi   # 0.10.9 : N × D
+          # 0.10.30 (skill §47) : λ appris en ombre, sur le registre du bot et celui du banc alphabet-chaine (public)
+          git clone -q --depth 1 https://github.com/Othman-Benbrahim/alphabet-chaine /tmp/chaine || true
+          if [ -d /tmp/chaine/registre ]; then uv run python apprentissage_lambda.py --chaine /tmp/chaine/registre --enregistrer; else uv run python apprentissage_lambda.py --enregistrer; fi
       - name: Enregistrer
         run: |
           if [ -n "$(git status --porcelain registre)" ]; then

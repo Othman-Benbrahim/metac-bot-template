@@ -1,9 +1,16 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.69
+> Version : 0.7.70
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.70 — 2026-11-11 · λ appris
+
+**Aucun chiffre publié ne change.**
+
+- `validation.md` §47 : décision d'apprendre les λ sur les issues (MAP, a priori sur le stipulé), en ombre, adoption
+  par décision datée.
 
 ## 0.7.69 — 2026-11-11 · marqueurs
 
