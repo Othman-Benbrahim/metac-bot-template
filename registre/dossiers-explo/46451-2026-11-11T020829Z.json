@@ -1,0 +1,322 @@
+{
+ "candidats": [
+  "CRO@6",
+  "CTR@6",
+  "PRO@6",
+  "TRC@13",
+  "INC@13",
+  "CTR@13"
+ ],
+ "contre_candidate": [
+  "CTR@6",
+  "INC@13"
+ ],
+ "mots": [
+  {
+   "carte": "CRO",
+   "strate": 6,
+   "intensite": "F",
+   "fait": "Les dépenses obligatoires fédérales (Social Security, Medicare, intérêts nets) affichent une croissance auto-entretenue documentée sur 2020-2026 et projetée jusqu'en 2028 : Social Security passe de 1 090 Md$ (2020) à 1 644 Md$ (2026), taux annuel ~7,1 % ; Medicare de 912 Md$ (2020) à 1 201 Md$ (2026), taux ~5,7 % ; intérêts nets projetés à 1 010 Md$ en 2026 puis 1 063 Md$ en 2027 et 1 160 Md$ en 2028, taux moyen ~7,5 %/an sur la décennie. Les outlays totaux sont projetés à 7 945 Md$ en FY2027 et 8 286 Md$ en FY2028.",
+   "objet": "dépenses obligatoires fédérales américaines (Social Security, Medicare, intérêts nets)",
+   "source": "CBO, Budget and Economic Outlook (publication 62105 et 61882), cité dans résultats [1][7][8] ; OMB/Gouvernement fédéral, Budget FY2027 Perspectives (BUDGET-2027-PER), cité dans résultat [8]",
+   "source_url": "https://www.cbo.gov/publication/62105",
+   "date_consultation": "2026-11-11",
+   "classe_source": "contemporain",
+   "contre_observation": "La loi de réconciliation 2025 (P.L. 119-21) a réduit les outlays Medicaid de ~989,7 Md$ sur 10 ans et SNAP de ~187 Md$ sur 10 ans, soit environ 118 Md$/an en moyenne, ce qui atténue la croissance brute des dépenses obligatoires.",
+   "portee": "marginale",
+   "test": "double",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "CBO est un organe législatif indépendant de l'exécutif ; OMB/BUDGET-2027-PER est un document de l'exécutif fédéral : deux producteurs institutionnels distincts, l'un législatif, l'autre exécutif, convergeant sur les mêmes ordres de grandeur."
+   },
+   "passage": [
+    {
+     "localisation": "résultat [1], tableau récapitulatif",
+     "relation": "soutient",
+     "extrait": "Social Security 2020 : 1 090 Md$, 2026 : 1 644 Md$, taux ~7,1 % ; Medicare 2020 : 912 Md$, 2026 : 1 201 Md$, taux ~5,7 % ; intérêts nets : taux moyen 7,5 %/an, doublement de 1,0 T$ à 2,1 T$ sur la décennie"
+    },
+    {
+     "localisation": "résultat [8], projections FY2027-FY2028",
+     "relation": "soutient",
+     "extrait": "FY2027 : 7 945 Md$ ; FY2028 : 8 286 Md$ ; intérêts nets FY2027 : 1 063 Md$, FY2028 : 1 160 Md$"
+    },
+    {
+     "localisation": "résultat [7], CBO publication 61882",
+     "relation": "soutient",
+     "extrait": "federal outlays in 2026 total $7.4 trillion ; outlays remain near their 2026 level through 2028 ; reaching 24.4 percent of GDP in 2036"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "les dépenses obligatoires croissent à un taux qui dépend de leur propre niveau (nombre de bénéficiaires × prestation moyenne indexée ; encours de dette × taux d'intérêt), ce qui produit une dynamique auto-entretenue",
+    "support": {
+     "type": "donnee",
+     "reference": "CBO, Budget and Economic Outlook 2026-2036 (publication 62105) ; OMB, Budget FY2027 Perspectives (BUDGET-2027-PER)",
+     "disponible_le": "2026-01-01"
+    },
+    "attendu": "une série datée dont l'accroissement suit le niveau atteint, avec une limite identifiable (capacité de financement / PIB)",
+    "contredirait": "une hausse ponctuelle ou à taux indépendant du niveau, ou une stabilisation durable des outlays en dessous de 8 000 Md$ sans coupe législative majeure"
+   },
+   "option": {
+    "acteur": "Congrès américain",
+    "avant": "voter des coupes dans les programmes obligatoires pour freiner la trajectoire",
+    "apres": "les coupes enacted (Medicaid ~99 Md$/an, SNAP ~19 Md$/an) sont insuffisantes pour ramener les outlays sous 8 050 000 M$"
+   },
+   "a6": "CRO@6 : CONTRAINTE → (le plafond de dette et les règles budgétaires bornent le financement mais n'inversent pas la croissance des dépenses obligatoires, qui restent au-dessus du niveau projeté) ; INCERTITUDE → (l'incertitude sur la récession ou les coupes supplémentaires ne nie pas la dynamique de croissance observée, elle en module l'amplitude) ; PROPORTION → (les ratios % PIB sont mentionnés mais ce qui compte ici est la dynamique de la grandeur absolue, pas le rapport entre parties) ; TRACE·MÉMOIRE → (les programmes obligatoires ont une origine datée mais c'est leur taux de croissance auto-entretenu qui est ici pertinent, pas la dépendance au chemin)"
+  },
+  {
+   "carte": "CTR",
+   "strate": 6,
+   "intensite": "f",
+   "fait": "La loi de réconciliation 2025 (P.L. 119-21, promulguée le 4 juillet 2025) a plafonné les dépenses Medicaid (économies scorées par le CBO : 989,7 Md$ sur FY2025-FY2034) et SNAP (187 Md$ sur 10 ans), et le Congrès a enacted seulement 9 Md$ de coupes DOGE via une loi distincte, rejetant les propositions de réduction de 21 % des dépenses discrétionnaires non-défense proposées par l'administration Trump.",
+   "objet": "plafonds et coupes enacted sur les dépenses fédérales obligatoires et discrétionnaires",
+   "source": "CBO, analyse de P.L. 119-21 (publication 61570), cité dans résultat [5] ; CBPP, analyse du financement discrétionnaire 2026, cité dans résultat [2]",
+   "source_url": "https://www.cbo.gov/publication/61570",
+   "date_consultation": "2026-11-11",
+   "classe_source": "contemporain",
+   "contre_observation": "Les coupes enacted (~118 Md$/an en moyenne sur Medicaid+SNAP, ~9 Md$ DOGE) sont substantiellement inférieures aux ~236 Md$/an nécessaires pour ramener les outlays FY2028 sous 8 050 000 M$ (baseline 8 286 000 M$). La contrainte est active mais insuffisante pour franchir le seuil dans le sens NO.",
+   "portee": "substantielle",
+   "test": "cerceau",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "origine",
+    "motif": "CBO est un organe législatif qui score les lois ; CBPP est un think-tank indépendant qui analyse les appropriations : deux producteurs d'origine distincte."
+   },
+   "passage": [
+    {
+     "localisation": "résultat [5], CBO score P.L. 119-21",
+     "relation": "soutient",
+     "extrait": "Medicaid provisions alone reducing outlays by $989.7 billion [over 10 years] ; SNAP : $187 billion over 10 years"
+    },
+    {
+     "localisation": "résultat [2], CBPP analyse 2026",
+     "relation": "soutient",
+     "extrait": "Congress enacted 2026 non-defense discretionary funding of $783 billion, only a 1.1 percent increase above 2025 levels ; Congress passed only a single bill enacting $9 billion in DOGE cuts"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "un plafond légal ou une coupe enacted retire des options de dépense de l'espace admissible, réduisant les outlays en dessous de ce qu'ils auraient été sans la loi",
+    "support": {
+     "type": "loi",
+     "reference": "P.L. 119-21 (Reconciliation Act, 4 juillet 2025), scorée par CBO publication 61570",
+     "disponible_le": "2025-07-04"
+    },
+    "attendu": "une option de dépense nommée devenue inaccessible, avec un montant chiffré de réduction",
+    "contredirait": "une option de dépense restée accessible, seulement plus coûteuse politiquement"
+   },
+   "option": {
+    "acteur": "États fédérés (Medicaid) et ménages bénéficiaires (SNAP)",
+    "avant": "accéder aux prestations Medicaid/SNAP selon les règles antérieures",
+    "apres": "accès conditionné aux nouvelles exigences (work requirements, state matching), réduisant les outlays fédéraux"
+   }
+  },
+  {
+   "carte": "INC",
+   "strate": 13,
+   "intensite": "f",
+   "fait": "Selon le CBO (publication 62005, citée dans résultat [7]), la probabilité implicite d'une récession dans les quatre prochaines années est d'environ un tiers, et la croissance réelle du PIB est projetée à 1,8 %/an en 2027-2028 avec des facteurs positifs (IA, réconciliation) et négatifs (ralentissement de l'immigration) qui maintiennent l'issue économique non tranchée. Par ailleurs, le plafond de dette devrait être atteint « sometime in 2027 » selon le CBO (résultat [8]), créant une incertitude sur la trajectoire des outlays.",
+   "objet": "issue économique et budgétaire américaine 2027-2028 (récession, plafond de dette, niveau des outlays)",
+   "source": "CBO, Economic Outlook (publication 62005), cité dans résultat [7] ; CRS, analyse du plafond de dette (IF10292), cité dans résultat [8]",
+   "source_url": "https://www.cbo.gov/publication/62005",
+   "date_consultation": "2026-11-11",
+   "classe_source": "contemporain",
+   "contre_observation": "Les projections CBO pour FY2028 (8 286 Md$) dépassent le seuil de 8 050 000 M$ de ~236 Md$, ce qui réduit l'incertitude sur le franchissement du seuil : même un écart de prévision de 3 % (historiquement observé) ne suffirait pas à ramener les outlays sous le seuil sans choc majeur.",
+   "portee": "substantielle",
+   "test": "cerceau",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "CBO (organe législatif, projections économiques) et CRS (service de recherche du Congrès, analyse juridique du plafond de dette) : deux producteurs institutionnels distincts."
+   },
+   "passage": [
+    {
+     "localisation": "résultat [7], CBO publication 62005",
+     "relation": "soutient",
+     "extrait": "about a one in three chance of a recession within the next four years ; average real GDP growth of 1.8 percent per year [2027-2028]"
+    },
+    {
+     "localisation": "résultat [8], CRS IF10292",
+     "relation": "soutient",
+     "extrait": "the Treasury would reach the limit sometime in 2027"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "plusieurs états futurs (récession ou non, franchissement du plafond de dette ou non, coupes supplémentaires ou non) restent possibles et organisent les conduites des acteurs budgétaires (Congrès, OMB, CBO) qui maintiennent des scénarios concurrents",
+    "support": {
+     "type": "donnee",
+     "reference": "CBO, Budget and Economic Outlook 2026-2036 (publications 62005 et 61882)",
+     "disponible_le": "2026-01-01"
+    },
+    "attendu": "des conduites conditionnées à une issue non tranchée : scénarios concurrents explicitement tenus, dispositifs provisoires",
+    "contredirait": "des conduites identiques quelle que soit l'issue économique, ou une issue déjà connue des acteurs"
+   },
+   "option": {
+    "acteur": "Congrès américain / OMB",
+    "avant": "planifier les dépenses FY2028 sans contrainte de plafond de dette ni risque de récession",
+    "apres": "planifier sous incertitude sur la trajectoire économique et la disponibilité du financement"
+   }
+  }
+ ],
+ "liaisons": [
+  {
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "type": "tension",
+   "description": "La croissance auto-entretenue des dépenses obligatoires (CRO@6) dépasse structurellement les coupes enacted (CTR@6) : ~118 Md$/an de réductions enacted contre une croissance annuelle des seuls intérêts nets de ~100 Md$/an et de Social Security+Medicare de ~150-200 Md$/an. La contrainte est active mais insuffisante pour inverser la dynamique."
+  },
+  {
+   "cartes": [
+    "CRO@6",
+    "INC@13"
+   ],
+   "type": "modulation",
+   "description": "L'incertitude sur la récession (INC@13) module l'amplitude de la croissance des outlays (CRO@6) : une récession activerait les stabilisateurs automatiques (chômage, Medicaid, SNAP) et augmenterait les outlays au-dessus de la baseline, renforçant le franchissement du seuil ; une non-récession maintient la trajectoire baseline."
+  }
+ ],
+ "questions": [
+  {
+   "question": "Les coupes enacted sur Medicaid et SNAP (P.L. 119-21) produisent-elles des économies effectives en FY2027-FY2028 conformes au score CBO, ou des injonctions judiciaires ou des délais d'implémentation réduisent-ils les économies réelles à moins de 50 Md$/an ?",
+   "si_oui": "CTR@6 reste f, les outlays FY2028 restent proches de 8 150-8 286 Md$, franchissement du seuil très probable",
+   "si_non": "CTR@6 s'affaiblit, les outlays FY2028 pourraient dépasser encore davantage le seuil",
+   "resolution": "FRED FYONET FY2028 (première publication) ; rapports d'exécution budgétaire OMB FY2027-FY2028",
+   "statut": "ouverte"
+  },
+  {
+   "question": "Une récession (deux trimestres consécutifs de PIB réel négatif) survient-elle en 2027 ou au premier semestre 2028, activant les stabilisateurs automatiques et augmentant les outlays au-dessus de la baseline CBO de 8 286 Md$ ?",
+   "si_oui": "INC@13 se résout vers un scénario de dépassement encore plus large du seuil 8 050 000 M$",
+   "si_non": "la trajectoire baseline CBO (~8 286 Md$) reste le scénario central, seuil franchi",
+   "resolution": "BEA, comptes nationaux trimestriels 2027-2028 ; FRED FYONET FY2028",
+   "statut": "ouverte"
+  },
+  {
+   "question": "Le Congrès adopte-t-il avant fin FY2027 des coupes supplémentaires sur les dépenses obligatoires (Social Security, Medicare, intérêts) d'un montant cumulé supérieur à 236 Md$ pour FY2028, suffisant pour ramener les outlays sous 8 050 000 M$ ?",
+   "si_oui": "CTR@6 passerait à F et le seuil pourrait ne pas être franchi (résolution NO)",
+   "si_non": "CRO@6 domine, seuil franchi (résolution YES)",
+   "resolution": "CBO score de toute loi de réconciliation ou d'appropriations adoptée avant octobre 2027 ; FRED FYONET FY2028",
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "PRO@6": "[marqueur_non_rempli] [marqueur_non_rempli] Des ratios sont mentionnés (% du PIB, taux de croissance par programme), mais aucun rapport entre parties d'un ensemble n'est suivi à deux dates pour montrer conservation ou rupture d'une proportion. Les données portent sur des niveaux absolus et des taux de croissance, pas sur un rapport mesuré deux fois.",
+  "TRC@13": "[marqueur_non_rempli] [marqueur_non_rempli] Les résultats montrent la précision historique des projections CBO et la trajectoire des dépenses obligatoires, mais aucun trait présent n'est explicitement attribué à un événement passé daté qui ne serait pas choisi tel quel aujourd'hui. La dépendance au chemin des programmes obligatoires (Social Security, Medicare) n'est pas formulée comme un résidu du passé agissant contre les forces présentes.",
+  "CTR@13": "[marqueur_non_rempli] [marqueur_non_rempli] Aucun fait disponible dans les sources ne documente une contrainte opérant à la strate 13 (contrainte sur l'espace des possibles au niveau du système budgétaire dans son ensemble, distincte des coupes législatives ponctuelles déjà portées par CTR@6). Retrait faute de fait distinct et sourcé.",
+  "SEU@6": "[non_classe] [tautologique] La classe SEU désigne un seuil, et sa définition dans le vocabulaire de la source cite le terme SEUIL lui-même : la classe ne peut pas être définie dans le vocabulaire de la source sans recourir au mot qu'elle est censée qualifier. Retrait pour circularité définitionnelle."
+ },
+ "etat": "[2026-11-11 | 709 jours] CROISSANCE@6[F] + CONTRAINTE@6[f] + INCERTITUDE@13[f]",
+ "disponible_le": "2026-11-11",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "US federal mandatory outlays Social Security Medicare net interest annual growth rate 2020-2026 actual versus projected",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "US federal discretionary spending cuts enacted 2025 2026 reconciliation DOGE actual reduction billions",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@13"
+   ],
+   "requete": "CBO baseline outlay projections accuracy historical deviation actual outlays 2000-2024",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "requete": "US federal outlays growth mandatory programs versus discretionary cuts net effect 2025 2026 2027 budget",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "PRO@6"
+   ],
+   "requete": "reconciliation bill 2025 spending reduction mandatory programs Medicaid SNAP actual scored savings CBO",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "federal spending cuts reversed court injunctions DOGE savings clawed back 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@13"
+   ],
+   "requete": "US economic recession probability 2027 2028 impact federal outlays automatic stabilizers unemployment insurance",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRC@13",
+    "INC@13"
+   ],
+   "requete": "US federal outlays exceeded 8 trillion threshold drivers interest payments debt ceiling 2027 2028",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@13"
+   ],
+   "requete": "scenarios US federal outlays below 8 trillion 2028 spending freeze sequester large-scale cuts enacted",
+   "executee": true,
+   "date_execution": "2026-11-11"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "presence",
+   "temporalite": "programmee",
+   "resolution": "OUI si FRED publie pour FY2028 (série FYONET, unité Millions of Dollars, fréquence Annual Fiscal Year) une valeur strictement supérieure à 8 050 000",
+   "source_resolution": {
+    "emetteur": "Federal Reserve Bank of St. Louis (FRED)",
+    "document": "Série FYONET — Federal Net Outlays, https://fred.stlouisfed.org/series/FYONET, première publication incorporant les données réelles FY2028",
+    "regle_ambiguite": "En cas de révision ultérieure, seule la première publication FRED intégrant les outlays réels FY2028 est prise en compte ; les unités doivent être vérifiées en Millions of Dollars et fréquence Annual Fiscal Year via le bouton Edit Graph"
+   },
+   "vue_exterieure": {
+    "frequence": 0.11282847730576329,
+    "classe_de_reference": "années fiscales américaines pour lesquelles les dépenses nettes fédérales réelles (Federal Net Outlays) ont dépassé un seuil donné exprimé en millions de dollars courants",
+    "source": "FRED / Federal Reserve Bank of St. Louis, série FYONET (Federal Net Outlays, millions de dollars courants, annuel fiscal) ; CBO Budget and Economic Outlook 2025 pour les projections FY2026-FY2028 ; données historiques FYONET FY2000-FY2025",
+    "periode": "2000-2025",
+    "disponible_le": "2026-11-11",
+    "classe_alternative": {
+     "frequence": 0.85,
+     "classe_de_reference": "années fiscales américaines FY2000-FY2025 pour lesquelles les outlays nets réels ont dépassé le niveau de l'année précédente (fréquence de croissance positive d'une année sur l'autre)",
+     "source": "FRED FYONET série historique FY2000-FY2025 : sur 25 transitions, environ 21 ont vu une hausse des outlays (exceptions : FY2010→FY2011, FY2013, FY2019, FY2022 post-COVID), soit 21/25 = 0,84",
+     "pourquoi_ecartee": "Cette classe mesure la probabilité de croissance positive d'une année sur l'autre, non le dépassement d'un seuil absolu spécifique de 8 050 000 M$ en FY2028 ; elle sous-estime la question car même une croissance positive pourrait ne pas atteindre le seuil si le niveau de départ est insuffisant, et inversement"
+    },
+    "ecart_critere": "La classe de référence compte les années fiscales dépassant un seuil absolu en dollars courants, ce qui est exactement le critère de résolution (outlays FY2028 > 8 050 000 M$) ; la seule différence est que la classe historique porte sur des seuils variables selon l'année, alors que le critère porte sur un seuil fixe unique — l'écart est donc minimal et la classe est bien adaptée"
+   }
+  }
+ ]
+}
