@@ -1,9 +1,16 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.66
+> Version : 0.7.67
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.67 — 2026-11-11 · critère de Klein
+
+D'après Venkatasubramanian (2026), *Beyond Proofs*. **Aucun chiffre publié ne change.**
+
+- `protocole.md` A2, étape 3 : une nouvelle carte doit montrer la même structure mathématique dans trois strates (deux
+  auparavant) ; `validation.md` §44 : critère de Klein et place de l'alphabet (connexions, pas langage inventé par l'IA).
 
 ## 0.7.66 — 2026-11-11 · monde synthétique
 

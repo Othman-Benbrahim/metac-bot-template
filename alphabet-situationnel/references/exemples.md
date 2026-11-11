@@ -1,6 +1,6 @@
 # Alphabet situationnel — Exemples
 
-> Version : 0.7.66
+> Version : 0.7.67
 
 > Exemples 1–6 : démonstrations entièrement fictives du contrat courant. Exemples 7–10 : archives
 > critiques de versions antérieures, non revérifiées et exclues des calculs actuels. Ne jamais
