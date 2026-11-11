@@ -1,9 +1,53 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.70
+> Version : 0.7.71
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.71 — 2026-11-11 · SKILL.md allégé
+
+Décision d'auteur du 2026-11-11 (d'après l'analyse du dépôt mattpocock/skills) : `SKILL.md` ne garde que ce qu'il faut
+pour agir ; l'historique vient ici. **Aucune règle, aucun chiffre ne change** : le contenu change de place.
+
+- Les notes « *Depuis 0.7.xx…* » de `SKILL.md` sont réécrites au présent, sans date, avec leur renvoi `validation.md` ;
+  le long paragraphe de la procédure PRÉVOIR (0.7.51 à 0.7.70) devient une liste de règles en vigueur.
+- Les marques de version entre parenthèses (« (0.7.45) », « 0.7.11 »…) sont retirées de `SKILL.md` ; chaque règle se
+  retrouve à sa version dans ce journal.
+- Texte retiré de `SKILL.md`, conservé ici mot pour mot :
+
+<details><summary>Notes historiques retirées</summary>
+
+> Procédure PRÉVOIR, fin du point « Mesure »
+> *Depuis 0.7.51, `scorer` publie aussi, pour chaque différentiel par épisode
+> (dont `v4_vue_exterieure`, C contre B), une séquence de confiance valide à tout moment de relecture et un verdict :
+> meilleur, moins bon ou indéterminé (levée du gel pour cet outil seul).* *Depuis 0.7.52, `calculer --exploratoire` lève L7 pour un
+> calcul à part : le chiffre est marqué, jamais publié, scoré à part de la strate 7 (`validation.md` §29).* *Depuis 0.7.53, le marqueur décide de l'intensité,
+> pas de l'existence : Définition + un marqueur observable → f ; F inchangé (`validation.md` §30).* *Depuis 0.7.54, un relevé de données daté et sourcé est un fait
+> (`validation.md` §31).* *Depuis 0.7.55, des équivalents de données pour les jetons
+> (`references/equivalences/donnees-chaine.md`, `validation.md` §32), chargés par le banc seul.* *Depuis 0.7.56, les λ sont stipulés, l'hypothèse du produit est écrite,
+> C − B est un contraste du dispositif ; règle des médiateurs et ablation calculées en ombre (`validation.md` §33).* *Depuis 0.7.57, deux ombres de plus : les cartes lues
+> comme des causes (noisy-or) et la borne de ce qu'une recherche de plus pourrait changer (`validation.md` §34).* *Depuis 0.7.58, le tempérage des cartes (α fixés d'avance) en ombre, d'après
+> Murphy 2026 (`validation.md` §35).* *Depuis 0.7.59, un programme génératif en ombre : cartes latentes, lecteur bruité,
+> rejets comptés comme preuves, inférence exacte (`validation.md` §36).* *Depuis 0.7.60, une lecture probabiliste en ombre : les
+> textes traduits en instructions du programme (lien, bloque, exclut), d'après Wong et al. 2023 (`validation.md` §37).* *Depuis 0.7.61, la relecture par Murphy (ch. 4, 9, 29, 30) : calcul publié nommé
+> (score log-linéaire), couplage unique par paire, rejets selon l'effort, largeurs d'arbre mesurées (`validation.md` §38).* *Depuis 0.7.62, le test d'invariance du lecteur : deux vues aux sources
+> disjointes doivent ancrer les mêmes cartes (`validation.md` §39).* *Depuis 0.7.63, la surprise d'une lecture, mesurée en ombre (`validation.md` §40).* *Depuis 0.7.64, le tri des chapitres 3 et 13 de Murphy (`validation.md` §41).* *Depuis 0.7.65, export SSSOM des équivalents et accord à deux niveaux (`validation.md` §42).* *Depuis 0.7.66, le monde synthétique pour mesurer le lecteur (`validation.md` §43).* *Depuis 0.7.67, le critère de Klein pour toute nouvelle carte (`validation.md` §44).* *Depuis 0.7.68, CONTRAINTE exige une option retirée, pas seulement une règle qui existe (`validation.md` §45).* *Depuis 0.7.69, chaque ligne de marqueurs est une alternative complète (`validation.md` §46).* *Depuis 0.7.70, les λ s'apprennent sur les issues, en ombre (`validation.md` §47).*
+>
+> Moteur, après la table des commandes
+> `--disponible-ref`. Depuis 0.7.39, aussi `--definition-ref` : la classe de la référence, dans le vocabulaire de la
+> source (jamais le nom d'une carte) ; sans lui, `--fref` était refusé quelle que soit la référence.
+>
+> PRÉVOIR, vue extérieure
+> *Depuis 0.7.41, la vue extérieure est la référence de V4 (`v4_reference`) : le statut V4 se lit contre elle.*
+>
+> SCORER, point 0
+> *Depuis 0.7.44, `fiche-resultat` exige aussi … sous deux épisodes.*
+>
+> Ce que le moteur contrôle
+> Depuis 0.7.39, hors `--demo`, il refuse simplement de calculer sans dossier.
+
+</details>
 
 ## 0.7.70 — 2026-11-11 · λ appris
 
