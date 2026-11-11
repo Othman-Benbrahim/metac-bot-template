@@ -56,6 +56,9 @@ class Tests(unittest.TestCase):
         q2 = {"source": "acled", "freeze_datetime_value": "0.25", "freeze_datetime": "2026-10-15T00:00:00+00:00"}
         v2 = asyncio.run(fb.vue_calculee(x, q2, "2026-10-25"))
         self.assertIsNone(ap.controle_vue(v2, "2026-10-25"))
+        x3 = dict(x, criteres="Résolu OUI si …", url="https://acleddata.com", source="acled", titre="t")
+        v3 = asyncio.run(fb.vue_calculee(x3, q2, "2026-10-25"))
+        self.assertTrue(v3["resolution"] and v3["source_resolution"]["emetteur"] == "ACLED")   # 0.10.46
 
     def test_reparations(self):
         d = {"mots": [{"carte": "POL", "strate": 6, "intensite": "f"}], "candidats": ["POL@6"],
@@ -69,6 +72,12 @@ class Tests(unittest.TestCase):
         self.assertGreaterEqual(len(notes), 4)
         self.assertEqual(ap.cle_normale("POLARITÉ@13_portee"), "POL@13")
         self.assertEqual(ap.code_carte("POL@6"), "POL")
+        # 0.10.46 : clé sans strate, rejet hors des candidates, contre-candidate manquante
+        d2 = {"mots": [{"carte": "INC", "strate": 6, "intensite": "f"}], "candidats": ["INC", "CTR@6"],
+              "rejets": {"CTR@6": "a", "SEU@6": "b"}, "_categories_rejet": {}, "liaisons": [], "contre_candidate": None}
+        ap.reparer_dossier(d2, {"evenement": {"carte": "SEU", "strate": 6}, "candidats": []})
+        self.assertEqual(d2["candidats"], ["INC@6", "CTR@6", "SEU@6"])
+        self.assertEqual(d2["contre_candidate"], ["CTR@6"])
 
 
 if __name__ == "__main__":

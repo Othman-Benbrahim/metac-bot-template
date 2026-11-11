@@ -92,10 +92,20 @@ def construire(item: dict, jeu: str) -> dict:
 
 # --------------------------------------------------------------------------- 0.10.44 : B calculé par le code
 
-def _vue(f: float, classe: str, source: str, periode: str, disponible: str, calcul: str) -> dict:
-    return {"frequence": min(0.999, max(0.001, f)), "compte_calcule": True, "classe_de_reference": classe,
-            "source": source, "periode": periode, "disponible_le": disponible, "calcul": calcul,
-            "classe_alternative": None, "motif_sans_alternative": "classe fixée par la forme de la question ForecastBench"}
+EMETTEURS = {"acled": "ACLED", "fred": "FRED (Federal Reserve Bank of St. Louis)", "dbnomics": "DBnomics",
+             "yfinance": "Yahoo Finance", "wikipedia": "Wikipedia"}
+
+
+def _vue(f: float, classe: str, source: str, periode: str, disponible: str, calcul: str, x: dict | None = None) -> dict:
+    v = {"frequence": min(0.999, max(0.001, f)), "compte_calcule": True, "classe_de_reference": classe,
+         "source": source, "periode": periode, "disponible_le": disponible, "calcul": calcul,
+         "classe_alternative": None, "motif_sans_alternative": "classe fixée par la forme de la question ForecastBench"}
+    if x:   # 0.10.46 : la résolution vient de la question (sans elle, le dossier était refusé)
+        v["resolution"] = x.get("criteres") or x.get("titre")
+        v["source_resolution"] = {"emetteur": EMETTEURS.get(x.get("source"), str(x.get("source"))),
+                                  "document": x.get("url") or "jeu de résolutions ForecastBench",
+                                  "regle_ambiguite": "la résolution publiée par ForecastBench fait foi"}
+    return v
 
 
 def b_acled(m: float) -> float:
@@ -143,20 +153,29 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
             return _vue(b_acled(m), "fenêtres de 30 jours du même pays et du même type d'événement (ACLED)",
                         "ForecastBench, valeur de référence au gel (moyenne ACLED sur 30 jours, 360 jours)",
                         f"360 jours avant {gel}", gel,
-                        f"binomiale négative, r = 12·{m:.4g} + 0,5, p = 12/13 ; P(N > {m:.4g}) (Jeffreys)")
+                        f"binomiale négative, r = 12·{m:.4g} + 0,5, p = 12/13 ; P(N > {m:.4g}) (Jeffreys)", x)
         if src == "yfinance" and "higher rate of return than" in q.get("question", ""):
             return _vue(0.5, "paires d'actions, rendement relatif sur le même intervalle", "symétrie de la paire",
-                        jeu, jeu, "0,5 : les deux actions sont échangeables a priori (aucune ne domine sans information)")
+                        jeu, jeu, "0,5 : les deux actions sont échangeables a priori (aucune ne domine sans information)", x)
         if src in ("fred", "dbnomics") and h > 0:
             import alphabet_puits as apz
-            r = (await apz.fred(q["id"], avant=d0) if src == "fred"
-                 else await apz.dbnomics(q["url"].split("db.nomics.world/", 1)[1], avant=d0))
+            if src == "fred":
+                try:
+                    r = await apz.fred(q["id"], avant=d0)
+                except Exception:
+                    r = {}
+                if len(r.get("points") or []) < 20:
+                    # 0.10.46 : certaines séries (SP500…) n'ont pas de millésimes ALFRED ; valeurs actuelles, bornées à D
+                    # par b_hausse (les cours de marché ne sont pas révisés)
+                    r = await apz.fred(q["id"])
+            else:
+                r = await apz.dbnomics(q["url"].split("db.nomics.world/", 1)[1], avant=d0)
             b = b_hausse(r.get("points") or [], h, d0)
             if b:
                 f, k, n = b
                 return _vue(f, f"intervalles de {h} jours de la même série, 5 ans avant {jeu}",
                             f"{r.get('source')} : {r.get('titre')}", f"5 ans avant {jeu}", jeu,
-                            f"({k} hausses + 0,5) / ({n} intervalles + 1) (Jeffreys)")
+                            f"({k} hausses + 0,5) / ({n} intervalles + 1) (Jeffreys)", x)
     except Exception:
         return None
     return None
