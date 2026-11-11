@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.73 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.74 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -931,6 +931,18 @@ def accord_deux_niveaux(a, b):
         return any(x.split("@")[1] == s and x.split("@")[0] in fam.get(c, {c}) for x in autre)
     ok = sum(1 for k in a if couvert(k, b)) + sum(1 for k in b if couvert(k, a))
     return {"jaccard_carte": j1, "accord_famille": ok / (len(a) + len(b)) if (a or b) else 1.0}
+
+
+def valeur_information_log(pu, puc, pc):
+    """0.7.74 (§50) : valeur attendue de l'information d'une question-clé C pour U, en log (voivod, Forecasting Research
+    Institute : VoI_log, divergence de Kullback-Leibler attendue, ici en nats). pu = P(U) actuelle, puc = P(U | C trouvée),
+    pc = P(C) ; P(U | non C) est tirée de la cohérence (pu = pc·puc + (1 − pc)·punotc) : une recherche dont on connaît
+    d'avance le résultat ne vaut rien, et l'absence de la carte apprend quelque chose dès que sa présence en apprend."""
+    if not (0 < pu < 1 and 0 < pc < 1): return 0.0
+    puc = min(max(puc, 1e-9), 1 - 1e-9)
+    punotc = min(max((pu - puc * pc) / (1 - pc), 1e-9), 1 - 1e-9)
+    kl = lambda p, q: p * math.log(p / q) + (1 - p) * math.log((1 - p) / (1 - q))
+    return pc * kl(puc, pu) + (1 - pc) * kl(punotc, pu)
 
 
 def combiner_noisy_or(f, src):
@@ -2854,13 +2866,18 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None,rejets=None,pr
                     'mots':etat['mots']+[{'c':c_,'s':int(cs_),'i':i_,'q':[]}]}
                 try:
                     pv_=horizon_result(e_,typ,cible,base,opts,h,semantique)['p']
-                    vdi_.append({'carte':k_,'intensite':i_,'p':pv_,'ecart':pv_-reference})
+                    vdi_.append({'carte':k_,'intensite':i_,'p':pv_,'ecart':pv_-reference,
+                                 'voi':valeur_information_log(reference,pv_,P['generatif']['pi_presence'])})
                 except ValueError:pass
         vdi_.sort(key=lambda x:(-abs(x['ecart']),x['carte'],x['intensite']))
         borne_=abs(vdi_[0]['ecart']) if vdi_ else 0.0
+        # 0.7.74 (§50) : valeur attendue de l'information (voivod, Forecasting Research Institute) : pondère l'écart par la
+        # chance de trouver la carte, et compte aussi ce que son absence apprendrait. Classement en ombre ; l'arrêt ne change pas.
+        par_voi=sorted(vdi_,key=lambda x:(-x['voi'],x['carte'],x['intensite']))
         valeur_information={'borne':borne_,'seuil':P['seuil_valeur_information'],
                             'arret':borne_<P['seuil_valeur_information'],
-                            'plus_influentes':vdi_[:3],'cartes_testees':len({x['carte'] for x in vdi_})}
+                            'plus_influentes':vdi_[:3],'cartes_testees':len({x['carte'] for x in vdi_}),
+                            'plus_informatives_voi':par_voi[:3],'voi_max':par_voi[0]['voi'] if par_voi else 0.0}
         ablation=[]
         for m_ in etat['mots']:
             k_=cle(m_)
@@ -4031,7 +4048,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('validation.md','48'):'Freins', ('validation.md','49'):'Freins en ombre', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('validation.md','48'):'Freins', ('validation.md','49'):'Freins en ombre', ('validation.md','50'):'Valeur attendue', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4275,7 +4292,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.73','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.74','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -6058,7 +6075,7 @@ def autotest():
             r=calculer(e,'apparait','SEU@7',base,asof='2026-09-20')
             sb=sensibilite(e,'apparait','SEU@7',base,{'asof':'2026-09-20'},1,'presence')
             self.assertIsNotNone(sb['noisy_or']);self.assertEqual(globals().get('COMBINAISON'),'produit')
-            v=sb['valeur_information'];self.assertGreater(v['cartes_testees'],0)
+            v=sb['valeur_information'];self.assertGreater(v['cartes_testees'],0);self.assertGreaterEqual(v['voi_max'],0);self.assertTrue(v['plus_informatives_voi'])
             self.assertEqual(v['arret'],v['borne']<P['seuil_valeur_information'])
             self.assertNotIn('CRO@7',[x['carte'] for x in v['plus_influentes']])   # carte présente : non testée
             self.assertEqual(r['p'],calculer(e,'apparait','SEU@7',base,asof='2026-09-20')['p'])
@@ -6554,6 +6571,12 @@ def autotest():
                 for b_ in d_:self.assertNotIn(b_,P['matrice'].get(a_,{}))
             pp=json.loads(json.dumps(P));pp['inhibitions']['SEU']={'TRC':'I'}
             self.assertTrue(any('aussi une arête' in x for x in erreurs_parametres(pp)))
+        def test_voi(self):
+            # 0.7.74 (§50) : VoI nulle si la carte ne change rien ; croît avec l'écart et avec la chance de la trouver.
+            self.assertAlmostEqual(valeur_information_log(.2,.2,.1),0.0)
+            self.assertGreater(valeur_information_log(.2,.5,.1),valeur_information_log(.2,.3,.1))
+            self.assertGreater(valeur_information_log(.2,.5,.3),valeur_information_log(.2,.5,.1))
+            self.assertEqual(valeur_information_log(.2,.5,0.),0.0)
         def test_parametre_fantome(self):
             self.assertEqual(erreurs_parametres(),[])
             self.assertTrue(erreurs_parametres(list(P)+['parametre_fantome']))

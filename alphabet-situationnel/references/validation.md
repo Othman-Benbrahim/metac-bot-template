@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.73
+> Version : 0.7.74
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2678,4 +2678,23 @@ génératif qui lit les absences (§36 ; gagnant dans le calcul de puissance), l
 apparaît moins souvent (les occasions d'éprouver une arête, `base-de-cas.md`). La base de cas réels n'en compte que
 quatre : l'étendre est la condition du test (feuille de route, « Arbre de la connaissance »). Le monde synthétique ne
 peut pas servir : il mesure la lecture, et son tirage ne lit pas les freins.
+
+## 50. Valeur attendue de l'information (0.7.74)
+
+**Décision d'auteur, le 2026-11-11**, après lecture de `voivod` (Forecasting Research Institute, statistiques pour
+évaluer les questions de prévision elles-mêmes).
+
+**Le défaut.** La valeur de l'information du §34 classe les cartes absentes par l'écart maximal qu'elles produiraient
+si on les trouvait, sans tenir compte de la chance de les trouver, ni de ce que leur absence apprendrait.
+
+**La mesure ajoutée, en ombre.** Pour chaque carte absente : VoI = P(C)·KL(P(U|C) ‖ P(U)) + (1 − P(C))·KL(P(U|¬C) ‖ P(U)),
+en nats, avec P(C) = π (`generatif.pi_presence`) et P(U|¬C) tirée de la cohérence (P(U) = P(C)·P(U|C) + (1 − P(C))·P(U|¬C)).
+C'est la réduction attendue de l'erreur de prévision (score log) si l'on cherchait cette carte. `sensibilite` publie
+`plus_informatives_voi` et `voi_max` à côté de `plus_influentes`.
+
+**Pour l'arbre.** C'est la mesure qui dit quelle branche vaut d'être explorée : celle dont la recherche, en moyenne,
+apprend le plus. Elle rend aussi visible ce que le calcul publié ignore : une carte cherchée et non trouvée devrait
+faire baisser p (P(U|¬C) < P(U) dès que P(U|C) > P(U)), comme le fait l'ombre générative (§36).
+
+**Ce qui ne change pas.** Le p publié, la règle d'arrêt (borne de l'écart, §34).
 

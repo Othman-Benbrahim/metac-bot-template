@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.42 · skill alphabet-situationnel 0.7.73 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.43 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.43** : **banc ForecastBench** (décision d'auteur du 2026-11-11). `banc_forecastbench.py` et le workflow
+  « Banc ForecastBench » jouent B et C sur des questions ForecastBench (Forecasting Research Institute, CC BY-SA 4.0)
+  déjà résolues, tirées de séries (FRED, DBnomics, Yahoo Finance, ACLED, Wikipedia ; environ 145 par jeu au premier
+  horizon), à leur date d'information, recherche Exa bornée, sonde de connaissance de l'issue. Les questions de
+  marché (cote de la foule au gel) ne sont jamais jouées (§26). Lignes dans `registre/retro.jsonl` (banc
+  « forecastbench », coût par question) : le score rétrospectif les compte (biais de C, correction, C contre B,
+  `forecastbench` à part) et l'apprentissage des λ les lit. Skill vendu 0.7.74 (valeur attendue de l'information,
+  `validation.md` §50).
 - **0.10.42** : **skill 0.7.73, freins en ombre** (décision d'auteur du 2026-11-11, `validation.md` §49). Vérification
   faite : les événements calculés du bot et du banc sont tous « SEUIL apparaît », qu'aucun frein ne vise ; les freins
   ne pouvaient presque rien au score. Ils sortent du C publié (qui redevient celui de la 0.10.40) ; l'ombre

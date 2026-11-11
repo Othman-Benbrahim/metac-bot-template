@@ -1,9 +1,17 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.73
+> Version : 0.7.74
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.74 — 2026-11-11 · Valeur attendue de l'information
+
+Décision d'auteur du 2026-11-11 (`validation.md` §50), d'après `voivod` (Forecasting Research Institute).
+
+- `valeur_information_log` : divergence de Kullback-Leibler attendue d'une question-clé, P(U|¬C) tirée de la cohérence.
+- `sensibilite` publie, en ombre, `plus_informatives_voi` et `voi_max` pour les cartes absentes (P(C) = π).
+- Rien ne change au p publié ni à la règle d'arrêt.
 
 ## 0.7.73 — 2026-11-11 · Freins en ombre
 

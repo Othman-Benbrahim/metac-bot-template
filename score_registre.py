@@ -885,6 +885,14 @@ def scorer_retro(registre: Path) -> dict:
               "C_symetrique_sur_B": comparer(syms, "C_symetrique", "B", borne_gain_C_B()) if syms else None,
               "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B()) if apparies else None,
               "correction": None}
+    # 0.10.43 : le banc ForecastBench, à part (questions de séries, horizon court)
+    fb_ = [(p, y) for (p, y), x in zip(apparies, chiffres) if x.get("banc") == "forecastbench"]
+    sortie["par_banc"] = {b_: sum(1 for x in intactes if (x.get("banc") or "metaculus") == b_)
+                          for b_ in sorted({x.get("banc") or "metaculus" for x in intactes})}
+    sortie["forecastbench"] = {"n_chiffres": len(fb_), "C_sur_B": comparer(fb_, "C", "B", borne_gain_C_B()) if fb_ else None,
+                               "cout_moyen_usd": (round(sum(float(x.get("cout_usd") or 0) for x in intactes
+                                                            if x.get("banc") == "forecastbench")
+                                                        / max(1, sum(1 for x in intactes if x.get("banc") == "forecastbench")), 4))}
     if len(paires_c) >= 2:
         b = ajuster_decalage(paires_c)
         gains = []
