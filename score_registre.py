@@ -519,6 +519,50 @@ def provenance_F(lignes: list[dict], issues: dict) -> dict | None:
             "perte_C": {k: {"n": len(p), "moyenne": round(sum(p) / len(p), 4)} for k, p in perte.items()}}
 
 
+def partition_murphy(paires: list[tuple[float, int]], bacs: int = 5) -> dict | None:
+    """0.10.39 : partition de Murphy (1973) du Brier : fiabilité − résolution + incertitude, sur des bacs de largeur
+    égale. La résolution (capacité à séparer les OUI des NON) est ce que l'alphabet doit ajouter au taux de base."""
+    if len(paires) < bacs:
+        return None
+    n = len(paires)
+    o = sum(y for _, y in paires) / n
+    groupes: dict[int, list] = {}
+    for p, y in paires:
+        groupes.setdefault(min(bacs - 1, int(p * bacs)), []).append((p, y))
+    fiab = sum(len(g) * (sum(p for p, _ in g) / len(g) - sum(y for _, y in g) / len(g)) ** 2 for g in groupes.values()) / n
+    reso = sum(len(g) * (sum(y for _, y in g) / len(g) - o) ** 2 for g in groupes.values()) / n
+    return {"n": n, "fiabilite": round(fiab, 4), "resolution": round(reso, 4), "incertitude": round(o * (1 - o), 4),
+            "brier": round(sum((p - y) ** 2 for p, y in paires) / n, 4)}
+
+
+def marge_B(apparies: list) -> dict | None:
+    """0.10.39 (Jenkins et Cardei 2026, arXiv 2611.10325 : un gain se mesure à la place qui restait) : le gain de C sur B
+    dépend de la marge que B laissait. Gain normalisé de Hake en Brier, g = (Brier_B − Brier_C) / Brier_B (la place
+    qui restait est Brier_B, le minimum étant 0), et gain log de C sur B par tiers de marge (Brier_B). Descriptif ; le
+    test principal reste apparié question par question (C_sur_B)."""
+    xs = []
+    for p, y in apparies:
+        if p.get("B") is None or p.get("C") is None:
+            continue
+        bb, bc = brier(p["B"], y), brier(p["C"], y)
+        xs.append((bb, bc, gain_pair(p["C"], p["B"], y)))
+    if len(xs) < 3:
+        return None
+    pos = [x for x in xs if x[0] > 1e-9]
+    xs.sort(key=lambda x: x[0])
+    k = len(xs) // 3
+    tiers = {"marge_faible": xs[:k], "marge_moyenne": xs[k:2 * k], "marge_forte": xs[2 * k:]}
+    return {"n": len(xs),
+            "gain_normalise_hake_moyen": round(sum((b - c) / b for b, c, _ in pos) / len(pos), 4) if pos else None,
+            "gain_normalise_hake_agrege": round(sum(b - c for b, c, _ in xs) / sum(b for b, _, _ in xs), 4)
+            if sum(b for b, _, _ in xs) > 0 else None,
+            "par_tiers_de_marge": {nom: {"n": len(v), "brier_B_moyen": round(sum(b for b, _, _ in v) / len(v), 4),
+                                         "gain_log_C_sur_B": round(sum(g for _, _, g in v) / len(v), 3)}
+                                   for nom, v in tiers.items() if v},
+            "lecture": "un gain de C concentré là où B laissait peu de place est suspect ; là où B laissait beaucoup de "
+                       "place, c'est là que l'alphabet doit gagner"}
+
+
 def negation_A(lignes: list[dict]) -> dict | None:
     """0.10.34 : test de négation du modèle seul : p(question) + p(question niée) devrait valoir 1."""
     n = [((x.get("bras") or {}).get("A") or {}).get("negation") for x in lignes]
@@ -971,6 +1015,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         comp = {"n": len(apparies), "biais_C": biais_C(apparies),
                 "C_sur_B": comparer(apparies, "C", "B", borne_gain_C_B(), principal=True),
                 "C_sur_A": comparer(apparies, "C", "A"),
+                "marge_B": marge_B(apparies),                                  # 0.10.39
+                "partition_murphy": {b: partition_murphy([(p[b], y) for p, y in apparies]) for b in "ABC"},
                 "C_corrige_sur_B": comparer(corriges, "C", "B") if corriges else None,
                 "C_critique_sur_C": comparer(critiques, "C_critique", "C") if critiques else None,
                 "lecture": "gain_log_moyen positif = C meilleur, en points de score de pair Metaculus "
