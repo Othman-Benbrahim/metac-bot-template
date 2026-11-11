@@ -1,6 +1,6 @@
 # Alphabet situationnel — Grammaire (couche 2)
 
-> Version : 0.7.73
+> Version : 0.7.74
 
 > Notation, syntaxe formelle, critères des liaisons et liste de contrôle. Les règles sont G1–G6
 > (`protocole.md`) ; ce fichier les rend applicables.

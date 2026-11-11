@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.73
+> Version : 0.7.74
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -49,6 +49,7 @@ carte, une définition abstraite commune et ce que chaque traduction locale en c
 | 0.7.53 (faite) | Le marqueur décide de l'intensité | Définition + un marqueur observable → f ; « contredit » distinct d'« incomplet » (§30) |
 | 0.7.54 (faite) | Fait de série | Un relevé de données daté et sourcé est un fait ; banc sans texte `alphabet-chaine` (§31) |
 | 0.7.55 (faite) | Équivalents de données | Marqueurs de dix cartes traduits en relevés de jetons, six Vides ; banc seul (§32) |
+| 0.7.74 (faite) | Valeur attendue de l'information | VoI en log (voivod), en ombre dans `sensibilite` : quelle carte, ou quelle branche, vaut d'être cherchée (`validation.md` §50) |
 | 0.7.73 (faite) | Freins en ombre | Hors du p publié (aucun événement publié n'est visé) ; lus par la simulation et l'ombre `avec_freins` (`validation.md` §49) |
 | 0.7.72 (faite) | Freins | Six arêtes inhibitrices (λ_I = 0,556), indicateurs de fermeture dans les fiches, produit borné à [1/10 ; 10] (`validation.md` §48) |
 | 0.7.71 (faite) | SKILL.md allégé | Historique déplacé vers `CHANGELOG.md` ; règles au présent avec renvois ; rien ne change |

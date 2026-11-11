@@ -1,0 +1,80 @@
+name: Banc ForecastBench
+
+# 0.10.43 : manuel. Joue B et C sur des questions ForecastBench (Forecasting Research Institute, CC BY-SA 4.0)
+# DÉJÀ résolues, tirées de séries (FRED, DBnomics, Yahoo Finance, ACLED, Wikipedia), à leur date d'information, avec
+# une recherche bornée à cette date. Les questions de marché (cote de la foule) ne sont jamais jouées. Rien n'est posté.
+# Coût : comme une question réelle ; le coût de chaque question est inscrit dans sa ligne (cout_usd).
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "questions à jouer (budget)"
+        default: "20"
+      jeu:
+        description: "date d'un jeu ForecastBench (AAAA-MM-JJ, facultatif ; sinon les plus récents résolus)"
+        default: ""
+      apres:
+        description: "jeux postérieurs à cette date (après la date de connaissance du modèle)"
+        default: "2026-07-01"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  forecastbench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Contrôle du skill
+        run: python alphabet-situationnel/scripts/moteur.py audit
+      - name: Banc ForecastBench
+        run: |
+          JEU="${{ github.event.inputs.jeu }}"
+          uv run python banc_forecastbench.py --n "${{ github.event.inputs.n }}" --apres "${{ github.event.inputs.apres }}" ${JEU:+--jeu "$JEU"}
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}
+          # 0.10.16 : Amazon Bedrock (provisoire, crédits jusqu'au 23 novembre 2026). Modèles « bedrock/<id> » dans les suites.
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
+          # 0.9.2 : second fournisseur, en secours quand la clé Fantasy est limitée (modèles « mistral/… » dans les suites)
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          OPENAI_API_BASE: ${{ vars.ALPHABET_API_BASE }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+          UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+          ALPHABET_PUITS: ${{ vars.ALPHABET_PUITS }}
+          EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
+          ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
+          ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
+          ALPHABET_VUES: ${{ vars.ALPHABET_VUES }}
+      - name: Biais de C et correction
+        if: always()
+        run: uv run python score_registre.py --retro --enregistrer
+      - name: Enregistrer le registre
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain registre)" ]; then
+            git config user.name "alphabet-bot"
+            git config user.email "alphabet-bot@users.noreply.github.com"
+            git add registre
+            git commit -m "registre : banc ForecastBench du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

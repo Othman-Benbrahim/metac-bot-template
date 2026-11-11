@@ -92,6 +92,28 @@ def lignes_bot(reg: Path) -> list[dict]:
     return out
 
 
+def lignes_retro(reg: Path) -> list[dict]:
+    """0.10.43 : tests rétrospectifs, dont le banc ForecastBench (registre/retro.jsonl), C estimé à la date d'information."""
+    m = ap._moteur()
+    out = []
+    f_ = reg / "retro.jsonl"
+    if not f_.is_file():
+        return out
+    for brut in f_.read_text(encoding="utf-8").splitlines():
+        try:
+            x = json.loads(brut)
+        except json.JSONDecodeError:
+            continue
+        ev = str(x.get("evenement") or "")
+        if x.get("issue") not in (0, 1) or x.get("p_B") is None or not x.get("etat") or " apparait" not in ev:
+            continue
+        n = compte_sources(m, x["etat"], ev.split(" ")[0])
+        if n is not None:
+            out.append({"source": x.get("banc") or "retro", "question_id": x.get("question_id"), "f": float(x["p_B"]),
+                        "y": int(x["issue"]), "n": n})
+    return out
+
+
 def lignes_chaine(reg: Path) -> list[dict]:
     m = ap._moteur()
     prev = {}
@@ -218,7 +240,7 @@ def main() -> int:
     p.add_argument("--chaine", help="dossier registre du banc alphabet-chaine")
     p.add_argument("--enregistrer", action="store_true")
     a = p.parse_args()
-    rows = lignes_bot(ap.REGISTRE) + (lignes_chaine(Path(a.chaine)) if a.chaine else [])
+    rows = lignes_bot(ap.REGISTRE) + lignes_retro(ap.REGISTRE) + (lignes_chaine(Path(a.chaine)) if a.chaine else [])
     r = apprendre(rows)
     print(json.dumps({k: v for k, v in r.items() if k not in ("calcule_le",)}, ensure_ascii=False))
     if a.enregistrer:
