@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.25 · skill alphabet-situationnel 0.7.68 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.26 · skill alphabet-situationnel 0.7.68 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.26** : monde synthétique, **narrateur contraint** (décision d'auteur du 2026-11-11 : contraindre le narrateur
+  plutôt que changer de modèle). (1) Canevas imposé, tiré de la graine : deux États et une organisation inventés, les
+  dates, et pour chaque carte présente UN marqueur précis à remplir ; une dépêche de contexte sans marqueur ; domaine
+  imposé (relations entre États et organisations internationales). (2) Réécriture guidée, une fois : le vérificateur
+  dit quels marqueurs interdits sont remplis et lesquels manquent, le narrateur corrige, le vérificateur repasse ; le
+  lecteur ne lit que la version corrigée. Les erreurs du narrateur avant et après réécriture sont enregistrées.
+  `protocole_monde` 3.
 - **0.10.25** : (1) **seconde chance pour un JSON illisible** (plan, lecture, correction du dossier, monde synthétique) :
   la consigne est renvoyée avec l'erreur ; le premier échec reste compté (`reprises_json`) dans `sorties_illisibles`.
   (2) Monde synthétique : **vérificateur d'une troisième famille** (entrée `verificateur`, Mistral Large 3 sur

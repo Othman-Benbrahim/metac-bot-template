@@ -33,8 +33,9 @@ import alphabet_pipeline as ap
 
 
 # 0.10.24 : version de la consigne du narrateur ; les passages de versions différentes ne se cumulent pas
-# (1 : jusqu'à 0.10.22, fiches complètes et une dépêche par carte ; 2 : depuis 0.10.23, marqueurs seuls, une situation)
-PROTOCOLE_MONDE = 2
+# (1 : jusqu'à 0.10.22, fiches complètes et une dépêche par carte ; 2 : 0.10.23, marqueurs seuls, une situation ;
+# 3 : depuis 0.10.26, canevas imposé, domaine imposé, réécriture guidée par le vérificateur)
+PROTOCOLE_MONDE = 3
 
 
 def nom_strate(s: int) -> str:
@@ -74,37 +75,107 @@ def _bloc_marqueurs(cles: list[str]) -> str:
     return "\n".join(out)
 
 
-def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str) -> str:
-    """0.10.23 (calibrage après le premier passage) : le narrateur ne reçoit que les MARQUEURS observables (plus les
-    définitions, qu'il paraphrasait : « le rythme progresse avec la longueur déjà posée ») ; il raconte UNE situation
-    (mêmes acteurs, même pays) et non une dépêche par structure ; il reçoit aussi les marqueurs des absentes, à ne
-    remplir par aucun fait ; aucune phrase d'explication ou d'analyse."""
-    debut = (date.fromisoformat(aujourdhui) - timedelta(days=60)).isoformat()
-    a_montrer = (f"Chacun des groupes de marqueurs suivants doit être rempli par AU MOINS UN fait daté (un seul marqueur "
-                 f"du groupe suffit) :\n{_bloc_marqueurs(presentes)}" if presentes else
-                 "Aucun des groupes de marqueurs ci-dessous ne doit être rempli : une actualité ordinaire, sans dynamique "
-                 "marquante.")
-    return f"""Tu écris des dépêches de presse FICTIVES pour un exercice de mesure. Domaine : {nom_strate(strate)}.
+ETATS = ["Aurinia", "Velania", "Morsanie", "Telkhoun", "Valsnie", "Draven", "Ostara", "Kessaria", "Brenthie", "Norven",
+         "Calvarie", "Istrane", "Doramie", "Félisie", "Granvie", "Lusarne"]
+ORGANISATIONS = ["l'Union du Détroit de Kossmar", "le Conseil des États riverains du Reth",
+                 "l'Organisation pour la sécurité du Plateau de Senne", "la Ligue commerciale d'Ostrave",
+                 "le Pacte de défense de Corvus", "l'Agence régionale de l'énergie de Velhaven"]
+DOMAINE = {7: "relations entre États et organisations internationales : diplomatie, traités, sanctions, alliances, "
+              "frontières, forces armées, commerce d'État. Rien d'autre (ni météo, ni faits divers, ni cérémonies)."}
 
-Elles racontent UNE SEULE situation : les mêmes acteurs (un ou deux pays inventés, leurs institutions, leurs
-dirigeants), qui évolue d'une dépêche à l'autre.
 
-{a_montrer}
+def canevas(presentes: list[str], strate: int, graine: int, aujourdhui: str) -> dict:
+    """0.10.26 : le CANEVAS imposé au narrateur (décision d'auteur du 2026-11-11 : contraindre plus le narrateur, plutôt
+    que changer de modèle). Acteurs, dates et, pour chaque carte présente, UN marqueur précis à remplir, tirés de la
+    graine : le narrateur n'a plus à choisir ni le sujet, ni les acteurs, ni le marqueur."""
+    import random
+    rnd = random.Random(f"canevas:{strate}:{graine}")
+    a, b = rnd.sample(ETATS, 2)
+    org = rnd.choice(ORGANISATIONS)
+    n = len(presentes) + 1
+    fin = date.fromisoformat(aujourdhui)
+    dates = sorted({(fin - timedelta(days=rnd.randrange(1, 61))).isoformat() for _ in range(n * 3)})[:n]
+    while len(dates) < n:
+        dates.append(fin.isoformat())
+    dates.sort()
+    items = [{"date": dates[0], "carte": None, "marqueur": None}]
+    ordre = list(presentes)
+    rnd.shuffle(ordre)
+    for d, k in zip(dates[1:], ordre):
+        mq = marqueurs(k.split("@")[0])
+        items.append({"date": d, "carte": k, "marqueur": rnd.choice(mq) if mq else None})
+    return {"etats": [a, b], "organisation": org, "depeches": items}
 
-AUCUN fait ne doit remplir les marqueurs suivants (ni explicitement, ni par un détail en passant) :
+
+def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str, graine: int = 0) -> str:
+    """0.10.26 : consigne à CANEVAS. Le narrateur écrit exactement les dépêches du canevas, dans l'ordre : la première
+    pose le contexte sans aucun marqueur ; chacune des suivantes remplit UN marqueur imposé, et aucun autre de la liste
+    interdite. Domaine imposé. Plus de choix libres : c'est la liberté laissée au modèle qui le faisait errer."""
+    cv = canevas(presentes, strate, graine, aujourdhui)
+    a, b = cv["etats"]
+    lignes = []
+    for i, d in enumerate(cv["depeches"], 1):
+        if d["carte"] is None:
+            lignes.append(f"{i}. [{d['date']}] CONTEXTE : présente {a}, {b} et {cv['organisation']}, leurs dirigeants et "
+                          "leur relation, par des faits neutres ; aucun des marqueurs ci-dessous, ni imposés ni interdits.")
+        else:
+            lignes.append(f"{i}. [{d['date']}] Un fait, entre ces mêmes acteurs, qui remplit EXACTEMENT ce marqueur : "
+                          f"« {d['marqueur']} ».")
+    return f"""Tu écris des dépêches de presse FICTIVES pour un exercice de mesure.
+
+DOMAINE IMPOSÉ : {DOMAINE.get(strate, nom_strate(strate))}
+ACTEURS IMPOSÉS, les seuls : {a}, {b}, {cv['organisation']}, et leurs gouvernements, ministres, armées, diplomates.
+Une seule situation qui évolue d'une dépêche à l'autre.
+
+ÉCRIS EXACTEMENT {len(cv['depeches'])} DÉPÊCHES, dans cet ordre, aux dates indiquées :
+{chr(10).join(lignes)}
+
+AUCUN fait, dans AUCUNE dépêche, ne doit remplir les marqueurs suivants (ni explicitement, ni par un détail) :
 {_bloc_marqueurs(absentes) or "(aucun)"}
 
 Règles d'écriture :
-- uniquement des faits observables : qui a fait quoi, quand, combien ; des chiffres, des actes, des déclarations
-  citées ; AUCUNE phrase qui explique, résume ou analyse le mécanisme (pas de « ainsi », « ce qui montre », « en
-  retour », pas de commentaire d'analyste) ; ne nomme aucune structure, ni par un mot savant ;
-- pays, villes, personnes, organisations et sites de presse INVENTÉS (aucun nom réel) ; adresses en https://….example/… ;
-- trois à cinq dépêches, datées entre {debut} et {aujourdhui} ; 60 à 120 mots par dépêche ;
-- format exact, une dépêche par bloc, blocs séparés par une ligne vide :
+- uniquement des faits observables : qui a fait quoi, quand, combien ; chiffres, actes, déclarations citées ;
+  AUCUNE phrase qui explique, résume ou analyse (pas de « ainsi », « ce qui montre », pas de commentaire) ;
+  ne nomme aucune structure ; aucun nom réel ; adresses en https://….example/… ;
+- 60 à 110 mots par dépêche ; format exact, blocs séparés par une ligne vide :
 [AAAA-MM-JJ] Titre — https://site-invente.example/chemin
 Texte de la dépêche.
 
 Rends uniquement les dépêches."""
+
+
+def consigne_reecriture(texte: str, absentes_montrees: list[str], presentes_non_montrees: list[str],
+                        absentes: list[str]) -> str:
+    """0.10.26 : réécriture guidée, une seule fois, d'après le constat du vérificateur."""
+    retirer = _bloc_marqueurs(absentes_montrees) if absentes_montrees else "(rien)"
+    ajouter = _bloc_marqueurs(presentes_non_montrees) if presentes_non_montrees else "(rien)"
+    return f"""Voici des dépêches fictives. Un contrôle indépendant y a trouvé deux sortes d'erreurs. Corrige-les en
+modifiant le MOINS possible : mêmes acteurs, mêmes dates, même nombre de dépêches, même format.
+
+1. Ces marqueurs sont remplis alors qu'ils sont INTERDITS : supprime ou change les faits qui les remplissent.
+{retirer}
+2. Ces marqueurs devaient être remplis et ne le sont pas : ajoute à la dépêche prévue un fait observable qui en
+remplit un, sans commentaire.
+{ajouter}
+
+Rappel : aucun fait ne doit remplir ces marqueurs interdits :
+{_bloc_marqueurs(absentes) or "(aucun)"}
+
+DÉPÊCHES :
+{texte}
+
+Rends uniquement les dépêches corrigées."""
+
+
+async def verifier(verificateur, texte: str, cles: list[str], s: dict, strate: int) -> dict:
+    m = ap._moteur()
+    try:
+        v = await ap.json_avec_reprise(verificateur, consigne_verification(texte, cles))
+        oui = {f"{m.carte_id(str(k))}@{strate}" for k, x in v.items() if str(x).lower().startswith("o")}
+        return {"absentes_montrees": sorted(oui & set(s["absentes"])),
+                "presentes_non_montrees": sorted(set(s["presentes"]) - oui)}
+    except Exception as e:
+        return {"erreur": f"{type(e).__name__}: {e}"[:200]}
 
 
 def consigne_verification(texte: str, cles: list[str]) -> str:
@@ -195,7 +266,12 @@ def mesurer(rows: list[dict]) -> dict:
              if k not in r["verification"]["absentes_montrees"]]
     verifiee = None
     if ver:
-        verifiee = {"situations": len(ver),
+        ini = [r["verification_initiale"] for r in ver if isinstance(r.get("verification_initiale"), dict)
+               and "erreur" not in r["verification_initiale"]]
+        verifiee = {"situations": len(ver), "reecrites": sum(1 for r in ver if r.get("reecrit")),
+                    "erreurs_narrateur_avant_reecriture": {
+                        "absentes_montrees": sum(len(v["absentes_montrees"]) for v in ini),
+                        "presentes_non_montrees": sum(len(v["presentes_non_montrees"]) for v in ini)},
                     "erreurs_narrateur": {"absentes_montrees": sum(len(r["verification"]["absentes_montrees"]) for r in ver),
                                           "presentes_non_montrees": sum(len(r["verification"]["presentes_non_montrees"])
                                                                         for r in ver)},
@@ -231,28 +307,41 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
             rows.append(dict(s, statut="sans_evenement"))
             continue
         try:
-            texte = str(await narrateur(consigne_narrateur(s["presentes"], s["absentes"], strate, aujourdhui))).strip()
+            texte = str(await narrateur(consigne_narrateur(s["presentes"], s["absentes"], strate, aujourdhui,
+                                                           g))).strip()
             if not texte:
                 raise ValueError("texte vide")
         except Exception as e:
             rows.append(dict(s, statut="narrateur_illisible", motif=f"{type(e).__name__}: {e}"[:200]))
             continue
         plan = plan_de(s, strate)
+        texte_initial = texte
+        verif_initiale = None
+        if verificateur is not None:     # 0.10.26 : vérifier, puis UNE réécriture guidée si le texte s'écarte
+            verif_initiale = await verifier(verificateur, texte, plan["candidats"], s, strate)
+            if verif_initiale.get("absentes_montrees") or verif_initiale.get("presentes_non_montrees"):
+                try:
+                    t2 = str(await narrateur(consigne_reecriture(texte, verif_initiale["absentes_montrees"],
+                                                                 verif_initiale["presentes_non_montrees"],
+                                                                 s["absentes"]))).strip()
+                    if t2:
+                        texte = t2
+                except Exception as e:
+                    verif_initiale["reecriture_erreur"] = f"{type(e).__name__}: {e}"[:200]
         q = ap.Question(id=f"monde-{strate}-{g}", url="", titre=f"Situation synthétique {g} ({nom_strate(strate)}) : "
                         "quelles structures les faits montrent-ils ?", contexte="", criteres="Exercice de mesure du "
                         "lecteur ; aucune résolution.", precisions="Les dépêches sont fictives et seules sources.",
                         resolution=date.fromisoformat(aujourdhui) + timedelta(days=90))
         executees = [{"famille": "situation", "cartes": plan["candidats"], "requete": "dépêches du monde synthétique",
                       "resultat": texte, "executee": True}]
-        row = dict(s, texte=texte, fuites=fuites(texte))
-        if verificateur is not None:     # 0.10.23 : le texte montre-t-il bien les présentes, et seulement elles ?
-            try:
-                v = await ap.json_avec_reprise(verificateur, consigne_verification(texte, plan["candidats"]))
-                oui = {f"{m.carte_id(str(k))}@{strate}" for k, x in v.items() if str(x).lower().startswith("o")}
-                row["verification"] = {"absentes_montrees": sorted(oui & set(s["absentes"])),
-                                       "presentes_non_montrees": sorted(set(s["presentes"]) - oui)}
-            except Exception as e:
-                row["verification"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+        row = dict(s, texte=texte, fuites=fuites(texte), canevas=canevas(s["presentes"], strate, g, aujourdhui))
+        if verificateur is not None:     # le texte FINAL montre-t-il bien les présentes, et seulement elles ?
+            row["verification_initiale"] = verif_initiale
+            row["reecrit"] = texte != texte_initial
+            if row["reecrit"]:
+                row["texte_initial"] = texte_initial
+            row["verification"] = (await verifier(verificateur, texte, plan["candidats"], s, strate)
+                                   if row["reecrit"] else verif_initiale)
         reprises: dict = {}
         try:
             lec = await ap.json_avec_reprise(lecteur, ap.consigne_dossier(q, plan, executees, aujourdhui, 90), reprises,

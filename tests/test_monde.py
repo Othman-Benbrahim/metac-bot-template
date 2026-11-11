@@ -50,6 +50,37 @@ class Tests(unittest.TestCase):
         self.assertIsNone(x["mesure_verifiee"])
         self.assertIn("passager clandestin", " ".join(ms.marqueurs("COM")))
 
+    def test_canevas_reecriture(self):
+        # 0.10.26 : canevas imposé (un marqueur par présente), puis réécriture guidée si le vérificateur relève une erreur
+        m = ap._moteur()
+        cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@7")]
+        s = ms.situation(7, 0, cartes)
+        cv = ms.canevas(s["presentes"], 7, 0, "2026-11-11")
+        self.assertEqual(len(cv["depeches"]), len(s["presentes"]) + 1)
+        self.assertEqual(cv, ms.canevas(s["presentes"], 7, 0, "2026-11-11"))     # reproductible
+        a0 = s["absentes"][0]
+        textes = iter(["[2026-11-01] T — https://a.example/x\nV1", "[2026-11-01] T — https://a.example/x\nV2"])
+
+        async def narrateur(c):
+            if "Corrige-les" not in c:
+                self.assertIn("ÉCRIS EXACTEMENT", c)
+            return next(textes)
+        verdicts = iter([{**{k.split("@")[0]: "oui" for k in s["presentes"]}, a0.split("@")[0]: "oui"},
+                         {k.split("@")[0]: "oui" for k in s["presentes"]}])
+
+        async def verificateur(c):
+            return json.dumps(next(verdicts))
+
+        async def lecteur(c):
+            self.assertIn("V2", c)                       # le lecteur ne lit que la version corrigée
+            return json.dumps({"mots": []})
+        r = asyncio.run(ms.lancer(narrateur, lecteur, 1, 7, 0, "2026-11-11", verificateur=verificateur))
+        row = r["situations"][0]
+        self.assertTrue(row["reecrit"])
+        self.assertEqual(row["verification"]["absentes_montrees"], [])
+        mv = r["resultat"]["mesure_verifiee"]
+        self.assertEqual((mv["reecrites"], mv["erreurs_narrateur_avant_reecriture"]["absentes_montrees"]), (1, 1))
+
     def test_reprise_json(self):
         # 0.10.25 : une sortie illisible a une seconde chance, et le premier échec reste compté
         rep = iter(["pas de json", '{"ok": true}'])
