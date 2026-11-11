@@ -13,6 +13,12 @@ codeurs. Le modèle retenu pour chaque rôle est écrit dans chaque ligne du reg
 Avec une passerelle compatible OpenAI (Fantasy AI), les modèles s'écrivent « openai/<identifiant> » et l'adresse de
 la passerelle va dans OPENAI_API_BASE (variable ALPHABET_API_BASE du dépôt), la clé dans OPENAI_API_KEY (secret
 FANTASY_API_KEY) : litellm les lit lui-même, pour le bot comme pour le chercheur Exa.
+
+0.10.16 : Amazon Bedrock, provisoire (crédits jusqu'au 23 novembre 2026). Les modèles s'écrivent
+« bedrock/<identifiant ou profil d'inférence> » (ex. « bedrock/global.anthropic.claude-opus-5-5 ») ; la clé d'API Bedrock
+va dans le secret AWS_BEARER_TOKEN_BEDROCK, la région dans la variable AWS_REGION_NAME (us-east-1 par défaut). Placés en
+tête de suite, devant les modèles Fantasy : quand la clé est absente, refusée ou les crédits épuisés (échec durable),
+le passage retombe sur Fantasy. Changer de modèle, c'est changer de codeur : le score sépare les lignes par modèle.
 """
 from __future__ import annotations
 
@@ -57,7 +63,7 @@ async def sonder(modele: str, appel=None) -> dict:
                 "secondes": round(time.monotonic() - debut, 1), "erreur": f"{type(e).__name__}: {e}"[:200]}
 
 
-PASSAGERE = re.compile(r"at capacity|ServiceUnavailable|\b50[234]\b|RateLimit|\b429\b|Timeout|timed out|overloaded",
+PASSAGERE = re.compile(r"at capacity|ServiceUnavailable|\b50[234]\b|RateLimit|Throttling|TooManyRequests|\b429\b|Timeout|timed out|overloaded",
                       re.I)
 
 
