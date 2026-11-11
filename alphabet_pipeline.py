@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.44"
+VERSION_BOT = "0.10.45"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -376,6 +376,9 @@ Rends UNIQUEMENT un objet JSON :
  "semantique": "presence|au-moins-une-fois|continue",
  "temporalite": "generique (l'événement peut survenir à tout moment) | programmee (échéance fixée d'avance : vote, sommet, date
      légale) | duree_de_vie (l'objet a une durée de vie propre)",
+ "programmation": {{"qui": "qui a la capacité de fixer l'événement", "engagement": "à quoi voit-on qu'il s'y est engagé
+     (texte, calendrier publié)"}}  (OBLIGATOIRE si temporalite = programmee ; sans réponse, l'événement n'est pas
+     programmé et sera traité comme generique),
  "pourquoi_evenement": "en quoi le OUI de la question correspond à cet événement de carte",
  "recherches_reference": ["requête", ...]  (1 à {MAX_RECHERCHES_REFERENCE} requêtes pour trouver la FRÉQUENCE HISTORIQUE
      d'événements comparables : combien de fois, sur quelle période, dans quelle population de cas),
@@ -750,10 +753,19 @@ def etat_depuis(mots: list[dict], aujourdhui: str, jours: int) -> str:
 TEMPORALITES = ("generique", "programmee", "duree_de_vie")
 
 
+def programmation_valide(plan: dict) -> bool:
+    pg = plan.get("programmation")
+    return isinstance(pg, dict) and all(isinstance(pg.get(c), str) and pg[c].strip() for c in ("qui", "engagement"))
+
+
 def temporalite_de(plan: dict) -> str:
     """0.2.0 (audit, B11) : la temporalité est déclarée par le plan ; « programmee » (échéance fixée d'avance) ou
     « duree_de_vie » rendent le moteur « non estimé » sans référence propre, comme le veut le skill."""
     t_ = plan.get("temporalite")
+    if t_ == "programmee" and not programmation_valide(plan):
+        # 0.10.45 : la règle du skill (0.7.16, Copley) : sans « qui » ni « engagement », l'événement n'est PAS programmé.
+        # Il est traité comme générique, au lieu de faire refuser tout le dossier (aucune proposition).
+        return "generique"
     return t_ if t_ in TEMPORALITES else "generique"
 
 
@@ -771,8 +783,10 @@ def evenement_depuis(plan: dict, vue: dict) -> tuple[dict, str]:
     evt = {"evenement": evenement, "semantique": plan["semantique"], "temporalite": temporalite_de(plan),
            "resolution": vue.get("resolution") or "", "source_resolution": vue.get("source_resolution") or {},
            "vue_exterieure": ve}
-    if evt["temporalite"] == "programmee" and isinstance(plan.get("programmation"), dict):
-        evt["programmation"] = plan["programmation"]   # 0.10.44 : transmise si le plan la donne (sinon refus, B11)
+    if evt["temporalite"] == "programmee":
+        evt["programmation"] = {"qui": plan["programmation"]["qui"], "engagement": plan["programmation"]["engagement"]}
+    elif plan.get("temporalite") == "programmee":
+        evt["programmation_absente"] = True   # 0.10.45 : déclarée programmée sans qui ni engagement : traitée générique
     return evt, evenement
 
 
