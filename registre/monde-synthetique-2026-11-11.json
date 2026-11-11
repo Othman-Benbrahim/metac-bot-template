@@ -1,0 +1,474 @@
+{
+  "calcule_le": "2026-11-11T03:26:15+00:00",
+  "version_skill": "0.7.67",
+  "version_bot": "0.10.20",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    0,
+    11
+  ],
+  "consigne_lecteur_sha256": "a2f80edfcd8302a4d1d06d5715eee0ea9cd73c54435d2b18596ccbf7f066e9e1",
+  "reserve": "narrateur et lecteur de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 10,
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 29,
+    "cartes_absentes": 36,
+    "mesure": {
+      "sens_F": 0.4138,
+      "sens_f": 0.4483,
+      "sens": 0.8621,
+      "fp_F": 0.0278,
+      "fp_f": 0.1111,
+      "fp": 0.1389
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 3,
+      "aucun_fait": 1
+    },
+    "etats_nuls_justes": 1,
+    "situations_vides": 1,
+    "par_carte": {
+      "COM": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "CRO": {
+        "presente": 4,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 2
+      },
+      "EME": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "INC": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "PER": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "POL": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "PRO": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 5,
+        "lue_si_absente": 0
+      },
+      "RCS": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 6,
+        "lue_si_absente": 0
+      },
+      "REC": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "RES": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 0,
+        "lue_si_absente": 0
+      },
+      "RSN": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "SEU": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "TRA": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "TRC": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      }
+    }
+  },
+  "situations": [
+    {
+      "graine": 0,
+      "presentes": [
+        "COM@7",
+        "CRO@7",
+        "CTR@7",
+        "POL@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "PER@7",
+        "RCS@7",
+        "REC@7",
+        "RSN@7",
+        "TRA@7"
+      ],
+      "evenement": "RES@7",
+      "texte": "[2026-09-12] Sommet de Delvara : vingt-trois États signent le Pacte de gestion des eaux du fleuve Orkan — https://agencepressekorvane.example/international/pacte-orkan-signature\n\nVingt-trois États riverains ont signé vendredi à Delvara le Pacte de gestion des eaux du fleuve Orkan. Le texte institue un fonds commun abondé par chaque signataire selon un barème de prélèvement annuel, une commission de contrôle habilitée à infliger des pénalités aux États qui dépassent leur quota d'extraction, et une clause d'exclusion automatique en cas de non-paiement pendant deux exercices consécutifs. Trois États observateurs ont refusé de signer, invoquant des intérêts industriels incompatibles avec les quotas.\n\n[2026-09-29] Dépenses militaires de la coalition Arvane : troisième hausse annuelle consécutive — https://quotidiendelbruk.example/defense/arvane-budget-2026\n\nLe secrétariat de la coalition Arvane a publié lundi ses chiffres consolidés : les dépenses militaires des dix-huit membres atteignent 412 milliards de dalvars en 2026, contre 318 milliards en 2024 et 271 milliards en 2023. Le taux d'augmentation annuel, estimé à 23 %, dépasse le niveau de 2023 de 52 %. Plusieurs analystes du secrétariat notent que la capacité de production des chantiers navals alliés plafonne à 480 milliards de dalvars ; la prochaine tranche budgétaire approche de cette limite identifiée.\n\n[2026-10-14] Crise de Meltavar : les capitales choisissent leur camp, les neutres réduits au silence — https://despechesorbilan.example/geopolitique/meltavar-polarisation\n\nDepuis l'incident naval du 9 octobre au large de Meltavar, les déclarations officielles des cinquante-deux États membres de l'Union de Korveth se répartissent sans exception entre le bloc Arvane et le bloc Surantie. Le ministre des affaires étrangères de Delvara a qualifié toute position intermédiaire d'« abstention complice ». Trois États qui avaient tenté de proposer une médiation conjointe ont retiré leur initiative le 13 octobre après avoir été exclus des deux séries de consultations bilatérales organisées en parallèle.\n\n[2026-10-27] Destruction des installations de Kervod : le site de stockage nucléaire civil démantelé — https://agencepressekorvane.example/securite/kervod-demolition\n\nLes dernières structures du site de stockage nucléaire civil de Kervod ont été démolies lundi matin conformément au protocole de désarmement signé en août. Le directeur de l'Agence de sûreté de Surantie a confirmé que les cuves de confinement, une fois détruites, ne peuvent être reconstruites à l'identique : les matériaux composites utilisés ne sont plus fabriqués, et la filière de certification associée a été dissoute en 2019. Toute reconstitution d'une capacité équivalente nécessiterait un programme industriel estimé à quinze ans.\n\n[2026-11-11] Rapport Orkan : deux États sanctionnés pour extraction excessive au troisième trimestre — https://quotidiendelbruk.example/international/orkan-sanctions-t3\n\nLa commission du Pacte de gestion des eaux du fleuve Orkan a notifié mercredi deux États membres — Telvarie et Broskand — d'une pénalité de 47 millions de dalvars chacun pour dépassement de quota au troisième trimestre 2026. Telvarie avait prélevé 134 % de son allocation autorisée ; Broskand, 118 %. Les deux États ont contesté le calcul mais ne peuvent suspendre la procédure : le Pacte ne prévoit aucune clause de suspension unilatérale. Le paiement doit intervenir avant le 30 novembre sous peine d'exclusion automatique.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "COM@7": "F",
+        "CTR@7": "F",
+        "POL@7": "F",
+        "CRO@7": "f",
+        "SEU@7": "F",
+        "PER@7": "f"
+      },
+      "rejets_categories": {
+        "RCS@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 1,
+      "presentes": [],
+      "absentes": [
+        "INC@7",
+        "PRO@7",
+        "RCS@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-12] Réunion bilatérale entre Valdorie et Meskanie à Porthenay — https://agence-telexis.example/diplomatie/valdorie-meskanie-0912\n\nLes ministres des affaires étrangères de Valdorie et de Meskanie se sont retrouvés vendredi à Porthenay pour une session de travail de six heures. Les discussions ont porté sur les modalités de transit ferroviaire entre les deux pays. Un protocole technique a été paraphé en fin de journée par les deux délégations. Aucune conférence de presse n'a été organisée à l'issue de la rencontre. La prochaine session est prévue pour le mois de novembre.\n\n[2026-09-28] Le parlement de Cruvonie adopte un budget révisé pour l'exercice 2026 — https://quotidien-norval.example/politique/cruvonie-budget-0928\n\nL'assemblée nationale de Cruvonie a voté lundi un budget rectificatif allouant 340 millions de dalvars supplémentaires aux infrastructures routières du nord du pays. Le texte a été approuvé par 61 voix contre 44. Le ministre des finances, Orvand Telkis, a indiqué que les crédits seront débloqués en deux tranches, en octobre puis en décembre. Les travaux concernés couvrent quatre provinces frontalières avec la Meskanie.\n\n[2026-10-14] Sommet de l'Organisation des États de Luvarne à Brethac — https://presse-continentale.example/international/sommet-luvarne-1014\n\nDix-sept chefs d'État membres de l'Organisation des États de Luvarne se sont réunis mardi à Brethac pour leur session annuelle. Les délégations ont examiné un rapport sur les échanges commerciaux régionaux portant sur la période 2023-2025. La séance plénière a duré environ quatre heures. Un communiqué commun de trois pages a été publié en soirée sur le site officiel de l'organisation. Le prochain sommet se tiendra à Melvac en octobre 2027.\n\n[2026-10-30] Visite du chef de l'État valdorien à Santhève — https://agence-telexis.example/diplomatie/valdorie-santheve-1030\n\nLe président valdorien Korvane Dultis a effectué jeudi une visite officielle de deux jours à Santhève, capitale de la République de Fentroc. Il a été reçu par son homologue fentroc, Mirela Osvath, au palais de la Conférence. Les entretiens ont abordé les questions de coopération agricole et de gestion des ressources hydriques communes. Deux accords sectoriels ont été signés en présence des ministres compétents des deux pays.\n\n[2026-11-08] La ville de Granthois accueille des négociations sur les frontières maritimes — https://observateur-melvac.example/geopolitique/granthois-maritime-1108\n\nDes représentants de Valdorie, de Fentroc et de la République insulaire de Cauvène se sont retrouvés samedi à Granthois pour une troisième session de négociations sur la délimitation de zones maritimes en mer de Luvarne. La réunion a duré deux jours et réuni vingt-trois délégués au total. Les parties ont échangé des propositions cartographiques révisées. Aucun accord n'a été formalisé à l'issue de la session. Une quatrième réunion est envisagée pour le début de l'année 2027.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "INC@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 2,
+      "presentes": [
+        "CRO@7",
+        "RCS@7",
+        "RES@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "HIE@7",
+        "PRO@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-12] Expansion du réseau ferroviaire transsaharien : troisième tronçon inauguré — https://agence-meridia.example/transports/ferroviaire-sahara-t3\n\nLa Compagnie Ferroviaire Azawane a ouvert le tronçon Kidal-Nord–Tamanghast le 12 septembre 2026, portant le réseau à 1 840 km de voies actives. En janvier 2025, le réseau couvrait 620 km ; en décembre 2025, 1 190 km. Le rythme de pose progresse avec la longueur déjà posée : chaque nouveau tronçon réduit le coût unitaire du suivant et attire de nouveaux investisseurs. La direction estime la capacité limite du corridor nord-sud à 4 200 km d'ici 2031.\n\n[2026-10-03] Le rapport Valdris modifie la stratégie qu'il évaluait — https://observatoire-geopolitique-norven.example/rapports/valdris-2026\n\nL'Institut Norven de Stratégie a publié le 3 octobre 2026 son rapport annuel sur la posture défensive de la Fédération Valdrisienne. Le document concluait à une sous-mobilisation des réserves frontalières. Dès le 7 octobre, le Conseil de sécurité valdrisien a annoncé le redéploiement de deux brigades vers le secteur est, citant explicitement les chiffres du rapport. L'analyse du comportement militaire est ainsi devenue un épisode du comportement militaire qu'elle décrivait.\n\n[2026-10-19] Trois capitales relient leurs fonds souverains via un accord de co-investissement — https://presse-financiere-ostara.example/accords/fonds-souverains-trilateral\n\nLes fonds souverains de Melvanie, du Protectorat de Sûr et de la République de Danteborg ont signé le 19 octobre 2026 un protocole de co-investissement en infrastructures portuaires. Melvanie apporte les terminaux de Velhaven, Sûr contrôle le détroit de Kossmar, Danteborg gère les entrepôts logistiques de Nordfjeld. Un flux de capitaux estimé à 4,2 milliards d'unités de compte doit circuler entre ces trois nœuds ; la suppression du lien Sûr–Danteborg couperait l'accès aux marchés intérieurs continentaux.\n\n[2026-11-04] Adhésions à l'Union Commerciale Ostrave : la courbe s'infléchit — https://agence-telavar.example/politique/ostrave-adhesions-novembre\n\nL'Union Commerciale Ostrave comptait 4 membres en 2021, 11 en 2023, 19 en 2025 et 27 au 4 novembre 2026. Le secrétariat général signale un ralentissement des candidatures depuis août : trois États observateurs ont suspendu leur dossier, invoquant la saturation des mécanismes d'arbitrage. Les analystes de l'Union estiment que la capacité d'intégration effective plafonne autour de 30 membres sans réforme institutionnelle préalable.\n\n[2026-11-11] Kossmar devient nœud de transit après la fermeture du couloir Velhaven-Est — https://agence-telavar.example/geopolitique/kossmar-transit-novembre\n\nDepuis la suspension des liaisons aériennes entre Velhaven-Est et Nordfjeld le 2 novembre 2026, la totalité du fret diplomatique entre Melvanie et Danteborg transite par le port de Kossmar, sous contrôle du Protectorat de Sûr. Selon les registres douaniers publiés le 11 novembre, 340 convois ont emprunté ce couloir en neuf jours, contre une moyenne hebdomadaire de 12 avant la suspension. Kossmar concentre désormais l'ensemble des flux entre les deux capitales.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "RCS@7": "F",
+        "RES@7": "F",
+        "HIE@7": "f",
+        "CTR@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 3,
+      "presentes": [
+        "INC@7",
+        "PER@7",
+        "RSN@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "PRO@7",
+        "RCS@7",
+        "SEU@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-18] Négociations de Varkoum : la délégation nordienne reporte sa réponse — https://agence-telexor.example/diplomatie/varkoum-report-180926\n\nLa délégation de la République nordienne a annoncé jeudi qu'elle suspendait sa réponse formelle au protocole commercial proposé par la Fédération de Suldrave, dans l'attente des résultats de l'audit douanier commandé le 15 septembre à l'Institut Brelvane. Le chef de délégation, Oskar Fennig, a confirmé que deux scénarios restaient ouverts : adhésion partielle ou refus total. Des dispositions transitoires sur les quotas céréaliers ont été reconduites pour soixante jours.\n\n[2026-10-03] Sommet de Varkoum : Suldrave et Nordiane alignent leurs cycles budgétaires pour la troisième fois — https://quotidien-halvane.example/economie/cycles-budgetaires-031026\n\nLes ministres des finances de Suldrave et de Nordiane ont signé vendredi un mémorandum synchronisant leurs calendriers de révision budgétaire annuelle. Les deux États avaient déjà procédé à cet alignement en octobre 2024 et en octobre 2025, chaque fois dans la première semaine du mois. L'intervalle de douze mois est ainsi respecté pour la troisième année consécutive. Les délégations ont indiqué que la prochaine révision conjointe est attendue pour octobre 2027.\n\n[2026-10-21] Conférence de Halvane : les délégations suldrave et nordienne adoptent un rythme de séance commun — https://presse-meridiane.example/conferences/halvane-rythme-211026\n\nObservateurs et journalistes accrédités ont noté mercredi que les deux délégations, habituellement en session à des horaires décalés, ont tenu leurs plénières simultanément à 09h00 et 15h00 pendant trois jours consécutifs. Ce cadrage commun est apparu après l'introduction, le 19 octobre, d'un système de cloche partagé installé par l'équipe technique de la salle Fennard. Avant le 19 octobre, les horaires des deux délégations différaient de quarante à quatre-vingt minutes selon les journées.\n\n[2026-11-04] Clause Brelvane : un article de 1987 continue de bloquer l'accès nordien aux ports suldrave — https://agence-telexor.example/juridique/clause-brelvane-041126\n\nLe conseiller juridique de Nordiane, Marta Veldis, a rappelé mardi devant la commission mixte que l'article 14-bis du Traité portuaire de Brelvane, signé le 9 mars 1987, interdit toujours aux navires battant pavillon nordien d'accéder aux terminaux à conteneurs de Suldrave sans caution préalable. Aucune des deux parties n'a proposé de renégocier cet article depuis 1987. Marta Veldis a précisé que, dans un accord rédigé aujourd'hui, une telle clause ne serait pas retenue.\n\n[2026-11-11] Audit Brelvane publié : Nordiane toujours sans position officielle — https://quotidien-halvane.example/diplomatie/audit-brelvane-111126\n\nL'Institut Brelvane a rendu public mardi son rapport d'audit douanier, commandé le 15 septembre par la délégation nordienne. Le document chiffre à 340 millions de thalers l'écart tarifaire entre les deux régimes. Le gouvernement nordien n'a transmis aucune réponse formelle à Suldrave à la date de publication. Le porte-parole du ministère nordien des Affaires extérieures, Jorun Pallec, a indiqué que « plusieurs options demeurent à l'étude » et qu'une décision serait communiquée « avant la fin du mois ».",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "F",
+        "PER@7": "f",
+        "SEU@7": "f",
+        "TRC@7": "F"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "RCS@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 4,
+      "presentes": [
+        "RSN@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "RCS@7",
+        "REC@7"
+      ],
+      "evenement": "RES@7",
+      "texte": "[2026-09-12] Sommet de Varethie : les délégations calquent leurs séances sur un horaire commun — https://agence-novapress.example/international/varethie-sommet-rythme\n\nRéunis à Varethie depuis le 10 septembre, les représentants de cinq États membres de l'Alliance de Delvorn et les observateurs du Bloc de Santhée tenaient jusqu'ici leurs séances à des heures décalées. Le 12 septembre, les deux groupes ont adopté un calendrier de travail identique : ouverture à 08 h 30, suspension à 13 h 00, reprise à 15 h 00. Les délégués des deux blocs signalent que leurs cycles de consultation interne se sont progressivement alignés sur cette cadence partagée depuis le 11 septembre au soir.\n\n[2026-09-28] L'Alliance de Delvorn révise ses procédures de vote pour la troisième fois en dix-huit mois — https://quotidien-telvar.example/politique/delvorn-vote-revision\n\nFondée en 2019 avec un mécanisme de vote à majorité simple, l'Alliance de Delvorn a adopté en mars 2025 un seuil de majorité qualifiée à 60 %. Le 28 septembre 2026, son conseil permanent a approuvé une troisième modification portant ce seuil à 67 %, tout en maintenant la liste des États membres et la règle d'unanimité pour les amendements constitutifs, invariants depuis la charte fondatrice. Le secrétariat a publié un tableau comparatif des trois versions successives du règlement intérieur.\n\n[2026-10-14] Conférence de Meldrath : les cycles de briefing des deux délégations convergent après trois jours — https://fil-orbane.example/diplomatie/meldrath-synchronisation\n\nÀ l'ouverture de la conférence de Meldrath le 12 octobre, la délégation de Sorvanie tenait ses briefings internes à 07 h 00 et celle de Carentie à 09 h 30. Le 14 octobre, les deux équipes ont tenu leur briefing conjoint à 08 h 15, heure à laquelle chacune avait progressivement décalé sa propre réunion depuis la veille. Le canal de couplage identifié est la salle de presse commune ouverte le 13 octobre à 08 h 00, fréquentée simultanément par les deux délégations.\n\n[2026-10-31] Le Parlement régional de Thurvène passe de chambre consultative à chambre délibérante — https://presse-thurvene.example/institutions/parlement-statut-evolution\n\nCréé en 2011 comme organe purement consultatif, le Parlement régional de Thurvène a obtenu en 2023 un droit d'amendement limité aux textes budgétaires. Le 31 octobre 2026, une réforme constitutionnelle lui confère un pouvoir de vote contraignant sur l'ensemble de la législation régionale. Les 47 membres élus en 2011 et reconduits depuis siègent sans interruption, constituant l'invariant de continuité institutionnelle à travers ces trois états successifs de l'assemblée.\n\n[2026-11-08] Exercices navals conjoints : les fréquences radio des flottes de Delvorn et Santhée s'alignent en quarante-huit heures — https://agence-novapress.example/defense/exercices-navals-frequences\n\nLors des manœuvres conjointes débutées le 6 novembre en mer de Velthor, les flottes de l'Alliance de Delvorn et du Bloc de Santhée opéraient sur des fréquences de communication distinctes, à 156,4 MHz et 162,0 MHz respectivement. Le 8 novembre, les deux flottes utilisaient une fréquence commune de 158,6 MHz, après une phase d'ajustement progressif documentée dans les journaux de bord des deux commandements le 7 novembre à 14 h 00. Le canal de couplage est le protocole d'interopérabilité signé le 6 novembre au matin.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "RSN@7": "f",
+        "TRA@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "REC@7": "aucun_fait",
+        "RSN@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 5,
+      "presentes": [
+        "CRO@7",
+        "PER@7",
+        "RCS@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "POL@7",
+        "PRO@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-15] Expansion du réseau ferroviaire de Valdorine : troisième phase lancée — https://agence-telaris.example/transport/valdorine-rail-phase3\n\nLe ministère des Infrastructures de Valdorine a annoncé lundi l'ouverture de 340 kilomètres de voies supplémentaires, portant le réseau à 2 100 kilomètres. En juin 2025, le réseau couvrait 1 400 kilomètres ; en janvier 2026, il atteignait 1 760 kilomètres. Le rythme d'extension s'accélère à mesure que le maillage existant réduit les coûts de pose des tronçons adjacents. Les ingénieurs estiment que la saturation technique sera atteinte aux alentours de 3 800 kilomètres, limite fixée par la densité de population des zones desservies.\n\n[2026-10-03] Sommet de Brelvane : quatrième session annuelle ouverte — https://presse-orvane.example/diplomatie/brelvane-sommet-2026\n\nLes délégués de dix-neuf États membres de l'Alliance de Brelvane se sont réunis vendredi pour la quatrième session annuelle consécutive du sommet. La première s'était tenue en octobre 2023, la deuxième en octobre 2024, la troisième en octobre 2025. Chaque session suit le même déroulement en trois phases : revue des engagements, négociation des quotas, signature du protocole annuel. Les observateurs notent que la phase de négociation des quotas est actuellement en cours, conformément au calendrier institutionnel établi dès 2022.\n\n[2026-10-21] Kelvrath publie son indice de stabilité interne — et révise aussitôt sa doctrine sécuritaire — https://fil-norsten.example/securite/kelvrath-indice-revision\n\nLe Conseil stratégique de Kelvrath a rendu public le 21 octobre son premier indice officiel de stabilité interne, établi à 54 sur 100. Dans les quarante-huit heures suivant la publication, le Conseil a adopté un plan de réforme des forces frontalières, citant explicitement le score comme justification. Le document de réforme reprend mot pour mot plusieurs indicateurs de l'indice pour fixer les nouveaux seuils d'alerte. L'indice, conçu pour mesurer l'état du dispositif sécuritaire, a ainsi modifié le dispositif qu'il mesurait.\n\n[2026-11-04] Réseau consulaire de Morthaven : cinquième extension en dix-huit mois — https://agence-telaris.example/diplomatie/morthaven-consulats-nov2026\n\nLe gouvernement de Morthaven a inauguré mardi sept nouveaux consulats dans la région de Delvarne, portant le total à 83 postes. Le réseau comptait 41 postes en mai 2025, 61 en janvier 2026 et 76 en août 2026. Le taux d'ouverture mensuel est passé de 3,3 postes par mois à 5,8 postes par mois entre les deux derniers intervalles. Le ministre des Affaires extérieures a indiqué que la capacité logistique de l'administration centrale constitue désormais le principal facteur limitant de cette expansion.\n\n[2026-11-11] Conférence de Seltourne : ouverture de la phase de négociation, comme en 2024 et 2025 — https://presse-orvane.example/diplomatie/seltourne-cycle-2026\n\nLa Conférence de Seltourne sur les ressources hydriques a entamé mercredi sa phase de négociation bilatérale, troisième occurrence de cette séquence depuis novembre 2024. En novembre 2024, puis en novembre 2025, la même progression s'était déroulée : session plénière d'ouverture le premier lundi, puis passage aux négociations bilatérales le deuxième mercredi. L'intervalle entre les deux premières ouvertures était de 364 jours ; celui séparant la deuxième de la troisième est de 366 jours. Les délégations de Seltourne et de Varchal ont confirmé leur participation à la table de négociation.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "PER@7": "f",
+        "RCS@7": "F",
+        "CRO@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "POL@7": "aucun_fait",
+        "PRO@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 6,
+      "presentes": [
+        "CTR@7",
+        "EME@7",
+        "HIE@7",
+        "POL@7",
+        "RES@7",
+        "SEU@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "CRO@7",
+        "INC@7",
+        "PER@7",
+        "PRO@7",
+        "RCS@7",
+        "REC@7",
+        "RSN@7"
+      ],
+      "evenement": null,
+      "statut": "sans_evenement"
+    },
+    {
+      "graine": 7,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "PER@7",
+        "REC@7",
+        "RES@7",
+        "RSN@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "EME@7",
+        "HIE@7",
+        "INC@7",
+        "POL@7",
+        "PRO@7",
+        "RCS@7",
+        "TRC@7"
+      ],
+      "evenement": null,
+      "statut": "sans_evenement"
+    },
+    {
+      "graine": 8,
+      "presentes": [
+        "CRO@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "HIE@7",
+        "RCS@7",
+        "REC@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-12] Expansion du réseau ferroviaire de Valdoris : troisième phase lancée — https://agence-teluria.example/transport/valdoris-rail-phase3\n\nLe réseau ferroviaire interrégional de Valdoris comptait 340 km de voies en 2024, 510 km en 2025, et atteint 740 km ce mois-ci après l'inauguration de la ligne nord-ouest. Le ministère des Infrastructures de Valdoris estime que le rythme d'extension accélère à mesure que le maillage existant réduit les coûts de raccordement de chaque nouveau tronçon. Les ingénieurs identifient une capacité limite autour de 1 100 km, au-delà de laquelle la densité de population ne justifie plus de nouvelles lignes.\n\n[2026-09-28] Keltara dissout son parlement bicaméral : la chambre haute supprimée par référendum — https://presse-orvane.example/politique/keltara-referendum-chambre\n\nLe 28 septembre 2026, 61 % des électeurs de Keltara ont approuvé la suppression définitive du Sénat fédéral, chambre haute instituée en 1948. Les textes constitutionnels amendés ne prévoient aucune procédure de rétablissement d'une seconde chambre sans convoquer une nouvelle assemblée constituante. Le gouvernement a immédiatement transmis les décrets de dissolution aux archives nationales. Plusieurs juristes consultés par le quotidien Orvane Soir confirment qu'aucun mécanisme ordinaire ne permet de revenir à la configuration antérieure.\n\n[2026-10-07] Flotte marchande de Sorvène : les immatriculations doublent en dix-huit mois — https://maritime-centhal.example/registres/sorvene-flotte-2026\n\nLe registre maritime de Sorvène recensait 210 navires immatriculés en avril 2025, 318 en janvier 2026, et 431 au 1er octobre 2026. Les armateurs citent la réduction des droits de port décidée en 2024 comme facteur initial ; chaque nouvel entrant attire des prestataires logistiques qui rendent le port plus attractif pour le suivant. Le directeur du registre signale que les capacités d'accueil des quais approchent leur limite technique, fixée à environ 600 navires simultanément actifs.\n\n[2026-10-22] Démolition du pont de Harvel : la traversée historique détruite, aucun plan de reconstruction — https://infos-delvane.example/infrastructure/pont-harvel-demolition\n\nLe pont de Harvel, seul passage routier direct entre les provinces de Morne et de Cassel depuis 1887, a été démoli le 22 octobre 2026 pour permettre l'élargissement du canal fluvial de Delvane. Les autorités provinciales ont confirmé par écrit qu'aucun budget de reconstruction n'est inscrit dans le plan décennal. Tout futur rétablissement d'une liaison routière directe nécessiterait un tracé différent, plus au nord, estimé à 340 millions de lires valdoriennes selon le bureau d'études Centhal & Associés.\n\n[2026-11-08] Adhésions à l'Union douanière de Tharsis : cinquième État membre en deux ans — https://agence-teluria.example/diplomatie/tharsis-union-douaniere-adhesion\n\nL'État de Prelvie a signé le 8 novembre 2026 son traité d'adhésion à l'Union douanière de Tharsis, portant le nombre de membres à cinq. L'Union comptait deux membres en novembre 2024, trois en avril 2025, quatre en février 2026. Chaque adhésion transfère irrévocablement la compétence tarifaire nationale à l'organe commun de Tharsis ; le traité fondateur ne prévoit aucune clause de retrait unilatéral. Les négociateurs de Prelvie ont indiqué que trois autres États observateurs examinent actuellement les conditions d'entrée.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "SEU@7": "f"
+      },
+      "rejets_categories": {
+        "HIE@7": "aucun_fait",
+        "RCS@7": "aucun_fait",
+        "REC@7": "aucun_fait",
+        "CRO@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 9,
+      "presentes": [
+        "INC@7",
+        "PRO@7",
+        "REC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "evenement": "RCS@7",
+      "texte": "[2026-09-12] Valdoris suspend ses livraisons de céréales à Merthane — https://agencepressekorval.example/international/valdoris-merthane-cereales\n\nLe ministère valdorien du Commerce a annoncé vendredi la suspension immédiate de ses exportations de blé vers Merthane, soit 340 000 tonnes prévues pour le quatrième trimestre. Motif invoqué : le non-versement par Merthane de 47 millions de dalvars dus depuis juin au titre d'un accord de transit ferroviaire signé en 2024. Le porte-parole valdorien a déclaré que les livraisons reprendraient « dès réception du paiement intégral ».\n\n---\n\n[2026-09-29] Merthane transfère 47 millions de dalvars à Valdoris et réclame la reprise des livraisons — https://quotidiendemerthane.example/economie/paiement-valdoris-transit\n\nLe Trésor merthanien a confirmé lundi le virement de 47 millions de dalvars à la Chambre de compensation de Valdoris, soldant la dette de transit contestée depuis juin. Le ministre merthanien du Commerce a immédiatement adressé une note formelle à Valdoris, rappelant que l'accord de 2024 prévoit la reprise des livraisons « dans les dix jours ouvrés suivant tout règlement ». Aucune réponse officielle de Valdoris n'avait été publiée à l'heure de clôture de cette édition.\n\n---\n\n[2026-10-14] Négociations Arvental–Sorvagne : les délégations reportent la signature au 3 novembre — https://pressediplomatique-arvental.example/sorvagne-accord-report\n\nLes délégations d'Arvental et de Sorvagne ont annoncé mardi le report de la signature de leur accord-cadre énergétique, initialement prévu pour le 17 octobre. Les deux parties attendent les résultats d'un audit indépendant sur les réserves gazières du bassin de Lentavar, dont les estimations varient entre 80 et 210 milliards de mètres cubes selon les sources consultées. Arvental a déployé une équipe de douze géologues sur le terrain depuis le 9 octobre ; Sorvagne a mandaté le cabinet Drexova pour une contre-expertise parallèle.\n\n---\n\n[2026-10-27] Défense : la part du budget de Sorvagne consacrée aux achats extérieurs passe de 18 % à 31 % en deux ans — https://observateursorvagnien.example/defense/budget-achats-exterieurs\n\nSelon le rapport annuel du Parlement de Sorvagne publié lundi, les achats d'équipements militaires à l'étranger représentaient 18 % du budget de défense en 2024 ; ils atteignent 31 % en 2026, tandis que le budget total de défense n'a progressé que de 9 % sur la même période. La part consacrée à l'industrie nationale est passée de 61 % à 48 %. Le rapport ne formule aucune recommandation ; il sera examiné en commission le 10 novembre.\n\n---\n\n[2026-11-08] Arvental–Sorvagne : l'audit de Lentavar publié, la signature repoussée une seconde fois — https://pressediplomatique-arvental.example/sorvagne-lentavar-audit-final\n\nLe cabinet Drexova a remis vendredi son rapport sur le bassin de Lentavar : les réserves récupérables sont estimées à 124 milliards de mètres cubes, contre 190 milliards avancés par Arvental en juillet. Les deux délégations ont annoncé conjointement un nouveau report de la signature au 19 novembre, le temps d'ajuster les clauses de partage des revenus. Aucune des deux parties n'a précisé quels paramètres de l'accord restaient ouverts.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "REC@7": "F",
+        "INC@7": "F",
+        "PRO@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 10,
+      "presentes": [
+        "COM@7",
+        "CTR@7",
+        "EME@7",
+        "SEU@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "HIE@7",
+        "INC@7",
+        "PER@7",
+        "PRO@7",
+        "RSN@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-12] Accord de Veltara : les trois États riverains ratifient le traité de gestion du lac Omren — https://agencepressekorvel.example/traites/omren-veltara-2026\n\nValdonie, Surchie et Meralka ont signé vendredi à Veltara le traité instituant l'Autorité commune du lac Omren. Chaque État verse une cotisation annuelle calculée sur ses prélèvements en eau ; tout membre dont la contribution est inférieure de 15 % au quota déclaré est suspendu des droits de pêche partagés. Le secrétariat de l'Autorité a enregistré, dès le lendemain, une première demande de vérification visant une flottille surchienne opérant hors zone assignée.\n\n[2026-09-29] Valdonie : le parlement dissout l'ancien service de renseignement intérieur et crée la Direction nationale de sécurité — https://quotidienvaldonien.example/politique/dns-creation\n\nLe vote du 29 septembre, acquis par 61 voix contre 58, a abrogé la loi fondatrice de l'Agence centrale de surveillance, datant de 1987. L'ancienne agence ne peut être rétablie sous son statut d'origine : la loi d'abrogation interdit explicitement toute reconstitution sous le même cadre juridique. Tout futur service devra être autorisé par une majorité des deux tiers, seuil que la coalition actuelle ne détient pas. Trois anciens directeurs ont annoncé un recours constitutionnel.\n\n[2026-10-14] Meralka : une norme commune de signalisation portuaire s'impose sans décision officielle — https://portinfomeralka.example/logistique/signalisation-spontanee\n\nDepuis août 2026, les vingt-deux terminaux privés du port de Drenka ont adopté un code couleur identique pour le balisage des zones de quarantaine. Aucun règlement portuaire ne prescrit ce code ; les responsables de quai interrogés citent l'exemple du terminal Harvel, imité progressivement par les voisins à partir de juillet. L'administration portuaire a confirmé le 14 octobre qu'elle n'avait émis aucune consigne en ce sens et envisage désormais de formaliser la pratique existante.\n\n[2026-10-27] Surchie : Brondal City interdit aux ressortissants valdoniiens l'accès aux registres fonciers municipaux — https://pressesurchie.example/diplomatie/registres-fonciers-valdonie\n\nLa mairie de Brondal City a publié le 27 octobre un arrêté municipal bloquant toute consultation des registres fonciers par des personnes physiques ou morales de nationalité valdoniienne. Deux cabinets d'avocats valdoniiens ont tenté de déposer des demandes d'accès le jour même ; les demandes ont été rejetées au guichet. L'arrêté cite en justification les restrictions miroirs imposées par Valdonie aux investisseurs surchiens depuis mars 2025.\n\n[2026-11-08] Valdonie : le ministère des Affaires étrangères maintient le protocole de 1994 sur les visas diplomatiques malgré la rupture de 2021 — https://agencepressekorvel.example/diplomatie/visas-1994-maintien\n\nLe ministère valdoniien a confirmé le 8 novembre que les visas diplomatiques délivrés sous le protocole bilatéral de 1994 restent valides pour les délégations de Surchie, bien que les deux pays aient suspendu leurs relations consulaires en octobre 2021. Aucun accord de remplacement n'a été négocié ; les chancelleries des deux États continuent d'utiliser les formulaires imprimés à cette date, faute d'autre base procédurale commune disponible.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "COM@7": "f",
+        "CTR@7": "f",
+        "EME@7": "f",
+        "SEU@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "HIE@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "PER@7": "aucun_fait",
+        "PRO@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 11,
+      "presentes": [
+        "COM@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "RCS@7",
+        "TRC@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-12] Fonds climatique de Valderra : trois États fixent les règles de contribution — https://agencepresseorient.example/valderra-fonds-climatique\n\nLes gouvernements de Valderra, Morsanie et Telkhoun ont signé vendredi la charte constitutive du Fonds commun pour la reforestation du bassin du Reth. Le texte fixe des quotes-parts annuelles obligatoires calculées sur le PIB de chaque membre, et prévoit l'exclusion temporaire de tout État dont le versement accuse un retard supérieur à quatre-vingt-dix jours. Valderra contribuera à hauteur de 48 %, Morsanie de 31 %, Telkhoun de 21 %. Un comité d'audit indépendant publiera les relevés trimestriels.\n\n[2026-09-29] L'Union portuaire de Draven suspend Korveth pour cotisations impayées — https://letideledest.example/draven-korveth-suspension\n\nL'Union portuaire de Draven, qui regroupe sept États côtiers, a voté lundi la suspension provisoire de Korveth après que ce pays n'a pas versé sa contribution au fonds d'entretien des chenaux communs depuis dix mois. Le règlement intérieur de l'Union prévoit explicitement cette mesure : tout membre dont l'arriéré dépasse deux trimestres perd l'accès aux infrastructures partagées jusqu'à régularisation. Les six autres membres ont maintenu leurs versements selon le calendrier prévu.\n\n[2026-10-14] Pacte agricole du Plateau de Senne : cinq nations adoptent un quota de prélèvement — https://nouvellesduplateausenne.example/pacte-quota-eau\n\nLes délégués de cinq nations riveraines du Plateau de Senne ont adopté mardi un quota collectif de prélèvement en eau souterraine, désigné dans le texte comme « bien commun irremplaçable ». Chaque membre s'engage à déclarer mensuellement ses volumes extraits à un registre centralisé. Tout dépassement non signalé déclenche une pénalité financière et une inspection sur site dans les trente jours. Le Parlement de Senne a qualifié le dispositif de « mécanisme de vigilance mutuelle ».\n\n[2026-10-31] Réseau satellitaire Aurex : Brenthie accusée de sous-financement chronique — https://observatoiretechgeo.example/aurex-brenthie-litige\n\nLors de la session plénière d'Aurex, consortium satellitaire réunissant six États membres, les délégués de Valderra, Morsanie et Droven ont formellement reproché à Brenthie de n'avoir financé que 11 % de sa quote-part annuelle, contre les 27 % inscrits dans la charte fondatrice. Le projet commun — un réseau de surveillance météorologique partagé — accuse un retard de lancement de cinq mois. Le règlement d'Aurex prévoit une mise sous tutelle budgétaire en cas de déficit persistant au-delà d'un exercice fiscal.\n\n[2026-11-11] Fonds Reth : Telkhoun verse sa première tranche, le comité d'audit confirme — https://agencepresseorient.example/reth-telkhoun-versement\n\nLe comité d'audit du Fonds commun pour la reforestation du bassin du Reth a confirmé mercredi la réception du premier versement de Telkhoun, soit 4,2 millions d'unités de compte, conforme au calendrier fixé en septembre. Valderra et Morsanie avaient honoré leurs tranches respectives dès octobre. Le comité a rappelé que tout État à jour de ses contributions bénéficie d'un droit de vote plein lors des décisions d'allocation ; les membres en retard en sont privés jusqu'à régularisation.",
+      "fuites": [],
+      "statut": "lue",
+      "ancrees": {
+        "COM@7": "F",
+        "CTR@7": "F"
+      },
+      "rejets_categories": {
+        "RCS@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    }
+  ]
+}
