@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.24"
+VERSION_BOT = "0.10.25"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -318,6 +318,20 @@ def extraire_json(texte: str) -> dict:
 
 
 BORNE_BASSE, BORNE_HAUTE = 0.001, 0.999  # bornes de l'API Metaculus pour une question binaire
+
+
+async def json_avec_reprise(llm: Llm, consigne: str, trace: dict | None = None, etape: str = "") -> dict:
+    """0.10.25 : une sortie dont le JSON est illisible a UNE seconde chance : la consigne est renvoyée avec l'erreur.
+    Le premier échec reste compté (trace["reprises_json"][etape]) : le score des sorties illisibles le voit."""
+    try:
+        return extraire_json(await llm(consigne))
+    except Exception as e:
+        if trace is not None:
+            r = trace.setdefault("reprises_json", {})
+            r[etape] = r.get(etape, 0) + 1
+        return extraire_json(await llm(
+            consigne + f"\n\nTA RÉPONSE PRÉCÉDENTE N'ÉTAIT PAS UN JSON VALIDE ({type(e).__name__}: {str(e)[:200]}). "
+            "Rends UNIQUEMENT l'objet JSON demandé, complet et bien formé, sans texte autour."))
 
 
 def borner(p: float) -> float:
@@ -1381,7 +1395,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         return c
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
-                                   "etat", "drapeaux", "ombre_causale") if c.get(k) is not None}
+                                   "reprises_json", "etat", "drapeaux", "ombre_causale") if c.get(k) is not None}
     explo["strate"] = strate
     explo["p_C_corrige"] = corriger_C(explo.get("p_C"), correction_retro())   # 0.9.1 : la correction en ombre aussi
     explo["p_C_symetrique"] = (c.get("symetrique") or {}).get("p")
@@ -1401,7 +1415,7 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
     | lu_non_chiffre (et « erreur », posé par prevoir_binaire si une exception échappe)."""
     trace: dict = {"statut": "refuse", "tentatives": 0}
     try:
-        plan = extraire_json(await llm(consigne_plan(q, recherche, aujourdhui)))
+        plan = await json_avec_reprise(llm, consigne_plan(q, recherche, aujourdhui), trace, "plan")
     except Exception as e:
         return dict(trace, motif=f"plan illisible : {e}")
     motif = controle_plan(plan)
@@ -1489,7 +1503,7 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         executees = await executer_recherches(plan, chercher, recherche_reelle)
     trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
     try:
-        lecture = extraire_json(await llm(consigne_dossier(q, plan, executees, aujourdhui, jours)))
+        lecture = await json_avec_reprise(llm, consigne_dossier(q, plan, executees, aujourdhui, jours), trace, "lecture")
     except Exception as e:
         return dict(trace, motif=f"lecture illisible : {e}")
     relance = None
@@ -1560,10 +1574,10 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         if tentative == MAX_CORRECTIONS or any(x in erreur for x in ERREURS_STRUCTURELLES):
             break
         try:
-            lecture = extraire_json(await llm(consigne_correction(
+            lecture = await json_avec_reprise(llm, consigne_correction(
                 {k: dossier[k] for k in CLES_LECTURE if k in dossier}
                 | {"rejets_classes": {c: {"categorie": dossier["_categories_rejet"].get(c), "motif": m}
-                                      for c, m in dossier["rejets"].items()}}, erreur)))
+                                      for c, m in dossier["rejets"].items()}}, erreur), trace, "correction")
         except Exception as e:
             trace["derniere_erreur"] = f"correction illisible : {e}"
             break
@@ -1793,7 +1807,7 @@ async def explorer_derivee(derivee: dict, ident: str, url: str, contexte: str, p
               "derniere_erreur": (str(c.get("derniere_erreur") or "")[:300] or None), "tentatives": c.get("tentatives"),
               # 0.10.19 : seuil = médiane du modèle seul, donc p_A = 0,5 par construction ; un B loin de 0,5 est suspect
               "methode_B": methode_B(c), "discordance_A": discordance(c.get("p_B"), derivee.get("p_A"), methode_B(c)),
-              "preselection": c.get("preselection"),
+              "preselection": c.get("preselection"), "reprises_json": c.get("reprises_json"),
               "strate": ((c.get("plan") or {}).get("evenement") or {}).get("strate"),
               "p_B": c.get("p_B"), "p_C": p_c, "p_C_corrige": corriger_C(p_c, correction_retro()),
               "p_C_symetrique": (c.get("symetrique") or {}).get("p"), "symetrique": c.get("symetrique"),
@@ -1880,7 +1894,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
-                                                        "invariance", "preselection",
+                                                        "invariance", "preselection", "reprises_json",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

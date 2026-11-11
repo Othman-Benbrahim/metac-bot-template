@@ -413,6 +413,10 @@ def sorties_illisibles(lignes: list[dict]) -> dict | None:
         d["lignes"] += 1
         textes = f"{c.get('motif') or ''} || {c.get('derniere_erreur') or ''}"
         etapes = [e for motif, e in ETAPES_ILLISIBLES if motif in textes]
+        # 0.10.25 : un premier échec rattrapé par la reprise reste une sortie illisible du modèle
+        for e, n_ in (c.get("reprises_json") or {}).items():
+            if e not in etapes and n_:
+                etapes.append(e)
         if "plan_corrige" in etapes and "plan" in etapes:
             etapes.remove("plan")
         if (c.get("critique") or {}).get("statut") == "illisible":

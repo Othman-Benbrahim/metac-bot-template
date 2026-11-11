@@ -14,6 +14,10 @@ on:
         description: "Narrateur : vide = même modèle que le lecteur ; « contradicteur » ; ou un identifiant (ex. bedrock/deepseek.v3.2)"
         required: false
         default: "contradicteur"
+      verificateur:
+        description: "Vérificateur, d'une troisième famille (ni Claude ni DeepSeek), ex. bedrock/mistral.mistral-large-3-675b-instruct ; vide = petit modèle"
+        required: false
+        default: "bedrock/mistral.mistral-large-3-675b-instruct"
       strate:
         description: "Strate (7 par défaut, la seule chiffrée)"
         required: false
@@ -46,6 +50,7 @@ jobs:
           MONDE_SITUATIONS: ${{ github.event.inputs.situations }}
           MONDE_STRATE: ${{ github.event.inputs.strate }}
           MONDE_NARRATEUR: ${{ github.event.inputs.narrateur }}
+          MONDE_VERIFICATEUR: ${{ github.event.inputs.verificateur }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}

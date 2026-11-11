@@ -247,14 +247,18 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
         row = dict(s, texte=texte, fuites=fuites(texte))
         if verificateur is not None:     # 0.10.23 : le texte montre-t-il bien les présentes, et seulement elles ?
             try:
-                v = ap.extraire_json(await verificateur(consigne_verification(texte, plan["candidats"])))
+                v = await ap.json_avec_reprise(verificateur, consigne_verification(texte, plan["candidats"]))
                 oui = {f"{m.carte_id(str(k))}@{strate}" for k, x in v.items() if str(x).lower().startswith("o")}
                 row["verification"] = {"absentes_montrees": sorted(oui & set(s["absentes"])),
                                        "presentes_non_montrees": sorted(set(s["presentes"]) - oui)}
             except Exception as e:
                 row["verification"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+        reprises: dict = {}
         try:
-            lec = ap.extraire_json(await lecteur(ap.consigne_dossier(q, plan, executees, aujourdhui, 90)))
+            lec = await ap.json_avec_reprise(lecteur, ap.consigne_dossier(q, plan, executees, aujourdhui, 90), reprises,
+                                             "lecture")
+            if reprises:
+                row["reprises_json"] = reprises["reprises_json"]
         except Exception as e:
             rows.append(dict(row, statut="lecture_illisible", motif=f"{type(e).__name__}: {e}"[:200]))
             continue
@@ -316,22 +320,34 @@ async def principal() -> int:
     # graines nouvelles par défaut : un passage de plus ajoute des situations au lieu de rejouer les mêmes
     graine0 = os.environ.get("MONDE_GRAINE")
     graine0 = int(graine0) if graine0 else 1 + max([d.get("graines", [0, -1])[1] for d in deja] or [-1])
-    verificateur = None                  # 0.10.23 : contrôle du narrateur par le petit modèle (autre que le lecteur)
-    if choix.get("petit") and choix.get("petit") != choix.get("principal"):
+    # 0.10.25 : le vérificateur doit être d'une TROISIÈME famille (ni celle du lecteur, ni celle du narrateur), sinon
+    # il voit ce que voit le lecteur et les faux positifs vérifiés sont trop flatteurs. MONDE_VERIFICATEUR : un
+    # identifiant de modèle ; vide = le petit modèle (signalé comme de même famille). Il est sondé avant le passage.
+    nom_v = (os.environ.get("MONDE_VERIFICATEUR") or "").strip() or choix.get("petit")
+    verificateur = None
+    if nom_v:
+        sonde = await am.sonder(nom_v)
+        if not sonde.get("json_ok"):
+            print(f"Vérificateur « {nom_v} » indisponible ({sonde.get('erreur')}). Rien n'est lancé.")
+            return 1
         from forecasting_tools import GeneralLlm
-        modele_v = GeneralLlm(model=choix["petit"], temperature=0, timeout=120, allowed_tries=2)
+        modele_v = GeneralLlm(model=nom_v, temperature=0, timeout=180, allowed_tries=2)
 
         async def verificateur(c: str) -> str:
             return await modele_v.invoke(c)
     r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0,
                      verificateur=verificateur)
-    r["verificateur"] = choix.get("petit") if verificateur else None
+    r["verificateur"] = nom_v if verificateur else None
+    fam = lambda nom: next((f for f in ("claude", "deepseek", "mistral", "qwen", "llama", "nova", "gpt", "glm", "kimi")
+                            if f in str(nom or "").lower()), str(nom))
+    r["verificateur_famille_distincte"] = bool(verificateur) and fam(nom_v) not in (fam(r.get("modele")),
+                                                                                   fam(r.get("narrateur")))
     r["narrateur"] = nom_n or r.get("modele")
     r["meme_famille"] = not nom_n or nom_n == r.get("modele")
     r["protocole_monde"] = PROTOCOLE_MONDE
     # cumul des passages de même strate ET même narrateur (un narrateur de la même famille ne se mélange pas à un autre)
     meme = [d for d in deja + [r] if d.get("strate") == strate and d.get("protocole_monde", 1) == PROTOCOLE_MONDE
-            and (d.get("narrateur") or d.get("modele")) == r["narrateur"]]
+            and (d.get("narrateur") or d.get("modele")) == r["narrateur"] and d.get("verificateur") == r["verificateur"]]
     r["cumul"] = {"passages": len(meme), "narrateur": r["narrateur"], "protocole_monde": PROTOCOLE_MONDE,
                   **mesurer([s for d in meme for s in d.get("situations") or []])}
     r["cumul"].pop("par_carte", None)
@@ -341,7 +357,8 @@ async def principal() -> int:
     x = r["resultat"]
     print(f"Monde synthétique : {x['lues']}/{x['situations']} lues ; narrateur {r['narrateur']} ; mesuré {x['mesure']} ; "
           f"stipulé {x['stipule']} → {f.name}")
-    print(f"Mesure vérifiée (erreurs du narrateur retirées) : {x.get('mesure_verifiee')}")
+    print(f"Mesure vérifiée par {r['verificateur']} (famille distincte : {r['verificateur_famille_distincte']}) : "
+          f"{x.get('mesure_verifiee')}")
     print(f"Cumul ({r['cumul']['passages']} passages, {r['cumul']['lues']} situations lues) : {r['cumul']['mesure']}")
     return 0 if x["lues"] else 1
 
