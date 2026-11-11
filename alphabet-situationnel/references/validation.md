@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.67
+> Version : 0.7.68
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2529,4 +2529,26 @@ critère de Klein.
 statistique ») est sa propre théorie, peu reprise : elle n'est pas importée.
 
 **Ce qui ne change pas.** Le p publié, les seize cartes, la matrice.
+
+## 45. CONTRAINTE resserrée : une règle qui retire une option, plus seulement une règle qui existe (0.7.68)
+
+**Décision d'auteur, le 2026-11-11**, après les deux premiers passages du monde synthétique (§43). Sur 22
+situations lues, CONTRAINTE a été lue dans les **5 situations sur 5** où elle était absente : en F les deux fois où
+COMMUNAUTÉ était présente, en f les trois autres.
+
+**Le motif.** Les marqueurs d'une fiche sont des alternatives : un seul rempli suffit pour f. Le premier marqueur de
+CONTRAINTE (« règle écrite ou sanction observée ») constatait l'**existence** d'une règle, et presque tout récit
+géopolitique en contient une (traité, règlement, sanction). Or ce qui définit la carte est la contrainte **active**
+(structure : contrainte qui lie la solution, multiplicateur de Lagrange non nul) : une option retirée à quelqu'un. Les
+marqueurs de COMMUNAUTÉ (« contributions et règles d'appartenance », « sanction, exclusion ») retombaient
+mécaniquement dans ce premier marqueur.
+
+**Le changement.** Premier marqueur : « règle écrite ou sanction qui retire une option nommée à un acteur ». Les deux
+autres marqueurs sont inchangés ; l'équivalent local de la strate 7 (« option commerciale retirée par une sanction,
+ou option militaire plafonnée par un traité ») le disait déjà.
+
+**À vérifier.** Les prochains passages du monde synthétique, avec le vérificateur indépendant, diront si les fausses
+lectures de CONTRAINTE baissent, et si d'autres cartes ont un marqueur aussi large.
+
+**Ce qui ne change pas.** Le p publié, la matrice, les autres cartes.
 
