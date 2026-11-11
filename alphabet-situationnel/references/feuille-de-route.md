@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.72
+> Version : 0.7.73
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -49,6 +49,7 @@ carte, une définition abstraite commune et ce que chaque traduction locale en c
 | 0.7.53 (faite) | Le marqueur décide de l'intensité | Définition + un marqueur observable → f ; « contredit » distinct d'« incomplet » (§30) |
 | 0.7.54 (faite) | Fait de série | Un relevé de données daté et sourcé est un fait ; banc sans texte `alphabet-chaine` (§31) |
 | 0.7.55 (faite) | Équivalents de données | Marqueurs de dix cartes traduits en relevés de jetons, six Vides ; banc seul (§32) |
+| 0.7.73 (faite) | Freins en ombre | Hors du p publié (aucun événement publié n'est visé) ; lus par la simulation et l'ombre `avec_freins` (`validation.md` §49) |
 | 0.7.72 (faite) | Freins | Six arêtes inhibitrices (λ_I = 0,556), indicateurs de fermeture dans les fiches, produit borné à [1/10 ; 10] (`validation.md` §48) |
 | 0.7.71 (faite) | SKILL.md allégé | Historique déplacé vers `CHANGELOG.md` ; règles au présent avec renvois ; rien ne change |
 | 0.7.70 (faite) | λ appris | Décision : les λ s'apprennent sur les issues, en ombre ; adoption à 50 questions si gain hors échantillon (§47) |
@@ -499,6 +500,9 @@ fermer, pas seulement s'ouvrir. Prochaines étapes, à décider une par une :
    préférence n'est pas un fait.
 3. **Indicateurs de fermeture** : posés dans les fiches pour les six freins ; ils servent de signaux observables
    qu'une branche se ferme, comme les indicateurs de bascule disent qu'elle s'ouvre.
-4. **Nouveaux freins** : seulement par la règle du §48 (structure qui borne ou exclut, avec une référence), jamais
+4. **Tester les freins** (§49) : étendre la base de cas réels à des séquences codées, puis comparer, pour chaque
+   frein, la fréquence d'apparition de la cible quand la source est présente et quand elle ne l'est pas. Seul vrai test
+   de l'arbre ; tant qu'il n'est pas fait, les freins restent en ombre.
+5. **Nouveaux freins** : seulement par la règle du §48 (structure qui borne ou exclut, avec une référence), jamais
    par simple tension documentée.
 

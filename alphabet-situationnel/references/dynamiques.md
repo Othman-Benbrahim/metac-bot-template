@@ -1,6 +1,6 @@
 # Alphabet situationnel — Dynamiques des cartes (couche 4, a priori)
 
-> Version : 0.7.72
+> Version : 0.7.73
 
 > Ce que chaque structure **tend à produire au pas suivant**, proposé comme hypothèse à partir de sa représentation structurelle.
 > Ces intensités **modulent** une fréquence de base (T2) : elles ne sont pas des probabilités. Valeurs
@@ -22,7 +22,7 @@
 - **Transitions** : événements que la carte rend **plus probables** au pas suivant, avec une intensité
   (forte F / moyenne M / faible f) traduite en multiplicateur hypothétique λ (§H), et le mécanisme. Sauf mention, l'événement se produit **dans la même
   strate** ; « autre strate » signale une propagation possible (G3, transfert).
-- **Freins** (0.7.72, `validation.md` §48) : apparitions que la carte rend **moins probables**, classe I
+- **Freins** (0.7.72, `validation.md` §48 ; lus par la simulation, hors du p publié, §49) : apparitions que la carte rend **moins probables**, classe I
   (λ_I = 0,556), avec le mécanisme et un **indicateur de fermeture** (le fait observable qui montre que le frein agit).
   Six paires seulement, inscrites quand la structure de la carte borne ou exclut le mécanisme de la cible.
 - **Indicateurs de bascule** : faits observables qui annoncent la transition. Ils servent à remplir

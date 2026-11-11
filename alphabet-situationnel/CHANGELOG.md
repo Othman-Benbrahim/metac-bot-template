@@ -1,9 +1,18 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.72
+> Version : 0.7.73
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.73 — 2026-11-11 · Freins en ombre
+
+Décision d'auteur du 2026-11-11 (`validation.md` §49), après vérification : les freins ne visent jamais SEUIL, seul
+événement calculé dans le bot et le banc ; ils ne pouvaient presque rien au score.
+
+- Les freins sortent du p publié : `calculer` ne les lit plus ; ombre `avec_freins` dans `sensibilite`.
+- La simulation (`trajectoires`) les lit : l'arbre peut fermer des branches.
+- Feuille de route : le test des freins passe par des séquences historiques codées.
 
 ## 0.7.72 — 2026-11-11 · Freins
 
