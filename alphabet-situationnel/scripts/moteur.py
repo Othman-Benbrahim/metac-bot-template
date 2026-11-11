@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.70 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.71 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -4235,7 +4235,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.70','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.71','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))

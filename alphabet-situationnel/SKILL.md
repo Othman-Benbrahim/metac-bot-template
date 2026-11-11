@@ -3,7 +3,7 @@ name: alphabet-situationnel
 description: "Lecture structurelle et exploration conditionnelle de situations par 16 cartes transversales candidates et 13 strates (dont la politique intérieure). Utiliser pour lire une situation factuelle, explorer ses suites à un horizon défini, coder un cas historique ou scorer un journal. Modes LIRE, PRÉVOIR, CODER, SCORER. Le moteur calcule des probabilités expérimentales quand les entrées sont recevables ; aucune performance prédictive n'est acquise. Ne pas utiliser pour un tirage symbolique, un diagnostic, une décision sur une personne, ou transformer un ressenti seul en fait. Une lecture sans prévision est explicitement admise."
 license: MIT
 metadata:
-  version: '0.7.70'
+  version: '0.7.71'
   author: Othman Ben Brahim
 ---
 
@@ -16,18 +16,18 @@ conditions de chaque calcul. Les règles sont dans `references/protocole.md` ; l
 > ⚠ Outil expérimental : calcul reproductible ne signifie pas probabilité calibrée. Ne jamais
 > convertir un résultat « non estimé » en chiffre ni présenter le niveau ρ comme un taux de fiabilité.
 
-**Étape 0, avant toute commande (0.7.45) : localiser le skill.** Son chemin dépend de l'installation et de la
+**Étape 0, avant toute commande : localiser le skill.** Son chemin dépend de l'installation et de la
 synchronisation ; un chemin annoncé ailleurs peut ne pas exister. Lancer d'abord
 `find / -name moteur.py -path '*alphabet-situationnel*' 2>/dev/null`, puis `cd` dans le dossier trouvé (celui qui contient
 ce `SKILL.md`), puis `python3 scripts/moteur.py audit`.
 
 ## Contrôle d'intégrité
 
-Version 0.7.70. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
+Version 0.7.71. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
 les 13 fichiers `references/equivalences/strate-NN.md`, les bases, journaux et dossier d'exemple.
 Prérequis : Python ≥ 3.8, bibliothèque standard seule (aucune installation). Exécuter depuis le dossier
 du skill ; `--base`, `--journal` et `--references` sont relatifs au dossier courant. *Le dossier du skill est celui qui
-contient ce `SKILL.md` ; son chemin dépend de l'installation (0.7.42) : le repérer d'abord (par exemple
+contient ce `SKILL.md` ; son chemin dépend de l'installation : le repérer d'abord (par exemple
 `find / -name moteur.py -path '*alphabet-situationnel*' 2>/dev/null`), puis `cd` dedans, ou appeler le moteur par son
 chemin complet : le moteur trouve ses propres fichiers où qu'il soit lancé.* Si `python3` manque
 ou échoue, travailler « sans shell » (`simulation.md` §6) : lecture et commandes à exécuter, aucun
@@ -45,11 +45,11 @@ second teste les régressions. Aucun ne certifie les faits ou l'utilité scienti
 | **CODER** | « code ce cas historique » | 0–3 | fiche validée ou archive à revoir explicitement exclue |
 | **SCORER** | « voici ce qui s'est produit » | 6 | journal contrôlé, scores, exclusions, épisodes comparables |
 
-**TEST et RÉSULTAT (0.7.34)** : la sortie documentaire de PRÉVOIR et de SCORER. Chaque prévision journalisée donne une
+**TEST et RÉSULTAT** : la sortie documentaire de PRÉVOIR et de SCORER. Chaque prévision journalisée donne une
 fiche Markdown (`fiche-test`) ; après l'échéance, son résultat donne la seconde partie (`fiche-resultat`) ; les deux se
 collent dans `assets/registre-tests.md`, que `ingerer` vérifie et score (`validation.md` §14). Hors démonstration, la
 prévision chiffrée est limitée à la strate 7 (`strates_prevision`, décision L7) ; les autres strates se lisent.
-Critère de levée fixé avant les données (0.7.49) : `validation.md` §27.
+Critère de levée fixé avant les données : `validation.md` §27.
 
 ## Ce qu'il faut charger
 
@@ -106,7 +106,7 @@ Tout chiffre vient du moteur ; le modèle choisit les événements et contrôle 
 | `… accord … --repetabilite --ecart-jours N` | répétabilité : le même codeur, deux passes aveugles sur les mêmes cas ; non recevable sous `repetabilite_ecart_min_jours` ; publiée à part de κ |
 | `… attribuer --etat "…" --evenement "SEUIL@7 apparait" --temporalite generique` | attribution **dans le moteur** : Shapley exact par mot et interaction par paire (en logit), sur les 2ⁿ sous-ensembles de l'état ; explique le calcul, pas l'événement (`validation.md` §12) |
 | `… squelette --calcul C.json --id P-xxxx` | ligne de journal complète tirée du JSON de `calculer` : ce que le moteur sait est recopié, ce que l'analyste doit dire porte « À REMPLIR », refusé par la validation qui liste tous les champs d'un coup |
-| `… fiche-test --journal J.jsonl --id P-xxxx` puis, après l'échéance, `… fiche-resultat --journal J.jsonl --id P-xxxx --issue 0\|1 --preuve "…" --date J --source-utilisee "…" --source-conforme oui\|non --mode positif\|absence` (0.7.44) | les deux parties Markdown d'un test, chacune avec son bloc JSON et l'empreinte de la prévision ; à coller dans `assets/registre-tests.md` (`validation.md` §14) |
+| `… fiche-test --journal J.jsonl --id P-xxxx` puis, après l'échéance, `… fiche-resultat --journal J.jsonl --id P-xxxx --issue 0\|1 --preuve "…" --date J --source-utilisee "…" --source-conforme oui\|non --mode positif\|absence` | les deux parties Markdown d'un test, chacune avec son bloc JSON et l'empreinte de la prévision ; à coller dans `assets/registre-tests.md` (`validation.md` §14) |
 | `… ingerer assets/registre-tests.md [--journal-sortie J.jsonl]` | relit le registre, refuse une prévision retouchée, reconstitue le journal et le score |
 | `… recolter --carnet C.jsonl --fait "…" --source "…" --source-url URL --date J --disponible-le J --date-consultation J --classe-source contemporain [--fiabilite A-F --credibilite 1-6] [--archive URL-Wayback]` | carnet de faits datés et sourcés, avant tout codage ; `--jusqu-au J` liste les faits disponibles à une date (brouillon de dossier) (`base-de-cas.md` §2) |
 | `… depouiller --premier A.jsonl --second B.jsonl` | deux codages indépendants des mêmes cas : table 2×2 et `accord` par carte, et table groupée (A4 ; `validation.md` §11.10) |
@@ -128,8 +128,8 @@ Tout chiffre vient du moteur ; le modèle choisit les événements et contrôle 
 | `… audit` / `… autotest` / `… parametres` | intégrité / tests / table documentaire générée ; l'audit vérifie la forme et les recoupements internes, pas la justesse du contenu |
 
 `--fref` n'est admis que pour un événement simple, avec `--source-ref`, `--periode-ref`,
-`--disponible-ref`. Depuis 0.7.39, aussi `--definition-ref` : la classe de la référence, dans le vocabulaire de la
-source (jamais le nom d'une carte) ; sans lui, `--fref` était refusé quelle que soit la référence. Pour les composés, utiliser `--references` et `--resolution` (formats :
+`--disponible-ref` et `--definition-ref` : la classe de la référence, dans le vocabulaire de la
+source (jamais le nom d'une carte) ; sans lui, `--fref` est refusé. Pour les composés, utiliser `--references` et `--resolution` (formats :
 `graphe.md`). L'horizon multiple des composés est refusé. F/f est une confiance, pas une grandeur :
 `se renforce` et `s'affaiblit` sont refusés en prévision. **Deux échelles portent les mêmes lettres** :
 le F/f d'un mot est la confiance de l'ancrage, le F/M/f d'une case de matrice est la force postulée
@@ -167,13 +167,13 @@ Sans base éligible, ρ3 avec référence externe, ρ4 sinon ; afficher égaleme
 
 ## Procédure — mode PRÉVOIR
 
-**Vue extérieure d'abord (0.7.35, obligatoire).** Avant toute carte, écrire dans le dossier, pour chaque événement,
+**Vue extérieure d'abord (obligatoire).** Avant toute carte, écrire dans le dossier, pour chaque événement,
 `vue_exterieure` : le taux de base de la classe de référence (`frequence`), cette classe et sa source. `calculer
 --dossier` l'affiche avant le reste, à côté de f et de p₀, et **refuse de chiffrer** si p₀ s'en écarte de plus d'un
 facteur 10 en cotes (contrôle prédictif a priori : les paramètres posés à la main sont alors incompatibles avec le
 domaine). `validation.md` §15.
 
-**Dossier obligatoire, source de résolution nommée, inertie de l'objet (0.7.39).** Hors `--demo`, `calculer` refuse
+**Dossier obligatoire, source de résolution nommée, inertie de l'objet.** Hors `--demo`, `calculer` refuse
 de tourner sans `--dossier`. Chaque événement du dossier porte `source_resolution` : l'émetteur (nommé, jamais « la
 presse »), le document, et la règle si la source est ambiguë (ce qui compte, ce qui ne compte pas). Une persistance ou
 une disparition se chiffre avec une référence **de l'objet** (`--fref` avec `--definition-ref`, ou `--references`) ;
@@ -181,46 +181,46 @@ sans elle, non estimé : l'inertie du moteur est celle de la carte, pas de la do
 question. Une abstention ne publie aucun chiffre, et un événement programmé n'a pas de bande d'horizon.
 `validation.md` §17.
 
-**Dater l'état au jour, vue extérieure scorée (0.7.40).** Un état daté au mois (« [2026-06 | 3 mois] ») se lit au 1er :
+**Dater l'état au jour, vue extérieure scorée.** Un état daté au mois (« [2026-06 | 3 mois] ») se lit au 1er :
 son échéance tombe le 2026-09-01. Pour une question qui court jusqu'au 30 septembre, écrire « [2026-06-30 | 3 mois] » ;
 le journal refuse une question ou une résolution datées après l'échéance. La ligne de journal porte `vue_exterieure`
 (le taux de base du dossier, recopié par `squelette`) : `scorer` et `ingerer` le scorent comme un bras, à côté du
 moteur, hors décision V4. Le sceau du jugement accepte l'événement en forme courte ou longue. `validation.md` §18.
-*Depuis 0.7.41, la vue extérieure est la référence de V4 (`v4_reference`) : le statut V4 se lit contre elle.*
+La vue extérieure est la référence de V4 (`v4_reference`) : le statut V4 se lit contre elle.
 `validation.md` §19.
 
-**Classe alternative (0.7.43, obligatoire).** Dans `vue_exterieure`, déclarer aussi `classe_alternative` : une seconde
+**Classe alternative (obligatoire).** Dans `vue_exterieure`, déclarer aussi `classe_alternative` : une seconde
 classe de référence plausible, avec `frequence`, `classe_de_reference`, `source` et `pourquoi_ecartee` ; ou `null` avec
 `motif_sans_alternative` quand aucune n'est honnête. Elle est scellée avec le dossier, affichée avec l'écart entre les
 deux classes, recopiée au journal (`vue_exterieure_alternative`) et scorée à côté. V4 décide sur la classe retenue ;
 `scorer` publie le même verdict contre l'alternative et dit s'ils concordent. `validation.md` §21.
 
-**Sources : ce qu'elles peuvent constater (0.7.44, obligatoire).** Trois questions avant de calculer, une après.
+**Sources : ce qu'elles peuvent constater (obligatoire).** Trois questions avant de calculer, une après.
 (1) La classe de référence compte-t-elle ce que compte le critère de résolution ? Écrire la réponse dans
 `vue_exterieure.ecart_critere` (« identique : … », ou l'écart et son sens). (2) La source de résolution déclarée
 peut-elle constater tout ce que le critère inclut ? Sinon, resserrer le critère ou changer de source. (3) Cette question
 est-elle déjà suivie sous un autre épisode ? Après l'échéance : dire quelle source a tranché, si c'est celle du dossier,
 et si l'issue repose sur un document ou sur une absence de trace. `validation.md` §22.
 
-**Deux sources, un événement (0.7.46, facultatif).** Pour savoir si une lecture tient à l'événement ou au récit, coder
+**Deux sources, un événement (facultatif).** Pour savoir si une lecture tient à l'événement ou au récit, coder
 le même cas deux fois, chaque codage ne lisant qu'une source indépendante au cadrage différent, puis `depouiller` les
 deux fichiers. Un accord faible dit que la lecture suit la source. Descriptif, hors V4. `validation.md` §24. Et un
 équivalent **Attesté** exige désormais deux cas réels d'événements distincts, sur des faits corroborés par des sources
 indépendantes (`protocole.md` A3).
 
-**Tests du codeur (0.7.47, facultatifs).** Le codeur suit-il la fiche ou le nom de la carte ? Deux tests sans second
+**Tests du codeur (facultatifs).** Le codeur suit-il la fiche ou le nom de la carte ? Deux tests sans second
 codeur. *Noms neutres* : coder un cas avec des fiches où les noms sont remplacés par C01–C16, puis `depouiller` contre
 le codage normal. *Recouvrement lexical* : pour chaque ancrage F, chercher dans le passage cité la racine du nom de la
 carte ; si elle y est, vérifier que le fait remplit encore un marqueur sans ce mot. Descriptifs, hors V4.
 `validation.md` §25.
 
-**Fuites temporelles (0.7.48, test régressif).** Une page lue aujourd'hui peut contenir ce qui s'est passé après la date
+**Fuites temporelles (test régressif).** Une page lue aujourd'hui peut contenir ce qui s'est passé après la date
 d'information (page mise à jour, encadrés, horodatage faux, chronologie qui tait l'événement). Lire de préférence un
 instantané Wayback antérieur, déclaré au carnet par `--archive` ; noter de 0 à 4 toute pièce lue en direct et écarter
 celles notées 2 ou plus ; lister les questions candidates avant toute recherche sur la fenêtre ; ne lire aucune cote de
 marché ni prévision publiée avant le jugement scellé. Le score d'un test régressif est une borne haute. `validation.md` §26.
 
-**Aligné sur le bot Metaculus (0.7.50, enregistrement et mesure ; aucun paramètre ni probabilité changés).**
+**Aligné sur le bot Metaculus (enregistrement et mesure ; aucun paramètre ni probabilité changés).**
 (1) *Vue extérieure en deux temps* : définir la classe d'abord (ce qui compte pour un cas, la population, la période,
 la mise à l'échelle, où sont les cas), compter ensuite, sur cette classe seulement ; plusieurs comptages indépendants
 donnent la vue **médiane** (une vraie vue, avec sa source, jamais une moyenne) et leur dispersion. Une source qui se
@@ -236,22 +236,30 @@ carte, se consigne hors calcul. Un état nul n'est jamais compté comme une pré
 comparaison C − B se lit par une séquence de confiance valide à tout moment, et « indéterminé » est un verdict.
 (5) *Sens unique de C* : avec des λ tous ≥ 1, C ne peut que monter au-dessus de B pour un événement « apparait » ;
 le biais se mesure, et sa correction (un décalage appris sur tests régressifs) reste en ombre, hors du calcul.
-`validation.md` §28, `graphe.md` §2.1. *Depuis 0.7.51, `scorer` publie aussi, pour chaque différentiel par épisode
-(dont `v4_vue_exterieure`, C contre B), une séquence de confiance valide à tout moment de relecture et un verdict :
-meilleur, moins bon ou indéterminé (levée du gel pour cet outil seul).* *Depuis 0.7.52, `calculer --exploratoire` lève L7 pour un
-calcul à part : le chiffre est marqué, jamais publié, scoré à part de la strate 7 (`validation.md` §29).* *Depuis 0.7.53, le marqueur décide de l'intensité,
-pas de l'existence : Définition + un marqueur observable → f ; F inchangé (`validation.md` §30).* *Depuis 0.7.54, un relevé de données daté et sourcé est un fait
-(`validation.md` §31).* *Depuis 0.7.55, des équivalents de données pour les jetons
-(`references/equivalences/donnees-chaine.md`, `validation.md` §32), chargés par le banc seul.* *Depuis 0.7.56, les λ sont stipulés, l'hypothèse du produit est écrite,
-C − B est un contraste du dispositif ; règle des médiateurs et ablation calculées en ombre (`validation.md` §33).* *Depuis 0.7.57, deux ombres de plus : les cartes lues
-comme des causes (noisy-or) et la borne de ce qu'une recherche de plus pourrait changer (`validation.md` §34).* *Depuis 0.7.58, le tempérage des cartes (α fixés d'avance) en ombre, d'après
-Murphy 2026 (`validation.md` §35).* *Depuis 0.7.59, un programme génératif en ombre : cartes latentes, lecteur bruité,
-rejets comptés comme preuves, inférence exacte (`validation.md` §36).* *Depuis 0.7.60, une lecture probabiliste en ombre : les
-textes traduits en instructions du programme (lien, bloque, exclut), d'après Wong et al. 2023 (`validation.md` §37).* *Depuis 0.7.61, la relecture par Murphy (ch. 4, 9, 29, 30) : calcul publié nommé
-(score log-linéaire), couplage unique par paire, rejets selon l'effort, largeurs d'arbre mesurées (`validation.md` §38).* *Depuis 0.7.62, le test d'invariance du lecteur : deux vues aux sources
-disjointes doivent ancrer les mêmes cartes (`validation.md` §39).* *Depuis 0.7.63, la surprise d'une lecture, mesurée en ombre (`validation.md` §40).* *Depuis 0.7.64, le tri des chapitres 3 et 13 de Murphy (`validation.md` §41).* *Depuis 0.7.65, export SSSOM des équivalents et accord à deux niveaux (`validation.md` §42).* *Depuis 0.7.66, le monde synthétique pour mesurer le lecteur (`validation.md` §43).* *Depuis 0.7.67, le critère de Klein pour toute nouvelle carte (`validation.md` §44).* *Depuis 0.7.68, CONTRAINTE exige une option retirée, pas seulement une règle qui existe (`validation.md` §45).* *Depuis 0.7.69, chaque ligne de marqueurs est une alternative complète (`validation.md` §46).* *Depuis 0.7.70, les λ s'apprennent sur les issues, en ombre (`validation.md` §47).*
+`validation.md` §28, `graphe.md` §2.1.
 
-**Requêtes exécutées, test régressif déclaré (0.7.45).** Chaque requête de `recherches` porte `executee` (true ou false)
+Règles ajoutées ensuite, à appliquer telles quelles (détail aux §§ cités ; historique : `CHANGELOG.md`) :
+
+- `scorer` publie, pour chaque différentiel par épisode (dont `v4_vue_exterieure`, C contre B), une séquence de
+  confiance valide à tout moment et un verdict : meilleur, moins bon ou indéterminé (`validation.md` §28).
+- `calculer --exploratoire` lève L7 pour un calcul à part : chiffre marqué, jamais publié, scoré à part (`validation.md` §29).
+- Le marqueur décide de l'intensité, pas de l'existence : Définition + un marqueur observable → f ; F inchangé (`validation.md` §30).
+- Un relevé de données daté et sourcé est un fait (`validation.md` §31) ; les équivalents de données des jetons
+  (`references/equivalences/donnees-chaine.md`) ne sont chargés que par le banc (`validation.md` §32).
+- Le calcul publié est un score log-linéaire aux λ stipulés, couplage unique par paire, rejets selon l'effort ; C − B
+  est un contraste du dispositif (`validation.md` §33, §38).
+- En ombre, hors calcul publié : médiateurs et ablation (§33), noisy-or et borne d'une recherche de plus (§34),
+  tempérage (§35), programme génératif (§36), lecture probabiliste (§37), surprise d'une lecture (§40), λ appris sur
+  les issues (§47) — tous dans `validation.md`.
+- Test d'invariance du lecteur : deux vues aux sources disjointes doivent ancrer les mêmes cartes (`validation.md` §39).
+- Équivalents exportés en SSSOM, accord à deux niveaux (`validation.md` §42) ; le lecteur se mesure dans le monde
+  synthétique (`validation.md` §43).
+- Toute nouvelle carte passe le critère de Klein (`validation.md` §44) ; les marqueurs de `cartes.md` se lisent ligne
+  par ligne, chaque ligne étant une alternative complète, et CONTRAINTE exige une option retirée (`validation.md` §45, §46).
+
+Tri des chapitres 3 et 13 de Murphy : `validation.md` §41.
+
+**Requêtes exécutées, test régressif déclaré.** Chaque requête de `recherches` porte `executee` (true ou false)
 et, si elle a été lancée, `date_execution` : une requête non lancée est consignée mais ne couvre rien, et le dossier reste
 Spéculatif. Une ligne de journal porte `mode_test` : `prospectif`, ou `regressif` avec `date_limite_connaissance` (la
 limite de connaissance du codeur, au plus la date d'information ; un modèle de langage la connaît). Un test régressif est
@@ -260,7 +268,7 @@ question et l'événement exacts : les recopier mot pour mot. La vue extérieure
 référence de V4, indépendant du moteur ; une fréquence sourcée entre dans le calcul par `--fref` ou `--references`.
 `validation.md` §23.
 
-**Avant de coder, facultatif : le gabarit de formulation (0.7.18).** Six questions, dans l'ordre où une
+**Avant de coder, facultatif : le gabarit de formulation.** Six questions, dans l'ordre où une
 idée se forme ; elles n'ajoutent aucune obligation, elles rendent visibles celles qui existent. (1) **Quelle
 chose** change d'état ? Un objet nommé, une strate ; s'il ne peut ni apparaître, ni persister, ni
 disparaître, il est mal nommé. (2) **Quel changement, à quelle date ?** Sens (apparait, persiste,
@@ -290,16 +298,16 @@ exploration des suites, sans faire passer celle-ci pour une prescription.
 fait précis et **suffisant** (`test` : pistolet ou double ; un fait qui remplit seulement le marqueur
 est un cerceau et donne f), la **corroboration** déclarée pour une lecture réelle comme pour une fiche
 (deux sources indépendantes nommées, et ce qui les rend indépendantes : origine, producteur ou
-transmission, 0.7.11 ; *valeurs exactes du champ `corroboration` : `"independantes"` ou `"unique"` (0.7.45)* ; une source unique est admise si elle est primaire, texte officiel
+transmission ; *valeurs exactes du champ `corroboration` : `"independantes"` ou `"unique"`* ; une source unique est admise si elle est primaire, texte officiel
 ou donnée publiée, et signalée « source unique » dans « À vérifier » ; un fait repris d'un seul relais
 secondaire donne f : un fait forgé bien formé ne doit pas suffire à porter F), une ligne A6 qui passe **toutes** les voisines de la carte (`cartes.md`), sans `?`, une
 **garantie** (mécanisme, attendu, contredirait : forme type dans la fiche), une **option** (acteur,
 option avant, option après : un fait qui ne change l'espace d'action de personne ne s'ancre pas) et
-**sur quoi repose** le mécanisme (`garantie.support` : texte, loi, donnée ou cas, jamais un autre argument,
-0.7.10), un « contredirait » qui pourrait annuler la carte (différent de l'attendu, sans nommer la carte),
+**sur quoi repose** le mécanisme (`garantie.support` : texte, loi, donnée ou cas, jamais un autre argument),
+un « contredirait » qui pourrait annuler la carte (différent de l'attendu, sans nommer la carte),
 le **passage** lu qui soutient le fait tel qu'il est écrit (localisation ; « peut être activé » ne
 soutient pas « a été activé » ; un soutien partiel donne f, une pièce qui contredit va en A7 ; une pièce
-dans une pièce rétrospective, attribuée ou non datable ne soutient pas F, 0.7.16 ; une pièce
+dans une pièce rétrospective, attribuée ou non datable ne soutient pas F ; une pièce
 qui ne contient pas le fait se dit `absent_de_la_piece` — élargir la lecture — et un fait qu'aucune
 source ne soutient `non_soutenu` — retirer l'ancrage) ;
 équivalent Vide : au plus f. Lister les équivalents Proposés dans « À vérifier auprès de vous ». Ne
@@ -324,7 +332,7 @@ réponse** (s'il est absent, prendre la réponse la plus prudente et la déclare
 1. « Cet événement est-il fixé par un calendrier (scrutin, proclamation, échéance), ou le phénomène
    a-t-il une durée de vie propre (ouragan, grève, session), ou ni l'un ni l'autre ? » → `--temporalite`,
    obligatoire dans `calculer`. Si fixé : qui a la capacité de le fixer, et quel texte montre qu'il s'y
-   est engagé ? Sans réponse, il n'est pas programmé (`programmation` au dossier, 0.7.16).
+   est engagé ? Sans réponse, il n'est pas programmé (`programmation` au dossier).
 2. « La source de résolution mesure-t-elle bien [marqueur local], ou un phénomène voisin ? » → si
    voisin, reformuler la question ou justifier `ecart_marqueur`. Le marqueur local se lit **avant** tout
    calcul avec `moteur.py equivalences --carte NOM` ; le `marqueur_local` du calcul sert ensuite à
@@ -341,7 +349,7 @@ condition pour que l'écart jugement / moteur mesure ce que le moteur ajoute (le
 jugement n'a pas été modifié, pas qu'il est antérieur : seul un dépôt externe daté le prouve). Recopier la bande de
 sensibilité : si la bande retenue traverse 50 %, dire « non identifié » et nommer son origine (classe de
 référence ou hypothèses de modèle) ; recopier les deux bandes, pas seulement la plus étroite. Recopier le résultat complet, ses références, avertissements et empreintes. Aucun cas/source futur.
-**Deux scellés, pas un** (0.7.8) : le jugement du codeur, et, quand il est joué, le **comparateur externe** —
+**Deux scellés, pas un** : le jugement du codeur, et, quand il est joué, le **comparateur externe** —
 une probabilité produite sans voir l'état, les cartes ni p, par une méthode qui ne cite aucune carte, hors de
 la session de lecture (`sceller-comparateur`). Un bras produit dans la même session, ou qui a vu l'événement
 codé, est publié « contaminé » et ne compte pas. Ne jamais présenter ce bras comme une sortie de l'alphabet.
@@ -362,7 +370,7 @@ ne déplacent pas p, le dire, car la question ne teste alors que l'inertie (pers
 disparitions sans base, notamment). Sans cas réel actif, la sortie met la paire « sans cartes → avec
 cartes » en tête (`resultat_principal`) : c'est elle qu'on lit, p n'en est qu'un dérivé. Recopier la
 **bande d'horizon** (p à 1, 3 et 6 fenêtres) et, s'il est levé, le drapeau « homologie indiscernable du
-hasard » (0.7.12), ainsi que les **variantes de codage** (p si les mots f étaient absents, 0.7.13).
+hasard », ainsi que les **variantes de codage** (p si les mots f étaient absents).
 
 **8. Horizon et proxémie.** Choisir présence finale, occurrence au moins une fois ou persistance
 continue. Comparateur au même horizon. Trajectoires seulement si utiles, avec leur masse abandonnée.
@@ -380,7 +388,7 @@ successifs : du plus ancien au plus récent ; une issue déjà vue rend la quest
 **10. Sortie.** Suivre `simulation.md` : analytique, symbolique sans chiffre, lignes de journal,
 points à vérifier. Expliquer ce que les données permettent et ce qui reste non estimé.
 
-**11. Fiche TEST (0.7.36, systématique).** Toute prévision journalisée se termine par sa fiche, sans que
+**11. Fiche TEST (systématique).** Toute prévision journalisée se termine par sa fiche, sans que
 l'utilisateur la demande : écrire la ligne de prévision dans le journal de l'utilisateur
 (`alphabet-donnees/journal-previsions.jsonl` par défaut, jamais dans le dossier du skill), lancer
 `moteur.py fiche-test --journal … --id …`, et remettre la fiche Markdown à l'utilisateur, prête à coller dans son
@@ -402,16 +410,16 @@ signature (`simulation.md` §1 et §6). État nul : le dire, ne pas forcer une c
 `id` (`recodage_confirme`) ; 3. traceback : toute construction ad hoc va dans
 `assets/rabbits.jsonl` ; 4. `moteur.py valider` ; une fiche refusée se corrige ou s'archive avec motif.
 
-**SCORER** : 0. **fiche RÉSULTAT (0.7.36, systématique)** : pour chaque issue constatée, lancer `moteur.py
+**SCORER** : 0. **fiche RÉSULTAT (systématique)** : pour chaque issue constatée, lancer `moteur.py
 fiche-resultat --journal … --id … --issue 0|1 --preuve "…" --date …` et remettre la fiche à coller sous la fiche
-TEST du registre, puis `moteur.py ingerer` sur le registre. *Depuis 0.7.44, `fiche-resultat` exige aussi
+TEST du registre, puis `moteur.py ingerer` sur le registre. `fiche-resultat` exige aussi
 `--source-utilisee "…"` (la source qui a vraiment tranché), `--source-conforme oui|non` (est-ce celle du dossier ? si
 non, `--ecart-source "…"`) et `--mode positif|absence` (un document établit l'issue, ou aucune trace n'a été trouvée) ;
-`ingerer` et `scorer` comptent les résolutions fragiles, et signalent un même événement suivi sous deux épisodes.* 1. ajouter les lignes de score sans modifier les prévisions ; 2. `moteur.py scorer J.jsonl` ;
+`ingerer` et `scorer` comptent les résolutions fragiles, et signalent un même événement suivi sous deux épisodes. 1. ajouter les lignes de score sans modifier les prévisions ; 2. `moteur.py scorer J.jsonl` ;
 3. restituer ensemble Brier, comparateurs, abstentions, difficulté et moteur contre jugement, chacun
 avec son différentiel par épisode, σ(d) et les tests exacts du signe et de Wilcoxon : un écart moyen non
 distinguable de zéro se dit tel ; l'e-processus (`e_amelioration`, `v4.sequentiel`) est la seule lecture
-valide si le journal est relu à mesure qu'il grandit (0.7.12) ; score logarithmique en regard du Brier ;
+valide si le journal est relu à mesure qu'il grandit ; score logarithmique en regard du Brier ;
 exclusions (rejeux, fictifs, sans preuve) nommées ; 4. `bilan --journal J.jsonl` pour la position sur le
 jalon V4 (gain absolu testé, effectif cible calculé, second rapport sur les questions discriminantes :
 `validation.md` §5). Aucun score ne se commente comme validation de l'alphabet tant que V4 n'est pas atteint.
@@ -426,7 +434,7 @@ candidates ; `apports-theoriques.md`. **Ne jamais abandonner** : l'état daté, 
 A7, les questions qui départagent, la définition de la résolution, ni la mention de ce qui n'a pas été
 chargé. Une lecture partielle se déclare ; elle ne se présente pas comme complète. Deux strates lues et
 contrôlées valent mieux que sept survolées : c'est la couverture qui est mesurée, pas le nombre de
-fichiers ouverts. *Précisé en 0.7.11 :* ce qui se mesure, c'est **chaque ancrage, un par un** — la
+fichiers ouverts. Ce qui se mesure, c'est **chaque ancrage, un par un** — la
 pièce effectivement lue qui le soutient, et aucun fait décisif écarté par étroitesse de lecture —, ni un
 taux de couverture ni le nombre de fichiers ouverts. Un taux agrégé monte quand on lit plus, pas quand on
 lit juste.
@@ -439,7 +447,7 @@ lit juste.
 
 Un `audit` ou un `valider` conformes ne disent donc rien de la lecture : ils disent qu'elle est complète
 et bien formée. Sans `--dossier`, le calcul ne contrôle ni A6, ni A7, ni les questions — et le dit.
-Depuis 0.7.39, hors `--demo`, il refuse simplement de calculer sans dossier.
+Hors `--demo`, il refuse de calculer sans dossier.
 
 ## Limites
 
@@ -469,9 +477,9 @@ Depuis 0.7.39, hors `--demo`, il refuse simplement de calculer sans dossier.
   imbriquées.
 - Un seul changement par pas en trajectoire ; ni simultanéité ni distribution de trajectoires calibrée.
   Événements isolés et trajectoires sont **deux modèles** : les marginales d'une trajectoire ne sont pas
-  les p de `calculer`, et l'écart se publie (0.7.13). Le noyau répond à « quel changement arrive en
+  les p de `calculer`, et l'écart se publie. Le noyau répond à « quel changement arrive en
   premier », `calculer` à « est-il réalisé à l'échéance » ; `noyau` réunit les deux sous une même loi
-  d'un pas, sans dépendance estimée (0.7.14).
+  d'un pas, sans dépendance estimée.
 - Le produit des λ est une pseudo-vraisemblance (matrice non symétrique), non un rapport de
   vraisemblance ; objets, rôles et six types de liaisons ne sont pas lus par le calcul (`modele`,
   `graphe.md` §2.1).
