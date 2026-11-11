@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.34 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.35 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.35** : **relecteur de fidélité du plan**, en ombre (décision d'auteur du 2026-11-11, d'après Humanize,
+  arXiv 2610.13632). Un appel de plus par question, au contradicteur s'il existe : il ne voit que la question et sa
+  traduction formelle (événement, définition de la carte, sémantique, fenêtre), ni le raisonnement du planificateur ni
+  les candidates, et dit si la traduction est fidèle (oui, partiel, non) avec le type d'écart (événement plus facile ou
+  plus difficile, autre événement, négation, fenêtre, sémantique). Registre : `C.fidelite_plan` ; score :
+  `fidelite_plan` (verdicts, types d'écart, perte de C selon le verdict). Variable `ALPHABET_FIDELITE` (« 1 » par défaut
+  dans le workflow). Le nombre de corrections du dossier reste à deux : les refus du registre sont structurels.
 - **0.10.34** : **quatre tests de robustesse**, d'après Lv et al. (ICML 2026, « Can Agents Generalize to the Open
   World? »), décision d'auteur du 2026-11-11. (1) Monde synthétique : **effacement des noms**, chaque situation est
   relue avec les cartes renommées en identifiants neutres (C01 à C16), fiches et marqueurs inchangés ; si la lecture

@@ -88,7 +88,8 @@ jobs:
           ALPHABET_PRESELECTION: ${{ vars.ALPHABET_PRESELECTION || '1' }}   # 0.10.15 : présélection par plongement, en ombre
           FASTEMBED_CACHE_PATH: /home/runner/.cache/fastembed
           ALPHABET_INVARIANCE_TAUX: ${{ vars.ALPHABET_INVARIANCE_TAUX || '0.2' }}
-          ALPHABET_NEGATION_TAUX: ${{ vars.ALPHABET_NEGATION_TAUX || '0.2' }}   # 0.10.34 : test de négation, en ombre   # 0.10.11 (§39) : part des questions testées (2 lectures de plus)
+          ALPHABET_NEGATION_TAUX: ${{ vars.ALPHABET_NEGATION_TAUX || '0.2' }}   # 0.10.34 : test de négation, en ombre
+          ALPHABET_FIDELITE: ${{ vars.ALPHABET_FIDELITE || '1' }}   # 0.10.35 : relecteur de fidélité du plan, en ombre   # 0.10.11 (§39) : part des questions testées (2 lectures de plus)
           ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '0' }}
           # 0.10.33 : budget en dollars depuis une date (vide ou 0 = aucun) ; coûts dans registre/couts.jsonl
           ALPHABET_BUDGET_USD: ${{ vars.ALPHABET_BUDGET_USD }}

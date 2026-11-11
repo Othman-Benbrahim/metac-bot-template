@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.34"
+VERSION_BOT = "0.10.35"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1317,6 +1317,53 @@ def coherence_negation(p: float, p_niee: float) -> dict:
             "incoherence": round(abs(p + p_niee - 1), 4)}
 
 
+FIDELITE = os.environ.get("ALPHABET_FIDELITE", "0") in ("1", "oui", "true")
+TYPES_ECART = ("evenement_plus_facile", "evenement_plus_difficile", "autre_evenement", "negation", "mauvaise_fenetre",
+               "mauvaise_semantique", "autre")
+
+
+def consigne_fidelite(q: Question, plan: dict, jours: int) -> str:
+    """0.10.35 (décision d'auteur du 2026-11-11, d'après Humanize, arXiv 2610.13632 : un succès apparent peut cacher
+    une lecture affaiblie de la tâche, que le vérificateur formel ne voit pas) : un relecteur qui ne voit QUE la
+    question et sa formalisation (événement, sémantique, fenêtre), pas le raisonnement du planificateur, dit si la
+    formalisation est fidèle."""
+    import preselection
+    ev = plan.get("evenement") or {}
+    try:
+        defin = preselection.textes_cartes().get(_moteur().carte_id(str(ev.get("carte"))), "")
+    except ValueError:
+        defin = ""
+    return f"""Tu es RELECTEUR DE FIDÉLITÉ. Une question de prévision a été traduite en un événement formel, que le
+calcul va estimer. Tu ne vois pas le raisonnement de celui qui a traduit : seulement la question et la traduction.
+Dis si la traduction est FIDÈLE : « oui » à l'événement formel doit correspondre à « oui » à la question, dans la même
+fenêtre, ni plus facile, ni plus difficile, ni à l'envers.
+
+QUESTION : {q.titre}
+CRITÈRES DE RÉSOLUTION : {q.criteres[:3000]}
+PRÉCISIONS : {q.precisions[:1500]}
+RÉSOLUTION : {q.resolution.isoformat()} (fenêtre de {jours} jours)
+
+TRADUCTION FORMELLE :
+  événement : la carte {ev.get('carte')} « {ev.get('type')} » dans la strate {ev.get('strate')}
+  définition de la carte : {defin}
+  sémantique : {plan.get('semantique')}
+
+Écarts possibles : {", ".join(TYPES_ECART)}.
+Rends UNIQUEMENT un objet JSON :
+{{"fidele": "oui" | "partiel" | "non", "ecarts": [{{"type": "...", "motif": "une phrase"}}]}}"""
+
+
+async def relire_fidelite(q: Question, plan: dict, jours: int, llm: Llm) -> dict:
+    try:
+        r = await json_avec_reprise(llm, consigne_fidelite(q, plan, jours))
+        f = str(r.get("fidele") or "").lower()
+        ecarts = [{"type": str(e.get("type"))[:40], "motif": str(e.get("motif"))[:300]}
+                  for e in (r.get("ecarts") or []) if isinstance(e, dict)][:5]
+        return {"statut": "relu", "fidele": f if f in ("oui", "partiel", "non") else "illisible", "ecarts": ecarts}
+    except Exception as e:  # une relecture en ombre qui échoue ne bloque rien
+        return {"statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:200]}
+
+
 def tirage_invariance(qid) -> bool:
     """Sélection déterministe d'une part INVARIANCE_TAUX des questions (empreinte de l'identifiant)."""
     return INVARIANCE_TAUX > 0 and int(hashlib.sha256(f"invariance:{qid}".encode()).hexdigest()[:8], 16) / 0xFFFFFFFF < INVARIANCE_TAUX
@@ -1486,6 +1533,8 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
     import preselection   # 0.10.15 : présélection des cartes par plongement multilingue, en ombre
     if preselection.ACTIVE:
         trace["preselection"] = await asyncio.to_thread(preselection.preselectionner, q, plan)
+    if FIDELITE and vue_fixee is None:   # 0.10.35 : relecteur de fidélité du plan, en ombre (contradicteur s'il existe)
+        trace["fidelite_plan"] = await relire_fidelite(q, plan, jours, critique or llm)
 
     if vue_fixee is not None:          # 0.9.7 : banc sans texte, taux de base fourni par le banc
         motif = controle_vue(vue_fixee, aujourdhui)
@@ -1958,7 +2007,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
-                                                        "invariance", "preselection", "reprises_json", "compte_echoue",
+                                                        "invariance", "preselection", "reprises_json", "compte_echoue", "fidelite_plan",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

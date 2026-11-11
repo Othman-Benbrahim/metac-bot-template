@@ -478,6 +478,27 @@ def discordances_B(lignes: list[dict], issues: dict) -> dict | None:
             "lecture": "B_moins_A > 0 avec alarme : quand B s'écarte fortement de A, c'est B qui se trompe"}
 
 
+def fidelite_plan(lignes: list[dict], issues: dict) -> dict | None:
+    """0.10.35 : relecture de fidélité du plan (en ombre). Part des plans jugés non fidèles, types d'écart, et perte de
+    C selon le verdict sur les questions résolues : un plan infidèle devrait coûter."""
+    v = [(x, ((x.get("bras") or {}).get("C") or {}).get("fidelite_plan")) for x in lignes]
+    v = [(x, y) for x, y in v if isinstance(y, dict) and y.get("statut") == "relu"]
+    if not v:
+        return None
+    par: dict[str, int] = {}
+    types: dict[str, int] = {}
+    perte: dict[str, list] = {}
+    for x, y in v:
+        par[y["fidele"]] = par.get(y["fidele"], 0) + 1
+        for e in y.get("ecarts") or []:
+            types[e["type"]] = types.get(e["type"], 0) + 1
+        c = (x.get("bras") or {}).get("C") or {}
+        if x.get("question_id") in issues and c.get("p_C") is not None:
+            perte.setdefault(y["fidele"], []).append(log_score(c["p_C"], issues[x["question_id"]]))
+    return {"relus": len(v), "verdicts": par, "types_ecart": types,
+            "perte_C_selon_verdict": {k: {"n": len(p), "moyenne": round(sum(p) / len(p), 4)} for k, p in perte.items()}}
+
+
 def negation_A(lignes: list[dict]) -> dict | None:
     """0.10.34 : test de négation du modèle seul : p(question) + p(question niée) devrait valoir 1."""
     n = [((x.get("bras") or {}).get("A") or {}).get("negation") for x in lignes]
@@ -979,6 +1000,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "preselection_ombre": preselection_ombre(publiees),                 # 0.10.15
             "couts": couts(registre),                                           # 0.10.33
             "negation_A": negation_A(publiees),                                 # 0.10.34
+            "fidelite_plan": fidelite_plan(publiees, issues),                   # 0.10.35
             "B_par_methode": b_par_methode(resolues, issues),                   # 0.10.19
             "discordances_B": discordances_B(publiees, issues),                 # 0.10.19
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)
