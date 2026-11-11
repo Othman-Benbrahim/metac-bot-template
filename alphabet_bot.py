@@ -441,6 +441,44 @@ def noter_passage(mode: str, declencheur: str, trouvees: int, lot: list, vus: li
         f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True) + "\n")
 
 
+def depense_depuis(depuis: str | None) -> float:
+    """0.10.33 : somme des coûts estimés (registre/couts.jsonl) depuis une date (AAAA-MM-JJ) incluse."""
+    f = ap.REGISTRE / "couts.jsonl"
+    if not f.is_file():
+        return 0.0
+    tot = 0.0
+    for brut in f.read_text(encoding="utf-8").splitlines():
+        try:
+            x = json.loads(brut)
+        except json.JSONDecodeError:
+            continue
+        if not depuis or str(x.get("date", "")) >= depuis:
+            tot += float(x.get("cout_usd") or 0)
+    return tot
+
+
+def noter_couts(mode: str, rapports: list, lot: list) -> float:
+    """0.10.33 : une ligne par question traitée dans registre/couts.jsonl : coût estimé par litellm (modèles appelés
+    par le bot ; les moteurs de recherche payants hors litellm ne sont pas comptés), durée, modèles. Les lignes scellées
+    du journal ne sont pas touchées. Rend le total du passage."""
+    reg = ap.registre_ecrivable()
+    maintenant = datetime.now(timezone.utc)
+    tot = 0.0
+    with open(reg / "couts.jsonl", "a", encoding="utf-8", newline="\n") as f:
+        for q, r in zip(lot, rapports):
+            if isinstance(r, BaseException):
+                continue
+            c = float(getattr(r, "price_estimate", 0) or 0)
+            tot += c
+            f.write(json.dumps({"date": maintenant.date().isoformat(), "horodatage": maintenant.isoformat(timespec="seconds"),
+                                "mode": mode, "question_id": str(getattr(q, "id_of_question", None) or ""),
+                                "url": getattr(q, "page_url", None), "cout_usd": round(c, 4),
+                                "minutes": round(float(getattr(r, "minutes_taken", 0) or 0), 2),
+                                "modeles": ap.modeles_actifs(), "version_bot": ap.VERSION_BOT},
+                               ensure_ascii=False, sort_keys=True) + "\n")
+    return round(tot, 4)
+
+
 def lignes_autres() -> list[dict]:
     f = ap.REGISTRE / "journal-autres.jsonl"
     if not f.is_file():
@@ -524,6 +562,20 @@ if __name__ == "__main__":
     if not lot:
         print(bilan([], [], not args.sans_publier, [])[0])
         sys.exit(0)
+    # 0.10.33 : budget en dollars (ALPHABET_BUDGET_USD) depuis une date (ALPHABET_BUDGET_DEPUIS) : passage refusé s'il
+    # est épuisé ; pendant le passage, plafond dur sur le reste (les appels déjà lancés se terminent).
+    budget = float(os.environ.get("ALPHABET_BUDGET_USD") or 0)
+    reste_budget = None
+    if budget > 0:
+        depuis = os.environ.get("ALPHABET_BUDGET_DEPUIS") or None
+        depense = depense_depuis(depuis)
+        reste_budget = round(budget - depense, 4)
+        print(f"💶  Budget : {budget} $ depuis {depuis or 'le début'} ; dépensé {round(depense, 2)} $ ; reste {reste_budget} $")
+        if reste_budget <= 0:
+            print("❌  Budget épuisé : passage arrêté, rien n'est posté.")
+            noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), [], questions,
+                          statut="budget", detail={"budget_usd": budget, "depense_usd": round(depense, 4)})
+            sys.exit(0)
     # 0.6.0 : les modèles ne sont sondés que s'il y a des questions ; le premier de chaque suite qui répond est gardé
     # pour tout le passage.
     import alphabet_modeles as am
@@ -552,8 +604,18 @@ if __name__ == "__main__":
                       statut="configuration", detail={"bloquants": bloquants})
         sys.exit(1)
     noter_passage(args.mode, "planifie" if planifie else "manuel", len(questions), lot, questions)
-    rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True))
+    if reste_budget is not None:
+        from forecasting_tools import MonetaryCostManager
+
+        async def _tout():
+            with MonetaryCostManager(reste_budget):
+                return await bot.forecast_questions(lot, return_exceptions=True)
+        rapports = asyncio.run(_tout())
+    else:
+        rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True))
     bot.log_report_summary(rapports, raise_errors=False)
+    cout_passage = noter_couts(args.mode, rapports, lot)
+    print(f"💶  Coût estimé du passage : {cout_passage} $")
     texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
     print(texte)
     ch = getattr(bot, "_chaine_", None)
@@ -562,5 +624,5 @@ if __name__ == "__main__":
                           "en_echec": sum(isinstance(r, BaseException) for r in rapports),
                           "bascules_modeles": BASCULES,
                           "recherche_usage": getattr(ch, "usage", None), "recherche_echecs": getattr(ch, "echecs", None),
-                          "recherche_erreurs": getattr(ch, "erreurs", None)})
+                          "recherche_erreurs": getattr(ch, "erreurs", None), "cout_usd": cout_passage})
     sys.exit(code)
