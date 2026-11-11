@@ -26,6 +26,8 @@ import random
 import sys
 from datetime import date, datetime, timedelta, timezone
 
+import math
+
 import httpx
 
 import alphabet_pipeline as ap
@@ -85,7 +87,79 @@ def construire(item: dict, jeu: str) -> dict:
                      f"{q['freeze_datetime_value']} ({q.get('freeze_datetime_value_explanation', '')}).")
     return {"qid": f"fb:{jeu}:{q['source']}:{q['id']}:{rd}", "titre": sub(q["question"]), "contexte": contexte,
             "criteres": sub(q.get("resolution_criteria")), "url": q.get("url") or "", "resolution": rd,
-            "source": q["source"], "issue": item["issue"]}
+            "source": q["source"], "issue": item["issue"], "_q": q}
+
+
+# --------------------------------------------------------------------------- 0.10.44 : B calculé par le code
+
+def _vue(f: float, classe: str, source: str, periode: str, disponible: str, calcul: str) -> dict:
+    return {"frequence": min(0.999, max(0.001, f)), "compte_calcule": True, "classe_de_reference": classe,
+            "source": source, "periode": periode, "disponible_le": disponible, "calcul": calcul,
+            "classe_alternative": None, "motif_sans_alternative": "classe fixée par la forme de la question ForecastBench"}
+
+
+def b_acled(m: float) -> float:
+    """« Plus d'événements dans les 30 jours avant R que la moyenne sur 30 jours des 360 jours avant D » (m, valeur au
+    gel). Compte total K = 12·m sur 12 fenêtres ; taux a posteriori Gamma(K + ½, 12) (Jeffreys) ; compte d'une nouvelle
+    fenêtre : binomiale négative (r = K + ½, p = 12/13). P(N > m) = 1 − Σ_{n ≤ ⌊m⌋} P(N = n). Ne voit pas la
+    surdispersion des conflits (rafales) : pour les morts, la vraie probabilité est plutôt plus basse."""
+    r, q = 12 * max(m, 0.0) + 0.5, 1 / 13
+    cdf = sum(math.exp(math.lgamma(n + r) - math.lgamma(r) - math.lgamma(n + 1) + r * math.log(1 - q) + n * math.log(q))
+              for n in range(int(math.floor(m)) + 1))
+    return 1 - cdf
+
+
+def b_hausse(points: list[dict], h: int, avant: date, annees: int = 5) -> tuple[float, int, int] | None:
+    """Part des intervalles de h jours (sur les `annees` dernières années avant D) où la série a MONTÉ : (k + ½)/(n + 1)."""
+    pts = sorted((date.fromisoformat(p["date"][:10]), float(p["valeur"])) for p in points
+                 if p.get("date") and p.get("valeur") is not None and p["date"][:10] < avant.isoformat())
+    pts = [p for p in pts if p[0] >= avant - timedelta(days=365 * annees)]
+    if len(pts) < 20:
+        return None
+    k = n = 0
+    j = 0
+    for i, (t, v) in enumerate(pts):
+        cible = t + timedelta(days=h)
+        while j < len(pts) and pts[j][0] < cible:
+            j += 1
+        if j >= len(pts):
+            break
+        n += 1
+        k += pts[j][1] > v
+    if n < 10:
+        return None
+    return (k + 0.5) / (n + 1), k, n
+
+
+async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
+    """Le taux de base calculé par le code quand la forme de la question le permet ; None sinon (vues du modèle)."""
+    d0 = date.fromisoformat(jeu)
+    h = (date.fromisoformat(x["resolution"]) - d0).days
+    gel = str(q.get("freeze_datetime") or jeu)[:10]
+    src = q.get("source")
+    try:
+        if src == "acled":
+            m = float(q.get("freeze_datetime_value"))
+            return _vue(b_acled(m), "fenêtres de 30 jours du même pays et du même type d'événement (ACLED)",
+                        "ForecastBench, valeur de référence au gel (moyenne ACLED sur 30 jours, 360 jours)",
+                        f"360 jours avant {gel}", gel,
+                        f"binomiale négative, r = 12·{m:.4g} + 0,5, p = 12/13 ; P(N > {m:.4g}) (Jeffreys)")
+        if src == "yfinance" and "higher rate of return than" in q.get("question", ""):
+            return _vue(0.5, "paires d'actions, rendement relatif sur le même intervalle", "symétrie de la paire",
+                        jeu, jeu, "0,5 : les deux actions sont échangeables a priori (aucune ne domine sans information)")
+        if src in ("fred", "dbnomics") and h > 0:
+            import alphabet_puits as apz
+            r = (await apz.fred(q["id"], avant=d0) if src == "fred"
+                 else await apz.dbnomics(q["url"].split("db.nomics.world/", 1)[1], avant=d0))
+            b = b_hausse(r.get("points") or [], h, d0)
+            if b:
+                f, k, n = b
+                return _vue(f, f"intervalles de {h} jours de la même série, 5 ans avant {jeu}",
+                            f"{r.get('source')} : {r.get('titre')}", f"5 ans avant {jeu}", jeu,
+                            f"({k} hausses + 0,5) / ({n} intervalles + 1) (Jeffreys)")
+    except Exception:
+        return None
+    return None
 
 
 async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
@@ -112,7 +186,9 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
 
     async def chercher(req: str) -> str:
         return await ar.chercher_avant(req, info)
-    c = await ap.alphabet(q, "", llm, chercher, True, jeu, jours, ar.historique_avant)
+    vue = await vue_calculee(x, x["_q"], jeu)
+    ligne["b_calcule"] = bool(vue)
+    c = await ap.alphabet(q, "", llm, chercher, True, jeu, jours, ar.historique_avant, vue_fixee=vue)
     ligne.update(statut=c.get("statut"), p_B=c.get("p_B"), p_C=c.get("p_C"), motif=c.get("motif"),
                  evenement=c.get("evenement"), etat=c.get("etat"), vues=c.get("vues"), classe_statut=c.get("classe_statut"),
                  nature_etat_nul=c.get("nature_etat_nul"), puits=c.get("puits"),

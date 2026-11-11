@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.43 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.44 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,17 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.44** : **les quatre défauts du premier passage ForecastBench** (décision d'auteur du 2026-11-11 : les régler
+  avant d'ouvrir le banc aux questions de marché). (1) **Refus de forme** (8 lectures exploratoires sur 14) : le
+  lecteur est normalisé avant validation (`code_carte`, `entier_strate`, `cle_normale` : « POLARITÉ », « POL@6 »,
+  « 13_portee » ne font plus d'erreur Python) ; `reparer_dossier` retire les liaisons illisibles, garde l'ancrage d'une
+  carte aussi rejetée, complète les candidates d'une strate depuis le plan (rejet « non cherchée », effort 0) ; tout
+  est tracé (`_reparations`). Un événement « persiste » sur une carte que le lecteur ne trouve pas devient un état nul
+  (pas d'ajustement), non un refus. (2) **B sans vue sur ACLED** : le banc calcule B lui-même à partir de la valeur
+  de référence au gel (binomiale négative, Jeffreys). (3) **« carte inconnue : POL@6 »** : la normalisation du plan.
+  (4) **Marches aléatoires** : B calculé par le code (part des hausses sur 5 ans pour FRED et DBnomics, 0,5 par
+  symétrie pour les paires d'actions) ; C y reste normalement un état nul, ce qui est la bonne réponse. La règle L7
+  (C chiffré en strate 7 seulement) ne change pas : hors strate 7, C est exploratoire et scoré à part.
 - **0.10.43** : **banc ForecastBench** (décision d'auteur du 2026-11-11). `banc_forecastbench.py` et le workflow
   « Banc ForecastBench » jouent B et C sur des questions ForecastBench (Forecasting Research Institute, CC BY-SA 4.0)
   déjà résolues, tirées de séries (FRED, DBnomics, Yahoo Finance, ACLED, Wikipedia ; environ 145 par jeu au premier
