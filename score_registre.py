@@ -431,6 +431,25 @@ def sorties_illisibles(lignes: list[dict]) -> dict | None:
             "lecture": "part élevée : le modèle échoue au format ; ces lignes n'ont pas de lecture, ce n'est pas un état nul"}
 
 
+def preselection_ombre(lignes: list[dict]) -> dict | None:
+    """0.10.15 : recouvrement entre les k cartes que le plongement multilingue range en tête et les cartes retenues
+    par le planificateur ; rang moyen de la carte de l'événement. Descriptif, sans issue."""
+    p = [((x.get("bras") or {}).get("C") or {}).get("preselection") for x in lignes]
+    p = [y for y in p if isinstance(y, dict)]
+    if not p:
+        return None
+    ok = [y for y in p if y.get("statut") == "calcule" and y.get("recouvrement") is not None]
+    moy = lambda v: round(sum(v) / len(v), 4) if v else None
+    rangs = [y["rang_evenement"] for y in ok if isinstance(y.get("rang_evenement"), int)]
+    return {"questions": len(p), "calculees": len(ok), "indisponibles": len(p) - len(ok),
+            "recouvrement_moyen": moy([y["recouvrement"] for y in ok]),
+            "jaccard_moyen": moy([y["jaccard"] for y in ok]),
+            "rang_moyen_evenement": moy(rangs),
+            "modeles": sorted({str(y.get("modele")) for y in p}),
+            "lecture": "recouvrement haut et stable : la présélection retrouve le choix du planificateur ; bas : le "
+                       "planificateur voit autre chose que le texte de la question"}
+
+
 def diversite_lectures(lignes: list[dict]) -> dict | None:
     """0.10.12 : surveiller l'« effondrement » du lecteur (l'équivalent d'une JEPA qui rend la même sortie pour tout) :
     part des états nuls, nombre d'états distincts, entropie normalisée des cartes ancrées, part de la carte la plus
@@ -873,6 +892,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "invariance_lecteur": invariance_lecteur([(x["bras"]["C"].get("invariance") or {}) for x in publiees]),
             "diversite_lectures": diversite_lectures(publiees),                 # 0.10.12
             "sorties_illisibles": sorties_illisibles(publiees),                 # 0.10.14
+            "preselection_ombre": preselection_ombre(publiees),                 # 0.10.15
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
             "stabilite_strate": stabilite_strate(publiees),

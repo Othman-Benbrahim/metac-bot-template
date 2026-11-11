@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.14 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.15 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.15** : **présélection des cartes par plongement multilingue, en ombre** (`preselection.py`). Un modèle léger
+  qui tourne sur CPU dans GitHub Actions (fastembed, `paraphrase-multilingual-MiniLM-L12-v2`, mis en cache) range les
+  16 cartes par similarité entre la question (souvent en anglais) et leur définition (en français). Au registre
+  (`C.preselection`) : les k premières (k = nombre de cartes retenues par le planificateur), le recouvrement et le
+  Jaccard avec ces cartes, le rang de la carte de l'événement ; au score, `preselection_ombre`. Le plan n'est pas
+  modifié. Variable `ALPHABET_PRESELECTION` (« 1 » par défaut dans le workflow, « 0 » l'éteint) ; si le modèle ne se
+  charge pas, la clé vaut « indisponible » et la question suit son cours.
 - **0.10.14** : skill 0.7.66 (§43), d'après LLMMatrix (Prokopets 2026). **Monde synthétique** (`monde_synthetique.py`,
   workflow manuel) : des situations tirées du programme génératif du skill (cartes présentes connues) sont racontées
   en dépêches fictives par un modèle-narrateur, sans nommer les cartes, puis relues par le lecteur ordinaire ;
