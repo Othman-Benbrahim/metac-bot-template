@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.17 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.18 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.18** : lecture exploratoire d'une question dérivée : le registre garde le motif de la lecture elle-même
+  (il était recouvert par « strate non chiffrée »), la dernière erreur du moteur, le nombre de tentatives et la
+  présélection.
 - **0.10.17** : **aucune clé d'API dans le registre public.** Les erreurs HTTP des puits masquent les paramètres
   `api_key=`, `token=`, `key=`… de l'URL, et chaque ligne et chaque dossier passent par `sans_cles` avant d'être
   scellés (une clé FRED s'était retrouvée dans une ligne de `journal-autres.jsonl` le 2026-11-11 : clé à régénérer).
