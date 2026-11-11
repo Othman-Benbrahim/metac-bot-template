@@ -478,6 +478,21 @@ def discordances_B(lignes: list[dict], issues: dict) -> dict | None:
             "lecture": "B_moins_A > 0 avec alarme : quand B s'écarte fortement de A, c'est B qui se trompe"}
 
 
+def negation_A(lignes: list[dict]) -> dict | None:
+    """0.10.34 : test de négation du modèle seul : p(question) + p(question niée) devrait valoir 1."""
+    n = [((x.get("bras") or {}).get("A") or {}).get("negation") for x in lignes]
+    n = [y for y in n if isinstance(y, dict)]
+    if not n:
+        return None
+    ok = [y for y in n if isinstance(y.get("incoherence"), (int, float))]
+    inc = sorted(y["incoherence"] for y in ok)
+    return {"questions": len(n), "testees": len(ok), "erreurs": len(n) - len(ok),
+            "incoherence_moyenne": round(sum(inc) / len(inc), 4) if inc else None,
+            "incoherence_mediane": inc[(len(inc) - 1) // 2] if inc else None,
+            "part_au_dela_de_0_1": round(sum(1 for x in inc if x > 0.1) / len(inc), 4) if inc else None,
+            "lecture": "incohérence élevée : la probabilité du modèle dépend de la formulation, pas seulement de la situation"}
+
+
 def couts(reg: Path) -> dict | None:
     """0.10.33 : coûts estimés par modèle principal et par jour (registre/couts.jsonl)."""
     f = reg / "couts.jsonl"
@@ -963,6 +978,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "sorties_illisibles": sorties_illisibles(publiees),                 # 0.10.14
             "preselection_ombre": preselection_ombre(publiees),                 # 0.10.15
             "couts": couts(registre),                                           # 0.10.33
+            "negation_A": negation_A(publiees),                                 # 0.10.34
             "B_par_methode": b_par_methode(resolues, issues),                   # 0.10.19
             "discordances_B": discordances_B(publiees, issues),                 # 0.10.19
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)

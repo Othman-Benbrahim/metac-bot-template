@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.33 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.34 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,16 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.34** : **quatre tests de robustesse**, d'après Lv et al. (ICML 2026, « Can Agents Generalize to the Open
+  World? »), décision d'auteur du 2026-11-11. (1) Monde synthétique : **effacement des noms**, chaque situation est
+  relue avec les cartes renommées en identifiants neutres (C01 à C16), fiches et marqueurs inchangés ; si la lecture
+  change, le lecteur s'appuie sur le vocabulaire des noms, pas sur les marqueurs (`MONDE_EFFACEMENT`, « 1 » par
+  défaut). (2) Bot : **test de négation**, en ombre, sur 20 % des questions binaires (`ALPHABET_NEGATION_TAUX`) : la
+  question est réécrite en son contraire et posée au modèle seul ; p + p_niée devrait valoir 1 (`negation_A` au
+  score). (3) Monde synthétique : **dépêches parasites** hors sujet dans la moitié des situations ; sensibilité et
+  faux positifs comparés avec et sans. (4) Bot : quand le compte prévu sur une source de données échoue, chaque vue
+  extérieure le **sait** (motif fourni) et doit le dire ; la méthode de B devient « vue_modele_compte_echoue » au
+  score. `protocole_monde` 6.
 - **0.10.33** : **coûts et budget** (bot Metaculus seulement). Chaque question traitée laisse une ligne dans
   `registre/couts.jsonl` (coût estimé par litellm, durée, modèles) ; le passage affiche et note son coût total ; le score
   donne `couts` par modèle et par jour. Budget facultatif : `ALPHABET_BUDGET_USD` depuis `ALPHABET_BUDGET_DEPUIS`

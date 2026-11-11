@@ -274,6 +274,21 @@ class AlphabetBot(FallTemplateBot2026):
                 essais_A.append((await super()._run_forecast_on_binary(question, research)).prediction_value)
             except Exception as e:  # un essai en ombre qui échoue ne bloque rien
                 logger.warning("alphabet : essai A en ombre échoué (%s)", type(e).__name__)
+        # 0.10.34 : test de négation, en ombre, sur une part ALPHABET_NEGATION_TAUX des questions : la question est
+        # réécrite en son contraire (petit modèle), puis posée au même modèle seul ; p + p_niée devrait valoir 1.
+        negation = None
+        qid_ = question.id_of_question or question.id_of_post or question.page_url
+        if ap.tirage_negation(qid_):
+            try:
+                petit = self.get_llm("summarizer", "llm")
+                n = ap.extraire_json(await petit.invoke(ap.consigne_negation(
+                    question.question_text or "", question.resolution_criteria or "", question.fine_print or "")))
+                qn = question.model_copy(update={"question_text": n["titre"], "resolution_criteria": n.get("criteres") or "",
+                                                 "fine_print": n.get("precisions") or ""})
+                p_n = (await super()._run_forecast_on_binary(qn, research)).prediction_value
+                negation = dict(ap.coherence_negation(a.prediction_value, p_n), question_niee=str(n["titre"])[:300])
+            except Exception as e:  # un test en ombre qui échoue ne bloque rien
+                negation = {"statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:200]}
         fin = question.scheduled_resolution_time or question.close_time
         q = ap.Question(id=question.id_of_question or question.id_of_post or question.page_url,
                         url=question.page_url or "", titre=question.question_text,
@@ -287,7 +302,7 @@ class AlphabetBot(FallTemplateBot2026):
                                          historique=None if os.environ.get("ALPHABET_HISTORIQUE") == "0"
                                          else self._historique,
                                          critique=self._critique if os.environ.get("ALPHABET_CONTRADICTEUR") else None,
-                                         essais_A=essais_A or None)
+                                         essais_A=essais_A or None, negation=negation)
         except Exception as e:
             # 0.8.0 (audit M-10) : les erreurs de l'alphabet sont déjà journalisées par prevoir_binaire (statut
             # « erreur », bras A posté). Une exception qui arrive ici veut dire que la ligne n'a PAS été écrite :

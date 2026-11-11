@@ -82,6 +82,22 @@ class Tests(unittest.TestCase):
             self.assertEqual(mv["corrobores"]["sens_F"], 1.0)
         self.assertEqual(mv["source_unique"]["sens_F"], 0 if mv["source_unique"]["cartes"] else None)
 
+    def test_effacement_parasites_negation(self):
+        # 0.10.34 : noms effacés dans la consigne (identifiants neutres), lecture ramenée aux vraies cartes ;
+        # dépêches parasites dans le canevas ; cohérence de la négation
+        m = ap._moteur()
+        t = ms.table_effacement(5)
+        self.assertEqual(sorted(t), sorted(m.NOMS))
+        e = ms.effacer_noms("Lis SEUIL@7 et TRACE · MÉMOIRE (TRC) ; un seuil reste un mot.", t)
+        self.assertNotIn("SEUIL", e)
+        self.assertNotIn("TRC", e)
+        self.assertIn("un seuil reste un mot", e)                                   # les définitions restent
+        inv = {i: a for a, i in t.items()}
+        self.assertEqual(ms.ancrees({"mots": [{"carte": t["SEU"], "strate": 7, "intensite": "f"}]}, 7, inv), {"SEU@7": "f"})
+        cvs = [ms.canevas(["SEU@7"], 7, g, "2026-11-11") for g in range(20)]
+        self.assertTrue(any(c["parasites"] == 2 for c in cvs) and any(c["parasites"] == 0 for c in cvs))
+        self.assertEqual(ap.coherence_negation(0.7, 0.4)["incoherence"], 0.1)
+
     def test_reprise_json(self):
         # 0.10.25 : une sortie illisible a une seconde chance, et le premier échec reste compté
         rep = iter(["pas de json", '{"ok": true}'])

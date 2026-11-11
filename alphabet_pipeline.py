@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.33"
+VERSION_BOT = "0.10.34"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -449,9 +449,22 @@ celle du compte), « ajuste » (corrige-le dans le sens de l'écart nommé, et d
 """
 
 
+def bloc_compte_echoue(echec: dict | None) -> str:
+    """0.10.34 (d'après Lv et al., ICML 2026 : un agent qui reçoit une erreur doit en tenir compte, pas l'ignorer) :
+    le compte des données prévu n'a pas pu être fait ; la vue le sait et le dit."""
+    if not echec:
+        return ""
+    return f"""
+COMPTE PRÉVU, MAIS IMPOSSIBLE : le code devait compter sur « {echec.get('source') or '?'} », et cela a échoué
+({echec.get('motif') or 'motif inconnu'}). Ta fréquence ne vient donc PAS de ce compte : dis-le dans "motif" ou
+"calcul", appuie-toi sur une autre base nommée, et si aucune n'est honnête, mets "frequence": null.
+"""
+
+
 def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: str, jours: int,
                  historique: list[dict] | None = None, classe: dict | None = None,
-                 ancrage: dict | None = None, sources_prises: list[str] | None = None) -> str:
+                 ancrage: dict | None = None, sources_prises: list[str] | None = None,
+                 compte_echoue: dict | None = None) -> str:
     res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{r['resultat'][:3000]}" for i, r in enumerate(references))
     hist = "\n".join(f"[M{i + 1}] {h['titre']} → {str(h['issue']).upper()} (résolue le {h.get('resolue_le', '?')})"
                      for i, h in enumerate(historique or []))
@@ -460,7 +473,7 @@ def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: st
                "recopie-la dans classe_de_reference ; si elle ne permet aucun comptage honnête, mets frequence null) :\n"
                + json.dumps(classe, ensure_ascii=False, indent=1) + "\n")
     return f"""Étape 2 : la VUE EXTÉRIEURE, avant toute carte. Elle ne doit pas être choisie d'après l'état présent.
-{imposee}
+{imposee}{bloc_compte_echoue(compte_echoue)}
 QUESTION : {q.titre}
 CRITÈRES DE RÉSOLUTION : {q.criteres}
 PRÉCISIONS : {q.precisions}
@@ -1138,7 +1151,8 @@ async def definir_classe(q: Question, plan: dict, refs: list[dict], hist: list[d
 
 async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list[dict], llm: Llm, aujourdhui: str,
                            jours: int, classe: dict | None = None,
-                           vue_calculee: dict | None = None, ancrage: dict | None = None) -> tuple[dict | None, dict]:
+                           vue_calculee: dict | None = None, ancrage: dict | None = None,
+                           compte_echoue: dict | None = None) -> tuple[dict | None, dict]:
     """0.3.0 : NB_VUES estimations indépendantes du taux de base ; on garde la vue MÉDIANE (une vraie vue, avec sa
     source : aucun chiffre n'est fabriqué par moyenne). La dispersion est journalisée : c'est la mesure de stabilité
     de B demandée avant toute autre décision sur B."""
@@ -1148,7 +1162,8 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
     for i in range(NB_VUES):
         anc = ancrage if i == 0 else None
         try:
-            v = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours, hist, classe, anc, sources)))
+            v = extraire_json(await llm(consigne_vue(q, plan, refs, aujourdhui, jours, hist, classe, anc, sources,
+                                                     compte_echoue)))
         except Exception as e:
             refus.append(f"illisible : {e}"[:200])
             continue
@@ -1193,6 +1208,8 @@ def methode_B(c: dict) -> str:
         return "fixee"
     if vue.get("compte_calcule"):
         return "compte_" + str((((c.get("puits") or {}).get("compte")) or {}).get("methode") or "fenetres")
+    if vue and c.get("compte_echoue"):
+        return "vue_modele_compte_echoue"        # 0.10.34 : distinguée au score (B_par_methode)
     return "vue_modele" if vue else "aucune"
 
 
@@ -1266,6 +1283,38 @@ def accord_vues(plan: dict, lec_a: dict, lec_b: dict) -> dict:
             "candidates": [{"carte": c, "A": c in xa, "B": c in xb} for c in cands],
             "meme_intensite": sum(1 for k in set(xa) & set(xb) if xa[k] == xb[k]),
             "communes": len(set(xa) & set(xb))}
+
+
+try:
+    NEGATION_TAUX = max(0.0, min(1.0, float(os.environ.get("ALPHABET_NEGATION_TAUX") or 0)))
+except ValueError:
+    NEGATION_TAUX = 0.0
+
+
+def tirage_negation(qid) -> bool:
+    """0.10.34 : sélection déterministe d'une part NEGATION_TAUX des questions binaires."""
+    return NEGATION_TAUX > 0 and int(hashlib.sha256(f"negation:{qid}".encode()).hexdigest()[:8], 16) / 0xFFFFFFFF < NEGATION_TAUX
+
+
+def consigne_negation(titre: str, criteres: str, precisions: str) -> str:
+    """0.10.34 (d'après Lv et al., ICML 2026 : l'inversion logique fait chuter les agents) : réécrire la question en
+    son CONTRAIRE exact, critères compris ; « oui » à la question niée = « non » à l'originale."""
+    return f"""Réécris cette question de prévision en son CONTRAIRE EXACT : la réponse « oui » à ta question doit
+correspondre exactement à la réponse « non » à l'originale, et inversement. Garde la langue, les dates, les seuils et
+la source de résolution ; inverse seulement l'événement (« X arrivera-t-il ? » → « X n'arrivera-t-il pas ? » ; « au
+moins N » → « moins de N »). Réécris aussi les critères et les précisions dans le même sens.
+
+TITRE : {titre}
+CRITÈRES : {criteres[:3000]}
+PRÉCISIONS : {precisions[:2000]}
+
+Rends un seul objet JSON : {{"titre": "...", "criteres": "...", "precisions": "..."}}"""
+
+
+def coherence_negation(p: float, p_niee: float) -> dict:
+    """Écart à la cohérence : p(question) + p(question niée) devrait valoir 1."""
+    return {"p_A": round(p, 4), "p_A_niee": round(p_niee, 4), "somme": round(p + p_niee, 4),
+            "incoherence": round(abs(p + p_niee - 1), 4)}
 
 
 def tirage_invariance(qid) -> bool:
@@ -1476,7 +1525,19 @@ async def _vue_par_recherche(q: Question, plan: dict, llm: Llm, chercher: Cherch
         trace["p_compte"], trace["correspondance"] = vue_calc["frequence"], vue_calc["correspondance"]
         if vue_calc["correspondance"] != "exacte":
             ancrage, vue_calc = vue_calc, None
-    vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe, vue_calc, ancrage)
+    # 0.10.34 : un compte prévu et impossible (source en erreur, appel absent) est dit à chaque vue
+    echec = None
+    cp = (trace.get("puits") or {}).get("compte") if isinstance(trace.get("puits"), dict) else None
+    if vue_calc is None and ancrage is None and isinstance(cp, dict) and cp.get("motif"):
+        spec = cp.get("spec") or {}
+        appels = (trace.get("puits") or {}).get("appels") or []
+        rang = spec.get("appel")
+        app = appels[rang - 1] if isinstance(rang, int) and 0 < rang <= len(appels) else {}
+        echec = {"source": app.get("source") or spec.get("source"),
+                 "motif": f"{cp['motif']} ; {app.get('motif')}" if app.get("motif") else cp["motif"]}
+        trace["compte_echoue"] = echec
+    vue, trace["vues"] = await vues_exterieures(q, plan, refs, hist, llm, aujourdhui, jours, classe, vue_calc, ancrage,
+                                                echec)
     if vue is None:
         refus = trace["vues"]["refus"]
         return None, dict(trace, statut="sans_vue", motif=(refus[0] if refus else "vue extérieure absente"))
@@ -1858,13 +1919,16 @@ def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
 async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str, llm: Llm, chercher: Chercheur,
                           recherche_reelle: bool, maintenant: datetime | None = None, publie: bool = True,
                           mode: str | None = None, historique: Historique | None = None,
-                          critique: Llm | None = None, essais_A: list[float] | None = None) -> Resultat:
+                          critique: Llm | None = None, essais_A: list[float] | None = None,
+                          negation: dict | None = None) -> Resultat:
     maintenant = maintenant or datetime.now(timezone.utc)
     aujourdhui = maintenant.date().isoformat()
     jours = max(1, (q.resolution - maintenant.date()).days)
     bras_a = {"p": p_A, "horodatage": maintenant.isoformat(timespec="seconds")}
     if essais_A:   # 0.10.5 (skill §35, Murphy 2026) : K essais du modèle seul, en ombre ; le premier reste le bras A
         bras_a["essais"] = repetition_A([p_A] + list(essais_A))
+    if negation:   # 0.10.34 : test de négation, en ombre (la question niée, posée au même modèle seul)
+        bras_a["negation"] = negation
     bras_a["sceau"] = sceau({"question": str(q.id), "date": aujourdhui, **bras_a})  # A scellé avant l'alphabet
     try:
         c = await alphabet(q, recherche, llm, chercher, recherche_reelle, aujourdhui, jours, historique, critique)
@@ -1894,7 +1958,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
-                                                        "invariance", "preselection", "reprises_json",
+                                                        "invariance", "preselection", "reprises_json", "compte_echoue",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
