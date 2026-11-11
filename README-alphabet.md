@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.19 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.20 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.20** : **les pièges du taux de base B, traités et surveillés.** (1) Compte des puits : chocs ponctuels retirés,
+  retour vers la moyenne (AR(1)), séries bornées déclarées par le modèle (`bornes` : [0, 100] pour un pourcentage),
+  croissance relative mieux détectée, bootstrap lissé ; nouveau juge du banc du compte (`banc/compte/juge2.py`, quatre
+  pièges) : 53,3 → 10,7 millinats sur la partie cachée. (2) **Alarme de discordance** au registre
+  (`B.discordance_A`) : B et A à plus d'un facteur 4 sur les cotes ; pour une question dérivée d'une numérique, le
+  seuil est la médiane de A, donc B devrait être près de 0,5. (3) Score : `B_par_methode` (perte de B et B − A par
+  méthode d'obtention) et `discordances_B` (qui avait raison quand l'alarme sonne). Rien de posté ne change.
 - **0.10.19** : **taux de base d'un seuil de niveau sur une série en croissance.** Le compte des puits rejoue les pas
   RELATIFS (log) quand la série est positive, à tendance nette et que ses pas grandissent avec le niveau : l'écart à
   franchir devient log(seuil / dernière valeur). Cas FYONET (dépenses fédérales, seuil de 8,05 millions de millions) :

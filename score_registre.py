@@ -431,6 +431,49 @@ def sorties_illisibles(lignes: list[dict]) -> dict | None:
             "lecture": "part élevée : le modèle échoue au format ; ces lignes n'ont pas de lecture, ce n'est pas un état nul"}
 
 
+def b_par_methode(resolues: list[dict], issues: dict) -> dict | None:
+    """0.10.19 : la perte log de B par méthode d'obtention (compte des puits selon sa méthode, vue du modèle…), et son
+    écart à A sur les mêmes questions : quelle méthode se trompe, au lieu de le découvrir question par question."""
+    par: dict[str, list] = {}
+    for x in resolues:
+        b, a = (x.get("bras") or {}).get("B") or {}, (x.get("bras") or {}).get("A") or {}
+        if b.get("p") is None or a.get("p") is None:
+            continue
+        y = issues[x["question_id"]]
+        m = b.get("methode") or ("compte" if b.get("compte_calcule") else "vue_modele (avant 0.10.19)")
+        par.setdefault(m, []).append((log_score(b["p"], y), log_score(a["p"], y)))
+    if not par:
+        return None
+    return {m: {"n": len(v), "perte_B": round(sum(lb for lb, _ in v) / len(v), 4),
+                "B_moins_A": round(sum(lb - la for lb, la in v) / len(v), 4)} for m, v in sorted(par.items())}
+
+
+def discordances_B(lignes: list[dict], issues: dict) -> dict | None:
+    """0.10.19 : alarmes « B discordant » (B et A à plus d'un facteur 4 sur les cotes). Sur les questions résolues,
+    qui avait raison : perte de B moins perte de A, avec et sans alarme."""
+    d = [((x.get("bras") or {}).get("B") or {}).get("discordance_A") for x in lignes]
+    d = [y for y in d if isinstance(y, dict)]
+    if not d:
+        return None
+    res: dict[bool, list] = {True: [], False: []}
+    for x in lignes:
+        b, a = (x.get("bras") or {}).get("B") or {}, (x.get("bras") or {}).get("A") or {}
+        dz = b.get("discordance_A")
+        if isinstance(dz, dict) and x.get("question_id") in issues and b.get("p") is not None and a.get("p") is not None:
+            y = issues[x["question_id"]]
+            res[bool(dz.get("alarme"))].append(log_score(b["p"], y) - log_score(a["p"], y))
+    moy = lambda v: round(sum(v) / len(v), 4) if v else None
+    alarmes = [y for y in d if y.get("alarme")]
+    methodes: dict[str, int] = {}
+    for y in alarmes:
+        methodes[str(y.get("methode_B"))] = methodes.get(str(y.get("methode_B")), 0) + 1
+    return {"questions": len(d), "alarmes": len(alarmes), "part": round(len(alarmes) / len(d), 4),
+            "alarmes_par_methode": methodes,
+            "B_moins_A_avec_alarme": {"n": len(res[True]), "moyenne": moy(res[True])},
+            "B_moins_A_sans_alarme": {"n": len(res[False]), "moyenne": moy(res[False])},
+            "lecture": "B_moins_A > 0 avec alarme : quand B s'écarte fortement de A, c'est B qui se trompe"}
+
+
 def preselection_ombre(lignes: list[dict]) -> dict | None:
     """0.10.15 : recouvrement entre les k cartes que le plongement multilingue range en tête et les cartes retenues
     par le planificateur ; rang moyen de la carte de l'événement. Descriptif, sans issue."""
@@ -893,6 +936,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "diversite_lectures": diversite_lectures(publiees),                 # 0.10.12
             "sorties_illisibles": sorties_illisibles(publiees),                 # 0.10.14
             "preselection_ombre": preselection_ombre(publiees),                 # 0.10.15
+            "B_par_methode": b_par_methode(resolues, issues),                   # 0.10.19
+            "discordances_B": discordances_B(publiees, issues),                 # 0.10.19
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
             "stabilite_strate": stabilite_strate(publiees),
