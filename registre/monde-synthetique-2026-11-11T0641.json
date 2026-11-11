@@ -1,0 +1,1602 @@
+{
+  "calcule_le": "2026-11-11T06:41:56+00:00",
+  "version_skill": "0.7.70",
+  "version_bot": "0.10.31",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    72,
+    83
+  ],
+  "consigne_lecteur_sha256": "a2f80edfcd8302a4d1d06d5715eee0ea9cd73c54435d2b18596ccbf7f066e9e1",
+  "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "corrobores": {
+        "cartes": 29,
+        "sens_F": 0.1034,
+        "sens_f": 0.6207,
+        "sens": 0.7241
+      },
+      "source_unique": {
+        "cartes": 21,
+        "sens_F": 0.0,
+        "sens_f": 0.5714,
+        "sens": 0.5714
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 23,
+        "presentes_non_montrees": 8
+      },
+      "sens_F": 0.06,
+      "sens_f": 0.6,
+      "sens": 0.66,
+      "fp_F": 0.0,
+      "fp_f": 0.1429,
+      "fp": 0.1429
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 58,
+    "cartes_absentes": 58,
+    "mesure": {
+      "sens_F": 0.0517,
+      "sens_f": 0.569,
+      "sens": 0.6207,
+      "fp_F": 0.0,
+      "fp_f": 0.2931,
+      "fp": 0.2931
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "aucun_fait": 1,
+      "marqueur_non_rempli": 20,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 0,
+    "situations_vides": 0,
+    "par_carte": {
+      "COM": {
+        "presente": 5,
+        "lue_si_presente": 4,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "CRO": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 8,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 4,
+        "lue_si_presente": 4,
+        "absente": 1,
+        "lue_si_absente": 1
+      },
+      "EME": {
+        "presente": 5,
+        "lue_si_presente": 4,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 7,
+        "lue_si_absente": 5
+      },
+      "INC": {
+        "presente": 4,
+        "lue_si_presente": 4,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "PER": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 8,
+        "lue_si_absente": 1
+      },
+      "POL": {
+        "presente": 3,
+        "lue_si_presente": 2,
+        "absente": 4,
+        "lue_si_absente": 3
+      },
+      "PRO": {
+        "presente": 4,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "RCS": {
+        "presente": 3,
+        "lue_si_presente": 1,
+        "absente": 4,
+        "lue_si_absente": 0
+      },
+      "REC": {
+        "presente": 4,
+        "lue_si_presente": 4,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "RES": {
+        "presente": 5,
+        "lue_si_presente": 5,
+        "absente": 5,
+        "lue_si_absente": 3
+      },
+      "RSN": {
+        "presente": 1,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 1
+      },
+      "SEU": {
+        "presente": 9,
+        "lue_si_presente": 0,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "TRA": {
+        "presente": 4,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 0
+      },
+      "TRC": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 3,
+        "lue_si_absente": 3
+      }
+    }
+  },
+  "situations": [
+    {
+      "graine": 72,
+      "presentes": [
+        "COM@7",
+        "CRO@7",
+        "CTR@7",
+        "EME@7",
+        "INC@7",
+        "PRO@7",
+        "RES@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "HIE@7",
+        "PER@7",
+        "POL@7",
+        "RCS@7",
+        "REC@7",
+        "RSN@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-17] Valsnie, Doramie et le Conseil du Reth en ordre de marche — https://journal-de-velhaven.example/acteurs\nLe Premier ministre de Valsnie, Aris Vorn, préside un gouvernement de coalition. La Présidente de Doramie, Elara Krell, dirige avec le parti de l'Unité nationale. Le Conseil des États riverains du Reth réunit les ministres des Affaires étrangères de sept pays. Son secrétariat général est basé à Senne. Aucune réunion plénière n'est prévue cette semaine.\n\n[2026-09-18] Doramie tente une inspection navale, Valsnie bloque l'accès — https://presse-libre-de-senne.example/inspection\nLa marine doramienne a envoyé aujourd'hui la frégate « Vigilant » pour une « inspection de routine » dans le couloir maritime international près des eaux valsniennes. Deux patrouilleurs de la Garde-côtière de Valsnie ont barré la route, affirmant par signaux lumineux que la zone était sous « exercice naval temporaire ». Le commandant du « Vigilant » a déclaré à la radio : « L'option d'une inspection n'est pas sur la table aujourd'hui. » Le bâtiment a fait demi-tour.\n\n[2026-09-19] Le trafic sur le Reth dépend de trois points de passage — https://depeche-continentale.example/trafic\nLe poste-frontière de Larn (Valsnie) est fermé depuis hier, aucun camion ne passe. Le terminal fluvial de Port-Senne (Conseil du Reth) fonctionne à capacité réduite ; seuls les barges sous pavillon doramien sont autorisées à décharger. Le pont ferroviaire de Koss (concession du Conseil) est ouvert, mais les wagons en provenance de Valsnie sont inspectés pendant 8 heures en moyenne. Les marchandises de Doramie vers le nord transitent uniquement par Koss.\n\n[2026-09-21] Fermeture de Larn : 450 camions à l'arrêt — https://le-veilleur-du-nord.example/points-blocages\nLes douaniers de Valsnie maintiennent la fermeture totale du poste frontalier de Larn. Un responsable du Conseil du Reth, sous couvert d'anonymat, précise : « Cette décision unilatérale affecte 450 poids lourds immatriculés dans trois de nos États membres. » Le flux commercial entre Doramie et la région nord du Reth ne transite plus que par le pont de Koss, où les délais d'inspection des wagons valsniens dépassent désormais 10 heures. Port-Senne n'accepte toujours que les barges doramiennes.\n\n[2026-09-25] Doramie et le Conseil proposent un « Fonds de développement du corridor nord » — https://echo-des-capitales.example/fonds-commun\nLes gouvernements de Doramie et du Conseil des États riverains du Reth ont annoncé conjointement la création d'un « Fonds de développement du corridor nord ». L'objectif déclaré est le « financement d'infrastructures de transport résilientes ». La contribution initiale de Doramie est de 200 millions d'unités. Les États membres du Conseil doivent annoncer leurs participations sous quinze jours. Valsnie n'est pas mentionnée dans le communiqué et n'a pas réagi.\n\n[2026-09-27] Émergence des « Consultations informelles du jeudi » sur le Reth — https://agence-meridia.example/consultations-jeudi\nDepuis le 4 septembre, les directeurs des administrations fluviales de Doramie et de trois États membres du Conseil se réunissent chaque jeudi après-midi par visioconférence. Aucun procès-verbal n'est publié. Aucune décision formelle du Conseil ni directive ministérielle n'a instauré cette pratique. La première réunion a suivi un incident de navigation mineur. La réunion de ce jeudi a duré 55 minutes. Valsnie n'y participe pas.\n\n[2026-09-30] Quatrième « consultation du jeudi » sans ordre du jour officiel — https://gazette-de-corvus.example/reunion-informelle\nLa visioconférence hebdomadaire entre responsables fluviaux doramiens et de trois États du Conseil s'est tenue aujourd'hui pour la quatrième fois consécutive. Un participant a déclaré : « Nous échangeons des données de trafic en temps réel, rien de plus. » La réunion a commencé à 15h00 et a duré 48 minutes. Aucun traité, règle interne ou décision écrite n'a créé cette régularité. La première occurrence remonte au 4 septembre.\n\n[2026-10-03] Valsnie tente de renvoyer une délégation par la route, contrainte de passer par les airs — https://tribune-de-kossmar.example/retour-echoue\nUne délégation commerciale valsnienne, arrivée à Doramie par la route le 26 septembre via le pont de Koss, s'est vue refuser aujourd'hui le passage retour par le même itinéraire. Les autorités douanières doramiennes à Koss ont indiqué « des travaux imprévus sur la chaussée ». La délégation a dû être rapatriée par un vol charter depuis l'aéroport de la capitale doramienne, après obtention en urgence de survols.\n\n[2026-10-05] Tonnage fluvial et inspections : un rapport stable puis rompu — https://courrier-du-reth.example/tonnage-inspections\nLe tonnage total hebdomadaire des barges inspectées à Port-Senne était de 12 000 tonnes pour 40 inspections (ratio 300 t/inspection) du 21 au 27 septembre. Du 28 septembre au 4 octobre, le tonnage est passé à 18 000 tonnes pour 30 inspections (ratio 600 t/inspection). Le nombre d'inspections a baissé tandis que le tonnage moyen par inspection a doublé. Le ratio précédent ne s'est pas conservé.\n\n[2026-10-07] Augmentation accélérée des survols militaires valsniens près de la frontière doramienne — https://observateur-ostrave.example/survols-croissance\nLes survols d'avions militaires valsniens dans la zone d'identification de défense (ZID) adjacente à l'espace aérien doramien ont été comptabilisés à 12 pour la semaine du 16 au 22 septembre, puis à 18 du 23 au 29 septembre (hausse de 50%). Pour la semaine du 30 septembre au 6 octobre, le nombre est de 30 survols (hausse de 67% par rapport à la semaine précédente). Le taux de croissance hebdomadaire s'accélère.\n\n[2026-10-08] Transformation graduelle de l'avant-poste frontalier de Valsnie à Larn — https://agence-meridia.example/avant-poste-etapes\nL'avant-poste frontalier valsnien de Larn, un simple poste de douane le 17 septembre, a vu l'arrivée de conteneurs logistiques le 25 septembre. Le 1er octobre, des générateurs et des systèmes de communication ont été installés. Aujourd'hui, des barrières défensives mobiles et des abris semi-enterrés sont visibles par imagerie satellite. Le site n'est pas encore une base militaire pleinement opérationnelle, mais n'est plus un simple poste de contrôle.\n\n[2026-10-12] Scénarios de sortie de crise sur la table, mise en place d'une ligne directe — https://courrier-du-reth.example/scenarios-dispositif\nDes diplomates de Valsnie, Doramie et du Conseil évoquent ouvertement trois scénarios concurrents : gel permanent des relations, retour au statu quo ante, ou création d'une zone tampon sous supervision internationale. Aucun n'est privilégié. En attendant, un « dispositif provisoire de communication directe » entre les états-majors des armées a été activé hier. Sa durée n'est pas fixée.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Valsnie",
+          "Doramie"
+        ],
+        "organisation": "le Conseil des États riverains du Reth",
+        "corrobores": [
+          "EME@7",
+          "RES@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-17",
+            "carte": null,
+            "marqueur": null,
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-18",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)",
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)",
+            "media": "le-veilleur-du-nord",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "COM@7",
+            "marqueur": "un bien ou un projet commun nommé par les membres eux-mêmes",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "gazette-de-corvus",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-05",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-07",
+            "carte": "CRO@7",
+            "marqueur": "une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même grandeur",
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-08",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-12",
+            "carte": "INC@7",
+            "marqueur": "scénarios concurrents explicitement tenus ; dispositifs provisoires",
+            "media": "courrier-du-reth",
+            "reprise": false
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": [
+          "COM@7",
+          "TRA@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "f",
+        "RES@7": "f",
+        "POL@7": "f",
+        "COM@7": "f",
+        "HIE@7": "f",
+        "INC@7": "f",
+        "EME@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "PER@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 73,
+      "presentes": [
+        "COM@7",
+        "INC@7",
+        "RES@7",
+        "SEU@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "CTR@7",
+        "HIE@7",
+        "PER@7",
+        "POL@7",
+        "RSN@7"
+      ],
+      "evenement": "EME@7",
+      "texte": "[2026-09-13] Valsnie et Calvarie renforcent leur présence sur le Reth — https://echo-des-capitales.example/1234\nLa Valsnie a annoncé le déploiement de deux nouvelles patrouilles fluviales sur le Reth. La Calvarie a répondu en augmentant ses exercices militaires près de la rive orientale. Le Conseil des États riverains du Reth a tenu une réunion à Senne. La ministre valsnienne des Affaires étrangères, Lena Korvic, a déclaré : « Notre souveraineté sur le fleuve est incontestable ». Son homologue calvarien, Aris Thorne, a affirmé : « La sécurité de nos frontières fluviales est notre priorité absolue ». Le président du Conseil, Edvard Milos, a appelé à une prochaine consultation technique.\n\n[2026-09-16] Le Conseil propose deux scénarios pour les patrouilles sur le Reth — https://le-veilleur-du-nord.example/abcd\nLe Conseil des États riverains a publié un document présentant deux dispositifs provisoires pour la navigation militaire sur le Reth. Le premier scénario prévoit des créneaux horaires distincts pour les patrouilles de Valsnie et de Calvarie. Le second propose des zones d'exercice alternées hebdomadaires. Les délégations de Valsnie et de Calvarie ont reçu le document pour examen. Aucune position officielle n'a été adoptée. Le président du Conseil, Edvard Milos, a déclaré : « Ces propositions sont sur la table pour les quinze jours à venir ».\n\n[2026-09-17] Le Conseil instaure un système de surveillance des transpondeurs — https://presse-libre-de-senne.example/xyz1\nLe Conseil des États riverains a activé un système de contrôle par transpondeur pour toute embarcation militaire sur le Reth. Toute unité non identifiée sera considérée comme « clandestine » et son pays d'origine se verra refuser l'accès aux données de trafic fluvial pendant trente jours. La résolution, adoptée hier, prend effet immédiatement. Les ministères de la Défense de Valsnie et de Calvarie ont confirmé la mise à jour de leurs systèmes de bord. Un premier relevé technique est prévu le 20 septembre.\n\n[2026-09-18] La borne frontalière n°12 de 1923 guide toujours les revendications — https://observateur-ostrave.example/mn78\nLa borne frontalière n°12, érigée en 1923 sur la rive sud du Reth, reste le point de référence pour les revendications territoriales de Valsnie et de Calvarie. Les cartes militaires des deux pays indiquent leur zone d'exclusion à 500 mètres de cette borne. Les patrouilles valsniennes s'arrêtent à 50 mètres au nord de ce point, les calvariennes à 50 mètres au sud. Une déclaration commune de 1998, réaffirmée annuellement, cite explicitement cette borne comme « point d'ancrage ». Aucune proposition de déplacement n'a été officiellement formulée depuis.\n\n[2026-09-24] Les exercices militaires calvariens respectent le périmètre de la borne de 1923 — https://courrier-du-reth.example/gh56\nLes forces calvariennes ont conduit un exercice de déploiement rapide à proximité du secteur de la borne frontalière n°12. Le ministre de la Défense calvarien a précisé que toutes les unités sont restées à plus de 55 mètres au sud de la borne, datée de 1923. Un communiqué du commandement de région a rappelé que « le protocole opérationnel, établi en 1998, fixe la limite à 50 mètres ». Des observateurs du Conseil ont vérifié la position des troupes à l'aide de bornes géodésiques auxiliaires installées en 2005.\n\n[2026-09-25] Un dialogue direct Valsnie-Calvarie rétabli via le poste de Kossmar — https://tribune-de-kossmar.example/jk90\nLes chefs d'état-major adjoints de Valsnie et de Calvarie se sont entretenus par liaison téléphonique sécurisée via le poste frontalier de Kossmar. Cette conversation, la première en six mois sans médiation du Conseil, a duré vingt minutes. Elle a porté sur la coordination des horaires de patrouille. Le poste de Kossmar est le seul point de contact direct restant entre les états-majors des deux pays depuis la fermeture des autres centres en 2024. Aucun autre canal de communication opérationnel n'est actuellement certifié.\n\n[2026-09-27] La liaison de Kossmar utilisée pour prévenir un incident — https://depeche-continentale.example/wx34\nLe canal direct du poste de Kossmar a été activé hier par la Calvarie pour signaler à la Valsnie un exercice imprévu de ses hélicoptères près du secteur 7-B. La communication a évité le déclenchement d'une alerte des radars valsniens. Le commandant du poste, le major calvarien D. Vass, a déclaré : « La procédure a été respectée, le message a été transmis et accusé de réception en trois minutes ». Le ministère valsnien de la Défense a confirmé la réception du message et l'absence de mise en alerte de ses batteries côtières.\n\n[2026-10-06] La Valsnie retire sa proposition de révision des zones après un veto — https://gazette-de-corvus.example/st12\nLa Valsnie a retiré sa proposition de redéfinition des zones de pêche sur le Reth après que la Calvarie a annoncé son opposition irréductible. La proposition valsnienne suggérait un nouvel équilibre basé sur des relevés hydrologiques récents. Le ministre calvarien Thorne a déclaré : « Toute discussion doit repasser par l'examen préalable du traité de 1972 ». La Valsnie a ensuite annoncé qu'elle soumettrait le dossier au Conseil des États riverains, une voie qu'elle avait initialement voulu éviter. Sa première proposition est donc abandonnée.\n\n[2026-10-07] Calvarie bloque la proposition valsnienne, renvoie vers le traité de 1972 — https://journal-de-velhaven.example/uv78\nLe gouvernement calvarien a opposé un refus formel au projet valsnien de réforme des zones de pêche. Le ministère calvarien des Affaires étrangères a transmis une note précisant que « la base légale unique reste l'annexe III du traité de 1972 ». Face à ce blocage, la délégation valsnienne a annoncé qu'elle préparait un nouveau document pour le Conseil du Reth. Un diplomate valsnien, sous couvert d'anonymat, a indiqué que le processus prendrait « plusieurs semaines, contre quelques jours pour la voie bilatérale initialement espérée ».\n\n[2026-10-09] Les négociations sur les droits de passage évoluent par étapes observables — https://agence-meridia.example/qr56\nLes pourparlers entre Valsnie, Calvarie et le Conseil sur les droits de passage des convois militaires ont montré une progression en trois phases cette semaine. Lundi, les parties ont échangé des listes d'exigences. Mercredi, des experts techniques ont produit un document commun identifiant cinq points de divergence sur quinze. Vendredi, les ministres Korvic et Thorne ont autorisé la poursuite des travaux sur ces cinq points précis. Le président du Conseil, Milos, a annoncé une nouvelle réunion d'experts pour le 12 octobre afin d'examiner des solutions techniques pour le premier point.\n\n[2026-10-10] Progrès par points successifs dans les pourparlers sur le Reth — https://agence-meridia.example/ef34\nLes discussions sur le passage des convois militaires ont avancé sur un premier point technique. Les experts de Valsnie et de Calvarie se sont mis d'accord sur un protocole de notification pour les convois de moins de trois bâtiments. Cet accord fait suite à deux rounds de négociations cette semaine : un échange d'exigences lundi et une séance de travail technique mercredi. Le président du Conseil, Edvard Milos, a déclaré : « L'accord sur ce point précis ouvre la voie à l'examen des quatre points restants à partir de lundi prochain ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Valsnie",
+          "Calvarie"
+        ],
+        "organisation": "le Conseil des États riverains du Reth",
+        "corrobores": [
+          "RES@7",
+          "SEU@7",
+          "TRA@7",
+          "TRC@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-13",
+            "carte": null,
+            "marqueur": null,
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "INC@7",
+            "marqueur": "scénarios concurrents explicitement tenus ; dispositifs provisoires",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-17",
+            "carte": "COM@7",
+            "marqueur": "un dispositif contre le passager clandestin (contrôle, sanction, exclusion, pression)",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-18",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "courrier-du-reth",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "RES@7",
+            "marqueur": "un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "RES@7",
+            "marqueur": "un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe",
+            "media": "depeche-continentale",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-06",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller",
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-07",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller",
+            "media": "journal-de-velhaven",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-09",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-10",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "agence-meridia",
+            "reprise": true
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7",
+          "HIE@7",
+          "POL@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "POL@7": "f",
+        "CTR@7": "f",
+        "TRC@7": "f",
+        "INC@7": "f",
+        "COM@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 74,
+      "presentes": [
+        "REC@7",
+        "RES@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "HIE@7",
+        "RCS@7",
+        "SEU@7"
+      ],
+      "evenement": "INC@7",
+      "texte": "[2026-09-17] Istrane et Norven, membres du Pacte de Corvus — https://gazette-de-corvus.example/relations-actuelles\nLa Présidente d’Istrane, Elara Vance, a reçu aujourd’hui le ministre norvien des Affaires étrangères, Lars Dorn. Le ministre a atterri à Velhaven à 10h00. Une rencontre de travail de deux heures a eu lieu au Palais des Chancelleries. Les deux parties ont évoqué des questions de sécurité régionale. Le secrétaire-général du Pacte de Corvus, Marcus Thorne, a déclaré depuis Kossmar que « la coopération entre les États membres reste essentielle ». Le ministre Dorn a quitté Velhaven à 18h30.\n\n[2026-09-18] Le statut du détroit de Fer, héritage de 1992 — https://le-veilleur-du-nord.example/detroit-fer-heritage\nLe gouvernement d’Istrane a annoncé le déploiement de deux patrouilleurs supplémentaires dans le détroit de Fer. Le ministre de la Défense istranais a rappelé que « le contrôle exclusif du détroit est garanti par l’accord de démilitarisation de 1992 ». Norven, signataire du même accord, maintient une zone d’exclusion de 5 milles nautiques sur sa rive nord. Le ministère norvien des Transports a déclaré que « tout navire marchand doit présenter un code d’accès istranais pour le transit ». Ce code est délivré depuis Velhaven.\n\n[2026-09-19] Transits commerciaux soumis au régime de 1992 — https://tribune-de-kossmar.example/regime-transit-detroit\nCinq cargos battant pavillon de pays tiers ont été contrôlés hier dans le détroit de Fer. Un porte-parole de la marine istranaise a confirmé que « les procédures de l’accord de 1992 sont appliquées à la lettre ». L’un des capitaines a déclaré avoir dû attendre sept heures pour obtenir le code de transit depuis Velhaven. Les archives douanières norviennes montrent que 42 navires ont transité par le détroit ce mois-ci, contre 38 en août. La marine norvienne a observé les opérations depuis ses stations côtières.\n\n[2026-09-22] Négociations pour le renouvellement de l’accord de pêche — https://journal-de-velhaven.example/negociations-peche-etapes\nDes diplomates istranais et norviens se sont rencontrés à trois reprises cette semaine à Kossmar, siège du Pacte. Le 20 septembre, Istrane a présenté une proposition de quotas. Le 21, Norven a répondu avec une contre-proposition réduisant de 30% les zones accessibles. Hier, une session a duré neuf heures. Les parties ont ensuite annoncé « des progrès sur les méthodes de surveillance ». Aucun accord final n’a été signé. Une nouvelle réunion est prévue dans 48 heures. Le ton des communiqués est passé de « ferme » à « constructif » puis à « technique ».\n\n[2026-09-23] Quotas et zones au cœur des pourparlers — https://observateur-ostrave.example/coeur-pourparlers-peche\nLors de la dernière session à Kossmar, les délégués norviens ont exigé l’installation de 15 balises de traçage sur les navires istranais. Les négociateurs istranais ont proposé 8 balises et un partage des données en temps réel. Le ministre norvien de l’Économie maritime a déclaré : « Notre position sur la zone 7-Est est non-négociable ». Les échanges ont ensuite porté sur les espèces ciblées, le thon rouge étant le principal point de désaccord. Les délégations ont convenu de reprendre les discussions demain à 08h00.\n\n[2026-09-25] Le réseau de surveillance aérienne du Pacte de Corvus — https://echo-des-capitales.example/reseau-surveillance-pacte\nLe centre radar de Kossmar (Pacte) reçoit les données des stations de Velhaven (Istrane) et de Reth (Norven). Les données de Velhaven transitent sans filtrage vers Kossmar. Les données de Reth sont partiellement cryptées avant envoi, et Kossmar signale des « interruptions ponctuelles ». Kossmar transmet une image commune aux commandements militaires des deux pays. Le commandement istranais confirme recevoir cette image. Le commandement norvien ne confirme pas sa réception. Une liaison directe entre Velhaven et Reth, prévue par un protocole annexe, n’est pas activée.\n\n[2026-09-28] Norven suspend sa participation à l’exercice conjoint « Bouclier Hivernal » — https://agence-meridia.example/suspension-exercice-bouclier\nLe ministère norvien de la Défense a annoncé le retrait de ses troupes de l’exercice « Bouclier Hivernal » du Pacte de Corvus. Cette décision fait suite au refus istranais de revoir le partage des coûts logistiques. Norven réclamait depuis six mois une réduction de sa contribution de 15%. Istrane avait proposé une réduction de 5%, puis n’a plus répondu aux deux dernières relances du secrétariat du Pacte. Le retrait concerne 1200 soldats norviens et 45 blindés. Ils quitteront le terrain d’exercice d’Ostrave dans les 72 heures.\n\n[2026-10-04] Conséquences opérationnelles du retrait norvien — https://courrier-du-reth.example/consequences-retrait-exercice\nL’exercice « Bouclier Hivernal » se poursuit avec un format réduit. Le colonel istranais en charge de la manœuvre a déclaré : « Nous avons dû reconfigurer trois scénarios majeurs ». Le secrétariat du Pacte a publié un bilan indiquant une baisse de 40% des capacités de simulation interarmes. Les ports de Reth et de Kossmar ont vu l’annulation de 12 rotations de navires logistiques prévues pour l’exercice. Le ministre norvien des Finances a précisé que les fonds dégagés, soit 4,7 millions de thalers, seraient réaffectés à la défense côtière nationale.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Istrane",
+          "Norven"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "corrobores": [
+          "REC@7",
+          "TRA@7",
+          "TRC@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-17",
+            "carte": null,
+            "marqueur": null,
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-18",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "tribune-de-kossmar",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-22",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "observateur-ostrave",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-28",
+            "carte": "REC@7",
+            "marqueur": "refroidissement, rupture ou rétorsion observés après un non-retour",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "REC@7",
+            "marqueur": "refroidissement, rupture ou rétorsion observés après un non-retour",
+            "media": "courrier-du-reth",
+            "reprise": true
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "CRO@7",
+          "HIE@7",
+          "RCS@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "TRC@7": "F",
+        "HIE@7": "f",
+        "REC@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "RCS@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 75,
+      "presentes": [
+        "POL@7",
+        "RCS@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "PER@7",
+        "RES@7",
+        "TRC@7"
+      ],
+      "evenement": "CTR@7",
+      "texte": "[2026-09-15] La Doramie annonce un exercice naval en mer d'Émeraude — https://presse-libre-de-senne.example/doramie-velanie-exercice\nLe gouvernement doramien a annoncé aujourd'hui un exercice militaire naval dans les eaux internationales de la mer d'Émeraude. La Première ministre de Doramie, Elara Voss, a déclaré que cet exercice visait à « tester de nouvelles capacités défensives ». Parallèlement, le Président de Velania, Marcus Thorne, a inauguré une nouvelle ligne de chantiers navals civils à Velhaven. Le ministre vélanien du Commerce a indiqué que ces installations augmenteraient la capacité de construction de navires marchands de 15%.\n\n[2026-09-16] Doramie et Velania s'affrontent verbalement sur la notion de « stabilité » — https://agence-meridia.example/affrontement-verbal-stabilite\nLe porte-parole du ministère doramien des Affaires étrangères a qualifié l'exercice naval du 15 septembre d'« action nécessaire pour la stabilité régionale ». En réponse, le conseiller vélanien à la Sécurité nationale a déclaré : « La véritable stabilité ne se construit pas par des démonstrations de force unilatérales, mais par la transparence et la coopération. » Il a ajouté que la Velania restait « le pilier de la stabilité pacifique » dans la région.\n\n[2026-09-25] Les deux blocs rivaux maintiennent leurs positions sur la sécurité régionale — https://observateur-ostrave.example/deux-blocs-securite\nL'ambassadrice de Doramie auprès de l'Organisation pour la Sécurité Maritime a réitéré que l'exercice naval était « une contribution à la stabilité collective ». Elle a précisé que 12 navires de guerre y participaient. Le ministre vélanien de la Défense a répondu que la Velania surveillerait « toute activité déstabilisatrice » avec ses 5 navires de patrouille maritime. Il a répété que seule « une approche coopérative » garantissait une stabilité durable.\n\n[2026-09-28] Négociations commerciales suspendues, un comité technique reste actif — https://echo-des-capitales.example/negociations-suspendues-comite-actif\nLes pourparlers bilatéraux sur le quota d'exportations d'acier de Doramie vers Velania sont officiellement suspendus. Le ministre vélanien du Commerce a signé l'ordre de suspension ce matin. Cependant, le comité technique mixte sur les normes douanières, issu de ces pourparlers, continue ses réunions hebdomadaires. Ses membres ont confirmé leur prochaine session pour le 2 octobre. Aucun nouvel échange commercial n'est autorisé pendant la suspension.\n\n[2026-09-29] Doramie exige des garanties élevées pour reprendre le dialogue — https://tribune-de-kossmar.example/garanties-elevees-dialogue\nLa Première ministre Voss a conditionné toute reprise des négociations avec la Velania au retrait préalable de ses 5 navires de patrouille d'une zone de 200 milles nautiques autour de l'exercice doramien. Le ministre vélanien des Affaires étrangères a rétorqué que son pays avait seulement déployé ces navires en réaction à l'exercice, pour un coût estimé à 2 millions de thalers. Il a qualifié la demande de retrait préalable de « prix exorbitant et disproportionné » pour simplement rétablir le dialogue.\n\n[2026-10-04] Une fuite d'un rapport vélanien sur la crise redéfinit les positions — https://journal-de-velhaven.example/fuite-rapport-redéfinition-positions\nUn rapport interne du Conseil vélanien de Sécurité, daté du 30 septembre et divulgué aujourd'hui, analyse la crise comme une « stratégie doramienne de tension calibrée ». Le document recommande de « contrer toute démonstration par une démonstration équivalente ». Peu après sa publication, le ministère doramien de la Défense a annoncé l'extension de son exercice naval de 48 heures, citant « la nécessité de s'adapter aux postures agressives révélées par des documents officiels ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Doramie",
+          "Velania"
+        ],
+        "organisation": null,
+        "corrobores": [
+          "POL@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-15",
+            "carte": null,
+            "marqueur": null,
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "POL@7",
+            "marqueur": "les acteurs se classent eux-mêmes dans deux camps, ou deux termes opposés reviennent dans leur propre vocabulaire",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "POL@7",
+            "marqueur": "les acteurs se classent eux-mêmes dans deux camps, ou deux termes opposés reviennent dans leur propre vocabulaire",
+            "media": "observateur-ostrave",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-28",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "RCS@7",
+            "marqueur": "un discours, une mesure, un modèle ou une analyse du système sur lui-même est observable, et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "RES@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "TRA@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "POL@7": "f",
+        "RES@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 76,
+      "presentes": [
+        "PRO@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "PER@7",
+        "RES@7"
+      ],
+      "evenement": "CTR@7",
+      "texte": "[2026-09-12] Brenthie et Draven, un état des relations — https://tribune-de-kossmar.example/etat-relations\nLe ministre brenthien des Affaires étrangères, Lars Vaelen, a rencontré aujourd'hui son homologue dravenois, Elara Kostad, à Kossmar. Les deux parties ont discuté de la coordination des patrouilles navales dans le détroit de Miren. Le Premier ministre de Brenthie, Anya Solberg, préside un gouvernement de coalition. Le président du Conseil dravenois, Gregor Minsk, a déclaré hier que le commerce bilatéral était une \"priorité\". Les exercices militaires annuels de Draven débuteront le mois prochain.\n\n[2026-10-06] Draven dénonce un déséquilibre commercial avec Brenthie — https://journal-de-velhaven.example/desequilibre-commercial\nLe ministère dravenois du Commerce a publié des données : en août, les exportations de Brenthie vers Draven ont atteint 420 millions de thalers, tandis que les exportations de Draven vers Brenthie étaient de 210 millions. Le ratio était de 2 pour 1. En septembre, les chiffres étaient de 410 millions contre 195 millions. Le ratio, de 2,1 pour 1, se maintient. La ministre Kostad a déclaré : \"Cet écart persistant n'est pas durable.\"\n\n[2026-10-10] Le déficit commercial dravenois se creuse face à Brenthie — https://agence-meridia.example/deficit-commercial\nLes douanes de Draven confirment un déséquilibre commercial avec Brenthie. Pour septembre, les importations dravenoises en provenance de Brenthie sont évaluées à 412 millions de thalers. Les exportations dravenoises vers Brenthie sont chiffrées à 193 millions. Le ratio des échanges est de 2,14 pour 1. Un responsable douanier, sous couvert d'anonymat, a précisé que le déficit cumulé sur les trois derniers mois atteignait 647 millions de thalers.\n\n[2026-10-20] Draven annonce des surtaxes sur les biens brenthiens — https://courrier-du-reth.example/surtaxes\nLe Conseil dravenois a approuvé une taxe d'importation additionnelle de 25% sur les produits sidérurgiques et électroniques en provenance de Brenthie. Le ministère des Finances estime son coût de mise en œuvre à 3 millions de thalers pour les services douaniers. Le ministre Kostad a déclaré : \"Le coût de rétablir un équilibre commercial ne doit pas être comparé au coût de l'avoir laissé se dégrader.\" Aucune contre-mesure n'a été annoncée par Brenthie.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Brenthie",
+          "Draven"
+        ],
+        "organisation": null,
+        "corrobores": [
+          "PRO@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-12",
+            "carte": null,
+            "marqueur": null,
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-06",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-10",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "agence-meridia",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-20",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "courrier-du-reth",
+            "reprise": false
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "PRO@7": "F",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 77,
+      "presentes": [
+        "CTR@7",
+        "EME@7",
+        "INC@7",
+        "RCS@7",
+        "RES@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "CRO@7",
+        "PER@7",
+        "REC@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-15] Gouvernements en place en mer de Kossmar — https://courrier-du-reth.example/gouvernements-en-place\nLe Premier ministre de Doramie, Elias Vance, préside un gouvernement de coalition. Le président calvarien, Armin Koller, dirige avec le parti de l'Unité. L'Union du Détroit de Kossmar (UDK) est actuellement présidée par la représentante selwynienne, Marta Chen. Les trois entités entretiennent des relations diplomatiques standard. Des ambassadeurs sont en poste dans chaque capitale.\n\n[2026-09-16] Deux plans sur la table pour le transit frontalier — https://tribune-de-kossmar.example/deux-plans-table-transit\nL'UDK a soumis aux gouvernements de Doramie et de Calvarie deux projets distincts pour gérer le flux commercial au poste-frontière de Velt. Le premier propose un système de quotas nationaux. Le second suggère un couloir sous supervision de l'UDK. Aucune date de décision n'est fixée. En attendant, le passage fonctionne sous un régime provisoire de contrôle aléatoire, renouvelé chaque semaine.\n\n[2026-09-17] Le pont de Selwyn, seul lien direct entre Doramie et l'UDK — https://agence-meridia.example/pont-selwyn-seul-lien\nLe pont maritime de Selwyn, dans les eaux de l'UDK, est le seul point de passage physique pour le commerce maritime entre Doramie et les ports de l'Union. Les cargaisons doramiennes à destination de la Calvarie transitent obligatoirement par cette infrastructure. Il n'existe pas d'autre route maritime directe entre la Doramie et les ports de l'UDK. Le trafic y est continu.\n\n[2026-09-22] Trafic suspendu sur le pont de Selwyn après un incident — https://depeche-continentale.example/trafic-suspendu-pont-selden\nLa circulation sur le pont maritime de Selwyn a été interrompue pour 48 heures. Un porte-conteneurs battant pavillon doramien a heurté un pilier de soutien. L'UDK a ordonné une inspection de sécurité. Le ministre doramien du Commerce, Linh Faure, a déclaré : « Nous attendons le rapport pour évaluer les délais ». Le trafic maritime entre Doramie et l'UDK est à l'arrêt.\n\n[2026-09-23] Rencontre bihebdomadaire informelle des attachés navals — https://journal-de-velhaven.example/rencontre-bihebdomadaire-informelle-attaches\nDepuis le 4 août 2026, les attachés navals de Doramie, de Calvarie et de l'UDK se rencontrent chaque mardi et vendredi à 10h au café de la Bourse, à Port-Selwyn. Aucun ordre du jour n'est publié. Aucune directive écrite des gouvernements n'a institué ces rencontres. La première réunion a eu lieu après l'annulation d'un exercice naval commun.\n\n[2026-09-24] Les « cafés de la Bourse » se poursuivent, malgré le gel officiel — https://gazette-de-corvus.example/cafes-bourse-poursuivent-malgre-gel\nLes rencontres bihebdomadaires des attachés navals au café de la Bourse à Port-Selwyn ont encore eu lieu ce mardi 22 septembre. Ceci survient alors que les relations navales formelles sont gelées depuis le 10 septembre. L'attaché calvarien, le commandant Reiss, a déclaré aux journalistes présents : « Nous échangeons des prévisions météo ». La pratique n'a pas été suspendue.\n\n[2026-09-26] La Calvarie lève sa suspension des licences d'exportation d'acier — https://le-veilleur-du-nord.example/calvarie-leve-suspension-licences-acier\nLe ministère calvarien de l'Économie a annoncé la levée immédiate de la suspension des licences d'exportation d'acier spécial vers la Doramie, en vigueur depuis juin. Dans les heures qui ont suivi, deux convois ferroviaires ont quitté des usines calvariennes en direction de la frontière doramienne. Le ministère doramien de l'Industrie a immédiatement validé le dédouanement de ces cargaisons.\n\n[2026-09-28] Un classement de « fiabilité contractuelle » fait réagir les capitales — https://observateur-ostrave.example/classement-fiabilite-contractuelle-reactions\nL'institut Ostravien des Relations Internationales (IORI) a publié son classement semestriel de « fiabilité contractuelle des États ». La Doramie perd deux places, la Calvarie en gagne une, l'UDK reste première. Le ministre doramien des Affaires étrangères a qualifié la méthodologie de « biaisée ». Le lendemain, la Doramie a annoncé réviser ses procédures de notification pour les traités internationaux.\n\n[2026-10-03] La Doramie conteste son classement et modifie ses pratiques — https://echo-des-capitales.example/doramie-conteste-classement-modifie-pratiques\nSuite à la publication du classement IORI, la Doramie a officiellement notifié à trois partenaires, dont la Calvarie, un délai de « réexamen » de 30 jours pour tous les accords en cours de renouvellement. Cette mesure était absente de son droit auparavant. Le président de l'IORI a déclaré : « Les États réagissent souvent aux indicateurs, c'est prévisible ». La Calvarie a pris acte de cette notification.\n\n[2026-10-05] Signature d'un accord de démilitarisation de l'îlot de Karst — https://presse-libre-de-senne.example/signature-accord-demilitarisation-ilot-karst\nLes ministres de la Défense de Doramie et de Calvarie ont signé à Velt un traité engageant la démilitarisation permanente de l'îlot de Karst en mer de Kossmar. Le document précise le retai et la destruction de toutes les installations militaires sous 90 jours. La signature est définitive, sans clause de dénonciation avant un délai de 50 ans. Les démolitions ont commencé ce jour.\n\n[2026-10-07] Début des opérations de démolition sur l'îlot de Karst — https://agence-meridia.example/debut-operations-demolition-ilot-karst\nLes équipes ont commencé la destruction des installations sur l'îlot de Karst, conformément au traité signé le 5 octobre. Une casemate et une station radar ont été démolies à l'explosif. Le ministre calvarien a confirmé que « 85 tonnes de matériel seront évacuées ou rendues inutilisables ». Le processus est irréversible. Des observateurs de l'UDK sont présents pour constater les destructions.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Doramie",
+          "Calvarie"
+        ],
+        "organisation": "l'Union du Détroit de Kossmar",
+        "corrobores": [
+          "EME@7",
+          "RCS@7",
+          "RES@7",
+          "SEU@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-15",
+            "carte": null,
+            "marqueur": null,
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "INC@7",
+            "marqueur": "scénarios concurrents explicitement tenus ; dispositifs provisoires",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-17",
+            "carte": "RES@7",
+            "marqueur": "un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-22",
+            "carte": "RES@7",
+            "marqueur": "un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe",
+            "media": "depeche-continentale",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "gazette-de-corvus",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "CTR@7",
+            "marqueur": "la contrainte est active : sa levée changerait ce que font les acteurs",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-28",
+            "carte": "RCS@7",
+            "marqueur": "un discours, une mesure, un modèle ou une analyse du système sur lui-même est observable, et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)",
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "RCS@7",
+            "marqueur": "un discours, une mesure, un modèle ou une analyse du système sur lui-même est observable, et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)",
+            "media": "echo-des-capitales",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-05",
+            "carte": "SEU@7",
+            "marqueur": "acte juridique, contractuel ou matériel sans mécanisme de retour (signature, destruction, dépense irrécupérable)",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-07",
+            "carte": "SEU@7",
+            "marqueur": "acte juridique, contractuel ou matériel sans mécanisme de retour (signature, destruction, dépense irrécupérable)",
+            "media": "agence-meridia",
+            "reprise": true
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "CRO@7",
+          "TRA@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "F",
+        "CTR@7": "f",
+        "INC@7": "f",
+        "EME@7": "f",
+        "PER@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "aucun_fait",
+        "REC@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 78,
+      "presentes": [
+        "COM@7",
+        "EME@7",
+        "HIE@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "INC@7",
+        "POL@7",
+        "RSN@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-14] Le paysage diplomatique régional — https://observateur-ostrave.example/acteurs-2026\nLe Président d'Istrane, Luka Vain, a rencontré aujourd'hui le Chancelier de Morsanie, Erik Thorn, à Velhaven. L'ambassadeur de l'Union du Détroit de Kossmar, Selim Kader, était présent. Les trois dirigeants ont posé pour une photographie devant le palais du gouvernement morsan. Aucun discours n'a été prononcé. Les drapeaux des trois entités étaient alignés.\n\n[2026-09-17] Manœuvre navale en mer de Kossmar — https://journal-de-velhaven.example/manoeuvre-navale\nDepuis le 10 septembre, à 06h00 précises, un navire de guerre istranais et un navire morsan effectuent une patrouille conjointe dans le détroit de Kossmar. Le parcours est identique chaque jour. L'Union du Détroit de Kossmar publie chaque matin un communiqué indiquant l'heure de départ des bâtiments. Aucun accord écrit ou déclaration officielle n'a institué cette routine.\n\n[2026-09-22] Patrouille conjointe confirmée — https://depeche-continentale.example/patrouille-kossmar-22\nUn porte-parole de la marine morsane a confirmé la patrouille quotidienne commune avec Istrane dans le détroit. Il a précisé que chaque navire embarque un équipage de 45 personnes. Le parcours dure six heures. L'Union du Détroit de Kossmar diffuse la position des navires toutes les heures sur son portail maritime. Le porte-parole a refusé de commenter l'origine de cette pratique.\n\n[2026-09-23] L'Union suspend un exercice militaire bilatéral — https://agence-meridia.example/union-suspend-exercice\nLe Conseil de Sécurité de l'Union du Détroit de Kossmar a annulé un exercice militaire prévu entre Istrane et Morsanie pour le 1er octobre. Le Conseil a invoqué l'article 12 de son règlement intérieur. La décision a été prise à l'unanimité des neuf membres. Les ministres de la Défense d'Istrane et de Morsanie ont été informés par document diplomatique scellé. L'exercice ne pourra avoir lieu sans l'accord du Conseil.\n\n[2026-09-26] L'Union maintient son veto sur l'exercice — https://tribune-de-kossmar.example/union-veto-exercice\nLe ministre de la Défense d'Istrane a déclaré : « Nous avons reçu notification de la suspension de l'exercice 'Bouclier Froid' ». Il a ajouté que le document de l'Union précisait que tout exercice conjoint dans la zone économique exclusive de l'Union requiert une autorisation préalable. Le porte-parole du Conseil de Sécurité a confirmé que la validation finale appartient à cette instance. Morsanie n'a pas commenté.\n\n[2026-09-27] Lancement d'un fonds pour la sûreté maritime — https://le-veilleur-du-nord.example/fonds-maritime\nLes gouvernements d'Istrane, de Morsanie et l'Union du Détroit de Kossmar ont annoncé la création du « Fonds commun pour une navigation sûre ». Chaque partie s'engage à y contribuer à hauteur de 2 millions d'écus par an. L'objectif déclaré est le financement de balises de navigation et de systèmes de surveillance. Les trois parties ont utilisé cette dénomination dans leur déclaration commune signée aujourd'hui.\n\n[2026-09-30] Coûts divergents pour le retrait de troupes — https://echo-des-capitales.example/couts-retrait-troupes\nLe ministère morsan des Finances a publié un budget prévisionnel. Le retrait d'une compagnie déployée sur l'île de Kossmar est estimé à 4,7 millions d'écus, incluant transport et démantèlement. Le déploiement initial de cette même unité, en 2025, avait coûté 0,9 million d'écus. Le document ne cite pas de raisons pour cette différence. L'Union du Détroit a pris note de ces chiffres.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Istrane",
+          "Morsanie"
+        ],
+        "organisation": "l'Union du Détroit de Kossmar",
+        "corrobores": [
+          "EME@7",
+          "HIE@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-14",
+            "carte": null,
+            "marqueur": null,
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-17",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-22",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "depeche-continentale",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "HIE@7",
+            "marqueur": "qui peut valider, bloquer ou annuler la décision de qui",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "HIE@7",
+            "marqueur": "qui peut valider, bloquer ou annuler la décision de qui",
+            "media": "tribune-de-kossmar",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "COM@7",
+            "marqueur": "un bien ou un projet commun nommé par les membres eux-mêmes",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "echo-des-capitales",
+            "reprise": false
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "RSN@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "EME@7": "f",
+        "HIE@7": "f",
+        "COM@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 79,
+      "presentes": [
+        "COM@7",
+        "CRO@7",
+        "CTR@7",
+        "EME@7",
+        "INC@7",
+        "PRO@7",
+        "REC@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "HIE@7",
+        "PER@7",
+        "RCS@7",
+        "RES@7",
+        "RSN@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "evenement": "POL@7",
+      "texte": "[2026-09-16] Contexte régional — https://echo-des-capitales.example/context\nLa Présidente de Kessaria, Elara Vance, a reçu hier le Ministre calvarien de la Défense, Marcus Thorne. Le Secrétaire général de l'Organisation pour la sécurité du Plateau de Senne (OSPS), Lukas Faber, a annoncé une réunion des trois parties pour le 25 septembre. Kessaria maintient 15 000 soldats sur sa frontière orientale. Calvarie procède à des exercices navals en mer d'Azura. Le budget militaire de l'OSPS pour l'année en cours est de 120 millions de crédits.\n\n[2026-09-20] Calvarie rappelle sa contribution à Kessaria — https://agence-meridia.example/contribution\nLe Ministre calvarien des Affaires étrangères, Selene Voss, a déclaré aujourd'hui : \"Notre aide énergétique l'hiver dernier a permis à Kessaria d'éviter des pénuries sévères.\" Elle a ajouté que cette assistance \"reste dans les mémoires\" lors des discussions sur les quotas d'exportation de céréales kessares vers Calvarie. Aucun chiffre précis sur cette aide n'a été communiqué par le ministère.\n\n[2026-09-21] La tension diplomatique grimpe entre Kessaria et Calvarie — https://tribune-de-kossmar.example/tension\nLes incidents frontaliers signalés par l'OSPS entre Kessaria et Calvarie sont passés de 2 en juillet à 5 en août, puis à 12 durant les 20 premiers jours de septembre. Les patrouilles de l'OSPS ont doublé leur fréquence sur le Plateau de Senne au cours de la même période. Le porte-parole de l'OSPS a confirmé ces chiffres sans autre commentaire.\n\n[2026-09-23] L'OSPS alerte sur l'augmentation des incidents frontaliers — https://le-veilleur-du-nord.example/alert\nL'Organisation pour la sécurité du Plateau de Senne a publié un communiqué notant une \"augmentation préoccupante\" des violations de l'espace aérien. Cinq survols non autorisés ont été enregistrés la semaine dernière, contre un seul pour toute la première quinzaine d'août. Le Secrétaire général Lukas Faber a déclaré : \"La tendance est claire et s'accélère.\"\n\n[2026-09-25] Kessaria adopte le système de suivi frontalier de Calvarie — https://courrier-du-reth.example/suivi\nLe gouvernement kessare a annoncé la mise en œuvre immédiate d'un nouveau système électronique de surveillance des frontières. Ce système est identique dans ses spécifications techniques à celui déployé par Calvarie il y a six mois. Le ministre de l'Intérieur de Kessaria a précisé que les postes frontières seraient équipés \"selon le modèle calvarien\" d'ici fin novembre.\n\n[2026-10-03] L'OSPS impose un plafond aux manœuvres militaires — https://journal-de-velhaven.example/plafond\nLe Conseil de l'OSPS a adopté une résolution limitant à 5 000 le nombre maximal de soldats que chaque État membre peut déployer simultanément pour des exercices dans une zone de 50 km du Plateau de Senne. La résolution, signée par les trois parties, interdit également les essais de missiles à portée intermédiaire dans ce périmètre pour une durée de six mois.\n\n[2026-10-04] Calvarie dénonce le \"plafond inéquitable\" de l'OSPS — https://presse-libre-de-senne.example/inequitable\nLe ministre de la Défense calvarien Marcus Thorne a déclaré : \"La résolution 44/B de l'OSPS nous empêche de mener à bien l'exercice 'Bouclier d'Azur' prévu en novembre.\" Il a précisé que cet exercice nécessitait la présence de 7 200 hommes. \"La règle est claire, elle nous retire cette option\", a-t-il ajouté, tout en affirmant que Calvarie se conformerait à la décision.\n\n[2026-10-05] La décision sur les tarifs douaniers reportée — https://depeche-continentale.example/tarifs\nLa réunion trilatérale sur la révision des tarifs douaniers pour les produits sidérurgiques, initialement prévue le 10 octobre, a été reportée sine die. Un communiqué conjoint indique que les parties attendent \"la publication du rapport trimestriel de la Chambre de commerce du Plateau de Senne\" avant de poursuivre les négociations. Ce rapport est attendu pour le 20 octobre.\n\n[2026-10-08] Kessaria exige des données avant de statuer sur les tarifs — https://agence-meridia.example/donnees\nLa Présidente Elara Vance a confirmé le report des discussions tarifaires. \"Nous ne prendrons aucune décision avant d'avoir analysé les données sur les importations de fer brut du dernier trimestre\", a-t-elle déclaré. La Chambre de commerce du Plateau de Senne a annoncé que la publication de son rapport, contenant ces données, prendrait \"une semaine supplémentaire\".\n\n[2026-10-09] Échec de la réouverture d'un poste-frontière — https://courrier-du-reth.example/poste\nLes autorités kessares ont refusé la demande de Calvarie de rouvrir le poste-frontière de Larnak, fermé depuis le 1er septembre. Elles ont proposé à la place l'utilisation du poste de Mesa, situé à 80 km à l'ouest. Le ministre calvarien Thorne a répondu que cette proposition \"ne répondait pas aux besoins logistiques actuels\" et a insisté sur la réouverture de Larnak, sans succès.\n\n[2026-10-19] Évolution du ratio forces/incidents sur le Plateau — https://observateur-ostrave.example/ratio\nL'OSPS a publié ses données mensuelles : en septembre, on comptait 12 incidents pour 450 patrouilleurs déployés (ratio de 0,027 incident par patrouilleur). En octobre, sur les 18 premiers jours, on compte 7 incidents pour 600 patrouilleurs (ratio de 0,012). Le nombre de patrouilleurs a donc augmenté de 33% tandis que le ratio incidents/patrouilleur a été divisé par plus de deux sur la période.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Kessaria",
+          "Calvarie"
+        ],
+        "organisation": "l'Organisation pour la sécurité du Plateau de Senne",
+        "corrobores": [
+          "COM@7",
+          "CRO@7",
+          "CTR@7",
+          "INC@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-16",
+            "carte": null,
+            "marqueur": null,
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "REC@7",
+            "marqueur": "tenue de compte, explicite ou implicite (rappel d'une dette, « je te dois bien ça »)",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "CRO@7",
+            "marqueur": "une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même grandeur",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "CRO@7",
+            "marqueur": "une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même grandeur",
+            "media": "le-veilleur-du-nord",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "EME@7",
+            "marqueur": "son adoption par imitation ou convergence observée",
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "COM@7",
+            "marqueur": "un bien ou un projet commun nommé par les membres eux-mêmes",
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-28",
+            "carte": "COM@7",
+            "marqueur": "un bien ou un projet commun nommé par les membres eux-mêmes",
+            "media": "observateur-ostrave",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "CTR@7",
+            "marqueur": "règle écrite ou sanction qui retire une option nommée à un acteur (action bloquée, option exclue, plafond qui s'applique)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "CTR@7",
+            "marqueur": "règle écrite ou sanction qui retire une option nommée à un acteur (action bloquée, option exclue, plafond qui s'applique)",
+            "media": "presse-libre-de-senne",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-05",
+            "carte": "INC@7",
+            "marqueur": "décision reportée dans l'attente d'une information nommée",
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-08",
+            "carte": "INC@7",
+            "marqueur": "décision reportée dans l'attente d'une information nommée",
+            "media": "agence-meridia",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-09",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller",
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-19",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "observateur-ostrave",
+            "reprise": false
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "RES@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "COM@7",
+          "REC@7",
+          "SEU@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "REC@7": "f",
+        "CRO@7": "f",
+        "CTR@7": "f",
+        "HIE@7": "f",
+        "RSN@7": "f",
+        "TRC@7": "f",
+        "INC@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "PER@7": "aucun_fait",
+        "PRO@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait"
+      }
+    },
+    {
+      "graine": 80,
+      "presentes": [
+        "RES@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "HIE@7",
+        "PER@7"
+      ],
+      "evenement": "RCS@7",
+      "texte": "[2026-10-01] La carte des influences continentales — https://courrier-du-reth.example/la-carte-des-influences-continentales\n\nLe Président de Velania, Luka Maren, a reçu hier l'ambassadeur d'Istrane à Velgrad. Le ministre de la Défense d'Istrane, Elara Sol, inspecte aujourd'hui des unités stationnées près de la frontière orientale. Le Secrétaire général du Pacte de Corvus, Jonas Kael, a annoncé une série d'exercices militaires conjoints pour le mois prochain. Ces exercices se dérouleront en territoire neutre sous supervision du Pacte. Aucun détail sur les participants n'a été communiqué.\n\n[2026-10-02] Le convoi bloqué à la frontière Istrane-Velania — https://echo-des-capitales.example/le-convoi-bloque-a-la-frontiere\n\nUn convoi de cinq camions militaires du Pacte de Corvus a été empêché de traverser la frontière d'Istrane vers Velania ce matin à 06h30. Les autorités frontalières istraniennes ont refusé le passage, exigeant des permis de transit spécifiques non fournis par le Pacte. Les camions transportaient du matériel de communication destiné aux forces velaniennes. Les diplomates du Pacte négocient actuellement avec le ministère istranien des Affaires étrangères, tandis que le convoi reste immobilisé au poste-frontière de Nysa.\n\n[2026-10-03] Des équipements stratégiques bloqués à Nysa — https://depeche-continentale.example/des-equipements-strategiques-bloques-a-nysa\n\nCinq véhicules du Pacte de Corvus chargés de « systèmes de transmission cryptée » sont immobilisés au point de passage de Nysa depuis hier. Un officier frontalier istranien a déclaré : « Sans l'autorisation du Conseil de sécurité nationale, rien ne passe. » Le ministère velanien des Armées a confirmé attendre ce matériel pour « un exercice planifié ». Le Secrétariat du Pacte a annoncé avoir déposé une demande formelle de transit auprès d'Istrane, sans réponse à ce stade.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Velania",
+          "Istrane"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "corrobores": [
+          "RES@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-10-01",
+            "carte": null,
+            "marqueur": null,
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)",
+            "media": "depeche-continentale",
+            "reprise": true
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "HIE@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 81,
+      "presentes": [
+        "COM@7",
+        "CTR@7",
+        "HIE@7",
+        "POL@7",
+        "REC@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "EME@7",
+        "INC@7",
+        "PER@7",
+        "PRO@7",
+        "RES@7",
+        "TRA@7"
+      ],
+      "evenement": "RCS@7",
+      "texte": "[2026-09-12] Le paysage diplomatique régional — https://courrier-du-reth.example/r456\nLe Président de la République de Kessaria, Aris Valtos, a reçu aujourd'hui l'ambassadeur norvien. Le Premier Ministre du Royaume de Norven, Dag Thorsen, préside un conseil de défense. Le Secrétaire Général de l'Union du Détroit de Kossmar, Lena Kovac, a annoncé une réunion du Conseil des États membres pour la semaine prochaine. Les ministères des Affaires étrangères des trois entités ont publié leurs agendas hebdomadaires.\n\n[2026-09-14] Norven rappelle le traité frontalier de 1923 — https://le-veilleur-du-nord.example/t789\nLe ministre norvien des Affaires étrangères a déclaré : « La frontière maritime avec Kessaria est et reste définie par le traité de 1923 ». Le document établit la ligne de démarcation à 12 milles nautiques des côtes norviennes de l'île de Hald. La marine norvienne patrouille quotidiennement cette limite. Le gouvernement norvien a transmis une note diplomatique à Kessaria rappelant cet accord.\n\n[2026-09-15] Kessaria conteste l'application du traité de 1923 — https://agence-meridia.example/f012\nLe ministère kessarien des Affaires étrangères a publié un communiqué : « L'application stricte du traité de 1923 prive Kessaria d'un accès équitable aux ressources halieutiques ». Le texte précise que la zone contestée couvre 850 kilomètres carrés. Des bateaux de pêche kessariens ont été observés cette semaine au-delà de la limite des 12 milles norvienne. Aucun incident n'a été signalé.\n\n[2026-09-16] Échanges de propositions sur le statut du Détroit — https://echo-des-capitales.example/s345\nL'Union du Détroit de Kossmar a proposé un nouveau cadre de coopération navale à Kessaria et Norven. Norven a soumis un projet de révision des droits de passage militaires dans le Détroit. Kessaria a officiellement demandé à l'Union une augmentation de sa quote-part de représentation au Conseil. L'Union a, en retour, sollicité une contribution financière accrue de Kessaria pour le balisage.\n\n[2026-09-17] Signature d'un accord de surveillance partagée — https://observateur-ostrave.example/a678\nLes chefs de la diplomatie de Kessaria et de l'Union du Détroit de Kossmar ont signé un protocole d'accord. Le document engage Kessaria à partager les données radar de ses deux stations côtières avec le centre de commandement de l'Union. En contrepartie, l'Union s'engage à ne pas transmettre ces données à des tiers sans accord préalable de Kessaria. La signature a eu lieu à 15h00 à Kossmar.\n\n[2026-09-20] Détails techniques de l'accord Kessaria-Union — https://journal-de-velhaven.example/d901\nL'accord signé le 17 septembre spécifie que les données des stations radar kessariennes de Selo et Port-Reth seront transmises en continu. Le protocole technique annexé compte 42 pages. Le ministre kessarien a déclaré : « Cet engagement est valable pour une durée initiale de cinq ans ». Le centre de commandement de l'Union à Kossmar devra adapter son système informatique pour recevoir ces flux.\n\n[2026-09-21] L'Union conditionne l'application de l'accord — https://depeche-continentale.example/c234\nLe Conseil des États membres de l'Union du Détroit de Kossmar, composé des 9 membres, doit ratifier le protocole signé avec Kessaria. Chaque État membre dispose d'un vote. Un vote négatif de la part de Norven, membre fondateur, bloquerait la ratification. Le Secrétaire Général Lena Kovac a confirmé que la procédure de vote débutera la semaine prochaine.\n\n[2026-09-25] Norven augmente sa contribution à la flotte de l'Union — https://gazette-de-corvus.example/g567\nNorven a annoncé le déploiement d'un nouveau patrouilleur, le « NCS Vigilant », au sein de la flotte commune de l'Union du Détroit de Kossmar. Le navire sera sous commandement opérationnel de l'Union. Selon les règles de l'Union, ce déploiement accroît le poids de la Norven dans les décisions opérationnelles mensuelles. L'équipage restera norvien et le pays assumera les coûts d'entretien.\n\n[2026-09-30] Réactions à l'augmentation de la contribution navale norvienne — https://tribune-de-kossmar.example/t890\nLe « NCS Vigilant » rejoindra la flotte de l'Union le 15 novembre. Le Secrétaire Général Kovac a salué « une contribution concrète à la sécurité collective ». Un porte-parole du ministère kessarien a déclaré : « Cette décision unilatérale modifie l'équilibre des contributions établi ». Le patrouilleur norvien est armé d'un canon de 40mm, ce qui en fait le navire le plus lourdement armé de la flotte commune actuelle.\n\n[2026-10-02] Ultimatum norvien sur la ratification de l'accord — https://presse-libre-de-senne.example/u123\nLe gouvernement norvien a notifié à l'Union du Détroit de Kossmar qu'il s'opposera à la ratification de l'accord Kessaria-Union si la frontière maritime de 1923 n'est pas « pleinement reconnue et respectée » par Kessaria. Le ministre Thorsen a déclaré : « Il n'y a pas de position intermédiaire entre le respect du droit et son mépris ». Kessaria a qualifié cette condition d'« inacceptable et sans rapport ».\n\n[2026-10-03] Kessaria rejette l'ultimatum et menace de retrait — https://agence-meridia.example/r456\nEn réponse à l'ultimatum norvien, le Président Valtos a annoncé que Kessaria « retirerait immédiatement sa signature du protocole du 17 septembre » si l'Union incluait la condition norvienne à l'ordre du jour. Il a ajouté : « Nous ne négocions pas sous la menace ». Le ministère kessarien a précisé qu'un retrait de l'Union du Détroit de Kossmar « serait alors à l'étude ».\n\n[2026-10-04] L'Union suspend la procédure de ratification sous la pression — https://courrier-du-reth.example/s789\nLe Secrétaire Général Lena Kovac a annoncé la suspension sine die de la procédure de ratification de l'accord avec Kessaria. Cette décision fait suite à la notification norvienne. Le Conseil des États membres ne se réunira pas comme prévu le 5 octobre. Un diplomate de l'Union, sous couvert d'anonymat, a indiqué que « sans cette suspension, Norven aurait engagé une procédure de retrait de l'Union ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Kessaria",
+          "Norven"
+        ],
+        "organisation": "l'Union du Détroit de Kossmar",
+        "corrobores": [
+          "COM@7",
+          "POL@7",
+          "SEU@7",
+          "TRC@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-12",
+            "carte": null,
+            "marqueur": null,
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-14",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-15",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "agence-meridia",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "REC@7",
+            "marqueur": "transferts identifiables dans les deux sens entre les mêmes parties",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-17",
+            "carte": "SEU@7",
+            "marqueur": "acte juridique, contractuel ou matériel sans mécanisme de retour (signature, destruction, dépense irrécupérable)",
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "SEU@7",
+            "marqueur": "acte juridique, contractuel ou matériel sans mécanisme de retour (signature, destruction, dépense irrécupérable)",
+            "media": "journal-de-velhaven",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "HIE@7",
+            "marqueur": "qui peut valider, bloquer ou annuler la décision de qui",
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "COM@7",
+            "marqueur": "contributions et règles d'appartenance observables",
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "COM@7",
+            "marqueur": "contributions et règles d'appartenance observables",
+            "media": "tribune-de-kossmar",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "POL@7",
+            "marqueur": "les positions intermédiaires sont rares, invisibles ou disqualifiées",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "POL@7",
+            "marqueur": "les positions intermédiaires sont rares, invisibles ou disqualifiées",
+            "media": "agence-meridia",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "CTR@7",
+            "marqueur": "la contrainte est active : sa levée changerait ce que font les acteurs",
+            "media": "courrier-du-reth",
+            "reprise": false
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "INC@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": [
+          "REC@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "f",
+        "TRC@7": "f",
+        "REC@7": "f",
+        "RES@7": "f",
+        "COM@7": "f",
+        "HIE@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "EME@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "PER@7": "aucun_fait",
+        "POL@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 82,
+      "presentes": [
+        "EME@7",
+        "RCS@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "HIE@7",
+        "POL@7"
+      ],
+      "evenement": "PER@7",
+      "texte": "[2026-09-17] Istrane et Draven maintiennent leurs positions — https://tribune-de-kossmar.example/n34871\nLe gouvernement istranais, dirigé par le Premier ministre Arda Vulk, a annoncé un budget de 4,2 milliards d'unités pour ses forces armées cette année. À Draven, le ministre des Affaires étrangères, Luka Menor, a déclaré que le commerce bilatéral avec Istrane représentait 18% des importations dravites. Les patrouilles navales istranaises opèrent quotidiennement dans le détroit de Kelen. L'ambassadeur de Draven à Istrane, Silas Renn, a rencontré hier le directeur du commerce extérieur istranais.\n\n[2026-09-18] Un classement sur la transparence diplomatique relance les accusations — https://presse-libre-de-senne.example/a55289\nL'institut de Senne a publié son indice annuel de transparence diplomatique. Draven est classé 112e sur 150, Istrane 134e. Le ministre dravite Luka Menor a déclaré : « Ce classement confirme la duplicité istranaise ». En réponse, le porte-parole du gouvernement istranais a qualifié Draven de « régime opaque » et annoncé la suspension des réunions du groupe de travail commercial bilatéral, prévues pour octobre.\n\n[2026-09-28] Les survols du couloir aérien 17-Est deviennent quotidiens — https://courrier-du-reth.example/s72314\nDepuis le 22 septembre, un avion de reconnaissance istranais survole le couloir aérien international 17-Est à 11h00 UTC précises. Depuis le 24 septembre, un avion dravit effectue un survol du même couloir à 11h15 UTC. Cette séquence s'est reproduite chaque jour ouvrable. Aucun communiqué des deux gouvernements n'a annoncé ou commenté cette pratique. Les contrôleurs aériens régionaux ont enregistré les transpondeurs des appareils.\n\n[2026-09-29] La routine aérienne du couloir 17-Est confirmée par les enregistrements — https://echo-des-capitales.example/t88126\nLes tours de contrôle de la région confirment la séquence de survols quotidiens dans le couloir aérien 17-Est. L'appareil istranais, un avion de type S-70, émet le code transpondeur 4451. L'appareil dravit, un M-22, émet le code 7620. Le survol dravit intervient systématiquement quinze minutes après le passage istranais. La durée de chaque survol est de sept minutes. Aucune autorisation officielle pour cette routine n'a été publiée par les autorités aériennes internationales.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Istrane",
+          "Draven"
+        ],
+        "organisation": null,
+        "corrobores": [
+          "EME@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-17",
+            "carte": null,
+            "marqueur": null,
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-18",
+            "carte": "RCS@7",
+            "marqueur": "un discours, une mesure, un modèle ou une analyse du système sur lui-même est observable, et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-28",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "echo-des-capitales",
+            "reprise": true
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "POL@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RCS@7": "f",
+        "EME@7": "f",
+        "POL@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "HIE@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 83,
+      "presentes": [
+        "POL@7",
+        "PRO@7",
+        "REC@7",
+        "RSN@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "HIE@7",
+        "RCS@7",
+        "RES@7",
+        "TRA@7"
+      ],
+      "evenement": "EME@7",
+      "texte": "[2026-09-12] La Morsanie et la Valsnie en 2026 — https://tribune-de-kossmar.example/relations-actuelles\nLa Morsanie est un État continental dirigé par le Premier ministre Aris Valkan. Le ministre des Affaires étrangères est Lena Kovac. La Valsnie est un État côtier dirigé par la Présidente Elara Thorn. Son ministre de la Défense est le général Marcus Hale. Aucun sommet bilatéral n'est prévu actuellement. Les forces armées de chaque État mènent des exercices routiniers sur leurs territoires respectifs.\n\n[2026-09-15] Des navires de Valsnie franchissent quotidiennement le détroit de Karos — https://agence-meridia.example/trafic-navires\nLe ministère de la Défense de Valsnie a publié ses chiffres du trafic naval militaire. Le 10 septembre, 12 navires de guerre ont traversé le détroit de Karos, une zone revendiquée par Morsanie. Le 14 septembre, ce nombre était de 12. Le rapport entre le nombre de navires Valsniens et Morsaniens dans la zone est resté de 12 à 0 ces deux jours. Un porte-parole morsanien a déclaré surveiller « chaque unité ».\n\n[2026-09-16] Morsanie dénonce un ratio constant de navires étrangers — https://depeche-continentale.example/surveillance-detroit\nLe ministère morsanien des Affaires étrangères a confirmé les traversées. Lena Kovac a déclaré : « Hier encore, douze bâtiments de guerre valsniens sont entrés dans nos eaux. Aucun de nos navires ne s'y trouvait. Ce rapport inégalé de 12 à 0 se maintient. » Elle a précisé que les radars côtiers ont enregistré ces mouvements entre 08h00 et 18h00 GMT les deux jours.\n\n[2026-09-18] La Valsnie rappelle un soutien passé sur la question énergétique — https://courrier-du-reth.example/dette-energetique\nLors d'une conférence de presse, la Présidente Thorn a évoqué les relations avec Morsanie. « Sur le dossier du gazoduc transcontinental, notre abstention a été décisive l'an dernier », a-t-elle déclaré. Elle a ajouté : « Cela a permis un accord favorable à Kossmar. Nous nous souvenons de ces équilibres. » Le Premier ministre Valkan n'a pas commenté ces propos.\n\n[2026-09-21] Morsanie évoque à son tour une « facilité » accordée — https://gazette-de-corvus.example/soutien-mutuel\nLe Premier ministre Valkan a répondu aux déclarations de la Présidente Thorn. « Notre soutien lors du vote sur les quotas d'exportation de minerai à l'OMC a été un geste clair », a-t-il affirmé. Il a précisé : « Ce vote a eu lieu en juillet. Nous avons alors facilité l'adoption d'une clause exemptant la Valsnie pour 18 mois. Les comptes sont toujours ouverts. »\n\n[2026-09-22] Les positions modérées exclues du débat parlementaire morsanien — https://journal-de-velhaven.example/debat-frontalier\nL'assemblée nationale morsanienne a débattu de la situation dans le détroit de Karos. La proposition du Parti du Centre pour une mission d'observation conjointe a été rejetée sans vote. Le chef de la majorité a qualifié l'idée de « capitulation déguisée ». L'opposition nationaliste a exigé l'expulsion de l'ambassadeur valsien. Aucune voix ne s'est élevée pour un statu quo ou des négociations immédiates.\n\n[2026-09-24] Morsanie annonce des contre-manœuvres navales coûteuses — https://observateur-ostrave.example/cout-replique\nLe ministère morsanien de la Défense a ordonné la mobilisation de la 3e flotte en réponse aux traversées valsnieennes. Un communiqué indique que déployer ces unités depuis leur base actuelle coûtera 4,2 millions de thalers par jour. Le ministre Hale de Valsnie a déclaré que ses navires en exercice dans le détroit ne coûtent que 600 000 thalers quotidiens. « Leur déploiement réactif est bien plus onéreux », a-t-il commenté.\n\n[2026-09-25] Les deux États synchronisent des annonces sur les réseaux officiels — https://echo-des-capitales.example/annonces-simultanees\nLes gouvernements de Morsanie et de Valsnie ont publié des communiqués à 19h00 GMT précises. Le communiqué morsanien portait sur des « exercices de défense aérienne ». Le communiqué valsien concernait des « tests de systèmes de communication navals ». Les deux textes, diffusés via les comptes officiels @GouvMorsanie et @PalaisThorn, ont été postés à la même minute et partageaient le même hashtag : #SecuriteRegionale.\n\n[2026-09-27] Une simultanéité d'annonces militaire relevée par les observateurs — https://le-veilleur-du-nord.example/synchronisation-hashtag\nL'Institut de veille stratégique a noté la coïncidence des publications gouvernementales du 24 septembre. Les comptes @GouvMorsanie et @PalaisThorn ont tous deux utilisé le hashtag #SecuriteRegionale à 19h00 GMT. Le communiqué morsanien faisait 247 mots, celui de Valsnie 192 mots. Un porte-parole du ministère de l'Intérieur morsanien a confirmé l'horaire choisi, sans explication.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Morsanie",
+          "Valsnie"
+        ],
+        "organisation": null,
+        "corrobores": [
+          "PRO@7",
+          "REC@7",
+          "RSN@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-12",
+            "carte": null,
+            "marqueur": null,
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-15",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "depeche-continentale",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-18",
+            "carte": "REC@7",
+            "marqueur": "tenue de compte, explicite ou implicite (rappel d'une dette, « je te dois bien ça »)",
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "REC@7",
+            "marqueur": "tenue de compte, explicite ou implicite (rappel d'une dette, « je te dois bien ça »)",
+            "media": "gazette-de-corvus",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-22",
+            "carte": "POL@7",
+            "marqueur": "les positions intermédiaires sont rares, invisibles ou disqualifiées",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "RSN@7",
+            "marqueur": "un canal de couplage (co-présence, signal partagé, musique, horaire commun) entre deux rythmes propres identifiés",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "RSN@7",
+            "marqueur": "un canal de couplage (co-présence, signal partagé, musique, horaire commun) entre deux rythmes propres identifiés",
+            "media": "le-veilleur-du-nord",
+            "reprise": true
+          }
+        ]
+      },
+      "verification": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RCS@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": [
+          "SEU@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "REC@7": "f",
+        "POL@7": "f",
+        "PRO@7": "f",
+        "HIE@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    }
+  ],
+  "verificateur": "bedrock/mistral.mistral-large-3-675b-instruct",
+  "verificateur_famille_distincte": true,
+  "narrateur": "bedrock/deepseek.v3.2",
+  "meme_famille": false,
+  "protocole_monde": 5,
+  "cumul": {
+    "passages": 1,
+    "narrateur": "bedrock/deepseek.v3.2",
+    "protocole_monde": 5,
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "corrobores": {
+        "cartes": 29,
+        "sens_F": 0.1034,
+        "sens_f": 0.6207,
+        "sens": 0.7241
+      },
+      "source_unique": {
+        "cartes": 21,
+        "sens_F": 0.0,
+        "sens_f": 0.5714,
+        "sens": 0.5714
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 23,
+        "presentes_non_montrees": 8
+      },
+      "sens_F": 0.06,
+      "sens_f": 0.6,
+      "sens": 0.66,
+      "fp_F": 0.0,
+      "fp_f": 0.1429,
+      "fp": 0.1429
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 58,
+    "cartes_absentes": 58,
+    "mesure": {
+      "sens_F": 0.0517,
+      "sens_f": 0.569,
+      "sens": 0.6207,
+      "fp_F": 0.0,
+      "fp_f": 0.2931,
+      "fp": 0.2931
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "aucun_fait": 1,
+      "marqueur_non_rempli": 20,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 0,
+    "situations_vides": 0
+  }
+}
