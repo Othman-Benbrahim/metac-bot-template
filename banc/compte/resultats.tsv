@@ -11,3 +11,4 @@ essai	score	E	Et	N	abstentions	decision	description
 10	8.915	4.73	17.47	8.89	0	garde	tendance : demi-vie d'un sixième de l'historique
 11	8.915	4.73	17.47	8.89	0	garde	niveaux en croissance : pas relatifs (log) si tendance nette et pas croissants (hors juge : cas FYONET 0,20 → 0,56)
 12	11.139 (juge 2)	—	—	—	0	garde	juge 2 : log, logit, chocs retirés, AR(1) mélangé, bootstrap lissé ; juge 1 8,14 (caché 9,31)
+13	11.139 (juge 2) / 8.152 (juge 1)	—	—	—	0	garde (décision d auteur)	saison (R² ≥ 0,2, F ≥ 2,5) et volatilité groupée ; sans effet sur les juges, à mesurer sur cas réels

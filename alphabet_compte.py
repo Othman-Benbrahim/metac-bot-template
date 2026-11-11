@@ -101,12 +101,77 @@ def _robuste(xs: list[float]) -> tuple[list[int], int]:
     return (garde, len(xs) - len(garde)) if garde else (list(range(len(xs))), 0)
 
 
-def _ar1(y: list[float], garde: list[int]) -> tuple | None:
+def _periode(pas_j: int) -> int | None:
+    """0.10.32 : période saisonnière en nombre de pas, selon le pas de la série (mensuel, trimestriel, hebdomadaire)."""
+    if 25 <= pas_j <= 35:
+        return 12
+    if 85 <= pas_j <= 95:
+        return 4
+    if 6 <= pas_j <= 8:
+        return 52
+    return None
+
+
+def _phase(d: date, P: int) -> int:
+    if P == 12:
+        return d.month - 1
+    if P == 4:
+        return (d.month - 1) // 3
+    return min(d.isocalendar()[1], 52) - 1
+
+
+def _saison(dates: list, incr: list[float], garde: list[int], P: int | None) -> dict | None:
+    """0.10.32 (décision d'auteur du 2026-11-11, d'après le chapitre « décomposition » d'un manuel de séries
+    temporelles) : composante saisonnière des PAS (moyenne des pas par mois, trimestre ou semaine, centrée). Retenue si
+    chaque phase a au moins trois pas et si elle explique une part nette de la variance des pas (R² ≥ 0,2 et F ≥ 2,5)."""
+    if not P:
+        return None
+    par: dict[int, list] = {}
+    for i in garde:
+        par.setdefault(_phase(dates[i + 1], P), []).append(incr[i])
+    if len(par) < P or min(len(x) for x in par.values()) < 3:
+        return None
+    moy = sum(incr[i] for i in garde) / len(garde)
+    sph = {k: sum(x) / len(x) - moy for k, x in par.items()}
+    sst = sum((incr[i] - moy) ** 2 for i in garde)
+    sse = sum(sph[_phase(dates[i + 1], P)] ** 2 for i in garde)
+    n = len(garde)
+    if sst <= 0 or n <= P:
+        return None
+    r2 = sse / sst
+    F = (r2 / (P - 1)) / max(1e-12, (1 - r2) / (n - P))
+    return {"P": P, "s": sph, "r2": r2} if r2 >= 0.2 and F >= 2.5 else None
+
+
+def _volatilite(res: list[float]) -> float | None:
+    """0.10.32 (même décision, chapitre GARCH) : volatilité groupée. Si les carrés des résidus sont autocorrélés
+    (somme des autocorrélations aux retards 1 à 5 au-delà de 2,5 écarts-types, au moins 30 pas), rapport entre la volatilité récente (moyenne exponentielle, λ = 0,94) et la volatilité
+    moyenne, borné entre 0,4 et 3 ; sinon None."""
+    n = len(res)
+    if n < 30:
+        return None
+    mu = sum(res) / n
+    sq = [(r - mu) ** 2 for r in res]
+    ms = sum(sq) / n
+    den = sum((x - ms) ** 2 for x in sq)
+    if den <= 0 or ms <= 0:
+        return None
+    # somme des autocorrélations des carrés aux retards 1 à 5, comparée à 2,5 écarts-types sous l'absence d'effet
+    rho = sum(sum((sq[i] - ms) * (sq[i + l] - ms) for i in range(n - l)) / den for l in range(1, 6))
+    if rho < max(0.3, 2.5 * math.sqrt(5 / n)):
+        return None
+    ew = sq[0]
+    for x in sq[1:]:
+        ew = 0.94 * ew + 0.06 * x
+    return max(0.4, min(3.0, math.sqrt(ew / ms)))
+
+
+def _ar1(y: list[float], garde: list[int], ds_ajuste: list[float] | None = None) -> tuple | None:
     """Régression Δy(t) = a + b·y(t−1) sur les pas gardés. Rend (a, b, résidus, t de b) si t < −2,5 (au moins 24
     pas), sinon None. Entre −2,5 et −3,5 (zone où une marche aléatoire peut tromper, Dickey-Fuller), le compte MÉLANGE
     les deux modèles ; sous −3,5, il retient l'AR(1)."""
     xs = [y[i] for i in garde]
-    ds = [y[i + 1] - y[i] for i in garde]
+    ds = [ds_ajuste[i] for i in garde] if ds_ajuste is not None else [y[i + 1] - y[i] for i in garde]
     n = len(xs)
     if n < 24:
         return None
@@ -162,33 +227,53 @@ def _niveaux(pts: list[dict], W: int, seuil: float, sens: str, bornes: tuple | N
     pas_j = max(1, ecarts_j[len(ecarts_j) // 2])
     m = max(1, round(W / pas_j))
     incr = [y[i + 1] - y[i] for i in range(len(y) - 1)]
-    garde, exclus = _robuste(incr)
-    ar = _ar1(y, garde) if espace != "log" else None
+    dates = [d for d, _ in v]
+    # la saison se cherche AVANT le retrait des chocs : un pic saisonnier régulier n'est pas un choc ponctuel
+    sais = _saison(dates, incr, list(range(len(incr))), _periode(pas_j))
+    P = sais["P"] if sais else None
+    s_of = (lambda i: sais["s"][_phase(dates[i + 1], P)]) if sais else (lambda i: 0.0)
+    incr_ds = [incr[i] - s_of(i) for i in range(len(incr))]       # pas corrigés de la saison
+    garde, exclus = _robuste(incr_ds)
+    ar = _ar1(y, garde, incr_ds if sais else None) if espace != "log" else None
     rnd = _r.Random(len(v) * 7919 + m)
+    phase0 = _phase(dates[-1], P) if sais else None
 
     def simuler(tirage: list[float], a_b: tuple | None) -> int:
         mu_i = sum(tirage) / len(tirage)
         sd_i = math.sqrt(sum((x - mu_i) ** 2 for x in tirage) / max(1, len(tirage) - 1))
         h = 1.06 * sd_i * len(tirage) ** -0.2        # bootstrap LISSÉ : dépasse le plus grand pas observé
+        vol = _volatilite(tirage)                    # 0.10.32 : volatilité récente, revenant vers la moyenne
         hits = 0
         for _ in range(N):
             z = y[-1]
-            for _ in range(m):
-                e = tirage[rnd.randrange(len(tirage))] + (rnd.gauss(0, h) if h else 0.0)
+            for k in range(m):
+                r_k = 1.0 + (vol - 1.0) * 0.94 ** k if vol else 1.0
+                e = mu_i + (tirage[rnd.randrange(len(tirage))] - mu_i + (rnd.gauss(0, h) if h else 0.0)) * r_k
+                if sais:
+                    e += sais["s"][(phase0 + k + 1) % P]
                 z = z + a_b[0] + a_b[1] * z + e if a_b else z + e
                 if (z >= cible) if haut else (z <= cible):
                     hits += 1
                     break
         return hits
     poids_ar = 0.0 if not ar else min(1.0, max(0.0, (-ar[3] - 2.5) / 1.0))
-    hits_rw = simuler([incr[i] for i in garde], None) if poids_ar < 1 else 0
+    pool_rw = [incr_ds[i] for i in garde]
+    hits_rw = simuler(pool_rw, None) if poids_ar < 1 else 0
     hits_ar = simuler(ar[2], ar[:2]) if ar else 0
+    vol_note = _volatilite(ar[2] if ar and poids_ar >= 1 else pool_rw)
     hits = round(poids_ar * hits_ar + (1 - poids_ar) * hits_rw)
     ar = ar if poids_ar > 0 else None
     methode = ("ar1" if poids_ar >= 1 else "ar1_melange") if ar else {"valeur": "bootstrap_pas", "log": "bootstrap_pas_relatifs",
                                  "logit": "bootstrap_pas_logit"}[espace]
+    # 0.10.32 : la saison et la volatilité groupée entrent dans le NOM de la méthode, pour que le score les sépare
+    # (B_par_methode) et que leur efficacité se mesure sur les cas réels
+    methode += ("+saison" if sais else "") + ("+volatilite" if vol_note else "")
     out = {"frequence": (hits + 0.5) / (N + 1), "k": hits, "n": N, "methode": methode, "espace": espace,
            "pas_jours": pas_j, "pas": m, "pas_exclus": exclus}
+    if sais:
+        out["saison"] = {"periode": P, "r2": round(sais["r2"], 3)}
+    if vol_note:
+        out["volatilite_recente_sur_moyenne"] = round(vol_note, 3)
     if ar:
         out.update(phi=round(1 + ar[1], 4), poids_ar1=round(poids_ar, 2))
     return out
