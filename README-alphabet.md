@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.21 · skill alphabet-situationnel 0.7.67 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.22 · skill alphabet-situationnel 0.7.67 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.22** : monde synthétique : narrateur d'une autre famille que le lecteur (entrée `narrateur` du workflow,
+  « contradicteur » par défaut, soit DeepSeek V3.2 avec les suites actuelles) ; chaque passage prend des graines
+  nouvelles, à la suite des précédents ; le résultat donne aussi le cumul de tous les passages de la strate.
 - **0.10.21** : monde synthétique : une carte absente reste toujours hors des candidates pour servir d'événement (le
   premier passage avait perdu 2 situations sur 12, celles à 8 cartes présentes).
 - **0.10.20** : **les pièges du taux de base B, traités et surveillés.** (1) Compte des puits : chocs ponctuels retirés,
