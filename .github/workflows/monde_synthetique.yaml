@@ -10,6 +10,10 @@ on:
         description: "Nombre de situations tirées"
         required: false
         default: "12"
+      narrateur:
+        description: "Narrateur : vide = même modèle que le lecteur ; « contradicteur » ; ou un identifiant (ex. bedrock/deepseek.v3.2)"
+        required: false
+        default: "contradicteur"
       strate:
         description: "Strate (7 par défaut, la seule chiffrée)"
         required: false
@@ -41,6 +45,7 @@ jobs:
         env:
           MONDE_SITUATIONS: ${{ github.event.inputs.situations }}
           MONDE_STRATE: ${{ github.event.inputs.strate }}
+          MONDE_NARRATEUR: ${{ github.event.inputs.narrateur }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}

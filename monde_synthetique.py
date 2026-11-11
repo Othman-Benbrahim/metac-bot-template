@@ -16,7 +16,8 @@ même famille donnent une borne OPTIMISTE de la sensibilité (le narrateur écri
 le résultat va dans registre/monde-synthetique-<date>.json ; les valeurs mesurées ne remplacent les paramètres stipulés
 que par décision d'auteur datée.
 
-    python monde_synthetique.py          # MONDE_SITUATIONS (12 par défaut), MONDE_STRATE (7), MONDE_GRAINE (0)
+    python monde_synthetique.py          # MONDE_SITUATIONS (12 par défaut), MONDE_STRATE (7), MONDE_NARRATEUR,
+                                         # MONDE_GRAINE (par défaut : à la suite des passages précédents)
 """
 from __future__ import annotations
 
@@ -204,16 +205,47 @@ async def principal() -> int:
 
     async def llm(c: str) -> str:
         return await modele.invoke(c)
+    # 0.10.22 : narrateur d'une AUTRE famille que le lecteur (MONDE_NARRATEUR : un identifiant de modèle, ou
+    # « contradicteur » pour reprendre le modèle de ce rôle) : sans lui, narrateur et lecteur partagent leurs habitudes
+    # et la sensibilité mesurée est trop flatteuse.
+    choix_n = (os.environ.get("MONDE_NARRATEUR") or "").strip()
+    nom_n = choix.get("contradicteur") if choix_n == "contradicteur" else (choix_n or None)
+    narrateur = llm
+    if nom_n:
+        from forecasting_tools import GeneralLlm
+        modele_n = GeneralLlm(model=nom_n, temperature=0.7, timeout=180, allowed_tries=2)
+
+        async def narrateur(c: str) -> str:
+            return await modele_n.invoke(c)
     strate = int(os.environ.get("MONDE_STRATE") or 7)
     if strate not in ap.strates_chiffrees():
         print(f"Strate {strate} non chiffrée (L7) : la mesure reste possible mais hors du périmètre posté.")
-    r = await lancer(llm, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate,
-                     int(os.environ.get("MONDE_GRAINE") or 0))
+    precedents = sorted(ap.REGISTRE.glob("monde-synthetique-*.json")) if ap.REGISTRE.is_dir() else []
+    deja = []
+    for f_ in precedents:
+        try:
+            deja.append(json.loads(f_.read_text(encoding="utf-8")))
+        except (OSError, json.JSONDecodeError):
+            continue
+    # graines nouvelles par défaut : un passage de plus ajoute des situations au lieu de rejouer les mêmes
+    graine0 = os.environ.get("MONDE_GRAINE")
+    graine0 = int(graine0) if graine0 else 1 + max([d.get("graines", [0, -1])[1] for d in deja] or [-1])
+    r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0)
+    r["narrateur"] = nom_n or r.get("modele")
+    r["meme_famille"] = not nom_n
+    # cumul des passages de même strate ET même narrateur (un narrateur de la même famille ne se mélange pas à un autre)
+    meme = [d for d in deja + [r] if d.get("strate") == strate
+            and (d.get("narrateur") or d.get("modele")) == r["narrateur"]]
+    r["cumul"] = {"passages": len(meme), "narrateur": r["narrateur"],
+                  **mesurer([s for d in meme for s in d.get("situations") or []])}
+    r["cumul"].pop("par_carte", None)
     ap.REGISTRE.mkdir(parents=True, exist_ok=True)
-    f = ap.REGISTRE / f"monde-synthetique-{r['calcule_le'][:10]}.json"
+    f = ap.REGISTRE / f"monde-synthetique-{r['calcule_le'][:16].replace(':', '')}.json"
     f.write_text(json.dumps(r, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     x = r["resultat"]
-    print(f"Monde synthétique : {x['lues']}/{x['situations']} lues ; mesuré {x['mesure']} ; stipulé {x['stipule']} → {f.name}")
+    print(f"Monde synthétique : {x['lues']}/{x['situations']} lues ; narrateur {r['narrateur']} ; mesuré {x['mesure']} ; "
+          f"stipulé {x['stipule']} → {f.name}")
+    print(f"Cumul ({r['cumul']['passages']} passages, {r['cumul']['lues']} situations lues) : {r['cumul']['mesure']}")
     return 0 if x["lues"] else 1
 
 
