@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.14"
+VERSION_BOT = "0.10.15"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1381,6 +1381,9 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
     trace["plan"] = plan
     if motif:
         return dict(trace, statut="refuse" if plan_corrigeable(motif) else "hors_alphabet", motif=motif)
+    import preselection   # 0.10.15 : présélection des cartes par plongement multilingue, en ombre
+    if preselection.ACTIVE:
+        trace["preselection"] = await asyncio.to_thread(preselection.preselectionner, q, plan)
 
     if vue_fixee is not None:          # 0.9.7 : banc sans texte, taux de base fourni par le banc
         motif = controle_vue(vue_fixee, aujourdhui)
@@ -1826,7 +1829,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
-                                                        "invariance",
+                                                        "invariance", "preselection",
                                                         "nature_etat_nul", "relance", "dynamique_observee")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

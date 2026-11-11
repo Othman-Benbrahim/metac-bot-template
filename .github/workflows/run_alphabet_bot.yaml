@@ -35,6 +35,12 @@ jobs:
         with:
           version: "0.13.1"
       - run: uv sync --locked
+      - name: Cache du modèle de plongement
+        # 0.10.15 : présélection en ombre ; le modèle (~220 Mo) est téléchargé une fois puis gardé en cache.
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/.cache/fastembed
+          key: fastembed-paraphrase-multilingual-MiniLM-L12-v2
       - name: Contrôle du skill
         run: python alphabet-situationnel/scripts/moteur.py audit
       - name: Prévoir
@@ -76,6 +82,8 @@ jobs:
           ALPHABET_LECTURE_HORS_STRATE: ${{ vars.ALPHABET_LECTURE_HORS_STRATE }}
           ALPHABET_TRADUCTION: ${{ vars.ALPHABET_TRADUCTION || '1' }}   # 0.10.7 (§37) : allumé par défaut (un appel de plus) ; « 0 » l'éteint
           ALPHABET_A_ESSAIS: ${{ vars.ALPHABET_A_ESSAIS }}       # 0.10.5 (§35) : K essais du bras A en ombre (1 = éteint)
+          ALPHABET_PRESELECTION: ${{ vars.ALPHABET_PRESELECTION || '1' }}   # 0.10.15 : présélection par plongement, en ombre
+          FASTEMBED_CACHE_PATH: /home/runner/.cache/fastembed
           ALPHABET_INVARIANCE_TAUX: ${{ vars.ALPHABET_INVARIANCE_TAUX || '0.2' }}   # 0.10.11 (§39) : part des questions testées (2 lectures de plus)
           ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '0' }}
       - name: Enregistrer le registre
