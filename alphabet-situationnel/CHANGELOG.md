@@ -1,9 +1,16 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.67
+> Version : 0.7.68
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.68 — 2026-11-11 · CONTRAINTE
+
+D'après le monde synthétique (5 fausses lectures sur 5). **Aucun chiffre publié ne change.**
+
+- `cartes.md`, CONTRAINTE : premier marqueur resserré (une règle ou une sanction qui retire une option nommée) ;
+  `validation.md` §45.
 
 ## 0.7.67 — 2026-11-11 · critère de Klein
 

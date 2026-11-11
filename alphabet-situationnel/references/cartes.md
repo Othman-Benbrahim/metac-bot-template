@@ -1,6 +1,6 @@
 # Alphabet situationnel — Les 16 cartes (noyau transversal candidat)
 
-> Version : 0.7.67
+> Version : 0.7.68
 
 > **Statut 0.4.0.** Les rapprochements mathématiques ci-dessous guident la lecture ; ils ne prouvent
 > ni universalité ni transfert des probabilités. La bibliographie du noyau ne valide pas les équivalents locaux.
@@ -375,9 +375,14 @@ effectivement la solution ; multiplicateur de Lagrange non nul) ; programmation 
 *Domaine* : optimisation.
 
 **Marqueurs observables** :
-- règle écrite ou sanction observée ;
+- règle écrite ou sanction qui **retire une option nommée** à un acteur (action bloquée, option exclue, plafond qui
+  s'applique) ;
 - action tentée et bloquée ; option explicitement exclue ;
 - la contrainte est **active** : sa levée changerait ce que font les acteurs.
+
+> 0.7.68 (`validation.md` §45) : l'**existence** d'une règle, d'un traité ou d'une sanction ne suffit pas. Il faut
+> qu'elle retire une option à quelqu'un ou pèse sur ce qu'il fait. Une règle d'appartenance ou une cotisation
+> obligatoire (COMMUNAUTÉ) n'ancre CONTRAINTE que si elle bloque une option nommée.
 
 **Registre anthropologique** — *documenté* : « taboos », « tabooed foods », « law (rights and
 obligations) », « law (rules of membership) », « sanctions ».
