@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.13 · skill alphabet-situationnel 0.7.65 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.14 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.14** : skill 0.7.66 (§43), d'après LLMMatrix (Prokopets 2026). **Monde synthétique** (`monde_synthetique.py`,
+  workflow manuel) : des situations tirées du programme génératif du skill (cartes présentes connues) sont racontées
+  en dépêches fictives par un modèle-narrateur, sans nommer les cartes, puis relues par le lecteur ordinaire ;
+  sensibilité (F, f) et faux positifs mesurés, à côté des valeurs stipulées du génératif
+  (`registre/monde-synthetique-<date>.json`). Borne optimiste : narrateur et lecteur sont de la même famille. Score :
+  `sorties_illisibles`, part des sorties de modèle illisibles par modèle principal et par étape (plan, lecture,
+  correction, critique, invariance), comptée à part des états nuls.
 - **0.10.13** : skill 0.7.65 (§42). Le test d'invariance mesure aussi l'accord au niveau de la FAMILLE (la carte et ses
   voisines A6) : deux vues qui ancrent deux voisines se trompent de carte, pas de famille (`accord_famille_moyen`).
 - **0.10.12** : skill 0.7.63 (§40). **Surprise d'une lecture** scellée avec C (`generatif.surprise`) ; le score rend

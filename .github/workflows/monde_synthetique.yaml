@@ -1,0 +1,60 @@
+name: Monde synthétique
+
+# 0.10.14 (skill §43, d'après LLMMatrix) : situations tirées du programme génératif, racontées sans nommer les cartes,
+# relues par le lecteur ; sensibilité et faux positifs mesurés. Manuel. Résultat : registre/monde-synthetique-<date>.json.
+
+on:
+  workflow_dispatch:
+    inputs:
+      situations:
+        description: "Nombre de situations tirées"
+        required: false
+        default: "12"
+      strate:
+        description: "Strate (7 par défaut, la seule chiffrée)"
+        required: false
+        default: "7"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  mesurer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Contrôle du skill
+        run: python alphabet-situationnel/scripts/moteur.py audit
+      - name: Mesurer le lecteur
+        run: uv run python monde_synthetique.py
+        env:
+          MONDE_SITUATIONS: ${{ github.event.inputs.situations }}
+          MONDE_STRATE: ${{ github.event.inputs.strate }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          OPENAI_API_BASE: ${{ vars.ALPHABET_API_BASE }}
+          ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
+          ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
+      - name: Enregistrer
+        run: |
+          if [ -n "$(git status --porcelain registre)" ]; then
+            git config user.name "alphabet-bot"
+            git config user.email "alphabet-bot@users.noreply.github.com"
+            git add registre
+            git commit -m "registre : monde synthétique du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

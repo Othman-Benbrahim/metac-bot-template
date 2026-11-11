@@ -1,9 +1,15 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.65
+> Version : 0.7.66
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.66 — 2026-11-11 · monde synthétique
+
+D'après LLMMatrix. **Aucun chiffre publié ne change.**
+
+- `validation.md` §43 ; `moteur.py` : `tirer_situation` (tirage exact selon la loi a priori du génératif) ; un autotest.
 
 ## 0.7.65 — 2026-11-11 · SSSOM et accord à deux niveaux
 
