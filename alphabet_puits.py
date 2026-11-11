@@ -44,11 +44,30 @@ def _cle(var: str) -> str:
     return v
 
 
+SECRETS_URL = re.compile(r"((?:api_?key|apikey|key|token|access_?token|appid|app_key|secret)=)[^&\s'\"]+", re.I)
+
+
+def masquer(texte: str) -> str:
+    """0.10.17 : retire les clés d'API des URL avant tout message d'erreur (le registre est public)."""
+    return SECRETS_URL.sub(r"\1***", str(texte))
+
+
+class ErreurSource(RuntimeError):
+    """Erreur HTTP d'une source, message sans clé."""
+
+
+def _verifier(r) -> None:
+    try:
+        r.raise_for_status()
+    except httpx.HTTPStatusError as e:
+        raise ErreurSource(masquer(e)) from None
+
+
 async def _get(url: str, params: dict | None = None, headers: dict | None = None, json_: bool = True):
     async with httpx.AsyncClient(timeout=DELAI, follow_redirects=True,
                                  headers={"User-Agent": AGENT, **(headers or {})}) as c:
         r = await c.get(url, params=params)
-        r.raise_for_status()
+        _verifier(r)
         return r.json() if json_ else r.text
 
 
@@ -56,7 +75,7 @@ async def _get_octets(url: str) -> bytes:
     """0.10.10 : un fichier binaire (archive ZIP)."""
     async with httpx.AsyncClient(timeout=DELAI, follow_redirects=True, headers={"User-Agent": AGENT}) as c:
         r = await c.get(url)
-        r.raise_for_status()
+        _verifier(r)
         return r.content
 
 
@@ -110,7 +129,10 @@ async def fred(serie: str, avant: date | None = None, debut: str | None = None) 
     if debut:
         p["observation_start"] = debut
     if avant:
-        p.update(realtime_start=avant.isoformat(), realtime_end=avant.isoformat(), observation_end=avant.isoformat())
+        # 0.10.17 : FRED compte les jours à l'heure de Saint-Louis ; un millésime daté d'« aujourd'hui » en UTC peut être
+        # dans son futur (erreur 400). On lit donc au plus le millésime de la veille : jamais d'information postérieure.
+        rt = min(avant, datetime.now(timezone.utc).date() - timedelta(days=1))
+        p.update(realtime_start=rt.isoformat(), realtime_end=rt.isoformat(), observation_end=avant.isoformat())
     d = await _get("https://api.stlouisfed.org/fred/series/observations", p)
     pts = [{"date": o["date"], "valeur": _num(o.get("value"))} for o in d.get("observations", [])]
     return _releve("FRED" + (" (ALFRED, millésime)" if avant else ""), serie,

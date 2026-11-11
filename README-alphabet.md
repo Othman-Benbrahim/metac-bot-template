@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.16 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.17 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.17** : **aucune clé d'API dans le registre public.** Les erreurs HTTP des puits masquent les paramètres
+  `api_key=`, `token=`, `key=`… de l'URL, et chaque ligne et chaque dossier passent par `sans_cles` avant d'être
+  scellés (une clé FRED s'était retrouvée dans une ligne de `journal-autres.jsonl` le 2026-11-11 : clé à régénérer).
+  FRED : le millésime ALFRED lu est au plus celui de la veille (UTC), car FRED compte les jours à l'heure de
+  Saint-Louis et refusait (erreur 400) un millésime d'« aujourd'hui » encore dans son futur.
 - **0.10.16** : **Amazon Bedrock, provisoire** (crédits jusqu'au 23 novembre 2026). Les workflows lisent le secret
   `AWS_BEARER_TOKEN_BEDROCK` (clé d'API Bedrock) et la variable `AWS_REGION_NAME` (us-east-1 par défaut). Suites
   conseillées, Bedrock en tête et Fantasy derrière, en secours :
