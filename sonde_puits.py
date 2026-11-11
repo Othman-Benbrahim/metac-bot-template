@@ -40,6 +40,10 @@ EXEMPLES = {
     "ecosystemes": {"registre": "pypi.org", "paquet": "numpy"},
     "epoch_modeles": {"frontiere": True},
     "epoch_benchmarks": {"benchmark": "GPQA Diamond"},
+    "front_ukraine": {"localite": "Pokrovsk", "latitude": 48.28, "longitude": 37.18},
+    "coupures_internet": {"pays": "IR", "debut": "2024-01-01"},
+    "lancements": {"nom": "STARLINK"},
+    "sanctions_us": {"programme": "RUSSIA"},
 }
 
 
