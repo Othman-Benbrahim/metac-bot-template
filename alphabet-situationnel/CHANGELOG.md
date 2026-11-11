@@ -1,9 +1,16 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.68
+> Version : 0.7.69
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.69 — 2026-11-11 · marqueurs
+
+D'après le monde synthétique. **Aucun chiffre publié ne change.**
+
+- `cartes.md` : neuf fiches recoupées pour que chaque ligne de marqueurs soit une alternative complète (PÉRIODICITÉ,
+  RÉCURSIVITÉ, ÉMERGENCE, RÉSEAU, PROPORTION, TRANSFORMATION, TRACE · MÉMOIRE, CROISSANCE, RÉSONANCE) ; `validation.md` §46.
 
 ## 0.7.68 — 2026-11-11 · CONTRAINTE
 

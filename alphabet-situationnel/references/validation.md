@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.68
+> Version : 0.7.69
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2551,4 +2551,43 @@ ou option militaire plafonnée par un traité ») le disait déjà.
 lectures de CONTRAINTE baissent, et si d'autres cartes ont un marqueur aussi large.
 
 **Ce qui ne change pas.** Le p publié, la matrice, les autres cartes.
+
+## 46. Marqueurs : chaque ligne est une alternative complète (0.7.69)
+
+**Décision d'auteur, le 2026-11-11**, après le quatrième passage du monde synthétique : « les cartes doivent être
+calibrées, sans quoi elles reviendront sans cesse, ou dans le mauvais ordre, à cause d'une question de vocabulaire ».
+
+**Le défaut.** La règle du §30 dit qu'un seul marqueur rempli suffit pour f : chaque ligne de « Marqueurs
+observables » est donc une **alternative**. Or plusieurs fiches écrivaient une seule condition sur plusieurs lignes
+(une phrase coupée : « un élément présent dont l'origine est datable ; qui continue d'orienter les conduites ; et
+qui… »), ou une composante qui, seule, ne montre pas le mécanisme de la définition (« au moins trois mesures datées
+d'une même grandeur », sans hausse ; « au moins deux rythmes propres », sans alignement). Lue comme une alternative,
+la première ligne suffisait : un traité daté de 2004 ancrait TRACE·MÉMOIRE, trois pays et une organisation ancraient
+RÉSEAU. Constat chiffré : RÉSEAU lu 4 fois et TRACE·MÉMOIRE 3 fois quand ils étaient absents, sur 12 situations.
+
+**La règle d'écriture, désormais.** Chaque ligne de marqueurs, prise **seule**, montre le mécanisme de la *Définition*.
+Une condition qui n'a de sens qu'avec une autre est écrite sur la **même** ligne.
+
+**Les fiches corrigées** (le contenu est conservé, seule la coupe change, sauf mention) :
+
+| Carte | Changement |
+|---|---|
+| PÉRIODICITÉ | occurrences et intervalle constant sur une ligne ; phases identifiables sur un cycle déjà vu deux fois |
+| RÉCURSIVITÉ | une seule ligne (le discours ET son effet sur ce qu'il décrit) |
+| ÉMERGENCE | régularité et absence de prescription sur une ligne ; imitation ou convergence inchangée |
+| RÉSEAU | les trois nœuds ne suffisent que si la situation dépend de leurs liens (ce qui passe ou non) |
+| PROPORTION | une seule ligne : le rapport suivi à deux dates (la définition porte sur sa conservation ou sa rupture) |
+| TRANSFORMATION | état de départ et état en cours avec un invariant ; étapes intermédiaires entre deux états |
+| TRACE · MÉMOIRE | une seule ligne (origine datable, influence actuelle, et maintien par l'histoire) |
+| CROISSANCE | une hausse qui s'accélère ou un taux estimable (fidèle au §30 : pas trois mesures exigées) ; une limite sur une grandeur qui croît |
+| RÉSONANCE | rythmes ET alignement sur une ligne ; canal de couplage entre deux rythmes identifiés |
+
+Inchangées : SEUIL, RÉCIPROCITÉ, HIÉRARCHIE, POLARITÉ, INCERTITUDE, CONTRAINTE (§45), COMMUNAUTÉ.
+
+**Garde-fou du §30.** Il ne s'agit pas de rendre f plus difficile : une ligne reste suffisante seule, et la forme
+complète de l'*attendu* n'est toujours pas exigée pour f. Seules les lignes qui ne montraient pas le mécanisme
+deviennent des conditions complètes. Le monde synthétique dira si les fausses lectures baissent sans que la
+sensibilité s'effondre.
+
+**Ce qui ne change pas.** Le p publié, la matrice, les définitions et structures mathématiques des cartes.
 
