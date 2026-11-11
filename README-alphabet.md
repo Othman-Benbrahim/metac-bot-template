@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.36 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.37 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.37** : **veille d'articles**, chaque lundi, sans modèle (décision d'auteur du 2026-11-11).
+  `veille_articles.py` interroge arXiv (articles de la semaine, rubriques IA, langage, apprentissage, statistiques,
+  économie, réseaux sociaux) et lit la dernière sélection de DAIR.AI « AI Papers of the Week » ; chaque article est noté
+  sur son titre et son résumé d'après `veille/mots-cles.txt` (modifiable à la main : expressions fortes à 3 points,
+  faibles à 1, 2 dans le titre, retenu à 3) ; les articles déjà signalés ne reviennent pas (`veille/vus.json`). Sortie :
+  `veille/semaine-<date>.md` et un ticket GitHub assigné à l'auteur. Rien n'entre dans le bot. Sur 44 semaines de
+  DAIR.AI, 8 articles sur 440 auraient été retenus : DAIR reste un complément, arXiv la source principale.
 - **0.10.36** : **deux comparaisons de plus dans le monde synthétique** (décision d'auteur du 2026-11-11, d'après
   S. Goedecke, « Is chain-of-thought AI reasoning a mirage? »). (1) **Réflexion** : chaque situation est relue une
   seconde fois par le même lecteur, même consigne, avec la réflexion étendue (Claude : `thinking`, budget 4 000 jetons ;
