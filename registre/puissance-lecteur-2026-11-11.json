@@ -1,0 +1,90 @@
+{
+  "calcule_le": "2026-11-11T05:47:23+00:00",
+  "version_bot": "0.10.29",
+  "version_skill": "0.7.69",
+  "questions_simulees": 1000,
+  "reserve": "monde = modèle du skill : gain interne (borne haute) ; l'effet RELATIF du lecteur est le résultat sûr",
+  "scenarios": {
+    "parfait": {
+      "lecteur": {
+        "sens_F": 1.0,
+        "sens_f": 0.0,
+        "fp_F": 0.0,
+        "fp_f": 0.0
+      },
+      "gain_moyen_points": -0.17,
+      "ecart_type": 24.1,
+      "questions_80_pourcent": "> 3000",
+      "C_generatif": {
+        "questions": 300,
+        "gain_moyen_points": 1.15,
+        "questions_80_pourcent": "> 3000"
+      }
+    },
+    "stipule": {
+      "lecteur": {
+        "sens_F": 0.5,
+        "sens_f": 0.3,
+        "fp_F": 0.01,
+        "fp_f": 0.05
+      },
+      "gain_moyen_points": -0.44,
+      "ecart_type": 21.2,
+      "questions_80_pourcent": "> 3000",
+      "C_generatif": {
+        "questions": 300,
+        "gain_moyen_points": 1.01,
+        "questions_80_pourcent": 2270
+      }
+    },
+    "mesure": {
+      "lecteur": {
+        "sens_F": 0.26,
+        "sens_f": 0.32,
+        "fp_F": 0.0,
+        "fp_f": 0.17
+      },
+      "gain_moyen_points": -0.4,
+      "ecart_type": 20.1,
+      "questions_80_pourcent": "> 3000",
+      "C_generatif": {
+        "questions": 300,
+        "gain_moyen_points": 1.27,
+        "questions_80_pourcent": 1170
+      }
+    },
+    "mesure_sensibilite_stipulee": {
+      "lecteur": {
+        "sens_F": 0.5,
+        "sens_f": 0.3,
+        "fp_F": 0.0,
+        "fp_f": 0.17
+      },
+      "gain_moyen_points": -0.93,
+      "ecart_type": 24.1,
+      "questions_80_pourcent": "> 3000",
+      "C_generatif": {
+        "questions": 300,
+        "gain_moyen_points": 0.9,
+        "questions_80_pourcent": "> 3000"
+      }
+    },
+    "mesure_faux_positifs_stipules": {
+      "lecteur": {
+        "sens_F": 0.26,
+        "sens_f": 0.32,
+        "fp_F": 0.01,
+        "fp_f": 0.05
+      },
+      "gain_moyen_points": -0.02,
+      "ecart_type": 17.4,
+      "questions_80_pourcent": "> 3000",
+      "C_generatif": {
+        "questions": 300,
+        "gain_moyen_points": 1.28,
+        "questions_80_pourcent": 1170
+      }
+    }
+  },
+  "gain_si_C_valait_la_verite_points": 1.3
+}
