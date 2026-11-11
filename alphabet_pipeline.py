@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.17"
+VERSION_BOT = "0.10.18"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1757,7 +1757,12 @@ async def explorer_derivee(derivee: dict, ident: str, url: str, contexte: str, p
         return {"derivee": derivee, "statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:300]}
     ex = c.get("exploratoire") or {}
     p_c = c.get("p_C") if c.get("p_C") is not None else ex.get("p_C")
-    sortie = {"derivee": derivee, "statut": ex.get("statut") or c.get("statut"), "motif": (c.get("motif") or "")[:300],
+    # 0.10.18 : le motif de la lecture elle-même (ex), pas l'étiquette « strate non chiffrée » posée par-dessus ; et la
+    # dernière erreur du moteur, pour savoir POURQUOI un dossier est refusé.
+    sortie = {"derivee": derivee, "statut": ex.get("statut") or c.get("statut"),
+              "motif": (ex.get("motif") or c.get("motif") or "")[:300],
+              "derniere_erreur": (str(c.get("derniere_erreur") or "")[:300] or None), "tentatives": c.get("tentatives"),
+              "preselection": c.get("preselection"),
               "strate": ((c.get("plan") or {}).get("evenement") or {}).get("strate"),
               "p_B": c.get("p_B"), "p_C": p_c, "p_C_corrige": corriger_C(p_c, correction_retro()),
               "p_C_symetrique": (c.get("symetrique") or {}).get("p"), "symetrique": c.get("symetrique"),
