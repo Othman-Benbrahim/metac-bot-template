@@ -36,8 +36,9 @@ import alphabet_pipeline as ap
 # (1 : jusqu'à 0.10.22, fiches complètes et une dépêche par carte ; 2 : 0.10.23, marqueurs seuls, une situation ;
 # 3 : 0.10.26, canevas imposé, domaine imposé, réécriture guidée par le vérificateur ;
 # 4 : 0.10.28, skill 0.7.69 (marqueurs complets), deux États, contexte sans passé ni instance ;
-# 5 : depuis 0.10.31, médias imposés, moitié des faits corroborés par deux médias, plus de réécriture)
-PROTOCOLE_MONDE = 5
+# 5 : 0.10.31, médias imposés, moitié des faits corroborés par deux médias, plus de réécriture ;
+# 6 : depuis 0.10.34, dépêches parasites dans la moitié des situations, lecture sans noms en parallèle)
+PROTOCOLE_MONDE = 6
 
 
 def nom_strate(s: int) -> str:
@@ -123,8 +124,16 @@ def canevas(presentes: list[str], strate: int, graine: int, aujourdhui: str) -> 
         if c in corrobores:
             items.append({"date": dates[k_], "carte": c, "marqueur": marq, "media": medias[k_], "reprise": True})
             k_ += 1
+    # 0.10.34 (Lv et al., ICML 2026 : « information noyée ») : dans la moitié des situations, deux dépêches PARASITES,
+    # sans rapport avec la situation, dans un troisième pays ; la vérité ne change pas
+    parasites = 2 if rnd.random() < 0.5 else 0
+    tiers = rnd.choice([e for e in ETATS if e not in (a, b)])
+    for _ in range(parasites):
+        items.append({"date": (fin - timedelta(days=rnd.randrange(1, 61))).isoformat(), "carte": None, "marqueur": None,
+                      "media": rnd.choice(MEDIAS), "reprise": False, "parasite": True})
     items = [items[0]] + sorted(items[1:], key=lambda x: x["date"])
-    return {"etats": [a, b], "organisation": org if avec_org else None, "corrobores": corrobores, "depeches": items}
+    return {"etats": [a, b], "organisation": org if avec_org else None, "corrobores": corrobores, "depeches": items,
+            "parasites": parasites, "pays_tiers": tiers}
 
 
 def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str, graine: int = 0) -> str:
@@ -136,7 +145,11 @@ def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, a
     acteurs = f"{a}, {b}" + (f" et {cv['organisation']}" if cv["organisation"] else "")
     lignes = []
     for i, d in enumerate(cv["depeches"], 1):
-        if d["carte"] is None:
+        if d.get("parasite"):
+            lignes.append(f"{i}. [{d['date']}] (média : {d['media']}) Un fait SANS RAPPORT avec la situation : sport, "
+                          f"culture, météo ou fait divers en {cv['pays_tiers']} ; aucun des acteurs imposés, aucun des "
+                          "marqueurs ci-dessous.")
+        elif d["carte"] is None:
             lignes.append(f"{i}. [{d['date']}] (média : {d['media']}) CONTEXTE : présente {acteurs} et leurs dirigeants actuels, par des faits "
                           "neutres du moment ; AUCUNE référence au passé (ni traité ancien, ni date antérieure à la "
                           "période), AUCUNE instance qui préside ou valide, aucun des marqueurs ci-dessous.")
@@ -224,12 +237,35 @@ def plan_de(s: dict, strate: int) -> dict:
             "evenement": {"carte": ev, "strate": strate, "type": "apparait"}, "recherches": []}
 
 
-def ancrees(lecture: dict, strate: int) -> dict[str, str]:
+def table_effacement(graine: int) -> dict[str, str]:
+    """0.10.34 (Lv et al., ICML 2026 : « ancrage symbolique ») : chaque carte reçoit un identifiant neutre (C01 à C16),
+    tiré de la graine. Si la lecture change quand seuls les NOMS changent, le lecteur s'appuie sur le vocabulaire des
+    noms et non sur les marqueurs des fiches."""
+    m = ap._moteur()
+    abrs = sorted(m.NOMS)
+    ids = [f"C{i + 1:02d}" for i in range(len(abrs))]
+    random.Random(f"effacement:{graine}").shuffle(ids)
+    return dict(zip(abrs, ids))
+
+
+def effacer_noms(texte: str, table: dict[str, str]) -> str:
+    """Remplace dans la consigne les noms des cartes (« TRACE · MÉMOIRE », « SEUIL ») et leurs abréviations (« SEU »)
+    par les identifiants neutres ; les définitions et les marqueurs restent tels quels."""
+    m = ap._moteur()
+    paires = [(m.NOMS[a], i) for a, i in table.items()] + [(a, i) for a, i in table.items()]
+    for nom, i in sorted(paires, key=lambda x: -len(x[0])):
+        texte = re.sub(rf"(?<![A-Za-zÀ-ÿ0-9_]){re.escape(nom)}(?![A-Za-zÀ-ÿ0-9_])", i, texte)
+    return texte
+
+
+def ancrees(lecture: dict, strate: int, inverse: dict[str, str] | None = None) -> dict[str, str]:
     m = ap._moteur()
     out = {}
     for x in (lecture or {}).get("mots") or []:
         try:
-            k = f"{m.carte_id(str(x.get('carte')))}@{int(x.get('strate'))}"
+            c = str(x.get("carte"))
+            c = (inverse or {}).get(c.upper(), c)
+            k = f"{m.carte_id(c)}@{int(x.get('strate'))}"
         except (ValueError, TypeError):
             continue
         if k.endswith(f"@{strate}"):
@@ -287,6 +323,30 @@ def mesurer(rows: list[dict]) -> dict:
                     "sens": round(sum(1 for _, v in pres_v if v) / len(pres_v), 4) if pres_v else None,
                     "fp_F": taux(abs_v, "F"), "fp_f": taux(abs_v, "f"),
                     "fp": round(sum(1 for _, v in abs_v if v) / len(abs_v), 4) if abs_v else None}
+    # 0.10.34 : perturbations (Lv et al., ICML 2026), sur les cartes vérifiées
+    def _sens_fp(rs, cle=None):
+        lire = (lambda r: r.get("ancrees") or {}) if cle is None else (lambda r: (r.get(cle) or {}).get("ancrees") or {})
+        p_ = [(k, lire(r).get(k)) for r in rs for k in r["presentes"] if k not in r["verification"]["presentes_non_montrees"]]
+        a_ = [(k, lire(r).get(k)) for r in rs for k in r["absentes"] if k not in r["verification"]["absentes_montrees"]]
+        return {"situations": len(rs), "sens": round(sum(1 for _, v in p_ if v) / len(p_), 4) if p_ else None,
+                "sens_F": taux(p_, "F"), "fp": round(sum(1 for _, v in a_ if v) / len(a_), 4) if a_ else None}
+    perturbations = {}
+    eff = [r for r in ver if isinstance((r.get("lecture_sans_noms") or {}).get("ancrees"), dict)]
+    if eff:
+        jac = []
+        for r in eff:
+            a1, a2 = set(r["ancrees"]), set(r["lecture_sans_noms"]["ancrees"])
+            jac.append(len(a1 & a2) / len(a1 | a2) if a1 | a2 else 1.0)
+        perturbations["effacement_des_noms"] = {
+            "avec_noms": _sens_fp(eff), "sans_noms": _sens_fp(eff, "lecture_sans_noms"),
+            "accord_jaccard_moyen": round(sum(jac) / len(jac), 4),
+            "lecture": "lecture qui change sans les noms : le lecteur s'appuie sur le vocabulaire, pas sur les marqueurs"}
+    avec_p = [r for r in ver if (r.get("canevas") or {}).get("parasites")]
+    sans_p = [r for r in ver if not (r.get("canevas") or {}).get("parasites")]
+    if avec_p and sans_p:
+        perturbations["depeches_parasites"] = {"avec": _sens_fp(avec_p), "sans": _sens_fp(sans_p)}
+    if verifiee is not None:
+        verifiee["perturbations"] = perturbations or None
     return {"situations": len(rows), "lues": len(lues), "mesure_verifiee": verifiee,
             "illisibles": {"narrateur": sum(r.get("statut") == "narrateur_illisible" for r in rows),
                            "lecteur": sum(r.get("statut") == "lecture_illisible" for r in rows)},
@@ -304,7 +364,7 @@ def mesurer(rows: list[dict]) -> dict:
 
 
 async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, aujourdhui: str | None = None,
-                 verificateur=None) -> dict:
+                 verificateur=None, effacement: bool = False) -> dict:
     m = ap._moteur()
     aujourdhui = aujourdhui or date.today().isoformat()
     cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@{strate}")]
@@ -350,7 +410,17 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
                 cats_n[f"{m.carte_id(k.split('@')[0])}@{k.split('@')[1] if '@' in k else strate}"] = v
             except ValueError:
                 continue
-        rows.append(dict(row, statut="lue", ancrees=ancrees(lec, strate), rejets_categories=cats_n))
+        row = dict(row, statut="lue", ancrees=ancrees(lec, strate), rejets_categories=cats_n)
+        if effacement:       # 0.10.34 : même texte, même consigne, cartes renommées en identifiants neutres
+            table = table_effacement(g)
+            inverse = {i: a for a, i in table.items()}
+            try:
+                lec2 = await ap.json_avec_reprise(lecteur, effacer_noms(ap.consigne_dossier(q, plan, executees, aujourdhui,
+                                                                                             90), table))
+                row["lecture_sans_noms"] = {"ancrees": ancrees(lec2, strate, inverse)}
+            except Exception as e:
+                row["lecture_sans_noms"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+        rows.append(row)
     return {"calcule_le": datetime.now(timezone.utc).isoformat(timespec="seconds"), "version_skill": ap.version_skill(),
             "version_bot": ap.VERSION_BOT, "modele": (ap.modeles_actifs() or {}).get("principal"), "strate": strate,
             "graines": [graine0, graine0 + n - 1],
@@ -417,7 +487,7 @@ async def principal() -> int:
         async def verificateur(c: str) -> str:
             return await modele_v.invoke(c)
     r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0,
-                     verificateur=verificateur)
+                     verificateur=verificateur, effacement=os.environ.get("MONDE_EFFACEMENT", "1") != "0")
     r["verificateur"] = nom_v if verificateur else None
     fam = lambda nom: next((f for f in ("claude", "deepseek", "mistral", "qwen", "llama", "nova", "gpt", "glm", "kimi")
                             if f in str(nom or "").lower()), str(nom))
