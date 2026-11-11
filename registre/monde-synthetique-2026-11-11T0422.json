@@ -1,0 +1,605 @@
+{
+  "calcule_le": "2026-11-11T04:22:55+00:00",
+  "version_skill": "0.7.68",
+  "version_bot": "0.10.24",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    24,
+    35
+  ],
+  "consigne_lecteur_sha256": "a2f80edfcd8302a4d1d06d5715eee0ea9cd73c54435d2b18596ccbf7f066e9e1",
+  "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 11,
+    "mesure_verifiee": {
+      "situations": 11,
+      "erreurs_narrateur": {
+        "absentes_montrees": 13,
+        "presentes_non_montrees": 3
+      },
+      "sens_F": 0.28,
+      "sens_f": 0.44,
+      "sens": 0.72,
+      "fp_F": 0.0,
+      "fp_f": 0.1538,
+      "fp": 0.1538
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 1
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 28,
+    "cartes_absentes": 39,
+    "mesure": {
+      "sens_F": 0.25,
+      "sens_f": 0.4286,
+      "sens": 0.6786,
+      "fp_F": 0.0,
+      "fp_f": 0.3333,
+      "fp": 0.3333
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 8,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 1,
+    "situations_vides": 2,
+    "par_carte": {
+      "COM": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 1,
+        "lue_si_absente": 1
+      },
+      "CRO": {
+        "presente": 3,
+        "lue_si_presente": 0,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 3
+      },
+      "EME": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "INC": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 4,
+        "lue_si_absente": 2
+      },
+      "PER": {
+        "presente": 1,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 0
+      },
+      "POL": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 5,
+        "lue_si_absente": 0
+      },
+      "PRO": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 2
+      },
+      "RCS": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "REC": {
+        "presente": 3,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "RES": {
+        "presente": 6,
+        "lue_si_presente": 4,
+        "absente": 0,
+        "lue_si_absente": 0
+      },
+      "RSN": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "SEU": {
+        "presente": 4,
+        "lue_si_presente": 4,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "TRA": {
+        "presente": 3,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "TRC": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 3
+      }
+    }
+  },
+  "situations": [
+    {
+      "graine": 24,
+      "presentes": [
+        "EME@7",
+        "RES@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "PER@7",
+        "POL@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-19] La Filature de Kalan marque ses portes — https://nouveaujour.example/affaires/45823\nL'usine textile de Kalan, principale employeuse de la ville et dernier site de production du groupe Vexelon en Thalassie, a fermé ses portes à 17h00. Une déclaration lue par un cadre sur le parking a confirmé la cessation immédiate de toute activité. Les 1 200 employés ont reçu une enveloppe scellée contenant leur solde de tout compte. Le site web de Vexelon a retiré la page de l'usine de Kalan. Les camions de livraison stationnés à l'entrée ont été redirigés vers d'autres sites dans la région.\n\n[2026-10-08] Les anciens de Kalan créent l'Atelier du Port — https://voixdunord.example/economic/77190\nTrois anciens cadres de la Filature de Kalan ont signé hier un bail de cinq ans pour un entrepôt du port de Lanègre. Ils y ont installé douze machines achetées aux liquidateurs de Vexelon. Aucune structure juridique commune n'a été créée. Cinq anciens contremaîtres et quarante-sept anciens ouvriers de Kalan y travaillent depuis lundi, organisant eux-mêmes les équipes. Aucun appel d'offres public n'a été lancé pour la vente des machines.\n\n[2026-10-22] Le réseau « Fils Kalan » étend sa production — https://telepresse.example/regions/112455\nL'Atelier du Port de Lanègre livre désormais des tissus à quatre ateliers de confection situés à Montrevin, à Sèvres et deux à Port-Louvet. Ces ateliers, tenus par des anciens de la Filature de Kalan, n'ont pas de contrat écrit avec Lanègre. Le transport est assuré par un ancien chauffeur de Vexelon utilisant son camion personnel. Le site de Montrevin a cessé de répondre aux demandes de devis de son ancien donneur d'ordres, la chaîne de magasins VestCorp.\n\n[2026-11-04] Rupture entre Lanègre et Montrevin — https://agence-ec.example/breves/889012\nL'atelier de Montrevin a brûlé hier soir ses stocks de tissus fournis par l'Atelier du Port de Lanègre, invoquant « un défaut irrémédiable ». Le chauffeur-livreur a refusé de reprendre la route vers Montrevin, exigeant un paiement forfaitaire supérieur à dix allers-retours. Lanègre a annoncé qu'elle ne produirait plus le motif « Azur » spécifique à Montrevin. Les commandes de tissu des ateliers de Sèvres et Port-Louvet ont augmenté de 40% cette semaine.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": [
+          "EME@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "F",
+        "SEU@7": "f",
+        "EME@7": "f",
+        "COM@7": "f"
+      },
+      "rejets_categories": {
+        "PER@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 25,
+      "presentes": [
+        "REC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "HIE@7",
+        "INC@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-14] Le Président Valen adresse une mise en garde à la Rykonie — https://bourse-matin.example/valen-rykonie\nLe Président de la République de Loria, Arno Valen, a déclaré aujourd'hui devant l'Assemblée nationale : « Les prêts consentis par Loria pour la modernisation du port de Karst doivent être honorés selon les termes convenus. Nous attendons le premier remboursement dans les délais. » Aucun représentant rykonien n'était présent dans la tribune diplomatique.\n\n[2026-10-03] La Rykonie reporte un paiement et propose une assistance médicale — https://rykonpost.example/paiement-report-assistance\nLe Ministère des Finances de la Rykonie a annoncé par communiqué le report « pour des raisons techniques » du premier versement de sa dette envers Loria, initialement prévu le 5 octobre. Le même jour, le gouvernement rykonien a proposé d'envoyer « dans un geste de bonne volonté » une cargaison de vaccins contre la grippe aviaire à la région frontalière lorienne de Gers.\n\n[2026-10-20] Loria accepte l'aide médicale et réaffirme ses attentes — https://loria-infos.example/aide-vaccins\nLe Ministère lorien de la Santé a confirmé avoir « pris livraison » des vaccins offerts par la Rykonie. Lors d'une conférence de presse, le porte-parole du gouvernement, sans mentionner le report de paiement, a déclaré : « Nous saluons cette contribution. Nous nous attendons maintenant à ce que tous les engagements financiers soient respectés dans leur intégralité et sans nouveau délai. »\n\n[2026-11-07] La Rykonie procède à un paiement partiel — https://agence-echo.example/paiement-partiel-rykonie\nLa Banque centrale de la Rykonie a effectué ce matin un virement de 40 millions de thalers vers la Banque de Loria. Un haut fonctionnaire du ministère des Finances rykonien, sous couvert d'anonymat, a précisé à l'agence Echo qu'il s'agissait « d'une première tranche » du remboursement dû. Le Trésor lorien n'a pas immédiatement commenté la transaction.\n\n[2026-11-10] Loria gèle un projet conjoint et exige le solde — https://loria-infos.example/gel-projet-solde\nLe ministère lorien du Développement a annoncé la « suspension immédiate » des travaux du projet ferroviaire transfrontalier LorKars, financé à 70% par Loria. Un communiqué officiel indique que la décision est effective « jusqu'à la réception complète des sommes dues par la Rykonie au titre de l'accord de prêt pour le port de Karst ». La Rykonie n'a pas encore réagi.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "REC@7": "F",
+        "INC@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 26,
+      "presentes": [],
+      "absentes": [
+        "CTR@7",
+        "HIE@7",
+        "RSN@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-12] Le Ministre de la Production de la République de Karylia visite un site minier — https://knn.kar/news/prod-minister-mine-visit\nLe Ministre de la Production de Karylia, Piotr Varnik, s'est rendu aujourd'hui dans la région de Sud-Oblast. Il a inspecté la mine de terres rares \"Filon-7\". Varnik a déclaré aux ouvriers présents : \"La production mensuelle est de 450 tonnes. Nous prévoyons une augmentation de 5% pour le trimestre prochain.\" La visite a duré trois heures.\n\n[2026-10-08] La Fédération d'Asten annonce un nouvel accord commercial avec Karylia — https://astenfednews.ast/politics/trade-deal-karylia\nLe gouvernement de la Fédération d'Asten a publié un communiqué ce matin. Il annonce la signature d'un accord commercial avec la République de Karylia. L'accord concerne l'exportation de 10 000 unités de machines agricoles asténiennes. En échange, Karylia fournira 200 tonnes mensuelles de concentrés de terres rares. Le Président asténien, Lars Ingebretsen, a déclaré : \"C'est un jour important pour notre secteur industriel.\"\n\n[2026-10-22] Karylia lance les travaux d'un nouveau port en mer d'Azur — https://knn.kar/infrastructure/new-port-azur-sea-construction\nDes engins de chantier sont arrivés sur le site côtier de Port-Novik, en Karylia. Le Premier ministre karylien, Elena Rostova, a assisté à la cérémonie de lancement des travaux. Elle a annoncé : \"Ce port traitera initialement 500 000 conteneurs par an. Les travaux de génie civil dureront 18 mois.\" Des représentants consulaires de la Fédération d'Asten étaient présents parmi les 200 invités.\n\n[2026-11-03] Le Président d'Asten effectue une visite d'État en Karylia — https://astenfednews.ast/politics/president-state-visit-karylia\nLe Président Lars Ingebretsen est arrivé à l'aéroport de la capitale karylienne, Varnograd, à 10h00. Il a été accueilli par le Président karylien, Grigor Sokolov. L'agenda de la journée comprend un déjeuner officiel et un dépôt de gerbe au Mémorial des Fondateurs. Une rencontre avec des chefs d'entreprise des deux pays est prévue demain. La visite doit durer deux jours.\n\n[2026-11-11] Ingebretsen et Sokolov inaugurent une ligne ferroviaire de fret — https://knn.kar/infrastructure/rail-freight-line-inauguration\nLes Présidents Lars Ingebretsen et Grigor Sokolov ont coupé un ruban symbolique à la gare de triage de Vostochny. Ils ont inauguré la nouvelle ligne ferroviaire \"Azur Express\", longue de 320 km, qui relie directement Port-Novik à la frontière asténienne. Sokolov a déclaré : \"Ceci matérialise notre partenariat.\" Le premier convoi, composé de 45 wagons chargés de machines et de minerai, a quitté la gare immédiatement après la cérémonie.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RSN@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "f"
+      },
+      "rejets_categories": {
+        "CTR@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 27,
+      "presentes": [
+        "COM@7",
+        "CRO@7",
+        "EME@7",
+        "RES@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "INC@7",
+        "PRO@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "evenement": "RCS@7",
+      "texte": "[2026-09-15] L'Alliance des Marches annonce le « Bouclier Agricole Commun » — https://chronique-mondiale.example/agri-456\nLes ministres de l'Agriculture de la République de Veridia et du Royaume de Norden ont signé aujourd'hui à la Haye-Veridienne le traité fondant le « Bouclier Agricole Commun ». Le texte précise que chaque État contribuera à une réserve stratégique proportionnellement à sa population. Un comité de surveillance, doté de pouvoirs d'inspection inopinée, pourra recommander des suspensions de droit de vote en cas de non-approvisionnement répété.\n\n[2026-10-08] Norden double sa dotation céréalière, Veridia annonce un troisième silo — https://larevue-nord.example/eco-789\nLe ministère nordénien des Réserves a annoncé un nouvel apport de 500 000 tonnes de blé au Bouclier Agricole Commun, portant sa contribution totale à 1,5 million de tonnes depuis septembre. Veridia a inauguré son troisième site de stockage dédié à Boral. La capacité totale de l'alliance est estimée à 4,2 millions de tonnes. Les responsables nordéniens notent que la cadence des nouveaux projets ralentit faute de sites adaptés.\n\n[2026-10-22] Le « salut de la Haye » se répand parmi les diplomates — https://agence-panorama.example/dip-101\nDepuis la cérémonie de signature du 15 septembre, il a été observé que les délégations de Veridia et Norden utilisent systématiquement, en ouverture de réunion bilatérale, une poignée de main où les pouces s’entrelacent. Aucun protocole ni circulaire n’a institué ce geste. Il est apparu pour la première fois lors d’une photo de presse des deux ministres des Affaires étrangères et est depuis repris par les ambassadeurs et leurs adjoints.\n\n[2026-11-02] Le réseau « GrainNet » relie désormais trois hubs critiques — https://infos-reseau.example/tech-112\nL'opérateur du Bouclier Agricole Commun a connecté les centres de contrôle de Boral (Veridia), de Sölvik (Norden) et le siège administratif de la Haye-Veridienne. Le lien entre Boral et la Haye-Veridienne transite par le nœud de transmission de Mont-Étau. La liaison directe entre Sölvik et la Haye-Veridienne, opérationnelle jusqu’à hier, est coupée pour maintenance. Sans le pont de Mont-Étau, la circulation des données entre Boral et les deux autres sites serait interrompue.\n\n[2026-11-10] Veridia scelle son engagement par la destruction du complexe de Garenne — https://ledaily-norden.example/pol-202\nLes forces d'ingénierie veridiennes ont procédé à la démolition contrôlée de l'ancien complexe de silos de Garenne, site historique de la réserve céréalière nationale souveraine. Une proposition parlementaire nordénienne, déposée le 7 novembre, suggérait de transformer le site en musée plutôt que de le détruire. Elle n'a pas été retenue. Les estimations préliminaires évaluent le coût de reconstruction d'une capacité équivalente à dix fois la valeur foncière du terrain libéré.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7",
+          "PRO@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "COM@7": "F",
+        "CTR@7": "f",
+        "EME@7": "f",
+        "PRO@7": "f",
+        "RES@7": "F",
+        "SEU@7": "F",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 28,
+      "presentes": [
+        "CRO@7",
+        "RES@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "HIE@7",
+        "INC@7",
+        "PER@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-29] Le canal de Karsa franchit le seuil des 12 000 navires annuels — https://azimut.news/canal-karsa-12k\nLe port de Farsad a enregistré le passage du 12 000e navire de l'année dans le canal de Karsa à 11h47. Le seuil de 10 000 navires avait été atteint le 15 juillet, celui de 11 000 le 3 septembre. Le ministre des Transports de la République de Lydie a déclaré : « La capacité théorique maximale est de 14 000 passages. » Le trafic quotidien moyen est actuellement de 42 navires.\n\n[2026-10-18] Incident sur le pont ferroviaire de la passe Nord — https://azimut.news/incident-pont-nord\nUn wagon-citerne a déraillé sur le pont ferroviaire de la passe Nord, reliant la ville lydienne de Farsad à la ville verdaise de Salinor. Aucune fuite n'a été signalée. Le trafic ferroviaire entre les deux villes est interrompu. Le trafic routier sur le pont-jumeau de la passe Sud reste fluide. Les équipes de secours de Lydie et de Verd sont sur place.\n\n[2026-10-26] Les flux commerciaux contournent la passe Nord — https://azimut.news/contournement-pont-nord\nLes cargaisons habituellement transportées par rail entre Farsad et Salinor transitent désormais par la route via le pont de la passe Sud, ou par cabotage entre les ports de Farsad et Salinor. Le trafic sur le pont routier de la passe Sud a augmenté de 40% depuis le 18 octobre. Le ministre verdaise de l'Économie a indiqué : « Les stocks de certains composants industriels à Salinor sont au plus bas. »\n\n[2026-11-08] Le transit dans le canal de Karsa chute à 34 navires par jour — https://azimut.news/canal-karsa-chute\nL'Autorité du Canal de Karsa a publié ses chiffres : le transit quotidien moyen est tombé à 34 navires sur la semaine du 2 au 8 novembre. Il était de 42 navires fin septembre. Le trafic de marchandises en vrac vers le complexe sidérurgique de Salinor a diminué de 65% sur la même période. Le terminal ferroviaire de Farsad affiche un taux d'occupation des voies de 92%. La réparation du pont de la passe Nord est en cours.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "f",
+        "INC@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 29,
+      "presentes": [
+        "PER@7",
+        "RES@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "POL@7",
+        "TRC@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-12] La Principauté d'Aldoria confirme la réception d'une demande d'extradition de la République de Valoria — https://aldorianpost.example/extradition-request\nLe ministre aldorien de la Justice, Karl Venner, a lu une déclaration devant la presse à 15h00 : « Nous avons reçu, ce matin à 09h30, une demande formelle de nos homologues valoriens concernant M. Stefan Rook. Le dossier est complet. » La demande, portant le numéro de classement VJ-445-09, a été remise par courrier diplomatique scellé. Le parquet général d'Aldoria a confirmé l'ouverture d'un dossier sous la référence AJ-788.\n\n[2026-10-03] Le tribunal de district d'Esterberg ordonne un rapport complémentaire avant de statuer sur Rook — https://esterberg-tribune.example/court-delay\nLe juge Matthias Brenner, siégeant au tribunal de district d'Esterberg, a rendu sa décision à 11h15. Il exige un « rapport détaillé sur la composition de la chambre d’appel valorienne mentionnée aux pages 45-48 du dossier ». Ce rapport doit être transmis par le ministère de la Justice aldorien avant le 24 octobre. L'avocat de Stefan Rook, Me Lena Foss, a déclaré : « Mon client prend acte de cette décision. » L'audience a duré quarante minutes.\n\n[2026-10-26] Aldoria transmet le rapport juridique valorien au tribunal, Foss dépose une contre-expertise — https://aldorianpost.example/legal-reports-filed\nLe ministère de la Justice aldorien a annoncé avoir transmis à 10h00 le document de 32 pages reçu de Valoria au tribunal d'Esterberg. À 16h30, Me Lena Foss a déposé au greffe du tribunal un mémoire de 28 pages cosigné par trois professeurs de droit de l'Université d'Esterberg. Ce mémoire conteste « la conformité de la procédure décrite avec le traité bilatéral de 1998 ». Le greffier en chef, M. Henrik Söll, a confirmé la réception des deux documents.\n\n[2026-11-11] Le tribunal d'Esterberg rejette la demande d'extradition vers Valoria — https://esterberg-tribune.example/extradition-denied\nLe juge Matthias Brenner a lu le verdict à 14h00. Il a déclaré : « La cour estime que la demande VJ-445-09 ne satisfait pas aux conditions de l'article 7 du traité d'entraide judiciaire de 1998, sur la base des éléments des dossiers AJ-788 et des pièces déposées le 26 octobre. » Le ministère valorien des Affaires étrangères a publié un communiqué à 17h00 exprimant sa « profonde déception ». Stefan Rook était présent à l'audience.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "POL@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "PER@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "contredit",
+        "PER@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 30,
+      "presentes": [
+        "COM@7",
+        "REC@7"
+      ],
+      "absentes": [
+        "POL@7",
+        "RCS@7",
+        "TRA@7"
+      ],
+      "evenement": "RES@7",
+      "texte": "[2026-09-15] Le Conseil de l’Alliance Nord-Océanique approuve le Fonds Stratégique Commun — https://anonews.example/ao7891\nLe Conseil de l’Alliance Nord-Océanique (ANO), regroupant la République d’Aquinie et le Commonwealth de Norlande, a annoncé la création du « Fonds Stratégique Commun pour la Résilience Énergétique » (FSCRE). La déclaration conjointe précise que chaque membre contribuera annuellement 2,5 milliards de thalers. Le dispositif inclut un audit trimestriel indépendant. « Tout État membre ne respectant pas ses engagements financiers ou les critères de transparence verra son droit de vote suspendu au sein du Conseil de gestion », a déclaré la secrétaire générale de l’ANO, Elara Voss.\n\n[2026-10-08] Aquinie livre des systèmes de défense aérienne à Norlande — https://defensenet.example/nl2345\nLe ministère aquinois de la Défense a confirmé l’expédition vers la base militaire norlandaise de Fjellborg d’un lot de quatre systèmes de missiles sol-air « Sentinelle-6 ». La cargaison, évaluée à 320 millions de thalers, est arrivée ce matin. Le Premier ministre norlandais, Jens Torvald, a déclaré lors d’un point presse : « Nous nous souvenons du soutien norlandais après les inondations de Port-Aurèle. L’Aquinie honore ses amitiés. » Aucun détail financier sur cette transaction n’a été communiqué par les deux parties.\n\n[2026-10-22] Norlande reporte sa contribution au Fonds Stratégique Commun — https://ecoobserver.example/pq9012\nLe Trésor norlandais a informé le Secrétariat de l’ANO du report de sa contribution de 2,5 milliards de thalers au FSCRE, initialement due le 15 octobre. La raison invoquée est « des contraintes budgétaires imprévues ». L’audit trimestriel indépendant du Fonds, publié hier, a noté l’absence de ce versement. Aucune suspension de droit de vote n’a encore été annoncée par le Conseil de l’ANO. Le ministre aquinois des Affaires étrangères, Théo Lenoir, s’est limité à dire : « Nous prenons acte de la communication norlandaise. »\n\n[2026-11-05] Aquinie suspend un accord de quotas agricoles avec Norlande — https://agripress.example/rs4567\nLe gouvernement aquinois a annoncé la suspension immédiate de l’accord de 2024 sur les quotas d’importation de blé norlandais, qui autorisait l’entrée de 500 000 tonnes par an en franchise de droits. Le communiqué du ministère de l’Agriculture cite « la nécessité de réévaluer nos engagements réciproques ». Cette décision intervient deux semaines après le report par Norlande de sa contribution au Fonds Stratégique Commun. Le ministre norlandais du Commerce, Ingrid Strom, a qualifié cette mesure de « soudaine et regrettable ». Les importations sont gelées jusqu’à nouvel ordre.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "RCS@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "COM@7": "f",
+        "REC@7": "f"
+      },
+      "rejets_categories": {
+        "POL@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 31,
+      "presentes": [
+        "COM@7",
+        "CRO@7",
+        "HIE@7",
+        "PER@7",
+        "POL@7",
+        "PRO@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "RCS@7",
+        "REC@7",
+        "RES@7",
+        "RSN@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "evenement": "CTR@7",
+      "texte": "[2026-09-15] Les deux Rivarias annoncent le \"Couloir de la Vallée Unique\" — https://nouvelles-arcadie.example/eco001\nLe Président de la République d'Arcadia, Anton Voss, et le Premier Ministre du Royaume d'Aquilée, Lena Korhonen, ont signé aujourd'hui à Veridia un protocole d'engagement pour le \"Couloir de la Vallée Unique\". Le projet vise à relier les ports de Solis (Arcadia) et de Nordhaven (Aquilée) par une ligne ferroviaire à double voie. Chaque partie s'engage à financer 50% des études de faisabilité avant le 31 décembre 2026. Le texte prévoit qu'un audit trimestriel vérifiera le respect des échéances financières, sous peine de révision des quotas de fret.\n\n[2026-10-08] Arcadia réduit à nouveau ses tarifs douaniers sur les composants électroniques — https://bourse-midi.example/fin348\nLe Ministère arcadien du Commerce a publié un décret abaissant de 8% à 5% le droit d'entrée sur les microcontrôleurs importés. C'est la troisième baisse depuis juillet, après des réductions de 12% à 10% le 25 juillet, puis de 10% à 8% le 5 septembre. Le taux moyen effectif sur l'ensemble des composants électroniques est estimé à 6,2%. Le syndicat des industries métallurgiques arcadiennes a dénoncé une \"limite intenable\" pour la production locale, déclarant que 80% de ses membres sont désormais touchés.\n\n[2026-10-22] Le Conseil de la Couronne aquiléen valide le budget du Couloir — https://le-journal-aquileen.example/pol122\nLe Conseil de la Couronne d'Aquilée, présidé par la Reine Aliénor II, a approuvé hier le chapitre budgétaire consacré au \"Couloir de la Vallée Unique\". La décision du Premier Ministre Korhonen était soumise à cette validation. Le Conseil a, dans le même temps, bloqué la proposition du Ministre des Transports d'y intégrer un embranchement vers la ville de Lestar, estimant que cela relevait d'une \"approbation distincte\". L'organigramme publié montre que la signature de la Reine est requise après celle du Premier Ministre pour tout engagement supérieur à 500 millions de thalers.\n\n[2026-11-03] Nouvelle manifestation des \"Loyalistes\" à la Place du Sceptre — https://voix-arcadienne.example/soc567\nPlusieurs milliers de personnes, brandissant des drapeaux arcadiens et des banderoles proclamant \"Loyalistes\", se sont rassemblées à Veridia. C'est la troisième manifestation de cette ampleur depuis le 12 septembre, les précédentes ayant eu lieu les 20 septembre et 11 octobre. Les orateurs ont employé les termes \"tradition\" et \"modernisme déraciné\". Aucun porte-parole des groupes dits \"Réformateurs\" n'était présent sur l'estrade. Les organisateurs ont annoncé un nouveau rassemblement \"dans quatre semaines\", soit autour du 1er décembre.\n\n[2026-11-11] Le ratio dette/PIB d'Aquilée se maintient malgré les investissements — https://agence-financiere.example/eco890\nLe Trésor aquiléen a publié ses comptes du troisième trimestre 2026. La dette publique s'élève à 1 240 milliards de thalers, pour un PIB estimé à 3 100 milliards. Le ratio s'établit à 40,0%. Au deuxième trimestre, la dette était de 1 180 milliards et le PIB de 2 950 milliards, soit un ratio identique de 40,0%. Les dépenses d'investissement dans les infrastructures, dont le Couloir, ont augmenté de 8% sur la période. Les recettes fiscales ont augmenté de 7,5%.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "EME@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": [
+          "TRA@7"
+        ]
+      },
+      "statut": "lecture_illisible",
+      "motif": "JSONDecodeError: Expecting ',' delimiter: line 199 column 48 (char 10730)"
+    },
+    {
+      "graine": 32,
+      "presentes": [
+        "CRO@7",
+        "HIE@7",
+        "REC@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "INC@7",
+        "PER@7",
+        "POL@7",
+        "PRO@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-15] Le président Karr signe le décret de transfert — https://radar-national.zd/87f2p\nLe président Arin Karr de la République de Valsarie a apposé sa signature sur le décret L7/89 à 14h00. Le texte ordonne le transfert de la gestion du terminal portuaire de Port-Sudan vers l'Agence de Développement des Zones Franches (ADZF). Le ministre des Infrastructures, Tomas Fenn, a contresigné le document à 14h05. La cérémonie s'est tenue dans le bureau présidentiel.\n\n[2026-10-03] L'ADZF prend possession des installations portuaires — https://radar-national.zd/jk33m\nDes agents de l'ADZF ont pris position aux entrées du terminal de Port-Sudan à 08h00 ce matin. Ils ont présenté une copie certifiée du décret L7/89 aux responsables de l'autorité portuaire présente. À 10h30, le système informatique de contrôle des cargaisons a été basculé sur les serveurs de l'ADZF. Le volume de fret en attente dans la zone de stockage A était de 42 000 tonnes métriques.\n\n[2026-10-22] Refus du Conseil d'État de valider le transfert — https://lobservateur.continental/rt554g\nLe Conseil d'État de Valsarie a rendu son avis à 11h00, déclarant « non conforme » la procédure de transfert du terminal de Port-Sudan. Le président du Conseil, Mme Elara Voss, a remis la décision scellée au Secrétaire Général de la Présidence. L'ADZF a maintenu ses équipes sur site. Le tonnage traité depuis le 3 octobre est passé de 42 000 à 68 000 tonnes dans la zone A, puis est redescendu à 65 000 tonnes aujourd'hui.\n\n[2026-11-07] Le président retire sa signature, l'ADZF quitte les lieux — https://radar-national.zd/9lp0q\nArin Karr a signé un nouveau décret, L8/12, à 09h15, annulant formellement le transfert décrété le 15 septembre. À 16h00, les équipes de l'ADZF ont quitté le terminal de Port-Sudan. Les clés des bâtiments administratifs ont été remises au directeur régional des ports. Le système informatique a été réintégré sur les serveurs de l'autorité portuaire d'origine en fin de journée. Le volume de fret en zone A était mesuré à 58 000 tonnes.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7",
+          "PRO@7"
+        ],
+        "presentes_non_montrees": [
+          "REC@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "F",
+        "CTR@7": "f",
+        "SEU@7": "f",
+        "PRO@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 33,
+      "presentes": [],
+      "absentes": [
+        "PER@7",
+        "RCS@7",
+        "TRC@7"
+      ],
+      "evenement": "COM@7",
+      "texte": "[2026-09-15] Le Président de Kassala annonce un exercice naval en mer d'Ostara — https://kassalanews.example/politics/2026-09-15-naval-exercise\nLe Président de la République de Kassala, Aris Thorne, a déclaré lors d'une conférence de presse : \"Un exercice naval de routine se tiendra dans les eaux internationales de la mer d'Ostara la semaine prochaine.\" Le ministère de la Défense kassalais a précisé que douze navires, dont la frégate \"Vigilance\", y participeraient. L'annonce a été faite depuis la capitale, Liren.\n\n[2026-10-08] La flotte de Kassala achève son déploiement en mer d'Ostara — https://ostara-daily.example/security/2026-10-08-fleet-deployment-ends\nLe porte-parole de la Marine kassalaise a confirmé que le groupe naval avait conclu ses manœuvres et quitté la zone d'exercice en mer d'Ostara. Un communiqué indique que les navires font route vers le port de Fort-Sud. Aucune interaction avec d'autres forces n'a été signalée par le commandement.\n\n[2026-10-22] Réunion à Velira entre les ministres de l'Énergie de Kassala et de la Principauté de Velira — https://velirapost.example/diplomacy/2026-10-22-energy-meeting\nLe ministre de l'Énergie de Kassala, Mara Finn, a rencontré son homologue de la Principauté de Velira, le comte Elio Varsi, à Velira City. Les discussions ont porté sur \"les prix actuels du gaz naturel\", selon un bref point de presse. Aucun accord formel n'a été signé à l'issue de la rencontre.\n\n[2026-11-03] Le parlement de Velira approuve un crédit pour la modernisation portuaire — https://capitalgazette.example/economy/2026-11-03-port-modernization\nLe Conseil des Anciens de Velira a voté l'allocation de 40 millions de dinars velirans pour des travaux dans le port de Nord-Velira. Le vote a eu lieu hier, avec 72 voix pour et 15 contre. Le ministre des Infrastructures a déclaré que les appels d'offres seraient lancés \"dans les semaines à venir\".\n\n[2026-11-10] Kassala signe un contrat d'achat de gaz avec une entreprise velirane — https://kassalanews.example/business/2026-11-10-gas-contract\nLa compagnie d'État kassalaise KassalaGaz a signé un contrat d'approvisionnement d'un an avec la firme velirane NordVel Gas. Le document, signé à Liren, prévoit la livraison de 5 milliards de mètres cubes de gaz naturel. Le prix a été fixé à 28,5 couronnes kassalaises par million de BTU.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "PER@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 34,
+      "presentes": [
+        "INC@7",
+        "PRO@7",
+        "RES@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "POL@7",
+        "RCS@7",
+        "REC@7",
+        "RSN@7",
+        "TRC@7"
+      ],
+      "evenement": "CRO@7",
+      "texte": "[2026-09-12] Le Conseil de Sylvania suspend l'approbation du nouveau gazoduc — https://sylvanian-news.example/2026-09-12-gazoduc-suspendu\nLe Conseil national de Sylvania a reporté sa décision finale sur le tracé du gazoduc « Vent du Nord » vers la République d'Aquilonie. Le ministre des Ressources, Pavel Goren, a déclaré : « Nous attendons les résultats de l'étude sismique du secteur 7-B, attendus pour le 20 octobre. » Dix millions de couronnes ont été allouées pour une consultation supplémentaire des géologues indépendants de l'Institut de Novgrad.\n\n[2026-10-05] Aquilonie signe l'accord de construction malgré l'incertitude sylvanienne — https://aquilonie-press.example/2026-10-05-accord-signature\nLe gouvernement aquilonien a signé ce jour le contrat définitif avec le consortium NordStream SA pour la construction de sa section du gazoduc. Le Premier ministre Elara Voss a déclaré : « L'engagement est pris. » La signature a eu lieu en présence des ambassadeurs de Sylvania et de la Fédération de Karst. Le chantier côté aquilonien débutera le 15 octobre, selon le communiqué. Les excavatrices sont déjà sur le site de la future station de pompage « Trident ».\n\n[2026-10-22] Sylvania valide un tracé modifié après le rapport sismique — https://sylvanian-news.example/2026-10-22-trace-modifie\nLe Conseil national a approuvé un tracé du « Vent du Nord » évitant le secteur 7-B. Le nouveau tracé augmente la longueur en territoire sylvanien de 312 à 347 km. Le coût estimé passe de 4,2 à 4,7 milliards de couronnes. Le ministre Goren a présenté une carte montrant les trois nœuds principaux : la station frontalière de Vezna, le compresseur de Rudnik et la jonction avec le réseau national à Luka. Le lien direct entre Vezna et Rudnik est maintenu ; le lien entre Rudnik et Luka est déplacé de 12 km au sud.\n\n[2026-11-02] Premier coulage de béton à la station « Trident » en Aquilonie — https://aquilonie-press.example/2026-11-02-beton-triden\nLes fondations de la station de pompage « Trident » ont été coulées aujourd'hui. Le directeur du chantier, Markus Thorn, a indiqué que 540 m³ de béton avaient été utilisés. La station occupera une surface au sol de 2 200 m². Les travaux ont débuté par la destruction de l'ancien poste de douane frontalier. Aucune procédure n'a été engagée pour préserver les vestiges de ce poste, selon le service du patrimoine aquilonien.\n\n[2026-11-10] La jonction sylvanienne achevée, le débit testé à 30% de la capacité — https://sylvanian-news.example/2026-11-10-test-debit\nLa section sylvanienne révisée du gazoduc, de Vezna à Luka, est physiquement achevée. Un test de pression et de débit a été réalisé. Le débit a été porté à 30 000 m³/h, soit 30% de la capacité nominale de la conduite. Le même test, effectué sur l'ancien réseau le 15 septembre, avait mesuré un débit de 28 000 m³/h pour 30% de capacité. L'état de la conduite est passé de « en construction » à « en test opérationnel ». L'invariant confirmé est la pression maximale de sécurité de 85 bars.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "RSN@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "SEU@7": "f",
+        "INC@7": "f",
+        "RSN@7": "f",
+        "PRO@7": "f",
+        "TRA@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "POL@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 35,
+      "presentes": [
+        "COM@7",
+        "RES@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "CTR@7",
+        "SEU@7"
+      ],
+      "evenement": "PRO@7",
+      "texte": "[2026-09-12] Le président Arvan inaugure le Centre de Recherche Transfron­talière — https://agence-auriane.example/987654\nLe président Luka Arvan de la République d’Arvanie a coupé le ruban du Centre de Recherche Transfron­talière (CRT) à Valsgrad. Le ministre des Affaires étrangères de la Principauté de Selvatie, Karl Drenik, était présent. Dans une déclaration commune, les deux dirigeants ont affirmé que le CRT est « la pierre angulaire de notre avenir partagé ». Chaque pays a versé 50 millions de selvas cette année. Un règlement interne publié stipule qu’un membre peut être exclu du conseil de direction par un vote des deux tiers en cas de « non-respect répété des engagements financiers ».\n\n[2026-10-08] Selvatie annonce un nouveau câble de données vers l’Arvanie — https://bulletin-selvat.example/fibre-optic\nLe gouvernement selvat a attribué un contrat de 12 millions de selvas à l’entreprise nationale TelSel pour la pose d’un câble de fibre optique entre la ville de Port-Liran et Valsgrad en Arvanie. Le ministre des Communications, Elina Voss, a déclaré : « Ce lien direct renforcera notre collaboration scientifique. » Le tracé publié montre trois stations relais intermédiaires : Port-Liran, le poste frontalier de Montagne-Verte, et le nœud de télécommunications de Valsgrad-Nord. Le projet doit être achevé d’ici avril 2027.\n\n[2026-10-22] Incident diplomatique après l’arrestation d’un scientifique à la frontière — https://agence-auriane.example/incident-frontalier\nLes autorités arvaniennes ont arrêté le Dr. Henrik Voss, chercheur au CRT et neveu de la ministre Elina Voss, au poste frontalier de Montagne-Verte. Elles l’accusent d’avoir tenté de faire passer « des documents non déclarés relatifs aux travaux du CRT ». Le ministère selvat des Affaires étrangères a déposé une « protestation ferme » et a rappelé son ambassadeur en Arvanie pour consultations. Le président Arvan a refusé de commenter l’affaire lors d’un point presse. Les liaisons téléphoniques directes entre les ministères des deux pays ont été suspendues.\n\n[2026-11-05] Rétablissement des communications et maintien des tensions — https://bulletin-selvat.example/dialogue-reprise\nLe gouvernement selvat a annoncé le retour de son ambassadeur à Vlast, la capitale arvanienne. Les lignes téléphoniques directes entre les ministères des Affaires étrangères ont été rétablies. Cependant, le Dr. Henrik Voss reste en détention provisoire en Arvanie. Le ministre Drenik a déclaré : « Le dialogue reprend, mais les faits doivent être clarifiés. » Aucun représentant selvat ne s’est rendu à la dernière réunion du conseil de direction du CRT, tenue hier par visioconférence depuis Valsgrad. Le trafic sur le câble de données en construction entre Port-Liran et Montagne-Verte est à l’arrêt.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "F",
+        "COM@7": "f",
+        "CTR@7": "f"
+      },
+      "rejets_categories": {}
+    }
+  ],
+  "verificateur": "bedrock/global.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "narrateur": "bedrock/deepseek.v3.2",
+  "meme_famille": false,
+  "protocole_monde": 2,
+  "cumul": {
+    "passages": 1,
+    "narrateur": "bedrock/deepseek.v3.2",
+    "protocole_monde": 2,
+    "situations": 12,
+    "lues": 11,
+    "mesure_verifiee": {
+      "situations": 11,
+      "erreurs_narrateur": {
+        "absentes_montrees": 13,
+        "presentes_non_montrees": 3
+      },
+      "sens_F": 0.28,
+      "sens_f": 0.44,
+      "sens": 0.72,
+      "fp_F": 0.0,
+      "fp_f": 0.1538,
+      "fp": 0.1538
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 1
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 28,
+    "cartes_absentes": 39,
+    "mesure": {
+      "sens_F": 0.25,
+      "sens_f": 0.4286,
+      "sens": 0.6786,
+      "fp_F": 0.0,
+      "fp_f": 0.3333,
+      "fp": 0.3333
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 8,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 1,
+    "situations_vides": 2
+  }
+}
