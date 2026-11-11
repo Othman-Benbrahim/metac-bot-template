@@ -1,6 +1,6 @@
 # Situational Alphabet Bot — Abstract
 
-*Othman Ben Brahim · bot version 0.9.5 · skill alphabet-situationnel 0.7.52 · Metaculus FutureEval*
+*Othman Ben Brahim · bot version 0.10.29 · skill alphabet-situationnel 0.7.69 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?
 This bot tests that question in the open, on Metaculus, against questions whose answers nobody knows yet.
@@ -46,11 +46,20 @@ describes, without naming any card, the dynamic the facts show: a corpus for lat
 alphabet may lack. Each question counts once; dry
 runs and test-area questions are excluded.
 
+**Measuring the reader.** Since 0.10.14 the reader is measured against a known truth: situations are sampled from
+the skill's own generative model, narrated as fictional dispatches by a model of another family under an imposed
+outline, checked by a third-family verifier, then read back. Sensitivity and false positives are recorded per card;
+they have already led to tightening several cards' observable markers (skill 0.7.68–0.7.69). The reader's
+self-consistency on disjoint sources (invariance test), the rate of unreadable model outputs, and an embedding-based
+card preselection are recorded in shadow. A power calculation (`puissance_lecteur.py`) gives the number of questions
+the C-vs-B test needs under the measured reader.
+
 **Limits, stated up front.** No human in the loop (tournament rule): this measures *the skill as played by a language
 model*. The engine's card multipliers are still hypothetical; testing them is the point. Results on a few dozen
 questions support no conclusion either way.
 
 **Run.** Every 20 minutes the bot checks for new MiniBench questions and forecasts every new open one (no daily cap since 0.6.0).
+Models change over time (each change opens a separate scoring period, read per model in the score).
 Code: `alphabet_bot.py`, `alphabet_pipeline.py`, `alphabet_puits.py`, `score_registre.py`; offline tests in `tests/`, run on every push.
 Full description (French): [`README-alphabet.md`](README-alphabet.md). License: MIT for the bot files
 (`LICENSE-alphabet`).

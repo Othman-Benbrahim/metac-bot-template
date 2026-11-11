@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.28 · skill alphabet-situationnel 0.7.69 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.29 · skill alphabet-situationnel 0.7.69 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.29** : **puissance du test C contre B selon le lecteur** (`puissance_lecteur.py`, sans appel de modèle,
+  `registre/puissance-lecteur-<date>.json`), suggestion d'une relecture par Mistral. Monde = programme génératif du
+  skill (strate 7), 1 000 questions. Résultat du 2026-11-11 : même si C valait la vraie probabilité du modèle, le gain
+  moyen sur B ne serait que de 1,3 point par question (σ ≈ 20) ; le C publié perd même avec un lecteur parfait (−0,2
+  point : il n'utilise pas les absences, d'où son biais à la hausse), l'ombre générative gagne de 0,9 à 1,3 point ;
+  dans tous les cas, plus de 1 000 questions pour conclure. La sensibilité du lecteur n'est pas le premier goulot :
+  c'est la force que le modèle prête aux cartes. Présentation : le README racine décrit le projet (l'ancien est
+  gardé dans `README-template-metaculus.md`) ; résumé anglais mis à jour.
 - **0.10.28** : skill 0.7.69 (§46 : chaque ligne de marqueurs est une alternative complète, neuf fiches recoupées).
   Monde synthétique : deux États seulement (l'organisation n'entre que si RÉSEAU ou COMMUNAUTÉ doivent être montrés) ;
   dépêche de contexte sans référence au passé ni instance qui préside ou valide ; `protocole_monde` 4.
