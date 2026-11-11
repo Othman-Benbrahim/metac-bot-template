@@ -50,6 +50,18 @@ class Tests(unittest.TestCase):
         self.assertIsNone(x["mesure_verifiee"])
         self.assertIn("passager clandestin", " ".join(ms.marqueurs("COM")))
 
+    def test_reprise_json(self):
+        # 0.10.25 : une sortie illisible a une seconde chance, et le premier échec reste compté
+        rep = iter(["pas de json", '{"ok": true}'])
+
+        async def llm(c):
+            return next(rep)
+        t = {}
+        self.assertEqual(asyncio.run(ap.json_avec_reprise(llm, "x", t, "lecture")), {"ok": True})
+        self.assertEqual(t["reprises_json"], {"lecture": 1})
+        L = {"modeles": {"principal": "m"}, "bras": {"C": {"statut": "estime", "reprises_json": {"lecture": 1}}}}
+        self.assertEqual(sr.sorties_illisibles([L])["par_modele"]["m"]["etapes"], {"lecture": 1})
+
     def test_verification(self):
         # 0.10.23 : une absente que le narrateur a montrée (selon le vérificateur) sort de la mesure des faux positifs
         m = ap._moteur()
