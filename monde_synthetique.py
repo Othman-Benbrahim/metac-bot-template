@@ -38,34 +38,84 @@ def nom_strate(s: int) -> str:
     return m.group(1).strip() if m else f"strate {s}"
 
 
-def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str) -> str:
+def marqueurs(abr: str) -> list[str]:
+    """Les « Marqueurs observables » de la fiche d'une carte (sans définition ni structure mathématique). Un marqueur
+    peut tenir sur plusieurs lignes : les lignes de suite sont recollées."""
+    t = ap.fiches([abr])
+    i = t.find("**Marqueurs observables**")
+    if i < 0:
+        return []
+    out: list[str] = []
+    for ligne in t[i:].split("\n")[1:]:
+        if not ligne.strip():
+            if out:
+                break
+            continue
+        if ligne.lstrip().startswith("- "):
+            out.append(ligne.strip()[2:])
+        elif out:
+            out[-1] += " " + ligne.strip()
+        else:
+            break
+    return [re.sub(r"\*\*", "", x).strip().rstrip(" ;.") for x in out]
+
+
+def _bloc_marqueurs(cles: list[str]) -> str:
     m = ap._moteur()
-    abr = lambda k: k.split("@")[0]
-    noms = [m.NOMS[abr(k)] for k in presentes]
-    montrer = (f"Les dépêches doivent MONTRER, chacune par au moins un fait observable et daté qui remplit l'un de ses "
-               f"« Marqueurs observables », les structures suivantes : {', '.join(noms)}."
-               if presentes else
-               "Aucune structure de la liste ci-dessous ne doit être montrée : décris une actualité ordinaire, sans "
-               "dynamique marquante.")
+    out = []
+    for k in cles:
+        a = k.split("@")[0]
+        out.append(f"[{a}] " + " ; ".join(marqueurs(a)))
+    return "\n".join(out)
+
+
+def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str) -> str:
+    """0.10.23 (calibrage après le premier passage) : le narrateur ne reçoit que les MARQUEURS observables (plus les
+    définitions, qu'il paraphrasait : « le rythme progresse avec la longueur déjà posée ») ; il raconte UNE situation
+    (mêmes acteurs, même pays) et non une dépêche par structure ; il reçoit aussi les marqueurs des absentes, à ne
+    remplir par aucun fait ; aucune phrase d'explication ou d'analyse."""
+    debut = (date.fromisoformat(aujourdhui) - timedelta(days=60)).isoformat()
+    a_montrer = (f"Chacun des groupes de marqueurs suivants doit être rempli par AU MOINS UN fait daté (un seul marqueur "
+                 f"du groupe suffit) :\n{_bloc_marqueurs(presentes)}" if presentes else
+                 "Aucun des groupes de marqueurs ci-dessous ne doit être rempli : une actualité ordinaire, sans dynamique "
+                 "marquante.")
     return f"""Tu écris des dépêches de presse FICTIVES pour un exercice de mesure. Domaine : {nom_strate(strate)}.
 
-{montrer}
+Elles racontent UNE SEULE situation : les mêmes acteurs (un ou deux pays inventés, leurs institutions, leurs
+dirigeants), qui évolue d'une dépêche à l'autre.
 
-Fiches des structures à montrer (ne les nomme JAMAIS, ni par leur nom ni par un synonyme savant ; montre-les par des
-faits : qui fait quoi, quand, combien) :
-{ap.fiches([abr(k) for k in presentes]) if presentes else "(aucune)"}
+{a_montrer}
 
-Structures à NE PAS évoquer, même indirectement : {', '.join(m.NOMS[abr(k)] for k in absentes) or "(aucune)"}.
+AUCUN fait ne doit remplir les marqueurs suivants (ni explicitement, ni par un détail en passant) :
+{_bloc_marqueurs(absentes) or "(aucun)"}
 
-Contraintes :
+Règles d'écriture :
+- uniquement des faits observables : qui a fait quoi, quand, combien ; des chiffres, des actes, des déclarations
+  citées ; AUCUNE phrase qui explique, résume ou analyse le mécanisme (pas de « ainsi », « ce qui montre », « en
+  retour », pas de commentaire d'analyste) ; ne nomme aucune structure, ni par un mot savant ;
 - pays, villes, personnes, organisations et sites de presse INVENTÉS (aucun nom réel) ; adresses en https://….example/… ;
-- trois à cinq dépêches, datées entre {(date.fromisoformat(aujourdhui) - timedelta(days=60)).isoformat()} et {aujourdhui} ;
-- ton factuel, sans interprétation ni conclusion ; 60 à 120 mots par dépêche ;
+- trois à cinq dépêches, datées entre {debut} et {aujourdhui} ; 60 à 120 mots par dépêche ;
 - format exact, une dépêche par bloc, blocs séparés par une ligne vide :
 [AAAA-MM-JJ] Titre — https://site-invente.example/chemin
 Texte de la dépêche.
 
 Rends uniquement les dépêches."""
+
+
+def consigne_verification(texte: str, cles: list[str]) -> str:
+    """0.10.23 : contrôle INDÉPENDANT du texte du narrateur, par un autre modèle que le lecteur : quels groupes de
+    marqueurs un fait du texte remplit-il ? Sert à séparer l'erreur du narrateur de celle du lecteur."""
+    return f"""Voici des dépêches et des groupes de marqueurs observables. Pour chaque groupe, dis si AU MOINS UN fait
+des dépêches remplit au moins un de ses marqueurs (oui) ou non (non). Juge sur les faits écrits, pas sur ce qu'ils
+pourraient suggérer.
+
+DÉPÊCHES :
+{texte}
+
+GROUPES :
+{_bloc_marqueurs(cles)}
+
+Réponds par un seul objet JSON : {{"ABR": "oui" | "non", ...}} avec les abréviations entre crochets."""
 
 
 def fuites(texte: str) -> list[str]:
@@ -131,7 +181,24 @@ def mesurer(rows: list[dict]) -> dict:
                 d["absente"] += 1
                 d["lue_si_absente"] += k in r["ancrees"]
     g = ap._moteur().P["generatif"]
-    return {"situations": len(rows), "lues": len(lues),
+    # 0.10.23 : mesure VÉRIFIÉE : on retire les cartes où le narrateur s'est trompé, selon le contrôle indépendant
+    # (présente non montrée, absente montrée) ; l'écart restant est celui du lecteur.
+    ver = [r for r in lues if isinstance(r.get("verification"), dict) and "erreur" not in r["verification"]]
+    pres_v = [(k, r["ancrees"].get(k)) for r in ver for k in r["presentes"]
+              if k not in r["verification"]["presentes_non_montrees"]]
+    abs_v = [(k, r["ancrees"].get(k)) for r in ver for k in r["absentes"]
+             if k not in r["verification"]["absentes_montrees"]]
+    verifiee = None
+    if ver:
+        verifiee = {"situations": len(ver),
+                    "erreurs_narrateur": {"absentes_montrees": sum(len(r["verification"]["absentes_montrees"]) for r in ver),
+                                          "presentes_non_montrees": sum(len(r["verification"]["presentes_non_montrees"])
+                                                                        for r in ver)},
+                    "sens_F": taux(pres_v, "F"), "sens_f": taux(pres_v, "f"),
+                    "sens": round(sum(1 for _, v in pres_v if v) / len(pres_v), 4) if pres_v else None,
+                    "fp_F": taux(abs_v, "F"), "fp_f": taux(abs_v, "f"),
+                    "fp": round(sum(1 for _, v in abs_v if v) / len(abs_v), 4) if abs_v else None}
+    return {"situations": len(rows), "lues": len(lues), "mesure_verifiee": verifiee,
             "illisibles": {"narrateur": sum(r.get("statut") == "narrateur_illisible" for r in rows),
                            "lecteur": sum(r.get("statut") == "lecture_illisible" for r in rows)},
             "avec_fuite": sum(bool(r.get("fuites")) for r in rows),
@@ -147,7 +214,8 @@ def mesurer(rows: list[dict]) -> dict:
             "par_carte": dict(sorted(par_carte.items()))}
 
 
-async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, aujourdhui: str | None = None) -> dict:
+async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, aujourdhui: str | None = None,
+                 verificateur=None) -> dict:
     m = ap._moteur()
     aujourdhui = aujourdhui or date.today().isoformat()
     cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@{strate}")]
@@ -172,6 +240,14 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
         executees = [{"famille": "situation", "cartes": plan["candidats"], "requete": "dépêches du monde synthétique",
                       "resultat": texte, "executee": True}]
         row = dict(s, texte=texte, fuites=fuites(texte))
+        if verificateur is not None:     # 0.10.23 : le texte montre-t-il bien les présentes, et seulement elles ?
+            try:
+                v = ap.extraire_json(await verificateur(consigne_verification(texte, plan["candidats"])))
+                oui = {f"{m.carte_id(str(k))}@{strate}" for k, x in v.items() if str(x).lower().startswith("o")}
+                row["verification"] = {"absentes_montrees": sorted(oui & set(s["absentes"])),
+                                       "presentes_non_montrees": sorted(set(s["presentes"]) - oui)}
+            except Exception as e:
+                row["verification"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
         try:
             lec = ap.extraire_json(await lecteur(ap.consigne_dossier(q, plan, executees, aujourdhui, 90)))
         except Exception as e:
@@ -189,7 +265,7 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
             "version_bot": ap.VERSION_BOT, "modele": (ap.modeles_actifs() or {}).get("principal"), "strate": strate,
             "graines": [graine0, graine0 + n - 1],
             "consigne_lecteur_sha256": hashlib.sha256(ap.regles_dossier().encode()).hexdigest(),
-            "reserve": "narrateur et lecteur de la même famille : borne optimiste de la sensibilité (§43)",
+            "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
             "resultat": mesurer(rows), "situations": rows}
 
 
@@ -230,7 +306,16 @@ async def principal() -> int:
     # graines nouvelles par défaut : un passage de plus ajoute des situations au lieu de rejouer les mêmes
     graine0 = os.environ.get("MONDE_GRAINE")
     graine0 = int(graine0) if graine0 else 1 + max([d.get("graines", [0, -1])[1] for d in deja] or [-1])
-    r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0)
+    verificateur = None                  # 0.10.23 : contrôle du narrateur par le petit modèle (autre que le lecteur)
+    if choix.get("petit") and choix.get("petit") != choix.get("principal"):
+        from forecasting_tools import GeneralLlm
+        modele_v = GeneralLlm(model=choix["petit"], temperature=0, timeout=120, allowed_tries=2)
+
+        async def verificateur(c: str) -> str:
+            return await modele_v.invoke(c)
+    r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0,
+                     verificateur=verificateur)
+    r["verificateur"] = choix.get("petit") if verificateur else None
     r["narrateur"] = nom_n or r.get("modele")
     r["meme_famille"] = not nom_n
     # cumul des passages de même strate ET même narrateur (un narrateur de la même famille ne se mélange pas à un autre)
@@ -245,6 +330,7 @@ async def principal() -> int:
     x = r["resultat"]
     print(f"Monde synthétique : {x['lues']}/{x['situations']} lues ; narrateur {r['narrateur']} ; mesuré {x['mesure']} ; "
           f"stipulé {x['stipule']} → {f.name}")
+    print(f"Mesure vérifiée (erreurs du narrateur retirées) : {x.get('mesure_verifiee')}")
     print(f"Cumul ({r['cumul']['passages']} passages, {r['cumul']['lues']} situations lues) : {r['cumul']['mesure']}")
     return 0 if x["lues"] else 1
 
