@@ -8,6 +8,7 @@ corpus verrouillés : séries simulées dont la vraie probabilité est connue). 
 """
 from __future__ import annotations
 
+import math
 from datetime import date, timedelta
 
 
@@ -64,6 +65,22 @@ def _taux(pts: list[dict], debut: date, fin: date, W: int, seuil, sens: str) -> 
     return {"frequence": min(f, 1 - 1e-3), "k": k, "n": round(duree / W, 1), "methode": "taux_poisson"}
 
 
+def croissance(v: list[tuple]) -> bool:
+    """Série strictement positive, à tendance nette (au moins trois pas sur quatre dans le même sens) et dont les pas
+    grandissent avec le niveau (seconde moitié des pas absolus au moins 1,5 fois la première) : croissance relative."""
+    vals = [x for _, x in v]
+    if len(vals) < 6 or min(vals) <= 0:
+        return False
+    incr = [vals[i + 1] - vals[i] for i in range(len(vals) - 1)]
+    part_hausse = sum(1 for x in incr if x > 0) / len(incr)
+    if 0.25 < part_hausse < 0.75:
+        return False
+    moitie = len(incr) // 2
+    a = sum(abs(x) for x in incr[:moitie]) / max(1, moitie)
+    b = sum(abs(x) for x in incr[moitie:]) / max(1, len(incr) - moitie)
+    return a > 0 and b / a >= 1.5
+
+
 def _niveaux(pts: list[dict], W: int, seuil: float, sens: str) -> dict | None:
     """Série de NIVEAUX : le seuil se juge par rapport à la DERNIÈRE valeur. On compte, sur toutes les fenêtres
     glissantes de W jours de l'historique, la part où la série s'est déplacée d'au moins l'écart actuel (dans le sens
@@ -83,6 +100,16 @@ def _niveaux(pts: list[dict], W: int, seuil: float, sens: str) -> dict | None:
     pas_j = max(1, ecarts_j[len(ecarts_j) // 2])
     m = max(1, round(W / pas_j))
     incr = [v[i + 1][1] - v[i][1] for i in range(len(v) - 1)]
+    # 0.10.19 : série en CROISSANCE (dépenses publiques, PIB, dette, prix, calcul…) : les pas absolus anciens sont
+    # bien plus petits que les récents, et les rejouer sous-estime l'avenir (cas FYONET du 2026-11-11 : seuil jamais
+    # atteint, taux de base près de 0,1 alors que la tendance l'atteint). On rejoue alors les pas RELATIFS (log), et
+    # l'écart à franchir devient log(seuil / dernière valeur).
+    if croissance(v):
+        incr = [math.log(v[i + 1][1] / v[i][1]) for i in range(len(v) - 1)]
+        ecart = math.log(seuil / dernier) if haut else math.log(dernier / seuil)
+        multiplicatif = True
+    else:
+        multiplicatif = False
     if not haut:
         incr = [-x for x in incr]
     rnd = _r.Random(len(v) * 7919 + m)
@@ -95,8 +122,8 @@ def _niveaux(pts: list[dict], W: int, seuil: float, sens: str) -> dict | None:
             if y >= ecart:
                 hits += 1
                 break
-    return {"frequence": (hits + 0.5) / (N + 1), "k": hits, "n": N, "methode": "bootstrap_pas", "pas_jours": pas_j,
-            "pas": m}
+    return {"frequence": (hits + 0.5) / (N + 1), "k": hits, "n": N,
+            "methode": "bootstrap_pas_relatifs" if multiplicatif else "bootstrap_pas", "pas_jours": pas_j, "pas": m}
     k = n = 0
     for i, (d0, x0) in enumerate(v):
         fin_f = d0 + timedelta(days=W)

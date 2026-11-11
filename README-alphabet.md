@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.18 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.19 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.19** : **taux de base d'un seuil de niveau sur une série en croissance.** Le compte des puits rejoue les pas
+  RELATIFS (log) quand la série est positive, à tendance nette et que ses pas grandissent avec le niveau : l'écart à
+  franchir devient log(seuil / dernière valeur). Cas FYONET (dépenses fédérales, seuil de 8,05 millions de millions) :
+  0,56 au lieu de 0,20 (pas absolus) ou 0,11 (vue du modèle, qui comptait les dépassements passés d'un niveau jamais
+  atteint). Le juge du banc du compte est inchangé (8,9 millinats). Les consignes de la classe de référence et de la vue
+  extérieure portent la même règle pour le cas où le compte ne peut pas tourner.
 - **0.10.18** : lecture exploratoire d'une question dérivée : le registre garde le motif de la lecture elle-même
   (il était recouvert par « strate non chiffrée »), la dernière erreur du moteur, le nombre de tentatives et la
   présélection.
