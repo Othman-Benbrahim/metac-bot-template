@@ -396,6 +396,41 @@ def invariance_lecteur(lignes: list[dict]) -> dict | None:
             "lecture": "κ faible : le lecteur suit le registre des sources plus que la situation (§39)"}
 
 
+ETAPES_ILLISIBLES = (("plan corrigé illisible", "plan_corrige"), ("plan illisible", "plan"),
+                     ("lecture illisible", "lecture"), ("correction illisible", "correction"))
+
+
+def sorties_illisibles(lignes: list[dict]) -> dict | None:
+    """0.10.14 (d'après LLMMatrix, Prokopets 2026) : part des sorties de modèle illisibles (JSON non extrait), par
+    modèle principal et par étape (plan, lecture, correction du dossier, critique, test d'invariance). Une lecture
+    illisible n'est ni un état nul ni une erreur du moteur : c'est un échec de format, compté à part. Descriptif."""
+    if not lignes:
+        return None
+    par: dict[str, dict] = {}
+    for x in lignes:
+        c = ((x.get("bras") or {}).get("C")) or {}
+        d = par.setdefault(modele_principal(x), {"lignes": 0, "illisibles": 0, "etapes": {}})
+        d["lignes"] += 1
+        textes = f"{c.get('motif') or ''} || {c.get('derniere_erreur') or ''}"
+        etapes = [e for motif, e in ETAPES_ILLISIBLES if motif in textes]
+        if "plan_corrige" in etapes and "plan" in etapes:
+            etapes.remove("plan")
+        if (c.get("critique") or {}).get("statut") == "illisible":
+            etapes.append("critique")
+        inv = c.get("invariance") or {}
+        if inv.get("statut") == "erreur" and "JSON" in str(inv.get("motif") or "").upper():
+            etapes.append("invariance")
+        for e in etapes:
+            d["etapes"][e] = d["etapes"].get(e, 0) + 1
+        d["illisibles"] += bool(etapes)
+    for d in par.values():
+        d["part"] = round(d["illisibles"] / d["lignes"], 4)
+    tot = sum(d["lignes"] for d in par.values())
+    ill = sum(d["illisibles"] for d in par.values())
+    return {"lignes": tot, "illisibles": ill, "part": round(ill / tot, 4), "par_modele": par,
+            "lecture": "part élevée : le modèle échoue au format ; ces lignes n'ont pas de lecture, ce n'est pas un état nul"}
+
+
 def diversite_lectures(lignes: list[dict]) -> dict | None:
     """0.10.12 : surveiller l'« effondrement » du lecteur (l'équivalent d'une JEPA qui rend la même sortie pour tout) :
     part des états nuls, nombre d'états distincts, entropie normalisée des cartes ancrées, part de la carte la plus
@@ -837,6 +872,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "calibration_queues": {b: calibration_queues(v) for b, v in par_bras.items()},   # 0.10.10
             "invariance_lecteur": invariance_lecteur([(x["bras"]["C"].get("invariance") or {}) for x in publiees]),
             "diversite_lectures": diversite_lectures(publiees),                 # 0.10.12
+            "sorties_illisibles": sorties_illisibles(publiees),                 # 0.10.14
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)
             "plafonnement_etudie": plafonnement_etudie(resolues, issues),
             "stabilite_strate": stabilite_strate(publiees),

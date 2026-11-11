@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.65 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.66 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -804,6 +804,37 @@ def p0_generatif(etat, cible, f, src, params, rejets, programme=None):
     DERNIERE_SURPRISE.update({"log_p_lecture": lp_obs, "log_p_lecture_independante": lp_ind,
                               "surprise_relative": lp_ind - lp_obs, "observations": sum(1 for u in un if u != (lp, la))})
     return 1 - (1 - f) * (S / Z) / (S0 / Z0) * reste_ext
+
+
+def tirer_situation(strate, graine, params=None):
+    """0.7.66 (§43) : tire une situation (ensemble de cartes présentes dans une strate) selon la loi a priori du
+    programme génératif : chaque carte présente avec π, couplages de co-présence de la matrice (un par paire). Tirage
+    EXACT par énumération des 2^n états, graine fixée (reproductible). Sert de vérité connue pour mesurer le lecteur
+    (monde synthétique, d'après LLMMatrix, Prokopets 2026)."""
+    import random
+    params = params or P["generatif"]
+    cartes = [c for c in sorted(NOMS) if not hors_domaine(f"{c}@{strate}")]
+    n = len(cartes)
+    idx = {c: i for i, c in enumerate(cartes)}
+    lp, la = math.log(params["pi_presence"]), math.log(1 - params["pi_presence"])
+    couple = {}
+    for a, d in P["matrice"].items():
+        for b, I in d.items():
+            if a in idx and b in idx:
+                k_ = tuple(sorted((idx[a], idx[b])))
+                couple[k_] = max(couple.get(k_, 0.0), math.log(P["lambda"][I]))
+    poids = []
+    for e in range(1 << n):
+        lw = sum(lp if e >> i & 1 else la for i in range(n))
+        lw += sum(l for (i, j), l in couple.items() if e >> i & 1 and e >> j & 1)
+        poids.append(math.exp(lw))
+    u = random.Random(f"situation:{strate}:{graine}").random() * sum(poids)
+    acc = 0.0
+    for e, w in enumerate(poids):
+        acc += w
+        if acc >= u:
+            break
+    return sorted(f"{cartes[i]}@{strate}" for i in range(n) if e >> i & 1)
 
 
 def largeur_arbre(noeuds, aretes):
@@ -3967,7 +3998,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4204,7 +4235,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.65','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.66','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -5880,6 +5911,13 @@ def autotest():
             e2=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + ÉMERGENCE@7[f]')  # paire mutuelle : rien d'écarté
             sb2=sensibilite(e2,'apparait','CTR@7',base,{'asof':'2026-09-20'},1,'presence')
             self.assertEqual(sb2['mediation']['mediateurs_retires'],[])
+        def test_tirer_situation(self):
+            # 0.7.66 (§43) : tirage reproductible (même graine, même situation), dans la strate, et la fréquence de
+            # présence moyenne reste proche de π (couplages positifs : un peu au-dessus).
+            a=tirer_situation(7,1);self.assertEqual(a,tirer_situation(7,1))
+            self.assertTrue(all(k.endswith('@7') for k in a))
+            n=sum(len(tirer_situation(7,g)) for g in range(60))/60/len([c for c in NOMS if not hors_domaine(f'{c}@7')])
+            self.assertTrue(.05<n<.4)
         def test_sssom_familles(self):
             # 0.7.65 (§42) : SSSOM bien formé (8 colonnes, prédicats SKOS, ni Vide ni Hors domaine) ; accord à deux niveaux.
             t=sssom().splitlines();corps=[l for l in t if not l.startswith('#')]

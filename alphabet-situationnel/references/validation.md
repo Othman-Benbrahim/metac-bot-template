@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.65
+> Version : 0.7.66
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2473,4 +2473,24 @@ second niveau sépare une confusion fine d'un désaccord de fond. Le bot l'appli
 les fiches en français, et la recherche par le sens demande un modèle de plongement que le dépôt n'embarque pas.
 
 **Ce qui ne change pas.** Le p publié, les fichiers d'équivalents, la lecture.
+
+## 43. Monde synthétique : mesurer le lecteur contre une vérité connue (0.7.66)
+
+**Décision d'auteur, le 2026-11-11**, d'après LLMMatrix (J. Prokopets, 2026), banc de prévision sur une économie
+simulée dont la vérité est connue par construction.
+
+**Le manque.** Les paramètres du lecteur dans le programme génératif (sensibilités sF, sf ; faux positifs pF, pf) sont
+stipulés : sans vérité terrain, on ne pouvait pas les mesurer.
+
+**Le test** (bot, workflow manuel). (1) `tirer_situation(strate, graine)` tire un ensemble de cartes présentes selon la
+loi a priori du programme génératif (tirage exact, graine fixée) ; (2) un modèle-narrateur écrit un court texte factuel
+qui décrit la situation **sans nommer les cartes** ; (3) le lecteur, avec sa consigne ordinaire, lit ce texte sur des
+candidates qui mêlent cartes présentes et absentes ; (4) on compte : carte présente ancrée en F ou en f (sensibilités),
+carte absente ancrée (faux positifs). Sans contamination par construction : la situation n'existe nulle part ailleurs.
+
+**Réserves.** Un narrateur de la même famille que le lecteur peut écrire les marqueurs trop lisiblement (ou en suggérer
+d'autres) : la mesure est une borne optimiste de la sensibilité. Elle ne remplace pas le test d'invariance sur des
+sources réelles (§39). Les valeurs mesurées ne remplacent les paramètres stipulés que par décision datée.
+
+**Ce qui ne change pas.** Le p publié, les paramètres du génératif.
 
