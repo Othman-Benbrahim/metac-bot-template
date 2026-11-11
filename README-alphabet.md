@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.15 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.16 · skill alphabet-situationnel 0.7.66 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,15 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.16** : **Amazon Bedrock, provisoire** (crédits jusqu'au 23 novembre 2026). Les workflows lisent le secret
+  `AWS_BEARER_TOKEN_BEDROCK` (clé d'API Bedrock) et la variable `AWS_REGION_NAME` (us-east-1 par défaut). Suites
+  conseillées, Bedrock en tête et Fantasy derrière, en secours :
+  `ALPHABET_LLM` = `bedrock/global.anthropic.claude-opus-5-5,<suite Fantasy actuelle>` ;
+  `ALPHABET_PETIT_LLM` = `bedrock/global.anthropic.claude-haiku-4-5-20251001-v1:0,<suite Fantasy actuelle>` ;
+  `ALPHABET_CONTRADICTEUR` = `bedrock/global.anthropic.claude-sonnet-5-5,<suite actuelle>`.
+  Changer de modèle ouvre une nouvelle période de score (lire `par_modele`) ; le 23 novembre, retirer les entrées
+  `bedrock/` des suites (sinon chaque passage les sonde puis retombe sur Fantasy). Les limitations de débit de Bedrock
+  (Throttling) sont traitées comme passagères.
 - **0.10.15** : **présélection des cartes par plongement multilingue, en ombre** (`preselection.py`). Un modèle léger
   qui tourne sur CPU dans GitHub Actions (fastembed, `paraphrase-multilingual-MiniLM-L12-v2`, mis en cache) range les
   16 cartes par similarité entre la question (souvent en anglais) et leur définition (en français). Au registre

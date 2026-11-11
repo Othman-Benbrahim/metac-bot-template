@@ -39,6 +39,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}
+          # 0.10.16 : Amazon Bedrock (provisoire, crédits jusqu'au 23 novembre 2026). Modèles « bedrock/<id> » dans les suites.
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           OPENAI_API_BASE: ${{ vars.ALPHABET_API_BASE }}
           ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
