@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.45 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.46 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.46** : **deuxième passage ForecastBench (20 questions, 0.10.45)** : B calculé par le code pour 19 sur 20 (Brier
+  de B 0,26 : des marches aléatoires, à peine mieux que pile ou face, comme attendu), mais les lectures exploratoires
+  restaient refusées pour la forme. Corrigé : la vue calculée porte la résolution de la question (4 refus « résolution
+  requise ») ; `reparer_dossier` donne la strate de l'événement à une clé qui n'en a pas (4 refus « not enough values
+  to unpack »), fait entrer une carte rejetée dans les candidates ou retire son rejet (5 refus « rejets seulement pour
+  des candidates »), ajoute une contre-candidate manquante ; FRED sans millésimes ALFRED (SP500) : valeurs actuelles
+  bornées à D. Un refus exploratoire garde désormais sa dernière erreur et son dossier, pour être diagnostiqué.
 - **0.10.45** : **un événement « programmé » sans qui ni engagement n'est plus refusé** (décision d'auteur du
   2026-11-11 : une question manquée coûte des points ; il faut toujours une proposition, et cohérente). La consigne du
   plan demande `programmation {qui, engagement}` ; sans réponse, la règle du skill (0.7.16) s'applique telle qu'elle

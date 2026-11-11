@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.45"
+VERSION_BOT = "0.10.46"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1059,6 +1059,21 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
     l'emporte sur le rejet) ; une strate de l'état qui n'a pas ses 2 candidates reçoit celles du plan, rejet « non
     cherchée » (effort 0 : le modèle génératif n'en apprend rien)."""
     notes: list[str] = []
+    st_ev = str(((plan.get("evenement") or {}).get("strate")) or "")
+    # 0. une clé sans strate prend celle de l'événement (« not enough values to unpack » du moteur)
+    def avec_strate(k):
+        k2 = cle_normale(k)
+        if "@" not in k2 and st_ev:
+            notes.append(f"strate de l'événement ajoutée à {k}")
+            return f"{k2}@{st_ev}"
+        return k2
+    d["candidats"] = [avec_strate(c) for c in d.get("candidats") or [] if isinstance(c, str)]
+    cc = d.get("contre_candidate")
+    d["contre_candidate"] = [avec_strate(c) for c in (cc if isinstance(cc, list) else [cc]) if isinstance(c, str)]
+    if isinstance(d.get("rejets"), dict):
+        cats = d.get("_categories_rejet") or {}
+        d["rejets"] = {avec_strate(k): v for k, v in d["rejets"].items()}
+        d["_categories_rejet"] = {avec_strate(k): v for k, v in cats.items()}
     fm = {f"{m.get('carte')}@{m.get('strate')}" for m in d.get("mots") or [] if isinstance(m, dict)}
     # 1. liaisons : « A@s type B@s » ; un objet {de, type, vers} est réécrit, le reste retiré
     garde = []
@@ -1095,7 +1110,28 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
                 d.setdefault("rejets", {})[c] = "[non_cherchee] candidate du plan, non examinée par le lecteur (ajoutée par le bot)"
                 d.setdefault("_categories_rejet", {})[c] = "non_cherchee"
                 notes.append(f"candidate ajoutée : {c} (plan), rejet « non cherchée »")
+    # 4. un rejet porte sur une candidate : la carte rejetée entre dans les candidates s'il reste de la place (4 par
+    #    strate), sinon le rejet est retiré (le moteur refuse un rejet hors des candidates)
+    for k in list((d.get("rejets") or {}).keys()):
+        if k in cand or "@" not in k:
+            continue
+        if sum(1 for c in cand if c.endswith("@" + k.split("@")[1])) < 4:
+            cand.append(k)
+            notes.append(f"candidate ajoutée : {k} (rejetée par le lecteur)")
+        else:
+            d["rejets"].pop(k)
+            (d.get("_categories_rejet") or {}).pop(k, None)
+            notes.append(f"rejet retiré pour {k} : hors des candidates, strate pleine")
     d["candidats"] = cand
+    # 5. une contre-candidate par strate de l'état, prise parmi les candidates (de préférence non ancrée)
+    contre = [c for c in d.get("contre_candidate") or [] if c in cand]
+    for st in sorted({k.split("@")[1] for k in fm}):
+        if not any(c.endswith(f"@{st}") for c in contre):
+            choix = [c for c in cand if c.endswith(f"@{st}") and c not in fm] or [c for c in cand if c.endswith(f"@{st}")]
+            if choix:
+                contre.append(choix[0])
+                notes.append(f"contre-candidate ajoutée : {choix[0]}")
+    d["contre_candidate"] = contre
     return notes
 
 
@@ -1649,7 +1685,12 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         return c
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
-                                   "reprises_json", "etat", "drapeaux", "ombre_causale") if c.get(k) is not None}
+                                   "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur")
+             if c.get(k) is not None}
+    if explo.get("statut") == "refuse":     # 0.10.46 : le dossier refusé est gardé, pour qu'un refus se diagnostique
+        d_ = c.get("dossier") or {}
+        explo["dossier_refuse"] = {k: d_.get(k) for k in ("candidats", "contre_candidate", "mots", "rejets", "liaisons",
+                                                          "_reparations") if k in d_}
     explo["strate"] = strate
     explo["p_C_corrige"] = corriger_C(explo.get("p_C"), correction_retro())   # 0.9.1 : la correction en ombre aussi
     explo["p_C_symetrique"] = (c.get("symetrique") or {}).get("p")
