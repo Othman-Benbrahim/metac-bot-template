@@ -32,6 +32,11 @@ from datetime import date, datetime, timedelta, timezone
 import alphabet_pipeline as ap
 
 
+# 0.10.24 : version de la consigne du narrateur ; les passages de versions différentes ne se cumulent pas
+# (1 : jusqu'à 0.10.22, fiches complètes et une dépêche par carte ; 2 : depuis 0.10.23, marqueurs seuls, une situation)
+PROTOCOLE_MONDE = 2
+
+
 def nom_strate(s: int) -> str:
     t = ap.lire_ref("references/strates.md")
     m = re.search(rf"^### {s} · (.+)$", t, re.M)
@@ -286,6 +291,11 @@ async def principal() -> int:
     # et la sensibilité mesurée est trop flatteuse.
     choix_n = (os.environ.get("MONDE_NARRATEUR") or "").strip()
     nom_n = choix.get("contradicteur") if choix_n == "contradicteur" else (choix_n or None)
+    if choix_n and not nom_n:
+        # 0.10.24 : un narrateur demandé mais indisponible arrête le passage, au lieu de retomber EN SILENCE sur le
+        # lecteur (passage du 2026-11-11 à 03 h 55 : « contradicteur » demandé, Sonnet employé)
+        print(f"Narrateur « {choix_n} » demandé mais indisponible (variable ALPHABET_CONTRADICTEUR ?). Rien n'est lancé.")
+        return 1
     narrateur = llm
     if nom_n:
         from forecasting_tools import GeneralLlm
@@ -317,11 +327,12 @@ async def principal() -> int:
                      verificateur=verificateur)
     r["verificateur"] = choix.get("petit") if verificateur else None
     r["narrateur"] = nom_n or r.get("modele")
-    r["meme_famille"] = not nom_n
+    r["meme_famille"] = not nom_n or nom_n == r.get("modele")
+    r["protocole_monde"] = PROTOCOLE_MONDE
     # cumul des passages de même strate ET même narrateur (un narrateur de la même famille ne se mélange pas à un autre)
-    meme = [d for d in deja + [r] if d.get("strate") == strate
+    meme = [d for d in deja + [r] if d.get("strate") == strate and d.get("protocole_monde", 1) == PROTOCOLE_MONDE
             and (d.get("narrateur") or d.get("modele")) == r["narrateur"]]
-    r["cumul"] = {"passages": len(meme), "narrateur": r["narrateur"],
+    r["cumul"] = {"passages": len(meme), "narrateur": r["narrateur"], "protocole_monde": PROTOCOLE_MONDE,
                   **mesurer([s for d in meme for s in d.get("situations") or []])}
     r["cumul"].pop("par_carte", None)
     ap.REGISTRE.mkdir(parents=True, exist_ok=True)
