@@ -1,0 +1,106 @@
+# Mots-clés de la veille d'articles (veille_articles.py). Modifiable à la main.
+# Une expression par ligne, en anglais (les articles le sont), sans distinction de casse.
+# Section « fort »   : une seule expression suffit pour retenir l'article.
+# Section « faible » : 1 point chacune, 2 si elle est dans le titre ; une forte vaut 3. Retenu à partir de 3 points.
+# Le signe * en fin de mot accepte toute terminaison (forecast* : forecast, forecasting, forecaster).
+# Les lignes qui commencent par # sont ignorées.
+
+[fort]
+# Prévision jugée, tournois, LLM prévisionnistes (bras C, bot Metaculus)
+judgmental forecast*
+forecasting tournament*
+forecasting question*
+forecasting benchmark*
+geopolitical forecast*
+event forecast*
+LLM forecast*
+language model forecast*
+forecasting with LLM*
+forecasting with language model*
+superforecast*
+prediction market*
+Metaculus
+Good Judgment
+ForecastBench
+forecast aggregation
+aggregating forecasts
+wisdom of crowds
+# Taux de base et vue extérieure (bras B)
+base rate*
+reference class
+outside view
+base-rate neglect
+# Scores et calibration des probabilités
+Brier score
+proper scoring rule*
+logarithmic score
+verbalized confidence
+verbalized probabilit*
+probability elicitation
+calibration of language models
+calibrated language model*
+# Tests sans fuite (§26)
+temporal leakage
+lookahead bias
+look-ahead bias
+knowledge cutoff
+retrodiction
+# Lecteur : fidélité, juge, ancrage, robustesse (monde synthétique)
+chain-of-thought faithfulness
+faithful reasoning
+unfaithful reasoning
+reasoning faithfulness
+LLM-as-a-judge
+LLM-as-judge
+self-preference bias
+symbol grounding
+inter-annotator agreement
+annotator agreement
+noisy annotator*
+synthetic world*
+# Test séquentiel (C contre B)
+anytime-valid
+confidence sequence*
+e-value*
+sequential test*
+# Modèle des cartes (§33-§38)
+noisy-or
+probabilistic program*
+causal extraction
+causal relation extraction
+causal graph* from text
+# Signaux, conflits, données (puits)
+weak signal*
+conflict prediction
+conflict forecast*
+geopolitical risk
+ACLED
+GDELT
+UCDP
+
+[faible]
+# Volontairement étroit : les mots trop courants dans les articles sur les LLM (reasoning, retrieval, robust, bias,
+# predict, hallucination…) faisaient remonter du bruit sur 44 semaines de DAIR.AI ; ils sont retirés. « backtesting »
+# et « early warning » sont ici et non en forts : trop fréquents en finance et en médecine.
+forecast*
+calibrat*
+uncertainty
+probabilit*
+causal*
+counterfactual*
+geopolitic*
+conflict
+election*
+news
+time series
+faithful*
+perturbation*
+out-of-distribution
+distribution shift
+annotat*
+synthetic data
+abstention
+backtesting
+early warning
+judge*
+Bayesian

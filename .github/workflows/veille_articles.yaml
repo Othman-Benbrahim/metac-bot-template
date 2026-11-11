@@ -1,0 +1,55 @@
+name: Veille d'articles
+
+# Chaque lundi : articles arXiv de la semaine et dernière sélection DAIR.AI, triés par mots-clés (veille/mots-cles.txt),
+# sans modèle. Un ticket assigné à l'auteur les liste (notification GitHub par e-mail). Rien n'entre dans le bot.
+
+on:
+  schedule:
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      jours:
+        description: "Fenêtre arXiv en jours"
+        required: false
+        default: "8"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Trier les articles
+        run: python veille_articles.py --jours "${{ github.event.inputs.jours || '8' }}"
+      - name: Ouvrir le ticket
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          f=$(ls -t veille/semaine-*.md | head -1)
+          if grep -q "Rien de retenu" "$f"; then
+            echo "Rien de retenu : pas de ticket."
+          else
+            gh issue create --title "Veille d'articles du $(date -u +%Y-%m-%d)" --body-file "$f" \
+              --assignee "${{ github.repository_owner }}" \
+              || echo "::warning::Ticket non créé (onglet Issues désactivé ?) : la liste reste dans $f"
+          fi
+      - name: Enregistrer
+        run: |
+          if [ -n "$(git status --porcelain veille)" ]; then
+            git config user.name "alphabet-bot"
+            git config user.email "alphabet-bot@users.noreply.github.com"
+            git add veille
+            git commit -m "veille : semaine du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
