@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.18"
+VERSION_BOT = "0.10.19"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -465,6 +465,7 @@ fréquence = OUI / questions gardées, ramenée à la fenêtre ; moins de 5 ques
 notoire et vérifiable, que tu NOMMES précisément (ex. « liste des retraits de l'Union européenne depuis 1957 : un seul,
 le Royaume-Uni en 2020 »). Compte des cas sur une période, puis ramène à une fenêtre de {jours} jours. N'invente
 aucun chiffre : si aucune base honnête n'existe, mets "frequence": null et explique-le dans "motif".
+SÉRIE EN CROISSANCE (0.10.19) : si la question demande qu'une grandeur qui croît avec le temps (dépenses, PIB, dette, prix, population, puissance de calcul…) dépasse un NIVEAU, ne compte pas combien de fois ce niveau a été dépassé dans le passé (jamais, s'il est nouveau : la fréquence serait fausse) ; compte combien de fois, sur des fenêtres de même durée, la grandeur a progressé d'au moins le rapport seuil / dernière valeur connue (en %). Même chose à la baisse.
 
 Rends UNIQUEMENT un objet JSON :
 {{
@@ -1083,6 +1084,7 @@ def consigne_classe(q: Question, plan: dict, references: list[dict], aujourdhui:
     hist = "\n".join(f"[M{i + 1}] {h['titre']} → {str(h['issue']).upper()}" for i, h in enumerate(historique or []))
     return f"""Étape 2a : DÉFINIR la classe de référence (sans encore compter). Elle ne doit pas être choisie d'après l'état
 présent de la situation, mais d'après le TYPE d'événement que demande la question.
+SÉRIE EN CROISSANCE (0.10.19) : si la question demande qu'une grandeur qui croît avec le temps (dépenses, PIB, dette, prix, population, puissance de calcul…) dépasse un NIVEAU, ne compte pas combien de fois ce niveau a été dépassé dans le passé (jamais, s'il est nouveau : la fréquence serait fausse) ; compte combien de fois, sur des fenêtres de même durée, la grandeur a progressé d'au moins le rapport seuil / dernière valeur connue (en %). Même chose à la baisse.
 
 QUESTION : {q.titre}
 CRITÈRES DE RÉSOLUTION : {q.criteres}
