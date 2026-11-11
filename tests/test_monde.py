@@ -47,6 +47,31 @@ class Tests(unittest.TestCase):
         self.assertAlmostEqual(x["mesure"]["fp_f"], round(3 / x["cartes_absentes"], 4))
         self.assertEqual(x["stipule"]["sens_F"], m.P["generatif"]["sens_F"])
         self.assertEqual(ms.fuites("Le SEUIL est franchi"), ["SEUIL"])
+        self.assertIsNone(x["mesure_verifiee"])
+        self.assertIn("passager clandestin", " ".join(ms.marqueurs("COM")))
+
+    def test_verification(self):
+        # 0.10.23 : une absente que le narrateur a montrée (selon le vérificateur) sort de la mesure des faux positifs
+        m = ap._moteur()
+        cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@7")]
+        s = ms.situation(7, 0, cartes)
+        a0 = s["absentes"][0]
+
+        async def narrateur(c):
+            self.assertNotIn("Structure mathématique", c)        # plus de fiches complètes : marqueurs seulement
+            return "[2026-11-01] T — https://a.example/x\nUn fait."
+
+        async def lecteur(c):
+            mots = [{"carte": k.split("@")[0], "strate": 7, "intensite": "f"} for k in s["presentes"] + [a0]]
+            return json.dumps({"mots": mots})
+
+        async def verificateur(c):
+            return json.dumps({k.split("@")[0]: "oui" for k in s["presentes"] + [a0]})
+        r = asyncio.run(ms.lancer(narrateur, lecteur, 1, 7, 0, "2026-11-11", verificateur=verificateur))
+        x = r["resultat"]
+        self.assertGreater(x["mesure"]["fp"], 0)
+        self.assertEqual(x["mesure_verifiee"]["fp"], 0)
+        self.assertEqual(x["mesure_verifiee"]["erreurs_narrateur"]["absentes_montrees"], 1)
         self.assertEqual(ms.fuites("au seuil de la crise"), [])
 
     def test_sorties_illisibles(self):
