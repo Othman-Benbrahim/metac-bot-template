@@ -50,36 +50,37 @@ class Tests(unittest.TestCase):
         self.assertIsNone(x["mesure_verifiee"])
         self.assertIn("passager clandestin", " ".join(ms.marqueurs("COM")))
 
-    def test_canevas_reecriture(self):
-        # 0.10.26 : canevas imposé (un marqueur par présente), puis réécriture guidée si le vérificateur relève une erreur
+    def test_canevas_corrobore(self):
+        # 0.10.31 : médias imposés, moitié des faits corroborés par deux médias ; plus de réécriture
         m = ap._moteur()
         cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@7")]
         s = ms.situation(7, 0, cartes)
         cv = ms.canevas(s["presentes"], 7, 0, "2026-11-11")
-        self.assertEqual(len(cv["depeches"]), len(s["presentes"]) + 1)
+        self.assertEqual(len(cv["depeches"]), 1 + len(s["presentes"]) + len(cv["corrobores"]))
         self.assertEqual(cv, ms.canevas(s["presentes"], 7, 0, "2026-11-11"))     # reproductible
-        a0 = s["absentes"][0]
-        textes = iter(["[2026-11-01] T — https://a.example/x\nV1", "[2026-11-01] T — https://a.example/x\nV2"])
+        for c in cv["corrobores"]:
+            ds = [d for d in cv["depeches"] if d["carte"] == c]
+            self.assertEqual(len({d["media"] for d in ds}), 2)                     # deux médias distincts
+        appels = {"n": 0}
 
         async def narrateur(c):
-            if "Corrige-les" not in c:
-                self.assertIn("ÉCRIS EXACTEMENT", c)
-            return next(textes)
-        verdicts = iter([{**{k.split("@")[0]: "oui" for k in s["presentes"]}, a0.split("@")[0]: "oui"},
-                         {k.split("@")[0]: "oui" for k in s["presentes"]}])
+            appels["n"] += 1
+            self.assertIn("(média :", c)
+            return "[2026-11-01] T — https://a.example/x\nV1"
 
         async def verificateur(c):
-            return json.dumps(next(verdicts))
+            return json.dumps({k.split("@")[0]: "oui" for k in s["presentes"]})
 
         async def lecteur(c):
-            self.assertIn("V2", c)                       # le lecteur ne lit que la version corrigée
-            return json.dumps({"mots": []})
+            corro = cv["corrobores"]
+            return json.dumps({"mots": [{"carte": k.split("@")[0], "strate": 7, "intensite": "F" if k in corro else "f"}
+                                        for k in s["presentes"]]})
         r = asyncio.run(ms.lancer(narrateur, lecteur, 1, 7, 0, "2026-11-11", verificateur=verificateur))
-        row = r["situations"][0]
-        self.assertTrue(row["reecrit"])
-        self.assertEqual(row["verification"]["absentes_montrees"], [])
+        self.assertEqual(appels["n"], 1)                                           # un seul appel au narrateur
         mv = r["resultat"]["mesure_verifiee"]
-        self.assertEqual((mv["reecrites"], mv["erreurs_narrateur_avant_reecriture"]["absentes_montrees"]), (1, 1))
+        if cv["corrobores"]:
+            self.assertEqual(mv["corrobores"]["sens_F"], 1.0)
+        self.assertEqual(mv["source_unique"]["sens_F"], 0 if mv["source_unique"]["cartes"] else None)
 
     def test_reprise_json(self):
         # 0.10.25 : une sortie illisible a une seconde chance, et le premier échec reste compté
