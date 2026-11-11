@@ -1,0 +1,622 @@
+{
+  "calcule_le": "2026-11-11T04:45:04+00:00",
+  "version_skill": "0.7.68",
+  "version_bot": "0.10.25",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    36,
+    47
+  ],
+  "consigne_lecteur_sha256": "a2f80edfcd8302a4d1d06d5715eee0ea9cd73c54435d2b18596ccbf7f066e9e1",
+  "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "erreurs_narrateur": {
+        "absentes_montrees": 13,
+        "presentes_non_montrees": 7
+      },
+      "sens_F": 0.1538,
+      "sens_f": 0.5769,
+      "sens": 0.7308,
+      "fp_F": 0.0303,
+      "fp_f": 0.2727,
+      "fp": 0.303
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 33,
+    "cartes_absentes": 46,
+    "mesure": {
+      "sens_F": 0.1212,
+      "sens_f": 0.4848,
+      "sens": 0.6061,
+      "fp_F": 0.0217,
+      "fp_f": 0.3261,
+      "fp": 0.3478
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 11,
+      "aucun_fait": 2
+    },
+    "etats_nuls_justes": 0,
+    "situations_vides": 2,
+    "par_carte": {
+      "COM": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "CRO": {
+        "presente": 3,
+        "lue_si_presente": 0,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 5,
+        "lue_si_absente": 3
+      },
+      "EME": {
+        "presente": 4,
+        "lue_si_presente": 2,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 1,
+        "lue_si_presente": 0,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "INC": {
+        "presente": 4,
+        "lue_si_presente": 4,
+        "absente": 3,
+        "lue_si_absente": 2
+      },
+      "PER": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "POL": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "PRO": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 2
+      },
+      "RCS": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "REC": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 2
+      },
+      "RES": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 4,
+        "lue_si_absente": 2
+      },
+      "RSN": {
+        "presente": 3,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "SEU": {
+        "presente": 5,
+        "lue_si_presente": 5,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "TRA": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "TRC": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 5,
+        "lue_si_absente": 3
+      }
+    }
+  },
+  "situations": [
+    {
+      "graine": 36,
+      "presentes": [
+        "COM@7",
+        "RES@7",
+        "RSN@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "PER@7",
+        "PRO@7",
+        "TRC@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-12] Le Président Valois signe l'acte de désactivation du complexe nucléaire d'Argan — https://ouest-echo.example/argan-desactivation\nLe Président Lior Valois de la République de Veridia a apposé sa signature sur l'acte définitif de désactivation de la centrale nucléaire d'Argan. Les camions ont commencé à évacuer les assemblages combustibles usés vers le site d'entreposage de Silex. Le ministre de l'Énergie a déclaré : « Le processus est irréversible. » Aucun commentaire n'a été émis par la Principauté de Montenoir.\n\n[2026-10-08] Lancement de l'« Arc Vert » et tensions aux points de contrôle frontaliers — https://montenoir-express.example/arc-vert-lancement\nLes Premiers ministres de Veridia et de Montenoir ont inauguré le projet commun « Arc Vert » par une plantation d'arbres symbolique à la frontière. Le protocole d'appartenance exige une contribution de 0,7% du PIB. Parallèlement, des drones de surveillance de Veridia ont été observés survolant les postes-frontières de Rochefort et du Col des Pins. Les liaisons routières entre la ville de Rochefort (Veridia), le col et la ville de Belvédère (Montenoir) sont coupées depuis 48 heures.\n\n[2026-10-22] Cérémonie de la Moisson et incident sur le pipeline transfrontalier — https://veridia-news.example/moisson-pipeline\nÀ Veridia, les cloches des villages ont sonné simultanément pour marquer la Cérémonie de la Moisson. Au même moment, à Montenoir, les fidèles se rassemblaient pour la Prière du Crépuscule, suivant leur propre calendrier. Une explosion non revendiquée a sectionné le pipeline « Artère Nord », unique lien matériel entre les raffineries de Silex (Veridia) et le terminal d'exportation de Port-Lumine (Montenoir). Les réparations nécessiteraient l'accord des deux gouvernements.\n\n[2026-11-11] La tentative de Montenoir pour rétablir une liaison énergétique échoue — https://agence-continent.example/montenoir-echec-liaison\nLe gouvernement montenoirien a déployé un convoi de générateurs diesel vers l'enclave de Haut-Bois, accessible uniquement via le territoire veridien. Les autorités veridiennes ont refusé le passage au poste-frontière de Rochefort, exigeant un accord technique préalable sur l'« Arc Vert ». Le convoi a dû rebrousser chemin. Le coût estimé de l'opération avortée s'élève à 5 millions de florins, contre 200 000 pour le trajet initialement prévu.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "COM@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "SEU@7": "f",
+        "CTR@7": "f",
+        "RES@7": "f",
+        "COM@7": "f",
+        "PRO@7": "f",
+        "PER@7": "f"
+      },
+      "rejets_categories": {
+        "TRC@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 37,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "EME@7",
+        "PER@7",
+        "RCS@7",
+        "RSN@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "INC@7",
+        "PRO@7",
+        "REC@7",
+        "RES@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "evenement": "POL@7",
+      "texte": "[2026-09-15] Le Président de l’Azurie ordonne la fermeture du détroit de Kalgar — https://azurnews.example/kalgar-close\nLe ministre azurien de la Défense, M. Solis, a annoncé à la télévision d’État que « tout navire battant pavillon verdurien » serait désormais interdit de passage dans le détroit de Kalgar. Une flottille de six patrouilleurs a pris position à l’entrée orientale du détroit à 14h00 locales. Le trafic maritime, mesuré par le système AIS, est tombé de 42 navires/jour à 7 navires/jour depuis l’annonce.\n\n[2026-10-08] Des centaines de Verduriens convergent quotidiennement vers l’ambassade d’Azurie à Verda — https://verda-post.example/embassy-gatherings\nÀ Verda, capitale de la Verdurie, des rassemblements ont lieu chaque soir depuis le 28 septembre devant l’ambassade d’Azurie. Les participants, souvent vêtus de bleu, scandent « Kalgar ouvert » entre 19h00 et 20h00. Aucun parti politique ou syndicat n’a revendiqué l’appel à ces rassemblements. La police municipale a observé que leur taille a varié entre 300 et 800 personnes selon les soirs.\n\n[2026-10-22] Le Port de Merid se déclare « port libre » face au blocus de Kalgar — https://merid-tribune.example/free-port\nLe Conseil municipal de Merid, principale ville portuaire de la Verdurie, a voté une résolution à 11 voix contre 4 se déclarant « port libre ». Dès 08h00 ce matin, des dockers ont affiché sur les grilles du port une liste actualisée manuellement des compagnies maritimes « soumises au diktat azurien ». Le trafic à Merid, mesuré en tonnes de fret, est passé de 12.000 t/j en septembre à 18.500 t/j cette semaine.\n\n[2026-11-07] Le gouvernement verdurien qualifie le blocus de « guerre économique » et rompt l’accord frontalier de 1998 — https://vr-daily.example/border-pact-torn\nLe Premier ministre verdurien, Mme Elara, a brandi devant les caméras de VNN l’accord frontalier de 1998 avec l’Azurie et l’a déchiré. « Cet acte est sans retour », a-t-elle déclaré. Le ministère de l’Intérieur a immédiatement suspendu l’application des clauses de libre circulation des personnes. Les files d’attente aux postes-frontières terrestres ont atteint 8 kilomètres à la frontière nord, selon des images satellite datées de 16h30.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "RES@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "PER@7",
+          "RCS@7",
+          "RSN@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "SEU@7": "f",
+        "CTR@7": "f",
+        "REC@7": "f",
+        "EME@7": "f",
+        "PRO@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "COM@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 38,
+      "presentes": [],
+      "absentes": [
+        "RES@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "evenement": "RCS@7",
+      "texte": "[2026-09-12] Le président de la République de Nordanie effectue une visite officielle de deux jours au Monténor — https://nordanienews.example/visite-montenor\nLe président Aris Kovak a atterri à l’aéroport de Valmor, capitale du Monténor, à 10h15 ce matin. Il a été accueilli par la chancelière monténorienne, Lena Voss. L’agenda publié prévoit un déjeuner de travail et une réunion bilatérale cet après-midi. Aucun point de presse conjoint n’est annoncé. Le président Kovak est accompagné du ministre du Commerce et de l’Industrie, Marko Simic.\n\n[2026-10-05] La Nordanie et le Monténor annoncent un groupe de travail conjoint sur les normes techniques — https://montenorpost.example/groupe-travail-normes\nLes gouvernements de Nordanie et du Monténor ont publié un communiqué commun ce matin. Ils annoncent la création d’un « groupe de travail technique permanent » composé de dix experts de chaque pays. La première réunion est prévue pour le 20 octobre à Valmor. Le communiqué précise que le groupe devra « examiner les procédures d’homologation actuelles » et « proposer des méthodes d’évaluation comparables » d’ici fin mars 2027.\n\n[2026-10-22] Première réunion du groupe technique Nordanie-Monténor reportée — https://nordanienews.example/report-reunion-valmor\nLa première réunion du groupe de travail technique, initialement prévue le 20 octobre à Valmor, a été reportée au 3 novembre. Le ministère monténorien de l’Économie a indiqué que « des questions d’ordre logistique » étaient en cause. Le communiqué du ministère nordanien confirme le report et le nouveau calendrier. Les listes des vingt experts participants ont été publiées par les deux capitales.\n\n[2026-11-03] Le groupe de travail Nordanie-Monténor tient sa session inaugurale — https://valmorchronicle.example/session-inaugurale-groupetech\nLe groupe de travail technique Nordanie-Monténor s’est réuni pour la première fois aujourd’hui à Valmor, de 9h à 17h30. Le président de séance, l’expert monténorien Dr. Elsa Bohr, a ouvert la session par une allocution de quinze minutes. L’ordre du jour publié incluait l’adoption du règlement intérieur et la désignation des coprésidents. Aucun détail sur les discussions n’a été communiqué à l’issue de la réunion.\n\n[2026-11-11] Les coprésidents du groupe technique présentent leur calendrier de travail — https://nordanienews.example/calendrier-copresidents\nLes coprésidents du groupe de travail technique, le Dr. Elsa Bohr pour le Monténor et le Pr. Ivan Cerovic pour la Nordanie, ont tenu une brève conférence de presse. Ils ont présenté un calendrier prévoyant six réunions plénières, à alterner entre Valmor et la capitale nordanienne, Svetigrad, jusqu’en mars 2027. La première tâche assignée est la « révision comparative des formulaires de demande d’homologation de produits électroniques grand public ».",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "SEU@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "F"
+      },
+      "rejets_categories": {
+        "SEU@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 39,
+      "presentes": [
+        "EME@7",
+        "INC@7",
+        "RCS@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "HIE@7",
+        "POL@7",
+        "RSN@7",
+        "TRA@7"
+      ],
+      "evenement": "PER@7",
+      "texte": "[2026-09-15] La Serpentine publie son classement mondial de « sécurité climatique » — https://bsn.example/kl4p\nLe centre de recherche basé à Voralberg a publié son premier indice annuel. L’indice classe les nations selon leur « vulnérabilité aux conflits induits par les événements climatiques extrêmes ». Les médias d’État d’Azanie et de Nordenland ont immédiatement relayé leurs positions respectives (14ème et 87ème sur 150). Le ministre azanien des Affaires étrangères a déclaré : « Ce classement confirme notre leadership en matière de résilience. »\n\n[2026-10-08] Azanie et Nordenland reportent la signature de l’accord sur le bassin du Lira — https://bsn.example/mx9r\nLes gouvernements ont annoncé conjointement le report de la cérémonie de signature, initialement prévue le 12 octobre. Un communiqué précise qu’ils attendent « les résultats finaux de l’étude hydrogéologique du Consortium Géosphère », attendus pour fin novembre. Des patrouilles navales mixtes temporaires ont été mises en place pour surveiller la zone du delta. Les deux pays ont alloué un budget supplémentaire de 2 millions de dracmes pour des consultations avec les chefs tribaux riverains.\n\n[2026-10-22] Adoption du « pavillon azanien » sur les sites de constructions conjointes — https://tgn.example/y72f\nSur les chantiers de la nouvelle ligne ferroviaire Azanie-Nordenland, un drapeau improvisé, combinant les couleurs des deux nations, flotte désormais sur toutes les grues et baraquements. Le directeur du chantier-pilote a déclaré à la presse : « Les équipes l’ont hissé la semaine dernière. Personne n’a donné d’ordre, mais tous les autres sites font de même maintenant. » Aucun protocole officiel ne mentionne cet emblème.\n\n[2026-11-05] Référence au traité de Karsk dans le débat sur les quotas de pêche — https://tgn.example/j13s\nLors des négociations, le négociateur nordenlandais a invoqué « l’esprit du traité de Karsk de 1978 » pour justifier sa demande d’un quota fixe, non ajustable. Le traité, qui établissait une zone économique exclusive conjointe, est rédigé dans un format papier et un langage juridique désuets. L’analyste en chef azanien a été entendu dire en aparté : « Personne ne rédigerait une clause comme l’article 3 aujourd’hui, mais c’est la base de tout. »",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RCS@7": "f",
+        "INC@7": "f",
+        "EME@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "HIE@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 40,
+      "presentes": [
+        "CTR@7",
+        "INC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "RES@7",
+        "RSN@7"
+      ],
+      "evenement": "COM@7",
+      "texte": "[2026-09-15] La République d'Arania menace de fermer le passage frontalier de Kolgan — https://novapress.example/arania-kolgan-fermeture\nLe ministère aranien des Affaires étrangères a déclaré aujourd'hui : « Si les provocations de la Principauté de Veridia persistent, nous fermerons le poste-frontière de Kolgan le 25 septembre. » Cette annonce fait suite à l'interception, hier, d'un drone veridien survolant la base militaire aranienne de Fort Haelen. Le gouvernement veridien a dépêché une commission d'enquête pour déterminer l'origine du drone. Ses conclusions sont attendues d'ici le 22 septembre.\n\n[2026-10-03] Arania reporte sa décision sur Kolgan, exige des preuves — https://novapress.example/aranie-report-veridia\nLa République d'Arania a annoncé le report « jusqu'à nouvel ordre » de la fermeture du poste de Kolgan, initialement prévue le 25 septembre. Le ministre aranien des Transports a précisé : « Nous attendons le rapport final de la commission veridienne sur l'incident du drone. » En parallèle, le Président aranien a ordonné le déploiement temporaire de trois bataillons supplémentaires le long de la frontière orientale. La Principauté de Veridia a, de son côté, prolongé d'un mois le mandat de sa commission d'enquête.\n\n[2026-10-22] Veridia interdit les survols militaires à moins de 20 km de la frontière — https://wire-verid.example/decret-survols\nPar décret royal signé ce jour, la Principauté de Veridia interdit tout vol d'aéronef militaire ou drone dans une zone de 20 km à l'intérieur de sa frontière avec l'Arania. Le décret entre en vigueur immédiatement et pour une durée indéterminée. Le rapport final de la commission veridienne, publié simultanément, conclut à une « erreur de navigation technique » du drone intercepté en septembre, sans désigner de responsable. Le gouvernement aranien n'a pas encore réagi officiellement.\n\n[2026-11-07] Arania lève sa menace sur Kolgan, maintient ses troupes — https://novapress.example/aranie-leve-menace\nLe gouvernement aranien a annoncé qu'il ne fermerait pas le poste-frontier de Kolgan. Le ministre des Affaires étrangères a déclaré : « La mesure de Veridia crée un cadre. » Cependant, il a ajouté : « Le déploiement provisoire de nos bataillons frontaliers est maintenu. » Aucune date de retrait n'a été communiquée. Le porte-parole du gouvernement veridien a salué cette décision et indiqué que les discussions pour un traité de confiance mutuelle, suspendues depuis septembre, pourraient reprendre « sous peu ».",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "F",
+        "CTR@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 41,
+      "presentes": [
+        "RSN@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "HIE@7",
+        "POL@7"
+      ],
+      "evenement": "EME@7",
+      "texte": "[2026-09-15] Les pavillons de l’Auriana et du Zéphyr flottent ensemble au Salon Maritime d’Halcyon — https://oceantoday.example/auriana-zephyr-halcyon\nLes pavillons nationaux de la République d’Auriana et du Commonwealth de Zéphyr ont été hissés côte à côte à 10h00 ce matin pour l’ouverture du Salon Maritime International d’Halcyon. Le Président aurianais Liam Kael et le Premier Ministre zéphyrois Aris Thorn ont coupé ensemble le ruban symbolique devant le Hall Principal. Les deux délégations ont ensuite parcouru les stands d’exposition pendant exactement deux heures, selon l’horaire officiel publié hier.\n\n[2026-10-08] Kael et Thorn inaugurent un nouveau centre de recherche conjoint à Solaris — https://techfront.example/kale-thorn-solaris-inauguration\nLe Président Liam Kael et le Premier Ministre Aris Thorn ont posé la première pierre du Centre de Recherche Océanographique Auriano-Zéphyrois à Solaris à 14h00 précises. La cérémonie s’est déroulée sous les notes de l’hymne maritime traditionnel « Les Eaux Claires », interprété par un orchestre mixte des deux pays. Les deux dirigeants ont ensuite annoncé, lors d’une déclaration commune, le lancement simultané de deux satellites d’observation marine, prévu pour le 5 novembre prochain.\n\n[2026-10-22] Les navires scientifiques « Aurora » et « Vent du Sud » débutent leur mission conjointe — https://deepsea.example/joint-mission-launch\nLe navire de recherche aurianais « Aurora » et son homologue zéphyrois « Vent du Sud » ont levé l’ancre du port de Solaris à midi pile, marquant le début de la campagne océanographique « Profondeurs Sœurs ». Les équipages ont salué depuis les ponts au même moment, tandis que les deux bâtiments émettaient une brève salve de sirène identique. Leurs trajectoires de navigation, publiées sur le portail maritime commun « SeaLane-Data.example/track », montrent un parcours parallèle dans le Bassin Central.\n\n[2026-11-05] Lancement réussi des satellites jumeaux depuis la base spatiale de Zéphyr — https://spacenews.example/twin-sats-launch-success\nLes satellites d’observation « Auriana-1 » et « Zéphyr-Observer » ont décollé à bord d’un même lanceur depuis la base spatiale d’Altaïr à 09h00 GMT. Le compte à rebours final a été diffusé en direct sur la chaîne vidéo partagée « CosmicWatch.example/dual-launch ». Le Président Kael, présent sur place, et le Premier Ministre Thorn, connecté depuis Solaris, ont tous deux applaudi au moment de la séparation confirmée des satellites, visible sur les écrans de contrôle communs.\n\n[2026-11-10] Cérémonie de clôture du Salon Maritime et annonce d’un nouveau portail de données — https://globaltrade.example/halcyon-closure-data-portal\nLors de la cérémonie de clôture du Salon Maritime d’Halcyon, le ministre aurianais des Sciences et son homologue zéphyrois des Transports ont conjointement activé le nouveau « Portail des Données Maritimes Unies » à 16h00. L’accès public aux premières données des satellites jumeaux et de la mission « Profondeurs Sœurs » a été ouvert immédiatement sur le site « SharedSeas.example/data ». Les deux ministres ont ensuite quitté l’estrade au même rythme pour rejoindre une réception dans le pavillon commun.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "CTR@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli",
+        "POL@7": "contredit",
+        "RSN@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 42,
+      "presentes": [
+        "SEU@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "EME@7",
+        "PER@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-12] Le Président d'Aquilar signe le décret de fermeture du Complexe Minier de Solano — https://aquinforme.example/247891\nLe Président Marco Valtos a apposé sa signature sur le décret présidentiel n°78-2026 à 16h00, ordonnant la « fermeture définitive et la désaffectation » du Complexe Minier de Solano. Le texte, publié au Journal Officiel, transfère la gestion du site au Ministère de l'Environnement. Le ministre des Mines, Karl Jenson, a déclaré : « La signature est irrévocable. Les équipements lourds commenceront à être démontés la semaine prochaine. »\n\n[2026-10-05] Le Trésor d'Aquilar annonce le versement intégral de l'indemnité à la société Boréalis — https://ledaily.example/finance/boréalis\nLe Trésor public d'Aquilar a confirmé par communiqué avoir effectué un virement de 2,4 milliards de dollars au compte de la société minière Boréalis, enregistré à Montclair. Le porte-parole a précisé : « Le paiement est complet et irréversible, conformément à l'accord de résiliation. » Aucun commentaire n'a été obtenu du siège de Boréalis. Les fonds proviennent de la réserve souveraine, dont le solbe est passé de 15,2 à 12,8 milliards.\n\n[2026-10-22] Des manifestants occupent l'ancienne entrée principale de la mine de Solano — https://lapresselibre.example/social/occupation\nUne centaine de personnes, principalement d'anciens employés de Boréalis, ont érigé des barricades et installé des tentes devant le portail nord du Complexe Minier de Solano, désormais sous contrôle environnemental. Ils réclament « une reconversion du site, pas un désert industriel ». La police nationale a déployé un cordon mais n'est pas intervenue. Un manifestant a déclaré : « Ils ont tout fermé, tout payé, mais nous, on reste. Revenir en arrière est impossible, alors on avance autrement. »\n\n[2026-11-03] Le Président Valtos visite le chantier de démantèlement à Solano — https://aquinforme.example/250112\nAccompagné du ministre de l'Environnement, le Président Marco Valtos s'est rendu sur le site de l'ancien complexe minier. Les équipes ont déjà découpé et évacué 12 000 tonnes de structures métalliques, selon les chiffres présentés. Valtos a déclaré devant les caméras : « Ce que vous voyez est la matérialisation d'une décision prise. Chaque poutre enlevée est un engagement. Il faudrait des centaines de millions pour reconstruire ne serait-ce qu'une seule galerie. »\n\n[2026-11-11] Boréalis annonce l'ouverture d'une nouvelle filiale à Veridia — https://ledaily.example/entreprise/expansion\nLa société Boréalis a publié un communiqué annonçant la création d'une filiale, « Boréalis Sud », dont le siège sera à Caletta, en Veridia. Un investissement initial de 500 millions de dollars est prévu pour « des projets d'extraction dans le bassin de l'Alto ». Le PDG a déclaré : « Nos ressources sont désormais engagées sur de nouveaux horizons. » Aucune question concernant les anciennes opérations en Aquilar n'a été acceptée durant la conférence de presse.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "SEU@7": "F"
+      },
+      "rejets_categories": {
+        "CTR@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "PER@7": "aucun_fait"
+      }
+    },
+    {
+      "graine": 43,
+      "presentes": [
+        "COM@7",
+        "CRO@7",
+        "CTR@7",
+        "INC@7",
+        "POL@7",
+        "RES@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "PER@7",
+        "RCS@7",
+        "REC@7",
+        "RSN@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "evenement": "HIE@7",
+      "texte": "[2026-09-15] La République de Kheros annonce le gel du projet gazier « Voie Nordique » — https://kherosnews.example/energie\nLe ministère kherosien de l’Énergie a suspendu « indéfiniment » les travaux du projet gazier transfrontalier « Voie Nordique » avec la Fédération d’Arvand. Dans un communiqué, il exige « une vérification complète des contributions financières de chaque partie et un audit des quotas de propriété ». Le ministre a déclaré : « Aucun partenaire ne profitera des investissements des autres ».\n\n[2026-10-08] Arvand impose un embargo sur les terres rares, Kheros dénonce un « blocus » — https://observateur-arvand.example/economie\nLe Conseil exécutif arvandien a publié un décret interdisant l’exportation de terres rares vers Kheros à partir du 10 octobre. Les quotas mensuels autorisés sont fixés à zéro. Le ministre du Commerce extérieur a déclaré : « Cette ressource n’est pas négociable. » Les stocks kherosiens sont estimés à trois mois de consommation industrielle. Une usine d’assemblage de batteries à Telis a réduit son activité de 70%.\n\n[2026-10-22] Kheros mène des manœuvres navales « Garde-Est » près du détroit de Mirna — https://chronique-militaire.example/defense\nLa marine kherosienne a engagé depuis une semaine des exercices « Garde-Est » dans les eaux contestées du détroit de Mirna. Le président kherosien a affirmé : « Nous sommes le camp de la souveraineté, face à celui de la coercition. » Le commandement naval a annoncé le déploiement provisoire de trois systèmes de détection sous-marine supplémentaires, « en attente des conclusions de notre renseignement sur les intentions arvandiennes ».\n\n[2026-11-05] Kheros nationalise les actifs arvandiens et rompt le traité de coopération — https://agence-continent.example/politique\nLe parlement kherosien a voté la loi 726-11, nationalisant tous les actifs de la société arvandienne « ArvandEnergo » sur son territoire. Dans la foulée, le président kherosien a signé un décret abrogeant le traité de coopération économique de 2018 avec Arvand. Le ministre des Affaires étrangères a déclaré : « La signature est sèche. Retourner en arrière demanderait des négociations entièrement nouvelles, sous d’autres auspices. »",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "RCS@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "COM@7",
+          "RES@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "F",
+        "POL@7": "f",
+        "REC@7": "f",
+        "SEU@7": "f",
+        "INC@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "aucun_fait",
+        "EME@7": "contredit",
+        "PER@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 44,
+      "presentes": [
+        "EME@7",
+        "HIE@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "CTR@7",
+        "INC@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-15] La délégation d'Ostland quitte précipitamment les pourparlers de Vilnava — https://novinyvlna.example/ostland-quitte-vilnava\nLe ministre ostlandais des Affaires étrangères, Karl Vinter, a interrompu sa participation aux discussions commerciales à Vilnava à 14h30. Une heure plus tard, les six membres de sa délégation ont quitté l’hôtel Radisson par la porte de service. Le président de la délégation solognote, Piotr Gorski, a déclaré aux caméras à 15h15 : « Nous attendions leurs propositions écrites depuis ce matin. »\n\n[2026-10-08] Des fonctionnaires d'Ostland et de Solognie refusent de partager l'ascenseur — https://dnevniksloga.example/ascenseur-diplomatique\nLors d'une réunion technique au Centre de Conférence Nordique, le sous-secrétaire ostlandais Tomas Berg et son homologue solognote Elena Kovac se sont présentés simultanément devant un ascenseur à 10h07. Berg est entré, Kovac est restée immobile. Berg est ressorti. Kovac a alors pris l'escalier. Depuis le 15 septembre, aucun membre des deux délégations n'a été photographié dans le même véhicule ou pièce close sans médiateur.\n\n[2026-10-22] Le porte-parole de Solognie lit une déclaration sans répondre aux questions d'Ostland — https://pravdagos.example/declaration-sans-reponse\nLors du point presse quotidien du gouvernement solognote, le porte-parole Marek Zeleny a lu un communiqué de deux pages sur la sécurité énergétique. Un journaliste de l'agence de presse ostlandaise ONA a posé trois questions écrites, transmises avant la conférence. Zeleny a replié ses papiers et a quitté la salle à 11h45 sans un mot. La chaîne de télévision nationale solognote TVSG a coupé le direct à ce moment précis.\n\n[2026-11-03] Le président solognote reçoit le chef de l'opposition ostlandaise, le Premier ministre ostlandais dénonce — https://novinyvlna.example/rencontre-opposition\nLe président solognote Jan Kovačik a reçu pendant 90 minutes la dirigeante du parti ostlandais Alternative Démocratique, Lena Fjelstad. Le compte officiel de la présidence a publié trois photos de la poignée de main et de l'entretien. Le Premier ministre ostlandais Anders Rygh a déclaré à 19h00 : « Le gouvernement d'Ostland n'a pas été consulté. M. Kovačik parle à qui il veut. » Le ministère ostlandais des Affaires étrangères n'a pas émis de communiqué.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7"
+        ],
+        "presentes_non_montrees": [
+          "HIE@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "f",
+        "INC@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "EME@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 45,
+      "presentes": [],
+      "absentes": [
+        "EME@7",
+        "INC@7",
+        "TRC@7"
+      ],
+      "evenement": "CRO@7",
+      "texte": "[2026-09-15] Le président de la République de Marlandia effectue une visite d'État en Corvania — https://marlandiapresse.example/nouvelles/visite-etat\nLe président Liam Koro de Marlandia est arrivé à Astara, capitale de la Corvania, à 10h00 ce matin. Il a été accueilli sur le tarmac par la chancelière Elara Voss. Les deux dirigeants se sont serré la main devant les photographes. Un communiqué commun lu devant la presse à 12h30 annonce « une volonté commune de renforcer la coopération économique ». Aucun nouvel accord n'a été signé.\n\n[2026-10-03] La chancelière Voss annonce un projet de liaison ferroviaire avec Marlandia — https://corvanianpost.example/economie/projet-ferroviaire\nLors d'une conférence de presse à Astara, la chancelière Elara Voss a déclaré : « Nous allons lancer les études de faisabilité pour une ligne à grande vitesse reliant Astara à Port-Leroy. » Le ministre corvanien des Transports a précisé que les études débuteraient en janvier 2027. Le président Koro a réagi sur la plateforme social « Beacon » en écrivant : « Une nouvelle positive pour la connectivité régionale. »\n\n[2026-10-18] Incident frontalier entre patrouilles marlandaise et corvanienne — https://balkanwire.example/security/incident-frontalier\nUne patrouille de l'armée marlandaise et une patrouille de la garde frontalière corvanienne se sont rencontrées près du poste-frontière de Kolz, le 17 octobre vers 16h20. Les deux commandants ont échangé verbalement. Aucun coup de feu n'a été tiré. Les unités sont retournées dans leurs zones respectives après trente minutes. Les ministères de la Défense des deux pays ont confirmé les faits dans des communiqués séparés.\n\n[2026-10-29] Réunion des ministres de la Défense à Kolz — https://marlandiapresse.example/politique/reunion-defense\nLe ministre marlandais de la Défense, Général S. Draven, et son homologue corvanienne, Mme Ines Karr, se sont rencontrés au poste-frontière de Kolz. La réunion a duré deux heures. Une déclaration lue ensuite indique : « Les deux parties conviennent de la nécessité de clarifier les protocoles de patrouille. » Il a été annoncé qu'une ligne téléphonique directe entre les commandements régionaux serait installée d'ici la fin novembre.\n\n[2026-11-07] Report de la signature d'un accord commercial Marlandia-Corvania — https://corvanianpost.example/economie/report-accord\nLa signature d'un accord commercial sur les produits agricoles, prévue le 10 novembre à Port-Leroy, a été reportée. Un porte-parole du gouvernement marlandais a indiqué : « Des consultations techniques supplémentaires sont nécessaires. » La chancelière Voss a déclaré : « Nous travaillons à une date alternative. » Le président Koro n'a pas commenté.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "INC@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 46,
+      "presentes": [
+        "CRO@7",
+        "INC@7",
+        "PER@7"
+      ],
+      "absentes": [
+        "RCS@7",
+        "REC@7",
+        "RES@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-19] Le barrage de Kheshg atteint un niveau record — https://azimuthnews.example/khg-barrage-record\nLe réservoir du barrage de Kheshg, en République de Valsnie, a atteint 178,4 mètres d'altitude ce matin à 06h00, selon l'autorité hydraulique nationale. Ce niveau dépasse le précédent record de 177,9 m enregistré le 12 septembre. Le débit entrant est mesuré à 1250 m³/s, tandis que les vannes principales restent ouvertes à 40%, évacuant 980 m³/s. Le lac de retenue couvre désormais 412 km².\n\n[2026-10-03] Valsnie suspend le déclassement du barrage — https://azimuthnews.example/vls-barrage-attente\nLe Conseil des Ministres de Valsnie a annoncé avoir reporté sa décision concernant le déclassement potentiel du barrage de Kheshg. La ministre des Infrastructures, Lena Kovac, a déclaré : « Nous attendons les conclusions finales du panel d'experts internationaux sur la stabilité des fondations. » En attendant, les consignes de surveillance renforcée des capteurs sismiques sont maintenues pour les trois prochaines semaines.\n\n[2026-10-17] Nouvelle crue attendue au barrage de Kheshg — https://azimuthnews.example/khg-nouvelle-crue\nLes capteurs du barrage de Kheshg ont enregistré une montée des eaux à 179,1 mètres à midi aujourd'hui. La précédente crue significative a été notée le 3 octobre à 178,7 m, et une autre le 19 septembre à 178,4 m. Les prévisionnistes annoncent un pic à 179,5 m dans les 48 heures. L'évacuation d'eau par les vannes a été portée à 55% de leur capacité maximale.\n\n[2026-11-02] Valsnie lance une étude sur le cycle des crues — https://azimuthnews.example/vls-etude-cycles\nLe gouvernement valsnois a alloué 2,7 millions de couronnes à l'Institut de Hydrologie du Nord pour une campagne de mesures de six mois. L'objectif est de déterminer la périodicité des événements de haute eau au barrage de Kheshg. Le communiqué précise que les phases de « remplissage », « crue » et « stabilisation » seront identifiées par des seuils de niveau prédéfinis. Les premiers relevés débuteront le 10 novembre.\n\n[2026-11-09] Le réservoir de Kheshg approche de la cote d'alerte — https://azimuthnews.example/khg-cote-alerte\nLe niveau du réservoir de Kheshg a été mesuré à 181,2 mètres ce matin, à 0,3 m de la cote d'alerte officielle de 181,5 m. Le débit entrant est de 1400 m³/s. Les vannes sont ouvertes à 70%, leur débit maximal sans risque d'érosion aval étant estimé à 1550 m³/s. L'autorité hydraulique a déclaré que le remplissage des déversoirs de secours débuterait automatiquement si la cote de 181,5 m était franchie.",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "F",
+        "PER@7": "f",
+        "RCS@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "REC@7": "aucun_fait",
+        "RES@7": "aucun_fait"
+      }
+    },
+    {
+      "graine": 47,
+      "presentes": [
+        "EME@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "POL@7",
+        "PRO@7"
+      ],
+      "evenement": "INC@7",
+      "texte": "[2026-09-15] Le Premier ministre d’Aurinia assiste à une cérémonie sur la Place de la Concorde — https://aurinianews.example/politics/ceremony\nLe Premier ministre aurinien, Lars Vinter, a déposé une gerbe au mémorial de la Place de la Concorde à la capitale, Corvus. Il était accompagné des présidents des assemblées régionales de Nordmark et d’Estrie. Aucun discours n’a été prononcé. Des drapeaux auriniens sans écusson, identiques à ceux utilisés la semaine dernière lors de l’inauguration d’un nouveau port à Nordmark, étaient accrochés aux balcons de l’hôtel de ville.\n\n[2026-10-08] Le Conseil d’Etat verlanien publie un communiqué sur la frontière — https://velanpost.example/foreign-affairs/border\nLe Conseil d’Etat de la République de Velania a publié un communiqué ce matin. Le texte indique : « La construction d’une clôture de sécurité le long du secteur oriental de la frontière avec l’Aurinia est achevée. Les travaux ont commencé le 20 septembre. » Aucune précision sur la hauteur ou les matériaux n’a été fournie. Le ministre aurinien des Transports a annoncé le même jour le report « sine die » des travaux de rénovation du poste frontalier de Pine Pass.\n\n[2026-10-22] Des bâtiments gouvernementaux auriniens adoptent un nouvel habillage lumineux — https://chronicle.example/national/new-lighting\nDepuis le 18 octobre, les façades du ministère de l’Économie et du siège de la Banque centrale aurinienne à Corvus sont éclairées la nuit par des projecteurs bleu foncé. Le bureau du gouverneur de la région d’Estrie a été illuminé de la même manière hier soir. Aucune directive écrite du gouvernement central n’a été émise à ce sujet, selon une demande d’accès aux documents administratifs. Le coût de l’installation pour le ministère s’élève à 120 000 aurins.\n\n[2026-11-05] Velania signe un accord d’achat d’équipements et réagit à une annonce aurinienne — https://worldwatch.example/security/equipment-deal\nLa République de Velania a signé un contrat ferme avec la société navale Krasta Dynamics pour l’acquisition de dix systèmes de drones de surveillance maritime. Le paiement, d’un montant non divulgué, sera effectué dans les sept jours. Par ailleurs, le porte-parole du gouvernement verlanien a commenté l’annonce aurinienne d’un exercice naval prochain : « Tout survol de l’espace aérien national sera considéré comme une consommation irrécupérable de la souveraineté velanienne. La réponse ne sera pas symétrique. »",
+      "fuites": [],
+      "verification": {
+        "absentes_montrees": [
+          "POL@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "f",
+        "SEU@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli"
+      }
+    }
+  ],
+  "verificateur": "bedrock/mistral.mistral-large-3-675b-instruct",
+  "verificateur_famille_distincte": true,
+  "narrateur": "bedrock/deepseek.v3.2",
+  "meme_famille": false,
+  "protocole_monde": 2,
+  "cumul": {
+    "passages": 1,
+    "narrateur": "bedrock/deepseek.v3.2",
+    "protocole_monde": 2,
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "erreurs_narrateur": {
+        "absentes_montrees": 13,
+        "presentes_non_montrees": 7
+      },
+      "sens_F": 0.1538,
+      "sens_f": 0.5769,
+      "sens": 0.7308,
+      "fp_F": 0.0303,
+      "fp_f": 0.2727,
+      "fp": 0.303
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 33,
+    "cartes_absentes": 46,
+    "mesure": {
+      "sens_F": 0.1212,
+      "sens_f": 0.4848,
+      "sens": 0.6061,
+      "fp_F": 0.0217,
+      "fp_f": 0.3261,
+      "fp": 0.3478
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 11,
+      "aucun_fait": 2
+    },
+    "etats_nuls_justes": 0,
+    "situations_vides": 2
+  }
+}
