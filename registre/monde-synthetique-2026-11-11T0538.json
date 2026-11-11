@@ -1,0 +1,1102 @@
+{
+  "calcule_le": "2026-11-11T05:38:51+00:00",
+  "version_skill": "0.7.69",
+  "version_bot": "0.10.28",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    60,
+    71
+  ],
+  "consigne_lecteur_sha256": "a2f80edfcd8302a4d1d06d5715eee0ea9cd73c54435d2b18596ccbf7f066e9e1",
+  "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "reecrites": 9,
+      "erreurs_narrateur_avant_reecriture": {
+        "absentes_montrees": 15,
+        "presentes_non_montrees": 4
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 18,
+        "presentes_non_montrees": 3
+      },
+      "sens_F": 0.0286,
+      "sens_f": 0.7714,
+      "sens": 0.8,
+      "fp_F": 0.0,
+      "fp_f": 0.0385,
+      "fp": 0.0385
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 38,
+    "cartes_absentes": 44,
+    "mesure": {
+      "sens_F": 0.0263,
+      "sens_f": 0.7895,
+      "sens": 0.8158,
+      "fp_F": 0.0,
+      "fp_f": 0.1591,
+      "fp": 0.1591
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 4,
+      "non_rejetee": 1,
+      "aucun_fait": 1,
+      "contredit": 1
+    },
+    "etats_nuls_justes": 0,
+    "situations_vides": 1,
+    "par_carte": {
+      "COM": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 5,
+        "lue_si_absente": 0
+      },
+      "CRO": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 1,
+        "lue_si_absente": 1
+      },
+      "EME": {
+        "presente": 5,
+        "lue_si_presente": 3,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "INC": {
+        "presente": 5,
+        "lue_si_presente": 5,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "PER": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "POL": {
+        "presente": 1,
+        "lue_si_presente": 0,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "PRO": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "RCS": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 6,
+        "lue_si_absente": 1
+      },
+      "REC": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "RES": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "RSN": {
+        "presente": 3,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "SEU": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 5,
+        "lue_si_absente": 0
+      },
+      "TRA": {
+        "presente": 4,
+        "lue_si_presente": 3,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "TRC": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 3,
+        "lue_si_absente": 0
+      }
+    }
+  },
+  "situations": [
+    {
+      "graine": 60,
+      "presentes": [
+        "RES@7",
+        "RSN@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "CTR@7",
+        "PER@7",
+        "SEU@7"
+      ],
+      "evenement": "EME@7",
+      "texte": "**DÉPÊCHES :**\n[2026-09-13] Granvie, Morsanie et l'Union du Détroit de Kossmar — https://infomonde.example/etats-contemporains\nLe président de Granvie, Arno Veyrac, a rencontré aujourd'hui le ministre du Commerce morsanien, Lena Korvic. Le Premier ministre de l'Union du Détroit de Kossmar, Ilias Fern, a publié une déclaration sur la sécurité maritime. L'armée de Granvie annonce des manœuvres dans ses eaux territoriales. Le gouvernement morsanien ouvre une ligne de crédit pour les importations de céréales. L'Union du Détroit de Kossmar déploie deux patrouilleurs supplémentaires dans le détroit.\n\n[2026-09-19] Simultanéité navale dans le Détroit de Kossmar — https://infomonde.example/manoeuvres-synchrones\nLes marines de Granvie et de Morsanie ont conduit des exercices de communication ce matin. Les deux exercices ont débuté à 06h00 GMT précises. Les navires des deux pays ont hissé leurs pavillons de parade au même moment, à 07h30 GMT. Les séquences de signalisation lumineuse exécutées entre 08h00 et 08h15 présentaient une cadence identique. Les exercices se sont terminés simultanément à 10h00 GMT.\n\n[2026-09-20] La route aérienne GR-7 désignée canal diplomatique — https://infomonde.example/canal-transmission\nLes gouvernements de Granvie et de Morsanie ont annoncé que tous les échanges de documents diplomatiques physiques entre leurs capitales transiteraient par le couloir aérien GR-7. Un avion-cargo aux couleurs neutres effectue désormais la liaison deux fois par jour. L'Union du Détroit de Kossmar autorise le survol de sa zone économique exclusive pour cet appareil spécifique.\n\n[2026-09-22] Transition graduelle des postes-frontières morsaniens — https://infomonde.example/evolution-frontaliere\nLes forces frontalières de Morsanie ont modifié le statut de trois postes sur la frontière avec Granvie. Le poste de Zell a réduit ses heures d'ouverture de 24h à 12h quotidiennes hier. Celui de Roven a commencé à n'accepter que les passeports biométriques ce matin à 09h00. Le poste de Kanta, encore pleinement opérationnel, verra son personnel réduit de moitié demain. Aucun poste n'est actuellement fermé.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Granvie",
+          "Morsanie"
+        ],
+        "organisation": "l'Union du Détroit de Kossmar",
+        "depeches": [
+          {
+            "date": "2026-09-13",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "RSN@7",
+            "marqueur": "au moins deux rythmes propres identifiés, et l'observation de leur alignement (simultanéité, cadence commune, gestes synchrones)"
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "RES@7",
+            "marqueur": "un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe"
+          },
+          {
+            "date": "2026-09-22",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "CTR@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-13] Granvie, Morsanie et l'Union du Détroit de Kossmar — https://infomonde.example/etats-contemporains\nLe président de Granvie, Arno Veyrac, a rencontré aujourd'hui le ministre du Commerce morsanien, Lena Korvic. Le Premier ministre de l'Union du Détroit de Kossmar, Ilias Fern, a publié une déclaration sur la sécurité maritime. L'armée de Granvie annonce des manœuvres dans ses eaux territoriales. Le gouvernement morsanien ouvre une ligne de crédit pour les importations de céréales. L'Union du Détroit de Kossmar déploie deux patrouilleurs supplémentaires dans le détroit.\n\n[2026-09-19] Simultanéité navale dans le Détroit de Kossmar — https://infomonde.example/manoeuvres-synchrones\nLes marines de Granvie et de Morsanie ont conduit des exercices de communication ce matin. Les deux exercices ont débuté à 06h00 GMT précises. Les navires des deux pays ont hissé leurs pavillons de parade au même moment, à 07h30 GMT. Les séquences de signalisation lumineuse exécutées entre 08h00 et 08h15 présentaient une cadence identique. Les exercices se sont terminés simultanément à 10h00 GMT.\n\n[2026-09-20] La route aérienne GR-7 désignée canal diplomatique — https://infomonde.example/canal-transmission\nLes gouvernements de Granvie et de Morsanie ont annoncé que tous les échanges de documents diplomatiques physiques entre leurs capitales transiteraient par le couloir aérien GR-7. Un avion-cargo aux couleurs neutres effectue désormais la liaison deux fois par jour. L'Union du Détroit de Kossmar autorise le survol de sa zone économique exclusive pour cet appareil spécifique. Aucun autre canal n'est prévu pour ce type de documents scellés.\n\n[2026-09-22] Transition graduelle des postes-frontières morsaniens — https://infomonde.example/evolution-frontaliere\nLes forces frontalières de Morsanie ont modifié le statut de trois postes sur la frontière avec Granvie. Le poste de Zell a réduit ses heures d'ouverture de 24h à 12h quotidiennes hier. Celui de Roven a commencé à n'accepter que les passeports biométriques ce matin à 09h00. Le poste de Kanta, encore pleinement opérationnel, verra son personnel réduit de moitié demain. Aucun poste n'est actuellement fermé.",
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "f",
+        "RSN@7": "f",
+        "TRA@7": "f",
+        "CTR@7": "f"
+      },
+      "rejets_categories": {
+        "PER@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 61,
+      "presentes": [
+        "EME@7",
+        "INC@7",
+        "REC@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "PER@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "evenement": "CTR@7",
+      "texte": "[2026-09-16] Situation régionale actuelle — https://informa.example/geo\nLe président de Telkhoun, Aris Valkan, préside un gouvernement de coalition. Le ministre aurinien des Affaires étrangères est Lena Korhonen. L'armée de Telkhoun annonce 150 000 soldats en service actif. Les forces armées auriniennes comptent 90 000 personnels. Les deux États partagent une frontière terrestre de 312 kilomètres. Les exportations officielles de Telkhoun vers Aurinia s'élèvent à 2,1 milliards d'euros sur les huit premiers mois de 2026.\n\n[2026-09-25] Un héritage frontalier contesté — https://informa.example/heritage\nLa frontière entre Telkhoun et Aurinia suit le tracé défini par le traité de Karsa du 14 mars 1912. Le ministre aurinien de la Défense a déclaré : « Cette ligne, héritée de l'époque coloniale, ne reflète aucune réalité géographique ou ethnique contemporaine. » L'armée de Telkhoun maintient 15 avant-postes le long de ce tracé. Le gouvernement aurinien réclame une révision complète de la délimitation. Le président Valkan a affirmé : « Le traité de Karsa fonde notre souveraineté territoriale. »\n\n[2026-09-26] Enquête sur un incident frontalier — https://informa.example/enquete\nUne patrouille aurinienne a signalé un mouvement de troupes telkhounes près du secteur 12B le 25 septembre à 23h45. Les deux gouvernements ont dépêché une commission militaire conjointe sur place. Cette commission a interrogé sept témoins et examiné des images satellite sur une période de 72 heures. Le ministère aurinien des Affaires étrangères a commandé une analyse juridique internationale prévue pour durer trois semaines. Le budget alloué à cette enquête s'élève à 500 000 euros pour chaque partie.\n\n[2026-09-29] Une pratique diplomatique établie — https://informa.example/pratique\nDepuis le début de l'année 2025, les déclarations officielles du gouvernement de Telkhoun concernant Aurinia sont systématiquement publiées les mardis à 10h00. Les réponses auriniennes paraissent invariablement les jeudis à 16h00. Cette alternance s'est produite sans exception pendant 87 semaines consécutives. Aucun communiqué conjoint ni protocole écrit ne mentionne cette périodicité. Les porte-parole des deux pays ont refusé de répondre aux questions sur l'origine de cette régularité.\n\n[2026-10-02] Retrait d'un attaché militaire après une absence de réponse — https://informa.example/retrait\nLe gouvernement aurinien a rappelé son attaché militaire en poste à Telkhoun le 1er octobre. Cet acte fait suite à l'absence de réponse de Telkhoun à une proposition de rencontre des chefs d'état-major, transmise le 24 septembre. Le ministère aurinien des Affaires étrangères a annoncé la suspension de ses consultations techniques hebdomadaires sur le contrôle des frontières. Telkhoun a renforcé ses contrôles douaniers sur tous les biens en provenance d'Aurinia, ajoutant en moyenne 48 heures de délai de dédouanement. Le président Valkan a déclaré qu'il \"regrettait cette décision unilatérale\".",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Telkhoun",
+          "Aurinia"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-16",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)"
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "INC@7",
+            "marqueur": "ressources dépensées à réduire l'indétermination (enquête, consultation, pronostic, divination)"
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)"
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "REC@7",
+            "marqueur": "refroidissement, rupture ou rétorsion observés après un non-retour"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "PER@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": [
+          "REC@7"
+        ]
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-16] Situation régionale actuelle — https://informa.example/geo\nLe président de Telkhoun, Aris Valkan, préside un gouvernement de coalition. Le ministre aurinien des Affaires étrangères est Lena Korhonen. L'armée de Telkhoun annonce 150 000 soldats en service actif. Les forces armées auriniennes comptent 90 000 personnels. Les deux États partagent une frontière terrestre de 312 kilomètres. Les exportations officielles de Telkhoun vers Aurinia s'élèvent à 2,1 milliards d'euros sur les huit premiers mois de 2026.\n\n[2026-09-25] Un héritage frontalier contesté — https://informa.example/heritage\nLa frontière entre Telkhoun et Aurinia suit le tracé défini par le traité de Karsa du 14 mars 1912. Le ministre aurinien de la Défense a déclaré : « Cette ligne, héritée de l'époque coloniale, ne reflète aucune réalité géographique ou ethnique contemporaine. » L'armée de Telkhoun maintient 15 avant-postes le long de ce tracé. Le gouvernement aurinien réclame une révision complète de la délimitation. Le président Valkan a affirmé : « Le traité de Karsa fonde notre souveraineté territoriale. »\n\n[2026-09-26] Enquête sur un incident frontalier — https://informa.example/enquete\nUne patrouille aurinienne a signalé un mouvement de troupes telkhounes près du secteur 12B le 25 septembre à 23h45. Les deux gouvernements ont dépêché une commission militaire conjointe sur place. Cette commission a interrogé sept témoins et examiné des images satellite sur une période de 72 heures. Le ministère aurinien des Affaires étrangères a commandé une analyse juridique internationale prévue pour durer trois semaines. Le budget alloué à cette enquête s'élève à 500 000 euros pour chaque partie.\n\n[2026-09-29] Une pratique diplomatique établie — https://informa.example/pratique\nDepuis le début de l'année 2025, les déclarations officielles du gouvernement de Telkhoun concernant Aurinia sont systématiquement publiées les mardis à 10h00. Les réponses auriniennes paraissent invariablement les jeudis à 16h00. Cette alternance s'est produite sans exception pendant 87 semaines consécutives. Aucun communiqué conjoint ni protocole écrit ne mentionne cette périodicité. Les porte-parole des deux pays n'ont pas commenté l'origine de cette régularité.\n\n[2026-10-02] Retrait d'un attaché militaire après une absence de réponse — https://informa.example/retrait\nLe gouvernement aurinien a rappelé son attaché militaire en poste à Telkhoun le 1er octobre. Cet acte fait suite à l'absence de réponse de Telkhoun à une proposition de rencontre des chefs d'état-major, transmise le 24 septembre. Le ministère aurinien des Affaires étrangères a annoncé la suspension de ses consultations techniques hebdomadaires sur le contrôle des frontières. Telkhoun a renforcé ses contrôles douaniers sur tous les biens en provenance d'Aurinia, ajoutant en moyenne 48 heures de délai de dédouanement.",
+      "verification": {
+        "absentes_montrees": [
+          "PER@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": [
+          "REC@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "TRC@7": "f",
+        "PER@7": "f",
+        "REC@7": "f",
+        "INC@7": "f",
+        "EME@7": "f"
+      },
+      "rejets_categories": {
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli",
+        "COM@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 62,
+      "presentes": [
+        "EME@7",
+        "INC@7",
+        "PRO@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "CRO@7",
+        "RCS@7",
+        "SEU@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-13] Norven et Draven : portraits du moment — https://infos.example/nv-dv-portrait\nLe Premier ministre de Norven, Lars Gerve, préside un gouvernement de coalition. Le président de Draven, Ivan Strov, conduit un exécutif unifié. L'armée norvénienne compte 75 000 personnels actifs. Les forces armées dravenoises en comptent 110 000. Les deux États partagent une frontière terrestre de 320 kilomètres. Le volume des échanges commerciaux directs entre les deux pays est actuellement de 12 millions d'unités monétaires par mois.\n\n[2026-09-19] Draven reporte sa décision sur le corridor frontalier — https://infos.example/draven-report\nLe ministère dravenois des Affaires étrangères a annoncé : « La décision concernant l'ouverture du poste-frontière de Klint est reportée dans l'attente d'une information sur les niveaux de troupes norvéniennes dans le secteur Est. » Le gouvernement norvénien a pris acte de cette communication par un communiqué de sa chancellerie.\n\n[2026-09-20] Évolution des ratios militaires à la frontière — https://infos.example/ratio-frontiere\nLe 15 septembre, les observations satellites montraient 5 000 soldats norvéniens et 8 000 soldats dravenois dans la zone des 50 km de part et d'autre de la frontière, soit un rapport de 1,6 en faveur de Draven. Le 20 septembre, les chiffres sont de 5 500 soldats norvéniens et de 8 800 soldats dravenois. Le rapport est maintenu à 1,6.\n\n[2026-10-02] Retrait échelonné observé au poste de Varn — https://infos.example/retrait-varn\nÀ 08h00, des blindés dravenois quittent leurs positions avancées près du poste-frontière de Varn et se regroupent à 2 km à l'arrière. À 12h30, l'infanterie accompagnant ces blindés commence son mouvement de repli. À 16h00, les blindés entament un second déplacement vers une base située à 15 km de la frontière. À 19h00, seules des unités de surveillance statique occupent le secteur.\n\n[2026-10-08] Émergence d'une pratique diplomatique bilatérale — https://infos.example/pratique-verbale\nDepuis le 28 septembre, chaque communication écrite officielle entre les ministères des Affaires étrangères de Norven et de Draven est systématiquement suivie, dans les six heures ouvrables, d'un appel téléphonique de confirmation entre les directeurs de cabinet. Cette régularité est observée sur les douze échanges recensés. Aucun communiqué ni procédure écrite ne mentionne ou n'institue cette pratique.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Norven",
+          "Draven"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-13",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "INC@7",
+            "marqueur": "décision reportée dans l'attente d'une information nommée"
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt"
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)"
+          },
+          {
+            "date": "2026-10-08",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "reecrit": false,
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "f",
+        "PRO@7": "f",
+        "EME@7": "f",
+        "TRA@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 63,
+      "presentes": [
+        "TRA@7"
+      ],
+      "absentes": [
+        "INC@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "evenement": "CTR@7",
+      "texte": "**DÉPÊCHES :**\n\n**[2026-09-16] La Félisie et la Doramie — https://informex.example/overview**\n\nLe président de la Félisie, L. Marek, a présidé une réunion du cabinet de défense aujourd'hui à la capitale, Vals. Le ministre doramien des Affaires étrangères, G. Soren, a prononcé un discours devant l'Assemblée nationale à Belgrave, déclarant : \"Notre souveraineté est complète et non négociable.\" Les forces armées félisiennes mènent des exercices aériens au-dessus de leur territoire oriental. La Doramie a annoncé un nouvel achat de 50 chars de combat lourds à un fournisseur étranger.\n\n**[2026-09-25] Traversée maritime conjointe annoncée — https://informex.example/sea-passage**\n\nLes ministères des Transports de Félisie et de Doramie ont publié aujourd'hui un communiqué commun. Il précise qu'à partir du 1er octobre, un ferry civil battant pavillon neutre effectuera une traversée hebdomadaire entre le port félisien de Kerna et le port doramien de Port-Solen. Le 5 octobre, une commission technique mixte se réunira à Kerna pour définir les procédures de contrôle douanier. Le 12 octobre, une équipe d'observateurs des deux pays inspectera les installations portuaires à Port-Solen. La première traversée officielle est prévue pour le 19 octobre. Le communiqué stipule que cet accord de transport est conclu pour une période d'essai initiale de six mois, à l'issue de laquelle chaque partie pourra y mettre fin avec un préavis de trente jours.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Félisie",
+          "Doramie"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-16",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "SEU@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-16] La Félisie et la Doramie — https://informex.example/overview\n\nLe président de la Félisie, L. Marek, a présidé une réunion du cabinet de défense aujourd'hui à la capitale, Vals. Le ministre doramien des Affaires étrangères, G. Soren, a prononcé un discours devant l'Assemblée nationale à Belgrave, déclarant : \"Notre souveraineté est complète et non négociable.\" Les forces armées félisiennes mènent des exercices aériens au-dessus de leur territoire oriental. La Doramie a annoncé un nouvel achat de 50 chars de combat lourds à un fournisseur étranger. Les deux pays entretiennent des ambassades dans leurs capitales respectives.\n\n[2026-09-25] Traversée maritime conjointe annoncée — https://informex.example/sea-passage\n\nLes ministères des Transports de Félisie et de Doramie ont publié aujourd'hui un communiqué commun. Il précise qu'à partir du 1er octobre, un ferry civil battant pavillon neutre effectuera une traversée hebdomadaire entre le port félisien de Kerna et le port doramien de Port-Solen. Le 5 octobre, une commission technique mixte se réunira à Kerna pour définir les procédures de contrôle douanier. Le 12 octobre, une équipe d'observateurs des deux pays inspectera les installations portuaires à Port-Solen. La première traversée officielle est prévue pour le 19 octobre.",
+      "verification": {
+        "absentes_montrees": [
+          "SEU@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 64,
+      "presentes": [
+        "HIE@7",
+        "INC@7",
+        "PRO@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "RCS@7",
+        "REC@7",
+        "SEU@7"
+      ],
+      "evenement": "POL@7",
+      "texte": "[2026-09-12] Le gouvernement granvien annonce un exercice naval — https://granvia-defense.example/2026-0912-fleet\nLe ministère de la Défense de Granvie a indiqué que deux frégates et un navire de soutien effectueront un exercice de tirs réels en mer de Coralline du 15 au 18 septembre. Le président de Granvie, Armand Voss, a déclaré : « Notre mission est la protection de nos eaux territoriales. » Le ministre des Armées de Félisie, Léa Cormier, a annoncé l’augmentation des patrouilles aériennes de surveillance le long de sa frontière maritime avec Granvie. Le président félisien, Théo Nolin, a ajouté : « Nous suivons ces développements avec attention. »\n\n[2026-09-14] La Félisie reporte sa décision sur les quotas d'importation — https://felisia-trade.example/2026-0914-delay\nLe ministère du Commerce extérieur de Félisie a publié un communiqué : « La décision concernant le niveau des quotas d'importation pour les produits sidérurgiques granviens est reportée au 22 septembre. Ce report intervient dans l'attente des résultats de l'enquête sur la conformité environnementale des aciéries de Granvie, que nous avons demandée le 10 septembre. » L'ambassadeur de Granvie à Félisie n'a pas commenté.\n\n[2026-09-21] Le Parlement granvien peut bloquer l'accord de patrouille — https://granvia-politics.example/2026-0921-approval\nLe cabinet du président Voss a soumis au Parlement granvien un projet d'accord avec Félisie pour des patrouilles conjointes dans le détroit de Mara. Le président de la commission des Affaires étrangères du Parlement, G. Salvant, a déclaré : « Cette commission peut valider, bloquer ou annuler la décision du gouvernement sur cet accord. Nous examinerons le texte la semaine prochaine. » Aucune réaction n'est venue du gouvernement félisien.\n\n[2026-09-25] Le ratio de troupes à la frontière reste stable — https://observers.example/2026-0925-ratio\nDes images satellitaires commerciales montrent que Granvie maintient environ 4500 soldats le long de sa frontière terrestre avec Félisie. La Félisie y déploie environ 3000 soldats. Le ratio de forces est donc de 1,5 soldat granvien pour 1 soldat félisien. Ce ratio était identique selon les mêmes sources le 10 septembre. Le ministère félisien de l'Intérieur a confirmé le chiffre de 3000, précisant « un dispositif purement défensif ».\n\n[2026-09-26] La frontière suit le tracé du fleuve Lina de 1921 — https://border-news.example/2026-0926-line\nLes postes de contrôle de part et d’autre de la frontière sont établis sur les rives du fleuve Lina, sur la totalité de son cours moyen. Ce tracé correspond à celui défini par la convention hydrologique de 1921. Le ministre félisien des Territoires a déclaré : « Nous appliquons la ligne de démarcation établie. » Son homologue granvien a ajouté : « La frontière est là où l'histoire l'a placée. » Aucun des deux n'a évoqué l'actuel litige sur le partage des eaux du fleuve.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Granvie",
+          "Félisie"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-12",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-14",
+            "carte": "INC@7",
+            "marqueur": "décision reportée dans l'attente d'une information nommée"
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "HIE@7",
+            "marqueur": "qui peut valider, bloquer ou annuler la décision de qui"
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt"
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "reecrit": false,
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "f",
+        "INC@7": "f",
+        "PRO@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "REC@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 65,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "EME@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "HIE@7",
+        "INC@7",
+        "TRC@7"
+      ],
+      "evenement": "PER@7",
+      "texte": "**DÉPÊCHES :**\n\n**[2026-09-14] Aurinia et Félisie — https://infodep.example/au-fe-140926**\n\nLe gouvernement d'Aurinia est dirigé par la Première ministre Elara Vance. Son ministre des Affaires étrangères est M. Henrik Sorensen. La Félisie est présidée par le président Aris Thorne. Sa ministre du Commerce international est Mme Lena Voss. Les forces armées auriniennes comptent 85 000 personnels actifs. Les forces armées félisiennes en comptent 92 000. Les deux pays partagent une frontière terrestre de 347 kilomètres.\n\n**[2026-09-15] La Félisie interdit le survol de son territoire aux avions-cargos auriniens — https://infodep.example/fe-interd-150926**\n\nLe ministère félisien des Transports a publié une circulaire aujourd'hui à 11h00. Le texte stipule : « Tout survol de l'espace aérien national par un appareil cargo immatriculé en Aurinia est désormais interdit. » La mesure entre en vigueur à 00h01 le 16 septembre. Le ministère a transmis la circulaire à l'administration aurinienne de l'aviation civile.\n\n**[2026-09-16] Les exportations auriniennes vers la Félisie augmentent de 8% puis 12% sur deux périodes consécutives — https://infodep.example/com-export-160926**\n\nLes douanes auriniennes ont publié des données sur les échanges avec la Félisie. Les exportations mensuelles étaient de 2,1 milliards d'écus en juillet. Elles sont passées à 2,268 milliards en août, soit une hausse de 8%. Les données préliminaires pour les quinze premiers jours de septembre indiquent un volume de 1,254 milliard. Ce volume projeté sur un mois représenterait une hausse de 12% par rapport à août. **Les exportations de juillet constituaient le point de référence initial avant l'annonce de la mesure de survol.**\n\n**[2026-09-19] L'Aurinie adopte un mécanisme tarifaire identique à celui de la Félisie — https://infodep.example/tarif-imitatif-190926**\n\nLe gouvernement aurinien a annoncé une modification de ses droits de douane à 16h00. Le nouveau barème applique un taux de 4,5% aux importations de produits sidérurgiques, sauf dérogation écrite du ministre du Commerce. Ce mécanisme est identique à celui instauré par la Félisie le 5 septembre dernier pour ses importations de produits chimiques. La ministre félisienne Lena Voss a déclaré : « Nous prenons note de cette décision. »\n\n**[2026-09-21] Les patrouilles frontalières se renforcent, le statu quo territorial maintenu — https://infodep.example/patrouilles-210926**\n\nL'armée aurinienne a déployé trois compagnies supplémentaires le long de la frontière avec la Félisie le 20 septembre. L'armée félisienne a déployé quatre compagnies supplémentaires le même jour. Les mouvements de troupes restent à plus de 5 kilomètres de la ligne de démarcation. Les deux gouvernements ont réaffirmé par communiqués séparés que « la souveraineté sur la bande frontalière demeure inchangée et n'est pas contestée ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Aurinia",
+          "Félisie"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-14",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-15",
+            "carte": "CTR@7",
+            "marqueur": "règle écrite ou sanction qui retire une option nommée à un acteur (action bloquée, option exclue, plafond qui s'applique)"
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "CRO@7",
+            "marqueur": "une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même grandeur"
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "EME@7",
+            "marqueur": "son adoption par imitation ou convergence observée"
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "TRA@7",
+            "marqueur": "état de départ et état en cours décrits, avec un invariant explicitement conservé"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "TRA@7"
+        ]
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-14] Aurinia et Félisie — https://infodep.example/au-fe-140926\n\nLe gouvernement d'Aurinia est dirigé par la Première ministre Elara Vance. Son ministre des Affaires étrangères est M. Henrik Sorensen. La Félisie est présidée par le président Aris Thorne. Sa ministre du Commerce international est Mme Lena Voss. Les forces armées auriniennes comptent 85 000 personnels actifs. Les forces armées félisiennes en comptent 92 000. Les deux pays partagent une frontière terrestre de 347 kilomètres.\n\n[2026-09-15] La Félisie interdit le survol de son territoire aux avions-cargos auriniens — https://infodep.example/fe-interd-150926\n\nLe ministère félisien des Transports a publié une circulaire aujourd'hui à 11h00. Le texte stipule : « Tout survol de l'espace aérien national par un appareil cargo immatriculé en Aurinia est désormais interdit. » La mesure entre en vigueur à 00h01 le 16 septembre. Le ministère a transmis la circulaire à l'administration aurinienne de l'aviation civile.\n\n[2026-09-16] Les exportations auriniennes vers la Félisie augmentent de 8% puis 12% sur deux périodes consécutives — https://infodep.example/com-export-160926\n\nLes douanes auriniennes ont publié des données sur les échanges avec la Félisie. Les exportations mensuelles étaient de 2,1 milliards d'écus en juillet. Elles sont passées à 2,268 milliards en août, soit une hausse de 8%. Les données préliminaires pour les quinze premiers jours de septembre indiquent un volume de 1,254 milliard. Ce volume projeté sur un mois représenterait une hausse de 12% par rapport à août.\n\n[2026-09-19] L'Aurinie adopte un mécanisme tarifaire identique à celui de la Félisie — https://infodep.example/tarif-imitatif-190926\n\nLe gouvernement aurinien a annoncé une modification de ses droits de douane à 16h00. Le nouveau barème applique un taux de 4,5% aux importations de produits sidérurgiques, sauf dérogation écrite du ministre du Commerce. Ce mécanisme est identique à celui instauré par la Félisie le 5 septembre dernier pour ses importations de produits chimiques. La ministre félisienne Lena Voss a déclaré : « Nous prenons note de cette décision. »\n\n[2026-09-21] Les patrouilles frontalières se renforcent, le statu quo territorial maintenu — https://infodep.example/patrouilles-210926\n\nL'armée aurinienne a déployé trois compagnies supplémentaires le long de la frontière avec la Félisie le 20 septembre. L'armée félisienne a déployé quatre compagnies supplémentaires le même jour. Les mouvements de troupes restent à plus de 5 kilomètres de la ligne de démarcation. Les deux gouvernements ont réaffirmé par communiqués séparés que « la souveraineté sur la bande frontalière demeure inchangée et n'est pas contestée ».",
+      "verification": {
+        "absentes_montrees": [
+          "HIE@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "TRA@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "F",
+        "INC@7": "f",
+        "TRA@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "HIE@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 66,
+      "presentes": [
+        "HIE@7",
+        "PRO@7",
+        "REC@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "PER@7",
+        "POL@7",
+        "RCS@7",
+        "TRC@7"
+      ],
+      "evenement": "RSN@7",
+      "texte": "[2026-09-15] Contexte diplomatique actuel — https://globalobserver.example/au-is-context\nLe gouvernement d'Aurinia, dirigé par la Première ministre Elara Voss, siège à Solara. Celui d'Istrane, dirigé par le Président Marcus Thorne, siège à Port-Lumine. Les deux États partagent une frontière terrestre et maritime. Les ministres des Affaires étrangères, Karl Jens (Aurinia) et Lena Croft (Istrane), se sont rencontrés hier. Les budgets de défense pour l'année en cours sont de 42 milliards d'écus pour Aurinia et de 38 milliards pour Istrane. Des patrouilles navales des deux pays sont signalées dans le détroit de Coralline.\n\n[2026-09-17] Le Parlement istranien bloque l'accord sur les eaux territoriales — https://globalobserver.example/is-parliament-blocks\nLe Parlement d'Istrane a voté, à 178 voix contre 145, pour rejeter le projet d'accord de délimitation maritime négocié par le Président Thorne avec Aurinia. Ce vote empêche la signature du traité par l'exécutif. La Constitution istranienne stipule que tout traité frontalier nécessite une ratification parlementaire. Le ministre Jens a déclaré : « Nous prenons acte de cette décision. » Le président de l'assemblée istranienne a confirmé que le texte ne pouvait être présenté à la signature dans sa forme actuelle.\n\n[2026-09-21] Échanges frontaliers simultanés entre Aurinia et Istrane — https://globalobserver.example/cross-border-transfers\nDouze ingénieurs civils auriniens sont entrés sur le territoire istranien au poste-frontière de Verdon pour une mission de consultation sur un projet ferroviaire. Le même jour, une cargaison de 50 tonnes d'acier de construction, payée par le gouvernement istranien, a franchi la frontière en sens inverse, entrant en Aurinia via le terminal douanier de Rocheville. Les documents de transit ont été validés par les autorités douanières des deux pays. Les mouvements ont été simultanés mais font l'objet de deux protocoles distincts.\n\n[2026-10-03] Suivi des présences navales dans le détroit — https://globalobserver.example/naval-ratios-update\nLe ministère aurinien de la Défense publie son relevé hebdomadaire des présences navales dans le détroit de Coralline. Le 26 septembre, on comptait 4 frégates auriniennes pour 3 corvettes istraniennes. Aujourd'hui, le décompte est de 6 frégates auriniennes pour 4 corvettes istraniennes. Le commandement naval istranien a confirmé ces chiffres. Les deux pays précisent que ces unités mènent des exercices de routine dans leurs eaux territoriales respectives.\n\n[2026-10-04] Signature d'un protocole d'extinction de dette — https://globalobserver.example/debt-protocol-signed\nLes ministres des Finances d'Aurinia et d'Istrane ont signé, en présence de notaires, un protocole financier. Par ce document, Aurinia renonce irrévocablement à recouvrer une créance de 200 millions d'écus due par Istrane. En contrepartie, Istrane s'engage à détruire physiquement, sous supervision conjointe, les titres de dette correspondants d'ici 48 heures. La signature a eu lieu à 14h00 au palais de la Concorde à Genève. Le ministre des Finances d'Istrane a déclaré : « L'acte est signé, l'engagement est permanent. » Les ministres des Affaires étrangères Jens et Croft étaient présents en tant que témoins officiels.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Aurinia",
+          "Istrane"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-15",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-17",
+            "carte": "HIE@7",
+            "marqueur": "qui peut valider, bloquer ou annuler la décision de qui"
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "REC@7",
+            "marqueur": "transferts identifiables dans les deux sens entre les mêmes parties"
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt"
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "SEU@7",
+            "marqueur": "acte juridique, contractuel ou matériel sans mécanisme de retour (signature, destruction, dépense irrécupérable)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "RCS@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-15] Contexte diplomatique actuel — https://globalobserver.example/au-is-context\nLe gouvernement d'Aurinia, dirigé par la Première ministre Elara Voss, siège à Solara. Celui d'Istrane, dirigé par le Président Marcus Thorne, siège à Port-Lumine. Les deux États partagent une frontière terrestre et maritime. Les ministres des Affaires étrangères, Karl Jens (Aurinia) et Lena Croft (Istrane), se sont rencontrés hier. Les budgets de défense pour l'année en cours sont de 42 milliards d'écus pour Aurinia et de 38 milliards pour Istrane. Des patrouilles navales des deux pays sont signalées dans le détroit de Coralline.\n\n[2026-09-17] Le Parlement istranien bloque l'accord sur les eaux territoriales — https://globalobserver.example/is-parliament-blocks\nLe Parlement d'Istrane a voté, à 178 voix contre 145, pour rejeter le projet d'accord de délimitation maritime négocié par le Président Thorne avec Aurinia. Ce vote empêche la signature du traité par l'exécutif. La Constitution istranienne stipule que tout traité frontalier nécessite une ratification parlementaire. Le ministre Jens a déclaré : « Nous prenons acte de cette décision. » Le président de l'assemblée istranienne a confirmé que le texte ne pouvait être présenté à la signature dans sa forme actuelle.\n\n[2026-09-21] Échanges frontaliers simultanés entre Aurinia et Istrane — https://globalobserver.example/cross-border-transfers\nDouze ingénieurs civils auriniens sont entrés sur le territoire istranien au poste-frontière de Verdon pour une mission de consultation sur un projet ferroviaire. Le même jour, une cargaison de 50 tonnes d'acier de construction, payée par le gouvernement istranien, a franchi la frontière en sens inverse, entrant en Aurinia via le terminal douanier de Rocheville. Les documents de transit ont été validés par les autorités douanières des deux pays. Les mouvements ont été simultanés mais font l'objet de deux protocoles distincts.\n\n[2026-10-03] Suivi des ratios de forces navales dans le détroit — https://globalobserver.example/naval-ratios-update\nLe ministère aurinien de la Défense publie son relevé hebdomadaire des présences navales dans le détroit de Coralline. Le 26 septembre, on comptait 4 frégates auriniennes pour 3 corvettes istraniennes (ratio 1.33). Aujourd'hui, le décompte est de 6 frégates auriniennes pour 4 corvettes istraniennes (ratio 1.5). Le commandement naval istranien a confirmé ces chiffres. Les deux pays précisent que ces unités mènent des exercices de routine dans leurs eaux territoriales respectives. Le ratio précédent n'est pas conservé.\n\n[2026-10-04] Signature d'un protocole d'extinction de dette — https://globalobserver.example/debt-protocol-signed\nLes ministres des Finances d'Aurinia et d'Istrane ont signé, en présence de notaires, un protocole financier. Par ce document, Aurinia renonce irrévocablement à recouvrer une créance de 200 millions d'écus due par Istrane. En contrepartie, Istrane s'engage à détruire physiquement, sous supervision conjointe, les titres de dette correspondants d'ici 48 heures. La signature a eu lieu à 14h00 au palais de la Concorde à Genève. Le ministre des Finances d'Istrane a déclaré : « L'acte est signé, l'engagement est permanent. »",
+      "verification": {
+        "absentes_montrees": [
+          "RCS@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "REC@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "f",
+        "PRO@7": "f",
+        "REC@7": "f",
+        "SEU@7": "f"
+      },
+      "rejets_categories": {
+        "PER@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 67,
+      "presentes": [
+        "EME@7",
+        "INC@7",
+        "RES@7"
+      ],
+      "absentes": [
+        "PRO@7",
+        "RSN@7",
+        "TRA@7"
+      ],
+      "evenement": "PER@7",
+      "texte": "[2026-09-14] Le ministre morsanien des Affaires étrangères, D. Kael, a déclaré : « Notre souveraineté est totale. » Le gouvernement brenthien a annoncé un remaniement, plaçant H. Vance à la Défense. Le secrétaire général du Pacte de Corvus, Lena Voss, a ouvert un nouveau centre de commandement à Riga. Le président morsanien, Ivanov, s’est entretenu par visioconférence avec le chancelier brenthien, Schmidt.\n— https://agence.example/geo146\n\n[2026-09-15] Le gouvernement morsanien a interdit le transit de marchandises brenthies vers le Pacte de Corvus via son territoire. Les autorités brenthiennes ont annoncé qu'aucun navire militaire du Pacte ne pourrait faire escale dans leurs ports. Le secrétariat du Pacte de Corvus a confirmé que les livraisons d'équipements promis à la Brenthie, transitant par Morsanie, étaient désormais bloquées. Les exercices navals conjoints entre la Brenthie et le Pacte se déroulent désormais en haute mer, sans point de ravitaillement intermédiaire.\n— https://agence.example/geo147\n\n[2026-09-20] Le ministère brenthien de la Défense a publié une directive sur la sécurisation des communications, exigeant l'usage du cryptage quantique « Fortuna ». Le lendemain, le ministère morsanien des Communications a annoncé l'acquisition de 50 unités du système de cryptage « Fortuna » pour ses délégations à l'étranger. Le 20 septembre, le secrétariat du Pacte de Corvus a commandé 200 licences du logiciel « Fortuna » auprès du même fournisseur brenthien, pour ses attachés de défense.\n[EME] En une semaine, les trois acteurs (Brenthie, Morsanie, Pacte de Corvus) ont tous adopté le système de cryptage « Fortuna » pour leurs communications sécurisées, sans qu'aucun accord commun n'ait été annoncé.\n— https://agence.example/geo148\n\n[2026-10-10] Le secrétariat du Pacte de Corvus a engagé 4,5 millions d'euros pour financer une enquête internationale sur les incidents frontaliers entre la Morsanie et la Brenthie. Une équipe de 12 experts en renseignement militaire et en analyse de trafic satellitaire a été constituée. Le gouvernement brenthien a annoncé la tenue de consultations séparées avec 18 ambassadeurs de pays membres du Pacte. Le ministre morsanien de la Défense a commandé un rapport de prospective stratégique de 300 pages à l'Institut des études avancées de Morsanie.\n— https://agence.example/geo149",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Morsanie",
+          "Brenthie"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "depeches": [
+          {
+            "date": "2026-09-14",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-15",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)"
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "EME@7",
+            "marqueur": "son adoption par imitation ou convergence observée"
+          },
+          {
+            "date": "2026-10-10",
+            "carte": "INC@7",
+            "marqueur": "ressources dépensées à réduire l'indétermination (enquête, consultation, pronostic, divination)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": [
+          "EME@7"
+        ]
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-14] Le ministre morsanien des Affaires étrangères, D. Kael, a déclaré : « Notre souveraineté est totale. » Le gouvernement brenthien a annoncé un remaniement, plaçant H. Vance à la Défense. Le secrétaire général du Pacte de Corvus, Lena Voss, a ouvert un nouveau centre de commandement à Riga. Le président morsanien, Ivanov, s’est entretenu par visioconférence avec le chancelier brenthien, Schmidt.\n— https://agence.example/geo146\n\n[2026-09-15] Le gouvernement morsanien a interdit le transit de marchandises brenthies vers le Pacte de Corvus via son territoire. Les autorités brenthiennes ont annoncé qu'aucun navire militaire du Pacte ne pourrait faire escale dans leurs ports. Le secrétariat du Pacte de Corvus a confirmé que les livraisons d'équipements promis à la Brenthie, transitant par Morsanie, étaient désormais bloquées. Les exercices navals conjoints entre la Brenthie et le Pacte se déroulent désormais en haute mer, sans point de ravitaillement intermédiaire.\n— https://agence.example/geo147\n\n[2026-09-20] Le ministère brenthien de la Défense a publié une directive sur la sécurisation des communications, exigeant l'usage du cryptage quantique « Fortuna ». Le lendemain, le ministère morsanien des Communications a annoncé l'acquisition de 50 unités du système de cryptage « Fortuna » pour ses délégations à l'étranger. Le 20 septembre, le secrétariat du Pacte de Corvus a commandé 200 licences du logiciel « Fortuna » auprès du même fournisseur brenthien, pour ses attachés de défense.\n— https://agence.example/geo148\n\n[2026-10-10] Le secrétariat du Pacte de Corvus a engagé 4,5 millions d'euros pour financer une enquête internationale sur les incidents frontaliers entre la Morsanie et la Brenthie. Une équipe de 12 experts en renseignement militaire et en analyse de trafic satellitaire a été constituée. Le gouvernement brenthien a annoncé la tenue de consultations séparées avec 18 ambassadeurs de pays membres du Pacte. Le ministre morsanien de la Défense a commandé un rapport de prospective stratégique de 300 pages à l'Institut des études avancées de Morsanie.\n— https://agence.example/geo149",
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "EME@7": "f",
+        "INC@7": "f"
+      },
+      "rejets_categories": {
+        "PRO@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 68,
+      "presentes": [
+        "CTR@7",
+        "RSN@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "RCS@7",
+        "TRA@7"
+      ],
+      "evenement": "HIE@7",
+      "texte": "[2026-09-18] Les dirigeants d'Istrane et d'Aurinia se rencontrent à la frontière — https://agence-presse.example/987654\nLe Président d'Istrane, Luka Markov, et la Chancelière d'Aurinia, Elara Voss, se sont serré la main au poste frontalier de la Passe des Cèdres. Les deux dirigeants ont ensuite inspecté une section de la frontière commune, longue de 4,3 kilomètres. Les ministres des Affaires étrangères des deux pays, Piotr Garan pour Istrane et Henrik Stern pour Aurinia, les accompagnaient. Aucun point de l'ordre du jour n'a été communiqué. Les délégations ont ensuite pris place dans des véhicules officiels pour se rendre dans une salle de conférence à proximité.\n\n[2026-09-27] Synchronisation des patrouilles navales en mer de Corallia — https://agence-presse.example/987661\nLes marines d'Istrane et d'Aurinia ont effectué des exercices de navigation parallèle en mer de Corallia. Une frégate istranaise et une corvette aurinienne ont maintenu une distance fixe de 500 mètres pendant trois heures. Les deux navires ont simultanément augmenté leur vitesse de 15 à 20 nœuds à 14h00 précises. Ils ont également effectué des changements de cap synchronisés à 15h15 et 16h30, selon les communiqués des deux états-majors. Les trajectoires ont été publiées sur les portails maritimes officiels des deux pays.\n\n[2026-09-29] La proposition aurinienne sur les exportations d'acier rejetée par Istrane — https://agence-presse.example/987665\nLe gouvernement d'Istrane a refusé la proposition aurinienne d'exclure l'acier des négociations commerciales en cours. Le ministre du Commerce Piotr Garan a déclaré : « L'option d'une exonération pour le secteur sidérurgique est explicitement exclue. » La chancelière Voss avait proposé de maintenir les quotas d'exportation d'acier auriniens à leur niveau actuel de 2,5 millions de tonnes. Le porte-parole du ministère istranais a ajouté : « Toutes les matières premières, sans exception, font partie de l'accord en discussion. » Les pourparlers se poursuivront la semaine prochaine.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Istrane",
+          "Aurinia"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-18",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "RSN@7",
+            "marqueur": "au moins deux rythmes propres identifiés, et l'observation de leur alignement (simultanéité, cadence commune, gestes synchrones)"
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "reecrit": false,
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "RCS@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 69,
+      "presentes": [
+        "EME@7",
+        "INC@7",
+        "POL@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "CRO@7",
+        "HIE@7",
+        "RCS@7",
+        "RES@7"
+      ],
+      "evenement": "PER@7",
+      "texte": "[2026-09-18] Ostara et Morsanie au quotidien — https://agence.example/ostara-morsanie-180926\nLe président d'Ostara, Luka Varn, a présidé une réunion du conseil de sécurité nationale à Karsta. Le ministre morsanien des Affaires étrangères, Aris Thorne, a donné une conférence de presse à Séléné. Les deux pays maintiennent des ambassades ouvertes dans leurs capitales respectives. Des patrouilles navales ostariennes ont été signalées dans leur zone économique exclusive. Les douanes morsaniennes ont publié des statistiques hebdomadaires d'importations en provenance d'Ostara.\n\n[2026-09-25] Ostara mandate une étude stratégique sur Morsanie — https://agence.example/etude-strategique-250926\nLe gouvernement ostarien a alloué 2,7 millions de couronnes à un consortium de consultants privés. Le mandat, publié sur le portail des marchés publics, demande une « modélisation prospective des postures diplomatiques et militaires morsaniennes sur les 24 prochains mois ». Le ministère de la Défense d'Ostara a commandé séparément 1500 heures de traduction et d'analyse de discours officiels morsaniens. Les résultats sont attendus pour décembre 2026.\n\n[2026-09-29] Le navire de ravitaillement ostarien contraint à un détour — https://agence.example/navire-detour-290926\nLe ravitailleur naval ostarien « Surok » a dû interrompre sa route prévue vers une base avancée. Il a fait demi-tour à 50 milles nautiques à l'est de l'île de Verda, après des manœuvres de frégates morsaniennes dans le secteur. Le « Surok » a finalement rejoint sa destination en empruntant un corridor de navigation international plus au sud, rallongeant son trajet de 18 heures. Le ministère morsanien de la Défense a déclaré mener « un exercice de défense aérienne en zone réglementée ». Le coût supplémentaire en carburant est estimé à 120 000 couronnes, sans possibilité de remboursement.\n\n[2026-09-30] La ligne de démarcation de 1987 guide les patrouilles — https://agence.example/ligne-1987-300926\nLes garde-frontières ostariens utilisent la « Ligne bleue » tracée par la commission mixte de 1987 pour planifier leurs rondes quotidiennes. Cette ligne, matérialisée par 47 bornes en béton, coupe en deux le plateau de Krasta. Un communiqué du commandement frontalier ostarien ordonne de « surveiller toute activité à moins de 500 mètres de la Ligne bleue ». Le tracé ignore les caractéristiques topographiques actuelles et passe par le milieu d'un champ exploité par un agriculteur morsanien.\n\n[2026-10-02] Morsanie adopte le système de tarifs douaniers ostarien — https://agence.example/tarifs-douaniers-021026\nLe parlement morsanien a voté une loi instaurant une nomenclature tarifaire identique à celle en vigueur en Ostara. La nouvelle grille, effective le 15 novembre, reprend les 12 catégories et les taux différentiels ostariens sur les biens d'équipement. Le ministre morsanien du Commerce a déclaré : « Cette harmonisation technique simplifiera les procédures. » Aucun accord formel n'a été signé entre les deux pays. Les services fiscaux ostariens n'ont pas commenté.\n\n[2026-10-29] Ostara et Morsanie s'auto-désignent comme « stabilisateurs » et « révisionnistes » — https://agence.example/stabilisateurs-revisionnistes-291026\nDans un discours, le président Varn a déclaré : « Les nations stabilisatrices comme la nôtre défendent l'ordre. » Le ministre Thorne a répondu lors d'un point presse : « Les prétendus stabilisateurs sont des conservateurs. Les forces révisionnistes légitimes, comme Morsanie, œuvrent pour un équilibre juste. » Le ministère ostarien des Affaires étrangères a ensuite publié un communiqué utilisant cinq fois le terme « camp de la stabilité ». Les médias d'État morsaniens ont titré sur « l'axe révisionniste en marche ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Ostara",
+          "Morsanie"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-18",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "INC@7",
+            "marqueur": "ressources dépensées à réduire l'indétermination (enquête, consultation, pronostic, divination)"
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller"
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)"
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "EME@7",
+            "marqueur": "son adoption par imitation ou convergence observée"
+          },
+          {
+            "date": "2026-10-29",
+            "carte": "POL@7",
+            "marqueur": "les acteurs se classent eux-mêmes dans deux camps, ou deux termes opposés reviennent dans leur propre vocabulaire"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "RCS@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": [
+          "SEU@7"
+        ]
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-18] Ostara et Morsanie au quotidien — https://agence.example/ostara-morsanie-180926\nLe président d'Ostara, Luka Varn, a présidé une réunion du conseil de sécurité nationale à Karsta. Le ministre morsanien des Affaires étrangères, Aris Thorne, a donné une conférence de presse à Séléné. Les deux pays maintiennent des ambassades ouvertes dans leurs capitales respectives. Des patrouilles navales ostariennes ont été signalées dans leur zone économique exclusive. Les douanes morsaniennes ont publié des statistiques hebdomadaires d'importations en provenance d'Ostara.\n\n[2026-09-25] Ostara mandate une étude stratégique sur Morsanie — https://agence.example/etude-strategique-250926\nLe gouvernement ostarien a alloué 2,7 millions de couronnes à un consortium de consultants privés. Le mandat, publié sur le portail des marchés publics, demande une « modélisation prospective des postures diplomatiques et militaires morsaniennes sur les 24 prochains mois ». Le ministère de la Défense d'Ostara a commandé séparément 1500 heures de traduction et d'analyse de discours officiels morsaniens. Les résultats sont attendus pour décembre 2026.\n\n[2026-09-29] Le navire de ravitaillement ostarien contraint à un détour — https://agence.example/navire-detour-290926\nLe ravitailleur naval ostarien « Surok » a dû interrompre sa route prévue vers une base avancée. Il a fait demi-tour à 50 milles nautiques à l'est de l'île de Verda, après des manœuvres de frégates morsaniennes dans le secteur. Le « Surok » a finalement rejoint sa destination en empruntant un couloir de navigation international plus au sud, rallongeant son trajet de 18 heures. Le ministère morsanien de la Défense a déclaré mener « un exercice de défense aérienne en zone réglementée ».\n\n[2026-09-30] La ligne de démarcation de 1987 guide les patrouilles — https://agence.example/ligne-1987-300926\nLes garde-frontières ostariens utilisent la « Ligne bleue » tracée par la commission mixte de 1987 pour planifier leurs rondes quotidiennes. Cette ligne, matérialisée par 47 bornes en béton, coupe en deux le plateau de Krasta. Un communiqué du commandement frontalier ostarien ordonne de « surveiller toute activité à moins de 500 mètres de la Ligne bleue ». Le tracé ignore les caractéristiques topographiques actuelles et passe par le milieu d'un champ exploité par un agriculteur morsanien.\n\n[2026-10-02] Morsanie adopte le système de tarifs douaniers ostarien — https://agence.example/tarifs-douaniers-021026\nLe parlement morsanien a voté une loi instaurant une nomenclature tarifaire identique à celle en vigueur en Ostara. La nouvelle grille, effective le 15 novembre, reprend les 12 catégories et les taux différentiels ostariens sur les biens d'équipement. Le ministre morsanien du Commerce a déclaré : « Cette harmonisation technique simplifiera les procédures. » Aucun accord formel n'a été signé entre les deux pays. Les services fiscaux ostariens n'ont pas commenté.\n\n[2026-10-29] Ostara et Morsanie s'auto-désignent comme « stabilisateurs » et « révisionnistes » — https://agence.example/stabilisateurs-revisionnistes-291026\nDans un discours, le président Varn a déclaré : « Les nations stabilisatrices comme la nôtre défendent l'ordre. » Le ministre Thorne a répondu lors d'un point presse : « Les prétendus stabilisateurs sont des conservateurs. Les forces révisionnistes légitimes, comme Morsanie, œuvrent pour un équilibre juste. » Le ministère ostarien des Affaires étrangères a ensuite publié un communiqué utilisant cinq fois le terme « camp de la stabilité ». Les médias d'État morsaniens ont titré sur « l'axe révisionniste en marche ».",
+      "verification": {
+        "absentes_montrees": [
+          "CRO@7",
+          "HIE@7",
+          "RCS@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "TRC@7": "f",
+        "RCS@7": "f",
+        "INC@7": "f",
+        "SEU@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "aucun_fait",
+        "EME@7": "contredit",
+        "HIE@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 70,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "RSN@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "POL@7",
+        "PRO@7",
+        "RCS@7",
+        "RES@7"
+      ],
+      "evenement": "COM@7",
+      "texte": "[2026-09-17] Contexte régional — https://monde.example/affaires\nLe président de Valsnie, Lukas Vinter, préside un conseil de sécurité nationale. Le Premier ministre de Norven, Elin Mork, annonce une révision de la doctrine militaire. Les forces armées valsniennes mènent des exercices près de la frontière commune. Les diplomates norvéniens préparent un dossier sur les échanges commerciaux bilatéraux.\n\n[2026-09-19] Croissance des incidents frontaliers — https://monde.example/incidents\nLe ministère norvénien de la Défense a comptabilisé 12 survols de drones valsniens en septembre. Le 5 septembre, 2 survols ont été enregistrés. Le 12 septembre, 3 survols ont été enregistrés. Le 19 septembre, 4 survols ont été enregistrés. Le porte-parole du gouvernement valsnien a déclaré : « Il s'agit d'exercices de routine. » Le nombre de survols par semaine a doublé entre début et mi-septembre.\n\n[2026-09-23] Échec d'une mission de ravitaillement — https://monde.example/diplomatie\nUn convoi diplomatique norvénien a tenté de rejoindre son ambassade à Vastad, capitale de Valsnie, par l'unique route frontalière habituelle. Des blindés valsniens ont barré la route. Le convoi a dû rebrousser chemin et emprunter un col de montagne secondaire, rallongeant son trajet de dix-huit heures. La cargaison, du matériel de communication, est arrivée avec un retard important.\n\n[2026-09-29] Sanction norvénienne bloquée — https://monde.example/commerce\nLe gouvernement norvénien a tenté d'imposer un embargo sur les composants électroniques à destination de Valsnie. La Chambre de commerce de Norven a refusé de valider le décret, invoquant une clause de non-rétroactivité des sanctions commerciales. Le ministre norvénien du Commerce a déclaré : « L'option d'un embargo unilatéral immédiat est exclue. » Les exportations se poursuivent selon les quotas trimestriels.\n\n[2026-10-05] Synchronisation des manœuvres — https://monde.example/defense\nLes manœuvres navales valsniennes dans le golfe de Meren suivent un cycle de 72 heures, identifié par des analystes norvéniens. Les exercices aériens norvéniens le long de la côte ont un cycle de 48 heures. Le 5 octobre à 06h00 TU, le début d'une phase d'exercice d'assaut amphibie valsnien a coïncidé avec le décollage d'une vague de chasseurs-bombardiers norvéniens. Les deux événements ont initié une nouvelle séquence d'opérations simultanées.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Valsnie",
+          "Norven"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-09-17",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "CRO@7",
+            "marqueur": "une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même grandeur"
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller"
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue"
+          },
+          {
+            "date": "2026-10-05",
+            "carte": "RSN@7",
+            "marqueur": "au moins deux rythmes propres identifiés, et l'observation de leur alignement (simultanéité, cadence commune, gestes synchrones)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "PRO@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-17] Contexte régional — https://monde.example/affaires\nLe président de Valsnie, Lukas Vinter, préside un conseil de sécurité nationale. Le Premier ministre de Norven, Elin Mork, annonce une révision de la doctrine militaire. Les forces armées valsniennes mènent des exercices près de la frontière commune. Les diplomates norvéniens préparent un dossier sur les échanges commerciaux bilatéraux. Les deux pays entretiennent des relations diplomatiques.\n\n[2026-09-19] Croissance des incidents frontaliers — https://monde.example/incidents\nLe ministère norvénien de la Défense a comptabilisé 12 survols de drones valsniens en septembre. Le 5 septembre, 2 survols ont été enregistrés. Le 12 septembre, 3 survols ont été enregistrés. Le 19 septembre, 4 survols ont été enregistrés. Le porte-parole du gouvernement valsnien a déclaré : « Il s'agit d'exercices de routine. »\n\n[2026-09-23] Échec d'une mission de ravitaillement — https://monde.example/diplomatie\nUn convoi diplomatique norvénien a tenté de rejoindre son ambassade à Vastad, capitale de Valsnie, par l'unique route frontalière habituelle. Des blindés valsniens ont barré la route. Le convoi a dû rebrousser chemin et emprunter un col de montagne secondaire, rallongeant son trajet de dix-huit heures. La cargaison, du matériel de communication, est arrivée avec un retard important.\n\n[2026-09-29] Sanction norvénienne bloquée — https://monde.example/commerce\nLe gouvernement norvénien a tenté d'imposer un embargo sur les composants électroniques à destination de Valsnie. La Chambre de commerce de Norven a refusé de valider le décret, invoquant une clause de non-rétroactivité des sanctions commerciales. Le ministre norvénien du Commerce a déclaré : « L'option d'un embargo unilatéral immédiat est exclue. » Les exportations se poursuivent selon les quotas trimestriels.\n\n[2026-10-05] Synchronisation des manœuvres — https://monde.example/defense\nLes manœuvres navales valsniennes dans le golfe de Meren suivent un cycle de 72 heures, identifié par des analystes norvéniens. Les exercices aériens norvéniens le long de la côte ont un cycle de 48 heures. Le 5 octobre à 06h00 TU, le début d'une phase d'exercice d'assaut amphibie valsnien a coïncidé avec le décollage d'une vague de chasseurs-bombardiers norvéniens. Les deux événements ont initié une nouvelle séquence d'opérations simultanées.",
+      "verification": {
+        "absentes_montrees": [
+          "PRO@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CRO@7": "f",
+        "CTR@7": "f",
+        "PRO@7": "f",
+        "RSN@7": "f",
+        "SEU@7": "f"
+      },
+      "rejets_categories": {
+        "POL@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 71,
+      "presentes": [],
+      "absentes": [
+        "EME@7",
+        "HIE@7",
+        "RES@7"
+      ],
+      "evenement": "PRO@7",
+      "texte": "[2026-10-18] Présentation des acteurs étatiques de la région — https://wire.example/regional-actors-20261018\n\nLe gouvernement de Telkhoun, dirigé par la Chancelière Elara Vance, siège à la capitale Lyr. Le gouvernement de Morsanie, dirigé par le Premier Ministre Kaelen Sorv, est basé à Veridia. L'ambassade de Telkhoun à Veridia est dirigée par l'Ambassadeur Roderick Feld. L'ambassade de Morsanie à Lyr est dirigée par l'Ambassadeur Idris Vale. Le Général Marcus Thorne et le Dr. Linnea Voss assisteront tous deux à la conférence sur la sécurité régionale de la semaine prochaine à Veridia.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Telkhoun",
+          "Morsanie"
+        ],
+        "organisation": null,
+        "depeches": [
+          {
+            "date": "2026-10-18",
+            "carte": null,
+            "marqueur": null
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-10-18] Présentation des acteurs étatiques de la région — https://wire.example/regional-actors-20261018\n\nLe gouvernement de Telkhoun, dirigé par la Chancelière Elara Vance, siège à la capitale Lyr. Elle a nommé le Général Marcus Thorne comme chef d'état-major des armées. Le gouvernement de Morsanie, dirigé par le Premier Ministre Kaelen Sorv, est basé à Veridia. Son ministre des Affaires étrangères est le Dr. Linnea Voss. L'ambassade de Telkhoun à Veridia est dirigée par l'Ambassadeur Roderick Feld. L'ambassade de Morsanie à Lyr est dirigée par l'Ambassadeur Idris Vale.",
+      "verification": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli"
+      }
+    }
+  ],
+  "verificateur": "bedrock/mistral.mistral-large-3-675b-instruct",
+  "verificateur_famille_distincte": true,
+  "narrateur": "bedrock/deepseek.v3.2",
+  "meme_famille": false,
+  "protocole_monde": 4,
+  "cumul": {
+    "passages": 1,
+    "narrateur": "bedrock/deepseek.v3.2",
+    "protocole_monde": 4,
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "reecrites": 9,
+      "erreurs_narrateur_avant_reecriture": {
+        "absentes_montrees": 15,
+        "presentes_non_montrees": 4
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 18,
+        "presentes_non_montrees": 3
+      },
+      "sens_F": 0.0286,
+      "sens_f": 0.7714,
+      "sens": 0.8,
+      "fp_F": 0.0,
+      "fp_f": 0.0385,
+      "fp": 0.0385
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 38,
+    "cartes_absentes": 44,
+    "mesure": {
+      "sens_F": 0.0263,
+      "sens_f": 0.7895,
+      "sens": 0.8158,
+      "fp_F": 0.0,
+      "fp_f": 0.1591,
+      "fp": 0.1591
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 4,
+      "non_rejetee": 1,
+      "aucun_fait": 1,
+      "contredit": 1
+    },
+    "etats_nuls_justes": 0,
+    "situations_vides": 1
+  }
+}
