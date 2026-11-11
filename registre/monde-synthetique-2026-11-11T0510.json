@@ -1,0 +1,976 @@
+{
+  "calcule_le": "2026-11-11T05:10:43+00:00",
+  "version_skill": "0.7.68",
+  "version_bot": "0.10.26",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    48,
+    59
+  ],
+  "consigne_lecteur_sha256": "a2f80edfcd8302a4d1d06d5715eee0ea9cd73c54435d2b18596ccbf7f066e9e1",
+  "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "reecrites": 11,
+      "erreurs_narrateur_avant_reecriture": {
+        "absentes_montrees": 16,
+        "presentes_non_montrees": 1
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 16,
+        "presentes_non_montrees": 3
+      },
+      "sens_F": 0.2632,
+      "sens_f": 0.3158,
+      "sens": 0.5789,
+      "fp_F": 0.0,
+      "fp_f": 0.1739,
+      "fp": 0.1739
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 22,
+    "cartes_absentes": 39,
+    "mesure": {
+      "sens_F": 0.2273,
+      "sens_f": 0.2727,
+      "sens": 0.5,
+      "fp_F": 0.0256,
+      "fp_f": 0.2821,
+      "fp": 0.3077
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 9,
+      "aucun_fait": 1,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 1,
+    "situations_vides": 3,
+    "par_carte": {
+      "COM": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 1,
+        "lue_si_absente": 1
+      },
+      "CRO": {
+        "presente": 2,
+        "lue_si_presente": 0,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 3,
+        "lue_si_presente": 3,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "EME": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "INC": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "PER": {
+        "presente": 2,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "POL": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 1,
+        "lue_si_absente": 1
+      },
+      "PRO": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 6,
+        "lue_si_absente": 3
+      },
+      "RCS": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "REC": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "RES": {
+        "presente": 1,
+        "lue_si_presente": 0,
+        "absente": 5,
+        "lue_si_absente": 4
+      },
+      "RSN": {
+        "presente": 1,
+        "lue_si_presente": 0,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "SEU": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "TRA": {
+        "presente": 2,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 1
+      },
+      "TRC": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 3,
+        "lue_si_absente": 1
+      }
+    }
+  },
+  "situations": [
+    {
+      "graine": 48,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "POL@7",
+        "PRO@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "PER@7",
+        "RCS@7",
+        "RES@7",
+        "TRA@7"
+      ],
+      "evenement": "HIE@7",
+      "texte": "[2026-09-18] Contexte diplomatique dans la région du Reth — https://infonet.example/dep/4501\nLa République d'Istrane, présidée par Marta Kovac, et la Fédération de Félisie, dirigée par le Premier ministre Arman Voss, partagent une frontière de 127 km le long du fleuve Reth. Le Conseil des États riverains du Reth (CERR), instance de coordination, comprend les deux pays ainsi que quatre autres membres. Les relations bilatérales sont régies par le Traité frontalier de Lausanne (2004). Les ministres des Affaires étrangères sont Piotr Garan pour Istrane et Elina Sarek pour Félisie.\n\n[2026-09-20] Istrane demande une révision des règles de navigation sur le Reth — https://infonet.example/dep/4502\nLe ministère istranais des Transports a soumis une demande officielle au CERR pour rétablir le libre passage de ses navires-citernes militaires sur le segment nord du Reth, suspendu depuis 2023. Le Conseil a rejeté la demande à l'unanimité moins une voix (celle d'Istrane). La délégation istranaise a ensuite proposé un « corridor de sûreté » côtier comme alternative.\n\n[2026-09-21] Félisie dénonce une « posture de confrontation » d'Istrane — https://infonet.example/dep/4503\nLa ministre félisienne Elina Sarek a déclaré : « Nous assistons à une division claire entre les États attachés à la stabilité collective et ceux qui privilégient une souveraineté agressive. » En réponse, le porte-parole du gouvernement istranais a affirmé : « Nous défendons le camp de la sécurité nationale et de l'autonomie stratégique, face à un camp du statu quo préjudiciable. » Le communiqué du CERR évoque « deux approches fondamentalement opposées ».\n\n[2026-09-24] Le CERR publie des données sur la présence militaire fluviale — https://infonet.example/dep/4504\nUn rapport du secrétariat du CERR indique que la densité de patrouilleurs militaires sur le Reth est passée de 0,7 à 1,2 bâtiment par kilomètre de frontière istrano-félisienne entre août et septembre 2026. Par ailleurs, le tonnage total des navires de commerce félisiens inspectés par les garde-côtes istranais a été réduit de 40% sur la même période. Le ratio des incidents déclarés par Félisie sur ceux déclarés par Istrane est de 3 pour 1.\n\n[2026-09-25] Istrane ajuste ses quotas d'importations d'acier — https://infonet.example/dep/4505\nLe ministère istranais du Commerce a publié un décret fixant des quotas mensuels d'importation d'acier de construction en provenance de Félisie. Le quota est établi à 15 000 tonnes pour octobre 2026, à 7 500 tonnes pour novembre 2026, et à 3 000 tonnes pour décembre 2026. Le taux de réduction d'un mois sur l'autre est estimé à 50% puis 60%. Le gouvernement félisien a annoncé qu'il porterait plainte devant l'organe de règlement des différends du CERR.\n\n[2026-09-30] Une manœuvre militaire istranaise interrompue sur le Reth — https://infonet.example/dep/4506\nUn convoi de trois barges de l'armée istranaise a tenté de mouiller des bouées de balisage dans les eaux contestées du banc de sable de Karst. Des patrouilleurs félisiens se sont positionnés physiquement entre les barges et le site, bloquant l'opération. Un communiqué ultérieur du commandement militaire istranais a précisé : « Les barges sont revenues à leur base. »",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Istrane",
+          "Félisie"
+        ],
+        "organisation": "le Conseil des États riverains du Reth",
+        "depeches": [
+          {
+            "date": "2026-09-18",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller"
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "POL@7",
+            "marqueur": "les acteurs se classent eux-mêmes dans deux camps, ou deux termes opposés reviennent dans leur propre vocabulaire"
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport"
+          },
+          {
+            "date": "2026-09-25",
+            "carte": "CRO@7",
+            "marqueur": "au moins trois mesures datées d'une même grandeur"
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "RCS@7"
+        ],
+        "presentes_non_montrees": [
+          "CRO@7"
+        ]
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-18] Contexte diplomatique dans la région du Reth — https://infonet.example/dep/4501\nLa République d'Istrane, présidée par Marta Kovac, et la Fédération de Félisie, dirigée par le Premier ministre Arman Voss, partagent une frontière de 127 km le long du fleuve Reth. Le Conseil des États riverains du Reth (CERR), instance de coordination, comprend les deux pays ainsi que quatre autres membres. Les relations bilatérales sont régies par le Traité frontalier de Lausanne (2004). Les ministres des Affaires étrangères sont Piotr Garan pour Istrane et Elina Sarek pour Félisie.\n\n[2026-09-20] Istrane demande une révision des règles de navigation sur le Reth — https://infonet.example/dep/4502\nLe ministère istranais des Transports a soumis une demande officielle au CERR pour rétablir le libre passage de ses navires-citernes militaires sur le segment nord du Reth, suspendu depuis 2023. Le Conseil a rejeté la demande à l'unanimité moins une voix (celle d'Istrane). La délégation istranaise a ensuite proposé un « corridor de sûreté » côtier comme alternative, exigeant un itinéraire différent de la voie fluviale habituelle.\n\n[2026-09-21] Félisie dénonce une « posture de confrontation » d'Istrane — https://infonet.example/dep/4503\nLa ministre félisienne Elina Sarek a déclaré : « Nous assistons à une division claire entre les États attachés à la stabilité collective et ceux qui privilégient une souveraineté agressive. » En réponse, le porte-parole du gouvernement istranais a affirmé : « Nous défendons le camp de la sécurité nationale et de l'autonomie stratégique, face à un camp du statu quo préjudiciable. » Le communiqué du CERR évoque « deux approches fondamentalement opposées ».\n\n[2026-09-24] Le CERR publie des données sur la présence militaire fluviale — https://infonet.example/dep/4504\nUn rapport du secrétariat du CERR indique que la densité de patrouilleurs militaires sur le Reth est passée de 0,7 à 1,2 bâtiment par kilomètre de frontière istrano-félisienne entre août et septembre 2026. Par ailleurs, le tonnage total des navires de commerce félisiens inspectés par les garde-côtes istranais a été réduit de 40% sur la même période. Le ratio des incidents déclarés par Félisie sur ceux déclarés par Istrane est de 3 pour 1.\n\n[2026-09-25] Istrane ajuste ses quotas d'importations d'acier — https://infonet.example/dep/4505\nLe ministère istranais du Commerce a publié un décret fixant des quotas mensuels d'importation d'acier de construction en provenance de Félisie. Le quota est établi à 15 000 tonnes pour octobre 2026, à 7 500 tonnes pour novembre 2026, et à 3 000 tonnes pour décembre 2026. Aucune raison n'est invoquée dans le texte du décret. Le gouvernement félisien a annoncé qu'il porterait plainte devant l'organe de règlement des différends du CERR.\n\n[2026-09-30] Une manœuvre militaire istranaise interrompue sur le Reth — https://infonet.example/dep/4506\nUn convoi de trois barges de l'armée istranaise a tenté de mouiller des bouées de balisage dans les eaux contestées du banc de sable de Karst. Des patrouilleurs félisiens se sont positionnés physiquement entre les barges et le site, bloquant l'opération. Un communiqué ultérieur du commandement militaire istranais a précisé : « L'option d'un déploiement par la force a été explicitement exclue pour cette phase. Les barges sont revenues à leur base. »",
+      "verification": {
+        "absentes_montrees": [
+          "RCS@7"
+        ],
+        "presentes_non_montrees": [
+          "CRO@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "POL@7": "F",
+        "CTR@7": "F",
+        "PRO@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 49,
+      "presentes": [],
+      "absentes": [
+        "REC@7",
+        "RES@7",
+        "SEU@7"
+      ],
+      "evenement": "RCS@7",
+      "texte": "[2026-09-25] Premiers contacts en mer de Lycia — https://ostrave-news.example/lycia-0925\n\nLe gouvernement d'Aurinia a confirmé une rencontre navale avec la Frégate Norven-7. Le ministre aurinien des Affaires étrangères, Lars Vinter, a déclaré : « L'échange a été courtois. » La même journée, un cargo sous pavillon de la Ligue commerciale d'Ostrave a été escorté par un patrouilleur norvien jusqu'au port de Karsund. L'état-major aurinien a publié une image satellite montrant trois navires de la Ligue au large de ses eaux territoriales.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Aurinia",
+          "Norven"
+        ],
+        "organisation": "la Ligue commerciale d'Ostrave",
+        "depeches": [
+          {
+            "date": "2026-09-25",
+            "carte": null,
+            "marqueur": null
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "RES@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-25] Premiers contacts en mer de Lycia — https://ostrave-news.example/lycia-0925\n\nLe gouvernement d'Aurinia a confirmé une rencontre navale avec la Frégate Norven-7. Le ministre aurinien des Affaires étrangères, Lars Vinter, a déclaré : « L'échange a été courtois. » La même journée, un cargo sous pavillon de la Ligue commerciale d'Ostrave a été escorté par un patrouilleur norvien jusqu'au port de Karsund. Le Premier ministre de Norven, Elin Møller, a indiqué que des pourparlers techniques avec la Ligue étaient « en phase préparatoire ». L'état-major aurinien a publié une image satellite montrant trois navires de la Ligue au large de ses eaux territoriales.",
+      "verification": {
+        "absentes_montrees": [
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "REC@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 50,
+      "presentes": [],
+      "absentes": [
+        "CTR@7",
+        "INC@7",
+        "PER@7"
+      ],
+      "evenement": "HIE@7",
+      "texte": "[2026-10-18] Le continent de Brenthie et de Calvarie — https://agence-internationale.example/geo/4567\n\nLe Premier Ministre de la Brenthie, Karl Vinter, a déclaré hier : « Notre frontière avec la Calvarie est définie par le traité de 1921. » Le Président calvarien, Piotr Noren, a répondu ce matin : « Nos relations commerciales avec la Brenthie sont actuellement normales. » Le Conseil des États riverains du Reth, qui réunit les deux pays et quatre autres nations, tiendra sa réunion annuelle le mois prochain. Le ministre brenthois des Affaires étrangères, Lena Soren, a rencontré son homologue calvarien, Ivan Markov, à deux reprises cette année, en mars et en août. Les armées des deux États ont effectué des exercices distincts près de la frontière commune en septembre.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Brenthie",
+          "Calvarie"
+        ],
+        "organisation": "le Conseil des États riverains du Reth",
+        "depeches": [
+          {
+            "date": "2026-10-18",
+            "carte": null,
+            "marqueur": null
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "PER@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-10-18] Le continent de Brenthie et de Calvarie — https://agence-internationale.example/geo/4567\n\nLe Premier Ministre de la Brenthie, Karl Vinter, a déclaré hier : « Notre frontière avec la Calvarie est définie par le traité de 1921. » Le Président calvarien, Piotr Noren, a répondu ce matin : « Nos relations commerciales avec la Brenthie sont actuellement normales. » Le Conseil des États riverains du Reth, qui réunit les deux pays et quatre autres nations, tiendra sa réunion annuelle le mois prochain. Le ministre brenthois des Affaires étrangères, Lena Soren, a rencontré son homologue calvarien, Ivan Markov, à deux reprises cette année. Les armées des deux États ont effectué des exercices distincts près de la frontière commune en septembre.",
+      "verification": {
+        "absentes_montrees": [
+          "PER@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "CTR@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 51,
+      "presentes": [
+        "EME@7",
+        "PER@7"
+      ],
+      "absentes": [
+        "PRO@7",
+        "RES@7",
+        "SEU@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "**DÉPÊCHES :**\n\n**[2026-09-23] L'état des relations entre Doramie, Granvie et le Pacte de Corvus — https://wire.example/intl/relations**\nLa République de Doramie et le Royaume de Granvie partagent une frontière terrestre de 342 km. Le ministre doramien des Affaires étrangères est Elena Kovacs ; son homologue granvien est Sir Reginald Thorne. Le Pacte de défense de Corvus est une alliance militaire comprenant douze États membres. Doramie est membre fondateur du Pacte depuis 1998 ; Granvie n'en est pas membre.\n\n**[2026-09-26] Granvie annonce le lancement de son exercice militaire \"Bouclier de Granit\" — https://wire.example/intl/granite-shield**\nLe ministère granvien de la Défense a publié un communiqué aujourd'hui à 14h00. Il annonce le début immédiat de l'exercice militaire \"Bouclier de Granit\" le long de sa frontière avec la Doramie. L'exercice mobilisera trois brigades, soit environ 15 000 soldats. Le communiqué précise que cette phase d'alerte durera 72 heures, suivie d'une phase de manœuvres de cinq jours. Le ministre Thorne a déclaré : \"C'est un cycle d'entraînement planifié de longue date.\"\n\n**[2026-10-17] Le Pacte de Corvus étend la durée de ses exercices et adopte un nouveau format — https://wire.example/intl/corvus-extend**\nLe commandement du Pacte de Corvus a annoncé la prolongation de ses exercices \"Bouclier d'Acier\" en Doramie de quinze jours supplémentaires. Un nouveau communiqué indique que le scénario intégrera désormais \"une phase prolongée d'alerte renforcée suivie de manœuvres de large envergure\". Les forces du Pacte concernées passeront de 5 000 à 8 000 personnels pour la durée étendue.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Doramie",
+          "Granvie"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "depeches": [
+          {
+            "date": "2026-09-23",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "PER@7",
+            "marqueur": "phases du cycle identifiables (on peut dire où l'on en est)"
+          },
+          {
+            "date": "2026-10-17",
+            "carte": "EME@7",
+            "marqueur": "son adoption par imitation ou convergence observée"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-23] L'état des relations entre Doramie, Granvie et le Pacte de Corvus — https://wire.example/intl/relations\nLa République de Doramie et le Royaume de Granvie partagent une frontière terrestre de 342 km. Le ministre doramien des Affaires étrangères est Elena Kovacs ; son homologue granvien est Sir Reginald Thorne. Le Pacte de défense de Corvus est une alliance militaire comprenant douze États membres. Doramie est membre fondateur du Pacte depuis 1998 ; Granvie n'en est pas membre. Les exercices militaires conjoints annuels \"Bouclier d'Acier\" du Pacte se déroulent actuellement en Doramie, avec la participation de 5 000 soldats de sept pays membres.\n\n[2026-09-26] Granvie annonce le lancement de son exercice militaire \"Bouclier de Granit\" — https://wire.example/intl/granite-shield\nLe ministère granvien de la Défense a publié un communiqué aujourd'hui à 14h00. Il annonce le début immédiat de l'exercice militaire \"Bouclier de Granit\" le long de sa frontière avec la Doramie. L'exercice mobilisera trois brigades, soit environ 15 000 soldats. Le communiqué précise que cette phase d'alerte durera 72 heures, suivie d'une phase de manœuvres de cinq jours. Le ministre Thorne a déclaré : \"C'est un cycle d'entraînement planifié de longue date.\"\n\n[2026-10-17] Le Pacte de Corvus étend la durée de ses exercices et adopte un nouveau format — https://wire.example/intl/corvus-extend\nLe commandement du Pacte de Corvus a annoncé la prolongation de ses exercices \"Bouclier d'Acier\" en Doramie de quinze jours supplémentaires. Un nouveau communiqué indique que le scénario intégrera désormais \"une phase prolongée d'alerte renforcée suivie de manœuvres de large envergure\". Cette structure en deux phases correspond au format annoncé par Granvie pour son exercice \"Bouclier de Granit\" en septembre. Les forces du Pacte concernées passeront de 5 000 à 8 000 personnels pour la durée étendue.",
+      "verification": {
+        "absentes_montrees": [
+          "RES@7"
+        ],
+        "presentes_non_montrees": [
+          "EME@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "RES@7": "f",
+        "PRO@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 52,
+      "presentes": [
+        "REC@7"
+      ],
+      "absentes": [
+        "HIE@7",
+        "RES@7",
+        "TRC@7"
+      ],
+      "evenement": "COM@7",
+      "texte": "[2026-09-20] Le continent d'Aurinia et les États de Calvarie — https://velhaven.example/wire/20260920-relations\nLe Président d'Aurinia, Aris Thorne, et la Chancelière de Calvarie, Lena Voss, se sont rencontrés à deux reprises cette année. L'Agence régionale de l'énergie de Velhaven, dirigée par le Secrétaire général Milo Renard, fournit 40% du gaz naturel consommé en Calvarie. Aurinia est le principal actionnaire de l'Agence avec une participation de 51%. Les deux pays entretiennent une ambassade dans leurs capitales respectives, Talon et Meridian. Leurs ministres du Commerce ont signé un accord de facilitation des échanges en avril 2026. Le traité fondant l'Agence régionale de l'énergie a été signé en 1995, après la guerre des Détroits.\n\n[2026-10-04] Calvarie rappelle un engagement sur le gazoduc — https://velhaven.example/wire/20261004-gazoduc\nLa Chancelière Lena Voss a déclaré : « En 2022, Aurinia a soutenu la construction du gazoduc Velhaven-Ouest, crucial pour notre approvisionnement. » Elle a ajouté : « Nous n'avons pas oublié cette solidarité. » Cette déclaration est intervenue lors d'une conférence de presse commune avec le Secrétaire général Milo Renard. Le Président Aris Thorne a répondu que « les partenariats durables reposent sur la mémoire des actions passées ». Le gazoduc Velhaven-Ouest a été mis en service en 2024.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Aurinia",
+          "Calvarie"
+        ],
+        "organisation": "l'Agence régionale de l'énergie de Velhaven",
+        "depeches": [
+          {
+            "date": "2026-09-20",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "REC@7",
+            "marqueur": "tenue de compte, explicite ou implicite (rappel d'une dette, « je te dois bien ça »)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RES@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-20] Le continent d'Aurinia et les États de Calvarie — https://velhaven.example/wire/20260920-relations\nLe Président d'Aurinia, Aris Thorne, et la Chancelière de Calvarie, Lena Voss, se sont rencontrés à deux reprises cette année. L'Agence régionale de l'énergie de Velhaven, dirigée par le Secrétaire général Milo Renard, fournit 40% du gaz naturel consommé en Calvarie. Aurinia est le principal actionnaire de l'Agence avec une participation de 51%. Les deux pays entretiennent une ambassade dans leurs capitales respectives, Talon et Meridian. Leurs ministres du Commerce ont signé un accord de facilitation des échanges en avril 2026.\n\n[2026-10-04] Calvarie rappelle un engagement sur le gazoduc — https://velhaven.example/wire/20261004-gazoduc\nLa Chancelière Lena Voss a déclaré : « En 2022, Aurinia a soutenu la construction du gazoduc Velhaven-Ouest, crucial pour notre approvisionnement. » Elle a ajouté : « Nous n'avons pas oublié cette solidarité. » Cette déclaration est intervenue lors d'une conférence de presse commune avec le Secrétaire général Milo Renard. Le Président Aris Thorne a répondu que « les partenariats durables reposent sur la mémoire des actions passées ».",
+      "verification": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RES@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "REC@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "HIE@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 53,
+      "presentes": [
+        "TRA@7"
+      ],
+      "absentes": [
+        "HIE@7",
+        "PER@7",
+        "PRO@7"
+      ],
+      "evenement": "POL@7",
+      "texte": "[2026-10-01] La Félisie et la Doramie renouvellent leur dialogue — https://infos.example/fel-dor-relations\nLe ministre doramien des Affaires étrangères, Karl Voss, a atterri à Lestel, capitale de la Félisie. Il a été accueilli par son homologue félisien, Élise Conté. Les deux responsables ont tenu une réunion de travail de deux heures au palais d'Orsay. Le Pacte de défense de Corvus, alliance militaire à laquelle appartient la Doramie, n'a pas émis de communiqué à cette occasion. La Félisie n'est signataire d'aucun traité de défense avec cette organisation. Les deux pays partagent une frontière terrestre de 287 kilomètres.\n\n[2026-10-07] La Félisie confirme sa neutralité malgré un exercice militaire — https://infos.example/exercice-corvus\nLe Pacte de Corvus a débuté aujourd'hui l'exercice naval « Bouclier d'acier » en mer d'Émeraude, à 50 milles nautiques des eaux territoriales félisiennes. 12 navires de guerre doramiens y participent. La ministre félisienne de la Défense, le général Duras, a déclaré : « La position de la Félisie est inchangée. Nous ne sommes pas membre du Pacte de Corvus et notre doctrine de non-alignement demeure intégrale. » Aucun navire félisien n'a été déployé pour observer la manœuvre.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Félisie",
+          "Doramie"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "depeches": [
+          {
+            "date": "2026-10-01",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-10-07",
+            "carte": "TRA@7",
+            "marqueur": "un invariant explicitement conservé"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "reecrit": false,
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "HIE@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 54,
+      "presentes": [
+        "CTR@7",
+        "PER@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "PRO@7",
+        "RSN@7",
+        "TRC@7"
+      ],
+      "evenement": "HIE@7",
+      "texte": "**DÉPÊCHES :**\n\n**[2026-09-17] Une région stratégique sous surveillance — https://osp-senne.example/news/2026-09-17-01**\nLe Plateau de Senne est une région agricole et minière frontalière entre la République d'Ostara et le Royaume de Draven. L'Organisation pour la sécurité du Plateau de Senne (OSPS), créée par traité en 2021, y supervise un statut démilitarisé. Le président ostarien Aris Valt et le roi dravenois Edric IV en sont les garants. Les deux États entretiennent des relations diplomatiques normales, avec des ambassades ouvertes dans chaque capitale. Des patrouilles conjointes OSPS surveillent la ligne de démarcation administrative sur le Plateau.\n\n**[2026-09-27] Draven bloque une manœuvre militaire ostarienne sur le Plateau — https://osp-senne.example/news/2026-09-27-01**\nCe matin à 06:45, une colonne de six véhicules blindés ostariens a tenté de pénétrer sur le Plateau de Senne par le poste de contrôle Gamma. Les forces de l'OSPS, sur alerte des drones dravenois, ont physiquement barré la route avec des barrières mobiles. Le ministre des Affaires étrangères de Draven, Lord Ferant, a déclaré à la presse : « Toute démonstration de force unilatérale est exclue. Le statut du Plateau est intangible. » Les blindés ostariens se sont retirés à 07:30 sans autre incident. **L'OSPS précise que les patrouilles conjointes sont maintenues selon leur horaire habituel.**\n\n**[2026-09-29] Ostara dénonce la présence dravenoise et annonce des mesures — https://osp-senne.example/news/2026-09-29-01**\nL'ambassadrice d'Ostara, Lena Koro, a lu une déclaration : « La présence de capteurs et de drones de combat dravenois à moins de cinq kilomètres de la frontère constitue un état de fait nouveau et inacceptable. » Elle a ajouté : « Nous sommes désormais dans un état de vigilance accrue. » En réponse, le commandement militaire ostarien a annoncé le déploiement immédiat de deux bataillons supplémentaires le long de sa frontière avec le Plateau. L'OSPS a relevé son niveau d'alerte à « élevé ».\n\n**[2026-10-01] Cycle d'escalade engagé, les pourparlers butent sur le retrait — https://osp-senne.example/news/2026-10-01-01**\nLes consultations d'urgence de l'OSPS, ouvertes le 30 septembre, sont dans une phase de propositions et de contre-propositions. Le ministre Ferant a présenté un « plan de désescalade en quatre phases ». La phase 1, le gel des mouvements militaires, est en cours de discussion. La phase 2, le retrait des bataillons ostariens, est l'objet d'un blocage. La représentante ostarienne a refusé d'envisager cette phase « avant le démantèlement des dispositifs de surveillance avancés dravenois ». Aucun accord sur le calendrier des phases suivantes n'a été trouvé.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Ostara",
+          "Draven"
+        ],
+        "organisation": "l'Organisation pour la sécurité du Plateau de Senne",
+        "depeches": [
+          {
+            "date": "2026-09-17",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue"
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "TRA@7",
+            "marqueur": "état de départ et état en cours décrits"
+          },
+          {
+            "date": "2026-10-01",
+            "carte": "PER@7",
+            "marqueur": "phases du cycle identifiables (on peut dire où l'on en est)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-17] Une région stratégique sous surveillance — https://osp-senne.example/news/2026-09-17-01\nLe Plateau de Senne est une région agricole et minière frontalière entre la République d'Ostara et le Royaume de Draven. L'Organisation pour la sécurité du Plateau de Senne (OSPS), créée par traité en 2021, y supervise un statut démilitarisé. Le président ostarien Aris Valt et le roi dravenois Edric IV en sont les garants. Les deux États entretiennent des relations diplomatiques normales, avec des ambassades ouvertes dans chaque capitale. Des patrouilles conjointes OSPS surveillent la ligne de démarcation administrative sur le Plateau.\n\n[2026-09-27] Draven bloque une manœuvre militaire ostarienne sur le Plateau — https://osp-senne.example/news/2026-09-27-01\nCe matin à 06:45, une colonne de six véhicules blindés ostariens a tenté de pénétrer sur le Plateau de Senne par le poste de contrôle Gamma. Les forces de l'OSPS, sur alerte des drones dravenois, ont physiquement barré la route avec des barrières mobiles. Le ministre des Affaires étrangères de Draven, Lord Ferant, a déclaré à la presse : « Toute démonstration de force unilatérale est exclue. Le statut du Plateau est intangible. » Les blindés ostariens se sont retirés à 07:30 sans autre incident.\n\n[2026-09-29] Ostara dénonce la présence dravenoise et annonce des mesures — https://osp-senne.example/news/2026-09-29-01\nL'ambassadrice d'Ostara, Lena Koro, a lu une déclaration : « La présence de capteurs et de drones de combat dravenois à moins de cinq kilomètres de la frontière constitue un état de fait nouveau et inacceptable. » Elle a ajouté : « Nous sommes désormais dans un état de vigilance accrue. » En réponse, le commandement militaire ostarien a annoncé le déploiement immédiat de deux bataillons supplémentaires le long de sa frontière avec le Plateau. L'OSPS a relevé son niveau d'alerte à « élevé ».\n\n[2026-10-01] Cycle d'escalade engagé, les pourparlers butent sur le retrait — https://osp-senne.example/news/2026-10-01-01\nLes consultations d'urgence de l'OSPS, ouvertes le 30 septembre, sont dans une phase de propositions et de contre-propositions. Le ministre Ferant a présenté un « plan de désescalade en quatre phases ». La phase 1, le gel des mouvements militaires, est en cours de discussion. La phase 2, le retrait des bataillons ostariens, est l'objet d'un blocage. La représentante ostarienne a refusé d'envisager cette phase « avant le démantèlement des dispositifs de surveillance avancés dravenois ». Aucun accord sur le calendrier des phases suivantes n'a été trouvé.",
+      "verification": {
+        "absentes_montrees": [
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "F"
+      },
+      "rejets_categories": {
+        "PER@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 55,
+      "presentes": [
+        "CTR@7",
+        "RCS@7",
+        "SEU@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "HIE@7",
+        "RES@7",
+        "TRA@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "**DÉPÊCHES :**\n\n**[2026-09-12] La Valsnie et la Velania — https://infos.global.example/2026/09/12/diplomatie**\nLa Valsnie, dirigée par la présidente Elara Vance, partage une frontière de 340 km avec la Velania, gouvernée par le Premier ministre Kael Renvik. Le Pacte de défense de Corvus, alliance militaire de douze États, est dirigé par le Secrétaire Général Anya Petrova. La Valsnie est membre fondateur du Pacte depuis 2005. La Velania n'est membre d'aucune alliance militaire. En 2024, le volume des échanges commerciaux d'État entre les deux pays s'est élevé à 1,2 milliard d'euros.\n\n**[2026-09-13] La Velania dénonce des vols de reconnaissance — https://infos.global.example/2026/09/13/incident**\nLe ministère des Affaires étrangères de la Velania a publié un communiqué aujourd'hui : « Nos radars ont détecté et suivi un avion de type MQ-9 Reaper dans notre espace aérien au-dessus du secteur frontalier de Karst, à 11h23. Cet appareil est identique à ceux utilisés par les forces du Pacte de Corvus. » Le communiqué ajoute : « Cette violation répétée de notre souveraineté continue d'orienter les conduites de notre défense aérienne et de notre diplomatie. »\n\n**[2026-09-14] Le Pacte de Corvus bloque une demande d’enquête — https://infos.global.example/2026/09/14/veto**\nLe Conseil du Pacte de Corvus a rejeté, par 9 voix contre 3, la proposition de la Velania d'envoyer une commission d'enquête conjointe sur l'incident aérien du 13 septembre. La représentante de la Valsnie au Conseil, Lena Mirov, a déclaré : « L'option d'une enquête avec la participation d'un État non-membre est explicitement exclue par l'article 8 de notre charte. Seuls nos propres mécanismes internes sont habilités. »\n\n**[2026-09-16] Le rapport du Pacte provoque un déploiement militaire — https://infos.global.example/2026/09/16/rapport**\nLe Pacte de Corvus a publié un rapport de 40 pages sur « les activités militaires à ses frontières orientales ». Le document décrit une « augmentation de 30% des exercices de défense aérienne velaniens près de la frontière sur les six derniers mois ». Moins de quatre heures après sa publication, le ministère de la Défense de la Velania a annoncé le déploiement immédiat de deux batteries supplémentaires de missiles sol-air S-400 dans la région de Karst, « en réaction à l'agressivité rhétorique du rapport ». Un communiqué a été transmis par l'ambassade de Velania à la Valsnie et au siège du Pacte.\n\n**[2026-09-19] La Valsnie signe un contrat d’armement majeur avec le Pacte — https://infos.global.example/2026/09/19/contrat**\nLa présidente de la Valsnie, Elara Vance, et le Secrétaire Général du Pacte de Corvus, Anya Petrova, ont signé un contrat d'acquisition de 24 chasseurs de cinquième génération F-35A, pour une valeur de 2,1 milliards d'euros. La signature a eu lieu à 15h00 au siège du Pacte. Le ministre des Finances de la Valsnie a confirmé le versement immédiat d'un premier acompte de 420 millions d'euros, non remboursable. La livraison est prévue sur quatre ans.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Valsnie",
+          "Velania"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "depeches": [
+          {
+            "date": "2026-09-12",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-13",
+            "carte": "TRC@7",
+            "marqueur": "qui continue d'orienter les conduites"
+          },
+          {
+            "date": "2026-09-14",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue"
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "RCS@7",
+            "marqueur": "et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)"
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "SEU@7",
+            "marqueur": "acte juridique, contractuel ou matériel sans mécanisme de retour (signature, destruction, dépense irrécupérable)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-12] La Valsnie et la Velania — https://infos.global.example/2026/09/12/diplomatie\nLa Valsnie, dirigée par la présidente Elara Vance, partage une frontière de 340 km avec la Velania, gouvernée par le Premier ministre Kael Renvik. Le Pacte de défense de Corvus, alliance militaire de douze États, est dirigé par le Secrétaire Général Anya Petrova. La Valsnie est membre fondateur du Pacte depuis 2005. La Velania n'est membre d'aucune alliance militaire. En 2024, le volume des échanges commerciaux d'État entre les deux pays s'est élevé à 1,2 milliard d'euros.\n\n[2026-09-13] La Velania dénonce des vols de reconnaissance — https://infos.global.example/2026/09/13/incident\nLe ministère des Affaires étrangères de la Velania a publié un communiqué aujourd'hui : « Nos radars ont détecté et suivi un avion de type MQ-9 Reaper dans notre espace aérien au-dessus du secteur frontalier de Karst, à 11h23. Cet appareil est identique à ceux utilisés par les forces du Pacte de Corvus. » Le communiqué ajoute : « Cette violation répétée de notre souveraineté continue d'orienter les conduites de notre défense aérienne et de notre diplomatie. »\n\n[2026-09-14] Le Pacte de Corvus bloque une demande d’enquête — https://infos.global.example/2026/09/14/veto\nLe Conseil du Pacte de Corvus a rejeté, par 9 voix contre 3, la proposition de la Velania d'envoyer une commission d'enquête conjointe sur l'incident aérien du 13 septembre. La représentante de la Valsnie au Conseil, Lena Mirov, a déclaré : « L'option d'une enquête avec la participation d'un État non-membre est explicitement exclue par l'article 8 de notre charte. Seuls nos propres mécanismes internes sont habilités. »\n\n[2026-09-16] Le rapport du Pacte provoque un déploiement militaire — https://infos.global.example/2026/09/16/rapport\nLe Pacte de Corvus a publié un rapport de 40 pages sur « les activités militaires à ses frontières orientales ». Le document décrit une « augmentation de 30% des exercices de défense aérienne velaniens près de la frontière sur les six derniers mois ». Moins de quatre heures après sa publication, le ministère de la Défense de la Velania a annoncé le déploiement immédiat de deux batteries supplémentaires de missiles sol-air S-400 dans la région de Karst, « en réaction à l'agressivité rhétorique du rapport ».\n\n[2026-09-19] La Valsnie signe un contrat d’armement majeur avec le Pacte — https://infos.global.example/2026/09/19/contrat\nLa présidente de la Valsnie, Elara Vance, et le Secrétaire Général du Pacte de Corvus, Anya Petrova, ont signé un contrat d'acquisition de 24 chasseurs de cinquième génération F-35A, pour une valeur de 2,1 milliards d'euros. La signature a eu lieu à 15h00 au siège du Pacte. Le ministre des Finances de la Valsnie a confirmé le versement immédiat d'un premier acompte de 420 millions d'euros, non remboursable. La livraison est prévue sur quatre ans.",
+      "verification": {
+        "absentes_montrees": [
+          "HIE@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "F",
+        "CTR@7": "F",
+        "SEU@7": "f",
+        "RCS@7": "f",
+        "COM@7": "f",
+        "RES@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "TRA@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 56,
+      "presentes": [
+        "CRO@7",
+        "INC@7"
+      ],
+      "absentes": [
+        "PRO@7",
+        "RCS@7",
+        "TRC@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-19] La République de Kessaria — https://kessaria-gouv.example/communiques/2026-09-19\nLe Premier ministre kessarien, Aris Valtos, et le Chancelier dravenois, Lena Kovac, se sont rencontrés hier. Le Conseil de Sécurité de l'Union du Détroit de Kossmar (UDK) a diffusé un communiqué depuis son siège à Port-Solène. L'UDK supervise le trafic maritime dans le Détroit. Les forces navales kessariennes et dravenoises patrouillent chacune dans leurs eaux territoriales adjacentes au couloir de l'UDK.\n\n[2026-10-10] Le quota de l'UDK atteint — https://udk-officiel.example/bulletins/2026-10-10\nLe Conseil de l'UDK a annoncé que le nombre de navires autorisés à transiter par le Détroit a atteint son plafond quotidien pour la neuvième journée consécutive. Un porte-parole a déclaré : « La limite est saturée. Cinq pétroliers et deux porte-conteneurs sont actuellement en attente d'une autorisation pour demain. » Les registres du contrôle de trafic montrent 45 passages enregistrés aujourd'hui à 18h00.\n\n[2026-10-15] Kessaria suspend sa décision sur les patrouilles — https://kessaria-def.example/annonces/2026-10-15\nLe ministère kessarien de la Défense a reporté sa décision concernant le redéploiement de deux frégates. Un communiqué indique : « Le déploiement est reporté dans l'attente des conclusions de l'enquête de l'UDK sur l'incident du 12 octobre. » Le ministre a précisé qu'il attendait « le rapport final de l'UDK » avant de statuer. Draven n'a pas commenté ce report. Le rapport de l'UDK est attendu pour le 25 octobre.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Kessaria",
+          "Draven"
+        ],
+        "organisation": "l'Union du Détroit de Kossmar",
+        "depeches": [
+          {
+            "date": "2026-09-19",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-10-10",
+            "carte": "CRO@7",
+            "marqueur": "un taux estimable ; une limite identifiée ou une saturation visible"
+          },
+          {
+            "date": "2026-10-15",
+            "carte": "INC@7",
+            "marqueur": "décision reportée dans l'attente d'une information nommée"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-19] La République de Kessaria — https://kessaria-gouv.example/communiques/2026-09-19\nLe Premier ministre kessarien, Aris Valtos, et le Chancelier dravenois, Lena Kovac, se sont rencontrés hier. Le Conseil de Sécurité de l'Union du Détroit de Kossmar (UDK) a diffusé un communiqué depuis son siège à Port-Solène. L'UDK supervise le trafic maritime dans le Détroit, autorisant le passage de 45 navires par jour. Les forces navales kessariennes et dravenoises patrouillent chacune dans leurs eaux territoriales adjacentes au couloir de l'UDK.\n\n[2026-10-10] Le quota de l'UDK atteint — https://udk-officiel.example/bulletins/2026-10-10\nLe Conseil de l'UDK a annoncé que le nombre de navires autorisés à transiter par le Détroit a atteint son plafond quotidien de 45 pour la neuvième journée consécutive. Un porte-parole a déclaré : « La limite est saturée. Cinq pétroliers et deux porte-conteneurs sont actuellement en attente d'une autorisation pour demain. » Les registres du contrôle de trafic montrent 45 passages enregistrés aujourd'hui à 18h00.\n\n[2026-10-15] Kessaria suspend sa décision sur les patrouilles — https://kessaria-def.example/annonces/2026-10-15\nLe ministère kessarien de la Défense a reporté sa décision concernant le redéploiement de deux frégates. Un communiqué indique : « Le déploiement est reporté dans l'attente des conclusions de l'enquête de l'UDK sur l'incident du 12 octobre. » Le ministre a précisé qu'il attendait « le rapport final de l'UDK » avant de statuer. Draven n'a pas commenté ce report.",
+      "verification": {
+        "absentes_montrees": [
+          "RCS@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "F"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 57,
+      "presentes": [
+        "RES@7"
+      ],
+      "absentes": [
+        "EME@7",
+        "POL@7",
+        "PRO@7"
+      ],
+      "evenement": "HIE@7",
+      "texte": "[2026-09-18] Tensions frontalières entre Telkhoun et Brenthie — https://velhaven-wire.example/18-09-26-1\nLe président de Telkhoun, Aris Valkan, a déclaré hier : « Notre souveraineté sur le plateau oriental est non négociable. » Le ministre brenthois des Affaires étrangères, Lena Gerev, a répondu ce matin : « Nos forces observeront strictement la ligne de cessez-le-feu de 2021. » L'Agence régionale de l'énergie de Velhaven a annoncé une réduction de 15% des livraisons de gaz vers les deux États, citant « des risques logistiques ». Les ministres de la Défense des deux pays se sont entretenus par liaison sécurisée. L'agence a précisé que les livraisons vers Telkhoun passaient de 20 à 17 millions de mètres cubes par jour, et celles vers Brenthie de 12 à 10,2.\n\n[2026-09-23] Une médiation et des sanctions évoquées après un incident — https://velhaven-wire.example/23-09-26-1\nUne unité de l'armée de Telkhoun a franchi la ligne de cessez-le-feu hier à 14h23, selon un communiqué brenthois. Le gouvernement de Brenthie a immédiatement rompu les pourparlers commerciaux en cours avec Telkhoun. L'Agence régionale de l'énergie de Velhaven a suspendu toutes ses consultations techniques avec Telkhoun. Le ministre brenthois Gerev a déclaré : « Nous exigeons des excuses et un retrait. » Aucune communication directe n'a été établie entre les chefs d'état-major des deux armées depuis l'incident. Le président Valkan a qualifié le franchissement de « mouvement de routine de nos troupes sur notre territoire ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Telkhoun",
+          "Brenthie"
+        ],
+        "organisation": "l'Agence régionale de l'énergie de Velhaven",
+        "depeches": [
+          {
+            "date": "2026-09-18",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents)"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "POL@7",
+          "PRO@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-18] Tensions frontalières entre Telkhoun et Brenthie — https://velhaven-wire.example/18-09-26-1\nLe président de Telkhoun, Aris Valkan, a déclaré hier : « Notre souveraineté sur le plateau oriental est non négociable. » Le ministre brenthois des Affaires étrangères, Lena Gerev, a répondu ce matin : « Nos forces observeront strictement la ligne de cessez-le-feu de 2021. » L'Agence régionale de l'énergie de Velhaven a annoncé une réduction de 15% des livraisons de gaz vers les deux États, citant « des risques logistiques ». Les ministres de la Défense des deux pays se sont entretenus par liaison sécurisée. Des patrouilles aériennes de Telkhoun ont été signalées près de la frontière.\n\n[2026-09-23] Une médiation et des sanctions évoquées après un incident — https://velhaven-wire.example/23-09-26-1\nUne unité de l'armée de Telkhoun a franchi la ligne de cessez-le-feu hier à 14h23, selon un communiqué brenthois. Le gouvernement de Brenthie a immédiatement rompu les pourparlers commerciaux en cours avec Telkhoun. L'Agence régionale de l'énergie de Velhaven a suspendu toutes ses consultations techniques avec Telkhoun. Le ministre brenthois Gerev a déclaré : « Nous exigeons des excuses et un retrait. » Aucune communication directe n'a été établie entre les chefs d'état-major des deux armées depuis l'incident. Le président Valkan n'a fait aucune déclaration publique.",
+      "verification": {
+        "absentes_montrees": [
+          "POL@7",
+          "PRO@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "POL@7": "f",
+        "PRO@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli"
+      }
+    },
+    {
+      "graine": 58,
+      "presentes": [
+        "EME@7",
+        "RSN@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "CTR@7",
+        "TRA@7"
+      ],
+      "evenement": "RES@7",
+      "texte": "[2026-09-16] La Velania et la Norven entretiennent des relations diplomatiques — https://velapress.example/r478\nLe président de Velania, Aris Thorne, et la chancelière de Norven, Lena Voss, se sont entretenus par visioconférence le 15 septembre. L'ambassadeur norvien à Velania, Gregor Huld, a présenté ses lettres de créance le 10 septembre. La Ligue commerciale d'Ostrave, dirigée par le Secrétaire Général Pavel Minsk, a publié son rapport trimestriel sur les échanges le 12 septembre. Le ministre velanien du Commerce extérieur, Marcus Kane, a déclaré : \"Nos échanges avec Norven suivent leur cours habituel.\"\n\n[2026-09-20] La Norven annonce des exercices aériens à sa frontière orientale — https://norvnews.example/a654\nLe ministère norvien de la Défense a publié un communiqué le 20 septembre à 08h00. Il indique : \"Des exercices de routine de l'armée de l'air norvienne auront lieu du 23 au 25 septembre dans le secteur frontalier oriental.\" Le communiqué précise que ces exercices impliqueront douze chasseurs F-30N. Le président velanien Aris Thorne a réagi le même jour à 11h30, déclarant : \"La Velania surveille avec attention tout développement militaire à ses frontières.\"\n\n[2026-09-27] La Velania adopte un nouveau format de communication diplomatique — https://velapress.example/r512\nLe ministère velanien des Affaires étrangères a diffusé une déclaration le 27 septembre à 09h00. Son titre est : \"Mise au point sur la stabilité régionale\". La structure du document, en quatre paragraphes numérotés, est identique à celle utilisée par le ministère norvien des Affaires étrangères dans sa déclaration du 23 septembre. Le ministre velanien, Marcus Kane, a lu cette déclaration lors d'une brève apparition devant la presse.\n\n[2026-09-29] Un incident en mer d'Azura implique des bâtiments des deux pays — https://norvnews.example/a702\nUn patrouilleur de la marine velanienne, le VNS Sentry, a illuminé au radar un navire de reconnaissance norvien, le NRS Observer, le 29 septembre à 14h22. L'incident a eu lieu à 45 milles nautiques au large des côtes velaniennes. Le capitaine du VNS Sentry a transmis un message vocal demandant l'identification du navire. Le ministère norvien de la Défense a confirmé la présence du NRS Observer dans la zone pour \"une mission de routine de collecte de données océanographiques\".",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Velania",
+          "Norven"
+        ],
+        "organisation": "la Ligue commerciale d'Ostrave",
+        "depeches": [
+          {
+            "date": "2026-09-16",
+            "carte": null,
+            "marqueur": null
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "RSN@7",
+            "marqueur": "au moins deux rythmes propres identifiés"
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "EME@7",
+            "marqueur": "son adoption par imitation ou convergence observée"
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable"
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "CTR@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-16] La Velania et la Norven entretiennent des relations diplomatiques — https://velapress.example/r478\nLe président de Velania, Aris Thorne, et la chancelière de Norven, Lena Voss, se sont entretenus par visioconférence le 15 septembre. L'ambassadeur norvien à Velania, Gregor Huld, a présenté ses lettres de créance le 10 septembre. La Ligue commerciale d'Ostrave, dirigée par le Secrétaire Général Pavel Minsk, a publié son rapport trimestriel sur les échanges le 12 septembre. Le ministre velanien du Commerce extérieur, Marcus Kane, a déclaré : \"Nos échanges avec Norven suivent leur cours habituel.\" Les exercices navals annuels de la flotte velanienne en mer d'Azura se sont terminés le 14 septembre.\n\n[2026-09-20] La Norven annonce des exercices aériens à sa frontière orientale — https://norvnews.example/a654\nLe ministère norvien de la Défense a publié un communiqué le 20 septembre à 08h00. Il indique : \"Des exercices de routine de l'armée de l'air norvienne auront lieu du 23 au 25 septembre dans le secteur frontalier oriental.\" Le communiqué précise que ces exercices impliqueront douze chasseurs F-30N. Le président velanien Aris Thorne a réagi le même jour à 11h30, déclarant : \"La Velania surveille avec attention tout développement militaire à ses frontières.\" Le rythme des patrouilles aériennes velaniennes dans la région est passé de deux à quatre par jour le 20 septembre.\n\n[2026-09-27] La Velania adopte un nouveau format de communication diplomatique — https://velapress.example/r512\nLe ministère velanien des Affaires étrangères a diffusé une déclaration le 27 septembre à 09h00. Son titre est : \"Mise au point sur la stabilité régionale\". La structure du document, en quatre paragraphes numérotés, est identique à celle utilisée par le ministère norvien des Affaires étrangères dans sa déclaration du 23 septembre. Le ministre velanien, Marcus Kane, a lu cette déclaration lors d'une brève apparition devant la presse. Le Secrétaire Général de la Ligue d'Ostrave, Pavel Minsk, a utilisé une structure similaire dans un communiqué publié à 16h00 le même jour.\n\n[2026-09-29] Un incident en mer d'Azura implique des bâtiments des deux pays — https://norvnews.example/a702\nUn patrouilleur de la marine velanienne, le VNS Sentry, a illuminé au radar un navire de reconnaissance norvien, le NRS Observer, le 29 septembre à 14h22. L'incident a eu lieu à 45 milles nautiques au large des côtes velaniennes. Le NRS Observer est un navire de la classe \"Vigil\", dont le premier exemplaire a été mis en service en 2018. Le capitaine du VNS Sentry a transmis un message vocal demandant l'identification du navire. Le ministère norvien de la Défense a confirmé la présence du NRS Observer dans la zone pour \"une mission de routine de collecte de données océanographiques\".",
+      "verification": {
+        "absentes_montrees": [
+          "CTR@7"
+        ],
+        "presentes_non_montrees": [
+          "RSN@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "EME@7": "f",
+        "TRA@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "aucun_fait",
+        "CTR@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait"
+      }
+    },
+    {
+      "graine": 59,
+      "presentes": [],
+      "absentes": [
+        "EME@7",
+        "PRO@7",
+        "TRA@7"
+      ],
+      "evenement": "PER@7",
+      "texte": "[2026-09-22] Contexte régional — https://velanianews.example/geopolitics/overview  \nLe Président de Velania, M. Ivan Kovač, a pris ses fonctions le 12 mai 2022. Le Premier Ministre de Telkhoun, Mme Arina Solovyov, est en poste depuis le 8 novembre 2023. Le Pacte de défense de Corvus a été signé le 17 mars 1991. Son siège est à Lyr. Le Secrétaire Général du Pacte est M. Henrik Dahl, nommé le 1er février 2025. Le ministre des Affaires étrangères de Velania, M. Leo Varga, a rencontré son homologue telkhoun, M. Dimitri Volkov, à deux reprises en 2026. L'armée de Telkhoun compte 112 000 personnels actifs. Les forces du Pacte de Corvus déploient 1 200 personnels sur une base en Velania. Le ratio entre les personnels de Telkhoun et ceux du Pacte déployés en Velania est d'environ 93 pour 1.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Velania",
+          "Telkhoun"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "depeches": [
+          {
+            "date": "2026-09-22",
+            "carte": null,
+            "marqueur": null
+          }
+        ]
+      },
+      "verification_initiale": {
+        "absentes_montrees": [
+          "PRO@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "reecrit": true,
+      "texte_initial": "[2026-09-22] Contexte régional — https://velanianews.example/geopolitics/overview\nLe Président de Velania, M. Ivan Kovač, a pris ses fonctions le 12 mai 2022. Le Premier Ministre de Telkhoun, Mme Arina Solovyov, est en poste depuis le 8 novembre 2023. Le Pacte de défense de Corvus a été signé le 17 mars 1991. Son siège est à Lyr. Le Secrétaire Général du Pacte est M. Henrik Dahl, nommé le 1er février 2025. Le ministre des Affaires étrangères de Velania, M. Leo Varga, a rencontré son homologue telkhoun, M. Dimitri Volkov, à deux reprises en 2026. L'armée de Velania compte 85 000 personnels actifs. Celle de Telkhoun en compte 112 000. Les forces du Pacte de Corvus déploient 1 200 personnels sur une base en Velania.",
+      "verification": {
+        "absentes_montrees": [
+          "PRO@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "PRO@7": "f"
+      },
+      "rejets_categories": {
+        "EME@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      }
+    }
+  ],
+  "verificateur": "bedrock/mistral.mistral-large-3-675b-instruct",
+  "verificateur_famille_distincte": true,
+  "narrateur": "bedrock/deepseek.v3.2",
+  "meme_famille": false,
+  "protocole_monde": 3,
+  "cumul": {
+    "passages": 1,
+    "narrateur": "bedrock/deepseek.v3.2",
+    "protocole_monde": 3,
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "reecrites": 11,
+      "erreurs_narrateur_avant_reecriture": {
+        "absentes_montrees": 16,
+        "presentes_non_montrees": 1
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 16,
+        "presentes_non_montrees": 3
+      },
+      "sens_F": 0.2632,
+      "sens_f": 0.3158,
+      "sens": 0.5789,
+      "fp_F": 0.0,
+      "fp_f": 0.1739,
+      "fp": 0.1739
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 22,
+    "cartes_absentes": 39,
+    "mesure": {
+      "sens_F": 0.2273,
+      "sens_f": 0.2727,
+      "sens": 0.5,
+      "fp_F": 0.0256,
+      "fp_f": 0.2821,
+      "fp": 0.3077
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 9,
+      "aucun_fait": 1,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 1,
+    "situations_vides": 3
+  }
+}
