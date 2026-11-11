@@ -1,6 +1,6 @@
 # Alphabet situationnel — Protocole
 
-> Version : 0.7.66
+> Version : 0.7.67
 >
 > **Source de vérité des règles.** Chaque règle est définie une seule fois, ici. Les autres fichiers
 > donnent des données (cartes, équivalents, dynamiques), des formats (fiche de cas, journal, sortie)
@@ -52,9 +52,13 @@ l'ordre ; une étape échouée arrête la procédure.
 2. Le motif n'est réductible à aucune carte existante, qualifiée ou non (test A6 + qualificatifs G1),
    dans au moins deux cas sur trois.
 3. Une structure mathématique **nommée**, et le motif documenté avec ses marqueurs observables dans au
-   moins **deux strates distinctes** : par des entrées du journal des lacunes portant sur ces strates,
+   moins **trois strates distinctes** : par des entrées du journal des lacunes portant sur ces strates,
    ou par des références de la littérature (statut Documenté). Raison : une carte qui n'existe pas
    encore ne peut pas avoir d'équivalent Attesté ; exiger l'attestation fermerait la procédure.
+   **Critère de Klein** (0.7.67, `validation.md` §44) : dans chacune de ces strates, c'est la **même**
+   structure mathématique qui est montrée (le même invariant) ; seuls les marqueurs changent d'une strate
+   à l'autre. Si l'invariant change avec la strate, le motif n'est pas une carte : ce sont des
+   équivalents locaux de cartes différentes, ou de cartes existantes.
 4. Fiche complète au format de `cartes.md`, voisines ajoutées symétriquement, ligne et inertie dans
    `dynamiques.md` et `assets/parametres.json`, ligne dans chacun des 13 fichiers d'équivalents,
    version mineure incrémentée.
@@ -686,7 +690,7 @@ modification impose une version et une nouvelle évaluation, sans réécriture d
 <!-- PARAMETRES:BEGIN -->
 | Paramètre | Valeur |
 |---|---|
-| `version` | `"0.7.66"` |
+| `version` | `"0.7.67"` |
 | `nombre_strates` | `13` |
 | `cartes.SEU` | `"SEUIL"` |
 | `cartes.REC` | `"RÉCIPROCITÉ"` |

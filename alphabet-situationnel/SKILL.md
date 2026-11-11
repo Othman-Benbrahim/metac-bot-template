@@ -3,7 +3,7 @@ name: alphabet-situationnel
 description: "Lecture structurelle et exploration conditionnelle de situations par 16 cartes transversales candidates et 13 strates (dont la politique intérieure). Utiliser pour lire une situation factuelle, explorer ses suites à un horizon défini, coder un cas historique ou scorer un journal. Modes LIRE, PRÉVOIR, CODER, SCORER. Le moteur calcule des probabilités expérimentales quand les entrées sont recevables ; aucune performance prédictive n'est acquise. Ne pas utiliser pour un tirage symbolique, un diagnostic, une décision sur une personne, ou transformer un ressenti seul en fait. Une lecture sans prévision est explicitement admise."
 license: MIT
 metadata:
-  version: '0.7.66'
+  version: '0.7.67'
   author: Othman Ben Brahim
 ---
 
@@ -23,7 +23,7 @@ ce `SKILL.md`), puis `python3 scripts/moteur.py audit`.
 
 ## Contrôle d'intégrité
 
-Version 0.7.66. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
+Version 0.7.67. Conserver `scripts/moteur.py`, `assets/parametres.json`, les 20 références principales,
 les 13 fichiers `references/equivalences/strate-NN.md`, les bases, journaux et dossier d'exemple.
 Prérequis : Python ≥ 3.8, bibliothèque standard seule (aucune installation). Exécuter depuis le dossier
 du skill ; `--base`, `--journal` et `--references` sont relatifs au dossier courant. *Le dossier du skill est celui qui
@@ -249,7 +249,7 @@ Murphy 2026 (`validation.md` §35).* *Depuis 0.7.59, un programme génératif en
 rejets comptés comme preuves, inférence exacte (`validation.md` §36).* *Depuis 0.7.60, une lecture probabiliste en ombre : les
 textes traduits en instructions du programme (lien, bloque, exclut), d'après Wong et al. 2023 (`validation.md` §37).* *Depuis 0.7.61, la relecture par Murphy (ch. 4, 9, 29, 30) : calcul publié nommé
 (score log-linéaire), couplage unique par paire, rejets selon l'effort, largeurs d'arbre mesurées (`validation.md` §38).* *Depuis 0.7.62, le test d'invariance du lecteur : deux vues aux sources
-disjointes doivent ancrer les mêmes cartes (`validation.md` §39).* *Depuis 0.7.63, la surprise d'une lecture, mesurée en ombre (`validation.md` §40).* *Depuis 0.7.64, le tri des chapitres 3 et 13 de Murphy (`validation.md` §41).* *Depuis 0.7.65, export SSSOM des équivalents et accord à deux niveaux (`validation.md` §42).* *Depuis 0.7.66, le monde synthétique pour mesurer le lecteur (`validation.md` §43).*
+disjointes doivent ancrer les mêmes cartes (`validation.md` §39).* *Depuis 0.7.63, la surprise d'une lecture, mesurée en ombre (`validation.md` §40).* *Depuis 0.7.64, le tri des chapitres 3 et 13 de Murphy (`validation.md` §41).* *Depuis 0.7.65, export SSSOM des équivalents et accord à deux niveaux (`validation.md` §42).* *Depuis 0.7.66, le monde synthétique pour mesurer le lecteur (`validation.md` §43).* *Depuis 0.7.67, le critère de Klein pour toute nouvelle carte (`validation.md` §44).*
 
 **Requêtes exécutées, test régressif déclaré (0.7.45).** Chaque requête de `recherches` porte `executee` (true ou false)
 et, si elle a été lancée, `date_execution` : une requête non lancée est consignée mais ne couvre rien, et le dossier reste

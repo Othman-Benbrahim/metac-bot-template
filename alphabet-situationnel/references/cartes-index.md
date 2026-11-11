@@ -1,6 +1,6 @@
 # Alphabet situationnel — Index des cartes
 
-> Version : 0.7.66
+> Version : 0.7.67
 
 > Vue d'une ligne par carte, pour choisir les candidates (étape 2 de la procédure). Les fiches
 > complètes (marqueurs, registre anthropologique, questions discriminantes des voisines) sont dans

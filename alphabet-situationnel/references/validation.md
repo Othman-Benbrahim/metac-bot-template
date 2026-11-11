@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.66
+> Version : 0.7.67
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2493,4 +2493,40 @@ d'autres) : la mesure est une borne optimiste de la sensibilité. Elle ne rempla
 sources réelles (§39). Les valeurs mesurées ne remplacent les paramètres stipulés que par décision datée.
 
 **Ce qui ne change pas.** Le p publié, les paramètres du génératif.
+
+## 44. Le critère de Klein et la place de l'alphabet (0.7.67)
+
+**Décision d'auteur, le 2026-11-11**, d'après V. Venkatasubramanian, *Beyond Proofs: Can AI Invent Mathematics
+Humans Have Never Imagined?* (SSRN 7646378, 16 octobre 2026). L'auteur distingue trois niveaux d'apport : nouveaux
+résultats, nouvelles connexions, nouveaux **langages** ; il s'appuie sur Poincaré (les mathématiques donnent « le même
+nom à des choses différentes ») et sur Klein (une géométrie se définit par ce qui reste invariant sous un groupe de
+transformations), et propose quatre tests : généralisation, interventions causales, comparaison avec les formalismes
+établis, vérification indépendante.
+
+**1. Critère de Klein pour une nouvelle carte** (`protocole.md` A2, étape 3). Une carte est ce qui reste invariant
+quand on change de strate : sa structure mathématique nommée. Une carte candidate (née du journal des lacunes et des
+dynamiques observées des états nuls) doit donc montrer la **même** structure dans au moins **trois** strates (deux
+auparavant), seuls les marqueurs changeant. Deux strates peuvent partager une forme par coïncidence ; trois rendent
+l'invariant plausible. Aucune carte n'est en cours d'admission : la règle s'appliquera à la première.
+
+**2. La place de l'alphabet, dite honnêtement.** Selon ces trois niveaux, l'alphabet n'est **pas** un langage inventé
+par une IA : c'est un langage conçu par un humain (seize cartes, chacune rattachée à une structure mathématique
+connue), que des modèles appliquent et que les données mettent à l'épreuve. Son apport revendicable est au niveau des
+**connexions** (le même nom porté à travers treize strates par des équivalents), et il reste à démontrer. Le seul lieu où
+le troisième niveau pourrait apparaître est la **découverte de cartes manquantes** à partir des états nuls, sous le
+critère de Klein.
+
+**3. Ses quatre tests, et leurs équivalents dans le skill et le bot.**
+
+| Test | Mécanisme |
+|---|---|
+| Généralisation | levée de L7 (§27) ; bras exploratoire hors strate 7 (§29) |
+| Interventions causales | ablation carte par carte (§33) |
+| Comparaison avec les formalismes établis | structure mathématique nommée de chaque carte ; reconstruction de la matrice ; SSSOM (§42) |
+| Vérification indépendante | invariance du lecteur (§39) ; monde synthétique (§43) ; second codeur |
+
+**Réserve.** L'explication que l'auteur propose de l'émergence d'une structure sémantique (la « téléodynamique
+statistique ») est sa propre théorie, peu reprise : elle n'est pas importée.
+
+**Ce qui ne change pas.** Le p publié, les seize cartes, la matrice.
 
