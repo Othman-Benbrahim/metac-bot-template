@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.26 · skill alphabet-situationnel 0.7.68 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.27 · skill alphabet-situationnel 0.7.68 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.27** : quatre puits de données repérés dans le projet ShadowBroker (BigBodyCobain), sans clé :
+  `front_ukraine` (ligne de front quotidienne depuis 2024-07, archive GitHub cyterat/deepstate-map-data des cartes
+  DeepState : surface occupée en km², ou distance en km d'une localité à la zone occupée, 0 = occupée, à compter avec
+  seuil 0 et sens « <= ») ; `coupures_internet` (jours d'alerte critique par pays, IODA, Georgia Tech) ; `lancements`
+  (lancements spatiaux datés, catalogue SATCAT de CelesTrak, domaine public) ; `sanctions_us` (nouvelles cibles de la
+  liste SDN de l'OFAC, via OpenSanctions, CC BY-NC, stock initial retiré). Le fichier unifié du dépôt DeepState a des
+  dates vides pour ses 502 premières lignes : le puits lit les fichiers quotidiens, datés par leur nom.
 - **0.10.26** : monde synthétique, **narrateur contraint** (décision d'auteur du 2026-11-11 : contraindre le narrateur
   plutôt que changer de modèle). (1) Canevas imposé, tiré de la graine : deux États et une organisation inventés, les
   dates, et pour chaque carte présente UN marqueur précis à remplir ; une dépêche de contexte sans marqueur ; domaine

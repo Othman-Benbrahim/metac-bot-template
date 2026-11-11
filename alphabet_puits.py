@@ -639,6 +639,202 @@ async def epoch_benchmarks(benchmark: str, modele: str | None = None, avant: dat
                    revisions="date = sortie du modèle ; le score peut avoir été mesuré plus tard")
 
 
+# --------------------------------------------------------------------------- 0.10.27 (d'après ShadowBroker)
+
+R_TERRE_KM = 6371.0088
+URL_FRONT_ARCHIVE = "https://codeload.github.com/cyterat/deepstate-map-data/tar.gz/refs/heads/main"
+URL_FRONT = "https://raw.githubusercontent.com/cyterat/deepstate-map-data/main/deepstate-map-data.geojson.gz"
+_FRONT: dict = {}
+
+
+async def _geometries_front() -> list[tuple[str, dict]]:
+    """(date, géométrie) pour chaque jour. Source sûre : les fichiers quotidiens du dossier data/, datés par leur nom
+    (archive du dépôt, un seul téléchargement). Le fichier unifié du même dépôt a des dates vides pour ses 502 premières
+    lignes (constat du 2026-11-11) : il ne sert qu'en repli, pour les seuls jours datés. Gardé en mémoire du processus."""
+    if "g" in _FRONT:
+        return _FRONT["g"]
+    import gzip
+    import tarfile
+    out: list[tuple[str, dict]] = []
+    try:
+        tf = tarfile.open(fileobj=io.BytesIO(await _get_octets(URL_FRONT_ARCHIVE)), mode="r:gz")
+        for m in tf:
+            k = re.search(r"/data/deepstatemap_data_(\d{4})(\d{2})(\d{2})\.geojson$", m.name)
+            if not k:
+                continue
+            d = json.load(tf.extractfile(m))
+            feats = d.get("features") if d.get("type") == "FeatureCollection" else [d]
+            geoms = [f.get("geometry") or f for f in feats or []]
+            polys = [c for g in geoms for c in ([g["coordinates"]] if g.get("type") == "Polygon"
+                                                 else g.get("coordinates") or [])]
+            out.append((f"{k.group(1)}-{k.group(2)}-{k.group(3)}", {"type": "MultiPolygon", "coordinates": polys}))
+    except Exception:
+        out = []
+    if not out:
+        d = json.loads(gzip.decompress(await _get_octets(URL_FRONT)).decode("utf-8"))
+        out = [(j, f.get("geometry") or {}) for f in d.get("features") or []
+               if (j := _jour((f.get("properties") or {}).get("date")))]
+    out.sort(key=lambda x: x[0])
+    _FRONT["g"] = out
+    return out
+
+
+def _anneaux(geom: dict) -> list[list]:
+    g = geom or {}
+    if g.get("type") == "Polygon":
+        return list(g.get("coordinates") or [])
+    if g.get("type") == "MultiPolygon":
+        return [r for poly in g.get("coordinates") or [] for r in poly]
+    return []
+
+
+def _surface_km2(geom: dict) -> float:
+    """Surface d'un (multi)polygone en lon/lat sur la sphère : somme signée des anneaux (trous comptés en négatif par
+    leur orientation, contrôlée ici par la règle : l'anneau extérieur de chaque polygone est positif)."""
+    tot = 0.0
+    polys = [geom.get("coordinates")] if geom.get("type") == "Polygon" else (geom.get("coordinates") or [])
+    for poly in polys:
+        for i, r in enumerate(poly or []):
+            s = 0.0
+            for (x1, y1), (x2, y2) in zip(r, r[1:] + r[:1]):
+                s += math.radians(x2 - x1) * (2 + math.sin(math.radians(y1)) + math.sin(math.radians(y2)))
+            a = abs(s) * R_TERRE_KM ** 2 / 2
+            tot += a if i == 0 else -a
+    return tot
+
+
+def _dans(lon: float, lat: float, geom: dict) -> bool:
+    """Point dans le (multi)polygone (règle pair-impair sur tous les anneaux : les trous sont exclus)."""
+    dedans = False
+    for r in _anneaux(geom):
+        for (x1, y1), (x2, y2) in zip(r, r[1:] + r[:1]):
+            if (y1 > lat) != (y2 > lat) and lon < (x2 - x1) * (lat - y1) / ((y2 - y1) or 1e-12) + x1:
+                dedans = not dedans
+    return dedans
+
+
+def _distance_bord_km(lon: float, lat: float, geom: dict) -> float:
+    """Distance du point au bord le plus proche (projection équirectangulaire locale, précise à l'échelle d'un front)."""
+    kx = math.cos(math.radians(lat)) * math.pi / 180 * R_TERRE_KM
+    ky = math.pi / 180 * R_TERRE_KM
+    best = float("inf")
+    for r in _anneaux(geom):
+        for (x1, y1), (x2, y2) in zip(r, r[1:] + r[:1]):
+            ax, ay = (x1 - lon) * kx, (y1 - lat) * ky
+            bx, by = (x2 - lon) * kx, (y2 - lat) * ky
+            dx, dy = bx - ax, by - ay
+            L = dx * dx + dy * dy
+            t = 0.0 if L == 0 else max(0.0, min(1.0, -(ax * dx + ay * dy) / L))
+            best = min(best, math.hypot(ax + t * dx, ay + t * dy))
+    return best
+
+
+async def front_ukraine(localite: str | None = None, latitude: float | None = None, longitude: float | None = None,
+                        avant: date | None = None) -> dict:
+    """Ligne de front en Ukraine, jour par jour depuis le 2024-07-08 : territoire occupé selon DeepState, archivé chaque
+    jour par le miroir GitHub cyterat/deepstate-map-data (code GPL-3.0 ; données soumises aux conditions de DeepState :
+    seuls des chiffres calculés entrent au registre). Sans coordonnées : surface occupée (km²) par jour. Avec latitude et
+    longitude d'une localité : DISTANCE en km de la localité à la zone occupée (0 si elle y est), série de niveaux qui
+    se compte avec seuil 0 et sens « <= » (« la localité sera-t-elle occupée ? »). Publication : le lendemain."""
+    pts = []
+    for j, g in await _geometries_front():
+        if not g.get("coordinates"):
+            continue
+        if latitude is not None and longitude is not None:
+            lat, lon = float(latitude), float(longitude)
+            v = 0.0 if _dans(lon, lat, g) else round(_distance_bord_km(lon, lat, g), 2)
+        else:
+            v = round(_surface_km2(g), 1)
+        pts.append({"date": j, "valeur": v})
+    pts.sort(key=lambda p: p["date"])
+    titre = (f"distance (km) de {localite or 'la localité'} ({latitude}, {longitude}) à la zone occupée ; 0 = occupée"
+             if latitude is not None and longitude is not None else "surface du territoire ukrainien occupé (km²)")
+    return _releve("DeepState, via le miroir cyterat/deepstate-map-data", titre,
+                   "https://github.com/cyterat/deepstate-map-data", pts, avant, retard=1,
+                   biais="carte d'un projet ukrainien (DeepState) ; aucun autre producteur indépendant")
+
+
+async def coupures_internet(pays: str, debut: str = "2022-01-01", avant: date | None = None) -> dict:
+    """Alertes de coupure d'Internet par pays (IODA, Georgia Tech ; usage de recherche) : une alerte « critical » est
+    un événement daté. Les jours de plusieurs alertes comptent une fois."""
+    fin = avant or datetime.now(timezone.utc).date()
+    t0 = int(datetime.fromisoformat(f"{_jour(debut) or '2022-01-01'}T00:00:00+00:00").timestamp())
+    t1 = int(datetime.fromisoformat(f"{fin.isoformat()}T23:59:59+00:00").timestamp())
+    d = await _get("https://api.ioda.inetintel.cc.gatech.edu/v2/outages/alerts",
+                   {"entityType": "country", "entityCode": pays.upper()[:2], "from": t0, "until": t1, "limit": 5000})
+    lignes = d.get("data") if isinstance(d, dict) else d
+    if isinstance(lignes, dict):
+        lignes = lignes.get("alerts") or lignes.get("data") or []
+    jours: dict[str, set] = {}
+    for a in lignes or []:
+        if not isinstance(a, dict) or str(a.get("level") or "").lower() != "critical":
+            continue
+        t = a.get("time") or a.get("from")
+        try:
+            j = datetime.fromtimestamp(int(t), timezone.utc).date().isoformat()
+        except (TypeError, ValueError, OSError):
+            j = _jour(t)
+        if j:
+            jours.setdefault(j, set()).add(str(a.get("datasource") or "?"))
+    pts = [{"date": j, "valeur": None, "titre": "alerte critique : " + ", ".join(sorted(s))} for j, s in sorted(jours.items())]
+    return _releve("IODA (Georgia Tech)", f"jours d'alerte critique de coupure d'Internet · {pays.upper()[:2]}",
+                   f"https://ioda.inetintel.cc.gatech.edu/country/{pays.upper()[:2]}", pts, avant, debut=_jour(debut))
+
+
+async def lancements(proprietaire: str | None = None, nom: str | None = None, site: str | None = None,
+                     avant: date | None = None) -> dict:
+    """Lancements spatiaux d'après le catalogue des satellites de CelesTrak (domaine public) : un lancement = un
+    indicatif international « AAAA-NNN » ; filtres : propriétaire (code SATCAT : US, PRC, CIS, FR, IND, ESA…), nom
+    d'objet (ex. STARLINK) et site de lancement (ex. AFETR, AFWTR, TSC, JSC, BOWIE…)."""
+    t = await _get("https://celestrak.org/pub/satcat.csv", json_=False)
+    vus: dict[str, dict] = {}
+    for r in csv.DictReader(io.StringIO(t.lstrip("\ufeff"))):
+        ident = (r.get("OBJECT_ID") or "")[:8]
+        j = _jour(r.get("LAUNCH_DATE"))
+        if not j or len(ident) < 8:
+            continue
+        if proprietaire and (r.get("OWNER") or "").upper() != proprietaire.upper():
+            continue
+        if nom and nom.upper() not in (r.get("OBJECT_NAME") or "").upper():
+            continue
+        if site and (r.get("LAUNCH_SITE") or "").upper() != site.upper():
+            continue
+        e = vus.setdefault(ident, {"date": j, "valeur": None, "objets": 0, "site": r.get("LAUNCH_SITE") or ""})
+        e["objets"] += 1
+    pts = [{"date": e["date"], "valeur": None, "titre": f"{i} · {e['objets']} objet(s) catalogué(s) · site {e['site']}"}
+           for i, e in sorted(vus.items(), key=lambda x: x[1]["date"])]
+    filtres = " · ".join(x for x in (proprietaire and f"propriétaire {proprietaire}", nom and f"objets « {nom} »",
+                                     site and f"site {site}") if x)
+    return _releve("CelesTrak, catalogue des satellites (SATCAT)", "lancements" + (f" · {filtres}" if filtres else ""),
+                   "https://celestrak.org/satcat/search.php", pts, avant,
+                   biais="un lancement sans objet catalogué (échec au décollage) peut manquer")
+
+
+async def sanctions_us(terme: str | None = None, programme: str | None = None, avant: date | None = None) -> dict:
+    """Liste SDN de l'OFAC (sanctions américaines), via OpenSanctions (CC BY-NC 4.0, usage non commercial) : une cible
+    par ligne, datée de sa première apparition dans les relevés d'OpenSanctions. Les cibles déjà présentes au premier
+    relevé (stock initial, toutes à la même date) sont retirées : leur date ne dit pas quand elles ont été désignées."""
+    t = await _get("https://data.opensanctions.org/datasets/latest/us_ofac_sdn/targets.simple.csv", json_=False)
+    lignes = list(csv.DictReader(io.StringIO(t.lstrip("\ufeff"))))
+    dates = [_jour(r.get("first_seen")) for r in lignes]
+    stock = min((x for x in dates if x), default=None)
+    pts = []
+    for r, j in zip(lignes, dates):
+        if not j or j == stock:
+            continue
+        if programme and programme.upper() not in (r.get("sanctions") or "").upper():
+            continue
+        if terme and terme.lower() not in ((r.get("name") or "") + " " + (r.get("aliases") or "")).lower():
+            continue
+        pts.append({"date": j, "valeur": None,
+                    "titre": f"{(r.get('name') or '')[:80]} [{(r.get('schema') or '')}] {(r.get('countries') or '')[:30]}"})
+    pts.sort(key=lambda p: p["date"])
+    return _releve("OFAC, liste SDN, via OpenSanctions", "nouvelles cibles des sanctions américaines"
+                   + (f" · programme {programme}" if programme else "") + (f" · « {terme} »" if terme else ""),
+                   "https://www.opensanctions.org/datasets/us_ofac_sdn/", pts, avant,
+                   biais=f"dates = première apparition chez OpenSanctions ; stock initial du {stock} retiré ; radiations absentes")
+
+
 # --------------------------------------------------------------------------- catalogue
 
 CATALOGUE: dict[str, dict] = {
@@ -705,6 +901,21 @@ CATALOGUE: dict[str, dict] = {
                       "params": '{"organisation": "facultatif, ex. OpenAI", "domaine": "facultatif, ex. Language", '
                                 '"pays": "facultatif", "frontiere": true, "calcul_min": 1e25, "mesure": "sorties|calcul"}',
                       "pour": "sorties de modèles d'IA et calcul d'entraînement (Epoch AI, CC BY 4.0)"},
+    "front_ukraine": {"fn": front_ukraine, "nature": "niveau", "comptable": True,
+                      "params": '{"localite": "nom facultatif", "latitude": "facultatif, ex. 48.28", "longitude": "facultatif, ex. 37.18"}',
+                      "pour": "ligne de front en Ukraine, quotidienne depuis 2024-07 : surface occupée (km²), ou, avec les "
+                              "coordonnées d'une localité, sa distance (km) à la zone occupée (seuil 0, sens « <= » : "
+                              "la localité sera-t-elle prise ?)"},
+    "coupures_internet": {"fn": coupures_internet, "nature": "evenements", "comptable": True,
+                          "params": '{"pays": "code ISO2, ex. IR", "debut": "AAAA-MM-JJ"}',
+                          "pour": "jours d'alerte critique de coupure d'Internet dans un pays (IODA)"},
+    "lancements": {"fn": lancements, "nature": "evenements", "comptable": True,
+                   "params": '{"proprietaire": "code SATCAT facultatif, ex. US, PRC, CIS, IND", "nom": "facultatif, ex. STARLINK", '
+                             '"site": "facultatif, ex. AFETR"}',
+                   "pour": "lancements spatiaux datés (CelesTrak, domaine public)"},
+    "sanctions_us": {"fn": sanctions_us, "nature": "evenements", "comptable": True,
+                     "params": '{"terme": "nom facultatif", "programme": "facultatif, ex. RUSSIA-EO14024, IRAN, SDGT"}',
+                     "pour": "nouvelles cibles des sanctions américaines (OFAC, via OpenSanctions)"},
     "epoch_benchmarks": {"fn": epoch_benchmarks, "nature": "niveau", "comptable": True,
                          "params": '{"benchmark": "nom, ex. GPQA Diamond, FrontierMath, SWE-bench", "modele": "facultatif"}',
                          "pour": "scores des modèles d'IA aux benchmarks, datés de la sortie du modèle (Epoch AI, CC BY 4.0)"},
