@@ -26,7 +26,7 @@ def donnees(n, vrai, graine=1):
 
 class Tests(unittest.TestCase):
     def test_retrouve_les_vrais_lambda(self):
-        vrai = {"F": 6.0, "M": 1.8, "f": 1.0}
+        vrai = {"F": 6.0, "M": 1.8, "f": 1.0, "I": 0.4}
         r = al.apprendre(donnees(4000, vrai))
         for c in al.CLASSES:
             lo, hi = r["intervalle_95"][c]
@@ -34,7 +34,7 @@ class Tests(unittest.TestCase):
         self.assertLess(r["perte_log_hors_echantillon"]["appris"], r["perte_log_hors_echantillon"]["stipules"])
 
     def test_peu_de_donnees_reste_pres_de_l_a_priori(self):
-        r = al.apprendre(donnees(8, {"F": 20.0, "M": 1.8, "f": 1.2}))
+        r = al.apprendre(donnees(8, {"F": 20.0, "M": 1.8, "f": 1.2, "I": 0.556}))
         self.assertLess(abs(math.log(r["lambda_appris"]["F"] / r["lambda_stipules"]["F"])), 1.0)
         self.assertTrue(r["statut"].startswith("indicatif"))
         self.assertEqual(al.apprendre([])["statut"], "aucune question résolue avec lecture")

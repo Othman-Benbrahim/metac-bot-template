@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.71
+> Version : 0.7.72
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -49,6 +49,7 @@ carte, une définition abstraite commune et ce que chaque traduction locale en c
 | 0.7.53 (faite) | Le marqueur décide de l'intensité | Définition + un marqueur observable → f ; « contredit » distinct d'« incomplet » (§30) |
 | 0.7.54 (faite) | Fait de série | Un relevé de données daté et sourcé est un fait ; banc sans texte `alphabet-chaine` (§31) |
 | 0.7.55 (faite) | Équivalents de données | Marqueurs de dix cartes traduits en relevés de jetons, six Vides ; banc seul (§32) |
+| 0.7.72 (faite) | Freins | Six arêtes inhibitrices (λ_I = 0,556), indicateurs de fermeture dans les fiches, produit borné à [1/10 ; 10] (`validation.md` §48) |
 | 0.7.71 (faite) | SKILL.md allégé | Historique déplacé vers `CHANGELOG.md` ; règles au présent avec renvois ; rien ne change |
 | 0.7.70 (faite) | λ appris | Décision : les λ s'apprennent sur les issues, en ombre ; adoption à 50 questions si gain hors échantillon (§47) |
 | 0.7.69 (faite) | Marqueurs | Chaque ligne de marqueurs est une alternative complète ; neuf fiches recoupées (§46) |
@@ -484,3 +485,20 @@ textes périmés ont passé tous les contrôles automatiques en 0.6.4. Avant cha
 10. Tout constat du CHANGELOG qui engage une décision est recopié au journal des lacunes ou ici.
 11. En dernier : `moteur.py manifeste`, puis `audit` (qui vérifie `SHA256SUMS`) ; publication avec
     `publier-github.ps1` (étiquette et release, `SHA256SUMS` joint).
+
+## Arbre de la connaissance : ce que les freins ouvrent (2026-11-11)
+
+L'arbre déroule, depuis une situation lue, les situations connexes. Avec les freins (§48), une branche peut se
+fermer, pas seulement s'ouvrir. Prochaines étapes, à décider une par une :
+
+1. **Freins dans le programme génératif et le monde synthétique** : un couplage négatif de co-présence (deux cartes
+   qui se freinent sont rarement présentes ensemble). Hypothèse distincte du frein d'un pas au suivant ; à décider sur
+   données, après quelques passages du monde synthétique.
+2. **Deux déroulés d'une branche** : en *exploration* (toutes les suites que la structure permet, moteurs et freins
+   nommés, sans poids) et en *prévision* (les mêmes, pondérées par les λ). Le souhaitable reste hors de l'arbre : une
+   préférence n'est pas un fait.
+3. **Indicateurs de fermeture** : posés dans les fiches pour les six freins ; ils servent de signaux observables
+   qu'une branche se ferme, comme les indicateurs de bascule disent qu'elle s'ouvre.
+4. **Nouveaux freins** : seulement par la règle du §48 (structure qui borne ou exclut, avec une référence), jamais
+   par simple tension documentée.
+

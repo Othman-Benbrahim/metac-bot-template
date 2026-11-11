@@ -1,6 +1,6 @@
 # Alphabet situationnel — Les 16 cartes (noyau transversal candidat)
 
-> Version : 0.7.71
+> Version : 0.7.72
 
 > **Statut 0.4.0.** Les rapprochements mathématiques ci-dessous guident la lecture ; ils ne prouvent
 > ni universalité ni transfert des probabilités. La bibliographie du noyau ne valide pas les équivalents locaux.

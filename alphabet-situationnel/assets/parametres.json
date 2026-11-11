@@ -1,5 +1,5 @@
 {
- "version": "0.7.71",
+ "version": "0.7.72",
  "nombre_strates": 13,
  "cartes": {
   "SEU": "SEUIL",
@@ -22,7 +22,15 @@
  "lambda": {
   "F": 3.0,
   "M": 1.8,
-  "f": 1.2
+  "f": 1.2,
+  "I": 0.556
+ },
+ "inhibitions": {
+  "CTR": {"CRO": "I"},
+  "HIE": {"EME": "I"},
+  "TRC": {"TRA": "I", "EME": "I"},
+  "INC": {"CRO": "I"},
+  "POL": {"COM": "I"}
  },
  "f_defaut": 0.05,
  "plafond_p0": 0.95,

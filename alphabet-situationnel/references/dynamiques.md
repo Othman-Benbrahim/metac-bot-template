@@ -1,6 +1,6 @@
 # Alphabet situationnel — Dynamiques des cartes (couche 4, a priori)
 
-> Version : 0.7.71
+> Version : 0.7.72
 
 > Ce que chaque structure **tend à produire au pas suivant**, proposé comme hypothèse à partir de sa représentation structurelle.
 > Ces intensités **modulent** une fréquence de base (T2) : elles ne sont pas des probabilités. Valeurs
@@ -22,6 +22,9 @@
 - **Transitions** : événements que la carte rend **plus probables** au pas suivant, avec une intensité
   (forte F / moyenne M / faible f) traduite en multiplicateur hypothétique λ (§H), et le mécanisme. Sauf mention, l'événement se produit **dans la même
   strate** ; « autre strate » signale une propagation possible (G3, transfert).
+- **Freins** (0.7.72, `validation.md` §48) : apparitions que la carte rend **moins probables**, classe I
+  (λ_I = 0,556), avec le mécanisme et un **indicateur de fermeture** (le fait observable qui montre que le frein agit).
+  Six paires seulement, inscrites quand la structure de la carte borne ou exclut le mécanisme de la cible.
 - **Indicateurs de bascule** : faits observables qui annoncent la transition. Ils servent à remplir
   le champ « indicateur de bascule » des prévisions (S1).
 - **Entrées** : cartes qui mènent le plus souvent à celle-ci (lecture inverse des transitions).
@@ -109,6 +112,8 @@
   - SEUIL apparaît — **faible** — renversement.
 - **Indicateurs de bascule** : succession ouverte ou incertaine ; perte d'une ressource par le
   sommet ; défections d'échelons intermédiaires.
+- **Freins** : ÉMERGENCE — un ordre prescrit par une autorité préempte l'ordre non prescrit que l'émergence exige.
+  *Fermeture* : l'autorité fixe elle-même la règle ou le format que les acteurs auraient pu inventer.
 - **Entrées** : RÉCIPROCITÉ (dette), COMMUNAUTÉ (garant), POLARITÉ (un pôle l'emporte), ÉMERGENCE
   (institutionnalisation).
 
@@ -133,6 +138,8 @@
   - RÉCIPROCITÉ apparaît — **faible** — désescalade par échanges conditionnels.
 - **Indicateurs de bascule** : rétorsions successives de plus en plus fortes ; disparition des
   intermédiaires ; alignements exclusifs exigés des tiers.
+- **Freins** : COMMUNAUTÉ — deux pôles qui se définissent l'un par l'autre divisent le collectif de plus de deux
+  membres (McCoy & Somer 2019). *Fermeture* : un bien commun ou un projet partagé se scinde en deux camps.
 - **Entrées** : RÉCIPROCITÉ (non-retour), RÉSEAU (perte d'un pont), HIÉRARCHIE (contestation).
 
 ## INCERTITUDE Ø
@@ -144,6 +151,9 @@
   - SEUIL apparaît — **faible** — résolution par basculement.
 - **Indicateurs de bascule** : échéance de décision ; couvertures qui se défont ; un acteur abandonne
   une option publiquement.
+- **Freins** : CROISSANCE — les acteurs retardent les engagements irréversibles (investissement, embauche) qui
+  portent la croissance (Dixit & Pindyck 1994 ; Bloom 2009). *Fermeture* : décisions reportées « en attendant »,
+  investissements suspendus.
 - **Entrées** : CONTRAINTE qui se relâche, RÉSEAU (signaux contradictoires), HIÉRARCHIE (succession
   ouverte).
 
@@ -157,6 +167,8 @@
   - Disparition (relâchement) — couverte par l'inertie.
 - **Indicateurs de bascule** : coût d'opportunité croissant (ce que la contrainte empêche vaut de plus
   en plus) ; tentatives de contournement documentées ; échéance de révision.
+- **Freins** : CROISSANCE — la capacité limite active borne le taux (logistique, Verhulst 1838). *Fermeture* :
+  plafond, quota ou capacité nommée atteint, demandes refusées faute de capacité.
 - **Entrées** : CROISSANCE (capacité atteinte), ÉMERGENCE (codification), POLARITÉ (sanctions).
 
 ## PROPORTION ◯
@@ -190,6 +202,9 @@
   - SEUIL apparaît — **faible** — seul un choc rompt un verrouillage.
 - **Indicateurs de bascule** : anniversaire d'un événement fondateur ; réactivation publique d'un
   grief ; coût de changement qui chute.
+- **Freins** : TRANSFORMATION — le verrouillage résiste au changement de forme ; ÉMERGENCE — la convention en
+  place occupe la place d'une nouvelle (Arthur 1989, David 1985). *Fermeture* : coûts de sortie élevés et nommés,
+  alternatives abandonnées faute d'adoption.
 - **Entrées** : SEUIL, ÉMERGENCE (verrouillage), TRANSFORMATION achevée.
 
 ## CROISSANCE ▲
@@ -405,6 +420,10 @@ sont listées dans les fiches (« autre strate ») et dans `assets/parametres.js
 | CROISSANCE | M | | | | f | | f | | | F | f | | | | | |
 | COMMUNAUTÉ | M | f | | | | M | f | | | | | | | | | |
 | RÉSONANCE | M | | | | | | | | | | | | | M | | |
+
+**Freins (0.7.72, §48), hors de cette table** (classe I, λ_I = 0,556 ; `assets/parametres.json`, `inhibitions`) :
+CONTRAINTE ⊣ CROISSANCE ; HIÉRARCHIE ⊣ ÉMERGENCE ; TRACE·MÉMOIRE ⊣ TRANSFORMATION ; TRACE·MÉMOIRE ⊣ ÉMERGENCE ;
+INCERTITUDE ⊣ CROISSANCE ; POLARITÉ ⊣ COMMUNAUTÉ.
 
 ## Transitions ajoutées en v0.3.0 : réconciliation des « Entrées »
 

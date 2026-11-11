@@ -1,6 +1,6 @@
 # Alphabet situationnel — Protocole
 
-> Version : 0.7.71
+> Version : 0.7.72
 >
 > **Source de vérité des règles.** Chaque règle est définie une seule fois, ici. Les autres fichiers
 > donnent des données (cartes, équivalents, dynamiques), des formats (fiche de cas, journal, sortie)
@@ -690,7 +690,7 @@ modification impose une version et une nouvelle évaluation, sans réécriture d
 <!-- PARAMETRES:BEGIN -->
 | Paramètre | Valeur |
 |---|---|
-| `version` | `"0.7.71"` |
+| `version` | `"0.7.72"` |
 | `nombre_strates` | `13` |
 | `cartes.SEU` | `"SEUIL"` |
 | `cartes.REC` | `"RÉCIPROCITÉ"` |
@@ -711,6 +711,13 @@ modification impose une version et une nouvelle évaluation, sans réécriture d
 | `lambda.F` | `3.0` |
 | `lambda.M` | `1.8` |
 | `lambda.f` | `1.2` |
+| `lambda.I` | `0.556` |
+| `inhibitions.CTR.CRO` | `"I"` |
+| `inhibitions.HIE.EME` | `"I"` |
+| `inhibitions.TRC.TRA` | `"I"` |
+| `inhibitions.TRC.EME` | `"I"` |
+| `inhibitions.INC.CRO` | `"I"` |
+| `inhibitions.POL.COM` | `"I"` |
 | `f_defaut` | `0.05` |
 | `plafond_p0` | `0.95` |
 | `plafond_LR` | `10.0` |

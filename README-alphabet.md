@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.40 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.41 · skill alphabet-situationnel 0.7.72 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.41** : **skill 0.7.72, les freins** (décision d'auteur du 2026-11-11, `validation.md` §48). Six arêtes
+  inhibitrices (λ_I = 0,556) entrent dans le calcul publié : une carte lue peut désormais faire baisser C sous B
+  (CONTRAINTE ⊣ CROISSANCE, HIÉRARCHIE ⊣ ÉMERGENCE, TRACE·MÉMOIRE ⊣ TRANSFORMATION et ÉMERGENCE, INCERTITUDE ⊣
+  CROISSANCE, POLARITÉ ⊣ COMMUNAUTÉ) ; le produit des λ est borné à [1/10 ; 10]. Bot : λ_I appris comme quatrième
+  classe (`apprentissage_lambda.py`) ; score `freins` (gain de C sur B avec et sans frein lu) ; calcul de puissance
+  borné des deux côtés.
 - **0.10.40** : **puits DBnomics** (décision d'auteur du 2026-11-11, repéré dans FinceptTerminal). Une API gratuite,
   sans clé (Banque de France, Cepremap), pour les séries de près de 80 fournisseurs : FMI, OCDE, BCE, Eurostat, BIS,
   OIT, instituts nationaux — l'OCDE et le FMI, laissés de côté le 8 novembre (SDMX trop lourd), deviennent accessibles.

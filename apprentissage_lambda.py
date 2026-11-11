@@ -27,7 +27,7 @@ from pathlib import Path
 
 import alphabet_pipeline as ap
 
-CLASSES = ("F", "M", "f")
+CLASSES = ("F", "M", "f", "I")   # 0.10.41 : I = frein (skill 0.7.72, §48)
 SD_PRIOR = 0.5
 
 
@@ -137,7 +137,7 @@ def ajuster(rows: list[dict], prior: dict[str, float]) -> dict:
                 g[i] += (r["y"] - p) * x[i]
                 for j in range(k):
                     H[i][j] -= p * (1 - p) * x[i] * x[j]
-        # résoudre H·d = −g (3 × 3, élimination de Gauss)
+        # résoudre H·d = −g (élimination de Gauss)
         A = [row[:] + [-g[i]] for i, row in enumerate(H)]
         for c_ in range(k):
             piv = max(range(c_, k), key=lambda r_: abs(A[r_][c_]))
@@ -150,7 +150,7 @@ def ajuster(rows: list[dict], prior: dict[str, float]) -> dict:
         b = [b[i] + d[i] for i in range(k)]
         if max(abs(x) for x in d) < 1e-8:
             break
-    # écarts-types : diagonale de (−H)⁻¹ (H diagonale dominante par l'a priori ; inversion 3 × 3)
+    # écarts-types : diagonale de (−H)⁻¹ (H diagonale dominante par l'a priori)
     M = [[-H[i][j] for j in range(k)] for i in range(k)]
     inv = [[float(i == j) for j in range(k)] for i in range(k)]
     for c_ in range(k):

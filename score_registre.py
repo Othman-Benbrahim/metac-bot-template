@@ -563,6 +563,31 @@ def marge_B(apparies: list) -> dict | None:
                        "place, c'est là que l'alphabet doit gagner"}
 
 
+def freins(resolues: list[dict], issues: dict) -> dict | None:
+    """0.10.41 (skill 0.7.72, §48) : questions où la lecture de C contient un FREIN (arête inhibitrice) vers la cible.
+    Gain de C sur B avec et sans frein lu : un frein juste fait gagner C sur les NON, qu'il perdait toujours."""
+    try:
+        m = ap._moteur()
+    except Exception:
+        return None
+    avec, sans = [], []
+    for x in resolues:
+        c, b = x["bras"]["C"], x["bras"]["B"]
+        ev = str(c.get("evenement") or "")
+        if c.get("p_C") is None or b.get("p") is None or not c.get("etat") or " apparait" not in ev:
+            continue
+        try:
+            src, _ = m.sources_de(m.lire_etat(c["etat"]), m.cle_valide(ev.split(" ")[0]), (), (), ())
+        except (ValueError, KeyError, TypeError, SystemExit):
+            continue
+        g = gain_pair(ap.borner(c["p_C"]), ap.borner(b["p"]), issues[x["question_id"]])
+        (avec if any(s_.get("intensite") == "I" for s_ in src) else sans).append(g)
+    if not avec and not sans:
+        return None
+    moy = lambda v: round(sum(v) / len(v), 3) if v else None
+    return {"avec_frein": {"n": len(avec), "gain_C_sur_B": moy(avec)}, "sans_frein": {"n": len(sans), "gain_C_sur_B": moy(sans)}}
+
+
 def negation_A(lignes: list[dict]) -> dict | None:
     """0.10.34 : test de négation du modèle seul : p(question) + p(question niée) devrait valoir 1."""
     n = [((x.get("bras") or {}).get("A") or {}).get("negation") for x in lignes]
@@ -1068,6 +1093,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "negation_A": negation_A(publiees),                                 # 0.10.34
             "fidelite_plan": fidelite_plan(publiees, issues),                   # 0.10.35
             "provenance_F": provenance_F(publiees, issues),                     # 0.10.38
+            "freins": freins(resolues, issues),                                 # 0.10.41
             "B_par_methode": b_par_methode(resolues, issues),                   # 0.10.19
             "discordances_B": discordances_B(publiees, issues),                 # 0.10.19
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)
