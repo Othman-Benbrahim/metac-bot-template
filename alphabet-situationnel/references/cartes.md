@@ -1,6 +1,6 @@
 # Alphabet situationnel — Les 16 cartes (noyau transversal candidat)
 
-> Version : 0.7.68
+> Version : 0.7.69
 
 > **Statut 0.4.0.** Les rapprochements mathématiques ci-dessous guident la lecture ; ils ne prouvent
 > ni universalité ni transfert des probabilités. La bibliographie du noyau ne valide pas les équivalents locaux.
@@ -132,9 +132,9 @@ système ou imposé par un forçage extérieur (calendrier, saison, échéance).
 *Domaine* : systèmes dynamiques.
 
 **Marqueurs observables** :
-- au moins **trois** occurrences datées du même état ou de la même séquence de phases ;
-- intervalle approximativement constant ;
-- phases du cycle identifiables (on peut dire où l'on en est).
+- au moins **trois** occurrences datées du même état ou de la même séquence de phases, à intervalle
+  approximativement constant ;
+- phases du cycle identifiables (on peut dire où l'on en est), sur un cycle déjà observé au moins deux fois. *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *documenté* : « time, cyclicity of », « rituals ».
 
@@ -169,9 +169,9 @@ récursion, Kleene 1938) ; réflexivité sociale et prophétie autoréalisatrice
 *Domaine* : logique et calculabilité ; théorie des systèmes sociaux.
 
 **Marqueurs observables** :
-- un discours, une mesure, un modèle ou une analyse **du système sur lui-même** est observable ;
-- et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ;
-  l'analyse d'un conflit devient un épisode du conflit).
+- un discours, une mesure, un modèle ou une analyse **du système sur lui-même** est observable, et ce discours
+  modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un
+  épisode du conflit). *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *partiel* : « self as subject and object », « self-image, awareness
 of (concern for what others think) », « private inner life ». Documenté au niveau individuel ;
@@ -203,9 +203,9 @@ auto-organisée (Bak, Tang & Wiesenfeld 1987). *Méthode* (et non structure) : m
 *Domaine* : systèmes complexes.
 
 **Marqueurs observables** :
-- une régularité collective nommable et datable dans son apparition ;
-- l'absence démontrable de prescription (pas de décision, de vote, de consigne qui l'instaure) ;
-- son adoption par imitation ou convergence observée.
+- une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de
+  décision, de vote, de consigne qui l'instaure) ;
+- son adoption par imitation ou convergence observée. *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *à établir*. La thèse « les cultures ont émergé » relève de la théorie
 de l'ordre spontané (Ferguson 1767, Hayek 1973), pas d'un universel documenté ; la liste de Brown contient
@@ -279,8 +279,9 @@ trous structuraux (Burt 1992) ; petits mondes (Watts & Strogatz 1998). *Domaine*
 graphes, analyse de réseaux.
 
 **Marqueurs observables** :
-- au moins trois nœuds nommables et leurs liens (présents ou absents) ;
-- un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe.
+- au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce
+  qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance) ;
+- un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe. *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *documenté* : « kin groups », « classification of kin », « kinship
 statuses », « coalitions », « triangular awareness (assessing relationships among the self and two
@@ -417,8 +418,8 @@ rupture quand l'ensemble change d'échelle.
 > (Markowsky 1992).
 
 **Marqueurs observables** :
-- au moins deux grandeurs mesurables et leur rapport ;
-- idéalement le même rapport à deux dates, pour voir s'il se conserve.
+- au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se
+  rompt. *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *partiel* : aucun item de proportion ; items voisins « measuring »,
 « numerals (counting) », « aesthetics », « fairness (equity), concept of » (le partage équitable
@@ -448,9 +449,8 @@ moins un invariant nommable (identité, mission, membres, fonction).
 leurs invariants (Klein 1872, programme d'Erlangen). *Domaine* : topologie, géométrie.
 
 **Marqueurs observables** :
-- état de départ et état en cours décrits ;
-- un invariant explicitement conservé ;
-- étapes intermédiaires observées (pas seulement un avant/après).
+- état de départ et état en cours décrits, avec un invariant explicitement conservé ;
+- étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après). *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *à établir*. Aucun item de la liste ; « myths » n'est qu'un voisin.
 
@@ -484,10 +484,9 @@ stochastiques.
 > SEUIL / TRACE est une inclusion (`antagonismes.md` §4bis), pas une confusion de définitions.
 
 **Marqueurs observables** :
-- un élément présent dont l'origine est datable ;
-- qui continue d'orienter les conduites ;
-- et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est
-  l'histoire, et non la situation actuelle, qui le maintient).
+- un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas
+  choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle,
+  qui le maintient). *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *documenté* : « memory », « myths », « folklore », « death rituals »,
 « mourning », « inheritance rules ».
@@ -515,8 +514,9 @@ une limite de capacité ; inclut les régimes exponentiel, logistique, de satura
 Gompertz 1825) ; point d'inflexion ; capacité limite. *Domaine* : équations différentielles.
 
 **Marqueurs observables** :
-- au moins trois mesures datées d'une même grandeur ;
-- un taux estimable ; une limite identifiée ou une saturation visible.
+- une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même
+  grandeur ;
+- une limite identifiée ou une saturation visible sur une grandeur qui croît. *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *partiel* : documenté pour le cycle de vie des **personnes**
 (« age grades », « age statuses », « age terms », « classification of age », « weaning ») ;
@@ -580,9 +580,9 @@ au-delà d'une force de couplage, les rythmes s'alignent.
 de phase). *Domaine* : physique des systèmes non linéaires.
 
 **Marqueurs observables** :
-- au moins deux rythmes propres identifiés ;
-- l'observation de leur alignement (simultanéité, cadence commune, gestes synchrones) ;
-- un canal de couplage (co-présence, signal partagé, musique, horaire commun).
+- au moins deux rythmes propres identifiés, et l'observation de leur alignement (simultanéité, cadence commune,
+  gestes synchrones) ;
+- un canal de couplage (co-présence, signal partagé, musique, horaire commun) entre deux rythmes propres identifiés. *(0.7.69, `validation.md` §46)*
 
 **Registre anthropologique** — *documenté* : « music », « dance », « rhythm », « music related in part
 to dance », « rituals ». L'entraînement lui-même n'est pas un item de Brown ; il est documenté en

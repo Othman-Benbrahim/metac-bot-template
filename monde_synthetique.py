@@ -34,8 +34,9 @@ import alphabet_pipeline as ap
 
 # 0.10.24 : version de la consigne du narrateur ; les passages de versions différentes ne se cumulent pas
 # (1 : jusqu'à 0.10.22, fiches complètes et une dépêche par carte ; 2 : 0.10.23, marqueurs seuls, une situation ;
-# 3 : depuis 0.10.26, canevas imposé, domaine imposé, réécriture guidée par le vérificateur)
-PROTOCOLE_MONDE = 3
+# 3 : 0.10.26, canevas imposé, domaine imposé, réécriture guidée par le vérificateur ;
+# 4 : depuis 0.10.28, skill 0.7.69 (marqueurs complets), deux États, contexte sans passé ni instance)
+PROTOCOLE_MONDE = 4
 
 
 def nom_strate(s: int) -> str:
@@ -63,7 +64,8 @@ def marqueurs(abr: str) -> list[str]:
             out[-1] += " " + ligne.strip()
         else:
             break
-    return [re.sub(r"\*\*", "", x).strip().rstrip(" ;.") for x in out]
+    # 0.10.28 : la mention de version en fin de liste (« *(0.7.69, …)* ») ne fait pas partie du marqueur
+    return [re.sub(r"\*\*", "", re.sub(r"\s*\*\(0\.\d+\.\d+[^)]*\)\*", "", x)).strip().rstrip(" ;.") for x in out]
 
 
 def _bloc_marqueurs(cles: list[str]) -> str:
@@ -87,11 +89,13 @@ DOMAINE = {7: "relations entre États et organisations internationales : diploma
 def canevas(presentes: list[str], strate: int, graine: int, aujourdhui: str) -> dict:
     """0.10.26 : le CANEVAS imposé au narrateur (décision d'auteur du 2026-11-11 : contraindre plus le narrateur, plutôt
     que changer de modèle). Acteurs, dates et, pour chaque carte présente, UN marqueur précis à remplir, tirés de la
-    graine : le narrateur n'a plus à choisir ni le sujet, ni les acteurs, ni le marqueur."""
+    graine. 0.10.28 : DEUX États seulement ; l'organisation n'entre que si RÉSEAU ou COMMUNAUTÉ doivent être montrés
+    (deux États et une organisation dont ils sont membres faisaient déjà « trois nœuds et leurs liens »)."""
     import random
     rnd = random.Random(f"canevas:{strate}:{graine}")
     a, b = rnd.sample(ETATS, 2)
     org = rnd.choice(ORGANISATIONS)
+    avec_org = any(k.split("@")[0] in ("RES", "COM") for k in presentes)
     n = len(presentes) + 1
     fin = date.fromisoformat(aujourdhui)
     dates = sorted({(fin - timedelta(days=rnd.randrange(1, 61))).isoformat() for _ in range(n * 3)})[:n]
@@ -104,7 +108,7 @@ def canevas(presentes: list[str], strate: int, graine: int, aujourdhui: str) -> 
     for d, k in zip(dates[1:], ordre):
         mq = marqueurs(k.split("@")[0])
         items.append({"date": d, "carte": k, "marqueur": rnd.choice(mq) if mq else None})
-    return {"etats": [a, b], "organisation": org, "depeches": items}
+    return {"etats": [a, b], "organisation": org if avec_org else None, "depeches": items}
 
 
 def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str, graine: int = 0) -> str:
@@ -113,18 +117,20 @@ def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, a
     interdite. Domaine imposé. Plus de choix libres : c'est la liberté laissée au modèle qui le faisait errer."""
     cv = canevas(presentes, strate, graine, aujourdhui)
     a, b = cv["etats"]
+    acteurs = f"{a}, {b}" + (f" et {cv['organisation']}" if cv["organisation"] else "")
     lignes = []
     for i, d in enumerate(cv["depeches"], 1):
         if d["carte"] is None:
-            lignes.append(f"{i}. [{d['date']}] CONTEXTE : présente {a}, {b} et {cv['organisation']}, leurs dirigeants et "
-                          "leur relation, par des faits neutres ; aucun des marqueurs ci-dessous, ni imposés ni interdits.")
+            lignes.append(f"{i}. [{d['date']}] CONTEXTE : présente {acteurs} et leurs dirigeants actuels, par des faits "
+                          "neutres du moment ; AUCUNE référence au passé (ni traité ancien, ni date antérieure à la "
+                          "période), AUCUNE instance qui préside ou valide, aucun des marqueurs ci-dessous.")
         else:
             lignes.append(f"{i}. [{d['date']}] Un fait, entre ces mêmes acteurs, qui remplit EXACTEMENT ce marqueur : "
                           f"« {d['marqueur']} ».")
     return f"""Tu écris des dépêches de presse FICTIVES pour un exercice de mesure.
 
 DOMAINE IMPOSÉ : {DOMAINE.get(strate, nom_strate(strate))}
-ACTEURS IMPOSÉS, les seuls : {a}, {b}, {cv['organisation']}, et leurs gouvernements, ministres, armées, diplomates.
+ACTEURS IMPOSÉS, les seuls : {acteurs}, et leurs gouvernements, ministres, armées, diplomates.
 Une seule situation qui évolue d'une dépêche à l'autre.
 
 ÉCRIS EXACTEMENT {len(cv['depeches'])} DÉPÊCHES, dans cet ordre, aux dates indiquées :

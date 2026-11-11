@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.68
+> Version : 0.7.69
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -49,6 +49,7 @@ carte, une définition abstraite commune et ce que chaque traduction locale en c
 | 0.7.53 (faite) | Le marqueur décide de l'intensité | Définition + un marqueur observable → f ; « contredit » distinct d'« incomplet » (§30) |
 | 0.7.54 (faite) | Fait de série | Un relevé de données daté et sourcé est un fait ; banc sans texte `alphabet-chaine` (§31) |
 | 0.7.55 (faite) | Équivalents de données | Marqueurs de dix cartes traduits en relevés de jetons, six Vides ; banc seul (§32) |
+| 0.7.69 (faite) | Marqueurs | Chaque ligne de marqueurs est une alternative complète ; neuf fiches recoupées (§46) |
 | 0.7.68 (faite) | CONTRAINTE | Premier marqueur : une règle qui retire une option nommée, plus seulement une règle qui existe (§45) |
 | 0.7.67 (faite) | Critère de Klein | Une nouvelle carte montre le même invariant dans trois strates ; place de l'alphabet selon les trois niveaux de Venkatasubramanian (§44) |
 | 0.7.66 (faite) | Monde synthétique | Situations tirées du génératif, racontées sans nommer les cartes, relues : sensibilité et faux positifs du lecteur mesurés (§43) |

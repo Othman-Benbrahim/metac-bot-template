@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.27 · skill alphabet-situationnel 0.7.68 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.28 · skill alphabet-situationnel 0.7.69 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.28** : skill 0.7.69 (§46 : chaque ligne de marqueurs est une alternative complète, neuf fiches recoupées).
+  Monde synthétique : deux États seulement (l'organisation n'entre que si RÉSEAU ou COMMUNAUTÉ doivent être montrés) ;
+  dépêche de contexte sans référence au passé ni instance qui préside ou valide ; `protocole_monde` 4.
 - **0.10.27** : quatre puits de données repérés dans le projet ShadowBroker (BigBodyCobain), sans clé :
   `front_ukraine` (ligne de front quotidienne depuis 2024-07, archive GitHub cyterat/deepstate-map-data des cartes
   DeepState : surface occupée en km², ou distance en km d'une localité à la zone occupée, 0 = occupée, à compter avec
