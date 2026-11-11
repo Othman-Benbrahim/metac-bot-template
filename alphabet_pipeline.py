@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.16"
+VERSION_BOT = "0.10.17"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -211,6 +211,15 @@ class Resultat:
     p_poste: float | None
     commentaire: str
     ligne: dict = field(default_factory=dict)
+
+
+_SECRETS = re.compile(r"((?:api_?key|apikey|key|token|access_?token|appid|app_key|secret)=)[^&\s'\"\\]+", re.I)
+
+
+def sans_cles(obj):
+    """0.10.17 : copie de l'objet où toute clé d'API passée dans une URL (« api_key=… », « token=… ») est masquée. Le
+    registre est public : appliqué avant le scellement de chaque ligne et de chaque dossier."""
+    return json.loads(_SECRETS.sub(r"\1***", json.dumps(obj, ensure_ascii=False, default=str)))
 
 
 def sceau(obj: dict) -> str:
@@ -800,7 +809,8 @@ async def puits(q: Question, plan: dict, llm: Llm, aujourdhui: str, jours: int,
             trace["appels"].append(dict(journal, statut="sans_cle", motif=str(e)))
             continue
         except Exception as e:
-            trace["appels"].append(dict(journal, statut="echec", motif=f"{type(e).__name__}: {e}"[:200]))
+            trace["appels"].append(dict(journal, statut="echec",
+                                        motif=apz.masquer(f"{type(e).__name__}: {e}")[:200]))
             continue
         if not r["points"]:
             trace["appels"].append(dict(journal, statut="vide"))
@@ -1757,7 +1767,7 @@ async def explorer_derivee(derivee: dict, ident: str, url: str, contexte: str, p
               "ombre_causale": c.get("ombre_causale") or ex.get("ombre_causale")}
     dossier = c.get("dossier")
     if dossier is not None:
-        d = {k: v for k, v in dossier.items() if not str(k).startswith("_")}
+        d = sans_cles({k: v for k, v in dossier.items() if not str(k).startswith("_")})
         rep = registre_ecrivable() / "dossiers-explo"
         rep.mkdir(exist_ok=True)
         nom = f"{ident}-{maintenant.strftime('%Y-%m-%dT%H%M%SZ')}.json"
@@ -1778,6 +1788,10 @@ def ligne_exploratoire_autre(ex: dict) -> str:
 
 def ecrire_registre(ligne: dict, dossier: dict | None) -> None:
     reg = registre_ecrivable()
+    propre = sans_cles(ligne)
+    ligne.clear()
+    ligne.update(propre)
+    dossier = sans_cles(dossier) if dossier is not None else None
     if dossier is not None:
         d = reg / "dossiers"
         d.mkdir(exist_ok=True)

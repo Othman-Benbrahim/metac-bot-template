@@ -210,6 +210,7 @@ class AlphabetBot(FallTemplateBot2026):
                      **({"exploratoire": exploratoire} if exploratoire else {})}
             # 0.8.0 (audit m-13) : le commentaire envoyé est scellé, comme pour les binaires.
             ligne["commentaire"] = rp.reasoning or ""
+            ligne = ap.sans_cles(ligne)          # 0.10.17 : aucune clé d'API dans le registre public
             ligne["sceau"] = ap.sceau(ligne)
             reg = ap.registre_ecrivable()
             with open(reg / "journal-autres.jsonl", "a", encoding="utf-8", newline="\n") as f:
