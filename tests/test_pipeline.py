@@ -874,10 +874,16 @@ class Tests(unittest.TestCase):
 
     def test_temporalite(self):                                   # B11
         self.assertEqual(ap.temporalite_de({}), "generique")
-        self.assertEqual(ap.temporalite_de({"temporalite": "programmee"}), "programmee")
+        pg = {"qui": "le Parlement", "engagement": "date du vote publiée au calendrier"}
+        self.assertEqual(ap.temporalite_de({"temporalite": "programmee", "programmation": pg}), "programmee")
+        self.assertEqual(ap.temporalite_de({"temporalite": "programmee"}), "generique")   # 0.10.45 : non programmé
         self.assertEqual(ap.temporalite_de({"temporalite": "n'importe"}), "generique")
-        r, _ = lancer([dict(PLAN, temporalite="programmee"), vue(0.2), lecture()])
-        self.assertNotEqual(r.ligne["bras"]["C"]["statut"], "estime")   # sans référence propre : non estimé
+        r, _ = lancer([dict(PLAN, temporalite="programmee", programmation=pg), vue(0.2), lecture()])
+        # 0.10.45 : la vue extérieure du bot est une référence de domaine (--fref) : un événement programmé, avec qui et
+        # engagement, est donc chiffrable (moteur, appliquer_temporalite) ; avant, le dossier était refusé faute de champ.
+        self.assertEqual(r.ligne["bras"]["C"]["statut"], "estime")
+        r2, _ = lancer([dict(PLAN, temporalite="programmee"), vue(0.2), lecture()])
+        self.assertNotEqual(r2.ligne["bras"]["C"]["statut"], "refuse")   # 0.10.45 : une proposition, pas un refus
 
     def test_vue_date_information(self):                          # B6
         self.assertIsNone(ap.controle_vue(vue(), "2026-11-03"))

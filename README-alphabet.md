@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.44 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.45 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.45** : **un événement « programmé » sans qui ni engagement n'est plus refusé** (décision d'auteur du
+  2026-11-11 : une question manquée coûte des points ; il faut toujours une proposition, et cohérente). La consigne du
+  plan demande `programmation {qui, engagement}` ; sans réponse, la règle du skill (0.7.16) s'applique telle qu'elle
+  est écrite : l'événement n'est pas programmé et il est traité comme générique (`programmation_absente` au dossier).
+  Avec qui et engagement, il reste programmé ; la vue extérieure du bot étant une référence de domaine, il est chiffré.
 - **0.10.44** : **les quatre défauts du premier passage ForecastBench** (décision d'auteur du 2026-11-11 : les régler
   avant d'ouvrir le banc aux questions de marché). (1) **Refus de forme** (8 lectures exploratoires sur 14) : le
   lecteur est normalisé avant validation (`code_carte`, `entier_strate`, `cle_normale` : « POLARITÉ », « POL@6 »,
