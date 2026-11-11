@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.37"
+VERSION_BOT = "0.10.38"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -533,6 +533,8 @@ def regles_dossier() -> str:
   son effet sur l'événement ; ne rejette jamais une carte parce qu'elle « ne porte pas sur » l'objet de la question.
 - F exige corroboration "independantes" (deux sources nommées séparées par « ; », et independance {critere origine|
   producteur|transmission, motif}) ou "unique" pour une source primaire. Deux relais d'une même origine = une source.
+  Avec "independantes", ajoute source_urls : [URL de la 1re source, URL de la 2e], dans l'ordre des sources, chacune
+  copiée telle quelle des RÉSULTATS (jamais reconstruite ni devinée).
 - a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines de la fiche, sans « ? ».
 - contre_observation : la plus forte trouvée DANS la situation ; portee marginale|substantielle|dominante|aucune.
 - contredirait ≠ attendu, sans nommer la carte. option : un fait qui ne change l'espace d'action de personne ne s'ancre pas.
@@ -638,6 +640,7 @@ def dynamique_observee(lecture: dict) -> dict | None:
 
 
 from alphabet_attribution import _chiffres, _normal, controle_attribution  # noqa: E402,F401  (0.9.3)
+from alphabet_provenance import provenance_F  # noqa: E402  (0.10.38)
 
 
 def nature_etat_nul(categories: dict) -> str:
@@ -2013,6 +2016,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
                             "p_C_corrige": corriger_C(c.get("p_C"), corr),
                             "attribution": controle_attribution(c.get("dossier"), c.get("_textes")),
+                            # 0.10.38 : provenance des F « independantes » vérifiée hors du modèle (en ombre)
+                            "provenance_F": provenance_F(c.get("dossier"), c.get("_textes")),
                             "critique": c.get("critique"),
                             "correction": ({k: corr.get(k) for k in ("decalage_logit", "n", "calcule_le")}
                                            if corr and c.get("p_C") is not None else None)}},

@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.37 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.38 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.38** : **provenance des F vérifiée hors du modèle**, en ombre (décision d'auteur du 2026-11-11, d'après
+  « The Corroboration Illusion », arXiv 2609.22246 : un LLM prend tout texte pertinent pour une preuve forte et ignore
+  l'éditeur). La consigne demande, pour chaque F « independantes », `source_urls` (une URL par source, copiée des
+  résultats). `alphabet_provenance.py` vérifie sans modèle que chaque URL figure dans les résultats exécutés et que les
+  deux viennent de sites différents ; verdicts `verifiee`, `meme_domaine`, `url_hors_resultats`, `une_seule_url`,
+  `sans_urls`. Registre : `C.provenance_F` ; score : `provenance_F` (statuts, perte de C selon que toutes les
+  provenances sont vérifiées). Rien ne change au calcul ni au chiffre posté. Monde synthétique : protocole 7 (la
+  consigne du lecteur a changé).
 - **0.10.37** : **veille d'articles**, chaque lundi, sans modèle (décision d'auteur du 2026-11-11).
   `veille_articles.py` interroge arXiv (articles de la semaine, rubriques IA, langage, apprentissage, statistiques,
   économie, réseaux sociaux) et lit la dernière sélection de DAIR.AI « AI Papers of the Week » ; chaque article est noté

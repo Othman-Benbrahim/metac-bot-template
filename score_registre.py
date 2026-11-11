@@ -499,6 +499,26 @@ def fidelite_plan(lignes: list[dict], issues: dict) -> dict | None:
             "perte_C_selon_verdict": {k: {"n": len(p), "moyenne": round(sum(p) / len(p), 4)} for k, p in perte.items()}}
 
 
+def provenance_F(lignes: list[dict], issues: dict) -> dict | None:
+    """0.10.38 : provenance des F « independantes » (en ombre). Statuts, et perte de C selon que toutes les provenances
+    sont vérifiées ou non : un F mal sourcé devrait coûter (« The Corroboration Illusion », arXiv 2609.22246)."""
+    v = [(x, ((x.get("bras") or {}).get("C") or {}).get("provenance_F")) for x in lignes]
+    v = [(x, y) for x, y in v if isinstance(y, dict)]
+    if not v:
+        return None
+    par: dict[str, int] = {}
+    perte: dict[str, list] = {}
+    for x, y in v:
+        for k, n in (y.get("par_statut") or {}).items():
+            par[k] = par.get(k, 0) + n
+        c = (x.get("bras") or {}).get("C") or {}
+        if x.get("question_id") in issues and c.get("p_C") is not None:
+            cle = "toutes_verifiees" if y.get("toutes_verifiees") else "au_moins_une_non_verifiee"
+            perte.setdefault(cle, []).append(log_score(c["p_C"], issues[x["question_id"]]))
+    return {"questions": len(v), "F_par_statut": par,
+            "perte_C": {k: {"n": len(p), "moyenne": round(sum(p) / len(p), 4)} for k, p in perte.items()}}
+
+
 def negation_A(lignes: list[dict]) -> dict | None:
     """0.10.34 : test de négation du modèle seul : p(question) + p(question niée) devrait valoir 1."""
     n = [((x.get("bras") or {}).get("A") or {}).get("negation") for x in lignes]
@@ -1001,6 +1021,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "couts": couts(registre),                                           # 0.10.33
             "negation_A": negation_A(publiees),                                 # 0.10.34
             "fidelite_plan": fidelite_plan(publiees, issues),                   # 0.10.35
+            "provenance_F": provenance_F(publiees, issues),                     # 0.10.38
             "B_par_methode": b_par_methode(resolues, issues),                   # 0.10.19
             "discordances_B": discordances_B(publiees, issues),                 # 0.10.19
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)
