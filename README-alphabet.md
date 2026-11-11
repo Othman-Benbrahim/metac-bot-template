@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.41 · skill alphabet-situationnel 0.7.72 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.42 · skill alphabet-situationnel 0.7.73 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.42** : **skill 0.7.73, freins en ombre** (décision d'auteur du 2026-11-11, `validation.md` §49). Vérification
+  faite : les événements calculés du bot et du banc sont tous « SEUIL apparaît », qu'aucun frein ne vise ; les freins
+  ne pouvaient presque rien au score. Ils sortent du C publié (qui redevient celui de la 0.10.40) ; l'ombre
+  `ombre_causale.avec_freins` les enregistre ; le score `freins` compare C avec freins à C et à B sur les questions où
+  ils jouent ; λ_I s'apprend toujours (les freins lus sont comptés). Pour le score, le levier reste C corrigé, l'ombre
+  générative et les λ appris.
 - **0.10.41** : **skill 0.7.72, les freins** (décision d'auteur du 2026-11-11, `validation.md` §48). Six arêtes
   inhibitrices (λ_I = 0,556) entrent dans le calcul publié : une carte lue peut désormais faire baisser C sous B
   (CONTRAINTE ⊣ CROISSANCE, HIÉRARCHIE ⊣ ÉMERGENCE, TRACE·MÉMOIRE ⊣ TRANSFORMATION et ÉMERGENCE, INCERTITUDE ⊣

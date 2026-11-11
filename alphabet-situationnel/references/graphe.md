@@ -1,6 +1,6 @@
 # Alphabet situationnel — Graphe de transitions (couche 4)
 
-> Version : 0.7.72
+> Version : 0.7.73
 
 > Procédure expérimentale. Le moteur produit les chiffres et le JSON ; l'interprétation des sources
 > et des objets reste à vérifier. Règles : T1–T6 ; paramètres : `protocole.md` §H.
@@ -50,7 +50,8 @@ inclusion, renforcement ou transfert : garder la plus forte, pour limiter le dou
 plafonné à 10. Ces règles ne démontrent ni causalité ni indépendance ; elles sont à comparer au
 modèle `--sans-cartes`. Ce dernier désactive également les homologues : il mesure l'apport conjoint
 de la modulation et de la sélection structurelle, pas l'effet isolé d'un seul mécanisme.
-**Freins (0.7.72, `validation.md` §48).** Six arêtes inhibitrices (classe I, λ_I = 0,556, stipulé), inscrites
+**Freins (0.7.72, `validation.md` §48 ; en ombre depuis 0.7.73, §49 : lus par la simulation et l'ombre
+`avec_freins`, pas par le p publié).** Six arêtes inhibitrices (classe I, λ_I = 0,556, stipulé), inscrites
 seulement quand la structure de la source borne ou exclut le mécanisme de la cible (`dynamiques.md`, « Freins ») ;
 même strate ou transfert ancré, jamais abaissées vers une autre strate ; le produit des λ est borné à [1/10 ; 10].
 Ne pas en ajouter hors de cette règle.

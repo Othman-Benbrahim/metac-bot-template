@@ -42,7 +42,13 @@ def compte_sources(m, etat_txt: str, cible: str) -> dict[str, int] | None:
         cible = m.cle_valide(cible)
     except (ValueError, KeyError, TypeError, SystemExit):
         return None
-    src, _ = m.sources_de(etat, cible, (), (), ())
+    # 0.10.42 : les freins (skill §49) sont en ombre, mais λ_I s'apprend sur les mêmes issues : on les compte
+    _f = getattr(m, "FREINS", False)
+    m.FREINS = True
+    try:
+        src, _ = m.sources_de(etat, cible, (), (), ())
+    finally:
+        m.FREINS = _f
     n = {c: 0 for c in CLASSES}
     for x in src:
         n[x["intensite"]] = n.get(x["intensite"], 0) + 1

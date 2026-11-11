@@ -1,6 +1,6 @@
 # Équivalents · strate 11 — Climat
 
-> Version : 0.7.72
+> Version : 0.7.73
 
 > Les 16 cartes traduites dans la strate 11. Statuts et règles : `equivalences.md` (index) et A3.
 > Bilan : 0 Documenté, 13 Proposé, 3 Vide, 0 Hors domaine, 0 Attesté.

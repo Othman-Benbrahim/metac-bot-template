@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.72
+> Version : 0.7.73
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2658,4 +2658,24 @@ noisy-or (§34) les traite déjà (une source de λ < 1 « laisse passer la frac
 
 **À mesurer.** Dans le bot, la perte de C sur les questions où un frein est lu, contre B ; l'apprentissage des λ (§47)
 estime λ_I comme une quatrième classe, avec le même a priori.
+
+## 49. Freins en ombre, et ce qu'ils peuvent apporter (0.7.73)
+
+**Décision d'auteur, le 2026-11-11**, le même jour que le §48, après vérification : les freins ne touchent presque
+jamais le chiffre posté. Les 13 événements calculés du registre du bot et les 12 du banc alphabet-chaine sont tous
+« SEUIL apparaît » (une question binaire se traduit presque toujours par un franchissement de seuil), et aucun frein ne
+vise SEUIL. Le défaut que décrit le §48 (C jamais sous B pour une apparition) reste donc entier là où il coûte au score.
+
+**Ce qui change.** Les freins sortent du p publié, conformément à la règle des ombres :
+- `calculer` ne les lit pas ; `sensibilite` publie l'ombre `avec_freins` (p et effet), comme `sans_plafond` ;
+- la simulation (`trajectoires`, l'arbre de la connaissance) les lit : c'est là qu'ils servent, à fermer des branches ;
+- le produit des λ reste borné à [1/10 ; 10] (sans effet tant que tout λ publié est ≥ 1).
+
+**Ce qui corrige le défaut pour le score**, déjà en ombre : C corrigé du biais (décalage appris, 0.5.0), le programme
+génératif qui lit les absences (§36 ; gagnant dans le calcul de puissance), les λ appris (§47).
+
+**Le test des freins.** Seul un jeu de séquences historiques codées peut dire si, CONTRAINTE présente, CROISSANCE
+apparaît moins souvent (les occasions d'éprouver une arête, `base-de-cas.md`). La base de cas réels n'en compte que
+quatre : l'étendre est la condition du test (feuille de route, « Arbre de la connaissance »). Le monde synthétique ne
+peut pas servir : il mesure la lecture, et son tirage ne lit pas les freins.
 

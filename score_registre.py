@@ -564,28 +564,26 @@ def marge_B(apparies: list) -> dict | None:
 
 
 def freins(resolues: list[dict], issues: dict) -> dict | None:
-    """0.10.41 (skill 0.7.72, §48) : questions où la lecture de C contient un FREIN (arête inhibitrice) vers la cible.
-    Gain de C sur B avec et sans frein lu : un frein juste fait gagner C sur les NON, qu'il perdait toujours."""
-    try:
-        m = ap._moteur()
-    except Exception:
-        return None
-    avec, sans = [], []
+    """0.10.42 (skill 0.7.73, §49) : les freins sont en ombre. Questions où C AVEC freins diffère du C publié (un frein
+    lu vers la cible) : gain de C avec freins sur C publié et sur B. Presque toujours vide : aucun frein ne vise SEUIL."""
+    paires = []
     for x in resolues:
         c, b = x["bras"]["C"], x["bras"]["B"]
-        ev = str(c.get("evenement") or "")
-        if c.get("p_C") is None or b.get("p") is None or not c.get("etat") or " apparait" not in ev:
+        om = c.get("ombre_causale") or (c.get("exploratoire") or {}).get("ombre_causale") or {}
+        af = (om.get("avec_freins") or {}).get("p")
+        pc = c.get("p_C") if c.get("p_C") is not None else (c.get("exploratoire") or {}).get("p_C")
+        if not isinstance(af, (int, float)) or not isinstance(pc, (int, float)) or abs(af - pc) < 1e-9:
             continue
-        try:
-            src, _ = m.sources_de(m.lire_etat(c["etat"]), m.cle_valide(ev.split(" ")[0]), (), (), ())
-        except (ValueError, KeyError, TypeError, SystemExit):
-            continue
-        g = gain_pair(ap.borner(c["p_C"]), ap.borner(b["p"]), issues[x["question_id"]])
-        (avec if any(s_.get("intensite") == "I" for s_ in src) else sans).append(g)
-    if not avec and not sans:
-        return None
-    moy = lambda v: round(sum(v) / len(v), 3) if v else None
-    return {"avec_frein": {"n": len(avec), "gain_C_sur_B": moy(avec)}, "sans_frein": {"n": len(sans), "gain_C_sur_B": moy(sans)}}
+        y = issues[x["question_id"]]
+        g_c = gain_pair(ap.borner(af), ap.borner(pc), y)
+        g_b = gain_pair(ap.borner(af), ap.borner(b["p"]), y) if b.get("p") is not None else None
+        paires.append((g_c, g_b))
+    if not paires:
+        return {"questions_avec_frein": 0, "lecture": "aucun frein lu vers une cible : rien à mesurer"}
+    gb = [g for _, g in paires if g is not None]
+    return {"questions_avec_frein": len(paires),
+            "gain_avec_freins_sur_C": round(sum(g for g, _ in paires) / len(paires), 3),
+            "gain_avec_freins_sur_B": round(sum(gb) / len(gb), 3) if gb else None}
 
 
 def negation_A(lignes: list[dict]) -> dict | None:

@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.41"
+VERSION_BOT = "0.10.42"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1473,7 +1473,8 @@ def ombre_causale(sortie: dict) -> dict | None:
                           if sb.get("generatif") else None),
             # 0.10.7 (skill 0.7.60, §37) : lecture probabiliste (traducteur → instructions → programme génératif)
             "lecture_probabiliste": sb.get("lecture_probabiliste"),
-            "sans_plafond": sb.get("sans_plafond")}   # 0.10.9 (§38) : le même calcul sans troncature   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
+            "sans_plafond": sb.get("sans_plafond"),
+            "avec_freins": sb.get("avec_freins")}   # 0.10.42 (skill 0.7.73, §49) : les freins, en ombre   # 0.10.9 (§38) : le même calcul sans troncature   # 0.10.5 (§35) : p pour α fixés d'avance ; α = 0,5 est la comparaison principale
 
 
 async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, recherche_reelle: bool,
