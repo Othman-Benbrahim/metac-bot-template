@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.19"
+VERSION_BOT = "0.10.20"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -772,14 +772,16 @@ voisine : dis l'écart dans "ecart_critere"). Le seuil se prend dans le critère
 besoin, en le disant), jamais ailleurs. Modes : "evenement" (au moins un
 événement dans la fenêtre, éventuellement filtré par le seuil), "atteint" (au moins une valeur remplit la condition),
 "franchit" (la condition n'était pas remplie au début de la fenêtre et l'est ensuite). "agregation" : "mois" ou
-"annee" pour sommer d'abord les valeurs (morts par mois, par exemple), sinon null.
+"annee" pour sommer d'abord les valeurs (morts par mois, par exemple), sinon null. "bornes" : [0, 100] si la
+grandeur est un pourcentage ou une part (taux de chômage, part de voix, taux d'approbation…), [0, 1] pour une
+proportion, sinon null.
 
 Rends UNIQUEMENT un objet JSON :
 {{
  "appels": [{{"source": "nom du catalogue", "params": {{...}}, "pourquoi": "ce que l'appel mesure ici"}}],
  "compte": null ou {{"appel": indice (0 pour le premier appel), "mode": "evenement|atteint|franchit",
      "seuil": nombre ou null, "sens": ">=|>|<=|<", "agregation": null | "mois" | "annee",
-     "correspondance": "exacte|proche",
+     "bornes": null | [min, max], "correspondance": "exacte|proche",
      "classe_de_reference": "les fenêtres comptées, sans nom de carte",
      "ecart_critere": "en quoi ce compte diffère du critère de résolution, ou « identique : … »",
      "resolution": "ce qui fera dire OUI, en une phrase",
@@ -830,8 +832,12 @@ async def puits(q: Question, plan: dict, llm: Llm, aujourdhui: str, jours: int,
         else:
             seuil = spec.get("seuil")
             seuil = float(seuil) if isinstance(seuil, (int, float)) and not isinstance(seuil, bool) else None
+            bornes = spec.get("bornes")       # 0.10.19 : série bornée (pourcentage), déclarée par le modèle
+            bornes = (tuple(float(x) for x in bornes) if isinstance(bornes, (list, tuple)) and len(bornes) == 2
+                      and all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in bornes) else None)
             res = apz.compter(r, jours, str(spec.get("mode") or "atteint"), seuil, str(spec.get("sens") or ">="),
-                              spec.get("agregation"), fin=avant, nature=apz.CATALOGUE[src].get("nature"))
+                              spec.get("agregation"), fin=avant, nature=apz.CATALOGUE[src].get("nature"),
+                              bornes=bornes)
             trace["compte"] = {"spec": spec, **res}
             if res.get("frequence") is not None:
                 a0, a1 = res["periode"][:4], res["periode"][11:15]
@@ -1164,6 +1170,27 @@ async def vues_exterieures(q: Question, plan: dict, refs: list[dict], hist: list
     for v in valides:
         v.pop("_ancree", None)
     return choisie, suivi
+
+
+def methode_B(c: dict) -> str:
+    """0.10.19 : comment B a été obtenu : compte des puits (et sa méthode), vue fixée par le banc, ou vue du modèle."""
+    vue = c.get("vue") or {}
+    if (c.get("vues") or {}).get("fixee"):
+        return "fixee"
+    if vue.get("compte_calcule"):
+        return "compte_" + str((((c.get("puits") or {}).get("compte")) or {}).get("methode") or "fenetres")
+    return "vue_modele" if vue else "aucune"
+
+
+def discordance(p_B: float | None, p_A: float | None, methode: str | None = None) -> dict | None:
+    """0.10.19 : alarme de discordance. Le bras A (modèle seul) sert de témoin : si B et A diffèrent de plus d'un
+    facteur 4 sur les cotes, la question est marquée « B discordant ». Ne change rien à ce qui est posté."""
+    if p_B is None or p_A is None:
+        return None
+    lo = lambda p: math.log(min(0.999, max(0.001, p)) / (1 - min(0.999, max(0.001, p))))
+    ecart = lo(p_B) - lo(p_A)
+    return {"rapport_cotes": round(math.exp(abs(ecart)), 2), "sens": "B_plus_bas" if ecart < 0 else "B_plus_haut",
+            "alarme": abs(ecart) > math.log(4), "methode_B": methode}
 
 
 def repetition_A(ps: list[float]) -> dict:
@@ -1764,6 +1791,8 @@ async def explorer_derivee(derivee: dict, ident: str, url: str, contexte: str, p
     sortie = {"derivee": derivee, "statut": ex.get("statut") or c.get("statut"),
               "motif": (ex.get("motif") or c.get("motif") or "")[:300],
               "derniere_erreur": (str(c.get("derniere_erreur") or "")[:300] or None), "tentatives": c.get("tentatives"),
+              # 0.10.19 : seuil = médiane du modèle seul, donc p_A = 0,5 par construction ; un B loin de 0,5 est suspect
+              "methode_B": methode_B(c), "discordance_A": discordance(c.get("p_B"), derivee.get("p_A"), methode_B(c)),
               "preselection": c.get("preselection"),
               "strate": ((c.get("plan") or {}).get("evenement") or {}).get("strate"),
               "p_B": c.get("p_B"), "p_C": p_c, "p_C_corrige": corriger_C(p_c, correction_retro()),
@@ -1846,6 +1875,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "compte_calcule": bool(vue.get("compte_calcule")), "puits": c.get("puits"),
                             "p_compte": c.get("p_compte"), "correspondance": c.get("correspondance"),
                             "p_modele": (c.get("vues") or {}).get("p_modele"),
+                            "methode": methode_B(c), "discordance_A": discordance(c.get("p_B"), p_A, methode_B(c)),
                             "p_sans_ancre": (c.get("vues") or {}).get("p_sans_ancre")},
                       "C": {**{k: c.get(k) for k in ("statut", "p_C", "etat", "evenement", "semantique", "drapeaux",
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",

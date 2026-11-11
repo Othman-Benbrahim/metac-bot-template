@@ -35,7 +35,7 @@ class TestsCompte(unittest.TestCase):
         # niveaux : écart au seuil depuis la DERNIÈRE valeur, bootstrap des pas observés
         niv = [{"date": f"20{10 + i // 12:02d}-{i % 12 + 1:02d}-01", "valeur": float(i % 5)} for i in range(120)]
         r = apz.compter(releve(niv), 90, "atteint", 100.0, ">=", fin=date(2020, 1, 1), nature="niveau")
-        self.assertEqual(r["methode"], "bootstrap_pas")
+        self.assertIn(r["methode"], ("bootstrap_pas", "ar1", "ar1_melange"))   # 0.10.20 : dents de scie = retour à la moyenne
         self.assertLess(r["frequence"], 0.01)                            # seuil hors d'atteinte en 90 jours
 
     def test_atteint_et_franchit(self):

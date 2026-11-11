@@ -66,82 +66,137 @@ def _taux(pts: list[dict], debut: date, fin: date, W: int, seuil, sens: str) -> 
 
 
 def croissance(v: list[tuple]) -> bool:
-    """Série strictement positive, à tendance nette (au moins trois pas sur quatre dans le même sens) et dont les pas
-    grandissent avec le niveau (seconde moitié des pas absolus au moins 1,5 fois la première) : croissance relative."""
+    """Croissance RELATIVE : série strictement positive, à dérive nette (t de la moyenne des pas en log au-delà de 2)
+    et dont les pas sont plus homogènes en log qu'en valeur absolue, ou à dérive relative très nette (t ≥ 5)."""
     vals = [x for _, x in v]
     if len(vals) < 6 or min(vals) <= 0:
         return False
-    incr = [vals[i + 1] - vals[i] for i in range(len(vals) - 1)]
-    part_hausse = sum(1 for x in incr if x > 0) / len(incr)
-    if 0.25 < part_hausse < 0.75:
+    lg = [math.log(vals[i + 1] / vals[i]) for i in range(len(vals) - 1)]
+    n = len(lg)
+    moy = sum(lg) / n
+    sd = math.sqrt(sum((x - moy) ** 2 for x in lg) / max(1, n - 1))
+    if sd == 0 or abs(moy) / (sd / math.sqrt(n)) < 2:
         return False
-    moitie = len(incr) // 2
-    a = sum(abs(x) for x in incr[:moitie]) / max(1, moitie)
-    b = sum(abs(x) for x in incr[moitie:]) / max(1, len(incr) - moitie)
-    return a > 0 and b / a >= 1.5
+    t = abs(moy) / (sd / math.sqrt(n))
+    li = [vals[i + 1] - vals[i] for i in range(n)]
+    h = n // 2
+
+    def rapport(xs):
+        a_, b_ = sum(abs(x) for x in xs[:h]) / max(1, h), sum(abs(x) for x in xs[h:]) / max(1, n - h)
+        return abs(math.log(b_ / a_)) if a_ > 0 and b_ > 0 else float("inf")
+    # pas plus homogènes en log qu'en valeur entre les deux moitiés de l'historique ; ou dérive relative très nette
+    # (t ≥ 5), où rejouer des pas absolus anciens sous-estime toujours l'avenir
+    return rapport(lg) < rapport(li) or t >= 5
 
 
-def _niveaux(pts: list[dict], W: int, seuil: float, sens: str) -> dict | None:
-    """Série de NIVEAUX : le seuil se juge par rapport à la DERNIÈRE valeur. On compte, sur toutes les fenêtres
-    glissantes de W jours de l'historique, la part où la série s'est déplacée d'au moins l'écart actuel (dans le sens
-    de la condition). Lissage (k + 0,5) / (n + 1)."""
+def _robuste(xs: list[float]) -> tuple[list[int], int]:
+    """Indices gardés après retrait des chocs ponctuels : pas à plus de 6 écarts robustes (MAD) de la médiane."""
+    if len(xs) < 8:
+        return list(range(len(xs))), 0
+    med = sorted(xs)[len(xs) // 2]
+    mad = 1.4826 * sorted(abs(x - med) for x in xs)[len(xs) // 2]
+    if mad <= 0:
+        return list(range(len(xs))), 0
+    garde = [i for i, x in enumerate(xs) if abs(x - med) <= 6 * mad]
+    return (garde, len(xs) - len(garde)) if garde else (list(range(len(xs))), 0)
+
+
+def _ar1(y: list[float], garde: list[int]) -> tuple | None:
+    """Régression Δy(t) = a + b·y(t−1) sur les pas gardés. Rend (a, b, résidus, t de b) si t < −2,5 (au moins 24
+    pas), sinon None. Entre −2,5 et −3,5 (zone où une marche aléatoire peut tromper, Dickey-Fuller), le compte MÉLANGE
+    les deux modèles ; sous −3,5, il retient l'AR(1)."""
+    xs = [y[i] for i in garde]
+    ds = [y[i + 1] - y[i] for i in garde]
+    n = len(xs)
+    if n < 24:
+        return None
+    mx, md = sum(xs) / n, sum(ds) / n
+    sxx = sum((x - mx) ** 2 for x in xs)
+    if sxx <= 0:
+        return None
+    b = sum((x - mx) * (d - md) for x, d in zip(xs, ds)) / sxx
+    a = md - b * mx
+    res = [d - a - b * x for x, d in zip(xs, ds)]
+    s2 = sum(r * r for r in res) / max(1, n - 2)
+    t = b / math.sqrt(s2 / sxx) if s2 > 0 else 0.0
+    return (a, b, res, t) if t < -2.5 and -1 < b < 0 else None
+
+
+def _niveaux(pts: list[dict], W: int, seuil: float, sens: str, bornes: tuple | None = None) -> dict | None:
+    """Série de NIVEAUX : le seuil se juge par rapport à la DERNIÈRE valeur ; chemins futurs simulés à partir des pas
+    réellement observés (bootstrap lissé). 0.10.19, quatre pièges traités, chacun mesuré par le juge 2 :
+      - croissance relative (dépenses, PIB, prix…) : pas rejoués en log ;
+      - série bornée (pourcentage) : pas rejoués sur l'échelle logit, si les bornes sont déclarées ;
+      - choc ponctuel : pas extrêmes (plus de 6 MAD) retirés ;
+      - retour vers la moyenne (taux, chômage) : processus AR(1) estimé, résidus rejoués."""
     v = [(date.fromisoformat(p["date"]), p["valeur"]) for p in pts if isinstance(p.get("valeur"), (int, float))]
     if len(v) < 6:
         return None
     dernier = v[-1][1]
     haut = sens in (">=", ">")
-    ecart = (seuil - dernier) if haut else (dernier - seuil)
-    if ecart <= 0:
+    if (seuil - dernier if haut else dernier - seuil) <= 0:
         n = len(v)
         return {"frequence": 1 - 0.5 / (n + 1), "k": n, "n": n, "methode": "deja_rempli"}
-    # bootstrap des variations observées : chemins futurs tirés parmi les pas réels de la série (sans forme supposée)
+    N = 2000
+    espace = "valeur"
+    if bornes and bornes[0] < bornes[1]:
+        lo, hi = float(bornes[0]), float(bornes[1])
+        if (haut and seuil >= hi) or (not haut and seuil <= lo):
+            return {"frequence": 0.5 / (N + 1), "k": 0, "n": N, "methode": "hors_bornes", "bornes": [lo, hi]}
+        eps = 1e-4
+
+        def f(x):
+            u = min(1 - eps, max(eps, (x - lo) / (hi - lo)))
+            return math.log(u / (1 - u))
+        espace = "logit"
+    elif croissance(v):
+        f = math.log
+        espace = "log"
+    else:
+        def f(x):
+            return x
+    y = [f(x) for _, x in v]
+    cible = f(seuil)
     import random as _r
     ecarts_j = sorted((v[i + 1][0] - v[i][0]).days for i in range(len(v) - 1))
     pas_j = max(1, ecarts_j[len(ecarts_j) // 2])
     m = max(1, round(W / pas_j))
-    incr = [v[i + 1][1] - v[i][1] for i in range(len(v) - 1)]
-    # 0.10.19 : série en CROISSANCE (dépenses publiques, PIB, dette, prix, calcul…) : les pas absolus anciens sont
-    # bien plus petits que les récents, et les rejouer sous-estime l'avenir (cas FYONET du 2026-11-11 : seuil jamais
-    # atteint, taux de base près de 0,1 alors que la tendance l'atteint). On rejoue alors les pas RELATIFS (log), et
-    # l'écart à franchir devient log(seuil / dernière valeur).
-    if croissance(v):
-        incr = [math.log(v[i + 1][1] / v[i][1]) for i in range(len(v) - 1)]
-        ecart = math.log(seuil / dernier) if haut else math.log(dernier / seuil)
-        multiplicatif = True
-    else:
-        multiplicatif = False
-    if not haut:
-        incr = [-x for x in incr]
+    incr = [y[i + 1] - y[i] for i in range(len(y) - 1)]
+    garde, exclus = _robuste(incr)
+    ar = _ar1(y, garde) if espace != "log" else None
     rnd = _r.Random(len(v) * 7919 + m)
-    N = 2000
-    hits = 0
-    for _ in range(N):
-        y = 0.0
-        for _ in range(m):
-            y += incr[rnd.randrange(len(incr))]
-            if y >= ecart:
-                hits += 1
-                break
-    return {"frequence": (hits + 0.5) / (N + 1), "k": hits, "n": N,
-            "methode": "bootstrap_pas_relatifs" if multiplicatif else "bootstrap_pas", "pas_jours": pas_j, "pas": m}
-    k = n = 0
-    for i, (d0, x0) in enumerate(v):
-        fin_f = d0 + timedelta(days=W)
-        if fin_f > v[-1][0]:
-            break
-        suite = [x for d, x in v[i + 1:] if d <= fin_f]
-        if not suite:
-            continue
-        mouv = (max(suite) - x0) if haut else (x0 - min(suite))
-        n += 1
-        k += mouv >= ecart
-    if n < 5:
-        return None
-    return {"frequence": (k + 0.5) / (n + 1), "k": k, "n": n, "methode": "ecart_glissant"}
+
+    def simuler(tirage: list[float], a_b: tuple | None) -> int:
+        mu_i = sum(tirage) / len(tirage)
+        sd_i = math.sqrt(sum((x - mu_i) ** 2 for x in tirage) / max(1, len(tirage) - 1))
+        h = 1.06 * sd_i * len(tirage) ** -0.2        # bootstrap LISSÉ : dépasse le plus grand pas observé
+        hits = 0
+        for _ in range(N):
+            z = y[-1]
+            for _ in range(m):
+                e = tirage[rnd.randrange(len(tirage))] + (rnd.gauss(0, h) if h else 0.0)
+                z = z + a_b[0] + a_b[1] * z + e if a_b else z + e
+                if (z >= cible) if haut else (z <= cible):
+                    hits += 1
+                    break
+        return hits
+    poids_ar = 0.0 if not ar else min(1.0, max(0.0, (-ar[3] - 2.5) / 1.0))
+    hits_rw = simuler([incr[i] for i in garde], None) if poids_ar < 1 else 0
+    hits_ar = simuler(ar[2], ar[:2]) if ar else 0
+    hits = round(poids_ar * hits_ar + (1 - poids_ar) * hits_rw)
+    ar = ar if poids_ar > 0 else None
+    methode = ("ar1" if poids_ar >= 1 else "ar1_melange") if ar else {"valeur": "bootstrap_pas", "log": "bootstrap_pas_relatifs",
+                                 "logit": "bootstrap_pas_logit"}[espace]
+    out = {"frequence": (hits + 0.5) / (N + 1), "k": hits, "n": N, "methode": methode, "espace": espace,
+           "pas_jours": pas_j, "pas": m, "pas_exclus": exclus}
+    if ar:
+        out.update(phi=round(1 + ar[1], 4), poids_ar1=round(poids_ar, 2))
+    return out
 
 
 def compter(releve: dict, fenetre_jours: int, mode: str = "atteint", seuil: float | None = None, sens: str = ">=",
-            agregation: str | None = None, fin: date | None = None, nature: str | None = None) -> dict:
+            agregation: str | None = None, fin: date | None = None, nature: str | None = None,
+            bornes: tuple | list | None = None) -> dict:
     """Fenêtres DISJOINTES de la durée de la question, comptées à rebours depuis `fin` jusqu'au début du relevé.
 
     mode « evenement » : la fenêtre compte si au moins un point (filtré par le seuil s'il y en a un) y tombe ;
@@ -169,7 +224,7 @@ def compter(releve: dict, fenetre_jours: int, mode: str = "atteint", seuil: floa
             return dict(r, fenetre_jours=int(fenetre_jours), mode=mode, seuil=seuil, sens=sens, agregation=agregation,
                         periode=f"{debut.isoformat()}/{fin.isoformat()}", dernier_point=pts[-1]["date"])
     if mode in ("atteint", "franchit") and nature == "niveau":
-        r = _niveaux(pts, int(fenetre_jours), seuil, sens)
+        r = _niveaux(pts, int(fenetre_jours), seuil, sens, tuple(bornes) if bornes else None)
         if r is not None:
             return dict(r, fenetre_jours=int(fenetre_jours), mode=mode, seuil=seuil, sens=sens, agregation=agregation,
                         periode=f"{debut.isoformat()}/{fin.isoformat()}", dernier_point=pts[-1]["date"])
