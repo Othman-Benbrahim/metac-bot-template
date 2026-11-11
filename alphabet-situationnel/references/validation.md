@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.69
+> Version : 0.7.70
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2590,4 +2590,28 @@ deviennent des conditions complètes. Le monde synthétique dira si les fausses 
 sensibilité s'effondre.
 
 **Ce qui ne change pas.** Le p publié, la matrice, les définitions et structures mathématiques des cartes.
+
+## 47. Apprendre les λ sur les données (0.7.70)
+
+**Décision d'auteur, le 2026-11-11**, après le calcul de puissance du test C contre B (bot `puissance_lecteur.py`).
+Dans le propre modèle du skill (strate 7, 1 000 questions simulées), même un C égal à la vraie probabilité ne gagnerait
+que 1,3 point de score par question sur B (2,1 sur les questions où une carte lue est reliée à la cible) : les
+structures n'y déplacent la probabilité que de 5 points en moyenne. Le premier goulot n'est pas le lecteur, mais la
+force que le modèle prête aux cartes, **stipulée** (λ_F 3 ; λ_M 1,8 ; λ_f 1,2 ; π 0,1).
+
+**La décision.** Les λ seront appris sur les issues, au lieu d'être seulement posés :
+- modèle : celui du calcul publié sans plafond, logit p = logit f + Σ n_classe · ln λ_classe, où n_classe compte les
+  cartes lues ayant une arête de cette classe vers la cible ;
+- estimation : maximum a posteriori, a priori normal sur ln λ centré sur la valeur stipulée (écart-type 0,5) ; avec
+  peu de questions, l'estimation reste près du stipulé ;
+- données : questions résolues du bot Metaculus et du banc alphabet-chaine (résolues en 24 heures) ;
+- contrôle : perte log hors échantillon (validation croisée en 5 blocs), stipulés contre appris.
+
+**En ombre d'abord.** Le bot écrit chaque semaine `registre/lambda-appris-<date>.json`. Les λ du skill ne changent que
+par une décision datée, quand l'estimation repose sur au moins 50 questions et bat les stipulés hors échantillon.
+
+**Ce qui reste à décider.** Faire de l'ombre générative (§36) le C publié : l'auteur attend des tests (le calcul de
+puissance la donne gagnante, le C publié perdant même avec un lecteur parfait, faute d'utiliser les absences).
+
+**Ce qui ne change pas.** Le p publié, la matrice, les λ en vigueur.
 

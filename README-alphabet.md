@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.29 · skill alphabet-situationnel 0.7.69 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.30 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.30** : skill 0.7.70 (§47, décision d'auteur) : **les λ s'apprennent sur les issues**, en ombre
+  (`apprentissage_lambda.py`, chaque lundi après le score, `registre/lambda-appris-<date>.json`). Régression logistique
+  à décalage (logit p = logit f + Σ n_classe · ln λ_classe), maximum a posteriori avec un a priori centré sur les λ
+  stipulés (écart-type 0,5 en ln λ), sur les questions résolues du bot et du banc alphabet-chaine ; perte log hors
+  échantillon comparée. Adoption par décision datée, à 50 questions au moins et gain hors échantillon.
 - **0.10.29** : **puissance du test C contre B selon le lecteur** (`puissance_lecteur.py`, sans appel de modèle,
   `registre/puissance-lecteur-<date>.json`), suggestion d'une relecture par Mistral. Monde = programme génératif du
   skill (strate 7), 1 000 questions. Résultat du 2026-11-11 : même si C valait la vraie probabilité du modèle, le gain
