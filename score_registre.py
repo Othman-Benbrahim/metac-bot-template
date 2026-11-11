@@ -478,6 +478,28 @@ def discordances_B(lignes: list[dict], issues: dict) -> dict | None:
             "lecture": "B_moins_A > 0 avec alarme : quand B s'écarte fortement de A, c'est B qui se trompe"}
 
 
+def couts(reg: Path) -> dict | None:
+    """0.10.33 : coûts estimés par modèle principal et par jour (registre/couts.jsonl)."""
+    f = reg / "couts.jsonl"
+    if not f.is_file():
+        return None
+    par_m: dict[str, list] = {}
+    par_j: dict[str, float] = {}
+    for brut in f.read_text(encoding="utf-8").splitlines():
+        try:
+            x = json.loads(brut)
+        except json.JSONDecodeError:
+            continue
+        c = float(x.get("cout_usd") or 0)
+        m = str(((x.get("modeles") or {}).get("principal")) or "non_renseigne")
+        par_m.setdefault(m, []).append(c)
+        par_j[str(x.get("date"))] = par_j.get(str(x.get("date")), 0.0) + c
+    return {"total_usd": round(sum(sum(v) for v in par_m.values()), 2),
+            "par_modele": {m: {"questions": len(v), "total_usd": round(sum(v), 2), "moyenne_usd": round(sum(v) / len(v), 3)}
+                           for m, v in sorted(par_m.items())},
+            "par_jour": {j: round(c, 2) for j, c in sorted(par_j.items())}}
+
+
 def preselection_ombre(lignes: list[dict]) -> dict | None:
     """0.10.15 : recouvrement entre les k cartes que le plongement multilingue range en tête et les cartes retenues
     par le planificateur ; rang moyen de la carte de l'événement. Descriptif, sans issue."""
@@ -940,6 +962,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "diversite_lectures": diversite_lectures(publiees),                 # 0.10.12
             "sorties_illisibles": sorties_illisibles(publiees),                 # 0.10.14
             "preselection_ombre": preselection_ombre(publiees),                 # 0.10.15
+            "couts": couts(registre),                                           # 0.10.33
             "B_par_methode": b_par_methode(resolues, issues),                   # 0.10.19
             "discordances_B": discordances_B(publiees, issues),                 # 0.10.19
             "C_selon_surprise": c_selon_surprise(surprises),                    # 0.10.12 (§40)

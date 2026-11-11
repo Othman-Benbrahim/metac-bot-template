@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.32 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.33 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.33** : **coûts et budget** (bot Metaculus seulement). Chaque question traitée laisse une ligne dans
+  `registre/couts.jsonl` (coût estimé par litellm, durée, modèles) ; le passage affiche et note son coût total ; le score
+  donne `couts` par modèle et par jour. Budget facultatif : `ALPHABET_BUDGET_USD` depuis `ALPHABET_BUDGET_DEPUIS`
+  (variables du dépôt) ; un passage est refusé si le budget est épuisé, et un plafond dur arrête les nouveaux appels en
+  cours de passage. Les moteurs de recherche payants hors litellm et les autres workflows (monde synthétique) ne sont
+  pas comptés.
 - **0.10.32** : décision d'auteur du 2026-11-11 (adoptées sans passage par le juge, à mesurer sur les cas réels),
   d'après un manuel de séries temporelles. Le compte des puits tient compte (1) de la **saisonnalité** des séries
   mensuelles, trimestrielles ou hebdomadaires (composante saisonnière des pas, retenue si R² ≥ 0,2 et F ≥ 2,5, cherchée
