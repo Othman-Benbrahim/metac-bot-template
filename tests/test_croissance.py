@@ -46,6 +46,31 @@ class Tests(unittest.TestCase):
                        nature="niveau")
         self.assertTrue(r["methode"].startswith("ar1"))
 
+    def test_saison_et_volatilite(self):
+        # 0.10.32 : série mensuelle saisonnière (pic en janvier) ; dernier point en octobre ; seuil atteignable
+        # seulement au pic : avec la saison, la probabilité à 90 jours (jusqu'en janvier) dépasse celle à 30 jours.
+        rnd = random.Random(2)
+        pts, x = [], 100.0
+        saison = [8, -2, -2, -1, -1, -1, -1, -1, -1, -1, 0, 3]          # pas moyens par mois (janvier = indice 0)
+        for an in range(2014, 2026):
+            for mo in range(1, 13):
+                if an == 2025 and mo > 10:
+                    break
+                x += saison[mo - 1] + rnd.gauss(0, 0.5)
+                pts.append({"date": f"{an}-{mo:02d}-15", "valeur": x})
+        rel = {"points": pts, "debut": "2014-01-01", "date_limite": "2025-10-31"}
+        r30 = ac.compter(rel, 30, "atteint", x + 6, ">=", nature="niveau")
+        r90 = ac.compter(rel, 92, "atteint", x + 6, ">=", nature="niveau")
+        self.assertIn("+saison", r90["methode"])
+        self.assertLess(r30["frequence"], 0.1)
+        self.assertGreater(r90["frequence"], 0.5)
+        # volatilité groupée : une période agitée récente élargit les mouvements
+        calme = [rnd.gauss(0, 0.2) for _ in range(150)]
+        agite = [rnd.gauss(0, 2.0) for _ in range(30)]
+        self.assertIsNotNone(ac._volatilite(calme + agite))
+        self.assertGreater(ac._volatilite(calme + agite), 1.5)
+        self.assertIsNone(ac._volatilite([rnd.gauss(0, 1) for _ in range(200)]))
+
     def test_discordance(self):
         d = ap.discordance(0.113, 0.5, "vue_modele")
         self.assertTrue(d["alarme"])

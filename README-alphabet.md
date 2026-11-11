@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.31 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.32 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.32** : décision d'auteur du 2026-11-11 (adoptées sans passage par le juge, à mesurer sur les cas réels),
+  d'après un manuel de séries temporelles. Le compte des puits tient compte (1) de la **saisonnalité** des séries
+  mensuelles, trimestrielles ou hebdomadaires (composante saisonnière des pas, retenue si R² ≥ 0,2 et F ≥ 2,5, cherchée
+  avant le retrait des chocs ; la saison propre à la fenêtre de la question est remise dans les chemins simulés) et
+  (2) de la **volatilité groupée** (si les carrés des résidus sont autocorrélés, les pas rejoués sont mis à l'échelle de
+  la volatilité récente, qui revient vers la moyenne). Les deux entrent dans le nom de la méthode (« +saison »,
+  « +volatilite ») : `B_par_methode` les sépare au score. Juges du banc du compte inchangés (8,15 et 11,14 millinats).
 - **0.10.31** : monde synthétique, protocole 5. Chaque dépêche a son média inventé imposé ; pour la moitié des
   cartes présentes, le fait est rapporté par deux médias distincts à deux dates : l'ancrage F (deux sources
   indépendantes) devient possible, et la mesure vérifiée donne la sensibilité séparément pour les faits corroborés et
