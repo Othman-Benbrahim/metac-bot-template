@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.43"
+VERSION_BOT = "0.10.44"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -768,9 +768,12 @@ def evenement_depuis(plan: dict, vue: dict) -> tuple[dict, str]:
     if ve.get("classe_alternative") is None:
         ve["motif_sans_alternative"] = (vue.get("motif_sans_alternative")
                                         or "non fourni par le modèle (champ vide ; inscrit par le bot, 0.2.0)")
-    return {"evenement": evenement, "semantique": plan["semantique"], "temporalite": temporalite_de(plan),
-            "resolution": vue.get("resolution") or "", "source_resolution": vue.get("source_resolution") or {},
-            "vue_exterieure": ve}, evenement
+    evt = {"evenement": evenement, "semantique": plan["semantique"], "temporalite": temporalite_de(plan),
+           "resolution": vue.get("resolution") or "", "source_resolution": vue.get("source_resolution") or {},
+           "vue_exterieure": ve}
+    if evt["temporalite"] == "programmee" and isinstance(plan.get("programmation"), dict):
+        evt["programmation"] = plan["programmation"]   # 0.10.44 : transmise si le plan la donne (sinon refus, B11)
+    return evt, evenement
 
 
 def donnees_puits(plan: dict) -> str:
@@ -934,7 +937,94 @@ def retirer_faits_futurs(dossier: dict, textes: str, aujourdhui: str, jours: int
     return retires
 
 
+def _sans_accents(x: str) -> str:
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", x) if unicodedata.category(c) != "Mn")
+
+
+def code_carte(x) -> str:
+    """0.10.44 : « POL », « POLARITÉ », « polarite », « POL@6 » → « POL » (le lecteur écrit parfois le nom entier ou
+    colle la strate au code ; banc ForecastBench du 2026-11-11 : « carte inconnue : POL@6 »)."""
+    t = str(x or "").strip().split("@")[0].strip()
+    noms = noms_cartes()
+    if t in noms:
+        return t
+    cle = re.sub(r"[^A-Z]", "", _sans_accents(t).upper())
+    for abr, nom in noms.items():
+        if cle in (abr, re.sub(r"[^A-Z]", "", _sans_accents(nom).upper())):
+            return abr
+    return t
+
+
+def entier_strate(v) -> int:
+    """0.10.44 : « 13 », 13, « 13_portee_substantielle », « strate 6 » → l'entier ; sinon ValueError explicite."""
+    m = re.search(r"\d+", str(v if v is not None else ""))
+    if not m:
+        raise ValueError(f"strate illisible : {v!r} (un entier de 1 à 13 est attendu)")
+    return int(m.group(0))
+
+
+def cle_normale(x) -> str:
+    """« POLARITÉ@13_portee » → « POL@13 » ; une clé sans strate garde seulement le code."""
+    t = str(x or "")
+    if "@" not in t:
+        return code_carte(t)
+    c, reste = t.split("@", 1)
+    try:
+        return f"{code_carte(c)}@{entier_strate(reste)}"
+    except ValueError:
+        return t
+
+
+def normaliser_plan(plan: dict) -> dict:
+    ev = plan.get("evenement")
+    if isinstance(ev, dict):
+        brut = str(ev.get("carte") or "")
+        if "@" in brut and not ev.get("strate"):
+            ev["strate"] = brut.split("@", 1)[1]
+        ev["carte"] = code_carte(brut)
+        try:
+            ev["strate"] = entier_strate(ev.get("strate"))
+        except ValueError:
+            pass
+    if isinstance(plan.get("candidats"), list):
+        plan["candidats"] = [cle_normale(c) for c in plan["candidats"]]
+    return plan
+
+
+def normaliser_lecture(lecture: dict) -> dict:
+    """0.10.44 : les champs du lecteur ramenés à la forme attendue par le moteur, AVANT validation : codes de carte,
+    strates entières, clés « CARTE@n ». Le sens ne change pas : seule l'écriture est corrigée (les erreurs Python
+    « invalid literal for int() » et « not enough values to unpack » du banc ForecastBench venaient de là)."""
+    for k in ("candidats", "contre_candidate"):
+        v = lecture.get(k)
+        if isinstance(v, list):
+            lecture[k] = [cle_normale(x) if isinstance(x, str) else x for x in v]
+        elif isinstance(v, str):
+            lecture[k] = cle_normale(v)
+    for m in lecture.get("mots") or []:
+        if isinstance(m, dict):
+            brut = str(m.get("carte") or "")
+            if "@" in brut and not m.get("strate"):
+                m["strate"] = brut.split("@", 1)[1]
+            m["carte"] = code_carte(brut)
+            try:
+                m["strate"] = entier_strate(m.get("strate"))
+            except ValueError:
+                pass
+    rc = lecture.get("rejets_classes")
+    if isinstance(rc, dict):
+        lecture["rejets_classes"] = {cle_normale(k): v for k, v in rc.items()}
+    for li in lecture.get("liaisons") or []:
+        if isinstance(li, dict):
+            for k, v in list(li.items()):
+                if isinstance(v, str) and "@" in v and len(v) < 60:
+                    li[k] = cle_normale(v)
+    return lecture
+
+
 def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujourdhui: str, jours: int) -> dict:
+    normaliser_lecture(lecture)
     d = {k: lecture.get(k, []) for k in ("candidats", "contre_candidate", "mots", "liaisons", "questions")}
     d["rejets"], d["_categories_rejet"] = rejets_moteur(lecture)
     d["_details_rejet"] = details_rejets(lecture)
@@ -944,10 +1034,59 @@ def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujou
                         "executee": r["executee"], **({"date_execution": aujourdhui} if r["executee"] else {})}
                        for r in executees]
     d["evenements"] = [evt]
+    d["_reparations"] = reparer_dossier(d, plan)
     return d
 
 
+def reparer_dossier(d: dict, plan: dict) -> list[str]:
+    """0.10.44 : réparations de FORME, faites par le code et tracées (banc ForecastBench du 2026-11-11 : 8 lectures
+    exploratoires sur 14 refusées pour la forme, non pour le fond). Rien n'est inventé : une liaison illisible est
+    retirée (les liaisons sont facultatives) ; une carte à la fois ancrée et rejetée garde son ancrage (le fait cité
+    l'emporte sur le rejet) ; une strate de l'état qui n'a pas ses 2 candidates reçoit celles du plan, rejet « non
+    cherchée » (effort 0 : le modèle génératif n'en apprend rien)."""
+    notes: list[str] = []
+    fm = {f"{m.get('carte')}@{m.get('strate')}" for m in d.get("mots") or [] if isinstance(m, dict)}
+    # 1. liaisons : « A@s type B@s » ; un objet {de, type, vers} est réécrit, le reste retiré
+    garde = []
+    for li in d.get("liaisons") or []:
+        if isinstance(li, dict):
+            a, t, b = (li.get(k) for k in ("de", "type", "vers"))
+            if not all(isinstance(x, str) and x.strip() for x in (a, t, b)):
+                a, t, b = (li.get(k) for k in ("a", "type", "b"))
+            if all(isinstance(x, str) and x.strip() for x in (a, t, b)):
+                li = f"{cle_normale(a)} {t.strip()} {cle_normale(b)}"
+        if isinstance(li, str) and len(li.split()) == 3:
+            garde.append(li)
+        else:
+            notes.append(f"liaison illisible retirée : {str(li)[:80]}")
+    d["liaisons"] = garde
+    # 2. une carte ancrée n'est pas rejetée
+    for k in [k for k in d.get("rejets") or {} if cle_normale(k) in fm]:
+        d["rejets"].pop(k, None)
+        (d.get("_categories_rejet") or {}).pop(k, None)
+        notes.append(f"rejet retiré pour {k} : la carte est ancrée dans l'état")
+    # 3. candidates : chaque mot en est une ; 2 au moins par strate de l'état, prises dans le plan
+    cand = [cle_normale(c) for c in d.get("candidats") or [] if isinstance(c, str)]
+    for k in sorted(fm - set(cand)):
+        cand.append(k)
+        notes.append(f"candidate ajoutée : {k} (mot de l'état)")
+    for st in sorted({k.split("@")[1] for k in fm}):
+        dans = [c for c in cand if c.endswith(f"@{st}")]
+        for c in [cle_normale(x) for x in plan.get("candidats") or [] if isinstance(x, str)]:
+            if len(dans) >= 2:
+                break
+            if c.endswith(f"@{st}") and c not in cand:
+                cand.append(c)
+                dans.append(c)
+                d.setdefault("rejets", {})[c] = "[non_cherchee] candidate du plan, non examinée par le lecteur (ajoutée par le bot)"
+                d.setdefault("_categories_rejet", {})[c] = "non_cherchee"
+                notes.append(f"candidate ajoutée : {c} (plan), rejet « non cherchée »")
+    d["candidats"] = cand
+    return notes
+
+
 def controle_plan(plan: dict) -> str | None:
+    normaliser_plan(plan)
     ev = plan.get("evenement")
     if not ev:
         return plan.get("pourquoi_evenement") or "aucun événement de carte ne correspond au OUI de la question"
@@ -1052,7 +1191,8 @@ def fondement_memoire(vue: dict) -> bool:
 
 def controle_etat(dossier: dict, plan: dict) -> str | None:
     ev = plan["evenement"]
-    present = any(m["carte"] == ev["carte"] and int(m["strate"]) == int(ev["strate"]) for m in dossier.get("mots", []))
+    present = any(m["carte"] == ev["carte"] and entier_strate(m["strate"]) == entier_strate(ev["strate"])
+                  for m in dossier.get("mots", []))
     if ev["type"] == "apparait" and present:
         return "événement « apparait » sur une carte déjà présente dans l'état : retirer ce mot ou changer d'événement"
     if ev["type"] != "apparait" and dossier.get("mots") and not present:
@@ -1601,7 +1741,7 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
                    aujourdhui: str, jours: int, critique: Llm | None, trace: dict,
                    donnees_fixees: str | None = None) -> dict:
     evt, evenement = evenement_depuis(plan, vue)
-    hors_strate = int(plan["evenement"]["strate"]) not in strates_chiffrees()
+    hors_strate = entier_strate(plan["evenement"]["strate"]) not in strates_chiffrees()
     if hors_strate and EXPLORATOIRE:
         trace["_explo"] = True
     if hors_strate and not (LECTURE_HORS_STRATE or EXPLORATOIRE):
@@ -1656,6 +1796,13 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
                          motif=f"aucune carte ancrée ({nature.replace('_', ' ')}) : pas d'ajustement du taux de base")
             return trace
         erreur = controle_etat(dossier, plan)
+        if erreur and erreur.startswith(f"événement « {plan['evenement']['type']} » sur une carte absente"):
+            # 0.10.44 : on demande si une structure PERSISTE (ou disparaît) et le lecteur ne la trouve pas dans l'état :
+            # ce n'est pas une erreur de forme à corriger, c'est une lecture. Sans la carte visée, pas d'ajustement : B.
+            trace.update(dossier=dossier, statut="etat_nul", nature_etat_nul="carte_visee_absente", evenement=evenement,
+                         semantique=plan["semantique"],
+                         motif=f"la carte visée {plan['evenement']['carte']} n'est pas ancrée : pas d'ajustement du taux de base")
+            return trace
         if not erreur and hors_strate and not EXPLORATOIRE:
             # Lecture scellée, non chiffrée (mode LIRE ; validation.md §27) : chiffrable après une levée de L7.
             trace.update(dossier=dossier, etat=dossier["etat"], evenement=evenement, semantique=plan["semantique"],
