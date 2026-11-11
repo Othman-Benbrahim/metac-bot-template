@@ -79,7 +79,9 @@ def situation(strate: int, graine: int, cartes: list[str]) -> dict:
     absentes_toutes = [f"{c}@{strate}" for c in cartes if f"{c}@{strate}" not in presentes]
     rng = random.Random(f"monde:{strate}:{graine}")
     rng.shuffle(absentes_toutes)
-    k = max(3, len(presentes))
+    # 0.10.21 : au moins une carte absente reste hors des candidates pour servir d'événement (le premier passage, le
+    # 2026-11-11, a perdu 2 situations sur 12 à 8 cartes présentes)
+    k = min(max(3, len(presentes)), len(absentes_toutes) - 1)
     absentes, reste = sorted(absentes_toutes[:k]), absentes_toutes[k:]
     evenement = reste[0] if reste else None
     return {"graine": graine, "presentes": presentes, "absentes": absentes, "evenement": evenement}
