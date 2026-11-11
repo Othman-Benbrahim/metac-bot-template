@@ -56,6 +56,7 @@ jobs:
           OPENAI_API_BASE: ${{ vars.ALPHABET_API_BASE }}
           ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
+          ALPHABET_CONTRADICTEUR: ${{ vars.ALPHABET_CONTRADICTEUR }}   # 0.10.24 : sans elle, le narrateur « contradicteur » retombait sur le lecteur
       - name: Enregistrer
         run: |
           if [ -n "$(git status --porcelain registre)" ]; then
