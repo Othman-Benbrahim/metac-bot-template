@@ -22,6 +22,18 @@ on:
         description: "Strate (7 par défaut, la seule chiffrée)"
         required: false
         default: "7"
+      reflexion:
+        description: "0.10.36 : relire chaque situation une 2e fois avec la réflexion étendue du lecteur (1 = oui, 0 = non)"
+        required: false
+        default: "1"
+      action:
+        description: "mesurer (passage) ; exporter-humain (cahier + grille pour un codeur humain, sans appel de modèle) ; noter-humain (comparer la grille remplie)"
+        required: false
+        default: "mesurer"
+      dossier_humain:
+        description: "noter-humain : dossier de la grille remplie, ex. registre/codeur-humain-2026-11-12 ; exporter-humain : nombre de situations (20 par défaut)"
+        required: false
+        default: ""
 
 concurrency:
   group: bot-alphabet-registre
@@ -44,13 +56,23 @@ jobs:
       - run: uv sync --locked
       - name: Contrôle du skill
         run: python alphabet-situationnel/scripts/moteur.py audit
+      - name: Référence humaine
+        if: github.event.inputs.action == 'exporter-humain' || github.event.inputs.action == 'noter-humain'
+        run: |
+          if [ "${{ github.event.inputs.action }}" = "exporter-humain" ]; then
+            uv run python monde_synthetique.py exporter-humain "${{ github.event.inputs.dossier_humain || '20' }}"
+          else
+            uv run python monde_synthetique.py noter-humain "${{ github.event.inputs.dossier_humain }}" | tee "${{ github.event.inputs.dossier_humain }}/resultat.json"
+          fi
       - name: Mesurer le lecteur
+        if: github.event.inputs.action == '' || github.event.inputs.action == 'mesurer'
         run: uv run python monde_synthetique.py
         env:
           MONDE_SITUATIONS: ${{ github.event.inputs.situations }}
           MONDE_STRATE: ${{ github.event.inputs.strate }}
           MONDE_NARRATEUR: ${{ github.event.inputs.narrateur }}
           MONDE_VERIFICATEUR: ${{ github.event.inputs.verificateur }}
+          MONDE_REFLEXION: ${{ github.event.inputs.reflexion }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}

@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.35 · skill alphabet-situationnel 0.7.70 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.36 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,16 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.36** : **deux comparaisons de plus dans le monde synthétique** (décision d'auteur du 2026-11-11, d'après
+  S. Goedecke, « Is chain-of-thought AI reasoning a mirage? »). (1) **Réflexion** : chaque situation est relue une
+  seconde fois par le même lecteur, même consigne, avec la réflexion étendue (Claude : `thinking`, budget 4 000 jetons ;
+  autres familles : `reasoning_effort` moyen) ; `perturbations.reflexion` compare sensibilité et faux positifs avec et
+  sans. Variable `MONDE_REFLEXION` (« 1 » par défaut). (2) **Référence humaine** : `monde_synthetique.py
+  exporter-humain [N]` écrit, sans appel de modèle, un cahier (dépêches + fiches), une grille CSV à remplir et une clé
+  à ne pas ouvrir, à partir des situations vérifiées du protocole le plus récent ; `noter-humain <dossier>` compare la
+  grille à la vérité vérifiée et au lecteur (sans et avec réflexion). Humain proche du lecteur : les erreurs viennent
+  des fiches ou des textes ; humain nettement meilleur : elles viennent du lecteur. Workflow : entrées `reflexion`,
+  `action`, `dossier_humain`. Skill vendu 0.7.71.
 - **0.10.35** : **relecteur de fidélité du plan**, en ombre (décision d'auteur du 2026-11-11, d'après Humanize,
   arXiv 2610.13632). Un appel de plus par question, au contradicteur s'il existe : il ne voit que la question et sa
   traduction formelle (événement, définition de la carte, sémantique, fenêtre), ni le raisonnement du planificateur ni

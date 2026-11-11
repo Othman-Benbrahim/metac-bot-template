@@ -28,6 +28,7 @@ import os
 import random
 import re
 from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 
 import alphabet_pipeline as ap
 
@@ -341,6 +342,17 @@ def mesurer(rows: list[dict]) -> dict:
             "avec_noms": _sens_fp(eff), "sans_noms": _sens_fp(eff, "lecture_sans_noms"),
             "accord_jaccard_moyen": round(sum(jac) / len(jac), 4),
             "lecture": "lecture qui change sans les noms : le lecteur s'appuie sur le vocabulaire, pas sur les marqueurs"}
+    refl = [r for r in ver if isinstance((r.get("lecture_reflechie") or {}).get("ancrees"), dict)]
+    if refl:
+        jac = []
+        for r in refl:
+            a1, a2 = set(r["ancrees"]), set(r["lecture_reflechie"]["ancrees"])
+            jac.append(len(a1 & a2) / len(a1 | a2) if a1 | a2 else 1.0)
+        perturbations["reflexion"] = {
+            "sans_reflexion": _sens_fp(refl), "avec_reflexion": _sens_fp(refl, "lecture_reflechie"),
+            "accord_jaccard_moyen": round(sum(jac) / len(jac), 4),
+            "lecture": "si la réflexion baisse les faux positifs ou monte la sensibilité, une partie des erreurs vient "
+                       "de la lecture en une passe, sans retour possible (Goedecke 2025)"}
     avec_p = [r for r in ver if (r.get("canevas") or {}).get("parasites")]
     sans_p = [r for r in ver if not (r.get("canevas") or {}).get("parasites")]
     if avec_p and sans_p:
@@ -363,8 +375,115 @@ def mesurer(rows: list[dict]) -> dict:
             "par_carte": dict(sorted(par_carte.items()))}
 
 
+BUDGET_REFLEXION = 4000
+
+
+def options_reflexion(modele: str) -> dict:
+    """0.10.36 : la réflexion étendue du lecteur (Goedecke 2025 : sans retour possible, la tâche est un calcul, pas un
+    raisonnement). Claude : `thinking` (température 1 imposée, max_tokens au-dessus du budget) ; autres familles :
+    `reasoning_effort` de litellm."""
+    nom = str(modele or "").lower()
+    if "claude" in nom or "anthropic" in nom:
+        return {"thinking": {"type": "enabled", "budget_tokens": BUDGET_REFLEXION}, "temperature": 1,
+                "max_tokens": BUDGET_REFLEXION + 8000}
+    return {"reasoning_effort": "medium"}
+
+
+def situations_codables(passages: list[dict], protocole: int | None = None) -> list[dict]:
+    """Situations lues, vérifiées sans erreur, du protocole le plus récent présent (ou celui demandé)."""
+    protos = [d.get("protocole_monde") for d in passages if d.get("protocole_monde")]
+    protocole = protocole or (max(protos) if protos else None)
+    out = []
+    for d in passages:
+        if d.get("protocole_monde") != protocole:
+            continue
+        for r in d.get("situations") or []:
+            v = r.get("verification")
+            if r.get("statut") == "lue" and isinstance(v, dict) and "erreur" not in v and r.get("texte"):
+                out.append(dict(r, _passage=d.get("calcule_le"), _strate=d.get("strate")))
+    return out
+
+
+def exporter_humain(passages: list[dict], dossier: Path, n: int = 20, graine: int = 0,
+                    protocole: int | None = None) -> dict:
+    """0.10.36 : référence humaine (Goedecke 2025 : sans comparaison humaine, on ne sait pas si 0,66 est mauvais).
+    Écrit trois fichiers : le cahier (dépêches + fiches des candidates, sans la vérité), la grille à remplir (CSV : F, f
+    ou vide pour chaque candidate) et la clé, à NE PAS ouvrir avant d'avoir rempli la grille. Les candidates sont
+    présentées dans le même ordre alphabétique que pour le lecteur ; aucun nom de carte n'apparaît dans les dépêches."""
+    import csv
+    cands = situations_codables(passages, protocole)
+    random.Random(f"humain:{graine}").shuffle(cands)
+    cands = cands[:n]
+    m = ap._moteur()
+    dossier.mkdir(parents=True, exist_ok=True)
+    cahier = ["# Monde synthétique — cahier du codeur humain", "",
+              "Pour chaque situation : lire les dépêches, puis, pour chaque carte candidate, décider d'après sa "
+              "définition et ses marqueurs seulement : **F** (fait corroboré par deux médias qui remplit un marqueur), "
+              "**f** (un marqueur rempli, une seule source ou partiellement), ou **rien** (la carte n'est pas montrée). "
+              "Remplir `grille.csv`, colonne `lecture`. Ne pas ouvrir `cle.json` avant d'avoir fini.", ""]
+    lignes, cle, vues = [], {"protocole_monde": None, "situations": {}}, set()
+    for i, r in enumerate(cands, 1):
+        sid = f"S{i:02d}"
+        strate = r["_strate"]
+        cartes = sorted(r["presentes"] + r["absentes"])
+        cahier += [f"## {sid}", "", r["texte"].strip(), "", "**Cartes candidates** (fiches en annexe) : "
+                   + ", ".join(m.NOMS.get(k.split("@")[0], k) for k in cartes), ""]
+        vues.update(k.split("@")[0] for k in cartes)
+        for k in cartes:
+            lignes.append({"situation": sid, "carte": m.NOMS.get(k.split("@")[0], k), "cle": k, "lecture": ""})
+        cle["situations"][sid] = {"passage": r["_passage"], "graine": r.get("graine"), "presentes": r["presentes"],
+                                  "absentes": r["absentes"], "verification": r["verification"],
+                                  "corrobores": (r.get("canevas") or {}).get("corrobores", []),
+                                  "lecteur": r.get("ancrees") or {},
+                                  "lecteur_reflechi": (r.get("lecture_reflechie") or {}).get("ancrees")}
+    protos = [d.get("protocole_monde") for d in passages if d.get("protocole_monde")]
+    cle["protocole_monde"] = protocole or (max(protos) if protos else None)
+    cahier += ["# Annexe — fiches des cartes", "", ap.fiches(sorted(vues))]
+    (dossier / "cahier.md").write_text("\n".join(cahier) + "\n", encoding="utf-8")
+    with open(dossier / "grille.csv", "w", newline="", encoding="utf-8") as f_:
+        w = csv.DictWriter(f_, fieldnames=["situation", "carte", "cle", "lecture"])
+        w.writeheader()
+        w.writerows(lignes)
+    (dossier / "cle.json").write_text(json.dumps(cle, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return {"situations": len(cands), "cartes": len(lignes), "dossier": str(dossier)}
+
+
+def noter_humain(dossier: Path) -> dict:
+    """Compare la grille remplie à la vérité VÉRIFIÉE (mêmes exclusions que `mesure_verifiee`) et au lecteur sur les
+    mêmes cartes : sensibilité et faux positifs de l'humain, du lecteur, et accord humain–lecteur."""
+    import csv
+    cle = json.loads((dossier / "cle.json").read_text(encoding="utf-8"))["situations"]
+    hum: dict[str, dict[str, str]] = {}
+    with open(dossier / "grille.csv", encoding="utf-8") as f_:
+        for x in csv.DictReader(f_):
+            v = (x.get("lecture") or "").strip()
+            if v in ("F", "f"):
+                hum.setdefault(x["situation"], {})[x["cle"]] = v
+    def stats(lire):
+        p_, a_ = [], []
+        for sid, c in cle.items():
+            ver = c["verification"]
+            p_ += [(lire(sid, c).get(k)) for k in c["presentes"] if k not in ver["presentes_non_montrees"]]
+            a_ += [(lire(sid, c).get(k)) for k in c["absentes"] if k not in ver["absentes_montrees"]]
+        r = lambda xs, f: round(sum(1 for v in xs if f(v)) / len(xs), 4) if xs else None
+        return {"sens": r(p_, bool), "sens_F": r(p_, lambda v: v == "F"), "fp": r(a_, bool),
+                "fp_F": r(a_, lambda v: v == "F"), "presentes": len(p_), "absentes": len(a_)}
+    out = {"situations": len(cle), "humain": stats(lambda sid, c: hum.get(sid, {})),
+           "lecteur": stats(lambda sid, c: c.get("lecteur") or {})}
+    if all(c.get("lecteur_reflechi") is not None for c in cle.values()):
+        out["lecteur_reflechi"] = stats(lambda sid, c: c.get("lecteur_reflechi") or {})
+    acc = []
+    for sid, c in cle.items():
+        a1, a2 = set(hum.get(sid, {})), set(c.get("lecteur") or {})
+        acc.append(len(a1 & a2) / len(a1 | a2) if a1 | a2 else 1.0)
+    out["accord_humain_lecteur_jaccard"] = round(sum(acc) / len(acc), 4) if acc else None
+    out["lecture"] = ("humain proche du lecteur : les erreurs viennent des fiches ou des textes ; humain nettement "
+                      "meilleur : elles viennent du lecteur")
+    return out
+
+
 async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, aujourdhui: str | None = None,
-                 verificateur=None, effacement: bool = False) -> dict:
+                 verificateur=None, effacement: bool = False, reflechi=None) -> dict:
     m = ap._moteur()
     aujourdhui = aujourdhui or date.today().isoformat()
     cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@{strate}")]
@@ -420,6 +539,12 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
                 row["lecture_sans_noms"] = {"ancrees": ancrees(lec2, strate, inverse)}
             except Exception as e:
                 row["lecture_sans_noms"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+        if reflechi is not None:   # 0.10.36 : même modèle, même consigne, mais le droit de réfléchir avant de répondre
+            try:
+                lec3 = await ap.json_avec_reprise(reflechi, ap.consigne_dossier(q, plan, executees, aujourdhui, 90))
+                row["lecture_reflechie"] = {"ancrees": ancrees(lec3, strate)}
+            except Exception as e:
+                row["lecture_reflechie"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
         rows.append(row)
     return {"calcule_le": datetime.now(timezone.utc).isoformat(timespec="seconds"), "version_skill": ap.version_skill(),
             "version_bot": ap.VERSION_BOT, "modele": (ap.modeles_actifs() or {}).get("principal"), "strate": strate,
@@ -486,8 +611,17 @@ async def principal() -> int:
 
         async def verificateur(c: str) -> str:
             return await modele_v.invoke(c)
+    reflechi = None
+    if os.environ.get("MONDE_REFLEXION", "1") != "0":
+        from forecasting_tools import GeneralLlm
+        modele_r = GeneralLlm(model=choix["principal"], timeout=300, allowed_tries=2, **options_reflexion(choix["principal"]))
+
+        async def reflechi(c: str) -> str:
+            return await modele_r.invoke(c)
     r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0,
-                     verificateur=verificateur, effacement=os.environ.get("MONDE_EFFACEMENT", "1") != "0")
+                     verificateur=verificateur, effacement=os.environ.get("MONDE_EFFACEMENT", "1") != "0",
+                     reflechi=reflechi)
+    r["reflexion"] = options_reflexion(choix["principal"]) if reflechi else None
     r["verificateur"] = nom_v if verificateur else None
     fam = lambda nom: next((f for f in ("claude", "deepseek", "mistral", "qwen", "llama", "nova", "gpt", "glm", "kimi")
                             if f in str(nom or "").lower()), str(nom))
@@ -510,9 +644,30 @@ async def principal() -> int:
           f"stipulé {x['stipule']} → {f.name}")
     print(f"Mesure vérifiée par {r['verificateur']} (famille distincte : {r['verificateur_famille_distincte']}) : "
           f"{x.get('mesure_verifiee')}")
+    print(f"Perturbations : {(x.get('mesure_verifiee') or {}).get('perturbations')}")
     print(f"Cumul ({r['cumul']['passages']} passages, {r['cumul']['lues']} situations lues) : {r['cumul']['mesure']}")
     return 0 if x["lues"] else 1
 
 
+def _charger_passages() -> list[dict]:
+    out = []
+    for f_ in sorted(ap.REGISTRE.glob("monde-synthetique-*.json")) if ap.REGISTRE.is_dir() else []:
+        try:
+            out.append(json.loads(f_.read_text(encoding="utf-8")))
+        except (OSError, json.JSONDecodeError):
+            continue
+    return out
+
+
 if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "exporter-humain":
+        # python monde_synthetique.py exporter-humain [N] [DOSSIER]
+        n = int(sys.argv[2]) if len(sys.argv) > 2 else 20
+        d = Path(sys.argv[3]) if len(sys.argv) > 3 else ap.REGISTRE / f"codeur-humain-{date.today().isoformat()}"
+        print(json.dumps(exporter_humain(_charger_passages(), d, n), ensure_ascii=False))
+        raise SystemExit(0)
+    if len(sys.argv) > 2 and sys.argv[1] == "noter-humain":
+        print(json.dumps(noter_humain(Path(sys.argv[2])), ensure_ascii=False, indent=2))
+        raise SystemExit(0)
     raise SystemExit(asyncio.run(principal()))
