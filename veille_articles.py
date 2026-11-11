@@ -36,13 +36,13 @@ NS = {"a": "http://www.w3.org/2005/Atom"}
 
 
 def lire_mots(f: Path = ICI / "mots-cles.txt") -> dict[str, list[str]]:
-    out: dict[str, list[str]] = {"fort": [], "faible": []}
+    out: dict[str, list[str]] = {"fort": [], "faible": [], "malus": [], "exemption": []}
     section = None
     for ligne in f.read_text(encoding="utf-8").splitlines():
         ligne = ligne.strip()
         if not ligne or ligne.startswith("#"):
             continue
-        m = re.fullmatch(r"\[(fort|faible)\]", ligne)
+        m = re.fullmatch(r"\[(fort|faible|malus|exemption)\]", ligne)
         if m:
             section = m.group(1)
         elif section:
@@ -64,6 +64,10 @@ def noter(texte: str, mots: dict[str, list[str]], titre: str = "") -> tuple[int,
     forts = [m for m in mots["fort"] if motif(m).search(tout)]
     faibles = [m for m in mots["faible"] if motif(m).search(tout)]
     s = 3 * len(forts) + sum(2 if titre and motif(m).search(titre) else 1 for m in faibles)
+    malus = [m for m in mots.get("malus", []) if motif(m).search(tout)]
+    if malus and not any(motif(m).search(tout) for m in mots.get("exemption", [])):
+        s -= 4
+        faibles = faibles + [f"malus : {malus[0]}"]
     return s, forts, faibles
 
 
