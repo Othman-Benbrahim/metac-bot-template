@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.71 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.72 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -966,6 +966,16 @@ def sources_de(etat, cible, liaisons, bouge, manque):
                 # 0.7.6 : sonde d'atténuation (décision 5, réservée) : λ_eff = 1 + (λ − 1)·w, hors du p publié.
                 lam = 1 + (lam - 1) * ATTENUATION.get(cle(m), 1.0)
             src.append({"mot": cle(m), "intensite": I, "lambda": lam, "note": note})
+        # 0.7.72 (§48) : arêtes inhibitrices, λ_I < 1 (décision d'auteur du 2026-11-11). Même strate, ou transfert
+        # ancré ; jamais abaissées vers une autre strate (un frein ne se propage pas sans mécanisme déclaré). « Bouge »
+        # renforce le frein (λ_I / 1,5), comme il renforce un moteur.
+        J = P["inhibitions"].get(m["c"], {}).get(c)
+        if J and (m["s"] == s or (str(m["s"]), str(s)) in transferts):
+            lam = P["lambda"][J] / (P["multiplicateur_bouge"] if cle(m) in bouge else 1)
+            if ATTENUATION is not None:
+                lam = 1 + (lam - 1) * ATTENUATION.get(cle(m), 1.0)
+            src.append({"mot": cle(m), "intensite": J, "lambda": lam,
+                        "note": "frein, même strate" if m["s"] == s else "frein, transfert ancré"})
     if MEDIATION:
         cartes_src = {x["mot"].split("@")[0] for x in src}
         def mediateur(x):
@@ -990,7 +1000,8 @@ def sources_de(etat, cible, liaisons, bouge, manque):
     garde = {}
     for x in src:
         r = racine(x["mot"])
-        if r not in garde or x["lambda"] > garde[r]["lambda"]:
+        # 0.7.72 (§48) : « la plus forte » en valeur absolue de ln λ (un frein peut l'être)
+        if r not in garde or abs(math.log(x["lambda"])) > abs(math.log(garde[r]["lambda"])):
             garde[r] = x
     ecartees = [x for x in src if x not in garde.values()]
     return list(garde.values()), ecartees
@@ -2090,6 +2101,7 @@ def confronter(base):
                     cl='etat_nul';src=[]
                 else:
                     src,_=sources_de(a,x,links,(),manque)
+                    src=[y for y in src if y['lambda']>1]   # 0.7.72 : un frein ne rend pas une apparition atteignable
                     notes={y['note'] for y in src}
                     cl=('meme_strate' if 'même strate' in notes else 'propagation_documentee' if 'autre strate, propagation documentée' in notes
                         else 'transfert_ancre' if 'autre strate, transfert ancré' in notes else 'position_manque' if 'G4' in notes
@@ -2257,7 +2269,8 @@ def apriori(etat,typ,cible,base,liaisons=(),bouge=(),manque=(),refs=None,ctr_mat
     anchored=external is not None or neff>=P['n_min_ancrage']
     src,removed=sources_de(etat,cible,liaisons,bouge,manque) if typ=='apparait' and not sans_cartes else ([],[])
     lr=math.prod(x['lambda'] for x in src)
-    capped=lr>P['plafond_LR'];lr=min(lr,P['plafond_LR'])
+    # 0.7.72 (§48) : avec les freins, le produit est borné des deux côtés : [1/plafond, plafond]
+    capped=lr>P['plafond_LR'] or lr<1/P['plafond_LR'];lr=min(max(lr,1/P['plafond_LR']),P['plafond_LR'])
     if TEMPERAGE!=1.0: lr=lr**TEMPERAGE
     p=odds_module(f,lr) if COMBINAISON=='produit' else combiner_noisy_or(f,src)
     if GENERATIF is not None and typ=='apparait' and not sans_cartes and 0<f<1:
@@ -3072,7 +3085,7 @@ def trajectoires(etat,h,base,opts,strates_sup=()):
             for s in sorted({m['s'] for m in e['mots']}|set(strates_sup)):
                 for ab in NOMS:
                     k=f'{ab}@{s}'
-                    if k not in present and not hors_domaine(k) and sources_de(e,k,op['liaisons'],op['bouge'],op['manque'])[0]:
+                    if k not in present and not hors_domaine(k) and any(y['lambda']>1 for y in sources_de(e,k,op['liaisons'],op['bouge'],op['manque'])[0]):
                         candidates.append(('apparait',k,calculer(e,'apparait',k,base,**op)))
             # This competing-risk kernel is exploratory. Normalization depends on ALL candidates.
             hazards=[-math.log1p(-min(x[2]['p'],1-1e-12)) for x in candidates];H=sum(hazards)
@@ -3998,7 +4011,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('validation.md','48'):'Freins', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4191,6 +4204,13 @@ def erreurs_parametres(params=None):
         lu=re.search(r"P\[['\"]"+re.escape(k)+r"['\"]\]",src) is not None
         if not lu and k not in PARAMETRES_RESERVES:err.append(f'parametres.json : « {k} » n’est lu par aucun calcul ; l’appliquer ou le déclarer réservé')
         if lu and k in PARAMETRES_RESERVES:err.append(f'parametres.json : « {k} » déclaré réservé mais lu par le moteur')
+    # 0.7.72 (§48) : un frein porte sur deux cartes connues, a un λ < 1, et ne double jamais une arête de la matrice
+    pp=params if isinstance(params,dict) else P
+    for a_,d_ in (pp.get('inhibitions') or {}).items():
+        for b_,J_ in d_.items():
+            if a_ not in NOMS or b_ not in NOMS:err.append(f'inhibitions : carte inconnue {a_} → {b_}')
+            elif not (0<float(pp['lambda'].get(J_,1))<1):err.append(f'inhibitions : {a_} → {b_} : la classe {J_} doit avoir 0 < λ < 1')
+            elif pp['matrice'].get(a_,{}).get(b_):err.append(f'inhibitions : {a_} → {b_} est aussi une arête de la matrice')
     return err
 
 
@@ -4235,7 +4255,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.71','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.72','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -6490,6 +6510,23 @@ def autotest():
             climat=murphy([(.5,0),(.5,1)]);self.assertAlmostEqual(climat['resolution'],0)   # p constant : aucune résolution
             self.assertIsNone(murphy([]))
             r=score_result([forecast(),score()]);self.assertEqual(r['decomposition_murphy']['toutes_moteur']['questions'],1)
+        def test_freins(self):
+            # 0.7.72 (§48) : un frein (λ_I < 1) baisse p sous f, même strate seulement ; borné à 1/plafond ; ne rend pas une
+            # apparition atteignable ; jamais sur une arête de la matrice.
+            base=base_active(charger(RACINE/'assets/base-de-cas.exemple.jsonl'),'2026-09-20',True)
+            e=lire_etat('[2026-09 | 3 mois] CONTRAINTE@7[F]')
+            src,_=sources_de(e,'CRO@7',[],(),())
+            self.assertEqual([(x['intensite'],x['lambda']) for x in src],[('I',P['lambda']['I'])])
+            self.assertLess(P['lambda']['I'],1)
+            r=calculer(e,'apparait','CRO@7',base,asof='2026-09-20');r0=calculer(e,'apparait','CRO@7',base,asof='2026-09-20',sans_cartes=True)
+            self.assertLess(r['p'],r0['p'])   # le frein baisse p sous le calcul sans cartes
+            self.assertEqual(sources_de(lire_etat('[2026-09 | 3 mois] CONTRAINTE@6[F]'),'CRO@7',[],(),())[0],[])   # autre strate : rien
+            sb,_=sources_de(e,'CRO@7',[],['CTR@7'],())
+            self.assertAlmostEqual(sb[0]['lambda'],P['lambda']['I']/P['multiplicateur_bouge'])   # « bouge » renforce le frein
+            for a_,d_ in P['inhibitions'].items():
+                for b_ in d_:self.assertNotIn(b_,P['matrice'].get(a_,{}))
+            pp=json.loads(json.dumps(P));pp['inhibitions']['SEU']={'TRC':'I'}
+            self.assertTrue(any('aussi une arête' in x for x in erreurs_parametres(pp)))
         def test_parametre_fantome(self):
             self.assertEqual(erreurs_parametres(),[])
             self.assertTrue(erreurs_parametres(list(P)+['parametre_fantome']))

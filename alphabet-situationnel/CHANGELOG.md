@@ -1,9 +1,25 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.71
+> Version : 0.7.72
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.72 — 2026-11-11 · Freins
+
+Décision d'auteur du 2026-11-11 (`validation.md` §48) : la matrice reçoit des **arêtes inhibitrices**.
+
+- Six freins, classe I, λ_I = 0,556 (stipulé, inverse de λ_M) : CONTRAINTE ⊣ CROISSANCE, HIÉRARCHIE ⊣ ÉMERGENCE,
+  TRACE·MÉMOIRE ⊣ TRANSFORMATION, TRACE·MÉMOIRE ⊣ ÉMERGENCE, INCERTITUDE ⊣ CROISSANCE, POLARITÉ ⊣ COMMUNAUTÉ
+  (`assets/parametres.json`, `inhibitions`), chacun avec son mécanisme, sa référence et un indicateur de fermeture
+  (`dynamiques.md`).
+- Calcul publié : un frein est une source de λ < 1 ; même strate ou transfert ancré, jamais abaissé vers une autre
+  strate ; « bouge » le renforce ; le produit des λ est borné à [1/10 ; 10] ; la redondance garde la source la plus
+  forte en |ln λ| ; un frein ne rend pas une apparition atteignable (noyau, classement des transitions).
+- L'audit refuse un frein qui doublerait une arête de la matrice ou dont la classe n'aurait pas 0 < λ < 1.
+- Non touchés : la matrice des moteurs, λ F/M/f, le programme génératif et le tirage du monde synthétique (qui ne
+  lisent pas encore les freins).
+- Feuille de route : section « Arbre de la connaissance : ce que les freins ouvrent ».
 
 ## 0.7.71 — 2026-11-11 · SKILL.md allégé
 

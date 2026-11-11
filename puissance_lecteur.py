@@ -50,7 +50,7 @@ def _c_publie(m, lues: dict[str, str], cible: str, f: float, strate: int) -> flo
     etat = {"mots": [{"c": k.split("@")[0], "s": strate, "i": i, "q": []} for k, i in lues.items()],
             "date": "2026-11", "fenetre": "3 mois"}
     src, _ = m.sources_de(etat, cible, (), (), ())
-    lr = min(math.prod(x["lambda"] for x in src), m.P["plafond_LR"])
+    lr = min(max(math.prod(x["lambda"] for x in src), 1 / m.P["plafond_LR"]), m.P["plafond_LR"])   # 0.10.41 : freins
     return m.odds_module(f, lr)
 
 

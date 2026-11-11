@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.71
+> Version : 0.7.72
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2614,4 +2614,48 @@ par une décision datée, quand l'estimation repose sur au moins 50 questions et
 puissance la donne gagnante, le C publié perdant même avec un lecteur parfait, faute d'utiliser les absences).
 
 **Ce qui ne change pas.** Le p publié, la matrice, les λ en vigueur.
+
+## 48. Freins : des arêtes inhibitrices dans la matrice (0.7.72)
+
+**Décision d'auteur, le 2026-11-11** (« il vaut mieux limiter les dégâts »), après la lecture de la prospective
+stratégique (repérer, pour chaque signal, ce qui l'accélère **et ce qui le freine**) et parce que l'arbre de la
+connaissance doit pouvoir fermer des branches, pas seulement en ouvrir.
+
+**Le défaut corrigé.** Jusqu'en 0.7.71, les 66 arêtes de la matrice avaient toutes λ ≥ 1 : une carte lue ne pouvait
+que rendre une apparition plus probable (`graphe.md` §2.1, « Conséquence, à mesurer »). Pour un événement « apparait »,
+C était toujours au moins égal à la fréquence de référence : il gagnait sur les OUI et perdait sur **toutes** les NON.
+Une contrainte de capacité ne pouvait pas freiner une croissance ; une hiérarchie qui prescrit l'ordre ne pouvait pas
+rendre moins probable un ordre non prescrit.
+
+**La règle d'inscription, plus stricte que pour un moteur.** Un frein n'est inscrit que si la **structure
+mathématique** de la carte source borne ou exclut le mécanisme de la cible, avec une référence ; une simple tension
+documentée (`antagonismes.md` §4) ne suffit pas. Un frein ne double jamais une arête de la matrice (contrôlé par
+l'audit). Six freins, classe I, λ_I = 0,556 (l'inverse de λ_M, stipulé comme les autres) :
+
+| Frein | Mécanisme | Référence |
+|---|---|---|
+| CONTRAINTE ⊣ CROISSANCE | une capacité limite active borne le taux de croissance (logistique) | Verhulst 1838 |
+| HIÉRARCHIE ⊣ ÉMERGENCE | un ordre prescrit par une autorité préempte l'ordre non prescrit, que l'émergence exige par définition | `cartes.md` (ÉMERGENCE : « sans avoir été prescrite par un agent central ») |
+| TRACE·MÉMOIRE ⊣ TRANSFORMATION | verrouillage par rendements croissants : le chemin suivi résiste au changement de forme | Arthur 1989, David 1985 |
+| TRACE·MÉMOIRE ⊣ ÉMERGENCE | une convention verrouillée occupe la place d'une convention nouvelle | Arthur 1989 |
+| INCERTITUDE ⊣ CROISSANCE | l'incertitude des acteurs retarde les engagements irréversibles (investissement, embauche) qui portent la croissance | Dixit & Pindyck 1994 ; Bloom 2009 |
+| POLARITÉ ⊣ COMMUNAUTÉ | un champ organisé en deux pôles divise le collectif de plus de deux membres que la coopération exige | McCoy & Somer 2019 |
+
+**Le calcul publié.** Un frein est une source de λ_I < 1 : logit p = logit f + Σ ln λ, le terme du frein est négatif.
+- Même strate, ou transfert ancré ; **jamais** abaissé vers une autre strate (un frein ne se propage pas sans
+  mécanisme déclaré).
+- « Bouge » renforce le frein (λ_I / 1,5), comme il renforce un moteur.
+- Le produit des λ est désormais borné des deux côtés : [1/10 ; 10]. L'écart maximal entre C et B reste ln 10 sur
+  chaque issue : la borne du test C contre B (`score_registre.borne_gain_C_B`) tient.
+- Redondance (inclusion, renforcement, transfert) : on garde la source la plus forte **en valeur absolue** de ln λ.
+- Un frein ne rend pas une apparition atteignable : le noyau et le classement des transitions de la base de cas ne
+  comptent que les sources de λ > 1.
+
+**Ce qui ne change pas, et pourquoi.** La matrice des moteurs (66 arêtes), les λ F, M, f, le plafond de p₀. Le
+programme génératif (§36) et le tirage du monde synthétique (§43) ne lisent que la matrice des moteurs : les freins
+n'y entrent pas encore (un couplage négatif de co-présence est une autre hypothèse, à décider sur données) ; le
+noisy-or (§34) les traite déjà (une source de λ < 1 « laisse passer la fraction p_i/f »).
+
+**À mesurer.** Dans le bot, la perte de C sur les questions où un frein est lu, contre B ; l'apprentissage des λ (§47)
+estime λ_I comme une quatrième classe, avec le même a priori.
 
