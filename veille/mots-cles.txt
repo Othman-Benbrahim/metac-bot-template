@@ -3,6 +3,8 @@
 # Section « fort »   : une seule expression suffit pour retenir l'article.
 # Section « faible » : 1 point chacune, 2 si elle est dans le titre ; une forte vaut 3. Retenu à partir de 3 points.
 # Le signe * en fin de mot accepte toute terminaison (forecast* : forecast, forecasting, forecaster).
+# Section « malus » : si l'une de ces expressions est présente et AUCUNE de la section « exemption », l'article perd
+# 4 points (une seule fois) : prévision de séries temporelles ou application d'un autre domaine, sans jugement ni LLM.
 # Les lignes qui commencent par # sont ignorées.
 
 [fort]
@@ -10,7 +12,6 @@
 judgmental forecast*
 forecasting tournament*
 forecasting question*
-forecasting benchmark*
 geopolitical forecast*
 event forecast*
 LLM forecast*
@@ -54,8 +55,6 @@ LLM-as-a-judge
 LLM-as-judge
 self-preference bias
 symbol grounding
-inter-annotator agreement
-annotator agreement
 noisy annotator*
 synthetic world*
 # Test séquentiel (C contre B)
@@ -79,6 +78,9 @@ GDELT
 UCDP
 
 [faible]
+# Passés des forts aux faibles le 2026-11-11 (premier passage : trop de jeux de données et de séries temporelles)
+forecasting benchmark*
+inter-annotator agreement
 # Volontairement étroit : les mots trop courants dans les articles sur les LLM (reasoning, retrieval, robust, bias,
 # predict, hallucination…) faisaient remonter du bruit sur 44 semaines de DAIR.AI ; ils sont retirés. « backtesting »
 # et « early warning » sont ici et non en forts : trop fréquents en finance et en médecine.
@@ -97,10 +99,39 @@ faithful*
 perturbation*
 out-of-distribution
 distribution shift
-annotat*
 synthetic data
 abstention
 backtesting
 early warning
 judge*
 Bayesian
+
+[malus]
+time series
+time-series
+multivariate
+spatio-temporal
+spatiotemporal
+traffic
+load forecast*
+weather
+solar
+wind power
+electricity
+histopatholog*
+molecul*
+ADMET
+medical imag*
+churn
+dataset for
+
+[exemption]
+LLM*
+language model*
+judgment*
+judgmental
+human forecaster*
+superforecast*
+geopolitic*
+election*
+prediction market*
