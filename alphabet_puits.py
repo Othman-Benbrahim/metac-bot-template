@@ -837,6 +837,59 @@ async def sanctions_us(terme: str | None = None, programme: str | None = None, a
 
 # --------------------------------------------------------------------------- catalogue
 
+
+# --------------------------------------------------------------------------- 0.10.40 : DBnomics
+
+DBNOMICS = "https://api.db.nomics.world/v22"
+RETARD_DBNOMICS = {"annual": 450, "quarterly": 75, "monthly": 45, "weekly": 10, "daily": 2}
+
+
+def _periode_dbnomics(periode: str, debut_jour: str | None) -> str | None:
+    """« 2024 », « 2024-03 », « 2024-Q1 », « 2024-S1 », « 2024-W05 », « 2024-03-15 » → jour ISO. DBnomics donne aussi
+    `period_start_day` : la date de DÉBUT de période ; on garde la convention du module (date de la période)."""
+    return _jour(debut_jour) if debut_jour else _jour(periode)
+
+
+def parser_dbnomics(d: dict) -> tuple[dict, list[dict]]:
+    docs = ((d.get("series") or {}).get("docs") or [])
+    if not docs:
+        raise RuntimeError("DBnomics : série introuvable (vérifier fournisseur/jeu/code, ex. IMF/WEO:latest/FRA.NGDP_RPCH)")
+    x = docs[0]
+    freq = str(x.get("@frequency") or "").lower()
+    retard = RETARD_DBNOMICS.get(freq, 60)
+    pts = []
+    debuts = x.get("period_start_day") or [None] * len(x.get("period") or [])
+    for per, deb, v in zip(x.get("period") or [], debuts, x.get("value") or []):
+        j, val = _periode_dbnomics(str(per), deb), _num(v)
+        # les jeux du FMI (WEO) contiennent des PROJECTIONS : jamais une période postérieure à aujourd'hui
+        if j and val is not None and j <= date.today().isoformat():
+            pts.append({"date": j, "valeur": val, "publie_le": (date.fromisoformat(j) + timedelta(days=retard)).isoformat()})
+    return x, pts
+
+
+async def dbnomics(serie: str, avant: date | None = None) -> dict:
+    """DBnomics (Banque de France, Cepremap) : une seule API, sans clé, pour les séries de près de 80 fournisseurs
+    (FMI, OCDE, BCE, Eurostat, BIS, OIT, instituts nationaux). `serie` = « fournisseur/jeu/code ». Valeurs actuelles,
+    sans millésime : révisions possibles (pour l'économie américaine en rétrospectif, préférer ALFRED)."""
+    serie = serie.strip().strip("/")
+    d = await _get(f"{DBNOMICS}/series/{serie}", {"observations": 1, "format": "json"})
+    x, pts = parser_dbnomics(d)
+    titre = f"{x.get('provider_code', '')}/{x.get('dataset_code', '')}/{x.get('series_code', '')} · {x.get('series_name', '')}"
+    return _releve("DBnomics", titre, f"https://db.nomics.world/{serie}", pts, avant,
+                   frequence=x.get("@frequency"), revisions="valeurs actuelles, sans millésime : révisions possibles")
+
+
+async def dbnomics_recherche(terme: str, avant: date | None = None) -> dict:
+    """Trouver l'identifiant d'une série DBnomics : les séries dont le nom contient les mots-clés (en anglais)."""
+    d = await _get(f"{DBNOMICS}/search", {"q": terme, "limit": 10})
+    pts = []
+    for x in ((d.get("results") or {}).get("docs") or []):
+        code = f"{x.get('provider_code')}/{x.get('code')}"
+        pts.append({"date": _jour(x.get("indexed_at") or x.get("converted_at")), "valeur": None,
+                    "titre": f"jeu {code} — {x.get('name', '')} ({x.get('nb_series', '?')} séries)",
+                    "url": f"https://db.nomics.world/{code}", "extrait": (x.get("description") or "")[:300]})
+    return _releve("DBnomics (recherche)", f"jeux de données « {terme} »", "https://db.nomics.world/", pts, None)
+
 CATALOGUE: dict[str, dict] = {
     "fred": {"fn": fred, "nature": "niveau", "cle": "FRED_API_KEY", "comptable": True,
              "params": '{"serie": "identifiant FRED, ex. UNRATE, CPIAUCSL, DGS10, FEDFUNDS", "debut": "AAAA-MM-JJ facultatif"}',
@@ -916,6 +969,12 @@ CATALOGUE: dict[str, dict] = {
     "sanctions_us": {"fn": sanctions_us, "nature": "evenements", "comptable": True,
                      "params": '{"terme": "nom facultatif", "programme": "facultatif, ex. RUSSIA-EO14024, IRAN, SDGT"}',
                      "pour": "nouvelles cibles des sanctions américaines (OFAC, via OpenSanctions)"},
+    "dbnomics": {"fn": dbnomics, "nature": "niveau", "comptable": True,
+                 "params": '{"serie": "fournisseur/jeu/code, ex. IMF/WEO:latest/FRA.NGDP_RPCH, OECD/MEI/FRA.LRHUTTTT.STSA.M"}',
+                 "pour": "séries de près de 80 fournisseurs en une API (FMI, OCDE, BCE, Eurostat, BIS, OIT, instituts nationaux)"},
+    "dbnomics_recherche": {"fn": dbnomics_recherche, "nature": "texte", "comptable": False,
+                           "params": '{"terme": "mots-clés en anglais, ex. unemployment France"}',
+                           "pour": "trouver le jeu DBnomics qui contient une série (avant d'appeler dbnomics)"},
     "epoch_benchmarks": {"fn": epoch_benchmarks, "nature": "niveau", "comptable": True,
                          "params": '{"benchmark": "nom, ex. GPQA Diamond, FrontierMath, SWE-bench", "modele": "facultatif"}',
                          "pour": "scores des modèles d'IA aux benchmarks, datés de la sortie du modèle (Epoch AI, CC BY 4.0)"},

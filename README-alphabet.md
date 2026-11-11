@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.39 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.40 · skill alphabet-situationnel 0.7.71 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.40** : **puits DBnomics** (décision d'auteur du 2026-11-11, repéré dans FinceptTerminal). Une API gratuite,
+  sans clé (Banque de France, Cepremap), pour les séries de près de 80 fournisseurs : FMI, OCDE, BCE, Eurostat, BIS,
+  OIT, instituts nationaux — l'OCDE et le FMI, laissés de côté le 8 novembre (SDMX trop lourd), deviennent accessibles.
+  `dbnomics` (comptable, `serie` = fournisseur/jeu/code) et `dbnomics_recherche` (trouver le jeu). Bornage à la date
+  d'information par retard de publication selon la fréquence ; les projections du FMI (périodes futures) sont écartées.
+  Valeurs actuelles, sans millésime. À confirmer par la sonde des puits.
 - **0.10.39** : **gain de C selon la marge de B, et partition de Murphy**, descriptifs (d'après Jenkins et Cardei,
   arXiv 2611.10325 : un gain se mesure à la place qui restait). Score : `comparaison.marge_B` (gain normalisé de Hake
   en Brier, (Brier_B − Brier_C) / Brier_B, et gain log de C sur B par tiers de marge de B) et
