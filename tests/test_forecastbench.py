@@ -121,6 +121,20 @@ class Tests(unittest.TestCase):
         self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
         self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
+    def test_etat_suit_reparation_57(self):
+        # 0.10.57 : un mot affaibli par le réparateur (F → f) doit l'être aussi dans l'état
+        from unittest import mock
+
+        def affaiblir(d_, p_, a_=None):
+            d_["mots"][0]["intensite"] = "f"
+            return ["F → f"]
+        with mock.patch.object(ap, "reparer_dossier", affaiblir):
+            dd = ap.assembler({"mots": [{"carte": "POL", "strate": 7, "intensite": "F", "portee": "aucune"}],
+                               "candidats": [], "liaisons": [], "questions": []},
+                              {"evenement": {"carte": "SEU", "strate": 7}, "candidats": []}, [],
+                              {"evenement": "SEUIL@7 apparait"}, "2026-10-25", 7)
+        self.assertIn("POLARITÉ@7[f]", dd["etat"])
+
     def test_empreintes_56(self):
         # 0.10.56 : empreinte de chaque résultat (texte hors registre) ; chaque passage cité est lié à sa source
         ex = [{"famille": "observation", "cartes": [], "requete": "q", "executee": True,

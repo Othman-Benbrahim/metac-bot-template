@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.56"
+VERSION_BOT = "0.10.57"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1154,6 +1154,10 @@ def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujou
                        for r in executees]
     d["evenements"] = [evt]
     d["_reparations"] = reparer_dossier(d, plan, aujourdhui)
+    # 0.10.57 : une réparation peut affaiblir un mot (F → f) ; l'état doit le suivre, sinon le moteur refuse le dossier
+    # (« force contradictoire », révélé par le premier rejeu du banc le 2026-11-12 ; en vrai, une correction du
+    # lecteur, payée, rattrapait l'écart)
+    d["etat"] = etat_depuis(d.get("mots") or [], aujourdhui, jours)
     return d
 
 
@@ -2153,7 +2157,10 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
                                       for r in executees],
                        "evt": json.loads(json.dumps(evt, ensure_ascii=False, default=str)), "evenement": evenement,
                        "semantique": plan["semantique"], "aujourdhui": aujourdhui, "jours": jours,
-                       "hors_strate": bool(hors_strate), "version_bot": VERSION_BOT}
+                       "hors_strate": bool(hors_strate), "version_bot": VERSION_BOT,
+                       # 0.10.57 : les dates présentes dans les résultats (pas le texte) : le rejeu applique ainsi le
+                       # retrait des faits futurs comme le vrai passage
+                       "dates_corpus": sorted(set(dates_citees(trace.get("_textes") or "")))}
     for tentative in range(MAX_CORRECTIONS + 1):
         trace["tentatives"] = tentative + 1
         trace["_rejeu"]["lectures"].append(json.loads(json.dumps(lecture, ensure_ascii=False, default=str)))
