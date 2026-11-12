@@ -71,7 +71,7 @@ class Tests(unittest.TestCase):
             m.dossier_valider(d)
 
     def test_reparations(self):
-        d = {"mots": [{"carte": "POL", "strate": 6, "intensite": "f"}], "candidats": ["POL@6"],
+        d = {"mots": [{"carte": "POL", "strate": 6, "intensite": "f", "portee": "aucune"}], "candidats": ["POL@6"],
              "rejets": {"POL@6": "x"}, "_categories_rejet": {"POL@6": "aucun_fait"},
              "liaisons": [{"de": "POL@6", "type": "renforcement", "vers": "CTR@6"}, {"bizarre": 1}, "trop court"]}
         notes = ap.reparer_dossier(d, {"candidats": ["CTR@6", "SEU@7"]})
@@ -83,11 +83,34 @@ class Tests(unittest.TestCase):
         self.assertEqual(ap.cle_normale("POLARITÉ@13_portee"), "POL@13")
         self.assertEqual(ap.code_carte("POL@6"), "POL")
         # 0.10.46 : clé sans strate, rejet hors des candidates, contre-candidate manquante
-        d2 = {"mots": [{"carte": "INC", "strate": 6, "intensite": "f"}], "candidats": ["INC", "CTR@6"],
+        d2 = {"mots": [{"carte": "INC", "strate": 6, "intensite": "f", "portee": "aucune"}], "candidats": ["INC", "CTR@6"],
               "rejets": {"CTR@6": "a", "SEU@6": "b"}, "_categories_rejet": {}, "liaisons": [], "contre_candidate": None}
         ap.reparer_dossier(d2, {"evenement": {"carte": "SEU", "strate": 6}, "candidats": []})
         self.assertEqual(d2["candidats"], ["INC@6", "CTR@6", "SEU@6"])
         self.assertEqual(d2["contre_candidate"], ["CTR@6"])
+
+    def test_reparations_regles(self):
+        # 0.10.48 : A7, A6/test/garantie, questions — la conséquence écrite de chaque règle, jamais un renforcement
+        m = ap._moteur()
+        d = {"mots": [{"carte": "TRC", "strate": 6, "intensite": "f", "portee": "substantielle"},
+                      {"carte": "CTR", "strate": 6, "intensite": "F", "portee": "substantielle"},
+                      {"carte": "HIE", "strate": 6, "intensite": "f"},
+                      {"carte": "INC", "strate": 6, "intensite": "F", "portee": "aucune", "a6": ""},
+                      {"carte": "POL", "strate": 6, "intensite": "f", "portee": "marginale", "test": "marteau"}],
+             "candidats": [], "rejets": {}, "liaisons": [],
+             "questions": [{"question": "A ?", "si_oui": "POLARITÉ@6", "si_non": "POLARITÉ@6"},
+                           {"question": "B ?", "si_oui": "Les deux", "si_non": "x"}]}
+        ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 6}})
+        mots = {f"{x['carte']}@{x['strate']}": x for x in d["mots"]}
+        self.assertNotIn("TRC@6", mots)                                      # substantielle sur f : rejet
+        self.assertNotIn("HIE@6", mots)                                      # portée absente : non retenu
+        self.assertEqual((mots["CTR@6"]["intensite"], mots["CTR@6"]["force_initiale"]), ("f", "F"))
+        self.assertEqual(mots["INC@6"]["intensite"], "f")                    # A6 vide : au plus f
+        self.assertNotIn("test", mots["POL@6"])
+        self.assertIn("TRC@6", d["rejets"])
+        fm = set(mots)
+        self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
+        self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
 
 if __name__ == "__main__":
