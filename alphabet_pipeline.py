@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.53"
+VERSION_BOT = "0.10.54"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -325,12 +325,21 @@ def extraire_json(texte: str) -> dict:
 BORNE_BASSE, BORNE_HAUTE = 0.001, 0.999  # bornes de l'API Metaculus pour une question binaire
 
 
+def est_panne(e: BaseException) -> bool:
+    """0.10.54 : une panne du HARNAIS (réseau, service, délai, aucun modèle disponible), pas une faute du lecteur. Un
+    JSON illisible lève ValueError (JSONDecodeError en hérite) ; tout le reste est une panne. Une panne est exclue des
+    taux et la question reste à refaire (« Who Validates the Validators? », trois issues au lieu de deux)."""
+    return not isinstance(e, (ValueError, KeyError, TypeError, AttributeError, IndexError))
+
+
 async def json_avec_reprise(llm: Llm, consigne: str, trace: dict | None = None, etape: str = "") -> dict:
     """0.10.25 : une sortie dont le JSON est illisible a UNE seconde chance : la consigne est renvoyée avec l'erreur.
     Le premier échec reste compté (trace["reprises_json"][etape]) : le score des sorties illisibles le voit."""
     try:
         return extraire_json(await llm(consigne))
     except Exception as e:
+        if est_panne(e):      # 0.10.54 : une panne n'est pas un JSON invalide ; pas de reprise sous ce prétexte
+            raise
         if trace is not None:
             r = trace.setdefault("reprises_json", {})
             r[etape] = r.get(etape, 0) + 1
@@ -1945,6 +1954,8 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
     try:
         plan = await json_avec_reprise(llm, consigne_plan(q, recherche, aujourdhui), trace, "plan")
     except Exception as e:
+        if est_panne(e):
+            return dict(trace, statut="panne", motif=f"panne au plan : {type(e).__name__}: {e}"[:300])
         return dict(trace, motif=f"plan illisible : {e}")
     motif = controle_plan(plan)
     # 0.8.0 (audit M-12, m-03) : jusqu'à deux corrections du plan (le refus du plan était la seule cause de refus
@@ -1957,6 +1968,8 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
                                            + f"\n\nTON PLAN PRÉCÉDENT A ÉTÉ REFUSÉ : {motif}\nPLAN REFUSÉ : "
                                            + json.dumps(plan, ensure_ascii=False)))
         except Exception as e:
+            if est_panne(e):
+                return dict(trace, plan=plan, statut="panne", motif=f"panne au plan : {type(e).__name__}: {e}"[:300])
             return dict(trace, plan=plan, motif=f"plan corrigé illisible : {e}")
         motif = controle_plan(plan)
     trace["plan"] = plan
@@ -2047,6 +2060,8 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
     try:
         lecture = await json_avec_reprise(llm, consigne_dossier(q, plan, executees, aujourdhui, jours), trace, "lecture")
     except Exception as e:
+        if est_panne(e):
+            return dict(trace, statut="panne", motif=f"panne à la lecture : {type(e).__name__}: {e}"[:300])
         return dict(trace, motif=f"lecture illisible : {e}")
     relance = None
     if donnees_fixees is None:
@@ -2066,8 +2081,18 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         trace["traduction"] = tr
         programme = tr.get("programme") or None
     dossier = None
+    # 0.10.54 : de quoi REJOUER la lecture sans le modèle (lectures brutes, plan, événement), pour mesurer une version
+    # du réparateur ou du moteur sur les mêmes lectures. Les textes des résultats restent hors registre : le rejeu
+    # saute le retrait des faits futurs.
+    trace["_rejeu"] = {"lectures": [], "plan": json.loads(json.dumps(plan, ensure_ascii=False, default=str)),
+                       "recherches": [{k: r.get(k) for k in ("famille", "cartes", "requete", "executee")}
+                                      for r in executees],
+                       "evt": json.loads(json.dumps(evt, ensure_ascii=False, default=str)), "evenement": evenement,
+                       "semantique": plan["semantique"], "aujourdhui": aujourdhui, "jours": jours,
+                       "hors_strate": bool(hors_strate), "version_bot": VERSION_BOT}
     for tentative in range(MAX_CORRECTIONS + 1):
         trace["tentatives"] = tentative + 1
+        trace["_rejeu"]["lectures"].append(json.loads(json.dumps(lecture, ensure_ascii=False, default=str)))
         dossier = assembler(lecture, plan, executees, evt, aujourdhui, jours)
         if programme:
             dossier["programme"] = programme      # 0.10.7 : lu par le moteur en ombre seulement (§37)
@@ -2143,6 +2168,9 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
                 | {"rejets_classes": {c: {"categorie": dossier["_categories_rejet"].get(c), "motif": m}
                                       for c, m in dossier["rejets"].items()}}, erreur), trace, "correction")
         except Exception as e:
+            if est_panne(e):
+                return dict(trace, dossier=dossier, statut="panne",
+                            motif=f"panne à la correction : {type(e).__name__}: {e}"[:300])
             trace["derniere_erreur"] = f"correction illisible : {e}"
             break
     trace["dossier"] = dossier

@@ -3,6 +3,7 @@
     ALPHABET_SKILL_DIR=chemin/vers/alphabet-situationnel python -m unittest discover -s tests
 """
 import asyncio
+import json
 import copy
 import dataclasses
 import json
@@ -290,7 +291,7 @@ class Tests(unittest.TestCase):
         self.assertAlmostEqual(r.p_B, 0.25)    # la vue extérieure reste scorée
 
     def test_reponse_illisible(self):
-        r, _ = lancer(["je ne sais pas"])
+        r, _ = lancer(["je ne sais pas", "toujours pas"])   # 0.10.54 : deux réponses illisibles (sinon : panne)
         self.assertEqual(r.bras_poste, "A")
         self.assertIn("plan illisible", r.ligne["bras"]["C"]["motif"])
 
@@ -919,6 +920,27 @@ class Tests(unittest.TestCase):
         c2 = asyncio.run(ap.alphabet(Q, "r", llm2, ne_pas_chercher, True, "2026-11-03", 30,
                                      vue_fixee={"frequence": 0.3}))
         self.assertEqual(c2["statut"], "sans_vue")                      # une vue fixée incomplète est refusée
+        # 0.10.54 : rejeu sans modèle : la lecture brute stockée redonne le même statut et le même p
+        import rejeu_banc
+        self.assertTrue(c["_rejeu"]["lectures"])
+        rj = rejeu_banc.rejouer_lecture(c["_rejeu"]["lectures"][0], json.loads(json.dumps(c["_rejeu"])))
+        self.assertEqual(rj["statut"], c["statut"] if c["statut"] != "hors_strate" else c["exploratoire"]["statut"])
+        if rj["statut"] == "estime" and c.get("p_C") is not None:
+            self.assertAlmostEqual(rj["p"], c["p_C"])
+
+    def test_panne_harnais(self):                                  # 0.10.54 : trois issues, pas deux
+        self.assertTrue(ap.est_panne(ConnectionError("503")))
+        self.assertTrue(ap.est_panne(TimeoutError()))
+        self.assertFalse(ap.est_panne(json.JSONDecodeError("x", "y", 0)))
+
+        async def tombe(consigne):
+            raise ConnectionError("service indisponible")
+
+        async def ne_pas_chercher(req):
+            return ""
+        c = asyncio.run(ap.alphabet(Q, "r", tombe, ne_pas_chercher, True, "2026-11-03", 30, vue_fixee=vue(0.25)))
+        self.assertEqual(c["statut"], "panne")
+        self.assertNotIn("reprises_json", c)                            # pas de reprise « JSON invalide »
 
     def test_equivalences_donnees_sous_reglage(self):           # 0.9.8 : banc seulement
         ancien = ap.EQUIV_DONNEES

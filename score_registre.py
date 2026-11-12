@@ -890,6 +890,8 @@ def scorer_retro(registre: Path) -> dict:
     sortie["par_banc"] = {b_: sum(1 for x in intactes if (x.get("banc") or "metaculus") == b_)
                           for b_ in sorted({x.get("banc") or "metaculus" for x in intactes})}
     sortie["forecastbench"] = {"n_chiffres": len(fb_), "C_sur_B": comparer(fb_, "C", "B", borne_gain_C_B()) if fb_ else None,
+                               # 0.10.54 : pannes du harnais, hors de tout taux (refaites au passage suivant)
+                               "n_pannes": sum(1 for x in tout if x.get("banc") == "forecastbench" and x.get("statut") == "panne"),
                                "cout_moyen_usd": (round(sum(float(x.get("cout_usd") or 0) for x in intactes
                                                             if x.get("banc") == "forecastbench")
                                                         / max(1, sum(1 for x in intactes if x.get("banc") == "forecastbench")), 4))}

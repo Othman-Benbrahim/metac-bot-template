@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.53 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.54 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.54** : **rejeu et pannes** (d'après un article sur les harnais d'évaluation, décision d'auteur du
+  2026-11-12). (1) Chaque ligne du banc garde les lectures brutes du lecteur (la première et les corrections), le
+  plan et l'événement (`rejeu`). `python rejeu_banc.py` les repasse par le réparateur et le moteur actuels, sans
+  modèle et sans coût : on mesure une correction sur les MÊMES lectures, au lieu de comparer des passages qui n'ont
+  aucune question en commun. Limites : le retrait des faits futurs et la boucle de correction ne sont pas rejoués.
+  (2) Trois issues au lieu de deux : une panne du harnais (réseau, service, délai, exception du banc) n'est plus un
+  « refus » ni un « JSON illisible » ; statut `panne`, écrite pour le diagnostic, exclue des taux, et la question
+  sera refaite. Trois pannes de suite arrêtent le banc. Une panne n'est plus reprise sous le motif « JSON invalide ».
 - **0.10.53** : **ombre « avec liaisons »** (décision d'auteur du 2026-11-12). Les liaisons du dossier n'atteignaient
   pas le calcul (sauf « averti ») : un transfert déclaré ne changeait rien au p. Quand un dossier chiffré garde des
   liaisons, le bot le recalcule avec toutes (`p_avec_liaisons`, dans `ombre_causale`) : le transfert lève la décote
