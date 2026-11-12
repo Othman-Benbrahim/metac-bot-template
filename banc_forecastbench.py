@@ -218,8 +218,10 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
                  nature_etat_nul=c.get("nature_etat_nul"), puits=c.get("puits"),
                  compte_calcule=bool((c.get("vue") or {}).get("compte_calcule")),
                  exploratoire=c.get("exploratoire"), symetrique=c.get("symetrique"),
-                 ombre_causale=c.get("ombre_causale"),
+                 ombre_causale=c.get("ombre_causale"), rejeu=c.get("_rejeu"),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
+    if (c.get("exploratoire") or {}).get("statut") == "panne":      # 0.10.54 : la panne de la lecture exploratoire
+        ligne.update(statut="panne", motif=c["exploratoire"].get("motif"))
     return ligne
 
 
@@ -240,11 +242,11 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
     async def llm(consigne: str) -> str:
         return await modele.invoke(consigne)
     jeux = [jeu] if jeu else jeux_candidats(date.today(), date.fromisoformat(apres))
-    deja, faites = ar.deja_faites(), 0
+    deja, faites, pannes_suite = ar.deja_faites(), 0, 0
     rnd = random.Random(graine)
     from forecasting_tools import MonetaryCostManager
     for j in jeux:
-        if faites >= n:
+        if faites >= n or pannes_suite >= 3:
             break
         try:
             qs = await _json(f"{DEPOT}/question_sets/{j}-llm.json")
@@ -263,8 +265,9 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
                 try:
                     ligne = await un_test(x, j, llm, deja)
                 except Exception as e:
+                    # 0.10.54 : une exception du banc est une panne du HARNAIS (code ou service), pas un refus
                     ligne = {"type": "retro", "banc": "forecastbench", "version_bot": ap.VERSION_BOT,
-                             "question_id": x["qid"], "statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:300]}
+                             "question_id": x["qid"], "statut": "panne", "motif": f"{type(e).__name__}: {e}"[:300]}
                 cout = cm.current_usage
             if ligne is None:
                 continue
@@ -272,6 +275,16 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             apres_m = ar.moteurs_utilises()      # 0.10.50 : quels moteurs ont servi pour CETTE question
             ligne["moteurs_recherche"] = {k: v - avant_m.get(k, 0) for k, v in apres_m.items() if v - avant_m.get(k, 0)}
             ar.ecrire(ligne)
+            if ligne.get("statut") == "panne":
+                # 0.10.54 : écrite pour le diagnostic, mais ni comptée ni marquée faite : un prochain passage la refera.
+                # Trois pannes de suite : le service est tombé, on s'arrête plutôt que de brûler la liste.
+                pannes_suite += 1
+                print(f"{ligne['question_id'][:60]} : PANNE (non comptée) · {ligne.get('motif', '')[:120]}")
+                if pannes_suite >= 3:
+                    print("Trois pannes de suite : arrêt du banc.")
+                    break
+                continue
+            pannes_suite = 0
             deja.add(ligne["question_id"])
             faites += 1
             print(f"{ligne['question_id'][:60]} : {ligne.get('statut')} · B {ligne.get('p_B')} · C {ligne.get('p_C')} · "

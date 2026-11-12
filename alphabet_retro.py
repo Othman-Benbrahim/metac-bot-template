@@ -34,7 +34,9 @@ def deja_faites() -> set[str]:
     f = ap.REGISTRE / RETRO
     if not f.is_file():
         return set()
-    return {json.loads(x)["question_id"] for x in f.read_text(encoding="utf-8").splitlines() if x.strip()}
+    # 0.10.54 : une panne du harnais ne compte pas comme faite (elle sera refaite)
+    return {d["question_id"] for d in (json.loads(x) for x in f.read_text(encoding="utf-8").splitlines() if x.strip())
+            if d.get("statut") != "panne"}
 
 
 def consigne_sonde(titre: str, criteres: str) -> str:
