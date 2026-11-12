@@ -59,6 +59,16 @@ class Tests(unittest.TestCase):
         x3 = dict(x, criteres="Résolu OUI si …", url="https://acleddata.com", source="acled", titre="t")
         v3 = asyncio.run(fb.vue_calculee(x3, q2, "2026-10-25"))
         self.assertTrue(v3["resolution"] and v3["source_resolution"]["emetteur"] == "ACLED")   # 0.10.46
+        # 0.10.47 : la vue calculée passe la validation du MOTEUR (dossier complet), pas seulement celle du bot
+        import json as _j
+        m = ap._moteur()
+        plan = {"evenement": {"carte": "SEU", "strate": 7, "type": "apparait"}, "semantique": "au-moins-une-fois"}
+        v4 = asyncio.run(fb.vue_calculee(x3, q, "2026-10-25"))
+        for vv in (v3, v4):
+            evt, _ = ap.evenement_depuis(plan, vv)
+            d = _j.loads(ap.lire_ref("assets/dossier.exemple.json"))
+            d["evenements"] = [evt]
+            m.dossier_valider(d)
 
     def test_reparations(self):
         d = {"mots": [{"carte": "POL", "strate": 6, "intensite": "f"}], "candidats": ["POL@6"],

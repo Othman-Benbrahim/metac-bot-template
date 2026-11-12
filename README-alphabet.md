@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.46 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.47 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.47** : **troisième passage ForecastBench** : les refus du passage précédent ont disparu, il en restait un seul
+  type (15 sur 16) : la vue calculée n'avait pas `ecart_critere`, exigé par le moteur depuis 0.7.44. Ajouté, avec un
+  écart honnête pour ACLED (taux stable supposé, rafales des conflits) ; un rejet sans motif devient « non cherchée ».
+  Un test vérifie désormais la vue calculée contre la validation du MOTEUR, pas seulement celle du bot. La vue
+  calculée est gardée dans chaque ligne (`vue_calculee`) pour vérifier B. Cohérence de B vérifiée : SOFRINDEX, indice
+  cumulé toujours croissant, reçoit 0,999 et se résout OUI.
 - **0.10.46** : **deuxième passage ForecastBench (20 questions, 0.10.45)** : B calculé par le code pour 19 sur 20 (Brier
   de B 0,26 : des marches aléatoires, à peine mieux que pile ou face, comme attendu), mais les lectures exploratoires
   restaient refusées pour la forme. Corrigé : la vue calculée porte la résolution de la question (4 refus « résolution

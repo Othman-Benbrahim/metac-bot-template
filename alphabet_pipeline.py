@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.46"
+VERSION_BOT = "0.10.47"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1089,6 +1089,12 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
         else:
             notes.append(f"liaison illisible retirée : {str(li)[:80]}")
     d["liaisons"] = garde
+    # 1 bis. un rejet sans motif (0.10.47) : « non examinée », catégorie non cherchée (effort 0)
+    for k, v in list((d.get("rejets") or {}).items()):
+        if not re.sub(r"^\[[^\]]*\]", "", str(v or "")).strip():
+            d["rejets"][k] = "[non_cherchee] motif non donné par le lecteur : candidate non examinée"
+            d.setdefault("_categories_rejet", {})[k] = "non_cherchee"
+            notes.append(f"rejet sans motif complété : {k}")
     # 2. une carte ancrée n'est pas rejetée
     for k in [k for k in d.get("rejets") or {} if cle_normale(k) in fm]:
         d["rejets"].pop(k, None)
