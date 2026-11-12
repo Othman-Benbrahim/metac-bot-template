@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.48 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.49 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.49** : **consigne du lecteur précisée**, pour que les règles d'ancrage soient respectées à la lecture plutôt
+  que réparées après coup (décision d'auteur du 2026-11-12). Écriture des cartes (ABR, strate entière, ABR@strate) ;
+  portée OBLIGATOIRE pour chaque mot et sa conséquence A7 en clair ; test parmi les quatre valeurs ; ligne a6 avec la
+  liste exacte des VOISINES À PASSER pour chaque candidate (calculée depuis le moteur) ; forme exacte d'une question
+  (si_oui ≠ si_non, « indetermine », resolution, justification). Les réparations de la 0.10.48 restent en filet.
+  Monde synthétique : protocole 8.
 - **0.10.48** : **quatrième passage ForecastBench** : les refus de FORME ont disparu ; ceux qui restaient (18 sur 20)
   venaient des règles d'ancrage du skill, que le lecteur ne respectait pas hors strate 7. `reparer_dossier` applique
   désormais la conséquence ÉCRITE de chaque règle au lieu de faire refuser tout le dossier, et n'affaiblit jamais
