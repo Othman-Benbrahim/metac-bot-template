@@ -6,7 +6,8 @@ du réparateur ou du moteur sur les MÊMES lectures, sans coût et sans la varia
 changement de règle d'un changement du lecteur (Shankar et al., 2024, « Who Validates the Validators? » : la notation
 déplace les critères).
 
-Limites, déclarées : le retrait des faits futurs est sauté (les textes des résultats restent hors registre) ; la boucle
+Limites, déclarées : le retrait des faits futurs n'est rejoué que pour les lignes qui gardent les dates des résultats
+(0.10.57 et après ; le texte, lui, reste hors registre) ; la boucle
 de correction ne rejoue pas (elle demande le modèle) : on rejoue la première lecture, et la dernière s'il y en a eu
 plusieurs ; les ombres du contradicteur, de la traduction et du programme génératif ne sont pas rejouées.
 
@@ -28,6 +29,8 @@ def rejouer_lecture(lecture: dict, r: dict) -> dict:
     plan, evt = copy.deepcopy(r["plan"]), copy.deepcopy(r["evt"])
     d = ap.assembler(copy.deepcopy(lecture), plan, r.get("recherches") or [], evt, r["aujourdhui"], r["jours"])
     out = {"reparations": len(d.get("_reparations") or []), "mots": len(d.get("mots") or [])}
+    if "dates_corpus" in r:        # 0.10.57 : retrait des faits futurs, rejoué sur les dates des résultats
+        out["faits_futurs_retires"] = ap.retirer_faits_futurs(d, " ".join(r["dates_corpus"]), r["aujourdhui"], r["jours"])
     if not d["mots"]:
         return dict(out, statut="etat_nul")
     erreur = ap.controle_etat(d, plan)
