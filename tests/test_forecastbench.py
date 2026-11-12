@@ -142,6 +142,12 @@ class Tests(unittest.TestCase):
                               "presence", "2026-10-25", {"frequence": 0.1})
         i = [k for k, x in enumerate(vu["cmd"]) if x == "--liaison"]
         self.assertEqual([vu["cmd"][k + 1] for k in i], ["POL@13 averti SEU@13"])
+        # 0.10.53 : ombre « avec liaisons » : toutes les liaisons partent au moteur
+        with mock.patch.object(ap.subprocess, "run", faux_run):
+            ap.appeler_moteur({"liaisons": ["POL@13 averti SEU@13", "POL@13 tension CTR@13"]}, "[x]", "SEUIL@13 apparait",
+                              "presence", "2026-10-25", {"frequence": 0.1}, toutes_liaisons=True)
+        i = [k for k, x in enumerate(vu["cmd"]) if x == "--liaison"]
+        self.assertEqual(len(i), 2)
 
     def test_reparations_51(self):
         # 0.10.51 : liaison inconnue, corroboration à une source, extrait trop long, garantie postérieure (B1),
