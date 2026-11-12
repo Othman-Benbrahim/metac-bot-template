@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.55 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.56 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.56** : **empreintes des sources** (idée reprise du reçu de NightFalcon, Intuit ; décision d'auteur du
+  2026-11-12). Le texte des résultats de recherche reste hors registre ; chaque recherche enregistrée porte désormais
+  l'empreinte SHA-256 de son texte et sa longueur (`recherches`, `rejeu`). Chaque passage cité par le lecteur est lié à
+  l'empreinte du résultat qui le contient (`empreintes_passages`), ou à rien s'il ne figure dans aucun : on pourra
+  prouver plus tard qu'un passage venait bien de la recherche, et voir si une page a changé depuis. Aucun effet sur
+  aucun p.
 - **0.10.55** : **sixième passage ForecastBench (bot 0.10.53)** : 16 lectures chiffrées sur 20 (3 en strate 7, 13
   exploratoires), 1 état nul, 3 refus. Corrigé : un rejet rendu en liste sans clé « carte » devenait « ?0 », que le
   moteur refusait (2 refus) ; la carte est maintenant cherchée sous d'autres noms, ou dans une valeur « ABR@s », et

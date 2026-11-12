@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.55"
+VERSION_BOT = "0.10.56"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -323,6 +323,41 @@ def extraire_json(texte: str) -> dict:
 
 
 BORNE_BASSE, BORNE_HAUTE = 0.001, 0.999  # bornes de l'API Metaculus pour une question binaire
+
+
+def empreinte(texte: str) -> str:
+    """0.10.56 : SHA-256 du texte d'un résultat de recherche, tel que reçu. Le texte reste hors registre (droits des
+    pages) ; l'empreinte permet de prouver plus tard qu'un passage cité figurait dans ce que la recherche a ramené, et
+    de voir si la page a changé depuis (idée reprise du reçu de NightFalcon, Intuit)."""
+    return hashlib.sha256(str(texte or "").encode("utf-8")).hexdigest()
+
+
+def sans_resultat(r: dict) -> dict:
+    """Une recherche pour le registre : sans son texte, avec son empreinte et sa longueur s'il y en a un."""
+    out = {k: v for k, v in r.items() if k != "resultat"}
+    if r.get("resultat"):
+        out.update(empreinte=empreinte(r["resultat"]), longueur=len(str(r["resultat"])))
+    return out
+
+
+def empreintes_passages(dossier: dict, executees: list[dict]) -> list[dict]:
+    """0.10.56 : pour chaque mot qui cite un passage, l'empreinte du résultat de recherche qui contient l'extrait
+    (comparaison normalisée, sur les 120 premiers caractères) ; None si aucun résultat ne le contient."""
+    sources = [(empreinte(r["resultat"]), _normal(r["resultat"])) for r in executees if r.get("resultat")]
+    out = []
+    for m in (dossier or {}).get("mots") or []:
+        if not isinstance(m, dict):
+            continue
+        ps = m.get("passage")
+        ps = ps if isinstance(ps, list) else [ps]          # un passage, ou une liste de passages
+        for p_ in ps:
+            ex = p_.get("extrait") if isinstance(p_, dict) else None
+            if not isinstance(ex, str) or not ex.strip():
+                continue
+            cle_ = _normal(ex)[:120]
+            h = next((h for h, t in sources if cle_ and cle_ in t), None)
+            out.append({"mot": f"{m.get('carte')}@{m.get('strate')}", "empreinte": h})
+    return out
 
 
 def est_panne(e: BaseException) -> bool:
@@ -732,7 +767,7 @@ async def relancer_angles_morts(q: Question, plan: dict, executees: list[dict], 
     deja = {r["requete"].lower() for r in executees}
     reqs = [r for r in reqs if isinstance(r["requete"], str) and r["requete"].strip().lower() not in deja]
     nouvelles = await executer_requetes(reqs, chercher, recherche_reelle, MAX_RECHERCHES_RELANCE)
-    relance["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in nouvelles]
+    relance["recherches"] = [sans_resultat(r) for r in nouvelles]
     if not any(r.get("executee") for r in nouvelles):
         return lecture, executees, dict(relance, echec="aucune recherche de relance exécutée")
     toutes = executees + nouvelles
@@ -1952,7 +1987,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
         return c
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
-                                   "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur")
+                                   "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur",
+                                   "empreintes_passages")
              if c.get(k) is not None}
     if (c.get("dossier") or {}).get("_liaisons_hors_liste"):      # 0.10.52 (§51) : verbes inventés par le lecteur
         explo["liaisons_hors_liste"] = c["dossier"]["_liaisons_hors_liste"]
@@ -2083,7 +2119,7 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         executees = []
     else:
         executees = await executer_recherches(plan, chercher, recherche_reelle)
-    trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
+    trace["recherches"] = [sans_resultat(r) for r in executees]
     try:
         lecture = await json_avec_reprise(llm, consigne_dossier(q, plan, executees, aujourdhui, jours), trace, "lecture")
     except Exception as e:
@@ -2099,7 +2135,7 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         "\n" + plan["_donnees"] if plan.get("_donnees") else "")
     if relance:
         trace["relance"] = relance
-        trace["recherches"] = [{k: v for k, v in r.items() if k != "resultat"} for r in executees]
+        trace["recherches"] = [sans_resultat(r) for r in executees]
     if donnees_fixees is None and tirage_invariance(q.id):      # 0.10.11 (§39) : test d'invariance, en ombre
         trace["invariance"] = await tester_invariance(q, plan, executees, llm, aujourdhui, jours)
     programme = None
@@ -2113,6 +2149,7 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
     # saute le retrait des faits futurs.
     trace["_rejeu"] = {"lectures": [], "plan": json.loads(json.dumps(plan, ensure_ascii=False, default=str)),
                        "recherches": [{k: r.get(k) for k in ("famille", "cartes", "requete", "executee")}
+                                      | ({"empreinte": empreinte(r["resultat"])} if r.get("resultat") else {})
                                       for r in executees],
                        "evt": json.loads(json.dumps(evt, ensure_ascii=False, default=str)), "evenement": evenement,
                        "semantique": plan["semantique"], "aujourdhui": aujourdhui, "jours": jours,
@@ -2121,6 +2158,10 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         trace["tentatives"] = tentative + 1
         trace["_rejeu"]["lectures"].append(json.loads(json.dumps(lecture, ensure_ascii=False, default=str)))
         dossier = assembler(lecture, plan, executees, evt, aujourdhui, jours)
+        try:                       # traçabilité seulement : une erreur ici ne doit jamais coûter la lecture
+            trace["empreintes_passages"] = empreintes_passages(dossier, executees)
+        except Exception as e:
+            trace["empreintes_passages"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
         if programme:
             dossier["programme"] = programme      # 0.10.7 : lu par le moteur en ombre seulement (§37)
         futurs = retirer_faits_futurs(dossier, trace.get("_textes") or "", aujourdhui, jours)
@@ -2523,7 +2564,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                         "rho", "motif", "tentatives", "reprises_plan", "recherches",
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
                                                         "invariance", "preselection", "reprises_json", "compte_echoue", "fidelite_plan",
-                                                        "nature_etat_nul", "relance", "dynamique_observee")},
+                                                        "nature_etat_nul", "relance", "dynamique_observee",
+                                                        "empreintes_passages")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
                             "p_C_corrige": corriger_C(c.get("p_C"), corr),
