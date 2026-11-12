@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.74
+> Version : 0.7.75
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2697,4 +2697,30 @@ apprend le plus. Elle rend aussi visible ce que le calcul publié ignore : une c
 faire baisser p (P(U|¬C) < P(U) dès que P(U|C) > P(U)), comme le fait l'ombre générative (§36).
 
 **Ce qui ne change pas.** Le p publié, la règle d'arrêt (borne de l'écart, §34).
+
+## 51. Averti : une liaison pour l'indice (0.7.75)
+
+**Décision d'auteur, le 2026-11-12**, nom choisi par l'auteur, après le cinquième passage du banc ForecastBench.
+
+**L'origine.** Le lecteur a inventé des liaisons hors de la liste (« informe », « renforce », « coexiste », « borne »,
+« alimente »). Quatre ont une tête dans la grammaire (renforcement, indépendance, tension, transfert). « Informe » n'en a
+pas : il dit qu'une situation **renseigne** sur une autre sans la causer. C'est la distinction de Pearl entre voir et
+faire, et celle du §34 entre indices et causes, qui n'avait pas de symbole.
+
+**La liaison.** `A —averti→ B` : observer A rend B plus ou moins attendu, sans que A agisse sur B (critère dans
+`grammaire.md` §4). Elle vaut dans une strate et entre strates, et peut viser l'événement calculé.
+
+**Sa place dans le calcul, en ombre.** Le p publié combine les sources en produit des λ, c'est-à-dire qu'il les lit
+toutes comme des indices (§33-§34) ; l'ombre `noisy_or` les lit toutes comme des causes. *Averti* permet au lecteur de
+trancher source par source. L'ombre `mixte_averti` combine les sources déclarées *averti* vers la cible en produit, et
+les autres en noisy-or : P = cote(noisy-or des causes) × Πλ des indices, le produit borné par `plafond_LR`. Aucun
+paramètre nouveau, aucun λ nouveau : *averti* ne s'additionne pas à la matrice, ce qui compterait deux fois la même
+carte. Calculée seulement si au moins un *averti* vise la cible.
+
+**Ce qu'on mesurera.** Sur les issues réelles, si `mixte_averti` fait mieux que le produit et que le noisy-or là où le
+lecteur a déclaré des indices. Et, à part, combien de fois chaque liaison hors liste revient, et chez combien de
+lecteurs différents : un verbe inventé par plusieurs modèles sans concertation est un symbole candidat, pas un tic de
+langue. Toute adoption passe par une décision datée.
+
+**Ce qui ne change pas.** Le p publié ; les neuf autres types.
 

@@ -1,9 +1,17 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.74
+> Version : 0.7.75
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.75 — 2026-11-12 · Averti
+
+Décision d'auteur du 2026-11-12 (`validation.md` §51) : un dixième type de liaison, pour l'indice.
+
+- `averti` : observer A renseigne sur B sans agir sur B ; dans une strate et entre strates ; peut viser l'événement.
+- Ombre `mixte_averti` dans `sensibilite` : indices déclarés en produit, autres sources en noisy-or.
+- Rien ne change au p publié ; aucun paramètre nouveau.
 
 ## 0.7.74 — 2026-11-11 · Valeur attendue de l'information
 

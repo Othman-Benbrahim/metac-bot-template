@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.74
+> Version : 0.7.75
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -507,3 +507,15 @@ fermer, pas seulement s'ouvrir. Prochaines étapes, à décider une par une :
 5. **Nouveaux freins** : seulement par la règle du §48 (structure qui borne ou exclut, avec une référence), jamais
    par simple tension documentée.
 
+
+## Chantier du moteur : recouper et apprendre (décision d'auteur du 2026-11-12)
+
+Le moteur fonctionne (autotest, audit) mais ses statistiques sont écrites à la main et ses λ et sa matrice sont
+posés. Par étapes, sans réécriture pendant l'étape 1 (fonctionnement) :
+
+- **Étape 2 (cohérence)** : recouper les calculs faits main avec des références libres, sur les mêmes données :
+  statsmodels et arch (AR(1), saisonnalité, volatilité), properscoring et scikit-learn (scores, calibration du C
+  corrigé), confseq ou une bibliothèque d'e-valeurs (test séquentiel C contre B). Un écart révèle un défaut caché.
+- **Étape 3 (performance)** : pgmpy (réseau bayésien à liens noisy-or) pour recouper le programme génératif sans
+  énumération et apprendre les λ et la matrice sur des séquences codées (test des freins) ; plus tard DoWhy ou
+  causal-learn pour la structure ; découpage de `moteur.py` en modules.

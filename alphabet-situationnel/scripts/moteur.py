@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.74 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.75 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -657,6 +657,7 @@ MEDIATION_RETIRES = []
 # 0.7.57 (§34) : combinaison des cartes. « produit » (publié) : les λ se multiplient sur la cote, ce qui
 # suppose les cartes indépendantes sachant l'événement (des indices). « noisy_or » (ombre) : chaque carte
 # est une cause qui, seule, produirait l'événement avec une chance propre (Poole & Mackworth, 3e éd., §9.3).
+# 0.7.75 (§51) : « mixte » (ombre) : indices déclarés « averti » en produit, les autres sources en noisy-or.
 COMBINAISON = "produit"
 # 0.7.58 (§35) : tempérage des cartes, posé seulement le temps d'une sonde. logit p₀ = logit f + α·log Πλ
 # (Murphy 2026, §6, forme explicite) ; α = 1 est le calcul publié.
@@ -957,6 +958,17 @@ def combiner_noisy_or(f, src):
         if x["lambda"] >= 1: reste *= 1 - (pi - f) / (1 - f)
         else: garde *= pi / f
     return (1 - (1 - f) * reste) * garde
+
+
+def combiner_mixte(f, src, indices, plafond=None):
+    """0.7.75 (§51). Les sources déclarées « averti » vers la cible sont des indices : leurs λ se multiplient sur la
+    cote (le produit publié). Les autres sont lues comme des causes : noisy-or (§34). P = cote(noisy-or des causes) × Πλ
+    des indices. Tout en indices : le produit ; aucun indice : le noisy-or. Aucun paramètre nouveau."""
+    causes = [x for x in src if x["mot"] not in indices]
+    lr = math.prod(x["lambda"] for x in src if x["mot"] in indices)
+    if plafond: lr = min(max(lr, 1 / plafond), plafond)
+    pc = combiner_noisy_or(f, causes)
+    return pc if pc in (0., 1.) else odds_module(pc, lr)
 
 
 def sources_de(etat, cible, liaisons, bouge, manque):
@@ -1327,7 +1339,7 @@ def mode_solo(base, strate=None):
 
 def lire_liaisons(liste, etat=None):
     types = {'echo':'écho', 'écho':'écho', 'independance':'indépendance', 'indépendance':'indépendance',
-             **{x:x for x in ['transfert','conflit','renforcement','inclusion','appui','reproduction','tension']}}
+             **{x:x for x in ['transfert','conflit','renforcement','inclusion','appui','reproduction','tension','averti']}}
     out = []
     for raw in liste or []:
         exiger(isinstance(raw, str), 'liaison : texte requis')
@@ -1337,10 +1349,12 @@ def lire_liaisons(liste, etat=None):
         a, b, t = cle_valide(a), cle_valide(b), types[t]
         exiger(a != b, 'liaison réflexive interdite')
         same = a.split('@')[1] == b.split('@')[1]
-        exiger((same and t not in ('transfert','écho')) or (not same and t in ('transfert','écho','conflit')),
+        # 0.7.75 (§51) : « averti » (observer A renseigne sur B sans agir sur B) vaut dans une strate et entre strates
+        exiger(t == 'averti' or (same and t not in ('transfert','écho')) or (not same and t in ('transfert','écho','conflit')),
                f'liaison incompatible avec ses strates : {raw}')
         if etat is not None:
-            exiger(a in forces(etat) and b in forces(etat), f'liaison vers un mot absent : {raw}')
+            # « averti » peut viser l'événement, qui n'est pas un mot de l'état ; sa source doit l'être
+            exiger(a in forces(etat) and (b in forces(etat) or t == 'averti'), f'liaison vers un mot absent : {raw}')
         out.append((a,t,b))
     exiger(len(out) == len(set(out)), 'liaisons dupliquées')
     return out
@@ -2287,7 +2301,9 @@ def apriori(etat,typ,cible,base,liaisons=(),bouge=(),manque=(),refs=None,ctr_mat
     # 0.7.72 (§48) : avec les freins, le produit est borné des deux côtés : [1/plafond, plafond]
     capped=lr>P['plafond_LR'] or lr<1/P['plafond_LR'];lr=min(max(lr,1/P['plafond_LR']),P['plafond_LR'])
     if TEMPERAGE!=1.0: lr=lr**TEMPERAGE
-    p=odds_module(f,lr) if COMBINAISON=='produit' else combiner_noisy_or(f,src)
+    if COMBINAISON=='produit':p=odds_module(f,lr)
+    elif COMBINAISON=='mixte':p=combiner_mixte(f,src,{a for a,t,b in liaisons if t=='averti' and b==cible},P['plafond_LR'])
+    else:p=combiner_noisy_or(f,src)
     if GENERATIF is not None and typ=='apparait' and not sans_cartes and 0<f<1:
         p=p0_generatif(etat,cible,f,src,GENERATIF['params'],GENERATIF['rejets'],GENERATIF.get('programme'))
     # Exact externally supplied boundaries are supported; never manufacture a beta law with zero parameters.
@@ -2781,6 +2797,16 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None,rejets=None,pr
             noisy_or={'p':rn_['p'],'effet':rn_['p']-reference}
         except ValueError:pass
         finally:COMBINAISON='produit'
+        # 0.7.75 (§51) : combinaison mixte, seulement si le lecteur a déclaré au moins un « averti » vers la cible
+        mixte_averti=None
+        indices_=sorted({a for a,t,b in opts.get('liaisons') or [] if t=='averti' and b==cible})
+        if indices_:
+            try:
+                COMBINAISON='mixte'
+                rx_=horizon_result(etat,typ,cible,base,opts,h,semantique)
+                mixte_averti={'p':rx_['p'],'effet':rx_['p']-reference,'indices':indices_}
+            except ValueError:pass
+            finally:COMBINAISON='produit'
         # 0.7.58 (§35) : tempérage des cartes, α fixés avant toute donnée (0,5 comparaison principale ; 0,25 et
         # 0,75 descriptifs), hors p publié. Murphy (2026) a choisi α = 0,35 sur l'échantillon même : erreur évitée.
         global TEMPERAGE
@@ -2909,7 +2935,7 @@ def sensibilite(etat,typ,cible,base,opts,h,semantique,pieces=None,rejets=None,pr
                       'effectifs':sorted({x['c_A'] for x in sortie if x['groupe']=='classe' if x['c_A'] is not None})},
             'effet_force':rf['p']-reference,'effet_attenuation':attenuations,
             'mediation':mediation,'ablation':ablation,
-            'noisy_or':noisy_or,'valeur_information':valeur_information,'tempere':tempere,'generatif':generatif,'lecture_probabiliste':lecture_probabiliste,'sans_plafond':sans_plafond,'avec_freins':avec_freins,
+            'noisy_or':noisy_or,'mixte_averti':mixte_averti,'valeur_information':valeur_information,'tempere':tempere,'generatif':generatif,'lecture_probabiliste':lecture_probabiliste,'sans_plafond':sans_plafond,'avec_freins':avec_freins,
             'bande_large':max(ps)-min(ps)>P['largeur_max_affichage'],
             'saturee':any(abs(p-P['plafond_p0'])<1e-12 for p in ps)}
     # Deux bandes qui traversent le seuil ne se lisent pas de la même façon : on nomme celle qui décide.
@@ -3062,7 +3088,7 @@ def modele_declare(result,typ,sem,liaisons):
     return {'estimande':{'apparait':'P(carte@strate présente à l’horizon | état, même fenêtre)','persiste':'P(carte@strate encore présente | état)',
                          'disparait':'P(carte@strate absente | état)'}.get(typ)+f' · sémantique {sem}',
             'lecture':'conditionnelle de pseudo-vraisemblance (logit p₀ = logit f + Σ ln λ) ; aucune loi jointe garantie, matrice non symétrique',
-            'quotient':['objets','rôles','positions tient','liaisons '+'|'.join(x for x in ('conflit','tension','appui','reproduction','indépendance','écho'))],
+            'quotient':['objets','rôles','positions tient','liaisons '+'|'.join(x for x in ('conflit','tension','appui','reproduction','indépendance','écho','averti'))],
             'champ':{'produit_lambda':ap.get('LR'),'plafonne':ap.get('LR_plafonne')},
             'liaisons_non_inferentielles':non_lues}
 
@@ -4048,7 +4074,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('validation.md','48'):'Freins', ('validation.md','49'):'Freins en ombre', ('validation.md','50'):'Valeur attendue', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('validation.md','48'):'Freins', ('validation.md','49'):'Freins en ombre', ('validation.md','50'):'Valeur attendue', ('validation.md','51'):'Averti', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4292,7 +4318,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.74','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.75','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -6062,6 +6088,22 @@ def autotest():
             self.assertEqual(sorted(t),[.25,.5,.75]);self.assertEqual(globals().get('TEMPERAGE'),1.0)
             self.assertTrue(f<t[.25]<t[.5]<t[.75]<r['p'])                       # les cartes montent ici
             self.assertEqual(r['p'],calculer(e,'apparait','SEU@7',base,asof='2026-09-20')['p'])
+        def test_averti(self):
+            # 0.7.75 (§51) : « averti » vise l'événement ; sans effet sur p publié ; ombre mixte entre produit et noisy-or
+            e=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + CONTRAINTE@7[f]')
+            li=lire_liaisons(['CROISSANCE@7 averti SEUIL@7'],e);self.assertEqual(li,[('CRO@7','averti','SEU@7')])
+            self.assertEqual(lire_liaisons(['CONTRAINTE@7 averti POLARITÉ@6']),[('CTR@7','averti','POL@6')])
+            with self.assertRaises(ValueError):lire_liaisons(['SEUIL@7 averti CROISSANCE@7'],e)   # source absente
+            base=base_active(charger(RACINE/'assets/base-de-cas.exemple.jsonl'),'2026-09-20',True)
+            r0=calculer(e,'apparait','SEU@7',base,asof='2026-09-20')
+            r1=calculer(e,'apparait','SEU@7',base,liaisons=li,asof='2026-09-20');self.assertEqual(r0['p'],r1['p'])
+            sb0=sensibilite(e,'apparait','SEU@7',base,{'asof':'2026-09-20'},1,'presence');self.assertIsNone(sb0['mixte_averti'])
+            sb=sensibilite(e,'apparait','SEU@7',base,{'asof':'2026-09-20','liaisons':li},1,'presence')
+            m=sb['mixte_averti'];self.assertEqual(m['indices'],['CRO@7']);self.assertEqual(globals().get('COMBINAISON'),'produit')
+            lo,hi=sorted((sb['noisy_or']['p'],r0['p']));self.assertTrue(lo-1e-9<=m['p']<=hi+1e-9)
+            src=[{'mot':'A','lambda':3.0},{'mot':'B','lambda':3.0}]
+            self.assertAlmostEqual(combiner_mixte(.2,src,{'A','B'}),odds_module(.2,9.0))
+            self.assertAlmostEqual(combiner_mixte(.2,src,set()),combiner_noisy_or(.2,src))
         def test_noisy_or_vdi(self):
             # 0.7.57 (§34) : noisy-or = produit avec une seule source ; plus bas que le produit à deux sources
             # qui montent ; valeur de l'information bornée, hors du p publié.
