@@ -269,7 +269,9 @@ class Tests(unittest.TestCase):
 
     def test_correction_puis_estime(self):
         mauvaise = lecture()
-        del mauvaise["mots"][0]["a6"]          # F sans ligne A6 : le moteur refuse
+        # 0.10.57 : un F sans ligne A6 est maintenant affaibli en f par le réparateur, et l'état suit : accepté. Un mot
+        # sans fait, en revanche, ne se répare pas (le bot n'invente pas de fait) : le moteur refuse.
+        del mauvaise["mots"][0]["fait"]
         r, llm = lancer([PLAN, vue(), mauvaise, lecture()])
         self.assertEqual(r.bras_poste, "C")
         self.assertEqual(r.ligne["bras"]["C"]["tentatives"], 2)
@@ -278,13 +280,13 @@ class Tests(unittest.TestCase):
 
     def test_correction_vers_etat_nul(self):
         mauvaise = lecture()
-        del mauvaise["mots"][0]["a6"]
+        del mauvaise["mots"][0]["fait"]
         r, _ = lancer([PLAN, vue(0.1), mauvaise, lecture_vide()])
         self.assertEqual(r.bras_poste, "B")
 
     def test_refus_definitif(self):
         mauvaise = lecture()
-        del mauvaise["mots"][0]["a6"]
+        del mauvaise["mots"][0]["fait"]
         r, _ = lancer([PLAN, vue(0.25)] + [copy.deepcopy(mauvaise) for _ in range(ap.MAX_CORRECTIONS + 1)])
         self.assertEqual(r.bras_poste, "A")
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "refuse")
