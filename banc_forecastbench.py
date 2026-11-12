@@ -96,9 +96,10 @@ EMETTEURS = {"acled": "ACLED", "fred": "FRED (Federal Reserve Bank of St. Louis)
              "yfinance": "Yahoo Finance", "wikipedia": "Wikipedia"}
 
 
-def _vue(f: float, classe: str, source: str, periode: str, disponible: str, calcul: str, x: dict | None = None) -> dict:
+def _vue(f: float, classe: str, source: str, periode: str, disponible: str, calcul: str, x: dict | None = None,
+         ecart: str = "identique : même série, même comparaison, même horizon que le critère de résolution") -> dict:
     v = {"frequence": min(0.999, max(0.001, f)), "compte_calcule": True, "classe_de_reference": classe,
-         "source": source, "periode": periode, "disponible_le": disponible, "calcul": calcul,
+         "source": source, "periode": periode, "disponible_le": disponible, "calcul": calcul, "ecart_critere": ecart,
          "classe_alternative": None, "motif_sans_alternative": "classe fixée par la forme de la question ForecastBench"}
     if x:   # 0.10.46 : la résolution vient de la question (sans elle, le dossier était refusé)
         v["resolution"] = x.get("criteres") or x.get("titre")
@@ -153,10 +154,13 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
             return _vue(b_acled(m), "fenêtres de 30 jours du même pays et du même type d'événement (ACLED)",
                         "ForecastBench, valeur de référence au gel (moyenne ACLED sur 30 jours, 360 jours)",
                         f"360 jours avant {gel}", gel,
-                        f"binomiale négative, r = 12·{m:.4g} + 0,5, p = 12/13 ; P(N > {m:.4g}) (Jeffreys)", x)
+                        f"binomiale négative, r = 12·{m:.4g} + 0,5, p = 12/13 ; P(N > {m:.4g}) (Jeffreys)", x,
+                        "la classe suppose un taux stable (Poisson-gamma) ; le critère compare la fenêtre de 30 jours qui "
+                        "finit à la résolution à la moyenne des 360 jours avant le gel, et les conflits arrivent en rafales")
         if src == "yfinance" and "higher rate of return than" in q.get("question", ""):
             return _vue(0.5, "paires d'actions, rendement relatif sur le même intervalle", "symétrie de la paire",
-                        jeu, jeu, "0,5 : les deux actions sont échangeables a priori (aucune ne domine sans information)", x)
+                        jeu, jeu, "0,5 : les deux actions sont échangeables a priori (aucune ne domine sans information)", x,
+                        "identique : le critère compare les deux rendements sur le même intervalle")
         if src in ("fred", "dbnomics") and h > 0:
             import alphabet_puits as apz
             if src == "fred":
@@ -207,6 +211,7 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
         return await ar.chercher_avant(req, info)
     vue = await vue_calculee(x, x["_q"], jeu)
     ligne["b_calcule"] = bool(vue)
+    ligne["vue_calculee"] = vue     # 0.10.47 : gardée au registre, pour vérifier la cohérence de B
     c = await ap.alphabet(q, "", llm, chercher, True, jeu, jours, ar.historique_avant, vue_fixee=vue)
     ligne.update(statut=c.get("statut"), p_B=c.get("p_B"), p_C=c.get("p_C"), motif=c.get("motif"),
                  evenement=c.get("evenement"), etat=c.get("etat"), vues=c.get("vues"), classe_statut=c.get("classe_statut"),
