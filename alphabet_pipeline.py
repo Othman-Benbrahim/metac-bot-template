@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.48"
+VERSION_BOT = "0.10.49"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -538,8 +538,19 @@ def regles_dossier() -> str:
   producteur|transmission, motif}) ou "unique" pour une source primaire. Deux relais d'une même origine = une source.
   Avec "independantes", ajoute source_urls : [URL de la 1re source, URL de la 2e], dans l'ordre des sources, chacune
   copiée telle quelle des RÉSULTATS (jamais reconstruite ni devinée).
-- a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines de la fiche, sans « ? ».
-- contre_observation : la plus forte trouvée DANS la situation ; portee marginale|substantielle|dominante|aucune.
+- ÉCRITURE : carte = l'ABRÉVIATION (POL, pas POLARITÉ) ; strate = un ENTIER (13, pas « 13_portee… ») ; toute
+  référence à une carte ailleurs (candidats, rejets, liaisons, questions) s'écrit ABR@strate (POL@6).
+- a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines listées plus bas (VOISINES À
+  PASSER), chacune avec → ou +, et une raison entre parenthèses ; jamais « ? » ni « ← ». Si tu ne peux pas trancher
+  toutes les voisines, note f (sans a6).
+- test : exactement l'un de "paille", "cerceau", "pistolet", "double" (F exige "pistolet" ou "double").
+- contre_observation : la plus forte trouvée DANS la situation ; portee OBLIGATOIRE POUR CHAQUE MOT, même s'il n'y en a
+  pas ("aucune"). La portée fixe la force (A7) :
+    "aucune" ou "marginale" → intensité inchangée ;
+    "substantielle" sur une lecture F → noter "intensite": "f" et "force_initiale": "F" ;
+    "substantielle" sur une lecture déjà f → NE PAS coder le mot : la carte va dans rejets_classes, "contredit" ;
+    "dominante" → NE PAS coder le mot : rejets_classes, "contredit".
+  "force_initiale" n'apparaît qu'avec une portée substantielle.
 - contredirait ≠ attendu, sans nommer la carte. option : un fait qui ne change l'espace d'action de personne ne s'ancre pas.
 - rejets_classes : pour chaque candidate non ancrée, {"categorie": …, "motif": …}, catégorie au choix :
   "aucun_fait" (aucun fait pertinent dans les résultats), "marqueur_non_rempli" (des faits pertinents existent mais
@@ -553,7 +564,11 @@ def regles_dossier() -> str:
   pas d'après ton intuition. Ajoute
   "fait_attendu" (une phrase : ce que dirait un fait qui remplirait le marqueur ici) et "extrait_proche" (le passage
   le plus proche trouvé, avec son numéro [n], ou null).
-- questions : au moins une question ouverte et datée qui départagerait la lecture (si_oui, si_non, resolution, statut).
+- questions : au moins une question ouverte et datée qui départagerait la lecture, exactement sous cette forme :
+  {"question": "…", "si_oui": "ABR@s", "si_non": "ABR@s" ou "indetermine", "resolution": "quelle observation, dans
+  quelle source, répondrait", "justification": {"oui": "pourquoi « oui » établit si_oui", "non": "pourquoi « non »
+  établit si_non"}, "statut": "ouverte"}. si_oui ≠ si_non ; l'une des deux au moins est un mot de l'état ; « non A »
+  ne vaut pas « B » : si « non » ne désigne aucune carte, écris "indetermine".
 - Ne cite que des faits trouvés dans les résultats de recherche fournis ; n'invente ni source, ni URL, ni date.
 - ÉTAT NUL ADMIS : si aucun fait ne remplit la définition et au moins un marqueur d'une carte, "mots" est une liste vide et chaque candidate va
   dans rejets. C'est une lecture légitime (« aucune structure lue »), jamais un échec : ne force pas une carte.
@@ -562,6 +577,16 @@ def regles_dossier() -> str:
   "aucune" si les faits ne montrent aucune dynamique. Elle n'entre pas dans le calcul : elle sert à chercher plus tard
   une structure qui manquerait à l'alphabet.
 """
+
+
+def voisines_a_passer(cartes: list[str]) -> str:
+    """0.10.49 : la liste exacte des voisines que la ligne a6 d'un mot F doit trancher (moteur, cartes.md)."""
+    try:
+        m = _moteur()
+        v = m.voisines()
+        return " ; ".join(f"{c} : {', '.join(sorted(v.get(c, set()))) or 'aucune'}" for c in dict.fromkeys(cartes))
+    except Exception:
+        return "voir les fiches"
 
 
 def consigne_dossier(q: Question, plan: dict, resultats: list[dict], aujourdhui: str, jours: int) -> str:
@@ -589,6 +614,8 @@ RÉSULTATS DES RECHERCHES EXÉCUTÉES :
 {res}
 {donnees_puits(plan)}
 {regles_dossier()}
+
+VOISINES À PASSER (ligne a6 d'un mot F) : {voisines_a_passer(cartes)}
 
 FICHES DES CANDIDATES :
 {fiches(cartes)}
