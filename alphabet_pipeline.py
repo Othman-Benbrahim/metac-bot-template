@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.51"
+VERSION_BOT = "0.10.52"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -179,6 +179,11 @@ def appeler_moteur(dossier: dict, etat: str, evenement: str, semantique: str, da
            "--source-ref", str(vue.get("source", "")), "--periode-ref", str(vue.get("periode", "")),
            "--disponible-ref", str(vue.get("disponible_le", date_info)),
            "--definition-ref", str(vue.get("classe_de_reference", "")), "--json"] + (["--exploratoire"] if exploratoire else [])
+    # 0.10.52 (skill 0.7.75, §51) : seules les liaisons « averti » vont au calcul, où elles n'ouvrent que l'ombre
+    # mixte_averti ; les autres types restent au dossier (les passer changerait le p publié : décision non prise)
+    for li in dossier.get("liaisons") or []:
+        if isinstance(li, str) and len(li.split()) == 3 and li.split()[1].strip("—-→>") == "averti":
+            cmd += ["--liaison", li]
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, cwd=str(DOSSIER_SKILL))
     finally:
@@ -539,7 +544,12 @@ def regles_dossier() -> str:
   Avec "independantes", ajoute source_urls : [URL de la 1re source, URL de la 2e], dans l'ordre des sources, chacune
   copiée telle quelle des RÉSULTATS (jamais reconstruite ni devinée).
 - liaisons : « ABR@s TYPE ABR@s », TYPE parmi : echo, independance, transfert, conflit, renforcement, inclusion,
-  appui, reproduction, tension (aucun autre mot).
+  appui, reproduction, tension, averti (aucun autre mot).
+- preuves_liaisons : une liste, UNE preuve par liaison, dans le même ordre (le fait daté qui établit le lien) ; une
+  liaison sans preuve est retirée. Une liaison relie deux mots ANCRÉS (sauf averti, qui peut viser l'événement).
+- averti : « A averti B » quand OBSERVER A renseigne sur B SANS QUE A AGISSE SUR B (précurseur, symptôme, ou effet
+  d'une même cause) ; un fait daté de A et un précédent où A a précédé B. Seule liaison qui peut viser l'événement
+  (ex. « POL@13 averti SEU@13 ») ; A doit être un mot ancré. Si A agit sur B par un mécanisme nommé : transfert.
 - corroboration "independantes" : le champ source nomme AU MOINS DEUX sources séparées par « ; » ; sinon "unique".
 - extrait d'un passage : 300 caractères au plus. Toute pièce et toute garantie sont disponibles AU PLUS TARD à la
   date d'information (jamais une page publiée après).
@@ -738,7 +748,7 @@ Rends UNIQUEMENT l'objet JSON corrigé, avec les clés : {", ".join(CLES_LECTURE
 
 # --------------------------------------------------------------------------- assemblage
 
-CLES_LECTURE = ("candidats", "contre_candidate", "rejets_classes", "mots", "liaisons", "questions")
+CLES_LECTURE = ("candidats", "contre_candidate", "rejets_classes", "mots", "liaisons", "preuves_liaisons", "questions")
 
 
 def details_rejets(lecture: dict) -> dict:
@@ -1071,7 +1081,7 @@ def normaliser_lecture(lecture: dict) -> dict:
 
 def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujourdhui: str, jours: int) -> dict:
     normaliser_lecture(lecture)
-    d = {k: lecture.get(k, []) for k in ("candidats", "contre_candidate", "mots", "liaisons", "questions")}
+    d = {k: lecture.get(k, []) for k in ("candidats", "contre_candidate", "mots", "liaisons", "preuves_liaisons", "questions")}
     d["rejets"], d["_categories_rejet"] = rejets_moteur(lecture)
     d["_details_rejet"] = details_rejets(lecture)
     d["etat"] = etat_depuis(d.get("mots") or [], aujourdhui, jours)
@@ -1085,7 +1095,7 @@ def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujou
 
 
 LIAISONS_ADMISES = ("echo", "écho", "independance", "indépendance", "transfert", "conflit", "renforcement",
-                    "inclusion", "appui", "reproduction", "tension")
+                    "inclusion", "appui", "reproduction", "tension", "averti")   # 0.10.52 : averti (skill 0.7.75, §51)
 
 
 def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[str]:
@@ -1238,19 +1248,44 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
             notes.append(f"question de discrimination inscrite par le bot sur {k0}")
         d["questions"] = qs
     # 1. liaisons : « A@s type B@s » ; un objet {de, type, vers} est réécrit, le reste retiré
-    garde = []
-    for li in d.get("liaisons") or []:
+    # 0.10.52 : le moteur exige une preuve par liaison (preuves_liaisons, même ordre) ; aucune consigne ne la demandait,
+    # donc tout dossier qui gardait une liaison aurait été refusé. Une preuve vient de preuves_liaisons[i] ou du champ
+    # « preuve » d'un objet ; une liaison sans preuve est retirée (conséquence écrite de la règle), avec sa trace.
+    preuves_in = d.get("preuves_liaisons") if isinstance(d.get("preuves_liaisons"), list) else []
+    presentes_ = {cle_normale(f"{m.get('carte')}@{m.get('strate')}") for m in d.get("mots") or [] if isinstance(m, dict)}
+    garde, preuves = [], []
+    for i, li in enumerate(d.get("liaisons") or []):
+        pr = preuves_in[i] if i < len(preuves_in) else None
         if isinstance(li, dict):
+            pr = li.get("preuve") or pr
             a, t, b = (li.get(k) for k in ("de", "type", "vers"))
             if not all(isinstance(x, str) and x.strip() for x in (a, t, b)):
                 a, t, b = (li.get(k) for k in ("a", "type", "b"))
             if all(isinstance(x, str) and x.strip() for x in (a, t, b)):
                 li = f"{cle_normale(a)} {t.strip()} {cle_normale(b)}"
-        if isinstance(li, str) and len(li.split()) == 3 and li.split()[1].strip("—-→>") in LIAISONS_ADMISES:
-            garde.append(li)
-        else:
+        if not (isinstance(li, str) and len(li.split()) == 3 and li.split()[1].strip("—-→>") in LIAISONS_ADMISES):
             notes.append(f"liaison illisible retirée : {str(li)[:80]}")
+            # 0.10.52 (§51) : une liaison hors liste est gardée à part, jamais calculée : un verbe qui revient, chez
+            # plusieurs lecteurs, est un symbole candidat ; on ne le traduit pas (ce serait l'interpréter à sa place)
+            if isinstance(li, str) and len(li.split()) == 3:
+                d.setdefault("_liaisons_hors_liste", []).append(li)
+            continue
+        a_, t_, b_ = li.split()
+        averti = t_.strip("—-→>") == "averti"
+        # une liaison relie des mots de l'état ; seule « averti » peut viser l'événement (sa source reste un mot)
+        if cle_normale(a_) not in presentes_ or (cle_normale(b_) not in presentes_ and not averti):
+            notes.append(f"liaison retirée, mot absent de l'état : {li[:80]}")
+            continue
+        if not (isinstance(pr, str) and pr.strip()):
+            notes.append(f"liaison retirée, sans preuve : {li[:80]}")
+            continue
+        garde.append(li)
+        preuves.append(pr.strip()[:300])
     d["liaisons"] = garde
+    if garde:
+        d["preuves_liaisons"] = preuves
+    else:
+        d.pop("preuves_liaisons", None)
     # 1 bis. un rejet sans motif (0.10.47) : « non examinée », catégorie non cherchée (effort 0)
     for k, v in list((d.get("rejets") or {}).items()):
         if not re.sub(r"^\[[^\]]*\]", "", str(v or "")).strip():
@@ -1848,6 +1883,9 @@ def ombre_causale(sortie: dict) -> dict | None:
     vi = sb.get("valeur_information") or {}
     return {"p_mediation": med.get("p"), "mediateurs_retires": med.get("mediateurs_retires"),
             "ablation": sb.get("ablation"), "p_noisy_or": (sb.get("noisy_or") or {}).get("p"),
+            # 0.10.52 (skill 0.7.75, §51) : indices déclarés « averti » en produit, autres sources en noisy-or
+            "p_mixte_averti": (sb.get("mixte_averti") or {}).get("p"),
+            "indices_averti": (sb.get("mixte_averti") or {}).get("indices"),
             "valeur_information": {k: vi.get(k) for k in ("borne", "seuil", "arret", "plus_influentes")} if vi else None,
             "tempere": sb.get("tempere"),
             # 0.10.6 (skill 0.7.59, §36) : programme génératif conditionné sur ancrages ET rejets ; bande sur π et le lecteur
@@ -1880,10 +1918,12 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
                                    "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur")
              if c.get(k) is not None}
+    if (c.get("dossier") or {}).get("_liaisons_hors_liste"):      # 0.10.52 (§51) : verbes inventés par le lecteur
+        explo["liaisons_hors_liste"] = c["dossier"]["_liaisons_hors_liste"]
     if explo.get("statut") == "refuse":     # 0.10.46 : le dossier refusé est gardé, pour qu'un refus se diagnostique
         d_ = c.get("dossier") or {}
         explo["dossier_refuse"] = {k: d_.get(k) for k in ("candidats", "contre_candidate", "mots", "rejets", "liaisons", "questions",
-                                                          "_reparations") if k in d_}
+                                                          "_reparations", "_liaisons_hors_liste") if k in d_}
     explo["strate"] = strate
     explo["p_C_corrige"] = corriger_C(explo.get("p_C"), correction_retro())   # 0.9.1 : la correction en ombre aussi
     explo["p_C_symetrique"] = (c.get("symetrique") or {}).get("p")
@@ -2163,8 +2203,14 @@ async def critiquer(q: Question, dossier: dict, textes: str, critique: Llm, even
     # Une liaison qui touche une carte retirée n'a plus d'objet ; une question ne garde son objet que si elle porte
     # encore sur une carte présente. Si plus aucune question ne départage, le moteur refuse : c'est consigné.
     presentes = {f"{m.get('carte')}@{m.get('strate')}" for m in mots}
-    d["liaisons"] = [x for x in (d.get("liaisons") or [])
-                     if not any(r_ in json.dumps(x, ensure_ascii=False) for r_ in retires)]
+    pl_ = d.get("preuves_liaisons") or []
+    gl_ = [(x, pl_[i] if i < len(pl_) else None) for i, x in enumerate(d.get("liaisons") or [])
+           if not any(r_ in json.dumps(x, ensure_ascii=False) for r_ in retires)]
+    d["liaisons"] = [x for x, _ in gl_]
+    if gl_:
+        d["preuves_liaisons"] = [p_ for _, p_ in gl_]       # 0.10.52 : les preuves suivent leurs liaisons
+    else:
+        d.pop("preuves_liaisons", None)
     d["questions"] = [x for x in (d.get("questions") or [])
                       if any(c_ in json.dumps(x, ensure_ascii=False) for c_ in presentes)]
     d["etat"] = etat_depuis(mots, aujourdhui, jours)

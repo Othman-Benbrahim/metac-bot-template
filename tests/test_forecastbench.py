@@ -73,12 +73,21 @@ class Tests(unittest.TestCase):
     def test_reparations(self):
         d = {"mots": [{"carte": "POL", "strate": 6, "intensite": "f", "portee": "aucune"}], "candidats": ["POL@6"],
              "rejets": {"POL@6": "x"}, "_categories_rejet": {"POL@6": "aucun_fait"},
-             "liaisons": [{"de": "POL@6", "type": "renforcement", "vers": "CTR@6"}, {"bizarre": 1}, "trop court"]}
+             "liaisons": [{"de": "POL@6", "type": "renforcement", "vers": "CTR@6", "preuve": "fait daté"}, {"bizarre": 1},
+                          "trop court", "POL@6 renforcement CTR@6"]}
         notes = ap.reparer_dossier(d, {"candidats": ["CTR@6", "SEU@7"]})
         self.assertNotIn("POL@6", d["rejets"])                       # ancrée : plus rejetée
         self.assertEqual(d["candidats"], ["POL@6", "CTR@6"])          # complétée par le plan, même strate
         self.assertIn("non_cherchee", d["rejets"]["CTR@6"])
-        self.assertEqual(d["liaisons"], ["POL@6 renforcement CTR@6"])
+        self.assertEqual(d["liaisons"], [])          # 0.10.52 : CTR@6 n'est pas un mot de l'état (le moteur refusait)
+        self.assertTrue(any("mot absent" in n for n in notes))
+        d3 = {"mots": [{"carte": c_, "strate": 6, "intensite": "f", "portee": "aucune"} for c_ in ("POL", "CTR")],
+              "candidats": [], "rejets": {},
+              "liaisons": [{"de": "POL@6", "type": "renforcement", "vers": "CTR@6", "preuve": "fait daté"},
+                           "POL@6 tension CTR@6"]}
+        ap.reparer_dossier(d3, {"candidats": []})
+        self.assertEqual(d3["liaisons"], ["POL@6 renforcement CTR@6"])   # la seconde, sans preuve, est retirée
+        self.assertEqual(d3["preuves_liaisons"], ["fait daté"])
         self.assertGreaterEqual(len(notes), 4)
         self.assertEqual(ap.cle_normale("POLARITÉ@13_portee"), "POL@13")
         self.assertEqual(ap.code_carte("POL@6"), "POL")
@@ -112,6 +121,28 @@ class Tests(unittest.TestCase):
         self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
         self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
+    def test_averti_52(self):
+        # 0.10.52 (skill 0.7.75, §51) : averti admis et peut viser l'événement ; source absente → retiré ;
+        # liaison hors liste gardée à part ; seules les « averti » partent au moteur en --liaison
+        d = {"mots": [{"carte": "POL", "strate": 13, "intensite": "f", "portee": "aucune"}],
+             "candidats": ["POL@13", "INC@13"], "rejets": {"INC@13": "[non_cherchee] x"},
+             "liaisons": ["POL@13 averti SEU@13", "CTR@13 averti SEU@13", "POL@13 informe SEU@13"],
+             "preuves_liaisons": ["hausse datée, précédent nommé", "x", "y"], "questions": []}
+        ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 13}, "candidats": []}, "2026-10-25")
+        self.assertEqual(d["liaisons"], ["POL@13 averti SEU@13"])
+        self.assertEqual(d["preuves_liaisons"], ["hausse datée, précédent nommé"])
+        self.assertEqual(d["_liaisons_hors_liste"], ["POL@13 informe SEU@13"])
+        from unittest import mock
+        vu = {}
+        def faux_run(cmd, **kw):
+            vu["cmd"] = cmd
+            return mock.Mock(returncode=0, stdout="{}", stderr="")
+        with mock.patch.object(ap.subprocess, "run", faux_run):
+            ap.appeler_moteur({"liaisons": ["POL@13 averti SEU@13", "POL@13 tension CTR@13"]}, "[x]", "SEUIL@13 apparait",
+                              "presence", "2026-10-25", {"frequence": 0.1})
+        i = [k for k, x in enumerate(vu["cmd"]) if x == "--liaison"]
+        self.assertEqual([vu["cmd"][k + 1] for k in i], ["POL@13 averti SEU@13"])
+
     def test_reparations_51(self):
         # 0.10.51 : liaison inconnue, corroboration à une source, extrait trop long, garantie postérieure (B1),
         # strate sans seconde candidate, candidate sans motif de rejet
@@ -129,7 +160,8 @@ class Tests(unittest.TestCase):
         self.assertNotIn("independance", m0)
         self.assertLessEqual(len(m0["passage"]["extrait"]), 300)
         self.assertNotIn("garantie", m0)                                   # support postérieur : retiré (B1)
-        self.assertEqual(d["liaisons"], ["POL@13 tension CTR@13"])
+        self.assertEqual(d["liaisons"], [])          # CTR@13 n'est pas un mot de l'état : le moteur aurait refusé
+        self.assertNotIn("preuves_liaisons", d)
         self.assertIn("INC@13", d["rejets"])                               # candidate sans motif : « non cherchée »
         d2 = {"mots": [{"carte": "POL", "strate": 13, "intensite": "f", "portee": "aucune"}], "candidats": [],
               "rejets": {}, "liaisons": [], "questions": []}

@@ -1,6 +1,6 @@
 # Alphabet situationnel — Grammaire (couche 2)
 
-> Version : 0.7.74
+> Version : 0.7.75
 
 > Notation, syntaxe formelle, critères des liaisons et liste de contrôle. Les règles sont G1–G6
 > (`protocole.md`) ; ce fichier les rend applicables.
@@ -53,7 +53,7 @@ séquence     ::= état { " ⇒ " état }
 liaison      ::= mot-court " —" type "→ " mot-court
 mot-court    ::= carte "@" strate
 type         ::= "renforcement" | "conflit" | "inclusion" | "appui" | "reproduction"
-               | "indépendance" | "tension" | "transfert" | "écho"
+               | "indépendance" | "tension" | "transfert" | "écho" | "averti"
 positions    ::= "tient: " mot-court " / bouge: " mot-court " / manque: " mot-court
 date         ::= AAAA-MM | AAAA-MM-JJ
 fenêtre      ::= nombre " " ("jour" | "jours" | "semaine" | "semaines" | "mois" | "an" | "ans")
@@ -120,6 +120,17 @@ Séquence : `[2026-03 | 3 mois] CONTRAINTE@6[F] ⇒ [2026-06 | 3 mois] CONTRAINT
 | transfert | un fait daté dans la strate source, puis un fait daté dans la strate cible, et un mécanisme nommé qui relie l'un à l'autre | — |
 | écho | même carte ou cartes liées dans les deux strates, sans lien causal démontré | **verdict par défaut** quand le transfert n'est pas établi |
 | conflit | l'ancrage dans une strate entrave l'équivalent dans l'autre, fait à l'appui | — |
+
+**Dans une strate ou entre strates : *averti*** (0.7.75, `validation.md` §51).
+
+| Type | Critère observable |
+|---|---|
+| averti | observer A renseigne sur B **sans agir sur B** : A précède B (précurseur), l'accompagne (symptôme), ou tous deux viennent d'une même cause. Un fait daté de A, et un précédent nommé où A a précédé B ; aucun mécanisme de A vers B n'est requis, et agir sur A ne changerait pas B |
+
+`averti` est la seule liaison qui peut viser **l'événement calculé** (`SEUIL@7`), qui n'est pas un mot de l'état ; sa
+source doit en être un. Elle ne change pas le p publié : elle dit au moteur quelles sources sont des **indices** plutôt
+que des causes (ombre `mixte_averti`). À ne pas confondre avec l'*écho* : l'écho est une simultanéité sans direction ;
+*averti* a une direction (de ce qu'on voit vers ce qu'on attend) et ne prétend à aucune causalité.
 
 Pourquoi l'écho est le défaut : le transfert est l'affirmation la plus forte, et la plus tentante.
 Deux structures simultanées dans deux strates ne prouvent pas que l'une cause l'autre.

@@ -1,6 +1,6 @@
 # Équivalents · strate 6 — Économie
 
-> Version : 0.7.74
+> Version : 0.7.75
 
 > Les 16 cartes traduites dans la strate 6. Statuts et règles : `equivalences.md` (index) et A3.
 > Bilan : 0 Documenté, 16 Proposé, 0 Vide, 0 Hors domaine, 0 Attesté.

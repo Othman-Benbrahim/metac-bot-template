@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.51 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.52 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,16 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.52** : **averti** (skill 0.7.75, décision d'auteur du 2026-11-12, `validation.md` §51). Nouvelle liaison
+  « A averti B » : observer A renseigne sur B sans agir sur B ; seule liaison qui peut viser l'événement. Elle va au
+  moteur (`--liaison`), où elle n'ouvre que l'ombre `mixte_averti` (indices en produit, autres sources en noisy-or) ;
+  le p publié ne change pas, et les autres types restent au dossier comme avant. Les liaisons hors liste ne sont plus
+  seulement retirées : elles sont gardées à part (`_liaisons_hors_liste`, et `liaisons_hors_liste` dans la ligne du
+  banc), pour compter les verbes que le lecteur invente. **Défaut trouvé en chemin** : le moteur exige une preuve par
+  liaison (`preuves_liaisons`), que la consigne ne demandait pas ; tout dossier qui gardait une liaison aurait été
+  refusé. La consigne la demande ; une liaison sans preuve, ou vers un mot absent de l'état, est retirée (tracé). Les
+  preuves suivent leurs liaisons quand une carte est retirée. Monde synthétique : protocole 9 (consigne changée en
+  0.10.51 et 0.10.52 ; le passage à 9 manquait en 0.10.51).
 - **0.10.51** : **cinquième passage ForecastBench : premiers C exploratoires chiffrés** (7 sur 20), 5 états nuls
   justifiés, 8 refus restants, tous des écarts du lecteur aux règles de forme. Corrigé, par la conséquence écrite de
   chaque règle et dans la consigne : type de liaison hors de la liste (5 refus : « informe », « renforce »,

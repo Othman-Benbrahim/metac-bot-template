@@ -1,6 +1,6 @@
 # Alphabet situationnel — Graphe de transitions (couche 4)
 
-> Version : 0.7.74
+> Version : 0.7.75
 
 > Procédure expérimentale. Le moteur produit les chiffres et le JSON ; l'interprétation des sources
 > et des objets reste à vérifier. Règles : T1–T6 ; paramètres : `protocole.md` §H.
@@ -77,6 +77,7 @@ toute liaison de l'état qui n'agit pas.
 | liaisons `inclusion`, `renforcement` | oui | déduplication : la source la plus forte est gardée |
 | liaisons `conflit`, `tension`, `appui`, `reproduction`, `écho` | **non** | aucun |
 | liaison `indépendance` | validation G6 seulement | aucun |
+| liaison `averti` (0.7.75) | ombre `mixte_averti` seulement | aucun sur le p publié : marque la source comme indice (§51 de `validation.md`) |
 | position `bouge` | oui | λ × 1,5 : ne peut qu'augmenter |
 | position `manque` | oui | **ajoute** une source λ = 1,8 : une lacune ne peut qu'appeler son comblement, jamais empêcher |
 
