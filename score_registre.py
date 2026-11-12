@@ -965,6 +965,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     symetriques, explos_corr, mediations = [], [], []
     noisy, arrets = [], {True: [], False: []}   # 0.10.4 (§34), en ombre
     mixtes = []                                 # 0.10.52 (§51), en ombre
+    avec_liaisons = []                          # 0.10.53, en ombre
     temperes, a_moyens, c_sur_a_moyen = [], [], []   # 0.10.5 (§35), en ombre
     generatifs = []                                   # 0.10.6 (§36), en ombre
     surprises = []                                    # 0.10.12 (§40), en ombre
@@ -987,6 +988,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             mediations.append(({"C_mediation": ap.borner(om["p_mediation"]), "C": ap.borner(pc_)}, y))
         if isinstance(om.get("p_noisy_or"), (int, float)) and isinstance(pc_, (int, float)):   # 0.10.4 (§34)
             noisy.append(({"C_noisy_or": ap.borner(om["p_noisy_or"]), "C": ap.borner(pc_)}, y))
+        if isinstance(om.get("p_avec_liaisons"), (int, float)) and isinstance(pc_, (int, float)):  # 0.10.53
+            avec_liaisons.append(({"C_avec_liaisons": ap.borner(om["p_avec_liaisons"]), "C": ap.borner(pc_)}, y))
         if isinstance(om.get("p_mixte_averti"), (int, float)) and isinstance(pc_, (int, float)):   # 0.10.52 (§51)
             mixtes.append(({"C_mixte_averti": ap.borner(om["p_mixte_averti"]), "C": ap.borner(pc_)}, y))
         t5 = [t_ for t_ in (om.get("tempere") or []) if t_.get("alpha") == 0.5 and isinstance(t_.get("p"), (int, float))]
@@ -1138,6 +1141,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                                    **comparer(mediations, "C_mediation", "C")} if mediations else None),
             "C_noisy_or_sur_C": ({"note": "en ombre (§34) : cartes lues comme des causes (noisy-or) contre le produit, mêmes questions",
                                   **comparer(noisy, "C_noisy_or", "C")} if noisy else None),
+            "C_avec_liaisons_sur_C": ({"note": "en ombre (0.10.53) : le dossier recalculé avec toutes ses liaisons contre C",
+                                       **comparer(avec_liaisons, "C_avec_liaisons", "C")} if avec_liaisons else None),
             "C_mixte_averti_sur_C": ({"note": "en ombre (§51) : indices déclarés « averti » en produit, autres sources en noisy-or",
                                       **comparer(mixtes, "C_mixte_averti", "C")} if mixtes else None),
             "C_tempere_sur_C": ({"note": "en ombre (§35) : produit des λ à la puissance 0,5, fixée d'avance, contre C",

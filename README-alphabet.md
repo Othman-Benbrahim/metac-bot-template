@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.52 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.53 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.53** : **ombre « avec liaisons »** (décision d'auteur du 2026-11-12). Les liaisons du dossier n'atteignaient
+  pas le calcul (sauf « averti ») : un transfert déclaré ne changeait rien au p. Quand un dossier chiffré garde des
+  liaisons, le bot le recalcule avec toutes (`p_avec_liaisons`, dans `ombre_causale`) : le transfert lève la décote
+  entre strates, l'inclusion et le renforcement ne gardent qu'une des cartes redondantes. Le p publié ne change pas ;
+  le score compare `C_avec_liaisons` à C sur les mêmes questions. Aucun changement du skill.
 - **0.10.52** : **averti** (skill 0.7.75, décision d'auteur du 2026-11-12, `validation.md` §51). Nouvelle liaison
   « A averti B » : observer A renseigne sur B sans agir sur B ; seule liaison qui peut viser l'événement. Elle va au
   moteur (`--liaison`), où elle n'ouvre que l'ombre `mixte_averti` (indices en produit, autres sources en noisy-or) ;

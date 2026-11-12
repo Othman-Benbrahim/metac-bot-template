@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.52"
+VERSION_BOT = "0.10.53"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -168,7 +168,7 @@ def equivalences(strates: list[int]) -> str:
 
 
 def appeler_moteur(dossier: dict, etat: str, evenement: str, semantique: str, date_info: str, vue: dict,
-                   temporalite: str = "generique", exploratoire: bool = False) -> dict:
+                   temporalite: str = "generique", exploratoire: bool = False, toutes_liaisons: bool = False) -> dict:
     """Lance `moteur.py calculer --dossier` ; la fréquence de la vue extérieure entre comme référence (--fref)."""
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
         json.dump(dossier, f, ensure_ascii=False)
@@ -182,7 +182,7 @@ def appeler_moteur(dossier: dict, etat: str, evenement: str, semantique: str, da
     # 0.10.52 (skill 0.7.75, §51) : seules les liaisons « averti » vont au calcul, où elles n'ouvrent que l'ombre
     # mixte_averti ; les autres types restent au dossier (les passer changerait le p publié : décision non prise)
     for li in dossier.get("liaisons") or []:
-        if isinstance(li, str) and len(li.split()) == 3 and li.split()[1].strip("—-→>") == "averti":
+        if isinstance(li, str) and len(li.split()) == 3 and (toutes_liaisons or li.split()[1].strip("—-→>") == "averti"):
             cmd += ["--liaison", li]
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, cwd=str(DOSSIER_SKILL))
@@ -2111,6 +2111,21 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
                          p_C=sortie.get("p"), p_sans_cartes=sortie.get("p_sans_cartes"),
                          drapeaux=sortie.get("drapeaux", []), rho=sortie.get("rho"),
                          ombre_causale=ombre_causale(sortie))
+            # 0.10.53 : ombre « avec liaisons » (décision d'auteur du 2026-11-12). Le même dossier recalculé avec TOUTES
+            # ses liaisons (transfert : pas de décote entre strates ; inclusion, renforcement : une seule des cartes
+            # redondantes). Le p publié reste celui sans liaisons ; on comparera sur les issues.
+            if sortie.get("p") is not None and any(isinstance(li, str) and len(li.split()) == 3
+                                                   and li.split()[1].strip("—-→>") != "averti"
+                                                   for li in dossier.get("liaisons") or []):
+                s2 = appeler_moteur({**{k: v for k, v in dossier.items() if not k.startswith("_")},
+                                     "rejets_categories": dict(dossier.get("_categories_rejet") or {})}, dossier["etat"],
+                                    evenement, plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"],
+                                    exploratoire=hors_strate, toutes_liaisons=True)
+                oc = trace.get("ombre_causale") or {}
+                oc["p_avec_liaisons"] = s2.get("p")
+                if s2.get("erreur"):
+                    oc["erreur_avec_liaisons"] = str(s2["erreur"])[:200]
+                trace["ombre_causale"] = oc
             trace["statut"] = "estime" if sortie.get("p") is not None else "non_estime"
             if sortie.get("p") is None:
                 trace["motif"] = next((x for x in sortie.get("drapeaux", []) if x.startswith("Non estimé")), "non estimé")
