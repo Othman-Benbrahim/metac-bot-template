@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.54 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.55 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.55** : **sixième passage ForecastBench (bot 0.10.53)** : 16 lectures chiffrées sur 20 (3 en strate 7, 13
+  exploratoires), 1 état nul, 3 refus. Corrigé : un rejet rendu en liste sans clé « carte » devenait « ?0 », que le
+  moteur refusait (2 refus) ; la carte est maintenant cherchée sous d'autres noms, ou dans une valeur « ABR@s », et
+  un rejet sans carte lisible est ignoré. Une liaison d'une strate posée entre deux strates (« TRC@6 tension POL@7 »)
+  est retirée, et la consigne dit quels types vont où. Le dossier refusé est gardé en strate 7 aussi. Monde
+  synthétique : protocole 10.
 - **0.10.54** : **rejeu et pannes** (d'après un article sur les harnais d'évaluation, décision d'auteur du
   2026-11-12). (1) Chaque ligne du banc garde les lectures brutes du lecteur (la première et les corrections), le
   plan et l'événement (`rejeu`). `python rejeu_banc.py` les repasse par le réparateur et le moteur actuels, sans
