@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.49 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.50 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,12 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.50** : **TinyFish en relais d'Exa pour les tests rétrospectifs et le banc ForecastBench** (décision d'auteur
+  du 2026-11-12 : les crédits peuvent s'arrêter à tout moment). Ordre « exa,tinyfish,gdelt » (variable
+  `ALPHABET_RETRO_ORDRE`). TinyFish ne sait pas borner par date : seules ses pages DATÉES et antérieures à la date
+  d'information sont gardées (moins de résultats ; petit risque résiduel d'une page antidatée ou mise à jour). Les
+  deux scripts démarrent avec Exa OU TinyFish ; chaque ligne du banc trace les moteurs qui ont servi
+  (`moteurs_recherche`), pour qu'une mesure de l'étape 2 puisse être séparée selon le moteur.
 - **0.10.49** : **consigne du lecteur précisée**, pour que les règles d'ancrage soient respectées à la lecture plutôt
   que réparées après coup (décision d'auteur du 2026-11-12). Écriture des cartes (ABR, strate entière, ABR@strate) ;
   portée OBLIGATOIRE pour chaque mot et sa conséquence A7 en clair ; test parmi les quatre valeurs ; ligne a6 avec la
