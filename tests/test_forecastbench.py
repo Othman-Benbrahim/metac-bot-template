@@ -112,6 +112,30 @@ class Tests(unittest.TestCase):
         self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
         self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
+    def test_reparations_51(self):
+        # 0.10.51 : liaison inconnue, corroboration à une source, extrait trop long, garantie postérieure (B1),
+        # strate sans seconde candidate, candidate sans motif de rejet
+        bon = {"mecanisme": "m", "attendu": "a", "contredirait": "c",
+               "support": {"type": "donnee", "reference": "r", "disponible_le": "2026-11-10"}}
+        d = {"mots": [{"carte": "POL", "strate": 13, "intensite": "f", "portee": "aucune", "source": "Reuters",
+                       "corroboration": "independantes", "independance": {"critere": "origine", "motif": "x"},
+                       "passage": {"localisation": "p1", "relation": "soutient", "extrait": "x" * 400},
+                       "garantie": bon}],
+             "candidats": ["POL@13", "INC@13"], "rejets": {}, "liaisons": ["POL@13 informe SEU@13", "POL@13 tension CTR@13"],
+             "questions": []}
+        ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 13}, "candidats": []}, "2026-10-25")
+        m0 = d["mots"][0]
+        self.assertEqual(m0["corroboration"], "unique")
+        self.assertNotIn("independance", m0)
+        self.assertLessEqual(len(m0["passage"]["extrait"]), 300)
+        self.assertNotIn("garantie", m0)                                   # support postérieur : retiré (B1)
+        self.assertEqual(d["liaisons"], ["POL@13 tension CTR@13"])
+        self.assertIn("INC@13", d["rejets"])                               # candidate sans motif : « non cherchée »
+        d2 = {"mots": [{"carte": "POL", "strate": 13, "intensite": "f", "portee": "aucune"}], "candidats": [],
+              "rejets": {}, "liaisons": [], "questions": []}
+        ap.reparer_dossier(d2, {"evenement": {"carte": "SEU", "strate": 13}, "candidats": []}, "2026-10-25")
+        self.assertGreaterEqual(len([c for c in d2["candidats"] if c.endswith("@13")]), 2)   # voisine ajoutée
+
 
 if __name__ == "__main__":
     unittest.main()

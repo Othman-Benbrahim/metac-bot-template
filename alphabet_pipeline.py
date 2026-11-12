@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.50"
+VERSION_BOT = "0.10.51"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -538,6 +538,11 @@ def regles_dossier() -> str:
   producteur|transmission, motif}) ou "unique" pour une source primaire. Deux relais d'une même origine = une source.
   Avec "independantes", ajoute source_urls : [URL de la 1re source, URL de la 2e], dans l'ordre des sources, chacune
   copiée telle quelle des RÉSULTATS (jamais reconstruite ni devinée).
+- liaisons : « ABR@s TYPE ABR@s », TYPE parmi : echo, independance, transfert, conflit, renforcement, inclusion,
+  appui, reproduction, tension (aucun autre mot).
+- corroboration "independantes" : le champ source nomme AU MOINS DEUX sources séparées par « ; » ; sinon "unique".
+- extrait d'un passage : 300 caractères au plus. Toute pièce et toute garantie sont disponibles AU PLUS TARD à la
+  date d'information (jamais une page publiée après).
 - ÉCRITURE : carte = l'ABRÉVIATION (POL, pas POLARITÉ) ; strate = un ENTIER (13, pas « 13_portee… ») ; toute
   référence à une carte ailleurs (candidats, rejets, liaisons, questions) s'écrit ABR@strate (POL@6).
 - a6 (pour F) : « CARTE@s : VOISINE → (pourquoi écartée) ; … » pour TOUTES les voisines listées plus bas (VOISINES À
@@ -1075,11 +1080,15 @@ def assembler(lecture: dict, plan: dict, executees: list[dict], evt: dict, aujou
                         "executee": r["executee"], **({"date_execution": aujourdhui} if r["executee"] else {})}
                        for r in executees]
     d["evenements"] = [evt]
-    d["_reparations"] = reparer_dossier(d, plan)
+    d["_reparations"] = reparer_dossier(d, plan, aujourdhui)
     return d
 
 
-def reparer_dossier(d: dict, plan: dict) -> list[str]:
+LIAISONS_ADMISES = ("echo", "écho", "independance", "indépendance", "transfert", "conflit", "renforcement",
+                    "inclusion", "appui", "reproduction", "tension")
+
+
+def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[str]:
     """0.10.44 : réparations de FORME, faites par le code et tracées (banc ForecastBench du 2026-11-11 : 8 lectures
     exploratoires sur 14 refusées pour la forme, non pour le fond). Rien n'est inventé : une liaison illisible est
     retirée (les liaisons sont facultatives) ; une carte à la fois ancrée et rejetée garde son ancrage (le fait cité
@@ -1116,6 +1125,32 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
             if not isinstance(m, dict):
                 continue
             k = f"{m.get('carte')}@{m.get('strate')}"
+            # 0.10.51 : corroboration et pièces, par leur conséquence écrite (jamais un renforcement)
+            n_src = len([x for x in str(m.get("source") or "").split(";") if x.strip()])
+            if m.get("corroboration") == "independantes" and n_src < 2:
+                m["corroboration"] = "unique"
+                m.pop("independance", None)
+                notes.append(f"{k} : « independantes » avec une seule source nommée → « unique »")
+            elif m.get("corroboration") != "independantes" and "independance" in m:
+                m.pop("independance", None)
+                notes.append(f"{k} : independance retirée (source unique)")
+            pas = m.get("passage")
+            for x in (pas if isinstance(pas, list) else [pas]):
+                if isinstance(x, dict) and isinstance(x.get("extrait"), str):
+                    if not x["extrait"].strip():
+                        x.pop("extrait")
+                    elif len(x["extrait"]) > 300:
+                        x["extrait"] = x["extrait"][:297].rstrip() + "…"
+                        notes.append(f"{k} : extrait ramené à 300 caractères")
+            if isinstance(m.get("garantie"), dict):
+                try:
+                    eg = M.controle_garantie(k, m, False) + M.controle_support(k, m, False, aujourdhui)
+                except Exception as ex:
+                    eg = [str(ex)]
+                if eg:
+                    m.pop("garantie", None)
+                    m.pop("option", None)
+                    notes.append(f"{k} : garantie retirée ({eg[0][:110]})")
             po, fi = m.get("portee"), m.get("force_initiale")
             motif_rejet = None
             if po not in M.PORTEES:
@@ -1138,7 +1173,7 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
                 continue
             if m.get("intensite") == "F":
                 try:
-                    e = (M.controle_a6(k, m.get("a6") or "") + M.controle_garantie(k, m, True)
+                    e = (M.controle_a6(k, m.get("a6") or "") + M.controle_garantie(k, m, True) + M.controle_support(k, m, True, aujourdhui)
                          + M.controle_test(k, m, "F", True))
                 except Exception as ex:
                     e = [str(ex)]
@@ -1211,7 +1246,7 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
                 a, t, b = (li.get(k) for k in ("a", "type", "b"))
             if all(isinstance(x, str) and x.strip() for x in (a, t, b)):
                 li = f"{cle_normale(a)} {t.strip()} {cle_normale(b)}"
-        if isinstance(li, str) and len(li.split()) == 3:
+        if isinstance(li, str) and len(li.split()) == 3 and li.split()[1].strip("—-→>") in LIAISONS_ADMISES:
             garde.append(li)
         else:
             notes.append(f"liaison illisible retirée : {str(li)[:80]}")
@@ -1243,6 +1278,25 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
                 d.setdefault("rejets", {})[c] = "[non_cherchee] candidate du plan, non examinée par le lecteur (ajoutée par le bot)"
                 d.setdefault("_categories_rejet", {})[c] = "non_cherchee"
                 notes.append(f"candidate ajoutée : {c} (plan), rejet « non cherchée »")
+    # 3 bis (0.10.51) : si le plan n'a pas de candidate dans la strate, une voisine de la carte ancrée (fiche du skill)
+    if M is not None:
+        try:
+            vois = M.voisines()
+        except Exception:
+            vois = {}
+        for st in sorted({k.split("@")[1] for k in fm}):
+            dans = [c for c in cand if c.endswith(f"@{st}")]
+            for k in sorted(x for x in fm if x.endswith(f"@{st}")):
+                for v_ in sorted(vois.get(k.split("@")[0], ())):
+                    c = f"{v_}@{st}"
+                    if len(dans) >= 2:
+                        break
+                    if c not in cand and not M.hors_domaine(c):
+                        cand.append(c)
+                        dans.append(c)
+                        d.setdefault("rejets", {})[c] = "[non_cherchee] voisine de la carte ancrée, non examinée (ajoutée par le bot)"
+                        d.setdefault("_categories_rejet", {})[c] = "non_cherchee"
+                        notes.append(f"candidate ajoutée : {c} (voisine de {k})")
     # 4. un rejet porte sur une candidate : la carte rejetée entre dans les candidates s'il reste de la place (4 par
     #    strate), sinon le rejet est retiré (le moteur refuse un rejet hors des candidates)
     for k in list((d.get("rejets") or {}).keys()):
@@ -1265,6 +1319,12 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
                 contre.append(choix[0])
                 notes.append(f"contre-candidate ajoutée : {choix[0]}")
     d["contre_candidate"] = contre
+    # 6 (0.10.51). Toute candidate non ancrée a un motif de rejet (sinon « texte renseigné requis »)
+    for c in cand:
+        if c not in fm and not str((d.get("rejets") or {}).get(c) or "").strip():
+            d.setdefault("rejets", {})[c] = "[non_cherchee] motif non donné par le lecteur : candidate non examinée"
+            d.setdefault("_categories_rejet", {})[c] = "non_cherchee"
+            notes.append(f"rejet ajouté pour {c} (candidate sans motif)")
     return notes
 
 
