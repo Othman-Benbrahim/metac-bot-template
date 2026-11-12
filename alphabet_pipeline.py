@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.54"
+VERSION_BOT = "0.10.55"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -554,6 +554,8 @@ def regles_dossier() -> str:
   copiée telle quelle des RÉSULTATS (jamais reconstruite ni devinée).
 - liaisons : « ABR@s TYPE ABR@s », TYPE parmi : echo, independance, transfert, conflit, renforcement, inclusion,
   appui, reproduction, tension, averti (aucun autre mot).
+- dans UNE strate : renforcement, conflit, inclusion, appui, reproduction, independance, tension ; ENTRE deux strates :
+  transfert, echo, conflit seulement ; averti dans les deux cas.
 - preuves_liaisons : une liste, UNE preuve par liaison, dans le même ordre (le fait daté qui établit le lien) ; une
   liaison sans preuve est retirée. Une liaison relie deux mots ANCRÉS (sauf averti, qui peut viser l'événement).
 - averti : « A averti B » quand OBSERVER A renseigne sur B SANS QUE A AGISSE SUR B (précurseur, symptôme, ou effet
@@ -760,12 +762,30 @@ Rends UNIQUEMENT l'objet JSON corrigé, avec les clés : {", ".join(CLES_LECTURE
 CLES_LECTURE = ("candidats", "contre_candidate", "rejets_classes", "mots", "liaisons", "preuves_liaisons", "questions")
 
 
+def cle_rejet(x: dict) -> str | None:
+    """0.10.55 : la carte d'un rejet rendu en liste. Le lecteur la range sous des noms variés (carte, candidate, mot…),
+    ou sépare carte et strate ; sinon on cherche une valeur « ABR@s ». Sans carte lisible : None (le rejet est
+    ignoré ; la candidate reçoit plus loin « non cherchée »). Avant, une clé « ?0 » partait au moteur, qui refusait
+    tout le dossier (banc ForecastBench du 2026-11-12 : « carte inconnue : '?0' », deux fois)."""
+    for k in ("carte", "candidate", "candidat", "mot", "cle", "clé", "id", "code", "nom"):
+        v = x.get(k)
+        if isinstance(v, str) and v.strip():
+            s_ = x.get("strate")
+            if "@" not in v and s_ is not None:
+                v = f"{v}@{s_}"
+            return cle_normale(v)
+    for v in x.values():
+        if isinstance(v, str) and re.fullmatch(r"\s*[A-Za-zÀ-ÿ·]+@\d+\s*", v):
+            return cle_normale(v.strip())
+    return None
+
+
 def details_rejets(lecture: dict) -> dict:
     """0.4.0 : pour chaque candidate écartée, ce qu'aurait dit un fait suffisant et l'extrait le plus proche trouvé.
     Mesure qui départage « le modèle sait mais n'ancre pas » (écart d'exécution) et « la recherche n'a rien ramené »."""
     brut = lecture.get("rejets_classes") or {}
     if isinstance(brut, list):
-        brut = {str(x.get("carte") or x.get("candidate") or f"?{i}"): x for i, x in enumerate(brut) if isinstance(x, dict)}
+        brut = {cle_rejet(x): x for x in brut if isinstance(x, dict) and cle_rejet(x)}
     if not isinstance(brut, dict):
         return {}
     return {k: {"fait_attendu": str(v.get("fait_attendu") or "")[:300] or None,
@@ -779,8 +799,7 @@ def rejets_moteur(lecture: dict) -> tuple[dict, dict]:
     brut = lecture.get("rejets_classes") or lecture.get("rejets") or {}
     if isinstance(brut, list):
         # 0.1.7 (passage du 2026-11-04) : le modèle rend parfois une liste [{"carte": …, "categorie": …, "motif": …}].
-        brut = {str(x.get("carte") or x.get("candidate") or x.get("cle") or x.get("id") or f"?{i}"): x
-                for i, x in enumerate(brut) if isinstance(x, dict)}
+        brut = {cle_rejet(x): x for x in brut if isinstance(x, dict) and cle_rejet(x)}   # 0.10.55
     if not isinstance(brut, dict):
         brut = {}
     rejets, cats = {}, {}
@@ -1281,6 +1300,14 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
             continue
         a_, t_, b_ = li.split()
         averti = t_.strip("—-→>") == "averti"
+        # 0.10.55 : types d'une même strate et types entre strates (grammaire G3) ; un type hors de sa place est retiré
+        # (banc du 2026-11-12 : « TRC@6 tension POL@7 », refus du dossier entier)
+        sa_, sb_ = cle_normale(a_).partition("@")[2], cle_normale(b_).partition("@")[2]
+        meme_ = sa_ == sb_
+        t0_ = t_.strip("—-→>").replace("echo", "écho")
+        if not averti and ((meme_ and t0_ in ("transfert", "écho")) or (not meme_ and t0_ not in ("transfert", "écho", "conflit"))):
+            notes.append(f"liaison retirée, type incompatible avec ses strates : {li[:80]}")
+            continue
         # une liaison relie des mots de l'état ; seule « averti » peut viser l'événement (sa source reste un mot)
         if cle_normale(a_) not in presentes_ or (cle_normale(b_) not in presentes_ and not averti):
             notes.append(f"liaison retirée, mot absent de l'état : {li[:80]}")

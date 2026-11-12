@@ -121,6 +121,21 @@ class Tests(unittest.TestCase):
         self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
         self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
+    def test_reparations_55(self):
+        # 0.10.55 : rejet rendu en liste sans clé « carte » ; liaison d'une strate posée entre deux strates
+        lec = {"rejets_classes": [{"mot": "INC", "strate": 7, "categorie": "aucun_fait", "motif": "x"},
+                                  {"categorie": "aucun_fait", "motif": "sans carte"},
+                                  {"motif": "y", "x": "POLARITÉ@7"}]}
+        r, _ = ap.rejets_moteur(lec)
+        self.assertEqual(sorted(r), ["INC@7", "POL@7"])
+        d = {"mots": [{"carte": "TRC", "strate": 6, "intensite": "f", "portee": "aucune"},
+                      {"carte": "POL", "strate": 7, "intensite": "f", "portee": "aucune"}],
+             "candidats": [], "rejets": {}, "questions": [],
+             "liaisons": ["TRC@6 tension POL@7", "TRC@6 transfert POL@7"], "preuves_liaisons": ["a", "b"]}
+        ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 7}, "candidats": []}, "2026-10-25")
+        self.assertEqual(d["liaisons"], ["TRC@6 transfert POL@7"])
+        self.assertEqual(d["preuves_liaisons"], ["b"])
+
     def test_averti_52(self):
         # 0.10.52 (skill 0.7.75, §51) : averti admis et peut viser l'événement ; source absente → retiré ;
         # liaison hors liste gardée à part ; seules les « averti » partent au moteur en --liaison

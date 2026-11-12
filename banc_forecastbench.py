@@ -220,6 +220,10 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
                  exploratoire=c.get("exploratoire"), symetrique=c.get("symetrique"),
                  ombre_causale=c.get("ombre_causale"), rejeu=c.get("_rejeu"),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
+    if c.get("statut") == "refuse" and c.get("dossier"):     # 0.10.55 : en strate 7 aussi, le dossier refusé est gardé
+        d_ = c["dossier"]
+        ligne["dossier_refuse"] = {k: d_.get(k) for k in ("candidats", "contre_candidate", "mots", "rejets", "liaisons",
+                                                          "questions", "_reparations") if k in d_}
     if (c.get("exploratoire") or {}).get("statut") == "panne":      # 0.10.54 : la panne de la lecture exploratoire
         ligne.update(statut="panne", motif=c["exploratoire"].get("motif"))
     return ligne

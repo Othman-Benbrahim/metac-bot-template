@@ -39,7 +39,7 @@ import alphabet_pipeline as ap
 # 4 : 0.10.28, skill 0.7.69 (marqueurs complets), deux États, contexte sans passé ni instance ;
 # 5 : 0.10.31, médias imposés, moitié des faits corroborés par deux médias, plus de réécriture ;
 # 6 : depuis 0.10.34, dépêches parasites dans la moitié des situations, lecture sans noms en parallèle)
-PROTOCOLE_MONDE = 9   # 0.10.52 : consigne du lecteur changée en 0.10.51 (liaisons, corroboration, extraits) et 0.10.52 (averti)
+PROTOCOLE_MONDE = 10  # 0.10.55 : liaisons, place des types (une strate / entre strates) ; 9 : 0.10.52 : consigne du lecteur changée en 0.10.51 (liaisons, corroboration, extraits) et 0.10.52 (averti)
 
 
 def nom_strate(s: int) -> str:
