@@ -226,9 +226,9 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
 async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...], graine: int) -> int:
     import alphabet_bot as ab
     import alphabet_modeles as am
-    if not os.environ.get("ALPHABET_CHERCHEUR", "").startswith("smart-searcher") or not os.environ.get("EXA_API_KEY"):
-        print("Banc ForecastBench : la recherche doit être Exa (smart-searcher + EXA_API_KEY), seule bornable dans le "
-              "temps ici. Rien n'est lancé.")
+    if not ar.recherche_bornee_disponible():
+        print("Banc ForecastBench : il faut une recherche bornable dans le temps (EXA_API_KEY ou TINYFISH_API_KEY). "
+              "Rien n'est lancé.")
         return 1
     choix, essais = await am.choisir()
     if not choix["principal"]:
@@ -258,6 +258,7 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
         for x in items:
             if faites >= n:
                 break
+            avant_m = ar.moteurs_utilises()
             with MonetaryCostManager() as cm:
                 try:
                     ligne = await un_test(x, j, llm, deja)
@@ -268,6 +269,8 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             if ligne is None:
                 continue
             ligne["cout_usd"] = round(float(cout or 0), 4)
+            apres_m = ar.moteurs_utilises()      # 0.10.50 : quels moteurs ont servi pour CETTE question
+            ligne["moteurs_recherche"] = {k: v - avant_m.get(k, 0) for k, v in apres_m.items() if v - avant_m.get(k, 0)}
             ar.ecrire(ligne)
             deja.add(ligne["question_id"])
             faites += 1

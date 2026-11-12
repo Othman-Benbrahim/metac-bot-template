@@ -54,6 +54,8 @@ jobs:
           BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
           ALPHABET_PUITS: ${{ vars.ALPHABET_PUITS }}
           EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
           ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}

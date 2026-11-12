@@ -49,13 +49,29 @@ Réponds honnêtement. Rends UNIQUEMENT un objet JSON : {{"connait": true ou fal
 _CHAINE = None
 
 
+ORDRE_RETRO = "exa,tinyfish,gdelt"
+
+
+def recherche_bornee_disponible() -> bool:
+    """0.10.50 : un moteur capable de rester avant la date d'information : Exa (bornage natif) ou TinyFish (seules les
+    pages DATÉES et antérieures sont gardées). GDELT seul ne suffit pas : il ne rend que des titres."""
+    return bool(os.environ.get("EXA_API_KEY") or os.environ.get("TINYFISH_API_KEY"))
+
+
+def moteurs_utilises() -> dict:
+    """Compteur cumulé des moteurs qui ont répondu depuis le début du passage (pour tracer chaque ligne)."""
+    return dict(_CHAINE.usage) if _CHAINE is not None else {}
+
+
 async def chercher_avant(requete: str, avant: datetime) -> str:
     """0.6.1 : Exa borné à la date d'information (seconde clé si la première échoue), puis GDELT, borné lui aussi.
-    Tavily n'est pas utilisé ici : leur bornage par date est moins sûr, et la fuite est le risque n° 1."""
+    0.10.50 : TinyFish entre Exa et GDELT (relais quand Exa manque) ; il ne sait pas borner par date, donc seules ses
+    pages DATÉES et antérieures à la date d'information sont gardées (petit risque résiduel : une page antidatée ou
+    mise à jour). Ordre modifiable par ALPHABET_RETRO_ORDRE. Tavily n'est pas utilisé : bornage moins sûr."""
     global _CHAINE
     import alphabet_recherche as ar_
     if _CHAINE is None:
-        _CHAINE = ar_.Chaine(None, ordre="exa,gdelt")
+        _CHAINE = ar_.Chaine(None, ordre=os.environ.get("ALPHABET_RETRO_ORDRE") or ORDRE_RETRO)
     _CHAINE.exa = lambda q: _exa_avant(q, avant)
     return await _CHAINE.chercher(requete, avant)
 
@@ -141,10 +157,9 @@ def ecrire(ligne: dict) -> None:
 async def principal(n: int, apres: str) -> int:
     from forecasting_tools import ApiFilter, MetaculusClient
     import alphabet_bot as ab
-    cherche = os.environ.get("ALPHABET_CHERCHEUR", "")
-    if not cherche.startswith("smart-searcher") or not os.environ.get("EXA_API_KEY"):
-        print("Tests rétrospectifs : la recherche doit être Exa (smart-searcher + EXA_API_KEY), seule bornable dans le "
-              "temps ici. Rien n'est lancé.")
+    if not recherche_bornee_disponible():
+        print("Tests rétrospectifs : il faut une recherche bornable dans le temps (EXA_API_KEY ou TINYFISH_API_KEY). "
+              "Rien n'est lancé.")
         return 1
     import alphabet_modeles as am
     choix, essais = await am.choisir()       # 0.6.0 : suites de modèles, le premier qui répond
