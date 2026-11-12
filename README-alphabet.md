@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.50 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.51 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.51** : **cinquième passage ForecastBench : premiers C exploratoires chiffrés** (7 sur 20), 5 états nuls
+  justifiés, 8 refus restants, tous des écarts du lecteur aux règles de forme. Corrigé, par la conséquence écrite de
+  chaque règle et dans la consigne : type de liaison hors de la liste (5 refus : « informe », « renforce »,
+  « coexiste », « borne », « alimente ») → liaison retirée, liste des types dans la consigne ; « independantes » avec
+  une seule source → « unique » ; extrait de plus de 300 caractères → coupé ; garantie dont le support est postérieur
+  à la date d'information (B1, une fuite en rétrospectif) → retirée ; strate sans seconde candidate → une voisine de
+  la carte ancrée (fiche du skill), « non cherchée » ; toute candidate sans motif de rejet → « non cherchée ».
 - **0.10.50** : **TinyFish en relais d'Exa pour les tests rétrospectifs et le banc ForecastBench** (décision d'auteur
   du 2026-11-12 : les crédits peuvent s'arrêter à tout moment). Ordre « exa,tinyfish,gdelt » (variable
   `ALPHABET_RETRO_ORDRE`). TinyFish ne sait pas borner par date : seules ses pages DATÉES et antérieures à la date
