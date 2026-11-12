@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.47 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.48 · skill alphabet-situationnel 0.7.74 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,15 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.48** : **quatrième passage ForecastBench** : les refus de FORME ont disparu ; ceux qui restaient (18 sur 20)
+  venaient des règles d'ancrage du skill, que le lecteur ne respectait pas hors strate 7. `reparer_dossier` applique
+  désormais la conséquence ÉCRITE de chaque règle au lieu de faire refuser tout le dossier, et n'affaiblit jamais
+  qu'une lecture : A7 (portée absente → mot non retenu ; dominante → rejet ; substantielle sur F → f avec
+  force_initiale F ; substantielle sur f → rejet) ; F dont l'A6, le test ou la garantie ne passent pas → f ; test ou
+  garantie mal formés sur un f → retirés. Questions de discrimination réparées dans la forme (branches normalisées,
+  branche décorative → « indetermine », justification et résolution manquantes inscrites comme « non fournies par le
+  lecteur ») ; s'il n'en reste aucune, le bot en pose une sur la carte ancrée, signalée. Vérifié sur les 15 dossiers
+  refusés du passage : plus aucune erreur A6/A7.
 - **0.10.47** : **troisième passage ForecastBench** : les refus du passage précédent ont disparu, il en restait un seul
   type (15 sur 16) : la vue calculée n'avait pas `ecart_critere`, exigé par le moteur depuis 0.7.44. Ajouté, avec un
   écart honnête pour ACLED (taux stable supposé, rafales des conflits) ; un rejet sans motif devient « non cherchée ».

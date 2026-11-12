@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.47"
+VERSION_BOT = "0.10.48"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1074,7 +1074,107 @@ def reparer_dossier(d: dict, plan: dict) -> list[str]:
         cats = d.get("_categories_rejet") or {}
         d["rejets"] = {avec_strate(k): v for k, v in d["rejets"].items()}
         d["_categories_rejet"] = {avec_strate(k): v for k, v in cats.items()}
+    # 0 bis (0.10.48). Les règles d'ancrage du skill (A7, A6, test, garantie), appliquées avec LEUR conséquence écrite,
+    # au lieu de faire refuser tout le dossier : on ne renforce jamais une lecture, on ne fait que l'affaiblir.
+    #   A7 : portée absente → mot non retenu (contre-observation non évaluée) ; dominante → rejet ; substantielle sur F →
+    #   f avec force_initiale F ; substantielle sur f (sans origine F) → rejet. F dont l'A6, le test ou la garantie ne
+    #   passent pas → f (« au plus f »). Un test ou une garantie mal formés sur un f sont retirés (facultatifs).
+    try:
+        M = _moteur()
+    except Exception:
+        M = None
+    if M is not None:
+        garde_m = []
+        for m in d.get("mots") or []:
+            if not isinstance(m, dict):
+                continue
+            k = f"{m.get('carte')}@{m.get('strate')}"
+            po, fi = m.get("portee"), m.get("force_initiale")
+            motif_rejet = None
+            if po not in M.PORTEES:
+                motif_rejet = "[non_classe] A7 : portée de la contre-observation non évaluée par le lecteur ; mot non retenu"
+            elif po == "dominante":
+                motif_rejet = "[contredit] A7 : contre-observation dominante"
+            elif po == "substantielle":
+                if m.get("intensite") == "F":
+                    m["intensite"], m["force_initiale"] = "f", "F"
+                    notes.append(f"{k} : A7 substantielle sur F → f (force_initiale F)")
+                elif fi != "F":
+                    motif_rejet = "[contredit] A7 : contre-observation substantielle sur une lecture f"
+            elif fi is not None:
+                m.pop("force_initiale", None)
+                notes.append(f"{k} : force_initiale retirée (portée {po})")
+            if motif_rejet:
+                d.setdefault("rejets", {})[k] = motif_rejet
+                d.setdefault("_categories_rejet", {})[k] = motif_rejet[1:motif_rejet.index("]")]
+                notes.append(f"{k} : mot non retenu ({motif_rejet})")
+                continue
+            if m.get("intensite") == "F":
+                try:
+                    e = (M.controle_a6(k, m.get("a6") or "") + M.controle_garantie(k, m, True)
+                         + M.controle_test(k, m, "F", True))
+                except Exception as ex:
+                    e = [str(ex)]
+                if e:
+                    m["intensite"] = "f"
+                    notes.append(f"{k} : F → f ({e[0][:120]})")
+            if m.get("intensite") == "f":
+                try:
+                    if M.controle_test(k, m, "f", False):
+                        m.pop("test", None)
+                        notes.append(f"{k} : test mal formé retiré")
+                    if M.controle_garantie(k, m, False):
+                        m.pop("garantie", None)
+                        m.pop("option", None)
+                        notes.append(f"{k} : garantie mal formée retirée")
+                except Exception:
+                    pass
+            garde_m.append(m)
+        d["mots"] = garde_m
     fm = {f"{m.get('carte')}@{m.get('strate')}" for m in d.get("mots") or [] if isinstance(m, dict)}
+    # 0 ter (0.10.48). Questions de discrimination (exigées au premier état d'un cas réel) : réparées dans la forme,
+    # jamais dans le fond. Branches normalisées (CARTE@strate) ; deux branches vers la même carte → « non » mène à
+    # « indetermine » (non A ne vaut pas B) ; justification manquante inscrite comme telle, par le bot. Une question
+    # irréparable est retirée ; s'il n'en reste aucune qui départage, le bot en pose une sur la carte ancrée, signalée.
+    if M is not None:
+        bot = "non fournie par le lecteur (inscrite par le bot, 0.10.48)"
+        qs = []
+        for q in d.get("questions") if isinstance(d.get("questions"), list) else []:
+            if not isinstance(q, dict):
+                continue
+            q = dict(q)
+            if q.get("type") != "documentation":
+                for b_ in ("si_oui", "si_non"):
+                    v_ = str(q.get(b_) or "")
+                    if v_ != M.INDETERMINE:
+                        q[b_] = avec_strate(v_) if v_ else M.INDETERMINE
+                if q.get("si_oui") == q.get("si_non"):
+                    q["si_non"] = M.INDETERMINE
+                    notes.append(f"question « {str(q.get('question'))[:40]} » : branche non → indetermine (décorative)")
+                j_ = q.get("justification") if isinstance(q.get("justification"), dict) else {}
+                for rep_ in ("oui", "non"):
+                    if not (isinstance(j_.get(rep_), str) and j_[rep_].strip()):
+                        j_[rep_] = f"{bot} : « {rep_} » mène à {q.get('si_' + rep_)}"
+                q["justification"] = j_
+                if not (isinstance(q.get("resolution"), str) and q["resolution"].strip()):
+                    q["resolution"] = f"{bot} : l'observation datée qui trancherait entre {q.get('si_oui')} et {q.get('si_non')}"
+            try:
+                ok = not M.controle_questions([q], fm, False, True)
+            except Exception:
+                ok = False
+            if ok:
+                qs.append(q)
+            else:
+                notes.append(f"question irréparable retirée : {str(q.get('question'))[:60]}")
+        if fm and not any(q.get("type") != "documentation" for q in qs):
+            k0 = sorted(fm)[0]
+            qs.append({"question": f"Un fait suffisant établit-il {k0} dans la fenêtre ? (question inscrite par le bot)",
+                       "si_oui": k0, "si_non": M.INDETERMINE,
+                       "resolution": "une source primaire datée qui remplit un marqueur de la carte",
+                       "justification": {"oui": f"{bot} : un fait suffisant établit {k0}",
+                                         "non": f"{bot} : sans ce fait, le codage reste ouvert"}})
+            notes.append(f"question de discrimination inscrite par le bot sur {k0}")
+        d["questions"] = qs
     # 1. liaisons : « A@s type B@s » ; un objet {de, type, vers} est réécrit, le reste retiré
     garde = []
     for li in d.get("liaisons") or []:
@@ -1695,7 +1795,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
              if c.get(k) is not None}
     if explo.get("statut") == "refuse":     # 0.10.46 : le dossier refusé est gardé, pour qu'un refus se diagnostique
         d_ = c.get("dossier") or {}
-        explo["dossier_refuse"] = {k: d_.get(k) for k in ("candidats", "contre_candidate", "mots", "rejets", "liaisons",
+        explo["dossier_refuse"] = {k: d_.get(k) for k in ("candidats", "contre_candidate", "mots", "rejets", "liaisons", "questions",
                                                           "_reparations") if k in d_}
     explo["strate"] = strate
     explo["p_C_corrige"] = corriger_C(explo.get("p_C"), correction_retro())   # 0.9.1 : la correction en ombre aussi
