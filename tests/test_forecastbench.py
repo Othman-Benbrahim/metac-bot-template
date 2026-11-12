@@ -121,6 +121,21 @@ class Tests(unittest.TestCase):
         self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
         self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
+    def test_empreintes_56(self):
+        # 0.10.56 : empreinte de chaque résultat (texte hors registre) ; chaque passage cité est lié à sa source
+        ex = [{"famille": "observation", "cartes": [], "requete": "q", "executee": True,
+               "resultat": "Le 3 octobre, le Parlement a adopté la loi de finances après un vote serré."},
+              {"famille": "observation", "cartes": [], "requete": "q2", "executee": False, "resultat": ""}]
+        r0 = ap.sans_resultat(ex[0])
+        self.assertNotIn("resultat", r0)
+        self.assertEqual(r0["empreinte"], ap.empreinte(ex[0]["resultat"]))
+        self.assertNotIn("empreinte", ap.sans_resultat(ex[1]))
+        d = {"mots": [{"carte": "POL", "strate": 7, "passage": {"extrait": "le parlement a ADOPTÉ la loi de finances"}},
+                      {"carte": "CTR", "strate": 7, "passage": {"extrait": "phrase absente des résultats"}},
+                      {"carte": "SEU", "strate": 7}]}
+        e = ap.empreintes_passages(d, ex)
+        self.assertEqual(e, [{"mot": "POL@7", "empreinte": r0["empreinte"]}, {"mot": "CTR@7", "empreinte": None}])
+
     def test_reparations_55(self):
         # 0.10.55 : rejet rendu en liste sans clé « carte » ; liaison d'une strate posée entre deux strates
         lec = {"rejets_classes": [{"mot": "INC", "strate": 7, "categorie": "aucun_fait", "motif": "x"},
