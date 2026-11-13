@@ -15,7 +15,13 @@ import time
 
 import httpx
 
-BASE = "https://integrate.api.nvidia.com/v1"
+FOURNISSEURS = {   # 0.10.63 : la même sonde pour plusieurs fournisseurs compatibles OpenAI
+    "nvidia": ("https://integrate.api.nvidia.com/v1", ("NVIDIA_API_KEY", "NVIDIA_NIM_API_KEY")),
+    "mistral": ("https://api.mistral.ai/v1", ("MISTRAL_API_KEY",)),
+}
+FOURNISSEUR = os.environ.get("SONDE_FOURNISSEUR") or "nvidia"
+BASE, CLES = FOURNISSEURS[FOURNISSEUR]
+DEFAUT_MISTRAL = "mistral-large-latest,mistral-medium-latest,mistral-small-latest,magistral-medium-latest"
 DEFAUT = ("deepseek-ai/deepseek-v4.1-flash,nvidia/nemotron-3-ultra-550b-a55b,z-ai/glm-5.3-flash,"
           "minimaxai/minimax-m3.1-flash,google/gemma-4-31b-it,openai/gpt-oss-20b")
 DELAI = float(os.environ.get("SONDE_DELAI") or "120")
@@ -53,10 +59,11 @@ def sonder(client: httpx.Client, modele: str) -> dict:
 
 
 def principal(modeles: list[str]) -> int:
-    cle = os.environ.get("NVIDIA_API_KEY") or os.environ.get("NVIDIA_NIM_API_KEY")
+    cle = next((os.environ.get(k) for k in CLES if os.environ.get(k)), None)
     if not cle:
-        print("Pas de clé NVIDIA_API_KEY.")
+        print(f"Pas de clé {CLES[0]} (fournisseur {FOURNISSEUR}).")
         return 1
+    print(f"Fournisseur : {FOURNISSEUR} ({BASE})")
     with httpx.Client(headers={"Authorization": f"Bearer {cle}", "Accept": "text/event-stream"}) as c:
         try:
             r = c.get(f"{BASE}/models", timeout=30)
@@ -76,4 +83,5 @@ def principal(modeles: list[str]) -> int:
 
 if __name__ == "__main__":
     arg = sys.argv[1].strip() if len(sys.argv) > 1 else ""       # entrée vide du workflow : la liste par défaut
-    sys.exit(principal([m.strip() for m in (arg or DEFAUT).split(",") if m.strip()]))
+    defaut = DEFAUT_MISTRAL if FOURNISSEUR == "mistral" else DEFAUT
+    sys.exit(principal([m.strip() for m in (arg or defaut).split(",") if m.strip()]))
