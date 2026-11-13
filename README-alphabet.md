@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.68 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.69 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,17 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.69** : **étape 2, cohérence du moteur** (`verif_moteur.py`, rien n'est corrigé ni écrit au registre). Chaque
+  calcul est recoupé par une bibliothèque indépendante, sur les mêmes entrées (157 paires B et 48 paires C résolues du
+  banc) : Brier et perte log (scikit-learn, properscoring), Wilson (statsmodels), loi Beta (scipy), recalibration
+  logistique avec et sans rappel (statsmodels), AR(1) du taux de base (statsmodels, arch) : identiques à la précision
+  machine. Décomposition de Murphy du moteur : identique à scikit-learn une fois la convention des bords alignée (le
+  moteur range p = 0,5 dans le bac [0,5 ; 0,6[, scikit-learn dans [0,4 ; 0,5] ; 54 valeurs B sur un bord). Inférence
+  séquentielle : couverture simulée 100 % (bot et moteur) et 98 % (confseq), largeur proche de confseq (+5 % pour
+  score_registre) ; fausses alarmes de l'e-valeur à tout instant 1,5 % (≤ 5 %). Seuils du compte AR(1) contre
+  Dickey-Fuller : le mélange s'ouvre à t < −2,5, entre les valeurs critiques à 10 % (−2,58) et 5 % (−2,89) ; 13 % des
+  marches aléatoires de 120 points y entrent (avec un poids faible) ; AR(1) seul à t < −3,5 : 1 %, au niveau 1 %.
+  Dépendances hors du bot ; confseq demande deux retouches de compilation (voir l'en-tête du script).
 - **0.10.68** : **recherches et candidates** (banc multi-lecteurs, Mistral Medium sur les 20 questions de 0.10.55 :
   10 dossiers refusés, tous parce que les recherches du plan visaient des cartes absentes des candidates de la lecture ;
   Sonnet les recopiait, Mistral jamais). Le réparateur retire d'une recherche les cartes absentes des candidates (il ne
