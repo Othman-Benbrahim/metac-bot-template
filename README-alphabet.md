@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.61 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.62 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.62** : **banc des petites tâches** (décision d'auteur du 2026-11-13 : NVIDIA pour les tâches courtes, à
+  condition de mesurer jusqu'où chaque modèle est fiable). `banc_petites_taches.py` et le workflow du même nom
+  soumettent à d'autres modèles les MÊMES consignes courtes que Claude a reçues sur les questions ForecastBench d'une
+  version passée (0.10.55 par défaut) : le plan et la sonde de connaissance. Mesures : tenue (délai, JSON lisible),
+  plan recevable, accord avec la référence (hors alphabet ou non, carte, strate, type ; « connait »), et chaque écart
+  listé. Claude Haiku sert de témoin : son accord avec Sonnet dit ce qu'est un « bon » accord. Rien n'est écrit au
+  registre.
 - **0.10.61** : au banc, une question jugée hors alphabet garde son B (calculé par le code avant toute lecture) ; il
   manquait à la ligne. 0.10.60 : `sonde_nvidia.py` et le workflow « Sonde NVIDIA » (appels directs, sans litellm :
   code HTTP, délai jusqu'au premier octet, réponse). Le 2026-11-13 à 2 h 30 : Nemotron 3 Ultra et MiniMax M3.1 Flash

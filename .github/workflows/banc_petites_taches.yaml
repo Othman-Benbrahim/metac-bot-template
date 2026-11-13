@@ -1,0 +1,45 @@
+name: Banc des petites tâches
+
+# 0.10.62 : manuel. Les mêmes consignes courtes (plan, sonde de connaissance) que Claude a reçues sur les questions
+# ForecastBench d'une version passée, soumises à d'autres modèles ; tenue (délais, JSON) et accord avec la référence.
+# Rien n'est écrit au registre ; rapport dans le journal et en artefact.
+on:
+  workflow_dispatch:
+    inputs:
+      modeles:
+        description: "modèles séparés par des virgules"
+        default: "nvidia_nim/nvidia/nemotron-3-ultra-550b-a55b,nvidia_nim/minimaxai/minimax-m3.1-flash,bedrock/global.anthropic.claude-haiku-4-5-20251001-v1:0"
+      version:
+        description: "version du bot qui sert de référence"
+        default: "0.10.55"
+      taches:
+        description: "tâches (plan, sonde)"
+        default: "plan,sonde"
+
+permissions:
+  contents: read
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Banc des petites tâches
+        run: uv run python banc_petites_taches.py --modeles "${{ github.event.inputs.modeles }}" --version "${{ github.event.inputs.version }}" --taches "${{ github.event.inputs.taches }}"
+        env:
+          NVIDIA_NIM_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: us-east-1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: petites-taches
+          path: petites_taches.json
