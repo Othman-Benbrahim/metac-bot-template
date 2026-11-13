@@ -79,7 +79,8 @@ async def appeler(modele: str, consigne: str) -> tuple[str | None, float, str | 
         return None, round(time.monotonic() - t0, 1), f"{type(e).__name__}: {e}"[:200]
 
 
-async def evaluer(modele: str, items: list[dict], refs: dict[str, dict], taches: list[str]) -> dict:
+async def evaluer(modele: str, items: list[dict], refs: dict[str, dict], taches: list[str],
+                  sortie_partielle: str | None = None) -> dict:
     res = {"modele": modele, "plan": [], "sonde": []}
     for x in items:
         ref = refs[x["qid"]]
@@ -97,6 +98,8 @@ async def evaluer(modele: str, items: list[dict], refs: dict[str, dict], taches:
                          == (b.get("carte"), b.get("strate"), b.get("type"))))
             res["plan"].append({"qid": x["qid"], "secondes": s, "erreur": err, "modele": a, "reference": b,
                                 "accord": bool(meme)})
+            print(f"{modele[-28:]} plan  {x['qid'][14:56]} {s:6.1f} s {'accord' if meme else 'ÉCART'} {err or ''}",
+                  flush=True)
         if "sonde" in taches:
             texte, s, err = await appeler(modele, ar.consigne_sonde(x["titre"], x["criteres"]))
             try:
@@ -107,6 +110,10 @@ async def evaluer(modele: str, items: list[dict], refs: dict[str, dict], taches:
             res["sonde"].append({"qid": x["qid"], "secondes": s, "erreur": err, "lisible": isinstance(so, dict),
                                  "connait": (so or {}).get("connait"), "reference": ref_so.get("connait"),
                                  "accord": isinstance(so, dict) and so.get("connait") == ref_so.get("connait")})
+            print(f"{modele[-28:]} sonde {x['qid'][14:56]} {s:6.1f} s {err or ''}", flush=True)
+        if sortie_partielle:                       # le rapport survit à une coupure du workflow
+            with open(sortie_partielle, "w", encoding="utf-8") as f:
+                json.dump(res, f, ensure_ascii=False)
     return res
 
 
@@ -144,10 +151,10 @@ async def principal(modeles: list[str], version: str, taches: list[str], sortie:
     print(f"Référence : version {version}, {len(items)} questions ; tâches : {', '.join(taches)} ; délai {DELAI:.0f} s.")
     tout = []
     for m in modeles:
-        r = await evaluer(m, items, refs, taches)
+        r = await evaluer(m, items, refs, taches, f"partiel_{len(tout)}.json")
         tout.append(r)
         b = bilan(r)
-        print(json.dumps(b, ensure_ascii=False))
+        print(json.dumps(b, ensure_ascii=False), flush=True)
         for t in taches:
             for x in r[t]:
                 if not x["accord"] or x["erreur"]:
