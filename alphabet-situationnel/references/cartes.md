@@ -1,6 +1,6 @@
 # Alphabet situationnel — Les 16 cartes (noyau transversal candidat)
 
-> Version : 0.7.75
+> Version : 0.7.76
 
 > **Statut 0.4.0.** Les rapprochements mathématiques ci-dessous guident la lecture ; ils ne prouvent
 > ni universalité ni transfert des probabilités. La bibliographie du noyau ne valide pas les équivalents locaux.
@@ -139,6 +139,10 @@ système ou imposé par un forçage extérieur (calendrier, saison, échéance).
 **Registre anthropologique** — *documenté* : « time, cyclicity of », « rituals ».
 
 **Garantie type** (A6, 0.6.0) — *mécanisme* : un état revient à intervalles réguliers, entretenu par le système ou forcé par un calendrier ; *attendu* : au moins deux retours datés à intervalle comparable ; *contredirait* : un épisode unique, ou des retours sans régularité.
+
+**Pas de norme** (0.7.76, `validation.md` §52) — un cycle observé ne désigne pas un état normal auquel la situation
+devrait revenir. La phase attendue est celle que le cycle observé annonce, non une moyenne ni un équilibre supposé ;
+une période se constate (marqueurs ci-dessus), elle ne se postule pas.
 
 **À ne pas confondre avec** :
 - *RÉCURSIVITÉ* — Question : *le retour est-il réglé par un rythme ou une échéance (→ PÉRIODICITÉ)
@@ -319,6 +323,10 @@ théorie des groupes.
 "opposite" », « culture/nature distinction », « in-group distinguished from out-group(s) ».
 
 **Garantie type** (A6, 0.6.0) — *mécanisme* : deux pôles se définissent l'un par l'autre et organisent le champ ; *attendu* : des alignements exclusifs : rejoindre un pôle écarte de l'autre ; *contredirait* : une troisième position stable, ou des alignements croisés durables.
+
+**Le tiers** (0.7.76, `validation.md` §52) — une dyade lue seule durcit en dichotomie. Chercher, et noter dans le champ
+`tiers`, ce qui se tient hors des deux camps sans en former un troisième : un médiateur, un arbitre, une abstention.
+Ils ne contredisent pas la carte ; un troisième pôle stable, si.
 
 **À ne pas confondre avec** :
 - *CONTRAINTE* — Question : *y a-t-il deux pôles qui structurent le champ (→ POLARITÉ) ou une règle

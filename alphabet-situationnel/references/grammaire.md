@@ -1,6 +1,6 @@
 # Alphabet situationnel — Grammaire (couche 2)
 
-> Version : 0.7.75
+> Version : 0.7.76
 
 > Notation, syntaxe formelle, critères des liaisons et liste de contrôle. Les règles sont G1–G6
 > (`protocole.md`) ; ce fichier les rend applicables.
@@ -139,6 +139,15 @@ Une paire incompatible (`antagonismes.md` §3) sur le même objet exige de rejet
 « indépendance » ne devient recevable que pour deux objets distincts nommés.
 
 ---
+
+### Le tiers d'une POLARITÉ (0.7.76, `validation.md` §52)
+
+Un mot POLARITÉ peut porter un champ facultatif `tiers` : `{"type", "qui", "fait"}`, `type` parmi `mediateur` (un
+acteur qui relie les deux camps sans en être), `arbitre` (une instance qui tranche entre eux), `abstention` (une part
+du champ qui refuse de se ranger), `troisieme_pole` ou `aucun`. Les trois premiers sont compatibles avec POLARITÉ : ils
+se tiennent hors des camps sans en former un troisième. Un **troisième pôle stable** contredit la garantie de la carte
+(« une troisième position stable ») : POLARITÉ ne s'ancre pas. `aucun` dit qu'on a cherché et rien trouvé. Le champ
+n'a aucun effet sur p : il est relevé pour être mesuré sur les issues.
 
 ## 5. Positions et configurations (G4)
 

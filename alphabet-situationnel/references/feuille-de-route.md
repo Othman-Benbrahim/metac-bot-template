@@ -1,6 +1,6 @@
 # Alphabet situationnel — Feuille de route
 
-> Version : 0.7.75
+> Version : 0.7.76
 
 > Ce qui reste à faire pour que le skill passe de cadre cohérent à instrument éprouvé, dans l'ordre,
 > avec qui fait quoi et à quoi l'on reconnaît qu'une étape est terminée. Les étapes mesurables sont
@@ -506,6 +506,10 @@ fermer, pas seulement s'ouvrir. Prochaines étapes, à décider une par une :
    de l'arbre ; tant qu'il n'est pas fait, les freins restent en ombre.
 5. **Nouveaux freins** : seulement par la règle du §48 (structure qui borne ou exclut, avec une référence), jamais
    par simple tension documentée.
+6. **Une forêt plutôt qu'un arbre** (§52, 2026-11-13) : une racine par strate, reliées par des emprunts déclarés, plutôt
+   qu'un tronc dont tout descendrait. À décider sur le comptage du bot (`foret_strates.py`) : si les cartes ancrées hors
+   de la strate de l'événement lui sont le plus souvent reliées par une liaison déclarée, la forêt décrit mieux les
+   lectures que l'arbre.
 
 
 ## Chantier du moteur : recouper et apprendre (décision d'auteur du 2026-11-12)
