@@ -62,6 +62,8 @@ def principal(modeles: list[str]) -> int:
             r = c.get(f"{BASE}/models", timeout=30)
             ids = {m.get("id") for m in r.json().get("data", [])}
             print(f"/v1/models : HTTP {r.status_code}, {len(ids)} modèles listés")
+            print("  dont : " + ", ".join(sorted(i for i in ids if any(k in i for k in
+                                                                           ("deepseek", "nemotron-3", "glm", "minimax", "qwen", "kimi", "gpt-oss")))))
         except Exception as e:
             ids = set()
             print(f"/v1/models : {type(e).__name__}: {e}")
@@ -73,4 +75,5 @@ def principal(modeles: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(principal([m.strip() for m in (sys.argv[1] if len(sys.argv) > 1 else DEFAUT).split(",") if m.strip()]))
+    arg = sys.argv[1].strip() if len(sys.argv) > 1 else ""       # entrée vide du workflow : la liste par défaut
+    sys.exit(principal([m.strip() for m in (arg or DEFAUT).split(",") if m.strip()]))
