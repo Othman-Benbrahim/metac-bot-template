@@ -35,6 +35,7 @@ jobs:
       - name: Banc des petites tâches
         run: uv run python banc_petites_taches.py --modeles "${{ github.event.inputs.modeles }}" --version "${{ github.event.inputs.version }}" --taches "${{ github.event.inputs.taches }}"
         env:
+          PYTHONUNBUFFERED: "1"
           NVIDIA_NIM_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
           AWS_REGION_NAME: us-east-1
@@ -42,4 +43,6 @@ jobs:
         if: always()
         with:
           name: petites-taches
-          path: petites_taches.json
+          path: |
+            petites_taches.json
+            partiel_*.json
