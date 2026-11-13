@@ -305,6 +305,74 @@ def biais_C(apparies: list) -> dict | None:
             "lecture": "C_moyen au-dessus du taux de OUI quand B_moyen en est proche : C surestime (biais à la hausse)"}
 
 
+def auc(paires: list[tuple[float, int]]) -> float | None:
+    """0.10.71 : aire sous la courbe ROC (statistique de Mann-Whitney, ex aequo comptés pour moitié). Mesure la
+    DISCRIMINATION seule : la part des couples (OUI, NON) où le OUI a reçu la plus forte probabilité. 0,5 = hasard.
+    Indépendante de la calibration (un C biaisé vers le haut peut bien classer) ; en ombre, hors critère."""
+    oui = [p for p, y in paires if y == 1]
+    non = [p for p, y in paires if y == 0]
+    if not oui or not non:
+        return None
+    s = sum(1.0 if a > b else 0.5 if a == b else 0.0 for a in oui for b in non)
+    return s / (len(oui) * len(non))
+
+
+def alpha_krippendorff(unites: dict[str, list]) -> dict | None:
+    """0.10.71 : alpha de Krippendorff, valeurs nominales. unites = {question: [valeur du lecteur 1, du lecteur 2, …]}
+    (None = valeur manquante). Accord corrigé du hasard, pour deux lecteurs ou plus et des questions incomplètes :
+    1 = accord parfait, 0 = hasard, négatif = désaccord systématique. Krippendorff (2004), matrice des coïncidences."""
+    o: dict[tuple, float] = {}
+    n_unites = 0
+    for vals in unites.values():
+        v = [x for x in vals if x is not None]
+        if len(v) < 2:
+            continue
+        n_unites += 1
+        for i, a in enumerate(v):
+            for j, b in enumerate(v):
+                if i != j:
+                    o[(a, b)] = o.get((a, b), 0.0) + 1 / (len(v) - 1)
+    if not o:
+        return None
+    n_c: dict = {}
+    for (a, _), w in o.items():
+        n_c[a] = n_c.get(a, 0.0) + w
+    n = sum(n_c.values())
+    d_o = sum(w for (a, b), w in o.items() if a != b)
+    d_e = sum(n_c[a] * n_c[b] for a in n_c for b in n_c if a != b)
+    if d_e == 0:
+        return {"alpha": None, "unites": n_unites, "lecture": "une seule valeur observée : alpha non défini"}
+    accord = sum(1 for vals in unites.values() if len([x for x in vals if x is not None]) >= 2
+                 and len({x for x in vals if x is not None}) == 1)
+    return {"alpha": 1 - (n - 1) * d_o / d_e, "unites": n_unites, "accord_brut": accord}
+
+
+def accord_lecteurs(lignes: list[dict]) -> dict | None:
+    """0.10.71 : accord entre lecteurs (modèle principal) sur les MÊMES questions du banc : carte de l'événement, carte
+    et type, statut. Dernière ligne par (question, lecteur) ; une question lue par un seul lecteur ne compte pas."""
+    par: dict[str, dict[str, dict]] = {}
+    for x in lignes:
+        if x.get("statut") == "panne":
+            continue
+        lect = (x.get("modeles") or {}).get("principal")
+        if not lect:
+            continue
+        ex = x.get("exploratoire") or {}
+        ev = ((x.get("rejeu") or {}).get("plan") or {}).get("evenement") or {}
+        par.setdefault(x["question_id"], {})[lect] = {
+            "carte": ev.get("carte"), "carte_type": f"{ev.get('carte')} {ev.get('type')}" if ev else None,
+            "statut": ex.get("statut") or x.get("statut")}
+    lecteurs = sorted({l for d in par.values() for l in d})
+    communes = {q: d for q, d in par.items() if len(d) >= 2}
+    if len(lecteurs) < 2 or not communes:
+        return None
+    return {"lecteurs": lecteurs, "questions_communes": len(communes),
+            **{k: alpha_krippendorff({q: [d.get(l, {}).get(k) for l in lecteurs] for q, d in communes.items()})
+               for k in ("carte", "carte_type", "statut")},
+            "lecture": "alpha de Krippendorff (nominal) ; ≥ 0,8 fiable, 0,67-0,8 provisoire, en dessous : les lecteurs "
+                       "ne lisent pas la même structure. Le statut mêle lecture et conformité au format."}
+
+
 def comparer(apparies: list, x: str, ref: str, borne: float | None = None, principal: bool = False) -> dict:
     g = [gain_pair(p[x], p[ref], y) for p, y in apparies]
     d_brier = [brier(p[x], y) - brier(p[ref], y) for p, y in apparies]
@@ -335,7 +403,9 @@ def comparer(apparies: list, x: str, ref: str, borne: float | None = None, princ
                           "gain_sans_pire_question": (total - pire) / (len(g) - 1) if len(g) > 1 else None,
                           "lecture": "diagnostic d'influence, pas un test"},
             "brier_critere_L7": {"ecart_moyen": sum(d_brier) / len(d_brier),   # négatif = x meilleur (§27)
-                               "accord_avec_log": (total > 0) == (sum(d_brier) < 0)}}
+                               "accord_avec_log": (total > 0) == (sum(d_brier) < 0)},
+            # 0.10.71 : discrimination seule, en ombre (hors critère)
+            "auc": {x: auc([(p[x], y) for p, y in apparies]), ref: auc([(p[ref], y) for p, y in apparies])}}
 
 
 def _logit(p: float) -> float:
@@ -905,6 +975,7 @@ def scorer_retro(registre: Path) -> dict:
             o = x.get("ombre_absence") if "ombre_absence" in x else ap.ombre_absence(x["p_B"], nat)
             nuls.append((o, x["p_B"], x.get("issue"), x.get("version_bot")))
     sortie["ombre_absence"] = ombre_absence_suivi(nuls)
+    sortie["accord_lecteurs"] = accord_lecteurs([x for x in intactes if x.get("banc") == "forecastbench"])
     if len(paires_c) >= 2:
         b = ajuster_decalage(paires_c)
         gains = []
