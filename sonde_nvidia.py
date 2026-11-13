@@ -19,6 +19,7 @@ FOURNISSEURS = {   # 0.10.63 : la même sonde pour plusieurs fournisseurs compat
     "nvidia": ("https://integrate.api.nvidia.com/v1", ("NVIDIA_API_KEY", "NVIDIA_NIM_API_KEY")),
     "mistral": ("https://api.mistral.ai/v1", ("MISTRAL_API_KEY",)),
     "sambanova": ("https://api.sambanova.ai/v1", ("SAMBANOVA_API_KEY",)),
+    "cerebras": ("https://api.cerebras.ai/v1", ("CEREBRAS_API_KEY",)),
 }
 FOURNISSEUR = os.environ.get("SONDE_FOURNISSEUR") or "nvidia"
 BASE, CLES = FOURNISSEURS[FOURNISSEUR]
@@ -86,7 +87,7 @@ def principal(modeles: list[str]) -> int:
 
 if __name__ == "__main__":
     arg = sys.argv[1].strip() if len(sys.argv) > 1 else ""       # entrée vide du workflow : la liste par défaut
-    defaut = {"mistral": DEFAUT_MISTRAL, "sambanova": ""}.get(FOURNISSEUR, DEFAUT)
+    defaut = {"mistral": DEFAUT_MISTRAL, "sambanova": "", "cerebras": ""}.get(FOURNISSEUR, DEFAUT)
     if not (arg or defaut):        # sambanova : les modèles listés par l'API elle-même
         defaut = "*"
     sys.exit(principal([m.strip() for m in (arg or defaut).split(",") if m.strip()]))
