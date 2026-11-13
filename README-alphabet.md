@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.70 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.71 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,10 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.71** : **discrimination et accord entre lecteurs**, en ombre, hors critère. Chaque comparaison de bras
+  donne l'AUC de chacun (part des couples OUI/NON bien classés, indépendante de la calibration). Le rapport du banc
+  donne l'alpha de Krippendorff (nominal) entre lecteurs sur les mêmes questions : carte de l'événement, carte et
+  type, statut. Premiers chiffres (43 questions estimées) : AUC B 0,55, C 0,57 ; C classe à peine mieux que B.
 - **0.10.70** : **ombre « absence »** (hypothèse enregistrée le 2026-11-13, décision d'auteur). Constat exploratoire
   sur le banc (jeu du 2026-10-25) : sur 11 états nuls d'absence (structure absente, carte visée absente), 1 OUI pour
   3,9 attendus par B, alors que B est calibré sur l'ensemble (60 OUI pour 59,5) ; les angles morts ne montrent rien

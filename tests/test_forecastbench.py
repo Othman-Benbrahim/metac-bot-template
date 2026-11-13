@@ -184,6 +184,17 @@ class Tests(unittest.TestCase):
         self.assertEqual(s["avant_enregistrement"]["n"], 1)
         self.assertIsNone(sr.ombre_absence_suivi([]))
 
+    def test_auc_krippendorff_71(self):
+        import score_registre as sr
+        self.assertEqual(sr.auc([(0.9, 1), (0.1, 0)]), 1.0)
+        self.assertEqual(sr.auc([(0.5, 1), (0.5, 0)]), 0.5)
+        self.assertIsNone(sr.auc([(0.5, 1)]))
+        self.assertAlmostEqual(sr.alpha_krippendorff({"a": [1, 1], "b": [2, 2], "c": [1, 1]})["alpha"], 1.0)
+        # exemple de Krippendorff (2004) réduit : désaccord total sur deux valeurs → alpha négatif
+        self.assertLess(sr.alpha_krippendorff({"a": [1, 2], "b": [2, 1]})["alpha"], 0)
+        # questions incomplètes ignorées
+        self.assertEqual(sr.alpha_krippendorff({"a": [1, None], "b": [1, 1], "c": [2, 2]})["unites"], 2)
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
