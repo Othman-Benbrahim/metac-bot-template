@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.64 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.66 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.66** : **UCDP** (clé reçue le 2026-11-13 ; 5 000 requêtes par jour). Version annuelle 26.1 (jusqu'à fin
+  2025) prolongée par les versions **candidates** mensuelles (26.0.X, moins vérifiées, marquées « [candidat] »). Un
+  mois n'est lu que si sa version était publiée à la date limite (prudence : fin du mois suivant), pour qu'un test
+  rétrospectif ne lise pas une donnée sortie après sa date d'information. `UCDP_CANDIDAT=0` les coupe. (0.10.65 :
+  version 26.1 par défaut.)
 - **0.10.64** : **quatre pistes de Snowden** (skill 0.7.76, décision d'auteur du 2026-11-13, `validation.md` §52). (1)
   Tiers de POLARITÉ : la consigne demande au lecteur ce qui se tient hors des deux camps (médiateur, arbitre,
   abstention, ou « aucun ») ; un tiers mal formé ou hors de POL est retiré, un troisième pôle stable retire POLARITÉ
