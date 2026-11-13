@@ -259,6 +259,8 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
     choix, essais = await am.choisir()
     if not choix["principal"]:
         print("Aucun modèle principal disponible. Rien n'est lancé.")
+        for e_ in essais:                          # 0.10.58 : pourquoi (modèle inconnu, clé, réponse sans JSON…)
+            print(f"  essai {e_.get('role')} {e_.get('modele')} : {e_.get('erreur')}")
         return 1
     am.appliquer(choix)
     modele = ab.configuration().get("default")
