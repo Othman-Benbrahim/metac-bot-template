@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.77"
+VERSION_BOT = "0.10.78"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1459,6 +1459,31 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
                         d.setdefault("rejets", {})[c] = "[non_cherchee] voisine de la carte ancrée, non examinée (ajoutée par le bot)"
                         d.setdefault("_categories_rejet", {})[c] = "non_cherchee"
                         notes.append(f"candidate ajoutée : {c} (voisine de {k})")
+    # 3 ter (0.10.78, banc du 2026-11-13 : 5 candidates déclarées dans une strate, dossier refusé). Au plus 4 par
+    #    strate : on garde d'abord les cartes ancrées, puis les contre-candidates, puis les cartes visées par une
+    #    recherche, puis celles du plan, dans l'ordre du lecteur ; les autres sortent, avec leur rejet éventuel (tracé).
+    cc_ = {cle_normale(c) for c in d.get("contre_candidate") or [] if isinstance(c, str)}
+    rech_ = set()
+    for r in d.get("recherches") or []:
+        for c in r.get("cartes") or []:
+            try:
+                rech_.add(cle_normale(c))
+            except Exception:
+                pass
+    plan_ = {cle_normale(c) for c in plan.get("candidats") or [] if isinstance(c, str)}
+    for st in sorted({c.split("@")[1] for c in cand if "@" in c}):
+        dans = [c for c in cand if c.endswith(f"@{st}")]
+        if len(dans) <= 4:
+            continue
+        rang = {c: i for i, c in enumerate(dans)}
+        ordre = sorted(dans, key=lambda c: (c not in fm, c not in cc_, c not in rech_, c not in plan_, rang[c]))
+        garder = set(ordre[:max(4, sum(1 for c in dans if c in fm))])
+        for c in dans:
+            if c not in garder:
+                cand.remove(c)
+                (d.get("rejets") or {}).pop(c, None)
+                (d.get("_categories_rejet") or {}).pop(c, None)
+                notes.append(f"candidate écartée : {c} (plus de 4 candidates dans la strate {st})")
     # 4. un rejet porte sur une candidate : la carte rejetée entre dans les candidates s'il reste de la place (4 par
     #    strate), sinon le rejet est retiré (le moteur refuse un rejet hors des candidates)
     for k in list((d.get("rejets") or {}).keys()):
