@@ -175,6 +175,9 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
             else:
                 r = await apz.dbnomics(q["url"].split("db.nomics.world/", 1)[1], avant=d0)
             b = b_hausse(r.get("points") or [], h, d0)
+            # 0.10.78 : la série téléchargée ici sert aussi à l'ombre « ancrage par les séries » (au banc, le puits du
+            # bot n'est pas appelé pour ces questions) ; bornée STRICTEMENT avant la date d'information
+            x["_releve"] = dict(r, points=[p for p in r.get("points") or [] if str(p.get("date", ""))[:10] < jeu])
             if b:
                 f, k, n = b
                 return _vue(f, f"intervalles de {h} jours de la même série, 5 ans avant {jeu}",
@@ -230,6 +233,13 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
     # 0.10.70 : ombre « absence » (hypothèse enregistrée le 2026-11-13), état nul posté ou exploratoire
     for k_ in ("ombre_filtrage", "ombre_series"):      # 0.10.73 : tâches refaites par le code, en ombre
         ligne[k_] = c.get(k_) or (c.get("exploratoire") or {}).get(k_)
+    if not ligne.get("ombre_series") and x.get("_releve"):       # 0.10.78 : série du banc, bornée à D
+        try:
+            import ombres_auto as oa
+            mots_ = (((c.get("_rejeu") or {}).get("lectures") or [{}])[-1] or {}).get("mots")
+            ligne["ombre_series"] = oa.comparer_series([x["_releve"]], None, mots_)
+        except Exception as e:
+            ligne["ombre_series"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
     ligne["ombre_absence"] = ap.ombre_absence(p_b, c.get("nature_etat_nul")
                                               or (c.get("exploratoire") or {}).get("nature_etat_nul"))
     if c.get("statut") == "refuse" and c.get("dossier"):     # 0.10.55 : en strate 7 aussi, le dossier refusé est gardé

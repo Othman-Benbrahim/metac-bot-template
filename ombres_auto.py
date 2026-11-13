@@ -72,7 +72,7 @@ def mesurer_filtrage(executees: list[dict], question: str, mots_ancres: list[dic
     f = filtrer(executees, question)
     n_g = sum(len(p) for p in f["gardes"])
     n_r = sum(len(p) for p, _ in f["retires"])
-    perdus = []
+    perdus, par_motif = [], {}
     for m in mots_ancres or []:
         if not isinstance(m, dict):
             continue
@@ -80,15 +80,16 @@ def mesurer_filtrage(executees: list[dict], question: str, mots_ancres: list[dic
         if not fm:
             continue
         meilleur_g = max((_jaccard(fm, mots(p)) for p in f["gardes"]), default=0.0)
-        meilleur_r = max((_jaccard(fm, mots(p)) for p, _ in f["retires"]), default=0.0)
+        meilleur_r, motif_r = max(((_jaccard(fm, mots(p)), mo) for p, mo in f["retires"]), default=(0.0, None))
         if meilleur_r > meilleur_g:
             perdus.append(f"{m.get('carte')}@{m.get('strate')}")
+            par_motif[motif_r] = par_motif.get(motif_r, 0) + 1     # 0.10.78 : quelle règle a fait perdre le fait
     motifs: dict[str, int] = {}
     for _, mo in f["retires"]:
         motifs[mo] = motifs.get(mo, 0) + 1
     return {"caracteres": n_g + n_r, "retires": n_r, "part_retiree": round(n_r / (n_g + n_r), 3) if n_g + n_r else None,
             "passages_retires": motifs, "faits_ancres": len([m for m in mots_ancres or [] if isinstance(m, dict)]),
-            "faits_perdus": perdus}
+            "faits_perdus": perdus, "faits_perdus_par_motif": par_motif}
 
 
 # ---------------------------------------------------------------------------------------------------------------

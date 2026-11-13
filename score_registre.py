@@ -429,7 +429,10 @@ def ombres_auto(lignes: list[dict]) -> dict | None:
     return {"filtrage": {"lectures": len(filt),
                          "part_retiree_moyenne": round(sum(f["part_retiree"] for f in filt) / len(filt), 3) if filt else None,
                          "faits_ancres": sum(f.get("faits_ancres", 0) for f in filt),
-                         "faits_perdus": sum(len(f.get("faits_perdus") or []) for f in filt)},
+                         "faits_perdus": sum(len(f.get("faits_perdus") or []) for f in filt),
+                         # 0.10.78 : par règle (doublon, hors_question) ; lignes d'avant 0.10.78 sans le détail
+                         "faits_perdus_par_motif": {mo: sum((f.get("faits_perdus_par_motif") or {}).get(mo, 0) for f in filt)
+                                                    for mo in ("doublon", "hors_question")}},
             "series": {"lectures": len(ser), "par_carte": par_carte},
             "lecture": "filtrage adoptable si faits_perdus reste à 0 sur assez de lectures ; une carte des séries "
                        "adoptable si l'accord est haut ET si la carte du code prédit aussi bien sur les issues"}

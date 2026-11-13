@@ -231,6 +231,23 @@ class Tests(unittest.TestCase):
         self.assertEqual(g["absente"], {})
         self.assertIsNone(sr.calibration_par_groupe([], ("source",)))
 
+    def test_trois_corrections_78(self):
+        import ombres_auto as oa
+        # plus de 4 candidates dans une strate : ancrée et contre-candidate gardées, la dernière du lecteur écartée
+        base = {"intensite": "f", "portee": "aucune"}
+        d = {"mots": [dict(base, carte="CTR", strate=6)],
+             "candidats": ["CTR@6", "HIE@6", "INC@6", "EME@6", "RES@6"], "contre_candidate": ["RES@6"],
+             "rejets": {"EME@6": "[aucun_fait] rien"}, "liaisons": [], "questions": [], "recherches": []}
+        notes = ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 6}, "candidats": []}, "2026-10-25")
+        self.assertEqual(len([c for c in d["candidats"] if c.endswith("@6")]), 4)
+        self.assertIn("CTR@6", d["candidats"])
+        self.assertIn("RES@6", d["candidats"])
+        self.assertTrue(any("candidate écartée" in n for n in notes))
+        # faits perdus comptés par règle
+        ex = [{"executee": True, "resultat": "Match de football hier soir à Lyon."}]
+        m = oa.mesurer_filtrage(ex, "taux SOFR", [{"carte": "CTR", "strate": 6, "fait": "Match de football hier soir"}])
+        self.assertEqual(m["faits_perdus_par_motif"], {"hors_question": 1})
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
