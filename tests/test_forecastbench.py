@@ -195,6 +195,29 @@ class Tests(unittest.TestCase):
         # questions incomplètes ignorées
         self.assertEqual(sr.alpha_krippendorff({"a": [1, None], "b": [1, 1], "c": [2, 2]})["unites"], 2)
 
+    def test_ombres_auto_73(self):
+        import ombres_auto as oa
+        ex = [{"executee": True, "resultat": "La Fed relève le taux SOFR à 4,3 %.\n\nLa Fed relève le taux SOFR à 4,3 %.\n\n"
+                                            "Match de football hier soir à Lyon."},
+              {"executee": True, "moteur": "puits-fred", "resultat": "Relevé sans rapport apparent"}]
+        f = oa.filtrer(ex, "Le taux SOFR sera-t-il plus haut ?")
+        self.assertEqual([m for _, m in f["retires"]], ["doublon", "hors_question"])
+        self.assertIn("Relevé sans rapport apparent", f["gardes"])          # les puits ne sont jamais filtrés
+        m = oa.mesurer_filtrage(ex, "taux SOFR", [{"carte": "CTR", "strate": 6, "fait": "Match de football hier soir à Lyon"}])
+        self.assertEqual(m["faits_perdus"], ["CTR@6"])
+        self.assertTrue(oa.croissance([1, 1.1, 1.2, 1.3, 1.5, 1.8, 2.3]))
+        self.assertFalse(oa.croissance([1, 2, 3, 4, 5, 6, 7]))             # hausse sans accélération
+        saw = [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3]
+        self.assertTrue(oa.periodicite(saw))
+        self.assertFalse(oa.periodicite(list(range(20))))
+        self.assertTrue(oa.seuil([1, 2, 3], 2.5))
+        self.assertFalse(oa.seuil([1, 2, 3], None))
+        calme = [i % 2 * 0.1 for i in range(30)]
+        self.assertTrue(oa.incertitude(calme + [0, 3, -2, 4, -3, 5, -4, 3, -2, 4]))
+        c = oa.comparer_series([{"points": [{"valeur": x} for x in [1, 1.1, 1.2, 1.3, 1.5, 1.8, 2.3]]}], None,
+                               [{"carte": "CROISSANCE", "strate": 6}])
+        self.assertTrue(c["accord"]["CRO"])
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
