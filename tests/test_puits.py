@@ -322,6 +322,25 @@ class TestsPipeline(unittest.TestCase):
         r = sr.comparer(paires, "compte", "B")
         self.assertGreater(r["gain_log_moyen"], 0)
 
+    def test_ucdp_candidates_66(self):
+        import alphabet_puits as pu
+        # un mois n'est pris que s'il était publié à la date limite (fin du mois suivant)
+        self.assertEqual(pu.versions_candidates("2015-01-01", date(2026, 4, 15), "26.1"), ["26.0.1", "26.0.2"])
+        self.assertEqual(pu.versions_candidates("2026-03-01", date(2026, 11, 13), "26.1"),
+                         ["26.0.3", "26.0.4", "26.0.5", "26.0.6", "26.0.7", "26.0.8", "26.0.9"])
+        self.assertEqual(pu.versions_candidates("2015-01-01", date(2026, 1, 20), "26.1"), [])
+        vus = []
+
+        async def faux_get(url, params=None, headers=None, json_=True):
+            vus.append(url.rsplit("/", 1)[1])
+            if url.endswith("26.0.3"):
+                raise RuntimeError("pas encore publiée")
+            return {"Result": [{"date_start": "2026-02-10", "best": 3, "conflict_name": "c"}], "NextPageUrl": None}
+        with mock.patch.object(pu, "_get", faux_get), mock.patch.dict(os.environ, {"UCDP_TOKEN": "x"}):
+            r = asyncio.run(pu.ucdp(avant=date(2026, 11, 13)))
+        self.assertEqual(vus[:4], ["26.1", "26.0.1", "26.0.2", "26.0.3"])
+        self.assertIn("candidates 26.0.1, 26.0.2", r.get("serie") or json.dumps(r, ensure_ascii=False))
+
     def test_sans_cle_ne_bloque_pas(self):
         q = ap.Question(id=1, url="u", titre="t", contexte="", criteres="c", precisions="", resolution=date(2027, 1, 1))
 

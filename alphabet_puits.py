@@ -272,24 +272,61 @@ async def fts(pays: str, annees: list[int] | None = None, avant: date | None = N
     return _releve("OCHA FTS", f"financement humanitaire reçu (USD) · {pays}", "https://fts.unocha.org/", pts, avant)
 
 
+def versions_candidates(debut: str, avant: date | None, annuelle: str) -> list[str]:
+    """0.10.66 : les versions mensuelles « candidates » d'UCDP (26.0.X = les événements du mois X de 2026) qui
+    prolongent la version annuelle (26.1 couvre jusqu'à fin 2025). Un mois n'est pris que si sa version était déjà
+    publiée à la date limite (prudence : publiée à la fin du mois suivant), pour qu'un test rétrospectif ne lise pas
+    une donnée sortie après sa date d'information. Au plus 12 mois."""
+    try:
+        an = 2000 + int(annuelle.split(".")[0])          # 26.1 → 2026 : la candidate couvre l'année 2026
+    except Exception:
+        return []
+    fin = avant or date.today()
+    d0 = date.fromisoformat(debut[:10]) if debut else date(an, 1, 1)
+    out = []
+    for m in range(1, 13):
+        if date(an, m, 1) > fin:
+            break
+        publiee = date(an + (m + 1) // 12, (m + 1) % 12 + 1, 1)     # 1er jour du mois m+2
+        if publiee > fin or date(an, m, 28) < d0:
+            continue
+        out.append(f"{an % 100}.0.{m}")
+    return out
+
+
 async def ucdp(pays: str | None = None, debut: str = "2015-01-01", version: str | None = None,
                avant: date | None = None) -> dict:
     """UCDP GED (événements de violence, morts estimés). Exige UCDP_TOKEN (en-tête x-ucdp-access-token ; 5 000 requêtes
-    par jour, chaque page compte, erreurs comprises) ; sauté sans lui."""
+    par jour, chaque page compte, erreurs comprises) ; sauté sans lui. 0.10.66 : la version annuelle, prolongée par les
+    versions candidates mensuelles (moins vérifiées, marquées « [candidat] »)."""
     jeton = _cle("UCDP_TOKEN")
     v = version or os.environ.get("UCDP_VERSION") or "26.1"   # 0.10.65 : version donnée par UCDP avec la clé
     p = {"pagesize": 1000, "StartDate": debut, "EndDate": (avant or date.today()).isoformat()}
     if pays:
         p["Country"] = pays
-    pts, page, url = [], 0, f"https://ucdpapi.pcr.uu.se/api/gedevents/{v}"
-    while url and page < 5:
-        d = await _get(url, p if page == 0 else None, {"x-ucdp-access-token": jeton})
-        for x in d.get("Result", []):
-            pts.append({"date": _jour(x.get("date_start")), "valeur": _num(x.get("best")),
-                        "titre": f"{x.get('conflict_name', '')} — {x.get('where_coordinates', '')}"})
-        url, page = d.get("NextPageUrl") or None, page + 1
-    return _releve("UCDP GED", f"événements de violence organisée · {pays or 'tous pays'}", "https://ucdp.uu.se/",
-                   pts, avant, debut)
+    pts = []
+
+    async def lire(ver: str, marque: str = "") -> None:
+        page, url = 0, f"https://ucdpapi.pcr.uu.se/api/gedevents/{ver}"
+        while url and page < 5:
+            d = await _get(url, p if page == 0 else None, {"x-ucdp-access-token": jeton})
+            for x in d.get("Result", []):
+                pts.append({"date": _jour(x.get("date_start")), "valeur": _num(x.get("best")),
+                            "titre": f"{marque}{x.get('conflict_name', '')} — {x.get('where_coordinates', '')}"})
+            url, page = d.get("NextPageUrl") or None, page + 1
+    await lire(v)
+    candidates = []
+    if not version and os.environ.get("UCDP_CANDIDAT", "1") not in ("0", "non", "false"):
+        for vc in versions_candidates(debut, avant, v):
+            try:
+                await lire(vc, "[candidat] ")
+                candidates.append(vc)
+            except Exception:
+                break                    # version pas encore publiée (ou indisponible) : on s'arrête là
+    r = _releve("UCDP GED", f"événements de violence organisée · {pays or 'tous pays'}"
+                + (f" (annuelle {v} + candidates {', '.join(candidates)})" if candidates else f" (version {v})"),
+                "https://ucdp.uu.se/", pts, avant, debut)
+    return r
 
 
 # --------------------------------------------------------------------------- événements datés (comptables aussi)
