@@ -138,7 +138,9 @@ async def un_test(mq, llm, deja: set[str], apres: datetime | None = None) -> dic
                  nature_etat_nul=c.get("nature_etat_nul"),
                  puits=c.get("puits"), compte_calcule=bool((c.get("vue") or {}).get("compte_calcule")),
                  exploratoire=c.get("exploratoire"), symetrique=c.get("symetrique"),
-                 attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
+                 attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")),
+                 ombre_absence=ap.ombre_absence(c.get("p_B"), c.get("nature_etat_nul")
+                                                or (c.get("exploratoire") or {}).get("nature_etat_nul")))
     if c.get("dossier") is not None:
         d = ap.registre_ecrivable() / "dossiers-retro"
         d.mkdir(parents=True, exist_ok=True)

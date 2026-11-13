@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.69"
+VERSION_BOT = "0.10.70"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -381,6 +381,25 @@ async def json_avec_reprise(llm: Llm, consigne: str, trace: dict | None = None, 
         return extraire_json(await llm(
             consigne + f"\n\nTA RÉPONSE PRÉCÉDENTE N'ÉTAIT PAS UN JSON VALIDE ({type(e).__name__}: {str(e)[:200]}). "
             "Rends UNIQUEMENT l'objet JSON demandé, complet et bien formé, sans texte autour."))
+
+
+# 0.10.70 : ombre « absence », hypothèse enregistrée le 2026-11-13 (décision d'auteur), AVANT toute question qui la
+# jugera. Constat qui l'a fait naître (banc ForecastBench, jeu du 2026-10-25, exploratoire) : sur 11 états nuls
+# d'absence, 1 OUI pour 3,9 attendus par B, alors que B est calibré sur l'ensemble (60 OUI pour 59,5). Hypothèse : sur
+# les états nuls d'absence À VENIR, B avec sa cote multipliée par 0,5 bat B en perte log. Le facteur est fixé ici et
+# n'est jamais ajusté sur les données ; les lignes d'avant 0.10.70 ne comptent pas. L'ombre n'est jamais postée : un
+# état nul poste B, et l'ombre le reste jusqu'à une décision d'auteur datée.
+OMBRE_ABSENCE = {"natures": ("structure_absente", "carte_visee_absente"), "facteur_cote": 0.5,
+                 "depuis_version": "0.10.70", "enregistree_le": "2026-11-13"}
+
+
+def ombre_absence(p_B: float | None, nature: str | None) -> float | None:
+    """B dont la cote est multipliée par OMBRE_ABSENCE["facteur_cote"], pour un état nul d'absence ; sinon None."""
+    if p_B is None or nature not in OMBRE_ABSENCE["natures"]:
+        return None
+    p = borner(float(p_B))
+    o = p / (1 - p) * OMBRE_ABSENCE["facteur_cote"]
+    return borner(o / (1 + o))
 
 
 def borner(p: float) -> float:
@@ -2622,6 +2641,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                         "invariance", "preselection", "reprises_json", "compte_echoue", "fidelite_plan",
                                                         "nature_etat_nul", "relance", "dynamique_observee",
                                                         "empreintes_passages", "tiers_polarite")},
+                            "ombre_absence": ombre_absence(c.get("p_B"), c.get("nature_etat_nul")),
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
                             "p_C_corrige": corriger_C(c.get("p_C"), corr),
