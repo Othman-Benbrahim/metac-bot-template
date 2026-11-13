@@ -55,7 +55,8 @@ async def sonder(modele: str, appel=None) -> dict:
         delai = float(os.environ.get("ALPHABET_SONDE_DELAI") or "90")
         if appel is None:
             from forecasting_tools import GeneralLlm
-            co = GeneralLlm(model=modele, temperature=0, timeout=60, allowed_tries=1).invoke(SONDE)
+            extra = {"top_p": 1} if str(modele).startswith("mistral/") else {}   # Mistral : top_p = 1 à température nulle
+            co = GeneralLlm(model=modele, temperature=0, timeout=60, allowed_tries=1, **extra).invoke(SONDE)
         else:
             co = appel(modele, SONDE)
         try:
