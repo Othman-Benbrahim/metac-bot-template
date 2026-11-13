@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.71 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.72 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,15 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.72** : **triplets jugés sur ce que le vérificateur voit** (passage 43488958193 : 10 triplets sur 10 écartés
+  pour erreur du narrateur ; leurre réalisé au lieu d'être évoqué 8 fois sur 10, accord avec des cartes en trop 9 fois
+  sur 10). Validité relative : l'accord montre les mêmes cartes que l'ancre, le leurre les mêmes moins la sienne
+  (« à une carte près » rapporté à part, jamais compté). Une réécriture par texte refusé, avec le motif du refus
+  (réécritures et sauvetages comptés : à abandonner si elles ne sauvent rien). Exemple de quasi-réalisation dans la
+  consigne du leurre. Une ligne par situation dans le journal ; situations écrites au fur et à mesure
+  (`registre/partiel-monde-synthetique.json`, hors de tout cumul) et enregistrées même après un arrêt.
+  Rejoué sur le passage du 13 novembre, le seul critère relatif ne sauve aucun triplet (2 accords valides, 0 leurre) :
+  le leurre est le goulot.
 - **0.10.71** : **discrimination et accord entre lecteurs**, en ombre, hors critère. Chaque comparaison de bras
   donne l'AUC de chacun (part des couples OUI/NON bien classés, indépendante de la calibration). Le rapport du banc
   donne l'alpha de Krippendorff (nominal) entre lecteurs sur les mêmes questions : carte de l'événement, carte et

@@ -91,6 +91,7 @@ jobs:
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_CONTRADICTEUR: ${{ vars.ALPHABET_CONTRADICTEUR }}   # 0.10.24 : sans elle, le narrateur « contradicteur » retombait sur le lecteur
       - name: Enregistrer
+        if: always()     # 0.10.72 : même après un arrêt, les situations déjà faites (fichier partiel) sont gardées
         run: |
           if [ -n "$(git status --porcelain registre)" ]; then
             git config user.name "alphabet-bot"
