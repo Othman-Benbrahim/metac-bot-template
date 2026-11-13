@@ -218,6 +218,19 @@ class Tests(unittest.TestCase):
                                [{"carte": "CROISSANCE", "strate": 6}])
         self.assertTrue(c["accord"]["CRO"])
 
+    def test_calibration_par_groupe_75(self):
+        import score_registre as sr
+        its = [{"B": 0.5, "C": 0.9, "y": 0, "groupes": {"source": "fred"}},
+               {"B": 0.5, "C": None, "y": 1, "groupes": {"source": "fred"}},
+               {"B": 0.2, "C": 0.3, "y": 1, "groupes": {"source": "acled"}}]
+        g = sr.calibration_par_groupe(its, ("source", "absente"))
+        self.assertEqual(g["source"]["fred"]["n"], 2)
+        self.assertEqual(g["source"]["fred"]["C"]["n"], 1)
+        self.assertTrue(g["source"]["fred"]["C"]["petit"])
+        self.assertEqual(g["source"]["fred"]["B"]["frequence_observee"], 0.5)
+        self.assertEqual(g["absente"], {})
+        self.assertIsNone(sr.calibration_par_groupe([], ("source",)))
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
