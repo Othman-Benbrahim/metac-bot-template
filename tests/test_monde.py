@@ -151,3 +151,35 @@ class Tests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TripletsRelatifs72(unittest.TestCase):
+    def test_montrees_et_validite(self):
+        import monde_synthetique as ms
+        s = {"presentes": ["CTR@7", "SEU@7"], "absentes": ["POL@7", "RES@7"]}
+        v = {"absentes_montrees": ["POL@7"], "presentes_non_montrees": ["SEU@7"]}
+        self.assertEqual(ms.montrees(v, s), {"CTR", "POL"})
+        self.assertIsNone(ms.montrees({"erreur": "x"}, s))
+        cles = {"CTR", "SEU", "POL", "RES"}
+        # l'ancre montre une carte en trop (POL) : l'accord qui la montre aussi reste valide (règle relative)
+        ok = ms.validite_relative({"CTR", "SEU", "POL"}, {"CTR", "SEU", "POL"}, {"CTR", "POL"}, "SEU@7", cles)
+        self.assertTrue(ok["accord_valide"] and ok["leurre_valide"])
+        # leurre qui réalise quand même la carte : invalide
+        ko = ms.validite_relative({"CTR", "SEU"}, {"CTR", "SEU"}, {"CTR", "SEU"}, "SEU@7", cles)
+        self.assertFalse(ko["leurre_valide"])
+        # une carte d'écart : invalide strictement, valide « à une carte près »
+        un = ms.validite_relative({"CTR", "SEU"}, {"CTR", "SEU", "RES"}, {"CTR"}, "SEU@7", cles)
+        self.assertFalse(un["accord_valide"])
+        self.assertTrue(un["accord_souple"])
+
+    def test_mesurer_triplets_relatif(self):
+        import monde_synthetique as ms
+        r = {"statut": "lue", "ancrees": {"CTR@7": "f", "SEU@7": "f"},
+             "triplet": {"ancrees_accord": {"CTR@13": "f", "SEU@13": "f"}, "ancrees_leurre": {"CTR@7": "f"},
+                         "carte_leurre": "SEU@7", "accord_valide": True, "leurre_valide": True,
+                         "accord_rate_par_narrateur": True, "reecritures": {"accord": True}}}
+        t = ms.mesurer_triplets([r])
+        self.assertEqual(t["n"], 1)                 # le critère relatif l'emporte sur l'ancien drapeau absolu
+        self.assertEqual(t["taux"], 1.0)
+        self.assertEqual(t["leurre_discrimine"], 1)
+        self.assertEqual(t["reecritures"]["accord_sauve"], 1)

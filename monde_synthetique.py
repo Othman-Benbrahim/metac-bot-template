@@ -176,7 +176,11 @@ def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, a
             # 0.10.67 (triplets durs) : le LEURRE garde les mots du marqueur mais ne le remplit pas
             lignes.append(f"{i}. [{d['date']}] (média : {d['media']}) Un fait, entre ces mêmes acteurs, qui EMPLOIE le "
                           f"vocabulaire de ce marqueur SANS le remplir : « {d['marqueur']} ». La chose est évoquée, "
-                          "annoncée, approchée, envisagée ou démentie, mais elle N'A PAS LIEU dans les faits rapportés.")
+                          "annoncée, approchée, envisagée ou démentie, mais elle N'A PAS LIEU dans les faits rapportés. "
+                          "Exemple de la différence : « le ministre annonce qu'un plafond de 2 % POURRAIT être fixé "
+                          "l'an prochain » ou « le taux s'approche du seuil sans l'atteindre » (le marqueur n'est PAS "
+                          "rempli) ; contre « le taux franchit le seuil de 2 % le 3 mars » (le marqueur EST rempli, "
+                          "interdit ici). Aucun chiffre, aucune date ni aucun acte ne doit montrer la chose accomplie.")
         else:
             lignes.append(f"{i}. [{d['date']}] (média : {d['media']}) Un fait, entre ces mêmes acteurs, qui remplit "
                           f"EXACTEMENT ce marqueur : « {d['marqueur']} ».")
@@ -209,7 +213,7 @@ async def verifier(verificateur, texte: str, cles: list[str], s: dict, strate: i
         v = await ap.json_avec_reprise(verificateur, consigne_verification(texte, cles))
         oui = {f"{m.carte_id(str(k))}@{strate}" for k, x in v.items() if str(x).lower().startswith("o")}
         return {"absentes_montrees": sorted(oui & set(s["absentes"])),
-                "presentes_non_montrees": sorted(set(s["presentes"]) - oui)}
+                "presentes_non_montrees": sorted(set(s["presentes"]) - oui), "_cles": sorted(cles)}
     except Exception as e:
         return {"erreur": f"{type(e).__name__}: {e}"[:200]}
 
@@ -505,6 +509,37 @@ def abreviations(ancrees_: dict[str, str]) -> set[str]:
     return {k.split("@")[0] for k in ancrees_}
 
 
+def montrees(v: dict | None, s: dict) -> set[str] | None:
+    """0.10.72 : les cartes qu'un texte montre selon le vérificateur (abréviations), à partir de son écart avec la
+    situation voulue s ; None si le vérificateur n'a rien rendu."""
+    if not isinstance(v, dict) or "erreur" in v or "absentes_montrees" not in v:
+        return None
+    return abreviations((set(s["presentes"]) - set(v.get("presentes_non_montrees") or []))
+                        | set(v.get("absentes_montrees") or []))
+
+
+def validite_relative(vu_ancre: set[str] | None, vu_accord: set[str] | None, vu_leurre: set[str] | None,
+                      x: str, cles: set[str]) -> dict:
+    """0.10.72 : un triplet se juge sur ce que le vérificateur VOIT dans les trois textes, pas sur ce que le narrateur
+    devait écrire (même règle que la mesure vérifiée des ancres). Comparaison sur les cartes contrôlées dans l'ancre.
+    - accord valide : il montre les mêmes cartes que l'ancre (transposées dans l'autre strate) ;
+    - leurre valide : la carte x est vue dans l'ancre, pas dans le leurre, et le reste est identique.
+    « souple » tolère une carte d'écart (rapporté à part, jamais compté dans le taux)."""
+    out = {}
+    if vu_ancre is None:
+        return out
+    a = vu_ancre & cles
+    if vu_accord is not None:
+        d = len(a ^ (vu_accord & cles))
+        out.update(accord_valide=d == 0, accord_souple=d <= 1)
+    if vu_leurre is not None:
+        x_ = x.split("@")[0]
+        d = len((a - {x_}) ^ ((vu_leurre & cles) - {x_}))
+        ok = x_ in a and x_ not in vu_leurre
+        out.update(leurre_valide=ok and d == 0, leurre_souple=ok and d <= 1)
+    return out
+
+
 def mesurer_triplets(rows: list[dict]) -> dict | None:
     """0.10.67 (Blair, Procaccia et Tambe, NeurIPS 2026 : triplets durs). Pour chaque situation lue : ANCRE (le texte
     ordinaire), ACCORD (mêmes cartes cachées, autre strate et autre vocabulaire), LEURRE (même domaine, mêmes acteurs,
@@ -514,11 +549,21 @@ def mesurer_triplets(rows: list[dict]) -> dict | None:
     carte du leurre : vue dans l'ancre et pas dans le leurre (discrimine), vue dans les deux (suit la surface)."""
     T0 = [r for r in rows if r.get("statut") == "lue" and isinstance(r.get("triplet"), dict)
           and "ancrees_accord" in r["triplet"] and "ancrees_leurre" in r["triplet"]]
-    # mesure vérifiée : un triplet dont le narrateur a raté l'accord ou le leurre n'est pas compté contre le lecteur
-    T = [r for r in T0 if not r["triplet"].get("leurre_rate_par_narrateur")
-         and not r["triplet"].get("accord_rate_par_narrateur")]
+    # mesure vérifiée : un triplet dont le narrateur a raté l'accord ou le leurre n'est pas compté contre le lecteur.
+    # 0.10.72 : validité RELATIVE (ce que le vérificateur voit dans les trois textes) quand elle est calculée ; sinon
+    # l'ancien critère absolu (lignes d'avant 0.10.72).
+    def valide(t: dict) -> bool:
+        if "accord_valide" in t or "leurre_valide" in t:
+            return bool(t.get("accord_valide")) and bool(t.get("leurre_valide"))
+        return not t.get("leurre_rate_par_narrateur") and not t.get("accord_rate_par_narrateur")
+    T = [r for r in T0 if valide(r["triplet"])]
+    reecr = [r["triplet"].get("reecritures") or {} for r in T0]
+    bilan_reecr = {"leurre": sum(1 for x in reecr if "leurre" in x), "leurre_sauve": sum(1 for x in reecr if x.get("leurre")),
+                   "accord": sum(1 for x in reecr if "accord" in x), "accord_sauve": sum(1 for x in reecr if x.get("accord"))}
+    souples = sum(1 for r in T0 if r["triplet"].get("accord_souple") and r["triplet"].get("leurre_souple"))
     if not T:
-        return {"n": 0, "ecartes_erreur_narrateur": len(T0)} if T0 else None
+        return ({"n": 0, "ecartes_erreur_narrateur": len(T0), "valides_a_une_carte_pres": souples,
+                 "reecritures": bilan_reecr} if T0 else None)
     reussite, disc, surf, invar = 0.0, 0, 0, []
     for r in T:
         A = abreviations(r["ancrees"])
@@ -530,15 +575,32 @@ def mesurer_triplets(rows: list[dict]) -> dict | None:
         disc += x in A and x not in L
         surf += x in A and x in L
         invar.append(len(A & Acc) / len(A | Acc) if A | Acc else 1.0)
-    return {"n": len(T), "ecartes_erreur_narrateur": len(T0) - len(T),
+    return {"n": len(T), "ecartes_erreur_narrateur": len(T0) - len(T), "valides_a_une_carte_pres": souples,
+            "reecritures": bilan_reecr,
             "triplets_reussis": round(reussite, 1), "taux": round(reussite / len(T), 3),
             "leurre_discrimine": disc, "leurre_suit_la_surface": surf,
             "invariance_jaccard_moyenne": round(sum(invar) / len(invar), 3),
             "lecture": "triplets réussis / n : 0,5 = hasard ; le leurre doit être discriminé, pas suivi"}
 
 
+def motif_reecriture(role: str, x: str | None, vu: set[str], voulu: set[str], noms: dict) -> str:
+    """0.10.72 : ce que le vérificateur a vu de travers, dit au narrateur pour UNE réécriture."""
+    trop = sorted(vu - voulu)
+    manque = sorted(voulu - vu)
+    lignes = ["", "CORRECTION : une première version a été refusée par un relecteur indépendant."]
+    if trop:
+        lignes.append("Des faits y remplissaient des marqueurs INTERDITS : " + ", ".join(noms.get(c, c) for c in trop)
+                      + ". Supprime tout fait, chiffre ou acte qui les remplit.")
+    if manque:
+        lignes.append("Des marqueurs IMPOSÉS n'y étaient pas remplis : " + ", ".join(noms.get(c, c) for c in manque)
+                      + ". Écris le fait exact qui les remplit.")
+    if role == "leurre" and x:
+        lignes.append(f"Rappel : le marqueur de {noms.get(x, x)} doit être évoqué SANS avoir lieu.")
+    return "\n".join(lignes)
+
+
 async def triplet(narrateur, lecteur, s: dict, strate: int, g: int, aujourdhui: str, texte: str,
-                  verificateur=None) -> dict:
+                  verificateur=None, verif_ancre: dict | None = None) -> dict:
     """0.10.67 : l'ACCORD et le LEURRE d'une situation déjà lue (l'ancre). L'accord est écrit dans une autre strate
     (13, sinon 6) par d'autres acteurs (autre graine de canevas) ; le leurre reprend le canevas de l'ancre."""
     m = ap._moteur()
@@ -551,16 +613,37 @@ async def triplet(narrateur, lecteur, s: dict, strate: int, g: int, aujourdhui: 
     x = rnd.choice(sorted(s["presentes"]))
     out["carte_leurre"] = x
     # LEURRE : même canevas, la carte x écrite en quasi-réalisation (et non réalisée)
+    noms = {k: v for k, v in m.NOMS.items()}
+    vu_ancre = montrees(verif_ancre, s)
+    cles = abreviations(s["presentes"] + s["absentes"])
+    if verif_ancre is not None and isinstance(verif_ancre, dict):
+        # l'ancre n'est contrôlée que sur ses candidates : la comparaison se limite à elles
+        cles = abreviations(set(s["presentes"]) | set(verif_ancre.get("absentes_montrees") or [])
+                            | set(verif_ancre.get("_cles") or [])) or cles
+    s_l = {"presentes": [k for k in s["presentes"] if k != x], "absentes": sorted(s["absentes"] + [x])}
+    vu_l = None
     try:
-        t_l = str(await narrateur(consigne_narrateur(s["presentes"], s["absentes"], strate, aujourdhui, g,
-                                                     leurre=x))).strip()
-        out["ancrees_leurre"] = await _lire(lecteur, s, strate, g, aujourdhui, t_l, "leurre")
-        out["texte_leurre"] = t_l
+        consigne_l = consigne_narrateur(s["presentes"], s["absentes"], strate, aujourdhui, g, leurre=x)
+        t_l = str(await narrateur(consigne_l)).strip()
         if verificateur is not None:    # le narrateur a-t-il bien écrit x SANS le réaliser ?
-            s_l = {"presentes": [k for k in s["presentes"] if k != x], "absentes": sorted(s["absentes"] + [x])}
             v = await verifier(verificateur, t_l, sorted(s["presentes"] + s["absentes"]), s_l, strate)
+            vu_l = montrees(v, s_l)
+            voulu = (vu_ancre - {x.split("@")[0]}) if vu_ancre is not None else abreviations(s_l["presentes"])
+            if vu_l is not None and (vu_l & cles) != (voulu & cles):
+                # 0.10.72 : UNE réécriture, avec ce que le vérificateur a vu de travers
+                out.setdefault("reecritures", {})["leurre"] = False
+                t2 = str(await narrateur(consigne_l + motif_reecriture("leurre", x.split("@")[0], vu_l & cles,
+                                                                        voulu & cles, noms))).strip()
+                v2 = await verifier(verificateur, t2, sorted(s["presentes"] + s["absentes"]), s_l, strate)
+                vu2 = montrees(v2, s_l)
+                if vu2 is not None and (vu2 & cles) == (voulu & cles):
+                    out["reecritures"]["leurre"] = True
+                if vu2 is not None and len((vu2 & cles) ^ (voulu & cles)) < len((vu_l & cles) ^ (voulu & cles)):
+                    t_l, v, vu_l = t2, v2, vu2          # on garde la meilleure des deux versions
             out["verification_leurre"] = v
             out["leurre_rate_par_narrateur"] = x in (v.get("absentes_montrees") or [])
+        out["ancrees_leurre"] = await _lire(lecteur, s, strate, g, aujourdhui, t_l, "leurre")
+        out["texte_leurre"] = t_l
     except Exception as e:
         out["erreur_leurre"] = f"{type(e).__name__}: {e}"[:200]
     # ACCORD : mêmes cartes, autre strate, autre vocabulaire, autres acteurs
@@ -570,18 +653,32 @@ async def triplet(narrateur, lecteur, s: dict, strate: int, g: int, aujourdhui: 
     s_acc = {"presentes": [f"{k.split('@')[0]}@{s2}" for k in s["presentes"]],
              "absentes": [f"{k.split('@')[0]}@{s2}" for k in s["absentes"]],
              "evenement": f"{s['evenement'].split('@')[0]}@{s2}"}
+    vu_a = None
     try:
-        t_a = str(await narrateur(consigne_narrateur(s_acc["presentes"], s_acc["absentes"], s2, aujourdhui,
-                                                     g + 100000))).strip()
+        consigne_a = consigne_narrateur(s_acc["presentes"], s_acc["absentes"], s2, aujourdhui, g + 100000)
+        t_a = str(await narrateur(consigne_a)).strip()
+        if verificateur is not None:    # l'accord montre-t-il les mêmes cartes que l'ancre ?
+            v = await verifier(verificateur, t_a, sorted(s_acc["presentes"] + s_acc["absentes"]), s_acc, s2)
+            vu_a = montrees(v, s_acc)
+            voulu = vu_ancre if vu_ancre is not None else abreviations(s_acc["presentes"])
+            if vu_a is not None and (vu_a & cles) != (voulu & cles):
+                out.setdefault("reecritures", {})["accord"] = False
+                t2 = str(await narrateur(consigne_a + motif_reecriture("accord", None, vu_a & cles, voulu & cles,
+                                                                        noms))).strip()
+                v2 = await verifier(verificateur, t2, sorted(s_acc["presentes"] + s_acc["absentes"]), s_acc, s2)
+                vu2 = montrees(v2, s_acc)
+                if vu2 is not None and (vu2 & cles) == (voulu & cles):
+                    out["reecritures"]["accord"] = True
+                if vu2 is not None and len((vu2 & cles) ^ (voulu & cles)) < len((vu_a & cles) ^ (voulu & cles)):
+                    t_a, v, vu_a = t2, v2, vu2
+            out["verification_accord"] = v
+            out["accord_rate_par_narrateur"] = bool(v.get("presentes_non_montrees") or v.get("absentes_montrees"))
         out["ancrees_accord"] = await _lire(lecteur, s_acc, s2, g, aujourdhui, t_a, "accord")
         out["strate_accord"] = s2
         out["texte_accord"] = t_a
-        if verificateur is not None:    # l'accord montre-t-il bien toutes les cartes présentes, et seulement elles ?
-            v = await verifier(verificateur, t_a, sorted(s_acc["presentes"] + s_acc["absentes"]), s_acc, s2)
-            out["verification_accord"] = v
-            out["accord_rate_par_narrateur"] = bool(v.get("presentes_non_montrees") or v.get("absentes_montrees"))
     except Exception as e:
         out["erreur_accord"] = f"{type(e).__name__}: {e}"[:200]
+    out.update(validite_relative(vu_ancre, vu_a, vu_l, x, cles))
     return out
 
 
@@ -600,7 +697,8 @@ async def _lire(lecteur, s: dict, strate: int, g: int, aujourdhui: str, texte: s
 
 
 async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, aujourdhui: str | None = None,
-                 verificateur=None, effacement: bool = False, reflechi=None, triplets: bool = False) -> dict:
+                 verificateur=None, effacement: bool = False, reflechi=None, triplets: bool = False,
+                 partiel: Path | None = None) -> dict:
     m = ap._moteur()
     aujourdhui = aujourdhui or date.today().isoformat()
     cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@{strate}")]
@@ -657,7 +755,8 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
             except Exception as e:
                 row["lecture_sans_noms"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
         if triplets:               # 0.10.67 : l'accord et le leurre de cette ancre (triplets durs)
-            row["triplet"] = await triplet(narrateur, lecteur, s, strate, g, aujourdhui, texte, verificateur)
+            row["triplet"] = await triplet(narrateur, lecteur, s, strate, g, aujourdhui, texte, verificateur,
+                                           row.get("verification"))
         if reflechi is not None:   # 0.10.36 : même modèle, même consigne, mais le droit de réfléchir avant de répondre
             try:
                 lec3 = await ap.json_avec_reprise(reflechi, ap.consigne_dossier(q, plan, executees, aujourdhui, 90))
@@ -665,6 +764,18 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
             except Exception as e:
                 row["lecture_reflechie"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
         rows.append(row)
+        # 0.10.72 : une ligne par situation, et les situations déjà faites écrites au fur et à mesure (un arrêt du
+        # passage ne perd plus tout ; le fichier partiel n'entre dans aucun cumul)
+        t_ = row.get("triplet") or {}
+        print(f"situation {g} ({len(rows)}/{n}) : {row.get('statut')} ; ancrées {sorted(row.get('ancrees') or [])}"
+              + (f" ; triplet accord {t_.get('accord_valide')} leurre {t_.get('leurre_valide')}" if t_ else ""),
+              flush=True)
+        if partiel is not None:
+            try:
+                partiel.write_text(json.dumps({"graines": [graine0, g], "situations": rows}, ensure_ascii=False) + "\n",
+                                   encoding="utf-8")
+            except OSError:
+                pass
     return {"calcule_le": datetime.now(timezone.utc).isoformat(timespec="seconds"), "version_skill": ap.version_skill(),
             "version_bot": ap.VERSION_BOT, "modele": (ap.modeles_actifs() or {}).get("principal"), "strate": strate,
             "graines": [graine0, graine0 + n - 1],
@@ -737,9 +848,13 @@ async def principal() -> int:
 
         async def reflechi(c: str) -> str:
             return await modele_r.invoke(c)
+    ap.REGISTRE.mkdir(parents=True, exist_ok=True)
+    partiel = ap.REGISTRE / "partiel-monde-synthetique.json"
     r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0,
                      verificateur=verificateur, effacement=os.environ.get("MONDE_EFFACEMENT", "1") != "0",
-                     reflechi=reflechi, triplets=os.environ.get("MONDE_TRIPLETS", "0") not in ("0", "", "non"))
+                     reflechi=reflechi, triplets=os.environ.get("MONDE_TRIPLETS", "0") not in ("0", "", "non"),
+                     partiel=partiel)
+    partiel.unlink(missing_ok=True)
     if r.get("triplets"):
         print("Triplets durs :", json.dumps(r["triplets"], ensure_ascii=False))
     r["reflexion"] = options_reflexion(choix["principal"]) if reflechi else None
