@@ -4,7 +4,7 @@
 
 Auteur : Othman Ben Brahim · Licence MIT (`LICENSE`) · Skill Claude, moteur Python sans dépendance
 
-Version 0.7.75 · historique complet dans `CHANGELOG.md`
+Version 0.7.76 · historique complet dans `CHANGELOG.md`
 
 **Mise à l'épreuve, en public :** le bot qui joue l'alphabet sur le tournoi Metaculus,
 [Othman-Benbrahim/metac-bot-template](https://github.com/Othman-Benbrahim/metac-bot-template), et le banc d'essai à
@@ -101,4 +101,4 @@ SHA256SUMS                  empreinte de chaque fichier livré
 
 `sha256sum -c SHA256SUMS` ou `python3 scripts/moteur.py audit` refusent un fichier modifié, ajouté ou retiré.
 Sur GitHub, chaque version a son étiquette `vX.Y.Z` et sa release, avec `SHA256SUMS` en pièce jointe. Le zip livré se
-nomme `alphabet-situationnel-0.7.75.zip`.
+nomme `alphabet-situationnel-0.7.76.zip`.

@@ -121,6 +121,31 @@ class Tests(unittest.TestCase):
         self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
         self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
+    def test_tiers_polarite_64(self):
+        # 0.10.64 (skill 0.7.76, §52) : tiers gardé sur POL ; retiré ailleurs ou mal formé ; troisième pôle → POL retiré
+        base = {"intensite": "f", "portee": "aucune"}
+        d = {"mots": [dict(base, carte="POL", strate=7, tiers={"type": "mediateur", "qui": "Qatar", "fait": "médiation du 2026-10-02"}),
+                      dict(base, carte="CTR", strate=7, tiers={"type": "aucun"}),
+                      dict(base, carte="INC", strate=7, tiers={"type": "arbitre"})],
+             "candidats": [], "rejets": {}, "liaisons": [], "questions": []}
+        notes = ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 7}, "candidats": []}, "2026-10-25")
+        mots = {m["carte"]: m for m in d["mots"]}
+        self.assertEqual(mots["POL"]["tiers"]["type"], "mediateur")
+        self.assertNotIn("tiers", mots["CTR"])
+        self.assertNotIn("tiers", mots["INC"])
+        d2 = {"mots": [dict(base, carte="POL", strate=7, tiers={"type": "troisieme_pole", "qui": "x", "fait": "y"}),
+                       dict(base, carte="CTR", strate=7)], "candidats": [], "rejets": {}, "liaisons": [], "questions": []}
+        notes = ap.reparer_dossier(d2, {"evenement": {"carte": "SEU", "strate": 7}, "candidats": []}, "2026-10-25")
+        self.assertEqual([m["carte"] for m in d2["mots"]], ["CTR"])
+        self.assertTrue(any("troisième pôle" in n for n in notes))
+
+    def test_foret_64(self):
+        import foret_strates as fs
+        lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
+               "liaisons": ["CRO@6 transfert POL@13", "INC@7 tension INC@7"]}
+        c = fs.compter(lec, {"evenement": {"carte": "SEU", "strate": 13}})
+        self.assertEqual((c["hors_strate"], c["relies"]), (2, 1))
+
     def test_etat_suit_reparation_57(self):
         # 0.10.57 : un mot affaibli par le réparateur (F → f) doit l'être aussi dans l'état
         from unittest import mock

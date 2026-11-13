@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.62"
+VERSION_BOT = "0.10.64"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -597,6 +597,11 @@ def regles_dossier() -> str:
   d'une même cause) ; un fait daté de A et un précédent où A a précédé B. Seule liaison qui peut viser l'événement
   (ex. « POL@13 averti SEU@13 ») ; A doit être un mot ancré. Si A agit sur B par un mécanisme nommé : transfert.
 - corroboration "independantes" : le champ source nomme AU MOINS DEUX sources séparées par « ; » ; sinon "unique".
+- POLARITÉ (POL) : cherche le TIERS, ce qui se tient hors des deux camps sans en former un troisième, et ajoute au mot
+  « tiers » : {"type": "mediateur"|"arbitre"|"abstention"|"aucun", "qui": "…", "fait": "fait daté"} ("aucun" : cherché,
+  rien trouvé ; "qui" et "fait" alors facultatifs). Un TROISIÈME PÔLE STABLE contredit POLARITÉ : ne l'ancre pas.
+- PÉRIODICITÉ (PER) : une période se CONSTATE (au moins trois occurrences datées), elle ne se postule pas ; un cycle ne
+  désigne jamais un état « normal » auquel la situation devrait revenir.
 - extrait d'un passage : 300 caractères au plus. Toute pièce et toute garantie sont disponibles AU PLUS TARD à la
   date d'information (jamais une page publiée après).
 - ÉCRITURE : carte = l'ABRÉVIATION (POL, pas POLARITÉ) ; strate = un ENTIER (13, pas « 13_portee… ») ; toute
@@ -1202,6 +1207,17 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
             if not isinstance(m, dict):
                 continue
             k = f"{m.get('carte')}@{m.get('strate')}"
+            # 0.10.64 (skill 0.7.76, §52) : le tiers d'une POLARITÉ. Mal formé ou hors de POL → retiré ; un troisième
+            # pôle stable contredit la garantie de la carte → POLARITÉ n'est pas ancrée (conséquence écrite)
+            if "tiers" in m and hasattr(M, "controle_tiers"):
+                err_t = M.controle_tiers(cle_normale(k), m)
+                if err_t:
+                    t_ = m.get("tiers")
+                    if isinstance(t_, dict) and t_.get("type") == "troisieme_pole" and cle_normale(k).startswith("POL@"):
+                        notes.append(f"{k} : troisième pôle stable → POLARITÉ non ancrée (§52)")
+                        continue
+                    m.pop("tiers", None)
+                    notes.append(f"{k} : tiers retiré ({err_t[0][:90]})")
             # 0.10.51 : corroboration et pièces, par leur conséquence écrite (jamais un renforcement)
             n_src = len([x for x in str(m.get("source") or "").split(";") if x.strip()])
             if m.get("corroboration") == "independantes" and n_src < 2:
@@ -1992,7 +2008,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
                                    "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur",
-                                   "empreintes_passages")
+                                   "empreintes_passages", "tiers_polarite")
              if c.get(k) is not None}
     if (c.get("dossier") or {}).get("_liaisons_hors_liste"):      # 0.10.52 (§51) : verbes inventés par le lecteur
         explo["liaisons_hors_liste"] = c["dossier"]["_liaisons_hors_liste"]
@@ -2165,6 +2181,10 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         trace["tentatives"] = tentative + 1
         trace["_rejeu"]["lectures"].append(json.loads(json.dumps(lecture, ensure_ascii=False, default=str)))
         dossier = assembler(lecture, plan, executees, evt, aujourdhui, jours)
+        # 0.10.64 (§52) : les tiers de POLARITÉ relevés, pour les mesurer sur les issues (aucun effet sur p)
+        trace["tiers_polarite"] = [{"mot": f"{m.get('carte')}@{m.get('strate')}", **m["tiers"]}
+                                   for m in dossier.get("mots") or [] if isinstance(m, dict)
+                                   and isinstance(m.get("tiers"), dict)] or None
         try:                       # traçabilité seulement : une erreur ici ne doit jamais coûter la lecture
             trace["empreintes_passages"] = empreintes_passages(dossier, executees)
         except Exception as e:
@@ -2362,7 +2382,8 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
                   f"State read on {c['dossier']['disponible_le']}: {c['etat']}",
                   f"Event: {c['evenement']} ({c['semantique']}).",
                   ligne_b,
-                  f"Arm C, alphabet: {c['p_C']:.3f} (base rate adjusted by the cards read in the state).",
+                  f"Arm C, alphabet: {c['p_C']:.3f} (base rate adjusted by the cards read in the state; a propensity "
+                  "read from structural indicators, not a causal claim).",
                   f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}.",
                   "Engine flags (French): " + " | ".join(x if len(x) <= 220 else x[:217] + "…" for x in c.get("drapeaux", [])[:4])]
         return "\n".join(x for x in lignes if x)
@@ -2385,7 +2406,8 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
         # 0.9.0 : le chiffre exploratoire est horodaté ici aussi (§29), avec la mention qu'il n'est PAS posté.
         val = (f"{ex['p_C']:.3f}" if isinstance(ex.get("p_C"), (int, float)) else f"no number ({ex.get('statut')})")
         explo_ligne = (f"Exploratory alphabet reading (stratum {ex.get('strate')}, outside the engine's validated "
-                       f"scope; recorded for measurement, NOT the posted forecast): {val}.")
+                       f"scope; recorded for measurement, NOT the posted forecast; a propensity, not a causal "
+                       f"claim): {val}.")
         return (f"{tete}\nAlphabet not used for the posted forecast ({c.get('statut')}).\n{explo_ligne}\n"
                 + (f"{ligne_b}\n" if ligne_b else "") + f"\nModel-alone reasoning:\n{a_raison}")
     return f"{tete}\nAlphabet not used on this question ({c.get('statut')}: {motif}).\n\nModel-alone reasoning:\n{a_raison}"
@@ -2572,7 +2594,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
                                                         "invariance", "preselection", "reprises_json", "compte_echoue", "fidelite_plan",
                                                         "nature_etat_nul", "relance", "dynamique_observee",
-                                                        "empreintes_passages")},
+                                                        "empreintes_passages", "tiers_polarite")},
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
                             "p_C_corrige": corriger_C(c.get("p_C"), corr),

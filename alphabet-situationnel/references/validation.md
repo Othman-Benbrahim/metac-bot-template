@@ -1,6 +1,6 @@
 # Alphabet situationnel — Validation (couche 6)
 
-> Version : 0.7.75
+> Version : 0.7.76
 
 > Contrat du journal, scores et limites d'évaluation. Règles V1–V4. Le scoreur valide les données
 > avant calcul et ne prononce jamais une certification scientifique automatique.
@@ -2170,6 +2170,7 @@ lecture ou ne font que nommer ce que le modèle voit déjà. Aucun paramètre ni
    l'événement, vraie si elles en sont des symptômes, fausse si elles en sont des causes ; le signe de l'erreur suit
    la structure (substituables ou cause commune : surestimation ; conjointement nécessaires : sous-estimation).
 3. **Les paires mutuelles se lisent d'un pas au suivant** (`dynamiques.md` §0) : un pas de calcul, arêtes directes ;
+   *(0.7.76, §52 : le p publié se nomme désormais une **propension**, non une affirmation causale.)*
    l'équilibre dans un même état n'est pas couvert.
 4. **L'écart C − B est un contraste du dispositif**, jamais un contrefactuel : C est la lecture entière (toutes cartes
    ensemble) appliquée à B ; « ce qui se serait passé sans telle carte » exigerait la forme fonctionnelle d'un modèle
@@ -2723,4 +2724,29 @@ lecteurs différents : un verbe inventé par plusieurs modèles sans concertatio
 langue. Toute adoption passe par une décision datée.
 
 **Ce qui ne change pas.** Le p publié ; les neuf autres types.
+
+## 52. Tiers et propension : quatre pistes de Snowden (0.7.76)
+
+**Décision d'auteur, le 2026-11-13**, après lecture du billet de Dave Snowden « Not a branch of the tree » (The
+Cynefin Co, 13 novembre 2026), consigné dans `reference-snowden-not-a-branch.md` (Projet).
+
+1. **Le tiers de POLARITÉ.** Snowden se méfie des dyades, qui durcissent en dichotomies. POLARITÉ est la seule carte
+   dyadique par construction. Champ facultatif `tiers` (`grammaire.md` §4) : médiateur, arbitre ou abstention
+   (compatibles), troisième pôle stable (contredit la garantie : la carte ne s'ancre pas), ou aucun. Sans effet sur p.
+   **Ce qu'on mesurera** : sur les issues, si une polarité avec tiers mène moins souvent à SEUIL qu'une polarité
+   sans ; si l'écart est net, une ombre, puis une décision datée.
+2. **Propension, pas cause.** Dans le complexe, la cause ne se lit qu'après coup (entailment de Rosen ; Snowden et Ing
+   s'accordent sur ce point). Le p publié est une **propension** : le produit des λ lit les cartes comme des indices
+   (§33-34), sans prétention causale. L'ombre `mixte_averti` (§51) teste le contraire, carte par carte.
+3. **Pas de norme dans un cycle.** Snowden objecte à l'« eurythmie » qu'un rythme sain suppose une norme. Audit de
+   PÉRIODICITÉ : aucune norme dans le moteur (inertie 0,9, PER → SEUIL faible, PER → RÉSONANCE moyen, rien vers un
+   retour) ; la fiche le dit désormais (« Pas de norme »).
+4. **Une forêt, pas un arbre.** Un arbre unique suppose une descendance commune ; des savoirs d'origines distinctes
+   y perdent ce qui les distingue. Hypothèse pour l'arbre de la connaissance (`feuille-de-route.md`) : une racine par
+   strate, les strates reliées par des emprunts déclarés (*transfert*, *écho*, *conflit*, *averti*). **Ce qu'on
+   mesurera d'abord** : dans les dossiers lus, la part des cartes ancrées hors de la strate de l'événement qui lui sont
+   reliées par une liaison déclarée (comptage du bot, `foret_strates.py`).
+
+**Ce qui ne change pas.** Aucun p, aucun λ, aucune règle d'arrêt.
+
 

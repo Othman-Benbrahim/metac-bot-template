@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.75 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.76 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -511,6 +511,28 @@ def controle_passage(k, item, force, requis):
     if force == 'F' and item.get('corroboration') == 'independantes' and soutiens < 2:
         err.append(f'{k} : corroboration « independantes » : deux passages qui soutiennent, un par source')
     return err
+
+
+TIERS_TYPES = ('mediateur', 'arbitre', 'abstention', 'troisieme_pole', 'aucun')
+
+
+def controle_tiers(k, item):
+    """0.7.76 (§52) : le tiers d'une POLARITÉ, facultatif. Un médiateur, un arbitre ou une abstention se tiennent hors
+    des deux camps sans en former un troisième : compatibles avec POLARITÉ. Un troisième pôle stable contredit sa
+    garantie (« une troisième position stable ») : la carte ne s'ancre pas. Aucun effet sur p : le champ est relevé
+    pour être mesuré sur les issues (ombre à venir)."""
+    t = item.get('tiers')
+    if t is None:
+        return []
+    if k.split('@')[0] != 'POL':
+        return [f'{k} : tiers réservé à POLARITÉ (§52)']
+    if not isinstance(t, dict) or t.get('type') not in TIERS_TYPES:
+        return [f'{k} : tiers.type requis parmi {", ".join(TIERS_TYPES)} (§52)']
+    if t['type'] == 'troisieme_pole':
+        return [f'{k} : un troisième pôle stable contredit la garantie de POLARITÉ → ne pas l’ancrer (§52)']
+    if t['type'] != 'aucun' and not all(isinstance(t.get(c), str) and t[c].strip() for c in ('qui', 'fait')):
+        return [f'{k} : tiers {t["type"]} sans « qui » ni « fait » (§52)']
+    return []
 
 
 def controle_a7(k, item, precedent=None):
@@ -1480,7 +1502,7 @@ def valider_base(base, registre=None):
                 for field in ('fait','source','contre_observation','objet'):
                     texte_requis(item.get(field), f'{cid}.{k}.{field}')
                 pr=None if prev is None or k not in forces(prev) else (forces(prev)[k], origine_f.get(k))
-                errs=controle_a7(k,item,pr)+controle_source(k,item)+controle_classe_source(k,item,not c['fictif'] and c.get('statut_donnees')=='actif')+controle_grille(k,item)
+                errs=controle_a7(k,item,pr)+controle_source(k,item)+controle_classe_source(k,item,not c['fictif'] and c.get('statut_donnees')=='actif')+controle_grille(k,item)+controle_tiers(k,item)
                 exiger(not errs, f'{cid} : '+' ; '.join(errs))
                 if fm[k]=='F':
                     # A6 : F qualifie la lecture (fait précis, voisines tranchées), pas la bibliographie (A3).
@@ -4074,7 +4096,7 @@ def parametres_markdown():
 # Renvois « fichier.md §N » attendus → mot qui doit figurer dans le titre de la section visée.
 # L'audit vérifie l'existence ET la pertinence ; un renvoi absent de cette table est signalé.
 RENVOIS = {
-    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('validation.md','48'):'Freins', ('validation.md','49'):'Freins en ombre', ('validation.md','50'):'Valeur attendue', ('validation.md','51'):'Averti', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
+    ('base-de-cas.md','4'):'sans événement', ('apports-theoriques.md','27'):'Grossetti lu', ('apports-theoriques.md','28'):'Simmel', ('apports-theoriques.md','16.3'):'attend', ('validation.md','11'):'Règles de décision', ('apports-theoriques.md','29'):'Deux relectures', ('validation.md','12'):'Attribution', ('apports-theoriques.md','30'):'Agent-Causality', ('validation.md','13'):'Audit pratique', ('validation.md','11.10'):'Cinquième relecture', ('apports-theoriques.md','31'):'DeepSeek', ('apports-theoriques.md','32'):'Druckman', ('graphe.md','3.1'):'Unité de comptage', ('validation.md','14'):'Registre des tests', ('validation.md','15'):'Vue extérieure', ('validation.md','16'):'Premier test', ('validation.md','17'):'Deuxième série', ('validation.md','18'):'Test T6', ('validation.md','19'):'référence de V4', ('validation.md','20'):'Test T7', ('validation.md','21'):'Classe alternative', ('validation.md','22'):'Sources', ('validation.md','23'):'Test FR-RU', ('validation.md','24'):'deux sources', ('validation.md','25'):'Tests du codeur', ('validation.md','26'):'Fuites temporelles', ('validation.md','27'):'levée de L7', ('validation.md','28'):'Alignement avec le bot', ('validation.md','29'):'Bras exploratoire', ('validation.md','30'):'intensité', ('validation.md','31'):'Fait de série', ('validation.md','32'):'Équivalents de données', ('validation.md','33'):'Lecture causale', ('validation.md','34'):'Causes ou indices', ('validation.md','35'):'Tempérer les cartes', ('validation.md','36'):'programme génératif', ('validation.md','37'):'Lecture probabiliste', ('validation.md','38'):'Relecture par Murphy', ('validation.md','39'):'Invariance du lecteur', ('validation.md','40'):'Surprise d', ('validation.md','41'):'Relecture par Murphy, ch. 3', ('validation.md','42'):'SSSOM', ('validation.md','43'):'Monde synthétique', ('validation.md','44'):'Critère de Klein', ('validation.md','45'):'CONTRAINTE resserrée', ('validation.md','46'):'Marqueurs', ('validation.md','47'):'Apprendre les λ', ('validation.md','48'):'Freins', ('validation.md','49'):'Freins en ombre', ('validation.md','50'):'Valeur attendue', ('validation.md','51'):'Averti', ('validation.md','52'):'Tiers et propension', ('dynamiques.md','0'):'Lecture des fiches', ('apports-theoriques.md','34'):'Vue extérieure', ('apports-theoriques.md','33'):'Open Science', ('validation.md','11.9'):'Quatrième relecture',
     ('antagonismes.md','3'):'incompatibilités', ('apports-theoriques.md','4'):'attend', ('apports-theoriques.md','7'):'Deux apports', ('apports-theoriques.md','8'):'Intuition Machine', ('antagonismes.md','4'):'Tensions',
     ('antagonismes.md','4bis'):'Inclusions', ('antagonismes.md','6'):'même objet',
     ('base-de-cas.md','2'):'Fiche', ('base-de-cas.md','3'):'Coder', ('base-de-cas.md','5'):'Partage',
@@ -4318,7 +4340,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.75','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.76','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -6088,6 +6110,15 @@ def autotest():
             self.assertEqual(sorted(t),[.25,.5,.75]);self.assertEqual(globals().get('TEMPERAGE'),1.0)
             self.assertTrue(f<t[.25]<t[.5]<t[.75]<r['p'])                       # les cartes montent ici
             self.assertEqual(r['p'],calculer(e,'apparait','SEU@7',base,asof='2026-09-20')['p'])
+        def test_tiers_polarite(self):
+            # 0.7.76 (§52) : tiers facultatif de POLARITÉ ; troisième pôle stable refusé ; réservé à POL
+            self.assertEqual(controle_tiers('POL@7',{}),[])
+            self.assertEqual(controle_tiers('POL@7',{'tiers':{'type':'mediateur','qui':'Norvège','fait':'médiation annoncée le 2026-10-02'}}),[])
+            self.assertEqual(controle_tiers('POL@7',{'tiers':{'type':'aucun'}}),[])
+            self.assertTrue(controle_tiers('POL@7',{'tiers':{'type':'troisieme_pole','qui':'x','fait':'y'}}))
+            self.assertTrue(controle_tiers('POL@7',{'tiers':{'type':'arbitre'}}))
+            self.assertTrue(controle_tiers('CTR@7',{'tiers':{'type':'aucun'}}))
+            self.assertTrue(controle_tiers('POL@7',{'tiers':{'type':'allie'}}))
         def test_averti(self):
             # 0.7.75 (§51) : « averti » vise l'événement ; sans effet sur p publié ; ombre mixte entre produit et noisy-or
             e=lire_etat('[2026-09 | 3 mois] CROISSANCE@7[f] + CONTRAINTE@7[f]')

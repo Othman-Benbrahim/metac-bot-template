@@ -225,6 +225,7 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
                  exploratoire=c.get("exploratoire"), symetrique=c.get("symetrique"),
                  ombre_causale=c.get("ombre_causale"), rejeu=c.get("_rejeu"),
                  empreintes_passages=c.get("empreintes_passages"),
+                 tiers_polarite=c.get("tiers_polarite") or (c.get("exploratoire") or {}).get("tiers_polarite"),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
     if c.get("statut") == "refuse" and c.get("dossier"):     # 0.10.55 : en strate 7 aussi, le dossier refusé est gardé
         d_ = c["dossier"]

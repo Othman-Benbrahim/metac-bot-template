@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.62 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.64 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.64** : **quatre pistes de Snowden** (skill 0.7.76, décision d'auteur du 2026-11-13, `validation.md` §52). (1)
+  Tiers de POLARITÉ : la consigne demande au lecteur ce qui se tient hors des deux camps (médiateur, arbitre,
+  abstention, ou « aucun ») ; un tiers mal formé ou hors de POL est retiré, un troisième pôle stable retire POLARITÉ
+  (il contredit sa garantie) ; les tiers sont relevés au registre (`tiers_polarite`), sans effet sur p. (2) Période
+  constatée, jamais postulée, et sans état « normal ». (3) Le commentaire publié nomme C une propension, non une
+  affirmation causale. (4) `foret_strates.py` compte, dans les lectures gardées par le rejeu, les cartes ancrées hors de
+  la strate de l'événement et celles qu'une liaison déclarée entre strates y relie (hypothèse de la forêt pour l'arbre
+  de la connaissance). Monde synthétique : protocole 11. (0.10.63 : sondes Mistral, SambaNova et Cerebras.)
 - **0.10.62** : **banc des petites tâches** (décision d'auteur du 2026-11-13 : NVIDIA pour les tâches courtes, à
   condition de mesurer jusqu'où chaque modèle est fiable). `banc_petites_taches.py` et le workflow du même nom
   soumettent à d'autres modèles les MÊMES consignes courtes que Claude a reçues sur les questions ForecastBench d'une

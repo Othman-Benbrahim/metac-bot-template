@@ -1,6 +1,6 @@
 # Équivalents · strate 8 — Droit
 
-> Version : 0.7.75
+> Version : 0.7.76
 
 > Les 16 cartes traduites dans la strate 8. Statuts et règles : `equivalences.md` (index) et A3.
 > Bilan : 0 Documenté, 15 Proposé, 1 Vide, 0 Hors domaine, 0 Attesté.
