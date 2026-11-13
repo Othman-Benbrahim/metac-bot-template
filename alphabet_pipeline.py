@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.72"
+VERSION_BOT = "0.10.73"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -998,6 +998,7 @@ async def puits(q: Question, plan: dict, llm: Llm, aujourdhui: str, jours: int,
             trace["appels"].append(dict(journal, statut="vide"))
             continue
         releves[i] = (r, rang_premier + len(resultats), src)
+        trace.setdefault("_releves", []).append(r)      # 0.10.73 : pour l'ombre « ancrage par les séries »
         trace["appels"].append(dict(journal, statut="ok", points=len(r["points"]), url=r["url"],
                                     premier=r["points"][0]["date"], dernier=r["points"][-1]["date"]))
         resultats.append({"famille": "reference", "cartes": [], "requete": f"puits : {src} {json.dumps(params, ensure_ascii=False)}",
@@ -2054,7 +2055,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
                                    "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur",
-                                   "empreintes_passages", "tiers_polarite")
+                                   "empreintes_passages", "tiers_polarite", "ombre_filtrage", "ombre_series")
              if c.get(k) is not None}
     if (c.get("dossier") or {}).get("_liaisons_hors_liste"):      # 0.10.52 (§51) : verbes inventés par le lecteur
         explo["liaisons_hors_liste"] = c["dossier"]["_liaisons_hors_liste"]
@@ -2136,6 +2137,7 @@ async def _vue_par_recherche(q: Question, plan: dict, llm: Llm, chercher: Cherch
     vue_calc = None
     if PUITS:                        # 0.7.0 : bases ouvertes, bornées à la date d'information
         trace["puits"], donnees, vue_calc = await puits(q, plan, llm, aujourdhui, jours, len(refs) + 1)
+        trace["_releves"] = trace["puits"].pop("_releves", [])      # hors registre (volumineux)
         refs = refs + donnees
     hist, trace["historique"] = await chercher_historique(plan, historique, aujourdhui)
     classe = await definir_classe(q, plan, refs, hist, llm, aujourdhui, jours) if CLASSE_FIGEE else None
@@ -2235,6 +2237,14 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
             trace["empreintes_passages"] = empreintes_passages(dossier, executees)
         except Exception as e:
             trace["empreintes_passages"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+        try:                       # 0.10.73 : tâches refaites par le code, EN OMBRE (aucun effet sur la lecture ni sur p)
+            import ombres_auto as oa
+            trace["ombre_filtrage"] = oa.mesurer_filtrage(executees, f"{q.titre} {q.criteres}", dossier.get("mots"))
+            s_ = ((trace.get("puits") or {}).get("compte") or {}).get("spec") or {}
+            s_ = s_.get("seuil") if isinstance(s_.get("seuil"), (int, float)) and not isinstance(s_.get("seuil"), bool) else None
+            trace["ombre_series"] = oa.comparer_series(trace.get("_releves") or [], s_, dossier.get("mots"))
+        except Exception as e:
+            trace["ombre_filtrage"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
         if programme:
             dossier["programme"] = programme      # 0.10.7 : lu par le moteur en ombre seulement (§37)
         futurs = retirer_faits_futurs(dossier, trace.get("_textes") or "", aujourdhui, jours)
@@ -2640,7 +2650,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                         "exploratoire", "symetrique", "ombre_causale", "traduction",
                                                         "invariance", "preselection", "reprises_json", "compte_echoue", "fidelite_plan",
                                                         "nature_etat_nul", "relance", "dynamique_observee",
-                                                        "empreintes_passages", "tiers_polarite")},
+                                                        "empreintes_passages", "tiers_polarite", "ombre_filtrage",
+                                                        "ombre_series")},
                             "ombre_absence": ombre_absence(c.get("p_B"), c.get("nature_etat_nul")),
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

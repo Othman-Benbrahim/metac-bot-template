@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.72 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.73 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.73** : **deux tâches du modèle refaites par le code, en ombre** (`ombres_auto.py`, décision d'auteur ; règles
+  fixées avant toute mesure). Filtrage des recherches : passages en double ou sans aucun mot de la question retirés
+  (jamais les relevés des puits) ; on mesure la part de texte économisée et les faits ancrés qu'il aurait fait perdre
+  (adoptable seulement à 0). Ancrage par les séries : CROISSANCE (hausse qui s'accélère), PÉRIODICITÉ (au moins
+  quatre sommets régulièrement espacés, période constatée), SEUIL (seuil de la question franchi sur les 10 derniers
+  points), INCERTITUDE (volatilité récente ≥ 1,5 fois l'ensemble), lues dans les relevés des puits et comparées à la
+  lecture du modèle carte par carte. Rien ne change dans ce que lit le modèle ni dans p ; bilan dans le rapport du
+  banc (`ombres_auto`).
 - **0.10.72** : **triplets jugés sur ce que le vérificateur voit** (passage 43488958193 : 10 triplets sur 10 écartés
   pour erreur du narrateur ; leurre réalisé au lieu d'être évoqué 8 fois sur 10, accord avec des cartes en trop 9 fois
   sur 10). Validité relative : l'accord montre les mêmes cartes que l'ancre, le leurre les mêmes moins la sienne

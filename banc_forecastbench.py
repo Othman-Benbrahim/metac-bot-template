@@ -228,6 +228,8 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
                  tiers_polarite=c.get("tiers_polarite") or (c.get("exploratoire") or {}).get("tiers_polarite"),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
     # 0.10.70 : ombre « absence » (hypothèse enregistrée le 2026-11-13), état nul posté ou exploratoire
+    for k_ in ("ombre_filtrage", "ombre_series"):      # 0.10.73 : tâches refaites par le code, en ombre
+        ligne[k_] = c.get(k_) or (c.get("exploratoire") or {}).get(k_)
     ligne["ombre_absence"] = ap.ombre_absence(p_b, c.get("nature_etat_nul")
                                               or (c.get("exploratoire") or {}).get("nature_etat_nul"))
     if c.get("statut") == "refuse" and c.get("dossier"):     # 0.10.55 : en strate 7 aussi, le dossier refusé est gardé

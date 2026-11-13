@@ -373,6 +373,32 @@ def accord_lecteurs(lignes: list[dict]) -> dict | None:
                        "ne lisent pas la même structure. Le statut mêle lecture et conformité au format."}
 
 
+def ombres_auto(lignes: list[dict]) -> dict | None:
+    """0.10.73 : les deux tâches refaites par le code, en ombre. Filtrage : part du texte que le code retirerait, et
+    faits ancrés qu'il aurait fait perdre (doit rester à 0 pour qu'on l'adopte). Séries : accord carte par carte entre
+    les règles du code et la lecture du modèle."""
+    filt = [x["ombre_filtrage"] for x in lignes if isinstance(x.get("ombre_filtrage"), dict)
+            and x["ombre_filtrage"].get("part_retiree") is not None]
+    ser = [x["ombre_series"] for x in lignes if isinstance(x.get("ombre_series"), dict) and x["ombre_series"].get("code")]
+    if not filt and not ser:
+        return None
+    par_carte = {}
+    for o in ser:
+        for k, ok in o["accord"].items():
+            c = par_carte.setdefault(k, {"n": 0, "accord": 0, "code_seul": 0, "modele_seul": 0})
+            c["n"] += 1
+            c["accord"] += bool(ok)
+            c["code_seul"] += o["code"][k] and not o["modele"][k]
+            c["modele_seul"] += o["modele"][k] and not o["code"][k]
+    return {"filtrage": {"lectures": len(filt),
+                         "part_retiree_moyenne": round(sum(f["part_retiree"] for f in filt) / len(filt), 3) if filt else None,
+                         "faits_ancres": sum(f.get("faits_ancres", 0) for f in filt),
+                         "faits_perdus": sum(len(f.get("faits_perdus") or []) for f in filt)},
+            "series": {"lectures": len(ser), "par_carte": par_carte},
+            "lecture": "filtrage adoptable si faits_perdus reste à 0 sur assez de lectures ; une carte des séries "
+                       "adoptable si l'accord est haut ET si la carte du code prédit aussi bien sur les issues"}
+
+
 def comparer(apparies: list, x: str, ref: str, borne: float | None = None, principal: bool = False) -> dict:
     g = [gain_pair(p[x], p[ref], y) for p, y in apparies]
     d_brier = [brier(p[x], y) - brier(p[ref], y) for p, y in apparies]
@@ -976,6 +1002,7 @@ def scorer_retro(registre: Path) -> dict:
             nuls.append((o, x["p_B"], x.get("issue"), x.get("version_bot")))
     sortie["ombre_absence"] = ombre_absence_suivi(nuls)
     sortie["accord_lecteurs"] = accord_lecteurs([x for x in intactes if x.get("banc") == "forecastbench"])
+    sortie["ombres_auto"] = ombres_auto([x for x in intactes if x.get("banc") == "forecastbench"])
     if len(paires_c) >= 2:
         b = ajuster_decalage(paires_c)
         gains = []
