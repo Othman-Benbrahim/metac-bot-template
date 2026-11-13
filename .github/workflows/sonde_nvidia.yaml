@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       fournisseur:
-        description: "nvidia ou mistral"
+        description: "nvidia, mistral ou sambanova"
         default: "nvidia"
       modeles:
         description: "identifiants séparés par des virgules (facultatif ; sinon la liste par défaut)"
@@ -27,4 +27,5 @@ jobs:
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
           SONDE_FOURNISSEUR: ${{ github.event.inputs.fournisseur }}

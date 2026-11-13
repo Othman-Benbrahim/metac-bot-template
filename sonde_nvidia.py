@@ -18,6 +18,7 @@ import httpx
 FOURNISSEURS = {   # 0.10.63 : la même sonde pour plusieurs fournisseurs compatibles OpenAI
     "nvidia": ("https://integrate.api.nvidia.com/v1", ("NVIDIA_API_KEY", "NVIDIA_NIM_API_KEY")),
     "mistral": ("https://api.mistral.ai/v1", ("MISTRAL_API_KEY",)),
+    "sambanova": ("https://api.sambanova.ai/v1", ("SAMBANOVA_API_KEY",)),
 }
 FOURNISSEUR = os.environ.get("SONDE_FOURNISSEUR") or "nvidia"
 BASE, CLES = FOURNISSEURS[FOURNISSEUR]
@@ -70,10 +71,12 @@ def principal(modeles: list[str]) -> int:
             ids = {m.get("id") for m in r.json().get("data", [])}
             print(f"/v1/models : HTTP {r.status_code}, {len(ids)} modèles listés")
             print("  dont : " + ", ".join(sorted(i for i in ids if any(k in i for k in
-                                                                           ("deepseek", "nemotron-3", "glm", "minimax", "qwen", "kimi", "gpt-oss")))))
+                                                                           ("deepseek", "nemotron-3", "glm", "minimax", "qwen", "kimi", "gpt-oss", "llama", "Llama", "DeepSeek")))))
         except Exception as e:
             ids = set()
             print(f"/v1/models : {type(e).__name__}: {e}")
+        if modeles == ["*"]:
+            modeles = sorted(i for i in ids if i)[:15]
         for m in modeles:
             res = sonder(c, m)
             res["liste"] = m in ids
@@ -83,5 +86,7 @@ def principal(modeles: list[str]) -> int:
 
 if __name__ == "__main__":
     arg = sys.argv[1].strip() if len(sys.argv) > 1 else ""       # entrée vide du workflow : la liste par défaut
-    defaut = DEFAUT_MISTRAL if FOURNISSEUR == "mistral" else DEFAUT
+    defaut = {"mistral": DEFAUT_MISTRAL, "sambanova": ""}.get(FOURNISSEUR, DEFAUT)
+    if not (arg or defaut):        # sambanova : les modèles listés par l'API elle-même
+        defaut = "*"
     sys.exit(principal([m.strip() for m in (arg or defaut).split(",") if m.strip()]))
