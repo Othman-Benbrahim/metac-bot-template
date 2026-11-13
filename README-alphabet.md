@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.57 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.58 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.58** : **test multi-lecteurs** (décision d'auteur du 2026-11-13). Le banc accepte deux entrées : `lecteur`
+  (le modèle principal de CE passage : plan, lecture, bras A) et `memes_que` (relire les questions jouées par une
+  version passée, ex. 0.10.55). Une question déjà lue par un autre codeur peut être relue ; le registre note le codeur
+  de chaque ligne, et le rejeu compare les lectures à réparateur et moteur égaux. Si le lecteur demandé ne répond pas,
+  le passage s'arrête : pas de repli silencieux sur un autre modèle, qui fausserait la comparaison. NVIDIA (offre de
+  développement, banc et monde synthétique seulement, jamais le tournoi) : secret `NVIDIA_API_KEY`, modèles
+  `nvidia_nim/<identifiant>` (ex. `nvidia_nim/deepseek-ai/deepseek-v4.1-flash`).
 - **0.10.57** : **septième passage ForecastBench (bot 0.10.55) : aucun refus** ; 18 lectures chiffrées sur 20, 2 états
   nuls, « averti » employé 4 fois, aucune liaison hors liste. **Premier rejeu** (sans modèle) des 20 lectures : il
   redonne exactement les p enregistrés, et il a révélé un défaut que la correction du lecteur masquait. Quand le

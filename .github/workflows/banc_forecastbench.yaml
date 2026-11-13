@@ -16,6 +16,12 @@ on:
       apres:
         description: "jeux postérieurs à cette date (après la date de connaissance du modèle)"
         default: "2026-07-01"
+      lecteur:
+        description: "modèle principal pour CE passage (facultatif ; ex. nvidia_nim/deepseek-ai/deepseek-v4.1-flash)"
+        default: ""
+      memes_que:
+        description: "relire les mêmes questions qu'une version du bot (facultatif ; ex. 0.10.55)"
+        default: ""
 
 concurrency:
   group: bot-alphabet-registre
@@ -41,7 +47,8 @@ jobs:
       - name: Banc ForecastBench
         run: |
           JEU="${{ github.event.inputs.jeu }}"
-          uv run python banc_forecastbench.py --n "${{ github.event.inputs.n }}" --apres "${{ github.event.inputs.apres }}" ${JEU:+--jeu "$JEU"}
+          MEMES="${{ github.event.inputs.memes_que }}"
+          uv run python banc_forecastbench.py --n "${{ github.event.inputs.n }}" --apres "${{ github.event.inputs.apres }}" ${JEU:+--jeu "$JEU"} ${MEMES:+--memes-que "$MEMES"}
         env:
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -62,7 +69,8 @@ jobs:
           EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
           TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
           ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
-          ALPHABET_LLM: ${{ vars.ALPHABET_LLM }}
+          ALPHABET_LLM: ${{ github.event.inputs.lecteur || vars.ALPHABET_LLM }}
+          NVIDIA_NIM_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}
           ALPHABET_VUES: ${{ vars.ALPHABET_VUES }}
