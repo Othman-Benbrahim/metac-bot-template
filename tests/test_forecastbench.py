@@ -121,6 +121,24 @@ class Tests(unittest.TestCase):
         self.assertEqual(m.controle_questions(d["questions"], fm, True, True), [])
         self.assertEqual(d["questions"][0]["si_non"], "indetermine")
 
+    def test_triplets_67(self):
+        # 0.10.67 : triplets durs du monde synthétique (consigne du leurre, mesure)
+        import monde_synthetique as ms
+        c = ms.consigne_narrateur(["SEU@7", "CTR@7"], ["POL@7"], 7, "2026-11-13", 3, leurre="SEU@7")
+        self.assertIn("SANS le remplir", c)
+        c13 = ms.consigne_narrateur(["SEU@13", "CTR@13"], ["POL@13"], 13, "2026-11-13", 3)
+        self.assertIn("partis politiques", c13)
+        self.assertNotIn("SANS le remplir", c13)
+        rows = [{"statut": "lue", "ancrees": {"SEU@7": "f", "CTR@7": "f"},
+                 "triplet": {"carte_leurre": "SEU@7", "ancrees_accord": {"SEU@13": "f", "CTR@13": "f"},
+                             "ancrees_leurre": {"CTR@7": "f"}}},                     # structure : réussi, discrimine
+                {"statut": "lue", "ancrees": {"SEU@7": "f", "CTR@7": "f"},
+                 "triplet": {"carte_leurre": "SEU@7", "ancrees_accord": {"POL@13": "f"},
+                             "ancrees_leurre": {"SEU@7": "f", "CTR@7": "f"}}}]        # surface : échoue, suit
+        r = ms.mesurer_triplets(rows)
+        self.assertEqual((r["n"], r["triplets_reussis"], r["leurre_discrimine"], r["leurre_suit_la_surface"]),
+                         (2, 1.0, 1, 1))
+
     def test_tiers_polarite_64(self):
         # 0.10.64 (skill 0.7.76, §52) : tiers gardé sur POL ; retiré ailleurs ou mal formé ; troisième pôle → POL retiré
         base = {"intensite": "f", "portee": "aucune"}

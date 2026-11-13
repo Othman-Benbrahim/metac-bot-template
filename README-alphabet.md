@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.66 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.67 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,14 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.67** : **triplets durs du monde synthétique** (d'après Blair, Procaccia et Tambe, « Embeddings for
+  Preferences, Not Semantics », NeurIPS 2026 ; décision d'auteur du 2026-11-13). Le test d'invariance que l'alphabet
+  n'avait jamais passé : une carte se lit-elle pareil quels que soient le domaine et les mots ? Pour chaque situation
+  lue (l'ANCRE), le narrateur écrit un ACCORD (mêmes cartes cachées, strate 13 ou 6, autres acteurs, autre vocabulaire)
+  et un LEURRE (même canevas, une carte présente écrite en quasi-réalisation : évoquée, annoncée, approchée, démentie,
+  jamais réalisée). Mesure : triplet réussi si les cartes lues dans l'accord sont plus proches de l'ancre que celles du
+  leurre (0,5 = hasard) ; la carte du leurre est-elle discriminée ou suivie par la surface ; invariance moyenne
+  (Jaccard ancre-accord). Entrée `triplets` du workflow (0 par défaut : quatre appels de plus par situation).
 - **0.10.66** : **UCDP** (clé reçue le 2026-11-13 ; 5 000 requêtes par jour). Version annuelle 26.1 (jusqu'à fin
   2025) prolongée par les versions **candidates** mensuelles (26.0.X, moins vérifiées, marquées « [candidat] »). Un
   mois n'est lu que si sa version était publiée à la date limite (prudence : fin du mois suivant), pour qu'un test

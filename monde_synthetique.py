@@ -86,7 +86,18 @@ ORGANISATIONS = ["l'Union du Détroit de Kossmar", "le Conseil des États rivera
                  "l'Organisation pour la sécurité du Plateau de Senne", "la Ligue commerciale d'Ostrave",
                  "le Pacte de défense de Corvus", "l'Agence régionale de l'énergie de Velhaven"]
 DOMAINE = {7: "relations entre États et organisations internationales : diplomatie, traités, sanctions, alliances, "
-              "frontières, forces armées, commerce d'État. Rien d'autre (ni météo, ni faits divers, ni cérémonies)."}
+              "frontières, forces armées, commerce d'État. Rien d'autre (ni météo, ni faits divers, ni cérémonies).",
+           # 0.10.67 : domaines des « accords » des triplets durs (mêmes cartes, autre strate, autre vocabulaire)
+           13: "vie politique intérieure d'un seul État : gouvernement, partis, parlement, élections, syndicats, "
+               "manifestations, justice. Rien d'autre (ni relations avec l'étranger, ni météo, ni faits divers).",
+           6: "économie d'un seul pays : entreprises, banques, marchés, prix, salaires, budget de l'État, commerce. "
+              "Rien d'autre (ni diplomatie, ni armée, ni faits divers)."}
+
+# 0.10.67 : les acteurs imposés selon la strate (en 7, deux États et, au besoin, une organisation)
+ACTEURS_STRATE = {13: "le gouvernement de {a}, deux partis politiques de {a} aux noms inventés, son parlement, ses "
+                      "syndicats et ses électeurs",
+                  6: "deux grandes entreprises de {a} aux noms inventés, sa banque centrale, son ministère des finances, "
+                     "ses syndicats et ses consommateurs"}
 
 
 MEDIAS = ["agence-meridia", "courrier-du-reth", "observateur-ostrave", "gazette-de-corvus", "depeche-continentale",
@@ -137,13 +148,16 @@ def canevas(presentes: list[str], strate: int, graine: int, aujourdhui: str) -> 
             "parasites": parasites, "pays_tiers": tiers}
 
 
-def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str, graine: int = 0) -> str:
+def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, aujourdhui: str, graine: int = 0,
+                       leurre: str | None = None) -> str:
     """0.10.26 : consigne à CANEVAS. Le narrateur écrit exactement les dépêches du canevas, dans l'ordre : la première
     pose le contexte sans aucun marqueur ; chacune des suivantes remplit UN marqueur imposé, et aucun autre de la liste
     interdite. Domaine imposé. Plus de choix libres : c'est la liberté laissée au modèle qui le faisait errer."""
     cv = canevas(presentes, strate, graine, aujourdhui)
     a, b = cv["etats"]
     acteurs = f"{a}, {b}" + (f" et {cv['organisation']}" if cv["organisation"] else "")
+    if strate in ACTEURS_STRATE:
+        acteurs = ACTEURS_STRATE[strate].format(a=a)
     lignes = []
     for i, d in enumerate(cv["depeches"], 1):
         if d.get("parasite"):
@@ -158,6 +172,11 @@ def consigne_narrateur(presentes: list[str], absentes: list[str], strate: int, a
             lignes.append(f"{i}. [{d['date']}] (média : {d['media']}) Le MÊME fait que la dépêche sur « {d['marqueur']} », "
                           "rapporté indépendamment par ce second média, avec un détail vérifiable différent (un chiffre, "
                           "une déclaration citée) ; pas de reprise mot pour mot.")
+        elif d["carte"] == leurre:
+            # 0.10.67 (triplets durs) : le LEURRE garde les mots du marqueur mais ne le remplit pas
+            lignes.append(f"{i}. [{d['date']}] (média : {d['media']}) Un fait, entre ces mêmes acteurs, qui EMPLOIE le "
+                          f"vocabulaire de ce marqueur SANS le remplir : « {d['marqueur']} ». La chose est évoquée, "
+                          "annoncée, approchée, envisagée ou démentie, mais elle N'A PAS LIEU dans les faits rapportés.")
         else:
             lignes.append(f"{i}. [{d['date']}] (média : {d['media']}) Un fait, entre ces mêmes acteurs, qui remplit "
                           f"EXACTEMENT ce marqueur : « {d['marqueur']} ».")
@@ -482,8 +501,106 @@ def noter_humain(dossier: Path) -> dict:
     return out
 
 
+def abreviations(ancrees_: dict[str, str]) -> set[str]:
+    return {k.split("@")[0] for k in ancrees_}
+
+
+def mesurer_triplets(rows: list[dict]) -> dict | None:
+    """0.10.67 (Blair, Procaccia et Tambe, NeurIPS 2026 : triplets durs). Pour chaque situation lue : ANCRE (le texte
+    ordinaire), ACCORD (mêmes cartes cachées, autre strate et autre vocabulaire), LEURRE (même domaine, mêmes acteurs,
+    une carte présente remplacée par un fait qui en garde les mots sans la réaliser). Un lecteur qui lit la structure
+    code l'accord comme l'ancre et le leurre autrement ; un lecteur qui suit la surface fait l'inverse. Réussite d'un
+    triplet : |ancre △ accord| < |ancre △ leurre| (½ en cas d'égalité ; ensembles d'abréviations ancrées). À part, la
+    carte du leurre : vue dans l'ancre et pas dans le leurre (discrimine), vue dans les deux (suit la surface)."""
+    T0 = [r for r in rows if r.get("statut") == "lue" and isinstance(r.get("triplet"), dict)
+          and "ancrees_accord" in r["triplet"] and "ancrees_leurre" in r["triplet"]]
+    # mesure vérifiée : un triplet dont le narrateur a raté l'accord ou le leurre n'est pas compté contre le lecteur
+    T = [r for r in T0 if not r["triplet"].get("leurre_rate_par_narrateur")
+         and not r["triplet"].get("accord_rate_par_narrateur")]
+    if not T:
+        return {"n": 0, "ecartes_erreur_narrateur": len(T0)} if T0 else None
+    reussite, disc, surf, invar = 0.0, 0, 0, []
+    for r in T:
+        A = abreviations(r["ancrees"])
+        Acc = abreviations(r["triplet"]["ancrees_accord"])
+        L = abreviations(r["triplet"]["ancrees_leurre"])
+        d1, d2 = len(A ^ Acc), len(A ^ L)
+        reussite += 1.0 if d1 < d2 else 0.5 if d1 == d2 else 0.0
+        x = r["triplet"]["carte_leurre"].split("@")[0]
+        disc += x in A and x not in L
+        surf += x in A and x in L
+        invar.append(len(A & Acc) / len(A | Acc) if A | Acc else 1.0)
+    return {"n": len(T), "ecartes_erreur_narrateur": len(T0) - len(T),
+            "triplets_reussis": round(reussite, 1), "taux": round(reussite / len(T), 3),
+            "leurre_discrimine": disc, "leurre_suit_la_surface": surf,
+            "invariance_jaccard_moyenne": round(sum(invar) / len(invar), 3),
+            "lecture": "triplets réussis / n : 0,5 = hasard ; le leurre doit être discriminé, pas suivi"}
+
+
+async def triplet(narrateur, lecteur, s: dict, strate: int, g: int, aujourdhui: str, texte: str,
+                  verificateur=None) -> dict:
+    """0.10.67 : l'ACCORD et le LEURRE d'une situation déjà lue (l'ancre). L'accord est écrit dans une autre strate
+    (13, sinon 6) par d'autres acteurs (autre graine de canevas) ; le leurre reprend le canevas de l'ancre."""
+    m = ap._moteur()
+    rnd = random.Random(f"triplet:{strate}:{g}")
+    out: dict = {}
+    s2 = next((x for x in (13, 6) if x != strate and not any(m.hors_domaine(f"{k.split('@')[0]}@{x}")
+                                                              for k in s["presentes"] + s["absentes"])), None)
+    if not s["presentes"]:
+        return {"erreur": "aucune carte présente : pas de leurre possible"}
+    x = rnd.choice(sorted(s["presentes"]))
+    out["carte_leurre"] = x
+    # LEURRE : même canevas, la carte x écrite en quasi-réalisation (et non réalisée)
+    try:
+        t_l = str(await narrateur(consigne_narrateur(s["presentes"], s["absentes"], strate, aujourdhui, g,
+                                                     leurre=x))).strip()
+        out["ancrees_leurre"] = await _lire(lecteur, s, strate, g, aujourdhui, t_l, "leurre")
+        out["texte_leurre"] = t_l
+        if verificateur is not None:    # le narrateur a-t-il bien écrit x SANS le réaliser ?
+            s_l = {"presentes": [k for k in s["presentes"] if k != x], "absentes": sorted(s["absentes"] + [x])}
+            v = await verifier(verificateur, t_l, sorted(s["presentes"] + s["absentes"]), s_l, strate)
+            out["verification_leurre"] = v
+            out["leurre_rate_par_narrateur"] = x in (v.get("absentes_montrees") or [])
+    except Exception as e:
+        out["erreur_leurre"] = f"{type(e).__name__}: {e}"[:200]
+    # ACCORD : mêmes cartes, autre strate, autre vocabulaire, autres acteurs
+    if s2 is None:
+        out["erreur_accord"] = "aucune strate d'accord admissible"
+        return out
+    s_acc = {"presentes": [f"{k.split('@')[0]}@{s2}" for k in s["presentes"]],
+             "absentes": [f"{k.split('@')[0]}@{s2}" for k in s["absentes"]],
+             "evenement": f"{s['evenement'].split('@')[0]}@{s2}"}
+    try:
+        t_a = str(await narrateur(consigne_narrateur(s_acc["presentes"], s_acc["absentes"], s2, aujourdhui,
+                                                     g + 100000))).strip()
+        out["ancrees_accord"] = await _lire(lecteur, s_acc, s2, g, aujourdhui, t_a, "accord")
+        out["strate_accord"] = s2
+        out["texte_accord"] = t_a
+        if verificateur is not None:    # l'accord montre-t-il bien toutes les cartes présentes, et seulement elles ?
+            v = await verifier(verificateur, t_a, sorted(s_acc["presentes"] + s_acc["absentes"]), s_acc, s2)
+            out["verification_accord"] = v
+            out["accord_rate_par_narrateur"] = bool(v.get("presentes_non_montrees") or v.get("absentes_montrees"))
+    except Exception as e:
+        out["erreur_accord"] = f"{type(e).__name__}: {e}"[:200]
+    return out
+
+
+async def _lire(lecteur, s: dict, strate: int, g: int, aujourdhui: str, texte: str, role: str) -> dict[str, str]:
+    if not texte:
+        raise ValueError("texte vide")
+    plan = plan_de(s, strate)
+    q = ap.Question(id=f"monde-{strate}-{g}-{role}", url="", titre=f"Situation synthétique {g} ({nom_strate(strate)}) : "
+                    "quelles structures les faits montrent-ils ?", contexte="", criteres="Exercice de mesure du "
+                    "lecteur ; aucune résolution.", precisions="Les dépêches sont fictives et seules sources.",
+                    resolution=date.fromisoformat(aujourdhui) + timedelta(days=90))
+    executees = [{"famille": "situation", "cartes": plan["candidats"], "requete": "dépêches du monde synthétique",
+                  "resultat": texte, "executee": True}]
+    lec = await ap.json_avec_reprise(lecteur, ap.consigne_dossier(q, plan, executees, aujourdhui, 90))
+    return ancrees(lec, strate)
+
+
 async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, aujourdhui: str | None = None,
-                 verificateur=None, effacement: bool = False, reflechi=None) -> dict:
+                 verificateur=None, effacement: bool = False, reflechi=None, triplets: bool = False) -> dict:
     m = ap._moteur()
     aujourdhui = aujourdhui or date.today().isoformat()
     cartes = [c for c in sorted(m.NOMS) if not m.hors_domaine(f"{c}@{strate}")]
@@ -539,6 +656,8 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
                 row["lecture_sans_noms"] = {"ancrees": ancrees(lec2, strate, inverse)}
             except Exception as e:
                 row["lecture_sans_noms"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+        if triplets:               # 0.10.67 : l'accord et le leurre de cette ancre (triplets durs)
+            row["triplet"] = await triplet(narrateur, lecteur, s, strate, g, aujourdhui, texte, verificateur)
         if reflechi is not None:   # 0.10.36 : même modèle, même consigne, mais le droit de réfléchir avant de répondre
             try:
                 lec3 = await ap.json_avec_reprise(reflechi, ap.consigne_dossier(q, plan, executees, aujourdhui, 90))
@@ -551,7 +670,7 @@ async def lancer(narrateur, lecteur, n: int, strate: int = 7, graine0: int = 0, 
             "graines": [graine0, graine0 + n - 1],
             "consigne_lecteur_sha256": hashlib.sha256(ap.regles_dossier().encode()).hexdigest(),
             "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
-            "resultat": mesurer(rows), "situations": rows}
+            "resultat": mesurer(rows), "triplets": mesurer_triplets(rows), "situations": rows}
 
 
 async def principal() -> int:
@@ -620,7 +739,9 @@ async def principal() -> int:
             return await modele_r.invoke(c)
     r = await lancer(narrateur, llm, int(os.environ.get("MONDE_SITUATIONS") or 12), strate, graine0,
                      verificateur=verificateur, effacement=os.environ.get("MONDE_EFFACEMENT", "1") != "0",
-                     reflechi=reflechi)
+                     reflechi=reflechi, triplets=os.environ.get("MONDE_TRIPLETS", "0") not in ("0", "", "non"))
+    if r.get("triplets"):
+        print("Triplets durs :", json.dumps(r["triplets"], ensure_ascii=False))
     r["reflexion"] = options_reflexion(choix["principal"]) if reflechi else None
     r["verificateur"] = nom_v if verificateur else None
     fam = lambda nom: next((f for f in ("claude", "deepseek", "mistral", "qwen", "llama", "nova", "gpt", "glm", "kimi")
