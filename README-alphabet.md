@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.69 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.70 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.70** : **ombre « absence »** (hypothèse enregistrée le 2026-11-13, décision d'auteur). Constat exploratoire
+  sur le banc (jeu du 2026-10-25) : sur 11 états nuls d'absence (structure absente, carte visée absente), 1 OUI pour
+  3,9 attendus par B, alors que B est calibré sur l'ensemble (60 OUI pour 59,5) ; les angles morts ne montrent rien
+  (4 sur 5, surtout des duels d'actions à 0,5). Hypothèse : sur les états nuls d'absence À VENIR, B à cote × 0,5 bat
+  B en perte log. Facteur fixé, jamais ajusté ; seules comptent les lignes à partir de 0.10.70 (séquence de
+  confiance, hypothèse principale de sa famille) ; jamais postée. C'est aussi la moitié que le moteur ne sait pas
+  exprimer (multiplicateurs ≥ 1, décision 9) : un premier élément pour la rouvrir le moment venu.
 - **0.10.69** : **étape 2, cohérence du moteur** (`verif_moteur.py`, rien n'est corrigé ni écrit au registre). Chaque
   calcul est recoupé par une bibliothèque indépendante, sur les mêmes entrées (157 paires B et 48 paires C résolues du
   banc) : Brier et perte log (scikit-learn, properscoring), Wilson (statsmodels), loi Beta (scipy), recalibration

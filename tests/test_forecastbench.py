@@ -170,6 +170,20 @@ class Tests(unittest.TestCase):
         self.assertEqual(d["candidats"], ["CTR@6", "HIE@6"])
         self.assertEqual([(r["requete"], r["cartes"]) for r in d["recherches"]], [("b", ["HIE@6"]), ("c", ["CTR@6"])])
 
+    def test_ombre_absence_70(self):
+        # 0.10.70 : B à cote × 0,5 pour les seuls états nuls d'absence ; jugée sur les lignes ≥ 0.10.70 seulement
+        import score_registre as sr
+        self.assertAlmostEqual(ap.ombre_absence(0.5, "structure_absente"), 1 / 3)
+        self.assertAlmostEqual(ap.ombre_absence(0.2, "carte_visee_absente"), 0.25 * 0.5 / (1 + 0.25 * 0.5))
+        self.assertIsNone(ap.ombre_absence(0.5, "angle_mort"))
+        self.assertIsNone(ap.ombre_absence(0.5, "indetermine"))
+        self.assertIsNone(ap.ombre_absence(None, "structure_absente"))
+        s = sr.ombre_absence_suivi([(1 / 3, 0.5, 0, "0.10.70"), (1 / 3, 0.5, 0, "0.10.71"), (1 / 3, 0.5, 1, "0.10.55")])
+        self.assertEqual(s["n_comptees"], 2)
+        self.assertGreater(s["ombre_sur_B"]["gain_log_moyen"], 0)
+        self.assertEqual(s["avant_enregistrement"]["n"], 1)
+        self.assertIsNone(sr.ombre_absence_suivi([]))
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],

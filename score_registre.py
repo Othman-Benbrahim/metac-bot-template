@@ -895,6 +895,16 @@ def scorer_retro(registre: Path) -> dict:
                                "cout_moyen_usd": (round(sum(float(x.get("cout_usd") or 0) for x in intactes
                                                             if x.get("banc") == "forecastbench")
                                                         / max(1, sum(1 for x in intactes if x.get("banc") == "forecastbench")), 4))}
+    # 0.10.70 : ombre « absence » sur les états nuls (postés ou exploratoires) ; les lignes d'avant 0.10.70 sont
+    # recalculées pour mémoire seulement
+    nuls = []
+    for x in intactes:
+        ex = x.get("exploratoire") or {}
+        nat = x.get("nature_etat_nul") or ex.get("nature_etat_nul")
+        if (x.get("statut") == "etat_nul" or ex.get("statut") == "etat_nul") and x.get("p_B") is not None:
+            o = x.get("ombre_absence") if "ombre_absence" in x else ap.ombre_absence(x["p_B"], nat)
+            nuls.append((o, x["p_B"], x.get("issue"), x.get("version_bot")))
+    sortie["ombre_absence"] = ombre_absence_suivi(nuls)
     if len(paires_c) >= 2:
         b = ajuster_decalage(paires_c)
         gains = []
@@ -913,6 +923,32 @@ def scorer_retro(registre: Path) -> dict:
                                            "si elle gagne hors échantillon ; elle ne touche que C_corrige, jamais le "
                                            "bras posté"}
     return sortie
+
+
+def _version(v) -> tuple:
+    try:
+        return tuple(int(x) for x in str(v).split("."))
+    except ValueError:
+        return (0,)
+
+
+def ombre_absence_suivi(lignes: list[tuple[float | None, float, int, str | None]]) -> dict | None:
+    """0.10.70 : l'ombre « absence » contre B, sur les états nuls d'absence. lignes = (ombre, p_B, issue, version).
+    Seules comptent les lignes écrites à partir de la version où l'hypothèse a été enregistrée ; les autres sont
+    rapportées à part (elles ont servi à la formuler, elles ne la jugent pas)."""
+    seuil = _version(ap.OMBRE_ABSENCE["depuis_version"])
+    comptees = [({"ombre_absence": ap.borner(o), "B": ap.borner(b)}, y) for o, b, y, v in lignes
+                if o is not None and b is not None and y in (0, 1) and _version(v) >= seuil]
+    avant = [(b, y) for o, b, y, v in lignes if o is not None and b is not None and y in (0, 1) and _version(v) < seuil]
+    if not comptees and not avant:
+        return None
+    return {"hypothese": "sur les états nuls d'absence à venir, B à cote × 0,5 bat B en perte log "
+                         f"(enregistrée le {ap.OMBRE_ABSENCE['enregistree_le']}, depuis {ap.OMBRE_ABSENCE['depuis_version']})",
+            "n_comptees": len(comptees),
+            "ombre_sur_B": comparer(comptees, "ombre_absence", "B", 100 * math.log(2), principal=True) if comptees else None,
+            "avant_enregistrement": {"n": len(avant), "oui": sum(y for _, y in avant),
+                                     "oui_attendus_selon_B": round(sum(b for b, _ in avant), 2),
+                                     "lecture": "ont servi à formuler l'hypothèse ; ne la jugent pas"}}
 
 
 def enregistrer_correction(registre: Path, s: dict) -> bool:
@@ -1073,6 +1109,10 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         nat = cx.get("nature_etat_nul") or "non_renseignee"
         etats_nuls.setdefault(nat, []).append((ap.borner(x["bras"]["B"]["p"]), issues[x["question_id"]],
                                                x["bras"]["A"].get("p")))
+    suivi_nuls_ombre = ombre_absence_suivi([(x["bras"]["C"].get("ombre_absence"), x["bras"]["B"]["p"],
+                                              issues[x["question_id"]], x.get("version_bot"))
+                                             for x in resolues if x["bras"]["C"].get("statut") == "etat_nul"
+                                             and x["bras"]["B"].get("p") is not None])
     suivi_nuls = {nat: {"n": len(v), "log_B": sum(log_score(p, y) for p, y, _ in v) / len(v),
                         "gain_B_sur_A": (sum(gain_pair(p, a, y) for p, y, a in v if a is not None)
                                          / max(1, sum(a is not None for _, _, a in v)))}
@@ -1171,7 +1211,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                               for c in ("tous", "exacte", "proche")
                               if any(c == "tous" or p["_corr"] == c for p, _ in comptes)} or None),
             "statuts_alphabet": statuts,
-            "etats_nuls": {"par_nature": suivi_nuls,
+            "etats_nuls": {"par_nature": suivi_nuls, "ombre_absence": suivi_nuls_ombre,
                            "lecture": "structure_absente = candidates écartées sur pièces ; angle_mort = au moins une "
                                       "candidate non vraiment cherchée, même après relance. gain_B_sur_A positif : le "
                                       "« pas de structure » de l'alphabet a mieux valu que le modèle seul."},
