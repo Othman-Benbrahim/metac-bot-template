@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.59 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.61 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,10 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.61** : au banc, une question jugée hors alphabet garde son B (calculé par le code avant toute lecture) ; il
+  manquait à la ligne. 0.10.60 : `sonde_nvidia.py` et le workflow « Sonde NVIDIA » (appels directs, sans litellm :
+  code HTTP, délai jusqu'au premier octet, réponse). Le 2026-11-13 à 2 h 30 : Nemotron 3 Ultra et MiniMax M3.1 Flash
+  répondent ; DeepSeek V4.1 Flash, GLM-5.3 Flash, Gemma 4 31B et gpt-oss-20b, listés, n'envoient rien en 120 s.
 - **0.10.59** : **délais imposés par le bot**. Le premier essai de DeepSeek V4.1 Flash (NVIDIA) est resté bloqué 44
   minutes sur la sonde de disponibilité, sans erreur : le délai confié à la bibliothèque n'a pas été tenu. La sonde
   abandonne maintenant à 90 s (`ALPHABET_SONDE_DELAI`) avec une erreur lisible (passagère : ressayée deux fois), et

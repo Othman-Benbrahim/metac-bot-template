@@ -213,7 +213,12 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
     ligne["b_calcule"] = bool(vue)
     ligne["vue_calculee"] = vue     # 0.10.47 : gardée au registre, pour vérifier la cohérence de B
     c = await ap.alphabet(q, "", llm, chercher, True, jeu, jours, ar.historique_avant, vue_fixee=vue)
-    ligne.update(statut=c.get("statut"), p_B=c.get("p_B"), p_C=c.get("p_C"), motif=c.get("motif"),
+    p_b = c.get("p_B")
+    if p_b is None and vue and vue.get("frequence") is not None:
+        # 0.10.61 : B est calculé par le code AVANT la lecture ; une question jugée hors alphabet (ou refusée au plan)
+        # garde son B, comme la pipeline le fixe (trace["p_B"] = fréquence de la vue)
+        p_b = float(vue["frequence"])
+    ligne.update(statut=c.get("statut"), p_B=p_b, p_C=c.get("p_C"), motif=c.get("motif"),
                  evenement=c.get("evenement"), etat=c.get("etat"), vues=c.get("vues"), classe_statut=c.get("classe_statut"),
                  nature_etat_nul=c.get("nature_etat_nul"), puits=c.get("puits"),
                  compte_calcule=bool((c.get("vue") or {}).get("compte_calcule")),
