@@ -26,6 +26,10 @@ on:
         description: "0.10.36 : relire chaque situation une 2e fois avec la réflexion étendue du lecteur (1 = oui, 0 = non)"
         required: false
         default: "1"
+      triplets:
+        description: "0.10.67 : triplets durs (accord dans une autre strate, leurre en quasi-réalisation) ; 1 = oui, 0 = non"
+        required: false
+        default: "0"
       action:
         description: "mesurer (passage) ; exporter-humain (cahier + grille pour un codeur humain, sans appel de modèle) ; noter-humain (comparer la grille remplie)"
         required: false
@@ -73,6 +77,7 @@ jobs:
           MONDE_NARRATEUR: ${{ github.event.inputs.narrateur }}
           MONDE_VERIFICATEUR: ${{ github.event.inputs.verificateur }}
           MONDE_REFLEXION: ${{ github.event.inputs.reflexion }}
+          MONDE_TRIPLETS: ${{ github.event.inputs.triplets }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}
