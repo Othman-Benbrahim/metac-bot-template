@@ -133,11 +133,23 @@ async def fred(serie: str, avant: date | None = None, debut: str | None = None) 
         # dans son futur (erreur 400). On lit donc au plus le millésime de la veille : jamais d'information postérieure.
         rt = min(avant, datetime.now(timezone.utc).date() - timedelta(days=1))
         p.update(realtime_start=rt.isoformat(), realtime_end=rt.isoformat(), observation_end=avant.isoformat())
-    d = await _get("https://api.stlouisfed.org/fred/series/observations", p)
+    extra = {}
+    try:
+        d = await _get("https://api.stlouisfed.org/fred/series/observations", p)
+    except ErreurSource as e:
+        # 0.10.74 : certaines séries (marchés quotidiens sous licence, ex. SP500, banc du 2026-11-13) n'ont pas de
+        # millésimes ALFRED : FRED refuse la requête (400). On relit la série publiée aujourd'hui, toujours coupée à la
+        # date d'information (observation_end) ; le relevé le dit, car une révision postérieure a pu s'y glisser
+        # (sans effet pour une série de marché, qui n'est pas révisée).
+        if not avant or "400" not in str(e):
+            raise
+        p = {k: v for k, v in p.items() if k not in ("realtime_start", "realtime_end")}
+        d = await _get("https://api.stlouisfed.org/fred/series/observations", p)
+        extra["millesime"] = "indisponible : série publiée aujourd'hui, coupée à la date d'information"
     pts = [{"date": o["date"], "valeur": _num(o.get("value"))} for o in d.get("observations", [])]
-    return _releve("FRED" + (" (ALFRED, millésime)" if avant else ""), serie,
+    return _releve("FRED" + (" (ALFRED, millésime)" if avant and not extra else ""), serie,
                    f"https://fred.stlouisfed.org/series/{serie}", [x for x in pts if x["valeur"] is not None], avant,
-                   debut)
+                   debut, **extra)
 
 
 async def banque_mondiale(pays: str, indicateur: str, avant: date | None = None) -> dict:
@@ -1042,7 +1054,8 @@ def texte_releve(r: dict, n: int = 40) -> str:
     pts = r.get("points") or []
     tete = f"{r['source']} — {r['titre']} — {r['url']} ({len(pts)} points" + (
         f", du {pts[0]['date']} au {pts[-1]['date']}" if pts else "") + (
-        f" ; borné au {r['date_limite']}" if r.get("date_limite") else "") + ")"
+        f" ; borné au {r['date_limite']}" if r.get("date_limite") else "") + (
+        f" ; millésime {r['millesime']}" if r.get("millesime") else "") + ")"
     corps = []
     for p in pts[-n:]:
         bits = [f"[{p['date']}]"]
