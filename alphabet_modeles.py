@@ -50,11 +50,18 @@ async def sonder(modele: str, appel=None) -> dict:
     """Un appel minuscule ; rend {modele, disponible, json_ok, secondes, erreur}."""
     debut = time.monotonic()
     try:
+        # 0.10.59 : délai imposé par le bot lui-même. Le délai confié à la bibliothèque n'a pas été tenu (banc du
+        # 2026-11-13 : 44 minutes bloquées sur la sonde d'un modèle NVIDIA, sans erreur).
+        delai = float(os.environ.get("ALPHABET_SONDE_DELAI") or "90")
         if appel is None:
             from forecasting_tools import GeneralLlm
-            texte = await GeneralLlm(model=modele, temperature=0, timeout=60, allowed_tries=1).invoke(SONDE)
+            co = GeneralLlm(model=modele, temperature=0, timeout=60, allowed_tries=1).invoke(SONDE)
         else:
-            texte = await appel(modele, SONDE)
+            co = appel(modele, SONDE)
+        try:
+            texte = await asyncio.wait_for(co, delai)
+        except asyncio.TimeoutError:
+            raise TimeoutError(f"aucune réponse en {delai:.0f} s") from None
         ok = json_ok(texte)
         return {"modele": modele, "disponible": True, "json_ok": ok, "secondes": round(time.monotonic() - debut, 1),
                 "erreur": None if ok else f"réponse sans JSON valide : {str(texte)[:120]}"}

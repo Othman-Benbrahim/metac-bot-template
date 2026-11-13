@@ -150,6 +150,22 @@ class Tests(unittest.TestCase):
         e = ap.empreintes_passages(d, ex)
         self.assertEqual(e, [{"mot": "POL@7", "empreinte": r0["empreinte"]}, {"mot": "CTR@7", "empreinte": None}])
 
+    def test_sonde_delai_59(self):
+        # 0.10.59 : une sonde qui ne répond jamais est abandonnée au délai, avec une erreur passagère lisible
+        import asyncio, os
+        import alphabet_modeles as am
+
+        async def muet(modele, consigne):
+            await asyncio.sleep(30)
+        os.environ["ALPHABET_SONDE_DELAI"] = "0.2"
+        try:
+            r = asyncio.run(am.sonder("x/y", muet))
+        finally:
+            del os.environ["ALPHABET_SONDE_DELAI"]
+        self.assertFalse(r["disponible"])
+        self.assertIn("aucune réponse", r["erreur"])
+        self.assertTrue(am.passagere(r))
+
     def test_reparations_55(self):
         # 0.10.55 : rejet rendu en liste sans clé « carte » ; liaison d'une strate posée entre deux strates
         lec = {"rejets_classes": [{"mot": "INC", "strate": 7, "categorie": "aucun_fait", "motif": "x"},

@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.58 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.59 · skill alphabet-situationnel 0.7.75 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,10 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.59** : **délais imposés par le bot**. Le premier essai de DeepSeek V4.1 Flash (NVIDIA) est resté bloqué 44
+  minutes sur la sonde de disponibilité, sans erreur : le délai confié à la bibliothèque n'a pas été tenu. La sonde
+  abandonne maintenant à 90 s (`ALPHABET_SONDE_DELAI`) avec une erreur lisible (passagère : ressayée deux fois), et
+  au banc chaque appel au modèle abandonne à 600 s (`ALPHABET_APPEL_DELAI`), compté comme panne du harnais.
 - **0.10.58** : **test multi-lecteurs** (décision d'auteur du 2026-11-13). Le banc accepte deux entrées : `lecteur`
   (le modèle principal de CE passage : plan, lecture, bras A) et `memes_que` (relire les questions jouées par une
   version passée, ex. 0.10.55). Une question déjà lue par un autre codeur peut être relue ; le registre note le codeur
