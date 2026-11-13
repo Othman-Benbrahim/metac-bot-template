@@ -265,8 +265,14 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
     am.appliquer(choix)
     modele = ab.configuration().get("default")
 
+    delai_appel = float(os.environ.get("ALPHABET_APPEL_DELAI") or "600")
+
     async def llm(consigne: str) -> str:
-        return await modele.invoke(consigne)
+        # 0.10.59 : aucun appel ne peut bloquer le banc au-delà de ce délai ; le dépassement est une PANNE (harnais)
+        try:
+            return await asyncio.wait_for(modele.invoke(consigne), delai_appel)
+        except asyncio.TimeoutError:
+            raise TimeoutError(f"appel au modèle sans réponse en {delai_appel:.0f} s") from None
     jeux = [jeu] if jeu else jeux_candidats(date.today(), date.fromisoformat(apres))
     deja, faites, pannes_suite = ar.deja_faites(), 0, 0
     cibles = None
