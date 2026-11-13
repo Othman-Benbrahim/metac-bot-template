@@ -25,6 +25,7 @@ import math
 import re
 import os
 from pathlib import Path
+from datetime import date
 
 import alphabet_pipeline as ap
 
@@ -371,6 +372,41 @@ def accord_lecteurs(lignes: list[dict]) -> dict | None:
                for k in ("carte", "carte_type", "statut")},
             "lecture": "alpha de Krippendorff (nominal) ; ≥ 0,8 fiable, 0,67-0,8 provisoire, en dessous : les lecteurs "
                        "ne lisent pas la même structure. Le statut mêle lecture et conformité au format."}
+
+
+PETIT_GROUPE = 30
+
+
+def calibration_par_groupe(items: list[dict], dimensions: tuple[str, ...]) -> dict | None:
+    """0.10.75 (Decker et Tresp 2026, arXiv 2611.03592 ; fiche « Derrière les chiffres ») : une calibration correcte en
+    moyenne peut cacher de gros écarts par horizon ou par sous-groupe, et une correction globale ne les règle pas.
+    items = [{"B": p, "C": p ou None, "y": 0/1, "groupes": {dimension: valeur}}]. Pour chaque dimension et chaque
+    valeur : effectif, OUI observés, moyennes annoncées (calibration « en gros »), décomposition de Murphy (5 bacs) et
+    AUC de B et de C. En ombre, hors critère ; un groupe de moins de 30 questions est marqué « petit » : un écart y
+    peut n'être que du bruit."""
+    if not items:
+        return None
+    out = {}
+    for dim in dimensions:
+        vals: dict[str, list[dict]] = {}
+        for it in items:
+            v = (it.get("groupes") or {}).get(dim)
+            if v is not None:
+                vals.setdefault(str(v), []).append(it)
+        res = {}
+        for v, L in sorted(vals.items(), key=lambda t: -len(t[1])):
+            g = {"n": len(L), "oui": sum(it["y"] for it in L), "petit": len(L) < PETIT_GROUPE}
+            for bras in ("B", "C"):
+                pr = [(it[bras], it["y"]) for it in L if it.get(bras) is not None]
+                if not pr:
+                    continue
+                g[bras] = {"n": len(pr), "petit": len(pr) < PETIT_GROUPE, "moyenne_annoncee": round(sum(p for p, _ in pr) / len(pr), 3),
+                           "frequence_observee": round(sum(y for _, y in pr) / len(pr), 3),
+                           "murphy": partition_murphy(pr, 5) if len(pr) >= 10 else None,
+                           "auc": round(auc(pr), 3) if auc(pr) is not None else None}
+            res[v] = g
+        out[dim] = res
+    return out
 
 
 def ombres_auto(lignes: list[dict]) -> dict | None:
@@ -1003,6 +1039,24 @@ def scorer_retro(registre: Path) -> dict:
     sortie["ombre_absence"] = ombre_absence_suivi(nuls)
     sortie["accord_lecteurs"] = accord_lecteurs([x for x in intactes if x.get("banc") == "forecastbench"])
     sortie["ombres_auto"] = ombres_auto([x for x in intactes if x.get("banc") == "forecastbench"])
+    # 0.10.75 : calibration par sous-groupe (source, strate de l'événement, horizon, lecteur), en ombre
+    its = []
+    for x in intactes:
+        if x.get("issue") not in (0, 1) or x.get("p_B") is None:
+            continue
+        ex = x.get("exploratoire") or {}
+        pc = x.get("p_C") if x.get("p_C") is not None else ex.get("p_C")
+        ev = ((x.get("rejeu") or {}).get("plan") or {}).get("evenement") or {}
+        parts = str(x.get("question_id", "")).split(":")
+        try:
+            h = (date.fromisoformat(parts[-1][:10]) - date.fromisoformat(parts[1])).days if len(parts) >= 5 else None
+        except ValueError:
+            h = None
+        its.append({"B": float(x["p_B"]), "C": float(pc) if pc is not None else None, "y": int(x["issue"]),
+                    "groupes": {"source": parts[2] if len(parts) >= 5 else x.get("banc"),
+                                "strate": ev.get("strate"), "horizon_jours": h,
+                                "lecteur": (x.get("modeles") or {}).get("principal")}})
+    sortie["calibration_par_groupe"] = calibration_par_groupe(its, ("source", "strate", "horizon_jours", "lecteur"))
     if len(paires_c) >= 2:
         b = ajuster_decalage(paires_c)
         gains = []
@@ -1207,6 +1261,23 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
         nat = cx.get("nature_etat_nul") or "non_renseignee"
         etats_nuls.setdefault(nat, []).append((ap.borner(x["bras"]["B"]["p"]), issues[x["question_id"]],
                                                x["bras"]["A"].get("p")))
+    its_m = []                                        # 0.10.75 : calibration par sous-groupe (horizon, strate)
+    for x in resolues:
+        pb = x["bras"]["B"].get("p")
+        if pb is None:
+            continue
+        cx = x["bras"]["C"]
+        pc = cx.get("p_C") if cx.get("p_C") is not None else (cx.get("exploratoire") or {}).get("p_C")
+        try:
+            h = (date.fromisoformat(str(x.get("resolution_prevue"))[:10])
+                 - date.fromisoformat(str(x.get("date_information"))[:10])).days
+            h = "≤ 30 j" if h <= 30 else "31-90 j" if h <= 90 else "91-365 j" if h <= 365 else "> 365 j"
+        except ValueError:
+            h = None
+        ev = cx.get("evenement") or {}
+        its_m.append({"B": pb, "C": pc, "y": issues[x["question_id"]],
+                      "groupes": {"horizon": h, "strate": ev.get("strate") if isinstance(ev, dict) else None}})
+    calib_groupes = calibration_par_groupe(its_m, ("horizon", "strate"))
     suivi_nuls_ombre = ombre_absence_suivi([(x["bras"]["C"].get("ombre_absence"), x["bras"]["B"]["p"],
                                               issues[x["question_id"]], x.get("version_bot"))
                                              for x in resolues if x["bras"]["C"].get("statut") == "etat_nul"
@@ -1309,6 +1380,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                               for c in ("tous", "exacte", "proche")
                               if any(c == "tous" or p["_corr"] == c for p, _ in comptes)} or None),
             "statuts_alphabet": statuts,
+            "calibration_par_groupe": calib_groupes,
             "etats_nuls": {"par_nature": suivi_nuls, "ombre_absence": suivi_nuls_ombre,
                            "lecture": "structure_absente = candidates écartées sur pièces ; angle_mort = au moins une "
                                       "candidate non vraiment cherchée, même après relance. gain_B_sur_A positif : le "

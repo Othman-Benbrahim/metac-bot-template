@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.74 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.75 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.75** : **calibration par sous-groupe**, en ombre (Decker et Tresp 2026, arXiv 2611.03592 : une calibration
+  correcte en moyenne peut cacher de gros écarts par horizon ou par sous-groupe). Banc : par source, strate de
+  l'événement, horizon, lecteur ; bot Metaculus : par horizon (≤ 30 j, 31-90, 91-365, > 365) et strate. Pour B et C :
+  effectif, moyenne annoncée contre fréquence observée, Murphy (5 bacs), AUC ; groupe de moins de 30 marqué « petit ».
+  Le banc ne joue qu'un horizon (7 jours, premier horizon résolu de chaque question) : pas de mélange d'horizons.
 - **0.10.74** : **FRED sans millésime** (banc du 2026-11-13 : SP500 refusé en 400, seul échec FRED du registre ; la
   clé fonctionne pour les autres séries). Quand FRED refuse le millésime ALFRED, la série publiée aujourd'hui est
   relue, coupée à la date d'information, et le relevé le dit (« millésime indisponible »).
