@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.76 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.77 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.77** : **strate illisible** : le contre-exemple trouvé par les tests par propriétés est corrigé. Un mot dont la
+  strate reste illisible après normalisation est retiré par le réparateur, et la réparation est tracée ; la lecture
+  continue avec les autres mots au lieu de tomber entière.
 - **0.10.76** : **tests par propriétés** (`tests/test_proprietes.py`, Hypothesis, dépendance de développement). Des
   centaines de dossiers tirés au hasard contre les règles affirmées par le code : le réparateur ne fait qu'affaiblir ;
   la combinaison publiée reste une probabilité et ne baisse jamais quand on ajoute une source (matrice à λ ≥ 1, freins
