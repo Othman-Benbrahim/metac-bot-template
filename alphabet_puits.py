@@ -10,7 +10,7 @@
 Chaque connecteur rend un relevé : {"source", "titre", "url", "debut", "points": [{"date", "valeur", "titre", "url",
 "extrait"}]}. Un connecteur sans sa clé lève `SansCle` : il est sauté, jamais bloquant.
 
-Clés (secrets GitHub) : FRED_API_KEY, FIRMS_MAP_KEY, UCDP_TOKEN (en attente), BLS_API_KEY (facultative).
+Clés (secrets GitHub) : FRED_API_KEY, FIRMS_MAP_KEY, UCDP_TOKEN (reçue le 2026-11-13 ; 5 000 requêtes par jour), BLS_API_KEY (facultative).
 Toutes les autres sources sont sans clé.
 """
 from __future__ import annotations
@@ -274,9 +274,10 @@ async def fts(pays: str, annees: list[int] | None = None, avant: date | None = N
 
 async def ucdp(pays: str | None = None, debut: str = "2015-01-01", version: str | None = None,
                avant: date | None = None) -> dict:
-    """UCDP GED (événements de violence, morts estimés). Exige UCDP_TOKEN : en attente, sauté sans lui."""
+    """UCDP GED (événements de violence, morts estimés). Exige UCDP_TOKEN (en-tête x-ucdp-access-token ; 5 000 requêtes
+    par jour, chaque page compte, erreurs comprises) ; sauté sans lui."""
     jeton = _cle("UCDP_TOKEN")
-    v = version or os.environ.get("UCDP_VERSION") or "25.1"
+    v = version or os.environ.get("UCDP_VERSION") or "26.1"   # 0.10.65 : version donnée par UCDP avec la clé
     p = {"pagesize": 1000, "StartDate": debut, "EndDate": (avant or date.today()).isoformat()}
     if pays:
         p["Country"] = pays
