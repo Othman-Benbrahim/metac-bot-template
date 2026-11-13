@@ -1,0 +1,1927 @@
+{
+  "calcule_le": "2026-11-13T20:11:00+00:00",
+  "version_skill": "0.7.76",
+  "version_bot": "0.10.71",
+  "modele": "bedrock/global.anthropic.claude-sonnet-4-6",
+  "strate": 7,
+  "graines": [
+    84,
+    95
+  ],
+  "consigne_lecteur_sha256": "8b499e60d4ca0a72c02bf286efea97858d5ade4505f4a48a5f9904b5e7185074",
+  "reserve": "si narrateur et lecteur sont de la même famille : borne optimiste de la sensibilité (§43)",
+  "resultat": {
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "corrobores": {
+        "cartes": 14,
+        "sens_F": 0.2143,
+        "sens_f": 0.5714,
+        "sens": 0.7857
+      },
+      "source_unique": {
+        "cartes": 14,
+        "sens_F": 0.0714,
+        "sens_f": 0.5,
+        "sens": 0.5714
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 20,
+        "presentes_non_montrees": 6
+      },
+      "sens_F": 0.1429,
+      "sens_f": 0.5357,
+      "sens": 0.6786,
+      "fp_F": 0.0,
+      "fp_f": 0.0714,
+      "fp": 0.0714,
+      "perturbations": {
+        "effacement_des_noms": {
+          "avec_noms": {
+            "situations": 12,
+            "sens": 0.6786,
+            "sens_F": 0.1429,
+            "fp": 0.0714
+          },
+          "sans_noms": {
+            "situations": 12,
+            "sens": 0.7143,
+            "sens_F": 0.1429,
+            "fp": 0.25
+          },
+          "accord_jaccard_moyen": 0.5486,
+          "lecture": "lecture qui change sans les noms : le lecteur s'appuie sur le vocabulaire, pas sur les marqueurs"
+        },
+        "reflexion": {
+          "sans_reflexion": {
+            "situations": 12,
+            "sens": 0.6786,
+            "sens_F": 0.1429,
+            "fp": 0.0714
+          },
+          "avec_reflexion": {
+            "situations": 12,
+            "sens": 0.6786,
+            "sens_F": 0.25,
+            "fp": 0.1429
+          },
+          "accord_jaccard_moyen": 0.6063,
+          "lecture": "si la réflexion baisse les faux positifs ou monte la sensibilité, une partie des erreurs vient de la lecture en une passe, sans retour possible (Goedecke 2025)"
+        },
+        "depeches_parasites": {
+          "avec": {
+            "situations": 2,
+            "sens": 0.2,
+            "sens_F": 0.0,
+            "fp": 0.2
+          },
+          "sans": {
+            "situations": 10,
+            "sens": 0.7826,
+            "sens_F": 0.1739,
+            "fp": 0.0435
+          }
+        }
+      }
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 34,
+    "cartes_absentes": 48,
+    "mesure": {
+      "sens_F": 0.1176,
+      "sens_f": 0.4706,
+      "sens": 0.5882,
+      "fp_F": 0.0,
+      "fp_f": 0.2292,
+      "fp": 0.2292
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 11,
+      "aucun_fait": 2,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 2,
+    "situations_vides": 2,
+    "par_carte": {
+      "COM": {
+        "presente": 3,
+        "lue_si_presente": 2,
+        "absente": 5,
+        "lue_si_absente": 0
+      },
+      "CRO": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 4,
+        "lue_si_absente": 0
+      },
+      "CTR": {
+        "presente": 4,
+        "lue_si_presente": 4,
+        "absente": 0,
+        "lue_si_absente": 0
+      },
+      "EME": {
+        "presente": 2,
+        "lue_si_presente": 0,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "HIE": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "INC": {
+        "presente": 1,
+        "lue_si_presente": 1,
+        "absente": 4,
+        "lue_si_absente": 2
+      },
+      "PER": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 4,
+        "lue_si_absente": 1
+      },
+      "POL": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 5,
+        "lue_si_absente": 2
+      },
+      "PRO": {
+        "presente": 2,
+        "lue_si_presente": 1,
+        "absente": 2,
+        "lue_si_absente": 0
+      },
+      "RCS": {
+        "presente": 2,
+        "lue_si_presente": 2,
+        "absente": 3,
+        "lue_si_absente": 0
+      },
+      "REC": {
+        "presente": 0,
+        "lue_si_presente": 0,
+        "absente": 3,
+        "lue_si_absente": 1
+      },
+      "RES": {
+        "presente": 3,
+        "lue_si_presente": 2,
+        "absente": 4,
+        "lue_si_absente": 3
+      },
+      "RSN": {
+        "presente": 1,
+        "lue_si_presente": 0,
+        "absente": 6,
+        "lue_si_absente": 1
+      },
+      "SEU": {
+        "presente": 4,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 1
+      },
+      "TRA": {
+        "presente": 4,
+        "lue_si_presente": 1,
+        "absente": 1,
+        "lue_si_absente": 0
+      },
+      "TRC": {
+        "presente": 4,
+        "lue_si_presente": 2,
+        "absente": 2,
+        "lue_si_absente": 0
+      }
+    }
+  },
+  "triplets": {
+    "n": 0,
+    "ecartes_erreur_narrateur": 10
+  },
+  "situations": [
+    {
+      "graine": 84,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "EME@7",
+        "RCS@7",
+        "SEU@7",
+        "TRA@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "INC@7",
+        "PER@7",
+        "RES@7",
+        "RSN@7",
+        "TRC@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-17] La Lusarne déploie des patrouilles navales supplémentaires — https://tribune-de-kossmar.example/patrouilles-navales\nLe gouvernement lusarnais annonce le déploiement de trois nouvelles corvettes dans sa zone économique exclusive. À Aurinia, le ministre de la Défense confirme le maintien en alerte des brigades frontalières 4 et 7. Le Président lusarnais, Armand Vexel, présidera une réunion du conseil de sécurité nationale demain. Son homologue aurinien, Elara Soren, effectue une visite d'inspection dans la région nord-est.\n\n[2026-09-19] Aurinia annonce une taxe d'ancrage pour les navires lusarnais — https://gazette-de-corvus.example/taxe-ancrage\nLe ministère aurinien des Finances a instauré une taxe d'ancrage de 50 000 écus par jour pour tout navire de commerce lusarnais utilisant les ports auriniens. Les autorités lusarnaises ont déclaré que le coût de leur retour vers leurs ports d'attache, nécessitant un convoi militaire, serait sans commune mesure avec le coût de l'aller effectué sous escorte réduite.\n\n[2026-09-21] La flotte commerciale lusarnaise immobilisée à Senne — https://le-veilleur-du-nord.example/flotte-immobilisee\nSept cargos battant pavillon lusarnais sont actuellement à quai dans le port aurinien de Senne. Le commandant du cargo \"Etoile du Nord\" a déclaré à nos reporters : \"Nous attendons des instructions de notre gouvernement. Les frais d'ancrage s'accumulent.\" Les armateurs estiment le coût quotidien total de l'immobilisation à 350 000 écus.\n\n[2026-09-23] Les patrouilles frontalières s'intensifient selon un horaire précis — https://presse-libre-de-senne.example/patrouilles-horaire\nDepuis cinq jours, les passages de véhicules blindés lusarnais sur la route RN12, face au poste frontière aurinien de Kellen, sont observés à 08h00, 14h00 et 20h00. Les garde-frontières auriniens effectuent des rotations d'observation systématiques trente minutes après chaque passage. Aucun des deux gouvernements n'a publié de décision établissant ce rythme.\n\n[2026-09-28] Lusarne tente une manœuvre aérienne, Aurinia ferme son espace — https://depeche-continentale.example/manoeuvre-bloquee\nDeux avions de chasse lusarnais de type M-21 se sont approchés de la frontière aérienne aurinienne ce matin à 10h17. Le contrôle militaire aurinien a émis un avertissement et déployé ses propres chasseurs en interception. Les appareils lusarnais ont fait demi-tour. Le ministre aurinien de la Défense a ensuite déclaré : \"Toute incursion, même temporaire, est explicitement exclue.\"\n\n[2026-09-29] Le terminal ferroviaire frontalier d'Ostrave atteint sa capacité maximale — https://echo-des-capitales.example/saturation-ferroviaire\nLe terminal de fret d'Ostrave, principal point de transit ferroviaire entre la Lusarne et l'Aurinia, a annoncé avoir atteint sa capacité de stockage maximale de 120 wagons. Aucun nouveau wagon en provenance de Lusarne ne peut être accepté. Une file d'attente de 45 wagons s'est formée côté lusarnais, longueur identifiée comme la limite physique de la voie d'accès.\n\n[2026-10-02] 45 wagons lusarnais en attente à la frontière d'Ostrave — https://courrier-du-reth.example/attente-wagons\nLa compagnie des chemins de fer lusarnais confirme que 45 wagons de fret, chargés de produits manufacturés, sont immobilisés sur la voie d'approche du terminal d'Ostrave. Un responsable aurinien des douanes a déclaré : \"Nous traitons les wagons déjà dans le terminal selon notre procédure habituelle.\" La saturation du terminal a été signalée il y a 72 heures.\n\n[2026-10-03] Un rapport sur la vulnérabilité logistique modifie les flux commerciaux — https://agence-meridia.example/rapport-flux\nL'agence de renseignement économique aurinienne a publié un rapport identifiant les nœuds ferroviaires frontaliers comme des points de vulnérabilité stratégique. Dès le lendemain, les exportateurs auriniens de produits agricoles ont massivement reporté leurs envois vers la Lusarne sur des routes routières secondaires, modifiant les flux décrits dans l'analyse.\n\n[2026-10-06] Report du trafic ferroviaire vers les axes routiers après la publication d'une analyse — https://observateur-ostrave.example/report-routier\nLe trafic de poids lourds sur l'axe routier secondaire RV7 a augmenté de 40% en 48 heures. Un convoyeur a déclaré sous couvert d'anonymat : \"On nous a recommandé de ne plus miser sur le rail frontalier après ce rapport.\" Le rapport en question, publié par les services auriniens, pointait la vulnérabilité des nœuds ferroviaires.\n\n[2026-10-07] Les convois routiers adaptent leur itinéraire étape par étape — https://journal-de-velhaven.example/convois-etapes\nDes convois routiers auriniens à destination de la Lusarne observent désormais un nouveau protocole. Ils se rassemblent d'abord au point de contrôle Alpha, à 20 km de la frontière. Après inspection, ils rejoignent le point Bêta, à 5 km. Enfin, ils attendent un signal lumineux vert du poste frontalier de Kellen pour le franchissement final. Ces étapes intermédiaires étaient absentes il y a une semaine.\n\n[2026-10-10] Nouveau protocole en trois étapes pour le franchissement routier à Kellen — https://agence-meridia.example/protocole-kellen\nLe temps d'attente moyen au point de rassemblement Alpha est de 90 minutes. Un chauffeur a fourni le code radio désormais exigé à l'arrivée au point Bêta : \"Fox-trot-niner\". Le signal lumineux au poste de Kellen alterne entre rouge et vert par séquences de 10 minutes. Ce processus en étapes distinctes a été instauré le 5 octobre.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Lusarne",
+          "Aurinia"
+        ],
+        "organisation": null,
+        "corrobores": [
+          "CRO@7",
+          "RCS@7",
+          "SEU@7",
+          "TRA@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-17",
+            "carte": null,
+            "marqueur": null,
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "le-veilleur-du-nord",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-28",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue",
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "CRO@7",
+            "marqueur": "une limite identifiée ou une saturation visible sur une grandeur qui croît",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "CRO@7",
+            "marqueur": "une limite identifiée ou une saturation visible sur une grandeur qui croît",
+            "media": "courrier-du-reth",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "RCS@7",
+            "marqueur": "un discours, une mesure, un modèle ou une analyse du système sur lui-même est observable, et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-06",
+            "carte": "RCS@7",
+            "marqueur": "un discours, une mesure, un modèle ou une analyse du système sur lui-même est observable, et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)",
+            "media": "observateur-ostrave",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-07",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-10",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "agence-meridia",
+            "reprise": true
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Istrane"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "PER@7",
+          "RES@7",
+          "RSN@7",
+          "TRC@7"
+        ],
+        "presentes_non_montrees": [
+          "TRA@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "F",
+        "SEU@7": "f",
+        "INC@7": "f",
+        "PER@7": "f",
+        "RCS@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli",
+        "TRC@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "CTR@7": "F",
+          "EME@7": "f",
+          "INC@7": "f",
+          "SEU@7": "f",
+          "RES@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "RCS@7",
+        "ancrees_leurre": {
+          "CTR@7": "f",
+          "INC@7": "f",
+          "SEU@7": "f"
+        },
+        "texte_leurre": "[2026-09-17] La Lusarne et l'Aurinia — https://tribune-de-kossmar.example/relations-actuelles\nLe Premier ministre de Lusarne, Elias Voss, a présidé une réunion sur la politique commerciale. La Chancelière d'Aurinia, Klara Reinhardt, a visité un port de commerce. Le ministre des Affaires étrangères de Lusarne, Anton Greve, a publié un communiqué sur les échanges transfrontaliers. L'armée aurinienne a annoncé la fin d'un exercice militaire de routine près de ses frontières nord. Le gouvernement de Lusarne a approuvé l'achat de cinq nouveaux patrouilleurs pour sa garde-côtes.\n\n[2026-09-19] Surcoût inattendu pour le fret ferroviaire Lusarne-Aurinia — https://gazette-de-corvus.example/fret-surcout\nLe ministère aurinien des Transports a publié ses tarifs douaniers révisés pour octobre. Le coût pour un wagon standard traversant de Lusarne vers Aurinia reste à 480 écus. Le coût pour le même wagon effectuant le trajet inverse, d'Aurinia vers Lusarne, passe à 2 150 écus. Aucune justification officielle n'a été fournie par les autorités auriniennes. Les transporteurs luxarnais parlent d'un « tarif dissuasif ».\n\n[2026-09-21] Les exportateurs luxarnais confrontés à des frais de retour multipliés par quatre — https://le-veilleur-du-nord.example/tarifs-douaniers\nLe syndicat des transitaires de Lusarne a confirmé le nouveau tarif douanier aurinien. Un communiqué du ministère aurinien du Commerce, daté d'hier, indique : « Les ajustements tarifaires répondent à des impératifs logistiques nationaux ». Le montant précisé pour un wagon quittant Aurinia est de 2 150 écus, contre 480 écus à l'entrée. Plusieurs sociétés de fret ont suspendu leurs rotations aller-retour.\n\n[2026-09-23] La fermeture systématique du poste frontalier de Kellen après 20h — https://presse-libre-de-senne.example/fermeture-frontiere\nDepuis le 12 septembre, le poste frontalier principal de Kellen ferme ses portes à 20h00 précises chaque soir. Aucun communiqué, décret ou ordre de service n'a institué cette fermeture. Les douaniers des deux côtés appliquent cette fermeture sans explication formelle. La veille, le passage était encore possible jusqu'à minuit. Les camions font désormais la queue dès 19h00.\n\n[2026-09-28] La Lusarne tente d'expulser un diplomate aurinien, sans succès — https://depeche-continentale.example/expulsion-avortee\nLe ministère luxarnais des Affaires étrangères a convoqué l'ambassadeur d'Aurinia pour lui remettre une note d'expulsion contre un attaché militaire. L'ambassadeur a refusé de recevoir la note, invoquant un « défaut de forme procédurale ». Le ministre Anton Greve a déclaré en conférence de presse : « L'option de l'expulsion unilatérale est explicitement exclue pour l'instant. Nous examinerons d'autres canaux. »\n\n[2026-09-29] Le nombre de navires de guerre auriniens en mer d'Estrie atteint un plafond — https://echo-des-capitales.example/patrouilles-navales\nLe ministère de la Défense de Lusarne a publié son relevé quotidien d'activités navales. Il compte 12 corvettes auriniennes présentes dans la zone économique exclusive contestée de la mer d'Estrie. Ce chiffre est stable depuis six jours, après une augmentation régulière depuis août. Un porte-parole a noté : « Nous observons une saturation visible. Ils ne peuvent physiquement pas en ajouter davantage sans se gêner mutuellement. »\n\n[2026-10-02] La flottille aurinienne stationnaire en mer d'Estrie — https://courrier-du-reth.example/saturation-navale\nLes services de renseignement luxarnais confirment la présence continue de 12 bâtiments de guerre auriniens en mer d'Estrie. L'amiral aurinien Kessler a déclaré à la radio nationale : « Notre dispositif de présence souveraine est désormais complet et optimal ». Les images satellite montrent les navires répartis sur une zone de 200 km². Aucun nouveau navire n'a rejoint la formation depuis le 23 septembre.\n\n[2026-10-03] Une analyse conjointe des tensions annoncée, puis mise en suspens — https://agence-meridia.example/analyse-conjointe\nLes ministres des Affaires étrangères de Lusarne et d'Aurinia ont évoqué, lors d'un appel téléphonique, la possibilité de commander une analyse indépendante sur l'escalade récente. Ils ont proposé de confier cette étude à un institut de recherche neutre. Le communiqué conjoint précise que cette analyse « viserait à objectiver les dynamiques à l'œuvre ». La décision de lancer effectivement cette étude est reportée à une date ultérieure non précisée.\n\n[2026-10-06] Le projet d'étude sur les tensions attend les noms des experts — https://observateur-ostrave.example/projet-etude-en-attente\nLe gouvernement luxarnais a proposé une liste de cinq experts internationaux potentiels pour l'étude conjointe évoquée le 3 octobre. L'Aurinia n'a pas encore répondu. Le porte-parole du ministère aurinien a déclaré : « Nous examinons les profils. La crédibilité de l'analyse dépendra entièrement de la composition du panel. » Aucun contrat n'a été signé, aucun financement débloqué.\n\n[2026-10-07] Les quotas d'importation de blé luxarnais par l'Aurinia réduits par paliers — https://journal-de-velhaven.example/quota-ble-paliers\nL'administration aurinienne a notifié ses nouveaux quotas d'importation de blé luxarnais pour le trimestre. Le quota passe de 100 000 tonnes à 75 000 tonnes en octobre, puis à 50 000 tonnes en novembre, et enfin à 25 000 tonnes en décembre. Chaque réduction est annoncée par un avis officiel distinct, publié le premier de chaque mois. Le quota de janvier 2027 n'a pas encore été communiqué.\n\n[2026-10-10] Réduction programmée des importations auriniennes de blé luxarnais — https://agence-meridia.example/programme-reduction-ble\nLe ministère aurinien de l'Agriculture a publié le détail de son échéancier de restriction sur le blé luxarnais. L'avis indique un quota d'importation de 75 000 tonnes pour octobre, chiffre qui sera divisé par deux en novembre. Un fonctionnaire a précisé : « La réduction à 25 000 tonnes est prévue pour décembre, sous réserve de l'évolution de notre production nationale. » L'étape d'octobre est déjà en vigueur.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "INC@7",
+            "RES@7",
+            "TRC@7"
+          ],
+          "presentes_non_montrees": [
+            "TRA@7"
+          ]
+        },
+        "leurre_rate_par_narrateur": false,
+        "ancrees_accord": {
+          "SEU@13": "f",
+          "RCS@13": "f",
+          "CTR@13": "f",
+          "INC@13": "f",
+          "COM@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-17] Le gouvernement présente son projet de loi sur la durée du travail — https://le-veilleur-du-nord.example/gouv-projet-loi-travail\nLe gouvernement de Telkhoun, dirigé par la Première ministre Elara Voss, a déposé un projet de loi visant à augmenter la durée légale hebdomadaire de travail à 42 heures. Le Parti de l’Alliance Démocratique (PAD), majoritaire au Parlement, soutient la proposition. Le Parti de l’Union Sociale et Écologique (PUSE) s’y oppose. La Confédération des Syndicats Unis (CSU) a annoncé une journée de consultation de ses affiliés. Les députés entameront l'examen du texte la semaine prochaine.\n\n[2026-09-22] La CSU chiffre le coût d’une grève pour ses adhérents — https://journal-de-velhaven.example/csu-cout-greve-adherents\nLa Confédération des Syndicats Unis a publié une estimation des pertes de salaire pour une journée de grève générale, évaluée à 55 euros en moyenne par adhérent. Le syndicat a simultanément annoncé la création d’une caisse de solidarité, dont le financement initial nécessiterait une cotisation exceptionnelle de 5 euros par membre. Un porte-parole a déclaré : « Le coût du retour sans commune mesure avec le coût de l'aller. Organiser une mobilisation durable est financièrement bien plus lourd que lancer un simple appel. »\n\n[2026-09-23] La caisse de grève de la CSU nécessite une cotisation exceptionnelle — https://courrier-du-reth.example/caisse-greve-cotisation-exceptionnelle\nPour financer sa nouvelle caisse de solidarité en vue d’éventuels mouvements sociaux prolongés, la Confédération des Syndicats Unis demande une contribution de 5,50 euros à chacun de ses 800 000 membres déclarés. Le trésorier du syndicat, Marcus Jol, a confirmé ce chiffre lors d’une conférence de presse. Il a ajouté que sans ce fonds, « soutenir une grève au-delà de deux jours deviendrait intenable pour de nombreux travailleurs ».\n\n[2026-09-24] Un classement parlementaire modifie la stratégie des députés — https://agence-meridia.example/classement-parlementaire-strategie\nL’Observatoire des Votes a publié son indice mensuel de cohésion des groupes parlementaires. Le Parti de l’Alliance Démocratique, noté à 89%, a immédiatement durci son discours, menaçant d’exclure les députés qui s’écarteraient de la ligne sur le projet de loi travail. Deux élus du PAD ont annoncé reporter leur décision de vote, citant explicitement leur souci de ne pas dégrader le score du groupe. Le PUSE, noté à 95%, a vu ses membres multiplier les amendements identiques pour préserver son classement.\n\n[2026-09-25] Les permanences des députés du PAD saturées d’appels — https://presse-libre-de-senne.example/permanences-deputes-pad-saturees\nLes permanences parlementaires des députés du Parti de l’Alliance Démocratique signalent une saturation. Le bureau du député de la 7ème circonscription a enregistré 1247 appels en trois jours concernant le projet de loi travail, contre une moyenne habituelle de 200. Son équipe a annoncé ne plus pouvoir prendre de nouveaux rendez-vous en présentiel avant dix jours. La ligne téléphonique dédiée de la permanence de la 12ème circonscription est continuellement occupée.\n\n[2026-09-26] Files d’attente et standard saturé chez les élus de la majorité — https://observateur-ostrave.example/files-attente-standard-sature\nDans la 3ème circonscription, plus de cinquante personnes font la queue quotidiennement devant la permanence du député PAD. Son assistant a déclaré : « Nous recevons plus de 400 courriels par heure sur ce sujet, notre serveur plante régulièrement. » La cellule de crise du groupe parlementaire PAD a reconnu que seize permanences sur quarante-deux avaient dû fermer leurs portes au public en raison d’une affluence inédite.\n\n[2026-10-03] Le PUSE adopte la stratégie de consultation en ligne du PAD — https://tribune-de-kossmar.example/puse-consultation-ligne-strategie-pad\nLe Parti de l’Union Sociale et Écologique a lancé une plateforme en ligne pour consulter ses adhérents sur la tactique parlementaire à suivre, une méthode utilisée avec succès par le PAD le mois dernier. La Première ministre Voss a immédiatement annoncé une consultation en ligne ouverte à tous les citoyens sur « les valeurs du travail ». Trois syndicats minoritaires ont à leur tour ouvert des questionnaires en ligne à leurs membres dans les 24 heures.\n\n[2026-10-07] Plus de 200 000 participants à la consultation gouvernementale en ligne — https://gazette-de-corvus.example/200000-participants-consultation-gouvernement\nLa consultation en ligne sur « les valeurs du travail » lancée par la Première ministre a recueilli 214 000 contributions en quatre jours. Le ministre du Travail a salué cette « démocratie en direct ». Le PUSE a révélé que 78% des 45 000 participants à sa propre plateforme avaient voté pour une motion de rejet pur et simple du projet de loi. Le syndicat des Transports a annoncé que 92% des 15 000 votes sur son site soutenaient l’action de grève.\n\n[2026-10-10] La CSU maintient son cap tout en adaptant ses modalités d’action — https://echo-des-capitales.example/csu-maintient-cap-adaptant-modalites\nLa Confédération des Syndicats Unis maintient son opposition au projet de loi sur la durée du travail, son invariant déclaré. Son état de départ était une grève générale d’un jour. L’état en cours est une grève tournante par secteur, couplée à des rassemblements quotidiens devant le Parlement. Le secrétaire général a affirmé : « L’objectif est inchangé : faire retirer le texte. Seule la méthode évolue pour durer. »\n\n[2026-10-11] Grèves tournantes et piquets devant le Parlement — https://depeche-continentale.example/greves-tournantes-piquets-parlement\nLe syndicat de la métallurgie, affilié à la CSU, a débuté une grève de 48 heures, premier épisode d’un plan de grèves tournantes. Parallèlement, 300 militants syndicaux stationnent en permanence devant l’Assemblée nationale. Un porte-parole de la CSU a répété : « Notre exigence, le retrait du projet, est constante. Nous alternons maintenant les secteurs en grève pour préserver la capacité de mobilisation. » Le secteur de l’énergie doit suivre demain.\n\n[2026-10-12] Le calendrier parlementaire contraint les votes des députés — https://agence-meridia.example/calendrier-parlementaire-contraint-votes\nLe vote final sur le projet de loi travail est inscrit à l’ordre du jour du Parlement pour le 20 octobre. Cette date limite oblige le PUSE à déposer tous ses amendements avant le 14 octobre. Le groupe PAD a annulé deux déplacements de ses députés à l’étranger pour assurer leur présence au vote. La Première ministre a reporté la présentation d’un projet de loi sur l’éducation, initialement prévue le 19 octobre, en raison de cette contrainte de calendrier.\n\n[2026-10-13] Amendements en rafale et agenda ministériel modifié — https://courrier-du-reth.example/amendements-rafale-agenda-ministre-modifie\nLe Parti de l’Union Sociale et Écologique a déposé 147 amendements avant l’échéance du 14 octobre à minuit imposée par le calendrier parlementaire. Le ministre du Travail a annulé sa participation à trois réunions de travail thématiques la semaine prochaine pour se concentrer sur les séances à l’Assemblée. « La date du 20 octobre détermine toutes nos actions actuelles », a confirmé la présidente de la commission des Lois.",
+        "verification_accord": {
+          "absentes_montrees": [
+            "INC@13",
+            "RES@13",
+            "TRC@13"
+          ],
+          "presentes_non_montrees": []
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "CTR@7": "F",
+          "SEU@7": "f",
+          "PER@7": "f",
+          "EME@7": "f",
+          "INC@7": "f"
+        }
+      }
+    },
+    {
+      "graine": 85,
+      "presentes": [
+        "TRA@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "PRO@7",
+        "RSN@7"
+      ],
+      "evenement": "HIE@7",
+      "texte": "[2026-09-23] Le Premier ministre à Istrane accuse Granvie de « provocations frontalières » — https://observateur-ostrave.example/accusations-frontieres\nLe Premier ministre istranien, Karl Verner, a déclaré mercredi que « des véhicules militaires granviens ont franchi à trois reprises la ligne de démarcation dans le secteur de la Passe Nord ». Le ministère granvien des Affaires étrangères a répondu que ses troupes « effectuaient des patrouilles de routine sur leur propre territoire ». Aucun incident n'a été rapporté par les autorités frontalières.\n\n[2026-09-24] Granvie annonce le retrait de son ambassadeur pour « consultations » — https://journal-de-velhaven.example/retrait-ambassadeur\nLe gouvernement granvien a annoncé jeudi le rappel « immédiat » de son ambassadeur à Istrane, Sofia Reiner, « pour consultations approfondies ». Une source diplomatique granvienne indique que l'ambassadeur a été convoqué dans la nuit. Le ministère istranien des Affaires étrangères a pris acte de cette décision et a déclaré que son ambassadeur à Granvie, Henrik Foss, « poursuivait ses fonctions ».\n\n[2026-10-04] Istrane exige l'application du « Protocole de la Passe Nord » de 1991 — https://le-veilleur-du-nord.example/protocole-passe-nord\nLe ministre istranien de la Défense, Lena Jorstad, a exigé vendredi « la stricte application du Protocole de démilitarisation de la Passe Nord, signé le 12 novembre 1991 ». Elle a rappelé que ce texte limite la présence militaire dans un rayon de 5 km. Le porte-parole de l'armée granvienne a répondu que « les patrouilles actuelles respectent les termes de ce protocole ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Granvie",
+          "Istrane"
+        ],
+        "organisation": null,
+        "corrobores": [],
+        "depeches": [
+          {
+            "date": "2026-09-23",
+            "carte": null,
+            "marqueur": null,
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "TRA@7",
+            "marqueur": "étapes intermédiaires observées entre deux états décrits (pas seulement un avant/après)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Brenthie"
+      },
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": [
+          "TRA@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "PRO@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "TRC@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "TRC@7": "f",
+          "PRO@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "TRA@7",
+        "ancrees_leurre": {
+          "PRO@7": "f"
+        },
+        "texte_leurre": "[2026-09-23] Un changement commercial entre Granvie et Istrane — https://observateur-ostrave.example/changement-commercial\nLe Premier ministre de Granvie, Samuel Kael, et la Présidente d'Istrane, Livia Sorens, ont annoncé simultanément l'ajustement de leurs quotas d'importation d'acier et de bois d'œuvre. Les déclarations, faites depuis leurs capitales respectives, précisent que Granvie augmentera ses achats d'acier istranais de 15% et Istrane ses achats de bois granvien de 18%. Les ministres du Commerce des deux pays ont confirmé par écrit l'application immédiate de ces nouveaux volumes.\n\n[2026-09-24] Des discussions autour d'une révision des lignes de contrôle — https://journal-de-velhaven.example/discussions-frontieres\nLe ministre des Affaires étrangères de Granvie, Henrik Voss, a déclaré que des \"consultations techniques\" avec Istrane sur la cartographie des zones frontalières étaient \"en cours d'examen\". Son homologue istranaise, Elara Mirkova, a évoqué \"plusieurs scénarios de recalibrage\" nécessitant une \"série de vérifications sur le terrain\". Aucune date pour le début de ces vérifications n'a été communiquée. Les postes militaires des deux États restent à leurs positions actuelles.\n\n[2026-10-04] L'application maintenue du Protocole de vérification de 2001 — https://le-veilleur-du-nord.example/protocole-maintenu\nLes patrouilles navales de Granvie et d'Istrane en mer d'Émeraude ont procédé à un échange de données de trafic maritime selon le Protocole de vérification mutuelle, signé le 12 novembre 2001. Le ministère de la Défense d'Istrane a publié les fichiers échangés, formatés selon l'article 4 du protocole. Un porte-parole de la Marine granvienne a indiqué que cette procédure hebdomadaire \"reste conforme aux clauses originelles\".",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "PRO@7"
+          ],
+          "presentes_non_montrees": []
+        },
+        "leurre_rate_par_narrateur": false,
+        "ancrees_accord": {
+          "COM@13": "f",
+          "PRO@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-25] Gouvernement Kessarien en pleine session législative — https://gazette-de-corvus.example/gvt-session\nLe Premier Ministre Lior Vex préside un conseil des ministres hebdomadaire. Le Parti de l'Alliance Démocratique (PAD), majoritaire, détient 155 sièges sur 300 au Parlement de Kessaria. L'opposition est constituée par le Mouvement pour la Justice Sociale (MJS) avec 120 sièges. Trois syndicats, la Confédération des Travailleurs Kessariens (CTK), le Syndicat National des Services (SNS) et la Fédération des Fonctionnaires (FFK), annoncent des réunions de leurs bureaux directeurs cette semaine. Le taux de participation aux dernières élections législatives s'est établi à 61,4%.\n\n[2026-09-27] Le MJS soumet des amendements successifs au projet de loi sur le temps de travail — https://echo-des-capitales.example/amendements-mjs\nLes députés du Mouvement pour la Justice Sociale ont déposé un premier amendement au projet de loi gouvernemental, visant à limiter la durée du travail à 35 heures hebdomadaires. Après son rejet en commission, ils ont présenté une version modifiée proposant 37 heures. En séance plénière, un troisième amendement a été lu, introduisant une période de transition de cinq ans. Chaque texte a fait l'objet d'un vote séparé du Parlement, tous étant rejetés.\n\n[2026-09-27] Inauguration du nouveau stade de Telkhoun — https://agence-meridia.example/stade-telkhoun\nLes autorités municipales de Telkhoun ont inauguré le \"Stade de la Concorde\", d'une capacité de 45 000 places. Le maire a coupé le ruban tricolore à 15 heures précises. Le club de football local, le Telkhoun Athletic, y disputera son prochain match de championnat dimanche. Des milliers de personnes ont assisté à la cérémonie d'ouverture. Des groupes de musique locale ont joué pendant deux heures sur le terrain.\n\n[2026-10-07] Le projet de loi sur le temps de travail adopté après plusieurs modifications en séance — https://courrier-du-reth.example/loi-adoptee\nLe Parlement de Kessaria a adopté le projet de loi sur l'organisation du temps de travail avec 162 voix pour. Durant les débats, le MJS a fait voter un amendement introduisant une dérogation pour les entreprises de moins de 50 salariés. Le ministre du Travail, S. Kael, a déclaré : \"Ce texte est un équilibre\". Le vote final a suivi quatre heures de discussion technique sur les plafonds d'heures supplémentaires.\n\n[2026-10-10] Le débat fiscal relancé par la loi de 1998 sur les seuils d'effectifs — https://agence-meridia.example/debat-fiscal\nLes syndicats CTK et FFK demandent l'abrogation de la loi de 1998 qui fixe des taux d'imposition différents pour les entreprises selon qu'elles ont plus ou moins de 20 salariés. Le ministre de l'Économie, M. Duran, a déclaré que \"le cadre actuel reste pertinent\". Le MJS cite cette loi dans une proposition de résolution parlementaire déposée aujourd'hui. Le PAD rappelle que cette distinction est utilisée dans 12 dispositifs réglementaires actuels.\n\n[2026-11-06] Record de fréquentation pour l'exposition \"Lumières du Nord\" à Telkhoun — https://le-veilleur-du-nord.example/expo-lumieres\nL'exposition \"Lumières du Nord\" au Musée d'Art Moderne de Telkhoun a accueilli son 100 000e visiteur ce matin. L'artiste principale, Elara Vonn, était présente pour une séance de signature de catalogues. L'exposition présente 30 tableaux et 15 sculptures. Elle est ouverte de 10h à 18h tous les jours. La direction du musée a annoncé sa prolongation d'un mois en raison de son succès.",
+        "verification_accord": {
+          "absentes_montrees": [
+            "COM@13",
+            "PRO@13",
+            "RSN@13"
+          ],
+          "presentes_non_montrees": []
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "TRC@7": "f"
+        }
+      }
+    },
+    {
+      "graine": 86,
+      "presentes": [
+        "TRC@7"
+      ],
+      "absentes": [
+        "PER@7",
+        "REC@7",
+        "RSN@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-17] Le Conseil d'Istrane annonce une révision des quotas d'importation de minerais — https://depeche-continentale.example/istrane-quotas-minerais\nLe Conseil d'Istrane a publié hier un décret modifiant les quotas d'importation pour le fer, le cuivre et le cobalt. Le ministre du Commerce, Aron Vels, a déclaré : « Ces ajustements visent à sécuriser notre approvisionnement industriel. » À Draven, le ministre des Affaires étrangères, Lena Kovac, a réagi lors d’une conférence : « Nous examinerons l'impact de ces mesures sur nos exportations. » Les deux pays maintiennent des ambassades ouvertes dans leurs capitales respectives.\n\n[2026-09-22] Un violent orage s'abat sur la région de Kessaria — https://courrier-du-reth.example/orage-kessaria-dommages\nDes pluies diluviennes et des rafales de vent ont frappé la région côtière de Kessaria ce matin. Les pompiers ont effectué dix-sept interventions pour des arbres tombés sur la voie publique et des caves inondées. Une école primaire a dû évacuer son rez-de-chaussée. Les services météorologiques annoncent une accalmie pour la fin d'après-midi. Aucun blessé grave n’a été signalé.\n\n[2026-10-01] Les patrouilles navales se poursuivent dans le détroit de Kalmar — https://tribune-de-kossmar.example/patrouilles-detroit-kalmar\nUn navire de la marine d'Istrane et une frégate dravenoise ont été observés en patrouille dans le détroit de Kalmar ce lundi. Les deux bâtiments évoluaient selon le tracé défini par les accords de 1998, qui fixent les couloirs de navigation et les règles de prévention des abordages. Le commandant de la frégate dravenoise a déclaré par radio : « Nous suivons le protocole établi. » Ces accords n’incluent pas de clauses de consultation automatique.\n\n[2026-11-02] La finale régionale de bowling se joue à Kessaria — https://echo-des-capitales.example/finale-bowling-kessaria\nLa finale du championnat régional de bowling a eu lieu hier soir au Bowling Arc-en-Ciel de Kessaria. L'équipe « Les Flécheurs de l’Est » a remporté la rencontre avec un score de 1 245 points contre 1 189 pour les « Quilleurs du Port ». Le joueur Marco Silv a réalisé une série de sept strikes consécutifs. La salle était comble. Le trophée a été remis par le maire de la ville.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Istrane",
+          "Draven"
+        ],
+        "organisation": null,
+        "corrobores": [],
+        "depeches": [
+          {
+            "date": "2026-09-17",
+            "carte": null,
+            "marqueur": null,
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-22",
+            "carte": null,
+            "marqueur": null,
+            "media": "courrier-du-reth",
+            "reprise": false,
+            "parasite": true
+          },
+          {
+            "date": "2026-10-01",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-11-02",
+            "carte": null,
+            "marqueur": null,
+            "media": "echo-des-capitales",
+            "reprise": false,
+            "parasite": true
+          }
+        ],
+        "parasites": 2,
+        "pays_tiers": "Kessaria"
+      },
+      "verification": {
+        "absentes_montrees": [],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "PER@7": "aucun_fait",
+        "REC@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "TRC@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {}
+      },
+      "triplet": {
+        "carte_leurre": "TRC@7",
+        "ancrees_leurre": {},
+        "texte_leurre": "[2026-09-17] Istrane et Draven en discussions commerciales — https://depeche-continentale.example/istrane-draven-discussions\nLe ministre du Commerce d’Istrane, Pavel Goran, a rencontré son homologue dravenois, Elina Voss, à la frontière des deux pays. La rencontre a duré trois heures. Voss a déclaré : « Les échanges sont constructifs ». Goran a affirmé : « Nous examinerons les propositions ». Aucun accord n’a été signé. Les délégations ont quitté les lieux séparément à 18h00.\n\n[2026-09-22] Tempête sur la côte kessarienne — https://courrier-du-reth.example/tempete-cote-kessarienne\nDes vents atteignant 110 km/h ont frappé la région côtière de Kessaria ce matin. Les services météorologiques ont émis une alerte rouge à 05h00. Des rafales ont arraché des toitures dans le village de pêcheurs de Port-Levan. Quarante personnes ont été évacuées vers un centre communal. Les vents devraient faiblir en soirée.\n\n[2026-10-01] Draven évoque une révision des accords frontaliers — https://tribune-de-kossmar.example/draven-revision-accords\nLe ministre des Affaires étrangères de Draven, Lars Kael, a déclaré aujourd'hui : « Certains arrangements frontaliers hérités du passé ne reflètent plus les réalités économiques actuelles ». Il a annoncé qu'une « évaluation complète » serait soumise au parlement dravenois le mois prochain. Aucun détail concret sur les modifications envisagées n'a été fourni. Le gouvernement d’Istrane n'a pas encore commenté.\n\n[2026-11-02] Inauguration du nouveau stade de Val-Kessar — https://echo-des-capitales.example/inauguration-stade-val-kessar\nLe stade des Lumières, d'une capacité de 45 000 places, a ouvert ses portes à Val-Kessar. Le match inaugural a opposé l'équipe locale, le FC Val-Kessar, au club de Meridian. Le score final était de 2-1. Le maire de la ville a coupé le ruban symbolique devant une foule de 42 000 spectateurs. Les travaux avaient débuté il y a trois ans.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "TRC@7"
+          ],
+          "presentes_non_montrees": []
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {},
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-15] Le gouvernement dévoile son calendrier législatif — https://courrier-du-reth.example/calendrier-gouvernement\nLe Premier ministre de Félisie, Lise Marnier, a présenté l’ordre du jour parlementaire pour les six prochains mois. Le Parti de l’Avancée Démocratique (PAD), qui soutient le gouvernement, dispose de 215 sièges sur 400 à l’Assemblée. Le président du PAD, Serge Dolmont, a déclaré : « Notre priorité est le projet de loi sur la formation professionnelle ». Le Rassemblement pour la Félisie Unie (RFU), avec 142 sièges, a annoncé qu’il déposerait des amendements. La Confédération des Syndicats Félisiens (CSF) a publié un communiqué demandant une « revalorisation immédiate » des salaires dans le cadre de ce projet de loi.\n\n[2026-09-20] La réforme des retraites revient au débat parlementaire — https://observateur-ostrave.example/reforme-retraites-debat\nLe groupe RFU a déposé une proposition de loi pour abaisser l’âge légal de départ à 62 ans, contre 64 ans actuellement. La ministre du Travail, Clara Jens, a rappelé que « la loi de 2023 a instauré l’âge de 64 ans pour assurer l’équilibre financier ». Le président du RFU, Marc Verois, a affirmé : « Cette disposition de 2023 est un frein à la justice sociale ». Le secrétaire général de la CSF, Thomas Lenoir, a déclaré soutenir la proposition du RFU, évoquant « un héritage législatif dont nous subissons les effets ». Le groupe PAD a annoncé qu’il voterait contre ce texte.",
+        "verification_accord": {
+          "absentes_montrees": [],
+          "presentes_non_montrees": []
+        },
+        "accord_rate_par_narrateur": false
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "TRC@7": "f"
+        }
+      }
+    },
+    {
+      "graine": 87,
+      "presentes": [
+        "COM@7",
+        "CTR@7",
+        "RSN@7",
+        "SEU@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "HIE@7",
+        "PER@7",
+        "POL@7",
+        "PRO@7",
+        "RES@7"
+      ],
+      "evenement": "INC@7",
+      "texte": "[2026-09-15] Présentation des principaux acteurs régionaux — https://le-veilleur-du-nord.example/acteurs\nLe gouvernement de Félisie, dirigé par la Première ministre Éliane Valtin, compte 28 ministres. Son ministre des Affaires étrangères est Gaspard Royer. L'armée félisienne déploie 45 000 soldats. Draven est gouverné par le Président Armand Kovac, avec Silvia Mensah au poste de ministre de la Défense. Ses forces armées comptent 60 000 personnels. Le Pacte de défense de Corvus rassemble sept États membres. Son Secrétaire général est Lars Thorne. Le siège du Pacte est à Corvus.\n\n[2026-09-17] Draven suspend ses patrouilles aériennes conjointes avec Félisie — https://tribune-de-kossmar.example/patrouilles\nLe ministère de la Défense de Draven a annoncé aujourd'hui la suspension immédiate de ses patrouilles aériennes conjointes avec Félisie au-dessus du Détroit de Kelen. L'état de départ était une patrouille bihebdomadaire. L'état en cours est une patrouille hebdomadaire assurée uniquement par l'aviation félisienne. L'invariant conservé est la fréquence de survol du Détroit, maintenue à une fois par semaine.\n\n[2026-09-18] La délégation dravienne rebroussée chemin à la frontière — https://observateur-ostrave.example/frontiere\nUne délégation commerciale dravienne de cinq personnes s'est présentée au poste frontalier de Verne ce matin pour se rendre à Corvus. Les autorités félisiennes ont refusé leur passage, exigeant un visa de transit. La délégation a dû faire demi-tour vers Draven. Elle tentera de rejoindre Corvus demain par un vol direct depuis sa capitale, contournant ainsi le territoire félisien.\n\n[2026-09-19] La clause de 1995 sur les quotas d'acier reste un point de friction — https://journal-de-velhaven.example/acier\nLe ministre du Commerce de Félisie a rappelé aujourd'hui l'application de la clause fixée en 1995 limitant les importations d'acier draven à 150 000 tonnes par an. Cette disposition, négociée après la crise sidérurgique des années 90, continue de régir les échanges bilatéraux. Le ministre draven a déclaré que \"si l'on repartait d'une feuille blanche aujourd'hui, ce mécanisme serait totalement différent\".\n\n[2026-09-20] Draven dénonce le plafond \"historique\" sur ses exportations d'acier — https://courrier-du-reth.example/quota\nLe gouvernement draven a publié un communiqué qualifiant de \"déséquilibré\" le quota annuel de 150 000 tonnes pour ses exportations d'acier vers Félisie. Le texte précise que cette limite, héritée d'un accord de 1995, a été atteinte dès le mois d'août cette année, bloquant toute nouvelle exportation pour les quatre derniers mois. Le ministre Kovac a déclaré : \"Ce chiffre ne correspond plus à la réalité de notre production.\"\n\n[2026-09-24] Manœuvres navales synchronisées dans le Golfe de Karst — https://gazette-de-corvus.example/karst\nLes marines de Félisie et du Pacte de Corvus ont conduit des exercices navals dans le Golfe de Karst. Les navires félisiens effectuaient des rotations sur un cycle de 72 heures. Les bâtiments du Pacte suivaient un cycle de ravitaillement de 48 heures. Aujourd'hui à 14h00, les deux flottes ont aligné leurs cycles pour exécuter simultanément une série de tirs d'artillerie et un exercice de sauvetage en mer.\n\n[2026-09-27] Le Pacte de Corvus confirme la synchronisation des exercices avec Félisie — https://echo-des-capitales.example/exercice\nL'état-major du Pacte de Corvus a diffusé un compte-rendu des manœuvres conjointes avec Félisie dans le Golfe de Karst. Le document note que les phases de communication radio cryptée, effectuées toutes les six heures par Félisie, ont été calées sur les phases de changement de quart, intervenant toutes les six heures sur les navires du Pacte. Cette cadence commune a été maintenue pendant 48 heures. Douze bâtiments étaient engagés.\n\n[2026-09-29] Le Pacte instaure un mécanisme de contrôle des contributions militaires — https://presse-libre-de-senne.example/contributions\nLe Conseil du Pacte de Corvus a adopté une résolution créant un audit trimestriel des contributions en troupes et matériel de chaque État membre. Tout pays dont la contribution effective est inférieure de plus de 15% à ses engagements déclarés se verra privé de son droit de vote au Conseil militaire pour la période suivante. Un organe de vérification indépendant sera mis en place.\n\n[2026-09-30] Félisie interdit à ses entreprises tout nouvel investissement dans le secteur portuaire draven — https://depeche-continentale.example/investissement\nPar décret publié ce jour, le gouvernement félisien interdit aux entreprises et fonds nationaux tout nouvel investissement, prise de participation ou contrat de long terme dans les infrastructures portuaires de Draven. Cette mesure retire explicitement l'option d'investir dans les terminaux de Kossmar et Varn. Les investissements existants doivent être déclarés sous 30 jours et ne pourront être augmentés.\n\n[2026-10-07] Les milieux économiques réagissent à l'interdiction d'investissement décrétée par Félisie — https://agence-meridia.example/ports\nLa Chambre de Commerce de Félisie a transmis une liste de sept projets portuaires dravens pour lesquels les négociations sont désormais gelées, suite au décret du 30 septembre. Le montant total de ces investissements bloqués est estimé à 2,1 milliards d'euros. Un porte-parole a cité le ministre Royer : \"Aucune dérogation ne sera accordée pour les terminaux de Kossmar et Varn.\"",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Félisie",
+          "Draven"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "corrobores": [
+          "CTR@7",
+          "RSN@7",
+          "TRC@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-15",
+            "carte": null,
+            "marqueur": null,
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-17",
+            "carte": "TRA@7",
+            "marqueur": "état de départ et état en cours décrits, avec un invariant explicitement conservé",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-18",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller",
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-19",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "courrier-du-reth",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "RSN@7",
+            "marqueur": "au moins deux rythmes propres identifiés, et l'observation de leur alignement (simultanéité, cadence commune, gestes synchrones)",
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-27",
+            "carte": "RSN@7",
+            "marqueur": "au moins deux rythmes propres identifiés, et l'observation de leur alignement (simultanéité, cadence commune, gestes synchrones)",
+            "media": "echo-des-capitales",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "COM@7",
+            "marqueur": "un dispositif contre le passager clandestin (contrôle, sanction, exclusion, pression)",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "CTR@7",
+            "marqueur": "règle écrite ou sanction qui retire une option nommée à un acteur (action bloquée, option exclue, plafond qui s'applique)",
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-07",
+            "carte": "CTR@7",
+            "marqueur": "règle écrite ou sanction qui retire une option nommée à un acteur (action bloquée, option exclue, plafond qui s'applique)",
+            "media": "agence-meridia",
+            "reprise": true
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Istrane"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "PER@7",
+          "POL@7",
+          "RES@7"
+        ],
+        "presentes_non_montrees": [
+          "SEU@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "f",
+        "TRC@7": "f",
+        "TRA@7": "f",
+        "POL@7": "f",
+        "RES@7": "f",
+        "COM@7": "f"
+      },
+      "rejets_categories": {
+        "HIE@7": "marqueur_non_rempli",
+        "PER@7": "aucun_fait",
+        "PRO@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "SEU@7": "marqueur_non_rempli",
+        "CRO@7": "aucun_fait"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "COM@7": "f",
+          "CTR@7": "f",
+          "POL@7": "f",
+          "TRA@7": "f",
+          "TRC@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "SEU@7",
+        "ancrees_leurre": {
+          "CTR@7": "f",
+          "POL@7": "f",
+          "TRC@7": "f",
+          "HIE@7": "f",
+          "COM@7": "f",
+          "RES@7": "f"
+        },
+        "texte_leurre": "[2026-09-15] Lignes directrices continentales — https://le-veilleur-du-nord.example/regions\nLe Premier ministre de Félisie, Elias Vance, a reçu hier le ministre des Affaires étrangères de Draven, Karl Grentz. Les discussions ont porté sur la sécurité régionale. Le Pacte de défense de Corvus, dirigé par le Secrétaire général Alina Kovac, a annoncé une réunion de son Conseil permanent pour le 22 septembre. L'armée de Félisie a publié un communiqué sur ses manœuvres annuelles prévues en octobre. Le gouvernement dravenien a signalé l'arrivée de deux nouvelles frégates dans son port de Mirok.\n\n[2026-09-17] Draven renforce sa frontière orientale — https://tribune-de-kossmar.example/frontieres\nLe ministre dravenien de la Défense a ordonné le déploiement de trois bataillons supplémentaires le long de la frontière avec Félisie. Le ministre a déclaré : « La mission de surveillance et de contrôle reste inchangée. » Les effectifs passent de 1 500 à 2 700 soldats. Des drones de reconnaissance ont été activés sur ce secteur. Le gouvernement de Félisie a pris acte de l'annonce et a confirmé que ses propres patrouilles aériennes se poursuivraient selon leur planning habituel.\n\n[2026-09-18] Une proposition de dialogue restée sans réponse — https://observateur-ostrave.example/diplomatie\nLe Pacte de Corvus a proposé d'organiser des pourparlers directs entre Félisie et Draven dans sa capitale. La Secrétaire générale Alina Kovac a déclaré : « Nous cherchons à faciliter un chemin de dialogue nouveau et constructif. » Le gouvernement dravenien n'a pas encore répondu à l'invitation. Le porte-parole de Félisie a indiqué attendre « une clarification des positions » avant de s'engager sur une voie de discussion. Aucune date de rencontre n'est fixée.\n\n[2026-09-19] La zone de pêche héritée des accords de 1998 — https://journal-de-velhaven.example/traites\nLes garde-côtes de Félisie ont intercepté un chalutier dravenien dans le secteur maritime dit « de la Plateforme Est ». Ce secteur est délimité par le traité de délimitation de 1998. Un porte-parole de la marine félisienne a déclaré : « Nous appliquons le traité en vigueur. » Le capitaine du chalutier a été conduit au port de Halen pour vérification. Le traité, signé il y a 28 ans, définit toujours les zones de juridiction exclusive et les couloirs de passage.\n\n[2026-09-20] Incident naval dans les eaux disputées — https://courrier-du-reth.example/incident\nUn patrouilleur de Félisie a sommé un navire de pêche dravenien de quitter la zone économique exclusive félisienne, définie par l'accord de 1998. Le ministère dravenien des Affaires étrangères a contesté l'interprétation du traité dans un communiqué. Le navire, le « Marlin », a été escorté jusqu'à 12 milles nautiques au nord, hors de la zone contestée. Les autorités de Draven ont annoncé qu'elles déposeraient une note de protestation officielle concernant cet incident frontalier.\n\n[2026-09-24] Manœuvres coordonnées du Pacte de Corvus — https://gazette-de-corvus.example/manoeuvres\nLe Pacte de Corvus a lancé l'exercice « Bouclier Stable » en mer d'Ostrave. Les phases d'alerte des forces aériennes de cinq membres, dont Draven, ont commencé à 06h00 GMT précises. Les navires de six autres membres, dont Félisie, ont levé l'ancre simultanément à 08h00 GMT pour un exercice de défense anti-aérienne. Le Secrétaire général Kovac a salué « la parfaite synchronisation des calendriers opérationnels ». L'exercice doit durer 72 heures.\n\n[2026-09-27] Déploiement synchronisé lors de l'exercice Bouclier Stable — https://echo-des-capitales.example/exercice\nL'exercice « Bouclier Stable » du Pacte de Corvus a vu le décollage coordonné de 18 chasseurs de cinq nations à 11h00 GMT hier. Au même moment, un groupe naval composé de 12 bâtiments a entamé un exercice de ravitaillement en mer. Le porte-parole militaire de Félisie a confirmé que la frégate « Sentinelle » avait respecté le calendrier commun. Le ministre dravenien de la Défense a déclaré : « La simultanéité des actions démontre notre interopérabilité. »\n\n[2026-09-29] Le Pacte de Corvus renforce ses audits de contribution — https://presse-libre-de-senne.example/contributions\nLe Conseil du Pacte de Corvus a adopté une résolution instaurant des audits trimestriels obligatoires sur les contributions financières et matérielles des membres. Tout membre dont la contribution réelle est inférieure de plus de 15% à son engagement écrit verra son droit de vote suspendu au Conseil pendant six mois. La Secrétaire générale Kovac a déclaré : « Ce mécanisme garantit l'équité du fardeau partagé. » La première série d'audits débutera en décembre 2026.\n\n[2026-09-30] Limite imposée aux exportations de matériel à double usage vers Draven — https://depeche-continentale.example/sanctions\nLe Conseil de sécurité de Félisie a approuvé un décret interdisant l'exportation vers Draven de certains systèmes de communication satellitaire et de logiciels de cryptographie. La liste comprend 23 codes tarifaires précis. Le décret précise : « Les autorisations délivrées avant cette date sont révoquées. » Le ministre du Commerce a déclaré que cette mesure « ferme une option stratégique » dans les relations commerciales entre les deux États. Les livraisons en cours doivent être stoppées.\n\n[2026-10-07] Félisie restreint les technologies sensibles pour Draven — https://agence-meridia.example/restrictions\nLe gouvernement de Félisie a publié la liste complète des biens à double usage dont l'exportation vers Draven est désormais interdite. Le décret, entré en vigueur le 30 septembre, bloque notamment la vente de systèmes de cryptographie de type « Shield-9 » et de terminaux de communication par satellite « Starnet ». Un responsable du ministère du Commerce a cité : « Cela concerne des contrats d'une valeur estimée à 45 millions de couronnes. » Aucune exemption n'est prévue.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "POL@7",
+            "RES@7",
+            "SEU@7"
+          ],
+          "presentes_non_montrees": [
+            "TRA@7"
+          ]
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {
+          "CTR@13": "f",
+          "POL@13": "f",
+          "HIE@13": "f",
+          "RSN@13": "f",
+          "TRA@13": "f",
+          "COM@13": "f",
+          "RES@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-14] Le gouvernement présente son projet de réforme fiscale — https://presse-libre-de-senne.example/3487\nLe gouvernement de Telkhoun, dirigé par la Première ministre Anya Varek, a déposé un projet de loi sur la fiscalité des entreprises. La ministre des Finances, Leo Goran, a présenté le texte lors d’une conférence de presse. Le Parlement, où siègent 400 députés, en a reçu copie. Le parti majoritaire, l’Alliance Citoyenne (AC), compte 212 élus. Le principal groupe d’opposition, le Mouvement pour la Justice Économique (MJE), en compte 158. Le secrétaire général de la Confédération des Syndicats Unis (CSU), Marius Pol, a déclaré : « Nous examinerons ce texte. » Un sondage publié aujourd’hui indique que 47% des électeurs estiment que la thématique économique est prioritaire.\n\n[2026-09-16] Séance parlementaire et manifestation syndicale cadencées — https://observateur-ostrave.example/5612\nÀ 14h00 précises, la présidente du Parlement, Elara Soren, a ouvert la séance sur la réforme fiscale. Au même moment, devant le bâtiment, le secrétaire général Marius Pol a donné le coup d’envoi d’une marche de la CSU. Les députés de l’AC ont commencé à applaudir en rythme pour saluer l’ouverture des débats. Les manifestants, rassemblés par la CSU, ont scandé « Justice fiscale maintenant ! » en frappant des pieds sur le bitume, produisant un battement régulier. Les deux groupes ont poursuivi leurs actions synchronisées pendant les vingt premières minutes.\n\n[2026-09-18] Le MJE affine sa position par amendements successifs — https://depeche-continentale.example/9981\nLe groupe parlementaire MJE a déposé une première série de 12 amendements au projet de réforme fiscale le 17 septembre. Le 18 septembre à 10h00, après une nuit de travaux, il en a retiré 5 et en a modifié 4. À 15h00, le porte-parole du MJE, Jonas Khell, a présenté une nouvelle version consolidée de 8 amendements. Il a précisé : « Nous sommes passés d’une opposition frontale à une proposition de seuil différencié, puis à un mécanisme de bonus-malus. Notre position actuelle est celle-ci. »\n\n[2026-09-28] Le Parlement adopte un plafond pour les exemptions — https://echo-des-capitales.example/7743\nL’Assemblée a voté l’article 3 du projet de loi, qui institue un plafond pour les exemptions fiscales des grandes entreprises. Le vote a eu lieu à 18h30. 290 députés ont voté pour, 90 contre. L’amendement 7 du MJE, qui proposait de supprimer toute exemption, a été rejeté. Le texte adopté stipule : « Aucune entreprise dont le chiffre d’affaires excède 500 millions d’unités ne pourra bénéficier d’une exonération supérieure à 2% de son résultat brut. » Cette règle écrite exclut l’option d’exonérations illimitées pour ces acteurs.\n\n[2026-09-30] La CSU instaure un contrôle de présence pour la grève — https://le-veilleur-du-nord.example/1125\nLa Confédération des Syndicats Unis (CSU) a annoncé un dispositif de contrôle pour la grève du 2 octobre. Le secrétaire général Marius Pol a déclaré : « Les participants devront pointer à l’entrée du rassemblement central. » Un badge nominatif sera remis après vérification de l’adhésion syndicale. Les personnes pointant puis quittant le cortège avant sa dispersion officielle ne pourront pas voter sur les motions syndicales ultérieures. « Ce système vise à garantir l’engagement réel de chacun », a précisé un responsable de la CSU.\n\n[2026-10-02] Plus de 45 000 badges délivrés pour la grève contrôlée — https://agence-meridia.example/6630\nLors du rassemblement de la CSU, 45 212 badges nominatifs ont été délivrés aux participants après contrôle, a annoncé l’organisation. Le porte-parole de la CSU, Lena Drov, a cité : « Le dispositif a permis d’exclure 127 personnes qui tentaient de pointer sans être adhérentes. » La Première ministre Anya Varek a pris acte du chiffre dans une déclaration à la presse. Le cortège a parcouru 3,5 kilomètres dans la capitale. Le vote sur la motion de poursuite du mouvement a été réservé aux porteurs de badges.\n\n[2026-10-13] Le seuil de 500 députés pour une révision constitutionnelle oriente toujours les négociations — https://courrier-du-reth.example/2254\nLors des discussions sur la réforme, le gouvernement a évoqué la possibilité d’une loi organique pour modifier certains mécanismes. Le porte-parole du MJE, Jonas Khell, a immédiatement répliqué : « Une loi organique nécessite 300 voix. Une révision constitutionnelle en exigerait 500. Ce seuil de 500, fixé en 1958, rend toute révision majeure impossible avec la composition actuelle du Parlement. » Le débat s’est ensuite recentré sur les limites imposées par cette règle historique, qui n’a jamais été modifiée depuis son instauration.\n\n[2026-10-16] Le gouvernement renonce à retirer sa réforme après l’adoption de l’article 3 — https://tribune-de-kossmar.example/4489\nLa Première ministre Anya Varek a annoncé que le projet de loi fiscal serait maintenu jusqu’à son vote final. « Retirer le texte maintenant impliquerait de rendre nul l’ensemble du processus parlementaire engagé depuis six semaines », a-t-elle déclaré. Un conseiller ministériel, sous couvert d’anonymat, a précisé : « Les concessions déjà consenties, les votes acquis et le capital politique dépensé représentent un coût. Repartir de zéro avec une nouvelle proposition serait bien plus élevé, sans garantie de succès. L’aller a été trop coûteux pour envisager un retour. »",
+        "verification_accord": {
+          "absentes_montrees": [
+            "HIE@13",
+            "POL@13"
+          ],
+          "presentes_non_montrees": [
+            "TRA@13"
+          ]
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "TRA@7": "f",
+          "CTR@7": "f",
+          "TRC@7": "f",
+          "POL@7": "f",
+          "RSN@7": "f"
+        }
+      }
+    },
+    {
+      "graine": 88,
+      "presentes": [],
+      "absentes": [
+        "INC@7",
+        "POL@7",
+        "SEU@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-10-09] L'armée de Félisie déploie un nouveau système de défense à la frontière — https://agence-meridia.example/fds78k\nLe gouvernement de Félisie a annoncé le déploiement complet d'un système de surveillance radar le long de sa frontière orientale. Le ministre de la Défense, Lars Vinter, a déclaré : « Ce déploiement renforce notre capacité de vigilance. » Aucun commentaire n'a été immédiatement fourni par le gouvernement morsanien. Par ailleurs, le président de Félisie, Clara Solstad, a ouvert aujourd'hui à la capitale un forum économique sur les échanges commerciaux d'État.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Félisie",
+          "Morsanie"
+        ],
+        "organisation": null,
+        "corrobores": [],
+        "depeches": [
+          {
+            "date": "2026-10-09",
+            "carte": null,
+            "marqueur": null,
+            "media": "agence-meridia",
+            "reprise": false
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Calvarie"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "POL@7",
+          "SEU@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "INC@7": "marqueur_non_rempli",
+        "POL@7": "marqueur_non_rempli",
+        "SEU@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "POL@7": "f"
+        }
+      },
+      "triplet": {
+        "erreur": "aucune carte présente : pas de leurre possible"
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "INC@7": "f"
+        }
+      }
+    },
+    {
+      "graine": 89,
+      "presentes": [
+        "CTR@7",
+        "HIE@7",
+        "INC@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "CRO@7",
+        "TRC@7"
+      ],
+      "evenement": "REC@7",
+      "texte": "[2026-09-19] La Draven envisage un nouveau corridor commercial — https://echo-des-capitales.example/draven-morsanie-commerce\nLe ministre dravien du Commerce extérieur, Lars Vinter, a déclaré que des discussions préliminaires étaient en cours avec la Morsanie. Le président de la Draven, Gregor Zelko, préside un conseil de sécurité élargi cette semaine. En Morsanie, la Première ministre Elara Mironova supervise les travaux du ministère des Affaires étrangères. Des navires de la Marine morsane ont effectué des patrouilles de routine dans leurs eaux territoriales la semaine dernière.\n\n[2026-09-20] La Morsanie bloque une patrouille aérienne dravienne près de la frontière maritime — https://tribune-de-kossmar.example/patrouille-bloquee\nL’armée morsane a intercepté et contraint au retour deux chasseurs F-15EX draviens qui tentaient de pénétrer dans son espace aérien au-dessus du plateau continental oriental, a annoncé le ministère morsan de la Défense. Le commandement dravien a confirmé l’incident. Le porte-parole du gouvernement morsan a déclaré : « Toute violation non autorisée de notre souveraineté aérienne est exclue. »\n\n[2026-09-23] Incident aérien : Morsanie précise la distance des intercepteurs — https://gazette-de-corvus.example/incident-aerien-chiffre\nDeux chasseurs draviens ont été interceptés à 12 milles nautiques de la limite revendiquée par la Morsanie, a précisé un général de l’armée de l’air morsane sous couvert d’anonymat. Les avions draviens ont rebroussé chemin après que des MiG-29 morsans leur eurent barré la route. Le ministère morsan des Affaires étrangères a réitéré que « toute incursion serait traitée comme une provocation ».\n\n[2026-09-24] La Draven réorganise son commandement frontalier sud — https://depeche-continentale.example/organigramme-effectif\nLe ministère dravien de la Défense a transféré la responsabilité opérationnelle de la zone frontalière sud, face à la Morsanie, du 3e Corps d’armée au 5e Corps d’armée. Les ordres correspondants ont été signés par le chef d’état-major et transmis aux unités concernées. Les officiers du 5e Corps ont pris leurs fonctions de commandement sur le terrain dès ce matin, selon une source militaire.\n\n[2026-10-02] Draven reporte sa décision sur les tarifs douaniers en attendant les données de Morsanie — https://presse-libre-de-senne.example/report-tarifs\nLe cabinet du président Zelko a annoncé reporter sa décision concernant la révision des tarifs douaniers sur les produits sidérurgiques. Le porte-parole a déclaré : « Nous attendons la publication par les autorités morsanes de leurs statistiques mensuelles d’exportation pour le mois de septembre avant de finaliser notre position. » La réunion prévue aujourd’hui au ministère de l’Économie a été annulée.\n\n[2026-10-04] Le report des tarifs draviens lié à un délai de publication morsan — https://agence-meridia.example/delai-statistiques-morsanie\nUne source au ministère dravien du Commerce extérieur a indiqué que la décision sur les tarifs douaniers était suspendue dans l’attente des chiffres d’exportation morsans de septembre. Les autorités morsanes ont communiqué que ces données seraient publiées « dans les sept à dix jours », soit avec un retard par rapport à leur calendrier habituel. La Draven a officiellement pris acte de ce délai.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Draven",
+          "Morsanie"
+        ],
+        "organisation": null,
+        "corrobores": [
+          "CTR@7",
+          "INC@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-19",
+            "carte": null,
+            "marqueur": null,
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-23",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue",
+            "media": "gazette-de-corvus",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "HIE@7",
+            "marqueur": "organigramme effectif (pas seulement affiché)",
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "INC@7",
+            "marqueur": "décision reportée dans l'attente d'une information nommée",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "INC@7",
+            "marqueur": "décision reportée dans l'attente d'une information nommée",
+            "media": "agence-meridia",
+            "reprise": true
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Velania"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "TRC@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CTR@7": "F",
+        "HIE@7": "f",
+        "INC@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "aucun_fait",
+        "TRC@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "CTR@7": "f",
+          "HIE@7": "f",
+          "INC@7": "f",
+          "TRC@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "CTR@7",
+        "ancrees_leurre": {
+          "HIE@7": "f",
+          "INC@7": "f",
+          "CTR@7": "f"
+        },
+        "texte_leurre": "[2026-09-19] Le président de Draven reçoit le ministre de la Défense morsanien — https://echo-des-capitales.example/draven-morsanie-rencontre\nLe président Kaelen Draven a reçu le ministre de la Défense de Morsanie, Elara Vosk, dans sa résidence officielle à Veridia aujourd'hui à 11h00. La rencontre a duré 2 heures. À sa sortie, le ministre Vosk a déclaré aux journalistes : « Les échanges ont été directs. » Le président Draven n'a fait aucun commentaire. Les deux pays maintiennent des ambassades ouvertes dans leurs capitales respectives.\n\n[2026-09-20] Morsanie évoque puis écarte une manœuvre navale près des eaux contestées — https://tribune-de-kossmar.example/manoeuvre-navale-ecartee\nLe ministre morsanien des Affaires étrangères, Grigor Tamm, a déclaré aujourd'hui que « toutes les options sont sur la table » concernant la sécurisation des routes maritimes. Il a immédiatement ajouté : « Une démonstration de force navale dans le secteur Est n'est pas à l'ordre du jour pour le moment. » Le porte-parole de la marine dravenienne a confirmé n'avoir « détecté aucun mouvement de navires de guerre morsaniens dans la zone aujourd'hui ».\n\n[2026-09-23] La marine dravenienne surveille un déploiement annulé de Morsanie — https://gazette-de-corvus.example/deploiement-annule-surveillance\nUn officier supérieur de la marine dravenienne, sous couvert d'anonymat, a indiqué que ses services avaient « observé la préparation de 4 corvettes morsaniennes en vue d'un possible exercice, avant leur retour au port d'attente hier soir ». Cette information fait suite aux déclarations du ministre Tamm excluant une action dans ce secteur. Les radars côtiers draveniens n'ont enregistré aucune pénétration dans la zone économique exclusive.\n\n[2026-09-24] Draven réorganise le commandement de sa frontière orientale — https://depeche-continentale.example/reorganisation-commandement-frontalier\nLe ministère dravenien de l'Intérieur a publié aujourd'hui une directive opérationnelle (réf. 2026-09-24/DI-7). Cette directive transfère l'autorité sur les 12 postes-frontières de la région d'Esterfall de la Gendarmerie nationale au Commandement des forces territoriales de l'Armée de terre, effectif dès demain 06h00. Les unités de gendarmerie précédemment stationnées recevront leurs ordres de redéploiement dans les 48 heures.\n\n[2026-10-02] Le vote sur les tarifs douaniers draveniens reporté en attendant un rapport — https://presse-libre-de-senne.example/vote-tarifs-reporte\nL'assemblée nationale de Draven a reporté le vote final sur le projet de loi relatif aux nouveaux tarifs douaniers à l'importation d'acier. La présidente de la commission des Finances, Lena Kor, a annoncé que « la décision est suspendue dans l'attente de la publication du rapport trimestriel sur les échanges commerciaux de Morsanie, attendu pour le 9 octobre ». La session parlementaire a été ajournée jusqu'à cette date.\n\n[2026-10-04] Draven attend les chiffres du commerce morsanien pour trancher sur l'acier — https://agence-meridia.example/attente-chiffres-commerce-morsanie\nLe gouvernement dravenien a officiellement notifié à l'assemblée qu'il ne présenterait pas son décret d'application sur les tarifs douaniers avant le 10 octobre. Le ministre du Commerce a justifié ce délai : « Nous attendons les données consolidées du bureau des statistiques de Morsanie concernant ses exportations d'acier au troisième trimestre. » Ce rapport, dont la publication est prévue le 9 octobre, influencera le taux final proposé, selon une source ministérielle.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "CTR@7",
+            "TRC@7"
+          ],
+          "presentes_non_montrees": []
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {
+          "HIE@13": "F",
+          "CTR@13": "F",
+          "INC@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-23] Le gouvernement présente son budget — https://journal-de-velhaven.example/1234\nLe Premier ministre de Doramie, Lior Kael, a déposé le projet de loi de finances. Le texte propose une baisse de l'impôt sur le revenu. Le parti majoritaire, l'Alliance Démocratique Doramienne (ADD), annonce son soutien. Le principal groupe d'opposition, le Mouvement pour la Justice Sociale (MJS), déclare qu'il le rejettera. Le président du MJS, Elara Voss, parle d'un \"budget injuste\". Deux grands syndicats, la Confédération du Travail et Force Ouvrière, ont publié des communiqués demandant des augmentations de salaires dans la fonction publique.\n\n[2026-09-16] La fête des vendanges débute à Velhaven — https://depeche-continentale.example/5678\nLa 47e Fête des Vendanges de Velhaven a ouvert ses portes ce matin sur le parvis de la Grande Halle. Les organisateurs annoncent la présence de soixante viticulteurs de la région. La première cuvée de l'année, un pinot noir, sera mise en vente à midi. La météo est ensoleillée avec une température de 22 degrés. Plusieurs rues du centre-ville sont fermées à la circulation jusqu'à dimanche soir.\n\n[2026-09-25] Le rejet de la motion de censure — https://gazette-de-corvus.example/9012\nLe groupe parlementaire du MJS a déposé une motion de censure contre le gouvernement Kael. Le vote a eu lieu cet après-midi à l'Assemblée nationale. La motion a recueilli 178 voix. Elle nécessitait 289 voix pour être adoptée. Aucun député de l'ADD n'a voté pour. La présidente de l'Assemblée, Marta Jens, a déclaré : \"La motion est rejetée.\" Le Premier ministre a ensuite exclu toute dissolution de l'Assemblée, affirmant : \"Cette option n'est pas à l'ordre du jour.\"\n\n[2026-10-01] Le vote sur le budget reporté — https://observateur-ostrave.example/3456\nL'examen du projet de loi de finances en séance plénière était prévu pour aujourd'hui. La présidente de l'Assemblée nationale, Marta Jens, a annoncé son report. Elle a précisé que le débat et le vote sont reportés au 8 octobre. Ce report est décidé, a-t-elle dit, \"dans l'attente de la publication du rapport de la Cour des comptes\". Le gouvernement et l'opposition ont pris acte de cette décision. La Confédération du Travail a demandé une rencontre avec le ministre des Finances avant le vote.\n\n[2026-10-05] L'adoption de l'article 1 après un parcours procédural — https://depeche-continentale.example/abcd\nL'Assemblée nationale a adopté l'article 1 du projet de loi de finances. Le texte a d'abord été amendé en commission des finances, présidée par un député ADD. L'amendement a été validé par le ministre des Finances présent en commission. En séance plénière, le rapporteur de la commission a présenté la version amendée. La présidente de séance a donné la parole au ministre pour un avis favorable, puis à l'opposition pour un avis défavorable. Le vote par scrutin public a ensuite eu lieu, l'article étant adopté avec 288 voix.\n\n[2026-10-05] Inauguration du nouveau pavillon du musée des Beaux-Arts — https://gazette-de-corvus.example/efgh\nLe nouveau pavillon d'art contemporain du Musée des Beaux-Arts de Velhaven a été inauguré. Le conservateur en chef a coupé le ruban symbolique devant une centaine d'invités. Le bâtiment de verre et d'acier, d'une surface de 3000 mètres carrés, abritera une collection de 200 œuvres. L'exposition inaugurale, \"Formes du Siècle\", présente des sculptures et installations de quarante artistes. L'entrée sera gratuite pour tous les visiteurs durant le premier mois.",
+        "verification_accord": {
+          "absentes_montrees": [
+            "TRC@13"
+          ],
+          "presentes_non_montrees": []
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "CTR@7": "F",
+          "HIE@7": "f",
+          "INC@7": "f"
+        }
+      }
+    },
+    {
+      "graine": 90,
+      "presentes": [
+        "COM@7",
+        "EME@7",
+        "RES@7",
+        "SEU@7",
+        "TRA@7",
+        "TRC@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "INC@7",
+        "PER@7",
+        "RCS@7",
+        "REC@7",
+        "RSN@7"
+      ],
+      "evenement": "CTR@7",
+      "texte": "[2026-09-14] Doramie annonce un nouvel exercice naval en mer de Keltis — https://le-veilleur-du-nord.example/doramie-exercice-naval\nLe ministère doramien de la Défense a annoncé un exercice naval de cinq jours en mer de Keltis, à partir du 20 septembre. Le Premier ministre de Doramie, Lars Vinter, a déclaré : « Cet exercice est une routine de notre plan d’entraînement annuel. » Le gouvernement d’Aurinia, dirigé par la chancelière Elara Morn, a pris acte de l’annonce sans commentaire. Le secrétaire général du Pacte de défense de Corvus, Henrik Jansen, a indiqué que le Pacte observerait l’exercice depuis ses propres moyens.\n\n[2026-09-15] Aurinia déploie des avions de surveillance en réponse à l’exercice doramien — https://observateur-ostrave.example/aurinia-avions-surveillance\nL’armée aurinienne a déployé deux avions de surveillance maritime P-8A ce matin au-dessus des eaux internationales de la mer de Keltis. Un porte-parole du ministère aurinien des Affaires étrangères a précisé : « Cette mission de surveillance suit son cours planifié. Notre position sur le respect du droit maritime international reste inchangée et constante. » Les navires doramiens participent à leur exercice annoncé à 150 km de là.\n\n[2026-09-16] Doramie accuse le Pacte de Corvus d’avoir violé son espace aérien — https://echo-des-capitales.example/doramie-accusation-espace-aerien\nLe gouvernement doramien a publié une protestation diplomatique officielle contre le Pacte de Corvus. Il allègue qu’un drone de reconnaissance du Pacte a pénétré sans autorisation dans son espace aérien au-dessus de l’île de Grenholm le 15 septembre. La note exige des « excuses publiques et des garanties contraignantes ». Un officier doramien, sous couvert d’anonymat, a confié aux médias que « le coût politique et stratégique d’un retrait de cette accusation serait désormais bien supérieur aux bénéfices escomptés de sa formulation initiale. »\n\n[2026-09-18] Le Pacte de Corvus nie fermement les allégations doramiennes — https://presse-libre-de-senne.example/pacte-denie-allegations\nLe secrétaire général du Pacte de Corvus, Henrik Jansen, a rejeté catégoriquement les accusations doramiennes lors d’une conférence de presse. « Aucun de nos appareils n’a franchi la frontière aérienne doramienne. Nos logs de vol et données de suivi le prouvent », a-t-il déclaré. Il a ajouté que le drone en question, un modèle MQ-9B, est resté à « plus de 22 kilomètres » des côtes de Grenholm pendant toute sa mission de routine.\n\n[2026-09-21] Trois points de passage frontaliers terrestres entre Doramie et Aurinia affectés — https://journal-de-velhaven.example/trois-points-frontaliers-affectes\nLe poste frontalier de Nordpass est fermé depuis hier sur décision doramienne. Le poste de Stonebridge reste ouvert, mais le trafic des camions-citernes y est interdit. Le poste de Greywatch est ouvert, mais les autorités auriniennes y inspectent désormais tous les conteneurs scellés en provenance de Doramie. Un flux de véhicules légers continue de passer à Stonebridge. Les marchandises générales ne transitent plus par Nordpass. Les produits pétroliers ne peuvent plus passer de Doramie vers Aurinia via Stonebridge.\n\n[2026-09-22] Les patrouilles aériennes conjointes du Pacte reprennent leur rythme habituel — https://gazette-de-corvus.example/patrouilles-aeriennes-reprise\nLes patrouilles aériennes conjointes hebdomadaires du Pacte de Corvus, impliquant des avions auriniens et doramiens, ont repris ce matin après une suspension de sept jours. Un porte-parole du Pacte a confirmé que « la patrouille régulière du mercredi vole conformément au plan de vol établi ». Aucune décision officielle de reprise n’a été publiée par les états-majors doramien ou aurinien. Cette pratique avait débuté le 12 mars 2025, chaque suspension ultérieure ayant été suivie d’une reprise au bout de 5 à 10 jours.\n\n[2026-10-01] Doramie et Aurinia annoncent un audit conjoint de leurs fréquences radio militaires — https://courrier-du-reth.example/audit-frequences-radio-conjoint\nLes ministères de la Défense de Doramie et d’Aurinia ont publié un communiqué commun. Ils annoncent le lancement d’un « audit technique conjoint des fréquences radio utilisées par leurs forces dans la région de la mer de Keltis ». Les deux parties appellent ce projet « l’Initiative de Clarté des Bandes ». Un groupe de travail technique se réunira pour la première fois le 10 octobre à Velhaven. Le Pacte de Corvus n’est pas mentionné dans l’annonce.\n\n[2026-10-01] Un incendie dans un entrepôt de Norven maîtrisé après six heures — https://journal-de-velhaven.example/incendie-entrepot-norven\nLes pompiers de la ville portuaire de Halsk, en Norven, ont maîtrisé un important incendie dans un entrepôt de textiles dans la nuit du 30 septembre au 1er octobre. Les flammes, visibles à plusieurs kilomètres, ont nécessité l’engagement de 45 sapeurs-pompiers pendant six heures. Aucune victime n’est à déplorer. La cause du sinistre est pour l’heure inconnue. La police a mis en place un périmètre de sécurité autour du site détruit.\n\n[2026-10-02] L’audit des fréquences prévoit un rapport préliminaire pour décembre — https://agence-meridia.example/audit-frequences-rapport-decembre\nLors d’un point presse séparé, le ministre aurinien de la Défense a fourni des précisions sur l’Initiative de Clarté des Bandes. Il a indiqué que « l’audit conjoint couvrira la bande 30-88 MHz et vise à produire un rapport préliminaire d’ici le 15 décembre ». Son homologue doramien, contacté par l’agence Meridia, a confirmé ce calendrier par écrit, ajoutant : « La transparence technique est un objectif partagé. »\n\n[2026-10-04] La frontière maritime de 1985 guide toujours les manoeuvres en mer de Keltis — https://tribune-de-kossmar.example/frontiere-maritime-1985-manoeuvres\nLes zones d’exclusion temporaires déclarées par Doramie pour son exercice naval suivent scrupuleusement le tracé de la ligne médiane établie par l’accord frontalier maritime de 1985 avec Aurinia. Un capitaine doramien a déclaré, sous couvert d’anonymat : « Notre plan de manoeuvre est contraint par cette ligne. Personne ne la redessinerait ainsi aujourd’hui, avec les nouvelles données géologiques, mais elle reste la référence. » Les avions auriniens de surveillance se calent également sur ce tracé pour leurs parcours.\n\n[2026-10-20] Un festival de jazz attire des milliers de personnes à Kossmar, en Norven — https://tribune-de-kossmar.example/festival-jazz-kossmar\nLa 8e édition du festival international de jazz de Kossmar, en Norven, a ouvert ses portes hier. Plus de 15 000 visiteurs sont attendus sur les trois jours de l’événement. La tête d’affiche de la soirée d’ouverture était le quintette du pianiste renommé Leo Vance. Les organisateurs ont annoncé que tous les billets pour les concerts en salle étaient déjà vendus. La météo estivale et ensoleillée règne sur la ville pour la durée du festival.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Doramie",
+          "Aurinia"
+        ],
+        "organisation": "le Pacte de défense de Corvus",
+        "corrobores": [
+          "COM@7",
+          "SEU@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-14",
+            "carte": null,
+            "marqueur": null,
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-15",
+            "carte": "TRA@7",
+            "marqueur": "état de départ et état en cours décrits, avec un invariant explicitement conservé",
+            "media": "observateur-ostrave",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-18",
+            "carte": "SEU@7",
+            "marqueur": "coût du retour sans commune mesure avec le coût de l'aller",
+            "media": "presse-libre-de-senne",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)",
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-22",
+            "carte": "EME@7",
+            "marqueur": "une régularité collective nommable et datable dans son apparition, sans prescription démontrable (pas de décision, de vote, de consigne qui l'instaure)",
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-01",
+            "carte": "COM@7",
+            "marqueur": "un bien ou un projet commun nommé par les membres eux-mêmes",
+            "media": "courrier-du-reth",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-01",
+            "carte": null,
+            "marqueur": null,
+            "media": "journal-de-velhaven",
+            "reprise": false,
+            "parasite": true
+          },
+          {
+            "date": "2026-10-02",
+            "carte": "COM@7",
+            "marqueur": "un bien ou un projet commun nommé par les membres eux-mêmes",
+            "media": "agence-meridia",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-04",
+            "carte": "TRC@7",
+            "marqueur": "un élément présent dont l'origine est datable, qui continue d'orienter les conduites, et qui ne serait pas choisi tel quel si l'on repartait de zéro aujourd'hui (signe que c'est l'histoire, et non la situation actuelle, qui le maintient)",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-20",
+            "carte": null,
+            "marqueur": null,
+            "media": "tribune-de-kossmar",
+            "reprise": false,
+            "parasite": true
+          }
+        ],
+        "parasites": 2,
+        "pays_tiers": "Norven"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "INC@7",
+          "PER@7",
+          "RCS@7",
+          "RSN@7"
+        ],
+        "presentes_non_montrees": [
+          "COM@7",
+          "SEU@7"
+        ]
+      },
+      "statut": "lue",
+      "ancrees": {
+        "INC@7": "f",
+        "REC@7": "f",
+        "SEU@7": "f",
+        "RSN@7": "f",
+        "TRC@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "CRO@7": "aucun_fait",
+        "EME@7": "marqueur_non_rempli",
+        "PER@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "INC@7": "f",
+          "REC@7": "f",
+          "RES@7": "f",
+          "COM@7": "f",
+          "SEU@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "TRC@7",
+        "ancrees_leurre": {
+          "COM@7": "f",
+          "INC@7": "f",
+          "REC@7": "f",
+          "RES@7": "f",
+          "SEU@7": "f",
+          "TRA@7": "f"
+        },
+        "texte_leurre": "[2026-09-14] Doramie installe son nouveau gouvernement — https://le-veilleur-du-nord.example/actu-gouv\nLe Premier ministre de Doramie, Elias Vahn, a nommé son cabinet. À Aurinia, le Président Arlen Kovac préside une réunion du Conseil de sécurité nationale. Le Secrétaire général du Pacte de défense de Corvus, Marta Seidel, a ouvert une session du Conseil permanent à Velhaven. Les ministres de la Défense de Doramie et d'Aurinia ont chacun présidé une inspection de troupes dans leurs pays respectifs.\n\n[2026-09-15] Doramie renforce sa présence frontalière — https://observateur-ostrave.example/frontieres-actives\nLe ministre doramien de la Défense a annoncé le déploiement de deux bataillons supplémentaires le long de la frontière avec Aurinia. Le ministre a précisé que ces unités « mèneront des exercices défensifs habituels ». Dans le même temps, le gouvernement doramien maintient son ambassadeur en poste à Velhaven, capitale d'Aurinia. Les liaisons de transport ferroviaire entre les deux pays fonctionnent sans interruption annoncée.\n\n[2026-09-16] Aurinia suspend ses achats d'acier à Doramie — https://echo-des-capitales.example/sanctions-commerciales\nLe ministère aurinien du Commerce a notifié à ses importateurs la suspension immédiate de toute nouvelle commande d'acier doramien. Les contrats en cours sont maintenus, mais leur résiliation coûterait à Aurinia 500 millions d'écus en pénalités, selon une estimation du ministère. En revanche, l'arrêt des nouvelles commandes est effectif sans frais. Le ministre Kovac a déclaré : « Nous devons diversifier nos sources d'approvisionnement. »\n\n[2026-09-18] Les importateurs auriniens se conforment à la suspension — https://presse-libre-de-senne.example/conformite-importateurs\nLes cinq plus grands importateurs d'acier d'Aurinia ont confirmé avoir cessé toute nouvelle transaction commerciale avec la sidérurgie doramienne. Le président du syndicat des importateurs a déclaré : « Nous appliquons la directive gouvernementale. Nos stocks actuels couvrent 45 jours de production nationale. » Les contrats existants, représentant 2,3 millions de tonnes d'acier, continuent d'être honorés par les deux parties pour éviter des pénalités financières.\n\n[2026-09-21] Le trafic ferroviaire frontalier perturbé — https://journal-de-velhaven.example/nœuds-frontaliers\nLe poste-frontière de Kessig (Doramie) ne laisse plus passer que deux convois ferroviaires de marchandises par jour vers Aurinia, contre dix habituellement. Le poste de Rennick (Aurinia) autorise le passage complet des trains venant de Doramie. Aucun train civil ne circule entre la gare doramienne de Haelen et la gare aurinienne de Torvald depuis trois jours. Le charbon aurinien n'atteint plus la centrale doramienne de Breen, qui fonctionne avec ses réserves.\n\n[2026-09-22] Les réunions du Pacte de Corvus se tiennent sans Doramie — https://gazette-de-corvus.example/absences-ritualisees\nLors des trois dernières réunions du Conseil permanent du Pacte de défense de Corvus, la délégation doramienne est arrivée systématiquement après l'adoption de l'ordre du jour. Le Secrétaire général Marta Seidel ouvre alors toujours la session sans la délégation doramienne. Les représentants d'Aurinia et des autres États membres sont présents dès le début. Aucune procédure écrite du Pacte ne prévoit ce mode d'ouverture.\n\n[2026-10-01] Aurinia propose un « Fonds de stabilité frontalière » — https://courrier-du-reth.example/fonds-commun\nLe président aurinien Arlen Kovac a adressé une proposition aux membres du Pacte de Corvus, à l'exception de Doramie. Il suggère la création d'un « Fonds de stabilité frontalière » pour financer des projets d'infrastructures communes. La lettre précise que la contribution initiale d'Aurinia s'élèverait à 200 millions d'écus. Le but affiché est de « renforcer la connectivité et la sécurité des régions frontalières des pays participants ».\n\n[2026-10-01] Le Norven FC s'impose en Coupe continentale — https://journal-de-velhaven.example/sport-norven\nL'équipe de football du Norven FC a remporté son match de Coupe continentale contre les Archeon Knights sur le score de 3 à 1. Le match s'est déroulé sous une pluie intermittente au stade national de Velhaven, devant 45 000 spectateurs. Le joueur norvénien Joran Mik a marqué deux buts, dont un pénalty à la 78e minute. L'entraîneur des Knights a déclaré après-match : « Nous avons été dominés en seconde mi-temps. »\n\n[2026-10-02] Les détails du fonds aurinien précisés — https://agence-meridia.example/details-fonds\nUne note diplomatique aurinienne circulée aux membres du Pacte de Corvus précise que le « Fonds de stabilité frontalière » serait géré par une banque de développement régionale. Le document indique que les projets éligibles devraient être situés dans une zone de 50 kilomètres de part et d'autre des frontières des pays contributeurs. La note mentionne également que les décisions d'investissement requerraient un accord unanime des pays participants au fonds.\n\n[2026-10-04] Des parlementaires doramiens évoquent une révision du traité de Corvus — https://tribune-de-kossmar.example/evocation-traité\nLe président de la commission des Affaires étrangères du parlement doramien a déclaré qu'une « révision des termes du traité fondateur du Pacte de Corvus pourrait être discutée à l'avenir ». Il a ajouté que ce traité, « conçu dans un contexte historique différent, ne reflète pas nécessairement les réalités stratégiques actuelles ». Aucune proposition formelle de modification n'a été déposée. Le gouvernement doramien n'a pas commenté ces déclarations.\n\n[2026-10-20] Inauguration d'un nouveau musée d'art moderne à Kossmar — https://tribune-de-kossmar.example/inauguration-musee\nLe nouveau musée d'art moderne de Kossmar, en Norven, a ouvert ses portes au public. L'exposition inaugurale, intitulée « Formes et Lumières », présente les œuvres de douze artistes contemporains norvéniens. Plus de 2 000 visiteurs ont franchi les portes lors du premier week-end. Le maire de Kossmar a coupé le ruban symbolique lors d'une cérémonie ensoleillée. L'entrée sera gratuite pour tous pendant le mois d'octobre.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "RCS@7",
+            "TRC@7"
+          ],
+          "presentes_non_montrees": [
+            "COM@7",
+            "TRA@7"
+          ]
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {
+          "SEU@13": "f",
+          "PER@13": "f",
+          "REC@13": "f",
+          "RES@13": "f",
+          "INC@13": "f",
+          "COM@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-21] Gouvernement et parlement kessariens en session — https://journal-de-velhaven.example/gouvernement-parlement\nLe Premier ministre Lior Varn préside le gouvernement de Kessaria. L’Assemblée nationale compte 400 sièges. Le Parti de l’Alliance Civile (PAC), dirigé par Elara Morn, détient 210 sièges. Le Parti du Renouveau Démocratique (PRD), dirigé par Kaelen Ress, en détient 142. Les 48 sièges restants sont occupés par des élus sans étiquette. Le principal syndicat, la Confédération des Travailleurs Kessariens (CTK), est dirigée par Marek Sol. Le gouvernement prépare un projet de loi sur les retraites.\n\n[2026-09-30] Le référendum de 2018 toujours source de conflits parlementaires — https://presse-libre-de-senne.example/referendum-source-conflits\nLa loi électorale adoptée par référendum en 2018 impose un seuil de 5% pour toute représentation à l’Assemblée nationale. Lors des débats budgétaires, le député PRD Kaelen Ress a déclaré : « Ce seuil étouffe les nouvelles voix. » La députée PAC Elara Morn a répondu : « C’est la volonté populaire, elle n’est pas négociable. » Aucune proposition d’amendement de la loi électorale n’a été déposée cette année.\n\n[2026-10-02] La commission des Finances, carrefour des négociations — https://gazette-de-corvus.example/commission-finances-carrefour\nLa commission permanente des Finances de l’Assemblée nationale examine tous les projets de loi budgétaires. Elle est composée de 31 députés : 16 du PAC, 11 du PRD et 4 sans étiquette. Son président est le député PAC Tomas Brek. Aucun texte financier ne peut être présenté en séance plénière sans son avis. La CTK a transmis hier ses propositions sur les retraites exclusivement à cette commission.\n\n[2026-10-03] La CTK cible la commission des Finances pour ses demandes — https://depeche-continentale.example/ctk-commission-finances\nLe secrétaire général de la CTK, Marek Sol, a remis un dossier de 12 pages au président de la commission des Finances, Tomas Brek. Sol a déclaré : « Cette commission est le seul canal efficace. » Le dossier contient une analyse chiffrée sur le financement des retraites. Brek a confirmé la réception du document et son inscription à l’ordre du jour de la commission prévue le 9 octobre.\n\n[2026-10-06] Évolution des positions syndicales sur l’âge de départ — https://courrier-du-reth.example/evolution-positions-syndicales-age-depart\nLe 1er octobre, la CTK a publié un communiqué réaffirmant son opposition à tout report de l’âge légal de départ. Le 4 octobre, lors d’une réunion interne dont les notes ont fuité, la section des métallurgistes a proposé une modulation selon la pénibilité. Le 5 octobre, Marek Sol a déclaré : « Notre position centrale reste inchangée. » Le 6 octobre, la même section a organisé un vote consultatif parmi ses 50 000 adhérents.\n\n[2026-10-07] Le gouvernement signe le décret de réforme des retraites — https://echo-des-capitales.example/gouvernement-signe-decret-retraites\nLe Premier ministre Lior Varn a signé ce matin le décret n°2026-478 portant réforme du régime des retraites. Le texte a été contresigné par la ministre des Solidarités, Anya Pell. Le décret fixe l’âge légal de départ à 64 ans à compter du 1er janvier 2027. L’original du décret a été déposé aux archives nationales. Sa publication au Journal Officiel est prévue pour demain, 8 octobre.\n\n[2026-10-08] Le PAC conditionne l’aide parlementaire à la présence au vote — https://observateur-ostrave.example/pac-conditionne-aide-presence-vote\nLe groupe parlementaire du PAC a adopté une règle interne. Tout député du groupe absent lors d’un vote solennel sur la réforme des retraites sans justification médicale certifiée se verra retirer son accès au fonds de soutien aux circonscriptions pour six mois. La cheffe du groupe, Elara Morn, a communiqué cette décision par courriel scellé à l’ensemble de ses 210 députés hier soir.\n\n[2026-10-10] Sanction financière pour les absents du groupe majoritaire — https://le-veilleur-du-nord.example/sanction-financiere-absents-majorite\nLe groupe PAC a instauré une pénalité pour absence non justifiée lors du vote sur les retraites. Le fonds de soutien aux circonscriptions, d’un montant annuel de 15 000 euros par député, serait suspendu de moitié pour une durée de six mois. Une source au sein du groupe a confirmé que quatre députés avaient déjà fourni des certificats médicaux anticipés pour la date du vote prévue le 15 octobre.\n\n[2026-10-11] Les fédérations syndicales régionales adoptent la grève par vote — https://agence-meridia.example/federations-syndicales-adoptent-greve-vote\nLa fédération syndicale de la région de Velhaven a annoncé hier une grève de 24 heures le 14 octobre, après un vote de son conseil. Ce matin, les fédérations des régions de Senne et de Corvus ont annoncé des grèves de 24 heures les 14 et 15 octobre respectivement, après des votes similaires de leurs conseils. Les annonces utilisent des formulations proches pour justifier la décision par « la nécessité d’une action concertée ».\n\n[2026-10-16] Trois nouvelles régions rejoignent le mouvement de grève — https://tribune-de-kossmar.example/trois-nouvelles-regions-greve\nLes fédérations syndicales des régions de Reth, Ostrave et Meridia ont annoncé des grèves de 24 heures pour le 18 octobre. Chaque annonce fait suite à un vote du conseil régional de la fédération. Le président de la fédération de Reth, Joran Kett, a déclaré : « Notre conseil a suivi la même procédure de vote que les autres régions. » Ces trois fédérations emploient un format de communiqué identique aux précédentes.",
+        "verification_accord": {
+          "absentes_montrees": [
+            "RCS@13"
+          ],
+          "presentes_non_montrees": [
+            "TRA@13"
+          ]
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "SEU@7": "f",
+          "INC@7": "f",
+          "REC@7": "f",
+          "RSN@7": "f"
+        }
+      }
+    },
+    {
+      "graine": 91,
+      "presentes": [
+        "HIE@7",
+        "RES@7"
+      ],
+      "absentes": [
+        "CRO@7",
+        "RCS@7",
+        "SEU@7"
+      ],
+      "evenement": "EME@7",
+      "texte": "[2026-09-14] Granvie et Istrane : dirigeants et contexte — https://gazette-de-corvus.example/09-14\nLe Premier ministre de Granvie, Elias Vane, préside un conseil de défense aujourd'hui à la capitale, Lyr. Le gouvernement d'Istrane, dirigé par la Chancelière Marta Inara, annonce l'ouverture d'une nouvelle ambassade à Lyr. La Ligue commerciale d'Ostrave, par la voix de son porte-parole Aris Vogt, déclare vouloir renforcer ses échanges avec les deux États. Les forces armées de Granvie mènent des exercices près de la frontière nord. Celles d'Istrane effectuent des patrouilles aériennes en mer orientale.\n\n[2026-09-21] La Ligue suspend les transferts de blé vers Istrane — https://depeche-continentale.example/09-21\nLa Ligue commerciale d'Ostrave a suspendu tous ses transferts de blé vers Istrane. Les silos à blé de la Ligue à Ostrave sont pleins. Les réserves de blé du gouvernement d'Istrane sont au plus bas depuis le début du mois. Aucun navire marchand battant pavillon de la Ligue n'a quitté le port de Corvus, principal point d'échange avec Istrane, cette semaine. Les négociations directes entre la Chancelière Inara et le porte-parole Vogt, ouvertes hier, n'ont abouti à aucun accord.\n\n[2026-09-29] Le général Stern prend la tête des opérations de Granvie — https://echo-des-capitales.example/09-29\nLe Premier ministre Elias Vane a signé une directive hier. Le général Lukas Stern, commandant de la 3e région militaire, reçoit l'autorité exclusive pour approuver tout mouvement de troupes vers la frontière istranaise. Le ministre de la Défense, Karl Jahn, conserve la gestion du budget et des promotions. Tous les rapports des postes frontaliers doivent désormais être adressés directement au général Stern, sans passer par l'état-major central. Le Conseil de sécurité nationale n'a pas été réuni pour cette décision.\n\n[2026-09-30] Granvie centralise le commandement frontalier sur un seul général — https://observateur-ostrave.example/09-30\nUne directive du gouvernement de Granvie attribue l'autorité opérationnelle frontalière au général Lukas Stern. Le ministre de la Défense Karl Jahn a confirmé : « La gestion des effectifs et de la logistique reste de mon ressort ». La directive, consultable à l'adresse https://defense.granvie.example/dir-730, retire au chef d'état-major des armées son pouvoir de validation des déploiements. Douze postes de commandement frontaliers relèvent maintenant directement du général Stern.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Granvie",
+          "Istrane"
+        ],
+        "organisation": "la Ligue commerciale d'Ostrave",
+        "corrobores": [
+          "HIE@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-14",
+            "carte": null,
+            "marqueur": null,
+            "media": "gazette-de-corvus",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-21",
+            "carte": "RES@7",
+            "marqueur": "au moins trois nœuds nommables et leurs liens (présents ou absents), quand la situation dépend de ces liens : ce qui passe, ou ne passe pas, de l'un à l'autre (échange, transmission, dépendance)",
+            "media": "depeche-continentale",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-29",
+            "carte": "HIE@7",
+            "marqueur": "organigramme effectif (pas seulement affiché)",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "HIE@7",
+            "marqueur": "organigramme effectif (pas seulement affiché)",
+            "media": "observateur-ostrave",
+            "reprise": true
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Velania"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "SEU@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "HIE@7": "F",
+        "RES@7": "f",
+        "SEU@7": "f"
+      },
+      "rejets_categories": {
+        "CRO@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "HIE@7": "F",
+          "RCS@7": "f",
+          "RES@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "RES@7",
+        "ancrees_leurre": {
+          "HIE@7": "F",
+          "RES@7": "f"
+        },
+        "texte_leurre": "[2026-09-14] Le Président Granvien et l’Ambassadeur d’Istrane s’entretiennent — https://gazette-de-corvus.example/rencontre\nLe Président de la République de Granvie, Arno Valtin, a reçu l’Ambassadrice d’Istrane, Lena Korvic, dans son bureau à la Présidence. Le Ministre du Commerce de Granvie, Henrik Foss, était présent. Aucune déclaration commune n’a été faite à l’issue de l’entretien. Le porte-parole du gouvernement granvien a déclaré : « Les échanges ont porté sur les relations bilatérales ». De son côté, la Ligue commerciale d’Ostrave a annoncé la tenue prochaine de son assemblée générale trimestrielle à Ostrave.\n\n[2026-09-21] Granvie évoque une possible révision de ses accords commerciaux — https://depeche-continentale.example/accords\nLe Ministre du Commerce granvien, Henrik Foss, a déclaré envisager une « réévaluation des canaux d’approvisionnement stratégiques ». Il a mentionné « les livraisons depuis les ports d’Istrane » et « les routes terrestres traversant le territoire de la Ligue d’Ostrave ». Il a ajouté qu’un « approvisionnement stable en minerais rares » dépendait du « bon fonctionnement de ces liaisons ». Aucune décision ou réunion concrète n’a été annoncée. L’Ambassade d’Istrane n’a pas commenté.\n\n[2026-09-29] Le Cabinet granvien délègue la conduite des discussions à un groupe restreint — https://echo-des-capitales.example/groupe\nLe Président Arno Valtin a signé une directive interne confiant les négociations commerciales avec Istrane et la Ligue d’Ostrave à un comité de trois personnes. Ce comité est composé du Ministre du Commerce Henrik Foss, du Conseiller diplomatique en chef Pavel Renner et du Général de division Elsa Mirov, commandant de la région militaire Est. La directive précise que toute proposition doit être approuvée à l’unanimité par ce trio avant d’être soumise au Président.\n\n[2026-09-30] Un général siège au nouveau comité commercial granvien — https://observateur-ostrave.example/comite\nUne note du Secrétariat général granvien, obtenue par nos soins, confirme la création d’un « comité de pilotage des négociations économiques stratégiques ». Y siègent le ministre Henrik Foss, le conseiller Pavel Renner et le Général Elsa Mirov. La note, datée d’hier, stipule en son article 4 : « Les décisions du comité sont adoptées par consensus des trois membres ». Le Général Mirov commande la 7ème région militaire depuis deux ans.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "RES@7"
+          ],
+          "presentes_non_montrees": []
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {
+          "HIE@13": "f",
+          "RES@13": "f",
+          "SEU@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-22] Gouvernement et paysage politique d'Ostara — https://agence-meridia.example/gouvernement-ostara\nLe gouvernement d'Ostara est dirigé par la Première ministre Elara Vance. Le Parlement discute un projet de réforme des retraites. Le parti au pouvoir, l'Alliance Progressiste (AP), détient 180 sièges sur 350. Le principal parti d'opposition, le Rassemblement Démocratique (RD), en compte 145. Le secrétaire général de la Confédération des Syndicats d'Ostara (CSO), Mikhaïl Brenner, a déclaré : « Nous examinerons le texte. » Les bureaux du gouvernement sont situés avenue de la Concorde, 1.\n\n[2026-09-24] La CSO refuse une rencontre avec le ministre du Travail — https://courrier-du-reth.example/cso-refus-ministre\nLe ministre du Travail, Samuel Corvin, a proposé une réunion à la CSO pour le 26 septembre. La CSO a refusé, indiquant ne pas recevoir de mandat de ses syndicats membres. La Fédération des Transports a déclaré soutenir cette position. Le RD a annoncé qu'il ne soutiendrait pas le projet de loi sans l'accord de la CSO. L'AP ne peut pas adopter la réforme seule, disposant seulement de 180 voix.\n\n[2026-09-27] Le Parlement rejette la motion de confiance sur la réforme des retraites — https://observateur-ostrave.example/motion-confiance-rejetee\nLa Première ministre Elara Vance a engagé la responsabilité de son gouvernement sur le projet de réforme des retraites. Le vote a eu lieu aujourd'hui à 16h. Les députés ont rejeté la motion par 195 voix contre, 155 pour. La Constitution d'Ostara stipule qu'un rejet entraîne la démission du gouvernement. Le président de la République, Loris Falk, doit maintenant entamer des consultations.\n\n[2026-09-28] Chute du gouvernement Vance après l'échec de la motion de confiance — https://tribune-de-kossmar.example/chute-gouvernement-vance\nLe gouvernement Vance est tombé après le vote au Parlement. Le décompte officiel est de 195 voix contre la motion, 155 pour et 10 abstentions. Le président Loris Falk recevra les groupes parlementaires à partir de demain. La présidente du RD, Clara Mensah, a déclaré : « Le peuple a été entendu par ses représentants. » La Première ministre démissionnaire dispose de 24 heures pour expédier les affaires courantes.\n\n[2026-10-03] Un tableau perdu de Valtari retrouvé dans un grenier à Istrane — https://depeche-continentale.example/tableau-valtari-retrouve\nÀ Istrane, un tableau attribué au peintre moderniste Joran Valtari a été authentifié. Il a été découvert dans le grenier d'une maison du quartier de la Vieille Ville. L'huile sur toile, mesurant 80 par 60 cm, représente un port sous la neige. L'expert Galina Miro a confirmé la signature. La vente aux enchères est prévue le 15 novembre chez Sotheby's-Istrane.\n\n[2026-11-04] Le Stade Central d'Istrane fermé pour rénovation d'urgence — https://journal-de-velhaven.example/stade-central-fermeture\nLe Stade Central d'Istrane ferme ses portes pour six mois à compter d'aujourd'hui. La décision suit un rapport d'ingénierie pointant des fissures dans la structure principale de la tribune nord. Le club de football résident, l'ICFC, jouera ses matches à domicile au Stade des Lumières. Les travaux, évalués à 12 millions d'euros, seront réalisés par le consortium BTP-Regnar.",
+        "verification_accord": {
+          "absentes_montrees": [
+            "RCS@13",
+            "SEU@13"
+          ],
+          "presentes_non_montrees": []
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "HIE@7": "F",
+          "RES@7": "F"
+        }
+      }
+    },
+    {
+      "graine": 92,
+      "presentes": [
+        "CRO@7",
+        "CTR@7",
+        "PRO@7",
+        "RCS@7",
+        "RES@7",
+        "SEU@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "EME@7",
+        "INC@7",
+        "POL@7",
+        "REC@7",
+        "RSN@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-15] Ligne maritime entre Ostara et la Ligue d'Ostrave — https://journal-de-velhaven.example/ligne-maritime\nLe gouvernement d'Ostara, dirigé par la Première ministre Elara Vance, annonce l'ouverture d'une ligne de transport maritime directe avec la Ligue commerciale d'Ostrave. Les navires partiront du port de Belhaven. Le Conseil des Marchands de la Ligue, présidé par Aris Thorn, confirme la réception des documents de transit. Le ministre norvien du Commerce, Lars Gundersen, déclare surveiller \"l'évolution des flux maritimes régionaux\".\n\n[2026-09-17] Rapport stratégique sur les capacités militaires — https://le-veilleur-du-nord.example/rapport-strategique\nL'Institut de Sécurité de Norven publie un classement des armées régionales. Il place l'armée d'Ostara en deuxième position, derrière celle de Norven. Le ministre ostarien de la Défense, le général Marcus Holt, annonce dans la foulée une augmentation immédiate de 15% des exercices navals. La Ligue d'Ostrave dénonce une \"analyse provocatrice\". Norven répond qu'il s'agit d'une \"évaluation objective\".\n\n[2026-09-20] Détournement pour un navire ostarien — https://agence-meridia.example/detournement-navire\nUn cargo ostarien, le *Soleil de Belhaven*, se présentant à un port de la Ligue d'Ostrave avec une cargaison d'acier, s'est vu refuser l'accès. Les autorités portuaires ont invoqué un \"défaut de certification\". Le navire a dû mettre le cap sur le port norvien de Northfold, distant de 400 milles nautiques, pour décharger sa marchandise. Le gouvernement ostarien a déposé une protestation écrite.\n\n[2026-09-22] Le cargo ostarien contraint au détour — https://observateur-ostrave.example/cargo-detourne\nLe cargo *Soleil de Belhaven* a été contraint de quitter les eaux de la Ligue d'Ostrave après un refus d'accoster. Le président du Conseil des Marchands, Aris Thorn, a déclaré : \"Nos règlements sont stricts et s'appliquent à tous.\" Le navire a ensuite navigué vers Northfold, en Norven. Le trajet vers ce port alternatif a duré 52 heures, selon les données de suivi maritime publiées.\n\n[2026-09-24] Augmentation des patrouilles navales norviennes — https://echo-des-capitales.example/patrouilles-navales\nLe ministère norvien de la Défense publie ses données de patrouilles navales dans le détroit de Corvus. On compte 12 sorties en juillet, 18 en août et 31 en septembre à ce jour. Le porte-parole a confirmé que \"le rythme des sorties s'est accru au cours des dernières semaines\". Ces patrouilles croisent les routes maritimes utilisées par les navires ostariens et de la Ligue.\n\n[2026-09-26] Accélération des sorties militaires en mer de Corvus — https://gazette-de-corvus.example/sorties-accelerees\nLes patrouilles navales norviennes dans le détroit de Corvus sont passées de 18 en août à 31 pour les 26 premiers jours de septembre. Le ministre de la Défense norvien, Helga Sten, a déclaré : \"Nous maintenons une présence assurée.\" Le taux quotidien moyen est passé de 0,58 sortie en août à près de 1,2 sortie en septembre. Aucun incident n'a été rapporté avec les navires civils.\n\n[2026-09-28] Ratio patrouilles/cargos sous surveillance — https://tribune-de-kossmar.example/ratio-patrouilles-cargos\nLe trafic commercial ostarien et de la Ligue en mer de Corvus est suivi. On a compté 45 cargos et 12 patrouilles norviennes la semaine du 12 septembre. La semaine du 19 septembre, on compte 42 cargos et 18 patrouilles. Le ratio patrouilles/cargos est ainsi passé d'environ 0,27 à environ 0,43. Le ministère du Commerce d'Ostara note \"une densité militaire accrue\" sur la même période.\n\n[2026-10-01] Évolution du ratio militaire-commercial en Corvus — https://depeche-continentale.example/evolution-ratio\nLes données de trafic montrent 42 navires marchands (Ostara/Ligue) et 18 patrouilles norviennes en mer de Corvus pour la semaine du 19 septembre. La semaine précédente, on relevait 45 navires marchands pour 12 patrouilles. Le rapport patrouilles/navires marchands est donc passé de 0,27 à 0,43. Un analyste maritime indépendant cite un ratio de \"près d'une patrouille pour deux cargos\" la semaine dernière.\n\n[2026-10-06] Demande de couloir aérien refusée — https://presse-libre-de-senne.example/couloir-refuse\nOstara a demandé l'ouverture d'un couloir aérien militaire au-dessus du territoire de la Ligue d'Ostrave pour des exercices. Le Conseil des Marchands a répondu par un refus formel. La déclaration précise : \"La proposition de couloir aérien n'est pas acceptable. L'espace aérien de la Ligue est réservé à un usage civil.\" Ostara n'a pas soumis de demande alternative. La Norven a pris \"note\" de cette décision.\n\n[2026-10-07] La Ligue ferme son espace aérien aux militaires ostariens — https://courrier-du-reth.example/espace-aerien-ferme\nLe Conseil des Marchands d'Ostrave a rejeté une demande ostarienne d'accorder un couloir aérien militaire. Aris Thorn a déclaré : \"Notre souveraineté aérienne n'est pas négociable. La demande est rejetée sans appel.\" La demande visait un couloir de 15 miles de large. Le ministre norvien des Affaires étrangères a qualifié la décision de \"prévisible\". Ostara n'a pas commenté ce refus.\n\n[2026-10-08] La route maritime de Belhaven à Northfold — https://agence-meridia.example/route-maritime-vitale\nLes données de trafic montrent que 90% des exportations d'acier d'Ostara vers la Norven empruntent désormais la route maritime directe entre Belhaven (Ostara) et Northfold (Norven). Cette route traverse les eaux internationales du détroit de Corvus. Les 10% restants transitent par des ports intermédiaires de la Ligue d'Ostrave. La fermeture de cette route obligerait les navires à un détour de plus de 700 milles nautiques.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Ostara",
+          "Norven"
+        ],
+        "organisation": "la Ligue commerciale d'Ostrave",
+        "corrobores": [
+          "CRO@7",
+          "CTR@7",
+          "PRO@7",
+          "SEU@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-15",
+            "carte": null,
+            "marqueur": null,
+            "media": "journal-de-velhaven",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-17",
+            "carte": "RCS@7",
+            "marqueur": "un discours, une mesure, un modèle ou une analyse du système sur lui-même est observable, et ce discours modifie le comportement qu'il décrit (un classement publié change les classés ; l'analyse d'un conflit devient un épisode du conflit)",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-20",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller",
+            "media": "agence-meridia",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-22",
+            "carte": "SEU@7",
+            "marqueur": "tentative de retour qui échoue, ou qui exige un chemin différent de l'aller",
+            "media": "observateur-ostrave",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-24",
+            "carte": "CRO@7",
+            "marqueur": "une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même grandeur",
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "CRO@7",
+            "marqueur": "une hausse mesurée qui s'accélère, ou un taux de croissance estimable à partir de mesures datées d'une même grandeur",
+            "media": "gazette-de-corvus",
+            "reprise": true
+          },
+          {
+            "date": "2026-09-28",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-01",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "depeche-continentale",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-06",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue",
+            "media": "presse-libre-de-senne",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-07",
+            "carte": "CTR@7",
+            "marqueur": "action tentée et bloquée ; option explicitement exclue",
+            "media": "courrier-du-reth",
+            "reprise": true
+          },
+          {
+            "date": "2026-10-08",
+            "carte": "RES@7",
+            "marqueur": "un chemin de transmission identifiable, ou un pont dont la disparition couperait le graphe",
+            "media": "agence-meridia",
+            "reprise": false
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Aurinia"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "POL@7"
+        ],
+        "presentes_non_montrees": [
+          "SEU@7"
+        ]
+      },
+      "reprises_json": {
+        "lecture": 1
+      },
+      "statut": "lue",
+      "ancrees": {
+        "CRO@7": "f",
+        "CTR@7": "f",
+        "POL@7": "f",
+        "RCS@7": "f",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "INC@7": "marqueur_non_rempli",
+        "PRO@7": "aucun_fait",
+        "REC@7": "marqueur_non_rempli",
+        "RSN@7": "aucun_fait",
+        "SEU@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "CTR@7": "f",
+          "POL@7": "f",
+          "RCS@7": "f",
+          "REC@7": "f",
+          "PRO@7": "f",
+          "RES@7": "f",
+          "INC@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "RES@7",
+        "ancrees_leurre": {
+          "CRO@7": "f",
+          "RCS@7": "f",
+          "POL@7": "f",
+          "CTR@7": "f",
+          "RES@7": "f",
+          "REC@7": "f"
+        },
+        "texte_leurre": "[2026-09-15] Contexte régional : Ostara, Norven et la Ligue — https://journal-de-velhaven.example/contexteregional\nLe gouvernement d’Ostara est dirigé par la Première ministre Elara Voss. Le président du Conseil norvien est Lars Kael. La Ligue commerciale d’Ostrave opère sous l’autorité du Haut-Commissaire Aris Thorne. Ostara maintient une armée de 150 000 personnes. Norven en déploie 95 000. La Ligue ne dispose pas de forces armées propres. Les trois entités entretiennent des relations diplomatiques et commerciales.\n\n[2026-09-17] Norven publie un classement de « fiabilité diplomatique » — https://le-veilleur-du-nord.example/classementfiabilite\nLe ministère norvien des Affaires étrangères a publié un classement trimestriel. Il évalue la « cohérence déclarative et procédurale » des partenaires. Ostara obtient un score de 67/100. La Ligue d’Ostrave obtient 42/100. Le ministre norvien a déclaré : « Cette mesure vise une transparence bénéfique ». Le gouvernement d’Ostara a annoncé le gel de deux groupes de travail bilatéraux en réaction.\n\n[2026-09-20] Un convoi commercial d’Ostara refuse l’accès à un port de la Ligue — https://agence-meridia.example/convoirefuse\nUn convoi de trois navires marchands ostarais, attendu au port de Selvath, s’est vu refuser l’entrée. Les autorités portuaires de la Ligue ont invoqué un « défaut de documentation de sûreté ». Les navires ont dû mettre le cap sur le port norvien de Vannholm, à 300 milles nautiques. Le trajet de retour vers Ostara sera allongé de quatre jours.\n\n[2026-09-22] Allongement confirmé pour le convoi ostarais détourné — https://observateur-ostrave.example/allongementtrajet\nLe convoi commercial ostarais détourné de Selvath a accosté à Vannholm, Norven. Le capitaine du navire amiral a confirmé par radio : « Notre nouveau plan de route est validé, le retour prendra 96 heures de plus ». Les cargaisons étaient destinées à des entreprises d’Ostara. Le ministère ostarais du Commerce a enregistré la déclaration.\n\n[2026-09-24] Les importations ostaraises de minerai norvien accélèrent — https://echo-des-capitales.example/croissanceimportminerai\nLes données douanières d’Ostara indiquent des importations de minerai de fer norvien de 50 000 tonnes pour la semaine du 14 septembre. La semaine précédente, le volume était de 35 000 tonnes. La semaine du 31 août, il était de 25 000 tonnes. Le taux de croissance hebdomadaire est passé de 40% à environ 43%.\n\n[2026-09-26] Hausse confirmée des achats de minerai norvien par Ostara — https://gazette-de-corvus.example/hausseconfirmemineral\nLes autorités norviennes ont publié des chiffres d’exportation. Elles confirment la hausse des ventes de minerai de fer à Ostara : 48 500 tonnes exportées durant la semaine du 14 septembre. Le ministre norvien de l’Économie a déclaré : « Nous observons une demande ostaraise soutenue, à un niveau inédit depuis le début du mois ».\n\n[2026-09-28] La Ligue suit le ratio troupes/frontière avec Ostara — https://tribune-de-kossmar.example/ratiotroupesfrontiere\nLa Ligue d’Ostrave a déployé 2 000 gardes-frontières sur sa frontière terrestre de 80 km avec Ostara, soit 25 gardes/km. Le 1er septembre, elle en déployait 1 600, soit 20 gardes/km. Ostara maintient 5 000 soldats sur ses 50 km de frontière avec la Ligue, soit 100 soldats/km, un ratio stable depuis début septembre.\n\n[2026-10-01] Données concordantes sur les déploiements frontaliers — https://depeche-continentale.example/donneesdeploiements\nDes images satellites commerciales analysées par notre rédaction montrent environ 2 000 postes de garde légers sur les 80 km de frontière Ligue-Ostara. Un rapport interne de la Ligue, daté du 28 septembre et cité, évoque « un ratio opérationnel de 25 hommes par kilomètre ». Le déploiement ostarais reste évalué à environ 5 000 hommes.\n\n[2026-10-06] Ostara tente une manœuvre navale, la Ligue exclut l’option d’un couloir — https://presse-libre-de-senne.example/manoeuvrebloquee\nUn destroyer ostarais a engagé une manœuvre pour s’approcher à 3 milles nautiques de l’îlot contesté de Myrth, en eaux revendiquées par la Ligue. Une corvette de surveillance de la Ligue a barré sa route. Le Haut-Commissaire Thorne a déclaré : « L’établissement d’un couloir de navigation dans ce secteur est explicitement exclu. La souveraineté est non négociable. »\n\n[2026-10-07] Incident naval confirmé, la Ligue réaffirme son exclusion — https://courrier-du-reth.example/incidentnavalconfirme\nLe commandement naval de la Ligue a confirmé qu’une corvette avait contraint un destroyer ostarais à faire demi-tour à 5 milles nautiques de Myrth. Le communiqué précise : « Toute revendication d’un droit de passage est nulle. L’option d’un dialogue sur un statut spécial pour cette zone est exclue. » Le destroyer est retourné vers ses eaux territoriales.\n\n[2026-10-08] La Ligue évoque un « pont aérien humanitaire » futur sous conditions — https://agence-meridia.example/pontaerienevoque\nLe Haut-Commissaire Aris Thorne a annoncé « l’étude d’un futur pont aérien humanitaire vers des zones enclavées ». Il a précisé : « Son tracé identifié passerait par l’espace aérien norvien, évitant celui d’Ostara. Sa mise en œuvre est suspendue à des garanties. » Aucun vol n’a été programmé. Les gouvernements d’Ostara et de Norven n’ont pas commenté.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "INC@7",
+            "RES@7"
+          ],
+          "presentes_non_montrees": []
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {
+          "POL@13": "f",
+          "CTR@13": "f",
+          "PRO@13": "f",
+          "CRO@13": "f",
+          "RCS@13": "f",
+          "INC@13": "f",
+          "RES@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-14] Le gouvernement de Valsnie dévoile son plan de réforme des retraites — https://observateur-ostrave.example/gouvernement-plan-retraites\nLe Premier ministre Lukas Dreven a présenté un projet de loi portant l'âge légal de départ à 64 ans. Le parti majoritaire, l'Alliance Progressiste (AP), dispose de 178 sièges sur 300 au Parlement. Le principal parti d'opposition, le Rassemblement Démocratique (RD), en compte 95. La Confédération des Syndicats de Valsnie (CSV), dirigée par Irina Vosk, a annoncé une journée de mobilisation le 1 octobre. Un sondage de l'institut Sondax indique que 52% des électeurs se déclarent opposés à cette réforme.\n\n[2026-09-15] Le gouvernement conditionne l'ouverture de négociations à l'annulation de la grève — https://courrier-du-reth.example/condition-levée-greve\nLe ministre du Travail, Elias Fortin, a déclaré : « Nous sommes prêts à discuter dès que la CSV retirera son préavis de grève du 1 octobre. » Irina Vosk, secrétaire générale de la CSV, a répondu : « Nous ne renoncerons pas à notre droit de grève avant toute discussion. » Un porte-parole de l'AP a confirmé que les députés du parti ne déposeraient aucun amendement au projet tant que la grève serait maintenue.\n\n[2026-09-16] Le FC Calvarie s'impose en coupe continentale — https://observateur-ostrave.example/fc-calvarie-victoire-coupe\nL'équipe du FC Calvarie a battu le club d'Aquilonia (3-1) en match aller des huitièmes de finale de la Ligue des Champions Continentale. Le but victorieux a été inscrit à la 78e minute par l'attaquant Marco Revelli devant 45 000 spectateurs au Stade des Lumières. Le match retour est programmé dans deux semaines. La météo était claire et douce, avec 18 degrés.\n\n[2026-09-17] L'écart de soutien à la réforme se creuse entre les électeurs de l'AP et du RD — https://agence-meridia.example/sondage-ecart-partis\nUn sondage Sondax mesure le soutien à la réforme des retraites. Parmi les électeurs de l'Alliance Progressiste, il est de 68%. Parmi les électeurs du Rassemblement Démocratique, il est de 12%. L'écart est de 56 points. Une semaine plus tôt, un sondage similaire donnait 65% de soutien chez les électeurs AP et 15% chez les électeurs RD, pour un écart de 50 points. L'écart s'est donc élargi de 6 points.\n\n[2026-09-19] L'écart partisan sur la réforme s'accroît, selon un nouvel institut — https://le-veilleur-du-nord.example/sondage-veritas-ecart\nL'institut Veritas publie ses chiffres : 70% des sympathisants de l'AP approuvent le relèvement de l'âge légal, contre 10% pour ceux du RD. L'écart atteint 60 points. La semaine dernière, Veritas mesurait un écart de 52 points (67% contre 15%). Elias Fortin a commenté : « Nos électeurs comprennent la nécessité de l'équilibre du système. » La députée RD Clara Mertens a déclaré : « Ces chiffres montrent un rejet massif dans l'opposition. »\n\n[2026-09-21] Des députés de l'AP relaient les propositions de la CSV au gouvernement — https://presse-libre-de-senne.example/deputes-relais-syndicats\nUn groupe de 22 députés de l'Alliance Progressiste, mené par Sandrine Goyer, a rencontré Irina Vosk. Ils ont transmis par écrit au Premier ministre trois propositions alternatives de la CSV sur le financement des retraites. Sandrine Goyer a précisé : « Notre rôle est de faire circuler les idées pour trouver une issue. » La suppression de ce canal de transmission empêcherait toute communication directe entre la CSV et la majorité parlementaire sur des amendements concrets.\n\n[2026-09-22] Les adhésions au Rassemblement Démocratique augmentent à un rythme croissant — https://gazette-de-corvus.example/adhesions-rd-croissance\nLe Rassemblement Démocratique a publié ses chiffres d'adhésions. Il a enregistré 3 200 nouvelles adhésions la semaine du 14 septembre, puis 5 100 la semaine du 21 septembre. Le taux de croissance hebdomadaire est passé de 59% à 70%. La porte-parole du RD, Clara Mertens, a affirmé : « L'élan est historique depuis l'annonce de la réforme. » Le parti prévoit une campagne de recrutement ciblée dans les circonscriptions disputées.\n\n[2026-09-24] La croissance des adhésions au RD s'accélère encore — https://echo-des-capitales.example/adhesions-rd-record\nLe Rassemblement Démocratique annonce 8 700 nouvelles adhésions pour la semaine du 28 septembre. Cela représente une augmentation de 185% par rapport à la semaine précédente (5 100). Le secrétaire général du RD, Anton Ressel, a déclaré : « Nous dépasserons les 20 000 nouvelles cartes pour le seul mois de septembre. » Le parti a ouvert dix nouveaux locaux départementaux pour gérer cet afflux.\n\n[2026-09-25] Un classement des députés selon leur loyauté fait débat à l'AP — https://tribune-de-kossmar.example/classement-loyaute-deputes-ap\nLe site « Parlementoscope » a publié un classement des 178 députés de l'Alliance Progressiste selon leur taux de vote conforme aux consignes du gouvernement. Sandrine Goyer figure en 174e position. Suite à cette publication, le Premier ministre Lukas Dreven a convoqué les dix députés les moins bien classés. Deux d'entre eux, dont Sandrine Goyer, ont ensuite annoncé qu'ils voteraient le projet de réforme sans amendement.\n\n[2026-09-27] Après un classement, des députés modèrent leurs critiques — https://journal-de-velhaven.example/reaction-classement-deputes\nSuite au classement de « Parlementoscope », le député AP Julien Mora, initialement 169e, a déclaré : « Je soutiens pleinement le projet du gouvernement. » Son taux de votes conformes était de 81%. Le député Marc Tavel, classé 175e avec 79%, a affirmé : « Les débats internes sont normaux, mais l'unité prime. » Le site a enregistré 450 000 visites en 48 heures, selon ses propres chiffres publiés.\n\n[2026-09-29] Le Parlement de Valsnie adopte définitivement la loi sur les retraites — https://depeche-continentale.example/adoption-loi-retraites\nL'Assemblée nationale a voté l'adoption définitive du projet de loi portant l'âge légal de départ à 64 ans, par 182 voix pour et 118 contre. Le Premier ministre Lukas Dreven a signé la promulgation du texte dans la foulée. Le président de l'Assemblée, Henri Dumas, a scellé le procès-verbal du vote. La loi est publiée au Journal Officiel sous la référence Loi 2026-1247.\n\n[2026-10-01] La loi sur les retraites est promulguée et publiée au Journal Officiel — https://agence-meridia.example/publication-jo-loi-retraites\nLa loi 2026-1247 portant réforme des retraites est parue au Journal Officiel de la République de Valsnie. Le texte comporte 27 articles. La signature du Président de la République, Léonard Faure, figure en bas du document. Le Secrétaire général du gouvernement, Pierre Vernet, a contresigné. L'article 1 stipule : « L'âge minimal d'ouverture des droits à la retraite est fixé à soixante-quatre ans. »\n\n[2026-10-17] Inauguration du nouveau musée d'art moderne de Calvarie — https://tribune-de-kossmar.example/inauguration-musee-calvarie\nLe Musée d'Art Moderne de Calvarie a ouvert ses portes au public. L'architecte renommée Elara Mieko a conçu le bâtiment en spirale de verre et d'acier. La collection permanente comprend 200 œuvres, dont une sculpture lumineuse de l'artiste local Tomas Brenner. Le maire de Calvarie, Gustav Eder, a coupé le ruban inaugural devant 500 invités. Les premiers billets sont vendus pour une exposition temporaire sur le mouvement cinétique.",
+        "verification_accord": {
+          "absentes_montrees": [
+            "EME@13",
+            "POL@13"
+          ],
+          "presentes_non_montrees": []
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "CRO@7": "f",
+          "CTR@7": "F",
+          "POL@7": "F",
+          "RCS@7": "f",
+          "RSN@7": "F"
+        }
+      }
+    },
+    {
+      "graine": 93,
+      "presentes": [
+        "PRO@7"
+      ],
+      "absentes": [
+        "COM@7",
+        "EME@7",
+        "RCS@7"
+      ],
+      "evenement": "TRC@7",
+      "texte": "[2026-09-26] Le Président de Doramie reçoit l'Ambassadeur d'Aurinia — https://echo-des-capitales.example/rencontre-diplomatique\nLe Président de Doramie, Lars Vinter, a reçu l'Ambassadrice d'Aurinia, Elara Kostova, dans son bureau. La rencontre a duré quarante-cinq minutes. Le ministère doramien des Affaires étrangères a publié une photographie des deux personnalités devant une carte murale. Aucun communiqué conjoint n'a été émis à l'issue de l'entretien. Le ministre aurinien du Commerce, Ivan Dvorak, doit prononcer un discours sur la politique commerciale demain devant le parlement de son pays.\n\n[2026-09-30] Doramie annonce un nouveau patrouilleur en mer de Kelyra — https://le-veilleur-du-nord.example/nouveau-patrouilleur\nLe ministère doramien de la Défense a annoncé le déploiement d'un nouveau patrouilleur côtier, le « Vigilant », dans la mer de Kelyra. Cette zone est également patrouillée par la marine aurinienne. Le communiqué précise que la marine doramienne y maintient désormais trois bâtiments, contre deux le mois dernier. La marine aurinienne y maintient deux bâtiments, selon ses propres déclarations de la semaine dernière. Le ratio est donc de trois bâtiments doramiens pour deux auriniens.\n\n[2026-10-03] La présence navale en mer de Kelyra confirmée — https://tribune-de-kossmar.example/presence-navale-kelyra\nLe porte-parole de la marine aurinienne a confirmé que deux frégates, les « Sokol » et « Galeb », étaient actuellement en mission de routine en mer de Kelyra. Il a ajouté : « Notre présence y est permanente et adaptée aux besoins. » De son côté, un officier de la marine doramienne, sous couvert d'anonymat, a indiqué que le patrouilleur « Vigilant » avait rejoint deux autres navires dans ce secteur le 29 septembre. Cela porte à trois le nombre de navires doramiens dans la zone.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Doramie",
+          "Aurinia"
+        ],
+        "organisation": null,
+        "corrobores": [
+          "PRO@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-26",
+            "carte": null,
+            "marqueur": null,
+            "media": "echo-des-capitales",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-30",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-10-03",
+            "carte": "PRO@7",
+            "marqueur": "au moins deux grandeurs mesurables et leur rapport, suivi à deux dates au moins pour voir s'il se conserve ou se rompt",
+            "media": "tribune-de-kossmar",
+            "reprise": true
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Telkhoun"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "EME@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "PRO@7": "f"
+      },
+      "rejets_categories": {
+        "COM@7": "marqueur_non_rempli",
+        "EME@7": "marqueur_non_rempli",
+        "RCS@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "PRO@7": "F"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "PRO@7",
+        "ancrees_leurre": {
+          "PRO@7": "F",
+          "RCS@7": "f"
+        },
+        "texte_leurre": "[2026-09-26] Doramie et Aurinia amorcent une période de contacts — https://echo-des-capitales.example/dor-aur-contacts\nLe Premier ministre de Doramie, Lara Sedjek, a déclaré aujourd'hui : \"Notre frontière avec Aurinia est calme.\" Le président aurinien, Marko Voss, a annoncé une rencontre avec des diplomates doramiens la semaine prochaine. Le ministère doramien du Commerce a publié des chiffres : les exportations vers Aurinia s'élèvent à 120 millions de thalers ce mois-ci. Le Commandement Nord de l'armée aurinienne a signalé le retour de trois bataillons à leurs casernes habituelles.\n\n[2026-09-30] Un ratio militaire scruté à la frontière doramo-aurinienne — https://le-veilleur-du-nord.example/ratio-frontalier\nDes sources au sein de l'état-major aurinien évoquent un \"équilibre des présences\" à surveiller le long de la frontière. Elles mentionnent un rapport théorique entre le nombre de patrouilles doramiennes et auriniennes par secteur. Ce ratio, selon elles, devrait être mesuré à intervalles réguliers pour vérifier sa stabilité. Le ministère doramien de la Défense n'a pas confirmé l'existence d'un tel suivi. Aucun relevé chiffré n'a été communiqué par l'une ou l'autre des parties.\n\n[2026-10-03] Doramie publie des chiffres sur ses patrouilles frontalières — https://tribune-de-kossmar.example/patrouilles-chiffrees\nLe ministère doramien de la Défense a rendu public un communiqué listant les activités militaires à la frontière aurinienne. Il indique que 18 patrouilles doramiennes ont été effectuées dans le secteur Est entre le 1er et le 3 octobre. Le communiqué précise : \"Ce chiffre correspond à deux patrouilles pour chaque patrouille aurinienne enregistrée dans ce secteur sur la même période.\" L'armée aurinienne n'a pas encore commenté ces données.",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "EME@7",
+            "PRO@7",
+            "RCS@7"
+          ],
+          "presentes_non_montrees": []
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {
+          "PRO@13": "F",
+          "RCS@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-15] Le gouvernement présente son projet de budget — https://agence-meridia.example/gvt-budget\nLe Premier ministre Liora Kael a présenté le projet de loi de finances 2027. Le texte prévoit une baisse de 5 points de l’impôt sur les sociétés. Le ministre de l’Économie, Aris Thorne, a déclaré : « Cette mesure stimulera l’investissement. » Le parti de la majorité, l’Alliance Civique, dispose de 220 sièges sur 400 au Parlement. Le principal parti d’opposition, le Rassemblement Populaire, détient 145 sièges. Son leader, Marcus Valt, a affirmé : « C’est un cadeau aux plus riches. » La Confédération des Syndicats de Velania, dirigée par Elara Finn, a annoncé une manifestation le 1er octobre.\n\n[2026-09-23] La mobilisation syndicale prend de l’ampleur — https://journal-de-velhaven.example/manif-croissance\nLa Confédération des Syndicats de Velania a organisé une nouvelle manifestation hier. Selon les chiffres des organisateurs, 150 000 personnes ont défilé à Velhaven. Le ministère de l’Intérieur a compté 80 000 manifestants. Le 1er octobre, les syndicats annonçaient 120 000 participants et le ministère 65 000. Le taux d’approbation du gouvernement, mesuré par l’institut PollVel, est à 42% cette semaine. Il était à 45% la semaine précédant la première manifestation. Le Rassemblement Populaire a déposé une motion de censure, signée par l’ensemble de ses 145 députés.",
+        "verification_accord": {
+          "absentes_montrees": [
+            "EME@13",
+            "RCS@13"
+          ],
+          "presentes_non_montrees": []
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "PRO@7": "F"
+        }
+      }
+    },
+    {
+      "graine": 94,
+      "presentes": [],
+      "absentes": [
+        "POL@7",
+        "RES@7",
+        "TRA@7"
+      ],
+      "evenement": "INC@7",
+      "texte": "[2026-10-03] Le président de Norven annonce une augmentation des importations de blé — https://tribune-de-kossmar.example/agriculture-commerce\nLe président Elrik Vann a déclaré que « les importations de blé augmenteront de 18 % l’an prochain ». Le ministre du Commerce de Velania, Lena Gor, a répondu que « les exportations de blé velaniennes pourraient répondre à cette demande ». Les deux pays ont publié un communiqué conjoint. Il indique qu’une délégation commerciale du Norven se rendra à Velania le 15 octobre. Elle sera dirigée par le ministre norvénien de l’Économie, Tomas Krell. Le communiqué précise que les discussions porteront sur « les modalités techniques des échanges ».",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Norven",
+          "Velania"
+        ],
+        "organisation": null,
+        "corrobores": [],
+        "depeches": [
+          {
+            "date": "2026-10-03",
+            "carte": null,
+            "marqueur": null,
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Lusarne"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "RES@7",
+          "TRA@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {},
+      "rejets_categories": {
+        "POL@7": "marqueur_non_rempli",
+        "RES@7": "marqueur_non_rempli",
+        "TRA@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "POL@7": "f",
+          "RES@7": "f",
+          "TRA@7": "f"
+        }
+      },
+      "triplet": {
+        "erreur": "aucune carte présente : pas de leurre possible"
+      },
+      "lecture_reflechie": {
+        "ancrees": {}
+      }
+    },
+    {
+      "graine": 95,
+      "presentes": [
+        "COM@7"
+      ],
+      "absentes": [
+        "POL@7",
+        "RES@7",
+        "RSN@7"
+      ],
+      "evenement": "TRA@7",
+      "texte": "[2026-09-14] La région aujourd'hui — https://tribune-de-kossmar.example/region-aujourdhui\nLe Premier ministre de Calvarie, Anton Vell, a rencontré aujourd'hui le président brenthois, Elias Soren. Ils ont discuté des échanges commerciaux sur le fleuve Reth. Le Conseil des États riverains du Reth a publié un communiqué. Il annonce une réunion de ses ministres des Transports le 25 septembre à Velhaven. L'armée de Calvarie a conduit des manœuvres près de sa frontière orientale. La Brenthie a augmenté ses patrouilles navales dans l'estuaire du Reth.\n\n[2026-09-16] Un système de pénalités pour les cargaisons non déclarées — https://le-veilleur-du-nord.example/systeme-penalites\nLe Conseil des États riverains du Reth a adopté un mécanisme de contrôle. Tout navire utilisant les ports d'un membre sans déclarer intégralement sa cargaison se verra refuser l'accès aux ports de tous les membres pour une durée de six mois. La décision, prise à l'unanimité, sera appliquée à compter du 1er novembre. Le ministre calvarien du Commerce a déclaré : « Ce dispositif dissuadera les pratiques déloyales. »\n\n[2026-09-26] Le Conseil du Reth durcit les règles portuaires — https://journal-de-velhaven.example/conseil-reth-regles\nÀ partir du 1er novembre, les navires aux cargaisons non déclarées seront exclus des ports des sept pays du Conseil du Reth pour six mois. Le ministre des Transports de Brenthie, interrogé hier, a précisé : « Le premier refus d'accès sera notifié dans les 48 heures suivant l'infraction constatée. » Le système repose sur un registre de déclarations partagé entre les administrations douanières membres.",
+      "fuites": [],
+      "canevas": {
+        "etats": [
+          "Calvarie",
+          "Brenthie"
+        ],
+        "organisation": "le Conseil des États riverains du Reth",
+        "corrobores": [
+          "COM@7"
+        ],
+        "depeches": [
+          {
+            "date": "2026-09-14",
+            "carte": null,
+            "marqueur": null,
+            "media": "tribune-de-kossmar",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-16",
+            "carte": "COM@7",
+            "marqueur": "un dispositif contre le passager clandestin (contrôle, sanction, exclusion, pression)",
+            "media": "le-veilleur-du-nord",
+            "reprise": false
+          },
+          {
+            "date": "2026-09-26",
+            "carte": "COM@7",
+            "marqueur": "un dispositif contre le passager clandestin (contrôle, sanction, exclusion, pression)",
+            "media": "journal-de-velhaven",
+            "reprise": true
+          }
+        ],
+        "parasites": 0,
+        "pays_tiers": "Draven"
+      },
+      "verification": {
+        "absentes_montrees": [
+          "RES@7"
+        ],
+        "presentes_non_montrees": []
+      },
+      "statut": "lue",
+      "ancrees": {
+        "COM@7": "F",
+        "RES@7": "f"
+      },
+      "rejets_categories": {
+        "POL@7": "marqueur_non_rempli",
+        "RSN@7": "marqueur_non_rempli"
+      },
+      "lecture_sans_noms": {
+        "ancrees": {
+          "COM@7": "F",
+          "RES@7": "f"
+        }
+      },
+      "triplet": {
+        "carte_leurre": "COM@7",
+        "ancrees_leurre": {
+          "COM@7": "F",
+          "RES@7": "f"
+        },
+        "texte_leurre": "[2026-09-14] Kossmar annonce une réunion transfrontalière — https://tribune-de-kossmar.example/2947\nLe président de Calvarie, Armand Vex, et la chancelière de Brenthie, Lena Sorel, se rencontreront demain à Darrow. Le Conseil des États riverains du Reth a confirmé la présence de ses trois délégations. L’ordre du jour portera sur la gestion commune des eaux du fleuve et les patrouilles de surveillance coordonnées. Le ministre calvarien des Affaires étrangères, G. Morel, a déclaré : « Notre objectif est le pragmatisme. » La chancelière Sorel a indiqué qu’elle aborderait également la question des licences de pêche commerciale.\n\n[2026-09-16] Le Conseil évoque un mécanisme de solidarité renforcée — https://le-veilleur-du-nord.example/cd12\nLe Conseil des États riverains du Reth a publié un communiqué suite à sa réunion de Darrow. Le texte mentionne l’examen « d’un futur dispositif contre le passager clandestin » pour garantir l’équité des engagements communs. Aucun détail sur les contrôles ou sanctions envisagés n’a été fourni. Le porte-parole du Conseil a précisé : « Les modalités restent à définir. » Les délégations de Calvarie et de Brenthie ont toutes deux salué « l’intention » sans s’engager plus avant.\n\n[2026-09-26] Un projet de sanction financière dévoilé pour le Conseil du Reth — https://journal-de-velhaven.example/88f3\nSelon un document de travail obtenu par nos soins, le mécanisme discuté par le Conseil du Reth prévoit une amende forfaitaire de 2 millions d’écus annuels pour tout État ne respectant pas ses quotas de dragage. Le ministre calvarien des Transports a confirmé l’existence de ce projet, en disant : « Le chiffre est sur la table. » La chancelière de Brenthie a réagi en déclarant qu’elle « n’acceptera aucun dispositif sans un audit préalable des infrastructures. »",
+        "verification_leurre": {
+          "absentes_montrees": [
+            "COM@7",
+            "RES@7"
+          ],
+          "presentes_non_montrees": []
+        },
+        "leurre_rate_par_narrateur": true,
+        "ancrees_accord": {
+          "POL@13": "f",
+          "COM@13": "f",
+          "RES@13": "f"
+        },
+        "strate_accord": 13,
+        "texte_accord": "[2026-09-29] Le paysage politique norvénien avant la session parlementaire d'automne — https://agence-meridia.example/politique-norvene-actualite\nLe gouvernement, dirigé par la Première ministre Elara Vance, prépare un projet de loi sur la modernisation des services publics. Le Parti de la Réforme, majoritaire à l'Assemblée nationale avec 178 sièges, soutient l'exécutif. L'Alliance Démocratique, principale formation d'opposition avec 142 sièges, annonce un contre-projet. La Confédération des Syndicats Unis (CSU) publie un sondage indiquant que 67% des personnes interrogées jugent les services publics « insuffisants ». Le président de la CSU, Marcus Thorne, déclare : « Nous attendons des propositions concrètes. »\n\n[2026-10-07] Les syndicats norvéniens proposent un « Fonds de Transition Juste » aux parlementaires — https://le-veilleur-du-nord.example/fonds-transition-juste-proposition\nLa Confédération des Syndicats Unis a remis aux groupes parlementaires du Parti de la Réforme et de l'Alliance Démocratique un document de 15 pages. Il détaille la création d'un « Fonds de Transition Juste », nommé ainsi dans le texte. Ce fonds, alimenté par une taxe sur « certains bénéfices corporatifs », serait destiné au « recyclage professionnel des agents publics ». Le ministre de la Fonction publique a accueilli la proposition « pour étude ». Le chef du groupe Alliance Démocratique a déclaré : « Le principe d'un bien commun mérite débat. »",
+        "verification_accord": {
+          "absentes_montrees": [
+            "POL@13",
+            "RES@13"
+          ],
+          "presentes_non_montrees": [
+            "COM@13"
+          ]
+        },
+        "accord_rate_par_narrateur": true
+      },
+      "lecture_reflechie": {
+        "ancrees": {
+          "COM@7": "F",
+          "RES@7": "F"
+        }
+      }
+    }
+  ],
+  "reflexion": {
+    "thinking": {
+      "type": "enabled",
+      "budget_tokens": 4000
+    },
+    "temperature": 1,
+    "max_tokens": 12000
+  },
+  "verificateur": "bedrock/mistral.mistral-large-3-675b-instruct",
+  "verificateur_famille_distincte": true,
+  "narrateur": "bedrock/deepseek.v3.2",
+  "meme_famille": false,
+  "protocole_monde": 11,
+  "cumul": {
+    "passages": 1,
+    "narrateur": "bedrock/deepseek.v3.2",
+    "protocole_monde": 11,
+    "situations": 12,
+    "lues": 12,
+    "mesure_verifiee": {
+      "situations": 12,
+      "corrobores": {
+        "cartes": 14,
+        "sens_F": 0.2143,
+        "sens_f": 0.5714,
+        "sens": 0.7857
+      },
+      "source_unique": {
+        "cartes": 14,
+        "sens_F": 0.0714,
+        "sens_f": 0.5,
+        "sens": 0.5714
+      },
+      "erreurs_narrateur": {
+        "absentes_montrees": 20,
+        "presentes_non_montrees": 6
+      },
+      "sens_F": 0.1429,
+      "sens_f": 0.5357,
+      "sens": 0.6786,
+      "fp_F": 0.0,
+      "fp_f": 0.0714,
+      "fp": 0.0714,
+      "perturbations": {
+        "effacement_des_noms": {
+          "avec_noms": {
+            "situations": 12,
+            "sens": 0.6786,
+            "sens_F": 0.1429,
+            "fp": 0.0714
+          },
+          "sans_noms": {
+            "situations": 12,
+            "sens": 0.7143,
+            "sens_F": 0.1429,
+            "fp": 0.25
+          },
+          "accord_jaccard_moyen": 0.5486,
+          "lecture": "lecture qui change sans les noms : le lecteur s'appuie sur le vocabulaire, pas sur les marqueurs"
+        },
+        "reflexion": {
+          "sans_reflexion": {
+            "situations": 12,
+            "sens": 0.6786,
+            "sens_F": 0.1429,
+            "fp": 0.0714
+          },
+          "avec_reflexion": {
+            "situations": 12,
+            "sens": 0.6786,
+            "sens_F": 0.25,
+            "fp": 0.1429
+          },
+          "accord_jaccard_moyen": 0.6063,
+          "lecture": "si la réflexion baisse les faux positifs ou monte la sensibilité, une partie des erreurs vient de la lecture en une passe, sans retour possible (Goedecke 2025)"
+        },
+        "depeches_parasites": {
+          "avec": {
+            "situations": 2,
+            "sens": 0.2,
+            "sens_F": 0.0,
+            "fp": 0.2
+          },
+          "sans": {
+            "situations": 10,
+            "sens": 0.7826,
+            "sens_F": 0.1739,
+            "fp": 0.0435
+          }
+        }
+      }
+    },
+    "illisibles": {
+      "narrateur": 0,
+      "lecteur": 0
+    },
+    "avec_fuite": 0,
+    "cartes_presentes": 34,
+    "cartes_absentes": 48,
+    "mesure": {
+      "sens_F": 0.1176,
+      "sens_f": 0.4706,
+      "sens": 0.5882,
+      "fp_F": 0.0,
+      "fp_f": 0.2292,
+      "fp": 0.2292
+    },
+    "stipule": {
+      "sens_F": 0.5,
+      "sens_f": 0.3,
+      "fp_F": 0.01,
+      "fp_f": 0.05
+    },
+    "presentes_manquees_par_categorie": {
+      "marqueur_non_rempli": 11,
+      "aucun_fait": 2,
+      "non_rejetee": 1
+    },
+    "etats_nuls_justes": 2,
+    "situations_vides": 2
+  }
+}
