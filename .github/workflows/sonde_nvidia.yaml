@@ -1,10 +1,13 @@
-name: Sonde NVIDIA
+name: Sonde des API (NVIDIA, Mistral)
 
 # 0.10.60 : appels directs à l'API NVIDIA (sans litellm) : quels modèles gratuits répondent vraiment, et en combien de
 # temps. Manuel ; rien n'est écrit au registre.
 on:
   workflow_dispatch:
     inputs:
+      fournisseur:
+        description: "nvidia ou mistral"
+        default: "nvidia"
       modeles:
         description: "identifiants séparés par des virgules (facultatif ; sinon la liste par défaut)"
         default: ""
@@ -23,3 +26,5 @@ jobs:
         run: python sonde_nvidia.py "${{ github.event.inputs.modeles }}"
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          SONDE_FOURNISSEUR: ${{ github.event.inputs.fournisseur }}
