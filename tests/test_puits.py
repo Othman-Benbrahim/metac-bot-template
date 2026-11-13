@@ -107,6 +107,47 @@ class TestsConnecteurs(unittest.TestCase):
             with self.assertRaises(apz.SansCle):
                 asyncio.run(apz.fred("UNRATE"))
 
+    def test_fred_sans_millesime_74(self):
+        # 0.10.74 : FRED refuse le millésime (400) → relecture sans realtime, coupée à la date, et marquée
+        import httpx
+        vu = []
+
+        class Rep:
+            def __init__(self, code, corps):
+                self.status_code, self._c = code, corps
+
+            def raise_for_status(self):
+                if self.status_code >= 400:
+                    raise httpx.HTTPStatusError(f"Client error '{self.status_code} Bad Request'", request=None,
+                                                response=None)
+
+            def json(self):
+                return self._c
+
+        class C:
+            def __init__(self, *a, **k):
+                pass
+
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *a):
+                return False
+
+            async def get(self, url, params=None):
+                vu.append(dict(params or {}))
+                if "realtime_start" in (params or {}):
+                    return Rep(400, {})
+                return Rep(200, {"observations": [{"date": "2026-02-01", "value": "5000"}]})
+        with mock.patch.dict(os.environ, {"FRED_API_KEY": "k"}), mock.patch.object(apz.httpx, "AsyncClient", C):
+            r = asyncio.run(apz.fred("SP500", date(2026, 3, 1)))
+        self.assertEqual(len(vu), 2)
+        self.assertNotIn("realtime_start", vu[1])
+        self.assertEqual(vu[1]["observation_end"], "2026-03-01")
+        self.assertIn("indisponible", r["millesime"])
+        self.assertEqual(r["source"], "FRED")
+        self.assertIn("millésime indisponible", apz.texte_releve(r))
+
     def test_wikipedia_revision_anterieure(self):
         vu = []
         corps = {"query": {"pages": [{"title": "X", "revisions": [{"revid": 7, "timestamp": "2026-05-01T10:00:00Z",
