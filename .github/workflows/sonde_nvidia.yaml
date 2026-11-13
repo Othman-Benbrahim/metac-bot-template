@@ -1,0 +1,25 @@
+name: Sonde NVIDIA
+
+# 0.10.60 : appels directs à l'API NVIDIA (sans litellm) : quels modèles gratuits répondent vraiment, et en combien de
+# temps. Manuel ; rien n'est écrit au registre.
+on:
+  workflow_dispatch:
+    inputs:
+      modeles:
+        description: "identifiants séparés par des virgules (facultatif ; sinon la liste par défaut)"
+        default: ""
+
+jobs:
+  sonde:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install httpx
+      - name: Sonde
+        run: python sonde_nvidia.py "${{ github.event.inputs.modeles }}"
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
