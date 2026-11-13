@@ -230,7 +230,26 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
     return ligne
 
 
-async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...], graine: int) -> int:
+def questions_de(version: str) -> tuple[list[str], set[str]]:
+    """0.10.58 : les questions (identifiants et jeux) jouées par une version du bot : pour qu'un autre codeur lise les
+    MÊMES questions (test multi-lecteurs). Les pannes ne comptent pas."""
+    f = ap.REGISTRE / ar.RETRO
+    lignes = [json.loads(l) for l in f.read_text(encoding="utf-8").splitlines() if l.strip()] if f.is_file() else []
+    qids = {x["question_id"] for x in lignes if x.get("banc") == "forecastbench" and x.get("version_bot") == version
+            and x.get("statut") != "panne"}
+    return sorted({q.split(":")[1] for q in qids}), qids
+
+
+def deja_par(modele: str) -> set[str]:
+    """0.10.58 : les questions du banc déjà lues par CE modèle principal (un autre codeur peut les relire)."""
+    f = ap.REGISTRE / ar.RETRO
+    lignes = [json.loads(l) for l in f.read_text(encoding="utf-8").splitlines() if l.strip()] if f.is_file() else []
+    return {x["question_id"] for x in lignes if x.get("banc") == "forecastbench" and x.get("statut") != "panne"
+            and (x.get("modeles") or {}).get("principal") == modele}
+
+
+async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...], graine: int,
+                    memes_que: str | None = None) -> int:
     import alphabet_bot as ab
     import alphabet_modeles as am
     if not ar.recherche_bornee_disponible():
@@ -248,6 +267,16 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
         return await modele.invoke(consigne)
     jeux = [jeu] if jeu else jeux_candidats(date.today(), date.fromisoformat(apres))
     deja, faites, pannes_suite = ar.deja_faites(), 0, 0
+    cibles = None
+    if memes_que:
+        # 0.10.58 : test multi-lecteurs : les questions d'une version passée, relues par le codeur de ce passage
+        jeux, cibles = questions_de(memes_que)
+        deja = deja_par(choix["principal"])
+        print(f"Mêmes questions que la version {memes_que} : {len(cibles)} ; codeur {choix['principal']} ; "
+              f"{len(cibles & deja)} déjà lue(s) par lui.")
+        if not cibles:
+            print("Aucune question pour cette version. Rien n'est lancé.")
+            return 1
     rnd = random.Random(graine)
     from forecasting_tools import MonetaryCostManager
     for j in jeux:
@@ -260,6 +289,8 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             print(f"Jeu {j} indisponible : {type(e).__name__}")
             continue
         items = [construire(i, j) for i in apparier(qs, rs, sources)]
+        if cibles is not None:
+            items = [x for x in items if x["qid"] in cibles]
         rnd.shuffle(items)
         print(f"Jeu {j} : {len(items)} questions de séries résolues.")
         for x in items:
@@ -306,6 +337,8 @@ if __name__ == "__main__":
     a.add_argument("--jeu", default=None, help="date d'un jeu (AAAA-MM-JJ) ; sinon les plus récents résolus")
     a.add_argument("--sources", default=",".join(SOURCES_SERIES))
     a.add_argument("--graine", type=int, default=0)
+    a.add_argument("--memes-que", default=os.environ.get("ALPHABET_FB_MEMES") or None,
+                   help="version du bot dont on relit les mêmes questions (test multi-lecteurs)")
     args = a.parse_args()
     srcs = tuple(s for s in args.sources.split(",") if s in SOURCES_SERIES)
-    sys.exit(asyncio.run(principal(args.n, args.apres, args.jeu, srcs, args.graine)))
+    sys.exit(asyncio.run(principal(args.n, args.apres, args.jeu, srcs, args.graine, args.memes_que)))
