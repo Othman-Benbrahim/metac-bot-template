@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.76"
+VERSION_BOT = "0.10.77"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1208,6 +1208,19 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
             notes.append(f"strate de l'événement ajoutée à {k}")
             return f"{k2}@{st_ev}"
         return k2
+    # 0 (0.10.77, test par propriétés) : un mot dont la strate reste illisible après normalisation (absente, vide,
+    # « x ») faisait planter le réparateur, et toute la lecture avec lui. Il est retiré, tracé : rien n'est deviné.
+    lisibles = []
+    for m in d.get("mots") or []:
+        if isinstance(m, dict):
+            try:
+                int(str(m.get("strate")).strip())
+            except ValueError:
+                notes.append(f"{m.get('carte')} : strate illisible ({m.get('strate')!r}) → mot retiré")
+                continue
+        lisibles.append(m)
+    if "mots" in d:
+        d["mots"] = lisibles
     d["candidats"] = [avec_strate(c) for c in d.get("candidats") or [] if isinstance(c, str)]
     cc = d.get("contre_candidate")
     d["contre_candidate"] = [avec_strate(c) for c in (cc if isinstance(cc, list) else [cc]) if isinstance(c, str)]

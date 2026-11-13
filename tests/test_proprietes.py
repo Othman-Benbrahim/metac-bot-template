@@ -116,16 +116,16 @@ class Reparateur(unittest.TestCase):
             self.assertLessEqual(len(r.get("cartes") or []), 2)
 
 
-    # 0.10.76 : premier contre-exemple trouvé (2026-11-13). Un mot dont la strate est illisible après normalisation
-    # (absente, vide, « x ») fait PLANTER le réparateur (hors_domaine → int()) au lieu d'être retiré ; l'assembleur
-    # n'étant pas protégé, toute la lecture tombe. Correction en attente de décision d'auteur : ce test échoue tant
-    # qu'elle n'est pas faite (il passera, et unittest le signalera, le jour où elle le sera).
-    @unittest.expectedFailure
+    # 0.10.76 : premier contre-exemple trouvé (2026-11-13) : un mot à strate illisible (absente, vide, « x ») faisait
+    # planter le réparateur, et toute la lecture avec lui. 0.10.77 : le mot est retiré et tracé.
     @settings(max_examples=50, deadline=None, derandomize=True, suppress_health_check=[HealthCheck.too_slow])
     @given(dossier(strates_mots=st.sampled_from([None, "", "x"])))
     def test_strate_illisible(self, dp):
         d, plan = dp
-        ap.reparer_dossier(d, plan, "2026-10-25")
+        n = len(d["mots"])
+        notes = ap.reparer_dossier(d, plan, "2026-10-25")
+        self.assertEqual(d["mots"], [])
+        self.assertEqual(sum("strate illisible" in x for x in notes), n)
 
 
 LAMBDAS = sorted({float(v) for k, v in M.P["lambda"].items()})
