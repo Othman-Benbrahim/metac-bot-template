@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.67"
+VERSION_BOT = "0.10.68"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -590,7 +590,10 @@ def regles_dossier() -> str:
 - liaisons : « ABR@s TYPE ABR@s », TYPE parmi : echo, independance, transfert, conflit, renforcement, inclusion,
   appui, reproduction, tension, averti (aucun autre mot).
 - dans UNE strate : renforcement, conflit, inclusion, appui, reproduction, independance, tension ; ENTRE deux strates :
-  transfert, echo, conflit seulement ; averti dans les deux cas.
+  transfert, echo, conflit seulement ; averti dans les deux cas. transfert et echo ne relient JAMAIS deux cartes de la
+  même strate (« CTR@6 transfert HIE@6 » est faux : dans une strate, écris appui, renforcement…).
+- candidats : recopie TOUTES les cartes du plan (ses candidates ET ses contre-candidates), car les recherches les
+  visent ; une carte du plan que tu n'ancres pas reçoit un motif de rejet.
 - preuves_liaisons : une liste, UNE preuve par liaison, dans le même ordre (le fait daté qui établit le lien) ; une
   liaison sans preuve est retirée. Une liaison relie deux mots ANCRÉS (sauf averti, qui peut viser l'événement).
 - averti : « A averti B » quand OBSERVER A renseigne sur B SANS QUE A AGISSE SUR B (précurseur, symptôme, ou effet
@@ -1435,6 +1438,30 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
             d["rejets"].pop(k)
             (d.get("_categories_rejet") or {}).pop(k, None)
             notes.append(f"rejet retiré pour {k} : hors des candidates, strate pleine")
+    # 4 bis (0.10.68, banc multi-lecteurs : Mistral Medium, 10 dossiers refusés sur 20). Une recherche consignée vise
+    #    des cartes du plan ; le moteur exige qu'elles soient candidates. Une carte visée hors des candidates de la
+    #    lecture sort de la recherche (elle n'y entre pas : la classer « non cherchée » ferait d'un état nul un angle
+    #    mort et relancerait des recherches) ; une recherche sans carte sort du dossier (couverture A7 perdue → dossier
+    #    Spéculatif). La réparation retire, elle n'ajoute rien.
+    gardees = []
+    for r in d.get("recherches") or []:
+        ks = []
+        for c in r.get("cartes") or []:
+            try:
+                k = cle_normale(c)
+            except Exception:
+                continue
+            if k in cand and k not in ks:
+                ks.append(k)
+        ks = ks[:2]
+        if ks:
+            if ks != r.get("cartes"):
+                notes.append(f"recherche « {str(r.get('requete'))[:40]} » : cartes ramenées à {', '.join(ks)}")
+            gardees.append(dict(r, cartes=ks))
+        else:
+            notes.append(f"recherche retirée (cartes hors des candidates) : « {str(r.get('requete'))[:40]} »")
+    if "recherches" in d:
+        d["recherches"] = gardees
     d["candidats"] = cand
     # 5. une contre-candidate par strate de l'état, prise parmi les candidates (de préférence non ancrée)
     contre = [c for c in d.get("contre_candidate") or [] if c in cand]

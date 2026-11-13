@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.67 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.68 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.68** : **recherches et candidates** (banc multi-lecteurs, Mistral Medium sur les 20 questions de 0.10.55 :
+  10 dossiers refusés, tous parce que les recherches du plan visaient des cartes absentes des candidates de la lecture ;
+  Sonnet les recopiait, Mistral jamais). Le réparateur retire d'une recherche les cartes absentes des candidates (il ne
+  les ajoute pas : les classer « non cherchée » ferait d'un état nul un angle mort et relancerait des recherches) ; une
+  recherche sans carte sort du dossier (Spéculatif). La consigne demande de recopier candidates et contre-candidates du plan, et
+  rappelle que transfert et écho ne relient jamais deux cartes d'une même strate. Rejeu des 20 lectures : 17 estimées,
+  3 états nuls, 0 refus (contre 7, 3, 10 enregistrés).
 - **0.10.67** : **triplets durs du monde synthétique** (d'après Blair, Procaccia et Tambe, « Embeddings for
   Preferences, Not Semantics », NeurIPS 2026 ; décision d'auteur du 2026-11-13). Le test d'invariance que l'alphabet
   n'avait jamais passé : une carte se lit-elle pareil quels que soient le domaine et les mots ? Pour chaque situation

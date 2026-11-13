@@ -157,6 +157,19 @@ class Tests(unittest.TestCase):
         self.assertEqual([m["carte"] for m in d2["mots"]], ["CTR"])
         self.assertTrue(any("troisième pôle" in n for n in notes))
 
+    def test_recherches_candidates_68(self):
+        # 0.10.68 : une carte visée par une recherche hors des candidates sort de la recherche ; une recherche sans
+        # carte sort du dossier ; les candidates ne changent pas pour autant
+        base = {"intensite": "f", "portee": "aucune"}
+        d = {"mots": [dict(base, carte="CTR", strate=6)], "candidats": ["CTR@6", "HIE@6"],
+             "rejets": {"HIE@6": "[aucun_fait] rien"}, "liaisons": [], "questions": [],
+             "recherches": [{"famille": "contradiction", "cartes": ["RES@6"], "requete": "a", "executee": True},
+                            {"famille": "discrimination", "cartes": ["HIE@6", "INC@6"], "requete": "b", "executee": True},
+                            {"famille": "observation", "cartes": ["CTR@6"], "requete": "c", "executee": True}]}
+        ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 6}, "candidats": []}, "2026-10-25")
+        self.assertEqual(d["candidats"], ["CTR@6", "HIE@6"])
+        self.assertEqual([(r["requete"], r["cartes"]) for r in d["recherches"]], [("b", ["HIE@6"]), ("c", ["CTR@6"])])
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
