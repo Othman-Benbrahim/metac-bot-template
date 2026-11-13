@@ -70,8 +70,10 @@ async def appeler(modele: str, consigne: str) -> tuple[str | None, float, str | 
     from forecasting_tools import GeneralLlm
     t0 = time.monotonic()
     try:
-        texte = await asyncio.wait_for(GeneralLlm(model=modele, temperature=0, timeout=DELAI, allowed_tries=1)
-                                       .invoke(consigne), DELAI)
+        # Mistral exige top_p = 1 quand la température est nulle (échantillonnage glouton)
+        extra = {"top_p": 1} if modele.startswith("mistral/") else {}
+        texte = await asyncio.wait_for(GeneralLlm(model=modele, temperature=0, timeout=DELAI, allowed_tries=1,
+                                                  **extra).invoke(consigne), DELAI)
         return texte, round(time.monotonic() - t0, 1), None
     except asyncio.TimeoutError:
         return None, round(time.monotonic() - t0, 1), f"délai dépassé ({DELAI:.0f} s)"
