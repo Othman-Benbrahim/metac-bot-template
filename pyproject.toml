@@ -22,6 +22,7 @@ integrations = [
     "metaculus-bot-review>=0.1.1,<0.2",
 ]
 dev = [
+    "hypothesis>=6.170.15",
     "ipykernel>=6.29.5,<7",
 ]
 
