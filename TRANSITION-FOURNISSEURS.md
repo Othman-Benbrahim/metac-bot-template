@@ -8,7 +8,7 @@ compte personnel hors crédits. Chaque passage d'un fournisseur au suivant se pr
 
 | Rôle | Variable | Aujourd'hui (2026-11-14) | Microsoft (dès l'abonnement) | Après Bedrock (23 novembre) | OVH | Google |
 |---|---|---|---|---|---|---|
-| Lecteur principal (plan, lecture, bras A) | `ALPHABET_LLM` | Mistral Medium, API Mistral (compte personnel, **arrêté** : limite atteinte) | Mistral Medium, Azure AI Foundry (`azure_ai/<déploiement>`) | Azure | à choisir dans le catalogue OVH | à choisir dans Vertex AI |
+| Lecteur principal (plan, lecture, bras A) | `ALPHABET_LLM` | Mistral Medium, API Mistral (compte personnel, **arrêté** : limite atteinte) | **gpt-5-mini** (version 2025-08-07), Azure AI Foundry, `azure_ai/gpt-5-mini` — Mistral Medium indisponible sur l'abonnement gratuit | Azure | à choisir dans le catalogue OVH | à choisir dans Vertex AI |
 | Petites tâches (résumés, analyse) | `ALPHABET_PETIT_LLM` | Claude Haiku 4.5, Bedrock | Bedrock tant qu'il reste des crédits, Azure en secours | Azure | OVH | Google |
 | Chercheur (requêtes web) | `ALPHABET_CHERCHEUR` | smart-searcher avec Claude Haiku 4.5, Bedrock | idem | Azure (modèle équivalent du catalogue) | OVH | Google |
 
@@ -38,7 +38,7 @@ Les cases « à choisir » se remplissent avant la bascule, après une sonde (wo
 | Fournisseur | Secrets du dépôt | Forme du nom de modèle |
 |---|---|---|
 | Amazon Bedrock | `AWS_BEARER_TOKEN_BEDROCK` (+ variable `AWS_REGION_NAME`) | `bedrock/<profil d'inférence>` |
-| Microsoft Azure AI Foundry | `AZURE_AI_API_KEY`, `AZURE_AI_API_BASE` | `azure_ai/<nom du déploiement>` |
+| Microsoft Azure AI Foundry | `AZURE_AI_API_KEY`, `AZURE_AI_API_BASE` (= `https://<ressource>.services.ai.azure.com/openai/v1`) | `azure_ai/<nom du déploiement>` ; le bot l'appelle par l'API OpenAI v1 de Foundry (0.10.101) |
 | OVHcloud AI Endpoints | à ajouter à la bascule | à fixer |
 | Google Vertex AI | à ajouter à la bascule | à fixer |
 
@@ -47,6 +47,7 @@ Les cases « à choisir » se remplissent avant la bascule, après une sonde (wo
 | Date | Événement |
 |---|---|
 | 2026-11-14 | Compte Mistral personnel arrêté (limite atteinte). Décision : abonnement Microsoft dès maintenant, chevauchement avec Bedrock accepté. |
+| 2026-11-14 | Mistral Medium 3.5 et DeepSeek indisponibles sur l'abonnement Azure gratuit (pas de demande de quota possible). Déploiement de **gpt-5-mini** (Global Standard). C'est un **nouveau lecteur** (règle 1) : nouvelles séries ; les essais jugés sur Mistral Medium restent sur leurs lignes Mistral. |
 | à la mise en service d'Azure | Secrets Azure ; sonde ; contrôle de continuité (règle 3) ; le lecteur principal passe sur Azure. |
 | 2026-11-23 | Fin des crédits Bedrock : petites tâches et chercheur passent sur Azure. |
 | à fixer | Passage à OVH, puis à Google, avec les mêmes étapes. |

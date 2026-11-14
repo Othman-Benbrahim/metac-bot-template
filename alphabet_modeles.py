@@ -79,6 +79,34 @@ def servis_et_vider() -> dict:
     return out
 
 
+def adapter(modele: str, kw: dict | None = None, env=os.environ) -> tuple[str, dict]:
+    """0.10.101 : nom de modèle et paramètres litellm selon le fournisseur.
+
+    « azure_ai/<déploiement> » avec un point d'accès Foundry de la forme « …/openai/v1[/responses] » (API OpenAI v1 de
+    Microsoft Foundry, 2026) : appelé comme un modèle compatible OpenAI, avec l'adresse et la clé Azure passées
+    explicitement (elles ne se mélangent pas avec la passerelle OPENAI_API_BASE). Les modèles de raisonnement (gpt-5,
+    o1/o3/o4) n'acceptent que leur température par défaut : `drop_params` retire ce qu'ils refusent."""
+    kw = dict(kw or {})
+    m = str(modele)
+    if m.startswith("azure_ai/") and "/openai/" in (env.get("AZURE_AI_API_BASE") or ""):
+        base = re.sub(r"/(responses|chat/completions)/?$", "", env["AZURE_AI_API_BASE"].strip().rstrip("/"))
+        dep = m.split("/", 1)[1]
+        m = f"openai/{dep}"
+        kw.update(base_url=base, api_key=env.get("AZURE_AI_API_KEY"))
+    nom = m.rsplit("/", 1)[-1].lower()
+    if re.match(r"(gpt-5|o1|o3|o4)", nom):
+        kw["drop_params"] = True
+        kw.pop("top_p", None)
+    return m, kw
+
+
+def llm(modele: str, **kw):
+    """Un GeneralLlm adapté au fournisseur (voir `adapter`)."""
+    from forecasting_tools import GeneralLlm
+    m, k = adapter(modele, kw)
+    return GeneralLlm(model=m, **k)
+
+
 ROLES = {"principal": "ALPHABET_LLM", "petit": "ALPHABET_PETIT_LLM", "contradicteur": "ALPHABET_CONTRADICTEUR"}
 SONDE = 'Réponds uniquement par cet objet JSON, sans rien d\'autre : {"ok": true}'
 
@@ -105,9 +133,8 @@ async def sonder(modele: str, appel=None) -> dict:
         # 2026-11-13 : 44 minutes bloquées sur la sonde d'un modèle NVIDIA, sans erreur).
         delai = float(os.environ.get("ALPHABET_SONDE_DELAI") or "90")
         if appel is None:
-            from forecasting_tools import GeneralLlm
             extra = {"top_p": 1} if famille_mistral(modele) else {}   # Mistral : top_p = 1 à température nulle
-            co = GeneralLlm(model=modele, temperature=0, timeout=60, allowed_tries=1, **extra).invoke(SONDE)
+            co = llm(modele, temperature=0, timeout=60, allowed_tries=1, **extra).invoke(SONDE)
         else:
             co = appel(modele, SONDE)
         try:
