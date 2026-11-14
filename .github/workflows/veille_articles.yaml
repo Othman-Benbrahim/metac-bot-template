@@ -1,17 +1,18 @@
 name: Veille d'articles
 
-# Chaque lundi : articles arXiv de la semaine et dernière sélection DAIR.AI, triés par mots-clés (veille/mots-cles.txt),
-# sans modèle. Un ticket assigné à l'auteur les liste (notification GitHub par e-mail). Rien n'entre dans le bot.
+# Chaque jour (depuis le 2026-11-14 ; chaque lundi avant) : nouveautés arXiv, GitHub et Zenodo des deux derniers jours
+# et dernière sélection DAIR.AI, triées par mots-clés (veille/mots-cles.txt), sans modèle, déjà vues écartées. Un ticket
+# assigné à l'auteur les liste (notification GitHub par e-mail). Rien n'entre dans le bot.
 
 on:
   schedule:
-    - cron: "23 6 * * 1"
+    - cron: "23 6 * * *"
   workflow_dispatch:
     inputs:
       jours:
-        description: "Fenêtre arXiv en jours"
+        description: "Fenêtre en jours"
         required: false
-        default: "8"
+        default: "2"
 
 concurrency:
   group: bot-alphabet-registre
@@ -30,7 +31,9 @@ jobs:
         with:
           python-version: "3.11"
       - name: Trier les articles
-        run: python veille_articles.py --jours "${{ github.event.inputs.jours || '8' }}"
+        run: python veille_articles.py --jours "${{ github.event.inputs.jours || '2' }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Ouvrir le ticket
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,7 +42,7 @@ jobs:
           if grep -q "Rien de retenu" "$f"; then
             echo "Rien de retenu : pas de ticket."
           else
-            gh issue create --title "Veille d'articles du $(date -u +%Y-%m-%d)" --body-file "$f" \
+            gh issue create --title "Veille du $(date -u +%Y-%m-%d)" --body-file "$f" \
               --assignee "${{ github.repository_owner }}" \
               || echo "::warning::Ticket non créé (onglet Issues désactivé ?) : la liste reste dans $f"
           fi

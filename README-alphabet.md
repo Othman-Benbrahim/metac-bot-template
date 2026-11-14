@@ -383,6 +383,11 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **Veille quotidienne** (2026-11-14, hors version du bot) : `veille_articles.py` lit aussi GitHub (dépôts créés dans
+  la fenêtre) et Zenodo (dépôts publiés), en plus d'arXiv et de DAIR.AI ; passage chaque jour, fenêtre de 2 jours,
+  12 éléments au plus, déjà vus écartés ; mots-clés ajoutés (harnais d'évaluation, runtime assurance, sélection par
+  stabilité, vocabulaires contrôlés, ontologies). Motif : la prospection LinkedIn du jour renvoyait presque toujours à
+  un dépôt GitHub ou Zenodo, lisibles directement.
 - **0.10.98** : **règle d'adoption commune** (section ci-dessus ; `essais.py`). Quatre essais ouverts, dont trois à
   intervalle (liens empiriques, B autorégressif, ombre absence) : risque corrigé 1,7 %, intervalle à 96,7 %. Verdicts
   de B autorégressif et de l'ombre sans matrice calculés aux regards fixés (100 et 50 premières lignes, puis 200 et 100).
