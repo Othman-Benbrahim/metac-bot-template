@@ -26,3 +26,30 @@ jobs:
         env:
           ALPHABET_SKILL_DIR: alphabet-situationnel
           ALPHABET_REGISTRE: ${{ runner.temp }}/registre-ci
+
+  # 0.10.85 (règle écrite) : une demande de fusion qui touche le réparateur ou le moteur publie la table des bascules,
+  # c'est-à-dire ce que SA modification change sur les lectures enregistrées (code de la base contre code de la branche,
+  # mêmes lignes du registre, sans modèle). Affichée dans le résumé du contrôle ; ne bloque jamais la fusion.
+  bascules:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Table des bascules (base contre branche)
+        run: |
+          git worktree add "$RUNNER_TEMP/base" "origin/${{ github.base_ref }}"
+          export ALPHABET_REGISTRE="$GITHUB_WORKSPACE/registre"
+          ALPHABET_SKILL_DIR=alphabet-situationnel uv run python rejeu_banc.py --bascules --json > "$RUNNER_TEMP/branche.json"
+          (cd "$RUNNER_TEMP/base" && ALPHABET_SKILL_DIR=alphabet-situationnel uv run --project "$GITHUB_WORKSPACE" python rejeu_banc.py --bascules --json > "$RUNNER_TEMP/base.json") \
+            || echo '{"table": [], "indisponible": true}' > "$RUNNER_TEMP/base.json"
+          uv run python comparer_bascules.py "$RUNNER_TEMP/base.json" "$RUNNER_TEMP/branche.json" | tee -a "$GITHUB_STEP_SUMMARY"

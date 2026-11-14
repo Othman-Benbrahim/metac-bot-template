@@ -268,6 +268,24 @@ class Tests(unittest.TestCase):
         self.assertTrue(any("plus de 4 cartes ancrées" in n for n in notes))
         self.assertIn("Au plus 4 cartes ancrées par strate", open(ap.__file__, encoding="utf-8").read())
 
+    def test_plafond_et_bascules_85(self):
+        import comparer_bascules as cb
+        self.assertFalse(fb.depasse(0.0, 0.0, 15))
+        self.assertFalse(fb.depasse(14.0, 0.9, 15))
+        self.assertTrue(fb.depasse(14.5, 0.9, 15))
+        self.assertFalse(fb.depasse(1e6, 1e6, 0))                  # 0 = sans plafond
+        base = {"lignes": 3, "table": [{"question_id": "q1", "avant": "refuse", "apres": "refuse", "p_avant": None,
+                                        "p_apres": None}]}
+        branche = {"lignes": 3, "version_rejouee": "x",
+                   "table": [{"question_id": "q1", "avant": "refuse", "apres": "estime", "p_avant": None, "p_apres": 0.5},
+                             {"question_id": "q2", "avant": "estime", "apres": "estime", "p_avant": 0.3, "p_apres": 0.31}]}
+        d = cb.comparer(base, branche)
+        self.assertEqual([x["question_id"] for x in d], ["q1", "q2"])
+        self.assertEqual(d[1]["base"], ("estime", 0.3))
+        self.assertIn("2 verdict(s) changé(s)", cb.markdown(base, branche))
+        self.assertIn("rien à comparer", cb.markdown({"indisponible": True}, branche))
+        self.assertEqual(cb.comparer(branche, branche), [])
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa

@@ -12,6 +12,14 @@ de correction ne rejoue pas (elle demande le modèle) : on rejoue la première l
 plusieurs ; les ombres du contradicteur, de la traduction et du programme génératif ne sont pas rejouées.
 
     python rejeu_banc.py [--version-min 0.10.54] [--json]
+    python rejeu_banc.py --bascules [--version-min 0.10.54] [--json]
+
+0.10.85 (règle écrite, 2026-11-14 ; billet « eval harness » : une notation retouchée a fait passer un score de 57 à 86
+sans que l'agent change). Nos règles de validation (réparateur, moteur) sont un juge que l'on retouche. Toute version
+qui touche le réparateur ou le moteur publie, dans sa demande de fusion et son historique, la TABLE DES BASCULES :
+pour chaque ligne rejouable, le statut et le p de C enregistrés contre ceux que donne le code de la version, sur la
+DERNIÈRE lecture (celle qui a produit la ligne). Une ligne enregistrée « état nul » n'est pas comparable quand le rejeu
+dit autre chose (la relance d'état nul demande le modèle) : elle est comptée à part, jamais comme une bascule.
 """
 from __future__ import annotations
 
@@ -83,9 +91,52 @@ def principal(version_min: str, en_json: bool) -> int:
     return 0
 
 
+def bascules(lignes: list[dict], tol: float = 1e-9) -> dict:
+    """Table des bascules : statut ou p de C qui changent entre l'enregistrement et le code actuel (dernière lecture)."""
+    table, non_comparables, n = [], 0, 0
+    for x in lignes:
+        r = x.get("rejeu") or {}
+        lec = r.get("lectures") or []
+        if x.get("banc") != "forecastbench" or not lec:
+            continue
+        n += 1
+        avant = statut_enregistre(x)
+        o = rejouer_lecture(lec[-1], r)
+        if o["statut"] != avant:
+            if avant == "etat_nul":
+                non_comparables += 1
+                continue
+            table.append({"question_id": x["question_id"], "version": x.get("version_bot"), "avant": avant,
+                          "apres": o["statut"], "p_avant": x.get("p_C"), "p_apres": o.get("p"),
+                          "motif_avant": str(x.get("motif") or (x.get("exploratoire") or {}).get("motif") or "")[:120],
+                          "motif_apres": o.get("motif", "")})
+        elif avant == "estime" and x.get("p_C") is not None and o.get("p") is not None and abs(o["p"] - x["p_C"]) > tol:
+            table.append({"question_id": x["question_id"], "version": x.get("version_bot"), "avant": avant,
+                          "apres": o["statut"], "p_avant": x["p_C"], "p_apres": o["p"]})
+    sens = collections.Counter(f"{b['avant']} → {b['apres']}" for b in table)
+    return {"version_rejouee": ap.VERSION_BOT, "lignes": n, "bascules": len(table),
+            "par_sens": dict(sens), "etat_nul_non_comparables": non_comparables, "table": table}
+
+
 if __name__ == "__main__":
     a = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     a.add_argument("--version-min", default="0.10.54")
     a.add_argument("--json", action="store_true")
+    a.add_argument("--bascules", action="store_true", help="table des bascules (règle 0.10.85)")
     args = a.parse_args()
+    if args.bascules:
+        f_ = ap.REGISTRE / ar.RETRO
+        L_ = [json.loads(l) for l in f_.read_text(encoding="utf-8").splitlines() if l.strip()] if f_.is_file() else []
+        vm = tuple(map(int, args.version_min.split(".")))
+        L_ = [x for x in L_ if tuple(map(int, str(x.get("version_bot", "0")).split("."))) >= vm]
+        t = bascules(L_)
+        if args.json:
+            print(json.dumps(t, ensure_ascii=False, indent=1))
+        else:
+            for b in t["table"]:
+                pa = "" if b.get("p_avant") is None else f"{b['p_avant']:.3f}"
+                pb = "" if b.get("p_apres") is None else f"{b['p_apres']:.3f}"
+                print(f"{b['question_id'][:52]:52} {b['version']:8} {b['avant']:>10} → {b['apres']:10} {pa:>6} → {pb:6}")
+            print(json.dumps({k: v for k, v in t.items() if k != "table"}, ensure_ascii=False))
+        sys.exit(0)
     sys.exit(principal(args.version_min, args.json))

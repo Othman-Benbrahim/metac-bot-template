@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       n:
-        description: "questions à jouer (budget)"
+        description: "questions à jouer"
         default: "20"
       jeu:
         description: "date d'un jeu ForecastBench (AAAA-MM-JJ, facultatif ; sinon les plus récents résolus)"
@@ -22,6 +22,9 @@ on:
       memes_que:
         description: "relire les mêmes questions qu'une version du bot (facultatif ; ex. 0.10.55)"
         default: ""
+      budget:
+        description: "plafond en dollars pour ce passage (0 = sans plafond)"
+        default: "15"
 
 concurrency:
   group: bot-alphabet-registre
@@ -48,7 +51,7 @@ jobs:
         run: |
           JEU="${{ github.event.inputs.jeu }}"
           MEMES="${{ github.event.inputs.memes_que }}"
-          uv run python banc_forecastbench.py --n "${{ github.event.inputs.n }}" --apres "${{ github.event.inputs.apres }}" ${JEU:+--jeu "$JEU"} ${MEMES:+--memes-que "$MEMES"}
+          uv run python banc_forecastbench.py --n "${{ github.event.inputs.n }}" --apres "${{ github.event.inputs.apres }}" ${JEU:+--jeu "$JEU"} ${MEMES:+--memes-que "$MEMES"} --budget "${{ github.event.inputs.budget || '15' }}"
         env:
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
