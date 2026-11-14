@@ -430,6 +430,17 @@ class Tests(unittest.TestCase):
         self.assertGreater(z_fort, max(nuls["fort"]))              # le vrai lien bat tous ses doubles
         self.assertEqual(len(nuls["bruit"]), 40)
 
+    def test_critere_b_ar_97(self):
+        import score_registre as sr
+        L = [{"question_id": f"fb:2026-09-13:fred:S{i}:x", "issue": i % 2, "p_B": 0.5,
+              "ombre_b_ar": {"p": 0.6 if i % 2 else 0.4}} for i in range(120)]
+        c = sr.critere_b_ar(L)
+        self.assertEqual(c["n_nouveaux"], 120)
+        self.assertTrue(c["verdict"].startswith("critère atteint"))
+        vus = [dict(x, question_id=x["question_id"].replace("2026-09-13", "2026-10-25")) for x in L]
+        self.assertEqual(sr.critere_b_ar(vus)["n_nouveaux"], 0)
+        self.assertTrue(sr.critere_b_ar(L[:50])["verdict"].startswith("en attente"))
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa

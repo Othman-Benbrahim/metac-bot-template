@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.96 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.97 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -368,6 +368,12 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.97** : **critère d'adoption du B autorégressif, enregistré** (décision d'auteur du 2026-11-14), après le
+  test rétrospectif (188 questions de séries des jeux 2026-09-27, 10-11 et 10-25 : perte log 0,666 contre 0,690 pour
+  B ; gain surtout sur FRED du 25 octobre, 5 blocs seulement) et avant toute donnée nouvelle. B_AR remplacera B pour
+  les séries si, sur au moins 100 questions de jeux NON VUS par ce test, sa perte log est inférieure à celle de B et
+  l'intervalle à 90 % par blocs de l'écart reste sous 0 ; puis décision datée. Calculé par `score_registre`
+  (`ombre_b_ar.critere`).
 - **0.10.96** : **doubles permutés des liens, en ombre** (Neirz, Allende et Saavedra, *Scientific Reports* 2026 :
   le bootstrap sur un seul échantillon réutilise la même coïncidence et donne des faux positifs persistants ; la
   stabilité reste descriptive). Pour chaque lien, 100 doubles à la même rareté, indicateur permuté entre les lectures

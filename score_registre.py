@@ -377,6 +377,35 @@ def accord_lecteurs(lignes: list[dict]) -> dict | None:
 PETIT_GROUPE = 30
 
 
+# 0.10.97 : critère d'adoption du B autorégressif, enregistré le 2026-11-14 (décision d'auteur) APRÈS le test
+# rétrospectif sur les jeux 2026-09-27, 2026-10-11 et 2026-10-25 (B_AR 0,666 contre B 0,690 en perte log, 188 questions)
+# et AVANT toute donnée nouvelle. Seules comptent les questions de jeux que ce test n'a pas vus.
+JEUX_VUS_B_AR = {"2026-09-27", "2026-10-11", "2026-10-25"}
+
+
+def critere_b_ar(lignes: list[dict]) -> dict:
+    """B_AR remplace B pour les séries si, sur au moins 100 questions de jeux non vus : perte log de B_AR inférieure à
+    celle de B, ET intervalle à 90 % de l'écart (bootstrap par blocs « jeu × source », 2 000 tirages, graine 0)
+    entièrement sous 0. Même alors, le passage en officiel est une décision d'auteur datée."""
+    import math as _m
+    import random as _r
+    pl = lambda p, y: -_m.log(min(max(p, 1e-3), 1 - 1e-3) if y else 1 - min(max(p, 1e-3), 1 - 1e-3))
+    nv = [x for x in lignes if (x.get("jeu") or x["question_id"].split(":")[1]) not in JEUX_VUS_B_AR]
+    if not nv:
+        return {"n_nouveaux": 0, "verdict": "en attente (aucune question de jeu non vu)"}
+    ec = [pl(x["ombre_b_ar"]["p"], x["issue"]) - pl(x["p_B"], x["issue"]) for x in nv]
+    blocs: dict[str, list[float]] = {}
+    for x, e in zip(nv, ec):
+        blocs.setdefault(f"{x.get('jeu') or x['question_id'].split(':')[1]}:{x['question_id'].split(':')[2]}", []).append(e)
+    rnd, cles = _r.Random(0), sorted(blocs)
+    boots = sorted((lambda t: sum(t) / len(t))([e for _ in cles for e in blocs[rnd.choice(cles)]]) for _ in range(2000))
+    bas, haut = boots[100], boots[1899]
+    moy = sum(ec) / len(ec)
+    return {"n_nouveaux": len(nv), "blocs": len(cles), "ecart_moyen": moy, "intervalle_90_par_blocs": [bas, haut],
+            "verdict": ("en attente (moins de 100 questions de jeux non vus)" if len(nv) < 100 else
+                        "critère atteint : décision d'auteur à prendre" if moy < 0 and haut < 0 else "critère non atteint")}
+
+
 def sans_matrice_suivi(lignes: list[dict]) -> dict:
     """0.10.91. Part des cartes ancrées (strate de l'événement) que la matrice donne comme faisant apparaître la carte
     visée : lecture officielle contre lecture sans matrice, sur les mêmes questions ; statuts des deux lectures.
@@ -1104,7 +1133,8 @@ def scorer_retro(registre: Path) -> dict:
         import math as _m
         pl = lambda p, y: -_m.log(min(max(p, 1e-3), 1 - 1e-3) if y else 1 - min(max(p, 1e-3), 1 - 1e-3))
         sortie["ombre_b_ar"] = {"n": len(ba), "perte_B": sum(pl(x["p_B"], x["issue"]) for x in ba) / len(ba),
-                                "perte_B_AR": sum(pl(x["ombre_b_ar"]["p"], x["issue"]) for x in ba) / len(ba)}
+                                "perte_B_AR": sum(pl(x["ombre_b_ar"]["p"], x["issue"]) for x in ba) / len(ba),
+                                "critere": critere_b_ar(ba)}
     sm = [x for x in intactes if isinstance(x.get("ombre_sans_matrice"), dict)]
     if sm:
         sortie["ombre_sans_matrice"] = sans_matrice_suivi(sm)
