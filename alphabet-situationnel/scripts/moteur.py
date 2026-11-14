@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alphabet situationnel 0.7.76 — calcul expérimental, validation et traçabilité.
+"""Alphabet situationnel 0.7.77 — calcul expérimental, validation et traçabilité.
 Bibliothèque standard Python 3.8+. `autotest` exécute les contrôles de régression.
 Les analogies structurales sont des hypothèses, jamais une calibration acquise.
 Auteur : Othman Ben Brahim · Licence MIT (voir LICENSE).
@@ -4340,7 +4340,7 @@ def erreurs_manifeste(texte=None):
 
 
 def audit():
-    exiger(P['version']=='0.7.76','version du moteur et des paramètres différente')
+    exiger(P['version']=='0.7.77','version du moteur et des paramètres différente')
     # 0.7.34 (audit Open Science) : la docstring du moteur annonçait 0.7.9 sans que l'audit la lise.
     exiger(f"Alphabet situationnel {P['version']} " in (__doc__ or ''),'docstring du moteur : version différente de parametres.json')
     errs=erreurs_parametres();exiger(not errs,' ; '.join(errs))
@@ -4514,7 +4514,10 @@ def controle_vue_exterieure(result, vue):
     if f_ is None:f_=result.get('comparateur')
     rf=None if f_ is None else cote(f_)/cote(v);r0=None if p0 is None else cote(p0)/cote(v)
     R=P['vue_exterieure_rapport_max']
-    absurde=r0 is not None and (r0>R or r0<1/R)
+    # 0.7.77 (banc du bot, 2026-11-14) : huit dossiers « non estimés » avaient un rapport de cotes de 10,000000000000002 :
+    # des cartes au plafond de LR (10) donnent exactement 10, et l'arrondi flottant le faisait passer au-dessus. Le
+    # contrôle vise un a priori AU-DELÀ du plafond ; une tolérance relative de 1e-9 rend la frontière à sa définition.
+    absurde=r0 is not None and (r0>R*(1+1e-9) or r0<1/(R*(1+1e-9)))
     alt=vue.get('classe_alternative') if isinstance(vue.get('classe_alternative'),dict) else None
     result['vue_exterieure']={'declaree':v,'classe_de_reference':vue['classe_de_reference'],'source':vue['source'],
         'alternative':None if alt is None else alt['frequence'],'classe_alternative':None if alt is None else alt['classe_de_reference'],

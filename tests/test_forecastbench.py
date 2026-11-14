@@ -345,6 +345,21 @@ class Tests(unittest.TestCase):
         self.assertEqual({d["jeu"] for d in J}, {"2026-10-11"})                 # le plus ancien reste à l'apprentissage
         self.assertEqual(al.decouper([{"jeu": "x", "q": "1"}]), ([{"jeu": "x", "q": "1"}], []))
 
+    def test_frontiere_vue_exterieure_90(self):
+        # skill 0.7.77 : un a priori exactement au plafond (rapport 10, arrondi 10,000000000000002) n'est plus refusé
+        M = ap._moteur()
+        R = M.P["vue_exterieure_rapport_max"]
+        b = 0.443
+        p0 = (R * b / (1 - b)) / (1 + R * b / (1 - b)) + 1e-15
+        r = M.controle_vue_exterieure({"p": p0, "a_priori": {"p0": p0}, "p_sans_cartes": b},
+                                      {"frequence": b, "classe_de_reference": "x", "source": "s"})
+        self.assertFalse(r["vue_exterieure"]["a_priori_absurde"])
+        self.assertIsNotNone(r["p"])
+        p_loin = (11 * b / (1 - b)) / (1 + 11 * b / (1 - b))
+        r = M.controle_vue_exterieure({"p": p_loin, "a_priori": {"p0": p_loin}, "p_sans_cartes": b},
+                                      {"frequence": b, "classe_de_reference": "x", "source": "s"})
+        self.assertTrue(r["vue_exterieure"]["a_priori_absurde"])
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa
