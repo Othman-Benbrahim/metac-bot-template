@@ -702,3 +702,11 @@ def test_azure_openai_101():
     import litellm
     r = litellm.completion(model=m, messages=[{"role": "user", "content": "ok"}], mock_response="oui", **kw)
     assert r.choices[0].message.content == "oui"
+
+
+def test_azure_base_102():
+    import alphabet_modeles as am, pytest
+    with pytest.raises(ValueError):
+        am.adapter("azure_ai/gpt-5-mini", {}, env={})
+    m, kw = am.adapter("azure_ai/gpt-5-mini", {}, env={"AZURE_AI_API_BASE": "https://r.services.ai.azure.com/"})
+    assert m == "openai/gpt-5-mini" and kw["base_url"] == "https://r.services.ai.azure.com/openai/v1"

@@ -88,8 +88,14 @@ def adapter(modele: str, kw: dict | None = None, env=os.environ) -> tuple[str, d
     o1/o3/o4) n'acceptent que leur température par défaut : `drop_params` retire ce qu'ils refusent."""
     kw = dict(kw or {})
     m = str(modele)
-    if m.startswith("azure_ai/") and "/openai/" in (env.get("AZURE_AI_API_BASE") or ""):
-        base = re.sub(r"/(responses|chat/completions)/?$", "", env["AZURE_AI_API_BASE"].strip().rstrip("/"))
+    if m.startswith("azure_ai/") and not (env.get("AZURE_AI_API_BASE") or "").strip():
+        raise ValueError("AZURE_AI_API_BASE vide : créer le secret (ou la variable) du dépôt, "
+                         "de la forme https://<ressource>.services.ai.azure.com/openai/v1")
+    b_ = (env.get("AZURE_AI_API_BASE") or "").strip().rstrip("/")
+    if m.startswith("azure_ai/") and "/openai/" not in b_ + "/" and re.search(r"\.(services\.ai|openai)\.azure\.com$", b_):
+        b_ += "/openai/v1"                                   # adresse de la ressource donnée seule
+    if m.startswith("azure_ai/") and "/openai/" in b_ + "/":
+        base = re.sub(r"/(responses|chat/completions)/?$", "", b_)
         dep = m.split("/", 1)[1]
         m = f"openai/{dep}"
         kw.update(base_url=base, api_key=env.get("AZURE_AI_API_KEY"))
