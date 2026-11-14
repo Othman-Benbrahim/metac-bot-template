@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.98 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.99 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -384,6 +384,10 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.99** : **l'ombre sans matrice reçoit la boucle de correction de l'officiel** (écart de protocole déclaré le
+  2026-11-14 avant le calcul de son résultat). Premier passage : 9 lectures sans matrice refusées sur 48 (19 %), contre
+  0 pour l'officiel, qui a droit à deux corrections. Le compte du premier regard repart à zéro à partir de 0.10.99 ;
+  les 48 lectures antérieures sont rapportées à part. Détail dans `preenregistrements/sans-matrice.md`.
 - **Veille quotidienne** (2026-11-14, hors version du bot) : `veille_articles.py` lit aussi GitHub (dépôts créés dans
   la fenêtre) et Zenodo (dépôts publiés), en plus d'arXiv et de DAIR.AI ; passage chaque jour, fenêtre de 2 jours,
   12 éléments au plus, déjà vus écartés ; mots-clés ajoutés (harnais d'évaluation, runtime assurance, sélection par

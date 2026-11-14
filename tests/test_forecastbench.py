@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import sys
 import unittest
@@ -387,7 +388,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(o["statut"], "etat_nul")
         self.assertEqual(o["part_parents_matrice_candidates"], 0.0)
         # suivi : part des parents de la matrice, officielle contre sans matrice
-        ligne = {"statut": "estime", "ombre_sans_matrice": {"statut": "estime"},
+        ligne = {"statut": "estime", "version_bot": "0.10.99", "ombre_sans_matrice": {"statut": "estime"},
                  "rejeu": {"plan": plan, "lectures": [{"mots": [{"carte": "POL", "strate": 6}, {"carte": "EME", "strate": 6}]}],
                            "lecture_sans_matrice": {"mots": [{"carte": "CTR", "strate": 6}, {"carte": "POL", "strate": 6}]}}}
         sv = sr.sans_matrice_suivi([ligne])
@@ -395,6 +396,24 @@ class Tests(unittest.TestCase):
         self.assertEqual(sv["part_parents_matrice_sans_matrice"], 0.5)
         self.assertTrue(sv["verdict"].startswith("en attente"))
         self.assertFalse(ap.tirage_sans_matrice("x"))                       # taux 0 par défaut
+        self.assertEqual(sr.sans_matrice_suivi([dict(ligne, version_bot="0.10.97")])["avant_ecart_de_protocole"], 1)
+        # 0.10.99 : l'ombre a droit aux corrections, comme l'officiel
+        mot_ev = {"carte": "CRO", "strate": 6, "intensite": "f", "portee": "aucune", "fait": "x", "source": "s"}
+        reponses = iter(['{"candidats": ["CTR@6", "INC@6"], "contre_candidate": ["INC@6"]}',
+                         json.dumps({"mots": [mot_ev], "rejets": {}, "candidats": ["CTR@6", "INC@6"], "liaisons": [],
+                                     "questions": [], "recherches": []}),
+                         '{"mots": [], "rejets": {"CTR@6": "[aucun_fait] rien", "INC@6": "[aucun_fait] rien"}, '
+                         '"candidats": ["CTR@6", "INC@6"], "liaisons": [], "questions": [], "recherches": []}'])
+        appels = []
+
+        async def llm2(c):
+            appels.append(c[:60])
+            return next(reponses)
+        trace = {"_rejeu": {}, "_textes": ""}
+        o = asyncio.run(ap.sans_matrice_ombre(q, plan, [], "2026-10-11", 7, evt, "CROISSANCE@6 apparait", False, llm2,
+                                              "r", trace))
+        self.assertEqual(len(appels), 3)
+        self.assertEqual((o["statut"], o["corrections"]), ("etat_nul", 1))
 
     def test_b_ar_92(self):
         import random

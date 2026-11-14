@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.98"
+VERSION_BOT = "0.10.99"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -895,33 +895,44 @@ async def sans_matrice_ombre(q: "Question", plan: dict, executees: list, aujourd
     p_vu = {k: v for k, v in p2.items() if k not in ("recherches", "recherches_reference", "recherches_historique")}
     ex_vu = [dict(r, cartes=[]) for r in executees]
     lec = await json_avec_reprise(llm, consigne_dossier(q, p_vu, ex_vu, aujourdhui, jours), {}, "lecture_sans_matrice")
-    trace["_rejeu"]["lecture_sans_matrice"] = json.loads(json.dumps(lec, ensure_ascii=False, default=str))
-    d = assembler(lec, p2, executees, evt, aujourdhui, jours)
-    retirer_faits_futurs(d, trace.get("_textes") or "", aujourdhui, jours)
     ev = plan["evenement"]
     try:
         parents = {a for a, _ in sources_matrice(code_carte(ev["carte"]))}
     except Exception:
         parents = set()
-    dans = sorted({code_carte(m["carte"]) for m in d.get("mots") or []
-                   if isinstance(m, dict) and str(m.get("strate")) == str(ev["strate"])})
     cand = [c.split("@")[0] for c in p2["candidats"]]
-    base = {"candidats": p2["candidats"], "cartes_strate_evenement": dans,
-            "part_parents_matrice_ancrees": round(sum(c in parents for c in dans) / len(dans), 3) if dans else None,
-            "part_parents_matrice_candidates": round(sum(c in parents for c in cand) / len(cand), 3) if cand else None}
-    if not d["mots"]:
-        return dict(base, statut="etat_nul", nature_etat_nul=nature_etat_nul(d.get("_categories_rejet")))
-    e2 = controle_etat(d, p2)
-    if e2 and e2.startswith(f"événement « {ev['type']} » sur une carte absente"):
-        return dict(base, statut="etat_nul", nature_etat_nul="carte_visee_absente")
-    if e2:
-        return dict(base, statut="refuse", motif=str(e2)[:200])
-    s = appeler_moteur({**{k: v for k, v in d.items() if not k.startswith("_")},
-                        "rejets_categories": dict(d.get("_categories_rejet") or {})}, d["etat"], evenement,
-                       plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"], exploratoire=hors_strate)
-    if s.get("erreur"):
-        return dict(base, statut="refuse", motif=str(s["erreur"])[:200])
-    return dict(base, statut="estime" if s.get("p") is not None else "non_estime", p_C=s.get("p"))
+    # 0.10.99 (écart de protocole déclaré le 2026-11-14 AVANT de calculer le résultat de l'ombre) : la lecture
+    # officielle a droit à MAX_CORRECTIONS corrections quand le contrôle la refuse, l'ombre n'en avait aucune (9 refus
+    # sur 48 au premier passage, tous du type que la correction rattrape). Même boucle ici.
+    for tentative in range(MAX_CORRECTIONS + 1):
+        trace["_rejeu"]["lecture_sans_matrice"] = json.loads(json.dumps(lec, ensure_ascii=False, default=str))
+        d = assembler(lec, p2, executees, evt, aujourdhui, jours)
+        retirer_faits_futurs(d, trace.get("_textes") or "", aujourdhui, jours)
+        dans = sorted({code_carte(m["carte"]) for m in d.get("mots") or []
+                       if isinstance(m, dict) and str(m.get("strate")) == str(ev["strate"])})
+        base = {"candidats": p2["candidats"], "cartes_strate_evenement": dans, "corrections": tentative,
+                "part_parents_matrice_ancrees": round(sum(c in parents for c in dans) / len(dans), 3) if dans else None,
+                "part_parents_matrice_candidates": round(sum(c in parents for c in cand) / len(cand), 3) if cand else None}
+        if not d["mots"]:
+            return dict(base, statut="etat_nul", nature_etat_nul=nature_etat_nul(d.get("_categories_rejet")))
+        e2 = controle_etat(d, p2)
+        if e2 and e2.startswith(f"événement « {ev['type']} » sur une carte absente"):
+            return dict(base, statut="etat_nul", nature_etat_nul="carte_visee_absente")
+        if not e2:
+            s = appeler_moteur({**{k: v for k, v in d.items() if not k.startswith("_")},
+                                "rejets_categories": dict(d.get("_categories_rejet") or {})}, d["etat"], evenement,
+                               plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"],
+                               exploratoire=hors_strate)
+            e2 = s.get("erreur")
+            if not e2:
+                return dict(base, statut="estime" if s.get("p") is not None else "non_estime", p_C=s.get("p"))
+        if tentative == MAX_CORRECTIONS or any(x in str(e2) for x in ERREURS_STRUCTURELLES):
+            return dict(base, statut="refuse", motif=str(e2)[:200])
+        lec = await json_avec_reprise(llm, consigne_correction(
+            {k: d[k] for k in CLES_LECTURE if k in d}
+            | {"rejets_classes": {c: {"categorie": d["_categories_rejet"].get(c), "motif": m}
+                                  for c, m in d["rejets"].items()}}, str(e2)), {}, "correction_sans_matrice")
+    return dict(statut="refuse", motif="boucle de correction épuisée")
 
 
 def consigne_correction(lecture: dict, erreur: str) -> str:

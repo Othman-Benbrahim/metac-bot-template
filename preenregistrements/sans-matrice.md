@@ -37,3 +37,15 @@ protocole. Remplacer la lecture officielle serait une décision d'auteur datée.
 - Le corpus reste celui cherché pour les candidates officielles.
 - La fiche d'index des cartes et l'exemple de dossier restent montrés aux deux lectures.
 - Coût : deux appels de plus par question lue.
+
+## Écart de protocole (2026-11-14, bot 0.10.99) — déclaré AVANT le calcul du résultat
+Premier passage (bot 0.10.97, exécution 43617116754, jeu 2026-09-27) : 48 lectures sans matrice, dont **9 refusées
+(19 %)** contre 0 pour la lecture officielle. Cause : la lecture officielle a droit à deux corrections quand le contrôle
+la refuse ; l'ombre n'en avait aucune. Les refus étaient de ceux que la correction rattrape (carte de l'événement
+ancrée pour un « apparaît » : 5 ; format de date ou d'adresse : 3 ; question renvoyant à deux cartes absentes : 1).
+Le garde-fou « refus » aurait jugé le banc de test, pas l'absence de matrice.
+
+Décision d'auteur, prise **avant** que la part de cartes de la matrice ne soit calculée sur ces lectures : l'ombre
+reçoit la même boucle de correction que l'officiel (0.10.99), et le **compte repart à zéro** : le premier regard porte
+sur les 50 premières lectures écrites par le bot 0.10.99 ou plus récent. Les 48 lectures antérieures sont rapportées à
+part (`avant_ecart_de_protocole`), sans verdict.

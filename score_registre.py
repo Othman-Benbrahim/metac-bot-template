@@ -427,6 +427,12 @@ def sans_matrice_suivi(lignes: list[dict]) -> dict:
     off_p, om_p, st_off, st_om = [], [], {}, {}
     import essais as es
     N_ = es.ESSAIS["sans_matrice"]["n"]
+    # 0.10.99 : l'écart de protocole du 2026-11-14 (ombre sans boucle de correction) remet le compte à zéro ; les
+    # lectures antérieures sont rapportées à part, sans verdict
+    dv = tuple(int(t) for t in es.ESSAIS["sans_matrice"].get("depuis_version", "0").split("."))
+    _v = lambda x: tuple(int(t) for t in str(x.get("version_bot") or "0").split(".") if t.isdigit())
+    avant_ecart = [x for x in lignes if _v(x) < dv]
+    lignes = [x for x in lignes if _v(x) >= dv]
     rg_ = es.regard(len(lignes), N_)
     lignes = lignes[: (N_ if rg_ == 1 else 2 * N_ if rg_ == 2 else len(lignes))]   # 0.10.98 : regard à date fixe
     for x in lignes:
@@ -454,7 +460,7 @@ def sans_matrice_suivi(lignes: list[dict]) -> dict:
     n = len(lignes)
     nul_ref = lambda st: (st.get("etat_nul", 0) + st.get("refuse", 0)) / n if n else None
     po = part(om_p)
-    return {"cas": n, "statuts_officiels": st_off, "statuts_sans_matrice": st_om,
+    return {"cas": n, "avant_ecart_de_protocole": len(avant_ecart), "statuts_officiels": st_off, "statuts_sans_matrice": st_om,
             "part_parents_matrice_officielle": part(off_p), "part_parents_matrice_sans_matrice": po,
             "cartes_comptees": {"officielle": len(off_p), "sans_matrice": len(om_p)},
             "verdict": ("en attente (moins de 50 lectures)" if n < 50 else
