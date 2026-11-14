@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 1)                     # absence ; liens (14/11), B_AR et B saisonnier (15/11) clos
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 2)
+        self.assertEqual(k, 2)                     # absence, A + B (15/11) ; liens, B_AR, B saisonnier clos
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 2)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 4)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 2)              # absence, sans matrice
+        self.assertEqual(es.resume()["ouverts"], 3)              # absence, sans matrice, A + B
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -744,3 +744,19 @@ def test_b_saison_104():
     assert fb.b_saison(pts[:200], 7, d0) is None  # moins d'un an d'historique : rien
     import essais as es
     assert es.ESSAIS["b_saisonnier"]["statut"] == "clos"
+
+
+def test_banc_a_106(tmp_path, monkeypatch):
+    import banc_a as ba
+    assert abs(ba.combiner(0.5, 0.5) - 0.5) < 1e-9
+    assert 0.5 < ba.combiner(0.8, 0.5) < 0.8           # la moitié du chemin, en logit
+    monkeypatch.setattr(ba, "FICHIER", tmp_path / "a.jsonl")
+    L = [{"jeu": "2026-08-02", "question_id": f"fb:2026-08-02:fred:S{i}:x", "source_question": "fred", "issue": i % 2,
+          "p_A": 0.7 if i % 2 else 0.3, "p_B": 0.5, "p_AB": ba.combiner(0.7 if i % 2 else 0.3, 0.5),
+          "modeles_A": "m", "exclue": False} for i in range(40)]
+    r = ba.resumer(L)
+    assert r["m"]["n"] == 40 and r["m"]["A"] < r["m"]["AB"] < r["m"]["B"]
+    assert "regard" in r["m"]["critere_AB"]
+    c = ba.consigne_a({"titre": "T", "criteres": "C", "contexte": "X"}, {"frequence": 0.4, "calcul": "k/n"},
+                      [{"date": "2026-08-01", "valeur": 1}], "", "2026-08-02")
+    assert "0.400" in c and "2026-08-01 : 1" in c
