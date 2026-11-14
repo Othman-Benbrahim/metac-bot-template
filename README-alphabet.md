@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.103** — **ombre combinée** (décision d'auteur du 2026-11-15) : sur la lecture SANS matrice, le p du programme génératif puis la correction symétrique (`ombre_sans_matrice.combinee`). Rien n'est posté ; descriptif, hors verdict (`score_registre` : `ombre_combinee`, par lecteur, contre B et le C officiel). Limite déclarée : le génératif compte déjà les candidates contredites, la symétrie peut les recompter ; les deux composantes sont gardées à part (`p_generatif`, `p_symetrique_produit`). Contrôle préalable sur le registre (lecture officielle, 2026-11-15) : le génératif améliore C sans battre B.
 - **0.10.102** — `AZURE_AI_API_BASE` lu en secret ou en variable du dépôt ; adresse de ressource seule complétée en `/openai/v1` ; message clair si elle manque (la sonde du 14 novembre l'a trouvée vide).
 - **0.10.101** — Azure AI Foundry : `alphabet_modeles.adapter` traduit `azure_ai/<déploiement>` en appel OpenAI v1 (adresse et clé Azure passées à chaque appel, sans toucher `OPENAI_API_BASE`) ; modèles de raisonnement (gpt-5, o-séries) : `drop_params`, pas de température imposée. Tous les points de construction des modèles du bot passent par `am.llm`.
 - **0.10.100** : **plusieurs fournisseurs, plusieurs IA** (contrainte d'auteur du 2026-11-14 ; plan dans

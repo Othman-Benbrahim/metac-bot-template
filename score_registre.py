@@ -417,6 +417,40 @@ def critere_b_ar(lignes: list[dict]) -> dict:
                         "critère non atteint" + (" ; un second regard à 200" if rg == 1 else " ; essai à clore"))}
 
 
+def combinee_suivi(lignes: list[dict]) -> dict | None:
+    """0.10.103 (décision d'auteur du 2026-11-15), descriptif, hors verdict : la lecture sans matrice calculée par le
+    programme génératif puis corrigée par la symétrie, contre B et contre le C officiel des mêmes questions. Composantes
+    à part : génératif seul, symétrie sur le produit. Par lecteur (une série ne mélange pas deux lecteurs)."""
+    par: dict[str, dict] = {}
+    for x in lignes:
+        cb = (x.get("ombre_sans_matrice") or {}).get("combinee") or {}
+        y = x.get("issue")
+        if y not in (0, 1) or cb.get("p") is None or x.get("p_B") is None:
+            continue
+        off = x.get("p_C") if x.get("p_C") is not None else (x.get("exploratoire") or {}).get("p_C")
+        lect = str((x.get("modeles") or {}).get("principal") or "?")
+        a = par.setdefault(lect, {"n": 0, "combinee": 0.0, "generatif": 0.0, "symetrique_produit": 0.0, "B": 0.0,
+                                   "C_officiel": 0.0, "n_C_officiel": 0})
+        a["n"] += 1
+        a["combinee"] += log_score(cb["p"], y)
+        a["generatif"] += log_score(cb.get("p_generatif") if cb.get("p_generatif") is not None else cb["p"], y)
+        a["symetrique_produit"] += log_score(cb["p_symetrique_produit"] if cb.get("p_symetrique_produit") is not None
+                                             else x["p_B"], y)
+        a["B"] += log_score(x["p_B"], y)
+        if off is not None:
+            a["C_officiel"] += log_score(off, y)
+            a["n_C_officiel"] += 1
+    if not par:
+        return None
+    out = {}
+    for lect, a in par.items():
+        n = a["n"]
+        out[lect] = {"n": n, **{k: round(a[k] / n, 4) for k in ("combinee", "generatif", "symetrique_produit", "B")},
+                     "C_officiel": round(a["C_officiel"] / a["n_C_officiel"], 4) if a["n_C_officiel"] else None}
+    return {"note": "en ombre, hors verdict ; perte log, plus bas = mieux ; double comptage possible des contredites",
+            "par_lecteur": out}
+
+
 def sans_matrice_suivi(lignes: list[dict]) -> dict:
     """0.10.91. Part des cartes ancrées (strate de l'événement) que la matrice donne comme faisant apparaître la carte
     visée : lecture officielle contre lecture sans matrice, sur les mêmes questions ; statuts des deux lectures.
@@ -1164,6 +1198,7 @@ def scorer_retro(registre: Path) -> dict:
     sm = [x for x in intactes if isinstance(x.get("ombre_sans_matrice"), dict)]
     if sm:
         sortie["ombre_sans_matrice"] = sans_matrice_suivi(sm)
+        sortie["ombre_combinee"] = combinee_suivi(sm)
     import essais as _es                                  # 0.10.98 : combien d'essais tournent en parallèle
     sortie["essais"] = _es.resume()
     its = []
