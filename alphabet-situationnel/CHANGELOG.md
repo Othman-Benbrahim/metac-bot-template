@@ -1,9 +1,16 @@
 # Alphabet situationnel — Journal des versions
 
-> Version : 0.7.76
+> Version : 0.7.77
 
 > Les commits cités sont ceux des dépôts **audités**. Une entrée ne peut pas citer le commit qui la
 > contient, créé après elle : une version livrée se retrouve par son étiquette `vX.Y.Z`.
+
+## 0.7.77 — 2026-11-14 · Frontière du contrôle de vue extérieure
+
+Correction d'un défaut d'arrondi (banc du bot, 2026-11-14). Le contrôle prédictif a priori déclare « non estimé » un
+dossier dont p₀ s'écarte du taux de base de plus de `vue_exterieure_rapport_max` (10, le plafond de LR) en cotes.
+Des cartes au plafond donnent un rapport de exactement 10, que l'arrondi flottant portait à 10,000000000000002 : huit
+dossiers du banc étaient refusés à la frontière. Tolérance relative de 1e-9 ; la règle et la valeur ne changent pas.
 
 ## 0.7.76 — 2026-11-13 · Tiers et propension
 

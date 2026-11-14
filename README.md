@@ -1,6 +1,6 @@
 # Situational Alphabet — a Metaculus forecasting bot
 
-*Othman Ben Brahim · bot 0.10.85 · skill [alphabet-situationnel](https://github.com/Othman-Benbrahim/alphabet-situationnel) 0.7.76 · MIT for the bot files*
+*Othman Ben Brahim · bot 0.10.90 · skill [alphabet-situationnel](https://github.com/Othman-Benbrahim/alphabet-situationnel) 0.7.77 · MIT for the bot files*
 
 This repository runs an open experiment: **does a structural reading of a situation forecast better than a plain base
 rate?** Each binary question gets three forecasts, sealed before resolution and scored with the log score:

@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.89 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.90 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -367,6 +367,11 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.90** : **skill 0.7.77, frontière du contrôle de vue extérieure** (passage du 2026-11-14). Huit dossiers
+  « non estimés » du banc (FRED et ACLED, tous « CROISSANCE apparaît ») avaient un rapport de cotes p₀ / B de
+  10,000000000000002 : des cartes au plafond de LR donnent exactement 10, et l'arrondi flottant franchissait le seuil.
+  Tolérance relative de 1e-9 dans le moteur. Correction du juge : table des bascules, 8 « non estimé » → « estimé »
+  (C n'est pas posté ; l'apprentissage des liens n'utilise pas C).
 - **0.10.89** : **apprentissage des liens : le jugement prend des jeux entiers** (décision d'auteur du 2026-11-14).
   Les jeux ForecastBench les plus récents, en entier, jusqu'à couvrir au moins le tiers des lectures, servent au
   jugement ; les plus anciens à l'apprentissage ; un jeu n'est jamais coupé. Choisi sur le principe (séparation dans
