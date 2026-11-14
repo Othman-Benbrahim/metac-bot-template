@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.83"
+VERSION_BOT = "0.10.84"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -715,7 +715,9 @@ FORMAT (exemple fictif, à suivre pour la structure seulement) :
 {json.dumps(exemple, ensure_ascii=False, indent=1)}
 
 Rends UNIQUEMENT un objet JSON avec les clés : {", ".join(CLES_LECTURE)} (et dynamique_observee si "mots" est vide).
-L'événement prévu est {ev['carte']}@{ev['strate']} {ev['type']} : {"cette carte ne doit PAS figurer dans les mots" if ev['type'] == "apparait" else "cette carte doit figurer dans les mots"}."""
+L'événement prévu est {ev['carte']}@{ev['strate']} {ev['type']} : {"cette carte ne doit PAS figurer dans les mots" if ev['type'] == "apparait" else "cette carte doit figurer dans les mots"}.
+Au plus 4 cartes ancrées par strate (carte de l'événement comprise) : chaque carte ancrée est une candidate, et le moteur
+refuse plus de 4 candidates dans une strate."""
 
 
 def consigne_relance(q: Question, plan: dict, cibles: dict, deja: list[dict], aujourdhui: str) -> str:
@@ -1366,6 +1368,63 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
                     pass
             garde_m.append(m)
         d["mots"] = garde_m
+    # 0 quater (0.10.84, banc du 2026-11-14 : cinq cartes ancrées en strate 7, refus maintenu sur trois lectures). Le
+    #    moteur exige 2 à 4 candidates par strate et chaque carte ancrée est une candidate : au-delà de 4 ancrées dans
+    #    une strate, le dossier est refusé en entier. Le réparateur retire les ancrées en surnombre (affaiblir : une
+    #    source de moins, jamais une de plus). On garde d'abord la carte de l'événement (persiste / disparaît), puis
+    #    les F, puis les contre-candidates, les cartes visées par une recherche, celles du plan, dans l'ordre du
+    #    lecteur. Les liaisons et questions qui visaient une carte retirée tombent aux étapes suivantes (mot absent).
+    ev_ = plan.get("evenement") or {}
+    try:
+        k_ev = cle_normale(f"{ev_.get('carte')}@{ev_.get('strate')}") if ev_.get("type") != "apparait" else None
+    except Exception:
+        k_ev = None
+    cc0 = set()
+    for c in (d.get("contre_candidate") if isinstance(d.get("contre_candidate"), list) else []):
+        try:
+            cc0.add(cle_normale(c))
+        except Exception:
+            pass
+    rech0 = set()
+    for r in d.get("recherches") if isinstance(d.get("recherches"), list) else []:
+        for c in (r.get("cartes") or []) if isinstance(r, dict) else []:
+            try:
+                rech0.add(cle_normale(c))
+            except Exception:
+                pass
+    plan0 = set()
+    for c in plan.get("candidats") or []:
+        try:
+            plan0.add(cle_normale(c))
+        except Exception:
+            pass
+    par_strate: dict[str, list[tuple[int, str]]] = {}
+    for i, m in enumerate(d.get("mots") or []):
+        if isinstance(m, dict):
+            try:
+                k = cle_normale(f"{m.get('carte')}@{m.get('strate')}")
+            except Exception:
+                continue
+            par_strate.setdefault(k.split("@")[1], []).append((i, k))
+    retirer_i = set()
+    for st, lst in par_strate.items():
+        if len({k for _, k in lst}) <= 4:
+            continue
+        mots_ = d["mots"]
+        ordre = sorted(lst, key=lambda t: (t[1] != k_ev, mots_[t[0]].get("intensite") != "F", t[1] not in cc0,
+                                           t[1] not in rech0, t[1] not in plan0, t[0]))
+        vus_ = []
+        for i, k in ordre:
+            if k in vus_ or len(vus_) >= 4:
+                if k not in vus_:
+                    retirer_i.add(i)
+                    notes.append(f"{k} : mot retiré (plus de 4 cartes ancrées dans la strate {st})")
+                continue
+            vus_.append(k)
+    if retirer_i:
+        d["mots"] = [m for i, m in enumerate(d["mots"]) if i not in retirer_i]
+        partis = {n_.split(" :")[0] for n_ in notes if "plus de 4 cartes ancrées" in n_}
+        d["candidats"] = [c for c in d.get("candidats") or [] if not (isinstance(c, str) and c in partis)]
     fm = {f"{m.get('carte')}@{m.get('strate')}" for m in d.get("mots") or [] if isinstance(m, dict)}
     # 0 ter (0.10.48). Questions de discrimination (exigées au premier état d'un cas réel) : réparées dans la forme,
     # jamais dans le fond. Branches normalisées (CARTE@strate) ; deux branches vers la même carte → « non » mène à
