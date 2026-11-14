@@ -389,6 +389,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(o["part_parents_matrice_candidates"], 0.0)
         # suivi : part des parents de la matrice, officielle contre sans matrice
         ligne = {"statut": "estime", "version_bot": "0.10.99", "ombre_sans_matrice": {"statut": "estime"},
+                 "modeles": {"principal": "mistral/mistral-medium-latest"},
                  "rejeu": {"plan": plan, "lectures": [{"mots": [{"carte": "POL", "strate": 6}, {"carte": "EME", "strate": 6}]}],
                            "lecture_sans_matrice": {"mots": [{"carte": "CTR", "strate": 6}, {"carte": "POL", "strate": 6}]}}}
         sv = sr.sans_matrice_suivi([ligne])
@@ -481,6 +482,27 @@ class Tests(unittest.TestCase):
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
             self.assertTrue((racine / e["doc"]).is_file(), k)
+
+    def test_fournisseurs_100(self):
+        import asyncio
+        import alphabet_modeles as am
+        import litellm
+        self.assertTrue(am.famille_mistral("azure_ai/mistral-medium-2505"))
+        self.assertTrue(am.famille_mistral("mistral/mistral-medium-latest"))
+        self.assertFalse(am.famille_mistral("bedrock/global.anthropic.claude-haiku-4-5"))
+        am.installer_traceur()
+        am.installer_traceur()                                    # une seule fois
+        self.assertEqual(len(am._TRACEUR), 1)
+        am.servis_et_vider()
+
+        async def appel():
+            await litellm.acompletion(model="mistral/mistral-medium-latest", mock_response="ok",
+                                      messages=[{"role": "user", "content": "x"}])
+            await asyncio.sleep(0.5)
+        asyncio.run(appel())
+        s = am.servis_et_vider()
+        self.assertEqual(s, {"mistral/mistral-medium-latest": {"mistral-medium-latest": 1}})
+        self.assertEqual(am.servis_et_vider(), {})
 
     def test_fond_et_duels_79(self):
         import asyncio

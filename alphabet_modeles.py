@@ -19,6 +19,10 @@ FANTASY_API_KEY) : litellm les lit lui-même, pour le bot comme pour le chercheu
 va dans le secret AWS_BEARER_TOKEN_BEDROCK, la région dans la variable AWS_REGION_NAME (us-east-1 par défaut). Placés en
 tête de suite, devant les modèles Fantasy : quand la clé est absente, refusée ou les crédits épuisés (échec durable),
 le passage retombe sur Fantasy. Changer de modèle, c'est changer de codeur : le score sépare les lignes par modèle.
+
+0.10.100 : Microsoft Azure AI Foundry. Les modèles s'écrivent « azure_ai/<nom du déploiement> » (ex.
+« azure_ai/mistral-medium-2505 ») ; la clé va dans le secret AZURE_AI_API_KEY, l'adresse du point d'accès dans le secret
+AZURE_AI_API_BASE (litellm les lit lui-même). Plan de transition entre fournisseurs : TRANSITION-FOURNISSEURS.md.
 """
 from __future__ import annotations
 
@@ -27,6 +31,53 @@ import json
 import os
 import re
 import time
+
+def famille_mistral(modele) -> bool:
+    """0.10.100 : un modèle Mistral, quel que soit le fournisseur (API Mistral, Azure AI Foundry, Bedrock, OVH…)."""
+    return "mistral" in str(modele).lower() or "magistral" in str(modele).lower()
+
+
+# 0.10.100 (contrainte d'auteur du 2026-11-14 : plusieurs fournisseurs, plusieurs IA) : la version EXACTE du modèle servi
+# (« mistral-medium-2508 », et non l'alias « mistral-medium-latest ») est relevée à chaque appel, par un traceur litellm.
+# Le lecteur d'une série se définit par le modèle et sa version, pas par le fournisseur : même version ailleurs, même
+# série ; autre version, autre lecteur.
+SERVIS: dict[str, dict[str, int]] = {}
+_TRACEUR = []
+
+
+def installer_traceur() -> None:
+    if _TRACEUR:
+        return
+    try:
+        import litellm
+        from litellm.integrations.custom_logger import CustomLogger
+    except Exception:
+        return
+
+    class _Traceur(CustomLogger):
+        def _noter(self, kwargs, response_obj):
+            demande = f"{kwargs.get('custom_llm_provider') or '?'}/{kwargs.get('model') or '?'}"
+            servi = str(getattr(response_obj, "model", None) or "?")
+            SERVIS.setdefault(demande, {})
+            SERVIS[demande][servi] = SERVIS[demande].get(servi, 0) + 1
+
+        def log_success_event(self, kwargs, response_obj, start_time, end_time):
+            self._noter(kwargs, response_obj)
+
+        async def async_log_success_event(self, kwargs, response_obj, start_time, end_time):
+            self._noter(kwargs, response_obj)
+
+    t = _Traceur()
+    litellm.callbacks = list(getattr(litellm, "callbacks", []) or []) + [t]
+    _TRACEUR.append(t)
+
+
+def servis_et_vider() -> dict:
+    """Modèles servis depuis le dernier relevé : {demandé : {servi : appels}}."""
+    out = {k: dict(v) for k, v in SERVIS.items()}
+    SERVIS.clear()
+    return out
+
 
 ROLES = {"principal": "ALPHABET_LLM", "petit": "ALPHABET_PETIT_LLM", "contradicteur": "ALPHABET_CONTRADICTEUR"}
 SONDE = 'Réponds uniquement par cet objet JSON, sans rien d\'autre : {"ok": true}'
@@ -55,7 +106,7 @@ async def sonder(modele: str, appel=None) -> dict:
         delai = float(os.environ.get("ALPHABET_SONDE_DELAI") or "90")
         if appel is None:
             from forecasting_tools import GeneralLlm
-            extra = {"top_p": 1} if str(modele).startswith("mistral/") else {}   # Mistral : top_p = 1 à température nulle
+            extra = {"top_p": 1} if famille_mistral(modele) else {}   # Mistral : top_p = 1 à température nulle
             co = GeneralLlm(model=modele, temperature=0, timeout=60, allowed_tries=1, **extra).invoke(SONDE)
         else:
             co = appel(modele, SONDE)

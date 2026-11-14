@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.99 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.100 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -384,6 +384,11 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.100** : **plusieurs fournisseurs, plusieurs IA** (contrainte d'auteur du 2026-11-14 ; plan dans
+  `TRANSITION-FOURNISSEURS.md`). Version exacte du modèle servi relevée à chaque appel (`modeles_servis`, traceur
+  litellm) ; Azure AI Foundry branché (`azure_ai/<déploiement>`, secrets `AZURE_AI_API_KEY`, `AZURE_AI_API_BASE`) ;
+  réglage Mistral (top_p = 1) reconnu chez tout fournisseur ; l'ombre sans matrice se juge sur un seul lecteur
+  (Mistral Medium, quel que soit le point d'accès), les autres lecteurs comptés à part.
 - **Clôture de l'apprentissage des liens** (2026-11-14, décision d'auteur, hors version du bot) : arrêt à 268 lectures
   Mistral, jugement lu une fois : C empirique 0,660 contre B 0,659 en perte log, intervalle à 90 % [−0,035 ; +0,042] :
   **non adopté**. Les liens les plus fréquents de la matrice (CTR, POL, HIE → SEU) ne disent rien ; INC→SEU pousse
