@@ -16,6 +16,14 @@ import alphabet_modeles as am  # noqa: E402
 import alphabet_pipeline as ap  # noqa: E402
 import test_pipeline as tp  # noqa: E402
 
+def setUpModule():
+    # 0.10.82 : ces tests éprouvent le chemin où C est posté ; la règle par défaut (B posté, C en ombre) a son propre test
+    ap.POSTER_C = True
+
+
+def tearDownModule():
+    ap.POSTER_C = False
+
 
 def appel_simule(disponibles):
     async def appel(modele, consigne):

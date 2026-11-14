@@ -23,6 +23,14 @@ import test_pipeline as tp  # noqa: E402  (données fictives communes ; règle N
 import alphabet_retro as ar  # noqa: E402
 import score_registre as sr  # noqa: E402
 
+def setUpModule():
+    # 0.10.82 : ces tests éprouvent le chemin où C est posté ; la règle par défaut (B posté, C en ombre) a son propre test
+    ap.POSTER_C = True
+
+
+def tearDownModule():
+    ap.POSTER_C = False
+
 
 def mq(qid=501, issue="no"):
     return mock.Mock(id_of_question=qid, resolution_string=issue, page_url=f"https://www.metaculus.com/questions/{qid}/",

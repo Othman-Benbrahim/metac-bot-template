@@ -295,6 +295,19 @@ class Tests(unittest.TestCase):
         ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 6}, "candidats": []}, "2026-10-25")
         self.assertEqual([m["source_url"] for m in d["mots"]], ["https://a.org/x", "https://b.org/y"])
 
+    def test_poster_b_82(self):
+        # règle par défaut (décision du 2026-11-14) : C estimé → B posté, C en ombre
+        self.assertFalse(ap.POSTER_C)
+        self.assertEqual(ap.choisir_bras({"statut": "estime", "p_C": 0.8, "p_B": 0.3}, 0.5), ("B", 0.3))
+        self.assertEqual(ap.choisir_bras({"statut": "estime", "p_C": 0.8, "p_B": None}, 0.5), ("A", 0.5))
+        self.assertEqual(ap.choisir_bras({"statut": "etat_nul", "p_B": 0.2}, 0.5), ("B", 0.2))
+        q = ap.Question(id="q", url="u", titre="t", contexte="", criteres="", precisions="", resolution=None)
+        c = {"statut": "estime", "p_C": 0.8, "p_B": 0.3, "dossier": {"disponible_le": "2026-11-14"}, "etat": "x",
+             "evenement": "SEU@7 apparait", "semantique": "au-moins-une-fois", "vue": {}}
+        t = ap.commentaire(q, 0.5, "", c, "B")
+        self.assertIn("NOT posted", t)
+        self.assertIn("0.800", t)
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
