@@ -266,6 +266,27 @@ class Tests(unittest.TestCase):
             raise AssertionError("aucun appel de modèle pour un duel")
         self.assertIsNone(asyncio.run(fb.un_test(x, "2026-10-11", llm, set())))
 
+    def test_apprentissage_liens_80(self):
+        import math
+        import random
+        import apprentissage_liens as al
+        rnd = random.Random(1)
+        D = []
+        for _ in range(600):
+            x = [n for n in ("A→S", "B→S", "C→S") if rnd.random() < 0.4]
+            B = rnd.uniform(0.2, 0.8)
+            z = math.log(B / (1 - B)) + (1.0 if "A→S" in x else 0) - (1.0 if "B→S" in x else 0)
+            D.append({"B": B, "x": x, "y": int(rnd.random() < 1 / (1 + math.exp(-z)))})
+        b, e = al.ajuster(D, ["A→S", "B→S", "C→S"])
+        self.assertGreater(b["A→S"] - 1.645 * e["A→S"], 0)          # pousse
+        self.assertLess(b["B→S"] + 1.645 * e["B→S"], 0)             # retient
+        self.assertLess(abs(b["C→S"]), 1.645 * e["C→S"])            # ne dit rien
+        x = {"rejeu": {"plan": {"evenement": {"carte": "SEU", "strate": 6, "type": "apparait"}},
+                       "lectures": [{"mots": [{"carte": "CTR", "strate": 6}, {"carte": "POL", "strate": 7}]}]}}
+        self.assertEqual(al.variables(x), ["CTR→SEU"])                # une carte d'une autre strate n'entre pas
+        x["rejeu"]["plan"]["evenement"]["type"] = "persiste"
+        self.assertEqual(al.variables(x), ["persiste:SEU"])
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],
