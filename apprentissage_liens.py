@@ -54,6 +54,13 @@ PROTOCOLE = {"enregistre_le": "2026-11-14", "depuis_version": "0.10.80", "lecteu
              # décision d'auteur du 2026-11-14 (0.10.89) : le jugement prend des JEUX ENTIERS, les plus récents
              "decoupage": "jeux_entiers", "decoupage_decide_le": "2026-11-14"}
 STABILITE = {"ajoute_le": "2026-11-14", "tirages": 200, "graine": 0, "seuil": 0.80, "statut": "ombre"}
+# Doubles permutés (ajout du 2026-11-14, EN OMBRE ; Neirz, Allende et Saavedra, Scientific Reports 2026, « null-swap »).
+# Le bootstrap sur un seul échantillon réutilise la même coïncidence : la stabilité n'est pas une preuve. Repère : pour
+# chaque lien, la valeur qu'atteint le bruit avec la MÊME rareté. À chaque tirage, l'indicateur de chaque lien est permuté
+# entre les lectures d'apprentissage (même nombre de cas, lien avec l'issue détruit) et le modèle est réajusté ; le
+# rapport donne la part des doubles dont |z| = |β / écart-type| atteint celui du lien (p_doubles). Un lien ne « bat ses
+# doubles » qu'en dessous de 0,05. Approximation déclarée : tous les liens sont permutés ensemble à chaque tirage.
+DOUBLES = {"ajoute_le": "2026-11-14", "tirages": 100, "graine": 0, "seuil": 0.05, "n_min": 5, "statut": "ombre"}
 
 
 def _v(v) -> tuple:
@@ -198,6 +205,23 @@ def tirer_blocs(D: list[dict], rnd: random.Random) -> list[dict]:
     return [d for _ in cles for d in blocs[rnd.choice(cles)]]
 
 
+def doubles_permutes(A: list[dict], noms: list[str], tirages: int | None = None) -> dict[str, list[float]]:
+    """|z| des doubles permutés de chaque lien (ombre, 2026-11-14)."""
+    rnd = random.Random(DOUBLES["graine"])
+    out: dict[str, list[float]] = {n: [] for n in noms}
+    for _ in range(tirages or DOUBLES["tirages"]):
+        perm = {}
+        for n in noms:
+            col = [n in d["x"] for d in A]
+            rnd.shuffle(col)
+            perm[n] = col
+        S = [dict(d, x=[n for n in noms if perm[n][i]]) for i, d in enumerate(A)]
+        be, es = ajuster(S, noms)
+        for n in noms:
+            out[n].append(abs(be[n] / es[n]) if es[n] > 0 else 0.0)
+    return out
+
+
 def stabilite(A: list[dict], statuts: dict[str, str], par_blocs: bool = False) -> dict[str, float]:
     """Part des tirages bootstrap où l'intervalle à 90 % du lien reste du côté de son statut (ombre, 2026-11-14).
     par_blocs : tirage par blocs « jeu × source » (ombre)."""
@@ -242,6 +266,16 @@ def principal(en_json: bool) -> int:
     for n, st_ in stabilite(A, {n: v["statut"] for n, v in liens.items() if v["statut"] in ("pousse", "retient")},
                             par_blocs=True).items():
         liens[n]["stabilite_blocs"] = round(st_, 3)
+    # doubles permutés (ombre)
+    if noms and A:
+        nuls = doubles_permutes(A, noms)
+        for n in noms:
+            z = abs(beta[n] / et[n]) if et[n] > 0 else 0.0
+            pn = (1 + sum(v >= z for v in nuls[n])) / (1 + len(nuls[n]))
+            liens[n]["z"] = round(z, 3)
+            liens[n]["p_doubles"] = round(pn, 3)
+            # sous 5 cas, la permutation n'a presque rien à mélanger (un seul cas : z des doubles dégénéré)
+            liens[n]["bat_ses_doubles"] = (pn < DOUBLES["seuil"]) if liens[n]["n"] >= DOUBLES["n_min"] else None
     jug = None
     if J:
         ec = [perte(predire(d, beta), d["y"]) - perte(d["B"], d["y"]) for d in J]
@@ -272,7 +306,10 @@ def principal(en_json: bool) -> int:
         ancien = {"apprentissage": len(A0), "jugement": len(J0),
                   "perte_B": sum(perte(d["B"], d["y"]) for d in J0) / len(J0),
                   "perte_C_empirique": sum(perte(predire(d, b0), d["y"]) for d in J0) / len(J0)}
-    rap = {"protocole": PROTOCOLE, "ombre_ancien_decoupage": ancien, "stabilite_ombre": STABILITE, "lectures": len(D), "jeux": jeux, "apprentissage": len(A), "jugement": jug,
+    rap = {"protocole": PROTOCOLE, "ombre_ancien_decoupage": ancien, "stabilite_ombre": STABILITE,
+           "doubles_ombre": dict(DOUBLES, liens_testes=sum(1 for v in liens.values() if v.get("bat_ses_doubles") is not None),
+                                 attendus_par_hasard=round(sum(1 for v in liens.values() if v.get("bat_ses_doubles") is not None) * DOUBLES["seuil"], 1),
+                                 battent_leurs_doubles=sum(1 for v in liens.values() if v.get("bat_ses_doubles"))), "lectures": len(D), "jeux": jeux, "apprentissage": len(A), "jugement": jug,
            "liens": dict(sorted(liens.items(), key=lambda t: -t[1]["n"]))}
     print(json.dumps(rap, ensure_ascii=False, indent=1 if en_json else None))
     return 0

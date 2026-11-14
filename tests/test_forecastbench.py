@@ -415,6 +415,21 @@ class Tests(unittest.TestCase):
         self.assertLessEqual(o["p"], 0.999)
         self.assertIsNone(fb.b_ar(plat[:10], 7, d0))
 
+    def test_doubles_permutes_96(self):
+        import random
+        import apprentissage_liens as al
+        rnd = random.Random(5)
+        A = []
+        for _ in range(200):
+            fort, bruit = rnd.random() < 0.4, rnd.random() < 0.3
+            p = 0.3 * (5 if fort else 1) / (1 + 0.3 * ((5 if fort else 1) - 1))
+            A.append({"B": 0.3, "y": int(rnd.random() < p), "x": [n for n, b in (("fort", fort), ("bruit", bruit)) if b]})
+        nuls = al.doubles_permutes(A, ["fort", "bruit"], tirages=40)
+        beta, et = al.ajuster(A, ["fort", "bruit"])
+        z_fort = abs(beta["fort"] / et["fort"])
+        self.assertGreater(z_fort, max(nuls["fort"]))              # le vrai lien bat tous ses doubles
+        self.assertEqual(len(nuls["bruit"]), 40)
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa
