@@ -72,6 +72,7 @@ jobs:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
           UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
           BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
           ALPHABET_PUITS: ${{ vars.ALPHABET_PUITS }}
           ALPHABET_RECHERCHE_ORDRE: ${{ vars.ALPHABET_RECHERCHE_ORDRE }}
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}

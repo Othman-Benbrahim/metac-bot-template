@@ -10,7 +10,8 @@
 Chaque connecteur rend un relevé : {"source", "titre", "url", "debut", "points": [{"date", "valeur", "titre", "url",
 "extrait"}]}. Un connecteur sans sa clé lève `SansCle` : il est sauté, jamais bloquant.
 
-Clés (secrets GitHub) : FRED_API_KEY, FIRMS_MAP_KEY, UCDP_TOKEN (reçue le 2026-11-13 ; 5 000 requêtes par jour), BLS_API_KEY (facultative).
+Clés (secrets GitHub) : FRED_API_KEY, FIRMS_MAP_KEY, UCDP_TOKEN (reçue le 2026-11-13 ; 5 000 requêtes par jour), BLS_API_KEY
+(facultative), CENSUS_API_KEY (facultative, 0.10.93).
 Toutes les autres sources sont sans clé.
 """
 from __future__ import annotations
@@ -251,6 +252,33 @@ async def bls(serie: str, avant: date | None = None) -> dict:
     return _releve("U.S. Bureau of Labor Statistics", serie, f"https://data.bls.gov/timeseries/{serie}",
                    [x for x in pts if x["valeur"] is not None], avant, retard=45,
                    revisions="valeurs actuelles, sans millésime : révisions possibles (FRED/ALFRED les a)")
+
+
+async def census_eits(programme: str, categorie: str, type_donnee: str, ajuste: str = "yes",
+                      avant: date | None = None) -> dict:
+    """0.10.93 : U.S. Census Bureau, indicateurs économiques mensuels (Economic Indicators Time Series, API publique).
+    programme : marts (ventes au détail), resconst (mises en chantier, permis), ressales (ventes de logements neufs),
+    vip (dépenses de construction), advm3 (biens durables), mtis (stocks et ventes), ftd (commerce extérieur).
+    Clé facultative (CENSUS_API_KEY ; sans clé, quota réduit par adresse IP). Valeurs actuelles, sans millésime :
+    les révisions sont possibles ; un mois M paraît vers le milieu de M+1, d'où un retard de 45 jours."""
+    prog = re.sub(r"[^a-z0-9]", "", str(programme).lower())
+    p = {"get": "cell_value,time_slot_id,data_type_code,category_code,seasonally_adj", "for": "us:*",
+         "time": "from 2000", "category_code": categorie, "data_type_code": type_donnee,
+         "seasonally_adj": "yes" if str(ajuste).lower() in ("yes", "oui", "true", "1") else "no"}
+    if os.environ.get("CENSUS_API_KEY"):
+        p["key"] = os.environ["CENSUS_API_KEY"]
+    d = await _get(f"https://api.census.gov/data/timeseries/eits/{prog}", p)
+    tete, lignes = (d[0], d[1:]) if isinstance(d, list) and d else ([], [])
+    i_v, i_t = (tete.index("cell_value"), tete.index("time")) if "cell_value" in tete and "time" in tete else (None, None)
+    pts = []
+    for x in lignes if i_v is not None else []:
+        j = _jour(x[i_t])
+        v = _num(x[i_v])
+        if j and v is not None:
+            pts.append({"date": j, "valeur": v})
+    return _releve("U.S. Census Bureau (Economic Indicators)", f"{prog} · {categorie} · {type_donnee} · ajusté {p['seasonally_adj']}",
+                   f"https://www.census.gov/econ/currentdata/dbsearch?programCode={prog.upper()}", pts, avant, retard=45,
+                   revisions="valeurs actuelles, sans millésime : révisions possibles")
 
 
 async def unhcr(pays_origine: str | None = None, pays_asile: str | None = None, champ: str = "refugees",
@@ -958,6 +986,9 @@ CATALOGUE: dict[str, dict] = {
                "pour": "finances fédérales américaines (dette, taux moyens, dépenses)"},
     "bls": {"fn": bls, "nature": "niveau", "comptable": True, "params": '{"serie": "identifiant BLS, ex. CUUR0000SA0, LNS14000000"}',
             "pour": "emploi et prix américains"},
+    "census_eits": {"fn": census_eits, "nature": "niveau", "comptable": True,
+                    "params": '{"programme": "marts|resconst|ressales|vip|advm3|mtis|ftd", "categorie": "code de catégorie, ex. 44X72 (ventes au détail totales)", "type_donnee": "code de type, ex. SM (ventes mensuelles)", "ajuste": "yes|no"}',
+                    "pour": "indicateurs économiques mensuels américains du Census Bureau : ventes au détail, logement, construction, biens durables, stocks, commerce extérieur"},
     "unhcr": {"fn": unhcr, "nature": "niveau", "comptable": True,
               "params": '{"pays_origine": "ISO3 facultatif", "pays_asile": "ISO3 facultatif", "champ": "refugees|asylum_seekers|idps"}',
               "pour": "réfugiés et déplacés par année"},

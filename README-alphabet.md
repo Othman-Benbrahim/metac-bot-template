@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.92 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.93 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -181,6 +181,7 @@ d'attribution les inclut.
 | FRED, et ses millésimes ALFRED | `FRED_API_KEY` | séries américaines, telles qu'elles étaient publiées à la date d'information |
 | Banque mondiale, BCE, Eurostat | aucune | indicateurs par pays, monnaie, statistiques européennes |
 | Treasury FiscalData, BLS | aucune (`BLS_API_KEY` facultative) | finances fédérales, emploi et prix américains |
+| Census Bureau, indicateurs économiques (0.10.93) | aucune (`CENSUS_API_KEY` facultative) | ventes au détail, logement, construction, biens durables, stocks, commerce extérieur (mensuel, sans millésime) |
 | UNHCR, OCHA FTS, catalogue HDX | aucune | réfugiés, financement humanitaire, jeux de données humanitaires |
 | UCDP | `UCDP_TOKEN` (en attente) | violence organisée et morts estimés |
 | USGS, GDACS, NASA EONET | aucune | séismes, alertes de catastrophes, événements naturels |
@@ -367,6 +368,10 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.93** : **puits Census Bureau** (`census_eits` : Economic Indicators Time Series, API publique ; ventes au
+  détail, mises en chantier, ventes de logements neufs, dépenses de construction, biens durables, stocks, commerce
+  extérieur). Comptable, borné à la date d'information avec un retard de publication de 45 jours ; valeurs actuelles,
+  sans millésime (révisions possibles, comme BLS). Clé facultative `CENSUS_API_KEY`. Ajouté à la sonde des puits.
 - **0.10.92** : **second taux de base autorégressif pour les séries, en ombre** (décision d'auteur du 2026-11-14 : le
   but est la meilleure prévision possible, pas de prouver C contre B). Pour FRED et DBnomics, `b_ar` ajuste un AR(1) à
   constante sur les différences des mêmes points que B (5 ans, strictement avant D), en déduit la loi gaussienne de la
