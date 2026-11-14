@@ -57,11 +57,22 @@ class ErreurSource(RuntimeError):
     """Erreur HTTP d'une source, message sans clé."""
 
 
+def _corps(r) -> str:
+    """0.10.94 : le début de la réponse, sans clé et sur une ligne (sonde du 2026-11-14 : trois sources en erreur sans
+    que l'on sache pourquoi)."""
+    try:
+        t = re.sub(r"<[^>]+>", " ", r.text or "")
+    except Exception:
+        return ""
+    t = " ".join(t.split())[:240]
+    return f" — réponse : {masquer(t)}" if t else ""
+
+
 def _verifier(r) -> None:
     try:
         r.raise_for_status()
     except httpx.HTTPStatusError as e:
-        raise ErreurSource(masquer(e)) from None
+        raise ErreurSource(masquer(e) + _corps(r)) from None
 
 
 async def _get(url: str, params: dict | None = None, headers: dict | None = None, json_: bool = True):
@@ -69,7 +80,12 @@ async def _get(url: str, params: dict | None = None, headers: dict | None = None
                                  headers={"User-Agent": AGENT, **(headers or {})}) as c:
         r = await c.get(url, params=params)
         _verifier(r)
-        return r.json() if json_ else r.text
+        if not json_:
+            return r.text
+        try:
+            return r.json()
+        except ValueError:
+            raise ErreurSource(f"réponse non JSON (HTTP {r.status_code}){_corps(r)}") from None
 
 
 async def _get_octets(url: str) -> bytes:
@@ -242,6 +258,8 @@ async def bls(serie: str, avant: date | None = None) -> dict:
         r.raise_for_status()
         # 0.10.1 : la réponse du BLS contient parfois des caractères de contrôle dans ses messages (sonde du 10/11).
         d = json.loads(r.text, strict=False)
+    if d.get("status") and d["status"] != "REQUEST_SUCCEEDED":     # 0.10.94 : quota, série inconnue… dit, pas « vide »
+        raise ErreurSource(f"BLS {d['status']} : {' '.join(map(str, d.get('message') or []))[:240]}")
     series = (d.get("Results") or {}).get("series") or []
     pts = []
     for x in (series[0].get("data") if series else []) or []:
@@ -334,6 +352,38 @@ def versions_candidates(debut: str, avant: date | None, annuelle: str) -> list[s
     return out
 
 
+# 0.10.94 (sonde du 2026-11-14 : « 400 Bad Request » pour Country=Sudan) : le filtre Country de l'API UCDP attend le
+# code numérique Gleditsch et Ward, pas un nom. Table des pays les plus fréquents dans les questions ; un code numérique
+# ou une liste « 625,626 » passe tel quel ; un nom inconnu lève une erreur explicite.
+CODES_GW = {
+    "usa": 2, "united states": 2, "canada": 20, "haiti": 41, "mexico": 70, "guatemala": 90, "honduras": 91,
+    "el salvador": 92, "nicaragua": 93, "colombia": 100, "venezuela": 101, "ecuador": 130, "peru": 135, "brazil": 140,
+    "bolivia": 145, "chile": 155, "argentina": 160, "united kingdom": 200, "uk": 200, "france": 220, "germany": 255,
+    "poland": 290, "serbia": 345, "kosovo": 347, "moldova": 359, "russia": 365, "ukraine": 369, "belarus": 370,
+    "armenia": 371, "georgia": 372, "azerbaijan": 373, "senegal": 433, "benin": 434, "mali": 432, "niger": 436,
+    "burkina faso": 439, "ghana": 452, "togo": 461, "cameroon": 471, "nigeria": 475, "central african republic": 482,
+    "chad": 483, "dr congo": 490, "democratic republic of the congo": 490, "drc": 490, "uganda": 500, "kenya": 501,
+    "tanzania": 510, "burundi": 516, "rwanda": 517, "somalia": 520, "djibouti": 522, "ethiopia": 530, "eritrea": 531,
+    "angola": 540, "mozambique": 541, "zimbabwe": 552, "south africa": 560, "madagascar": 580, "morocco": 600,
+    "algeria": 615, "tunisia": 616, "libya": 620, "sudan": 625, "south sudan": 626, "iran": 630, "turkey": 640,
+    "turkiye": 640, "iraq": 645, "egypt": 651, "syria": 652, "lebanon": 660, "israel": 666, "palestine": 666,
+    "saudi arabia": 670, "yemen": 678, "afghanistan": 700, "tajikistan": 702, "kyrgyzstan": 703, "uzbekistan": 704,
+    "kazakhstan": 705, "china": 710, "north korea": 731, "south korea": 732, "japan": 740, "india": 750,
+    "pakistan": 770, "bangladesh": 771, "myanmar": 775, "burma": 775, "sri lanka": 780, "nepal": 790,
+    "thailand": 800, "philippines": 840, "indonesia": 850,
+}
+
+
+def code_gw(pays) -> str:
+    t = str(pays).strip()
+    if re.fullmatch(r"\d+(,\d+)*", t):
+        return t
+    k = re.sub(r"\s+", " ", t.lower().replace("’", "'"))
+    if k in CODES_GW:
+        return str(CODES_GW[k])
+    raise ErreurSource(f"UCDP : pays « {t} » sans code Gleditsch-Ward connu (donner le code numérique)")
+
+
 async def ucdp(pays: str | None = None, debut: str = "2015-01-01", version: str | None = None,
                avant: date | None = None) -> dict:
     """UCDP GED (événements de violence, morts estimés). Exige UCDP_TOKEN (en-tête x-ucdp-access-token ; 5 000 requêtes
@@ -343,7 +393,7 @@ async def ucdp(pays: str | None = None, debut: str = "2015-01-01", version: str 
     v = version or os.environ.get("UCDP_VERSION") or "26.1"   # 0.10.65 : version donnée par UCDP avec la clé
     p = {"pagesize": 1000, "StartDate": debut, "EndDate": (avant or date.today()).isoformat()}
     if pays:
-        p["Country"] = pays
+        p["Country"] = code_gw(pays)
     pts = []
 
     async def lire(ver: str, marque: str = "") -> None:
@@ -995,7 +1045,7 @@ CATALOGUE: dict[str, dict] = {
     "fts": {"fn": fts, "nature": "flux", "comptable": True, "params": '{"pays": "ISO3", "annees": [2021, 2022, "..."]}',
             "pour": "financement humanitaire reçu par année"},
     "ucdp": {"fn": ucdp, "nature": "flux", "cle": "UCDP_TOKEN", "comptable": True,
-             "params": '{"pays": "nom ou code UCDP facultatif", "debut": "AAAA-MM-JJ"}',
+             "params": '{"pays": "nom anglais ou code Gleditsch-Ward (ex. Sudan ou 625), facultatif", "debut": "AAAA-MM-JJ"}',
              "pour": "événements de violence organisée et morts estimés (à agréger par mois ou par an)"},
     "usgs_seismes": {"fn": usgs_seismes, "nature": "evenements", "comptable": True,
                      "params": '{"magnitude_min": 6.0, "debut": "AAAA-MM-JJ", "latitude": "…", "longitude": "…", "rayon_km": "…"}',
