@@ -1,0 +1,41 @@
+name: Ombre B autorégressif (rétro)
+
+# 0.10.92 : second taux de base (AR(1) sur les différences) rejoué sur les questions de séries déjà au registre.
+# Aucun modèle de langue : seulement les séries FRED et DBnomics, bornées avant la date d'information. Gratuit.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  b_ar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Rejouer l'ombre B_AR
+        run: uv run python retro_b_ar.py
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          git add registre/ombre-b-ar-retro.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : ombre B autorégressif (rétro) du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

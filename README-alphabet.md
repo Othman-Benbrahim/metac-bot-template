@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.91 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.92 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -367,6 +367,14 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.92** : **second taux de base autorégressif pour les séries, en ombre** (décision d'auteur du 2026-11-14 : le
+  but est la meilleure prévision possible, pas de prouver C contre B). Pour FRED et DBnomics, `b_ar` ajuste un AR(1) à
+  constante sur les différences des mêmes points que B (5 ans, strictement avant D), en déduit la loi gaussienne de la
+  variation à l'horizon et P(hausse) = (1 − part des intervalles sans changement) × Φ(moyenne / écart-type) ; règle
+  fixée avant toute mesure (`banc_forecastbench.py`). Gardé dans `ombre_b_ar`, résumé par `score_registre`.
+  `retro_b_ar.py` (workflow « Ombre B autorégressif (rétro) », gratuit, sans modèle de langue) le rejoue sur les
+  questions de séries déjà au registre, séries retéléchargées avant la date d'information, et compare la perte log à
+  celle de B, avec intervalle par blocs.
 - **0.10.91** : **plan et lecture sans la matrice, en ombre** (décision d'auteur du 2026-11-14). Registre : 93 % des
   cartes ancrées dans la strate de l'événement et 93 % des candidates du plan sont des cartes que la matrice donne comme
   faisant apparaître la carte visée (32 lectures « CROISSANCE apparaît » sur 41 ancrent le même jeu ÉMERGENCE,

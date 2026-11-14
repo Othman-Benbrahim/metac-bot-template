@@ -396,6 +396,25 @@ class Tests(unittest.TestCase):
         self.assertTrue(sv["verdict"].startswith("en attente"))
         self.assertFalse(ap.tirage_sans_matrice("x"))                       # taux 0 par défaut
 
+    def test_b_ar_92(self):
+        import random
+        from datetime import date, timedelta
+        d0 = date(2026, 10, 11)
+        for derive, sens in ((0.3, 1), (-0.3, -1)):
+            rnd, v, pts = random.Random(1), 100.0, []
+            for i in range(800):
+                v += derive + rnd.gauss(0, 1)
+                pts.append({"date": (d0 - timedelta(days=800 - i)).isoformat(), "valeur": v})
+            pts.append({"date": d0.isoformat(), "valeur": 1e9})              # le jour même : ignoré (strictement avant)
+            o = fb.b_ar(pts, 7, d0)
+            self.assertTrue((o["p"] - 0.5) * sens > 0.15, o)
+            self.assertLess(abs(o["p"] - fb.b_hausse(pts, 7, d0)[0]), 0.1)
+        plat = [{"date": (d0 - timedelta(days=200 - i)).isoformat(), "valeur": 5.0 if i % 10 else 5.25} for i in range(200)]
+        o = fb.b_ar(plat, 7, d0)
+        self.assertGreater(o["part_sans_changement"], 0.2)
+        self.assertLessEqual(o["p"], 0.999)
+        self.assertIsNone(fb.b_ar(plat[:10], 7, d0))
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa

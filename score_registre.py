@@ -1097,6 +1097,14 @@ def scorer_retro(registre: Path) -> dict:
                                          in ("estime", "etat_nul", "non_estime")),
             "lecture": "abouti = estimé, état nul ou non chiffré ; à comparer avec le 0 sur 12 des deuxièmes corrections"}
     # 0.10.91 : plan et lecture sans la matrice (ombre) ; critère d'utilité pré-enregistré le 2026-11-14
+    # 0.10.92 : second taux de base autorégressif (séries), en ombre : perte log contre B sur les mêmes questions
+    ba = [x for x in intactes if isinstance(x.get("ombre_b_ar"), dict) and x["ombre_b_ar"].get("p") is not None
+          and x.get("issue") in (0, 1) and x.get("p_B") is not None]
+    if ba:
+        import math as _m
+        pl = lambda p, y: -_m.log(min(max(p, 1e-3), 1 - 1e-3) if y else 1 - min(max(p, 1e-3), 1 - 1e-3))
+        sortie["ombre_b_ar"] = {"n": len(ba), "perte_B": sum(pl(x["p_B"], x["issue"]) for x in ba) / len(ba),
+                                "perte_B_AR": sum(pl(x["ombre_b_ar"]["p"], x["issue"]) for x in ba) / len(ba)}
     sm = [x for x in intactes if isinstance(x.get("ombre_sans_matrice"), dict)]
     if sm:
         sortie["ombre_sans_matrice"] = sans_matrice_suivi(sm)
