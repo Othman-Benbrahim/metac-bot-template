@@ -22,6 +22,7 @@ EXEMPLES = {
     "tresor": {"jeu": "v2/accounting/od/avg_interest_rates", "champ": "avg_interest_rate_amt",
                "filtre": "security_desc:eq:Total Marketable"},
     "bls": {"serie": "LNS14000000"},
+    "census_eits": {"programme": "marts", "categorie": "44X72", "type_donnee": "SM", "ajuste": "yes"},
     "unhcr": {"pays_origine": "SYR"},
     "fts": {"pays": "SDN", "annees": [2023, 2024]},
     "ucdp": {"pays": "Sudan", "debut": "2024-01-01"},
