@@ -49,3 +49,19 @@ apparié (bootstrap, 2 000 tirages, graine 0) entièrement sous 0, au niveau cor
   triée par identifiant, mettait au jugement presque uniquement les questions FRED du dernier jeu. Les résultats des
   trois variantes avaient été vus avant la décision ; la règle a été choisie sur le principe, non sur les chiffres.
 - **2026-11-14, 0.10.98** : critère au niveau corrigé, lecture unique à la fin.
+
+## Clôture (2026-11-14, décision d'auteur) — jugement unique
+L'apprentissage s'arrête à **268 lectures** (Mistral Medium ; 145 d'apprentissage, jeu 2026-09-27 ; 123 de jugement,
+jeu 2026-10-11), sous le volume visé, par décision d'auteur : les tests sont jugés suffisants et aucune dépense
+supplémentaire n'est engagée sur un compte hors crédits. Le jugement est lu une seule fois, ici.
+
+- Perte log sur le jugement : C empirique **0,660**, B **0,659** ; écart +0,001.
+- Intervalle à 90 % de l'écart : [−0,035 ; +0,042] ; au niveau corrigé (96,7 %) : [−0,046 ; +0,055] ; par blocs
+  (3 blocs) : [−0,042 ; +0,042].
+- **Critère non atteint : le C empirique n'est pas adopté ; la matrice n'est pas remplacée.**
+- Liens (apprentissage, descriptif) : les trois liens les plus fréquents de la matrice, CTR→SEU (53 cas), POL→SEU (41)
+  et HIE→SEU (36), « ne disent rien » ; un seul lien « pousse », INC→SEU (20 cas, facteur de cote 2,6) ; 28
+  indéterminés. 4 liens sur 13 testables battent leurs doubles permutés, pour 0,7 attendu par hasard : il y a de la
+  structure dans l'échantillon d'apprentissage, mais elle ne se transporte pas sur la semaine de jugement.
+- Lecture : avec la lecture actuelle (qui recopie la matrice, voir `sans-matrice.md`), les liens observés n'apportent
+  rien au-delà de B. C'est cohérent avec le diagnostic de surconfiance et avec le choix de poster B.
