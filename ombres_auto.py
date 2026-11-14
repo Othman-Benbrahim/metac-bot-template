@@ -177,3 +177,33 @@ def comparer_series(releves: list[dict], seuil_question: float | None, mots_ancr
                 continue
     return {"code": code, "modele": {k: k in lu for k in code}, "accord": {k: code[k] == (k in lu) for k in code},
             "releves": len(releves), "seuil_question": seuil_question}
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# 3. Fond ou dynamique (0.10.79, décision d'auteur du 2026-11-14 ; diagnostic de la surconfiance de C)
+# ---------------------------------------------------------------------------------------------------------------
+# Règle fixée AVANT toute mesure. Pour un événement « apparaît », un fait porte la levée s'il décrit un CHANGEMENT
+# récent : un marqueur de changement ET une date citée dans la fenêtre récente (au plus max(30, 4 × horizon) jours
+# avant la date d'information). Sinon c'est un fait de FOND : un cadre stable (« maintient », « depuis », « est à »),
+# vrai mais qui ne dit rien de ce qui arrive dans l'horizon. L'ombre retire les mots de fond et recalcule C.
+CHANGEMENT = re.compile(
+    r"\b(hausse|baisse|augment\w*|diminu\w*|recul\w*|chut\w*|bondi\w*|grimp\w*|accél\w*|ralenti\w*|franchi\w*|"
+    r"dépass\w*|record|nouve(au|lle|aux|lles)|annonc\w*|lanc\w*|déclench\w*|déploi\w*|déploy\w*|attaqu\w*|"
+    r"offensive|escalad\w*|intensifi\w*|rompu\w*|rupture|suspend\w*|relèv\w*|abaiss\w*|coup[ée]?\w*|vot[ée]\w*|"
+    r"adopt\w*|sign[ée]\w*|ouvr\w*|ferm\w*|démission\w*|élu\w*|surg\w*|émerg\w*|rose|fell|rais\w*|cut|surg\w*|"
+    r"spik\w*|jump\w*|launch\w*|announc\w*|escalat\w*|new)\b", re.I)
+
+
+def est_fond(mot: dict, date_info: str, horizon_jours: int) -> bool:
+    import alphabet_pipeline as ap
+    texte = f"{mot.get('fait') or ''} {mot.get('extrait') or ''}"
+    if not CHANGEMENT.search(_sans_accents(texte).lower() if False else texte):
+        return True
+    try:
+        from datetime import date as _d, timedelta as _t
+        d0 = _d.fromisoformat(str(date_info)[:10])
+        fen = d0 - _t(days=max(30, 4 * int(horizon_jours or 0)))
+        ds = [_d.fromisoformat(x) for x in ap.dates_citees(texte)]
+    except Exception:
+        return True
+    return not any(fen <= x <= d0 for x in ds)

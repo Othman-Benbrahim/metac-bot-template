@@ -198,6 +198,13 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
              "modeles": ap.modeles_actifs(), "url": x["url"], "titre": x["titre"], "date_information": jeu,
              "resolution": x["resolution"], "issue": x["issue"],
              "licence": "ForecastBench, Forecasting Research Institute, CC BY-SA 4.0"}
+    # 0.10.79 (décision d'auteur du 2026-11-14) : les duels d'actions (« X a-t-elle un meilleur rendement que Y sur une
+    # semaine ? ») ne sont plus lus. B = 0,5 par symétrie ; la lecture y ancrait de l'information publique déjà dans
+    # les cours (avis d'analystes) et C y faisait moins bien que B (rejeu du 2026-11-14 : 22 lectures, perte log 0,83
+    # contre 0,69). Aucun appel de modèle ; ALPHABET_FB_DUELS=1 les fait relire (test multi-lecteurs, par exemple).
+    if (x["source"] == "yfinance" and "higher rate of return than" in (x["_q"].get("question") or "")
+            and os.environ.get("ALPHABET_FB_DUELS", "0") != "1"):
+        return None              # ni écrite ni comptée : le budget n va aux questions que l'alphabet lit
     try:
         sonde = ap.extraire_json(await llm(ar.consigne_sonde(x["titre"], x["criteres"])))
     except Exception as e:
@@ -298,6 +305,7 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
     deja, faites, pannes_suite = ar.deja_faites(), 0, 0
     cibles = None
     if memes_que:
+        os.environ["ALPHABET_FB_DUELS"] = "1"     # 0.10.79 : une relecture compare les lecteurs sur les MÊMES questions
         # 0.10.58 : test multi-lecteurs : les questions d'une version passée, relues par le codeur de ce passage
         jeux, cibles = questions_de(memes_que)
         deja = deja_par(choix["principal"])
