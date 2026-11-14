@@ -1,0 +1,61 @@
+name: Banc du bras A
+
+# 0.10.106 : le jugement du modèle (bras A), qui voit les mêmes données que B, sur des questions de séries ForecastBench
+# déjà résolues ; comparé à B et à la combinaison fixée d'avance ½ A + ½ B (en logit). Pas de lecture de l'alphabet.
+# Registre à part (registre/banc-a.jsonl). Crédits des fournisseurs seulement ; plafond en dollars par passage.
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "questions à jouer"
+        default: "10"
+      modeles:
+        description: "modèles du bras A, séparés par des virgules (une série par jeu de modèles)"
+        default: "azure_ai/gpt-5-mini"
+      budget:
+        description: "plafond en dollars pour ce passage"
+        default: "3"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Banc du bras A
+        run: uv run python banc_a.py --n "${{ github.event.inputs.n || '10' }}" --budget "${{ github.event.inputs.budget || '3' }}"
+        env:
+          ALPHABET_BANC_A_MODELES: ${{ github.event.inputs.modeles || 'azure_ai/gpt-5-mini' }}
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          git add registre/banc-a.jsonl registre/banc-a.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc du bras A du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
