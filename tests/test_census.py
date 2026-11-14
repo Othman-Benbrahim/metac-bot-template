@@ -78,5 +78,22 @@ class Diagnostics94(unittest.TestCase):
         self.assertIn("daily threshold", str(e.exception))
 
 
+class Firms95(unittest.TestCase):
+    def test_produit_qui_couvre_la_fenetre(self):
+        appels = []
+        dispo = "data_id,min_date,max_date\nVIIRS_SNPP_SP,2012-01-20,2026-03-31\nVIIRS_NOAA20_SP,2018-04-01,2026-06-30\n"
+
+        async def faux_get(url, params=None, headers=None, json_=True):
+            appels.append(url)
+            return dispo if "data_availability" in url else "acq_date\n2026-05-29\n2026-05-29\n2026-05-30\n"
+        with mock.patch.object(apz, "_get", faux_get), mock.patch.dict(os.environ, {"FIRMS_MAP_KEY": "k"}):
+            r = asyncio.run(apz.firms("GRC", 3, avant=date(2026, 6, 1)))
+        self.assertIn("/VIIRS_NOAA20_SP/GRC/3/2026-05-30", appels[-1])
+        self.assertEqual([p["valeur"] for p in r["points"]], [2.0, 1.0])
+        with mock.patch.object(apz, "_get", faux_get), mock.patch.dict(os.environ, {"FIRMS_MAP_KEY": "k"}):
+            with self.assertRaises(apz.ErreurSource):
+                asyncio.run(apz.firms("GRC", 3, avant=date(2026, 9, 1)))
+
+
 if __name__ == "__main__":
     unittest.main()

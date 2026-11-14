@@ -490,9 +490,31 @@ async def firms(pays: str, jours: int = 10, capteur: str = "VIIRS_SNPP_NRT", ava
     # (sonde du 10/11 : 400 pour une date de juin en NRT).
     if avant and (date.today() - avant).days > 60 and capteur.endswith("_NRT"):
         capteur = capteur[:-4] + "_SP"
+    debut_j = (avant - timedelta(days=jours - 1)) if avant else None
+    # 0.10.94 (sonde du 2026-11-14 : 400 sans motif, en NRT comme en SP) : FIRMS publie les dates couvertes par chaque
+    # produit ; on prend le premier produit qui couvre la fenêtre, dans l'ordre de préférence, au lieu de deviner.
+    if debut_j:
+        try:
+            dispo = await _get(f"https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv/{cle}/ALL", json_=False)
+            plages = {r.get("data_id"): (r.get("min_date"), r.get("max_date")) for r in csv.DictReader(io.StringIO(dispo))}
+            fin_j = (avant or date.today()).isoformat()
+            ordre = [capteur] + [c for c in ("VIIRS_SNPP_SP", "VIIRS_NOAA20_SP", "MODIS_SP", "VIIRS_SNPP_NRT",
+                                             "VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT", "MODIS_NRT") if c != capteur]
+            for c in ordre:
+                lo, hi = plages.get(c) or (None, None)
+                if lo and hi and lo <= debut_j.isoformat() and fin_j <= hi:
+                    capteur = c
+                    break
+            else:
+                raise ErreurSource(f"FIRMS : aucun produit ne couvre {debut_j.isoformat()}–{fin_j} "
+                                   f"({', '.join(f'{k} {v[0]}→{v[1]}' for k, v in plages.items() if k)})")
+        except ErreurSource:
+            raise
+        except Exception:
+            pass                                   # disponibilité illisible : on tente le produit demandé
     url = f"https://firms.modaps.eosdis.nasa.gov/api/country/csv/{cle}/{capteur}/{pays}/{jours}"
-    if avant:
-        url += f"/{(avant - timedelta(days=jours - 1)).isoformat()}"
+    if debut_j:
+        url += f"/{debut_j.isoformat()}"
     t = await _get(url, json_=False)
     compte: dict[str, int] = {}
     for r in csv.DictReader(io.StringIO(t)):

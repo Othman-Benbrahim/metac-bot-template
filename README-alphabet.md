@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.94 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.95 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -368,6 +368,10 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.95** : **FIRMS choisit le produit qui couvre la fenêtre** (sonde du 2026-11-14 : 400 sans motif, en NRT comme
+  en SP). FIRMS publie les dates couvertes par chaque produit (`data_availability`) ; le premier qui couvre la fenêtre
+  est pris (SNPP, NOAA-20, MODIS, standard puis temps réel), sinon l'erreur dit les plages disponibles. Même sonde :
+  Census (316 points) et UCDP (1 612 événements, versions candidates comprises) répondent ; la clé BLS est refusée.
 - **0.10.94** : **sonde des puits du 2026-11-14**. UCDP : le filtre `Country` attend le code Gleditsch-Ward, pas un
   nom (400 pour « Sudan ») ; table des pays fréquents (`code_gw`), code numérique accepté tel quel. Toute erreur HTTP
   ou réponse non JSON cite désormais le début de la réponse, sans clé (Census : réponse non JSON, clé pas encore
