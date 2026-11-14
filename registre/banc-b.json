@@ -1,0 +1,139 @@
+{
+  "version_bot": "0.10.104",
+  "questions": 400,
+  "note": "perte log (plus bas = mieux) ; aucun modèle de langue ; blocs = jeu × source",
+  "B_AR": {
+    "n": 400,
+    "par_bloc": {
+      "2026-07-05:dbnomics": {
+        "n": 49,
+        "B": 0.6959,
+        "B_AR": 0.6878
+      },
+      "2026-07-05:fred": {
+        "n": 48,
+        "B": 0.6423,
+        "B_AR": 0.667
+      },
+      "2026-07-19:dbnomics": {
+        "n": 48,
+        "B": 0.6985,
+        "B_AR": 0.6958
+      },
+      "2026-07-19:fred": {
+        "n": 50,
+        "B": 0.7562,
+        "B_AR": 0.6996
+      },
+      "2026-08-02:dbnomics": {
+        "n": 49,
+        "B": 0.6898,
+        "B_AR": 0.6976
+      },
+      "2026-08-02:fred": {
+        "n": 50,
+        "B": 0.6323,
+        "B_AR": 0.6312
+      },
+      "2026-08-16:dbnomics": {
+        "n": 48,
+        "B": 0.6937,
+        "B_AR": 0.7017
+      },
+      "2026-08-16:fred": {
+        "n": 50,
+        "B": 0.6829,
+        "B_AR": 0.7523
+      },
+      "2026-08-30:dbnomics": {
+        "n": 8,
+        "B": 0.694,
+        "B_AR": 0.6871
+      }
+    },
+    "critere": {
+      "n_nouveaux": 400,
+      "regard": 2,
+      "n_juge": 200,
+      "blocs": 5,
+      "ecart_moyen": -0.010886723391905646,
+      "intervalle_90_par_blocs": [
+        -0.03670792968939867,
+        0.012653835950599376
+      ],
+      "intervalle_corrige": [
+        -0.046156740950521816,
+        0.019199679511634576
+      ],
+      "niveau_corrige": 0.9833,
+      "verdict": "critère non atteint ; essai à clore"
+    }
+  },
+  "B_saison": {
+    "n": 400,
+    "par_bloc": {
+      "2026-07-05:dbnomics": {
+        "n": 49,
+        "B": 0.6959,
+        "B_saison": 0.6904
+      },
+      "2026-07-05:fred": {
+        "n": 48,
+        "B": 0.6423,
+        "B_saison": 0.6798
+      },
+      "2026-07-19:dbnomics": {
+        "n": 48,
+        "B": 0.6985,
+        "B_saison": 0.6816
+      },
+      "2026-07-19:fred": {
+        "n": 50,
+        "B": 0.7562,
+        "B_saison": 0.8767
+      },
+      "2026-08-02:dbnomics": {
+        "n": 49,
+        "B": 0.6898,
+        "B_saison": 0.6792
+      },
+      "2026-08-02:fred": {
+        "n": 50,
+        "B": 0.6323,
+        "B_saison": 0.5471
+      },
+      "2026-08-16:dbnomics": {
+        "n": 48,
+        "B": 0.6937,
+        "B_saison": 0.6582
+      },
+      "2026-08-16:fred": {
+        "n": 50,
+        "B": 0.6829,
+        "B_saison": 0.7375
+      },
+      "2026-08-30:dbnomics": {
+        "n": 8,
+        "B": 0.694,
+        "B_saison": 0.7167
+      }
+    },
+    "critere": {
+      "n_nouveaux": 400,
+      "regard": 2,
+      "n_juge": 200,
+      "blocs": 5,
+      "ecart_moyen": 0.03362052978019881,
+      "intervalle_90_par_blocs": [
+        -0.00889349076242245,
+        0.08498068934813827
+      ],
+      "intervalle_corrige": [
+        -0.013767875684314021,
+        0.09783938463878955
+      ],
+      "niveau_corrige": 0.9833,
+      "verdict": "critère non atteint ; essai à clore"
+    }
+  }
+}
