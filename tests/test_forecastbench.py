@@ -753,10 +753,11 @@ def test_banc_a_106(tmp_path, monkeypatch):
     monkeypatch.setattr(ba, "FICHIER", tmp_path / "a.jsonl")
     L = [{"jeu": "2026-08-02", "question_id": f"fb:2026-08-02:fred:S{i}:x", "source_question": "fred", "issue": i % 2,
           "p_A": 0.7 if i % 2 else 0.3, "p_B": 0.5, "p_AB": ba.combiner(0.7 if i % 2 else 0.3, 0.5),
-          "modeles_A": "m", "exclue": False} for i in range(40)]
+          "modeles_A": "m", "exclue": False, "version_bot": "0.10.107", "ordre": [i, "2026-08-02"]} for i in range(40)]
     r = ba.resumer(L)
     assert r["m"]["n"] == 40 and r["m"]["A"] < r["m"]["AB"] < r["m"]["B"]
     assert "regard" in r["m"]["critere_AB"]
+    assert "m" not in ba.resumer([dict(x, version_bot="0.10.106") for x in L])   # premier passage : hors critère
     c = ba.consigne_a({"titre": "T", "criteres": "C", "contexte": "X"}, {"frequence": 0.4, "calcul": "k/n"},
                       [{"date": "2026-08-01", "valeur": 1}], "", "2026-08-02")
     assert "0.400" in c and "2026-08-01 : 1" in c

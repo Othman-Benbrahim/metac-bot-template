@@ -17,3 +17,12 @@ Sur les **100 premières questions** d'une même série : perte log de AB infér
 (bootstrap par blocs « jeu × source », 2 000 tirages, graine 0) entièrement sous 0 au niveau corrigé de la règle
 d'adoption commune. Second regard possible sur les 200 premières, au risque partagé. A seul contre B est rapporté sans
 verdict. Si le critère tient : décision d'auteur datée sur ce que poste le bot.
+
+## Amendement (2026-11-15, après le premier passage de 10 questions, exécution 43655369673)
+L'ordre « jeu le plus ancien, puis identifiant » mettait en tête les questions ACLED d'un seul jeu : les 100 premières
+auraient formé un ou deux blocs « jeu × source », et le bootstrap par blocs n'aurait rien voulu dire. Les 10 premières
+lectures étaient toutes ACLED du 2026-07-05. **Nouvel ordre** : entrelacé entre les jeux (rang de la question dans son
+jeu selon l'empreinte SHA-1 de son identifiant, puis jeu). **Seules les lignes à partir de la version 0.10.107
+comptent pour le critère** ; les 10 lectures du premier passage sont rapportées à part et ne seront pas relues. Le
+critère lui-même (combinaison, seuil, niveau corrigé, regards) ne change pas. Constat descriptif de ces 10 lectures, qui
+ne motive pas l'amendement : A recopie B sur 9 questions sur 10.
