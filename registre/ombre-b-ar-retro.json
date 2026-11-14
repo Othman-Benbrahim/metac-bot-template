@@ -1,0 +1,3030 @@
+{
+ "bilan": {
+  "version": "0.10.95",
+  "questions": 188,
+  "comparables": 188,
+  "perte_B": 0.6896050419209135,
+  "perte_B_AR": 0.6658357570416552,
+  "ecart_moyen": -0.023769284879258074,
+  "intervalle_90_par_question": [
+   -0.04311845362466064,
+   -0.004785369865861544
+  ],
+  "intervalle_90_par_blocs": [
+   -0.04331520910512859,
+   -0.0021795307566212885
+  ],
+  "blocs": 5,
+  "lecture": "écart = perte(B_AR) − perte(B) ; négatif : B_AR meilleur"
+ },
+ "questions": [
+  {
+   "question_id": "fb:2026-10-25:fred:AAA10Y:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.46,
+   "b_ar": {
+    "p": 0.4545274831746655,
+    "phi": -0.0144,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0005399294379195588,
+    "ecart_type": 0.08584277328218944,
+    "part_sans_changement": 0.0864,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:IC4WSA:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.45731707317073167,
+   "b_ar": {
+    "p": 0.3956881279442563,
+    "phi": 0.5469,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": -650.3251580432345,
+    "ecart_type": 3153.1332323183815,
+    "part_sans_changement": 0.0541,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAMLC0A2CAAEY:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.46,
+   "b_ar": {
+    "p": 0.4821785734001624,
+    "phi": 0.0189,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0035056988272931877,
+    "ecart_type": 0.12135766641059505,
+    "part_sans_changement": 0.0574,
+    "points": 772
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAMLH0A3HYC:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.47,
+   "b_ar": {
+    "p": 0.571209109922621,
+    "phi": 0.203,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0745394298669353,
+    "ecart_type": 0.371459111830329,
+    "part_sans_changement": 0.0143,
+    "points": 772
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:RRPONTSYAWARD:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.016272189349112426,
+   "b_ar": {
+    "p": 0.04042801772568671,
+    "phi": -0.003,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02082874629352178,
+    "ecart_type": 0.1441176218351462,
+    "part_sans_changement": 0.9275,
+    "points": 1246
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAMLC0A4CBBB:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.46,
+   "b_ar": {
+    "p": 0.4771524074810427,
+    "phi": 0.2751,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.004421229136123649,
+    "ecart_type": 0.051402738139876135,
+    "part_sans_changement": 0.1069,
+    "points": 772
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:WGS10YR:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5365384615384615,
+   "b_ar": {
+    "p": 0.44123871372469015,
+    "phi": 0.2083,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": -0.01188391256646473,
+    "ecart_type": 0.10584508550170438,
+    "part_sans_changement": 0.0309,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:ECBESTRVOLWGTTRMDMNRT:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.4615686274509804,
+   "b_ar": {
+    "p": 0.47303199203808644,
+    "phi": -0.0003,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.01652712227330738,
+    "ecart_type": 0.1280054455191593,
+    "part_sans_changement": 0.1421,
+    "points": 1279
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:NFCI:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.4288461538461538,
+   "b_ar": {
+    "p": 0.8972666133991299,
+    "phi": 0.9336,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 0.0055866010347331305,
+    "ecart_type": 0.0040726091054388526,
+    "part_sans_changement": 0.0193,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DGS7:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5490748189863234,
+   "b_ar": {
+    "p": 0.5330647599595467,
+    "phi": -0.0109,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.021259452994752043,
+    "ecart_type": 0.17769864130459634,
+    "part_sans_changement": 0.0266,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:GVZCLS:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.4568345323741007,
+   "b_ar": {
+    "p": 0.5043162446179411,
+    "phi": -0.0126,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.04386542943280856,
+    "ecart_type": 2.9483452385160565,
+    "part_sans_changement": 0.0032,
+    "points": 1255
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:SP500:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.7,
+   "b_ar": {
+    "p": 0.5520787175153979,
+    "phi": -0.0257,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 18.23486994798946,
+    "ecart_type": 139.2878802531236,
+    "part_sans_changement": 0.0,
+    "points": 1254
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:SOFRINDEX:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.999,
+   "b_ar": {
+    "p": 0.9988697957798085,
+    "phi": 0.1117,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0012424046510407579,
+    "ecart_type": 0.00040685273236047465,
+    "part_sans_changement": 0.0,
+    "points": 1246
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:RESPPLLOPNWW:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.22030651340996169,
+   "b_ar": {
+    "p": 0.6006130477121845,
+    "phi": 0.7643,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": 172.06966002760828,
+    "ecart_type": 674.9570896838046,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:OBMMIVA30YF:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5593699515347335,
+   "b_ar": {
+    "p": 0.5530804476846498,
+    "phi": -0.1296,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0249201296507614,
+    "ecart_type": 0.18209903558317564,
+    "part_sans_changement": 0.0024,
+    "points": 1242
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:CARACBW027SBOG:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.5711538461538461,
+   "b_ar": {
+    "p": 0.5383461283333363,
+    "phi": 0.2646,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 0.07301192592461689,
+    "ecart_type": 0.7584238077915866,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAMLC0A2CAA:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.4141742522756827,
+   "b_ar": {
+    "p": 0.48359171477489393,
+    "phi": 0.2184,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0060980606147811155,
+    "ecart_type": 0.03513855537597392,
+    "part_sans_changement": 0.1499,
+    "points": 772
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:OVXCLS:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.46083133493205436,
+   "b_ar": {
+    "p": 0.4993457098036619,
+    "phi": -0.0269,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.010531015966960378,
+    "ecart_type": 7.680241661927486,
+    "part_sans_changement": 0.0024,
+    "points": 1255
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DGS5:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5386162510056315,
+   "b_ar": {
+    "p": 0.5280248527151091,
+    "phi": -0.0096,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.022011471669200196,
+    "ecart_type": 0.18297855592825507,
+    "part_sans_changement": 0.0362,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:WTREGEN:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.4501915708812261,
+   "b_ar": {
+    "p": 0.6562709585109328,
+    "phi": 0.3082,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": 22945.96569264944,
+    "ecart_type": 57035.9553578468,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DTWEXAFEGS:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.5225624496373892,
+   "b_ar": {
+    "p": 0.5175236978310799,
+    "phi": -0.0049,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.054391306641859045,
+    "ecart_type": 1.2378672484614461,
+    "part_sans_changement": 0.0,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DEXJPUS:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.5991136180499597,
+   "b_ar": {
+    "p": 0.5408440297515913,
+    "phi": -0.0272,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.2550716277088485,
+    "ecart_type": 2.43476656128801,
+    "part_sans_changement": 0.0016,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DGS1:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5378117457763475,
+   "b_ar": {
+    "p": 0.5377042730187847,
+    "phi": 0.0008,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.02402443967660016,
+    "ecart_type": 0.14679866686663395,
+    "part_sans_changement": 0.0483,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAMLH0A1HYBBEY:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.46749024707412223,
+   "b_ar": {
+    "p": 0.4746646092582759,
+    "phi": 0.1881,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.005157918171392347,
+    "ecart_type": 0.19297881712194379,
+    "part_sans_changement": 0.03,
+    "points": 772
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DHHNGSP:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5036290322580645,
+   "b_ar": {
+    "p": 0.48941801865454554,
+    "phi": -0.062,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.005291722650260025,
+    "ecart_type": 2.3085522352410734,
+    "part_sans_changement": 0.0194,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DEXUSUK:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.4846897663174859,
+   "b_ar": {
+    "p": 0.49364655324909557,
+    "phi": -0.0017,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0002431684253842697,
+    "ecart_type": 0.017460005780088092,
+    "part_sans_changement": 0.0016,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:OBFR:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.13181089743589744,
+   "b_ar": {
+    "p": 0.12289124003285996,
+    "phi": -0.0048,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.021350427606421966,
+    "ecart_type": 0.14312952077416777,
+    "part_sans_changement": 0.7803,
+    "points": 1252
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:RIFSPPFAAD90NB:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.5095759233926128,
+   "b_ar": {
+    "p": 0.5750295469520141,
+    "phi": -0.4058,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.05427443781237927,
+    "ecart_type": 0.18186875111969347,
+    "part_sans_changement": 0.0685,
+    "points": 732
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:T5YIE:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.46985530546623794,
+   "b_ar": {
+    "p": 0.4703836406204821,
+    "phi": 0.0511,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0010426162553424164,
+    "ecart_type": 0.11360062705311727,
+    "part_sans_changement": 0.0523,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAA10Y:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.4350806451612903,
+   "b_ar": {
+    "p": 0.4561910768323165,
+    "phi": 0.0035,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0012253606471883483,
+    "ecart_type": 0.08249013715113937,
+    "part_sans_changement": 0.0767,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:TOTCI:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.6288461538461538,
+   "b_ar": {
+    "p": 0.5712900284172135,
+    "phi": -0.0082,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 2.133942012201663,
+    "ecart_type": 11.87770650374748,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAMLH0A0HYM2:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.42977893368010406,
+   "b_ar": {
+    "p": 0.47427051371804746,
+    "phi": 0.1014,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.006808874683057726,
+    "ecart_type": 0.19848812425227594,
+    "part_sans_changement": 0.0248,
+    "points": 772
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DEXCHUS:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.4975825946817083,
+   "b_ar": {
+    "p": 0.5106692787503644,
+    "phi": 0.005,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0016347065988203647,
+    "ecart_type": 0.046621764748295304,
+    "part_sans_changement": 0.0065,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DJIA:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5484,
+   "b_ar": {
+    "p": 0.5406806812765852,
+    "phi": -0.0056,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 97.21858936115771,
+    "ecart_type": 951.7358413847028,
+    "part_sans_changement": 0.0,
+    "points": 1254
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:OBMMIJUMBO30YF:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5359450726978998,
+   "b_ar": {
+    "p": 0.5544565013432405,
+    "phi": -0.3848,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.031207922328844798,
+    "ecart_type": 0.22057948054736046,
+    "part_sans_changement": 0.0032,
+    "points": 1242
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:MORTGAGE15US:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5,
+   "b_ar": {
+    "p": 0.5078796694091121,
+    "phi": 0.2237,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": 0.0062600041594062,
+    "ecart_type": 0.12559080053448549,
+    "part_sans_changement": 0.0231,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DPCREDIT:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.04657428791377983,
+   "b_ar": {
+    "p": 0.0386318613713966,
+    "phi": -0.0029,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.020185236123255047,
+    "ecart_type": 0.14040361528388942,
+    "part_sans_changement": 0.9307,
+    "points": 1303
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DAAA:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.538244766505636,
+   "b_ar": {
+    "p": 0.543208883276174,
+    "phi": -0.0216,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02228875057605887,
+    "ecart_type": 0.15022657146276816,
+    "part_sans_changement": 0.0282,
+    "points": 1246
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:SOFR90DAYAVG:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.5511272141706924,
+   "b_ar": {
+    "p": 0.6274187092357829,
+    "phi": 0.6183,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02078795240117899,
+    "ecart_type": 0.04774900140328635,
+    "part_sans_changement": 0.0612,
+    "points": 1246
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:TREAST:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.5421455938697318,
+   "b_ar": {
+    "p": 0.4088664651416912,
+    "phi": 0.0992,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -3139.1301785015485,
+    "ecart_type": 13621.042367223332,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DFII10:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5281576830249397,
+   "b_ar": {
+    "p": 0.5346744477091457,
+    "phi": -0.003,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.02145043116727793,
+    "ecart_type": 0.15058919939502496,
+    "part_sans_changement": 0.0395,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DTB4WK:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.4316170555108608,
+   "b_ar": {
+    "p": 0.45308456935182145,
+    "phi": -0.0315,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.02129687483282961,
+    "ecart_type": 0.16920883654617902,
+    "part_sans_changement": 0.1763,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:BAMLEMHBHYCRPIOAS:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.3855656697009103,
+   "b_ar": {
+    "p": 0.4360701942051027,
+    "phi": 0.0987,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.02040603389792798,
+    "ecart_type": 0.16289972080595538,
+    "part_sans_changement": 0.0313,
+    "points": 772
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:TLAACBW027SBOG:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.6096153846153847,
+   "b_ar": {
+    "p": 0.5527417073493202,
+    "phi": -0.2479,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 8.380561081528503,
+    "ecart_type": 63.205948256313086,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:IHLIDXUS:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 1,
+   "p_B": 0.3713418001104362,
+   "b_ar": {
+    "p": 0.3868880579429504,
+    "phi": 0.5987,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.16868799346228922,
+    "ecart_type": 0.5868651324971855,
+    "part_sans_changement": 0.0,
+    "points": 1817
+   }
+  },
+  {
+   "question_id": "fb:2026-10-25:fred:DGS30:2026-11-01",
+   "bloc": "2026-10-25:fred",
+   "issue": 0,
+   "p_B": 0.5402252614641995,
+   "b_ar": {
+    "p": 0.5377046568582812,
+    "phi": -0.0229,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.021754899734060154,
+    "ecart_type": 0.14461212916589608,
+    "part_sans_changement": 0.0395,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:OBFR:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.13170536429143315,
+   "b_ar": {
+    "p": 0.12323569330771636,
+    "phi": -0.0048,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.02133335327630344,
+    "ecart_type": 0.14307270293745572,
+    "part_sans_changement": 0.7796,
+    "points": 1253
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLEMHBHYCRPIOAS:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.38060686015831136,
+   "b_ar": {
+    "p": 0.42072746492224494,
+    "phi": 0.099,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.02707082623104199,
+    "ecart_type": 0.16266025048726346,
+    "part_sans_changement": 0.0304,
+    "points": 762
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:T10YIE:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.45502008032128516,
+   "b_ar": {
+    "p": 0.4544910803415584,
+    "phi": 0.0315,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.001721931982380285,
+    "ecart_type": 0.0866067071940127,
+    "part_sans_changement": 0.0764,
+    "points": 1249
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EST_B.EU000A2QQF16.CR:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5536833855799373,
+   "b_ar": {
+    "p": 0.5361636160932434,
+    "phi": 0.5963,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.012461242505943675,
+    "ecart_type": 0.10883606780604851,
+    "part_sans_changement": 0.0173,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.ESP.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.5239028213166145,
+   "b_ar": {
+    "p": 0.531626598490098,
+    "phi": -0.0424,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.06896401582086052,
+    "ecart_type": 0.8690093660870343,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E01.SEK.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.4760971786833856,
+   "b_ar": {
+    "p": 0.4749925219248143,
+    "phi": -0.0494,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.05465655065843108,
+    "ecart_type": 0.8713601123383253,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.BRL.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5309561128526645,
+   "b_ar": {
+    "p": 0.5302543043228367,
+    "phi": 0.005,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.08300236259557102,
+    "ecart_type": 1.0934437024212535,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.PY_17Y11M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5650980392156862,
+   "b_ar": {
+    "p": 0.5601351844990033,
+    "phi": -0.0443,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.019759579930326298,
+    "ecart_type": 0.13058835029653096,
+    "part_sans_changement": 0.0,
+    "points": 1279
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:T10Y2Y:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.43493975903614457,
+   "b_ar": {
+    "p": 0.4665949859770991,
+    "phi": -0.0748,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.0021721846794203613,
+    "ecart_type": 0.10700159153296582,
+    "part_sans_changement": 0.0514,
+    "points": 1249
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_CISS_D.BE.Z0Z.4F.EC.SOV_CIN.IDX:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.48653846153846153,
+   "b_ar": {
+    "p": 0.5518658158831838,
+    "phi": -0.3017,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.005346080625903678,
+    "ecart_type": 0.04100486499950734,
+    "part_sans_changement": 0.0,
+    "points": 1304
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E01.NOK.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.4972570532915361,
+   "b_ar": {
+    "p": 0.48759553043245774,
+    "phi": -0.0622,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.03173705545322975,
+    "ecart_type": 1.0205364039880531,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLHYH0A0HYM2TRIV:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.670844327176781,
+   "b_ar": {
+    "p": 0.6312540990011974,
+    "phi": 0.2432,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 3.6642359286526998,
+    "ecart_type": 10.932251550773392,
+    "part_sans_changement": 0.0,
+    "points": 762
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EST_B.EU000A2X2A25.R25:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.1994514106583072,
+   "b_ar": {
+    "p": 0.21287501908821482,
+    "phi": -0.0123,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.016515371044372017,
+    "ecart_type": 0.13001890073445022,
+    "part_sans_changement": 0.6133,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DTB4WK:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.43287781350482313,
+   "b_ar": {
+    "p": 0.4494029679669234,
+    "phi": -0.0311,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.019554043679103787,
+    "ecart_type": 0.16902883964613113,
+    "part_sans_changement": 0.177,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:VXVCLS:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.4756,
+   "b_ar": {
+    "p": 0.5004991793763672,
+    "phi": -0.1111,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.009352096711300866,
+    "ecart_type": 2.865755413300322,
+    "part_sans_changement": 0.0016,
+    "points": 1254
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.AUD.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5105799373040752,
+   "b_ar": {
+    "p": 0.4864978944467308,
+    "phi": -0.1255,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.04241682225972659,
+    "ecart_type": 1.289520158459007,
+    "part_sans_changement": 0.0008,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WRBWFRBL:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.5191570881226054,
+   "b_ar": {
+    "p": 0.3998031861428862,
+    "phi": -0.1328,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -23291.217381391656,
+    "ecart_type": 91749.51781781708,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_FM_D.U2.EUR.4F.KR.MRR_RT.LEV:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.04647964796479648,
+   "b_ar": {
+    "p": 0.04130502207768959,
+    "phi": -0.0012,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.010182819676729482,
+    "ecart_type": 0.11243877264830615,
+    "part_sans_changement": 0.9229,
+    "points": 1824
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:USEPUINDXD:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.49229499174463404,
+   "b_ar": {
+    "p": 0.47146732826549653,
+    "phi": -0.4215,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -16.359574668284395,
+    "ecart_type": 228.543500935076,
+    "part_sans_changement": 0.0,
+    "points": 1823
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLH0A3HYCEY:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.4742744063324538,
+   "b_ar": {
+    "p": 0.5226018730037544,
+    "phi": 0.2234,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.03431988280220423,
+    "ecart_type": 0.3870177517286655,
+    "part_sans_changement": 0.0238,
+    "points": 762
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E02.FIM.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.49490595611285265,
+   "b_ar": {
+    "p": 0.511751487967641,
+    "phi": -0.0342,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.014749015674471495,
+    "ecart_type": 0.5006306358970253,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:RPONTSYD:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.2723250201126307,
+   "b_ar": {
+    "p": 0.26648911228365063,
+    "phi": -0.3781,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.00027039961178753204,
+    "ecart_type": 3.479709023384992,
+    "part_sans_changement": 0.467,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WSHOSHO:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.3544061302681992,
+   "b_ar": {
+    "p": 0.40355013491001157,
+    "phi": 0.2156,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -4380.435351231194,
+    "ecart_type": 17940.20988837554,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:ECBASSETSW:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.3841698841698842,
+   "b_ar": {
+    "p": 0.43132314226423163,
+    "phi": 0.0205,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -9444.91641429315,
+    "ecart_type": 54592.82779121829,
+    "part_sans_changement": 0.0,
+    "points": 259
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.IF_25Y5M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.543563579277865,
+   "b_ar": {
+    "p": 0.5346250340612998,
+    "phi": -0.1475,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.01247253405366142,
+    "ecart_type": 0.1435252160756944,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.MXN.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.582680250783699,
+   "b_ar": {
+    "p": 0.5214593898280173,
+    "phi": -0.0023,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.051244301534073784,
+    "ecart_type": 0.95220109962571,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:NFCILEVERAGE:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.4673076923076923,
+   "b_ar": {
+    "p": 0.856362832572798,
+    "phi": 0.95,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 0.008764341085271325,
+    "ecart_type": 0.007787568202446253,
+    "part_sans_changement": 0.0154,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLCC0A0CMTRIV:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.566622691292876,
+   "b_ar": {
+    "p": 0.5575171767404966,
+    "phi": 0.0526,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 4.104944922003278,
+    "ecart_type": 28.373105844845686,
+    "part_sans_changement": 0.0,
+    "points": 762
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DBAA:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5345937248592116,
+   "b_ar": {
+    "p": 0.5299255725390754,
+    "phi": 0.0308,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.017480112830986567,
+    "ecart_type": 0.15061390013137996,
+    "part_sans_changement": 0.0298,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.H01.BGN.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.4961139896373057,
+   "b_ar": {
+    "p": 0.5209091096592435,
+    "phi": -0.0421,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.006706972445744432,
+    "ecart_type": 0.12010903457595001,
+    "part_sans_changement": 0.0026,
+    "points": 390
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.H02.BEF.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.48942006269592475,
+   "b_ar": {
+    "p": 0.5003719916402914,
+    "phi": -0.045,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.00024510082902700237,
+    "ecart_type": 0.2628582443797954,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DFEDTARU:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.046454095656954374,
+   "b_ar": {
+    "p": 0.03799980439496145,
+    "phi": -0.0021,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.014403644913716826,
+    "ecart_type": 0.1187202504248436,
+    "part_sans_changement": 0.9307,
+    "points": 1825
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WRMFNS:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.8019607843137255,
+   "b_ar": {
+    "p": 0.6913855373161099,
+    "phi": 0.1859,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": 4.828390826399637,
+    "ecart_type": 9.512985416609649,
+    "part_sans_changement": 0.0039,
+    "points": 255
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DEXCAUS:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5290088638195004,
+   "b_ar": {
+    "p": 0.5290681151768537,
+    "phi": -0.048,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.001023377379619572,
+    "ecart_type": 0.013067939502264331,
+    "part_sans_changement": 0.004,
+    "points": 1245
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.IF_13Y4M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5498430141287284,
+   "b_ar": {
+    "p": 0.5549857902865954,
+    "phi": -0.0483,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02019418632399858,
+    "ecart_type": 0.1460507869277373,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E01.PTE.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.4956896551724138,
+   "b_ar": {
+    "p": 0.49982830075666695,
+    "phi": -0.031,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.00027907636573324323,
+    "ecart_type": 0.6484324342573886,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DGS1:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5397909967845659,
+   "b_ar": {
+    "p": 0.5387040151971395,
+    "phi": 0.0011,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.024343685966941173,
+    "ecart_type": 0.14641388888671494,
+    "part_sans_changement": 0.0483,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E02.CNY.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5129310344827587,
+   "b_ar": {
+    "p": 0.5061670256892747,
+    "phi": -0.0417,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.013518810927919683,
+    "ecart_type": 0.8215584869555281,
+    "part_sans_changement": 0.0008,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.PY_19Y11M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5608320251177394,
+   "b_ar": {
+    "p": 0.5607062884597492,
+    "phi": -0.0334,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.020056923990324032,
+    "ecart_type": 0.13129683201197997,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:REAINTRATREARAT10Y:2026-11-10",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5677966101694916,
+   "b_ar": {
+    "p": 0.551514863414689,
+    "phi": -0.2455,
+    "pas_jours": 31.0,
+    "k": 1,
+    "moyenne": 0.03324526846474119,
+    "ecart_type": 0.2567408872451565,
+    "part_sans_changement": 0.0,
+    "points": 59
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E02.BGN.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.4365284974093264,
+   "b_ar": {
+    "p": 0.5069306112007768,
+    "phi": -0.0366,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.007281075162890857,
+    "ecart_type": 0.4190947274239896,
+    "part_sans_changement": 0.0,
+    "points": 390
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E02.HUF.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.5223354231974922,
+   "b_ar": {
+    "p": 0.49821867660060676,
+    "phi": -0.0024,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.004454923949632682,
+    "ecart_type": 0.9977141795018712,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DTB1YR:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.534967845659164,
+   "b_ar": {
+    "p": 0.5365069849488994,
+    "phi": 0.0079,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02325607874416734,
+    "ecart_type": 0.1366758061246503,
+    "part_sans_changement": 0.0547,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLEMCBPIOAS:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.3766490765171504,
+   "b_ar": {
+    "p": 0.43381720790022366,
+    "phi": -0.1483,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0062963212932642355,
+    "ecart_type": 0.07484084177720865,
+    "part_sans_changement": 0.07,
+    "points": 762
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.IF_18Y5M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5482731554160125,
+   "b_ar": {
+    "p": 0.5549537016121104,
+    "phi": -0.1049,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.019126210820258973,
+    "ecart_type": 0.1384081366011617,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.PY_25Y11M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5576923076923077,
+   "b_ar": {
+    "p": 0.5611087805260089,
+    "phi": -0.0351,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.019190940001641902,
+    "ecart_type": 0.12479398446396638,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.SR_7Y3M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5506279434850864,
+   "b_ar": {
+    "p": 0.5583746599753855,
+    "phi": -0.0143,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02168386527849445,
+    "ecart_type": 0.1476602946588213,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DFEDTARL:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.046454095656954374,
+   "b_ar": {
+    "p": 0.03799980439496145,
+    "phi": -0.0021,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.014403644913716826,
+    "ecart_type": 0.1187202504248436,
+    "part_sans_changement": 0.9307,
+    "points": 1825
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.ILS.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5223354231974922,
+   "b_ar": {
+    "p": 0.5267774868608275,
+    "phi": 0.0105,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.14669535474676187,
+    "ecart_type": 2.1838867775900184,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.IF_5Y3M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5592621664050236,
+   "b_ar": {
+    "p": 0.5560252665132454,
+    "phi": -0.0418,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.020440269727493156,
+    "ecart_type": 0.14507002201817656,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:GASREGW:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.45576923076923076,
+   "b_ar": {
+    "p": 0.199766719086571,
+    "phi": 0.5469,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": -0.05936364376438381,
+    "ecart_type": 0.07046507989673366,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E01.LVL.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5035266457680251,
+   "b_ar": {
+    "p": 0.5097984304025492,
+    "phi": -0.0148,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.01173174282471555,
+    "ecart_type": 0.47760890592582295,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WLRRAL:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.4578544061302682,
+   "b_ar": {
+    "p": 0.4797827786901875,
+    "phi": -0.0994,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -3309.364755571086,
+    "ecart_type": 65275.05113174998,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:SWPT:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.43486590038314177,
+   "b_ar": {
+    "p": 0.47474514852653876,
+    "phi": -0.1498,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -0.5709297775587959,
+    "ecart_type": 849.0420196214791,
+    "part_sans_changement": 0.05,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.TWD.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.43456112852664575,
+   "b_ar": {
+    "p": 0.4892734277987373,
+    "phi": 0.0703,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.02593370771432992,
+    "ecart_type": 0.9644092764145058,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_ILM_D.U2.C.L020100.U2.EUR:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.49115384615384616,
+   "b_ar": {
+    "p": 0.46657340166042055,
+    "phi": 0.0972,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -18738.384121876963,
+    "ecart_type": 223378.26335737665,
+    "part_sans_changement": 0.0,
+    "points": 1304
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLHE00EHYIEY:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.4241424802110818,
+   "b_ar": {
+    "p": 0.44660863150278174,
+    "phi": 0.1312,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.010306734009076038,
+    "ecart_type": 0.15507841313937407,
+    "part_sans_changement": 0.0568,
+    "points": 762
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.PY_11Y8M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5569073783359497,
+   "b_ar": {
+    "p": 0.5599091191843585,
+    "phi": -0.0292,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.021195179538544776,
+    "ecart_type": 0.14060864851717528,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:EXPINF10YR:2026-11-10",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.6016949152542372,
+   "b_ar": {
+    "p": 0.506080100960272,
+    "phi": -0.2011,
+    "pas_jours": 31.0,
+    "k": 1,
+    "moyenne": 0.0019867702593680137,
+    "ecart_type": 0.13035572568034656,
+    "part_sans_changement": 0.0,
+    "points": 59
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WEI:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.4980769230769231,
+   "b_ar": {
+    "p": 0.6114863246577821,
+    "phi": -0.4456,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 0.09835183741765605,
+    "ecart_type": 0.3398655894781189,
+    "part_sans_changement": 0.0039,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DAAA:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5410297666934835,
+   "b_ar": {
+    "p": 0.5381649288792361,
+    "phi": -0.0209,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.020439002406971482,
+    "ecart_type": 0.1498958539918626,
+    "part_sans_changement": 0.029,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.H03.LUF.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.490987460815047,
+   "b_ar": {
+    "p": 0.5072550895843204,
+    "phi": -0.0421,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.005851134215803705,
+    "ecart_type": 0.3049844115476821,
+    "part_sans_changement": 0.0008,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DEXUSUK:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.483883964544722,
+   "b_ar": {
+    "p": 0.4939257436980664,
+    "phi": 0.0001,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.00023090154012513883,
+    "ecart_type": 0.017457961392172133,
+    "part_sans_changement": 0.0016,
+    "points": 1245
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DGS5:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5438102893890675,
+   "b_ar": {
+    "p": 0.5284064691079778,
+    "phi": -0.0099,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.022335681338157682,
+    "ecart_type": 0.18246624004529988,
+    "part_sans_changement": 0.037,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.NOK.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.5035266457680251,
+   "b_ar": {
+    "p": 0.4914415908266774,
+    "phi": -0.0608,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.023864149600419375,
+    "ecart_type": 1.1123197966361433,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WDTGAL:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.46551724137931033,
+   "b_ar": {
+    "p": 0.5186568632600826,
+    "phi": -0.0051,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": 3487.892654681069,
+    "ecart_type": 74554.89311213173,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.JPY.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.40164576802507834,
+   "b_ar": {
+    "p": 0.4567774719228318,
+    "phi": -0.0647,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.131632791018706,
+    "ecart_type": 1.2125835779499936,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.SR_17Y5M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5624018838304553,
+   "b_ar": {
+    "p": 0.560593235041471,
+    "phi": -0.046,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.020262391998498306,
+    "ecart_type": 0.1328912809636114,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DPRIME:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.04778830963665087,
+   "b_ar": {
+    "p": 0.039692245379469,
+    "phi": -0.003,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02071078727986249,
+    "ecart_type": 0.14220694707299247,
+    "part_sans_changement": 0.9289,
+    "points": 1270
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E01.USD.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5176332288401254,
+   "b_ar": {
+    "p": 0.5171756698994905,
+    "phi": -0.0351,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0463660393381203,
+    "ecart_type": 1.0766192697108237,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E03.HKD.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5199843260188087,
+   "b_ar": {
+    "p": 0.5246885681424147,
+    "phi": -0.0521,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.039324247594466476,
+    "ecart_type": 0.6350341690337129,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.IF_1Y6M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5451334379905809,
+   "b_ar": {
+    "p": 0.5412268762773537,
+    "phi": -0.0358,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.020575863593660003,
+    "ecart_type": 0.1987524577435284,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DFII30:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5333601286173634,
+   "b_ar": {
+    "p": 0.5476026090385973,
+    "phi": -0.0462,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.022724550860671978,
+    "ecart_type": 0.12356923660336704,
+    "part_sans_changement": 0.0442,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WSHOMCB:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.1743295019157088,
+   "b_ar": {
+    "p": 0.2756286240017938,
+    "phi": -0.0538,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -2629.154511455778,
+    "ecart_type": 11490.18134086808,
+    "part_sans_changement": 0.3269,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.SR_7Y8M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5521978021978022,
+   "b_ar": {
+    "p": 0.5586345618259094,
+    "phi": -0.0166,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02170710976891158,
+    "ecart_type": 0.14715862502751417,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.H01.GRD.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.49412225705329155,
+   "b_ar": {
+    "p": 0.4999013000202131,
+    "phi": -0.0291,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -4.987584167206658e-05,
+    "ecart_type": 0.20159661484805003,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:MORTGAGE15US:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5076628352490421,
+   "b_ar": {
+    "p": 0.6178741799788562,
+    "phi": 0.2248,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": 0.04248336552947344,
+    "ecart_type": 0.125541348145081,
+    "part_sans_changement": 0.0231,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLH0A1HYBB:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.42018469656992086,
+   "b_ar": {
+    "p": 0.45543932202925885,
+    "phi": 0.0722,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.010168377657461208,
+    "ecart_type": 0.1657521110501236,
+    "part_sans_changement": 0.0423,
+    "points": 762
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DEXUSEU:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.483883964544722,
+   "b_ar": {
+    "p": 0.4912500542097738,
+    "phi": -0.0059,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.00018987556590029534,
+    "ecart_type": 0.01362352475313327,
+    "part_sans_changement": 0.0065,
+    "points": 1245
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E02.EUR.EN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.48393416927899685,
+   "b_ar": {
+    "p": 0.49838330289925753,
+    "phi": -0.049,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.002258260646566423,
+    "ecart_type": 0.5572553979291975,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:SOFR90DAYAVG:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.5434432823813354,
+   "b_ar": {
+    "p": 0.6329597051785337,
+    "phi": 0.6191,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.02163790879075092,
+    "ecart_type": 0.04774555002109739,
+    "part_sans_changement": 0.062,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.IF_9Y2M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5514128728414442,
+   "b_ar": {
+    "p": 0.5567265218530608,
+    "phi": -0.0603,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.021078541391247648,
+    "ecart_type": 0.14773827977135898,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_CISS_D.NL.Z0Z.4F.EC.SS_CIN.IDX:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.4351993865030675,
+   "b_ar": {
+    "p": 0.48988332546647384,
+    "phi": 0.3357,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0008768298591359145,
+    "ecart_type": 0.03457331821121472,
+    "part_sans_changement": 0.0,
+    "points": 1308
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:WORAL:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.3544061302681992,
+   "b_ar": {
+    "p": 0.37431053050833535,
+    "phi": -0.3618,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": 435.09942351791506,
+    "ecart_type": 7468.062675411655,
+    "part_sans_changement": 0.2846,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DGS3MO:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.49397106109324757,
+   "b_ar": {
+    "p": 0.524673640288486,
+    "phi": -0.0455,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.023188920219576418,
+    "ecart_type": 0.09366060223727964,
+    "part_sans_changement": 0.1223,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.SR_7Y7M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.564756671899529,
+   "b_ar": {
+    "p": 0.5580700021587846,
+    "phi": -0.0286,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.020163178953810472,
+    "ecart_type": 0.13803044125762878,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_CISS_D.ES.Z0Z.4F.EC.SS_CIN.IDX:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.43673312883435583,
+   "b_ar": {
+    "p": 0.48491375906837564,
+    "phi": 0.3973,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0010199681629092553,
+    "ecart_type": 0.026965724602496084,
+    "part_sans_changement": 0.0,
+    "points": 1308
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:BAMLC0A0CM:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.3718626155878468,
+   "b_ar": {
+    "p": 0.4463369634651013,
+    "phi": 0.281,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.000578932590071586,
+    "ecart_type": 0.04496909726500614,
+    "part_sans_changement": 0.1164,
+    "points": 761
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DGS3:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.5518488745980707,
+   "b_ar": {
+    "p": 0.5337422092720234,
+    "phi": -0.0221,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.024048229716839956,
+    "ecart_type": 0.18415816125182294,
+    "part_sans_changement": 0.033,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:EXPINF5YR:2026-11-10",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.6016949152542372,
+   "b_ar": {
+    "p": 0.49311320836533956,
+    "phi": -0.2104,
+    "pas_jours": 31.0,
+    "k": 1,
+    "moyenne": -0.0027668693010769775,
+    "ecart_type": 0.16027293713860974,
+    "part_sans_changement": 0.0,
+    "points": 59
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DCOILWTICO:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.5181451612903226,
+   "b_ar": {
+    "p": 0.5048237517376442,
+    "phi": -0.0131,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.08648283047113077,
+    "ecart_type": 6.1171566403504665,
+    "part_sans_changement": 0.0016,
+    "points": 1244
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.PY_9M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.5682352941176471,
+   "b_ar": {
+    "p": 0.5846190230373766,
+    "phi": -0.0362,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.01939112366195501,
+    "ecart_type": 0.09072955795623705,
+    "part_sans_changement": 0.0,
+    "points": 1279
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.H00.SIT.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.1328369905956113,
+   "b_ar": {
+    "p": 0.12390809599745932,
+    "phi": -0.0588,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 8.403811567696842e-05,
+    "ecart_type": 0.005275198185224225,
+    "part_sans_changement": 0.7553,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.CAD.EUR.SP00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.5239028213166145,
+   "b_ar": {
+    "p": 0.5229389583311602,
+    "phi": -0.029,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0008867668487310971,
+    "ecart_type": 0.014380672310341475,
+    "part_sans_changement": 0.0031,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_EXR_D.E02.FRF.NN00.A:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.4862852664576803,
+   "b_ar": {
+    "p": 0.4983265271658478,
+    "phi": -0.0469,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0024639520933888953,
+    "ecart_type": 0.5873843686662075,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:CCSA:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.47297297297297297,
+   "b_ar": {
+    "p": 0.4080377456719942,
+    "phi": -0.2248,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -6075.988414522874,
+    "ecart_type": 28677.042453066577,
+    "part_sans_changement": 0.0194,
+    "points": 259
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:TMBACBW027SBOG:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 1,
+   "p_B": 0.48653846153846153,
+   "b_ar": {
+    "p": 0.4664034260044824,
+    "phi": 0.0026,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": -0.9476657255665529,
+    "ecart_type": 11.239731483248226,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_CISS_D.PT.Z0Z.4F.EC.SOV_CIN.IDX:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 0,
+   "p_B": 0.4442307692307692,
+   "b_ar": {
+    "p": 0.4800933734174178,
+    "phi": -0.2016,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0010675366522467425,
+    "ecart_type": 0.021385275465401827,
+    "part_sans_changement": 0.0,
+    "points": 1304
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:fred:DGS7:2026-10-18",
+   "bloc": "2026-10-11:fred",
+   "issue": 0,
+   "p_B": 0.552652733118971,
+   "b_ar": {
+    "p": 0.5336194643425878,
+    "phi": -0.0114,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.02144052139099608,
+    "ecart_type": 0.17712697054326734,
+    "part_sans_changement": 0.0265,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-10-11:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.IF_29Y3M:2026-10-18",
+   "bloc": "2026-10-11:dbnomics",
+   "issue": 1,
+   "p_B": 0.5443485086342229,
+   "b_ar": {
+    "p": 0.5250493917050436,
+    "phi": -0.1626,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.009965114943076532,
+    "ecart_type": 0.15860231586484153,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:DGS7:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5522928399034593,
+   "b_ar": {
+    "p": 0.5319611341988212,
+    "phi": -0.0093,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.020706983331975817,
+    "ecart_type": 0.1773224570227678,
+    "part_sans_changement": 0.0266,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:NASDAQ100:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5772,
+   "b_ar": {
+    "p": 0.5502015293869916,
+    "phi": -0.0459,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 83.49906036187144,
+    "ecart_type": 661.7952907476844,
+    "part_sans_changement": 0.0,
+    "points": 1254
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.07255.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 1,
+   "p_B": 0.5019574944071589,
+   "b_ar": {
+    "p": 0.5030019993987821,
+    "phi": 0.0476,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.050268324137809586,
+    "ecart_type": 6.107235011493315,
+    "part_sans_changement": 0.0006,
+    "points": 1794
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.07621.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.508347245409015,
+   "b_ar": {
+    "p": 0.4979755528174499,
+    "phi": 0.0263,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.018199543623857305,
+    "ecart_type": 6.094917622275271,
+    "part_sans_changement": 0.0017,
+    "points": 1803
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_EXR_D.H01.LUF.NN00.A:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.4902037617554859,
+   "b_ar": {
+    "p": 0.4904456530731248,
+    "phi": -0.0361,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.005873357199749595,
+    "ecart_type": 0.24521890612064087,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:TOTCI:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.625,
+   "b_ar": {
+    "p": 0.5743260870153035,
+    "phi": -0.0151,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 2.2032839149753496,
+    "ecart_type": 11.757182297977513,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:NFCICREDIT:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.41346153846153844,
+   "b_ar": {
+    "p": 0.4697649538409278,
+    "phi": 0.95,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 1.4147286821705437e-05,
+    "ecart_type": 0.0020412167618266597,
+    "part_sans_changement": 0.0656,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.PY_14Y8M:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5627450980392157,
+   "b_ar": {
+    "p": 0.5556753808371846,
+    "phi": -0.04,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.018477272826014756,
+    "ecart_type": 0.13196769251496077,
+    "part_sans_changement": 0.0,
+    "points": 1279
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:DPSACBW027SBOG:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.6173076923076923,
+   "b_ar": {
+    "p": 0.7580377834631524,
+    "phi": -0.2332,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 30.379942485612244,
+    "ecart_type": 43.39963277393147,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_EXR_D.KRW.EUR.SP00.A:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5262539184952978,
+   "b_ar": {
+    "p": 0.5200035845741872,
+    "phi": -0.0024,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.9240175872777648,
+    "ecart_type": 18.42045580271051,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.SR_13Y9M:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5639717425431711,
+   "b_ar": {
+    "p": 0.5555679061598844,
+    "phi": -0.0395,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.018763566455144605,
+    "ecart_type": 0.1342733423670388,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:BAMLH0A1HYBBEY:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.4659090909090909,
+   "b_ar": {
+    "p": 0.5047136880736534,
+    "phi": 0.1902,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.010063557797173323,
+    "ecart_type": 0.1934201912621674,
+    "part_sans_changement": 0.0308,
+    "points": 752
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:IUDSOIA:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5071713147410358,
+   "b_ar": {
+    "p": 0.46805476392775414,
+    "phi": -0.0016,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.020504574499085253,
+    "ecart_type": 0.12035236208701633,
+    "part_sans_changement": 0.1754,
+    "points": 1259
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:DFII30:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5273531777956557,
+   "b_ar": {
+    "p": 0.5278606162809185,
+    "phi": -0.0453,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.016130470617263356,
+    "ecart_type": 0.12374967578129034,
+    "part_sans_changement": 0.0435,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_EXR_D.E03.PTE.NN00.A:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5168495297805643,
+   "b_ar": {
+    "p": 0.5245707732697695,
+    "phi": -0.037,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.05163385105640399,
+    "ecart_type": 0.8378203647743168,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.78894.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5241448692152918,
+   "b_ar": {
+    "p": 0.499416107409477,
+    "phi": -0.2452,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.010604350106515031,
+    "ecart_type": 1.3513780038053778,
+    "part_sans_changement": 0.0074,
+    "points": 1497
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:DGS6MO:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 0,
+   "p_B": 0.5265486725663717,
+   "b_ar": {
+    "p": 0.532870517715533,
+    "phi": -0.0161,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.023696988828898678,
+    "ecart_type": 0.09952560267973042,
+    "part_sans_changement": 0.1031,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.07181.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.48954802259887004,
+   "b_ar": {
+    "p": 0.4999711065503041,
+    "phi": 0.0721,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0004827569248565546,
+    "ecart_type": 6.665598962408445,
+    "part_sans_changement": 0.0,
+    "points": 1776
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.PY_16Y11M:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5627450980392157,
+   "b_ar": {
+    "p": 0.5552414925953839,
+    "phi": -0.0426,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.018183472921662076,
+    "ecart_type": 0.1308960354491069,
+    "part_sans_changement": 0.0,
+    "points": 1279
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.07607.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.49888330541596876,
+   "b_ar": {
+    "p": 0.49480186635256856,
+    "phi": 0.0503,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.06841721739104815,
+    "ecart_type": 5.876400124215025,
+    "part_sans_changement": 0.0011,
+    "points": 1797
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_CISS_D.PT.Z0Z.4F.EC.SOV_CIN.IDX:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 1,
+   "p_B": 0.4426923076923077,
+   "b_ar": {
+    "p": 0.526728662176852,
+    "phi": -0.2009,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.001433207676242944,
+    "ecart_type": 0.021375518918654336,
+    "part_sans_changement": 0.0,
+    "points": 1304
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:BAMLC0A3CA:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.37633689839572193,
+   "b_ar": {
+    "p": 0.4672456846462429,
+    "phi": 0.2485,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0035893351928344276,
+    "ecart_type": 0.04144620605683781,
+    "part_sans_changement": 0.1258,
+    "points": 752
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:WRBWFRBL:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 0,
+   "p_B": 0.5229885057471264,
+   "b_ar": {
+    "p": 0.4508387526831822,
+    "phi": -0.1268,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -11334.048304791973,
+    "ecart_type": 91742.0838057814,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.07222.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 1,
+   "p_B": 0.5011179429849077,
+   "b_ar": {
+    "p": 0.4970764211833719,
+    "phi": 0.0208,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": -0.0377537810398382,
+    "ecart_type": 5.693421158091131,
+    "part_sans_changement": 0.0006,
+    "points": 1795
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:DFII5:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5281576830249397,
+   "b_ar": {
+    "p": 0.5342263223329473,
+    "phi": 0.0124,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.02425938351521818,
+    "ecart_type": 0.17613597883932167,
+    "part_sans_changement": 0.037,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.07761.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 1,
+   "p_B": 0.5190050307434321,
+   "b_ar": {
+    "p": 0.49944685645700004,
+    "phi": -0.0482,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 5.414193497563441e-05,
+    "ecart_type": 3.51357199361475,
+    "part_sans_changement": 0.0011,
+    "points": 1795
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_A.SV_C_YM.IF_29Y3M:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5490580847723705,
+   "b_ar": {
+    "p": 0.5455329036112583,
+    "phi": -0.163,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.01606149712551605,
+    "ecart_type": 0.14041857349678327,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:T10Y3M:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5108520900321544,
+   "b_ar": {
+    "p": 0.47888948026669487,
+    "phi": -0.0353,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.0029295826170623812,
+    "ecart_type": 0.1615209357255644,
+    "part_sans_changement": 0.0282,
+    "points": 1248
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_EXR_D.E01.SEK.EN00.A:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.47844827586206895,
+   "b_ar": {
+    "p": 0.48166707572194695,
+    "phi": -0.0504,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.04001802465356222,
+    "ecart_type": 0.8705245605718173,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.81401.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.4913572343149808,
+   "b_ar": {
+    "p": 0.46040865662777053,
+    "phi": -0.331,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -0.14098238060010534,
+    "ecart_type": 1.5335963001761201,
+    "part_sans_changement": 0.0064,
+    "points": 1568
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_YC_B.U2.EUR.4F.G_N_C.SV_C_YM.IF_4Y4M:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 1,
+   "p_B": 0.5521978021978022,
+   "b_ar": {
+    "p": 0.5528329973854474,
+    "phi": -0.0164,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.021500308068196215,
+    "ecart_type": 0.16187286298816653,
+    "part_sans_changement": 0.0,
+    "points": 1278
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:DGS20:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5297666934835077,
+   "b_ar": {
+    "p": 0.5272524225134977,
+    "phi": -0.032,
+    "pas_jours": 1.0,
+    "k": 7,
+    "moyenne": 0.017219840893789272,
+    "ecart_type": 0.14702806934229848,
+    "part_sans_changement": 0.0354,
+    "points": 1247
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_FM_D.U2.EUR.4F.KR.DFR.LEV:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.04647964796479648,
+   "b_ar": {
+    "p": 0.04182506708375732,
+    "phi": -0.0016,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.011528506930177693,
+    "ecart_type": 0.10717711625068978,
+    "part_sans_changement": 0.9229,
+    "points": 1824
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_EXR_D.E03.NOK.EN00.A:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5082288401253918,
+   "b_ar": {
+    "p": 0.5023446964424949,
+    "phi": -0.059,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.0065715376108737705,
+    "ecart_type": 1.1181187720078154,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:meteofrance_TEMPERATURE_celsius.07434.D:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.5080915178571429,
+   "b_ar": {
+    "p": 0.5061978198442361,
+    "phi": 0.1041,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.10668463246063178,
+    "ecart_type": 6.5671481521050925,
+    "part_sans_changement": 0.0006,
+    "points": 1798
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_EXR_D.E02.USD.EN00.A:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 1,
+   "p_B": 0.5066614420062696,
+   "b_ar": {
+    "p": 0.516392627092895,
+    "phi": -0.0358,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.03727522858959765,
+    "ecart_type": 0.906900321396436,
+    "part_sans_changement": 0.0,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:WSHOSHO:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 0,
+   "p_B": 0.35823754789272033,
+   "b_ar": {
+    "p": 0.4122316520293568,
+    "phi": 0.2402,
+    "pas_jours": 7.0,
+    "k": 1,
+    "moyenne": -4159.688179707728,
+    "ecart_type": 18753.548281971154,
+    "part_sans_changement": 0.0,
+    "points": 261
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:dbnomics:ECB_EXR_D.H00.ATS.NN00.A:2026-10-04",
+   "bloc": "2026-09-27:dbnomics",
+   "issue": 0,
+   "p_B": 0.1359717868338558,
+   "b_ar": {
+    "p": 0.12712255578485823,
+    "phi": -0.0598,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 4.0088577805599495e-05,
+    "ecart_type": 0.0012380774045910225,
+    "part_sans_changement": 0.7522,
+    "points": 1280
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:RIFSPPFAAD90NB:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.5081190798376184,
+   "b_ar": {
+    "p": 0.5367792128140622,
+    "phi": -0.4045,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.03611183973584694,
+    "ecart_type": 0.18079774156057749,
+    "part_sans_changement": 0.0732,
+    "points": 740
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:RRPONTSYD:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.44323671497584544,
+   "b_ar": {
+    "p": 0.4645179530748438,
+    "phi": -0.2566,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": -8.125027266242633,
+    "ecart_type": 93.20787631477691,
+    "part_sans_changement": 0.0016,
+    "points": 1246
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:RPONTSYD:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 0,
+   "p_B": 0.27093397745571657,
+   "b_ar": {
+    "p": 0.2651255704837062,
+    "phi": -0.378,
+    "pas_jours": 1,
+    "k": 7,
+    "moyenne": 0.00027620061862009584,
+    "ecart_type": 3.4802417420610885,
+    "part_sans_changement": 0.4698,
+    "points": 1246
+   }
+  },
+  {
+   "question_id": "fb:2026-09-27:fred:CCLACBW027SBOG:2026-10-04",
+   "bloc": "2026-09-27:fred",
+   "issue": 1,
+   "p_B": 0.7326923076923076,
+   "b_ar": {
+    "p": 0.6401303635551723,
+    "phi": -0.0813,
+    "pas_jours": 7,
+    "k": 1,
+    "moyenne": 1.285001189662639,
+    "ecart_type": 3.581313126528489,
+    "part_sans_changement": 0.0,
+    "points": 260
+   }
+  }
+ ]
+}
