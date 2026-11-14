@@ -142,6 +142,61 @@ def b_hausse(points: list[dict], h: int, avant: date, annees: int = 5) -> tuple[
     return (k + 0.5) / (n + 1), k, n
 
 
+# 0.10.92 (décision d'auteur du 2026-11-14, EN OMBRE) : un second taux de base pour les séries, par un modèle
+# autorégressif. Le but n'est pas de battre C mais de trouver la meilleure prévision ; B par comptage est-il le meilleur
+# B possible ? Règle fixée AVANT toute mesure, jamais ajustée sur les issues :
+#   - mêmes points que B (5 ans avant D, strictement avant D) ;
+#   - pas = observations natives ; k = nombre de pas dans l'horizon = arrondi de h / écart médian entre observations ;
+#   - AR(1) sur les différences, avec constante, par moindres carrés : d_t = c + φ·d_(t−1) + e, φ borné à ±0,95 ;
+#   - somme des k différences à venir, gaussienne : moyenne Σ [μ + φ^m (d_T − μ)], μ = c/(1−φ) ;
+#     variance σ² Σ_m (Σ_(j<k−m+1) φ^j)² ;
+#   - P(hausse) = (1 − part des intervalles de h jours sans changement, comptés comme B) × Φ(moyenne / écart-type) ;
+#   - bornée à 0,001–0,999. Rien n'est posté ; comparé à B par la perte log sur les mêmes questions.
+def b_ar(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | None:
+    import math
+    import statistics as st_
+    pts = sorted((date.fromisoformat(p["date"][:10]), float(p["valeur"])) for p in points
+                 if p.get("date") and p.get("valeur") is not None and p["date"][:10] < avant.isoformat())
+    pts = [p for p in pts if p[0] >= avant - timedelta(days=365 * annees)]
+    if len(pts) < 30 or h <= 0:
+        return None
+    ecarts = [(b[0] - a[0]).days for a, b in zip(pts, pts[1:])]
+    pas = st_.median(ecarts) or 1
+    k = max(1, round(h / pas))
+    v = [p[1] for p in pts]
+    d = [b - a for a, b in zip(v, v[1:])]
+    x_, y_ = d[:-1], d[1:]
+    mx, my = st_.fmean(x_), st_.fmean(y_)
+    sxx = sum((a - mx) ** 2 for a in x_)
+    phi = 0.0 if sxx == 0 else sum((a - mx) * (b - my) for a, b in zip(x_, y_)) / sxx
+    phi = max(-0.95, min(0.95, phi))
+    c = my - phi * mx
+    res = [b - c - phi * a for a, b in zip(x_, y_)]
+    sigma = math.sqrt(sum(e * e for e in res) / max(1, len(res) - 2))
+    mu = c / (1 - phi)
+    moyenne = sum(mu + phi ** m * (d[-1] - mu) for m in range(1, k + 1))
+    var = sigma ** 2 * sum(sum(phi ** j for j in range(k - m + 1)) ** 2 for m in range(1, k + 1))
+    # part des intervalles de h jours sans changement (même appariement que b_hausse)
+    n = egal = 0
+    j = 0
+    for t, val in pts:
+        cible = t + timedelta(days=h)
+        while j < len(pts) and pts[j][0] < cible:
+            j += 1
+        if j >= len(pts):
+            break
+        n += 1
+        egal += pts[j][1] == val
+    p_egal = egal / n if n else 0.0
+    if var <= 0:
+        p_haut = 1.0 if moyenne > 0 else 0.0
+    else:
+        p_haut = 0.5 * (1 + math.erf(moyenne / math.sqrt(2 * var)))
+    p = max(0.001, min(0.999, (1 - p_egal) * p_haut))
+    return {"p": p, "phi": round(phi, 4), "pas_jours": pas, "k": k, "moyenne": moyenne, "ecart_type": math.sqrt(max(var, 0)),
+            "part_sans_changement": round(p_egal, 4), "points": len(pts)}
+
+
 async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
     """Le taux de base calculé par le code quand la forme de la question le permet ; None sinon (vues du modèle)."""
     d0 = date.fromisoformat(jeu)
@@ -175,6 +230,10 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
             else:
                 r = await apz.dbnomics(q["url"].split("db.nomics.world/", 1)[1], avant=d0)
             b = b_hausse(r.get("points") or [], h, d0)
+            try:                                      # 0.10.92 : second taux de base, autorégressif, en ombre
+                x["_b_ar"] = b_ar(r.get("points") or [], h, d0)
+            except Exception as e:
+                x["_b_ar"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
             # 0.10.78 : la série téléchargée ici sert aussi à l'ombre « ancrage par les séries » (au banc, le puits du
             # bot n'est pas appelé pour ces questions) ; bornée STRICTEMENT avant la date d'information
             x["_releve"] = dict(r, points=[p for p in r.get("points") or [] if str(p.get("date", ""))[:10] < jeu])
@@ -253,6 +312,8 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
     # 0.10.70 : ombre « absence » (hypothèse enregistrée le 2026-11-13), état nul posté ou exploratoire
     for k_ in ("ombre_filtrage", "ombre_series", "ombre_nouveau_depart", "ombre_sans_matrice"):      # 0.10.73 : tâches refaites par le code, en ombre
         ligne[k_] = c.get(k_) or (c.get("exploratoire") or {}).get(k_)
+    if x.get("_b_ar") is not None:
+        ligne["ombre_b_ar"] = x["_b_ar"]
     if not ligne.get("ombre_series") and x.get("_releve"):       # 0.10.78 : série du banc, bornée à D
         try:
             import ombres_auto as oa
