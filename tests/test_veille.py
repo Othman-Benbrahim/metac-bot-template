@@ -58,5 +58,24 @@ class Tests(unittest.TestCase):
         self.assertIn("Rien de retenu", v.rediger([], "", ["arXiv (x)"], 8))
 
 
+class Sources14Nov(unittest.TestCase):
+    def test_github_et_zenodo(self):
+        import veille_articles as va
+        g = va.parser_github({"items": [{"full_name": "a/forecastbench-market-blend", "html_url": "https://github.com/a/b",
+                                         "description": "Does blending an LLM forecast improve Brier score?",
+                                         "topics": ["forecasting"], "created_at": "2026-11-03T15:42:19Z",
+                                         "stargazers_count": 2}]})
+        self.assertEqual(g[0]["id"], "github:a/forecastbench-market-blend")
+        self.assertIn("forecasting", g[0]["resume"])
+        z = va.parser_zenodo({"hits": {"hits": [{"id": 19762753, "links": {"self_html": "https://zenodo.org/records/19762753"},
+                                                 "metadata": {"title": "Calibration benchmark", "description": "<p>Brier score of LLM forecasts</p>",
+                                                              "publication_date": "2026-04-25", "resource_type": {"title": "Dataset"}}}]}})
+        self.assertEqual(z[0]["resume"], "Brier score of LLM forecasts")
+        self.assertEqual(z[0]["source"], "Zenodo · Dataset")
+        mots = va.lire_mots()
+        self.assertTrue(va.retenu(va.noter(g[0]["resume"], mots, g[0]["titre"])[0]))
+        self.assertIn("evaluation harness", mots["fort"])
+
+
 if __name__ == "__main__":
     unittest.main()

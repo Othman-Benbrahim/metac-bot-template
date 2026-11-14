@@ -68,6 +68,14 @@ probabilistic program*
 causal extraction
 causal relation extraction
 causal graph* from text
+# Évaluation des agents et organisation des connaissances (prospection LinkedIn du 2026-11-14)
+evaluation harness
+eval harness
+runtime assurance
+stability selection
+controlled vocabular*
+ontology engineering
+knowledge organization system*
 # Signaux, conflits, données (puits)
 weak signal*
 conflict prediction

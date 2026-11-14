@@ -1,9 +1,13 @@
-"""Veille d'articles, chaque semaine, SANS modèle (décision d'auteur du 2026-11-11).
+"""Veille d'articles, chaque jour depuis le 2026-11-14 (chaque semaine avant), SANS modèle (décision d'auteur du 2026-11-11).
 
-Deux sources :
-  1. arXiv (API publique) : les articles soumis dans les 8 derniers jours, dans les rubriques IA, langage,
+Quatre sources :
+  1. arXiv (API publique) : les articles soumis dans les derniers jours, dans les rubriques IA, langage,
      apprentissage, statistiques, économie et réseaux sociaux, qui contiennent au moins une expression [fort] ;
-  2. DAIR.AI, « AI Papers of the Week » : la dernière semaine publiée (complément, articles les plus visibles).
+  2. DAIR.AI, « AI Papers of the Week » : la dernière semaine publiée (complément, articles les plus visibles) ;
+  3. GitHub (API de recherche, 2026-11-14) : les dépôts créés dans la fenêtre, nom, description ou sujets ;
+  4. Zenodo (API publique, 2026-11-14) : les dépôts publiés dans la fenêtre (rapports, livres, jeux de données).
+  Les sources 3 et 4 viennent de la prospection LinkedIn du 2026-11-14 : presque tout ce qui y valait la peine
+  renvoyait à un dépôt GitHub ou Zenodo, que l'on peut lire directement sans passer par LinkedIn.
 
 Chaque article est noté sur son titre et son résumé : 3 points par expression [fort], 1 par expression [faible]
 différente ; 2 si elle est dans le titre ; il est retenu à partir de 3 points. Les mots-clés sont dans veille/mots-cles.txt,
@@ -132,6 +136,75 @@ def arxiv(mots: dict[str, list[str]], jours: int) -> list[dict]:
     return out
 
 
+GITHUB = "https://api.github.com/search/repositories"
+ZENODO = "https://zenodo.org/api/records"
+
+
+def _get_json(url: str, headers: dict | None = None) -> dict:
+    req = urllib.request.Request(url, headers={**UA, **(headers or {})})
+    for i in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.loads(r.read())
+        except Exception:
+            if i == 2:
+                raise
+            time.sleep(10 * (i + 1))
+    return {}
+
+
+def _termes(exprs: list[str]) -> list[str]:
+    return [e.rstrip("*") for e in exprs if len(e.rstrip("*")) >= 4]
+
+
+def parser_github(d: dict) -> list[dict]:
+    out = []
+    for r in d.get("items") or []:
+        out.append({"id": f"github:{r.get('full_name')}", "titre": r.get("full_name") or "",
+                    "resume": " ".join(filter(None, [r.get("description") or "", " ".join(r.get("topics") or [])])),
+                    "url": r.get("html_url") or "", "date": (r.get("created_at") or "")[:10],
+                    "source": f"GitHub · ★{r.get('stargazers_count', 0)}"})
+    return out
+
+
+def github(mots: dict[str, list[str]], jours: int) -> list[dict]:
+    """Dépôts créés dans la fenêtre. 5 expressions par requête (limite de l'API : 5 opérateurs OR) ; jeton facultatif
+    (GITHUB_TOKEN dans le workflow : 30 requêtes par minute au lieu de 10)."""
+    import os
+    debut = (date.today() - timedelta(days=jours)).isoformat()
+    h = {"Accept": "application/vnd.github+json"}
+    if os.environ.get("GITHUB_TOKEN"):
+        h["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
+    out, termes = [], _termes(mots["fort"])
+    for i in range(0, len(termes), 5):
+        q = " OR ".join(f'"{t}"' for t in termes[i:i + 5]) + f" in:name,description,topics created:>={debut}"
+        out += parser_github(_get_json(f"{GITHUB}?{urllib.parse.urlencode({'q': q, 'per_page': 50, 'sort': 'updated'})}", h))
+        time.sleep(2.5)
+    return out
+
+
+def parser_zenodo(d: dict) -> list[dict]:
+    out = []
+    for r in (d.get("hits") or {}).get("hits") or []:
+        m = r.get("metadata") or {}
+        resume = re.sub(r"<[^>]+>", " ", m.get("description") or "")
+        out.append({"id": f"zenodo:{r.get('id')}", "titre": m.get("title") or "", "resume": " ".join(resume.split()),
+                    "url": (r.get("links") or {}).get("self_html") or f"https://zenodo.org/records/{r.get('id')}",
+                    "date": (m.get("publication_date") or "")[:10],
+                    "source": f"Zenodo · {(m.get('resource_type') or {}).get('title') or 'dépôt'}"})
+    return out
+
+
+def zenodo(mots: dict[str, list[str]], jours: int) -> list[dict]:
+    debut = (date.today() - timedelta(days=jours)).isoformat()
+    out, termes = [], _termes(mots["fort"])
+    for i in range(0, len(termes), 8):
+        q = "(" + " OR ".join(f'"{t}"' for t in termes[i:i + 8]) + f") AND publication_date:[{debut} TO *]"
+        out += parser_zenodo(_get_json(f"{ZENODO}?{urllib.parse.urlencode({'q': q, 'size': 50, 'sort': 'newest'})}"))
+        time.sleep(1)
+    return out
+
+
 def parser_dair(md: str) -> tuple[str, list[dict]]:
     """La première section « ## Top AI Papers of the Week (…) » : une ligne de tableau par article."""
     m = re.search(r"^## (Top AI Papers of the Week[^\n]*)\n(.*?)(?=^## |\Z)", md, re.M | re.S)
@@ -174,9 +247,9 @@ def trier(articles: list[dict], mots: dict[str, list[str]], deja: set[str], n: i
 
 
 def rediger(retenus: list[dict], semaine_dair: str, erreurs: list[str], jours: int) -> str:
-    l = [f"Articles soumis sur arXiv ces {jours} derniers jours, et dernière semaine de DAIR.AI"
-         f"{f' ({semaine_dair})' if semaine_dair else ''}, triés par mots-clés (`veille/mots-cles.txt`), sans modèle. "
-         "Transmets à Claude ceux qui méritent une lecture.", ""]
+    l = [f"Nouveautés des {jours} derniers jours (arXiv, GitHub, Zenodo) et dernière semaine de DAIR.AI"
+         f"{f' ({semaine_dair})' if semaine_dair else ''}, triées par mots-clés (`veille/mots-cles.txt`), sans modèle, "
+         "déjà vues écartées. Transmets à Claude celles qui méritent une lecture.", ""]
     if erreurs:
         l += [f"> Source indisponible : {e}" for e in erreurs] + [""]
     if not retenus:
@@ -190,10 +263,12 @@ def rediger(retenus: list[dict], semaine_dair: str, erreurs: list[str], jours: i
 
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    p.add_argument("--jours", type=int, default=8)
-    p.add_argument("--max", type=int, default=20)
+    p.add_argument("--jours", type=int, default=2)
+    p.add_argument("--max", type=int, default=12)
     p.add_argument("--sans-arxiv", action="store_true")
     p.add_argument("--sans-dair", action="store_true")
+    p.add_argument("--sans-github", action="store_true")
+    p.add_argument("--sans-zenodo", action="store_true")
     a = p.parse_args()
     mots = lire_mots()
     f_vus = ICI / "vus.json"
@@ -210,6 +285,12 @@ def main() -> int:
             articles += d
         except Exception as e:
             erreurs.append(f"DAIR.AI ({type(e).__name__}: {str(e)[:120]})")
+    for nom, f, sans in (("GitHub", github, a.sans_github), ("Zenodo", zenodo, a.sans_zenodo)):
+        if not sans:
+            try:
+                articles += f(mots, a.jours)
+            except Exception as e:
+                erreurs.append(f"{nom} ({type(e).__name__}: {str(e)[:120]})")
     retenus = trier(articles, mots, deja, a.max)
     texte = rediger(retenus, semaine, erreurs, a.jours)
     jour = datetime.now(timezone.utc).date().isoformat()
