@@ -251,7 +251,7 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
                  tiers_polarite=c.get("tiers_polarite") or (c.get("exploratoire") or {}).get("tiers_polarite"),
                  attribution=ap.controle_attribution(c.get("dossier"), c.get("_textes")))
     # 0.10.70 : ombre « absence » (hypothèse enregistrée le 2026-11-13), état nul posté ou exploratoire
-    for k_ in ("ombre_filtrage", "ombre_series", "ombre_nouveau_depart"):      # 0.10.73 : tâches refaites par le code, en ombre
+    for k_ in ("ombre_filtrage", "ombre_series", "ombre_nouveau_depart", "ombre_sans_matrice"):      # 0.10.73 : tâches refaites par le code, en ombre
         ligne[k_] = c.get(k_) or (c.get("exploratoire") or {}).get(k_)
     if not ligne.get("ombre_series") and x.get("_releve"):       # 0.10.78 : série du banc, bornée à D
         try:

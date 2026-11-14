@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.90"
+VERSION_BOT = "0.10.91"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -532,6 +532,39 @@ COMPTE PRÉVU, MAIS IMPOSSIBLE : le code devait compter sur « {echec.get('sourc
 """
 
 
+# 0.10.91 (décision d'auteur du 2026-11-14, EN OMBRE) : plan et lecture SANS la matrice des dynamiques. Registre : 93 % des
+# cartes ancrées dans la strate de l'événement (353 sur 378) et 93 % des candidates du plan sont des cartes que la
+# matrice donne comme faisant apparaître la carte visée, parce que la consigne du plan montre la matrice et demande d'y
+# choisir les candidates. La surconfiance de C en est en partie fabriquée, et l'apprentissage des liens ne peut rien
+# observer hors de la matrice. Sur une part des questions, un second plan choisit les candidates d'après les faits seuls
+# (matrice cachée ; événement, strates et recherches inchangés), puis une seconde lecture est faite sur le même corpus.
+try:
+    SANS_MATRICE_TAUX = max(0.0, min(1.0, float(os.environ.get("ALPHABET_SANS_MATRICE_TAUX") or 0)))
+except ValueError:
+    SANS_MATRICE_TAUX = 0.0
+
+
+def tirage_sans_matrice(qid) -> bool:
+    return SANS_MATRICE_TAUX > 0 and int(hashlib.sha256(f"sans_matrice:{qid}".encode()).hexdigest()[:8], 16) / 0xFFFFFFFF < SANS_MATRICE_TAUX
+
+
+def consigne_plan_sans_matrice(q: Question, recherche: str, aujourdhui: str, plan: dict) -> str:
+    """Le plan officiel, moins la matrice et la règle qui y fait choisir les candidates ; événement et strates fixés."""
+    c = consigne_plan(q, recherche, aujourdhui)
+    debut = c.index("MATRICE DES DYNAMIQUES")
+    c = c[:debut] + c[c.index("Rends UNIQUEMENT un objet JSON"):]
+    i = c.index("Candidates : pour un événement")
+    j = c.index("Recherches : pour chaque candidate")
+    ev = plan.get("evenement") or {}
+    c = c[:i] + (f"""Candidates : l'événement est déjà fixé ({ev.get('carte')}@{ev.get('strate')} {ev.get('type')}) et les
+strates aussi ({plan.get('strates')}). Choisis 2 à 4 candidates par strate D'APRÈS LES FAITS de la recherche générale :
+les structures que les faits montrent ou laissent soupçonner, qu'elles puissent favoriser l'événement, le retenir ou
+n'avoir aucun rapport connu avec lui ; plus une contre-candidate par strate. Ne mets pas la carte visée elle-même parmi
+les candidates d'un événement « apparait ».
+""") + c[j:]
+    return c + "\nSeuls « candidats » et « contre_candidate » seront utilisés de ta réponse."
+
+
 def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: str, jours: int,
                  historique: list[dict] | None = None, classe: dict | None = None,
                  ancrage: dict | None = None, sources_prises: list[str] | None = None,
@@ -837,6 +870,58 @@ async def nouveau_depart_ombre(q: "Question", plan: dict, executees: list, aujou
         return {"statut": "refuse", "motif": str(s["erreur"])[:200]}
     return {"statut": "estime" if s.get("p") is not None else "non_estime", "p_C": s.get("p"),
             "mots": len(d["mots"])}
+
+
+async def sans_matrice_ombre(q: "Question", plan: dict, executees: list, aujourdhui: str, jours: int, evt: dict,
+                             evenement: str, hors_strate, llm, recherche: str, trace: dict) -> dict:
+    """0.10.91, EN OMBRE (voir SANS_MATRICE_TAUX). Rien n'est posté de l'ombre ; la lecture officielle ne bouge pas."""
+    rep = await json_avec_reprise(llm, consigne_plan_sans_matrice(q, recherche, aujourdhui, plan), {}, "plan_sans_matrice")
+    strates = {str(entier_strate(x)) for x in plan.get("strates") or []} | {str(plan["evenement"]["strate"])}
+    def garder(xs):
+        out = []
+        for c in xs if isinstance(xs, list) else [xs]:
+            try:
+                k = cle_normale(str(c))
+            except Exception:
+                continue
+            if k.split("@")[1] in strates and k not in out:
+                out.append(k)
+        return out
+    p2 = json.loads(json.dumps(plan, ensure_ascii=False, default=str))
+    p2["candidats"] = garder(rep.get("candidats"))
+    p2["contre_candidate"] = [c for c in garder(rep.get("contre_candidate")) if c in p2["candidats"]] or p2["candidats"][-1:]
+    trace["_rejeu"]["plan_sans_matrice"] = {"candidats": p2["candidats"], "contre_candidate": p2["contre_candidate"]}
+    # la consigne de lecture ne doit pas non plus montrer les cartes du plan officiel (étiquettes des recherches)
+    p_vu = {k: v for k, v in p2.items() if k not in ("recherches", "recherches_reference", "recherches_historique")}
+    ex_vu = [dict(r, cartes=[]) for r in executees]
+    lec = await json_avec_reprise(llm, consigne_dossier(q, p_vu, ex_vu, aujourdhui, jours), {}, "lecture_sans_matrice")
+    trace["_rejeu"]["lecture_sans_matrice"] = json.loads(json.dumps(lec, ensure_ascii=False, default=str))
+    d = assembler(lec, p2, executees, evt, aujourdhui, jours)
+    retirer_faits_futurs(d, trace.get("_textes") or "", aujourdhui, jours)
+    ev = plan["evenement"]
+    try:
+        parents = {a for a, _ in sources_matrice(code_carte(ev["carte"]))}
+    except Exception:
+        parents = set()
+    dans = sorted({code_carte(m["carte"]) for m in d.get("mots") or []
+                   if isinstance(m, dict) and str(m.get("strate")) == str(ev["strate"])})
+    cand = [c.split("@")[0] for c in p2["candidats"]]
+    base = {"candidats": p2["candidats"], "cartes_strate_evenement": dans,
+            "part_parents_matrice_ancrees": round(sum(c in parents for c in dans) / len(dans), 3) if dans else None,
+            "part_parents_matrice_candidates": round(sum(c in parents for c in cand) / len(cand), 3) if cand else None}
+    if not d["mots"]:
+        return dict(base, statut="etat_nul", nature_etat_nul=nature_etat_nul(d.get("_categories_rejet")))
+    e2 = controle_etat(d, p2)
+    if e2 and e2.startswith(f"événement « {ev['type']} » sur une carte absente"):
+        return dict(base, statut="etat_nul", nature_etat_nul="carte_visee_absente")
+    if e2:
+        return dict(base, statut="refuse", motif=str(e2)[:200])
+    s = appeler_moteur({**{k: v for k, v in d.items() if not k.startswith("_")},
+                        "rejets_categories": dict(d.get("_categories_rejet") or {})}, d["etat"], evenement,
+                       plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"], exploratoire=hors_strate)
+    if s.get("erreur"):
+        return dict(base, statut="refuse", motif=str(s["erreur"])[:200])
+    return dict(base, statut="estime" if s.get("p") is not None else "non_estime", p_C=s.get("p"))
 
 
 def consigne_correction(lecture: dict, erreur: str) -> str:
@@ -2197,7 +2282,7 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
                                    "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur",
                                    "empreintes_passages", "tiers_polarite", "ombre_filtrage", "ombre_series",
-                                   "ombre_nouveau_depart")
+                                   "ombre_nouveau_depart", "ombre_sans_matrice")
              if c.get(k) is not None}
     if (c.get("dossier") or {}).get("_liaisons_hors_liste"):      # 0.10.52 (§51) : verbes inventés par le lecteur
         explo["liaisons_hors_liste"] = c["dossier"]["_liaisons_hors_liste"]
@@ -2222,7 +2307,7 @@ async def _alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, 
                     donnees_fixees: str | None = None) -> dict:
     """Bras B et C. statut : estime | etat_nul | non_estime | refuse | sans_vue | hors_alphabet | hors_strate
     | lu_non_chiffre (et « erreur », posé par prevoir_binaire si une exception échappe)."""
-    trace: dict = {"statut": "refuse", "tentatives": 0}
+    trace: dict = {"statut": "refuse", "tentatives": 0, "_recherche_generale": recherche}
     try:
         plan = await json_avec_reprise(llm, consigne_plan(q, recherche, aujourdhui), trace, "plan")
     except Exception as e:
@@ -2367,6 +2452,16 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
                        # 0.10.57 : les dates présentes dans les résultats (pas le texte) : le rejeu applique ainsi le
                        # retrait des faits futurs comme le vrai passage
                        "dates_corpus": sorted(set(dates_citees(trace.get("_textes") or "")))}
+    if donnees_fixees is None and tirage_sans_matrice(q.id):     # 0.10.91 : plan et lecture sans la matrice, en ombre
+        try:
+            trace["ombre_sans_matrice"] = await sans_matrice_ombre(q, plan, executees, aujourdhui, jours, evt, evenement,
+                                                                   hors_strate, llm, trace.get("_recherche_generale") or "",
+                                                                   trace)
+        except Exception as e:
+            if est_panne(e):
+                trace["ombre_sans_matrice"] = {"statut": "panne", "motif": f"{type(e).__name__}: {e}"[:200]}
+            else:
+                trace["ombre_sans_matrice"] = {"statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:200]}
     for tentative in range(MAX_CORRECTIONS + 1):
         trace["tentatives"] = tentative + 1
         trace["_rejeu"]["lectures"].append(json.loads(json.dumps(lecture, ensure_ascii=False, default=str)))
@@ -2819,7 +2914,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                         "invariance", "preselection", "reprises_json", "compte_echoue", "fidelite_plan",
                                                         "nature_etat_nul", "relance", "dynamique_observee",
                                                         "empreintes_passages", "tiers_polarite", "ombre_filtrage",
-                                                        "ombre_series", "ombre_nouveau_depart")},
+                                                        "ombre_series", "ombre_nouveau_depart", "ombre_sans_matrice")},
                             "ombre_absence": ombre_absence(c.get("p_B"), c.get("nature_etat_nul")),
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),

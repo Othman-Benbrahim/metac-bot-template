@@ -25,6 +25,9 @@ on:
       budget:
         description: "plafond en dollars pour ce passage (0 = sans plafond)"
         default: "15"
+      sans_matrice:
+        description: "part des questions relues SANS la matrice, en ombre (0 à 1 ; 0.10.91)"
+        default: "1"
 
 concurrency:
   group: bot-alphabet-registre
@@ -73,6 +76,7 @@ jobs:
           TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
           ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
           ALPHABET_LLM: ${{ github.event.inputs.lecteur || vars.ALPHABET_LLM }}
+          ALPHABET_SANS_MATRICE_TAUX: ${{ github.event.inputs.sans_matrice || '1' }}
           NVIDIA_NIM_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_CHERCHEUR: ${{ vars.ALPHABET_CHERCHEUR }}

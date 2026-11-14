@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.90 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.91 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -367,6 +367,17 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.91** : **plan et lecture sans la matrice, en ombre** (décision d'auteur du 2026-11-14). Registre : 93 % des
+  cartes ancrées dans la strate de l'événement et 93 % des candidates du plan sont des cartes que la matrice donne comme
+  faisant apparaître la carte visée (32 lectures « CROISSANCE apparaît » sur 41 ancrent le même jeu ÉMERGENCE,
+  POLARITÉ, RÉCURSIVITÉ, RÉSONANCE) : la consigne du plan montre la matrice et demande d'y choisir les candidates. Sur
+  une part des questions (`ALPHABET_SANS_MATRICE_TAUX`, champ « sans_matrice » du banc, 1 par défaut au banc, 0
+  ailleurs), un second plan choisit les candidates d'après les faits (matrice cachée ; événement, strates et corpus
+  inchangés ; étiquettes de cartes retirées des recherches montrées), puis une seconde lecture passe le réparateur, les
+  contrôles et le moteur (`ombre_sans_matrice`, lecture dans le rejeu). `apprentissage_liens.py --lecture
+  sans_matrice` apprend sur ces lectures. Critère d'utilité pré-enregistré (`score_registre`, après 50 lectures) : la
+  part des parents de la matrice tombe à 60 % ou moins ; à 80 % ou plus, l'ombre est inutile et s'arrête. Coût : deux
+  appels de plus par question lue.
 - **0.10.90** : **skill 0.7.77, frontière du contrôle de vue extérieure** (passage du 2026-11-14). Huit dossiers
   « non estimés » du banc (FRED et ACLED, tous « CROISSANCE apparaît ») avaient un rapport de cotes p₀ / B de
   10,000000000000002 : des cartes au plafond de LR donnent exactement 10, et l'arrondi flottant franchissait le seuil.

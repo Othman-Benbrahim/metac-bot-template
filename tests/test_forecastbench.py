@@ -360,6 +360,42 @@ class Tests(unittest.TestCase):
                                       {"frequence": b, "classe_de_reference": "x", "source": "s"})
         self.assertTrue(r["vue_exterieure"]["a_priori_absurde"])
 
+    def test_sans_matrice_91(self):
+        import asyncio
+        from datetime import date
+        import score_registre as sr
+        q = ap.Question(id="fb:x", url="u", titre="Will WTI rise?", contexte="", criteres="c", precisions="",
+                        resolution=date(2026, 10, 18))
+        plan = {"strates": [6], "candidats": ["POL@6", "EME@6"], "contre_candidate": ["POL@6"],
+                "evenement": {"carte": "CRO", "strate": 6, "type": "apparait"}, "semantique": "presence"}
+        c = ap.consigne_plan_sans_matrice(q, "recherche", "2026-10-11", plan)
+        self.assertNotIn("MATRICE DES DYNAMIQUES", c)
+        self.assertNotIn("d'après la matrice", c)
+        self.assertIn("CRO@6 apparait", c)
+        self.assertIn("D'APRÈS LES FAITS", c)
+        reponses = iter(['{"candidats": ["CTR@6", "INC@6", "SEU@9"], "contre_candidate": ["INC@6"]}',
+                         '{"mots": [], "rejets": {"CTR@6": "[aucun_fait] rien", "INC@6": "[aucun_fait] rien"}, '
+                         '"candidats": ["CTR@6", "INC@6"], "liaisons": [], "questions": [], "recherches": []}'])
+
+        async def llm(_):
+            return next(reponses)
+        trace = {"_rejeu": {}, "_textes": ""}
+        evt = {"vue_exterieure": None, "temporalite": "generique"}
+        o = asyncio.run(ap.sans_matrice_ombre(q, plan, [], "2026-10-11", 7, evt, "CROISSANCE@6 apparait", False, llm,
+                                              "r", trace))
+        self.assertEqual(trace["_rejeu"]["plan_sans_matrice"]["candidats"], ["CTR@6", "INC@6"])   # SEU@9 hors strate
+        self.assertEqual(o["statut"], "etat_nul")
+        self.assertEqual(o["part_parents_matrice_candidates"], 0.0)
+        # suivi : part des parents de la matrice, officielle contre sans matrice
+        ligne = {"statut": "estime", "ombre_sans_matrice": {"statut": "estime"},
+                 "rejeu": {"plan": plan, "lectures": [{"mots": [{"carte": "POL", "strate": 6}, {"carte": "EME", "strate": 6}]}],
+                           "lecture_sans_matrice": {"mots": [{"carte": "CTR", "strate": 6}, {"carte": "POL", "strate": 6}]}}}
+        sv = sr.sans_matrice_suivi([ligne])
+        self.assertEqual(sv["part_parents_matrice_officielle"], 1.0)
+        self.assertEqual(sv["part_parents_matrice_sans_matrice"], 0.5)
+        self.assertTrue(sv["verdict"].startswith("en attente"))
+        self.assertFalse(ap.tirage_sans_matrice("x"))                       # taux 0 par défaut
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa

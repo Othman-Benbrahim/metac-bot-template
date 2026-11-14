@@ -68,6 +68,16 @@ def _logit(p: float) -> float:
     return math.log(p / (1 - p))
 
 
+LECTURE = "officielle"     # 0.10.91 : « sans_matrice » apprend sur la lecture faite sans la matrice (ombre)
+
+
+def lecture_de(x: dict) -> dict | None:
+    r = x.get("rejeu") or {}
+    if LECTURE == "sans_matrice":
+        return r.get("lecture_sans_matrice")
+    return (r.get("lectures") or [None])[-1]
+
+
 def variables(x: dict) -> list[str]:
     """Les liens présents dans la DERNIÈRE lecture de la ligne (rejeu), selon les règles du protocole."""
     r = x.get("rejeu") or {}
@@ -80,7 +90,7 @@ def variables(x: dict) -> list[str]:
     if typ != "apparait":
         return [f"{typ}:{c_ev}"]
     out = set()
-    for m in ((r.get("lectures") or [{}])[-1] or {}).get("mots") or []:
+    for m in (lecture_de(x) or {}).get("mots") or []:
         if not isinstance(m, dict) or str(m.get("strate")) != s_ev:
             continue
         try:
@@ -96,7 +106,7 @@ def donnees(lignes: list[dict]) -> list[dict]:
         if (x.get("banc") != "forecastbench" or x.get("issue") not in (0, 1) or x.get("p_B") is None
                 or _v(x.get("version_bot")) < _v(PROTOCOLE["depuis_version"])
                 or (x.get("modeles") or {}).get("principal") != PROTOCOLE["lecteur"]
-                or not (x.get("rejeu") or {}).get("lectures")):
+                or not lecture_de(x)):
             continue
         jeu_ = x.get("jeu") or x["question_id"].split(":")[1]
         out.append({"q": x["question_id"], "jeu": jeu_, "bloc": f"{jeu_}:{x['question_id'].split(':')[2]}",
@@ -271,4 +281,8 @@ def principal(en_json: bool) -> int:
 if __name__ == "__main__":
     a = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     a.add_argument("--json", action="store_true")
-    sys.exit(principal(a.parse_args().json))
+    a.add_argument("--lecture", choices=("officielle", "sans_matrice"), default="officielle",
+                   help="sans_matrice : apprendre sur la lecture faite sans la matrice (ombre, 0.10.91)")
+    args = a.parse_args()
+    LECTURE = args.lecture
+    sys.exit(principal(args.json))
