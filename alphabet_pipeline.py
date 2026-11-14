@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.102"
+VERSION_BOT = "0.10.103"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -872,6 +872,28 @@ async def nouveau_depart_ombre(q: "Question", plan: dict, executees: list, aujou
             "mots": len(d["mots"])}
 
 
+def ombre_combinee(sortie: dict, d: dict, ev: dict, evt: dict) -> dict | None:
+    """0.10.103, EN OMBRE (décision d'auteur du 2026-11-15) : les trois pistes combinées sur la lecture SANS matrice :
+    p du programme génératif (au lieu du produit des λ), puis la correction symétrique (chaque candidate contredite
+    divise la cote par le λ qu'elle aurait apporté). Rien n'est posté. Limite déclarée : le génératif compte déjà un
+    rejet « contredit » comme une observation contre l'événement ; la symétrie ajoutée par-dessus le recompte (double
+    comptage possible). Les deux composantes sont donc gardées à part (`p_generatif`, `p_symetrique_produit`) pour que
+    les données disent laquelle porte l'effet."""
+    gen = (((sortie or {}).get("sensibilite") or {}).get("generatif") or {}).get("p")
+    pb = ((evt or {}).get("vue_exterieure") or {}).get("frequence")
+    if pb is None:
+        return None
+    pseudo = {"plan": {"evenement": ev}, "p_B": float(pb),
+              "dossier": {"_categories_rejet": dict(d.get("_categories_rejet") or {})}}
+    sym_gen = symetrique({**pseudo, "p_C": gen}) if gen is not None else None
+    sym_prod = symetrique({**pseudo, "p_C": (sortie or {}).get("p")}) if (sortie or {}).get("p") is not None else None
+    return {"p": (sym_gen or {}).get("p") if gen is not None else None, "p_generatif": gen,
+            "p_symetrique_produit": (sym_prod or {}).get("p"),
+            "lr_contre": (sym_gen or sym_prod or {}).get("lr_contre"),
+            "contredites": (sym_gen or sym_prod or {}).get("contredites"),
+            "limite": "double comptage possible des candidates contredites (déjà comptées par le génératif)"}
+
+
 async def sans_matrice_ombre(q: "Question", plan: dict, executees: list, aujourdhui: str, jours: int, evt: dict,
                              evenement: str, hors_strate, llm, recherche: str, trace: dict) -> dict:
     """0.10.91, EN OMBRE (voir SANS_MATRICE_TAUX). Rien n'est posté de l'ombre ; la lecture officielle ne bouge pas."""
@@ -925,7 +947,12 @@ async def sans_matrice_ombre(q: "Question", plan: dict, executees: list, aujourd
                                exploratoire=hors_strate)
             e2 = s.get("erreur")
             if not e2:
-                return dict(base, statut="estime" if s.get("p") is not None else "non_estime", p_C=s.get("p"))
+                try:
+                    comb = ombre_combinee(s, d, ev, evt)          # 0.10.103 : génératif + symétrie, en ombre
+                except Exception as e3:
+                    comb = {"erreur": f"{type(e3).__name__}: {e3}"[:200]}
+                return dict(base, statut="estime" if s.get("p") is not None else "non_estime", p_C=s.get("p"),
+                            combinee=comb)
         if tentative == MAX_CORRECTIONS or any(x in str(e2) for x in ERREURS_STRUCTURELLES):
             return dict(base, statut="refuse", motif=str(e2)[:200])
         lec = await json_avec_reprise(llm, consigne_correction(

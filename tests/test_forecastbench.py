@@ -710,3 +710,19 @@ def test_azure_base_102():
         am.adapter("azure_ai/gpt-5-mini", {}, env={})
     m, kw = am.adapter("azure_ai/gpt-5-mini", {}, env={"AZURE_AI_API_BASE": "https://r.services.ai.azure.com/"})
     assert m == "openai/gpt-5-mini" and kw["base_url"] == "https://r.services.ai.azure.com/openai/v1"
+
+
+def test_ombre_combinee_103():
+    import alphabet_pipeline as ap
+    ev = {"carte": "SEU", "type": "apparait", "strate": 7}
+    evt = {"vue_exterieure": {"frequence": 0.3}}
+    d = {"_categories_rejet": {}}
+    s = {"p": 0.6, "sensibilite": {"generatif": {"p": 0.4}}}
+    c = ap.ombre_combinee(s, d, ev, evt)
+    assert c["p_generatif"] == 0.4 and abs(c["p"] - 0.4) < 1e-6        # rien de contredit : la symétrie ne change rien
+    # une candidate contredite qui aurait agi sur SEUIL@7 fait baisser le combiné sous le génératif
+    src = [a for a, _ in ap.sources_matrice("SEU")][0]
+    d2 = {"_categories_rejet": {f"{src}@7": "contredit"}}
+    c2 = ap.ombre_combinee(s, d2, ev, evt)
+    assert c2["p"] < 0.4 and c2["p_symetrique_produit"] < 0.6 and c2["lr_contre"] > 1
+    assert ap.ombre_combinee(s, d, ev, {"vue_exterieure": {}}) is None
