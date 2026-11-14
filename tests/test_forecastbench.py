@@ -458,6 +458,10 @@ class Tests(unittest.TestCase):
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
         self.assertGreater(es.resume()["ouverts"], 3)
+        import pathlib
+        racine = pathlib.Path(__file__).resolve().parents[1]
+        for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
+            self.assertTrue((racine / e["doc"]).is_file(), k)
 
     def test_fond_et_duels_79(self):
         import asyncio

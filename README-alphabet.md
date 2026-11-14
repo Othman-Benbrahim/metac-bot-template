@@ -361,7 +361,8 @@ critère propre pris seul ne protège ni d'essais menés en parallèle ni d'un r
 favorable. `essais.py` :
 
 1. **Compter** : tout essai qui peut changer ce qui est posté ou calculé est inscrit avec son critère avant son premier
-   regard ; le rapport de score dit combien sont ouverts.
+   regard, et son pré-enregistrement est commité dans `preenregistrements/` (la date du commit fait foi, pas le texte) ;
+   le rapport de score dit combien sont ouverts.
 2. **Corriger** : un critère à intervalle (« l'intervalle à 90 % sous 0 », risque unilatéral 5 %) est jugé au risque
    5 % / k, k = nombre d'essais ouverts de ce type (Bonferroni) ; le critère nominal reste affiché.
 3. **Regarder à date fixe** : verdict sur les N premières lignes admissibles ; un « indécis » donne droit à un second
