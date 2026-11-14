@@ -296,6 +296,14 @@ def principal(en_json: bool) -> int:
             boots_b.append(sum(d["e"] for d in S) / len(S))
         boots_b.sort()
         bas_b, haut_b = boots_b[int(q * len(boots_b))], boots_b[int((1 - q) * len(boots_b)) - 1]
+        # 0.10.98 (essais.py) : même écart au risque corrigé pour le nombre d'essais ouverts. Le jugement se lit UNE fois,
+        # à la fin de l'apprentissage (300 à 400 lectures) : le tiers de jugement est fixe et chaque passe le relit, ce
+        # qui use un ensemble de contrôle (Dwork et al. 2015) ; les lectures intermédiaires sont descriptives.
+        import essais as es
+        bas_c, haut_c = es.bornes(boots, es.risque_corrige(1))
+        jug["corrige"] = {"niveau": round(1 - 2 * es.risque_corrige(1), 4), "intervalle_ecart": [bas_c, haut_c],
+                          "critere_atteint": len(J) >= PROTOCOLE["n_min_jugement"] and sum(ec) < 0 and haut_c < 0,
+                          "lecture": "une seule, à la fin de l'apprentissage"}
         jug["ombre_blocs"] = {"blocs": len({d["bloc"] for d in J}), "intervalle_90_ecart": [bas_b, haut_b],
                               "critere_atteint": len(J) >= PROTOCOLE["n_min_jugement"] and sum(ec) < 0 and haut_b < 0}
     ancien = None
