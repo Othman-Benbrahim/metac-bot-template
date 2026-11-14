@@ -12,8 +12,8 @@ Variables (fixées avant toute lecture d'apprentissage) :
 Modèle : logit P(OUI) = logit(B) + Σ β_lien · présence ; régularisation L2 (loi a priori normale centrée sur 0,
 écart-type 0,5 sur chaque β : un lien ne déplace pas la cote de plus d'un facteur 2,7 sans données) ; Newton.
 
-Découpage dans le temps : les lectures sont ordonnées par date de jeu ; le dernier tiers (jeux les plus récents) sert
-au jugement, les deux premiers tiers à l'apprentissage.
+Découpage dans le temps : les jeux les plus récents, pris EN ENTIER jusqu'à couvrir au moins le tiers des lectures,
+servent au jugement ; les jeux plus anciens à l'apprentissage (décision d'auteur du 2026-11-14, voir `decouper`).
 
 Statut de chaque lien (apprentissage) : intervalle à 90 % (approximation de Laplace) ; « pousse » s'il est au-dessus
 de 0, « retient » s'il est au-dessous, « ne dit rien » s'il contient 0 avec au moins 30 cas, « indéterminé » sinon.
@@ -50,7 +50,9 @@ import alphabet_retro as ar
 
 PROTOCOLE = {"enregistre_le": "2026-11-14", "depuis_version": "0.10.80", "lecteur": "mistral/mistral-medium-latest",
              "ecart_type_a_priori": 0.5, "part_jugement": 1 / 3, "n_min_lien": 30, "n_min_jugement": 100,
-             "bootstrap": 2000, "niveau": 0.90}
+             "bootstrap": 2000, "niveau": 0.90,
+             # décision d'auteur du 2026-11-14 (0.10.89) : le jugement prend des JEUX ENTIERS, les plus récents
+             "decoupage": "jeux_entiers", "decoupage_decide_le": "2026-11-14"}
 STABILITE = {"ajoute_le": "2026-11-14", "tirages": 200, "graine": 0, "seuil": 0.80, "statut": "ombre"}
 
 
@@ -158,6 +160,25 @@ def perte(p: float, y: int) -> float:
     return -math.log(p if y else 1 - p)
 
 
+def decouper(D: list[dict]) -> tuple[list[dict], list[dict]]:
+    """0.10.89 (décision d'auteur du 2026-11-14). Le jugement prend les jeux les plus récents EN ENTIER, ajoutés un par un
+    jusqu'à couvrir au moins le tiers des lectures ; l'apprentissage, les jeux plus anciens. Un jeu n'est jamais coupé
+    en deux : l'apprentissage et le jugement ne partagent pas la même semaine du monde. Avant 0.10.89, la coupe se
+    faisait au nombre de lignes, triées par identifiant : le dernier tiers était presque entièrement les questions FRED
+    du dernier jeu (calculée en ombre, `ombre_ancien_decoupage`). Avec un seul jeu, pas de jugement."""
+    jeux = sorted({d["jeu"] for d in D})
+    if len(jeux) < 2:
+        return D, []
+    juge: list[str] = []
+    n_j = 0
+    for j in reversed(jeux[1:]):                  # le jeu le plus ancien reste toujours à l'apprentissage
+        juge.append(j)
+        n_j += sum(1 for d in D if d["jeu"] == j)
+        if n_j >= len(D) * PROTOCOLE["part_jugement"]:
+            break
+    return [d for d in D if d["jeu"] not in juge], [d for d in D if d["jeu"] in juge]
+
+
 def tirer_blocs(D: list[dict], rnd: random.Random) -> list[dict]:
     """Un tirage bootstrap par blocs : autant de blocs que dans D, tirés avec remise, chacun avec toutes ses lectures."""
     blocs: dict[str, list[dict]] = {}
@@ -190,8 +211,8 @@ def principal(en_json: bool) -> int:
     L = [json.loads(l) for l in f.read_text(encoding="utf-8").splitlines() if l.strip()] if f.is_file() else []
     D = donnees(L)
     jeux = sorted({d["jeu"] for d in D})
-    coupe = len(D) - int(round(len(D) * PROTOCOLE["part_jugement"]))
-    A, J = D[:coupe], D[coupe:]
+    A, J = decouper(D)
+    coupe_ancienne = len(D) - int(round(len(D) * PROTOCOLE["part_jugement"]))
     noms = sorted({n for d in A for n in d["x"]})
     beta, et = ajuster(A, noms) if A else ({}, {})
     zq = 1.6449
@@ -233,7 +254,15 @@ def principal(en_json: bool) -> int:
         bas_b, haut_b = boots_b[int(q * len(boots_b))], boots_b[int((1 - q) * len(boots_b)) - 1]
         jug["ombre_blocs"] = {"blocs": len({d["bloc"] for d in J}), "intervalle_90_ecart": [bas_b, haut_b],
                               "critere_atteint": len(J) >= PROTOCOLE["n_min_jugement"] and sum(ec) < 0 and haut_b < 0}
-    rap = {"protocole": PROTOCOLE, "stabilite_ombre": STABILITE, "lectures": len(D), "jeux": jeux, "apprentissage": len(A), "jugement": jug,
+    ancien = None
+    A0, J0 = D[:coupe_ancienne], D[coupe_ancienne:]
+    if A0 and J0:
+        n0 = sorted({n for d in A0 for n in d["x"]})
+        b0, _ = ajuster(A0, n0)
+        ancien = {"apprentissage": len(A0), "jugement": len(J0),
+                  "perte_B": sum(perte(d["B"], d["y"]) for d in J0) / len(J0),
+                  "perte_C_empirique": sum(perte(predire(d, b0), d["y"]) for d in J0) / len(J0)}
+    rap = {"protocole": PROTOCOLE, "ombre_ancien_decoupage": ancien, "stabilite_ombre": STABILITE, "lectures": len(D), "jeux": jeux, "apprentissage": len(A), "jugement": jug,
            "liens": dict(sorted(liens.items(), key=lambda t: -t[1]["n"]))}
     print(json.dumps(rap, ensure_ascii=False, indent=1 if en_json else None))
     return 0

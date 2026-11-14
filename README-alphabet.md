@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.88 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.89 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -367,6 +367,11 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.89** : **apprentissage des liens : le jugement prend des jeux entiers** (décision d'auteur du 2026-11-14).
+  Les jeux ForecastBench les plus récents, en entier, jusqu'à couvrir au moins le tiers des lectures, servent au
+  jugement ; les plus anciens à l'apprentissage ; un jeu n'est jamais coupé. Choisi sur le principe (séparation dans
+  le temps, texte du protocole), pas sur les résultats, que l'auteur et Claude avaient vus pour les trois variantes.
+  L'ancien découpage reste calculé en ombre (`ombre_ancien_decoupage`).
 - **0.10.88** : **bootstrap par blocs « jeu × source », en ombre** (dépôt calibrain-harness : des décisions qui se
   recouvrent valent moins que leur nombre). Les questions d'un même jeu et d'une même source partagent la même semaine
   du monde. `apprentissage_liens.py` donne, à côté du critère officiel, l'intervalle de l'écart et la stabilité des
