@@ -1042,6 +1042,18 @@ def scorer_retro(registre: Path) -> dict:
     sortie["ombre_absence"] = ombre_absence_suivi(nuls)
     sortie["accord_lecteurs"] = accord_lecteurs([x for x in intactes if x.get("banc") == "forecastbench"])
     sortie["ombres_auto"] = ombres_auto([x for x in intactes if x.get("banc") == "forecastbench"])
+    # 0.10.83 : nouveau départ à contexte vide (ombre) contre la deuxième correction officielle
+    nd = [x for x in intactes if isinstance(x.get("ombre_nouveau_depart"), dict)]
+    if nd:
+        def st_(x):
+            ex = x.get("exploratoire") or {}
+            return ex.get("statut") or x.get("statut")
+        sortie["ombre_nouveau_depart"] = {
+            "cas": len(nd),
+            "officiel_abouti": sum(1 for x in nd if st_(x) in ("estime", "etat_nul", "non_estime")),
+            "nouveau_depart_abouti": sum(1 for x in nd if x["ombre_nouveau_depart"].get("statut")
+                                         in ("estime", "etat_nul", "non_estime")),
+            "lecture": "abouti = estimé, état nul ou non chiffré ; à comparer avec le 0 sur 12 des deuxièmes corrections"}
     # 0.10.75 : calibration par sous-groupe (source, strate de l'événement, horizon, lecteur), en ombre
     its = []
     for x in intactes:

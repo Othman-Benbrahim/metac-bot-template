@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.82 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.83 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,11 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.83** : **nouveau départ à contexte vide, en ombre** (billet « idea basins », Bespoke Labs ; registre : la
+  première correction aboutit 16 fois sur 16, la deuxième ne sauve aucun dossier, 0 sur 12). Au moment de la deuxième
+  correction, une lecture neuve est faite avec la consigne d'origine et une ligne nommant la règle enfreinte, sans
+  l'historique ; elle passe le réparateur, les contrôles et le moteur, et son statut est gardé à part
+  (`ombre_nouveau_depart`, lecture dans le rejeu). La boucle officielle et l'apprentissage des liens ne bougent pas.
 - **0.10.82** : **B posté là où C est estimé** (décision d'auteur du 2026-11-14 ; `POSTER_C = False`). Au banc, en
   strate 7, C fait 0,87 de perte log contre 0,59 pour B (27 questions ACLED) ; au premier passage d'apprentissage, 10
   questions ACLED chiffrées, C moyen 0,62, aucune résolue OUI. C reste calculé, scellé et journalisé en ombre ; le

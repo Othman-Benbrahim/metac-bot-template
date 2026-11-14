@@ -297,10 +297,26 @@ class Tests(unittest.TestCase):
     def test_refus_definitif(self):
         mauvaise = lecture()
         del mauvaise["mots"][0]["fait"]
-        r, _ = lancer([PLAN, vue(0.25)] + [copy.deepcopy(mauvaise) for _ in range(ap.MAX_CORRECTIONS + 1)])
+        # 0.10.83 : une lecture de plus, le nouveau départ en ombre avant la deuxième correction
+        r, _ = lancer([PLAN, vue(0.25)] + [copy.deepcopy(mauvaise) for _ in range(ap.MAX_CORRECTIONS + 2)])
         self.assertEqual(r.bras_poste, "A")
         self.assertEqual(r.ligne["bras"]["C"]["statut"], "refuse")
+        self.assertEqual(r.ligne["bras"]["C"]["ombre_nouveau_depart"]["statut"], "refuse")
         self.assertAlmostEqual(r.p_B, 0.25)    # la vue extérieure reste scorée
+
+    def test_nouveau_depart_ombre_83(self):
+        # l'ombre aboutit là où la boucle officielle échoue ; rien ne change pour la boucle ni pour le bras posté
+        mauvaise = lecture()
+        del mauvaise["mots"][0]["fait"]
+        r, llm = lancer([PLAN, vue(0.25), copy.deepcopy(mauvaise), copy.deepcopy(mauvaise), lecture(),
+                         copy.deepcopy(mauvaise)])
+        c = r.ligne["bras"]["C"]
+        self.assertEqual(c["statut"], "refuse")
+        self.assertEqual(c["tentatives"], 3)
+        self.assertEqual(c["ombre_nouveau_depart"]["statut"], "estime")
+        self.assertIn("RAPPEL", llm.consignes[4])
+        self.assertNotIn("ERREUR DU MOTEUR", llm.consignes[4])          # contexte vide : pas l'historique
+        self.assertEqual(r.bras_poste, "A")
 
     def test_reponse_illisible(self):
         r, _ = lancer(["je ne sais pas", "toujours pas"])   # 0.10.54 : deux réponses illisibles (sinon : panne)

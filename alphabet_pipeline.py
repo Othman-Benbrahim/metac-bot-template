@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.82"
+VERSION_BOT = "0.10.83"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -804,6 +804,37 @@ async def relancer_angles_morts(q: Question, plan: dict, executees: list[dict], 
         return lecture, executees, dict(relance, echec=f"relecture illisible : {e}")
     relance["mots_apres"] = len(relue.get("mots") or [])
     return relue, toutes, relance
+
+
+async def nouveau_depart_ombre(q: "Question", plan: dict, executees: list, aujourdhui: str, jours: int, evt: dict,
+                              evenement: str, hors_strate, llm, erreur: str, trace: dict) -> dict:
+    """0.10.83, EN OMBRE (billet « idea basins », Bespoke Labs, 2026-11 ; registre : une deuxième correction n'a jamais
+    sauvé un dossier, 0 sur 12). Au moment où la boucle demande sa deuxième correction, une lecture NEUVE est faite à
+    contexte vide : la consigne de lecture d'origine, plus une ligne qui nomme la règle enfreinte, sans l'historique des
+    tentatives. Elle passe le même réparateur, les mêmes contrôles et le moteur ; son statut et son p sont gardés à
+    part. La boucle officielle continue inchangée : rien n'est posté de l'ombre, et les données de l'apprentissage des
+    liens (dernière lecture officielle) ne bougent pas."""
+    consigne = (consigne_dossier(q, plan, executees, aujourdhui, jours)
+                + "\n\nRAPPEL : une lecture précédente de cette question a été refusée par le moteur pour la raison "
+                  f"suivante ; lis la situation à neuf et évite ce défaut : {str(erreur)[:300]}")
+    lec = await json_avec_reprise(llm, consigne, {}, "nouveau_depart")
+    trace["_rejeu"]["lecture_nouveau_depart"] = json.loads(json.dumps(lec, ensure_ascii=False, default=str))
+    d = assembler(lec, json.loads(json.dumps(plan, ensure_ascii=False, default=str)), executees, evt, aujourdhui, jours)
+    retirer_faits_futurs(d, trace.get("_textes") or "", aujourdhui, jours)
+    if not d["mots"]:
+        return {"statut": "etat_nul", "nature_etat_nul": nature_etat_nul(d.get("_categories_rejet"))}
+    e2 = controle_etat(d, plan)
+    if e2 and e2.startswith(f"événement « {plan['evenement']['type']} » sur une carte absente"):
+        return {"statut": "etat_nul", "nature_etat_nul": "carte_visee_absente"}
+    if e2:
+        return {"statut": "refuse", "motif": str(e2)[:200]}
+    s = appeler_moteur({**{k: v for k, v in d.items() if not k.startswith("_")},
+                        "rejets_categories": dict(d.get("_categories_rejet") or {})}, d["etat"], evenement,
+                       plan["semantique"], aujourdhui, evt["vue_exterieure"], evt["temporalite"], exploratoire=hors_strate)
+    if s.get("erreur"):
+        return {"statut": "refuse", "motif": str(s["erreur"])[:200]}
+    return {"statut": "estime" if s.get("p") is not None else "non_estime", "p_C": s.get("p"),
+            "mots": len(d["mots"])}
 
 
 def consigne_correction(lecture: dict, erreur: str) -> str:
@@ -2106,7 +2137,8 @@ async def alphabet(q: Question, recherche: str, llm: Llm, chercher: Chercheur, r
     strate = ((c.get("plan") or {}).get("evenement") or {}).get("strate")
     explo = {k: c.get(k) for k in ("statut", "p_C", "p_sans_cartes", "motif", "nature_etat_nul", "rho", "tentatives",
                                    "reprises_json", "etat", "drapeaux", "ombre_causale", "derniere_erreur",
-                                   "empreintes_passages", "tiers_polarite", "ombre_filtrage", "ombre_series")
+                                   "empreintes_passages", "tiers_polarite", "ombre_filtrage", "ombre_series",
+                                   "ombre_nouveau_depart")
              if c.get(k) is not None}
     if (c.get("dossier") or {}).get("_liaisons_hors_liste"):      # 0.10.52 (§51) : verbes inventés par le lecteur
         explo["liaisons_hors_liste"] = c["dossier"]["_liaisons_hors_liste"]
@@ -2364,6 +2396,12 @@ async def _lecture(q: Question, plan: dict, vue: dict, llm: Llm, chercher: Cherc
         trace["derniere_erreur"] = erreur
         if tentative == MAX_CORRECTIONS or any(x in erreur for x in ERREURS_STRUCTURELLES):
             break
+        if tentative == 1:         # 0.10.83 : avant la deuxième correction, un nouveau départ à contexte vide, en ombre
+            try:
+                trace["ombre_nouveau_depart"] = await nouveau_depart_ombre(
+                    q, plan, executees, aujourdhui, jours, evt, evenement, hors_strate, llm, erreur, trace)
+            except Exception as e:
+                trace["ombre_nouveau_depart"] = {"statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:200]}
         try:
             lecture = await json_avec_reprise(llm, consigne_correction(
                 {k: dossier[k] for k in CLES_LECTURE if k in dossier}
@@ -2722,7 +2760,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                                                         "invariance", "preselection", "reprises_json", "compte_echoue", "fidelite_plan",
                                                         "nature_etat_nul", "relance", "dynamique_observee",
                                                         "empreintes_passages", "tiers_polarite", "ombre_filtrage",
-                                                        "ombre_series")},
+                                                        "ombre_series", "ombre_nouveau_depart")},
                             "ombre_absence": ombre_absence(c.get("p_B"), c.get("nature_etat_nul")),
                             "rejets_classes": (c.get("dossier") or {}).get("_categories_rejet"),
                             "rejets_details": (c.get("dossier") or {}).get("_details_rejet"),
