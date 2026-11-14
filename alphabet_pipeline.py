@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.81"
+VERSION_BOT = "0.10.82"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -2465,10 +2465,21 @@ async def critiquer(q: Question, dossier: dict, textes: str, critique: Llm, even
     return dict(sortie_, statut="estime" if r.get("p") is not None else "non_estime", p_C_critique=r.get("p"))
 
 
+# 0.10.82 : décision d'auteur du 2026-11-14. Au banc, en strate 7, C a une perte log de 0,87 contre 0,59 pour B
+# (27 questions ACLED) ; la levée de C au-dessus de B ne porte pas d'information (diagnostic du 2026-11-14). Jusqu'à la
+# fin de l'apprentissage empirique des liens (protocole du 2026-11-14), B est posté là où C est estimé ; C reste calculé,
+# scellé et journalisé, en ombre. La règle sera revue au vu du critère enregistré, par décision d'auteur datée.
+POSTER_C = False
+
+
 def choisir_bras(c: dict, p_A: float) -> tuple[str, float]:
-    """C si l'alphabet est estimé ; B si l'état est nul (sans carte, pas d'ajustement) ; A sinon."""
+    """B si l'alphabet est estimé (C en ombre, POSTER_C) ou si l'état est nul (sans carte, pas d'ajustement) ; A sinon."""
     if c.get("statut") == "estime":
-        return "C", borner(c["p_C"])
+        if POSTER_C:
+            return "C", borner(c["p_C"])
+        if c.get("p_B") is not None:
+            return "B", borner(c["p_B"])
+        return "A", borner(p_A)
     if c.get("statut") == "etat_nul" and c.get("p_B") is not None:
         return "B", borner(c["p_B"])
     return "A", borner(p_A)
@@ -2493,6 +2504,15 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
                   "read from structural indicators, not a causal claim).",
                   f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}.",
                   "Engine flags (French): " + " | ".join(x if len(x) <= 220 else x[:217] + "…" for x in c.get("drapeaux", [])[:4])]
+        return "\n".join(x for x in lignes if x)
+    if poste == "B" and c.get("statut") == "estime":
+        lignes = [tete,
+                  f"State read on {c['dossier']['disponible_le']}: {c['etat']}",
+                  f"Event: {c['evenement']} ({c['semantique']}).",
+                  ligne_b,
+                  f"Arm C, alphabet, computed and sealed but NOT posted: {c['p_C']:.3f}. Until an empirical calibration "
+                  "of the card-to-event links concludes, the base rate is posted (author decision, 2026-11-14).",
+                  f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}."]
         return "\n".join(x for x in lignes if x)
     if poste == "B":
         rejets = c["dossier"].get("rejets") or {}

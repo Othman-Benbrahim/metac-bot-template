@@ -21,6 +21,16 @@ os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-")  # 0.8.0 
 os.environ["ALPHABET_TESTS"] = "1"
 import alphabet_pipeline as ap  # noqa: E402
 
+
+def setUpModule():
+    # 0.10.82 : ces tests éprouvent le chemin où C est posté ; la règle par défaut (B posté, C en ombre) a son propre test
+    ap.POSTER_C = True
+
+
+def tearDownModule():
+    ap.POSTER_C = False
+
+
 ap.NB_VUES = 1   # les tests historiques fournissent une seule vue ; les vues multiples ont leurs propres tests
 ap.CLASSE_FIGEE = False   # idem pour l'étape « définir la classe » (0.4.0), testée à part
 ap.PUITS = False   # idem pour les puits de données (0.7.0), testés dans test_puits.py
