@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 3)                     # B autorégressif, B saisonnier (15/11), absence ; liens clos le 14/11
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 3)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 6)
+        self.assertEqual(k, 1)                     # absence ; liens (14/11), B_AR et B saisonnier (15/11) clos
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 2)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertGreater(es.resume()["ouverts"], 2)
+        self.assertEqual(es.resume()["ouverts"], 2)              # absence, sans matrice
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -743,4 +743,4 @@ def test_b_saison_104():
     assert 0.35 < b[0] < 0.65                    # B annuel : ~50 %, aveugle à la saison
     assert fb.b_saison(pts[:200], 7, d0) is None  # moins d'un an d'historique : rien
     import essais as es
-    assert es.ESSAIS["b_saisonnier"]["statut"] == "ouvert"
+    assert es.ESSAIS["b_saisonnier"]["statut"] == "clos"

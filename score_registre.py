@@ -398,6 +398,12 @@ def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b
         return {"n_nouveaux": 0, "verdict": "en attente (aucune question de jeu non vu)"}
     N = es.ESSAIS[essai]["n"]
     rg = es.regard(len(tous), N)
+    if rg == 2:
+        # 0.10.105 : les regards se font DANS L'ORDRE même si 2N lignes arrivent d'un coup (banc du taux de base du
+        # 2026-11-15) : le second regard n'existe que si le premier n'a pas déjà conclu à l'adoption.
+        r1 = critere_ombre_b(tous[:N], cle, essai)
+        if str(r1.get("verdict", "")).startswith("critère atteint"):
+            return dict(r1, n_nouveaux=len(tous))
     nv = tous[: (N if rg == 1 else 2 * N if rg == 2 else len(tous))]
     ec = [pl(x[cle]["p"], x["issue"]) - pl(x["p_B"], x["issue"]) for x in nv]
     blocs: dict[str, list[float]] = {}

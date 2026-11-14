@@ -28,3 +28,12 @@ B reste. Le critère est jugé sur toutes les séries ; un effet propre à DBnom
 `banc_b.py` (workflow « Banc du taux de base ») calcule B, B autorégressif et B saisonnier par le code, sans modèle de
 langue, sur toutes les questions de séries résolues ; registre à part `registre/banc-b.jsonl`. Son ordre des questions
 vaut aussi pour le critère du B autorégressif (précision du 2026-11-15, avant tout calcul sur ce banc).
+
+
+## Clôture (2026-11-15) — banc du taux de base, exécution 43653595776
+Mêmes 400 questions. Premier regard : écart moyen +0,012 (B saisonnier moins bon), intervalle par blocs
+[−0,015 ; +0,033] ; second regard : +0,034, intervalle corrigé [−0,014 ; +0,098]. **Critère non atteint : non adopté.**
+Rapporté par bloc, sans verdict : le saisonnier gagne sur DBnomics dans 4 blocs sur 4 de taille utile (0,696 → 0,690 ;
+0,699 → 0,682 ; 0,690 → 0,679 ; 0,694 → 0,658) et perd lourdement sur FRED (jusqu'à 0,756 → 0,877), où les séries
+financières n'ont pas de saison et où une dizaine d'intervalles seulement donnent des valeurs extrêmes. Une règle
+limitée à DBnomics serait un NOUVEL essai, à pré-enregistrer avant de regarder des jeux non encore lus.
