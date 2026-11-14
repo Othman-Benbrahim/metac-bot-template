@@ -301,6 +301,25 @@ class Tests(unittest.TestCase):
         self.assertFalse(fb.sans_b_code({"source": "fred", "_q": {}}))
         self.assertFalse(fb.sans_b_code({"source": "yfinance", "_q": {"question": "Will A have a higher rate of return than B?"}}))
 
+    def test_stabilite_et_substituts_86b(self):
+        import random
+        import apprentissage_liens as al
+        import controle_regles_series as crs
+        rnd = random.Random(3)
+        A = []
+        for _ in range(150):
+            fort, faible = rnd.random() < 0.4, rnd.random() < 0.3
+            p = 0.3 * (4 if fort else 1) / (1 + 0.3 * ((4 if fort else 1) - 1))
+            A.append({"B": 0.3, "y": int(rnd.random() < p), "x": [n for n, b in (("fort", fort), ("faible", faible)) if b]})
+        s = al.stabilite(A, {"fort": "pousse", "faible": "retient"})
+        self.assertGreaterEqual(s["fort"], 0.8)
+        self.assertLess(s["faible"], 0.5)
+        self.assertEqual(al.stabilite(A, {}), {})
+        t = crs.taux_substituts(graine=0, n_series=200)
+        self.assertEqual(len(t), len(crs.CAS) * len(crs.LONGUEURS))
+        self.assertGreater(t["marche_avec_derive:60"]["CRO"], t["bruit_blanc:60"]["CRO"])
+        self.assertEqual(crs.taux_reels([{"ombre_series": {"code": {"CRO": True, "PER": False, "INC": False}}}])["CRO"], 1.0)
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa
