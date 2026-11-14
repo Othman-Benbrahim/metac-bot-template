@@ -197,6 +197,40 @@ def b_ar(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | Non
             "part_sans_changement": round(p_egal, 4), "points": len(pts)}
 
 
+# 0.10.104 (décision d'auteur du 2026-11-15, EN OMBRE ; pré-enregistrement b-saisonnier.md) : un troisième taux de base
+# pour les séries, SAISONNIER. Constat : sur DBnomics (surtout des températures Météo-France), B annonce ~50 % alors que
+# ~26 % des questions se résolvent OUI ; B compte les hausses sur toute l'année. Règle fixée AVANT toute mesure :
+#   - points strictement avant D, sur les 10 dernières années ;
+#   - intervalles de h jours qui COMMENCENT à ±15 jours de la même date du calendrier que D, dans une année passée, et
+#     qui finissent avant D ; même appariement que B (premier point à t + h ou après) ;
+#   - P(hausse) = (hausses + ½) / (intervalles + 1) (Jeffreys) ; au moins 5 intervalles, sinon rien.
+def b_saison(points: list[dict], h: int, avant: date, annees: int = 10, fenetre: int = 15) -> dict | None:
+    if h <= 0:
+        return None
+    pts = sorted((date.fromisoformat(p["date"][:10]), float(p["valeur"])) for p in points
+                 if p.get("date") and p.get("valeur") is not None and p["date"][:10] < avant.isoformat())
+    pts = [p for p in pts if p[0] >= avant - timedelta(days=365 * annees + 3)]
+    k = n = 0
+    j = 0
+    for t, v in pts:
+        cible = t + timedelta(days=h)
+        if cible >= avant:
+            break
+        ecart = abs((t - avant).days) % 365.2425
+        if min(ecart, 365.2425 - ecart) > fenetre or (avant - t).days < 300:
+            continue
+        while j < len(pts) and pts[j][0] < cible:
+            j += 1
+        if j >= len(pts):
+            break
+        jj = j
+        n += 1
+        k += pts[jj][1] > v
+    if n < 5:
+        return None
+    return {"p": (k + 0.5) / (n + 1), "hausses": k, "intervalles": n, "fenetre_jours": fenetre, "annees": annees}
+
+
 async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
     """Le taux de base calculé par le code quand la forme de la question le permet ; None sinon (vues du modèle)."""
     d0 = date.fromisoformat(jeu)
@@ -234,6 +268,10 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
                 x["_b_ar"] = b_ar(r.get("points") or [], h, d0)
             except Exception as e:
                 x["_b_ar"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+            try:                                      # 0.10.104 : taux de base saisonnier, en ombre
+                x["_b_saison"] = b_saison(r.get("points") or [], h, d0)
+            except Exception as e:
+                x["_b_saison"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
             # 0.10.78 : la série téléchargée ici sert aussi à l'ombre « ancrage par les séries » (au banc, le puits du
             # bot n'est pas appelé pour ces questions) ; bornée STRICTEMENT avant la date d'information
             x["_releve"] = dict(r, points=[p for p in r.get("points") or [] if str(p.get("date", ""))[:10] < jeu])
@@ -314,6 +352,8 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
         ligne[k_] = c.get(k_) or (c.get("exploratoire") or {}).get(k_)
     if x.get("_b_ar") is not None:
         ligne["ombre_b_ar"] = x["_b_ar"]
+    if x.get("_b_saison") is not None:
+        ligne["ombre_b_saison"] = x["_b_saison"]
     if not ligne.get("ombre_series") and x.get("_releve"):       # 0.10.78 : série du banc, bornée à D
         try:
             import ombres_auto as oa
