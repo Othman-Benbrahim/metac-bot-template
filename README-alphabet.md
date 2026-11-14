@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.87 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.88 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -367,6 +367,13 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.88** : **bootstrap par blocs « jeu × source », en ombre** (dépôt calibrain-harness : des décisions qui se
+  recouvrent valent moins que leur nombre). Les questions d'un même jeu et d'une même source partagent la même semaine
+  du monde. `apprentissage_liens.py` donne, à côté du critère officiel, l'intervalle de l'écart et la stabilité des
+  liens tirés par blocs entiers. Au 2026-11-14 : stabilité de « persiste:INC » 76 % par lecture, 66 % par blocs ; le
+  tiers de jugement ne compte que **2 blocs** (`2026-10-11:fred` 43 lectures, `2026-10-11:dbnomics` 2) : le découpage
+  par nombre de lignes, trié par identifiant, met presque toutes les questions FRED du dernier jeu au jugement.
+  Signalé ; le critère officiel ne change pas sans décision.
 - **0.10.87** : **deux contrôles sans coût** (Al Mamun, « From Data to Decision », ch. 10, 12, 32, 50). (1) Stabilité
   des liens, en ombre, dans `apprentissage_liens.py` : part de 200 tirages bootstrap où l'intervalle reste du côté du
   statut ; seuil 80 %. Au 2026-11-14, « persiste:INC retient » : 76 %, **limite**. Le statut du protocole ne change

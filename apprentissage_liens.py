@@ -29,6 +29,12 @@ d'apprentissage (graine 0) ; « stabilite » est la part des tirages où l'inter
 Au-dessous de 80 %, le lien est dit « limite ». Le statut du protocole ne change pas : la stabilité est rapportée à côté,
 parce que 36 liens testés chacun à 90 % laissent attendre quelques statuts par hasard (inférence après sélection).
 
+Blocs (ajout du 2026-11-14, EN OMBRE ; dépôt calibrain-harness : des décisions qui se recouvrent valent moins que
+leur nombre). Les questions d'un même jeu et d'une même source partagent la même semaine du monde (mêmes chocs) : elles
+ne sont pas indépendantes. Le bootstrap officiel tire les lectures une par une ; l'ombre tire des BLOCS « jeu × source »
+entiers, pour l'intervalle du critère d'adoption et pour la stabilité. Le critère officiel ne change pas ; le rapport
+donne les deux, et le nombre de blocs (avec peu de blocs, l'intervalle par blocs est lui-même grossier).
+
     python apprentissage_liens.py [--json]
 """
 from __future__ import annotations
@@ -90,7 +96,9 @@ def donnees(lignes: list[dict]) -> list[dict]:
                 or (x.get("modeles") or {}).get("principal") != PROTOCOLE["lecteur"]
                 or not (x.get("rejeu") or {}).get("lectures")):
             continue
-        out.append({"q": x["question_id"], "jeu": x.get("jeu") or x["question_id"].split(":")[1], "y": int(x["issue"]),
+        jeu_ = x.get("jeu") or x["question_id"].split(":")[1]
+        out.append({"q": x["question_id"], "jeu": jeu_, "bloc": f"{jeu_}:{x['question_id'].split(':')[2]}",
+                    "y": int(x["issue"]),
                     "B": float(x["p_B"]), "x": variables(x)})
     return sorted(out, key=lambda d: (d["jeu"], d["q"]))
 
@@ -150,15 +158,25 @@ def perte(p: float, y: int) -> float:
     return -math.log(p if y else 1 - p)
 
 
-def stabilite(A: list[dict], statuts: dict[str, str]) -> dict[str, float]:
-    """Part des tirages bootstrap où l'intervalle à 90 % du lien reste du côté de son statut (ombre, 2026-11-14)."""
+def tirer_blocs(D: list[dict], rnd: random.Random) -> list[dict]:
+    """Un tirage bootstrap par blocs : autant de blocs que dans D, tirés avec remise, chacun avec toutes ses lectures."""
+    blocs: dict[str, list[dict]] = {}
+    for d in D:
+        blocs.setdefault(d.get("bloc") or d["q"], []).append(d)
+    cles = sorted(blocs)
+    return [d for _ in cles for d in blocs[rnd.choice(cles)]]
+
+
+def stabilite(A: list[dict], statuts: dict[str, str], par_blocs: bool = False) -> dict[str, float]:
+    """Part des tirages bootstrap où l'intervalle à 90 % du lien reste du côté de son statut (ombre, 2026-11-14).
+    par_blocs : tirage par blocs « jeu × source » (ombre)."""
     if not statuts:
         return {}
     zq = 1.6449
     rnd = random.Random(STABILITE["graine"])
     compte = {n: 0 for n in statuts}
     for _ in range(STABILITE["tirages"]):
-        S = [rnd.choice(A) for _ in A]
+        S = tirer_blocs(A, rnd) if par_blocs else [rnd.choice(A) for _ in A]
         nb = sorted({n for d in S for n in d["x"]})
         be, es = ajuster(S, nb)
         for n, st in statuts.items():
@@ -190,6 +208,9 @@ def principal(en_json: bool) -> int:
     for n, st_ in stabilite(A, {n: v["statut"] for n, v in liens.items() if v["statut"] in ("pousse", "retient")}).items():
         liens[n]["stabilite"] = round(st_, 3)
         liens[n]["stable"] = st_ >= STABILITE["seuil"]
+    for n, st_ in stabilite(A, {n: v["statut"] for n, v in liens.items() if v["statut"] in ("pousse", "retient")},
+                            par_blocs=True).items():
+        liens[n]["stabilite_blocs"] = round(st_, 3)
     jug = None
     if J:
         ec = [perte(predire(d, beta), d["y"]) - perte(d["B"], d["y"]) for d in J]
@@ -201,6 +222,17 @@ def principal(en_json: bool) -> int:
                "perte_C_empirique": sum(perte(predire(d, beta), d["y"]) for d in J) / len(J),
                "ecart_moyen": sum(ec) / len(ec), "intervalle_90_ecart": [bas, haut],
                "critere_atteint": len(J) >= PROTOCOLE["n_min_jugement"] and sum(ec) < 0 and haut < 0}
+        # ombre : même intervalle, tirage par blocs « jeu × source »
+        ecb = [dict(d, e=e_) for d, e_ in zip(J, ec)]
+        rnd_b = random.Random(0)
+        boots_b = []
+        for _ in range(PROTOCOLE["bootstrap"]):
+            S = tirer_blocs(ecb, rnd_b)
+            boots_b.append(sum(d["e"] for d in S) / len(S))
+        boots_b.sort()
+        bas_b, haut_b = boots_b[int(q * len(boots_b))], boots_b[int((1 - q) * len(boots_b)) - 1]
+        jug["ombre_blocs"] = {"blocs": len({d["bloc"] for d in J}), "intervalle_90_ecart": [bas_b, haut_b],
+                              "critere_atteint": len(J) >= PROTOCOLE["n_min_jugement"] and sum(ec) < 0 and haut_b < 0}
     rap = {"protocole": PROTOCOLE, "stabilite_ombre": STABILITE, "lectures": len(D), "jeux": jeux, "apprentissage": len(A), "jugement": jug,
            "liens": dict(sorted(liens.items(), key=lambda t: -t[1]["n"]))}
     print(json.dumps(rap, ensure_ascii=False, indent=1 if en_json else None))

@@ -320,6 +320,19 @@ class Tests(unittest.TestCase):
         self.assertGreater(t["marche_avec_derive:60"]["CRO"], t["bruit_blanc:60"]["CRO"])
         self.assertEqual(crs.taux_reels([{"ombre_series": {"code": {"CRO": True, "PER": False, "INC": False}}}])["CRO"], 1.0)
 
+    def test_bootstrap_blocs_88(self):
+        import random
+        import apprentissage_liens as al
+        D = [{"q": f"q{i}", "bloc": "b1" if i < 3 else "b2", "y": 0, "B": 0.5, "x": []} for i in range(5)]
+        for g in range(20):
+            S = al.tirer_blocs(D, random.Random(g))
+            blocs = {}
+            for d in S:
+                blocs.setdefault(d["bloc"], []).append(d["q"])
+            for b, qs in blocs.items():                      # un bloc tiré l'est en entier (une ou deux fois)
+                self.assertEqual(len(qs) % (3 if b == "b1" else 2), 0)
+        self.assertEqual(len(al.tirer_blocs([{"q": "a"}, {"q": "b"}], random.Random(0))), 2)  # sans bloc : par lecture
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa
