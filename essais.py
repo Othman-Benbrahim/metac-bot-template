@@ -25,7 +25,8 @@ RISQUE = 0.05          # unilatéral, celui de « l'intervalle à 90 % sous 0 »
 # id → ouverture, objet, type de critère (« intervalle » : soumis à la correction ; « seuil » : critère descriptif),
 # N du premier regard, pré-enregistrement.
 ESSAIS = {
-    "liens_empiriques": {"ouvert_le": "2026-11-14", "type": "intervalle", "n": 100, "statut": "ouvert",
+    "liens_empiriques": {"ouvert_le": "2026-11-14", "type": "intervalle", "n": 100, "statut": "clos",
+                         "clos_le": "2026-11-14", "verdict": "non adopté (C empirique = B sur le jugement)",
                          "objet": "C empirique (liens appris) à la place de la matrice",
                          "doc": "preenregistrements/apprentissage-liens.md"},
     "b_autoregressif": {"ouvert_le": "2026-11-14", "type": "intervalle", "n": 100, "statut": "ouvert",

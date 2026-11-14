@@ -384,6 +384,11 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **Clôture de l'apprentissage des liens** (2026-11-14, décision d'auteur, hors version du bot) : arrêt à 268 lectures
+  Mistral, jugement lu une fois : C empirique 0,660 contre B 0,659 en perte log, intervalle à 90 % [−0,035 ; +0,042] :
+  **non adopté**. Les liens les plus fréquents de la matrice (CTR, POL, HIE → SEU) ne disent rien ; INC→SEU pousse
+  sur l'apprentissage seulement. Détail dans `preenregistrements/apprentissage-liens.md`. Trois essais restent ouverts
+  (B autorégressif, ombre absence, sans matrice : 35 lectures sur 50, en attente).
 - **0.10.99** : **l'ombre sans matrice reçoit la boucle de correction de l'officiel** (écart de protocole déclaré le
   2026-11-14 avant le calcul de son résultat). Premier passage : 9 lectures sans matrice refusées sur 48 (19 %), contre
   0 pour l'officiel, qui a droit à deux corrections. Le compte du premier regard repart à zéro à partir de 0.10.99 ;

@@ -464,9 +464,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 3)                                   # liens, B autorégressif, absence
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 3)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 6)
+        self.assertEqual(k, 2)                                   # B autorégressif, absence (liens clos le 14/11)
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 2)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 4)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -476,7 +476,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertGreater(es.resume()["ouverts"], 3)
+        self.assertGreater(es.resume()["ouverts"], 2)
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
