@@ -34,7 +34,7 @@ ESSAIS = {
     "ombre_absence": {"ouvert_le": "2026-11-13", "type": "intervalle", "n": 30, "statut": "ouvert",
                       "objet": "cote de B divisée par 2 pour les états nuls d'absence",
                       "doc": "preenregistrements/ombre-absence.md"},
-    "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert",
+    "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "objet": "plan et lecture sans la matrice",
                      "doc": "preenregistrements/sans-matrice.md"},
 }
