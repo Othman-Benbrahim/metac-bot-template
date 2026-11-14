@@ -44,5 +44,39 @@ class Census(unittest.TestCase):
             return await apz.census_eits("marts", "44X72", "SM", avant=avant)
 
 
+class Diagnostics94(unittest.TestCase):
+    def test_codes_gw(self):
+        self.assertEqual(apz.code_gw("Sudan"), "625")
+        self.assertEqual(apz.code_gw(" south sudan "), "626")
+        self.assertEqual(apz.code_gw("625,626"), "625,626")
+        with self.assertRaises(apz.ErreurSource):
+            apz.code_gw("Atlantis")
+
+    def test_reponse_non_json_dite(self):
+        import httpx
+
+        def rep(request):
+            return httpx.Response(200, text="<html><body>Invalid Key. key=SECRET</body></html>")
+        transport = httpx.MockTransport(rep)
+        vrai = httpx.AsyncClient
+        with mock.patch.object(apz.httpx, "AsyncClient", lambda **kw: vrai(transport=transport, **kw)):
+            with self.assertRaises(apz.ErreurSource) as e:
+                asyncio.run(apz._get("https://api.census.gov/data/x", {"key": "SECRET"}))
+        self.assertIn("Invalid Key", str(e.exception))
+        self.assertNotIn("SECRET", str(e.exception))
+
+    def test_bls_statut(self):
+        import httpx
+
+        def rep(request):
+            return httpx.Response(200, json={"status": "REQUEST_NOT_PROCESSED", "message": ["daily threshold"]})
+        transport = httpx.MockTransport(rep)
+        vrai = httpx.AsyncClient
+        with mock.patch.object(apz.httpx, "AsyncClient", lambda **kw: vrai(transport=transport, **kw)):
+            with self.assertRaises(apz.ErreurSource) as e:
+                asyncio.run(apz.bls("LNS14000000"))
+        self.assertIn("daily threshold", str(e.exception))
+
+
 if __name__ == "__main__":
     unittest.main()
