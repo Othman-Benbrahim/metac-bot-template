@@ -25,3 +25,12 @@ Sur les **100 premières questions de séries de jeux non vus** par le test (aut
    corrigé de la règle d'adoption commune (96,7 % tant que trois essais à intervalle sont ouverts).
 Second regard possible sur les 200 premières, au risque partagé. Si le critère tient : décision d'auteur datée pour
 poster B_AR à la place de B sur les séries. Sinon, B reste.
+
+
+## Clôture (2026-11-15) — banc du taux de base, exécution 43653595776
+400 questions de séries de jeux non vus (2026-07-05 à 2026-08-30), sans modèle de langue, dans l'ordre fixé par
+`banc_b.py`. Premier regard (100 premières) : écart moyen de perte log B_AR − B = +0,008 (B_AR moins bon), intervalle
+à 90 % par blocs [−0,008 ; +0,024]. Second regard (200 premières) : −0,011, intervalle corrigé (98,3 %)
+[−0,046 ; +0,019], qui contient 0. **Critère non atteint : le B autorégressif n'est pas adopté ; B reste.** Le gain du
+test rétrospectif (jeux vus, surtout FRED du 25 octobre) ne se retrouve pas sur des données neuves. Par bloc, B_AR gagne
+sur FRED 2026-07-19 et perd nettement sur FRED 2026-08-16.
