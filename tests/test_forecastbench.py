@@ -441,6 +441,24 @@ class Tests(unittest.TestCase):
         self.assertEqual(sr.critere_b_ar(vus)["n_nouveaux"], 0)
         self.assertTrue(sr.critere_b_ar(L[:50])["verdict"].startswith("en attente"))
 
+    def test_essais_98(self):
+        import essais as es
+        import score_registre as sr
+        k = es.k_intervalle()
+        self.assertEqual(k, 3)                                   # liens, B autorégressif, absence
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 3)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 6)
+        self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
+        t = sorted(range(1000))
+        self.assertEqual(es.bornes(t, 0.05), (50, 949))
+        # B_AR : un gain net passe au niveau corrigé ; le verdict ne regarde que les 100 premières questions
+        L = [{"question_id": f"fb:2026-09-13:fred:S{i}:x", "issue": i % 2, "p_B": 0.5,
+              "ombre_b_ar": {"p": 0.6 if i % 2 else 0.4}} for i in range(150)]
+        c = sr.critere_b_ar(L)
+        self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
+        self.assertTrue(c["verdict"].startswith("critère atteint"))
+        self.assertGreater(es.resume()["ouverts"], 3)
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa

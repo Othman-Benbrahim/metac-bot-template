@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.97 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.98 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -354,6 +354,21 @@ passer un lot de 57 à 86). Trois règles écrites :
    défaut ; formulaire du banc) : avant chaque question, si le coût cumulé plus la question la plus chère vue jusqu'ici
    dépasserait le plafond, le banc s'arrête.
 
+## Règle d'adoption commune (0.10.98)
+
+Elliot Tower, *AI for Science × Philosophy of Science*, ch. 2 (chemins qui bifurquent) et 3 (arrêt et preuve) : un
+critère propre pris seul ne protège ni d'essais menés en parallèle ni d'un regard répété qui s'arrête au premier passage
+favorable. `essais.py` :
+
+1. **Compter** : tout essai qui peut changer ce qui est posté ou calculé est inscrit avec son critère avant son premier
+   regard ; le rapport de score dit combien sont ouverts.
+2. **Corriger** : un critère à intervalle (« l'intervalle à 90 % sous 0 », risque unilatéral 5 %) est jugé au risque
+   5 % / k, k = nombre d'essais ouverts de ce type (Bonferroni) ; le critère nominal reste affiché.
+3. **Regarder à date fixe** : verdict sur les N premières lignes admissibles ; un « indécis » donne droit à un second
+   regard sur les 2N premières, au risque partagé ; au-delà, l'essai est clos ou repris sous un critère neuf.
+   L'apprentissage des liens se juge une seule fois, à la fin (son tiers de jugement est fixe : le relire à chaque passe
+   l'userait).
+
 ## Décisions en attente
 
 - **Plafonner la valeur postée ?** Les bots les mieux classés plafonnent leurs probabilités extrêmes (par exemple
@@ -368,6 +383,10 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.98** : **règle d'adoption commune** (section ci-dessus ; `essais.py`). Quatre essais ouverts, dont trois à
+  intervalle (liens empiriques, B autorégressif, ombre absence) : risque corrigé 1,7 %, intervalle à 96,7 %. Verdicts
+  de B autorégressif et de l'ombre sans matrice calculés aux regards fixés (100 et 50 premières lignes, puis 200 et 100).
+  Ne fait que durcir l'adoption.
 - **0.10.97** : **critère d'adoption du B autorégressif, enregistré** (décision d'auteur du 2026-11-14), après le
   test rétrospectif (188 questions de séries des jeux 2026-09-27, 10-11 et 10-25 : perte log 0,666 contre 0,690 pour
   B ; gain surtout sur FRED du 25 octobre, 5 blocs seulement) et avant toute donnée nouvelle. B_AR remplacera B pour

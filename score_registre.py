@@ -386,13 +386,19 @@ JEUX_VUS_B_AR = {"2026-09-27", "2026-10-11", "2026-10-25"}
 def critere_b_ar(lignes: list[dict]) -> dict:
     """B_AR remplace B pour les séries si, sur au moins 100 questions de jeux non vus : perte log de B_AR inférieure à
     celle de B, ET intervalle à 90 % de l'écart (bootstrap par blocs « jeu × source », 2 000 tirages, graine 0)
-    entièrement sous 0. Même alors, le passage en officiel est une décision d'auteur datée."""
+    entièrement sous 0. Même alors, le passage en officiel est une décision d'auteur datée.
+    0.10.98 (essais.py) : verdict sur les 100 PREMIÈRES questions admissibles (second regard : 200), au risque corrigé
+    pour le nombre d'essais ouverts ; le critère nominal reste affiché."""
     import math as _m
     import random as _r
+    import essais as es
     pl = lambda p, y: -_m.log(min(max(p, 1e-3), 1 - 1e-3) if y else 1 - min(max(p, 1e-3), 1 - 1e-3))
-    nv = [x for x in lignes if (x.get("jeu") or x["question_id"].split(":")[1]) not in JEUX_VUS_B_AR]
-    if not nv:
+    tous = [x for x in lignes if (x.get("jeu") or x["question_id"].split(":")[1]) not in JEUX_VUS_B_AR]
+    if not tous:
         return {"n_nouveaux": 0, "verdict": "en attente (aucune question de jeu non vu)"}
+    N = es.ESSAIS["b_autoregressif"]["n"]
+    rg = es.regard(len(tous), N)
+    nv = tous[: (N if rg == 1 else 2 * N if rg == 2 else len(tous))]
     ec = [pl(x["ombre_b_ar"]["p"], x["issue"]) - pl(x["p_B"], x["issue"]) for x in nv]
     blocs: dict[str, list[float]] = {}
     for x, e in zip(nv, ec):
@@ -400,10 +406,15 @@ def critere_b_ar(lignes: list[dict]) -> dict:
     rnd, cles = _r.Random(0), sorted(blocs)
     boots = sorted((lambda t: sum(t) / len(t))([e for _ in cles for e in blocs[rnd.choice(cles)]]) for _ in range(2000))
     bas, haut = boots[100], boots[1899]
+    bas_c, haut_c = es.bornes(boots, es.risque_corrige(max(rg, 1)))
     moy = sum(ec) / len(ec)
-    return {"n_nouveaux": len(nv), "blocs": len(cles), "ecart_moyen": moy, "intervalle_90_par_blocs": [bas, haut],
-            "verdict": ("en attente (moins de 100 questions de jeux non vus)" if len(nv) < 100 else
-                        "critère atteint : décision d'auteur à prendre" if moy < 0 and haut < 0 else "critère non atteint")}
+    return {"n_nouveaux": len(tous), "regard": rg, "n_juge": len(nv), "blocs": len(cles), "ecart_moyen": moy,
+            "intervalle_90_par_blocs": [bas, haut], "intervalle_corrige": [bas_c, haut_c],
+            "niveau_corrige": round(1 - 2 * es.risque_corrige(max(rg, 1)), 4),
+            "verdict": ("en attente (moins de 100 questions de jeux non vus)" if rg == 0 else
+                        "critère atteint : décision d'auteur à prendre" if moy < 0 and haut_c < 0 else
+                        "critère nominal seulement (pas au niveau corrigé)" if moy < 0 and haut < 0 else
+                        "critère non atteint" + (" ; un second regard à 200" if rg == 1 else " ; essai à clore"))}
 
 
 def sans_matrice_suivi(lignes: list[dict]) -> dict:
@@ -414,6 +425,10 @@ def sans_matrice_suivi(lignes: list[dict]) -> dict:
     l'ombre s'arrête. Et les états nuls ou refus de l'ombre ne dépassent pas ceux de l'officiel de plus de 15 points."""
     import alphabet_pipeline as ap
     off_p, om_p, st_off, st_om = [], [], {}, {}
+    import essais as es
+    N_ = es.ESSAIS["sans_matrice"]["n"]
+    rg_ = es.regard(len(lignes), N_)
+    lignes = lignes[: (N_ if rg_ == 1 else 2 * N_ if rg_ == 2 else len(lignes))]   # 0.10.98 : regard à date fixe
     for x in lignes:
         o = x["ombre_sans_matrice"]
         ex = x.get("exploratoire") or {}
@@ -445,7 +460,8 @@ def sans_matrice_suivi(lignes: list[dict]) -> dict:
             "verdict": ("en attente (moins de 50 lectures)" if n < 50 else
                         "inutile : la lecture suit encore la matrice" if po is not None and po >= 0.80 else
                         "trop d'états nuls ou de refus" if nul_ref(st_om) - nul_ref(st_off) > 0.15 else
-                        "utile" if po is not None and po <= 0.60 else "indécis")}
+                        "utile" if po is not None and po <= 0.60 else
+                        "indécis" + (" ; un second regard à 100" if rg_ == 1 else " ; essai à clore"))}
 
 
 def calibration_par_groupe(items: list[dict], dimensions: tuple[str, ...]) -> dict | None:
@@ -1138,6 +1154,8 @@ def scorer_retro(registre: Path) -> dict:
     sm = [x for x in intactes if isinstance(x.get("ombre_sans_matrice"), dict)]
     if sm:
         sortie["ombre_sans_matrice"] = sans_matrice_suivi(sm)
+    import essais as _es                                  # 0.10.98 : combien d'essais tournent en parallèle
+    sortie["essais"] = _es.resume()
     its = []
     for x in intactes:
         if x.get("issue") not in (0, 1) or x.get("p_B") is None:
