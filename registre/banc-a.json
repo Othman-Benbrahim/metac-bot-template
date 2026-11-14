@@ -1,0 +1,35 @@
+{
+  "version_bot": "0.10.106",
+  "note": "perte log, plus bas = mieux ; une série par jeu de modèles",
+  "azure_ai/gpt-5-mini": {
+    "n": 10,
+    "A": 0.3619,
+    "B": 0.431,
+    "AB": 0.3737,
+    "par_source": {
+      "acled": {
+        "n": 10,
+        "A": 0.3619,
+        "B": 0.431,
+        "AB": 0.3737
+      }
+    },
+    "critere_AB": {
+      "n_nouveaux": 10,
+      "regard": 0,
+      "n_juge": 10,
+      "blocs": 1,
+      "ecart_moyen": -0.057338129057404486,
+      "intervalle_90_par_blocs": [
+        -0.057338129057404486,
+        -0.057338129057404486
+      ],
+      "intervalle_corrige": [
+        -0.057338129057404486,
+        -0.057338129057404486
+      ],
+      "niveau_corrige": 0.95,
+      "verdict": "en attente (moins de 100 questions de jeux non vus)"
+    }
+  }
+}
