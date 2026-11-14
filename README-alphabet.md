@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.83 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.85 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -334,6 +334,25 @@ millésime : une valeur révisée depuis peut entrer ; seul FRED (ALFRED) donne 
 Coût : celui d'une question réelle par question testée (environ 7 appels au modèle, 15 recherches Exa). Exige la
 recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
+## Règles de changement (0.10.85)
+
+Les règles de validation (réparateur, moteur) sont un juge que l'on retouche : une règle corrigée peut faire monter
+un score sans que la lecture ait changé (billet « eval harness », 2026-11-14 : une notation retouchée seule a fait
+passer un lot de 57 à 86). Trois règles écrites :
+
+1. **Table des bascules.** Toute version qui touche le réparateur ou le moteur publie, dans sa demande de fusion et
+   dans l'historique, ce que SA modification change sur les lectures enregistrées : `rejeu_banc.py --bascules` donne,
+   ligne par ligne, statut et p de C enregistrés contre ceux du code ; le contrôle des demandes de fusion calcule la
+   table avec le code de la base et celui de la branche, sur les mêmes lignes, et affiche la différence
+   (`comparer_bascules.py`, résumé du contrôle ; ne bloque pas la fusion).
+2. **Juge et lecteur séparés.** Une correction du juge (réparateur, moteur, contrôles) et une modification de ce que
+   lit le modèle (consignes) vont dans des versions distinctes quand c'est possible, pour savoir ce qui a bougé. Quand
+   elles partagent une version, l'historique le dit et la table des bascules isole l'effet du juge (le rejeu reprend
+   les lectures enregistrées, donc les anciennes consignes).
+3. **Plafond par passage.** Le banc s'arrête au nombre de questions OU au plafond en dollars (`--budget`, 15 $ par
+   défaut ; formulaire du banc) : avant chaque question, si le coût cumulé plus la question la plus chère vue jusqu'ici
+   dépasserait le plafond, le banc s'arrête.
+
 ## Décisions en attente
 
 - **Plafonner la valeur postée ?** Les bots les mieux classés plafonnent leurs probabilités extrêmes (par exemple
@@ -348,6 +367,16 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.85** : **règles de changement écrites** (section ci-dessus) : table des bascules (`rejeu_banc.py --bascules`,
+  `comparer_bascules.py`, contrôle des demandes de fusion), juge et lecteur dans des versions distinctes, plafond en
+  dollars par passage du banc (`--budget`, 15 $). Aucune règle de lecture ni de calcul ne change : table des bascules
+  de cette version vide.
+- **0.10.84** : **cartes ancrées en surnombre** (banc du 2026-11-14 : cinq cartes ancrées en strate 7, refus maintenu
+  sur trois lectures ; chaque ancrée est une candidate et le moteur en refuse plus de 4 par strate). Le réparateur
+  retire les ancrées au-delà de 4 (carte de l'événement gardée d'abord, puis F, contre-candidates, recherches, plan,
+  ordre du lecteur) ; la consigne de lecture dit « au plus 4 ». Version mixte (juge et consigne, voir règle 2) ; table
+  des bascules du juge (code 0.10.83 contre 0.10.84, 178 lignes) : 1 refus devient estimé (`acled:f1f34d2f…`), aucun
+  autre verdict ni p ne change (`fred:GASREGW`, compté d'abord, avait été sauvé par une version antérieure).
 - **0.10.83** : **nouveau départ à contexte vide, en ombre** (billet « idea basins », Bespoke Labs ; registre : la
   première correction aboutit 16 fois sur 16, la deuxième ne sauve aucun dossier, 0 sur 12). Au moment de la deuxième
   correction, une lecture neuve est faite avec la consigne d'origine et une ligne nommant la règle enfreinte, sans

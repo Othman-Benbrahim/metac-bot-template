@@ -276,8 +276,13 @@ def deja_par(modele: str) -> set[str]:
             and (x.get("modeles") or {}).get("principal") == modele}
 
 
+def depasse(cumul: float, pire: float, budget: float) -> bool:
+    """0.10.85 : la prochaine question, au pire coût déjà vu, ferait-elle passer le plafond ? (0 = sans plafond)"""
+    return budget > 0 and cumul + pire > budget
+
+
 async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...], graine: int,
-                    memes_que: str | None = None) -> int:
+                    memes_que: str | None = None, budget: float = 0.0) -> int:
     import alphabet_bot as ab
     import alphabet_modeles as am
     if not ar.recherche_bornee_disponible():
@@ -303,6 +308,11 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             raise TimeoutError(f"appel au modèle sans réponse en {delai_appel:.0f} s") from None
     jeux = [jeu] if jeu else jeux_candidats(date.today(), date.fromisoformat(apres))
     deja, faites, pannes_suite = ar.deja_faites(), 0, 0
+    # 0.10.85 : plafond en dollars par passage (billet « eval harness », 2026-11-14). Le banc s'arrêtait au nombre de
+    # questions, jamais au coût : un lecteur qui boucle ou un prix qui change n'étaient arrêtés par rien. Avant chaque
+    # question, on s'arrête si le coût cumulé PLUS la question la plus chère vue jusqu'ici dépasserait le plafond
+    # (pire cas connu, pannes comprises). 0 = sans plafond.
+    cumul, pire = 0.0, 0.0
     cibles = None
     if memes_que:
         os.environ["ALPHABET_FB_DUELS"] = "1"     # 0.10.79 : une relecture compare les lecteurs sur les MÊMES questions
@@ -333,6 +343,11 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
         for x in items:
             if faites >= n:
                 break
+            if depasse(cumul, pire, budget):
+                print(f"Plafond atteint : {cumul:.2f} $ dépensés + {pire:.2f} $ (question la plus chère) > {budget:.2f} $. "
+                      "Arrêt du banc.")
+                n = faites
+                break
             avant_m = ar.moteurs_utilises()
             with MonetaryCostManager() as cm:
                 try:
@@ -345,6 +360,8 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             if ligne is None:
                 continue
             ligne["cout_usd"] = round(float(cout or 0), 4)
+            cumul += ligne["cout_usd"]
+            pire = max(pire, ligne["cout_usd"])
             apres_m = ar.moteurs_utilises()      # 0.10.50 : quels moteurs ont servi pour CETTE question
             ligne["moteurs_recherche"] = {k: v - avant_m.get(k, 0) for k, v in apres_m.items() if v - avant_m.get(k, 0)}
             ar.ecrire(ligne)
@@ -362,7 +379,8 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             faites += 1
             print(f"{ligne['question_id'][:60]} : {ligne.get('statut')} · B {ligne.get('p_B')} · C {ligne.get('p_C')} · "
                   f"issue {ligne.get('issue')} · {ligne['cout_usd']} $")
-    print(f"{faites} question(s) ForecastBench écrite(s) dans registre/{ar.RETRO}.")
+    print(f"{faites} question(s) ForecastBench écrite(s) dans registre/{ar.RETRO} ; coût {cumul:.2f} $"
+          + (f" (plafond {budget:.2f} $)." if budget > 0 else "."))
     return 0
 
 
@@ -376,6 +394,8 @@ if __name__ == "__main__":
     a.add_argument("--graine", type=int, default=0)
     a.add_argument("--memes-que", default=os.environ.get("ALPHABET_FB_MEMES") or None,
                    help="version du bot dont on relit les mêmes questions (test multi-lecteurs)")
+    a.add_argument("--budget", type=float, default=float(os.environ.get("ALPHABET_FB_BUDGET") or 15),
+                   help="plafond en dollars pour ce passage (0 = sans plafond)")
     args = a.parse_args()
     srcs = tuple(s for s in args.sources.split(",") if s in SOURCES_SERIES)
-    sys.exit(asyncio.run(principal(args.n, args.apres, args.jeu, srcs, args.graine, args.memes_que)))
+    sys.exit(asyncio.run(principal(args.n, args.apres, args.jeu, srcs, args.graine, args.memes_que, args.budget)))
