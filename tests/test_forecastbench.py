@@ -249,6 +249,25 @@ class Tests(unittest.TestCase):
         m = oa.mesurer_filtrage(ex, "taux SOFR", [{"carte": "CTR", "strate": 6, "fait": "Match de football hier soir"}])
         self.assertEqual(m["faits_perdus_par_motif"], {"hors_question": 1})
 
+    def test_surnombre_ancrees_84(self):
+        # banc du 2026-11-14 : cinq cartes ancrées en strate 7 (événement CRO persiste) → refus sur trois lectures.
+        # 0.10.84 : la carte de l'événement est gardée, puis contre-candidate, plan ; la dernière du lecteur sort.
+        base = {"intensite": "f", "portee": "aucune", "fait": "x", "source": "s"}
+        d = {"mots": [dict(base, carte=c, strate=7) for c in ("CRO", "POL", "CTR", "HIE", "RES")],
+             "candidats": ["POL@7", "CTR@7", "HIE@7", "RES@7"], "contre_candidate": ["POL@7"],
+             "rejets": {}, "liaisons": ["CTR@7 tension RES@7"], "preuves_liaisons": ["p"], "questions": [],
+             "recherches": []}
+        plan = {"evenement": {"carte": "CRO", "strate": 7, "type": "persiste"},
+                "candidats": ["POL@7", "CTR@7", "HIE@7", "RES@7"]}
+        notes = ap.reparer_dossier(d, plan, "2026-10-25")
+        cartes = [m["carte"] for m in d["mots"]]
+        self.assertEqual(cartes, ["CRO", "POL", "CTR", "HIE"])
+        self.assertNotIn("RES@7", d["candidats"])
+        self.assertEqual(len([c for c in d["candidats"] if c.endswith("@7")]), 4)
+        self.assertEqual(d["liaisons"], [])
+        self.assertTrue(any("plus de 4 cartes ancrées" in n for n in notes))
+        self.assertIn("Au plus 4 cartes ancrées par strate", open(ap.__file__, encoding="utf-8").read())
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa
