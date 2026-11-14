@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.101** — Azure AI Foundry : `alphabet_modeles.adapter` traduit `azure_ai/<déploiement>` en appel OpenAI v1 (adresse et clé Azure passées à chaque appel, sans toucher `OPENAI_API_BASE`) ; modèles de raisonnement (gpt-5, o-séries) : `drop_params`, pas de température imposée. Tous les points de construction des modèles du bot passent par `am.llm`.
 - **0.10.100** : **plusieurs fournisseurs, plusieurs IA** (contrainte d'auteur du 2026-11-14 ; plan dans
   `TRANSITION-FOURNISSEURS.md`). Version exacte du modèle servi relevée à chaque appel (`modeles_servis`, traceur
   litellm) ; Azure AI Foundry branché (`azure_ai/<déploiement>`, secrets `AZURE_AI_API_KEY`, `AZURE_AI_API_BASE`) ;

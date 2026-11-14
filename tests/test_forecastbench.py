@@ -686,3 +686,19 @@ class Tests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_azure_openai_101():
+    import alphabet_modeles as am
+    env = {"AZURE_AI_API_BASE": "https://x.services.ai.azure.com/openai/v1/responses", "AZURE_AI_API_KEY": "k"}
+    m, kw = am.adapter("azure_ai/gpt-5-mini", {"temperature": 0.2, "top_p": 1}, env=env)
+    assert m == "openai/gpt-5-mini"
+    assert kw["base_url"] == "https://x.services.ai.azure.com/openai/v1"
+    assert kw["api_key"] == "k" and kw["drop_params"] is True and "top_p" not in kw
+    # Mistral et Bedrock inchangés
+    assert am.adapter("mistral/mistral-medium-latest", {"top_p": 1}, env=env) == ("mistral/mistral-medium-latest", {"top_p": 1})
+    assert am.adapter("bedrock/x", {}, env={})[0] == "bedrock/x"
+    # appel simulé de bout en bout par litellm
+    import litellm
+    r = litellm.completion(model=m, messages=[{"role": "user", "content": "ok"}], mock_response="oui", **kw)
+    assert r.choices[0].message.content == "oui"

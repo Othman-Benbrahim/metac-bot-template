@@ -809,7 +809,7 @@ async def principal() -> int:
     narrateur = llm
     if nom_n:
         from forecasting_tools import GeneralLlm
-        modele_n = GeneralLlm(model=nom_n, temperature=0.7, timeout=180, allowed_tries=2)
+        modele_n = am.llm(nom_n, temperature=0.7, timeout=180, allowed_tries=2)
 
         async def narrateur(c: str) -> str:
             return await modele_n.invoke(c)
@@ -837,14 +837,14 @@ async def principal() -> int:
             print(f"Vérificateur « {nom_v} » indisponible ({sonde.get('erreur')}). Rien n'est lancé.")
             return 1
         from forecasting_tools import GeneralLlm
-        modele_v = GeneralLlm(model=nom_v, temperature=0, timeout=180, allowed_tries=2)
+        modele_v = am.llm(nom_v, temperature=0, timeout=180, allowed_tries=2)
 
         async def verificateur(c: str) -> str:
             return await modele_v.invoke(c)
     reflechi = None
     if os.environ.get("MONDE_REFLEXION", "1") != "0":
         from forecasting_tools import GeneralLlm
-        modele_r = GeneralLlm(model=choix["principal"], timeout=300, allowed_tries=2, **options_reflexion(choix["principal"]))
+        modele_r = am.llm(choix["principal"], timeout=300, allowed_tries=2, **options_reflexion(choix["principal"]))
 
         async def reflechi(c: str) -> str:
             return await modele_r.invoke(c)

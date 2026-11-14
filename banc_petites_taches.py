@@ -73,7 +73,7 @@ async def appeler(modele: str, consigne: str) -> tuple[str | None, float, str | 
         # Mistral exige top_p = 1 quand la température est nulle (échantillonnage glouton)
         import alphabet_modeles as am
         extra = {"top_p": 1} if am.famille_mistral(modele) else {}
-        texte = await asyncio.wait_for(GeneralLlm(model=modele, temperature=0, timeout=DELAI, allowed_tries=1,
+        texte = await asyncio.wait_for(am.llm(modele, temperature=0, timeout=DELAI, allowed_tries=1,
                                                   **extra).invoke(consigne), DELAI)
         return texte, round(time.monotonic() - t0, 1), None
     except asyncio.TimeoutError:

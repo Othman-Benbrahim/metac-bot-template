@@ -60,7 +60,8 @@ class AlphabetBot(FallTemplateBot2026):
         if isinstance(r, str) and r.startswith("smart-searcher"):
             return "smart_searcher", r
         if isinstance(r, str) and r and r not in ("None", "no_research"):
-            r = GeneralLlm(model=r, temperature=0.1)          # ex. « perplexity/sonar » donné en variable
+            import alphabet_modeles as am
+            r = am.llm(r, temperature=0.1)                     # ex. « perplexity/sonar » donné en variable
         if isinstance(r, GeneralLlm):
             nom = GeneralLlm.to_model_name(r)
             # Un modèle « search » (gpt-4o-search-preview, perplexity/sonar…) interroge le web lui-même.
@@ -258,7 +259,8 @@ class AlphabetBot(FallTemplateBot2026):
 
     async def _critique(self, consigne: str) -> str:
         """0.6.0 : le contradicteur (ALPHABET_CONTRADICTEUR), d'une autre famille que le lecteur ; en ombre."""
-        m = GeneralLlm(model=os.environ["ALPHABET_CONTRADICTEUR"], temperature=0.1, timeout=180, allowed_tries=2)
+        import alphabet_modeles as am
+        m = am.llm(os.environ["ALPHABET_CONTRADICTEUR"], temperature=0.1, timeout=180, allowed_tries=2)
         return await m.invoke(consigne)
 
     async def _llm(self, consigne: str) -> str:
@@ -324,7 +326,9 @@ class LlmTenace(GeneralLlm):
     résumés) en ont : changer de lecteur de format ne change pas la lecture."""
 
     def __init__(self, model: str, *, secours=(), attentes=(), **kwargs) -> None:
-        super().__init__(model=model, **kwargs)
+        import alphabet_modeles as am
+        m_, k_ = am.adapter(model, kwargs)                # 0.10.101 : fournisseur (Azure Foundry, raisonnement)
+        super().__init__(model=m_, **k_)
         self._secours, self._attentes, self._kw = list(secours), list(attentes), dict(kwargs)
 
     async def invoke(self, prompt, system_prompt: str | None = None) -> str:
@@ -345,7 +349,7 @@ class LlmTenace(GeneralLlm):
                 derniere = e
         for m in self._secours:
             try:
-                r = await GeneralLlm(model=m, **self._kw).invoke(prompt, system_prompt)
+                r = await am.llm(m, **self._kw).invoke(prompt, system_prompt)
             except Exception as e:
                 derniere = e
                 continue
