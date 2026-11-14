@@ -287,6 +287,14 @@ class Tests(unittest.TestCase):
         x["rejeu"]["plan"]["evenement"]["type"] = "persiste"
         self.assertEqual(al.variables(x), ["persiste:SEU"])
 
+    def test_source_url_liste_81(self):
+        base = {"intensite": "f", "portee": "aucune"}
+        d = {"mots": [dict(base, carte="RCS", strate=6, source_url=["https://a.org/x "]),
+                      dict(base, carte="CTR", strate=6, source_url="  https://b.org/y")],
+             "candidats": ["RCS@6", "CTR@6"], "rejets": {}, "liaisons": [], "questions": [], "recherches": []}
+        ap.reparer_dossier(d, {"evenement": {"carte": "SEU", "strate": 6}, "candidats": []}, "2026-10-25")
+        self.assertEqual([m["source_url"] for m in d["mots"]], ["https://a.org/x", "https://b.org/y"])
+
     def test_foret_64(self):
         import foret_strates as fs
         lec = {"mots": [{"carte": "POL", "strate": 13}, {"carte": "CRO", "strate": 6}, {"carte": "INC", "strate": 7}],

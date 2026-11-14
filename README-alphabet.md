@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.80 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.81 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,9 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.81** : premier passage d'apprentissage (50 questions, Mistral Medium) : un dossier refusé parce que
+  source_url était rendue comme une liste d'une adresse ; le réparateur la remet en forme (première adresse ; espaces
+  retirés), sans rien inventer.
 - **0.10.80** : **apprentissage empirique des liens** (`apprentissage_liens.py` ; protocole enregistré le 2026-11-14,
   décision d'auteur : le sens et la portée d'un lien carte → événement se mesurent sur les issues). Lecteur unique
   Mistral Medium ; seules les lignes du banc à partir de 0.10.80 comptent. logit P = logit B + Σ β·lien, a priori

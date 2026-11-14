@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.80"
+VERSION_BOT = "0.10.81"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -1213,6 +1213,19 @@ def reparer_dossier(d: dict, plan: dict, aujourdhui: str | None = None) -> list[
     lisibles = []
     for m in d.get("mots") or []:
         if isinstance(m, dict):
+            # 0.10.81 (banc du 2026-11-14, Mistral) : source_url rendue comme une liste d'une adresse, ou avec des
+            # espaces autour : remise en forme, sans rien inventer (une liste de plusieurs adresses garde la première,
+            # les autres vont dans source_urls si le champ est vide)
+            u = m.get("source_url")
+            if isinstance(u, list):
+                adr = [str(x).strip() for x in u if isinstance(x, str) and str(x).strip()]
+                if adr:
+                    m["source_url"] = adr[0]
+                    if len(adr) > 1 and not m.get("source_urls"):
+                        m["source_urls"] = adr
+                    notes.append(f"{m.get('carte')} : source_url donnée en liste → première adresse")
+            elif isinstance(u, str) and u != u.strip():
+                m["source_url"] = u.strip()
             try:
                 int(str(m.get("strate")).strip())
             except ValueError:
