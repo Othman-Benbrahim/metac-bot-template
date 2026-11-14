@@ -71,7 +71,8 @@ async def appeler(modele: str, consigne: str) -> tuple[str | None, float, str | 
     t0 = time.monotonic()
     try:
         # Mistral exige top_p = 1 quand la température est nulle (échantillonnage glouton)
-        extra = {"top_p": 1} if modele.startswith("mistral/") else {}
+        import alphabet_modeles as am
+        extra = {"top_p": 1} if am.famille_mistral(modele) else {}
         texte = await asyncio.wait_for(GeneralLlm(model=modele, temperature=0, timeout=DELAI, allowed_tries=1,
                                                   **extra).invoke(consigne), DELAI)
         return texte, round(time.monotonic() - t0, 1), None

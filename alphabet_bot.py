@@ -605,6 +605,8 @@ if __name__ == "__main__":
                                                                 for e_ in essais if e_.get("role") == "principal"]})
         sys.exit(1)
     am.appliquer(choix)
+    am.installer_traceur()                       # 0.10.100 : versions exactes servies, relevées pour le passage
+    am.servis_et_vider()
     print(f"🧠  Modèles du passage : {os.environ['ALPHABET_MODELES']}")
     bot = construire(publier=not args.sans_publier)
     bot.skip_previously_forecasted_questions = sauter_deja_prevues
@@ -639,5 +641,6 @@ if __name__ == "__main__":
                           "en_echec": sum(isinstance(r, BaseException) for r in rapports),
                           "bascules_modeles": BASCULES,
                           "recherche_usage": getattr(ch, "usage", None), "recherche_echecs": getattr(ch, "echecs", None),
-                          "recherche_erreurs": getattr(ch, "erreurs", None), "cout_usd": cout_passage})
+                          "recherche_erreurs": getattr(ch, "erreurs", None), "cout_usd": cout_passage,
+                          "modeles_servis": am.servis_et_vider()})
     sys.exit(code)

@@ -433,6 +433,10 @@ def sans_matrice_suivi(lignes: list[dict]) -> dict:
     _v = lambda x: tuple(int(t) for t in str(x.get("version_bot") or "0").split(".") if t.isdigit())
     avant_ecart = [x for x in lignes if _v(x) < dv]
     lignes = [x for x in lignes if _v(x) >= dv]
+    # 0.10.100 : un essai se juge sur UN lecteur (modèle, quel que soit le fournisseur ; TRANSITION-FOURNISSEURS.md)
+    lect = es.ESSAIS["sans_matrice"].get("lecteur")
+    autres_lecteurs = [x for x in lignes if lect and lect not in str((x.get("modeles") or {}).get("principal") or "")]
+    lignes = [x for x in lignes if x not in autres_lecteurs]
     rg_ = es.regard(len(lignes), N_)
     lignes = lignes[: (N_ if rg_ == 1 else 2 * N_ if rg_ == 2 else len(lignes))]   # 0.10.98 : regard à date fixe
     for x in lignes:
@@ -460,7 +464,7 @@ def sans_matrice_suivi(lignes: list[dict]) -> dict:
     n = len(lignes)
     nul_ref = lambda st: (st.get("etat_nul", 0) + st.get("refuse", 0)) / n if n else None
     po = part(om_p)
-    return {"cas": n, "avant_ecart_de_protocole": len(avant_ecart), "statuts_officiels": st_off, "statuts_sans_matrice": st_om,
+    return {"cas": n, "avant_ecart_de_protocole": len(avant_ecart), "autres_lecteurs": len(autres_lecteurs), "statuts_officiels": st_off, "statuts_sans_matrice": st_om,
             "part_parents_matrice_officielle": part(off_p), "part_parents_matrice_sans_matrice": po,
             "cartes_comptees": {"officielle": len(off_p), "sans_matrice": len(om_p)},
             "verdict": ("en attente (moins de 50 lectures)" if n < 50 else

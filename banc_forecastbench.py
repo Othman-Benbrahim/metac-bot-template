@@ -370,6 +370,8 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             print(f"  essai {e_.get('role')} {e_.get('modele')} : {e_.get('erreur')}")
         return 1
     am.appliquer(choix)
+    am.installer_traceur()                       # 0.10.100 : version exacte du modèle servi, par question
+    am.servis_et_vider()
     modele = ab.configuration().get("default")
 
     delai_appel = float(os.environ.get("ALPHABET_APPEL_DELAI") or "600")
@@ -435,6 +437,7 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
             if ligne is None:
                 continue
             ligne["cout_usd"] = round(float(cout or 0), 4)
+            ligne["modeles_servis"] = am.servis_et_vider()
             cumul += ligne["cout_usd"]
             pire = max(pire, ligne["cout_usd"])
             apres_m = ar.moteurs_utilises()      # 0.10.50 : quels moteurs ont servi pour CETTE question
