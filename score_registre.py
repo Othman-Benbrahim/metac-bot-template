@@ -377,6 +377,48 @@ def accord_lecteurs(lignes: list[dict]) -> dict | None:
 PETIT_GROUPE = 30
 
 
+def sans_matrice_suivi(lignes: list[dict]) -> dict:
+    """0.10.91. Part des cartes ancrées (strate de l'événement) que la matrice donne comme faisant apparaître la carte
+    visée : lecture officielle contre lecture sans matrice, sur les mêmes questions ; statuts des deux lectures.
+    Critère d'utilité (pré-enregistré le 2026-11-14, après au moins 50 lectures sans matrice) : la part des parents de la
+    matrice tombe à 60 % ou moins (contre 93 % au registre officiel) ; à 80 % ou plus, le changement est inutile et
+    l'ombre s'arrête. Et les états nuls ou refus de l'ombre ne dépassent pas ceux de l'officiel de plus de 15 points."""
+    import alphabet_pipeline as ap
+    off_p, om_p, st_off, st_om = [], [], {}, {}
+    for x in lignes:
+        o = x["ombre_sans_matrice"]
+        ex = x.get("exploratoire") or {}
+        s_ = ex.get("statut") or x.get("statut")
+        st_off[s_] = st_off.get(s_, 0) + 1
+        st_om[o.get("statut")] = st_om.get(o.get("statut"), 0) + 1
+        r = x.get("rejeu") or {}
+        ev = (r.get("plan") or {}).get("evenement") or {}
+        if ev.get("type") != "apparait":
+            continue
+        try:
+            parents = {a for a, _ in ap.sources_matrice(ap.code_carte(ev["carte"]))}
+        except Exception:
+            continue
+        for lec, acc in (((r.get("lectures") or [None])[-1], off_p), (r.get("lecture_sans_matrice"), om_p)):
+            for m in (lec or {}).get("mots") or []:
+                if isinstance(m, dict) and str(m.get("strate")) == str(ev.get("strate")):
+                    try:
+                        acc.append(ap.code_carte(m.get("carte")) in parents)
+                    except Exception:
+                        pass
+    part = lambda a: round(sum(a) / len(a), 3) if a else None
+    n = len(lignes)
+    nul_ref = lambda st: (st.get("etat_nul", 0) + st.get("refuse", 0)) / n if n else None
+    po = part(om_p)
+    return {"cas": n, "statuts_officiels": st_off, "statuts_sans_matrice": st_om,
+            "part_parents_matrice_officielle": part(off_p), "part_parents_matrice_sans_matrice": po,
+            "cartes_comptees": {"officielle": len(off_p), "sans_matrice": len(om_p)},
+            "verdict": ("en attente (moins de 50 lectures)" if n < 50 else
+                        "inutile : la lecture suit encore la matrice" if po is not None and po >= 0.80 else
+                        "trop d'états nuls ou de refus" if nul_ref(st_om) - nul_ref(st_off) > 0.15 else
+                        "utile" if po is not None and po <= 0.60 else "indécis")}
+
+
 def calibration_par_groupe(items: list[dict], dimensions: tuple[str, ...]) -> dict | None:
     """0.10.75 (Decker et Tresp 2026, arXiv 2611.03592 ; fiche « Derrière les chiffres ») : une calibration correcte en
     moyenne peut cacher de gros écarts par horizon ou par sous-groupe, et une correction globale ne les règle pas.
@@ -1054,7 +1096,10 @@ def scorer_retro(registre: Path) -> dict:
             "nouveau_depart_abouti": sum(1 for x in nd if x["ombre_nouveau_depart"].get("statut")
                                          in ("estime", "etat_nul", "non_estime")),
             "lecture": "abouti = estimé, état nul ou non chiffré ; à comparer avec le 0 sur 12 des deuxièmes corrections"}
-    # 0.10.75 : calibration par sous-groupe (source, strate de l'événement, horizon, lecteur), en ombre
+    # 0.10.91 : plan et lecture sans la matrice (ombre) ; critère d'utilité pré-enregistré le 2026-11-14
+    sm = [x for x in intactes if isinstance(x.get("ombre_sans_matrice"), dict)]
+    if sm:
+        sortie["ombre_sans_matrice"] = sans_matrice_suivi(sm)
     its = []
     for x in intactes:
         if x.get("issue") not in (0, 1) or x.get("p_B") is None:
