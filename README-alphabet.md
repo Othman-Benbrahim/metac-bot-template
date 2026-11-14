@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.79 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.80 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.80** : **apprentissage empirique des liens** (`apprentissage_liens.py` ; protocole enregistré le 2026-11-14,
+  décision d'auteur : le sens et la portée d'un lien carte → événement se mesurent sur les issues). Lecteur unique
+  Mistral Medium ; seules les lignes du banc à partir de 0.10.80 comptent. logit P = logit B + Σ β·lien, a priori
+  normal (écart-type 0,5), β négatif permis ; deux tiers anciens pour apprendre, le tiers récent pour juger. Statut de
+  chaque lien : pousse, retient, ne dit rien, indéterminé (intervalle à 90 %, 30 cas au moins). Critère d'adoption
+  (fixé d'avance) : sur au moins 100 lectures de jugement, perte log du « C empirique » sous celle de B, intervalle à
+  90 % de l'écart apparié sous 0 ; même alors, en ombre, et remplacement de la matrice par décision d'auteur datée.
 - **0.10.79** : **suite du diagnostic de la surconfiance de C** (décision d'auteur du 2026-11-14). Les duels d'actions
   yfinance ne sont plus lus au banc (ni écrits ni comptés ; B = 0,5 par symétrie ; C y faisait moins bien que B ;
   `ALPHABET_FB_DUELS=1` ou une relecture `memes_que` les rouvrent). Règle « fond ou dynamique » (`ombres_auto.est_fond`,
