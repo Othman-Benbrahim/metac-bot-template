@@ -6,7 +6,8 @@ turned out differently, they could have done other analyses »), ni d'un regard 
 favorable (Mayo : « significance will be attained erroneously with high probability »). Trois règles :
 
 1. COMPTER. Tout essai qui peut aboutir à un changement de ce qui est posté ou calculé officiellement est inscrit ici,
-   avec son critère et sa date d'ouverture, AVANT son premier regard. Le rapport de score dit combien sont ouverts.
+   avec son critère et sa date d'ouverture, AVANT son premier regard, et son pré-enregistrement est commité dans
+   preenregistrements/ (la date du commit fait foi, pas le texte). Le rapport de score dit combien sont ouverts.
 2. CORRIGER. Un critère fondé sur un intervalle (« l'intervalle à 90 % de l'écart reste sous 0 », soit un risque
    unilatéral de 5 %) est jugé au risque 5 % / k, k = nombre d'essais ouverts de ce type (Bonferroni, Dunn 1961) :
    l'intervalle bilatéral correspondant est à 1 − 2 × 0,05 / k. Le critère nominal reste affiché à côté.
@@ -26,16 +27,16 @@ RISQUE = 0.05          # unilatéral, celui de « l'intervalle à 90 % sous 0 »
 ESSAIS = {
     "liens_empiriques": {"ouvert_le": "2026-11-14", "type": "intervalle", "n": 100, "statut": "ouvert",
                          "objet": "C empirique (liens appris) à la place de la matrice",
-                         "doc": "claude/protocole-apprentissage-liens.md"},
+                         "doc": "preenregistrements/apprentissage-liens.md"},
     "b_autoregressif": {"ouvert_le": "2026-11-14", "type": "intervalle", "n": 100, "statut": "ouvert",
                         "objet": "B autorégressif à la place de B pour les séries",
-                        "doc": "claude/preenregistrement-b-autoregressif.md"},
+                        "doc": "preenregistrements/b-autoregressif.md"},
     "ombre_absence": {"ouvert_le": "2026-11-13", "type": "intervalle", "n": 30, "statut": "ouvert",
                       "objet": "cote de B divisée par 2 pour les états nuls d'absence",
-                      "doc": "claude/preenregistrement-ombre-absence.md"},
+                      "doc": "preenregistrements/ombre-absence.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert",
                      "objet": "plan et lecture sans la matrice",
-                     "doc": "claude/preenregistrement-ombre-sans-matrice.md"},
+                     "doc": "preenregistrements/sans-matrice.md"},
 }
 
 
