@@ -286,6 +286,21 @@ class Tests(unittest.TestCase):
         self.assertIn("rien à comparer", cb.markdown({"indisponible": True}, branche))
         self.assertEqual(cb.comparer(branche, branche), [])
 
+    def test_sources_sans_b_86(self):
+        import asyncio
+        os.environ.pop("ALPHABET_FB_SANS_B", None)
+
+        async def llm(_):
+            raise AssertionError("aucun appel de modèle pour une source sans B par le code")
+        for src, q in (("yfinance", "Will GD's market close price on 2026-10-04 be higher than …?"),
+                       ("wikipedia", "According to Wikipedia, will a vaccine have been developed for X by …?")):
+            x = {"qid": f"fb:2026-09-27:{src}:X:2026-10-04", "source": src, "issue": 0, "url": "", "titre": "t",
+                 "resolution": "2026-10-04", "contexte": "", "criteres": "", "_q": {"question": q}}
+            self.assertTrue(fb.sans_b_code(x))
+            self.assertIsNone(asyncio.run(fb.un_test(x, "2026-09-27", llm, set())))
+        self.assertFalse(fb.sans_b_code({"source": "fred", "_q": {}}))
+        self.assertFalse(fb.sans_b_code({"source": "yfinance", "_q": {"question": "Will A have a higher rate of return than B?"}}))
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa

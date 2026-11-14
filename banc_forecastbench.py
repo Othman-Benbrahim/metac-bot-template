@@ -188,6 +188,13 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
     return None
 
 
+def sans_b_code(x: dict) -> bool:
+    """0.10.86 : une source pour laquelle le banc ne calcule aucun B par le code (voir vue_code)."""
+    q = x.get("_q") or {}
+    return x["source"] == "wikipedia" or (x["source"] == "yfinance"
+                                          and "higher rate of return than" not in (q.get("question") or ""))
+
+
 async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
     if x["qid"] in deja:
         return None
@@ -205,6 +212,12 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
     if (x["source"] == "yfinance" and "higher rate of return than" in (x["_q"].get("question") or "")
             and os.environ.get("ALPHABET_FB_DUELS", "0") != "1"):
         return None              # ni écrite ni comptée : le budget n va aux questions que l'alphabet lit
+    # 0.10.86 (banc du 2026-11-14, jeu 2026-09-27) : actions seules (« clôture de GD plus haute dans 7 jours ? ») et
+    # questions Wikipedia (Elo d'échecs, vaccins) : le banc n'a pas de B calculé par le code pour ces sources, et la vue
+    # extérieure du modèle refuse de l'estimer (13 « sans_vue » sur 14, aucune lecture, 0,10 $ chacune, comptées dans
+    # n). Elles ne sont plus jouées tant qu'aucun B par le code n'existe pour elles ; ALPHABET_FB_SANS_B=1 les rouvre.
+    if (sans_b_code(x) and os.environ.get("ALPHABET_FB_SANS_B", "0") != "1"):
+        return None
     try:
         sonde = ap.extraire_json(await llm(ar.consigne_sonde(x["titre"], x["criteres"])))
     except Exception as e:
@@ -316,6 +329,7 @@ async def principal(n: int, apres: str, jeu: str | None, sources: tuple[str, ...
     cibles = None
     if memes_que:
         os.environ["ALPHABET_FB_DUELS"] = "1"     # 0.10.79 : une relecture compare les lecteurs sur les MÊMES questions
+        os.environ["ALPHABET_FB_SANS_B"] = "1"    # 0.10.86 : idem pour les sources sans B par le code
         # 0.10.58 : test multi-lecteurs : les questions d'une version passée, relues par le codeur de ce passage
         jeux, cibles = questions_de(memes_que)
         deja = deja_par(choix["principal"])

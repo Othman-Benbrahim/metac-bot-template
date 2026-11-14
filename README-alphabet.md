@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.85 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.86 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -367,6 +367,11 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.86** : **sources sans B par le code écartées du banc** (passage du 2026-11-14, jeu 2026-09-27 : actions
+  seules et questions Wikipedia, Elo d'échecs et vaccins ; 13 « sans_vue » sur 14, la vue extérieure du modèle refuse
+  d'estimer le taux de base ; aucune lecture, mais comptées dans n). Elles ne sont plus jouées tant qu'aucun B calculé
+  par le code n'existe pour elles (`sans_b_code` ; `ALPHABET_FB_SANS_B=1` les rouvre, comme une relecture
+  `memes_que`). Correction du harnais, pas du juge : table des bascules vide.
 - **0.10.85** : **règles de changement écrites** (section ci-dessus) : table des bascules (`rejeu_banc.py --bascules`,
   `comparer_bascules.py`, contrôle des demandes de fusion), juge et lecteur dans des versions distinctes, plafond en
   dollars par passage du banc (`--budget`, 15 $). Aucune règle de lecture ni de calcul ne change : table des bascules
