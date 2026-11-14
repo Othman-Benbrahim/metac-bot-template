@@ -333,6 +333,18 @@ class Tests(unittest.TestCase):
                 self.assertEqual(len(qs) % (3 if b == "b1" else 2), 0)
         self.assertEqual(len(al.tirer_blocs([{"q": "a"}, {"q": "b"}], random.Random(0))), 2)  # sans bloc : par lecture
 
+    def test_decoupage_jeux_entiers_89(self):
+        import apprentissage_liens as al
+        D = ([{"jeu": "2026-09-13", "q": f"a{i}"} for i in range(50)] + [{"jeu": "2026-09-27", "q": f"b{i}"} for i in range(30)]
+             + [{"jeu": "2026-10-11", "q": f"c{i}"} for i in range(20)])
+        A, J = al.decouper(D)
+        self.assertEqual({d["jeu"] for d in J}, {"2026-10-11", "2026-09-27"})   # 20 < 33 : on ajoute le jeu précédent
+        self.assertEqual({d["jeu"] for d in A}, {"2026-09-13"})
+        self.assertEqual(len(A) + len(J), len(D))
+        A, J = al.decouper([d for d in D if d["jeu"] != "2026-09-13"])
+        self.assertEqual({d["jeu"] for d in J}, {"2026-10-11"})                 # le plus ancien reste à l'apprentissage
+        self.assertEqual(al.decouper([{"jeu": "x", "q": "1"}]), ([{"jeu": "x", "q": "1"}], []))
+
     def test_fond_et_duels_79(self):
         import asyncio
         import ombres_auto as oa
