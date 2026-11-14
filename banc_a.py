@@ -5,7 +5,9 @@ et son calcul, derniers points de la série strictement avant la date d'informat
 Pas de lecture de l'alphabet. Registre à part : registre/banc-a.jsonl ; résumé et critère : registre/banc-a.json.
 
 Pré-enregistrement : preenregistrements/a-plus-b.md (commité avant tout passage). Combinaison fixée d'avance :
-logit(AB) = ½·logit(A) + ½·logit(B). Ordre des questions : jeux du plus ancien au plus récent, puis identifiant.
+logit(AB) = ½·logit(A) + ½·logit(B). Ordre des questions (0.10.107, amendement du 2026-11-15) : entrelacé entre les
+jeux, rang de la question dans son jeu selon l'empreinte SHA-1 de son identifiant, puis jeu ; seules les lignes à partir
+de la version 0.10.107 comptent pour le critère.
 
     python banc_a.py --n 10 --budget 3
 """
@@ -13,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
 import json
 import math
 import os
@@ -31,6 +34,7 @@ RESUME = REGISTRE / "banc-a.json"
 SOURCES = ("fred", "dbnomics", "acled")
 APRES = "2026-07-01"          # jeux postérieurs aux connaissances de gpt-5-mini et de Claude Haiku 4.5
 POIDS_A = 0.5                 # fixé avant tout passage (pré-enregistrement)
+JEUX_VUS = {"2026-09-27", "2026-10-11", "2026-10-25"}   # vus par le banc de l'alphabet
 
 
 def logit(p: float) -> float:
@@ -68,6 +72,20 @@ réelle de cette question (elle est passée pour toi), dis-le honnêtement.
 Rends UNIQUEMENT un objet JSON : {{"p": nombre entre 0,01 et 0,99, "raison": "une phrase", "connait_issue": true ou false}}"""
 
 
+VERSION_CRITERE = (0, 10, 107)
+
+
+def rang(qid: str) -> str:
+    return hashlib.sha1(qid.encode()).hexdigest()
+
+
+def version(x: dict) -> tuple:
+    try:
+        return tuple(int(t) for t in str(x.get("version_bot", "0")).split("."))
+    except ValueError:
+        return (0,)
+
+
 def lignes() -> list[dict]:
     if not FICHIER.exists():
         return []
@@ -78,8 +96,9 @@ def resumer(ls: list[dict]) -> dict:
     import score_registre as sr
     out = {"version_bot": ap.VERSION_BOT, "note": "perte log, plus bas = mieux ; une série par jeu de modèles"}
     par: dict[str, list[dict]] = {}
-    for x in sorted(ls, key=lambda x: (x["jeu"], x["question_id"])):
-        if x.get("issue") in (0, 1) and x.get("p_A") is not None and x.get("p_B") is not None and not x.get("exclue"):
+    for x in sorted(ls, key=lambda x: (x.get("ordre") or [10 ** 6, x["jeu"]])):
+        if (x.get("issue") in (0, 1) and x.get("p_A") is not None and x.get("p_B") is not None and not x.get("exclue")
+                and version(x) >= VERSION_CRITERE):
             par.setdefault(x["modeles_A"], []).append(x)
     for mods, xs in par.items():
         pl = sr.log_score
@@ -113,18 +132,24 @@ async def principal(n: int, budget: float) -> int:
     jeux = sorted(fb.jeux_candidats(date.today(), date.fromisoformat(APRES), n_max=26))
     REGISTRE.mkdir(exist_ok=True)
     faites, cumul, pire = 0, 0.0, 0.0
+    tous = []
+    for j in jeux:
+        try:
+            qs = await fb._json(f"{fb.DEPOT}/question_sets/{j}-llm.json")
+            rs = await fb._json(f"{fb.DEPOT}/resolution_sets/{j}_resolution_set.json")
+        except Exception as e:
+            print(f"Jeu {j} indisponible : {type(e).__name__}")
+            continue
+        if j in JEUX_VUS:
+            continue
+        items = sorted((fb.construire(i, j) for i in fb.apparier(qs, rs, SOURCES)), key=lambda x: rang(x["qid"]))
+        tous += [(r, j, x) for r, x in enumerate(items)]
+    tous.sort(key=lambda t: (t[0], t[1]))
+    print(f"{len(tous)} questions candidates, entrelacées entre {len(jeux)} jeux.")
     with FICHIER.open("a", encoding="utf-8") as f:
-        for j in jeux:
-            if faites >= n:
-                break
-            try:
-                qs = await fb._json(f"{fb.DEPOT}/question_sets/{j}-llm.json")
-                rs = await fb._json(f"{fb.DEPOT}/resolution_sets/{j}_resolution_set.json")
-            except Exception as e:
-                print(f"Jeu {j} indisponible : {type(e).__name__}")
-                continue
-            items = sorted((fb.construire(i, j) for i in fb.apparier(qs, rs, SOURCES)), key=lambda x: x["qid"])
-            for x in items:
+        if True:
+            j = None
+            for r_, j, x in tous:
                 if faites >= n:
                     break
                 if (x["qid"], cle_mods) in deja:
@@ -157,7 +182,7 @@ async def principal(n: int, budget: float) -> int:
                 ps = [v["p"] for v in par_modele.values() if "p" in v]
                 p_a = sigmoide(sum(logit(p) for p in ps) / len(ps)) if ps else None
                 p_b = float(vue["frequence"])
-                ligne = {"type": "banc_a", "jeu": j, "source_question": x["source"], "question_id": x["qid"],
+                ligne = {"type": "banc_a", "jeu": j, "ordre": [r_, j], "source_question": x["source"], "question_id": x["qid"],
                          "version_bot": ap.VERSION_BOT, "titre": x["titre"], "issue": x["issue"],
                          "modeles_A": cle_mods, "A_par_modele": par_modele, "p_A": p_a, "p_B": p_b,
                          "p_AB": combiner(p_a, p_b) if p_a is not None else None, "exclue": exclue,
