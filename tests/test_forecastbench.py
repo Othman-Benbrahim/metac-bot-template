@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import sys
 import unittest
 from datetime import date
@@ -247,6 +248,23 @@ class Tests(unittest.TestCase):
         ex = [{"executee": True, "resultat": "Match de football hier soir à Lyon."}]
         m = oa.mesurer_filtrage(ex, "taux SOFR", [{"carte": "CTR", "strate": 6, "fait": "Match de football hier soir"}])
         self.assertEqual(m["faits_perdus_par_motif"], {"hors_question": 1})
+
+    def test_fond_et_duels_79(self):
+        import asyncio
+        import ombres_auto as oa
+        self.assertTrue(oa.est_fond({"fait": "Au 8 octobre 2026, le taux de dépôt est à 2,50 % depuis septembre"},
+                                    "2026-10-11", 7))
+        self.assertFalse(oa.est_fond({"fait": "Le 5 octobre 2026, la BCE annonce une hausse de 25 points"},
+                                     "2026-10-11", 7))
+        self.assertTrue(oa.est_fond({"fait": "En janvier 2025, la BCE annonce une hausse"}, "2026-10-11", 7))
+        x = {"qid": "fb:2026-10-11:yfinance:A_B:2026-10-18", "source": "yfinance", "issue": 1, "url": "", "titre": "t",
+             "resolution": "2026-10-18", "contexte": "", "criteres": "",
+             "_q": {"question": "Will A have a higher rate of return than B between …?"}}
+        os.environ.pop("ALPHABET_FB_DUELS", None)
+
+        async def llm(_):
+            raise AssertionError("aucun appel de modèle pour un duel")
+        self.assertIsNone(asyncio.run(fb.un_test(x, "2026-10-11", llm, set())))
 
     def test_foret_64(self):
         import foret_strates as fs

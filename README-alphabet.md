@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.78 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.79 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -348,6 +348,13 @@ recherche Exa (`smart-searcher`), seule bornable dans le temps ici.
 
 ## Historique utile
 
+- **0.10.79** : **suite du diagnostic de la surconfiance de C** (décision d'auteur du 2026-11-14). Les duels d'actions
+  yfinance ne sont plus lus au banc (ni écrits ni comptés ; B = 0,5 par symétrie ; C y faisait moins bien que B ;
+  `ALPHABET_FB_DUELS=1` ou une relecture `memes_que` les rouvrent). Règle « fond ou dynamique » (`ombres_auto.est_fond`,
+  fixée avant mesure) et `diagnostic_levee.py` (rejeu : multiplicateurs réduits, levée par nombre de cartes et par
+  lien, C sans les faits de fond), à refaire à chaque palier. Premier passage : retirer les faits de fond améliore C
+  sans l'amener au niveau de B, et les lectures qui gardent des faits « dynamiques » sont les plus surconfiantes : la
+  règle n'isole pas le signal ; elle n'entre pas dans le calcul.
 - **0.10.78** : **trois corrections après le banc du 2026-11-13** (20 questions). Ombre des séries : au banc, la série
   que le banc télécharge pour B (FRED, DBnomics) lui est transmise, bornée strictement avant la date d'information
   (le puits du bot n'est pas appelé pour ces questions : 0 cas mesuré). Ombre du filtrage : faits perdus comptés par
