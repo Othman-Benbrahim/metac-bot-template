@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 2)                                   # B autorégressif, absence (liens clos le 14/11)
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 2)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 4)
+        self.assertEqual(k, 3)                     # B autorégressif, B saisonnier (15/11), absence ; liens clos le 14/11
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 3)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 6)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -726,3 +726,21 @@ def test_ombre_combinee_103():
     c2 = ap.ombre_combinee(s, d2, ev, evt)
     assert c2["p"] < 0.4 and c2["p_symetrique_produit"] < 0.6 and c2["lr_contre"] > 1
     assert ap.ombre_combinee(s, d, ev, {"vue_exterieure": {}}) is None
+
+
+def test_b_saison_104():
+    from datetime import date, timedelta
+    import math
+    import banc_forecastbench as fb
+    # série quotidienne saisonnière : chaude en juillet, froide en janvier ; en octobre, elle baisse
+    d0 = date(2026, 10, 15)
+    pts = [{"date": (d0 - timedelta(days=i)).isoformat(),
+            "valeur": 15 + 10 * math.cos(2 * math.pi * ((d0 - timedelta(days=i)).timetuple().tm_yday - 200) / 365.25)}
+           for i in range(1, 3650)]
+    s = fb.b_saison(pts, 7, d0)
+    assert s and s["p"] < 0.2 and s["intervalles"] >= 50
+    b = fb.b_hausse(pts, 7, d0)
+    assert 0.35 < b[0] < 0.65                    # B annuel : ~50 %, aveugle à la saison
+    assert fb.b_saison(pts[:200], 7, d0) is None  # moins d'un an d'historique : rien
+    import essais as es
+    assert es.ESSAIS["b_saisonnier"]["statut"] == "ouvert"

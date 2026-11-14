@@ -1,6 +1,6 @@
 """Banc du taux de base seul (0.10.104, décision d'auteur du 2026-11-15 : améliorer B plutôt que C). AUCUN modèle de
 langue, aucun coût : pour chaque question de série ForecastBench déjà résolue (FRED, DBnomics), B (compte de hausses,
-Jeffreys) et B_AR (AR(1) sur les différences) sont calculés par le code avec les règles de `banc_forecastbench`, sur
+Jeffreys) B_AR (AR(1) sur les différences) et B_saison (même période du calendrier) sont calculés par le code avec les règles de `banc_forecastbench`, sur
 la série bornée strictement avant la date d'information. Registre à part : registre/banc-b.jsonl (le registre du banc
 de l'alphabet, retro.jsonl, n'est pas touché). Résumé et critère d'adoption du B autorégressif : registre/banc-b.json.
 
@@ -37,22 +37,28 @@ def ordonner(lignes: list[dict]) -> list[dict]:
     return sorted(lignes, key=lambda x: (x["jeu"], x["question_id"]))
 
 
+def avec(lignes: list[dict], cle: str) -> list[dict]:
+    return [x for x in ordonner(lignes) if x.get("p_B") is not None and isinstance(x.get(cle), dict)
+            and x[cle].get("p") is not None and x.get("issue") in (0, 1)]
+
+
 def resumer(lignes: list[dict]) -> dict:
     import score_registre as sr
-    ok = [x for x in ordonner(lignes) if x.get("p_B") is not None and isinstance(x.get("ombre_b_ar"), dict)
-          and x["ombre_b_ar"].get("p") is not None and x.get("issue") in (0, 1)]
     pl = sr.log_score
-    par_jeu: dict[str, dict] = {}
-    for x in ok:
-        a = par_jeu.setdefault(f"{x['jeu']}:{x['source_question']}", {"n": 0, "B": 0.0, "B_AR": 0.0})
-        a["n"] += 1
-        a["B"] += pl(x["p_B"], x["issue"])
-        a["B_AR"] += pl(x["ombre_b_ar"]["p"], x["issue"])
-    return {"version_bot": ap.VERSION_BOT, "questions": len(lignes), "avec_B_et_B_AR": len(ok),
-            "note": "perte log (plus bas = mieux) ; aucun modèle de langue",
-            "par_bloc": {k: {"n": v["n"], "B": round(v["B"] / v["n"], 4), "B_AR": round(v["B_AR"] / v["n"], 4)}
-                         for k, v in sorted(par_jeu.items())},
-            "critere_b_ar": sr.critere_b_ar(ok)}
+    out = {"version_bot": ap.VERSION_BOT, "questions": len(lignes),
+           "note": "perte log (plus bas = mieux) ; aucun modèle de langue ; blocs = jeu × source"}
+    for cle, nom, essai in (("ombre_b_ar", "B_AR", "b_autoregressif"), ("ombre_b_saison", "B_saison", "b_saisonnier")):
+        ok = avec(lignes, cle)
+        par: dict[str, dict] = {}
+        for x in ok:
+            a = par.setdefault(f"{x['jeu']}:{x['source_question']}", {"n": 0, "B": 0.0, nom: 0.0})
+            a["n"] += 1
+            a["B"] += pl(x["p_B"], x["issue"])
+            a[nom] += pl(x[cle]["p"], x["issue"])
+        out[nom] = {"n": len(ok), "par_bloc": {k: {"n": v["n"], "B": round(v["B"] / v["n"], 4),
+                                                  nom: round(v[nom] / v["n"], 4)} for k, v in sorted(par.items())},
+                    "critere": sr.critere_ombre_b(ok, cle, essai)}
+    return out
 
 
 async def principal(apres: str, max_q: int) -> int:
@@ -84,7 +90,7 @@ async def principal(apres: str, max_q: int) -> int:
                 ligne = {"type": "banc_b", "jeu": j, "source_question": x["source"], "question_id": x["qid"],
                          "version_bot": ap.VERSION_BOT, "titre": x["titre"], "resolution": x["resolution"],
                          "issue": x["issue"], "p_B": (vue or {}).get("frequence"), "calcul_B": (vue or {}).get("calcul"),
-                         "ombre_b_ar": x.get("_b_ar"),
+                         "ombre_b_ar": x.get("_b_ar"), "ombre_b_saison": x.get("_b_saison"),
                          "licence": "ForecastBench, Forecasting Research Institute, CC BY-SA 4.0"}
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
@@ -92,8 +98,9 @@ async def principal(apres: str, max_q: int) -> int:
                 nouvelles += 1
     r = resumer(lignes_existantes())
     RESUME.write_text(json.dumps(r, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"{nouvelles} question(s) ajoutée(s) ; {r['avec_B_et_B_AR']} avec B et B_AR.")
-    print("Critère B_AR :", json.dumps(r["critere_b_ar"], ensure_ascii=False))
+    print(f"{nouvelles} question(s) ajoutée(s).")
+    for nom in ("B_AR", "B_saison"):
+        print(f"Critère {nom} :", json.dumps(r[nom]["critere"], ensure_ascii=False))
     return 0
 
 
