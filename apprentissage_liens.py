@@ -23,6 +23,12 @@ log est inférieure à celle de B ET que l'intervalle à 90 % de l'écart appari
 reste au-dessous de 0, avec au moins 100 lectures de jugement. Même alors, il entre en ombre ; le remplacement est une
 décision d'auteur datée. Rien n'est écrit au registre ; rien n'est posté.
 
+Stabilité (ajout du 2026-11-14, EN OMBRE ; Al Mamun, « From Data to Decision », §32.5 ; Meinshausen et Bühlmann 2010) :
+pour chaque lien qui « pousse » ou « retient », le modèle est réajusté sur 200 tirages bootstrap des lectures
+d'apprentissage (graine 0) ; « stabilite » est la part des tirages où l'intervalle à 90 % reste du même côté de 0.
+Au-dessous de 80 %, le lien est dit « limite ». Le statut du protocole ne change pas : la stabilité est rapportée à côté,
+parce que 36 liens testés chacun à 90 % laissent attendre quelques statuts par hasard (inférence après sélection).
+
     python apprentissage_liens.py [--json]
 """
 from __future__ import annotations
@@ -39,6 +45,7 @@ import alphabet_retro as ar
 PROTOCOLE = {"enregistre_le": "2026-11-14", "depuis_version": "0.10.80", "lecteur": "mistral/mistral-medium-latest",
              "ecart_type_a_priori": 0.5, "part_jugement": 1 / 3, "n_min_lien": 30, "n_min_jugement": 100,
              "bootstrap": 2000, "niveau": 0.90}
+STABILITE = {"ajoute_le": "2026-11-14", "tirages": 200, "graine": 0, "seuil": 0.80, "statut": "ombre"}
 
 
 def _v(v) -> tuple:
@@ -143,6 +150,23 @@ def perte(p: float, y: int) -> float:
     return -math.log(p if y else 1 - p)
 
 
+def stabilite(A: list[dict], statuts: dict[str, str]) -> dict[str, float]:
+    """Part des tirages bootstrap où l'intervalle à 90 % du lien reste du côté de son statut (ombre, 2026-11-14)."""
+    if not statuts:
+        return {}
+    zq = 1.6449
+    rnd = random.Random(STABILITE["graine"])
+    compte = {n: 0 for n in statuts}
+    for _ in range(STABILITE["tirages"]):
+        S = [rnd.choice(A) for _ in A]
+        nb = sorted({n for d in S for n in d["x"]})
+        be, es = ajuster(S, nb)
+        for n, st in statuts.items():
+            if n in be:
+                compte[n] += (be[n] - zq * es[n] > 0) if st == "pousse" else (be[n] + zq * es[n] < 0)
+    return {n: c / STABILITE["tirages"] for n, c in compte.items()}
+
+
 def principal(en_json: bool) -> int:
     f = ap.REGISTRE / ar.RETRO
     L = [json.loads(l) for l in f.read_text(encoding="utf-8").splitlines() if l.strip()] if f.is_file() else []
@@ -162,6 +186,10 @@ def principal(en_json: bool) -> int:
         liens[n] = {"n": len(cas), "oui": sum(d["y"] for d in cas), "beta": round(beta[n], 3),
                     "facteur_de_cote": round(math.exp(beta[n]), 2), "intervalle_90": [round(lo, 3), round(hi, 3)],
                     "statut": statut}
+    # stabilité (ombre) : seulement pour les liens qui sortent
+    for n, st_ in stabilite(A, {n: v["statut"] for n, v in liens.items() if v["statut"] in ("pousse", "retient")}).items():
+        liens[n]["stabilite"] = round(st_, 3)
+        liens[n]["stable"] = st_ >= STABILITE["seuil"]
     jug = None
     if J:
         ec = [perte(predire(d, beta), d["y"]) - perte(d["B"], d["y"]) for d in J]
@@ -173,7 +201,7 @@ def principal(en_json: bool) -> int:
                "perte_C_empirique": sum(perte(predire(d, beta), d["y"]) for d in J) / len(J),
                "ecart_moyen": sum(ec) / len(ec), "intervalle_90_ecart": [bas, haut],
                "critere_atteint": len(J) >= PROTOCOLE["n_min_jugement"] and sum(ec) < 0 and haut < 0}
-    rap = {"protocole": PROTOCOLE, "lectures": len(D), "jeux": jeux, "apprentissage": len(A), "jugement": jug,
+    rap = {"protocole": PROTOCOLE, "stabilite_ombre": STABILITE, "lectures": len(D), "jeux": jeux, "apprentissage": len(A), "jugement": jug,
            "liens": dict(sorted(liens.items(), key=lambda t: -t[1]["n"]))}
     print(json.dumps(rap, ensure_ascii=False, indent=1 if en_json else None))
     return 0

@@ -1,6 +1,6 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.86 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.87 · skill alphabet-situationnel 0.7.76 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
@@ -367,6 +367,14 @@ passer un lot de 57 à 86). Trois règles écrites :
 
 ## Historique utile
 
+- **0.10.87** : **deux contrôles sans coût** (Al Mamun, « From Data to Decision », ch. 10, 12, 32, 50). (1) Stabilité
+  des liens, en ombre, dans `apprentissage_liens.py` : part de 200 tirages bootstrap où l'intervalle reste du côté du
+  statut ; seuil 80 %. Au 2026-11-14, « persiste:INC retient » : 76 %, **limite**. Le statut du protocole ne change
+  pas. (2) `controle_regles_series.py` : taux de déclenchement des règles d'ancrage par les séries sur des séries de
+  substitution sans structure. CROISSANCE se déclenche sur 5 % du bruit blanc, 10 % d'une marche aléatoire et 22 %
+  d'une marche avec dérive, contre 4 % sur les séries réelles du registre (102) : la règle ne distingue rien du bruit.
+  PÉRIODICITÉ ne se déclenche presque jamais ; INCERTITUDE, 0 à 2 % sur le bruit contre 4 % sur le réel (4 cas). Aucun
+  effet sur le p : outils d'analyse seulement.
 - **0.10.86** : **sources sans B par le code écartées du banc** (passage du 2026-11-14, jeu 2026-09-27 : actions
   seules et questions Wikipedia, Elo d'échecs et vaccins ; 13 « sans_vue » sur 14, la vue extérieure du modèle refuse
   d'estimer le taux de base ; aucune lecture, mais comptées dans n). Elles ne sont plus jouées tant qu'aucun B calculé
