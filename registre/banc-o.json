@@ -1,0 +1,131 @@
+{
+  "version_bot": "0.10.108",
+  "questions": 587,
+  "note": "perte log, plus bas = mieux ; aucun modèle de langue ; motifs ordinaux d = 3",
+  "p_O_local": {
+    "n": 586,
+    "p_O_local": 0.6994,
+    "p_B": 0.6863,
+    "diebold_mariano": {
+      "ecart": 0.0131,
+      "z": 0.765,
+      "p_bilateral": 0.444,
+      "blocs": 12,
+      "n": 586
+    },
+    "par_source": {
+      "fred": {
+        "n": 296,
+        "p_O_local": 0.6997,
+        "p_B": 0.6797,
+        "diebold_mariano": {
+          "ecart": 0.02,
+          "z": 0.95,
+          "p_bilateral": 0.3423,
+          "blocs": 6,
+          "n": 296
+        }
+      },
+      "dbnomics": {
+        "n": 290,
+        "p_O_local": 0.6992,
+        "p_B": 0.6931,
+        "diebold_mariano": {
+          "ecart": 0.006,
+          "z": 0.209,
+          "p_bilateral": 0.8343,
+          "blocs": 6,
+          "n": 290
+        }
+      }
+    }
+  },
+  "p_O_trans": {
+    "n": 585,
+    "p_O_trans": 0.7017,
+    "p_B": 0.6862,
+    "diebold_mariano": {
+      "ecart": 0.0155,
+      "z": 1.102,
+      "p_bilateral": 0.2706,
+      "blocs": 12,
+      "n": 585
+    },
+    "par_source": {
+      "fred": {
+        "n": 297,
+        "p_O_trans": 0.7164,
+        "p_B": 0.6793,
+        "diebold_mariano": {
+          "ecart": 0.0371,
+          "z": 2.354,
+          "p_bilateral": 0.0186,
+          "blocs": 6,
+          "n": 297
+        }
+      },
+      "dbnomics": {
+        "n": 288,
+        "p_O_trans": 0.6865,
+        "p_B": 0.6934,
+        "diebold_mariano": {
+          "ecart": -0.0069,
+          "z": -0.331,
+          "p_bilateral": 0.7407,
+          "blocs": 6,
+          "n": 288
+        }
+      }
+    }
+  },
+  "entropie_permutation_moyenne": 0.9121,
+  "critere_O_trans": {
+    "n_nouveaux": 585,
+    "regard": 2,
+    "n_juge": 200,
+    "blocs": 12,
+    "ecart_moyen": 0.020244216827540996,
+    "intervalle_90_par_blocs": [
+      -0.004633785673336558,
+      0.04777083223871499
+    ],
+    "intervalle_corrige": [
+      -0.015543647945492475,
+      0.06404813578624777
+    ],
+    "niveau_corrige": 0.9875,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "avec_A": {
+    "n": 75,
+    "A": 0.635,
+    "B": 0.6361,
+    "O_trans": 0.7105,
+    "AB": 0.6344,
+    "ABO": 0.6491,
+    "diebold_mariano_ABO_contre_AB": {
+      "ecart": 0.0147,
+      "z": 1.371,
+      "p_bilateral": 0.1704,
+      "blocs": 12,
+      "n": 75
+    },
+    "critere_ABO": {
+      "n_nouveaux": 75,
+      "regard": 0,
+      "n_juge": 75,
+      "blocs": 12,
+      "ecart_moyen": 0.014702730426374261,
+      "intervalle_90_par_blocs": [
+        -0.0012840673181359532,
+        0.032239118762152914
+      ],
+      "intervalle_corrige": [
+        -0.006415168721428343,
+        0.03731541655743191
+      ],
+      "niveau_corrige": 0.975,
+      "verdict": "en attente (moins de 100 questions de jeux non vus)"
+    }
+  }
+}
