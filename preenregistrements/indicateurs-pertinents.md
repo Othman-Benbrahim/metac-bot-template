@@ -38,3 +38,17 @@ avec un indicateur mesuré changent de probabilité).
 Peu de questions touchées par la pluie (environ une sur six) : un vrai effet modeste peut ne pas franchir le niveau
 corrigé à 100 ou 200 questions. Les coefficients viennent de 76 questions et sont sans doute trop forts (sur-ajustement) ;
 ils sont figés quand même, pour que le test soit honnête.
+
+## Amendement du 2026-11-15 (13 h 40), avant tout passage (aucune ligne fraîche n'existe)
+L'auteur conteste l'exclusion de la case pluie × violence : la météo règle le passage à l'acte (« on ne manifeste et
+on n'est violent que quand il fait beau »). Vérification de la littérature : l'effet de **court terme** (le jour même,
+la pluie vide la rue) est documenté pour les manifestations ; sur une **saison** (notre indicateur : 90 jours),
+Hendrix et Salehyan (*Journal of Peace Research* 2012) et Salehyan et Hendrix (*Global Environmental Change* 2014)
+trouvent au contraire plus de violence politique les années humides que les années sèches. Deux mécanismes, deux
+échelles de temps : la case a une explication, et son sens observé (+) est celui de la littérature, non celui de
+l'intuition du jour même. Elle est réintégrée. Modèle figé, coefficients réappris sur les mêmes 76 questions :
+
+logit(p) = logit(B) − 0,4151·z_fcdo·[violence] − 0,4837·z_pluie·[mobilisation] + 0,4695·z_pluie·[violence]
+
+Critère inchangé. La meilleure combinaison de l'exploration est donc testée telle quelle ; l'avertissement sur le
+hasard (15 % des recherches au hasard font aussi bien) vaut d'autant plus.

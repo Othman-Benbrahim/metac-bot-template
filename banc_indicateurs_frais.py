@@ -6,7 +6,7 @@ Questions : ACLED de ForecastBench, forme « une fois » (pas « dix fois », r�
 jeu). Pour chacune : B corrigé (code), indicateurs mesurés avant la date (banc_indicateurs), puis le modèle FIGÉ du
 pré-enregistrement preenregistrements/indicateurs-pertinents.md :
 
-    logit(p) = logit(B) − 0,4096·z_fcdo·[violence] − 0,4837·z_pluie·[manifestations, émeutes]
+    logit(p) = logit(B) − 0,4151·z_fcdo·[violence] − 0,4837·z_pluie·[manifestations, émeutes] + 0,4695·z_pluie·[violence]
 
 z = (valeur − moyenne) / écart-type des 76 questions d'apprentissage ; indicateur non mesuré : z = 0.
 Registre : registre/banc-indicateurs-frais.jsonl ; résumé et critère : registre/banc-indicateurs-frais.json.
@@ -37,7 +37,8 @@ VUS = Path("preenregistrements/silence-vus.txt")
 
 # figés le 2026-11-15 sur les 76 questions « une fois » du banc des indicateurs (preenregistrements/indicateurs-pertinents.md)
 NORMALISATION = {"fcdo": (0.13432835820895522, 0.34100476593420487), "pluie": (0.27020096169782704, 1.3246231102772206)}
-COEFFICIENTS = {("fcdo", "violence"): -0.4096, ("pluie", "mobilisation"): -0.4837}
+COEFFICIENTS = {("fcdo", "violence"): -0.4151, ("pluie", "mobilisation"): -0.4837,
+                ("pluie", "violence"): 0.4695}   # amendement du 2026-11-15 (13 h 40), avant tout passage
 FAMILLES = {"Battles": "violence", "Explosions/Remote violence": "violence", "Violence against civilians": "violence",
             "fatalities": "violence", "Protests": "mobilisation", "Riots": "mobilisation",
             "Strategic developments": "strategique"}

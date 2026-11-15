@@ -22,6 +22,7 @@ class TestFrais(unittest.TestCase):
         self.assertAlmostEqual(bf.p_pertinent(0.4, "strategique", pluie), 0.4)  # case non pertinente : B inchangé
         absent = {"pluie": 3.0, "presents": {}}
         self.assertAlmostEqual(bf.p_pertinent(0.4, "mobilisation", absent), 0.4)  # non mesuré : neutre
+        self.assertGreater(bf.p_pertinent(0.3, "violence", {"pluie": 3.0, "presents": {"pluie": True}}), 0.3)  # saison humide
         alerte = {"fcdo": 2.0, "pluie": 0.0, "presents": {"fcdo": True}}
         self.assertLess(bf.p_pertinent(0.3, "violence", alerte), 0.3)
 
