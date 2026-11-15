@@ -196,6 +196,29 @@ def articles_oms(donnees: dict) -> list[dict]:
     return out
 
 
+# 0.10.163 : certains sites (ONU, Parlement européen, ECFR) refusent les agents inconnus ; second essai avec l'en-tête
+# d'un navigateur ordinaire, comme le ferait un lecteur de flux, en gardant notre identité dans « From ».
+NAVIGATEUR = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+              "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
+              "Accept-Language": "fr,en;q=0.8", "From": "alphabet-situationnel-bot (GitHub Othman-Benbrahim)"}
+
+
+def lire(c: httpx.Client, url: str) -> httpx.Response:
+    r = c.get(url)
+    if r.status_code in (401, 403, 406, 429) or (r.status_code == 200 and r.content.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html"))):
+        r = c.get(url, headers=NAVIGATEUR)
+    r.raise_for_status()
+    if r.content.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html")):
+        raise ValueError("page HTML au lieu d'un flux")
+    return r
+
+
+def describe(e: Exception) -> str:
+    if isinstance(e, httpx.HTTPStatusError):
+        return f"HTTP {e.response.status_code}"
+    return f"{type(e).__name__}: {str(e)[:60]}" if str(e) else type(e).__name__
+
+
 def bilan_sante(lignes: list[dict], aujourdhui: str, silence: int = 7) -> str:
     """Résumé lisible : flux en erreur, vides, ou sans nouvel article depuis `silence` jours."""
     from datetime import date
@@ -233,14 +256,14 @@ def principal() -> int:
         for famille, urls in FLUX.items():
             for url in urls:
                 try:
-                    r = c.get(url)
-                    r.raise_for_status()
-                    arts = (articles_oms(r.json()) if "/api/" in url
+                    r = lire(c, url)
+                    arts = (articles_oms(r.json()) if "who.int/api/" in url
                             else articles(r.content, titres_seuls=famille in TITRES_SEULS))
                 except Exception as e:
-                    print(f"  flux indisponible : {url[:70]} ({type(e).__name__})")
+                    detail = describe(e)
+                    print(f"  flux indisponible : {url[:70]} ({detail})")
                     st = sante.setdefault(url, {"url": url, "dernier_succes": "", "dernier_nouveau": ""})
-                    st.update(famille=famille, dernier_essai=aujourdhui, statut=f"erreur {type(e).__name__}", articles=0)
+                    st.update(famille=famille, dernier_essai=aujourdhui, statut=f"erreur {detail}", articles=0)
                     continue
                 n = 0
                 for a in arts:
