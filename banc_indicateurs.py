@@ -51,13 +51,22 @@ def pays_de(titre: str) -> str | None:
     return m.group(1).strip() if m else None
 
 
-async def obtenir(c: httpx.AsyncClient, url: str, pause: float = 1.0):
+LENTEURS: dict[str, list[float]] = {}   # 0.10.125 : durée des appels par site, imprimée en fin de passage
+
+
+async def obtenir(c: httpx.AsyncClient, url: str, pause: float = 0.3):
+    """0.10.125 : délai court (20 s, au lieu de 60) et durée notée par site, pour qu'une source lente ne bloque plus
+    le passage pendant des heures."""
+    import time
     await asyncio.sleep(pause)
+    t = time.monotonic()
     try:
-        r = await c.get(url)
+        r = await c.get(url, timeout=20)
         return r.json() if r.status_code == 200 else None
     except Exception:
         return None
+    finally:
+        LENTEURS.setdefault(httpx.URL(url).host, []).append(time.monotonic() - t)
 
 
 async def fiche_pays(c, nom: str, cache: dict) -> dict:
@@ -236,6 +245,8 @@ async def principal() -> int:
             fo.flush()
             print(f"{nom[:25]:25s} {x['jeu']} : " + " · ".join(f"{k} {ind[k]:+.2f}" for k in INDICATEURS))
     ls = [json.loads(l) for l in FICHIER.read_text(encoding="utf-8").splitlines() if l.strip()]
+    for h, ds in sorted(LENTEURS.items()):
+        print(f"{h} : {len(ds)} appels, moyenne {sum(ds) / len(ds):.1f} s, {sum(d >= 19.5 for d in ds)} délais dépassés")
     r = resumer(ls)
     RESUME.write_text(json.dumps(r, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(r, ensure_ascii=False, indent=1)[:3000])

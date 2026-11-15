@@ -25,6 +25,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Banc des indicateurs
+        timeout-minutes: 90          # 0.10.125 : sur l'étape, pour que « Enregistrer » garde les lignes écrites
         run: uv run python banc_indicateurs.py
       - name: Enregistrer
         if: always()
