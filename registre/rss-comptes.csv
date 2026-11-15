@@ -109,6 +109,8 @@ US,2026-05-29,sante,1
 CD,2026-05-30,sante,1
 UG,2026-05-30,sante,1
 BO,2026-06-07,voix_citoyennes,1
+CN,2026-06-07,economie,1
+BR,2026-06-08,economie,1
 UG,2026-06-08,sante,1
 UG,2026-06-13,sante,1
 NO,2026-06-17,sante,1
@@ -176,6 +178,8 @@ DE,2026-07-17,sante,1
 UG,2026-07-17,sante,1
 US,2026-07-17,sante,1
 RU,2026-07-29,voix_citoyennes,1
+CN,2026-07-30,economie,1
+JP,2026-07-30,economie,1
 FR,2026-07-31,voix_citoyennes,1
 MM,2026-07-31,voix_citoyennes,1
 FR,2026-08-01,sante,1
@@ -193,8 +197,11 @@ RU,2026-08-27,voix_citoyennes,1
 CN,2026-08-28,voix_citoyennes,1
 HT,2026-08-29,voix_citoyennes,1
 IN,2026-08-31,officiel,1
+BE,2026-09-01,economie,1
 HT,2026-09-05,voix_citoyennes,1
+CA,2026-09-09,economie,1
 IR,2026-09-10,voix_citoyennes,1
+TR,2026-09-10,economie,1
 HT,2026-09-13,voix_citoyennes,1
 AU,2026-09-14,voix_citoyennes,1
 CN,2026-09-14,voix_citoyennes,1
@@ -202,11 +209,14 @@ IN,2026-09-15,voix_citoyennes,1
 AM,2026-09-19,voix_citoyennes,1
 BD,2026-09-20,voix_citoyennes,1
 IN,2026-09-20,voix_citoyennes,1
+BE,2026-09-21,economie,1
 BR,2026-09-21,officiel,1
 JM,2026-09-21,voix_citoyennes,1
 BD,2026-09-22,voix_citoyennes,1
 KH,2026-09-22,voix_citoyennes,1
 TN,2026-09-22,voix_citoyennes,1
+CN,2026-09-23,economie,1
+MO,2026-09-23,economie,1
 BD,2026-09-24,voix_citoyennes,1
 TT,2026-09-24,voix_citoyennes,1
 SS,2026-09-25,sante,1
@@ -286,10 +296,12 @@ BD,2026-10-28,officiel,1
 BD,2026-10-28,voix_citoyennes,1
 BT,2026-10-28,officiel,1
 CN,2026-10-28,officiel,1
+HK,2026-10-28,economie,1
 IN,2026-10-28,officiel,1
 LA,2026-10-28,officiel,1
 MM,2026-10-28,officiel,1
 NP,2026-10-28,officiel,1
+NZ,2026-10-28,economie,1
 VN,2026-10-28,officiel,1
 AL,2026-10-29,voix_citoyennes,1
 FR,2026-10-29,lettres_fr,3

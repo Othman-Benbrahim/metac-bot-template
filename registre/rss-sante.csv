@@ -5,8 +5,8 @@ http://feeds.feedburner.com/LaLettre-fr,lettres_fr,2026-11-15,ok,50,2026-11-15,2
 http://feeds.feedburner.com/glitz-fr,lettres_fr,2026-11-15,ok,50,2026-11-15,2026-11-15
 https://burkina24.com/category/actualite/monde/feed/,presse,2026-11-15,ok,6,2026-11-15,2026-11-15
 https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom,officiel,2026-11-15,ok,7,2026-11-15,2026-11-15
-https://ecfr.eu/feed/?post_type=post,think_tanks,2026-11-15,erreur HTTPStatusError,0,,
-https://ecfr.eu/feed/?post_type=publication,think_tanks,2026-11-15,erreur HTTPStatusError,0,,
+https://ecfr.eu/feed/?post_type=post,think_tanks,2026-11-15,erreur HTTP 403,0,,
+https://ecfr.eu/feed/?post_type=publication,think_tanks,2026-11-15,erreur HTTP 403,0,,
 https://fr.hespress.com/monde/feed,presse,2026-11-15,ok,10,2026-11-15,2026-11-15
 https://fr.investing.com/rss/news_14.rss,economie,2026-11-15,ok,10,2026-11-15,2026-11-15
 https://fr.investing.com/rss/news_95.rss,economie,2026-11-15,ok,10,2026-11-15,2026-11-15
@@ -24,23 +24,23 @@ https://globalvoices.org/-/world/sub-saharan-africa/feed/,voix_citoyennes,2026-1
 https://globalvoices.org/-/world/western-europe/feed/,voix_citoyennes,2026-11-15,ok,15,2026-11-15,2026-11-15
 https://investinglive.com/feed/,economie,2026-11-15,ok,25,2026-11-15,2026-11-15
 https://lefaso.net/spip.php?page=backend&id_rubrique=7,presse,2026-11-15,ok,10,2026-11-15,2026-11-15
-https://news.un.org/feed/subscribe/en/news/all/rss.xml,officiel,2026-11-15,erreur HTTPStatusError,0,,
-https://reliefweb.int/updates/rss.xml,officiel,2026-11-15,erreur ParseError,0,,
+https://news.un.org/feed/subscribe/en/news/all/rss.xml,officiel,2026-11-15,erreur HTTP 404,0,,
+https://reliefweb.int/updates/rss.xml,officiel,2026-11-15,"erreur ParseError: no element found: line 1, column 0",0,,
 https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868,presse,2026-11-15,ok,80,2026-11-15,2026-11-15
 https://www.courrierinternational.com/feed/all/rss.xml,presse,2026-11-15,ok,20,2026-11-15,2026-11-15
 https://www.ecdc.europa.eu/en/taxonomy/term/1295/feed,sante,2026-11-15,ok,10,2026-11-15,2026-11-15
 https://www.ecdc.europa.eu/en/taxonomy/term/1310/feed,sante,2026-11-15,ok,10,2026-11-15,2026-11-15
 https://www.ecdc.europa.eu/en/taxonomy/term/1505/feed,sante,2026-11-15,ok,10,2026-11-15,2026-11-15
 https://www.ecdc.europa.eu/en/taxonomy/term/323/feed,sante,2026-11-15,ok,10,2026-11-15,2026-11-15
-https://www.europarl.europa.eu/rss/committee/afet/fr.xml,parlement_ue,2026-11-15,erreur HTTPStatusError,0,,
-https://www.europarl.europa.eu/rss/committee/droi/fr.xml,parlement_ue,2026-11-15,erreur HTTPStatusError,0,,
-https://www.europarl.europa.eu/rss/committee/sede/fr.xml,parlement_ue,2026-11-15,erreur HTTPStatusError,0,,
-https://www.europarl.europa.eu/rss/doc/motions/fr.xml,parlement_ue,2026-11-15,erreur HTTPStatusError,0,,
-https://www.europarl.europa.eu/rss/doc/texts-adopted/fr.xml,parlement_ue,2026-11-15,erreur HTTPStatusError,0,,
-https://www.europarl.europa.eu/rss/topic/903/fr.xml,parlement_ue,2026-11-15,erreur HTTPStatusError,0,,
+https://www.europarl.europa.eu/rss/committee/afet/fr.xml,parlement_ue,2026-11-15,"erreur ParseError: no element found: line 1, column 0",0,,
+https://www.europarl.europa.eu/rss/committee/droi/fr.xml,parlement_ue,2026-11-15,"erreur ParseError: no element found: line 1, column 0",0,,
+https://www.europarl.europa.eu/rss/committee/sede/fr.xml,parlement_ue,2026-11-15,"erreur ParseError: no element found: line 1, column 0",0,,
+https://www.europarl.europa.eu/rss/doc/motions/fr.xml,parlement_ue,2026-11-15,"erreur ParseError: no element found: line 1, column 0",0,,
+https://www.europarl.europa.eu/rss/doc/texts-adopted/fr.xml,parlement_ue,2026-11-15,"erreur ParseError: no element found: line 1, column 0",0,,
+https://www.europarl.europa.eu/rss/topic/903/fr.xml,parlement_ue,2026-11-15,"erreur ParseError: no element found: line 1, column 0",0,,
 https://www.gdacs.org/xml/rss.xml,officiel,2026-11-15,ok,270,2026-11-15,2026-11-15
 https://www.gov.uk/foreign-travel-advice.atom,officiel,2026-11-15,ok,20,2026-11-15,2026-11-15
-https://www.iata.org/api/rss/pressrelease,economie,2026-11-15,erreur JSONDecodeError,0,,
+https://www.iata.org/api/rss/pressrelease,economie,2026-11-15,ok,50,2026-11-15,2026-11-15
 https://www.la-croix.com/feeds/rss/international.xml,presse,2026-11-15,ok,50,2026-11-15,2026-11-15
 https://www.ledevoir.com/rss/section/monde.xml?id=76,presse,2026-11-15,ok,10,2026-11-15,2026-11-15
 https://www.lefigaro.fr/rss/figaro_international.xml,presse,2026-11-15,ok,20,2026-11-15,2026-11-15
