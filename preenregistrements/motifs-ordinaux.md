@@ -41,3 +41,12 @@ pourrait l'être qu'en ombre descriptive, sans critère, ou comme un nouvel essa
 Faible sur ces séries : le B autorégressif vient d'échouer sur les mêmes données, signe de peu de mémoire à court
 horizon. Un résultat nul ne réfute pas l'hypothèse « l'état précède l'essence » ; il dit que ces séries-là sont proches
 du hasard à cet horizon.
+
+## Clôture de l'essai `motifs_ordinaux` (2026-11-15, exécution 43658780674)
+585 questions de séries (12 blocs « jeu × source »). Perte log : O_transversal 0,702, O_local 0,699, B 0,686.
+Second regard (200 premières, ordre entrelacé) : écart O_transversal − B = +0,020, intervalle corrigé (98,75 %)
+[−0,016 ; +0,064]. **Critère non atteint : non adopté.** Diebold-Mariano sur tout l'échantillon : z = 1,10 (p = 0,27) ;
+sur FRED, O_transversal est significativement moins bon que B (z = 2,35, p = 0,019) ; sur DBnomics, écart −0,007 non
+significatif. Entropie de permutation moyenne 0,912 (1 = hasard complet) : à l'ordre 3, ces séries sont presque sans
+structure ordinale exploitable à court horizon. L'essai `combo_abo` reste ouvert (75 questions communes avec A au
+premier passage, sous le premier regard ; écart provisoire ABO − AB = +0,015).
