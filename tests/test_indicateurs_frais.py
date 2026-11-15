@@ -16,6 +16,12 @@ class TestFrais(unittest.TestCase):
         self.assertEqual(bf.famille("Will there be more fatalities in X for the"), "violence")
         self.assertEqual(bf.famille("Will there be more 'Strategic developments' in X"), "strategique")
 
+    def test_conseil_durci(self):
+        d = {"fcdo": 5.0, "presents": {"fcdo": True}}
+        self.assertAlmostEqual(bf.p_conseil(0.3, "violence", d), bf.ba.sigmoide(bf.ba.logit(0.3) + 0.5))  # pas de pente
+        self.assertAlmostEqual(bf.p_conseil(0.3, "mobilisation", d), 0.3)
+        self.assertAlmostEqual(bf.p_conseil(0.3, "violence", {"fcdo": 0.0, "presents": {"fcdo": True}}), 0.3)
+
     def test_modele_fige(self):
         pluie = {"pluie": 3.0, "fcdo": 0.0, "presents": {"pluie": True, "fcdo": True}}
         self.assertLess(bf.p_pertinent(0.4, "mobilisation", pluie), 0.4)       # forte pluie : moins de mobilisation

@@ -39,6 +39,11 @@ VUS = Path("preenregistrements/silence-vus.txt")
 NORMALISATION = {"fcdo": (0.13432835820895522, 0.34100476593420487), "pluie": (0.27020096169782704, 1.3246231102772206)}
 COEFFICIENTS = {("fcdo", "violence"): -0.4151, ("pluie", "mobilisation"): -0.4837,
                 ("pluie", "violence"): 0.4695}   # amendement du 2026-11-15 (13 h 40), avant tout passage
+# 0.10.133 (décision d'auteur du 2026-11-15, 15 h 31, preenregistrements/conseil-durci.md) : variable retenue seule,
+# sens et force fixés D'AVANCE par le bon sens (aucun paramètre appris) : conseil aux voyageurs durci dans le mois
+# → violence un peu plus probable. Jugée sur les questions des jeux à venir seulement (version ≥ 0.10.133).
+DELTA_CONSEIL = 0.5          # en logit : 30 % → 41 %, 50 % → 62 %
+VERSION_CONSEIL = (0, 10, 133)
 FAMILLES = {"Battles": "violence", "Explosions/Remote violence": "violence", "Violence against civilians": "violence",
             "fatalities": "violence", "Protests": "mobilisation", "Riots": "mobilisation",
             "Strategic developments": "strategique"}
@@ -58,6 +63,11 @@ def z(ind: dict, k: str) -> float:
 
 def p_pertinent(p_b: float, fam: str, ind: dict) -> float:
     return ba.sigmoide(ba.logit(p_b) + sum(c * z(ind, k) for (k, g), c in COEFFICIENTS.items() if g == fam))
+
+
+def p_conseil(p_b: float, fam: str, ind: dict) -> float:
+    durci = fam == "violence" and bool((ind.get("presents") or {}).get("fcdo")) and float(ind.get("fcdo") or 0) > 0
+    return ba.sigmoide(ba.logit(p_b) + (DELTA_CONSEIL if durci else 0.0))
 
 
 def vus() -> set[str]:
@@ -89,6 +99,13 @@ def resumer(ls: list[dict]) -> dict:
                                 for g in sorted({x["famille"] for x in ok}) for s in [[x for x in ok if x["famille"] == g]]},
                 "critere": sr.critere_ombre_b([dict(x, o={"p": x["p_pertinent"]}) for x in ok], "o",
                                               "indicateurs_pertinents", exclure_vus=False)})
+    cd = [x for x in ok if x.get("p_conseil") is not None and ba.version(x) >= VERSION_CONSEIL]
+    if cd:
+        out["conseil_durci"] = {"n": len(cd), "touchees": sum(1 for x in cd if abs(x["p_conseil"] - x["p_B"]) > 1e-9),
+                                "B": round(sum(pl(x["p_B"], x["issue"]) for x in cd) / len(cd), 4),
+                                "conseil": round(sum(pl(x["p_conseil"], x["issue"]) for x in cd) / len(cd), 4),
+                                "critere": sr.critere_ombre_b([dict(x, o={"p": x["p_conseil"]}) for x in cd], "o",
+                                                              "conseil_durci", exclure_vus=False)}
     import audit_b                       # 0.10.130 : garde-fou sur B, par forme de question
     out["audit_b"] = audit_b.pour_resume(ls)
     return out
@@ -133,7 +150,8 @@ async def principal(max_q: int) -> int:
                 p_b = float(vue["frequence"])
                 fo.write(json.dumps({"type": "banc_indicateurs_frais", "jeu": j, "ordre": [r_, j], "question_id": x["qid"],
                                      "titre": x["titre"], "source_question": "acled", "pays": nom, "famille": fam, "version_bot": ap.VERSION_BOT, "issue": x["issue"],
-                                     "p_B": p_b, "p_pertinent": p_pertinent(p_b, fam, ind), **ind,
+                                     "p_B": p_b, "p_pertinent": p_pertinent(p_b, fam, ind),
+                                     "p_conseil": p_conseil(p_b, fam, ind), **ind,
                                      "licence": "ForecastBench, Forecasting Research Institute, CC BY-SA 4.0"},
                                     ensure_ascii=False) + "\n")
                 fo.flush()
