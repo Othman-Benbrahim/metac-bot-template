@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 8)                     # + signaux coûteux
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 8)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 16)
+        self.assertEqual(k, 9)                     # + indicateurs
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 9)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 18)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 9)              # + acte, désaccord, régimes, signaux
+        self.assertEqual(es.resume()["ouverts"], 10)             # + acte, désaccord, régimes, signaux, indicateurs
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -874,3 +874,18 @@ def test_aiguillage_ombre_118():
     assert a["p_A_recalibre"] < 0.45 and "p_AB_recalibre" in a          # le calibrage abaisse les probabilités moyennes
     b = ap.aiguillage_ombre("Will the Fed cut rates in December 2026?", "", {"plan": {"evenement": {"strate": 6}}}, 0.4)
     assert b["type"] == "macro" and "p_A_recalibre" not in b
+
+
+def test_banc_indicateurs_119():
+    import random
+    import banc_indicateurs as bi
+    assert bi.pays_de("Will there be more 'Riots' in Armenia for the 30 days before 2026-10-04?") == "Armenia"
+    rnd = random.Random(0)
+    ls = []
+    for i in range(240):
+        w = rnd.gauss(0, 1)
+        y = int(rnd.random() < bi.sig(-1.5 + 1.2 * w))
+        ls.append({"jeu": f"2026-0{7 + i % 3}-01", "question_id": f"fb:2026-0{7 + i % 3}-01:acled:q{i}:x", "issue": y,
+                   "p_A": 0.3, "p_B": 0.3, "wiki": w, "ioda": 0.0, "fcdo": 0.0, "pluie": 0.0, "presents": {"wiki": True}})
+    r = bi.resumer(ls)
+    assert r["coefficients_tout"]["wiki"] > 0.6 and r["A_recalibre_plus_indicateurs"] < r["A_recalibre"]
