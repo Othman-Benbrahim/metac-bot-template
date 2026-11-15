@@ -1,0 +1,50 @@
+name: Banc du langage
+
+# 0.10.112 : le langage comme acte et le désaccord comme signal, sur les questions de conflits (ACLED) du banc du bras A.
+# Un appel de modèle par question (gpt-5-mini, crédits Azure) ; plafond en dollars. Registre à part (registre/banc-l.jsonl).
+on:
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: "plafond en dollars pour ce passage"
+        default: "3"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_l:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Banc du langage
+        run: uv run python banc_l.py --budget "${{ github.event.inputs.budget || '3' }}"
+        env:
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          git add registre/banc-l.jsonl registre/banc-l.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc du langage du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

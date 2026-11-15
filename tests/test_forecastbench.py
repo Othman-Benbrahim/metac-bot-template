@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 4)                     # absence, A + B, aiguillage, signatures (combo clos)
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 4)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 8)
+        self.assertEqual(k, 6)                     # absence, A + B, aiguillage, signatures, acte, désaccord
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 6)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 12)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 5)              # absence, sans matrice, A + B, aiguillage, signatures
+        self.assertEqual(es.resume()["ouverts"], 7)              # + acte, désaccord
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -806,3 +806,16 @@ def test_poster_ab_111(poster_ab):
     q = ap.Question(id="q", url="u", titre="t", contexte="", criteres="", precisions="", resolution=None)
     txt = ap.commentaire(q, 0.1, "raison", dict(c7, evenement="E", semantique="S", vue={}), "AB")
     assert "AB" in txt and "raison" in txt
+
+
+def test_banc_langage_112():
+    import banc_l as bl
+    v = bl.variables([{"type": "acte", "sens": "hausse", "p": 0.8}, {"type": "acte", "sens": "hausse", "p": 0.7},
+                      {"type": "description", "sens": "baisse", "p": 0.2}])
+    assert v["n_actes"] == 2 and abs(v["E"] - 2 / 3) < 1e-9 and v["D"] > 0.2
+    # les actes en hausse annoncent les OUI : β appris positif, et la validation croisée l'applique hors du jeu
+    ls = [{"jeu": f"2026-0{7 + i % 3}-01", "question_id": f"q{i}", "issue": i % 2, "p_A": 0.5, "p_B": 0.4,
+           "E": 0.6 if i % 2 else -0.6, "D": 0.1, "n_actes": 1} for i in range(60)]
+    cv = bl.validation_croisee(ls)
+    assert len(cv) == 60 and all(x["beta"] > 0 for x in cv)
+    assert sum(x["p_acte"] > 0.5 for x in cv if x["issue"] == 1) == 30
