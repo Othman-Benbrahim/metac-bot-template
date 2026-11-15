@@ -58,3 +58,11 @@ Le B fourni à A' et à M est désormais le B corrigé (0.10.127, `erreur-b-acle
 qui motivait l'essai venait surtout de l'erreur : l'hypothèse devient « les notes séparées améliorent le jugement »,
 sans présumer de son sens. Protocole et critère inchangés ; les lignes antérieures à 0.10.127 ne comptent pas (il n'y
 en a aucune).
+
+## Amendement du 2026-11-15 (16 h 33), décision d'auteur, avant le second regard
+Les questions « dix fois plus » sont trivialement solubles (0 oui sur 74 ; toute méthode correcte y obtient environ
+0,001) et noient les écarts dans la moyenne (Hoover, Blayney et Whittington, arXiv 2026 : ne pas juger une méthode sur
+des tests trivialement solubles). **À partir de maintenant, le critère porte sur les questions « une fois »
+seulement.** La perte sur les 59 questions « une fois » du premier passage a été regardée (descriptif) : elles ne
+comptent pas ; le critère « une fois » se juge sur les questions des versions 0.10.136 et suivantes, 100 puis 200,
+même règle d'adoption. Le verdict du premier regard (« nominal seulement ») reste inscrit tel quel.

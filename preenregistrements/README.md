@@ -47,3 +47,7 @@ de `indicateurs-pertinents.md` (2026-11-15) :
   au-dessus / au-dessous de la normale) ;
 - **mesure stable** : une mesure qui peut diverger (division par un écart-type quasi nul, régions sèches) est bornée
   ou écartée avant le test.
+
+## Questions trivialement solubles (décision d'auteur du 2026-11-15, 16 h 33)
+Les verdicts sur les conflits ACLED portent sur la forme « une fois » seulement ; la forme « dix fois plus » (réponse
+presque toujours non) est décrite à part, jamais mêlée au critère.

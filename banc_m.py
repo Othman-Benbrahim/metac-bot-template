@@ -158,6 +158,14 @@ def resumer(ls: list[dict]) -> dict:
                               "observe": round(sum(x["issue"] for x in ok) / n, 3)},
                 "critere": sr.critere_ombre_b([dict(x, p_B=x["p_A"], o={"p": x["p_M"]}) for x in ok], "o",
                                               "jugements_intermediaires", exclure_vus=False)})
+    # amendement du 2026-11-15 (16 h 33) : critère sur les questions « une fois » seulement, versions ≥ 0.10.136
+    une = [x for x in ok if "ten times" not in x.get("titre", "") and ba.version(x) >= (0, 10, 136)]
+    if une:
+        out["une_fois"] = {"n": len(une), "A": round(sum(pl(x["p_A"], x["issue"]) for x in une) / len(une), 4),
+                           "M": round(sum(pl(x["p_M"], x["issue"]) for x in une) / len(une), 4),
+                           "B": round(sum(pl(x["p_B"], x["issue"]) for x in une) / len(une), 4),
+                           "critere": sr.critere_ombre_b([dict(x, p_B=x["p_A"], o={"p": x["p_M"]}) for x in une], "o",
+                                                         "jugements_intermediaires", exclure_vus=False)}
     complets = [x for x in ok if all(k in (x.get("notes") or {}) for k in CLES)]
     if len({x["jeu"] for x in complets}) >= 2:
         cv = lineaire_lojo(complets)

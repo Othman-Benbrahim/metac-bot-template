@@ -467,9 +467,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 12)                    # 0.10.135 : + contexte_meteo
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 12)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 24)
+        self.assertEqual(k, 9)                     # 0.10.136 : b_tendance, b_chronos, indicateurs_pertinents clos
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 9)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 18)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -479,7 +479,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 13)             # 0.10.135 : + contexte_meteo
+        self.assertEqual(es.resume()["ouverts"], 10)             # 0.10.136 : trois essais clos
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
