@@ -553,3 +553,170 @@
 {"pays": "Vietnam", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VVPB", "detail": "HTTP 429 : Too many requests"}}
 {"pays": "Wallis and Futuna", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "NLWW", "detail": "HTTP 429 : Too many requests"}}
 {"pays": "Zimbabwe", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FVBU", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Akrotiri and Dekhelia", "jeu": "2026-07-19", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Akrotiri and Dekhelia", "jeu": "2026-08-30", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Angola", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Antarctica", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Arctic Ocean", "jeu": "2026-10-11", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Atlantic Ocean", "jeu": "2026-09-13", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Australia", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Australia", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Bahrain", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Belgium", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Belize", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Bermuda", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Botswana", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Brazil", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "British Virgin Islands", "jeu": "2026-09-27", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Bulgaria", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Canada", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Caribbean Netherlands", "jeu": "2026-10-11", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "China", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Colombia", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Colombia", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Comoros", "jeu": "2026-09-13", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Croatia", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Croatia", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Cuba", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Cuba", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Curacao", "jeu": "2026-09-27", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Cyprus", "jeu": "2026-07-05", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Cyprus", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Czech Republic", "jeu": "2026-07-05", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Czech Republic", "jeu": "2026-08-16", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Czech Republic", "jeu": "2026-10-25", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Democratic Republic of Congo", "jeu": "2026-10-11", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Dominica", "jeu": "2026-10-11", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Dominica", "jeu": "2026-10-25", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Dominican Republic", "jeu": "2026-10-11", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "El Salvador", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Eritrea", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Eritrea", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Eritrea", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Falkland Islands", "jeu": "2026-09-27", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Faroe Islands", "jeu": "2026-08-30", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Faroe Islands", "jeu": "2026-10-25", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Fiji", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Fiji", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Finland", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Finland", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "France", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "French Guiana", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Ghana", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "0 séries utilisables"}}
+{"pays": "Greece", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Greece", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Guadeloupe", "jeu": "2026-08-30", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}}
+{"pays": "Guam", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "PGUM", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Guatemala", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MGGT", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Haiti", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MTPP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Honduras", "jeu": "2026-07-05", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MHSC", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Honduras", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MHSC", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Iran", "jeu": "2026-09-27", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OIFM", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Iraq", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "ORBI", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Israel", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LLBG", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Israel", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LLBG", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Israel", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LLBG", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Ivory Coast", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "DIAP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Jamaica", "jeu": "2026-07-05", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MKJP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Jamaica", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MKJP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Japan", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "RJTT", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Japan", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "RJTT", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Jordan", "jeu": "2026-07-05", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OJAI", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Jordan", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OJAI", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kazakhstan", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UAKD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kazakhstan", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UAKD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kazakhstan", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UAKD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kenya", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HKJK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kiribati", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "NGTA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kosovo", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "BKPR", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kuwait", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OKKK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Kyrgyzstan", "jeu": "2026-09-27", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UAFM", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Laos", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VLVT", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Latvia", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "EVRA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Latvia", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "EVRA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Lebanon", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OLBA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Lebanon", "jeu": "2026-10-25", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OLBA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Liberia", "jeu": "2026-10-25", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "GLRB", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Libya", "jeu": "2026-08-02", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HLLB", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Libya", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HLLB", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Libya", "jeu": "2026-10-25", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HLLB", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Lithuania", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "EYKA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Malawi", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FWKI", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Marshall Islands", "jeu": "2026-07-19", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "PKMJ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Mauritius", "jeu": "2026-07-05", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FIMP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Mayotte", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FMCZ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Mayotte", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FMCZ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Mediterranean Sea", "jeu": "2026-10-11", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Mediterranean Sea", "jeu": "2026-10-25", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Mexico", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MMAS", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Micronesia", "jeu": "2026-08-16", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "PTSA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Monaco", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Morocco", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "GMAD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Mozambique", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FQBR", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Myanmar", "jeu": "2026-08-16", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VYMD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Myanmar", "jeu": "2026-08-30", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VYMD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Myanmar", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VYMD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Namibia", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FYWH", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Nepal", "jeu": "2026-08-16", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VNBW", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Nepal", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VNBW", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Nigeria", "jeu": "2026-09-27", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "DNKA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Nigeria", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "DNKA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Niue", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "NIUE", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "North Korea", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "ZKPY", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "North Macedonia", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LWSK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Norway", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "ENVA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Oman", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OOMS", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Pacific Ocean", "jeu": "2026-10-25", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Palau", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "PTRO", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Panama", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "MPTO", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Papua New Guinea", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "AYNZ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Peru", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "SPCL", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Peru", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "SPCL", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Philippines", "jeu": "2026-07-05", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "RPLK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Philippines", "jeu": "2026-07-19", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "RPLK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Portugal", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LPPT", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Portugal", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LPPT", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Puerto Rico", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "TJSJ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Qatar", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OTHH", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Russia", "jeu": "2026-07-19", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UNKL", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Russia", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UNKL", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Russia", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UNKL", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Rwanda", "jeu": "2026-08-16", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HRYR", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Rwanda", "jeu": "2026-10-25", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HRYR", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Saint-Barthelemy", "jeu": "2026-09-27", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "TFFJ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Saint-Martin", "jeu": "2026-07-05", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "TFFG", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Senegal", "jeu": "2026-07-19", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "GOBD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Senegal", "jeu": "2026-10-25", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "GOBD", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Serbia", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LYBE", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Seychelles", "jeu": "2026-07-19", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FSIA", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Slovenia", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "LJLJ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Solomon Islands", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "AGGH", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Solomon Islands", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "AGGH", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Somalia", "jeu": "2026-10-25", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HCMM", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "South Korea", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "RKTU", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Southern Ocean", "jeu": "2026-09-13", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Southern Ocean", "jeu": "2026-09-27", "wikimodif": {"present": false, "raison": "aucune page trouvée ou service indisponible"}, "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Sri Lanka", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VCBI", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Sudan", "jeu": "2026-08-02", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HSSK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Sudan", "jeu": "2026-09-27", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HSSK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Suriname", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "SMJP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Sweden", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "ESKS", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Syria", "jeu": "2026-08-16", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OSAP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Syria", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "OSAP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Tajikistan", "jeu": "2026-09-27", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UTDK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Tajikistan", "jeu": "2026-10-11", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "UTDK", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Tanzania", "jeu": "2026-07-19", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HTKJ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Tanzania", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HTKJ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Tokelau", "jeu": "2026-07-19", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Tokelau", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "aucun aéroport"}}
+{"pays": "Trinidad and Tobago", "jeu": "2026-09-27", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "TTCP", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Tunisia", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "DTTJ", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Tuvalu", "jeu": "2026-08-02", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "NGFU", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Uganda", "jeu": "2026-10-25", "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "HUEN", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Uruguay", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "SUMU", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Uruguay", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "SUMU", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Venezuela", "jeu": "2026-10-25", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "SVBC", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Vietnam", "jeu": "2026-08-30", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VVPB", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Vietnam", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "VVPB", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Wallis and Futuna", "jeu": "2026-09-13", "prix_alim": {"present": false, "raison": "pas de jeu WFP"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "NLWW", "detail": "HTTP 429 : Too many requests"}}
+{"pays": "Zimbabwe", "jeu": "2026-10-11", "prix_alim": {"present": false, "raison": "0 séries utilisables"}, "vols": {"present": false, "raison": "OpenSky indisponible", "aeroport": "FVBU", "detail": "HTTP 429 : Too many requests"}}
