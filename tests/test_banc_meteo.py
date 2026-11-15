@@ -24,6 +24,24 @@ class TestMeteo(unittest.TestCase):
         self.assertGreater(bm.p_meteo(18.0, 22.0), 0.9)
         self.assertEqual(bm.p_meteo(10.0, 30.0), 0.99)
 
+    def test_v2(self):
+        self.assertIsNone(bm.p_meteo2([1.0, 2.0]))                 # au moins trois modèles
+        self.assertAlmostEqual(bm.p_meteo2([0.0, 0.0, 0.0]), 0.5)
+        accord = bm.p_meteo2([3.0, 3.0, 3.0])
+        desaccord = bm.p_meteo2([0.0, 3.0, 6.0])                  # même moyenne, modèles en désaccord : moins sûr
+        self.assertGreater(accord, desaccord)
+        self.assertGreater(desaccord, 0.5)
+
+    def test_construites(self):
+        codes = ["a", "b", "c"]
+        self.assertEqual(bm.station_du_jour(date(2026, 10, 4), codes), bm.station_du_jour(date(2026, 10, 4), list(reversed(codes))))
+        h = {"time": [f"2026-10-0{j}T{i:02d}:00" for j in (4,) for i in range(24)] + [f"2026-10-11T{i:02d}:00" for i in range(24)]}
+        for k, m in enumerate(bm.MODELES_V2):
+            h[f"temperature_2m_previous_day7_{m}"] = [10.0] * 24 + [12.0 + k * 0.1] * 24
+        r = bm.v2_depuis_horaires(h, date(2026, 10, 4))
+        self.assertEqual(len(r["deltas"]), 5)
+        self.assertGreater(r["p"], 0.7)
+
     def test_moyenne_jour(self):
         h = [f"2026-07-05T{i:02d}:00" for i in range(24)] + [f"2026-07-06T{i:02d}:00" for i in range(24)]
         v = [10.0] * 24 + [20.0] * 24
