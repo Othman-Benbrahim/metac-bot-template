@@ -10,7 +10,7 @@ Familles (choisies par l'auteur) :
   Fonds mondial (communiqués, mises à jour ; 0.10.158) ;
 - voix_citoyennes (0.10.158) : Global Voices, 11 flux régionaux ;
 - think_tanks et economie (0.10.159) : ECFR ; Investing.com (actualité économique, indicateurs), investingLive
-  (0.10.160) ; famille dérivée « notation » : articles économiques qui nomment une agence de notation ;
+  (0.10.160), IATA (0.10.161) ; famille dérivée « notation » : articles économiques qui nomment une agence de notation ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
@@ -71,6 +71,7 @@ FLUX = {
     "economie": [
         "https://fr.investing.com/rss/news_14.rss",
         "https://fr.investing.com/rss/news_95.rss",
+        "https://www.iata.org/api/rss/pressrelease",   # 0.10.161 : IATA (demande passagers et fret, mensuelle)
         "https://investinglive.com/feed/",   # 0.10.160 : ex-ForexLive (macro, banques centrales, données au fil de l'eau)
     ],
     "renseignement": [
