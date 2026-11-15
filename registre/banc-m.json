@@ -1,0 +1,36 @@
+{
+  "version_bot": "0.10.127",
+  "n": 116,
+  "note": "perte log, plus bas = mieux ; A' et M sur les mêmes entrées",
+  "A": 0.2329,
+  "M": 0.2098,
+  "B": 0.2108,
+  "A_recalibre": 0.21,
+  "p_moyenne": {
+    "A": 0.169,
+    "M": 0.154,
+    "observe": 0.095
+  },
+  "critere": {
+    "n_nouveaux": 116,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 6,
+    "ecart_moyen": -0.023822698610854624,
+    "intervalle_90_par_blocs": [
+      -0.04565363152163378,
+      -0.004037531332697709
+    ],
+    "intervalle_corrige": [
+      -0.06214649106516007,
+      0.0033001789098621895
+    ],
+    "niveau_corrige": 0.9917,
+    "verdict": "critère nominal seulement (pas au niveau corrigé)"
+  },
+  "lineaire_descriptif": {
+    "n": 116,
+    "lineaire": 0.2031,
+    "A_meme_questions": 0.2329
+  }
+}
