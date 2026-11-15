@@ -14,6 +14,8 @@ os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-")  # 0.8.0 
 os.environ["ALPHABET_TESTS"] = "1"
 import alphabet_modeles as am  # noqa: E402
 import alphabet_pipeline as ap  # noqa: E402
+import alphabet_pipeline as _ap_regle_ab
+_ap_regle_ab.POSTER_AB = False   # 0.10.122 : tests écrits avant la règle AB ; la CI lance unittest, sans conftest
 import test_pipeline as tp  # noqa: E402
 
 def setUpModule():

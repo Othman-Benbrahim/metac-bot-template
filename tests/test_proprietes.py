@@ -27,6 +27,8 @@ os.environ.setdefault("ALPHABET_SKILL_DIR", str(pathlib.Path(__file__).resolve()
 from hypothesis import HealthCheck, given, settings, strategies as st  # noqa: E402
 
 import alphabet_pipeline as ap  # noqa: E402
+import alphabet_pipeline as _ap_regle_ab
+_ap_regle_ab.POSTER_AB = False   # 0.10.122 : tests écrits avant la règle AB ; la CI lance unittest, sans conftest
 
 M = ap._moteur()
 REGLAGE = settings(max_examples=300, deadline=None, derandomize=True,

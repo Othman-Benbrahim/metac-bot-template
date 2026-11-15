@@ -19,6 +19,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-")  # 0.8.0 : forcé, pas setdefault
 os.environ["ALPHABET_TESTS"] = "1"
 import alphabet_pipeline as ap  # noqa: E402
+import alphabet_pipeline as _ap_regle_ab
+_ap_regle_ab.POSTER_AB = False   # 0.10.122 : tests écrits avant la règle AB ; la CI lance unittest, sans conftest
 import test_pipeline as tp  # noqa: E402  (données fictives communes ; règle NB_VUES = 1, classe non figée)
 import alphabet_retro as ar  # noqa: E402
 import score_registre as sr  # noqa: E402

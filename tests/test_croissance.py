@@ -10,6 +10,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import alphabet_compte as ac  # noqa: E402
 import alphabet_pipeline as ap  # noqa: E402
+import alphabet_pipeline as _ap_regle_ab
+_ap_regle_ab.POSTER_AB = False   # 0.10.122 : tests écrits avant la règle AB ; la CI lance unittest, sans conftest
 import score_registre as sr  # noqa: E402
 
 FYONET = [1789, 1863, 2011, 2160, 2293, 2472, 2655, 2729, 2983, 3518, 3457, 3603, 3537, 3455, 3506, 3692, 3853, 3982,
