@@ -10,7 +10,7 @@ Indicateurs (sources gratuites, sans clé, vérifiées par la sonde du 2026-11-1
 - fcdo : conseils aux voyageurs du Royaume-Uni, nombre de changements dans les 30 jours avant la date dont la note
   parle de sécurité (manifestation, troubles, violence, couvre-feu, « advise against »…) (API de contenu de gov.uk) ;
 - pluie : écart de précipitations des 90 derniers jours à la moyenne des mêmes 90 jours sur les 10 années
-  précédentes, en écarts-types, à la capitale (archive Open-Meteo ; coordonnées par restcountries.com).
+  précédentes, en écarts-types, à la capitale (archive Open-Meteo ; coordonnées de la capitale par la Banque mondiale depuis 0.10.150).
 Indicateur absent (territoire, océan, source muette) : 0 (neutre).
 
 Modèles, validation croisée « un jeu laissé de côté » :
@@ -69,18 +69,48 @@ async def obtenir(c: httpx.AsyncClient, url: str, pause: float = 0.3):
         LENTEURS.setdefault(httpx.URL(url).host, []).append(time.monotonic() - t)
 
 
+BANQUE_MONDIALE = "https://api.worldbank.org/v2/country?format=json&per_page=400"
+ALIAS_BM = {  # nom des questions ACLED → nom de la Banque mondiale
+    "russia": "russian federation", "iran": "iran, islamic rep.", "egypt": "egypt, arab rep.", "syria": "syrian arab republic",
+    "yemen": "yemen, rep.", "venezuela": "venezuela, rb", "laos": "lao pdr", "north korea": "korea, dem. people's rep.",
+    "south korea": "korea, rep.", "democratic republic of congo": "congo, dem. rep.", "republic of congo": "congo, rep.",
+    "ivory coast": "cote d'ivoire", "gambia": "gambia, the", "bahamas": "bahamas, the", "kyrgyzstan": "kyrgyz republic",
+    "slovakia": "slovak republic", "turkey": "turkiye", "micronesia": "micronesia, fed. sts.", "palestine": "west bank and gaza",
+    "brunei": "brunei darussalam", "cape verde": "cabo verde", "czech republic": "czechia", "macedonia": "north macedonia",
+    "vietnam": "viet nam", "hong kong": "hong kong sar, china", "macau": "macao sar, china", "saint lucia": "st. lucia",
+    "saint kitts and nevis": "st. kitts and nevis", "saint vincent and the grenadines": "st. vincent and the grenadines",
+    "east timor": "timor-leste", "swaziland": "eswatini",
+}
+_PAYS_BM: dict | None = None
+
+
+async def _table_bm(c) -> dict:
+    """0.10.150 : table des pays de la Banque mondiale (code ISO, capitale, coordonnées), gratuite et sans clé."""
+    global _PAYS_BM
+    if _PAYS_BM is None:
+        _PAYS_BM = {}
+        j = await obtenir(c, BANQUE_MONDIALE)
+        if isinstance(j, list) and len(j) > 1:
+            for e in j[1] or []:
+                if (e.get("region") or {}).get("value") == "Aggregates" or not e.get("latitude"):
+                    continue
+                _PAYS_BM[e["name"].lower()] = {"cca2": e.get("iso2Code"), "commun": e["name"], "capitale": e.get("capitalCity"),
+                                               "latlng": [float(e["latitude"]), float(e["longitude"])]}
+    return _PAYS_BM
+
+
 async def fiche_pays(c, nom: str, cache: dict) -> dict:
+    """0.10.150 : REST Countries a fermé ses anciennes versions (v1 à v4 retirées, v5 avec clé obligatoire) : notre appel
+    /v3.1 ne renvoyait plus rien. Source principale : la Banque mondiale (capitale et coordonnées) ; repli sur le
+    géocodage d'Open-Meteo pour les territoires qu'elle ne couvre pas."""
     if nom in cache:
         return cache[nom]
-    j = await obtenir(c, f"https://restcountries.com/v3.1/name/{nom}?fields=name,cca2,capitalInfo,latlng")
     f = {"nom": nom}
-    if isinstance(j, list) and j:
-        e = j[0]
-        f.update(cca2=e.get("cca2"), commun=(e.get("name") or {}).get("common") or nom,
-                 latlng=(e.get("capitalInfo") or {}).get("latlng") or e.get("latlng"))
+    table = await _table_bm(c)
+    e = table.get(nom.lower()) or table.get(ALIAS_BM.get(nom.lower(), ""))
+    if e:
+        f.update(cca2=e["cca2"], commun=nom, latlng=e["latlng"], capitale=e["capitale"], source_pays="Banque mondiale")
     if not f.get("cca2") or not f.get("latlng"):
-        # 0.10.122 : restcountries.com n'a rien renvoyé depuis GitHub Actions (passage 43674444304) ; repli sur le
-        # géocodage d'Open-Meteo (même fournisseur que la pluie, joignable) : entité politique (code PCL*) de ce nom
         g = await obtenir(c, f"https://geocoding-api.open-meteo.com/v1/search?name={nom}&count=10&language=en&format=json")
         res = (g or {}).get("results") or []
         e = next((r for r in res if str(r.get("feature_code", "")).startswith("PCL")), None)

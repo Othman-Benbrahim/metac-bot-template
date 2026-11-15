@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.150** — fiche pays : REST Countries a retiré ses versions v1 à v4 (v5 avec compte et clé) ; notre appel /v3.1 ne renvoyait plus rien (d'où les échecs depuis GitHub). Remplacé par la table des pays de la Banque mondiale (code ISO, capitale, coordonnées ; gratuite, sans clé), repli Open-Meteo inchangé.
 - **0.10.149** — **GeoConfirmed pour Metaculus** (décision d'auteur du 2026-11-15, 20 h 57) : nouvelle source du bot (`geoconfirmed`) : images de guerre vérifiées par géolocalisation (export KML public par conflit), avec distance à une localité et rayon ; complète `front_ukraine` (DeepState, producteur unique) par un producteur indépendant. Lecteur de dates tolérant ; sonde du format réel dans le workflow des indicateurs de niche.
 - **0.10.148** — Telegram : la clé de session est extraite du secret même si l'en-tête « === CLÉ DE SESSION … === » a été collé avec elle (passage 43752517798 : 430 caractères commençant par « = »).
 - **0.10.147** — **Violations Watch en ombre** (décision d'auteur du 2026-11-15, 20 h 32) : collecteur quotidien (workflow programmé, 6 h 17 UTC) qui ne garde que des comptes pays × jour × gravité (site sans licence, éditeur anonyme, données depuis le 2026-11-06) ; indicateur « incident grave signalé dans les 14 jours » dans l'observatoire inductif, mesuré seulement sur les dates couvertes (jeux à venir).
