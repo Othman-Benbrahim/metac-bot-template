@@ -6,7 +6,9 @@ Familles (choisies par l'auteur) :
 - officiel : ReliefWeb (ONU, rapports humanitaires), avis de voyage britanniques, alertes GDACS et séismes USGS ;
 - parlement_ue (0.10.155) : Parlement européen (relations extérieures, commissions AFET, DROI, SEDE, propositions de
   résolution, textes adoptés) : l'attention institutionnelle européenne portée à un pays ;
-- sante (0.10.157) : OMS Disease Outbreak News (API OData), ECDC (menaces, mises à jour, risques, grippe aviaire) ;
+- sante (0.10.157) : OMS Disease Outbreak News (API OData), ECDC (menaces, mises à jour, risques, grippe aviaire),
+  Fonds mondial (communiqués, mises à jour ; 0.10.158) ;
+- voix_citoyennes (0.10.158) : Global Voices, 11 flux régionaux ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
@@ -49,7 +51,14 @@ FLUX = {
         "https://www.ecdc.europa.eu/en/taxonomy/term/1310/feed",   # mises à jour épidémiologiques
         "https://www.ecdc.europa.eu/en/taxonomy/term/1295/feed",   # évaluations de risque
         "https://www.ecdc.europa.eu/en/taxonomy/term/323/feed",    # grippe aviaire
+        "https://www.theglobalfund.org/data/rss-feeds/news-releases/",  # 0.10.158 : Fonds mondial, communiqués
+        "https://www.theglobalfund.org/data/rss-feeds/updates/",        # 0.10.158 : Fonds mondial, mises à jour
     ],
+    # 0.10.158 : Global Voices (médias citoyens, réseau mondial de blogueurs et traducteurs) ; les 11 flux régionaux
+    # couvrent tous les pays, le pays de chaque article est détecté comme ailleurs.
+    "voix_citoyennes": [f"https://globalvoices.org/-/world/{r}/feed/" for r in (
+        "caribbean", "central-asia-caucasus", "east-asia", "eastern-central-europe", "latin-america", "north-america",
+        "oceania", "south-asia", "sub-saharan-africa", "middle-east-north-africa", "western-europe")],
     "renseignement": [
         "http://feeds.feedburner.com/IntelligenceOnline-fr",
         "http://feeds.feedburner.com/AfricaIntelligence-fr",

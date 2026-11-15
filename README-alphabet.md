@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.158** — collecteur RSS : Fonds mondial (communiqués, mises à jour) dans la famille « sante » ; nouvelle famille « voix_citoyennes » (Global Voices, 11 flux régionaux) et état « Global Voices en parle » dans l'observatoire.
 - **0.10.157** — collecteur RSS : famille « sante » (OMS Disease Outbreak News par l'API OData du site, ECDC : rapport hebdomadaire des menaces, mises à jour épidémiologiques, évaluations de risque, grippe aviaire) ; état « l'OMS ou l'ECDC en parlent » dans l'observatoire. Flux IMDRF écarté (figé depuis 2021, dispositifs médicaux).
 - **0.10.156** — collecteur RSS : ONU Info (toutes les actualités) dans la famille officielle ; lettres confidentielles d'Indigo Publications en titres seuls : Intelligence Online et Africa Intelligence (famille « renseignement », état « les lettres de renseignement en parlent » dans l'observatoire), La Lettre et Glitz (famille « lettres_fr », collectée, non branchée sur les conflits).
 - **0.10.155** — collecteur RSS : famille « parlement_ue » (Parlement européen : relations extérieures, commissions AFET, DROI, SEDE, propositions de résolution, textes adoptés), état « le Parlement européen s'en saisit » dans l'observatoire. Les ordres du jour des plénières sont notés pour le B Metaculus (questions de vote européen), sans code.
