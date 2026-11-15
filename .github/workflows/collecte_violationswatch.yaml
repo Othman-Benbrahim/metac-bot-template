@@ -1,0 +1,44 @@
+name: Collecte quotidienne Violations Watch (ombre)
+
+# 0.10.147 : comptes quotidiens (pays, jour, gravité) du journal violationswatch.org, sans texte ; pour l'observatoire
+# inductif. Gratuit, aucun modèle de langue, rien de posté.
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+# file à part : une collecte programmée ne doit jamais prendre la place d'attente d'un banc lancé à la main
+# (GitHub n'en garde qu'une par file) ; elle n'écrit que son propre fichier, et « pull --rebase » règle le reste
+concurrency:
+  group: collecte-violationswatch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 10
+        run: uv run python collecte_violationswatch.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/violationswatch-comptes.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : Violations Watch du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

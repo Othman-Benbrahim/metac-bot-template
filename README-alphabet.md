@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.147** — **Violations Watch en ombre** (décision d'auteur du 2026-11-15, 20 h 32) : collecteur quotidien (workflow programmé, 6 h 17 UTC) qui ne garde que des comptes pays × jour × gravité (site sans licence, éditeur anonyme, données depuis le 2026-11-06) ; indicateur « incident grave signalé dans les 14 jours » dans l'observatoire inductif, mesuré seulement sur les dates couvertes (jeux à venir).
 - **0.10.146** — Telegram : la clé de session est nettoyée (retours à la ligne, espaces, guillemets collés depuis PowerShell : « Not a valid string » au passage 43750832459) ; en cas de refus, le journal donne sa longueur et son premier caractère, jamais son contenu.
 - **0.10.145** — vols : « 0 arrivée puis 0 arrivée » compte comme non mesuré (régions sans récepteurs OpenSky : 45 cas sur 66) ; identifiants Telegram lus dans les secrets ou les variables (`TELEGRAM_API_ID` absent des secrets au passage 43746883769).
 - **0.10.144** — vols OpenSky : 2 jours par demande (limite d'OpenSky, « 2 partitions »), 2 jours avant la date contre les 2 mêmes jours quatre semaines plus tôt ; code pays par la table d'OurAirports (la recherche précédente échouait pour 65 pays). Deuxième passage des niches : modifications Wikipedia 155/185, prix alimentaires 50/185 (le WFP couvre surtout les pays en développement).

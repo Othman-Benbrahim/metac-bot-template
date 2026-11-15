@@ -27,6 +27,8 @@ ETATS = {
                   ("prix alimentaires stables ou en baisse", lambda v: v <= 0.02)),
     "vols": (("vols en baisse (> 20 %)", lambda v: v < -0.22), ("vols stables ou en hausse", lambda v: v > -0.05)),
     "telegram": (("Telegram s'emballe (× 1,5)", lambda v: v > 0.4), ("Telegram se tait (÷ 1,5)", lambda v: v < -0.4)),
+    "violationswatch": (("Violations Watch signale un incident grave", lambda v: v >= 1),
+                        ("Violations Watch ne signale rien de grave", lambda v: v == 0)),
 }
 NICHE = Path("registre") / "indicateurs-niche.jsonl"
 
@@ -49,7 +51,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure

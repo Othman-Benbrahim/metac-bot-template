@@ -20,7 +20,11 @@ STRICTEMENT avant la date du jeu :
   Telegram (tous les canaux publics, aucun choix de canaux) sur le nom du pays en anglais : log((messages des 14 jours
   avant la date + 1) / (messages des 14 jours précédents + 1)), au plus 400 messages lus par couple. Idée de l'auteur :
   les canaux publient avant la presse ; emballement, calme ou silence.
-Les quatre passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
+- violationswatch (0.10.147, en ombre) : incidents graves (gravité « High » ou « Critical ») signalés par
+  violationswatch.org dans le pays, premiers signalements dans les 14 jours avant la date ; lu dans nos comptes
+  quotidiens (collecte_violationswatch.py) ; mesuré seulement si ces 14 jours sont couverts (données depuis le
+  2026-11-06).
+Les cinq passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
 Registre : registre/indicateurs-niche.jsonl.
 
     python indicateurs_niche.py
@@ -316,6 +320,21 @@ async def telegram(tg: Telegram, pays: str, d0: date) -> dict:
             "messages_14j": recent, "messages_14j_avant": avant}
 
 
+VW_COMPTES = Path("registre") / "violationswatch-comptes.csv"
+VW_DEBUT = date(2026, 11, 6)
+
+
+def violationswatch(pays: str, d0: date) -> dict:
+    if d0 - timedelta(days=14) < VW_DEBUT or not VW_COMPTES.exists():
+        return {"present": False, "raison": "période non couverte"}
+    n = 0
+    for x in csv.DictReader(VW_COMPTES.open(encoding="utf-8")):
+        j = date.fromisoformat(x["jour"])
+        if x["pays"].lower() == pays.lower() and d0 - timedelta(days=14) <= j < d0 and x["gravite"] in ("High", "Critical"):
+            n += int(x["incidents"])
+    return {"present": True, "valeur": float(n), "incidents_graves_14j": n}
+
+
 async def principal() -> int:
     if not SOURCE.exists():
         print("Pas de registre source.")
@@ -328,7 +347,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram") if (x.get(k) or {}).get("present"))
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch") if (x.get(k) or {}).get("present"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
     async with httpx.AsyncClient(headers=UA, follow_redirects=True) as c:
@@ -358,12 +377,14 @@ async def principal() -> int:
                     ligne["vols"] = await vols(os_, c, pays, d0, cache_pays)
                 if "telegram" not in fait and tg.disponible:
                     ligne["telegram"] = await telegram(tg, pays, d0)
+                if "violationswatch" not in fait and d0 - timedelta(days=14) >= VW_DEBUT:
+                    ligne["violationswatch"] = violationswatch(pays, d0)
                 if len(ligne) == 2:
                     continue
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch") if k in ligne))
         await tg.fermer()
     return 0
 
