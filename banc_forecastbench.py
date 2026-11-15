@@ -109,15 +109,28 @@ def _vue(f: float, classe: str, source: str, periode: str, disponible: str, calc
     return v
 
 
-def b_acled(m: float) -> float:
+def b_acled(m: float, facteur: float = 1.0) -> float:
     """« Plus d'événements dans les 30 jours avant R que la moyenne sur 30 jours des 360 jours avant D » (m, valeur au
     gel). Compte total K = 12·m sur 12 fenêtres ; taux a posteriori Gamma(K + ½, 12) (Jeffreys) ; compte d'une nouvelle
     fenêtre : binomiale négative (r = K + ½, p = 12/13). P(N > m) = 1 − Σ_{n ≤ ⌊m⌋} P(N = n). Ne voit pas la
-    surdispersion des conflits (rafales) : pour les morts, la vraie probabilité est plutôt plus basse."""
-    r, q = 12 * max(m, 0.0) + 0.5, 1 / 13
+    surdispersion des conflits (rafales) : pour les morts, la vraie probabilité est plutôt plus basse.
+
+    0.10.127 (erreur trouvée le 2026-11-15) : pour les questions « plus de DIX FOIS plus … que UN PLUS la moyenne »,
+    la valeur au gel est m = 1 + moyenne et le seuil est 10·m. Avant, le code calculait P(N > m) comme pour la forme
+    simple : environ 40 % annoncés là où la vraie probabilité est quasi nulle (0 oui sur 74 questions)."""
+    if facteur != 1.0:
+        moyenne, seuil = max(m - 1.0, 0.0), facteur * m
+    else:
+        moyenne, seuil = max(m, 0.0), m
+    r, q = 12 * moyenne + 0.5, 1 / 13
     cdf = sum(math.exp(math.lgamma(n + r) - math.lgamma(r) - math.lgamma(n + 1) + r * math.log(1 - q) + n * math.log(q))
-              for n in range(int(math.floor(m)) + 1))
+              for n in range(int(math.floor(seuil)) + 1))
     return 1 - cdf
+
+
+def facteur_acled(texte: str) -> float:
+    """0.10.127 : 10 pour la forme « more than ten times as many … compared to one plus the 30-day average »."""
+    return 10.0 if "ten times" in (texte or "").lower() else 1.0
 
 
 def b_hausse(points: list[dict], h: int, avant: date, annees: int = 5) -> tuple[float, int, int] | None:
@@ -240,10 +253,12 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
     try:
         if src == "acled":
             m = float(q.get("freeze_datetime_value"))
-            return _vue(b_acled(m), "fenêtres de 30 jours du même pays et du même type d'événement (ACLED)",
+            fa = facteur_acled(q.get("question") or x.get("titre", ""))
+            return _vue(b_acled(m, fa), "fenêtres de 30 jours du même pays et du même type d'événement (ACLED)",
                         "ForecastBench, valeur de référence au gel (moyenne ACLED sur 30 jours, 360 jours)",
                         f"360 jours avant {gel}", gel,
-                        f"binomiale négative, r = 12·{m:.4g} + 0,5, p = 12/13 ; P(N > {m:.4g}) (Jeffreys)", x,
+                        (f"binomiale négative, r = 12·{m:.4g} + 0,5, p = 12/13 ; P(N > {m:.4g}) (Jeffreys)" if fa == 1.0 else
+                         f"binomiale négative, r = 12·({m:.4g} − 1) + 0,5, p = 12/13 ; P(N > 10·{m:.4g}) (Jeffreys)"), x,
                         "la classe suppose un taux stable (Poisson-gamma) ; le critère compare la fenêtre de 30 jours qui "
                         "finit à la résolution à la moyenne des 360 jours avant le gel, et les conflits arrivent en rafales")
         if src == "yfinance" and "higher rate of return than" in q.get("question", ""):
