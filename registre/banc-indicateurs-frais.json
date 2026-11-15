@@ -1,0 +1,50 @@
+{
+  "version_bot": "0.10.130",
+  "n": 199,
+  "note": "perte log, plus bas = mieux ; aucun modèle de langue",
+  "B": 0.492,
+  "pertinent": 0.6436,
+  "touchees": 142,
+  "par_famille": {
+    "mobilisation": {
+      "n": 56,
+      "oui": 15,
+      "B": 0.5094,
+      "pertinent": 0.6764
+    },
+    "strategique": {
+      "n": 42,
+      "oui": 13,
+      "B": 0.5828,
+      "pertinent": 0.5828
+    },
+    "violence": {
+      "n": 101,
+      "oui": 30,
+      "B": 0.4445,
+      "pertinent": 0.6508
+    }
+  },
+  "critere": {
+    "n_nouveaux": 199,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 9,
+    "ecart_moyen": 0.1599459834019941,
+    "intervalle_90_par_blocs": [
+      0.031841143646820044,
+      0.2680140940306174
+    ],
+    "intervalle_corrige": [
+      -7.40752945873176e-05,
+      0.3114022655135
+    ],
+    "niveau_corrige": 0.9875,
+    "verdict": "critère non atteint ; un second regard à 200"
+  },
+  "audit_b": {
+    "alertes": [],
+    "a_surveiller": [],
+    "seuil": "|z| > 3.0 sur au moins 20 questions, écart répété dans au moins 3 jeux"
+  }
+}
