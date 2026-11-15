@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 6)                     # absence, A + B, aiguillage, signatures, acte, désaccord
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 6)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 12)
+        self.assertEqual(k, 7)                     # absence, A + B, aiguillage, signatures, acte, désaccord, régimes
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 7)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 14)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 7)              # + acte, désaccord
+        self.assertEqual(es.resume()["ouverts"], 8)              # + acte, désaccord, régimes
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -819,3 +819,18 @@ def test_banc_langage_112():
     cv = bl.validation_croisee(ls)
     assert len(cv) == 60 and all(x["beta"] > 0 for x in cv)
     assert sum(x["p_acte"] > 0.5 for x in cv if x["issue"] == 1) == 30
+
+
+def test_regimes_113():
+    from datetime import date, timedelta
+    import math
+    import banc_b as bb
+    d0 = date(2026, 9, 13)
+    pts = [{"date": (d0 - timedelta(days=i)).isoformat(),
+            "valeur": 15 + 10 * math.cos(2 * math.pi * ((d0 - timedelta(days=i)).timetuple().tm_yday - 200) / 365.25)}
+           for i in range(1, 3650)]
+    pr = bb.proprietes(pts, d0, {"phi": 0.01})
+    assert pr["saison_forte"] and not pr["inertie_forte"]
+    assert bb.aiguiller(pr, 0.5, {"p": 0.6}, {"p": 0.1}) == ("B_saison", 0.1)
+    assert bb.aiguiller({"inertie_forte": True}, 0.5, {"p": 0.6}, None) == ("B_AR", 0.6)
+    assert bb.aiguiller({}, 0.5, None, None) == ("B", 0.5)
