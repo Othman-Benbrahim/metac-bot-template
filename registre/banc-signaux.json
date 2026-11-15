@@ -1,0 +1,30 @@
+{
+  "version_bot": "0.10.114",
+  "n": 150,
+  "note": "perte log, plus bas = mieux ; validation croisée par jeu",
+  "A": 0.4434,
+  "B": 0.4929,
+  "signaux": 0.4487,
+  "beta_G_tout": 0.106,
+  "beta_K_tout": -0.47,
+  "hypothese_signes": "βG < 0 (la parole gratuite surestime), βK > 0 (le signal coûteux annonce)",
+  "questions_avec_gratuits": 14,
+  "questions_avec_couteux": 30,
+  "critere": {
+    "n_nouveaux": 150,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 6,
+    "ecart_moyen": -0.0020747389454274954,
+    "intervalle_90_par_blocs": [
+      -0.006754644878839028,
+      0.002940088011202634
+    ],
+    "intervalle_corrige": [
+      -0.008925005184156277,
+      0.005203193853424236
+    ],
+    "niveau_corrige": 0.9875,
+    "verdict": "critère non atteint ; un second regard à 200"
+  }
+}
