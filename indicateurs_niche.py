@@ -322,6 +322,7 @@ async def telegram(tg: Telegram, pays: str, d0: date) -> dict:
 
 VW_COMPTES = Path("registre") / "violationswatch-comptes.csv"
 VW_DEBUT = date(2026, 11, 6)
+VW_ALIAS = {"dr congo": "democratic republic of congo", "republic of the congo": "republic of congo"}
 
 
 def violationswatch(pays: str, d0: date) -> dict:
@@ -330,7 +331,7 @@ def violationswatch(pays: str, d0: date) -> dict:
     n = 0
     for x in csv.DictReader(VW_COMPTES.open(encoding="utf-8")):
         j = date.fromisoformat(x["jour"])
-        if x["pays"].lower() == pays.lower() and d0 - timedelta(days=14) <= j < d0 and x["gravite"] in ("High", "Critical"):
+        if VW_ALIAS.get(x["pays"].lower(), x["pays"].lower()) == pays.lower() and d0 - timedelta(days=14) <= j < d0 and x["gravite"] in ("High", "Critical"):
             n += int(x["incidents"])
     return {"present": True, "valeur": float(n), "incidents_graves_14j": n}
 
