@@ -6,6 +6,7 @@ Familles (choisies par l'auteur) :
 - officiel : ReliefWeb (ONU, rapports humanitaires), avis de voyage britanniques, alertes GDACS et séismes USGS ;
 - parlement_ue (0.10.155) : Parlement européen (relations extérieures, commissions AFET, DROI, SEDE, propositions de
   résolution, textes adoptés) : l'attention institutionnelle européenne portée à un pays ;
+- sante (0.10.157) : OMS Disease Outbreak News (API OData), ECDC (menaces, mises à jour, risques, grippe aviaire) ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
@@ -40,6 +41,15 @@ FLUX = {
     # 0.10.156 (décision d'auteur du 2026-11-15, 21 h 56) : lettres confidentielles d'Indigo Publications, TITRES SEULS
     # (contenu réservé aux abonnés) ; le renseignement et l'Afrique sont suivis à part ; La Lettre (pouvoir en France)
     # et Glitz (industrie du luxe) sont collectés dans une famille distincte, non branchée sur les conflits.
+    # 0.10.157 (2026-11-15, 22 h) : santé mondiale. OMS « Disease Outbreak News » par son API OData (le site n'a plus
+    # de RSS) et les flux de l'ECDC sur les menaces. Le flux IMDRF proposé est figé depuis 2021 (dispositifs médicaux).
+    "sante": [
+        "https://www.who.int/api/news/diseaseoutbreaknews?$orderby=PublicationDateAndTime%20desc&$top=50",
+        "https://www.ecdc.europa.eu/en/taxonomy/term/1505/feed",   # rapport hebdomadaire des menaces transmissibles
+        "https://www.ecdc.europa.eu/en/taxonomy/term/1310/feed",   # mises à jour épidémiologiques
+        "https://www.ecdc.europa.eu/en/taxonomy/term/1295/feed",   # évaluations de risque
+        "https://www.ecdc.europa.eu/en/taxonomy/term/323/feed",    # grippe aviaire
+    ],
     "renseignement": [
         "http://feeds.feedburner.com/IntelligenceOnline-fr",
         "http://feeds.feedburner.com/AfricaIntelligence-fr",
@@ -140,6 +150,21 @@ def articles(xml: bytes, titres_seuls: bool = False) -> list[dict]:
     return out
 
 
+def articles_oms(donnees: dict) -> list[dict]:
+    """API OData de l'OMS (Disease Outbreak News) : titre (« maladie – pays ») et résumé, date de publication réelle."""
+    out = []
+    for v in donnees.get("value", []):
+        quand = v.get("PublicationDateAndTime") or v.get("PublicationDate") or ""
+        try:
+            jour = datetime.fromisoformat(quand.replace("Z", "+00:00")).astimezone(timezone.utc).date().isoformat()
+        except Exception:
+            continue
+        texte = re.sub(r"<[^>]+>", " ", f"{v.get('OverrideTitle') or v.get('Title') or ''} {v.get('Summary') or ''}")
+        cle = str(v.get("Id") or v.get("DonId") or v.get("UrlName") or texte[:80])
+        out.append({"jour": jour, "texte": texte, "empreinte": hashlib.sha1(("oms:" + cle).encode()).hexdigest()[:16]})
+    return out
+
+
 def principal() -> int:
     vus = set(VUS.read_text(encoding="utf-8").split()) if VUS.exists() else set()
     comptes: dict[tuple, int] = {}
@@ -155,7 +180,8 @@ def principal() -> int:
                 try:
                     r = c.get(url)
                     r.raise_for_status()
-                    arts = articles(r.content, titres_seuls=famille in TITRES_SEULS)
+                    arts = (articles_oms(r.json()) if "/api/" in url
+                            else articles(r.content, titres_seuls=famille in TITRES_SEULS))
                 except Exception as e:
                     print(f"  flux indisponible : {url[:70]} ({type(e).__name__})")
                     continue

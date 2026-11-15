@@ -20,7 +20,11 @@ class TestRSS(unittest.TestCase):
         a = cr.articles(xml)
         r = cr.articles(b'<rss><channel><item><title>Paris</title><description>Mali Niger</description>'
                         b'<guid>g</guid></item></channel></rss>', titres_seuls=True)
-        self.assertEqual(r[0]["texte"].strip(), "Paris")                 # lettres réservées aux abonnés : titre seul
+        self.assertEqual(r[0]["texte"].strip(), "Paris")
+        o = cr.articles_oms({"value": [{"Id": "x", "Title": "Marburg virus disease - Ethiopia", "Summary": "<p>cas</p>",
+                                        "PublicationDateAndTime": "2026-11-14T10:00:00Z"}, {"Id": "y", "Title": "sans date"}]})
+        self.assertEqual((len(o), o[0]["jour"]), (1, "2026-11-14"))
+        self.assertIn("Ethiopia", o[0]["texte"])                 # lettres réservées aux abonnés : titre seul
         self.assertEqual((a[0]["jour"], a[0]["texte"].strip()), ("2026-11-15", "Mali"))
 
 

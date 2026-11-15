@@ -358,7 +358,7 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
     absent = {"present": False, "raison": "période non couverte ou pays inconnu"}
     if not cca2 or not RSS_COMPTES.exists() or d0 - timedelta(days=14) < RSS_DEBUT:
         return absent, absent
-    rec = av = off = pe = ren = 0
+    rec = av = off = pe = ren = san = 0
     for x in csv.DictReader(RSS_COMPTES.open(encoding="utf-8")):
         if x["pays"] != cca2:
             continue
@@ -370,6 +370,8 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
             pe += n
         if x["famille"] == "renseignement" and d0 - timedelta(days=14) <= j < d0:
             ren += n
+        if x["famille"] == "sante" and d0 - timedelta(days=14) <= j < d0:
+            san += n
         if x["famille"] == "presse":
             if d0 - timedelta(days=14) <= j < d0:
                 rec += n
@@ -378,7 +380,7 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
     presse = ({"present": True, "valeur": round(math.log((rec + 1) / (av + 1)), 4), "articles_14j": rec, "articles_14j_avant": av}
               if d0 - timedelta(days=28) >= RSS_DEBUT else absent)
     return presse, {"present": True, "valeur": float(off), "articles_officiels_14j": off, "parlement_ue_14j": pe,
-                    "renseignement_14j": ren}
+                    "renseignement_14j": ren, "sante_14j": san}
 
 
 async def principal() -> int:

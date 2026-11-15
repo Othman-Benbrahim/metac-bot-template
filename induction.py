@@ -33,6 +33,7 @@ ETATS = {
     "rss_officiel": (("sources officielles actives (≥ 3 articles)", lambda v: v >= 3), ("sources officielles muettes", lambda v: v == 0)),
     "rss_parlement_ue": (("le Parlement européen s'en saisit", lambda v: v >= 1), ("le Parlement européen n'en parle pas", lambda v: v == 0)),
     "rss_renseignement": (("les lettres de renseignement en parlent", lambda v: v >= 1), ("les lettres de renseignement n'en parlent pas", lambda v: v == 0)),
+    "rss_sante": (("l'OMS ou l'ECDC en parlent", lambda v: v >= 1), ("ni l'OMS ni l'ECDC n'en parlent", lambda v: v == 0)),
     "brouillage_gps": (("brouillage GPS présent (≥ 5 % des zones)", lambda v: v >= 0.05), ("aucun brouillage GPS", lambda v: v == 0)),
 }
 NICHE = Path("registre") / "indicateurs-niche.jsonl"
@@ -71,6 +72,9 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
                     if k == "rss_officiel" and v.get("renseignement_14j") is not None:  # 0.10.156
                         x["rss_renseignement"] = float(v["renseignement_14j"])
                         x["presents"]["rss_renseignement"] = True
+                    if k == "rss_officiel" and v.get("sante_14j") is not None:  # 0.10.157
+                        x["rss_sante"] = float(v["sante_14j"])
+                        x["presents"]["rss_sante"] = True
         out.append(x)
     return out
 LOTS_MIN, N_MIN, MEME_SENS = 4, 20, 0.75

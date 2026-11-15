@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.157** — collecteur RSS : famille « sante » (OMS Disease Outbreak News par l'API OData du site, ECDC : rapport hebdomadaire des menaces, mises à jour épidémiologiques, évaluations de risque, grippe aviaire) ; état « l'OMS ou l'ECDC en parlent » dans l'observatoire. Flux IMDRF écarté (figé depuis 2021, dispositifs médicaux).
 - **0.10.156** — collecteur RSS : ONU Info (toutes les actualités) dans la famille officielle ; lettres confidentielles d'Indigo Publications en titres seuls : Intelligence Online et Africa Intelligence (famille « renseignement », état « les lettres de renseignement en parlent » dans l'observatoire), La Lettre et Glitz (famille « lettres_fr », collectée, non branchée sur les conflits).
 - **0.10.155** — collecteur RSS : famille « parlement_ue » (Parlement européen : relations extérieures, commissions AFET, DROI, SEDE, propositions de résolution, textes adoptés), état « le Parlement européen s'en saisit » dans l'observatoire. Les ordres du jour des plénières sont notés pour le B Metaculus (questions de vote européen), sans code.
 - **0.10.154** — découverte des canaux Telegram élargie (option B de l'auteur, 2026-11-15, 21 h 46) : mots-clés régionaux (international, Afrique, Moyen-Orient, Asie, Amérique latine), au moins 10 000 abonnés, les 40 plus suivis, titres en alphabet latin ; premier passage : 7 canaux seulement, dont 3 hors sujet.
