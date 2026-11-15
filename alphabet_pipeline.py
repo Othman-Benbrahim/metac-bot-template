@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.117"
+VERSION_BOT = "0.10.118"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -2715,6 +2715,50 @@ def combiner_ab(p_a: float, p_b: float) -> float:
     return borner(1 / (1 + math.exp(-(0.5 * lg(p_a) + 0.5 * lg(p_b)))))
 
 
+# 0.10.118 (décision d'auteur du 2026-11-15 : « coder toutes les avancées en termes d'idées ») : l'aiguillage de la
+# nuit du 14 au 15 novembre, enregistré à chaque question, EN OMBRE (le bras posté ne change pas : la participation aux
+# tournois attendra une avancée significative, décision d'auteur). Trois couches :
+# - type de question et régime causal par mots clés (type_question.py, sans modèle de langue) ;
+# - régimes lus dans les cartes de l'alphabet (l'alphabet comme aiguilleur, pas comme prédicteur) ;
+# - A recalibré (Platt) pour les conflits : logit p = a + b·logit A, a = −1,354, b = 0,775, appris le 2026-11-15 sur
+#   150 questions ACLED (gpt-5-mini, banc du bras A ; validation croisée par jeu : perte log 0,414 contre 0,443 pour A).
+#   Limite déclarée : appris sur des questions ACLED « pic d'événements » (12 % de OUI) ; le transfert aux questions
+#   Metaculus est précisément ce que l'ombre mesure.
+PLATT_CONFLIT = (-1.354, 0.775)
+CARTES_REGIMES = {"PER": "cycle_force", "TRC": "inertie", "CTR": "inertie", "RSN": "contagion", "RES": "contagion",
+                  "CRO": "contagion", "SEU": "seuil", "POL": "intention", "HIE": "intention", "REC": "intention",
+                  "INC": "incertitude"}
+
+
+def aiguillage_ombre(titre: str, criteres: str, c: dict, p_A: float | None) -> dict:
+    import type_question as tq
+    t = tq.classer(titre or "", criteres or "")
+    try:
+        strate = entier_strate(((c.get("plan") or {}).get("evenement") or {}).get("strate"))
+    except Exception:
+        strate = None
+    regimes_cartes = sorted({CARTES_REGIMES[_code_sur(m)] for m in re.findall(r"([A-ZÉÈ·]+)@\d+", str(c.get("etat") or ""))
+                             if _code_sur(m) in CARTES_REGIMES})
+    conflit = t["type"] == "conflit" or strate in STRATES_AB
+    out = {"type": t["type"], "regime": t["regime"], "regle": t["regle"], "strate": strate,
+           "regimes_par_cartes": regimes_cartes}
+    if conflit and p_A is not None:
+        a, b = PLATT_CONFLIT
+        lg = lambda p: math.log(borner(p) / (1 - borner(p)))
+        p_rec = borner(1 / (1 + math.exp(-(a + b * lg(p_A)))))
+        out["p_A_recalibre"] = p_rec
+        if c.get("p_B") is not None:
+            out["p_AB_recalibre"] = combiner_ab(p_rec, c["p_B"])
+    return out
+
+
+def _code_sur(m: str) -> str | None:
+    try:
+        return code_carte(m)
+    except Exception:
+        return None
+
+
 def choisir_bras(c: dict, p_A: float) -> tuple[str, float]:
     """AB (½A + ½B) pour les événements humains (strates 7 et 13) qui ont un taux de base (0.10.111) ; sinon B si
     l'alphabet est estimé (C en ombre, POSTER_C) ou si l'état est nul ; A sinon."""
@@ -2996,7 +3040,8 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "critique": c.get("critique"),
                             "correction": ({k: corr.get(k) for k in ("decalage_logit", "n", "calcule_le")}
                                            if corr and c.get("p_C") is not None else None)}},
-             "bras_poste": poste, "p_poste": p_poste}
+             "bras_poste": poste, "p_poste": p_poste,
+             "aiguillage": aiguillage_ombre(q.titre, q.criteres, c, p_A)}     # 0.10.118 : en ombre
     texte = commentaire(q, p_A, a_raison, c, poste)
     if not publie:  # 0.2.0 (audit, B5) : un passage à blanc ne prétend pas avoir posté
         texte = texte.replace("Posted arm:", "Arm selected (dry run, not posted):", 1)
