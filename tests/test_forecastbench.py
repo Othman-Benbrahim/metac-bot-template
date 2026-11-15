@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 2)                     # absence, A + B (15/11) ; liens, B_AR, B saisonnier clos
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 2)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 4)
+        self.assertEqual(k, 4)                     # absence, A + B, motifs ordinaux, combo ABO ; trois essais clos
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 4)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 8)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 3)              # absence, sans matrice, A + B
+        self.assertEqual(es.resume()["ouverts"], 5)              # absence, sans matrice, A + B, motifs, combo
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -761,3 +761,25 @@ def test_banc_a_106(tmp_path, monkeypatch):
     c = ba.consigne_a({"titre": "T", "criteres": "C", "contexte": "X"}, {"frequence": 0.4, "calcul": "k/n"},
                       [{"date": "2026-08-01", "valeur": 1}], "", "2026-08-02")
     assert "0.400" in c and "2026-08-01 : 1" in c
+
+
+def test_motifs_ordinaux_108():
+    from datetime import date, timedelta
+    import banc_o as bo
+    assert bo.motif([1, 2, 3]) == (0, 1, 2) and bo.motif([3, 2, 1]) == (2, 1, 0) and bo.motif([5, 5, 1]) == (2, 0, 1)
+    d0 = date(2026, 8, 1)
+    # série alternée régulière : après « monte, baisse », toujours une hausse à 1 jour
+    vals = [(1 if i % 2 else 0) for i in range(400)]
+    pts = bo.preparer([{"date": (d0 - timedelta(days=400 - i)).isoformat(), "valeur": v} for i, v in enumerate(vals)], d0)
+    ps = bo.paires(pts, 1, d0)
+    assert ps and all(len(m) == 3 for m, _ in ps)
+    e = bo.entropie_permutation(pts)
+    assert e is not None and e < 0.5                   # série très régulière : peu d'entropie
+    assert bo.jeffreys(1, 4) is None and abs(bo.jeffreys(5, 5) - 5.5 / 6) < 1e-9
+    qs = [{"jeu": "2026-08-01", "question_id": f"q{s}", "source_question": "fred", "serie": f"fred:{s}", "issue": 1,
+           "p_B": 0.5, "h": 1, "_pts": pts} for s in range(3)]
+    ls = bo.calculer(qs)
+    assert all(x["p_O_local"] is not None and x["p_O_trans"] is not None for x in ls)
+    assert all(x["n_trans"] == 2 * x["n_local"] for x in ls)      # les deux autres séries, pas elle-même
+    import essais as es
+    assert es.ESSAIS["motifs_ordinaux"]["statut"] == "ouvert" and es.ESSAIS["combo_abo"]["statut"] == "ouvert"
