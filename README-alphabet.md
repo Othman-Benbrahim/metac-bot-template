@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.148** — Telegram : la clé de session est extraite du secret même si l'en-tête « === CLÉ DE SESSION … === » a été collé avec elle (passage 43752517798 : 430 caractères commençant par « = »).
 - **0.10.147** — **Violations Watch en ombre** (décision d'auteur du 2026-11-15, 20 h 32) : collecteur quotidien (workflow programmé, 6 h 17 UTC) qui ne garde que des comptes pays × jour × gravité (site sans licence, éditeur anonyme, données depuis le 2026-11-06) ; indicateur « incident grave signalé dans les 14 jours » dans l'observatoire inductif, mesuré seulement sur les dates couvertes (jeux à venir).
 - **0.10.146** — Telegram : la clé de session est nettoyée (retours à la ligne, espaces, guillemets collés depuis PowerShell : « Not a valid string » au passage 43750832459) ; en cas de refus, le journal donne sa longueur et son premier caractère, jamais son contenu.
 - **0.10.145** — vols : « 0 arrivée puis 0 arrivée » compte comme non mesuré (régions sans récepteurs OpenSky : 45 cas sur 66) ; identifiants Telegram lus dans les secrets ou les variables (`TELEGRAM_API_ID` absent des secrets au passage 43746883769).

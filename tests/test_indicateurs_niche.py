@@ -126,6 +126,10 @@ class TestNiche(unittest.TestCase):
                                           "TELEGRAM_SESSION": '"1AbC\r\n dEf\n"'}):
             tg = ni.Telegram()
         self.assertEqual((tg.id, tg.session), ("123", "1AbCdEf"))
+        cle = "1" + "A" * 300 + "x="
+        with mock.patch.dict(os.environ, {"TELEGRAM_API_ID": "1", "TELEGRAM_API_HASH": "a",
+                                          "TELEGRAM_SESSION": "=== CLÉ DE SESSION (à mettre dans le secret) ===\n" + cle + "\n=== fin de la clé ==="}):
+            self.assertEqual(ni.Telegram().session, cle)
 
     def test_induction_lit_les_niches(self):
         import pathlib

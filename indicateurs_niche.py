@@ -264,7 +264,11 @@ class Telegram:
         self.hash = os.environ.get("TELEGRAM_API_HASH", "").strip().strip("\"'")
         import re
         # 0.10.146 : la clé collée depuis PowerShell peut contenir des retours à la ligne, des espaces ou des guillemets
-        self.session = re.sub(r"\s+", "", os.environ.get("TELEGRAM_SESSION", "")).strip("\"'")
+        brut = re.sub(r"\s+", "", os.environ.get("TELEGRAM_SESSION", "")).strip("\"'")
+        # 0.10.148 : si l'en-tête « === CLÉ DE SESSION … === » a été collé avec la clé, on ne garde que la clé elle-même
+        # (une longue suite qui commence par « 1 », alphabet base64 ; elle peut finir par « = », c'est normal)
+        m = re.search(r"1[A-Za-z0-9+/_-]{200,}={0,2}", brut)
+        self.session = m.group(0) if m else brut
         self.client = None
         self.derniere_erreur = ""
 
