@@ -862,3 +862,15 @@ def test_type_question_115():
     for t, attendu in cas.items():
         assert tq.classer(t)["type"] == attendu, t
     assert tq.classer("Will there be more 'Protests' in Chad?")["regime"] == ["intention", "contagion"]
+
+
+def test_aiguillage_ombre_118():
+    import alphabet_pipeline as ap
+    c = {"p_B": 0.3, "etat": "[2026-09-27 | 7 jours] PÉRIODICITÉ@7[f] + POLARITÉ@7[F]",
+         "plan": {"evenement": {"strate": 7}}}
+    a = ap.aiguillage_ombre("Will Russia and Ukraine agree to a ceasefire before 2027?", "", c, 0.45)
+    assert a["type"] == "conflit" and a["strate"] == 7
+    assert a["regimes_par_cartes"] == ["cycle_force", "intention"]
+    assert a["p_A_recalibre"] < 0.45 and "p_AB_recalibre" in a          # le calibrage abaisse les probabilités moyennes
+    b = ap.aiguillage_ombre("Will the Fed cut rates in December 2026?", "", {"plan": {"evenement": {"strate": 6}}}, 0.4)
+    assert b["type"] == "macro" and "p_A_recalibre" not in b

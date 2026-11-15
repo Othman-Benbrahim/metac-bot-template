@@ -354,6 +354,10 @@ async def un_test(x: dict, jeu: str, llm, deja: set[str]) -> dict | None:
         ligne["ombre_b_ar"] = x["_b_ar"]
     if x.get("_b_saison") is not None:
         ligne["ombre_b_saison"] = x["_b_saison"]
+    try:                                         # 0.10.118 : type, régime et régimes lus dans les cartes, en ombre
+        ligne["aiguillage"] = ap.aiguillage_ombre(x["titre"], x.get("criteres") or "", c, None)
+    except Exception as e:
+        ligne["aiguillage"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
     if not ligne.get("ombre_series") and x.get("_releve"):       # 0.10.78 : série du banc, bornée à D
         try:
             import ombres_auto as oa
