@@ -889,3 +889,18 @@ def test_banc_indicateurs_119():
                    "p_A": 0.3, "p_B": 0.3, "wiki": w, "ioda": 0.0, "fcdo": 0.0, "pluie": 0.0, "presents": {"wiki": True}})
     r = bi.resumer(ls)
     assert r["coefficients_tout"]["wiki"] > 0.6 and r["A_recalibre_plus_indicateurs"] < r["A_recalibre"]
+
+
+def test_gdelt_comptes_120():
+    import io, zipfile
+    import gdelt_comptes as gc
+    def ligne(racine, lieu):
+        cols = [""] * 58
+        cols[gc.COL_RACINE], cols[gc.COL_LIEU] = racine, lieu
+        return "\t".join(cols)
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as z:
+        z.writestr("x.CSV", "\n".join([ligne("14", "Yerevan, Yerevan, Armenia"), ligne("14", "Gyumri, Shirak, Armenia"),
+                                       ligne("19", "Khartoum, Sudan"), ligne("01", "Paris, France")]) + "\n")
+    c = gc.agreger(buf.getvalue())
+    assert c[("Armenia", "manif")] == 2 and c[("Sudan", "violence")] == 1 and ("France", "manif") not in c

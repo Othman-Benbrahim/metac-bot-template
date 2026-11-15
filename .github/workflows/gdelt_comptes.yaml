@@ -1,0 +1,47 @@
+name: Comptes GDELT
+
+# 0.10.120 : comptes quotidiens d'événements par pays (manifestations, violences, menaces) tirés des fichiers
+# quotidiens publics de GDELT 1.0, pour les seuils de mobilisation (croyance des acteurs). Gratuit, sans clé.
+on:
+  workflow_dispatch:
+    inputs:
+      debut:
+        description: "premier jour (AAAA-MM-JJ)"
+        default: "2026-03-01"
+      fin:
+        description: "dernier jour (AAAA-MM-JJ)"
+        default: "2026-10-31"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  comptes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Comptes GDELT
+        run: uv run python gdelt_comptes.py --debut "${{ github.event.inputs.debut || '2026-03-01' }}" --fin "${{ github.event.inputs.fin || '2026-10-31' }}"
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          git add registre/gdelt-comptes.csv || true
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : comptes GDELT du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
