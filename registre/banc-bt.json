@@ -1,0 +1,55 @@
+{
+  "version_bot": "0.10.132",
+  "questions": 832,
+  "appliquees": 689,
+  "note": "perte log, plus bas = mieux ; aucun modèle de langue ; B_tendance appliqué aux séries fréquentes seulement",
+  "hors_motif": {
+    "n": 650,
+    "B": 0.6787,
+    "B_tendance": 0.6807
+  },
+  "ecarts_de_credit_descriptif": {
+    "n": 39,
+    "oui": 27,
+    "B": 0.8094,
+    "B_tendance": 0.7758
+  },
+  "par_source": {
+    "fred": {
+      "n": 260,
+      "B": 0.659,
+      "B_tendance": 0.6487
+    },
+    "dbnomics": {
+      "n": 390,
+      "B": 0.6919,
+      "B_tendance": 0.702
+    }
+  },
+  "critere": {
+    "n_nouveaux": 650,
+    "regard": 2,
+    "n_juge": 200,
+    "blocs": 17,
+    "ecart_moyen": -0.0074089372907527665,
+    "intervalle_90_par_blocs": [
+      -0.03338439455413391,
+      0.01698357982399604
+    ],
+    "intervalle_corrige": [
+      -0.05573498207961173,
+      0.03177416504456466
+    ],
+    "niveau_corrige": 0.995,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "audit_b": {
+    "alertes": [
+      "fred · <Nom> the option-adjusted spread of securities with an investment grade rating of <Nom> in : B annonce 40% en moyenne, 15 oui sur 20 (75%), écart +3.2 écarts-types, même sens dans 78% de 9 jeux"
+    ],
+    "a_surveiller": [
+      "dbnomics · <Nom> is the probability that the value of the <Nom> time series “<Nom> nominal government : B annonce 56% en moyenne, 5 oui sur 26 (19%), écart -3.7 écarts-types, même sens dans 100% de 2 jeux"
+    ],
+    "seuil": "|z| > 3.0 sur au moins 20 questions, écart répété dans au moins 3 jeux"
+  }
+}
