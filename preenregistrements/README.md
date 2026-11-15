@@ -48,6 +48,15 @@ de `indicateurs-pertinents.md` (2026-11-15) :
 - **mesure stable** : une mesure qui peut diverger (division par un écart-type quasi nul, régions sèches) est bornée
   ou écartée avant le test.
 
-## Questions trivialement solubles (décision d'auteur du 2026-11-15, 16 h 33)
-Les verdicts sur les conflits ACLED portent sur la forme « une fois » seulement ; la forme « dix fois plus » (réponse
-presque toujours non) est décrite à part, jamais mêlée au critère.
+## Le piège des tests trivialement solubles (décisions d'auteur du 2026-11-15, 16 h 33 et 16 h 43)
+Avertissement de Hoover, Blayney et Whittington (« Classical Energies Learn to Reason 1,000x Faster than Looped
+Models », arXiv, 12 nov. 2026) : une méthode jugée sur des épreuves trivialement solubles paraît meilleure qu'elle
+n'est, et les écarts entre méthodes disparaissent dans la moyenne. Chez nous : les questions ACLED « dix fois plus »
+(0 oui sur 74, toute méthode correcte y obtient environ 0,001) formaient la moitié des questions de conflits.
+Règles :
+1. les verdicts sur les conflits ACLED portent sur la forme « une fois » seulement ; la forme « dix fois plus » est
+   décrite à part, jamais mêlée au critère ;
+2. avant d'écrire un critère, regarder quelle part des questions est jouée d'avance (B sous 2 % ou au-dessus de
+   98 %, ou une forme dont la réponse est presque toujours la même) et l'exclure ou la décrire à part ;
+3. un score s'annonce toujours à côté de la référence « pile ou face » (0,693) et de B, pour qu'on voie la marge
+   réelle et non un chiffre flatteur.
