@@ -85,7 +85,8 @@ class TestNiche(unittest.TestCase):
 
             async def get(self, url, params=None, headers=None, timeout=None):
                 assert headers == {"Authorization": "Bearer t"}
-                n = 9 if params["end"] - params["begin"] == 7 * 86400 and params["end"] % 86400 == 0 and params["begin"] > 1788000000 else 19
+                assert params["end"] - params["begin"] <= 2 * 86400          # OpenSky : 2 jours au plus par demande
+                n = 9
                 return Rep([{}] * n)
 
         with mock.patch.dict(os.environ, {"OPENSKY_CLIENT_ID": "i", "OPENSKY_CLIENT_SECRET": "s"}):
@@ -94,7 +95,7 @@ class TestNiche(unittest.TestCase):
             o.aeroports = [{"iso_country": "KE", "type": "large_airport", "scheduled_service": "yes", "ident": "HKJK",
                             "latitude_deg": "-1.3", "longitude_deg": "36.9"}]
             self.assertEqual(lancer(o.aeroport("KE", [-1.28, 36.8])), "HKJK")
-            n = lancer(o.arrivees("HKJK", date(2026, 8, 25), date(2026, 9, 1)))
+            n = lancer(o.arrivees("HKJK", date(2026, 8, 30), date(2026, 9, 1)))
             self.assertIsInstance(n, int)
 
     def test_telegram(self):

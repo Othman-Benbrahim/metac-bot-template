@@ -13,7 +13,8 @@ STRICTEMENT avant la date du jeu :
   précède les émeutes.
 - vols (0.10.140, si OPENSKY_CLIENT_ID et OPENSKY_CLIENT_SECRET sont fournis) : arrivées à l'aéroport principal du pays
   (le plus grand aéroport à vols réguliers le plus proche de la capitale, base OurAirports), OpenSky Network :
-  log((arrivées des 7 jours avant la date + 1) / (arrivées des 7 jours, quatre semaines plus tôt + 1)). Idée de
+  log((arrivées des 2 jours avant la date + 1) / (arrivées des 2 mêmes jours, quatre semaines plus tôt + 1))
+  (OpenSky limite chaque demande à 2 jours). Idée de
   l'auteur : l'espace aérien comme signal de niche (perturbations, fermetures, fuites).
 - telegram (0.10.143, si TELEGRAM_API_ID, TELEGRAM_API_HASH et TELEGRAM_SESSION sont fournis) : recherche globale de
   Telegram (tous les canaux publics, aucun choix de canaux) sur le nom du pays en anglais : log((messages des 14 jours
@@ -153,6 +154,7 @@ async def prix_alim(c: httpx.AsyncClient, pays: str, d0: date, cache: dict, cach
 
 
 OURAIRPORTS = "https://davidmegginson.github.io/ourairports-data/airports.csv"
+OURAIRPORTS_PAYS = "https://davidmegginson.github.io/ourairports-data/countries.csv"
 JETON_URL = "https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token"
 
 
@@ -165,7 +167,23 @@ class OpenSky:
         self.secret = os.environ.get("OPENSKY_CLIENT_SECRET", "").strip()
         self.jeton, self.expire = None, 0.0
         self.aeroports: list[dict] | None = None
+        self.codes_pays: dict[str, str] | None = None
         self.derniere_erreur = ""
+
+    async def code_pays(self, nom: str) -> str | None:
+        """0.10.144 : code ISO du pays par la table d'OurAirports (même source que les aéroports, stable)."""
+        if self.codes_pays is None:
+            r = await obtenir(self.c, OURAIRPORTS_PAYS)
+            self.codes_pays = {}
+            for x in (csv.DictReader(io.StringIO(r.text)) if r is not None else []):
+                self.codes_pays[x["name"].lower()] = x["code"]
+                for k in (x.get("keywords") or "").split(","):
+                    if k.strip():
+                        self.codes_pays.setdefault(k.strip().lower(), x["code"])
+        n = nom.lower()
+        alias = {"ivory coast": "côte d'ivoire", "democratic republic of congo": "congo (kinshasa)",
+                 "republic of congo": "congo (brazzaville)", "czech republic": "czechia", "curacao": "curaçao"}
+        return self.codes_pays.get(n) or self.codes_pays.get(alias.get(n, ""))
 
     @property
     def disponible(self) -> bool:
@@ -219,15 +237,17 @@ class OpenSky:
 async def vols(os_: OpenSky, c: httpx.AsyncClient, pays: str, d0: date, cache_pays: dict) -> dict:
     import banc_indicateurs as bi
     f = await bi.fiche_pays(c, pays, cache_pays)
-    icao = await os_.aeroport(f.get("cca2"), f.get("latlng"))
+    icao = await os_.aeroport(await os_.code_pays(pays) or f.get("cca2"), f.get("latlng"))
     if not icao:
         return {"present": False, "raison": "aucun aéroport"}
-    recent = await os_.arrivees(icao, d0 - timedelta(days=7), d0)
-    avant = await os_.arrivees(icao, d0 - timedelta(days=35), d0 - timedelta(days=28))
+    # 0.10.144 : OpenSky n'accepte que 2 jours par demande (« only query across 2 partitions ») : 2 jours avant la
+    # date contre les 2 mêmes jours de la semaine, quatre semaines plus tôt
+    recent = await os_.arrivees(icao, d0 - timedelta(days=2), d0)
+    avant = await os_.arrivees(icao, d0 - timedelta(days=30), d0 - timedelta(days=28))
     if recent is None or avant is None:
         return {"present": False, "raison": "OpenSky indisponible", "aeroport": icao, "detail": os_.derniere_erreur}
     return {"present": True, "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "aeroport": icao,
-            "arrivees_7j": recent, "arrivees_7j_un_mois_avant": avant}
+            "arrivees_2j": recent, "arrivees_2j_quatre_semaines_avant": avant}
 
 
 class Telegram:
