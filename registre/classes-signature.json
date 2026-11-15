@@ -1,0 +1,46 @@
+{
+  "note": "perte log, plus bas = mieux ; B_sig = (k + 10·B)/(n + 10) sur les jeux antérieurs de même signature",
+  "questions_test": 183,
+  "avec_cas_comparables": 155,
+  "B": 0.6764,
+  "B_sig": 0.6874,
+  "par_source": {
+    "acled": {
+      "n": 43,
+      "B": 0.5551,
+      "B_sig": 0.61
+    },
+    "dbnomics": {
+      "n": 48,
+      "B": 0.6894,
+      "B_sig": 0.6408
+    },
+    "fred": {
+      "n": 54,
+      "B": 0.7584,
+      "B_sig": 0.7671
+    },
+    "yfinance": {
+      "n": 10,
+      "B": 0.6931,
+      "B_sig": 0.8136
+    }
+  },
+  "critere": {
+    "n_nouveaux": 155,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 6,
+    "ecart_moyen": -0.030525304226427033,
+    "intervalle_90_par_blocs": [
+      -0.06247695695355353,
+      0.0276453101127527
+    ],
+    "intervalle_corrige": [
+      -0.06886547294924059,
+      0.05619252610109763
+    ],
+    "niveau_corrige": 0.975,
+    "verdict": "critère non atteint ; un second regard à 200"
+  }
+}
