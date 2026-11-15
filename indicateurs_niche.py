@@ -267,6 +267,7 @@ class Telegram:
         brut = re.sub(r"\s+", "", os.environ.get("TELEGRAM_SESSION", "")).strip("\"'")
         # 0.10.148 : si l'en-tête « === CLÉ DE SESSION … === » a été collé avec la clé, on ne garde que la clé elle-même
         # (une longue suite qui commence par « 1 », alphabet base64 ; elle peut finir par « = », c'est normal)
+        brut = re.sub(r"===[^=]*?===", "", brut)          # en-tête et pied « === … === » retirés d'abord
         m = re.search(r"1[A-Za-z0-9+/_-]{200,}={0,2}", brut)
         self.session = m.group(0) if m else brut
         self.client = None
