@@ -1,0 +1,38 @@
+{
+  "version_bot": "0.10.121",
+  "n": 150,
+  "note": "perte log, plus bas = mieux ; validation croisée par jeu",
+  "A": 0.4434,
+  "B": 0.4929,
+  "A_recalibre": 0.4143,
+  "A_recalibre_plus_indicateurs": 0.4157,
+  "coefficients_tout": {
+    "wiki": -0.188,
+    "ioda": 0.0,
+    "fcdo": -0.55,
+    "pluie": 0.0
+  },
+  "presence": {
+    "wiki": 80,
+    "ioda": 0,
+    "fcdo": 133,
+    "pluie": 0
+  },
+  "critere": {
+    "n_nouveaux": 150,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 6,
+    "ecart_moyen": 0.0024498784554952188,
+    "intervalle_90_par_blocs": [
+      -0.0031993816944802618,
+      0.009004343363254858
+    ],
+    "intervalle_corrige": [
+      -0.005796515887815931,
+      0.01279729191211273
+    ],
+    "niveau_corrige": 0.9889,
+    "verdict": "critère non atteint ; un second regard à 200"
+  }
+}
