@@ -904,3 +904,19 @@ def test_gdelt_comptes_120():
                                        ligne("19", "Khartoum, Sudan"), ligne("01", "Paris, France")]) + "\n")
     c = gc.agreger(buf.getvalue())
     assert c[("Armenia", "manif")] == 2 and c[("Sudan", "violence")] == 1 and ("France", "manif") not in c
+
+
+def test_banc_indicateurs_principal_121(tmp_path, monkeypatch):
+    """0.10.121 : le passage complet s'exécute (le premier a échoué sur un `async with` mêlant un fichier)."""
+    import asyncio, json
+    import banc_indicateurs as bi
+    monkeypatch.setattr(bi, "FICHIER", tmp_path / "i.jsonl")
+    monkeypatch.setattr(bi, "RESUME", tmp_path / "i.json")
+    monkeypatch.setattr(bi.ba, "lignes", lambda: [{"source_question": "acled", "modeles_A": bi.MODELE, "p_A": 0.3,
+        "exclue": False, "issue": 0, "question_id": "fb:2026-08-02:acled:q1:x", "jeu": "2026-08-02", "p_B": 0.3,
+        "titre": "Will there be more 'Riots' in Armenia for the 30 days before 2026-08-09?", "ordre": [0, "2026-08-02"]}])
+    async def faux_obtenir(c, url, pause=1.0):
+        return None
+    monkeypatch.setattr(bi, "obtenir", faux_obtenir)
+    assert asyncio.run(bi.principal()) == 0
+    assert json.loads((tmp_path / "i.jsonl").read_text().splitlines()[0])["pays"] == "Armenia"
