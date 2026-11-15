@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.110"
+VERSION_BOT = "0.10.111"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -2701,9 +2701,29 @@ async def critiquer(q: Question, dossier: dict, textes: str, critique: Llm, even
 # scellé et journalisé, en ombre. La règle sera revue au vu du critère enregistré, par décision d'auteur datée.
 POSTER_C = False
 
+# 0.10.111 : décision d'auteur du 2026-11-15 (option prudente, « au cas par cas, selon les sources »). Critère
+# pré-enregistré atteint au banc du bras A (preenregistrements/a-plus-b.md : 200 questions, ½A + ½B bat B, intervalle
+# corrigé sous 0 ; gain concentré sur les conflits ACLED). Le bot poste ½A + ½B (moyenne des logits) SEULEMENT pour les
+# événements humains couverts par la presse : événement en strate 7 (géopolitique) ou 13 (politique intérieure), avec un
+# taux de base. Ailleurs, la règle précédente. Limite déclarée : la strate est posée par le lecteur.
+POSTER_AB = True
+STRATES_AB = (7, 13)
+
+
+def combiner_ab(p_a: float, p_b: float) -> float:
+    lg = lambda p: math.log(borner(p) / (1 - borner(p)))
+    return borner(1 / (1 + math.exp(-(0.5 * lg(p_a) + 0.5 * lg(p_b)))))
+
 
 def choisir_bras(c: dict, p_A: float) -> tuple[str, float]:
-    """B si l'alphabet est estimé (C en ombre, POSTER_C) ou si l'état est nul (sans carte, pas d'ajustement) ; A sinon."""
+    """AB (½A + ½B) pour les événements humains (strates 7 et 13) qui ont un taux de base (0.10.111) ; sinon B si
+    l'alphabet est estimé (C en ombre, POSTER_C) ou si l'état est nul ; A sinon."""
+    try:
+        strate = entier_strate(((c.get("plan") or {}).get("evenement") or {}).get("strate"))
+    except Exception:
+        strate = None
+    if POSTER_AB and c.get("p_B") is not None and p_A is not None and strate in STRATES_AB:
+        return "AB", combiner_ab(p_A, c["p_B"])
     if c.get("statut") == "estime":
         if POSTER_C:
             return "C", borner(c["p_C"])
@@ -2718,7 +2738,8 @@ def choisir_bras(c: dict, p_A: float) -> tuple[str, float]:
 def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> str:
     """Le commentaire publié : il dit quel bras a été posté et pourquoi (règle FutureEval : refléter le raisonnement)."""
     libelle = {"C": "C, structural alphabet", "B": "B, reference-class base rate (no structure read)",
-               "A": "A, model alone (outside the alphabet)"}[poste]
+               "A": "A, model alone (outside the alphabet)",
+               "AB": "AB, average of the model's judgment (A) and the reference-class base rate (B)"}[poste]
     tete = ("Situational-alphabet bot (experimental; no predictive performance established). "
             f"Posted arm: {libelle}.")
     vue = c.get("vue") or {}
@@ -2734,6 +2755,18 @@ def commentaire(q: Question, p_A: float, a_raison: str, c: dict, poste: str) -> 
                   "read from structural indicators, not a causal claim).",
                   f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}.",
                   "Engine flags (French): " + " | ".join(x if len(x) <= 220 else x[:217] + "…" for x in c.get("drapeaux", [])[:4])]
+        return "\n".join(x for x in lignes if x)
+    if poste == "AB":
+        # 0.10.111 : ½A + ½B pour les événements humains (strates 7 et 13), décision d'auteur du 2026-11-15
+        lignes = [tete,
+                  f"Event: {c.get('evenement')} ({c.get('semantique')}).",
+                  ligne_b,
+                  f"Arm A, model alone, sealed before the alphabet: {p_A:.3f}.",
+                  "Posted: the average (in log-odds) of A and B. On a pre-registered benchmark of 200 resolved questions, "
+                  "this combination beat the base rate alone, mostly on conflict events (author decision, 2026-11-15).",
+                  (f"Arm C, alphabet, computed and sealed but NOT posted: {c['p_C']:.3f}."
+                   if isinstance(c.get("p_C"), (int, float)) else None),
+                  f"\nModel-alone reasoning:\n{a_raison}"]
         return "\n".join(x for x in lignes if x)
     if poste == "B" and c.get("statut") == "estime":
         lignes = [tete,
