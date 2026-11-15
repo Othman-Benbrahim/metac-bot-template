@@ -467,9 +467,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 9)                     # + indicateurs
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 9)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 18)
+        self.assertEqual(k, 11)                    # + recalibrage des conflits, silence
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 11)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 22)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -479,7 +479,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 10)             # + acte, désaccord, régimes, signaux, indicateurs
+        self.assertEqual(es.resume()["ouverts"], 12)             # + recalibrage, silence
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -922,3 +922,8 @@ def test_banc_indicateurs_principal_121(tmp_path, monkeypatch):
     monkeypatch.setattr(bi, "obtenir", faux_obtenir)
     assert asyncio.run(bi.principal()) == 0
     assert json.loads((tmp_path / "i.jsonl").read_text().splitlines()[0])["pays"] == "Armenia"
+
+
+def test_juge_silence_123():
+    import juge_silence as js
+    assert js.recal(0.45) < 0.45 and js.silence(0.45, 0) < js.silence(0.45, 2) == js.recal(0.45)
