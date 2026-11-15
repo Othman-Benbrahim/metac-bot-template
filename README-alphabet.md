@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.160** — collecteur RSS : investingLive (ex-ForexLive) dans « economie » ; famille dérivée « notation » (article économique qui nomme une agence de notation et un mot de notation) et état « une agence de notation est citée » dans l'observatoire.
 - **0.10.159** — collecteur RSS : familles « think_tanks » (ECFR, articles et publications) et « economie » (Investing.com en français : actualité économique, indicateurs économiques), avec leurs états dans l'observatoire.
 - **0.10.158** — collecteur RSS : Fonds mondial (communiqués, mises à jour) dans la famille « sante » ; nouvelle famille « voix_citoyennes » (Global Voices, 11 flux régionaux) et état « Global Voices en parle » dans l'observatoire.
 - **0.10.157** — collecteur RSS : famille « sante » (OMS Disease Outbreak News par l'API OData du site, ECDC : rapport hebdomadaire des menaces, mises à jour épidémiologiques, évaluations de risque, grippe aviaire) ; état « l'OMS ou l'ECDC en parlent » dans l'observatoire. Flux IMDRF écarté (figé depuis 2021, dispositifs médicaux).

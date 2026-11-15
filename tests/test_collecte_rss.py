@@ -24,7 +24,10 @@ class TestRSS(unittest.TestCase):
         o = cr.articles_oms({"value": [{"Id": "x", "Title": "Marburg virus disease - Ethiopia", "Summary": "<p>cas</p>",
                                         "PublicationDateAndTime": "2026-11-14T10:00:00Z"}, {"Id": "y", "Title": "sans date"}]})
         self.assertEqual((len(o), o[0]["jour"]), (1, "2026-11-14"))
-        self.assertIn("Ethiopia", o[0]["texte"])                 # lettres réservées aux abonnés : titre seul
+        self.assertIn("Ethiopia", o[0]["texte"])
+        self.assertTrue(cr.NOTATION.search("Fitch downgrades France to A+, outlook stable"))
+        self.assertTrue(cr.NOTATION.search("Moody's relève la perspective de l'Italie"))
+        self.assertFalse(cr.NOTATION.search("Fed's Daly: we need to raise rates"))                 # lettres réservées aux abonnés : titre seul
         self.assertEqual((a[0]["jour"], a[0]["texte"].strip()), ("2026-11-15", "Mali"))
 
 

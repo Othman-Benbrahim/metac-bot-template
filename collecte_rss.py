@@ -9,7 +9,8 @@ Familles (choisies par l'auteur) :
 - sante (0.10.157) : OMS Disease Outbreak News (API OData), ECDC (menaces, mises à jour, risques, grippe aviaire),
   Fonds mondial (communiqués, mises à jour ; 0.10.158) ;
 - voix_citoyennes (0.10.158) : Global Voices, 11 flux régionaux ;
-- think_tanks et economie (0.10.159) : ECFR ; Investing.com (actualité économique, indicateurs) ;
+- think_tanks et economie (0.10.159) : ECFR ; Investing.com (actualité économique, indicateurs), investingLive
+  (0.10.160) ; famille dérivée « notation » : articles économiques qui nomment une agence de notation ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
@@ -70,6 +71,7 @@ FLUX = {
     "economie": [
         "https://fr.investing.com/rss/news_14.rss",
         "https://fr.investing.com/rss/news_95.rss",
+        "https://investinglive.com/feed/",   # 0.10.160 : ex-ForexLive (macro, banques centrales, données au fil de l'eau)
     ],
     "renseignement": [
         "http://feeds.feedburner.com/IntelligenceOnline-fr",
@@ -143,6 +145,11 @@ def detecter(texte: str, motifs: list[tuple[re.Pattern, str]]) -> set[str]:
 
 
 TITRES_SEULS = {"renseignement", "lettres_fr"}
+# 0.10.160 : les décisions des agences de notation passent par la presse économique (pas de flux public des agences) ;
+# un article de la famille « economie » qui nomme une agence ET un mot de notation compte aussi dans « notation ».
+NOTATION = re.compile(r"\b(Fitch|Moody'?s|S&P|Standard (?:&|and) Poor'?s|DBRS|Scope Ratings)\b.*?"
+                      r"\b(rating|notation|note|outlook|perspective|downgrade|upgrade|abaiss|relève|affirm|confirm)",
+                      re.I | re.S)
 
 
 def articles(xml: bytes, titres_seuls: bool = False) -> list[dict]:
@@ -212,8 +219,10 @@ def principal() -> int:
                         continue
                     vus.add(a["empreinte"])
                     pays = detecter(a["texte"], motifs)
+                    familles = [famille] + (["notation"] if famille == "economie" and NOTATION.search(a["texte"]) else [])
                     for p in pays:
-                        comptes[(p, a["jour"], famille)] = comptes.get((p, a["jour"], famille), 0) + 1
+                        for fa in familles:
+                            comptes[(p, a["jour"], fa)] = comptes.get((p, a["jour"], fa), 0) + 1
                     n += 1
                 nouveaux += n
                 print(f"  {famille:8s} {url[:70]:70s} : {len(arts)} articles, {n} nouveaux")
