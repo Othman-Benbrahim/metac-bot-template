@@ -6,16 +6,21 @@
       "osint",
       "war news",
       "conflict news",
-      "geopolitics"
+      "geopolitics",
+      "international news",
+      "africa news",
+      "middle east news",
+      "asia news",
+      "latin america news"
     ],
-    "abonnes_min": 20000,
-    "nombre": 25
+    "abonnes_min": 10000,
+    "nombre": 40
   },
   "candidats": [
     {
       "canal": "geopolitics_prime",
       "titre": "Geopolitics Prime",
-      "abonnes": 288622,
+      "abonnes": 288628,
       "trouve_par": "geopolitics"
     },
     {
@@ -33,7 +38,7 @@
     {
       "canal": "RFU_EN",
       "titre": "RFU News — Strategic Geopolitics",
-      "abonnes": 48363,
+      "abonnes": 48360,
       "trouve_par": "geopolitics"
     },
     {
@@ -43,16 +48,34 @@
       "trouve_par": "war news"
     },
     {
-      "canal": "crptbreaking",
-      "titre": "Честный ЗНАК breaking news",
-      "abonnes": 29630,
-      "trouve_par": "breaking news"
-    },
-    {
       "canal": "sitreports",
       "titre": "SITREP - Independent OSINT Channel",
       "abonnes": 22850,
       "trouve_par": "osint"
+    },
+    {
+      "canal": "MiddleEastBriefingEN",
+      "titre": "Middle East Brief | News & Intelligence Analysis",
+      "abonnes": 18714,
+      "trouve_par": "middle east news"
+    },
+    {
+      "canal": "dannyhaiphong",
+      "titre": "China and Geopolitics with Danny Haiphong",
+      "abonnes": 18316,
+      "trouve_par": "geopolitics"
+    },
+    {
+      "canal": "osint_anatomy",
+      "titre": "OSINT ANATOMY",
+      "abonnes": 11118,
+      "trouve_par": "osint"
+    },
+    {
+      "canal": "citizenconflictnews",
+      "titre": "Citizen Conflict NEWS",
+      "abonnes": 10803,
+      "trouve_par": "conflict news"
     }
   ]
 }
