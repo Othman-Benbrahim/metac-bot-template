@@ -145,7 +145,7 @@ def lineaire_lojo(ls: list[dict]) -> list[dict]:
 def resumer(ls: list[dict]) -> dict:
     import score_registre as sr
     pl = sr.log_score
-    ok = sorted((x for x in ls if x.get("issue") in (0, 1) and x.get("p_A") is not None and x.get("p_M") is not None
+    ok = sorted((x for x in ls if x.get("issue") in (0, 1) and x.get("p_A") is not None and x.get("p_M") is not None and ba.version(x) >= (0, 10, 127)
                  and not x.get("exclue")), key=lambda x: x["ordre"])
     out = {"version_bot": ap.VERSION_BOT, "n": len(ok), "note": "perte log, plus bas = mieux ; A' et M sur les mêmes entrées"}
     if not ok:

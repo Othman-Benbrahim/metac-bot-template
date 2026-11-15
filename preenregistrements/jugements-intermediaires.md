@@ -52,3 +52,9 @@ Les deux appels de M ne suppriment pas tout halo (les sept notes sont données d
 M ne voit plus les extraits bruts : un gain ou une perte peut venir de cette information retirée autant que de la
 structure ; c'est le prix d'une séparation nette. A' n'est pas la même série que le A du banc A (autre recherche),
 d'où sa présence dans le même passage. S'il ne reste pas 100 questions nouvelles, le verdict attend les jeux suivants.
+
+## Amendement du 2026-11-15 (13 h 20), avant tout passage
+Le B fourni à A' et à M est désormais le B corrigé (0.10.127, `erreur-b-acled-2026-11-15.md`). La surconfiance de A
+qui motivait l'essai venait surtout de l'erreur : l'hypothèse devient « les notes séparées améliorent le jugement »,
+sans présumer de son sens. Protocole et critère inchangés ; les lignes antérieures à 0.10.127 ne comptent pas (il n'y
+en a aucune).
