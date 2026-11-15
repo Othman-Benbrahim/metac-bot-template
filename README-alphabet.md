@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.165** — collecteur RSS : flux du Parlement européen lus par des relais FeedBurner créés par l'auteur (le site renvoie une page vide aux serveurs de GitHub).
 - **0.10.164** — collecteur RSS : ONU Info par ses 5 flux régionaux (le flux « toutes les actualités » renvoie 404).
 - **0.10.163** — collecteur RSS : l'API de l'OMS n'est plus confondue avec le flux de l'IATA (qui passait par le décodeur JSON) ; code HTTP noté dans la santé des flux ; second essai avec l'en-tête d'un navigateur ordinaire si le site refuse l'agent du bot (401, 403, 406, 429) ou renvoie une page HTML.
 - **0.10.162** — collecteur RSS : santé des flux (registre/rss-sante.csv : dernier essai, statut, dernier succès, dernier nouvel article) et bilan dans le résumé du passage (flux en erreur, vides, muets depuis 7 jours).

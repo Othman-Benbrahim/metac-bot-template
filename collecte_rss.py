@@ -86,13 +86,15 @@ FLUX = {
         "http://feeds.feedburner.com/glitz-fr",
     ],
     # 0.10.155 (décision d'auteur du 2026-11-15, 21 h 50) : attention institutionnelle européenne sur les pays
+    # 0.10.165 : le site du Parlement renvoie une page vide aux serveurs de GitHub ; relais FeedBurner créés par
+    # l'auteur (2026-11-15), même contenu, même ordre.
     "parlement_ue": [
-        "https://www.europarl.europa.eu/rss/topic/903/fr.xml",           # actualités : relations extérieures
-        "https://www.europarl.europa.eu/rss/committee/afet/fr.xml",      # commission des affaires étrangères
-        "https://www.europarl.europa.eu/rss/committee/droi/fr.xml",      # sous-commission des droits de l'homme
-        "https://www.europarl.europa.eu/rss/committee/sede/fr.xml",      # sous-commission sécurité et défense
-        "https://www.europarl.europa.eu/rss/doc/motions/fr.xml",         # propositions de résolution
-        "https://www.europarl.europa.eu/rss/doc/texts-adopted/fr.xml",   # textes adoptés
+        "https://feeds.feedburner.com/europa/hMbj972YL3S",  # topic/903           # actualités : relations extérieures
+        "https://feeds.feedburner.com/europa/han23L6OwaM",  # committee/afet      # commission des affaires étrangères
+        "https://feeds.feedburner.com/europa/L2FFkjEMMuC",  # committee/droi      # sous-commission des droits de l'homme
+        "https://feeds.feedburner.com/europa/iCspPtqfmYa",  # committee/sede      # sous-commission sécurité et défense
+        "https://feeds.feedburner.com/europa/7KToFj21lKH",  # doc/motions         # propositions de résolution
+        "https://feeds.feedburner.com/europa/4MusBpiFxYU",  # doc/texts-adopted   # textes adoptés
     ],
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
