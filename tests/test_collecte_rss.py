@@ -18,6 +18,9 @@ class TestRSS(unittest.TestCase):
         xml = (b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>Mali</title><id>x1</id>'
                b'<updated>2026-11-15T10:00:00Z</updated><link href="https://a"/></entry></feed>')
         a = cr.articles(xml)
+        r = cr.articles(b'<rss><channel><item><title>Paris</title><description>Mali Niger</description>'
+                        b'<guid>g</guid></item></channel></rss>', titres_seuls=True)
+        self.assertEqual(r[0]["texte"].strip(), "Paris")                 # lettres réservées aux abonnés : titre seul
         self.assertEqual((a[0]["jour"], a[0]["texte"].strip()), ("2026-11-15", "Mali"))
 
 

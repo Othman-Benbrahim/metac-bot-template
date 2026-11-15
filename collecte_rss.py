@@ -6,6 +6,8 @@ Familles (choisies par l'auteur) :
 - officiel : ReliefWeb (ONU, rapports humanitaires), avis de voyage britanniques, alertes GDACS et séismes USGS ;
 - parlement_ue (0.10.155) : Parlement européen (relations extérieures, commissions AFET, DROI, SEDE, propositions de
   résolution, textes adoptés) : l'attention institutionnelle européenne portée à un pays ;
+- renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
+  Publications), titres seuls ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
   France, Suisse, Canada, Afrique, Asie ; presse régionale qui reprend les mêmes dépêches écartée).
 Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres.
@@ -33,6 +35,18 @@ FLUX = {
         "https://www.gov.uk/foreign-travel-advice.atom",
         "https://www.gdacs.org/xml/rss.xml",
         "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
+        "https://news.un.org/feed/subscribe/en/news/all/rss.xml",          # 0.10.156 : ONU Info (toutes les actualités)
+    ],
+    # 0.10.156 (décision d'auteur du 2026-11-15, 21 h 56) : lettres confidentielles d'Indigo Publications, TITRES SEULS
+    # (contenu réservé aux abonnés) ; le renseignement et l'Afrique sont suivis à part ; La Lettre (pouvoir en France)
+    # et Glitz (industrie du luxe) sont collectés dans une famille distincte, non branchée sur les conflits.
+    "renseignement": [
+        "http://feeds.feedburner.com/IntelligenceOnline-fr",
+        "http://feeds.feedburner.com/AfricaIntelligence-fr",
+    ],
+    "lettres_fr": [
+        "http://feeds.feedburner.com/LaLettre-fr",
+        "http://feeds.feedburner.com/glitz-fr",
     ],
     # 0.10.155 (décision d'auteur du 2026-11-15, 21 h 50) : attention institutionnelle européenne sur les pays
     "parlement_ue": [
@@ -97,7 +111,10 @@ def detecter(texte: str, motifs: list[tuple[re.Pattern, str]]) -> set[str]:
     return trouves
 
 
-def articles(xml: bytes) -> list[dict]:
+TITRES_SEULS = {"renseignement", "lettres_fr"}
+
+
+def articles(xml: bytes, titres_seuls: bool = False) -> list[dict]:
     racine = ET.fromstring(xml)
     ns = lambda t: t.split("}", 1)[-1]
     out = []
@@ -117,7 +134,7 @@ def articles(xml: bytes) -> list[dict]:
             jour = d.astimezone(timezone.utc).date().isoformat()
         except Exception:
             jour = datetime.now(timezone.utc).date().isoformat()
-        texte = " ".join(champs.get(k, "") for k in ("title", "description", "summary", "category"))
+        texte = " ".join(champs.get(k, "") for k in (("title",) if titres_seuls else ("title", "description", "summary", "category")))
         cle = champs.get("guid") or champs.get("id") or champs.get("link") or champs.get("title", "")
         out.append({"jour": jour, "texte": re.sub(r"<[^>]+>", " ", texte), "empreinte": hashlib.sha1(cle.encode()).hexdigest()[:16]})
     return out
@@ -138,7 +155,7 @@ def principal() -> int:
                 try:
                     r = c.get(url)
                     r.raise_for_status()
-                    arts = articles(r.content)
+                    arts = articles(r.content, titres_seuls=famille in TITRES_SEULS)
                 except Exception as e:
                     print(f"  flux indisponible : {url[:70]} ({type(e).__name__})")
                     continue
