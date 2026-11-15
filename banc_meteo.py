@@ -30,6 +30,7 @@ FICHIER = REGISTRE / "banc-meteo.jsonl"
 RESUME = REGISTRE / "banc-meteo.json"
 SIGMA = 2.7
 MOTIF = "daily average temperature at the French weather station at"
+FRANCE = {"FR", "RE", "MQ", "GF", "GP", "YT", "BL", "MF", "PM", "NC", "PF", "WF", "TF"}
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
 
@@ -64,7 +65,8 @@ async def coordonnees(c: httpx.AsyncClient, st: str, cache: dict) -> tuple | Non
     try:
         g = await c.get("https://geocoding-api.open-meteo.com/v1/search",
                         params={"name": nom_a_geocoder(st), "count": 10, "language": "fr", "format": "json"})
-        res = [x for x in (g.json().get("results") or []) if x.get("country_code") == "FR"]
+        # 0.10.139 : la France d'outre-mer a ses propres codes pays (La Réunion, Martinique, Guyane…)
+        res = [x for x in (g.json().get("results") or []) if x.get("country_code") in FRANCE]
         if res:
             r = (res[0]["latitude"], res[0]["longitude"])
     except Exception:
@@ -101,6 +103,10 @@ def resumer(ls: list[dict]) -> dict:
     import audit_b
     import score_registre as sr
     pl = sr.log_score
+    vu: dict[str, dict] = {}
+    for x in ls:                                  # dernière tentative de chaque question
+        vu[x["question_id"]] = x
+    ls = list(vu.values())
     ok = sorted((x for x in ls if x.get("issue") in (0, 1) and x.get("p_B") is not None
                  and isinstance(x.get("ombre_b_meteo"), dict) and x["ombre_b_meteo"].get("p") is not None),
                 key=lambda x: x["ordre"])
@@ -120,7 +126,8 @@ async def principal(apres: str, max_q: int) -> int:
             print(f"Prévisions archivées indisponibles : {test}. Rien n'est lancé.")
             return 1
         print(f"Open-Meteo (prévisions archivées) joignable ; essai Paris 2026-07-05 : {test}")
-        deja = {x["question_id"] for x in lignes()}
+        # 0.10.139 : une question dont la prévision a échoué (station non géocodée, délai) est retentée
+        deja = {x["question_id"] for x in lignes() if (x.get("ombre_b_meteo") or {}).get("p") is not None}
         jeux = sorted(fb.jeux_candidats(date.today(), date.fromisoformat(apres), n_max=26))
         tous = []
         for j in jeux:
