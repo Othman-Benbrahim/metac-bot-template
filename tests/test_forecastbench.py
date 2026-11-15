@@ -467,7 +467,7 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 8)                     # 0.10.128 : recalibrage, silence, a_plus_b, aiguillage clos
+        self.assertEqual(k, 8)                     # 0.10.129 : indicateurs clos, indicateurs_pertinents ouvert
         self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 8)
         self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 16)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
