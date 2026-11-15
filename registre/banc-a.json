@@ -1,17 +1,17 @@
 {
-  "version_bot": "0.10.108",
+  "version_bot": "0.10.110",
   "note": "perte log, plus bas = mieux ; une série par jeu de modèles",
   "azure_ai/gpt-5-mini": {
-    "n": 204,
-    "A": 0.594,
-    "B": 0.6118,
-    "AB": 0.5992,
+    "n": 274,
+    "A": 0.5492,
+    "B": 0.5752,
+    "AB": 0.5563,
     "par_source": {
       "acled": {
-        "n": 70,
-        "A": 0.4799,
-        "B": 0.5261,
-        "AB": 0.4938
+        "n": 140,
+        "A": 0.4493,
+        "B": 0.4974,
+        "AB": 0.4624
       },
       "dbnomics": {
         "n": 69,
@@ -27,20 +27,42 @@
       }
     },
     "critere_AB": {
-      "n_nouveaux": 204,
+      "n_nouveaux": 274,
       "regard": 2,
       "n_juge": 200,
       "blocs": 18,
-      "ecart_moyen": -0.01283321489442688,
+      "ecart_moyen": -0.017031121216006206,
       "intervalle_90_par_blocs": [
-        -0.02179951002765146,
-        -0.0038875912196785004
+        -0.02727981408484914,
+        -0.006456702130647761
       ],
       "intervalle_corrige": [
-        -0.02714989730783174,
-        -0.0005988047335250118
+        -0.033310046881416124,
+        -0.0018026831342765007
       ],
       "niveau_corrige": 0.9875,
+      "verdict": "critère atteint : décision d'auteur à prendre"
+    }
+  },
+  "aiguillage_acled_nouvelles": {
+    "n": 106,
+    "A": 0.4538,
+    "B": 0.5055,
+    "critere": {
+      "n_nouveaux": 106,
+      "regard": 1,
+      "n_juge": 100,
+      "blocs": 6,
+      "ecart_moyen": -0.041749940308851624,
+      "intervalle_90_par_blocs": [
+        -0.07766080754447872,
+        -0.014085669219778966
+      ],
+      "intervalle_corrige": [
+        -0.09108260336478495,
+        -0.0097041271604346
+      ],
+      "niveau_corrige": 0.975,
       "verdict": "critère atteint : décision d'auteur à prendre"
     }
   }
