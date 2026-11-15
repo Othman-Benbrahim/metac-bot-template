@@ -55,6 +55,8 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
+                if k == "telegram" and v.get("methode") != "canaux":
+                    continue                          # 0.10.151 : recherche globale abandonnée (ne remonte pas dans le passé)
                 if v.get("present"):
                     x[k] = m[k]["valeur"]
                     x["presents"][k] = True

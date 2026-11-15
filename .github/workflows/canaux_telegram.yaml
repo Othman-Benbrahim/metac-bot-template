@@ -1,0 +1,46 @@
+name: Découverte des canaux Telegram (règle fixée, à valider)
+
+# 0.10.151 : canaux Telegram proposés par la recherche de Telegram pour des mots-clés neutres, les plus suivis ;
+# liste écrite pour validation par l'auteur, rien n'est utilisé avant.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  canaux_telegram:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Telethon (lecture de Telegram, hors du verrou du bot)
+        run: uv pip install "telethon==1.42.0"
+      - name: Découverte
+        timeout-minutes: 20
+        run: uv run --no-sync python decouvrir_canaux_telegram.py
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID || vars.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH || vars.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION || vars.TELEGRAM_SESSION }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/telegram-canaux-candidats.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : canaux Telegram candidats du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

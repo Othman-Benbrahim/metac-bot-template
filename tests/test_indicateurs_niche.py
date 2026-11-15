@@ -99,15 +99,16 @@ class TestNiche(unittest.TestCase):
             self.assertIsInstance(n, int)
 
     def test_telegram(self):
-        from datetime import datetime, timezone
+        import pathlib
+        from unittest import mock
 
         class M:
             def __init__(self, d): self.date = d
 
         class FauxTg:
-            def iter_messages(self, ent, search=None, offset_date=None):
-                assert ent is None and search == "Kenya"
-                dates = [offset_date - timedelta(days=i) for i in (1, 2, 3, 4, 20, 30)]
+            def iter_messages(self, canal, search=None, offset_date=None):
+                assert canal in ("a", "b") and search == "Kenya"
+                dates = [offset_date - timedelta(days=i) for i in (1, 2, 20, 30)]
 
                 async def gen():
                     for d in dates:
@@ -116,9 +117,12 @@ class TestNiche(unittest.TestCase):
 
         tg = ni.Telegram()
         tg.client = FauxTg()
-        r = lancer(ni.telegram(tg, "Kenya", date(2026, 9, 1)))
-        self.assertEqual((r["messages_14j"], r["messages_14j_avant"]), (4, 1))   # le message à 30 jours arrête la lecture
-        self.assertGreater(r["valeur"], 0)
+        f = pathlib.Path(tempfile.mkdtemp()) / "canaux.json"
+        self.assertFalse(lancer(ni.telegram(tg, "Kenya", date(2026, 9, 1)))["present"] and not f.exists())
+        f.write_text(json.dumps({"canaux": [{"canal": "a"}, "b"]}))
+        with mock.patch.object(ni, "CANAUX_VALIDES", f):
+            r = lancer(ni.telegram(tg, "Kenya", date(2026, 9, 1)))
+        self.assertEqual((r["messages_14j"], r["messages_14j_avant"], r["methode"]), (4, 2, "canaux"))
 
     def test_cle_nettoyee(self):
         from unittest import mock

@@ -16,10 +16,10 @@ STRICTEMENT avant la date du jeu :
   log((arrivées des 2 jours avant la date + 1) / (arrivées des 2 mêmes jours, quatre semaines plus tôt + 1))
   (OpenSky limite chaque demande à 2 jours). Idée de
   l'auteur : l'espace aérien comme signal de niche (perturbations, fermetures, fuites).
-- telegram (0.10.143, si TELEGRAM_API_ID, TELEGRAM_API_HASH et TELEGRAM_SESSION sont fournis) : recherche globale de
-  Telegram (tous les canaux publics, aucun choix de canaux) sur le nom du pays en anglais : log((messages des 14 jours
-  avant la date + 1) / (messages des 14 jours précédents + 1)), au plus 400 messages lus par couple. Idée de l'auteur :
-  les canaux publient avant la presse ; emballement, calme ou silence.
+- telegram (0.10.143 ; 0.10.151 : historique des canaux VALIDÉS par l'auteur, registre/telegram-canaux.json, liste
+  proposée par decouvrir_canaux_telegram.py selon une règle fixée ; la recherche globale ne remontait presque pas dans
+  le passé) : messages citant le pays en anglais, log((14 jours avant la date + 1) / (14 jours précédents + 1)), au plus
+  300 messages lus par canal. Idée de l'auteur : les canaux publient avant la presse ; emballement, calme ou silence.
 - violationswatch (0.10.147, en ombre) : incidents graves (gravité « High » ou « Critical ») signalés par
   violationswatch.org dans le pays, premiers signalements dans les 14 jours avant la date ; lu dans nos comptes
   quotidiens (collecte_violationswatch.py) ; mesuré seulement si ces 14 jours sont couverts (données depuis le
@@ -296,49 +296,52 @@ class Telegram:
         if self.client is not None:
             await self.client.disconnect()
 
-    async def compter(self, terme: str, d0: date, plafond: int = 400) -> tuple[int, int] | None:
+    async def compter(self, canaux: list[str], terme: str, d0: date, plafond: int = 300) -> tuple[int, int] | None:
+        """0.10.151 : historique des canaux validés (la recherche globale ne remonte presque pas dans le passé)."""
         from datetime import datetime, timezone
         fin = datetime(d0.year, d0.month, d0.day, tzinfo=timezone.utc)
         coupure, debut = fin - timedelta(days=14), fin - timedelta(days=28)
-        recent = avant = lus = 0
-        try:
-            async for m in self.client.iter_messages(None, search=terme, offset_date=fin):
-                lus += 1
-                if m.date < debut or lus > plafond:
-                    break
-                if m.date >= coupure:
-                    recent += 1
-                else:
-                    avant += 1
-        except Exception as e:
-            self.derniere_erreur = f"{type(e).__name__}: {e}"[:200]
+        recent = avant = 0
+        lus_ok = 0
+        for canal in canaux:
+            lus = 0
+            try:
+                async for m in self.client.iter_messages(canal, search=terme, offset_date=fin):
+                    lus += 1
+                    if m.date < debut or lus > plafond:
+                        break
+                    if m.date >= coupure:
+                        recent += 1
+                    else:
+                        avant += 1
+                lus_ok += 1
+            except Exception as e:
+                self.derniere_erreur = f"@{canal} : {type(e).__name__}: {e}"[:200]
+        if not lus_ok:
             return None
         return recent, avant
 
 
+CANAUX_VALIDES = Path("registre") / "telegram-canaux.json"
+
+
+def canaux_valides() -> list[str]:
+    if not CANAUX_VALIDES.exists():
+        return []
+    d = json.loads(CANAUX_VALIDES.read_text(encoding="utf-8"))
+    return [c["canal"] if isinstance(c, dict) else str(c) for c in (d.get("canaux") or [])]
+
+
 async def telegram(tg: Telegram, pays: str, d0: date) -> dict:
-    r = await tg.compter(pays, d0)
+    canaux = canaux_valides()
+    if not canaux:
+        return {"present": False, "raison": "liste de canaux non validée (registre/telegram-canaux.json)"}
+    r = await tg.compter(canaux, pays, d0)
     if r is None:
         return {"present": False, "raison": "Telegram indisponible", "detail": tg.derniere_erreur}
     recent, avant = r
-    return {"present": True, "valeur": round(math.log((recent + 1) / (avant + 1)), 4),
-            "messages_14j": recent, "messages_14j_avant": avant}
-
-
-VW_COMPTES = Path("registre") / "violationswatch-comptes.csv"
-VW_DEBUT = date(2026, 11, 6)
-VW_ALIAS = {"dr congo": "democratic republic of congo", "republic of the congo": "republic of congo"}
-
-
-def violationswatch(pays: str, d0: date) -> dict:
-    if d0 - timedelta(days=14) < VW_DEBUT or not VW_COMPTES.exists():
-        return {"present": False, "raison": "période non couverte"}
-    n = 0
-    for x in csv.DictReader(VW_COMPTES.open(encoding="utf-8")):
-        j = date.fromisoformat(x["jour"])
-        if VW_ALIAS.get(x["pays"].lower(), x["pays"].lower()) == pays.lower() and d0 - timedelta(days=14) <= j < d0 and x["gravite"] in ("High", "Critical"):
-            n += int(x["incidents"])
-    return {"present": True, "valeur": float(n), "incidents_graves_14j": n}
+    return {"present": True, "methode": "canaux", "canaux": len(canaux),
+            "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "messages_14j": recent, "messages_14j_avant": avant}
 
 
 async def principal() -> int:
@@ -353,7 +356,8 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch") if (x.get(k) or {}).get("present"))
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch") if (x.get(k) or {}).get("present")
+                    and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
     async with httpx.AsyncClient(headers=UA, follow_redirects=True) as c:
@@ -381,7 +385,7 @@ async def principal() -> int:
                     ligne["prix_alim"] = await prix_alim(c, pays, d0, cache, cache_csv)
                 if "vols" not in fait and os_.disponible:
                     ligne["vols"] = await vols(os_, c, pays, d0, cache_pays)
-                if "telegram" not in fait and tg.disponible:
+                if "telegram" not in fait and tg.disponible and canaux_valides():
                     ligne["telegram"] = await telegram(tg, pays, d0)
                 if "violationswatch" not in fait and d0 - timedelta(days=14) >= VW_DEBUT:
                     ligne["violationswatch"] = violationswatch(pays, d0)
