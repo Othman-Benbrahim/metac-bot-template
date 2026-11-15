@@ -1,0 +1,46 @@
+{
+  "version_bot": "0.10.112",
+  "n": 150,
+  "note": "perte log, plus bas = mieux ; validation croisée par jeu",
+  "A": 0.4434,
+  "B": 0.4929,
+  "acte": 0.4415,
+  "desaccord": 0.4433,
+  "beta_moyen": -0.485,
+  "gamma_moyen": -0.131,
+  "part_avec_actes": 0.187,
+  "critere_acte": {
+    "n_nouveaux": 150,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 6,
+    "ecart_moyen": -0.005934928169318711,
+    "intervalle_90_par_blocs": [
+      -0.008640948502378381,
+      -0.0030473098096600844
+    ],
+    "intervalle_corrige": [
+      -0.009729898667227127,
+      -0.0016975708677479122
+    ],
+    "niveau_corrige": 0.9833,
+    "verdict": "critère atteint : décision d'auteur à prendre"
+  },
+  "critere_desaccord": {
+    "n_nouveaux": 150,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 6,
+    "ecart_moyen": -4.201639916521435e-05,
+    "intervalle_90_par_blocs": [
+      -0.00017991396185999662,
+      0.0001543448444748666
+    ],
+    "intervalle_corrige": [
+      -0.0002174131613435384,
+      0.0002669210996961129
+    ],
+    "niveau_corrige": 0.9833,
+    "verdict": "critère non atteint ; un second regard à 200"
+  }
+}
