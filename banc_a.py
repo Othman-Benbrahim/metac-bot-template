@@ -129,6 +129,8 @@ def resumer(ls: list[dict]) -> dict:
                                              "A": round(sum(sr.log_score(x["p_A"], x["issue"]) for x in nouv) / len(nouv), 4),
                                              "B": round(sum(sr.log_score(x["p_B"], x["issue"]) for x in nouv) / len(nouv), 4),
                                              "critere": sr.critere_ombre_b(nouv, "ombre_a", "aiguillage")}
+    import audit_b                       # 0.10.130 : garde-fou sur B, par forme de question
+    out["audit_b"] = audit_b.pour_resume(ls)
     return out
 
 

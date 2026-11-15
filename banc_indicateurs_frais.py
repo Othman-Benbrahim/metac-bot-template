@@ -89,6 +89,8 @@ def resumer(ls: list[dict]) -> dict:
                                 for g in sorted({x["famille"] for x in ok}) for s in [[x for x in ok if x["famille"] == g]]},
                 "critere": sr.critere_ombre_b([dict(x, o={"p": x["p_pertinent"]}) for x in ok], "o",
                                               "indicateurs_pertinents", exclure_vus=False)})
+    import audit_b                       # 0.10.130 : garde-fou sur B, par forme de question
+    out["audit_b"] = audit_b.pour_resume(ls)
     return out
 
 
@@ -130,7 +132,7 @@ async def principal(max_q: int) -> int:
                 fam = famille(x["titre"])
                 p_b = float(vue["frequence"])
                 fo.write(json.dumps({"type": "banc_indicateurs_frais", "jeu": j, "ordre": [r_, j], "question_id": x["qid"],
-                                     "pays": nom, "famille": fam, "version_bot": ap.VERSION_BOT, "issue": x["issue"],
+                                     "titre": x["titre"], "source_question": "acled", "pays": nom, "famille": fam, "version_bot": ap.VERSION_BOT, "issue": x["issue"],
                                      "p_B": p_b, "p_pertinent": p_pertinent(p_b, fam, ind), **ind,
                                      "licence": "ForecastBench, Forecasting Research Institute, CC BY-SA 4.0"},
                                     ensure_ascii=False) + "\n")

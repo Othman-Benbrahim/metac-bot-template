@@ -117,6 +117,8 @@ def resumer(lignes: list[dict]) -> dict:
                           "B": round(sum(pl(x["p_B"], x["issue"]) for x in nv) / n_, 4),
                           "aiguillage": round(sum(pl(x["p_regime"], x["issue"]) for x in nv) / n_, 4),
                           "critere": sr.critere_ombre_b([dict(x, o={"p": x["p_regime"]}) for x in nv], "o", "regimes_causaux")}
+    import audit_b                       # 0.10.130 : garde-fou sur B, par forme de question
+    out["audit_b"] = audit_b.pour_resume(lignes)
     return out
 
 

@@ -68,6 +68,7 @@ class TestBancM(unittest.TestCase):
             self.assertEqual(r["p_moyenne"]["M"], 0.1)
             self.assertIn("critere", r)
             self.assertIn("lineaire_descriptif", r)
+            self.assertIn("audit_b", r)
 
 
 if __name__ == "__main__":

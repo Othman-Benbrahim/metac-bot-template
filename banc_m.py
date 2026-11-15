@@ -163,6 +163,8 @@ def resumer(ls: list[dict]) -> dict:
         cv = lineaire_lojo(complets)
         out["lineaire_descriptif"] = {"n": len(cv), "lineaire": round(sum(pl(x["p_lin"], x["issue"]) for x in cv) / len(cv), 4),
                                       "A_meme_questions": round(sum(pl(x["p_A"], x["issue"]) for x in cv) / len(cv), 4)}
+    import audit_b                       # 0.10.130 : garde-fou sur B, par forme de question
+    out["audit_b"] = audit_b.pour_resume(ls)
     return out
 
 
