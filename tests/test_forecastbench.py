@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 5)                     # absence, A + B, combo ABO, aiguillage, signatures
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 5)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 10)
+        self.assertEqual(k, 4)                     # absence, A + B, aiguillage, signatures (combo clos)
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 4)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 8)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 6)              # + aiguillage, signatures
+        self.assertEqual(es.resume()["ouverts"], 5)              # absence, sans matrice, A + B, aiguillage, signatures
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -782,4 +782,12 @@ def test_motifs_ordinaux_108():
     assert all(x["p_O_local"] is not None and x["p_O_trans"] is not None for x in ls)
     assert all(x["n_trans"] == 2 * x["n_local"] for x in ls)      # les deux autres séries, pas elle-même
     import essais as es
-    assert es.ESSAIS["motifs_ordinaux"]["statut"] == "clos" and es.ESSAIS["combo_abo"]["statut"] == "ouvert"
+    assert es.ESSAIS["motifs_ordinaux"]["statut"] == "clos" and es.ESSAIS["combo_abo"]["statut"] == "clos"
+
+
+def test_classes_signature_110():
+    import classes_signature as cs
+    qs = [{"question_id": f"fb:{j}:acled:q{i}:x", "jeu": j, "source_question": "acled", "issue": y, "p_B": 0.5,
+           "signature": ["SEU", "apparait", "7"]} for i, (j, y) in enumerate([("2026-09-27", 1)] * 20 + [("2026-10-11", 1)] * 5)]
+    ls = cs.calculer(qs)
+    assert len(ls) == 5 and all(x["n_cas"] == 20 and abs(x["p_sig"] - (20 + 5) / 30) < 1e-9 for x in ls)
