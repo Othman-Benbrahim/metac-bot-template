@@ -1,9 +1,9 @@
 {
-  "version_bot": "0.10.104",
-  "questions": 400,
+  "version_bot": "0.10.113",
+  "questions": 832,
   "note": "perte log (plus bas = mieux) ; aucun modèle de langue ; blocs = jeu × source",
   "B_AR": {
-    "n": 400,
+    "n": 832,
     "par_bloc": {
       "2026-07-05:dbnomics": {
         "n": 49,
@@ -46,13 +46,53 @@
         "B_AR": 0.7523
       },
       "2026-08-30:dbnomics": {
-        "n": 8,
-        "B": 0.694,
-        "B_AR": 0.6871
+        "n": 47,
+        "B": 0.6887,
+        "B_AR": 0.6855
+      },
+      "2026-08-30:fred": {
+        "n": 50,
+        "B": 0.6723,
+        "B_AR": 0.669
+      },
+      "2026-09-13:dbnomics": {
+        "n": 49,
+        "B": 0.6921,
+        "B_AR": 0.6864
+      },
+      "2026-09-13:fred": {
+        "n": 49,
+        "B": 0.6883,
+        "B_AR": 0.6905
+      },
+      "2026-09-27:dbnomics": {
+        "n": 50,
+        "B": 0.6887,
+        "B_AR": 0.6758
+      },
+      "2026-09-27:fred": {
+        "n": 49,
+        "B": 0.6882,
+        "B_AR": 0.6319
+      },
+      "2026-10-11:dbnomics": {
+        "n": 50,
+        "B": 0.6884,
+        "B_AR": 0.696
+      },
+      "2026-10-11:fred": {
+        "n": 50,
+        "B": 0.7218,
+        "B_AR": 0.6962
+      },
+      "2026-10-25:fred": {
+        "n": 46,
+        "B": 0.6676,
+        "B_AR": 0.6138
       }
     },
     "critere": {
-      "n_nouveaux": 400,
+      "n_nouveaux": 587,
       "regard": 2,
       "n_juge": 200,
       "blocs": 5,
@@ -62,15 +102,15 @@
         0.012653835950599376
       ],
       "intervalle_corrige": [
-        -0.046156740950521816,
-        0.019199679511634576
+        -0.053114823638959974,
+        0.02300470354972523
       ],
-      "niveau_corrige": 0.9833,
+      "niveau_corrige": 0.9929,
       "verdict": "critère non atteint ; essai à clore"
     }
   },
   "B_saison": {
-    "n": 400,
+    "n": 832,
     "par_bloc": {
       "2026-07-05:dbnomics": {
         "n": 49,
@@ -113,13 +153,53 @@
         "B_saison": 0.7375
       },
       "2026-08-30:dbnomics": {
-        "n": 8,
-        "B": 0.694,
-        "B_saison": 0.7167
+        "n": 47,
+        "B": 0.6887,
+        "B_saison": 0.768
+      },
+      "2026-08-30:fred": {
+        "n": 50,
+        "B": 0.6723,
+        "B_saison": 0.7472
+      },
+      "2026-09-13:dbnomics": {
+        "n": 49,
+        "B": 0.6921,
+        "B_saison": 0.6096
+      },
+      "2026-09-13:fred": {
+        "n": 49,
+        "B": 0.6883,
+        "B_saison": 0.7413
+      },
+      "2026-09-27:dbnomics": {
+        "n": 50,
+        "B": 0.6887,
+        "B_saison": 0.6327
+      },
+      "2026-09-27:fred": {
+        "n": 49,
+        "B": 0.6882,
+        "B_saison": 0.6358
+      },
+      "2026-10-11:dbnomics": {
+        "n": 50,
+        "B": 0.6884,
+        "B_saison": 0.6924
+      },
+      "2026-10-11:fred": {
+        "n": 50,
+        "B": 0.7218,
+        "B_saison": 0.8058
+      },
+      "2026-10-25:fred": {
+        "n": 46,
+        "B": 0.6676,
+        "B_saison": 0.7044
       }
     },
     "critere": {
-      "n_nouveaux": 400,
+      "n_nouveaux": 587,
       "regard": 2,
       "n_juge": 200,
       "blocs": 5,
@@ -129,11 +209,38 @@
         0.08498068934813827
       ],
       "intervalle_corrige": [
-        -0.013767875684314021,
-        0.09783938463878955
+        -0.016052773362310212,
+        0.11279602184249624
       ],
-      "niveau_corrige": 0.9833,
+      "niveau_corrige": 0.9929,
       "verdict": "critère non atteint ; essai à clore"
+    }
+  },
+  "regimes": {
+    "n": 432,
+    "choix": {
+      "B": 172,
+      "B_AR": 138,
+      "B_saison": 122
+    },
+    "B": 0.6885,
+    "aiguillage": 0.669,
+    "critere": {
+      "n_nouveaux": 187,
+      "regard": 1,
+      "n_juge": 100,
+      "blocs": 4,
+      "ecart_moyen": -0.015465390311193452,
+      "intervalle_90_par_blocs": [
+        -0.0526190962732686,
+        0.02643134194391257
+      ],
+      "intervalle_corrige": [
+        -0.0649655678664227,
+        0.0527758071100723
+      ],
+      "niveau_corrige": 0.9857,
+      "verdict": "critère non atteint ; un second regard à 200"
     }
   }
 }
