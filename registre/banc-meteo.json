@@ -1,0 +1,31 @@
+{
+  "version_bot": "0.10.135",
+  "questions": 307,
+  "appliquees": 212,
+  "note": "perte log, plus bas = mieux ; pile ou face = 0,693 ; aucun modèle de langue",
+  "B": 0.6944,
+  "B_meteo": 0.6445,
+  "bon_sens": 0.693,
+  "critere": {
+    "n_nouveaux": 212,
+    "regard": 2,
+    "n_juge": 200,
+    "blocs": 7,
+    "ecart_moyen": -0.05010027870088761,
+    "intervalle_90_par_blocs": [
+      -0.18778264447932602,
+      0.09645401025972232
+    ],
+    "intervalle_corrige": [
+      -0.2605428306602154,
+      0.18256382547433156
+    ],
+    "niveau_corrige": 0.9958,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "audit_b": {
+    "alertes": [],
+    "a_surveiller": [],
+    "seuil": "|z| > 3.0 sur au moins 20 questions, écart répété dans au moins 3 jeux"
+  }
+}
