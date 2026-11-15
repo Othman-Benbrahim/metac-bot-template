@@ -210,6 +210,40 @@ def b_ar(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | Non
             "part_sans_changement": round(p_egal, 4), "points": len(pts)}
 
 
+# 0.10.131 (décision d'auteur du 2026-11-15, EN OMBRE ; pré-enregistrement b-tendance.md) : B qui pèse davantage les
+# semaines récentes. Constat du garde-fou sur B (audit_b.py) : écarts de crédit FRED, B 40 % annoncés, 75 % observés,
+# même sens dans 7 jeux sur 9 ; B compte les hausses sur 5 ans et ne voit pas la tendance en cours. Règle fixée AVANT
+# toute mesure :
+#   - mêmes intervalles de h jours que B (5 ans, strictement avant D, même appariement) ;
+#   - chaque intervalle pèse 2^(−âge / 90), âge = jours entre la fin de l'intervalle et D (demi-vie de 90 jours) ;
+#   - P(hausse) = (Σ poids × hausse + ½) / (Σ poids + 1) (Jeffreys sur les comptes pondérés) ;
+#   - appliqué seulement si Σ poids ≥ 20 (séries fréquentes : quotidiennes, hebdomadaires) ; sinon rien (B reste).
+DEMI_VIE_TENDANCE = 90
+POIDS_MIN_TENDANCE = 20.0
+
+
+def b_tendance(points: list[dict], h: int, avant: date, annees: int = 5, demi_vie: int = DEMI_VIE_TENDANCE) -> dict | None:
+    pts = sorted((date.fromisoformat(p["date"][:10]), float(p["valeur"])) for p in points
+                 if p.get("date") and p.get("valeur") is not None and p["date"][:10] < avant.isoformat())
+    pts = [p for p in pts if p[0] >= avant - timedelta(days=365 * annees)]
+    if len(pts) < 20 or h <= 0:
+        return None
+    k = w = 0.0
+    j = 0
+    for t, v in pts:
+        cible = t + timedelta(days=h)
+        while j < len(pts) and pts[j][0] < cible:
+            j += 1
+        if j >= len(pts):
+            break
+        poids = 2.0 ** (-(avant - pts[j][0]).days / demi_vie)
+        w += poids
+        k += poids * (pts[j][1] > v)
+    if w < POIDS_MIN_TENDANCE:
+        return None
+    return {"p": (k + 0.5) / (w + 1), "poids": round(w, 1), "hausses_ponderees": round(k, 1), "demi_vie": demi_vie}
+
+
 # 0.10.104 (décision d'auteur du 2026-11-15, EN OMBRE ; pré-enregistrement b-saisonnier.md) : un troisième taux de base
 # pour les séries, SAISONNIER. Constat : sur DBnomics (surtout des températures Météo-France), B annonce ~50 % alors que
 # ~26 % des questions se résolvent OUI ; B compte les hausses sur toute l'année. Règle fixée AVANT toute mesure :
@@ -287,6 +321,10 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
                 x["_b_saison"] = b_saison(r.get("points") or [], h, d0)
             except Exception as e:
                 x["_b_saison"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+            try:                                      # 0.10.131 : taux de base récent (tendance), en ombre
+                x["_b_tendance"] = b_tendance(r.get("points") or [], h, d0)
+            except Exception as e:
+                x["_b_tendance"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
             # 0.10.78 : la série téléchargée ici sert aussi à l'ombre « ancrage par les séries » (au banc, le puits du
             # bot n'est pas appelé pour ces questions) ; bornée STRICTEMENT avant la date d'information
             x["_releve"] = dict(r, points=[p for p in r.get("points") or [] if str(p.get("date", ""))[:10] < jeu])
