@@ -25,6 +25,7 @@ ETATS = {
     "wikimodif": (("modifications politiques en hausse", lambda v: v > 0.3), ("modifications politiques en baisse", lambda v: v < -0.3)),
     "prix_alim": (("prix alimentaires en hausse (> 10 % sur un an)", lambda v: v > 0.10),
                   ("prix alimentaires stables ou en baisse", lambda v: v <= 0.02)),
+    "vols": (("vols en baisse (> 20 %)", lambda v: v < -0.22), ("vols stables ou en hausse", lambda v: v > -0.05)),
 }
 NICHE = Path("registre") / "indicateurs-niche.jsonl"
 
@@ -37,13 +38,13 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
     for l in NICHE.read_text(encoding="utf-8").splitlines():
         if l.strip():
             x = json.loads(l)
-            n[(x["pays"], x["jeu"])] = x
+            n[(x["pays"], x["jeu"])] = {**n.get((x["pays"], x["jeu"]), {}), **x}   # lignes complémentaires fusionnées
     out = []
     for x in lignes:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim"):
+            for k in ("wikimodif", "prix_alim", "vols"):
                 if (m.get(k) or {}).get("present"):
                     x[k] = m[k]["valeur"]
                     x["presents"][k] = True

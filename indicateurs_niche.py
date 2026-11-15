@@ -11,7 +11,11 @@ STRICTEMENT avant la date du jeu :
   médiane, sur les couples marché × produit, de log(dernier prix connu / prix douze mois plus tôt), en monnaie locale,
   derniers prix d'au plus 120 jours avant la date. D'après Bellemare (AJAE 2015) : la hausse des prix alimentaires
   précède les émeutes.
-Les deux passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
+- vols (0.10.140, si OPENSKY_CLIENT_ID et OPENSKY_CLIENT_SECRET sont fournis) : arrivées à l'aéroport principal du pays
+  (le plus grand aéroport à vols réguliers le plus proche de la capitale, base OurAirports), OpenSky Network :
+  log((arrivées des 7 jours avant la date + 1) / (arrivées des 7 jours, quatre semaines plus tôt + 1)). Idée de
+  l'auteur : l'espace aérien comme signal de niche (perturbations, fermetures, fuites).
+Les trois passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
 Registre : registre/indicateurs-niche.jsonl.
 
     python indicateurs_niche.py
@@ -27,6 +31,8 @@ import statistics
 import sys
 from datetime import date, timedelta
 from pathlib import Path
+
+import os
 
 import httpx
 
@@ -122,26 +128,121 @@ async def prix_alim(c: httpx.AsyncClient, pays: str, d0: date, cache: dict, cach
     return {"present": True, "valeur": round(statistics.median(changes), 4), "series": len(changes)}
 
 
+OURAIRPORTS = "https://davidmegginson.github.io/ourairports-data/airports.csv"
+JETON_URL = "https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token"
+
+
+class OpenSky:
+    """Accès OpenSky par client API (OAuth2, « client credentials ») ; jeton renouvelé avant expiration."""
+
+    def __init__(self, c: httpx.AsyncClient):
+        self.c = c
+        self.id = os.environ.get("OPENSKY_CLIENT_ID", "").strip()
+        self.secret = os.environ.get("OPENSKY_CLIENT_SECRET", "").strip()
+        self.jeton, self.expire = None, 0.0
+        self.aeroports: list[dict] | None = None
+
+    @property
+    def disponible(self) -> bool:
+        return bool(self.id and self.secret)
+
+    async def entete(self) -> dict:
+        import time
+        if not self.jeton or time.time() > self.expire - 60:
+            r = await self.c.post(JETON_URL, data={"grant_type": "client_credentials", "client_id": self.id,
+                                                   "client_secret": self.secret}, timeout=30)
+            r.raise_for_status()
+            j = r.json()
+            self.jeton, self.expire = j["access_token"], time.time() + float(j.get("expires_in", 1800))
+        return {"Authorization": f"Bearer {self.jeton}"}
+
+    async def aeroport(self, cca2: str | None, latlng) -> str | None:
+        if not cca2:
+            return None
+        if self.aeroports is None:
+            r = await obtenir(self.c, OURAIRPORTS)
+            self.aeroports = list(csv.DictReader(io.StringIO(r.text))) if r is not None else []
+        cand = [a for a in self.aeroports if a.get("iso_country") == cca2 and a.get("type") == "large_airport"
+                and a.get("scheduled_service") == "yes" and len(a.get("ident", "")) == 4]
+        if not cand:
+            cand = [a for a in self.aeroports if a.get("iso_country") == cca2 and a.get("type") == "medium_airport"
+                    and a.get("scheduled_service") == "yes" and len(a.get("ident", "")) == 4]
+        if not cand:
+            return None
+        if latlng:
+            la, lo = float(latlng[0]), float(latlng[1])
+            cand.sort(key=lambda a: (float(a["latitude_deg"]) - la) ** 2 + (float(a["longitude_deg"]) - lo) ** 2)
+        return cand[0]["ident"]
+
+    async def arrivees(self, icao: str, debut: date, fin: date) -> int | None:
+        from datetime import datetime, timezone
+        b = int(datetime(debut.year, debut.month, debut.day, tzinfo=timezone.utc).timestamp())
+        e = int(datetime(fin.year, fin.month, fin.day, tzinfo=timezone.utc).timestamp())
+        try:
+            r = await self.c.get("https://opensky-network.org/api/flights/arrival",
+                                 params={"airport": icao, "begin": b, "end": e}, headers=await self.entete(), timeout=60)
+        except Exception:
+            return None
+        if r.status_code == 404:
+            return 0                                  # OpenSky répond 404 quand aucun vol n'est trouvé
+        if r.status_code != 200:
+            return None
+        return len(r.json() or [])
+
+
+async def vols(os_: OpenSky, c: httpx.AsyncClient, pays: str, d0: date, cache_pays: dict) -> dict:
+    import banc_indicateurs as bi
+    f = await bi.fiche_pays(c, pays, cache_pays)
+    icao = await os_.aeroport(f.get("cca2"), f.get("latlng"))
+    if not icao:
+        return {"present": False, "raison": "aucun aéroport"}
+    recent = await os_.arrivees(icao, d0 - timedelta(days=7), d0)
+    avant = await os_.arrivees(icao, d0 - timedelta(days=35), d0 - timedelta(days=28))
+    if recent is None or avant is None:
+        return {"present": False, "raison": "OpenSky indisponible", "aeroport": icao}
+    return {"present": True, "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "aeroport": icao,
+            "arrivees_7j": recent, "arrivees_7j_un_mois_avant": avant}
+
+
 async def principal() -> int:
     if not SOURCE.exists():
         print("Pas de registre source.")
         return 1
     lignes = [json.loads(l) for l in SOURCE.read_text(encoding="utf-8").splitlines() if l.strip()]
-    deja = set()
+    mesures: dict[tuple, set] = {}
     if FICHIER.exists():
-        deja = {(x["pays"], x["jeu"]) for x in map(json.loads, FICHIER.read_text(encoding="utf-8").splitlines()) if x}
-    couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")} - deja)
-    print(f"{len(couples)} couples pays × jeu à mesurer.")
-    cache, cache_csv = {}, {}
+        for l in FICHIER.read_text(encoding="utf-8").splitlines():
+            if l.strip():
+                x = json.loads(l)
+                mesures.setdefault((x["pays"], x["jeu"]), set()).update(k for k in ("wikimodif", "prix_alim", "vols") if k in x)
+    couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
+    cache, cache_csv, cache_pays = {}, {}, {}
     async with httpx.AsyncClient(headers=UA, follow_redirects=True) as c:
+        os_ = OpenSky(c)
+        if os_.disponible:                          # vérification du client API au démarrage
+            try:
+                await os_.entete()
+            except Exception as e:
+                print(f"OpenSky : jeton refusé ({type(e).__name__}) ; vérifier OPENSKY_CLIENT_ID et OPENSKY_CLIENT_SECRET.")
+                os_.id = ""
+        print(f"{len(couples)} couples pays × jeu ; OpenSky {'disponible' if os_.disponible else 'non configuré'}.")
         with FICHIER.open("a", encoding="utf-8") as f:
             for pays, jeu in couples:
+                fait = mesures.get((pays, jeu), set())
                 d0 = date.fromisoformat(jeu)
-                w = await wikimodif(c, pays, d0)
-                p = await prix_alim(c, pays, d0, cache, cache_csv)
-                f.write(json.dumps({"pays": pays, "jeu": jeu, "wikimodif": w, "prix_alim": p}, ensure_ascii=False) + "\n")
+                ligne = {"pays": pays, "jeu": jeu}
+                if "wikimodif" not in fait:
+                    ligne["wikimodif"] = await wikimodif(c, pays, d0)
+                if "prix_alim" not in fait:
+                    ligne["prix_alim"] = await prix_alim(c, pays, d0, cache, cache_csv)
+                if "vols" not in fait and os_.disponible:
+                    ligne["vols"] = await vols(os_, c, pays, d0, cache_pays)
+                if len(ligne) == 2:
+                    continue
+                f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
-                print(f"{pays[:22]:22s} {jeu} : wikimodif {w.get('valeur')} · prix_alim {p.get('valeur')} ({p.get('raison', '')})")
+                print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
+                                                            for k in ("wikimodif", "prix_alim", "vols") if k in ligne))
     return 0
 
 

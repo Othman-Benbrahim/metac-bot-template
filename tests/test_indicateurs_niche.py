@@ -68,6 +68,31 @@ class TestNiche(unittest.TestCase):
         self.assertTrue(r["present"])
         self.assertAlmostEqual(r["valeur"], 0.1823, places=3)   # log(120/100)
 
+    def test_vols(self):
+        from unittest import mock
+
+        class C:
+            async def post(self, url, data=None, timeout=None):
+                class R:
+                    status_code = 200
+                    def raise_for_status(self): pass
+                    def json(self): return {"access_token": "t", "expires_in": 1800}
+                return R()
+
+            async def get(self, url, params=None, headers=None, timeout=None):
+                assert headers == {"Authorization": "Bearer t"}
+                n = 9 if params["end"] - params["begin"] == 7 * 86400 and params["end"] % 86400 == 0 and params["begin"] > 1788000000 else 19
+                return Rep([{}] * n)
+
+        with mock.patch.dict(os.environ, {"OPENSKY_CLIENT_ID": "i", "OPENSKY_CLIENT_SECRET": "s"}):
+            o = ni.OpenSky(C())
+            self.assertTrue(o.disponible)
+            o.aeroports = [{"iso_country": "KE", "type": "large_airport", "scheduled_service": "yes", "ident": "HKJK",
+                            "latitude_deg": "-1.3", "longitude_deg": "36.9"}]
+            self.assertEqual(lancer(o.aeroport("KE", [-1.28, 36.8])), "HKJK")
+            n = lancer(o.arrivees("HKJK", date(2026, 8, 25), date(2026, 9, 1)))
+            self.assertIsInstance(n, int)
+
     def test_induction_lit_les_niches(self):
         import pathlib
         from unittest import mock

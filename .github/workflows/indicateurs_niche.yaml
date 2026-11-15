@@ -1,4 +1,4 @@
-name: Indicateurs de niche (Wikipedia modifié, prix alimentaires) et observatoire inductif
+name: Indicateurs de niche (Wikipedia modifié, prix alimentaires, vols) et observatoire inductif
 
 # 0.10.138 : modifications des pages politiques Wikipedia et prix alimentaires WFP, mesurés avant la date de chaque
 # question du banc des indicateurs pertinents, puis observatoire inductif (lot après lot). Gratuit, rien de posté.
@@ -27,6 +27,9 @@ jobs:
       - name: Indicateurs de niche
         timeout-minutes: 90
         run: uv run python indicateurs_niche.py
+        env:
+          OPENSKY_CLIENT_ID: ${{ secrets.OPENSKY_CLIENT_ID || vars.OPENSKY_CLIENT_ID }}
+          OPENSKY_CLIENT_SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET || vars.OPENSKY_CLIENT_SECRET }}
       - name: Observatoire inductif
         run: uv run python induction.py
       - name: Enregistrer
