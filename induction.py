@@ -7,7 +7,7 @@ attendus sous B corrigé. Une régularité n'est signalée comme CANDIDATE que s
 3 lots sur 4, sur au moins 4 lots et 20 questions (même règle que le garde-fou sur B). Une candidate n'est pas un
 résultat : elle se pré-enregistre (sens fixé) et se juge sur les jeux suivants.
 
-    python induction.py          (registre/banc-indicateurs-frais.jsonl)
+    python induction.py          (registre/banc-indicateurs-frais.jsonl, + registre/indicateurs-niche.jsonl)
 """
 from __future__ import annotations
 
@@ -21,7 +21,34 @@ ETATS = {
     "fcdo": (("durci", lambda v: v > 0), ("inchangé", lambda v: v == 0)),
     "ioda": (("coupures", lambda v: v > 0), ("aucune coupure", lambda v: v == 0)),
     "wiki": (("attention en hausse", lambda v: v > 0.2), ("attention en baisse", lambda v: v < -0.2)),
+    # 0.10.138 : indicateurs de niche (indicateurs_niche.py)
+    "wikimodif": (("modifications politiques en hausse", lambda v: v > 0.3), ("modifications politiques en baisse", lambda v: v < -0.3)),
+    "prix_alim": (("prix alimentaires en hausse (> 10 % sur un an)", lambda v: v > 0.10),
+                  ("prix alimentaires stables ou en baisse", lambda v: v <= 0.02)),
 }
+NICHE = Path("registre") / "indicateurs-niche.jsonl"
+
+
+def joindre_niche(lignes: list[dict]) -> list[dict]:
+    """Ajoute aux lignes les indicateurs de niche mesurés pour le même pays et le même jeu."""
+    if not NICHE.exists():
+        return lignes
+    n = {}
+    for l in NICHE.read_text(encoding="utf-8").splitlines():
+        if l.strip():
+            x = json.loads(l)
+            n[(x["pays"], x["jeu"])] = x
+    out = []
+    for x in lignes:
+        m = n.get((x.get("pays"), x.get("jeu")))
+        if m:
+            x = dict(x, presents=dict(x.get("presents") or {}))
+            for k in ("wikimodif", "prix_alim"):
+                if (m.get(k) or {}).get("present"):
+                    x[k] = m[k]["valeur"]
+                    x["presents"][k] = True
+        out.append(x)
+    return out
 LOTS_MIN, N_MIN, MEME_SENS = 4, 20, 0.75
 
 
@@ -61,7 +88,7 @@ def principal() -> int:
     if not FICHIER.exists():
         print("Aucun registre.")
         return 0
-    r = observer([json.loads(l) for l in FICHIER.read_text(encoding="utf-8").splitlines() if l.strip()])
+    r = observer(joindre_niche([json.loads(l) for l in FICHIER.read_text(encoding="utf-8").splitlines() if l.strip()]))
     print(f"Observatoire inductif ({r['regle']}) :")
     for c in r["candidates"] or ["aucune régularité répétée"]:
         print(" • " + c)
