@@ -246,6 +246,8 @@ async def vols(os_: OpenSky, c: httpx.AsyncClient, pays: str, d0: date, cache_pa
     avant = await os_.arrivees(icao, d0 - timedelta(days=30), d0 - timedelta(days=28))
     if recent is None or avant is None:
         return {"present": False, "raison": "OpenSky indisponible", "aeroport": icao, "detail": os_.derniere_erreur}
+    if recent == 0 and avant == 0:                    # 0.10.145 : pas de récepteurs OpenSky dans la région, pas un aéroport fermé
+        return {"present": False, "raison": "aucun vol enregistré (couverture OpenSky)", "aeroport": icao}
     return {"present": True, "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "aeroport": icao,
             "arrivees_2j": recent, "arrivees_2j_quatre_semaines_avant": avant}
 

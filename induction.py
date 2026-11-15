@@ -50,7 +50,10 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
             for k in ("wikimodif", "prix_alim", "vols", "telegram"):
-                if (m.get(k) or {}).get("present"):
+                v = m.get(k) or {}
+                if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
+                    continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
+                if v.get("present"):
                     x[k] = m[k]["valeur"]
                     x["presents"][k] = True
         out.append(x)
