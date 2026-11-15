@@ -29,3 +29,21 @@ copie ne prouve donc rien pour eux. Ce qui prouve l'antériorité, c'est le comm
 
 Les premières lectures « sans matrice » ont été faites après `3e4efa5` ; les premières questions nouvelles du B
 autorégressif viendront après `84ab44f`.
+
+## Rasoir d'Ockham avant tout essai (décision d'auteur du 2026-11-15, 15 h 25)
+
+« Les idées simples et vraies battent en général les systèmes complexes. » Avant d'être testée, chaque hypothèse passe
+cinq questions, dont les réponses ouvrent son pré-enregistrement (section « Rasoir d'Ockham ») :
+
+1. **Une phrase** : le mécanisme tient-il en une phrase ?
+2. **Paramètres** : combien de nombres faut-il apprendre ? Zéro ou un ; au-delà, dire pourquoi.
+3. **Sens fixé d'avance** : dans quel sens l'effet doit-il aller, et pourquoi (bon sens, littérature) ?
+4. **Domaine** : à quelle classe de questions s'applique-t-elle, et seulement à elle ?
+5. **Plus simple ?** : une explication plus simple rend-elle compte des mêmes cas ?
+
+Une hypothèse qui échoue est écartée ou simplifiée avant tout passage. Deux garde-fous s'ajoutent, tirés de l'échec
+de `indicateurs-pertinents.md` (2026-11-15) :
+- **pas d'extrapolation** : une variable est bornée à l'étendue vue à l'apprentissage (ou réduite à son sens :
+  au-dessus / au-dessous de la normale) ;
+- **mesure stable** : une mesure qui peut diverger (division par un écart-type quasi nul, régions sèches) est bornée
+  ou écartée avant le test.
