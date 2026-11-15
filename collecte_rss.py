@@ -9,6 +9,7 @@ Familles (choisies par l'auteur) :
 - sante (0.10.157) : OMS Disease Outbreak News (API OData), ECDC (menaces, mises à jour, risques, grippe aviaire),
   Fonds mondial (communiqués, mises à jour ; 0.10.158) ;
 - voix_citoyennes (0.10.158) : Global Voices, 11 flux régionaux ;
+- think_tanks et economie (0.10.159) : ECFR ; Investing.com (actualité économique, indicateurs) ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
@@ -59,6 +60,17 @@ FLUX = {
     "voix_citoyennes": [f"https://globalvoices.org/-/world/{r}/feed/" for r in (
         "caribbean", "central-asia-caucasus", "east-asia", "eastern-central-europe", "latin-america", "north-america",
         "oceania", "south-asia", "sub-saharan-africa", "middle-east-north-africa", "western-europe")],
+    # 0.10.159 (2026-11-15, 22 h 16) : analyse géopolitique européenne (ECFR, articles et publications) et économie
+    # (Investing.com en français : actualité économique, indicateurs économiques). Familles séparées, non mélangées
+    # à la presse générale.
+    "think_tanks": [
+        "https://ecfr.eu/feed/?post_type=post",
+        "https://ecfr.eu/feed/?post_type=publication",
+    ],
+    "economie": [
+        "https://fr.investing.com/rss/news_14.rss",
+        "https://fr.investing.com/rss/news_95.rss",
+    ],
     "renseignement": [
         "http://feeds.feedburner.com/IntelligenceOnline-fr",
         "http://feeds.feedburner.com/AfricaIntelligence-fr",

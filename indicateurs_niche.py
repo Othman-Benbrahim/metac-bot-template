@@ -358,7 +358,7 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
     absent = {"present": False, "raison": "période non couverte ou pays inconnu"}
     if not cca2 or not RSS_COMPTES.exists() or d0 - timedelta(days=14) < RSS_DEBUT:
         return absent, absent
-    rec = av = off = pe = ren = san = vc = 0
+    rec = av = off = pe = ren = san = vc = tt = eco = 0
     for x in csv.DictReader(RSS_COMPTES.open(encoding="utf-8")):
         if x["pays"] != cca2:
             continue
@@ -374,6 +374,10 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
             san += n
         if x["famille"] == "voix_citoyennes" and d0 - timedelta(days=14) <= j < d0:
             vc += n
+        if x["famille"] == "think_tanks" and d0 - timedelta(days=14) <= j < d0:
+            tt += n
+        if x["famille"] == "economie" and d0 - timedelta(days=14) <= j < d0:
+            eco += n
         if x["famille"] == "presse":
             if d0 - timedelta(days=14) <= j < d0:
                 rec += n
@@ -382,7 +386,8 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
     presse = ({"present": True, "valeur": round(math.log((rec + 1) / (av + 1)), 4), "articles_14j": rec, "articles_14j_avant": av}
               if d0 - timedelta(days=28) >= RSS_DEBUT else absent)
     return presse, {"present": True, "valeur": float(off), "articles_officiels_14j": off, "parlement_ue_14j": pe,
-                    "renseignement_14j": ren, "sante_14j": san, "voix_citoyennes_14j": vc}
+                    "renseignement_14j": ren, "sante_14j": san, "voix_citoyennes_14j": vc,
+                    "think_tanks_14j": tt, "economie_14j": eco}
 
 
 async def principal() -> int:
