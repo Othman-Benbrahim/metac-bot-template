@@ -465,9 +465,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 7)                     # absence, A + B, aiguillage, signatures, acte, désaccord, régimes
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 7)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 14)
+        self.assertEqual(k, 8)                     # + signaux coûteux
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 8)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 16)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -477,7 +477,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 8)              # + acte, désaccord, régimes
+        self.assertEqual(es.resume()["ouverts"], 9)              # + acte, désaccord, régimes, signaux
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
@@ -834,3 +834,16 @@ def test_regimes_113():
     assert bb.aiguiller(pr, 0.5, {"p": 0.6}, {"p": 0.1}) == ("B_saison", 0.1)
     assert bb.aiguiller({"inertie_forte": True}, 0.5, {"p": 0.6}, None) == ("B_AR", 0.6)
     assert bb.aiguiller({}, 0.5, None, None) == ("B", 0.5)
+
+
+def test_signaux_couteux_114():
+    import banc_signaux as bs
+    v = bs.variables([{"type": "acte", "sens": "hausse", "cout": "gratuit"}, {"type": "acte", "sens": "hausse", "cout": "couteux"},
+                      {"type": "acte", "sens": "baisse", "cout": "couteux"}, {"type": "description", "sens": "hausse"}])
+    assert abs(v["G"] - 0.5) < 1e-9 and v["K"] == 0 and v["n_couteux"] == 2
+    # gratuits en hausse sur les NON, coûteux en hausse sur les OUI : βG < 0 < βK
+    ls = [{"jeu": f"2026-0{7 + i % 3}-01", "question_id": f"q{i}", "issue": i % 2, "p_A": 0.5, "p_B": 0.5,
+           "G": 0.0 if i % 2 else 0.6, "K": 0.6 if i % 2 else 0.0, "n_gratuit": 1, "n_couteux": 1} for i in range(60)]
+    bg, bk = bs.ajuster2([(0.0, x["G"], x["K"], x["issue"]) for x in ls])
+    assert bg < 0 < bk
+    assert len(bs.validation_croisee(ls)) == 60
