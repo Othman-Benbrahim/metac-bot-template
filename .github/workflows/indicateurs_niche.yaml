@@ -35,6 +35,14 @@ jobs:
           TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION || vars.TELEGRAM_SESSION }}
           OPENSKY_CLIENT_ID: ${{ secrets.OPENSKY_CLIENT_ID || vars.OPENSKY_CLIENT_ID }}
           OPENSKY_CLIENT_SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET || vars.OPENSKY_CLIENT_SECRET }}
+      - name: Sonde GeoConfirmed (format réel de l'export, sans effet sur le registre)
+        continue-on-error: true
+        run: |
+          uv run --no-sync python -c "
+          import asyncio, alphabet_puits as a
+          r = asyncio.run(a.geoconfirmed('Ukraine', 48.28, 37.18, 30, 60))
+          print('GeoConfirmed :', r.get('evenements_lus'), 'événements datés lus ;', len(r['points']), 'à moins de 30 km de Pokrovsk sur 60 jours ;', r['points'][-3:])
+          "
       - name: Observatoire inductif
         run: uv run --no-sync python induction.py
       - name: Enregistrer

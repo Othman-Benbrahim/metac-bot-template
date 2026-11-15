@@ -1040,6 +1040,93 @@ async def dbnomics_recherche(terme: str, avant: date | None = None) -> dict:
                     "url": f"https://db.nomics.world/{code}", "extrait": (x.get("description") or "")[:300]})
     return _releve("DBnomics (recherche)", f"jeux de données « {terme} »", "https://db.nomics.world/", pts, None)
 
+
+# 0.10.149 (décision d'auteur du 2026-11-15, 20 h 57 : « on le met pour Metaculus ») : GeoConfirmed, bénévoles qui
+# géolocalisent les images de guerre publiées en ligne (Ukraine depuis le 24 février 2022, et d'autres conflits).
+# Export KML public par conflit (même adresse que la bibliothèque libre osint-geo-extractor, avec l'accord de
+# l'auteur). Chaque point : une image vérifiée et localisée, datée. Utile pour les questions sur un front (prise d'une
+# ville, avancée) : où sont les combats, à quelle distance, à quel rythme. Licence non affichée : usage de lecture.
+MOIS_EN = {m: i for i, m in enumerate(("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"), 1)}
+
+
+def _date_geoconfirmed(*textes: str) -> str | None:
+    import re as _re
+    for t in textes:
+        if not t:
+            continue
+        m = _re.search(r"(20\d\d)-(\d\d)-(\d\d)", t)
+        if m:
+            return m.group(0)
+        m = _re.search(r"\b(\d{1,2})\s*(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)[A-Z]*\.?\s*(20\d\d)\b", t.upper())
+        if m:
+            return f"{m.group(3)}-{MOIS_EN[m.group(2)]:02d}-{int(m.group(1)):02d}"
+    return None
+
+
+def lire_kml_geoconfirmed(kml: str) -> list[dict]:
+    import re as _re
+    import xml.etree.ElementTree as ET
+    racine = ET.fromstring(kml.encode("utf-8") if isinstance(kml, str) else kml)
+    ns = lambda tag: tag.split("}", 1)[-1]
+    out = []
+    for pm in racine.iter():
+        if ns(pm.tag) != "Placemark":
+            continue
+        champs, coords = {}, None
+        for e in pm.iter():
+            t = ns(e.tag)
+            if t in ("name", "description", "when", "begin") and e.text:
+                champs.setdefault(t, e.text.strip())
+            elif t == "Data" and e.get("name"):
+                v = "".join(e.itertext()).strip()
+                champs.setdefault("data_" + e.get("name").lower(), v)
+            elif t == "coordinates" and e.text and coords is None:
+                parts = e.text.strip().split()[0].split(",")
+                try:
+                    coords = (float(parts[1]), float(parts[0]))
+                except (ValueError, IndexError):
+                    coords = None
+        d = _date_geoconfirmed(champs.get("when", ""), champs.get("begin", ""),
+                               *[v for k, v in champs.items() if k.startswith("data_") and "date" in k],
+                               champs.get("name", ""), _re.sub(r"<[^>]+>", " ", champs.get("description", "")))
+        if d and coords:
+            out.append({"date": d, "lat": coords[0], "lon": coords[1], "titre": champs.get("name", "")[:200]})
+    return out
+
+
+async def geoconfirmed(conflit: str = "Ukraine", latitude: float | None = None, longitude: float | None = None,
+                       rayon_km: float | None = None, jours: int = 90, avant: date | None = None) -> dict:
+    import io as _io
+    import math as _math
+    import zipfile as _zip
+    brut = await _get_octets(f"https://geoconfirmed.org/api/map/ExportAsKml/{conflit}")
+    try:
+        z = _zip.ZipFile(_io.BytesIO(brut))
+        nom = next((n for n in z.namelist() if n.lower().endswith(".kml")), None)
+        kml = z.read(nom).decode("utf-8") if nom else ""
+    except _zip.BadZipFile:
+        kml = brut.decode("utf-8", errors="replace")
+    evts = lire_kml_geoconfirmed(kml)
+    fin = avant or date.today()
+    debut = (fin - timedelta(days=jours)).isoformat()
+    pts = []
+    for e in evts:
+        if not (debut <= e["date"] < fin.isoformat()):
+            continue
+        dist = None
+        if latitude is not None and longitude is not None:
+            la1, lo1, la2, lo2 = map(_math.radians, (float(latitude), float(longitude), e["lat"], e["lon"]))
+            dist = 6371 * 2 * _math.asin(_math.sqrt(_math.sin((la2 - la1) / 2) ** 2
+                                                    + _math.cos(la1) * _math.cos(la2) * _math.sin((lo2 - lo1) / 2) ** 2))
+            if rayon_km and dist > float(rayon_km):
+                continue
+        pts.append({"date": e["date"], "valeur": round(dist, 1) if dist is not None else None,
+                    "titre": e["titre"], "url": "https://geoconfirmed.org/"})
+    pts.sort(key=lambda x: x["date"])
+    zone = f" à moins de {rayon_km} km de ({latitude}, {longitude})" if rayon_km else ""
+    return _releve("GeoConfirmed", f"images de guerre géolocalisées · {conflit}{zone} · valeur = distance en km au point donné",
+                   f"https://geoconfirmed.org/", pts, avant, debut, evenements_lus=len(evts))
+
 CATALOGUE: dict[str, dict] = {
     "fred": {"fn": fred, "nature": "niveau", "cle": "FRED_API_KEY", "comptable": True,
              "params": '{"serie": "identifiant FRED, ex. UNRATE, CPIAUCSL, DGS10, FEDFUNDS", "debut": "AAAA-MM-JJ facultatif"}',
@@ -1069,6 +1156,9 @@ CATALOGUE: dict[str, dict] = {
     "ucdp": {"fn": ucdp, "nature": "flux", "cle": "UCDP_TOKEN", "comptable": True,
              "params": '{"pays": "nom anglais ou code Gleditsch-Ward (ex. Sudan ou 625), facultatif", "debut": "AAAA-MM-JJ"}',
              "pour": "événements de violence organisée et morts estimés (à agréger par mois ou par an)"},
+    "geoconfirmed": {"fn": geoconfirmed, "nature": "evenements", "comptable": True,
+                     "params": '{"conflit": "Ukraine (défaut) ou autre carte GeoConfirmed", "latitude": "facultatif", "longitude": "facultatif", "rayon_km": "facultatif, ex. 20", "jours": 90}',
+                     "pour": "combats et frappes vérifiés par géolocalisation d'images (front ukrainien surtout) : où, quand, à quelle distance d'une ville ; complète front_ukraine (DeepState) par un producteur indépendant"},
     "usgs_seismes": {"fn": usgs_seismes, "nature": "evenements", "comptable": True,
                      "params": '{"magnitude_min": 6.0, "debut": "AAAA-MM-JJ", "latitude": "…", "longitude": "…", "rayon_km": "…"}',
                      "pour": "séismes (dates et magnitudes)"},
