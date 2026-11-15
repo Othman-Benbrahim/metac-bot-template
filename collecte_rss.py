@@ -24,6 +24,7 @@ déjà comptés, pour ne pas compter deux fois un article encore présent le len
 from __future__ import annotations
 
 import csv
+import os
 import hashlib
 import re
 import sys
@@ -111,6 +112,7 @@ FLUX = {
 CLDR = "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-localenames-full/main/{l}/territories.json"
 COMPTES = Path("registre") / "rss-comptes.csv"
 VUS = Path("registre") / "rss-vus.txt"
+SANTE = Path("registre") / "rss-sante.csv"   # 0.10.162 : état de chaque flux (dernier essai, dernier succès, dernier nouvel article)
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
 
@@ -194,6 +196,28 @@ def articles_oms(donnees: dict) -> list[dict]:
     return out
 
 
+def bilan_sante(lignes: list[dict], aujourdhui: str, silence: int = 7) -> str:
+    """Résumé lisible : flux en erreur, vides, ou sans nouvel article depuis `silence` jours."""
+    from datetime import date
+    j0 = date.fromisoformat(aujourdhui)
+    def age(d):
+        return (j0 - date.fromisoformat(d)).days if d else None
+    erreurs = [x for x in lignes if str(x.get("statut", "")).startswith("erreur")]
+    vides = [x for x in lignes if x.get("statut") == "vide"]
+    muets = [x for x in lignes if x.get("statut") == "ok" and (age(x.get("dernier_nouveau")) or 0) >= silence]
+    ok = len(lignes) - len(erreurs) - len(vides) - len(muets)
+    out = [f"## Santé des flux RSS ({aujourdhui})", "",
+           f"{len(lignes)} flux : {ok} en bon état, {len(erreurs)} en erreur, {len(vides)} vides, "
+           f"{len(muets)} sans nouvel article depuis {silence} jours ou plus.", ""]
+    for titre, groupe, champ in (("En erreur", erreurs, "statut"), ("Vides", vides, "dernier_succes"),
+                                 (f"Muets ({silence} j et plus)", muets, "dernier_nouveau")):
+        if groupe:
+            out += [f"### {titre}", "", "| famille | flux | détail |", "|---|---|---|"]
+            out += [f"| {x.get('famille', '')} | {x['url']} | {champ} : {x.get(champ) or 'jamais'} |" for x in groupe]
+            out.append("")
+    return "\n".join(out)
+
+
 def principal() -> int:
     vus = set(VUS.read_text(encoding="utf-8").split()) if VUS.exists() else set()
     comptes: dict[tuple, int] = {}
@@ -201,6 +225,8 @@ def principal() -> int:
         for x in csv.DictReader(COMPTES.open(encoding="utf-8")):
             comptes[(x["pays"], x["jour"], x["famille"])] = int(x["articles"])
     nouveaux = 0
+    aujourdhui = datetime.now(timezone.utc).date().isoformat()
+    sante = {x["url"]: x for x in csv.DictReader(SANTE.open(encoding="utf-8"))} if SANTE.exists() else {}
     with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c:
         motifs = noms_pays(c)
         print(f"{len(motifs)} noms de pays (anglais et français).")
@@ -213,6 +239,8 @@ def principal() -> int:
                             else articles(r.content, titres_seuls=famille in TITRES_SEULS))
                 except Exception as e:
                     print(f"  flux indisponible : {url[:70]} ({type(e).__name__})")
+                    st = sante.setdefault(url, {"url": url, "dernier_succes": "", "dernier_nouveau": ""})
+                    st.update(famille=famille, dernier_essai=aujourdhui, statut=f"erreur {type(e).__name__}", articles=0)
                     continue
                 n = 0
                 for a in arts:
@@ -226,6 +254,12 @@ def principal() -> int:
                             comptes[(p, a["jour"], fa)] = comptes.get((p, a["jour"], fa), 0) + 1
                     n += 1
                 nouveaux += n
+                st = sante.setdefault(url, {"url": url, "dernier_succes": "", "dernier_nouveau": ""})
+                st.update(famille=famille, dernier_essai=aujourdhui, statut="ok" if arts else "vide", articles=len(arts))
+                if arts:
+                    st["dernier_succes"] = aujourdhui
+                if n:
+                    st["dernier_nouveau"] = aujourdhui
                 print(f"  {famille:8s} {url[:70]:70s} : {len(arts)} articles, {n} nouveaux")
     COMPTES.parent.mkdir(exist_ok=True)
     with COMPTES.open("w", encoding="utf-8", newline="") as f:
@@ -234,6 +268,18 @@ def principal() -> int:
         for (p, j, fa), n in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
             w.writerow([p, j, fa, n])
     VUS.write_text("\n".join(sorted(vus)), encoding="utf-8")
+    actuels = {u for urls in FLUX.values() for u in urls}
+    with SANTE.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["url", "famille", "dernier_essai", "statut", "articles", "dernier_succes",
+                                          "dernier_nouveau"])
+        w.writeheader()
+        for u in sorted(actuels & set(sante)):
+            w.writerow({k: sante[u].get(k, "") for k in w.fieldnames})
+    rapport = bilan_sante([sante[u] for u in sorted(actuels & set(sante))], aujourdhui)
+    print(rapport)
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+            f.write(rapport + "\n")
     print(f"{nouveaux} nouveaux articles comptés ; {len(comptes)} cases pays × jour × famille.")
     return 0
 

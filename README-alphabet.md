@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.162** — collecteur RSS : santé des flux (registre/rss-sante.csv : dernier essai, statut, dernier succès, dernier nouvel article) et bilan dans le résumé du passage (flux en erreur, vides, muets depuis 7 jours).
 - **0.10.161** — collecteur RSS : communiqués de l'IATA (demande aérienne passagers et fret) dans « economie ». Écartés après examen : crypto.ro, CSSF (régulateur luxembourgeois), alertes NasdaqTrader (avis techniques et suspensions de cotation, sans dimension pays).
 - **0.10.160** — collecteur RSS : investingLive (ex-ForexLive) dans « economie » ; famille dérivée « notation » (article économique qui nomme une agence de notation et un mot de notation) et état « une agence de notation est citée » dans l'observatoire.
 - **0.10.159** — collecteur RSS : familles « think_tanks » (ECFR, articles et publications) et « economie » (Investing.com en français : actualité économique, indicateurs économiques), avec leurs états dans l'observatoire.

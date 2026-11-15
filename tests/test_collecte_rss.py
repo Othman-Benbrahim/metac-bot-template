@@ -27,7 +27,13 @@ class TestRSS(unittest.TestCase):
         self.assertIn("Ethiopia", o[0]["texte"])
         self.assertTrue(cr.NOTATION.search("Fitch downgrades France to A+, outlook stable"))
         self.assertTrue(cr.NOTATION.search("Moody's relève la perspective de l'Italie"))
-        self.assertFalse(cr.NOTATION.search("Fed's Daly: we need to raise rates"))                 # lettres réservées aux abonnés : titre seul
+        self.assertFalse(cr.NOTATION.search("Fed's Daly: we need to raise rates"))
+        b = cr.bilan_sante([
+            {"url": "a", "famille": "f", "statut": "ok", "dernier_nouveau": "2026-11-15"},
+            {"url": "b", "famille": "f", "statut": "erreur HTTPStatusError"},
+            {"url": "c", "famille": "f", "statut": "vide", "dernier_succes": ""},
+            {"url": "d", "famille": "f", "statut": "ok", "dernier_nouveau": "2026-11-01"}], "2026-11-15")
+        self.assertIn("4 flux : 1 en bon état, 1 en erreur, 1 vides, 1 sans nouvel article", b)                 # lettres réservées aux abonnés : titre seul
         self.assertEqual((a[0]["jour"], a[0]["texte"].strip()), ("2026-11-15", "Mali"))
 
 
