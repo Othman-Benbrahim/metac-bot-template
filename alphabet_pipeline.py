@@ -30,7 +30,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
 
-VERSION_BOT = "0.10.127"
+VERSION_BOT = "0.10.128"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -2706,7 +2706,10 @@ POSTER_C = False
 # corrigé sous 0 ; gain concentré sur les conflits ACLED). Le bot poste ½A + ½B (moyenne des logits) SEULEMENT pour les
 # événements humains couverts par la presse : événement en strate 7 (géopolitique) ou 13 (politique intérieure), avec un
 # taux de base. Ailleurs, la règle précédente. Limite déclarée : la strate est posée par le lecteur.
-POSTER_AB = True
+# 0.10.128 : SUSPENDU par décision d'auteur du 2026-11-15 (13 h 12). La preuve venait en partie des questions ACLED
+# « dix fois plus » où B était faux (preenregistrements/erreur-b-acled-2026-11-15.md) ; avec B corrigé, ½A + ½B ne bat
+# plus B sur ces données. Retour à la règle précédente jusqu'à une nouvelle évaluation.
+POSTER_AB = False
 STRATES_AB = (7, 13)
 
 

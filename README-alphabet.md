@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.128** — décisions d'auteur du 2026-11-15 (13 h 12) après l'erreur du B ACLED : ½A + ½B n'est plus posté (`POSTER_AB = False`) ; essais `recalibrage_conflits`, `silence`, `aiguillage` clos comme caducs, `a_plus_b` suspendu ; tous à refaire avec B corrigé. La pluie est retenue comme indicateur pertinent pour les manifestations et les émeutes (test sur questions fraîches à pré-enregistrer).
 - **0.10.127** — **erreur du taux de base ACLED corrigée** : pour les questions « plus de dix fois plus que un plus la moyenne », B calculait la probabilité de dépasser UNE fois la moyenne (≈ 40 % annoncés, 0 oui sur 74 questions). Seuil 10·m et moyenne m − 1 désormais. Sur les 150 questions ACLED du banc A, B passe de 0,493 à 0,241 (A : 0,443). Conséquences sur les essais : `preenregistrements/erreur-b-acled-2026-11-15.md`.
 - **0.10.126** — workflows des bancs : l'étape « Enregistrer » ajoutait le registre et son résumé d'un seul `git add` ; si le résumé n'existait pas encore (passage annulé), rien n'était enregistré. Chaque fichier est maintenant ajouté séparément.
 - **0.10.125** — banc des indicateurs : délai de 20 s par appel (au lieu de 60), durée imprimée par site, plafond du passage à 90 min ; les lignes déjà écrites sont gardées et un nouveau passage reprend où il s'est arrêté.
