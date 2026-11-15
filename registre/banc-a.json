@@ -1,35 +1,47 @@
 {
-  "version_bot": "0.10.106",
+  "version_bot": "0.10.107",
   "note": "perte log, plus bas = mieux ; une série par jeu de modèles",
   "azure_ai/gpt-5-mini": {
-    "n": 10,
-    "A": 0.3619,
-    "B": 0.431,
-    "AB": 0.3737,
+    "n": 109,
+    "A": 0.5726,
+    "B": 0.5849,
+    "AB": 0.5767,
     "par_source": {
       "acled": {
-        "n": 10,
-        "A": 0.3619,
-        "B": 0.431,
-        "AB": 0.3737
+        "n": 34,
+        "A": 0.4351,
+        "B": 0.4721,
+        "AB": 0.4495
+      },
+      "dbnomics": {
+        "n": 37,
+        "A": 0.6887,
+        "B": 0.688,
+        "AB": 0.6883
+      },
+      "fred": {
+        "n": 38,
+        "A": 0.5826,
+        "B": 0.5855,
+        "AB": 0.582
       }
     },
     "critere_AB": {
-      "n_nouveaux": 10,
-      "regard": 0,
-      "n_juge": 10,
-      "blocs": 1,
-      "ecart_moyen": -0.057338129057404486,
+      "n_nouveaux": 109,
+      "regard": 1,
+      "n_juge": 100,
+      "blocs": 18,
+      "ecart_moyen": -0.009478780376225081,
       "intervalle_90_par_blocs": [
-        -0.057338129057404486,
-        -0.057338129057404486
+        -0.02040033667159053,
+        -0.0002994029077026725
       ],
       "intervalle_corrige": [
-        -0.057338129057404486,
-        -0.057338129057404486
+        -0.022509514042450673,
+        0.001373313972599935
       ],
       "niveau_corrige": 0.95,
-      "verdict": "en attente (moins de 100 questions de jeux non vus)"
+      "verdict": "critère nominal seulement (pas au niveau corrigé)"
     }
   }
 }
