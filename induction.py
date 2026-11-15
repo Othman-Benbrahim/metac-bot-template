@@ -38,7 +38,11 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
     for l in NICHE.read_text(encoding="utf-8").splitlines():
         if l.strip():
             x = json.loads(l)
-            n[(x["pays"], x["jeu"])] = {**n.get((x["pays"], x["jeu"]), {}), **x}   # lignes complémentaires fusionnées
+            ancien = n.get((x["pays"], x["jeu"]), {})
+            # lignes complémentaires fusionnées ; une mesure réussie n'est jamais écrasée par un échec plus récent
+            n[(x["pays"], x["jeu"])] = {**ancien, **{k: v for k, v in x.items()
+                                                     if not (isinstance(v, dict) and not v.get("present")
+                                                             and (ancien.get(k) or {}).get("present"))}}
     out = []
     for x in lignes:
         m = n.get((x.get("pays"), x.get("jeu")))

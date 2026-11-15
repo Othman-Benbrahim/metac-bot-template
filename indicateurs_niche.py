@@ -43,12 +43,20 @@ PAGES = ("Politics of {p}", "Human rights in {p}", "Censorship in {p}", "Electio
 
 
 async def obtenir(c: httpx.AsyncClient, url: str, **kw):
-    await asyncio.sleep(0.2)
-    try:
-        r = await c.get(url, timeout=30, **kw)
-        return r if r.status_code == 200 else None
-    except Exception:
-        return None
+    """0.10.142 : réessaie (2, 4, 8 s) quand le service limite les appels (429) ou défaille (5xx)."""
+    await asyncio.sleep(0.5)
+    for attente in (2, 4, 8, None):
+        try:
+            r = await c.get(url, timeout=30, **kw)
+        except Exception:
+            r = None
+        if r is not None and r.status_code == 200:
+            return r
+        if r is not None and r.status_code not in (429, 500, 502, 503, 504):
+            return None
+        if attente is None:
+            return None
+        await asyncio.sleep(attente)
 
 
 async def wikimodif(c: httpx.AsyncClient, pays: str, d0: date) -> dict:
@@ -66,28 +74,40 @@ async def wikimodif(c: httpx.AsyncClient, pays: str, d0: date) -> dict:
         for e in res:
             par_jour[e["timestamp"][:10]] = par_jour.get(e["timestamp"][:10], 0) + int(e.get("edits") or 0)
     if not trouvees:
-        return {"present": False}
+        return {"present": False, "raison": "aucune page trouvée ou service indisponible"}
     recent = sum(v for k, v in par_jour.items() if k >= (d0 - timedelta(days=30)).isoformat())
     avant = sum(v for k, v in par_jour.items() if k < (d0 - timedelta(days=30)).isoformat()) / 6
     return {"present": True, "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "pages": trouvees,
             "modifs_30j": recent, "moyenne_30j_avant": round(avant, 2)}
 
 
+def _csv(pk: dict) -> str | None:
+    for res in pk.get("resources", []):
+        if str(res.get("format", "")).lower() == "csv" and res.get("url"):
+            return res["url"]
+    return None
+
+
 async def ressource_wfp(c: httpx.AsyncClient, pays: str, cache: dict) -> str | None:
+    """0.10.142 : jeux HDX « wfp-food-prices-for-<pays> » (titres du type « Kenya - Food Prices »)."""
+    import re
     if pays in cache:
         return cache[pays]
     url = None
-    r = await obtenir(c, "https://data.humdata.org/api/3/action/package_search",
-                      params={"q": f'title:"WFP food prices" {pays}', "rows": 10})
+    slug = re.sub(r"[^a-z0-9]+", "-", pays.lower().replace("'", "")).strip("-")
+    r = await obtenir(c, "https://data.humdata.org/api/3/action/package_show", params={"id": f"wfp-food-prices-for-{slug}"})
     if r is not None:
-        for pk in r.json().get("result", {}).get("results", []):
-            if pays.lower() in pk.get("title", "").lower() and "food prices" in pk.get("title", "").lower():
-                for res in pk.get("resources", []):
-                    if str(res.get("format", "")).lower() == "csv" and "url" in res:
-                        url = res["url"]
+        url = _csv(r.json().get("result") or {})
+    if not url:
+        r = await obtenir(c, "https://data.humdata.org/api/3/action/package_search",
+                          params={"q": f"{pays} food prices", "fq": "organization:wfp", "rows": 10})
+        if r is not None:
+            for pk in r.json().get("result", {}).get("results", []):
+                t = pk.get("title", "").lower()
+                if pays.lower() in t and "food prices" in t:
+                    url = _csv(pk)
+                    if url:
                         break
-            if url:
-                break
     cache[pays] = url
     return url
 
@@ -141,6 +161,7 @@ class OpenSky:
         self.secret = os.environ.get("OPENSKY_CLIENT_SECRET", "").strip()
         self.jeton, self.expire = None, 0.0
         self.aeroports: list[dict] | None = None
+        self.derniere_erreur = ""
 
     @property
     def disponible(self) -> bool:
@@ -186,6 +207,7 @@ class OpenSky:
         if r.status_code == 404:
             return 0                                  # OpenSky répond 404 quand aucun vol n'est trouvé
         if r.status_code != 200:
+            self.derniere_erreur = f"HTTP {r.status_code} : {r.text[:150]}"
             return None
         return len(r.json() or [])
 
@@ -199,7 +221,7 @@ async def vols(os_: OpenSky, c: httpx.AsyncClient, pays: str, d0: date, cache_pa
     recent = await os_.arrivees(icao, d0 - timedelta(days=7), d0)
     avant = await os_.arrivees(icao, d0 - timedelta(days=35), d0 - timedelta(days=28))
     if recent is None or avant is None:
-        return {"present": False, "raison": "OpenSky indisponible", "aeroport": icao}
+        return {"present": False, "raison": "OpenSky indisponible", "aeroport": icao, "detail": os_.derniere_erreur}
     return {"present": True, "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "aeroport": icao,
             "arrivees_7j": recent, "arrivees_7j_un_mois_avant": avant}
 
@@ -214,7 +236,9 @@ async def principal() -> int:
         for l in FICHIER.read_text(encoding="utf-8").splitlines():
             if l.strip():
                 x = json.loads(l)
-                mesures.setdefault((x["pays"], x["jeu"]), set()).update(k for k in ("wikimodif", "prix_alim", "vols") if k in x)
+                # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
+                mesures.setdefault((x["pays"], x["jeu"]), set()).update(
+                    k for k in ("wikimodif", "prix_alim", "vols") if (x.get(k) or {}).get("present"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
     async with httpx.AsyncClient(headers=UA, follow_redirects=True) as c:
