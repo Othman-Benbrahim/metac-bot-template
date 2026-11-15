@@ -1,0 +1,41 @@
+name: Banc des motifs ordinaux
+
+# 0.10.108 : motifs ordinaux (Bandt et Pompe 2002) sur les séries ForecastBench résolues ; comparés à B, et à A + B là où
+# le bras A existe. Aucun modèle de langue : gratuit. Registre à part (registre/banc-o.jsonl, résumé registre/banc-o.json).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_o:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Banc des motifs ordinaux
+        run: uv run python banc_o.py
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          git add registre/banc-o.jsonl registre/banc-o.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc des motifs ordinaux du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
