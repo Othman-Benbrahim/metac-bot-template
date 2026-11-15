@@ -31,6 +31,7 @@ ETATS = {
                         ("Violations Watch ne signale rien de grave", lambda v: v == 0)),
     "rss_presse": (("la presse en parle de plus en plus (× 1,5)", lambda v: v > 0.4), ("la presse se tait (÷ 1,5)", lambda v: v < -0.4)),
     "rss_officiel": (("sources officielles actives (≥ 3 articles)", lambda v: v >= 3), ("sources officielles muettes", lambda v: v == 0)),
+    "brouillage_gps": (("brouillage GPS présent (≥ 5 % des zones)", lambda v: v >= 0.05), ("aucun brouillage GPS", lambda v: v == 0)),
 }
 NICHE = Path("registre") / "indicateurs-niche.jsonl"
 
@@ -53,7 +54,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure

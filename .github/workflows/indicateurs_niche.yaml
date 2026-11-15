@@ -1,4 +1,4 @@
-name: Indicateurs de niche (Wikipedia modifié, prix alimentaires, vols, Telegram) et observatoire inductif
+name: Indicateurs de niche (Wikipedia modifié, prix alimentaires, vols, Telegram, brouillage GPS) et observatoire inductif
 
 # 0.10.138 : modifications des pages politiques Wikipedia et prix alimentaires WFP, mesurés avant la date de chaque
 # question du banc des indicateurs pertinents, puis observatoire inductif (lot après lot). Gratuit, rien de posté.
@@ -25,7 +25,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Telethon (lecture de Telegram, hors du verrou du bot)
-        run: uv pip install "telethon==1.42.0"
+        run: uv pip install "telethon==1.42.0" "h3==4.1.2"
       - name: Indicateurs de niche
         timeout-minutes: 90
         run: uv run --no-sync python indicateurs_niche.py

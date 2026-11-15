@@ -28,7 +28,9 @@ STRICTEMENT avant la date du jeu :
   en anglais et en français ; presse : log((articles des 14 jours avant + 1) / (14 jours précédents + 1)) ; officiel
   (ReliefWeb, avis de voyage, GDACS, USGS) : articles des 14 jours avant ; mesurés seulement sur les dates couvertes
   par la collecte (à partir du 2026-11-16).
-Les sept passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
+- brouillage_gps (0.10.153) : part des zones « rouges » de gpsjam.org dans le pays, moyenne des 14 jours avant la
+  date (brouillage_gps.py) ; historique depuis le 2022-02-14, donc mesurable sur les questions passées.
+Les huit passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
 Registre : registre/indicateurs-niche.jsonl.
 
     python indicateurs_niche.py
@@ -386,12 +388,16 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
     async with httpx.AsyncClient(headers=UA, follow_redirects=True) as c:
         os_ = OpenSky(c)
+        import brouillage_gps as bg
+        gps = bg.Brouillage(obtenir)
+        essai = await gps.jour(c, date(2026, 6, 1)) if await gps.preparer(c) else None
+        print(f"gpsjam.org : {'fichiers quotidiens lus (' + str(len(essai)) + ' pays le 2026-06-01)' if essai else 'indisponible (' + (gps.erreur or 'aucune réponse') + ')'}.")
         if os_.disponible:                          # vérification du client API au démarrage
             try:
                 await os_.entete()
@@ -419,6 +425,9 @@ async def principal() -> int:
                     ligne["telegram"] = await telegram(tg, pays, d0)
                 if "violationswatch" not in fait and d0 - timedelta(days=14) >= VW_DEBUT:
                     ligne["violationswatch"] = violationswatch(pays, d0)
+                if "brouillage_gps" not in fait and essai:
+                    code_g = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["brouillage_gps"] = await gps.mesure(c, code_g, d0)
                 if ("rss_officiel" not in fait or "rss_presse" not in fait) and d0 - timedelta(days=14) >= RSS_DEBUT:
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["rss_presse"], ligne["rss_officiel"] = rss(code, d0)
@@ -427,7 +436,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps") if k in ligne))
         await tg.fermer()
     return 0
 
