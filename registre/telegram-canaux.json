@@ -1,0 +1,75 @@
+{
+ "valide_le": "2026-11-15",
+ "decision": "décision d'auteur du 2026-11-15, 22 h 41 : « On prend ceux sélectionnés »",
+ "regle": {
+  "mots": [
+   "world news",
+   "breaking news",
+   "osint",
+   "war news",
+   "conflict news",
+   "geopolitics",
+   "international news",
+   "africa news",
+   "middle east news",
+   "asia news",
+   "latin america news"
+  ],
+  "abonnes_min": 10000,
+  "nombre": 40
+ },
+ "ecartes": {
+  "molfar_global": "méthodes d'OSINT, pas d'actualité ; ukrainien ou russe",
+  "dannyhaiphong": "commentaire d'opinion, pas de faits datés"
+ },
+ "canaux": [
+  {
+   "canal": "geopolitics_prime",
+   "titre": "Geopolitics Prime",
+   "abonnes": 288628,
+   "trouve_par": "geopolitics"
+  },
+  {
+   "canal": "ultimora",
+   "titre": "Breaking News - Ultimora.net",
+   "abonnes": 122724,
+   "trouve_par": "breaking news"
+  },
+  {
+   "canal": "RFU_EN",
+   "titre": "RFU News — Strategic Geopolitics",
+   "abonnes": 48360,
+   "trouve_par": "geopolitics"
+  },
+  {
+   "canal": "WarfareAnalysis",
+   "titre": "WarfareAnalysis News 🔻",
+   "abonnes": 31017,
+   "trouve_par": "war news"
+  },
+  {
+   "canal": "sitreports",
+   "titre": "SITREP - Independent OSINT Channel",
+   "abonnes": 22850,
+   "trouve_par": "osint"
+  },
+  {
+   "canal": "MiddleEastBriefingEN",
+   "titre": "Middle East Brief | News & Intelligence Analysis",
+   "abonnes": 18714,
+   "trouve_par": "middle east news"
+  },
+  {
+   "canal": "osint_anatomy",
+   "titre": "OSINT ANATOMY",
+   "abonnes": 11118,
+   "trouve_par": "osint"
+  },
+  {
+   "canal": "citizenconflictnews",
+   "titre": "Citizen Conflict NEWS",
+   "abonnes": 10803,
+   "trouve_par": "conflict news"
+  }
+ ]
+}
