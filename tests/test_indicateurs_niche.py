@@ -30,10 +30,14 @@ class FauxClient:
     async def get(self, url, **kw):
         if "edits/per-page" in url:
             if "Politics_of" not in url:
-                return None
+                r = Rep({})
+                r.status_code = 404
+                return r
             res = [{"timestamp": (self.d0 - timedelta(days=i)).isoformat() + "T00:00:00.000Z",
                     "edits": 3 if i <= 30 else 1} for i in range(1, 210)]
             return Rep({"items": [{"results": res}]})
+        if "package_show" in url:
+            return Rep({"result": {}})
         if "package_search" in url:
             return Rep({"result": {"results": [{"title": "Kenya - WFP food prices for Kenya",
                                                 "resources": [{"format": "CSV", "url": "http://x/kenya.csv"}]}]}})
@@ -92,6 +96,28 @@ class TestNiche(unittest.TestCase):
             self.assertEqual(lancer(o.aeroport("KE", [-1.28, 36.8])), "HKJK")
             n = lancer(o.arrivees("HKJK", date(2026, 8, 25), date(2026, 9, 1)))
             self.assertIsInstance(n, int)
+
+    def test_telegram(self):
+        from datetime import datetime, timezone
+
+        class M:
+            def __init__(self, d): self.date = d
+
+        class FauxTg:
+            def iter_messages(self, ent, search=None, offset_date=None):
+                assert ent is None and search == "Kenya"
+                dates = [offset_date - timedelta(days=i) for i in (1, 2, 3, 4, 20, 30)]
+
+                async def gen():
+                    for d in dates:
+                        yield M(d)
+                return gen()
+
+        tg = ni.Telegram()
+        tg.client = FauxTg()
+        r = lancer(ni.telegram(tg, "Kenya", date(2026, 9, 1)))
+        self.assertEqual((r["messages_14j"], r["messages_14j_avant"]), (4, 1))   # le message à 30 jours arrête la lecture
+        self.assertGreater(r["valeur"], 0)
 
     def test_induction_lit_les_niches(self):
         import pathlib

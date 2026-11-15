@@ -15,7 +15,11 @@ STRICTEMENT avant la date du jeu :
   (le plus grand aéroport à vols réguliers le plus proche de la capitale, base OurAirports), OpenSky Network :
   log((arrivées des 7 jours avant la date + 1) / (arrivées des 7 jours, quatre semaines plus tôt + 1)). Idée de
   l'auteur : l'espace aérien comme signal de niche (perturbations, fermetures, fuites).
-Les trois passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
+- telegram (0.10.143, si TELEGRAM_API_ID, TELEGRAM_API_HASH et TELEGRAM_SESSION sont fournis) : recherche globale de
+  Telegram (tous les canaux publics, aucun choix de canaux) sur le nom du pays en anglais : log((messages des 14 jours
+  avant la date + 1) / (messages des 14 jours précédents + 1)), au plus 400 messages lus par couple. Idée de l'auteur :
+  les canaux publient avant la presse ; emballement, calme ou silence.
+Les quatre passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
 Registre : registre/indicateurs-niche.jsonl.
 
     python indicateurs_niche.py
@@ -226,6 +230,67 @@ async def vols(os_: OpenSky, c: httpx.AsyncClient, pays: str, d0: date, cache_pa
             "arrivees_7j": recent, "arrivees_7j_un_mois_avant": avant}
 
 
+class Telegram:
+    """Lecture seule de la recherche globale de Telegram (Telethon, session de l'auteur)."""
+
+    def __init__(self):
+        self.id = os.environ.get("TELEGRAM_API_ID", "").strip()
+        self.hash = os.environ.get("TELEGRAM_API_HASH", "").strip()
+        self.session = os.environ.get("TELEGRAM_SESSION", "").strip()
+        self.client = None
+        self.derniere_erreur = ""
+
+    @property
+    def disponible(self) -> bool:
+        return bool(self.id and self.hash and self.session)
+
+    async def ouvrir(self) -> bool:
+        try:
+            from telethon import TelegramClient
+            from telethon.sessions import StringSession
+            self.client = TelegramClient(StringSession(self.session), int(self.id), self.hash, flood_sleep_threshold=120)
+            await self.client.connect()
+            if not await self.client.is_user_authorized():
+                self.derniere_erreur = "session non autorisée"
+                return False
+            return True
+        except Exception as e:
+            self.derniere_erreur = f"{type(e).__name__}: {e}"[:200]
+            return False
+
+    async def fermer(self):
+        if self.client is not None:
+            await self.client.disconnect()
+
+    async def compter(self, terme: str, d0: date, plafond: int = 400) -> tuple[int, int] | None:
+        from datetime import datetime, timezone
+        fin = datetime(d0.year, d0.month, d0.day, tzinfo=timezone.utc)
+        coupure, debut = fin - timedelta(days=14), fin - timedelta(days=28)
+        recent = avant = lus = 0
+        try:
+            async for m in self.client.iter_messages(None, search=terme, offset_date=fin):
+                lus += 1
+                if m.date < debut or lus > plafond:
+                    break
+                if m.date >= coupure:
+                    recent += 1
+                else:
+                    avant += 1
+        except Exception as e:
+            self.derniere_erreur = f"{type(e).__name__}: {e}"[:200]
+            return None
+        return recent, avant
+
+
+async def telegram(tg: Telegram, pays: str, d0: date) -> dict:
+    r = await tg.compter(pays, d0)
+    if r is None:
+        return {"present": False, "raison": "Telegram indisponible", "detail": tg.derniere_erreur}
+    recent, avant = r
+    return {"present": True, "valeur": round(math.log((recent + 1) / (avant + 1)), 4),
+            "messages_14j": recent, "messages_14j_avant": avant}
+
+
 async def principal() -> int:
     if not SOURCE.exists():
         print("Pas de registre source.")
@@ -238,7 +303,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols") if (x.get(k) or {}).get("present"))
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram") if (x.get(k) or {}).get("present"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
     async with httpx.AsyncClient(headers=UA, follow_redirects=True) as c:
@@ -249,7 +314,12 @@ async def principal() -> int:
             except Exception as e:
                 print(f"OpenSky : jeton refusé ({type(e).__name__}) ; vérifier OPENSKY_CLIENT_ID et OPENSKY_CLIENT_SECRET.")
                 os_.id = ""
-        print(f"{len(couples)} couples pays × jeu ; OpenSky {'disponible' if os_.disponible else 'non configuré'}.")
+        tg = Telegram()
+        if tg.disponible and not await tg.ouvrir():
+            print(f"Telegram : connexion refusée ({tg.derniere_erreur}) ; vérifier les trois secrets TELEGRAM_*.")
+            tg.session = ""
+        print(f"{len(couples)} couples pays × jeu ; OpenSky {'disponible' if os_.disponible else 'non configuré'} ; "
+              f"Telegram {'disponible' if tg.disponible else 'non configuré'}.")
         with FICHIER.open("a", encoding="utf-8") as f:
             for pays, jeu in couples:
                 fait = mesures.get((pays, jeu), set())
@@ -261,12 +331,15 @@ async def principal() -> int:
                     ligne["prix_alim"] = await prix_alim(c, pays, d0, cache, cache_csv)
                 if "vols" not in fait and os_.disponible:
                     ligne["vols"] = await vols(os_, c, pays, d0, cache_pays)
+                if "telegram" not in fait and tg.disponible:
+                    ligne["telegram"] = await telegram(tg, pays, d0)
                 if len(ligne) == 2:
                     continue
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram") if k in ligne))
+        await tg.fermer()
     return 0
 
 

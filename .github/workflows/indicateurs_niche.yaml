@@ -1,4 +1,4 @@
-name: Indicateurs de niche (Wikipedia modifié, prix alimentaires, vols) et observatoire inductif
+name: Indicateurs de niche (Wikipedia modifié, prix alimentaires, vols, Telegram) et observatoire inductif
 
 # 0.10.138 : modifications des pages politiques Wikipedia et prix alimentaires WFP, mesurés avant la date de chaque
 # question du banc des indicateurs pertinents, puis observatoire inductif (lot après lot). Gratuit, rien de posté.
@@ -24,14 +24,19 @@ jobs:
         with:
           version: "0.13.1"
       - run: uv sync --locked
+      - name: Telethon (lecture de Telegram, hors du verrou du bot)
+        run: uv pip install "telethon==1.42.0"
       - name: Indicateurs de niche
         timeout-minutes: 90
-        run: uv run python indicateurs_niche.py
+        run: uv run --no-sync python indicateurs_niche.py
         env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
           OPENSKY_CLIENT_ID: ${{ secrets.OPENSKY_CLIENT_ID || vars.OPENSKY_CLIENT_ID }}
           OPENSKY_CLIENT_SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET || vars.OPENSKY_CLIENT_SECRET }}
       - name: Observatoire inductif
-        run: uv run python induction.py
+        run: uv run --no-sync python induction.py
       - name: Enregistrer
         if: always()
         run: |
