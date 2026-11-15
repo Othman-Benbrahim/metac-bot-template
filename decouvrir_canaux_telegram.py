@@ -6,6 +6,8 @@ de canaux précis. Pour ne pas les choisir à la main, règle fixée ici :
 - mots-clés neutres : « world news », « breaking news », « osint », « war news », « conflict news », « geopolitics » ;
 - canaux publics (pas les groupes) proposés par la recherche de Telegram pour ces mots ;
 - au moins 20 000 abonnés ; les 25 plus suivis.
+0.10.154 (option B de l'auteur) : mots régionaux ajoutés, au moins 10 000 abonnés, les 40 plus suivis, titre en
+alphabet latin (l'indicateur cherche les noms de pays en anglais) ; la liste reste à valider.
 Écrit registre/telegram-canaux-candidats.json. RIEN n'est utilisé avant validation par l'auteur : la liste validée va
 dans registre/telegram-canaux.json.
 
@@ -18,9 +20,11 @@ import json
 import sys
 from pathlib import Path
 
-MOTS = ("world news", "breaking news", "osint", "war news", "conflict news", "geopolitics")
-ABONNES_MIN = 20000
-NOMBRE = 25
+MOTS = ("world news", "breaking news", "osint", "war news", "conflict news", "geopolitics",
+        # 0.10.154 (décision d'auteur du 2026-11-15, 21 h 46, option B) : régions, pour une couverture plus équilibrée
+        "international news", "africa news", "middle east news", "asia news", "latin america news")
+ABONNES_MIN = 10000
+NOMBRE = 40
 SORTIE = Path("registre") / "telegram-canaux-candidats.json"
 
 
@@ -50,7 +54,10 @@ async def principal() -> int:
                     n = 0
             vus[ch.username] = {"canal": ch.username, "titre": ch.title, "abonnes": n or 0, "trouve_par": mot}
     await tg.fermer()
-    liste = sorted((v for v in vus.values() if v["abonnes"] >= ABONNES_MIN), key=lambda v: -v["abonnes"])[:NOMBRE]
+    import re
+    latin = lambda t: len(re.findall(r"[A-Za-z]", t or "")) >= 0.6 * max(1, len(re.findall(r"\w", t or "")))
+    liste = sorted((v for v in vus.values() if v["abonnes"] >= ABONNES_MIN and latin(v["titre"])),
+                   key=lambda v: -v["abonnes"])[:NOMBRE]
     SORTIE.parent.mkdir(exist_ok=True)
     SORTIE.write_text(json.dumps({"regle": {"mots": MOTS, "abonnes_min": ABONNES_MIN, "nombre": NOMBRE},
                                   "candidats": liste}, ensure_ascii=False, indent=2), encoding="utf-8")
