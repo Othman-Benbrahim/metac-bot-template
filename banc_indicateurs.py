@@ -69,6 +69,15 @@ async def fiche_pays(c, nom: str, cache: dict) -> dict:
         e = j[0]
         f.update(cca2=e.get("cca2"), commun=(e.get("name") or {}).get("common") or nom,
                  latlng=(e.get("capitalInfo") or {}).get("latlng") or e.get("latlng"))
+    if not f.get("cca2") or not f.get("latlng"):
+        # 0.10.122 : restcountries.com n'a rien renvoyé depuis GitHub Actions (passage 43674444304) ; repli sur le
+        # géocodage d'Open-Meteo (même fournisseur que la pluie, joignable) : entité politique (code PCL*) de ce nom
+        g = await obtenir(c, f"https://geocoding-api.open-meteo.com/v1/search?name={nom}&count=10&language=en&format=json")
+        res = (g or {}).get("results") or []
+        e = next((r for r in res if str(r.get("feature_code", "")).startswith("PCL")), None)
+        if e:
+            f.update(cca2=e.get("country_code"), commun=f.get("commun") or e.get("name") or nom,
+                     latlng=[e.get("latitude"), e.get("longitude")], geocodage="open-meteo")
     cache[nom] = f
     return f
 

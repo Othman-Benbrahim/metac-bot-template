@@ -8,6 +8,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import alphabet_pipeline as ap  # noqa: E402
+import alphabet_pipeline as _ap_regle_ab
+_ap_regle_ab.POSTER_AB = False   # 0.10.122 : tests écrits avant la règle AB ; la CI lance unittest, sans conftest
 import alphabet_provenance as pv  # noqa: E402
 import score_registre as sr  # noqa: E402
 

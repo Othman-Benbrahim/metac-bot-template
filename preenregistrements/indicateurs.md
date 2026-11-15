@@ -28,3 +28,12 @@ corrigé. Second regard à 200 si assez de questions. Coefficients par indicateu
 ## Limites déclarées
 Beaucoup de « pays » ACLED sont des territoires ou des océans (indicateurs absents). Le calibrage de A a été mis en
 évidence sur ces mêmes 150 questions (2026-11-15) : la référence en tient compte, la validation croisée aussi.
+
+## Écart de protocole déclaré AVANT le second passage (2026-11-15, 10 h 45)
+Premier passage (exécution 43674444304) **invalidé pour panne de données** : le service restcountries.com, qui donne le
+code et les coordonnées de chaque pays, n'a rien renvoyé depuis GitHub Actions ; les indicateurs **ioda** et **pluie**
+n'ont été mesurés sur AUCUNE question (présence 0/150). Résultats partiels vus, consignés ici : A recalibré 0,4143 ;
+avec indicateurs 0,4157 ; coefficients wiki −0,19, fcdo −0,55 ; 17 questions avec un changement de sécurité des conseils
+aux voyageurs, dont 1 OUI. Correctif (bot 0.10.122) : repli sur le géocodage d'Open-Meteo (entité politique, code
+PCL*) ; la pluie est alors mesurée au point que donne ce géocodage (centre du pays) et non plus à la capitale. Le modèle,
+les indicateurs et le critère ne changent pas. Le second passage, sur le registre vidé, est le test.
