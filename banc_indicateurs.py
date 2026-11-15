@@ -208,7 +208,8 @@ async def principal() -> int:
         deja = {json.loads(l)["question_id"] for l in FICHIER.read_text(encoding="utf-8").splitlines() if l.strip()}
     cache_pays, cache_ind = {}, {}
     REGISTRE.mkdir(exist_ok=True)
-    async with httpx.AsyncClient(timeout=60, follow_redirects=True, headers=UA) as c, FICHIER.open("a", encoding="utf-8") as fo:
+    async with httpx.AsyncClient(timeout=60, follow_redirects=True, headers=UA) as c:
+      with FICHIER.open("a", encoding="utf-8") as fo:
         for q, x in sorted(a.items(), key=lambda t: (t[1].get("ordre") or [10 ** 6, t[1]["jeu"]])):
             if q in deja:
                 continue
