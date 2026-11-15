@@ -509,7 +509,7 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dic
     """Bilan lisible du passage et code de sortie : 1 si des questions ont été trouvées mais rien n'a été prévu."""
     ok = [r for r in rapports if not isinstance(r, BaseException)]
     ko = [r for r in rapports if isinstance(r, BaseException)]
-    bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in "ABC"}
+    bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in ("A", "B", "C", "AB")}
     statuts, motifs = {}, {}
     for x in nouvelles:
         s = x["bras"]["C"].get("statut")

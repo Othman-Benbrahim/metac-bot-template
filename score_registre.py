@@ -1560,7 +1560,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "motifs_rejet": {"compte": motifs,
                              "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; "
                                         "contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"},
-            "bras_poste": {b: sum(x["bras_poste"] == b for x in questions) for b in "ABC"}}
+            "bras_poste": {b: sum(x["bras_poste"] == b for x in questions) for b in ("A", "B", "C", "AB")}}
 
 
 if __name__ == "__main__":

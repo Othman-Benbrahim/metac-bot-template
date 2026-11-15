@@ -26,3 +26,11 @@ jeu selon l'empreinte SHA-1 de son identifiant, puis jeu). **Seules les lignes �
 comptent pour le critère** ; les 10 lectures du premier passage sont rapportées à part et ne seront pas relues. Le
 critère lui-même (combinaison, seuil, niveau corrigé, regards) ne change pas. Constat descriptif de ces 10 lectures, qui
 ne motive pas l'amendement : A recopie B sur 9 questions sur 10.
+
+## Verdict et décision (2026-11-15)
+Second regard (200 premières questions de la série gpt-5-mini, 18 blocs) : écart ½A + ½B − B = −0,013 ; intervalle
+corrigé (98,75 %) [−0,027 ; −0,0006], entièrement sous 0. **Critère atteint.** Par source : ACLED A 0,480, B 0,526,
+AB 0,494 ; DBnomics et FRED sans écart notable.
+**Décision d'auteur du 2026-11-15 (option prudente, « au cas par cas, selon les sources »)** : le bot Metaculus poste
+½A + ½B seulement pour les événements humains couverts par la presse (événement en strate 7 ou 13, avec un taux de
+base) ; ailleurs, la règle précédente (bot 0.10.111). Extension éventuelle après le verdict de l'aiguillage.

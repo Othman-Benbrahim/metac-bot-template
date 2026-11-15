@@ -791,3 +791,18 @@ def test_classes_signature_110():
            "signature": ["SEU", "apparait", "7"]} for i, (j, y) in enumerate([("2026-09-27", 1)] * 20 + [("2026-10-11", 1)] * 5)]
     ls = cs.calculer(qs)
     assert len(ls) == 5 and all(x["n_cas"] == 20 and abs(x["p_sig"] - (20 + 5) / 30) < 1e-9 for x in ls)
+
+
+def test_poster_ab_111(poster_ab):
+    import alphabet_pipeline as ap
+    c7 = {"statut": "estime", "p_B": 0.3, "p_C": 0.6, "plan": {"evenement": {"strate": 7}}}
+    b, p = ap.choisir_bras(c7, 0.1)
+    assert b == "AB" and 0.1 < p < 0.3
+    c13 = {"statut": "hors_strate", "p_B": 0.4, "plan": {"evenement": {"strate": "13"}}}
+    assert ap.choisir_bras(c13, 0.6)[0] == "AB"
+    c6 = {"statut": "etat_nul", "p_B": 0.4, "plan": {"evenement": {"strate": 6}}}
+    assert ap.choisir_bras(c6, 0.6) == ("B", 0.4)
+    assert ap.choisir_bras({"statut": "refuse", "plan": {"evenement": {"strate": 7}}}, 0.6)[0] == "A"   # pas de B
+    q = ap.Question(id="q", url="u", titre="t", contexte="", criteres="", precisions="", resolution=None)
+    txt = ap.commentaire(q, 0.1, "raison", dict(c7, evenement="E", semantique="S", vue={}), "AB")
+    assert "AB" in txt and "raison" in txt
