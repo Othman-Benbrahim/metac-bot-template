@@ -56,7 +56,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          git add registre/banc-a.jsonl registre/banc-a.json || true
+          for f in registre/banc-a.jsonl registre/banc-a.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
           if ! git diff --cached --quiet; then
             git commit -m "registre : banc du bras A du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase

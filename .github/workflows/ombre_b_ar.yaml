@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          git add registre/ombre-b-ar-retro.json || true
+          for f in registre/ombre-b-ar-retro.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
           if ! git diff --cached --quiet; then
             git commit -m "registre : ombre B autorégressif (rétro) du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase

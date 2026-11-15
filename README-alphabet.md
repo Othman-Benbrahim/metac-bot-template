@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.126** — workflows des bancs : l'étape « Enregistrer » ajoutait le registre et son résumé d'un seul `git add` ; si le résumé n'existait pas encore (passage annulé), rien n'était enregistré. Chaque fichier est maintenant ajouté séparément.
 - **0.10.125** — banc des indicateurs : délai de 20 s par appel (au lieu de 60), durée imprimée par site, plafond du passage à 90 min ; les lignes déjà écrites sont gardées et un nouveau passage reprend où il s'est arrêté.
 - **0.10.124** — **jugements intermédiaires avant le jugement global** (décision d'auteur du 2026-11-15, d'après la thèse d'O. Sibony, Paris-Dauphine 2017) : sur les questions ACLED jamais lues, le modèle note d'abord sept critères séparés (cartes CROISSANCE, RÉCIPROCITÉ, TRACE·MÉMOIRE, SEUIL, CONTRAINTE, PÉRIODICITÉ, PROPORTION), de 1 à 4 par rapport à l'ordinaire du pays, sans probabilité ; puis le jugement final, les notes sous les yeux. Comparé à A sur les mêmes entrées (`banc_m.py`, workflow « Banc des jugements intermédiaires », essai `jugements_intermediaires`, `preenregistrements/jugements-intermediaires.md`).
 - **0.10.123** — **recalibrage et silence, à confirmer sur questions fraîches** (décision d'auteur du 2026-11-15) : paramètres figés sur les 150 questions ACLED déjà lues (Platt de A ; silence de la presse, γ = −0,44 quand aucun extrait n'est trouvé), jugés sur les questions ACLED nouvelles (`juge_silence.py`, deux essais pré-enregistrés : `preenregistrements/silence-et-calibrage.md`).
