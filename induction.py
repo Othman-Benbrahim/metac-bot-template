@@ -31,6 +31,7 @@ ETATS = {
                         ("Violations Watch ne signale rien de grave", lambda v: v == 0)),
     "rss_presse": (("la presse en parle de plus en plus (× 1,5)", lambda v: v > 0.4), ("la presse se tait (÷ 1,5)", lambda v: v < -0.4)),
     "rss_officiel": (("sources officielles actives (≥ 3 articles)", lambda v: v >= 3), ("sources officielles muettes", lambda v: v == 0)),
+    "rss_parlement_ue": (("le Parlement européen s'en saisit", lambda v: v >= 1), ("le Parlement européen n'en parle pas", lambda v: v == 0)),
     "brouillage_gps": (("brouillage GPS présent (≥ 5 % des zones)", lambda v: v >= 0.05), ("aucun brouillage GPS", lambda v: v == 0)),
 }
 NICHE = Path("registre") / "indicateurs-niche.jsonl"
@@ -63,6 +64,9 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
                 if v.get("present"):
                     x[k] = m[k]["valeur"]
                     x["presents"][k] = True
+                    if k == "rss_officiel" and v.get("parlement_ue_14j") is not None:   # 0.10.155
+                        x["rss_parlement_ue"] = float(v["parlement_ue_14j"])
+                        x["presents"]["rss_parlement_ue"] = True
         out.append(x)
     return out
 LOTS_MIN, N_MIN, MEME_SENS = 4, 20, 0.75

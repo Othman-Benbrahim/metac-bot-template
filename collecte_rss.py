@@ -4,6 +4,8 @@ Les flux RSS ne donnent que les derniers articles, sans historique : on les lit 
 propre historique. On ne garde que des COMPTES (pays mentionné × jour × famille de source), jamais les textes.
 Familles (choisies par l'auteur) :
 - officiel : ReliefWeb (ONU, rapports humanitaires), avis de voyage britanniques, alertes GDACS et séismes USGS ;
+- parlement_ue (0.10.155) : Parlement européen (relations extérieures, commissions AFET, DROI, SEDE, propositions de
+  résolution, textes adoptés) : l'attention institutionnelle européenne portée à un pays ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
   France, Suisse, Canada, Afrique, Asie ; presse régionale qui reprend les mêmes dépêches écartée).
 Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres.
@@ -31,6 +33,15 @@ FLUX = {
         "https://www.gov.uk/foreign-travel-advice.atom",
         "https://www.gdacs.org/xml/rss.xml",
         "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
+    ],
+    # 0.10.155 (décision d'auteur du 2026-11-15, 21 h 50) : attention institutionnelle européenne sur les pays
+    "parlement_ue": [
+        "https://www.europarl.europa.eu/rss/topic/903/fr.xml",           # actualités : relations extérieures
+        "https://www.europarl.europa.eu/rss/committee/afet/fr.xml",      # commission des affaires étrangères
+        "https://www.europarl.europa.eu/rss/committee/droi/fr.xml",      # sous-commission des droits de l'homme
+        "https://www.europarl.europa.eu/rss/committee/sede/fr.xml",      # sous-commission sécurité et défense
+        "https://www.europarl.europa.eu/rss/doc/motions/fr.xml",         # propositions de résolution
+        "https://www.europarl.europa.eu/rss/doc/texts-adopted/fr.xml",   # textes adoptés
     ],
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
