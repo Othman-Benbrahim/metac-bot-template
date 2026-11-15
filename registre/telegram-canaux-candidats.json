@@ -1,0 +1,58 @@
+{
+  "regle": {
+    "mots": [
+      "world news",
+      "breaking news",
+      "osint",
+      "war news",
+      "conflict news",
+      "geopolitics"
+    ],
+    "abonnes_min": 20000,
+    "nombre": 25
+  },
+  "candidats": [
+    {
+      "canal": "geopolitics_prime",
+      "titre": "Geopolitics Prime",
+      "abonnes": 288622,
+      "trouve_par": "geopolitics"
+    },
+    {
+      "canal": "ultimora",
+      "titre": "Breaking News - Ultimora.net",
+      "abonnes": 122724,
+      "trouve_par": "breaking news"
+    },
+    {
+      "canal": "molfar_global",
+      "titre": "Molfar про OSINT",
+      "abonnes": 54424,
+      "trouve_par": "osint"
+    },
+    {
+      "canal": "RFU_EN",
+      "titre": "RFU News — Strategic Geopolitics",
+      "abonnes": 48363,
+      "trouve_par": "geopolitics"
+    },
+    {
+      "canal": "WarfareAnalysis",
+      "titre": "WarfareAnalysis News 🔻",
+      "abonnes": 31017,
+      "trouve_par": "war news"
+    },
+    {
+      "canal": "crptbreaking",
+      "titre": "Честный ЗНАК breaking news",
+      "abonnes": 29630,
+      "trouve_par": "breaking news"
+    },
+    {
+      "canal": "sitreports",
+      "titre": "SITREP - Independent OSINT Channel",
+      "abonnes": 22850,
+      "trouve_par": "osint"
+    }
+  ]
+}
