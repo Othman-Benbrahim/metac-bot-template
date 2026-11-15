@@ -120,6 +120,13 @@ class TestNiche(unittest.TestCase):
         self.assertEqual((r["messages_14j"], r["messages_14j_avant"]), (4, 1))   # le message à 30 jours arrête la lecture
         self.assertGreater(r["valeur"], 0)
 
+    def test_cle_nettoyee(self):
+        from unittest import mock
+        with mock.patch.dict(os.environ, {"TELEGRAM_API_ID": " 123 ", "TELEGRAM_API_HASH": "abc",
+                                          "TELEGRAM_SESSION": '"1AbC\r\n dEf\n"'}):
+            tg = ni.Telegram()
+        self.assertEqual((tg.id, tg.session), ("123", "1AbCdEf"))
+
     def test_induction_lit_les_niches(self):
         import pathlib
         from unittest import mock

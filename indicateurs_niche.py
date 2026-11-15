@@ -256,9 +256,11 @@ class Telegram:
     """Lecture seule de la recherche globale de Telegram (Telethon, session de l'auteur)."""
 
     def __init__(self):
-        self.id = os.environ.get("TELEGRAM_API_ID", "").strip()
-        self.hash = os.environ.get("TELEGRAM_API_HASH", "").strip()
-        self.session = os.environ.get("TELEGRAM_SESSION", "").strip()
+        self.id = os.environ.get("TELEGRAM_API_ID", "").strip().strip("\"'")
+        self.hash = os.environ.get("TELEGRAM_API_HASH", "").strip().strip("\"'")
+        import re
+        # 0.10.146 : la clé collée depuis PowerShell peut contenir des retours à la ligne, des espaces ou des guillemets
+        self.session = re.sub(r"\s+", "", os.environ.get("TELEGRAM_SESSION", "")).strip("\"'")
         self.client = None
         self.derniere_erreur = ""
 
@@ -277,7 +279,8 @@ class Telegram:
                 return False
             return True
         except Exception as e:
-            self.derniere_erreur = f"{type(e).__name__}: {e}"[:200]
+            self.derniere_erreur = (f"{type(e).__name__}: {e}"[:200] + f" ; clé de {len(self.session)} caractères, "
+                                    f"commence par « {self.session[:1]} » (une clé valide commence par « 1 » et fait environ 350 caractères)")
             return False
 
     async def fermer(self):
