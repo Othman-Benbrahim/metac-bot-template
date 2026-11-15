@@ -50,3 +50,7 @@ sur FRED, O_transversal est significativement moins bon que B (z = 2,35, p = 0,0
 significatif. Entropie de permutation moyenne 0,912 (1 = hasard complet) : à l'ordre 3, ces séries sont presque sans
 structure ordinale exploitable à court horizon. L'essai `combo_abo` reste ouvert (75 questions communes avec A au
 premier passage, sous le premier regard ; écart provisoire ABO − AB = +0,015).
+
+## Clôture de l'essai `combo_abo` (2026-11-15, décision d'auteur)
+Clos avant son premier regard, sans adoption : les motifs ont échoué seuls, et l'écart provisoire allait contre eux.
+Une clôture sans adoption ne peut produire aucun faux positif ; elle relâche la correction pour les essais restants.

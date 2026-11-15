@@ -116,10 +116,23 @@ def resumer(ls: list[dict]) -> dict:
                      "par_source": {s: {"n": v["n"], **{k: round(v[k] / v["n"], 4) for k in ("A", "B", "AB")}}
                                     for s, v in sorted(par_source.items())},
                      "critere_AB": sr.critere_ombre_b(lignes_ab, "ombre_ab", "a_plus_b")}
+    # 0.10.110 : essai « aiguillage » (preenregistrements/aiguillage.md) : A contre B sur les questions ACLED NOUVELLES
+    vus = set()
+    fv = Path("preenregistrements/aiguillage-vus.txt")
+    if fv.exists():
+        vus = {l.strip() for l in fv.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")}
+    nouv = [dict(x, ombre_a={"p": x["p_A"]}) for x in sorted(ls, key=lambda x: (x.get("ordre") or [10 ** 6, x["jeu"]]))
+            if x.get("source_question") == "acled" and x["question_id"] not in vus and x.get("issue") in (0, 1)
+            and x.get("p_A") is not None and not x.get("exclue") and x.get("modeles_A") == "azure_ai/gpt-5-mini"]
+    if nouv:
+        out["aiguillage_acled_nouvelles"] = {"n": len(nouv),
+                                             "A": round(sum(sr.log_score(x["p_A"], x["issue"]) for x in nouv) / len(nouv), 4),
+                                             "B": round(sum(sr.log_score(x["p_B"], x["issue"]) for x in nouv) / len(nouv), 4),
+                                             "critere": sr.critere_ombre_b(nouv, "ombre_a", "aiguillage")}
     return out
 
 
-async def principal(n: int, budget: float) -> int:
+async def principal(n: int, budget: float, sources: tuple[str, ...] = SOURCES) -> int:
     from forecasting_tools import MonetaryCostManager
     modeles = [m.strip() for m in (os.environ.get("ALPHABET_BANC_A_MODELES") or "azure_ai/gpt-5-mini").split(",") if m.strip()]
     if not ar.recherche_bornee_disponible():
@@ -142,7 +155,7 @@ async def principal(n: int, budget: float) -> int:
             continue
         if j in JEUX_VUS:
             continue
-        items = sorted((fb.construire(i, j) for i in fb.apparier(qs, rs, SOURCES)), key=lambda x: rang(x["qid"]))
+        items = sorted((fb.construire(i, j) for i in fb.apparier(qs, rs, sources)), key=lambda x: rang(x["qid"]))
         tous += [(r, j, x) for r, x in enumerate(items)]
     tous.sort(key=lambda t: (t[0], t[1]))
     print(f"{len(tous)} questions candidates, entrelacées entre {len(jeux)} jeux.")
@@ -207,5 +220,6 @@ if __name__ == "__main__":
     a = argparse.ArgumentParser()
     a.add_argument("--n", type=int, default=10)
     a.add_argument("--budget", type=float, default=3.0)
+    a.add_argument("--sources", default=",".join(SOURCES), help="0.10.110 : ex. « acled » pour l'essai d'aiguillage")
     o = a.parse_args()
-    sys.exit(asyncio.run(principal(o.n, o.budget)))
+    sys.exit(asyncio.run(principal(o.n, o.budget, tuple(s_.strip() for s_ in o.sources.split(",") if s_.strip()))))

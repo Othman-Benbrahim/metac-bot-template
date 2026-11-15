@@ -383,7 +383,8 @@ PETIT_GROUPE = 30
 JEUX_VUS_B_AR = {"2026-09-27", "2026-10-11", "2026-10-25"}
 
 
-def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b_autoregressif") -> dict:
+def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b_autoregressif",
+                    exclure_vus: bool = True) -> dict:
     """0.10.104 : généralisé à toute ombre de B (`cle`, essai de essais.py). B_AR remplace B pour les séries si, sur au moins 100 questions de jeux non vus : perte log de B_AR inférieure à
     celle de B, ET intervalle à 90 % de l'écart (bootstrap par blocs « jeu × source », 2 000 tirages, graine 0)
     entièrement sous 0. Même alors, le passage en officiel est une décision d'auteur datée.
@@ -393,7 +394,7 @@ def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b
     import random as _r
     import essais as es
     pl = lambda p, y: -_m.log(min(max(p, 1e-3), 1 - 1e-3) if y else 1 - min(max(p, 1e-3), 1 - 1e-3))
-    tous = [x for x in lignes if (x.get("jeu") or x["question_id"].split(":")[1]) not in JEUX_VUS_B_AR]
+    tous = [x for x in lignes if not exclure_vus or (x.get("jeu") or x["question_id"].split(":")[1]) not in JEUX_VUS_B_AR]
     if not tous:
         return {"n_nouveaux": 0, "verdict": "en attente (aucune question de jeu non vu)"}
     N = es.ESSAIS[essai]["n"]
@@ -401,7 +402,7 @@ def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b
     if rg == 2:
         # 0.10.105 : les regards se font DANS L'ORDRE même si 2N lignes arrivent d'un coup (banc du taux de base du
         # 2026-11-15) : le second regard n'existe que si le premier n'a pas déjà conclu à l'adoption.
-        r1 = critere_ombre_b(tous[:N], cle, essai)
+        r1 = critere_ombre_b(tous[:N], cle, essai, exclure_vus)
         if str(r1.get("verdict", "")).startswith("critère atteint"):
             return dict(r1, n_nouveaux=len(tous))
     nv = tous[: (N if rg == 1 else 2 * N if rg == 2 else len(tous))]
