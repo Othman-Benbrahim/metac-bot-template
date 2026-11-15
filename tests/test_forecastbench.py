@@ -847,3 +847,18 @@ def test_signaux_couteux_114():
     bg, bk = bs.ajuster2([(0.0, x["G"], x["K"], x["issue"]) for x in ls])
     assert bg < 0 < bk
     assert len(bs.validation_croisee(ls)) == 60
+
+
+def test_type_question_115():
+    import type_question as tq
+    cas = {"Will there be more 'Riots' in Armenia for the 30 days before 2026-10-04?": "conflit",
+           "Will the 15-year fixed rate mortgage average in the US have increased by 2026-07-12 as compared to its value on 2026-07-05?": "macro",
+           "Will the sitting U.S. president’s net worth reach ≥4x its value?": "marche",
+           "Will any of Belgium or France leave the EU before 2030?": "election",
+           "Will SpaceX launch Starship to orbit before March 2027?": "annonce",
+           "Will Russia and Ukraine agree to a ceasefire before 2027?": "conflit",
+           "Will it snow in Nîmes before 2027?": "meteo", "Will H5N1 cases exceed 1000 in the US?": "sante",
+           "Will the number of exoplanets reach 7000?": "indetermine"}
+    for t, attendu in cas.items():
+        assert tq.classer(t)["type"] == attendu, t
+    assert tq.classer("Will there be more 'Protests' in Chad?")["regime"] == ["intention", "contagion"]
