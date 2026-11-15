@@ -24,7 +24,11 @@ STRICTEMENT avant la date du jeu :
   violationswatch.org dans le pays, premiers signalements dans les 14 jours avant la date ; lu dans nos comptes
   quotidiens (collecte_violationswatch.py) ; mesuré seulement si ces 14 jours sont couverts (données depuis le
   2026-11-06).
-Les cinq passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
+- rss_presse et rss_officiel (0.10.152, en ombre) : comptes quotidiens des flux RSS (collecte_rss.py), pays reconnu
+  en anglais et en français ; presse : log((articles des 14 jours avant + 1) / (14 jours précédents + 1)) ; officiel
+  (ReliefWeb, avis de voyage, GDACS, USGS) : articles des 14 jours avant ; mesurés seulement sur les dates couvertes
+  par la collecte (à partir du 2026-11-16).
+Les sept passent ensuite par l'observatoire inductif (`induction.py`), lot après lot, avant tout pré-enregistrement.
 Registre : registre/indicateurs-niche.jsonl.
 
     python indicateurs_niche.py
@@ -344,6 +348,32 @@ async def telegram(tg: Telegram, pays: str, d0: date) -> dict:
             "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "messages_14j": recent, "messages_14j_avant": avant}
 
 
+RSS_COMPTES = Path("registre") / "rss-comptes.csv"
+RSS_DEBUT = date(2026, 11, 16)
+
+
+def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
+    absent = {"present": False, "raison": "période non couverte ou pays inconnu"}
+    if not cca2 or not RSS_COMPTES.exists() or d0 - timedelta(days=14) < RSS_DEBUT:
+        return absent, absent
+    rec = av = off = 0
+    for x in csv.DictReader(RSS_COMPTES.open(encoding="utf-8")):
+        if x["pays"] != cca2:
+            continue
+        j = date.fromisoformat(x["jour"])
+        n = int(x["articles"])
+        if x["famille"] == "officiel" and d0 - timedelta(days=14) <= j < d0:
+            off += n
+        if x["famille"] == "presse":
+            if d0 - timedelta(days=14) <= j < d0:
+                rec += n
+            elif d0 - timedelta(days=28) <= j < d0 - timedelta(days=14):
+                av += n
+    presse = ({"present": True, "valeur": round(math.log((rec + 1) / (av + 1)), 4), "articles_14j": rec, "articles_14j_avant": av}
+              if d0 - timedelta(days=28) >= RSS_DEBUT else absent)
+    return presse, {"present": True, "valeur": float(off), "articles_officiels_14j": off}
+
+
 async def principal() -> int:
     if not SOURCE.exists():
         print("Pas de registre source.")
@@ -356,7 +386,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -389,12 +419,15 @@ async def principal() -> int:
                     ligne["telegram"] = await telegram(tg, pays, d0)
                 if "violationswatch" not in fait and d0 - timedelta(days=14) >= VW_DEBUT:
                     ligne["violationswatch"] = violationswatch(pays, d0)
+                if ("rss_officiel" not in fait or "rss_presse" not in fait) and d0 - timedelta(days=14) >= RSS_DEBUT:
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["rss_presse"], ligne["rss_officiel"] = rss(code, d0)
                 if len(ligne) == 2:
                     continue
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel") if k in ligne))
         await tg.fermer()
     return 0
 

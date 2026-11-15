@@ -1,0 +1,44 @@
+name: Collecte quotidienne des flux RSS (ombre)
+
+# 0.10.152 : comptes quotidiens (pays × jour × famille) des flux RSS officiels (ReliefWeb, avis de voyage, GDACS,
+# USGS) et de la presse francophone internationale retenue ; sans texte. Gratuit, rien de posté.
+on:
+  schedule:
+    - cron: "37 6 * * *"
+  workflow_dispatch:
+
+# file à part : une collecte programmée ne doit jamais prendre la place d'attente d'un banc lancé à la main
+# (GitHub n'en garde qu'une par file) ; elle n'écrit que son propre fichier, et « pull --rebase » règle le reste
+concurrency:
+  group: collecte-rss
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 20
+        run: uv run python collecte_rss.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/rss-comptes.csv registre/rss-vus.txt; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : flux RSS du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

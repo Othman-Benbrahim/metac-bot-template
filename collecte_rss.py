@@ -1,0 +1,157 @@
+"""Collecteur quotidien de flux RSS (0.10.152, décision d'auteur du 2026-11-15, 21 h 26). Aucun modèle de langue.
+
+Les flux RSS ne donnent que les derniers articles, sans historique : on les lit chaque jour pour constituer notre
+propre historique. On ne garde que des COMPTES (pays mentionné × jour × famille de source), jamais les textes.
+Familles (choisies par l'auteur) :
+- officiel : ReliefWeb (ONU, rapports humanitaires), avis de voyage britanniques, alertes GDACS et séismes USGS ;
+- presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
+  France, Suisse, Canada, Afrique, Asie ; presse régionale qui reprend les mêmes dépêches écartée).
+Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres.
+Registres : registre/rss-comptes.csv (pays, jour, famille, articles) ; registre/rss-vus.txt (empreintes des articles
+déjà comptés, pour ne pas compter deux fois un article encore présent le lendemain).
+
+    python collecte_rss.py
+"""
+from __future__ import annotations
+
+import csv
+import hashlib
+import re
+import sys
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
+from pathlib import Path
+
+import httpx
+
+FLUX = {
+    "officiel": [
+        "https://reliefweb.int/updates/rss.xml",
+        "https://www.gov.uk/foreign-travel-advice.atom",
+        "https://www.gdacs.org/xml/rss.xml",
+        "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
+    ],
+    "presse": [
+        "https://www.rfi.fr/fr/monde/rss",
+        "https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868",   # France 24 : monde
+        "https://www.lemonde.fr/international/rss_full.xml",
+        "https://www.courrierinternational.com/feed/all/rss.xml",
+        "https://www.la-croix.com/feeds/rss/international.xml",
+        "https://www.lefigaro.fr/rss/figaro_international.xml",
+        "https://www.liberation.fr/arc/outboundfeeds/rss/category/international/?outputType=xml",
+        "https://www.rts.ch/info/monde/?format=rss/news",
+        "https://www.ledevoir.com/rss/section/monde.xml?id=76",
+        "https://burkina24.com/category/actualite/monde/feed/",
+        "https://lefaso.net/spip.php?page=backend&id_rubrique=7",
+        "https://fr.hespress.com/monde/feed",
+        "https://www.tsa-algerie.com/category/international/feed/",
+        "https://fr.yna.co.kr/RSS/international.xml",
+    ],
+}
+CLDR = "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-localenames-full/main/{l}/territories.json"
+COMPTES = Path("registre") / "rss-comptes.csv"
+VUS = Path("registre") / "rss-vus.txt"
+UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
+
+
+def noms_pays(c: httpx.Client) -> list[tuple[re.Pattern, str]]:
+    """(motif, code ISO) pour les noms anglais et français des pays (codes à deux lettres seulement)."""
+    motifs = {}
+    for langue in ("en", "fr"):
+        try:
+            d = c.get(CLDR.format(l=langue), timeout=60).json()
+            terr = d["main"][langue]["localeDisplayNames"]["territories"]
+        except Exception:
+            continue
+        for code, nom in terr.items():
+            code2 = code.split("-")[0]
+            if len(code2) == 2 and code2.isalpha() and code2 not in ("EU", "EZ", "UN", "ZZ", "QO"):
+                motifs.setdefault(nom.lower(), code2)
+    extra = {"gaza": "PS", "cisjordanie": "PS", "west bank": "PS", "rdc": "CD", "drc": "CD", "congo-kinshasa": "CD",
+             "russie": "RU", "russia": "RU", "ukraine": "UA", "usa": "US", "états-unis": "US", "royaume-uni": "GB"}
+    for k, v in extra.items():
+        motifs.setdefault(k, v)
+    return [(re.compile(r"(?<![\w-])" + re.escape(n) + r"(?![\w-])", re.I), code)
+            for n, code in sorted(motifs.items(), key=lambda t: -len(t[0])) if len(n) >= 4 or n in ("iran", "iraq", "irak", "mali", "oman", "togo", "chad", "peru", "cuba", "laos", "fiji")]
+
+
+def detecter(texte: str, motifs: list[tuple[re.Pattern, str]]) -> set[str]:
+    """Noms du plus long au plus court ; un nom trouvé est masqué (« South Sudan » ne compte pas aussi « Sudan »)."""
+    trouves = set()
+    for m, code in motifs:
+        if m.search(texte):
+            trouves.add(code)
+            texte = m.sub(" ", texte)
+    return trouves
+
+
+def articles(xml: bytes) -> list[dict]:
+    racine = ET.fromstring(xml)
+    ns = lambda t: t.split("}", 1)[-1]
+    out = []
+    for e in racine.iter():
+        if ns(e.tag) not in ("item", "entry"):
+            continue
+        champs = {}
+        for f in e:
+            t = ns(f.tag)
+            if t == "link" and f.get("href"):
+                champs.setdefault("link", f.get("href"))
+            elif f.text:
+                champs.setdefault(t, f.text.strip())
+        quand = champs.get("pubDate") or champs.get("updated") or champs.get("published") or champs.get("date")
+        try:
+            d = parsedate_to_datetime(quand) if quand and not quand[:4].isdigit() else datetime.fromisoformat(quand.replace("Z", "+00:00"))
+            jour = d.astimezone(timezone.utc).date().isoformat()
+        except Exception:
+            jour = datetime.now(timezone.utc).date().isoformat()
+        texte = " ".join(champs.get(k, "") for k in ("title", "description", "summary", "category"))
+        cle = champs.get("guid") or champs.get("id") or champs.get("link") or champs.get("title", "")
+        out.append({"jour": jour, "texte": re.sub(r"<[^>]+>", " ", texte), "empreinte": hashlib.sha1(cle.encode()).hexdigest()[:16]})
+    return out
+
+
+def principal() -> int:
+    vus = set(VUS.read_text(encoding="utf-8").split()) if VUS.exists() else set()
+    comptes: dict[tuple, int] = {}
+    if COMPTES.exists():
+        for x in csv.DictReader(COMPTES.open(encoding="utf-8")):
+            comptes[(x["pays"], x["jour"], x["famille"])] = int(x["articles"])
+    nouveaux = 0
+    with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c:
+        motifs = noms_pays(c)
+        print(f"{len(motifs)} noms de pays (anglais et français).")
+        for famille, urls in FLUX.items():
+            for url in urls:
+                try:
+                    r = c.get(url)
+                    r.raise_for_status()
+                    arts = articles(r.content)
+                except Exception as e:
+                    print(f"  flux indisponible : {url[:70]} ({type(e).__name__})")
+                    continue
+                n = 0
+                for a in arts:
+                    if a["empreinte"] in vus:
+                        continue
+                    vus.add(a["empreinte"])
+                    pays = detecter(a["texte"], motifs)
+                    for p in pays:
+                        comptes[(p, a["jour"], famille)] = comptes.get((p, a["jour"], famille), 0) + 1
+                    n += 1
+                nouveaux += n
+                print(f"  {famille:8s} {url[:70]:70s} : {len(arts)} articles, {n} nouveaux")
+    COMPTES.parent.mkdir(exist_ok=True)
+    with COMPTES.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["pays", "jour", "famille", "articles"])
+        for (p, j, fa), n in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
+            w.writerow([p, j, fa, n])
+    VUS.write_text("\n".join(sorted(vus)), encoding="utf-8")
+    print(f"{nouveaux} nouveaux articles comptés ; {len(comptes)} cases pays × jour × famille.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(principal())
