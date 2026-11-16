@@ -120,6 +120,8 @@ def resumer(lignes: list[dict]) -> dict:
                           "critere": sr.critere_ombre_b([dict(x, o={"p": x["p_regime"]}) for x in nv], "o", "regimes_causaux")}
     import audit_b                       # 0.10.130 : garde-fou sur B, par forme de question
     out["audit_b"] = audit_b.pour_resume(lignes)
+    import murphy                        # 0.10.197 : valeur captée par seuil, descriptive (pas un critère)
+    out["murphy"] = murphy.pour_banc_b(lignes)
     return out
 
 
@@ -168,6 +170,10 @@ async def principal(apres: str, max_q: int) -> int:
     r = resumer(lignes_existantes())
     RESUME.write_text(json.dumps(r, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"{nouvelles} question(s) ajoutée(s).")
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        import murphy
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+            f.write("## Banc B : diagramme de Murphy\n\n" + murphy.tableau(r["murphy"]) + "\n")
     for nom in ("B_AR", "B_saison"):
         print(f"Critère {nom} :", json.dumps(r[nom]["critere"], ensure_ascii=False))
     return 0
