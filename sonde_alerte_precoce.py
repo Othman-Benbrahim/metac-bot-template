@@ -50,15 +50,17 @@ def sonde_crisiswatch(c: httpx.Client) -> None:
 def sonde_acaps(c: httpx.Client) -> None:
     print("=== ACAPS")
     u, p = os.environ.get("ACAPS_USER", ""), os.environ.get("ACAPS_PASSWORD", "")
-    if not u or not p:
-        print("ACAPS_USER / ACAPS_PASSWORD absents : inscription à faire sur https://api.acaps.org/register")
-        return
-    r = c.post("https://api.acaps.org/api/v1/token-auth/", data={"username": u, "password": p})
-    print(f"jeton : HTTP {r.status_code}")
-    if r.status_code != 200:
-        print("  ", r.text[:300])
-        return
-    jeton = (r.json() or {}).get("token", "")
+    jeton = os.environ.get("ACAPS_TOKEN", "").strip()
+    if not jeton:
+        if not u or not p:
+            print("ACAPS_TOKEN, ou ACAPS_USER et ACAPS_PASSWORD, absents : inscription sur https://api.acaps.org/register")
+            return
+        r = c.post("https://api.acaps.org/api/v1/token-auth/", data={"username": u, "password": p})
+        print(f"jeton : HTTP {r.status_code}")
+        if r.status_code != 200:
+            print("  ", r.text[:300])
+            return
+        jeton = (r.json() or {}).get("token", "")
     h = {"Authorization": f"Token {jeton}"}
     racine = c.get("https://api.acaps.org/api/v1/", headers=h)
     print(f"racine : HTTP {racine.status_code}")

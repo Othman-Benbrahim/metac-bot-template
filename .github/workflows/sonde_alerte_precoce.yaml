@@ -25,4 +25,5 @@ jobs:
         env:
           ACAPS_USER: ${{ secrets.ACAPS_USER || vars.ACAPS_USER }}
           ACAPS_PASSWORD: ${{ secrets.ACAPS_PASSWORD }}
+          ACAPS_TOKEN: ${{ secrets.ACAPS_TOKEN }}
         run: uv run python sonde_alerte_precoce.py
