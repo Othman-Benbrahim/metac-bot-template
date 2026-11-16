@@ -47,15 +47,21 @@ DETROITS = {
 def requete(c: httpx.Client, motif: str, annee: int) -> list[dict]:
     params = {"where": f"portname LIKE '%{motif}%' AND year = {annee}", "outFields": "date,portname,n_total,n_tanker,n_container",
               "orderByFields": "date ASC", "resultRecordCount": 1000, "f": "json"}
-    for essai in range(4):
+    for essai in range(6):
         try:
             r = c.get(SERVICE, params=params)
             if r.status_code == 429 or r.status_code >= 500:
-                time.sleep(10 * 2 ** essai)
+                time.sleep(65)
                 continue
             r.raise_for_status()
             corps = r.json()
             if "error" in corps:
+                # 0.10.183 : le quota ArcGIS (6 000 unités par minute) est partagé par tous les utilisateurs du
+                # service ; une erreur 429 dans la réponse veut dire « réessayez dans 60 s », pas un refus.
+                if (corps["error"] or {}).get("code") == 429 and essai < 5:
+                    print(f"  {motif} : quota ArcGIS partagé dépassé, nouvel essai dans 65 s")
+                    time.sleep(65)
+                    continue
                 print(f"  {motif} : erreur ArcGIS {corps['error']}")
                 return []
             return [f.get("attributes") or {} for f in corps.get("features") or []]
@@ -104,7 +110,7 @@ def principal() -> int:
             nouveaux += n
             dernier = max((jour(a) or "" for a in lignes), default="—")
             print(f"  {nom:16s} {sorted(noms)} : {len(lignes)} jours en {annee}, dernier {dernier}, {n} nouveaux ou modifiés")
-            time.sleep(2)
+            time.sleep(15)
     SORTIE.parent.mkdir(exist_ok=True)
     with SORTIE.open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)

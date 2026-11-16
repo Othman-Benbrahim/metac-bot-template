@@ -27,7 +27,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Collecte
-        timeout-minutes: 15
+        timeout-minutes: 60
         run: uv run python collecte_portwatch.py
       - name: Enregistrer
         if: always()

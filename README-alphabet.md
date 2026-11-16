@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.183** — collecteur PortWatch : le quota ArcGIS (6 000 unités par minute) est partagé par tous les utilisateurs du service ; une erreur 429 est retentée après 65 s (jusqu'à 5 fois), et 15 s séparent deux détroits.
 - **0.10.182** — relevé du nowcast d'inflation : le genre de chaque tableau (variation mensuelle, glissement annuel, trimestre annualisé) est lu dans le titre qui le précède (à défaut, l'ordre de la page) ; le premier relevé, qui étiquetait « mois » le glissement annuel, est corrigé ; la source `nowcast_inflation` prend un paramètre `genre`.
 - **0.10.181** — nowcasts publics branchés comme données d'entrée : source `gdpnow` (GDPNow de la Fed d'Atlanta par FRED, millésimes ALFRED à la date de la question) et source `nowcast_inflation` (Fed de Cleveland, relevés quotidiens du bot, `collecte_nowcast_inflation.py`, workflow « Relevé quotidien du nowcast d'inflation ») ; note « nowcast public ou modèle propre » dans `preenregistrements/contexte-par-regime.md`.
 - **0.10.180** — règle éthique des sources (personnes et personnalités publiques, décision d'auteur du 2026-11-16) ; collecteur des avions d'État (`collecte_avions_etat.py`, plane-alert-db « Dictator Alert », vols OpenSky de la veille, comptes par pays seulement) ; indicateur `avions_etat` et état « visite d'avions d'État » dans l'observatoire. Pas d'historique (coût en crédits OpenSky) : jugeable après quelques semaines de collecte.
