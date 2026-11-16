@@ -159,32 +159,59 @@ def diagnostic(post: dict) -> str:
             f"question.resolution={q.get('resolution')!r} ; question.status={q.get('status')!r}")
 
 
-def recolter(c: httpx.Client, maximum: int, tri: str = "-scheduled_resolve_time"):
+# 0.10.172 : la première combinaison de paramètres a rendu 0 post ; on essaie plusieurs variantes sur la première page
+# et on garde la première qui rend des posts (le filtrage oui/non se fait de toute façon localement, dans `ligne`).
+VARIANTES = [
+    {"statuses": "resolved", "forecast_type": "binary", "order_by": "-scheduled_resolve_time"},
+    {"statuses": "resolved", "forecast_type": "binary"},
+    {"statuses": "resolved"},
+    {"status": "resolved", "forecast_type": "binary"},
+    {"forecast_type": "binary", "order_by": "-scheduled_resolve_time"},
+    {"forecast_type": "binary"},
+    {},
+]
+
+
+def _page(c: httpx.Client, params: dict) -> tuple[list, dict]:
+    for essai in range(6):
+        r = c.get(API, params=params)
+        if r.status_code == 429 or r.status_code >= 500:
+            time.sleep(min(60, 5 * 2 ** essai))
+            continue
+        break
+    if r.status_code >= 400:
+        print(f"  API Metaculus : HTTP {r.status_code} ({params}) : {r.text[:300]}")
+    r.raise_for_status()
+    corps = r.json()
+    return corps.get("results") or [], corps
+
+
+def choisir_variante(c: httpx.Client) -> dict | None:
+    for v in VARIANTES:
+        res, corps = _page(c, {**v, "limit": 20, "offset": 0, "with_cp": "true"})
+        print(f"  variante {v} : {len(res)} posts ; clés {sorted(corps.keys())}")
+        if res:
+            print("  " + diagnostic(res[0]))
+            return v
+        time.sleep(1.0)
+    return None
+
+
+def recolter(c: httpx.Client, maximum: int):
+    v = choisir_variante(c)
+    if v is None:
+        return
     offset, n = 0, 0
     while n < maximum:
-        params = {"statuses": "resolved", "forecast_type": "binary", "limit": 100, "offset": offset,
-                  "order_by": tri, "with_cp": "true"}
-        for essai in range(6):
-            r = c.get(API, params=params)
-            if r.status_code == 429 or r.status_code >= 500:
-                time.sleep(min(60, 5 * 2 ** essai))
-                continue
-            break
-        if r.status_code >= 400:
-            print(f"  API Metaculus : HTTP {r.status_code} (offset {offset}) : {r.text[:300]}")
-        r.raise_for_status()
-        corps = r.json()
-        res = corps.get("results") or []
-        if offset == 0:
-            print(f"  première page : {len(res)} posts (tri {tri}) ; clés de la réponse : {sorted(corps.keys())}")
-            if res:
-                print("  " + diagnostic(res[0]))
+        res, _ = _page(c, {**v, "limit": 100, "offset": offset, "with_cp": "true"})
         if not res:
             return
         for p in res:
             yield p
         n += len(res)
         offset += len(res)
+        if offset % 2000 == 0:
+            print(f"  {offset} posts lus")
         time.sleep(1.0)
 
 

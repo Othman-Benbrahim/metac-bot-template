@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.172** — récolte Metaculus : la combinaison « statuses=resolved, forecast_type=binary » rendait 0 post ; essai de plusieurs variantes de paramètres sur la première page, la première qui rend des posts est gardée (tri oui/non local).
 - **0.10.171** — récolte Metaculus : noms de pays par un client sans le jeton Metaculus (9 noms au lieu de 475) ; tri par date de résolution prévue ; diagnostic de la première page et décompte des posts écartés ; aucun registre écrit si rien n'est gardé.
 - **0.10.170** — collecteur RSS : ONU Info retiré (flux anglais en 404, flux français bloqué à la source, même dans un navigateur).
 - **0.10.169** — collecteur RSS : Lefaso.net et Hespress lus par des relais FeedBurner créés par l'auteur (blocages intermittents des serveurs de GitHub).
