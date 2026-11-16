@@ -27,6 +27,7 @@ import alphabet_modeles as am
 import alphabet_pipeline as ap
 import alphabet_retro as ar
 import banc_forecastbench as fb
+import garde_injection as gi
 
 REGISTRE = Path("registre")
 FICHIER = REGISTRE / "banc-a.jsonl"
@@ -65,7 +66,7 @@ DERNIERS POINTS DE LA SÉRIE (avant le {jeu}) :
 {pts}
 
 RÉSULTATS DE RECHERCHE (antérieurs au {jeu}) :
-{recherche[:6000] or "(aucun)"}
+{gi.bloc(recherche, 6000)}
 
 Pars du taux de base, puis ajuste seulement si les données ou les recherches le justifient. Si tu connais déjà l'issue
 réelle de cette question (elle est passée pour toi), dis-le honnêtement.

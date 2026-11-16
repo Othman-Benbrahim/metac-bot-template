@@ -17,7 +17,8 @@ Familles (choisies par l'auteur) :
   France, Suisse, Canada, Afrique, Asie ; presse régionale qui reprend les mêmes dépêches écartée).
 Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres.
 Registres : registre/rss-comptes.csv (pays, jour, famille, articles) ; registre/rss-vus.txt (empreintes des articles
-déjà comptés, pour ne pas compter deux fois un article encore présent le lendemain).
+déjà comptés, pour ne pas compter deux fois un article encore présent le lendemain) ; registre/rss-titres.csv
+(0.10.198 : empreintes des titres normalisés et jour, pour ne pas compter une reprise du même article ; jamais le titre).
 
     python collecte_rss.py
 """
@@ -28,6 +29,7 @@ import os
 import hashlib
 import re
 import sys
+import unicodedata
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -111,6 +113,7 @@ FLUX = {
 CLDR = "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-localenames-full/main/{l}/territories.json"
 COMPTES = Path("registre") / "rss-comptes.csv"
 VUS = Path("registre") / "rss-vus.txt"
+TITRES = Path("registre") / "rss-titres.csv"  # 0.10.198 : empreintes de titres (jamais les titres), pour les reprises
 SANTE = Path("registre") / "rss-sante.csv"   # 0.10.162 : état de chaque flux (dernier essai, dernier succès, dernier nouvel article)
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
@@ -147,6 +150,33 @@ def detecter(texte: str, motifs: list[tuple[re.Pattern, str]]) -> set[str]:
 
 
 TITRES_SEULS = {"renseignement", "lettres_fr"}
+
+# 0.10.198 (décision d'auteur du 2026-11-16, 18 h 03, appliquée directement, sans ombre) : contre le blanchiment
+# d'information, un article REPRIS (même titre, une fois normalisé) dans un autre flux ou par un autre média ne compte
+# qu'une fois : on compte des titres distincts, pas des reprises. Fenêtre de 30 jours. Familles éditoriales seulement :
+# les familles « officiel » et « sante » répètent légitimement un même intitulé pour des événements distincts (mise à
+# jour d'un avis de voyage, nouveau séisme au même endroit, nouveau bulletin OMS sur le même pays), elles ne sont pas
+# dédoublonnées par titre. Un titre de moins de 5 mots n'est pas assez distinctif : il n'est pas dédoublonné.
+DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue"}
+FENETRE_TITRES, MOTS_MIN = 30, 5
+
+
+def empreinte_titre(titre: str) -> str | None:
+    t = "".join(c for c in unicodedata.normalize("NFD", str(titre or "").lower()) if unicodedata.category(c) != "Mn")
+    mots = re.findall(r"[a-z0-9]+", t)
+    return hashlib.sha1(" ".join(mots).encode()).hexdigest()[:16] if len(mots) >= MOTS_MIN else None
+
+
+def reprise(emp: str | None, jour: str, titres: dict[str, str]) -> bool:
+    """Vrai si ce titre a déjà été compté à moins de FENETRE_TITRES jours ; sinon l'enregistre et rend Faux."""
+    if not emp:
+        return False
+    d = datetime.fromisoformat(jour).date()
+    vu = titres.get(emp)
+    if vu and abs((d - datetime.fromisoformat(vu).date()).days) <= FENETRE_TITRES:
+        return True
+    titres[emp] = jour
+    return False
 # 0.10.160 : les décisions des agences de notation passent par la presse économique (pas de flux public des agences) ;
 # un article de la famille « economie » qui nomme une agence ET un mot de notation compte aussi dans « notation ».
 NOTATION = re.compile(r"\b(Fitch|Moody'?s|S&P|Standard (?:&|and) Poor'?s|DBRS|Scope Ratings)\b.*?"
@@ -176,7 +206,8 @@ def articles(xml: bytes, titres_seuls: bool = False) -> list[dict]:
             jour = datetime.now(timezone.utc).date().isoformat()
         texte = " ".join(champs.get(k, "") for k in (("title",) if titres_seuls else ("title", "description", "summary", "category")))
         cle = champs.get("guid") or champs.get("id") or champs.get("link") or champs.get("title", "")
-        out.append({"jour": jour, "texte": re.sub(r"<[^>]+>", " ", texte), "empreinte": hashlib.sha1(cle.encode()).hexdigest()[:16]})
+        out.append({"jour": jour, "texte": re.sub(r"<[^>]+>", " ", texte), "empreinte": hashlib.sha1(cle.encode()).hexdigest()[:16],
+                    "titre": re.sub(r"<[^>]+>", " ", champs.get("title", ""))})
     return out
 
 
@@ -247,6 +278,11 @@ def principal() -> int:
         for x in csv.DictReader(COMPTES.open(encoding="utf-8")):
             comptes[(x["pays"], x["jour"], x["famille"])] = int(x["articles"])
     nouveaux = 0
+    titres: dict[str, str] = {}
+    if TITRES.exists():
+        for x in csv.DictReader(TITRES.open(encoding="utf-8")):
+            titres[x["empreinte"]] = x["jour"]
+    reprises: dict[str, int] = {}
     aujourdhui = datetime.now(timezone.utc).date().isoformat()
     sante = {x["url"]: x for x in csv.DictReader(SANTE.open(encoding="utf-8"))} if SANTE.exists() else {}
     with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c:
@@ -269,6 +305,9 @@ def principal() -> int:
                     if a["empreinte"] in vus:
                         continue
                     vus.add(a["empreinte"])
+                    if famille in DEDOUBLONNER and reprise(empreinte_titre(a.get("titre")), a["jour"], titres):
+                        reprises[famille] = reprises.get(famille, 0) + 1
+                        continue
                     pays = detecter(a["texte"], motifs)
                     familles = [famille] + (["notation"] if famille == "economie" and NOTATION.search(a["texte"]) else [])
                     for p in pays:
@@ -290,6 +329,13 @@ def principal() -> int:
         for (p, j, fa), n in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
             w.writerow([p, j, fa, n])
     VUS.write_text("\n".join(sorted(vus)), encoding="utf-8")
+    limite = datetime.now(timezone.utc).date().toordinal() - 2 * FENETRE_TITRES
+    with TITRES.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["empreinte", "jour"])
+        for e, j in sorted(titres.items(), key=lambda t: (t[1], t[0])):
+            if datetime.fromisoformat(j).date().toordinal() >= limite:
+                w.writerow([e, j])
     actuels = {u for urls in FLUX.values() for u in urls}
     with SANTE.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["url", "famille", "dernier_essai", "statut", "articles", "dernier_succes",
@@ -298,6 +344,8 @@ def principal() -> int:
         for u in sorted(actuels & set(sante)):
             w.writerow({k: sante[u].get(k, "") for k in w.fieldnames})
     rapport = bilan_sante([sante[u] for u in sorted(actuels & set(sante))], aujourdhui)
+    rapport += ("\n\nReprises écartées (même titre déjà compté à moins de 30 jours) : "
+                + (", ".join(f"{k} {v}" for k, v in sorted(reprises.items())) or "aucune") + ".")
     print(rapport)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:

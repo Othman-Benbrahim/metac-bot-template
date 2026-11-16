@@ -24,6 +24,7 @@ import alphabet_pipeline as ap
 import alphabet_retro as ar
 import banc_a as ba
 import banc_forecastbench as fb
+import garde_injection as gi
 
 REGISTRE = Path("registre")
 FICHIER = REGISTRE / "banc-m.jsonl"
@@ -70,7 +71,7 @@ CONTEXTE : {x['contexte'][:3000]}
 {_donnees(vue, releve, jeu)}
 
 RÉSULTATS DE RECHERCHE (antérieurs au {jeu}) :
-{recherche[:6000] or "(aucun)"}
+{gi.bloc(recherche, 6000)}
 
 Note chaque critère de 1 à 4 PAR RAPPORT À L'ORDINAIRE de ce pays pour ce type d'événement sur l'année passée
 (2 ou 3 = ordinaire). Juge chaque critère pour lui-même, sans laisser les autres l'influencer. Si l'information

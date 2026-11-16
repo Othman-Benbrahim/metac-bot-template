@@ -31,6 +31,7 @@ from collections import Counter
 from pathlib import Path
 
 import httpx
+import garde_injection as gi
 
 OAI = "https://oai.openedition.org/"
 DOSSIER = Path("registre") / "mecanismes"
@@ -135,7 +136,7 @@ async def extraire(articles: list[dict], budget: float) -> list[dict]:
             try:
                 r = ap.extraire_json(await am.llm(MODELE, temperature=0.1, timeout=120, allowed_tries=2).invoke(
                     CONSIGNE.format(titre=a["titre"], revue=a["revue"], date=a["date"], lieux=", ".join(a["lieux"]) or "—",
-                                    resume=resume)))
+                                    resume=gi.bloc(resume, 6000, origine="résumé de revue (OpenEdition)"))))
                 for m in (r.get("mecanismes") or [])[:2]:
                     if isinstance(m, dict) and m.get("mecanisme"):
                         out.append({**{k: m.get(k) for k in ("mecanisme", "indicateur", "sens", "periodicite", "region",

@@ -43,3 +43,37 @@ class TestRSS(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestReprises(unittest.TestCase):
+    """0.10.198 : une reprise (même titre normalisé, à moins de 30 jours) ne compte qu'une fois."""
+
+    def test_normalisation(self):
+        a = cr.empreinte_titre("Mali : l'armée annonce une OPÉRATION à Kidal")
+        b = cr.empreinte_titre("  mali — l’armee annonce une operation a kidal ! ")
+        self.assertIsNotNone(a)
+        self.assertEqual(a, cr.empreinte_titre("Mali : l'armée annonce une opération à Kidal"))
+        self.assertEqual(cr.empreinte_titre("Mali l armee annonce une operation a Kidal"), a)
+        self.assertIsNone(cr.empreinte_titre("Flash info"))
+        self.assertTrue(b)
+
+    def test_fenetre(self):
+        t = {}
+        e = cr.empreinte_titre("Le gouvernement burkinabè dissout la commission électorale")
+        self.assertFalse(cr.reprise(e, "2026-11-01", t))
+        self.assertTrue(cr.reprise(e, "2026-11-03", t))      # reprise deux jours plus tard
+        self.assertFalse(cr.reprise(e, "2026-12-15", t))     # hors fenêtre : nouvel article
+        self.assertFalse(cr.reprise(None, "2026-11-03", t))  # titre trop court : jamais traité comme reprise
+
+    def test_familles(self):
+        self.assertIn("presse", cr.DEDOUBLONNER)
+        self.assertNotIn("officiel", cr.DEDOUBLONNER)
+        self.assertNotIn("sante", cr.DEDOUBLONNER)
+
+    def test_titre_extrait(self):
+        x = b"<rss><channel><item><title>Un titre &lt;b&gt;assez&lt;/b&gt; long pour compter</title><guid>1</guid></item></channel></rss>"
+        self.assertIn("assez", cr.articles(x)[0]["titre"])
+
+
+if __name__ == "__main__":
+    unittest.main()

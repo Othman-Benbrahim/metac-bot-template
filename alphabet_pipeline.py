@@ -29,8 +29,9 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Awaitable, Callable
+import garde_injection as gi
 
-VERSION_BOT = "0.10.197"
+VERSION_BOT = "0.10.198"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -424,7 +425,7 @@ RÉSOLUTION PRÉVUE : {q.resolution.isoformat()}
 DATE D'INFORMATION : {aujourdhui}
 
 RECHERCHE GÉNÉRALE :
-{recherche[:6000]}
+{gi.bloc(recherche, 6000)}
 
 STRATES : 1 Matière, 2 Vivant, 3 Psyché, 4 Relations, 5 Organisations, 6 Économie, 7 Géopolitique, 8 Droit,
 9 Culture, 10 Technique, 11 Climat, 12 Histoire longue (plus d'un siècle), 13 Politique intérieure.
@@ -569,7 +570,7 @@ def consigne_vue(q: Question, plan: dict, references: list[dict], aujourdhui: st
                  historique: list[dict] | None = None, classe: dict | None = None,
                  ancrage: dict | None = None, sources_prises: list[str] | None = None,
                  compte_echoue: dict | None = None) -> str:
-    res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{r['resultat'][:3000]}" for i, r in enumerate(references))
+    res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{gi.bloc(r['resultat'], 3000)}" for i, r in enumerate(references))
     hist = "\n".join(f"[M{i + 1}] {h['titre']} → {str(h['issue']).upper()} (résolue le {h.get('resolue_le', '?')})"
                      for i, h in enumerate(historique or []))
     imposee = ("" if not classe else
@@ -715,7 +716,7 @@ def consigne_dossier(q: Question, plan: dict, resultats: list[dict], aujourdhui:
     exemple = json.loads(lire_ref("assets/dossier.exemple.json"))
     exemple = {k: exemple[k] for k in CLES_LECTURE if k in exemple}
     lancees = [r for r in resultats if not r.get("non_lancee")]
-    res = "\n\n".join(f"[{i + 1}] ({r['famille']}, {', '.join(r['cartes'])}) « {r['requete']} »\n{r['resultat'][:3000]}"
+    res = "\n\n".join(f"[{i + 1}] ({r['famille']}, {', '.join(r['cartes'])}) « {r['requete']} »\n{gi.bloc(r['resultat'], 3000)}"
                       for i, r in enumerate(lancees))
     coupees = [r for r in resultats if r.get("non_lancee")]
     if coupees:
@@ -1936,7 +1937,7 @@ def consigne_classe(q: Question, plan: dict, references: list[dict], aujourdhui:
                     historique: list[dict] | None = None) -> str:
     """0.4.0 : la classe de référence est DÉFINIE une fois, avant tout comptage : trois vues qui comptent trois
     classes différentes ne donnent pas une médiane, mais un tirage (constat du registre : facteur 5 à 10 sur B)."""
-    res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{r['resultat'][:2000]}" for i, r in enumerate(references))
+    res = "\n\n".join(f"[R{i + 1}] « {r['requete']} »\n{gi.bloc(r['resultat'], 2000)}" for i, r in enumerate(references))
     hist = "\n".join(f"[M{i + 1}] {h['titre']} → {str(h['issue']).upper()}" for i, h in enumerate(historique or []))
     return f"""Étape 2a : DÉFINIR la classe de référence (sans encore compter). Elle ne doit pas être choisie d'après l'état
 présent de la situation, mais d'après le TYPE d'événement que demande la question.
@@ -2242,7 +2243,7 @@ une connaissance générale n'est pas une affirmation du texte ; zéro instructi
 Réponds par un seul objet JSON : {{"programme": [ ... ]}}
 
 TEXTES :
-{textes[:12000]}"""
+{gi.bloc(textes, 12000)}"""
 
 
 def extrait_retrouve(extrait: str, textes: str) -> bool:
@@ -2627,7 +2628,7 @@ l'attendu) :
 {json.dumps(mots, ensure_ascii=False, indent=1)[:12000]}
 
 RÉSULTATS DE RECHERCHE (seule base admise) :
-{(textes or "(aucun)")[:14000]}
+{gi.bloc(textes, 14000)}
 
 Pour chaque carte, décide :
 - "maintenir" : le fait figure dans les résultats, daté, et il porte bien l'intensité déclarée ;

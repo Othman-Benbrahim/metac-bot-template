@@ -6,6 +6,8 @@ from typing import Literal
 
 import dotenv
 
+import garde_injection as gi
+
 # Runtime helpers (env validation, banners, dependency-warning suppression).
 from bot_helpers import (
     check_environment,
@@ -211,7 +213,7 @@ class FallTemplateBot2026(ForecastBot):
 
 
             Your research assistant says:
-            {research}
+            {gi.bloc(research, origine="recherche du bot de base")}
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
@@ -281,7 +283,7 @@ class FallTemplateBot2026(ForecastBot):
 
 
             Your research assistant says:
-            {research}
+            {gi.bloc(research, origine="recherche du bot de base")}
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
@@ -359,7 +361,7 @@ class FallTemplateBot2026(ForecastBot):
             Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
 
             Your research assistant says:
-            {research}
+            {gi.bloc(research, origine="recherche du bot de base")}
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
@@ -453,7 +455,7 @@ class FallTemplateBot2026(ForecastBot):
             {question.fine_print}
 
             Your research assistant says:
-            {research}
+            {gi.bloc(research, origine="recherche du bot de base")}
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
@@ -657,7 +659,7 @@ class FallTemplateBot2026(ForecastBot):
         question_type = question_type.title()
         return clean_indents(
             f"""
-            {research}
+            {gi.bloc(research, origine="recherche du bot de base")}
             ---
             ## {question_type} Question Information
             You have previously forecasted the {question_type} Question to the value: {DataOrganizer.get_readable_prediction(reasoning.prediction_value)}

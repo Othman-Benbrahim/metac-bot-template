@@ -29,6 +29,7 @@ import alphabet_pipeline as ap
 import alphabet_retro as ar
 import banc_a as ba
 import banc_forecastbench as fb
+import garde_injection as gi
 
 REGISTRE = Path("registre")
 FICHIER = REGISTRE / "banc-signaux.jsonl"
@@ -43,7 +44,7 @@ QUESTION : {titre}
 CRITÈRES : {criteres[:1500]}
 
 EXTRAITS :
-{recherche[:7000]}
+{gi.bloc(recherche, 7000)}
 
 Pour chaque extrait utile (au plus 12), dis :
 - "type" : "acte" si le texte rapporte un engagement de quelqu'un (annonce, menace, promesse, ultimatum, appel,
