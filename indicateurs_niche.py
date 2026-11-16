@@ -41,6 +41,8 @@ STRICTEMENT avant la date du jeu :
   pays dans les 90 jours (GDELT, code CAMEO 163, acteur chinois, pays visé).
 - avis_navigation (0.10.206, en ombre, module Chine, couche 3) : avertissements de navigation militaires en zone
   chinoise concernant le pays, émis dans les 14 jours (NGA, HYDROPAC).
+- feux (0.10.208, en ombre) : points chauds détectés par satellite (NASA FIRMS, VIIRS), log(14 jours / 14 jours
+  précédents).
 - acaps (0.10.196, en ombre) : risques nouveaux émis par les analystes d'ACAPS pour le pays dans les 180 jours avant
   la date (date d'entrée et pays seulement, champs non révisés) ; source ACAPS.
 - voisins (0.10.186, en ombre, fiche M11) : manifestations et émeutes de GDELT dans les pays frontaliers (GeoNames,
@@ -701,6 +703,26 @@ def avis_navigation(cca2: str | None, d0: date, fenetre: int = 14) -> dict:
     return {"present": True, "valeur": n, "fenetre_jours": fenetre}
 
 
+FEUX = Path("registre") / "feux.csv"
+FEUX_JOURS = Path("registre") / "feux-jours.txt"
+
+
+def feux(cca2: str | None, d0: date, couverture_min: int = 26) -> dict:
+    """0.10.208 (en ombre) : points chauds détectés par satellite dans le pays (NASA FIRMS, VIIRS), log(14 jours /
+    14 jours précédents) ; part de confiance forte sur 14 jours."""
+    if not cca2 or not FEUX.exists() or not FEUX_JOURS.exists():
+        return {"present": False, "raison": "pays inconnu ou registre absent"}
+    a, m, b = (d0 - timedelta(days=28)).isoformat(), (d0 - timedelta(days=14)).isoformat(), d0.isoformat()
+    if sum(1 for j in FEUX_JOURS.read_text(encoding="utf-8").split() if a <= j < b) < couverture_min:
+        return {"present": False, "raison": "période non couverte"}
+    xs = [x for x in csv.DictReader(FEUX.open(encoding="utf-8")) if x["pays"] == cca2 and a <= x["jour"] < b]
+    rec = sum(int(x["detections"]) for x in xs if x["jour"] >= m)
+    av = sum(int(x["detections"]) for x in xs if x["jour"] < m)
+    fort = sum(int(x["forte_confiance"]) for x in xs if x["jour"] >= m)
+    return {"present": True, "valeur": round(math.log((rec + 1) / (av + 1)), 4), "detections_14j": rec,
+            "detections_14j_avant": av, "part_forte_confiance": round(fort / rec, 3) if rec else None}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 RSS_LARGE_DEBUT = date(2026, 11, 17)  # 0.10.199 : premier jour complet des comptes « _large » (adjectifs) et cyber
@@ -772,7 +794,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -842,6 +864,9 @@ async def principal() -> int:
                 if "avis_navigation" not in fait and AVIS_NAVIGATION.exists():   # 0.10.206, module Chine
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["avis_navigation"] = avis_navigation(code, d0)
+                if "feux" not in fait and FEUX.exists():                         # 0.10.208, NASA FIRMS
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["feux"] = feux(code, d0)
                 if "dates_memoire" not in fait and DATES_MEMOIRE.exists():      # 0.10.202, M14
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["dates_memoire"] = dates_memoire(code, d0)
@@ -859,7 +884,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux") if k in ligne))
         await tg.fermer()
     return 0
 
