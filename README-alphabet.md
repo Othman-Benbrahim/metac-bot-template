@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.193** — diagnostic Metaculus : l'API renvoie `question.resolution = None` (et `resolution_criteria = None`) au compte bot, même pour des questions résolues ; le score du bot n'avait donc enregistré aucune issue (`registre/issues.jsonl` vide). Les workflows « Score du bot alphabet » et « Récolte des questions Metaculus résolues » prennent en priorité le secret `METACULUS_TOKEN_LECTURE` (jeton d'un compte personnel), s'il existe.
 - **0.10.192** — récolte Metaculus : la page de chaque post ne donnait pas non plus la résolution (4 754 posts lus, aucun gardé) ; mode « diagnostic » par défaut (3 posts : toutes les clés qui ressemblent à une résolution, liste et détail, rien d'écrit) ; un post sans résolution lue n'est plus marqué « vu » ; liste des posts vus remise à zéro.
 - **0.10.191** — pilote des revues : vérification passée pour 13 revues sur 14 ; « cdlj » retiré (aucune notice).
 - **0.10.190** — Banc du taux de base, option « audit_alfred = oui » : recalcule les questions FRED déjà au banc avec le contrôle de provenance et compare l'ancien B au nouveau (questions gardées, questions refusées), sans rien ajouter au banc (`registre/banc-b-alfred.jsonl`).

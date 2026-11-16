@@ -34,7 +34,9 @@ jobs:
       - name: Récolte
         timeout-minutes: 230
         env:
-          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+          # 0.10.193 : le jeton du compte bot ne voit pas les résolutions (question.resolution = None) ; un jeton de
+          # lecture d'un compte personnel (secret METACULUS_TOKEN_LECTURE) est pris en priorité s'il existe
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN_LECTURE || secrets.METACULUS_TOKEN }}
         run: |
           if [ "${{ github.event.inputs.diagnostic }}" = "non" ]; then
             uv run python recolte_metaculus.py --max "${{ github.event.inputs.max }}"
