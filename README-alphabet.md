@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.189** — audit « fuite temporelle ALFRED / FRED » (2026-11-16) : une série FRED révisable n'est plus jamais lue au présent pour une date passée ; sans millésime ALFRED valide (moins de 20 points, ou relevé marqué « millésime indisponible »), le banc ne calcule pas de B et le puits refuse la lecture. Seules les cotations de marché d'une liste fermée (`MARCHES_NON_REVISES` : indices boursiers, taux du Trésor, ICE BofA, changes, SOFR…) gardent le repli. Provenance notée dans chaque ligne du banc B (`provenance`). Tests de non-régression `tests/test_audit_alfred.py`.
 - **0.10.188** — pilote des revues : mode « vérification » par défaut (une page OAI par revue, exemple, liste des collections du serveur en cas d'échec ; gratuit, rien d'écrit) ; le pilote complet demande « verification = non ».
 - **0.10.187** — pilote « mécanismes proposés à partir des revues » (`mecanismes_revues.py`, workflow manuel) : récolte OAI-PMH d'OpenEdition (14 revues, articles depuis 2005 touchant aux crises), extraction de 0 à 2 mécanismes par résumé par le petit modèle Bedrock, plafond de dépense ; résumés non conservés ; propositions soumises à l'auteur avant tout ajout au catalogue.
 - **0.10.186** — fiche M11 (diffusion spatiale) : indicateur `voisins`, manifestations et émeutes de GDELT dans les pays frontaliers (table GeoNames, CC BY 4.0, mise en cache dans `registre/voisins.json`), 14 jours contre 14 précédents ; deux états dans l'observatoire.

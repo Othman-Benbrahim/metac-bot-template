@@ -139,6 +139,19 @@ def _releve(source: str, titre: str, url: str, points: list[dict], avant: date |
             "date_limite": avant.isoformat() if avant else None, "points": pts, **extra}
 
 
+# 0.10.189 (audit « fuite temporelle ALFRED / FRED », 2026-11-16) : séries FRED dont les valeurs passées ne sont pas
+# révisées (cotations quotidiennes de marché, taux fixés le jour même) ; elles seules peuvent être lues sans millésime.
+# Liste fermée, fixée avant tout regard sur les scores ; toute autre série exige un millésime ALFRED valide.
+MARCHES_NON_REVISES = re.compile(
+    r"^(SP500|DJIA|NASDAQ100|NASDAQCOM|VIXCLS|GVZCLS|OVXCLS|VXNCLS|DGS\d+MO|DGS\d+|DFII\d+|DTB\d+|T\d+Y\d*M?|"
+    r"T\d+YIE|T5YIFR|DFF|EFFR|IORB|SOFR|SOFR\d+DAYAVG|SOFRINDEX|OBFR|DEX[A-Z]{4}|DTWEX[A-Z]+|DCOILWTICO|DCOILBRENTEU|"
+    r"DHHNGSP|DAAA|DBAA|AAA10Y|BAA10Y|BAML[A-Z0-9]+|CBBTCUSD|CBETHUSD|CBLTCUSD|CBBCHUSD)$")
+
+
+def marche_non_revise(serie: str) -> bool:
+    return bool(MARCHES_NON_REVISES.match(str(serie or "").upper()))
+
+
 # --------------------------------------------------------------------------- séries (comptables)
 
 async def fred(serie: str, avant: date | None = None, debut: str | None = None) -> dict:
@@ -161,6 +174,10 @@ async def fred(serie: str, avant: date | None = None, debut: str | None = None) 
         # (sans effet pour une série de marché, qui n'est pas révisée).
         if not avant or "400" not in str(e):
             raise
+        if not marche_non_revise(serie):
+            # 0.10.189 (audit ALFRED) : une série révisable sans millésime n'est pas relue au présent pour une date
+            # passée (fuite temporelle) ; seules les cotations de marché de la liste fermée le sont.
+            raise ErreurSource(f"{serie} : pas de millésime ALFRED, série révisable, lecture au présent refusée") from e
         p = {k: v for k, v in p.items() if k not in ("realtime_start", "realtime_end")}
         d = await _get("https://api.stlouisfed.org/fred/series/observations", p)
         extra["millesime"] = "indisponible : série publiée aujourd'hui, coupée à la date d'information"

@@ -158,6 +158,7 @@ async def principal(apres: str, max_q: int) -> int:
                          "version_bot": ap.VERSION_BOT, "titre": x["titre"], "resolution": x["resolution"],
                          "issue": x["issue"], "p_B": (vue or {}).get("frequence"), "calcul_B": (vue or {}).get("calcul"),
                          "ombre_b_ar": x.get("_b_ar"), "ombre_b_saison": x.get("_b_saison"),
+                         "provenance": x.get("_provenance"),
                          "licence": "ForecastBench, Forecasting Research Institute, CC BY-SA 4.0"}
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()

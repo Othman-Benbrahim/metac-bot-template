@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import re
 import os
 import random
 import sys
@@ -306,10 +307,19 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
                     r = await apz.fred(q["id"], avant=d0)
                 except Exception:
                     r = {}
-                if len(r.get("points") or []) < 20:
-                    # 0.10.46 : certaines séries (SP500…) n'ont pas de millésimes ALFRED ; valeurs actuelles, bornées à D
-                    # par b_hausse (les cours de marché ne sont pas révisés)
-                    r = await apz.fred(q["id"])
+                ok_millesime = len(r.get("points") or []) >= 20 and not r.get("millesime")
+                if ok_millesime:
+                    x["_provenance"] = "ALFRED (millésime à la date d'information)"
+                elif marche_non_revise(q["id"]):
+                    # 0.10.46 : séries de marché sans millésimes ALFRED (SP500…) ; valeurs actuelles bornées à D par
+                    # b_hausse. 0.10.189 (audit ALFRED) : seulement pour les cotations de marché de la liste
+                    # MARCHES_NON_REVISES (jamais révisées) ; une série révisable sans millésime n'a plus de B.
+                    if len(r.get("points") or []) < 20 or r.get("millesime"):
+                        r = await apz.fred(q["id"])
+                    x["_provenance"] = "FRED actuel borné à la date (cotation de marché non révisée, exception vérifiée)"
+                else:
+                    x["_provenance"] = "refusé : série révisable sans millésime ALFRED"
+                    return None
             else:
                 r = await apz.dbnomics(q["url"].split("db.nomics.world/", 1)[1], avant=d0)
             b = b_hausse(r.get("points") or [], h, d0)
@@ -336,6 +346,9 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
     except Exception:
         return None
     return None
+
+
+from alphabet_puits import MARCHES_NON_REVISES, marche_non_revise  # noqa: E402,F401  (0.10.189)
 
 
 def sans_b_code(x: dict) -> bool:
