@@ -9,7 +9,7 @@ Familles (choisies par l'auteur) :
 - sante (0.10.157) : OMS Disease Outbreak News (API OData), ECDC (menaces, mises à jour, risques, grippe aviaire),
   Fonds mondial (communiqués, mises à jour ; 0.10.158) ;
 - voix_citoyennes (0.10.158) : Global Voices, 11 flux régionaux ;
-- think_tanks et economie (0.10.159) : ECFR ; Investing.com (actualité économique, indicateurs), investingLive
+- economie (0.10.159 ; think_tanks/ECFR retiré en 0.10.167) : Investing.com (actualité économique, indicateurs), investingLive
   (0.10.160), IATA (0.10.161) ; famille dérivée « notation » : articles économiques qui nomment une agence de notation ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
@@ -37,7 +37,7 @@ import httpx
 
 FLUX = {
     "officiel": [
-        "https://reliefweb.int/updates/rss.xml",
+        # 0.10.167 : ReliefWeb retiré (page vide pour GitHub et FeedBurner ; API réservée aux organisations)
         "https://www.gov.uk/foreign-travel-advice.atom",
         "https://www.gdacs.org/xml/rss.xml",
         "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
@@ -67,10 +67,6 @@ FLUX = {
     # 0.10.159 (2026-11-15, 22 h 16) : analyse géopolitique européenne (ECFR, articles et publications) et économie
     # (Investing.com en français : actualité économique, indicateurs économiques). Familles séparées, non mélangées
     # à la presse générale.
-    "think_tanks": [
-        "https://ecfr.eu/feed/?post_type=post",
-        "https://ecfr.eu/feed/?post_type=publication",
-    ],
     "economie": [
         "https://fr.investing.com/rss/news_14.rss",
         "https://fr.investing.com/rss/news_95.rss",
@@ -209,7 +205,7 @@ NAVIGATEUR = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/201
 
 def lire(c: httpx.Client, url: str) -> httpx.Response:
     r = c.get(url)
-    if r.status_code in (401, 403, 406, 429) or (r.status_code == 200 and r.content.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html"))):
+    if r.status_code in (401, 403, 406, 415, 429) or (r.status_code == 200 and r.content.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html"))):
         r = c.get(url, headers=NAVIGATEUR)
     r.raise_for_status()
     if r.content.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html")):
