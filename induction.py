@@ -31,6 +31,10 @@ ETATS = {
               ("GDELT : moins de manifestations dans la presse (÷ 1,5)", lambda v: v < -0.4)),
     "gdelt_emeutes": (("GDELT : plus d'émeutes dans la presse (× 1,5)", lambda v: v > 0.4),
                       ("GDELT : moins d'émeutes dans la presse (÷ 1,5)", lambda v: v < -0.4)),
+    "radar": (("Cloudflare signale une coupure d'internet", lambda v: v >= 1),
+              ("Cloudflare ne signale aucune coupure", lambda v: v == 0)),
+    "radar_etat": (("coupure décidée par l'État ou militaire (Cloudflare)", lambda v: v >= 1),),
+    "radar_electricite": (("panne électrique signalée (Cloudflare)", lambda v: v >= 1),),
     "portwatch": (("PortWatch : le trafic du détroit chute (÷ 1,25)", lambda v: v < -0.22),
                   ("PortWatch : le trafic du détroit monte (× 1,25)", lambda v: v > 0.22)),
     "ooni": (("OONI : la censure web monte (+5 points)", lambda v: v > 0.05),
@@ -70,12 +74,16 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
                 if k == "telegram" and v.get("methode") != "canaux":
                     continue                          # 0.10.151 : recherche globale abandonnée (ne remonte pas dans le passé)
+                if k == "radar" and v.get("present"):   # 0.10.177
+                    for cle, etat in (("etat_14j", "radar_etat"), ("electricite_14j", "radar_electricite")):
+                        x[etat] = float(v.get(cle) or 0)
+                        x["presents"][etat] = True
                 if k == "ooni" and v.get("present") and v.get("valeur_messageries") is not None:   # 0.10.175
                     x["ooni_messageries"] = float(v["valeur_messageries"])
                     x["presents"]["ooni_messageries"] = True

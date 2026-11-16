@@ -1,0 +1,49 @@
+name: Collecte quotidienne Cloudflare Radar (coupures, ombre)
+
+# 0.10.177 : coupures d'internet par pays et par cause (Cloudflare Radar, CC BY-NC 4.0) ; jeton en lecture seule
+# (secret CLOUDFLARE_RADAR_TOKEN) ; rien de posté. Premier passage à la main avec « depuis » pour l'historique.
+on:
+  schedule:
+    - cron: "29 11 * * *"
+    - cron: "29 23 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  workflow_dispatch:
+    inputs:
+      depuis:
+        description: "premier jour à lire (AAAA-MM-JJ) ; vide = les 30 derniers jours"
+        default: ""
+
+concurrency:
+  group: collecte-radar
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 15
+        env:
+          CLOUDFLARE_RADAR_TOKEN: ${{ secrets.CLOUDFLARE_RADAR_TOKEN }}
+        run: uv run python collecte_radar.py --depuis "${{ github.event.inputs.depuis }}"
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/radar-coupures.csv registre/radar-couverture.txt; do if [ -s "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : Cloudflare Radar du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
