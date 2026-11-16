@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.170** — collecteur RSS : ONU Info retiré (flux anglais en 404, flux français bloqué à la source, même dans un navigateur).
 - **0.10.169** — collecteur RSS : Lefaso.net et Hespress lus par des relais FeedBurner créés par l'auteur (blocages intermittents des serveurs de GitHub).
 - **0.10.168** — collecteur RSS : ONU Info par son flux français (`un.org/apps/newsFr/rss/rss_top.asp`), à la place des flux régionaux en 404.
 - **0.10.167** — collecteur RSS : ECFR et ReliefWeb retirés (inaccessibles, même par relais) ; second essai aussi sur le code 415.
