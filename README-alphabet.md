@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.169** — collecteur RSS : Lefaso.net et Hespress lus par des relais FeedBurner créés par l'auteur (blocages intermittents des serveurs de GitHub).
 - **0.10.168** — collecteur RSS : ONU Info par son flux français (`un.org/apps/newsFr/rss/rss_top.asp`), à la place des flux régionaux en 404.
 - **0.10.167** — collecteur RSS : ECFR et ReliefWeb retirés (inaccessibles, même par relais) ; second essai aussi sur le code 415.
 - **0.10.166** — récolte des questions Metaculus binaires résolues (`recolte_metaculus.py`, workflow « Récolte des questions Metaculus résolues ») : champs de l'API, pays, domaine, forme et seuils par des règles fixées d'avance, sans modèle ; descriptions non gardées. Première étape du B Metaculus.
