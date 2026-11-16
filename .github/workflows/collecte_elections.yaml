@@ -1,0 +1,46 @@
+name: Calendrier des élections (Wikidata, ombre)
+
+# 0.10.179 : élections nationales et référendums par pays (Wikidata, CC0) ; rien de posté. Une fois par semaine : les
+# dates changent rarement.
+on:
+  schedule:
+    - cron: "17 13 * * 1"
+  workflow_dispatch:
+    inputs:
+      depuis:
+        description: "premier jour (AAAA-MM-JJ)"
+        default: "2026-01-01"
+
+concurrency:
+  group: collecte-elections
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 20
+        run: uv run python collecte_elections.py --depuis "${{ github.event.inputs.depuis || '2026-01-01' }}"
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -s registre/elections.csv ]; then git add registre/elections.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : élections (Wikidata) du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

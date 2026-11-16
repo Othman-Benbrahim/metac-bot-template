@@ -31,6 +31,9 @@ ETATS = {
               ("GDELT : moins de manifestations dans la presse (÷ 1,5)", lambda v: v < -0.4)),
     "gdelt_emeutes": (("GDELT : plus d'émeutes dans la presse (× 1,5)", lambda v: v > 0.4),
                       ("GDELT : moins d'émeutes dans la presse (÷ 1,5)", lambda v: v < -0.4)),
+    "elections": (("élection nationale dans les 30 jours avant", lambda v: v >= 1),
+                  ("aucune élection nationale dans les 30 jours avant", lambda v: v == 0)),
+    "elections_apres": (("élection nationale prévue dans les 30 jours après (fuite possible)", lambda v: v >= 1),),
     "sanctions": (("sanctions nouvelles (États-Unis ou Royaume-Uni)", lambda v: v >= 1),
                   ("aucune sanction nouvelle", lambda v: v == 0)),
     "radar": (("Cloudflare signale une coupure d'internet", lambda v: v >= 1),
@@ -76,12 +79,15 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
                 if k == "telegram" and v.get("methode") != "canaux":
                     continue                          # 0.10.151 : recherche globale abandonnée (ne remonte pas dans le passé)
+                if k == "elections" and v.get("present"):   # 0.10.179
+                    x["elections_apres"] = float(v.get("apres_30j") or 0)
+                    x["presents"]["elections_apres"] = True
                 if k == "radar" and v.get("present"):   # 0.10.177
                     for cle, etat in (("etat_14j", "radar_etat"), ("electricite_14j", "radar_electricite")):
                         x[etat] = float(v.get(cle) or 0)

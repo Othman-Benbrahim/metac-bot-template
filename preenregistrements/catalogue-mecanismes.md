@@ -108,6 +108,14 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
 - Origine : recherche des flux des agences, 2026-11-15 ; décision d'auteur du 2026-11-16.
 - État : **à pré-enregistrer** (`b-notation.md`).
 
+### M10. Une élection nationale proche attise les tensions
+- Indicateur : élection nationale ou référendum du pays (Wikidata) dans les 30 jours avant la date ; à part, prévue
+  dans les 30 jours après (fuite possible pour une élection anticipée annoncée plus tard, déclarée).
+- Sens fixé d'avance : élection proche → plus de manifestations, d'émeutes, de coupures d'internet (+).
+- Domaine : ACLED « manifestations », « émeutes » ; coupures (Radar, OONI).
+- Origine : recherche d'un calendrier électoral, 2026-11-16 ; décision d'auteur du même jour.
+- État : **observatoire** (indicateur `elections`, 0.10.179).
+
 ## Ce que ce catalogue n'est pas
 Ni une liste de « causes » démontrées, ni un réservoir où l'on choisit après coup la fiche qui aurait marché. Le
 nombre de fiches augmente le risque de trouver une régularité par hasard ; c'est pourquoi le sens est fixé avant

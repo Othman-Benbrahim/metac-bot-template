@@ -23,6 +23,8 @@ STRICTEMENT avant la date du jeu :
 - gdelt (0.10.173, en ombre) : manifestations et émeutes dans la presse codée par GDELT (collecte_gdelt.py), pays du
   lieu de l'action ; log((14 jours avant la date + 1) / (14 jours précédents + 1)) ; historique complet, donc mesurable
   sur les questions déjà résolues.
+- elections (0.10.179, en ombre) : élections nationales du pays (Wikidata, CC0) dans les 30 jours avant la date, et
+  prévues dans les 30 jours après (fuite possible pour les élections anticipées, déclarée).
 - sanctions (0.10.178, en ombre) : désignations visant le pays (OFAC, liste britannique) dans les 14 jours avant la
   date (collecte_sanctions.py).
 - radar (0.10.177, en ombre) : coupures d'internet signalées par Cloudflare Radar (CC BY-NC 4.0), commencées dans
@@ -503,6 +505,23 @@ def sanctions(cca2: str | None, d0: date) -> dict:
             "uk_14j": sum(int(x["designations"]) for x in vues if x["source"] == "uk")}
 
 
+ELECTIONS = Path("registre") / "elections.csv"
+
+
+def elections(cca2: str | None, d0: date) -> dict:
+    """0.10.179 : élections nationales du pays (Wikidata) dans les 30 jours avant la date (sans fuite) et prévues dans
+    les 30 jours après (fuite possible pour une élection anticipée annoncée après la date, déclarée)."""
+    if not cca2 or not ELECTIONS.exists():
+        return {"present": False, "raison": "pays inconnu ou calendrier absent"}
+    av_a, av_b = (d0 - timedelta(days=30)).isoformat(), d0.isoformat()
+    ap_b = (d0 + timedelta(days=30)).isoformat()
+    xs = [x for x in csv.DictReader(ELECTIONS.open(encoding="utf-8")) if x["pays"] == cca2]
+    avant = [x for x in xs if av_a <= x["date"] < av_b]
+    apres = [x for x in xs if av_b <= x["date"] < ap_b]
+    return {"present": True, "valeur": len(avant), "apres_30j": len(apres),
+            "noms": [x["nom"] for x in avant + apres][:4]}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 
@@ -557,7 +576,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -600,6 +619,9 @@ async def principal() -> int:
                 if "gdelt" not in fait and GDELT_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["gdelt"] = gdelt(code, d0)
+                if "elections" not in fait and ELECTIONS.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["elections"] = elections(code, d0)
                 if "sanctions" not in fait and SANCTIONS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["sanctions"] = sanctions(code, d0)
@@ -620,7 +642,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections") if k in ligne))
         await tg.fermer()
     return 0
 
