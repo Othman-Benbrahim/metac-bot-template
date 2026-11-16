@@ -184,7 +184,7 @@ async def gdpnow(serie: str = "GDPNOW", avant: date | None = None, debut: str | 
 NOWCAST_INFLATION = Path("registre") / "nowcast-inflation.csv"
 
 
-async def nowcast_inflation(mesure: str = "CPI", avant: date | None = None) -> dict:
+async def nowcast_inflation(mesure: str = "CPI", genre: str = "variation_mensuelle", avant: date | None = None) -> dict:
     """0.10.181 : nowcasts d'inflation de la Fed de Cleveland, relevés chaque jour par collecte_nowcast_inflation.py ;
     avec `avant`, seulement les relevés antérieurs ou égaux à cette date (nos propres millésimes, sans fuite)."""
     import csv as _csv
@@ -195,7 +195,8 @@ async def nowcast_inflation(mesure: str = "CPI", avant: date | None = None) -> d
     for x in _csv.DictReader(NOWCAST_INFLATION.open(encoding="utf-8")):
         if avant and x["releve_le"] > avant.isoformat():
             continue
-        if x["mesure"].lower().split(":", 1)[-1].strip() != m:     # « CPI » ne prend pas « Core CPI »
+        g, _, mes = x["mesure"].lower().partition(":")
+        if mes.strip() != m or g != genre.lower():           # « CPI » ne prend pas « Core CPI »
             continue
         pts.append({"date": x["releve_le"], "valeur": float(x["valeur"]), "titre": f"{x['periode']} — {x['mesure']}"})
     return _releve("Nowcast d'inflation (Fed de Cleveland, relevés quotidiens du bot)", mesure,
@@ -1169,7 +1170,8 @@ CATALOGUE: dict[str, dict] = {
                "pour": "nowcast de la croissance du PIB américain du trimestre en cours (GDPNow, Fed d'Atlanta), tel "
                        "qu'il était publié à la date de la question ; une donnée d'entrée, pas une probabilité"},
     "nowcast_inflation": {"fn": nowcast_inflation, "nature": "niveau", "comptable": True,
-                          "params": '{"mesure": "CPI, Core CPI, PCE ou Core PCE"}',
+                          "params": '{"mesure": "CPI, Core CPI, PCE ou Core PCE", "genre": "variation_mensuelle, '
+                                    'glissement_annuel ou trimestre_annualise"}',
                           "pour": "nowcast de l'inflation américaine du mois et du trimestre en cours (Fed de Cleveland), "
                                   "relevés quotidiens du bot ; une donnée d'entrée, pas une probabilité"},
     "banque_mondiale": {"fn": banque_mondiale, "nature": "niveau", "comptable": True,

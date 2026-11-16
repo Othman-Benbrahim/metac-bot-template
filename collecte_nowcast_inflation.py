@@ -9,7 +9,8 @@ Fed disait tel jour). Pas de rattrapage possible.
 
 Registre : registre/nowcast-inflation.csv (releve_le, periode, mesure, valeur) ; « periode » est le libellé du mois ou
 du trimestre visé tel que la page l'écrit (ex. « November 2026 », « 2026:Q4 ») ; « mesure » est l'en-tête de colonne
-(ex. « CPI », « Core CPI », « PCE », « Core PCE »), préfixé du tableau (« mois » ou « trimestre » ou « annee »).
+(ex. « CPI », « Core CPI », « PCE », « Core PCE »), préfixé du genre : variation_mensuelle, glissement_annuel,
+trimestre_annualise (0.10.182).
 """
 from __future__ import annotations
 
@@ -33,35 +34,56 @@ def _texte(cellule: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", cellule))).strip()
 
 
-def tableaux(page: str) -> list[list[list[str]]]:
-    out = []
-    for t in re.findall(r"<table.*?</table>", page, re.S | re.I):
+def tableaux(page: str) -> list[tuple[str, list[list[str]]]]:
+    """(texte qui précède le tableau, lignes) ; le texte précédent porte le titre (« Month-over-month… »)."""
+    out, fin = [], 0
+    for m in re.finditer(r"<table.*?</table>", page, re.S | re.I):
+        avant = _texte(page[max(fin, m.start() - 1500):m.start()])[-400:]
+        fin = m.end()
         lignes = []
-        for tr in re.findall(r"<tr.*?</tr>", t, re.S | re.I):
+        for tr in re.findall(r"<tr.*?</tr>", m.group(0), re.S | re.I):
             cellules = [_texte(c) for c in re.findall(r"<t[hd][^>]*>(.*?)</t[hd]>", tr, re.S | re.I)]
             if cellules:
                 lignes.append(cellules)
         if lignes:
-            out.append(lignes)
+            out.append((avant, lignes))
     return out
 
 
-def releves(tabs: list[list[list[str]]]) -> list[tuple[str, str, float]]:
-    """(période, mesure, valeur) : première ligne = en-têtes ; première colonne = période ; cellules numériques."""
-    out = []
-    for t in tabs:
+GENRES = ("variation_mensuelle", "glissement_annuel")
+
+
+def genre(avant: str, lignes: list[list[str]], rang_mensuel: int) -> str:
+    """0.10.182 : un tableau trimestriel (« 2026:Q4 ») est en rythme annualisé ; pour les tableaux mensuels, le titre
+    qui précède décide (« year-over-year » / « month-over-month ») ; à défaut, l'ordre de la page (le premier tableau
+    mensuel est la variation sur un mois, le second le glissement sur un an)."""
+    if any(re.search(r"\d{4}\s*:?\s*Q[1-4]", l[0]) for l in lignes[1:]):
+        return "trimestre_annualise"
+    a = avant.lower()
+    if "year-over-year" in a or "year over year" in a or "12-month" in a:
+        return "glissement_annuel"
+    if "month-over-month" in a or "month over month" in a:
+        return "variation_mensuelle"
+    return GENRES[min(rang_mensuel, 1)]
+
+
+def releves(tabs: list[tuple[str, list[list[str]]]]) -> list[tuple[str, str, float]]:
+    """(période, « genre:mesure », valeur) ; première ligne = en-têtes ; première colonne = période."""
+    out, rang = [], 0
+    for avant, t in tabs:
         entetes = t[0]
         if not any(re.search(r"CPI|PCE", h, re.I) for h in entetes):
             continue
-        genre = "trimestre" if any(re.search(r"\d{4}\s*:?\s*Q[1-4]", l[0]) for l in t[1:]) else (
-            "annee" if any(re.search(r"year", h, re.I) for h in entetes[:1]) else "mois")
+        g = genre(avant, t, rang)
+        if g != "trimestre_annualise":
+            rang += 1
         for l in t[1:]:
             if len(l) < 2:
                 continue
             for h, v in zip(entetes[1:], l[1:]):
                 m = re.search(r"-?\d+(?:\.\d+)?", v)
                 if m and re.search(r"CPI|PCE", h, re.I):
-                    out.append((l[0], f"{genre}:{h}", float(m.group(0))))
+                    out.append((l[0], f"{g}:{h}", float(m.group(0))))
     return out
 
 
