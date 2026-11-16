@@ -23,6 +23,8 @@ STRICTEMENT avant la date du jeu :
 - gdelt (0.10.173, en ombre) : manifestations et émeutes dans la presse codée par GDELT (collecte_gdelt.py), pays du
   lieu de l'action ; log((14 jours avant la date + 1) / (14 jours précédents + 1)) ; historique complet, donc mesurable
   sur les questions déjà résolues.
+- sanctions (0.10.178, en ombre) : désignations visant le pays (OFAC, liste britannique) dans les 14 jours avant la
+  date (collecte_sanctions.py).
 - radar (0.10.177, en ombre) : coupures d'internet signalées par Cloudflare Radar (CC BY-NC 4.0), commencées dans
   les 14 jours avant la date ; total, décidées par l'État ou militaires, pannes électriques.
 - portwatch (0.10.176, en ombre) : passages de navires dans les détroits liés au pays (IMF PortWatch), décalés d'une
@@ -484,6 +486,23 @@ def radar(cca2: str | None, d0: date) -> dict:
             "electricite_14j": sum(1 for x in vues if x["cause"] == "POWER_OUTAGE")}
 
 
+SANCTIONS = Path("registre") / "sanctions.csv"
+SANCTIONS_COUVERTURE = Path("registre") / "sanctions-couverture.txt"
+
+
+def sanctions(cca2: str | None, d0: date) -> dict:
+    """0.10.178 : désignations de sanctions visant le pays (OFAC, Royaume-Uni) dans les 14 jours avant la date."""
+    if not cca2 or not SANCTIONS.exists() or not SANCTIONS_COUVERTURE.exists():
+        return {"present": False, "raison": "pays inconnu ou sanctions absentes"}
+    if date.fromisoformat(SANCTIONS_COUVERTURE.read_text(encoding="utf-8").strip()) > d0 - timedelta(days=14):
+        return {"present": False, "raison": "période non couverte"}
+    a, b = (d0 - timedelta(days=14)).isoformat(), d0.isoformat()
+    vues = [x for x in csv.DictReader(SANCTIONS.open(encoding="utf-8")) if x["pays"] == cca2 and a <= x["jour"] < b]
+    return {"present": True, "valeur": sum(int(x["designations"]) for x in vues),
+            "ofac_14j": sum(int(x["designations"]) for x in vues if x["source"] == "ofac"),
+            "uk_14j": sum(int(x["designations"]) for x in vues if x["source"] == "uk")}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 
@@ -538,7 +557,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -581,6 +600,9 @@ async def principal() -> int:
                 if "gdelt" not in fait and GDELT_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["gdelt"] = gdelt(code, d0)
+                if "sanctions" not in fait and SANCTIONS.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["sanctions"] = sanctions(code, d0)
                 if "radar" not in fait and RADAR.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["radar"] = radar(code, d0)
@@ -598,7 +620,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions") if k in ligne))
         await tg.fermer()
     return 0
 
