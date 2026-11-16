@@ -27,6 +27,9 @@ ETATS = {
                   ("prix alimentaires stables ou en baisse", lambda v: v <= 0.02)),
     "vols": (("vols en baisse (> 20 %)", lambda v: v < -0.22), ("vols stables ou en hausse", lambda v: v > -0.05)),
     "telegram": (("Telegram s'emballe (× 1,5)", lambda v: v > 0.4), ("Telegram se tait (÷ 1,5)", lambda v: v < -0.4)),
+    "voisins": (("les voisins s'embrasent (manifestations × 1,5)", lambda v: v > 0.4),
+                ("les voisins se calment (manifestations ÷ 1,5)", lambda v: v < -0.4)),
+    "voisins_emeutes": (("émeutes en hausse chez les voisins (× 1,5)", lambda v: v > 0.4),),
     "gdelt": (("GDELT : plus de manifestations dans la presse (× 1,5)", lambda v: v > 0.4),
               ("GDELT : moins de manifestations dans la presse (÷ 1,5)", lambda v: v < -0.4)),
     "gdelt_emeutes": (("GDELT : plus d'émeutes dans la presse (× 1,5)", lambda v: v > 0.4),
@@ -81,7 +84,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
@@ -100,6 +103,9 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
                 if v.get("present") and v.get("valeur") is not None:
                     x[k] = m[k]["valeur"]
                     x["presents"][k] = True
+                    if k == "voisins" and v.get("valeur_emeutes") is not None:   # 0.10.186
+                        x["voisins_emeutes"] = float(v["valeur_emeutes"])
+                        x["presents"]["voisins_emeutes"] = True
                     if k == "gdelt" and v.get("valeur_emeutes") is not None:   # 0.10.173
                         x["gdelt_emeutes"] = float(v["valeur_emeutes"])
                         x["presents"]["gdelt_emeutes"] = True

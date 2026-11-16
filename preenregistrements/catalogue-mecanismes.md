@@ -116,6 +116,18 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
 - Origine : recherche d'un calendrier électoral, 2026-11-16 ; décision d'auteur du même jour.
 - État : **observatoire** (indicateur `elections`, 0.10.179).
 
+### M11. Les troubles des pays voisins gagnent le pays (diffusion spatiale)
+- Indicateur : manifestations et émeutes de GDELT dans les pays frontaliers (table GeoNames), 14 jours avant la date
+  contre les 14 précédents (`voisins`, 0.10.186).
+- Sens fixé d'avance : voisins qui s'embrasent → manifestations et émeutes plus probables dans le pays (+).
+- Domaine : ACLED « manifestations », « émeutes ».
+- Origine : géographie de la diffusion (Hägerstrand ; Hypergéo, « diffusion spatiale », Th. Saint-Julien : contagion
+  de proximité, décroissance avec la distance, barrières) ; appui empirique : manifestations contagieuses entre pays
+  (LSE, 200 pays, 2000–2020) et corrélation spatiale des troubles (arXiv 2306.08698, Moran I = 0,15–0,19).
+  Analyse de la page « liens utiles » de Géoconfluences, 2026-11-16 ; décision d'auteur du même jour.
+- Réserve : un signal positif ne distingue pas la contagion d'une cause commune aux voisins (économie, culture).
+- État : **observatoire** ; jugeable sur les questions résolues dès le rattrapage de GDELT.
+
 ## Ce que ce catalogue n'est pas
 Ni une liste de « causes » démontrées, ni un réservoir où l'on choisit après coup la fiche qui aurait marché. Le
 nombre de fiches augmente le risque de trouver une régularité par hasard ; c'est pourquoi le sens est fixé avant

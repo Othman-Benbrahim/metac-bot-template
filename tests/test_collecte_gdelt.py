@@ -44,5 +44,28 @@ class TestGdelt(unittest.TestCase):
             ni.GDELT_COMPTES, ni.GDELT_JOURS, ni._GDELT = ancien
 
 
+class TestVoisins(unittest.TestCase):
+    def test_geonames(self):
+        l = "\t".join(["UA"] + [""] * 16 + ["RU,BY,PL,SK,HU,RO,MD"])
+        self.assertEqual(ni.lire_voisins_geonames("# en-tête\n" + l)["UA"][:2], ["RU", "BY"])
+
+    def test_voisins_gdelt(self):
+        d = Path(tempfile.mkdtemp())
+        ancien = (ni.GDELT_COMPTES, ni.GDELT_JOURS, ni._GDELT, ni._VOISINS)
+        ni.GDELT_COMPTES, ni.GDELT_JOURS, ni._GDELT = d / "c.csv", d / "j.txt", None
+        ni._VOISINS = {"BF": ["ML", "NE"], "FJ": []}
+        try:
+            d0 = date(2026, 10, 1)
+            jours = [(d0 - timedelta(days=k)).isoformat() for k in range(1, 29)]
+            ni.GDELT_JOURS.write_text("\n".join(jours))
+            ni.GDELT_COMPTES.write_text("pays,jour,manifestations,emeutes,articles\n"
+                                        f"ML,{jours[0]},6,1,9\nNE,{jours[1]},3,0,3\nML,{jours[20]},2,0,2\n")
+            m = ni.voisins_gdelt("BF", d0)
+            self.assertEqual((m["manifestations_14j"], m["manifestations_14j_avant"]), (9, 2))
+            self.assertFalse(ni.voisins_gdelt("FJ", d0)["present"])
+        finally:
+            ni.GDELT_COMPTES, ni.GDELT_JOURS, ni._GDELT, ni._VOISINS = ancien
+
+
 if __name__ == "__main__":
     unittest.main()

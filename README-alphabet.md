@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.186** — fiche M11 (diffusion spatiale) : indicateur `voisins`, manifestations et émeutes de GDELT dans les pays frontaliers (table GeoNames, CC BY 4.0, mise en cache dans `registre/voisins.json`), 14 jours contre 14 précédents ; deux états dans l'observatoire.
 - **0.10.185** — Cloudflare Radar : les coupures ordonnées pendant les examens nationaux (repérées dans la description) sont marquées « examens » et écartées de l'état « coupure décidée par l'État » ; premier passage : 65 coupures depuis juin, dont 25 en Irak (saison des examens). PortWatch passe à 4 h 13 (heure creuse du quota ArcGIS).
 - **0.10.184** — collecteur Cloudflare Radar : fin de période = maintenant (une fin future est refusée, erreur 400), fenêtres de 30 jours, texte de l'erreur affiché.
 - **0.10.183** — collecteur PortWatch : le quota ArcGIS (6 000 unités par minute) est partagé par tous les utilisateurs du service ; une erreur 429 est retentée après 65 s (jusqu'à 5 fois), et 15 s séparent deux détroits.

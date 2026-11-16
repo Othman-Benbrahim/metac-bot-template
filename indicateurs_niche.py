@@ -33,6 +33,8 @@ STRICTEMENT avant la date du jeu :
   les 14 jours avant la date ; total, décidées par l'État ou militaires, pannes électriques.
 - portwatch (0.10.176, en ombre) : passages de navires dans les détroits liés au pays (IMF PortWatch), décalés d'une
   semaine pour le délai de publication ; log(14 jours / 14 jours précédents).
+- voisins (0.10.186, en ombre, fiche M11) : manifestations et émeutes de GDELT dans les pays frontaliers (GeoNames,
+  CC BY 4.0), 14 jours contre 14 jours précédents ; diffusion spatiale par contagion de proximité.
 - ooni (0.10.175, en ombre) : censure d'internet (OONI, CC BY-NC-SA 4.0) : part des mesures anormales sur 14 jours
   moins la même part sur les 14 jours précédents, sites web et messageries à part ; absent sous un minimum de mesures.
 - violationswatch (0.10.147, en ombre) : incidents graves (gravité « High » ou « Critical ») signalés par
@@ -397,6 +399,62 @@ def gdelt(cca2: str | None, d0: date, manque_max: int = 2) -> dict:
             "jours_manquants": manque}
 
 
+VOISINS_URL = "https://download.geonames.org/export/dump/countryInfo.txt"
+VOISINS = Path("registre") / "voisins.json"
+_VOISINS: dict | None = None
+
+
+def lire_voisins_geonames(texte: str) -> dict[str, list[str]]:
+    """countryInfo.txt de GeoNames (CC BY 4.0) : colonne 0 = code ISO, dernière colonne utile = voisins (« FR,DE »)."""
+    out = {}
+    for l in texte.splitlines():
+        if not l or l.startswith("#"):
+            continue
+        c = l.split("\t")
+        if len(c) > 17 and len(c[0]) == 2:
+            out[c[0]] = [v for v in c[17].split(",") if len(v) == 2]
+    return out
+
+
+def voisins(cca2: str) -> list[str]:
+    """0.10.186 : pays frontaliers (GeoNames), mis en cache dans registre/voisins.json au premier besoin."""
+    global _VOISINS
+    if _VOISINS is None:
+        if VOISINS.exists():
+            _VOISINS = json.loads(VOISINS.read_text(encoding="utf-8"))
+        else:
+            try:
+                r = httpx.get(VOISINS_URL, timeout=60, follow_redirects=True)
+                r.raise_for_status()
+                _VOISINS = lire_voisins_geonames(r.text)
+                if len(_VOISINS) > 200:
+                    VOISINS.parent.mkdir(exist_ok=True)
+                    VOISINS.write_text(json.dumps(_VOISINS, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+            except Exception:
+                _VOISINS = {}
+    return _VOISINS.get(cca2, [])
+
+
+def voisins_gdelt(cca2: str | None, d0: date, manque_max: int = 2) -> dict:
+    """0.10.186, fiche M11 (diffusion spatiale, Hägerstrand ; contagion des manifestations entre pays voisins) :
+    manifestations et émeutes de GDELT dans les pays FRONTALIERS, 14 jours avant la date contre les 14 précédents ;
+    log((récent + 1) / (avant + 1)). Absent pour un pays sans voisin terrestre."""
+    if not cca2:
+        return {"present": False, "raison": "pays inconnu"}
+    vs = voisins(cca2)
+    if not vs:
+        return {"present": False, "raison": "aucun pays frontalier connu (île ou table absente)"}
+    sous = [gdelt(v, d0, manque_max) for v in vs]
+    if not any(s.get("present") for s in sous):
+        return {"present": False, "raison": (sous[0] or {}).get("raison", "GDELT absent")}
+    ok = [s for s in sous if s.get("present")]
+    m_r, m_a = sum(s["manifestations_14j"] for s in ok), sum(s["manifestations_14j_avant"] for s in ok)
+    e_r, e_a = sum(s["emeutes_14j"] for s in ok), sum(s["emeutes_14j_avant"] for s in ok)
+    return {"present": True, "valeur": round(math.log((m_r + 1) / (m_a + 1)), 4),
+            "valeur_emeutes": round(math.log((e_r + 1) / (e_a + 1)), 4), "voisins": vs,
+            "manifestations_14j": m_r, "manifestations_14j_avant": m_a}
+
+
 OONI_COMPTES = Path("registre") / "ooni-censure.csv"
 OONI_JOURS = Path("registre") / "ooni-jours.txt"
 _OONI: dict | None = None
@@ -597,7 +655,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -655,6 +713,9 @@ async def principal() -> int:
                 if "portwatch" not in fait and PORTWATCH.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["portwatch"] = portwatch(code, d0)
+                if "voisins" not in fait and GDELT_JOURS.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["voisins"] = voisins_gdelt(code, d0)
                 if "ooni" not in fait and OONI_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["ooni"] = ooni(code, d0)
@@ -666,7 +727,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins") if k in ligne))
         await tg.fermer()
     return 0
 
