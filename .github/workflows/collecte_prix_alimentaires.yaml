@@ -1,0 +1,52 @@
+name: Collecte des prix alimentaires en temps réel (Banque mondiale RTFP, ombre)
+
+# 0.10.214 : estimations mensuelles des prix alimentaires par pays (37 pays, surtout fragiles). Chaque version est
+# gardée comme un millésime daté. Hebdomadaire ; « sonde = oui » vérifie l'accès sans rien écrire.
+on:
+  schedule:
+    - cron: "11 8 * * 2"
+    - cron: "11 8 * * 5"   # second passage : GitHub retarde ou saute des passages programmés
+  workflow_dispatch:
+    inputs:
+      sonde:
+        description: "oui = vérifier l'accès au fichier sans rien écrire"
+        default: "oui"
+
+concurrency:
+  group: collecte-prix-alimentaires
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 15
+        run: |
+          if [ "${{ github.event.inputs.sonde }}" = "oui" ]; then
+            uv run python collecte_prix_alimentaires.py --sonde
+          else
+            uv run python collecte_prix_alimentaires.py
+          fi
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -s registre/prix-alimentaires.csv ]; then git add registre/prix-alimentaires.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : prix alimentaires (RTFP) du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

@@ -45,6 +45,8 @@ STRICTEMENT avant la date du jeu :
   précédents).
 - silence_statistique (0.10.209, en ombre, fiche M15) : publications prévues du Bureau national des statistiques
   chinois parues en retard ou absentes dans les 30 jours (Chine seulement).
+- prix_alimentaires (0.10.214, en ombre) : inflation alimentaire sur un an et accélération sur trois mois
+  (Banque mondiale, RTFP, 37 pays surtout fragiles ; dernière version publiée avant la date).
 - acaps (0.10.196, en ombre) : risques nouveaux émis par les analystes d'ACAPS pour le pays dans les 180 jours avant
   la date (date d'entrée et pays seulement, champs non révisés) ; source ACAPS.
 - voisins (0.10.186, en ombre, fiche M11) : manifestations et émeutes de GDELT dans les pays frontaliers (GeoNames,
@@ -762,6 +764,42 @@ def silence_statistique(cca2: str | None, d0: date, fenetre: int = 30, tolerance
             "manquantes": manquantes[:6]}
 
 
+PRIX_ALIMENTAIRES = Path("registre") / "prix-alimentaires.csv"
+
+
+def prix_alimentaires(cca2: str | None, d0: date) -> dict:
+    """0.10.214 (en ombre) : inflation alimentaire sur un an (Banque mondiale, RTFP), calculée sur l'indice « Close »
+    (Close du dernier mois / Close douze mois plus tôt − 1, en %), dans la DERNIÈRE VERSION publiée avant la date
+    (millésime : les estimations sont recalculées à chaque version) ; et son accélération sur trois mois."""
+    if not cca2 or not PRIX_ALIMENTAIRES.exists():
+        return {"present": False, "raison": "pays inconnu ou registre absent"}
+    xs = [x for x in csv.DictReader(PRIX_ALIMENTAIRES.open(encoding="utf-8")) if x["version"] < d0.isoformat()]
+    if not xs:
+        return {"present": False, "raison": "aucune version publiée avant la date"}
+    v = max(x["version"] for x in xs)
+    serie = {x["mois"]: float(x["close"]) for x in xs if x["version"] == v and x["pays"] == cca2 and x["close"] not in ("", "NA")}
+    if not serie:
+        return {"present": False, "raison": "pays absent de la base (37 pays)"}
+
+    def recul(mois: str, n: int) -> str:
+        a, m = int(mois[:4]), int(mois[5:7]) - n
+        while m <= 0:
+            a, m = a - 1, m + 12
+        return f"{a:04d}-{m:02d}"
+
+    dernier = max(serie)
+
+    def glissement(m: str) -> float | None:
+        b = serie.get(recul(m, 12))
+        return round(100 * (serie[m] / b - 1), 2) if m in serie and b else None
+    g = glissement(dernier)
+    if g is None:
+        return {"present": False, "raison": "série trop courte"}
+    g3 = glissement(recul(dernier, 3))
+    return {"present": True, "valeur": g, "acceleration_3m": round(g - g3, 2) if g3 is not None else None,
+            "mois": dernier, "version": v}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 RSS_LARGE_DEBUT = date(2026, 11, 17)  # 0.10.199 : premier jour complet des comptes « _large » (adjectifs) et cyber
@@ -833,7 +871,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -909,6 +947,9 @@ async def principal() -> int:
                 if "silence_statistique" not in fait and PUBLICATIONS_NBS.exists():   # 0.10.209, M15
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["silence_statistique"] = silence_statistique(code, d0)
+                if "prix_alimentaires" not in fait and PRIX_ALIMENTAIRES.exists():   # 0.10.214, RTFP
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["prix_alimentaires"] = prix_alimentaires(code, d0)
                 if "dates_memoire" not in fait and DATES_MEMOIRE.exists():      # 0.10.202, M14
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["dates_memoire"] = dates_memoire(code, d0)
@@ -926,7 +967,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires") if k in ligne))
         await tg.fermer()
     return 0
 
