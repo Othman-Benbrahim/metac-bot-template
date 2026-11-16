@@ -33,6 +33,8 @@ STRICTEMENT avant la date du jeu :
   les 14 jours avant la date ; total, décidées par l'État ou militaires, pannes électriques.
 - portwatch (0.10.176, en ombre) : passages de navires dans les détroits liés au pays (IMF PortWatch), décalés d'une
   semaine pour le délai de publication ; log(14 jours / 14 jours précédents).
+- acaps (0.10.196, en ombre) : risques nouveaux émis par les analystes d'ACAPS pour le pays dans les 180 jours avant
+  la date (date d'entrée et pays seulement, champs non révisés) ; source ACAPS.
 - voisins (0.10.186, en ombre, fiche M11) : manifestations et émeutes de GDELT dans les pays frontaliers (GeoNames,
   CC BY 4.0), 14 jours contre 14 jours précédents ; diffusion spatiale par contagion de proximité.
 - ooni (0.10.175, en ombre) : censure d'internet (OONI, CC BY-NC-SA 4.0) : part des mesures anormales sur 14 jours
@@ -601,6 +603,20 @@ def avions_etat(cca2: str | None, d0: date, manque_max: int = 2) -> dict:
             "departs_14j": sum(int(x["departs_vers_etranger"]) for x in xs)}
 
 
+ACAPS_RISQUES = Path("registre") / "acaps-risques.csv"
+
+
+def acaps(cca2: str | None, d0: date, fenetre: int = 180) -> dict:
+    """0.10.196 : risques nouveaux émis par ACAPS pour le pays (date d'entrée dans les `fenetre` jours avant la date).
+    Seuls la date d'entrée et le pays sont utilisés : probabilité, niveau et statut peuvent avoir été révisés après."""
+    if not cca2 or not ACAPS_RISQUES.exists():
+        return {"present": False, "raison": "pays inconnu ou risques ACAPS absents"}
+    a, b = (d0 - timedelta(days=fenetre)).isoformat(), d0.isoformat()
+    xs = {x["risk_id"] for x in csv.DictReader(ACAPS_RISQUES.open(encoding="utf-8"))
+          if x["pays"] == cca2 and a <= x["date_entered"] < b}
+    return {"present": True, "valeur": len(xs), "fenetre_jours": fenetre}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 
@@ -655,7 +671,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -713,6 +729,9 @@ async def principal() -> int:
                 if "portwatch" not in fait and PORTWATCH.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["portwatch"] = portwatch(code, d0)
+                if "acaps" not in fait and ACAPS_RISQUES.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["acaps"] = acaps(code, d0)
                 if "voisins" not in fait and GDELT_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["voisins"] = voisins_gdelt(code, d0)
@@ -727,7 +746,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps") if k in ligne))
         await tg.fermer()
     return 0
 
