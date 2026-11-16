@@ -32,7 +32,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Collecte
-        timeout-minutes: 90
+        timeout-minutes: 150
         run: uv run python collecte_recit_russe.py --pays "${{ github.event.inputs.pays }}"
       - name: Enregistrer
         if: always()

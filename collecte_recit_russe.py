@@ -33,7 +33,10 @@ API = "https://api.gdeltproject.org/api/v2/doc/doc"
 CODES = "https://raw.githubusercontent.com/datasets/country-codes/main/data/country-codes.csv"
 REGISTRE = Path("registre") / "recit-russe.csv"
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
-PAUSE = 5.5                      # l'API DOC demande au plus une requête toutes les 5 secondes
+PAUSE = 8.0                      # l'API DOC demande au plus une requête toutes les 5 secondes ; les adresses de GitHub
+                                 # étant partagées, 5,5 s ne suffisait pas (164 refus « 429 » sur 196 au premier passage)
+ATTENTES_429 = (30, 90)          # 0.10.210 : deux nouvelles tentatives espacées après un refus « 429 »
+ARRET_429 = 8                    # refus persistants d'affilée : on s'arrête et l'on garde ce qui est lu
 SEUIL_ALIBI = 20
 MOTS_ALIBI = '(provocation OR staged OR "false flag")'
 CHAMPS = ["pays", "jour", "articles", "alibi", "total_surveille"]
@@ -63,8 +66,12 @@ def pays_et_noms(c: httpx.Client) -> dict[str, str]:
 
 
 def serie(c: httpx.Client, requete: str, duree: str) -> dict[str, tuple[int, int]]:
-    """Jour (AAAA-MM-JJ) → (articles, total surveillé)."""
-    r = c.get(API, params={"query": requete, "mode": "timelinevolraw", "timespan": duree, "format": "json"})
+    """Jour (AAAA-MM-JJ) → (articles, total surveillé). Après un refus « 429 », attend puis réessaie (ATTENTES_429)."""
+    for attente in (*ATTENTES_429, None):
+        r = c.get(API, params={"query": requete, "mode": "timelinevolraw", "timespan": duree, "format": "json"})
+        if r.status_code != 429 or attente is None:
+            break
+        time.sleep(attente)
     r.raise_for_status()
     out = {}
     try:
@@ -109,7 +116,12 @@ def principal() -> int:
     ok = echecs = alibis = 0
     with httpx.Client(headers=UA, timeout=90, follow_redirects=True) as c:
         noms = pays_et_noms(c)
-        cibles = [p.strip().upper() for p in a.pays.split(",") if p.strip()] or sorted(noms)
+        # 0.10.210 : les pays les moins à jour d'abord, pour qu'un passage interrompu reprenne là où l'autre s'est arrêté
+        dernier = {}
+        for (p_, j_) in reg:
+            dernier[p_] = max(dernier.get(p_, ""), j_)
+        cibles = [p.strip().upper() for p in a.pays.split(",") if p.strip()] or sorted(noms, key=lambda p: (dernier.get(p, ""), p))
+        refus = 0
         print(f"{len(cibles)} pays.")
         for p in cibles:
             nom = noms.get(p)
@@ -118,9 +130,14 @@ def principal() -> int:
             try:
                 s = serie(c, requete(nom), a.duree)
                 ok += 1
+                refus = 0
             except Exception as e:
                 echecs += 1
+                refus = refus + 1 if "429" in str(e) else 0
                 print(f"  {p} : échec ({type(e).__name__}: {str(e)[:80]})")
+                if refus >= ARRET_429:
+                    print(f"  {refus} refus « 429 » d'affilée malgré les attentes : arrêt ; le prochain passage reprendra ici.")
+                    break
                 time.sleep(PAUSE)
                 continue
             time.sleep(PAUSE)
