@@ -154,7 +154,7 @@ def _get_json(url: str, headers: dict | None = None) -> dict:
 
 
 def _termes(exprs: list[str]) -> list[str]:
-    return [e.rstrip("*") for e in exprs if len(e.rstrip("*")) >= 4]
+    return [e.replace("*", "").strip() for e in exprs if len(e.replace("*", "").strip()) >= 4]   # « * » au milieu cassait Zenodo
 
 
 def parser_github(d: dict) -> list[dict]:
@@ -200,7 +200,10 @@ def zenodo(mots: dict[str, list[str]], jours: int) -> list[dict]:
     out, termes = [], _termes(mots["fort"])
     for i in range(0, len(termes), 8):
         q = "(" + " OR ".join(f'"{t}"' for t in termes[i:i + 8]) + f") AND publication_date:[{debut} TO *]"
-        out += parser_zenodo(_get_json(f"{ZENODO}?{urllib.parse.urlencode({'q': q, 'size': 50, 'sort': 'newest'})}"))
+        try:                                  # 2026-11-16 : un lot refusé (HTTP 400) ne fait plus tomber toute la source
+            out += parser_zenodo(_get_json(f"{ZENODO}?{urllib.parse.urlencode({'q': q, 'size': 50, 'sort': 'newest'})}"))
+        except Exception as e:
+            print(f"Zenodo : lot {i // 8 + 1} refusé ({type(e).__name__}: {str(e)[:80]}) : {termes[i:i + 8]}")
         time.sleep(1)
     return out
 

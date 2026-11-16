@@ -85,6 +85,43 @@ ACLED
 GDELT
 UCDP
 
+# Recherches du 2026-11-15/16 (signaux de niche, contexte, sources d'alerte précoce, ontologie)
+protest diffusion
+protest contagion
+diffusion of protest*
+spatial diffusion
+civil unrest
+election violence
+coup d'état
+coup prediction
+internet shutdown*
+network interference
+censorship measurement
+OONI
+travel advisor*
+economic sanction*
+sanctions designation*
+sovereign rating*
+credit rating agenc*
+GDP nowcast*
+inflation nowcast*
+real-time data
+data vintage*
+famine early warning
+food insecurity forecast*
+lean season
+conflict early warning
+early warning system* for conflict
+humanitarian forecast*
+OSINT
+open-source intelligence
+chokepoint*
+speech act*
+costly signal*
+cheap talk
+competency question*
+SKOS
+
 [faible]
 # Passés des forts aux faibles le 2026-11-11 (premier passage : trop de jeux de données et de séries temporelles)
 forecasting benchmark*
@@ -113,6 +150,19 @@ backtesting
 early warning
 judge*
 Bayesian
+# 2026-11-16
+protest*
+riot*
+unrest
+sanction*
+nowcast*
+censorship
+shutdown*
+displacement
+humanitarian
+seasonal calendar
+ontology
+thesaur*
 
 [malus]
 time series
