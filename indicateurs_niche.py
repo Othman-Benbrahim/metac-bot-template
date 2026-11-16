@@ -37,6 +37,8 @@ STRICTEMENT avant la date du jeu :
   / 14 jours précédents), et part « alibi » (provocation, mise en scène, faux drapeau).
 - dates_memoire (0.10.202, en ombre, fiche M14) : dates de mémoire du calendrier fixe dans les 14 jours à partir de
   la date (pays baltes, Russie, Ukraine, Moldavie, Géorgie, Pologne, Norvège).
+- contremesures_chine (0.10.204, en ombre, module Chine, couche 2) : annonces chinoises visant le pays dans les 90
+  jours (registre tenu à la main, d'après Global Trade Alert ou les annonces du ministère du Commerce).
 - acaps (0.10.196, en ombre) : risques nouveaux émis par les analystes d'ACAPS pour le pays dans les 180 jours avant
   la date (date d'entrée et pays seulement, champs non révisés) ; source ACAPS.
 - voisins (0.10.186, en ombre, fiche M11) : manifestations et émeutes de GDELT dans les pays frontaliers (GeoNames,
@@ -656,6 +658,26 @@ def dates_memoire(cca2: str | None, d0: date, fenetre: int = 14) -> dict:
     return {"present": True, "valeur": sum(m in jours for m in md), "fenetre_jours": fenetre}
 
 
+CHINE_CONTREMESURES = Path("registre") / "chine-contremesures.csv"
+
+
+def contremesures_chine(cca2: str | None, d0: date, fenetre: int = 90) -> dict:
+    """0.10.204 (couche 2 du module Chine, en ombre) : annonces chinoises visant le pays (liste des entités non fiables,
+    liste de contrôle des exportations, contre-sanctions) dans les `fenetre` jours avant la date. Registre tenu À LA
+    MAIN (registre/chine-contremesures.csv : date, liste, pays_vise, entites, source), d'après Global Trade Alert
+    (site gratuit, CC BY-NC 4.0 ; l'API est payante) ou les annonces du ministère du Commerce : le site du ministère
+    interdit les robots, on ne le collecte pas automatiquement. Absent tant que le registre est vide."""
+    if not cca2 or not CHINE_CONTREMESURES.exists():
+        return {"present": False, "raison": "pays inconnu ou registre absent"}
+    xs = list(csv.DictReader(CHINE_CONTREMESURES.open(encoding="utf-8")))
+    if not xs:
+        return {"present": False, "raison": "registre vide"}
+    a = (d0 - timedelta(days=fenetre)).isoformat()
+    ici = [x for x in xs if x["pays_vise"] == cca2 and a <= x["date"] < d0.isoformat()]
+    return {"present": True, "valeur": len(ici), "entites": sum(int(x.get("entites") or 0) for x in ici),
+            "fenetre_jours": fenetre}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 RSS_LARGE_DEBUT = date(2026, 11, 17)  # 0.10.199 : premier jour complet des comptes « _large » (adjectifs) et cyber
@@ -727,7 +749,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -791,6 +813,9 @@ async def principal() -> int:
                 if "recit_russe" not in fait and RECIT_RUSSE.exists():          # 0.10.202, M12
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["recit_russe"] = recit_russe(code, d0)
+                if "contremesures_chine" not in fait and CHINE_CONTREMESURES.exists():   # 0.10.204, module Chine
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["contremesures_chine"] = contremesures_chine(code, d0)
                 if "dates_memoire" not in fait and DATES_MEMOIRE.exists():      # 0.10.202, M14
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["dates_memoire"] = dates_memoire(code, d0)
@@ -808,7 +833,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine") if k in ligne))
         await tg.fermer()
     return 0
 
