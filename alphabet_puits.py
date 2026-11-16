@@ -534,46 +534,34 @@ async def federal_register(terme: str, type_doc: str | None = None, avant: date 
 
 
 async def firms(pays: str, jours: int = 10, capteur: str = "VIIRS_SNPP_NRT", avant: date | None = None) -> dict:
-    """NASA FIRMS : nombre de détections de feux actifs par jour (pays ISO3, 1 à 10 jours)."""
-    cle = _cle("FIRMS_MAP_KEY")
+    """NASA FIRMS : nombre de détections de feux actifs par jour (pays ISO3 ou ISO2, 1 à 10 jours).
+
+    0.10.211 : l'API « country » de FIRMS répond « 400 Invalid API call » à tout appel (sonde du 2026-11-16) ; on lit
+    le registre registre/feux.csv, rempli deux fois par jour par collecte_feux.py (détections mondiales rattachées
+    aux pays). Le paramètre « capteur » est gardé pour compatibilité ; le registre suit l'ordre de préférence du
+    collecteur."""
+    _cle("FIRMS_MAP_KEY")
     jours = max(1, min(10, int(jours)))
-    # 0.10.1 : les produits « temps réel » (NRT) ne couvrent que les derniers mois ; au-delà, le produit standard (SP)
-    # (sonde du 10/11 : 400 pour une date de juin en NRT).
-    if avant and (date.today() - avant).days > 60 and capteur.endswith("_NRT"):
-        capteur = capteur[:-4] + "_SP"
-    debut_j = (avant - timedelta(days=jours - 1)) if avant else None
-    # 0.10.94 (sonde du 2026-11-14 : 400 sans motif, en NRT comme en SP) : FIRMS publie les dates couvertes par chaque
-    # produit ; on prend le premier produit qui couvre la fenêtre, dans l'ordre de préférence, au lieu de deviner.
-    if debut_j:
+    code = str(pays or "").strip().upper()
+    if len(code) == 3:
         try:
-            dispo = await _get(f"https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv/{cle}/ALL", json_=False)
-            plages = {r.get("data_id"): (r.get("min_date"), r.get("max_date")) for r in csv.DictReader(io.StringIO(dispo))}
-            fin_j = (avant or date.today()).isoformat()
-            ordre = [capteur] + [c for c in ("VIIRS_SNPP_SP", "VIIRS_NOAA20_SP", "MODIS_SP", "VIIRS_SNPP_NRT",
-                                             "VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT", "MODIS_NRT") if c != capteur]
-            for c in ordre:
-                lo, hi = plages.get(c) or (None, None)
-                if lo and hi and lo <= debut_j.isoformat() and fin_j <= hi:
-                    capteur = c
-                    break
-            else:
-                raise ErreurSource(f"FIRMS : aucun produit ne couvre {debut_j.isoformat()}–{fin_j} "
-                                   f"({', '.join(f'{k} {v[0]}→{v[1]}' for k, v in plages.items() if k)})")
-        except ErreurSource:
-            raise
+            table = await _get("https://raw.githubusercontent.com/datasets/country-codes/main/data/country-codes.csv",
+                               json_=False)
+            code = next((x["ISO3166-1-Alpha-2"].strip() for x in csv.DictReader(io.StringIO(table))
+                         if (x.get("ISO3166-1-Alpha-3") or "").strip() == code), code)
         except Exception:
-            pass                                   # disponibilité illisible : on tente le produit demandé
-    url = f"https://firms.modaps.eosdis.nasa.gov/api/country/csv/{cle}/{capteur}/{pays}/{jours}"
-    if debut_j:
-        url += f"/{debut_j.isoformat()}"
-    t = await _get(url, json_=False)
-    compte: dict[str, int] = {}
-    for r in csv.DictReader(io.StringIO(t)):
-        j = _jour(r.get("acq_date"))
-        if j:
-            compte[j] = compte.get(j, 0) + 1
-    pts = [{"date": j, "valeur": float(n)} for j, n in compte.items()]
-    return _releve("NASA FIRMS", f"détections de feux actifs par jour · {pays} · {capteur}",
+            pass
+    reg, lus = Path("registre") / "feux.csv", Path("registre") / "feux-jours.txt"
+    if not reg.exists() or not lus.exists():
+        raise ErreurSource("FIRMS : registre des feux absent (collecte_feux.py pas encore passée)")
+    fin_j = avant or (date.today() - timedelta(days=1))
+    fenetre = {(fin_j - timedelta(days=k)).isoformat() for k in range(jours)}
+    couverts = set(lus.read_text(encoding="utf-8").split())
+    if not fenetre <= couverts:
+        raise ErreurSource(f"FIRMS : jours non couverts par le registre ({len(fenetre - couverts)} sur {jours})")
+    pts = [{"date": x["jour"], "valeur": float(x["detections"])} for x in csv.DictReader(reg.open(encoding="utf-8"))
+           if x["pays"] == code and x["jour"] in fenetre]
+    return _releve("NASA FIRMS", f"détections de feux actifs par jour · {code} · VIIRS (registre du bot)",
                    "https://firms.modaps.eosdis.nasa.gov/", pts, avant)
 
 
@@ -1232,7 +1220,7 @@ CATALOGUE: dict[str, dict] = {
                          "params": '{"terme": "mots-clés", "type_doc": "PRESDOCU|RULE|PRORULE|NOTICE facultatif"}',
                          "pour": "décrets, règles et documents présidentiels américains"},
     "firms": {"fn": firms, "nature": "flux", "cle": "FIRMS_MAP_KEY", "comptable": True,
-              "params": '{"pays": "ISO3", "jours": "1 à 10"}', "pour": "feux actifs détectés par satellite (10 derniers jours)"},
+              "params": '{"pays": "ISO3 ou ISO2", "jours": "1 à 10"}', "pour": "feux actifs détectés par satellite (10 derniers jours)"},
     "wikidata_poste": {"fn": wikidata_poste, "nature": "evenements", "comptable": True,
                        "params": '{"poste": "intitulé en anglais ou QID, ex. President of France"}',
                        "pour": "titulaires successifs d'un poste (durées en fonction, changements)"},

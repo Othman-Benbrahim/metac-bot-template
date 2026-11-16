@@ -78,22 +78,31 @@ class Diagnostics94(unittest.TestCase):
         self.assertIn("daily threshold", str(e.exception))
 
 
-class Firms95(unittest.TestCase):
-    def test_produit_qui_couvre_la_fenetre(self):
-        appels = []
-        dispo = "data_id,min_date,max_date\nVIIRS_SNPP_SP,2012-01-20,2026-03-31\nVIIRS_NOAA20_SP,2018-04-01,2026-06-30\n"
+class Firms211(unittest.TestCase):
+    """0.10.211 : l'API « country » de FIRMS ne répond plus ; la source lit le registre des feux."""
 
-        async def faux_get(url, params=None, headers=None, json_=True):
-            appels.append(url)
-            return dispo if "data_availability" in url else "acq_date\n2026-05-29\n2026-05-29\n2026-05-30\n"
-        with mock.patch.object(apz, "_get", faux_get), mock.patch.dict(os.environ, {"FIRMS_MAP_KEY": "k"}):
-            r = asyncio.run(apz.firms("GRC", 3, avant=date(2026, 6, 1)))
-        self.assertIn("/VIIRS_NOAA20_SP/GRC/3/2026-05-30", appels[-1])
-        self.assertEqual([p["valeur"] for p in r["points"]], [2.0, 1.0])
-        with mock.patch.object(apz, "_get", faux_get), mock.patch.dict(os.environ, {"FIRMS_MAP_KEY": "k"}):
-            with self.assertRaises(apz.ErreurSource):
-                asyncio.run(apz.firms("GRC", 3, avant=date(2026, 9, 1)))
+    def test_lit_le_registre(self):
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as t:
+            d = Path(t) / "registre"
+            d.mkdir()
+            (d / "feux.csv").write_text("pays,jour,detections,forte_confiance\nGR,2026-05-30,2,1\nGR,2026-05-31,1,0\n"
+                                        "FR,2026-05-31,9,0\n", encoding="utf-8")
+            (d / "feux-jours.txt").write_text("2026-05-29\n2026-05-30\n2026-05-31\n", encoding="utf-8")
 
+            async def faux_get(url, params=None, headers=None, json_=True):
+                return "ISO3166-1-Alpha-2,ISO3166-1-Alpha-3\nGR,GRC\nFR,FRA\n"
+            ici = os.getcwd()
+            try:
+                os.chdir(t)
+                with mock.patch.object(apz, "_get", faux_get), mock.patch.dict(os.environ, {"FIRMS_MAP_KEY": "k"}):
+                    r = asyncio.run(apz.firms("GRC", 3, avant=date(2026, 5, 31)))
+                    self.assertEqual(sorted(p["valeur"] for p in r["points"]), [1.0, 2.0])
+                    with self.assertRaises(apz.ErreurSource):
+                        asyncio.run(apz.firms("GRC", 3, avant=date(2026, 9, 1)))
+            finally:
+                os.chdir(ici)
 
 if __name__ == "__main__":
     unittest.main()

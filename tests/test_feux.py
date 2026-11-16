@@ -14,7 +14,32 @@ CSV = ("country_id,latitude,longitude,bright_ti4,scan,track,acq_date,acq_time,sa
        "UKR,47.9,36.1,331,0.4,0.4,2026-11-11,1012,N,VIIRS,l,2.0NRT,2.0,D\n")
 
 
+try:
+    import shapely  # noqa: F401
+    SHAPELY = True
+except ImportError:
+    SHAPELY = False
+
+GEO = {"features": [
+    {"properties": {"ADMIN": "Carré A", "ISO_A2": "-99", "ISO_A2_EH": "AA"},
+     "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]]]}},
+    {"properties": {"ADMIN": "Somaliland", "ISO_A2": "-99", "ISO_A2_EH": "-99"},
+     "geometry": {"type": "Polygon", "coordinates": [[[20, 0], [30, 0], [30, 10], [20, 10], [20, 0]]]}}]}
+MONDE = ("latitude,longitude,bright_ti4,scan,track,acq_date,acq_time,satellite,instrument,confidence,version,bright_ti5,frp,daynight\n"
+         "5,5,340,0.4,0.4,2026-11-10,0112,N,VIIRS,h,2.0NRT,290,12.3,N\n"
+         "6,6,330,0.4,0.4,2026-11-11,0112,N,VIIRS,n,2.0NRT,290,5.1,N\n"
+         "5,25,331,0.4,0.4,2026-11-10,1012,N,VIIRS,l,2.0NRT,290,2.0,D\n"
+         "50,-30,331,0.4,0.4,2026-11-10,1012,N,VIIRS,l,2.0NRT,290,2.0,D\n")
+
+
 class TestFeux(unittest.TestCase):
+    @unittest.skipUnless(SHAPELY, "shapely absent (le workflow le charge avec uv run --with shapely)")
+    def test_rattachement(self):
+        g, codes = cf.frontieres(GEO)
+        self.assertEqual(codes, ["AA", "SO"])
+        self.assertEqual(cf.compter_par_pays(MONDE, g, codes),
+                         {("AA", "2026-11-10"): [1, 1], ("AA", "2026-11-11"): [1, 0], ("SO", "2026-11-10"): [1, 0]})
+
     def test_compter(self):
         self.assertEqual(cf.compter(CSV), {"2026-11-10": [2, 1], "2026-11-11": [1, 0]})
 
