@@ -20,6 +20,9 @@ STRICTEMENT avant la date du jeu :
   proposée par decouvrir_canaux_telegram.py selon une règle fixée ; la recherche globale ne remontait presque pas dans
   le passé) : messages citant le pays en anglais, log((14 jours avant la date + 1) / (14 jours précédents + 1)), au plus
   300 messages lus par canal. Idée de l'auteur : les canaux publient avant la presse ; emballement, calme ou silence.
+- gdelt (0.10.173, en ombre) : manifestations et émeutes dans la presse codée par GDELT (collecte_gdelt.py), pays du
+  lieu de l'action ; log((14 jours avant la date + 1) / (14 jours précédents + 1)) ; historique complet, donc mesurable
+  sur les questions déjà résolues.
 - violationswatch (0.10.147, en ombre) : incidents graves (gravité « High » ou « Critical ») signalés par
   violationswatch.org dans le pays, premiers signalements dans les 14 jours avant la date ; lu dans nos comptes
   quotidiens (collecte_violationswatch.py) ; mesuré seulement si ces 14 jours sont couverts (données depuis le
@@ -350,6 +353,38 @@ async def telegram(tg: Telegram, pays: str, d0: date) -> dict:
             "valeur": round(math.log((recent + 1) / (avant + 1)), 4), "messages_14j": recent, "messages_14j_avant": avant}
 
 
+GDELT_COMPTES = Path("registre") / "gdelt-manifestations.csv"
+GDELT_JOURS = Path("registre") / "gdelt-jours.txt"
+_GDELT: dict | None = None
+
+
+def gdelt(cca2: str | None, d0: date, manque_max: int = 2) -> dict:
+    """0.10.173 : manifestations (code CAMEO 14) et émeutes (145) dans la presse codée par GDELT, pays du lieu de
+    l'action ; log((14 jours avant la date + 1) / (14 jours précédents + 1)). Mesuré seulement si au plus `manque_max`
+    des 28 jours manquent (collecte_gdelt.py)."""
+    global _GDELT
+    if not cca2 or not GDELT_COMPTES.exists() or not GDELT_JOURS.exists():
+        return {"present": False, "raison": "pays inconnu ou comptes GDELT absents"}
+    if _GDELT is None:
+        par = {}
+        for x in csv.DictReader(GDELT_COMPTES.open(encoding="utf-8")):
+            par.setdefault(x["pays"], {})[x["jour"]] = (int(x["manifestations"]), int(x["emeutes"]))
+        _GDELT = {"par": par, "jours": set(GDELT_JOURS.read_text(encoding="utf-8").split())}
+    jours = [(d0 - timedelta(days=k)).isoformat() for k in range(1, 29)]
+    manque = sum(1 for j in jours if j not in _GDELT["jours"])
+    if manque > manque_max:
+        return {"present": False, "raison": f"{manque} jours GDELT manquants sur 28"}
+    p = _GDELT["par"].get(cca2, {})
+    rec = [p.get(j, (0, 0)) for j in jours[:14]]
+    av = [p.get(j, (0, 0)) for j in jours[14:]]
+    m_r, m_a = sum(x[0] for x in rec), sum(x[0] for x in av)
+    e_r, e_a = sum(x[1] for x in rec), sum(x[1] for x in av)
+    return {"present": True, "valeur": round(math.log((m_r + 1) / (m_a + 1)), 4),
+            "valeur_emeutes": round(math.log((e_r + 1) / (e_a + 1)), 4),
+            "manifestations_14j": m_r, "manifestations_14j_avant": m_a, "emeutes_14j": e_r, "emeutes_14j_avant": e_a,
+            "jours_manquants": manque}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 
@@ -404,7 +439,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -444,6 +479,9 @@ async def principal() -> int:
                 if "brouillage_gps" not in fait and essai:
                     code_g = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["brouillage_gps"] = await gps.mesure(c, code_g, d0)
+                if "gdelt" not in fait and GDELT_JOURS.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["gdelt"] = gdelt(code, d0)
                 if ("rss_officiel" not in fait or "rss_presse" not in fait) and d0 - timedelta(days=14) >= RSS_DEBUT:
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["rss_presse"], ligne["rss_officiel"] = rss(code, d0)
@@ -452,7 +490,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt") if k in ligne))
         await tg.fermer()
     return 0
 

@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.173** — collecteur GDELT (`collecte_gdelt.py`, workflow « Collecte quotidienne GDELT ») : comptes quotidiens de manifestations (CAMEO 14) et d'émeutes (145) par pays du lieu de l'action, codes FIPS convertis en ISO ; indicateur `gdelt` dans les indicateurs de niche (14 jours contre 14 jours précédents) et deux états dans l'observatoire. Historique complet : mesurable sur les questions déjà résolues.
 - **0.10.172** — récolte Metaculus : la combinaison « statuses=resolved, forecast_type=binary » rendait 0 post ; essai de plusieurs variantes de paramètres sur la première page, la première qui rend des posts est gardée (tri oui/non local).
 - **0.10.171** — récolte Metaculus : noms de pays par un client sans le jeton Metaculus (9 noms au lieu de 475) ; tri par date de résolution prévue ; diagnostic de la première page et décompte des posts écartés ; aucun registre écrit si rien n'est gardé.
 - **0.10.170** — collecteur RSS : ONU Info retiré (flux anglais en 404, flux français bloqué à la source, même dans un navigateur).
