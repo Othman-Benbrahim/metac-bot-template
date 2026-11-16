@@ -113,6 +113,18 @@ def source_pour(debut: str, fin: str, dispo: dict[str, tuple[str, str]]) -> str 
     return None
 
 
+def fenetre_et_produit(debut: date, fin: date, dispo: dict[str, tuple[str, str]]) -> tuple[date, str | None]:
+    """0.10.213 : premier produit (ordre de préférence) qui couvre le PREMIER jour ; la fenêtre est raccourcie à sa
+    date de fin, pour ne jamais changer de satellite au milieu d'une fenêtre (fin de l'archive standard de NOAA-20
+    au 31 juillet, début de son temps quasi réel au 1er août : sans cela, la fenêtre du 31 juillet passait sur
+    NOAA-21)."""
+    for c in ORDRE:
+        lo, hi = dispo.get(c) or ("", "")
+        if lo and hi and lo <= debut.isoformat() <= hi:
+            return min(fin, date.fromisoformat(hi)), c
+    return fin, None
+
+
 def lire() -> dict[tuple, list[int]]:
     if not REGISTRE.exists():
         return {}
@@ -187,19 +199,26 @@ def principal() -> int:
         print("Produits FIRMS :", ", ".join(f"{k} {v[0]}→{v[1]}" for k, v in dispo.items() if k in ORDRE))
         d = debut
         while d <= hier:
-            fin = min(d + timedelta(days=JOURS - 1), hier)
+            fin, produit = fenetre_et_produit(d, min(d + timedelta(days=JOURS - 1), hier), dispo)
             fenetre = [(d + timedelta(days=k)).isoformat() for k in range((fin - d).days + 1)]
             if all(j in jours for j in fenetre):
                 d = fin + timedelta(days=1)
                 continue
-            produit = source_pour(fenetre[0], fenetre[-1], dispo)
             if not produit:
                 print(f"  fenêtre {fenetre[0]} → {fenetre[-1]} : aucun produit FIRMS ne la couvre ; ignorée")
                 d = fin + timedelta(days=1)
                 continue
             try:
-                r = c.get(API.format(cle=cle, source=produit, jours=len(fenetre), date=d.isoformat()))
+                url = API.format(cle=cle, source=produit, jours=len(fenetre), date=d.isoformat())
+                r = c.get(url)
                 requetes += 1
+                if r.status_code != 200 and "transaction limit" in r.text.lower():
+                    # 0.10.213 : la limite (5 000 transactions par 10 minutes) se compte au volume ; une requête
+                    # mondiale en pèse beaucoup. On attend la fenêtre suivante, une fois.
+                    print(f"  limite de transactions atteinte : pause de 10 minutes")
+                    time.sleep(610)
+                    r = c.get(url)
+                    requetes += 1
                 if r.status_code != 200 or r.text.lower().startswith(("invalid", "error")):
                     raise RuntimeError(f"HTTP {r.status_code} {r.text[:80]}")
                 par_pays = compter_par_pays(r.text, geoms, codes)

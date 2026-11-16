@@ -51,6 +51,11 @@ class TestFeux(unittest.TestCase):
         d2 = cf.plages("data_id,min_date,max_date\nVIIRS_NOAA20_SP,2018-04-01,2026-07-31\nVIIRS_NOAA20_NRT,2026-08-01,2026-11-16\n"
                        "VIIRS_SNPP_NRT,2026-08-01,2026-11-02\n")
         self.assertEqual(cf.source_pour("2026-09-20", "2026-09-24", d2), "VIIRS_NOAA20_NRT")     # un seul capteur
+        d3 = cf.plages("data_id,min_date,max_date\nVIIRS_NOAA20_SP,2018-04-01,2026-07-31\nVIIRS_NOAA20_NRT,2026-08-01,2026-11-16\n"
+                       "VIIRS_NOAA21_NRT,2024-01-17,2026-11-16\n")
+        # fenêtre du 31 juillet coupée à la fin de l'archive standard : jamais NOAA-21
+        self.assertEqual(cf.fenetre_et_produit(date(2026, 7, 31), date(2026, 8, 4), d3), (date(2026, 7, 31), "VIIRS_NOAA20_SP"))
+        self.assertEqual(cf.fenetre_et_produit(date(2026, 8, 1), date(2026, 8, 5), d3), (date(2026, 8, 5), "VIIRS_NOAA20_NRT"))
         self.assertIsNone(cf.source_pour("2026-11-14", "2026-11-18", d))
 
     def test_indicateur(self):
