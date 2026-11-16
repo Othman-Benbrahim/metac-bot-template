@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.187** — pilote « mécanismes proposés à partir des revues » (`mecanismes_revues.py`, workflow manuel) : récolte OAI-PMH d'OpenEdition (14 revues, articles depuis 2005 touchant aux crises), extraction de 0 à 2 mécanismes par résumé par le petit modèle Bedrock, plafond de dépense ; résumés non conservés ; propositions soumises à l'auteur avant tout ajout au catalogue.
 - **0.10.186** — fiche M11 (diffusion spatiale) : indicateur `voisins`, manifestations et émeutes de GDELT dans les pays frontaliers (table GeoNames, CC BY 4.0, mise en cache dans `registre/voisins.json`), 14 jours contre 14 précédents ; deux états dans l'observatoire.
 - **0.10.185** — Cloudflare Radar : les coupures ordonnées pendant les examens nationaux (repérées dans la description) sont marquées « examens » et écartées de l'état « coupure décidée par l'État » ; premier passage : 65 coupures depuis juin, dont 25 en Irak (saison des examens). PortWatch passe à 4 h 13 (heure creuse du quota ArcGIS).
 - **0.10.184** — collecteur Cloudflare Radar : fin de période = maintenant (une fin future est refusée, erreur 400), fenêtres de 30 jours, texte de l'erreur affiché.
