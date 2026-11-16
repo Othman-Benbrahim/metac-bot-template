@@ -116,10 +116,15 @@ def _derniere_prevision(q: dict):
 
 def ligne(post: dict, motifs_pays) -> dict | None:
     q = post.get("question")
-    if not isinstance(q, dict) or q.get("type") != "binary":
+    if not isinstance(q, dict):
+        REJETS["sans question (groupe, conditionnelle)"] += 1
+        return None
+    if q.get("type") != "binary":
+        REJETS[f"type {q.get('type')}"] += 1
         return None
     r = str(q.get("resolution") or "").lower()
     if r not in ("yes", "no"):
+        REJETS[f"résolution {r or 'vide'}"] += 1
         return None
     titre = post.get("title") or q.get("title") or ""
     cats, tags = _noms(post.get("projects"), "category"), _noms(post.get("projects"), "tag")
@@ -142,19 +147,38 @@ def ligne(post: dict, motifs_pays) -> dict | None:
             "classee": bool(d and f)}
 
 
-def recolter(c: httpx.Client, maximum: int):
+REJETS: Counter = Counter()
+
+
+def diagnostic(post: dict) -> str:
+    """Forme d'un post (clés et types), sans texte : pour comprendre un passage qui ne garde rien."""
+    q = post.get("question")
+    if not isinstance(q, dict):
+        return f"post sans « question » ; clés : {sorted(post.keys())[:25]}"
+    return (f"clés du post : {sorted(post.keys())[:25]} ; question.type={q.get('type')!r} ; "
+            f"question.resolution={q.get('resolution')!r} ; question.status={q.get('status')!r}")
+
+
+def recolter(c: httpx.Client, maximum: int, tri: str = "-scheduled_resolve_time"):
     offset, n = 0, 0
     while n < maximum:
         params = {"statuses": "resolved", "forecast_type": "binary", "limit": 100, "offset": offset,
-                  "order_by": "-actual_resolve_time", "with_cp": "true"}
+                  "order_by": tri, "with_cp": "true"}
         for essai in range(6):
             r = c.get(API, params=params)
             if r.status_code == 429 or r.status_code >= 500:
                 time.sleep(min(60, 5 * 2 ** essai))
                 continue
             break
+        if r.status_code >= 400:
+            print(f"  API Metaculus : HTTP {r.status_code} (offset {offset}) : {r.text[:300]}")
         r.raise_for_status()
-        res = r.json().get("results") or []
+        corps = r.json()
+        res = corps.get("results") or []
+        if offset == 0:
+            print(f"  première page : {len(res)} posts (tri {tri}) ; clés de la réponse : {sorted(corps.keys())}")
+            if res:
+                print("  " + diagnostic(res[0]))
         if not res:
             return
         for p in res:
@@ -193,9 +217,12 @@ def principal() -> int:
         entetes["Authorization"] = f"Token {jeton}"
     from collecte_rss import noms_pays
     lignes, vus = [], set()
+    # 0.10.171 : client distinct pour les noms de pays (le jeton Metaculus envoyé à un autre site faisait échouer
+    # le téléchargement : 9 noms au lieu de 475)
+    with httpx.Client(headers={"User-Agent": entetes["User-Agent"]}, timeout=60, follow_redirects=True) as cp:
+        motifs = noms_pays(cp)
+    print(f"{len(motifs)} noms de pays.")
     with httpx.Client(headers=entetes, timeout=60, follow_redirects=True) as c:
-        motifs = noms_pays(c)
-        print(f"{len(motifs)} noms de pays.")
         for p in recolter(c, a.max):
             x = ligne(p, motifs)
             if x and x["question_id"] not in vus:
@@ -203,6 +230,11 @@ def principal() -> int:
                 lignes.append(x)
             if len(lignes) % 500 == 0 and lignes:
                 print(f"  {len(lignes)} questions binaires résolues oui/non")
+    if REJETS:
+        print("Posts écartés : " + " ; ".join(f"{k} : {v}" for k, v in REJETS.most_common()))
+    if not lignes:
+        print("Aucune question gardée : registre inchangé.")
+        return 1
     SORTIE.parent.mkdir(exist_ok=True)
     SORTIE.write_text("\n".join(json.dumps(x, ensure_ascii=False) for x in lignes) + "\n", encoding="utf-8")
     r = resumer(lignes)

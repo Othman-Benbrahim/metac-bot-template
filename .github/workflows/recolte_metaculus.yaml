@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/metaculus-resolues.jsonl registre/metaculus-resolues-resume.md; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/metaculus-resolues.jsonl registre/metaculus-resolues-resume.md; do if [ -s "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : questions Metaculus résolues du $(date -u +%Y-%m-%d)"
             git pull --rebase

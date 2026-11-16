@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.171** — récolte Metaculus : noms de pays par un client sans le jeton Metaculus (9 noms au lieu de 475) ; tri par date de résolution prévue ; diagnostic de la première page et décompte des posts écartés ; aucun registre écrit si rien n'est gardé.
 - **0.10.170** — collecteur RSS : ONU Info retiré (flux anglais en 404, flux français bloqué à la source, même dans un navigateur).
 - **0.10.169** — collecteur RSS : Lefaso.net et Hespress lus par des relais FeedBurner créés par l'auteur (blocages intermittents des serveurs de GitHub).
 - **0.10.168** — collecteur RSS : ONU Info par son flux français (`un.org/apps/newsFr/rss/rss_top.asp`), à la place des flux régionaux en 404.
