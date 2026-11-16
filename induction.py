@@ -63,6 +63,9 @@ ETATS = {
     "rss_voix_citoyennes": (("Global Voices en parle", lambda v: v >= 1), ("Global Voices n'en parle pas", lambda v: v == 0)),
     "rss_economie": (("la presse économique en parle", lambda v: v >= 1), ("la presse économique n'en parle pas", lambda v: v == 0)),
     "rss_notation": (("une agence de notation est citée", lambda v: v >= 1), ("aucune agence de notation citée", lambda v: v == 0)),
+    "rss_cyber": (("le CERT-FR nomme le pays", lambda v: v >= 1), ("le CERT-FR ne nomme pas le pays", lambda v: v == 0)),
+    "rss_presse_large": (("la presse en parle de plus en plus, adjectifs compris (× 1,5)", lambda v: v > 0.4),
+                         ("la presse se tait, adjectifs compris (÷ 1,5)", lambda v: v < -0.4)),
     "brouillage_gps": (("brouillage GPS présent (≥ 5 % des zones)", lambda v: v >= 0.05), ("aucun brouillage GPS", lambda v: v == 0)),
 }
 NICHE = Path("registre") / "indicateurs-niche.jsonl"
@@ -123,7 +126,10 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
                     if k == "rss_officiel" and v.get("voix_citoyennes_14j") is not None:  # 0.10.158
                         x["rss_voix_citoyennes"] = float(v["voix_citoyennes_14j"])
                         x["presents"]["rss_voix_citoyennes"] = True
-                    for cle, etat in (("economie_14j", "rss_economie"), ("notation_14j", "rss_notation")):  # 0.10.159
+                    if k == "rss_presse" and v.get("valeur_large") is not None:  # 0.10.199
+                        x["rss_presse_large"] = float(v["valeur_large"])
+                        x["presents"]["rss_presse_large"] = True
+                    for cle, etat in (("economie_14j", "rss_economie"), ("notation_14j", "rss_notation"), ("cyber_14j", "rss_cyber")):  # 0.10.159
                         if k == "rss_officiel" and v.get(cle) is not None:
                             x[etat] = float(v[cle])
                             x["presents"][etat] = True

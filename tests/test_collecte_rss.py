@@ -41,6 +41,62 @@ class TestRSS(unittest.TestCase):
         self.assertEqual((a[0]["jour"], a[0]["texte"].strip()), ("2026-11-15", "Mali"))
 
 
+class _Client:
+    def __init__(self, donnees):
+        self.donnees = donnees
+
+    def get(self, url, timeout=60):
+        d = self.donnees
+
+        class R:
+            def json(self_):
+                return d
+        return R()
+
+
+PAYS = [
+    {"cca2": "IR", "unMember": True, "demonyms": {"eng": {"m": "Iranian", "f": "Iranian"}, "fra": {"m": "Iranien", "f": "Iranienne"}}},
+    {"cca2": "FR", "unMember": True, "demonyms": {"eng": {"m": "French", "f": "French"}, "fra": {"m": "Français", "f": "Française"}}},
+    {"cca2": "TF", "unMember": False, "demonyms": {"eng": {"m": "French", "f": "French"}, "fra": {"m": "Français", "f": "Française"}}},
+    {"cca2": "CD", "unMember": True, "demonyms": {"eng": {"m": "Congolese", "f": "Congolese"}}},
+    {"cca2": "CG", "unMember": True, "demonyms": {"eng": {"m": "Congolese", "f": "Congolese"}}},
+    {"cca2": "US", "unMember": True, "demonyms": {"eng": {"m": "American", "f": "American"}, "fra": {"m": "Américain", "f": "Américaine"}}},
+    {"cca2": "PL", "unMember": True, "demonyms": {"eng": {"m": "Polish", "f": "Polish"}, "fra": {"m": "Polonais", "f": "Polonaise"}}},
+]
+
+
+class TestAdjectifs(unittest.TestCase):
+    """0.10.199 : pays reconnus aussi par leurs adjectifs de nationalité (en ombre, comptes « _large »)."""
+
+    def setUp(self):
+        self.adj = cr.adjectifs(_Client(PAYS))
+        self.larges = cr.motifs_larges([(re.compile(r"(?<![\w-])iran(?![\w-])", re.I), "IR")], self.adj)
+
+    def test_formes_et_ambiguite(self):
+        self.assertEqual(self.adj["iranienne"], "IR")
+        self.assertEqual(self.adj["iraniennes"], "IR")
+        self.assertEqual(self.adj["iranians"], "IR")
+        self.assertEqual(self.adj["french"], "FR")          # un seul membre de l'ONU parmi les porteurs
+        self.assertNotIn("congolese", self.adj)             # deux membres de l'ONU : écarté
+
+    def test_detection(self):
+        self.assertEqual(cr.detecter_large("Activité offensive iranienne contre des intérêts français", self.larges), {"IR", "FR"})
+        self.assertEqual(cr.detecter_large("Latin American leaders meet", self.larges), set())
+        self.assertEqual(cr.detecter_large("We must polish the draft", self.larges), set())
+        self.assertEqual(cr.detecter_large("Polish farmers block roads", self.larges), {"PL"})
+
+    def test_source_indisponible(self):
+        class Panne:
+            def get(self, *a, **k):
+                raise OSError("réseau")
+        self.assertEqual(cr.adjectifs(Panne()), {})
+
+    def test_famille_cyber(self):
+        self.assertIn("cyber", cr.FLUX)
+        self.assertIn("cyber", cr.LARGE_SEUL)
+        self.assertNotIn("cyber", cr.DEDOUBLONNER)
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -73,6 +129,62 @@ class TestReprises(unittest.TestCase):
     def test_titre_extrait(self):
         x = b"<rss><channel><item><title>Un titre &lt;b&gt;assez&lt;/b&gt; long pour compter</title><guid>1</guid></item></channel></rss>"
         self.assertIn("assez", cr.articles(x)[0]["titre"])
+
+
+class _Client:
+    def __init__(self, donnees):
+        self.donnees = donnees
+
+    def get(self, url, timeout=60):
+        d = self.donnees
+
+        class R:
+            def json(self_):
+                return d
+        return R()
+
+
+PAYS = [
+    {"cca2": "IR", "unMember": True, "demonyms": {"eng": {"m": "Iranian", "f": "Iranian"}, "fra": {"m": "Iranien", "f": "Iranienne"}}},
+    {"cca2": "FR", "unMember": True, "demonyms": {"eng": {"m": "French", "f": "French"}, "fra": {"m": "Français", "f": "Française"}}},
+    {"cca2": "TF", "unMember": False, "demonyms": {"eng": {"m": "French", "f": "French"}, "fra": {"m": "Français", "f": "Française"}}},
+    {"cca2": "CD", "unMember": True, "demonyms": {"eng": {"m": "Congolese", "f": "Congolese"}}},
+    {"cca2": "CG", "unMember": True, "demonyms": {"eng": {"m": "Congolese", "f": "Congolese"}}},
+    {"cca2": "US", "unMember": True, "demonyms": {"eng": {"m": "American", "f": "American"}, "fra": {"m": "Américain", "f": "Américaine"}}},
+    {"cca2": "PL", "unMember": True, "demonyms": {"eng": {"m": "Polish", "f": "Polish"}, "fra": {"m": "Polonais", "f": "Polonaise"}}},
+]
+
+
+class TestAdjectifs(unittest.TestCase):
+    """0.10.199 : pays reconnus aussi par leurs adjectifs de nationalité (en ombre, comptes « _large »)."""
+
+    def setUp(self):
+        self.adj = cr.adjectifs(_Client(PAYS))
+        self.larges = cr.motifs_larges([(re.compile(r"(?<![\w-])iran(?![\w-])", re.I), "IR")], self.adj)
+
+    def test_formes_et_ambiguite(self):
+        self.assertEqual(self.adj["iranienne"], "IR")
+        self.assertEqual(self.adj["iraniennes"], "IR")
+        self.assertEqual(self.adj["iranians"], "IR")
+        self.assertEqual(self.adj["french"], "FR")          # un seul membre de l'ONU parmi les porteurs
+        self.assertNotIn("congolese", self.adj)             # deux membres de l'ONU : écarté
+
+    def test_detection(self):
+        self.assertEqual(cr.detecter_large("Activité offensive iranienne contre des intérêts français", self.larges), {"IR", "FR"})
+        self.assertEqual(cr.detecter_large("Latin American leaders meet", self.larges), set())
+        self.assertEqual(cr.detecter_large("We must polish the draft", self.larges), set())
+        self.assertEqual(cr.detecter_large("Polish farmers block roads", self.larges), {"PL"})
+
+    def test_source_indisponible(self):
+        class Panne:
+            def get(self, *a, **k):
+                raise OSError("réseau")
+        self.assertEqual(cr.adjectifs(Panne()), {})
+
+    def test_famille_cyber(self):
+        self.assertIn("cyber", cr.FLUX)
+        self.assertIn("cyber", cr.LARGE_SEUL)
+        self.assertNotIn("cyber", cr.DEDOUBLONNER)
 
 
 if __name__ == "__main__":

@@ -619,13 +619,14 @@ def acaps(cca2: str | None, d0: date, fenetre: int = 180) -> dict:
 
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
+RSS_LARGE_DEBUT = date(2026, 11, 17)  # 0.10.199 : premier jour complet des comptes « _large » (adjectifs) et cyber
 
 
 def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
     absent = {"present": False, "raison": "période non couverte ou pays inconnu"}
     if not cca2 or not RSS_COMPTES.exists() or d0 - timedelta(days=14) < RSS_DEBUT:
         return absent, absent
-    rec = av = off = pe = ren = san = vc = tt = eco = nota = 0
+    rec = av = off = pe = ren = san = vc = tt = eco = nota = cyb = rec_l = av_l = 0
     for x in csv.DictReader(RSS_COMPTES.open(encoding="utf-8")):
         if x["pays"] != cca2:
             continue
@@ -647,6 +648,13 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
             eco += n
         if x["famille"] == "notation" and d0 - timedelta(days=14) <= j < d0:
             nota += n
+        if x["famille"] == "cyber" and d0 - timedelta(days=14) <= j < d0:      # 0.10.199, en ombre
+            cyb += n
+        if x["famille"] == "presse_large":                                    # 0.10.199 : noms ET adjectifs, en ombre
+            if d0 - timedelta(days=14) <= j < d0:
+                rec_l += n
+            elif d0 - timedelta(days=28) <= j < d0 - timedelta(days=14):
+                av_l += n
         if x["famille"] == "presse":
             if d0 - timedelta(days=14) <= j < d0:
                 rec += n
@@ -654,9 +662,13 @@ def rss(cca2: str | None, d0: date) -> tuple[dict, dict]:
                 av += n
     presse = ({"present": True, "valeur": round(math.log((rec + 1) / (av + 1)), 4), "articles_14j": rec, "articles_14j_avant": av}
               if d0 - timedelta(days=28) >= RSS_DEBUT else absent)
+    if presse.get("present") and d0 - timedelta(days=28) >= RSS_LARGE_DEBUT:
+        presse["valeur_large"] = round(math.log((rec_l + 1) / (av_l + 1)), 4)
+        presse["articles_14j_large"], presse["articles_14j_avant_large"] = rec_l, av_l
     return presse, {"present": True, "valeur": float(off), "articles_officiels_14j": off, "parlement_ue_14j": pe,
                     "renseignement_14j": ren, "sante_14j": san, "voix_citoyennes_14j": vc,
-                    "think_tanks_14j": tt, "economie_14j": eco, "notation_14j": nota}
+                    "think_tanks_14j": tt, "economie_14j": eco, "notation_14j": nota,
+                    **({"cyber_14j": cyb} if d0 - timedelta(days=14) >= RSS_LARGE_DEBUT else {})}
 
 
 async def principal() -> int:

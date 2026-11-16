@@ -13,9 +13,12 @@ Familles (choisies par l'auteur) :
   (0.10.160), IATA (0.10.161) ; famille dérivée « notation » : articles économiques qui nomment une agence de notation ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
+- cyber (0.10.199, en ombre) : CERT-FR (ANSSI) ; rapports « Menaces et incidents » qui nomment un attaquant ou un pays ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
   France, Suisse, Canada, Afrique, Asie ; presse régionale qui reprend les mêmes dépêches écartée).
-Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres.
+Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres. 0.10.199, en ombre :
+comptes parallèles « famille_large » qui reconnaissent aussi les adjectifs de nationalité (mledoze/countries, ODbL) ;
+les comptes historiques gardent leur définition (noms seuls).
 Registres : registre/rss-comptes.csv (pays, jour, famille, articles) ; registre/rss-vus.txt (empreintes des articles
 déjà comptés, pour ne pas compter deux fois un article encore présent le lendemain) ; registre/rss-titres.csv
 (0.10.198 : empreintes des titres normalisés et jour, pour ne pas compter une reprise du même article ; jamais le titre).
@@ -93,6 +96,10 @@ FLUX = {
         "https://feeds.feedburner.com/europa/7KToFj21lKH",  # doc/motions         # propositions de résolution
         "https://feeds.feedburner.com/europa/4MusBpiFxYU",  # doc/texts-adopted   # textes adoptés
     ],
+    # 0.10.199 (décision d'auteur du 2026-11-16, 18 h 28, en ombre) : CERT-FR (ANSSI). Les avis et alertes portent sur
+    # des produits ; ce qui compte ici, ce sont les rapports « Menaces et incidents » qui nomment un attaquant ou un pays
+    # (acte public d'une agence d'État). Pays reconnus par noms ET adjectifs (« iranienne »).
+    "cyber": ["https://cert.cyber.gouv.fr/flux-rss/"],
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
         "https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868",   # France 24 : monde
@@ -110,6 +117,7 @@ FLUX = {
         "https://fr.yna.co.kr/RSS/international.xml",
     ],
 }
+DEMONYMES = "https://raw.githubusercontent.com/mledoze/countries/master/countries.json"  # ODbL ; adjectifs en/fr
 CLDR = "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-localenames-full/main/{l}/territories.json"
 COMPTES = Path("registre") / "rss-comptes.csv"
 VUS = Path("registre") / "rss-vus.txt"
@@ -139,6 +147,58 @@ def noms_pays(c: httpx.Client) -> list[tuple[re.Pattern, str]]:
             for n, code in sorted(motifs.items(), key=lambda t: -len(t[0])) if len(n) >= 4 or n in ("iran", "iraq", "irak", "mali", "oman", "togo", "chad", "peru", "cuba", "laos", "fiji")]
 
 
+# 0.10.199 : adjectifs de nationalité (« iranienne », « Russian »). Un adjectif porté par plusieurs territoires va au
+# seul membre de l'ONU s'il y en a un (« French » → FR, « Indian » → IN), sinon il est écarté (« Congolese »,
+# « Dominican »). Expressions trompeuses masquées d'abord (« Latin American », « océan Indien »).
+EXCLUSIONS = re.compile(r"(?<![\w-])(latin|south|north|central|native|african|pan|anglo|latino|sud|nord|afro|centre)[ -]?"
+                        r"(american|americans|américain|américaine|américains|américaines)(?![\w-])"
+                        r"|(?<![\w-])(indian ocean|océan indien|west indian|indian country|french fries|french toast)(?![\w-])", re.I)
+ADJECTIFS_HORS = {"islander", "channel islander", "virgin islander"}
+CASSE_STRICTE = {"polish", "polishes"}
+
+
+def adjectifs(c: httpx.Client) -> dict[str, str]:
+    """Adjectif (minuscules, singulier et pluriel, masculin et féminin, anglais et français) → code ISO à deux lettres."""
+    try:
+        d = c.get(DEMONYMES, timeout=60).json()
+    except Exception:
+        return {}
+    porteurs: dict[str, set] = {}
+    onu = {x["cca2"] for x in d if x.get("unMember")}
+    for x in d:
+        for langue in ("eng", "fra"):
+            for genre in ("m", "f"):
+                a = (((x.get("demonyms") or {}).get(langue) or {}).get(genre) or "").strip().lower()
+                if len(a) < 4 or a in ADJECTIFS_HORS:
+                    continue
+                for forme in {a, a if a.endswith(("s", "x")) else a + "s"}:
+                    porteurs.setdefault(forme, set()).add(x["cca2"])
+    out = {}
+    for a, codes in porteurs.items():
+        if len(codes) > 1:
+            codes = codes & onu
+        if len(codes) == 1:
+            out[a] = next(iter(codes))
+    return out
+
+
+def motifs_larges(motifs: list[tuple[re.Pattern, str]], adj: dict[str, str]) -> list[tuple[re.Pattern, str]]:
+    """Noms et adjectifs ensemble, du plus long au plus court (le masquage de `detecter` évite les doubles comptes)."""
+    tous = [(m.pattern, code, re.I) for m, code in motifs]
+    for a, code in adj.items():
+        if a in CASSE_STRICTE:          # mot courant en minuscules (« polish » : polir) : seule la majuscule compte
+            tous.append((r"(?<![\w-])" + re.escape(a.capitalize()) + r"(?![\w-])", code, 0))
+        else:
+            tous.append((r"(?<![\w-])" + re.escape(a) + r"(?![\w-])", code, re.I))
+    def longueur(motif: str) -> int:
+        return len(re.sub(r"\(\?<?[!=][^)]*\)", "", motif).replace("\\", ""))
+    return [(re.compile(m, f), code) for m, code, f in sorted(tous, key=lambda t: -longueur(t[0]))]
+
+
+def detecter_large(texte: str, larges: list[tuple[re.Pattern, str]]) -> set[str]:
+    return detecter(EXCLUSIONS.sub(" ", texte), larges)
+
+
 def detecter(texte: str, motifs: list[tuple[re.Pattern, str]]) -> set[str]:
     """Noms du plus long au plus court ; un nom trouvé est masqué (« South Sudan » ne compte pas aussi « Sudan »)."""
     trouves = set()
@@ -150,6 +210,7 @@ def detecter(texte: str, motifs: list[tuple[re.Pattern, str]]) -> set[str]:
 
 
 TITRES_SEULS = {"renseignement", "lettres_fr"}
+LARGE_SEUL = {"cyber"}       # 0.10.199 : familles sans historique « noms seuls », comptées d'emblée avec les adjectifs
 
 # 0.10.198 (décision d'auteur du 2026-11-16, 18 h 03, appliquée directement, sans ombre) : contre le blanchiment
 # d'information, un article REPRIS (même titre, une fois normalisé) dans un autre flux ou par un autre média ne compte
@@ -288,6 +349,9 @@ def principal() -> int:
     with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c:
         motifs = noms_pays(c)
         print(f"{len(motifs)} noms de pays (anglais et français).")
+        adj = adjectifs(c)
+        larges = motifs_larges(motifs, adj) if adj else []
+        print(f"{len(adj)} adjectifs de nationalité" + ("" if adj else " : source indisponible, comptes « _large » non écrits ce jour") + ".")
         for famille, urls in FLUX.items():
             for url in urls:
                 try:
@@ -310,8 +374,18 @@ def principal() -> int:
                         continue
                     pays = detecter(a["texte"], motifs)
                     familles = [famille] + (["notation"] if famille == "economie" and NOTATION.search(a["texte"]) else [])
+                    # 0.10.199, en ombre : comptes parallèles « famille_large » (noms ET adjectifs) ; les comptes
+                    # historiques (noms seuls) gardent leur définition. La famille cyber ne compte qu'en large.
+                    pays_large = detecter_large(a["texte"], larges) if larges else set()
+                    if famille in LARGE_SEUL:
+                        pays, familles_larges = pays_large, []
+                    else:
+                        familles_larges = [fa + "_large" for fa in familles] if larges else []
                     for p in pays:
                         for fa in familles:
+                            comptes[(p, a["jour"], fa)] = comptes.get((p, a["jour"], fa), 0) + 1
+                    for p in pays_large:
+                        for fa in familles_larges:
                             comptes[(p, a["jour"], fa)] = comptes.get((p, a["jour"], fa), 0) + 1
                     n += 1
                 nouveaux += n
