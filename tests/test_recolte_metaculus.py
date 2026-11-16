@@ -33,5 +33,29 @@ class TestRecolte(unittest.TestCase):
         self.assertEqual(rm.domaine("Will Macron win the presidential election?"), "elections")
 
 
+class TestPrincipal(unittest.TestCase):
+    def test_detail_et_reprise(self):
+        from pathlib import Path
+        from unittest import mock
+        d = Path(tempfile.mkdtemp())
+        liste = [{"id": 1, "question": {"type": "binary", "resolution": None}},
+                 {"id": 2, "question": {"type": "binary", "resolution": None}}]
+        details = {1: {"id": 1, "title": "Will France hold a referendum before 2027?",
+                       "question": {"id": 11, "type": "binary", "resolution": "no"}},
+                   2: {"id": 2, "title": "x", "question": {"id": 12, "type": "binary", "resolution": "annulled"}}}
+        with mock.patch.object(rm, "SORTIE", d / "r.jsonl"), mock.patch.object(rm, "RESUME", d / "r.md"), \
+                mock.patch.object(rm, "DEJA_VUS", d / "vus.txt"), \
+                mock.patch.object(rm, "recolter", lambda c, m: iter(liste)), \
+                mock.patch.object(rm, "detail", lambda c, pid: details[pid]), \
+                mock.patch.object(rm.time, "sleep", lambda s: None), \
+                mock.patch("collecte_rss.noms_pays", lambda c: MOTIFS), \
+                mock.patch("sys.argv", ["recolte_metaculus.py"]):
+            self.assertEqual(rm.principal(), 0)
+            self.assertEqual(len((d / "r.jsonl").read_text().splitlines()), 1)
+            self.assertEqual(set((d / "vus.txt").read_text().split()), {"1", "2"})
+            rm.principal()                                         # reprise : rien de relu, rien de doublé
+            self.assertEqual(len((d / "r.jsonl").read_text().splitlines()), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

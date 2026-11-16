@@ -234,36 +234,80 @@ def resumer(lignes: list[dict]) -> str:
     return "\n".join(out)
 
 
+DEJA_VUS = Path("registre") / "metaculus-posts-vus.txt"   # 0.10.174 : posts déjà traités (y compris écartés)
+
+
+def detail(c: httpx.Client, post_id) -> dict | None:
+    """0.10.174 : la liste des posts ne donne pas la résolution (question.resolution = None) ; la page d'un post la
+    donne. Une requête par question, d'où la reprise d'un passage à l'autre."""
+    for essai in range(6):
+        try:
+            r = c.get(f"{API}{post_id}/")
+        except httpx.HTTPError:
+            time.sleep(5 * 2 ** essai)
+            continue
+        if r.status_code == 429 or r.status_code >= 500:
+            time.sleep(min(120, 5 * 2 ** essai))
+            continue
+        if r.status_code >= 400:
+            REJETS[f"détail HTTP {r.status_code}"] += 1
+            return None
+        return r.json()
+    REJETS["détail : trop d'échecs"] += 1
+    return None
+
+
 def principal() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max", type=int, default=20000)
+    ap.add_argument("--minutes", type=float, default=200, help="durée maximale des requêtes de détail")
     a = ap.parse_args()
     jeton = os.environ.get("METACULUS_TOKEN", "")
     entetes = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche)"}
     if jeton:
         entetes["Authorization"] = f"Token {jeton}"
     from collecte_rss import noms_pays
-    lignes, vus = [], set()
     # 0.10.171 : client distinct pour les noms de pays (le jeton Metaculus envoyé à un autre site faisait échouer
     # le téléchargement : 9 noms au lieu de 475)
     with httpx.Client(headers={"User-Agent": entetes["User-Agent"]}, timeout=60, follow_redirects=True) as cp:
         motifs = noms_pays(cp)
     print(f"{len(motifs)} noms de pays.")
+    lignes = [json.loads(l) for l in SORTIE.read_text(encoding="utf-8").splitlines() if l.strip()] if SORTIE.exists() else []
+    vus = set(DEJA_VUS.read_text(encoding="utf-8").split()) if DEJA_VUS.exists() else set()
+    print(f"Reprise : {len(lignes)} questions déjà gardées, {len(vus)} posts déjà traités.")
+    SORTIE.parent.mkdir(exist_ok=True)
+    fin = time.time() + 60 * a.minutes
+    nouveaux = 0
     with httpx.Client(headers=entetes, timeout=60, follow_redirects=True) as c:
-        for p in recolter(c, a.max):
-            x = ligne(p, motifs)
-            if x and x["question_id"] not in vus:
-                vus.add(x["question_id"])
-                lignes.append(x)
-            if len(lignes) % 500 == 0 and lignes:
-                print(f"  {len(lignes)} questions binaires résolues oui/non")
+        a_lire = [p for p in recolter(c, a.max) if str(p.get("id")) not in vus]
+        print(f"{len(a_lire)} posts résolus à lire en détail.")
+        with SORTIE.open("a", encoding="utf-8") as f, DEJA_VUS.open("a", encoding="utf-8") as fv:
+            for p in a_lire:
+                if time.time() > fin:
+                    print("Durée maximale atteinte : la suite au prochain passage (reprise automatique).")
+                    break
+                q = p.get("question") or {}
+                if q.get("resolution") is None:
+                    d = detail(c, p.get("id"))
+                    time.sleep(0.7)
+                    if d is None:
+                        continue                      # non marqué comme vu : retenté au prochain passage
+                    p = d
+                x = ligne(p, motifs)
+                fv.write(f"{p.get('id')}\n")
+                if x:
+                    f.write(json.dumps(x, ensure_ascii=False) + "\n")
+                    lignes.append(x)
+                    nouveaux += 1
+                    if nouveaux % 250 == 0:
+                        f.flush()
+                        fv.flush()
+                        print(f"  {nouveaux} nouvelles questions gardées")
     if REJETS:
         print("Posts écartés : " + " ; ".join(f"{k} : {v}" for k, v in REJETS.most_common()))
     if not lignes:
-        print("Aucune question gardée : registre inchangé.")
+        print("Aucune question gardée.")
         return 1
-    SORTIE.parent.mkdir(exist_ok=True)
-    SORTIE.write_text("\n".join(json.dumps(x, ensure_ascii=False) for x in lignes) + "\n", encoding="utf-8")
     r = resumer(lignes)
     RESUME.write_text(r + "\n", encoding="utf-8")
     print(r)

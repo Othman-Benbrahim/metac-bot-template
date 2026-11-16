@@ -29,7 +29,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Récolte
-        timeout-minutes: 120
+        timeout-minutes: 230
         env:
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
         run: uv run python recolte_metaculus.py --max "${{ github.event.inputs.max }}"
@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/metaculus-resolues.jsonl registre/metaculus-resolues-resume.md; do if [ -s "$f" ]; then git add "$f"; fi; done
+          for f in registre/metaculus-resolues.jsonl registre/metaculus-resolues-resume.md registre/metaculus-posts-vus.txt; do if [ -s "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : questions Metaculus résolues du $(date -u +%Y-%m-%d)"
             git pull --rebase
