@@ -1,0 +1,246 @@
+{
+ "candidats": [
+  "CTR@5",
+  "TRC@5",
+  "CTR@7",
+  "TRC@7"
+ ],
+ "contre_candidate": [
+  "TRC@5",
+  "TRC@7"
+ ],
+ "mots": [
+  {
+   "carte": "TRC",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Le site du Conseil (Consilium) publie des galeries photo et vidéos montrant Volodymyr Zelenskyy physiquement présent au bâtiment Europa et participant au « doorstep » et à une conférence de presse lors du European Council des 15–16 octobre 2026 (photo 'Joint doorstep', press conference 16 October 2026).",
+   "objet": "présence physique de Zelenskyy aux réunions du European Council (organisation Consilium)",
+   "source": "Consilium — photos et vidéos European Council meetings 15–16 October 2026",
+   "source_url": "https://www.consilium.europa.eu/en/media-galleries/european-council/meetings/2026-10-15-16-euco/#:~:text=Photos%20and%20videos%3A%20European%20Council,1%29%20%2D%20Arrivals%20%28Day%201%29",
+   "date_consultation": "2026-11-16",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Consilium media gallery, 'Arrivals (Day 1)' / 'Joint doorstep' (16 October 2026)",
+     "relation": "soutient",
+     "extrait": "There is a 'Joint doorstep by Antonio Costa, Ursula von der Leyen and Volodymyr Zelenskyy' from Day 2 (16 October 2026)."
+    }
+   ],
+   "test": "cerceau",
+   "contre_observation": "Une visite prévue fin octobre 2026 avait été annulée à court terme et imputée à un changement de plans côté américain plutôt qu'à une incapacité du président à se déplacer (annulation rapportée fin octobre 2026), ce qui nuance mais ne supprime pas le fait attesté de présences antérieures en personne.",
+   "portee": "substantielle",
+   "force_initiale": "F",
+   "corroboration": "unique",
+   "garantie": {
+    "mecanisme": "les preuves matérielles (photos/vidéos officielles du Conseil) constituent une trace mémorielle d'une pratique d'assister physiquement aux sommets et rendent crédible que la présence en personne est possible et utilisée.",
+    "support": {
+     "type": "texte",
+     "reference": "Consilium media gallery — European Council 15–16 October 2026 (photo and video gallery)",
+     "disponible_le": "2026-10-16"
+    },
+    "attendu": "la documentation officielle du Conseil montrera des arrivées/doorsteps et photos de Zelenskyy quand il s'est rendu en personne aux sommets à Bruxelles.",
+    "contredirait": "si la seule documentation officielle disponible montrait des allocutions par vidéo et aucune trace photo/vidéo de présence physique."
+   },
+   "option": {
+    "acteur": "Présidence ukrainienne",
+    "avant": "s'appuyer sur la pratique d'envoi de discours par vidéo pour multiplier les interventions sans se déplacer",
+    "apres": "s'appuyer sur la preuve de présences antérieures en personne pour motiver / planifier un déplacement à Bruxelles"
+   }
+  },
+  {
+   "carte": "TRC",
+   "strate": 7,
+   "intensite": "f",
+   "fait": "En novembre 2026, Zelenskyy a mené une série de déplacements internationaux (surprises ou planifiées) — visite à Madrid début novembre et participation au sommet European Political Community à Dublin les 11–12 novembre 2026 — montrant une pratique geopolitique continue de déplacements présidentiels malgré le contexte de guerre.",
+   "objet": "patron de déplacements diplomatiques internationaux de Zelenskyy en 2026 (influence géopolitique du passé sur décisions présentes)",
+   "source": "Euronews (Madrid visit, 4 Nov 2026) ; NV / news (Dublin EPC summit, 11–12 Nov 2026)",
+   "source_url": "https://www.euronews.com/2026/11/04/zelenski-makes-surprise-visit-to-madrid-for-talks-with-sanchez-and-latin-american-leaders#:~:text=Published%20on%204%20November%202026,being%20away%20for%20several%20days.;https://english.nv.ua/russian-war/zelenskyy-meets-20-world-leaders-in-dublin-on-ukraine-support-50658816.html",
+   "date_consultation": "2026-11-16",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "NV article, 11 November 2026",
+     "relation": "soutient",
+     "extrait": "Zelenskyy meets leaders of approximately 20 countries in Dublin on 11 November 2026."
+    }
+   ],
+   "test": "cerceau",
+   "contre_observation": "Un rendez-vous devant se tenir fin octobre 2026 à Bruxelles fut annulé à court terme pour 'changement de plans' côté américain (fin octobre 2026), ce qui montre que des facteurs externes peuvent interrompre la pratique.",
+   "portee": "substantielle",
+   "force_initiale": "F",
+   "corroboration": "unique"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Les matériels officiels du Conseil (newsroom.consilium.europa.eu / galeries photo/vidéo ou communiqués datés 26–27 novembre 2026) montrent-ils Volodymyr Zelenskyy physiquement présent au Special European Council à Bruxelles les 26 ou 27 novembre 2026 ?",
+   "si_oui": "TRC@5",
+   "si_non": "indetermine",
+   "resolution": "publication sur le newsroom du Conseil (galerie photo, vidéo, communiqué de presse daté 26 ou 27 novembre 2026) montrant Zelenskyy sur le pas de la porte, en réunion ou lors de bilatérales au lieu du sommet.",
+   "justification": {
+    "oui": "la définition de TRC@5 (TRACE·MÉMOIRE à la strate organisationnelle) est satisfaite si le Conseil publie une preuve officielle et datée de sa présence physique au sommet — c'est la preuve directe demandée par le protocole pour résoudre OUI.",
+    "non": "l'absence de matériels officiels du Conseil montrant sa présence laisserait ouverte la possibilité d'une participation par vidéo ou d'une non-participation ; sans preuve officielle, la résolution reste indéterminée selon le protocole."
+   },
+   "statut": "ouverte",
+   "date": "2026-11-16"
+  }
+ ],
+ "rejets": {
+  "CTR@5": "[marqueur_non_rempli] Des mesures de sécurité locales pour les sommets à Bruxelles existent (perimètres, fermetures d'entrées, déviations de transports) mais aucun fait daté ne montre qu'une règle ou action a retiré explicitement l'option de déplacement du président ukrainien pour le sommet du 26–27 novembre 2026.",
+  "CTR@7": "[marqueur_non_rempli] Rapports évoquent des contraintes de voyage liées à la guerre (risques de drones/missiles, règles de déplacement sous état de guerre) mais les faits datés de 2026 montrent Zelenskyy continuant à effectuer des déplacements internationaux (Madrid, Dublin, Bruxelles en octobre), ce qui n'établit pas une contrainte active qui aurait retiré l'option de déplacement pour le sommet des 26–27 novembre 2026."
+ },
+ "_categories_rejet": {
+  "CTR@5": "marqueur_non_rempli",
+  "CTR@7": "marqueur_non_rempli"
+ },
+ "_details_rejet": {
+  "CTR@5": {
+   "fait_attendu": "un acte, ordre ou décision (ex. interdiction officielle, annulation pour raison logistique décrétée par l'hôte) qui empêche Zelenskyy de se rendre physiquement au sommet les 26–27 novembre 2026.",
+   "extrait_proche": "[2] « Security perimeter establishment ... restricted zone ... key bus routes rerouted ... Schuman metro station entrances were closed »"
+  },
+  "CTR@7": {
+   "fait_attendu": "une interdiction effective, un ordre de rester sur place, ou une annulation officielle de tout déplacement présidentiel lié à des contraintes opérationnelles en novembre 2026.",
+   "extrait_proche": "[5] « Security Risks: ... a Russian drone incursion temporarily delayed his departure from Moldova »"
+  }
+ },
+ "etat": "[2026-11-16 | 11 jours] TRACE·MÉMOIRE@5[f] + TRACE·MÉMOIRE@7[f]",
+ "disponible_le": "2026-11-16",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "short-notice cancellation Zelenskyy Brussels visit October 2026 reported reasons security travel cancelled",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "evidence of special security arrangements enabling Zelenskyy travel to Brussels 2026 accreditation convoy protective measures press reports",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@5"
+   ],
+   "requete": "Zelenskyy attended European Council 18–19 December 2025 18–19 June 2026 15–16 October 2026 in person photos doorstep Europa building",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@5"
+   ],
+   "requete": "instances where Zelenskyy addressed EU leaders by video link instead of attending in person 2022 2023 2024 2025 2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@7"
+   ],
+   "requete": "reports travel restrictions for Ukrainian president 2026 wartime constraints affecting foreign trips November 2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@7"
+   ],
+   "requete": "reports of Zelenskyy conducting long-distance diplomatic travel in 2026 despite war (arrivals, meetings, bilateral talks abroad)",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@7"
+   ],
+   "requete": "pattern Zelenskyy attends EU leaders' meetings in person frequency 2024 2025 2026 Brussels summits",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@7"
+   ],
+   "requete": "cases where Zelenskyy did not attend a scheduled EU summit in person 2022 2023 2024 2025 2026 and gave video address instead",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@5",
+    "TRC@5"
+   ],
+   "requete": "Which factor better explains Zelenskyy's attendance at recent European Councils: travel/security constraints (cancellations) or precedent/past attendance (photos, doorsteps) 2025–2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@7",
+    "TRC@7"
+   ],
+   "requete": "For November 2026, which has stronger evidence affecting Zelenskyy's travel decision: operational wartime constraints or political impetus from EU agenda on Ukraine funding (reports, statements Nov 2026)?",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "PÉRIODICITÉ@5 apparait",
+   "semantique": "presence",
+   "temporalite": "generique",
+   "resolution": "OUI sera la réponse si le Consilium (Council of the EU) ou une source crédible publie des éléments officiels (communiqué, galerie photo, vidéo) montrant Zelenskyy présent physiquement à Bruxelles lors du Special European Council des 26–27 novembre 2026 ; sinon NO.",
+   "source_resolution": {
+    "emetteur": "Consilium (Council of the European Union) newsroom",
+    "document": "communiqué officiel, galerie photo ou vidéo du Special European Council (26–27 November 2026) publié sur https://newsroom.consilium.europa.eu/",
+    "regle_ambiguite": "Si le matériel officiel montre Zelenskyy physiquement sur le site (arrivée, photo de famille, bilatérales sur place, séquences vidéos live), la résolution est OUI; si la seule trace est une intervention par visioconférence ou un discours préenregistré, la résolution est NO."
+   },
+   "vue_exterieure": {
+    "frequence": 0.006024096385542169,
+    "classe_de_reference": "Instances où le président Volodymyr Zelenskyy était physiquement présent à Bruxelles pour une réunion dite « Special European Council » (participation en personne sur site, et non par visioconférence ni par allocution préenregistrée).",
+    "source": "Résultats de recherche fournis [R1],[R2],[R3] (moteur exa2) et registre officiel du Conseil européen (Consilium newsroom).",
+    "periode": "2022-2026",
+    "disponible_le": "2026-11-16",
+    "classe_alternative": null,
+    "motif_sans_alternative": "Une alternative plausible (par ex. compter toutes les présences en personne à tout type de European Council, pas seulement les \"Special\") est écartée ici pour rester strictement fidèle à la classe imposée; les sources listées mélangent types de sommets (special, informal, regular) et localisations, ce qui rendrait l'alternative moins directement comparable.",
+    "ecart_critere": "identique : la classe compte exactement les présences physiques à Bruxelles pour un Special European Council, ce qui correspond au critère de résolution."
+   }
+  }
+ ],
+ "_reparations": [
+  "TRC@7 : garantie retirée (TRC@7 : garantie.support.disponible_le = date AAAA-MM-JJ)",
+  "liaison illisible retirée : {'liaison': 'TRC@7', 'relation': 'echo', 'preuve': \"Consilium media gallery (18 "
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "TRC@5",
+   "vers": "cible",
+   "extrait": "Based on the search results, I can confirm that Zelenskyy attended European Council meetings on the following dates, with in-person photos and doorstep footage available from the Europa building:",
+   "source": ""
+  },
+  {
+   "instruction": "bloque",
+   "de": "TRC@7",
+   "extrait": "Ukrainian President Volodymyr Zelenskyy's planned visit to Brussels in late October 2026 was cancelled on short notice due to changes in U.S. plans, not security or travel concerns.",
+   "source": ""
+  }
+ ]
+}
