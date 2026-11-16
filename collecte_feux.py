@@ -96,15 +96,50 @@ def ecrire(reg: dict[tuple, list[int]], jours: set[str]) -> None:
     JOURS_LUS.write_text("\n".join(sorted(jours)) + "\n", encoding="utf-8")
 
 
+def sonde(c: httpx.Client, cle: str) -> int:
+    """0.10.211 : premier passage = 2 340 refus « 400 Invalid API call » sur l'API « country ». Essais variés, réponses
+    affichées (sans la clé), rien d'écrit."""
+    hier = (datetime.now(timezone.utc).date() - timedelta(days=2)).isoformat()
+    base = "https://firms.modaps.eosdis.nasa.gov/api"
+    essais = [("pays, 1 jour, sans date", f"{base}/country/csv/{cle}/VIIRS_NOAA20_NRT/FRA/1"),
+              ("pays, 1 jour, avec date", f"{base}/country/csv/{cle}/VIIRS_NOAA20_NRT/FRA/1/{hier}"),
+              ("pays UKR, 3 jours", f"{base}/country/csv/{cle}/VIIRS_NOAA20_NRT/UKR/3/{hier}"),
+              ("liste des pays", f"{base}/countries/?format=csv"),
+              ("zone monde, 1 jour", f"{base}/area/csv/{cle}/VIIRS_NOAA20_NRT/world/1/{hier}"),
+              ("zone Ukraine (rectangle), 1 jour", f"{base}/area/csv/{cle}/VIIRS_NOAA20_NRT/22,44,41,53/1/{hier}"),
+              ("compteur de transactions", f"https://firms.modaps.eosdis.nasa.gov/mapserver/mapkey_status/?MAP_KEY={cle}")]
+    l = ["## Sonde FIRMS", ""]
+    for nom, url in essais:
+        try:
+            r = c.get(url, timeout=180)
+            t = r.text
+            lignes = t.count("\n")
+            l.append(f"- {nom} : HTTP {r.status_code}, {len(t)} caractères, {lignes} lignes ; début : "
+                     f"{t[:160].replace(cle, '«clé»')!r}")
+        except Exception as e:
+            l.append(f"- {nom} : {type(e).__name__}: {str(e)[:120].replace(cle, '«clé»')}")
+        time.sleep(1)
+    texte = "\n".join(l)
+    print(texte)
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+            f.write(texte + "\n")
+    return 0
+
+
 def principal() -> int:
     a_ = argparse.ArgumentParser()
     a_.add_argument("--depuis", default="")
     a_.add_argument("--pays", default="")
+    a_.add_argument("--sonde", action="store_true")
     a = a_.parse_args()
     cle = os.environ.get("FIRMS_MAP_KEY", "").strip()
     if not cle:
         print("Clé FIRMS absente (secret FIRMS_MAP_KEY) : rien à faire.")
         return 1
+    if a.sonde:
+        with httpx.Client(headers=UA, timeout=120, follow_redirects=True) as c:
+            return sonde(c, cle)
     aujourdhui = datetime.now(timezone.utc).date()
     hier = aujourdhui - timedelta(days=1)
     debut = date.fromisoformat(a.depuis) if a.depuis else aujourdhui - timedelta(days=10)

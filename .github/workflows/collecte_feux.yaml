@@ -14,6 +14,9 @@ on:
       pays:
         description: "codes ISO à deux lettres séparés par des virgules (vide = tous)"
         default: ""
+      sonde:
+        description: "oui = essais de l'API, réponses affichées, rien d'écrit"
+        default: "non"
 
 concurrency:
   group: collecte-feux
@@ -38,7 +41,12 @@ jobs:
         timeout-minutes: 120
         env:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
-        run: uv run python collecte_feux.py --depuis "${{ github.event.inputs.depuis }}" --pays "${{ github.event.inputs.pays }}"
+        run: |
+          if [ "${{ github.event.inputs.sonde }}" = "oui" ]; then
+            uv run python collecte_feux.py --sonde
+          else
+            uv run python collecte_feux.py --depuis "${{ github.event.inputs.depuis }}" --pays "${{ github.event.inputs.pays }}"
+          fi
       - name: Enregistrer
         if: always()
         run: |
