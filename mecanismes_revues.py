@@ -40,7 +40,7 @@ UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Be
 
 # revues en accès ouvert sur OpenEdition (identifiant de collection OAI « journals:<nom> »), choisies le 2026-11-16
 REVUES = ["echogeo", "espacepolitique", "com", "etudesafricaines", "conflits", "geocarrefour", "belgeo", "cybergeo",
-          "remi", "emam", "mediterranee", "vertigo", "cdlj", "eps"]
+          "remi", "emam", "mediterranee", "vertigo", "eps"]   # 0.10.191 : « cdlj » retiré (aucune notice)
 MOTS = re.compile(
     r"conflit|violence|émeute|manifestation|protest|riot|insurrection|rébellion|coup d.?[ée]tat|guerre|"
     r"jihad|djihad|terror|famine|soudure|transhumance|pastoral|sécheresse|drought|inondation|flood|élection|election|"

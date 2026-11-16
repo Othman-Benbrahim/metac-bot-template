@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.191** — pilote des revues : vérification passée pour 13 revues sur 14 ; « cdlj » retiré (aucune notice).
 - **0.10.190** — Banc du taux de base, option « audit_alfred = oui » : recalcule les questions FRED déjà au banc avec le contrôle de provenance et compare l'ancien B au nouveau (questions gardées, questions refusées), sans rien ajouter au banc (`registre/banc-b-alfred.jsonl`).
 - **0.10.189** — audit « fuite temporelle ALFRED / FRED » (2026-11-16) : une série FRED révisable n'est plus jamais lue au présent pour une date passée ; sans millésime ALFRED valide (moins de 20 points, ou relevé marqué « millésime indisponible »), le banc ne calcule pas de B et le puits refuse la lecture. Seules les cotations de marché d'une liste fermée (`MARCHES_NON_REVISES` : indices boursiers, taux du Trésor, ICE BofA, changes, SOFR…) gardent le repli. Provenance notée dans chaque ligne du banc B (`provenance`). Tests de non-régression `tests/test_audit_alfred.py`.
 - **0.10.188** — pilote des revues : mode « vérification » par défaut (une page OAI par revue, exemple, liste des collections du serveur en cas d'échec ; gratuit, rien d'écrit) ; le pilote complet demande « verification = non ».
