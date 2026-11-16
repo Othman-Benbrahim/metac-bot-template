@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
 import sys
 from datetime import date
 from pathlib import Path
@@ -172,9 +173,70 @@ async def principal(apres: str, max_q: int) -> int:
     return 0
 
 
+AUDIT_ALFRED = REGISTRE / "banc-b-alfred.jsonl"
+
+
+async def audit_alfred() -> int:
+    """0.10.190 : mesure de l'effet de l'audit ALFRED (0.10.189) sur les questions FRED déjà au banc : B recalculé avec
+    le contrôle de provenance, à côté de l'ancien B. Gratuit ; registre à part (registre/banc-b-alfred.jsonl)."""
+    import math
+    anciennes = {x["question_id"]: x for x in lignes_existantes()
+                 if x.get("source_question") == "fred" and x.get("p_B") is not None and str(x.get("issue")) in ("0", "1")}
+    faites = {json.loads(l)["question_id"] for l in AUDIT_ALFRED.read_text(encoding="utf-8").splitlines() if l.strip()} \
+        if AUDIT_ALFRED.exists() else set()
+    par_jeu: dict[str, list[str]] = {}
+    for q in anciennes:
+        if q not in faites:
+            par_jeu.setdefault(anciennes[q]["jeu"], []).append(q)
+    with AUDIT_ALFRED.open("a", encoding="utf-8") as f:
+        for j, qids in sorted(par_jeu.items()):
+            try:
+                qs = await fb._json(f"{fb.DEPOT}/question_sets/{j}-llm.json")
+                rs = await fb._json(f"{fb.DEPOT}/resolution_sets/{j}_resolution_set.json")
+            except Exception as e:
+                print(f"Jeu {j} indisponible : {type(e).__name__}")
+                continue
+            items = {x["qid"]: x for x in (fb.construire(i, j) for i in fb.apparier(qs, rs, ("fred",)))}
+            for q in qids:
+                x = items.get(q)
+                if not x:
+                    continue
+                try:
+                    vue = await fb.vue_calculee(x, x["_q"], j)
+                except Exception:
+                    vue = None
+                f.write(json.dumps({"question_id": q, "jeu": j, "issue": int(anciennes[q]["issue"]),
+                                    "p_B_ancien": float(anciennes[q]["p_B"]), "p_B_nouveau": (vue or {}).get("frequence"),
+                                    "provenance": x.get("_provenance")}, ensure_ascii=False) + "\n")
+                f.flush()
+            print(f"Jeu {j} : {len(qids)} questions FRED recalculées.")
+    xs = [json.loads(l) for l in AUDIT_ALFRED.read_text(encoding="utf-8").splitlines() if l.strip()]
+    pl = lambda p, y: -math.log(max(1e-6, min(1 - 1e-6, p if y else 1 - p)))
+    from collections import Counter
+    prov = Counter((x.get("provenance") or "?").split(" (")[0] for x in xs)
+    garde = [x for x in xs if x["p_B_nouveau"] is not None]
+    refus = [x for x in xs if x["p_B_nouveau"] is None]
+    lignes = ["## Effet de l'audit ALFRED sur le banc B (questions FRED)", "",
+              f"{len(xs)} questions recalculées : " + ", ".join(f"{k} {v}" for k, v in prov.most_common()), ""]
+    if garde:
+        lignes.append(f"- gardées ({len(garde)}) : perte log ancienne {sum(pl(x['p_B_ancien'], x['issue']) for x in garde) / len(garde):.4f}, "
+                      f"nouvelle {sum(pl(x['p_B_nouveau'], x['issue']) for x in garde) / len(garde):.4f}")
+    if refus:
+        lignes.append(f"- refusées ({len(refus)}, série révisable sans millésime) : perte log de l'ancien B "
+                      f"{sum(pl(x['p_B_ancien'], x['issue']) for x in refus) / len(refus):.4f} "
+                      f"(ce que la fuite éventuelle a pu « gagner » se lit ici)")
+    texte = "\n".join(lignes)
+    print(texte)
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fo:
+            fo.write(texte + "\n")
+    return 0
+
+
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
     a.add_argument("--apres", default="2026-07-01")
     a.add_argument("--max", type=int, default=400)
+    a.add_argument("--audit-alfred", action="store_true", help="recalculer les questions FRED déjà au banc (0.10.190)")
     o = a.parse_args()
-    sys.exit(asyncio.run(principal(o.apres, o.max)))
+    sys.exit(asyncio.run(audit_alfred() if o.audit_alfred else principal(o.apres, o.max)))

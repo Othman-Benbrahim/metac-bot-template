@@ -11,6 +11,9 @@ on:
       max:
         description: "questions nouvelles au plus"
         default: "400"
+      audit_alfred:
+        description: "oui = recalculer les questions FRED déjà au banc avec le contrôle ALFRED (0.10.190), sans rien ajouter"
+        default: "non"
 
 concurrency:
   group: bot-alphabet-registre
@@ -32,7 +35,12 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Banc du taux de base
-        run: uv run python banc_b.py --apres "${{ github.event.inputs.apres || '2026-07-01' }}" --max "${{ github.event.inputs.max || '400' }}"
+        run: |
+          if [ "${{ github.event.inputs.audit_alfred }}" = "oui" ]; then
+            uv run python banc_b.py --audit-alfred
+          else
+            uv run python banc_b.py --apres "${{ github.event.inputs.apres || '2026-07-01' }}" --max "${{ github.event.inputs.max || '400' }}"
+          fi
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       - name: Enregistrer
@@ -40,7 +48,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/banc-b.jsonl registre/banc-b.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          for f in registre/banc-b.jsonl registre/banc-b.json registre/banc-b-alfred.jsonl; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
           if ! git diff --cached --quiet; then
             git commit -m "registre : banc du taux de base du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase
