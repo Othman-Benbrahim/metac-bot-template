@@ -62,18 +62,32 @@ def sonde_acaps(c: httpx.Client) -> None:
             return
         jeton = (r.json() or {}).get("token", "")
     h = {"Authorization": f"Token {jeton}"}
-    racine = c.get("https://api.acaps.org/api/v1/", headers=h)
+    import json as _json
+    racine = c.get("https://api.acaps.org/api/v1/", headers={**h, "Accept": "application/json"}, params={"format": "json"})
     print(f"racine : HTTP {racine.status_code}")
+    chemins = []
     try:
         d = racine.json()
         for k, v in (d.items() if isinstance(d, dict) else []):
             print(f"  {k} : {v}")
+            if isinstance(v, str) and "/api/v1/" in v:
+                chemins.append(v.split("/api/v1/", 1)[1])
     except ValueError:
-        liens = sorted(set(re.findall(r'/api/v1/[a-z0-9\-/]+', racine.text)))
-        print("  points d'accès trouvés :", liens[:60])
-    for chemin in ("seasonal-events-calendar/", "seasonal-calendar/", "inform-severity-index/", "risk-list/"):
-        rr = c.get(f"https://api.acaps.org/api/v1/{chemin}", headers=h)
-        print(f"  {chemin} : HTTP {rr.status_code} {rr.text[:400]!r}")
+        print("  racine non JSON")
+    # 0.10.196 : formes des réponses utiles (clés et premier enregistrement), et points d'accès saisonniers
+    for chemin in ["risk-list/", "inform-severity-index/"] + [x for x in chemins if "season" in x or "calendar" in x]:
+        rr = c.get(f"https://api.acaps.org/api/v1/{chemin}", headers=h, params={"format": "json"})
+        print(f"--- {chemin} : HTTP {rr.status_code}")
+        try:
+            j = rr.json()
+        except ValueError:
+            print("   non JSON")
+            continue
+        res = j.get("results") if isinstance(j, dict) else j
+        print(f"   count={j.get('count') if isinstance(j, dict) else len(j)} ; next={j.get('next') if isinstance(j, dict) else None}")
+        if res:
+            print("   clés :", sorted(res[0].keys()))
+            print("   premier :", _json.dumps(res[0], ensure_ascii=False)[:1500])
 
 
 def principal() -> int:
