@@ -1,0 +1,47 @@
+{
+  "calcule_le": "2026-11-16T14:01:25+00:00",
+  "version_bot": "0.10.185",
+  "version_skill": "0.7.77",
+  "lignes_lues": 61,
+  "empreinte_registre": "606ce10d8fbdae067d3a0c3ea055c4d9b109b0faabb0f93b0db5fa6249c64820",
+  "seuils": {
+    "questions": 3,
+    "sources_distinctes": 2
+  },
+  "candidates": [],
+  "confirmations": [
+    {
+      "instruction": "lien",
+      "de": "TRC",
+      "vers": "PER",
+      "questions": 1,
+      "sources_distinctes": 0,
+      "exemples": [
+        {
+          "question_id": "46821",
+          "extrait": "Based on the search results, I can confirm that Zelenskyy attended European Council meetings on the following dates, with in-person photos and doorstep footage available from the Europa building:",
+          "source": ""
+        }
+      ],
+      "dans_la_matrice": "f"
+    }
+  ],
+  "contre_indications": [
+    {
+      "instruction": "bloque",
+      "de": "TRC",
+      "vers": "PER",
+      "questions": 1,
+      "sources_distinctes": 0,
+      "exemples": [
+        {
+          "question_id": "46821",
+          "extrait": "Ukrainian President Volodymyr Zelenskyy's planned visit to Brussels in late October 2026 was cancelled on short notice due to changes in U.S. plans, not security or travel concerns.",
+          "source": ""
+        }
+      ],
+      "dans_la_matrice": "f"
+    }
+  ],
+  "lecture": "candidates = relations absentes de la matrice affirmées par les textes ; une branche n'entre dans la matrice que par décision d'auteur datée, puis est mesurée sur des questions nouvelles"
+}

@@ -1,0 +1,7 @@
+question_id,date,canal,evenement,strate,statut_C,p_B,p_C,issue,COM,CRO,CTR,EME,HIE,INC,PER,POL,PRO,RCS,REC,RES,RSN,SEU,TRA,TRC
+43332,2026-11-08,C,SEUIL@7 apparait,7,etat_nul,0.002707493956486704,,,,,,,,,,,,,,,,,,
+43330,2026-11-10,C,SEUIL@6 apparait,6,hors_strate,0.049888499522140806,,,,,,,,,,,,,,,,,,
+43332,2026-11-10,C,SEUIL@8 apparait,8,hors_strate,0.0017913593256059011,,,,,,,,,,,,,,,,,,
+43329,2026-11-10,C,SEUIL@6 apparait,6,hors_strate,0.0019786910197869103,,,,,,,,,,,,,,,,,,
+46821,2026-11-16,C,PÉRIODICITÉ@5 apparait,5,hors_strate,0.006024096385542169,,,,,R:marqueur_non_rempli,,,,,,,,,,,,,f
+46835,2026-11-16,C,TRACE·MÉMOIRE@5 apparait,5,hors_strate,0.7272727272727273,,,,,,R:marqueur_non_rempli,,,,,,,,,,R:marqueur_non_rempli,R:marqueur_non_rempli,
