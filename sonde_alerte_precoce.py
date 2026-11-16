@@ -63,20 +63,18 @@ def sonde_acaps(c: httpx.Client) -> None:
         jeton = (r.json() or {}).get("token", "")
     h = {"Authorization": f"Token {jeton}"}
     import json as _json
-    racine = c.get("https://api.acaps.org/api/v1/", headers={**h, "Accept": "application/json"}, params={"format": "json"})
-    print(f"racine : HTTP {racine.status_code}")
-    chemins = []
-    try:
-        d = racine.json()
-        for k, v in (d.items() if isinstance(d, dict) else []):
-            print(f"  {k} : {v}")
-            if isinstance(v, str) and "/api/v1/" in v:
-                chemins.append(v.split("/api/v1/", 1)[1])
-    except ValueError:
-        print("  racine non JSON")
-    # 0.10.196 : formes des réponses utiles (clés et premier enregistrement), et points d'accès saisonniers
-    for chemin in ["risk-list/", "inform-severity-index/"] + [x for x in chemins if "season" in x or "calendar" in x]:
-        rr = c.get(f"https://api.acaps.org/api/v1/{chemin}", headers=h, params={"format": "json"})
+    # 0.10.196 : la documentation est derrière la connexion ; on lit les pages avec le jeton et on relève les chemins
+    chemins = set()
+    for page in ("https://api.acaps.org/api/v1/", "https://api.acaps.org/practical-guide/", "https://api.acaps.org/changelog/"):
+        rp = c.get(page, headers=h)
+        trouves = set(re.findall(r"/api/v1/[A-Za-z0-9_\-/{}<>%.]+", rp.text))
+        print(f"{page} : HTTP {rp.status_code}, {len(trouves)} chemins")
+        chemins |= trouves
+    for x in sorted(chemins):
+        print("  ", x)
+    for chemin in ["risk-list/", "inform-severity-index/"] + sorted(x.split("/api/v1/", 1)[1] for x in chemins
+                                                                 if ("season" in x or "calendar" in x) and "{" not in x):
+        rr = c.get(f"https://api.acaps.org/api/v1/{chemin}", headers={**h, "Accept": "application/json"})
         print(f"--- {chemin} : HTTP {rr.status_code}")
         try:
             j = rr.json()
