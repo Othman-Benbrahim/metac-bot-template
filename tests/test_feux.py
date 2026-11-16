@@ -46,8 +46,11 @@ class TestFeux(unittest.TestCase):
     def test_source(self):
         d = cf.plages("data_id,min_date,max_date\nVIIRS_SNPP_SP,2012-01-20,2026-08-31\n"
                       "VIIRS_SNPP_NRT,2026-08-01,2026-11-15\nMODIS_NRT,2026-08-01,2026-11-15\n")
-        self.assertEqual(cf.source_pour("2026-06-01", "2026-06-05", d), "VIIRS_SNPP_SP")
+        self.assertEqual(cf.source_pour("2026-06-01", "2026-06-05", d), "VIIRS_SNPP_SP")       # NOAA-20 absent de ce jeu
         self.assertEqual(cf.source_pour("2026-11-01", "2026-11-05", d), "VIIRS_SNPP_NRT")
+        d2 = cf.plages("data_id,min_date,max_date\nVIIRS_NOAA20_SP,2018-04-01,2026-07-31\nVIIRS_NOAA20_NRT,2026-08-01,2026-11-16\n"
+                       "VIIRS_SNPP_NRT,2026-08-01,2026-11-02\n")
+        self.assertEqual(cf.source_pour("2026-09-20", "2026-09-24", d2), "VIIRS_NOAA20_NRT")     # un seul capteur
         self.assertIsNone(cf.source_pour("2026-11-14", "2026-11-18", d))
 
     def test_indicateur(self):

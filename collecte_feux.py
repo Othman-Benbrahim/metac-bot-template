@@ -92,9 +92,11 @@ def compter_par_pays(texte: str, geoms: list, codes: list[str]) -> dict[tuple, l
 
 
 DISPO = "https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv/{cle}/ALL"
-# ordre de préférence (même logique que la source « firms » du puits, 0.10.94) : le même capteur d'abord, archive
-# standard avant temps quasi réel
-ORDRE = ("VIIRS_SNPP_SP", "VIIRS_SNPP_NRT", "VIIRS_NOAA20_SP", "VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT")
+# ordre de préférence (0.10.212) : un SEUL capteur tant que possible, pour qu'une quinzaine ne soit pas comparée à
+# une quinzaine vue par un autre satellite. NOAA-20 d'abord : il couvre toute la période en archive standard puis en
+# temps quasi réel, alors que le temps quasi réel de Suomi NPP s'arrête au 2 novembre 2026 (sonde du 2026-11-16) ;
+# archive standard avant temps quasi réel
+ORDRE = ("VIIRS_NOAA20_SP", "VIIRS_NOAA20_NRT", "VIIRS_SNPP_SP", "VIIRS_SNPP_NRT", "VIIRS_NOAA21_NRT")
 
 
 def plages(texte: str) -> dict[str, tuple[str, str]]:
