@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.175** — collecteur OONI (`collecte_ooni.py`, workflow « Collecte quotidienne OONI ») : censure d'internet par pays et par jour (sites web ; Telegram, WhatsApp, Signal, Messenger), données OONI sous CC BY-NC-SA 4.0 ; indicateur `ooni` (part des mesures anormales, 14 jours moins les 14 précédents, absent sous 50 mesures web ou 20 de messageries) et deux états dans l'observatoire. Historique complet.
 - **0.10.174** — récolte Metaculus : la liste des posts ne donne pas la résolution ; lecture du détail de chaque post (une requête par question, 0,7 s d'intervalle), écriture au fil de l'eau et reprise automatique d'un passage à l'autre (registre/metaculus-posts-vus.txt), durée bornée à 200 minutes.
 - **0.10.173** — collecteur GDELT (`collecte_gdelt.py`, workflow « Collecte quotidienne GDELT ») : comptes quotidiens de manifestations (CAMEO 14) et d'émeutes (145) par pays du lieu de l'action, codes FIPS convertis en ISO ; indicateur `gdelt` dans les indicateurs de niche (14 jours contre 14 jours précédents) et deux états dans l'observatoire. Historique complet : mesurable sur les questions déjà résolues.
 - **0.10.172** — récolte Metaculus : la combinaison « statuses=resolved, forecast_type=binary » rendait 0 post ; essai de plusieurs variantes de paramètres sur la première page, la première qui rend des posts est gardée (tri oui/non local).

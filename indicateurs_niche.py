@@ -23,6 +23,8 @@ STRICTEMENT avant la date du jeu :
 - gdelt (0.10.173, en ombre) : manifestations et émeutes dans la presse codée par GDELT (collecte_gdelt.py), pays du
   lieu de l'action ; log((14 jours avant la date + 1) / (14 jours précédents + 1)) ; historique complet, donc mesurable
   sur les questions déjà résolues.
+- ooni (0.10.175, en ombre) : censure d'internet (OONI, CC BY-NC-SA 4.0) : part des mesures anormales sur 14 jours
+  moins la même part sur les 14 jours précédents, sites web et messageries à part ; absent sous un minimum de mesures.
 - violationswatch (0.10.147, en ombre) : incidents graves (gravité « High » ou « Critical ») signalés par
   violationswatch.org dans le pays, premiers signalements dans les 14 jours avant la date ; lu dans nos comptes
   quotidiens (collecte_violationswatch.py) ; mesuré seulement si ces 14 jours sont couverts (données depuis le
@@ -385,6 +387,53 @@ def gdelt(cca2: str | None, d0: date, manque_max: int = 2) -> dict:
             "jours_manquants": manque}
 
 
+OONI_COMPTES = Path("registre") / "ooni-censure.csv"
+OONI_JOURS = Path("registre") / "ooni-jours.txt"
+_OONI: dict | None = None
+
+
+def ooni(cca2: str | None, d0: date, min_web: int = 50, min_msg: int = 20, manque_max: int = 2) -> dict:
+    """0.10.175 : censure (OONI) : part des mesures anormales sur 14 jours avant la date, moins la même part sur les
+    14 jours précédents ; sites web (web_connectivity) et messageries (Telegram, WhatsApp, Signal, Messenger) à part.
+    Absent sous `min_web` (`min_msg`) mesures dans l'une des deux périodes (réserve de l'auteur : volontaires)."""
+    global _OONI
+    if not cca2 or not OONI_COMPTES.exists() or not OONI_JOURS.exists():
+        return {"present": False, "raison": "pays inconnu ou comptes OONI absents"}
+    if _OONI is None:
+        par = {}
+        for x in csv.DictReader(OONI_COMPTES.open(encoding="utf-8")):
+            g = "web" if x["test"] == "web_connectivity" else "msg"
+            v = par.setdefault(x["pays"], {}).setdefault((x["jour"], g), [0, 0, 0])
+            v[0] += int(x["mesures"]); v[1] += int(x["anomalies"]); v[2] += int(x["confirmees"])
+        _OONI = {"par": par, "jours": set(OONI_JOURS.read_text(encoding="utf-8").split())}
+    jours = [(d0 - timedelta(days=k)).isoformat() for k in range(1, 29)]
+    manque = sum(1 for j in jours if j not in _OONI["jours"])
+    if manque > manque_max:
+        return {"present": False, "raison": f"{manque} jours OONI manquants sur 28"}
+    p = _OONI["par"].get(cca2, {})
+
+    def somme(js, g):
+        s = [0, 0, 0]
+        for j in js:
+            v = p.get((j, g))
+            if v:
+                s = [s[0] + v[0], s[1] + v[1], s[2] + v[2]]
+        return s
+
+    out = {"present": False, "raison": "trop peu de mesures OONI"}
+    w_r, w_a = somme(jours[:14], "web"), somme(jours[14:], "web")
+    m_r, m_a = somme(jours[:14], "msg"), somme(jours[14:], "msg")
+    if w_r[0] >= min_web and w_a[0] >= min_web:
+        out = {"present": True, "valeur": round(w_r[1] / w_r[0] - w_a[1] / w_a[0], 4),
+               "mesures_web_14j": w_r[0], "mesures_web_14j_avant": w_a[0], "confirmees_web_14j": w_r[2]}
+    if m_r[0] >= min_msg and m_a[0] >= min_msg:
+        out = {**(out if out.get("present") else {"present": True}),
+               "valeur_messageries": round(m_r[1] / m_r[0] - m_a[1] / m_a[0], 4),
+               "mesures_msg_14j": m_r[0], "mesures_msg_14j_avant": m_a[0], "confirmees_msg_14j": m_r[2]}
+        out.setdefault("valeur", None)
+    return out
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 
@@ -439,7 +488,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -482,6 +531,9 @@ async def principal() -> int:
                 if "gdelt" not in fait and GDELT_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["gdelt"] = gdelt(code, d0)
+                if "ooni" not in fait and OONI_JOURS.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["ooni"] = ooni(code, d0)
                 if ("rss_officiel" not in fait or "rss_presse" not in fait) and d0 - timedelta(days=14) >= RSS_DEBUT:
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["rss_presse"], ligne["rss_officiel"] = rss(code, d0)
@@ -490,7 +542,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni") if k in ligne))
         await tg.fermer()
     return 0
 

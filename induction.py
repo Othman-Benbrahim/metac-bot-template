@@ -31,6 +31,10 @@ ETATS = {
               ("GDELT : moins de manifestations dans la presse (÷ 1,5)", lambda v: v < -0.4)),
     "gdelt_emeutes": (("GDELT : plus d'émeutes dans la presse (× 1,5)", lambda v: v > 0.4),
                       ("GDELT : moins d'émeutes dans la presse (÷ 1,5)", lambda v: v < -0.4)),
+    "ooni": (("OONI : la censure web monte (+5 points)", lambda v: v > 0.05),
+             ("OONI : la censure web baisse (−5 points)", lambda v: v < -0.05)),
+    "ooni_messageries": (("OONI : les messageries sont plus bloquées (+10 points)", lambda v: v > 0.10),
+                         ("OONI : les messageries sont moins bloquées (−10 points)", lambda v: v < -0.10)),
     "violationswatch": (("Violations Watch signale un incident grave", lambda v: v >= 1),
                         ("Violations Watch ne signale rien de grave", lambda v: v == 0)),
     "rss_presse": (("la presse en parle de plus en plus (× 1,5)", lambda v: v > 0.4), ("la presse se tait (÷ 1,5)", lambda v: v < -0.4)),
@@ -64,13 +68,16 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
                 if k == "telegram" and v.get("methode") != "canaux":
                     continue                          # 0.10.151 : recherche globale abandonnée (ne remonte pas dans le passé)
-                if v.get("present"):
+                if k == "ooni" and v.get("present") and v.get("valeur_messageries") is not None:   # 0.10.175
+                    x["ooni_messageries"] = float(v["valeur_messageries"])
+                    x["presents"]["ooni_messageries"] = True
+                if v.get("present") and v.get("valeur") is not None:
                     x[k] = m[k]["valeur"]
                     x["presents"][k] = True
                     if k == "gdelt" and v.get("valeur_emeutes") is not None:   # 0.10.173
