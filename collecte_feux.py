@@ -7,8 +7,8 @@ l'observatoire, jamais une lecture directe.
 
 Source : API « country » de FIRMS (NASA, données publiques, clé gratuite FIRMS_MAP_KEY) :
 https://firms.modaps.eosdis.nasa.gov/api/country/csv/{clé}/{source}/{ISO3}/{jours}/{date}
-Capteur : VIIRS (Suomi NPP), en temps quasi réel (NRT, environ deux mois d'archive) ; au-delà, l'archive « standard »
-(SP). Fenêtres de JOURS jours ; une requête par pays et par fenêtre ; limite de l'API : 5 000 requêtes par 10 minutes.
+Capteur : VIIRS ; pour chaque fenêtre, le premier produit qui la couvre selon les dates publiées par FIRMS
+(data_availability), archive standard (SP) avant temps quasi réel (NRT) ; aucun produit : fenêtre ignorée. Fenêtres de JOURS jours ; une requête par pays et par fenêtre ; limite de l'API : 5 000 requêtes par 10 minutes.
 
 On garde des COMPTES : pays, jour, detections, forte_confiance (confiance « h »).
 Registres : registre/feux.csv ; registre/feux-jours.txt (jours lus pour TOUS les pays).
@@ -33,7 +33,6 @@ CODES = "https://raw.githubusercontent.com/datasets/country-codes/main/data/coun
 REGISTRE = Path("registre") / "feux.csv"
 JOURS_LUS = Path("registre") / "feux-jours.txt"
 JOURS = 5
-NRT_JOURS = 55                 # en deçà : temps quasi réel ; au-delà : archive standard
 PAUSE = 0.15                   # environ 400 requêtes par minute, sous la limite de l'API
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
@@ -60,8 +59,24 @@ def compter(texte: str) -> dict[str, list[int]]:
     return out
 
 
-def source_pour(d: date, aujourdhui: date) -> str:
-    return "VIIRS_SNPP_NRT" if (aujourdhui - d).days <= NRT_JOURS else "VIIRS_SNPP_SP"
+DISPO = "https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv/{cle}/ALL"
+# ordre de préférence (même logique que la source « firms » du puits, 0.10.94) : le même capteur d'abord, archive
+# standard avant temps quasi réel
+ORDRE = ("VIIRS_SNPP_SP", "VIIRS_SNPP_NRT", "VIIRS_NOAA20_SP", "VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT")
+
+
+def plages(texte: str) -> dict[str, tuple[str, str]]:
+    return {r.get("data_id"): (r.get("min_date") or "", r.get("max_date") or "")
+            for r in csv.DictReader(io.StringIO(texte)) if r.get("data_id")}
+
+
+def source_pour(debut: str, fin: str, dispo: dict[str, tuple[str, str]]) -> str | None:
+    """Premier produit qui couvre toute la fenêtre ; None si aucun (données pas encore publiées)."""
+    for c in ORDRE:
+        lo, hi = dispo.get(c) or ("", "")
+        if lo and hi and lo <= debut and fin <= hi:
+            return c
+    return None
 
 
 def lire() -> dict[tuple, list[int]]:
@@ -98,6 +113,8 @@ def principal() -> int:
     requetes = echecs = 0
     with httpx.Client(headers=UA, timeout=120, follow_redirects=True) as c:
         iso = pays_iso(c)
+        dispo = plages(c.get(DISPO.format(cle=cle)).text)
+        print("Produits FIRMS :", ", ".join(f"{k} {v[0]}→{v[1]}" for k, v in dispo.items() if k in ORDRE))
         cibles = {k: v for k, v in iso.items() if not a.pays or v in a.pays.upper().split(",")}
         print(f"{len(cibles)} pays.")
         d = debut
@@ -107,9 +124,14 @@ def principal() -> int:
             if all(j in jours for j in fenetre) and not a.pays:
                 d = fin + timedelta(days=1)
                 continue
+            produit = source_pour(fenetre[0], fenetre[-1], dispo)
+            if not produit:
+                print(f"  fenêtre {fenetre[0]} → {fenetre[-1]} : aucun produit FIRMS ne la couvre ; ignorée")
+                d = fin + timedelta(days=1)
+                continue
             ok, tampon = True, {}
             for i3, i2 in cibles.items():
-                url = API.format(cle=cle, source=source_pour(d, aujourdhui), pays=i3, jours=len(fenetre), date=d.isoformat())
+                url = API.format(cle=cle, source=produit, pays=i3, jours=len(fenetre), date=d.isoformat())
                 try:
                     r = c.get(url)
                     requetes += 1
@@ -133,7 +155,7 @@ def principal() -> int:
                 reg.update(tampon)
             if ok and not a.pays:
                 jours.update(fenetre)
-            print(f"  fenêtre {fenetre[0]} → {fenetre[-1]} : {'complète' if ok else 'incomplète'}")
+            print(f"  fenêtre {fenetre[0]} → {fenetre[-1]} ({produit}) : {'complète' if ok else 'incomplète'}")
             ecrire(reg, jours)
             d = fin + timedelta(days=1)
     ecrire(reg, jours)

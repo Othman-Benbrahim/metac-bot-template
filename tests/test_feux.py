@@ -19,9 +19,11 @@ class TestFeux(unittest.TestCase):
         self.assertEqual(cf.compter(CSV), {"2026-11-10": [2, 1], "2026-11-11": [1, 0]})
 
     def test_source(self):
-        a = date(2026, 11, 16)
-        self.assertEqual(cf.source_pour(date(2026, 11, 1), a), "VIIRS_SNPP_NRT")
-        self.assertEqual(cf.source_pour(date(2026, 6, 1), a), "VIIRS_SNPP_SP")
+        d = cf.plages("data_id,min_date,max_date\nVIIRS_SNPP_SP,2012-01-20,2026-08-31\n"
+                      "VIIRS_SNPP_NRT,2026-08-01,2026-11-15\nMODIS_NRT,2026-08-01,2026-11-15\n")
+        self.assertEqual(cf.source_pour("2026-06-01", "2026-06-05", d), "VIIRS_SNPP_SP")
+        self.assertEqual(cf.source_pour("2026-11-01", "2026-11-05", d), "VIIRS_SNPP_NRT")
+        self.assertIsNone(cf.source_pour("2026-11-14", "2026-11-18", d))
 
     def test_indicateur(self):
         d0 = date(2026, 11, 1)
