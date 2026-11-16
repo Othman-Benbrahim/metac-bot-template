@@ -1,0 +1,61 @@
+name: Mécanismes proposés à partir de l'IRSEM (pilote, Bedrock)
+
+# 0.10.201 : récolte des publications de l'IRSEM (gratuite), puis extraction de mécanismes par le petit modèle
+# (Bedrock), plafonnée par « budget ». Le modèle propose ; rien n'est inscrit au catalogue sans décision d'auteur.
+on:
+  workflow_dispatch:
+    inputs:
+      verification:
+        description: "oui = vérifier seulement l'accès au site (gratuit, rien d'écrit) ; non = pilote complet"
+        default: "oui"
+      serie:
+        description: "série lue"
+        default: "Brève stratégique"
+      max:
+        description: "nombre maximal de publications envoyées au modèle"
+        default: "60"
+      budget:
+        description: "plafond de dépense en dollars"
+        default: "1"
+
+concurrency:
+  group: mecanismes-irsem
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pilote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Récolte et extraction
+        timeout-minutes: 60
+        env:
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
+        run: |
+          if [ "${{ github.event.inputs.verification }}" = "non" ]; then
+            uv run --with pypdf python mecanismes_irsem.py --serie "${{ github.event.inputs.serie }}" --max "${{ github.event.inputs.max }}" --budget "${{ github.event.inputs.budget }}"
+          else
+            uv run --with pypdf python mecanismes_irsem.py --verifier
+          fi
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/mecanismes/irsem-publications.jsonl registre/mecanismes/irsem-proposes.jsonl registre/mecanismes/irsem-resume.md; do if [ -s "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : mécanismes proposés (pilote IRSEM) du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
