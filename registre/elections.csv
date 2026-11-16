@@ -1,0 +1,746 @@
+qid,pays,date,type,nom
+Q104771478,CY,2026-01-01,election,2026 Cypriot legislative election
+Q106555011,XK,2026-01-01,election,2026 Kosovan presidential election
+Q106747355,DJ,2026-01-01,election,2026 Djiboutian presidential election
+Q110159952,BG,2026-01-01,election,2026 Bulgarian general election
+Q110160795,KG,2026-01-01,election,2026 Kyrgyz parliamentary election
+Q110161659,MA,2026-01-01,election,2026 Moroccan parliamentary election
+Q110664437,EE,2026-01-01,election,2026 Estonian presidential election
+Q111589021,CR,2026-01-01,election,2026 Costa Rican presidential election
+Q111589077,NI,2026-01-01,election,2026 Nicaraguan presidential election
+Q112040100,LB,2026-01-01,election,next Lebanese parliamentary election
+Q115783732,UZ,2026-01-01,election,2026 Uzbek presidential election
+Q121536832,ES,2026-01-01,election,21st National Congress of the People's Party
+Q124423240,FR,2026-01-01,election,2026 Paris municipal election
+Q130390879,CZ,2026-01-01,election,2026 Czech municipal elections
+Q131679882,FR,2026-01-01,election,Q131679882
+Q131680402,FR,2026-01-01,election,2026 Marseille municipal election
+Q131680412,FR,2026-01-01,election,Q131680412
+Q131923574,FR,2026-01-01,election,Q131923574
+Q132436445,FR,2026-01-01,election,2026 Lyon municipal election
+Q132982182,FR,2026-01-01,election,Q132982182
+Q133247239,FR,2026-01-01,election,Q133247239
+Q133247241,FR,2026-01-01,election,Q133247241
+Q133280585,FR,2026-01-01,election,Q133280585
+Q133280898,FR,2026-01-01,election,Q133280898
+Q133295442,FR,2026-01-01,election,Q133295442
+Q133332770,FR,2026-01-01,election,Q133332770
+Q133500438,FR,2026-01-01,election,Q133500438
+Q133500455,FR,2026-01-01,election,Q133500455
+Q133545267,FR,2026-01-01,election,Q133545267
+Q133690662,FR,2026-01-01,election,Q133690662
+Q133831876,FR,2026-01-01,election,Q133831876
+Q133858065,FR,2026-01-01,election,Q133858065
+Q133858086,FR,2026-01-01,election,Q133858086
+Q133879659,FR,2026-01-01,election,Q133879659
+Q133879686,FR,2026-01-01,election,Q133879686
+Q133892162,FR,2026-01-01,election,Q133892162
+Q134007431,FR,2026-01-01,election,Q134007431
+Q134007446,FR,2026-01-01,election,Q134007446
+Q134007467,FR,2026-01-01,election,Q134007467
+Q134052122,FR,2026-01-01,election,Q134052122
+Q134249458,FR,2026-01-01,election,Q134249458
+Q134294542,FR,2026-01-01,election,Q134294542
+Q134325439,FR,2026-01-01,election,Q134325439
+Q134437384,FR,2026-01-01,election,Q134437384
+Q134460029,FR,2026-01-01,election,Q134460029
+Q134465825,FR,2026-01-01,election,Q134465825
+Q134465842,FR,2026-01-01,election,Q134465842
+Q134483372,FR,2026-01-01,election,2026 Amiens municipal election
+Q134483380,FR,2026-01-01,election,Q134483380
+Q134483386,FR,2026-01-01,election,Q134483386
+Q134483394,FR,2026-01-01,election,Q134483394
+Q134483403,FR,2026-01-01,election,Q134483403
+Q134488648,FR,2026-01-01,election,Q134488648
+Q134488658,FR,2026-01-01,election,Q134488658
+Q134532042,FR,2026-01-01,election,Q134532042
+Q134539109,FR,2026-01-01,election,Q134539109
+Q134581514,FR,2026-01-01,election,Q134581514
+Q134581597,FR,2026-01-01,election,Q134581597
+Q134590688,FR,2026-01-01,election,Q134590688
+Q134590710,FR,2026-01-01,election,Q134590710
+Q134590718,FR,2026-01-01,election,Q134590718
+Q134590727,FR,2026-01-01,election,Q134590727
+Q134604101,FR,2026-01-01,election,Q134604101
+Q134604117,FR,2026-01-01,election,Q134604117
+Q134604191,FR,2026-01-01,election,Q134604191
+Q134604325,FR,2026-01-01,election,Q134604325
+Q134622489,FR,2026-01-01,election,Q134622489
+Q134622498,FR,2026-01-01,election,Q134622498
+Q134622502,FR,2026-01-01,election,Q134622502
+Q134622506,FR,2026-01-01,election,Q134622506
+Q134701044,FR,2026-01-01,election,Q134701044
+Q134734592,FR,2026-01-01,election,2026 Mulhouse municipal election
+Q134776991,FR,2026-01-01,election,Q134776991
+Q134777011,FR,2026-01-01,election,Q134777011
+Q134777028,FR,2026-01-01,election,Q134777028
+Q134777043,FR,2026-01-01,election,Q134777043
+Q134777057,FR,2026-01-01,election,Q134777057
+Q134777067,FR,2026-01-01,election,Q134777067
+Q134777126,FR,2026-01-01,election,Q134777126
+Q134777140,FR,2026-01-01,election,Q134777140
+Q134777255,FR,2026-01-01,election,Q134777255
+Q134777266,FR,2026-01-01,election,Q134777266
+Q134777401,FR,2026-01-01,election,Q134777401
+Q134777411,FR,2026-01-01,election,Q134777411
+Q134777422,FR,2026-01-01,election,Q134777422
+Q134777469,FR,2026-01-01,election,Q134777469
+Q134777583,FR,2026-01-01,election,Q134777583
+Q134836750,FR,2026-01-01,election,Q134836750
+Q134836756,FR,2026-01-01,election,Q134836756
+Q134836783,FR,2026-01-01,election,Q134836783
+Q134836787,FR,2026-01-01,election,Q134836787
+Q134836794,FR,2026-01-01,election,Q134836794
+Q134836800,FR,2026-01-01,election,Q134836800
+Q134836807,FR,2026-01-01,election,Q134836807
+Q134877955,FR,2026-01-01,election,Q134877955
+Q134877962,FR,2026-01-01,election,Q134877962
+Q134890052,FR,2026-01-01,election,Q134890052
+Q134926716,FR,2026-01-01,election,Q134926716
+Q134960248,FR,2026-01-01,election,Q134960248
+Q134961384,FR,2026-01-01,election,Q134961384
+Q134978930,FR,2026-01-01,election,Q134978930
+Q135083948,FR,2026-01-01,election,Q135083948
+Q135109236,FR,2026-01-01,election,Q135109236
+Q135109303,FR,2026-01-01,election,Q135109303
+Q135109450,FR,2026-01-01,election,Q135109450
+Q135221613,FR,2026-01-01,election,Q135221613
+Q135221626,FR,2026-01-01,election,Q135221626
+Q135221646,FR,2026-01-01,election,Q135221646
+Q135228391,FR,2026-01-01,election,Q135228391
+Q135228400,FR,2026-01-01,election,Q135228400
+Q135228403,FR,2026-01-01,election,Q135228403
+Q135228406,FR,2026-01-01,election,Q135228406
+Q135263068,FR,2026-01-01,election,Q135263068
+Q135263273,FR,2026-01-01,election,Q135263273
+Q135295544,FR,2026-01-01,election,Q135295544
+Q135295796,FR,2026-01-01,election,Q135295796
+Q135336699,FR,2026-01-01,election,Q135336699
+Q135394171,FR,2026-01-01,election,Q135394171
+Q135394179,FR,2026-01-01,election,Q135394179
+Q135394221,FR,2026-01-01,election,Q135394221
+Q135394238,FR,2026-01-01,election,Q135394238
+Q135394267,FR,2026-01-01,election,Q135394267
+Q135412721,FR,2026-01-01,election,Q135412721
+Q135427369,FR,2026-01-01,election,Q135427369
+Q135431809,FR,2026-01-01,election,Q135431809
+Q135482411,FR,2026-01-01,election,Q135482411
+Q135488998,FR,2026-01-01,election,Q135488998
+Q135496059,FR,2026-01-01,election,Q135496059
+Q135496066,FR,2026-01-01,election,Q135496066
+Q135641706,FR,2026-01-01,election,Q135641706
+Q135641726,FR,2026-01-01,election,Q135641726
+Q135641744,FR,2026-01-01,election,Q135641744
+Q135689160,FR,2026-01-01,election,Q135689160
+Q135719367,FR,2026-01-01,election,Q135719367
+Q135719386,FR,2026-01-01,election,Q135719386
+Q135719409,FR,2026-01-01,election,Q135719409
+Q135735592,FR,2026-01-01,election,Q135735592
+Q135735631,FR,2026-01-01,election,Q135735631
+Q135762098,FR,2026-01-01,election,Q135762098
+Q135985653,FR,2026-01-01,election,Q135985653
+Q136547712,CA,2026-01-01,election,2026 Progressive Conservative Party of New Brunswick leadership election
+Q137464442,FR,2026-01-01,referendum,2026 United Left Primary (France)
+Q137673196,CA,2026-01-01,election,2026 Quebec Liberal Party leadership election
+Q137723676,FR,2026-01-01,election,Q137723676
+Q137730577,PE,2026-01-01,election,Q137730577
+Q137844565,PE,2026-01-01,election,Q137844565
+Q137919773,JP,2026-01-01,election,2026 Japanese local elections
+Q138023794,PE,2026-01-01,election,Q138023794
+Q138023801,PE,2026-01-01,election,Q138023801
+Q138023806,PE,2026-01-01,election,Q138023806
+Q138660101,PE,2026-01-01,election,2026 Andean parliament elections (Peru)
+Q138660102,PE,2026-01-01,election,Q138660102
+Q140288760,CA,2026-01-01,election,2026 Green Party of New Brunswick leadership election
+Q140586743,FR,2026-01-01,election,Q140586743
+Q141241205,SE,2026-01-01,election,Q141241205
+Q141601538,PE,2026-01-01,election,Q141601538
+Q137739675,BJ,2026-01-11,election,2026 Beninese municipal elections
+Q84030033,BJ,2026-01-11,election,2026 Beninese parliamentary election
+Q105199268,UG,2026-01-12,election,2026 Ugandan presidential election
+Q105199030,UG,2026-01-15,election,2026 Ugandan general election
+Q105199269,UG,2026-01-15,election,2026 Ugandan parliamentary election
+Q136557369,CZ,2026-01-18,election,2026 Civic Democratic Party leadership election
+Q137212461,MY,2026-01-24,election,2026 Kinabatangan by-election
+Q137212462,MY,2026-01-24,election,2026 Lamag by-election
+Q134579812,DK,2026-01-29,election,Q134579812
+Q111395555,CR,2026-02-01,election,2026 Costa Rican parliamentary election
+Q131703615,CR,2026-02-01,election,2026 Costa Rican general election
+Q133321732,CA,2026-02-07,election,2025 Progressive Conservative Party of Prince Edward Island leadership election
+Q106752620,PT,2026-02-08,election,2026 Portuguese presidential election
+Q124632455,TH,2026-02-08,election,2026 Thai general election
+Q131309666,JP,2026-02-08,election,51st General Election of the House of Representatives
+Q137583855,ES,2026-02-08,election,2026 Spanish regional elections
+Q137686217,TH,2026-02-08,referendum,2026 Thai constitutional referendum
+Q137823516,PT,2026-02-08,election,2026 Portuguese presidential election second round
+Q137858817,JP,2026-02-08,election,Q137858817
+Q113127355,BB,2026-02-11,election,2026 Barbadian general election
+Q128797880,BD,2026-02-12,election,2026 Bangladeshi general election
+Q138264058,AU,2026-02-13,election,2026 Liberal Party of Australia leadership spill
+Q137850844,GB,2026-02-26,election,2026 Gorton and Denton by-election
+Q105687448,LA,2026-02-28,election,2026 Laotian parliamentary election
+Q135673676,FR,2026-03-01,election,Q135673676
+Q135673801,FR,2026-03-01,election,Q135673801
+Q135673956,FR,2026-03-01,election,Q135673956
+Q135674210,FR,2026-03-01,election,Q135674210
+Q135674390,FR,2026-03-01,election,Q135674390
+Q135674535,FR,2026-03-01,election,Q135674535
+Q135674621,FR,2026-03-01,election,Q135674621
+Q135674703,FR,2026-03-01,election,Q135674703
+Q135674794,FR,2026-03-01,election,Q135674794
+Q135674825,FR,2026-03-01,election,Q135674825
+Q135674839,FR,2026-03-01,election,Q135674839
+Q135674939,FR,2026-03-01,election,Q135674939
+Q138028609,US,2026-03-03,referendum,2026 Texas Democratic gubernatorial primary
+Q129176218,NP,2026-03-05,election,2026 Nepalese general election
+Q138565253,AU,2026-03-07,election,2026 Nightcliff by-election
+Q111395544,CO,2026-03-08,election,2026 Colombian parliamentary election
+Q137823971,CH,2026-03-08,referendum,Q137823971
+Q137830959,CO,2026-03-08,referendum,Q137830959
+Q141612191,CH,2026-03-08,referendum,Q141612191
+Q23043491,IR,2026-03-08,election,2026 Iranian Supreme Leader election
+Q106750293,CG,2026-03-15,election,2026 Republic of the Congo presidential election
+Q106959840,VN,2026-03-15,election,2026 Vietnamese legislative election
+Q127588360,FR,2026-03-15,election,2026 French municipal elections
+Q138259613,KZ,2026-03-15,referendum,2026 Kazakh constitutional referendum
+Q84080828,KP,2026-03-15,election,2026 North Korean parliamentary election
+Q112339523,SI,2026-03-22,election,2026 Slovenian parliamentary election
+Q133189552,FR,2026-03-22,election,Q133189552
+Q135207015,BO,2026-03-22,election,2026 Bolivian regional elections
+Q138779659,DE,2026-03-22,election,2026 Local Elections in Hof (Saale)
+Q137907736,IT,2026-03-23,referendum,2026 Italian constitutional referendum
+Q138782000,GL,2026-03-24,election,Q138782000
+Q134463334,CA,2026-03-29,election,2026 New Democratic Party leadership election
+Q106515152,WS,2026-03-31,election,Next Samoan general election
+Q138499009,GB,2026-04-02,election,2026 Bury Metropolitan Borough Council by-election in Tottington
+Q138991826,VN,2026-04-07,election,2026 Vietnamese presidential election
+Q135273942,DJ,2026-04-10,election,2026 Djiboutian presidential election
+Q106625113,PE,2026-04-12,election,2026 Peruvian general election
+Q106747008,BJ,2026-04-12,election,2026 Beninese presidential election
+Q123557967,PE,2026-04-12,election,Q123557967
+Q125627220,HU,2026-04-12,election,2026 Hungarian parliamentary election
+Q140414407,PE,2026-04-12,election,"first round of Peruvian presidential election, 2026"
+Q137707450,CA,2026-04-13,election,2026 University—Rosedale federal by-election
+Q138296889,CA,2026-04-13,election,2026 Terrebonne federal by-election
+Q138537295,CA,2026-04-13,election,2026 Scarborough Southwest federal by-election
+Q131442954,BG,2026-04-19,election,2026 Bulgarian parliamentary election
+Q138568898,GB,2026-04-22,election,2026 Salford City Council by-election in Barton and Winton
+Q137944708,PS,2026-04-25,election,2026 Palestinian local elections
+Q104771502,CF,2026-04-26,election,2025-2026 Central African parliamentary election
+Q139585986,DE,2026-04-26,election,Q139585986
+Q111698012,IN,2026-04-29,election,2026 West Bengal Legislative Assembly election
+Q100719117,RS,2026-04-30,election,2026 Serbia parliamentary election
+Q106625132,PE,2026-04-30,election,2026 Peruvian parliamentary election
+Q133860767,AG,2026-04-30,election,2026 Antiguan general election
+Q134996005,AU,2026-05-02,election,2026 Tasmanian Legislative Council periodic election
+Q135228413,NU,2026-05-02,election,2026 Niuean general election
+Q130441010,GB,2026-05-07,election,2026 United Kingdom local elections
+Q136526314,GB,2026-05-07,election,2026 Birmingham City Council election
+Q137756094,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Astley Bridge
+Q137756095,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Bradshaw
+Q137756096,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Breightmet
+Q137756097,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Farnworth North
+Q137756098,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Farnworth South
+Q137756099,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Great Lever
+Q137756100,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Halliwell
+Q137756101,GB,2026-05-07,election,"2026 Bolton Metropolitan Borough Council election in Heaton, Lostock and Chew Moor"
+Q137756102,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Horwich North
+Q137756104,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Horwich South and Blackrod
+Q137756105,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Hulton
+Q137756106,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Kearsley
+Q137756107,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Little Lever and Darcy Lever
+Q137756108,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Queens Park and Central
+Q137756109,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Rumworth
+Q137756110,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Smithills
+Q137756111,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Tonge with the Haulgh
+Q137756112,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Westhoughton North and Hunger Hill
+Q137756113,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Westhoughton South
+Q137756114,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Besses
+Q137756115,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Bury East
+Q137756116,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Bury West
+Q137756117,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Elton
+Q137756118,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Holyrood
+Q137756120,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in North Manor
+Q137756121,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Pilkington Park
+Q137756122,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Radcliffe East
+Q137756123,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Radcliffe North & Ainsworth
+Q137756124,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Radcliffe West
+Q137756125,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Ramsbottom
+Q137756126,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Redvales
+Q137756127,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Sedgley
+Q137756128,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in St. Mary's
+Q137756129,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Tottington
+Q137756130,GB,2026-05-07,election,2026 Bury Metropolitan Borough Council election in Unsworth
+Q137756131,GB,2026-05-07,election,2026 Manchester City Council election in Ancoats & Beswick
+Q137756132,GB,2026-05-07,election,2026 Manchester City Council election in Ardwick
+Q137756133,GB,2026-05-07,election,2026 Manchester City Council election in Baguley
+Q137756134,GB,2026-05-07,election,2026 Manchester City Council election in Brooklands
+Q137756135,GB,2026-05-07,election,2026 Manchester City Council election in Burnage
+Q137756136,GB,2026-05-07,election,2026 Manchester City Council election in Charlestown
+Q137756137,GB,2026-05-07,election,2026 Manchester City Council election in Cheetham
+Q137756138,GB,2026-05-07,election,2026 Manchester City Council election in Chorlton
+Q137756139,GB,2026-05-07,election,2026 Manchester City Council election in Chorlton Park
+Q137756140,GB,2026-05-07,election,2026 Manchester City Council election in Clayton & Openshaw
+Q137756141,GB,2026-05-07,election,2026 Manchester City Council election in Crumpsall
+Q137756142,GB,2026-05-07,election,2026 Manchester City Council election in Deansgate
+Q137756143,GB,2026-05-07,election,2026 Manchester City Council election in Didsbury East
+Q137756144,GB,2026-05-07,election,2026 Manchester City Council election in Didsbury West
+Q137756145,GB,2026-05-07,election,2026 Manchester City Council election in Fallowfield
+Q137756146,GB,2026-05-07,election,2026 Manchester City Council election in Gorton & Abbey Hey
+Q137756147,GB,2026-05-07,election,2026 Manchester City Council election in Harpurhey
+Q137756148,GB,2026-05-07,election,2026 Manchester City Council election in Higher Blackley
+Q137756149,GB,2026-05-07,election,2026 Manchester City Council election in Hulme
+Q137756150,GB,2026-05-07,election,2026 Manchester City Council election in Levenshulme
+Q137756151,GB,2026-05-07,election,2026 Manchester City Council election in Longsight
+Q137756152,GB,2026-05-07,election,2026 Manchester City Council election in Miles Platting & Newton Heath
+Q137756153,GB,2026-05-07,election,2026 Manchester City Council election in Moss Side
+Q137756154,GB,2026-05-07,election,2026 Manchester City Council election in Moston
+Q137756155,GB,2026-05-07,election,2026 Manchester City Council election in Northenden
+Q137756156,GB,2026-05-07,election,2026 Manchester City Council election in Old Moat
+Q137756157,GB,2026-05-07,election,2026 Manchester City Council election in Piccadilly
+Q137756158,GB,2026-05-07,election,2026 Manchester City Council election in Rusholme
+Q137756159,GB,2026-05-07,election,2026 Manchester City Council election in Sharston
+Q137756160,GB,2026-05-07,election,2026 Manchester City Council election in Whalley Range
+Q137756161,GB,2026-05-07,election,2026 Manchester City Council election in Withington
+Q137756162,GB,2026-05-07,election,2026 Manchester City Council election in Woodhouse Park
+Q137756163,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Alexandra
+Q137756164,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Chadderton Central
+Q137756165,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Chadderton North
+Q137756166,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Chadderton South
+Q137756167,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Coldhurst
+Q137756168,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Crompton
+Q137756169,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Failsworth East
+Q137756170,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Failsworth West
+Q137756171,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Hollinwood
+Q137756172,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Medlock Vale
+Q137756173,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Royton North
+Q137756174,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Royton South
+Q137756175,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Saddleworth North
+Q137756176,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Saddleworth South
+Q137756177,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Saddleworth West and Lees
+Q137756178,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Shaw
+Q137756179,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in St James’
+Q137756180,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in St Mary’s
+Q137756181,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Waterhead
+Q137756182,GB,2026-05-07,election,2026 Oldham Metropolitan Borough Council election in Werneth
+Q137756183,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Balderstone and Kirkholt
+Q137756184,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Bamford
+Q137756186,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Hale
+Q137756187,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Manor
+Q137756188,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Sale Central
+Q137756189,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Stretford & Humphrey Park
+Q137756190,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Timperley Central
+Q137756191,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Timperley North
+Q137756192,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Urmston
+Q137756193,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Abram
+Q137756194,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Ashton-in-Makerfield South
+Q137756195,GB,2026-05-07,election,"2026 Wigan Metropolitan Borough Council election in Aspull, New Springs & Whelley"
+Q137756196,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Astley
+Q137756197,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Atherton North
+Q137756198,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Atherton South & Lilford
+Q137756199,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Bryn with Ashton-in-Makerfield North
+Q137756200,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Douglas
+Q137756201,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Golborne & Lowton West
+Q137756202,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Hindley
+Q137756203,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Hindley Green
+Q137756204,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Ince
+Q137756205,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Leigh Central & Higher Folds
+Q137756206,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Leigh South
+Q137756207,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Leigh West
+Q137756208,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Lowton East
+Q137756209,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Orrell
+Q137756210,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Pemberton
+Q137756211,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Shevington with Lower Ground & Moor
+Q137756212,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Standish with Langtree
+Q137756213,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Tyldesley & Mosley Common
+Q137756214,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Wigan Central
+Q137756215,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Wigan West
+Q137756216,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Winstanley
+Q137756217,GB,2026-05-07,election,2026 Wigan Metropolitan Borough Council election in Worsley Mesnes
+Q137756263,GB,2026-05-07,election,2026 Bolton Metropolitan Borough Council election in Bromley Cross
+Q137756264,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Castleton
+Q137756265,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Central Rochdale
+Q137756266,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in East Middleton
+Q137756267,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Healey
+Q137756268,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Hopwood Hall
+Q137756269,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Kingsway
+Q137756270,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Littleborough Lakeside
+Q137756271,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Milkstone and Deeplish
+Q137756272,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Milnrow and Newhey
+Q137756273,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Norden
+Q137756274,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in North Heywood
+Q137756275,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in North Middleton
+Q137756276,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Smallbridge and Firgrove
+Q137756277,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in South Middleton
+Q137756279,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in Spotland and Falinge
+Q137756281,GB,2026-05-07,election,"2026 Rochdale Metropolitan Borough Council election in Wardle, Shore and West Littleborough"
+Q137756282,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in West Heywood
+Q137756283,GB,2026-05-07,election,2026 Rochdale Metropolitan Borough Council election in West Middleton
+Q137756284,GB,2026-05-07,election,2026 Salford City Council election in Barton & Winton
+Q137756285,GB,2026-05-07,election,2026 Salford City Council election in Blackfriars & Trinity
+Q137756286,GB,2026-05-07,election,2026 Salford City Council election in Boothstown & Ellenbrook
+Q137756287,GB,2026-05-07,election,2026 Salford City Council election in Broughton
+Q137756288,GB,2026-05-07,election,2026 Salford City Council election in Cadishead & Lower Irlam
+Q137756289,GB,2026-05-07,election,2026 Salford City Council election in Claremont
+Q137756290,GB,2026-05-07,election,2026 Salford City Council election in Eccles
+Q137756291,GB,2026-05-07,election,2026 Salford City Council election in Higher Irlam & Peel Green
+Q137756292,GB,2026-05-07,election,2026 Salford City Council election in Kersal & Broughton Park
+Q137756293,GB,2026-05-07,election,2026 Salford City Council election in Little Hulton
+Q137756294,GB,2026-05-07,election,2026 Salford City Council election in Ordsall
+Q137756295,GB,2026-05-07,election,2026 Salford City Council election in Pendlebury & Clifton
+Q137756296,GB,2026-05-07,election,2026 Salford City Council election in Pendleton & Charlestown
+Q137756297,GB,2026-05-07,election,2026 Salford City Council election in Quays
+Q137756298,GB,2026-05-07,election,2026 Salford City Council election in Swinton Park
+Q137756299,GB,2026-05-07,election,2026 Salford City Council election in Swinton & Wardley
+Q137756300,GB,2026-05-07,election,2026 Salford City Council election in Walkden North
+Q137756301,GB,2026-05-07,election,2026 Salford City Council election in Walkden South
+Q137756302,GB,2026-05-07,election,2026 Salford City Council election in Weaste & Seedley
+Q137756303,GB,2026-05-07,election,2026 Salford City Council election in Worsley & Westwood Park
+Q137756304,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Bramhall North
+Q137756305,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Bramhall South and Woodford
+Q137756306,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Bredbury Green and Romiley
+Q137756308,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Bredbury and Woodley
+Q137756309,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Brinnington and Stockport Central
+Q137756310,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Cheadle East and Cheadle Hulme North
+Q137756311,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Cheadle Hulme South
+Q137756312,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Cheadle West and Gatley
+Q137756313,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Davenport and Cale Green
+Q137756314,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Edgeley
+Q137756315,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Hazel Grove
+Q137756316,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Heald Green
+Q137756317,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Heatons North
+Q137756318,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Heatons South
+Q137756319,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Manor
+Q137756320,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Marple North
+Q137756321,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Marple South and High Lane
+Q137756322,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Norbury and Woodsmoor
+Q137756324,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Offerton
+Q137756325,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Reddish North
+Q137756326,GB,2026-05-07,election,2026 Stockport Metropolitan Borough Council election in Reddish South
+Q137756327,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Ashton Hurst
+Q137756328,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Ashton St Michael’s
+Q137756329,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Ashton Waterloo
+Q137756330,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Audenshaw
+Q137756331,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Denton North East
+Q137756332,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Denton South
+Q137756333,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Denton West
+Q137756334,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Droylsden East
+Q137756335,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Droylsden West
+Q137756336,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Dukinfield
+Q137756337,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Dukinfield Stalybridge
+Q137756338,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Hyde Godley
+Q137756339,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Hyde Newton
+Q137756340,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Hyde Werneth
+Q137756341,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Longdendale
+Q137756342,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Mossley
+Q137756343,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Stalybridge North
+Q137756344,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in Stalybridge South
+Q137756345,GB,2026-05-07,election,2026 Tameside Metropolitan Borough Council election in St Peter’s
+Q137756346,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Altrincham
+Q137756347,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Ashton upon Mersey
+Q137756348,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Bowdon
+Q137756349,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Broadheath
+Q137756350,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Brooklands
+Q137756351,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Bucklow-St Martins
+Q137756352,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Davyhulme
+Q137756353,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Gorse Hill & Cornbrook
+Q137756354,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Hale Barns & Timperley South
+Q137756355,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Longford
+Q137756357,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Lostock & Barton
+Q137756362,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Old Trafford
+Q137756363,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Sale Moor
+Q137758987,GB,2026-05-07,election,2026 Trafford Metropolitan Borough Council election in Flixton
+Q138313667,AU,2026-05-09,election,2026 Farrer by-election
+Q134389645,LB,2026-05-10,election,2026 Lebanese general election
+Q123663173,BS,2026-05-12,election,next Bahamian general election
+Q138382829,NZ,2026-05-12,election,2026 Dunedin City Council by-election
+Q106625175,CV,2026-05-17,election,2026 Cape Verdean parliamentary election
+Q136735853,IE,2026-05-22,election,2026 Galway West by-election
+Q137187462,IE,2026-05-22,election,2026 Dublin Central by-election
+Q124415774,CY,2026-05-24,election,2026 Cypriot legislative election
+Q115821127,MT,2026-05-30,election,next Maltese general election
+Q112183465,CO,2026-05-31,election,2026 Colombian presidential election
+Q138298668,GN,2026-05-31,election,2026 Guinean parliamentary election
+Q134581639,ET,2026-06-01,election,2026 Ethiopian general election
+Q117434198,KR,2026-06-03,election,2026 South Korean local elections
+Q106625123,PE,2026-06-07,election,2026 Peruvian presidential election
+Q111940911,AM,2026-06-07,election,2026 Armenian parliamentary election
+Q123050365,JE,2026-06-07,election,2026 Jersey general election
+Q138583936,XK,2026-06-07,election,2026 Kosovan parliamentary elections
+Q138836109,TR,2026-06-07,election,2026 Turkish local by-elections
+Q140414109,PE,2026-06-07,election,"second round of Peruvian presidential election, 2026"
+Q138298814,CH,2026-06-14,referendum,Q138298814
+Q139796799,GB,2026-06-18,election,2026 Arbroath and Broughty Ferry by-election
+Q139796830,GB,2026-06-18,election,2026 Aberdeen South by-election
+Q139801921,GB,2026-06-18,election,2026 Makerfield by-election
+Q125926574,NC,2026-06-28,election,2026 New Caledonian legislative election
+Q107342280,ET,2026-06-30,election,2026 Ethiopian parliamentary election
+Q111589010,ST,2026-07-01,election,2026 São Toméan presidential election
+Q140312184,GB,2026-07-01,election,2026 Labour Party leadership election
+Q107340065,DZ,2026-07-02,election,2026 Algerian parliamentary election
+Q140445637,MY,2026-07-11,election,2026 Johor state election in Buloh Kasap
+Q140446238,MY,2026-07-11,election,2026 Johor state election in Jementah
+Q140446355,MY,2026-07-11,election,2026 Johor state election in Pemanis
+Q140446409,MY,2026-07-11,election,2026 Johor state election in Kemelah
+Q140446440,MY,2026-07-11,election,2026 Johor state election in Tenang
+Q140446486,MY,2026-07-11,election,2026 Johor state election in Bekok
+Q140447373,MY,2026-07-11,election,2026 Johor state election in Bukit Kepong
+Q140447493,MY,2026-07-11,election,2026 Johor state election in Bukit Pasir
+Q140453545,MY,2026-07-11,election,2026 Johor state election in Gambir
+Q140453585,MY,2026-07-11,election,2026 Johor state election in Tangkak
+Q140453624,MY,2026-07-11,election,2026 Johor state election in Serom
+Q140453660,MY,2026-07-11,election,2026 Johor state election in Bentayan
+Q140453699,MY,2026-07-11,election,2026 Johor state election in Simpang Jeram
+Q140453748,MY,2026-07-11,election,2026 Johor state election in Bukit Naning
+Q140453801,MY,2026-07-11,election,2026 Johor state election in Maharani
+Q140453871,MY,2026-07-11,election,2026 Johor state election in Sungai Balang
+Q140454200,MY,2026-07-11,election,2026 Johor state election in Semerah
+Q140454310,MY,2026-07-11,election,2026 Johor state election in Sri Medan
+Q140454403,MY,2026-07-11,election,2026 Johor state election in Yong Peng
+Q140454431,MY,2026-07-11,election,2026 Johor state election in Semarang
+Q140454615,MY,2026-07-11,election,2026 Johor state election in Parit Yaani
+Q140454664,MY,2026-07-11,election,2026 Johor state election in Parit Raja
+Q140454731,MY,2026-07-11,election,2026 Johor state election in Penggaram
+Q140454934,MY,2026-07-11,election,2026 Johor state election in Senggarang
+Q140454999,MY,2026-07-11,election,2026 Johor state election in Rengit
+Q140460240,MY,2026-07-11,election,2026 Johor state election in Machap
+Q140460248,MY,2026-07-11,election,2026 Johor state election in Layang-Layang
+Q140460259,MY,2026-07-11,election,2026 Johor state election in Mengkibol
+Q140460270,MY,2026-07-11,election,2026 Johor state election in Mahkota
+Q140460298,MY,2026-07-11,election,2026 Johor state election in Paloh
+Q140460411,MY,2026-07-11,election,2026 Johor state election in Kahang
+Q140460465,MY,2026-07-11,election,2026 Johor state election in Endau
+Q140460510,MY,2026-07-11,election,2026 Johor state election in Tenggaroh
+Q140460593,MY,2026-07-11,election,2026 Johor state election in Panti
+Q140461014,MY,2026-07-11,election,2026 Johor state election in Pasir Raja
+Q140461073,MY,2026-07-11,election,2026 Johor state election in Sedili
+Q140461407,MY,2026-07-11,election,2026 Johor state election in Johor Lama
+Q140461441,MY,2026-07-11,election,2026 Johor state election in Penawar
+Q140461481,MY,2026-07-11,election,2026 Johor state election in Tanjung Surat
+Q140461517,MY,2026-07-11,election,2026 Johor state election in Tiram
+Q140467950,MY,2026-07-11,election,2026 Johor state election in Puteri Wangsa
+Q140468161,MY,2026-07-11,election,2026 Johor state election in Johor Jaya
+Q140469279,MY,2026-07-11,election,2026 Johor state election in Permas
+Q140469458,MY,2026-07-11,election,2026 Johor state election in Larkin
+Q140469491,MY,2026-07-11,election,2026 Johor state election in Stulang
+Q140469502,MY,2026-07-11,election,2026 Johor state election in Perling
+Q140469518,MY,2026-07-11,election,2026 Johor state election in Kempas
+Q140469538,MY,2026-07-11,election,2026 Johor state election in Skudai
+Q140469558,MY,2026-07-11,election,2026 Johor state election in Kota Iskandar
+Q140469600,MY,2026-07-11,election,2026 Johor state election in Bukit Permai
+Q140469674,MY,2026-07-11,election,2026 Johor state election in Bukit Batu
+Q140469747,MY,2026-07-11,election,2026 Johor state election in Senai
+Q140471433,MY,2026-07-11,election,2026 Johor state election in Benut
+Q140478059,MY,2026-07-11,election,2026 Johor state election in Pulai Sebatang
+Q140478077,MY,2026-07-11,election,2026 Johor state election in Pekan Nanas
+Q140478095,MY,2026-07-11,election,2026 Johor state election in Kukup
+Q140578150,CA,2026-07-13,election,2026 Cornwall-Meadowbank provincial by-election
+Q140378642,IL,2026-07-20,referendum,The Democrats (Israel) Party primaries (2026)
+Q113171060,CG,2026-07-31,election,2026 Republic of the Congo national assembly election
+Q140478742,JP,2026-07-31,election,Q140478742
+Q140546215,MY,2026-08-01,election,2026 Negeri Sembilan state election in Chennah
+Q140546216,MY,2026-08-01,election,2026 Negeri Sembilan state election in Pertang
+Q140546217,MY,2026-08-01,election,2026 Negeri Sembilan state election in Sungai Lui
+Q140546218,MY,2026-08-01,election,2026 Negeri Sembilan state election in Klawang
+Q140546219,MY,2026-08-01,election,2026 Negeri Sembilan state election in Serting
+Q140546220,MY,2026-08-01,election,2026 Negeri Sembilan state election in Palong
+Q140546221,MY,2026-08-01,election,2026 Negeri Sembilan state election in Jeram Padang
+Q140546222,MY,2026-08-01,election,2026 Negeri Sembilan state election in Bahau
+Q140546223,MY,2026-08-01,election,2026 Negeri Sembilan state election in Lenggeng
+Q140546224,MY,2026-08-01,election,2026 Negeri Sembilan state election in Nilai
+Q140546225,MY,2026-08-01,election,2026 Negeri Sembilan state election in Lobak
+Q140546227,MY,2026-08-01,election,2026 Negeri Sembilan state election in Temiang
+Q140546228,MY,2026-08-01,election,2026 Negeri Sembilan state election in Sikamat
+Q140546230,MY,2026-08-01,election,2026 Negeri Sembilan state election in Ampangan
+Q140546231,MY,2026-08-01,election,2026 Negeri Sembilan state election in Juasseh
+Q140546232,MY,2026-08-01,election,2026 Negeri Sembilan state election in Seri Menanti
+Q140546233,MY,2026-08-01,election,2026 Negeri Sembilan state election in Senaling
+Q140546234,MY,2026-08-01,election,2026 Negeri Sembilan state election in Pilah
+Q140546235,MY,2026-08-01,election,2026 Negeri Sembilan state election in Johol
+Q140546236,MY,2026-08-01,election,2026 Negeri Sembilan state election in Labu
+Q140546237,MY,2026-08-01,election,2026 Negeri Sembilan state election in Bukit Kepayang
+Q140546238,MY,2026-08-01,election,2026 Negeri Sembilan state election in Rahang
+Q140546239,MY,2026-08-01,election,2026 Negeri Sembilan state election in Mambau
+Q140546240,MY,2026-08-01,election,2026 Negeri Sembilan state election in Seremban Jaya
+Q140546241,MY,2026-08-01,election,2026 Negeri Sembilan state election in Paroi
+Q140546243,MY,2026-08-01,election,2026 Negeri Sembilan state election in Chembong
+Q140546244,MY,2026-08-01,election,2026 Negeri Sembilan state election in Rantau
+Q140546245,MY,2026-08-01,election,2026 Negeri Sembilan state election in Kota
+Q140546246,MY,2026-08-01,election,2026 Negeri Sembilan state election in Chuah
+Q140546247,MY,2026-08-01,election,2026 Negeri Sembilan state election in Lukut
+Q140546248,MY,2026-08-01,election,2026 Negeri Sembilan state election in Bagan Pinang
+Q140546249,MY,2026-08-01,election,2026 Negeri Sembilan state election in Linggi
+Q140546250,MY,2026-08-01,election,2026 Negeri Sembilan state election in Sri Tanjung
+Q140546251,MY,2026-08-01,election,2026 Negeri Sembilan state election in Gemas
+Q140546253,MY,2026-08-01,election,2026 Negeri Sembilan state election in Gemencheh
+Q140546254,MY,2026-08-01,election,2026 Negeri Sembilan state election in Repah
+Q140824437,AR,2026-08-02,election,Q140824437
+Q134303223,US,2026-08-04,referendum,Kansas Elections for Supreme Court Justices Amendment
+Q140610398,HU,2026-08-11,election,2026 Hungarian presidential election
+Q138544523,CK,2026-08-12,election,2026 Cook Islands general election
+Q141042332,NZ,2026-08-12,election,August 2026 New Zealand National Party leadership election
+Q110453645,ZM,2026-08-13,election,2026 Zambian parliamentary election
+Q111588709,ZM,2026-08-13,election,2026 Zambian presidential election
+Q131703623,ZM,2026-08-13,election,2026 Zambian general election
+Q140456301,GB,2026-08-13,election,2026 Clacton by-election
+Q141135189,ZM,2026-08-13,election,2026 Zambian presidential election
+Q141068128,IL,2026-08-17,referendum,2026 Likud primary
+Q140685300,BD,2026-08-20,election,2026 Bangladeshi presidential election
+Q105198826,KZ,2026-08-23,election,2026 Kazakh legislative election
+Q16985507,IS,2026-08-29,referendum,2026 Icelandic European Union membership negotiations referendum
+Q140753484,GW,2026-08-30,referendum,2026 Guinea-Bissau constitutional referendum
+Q83977465,HT,2026-08-30,election,next Haitian presidential election
+Q100719361,LK,2026-08-31,election,2026 Sri Lankan parliamentary election
+Q138542366,CA,2026-09-03,election,2026 Scarborough Southwest provincial by-election
+Q141301186,CA,2026-09-03,election,2026 Hamilton East—Stoney Creek provincial by-election
+Q141301197,CA,2026-09-03,election,2026 York—Simcoe provincial by-election
+Q141334588,DE,2026-09-06,election,Q141334588
+Q140934931,GB,2026-09-10,election,2026 Manchester City Council by-election in Burnage
+Q113639313,SE,2026-09-13,election,2026 Swedish general election
+Q139761635,SE,2026-09-13,election,2026 Swedish local elections
+Q141580221,DE,2026-09-13,election,Q141580221
+Q141605401,DE,2026-09-13,election,Q141605401
+Q141605616,DE,2026-09-13,election,Q141605616
+Q141606204,DE,2026-09-13,election,Q141606204
+Q141644797,DE,2026-09-13,election,Q141644797
+Q141662785,DE,2026-09-13,election,Q141662785
+Q141664296,SE,2026-09-13,election,Q141664296
+Q141309017,CA,2026-09-14,election,2026 Calgary-Shaw provincial by-election
+Q108822277,RU,2026-09-20,election,2026 Russian legislative election
+Q137861032,RU,2026-09-20,election,2026 Tver Oblast gubernatorial election
+Q134389640,MA,2026-09-23,election,2026 Moroccan general election
+Q132528717,IM,2026-09-24,election,2026 Manx general election
+Q134389641,ST,2026-09-27,election,2026 São Toméan parliamentary election
+Q135581251,FR,2026-09-27,election,2026 French Senate election
+Q140837073,CH,2026-09-27,referendum,Q140837073
+Q110160162,BS,2026-09-30,election,2026 Bahamian parliamentary election
+Q115632421,ST,2026-09-30,election,2026 Santomean legislative election
+Q130390890,CZ,2026-10-01,election,2026 Czech Senate election
+Q115620205,LV,2026-10-03,election,2026 Latvian parliamentary election
+Q115632178,BR,2026-10-04,election,2026 Brazilian general election
+Q115632184,BR,2026-10-04,election,2026 Brazilian parliamentary election
+Q115632204,BR,2026-10-04,election,2026 Brazilian presidential election
+Q115632238,BA,2026-10-04,election,2026 Bosnian parliamentary election
+Q130469531,PE,2026-10-04,election,2026 Peruvian regional and municipal elections
+Q134389638,BA,2026-10-04,election,2026 Bosnian general election
+Q137805762,BA,2026-10-04,election,2022 Bosnian presidential election
+Q141713851,BR,2026-10-04,election,"first round of Brazilian presidential election, 2026"
+Q141247453,GB,2026-10-08,election,2026 Holborn and St Pancras by-election
+Q141049647,SI,2026-10-11,referendum,Referendum on the amendment to the Parliamentary Inquiry Act
+Q141245983,SI,2026-10-11,referendum,Referendum on abolishing the mandatory payment of the public broadcasting fee
+Q141663087,SI,2026-10-11,referendum,Referendum on foreigners' local election voting rights
+Q141671399,SI,2026-10-11,referendum,Referendum on the proposal to tie cash social assistance to community service
+Q141703532,SI,2026-10-11,referendum,2026 Slovenian referendum
+Q141757652,SE,2026-10-15,election,Statsministeromröstningen i Sverige 15 oktober 2026
+Q138358722,SK,2026-10-24,election,Municipal elections 2026 in Slovakia
+Q138358773,SK,2026-10-24,election,2026 Slovak regional elections
+Q126881596,RS,2026-10-25,election,2026 Serbian parliamentary election
+Q141713871,BR,2026-10-25,election,"second round of Brazilian presidential election, 2022"
+Q141817260,FR,2026-10-25,election,Q141817260
+Q134740033,CA,2026-10-26,election,2026 Ontario municipal elections
+Q115632366,IL,2026-10-27,election,2026 Israeli legislative election
+Q114773783,VU,2026-10-31,election,2026 Vanuatuan general election
+Q110159977,BG,2026-11-01,election,2026 Bulgarian presidential election
+Q140199027,SI,2026-11-01,election,2026 Slovenian local elections
+Q141302700,LT,2026-11-01,election,2026 Northern Nalšia district by-election
+Q104902179,US,2026-11-03,election,2026 United States Senate elections
+Q115857612,US,2026-11-03,election,2026 United States elections
+Q115862480,US,2026-11-03,election,2026 United States gubernatorial elections
+Q122761082,US,2026-11-03,election,2026 United States Senate election in Arkansas
+Q131319877,US,2026-11-03,election,2026 United States Senate election in Montana
+Q131632172,US,2026-11-03,election,2026 United States House of Representatives elections in Texas
+Q131783090,US,2026-11-03,election,2026 Texas lieutenant gubernatorial election
+Q133808795,US,2026-11-03,election,2026 Arizona Secretary of State election
+Q134238660,US,2026-11-03,election,2026 Alabama Public Service Commission election
+Q134272183,US,2026-11-03,election,2026 Northern Mariana Islands gubernatorial election
+Q134286539,US,2026-11-03,election,2026 Kansas Secretary of State election
+Q134302306,US,2026-11-03,election,2026 United States Senate election in South Dakota
+Q135218594,US,2026-11-03,election,2026 Nevada Attorney General election
+Q135219159,US,2026-11-03,election,2026 Los Angeles County Board of Supervisors election
+Q135959488,US,2026-11-03,election,2026 Utah House of Representatives election
+Q135959503,US,2026-11-03,election,2026 Rhode Island House of Representatives election
+Q136024980,US,2026-11-03,election,2026 Illinois State Comptroller election
+Q136469149,US,2026-11-03,referendum,2026 Utah House Bill 267 veto referendum
+Q136813339,VI,2026-11-03,election,2026 United States House of Representatives election in the United States Virgin Islands
+Q137723406,US,2026-11-03,election,2026 Massachusetts elections
+Q137723412,US,2026-11-03,election,2026 New Jersey elections
+Q139893269,VI,2026-11-03,election,2026 United States Virgin Islands general election
+Q140306373,VI,2026-11-03,election,2026 United States Virgin Islands gubernatorial election
+Q140388405,US,2026-11-03,referendum,2026 Michigan Proposal 1
+Q141488571,US,2026-11-03,election,2026 Louisiana Board of Elementary and Secondary Education special election
+Q141929735,SE,2026-11-03,election,Q141929735
+Q142083629,US,2026-11-03,election,2026 Hawaii House of Representatives election in the 14th district
+Q115632342,GD,2026-11-05,election,2026 Grenadian general election
+Q104843407,NZ,2026-11-07,election,2026 New Zealand general election
+Q141653419,GB,2026-11-12,election,2026 Oldham Metropolitan Borough Council by-election in Failsworth West
+Q111592838,CV,2026-11-15,election,2026 Cape Verdean presidential election
+Q136171366,TW,2026-11-28,election,2026 Taiwanese local elections
+Q136450556,TW,2026-11-28,election,2026 Taiwan mayor and magistrate election
+Q136664049,TW,2026-11-28,election,2026 Taiwanese city and county council elections
+Q141826615,DZ,2026-11-28,election,2026 Algerian local elections
+Q120973028,ES,2026-11-29,election,2026 Spanish general election
+Q141419576,CH,2026-11-29,referendum,swiss initiative « For Restrictions on Fireworks »
+Q141803291,CH,2026-11-29,referendum,Q141803291
+Q141962886,KZ,2026-11-29,election,2026 Kazakh Mäslihat elections
+Q115632746,BH,2026-11-30,election,2026 Bahraini general election
+Q111594398,GM,2026-12-05,election,2026 Gambian presidential election
+Q138027225,GW,2026-12-06,election,2026 Guinea-Bissau general election
+Q141795924,GN,2026-12-20,election,Q141795924
+Q115706232,FJ,2026-12-31,election,Next Fijian general election
+Q106749725,KG,2027-01-01,election,2027 Kyrgyz presidential election
+Q106753331,TJ,2027-01-01,election,2027 Tajik presidential election
+Q110453634,NI,2027-01-01,election,2027 Nicaraguan presidential election
+Q111395538,MT,2027-01-01,election,2027 Maltese general election
+Q111411423,BB,2027-01-01,election,2027 Barbadian parliamentary election
+Q111588750,TL,2027-01-01,election,2027 East Timorese presidential election
+Q111588945,RS,2027-01-01,election,2027 Serbian presidential election
+Q111592827,MN,2027-01-01,election,2027 Mongolian presidential election
+Q111594746,GM,2027-01-01,election,2027 Gambian parliamentary election
+Q112183375,AL,2027-01-01,election,2027 Albanian presidential election
+Q113147916,PG,2027-01-01,election,2027 Papua New Guinean general election
+Q113531990,KE,2027-01-01,election,2027 Kenyan presidential election
+Q115632881,AO,2027-01-01,election,2027 Angolan general election
+Q115632885,AO,2027-01-01,election,2027 Angolan presidential election
+Q115783481,VU,2027-01-01,election,2027 Vanuatuan presidential election
+Q115783680,SI,2027-01-01,election,2027 Slovenian presidential election
+Q116371549,PG,2027-01-01,election,next Papua New Guinean general election
+Q123232116,SK,2027-01-01,election,next Slovak parliamentary election
+Q134996457,CO,2027-01-01,election,2027 Colombian regional and municipal elections
+Q135551595,SV,2027-01-01,election,2027 Salvadoran presidential election
+Q141648615,AT,2027-01-01,election,Q141648615
+Q84030006,AO,2027-01-01,election,2027 Angolan parliamentary election
+Q84081265,AD,2027-01-01,election,next Andorran parliamentary election
+Q135012921,NG,2027-01-16,election,2027 Nigerian general election
+Q111586941,DE,2027-01-30,election,2027 German presidential election
+Q117355082,CM,2027-02-07,election,2026 Cameroonian parliamentary election
+Q17020570,SS,2027-02-11,election,2026 South Sudanese general election
+Q30748068,SS,2027-02-11,election,South Sudan presidential election
+Q134540736,SV,2027-02-28,election,2027 Salvadoran legislative election
+Q138711043,FM,2027-03-02,election,2027 Micronesian general election
+Q117061907,EE,2027-03-07,election,next Estonian parliamentary election
+Q117442866,FI,2027-04-18,election,2027 Finnish parliamentary election
+Q111594692,FR,2027-05-02,election,2027 French presidential election
+Q136816993,GB,2027-05-06,election,2027 United Kingdom local elections
+Q141303206,GB,2027-05-06,election,2027 Somerset Council election
+Q123561061,ES,2027-05-23,election,next Valencian regional election
+Q130377473,ES,2027-05-23,election,2027 Spanish local elections
+Q137583862,ES,2027-05-23,election,2027 Spanish regional elections
+Q122828114,GR,2027-06-30,election,2027 Greek parliamentary election
+Q113519281,SN,2027-07-31,election,2027 Senegalese parliamentary election
+Q113519292,KE,2027-08-10,election,2027 Kenyan parliamentary election
+Q106511936,PS,2027-09-11,election,next Palestinian presidential election
+Q142083826,PS,2027-09-11,election,2027 Palestinian general election
+Q3513191,PS,2027-09-11,election,next Palestinian legislative election
+Q115536537,IT,2027-09-30,election,2027 Italian Senate election
+Q115536573,IT,2027-09-30,election,2027 Italian parliamentary election
+Q115536586,IT,2027-09-30,election,2027 Italian Chamber of Deputies election
+Q84080856,OM,2027-10-01,election,2027 Omani general election
+Q131677459,CH,2027-10-24,election,2027 Swiss federal election
+Q135654575,AR,2027-10-24,election,2027 Argentine general election
+Q115632760,LS,2027-10-31,election,2027 Lesotho parliamentary election
+Q110453621,NI,2027-11-01,election,2027 Nicaraguan general election
+Q110453624,NI,2027-11-01,election,2027 Nicaraguan parliamentary election
+Q138605703,MG,2027-11-01,election,2027 Malagasy presidential election
+Q115632380,NP,2027-11-30,election,2027 Nepalese legislative election
+Q115632393,MY,2027-11-30,election,2027 Malaysian general election
+Q115632408,GQ,2027-11-30,election,2027 Equatorial Guinean legislative election
