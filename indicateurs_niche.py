@@ -564,7 +564,8 @@ SANCTIONS_COUVERTURE = Path("registre") / "sanctions-couverture.txt"
 
 
 def sanctions(cca2: str | None, d0: date) -> dict:
-    """0.10.178 : désignations de sanctions visant le pays (OFAC, Royaume-Uni) dans les 14 jours avant la date."""
+    """0.10.178 : désignations de sanctions visant le pays (OFAC, Royaume-Uni ; UE depuis 0.10.207) dans les 14 jours
+    avant la date."""
     if not cca2 or not SANCTIONS.exists() or not SANCTIONS_COUVERTURE.exists():
         return {"present": False, "raison": "pays inconnu ou sanctions absentes"}
     if date.fromisoformat(SANCTIONS_COUVERTURE.read_text(encoding="utf-8").strip()) > d0 - timedelta(days=14):
@@ -573,7 +574,8 @@ def sanctions(cca2: str | None, d0: date) -> dict:
     vues = [x for x in csv.DictReader(SANCTIONS.open(encoding="utf-8")) if x["pays"] == cca2 and a <= x["jour"] < b]
     return {"present": True, "valeur": sum(int(x["designations"]) for x in vues),
             "ofac_14j": sum(int(x["designations"]) for x in vues if x["source"] == "ofac"),
-            "uk_14j": sum(int(x["designations"]) for x in vues if x["source"] == "uk")}
+            "uk_14j": sum(int(x["designations"]) for x in vues if x["source"] == "uk"),
+            "ue_14j": sum(int(x["designations"]) for x in vues if x["source"] == "ue")}
 
 
 ELECTIONS = Path("registre") / "elections.csv"
