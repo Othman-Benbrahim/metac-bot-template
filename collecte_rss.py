@@ -14,6 +14,8 @@ Familles (choisies par l'auteur) :
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
 - cyber (0.10.199, en ombre) : CERT-FR (ANSSI) ; rapports « Menaces et incidents » qui nomment un attaquant ou un pays ;
+- verification et enquete (0.10.200, en ombre) : Correctiv, vérifications de faits (pression de désinformation) et
+  enquêtes ; noms de pays allemands en plus, pour ces deux familles seulement ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
   France, Suisse, Canada, Afrique, Asie ; presse régionale qui reprend les mêmes dépêches écartée).
 Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres. 0.10.199, en ombre :
@@ -100,6 +102,11 @@ FLUX = {
     # des produits ; ce qui compte ici, ce sont les rapports « Menaces et incidents » qui nomment un attaquant ou un pays
     # (acte public d'une agence d'État). Pays reconnus par noms ET adjectifs (« iranienne »).
     "cyber": ["https://cert.cyber.gouv.fr/flux-rss/"],
+    # 0.10.200 (décision d'auteur du 2026-11-16, 18 h 37, en ombre) : Correctiv (rédaction d'enquête allemande).
+    # « verification » (Faktencheck : pression de désinformation) est lue AVANT « enquete » (flux général) : un
+    # article présent dans les deux flux garde le même identifiant et n'est compté qu'une fois, en vérification.
+    "verification": ["https://correctiv.org/thema/faktencheck/feed/"],
+    "enquete": ["https://correctiv.org/feed/"],
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
         "https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868",   # France 24 : monde
@@ -126,10 +133,10 @@ SANTE = Path("registre") / "rss-sante.csv"   # 0.10.162 : état de chaque flux (
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
 
-def noms_pays(c: httpx.Client) -> list[tuple[re.Pattern, str]]:
-    """(motif, code ISO) pour les noms anglais et français des pays (codes à deux lettres seulement)."""
+def noms_pays(c: httpx.Client, langues: tuple[str, ...] = ("en", "fr")) -> list[tuple[re.Pattern, str]]:
+    """(motif, code ISO) pour les noms des pays dans les langues demandées (codes à deux lettres seulement)."""
     motifs = {}
-    for langue in ("en", "fr"):
+    for langue in langues:
         try:
             d = c.get(CLDR.format(l=langue), timeout=60).json()
             terr = d["main"][langue]["localeDisplayNames"]["territories"]
@@ -210,7 +217,8 @@ def detecter(texte: str, motifs: list[tuple[re.Pattern, str]]) -> set[str]:
 
 
 TITRES_SEULS = {"renseignement", "lettres_fr"}
-LARGE_SEUL = {"cyber"}       # 0.10.199 : familles sans historique « noms seuls », comptées d'emblée avec les adjectifs
+LARGE_SEUL = {"cyber", "verification", "enquete"}
+ALLEMAND = {"verification", "enquete"}   # 0.10.200 : noms allemands (CLDR « de ») en plus, pour ces familles seulement       # 0.10.199 : familles sans historique « noms seuls », comptées d'emblée avec les adjectifs
 
 # 0.10.198 (décision d'auteur du 2026-11-16, 18 h 03, appliquée directement, sans ombre) : contre le blanchiment
 # d'information, un article REPRIS (même titre, une fois normalisé) dans un autre flux ou par un autre média ne compte
@@ -351,6 +359,8 @@ def principal() -> int:
         print(f"{len(motifs)} noms de pays (anglais et français).")
         adj = adjectifs(c)
         larges = motifs_larges(motifs, adj) if adj else []
+        motifs_de = noms_pays(c, ("en", "fr", "de"))
+        larges_de = motifs_larges(motifs_de, adj) if adj else motifs_de
         print(f"{len(adj)} adjectifs de nationalité" + ("" if adj else " : source indisponible, comptes « _large » non écrits ce jour") + ".")
         for famille, urls in FLUX.items():
             for url in urls:
@@ -376,7 +386,10 @@ def principal() -> int:
                     familles = [famille] + (["notation"] if famille == "economie" and NOTATION.search(a["texte"]) else [])
                     # 0.10.199, en ombre : comptes parallèles « famille_large » (noms ET adjectifs) ; les comptes
                     # historiques (noms seuls) gardent leur définition. La famille cyber ne compte qu'en large.
-                    pays_large = detecter_large(a["texte"], larges) if larges else set()
+                    if famille in ALLEMAND:
+                        pays_large = detecter_large(a["texte"], larges_de)
+                    else:
+                        pays_large = detecter_large(a["texte"], larges) if larges else set()
                     if famille in LARGE_SEUL:
                         pays, familles_larges = pays_large, []
                     else:

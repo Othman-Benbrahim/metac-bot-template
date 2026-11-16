@@ -97,6 +97,21 @@ class TestAdjectifs(unittest.TestCase):
         self.assertNotIn("cyber", cr.DEDOUBLONNER)
 
 
+class TestCorrectiv(unittest.TestCase):
+    """0.10.200 : Correctiv en ombre ; vérifications lues avant le flux général ; noms allemands pour ces familles."""
+
+    def test_ordre_et_familles(self):
+        ordre = list(cr.FLUX)
+        self.assertLess(ordre.index("verification"), ordre.index("enquete"))
+        self.assertTrue({"verification", "enquete"} <= cr.LARGE_SEUL)
+        self.assertEqual(cr.ALLEMAND, {"verification", "enquete"})
+
+    def test_noms_allemands(self):
+        terr = {"main": {"de": {"localeDisplayNames": {"territories": {"RU": "Russland", "CZ": "Tschechien", "DE": "Deutschland"}}}}}
+        m = cr.noms_pays(_Client(terr), ("de",))
+        self.assertEqual(cr.detecter("Desinformation aus Russland über Tschechien", m), {"RU", "CZ"})
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -185,6 +200,21 @@ class TestAdjectifs(unittest.TestCase):
         self.assertIn("cyber", cr.FLUX)
         self.assertIn("cyber", cr.LARGE_SEUL)
         self.assertNotIn("cyber", cr.DEDOUBLONNER)
+
+
+class TestCorrectiv(unittest.TestCase):
+    """0.10.200 : Correctiv en ombre ; vérifications lues avant le flux général ; noms allemands pour ces familles."""
+
+    def test_ordre_et_familles(self):
+        ordre = list(cr.FLUX)
+        self.assertLess(ordre.index("verification"), ordre.index("enquete"))
+        self.assertTrue({"verification", "enquete"} <= cr.LARGE_SEUL)
+        self.assertEqual(cr.ALLEMAND, {"verification", "enquete"})
+
+    def test_noms_allemands(self):
+        terr = {"main": {"de": {"localeDisplayNames": {"territories": {"RU": "Russland", "CZ": "Tschechien", "DE": "Deutschland"}}}}}
+        m = cr.noms_pays(_Client(terr), ("de",))
+        self.assertEqual(cr.detecter("Desinformation aus Russland über Tschechien", m), {"RU", "CZ"})
 
 
 if __name__ == "__main__":

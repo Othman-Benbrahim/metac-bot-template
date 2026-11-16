@@ -64,6 +64,9 @@ ETATS = {
     "rss_economie": (("la presse économique en parle", lambda v: v >= 1), ("la presse économique n'en parle pas", lambda v: v == 0)),
     "rss_notation": (("une agence de notation est citée", lambda v: v >= 1), ("aucune agence de notation citée", lambda v: v == 0)),
     "rss_cyber": (("le CERT-FR nomme le pays", lambda v: v >= 1), ("le CERT-FR ne nomme pas le pays", lambda v: v == 0)),
+    "rss_verification": (("désinformation vérifiée sur le pays (≥ 3 vérifications Correctiv)", lambda v: v >= 3),
+                         ("aucune vérification Correctiv sur le pays", lambda v: v == 0)),
+    "rss_enquete": (("enquête Correctiv sur le pays", lambda v: v >= 1), ("aucune enquête Correctiv sur le pays", lambda v: v == 0)),
     "rss_presse_large": (("la presse en parle de plus en plus, adjectifs compris (× 1,5)", lambda v: v > 0.4),
                          ("la presse se tait, adjectifs compris (÷ 1,5)", lambda v: v < -0.4)),
     "brouillage_gps": (("brouillage GPS présent (≥ 5 % des zones)", lambda v: v >= 0.05), ("aucun brouillage GPS", lambda v: v == 0)),
@@ -129,7 +132,8 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
                     if k == "rss_presse" and v.get("valeur_large") is not None:  # 0.10.199
                         x["rss_presse_large"] = float(v["valeur_large"])
                         x["presents"]["rss_presse_large"] = True
-                    for cle, etat in (("economie_14j", "rss_economie"), ("notation_14j", "rss_notation"), ("cyber_14j", "rss_cyber")):  # 0.10.159
+                    for cle, etat in (("economie_14j", "rss_economie"), ("notation_14j", "rss_notation"), ("cyber_14j", "rss_cyber"),
+                                      ("verification_14j", "rss_verification"), ("enquete_14j", "rss_enquete")):  # 0.10.159
                         if k == "rss_officiel" and v.get(cle) is not None:
                             x[etat] = float(v[cle])
                             x["presents"][etat] = True
