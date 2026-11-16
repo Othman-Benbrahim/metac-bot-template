@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.192** — récolte Metaculus : la page de chaque post ne donnait pas non plus la résolution (4 754 posts lus, aucun gardé) ; mode « diagnostic » par défaut (3 posts : toutes les clés qui ressemblent à une résolution, liste et détail, rien d'écrit) ; un post sans résolution lue n'est plus marqué « vu » ; liste des posts vus remise à zéro.
 - **0.10.191** — pilote des revues : vérification passée pour 13 revues sur 14 ; « cdlj » retiré (aucune notice).
 - **0.10.190** — Banc du taux de base, option « audit_alfred = oui » : recalcule les questions FRED déjà au banc avec le contrôle de provenance et compare l'ancien B au nouveau (questions gardées, questions refusées), sans rien ajouter au banc (`registre/banc-b-alfred.jsonl`).
 - **0.10.189** — audit « fuite temporelle ALFRED / FRED » (2026-11-16) : une série FRED révisable n'est plus jamais lue au présent pour une date passée ; sans millésime ALFRED valide (moins de 20 points, ou relevé marqué « millésime indisponible »), le banc ne calcule pas de B et le puits refuse la lecture. Seules les cotations de marché d'une liste fermée (`MARCHES_NON_REVISES` : indices boursiers, taux du Trésor, ICE BofA, changes, SOFR…) gardent le repli. Provenance notée dans chaque ligne du banc B (`provenance`). Tests de non-régression `tests/test_audit_alfred.py`.

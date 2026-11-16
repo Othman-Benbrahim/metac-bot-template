@@ -257,10 +257,45 @@ def detail(c: httpx.Client, post_id) -> dict | None:
     return None
 
 
+def _cles_resolution(d, prefixe="", out=None, profondeur=0):
+    """Chemins et valeurs des clés qui ressemblent à une résolution (diagnostic 0.10.192)."""
+    out = [] if out is None else out
+    if profondeur > 4:
+        return out
+    if isinstance(d, dict):
+        for k, v in d.items():
+            ch = f"{prefixe}.{k}" if prefixe else k
+            if any(m in k.lower() for m in ("resol", "outcome", "status", "actual", "result")) and not isinstance(v, (dict, list)):
+                out.append(f"{ch}={v!r}"[:120])
+            _cles_resolution(v, ch, out, profondeur + 1)
+    elif isinstance(d, list) and d:
+        _cles_resolution(d[0], prefixe + "[0]", out, profondeur + 1)
+    return out
+
+
+def diagnostiquer(c: httpx.Client, n: int = 3) -> int:
+    """0.10.192 : la page d'un post ne donnait pas non plus de résolution ; on affiche, pour quelques posts résolus,
+    toutes les clés qui ressemblent à une résolution (liste et détail), sans rien écrire."""
+    vus = 0
+    for p in recolter(c, 100):
+        if vus >= n:
+            break
+        print(f"--- post {p.get('id')} : {str(p.get('title'))[:80]}")
+        print("  liste  : " + " ; ".join(_cles_resolution(p)))
+        d = detail(c, p.get("id"))
+        print("  détail : " + " ; ".join(_cles_resolution(d or {})))
+        q = (d or {}).get("question") or {}
+        print(f"  clés de question (détail) : {sorted(q.keys())}")
+        vus += 1
+        time.sleep(1)
+    return 0
+
+
 def principal() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max", type=int, default=20000)
     ap.add_argument("--minutes", type=float, default=200, help="durée maximale des requêtes de détail")
+    ap.add_argument("--diagnostic", action="store_true", help="afficher où se trouve la résolution, sans rien écrire")
     a = ap.parse_args()
     jeton = os.environ.get("METACULUS_TOKEN", "")
     entetes = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche)"}
@@ -278,6 +313,9 @@ def principal() -> int:
     SORTIE.parent.mkdir(exist_ok=True)
     fin = time.time() + 60 * a.minutes
     nouveaux = 0
+    if a.diagnostic:
+        with httpx.Client(headers=entetes, timeout=60, follow_redirects=True) as c:
+            return diagnostiquer(c)
     with httpx.Client(headers=entetes, timeout=60, follow_redirects=True) as c:
         a_lire = [p for p in recolter(c, a.max) if str(p.get("id")) not in vus]
         print(f"{len(a_lire)} posts résolus à lire en détail.")
@@ -293,7 +331,10 @@ def principal() -> int:
                     if d is None:
                         continue                      # non marqué comme vu : retenté au prochain passage
                     p = d
+                avant_rejets = REJETS["résolution vide"]
                 x = ligne(p, motifs)
+                if REJETS["résolution vide"] > avant_rejets:
+                    continue                          # 0.10.192 : jamais marqué « vu » sans résolution lue
                 fv.write(f"{p.get('id')}\n")
                 if x:
                     f.write(json.dumps(x, ensure_ascii=False) + "\n")

@@ -8,6 +8,9 @@ on:
       max:
         description: "nombre maximal de questions lues"
         default: "20000"
+      diagnostic:
+        description: "oui = montrer où l'API met la résolution (3 posts, rien d'écrit)"
+        default: "oui"
 
 concurrency:
   group: recolte-metaculus
@@ -32,7 +35,12 @@ jobs:
         timeout-minutes: 230
         env:
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
-        run: uv run python recolte_metaculus.py --max "${{ github.event.inputs.max }}"
+        run: |
+          if [ "${{ github.event.inputs.diagnostic }}" = "non" ]; then
+            uv run python recolte_metaculus.py --max "${{ github.event.inputs.max }}"
+          else
+            uv run python recolte_metaculus.py --diagnostic
+          fi
       - name: Enregistrer
         if: always()
         run: |
