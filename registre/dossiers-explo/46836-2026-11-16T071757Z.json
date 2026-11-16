@@ -1,0 +1,309 @@
+{
+ "candidats": [
+  "CTR@6",
+  "CRO@6",
+  "INC@3",
+  "CTR@3"
+ ],
+ "contre_candidate": [
+  "CTR@6",
+  "INC@3"
+ ],
+ "mots": [
+  {
+   "carte": "CTR",
+   "strate": 6,
+   "intensite": "f",
+   "fait": "Dans les cycles de resserrement monétaire récents la politique monétaire a pesé sur les valorisations : en 2022 le Nasdaq a reculé de 33.1% sur l'année alors que la Fed a remonté ses taux ; les épisodes de resserrement ont dominé les impulsions positives d'earnings.",
+   "objet": "impact du resserrement monétaire sur les valorisations technologiques",
+   "source": "Reuters (2022-12-15) ; Kroll (rapport winter-2023)",
+   "source_url": "https://www.reuters.com/markets/us/ipo-market-freeze-sparks-80-drop-nasdaq-listings-2022-12-15/#:~:text=Dec%2015%20%28Reuters%29%20%2D%20Equity,hit%20the%20brakes%20on%20its.;https://edge.sitecorecloud.io/krollllc17bf0-kroll6fee-proda464-0e9b/media/Kroll-Images/PDFs/M-and-A/capital-markets-insights-winter-2023.pdf",
+   "date_consultation": "2026-11-16",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Reuters, paragraphe de synthèse",
+     "relation": "soutient",
+     "extrait": "the Nasdaq declined 33.1% for the full year as the Fed raised rates seven times"
+    },
+    {
+     "localisation": "Kroll, executive summary",
+     "relation": "soutient",
+     "extrait": "IPO activity collapsed and market volatility rose as monetary tightening reduced risk appetite"
+    }
+   ],
+   "test": "pistolet",
+   "contre_observation": "Cas documentés où des hausses du Treasury à long terme n'ont pas empêché des semaines de fort rebond du Nasdaq (p.ex. semaines d'avril 2026 et mai 2025 mentionnées comme fortes hausses malgré yields élevés).",
+   "portee": "marginale",
+   "garantie": {
+    "mecanisme": "La hausse des taux et la hausse des taux d'actualisation réduisent la valeur actuelle des flux futurs, comprimant les multiples et retirant des configurations de valorisation précédemment accessibles aux acteurs.",
+    "support": {
+     "type": "texte",
+     "reference": "analyses de marché Reuters (2022) ; rapport Kroll (winter-2023)",
+     "disponible_le": "2023-01-01"
+    },
+    "attendu": "les annonces ou signaux de resserrement modifient les choix d'allocation (rotation hors des titres de croissance, recul durable des indices exposés à la croissance élevée)",
+    "contredirait": "multiples hausses d'indices malgré une hausse prolongée et soutenue des yields sans autre moteur fondamental"
+   },
+   "option": {
+    "acteur": "investisseurs institutionnels",
+    "avant": "poursuivre l'exposition aux valeurs de croissance",
+    "apres": "réduire l'exposition / rééquilibrer vers valeurs défensives ou cash"
+   },
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "Reuters est une agence de presse ; Kroll est un cabinet-conseil/rapport d'analyse indépendant : producteurs différents et non-reliés"
+   },
+   "a6": "CTR@6 : HIE@6 -> (aucun fait ancré qui montrerait une hiérarchie des créditeurs active dans cette situation) ; INC@3 + (observations de VIX et de couverture de positions montrent que l'incertitude accompagne les signaux de resserrement) ; POL@6 -> (aucun pôle tiers stable trouvé dans les résultats) ; SEU@6 -> (l'événement SEU est prévu par le plan mais n'est pas lu comme mot ici) ; TRC@6 -> (aucune preuve d'une 'trace' ou dépendance de chemin empirique explicite)"
+  },
+  {
+   "carte": "CRO",
+   "strate": 6,
+   "intensite": "f",
+   "fait": "Au printemps 2026 le Nasdaq (et particulièrement le Nasdaq-100) a connu des reprises fortes liées à des earnings AI/chips : par exemple une poussée de plusieurs semaines en avril 2026 où le Nasdaq-100 a enregistré des gains marqués (plusieurs sources rapportent une hausse soutenue sur 20 sessions et des retours mensuels à deux chiffres).",
+   "objet": "mouvement de croissance soutenue lié au secteur technologique/AI",
+   "source": "Benzinga (avril 2026) ; série de cours historiques (FRED NASDAQCOM, extraits 2026-11-02 à 2026-11-13)",
+   "source_url": "https://www.benzinga.com/news/26/04/52047644/nasdaq-100-best-4-week-rally-since-2020-intel-chips#:~:text=April%2024%2C%202026%204%3A30%20PM3,;https://fred.stlouisfed.org/series/NASDAQCOM",
+   "date_consultation": "2026-11-16",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Benzinga, titre + 1er paragraphe",
+     "relation": "soutient",
+     "extrait": "the Nasdaq 100 notched its fourth straight week of gains, rallying 18% over 20 sessions — its strongest four-week run since April 2020"
+    },
+    {
+     "localisation": "FRED, séries quotidiennes (extraits listés)",
+     "relation": "soutient",
+     "extrait": "2026-11-02 25164.4 ; 2026-11-03 25372 ; 2026-11-04 25736.5 ; 2026-11-09 25253.1 (séries montrant niveaux autour/au-dessus de 25,000 début novembre 2026)"
+    }
+   ],
+   "test": "pistolet",
+   "contre_observation": "Exemples de tentatives de breakout qui ont échoué (p.ex. janvier 2026 tentative au niveau ~23,700 mentionnée comme rejetée) et étude octobre 2026 notant que les 'round numbers' n'attirent pas plus le prix que d'autres niveaux.",
+   "portee": "marginale",
+   "garantie": {
+    "mecanisme": "une dynamique sectorielle (earnings beats, adoption AI) entraîne une hausse auto-entretenue des prix à court terme via révision d'estimations et afflux d'achat sectoriel.",
+    "support": {
+     "type": "donnee",
+     "reference": "séries de cours et bilans d'earnings (Benzinga, FRED NASDAQCOM)",
+     "disponible_le": "2026-11-16"
+    },
+    "attendu": "séries de gains datées (semaines consécutives de hausse) corrélées à des beats d'earnings et publications favorables du secteur",
+    "contredirait": "hausses ponctuelles non soutenues par une série datée d'accélération"
+   },
+   "option": {
+    "acteur": "gérants actions / allocateurs",
+    "avant": "suivre momentum sectoriel avec exposition élevée aux titres AI/semiconducteurs",
+    "apres": "réduire exposition si signes de saturation ou contraintes macro (yields) apparaissent"
+   },
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "Benzinga (média financier) et FRED (base de données économétrique maintenue par la St. Louis Fed) sont des producteurs distincts et indépendants"
+   },
+   "a6": "CRO@6 : EME@6 -> (aucun fait ancré d''émergence' institutionnelle sans autorité) ; PRO@6 -> (pas de ratio ou courbe de proportion ancrée ici montrant saturation) ; TRA@6 -> (pas d'élément montrant une reconversion industrielle formelle)"
+  },
+  {
+   "carte": "INC",
+   "strate": 3,
+   "intensite": "f",
+   "fait": "Les pics de VIX (>25) en 2026 ont accompagné des réévaluations rapides des risques et des couvertures de positions : par exemple, analyses mentionnent que quand le VIX a bondi le repricing d'options et les couvertures ont réduit la 'bounce edge' immédiate, et des liquidations rapides se sont produites pendant certains épisodes géopolitiques (mars 2026).",
+   "objet": "comportement des acteurs financiers face à un pic de volatilité",
+   "source": "Six7Alpha (analyse VIX spikes) ; mention d'un épisode de liquidations (S3Partners, mars 2026) cités dans les recherches",
+   "source_url": "https://www.six7alpha.com/insights/vix-spike-selloff-next-day#:~:text=On%20Thursday%2C%20November%205%2C%20SPY,;https://www.s3partners.com/articles/both-long-and-short-vxx-positions-close-in-war#:~:text=March%2026%2C%202026%20The%20Iran,",
+   "date_consultation": "2026-11-16",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Six7Alpha, synthèse",
+     "relation": "soutient",
+     "extrait": "when the drop comes with a VIX spike, the bounce edge disappears — the options market is repricing risk fast"
+    },
+    {
+     "localisation": "S3Partners, note événement (mars 2026)",
+     "relation": "soutient",
+     "extrait": "Over $200M in risk-asset liquidations occurred within 60 minutes of the geopolitical headlines"
+    }
+   ],
+   "test": "cerceau",
+   "contre_observation": "Les jours de faible volume (post-Thanksgiving early close) ont souvent donné des clôtures modestement positives (ex. Nov 28, 2025), ce qui limite l'effet 'incertitude' sur la direction nette des fermetures sur une session courte.",
+   "portee": "marginale",
+   "garantie": {
+    "mecanisme": "un pic de volatilité (prix des options) force des réévaluations et des couvertures qui modifient temporairement les comportements d'acteurs (liquidations, report de décisions, réductions d'exposition).",
+    "support": {
+     "type": "texte",
+     "reference": "analyse Six7Alpha sur VIX spikes (2026) ; note S3Partners (mars 2026)",
+     "disponible_le": "2026-11-16"
+    },
+    "attendu": "actions de couverture, fermeture ou réduction de positions et recherche d'information accrue",
+    "contredirait": "absence d'ajustement des positions malgré un pic de volatilité"
+   },
+   "option": {
+    "acteur": "traders / market makers",
+    "avant": "maintenir positions directionnelles sans couverture",
+    "apres": "réduire tailles, couvrir gamma ou liquider positions"
+   },
+   "corroboration": "unique"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Datée 2026-11-16 : d'ici le 2026-11-25 le rendement de référence du Treasury 10 ans clôturera-t-il au-dessus de 4.8% ?",
+   "si_oui": "CTR@6",
+   "si_non": "CRO@6",
+   "resolution": "La clôture quotidienne du rendement 10 ans publiée sur FRED (série DGS10) ou la page Daily Treasury Yields pour 2026-11-24 et 2026-11-25 fournirait l'observation résolutive.",
+   "justification": {
+    "oui": "Un rendement 10-ans élevé et en hausse renforce le mécanisme de contrainte (compression des multiples) et rend plus probable que la politique monétaire bride une clôture Nasdaq strictement au-dessus d'un seuil élevé.",
+    "non": "L'absence d'une poussée des yields soutiendrait un scénario où la dynamique sectorielle/earnings peut dominer et maintenir ou propulser le Nasdaq au-dessus du seuil (soutien pour la carte CRO)."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "CTR@3": "[non_cherchee] voisine de la carte ancrée, non examinée (ajoutée par le bot)"
+ },
+ "etat": "[2026-11-16 | 11 jours] CONTRAINTE@6[f] + CROISSANCE@6[f] + INCERTITUDE@3[f]",
+ "disponible_le": "2026-11-16",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "How has the Nasdaq Composite historically reacted in the week after an unexpected Federal Reserve rate hike 2015-2026 (weekly closes, percent changes)?",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "CRO@6"
+   ],
+   "requete": "Compare Nasdaq Composite moves in the two weeks following Fed policy rate increases versus in the two weeks following large-cap tech earnings beats or major AI sector rallies 2016-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "Instances where rising Treasury yields (10-year >= 4.5% or >=5%) coincided with Nasdaq Composite weekly gains of >3% 2018-2026 (cases where monetary 'constraint' did not prevent gains)",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Nasdaq Composite performance in the week after major tech earnings beats, large-cap AI stock rebounds, or large IPOs (e.g., 1-week and 2-week close changes) 2020-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Examples where strong tech-sector earnings or large IPOs failed to lift the Nasdaq Composite above a nearby round-number resistance (e.g., attempts to close above prior round level) 2016-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@3"
+   ],
+   "requete": "Effect on Nasdaq Composite closes when VIX spikes above 25 (or 28) — distribution of next-session and next-week returns after VIX>25 events 2017-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "INC@3"
+   ],
+   "requete": "Compare Nasdaq behavior on low-volume holiday half-days (post-Thanksgiving early close) versus regular sessions: intraday ranges and close direction 2000-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@3"
+   ],
+   "requete": "Cases where elevated macro or political uncertainty indicators (VIX>25, major geopolitical shock) coincided with Nasdaq closing above a recent round-number resistance like 25000 2015-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "CRO@6"
+   ],
+   "requete": "Relative magnitude and persistence of Nasdaq moves triggered by monetary policy surprises versus sector-specific tech/AI news: distribution of 1-day and 5-day returns after each type of event 2016-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6",
+    "INC@3"
+   ],
+   "requete": "Historical instances where a major tech-sector development (earnings, IPO, CEO shock) and tightened monetary policy signals occurred within the same two-week window: which effect dominated Nasdaq close direction 2018-2026?",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "presence",
+   "temporalite": "generique",
+   "resolution": "La fenêtre est comptée (résolution = OUI) si la valeur de clôture rapportée par FRED (NASDAQCOM) pour le 27 novembre 2026 est strictement supérieure à 25000 ; sinon elle n'est pas comptée (résolution = NON).",
+   "source_resolution": {
+    "emetteur": "Federal Reserve Bank of St. Louis (FRED)",
+    "document": "Série NASDAQCOM — valeurs journalières historiques (valeur de clôture en points) pour 2026-11-27",
+    "regle_ambiguite": "Si FRED n'affiche pas de valeur pour le 2026-11-27, utiliser la valeur 'Close' publiée par Yahoo Finance pour ^IXIC (https://finance.yahoo.com/quote/%5EIXIC/history/). Si Yahoo n'affiche pas de valeur pour cette date, utiliser la clôture publiée par Nasdaq sur https://indexes.nasdaq.com/Index/History/COMP. Si la session régulière du 2026-11-27 n'a pas lieu, la question est annulée."
+   },
+   "vue_exterieure": {
+    "frequence": 0.9545454545454546,
+    "classe_de_reference": "fenêtre de 11 jours se terminant le 2026-11-27 (fenêtres demandées dans la consigne)",
+    "source": "FRED (ALFRED, millésime) — NASDAQCOM (https://fred.stlouisfed.org/series/NASDAQCOM)",
+    "periode": "2026-2026",
+    "disponible_le": "2026-11-13",
+    "classe_alternative": null,
+    "motif_sans_alternative": "compte calculé sur une seule série du catalogue ; pas de seconde classe",
+    "ecart_critere": "identique : la série NASDAQCOM rapporte la clôture quotidienne de l'indice en points, même unité que le critère (>25000 points)."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "INC@3",
+   "vers": "CTR@6",
+   "extrait": "It's worth noting that the surprise component matters more than the move itself.",
+   "source": "https://www.regimic.com/fed-decision-market-reaction/nasdaq#:~:text=%23%20How%20Nasdaq%20reacts%20after,percent%2C%20without%20dividends%20or%20costs."
+  },
+  {
+   "instruction": "bloque",
+   "de": "CTR@6",
+   "extrait": "These cases demonstrate that monetary constraint (as reflected in elevated Treasury yields) did not prevent significant Nasdaq gains, suggesting that other factors—such as positive earnings reports, dovish Fed signals, or technical oversold conditions—can override yield headwinds to drive equity market rallies.",
+   "source": "https://ngtimes.org/2026/04/11/market-week-recap-oil-volatility-dominant#:~:text=%23%20Wall%20Street%20Posts%20Strongest,showed%20that%20conviction%20remains%20fragile."
+  },
+  {
+   "instruction": "lien",
+   "de": "CRO@6",
+   "vers": "CTR@6",
+   "extrait": "This suggests that positive earnings surprises and AI-driven momentum have been significantly more powerful drivers of Nasdaq performance than Fed rate increases over the 2016-2026 period, with tech earnings beats producing returns roughly 25-35 times larger than typical post-hike performance.",
+   "source": ""
+  }
+ ]
+}

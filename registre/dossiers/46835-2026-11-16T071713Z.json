@@ -1,0 +1,182 @@
+{
+ "candidats": [
+  "EME@5",
+  "SEU@5",
+  "TRA@5"
+ ],
+ "contre_candidate": [
+  "SEU@5"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [],
+ "rejets": {
+  "EME@5": "[marqueur_non_rempli] Aucun fait trouvé n'indique l'apparition d'une régularité collective nouvelle, non prescrite par une autorité centrale, sur la question des récupérations du vol de matériel radioactif — au contraire, les sources indiquent des actions coordonnées et des communiqués fédéraux.",
+  "SEU@5": "[marqueur_non_rempli] Aucun fait trouvé ne remplit les marqueurs d'un franchissement irréversible (SEUIL) : il n'y a pas d'acte daté ni de décision publique qui rende impossible un retour par le même chemin ; au 2026-11-16 les autorités ont lancé des alertes et opérations mais n'ont pas publié de bilan final irréversible.",
+  "TRA@5": "[marqueur_non_rempli] Les faits disponibles ne montrent pas une transformation documentée d'une entité existante avec conservation d'un invariant (pas d'états intermédiaires décrits ni d'invariant identifié) : l'information porte sur opérations ponctuelles de recherche et alertes, non sur une transformation structurelle."
+ },
+ "_categories_rejet": {
+  "EME@5": "marqueur_non_rempli",
+  "SEU@5": "marqueur_non_rempli",
+  "TRA@5": "marqueur_non_rempli"
+ },
+ "_details_rejet": {
+  "EME@5": {
+   "fait_attendu": "une régularité collective datée et non prescrite (par exemple : recouvrements locaux simultanés et autonomes, adoption d'une pratique nouvelle par des acteurs locaux sans consigne fédérale) documentée par au moins un fait daté.",
+   "extrait_proche": "“se mantiene alerta en siete estados por robo de material radiactivo” — compilation et couverture de l'affaire par Infobae, montrant des alertes et communiqués plutôt qu'une pratique émergente autonome. [7]"
+  },
+  "SEU@5": {
+   "fait_attendu": "un acte daté supprimant la possibilité de revenir à l'état antérieur (par ex. décision officielle de fermeture définitive d'un service ou destruction irréversible d'éléments), ou une tentative de retour qui échoue clairement.",
+   "extrait_proche": "Les autorités fédérales ont émis et maintiennent une alerte préventive à sept estados et publié communiqués ; la couverture indiquant poursuite des opérations (Infobae, compilation du 2026-11-10) montre une recherche en cours, pas un franchissement irréversible. [7]"
+  },
+  "TRA@5": {
+   "fait_attendu": "descriptions datées d'un état initial et d'états intermédiaires conduisant à un nouvel état avec un invariant identifié (par ex. réorganisation officielle d'une agence, changement de mission documenté), corroborées par communiqués officiels.",
+   "extrait_proche": "Couverture et communiqués listant opérations de búsqueda, alertas y declaraciones (ex. FGR identifiant un probable responsable ; agences lançant opérations) — actes opérationnels ponctuels, sans description d'une transformation structurelle. [7]"
+  }
+ },
+ "etat": "",
+ "disponible_le": "2026-11-16",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "Mexico stolen radioactive source cases 2011-2026 list and outcomes recovered abandoned never recovered (CNSNS, press coverage)",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "Mexico incidents where stolen radioactive sources were recovered after being abandoned or discarded by scrap collectors versus recovered after formal operations 2011-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "Mexico stolen radioactive sources 2011-2026 cases never recovered or found dispersed despite search efforts",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "SEU@5"
+   ],
+   "requete": "time from theft to federal public confirmation of recovery for radioactive source thefts in Mexico 2011-2026 (days to announcement)",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@5"
+   ],
+   "requete": "Mexico cases where authorities publicly stated material had decayed or no longer posed risk instead of issuing a formal recovery confirmation 2011-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "SEU@5"
+   ],
+   "requete": "Mexico cases where despite decay authorities still located and issued formal confirmation of recovery of stolen radioactive materials 2011-2026",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRA@5"
+   ],
+   "requete": "stolen medical radioisotopes Mexico 2011-2026: were items typically transported far away or abandoned near theft site (reports, prosecutions, recoveries)",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRA@5"
+   ],
+   "requete": "cases where decay of radioisotopes led authorities to de-prioritize searches and not publish recovery confirmations versus cases where searches continued to a formal recovery 2011-2026 Mexico",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRA@5"
+   ],
+   "requete": "Mexico incidents 2011-2026 where, despite rapid decay of isotopes, authorities continued operations and issued a formal recovery bulletin",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5",
+    "SEU@5"
+   ],
+   "requete": "Mexico stolen radioactive source recoveries 2011-2026: counts and timing attributed to informal community/scrap-collector abandonment versus formal federal search and confirmation",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5",
+    "TRA@5"
+   ],
+   "requete": "Mexico cases 2011-2026: recoveries driven by local abandonment patterns versus outcomes shaped by isotope decay (search de-prioritization or retained searches)",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@5",
+    "TRA@5"
+   ],
+   "requete": "frequency in Mexico 2011-2026 of formal federal recovery confirmations occurring before significant radioactive decay (e.g., within a few half-lives) versus confirmations absent because decay made search lower priority",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "TRACE·MÉMOIRE@5 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "programmee",
+   "resolution": "La question se résout OUI si, avant la fin du 27 novembre 2026 (UTC−6), une autorité fédérale mexicaine publie formellement que les neuf colis volés (ou tout le matériel contenu dans ces neuf colis) ont tous été localisés et sécurisés; sans une telle confirmation fédérale explicite la résolution est NO.",
+   "source_resolution": {
+    "emetteur": "Autorités fédérales mexicaines nommées (ex. CNSNS, SSPC, FGR, ININ, Guardia Nacional, SEGOB/CNPC, ou la Présidence)",
+    "document": "communiqué officiel publié par l'émetteur sur son site ou canal officiel (p.ex. gob.mx/cnsns, gob.mx/sspc, communiqué FGR), ou déclaration publique retransmise par médias crédibles avec lien vers le communiqué officiel",
+    "regle_ambiguite": "La confirmation doit affirmer que TOUS les colis (ou tout le matériel contenu dans l'ensemble des colis) ont été retrouvés et sécurisés. Les confirmations partielles (quelques colis seulement), les annonces d'enquêtes en cours, les affirmations d'états locaux sans corroboration fédérale, ou les déclarations évoquant seulement réduction du risque ne suffisent pas."
+   },
+   "vue_exterieure": {
+    "frequence": 0.7272727272727273,
+    "classe_de_reference": "{\n \"classe_de_reference\": \"Incidents de vol ou perte de colis/sources radioactives transportés au Mexique pour lesquels l'issue pertinente est une CONFIRMATION PUBLIQUE par une autorité fédérale que l'ensemble des colis/sources volés (ou tout le matériel qu'ils contenaient) a été localisé et sécurisé.\",\n \"unite\": \"Un incident unique de vol/perte de sources radioactives; il est compté comme 'récupération complète' uniquement si une confirmation publique fédérale atteste que tous les colis/objets volés ou tout le matériel contenu ont été retrouvés et sécurisés. Les confirmations partielles (quelques colis seulement), les récupérations non confirmées ou les déclarations ambiguës ne comptent pas comme un cas positif.\",\n \"population\": \"Tous les incidents documentés de vol/perte de sources radioactives au Mexique impliquant transport (véhicules officiels ou commerciaux) durant la période 2011–2026; le dénominateur est le nombre total de ces incidents documentés, l'événement d'intérêt est la proportion de ces incidents ayant reçu une confirmation fédérale de récupération complète.\",\n \"periode\": \"2011-2026\",\n \"mise_a_l_echelle\": \"Pour passer de la période longue à une fenêtre de 11 jours : calculer le taux annuel moyen d'incidents (N_total / années) et la fraction récupérées complètement; convertir en probabilité pour 11 jours en multipliant le taux journalier par 11 (taux_annuel * 11/365) ou, pour proportions historiques, appliquer la proportion historique de récupérations complètes aux incidents attendus sur 11 jours. Si on dispose seulement de proportions 'recouvrées vs non recouvrées' sur la période, utiliser directement cette proportion comme estimateur de l'issue pour un incident donné dans une fenêtre comparable.\",\n \"sources_visees\": \"[R1], [R2], [R3] et registres/communiqués officiels : rapports CNSNS (gob.mx/cnsns), communiqués SSPC (gob.mx/sspc), ININ, FGR, Guardia Nacional, CNPC/SEGOB, et couvertures compilées par médias crédibles (p.ex. Infobae) pour l'inventaire des cas et des confirmations.\"\n}",
+    "source": "Étude rétrospective «Radioactive isotope theft in Mexico (2011–2023)» (compilation universitaire / Ray et al., 2024) — synthèse fournie en [R1]",
+    "periode": "2011-2023",
+    "disponible_le": "2024-03-20",
+    "classe_alternative": null,
+    "motif_sans_alternative": "Aucune base publique fédérale complète (CNSNS/SSPC/FGR) listant tous les vols de 2011–2026 avec indication explicite 'confirmation fédérale que TOUS les colis ont été retrouvés' et permettant un comptage strict n'a été identifiée dans les résultats fournis; la meilleure source quantitative disponible est l'étude rétrospective [R1], même si elle peut ne pas correspondre exactement au critère 'confirmation fédérale explicite'.",
+    "ecart_critere": "La classe comptée par [R1] mesure la proportion de vols/pertes où les sources ont été récupérées par des institutions gouvernementales; elle ne garantit pas que chaque récupération a fait l'objet d'une 'confirmation publique par une autorité fédérale' explicitement documentée comme l'exige le critère. Autres divergences possibles : période couverte (2011–2023 vs 2011–2026), définition des incidents, et inclusion éventuelle de récupérations partielles ou non-fédérales."
+   },
+   "programmation": {
+    "qui": "CNSNS, FGR, CNPC (SEGOB), ININ, Guardia Nacional",
+    "engagement": "les agences fédérales ont émis et maintiennent une alerte préventive à sept états et ont publié communiqués et déclarations publiques (par ex. FGR a identifié un probable responsable et les agences ont lancé opérations de búsqueda), ce qui manifeste leur compétence et activité pour localiser et, le cas échéant, confirmer formellement la récupération via un bulletin public."
+   }
+  }
+ ],
+ "_reparations": [
+  "question irréparable retirée : D'ici la fin du 2026-11-27 (heure Mexico), les autorités féd"
+ ]
+}
