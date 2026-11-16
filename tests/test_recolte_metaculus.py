@@ -49,12 +49,21 @@ class TestPrincipal(unittest.TestCase):
                 mock.patch.object(rm, "detail", lambda c, pid: details[pid]), \
                 mock.patch.object(rm.time, "sleep", lambda s: None), \
                 mock.patch("collecte_rss.noms_pays", lambda c: MOTIFS), \
-                mock.patch("sys.argv", ["recolte_metaculus.py"]):
+                mock.patch("sys.argv", ["recolte_metaculus.py"]), \
+                mock.patch.dict(os.environ, {"METACULUS_RECOLTE_AUTORISEE": "oui"}):
             self.assertEqual(rm.principal(), 0)
             self.assertEqual(len((d / "r.jsonl").read_text().splitlines()), 1)
             self.assertEqual(set((d / "vus.txt").read_text().split()), {"1", "2"})
             rm.principal()                                         # reprise : rien de relu, rien de doublé
             self.assertEqual(len((d / "r.jsonl").read_text().splitlines()), 1)
+
+
+class TestSuspension(unittest.TestCase):
+    def test_sans_autorisation(self):
+        from unittest import mock
+        with mock.patch("sys.argv", ["recolte_metaculus.py"]), mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("METACULUS_RECOLTE_AUTORISEE", None)
+            self.assertEqual(rm.principal(), 1)
 
 
 if __name__ == "__main__":

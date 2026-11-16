@@ -15,6 +15,12 @@ Règles de classement (fixées le 2026-11-16, avant toute lecture des issues) :
   forme   : premier motif de FORMES qui correspond au titre ;
   « non classée » : domaine OU forme introuvable ; ces questions seront seules confiées au modèle.
 
+SUSPENDU (0.10.194, 2026-11-16) : la documentation de l'API (passerelle de filtrage, niveau « Restricted ») ne donne
+la résolution que pour les questions sur lesquelles le compte a prévu, ou d'un projet accordé ; et les conditions
+d'utilisation interdisent d'utiliser les données pour « entraîner, évaluer ou développer » des modèles ou algorithmes
+sans autorisation écrite de Metaculus. Récolte complète suspendue jusqu'à une autorisation (formulaire « Metaculus Data
+Needs », niveau « Bot Benchmarking ») ; seul le mode diagnostic reste utilisable.
+
 Usage : python recolte_metaculus.py [--max 20000]   (variable METACULUS_TOKEN)
 """
 from __future__ import annotations
@@ -297,6 +303,9 @@ def principal() -> int:
     ap.add_argument("--minutes", type=float, default=200, help="durée maximale des requêtes de détail")
     ap.add_argument("--diagnostic", action="store_true", help="afficher où se trouve la résolution, sans rien écrire")
     a = ap.parse_args()
+    if not a.diagnostic and os.environ.get("METACULUS_RECOLTE_AUTORISEE") != "oui":
+        print("Récolte complète suspendue : autorisation écrite de Metaculus requise (conditions d'utilisation de l'API).")
+        return 1
     jeton = os.environ.get("METACULUS_TOKEN", "")
     entetes = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche)"}
     if jeton:
