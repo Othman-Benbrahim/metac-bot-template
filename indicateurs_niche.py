@@ -23,6 +23,8 @@ STRICTEMENT avant la date du jeu :
 - gdelt (0.10.173, en ombre) : manifestations et émeutes dans la presse codée par GDELT (collecte_gdelt.py), pays du
   lieu de l'action ; log((14 jours avant la date + 1) / (14 jours précédents + 1)) ; historique complet, donc mesurable
   sur les questions déjà résolues.
+- portwatch (0.10.176, en ombre) : passages de navires dans les détroits liés au pays (IMF PortWatch), décalés d'une
+  semaine pour le délai de publication ; log(14 jours / 14 jours précédents).
 - ooni (0.10.175, en ombre) : censure d'internet (OONI, CC BY-NC-SA 4.0) : part des mesures anormales sur 14 jours
   moins la même part sur les 14 jours précédents, sites web et messageries à part ; absent sous un minimum de mesures.
 - violationswatch (0.10.147, en ombre) : incidents graves (gravité « High » ou « Critical ») signalés par
@@ -434,6 +436,33 @@ def ooni(cca2: str | None, d0: date, min_web: int = 50, min_msg: int = 20, manqu
     return out
 
 
+PORTWATCH = Path("registre") / "portwatch-detroits.csv"
+_PW: dict | None = None
+
+
+def portwatch(cca2: str | None, d0: date, delai: int = 7) -> dict:
+    """0.10.176 : passages de navires (IMF PortWatch) dans les détroits liés au pays (table fixe de
+    collecte_portwatch.DETROITS). PortWatch publie avec retard : on n'utilise que les jours antérieurs d'au moins
+    `delai` jours à la date ; log((14 jours [d0−21, d0−8] + 1) / (14 jours [d0−35, d0−22] + 1)), tous les jours
+    présents exigés."""
+    global _PW
+    import collecte_portwatch as cp
+    detroits = [k for k, (_, pays) in cp.DETROITS.items() if cca2 in pays] if cca2 else []
+    if not detroits or not PORTWATCH.exists():
+        return {"present": False, "raison": "aucun détroit lié au pays, ou comptes absents"}
+    if _PW is None:
+        _PW = {(x["detroit"], x["jour"]): (int(x["navires"]), int(x["petroliers"]))
+               for x in csv.DictReader(PORTWATCH.open(encoding="utf-8"))}
+    rec = [(d0 - timedelta(days=k)).isoformat() for k in range(delai + 1, delai + 15)]
+    av = [(d0 - timedelta(days=k)).isoformat() for k in range(delai + 15, delai + 29)]
+    if any((d, j) not in _PW for d in detroits for j in rec + av):
+        return {"present": False, "raison": "jours PortWatch manquants"}
+    s = lambda js, i: sum(_PW[(d, j)][i] for d in detroits for j in js)
+    return {"present": True, "valeur": round(math.log((s(rec, 0) + 1) / (s(av, 0) + 1)), 4),
+            "valeur_petroliers": round(math.log((s(rec, 1) + 1) / (s(av, 1) + 1)), 4),
+            "detroits": detroits, "navires_14j": s(rec, 0), "navires_14j_avant": s(av, 0)}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 
@@ -488,7 +517,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -531,6 +560,9 @@ async def principal() -> int:
                 if "gdelt" not in fait and GDELT_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["gdelt"] = gdelt(code, d0)
+                if "portwatch" not in fait and PORTWATCH.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["portwatch"] = portwatch(code, d0)
                 if "ooni" not in fait and OONI_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["ooni"] = ooni(code, d0)
@@ -542,7 +574,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch") if k in ligne))
         await tg.fermer()
     return 0
 

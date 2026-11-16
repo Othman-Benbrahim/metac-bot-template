@@ -1,0 +1,123 @@
+"""Passages quotidiens de navires dans les grands détroits, tirés d'IMF PortWatch (bot 0.10.176, en ombre).
+
+Source : IMF PortWatch (FMI et université d'Oxford), service ArcGIS public « Daily_Chokepoints_Data ».
+Source : IMF PortWatch. Transformation : seuls les comptes quotidiens de huit détroits sont gardés.
+
+Conditions (décision d'auteur du 2026-11-16, 12 h 58) : les conditions du FMI autorisent la réutilisation non
+commerciale des données avec attribution, mais interdisent le « téléchargement en masse par des moyens automatisés »
+sans autorisation explicite. La demande d'autorisation (copyright@imf.org, 2026-11-16) n'a reçu qu'une réponse
+automatique renvoyant au Copyright Clearance Center ; l'auteur juge qu'un accès à petite dose n'est pas un
+téléchargement en masse. D'où des limites strictes, inscrites dans le code :
+  - huit détroits seulement, une requête par détroit et par passage (pas de pagination sur toute la base) ;
+  - l'année en cours seulement (filtre « year »), depuis le 2026-06-01 ;
+  - deux passages par jour au plus ; aucune redistribution de la base, seulement les comptes dérivés ci-dessous.
+
+Registre : registre/portwatch-detroits.csv (detroit, jour, navires, petroliers, porte_conteneurs).
+"""
+from __future__ import annotations
+
+import csv
+import os
+import sys
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+import httpx
+
+SERVICE = ("https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/"
+           "FeatureServer/0/query")
+SORTIE = Path("registre") / "portwatch-detroits.csv"
+DEBUT = "2026-06-01"
+UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
+
+# détroit (nom court) : (motif du nom PortWatch, pays riverains ou directement concernés), table fixée le 2026-11-16
+DETROITS = {
+    "suez": ("Suez", ["EG"]),
+    "bab_el_mandeb": ("Bab el-Mandeb", ["YE", "ER", "DJ"]),
+    "ormuz": ("Hormuz", ["IR", "OM", "AE"]),
+    "malacca": ("Malacca", ["MY", "SG", "ID"]),
+    "panama": ("Panama", ["PA"]),
+    "bosphore": ("Bosporus", ["TR"]),
+    "taiwan": ("Taiwan", ["TW", "CN"]),
+    "bonne_esperance": ("Good Hope", ["ZA"]),
+}
+
+
+def requete(c: httpx.Client, motif: str, annee: int) -> list[dict]:
+    params = {"where": f"portname LIKE '%{motif}%' AND year = {annee}", "outFields": "date,portname,n_total,n_tanker,n_container",
+              "orderByFields": "date ASC", "resultRecordCount": 1000, "f": "json"}
+    for essai in range(4):
+        try:
+            r = c.get(SERVICE, params=params)
+            if r.status_code == 429 or r.status_code >= 500:
+                time.sleep(10 * 2 ** essai)
+                continue
+            r.raise_for_status()
+            corps = r.json()
+            if "error" in corps:
+                print(f"  {motif} : erreur ArcGIS {corps['error']}")
+                return []
+            return [f.get("attributes") or {} for f in corps.get("features") or []]
+        except httpx.HTTPError as e:
+            print(f"  {motif} : {type(e).__name__}")
+            time.sleep(10 * 2 ** essai)
+    return []
+
+
+def jour(attr: dict) -> str | None:
+    d = attr.get("date")
+    if isinstance(d, (int, float)):
+        return datetime.fromtimestamp(d / 1000, tz=timezone.utc).date().isoformat()
+    if isinstance(d, str) and len(d) >= 10:
+        return d[:10]
+    return None
+
+
+def lire() -> dict[tuple, list[int]]:
+    if not SORTIE.exists():
+        return {}
+    return {(x["detroit"], x["jour"]): [int(x["navires"]), int(x["petroliers"]), int(x["porte_conteneurs"])]
+            for x in csv.DictReader(SORTIE.open(encoding="utf-8"))}
+
+
+def principal() -> int:
+    comptes = lire()
+    annee = datetime.now(timezone.utc).year
+    nouveaux = 0
+    with httpx.Client(headers=UA, timeout=60, follow_redirects=True) as c:
+        for nom, (motif, _) in DETROITS.items():
+            lignes = requete(c, motif, annee)
+            noms = {str(a.get("portname")) for a in lignes}
+            if len(noms) > 1:
+                print(f"  {nom} : plusieurs détroits correspondent ({sorted(noms)}) : ignoré, table à préciser")
+                continue
+            n = 0
+            for a in lignes:
+                j = jour(a)
+                if not j or j < DEBUT:
+                    continue
+                v = [int(a.get("n_total") or 0), int(a.get("n_tanker") or 0), int(a.get("n_container") or 0)]
+                if comptes.get((nom, j)) != v:
+                    n += 1
+                comptes[(nom, j)] = v
+            nouveaux += n
+            dernier = max((jour(a) or "" for a in lignes), default="—")
+            print(f"  {nom:16s} {sorted(noms)} : {len(lignes)} jours en {annee}, dernier {dernier}, {n} nouveaux ou modifiés")
+            time.sleep(2)
+    SORTIE.parent.mkdir(exist_ok=True)
+    with SORTIE.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["detroit", "jour", "navires", "petroliers", "porte_conteneurs"])
+        for (d, j), v in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0])):
+            w.writerow([d, j, *v])
+    bilan = f"{nouveaux} comptes nouveaux ou modifiés ; {len(comptes)} cases détroit × jour. Source : IMF PortWatch."
+    print(bilan)
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+            f.write(f"## PortWatch\n\n{bilan}\n")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(principal())

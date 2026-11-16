@@ -31,6 +31,8 @@ ETATS = {
               ("GDELT : moins de manifestations dans la presse (÷ 1,5)", lambda v: v < -0.4)),
     "gdelt_emeutes": (("GDELT : plus d'émeutes dans la presse (× 1,5)", lambda v: v > 0.4),
                       ("GDELT : moins d'émeutes dans la presse (÷ 1,5)", lambda v: v < -0.4)),
+    "portwatch": (("PortWatch : le trafic du détroit chute (÷ 1,25)", lambda v: v < -0.22),
+                  ("PortWatch : le trafic du détroit monte (× 1,25)", lambda v: v > 0.22)),
     "ooni": (("OONI : la censure web monte (+5 points)", lambda v: v > 0.05),
              ("OONI : la censure web baisse (−5 points)", lambda v: v < -0.05)),
     "ooni_messageries": (("OONI : les messageries sont plus bloquées (+10 points)", lambda v: v > 0.10),
@@ -68,7 +70,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure

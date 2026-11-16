@@ -1,0 +1,42 @@
+name: Collecte quotidienne PortWatch (détroits, ombre)
+
+# 0.10.176 : passages quotidiens de navires dans huit détroits (IMF PortWatch), à petite dose : une requête par
+# détroit et par passage, année en cours, un passage par jour. Source : IMF PortWatch. Rien de posté.
+on:
+  schedule:
+    - cron: "13 10 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-portwatch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 15
+        run: uv run python collecte_portwatch.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -s registre/portwatch-detroits.csv ]; then git add registre/portwatch-detroits.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : PortWatch du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
