@@ -42,8 +42,7 @@ FLUX = {
         "https://www.gdacs.org/xml/rss.xml",
         "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
         # 0.10.156 : ONU Info ; 0.10.164 : le flux « toutes les actualités » renvoie 404, remplacé par les 5 flux régionaux
-        *[f"https://news.un.org/feed/subscribe/en/news/region/{r}/feed/rss.xml"
-          for r in ("africa", "americas", "europe", "asia-pacific", "middle-east")],
+        "https://www.un.org/apps/newsFr/rss/rss_top.asp",   # 0.10.168 : ONU Info en français (adresse de l'auteur)
     ],
     # 0.10.156 (décision d'auteur du 2026-11-15, 21 h 56) : lettres confidentielles d'Indigo Publications, TITRES SEULS
     # (contenu réservé aux abonnés) ; le renseignement et l'Afrique sont suivis à part ; La Lettre (pouvoir en France)
