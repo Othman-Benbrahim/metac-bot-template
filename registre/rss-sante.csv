@@ -5,15 +5,14 @@ http://feeds.feedburner.com/LaLettre-fr,lettres_fr,2026-11-16,ok,50,2026-11-16,2
 http://feeds.feedburner.com/glitz-fr,lettres_fr,2026-11-16,ok,50,2026-11-16,2026-11-15
 https://burkina24.com/category/actualite/monde/feed/,presse,2026-11-16,ok,6,2026-11-16,2026-11-15
 https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom,officiel,2026-11-16,ok,6,2026-11-16,2026-11-15
-https://ecfr.eu/feed/?post_type=post,think_tanks,2026-11-16,erreur HTTP 403,0,,
-https://ecfr.eu/feed/?post_type=publication,think_tanks,2026-11-16,erreur HTTP 403,0,,
 https://feeds.feedburner.com/europa/4MusBpiFxYU,parlement_ue,2026-11-16,ok,25,2026-11-16,2026-11-16
 https://feeds.feedburner.com/europa/7KToFj21lKH,parlement_ue,2026-11-16,ok,25,2026-11-16,2026-11-16
 https://feeds.feedburner.com/europa/L2FFkjEMMuC,parlement_ue,2026-11-16,ok,25,2026-11-16,2026-11-16
 https://feeds.feedburner.com/europa/hMbj972YL3S,parlement_ue,2026-11-16,ok,25,2026-11-16,2026-11-16
 https://feeds.feedburner.com/europa/han23L6OwaM,parlement_ue,2026-11-16,ok,25,2026-11-16,2026-11-16
 https://feeds.feedburner.com/europa/iCspPtqfmYa,parlement_ue,2026-11-16,ok,25,2026-11-16,2026-11-16
-https://fr.hespress.com/monde/feed,presse,2026-11-16,erreur HTTP 403,0,2026-11-15,2026-11-15
+https://feeds.feedburner.com/hespress/fcOoEW4V9pN,presse,2026-11-16,ok,10,2026-11-16,2026-11-16
+https://feeds.feedburner.com/lefaso/ODhP2vnmuWf,presse,2026-11-16,ok,10,2026-11-16,
 https://fr.investing.com/rss/news_14.rss,economie,2026-11-16,ok,10,2026-11-16,2026-11-16
 https://fr.investing.com/rss/news_95.rss,economie,2026-11-16,ok,10,2026-11-16,2026-11-16
 https://fr.yna.co.kr/RSS/international.xml,presse,2026-11-16,ok,32,2026-11-16,2026-11-16
@@ -29,13 +28,6 @@ https://globalvoices.org/-/world/south-asia/feed/,voix_citoyennes,2026-11-16,ok,
 https://globalvoices.org/-/world/sub-saharan-africa/feed/,voix_citoyennes,2026-11-16,ok,15,2026-11-16,2026-11-16
 https://globalvoices.org/-/world/western-europe/feed/,voix_citoyennes,2026-11-16,ok,15,2026-11-16,2026-11-15
 https://investinglive.com/feed/,economie,2026-11-16,ok,25,2026-11-16,2026-11-16
-https://lefaso.net/spip.php?page=backend&id_rubrique=7,presse,2026-11-16,erreur HTTP 415,0,2026-11-15,2026-11-15
-https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml,officiel,2026-11-16,erreur HTTP 404,0,,
-https://news.un.org/feed/subscribe/en/news/region/americas/feed/rss.xml,officiel,2026-11-16,erreur HTTP 404,0,,
-https://news.un.org/feed/subscribe/en/news/region/asia-pacific/feed/rss.xml,officiel,2026-11-16,erreur HTTP 404,0,,
-https://news.un.org/feed/subscribe/en/news/region/europe/feed/rss.xml,officiel,2026-11-16,erreur HTTP 404,0,,
-https://news.un.org/feed/subscribe/en/news/region/middle-east/feed/rss.xml,officiel,2026-11-16,erreur HTTP 404,0,,
-https://reliefweb.int/updates/rss.xml,officiel,2026-11-16,"erreur ParseError: no element found: line 1, column 0",0,,
 https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868,presse,2026-11-16,ok,80,2026-11-16,2026-11-16
 https://www.courrierinternational.com/feed/all/rss.xml,presse,2026-11-16,ok,20,2026-11-16,2026-11-16
 https://www.ecdc.europa.eu/en/taxonomy/term/1295/feed,sante,2026-11-16,ok,10,2026-11-16,2026-11-15
@@ -55,4 +47,5 @@ https://www.rts.ch/info/monde/?format=rss/news,presse,2026-11-16,ok,25,2026-11-1
 https://www.theglobalfund.org/data/rss-feeds/news-releases/,sante,2026-11-16,ok,10,2026-11-16,2026-11-15
 https://www.theglobalfund.org/data/rss-feeds/updates/,sante,2026-11-16,ok,10,2026-11-16,2026-11-15
 https://www.tsa-algerie.com/category/international/feed/,presse,2026-11-16,ok,10,2026-11-16,2026-11-16
+https://www.un.org/apps/newsFr/rss/rss_top.asp,officiel,2026-11-16,erreur HTTP 403,0,,
 https://www.who.int/api/news/diseaseoutbreaknews?$orderby=PublicationDateAndTime%20desc&$top=50,sante,2026-11-16,ok,50,2026-11-16,2026-11-15
