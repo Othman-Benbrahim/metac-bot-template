@@ -1,0 +1,28 @@
+name: Sondes alerte précoce (CrisisWatch, ACAPS)
+
+# 0.10.195 : sondes sans écriture ; affichent la forme des pages CrisisWatch et des réponses de l'API ACAPS.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: sonde-alerte-precoce
+  cancel-in-progress: false
+
+jobs:
+  sonde:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Sondes
+        timeout-minutes: 10
+        env:
+          ACAPS_USER: ${{ secrets.ACAPS_USER || vars.ACAPS_USER }}
+          ACAPS_PASSWORD: ${{ secrets.ACAPS_PASSWORD }}
+        run: uv run python sonde_alerte_precoce.py
