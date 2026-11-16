@@ -29,5 +29,24 @@ class TestRevues(unittest.TestCase):
         self.assertEqual(mr.lire_page(x)[2], "badArgument: set")
 
 
+class TestVerifier(unittest.TestCase):
+    def test_verifier_sans_reseau(self):
+        from unittest import mock
+
+        class R:
+            status_code = 200
+            content = XML
+            text = ""
+
+        class C:
+            def __init__(self, **k): pass
+            def __enter__(self): return self
+            def __exit__(self, *a): pass
+            def get(self, *a, **k): return R()
+
+        with mock.patch.object(mr.httpx, "Client", C), mock.patch.object(mr.time, "sleep", lambda s: None):
+            self.assertEqual(mr.verifier(), 0)
+
+
 if __name__ == "__main__":
     unittest.main()

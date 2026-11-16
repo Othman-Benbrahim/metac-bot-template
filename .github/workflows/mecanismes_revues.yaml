@@ -5,6 +5,9 @@ name: Mécanismes proposés à partir des revues (pilote, Bedrock)
 on:
   workflow_dispatch:
     inputs:
+      verification:
+        description: "oui = vérifier seulement l'accès aux revues (gratuit, rien d'écrit) ; non = pilote complet"
+        default: "oui"
       max:
         description: "nombre maximal d'articles envoyés au modèle"
         default: "300"
@@ -36,7 +39,12 @@ jobs:
         env:
           AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
           AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
-        run: uv run python mecanismes_revues.py --max "${{ github.event.inputs.max }}" --budget "${{ github.event.inputs.budget }}"
+        run: |
+          if [ "${{ github.event.inputs.verification }}" = "non" ]; then
+            uv run python mecanismes_revues.py --max "${{ github.event.inputs.max }}" --budget "${{ github.event.inputs.budget }}"
+          else
+            uv run python mecanismes_revues.py --verifier
+          fi
       - name: Enregistrer
         if: always()
         run: |

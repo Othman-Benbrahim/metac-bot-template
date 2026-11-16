@@ -171,11 +171,50 @@ def resumer(arts: list[dict], props: list[dict]) -> str:
     return "\n".join(l)
 
 
+def verifier() -> int:
+    """0.10.188 : vérification de l'accès aux revues, sans modèle ni écriture : une page OAI par revue, et un exemple."""
+    lignes, ok = ["## Vérification de l'accès aux revues (OAI-PMH d'OpenEdition)", "",
+                  "| revue | état | notices sur la 1re page | pertinentes | exemple |", "|---|---|---|---|---|"], 0
+    with httpx.Client(headers=UA, timeout=120, follow_redirects=True) as c:
+        for revue in REVUES:
+            try:
+                r = c.get(OAI, params={"verb": "ListRecords", "metadataPrefix": "oai_dc", "set": f"journals:{revue}"})
+                if r.status_code != 200:
+                    etat, arts = f"HTTP {r.status_code}", []
+                else:
+                    arts, tok, err = lire_page(r.content)
+                    etat = f"erreur OAI {err}" if err else ("ok" if arts else "vide")
+            except Exception as e:
+                etat, arts = f"{type(e).__name__}", []
+            ok += etat == "ok"
+            ex = arts[0] if arts else {}
+            lignes.append(f"| {revue} | {etat} | {len(arts)} | {sum(pertinent(x) for x in arts)} | "
+                          f"{(ex.get('titre') or '')[:60]} ({ex.get('date', '')}, {len(ex.get('resumes') or [])} résumé(s)) |")
+            time.sleep(1)
+        if ok < len(REVUES):
+            try:
+                r = c.get(OAI, params={"verb": "ListSets"})
+                noms = re.findall(r"<setSpec>(journals:[^<]+)</setSpec>", r.text)
+                lignes += ["", f"Collections « journals: » annoncées par le serveur (extrait) : {', '.join(noms[:40])}"]
+            except Exception as e:
+                lignes += ["", f"ListSets indisponible ({type(e).__name__})"]
+    lignes += ["", f"{ok} revue(s) sur {len(REVUES)} accessibles. Aucun appel au modèle, rien d'écrit."]
+    texte = "\n".join(lignes)
+    print(texte)
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+            f.write(texte + "\n")
+    return 0 if ok else 1
+
+
 def principal() -> int:
     ap_ = argparse.ArgumentParser()
     ap_.add_argument("--max", type=int, default=300)
     ap_.add_argument("--budget", type=float, default=3.0)
+    ap_.add_argument("--verifier", action="store_true", help="vérifier l'accès aux revues seulement (gratuit)")
     a = ap_.parse_args()
+    if a.verifier:
+        return verifier()
     tous = []
     with httpx.Client(headers=UA, timeout=120, follow_redirects=True) as c:
         for revue in REVUES:
