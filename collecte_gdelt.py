@@ -17,6 +17,12 @@ datasets/country-codes (colonnes FIPS et ISO3166-1-Alpha-2).
 Registres : registre/gdelt-manifestations.csv (pays, jour, manifestations, emeutes, articles) ;
 registre/gdelt-jours.txt (jours lus, y compris ceux sans aucune manifestation pour un pays).
 
+0.10.202 (M13, en ombre, décision d'auteur du 2026-11-16, 18 h 56) : dans les mêmes fichiers, actes hostiles d'un
+acteur russe (Actor1CountryCode = RUS) dans un autre pays : racines CAMEO 18 (agression), 19 (combat), 20 (violence de
+masse), par pays du lieu de l'action et par jour. Sert à compter les transgressions répétées d'une même catégorie
+(mécanisme « la réponse s'use à la répétition »). Registres : registre/gdelt-hostilites-ru.csv (pays, jour, agressions,
+combats, violence_masse) ; registre/gdelt-hostilites-jours.txt.
+
 Usage : python collecte_gdelt.py [--depuis AAAA-MM-JJ]   (par défaut : les jours manquants des 7 derniers jours)
 """
 from __future__ import annotations
@@ -40,6 +46,10 @@ UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Be
 
 # colonnes du format des événements GDELT 1.0 (58 colonnes depuis avril 2013)
 C_BASE, C_RACINE, C_ARTICLES, C_PAYS_ACTION = 27, 28, 33, 51
+C_PAYS_ACTEUR1 = 7                       # Actor1CountryCode (code CAMEO à trois lettres, « RUS »)
+HOSTILES = Path("registre") / "gdelt-hostilites-ru.csv"
+JOURS_H = Path("registre") / "gdelt-hostilites-jours.txt"
+RACINES_HOSTILES = ("18", "19", "20")
 
 # quelques codes FIPS courants, si la table publique est inaccessible (diffèrent souvent de l'ISO)
 FIPS_SECOURS = {"US": "US", "UK": "GB", "FR": "FR", "GM": "DE", "RS": "RU", "UP": "UA", "CH": "CN", "IN": "IN",
@@ -98,6 +108,37 @@ def compter(texte_csv: str, fips: dict[str, str]) -> dict[str, list[int]]:
     return out
 
 
+def hostilites(texte_csv: str, fips: dict[str, str], acteur: str = "RUS") -> dict[str, list[int]]:
+    """0.10.202 : par pays ISO du lieu de l'action (hors Russie) : [agressions (18), combats (19), violence de masse (20)]."""
+    out: dict[str, list[int]] = {}
+    for col in csv.reader(io.StringIO(texte_csv), delimiter="\t"):
+        if len(col) <= C_PAYS_ACTION or col[C_PAYS_ACTEUR1] != acteur or col[C_RACINE] not in RACINES_HOSTILES:
+            continue
+        pays = fips.get(col[C_PAYS_ACTION])
+        if not pays or pays == "RU":
+            continue
+        out.setdefault(pays, [0, 0, 0])[RACINES_HOSTILES.index(col[C_RACINE])] += 1
+    return out
+
+
+def lire_h() -> tuple[dict[tuple, list[int]], set[str]]:
+    h = {}
+    if HOSTILES.exists():
+        for x in csv.DictReader(HOSTILES.open(encoding="utf-8")):
+            h[(x["pays"], x["jour"])] = [int(x["agressions"]), int(x["combats"]), int(x["violence_masse"])]
+    return h, (set(JOURS_H.read_text(encoding="utf-8").split()) if JOURS_H.exists() else set())
+
+
+def ecrire_h(h: dict[tuple, list[int]], jours_h: set[str]) -> None:
+    HOSTILES.parent.mkdir(exist_ok=True)
+    with HOSTILES.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["pays", "jour", "agressions", "combats", "violence_masse"])
+        for (p, j), v in sorted(h.items(), key=lambda t: (t[0][1], t[0][0])):
+            w.writerow([p, j, *v])
+    JOURS_H.write_text("\n".join(sorted(jours_h)) + "\n", encoding="utf-8")
+
+
 def lire() -> tuple[dict[tuple, list[int]], set[str]]:
     comptes = {}
     if COMPTES.exists():
@@ -124,6 +165,7 @@ def principal() -> int:
     hier = datetime.now(timezone.utc).date() - timedelta(days=1)
     debut = date.fromisoformat(a.depuis) if a.depuis else hier - timedelta(days=6)
     comptes, jours = lire()
+    hostiles, jours_h = lire_h()
     lus = absents = 0
     with httpx.Client(headers=UA, follow_redirects=True, timeout=120) as c:
         fips = table_fips(c)
@@ -131,7 +173,7 @@ def principal() -> int:
         d = debut
         while d <= hier:
             j = d.isoformat()
-            if j in jours:
+            if j in jours and j in jours_h:
                 d += timedelta(days=1)
                 continue
             try:
@@ -152,13 +194,18 @@ def principal() -> int:
             for p, v in par_pays.items():
                 comptes[(p, j)] = v
             jours.add(j)
+            for p, v in hostilites(texte, fips).items():
+                hostiles[(p, j)] = v
+            jours_h.add(j)
             lus += 1
             tot = [sum(v[i] for v in par_pays.values()) for i in range(3)]
             print(f"  {j} : {tot[0]} manifestations, {tot[1]} émeutes, {len(par_pays)} pays")
             if lus % 20 == 0:
                 ecrire(comptes, jours)          # sauvegarde régulière pendant un long rattrapage
+                ecrire_h(hostiles, jours_h)
             d += timedelta(days=1)
     ecrire(comptes, jours)
+    ecrire_h(hostiles, jours_h)
     bilan = f"{lus} jour(s) lus, {absents} absent(s) ; {len(jours)} jours couverts au total."
     print(bilan)
     if os.environ.get("GITHUB_STEP_SUMMARY"):

@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/gdelt-manifestations.csv registre/gdelt-jours.txt; do if [ -s "$f" ]; then git add "$f"; fi; done
+          for f in registre/gdelt-manifestations.csv registre/gdelt-jours.txt registre/gdelt-hostilites-ru.csv registre/gdelt-hostilites-jours.txt; do if [ -s "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : GDELT manifestations du $(date -u +%Y-%m-%d)"
             git pull --rebase

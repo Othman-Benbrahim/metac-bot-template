@@ -128,6 +128,49 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
 - Réserve : un signal positif ne distingue pas la contagion d'une cause commune aux voisins (économie, culture).
 - État : **observatoire** ; jugeable sur les questions résolues dès le rattrapage de GDELT.
 
+### M12. Le récit monte avant l'acte
+- Indicateur : articles de sources russes qui nomment le pays (GDELT DOC 2.0, `sourcecountry:russia`), 14 jours avant
+  la date contre les 14 précédents (`recit_russe`, 0.10.202) ; variante « alibi informationnel » : part de ces articles
+  qui parlent de provocation, de mise en scène ou de faux drapeau (`part_alibi_14j`).
+- Sens fixé d'avance : récit russe en hausse → action russe visant le pays plus probable (frappes, sabotages,
+  incursions, coupures, ruptures diplomatiques) (+) ; part « alibi » en hausse, même sens.
+- Domaine : questions sur une action de la Russie contre un pays ; exclues : questions sans acteur russe.
+- Échelle de temps : semaines.
+- Origine : Anderson et Bajarūnas, *Cognitive Warfare: A Democratic Defence* (KAS, 2026), vol. 2, chapitre Ukraine :
+  StopFake dit avoir anticipé la date et l'ampleur de l'invasion de 2022 en suivant le volume des récits russes ;
+  affirmation de praticiens, non vérifiée. Alibi informationnel : MH17, Skripal (même rapport, annexe B). Décision
+  d'auteur du 2026-11-16 (18 h 56).
+- Réserve : l'API ne remonte qu'à trois mois ; l'historique se construit au fil des passages. Les requêtes portent sur
+  la traduction anglaise des articles russes faite par GDELT.
+- État : **observatoire** (indicateur `recit_russe`).
+
+### M13. La réponse s'use à la répétition (« mundanisation »)
+- Indicateur : actes hostiles d'un acteur russe dans le pays (GDELT, Actor1CountryCode = RUS, racines CAMEO 18, 19, 20)
+  dans les 12 mois avant la date, par catégorie (registre `gdelt-hostilites-ru.csv`, 0.10.202).
+- Sens fixé d'avance : plus la même catégorie de transgression s'est répétée, moins une réponse occidentale forte
+  (sanctions nouvelles, mesures diplomatiques) est probable (−).
+- Domaine : questions « les États-Unis, le Royaume-Uni ou l'UE répondront-ils par des sanctions ou des mesures après
+  X ? » ; réponses mesurées par nos registres de sanctions (OFAC, Royaume-Uni). Exclues : toutes les autres.
+- Échelle de temps : mois.
+- Origine : même rapport, chapitre 4 et annexe B (« mundanisation ») ; décision d'auteur du 2026-11-16.
+- Réserve : peu de questions de ce type ; le jugement attendra 20 questions résolues du domaine. Rattrapage de GDELT
+  nécessaire sur 12 mois (collecte GDELT avec « depuis »).
+- État : **proposé** ; données collectées, pas d'état d'observatoire (domaine trop étroit pour les questions du banc).
+
+### M14. Les dates de mémoire attisent les tensions
+- Indicateur : date de mémoire du calendrier fixe (`registre/dates-memoire.csv` : 9 mai, déportations de 1941 et 1949,
+  ruban noir du 23 août, légion lettone du 16 mars, Nuit de bronze, 13 janvier, Kirkenes…) dans les 14 jours à partir
+  de la date (`dates_memoire`, 0.10.202). Calendrier connu d'avance : aucune fuite.
+- Sens fixé d'avance : date de mémoire proche → manifestations, incidents, opérations d'influence et cyberattaques
+  plus probables dans le pays (+).
+- Domaine : pays du calendrier (baltes, Russie, Biélorussie, Ukraine, Moldavie, Géorgie, Pologne, Norvège).
+- Échelle de temps : jours.
+- Origine : même rapport (annexe B, « memory politics » : Soldat de bronze, Tallinn 2007 ; mémorial de Kirkenes) ;
+  rangé par l'auteur parmi les signaux faibles et angles morts ; décision d'auteur du 2026-11-16 (18 h 56).
+- Réserve : calendrier établi le 2026-11-16 à partir de connaissances générales, à relire par l'auteur ; dates à jour
+  fixe seulement (pas le Holodomor, quatrième samedi de novembre).
+- État : **observatoire** (indicateur `dates_memoire`).
+
 ## Ce que ce catalogue n'est pas
 Ni une liste de « causes » démontrées, ni un réservoir où l'on choisit après coup la fiche qui aurait marché. Le
 nombre de fiches augmente le risque de trouver une régularité par hasard ; c'est pourquoi le sens est fixé avant

@@ -1,0 +1,47 @@
+name: Collecte quotidienne du récit russe par pays (GDELT DOC, M12, ombre)
+
+# 0.10.202 : volume quotidien des articles de sources russes qui nomment chaque pays (API DOC 2.0 de GDELT, gratuite,
+# sans clé) ; fenêtre glissante de trois mois relue à chaque passage. Environ 30 minutes (5 secondes entre requêtes).
+on:
+  schedule:
+    - cron: "23 4 * * *"
+    - cron: "23 16 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  workflow_dispatch:
+    inputs:
+      pays:
+        description: "codes ISO séparés par des virgules (vide = tous les pays indépendants)"
+        default: ""
+
+concurrency:
+  group: collecte-recit-russe
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 90
+        run: uv run python collecte_recit_russe.py --pays "${{ github.event.inputs.pays }}"
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -s registre/recit-russe.csv ]; then git add registre/recit-russe.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : récit russe par pays du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

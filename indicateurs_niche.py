@@ -33,6 +33,10 @@ STRICTEMENT avant la date du jeu :
   les 14 jours avant la date ; total, décidées par l'État ou militaires, pannes électriques.
 - portwatch (0.10.176, en ombre) : passages de navires dans les détroits liés au pays (IMF PortWatch), décalés d'une
   semaine pour le délai de publication ; log(14 jours / 14 jours précédents).
+- recit_russe (0.10.202, en ombre, fiche M12) : articles de sources russes qui nomment le pays (GDELT DOC), log(14 jours
+  / 14 jours précédents), et part « alibi » (provocation, mise en scène, faux drapeau).
+- dates_memoire (0.10.202, en ombre, fiche M14) : dates de mémoire du calendrier fixe dans les 14 jours à partir de
+  la date (pays baltes, Russie, Ukraine, Moldavie, Géorgie, Pologne, Norvège).
 - acaps (0.10.196, en ombre) : risques nouveaux émis par les analystes d'ACAPS pour le pays dans les 180 jours avant
   la date (date d'entrée et pays seulement, champs non révisés) ; source ACAPS.
 - voisins (0.10.186, en ombre, fiche M11) : manifestations et émeutes de GDELT dans les pays frontaliers (GeoNames,
@@ -617,6 +621,41 @@ def acaps(cca2: str | None, d0: date, fenetre: int = 180) -> dict:
     return {"present": True, "valeur": len(xs), "fenetre_jours": fenetre}
 
 
+RECIT_RUSSE = Path("registre") / "recit-russe.csv"
+DATES_MEMOIRE = Path("registre") / "dates-memoire.csv"
+
+
+def recit_russe(cca2: str | None, d0: date, couverture_min: int = 24) -> dict:
+    """0.10.202 (M12, en ombre) : articles de sources russes qui nomment le pays (GDELT DOC), log(14 jours / 14 jours
+    précédents) ; part « alibi » (provocation, mise en scène, faux drapeau) sur les 14 derniers jours quand elle est lue."""
+    if not cca2 or not RECIT_RUSSE.exists():
+        return {"present": False, "raison": "pays inconnu ou registre absent"}
+    a, m = (d0 - timedelta(days=28)).isoformat(), (d0 - timedelta(days=14)).isoformat()
+    xs = [x for x in csv.DictReader(RECIT_RUSSE.open(encoding="utf-8"))
+          if x["pays"] == cca2 and a <= x["jour"] < d0.isoformat()]
+    if len({x["jour"] for x in xs}) < couverture_min:
+        return {"present": False, "raison": "période non couverte"}
+    rec = [x for x in xs if x["jour"] >= m]
+    n_rec, n_av = sum(int(x["articles"] or 0) for x in rec), sum(int(x["articles"] or 0) for x in xs if x["jour"] < m)
+    out = {"present": True, "valeur": round(math.log((n_rec + 1) / (n_av + 1)), 4), "articles_14j": n_rec,
+           "articles_14j_avant": n_av}
+    if rec and all((x.get("alibi") or "") != "" for x in rec) and n_rec:
+        out["part_alibi_14j"] = round(sum(int(x["alibi"]) for x in rec) / n_rec, 4)
+    return out
+
+
+def dates_memoire(cca2: str | None, d0: date, fenetre: int = 14) -> dict:
+    """0.10.202 (M14, en ombre) : dates de mémoire du calendrier fixe (registre/dates-memoire.csv) qui tombent dans
+    les `fenetre` jours à partir de la date. Calendrier connu d'avance : aucune fuite. Absent pour un pays sans date."""
+    if not cca2 or not DATES_MEMOIRE.exists():
+        return {"present": False, "raison": "pays inconnu ou calendrier absent"}
+    md = [x["mois_jour"] for x in csv.DictReader(DATES_MEMOIRE.open(encoding="utf-8")) if x["pays"] == cca2]
+    if not md:
+        return {"present": False, "raison": "aucune date de mémoire pour ce pays"}
+    jours = {(d0 + timedelta(days=k)).strftime("%m-%d") for k in range(fenetre)}
+    return {"present": True, "valeur": sum(m in jours for m in md), "fenetre_jours": fenetre}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 RSS_LARGE_DEBUT = date(2026, 11, 17)  # 0.10.199 : premier jour complet des comptes « _large » (adjectifs) et cyber
@@ -688,7 +727,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -749,6 +788,12 @@ async def principal() -> int:
                 if "acaps" not in fait and ACAPS_RISQUES.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["acaps"] = acaps(code, d0)
+                if "recit_russe" not in fait and RECIT_RUSSE.exists():          # 0.10.202, M12
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["recit_russe"] = recit_russe(code, d0)
+                if "dates_memoire" not in fait and DATES_MEMOIRE.exists():      # 0.10.202, M14
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["dates_memoire"] = dates_memoire(code, d0)
                 if "voisins" not in fait and GDELT_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["voisins"] = voisins_gdelt(code, d0)
@@ -763,7 +808,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire") if k in ligne))
         await tg.fermer()
     return 0
 

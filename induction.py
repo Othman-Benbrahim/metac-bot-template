@@ -63,6 +63,10 @@ ETATS = {
     "rss_voix_citoyennes": (("Global Voices en parle", lambda v: v >= 1), ("Global Voices n'en parle pas", lambda v: v == 0)),
     "rss_economie": (("la presse économique en parle", lambda v: v >= 1), ("la presse économique n'en parle pas", lambda v: v == 0)),
     "rss_notation": (("une agence de notation est citée", lambda v: v >= 1), ("aucune agence de notation citée", lambda v: v == 0)),
+    "recit_russe": (("les sources russes parlent de plus en plus du pays (× 1,5)", lambda v: v > 0.4),
+                    ("les sources russes en parlent moins (÷ 1,5)", lambda v: v < -0.4)),          # 0.10.202, M12
+    "dates_memoire": (("une date de mémoire tombe dans les 14 jours", lambda v: v >= 1),
+                      ("aucune date de mémoire dans les 14 jours", lambda v: v == 0)),                # 0.10.202, M14
     "rss_cyber": (("le CERT-FR nomme le pays", lambda v: v >= 1), ("le CERT-FR ne nomme pas le pays", lambda v: v == 0)),
     "rss_verification": (("désinformation vérifiée sur le pays (≥ 3 vérifications Correctiv)", lambda v: v >= 3),
                          ("aucune vérification Correctiv sur le pays", lambda v: v == 0)),
@@ -92,7 +96,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
