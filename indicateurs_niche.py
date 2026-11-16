@@ -43,6 +43,8 @@ STRICTEMENT avant la date du jeu :
   chinoise concernant le pays, émis dans les 14 jours (NGA, HYDROPAC).
 - feux (0.10.208, en ombre) : points chauds détectés par satellite (NASA FIRMS, VIIRS), log(14 jours / 14 jours
   précédents).
+- silence_statistique (0.10.209, en ombre, fiche M15) : publications prévues du Bureau national des statistiques
+  chinois parues en retard ou absentes dans les 30 jours (Chine seulement).
 - acaps (0.10.196, en ombre) : risques nouveaux émis par les analystes d'ACAPS pour le pays dans les 180 jours avant
   la date (date d'entrée et pays seulement, champs non révisés) ; source ACAPS.
 - voisins (0.10.186, en ombre, fiche M11) : manifestations et émeutes de GDELT dans les pays frontaliers (GeoNames,
@@ -723,6 +725,43 @@ def feux(cca2: str | None, d0: date, couverture_min: int = 26) -> dict:
             "detections_14j_avant": av, "part_forte_confiance": round(fort / rec, 3) if rec else None}
 
 
+CALENDRIER_NBS = Path("registre") / "calendrier-nbs.csv"
+PUBLICATIONS_NBS = Path("registre") / "publications-nbs.csv"
+
+
+def silence_statistique(cca2: str | None, d0: date, fenetre: int = 30, tolerance: int = 3) -> dict:
+    """0.10.209 (M15, en ombre) : publications du Bureau national des statistiques chinois PRÉVUES par le calendrier
+    officiel dans les `fenetre` jours avant la date, et jugeables (date prévue + tolérance < date), qui ont paru en
+    retard ou pas du tout. Chine seulement. Seules les publications observées avant la date comptent (pas de fuite)."""
+    if cca2 != "CN":
+        return {"present": False, "raison": "Chine seulement"}
+    if not CALENDRIER_NBS.exists() or not PUBLICATIONS_NBS.exists():
+        return {"present": False, "raison": "registre absent"}
+    obs = [x for x in csv.DictReader(PUBLICATIONS_NBS.open(encoding="utf-8")) if x["jour"] < d0.isoformat()]
+    if not obs:
+        return {"present": False, "raison": "aucune publication observée avant la date"}
+    debut = max(min(x["jour"] for x in obs), (d0 - timedelta(days=fenetre)).isoformat())
+    a_temps = retard = absente = 0
+    manquantes = []
+    for x in csv.DictReader(CALENDRIER_NBS.open(encoding="utf-8")):
+        e = date.fromisoformat(x["date_prevue"])
+        if not (debut <= (e - timedelta(days=1)).isoformat() and e + timedelta(days=tolerance) < d0):
+            continue
+        vues = [date.fromisoformat(o["jour"]) for o in obs if o["publication"] == x["publication"]]
+        if any(e - timedelta(days=1) <= v <= e + timedelta(days=tolerance) for v in vues):
+            a_temps += 1
+        elif any(e + timedelta(days=tolerance) < v for v in vues):
+            retard += 1
+            manquantes.append(f"{x['publication']} {x['date_prevue']} (retard)")
+        else:
+            absente += 1
+            manquantes.append(f"{x['publication']} {x['date_prevue']} (absente)")
+    if not (a_temps + retard + absente):
+        return {"present": False, "raison": "aucune publication prévue jugeable dans la fenêtre"}
+    return {"present": True, "valeur": retard + absente, "a_temps": a_temps, "retard": retard, "absente": absente,
+            "manquantes": manquantes[:6]}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 RSS_LARGE_DEBUT = date(2026, 11, 17)  # 0.10.199 : premier jour complet des comptes « _large » (adjectifs) et cyber
@@ -794,7 +833,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -867,6 +906,9 @@ async def principal() -> int:
                 if "feux" not in fait and FEUX.exists():                         # 0.10.208, NASA FIRMS
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["feux"] = feux(code, d0)
+                if "silence_statistique" not in fait and PUBLICATIONS_NBS.exists():   # 0.10.209, M15
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["silence_statistique"] = silence_statistique(code, d0)
                 if "dates_memoire" not in fait and DATES_MEMOIRE.exists():      # 0.10.202, M14
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["dates_memoire"] = dates_memoire(code, d0)
@@ -884,7 +926,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique") if k in ligne))
         await tg.fermer()
     return 0
 

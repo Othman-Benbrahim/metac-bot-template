@@ -171,6 +171,21 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
   fixe seulement (pas le Holodomor, quatrième samedi de novembre).
 - État : **observatoire** (indicateur `dates_memoire`).
 
+### M15. Le silence statistique annonce une mauvaise nouvelle
+- Indicateur : publications du Bureau national des statistiques chinois prévues par son calendrier officiel annuel
+  et parues en retard (plus de 3 jours) ou pas du tout, dans les 30 jours avant la date (`silence_statistique`,
+  0.10.209 ; calendrier `registre/calendrier-nbs.csv`, observations `registre/publications-nbs.csv`).
+- Sens fixé d'avance : publication manquante ou retardée → mauvaise nouvelle économique ou politique en Chine plus
+  probable (chiffre suspendu, crise interne, décision sensible) (+).
+- Domaine : questions sur l'économie chinoise et la stabilité intérieure de la Chine ; exclues : toutes les autres.
+- Échelle de temps : semaines.
+- Origine : suspension de la publication du chômage des jeunes (été 2023) ; logique de l'ombre « absence » appliquée
+  à une administration fermée ; décision d'auteur du 2026-11-16 (22 h 19).
+- Réserve : le site anglais publie avec un ou deux jours de décalage (tolérance de 3 jours) ; un motif de titre qui
+  change ferait passer une publication pour absente (à surveiller dans le registre) ; calendrier à renouveler chaque
+  année.
+- État : **observatoire** (indicateur `silence_statistique`).
+
 ## Ce que ce catalogue n'est pas
 Ni une liste de « causes » démontrées, ni un réservoir où l'on choisit après coup la fiche qui aurait marché. Le
 nombre de fiches augmente le risque de trouver une régularité par hasard ; c'est pourquoi le sens est fixé avant
