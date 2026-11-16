@@ -1,0 +1,114 @@
+{
+ "candidats": [
+  "PER@9",
+  "RES@5"
+ ],
+ "contre_candidate": [
+  "PER@9",
+  "RES@5"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [],
+ "rejets": {
+  "PER@9": "[contredit] A7 : contre-observation substantielle sur une lecture f",
+  "RES@5": "[contredit] A7 : contre-observation substantielle sur une lecture f"
+ },
+ "etat": "",
+ "disponible_le": "2026-11-16",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "PER@9"
+   ],
+   "requete": "MasterChef Celebrity ratings by weekday September–November 2026 television.com.ar 'MasterChef Celebrity' 'ratings del' 'jueves' 'miercoles' 'domingo'",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "PER@9"
+   ],
+   "requete": "Comparison MasterChef Celebrity midweek vs weekend ratings Nov 2026 'television.com.ar' 'rating' 'MasterChef' 'jueves' 'domingo'",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "PER@9"
+   ],
+   "requete": "Instances where schedule shifts (special events, papal visit) reduced MasterChef Celebrity ratings Oct–Nov 2026 'television.com.ar' 'cambio de grilla' 'MasterChef Celebrity'",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "RES@5"
+   ],
+   "requete": "Press coverage impact on MasterChef Celebrity ratings November 2026 Wanda Nara Icardi Julieta Nair Calvo 'television.com.ar' 'rating' 'MasterChef'",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "RES@5"
+   ],
+   "requete": "Did episodes with high media attention (eliminations, controversies) systematically show higher ratings for MasterChef Celebrity Sep–Nov 2026 'television.com.ar' 'rating' 'eliminación' 'pico'",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "RES@5"
+   ],
+   "requete": "Cases where heavy media controversy did NOT raise TV program ratings Argentina 2020–2026 'television.com.ar' 'Kantar Ibope' 'rating' 'controversia'",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "RÉSONANCE@9 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "La réponse sera OUI si le chiffre de rating publié pour 'MasterChef Celebrity' dans le rapport de television.com.ar pour le jeudi 26 novembre 2026 est strictement supérieur à 12.1; sinon NO ou annulation selon les règles fournies.",
+   "source_resolution": {
+    "emetteur": "television.com.ar (compilation des ratings basée sur Kantar Ibope Media)",
+    "document": "article de la rubrique Ratings typiquement intitulé « Ratings del jueves 26 de noviembre: estos fueron los programas más vistos de cada canal de la TV Abierta » ou page correspondante du site pour la date 2026-11-26",
+    "regle_ambiguite": "si le rapport contient plusieurs entrées Telefe commençant par 'MasterChef Celebrity' (p.ex. segment principal et 'la definición'), prendre la valeur la plus élevée; si television.com.ar n'a pas de chiffre utilisable, admettre chiffres publiés par sources crédibles citant Kantar Ibope (p.ex. Exitoina/Perfil) en prenant la moyenne si ces sources fournissent plusieurs valeurs; si Telefe n'a pas diffusé un nouvel épisode prime-time ou aucun chiffre n'est publié, la question est annulée."
+   },
+   "vue_exterieure": {
+    "frequence": 0.5,
+    "classe_de_reference": "fenêtres temporelles de 12 jours contenant au moins une diffusion en prime-time de 'MasterChef Celebrity' pour lesquelles la grandeur mesurée (points d'audience Kantar Ibope tels que publiés) aboutit, à la fin de la fenêtre, à une valeur strictement supérieure au seuil demandé (> 12.1). Formellement : fenêtres de 12 jours où la valeur rapportée pour la diffusion finale de la fenêtre dépasse 12.1 points.",
+    "source": "television.com.ar (section Ratings) — compilations citées en [R1], [R2] fournies par l'utilisateur",
+    "periode": "2026-2026",
+    "disponible_le": "2026-11-16",
+    "classe_alternative": null,
+    "motif_sans_alternative": "Aucune alternative complète et honnête n'a été fournie dans les résultats — il manque un relevé exhaustif jour par jour de toutes les diffusions prime-time pour construire et déplacer toutes les fenêtres glissantes de 12 jours sur 2026. Les données disponibles sont un échantillon ponctuel (articles/entrées de ratings) utilisé ici comme proxy ; une classe alternative fondée sur un registre exhaustif (toutes les dates d'émission Kantar Ibope en 2026) n'est pas fournie dans les sources cités.",
+    "ecart_critere": "La classe comptée ici est un dénombrement d'épisodes rapportés (dates avec chiffres publiés) servant de proxy pour des fenêtres glissantes de 12 jours — ce n'est pas un comptage exhaustif de TOUTES les fenêtres de 12 jours dans 2026. Autrement dit : non identique : j'utilise occurrences d'épisodes publiés comme approximation aux fenêtres glissantes exigées."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "PER@9",
+   "vers": "cible",
+   "extrait": "Notably, while the papal visit caused significant schedule disruptions (cambio de grilla), MasterChef Celebrity demonstrated remarkable resilience, maintaining strong ratings even during these special events rather than experiencing substantial reductions.",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "RES@5",
+   "vers": "cible",
+   "extrait": "The midweek broadcast on Thursday performed slightly better than the weekend broadcast on Sunday, with a difference of **0.5 points in favor of Thursday** (12.6 vs 12.1 points).",
+   "source": "https://television.com.ar/noticias/ratings/ratings-del-jueves-subas-y-bajas-2/#:~:text=%23%20Ratings%20del%20jueves%3A%20Subas,de%20los%20%C3%BAltimos%20cuatro%20meses."
+  }
+ ]
+}

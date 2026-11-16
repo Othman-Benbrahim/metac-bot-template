@@ -1,0 +1,267 @@
+{
+ "candidats": [
+  "CRO@5",
+  "RES@5",
+  "CTR@5"
+ ],
+ "contre_candidate": [
+  "CTR@5"
+ ],
+ "mots": [
+  {
+   "carte": "CRO",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "22 Jul 2023 : Correos a publié un communiqué indiquant un total national de 2,471,935 'votos admitidos' pour les elecciones generales du 23/07/2023 ; comparaison chiffrée avec avril 2019 (≈1,241,716) montre une hausse nette et datée entre 2019 et 2023.",
+   "objet": "évolution temporelle du nombre national de 'votos admitidos' rapportés par Correos entre 2019 et 2023",
+   "source": "Comunicado Correos (22-07-2023) ; article RTVE (22-07-2023)",
+   "source_url": "https://www.correos.com/sala-prensa/exito-en-la-gestion-del-voto-por-correo-que-marca-record-historico-con-2-471-935-votos-admitidos-para-las-elecciones-generales",
+   "date_consultation": "2026-11-16",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Comunicado Correos, 22 Jul 2023, paragraphe principal",
+     "relation": "soutient",
+     "extrait": "Éxito en la gestión del voto por correo que marca récord histórico con 2.471.935 votos admitidos para las elecciones generales"
+    },
+    {
+     "localisation": "RTVE, dépêche 22 Jul 2023, titre",
+     "relation": "soutient",
+     "extrait": "Un total de 2,47 millones de votos por correo fueron admitidos, récord desde 2008"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "des séries temporelles de demandes et de votes admis montrent une augmentation nette : plus de demandes conduit, toutes choses égales, à plus de votes admis si la conversion (collecte/dépôt) reste élevée",
+    "support": {
+     "type": "texte",
+     "reference": "Comunicado oficial de Correos (22-07-2023) ; bilan chiffré comparatif 2019 vs 2023 dans la presse",
+     "disponible_le": "2023-07-22"
+    },
+    "attendu": "des mesures datées (2019, 2023) montrant une hausse mesurable du nombre de 'votos admitidos'",
+    "contredirait": "des séries montrant stabilité ou baisse entre 2019 et 2023"
+   },
+   "option": {
+    "acteur": "Electeurs / Correos",
+    "avant": "niveau inférieur (~1.24M en 2019)",
+    "apres": "niveau supérieur (~2.47M en 2023) reflétant hausse de la demande convertie en votes admitidos"
+   },
+   "contre_observation": "Des problèmes logistiques et retards de distribution ont été signalés en juillet 2023 (retards locaux, personnel intérimaire) ; malgré cela le total final publié reste élevé.",
+   "portee": "marginale",
+   "test": "cerceau",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "un communiqué officiel de Correos et des comptes rendus de médias indépendants (RTVE) rapportent la même valeur chiffrée"
+   },
+   "source_urls": [
+    "https://www.correos.com/sala-prensa/exito-en-la-gestion-del-voto-por-correo-que-marca-record-historico-con-2-471-935-votos-admitidos-para-las-elecciones-generales",
+    "https://www.rtve.es/noticias/20230722/voto-correo-record/2452553.shtml"
+   ]
+  },
+  {
+   "carte": "RES",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Communiqués et rapports de Correos et son rapport annuel décrivent une topologie opérationnelle (centres de traitement, centres d'admisión masiva, bureaux de poste, unités de distribution) mobilisée pour la gestion du voto por correo (chiffres et dispositifs datés 2019–2023).",
+   "objet": "infrastructure opérationnelle de Correos (nœuds : centres de traitement / bureaux / unités de distribution) et leur rôle dans la circulation des bulletins postaux",
+   "source": "Informe anual Grupo Correos (2023) ; comunicado Correos sur dispositifs logísticos (juillet 2023)",
+   "source_url": "https://cswetwebcorsta01.blob.core.windows.net/uploads/2024/06/Informe_Anual_Integrado_Grupo-Correos-2023.pdf",
+   "date_consultation": "2026-11-16",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Informe anual Grupo Correos 2023, section operación",
+     "relation": "soutient",
+     "extrait": "2.388 offices, 19 centros de tratamiento, unidades de distribución y despliegues especiales para procesos electorales"
+    },
+    {
+     "localisation": "Comunicado Correos, 22 Jul 2023, dispositif operativo",
+     "relation": "soutient",
+     "extrait": "más de 14.000 empleados, aperturas extraordinarias de oficinas y medidas organizativas para gestionar el incremento de voto por correo"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "la topologie logistique (bureaux, centres, unités de distribution) définit les chemins physiques par lesquels la documentation électorale est envoyée, collectée et admise ; des goulots ou ponts dans ce réseau influencent la conversion demandes→votes admis",
+    "support": {
+     "type": "donnee",
+     "reference": "Informe anual Grupo Correos 2023 (statistiques d'infrastructure) ; comunicados opérationnels 2023",
+     "disponible_le": "2023-07-22"
+    },
+    "attendu": "nœuds nommables (bureaux, centres, unités) et procédures reliant ces nœuds apparaissent dans les sources",
+    "contredirait": "absence de description opérationnelle reliant ces nœuds"
+   },
+   "option": {
+    "acteur": "Correos",
+    "avant": "fonctionnement selon ressources standards",
+    "apres": "déploiement de ressources extraordinaires (heures étendues, personnel complémentaire) pour absorber la demande"
+   },
+   "contre_observation": "Des rapports de retard et manque de planification locale (ex. retards de livraison à Barcelone en juillet 2023) montrent que la topologie a présenté des points de rupture temporaires.",
+   "portee": "marginale",
+   "test": "cerceau",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "origine",
+    "motif": "rapport interne/annuel de Correos et comptes rendus de presse indépendante (El Confidencial, ABC) décrivent la même structure et incidents"
+   },
+   "source_urls": [
+    "https://cswetwebcorsta01.blob.core.windows.net/uploads/2024/06/Informe_Anual_Integrado_Grupo-Correos-2023.pdf",
+    "https://www.correos.com/sala-prensa/exito-en-la-gestion-del-voto-por-correo-que-marca-record-historico-con-2-471-935-votos-admitidos-para-las-elecciones-generales"
+   ]
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Correos publie-t-il, dans un communiqué daté au plus tard le 2026-11-26 (sala de prensa ou PDF officiel), un total national cumulé de 'votos admitidos' pour les élections du 29/11/2026 strictement supérieur à 1.050.000 ?",
+   "si_oui": "CRO@5",
+   "si_non": "CTR@5",
+   "resolution": "Observation directe du communiqué officiel de Correos (note de presse ou PDF) publié ≤ 2026-11-26 sur https://www.correos.com/press-release-category/voto-por-correo/ ou la page Sala de Prensa de Correos, affichant le total chiffré 'votos admitidos' pour le scrutin 29/11/2026.",
+   "justification": {
+    "oui": "La publication d'un total chiffré >1,050,000 confirme la poursuite/manifestation de la croissance observée et l'absorption par le réseau opérationnel, validant CRO@5.",
+    "non": "L'absence d'un tel total (≤1,050,000 ou absence de chiffre cumulé publié ≤ 26/11/2026) signale soit que la contrainte temporelle/logistique a limité les dépôts soit qu'aucune estimation consolidée n'a été fournie, ce qui appuie CTR@5 comme facteur limitant ou rend la résolution indéterminée selon l'absence de publication."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "CTR@5": "[non_classe] Aucune entrée 'mot' (fait/source) fournie pour CTR@5 dans le dossier initial ; le candidat a donc été retiré des listes faute de preuve associée."
+ },
+ "etat": "[2026-11-16 | 11 jours] CROISSANCE@5[f] + RÉSEAU@5[f]",
+ "disponible_le": "2026-11-16",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@5"
+   ],
+   "requete": "historical totals 'votos admitidos' Correos general elections 2008 2019 2023 cifras",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@5",
+    "CTR@5"
+   ],
+   "requete": "compare effect of voter demand growth vs administrative deadlines on Correos 'votos admitidos' totals 2019 2023",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@5"
+   ],
+   "requete": "instances where political campaigns discouraged postal voting and reduced totals despite prior growth 'voto por correo' noviembre 2019",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "Correos deposit deadline 'plazo depositar' 25 noviembre prórrogas Junta Electoral Central historial 'voto por correo' 2019 2023",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@5",
+    "RES@5"
+   ],
+   "requete": "which mattered more for high 'votos admitidos': strict deposit deadlines or Correos delivery capacity? 'voto por correo' análisis 2019 2023",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "examples where tight administrative deadlines did not reduce admitted postal ballots totals (Correos 'votos admitidos')",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "RES@5"
+   ],
+   "requete": "Correos operational capacity indicators (oficinas, logística, ritmo de envíos) relation to 'votos admitidos' 2019 2023 comunicados",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "RES@5",
+    "CRO@5"
+   ],
+   "requete": "is increase in admitted postal votes driven primarily by Correos logistical capacity or by increased voter demand? 'votos admitidos' comparison 2019 2023",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "RES@5"
+   ],
+   "requete": "evidence that Correos logistical problems reduced 'votos admitidos' in past elections 'problemas reparto' 2019 2023",
+   "executee": true,
+   "date_execution": "2026-11-16"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@5 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "La question aura pour réponse OUI si, dans le communiqué de Correos le plus récent daté ≤ 2026-11-26, le total national cumulatif publié pour le 29/11/2026 est strictement supérieur à 1 050 000 'votos admitidos' (ou équivalent).",
+   "source_resolution": {
+    "emetteur": "Correos (Sociedad Estatal Correos y Telégrafos, S.A.)",
+    "document": "nota de prensa / communiqué de la catégorie 'Voto por correo' publié à Madrid ≤ 2026-11-26 indiquant le total national cumulatif de votos admitidos pour l'élection générale du 29/11/2026",
+    "regle_ambiguite": "utiliser exactement le nombre publié dans le titre ou le corps du communiqué; si le communiqué fournit une valeur approximative ('plus de X'), prendre la valeur approchée telle que formulée; ne pas sommer de totaux régionaux ni utiliser le nombre de 'solicitudes'."
+   },
+   "vue_exterieure": {
+    "frequence": 0.75,
+    "classe_de_reference": "communiqués de Correos donnant, pour l'élection générale du 29/11/2026, un total national cumulatif de bulletins postaux « votos admitidos » (ou termes équivalents publiés par Correos : « votos emitidos », « votos depositados », « enviados »), tel que libellé dans le titre ou le corps du communiqué",
+    "source": "Correos — sala de prensa (categoría 'Voto por correo'), compilation des communiqués listés dans [R1],[R2],[R3]",
+    "periode": "2016-2023",
+    "disponible_le": "2026-11-16",
+    "classe_alternative": {
+     "frequence": null,
+     "classe_de_reference": "archive complète de la page « Voto por correo » de la sala de prensa de Correos (index des communiqués) telle que capturée et parcourue systématiquement avant 2026-11-17",
+     "source": "Wayback Machine / archive de la page https://www.correos.com/press-release-category/voto-por-correo/",
+     "pourquoi_ecartee": "le recours à Wayback pour lister et compter automatiquement les communiqués utiles a échoué (capture non comptable / insuffisante pour la fenêtre demandée), empêchant un comptage honnête et reproductible à partir de cet index."
+    },
+    "ecart_critere": "La classe utilisée compte exactement le même type d'énoncé (totaux nationaux cumulés de 'votos admitidos' publiés par Correos) mais porte sur publications d'élections générales antérieures (2016–2023) et non sur la publication exacte relative à l'élection du 29/11/2026; donc 'métrique identique, événement temporel différent'."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "CRO@5",
+   "vers": "RES@5",
+   "extrait": "The data shows a dramatic increase in mail-in voting over time, with 2023 marking a historic peak of 2,471,935 admitted votes—representing a 99.08% increase compared to April 2019 and an 82.06% increase compared to June 2016 [2](https://www.correos.com/sala-prensa/exito-en-la-gestion-del-voto-por-correo-que-marca-record-historico-con-2-471-935-votos-admitidos-para-las-elecciones-generales/#:~:text=%C3%89xito%20en%20la%20gesti%C3%B3n%20del,NACIONAL%20%7C%20%7C%202.471.935%20%7C)",
+   "source": "https://www.correos.com/sala-prensa/exito-en-la-gestion-del-voto-por-correo-que-marca-record-historico-con-2-471-935-votos-admitidos-para-las-elecciones-generales/#:~:text=%C3%89xito%20en%20la%20gesti%C3%B3n%20del,NACIONAL%20%7C%20%7C%202.471.935%20%7C"
+  },
+  {
+   "instruction": "lien",
+   "de": "CTR@5",
+   "vers": "RES@5",
+   "extrait": "Administrative deadline extensions proved effective in accommodating explosive voter demand growth. Rather than collapsing under pressure, Correos achieved better operational efficiency in 2023 despite nearly doubling volume, suggesting that flexible deadlines combined with enhanced staffing (21,000+ additional hires) [1](https://elpais.com/espana/elecciones-generales/2023-07-21/el-938-de-quienes-solicitaron-el-voto-por-correo-ya-lo-ha-emitido-la-cifra-mas-alta-desde-2008.html#:~:text=A%20%C3%BAltima%20hora%20de%20la,colegios%20y%20comienza%20el%20escrutinio.) successfully managed the surge in postal voting demand.",
+   "source": "https://elpais.com/espana/elecciones-generales/2023-07-21/el-938-de-quienes-solicitaron-el-voto-por-correo-ya-lo-ha-emitido-la-cifra-mas-alta-desde-2008.html#:~:text=A%20%C3%BAltima%20hora%20de%20la,colegios%20y%20comienza%20el%20escrutinio."
+  },
+  {
+   "instruction": "lien",
+   "de": "CRO@5",
+   "vers": "CTR@5",
+   "extrait": "The 2023 elections required **two deadline extensions** compared to one in 2019, reflecting the significantly higher demand.",
+   "source": "https://www.correos.com/sala-prensa/se-amplia-el-plazo-para-depositar-el-voto-por-correo-hasta-el-viernes-21-de-julio-a-las-1400-horas-como-maximo/#:~:text=Se%20ampl%C3%ADa%20el%20plazo%20para,de%20los%20plazos%20legalmente%20establecidos."
+  }
+ ]
+}
