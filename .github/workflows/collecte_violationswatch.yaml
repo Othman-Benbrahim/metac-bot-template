@@ -5,6 +5,7 @@ name: Collecte quotidienne Violations Watch (ombre)
 on:
   schedule:
     - cron: "17 6 * * *"
+    - cron: "17 18 * * *"   # 0.10.166 : second passage, GitHub retarde ou saute des passages programmés
   workflow_dispatch:
 
 # file à part : une collecte programmée ne doit jamais prendre la place d'attente d'un banc lancé à la main

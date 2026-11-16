@@ -1,0 +1,46 @@
+name: Récolte des questions Metaculus résolues (B Metaculus, sans modèle)
+
+# 0.10.166 : questions binaires résolues, classées par des règles fixées (recolte_metaculus.py) ; gratuit, rien de
+# posté. Les descriptions de Metaculus ne sont pas gardées.
+on:
+  workflow_dispatch:
+    inputs:
+      max:
+        description: "nombre maximal de questions lues"
+        default: "20000"
+
+concurrency:
+  group: recolte-metaculus
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  recolte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Récolte
+        timeout-minutes: 120
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+        run: uv run python recolte_metaculus.py --max "${{ github.event.inputs.max }}"
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/metaculus-resolues.jsonl registre/metaculus-resolues-resume.md; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : questions Metaculus résolues du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

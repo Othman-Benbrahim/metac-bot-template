@@ -384,6 +384,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.166** — récolte des questions Metaculus binaires résolues (`recolte_metaculus.py`, workflow « Récolte des questions Metaculus résolues ») : champs de l'API, pays, domaine, forme et seuils par des règles fixées d'avance, sans modèle ; descriptions non gardées. Première étape du B Metaculus.
 - **0.10.165** — collecteur RSS : flux du Parlement européen lus par des relais FeedBurner créés par l'auteur (le site renvoie une page vide aux serveurs de GitHub).
 - **0.10.164** — collecteur RSS : ONU Info par ses 5 flux régionaux (le flux « toutes les actualités » renvoie 404).
 - **0.10.163** — collecteur RSS : l'API de l'OMS n'est plus confondue avec le flux de l'IATA (qui passait par le décodeur JSON) ; code HTTP noté dans la santé des flux ; second essai avec l'en-tête d'un navigateur ordinaire si le site refuse l'agent du bot (401, 403, 406, 429) ou renvoie une page HTML.
