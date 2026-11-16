@@ -22,6 +22,7 @@ import json
 import math
 import os
 import re
+from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
 from typing import Awaitable, Callable
 
@@ -167,6 +168,38 @@ async def fred(serie: str, avant: date | None = None, debut: str | None = None) 
     return _releve("FRED" + (" (ALFRED, millésime)" if avant and not extra else ""), serie,
                    f"https://fred.stlouisfed.org/series/{serie}", [x for x in pts if x["valeur"] is not None], avant,
                    debut, **extra)
+
+
+async def gdpnow(serie: str = "GDPNOW", avant: date | None = None, debut: str | None = None) -> dict:
+    """0.10.181 : GDPNow de la Fed d'Atlanta (nowcast de la croissance du PIB américain, trimestre en cours, en rythme
+    annualisé), par FRED ; avec `avant`, le millésime ALFRED : ce que GDPNow disait ce jour-là (sans fuite).
+    Une donnée d'entrée, pas une probabilité : P(seuil) demande l'erreur passée de GDPNow à la même distance de la
+    publication du BEA (à mesurer avant tout usage officiel)."""
+    serie = serie if serie.endswith("NOW") or serie == "GDPNOW" else "GDPNOW"
+    r = await fred(serie, avant=avant, debut=debut)
+    r["source"] = "GDPNow (Fed d'Atlanta), " + r["source"]
+    return r
+
+
+NOWCAST_INFLATION = Path("registre") / "nowcast-inflation.csv"
+
+
+async def nowcast_inflation(mesure: str = "CPI", avant: date | None = None) -> dict:
+    """0.10.181 : nowcasts d'inflation de la Fed de Cleveland, relevés chaque jour par collecte_nowcast_inflation.py ;
+    avec `avant`, seulement les relevés antérieurs ou égaux à cette date (nos propres millésimes, sans fuite)."""
+    import csv as _csv
+    if not NOWCAST_INFLATION.exists():
+        raise ErreurSource("aucun relevé du nowcast d'inflation (collecte pas encore lancée)")
+    m = mesure.strip().lower()
+    pts = []
+    for x in _csv.DictReader(NOWCAST_INFLATION.open(encoding="utf-8")):
+        if avant and x["releve_le"] > avant.isoformat():
+            continue
+        if x["mesure"].lower().split(":", 1)[-1].strip() != m:     # « CPI » ne prend pas « Core CPI »
+            continue
+        pts.append({"date": x["releve_le"], "valeur": float(x["valeur"]), "titre": f"{x['periode']} — {x['mesure']}"})
+    return _releve("Nowcast d'inflation (Fed de Cleveland, relevés quotidiens du bot)", mesure,
+                   "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting", pts, avant)
 
 
 async def banque_mondiale(pays: str, indicateur: str, avant: date | None = None) -> dict:
@@ -1131,6 +1164,14 @@ CATALOGUE: dict[str, dict] = {
     "fred": {"fn": fred, "nature": "niveau", "cle": "FRED_API_KEY", "comptable": True,
              "params": '{"serie": "identifiant FRED, ex. UNRATE, CPIAUCSL, DGS10, FEDFUNDS", "debut": "AAAA-MM-JJ facultatif"}',
              "pour": "séries économiques et financières américaines (taux, chômage, prix, dette, marchés)"},
+    "gdpnow": {"fn": gdpnow, "nature": "niveau", "cle": "FRED_API_KEY", "comptable": True,
+               "params": '{"serie": "GDPNOW (PIB) ou une composante, ex. PCENOW", "debut": "AAAA-MM-JJ facultatif"}',
+               "pour": "nowcast de la croissance du PIB américain du trimestre en cours (GDPNow, Fed d'Atlanta), tel "
+                       "qu'il était publié à la date de la question ; une donnée d'entrée, pas une probabilité"},
+    "nowcast_inflation": {"fn": nowcast_inflation, "nature": "niveau", "comptable": True,
+                          "params": '{"mesure": "CPI, Core CPI, PCE ou Core PCE"}',
+                          "pour": "nowcast de l'inflation américaine du mois et du trimestre en cours (Fed de Cleveland), "
+                                  "relevés quotidiens du bot ; une donnée d'entrée, pas une probabilité"},
     "banque_mondiale": {"fn": banque_mondiale, "nature": "niveau", "comptable": True,
                         "params": '{"pays": "ISO3 ou WLD", "indicateur": "code, ex. NY.GDP.MKTP.KD.ZG"}',
                         "pour": "indicateurs annuels par pays (PIB, inflation, population, dette)"},

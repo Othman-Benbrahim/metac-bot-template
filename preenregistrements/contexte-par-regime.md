@@ -20,6 +20,19 @@ modèle de langue n'a rien apporté non plus sur les séries (A = B) : ce n'éta
 | Macroéconomique | inscriptions au chômage, inflation, PIB, emploi | estimations en temps réel (nowcasts), calendrier des publications, jours fériés et saisons | GDPNow (Fed d'Atlanta), nowcast d'inflation (Fed de Cleveland), calendrier BLS | **en attente** : ~11 questions macro seulement dans les jeux (inscriptions au chômage) ; à reprendre quand elles seront assez nombreuses |
 | Marchés | taux, écarts de crédit, changes, indices | l'information publique est déjà dans le prix ; reste l'information **de niche**, peu suivie : signaux faibles, micro-causalités, petits événements à grosses conséquences (ex. commandes de pizzas autour du Pentagone), à trouver par l'OSINT | à chercher indicateur par indicateur | **par induction** : chaque indicateur de niche passe par l'observatoire inductif (`induction.py`, même sens dans 3 lots sur 4) puis par un pré-enregistrement à sens fixé |
 
+## Nowcasts publics ou modèle propre (décision d'auteur du 2026-11-16, 14 h 00 : « note ça, on l'exploitera plus tard »)
+- Un nowcast public (GDPNow, inflation de Cleveland) est une **donnée d'entrée**, pas une probabilité : la question
+  binaire demande ensuite P(valeur > seuil), à partir de l'erreur passée du nowcast **à la même distance de la
+  publication officielle** (un seul paramètre, mesuré sur son propre historique de millésimes).
+- Préférer le nowcast public à un modèle propre (VAR bayésien à fréquences mixtes, par exemple celui d'Open
+  Econometric Systems) : plus d'information (des dizaines de publications), un seul paramètre (Ockham), un test sans
+  fuite (millésimes ALFRED pour GDPNow ; relevés quotidiens du bot pour Cleveland).
+- **Limite, à exploiter plus tard** : les nowcasts publics ne couvrent qu'une poignée de variables (croissance et
+  inflation américaines, un peu la zone euro). Pour une série sans nowcast (chômage d'un autre pays…), il faudra un
+  calcul propre ; à construire seulement quand ces questions seront assez nombreuses pour juger un modèle.
+- Branché en 0.10.181 : sources `gdpnow` et `nowcast_inflation` du catalogue des puits (`alphabet_puits.py`), relevé
+  quotidien `collecte_nowcast_inflation.py`.
+
 ## Règles communes (préenregistrements/README.md)
 Rasoir d'Ockham avant tout essai ; pas d'extrapolation ; mesure stable ; formes trivialement solubles décrites à part.
 Pour les marchés, réserve de l'auteur notée : un signal de niche s'épuise quand il devient connu, et joue surtout

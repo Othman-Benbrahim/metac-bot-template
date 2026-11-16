@@ -1,0 +1,43 @@
+name: Relevé quotidien du nowcast d'inflation (Cleveland, ombre)
+
+# 0.10.181 : nowcasts d'inflation de la Fed de Cleveland, relevés chaque jour ouvré ; nos relevés datés font
+# l'historique sans fuite (la Fed ne publie pas ses millésimes en téléchargement). Rien de posté.
+on:
+  schedule:
+    - cron: "11 16 * * 1-5"
+    - cron: "11 22 * * 1-5"   # second passage : GitHub retarde ou saute des passages programmés
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-nowcast-inflation
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Relevé
+        timeout-minutes: 10
+        run: uv run python collecte_nowcast_inflation.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -s registre/nowcast-inflation.csv ]; then git add registre/nowcast-inflation.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : nowcast d'inflation du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
