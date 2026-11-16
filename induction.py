@@ -67,6 +67,8 @@ ETATS = {
                     ("les sources russes en parlent moins (÷ 1,5)", lambda v: v < -0.4)),          # 0.10.202, M12
     "contremesures_chine": (("la Chine a visé le pays par une contre-mesure (≥ 3 événements GDELT en 90 jours)", lambda v: v >= 3),
                             ("aucune contre-mesure chinoise contre le pays", lambda v: v == 0)),       # 0.10.205
+    "avis_navigation": (("zone de tir ou d'exercice chinoise annoncée près du pays (14 jours)", lambda v: v >= 1),
+                        ("aucun avertissement militaire chinois près du pays", lambda v: v == 0)),     # 0.10.206
     "dates_memoire": (("une date de mémoire tombe dans les 14 jours", lambda v: v >= 1),
                       ("aucune date de mémoire dans les 14 jours", lambda v: v == 0)),                # 0.10.202, M14
     "rss_cyber": (("le CERT-FR nomme le pays", lambda v: v >= 1), ("le CERT-FR ne nomme pas le pays", lambda v: v == 0)),
@@ -98,7 +100,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure

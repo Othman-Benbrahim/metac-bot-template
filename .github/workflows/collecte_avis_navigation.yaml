@@ -1,0 +1,52 @@
+name: Collecte quotidienne des avertissements de navigation (NGA, exercices chinois, ombre)
+
+# 0.10.206 : avertissements de navigation du Pacifique republiés par la NGA (domaine public) ; on garde ceux qui
+# nomment une zone chinoise. Gratuit, une requête par passage. « sonde = oui » vérifie sans rien écrire.
+on:
+  schedule:
+    - cron: "41 5 * * *"
+    - cron: "41 17 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  workflow_dispatch:
+    inputs:
+      sonde:
+        description: "oui = vérifier l'accès et le contenu sans rien écrire"
+        default: "oui"
+
+concurrency:
+  group: collecte-avis-navigation
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 15
+        run: |
+          if [ "${{ github.event.inputs.sonde }}" = "oui" ]; then
+            uv run python collecte_avis_navigation.py --sonde
+          else
+            uv run python collecte_avis_navigation.py
+          fi
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/avis-navigation-chine.csv registre/avis-navigation-jours.txt; do if [ -s "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : avertissements de navigation du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
