@@ -1,0 +1,46 @@
+name: Collecte quotidienne des avions d'État (ombre)
+
+# 0.10.180 : vols de la veille des avions d'État de régimes autoritaires (plane-alert-db « Dictator Alert », OpenSky),
+# comptés par pays ; environ 1 300 crédits OpenSky par jour. Comptes seulement (règle éthique des sources).
+on:
+  schedule:
+    - cron: "37 2 * * *"
+    - cron: "37 14 * * *"   # second passage, sans effet si la veille est déjà lue
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-avions-etat
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 30
+        env:
+          OPENSKY_CLIENT_ID: ${{ secrets.OPENSKY_CLIENT_ID || vars.OPENSKY_CLIENT_ID }}
+          OPENSKY_CLIENT_SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET || vars.OPENSKY_CLIENT_SECRET }}
+        run: uv run python collecte_avions_etat.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/avions-etat.csv registre/avions-etat-jours.txt; do if [ -s "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : avions d'État du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

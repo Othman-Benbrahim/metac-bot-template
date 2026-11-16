@@ -354,6 +354,17 @@ passer un lot de 57 à 86). Trois règles écrites :
    défaut ; formulaire du banc) : avant chaque question, si le coût cumulé plus la question la plus chère vue jusqu'ici
    dépasserait le plafond, le banc s'arrête.
 
+## Règle éthique des sources : personnes et personnalités publiques (décision d'auteur du 2026-11-16, 13 h 47)
+
+Toutes les sources du bot parlent, directement ou non, d'êtres humains. La règle :
+- **permis** : les actes publics des **personnalités publiques et des dirigeants**, dans leur fonction (déplacements
+  officiels, avions d'État, déclarations, décisions, sanctions qui les visent), comptés de façon **agrégée par pays** ;
+  une vie publique n'est pas secrète, et ces acteurs influent sur le cours des événements ;
+- **exclu** : la **vie privée**, y compris celle des personnalités publiques (relations, santé, famille, liaisons), sauf
+  ce que la presse a déjà publié, qui entre par la collecte de presse et seulement par elle ; tout **suivi de
+  particuliers** (recherche de personnes, téléphones, visages, comptes individuels) ;
+- les registres ne gardent que des **comptes** (pays, jour, famille de source), jamais un dossier sur une personne.
+
 ## Règle d'adoption commune (0.10.98)
 
 Elliot Tower, *AI for Science × Philosophy of Science*, ch. 2 (chemins qui bifurquent) et 3 (arrêt et preuve) : un
@@ -384,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.180** — règle éthique des sources (personnes et personnalités publiques, décision d'auteur du 2026-11-16) ; collecteur des avions d'État (`collecte_avions_etat.py`, plane-alert-db « Dictator Alert », vols OpenSky de la veille, comptes par pays seulement) ; indicateur `avions_etat` et état « visite d'avions d'État » dans l'observatoire. Pas d'historique (coût en crédits OpenSky) : jugeable après quelques semaines de collecte.
 - **0.10.179** — calendrier des élections nationales (`collecte_elections.py`, Wikidata CC0, workflow hebdomadaire « Calendrier des élections ») ; indicateur `elections` (30 jours avant la date, sans fuite ; 30 jours après, fuite possible déclarée) ; fiche M10 du catalogue des mécanismes.
 - **0.10.178** — collecteur des sanctions (`collecte_sanctions.py`, workflow « Collecte quotidienne des sanctions ») : OFAC (pages quotidiennes « Recent Actions », étiquettes de programme des entrées ajoutées, domaine public) et liste britannique (historique des modifications GOV.UK, Open Government Licence), par pays visé (tables fixes) ; indicateur `sanctions` (désignations des 14 jours) et état « sanctions nouvelles » dans l'observatoire.
 - **0.10.177** — collecteur Cloudflare Radar (`collecte_radar.py`, workflow « Collecte quotidienne Cloudflare Radar », secret `CLOUDFLARE_RADAR_TOKEN`) : coupures d'internet par pays avec leur cause (CC BY-NC 4.0) ; indicateur `radar` (coupures commencées dans les 14 jours) et trois états dans l'observatoire : toute coupure, coupure décidée par l'État ou militaire, panne électrique.

@@ -23,6 +23,8 @@ STRICTEMENT avant la date du jeu :
 - gdelt (0.10.173, en ombre) : manifestations et émeutes dans la presse codée par GDELT (collecte_gdelt.py), pays du
   lieu de l'action ; log((14 jours avant la date + 1) / (14 jours précédents + 1)) ; historique complet, donc mesurable
   sur les questions déjà résolues.
+- avions_etat (0.10.180, en ombre) : vols d'avions d'État de régimes autoritaires (plane-alert-db, catégorie
+  « Dictator Alert » ; vols OpenSky) arrivés dans le pays depuis l'étranger dans les 14 jours ; comptes seulement.
 - elections (0.10.179, en ombre) : élections nationales du pays (Wikidata, CC0) dans les 30 jours avant la date, et
   prévues dans les 30 jours après (fuite possible pour les élections anticipées, déclarée).
 - sanctions (0.10.178, en ombre) : désignations visant le pays (OFAC, liste britannique) dans les 14 jours avant la
@@ -522,6 +524,24 @@ def elections(cca2: str | None, d0: date) -> dict:
             "noms": [x["nom"] for x in avant + apres][:4]}
 
 
+AVIONS_ETAT = Path("registre") / "avions-etat.csv"
+AVIONS_ETAT_JOURS = Path("registre") / "avions-etat-jours.txt"
+
+
+def avions_etat(cca2: str | None, d0: date, manque_max: int = 2) -> dict:
+    """0.10.180 : vols d'avions d'État de régimes autoritaires (liste « Dictator Alert ») arrivés dans le pays depuis
+    l'étranger, et partis du pays vers l'étranger, dans les 14 jours avant la date (collecte_avions_etat.py)."""
+    if not cca2 or not AVIONS_ETAT.exists() or not AVIONS_ETAT_JOURS.exists():
+        return {"present": False, "raison": "pays inconnu ou comptes absents"}
+    lus = set(AVIONS_ETAT_JOURS.read_text(encoding="utf-8").split())
+    js = [(d0 - timedelta(days=k)).isoformat() for k in range(1, 15)]
+    if sum(1 for j in js if j not in lus) > manque_max:
+        return {"present": False, "raison": "période non couverte"}
+    xs = [x for x in csv.DictReader(AVIONS_ETAT.open(encoding="utf-8")) if x["pays"] == cca2 and x["jour"] in js]
+    return {"present": True, "valeur": sum(int(x["arrivees_etrangeres"]) for x in xs),
+            "departs_14j": sum(int(x["departs_vers_etranger"]) for x in xs)}
+
+
 RSS_COMPTES = Path("registre") / "rss-comptes.csv"
 RSS_DEBUT = date(2026, 11, 16)
 
@@ -576,7 +596,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -619,6 +639,9 @@ async def principal() -> int:
                 if "gdelt" not in fait and GDELT_JOURS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["gdelt"] = gdelt(code, d0)
+                if "avions_etat" not in fait and AVIONS_ETAT_JOURS.exists():
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["avions_etat"] = avions_etat(code, d0)
                 if "elections" not in fait and ELECTIONS.exists():
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["elections"] = elections(code, d0)
@@ -642,7 +665,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat") if k in ligne))
         await tg.fermer()
     return 0
 

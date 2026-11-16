@@ -31,6 +31,8 @@ ETATS = {
               ("GDELT : moins de manifestations dans la presse (÷ 1,5)", lambda v: v < -0.4)),
     "gdelt_emeutes": (("GDELT : plus d'émeutes dans la presse (× 1,5)", lambda v: v > 0.4),
                       ("GDELT : moins d'émeutes dans la presse (÷ 1,5)", lambda v: v < -0.4)),
+    "avions_etat": (("visite d'avions d'État de régimes autoritaires", lambda v: v >= 1),
+                    ("aucune visite d'avion d'État", lambda v: v == 0)),
     "elections": (("élection nationale dans les 30 jours avant", lambda v: v >= 1),
                   ("aucune élection nationale dans les 30 jours avant", lambda v: v == 0)),
     "elections_apres": (("élection nationale prévue dans les 30 jours après (fuite possible)", lambda v: v >= 1),),
@@ -79,7 +81,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure
