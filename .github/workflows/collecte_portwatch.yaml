@@ -4,7 +4,7 @@ name: Collecte quotidienne PortWatch (détroits, ombre)
 # détroit et par passage, année en cours, un passage par jour. Source : IMF PortWatch. Rien de posté.
 on:
   schedule:
-    - cron: "13 10 * * *"
+    - cron: "13 3 * * *"   # 0.10.185 : heure creuse (quota ArcGIS partagé saturé en journée)
   workflow_dispatch:
 
 concurrency:
