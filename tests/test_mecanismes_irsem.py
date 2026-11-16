@@ -26,17 +26,27 @@ class TestIrsem(unittest.TestCase):
         self.assertTrue(f["titre"].startswith("Bab el-Mandeb"))
 
     def test_regle_arret(self):
-        props = [{"mecanisme": "a", "indicateur": "x", "delai": "2 semaines", "portee": "général"},
-                 {"mecanisme": "b", "indicateur": "x", "delai": None, "portee": "général"},
-                 {"mecanisme": "c", "indicateur": "x", "delai": "1 mois", "portee": "cas"}]
+        props = [{"mecanisme": "a", "indicateur": "hausse des manifestations", "delai": "2 semaines", "registre": "manifestations"},
+                 {"mecanisme": "b", "indicateur": "hausse des manifestations", "delai": None, "registre": "manifestations"},
+                 {"mecanisme": "c", "indicateur": "érosion de la confiance", "delai": "1 mois", "registre": "manifestations"},
+                 {"mecanisme": "d", "indicateur": "hausse des manifestations", "delai": "1 mois", "registre": "aucun"},
+                 {"mecanisme": "e", "indicateur": "sanctions", "delai": "1 mois", "registre": "inconnu"}]
         self.assertEqual([p["mecanisme"] for p in mi.candidats(props)], ["a"])
 
     def test_resume(self):
-        p = {"mecanisme": "a", "indicateur": "x", "delai": "2 semaines", "portee": "région", "domaine": "maritime ou commerce",
+        p = {"mecanisme": "a", "indicateur": "passages de navires dans le détroit", "delai": "2 semaines", "registre": "maritime",
              "source": {"serie": "Brève stratégique", "numero": 94, "mois": "2026-09", "url": "u"}}
         r = mi.resumer([{}], [p])
-        self.assertIn("1 passent le filtre", r)
+        self.assertIn("1 passent la règle", r)
+        self.assertIn("maritime : 1", r)
 
+    def test_rubicon(self):
+        liste = ('<a href="https://lerubicon.org/la-voie-vers-une-securite-durable-en-colombie/fulltext.pdf">PDF</a>'
+                 '<a href="https://lerubicon.org/la-voie-vers-une-securite-durable-en-colombie/fulltext.pdf">bis</a>'
+                 '<a href="https://lerubicon.org/autre-article/">sans PDF</a>')
+        self.assertEqual(mi.liens_rubicon(liste), ["https://lerubicon.org/la-voie-vers-une-securite-durable-en-colombie/"])
+        f = mi.fiche_rubicon("<h1>La voie vers une sécurité durable</h1><p>13 novembre 2026</p>", "https://lerubicon.org/x/")
+        self.assertEqual((f["mois"], f["pdf"], f["serie"]), ("2026-11", "https://lerubicon.org/x/fulltext.pdf", "Le Rubicon"))
 
 if __name__ == "__main__":
     unittest.main()

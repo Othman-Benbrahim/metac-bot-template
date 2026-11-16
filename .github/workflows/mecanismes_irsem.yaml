@@ -1,15 +1,18 @@
-name: Mécanismes proposés à partir de l'IRSEM (pilote, Bedrock)
+name: Mécanismes proposés à partir des analyses stratégiques (IRSEM, Le Rubicon ; pilote, Bedrock)
 
 # 0.10.201 : récolte des publications de l'IRSEM (gratuite), puis extraction de mécanismes par le petit modèle
 # (Bedrock), plafonnée par « budget ». Le modèle propose ; rien n'est inscrit au catalogue sans décision d'auteur.
 on:
   workflow_dispatch:
     inputs:
+      source:
+        description: "irsem ou rubicon"
+        default: "rubicon"
       verification:
         description: "oui = vérifier seulement l'accès au site (gratuit, rien d'écrit) ; non = pilote complet"
         default: "oui"
       serie:
-        description: "série lue"
+        description: "série lue (IRSEM seulement)"
         default: "Brève stratégique"
       max:
         description: "nombre maximal de publications envoyées au modèle"
@@ -44,18 +47,18 @@ jobs:
           AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
         run: |
           if [ "${{ github.event.inputs.verification }}" = "non" ]; then
-            uv run --with pypdf python mecanismes_irsem.py --serie "${{ github.event.inputs.serie }}" --max "${{ github.event.inputs.max }}" --budget "${{ github.event.inputs.budget }}"
+            uv run --with pypdf python mecanismes_irsem.py --source "${{ github.event.inputs.source }}" --serie "${{ github.event.inputs.serie }}" --max "${{ github.event.inputs.max }}" --budget "${{ github.event.inputs.budget }}"
           else
-            uv run --with pypdf python mecanismes_irsem.py --verifier
+            uv run --with pypdf python mecanismes_irsem.py --source "${{ github.event.inputs.source }}" --verifier
           fi
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/mecanismes/irsem-publications.jsonl registre/mecanismes/irsem-proposes.jsonl registre/mecanismes/irsem-resume.md; do if [ -s "$f" ]; then git add "$f"; fi; done
+          for f in registre/mecanismes/irsem-*.jsonl registre/mecanismes/irsem-resume.md registre/mecanismes/rubicon-*.jsonl registre/mecanismes/rubicon-resume.md; do if [ -s "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
-            git commit -m "registre : mécanismes proposés (pilote IRSEM) du $(date -u +%Y-%m-%d)"
+            git commit -m "registre : mécanismes proposés (pilote ${{ github.event.inputs.source }}) du $(date -u +%Y-%m-%d)"
             git pull --rebase
             git push
           fi
