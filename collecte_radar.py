@@ -62,25 +62,36 @@ def principal() -> int:
     debut = date.fromisoformat(a.depuis) if a.depuis else aujourd_hui - timedelta(days=30)
     connues = lire()
     avant = len(connues)
-    offset, lues = 0, 0
+    lues = 0
+    maintenant = datetime.now(timezone.utc).replace(microsecond=0)
     with httpx.Client(headers={"Authorization": f"Bearer {jeton}"}, timeout=60) as c:
-        while True:
-            r = c.get(API, params={"dateStart": f"{debut.isoformat()}T00:00:00Z",
-                                   "dateEnd": f"{(aujourd_hui + timedelta(days=1)).isoformat()}T00:00:00Z",
-                                   "limit": 100, "offset": offset, "format": "json"})
-            if r.status_code in (401, 403):
-                print(f"Jeton refusé (HTTP {r.status_code}) : vérifier la permission « Radar : Read » et le compte choisi.")
-                return 1
-            r.raise_for_status()
-            corps = r.json()
-            ann = ((corps.get("result") or {}).get("annotations")) or []
-            for x in ann:
-                for l in lignes(x):
-                    connues[(l["id"], l["pays"])] = l
-            lues += len(ann)
-            if len(ann) < 100:
-                break
-            offset += 100
+        # 0.10.184 : une fin dans le futur est refusée (400) ; fenêtres de 30 jours au plus, fin = maintenant
+        d = datetime(debut.year, debut.month, debut.day, tzinfo=timezone.utc)
+        while d < maintenant:
+            f = min(maintenant, d + timedelta(days=30))
+            offset = 0
+            while True:
+                r = c.get(API, params={"dateStart": d.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                       "dateEnd": f.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                       "limit": 100, "offset": offset, "format": "json"})
+                if r.status_code in (401, 403):
+                    print(f"Jeton refusé (HTTP {r.status_code}) : vérifier la permission « Radar : Read » et le compte choisi.")
+                    return 1
+                if r.status_code >= 400:
+                    print(f"HTTP {r.status_code} ({d.date()} → {f.date()}) : {r.text[:400]}")
+                    return 1
+                corps = r.json()
+                ann = ((corps.get("result") or {}).get("annotations")) or []
+                for x in ann:
+                    for l in lignes(x):
+                        connues[(l["id"], l["pays"])] = l
+                lues += len(ann)
+                if len(ann) < 100:
+                    break
+                offset += 100
+                time.sleep(1)
+            print(f"  {d.date()} → {f.date()} : {lues} annotations lues au total")
+            d = f
             time.sleep(1)
     SORTIE.parent.mkdir(exist_ok=True)
     with SORTIE.open("w", encoding="utf-8", newline="") as f:
