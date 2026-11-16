@@ -28,6 +28,10 @@ class TestRSS(unittest.TestCase):
         self.assertTrue(cr.NOTATION.search("Fitch downgrades France to A+, outlook stable"))
         self.assertTrue(cr.NOTATION.search("Moody's relève la perspective de l'Italie"))
         self.assertFalse(cr.NOTATION.search("Fed's Daly: we need to raise rates"))
+        # 0.10.169 : une virgule perdue concatène deux adresses ; chaque flux est une seule URL
+        for urls in cr.FLUX.values():
+            for u in urls:
+                self.assertEqual(u.count("://"), 1, u)
         b = cr.bilan_sante([
             {"url": "a", "famille": "f", "statut": "ok", "dernier_nouveau": "2026-11-15"},
             {"url": "b", "famille": "f", "statut": "erreur HTTPStatusError"},
