@@ -23,6 +23,11 @@ masse), par pays du lieu de l'action et par jour. Sert à compter les transgress
 (mécanisme « la réponse s'use à la répétition »). Registres : registre/gdelt-hostilites-ru.csv (pays, jour, agressions,
 combats, violence_masse) ; registre/gdelt-hostilites-jours.txt.
 
+0.10.205 (module Chine, couche 2, en ombre ; décision d'auteur du 2026-11-16, 21 h 45 : pas de saisie à la main) :
+dans les mêmes fichiers, sanctions, embargos et boycotts imposés par un acteur chinois (Actor1CountryCode = CHN, code
+CAMEO 163), par pays VISÉ (Actor2CountryCode, code à trois lettres converti en ISO à deux lettres) et par jour.
+Registres : registre/gdelt-chine-sanctions.csv (pays, jour, evenements) ; registre/gdelt-chine-jours.txt.
+
 Usage : python collecte_gdelt.py [--depuis AAAA-MM-JJ]   (par défaut : les jours manquants des 7 derniers jours)
 """
 from __future__ import annotations
@@ -50,6 +55,50 @@ C_PAYS_ACTEUR1 = 7                       # Actor1CountryCode (code CAMEO à troi
 HOSTILES = Path("registre") / "gdelt-hostilites-ru.csv"
 JOURS_H = Path("registre") / "gdelt-hostilites-jours.txt"
 RACINES_HOSTILES = ("18", "19", "20")
+C_CODE, C_PAYS_ACTEUR2 = 26, 17         # EventCode ; Actor2CountryCode
+CHINE = Path("registre") / "gdelt-chine-sanctions.csv"
+JOURS_C = Path("registre") / "gdelt-chine-jours.txt"
+
+
+def table_iso3(c: httpx.Client) -> dict[str, str]:
+    """Code à trois lettres (CAMEO suit l'ISO pour les pays) → ISO à deux lettres."""
+    try:
+        r = c.get(TABLE_CODES, timeout=60)
+        r.raise_for_status()
+        return {x["ISO3166-1-Alpha-3"].strip(): x["ISO3166-1-Alpha-2"].strip() for x in csv.DictReader(io.StringIO(r.text))
+                if len((x.get("ISO3166-1-Alpha-3") or "").strip()) == 3 and len((x.get("ISO3166-1-Alpha-2") or "").strip()) == 2}
+    except Exception:
+        return {}
+
+
+def sanctions_chine(texte_csv: str, iso3: dict[str, str]) -> dict[str, int]:
+    """Événements CAMEO 163 (sanctions, embargo, boycott) d'un acteur chinois, par pays visé (hors Chine)."""
+    out: dict[str, int] = {}
+    for col in csv.reader(io.StringIO(texte_csv), delimiter="\t"):
+        if len(col) <= C_PAYS_ACTION or col[C_PAYS_ACTEUR1] != "CHN" or not col[C_CODE].startswith("163"):
+            continue
+        p = iso3.get(col[C_PAYS_ACTEUR2])
+        if p and p != "CN":
+            out[p] = out.get(p, 0) + 1
+    return out
+
+
+def lire_c() -> tuple[dict[tuple, int], set[str]]:
+    h = {}
+    if CHINE.exists():
+        for x in csv.DictReader(CHINE.open(encoding="utf-8")):
+            h[(x["pays"], x["jour"])] = int(x["evenements"])
+    return h, (set(JOURS_C.read_text(encoding="utf-8").split()) if JOURS_C.exists() else set())
+
+
+def ecrire_c(h: dict[tuple, int], jours_c: set[str]) -> None:
+    CHINE.parent.mkdir(exist_ok=True)
+    with CHINE.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["pays", "jour", "evenements"])
+        for (p, j), v in sorted(h.items(), key=lambda t: (t[0][1], t[0][0])):
+            w.writerow([p, j, v])
+    JOURS_C.write_text("\n".join(sorted(jours_c)) + "\n", encoding="utf-8")
 
 # quelques codes FIPS courants, si la table publique est inaccessible (diffèrent souvent de l'ISO)
 FIPS_SECOURS = {"US": "US", "UK": "GB", "FR": "FR", "GM": "DE", "RS": "RU", "UP": "UA", "CH": "CN", "IN": "IN",
@@ -166,14 +215,16 @@ def principal() -> int:
     debut = date.fromisoformat(a.depuis) if a.depuis else hier - timedelta(days=6)
     comptes, jours = lire()
     hostiles, jours_h = lire_h()
+    chine, jours_c = lire_c()
     lus = absents = 0
     with httpx.Client(headers=UA, follow_redirects=True, timeout=120) as c:
         fips = table_fips(c)
+        iso3 = table_iso3(c)
         print(f"{len(fips)} codes FIPS convertis en ISO.")
         d = debut
         while d <= hier:
             j = d.isoformat()
-            if j in jours and j in jours_h:
+            if j in jours and j in jours_h and j in jours_c:
                 d += timedelta(days=1)
                 continue
             try:
@@ -197,15 +248,21 @@ def principal() -> int:
             for p, v in hostilites(texte, fips).items():
                 hostiles[(p, j)] = v
             jours_h.add(j)
+            if iso3:
+                for p, v in sanctions_chine(texte, iso3).items():
+                    chine[(p, j)] = v
+                jours_c.add(j)
             lus += 1
             tot = [sum(v[i] for v in par_pays.values()) for i in range(3)]
             print(f"  {j} : {tot[0]} manifestations, {tot[1]} émeutes, {len(par_pays)} pays")
             if lus % 20 == 0:
                 ecrire(comptes, jours)          # sauvegarde régulière pendant un long rattrapage
                 ecrire_h(hostiles, jours_h)
+                ecrire_c(chine, jours_c)
             d += timedelta(days=1)
     ecrire(comptes, jours)
     ecrire_h(hostiles, jours_h)
+    ecrire_c(chine, jours_c)
     bilan = f"{lus} jour(s) lus, {absents} absent(s) ; {len(jours)} jours couverts au total."
     print(bilan)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
