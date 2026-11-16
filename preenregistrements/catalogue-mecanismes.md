@@ -186,6 +186,25 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
   année.
 - État : **observatoire** (indicateur `silence_statistique`).
 
+### M16. L'avertissement public annonce l'acte
+- Indicateur : aucun pour l'instant. Il faudrait compter, par pays visé, les avertissements publics d'un gouvernement
+  disant tenir d'un renseignement qu'un adversaire prépare une action précise (invasion, frappe, opération sous
+  fausse bannière). Aucune source ne permet ce compte sans jugement de modèle (une requête GDELT plein texte serait
+  très bruitée).
+- Sens fixé d'avance : avertissement public récent visant une action précise → action annoncée plus probable à court
+  terme que son taux de base (+).
+- Domaine : questions sur une action militaire ou coercitive d'un État contre un autre ; exclues : toutes les autres.
+- Échelle de temps : jours à semaines.
+- Origine : deux mentions indépendantes, « déclassification préventive du renseignement » : piste n° 1 du pilote
+  IRSEM (2026-11-16) et V. Bespeka (contre-mesures occidentales 2022-2025, Chroniques de la Recherche n° 29, Veille
+  Magazine, octobre 2026). Cas : avertissements américains et britanniques de janvier-février 2022 (invasion de
+  l'Ukraine le 24 février) ; avertissements américains d'avril 2024 (frappe iranienne contre Israël, 13-14 avril).
+  Décision d'auteur du 2026-11-17 (0 h 43).
+- Réserve : l'avertissement vise aussi à dissuader ; quand il réussit, l'acte n'a pas lieu et le cas disparaît des
+  exemples (biais de survie). Le sens (+) est donc une hypothèse fragile.
+- État : **hypothèse à observer** (sans indicateur ; n'entre pas dans l'observatoire tant qu'aucun compte
+  automatisable n'existe).
+
 ## Ce que ce catalogue n'est pas
 Ni une liste de « causes » démontrées, ni un réservoir où l'on choisit après coup la fiche qui aurait marché. Le
 nombre de fiches augmente le risque de trouver une régularité par hasard ; c'est pourquoi le sens est fixé avant
