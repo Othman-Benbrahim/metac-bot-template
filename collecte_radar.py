@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import csv
 import os
+import re
 import sys
 import time
 from datetime import date, datetime, timedelta, timezone
@@ -27,7 +28,11 @@ import httpx
 API = "https://api.cloudflare.com/client/v4/radar/annotations/outages"
 SORTIE = Path("registre") / "radar-coupures.csv"
 COUVERTURE = Path("registre") / "radar-couverture.txt"
-CHAMPS = ["id", "pays", "debut", "fin", "cause", "type", "portee"]
+CHAMPS = ["id", "pays", "debut", "fin", "cause", "type", "portee", "motif"]
+# 0.10.185 : les coupures ordonnées pendant les examens nationaux (Irak, Syrie, Algérie…) sont routinières et sans
+# rapport avec une crise ; repérées dans la description de Cloudflare, elles sont écartées de l'état « coupure
+# décidée par l'État » (règle fixée avant tout regard sur les issues).
+EXAMENS = re.compile(r"\bexam|baccalaur|ministerial (?:exam|test)|school test", re.I)
 
 
 def lignes(annotation: dict) -> list[dict]:
@@ -40,7 +45,9 @@ def lignes(annotation: dict) -> list[dict]:
               "fin": str(annotation.get("endDate") or "")[:10],
               "cause": str(o.get("outageCause") or annotation.get("outageCause") or "").upper(),
               "type": str(o.get("outageType") or annotation.get("outageType") or "").upper(),
-              "portee": str(annotation.get("scope") or "")[:80]}
+              "portee": str(annotation.get("scope") or "")[:80],
+              "motif": "examens" if EXAMENS.search(" ".join(str(annotation.get(k) or "") for k in ("description", "scope")))
+              else ""}
     return [{**commun, "pays": p} for p in pays if len(p) == 2]
 
 

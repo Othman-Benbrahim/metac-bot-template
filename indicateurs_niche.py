@@ -486,7 +486,8 @@ def radar(cca2: str | None, d0: date) -> dict:
     a, b = (d0 - timedelta(days=14)).isoformat(), d0.isoformat()
     vues = [x for x in csv.DictReader(RADAR.open(encoding="utf-8")) if x["pays"] == cca2 and a <= x["debut"] < b]
     return {"present": True, "valeur": len(vues),
-            "etat_14j": sum(1 for x in vues if x["cause"] in CAUSES_ETAT),
+            "etat_14j": sum(1 for x in vues if x["cause"] in CAUSES_ETAT and x.get("motif") != "examens"),
+            "examens_14j": sum(1 for x in vues if x.get("motif") == "examens"),
             "electricite_14j": sum(1 for x in vues if x["cause"] == "POWER_OUTAGE")}
 
 

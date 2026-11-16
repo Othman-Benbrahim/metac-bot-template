@@ -395,6 +395,7 @@ favorable. `essais.py` :
 
 ## Historique utile
 
+- **0.10.185** — Cloudflare Radar : les coupures ordonnées pendant les examens nationaux (repérées dans la description) sont marquées « examens » et écartées de l'état « coupure décidée par l'État » ; premier passage : 65 coupures depuis juin, dont 25 en Irak (saison des examens). PortWatch passe à 4 h 13 (heure creuse du quota ArcGIS).
 - **0.10.184** — collecteur Cloudflare Radar : fin de période = maintenant (une fin future est refusée, erreur 400), fenêtres de 30 jours, texte de l'erreur affiché.
 - **0.10.183** — collecteur PortWatch : le quota ArcGIS (6 000 unités par minute) est partagé par tous les utilisateurs du service ; une erreur 429 est retentée après 65 s (jusqu'à 5 fois), et 15 s séparent deux détroits.
 - **0.10.182** — relevé du nowcast d'inflation : le genre de chaque tableau (variation mensuelle, glissement annuel, trimestre annualisé) est lu dans le titre qui le précède (à défaut, l'ordre de la page) ; le premier relevé, qui étiquetait « mois » le glissement annuel, est corrigé ; la source `nowcast_inflation` prend un paramètre `genre`.
