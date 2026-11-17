@@ -14,7 +14,9 @@ sont collectés) ; fenêtre « avant » = [d0 − 30 j, d0), fenêtre « après 
                                                    visant le pays après qu'avant ?           posée si ≥ 5 avant
 Chaque fenêtre doit avoir au plus 3 jours GDELT manquants.
 
-B (taux de base) : pour le même pays et le même type de question, part des mois antérieurs où la question a été
+B (taux de base), 0.10.234 : la classe de référence pondérée (banc_classe_reference.py), adoptée sur ce banc ; à
+défaut (moins de 3 mois d'histoire), l'ancien compte, gardé en p_B_compte :
+pour le même pays et le même type de question, part des mois antérieurs où la question a été
 « oui » parmi les mois où la question se posait (même seuil), comptée seulement sur les mois dont la fenêtre « après »
 se termine avant d0, lissée (k + 1) / (n + 2).
 Aucune information postérieure à d0.
@@ -109,6 +111,20 @@ def questions(comptes: dict, jm: set[str], jp: set[str], dernier_jour: date) -> 
                             "cca2": pays, "type": typ, "famille": FAMILLE[typ], "avant": avant, "apres": apres,
                             "issue": issue, "p_B": round(p_b, 4), "n_histoire": len(connus)})
                 histo.append((d0 + timedelta(days=FENETRE), issue))   # B : seulement les mois où la question se posait
+    # 0.10.234 (décision d'auteur du 2026-11-17, 19 h 10 : « Met-la en principale, puisqu'elle gagne à ce niveau, c'est
+    # la règle ») : sur ce banc, B devient la classe de référence pondérée (banc_classe_reference, meilleure que le
+    # compte aux échelles 7, 30 et 90 jours). L'ancien compte reste en p_B_compte ; une question sans classe pondérée
+    # (moins de 3 mois d'histoire) garde le compte.
+    import banc_classe_reference as bcr
+    ref = bcr.cas(comptes, jm, jp, dernier_jour)
+    bcr.noyau(ref)
+    pk = {(x["jeu"], x["type"], x["pays"]): x["p_K"] for x in ref if "p_K" in x}
+    for x in out:
+        x["p_B_compte"] = x["p_B"]
+        k = (x["jeu"], x["type"], x["pays"])
+        x["methode_B"] = "classe_reference" if k in pk else "compte"
+        if k in pk:
+            x["p_B"] = round(pk[k], 4)
     return out
 
 
