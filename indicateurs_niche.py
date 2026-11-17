@@ -43,6 +43,8 @@ STRICTEMENT avant la date du jeu :
   chinoise concernant le pays, émis dans les 14 jours (NGA, HYDROPAC).
 - force_chinoise (0.10.224, en ombre, module Chine, couche 3, relais de avis_navigation) : démonstrations de force
   chinoises visant le pays dans les 14 jours (GDELT, racine CAMEO 15, acteur chinois → pays).
+- militaires (0.10.229, en ombre, M8) : aéronefs militaires visibles au-dessus du pays (adsb.fi, relevés toutes les
+  3 heures) ; log((moyenne par relevé sur 7 jours + 0,5) / (moyenne sur les 21 jours précédents + 0,5)).
 - feux (0.10.208, en ombre) : points chauds détectés par satellite (NASA FIRMS, VIIRS), log(14 jours / 14 jours
   précédents).
 - silence_statistique (0.10.209, en ombre, fiche M15) : publications prévues du Bureau national des statistiques
@@ -804,6 +806,35 @@ def force_chinoise(cca2: str | None, d0: date, fenetre: int = 14, couverture_min
     return {"present": True, "valeur": n, "fenetre_jours": fenetre}
 
 
+MILITAIRES = Path("registre") / "militaires-adsbfi.csv"
+MILITAIRES_RELEVES = Path("registre") / "militaires-adsbfi-releves.txt"
+
+
+def militaires(cca2: str | None, d0: date, couverture_min: float = 0.7) -> dict:
+    """0.10.229 (décision d'auteur du 2026-11-17, 15 h 25 ; M8, sens non fixé) : aéronefs marqués militaires visibles
+    au-dessus du pays (adsb.fi, collecte_militaires.py), moyenne par relevé sur les 7 jours avant la date contre les
+    21 jours précédents. Mesuré si chaque fenêtre a au moins 70 % des relevés attendus (8 par jour). Ce qui est mesuré
+    est ce qui est VISIBLE (couverture des récepteurs, transpondeurs coupés) : à lire en relatif."""
+    if not cca2 or not MILITAIRES.exists() or not MILITAIRES_RELEVES.exists():
+        return {"present": False, "raison": "pays inconnu ou registre absent"}
+    a7, a28, b = (d0 - timedelta(days=7)).isoformat(), (d0 - timedelta(days=28)).isoformat(), d0.isoformat()
+    rel = MILITAIRES_RELEVES.read_text(encoding="utf-8").split()
+    r7 = [r for r in rel if a7 <= r[:10] < b]
+    r21 = [r for r in rel if a28 <= r[:10] < a7]
+    if len(r7) < couverture_min * 7 * 8 or len(r21) < couverture_min * 21 * 8:
+        return {"present": False, "raison": "relevés insuffisants"}
+    n7 = n21 = 0
+    for x in csv.DictReader(MILITAIRES.open(encoding="utf-8")):
+        if x["pays"] == cca2:
+            if a7 <= x["releve"][:10] < b:
+                n7 += int(x["appareils"])
+            elif a28 <= x["releve"][:10] < a7:
+                n21 += int(x["appareils"])
+    m7, m21 = n7 / len(r7), n21 / len(r21)
+    return {"present": True, "valeur": round(math.log((m7 + 0.5) / (m21 + 0.5)), 4),
+            "moyenne_7j": round(m7, 3), "moyenne_21j": round(m21, 3)}
+
+
 FEUX = Path("registre") / "feux.csv"
 FEUX_JOURS = Path("registre") / "feux-jours.txt"
 
@@ -995,7 +1026,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "force_chinoise", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "force_chinoise", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival", "militaires") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -1060,7 +1091,12 @@ async def principal() -> int:
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["recit_russe"] = recit_russe(code, d0)
                 if "alignement_rival" not in fait and PAIRES_JOUR.exists():          # 0.10.222, M17
+                    # 0.10.229 : code recalculé ici ; il pouvait rester celui d'un autre pays (bloc précédent sauté)
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["alignement_rival"] = alignement_rival(code, d0)
+                if "militaires" not in fait and MILITAIRES.exists():                  # 0.10.229, M8
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["militaires"] = militaires(code, d0)
                 if "contremesures_chine" not in fait and CHINE_SANCTIONS.exists():   # 0.10.204, module Chine
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["contremesures_chine"] = contremesures_chine(code, d0)
@@ -1096,7 +1132,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "force_chinoise", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "force_chinoise", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival", "militaires") if k in ligne))
         await tg.fermer()
     return 0
 

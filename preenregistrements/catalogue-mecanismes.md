@@ -91,7 +91,8 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
 - Indicateurs (branchés en ombre, dans l'observatoire) : emballement des canaux Telegram validés, modifications de la
   page Wikipédia du pays, prix alimentaires (PAM), arrivées aériennes (OpenSky), brouillage GPS (gpsjam), incidents
   graves (Violations Watch), comptes RSS par famille (presse, officiel, santé, Parlement européen, renseignement,
-  Global Voices, think tanks, économie, notation).
+  Global Voices, think tanks, économie, notation) ; 0.10.229 (décision d'auteur du 2026-11-17, 15 h 25) : aéronefs
+  militaires visibles au-dessus du pays (adsb.fi, relevés toutes les 3 heures, `militaires`).
 - Sens : **non fixé** ; c'est l'observatoire qui dira si un sens revient lot après lot. Aucun sens ne sera choisi
   après avoir vu les issues.
 - Domaine : par famille de questions, à l'observatoire.
