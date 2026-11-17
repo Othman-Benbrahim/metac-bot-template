@@ -41,12 +41,23 @@ class TestM17(unittest.TestCase):
                           encoding="utf-8")
             jours = [f"{mo}-01" for mo in mois] + [(d0 - timedelta(days=k)).isoformat() for k in range(1, 15)]
             fd.write_text("\n".join(jours) + "\n", encoding="utf-8")
-            with mock.patch.multiple(ni, PAIRES_JOUR=fj, PAIRES_MOIS=fm, PAIRES_JOURS=fd), \
+            with mock.patch.multiple(ni, PAIRES_JOUR=fj, PAIRES_MOIS=fm, PAIRES_JOURS=fd, RIVALITES_FIXES=Path(t) / "absent"), \
                     mock.patch.object(ni, "voisins", lambda c: []):
                 self.assertEqual(ni.rivalites(d0), {("CN", "JP"), ("CN", "PH")})
                 r = ni.alignement_rival("PH", d0)
                 self.assertEqual((r["valeur"], r["puissances"]), (2, ["CN"]))
                 self.assertEqual(ni.alignement_rival("FR", d0)["valeur"], 0)   # la Chine n'est ni rivale ni voisine de la France
+
+
+    def test_liste_fixe(self):
+        with tempfile.TemporaryDirectory() as t:
+            f = Path(t) / "r.csv"
+            f.write_text("a,b,rivalite,debut\nJP,CN,China-Japan 2,1996\n", encoding="utf-8")
+            with mock.patch.object(ni, "RIVALITES_FIXES", f):
+                self.assertEqual(ni.rivalites_fixes(), {("CN", "JP")})
+        reelle = ni.rivalites_fixes()
+        for p in [("CN", "JP"), ("CN", "US"), ("KP", "KR"), ("CN", "TW"), ("IN", "PK")]:
+            self.assertIn(p, reelle)
 
 
 if __name__ == "__main__":

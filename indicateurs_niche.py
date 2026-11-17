@@ -693,6 +693,9 @@ PAIRES_MOIS = Path("registre") / "gdelt-paires-mois.csv"
 PAIRES_JOURS = Path("registre") / "gdelt-paires-jours.txt"
 RIVALITE_MIN_CONFLITS = 200      # 0.10.222, fixés avant toute mesure : au moins 200 événements conflictuels en 12 mois
 RIVALITE_MIN_PART = 0.35         # et au moins 35 % des événements de la paire
+# 0.10.223 (décision d'auteur du 2026-11-17, 10 h 21) : rivalités stratégiques de Thompson et Dreyer (Handbook of
+# International Rivalries, 1494-2010, CQ Press 2011), celles encore actives en 2010, ajoutées aux rivalités calculées.
+RIVALITES_FIXES = Path("registre") / "rivalites-strategiques.csv"
 
 
 def rivalites(d0: date) -> set[tuple[str, str]]:
@@ -716,7 +719,18 @@ def rivalites(d0: date) -> set[tuple[str, str]]:
             v = tot.setdefault((x["a"], x["b"]), [0, 0])
             v[0] += int(x["evenements"])
             v[1] += int(x["conflit"])
-    return {k for k, (n, c) in tot.items() if c >= RIVALITE_MIN_CONFLITS and c >= RIVALITE_MIN_PART * n}
+    calculees = {k for k, (n, c) in tot.items() if c >= RIVALITE_MIN_CONFLITS and c >= RIVALITE_MIN_PART * n}
+    return calculees | rivalites_fixes()
+
+
+def rivalites_fixes() -> set[tuple[str, str]]:
+    """0.10.223 : liste fixe de Thompson et Dreyer (rivalités stratégiques actives en 2010), paires triées. Elle répare
+    un défaut constaté à la relecture de la liste calculée : un grand volume d'échanges ordinaires dilue la part de
+    conflit des vrais rivaux (Chine-Japon 30 %, Chine-États-Unis 23 %) au niveau d'alliés en dispute (Canada-États-Unis
+    22 %), si bien qu'aucun seuil sur cette part ne les sépare. Liste antérieure à toute issue : pas de fuite."""
+    if not RIVALITES_FIXES.exists():
+        return set()
+    return {tuple(sorted((x["a"], x["b"]))) for x in csv.DictReader(RIVALITES_FIXES.open(encoding="utf-8"))}
 
 
 def alignement_rival(cca2: str | None, d0: date, fenetre: int = 14, couverture_min: float = 0.85) -> dict:

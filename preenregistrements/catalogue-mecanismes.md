@@ -227,6 +227,20 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
 - Réserves : GDELT code mal le sens de certains événements (la Chine « sanctionnant » la Russie dans les contre-mesures) ; le
   dénominateur (volume de presse sur la paire) gonfle les grands pays ; la liste des rivalités n'existe qu'à partir de
   12 mois de collecte (rattrapage depuis juillet 2024 nécessaire).
+- Relecture de la liste (2026-11-17, après le rattrapage depuis juillet 2024 ; 161 paires) : plausible pour les conflits
+  ouverts (Russie-Ukraine, Iran-Israël, Inde-Pakistan, Thaïlande-Cambodge, Chine-Philippines) ; bruit venu du conflit
+  verbal (pays occidentaux critiquant Israël, Monaco-Ukraine, Maldives-Nigeria, Pays-Bas-Philippines) ; ABSENTS :
+  Chine-Japon (30 %), Chine-États-Unis (23 %), Chine-Taïwan (30 %), les deux Corées (34 %), Russie-États-Unis (23 %).
+  Le volume d'échanges ordinaires dilue la part de conflit des vrais rivaux au niveau d'alliés en dispute
+  (Canada-États-Unis 22 %) : aucun seuil sur cette part ne les sépare. Le cas fondateur (Japon-Philippines → Chine)
+  n'était donc pas détectable.
+- Correction, décision d'auteur du 2026-11-17 (10 h 21) : les seuils ne sont PAS retouchés ; la liste fixe des
+  rivalités stratégiques de Thompson et Dreyer (*Handbook of International Rivalries, 1494-2010*, CQ Press 2011 ; via le
+  paquet R stevemisc, GPL-2), limitée aux 42 rivalités encore actives en 2010, est AJOUTÉE aux rivalités calculées
+  (`registre/rivalites-strategiques.csv`). Aveu : ce choix est fait APRÈS avoir vu que la liste calculée ratait le cas
+  fondateur ; il ne repose sur aucune issue de question, mais il n'est pas aveugle. Réserves : liste arrêtée en 2010
+  (rivalités nées depuis : seulement par le calcul ; rivalités éteintes depuis : maintenues) ; le bruit verbal de la
+  liste calculée demeure.
 - État : **observatoire** (indicateur `alignement_rival`, en ombre).
 
 ## Ce que ce catalogue n'est pas
