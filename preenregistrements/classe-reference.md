@@ -89,3 +89,17 @@ voir avec cette logique. »
   descriptif −0,070). Pour IODA et OFAC, le choix relève du bon sens de l'auteur, pas du critère.
 - Avant l'entrée dans le bot : test sur la forme des questions Metaculus (fenêtres et seuil du puits), pour ces trois
   sources seulement.
+
+## Forme des questions du bot (ajout du 2026-11-17, 19 h 50, avant tout passage ; décision d'auteur : « on y va »)
+`banc_cr_metaculus.py`, essai `classe_reference_metaculus`.
+- Sources : UCDP (depuis 2023-01-01), IODA (depuis 2022-06-01), OFAC (depuis 2021-01-01) ; groupes du banc précédent ;
+  relevés au plafond retirés.
+- Question : « au moins N événements dans les h jours à partir de d0 ? », N = max(1, ⌈médiane des fenêtres passées⌉).
+- B : le taux du bot (alphabet_compte.compter) : fenêtres disjointes passées du même groupe, k / n, bords ramenés à
+  1/(2n) et 1 − 1/(2n), au moins 5 fenêtres.
+- B_noyau : questions passées de la même source (tous groupes), pondérées par la ressemblance (z, m ; largeurs 1 ; 1).
+- Critère : par source, h = 30 jours, au moins 30 questions de confirmation (d0 ≥ 2025-11-01), bootstrap par mois,
+  risque `es.risque_corrige(1) / k`. h = 7 et 90 jours rapportés.
+- Une source gagnante peut entrer dans le bot (décision d'auteur datée) ; une source non tranchée reste en ombre.
+- Attendu (Claude) : le gain devrait être plus faible qu'avec « plus qu'avant ? », car le seuil à la médiane amortit déjà
+  une partie du retour vers la moyenne ; UCDP reste le plus probable gagnant.

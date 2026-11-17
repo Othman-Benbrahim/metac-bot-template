@@ -145,6 +145,10 @@ ESSAIS = {
                                  "objet": "classe de référence pondérée contre B sur les sources d'événements du bot "
                                           "(UCDP, IODA, USGS, GDACS, lancements, OFAC), par source, à 30 jours",
                                  "doc": "preenregistrements/classe-reference.md"},
+    "classe_reference_metaculus": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+                                   "objet": "classe de référence pondérée contre le taux du bot, questions « au moins N "
+                                            "événements ? » (UCDP, OFAC, IODA), par source, à 30 jours",
+                                   "doc": "preenregistrements/classe-reference.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",

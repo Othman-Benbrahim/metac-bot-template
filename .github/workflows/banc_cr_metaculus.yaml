@@ -1,0 +1,41 @@
+name: Banc classe de référence, forme du bot (ombre)
+
+# 0.10.237 : classe de référence pondérée contre le taux du bot, questions « au moins N événements ? » (UCDP, OFAC,
+# IODA). Gratuit ; UCDP avec le jeton déjà en secret.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - run: uv run python banc_cr_metaculus.py
+        timeout-minutes: 60
+        env:
+          UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/banc-cr-metaculus.json ]; then git add registre/banc-cr-metaculus.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : classe de référence (forme du bot) du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
