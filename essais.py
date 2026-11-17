@@ -121,6 +121,10 @@ ESSAIS = {
                          "objet": "ConflictForecast lu comme indicateur (escalade prévue, toute violence probable) : δ par "
                                   "état fixé avant 2026, jugé sur 2026 ; version utilisable le 25 du mois suivant ses données",
                          "doc": "preenregistrements/conflictforecast.md"},
+    "classe_reference": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+                         "objet": "B par classe de référence pondérée par la ressemblance (tous pays, noyau fixé d'avance) "
+                                  "contre B, questions fabriquées GDELT",
+                         "doc": "preenregistrements/classe-reference.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
