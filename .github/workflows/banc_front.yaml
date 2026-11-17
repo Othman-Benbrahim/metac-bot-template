@@ -1,0 +1,45 @@
+name: Front de diffusion (UCDP, PRIO-GRID, ombre)
+
+# 0.10.239 : Hägerstrand à la bonne échelle : UCDP GED par carreau PRIO-GRID depuis 2015, puis front de diffusion contre
+# la classe pondérée. Gratuit ; jeton UCDP en secret.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - run: uv run python collecte_ucdp_grille.py
+        timeout-minutes: 120
+        env:
+          UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
+      - run: uv run python banc_front.py
+        timeout-minutes: 60
+        env:
+          UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/ucdp-cellules.csv.gz registre/banc-front.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : front de diffusion du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
