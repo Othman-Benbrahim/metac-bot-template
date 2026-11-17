@@ -145,7 +145,10 @@ ESSAIS = {
                                  "objet": "classe de référence pondérée contre B sur les sources d'événements du bot "
                                           "(UCDP, IODA, USGS, GDACS, lancements, OFAC), par source, à 30 jours",
                                  "doc": "preenregistrements/classe-reference.md"},
-    "classe_reference_metaculus": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+    "classe_reference_metaculus": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "clos",
+                                   "clos_le": "2026-11-17",
+                                   "verdict": "non adopté : UCDP même gain qu'avant mais non tranché (−0,043, [−0,085 ; "
+                                              "+0,027]) ; OFAC PIRE que le taux du bot (+0,089, [+0,011 ; +0,151]) ; IODA rien",
                                    "objet": "classe de référence pondérée contre le taux du bot, questions « au moins N "
                                             "événements ? » (UCDP, OFAC, IODA), par source, à 30 jours",
                                    "doc": "preenregistrements/classe-reference.md"},
@@ -159,7 +162,9 @@ ESSAIS = {
                        "objet": "signes avant-coureurs (variance et autocorrélation en hausse) sur les questions "
                                 "d'escalade, contre la classe pondérée, GDELT",
                        "doc": "preenregistrements/geo-math.md"},
-    "richardson": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+    "richardson": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "clos", "clos_le": "2026-11-17",
+                   "verdict": "non adopté : la lognormale fait moins bien que le taux du bot (+0,015, [−0,006 ; +0,037]), "
+                              "la binomiale négative aussi ; le comptage des fenêtres passées reste le meilleur",
                    "objet": "lognormale (queue lourde) contre le taux du bot, morts UCDP au-dessus du quantile 90 %",
                    "doc": "preenregistrements/geo-math.md"},
     "front_diffusion": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
