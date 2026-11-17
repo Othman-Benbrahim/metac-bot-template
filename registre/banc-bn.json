@@ -1,0 +1,55 @@
+{
+  "version_bot": "0.10.233",
+  "questions": 832,
+  "appliquees": 831,
+  "note": "perte log, plus bas = mieux ; aucun modèle de langue ; B_noyau : ressemblance (position dans l'année, élan sur h jours)",
+  "toutes": {
+    "n": 831,
+    "B": 0.6874,
+    "B_noyau": 0.68
+  },
+  "ecarts_de_credit_descriptif": {
+    "n": 39,
+    "oui": 27,
+    "B": 0.807,
+    "B_noyau": 0.8463
+  },
+  "par_source": {
+    "fred": {
+      "n": 441,
+      "B": 0.6833,
+      "B_noyau": 0.6768
+    },
+    "dbnomics": {
+      "n": 390,
+      "B": 0.6919,
+      "B_noyau": 0.6836
+    }
+  },
+  "critere": {
+    "n_nouveaux": 831,
+    "regard": 2,
+    "n_juge": 200,
+    "blocs": 17,
+    "ecart_moyen": 0.004029261522399175,
+    "intervalle_90_par_blocs": [
+      -0.027679121697421677,
+      0.030270033305268083
+    ],
+    "intervalle_corrige": [
+      -0.05160640885612595,
+      0.05205243546880723
+    ],
+    "niveau_corrige": 0.9958,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "audit_b": {
+    "alertes": [
+      "fred · <Nom> the option-adjusted spread of securities with an investment grade rating of <Nom> in : B annonce 40% en moyenne, 15 oui sur 20 (75%), écart +3.2 écarts-types, même sens dans 78% de 9 jeux"
+    ],
+    "a_surveiller": [
+      "dbnomics · <Nom> is the probability that the value of the <Nom> time series “<Nom> nominal government : B annonce 56% en moyenne, 5 oui sur 26 (19%), écart -3.7 écarts-types, même sens dans 100% de 2 jeux"
+    ],
+    "seuil": "|z| > 3.0 sur au moins 20 questions, écart répété dans au moins 3 jeux"
+  }
+}
