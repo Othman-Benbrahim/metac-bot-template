@@ -22,6 +22,17 @@ class TestRTFP(unittest.TestCase):
                {"resource_id": 9, "title": "Data", "filename": "WLD_RTFP_country_2026-11-02.csv"}]
         self.assertEqual(cp.choisir(res), ("9", "2026-11-02"))
 
+    def test_choisir_plus_recente(self):
+        res = [{"resource_id": 1, "filename": "WLD_RTFP_country_2023-06-06.zip"},
+               {"resource_id": 3, "filename": "WLD_RTFP_country_2026-11-09.zip"},
+               {"resource_id": 2, "filename": "WLD_RTFP_country_2025-01-06.zip"}]
+        self.assertEqual(cp.choisir(res), ("3", "2026-11-09"))
+        self.assertEqual(len(cp.versions(res)), 3)
+
+    def test_recentes(self):
+        xs = [{"pays": "AF", "mois": m} for m in ("2026-10", "2025-05", "2025-04", "2024-01")]
+        self.assertEqual([x["mois"] for x in cp.recentes(xs, 18)], ["2026-10", "2025-05"])
+
     def test_lire(self):
         xs = cp.lire_rtfp(CSV, {"AFG": "AF"}, "2026-11-02")
         self.assertEqual(len(xs), 4)

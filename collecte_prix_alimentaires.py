@@ -24,6 +24,7 @@ import io
 import os
 import re
 import sys
+import time
 import zipfile
 from datetime import datetime
 from pathlib import Path
@@ -40,6 +41,7 @@ TELECHARGER = f"{BASE}/catalog/{CATALOGUE}/download/{{rid}}"
 CODES = "https://raw.githubusercontent.com/datasets/country-codes/main/data/country-codes.csv"
 REGISTRE = Path("registre") / "prix-alimentaires.csv"
 CHAMPS = ["version", "pays", "mois", "close", "inflation"]
+GARDER_MOIS = 18
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 _FICHIER = re.compile(r"WLD_RTFP_country_(\d{4}-\d{2}-\d{2})", re.I)
 
@@ -68,14 +70,40 @@ def ressources(c: httpx.Client) -> list[dict]:
     raise RuntimeError(" | ".join(erreurs))
 
 
-def choisir(res: list[dict]) -> tuple[str | None, str | None]:
-    """(identifiant de ressource, date de version) du fichier pays, d'après son nom."""
+def versions(res: list[dict]) -> dict[str, str]:
+    """0.10.218 : toutes les versions du fichier pays au catalogue : {date de version : identifiant de ressource}.
+    Le catalogue garde chaque version hebdomadaire depuis juin 2023 : des millésimes réels, publiés à leur date."""
+    out = {}
     for x in res:
         nom = " ".join(str(x.get(k) or "") for k in ("filename", "title", "name", "_links"))
         m = _FICHIER.search(nom)
-        if m:
-            return str(x.get("resource_id") or x.get("id") or ""), m.group(1)
-    return None, None
+        if m and (x.get("resource_id") or x.get("id")):
+            out[m.group(1)] = str(x.get("resource_id") or x.get("id"))
+    return out
+
+
+def choisir(res: list[dict]) -> tuple[str | None, str | None]:
+    """(identifiant de ressource, date de version) de la version la PLUS RÉCENTE du fichier pays."""
+    v = versions(res)
+    if not v:
+        return None, None
+    d = max(v)
+    return v[d], d
+
+
+def recentes(lignes: list[dict], mois: int = GARDER_MOIS) -> list[dict]:
+    """Ne garde, pour chaque pays, que les `mois` derniers mois de la version (assez pour le glissement sur un an et
+    son accélération sur trois mois) : la base complète remonte à 2007 et chaque version la recopie."""
+    dernier: dict[str, str] = {}
+    for x in lignes:
+        dernier[x["pays"]] = max(dernier.get(x["pays"], ""), x["mois"])
+    out = []
+    for x in lignes:
+        a, m = int(dernier[x["pays"]][:4]), int(dernier[x["pays"]][5:7])
+        k = (a - int(x["mois"][:4])) * 12 + m - int(x["mois"][5:7])
+        if k < mois:
+            out.append(x)
+    return out
 
 
 def texte_csv(contenu: bytes) -> str:
@@ -136,41 +164,57 @@ def principal() -> int:
         except Exception as e:
             _sommaire(f"## Prix alimentaires (RTFP)\n\nAPI du catalogue inaccessible : {type(e).__name__}: {str(e)[:500]}")
             return 1
+        tout = versions(res)
         rid, version = choisir(res)
         if a.sonde:
-            l = ["## Sonde des prix alimentaires (RTFP)", "", f"{len(res)} ressource(s) au catalogue {CATALOGUE} :"]
-            l += [f"- {str({k: x.get(k) for k in ('resource_id', 'id', 'title', 'filename', 'dctype')})[:220]}" for x in res[:10]]
-            l.append(f"Fichier pays retenu : ressource {rid}, version {version}")
+            l = ["## Sonde des prix alimentaires (RTFP)", "", f"{len(res)} ressource(s) au catalogue ; "
+                 f"{len(tout)} version(s) du fichier pays, de {min(tout, default='—')} à {max(tout, default='—')}."]
+            l.append(f"Version la plus récente : {version} (ressource {rid}).")
             if rid:
                 r = c.get(TELECHARGER.format(rid=rid))
-                l.append(f"Téléchargement : HTTP {r.status_code}, {len(r.content)} octets, type {r.headers.get('content-type')} ; "
-                         f"début : {r.content[:160]!r}")
+                l.append(f"Téléchargement : HTTP {r.status_code}, {len(r.content)} octets.")
+                if r.status_code == 200:
+                    xs = lire_rtfp(texte_csv(r.content), table_iso3(c), version)
+                    l.append(f"Lu : {len(xs)} lignes, {len({x['pays'] for x in xs})} pays, dernier mois "
+                             f"{max((x['mois'] for x in xs), default='—')} ; gardées : {len(recentes(xs))}.")
             _sommaire("\n".join(l + ["", "Rien d'écrit (sonde)."]))
             return 0
-        if not rid:
+        if not tout:
             _sommaire("## Prix alimentaires (RTFP)\n\nFichier pays introuvable parmi les ressources du catalogue.")
             return 1
         anciens = list(csv.DictReader(REGISTRE.open(encoding="utf-8"))) if REGISTRE.exists() else []
-        if any(x["version"] == version for x in anciens):
-            _sommaire(f"## Prix alimentaires (RTFP)\n\nVersion {version} déjà au registre : rien à faire.")
+        connues = {x["version"] for x in anciens}
+        a_lire = sorted(v for v in tout if v not in connues)
+        if not a_lire:
+            _sommaire(f"## Prix alimentaires (RTFP)\n\nToutes les versions ({len(tout)}) sont déjà au registre.")
             return 0
-        r = c.get(TELECHARGER.format(rid=rid))
-        r.raise_for_status()
-        lignes = lire_rtfp(texte_csv(r.content), table_iso3(c), version)
-    if len(lignes) < 1000:
-        _sommaire(f"## Prix alimentaires (RTFP)\n\nFichier lu mais trop court ({len(lignes)} lignes) : rien d'écrit.")
+        iso3 = table_iso3(c)
+        nouvelles, echecs = [], []
+        for v in a_lire:
+            try:
+                r = c.get(TELECHARGER.format(rid=tout[v]))
+                r.raise_for_status()
+                xs = recentes(lire_rtfp(texte_csv(r.content), iso3, v))
+                if len(xs) < 100:
+                    raise ValueError(f"trop court ({len(xs)} lignes)")
+                nouvelles += xs
+            except Exception as e:
+                echecs.append(f"{v} ({type(e).__name__})")
+            time.sleep(1)
+    if not nouvelles:
+        _sommaire("## Prix alimentaires (RTFP)\n\nAucune version lue : " + ", ".join(echecs[:10]))
         return 1
     REGISTRE.parent.mkdir(exist_ok=True)
     with REGISTRE.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CHAMPS)
         w.writeheader()
-        for x in anciens + lignes:
+        for x in sorted(anciens + nouvelles, key=lambda x: (x["version"], x["pays"], x["mois"])):
             w.writerow({k: x.get(k, "") for k in CHAMPS})
-    _sommaire(f"## Prix alimentaires (RTFP)\n\nVersion {version} ajoutée : {len(lignes)} lignes, "
-              f"{len({x['pays'] for x in lignes})} pays, dernier mois {max(x['mois'] for x in lignes)}. "
-              f"Source : Banque mondiale, Microdata Library (WLD_2021_RTFP-CTRY_v02_M).")
+    lues = sorted({x["version"] for x in nouvelles})
+    _sommaire(f"## Prix alimentaires (RTFP)\n\n{len(lues)} version(s) ajoutée(s) ({lues[0]} → {lues[-1]}), "
+              f"{len(nouvelles)} lignes ; {len(echecs)} échec(s){' : ' + ', '.join(echecs[:10]) if echecs else ''}. "
+              f"Source : Banque mondiale, Microdata Library ({IDNO}).")
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(principal())
