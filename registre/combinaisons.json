@@ -1,0 +1,551 @@
+{
+  "note": "perte log, plus bas = mieux ; aucun modèle de langue ; δ fixé sur l'exploration, jugé sur la confirmation",
+  "coupure": "2026-01-01",
+  "questions": 1085,
+  "exploration": 511,
+  "confirmation": 574,
+  "k_juges": 0,
+  "risque_corrige": 0.003125,
+  "valeur_du_bon_sens": {
+    "plausibles_jugees": 0,
+    "part_confirmees": null,
+    "temoins_juges": 0,
+    "part_confirmes": null
+  },
+  "paires": [
+    {
+      "paire": "M4 × M10",
+      "famille": "mobilisation",
+      "bon_sens": "additif",
+      "exploration": {
+        "00": 75,
+        "10": 67,
+        "01": 6,
+        "11": 3
+      },
+      "confirmation": {
+        "00": 69,
+        "10": 83,
+        "01": 1,
+        "11": 4
+      },
+      "interaction_exploration": 0.495,
+      "interaction_confirmation": 1.4
+    },
+    {
+      "paire": "M4 × M11",
+      "famille": "mobilisation",
+      "bon_sens": "additif",
+      "exploration": {
+        "00": 48,
+        "10": 38,
+        "01": 7,
+        "11": 6
+      },
+      "confirmation": {
+        "00": 33,
+        "10": 43,
+        "01": 8,
+        "11": 17
+      },
+      "interaction_exploration": 0.632,
+      "interaction_confirmation": -1.48
+    },
+    {
+      "paire": "M4 × M14",
+      "famille": "mobilisation",
+      "bon_sens": "additif",
+      "exploration": {
+        "00": 81,
+        "10": 69,
+        "01": 0,
+        "11": 1
+      },
+      "confirmation": {
+        "00": 68,
+        "10": 87,
+        "01": 2,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M4 × M17",
+      "famille": "mobilisation",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 32,
+        "10": 30,
+        "01": 6,
+        "11": 4
+      },
+      "confirmation": {
+        "00": 61,
+        "10": 75,
+        "01": 9,
+        "11": 12
+      },
+      "interaction_exploration": -1.077,
+      "interaction_confirmation": 0.631
+    },
+    {
+      "paire": "M4 × FC",
+      "famille": "mobilisation",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 70,
+        "10": 62,
+        "01": 4,
+        "11": 3
+      },
+      "confirmation": {
+        "00": 68,
+        "10": 82,
+        "01": 2,
+        "11": 5
+      },
+      "interaction_exploration": 0.859,
+      "interaction_confirmation": 0.388
+    },
+    {
+      "paire": "M10 × M11",
+      "famille": "mobilisation",
+      "bon_sens": "renforcement",
+      "exploration": {
+        "00": 81,
+        "10": 5,
+        "01": 13,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 73,
+        "10": 3,
+        "01": 25,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M10 × M14",
+      "famille": "mobilisation",
+      "bon_sens": "additif (faible selon l'auteur)",
+      "exploration": {
+        "00": 141,
+        "10": 9,
+        "01": 1,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 150,
+        "10": 5,
+        "01": 2,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M10 × M14",
+      "famille": "violence",
+      "bon_sens": "additif (faible selon l'auteur)",
+      "exploration": {
+        "00": 242,
+        "10": 14,
+        "01": 2,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 269,
+        "10": 12,
+        "01": 1,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M10 × M17",
+      "famille": "mobilisation",
+      "bon_sens": "renforcement",
+      "exploration": {
+        "00": 60,
+        "10": 2,
+        "01": 10,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 133,
+        "10": 3,
+        "01": 19,
+        "11": 2
+      },
+      "interaction_confirmation": -0.113
+    },
+    {
+      "paire": "M10 × M17",
+      "famille": "strategique",
+      "bon_sens": "renforcement",
+      "exploration": {
+        "00": 28,
+        "10": 3,
+        "01": 4,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 75,
+        "10": 3,
+        "01": 14,
+        "11": 4
+      },
+      "interaction_confirmation": -0.106
+    },
+    {
+      "paire": "M10 × M17",
+      "famille": "violence",
+      "bon_sens": "renforcement",
+      "exploration": {
+        "00": 81,
+        "10": 4,
+        "01": 16,
+        "11": 4
+      },
+      "confirmation": {
+        "00": 222,
+        "10": 10,
+        "01": 48,
+        "11": 2
+      },
+      "interaction_exploration": 0.244,
+      "interaction_confirmation": 0.514
+    },
+    {
+      "paire": "M10 × FC",
+      "famille": "mobilisation",
+      "bon_sens": "renforcement",
+      "exploration": {
+        "00": 127,
+        "10": 5,
+        "01": 5,
+        "11": 2
+      },
+      "confirmation": {
+        "00": 145,
+        "10": 5,
+        "01": 7,
+        "11": 0
+      },
+      "interaction_exploration": 0.181
+    },
+    {
+      "paire": "M10 × FC",
+      "famille": "strategique",
+      "bon_sens": "renforcement",
+      "exploration": {
+        "00": 63,
+        "10": 3,
+        "01": 3,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 84,
+        "10": 5,
+        "01": 4,
+        "11": 2
+      },
+      "interaction_confirmation": 0.941
+    },
+    {
+      "paire": "M10 × FC",
+      "famille": "violence",
+      "bon_sens": "renforcement",
+      "exploration": {
+        "00": 215,
+        "10": 12,
+        "01": 9,
+        "11": 1
+      },
+      "confirmation": {
+        "00": 251,
+        "10": 12,
+        "01": 18,
+        "11": 0
+      },
+      "interaction_exploration": -1.397
+    },
+    {
+      "paire": "M11 × M14",
+      "famille": "mobilisation",
+      "bon_sens": "additif (faible selon l'auteur)",
+      "exploration": {
+        "00": 85,
+        "10": 13,
+        "01": 1,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 74,
+        "10": 25,
+        "01": 2,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M11 × M14",
+      "famille": "violence",
+      "bon_sens": "additif (faible selon l'auteur)",
+      "exploration": {
+        "00": 139,
+        "10": 31,
+        "01": 1,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 166,
+        "10": 42,
+        "01": 1,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M11 × M17",
+      "famille": "mobilisation",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 39,
+        "10": 6,
+        "01": 8,
+        "11": 2
+      },
+      "confirmation": {
+        "00": 61,
+        "10": 22,
+        "01": 15,
+        "11": 3
+      },
+      "interaction_exploration": -0.499,
+      "interaction_confirmation": -0.256
+    },
+    {
+      "paire": "M11 × M17",
+      "famille": "strategique",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 17,
+        "10": 5,
+        "01": 4,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 43,
+        "10": 11,
+        "01": 11,
+        "11": 2
+      },
+      "interaction_confirmation": -1.043
+    },
+    {
+      "paire": "M11 × M17",
+      "famille": "violence",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 54,
+        "10": 11,
+        "01": 16,
+        "11": 2
+      },
+      "confirmation": {
+        "00": 133,
+        "10": 35,
+        "01": 34,
+        "11": 7
+      },
+      "interaction_exploration": 1.049,
+      "interaction_confirmation": -0.35
+    },
+    {
+      "paire": "M11 × FC",
+      "famille": "mobilisation",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 81,
+        "10": 13,
+        "01": 5,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 71,
+        "10": 25,
+        "01": 5,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M11 × FC",
+      "famille": "strategique",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 36,
+        "10": 8,
+        "01": 1,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 52,
+        "10": 13,
+        "01": 1,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M11 × FC",
+      "famille": "violence",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 133,
+        "10": 31,
+        "01": 5,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 156,
+        "10": 41,
+        "01": 10,
+        "11": 1
+      },
+      "interaction_confirmation": -0.55
+    },
+    {
+      "paire": "M14 × M17",
+      "famille": "mobilisation",
+      "bon_sens": "renforcement faible",
+      "exploration": {
+        "00": 62,
+        "10": 0,
+        "01": 9,
+        "11": 1
+      },
+      "confirmation": {
+        "00": 136,
+        "10": 0,
+        "01": 19,
+        "11": 2
+      }
+    },
+    {
+      "paire": "M14 × M17",
+      "famille": "strategique",
+      "bon_sens": "renforcement faible",
+      "exploration": {
+        "00": 31,
+        "10": 0,
+        "01": 4,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 77,
+        "10": 1,
+        "01": 17,
+        "11": 1
+      },
+      "interaction_confirmation": 0.395
+    },
+    {
+      "paire": "M14 × M17",
+      "famille": "violence",
+      "bon_sens": "renforcement faible",
+      "exploration": {
+        "00": 85,
+        "10": 0,
+        "01": 20,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 231,
+        "10": 1,
+        "01": 50,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M14 × FC",
+      "famille": "mobilisation",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 131,
+        "10": 1,
+        "01": 7,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 148,
+        "10": 2,
+        "01": 7,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M14 × FC",
+      "famille": "strategique",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 64,
+        "10": 2,
+        "01": 3,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 87,
+        "10": 2,
+        "01": 6,
+        "11": 0
+      }
+    },
+    {
+      "paire": "M14 × FC",
+      "famille": "violence",
+      "bon_sens": "temoin",
+      "exploration": {
+        "00": 226,
+        "10": 1,
+        "01": 10,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 263,
+        "10": 0,
+        "01": 17,
+        "11": 1
+      }
+    },
+    {
+      "paire": "M17 × FC",
+      "famille": "strategique",
+      "bon_sens": "redondant",
+      "exploration": {
+        "00": 31,
+        "10": 4,
+        "01": 0,
+        "11": 0
+      },
+      "confirmation": {
+        "00": 76,
+        "10": 13,
+        "01": 2,
+        "11": 4
+      },
+      "interaction_confirmation": 1.332
+    },
+    {
+      "paire": "M17 × FC",
+      "famille": "violence",
+      "bon_sens": "redondant",
+      "exploration": {
+        "00": 85,
+        "10": 16,
+        "01": 0,
+        "11": 3
+      },
+      "confirmation": {
+        "00": 227,
+        "10": 36,
+        "01": 5,
+        "11": 13
+      },
+      "interaction_confirmation": 0.371
+    }
+  ]
+}
