@@ -1,0 +1,62 @@
+{
+ "note": "perte log, plus bas = mieux ; aucun modèle de langue ; données UCDP GED",
+ "journal": [
+  "Sudan : 2354 événements, 102491 morts",
+  "Ukraine : 5000 événements, plafond atteint : retiré",
+  "Myanmar : 5000 événements, plafond atteint : retiré",
+  "Syria : 3696 événements, 11565 morts",
+  "Somalia : 1425 événements, 16675 morts",
+  "DR Congo : 4261 événements, 26932 morts",
+  "Nigeria : 3794 événements, 21700 morts",
+  "Burkina Faso : 2266 événements, 19534 morts",
+  "Mali : 2307 événements, 11329 morts",
+  "Niger : 513 événements, 4573 morts",
+  "Ethiopia : 4343 événements, 180634 morts",
+  "Yemen : 1966 événements, 12702 morts",
+  "Afghanistan : 1189 événements, 3506 morts",
+  "Pakistan : 3644 événements, 11291 morts",
+  "India : 1051 événements, 2214 morts",
+  "Colombia : 3058 événements, 4667 morts",
+  "Mexico : 5000 événements, plafond atteint : retiré",
+  "Cameroon : 1076 événements, 2498 morts",
+  "Mozambique : 807 événements, 2386 morts",
+  "Israel : 5000 événements, plafond atteint : retiré",
+  "Iraq : 1078 événements, 2360 morts",
+  "Haiti : 497 événements, 4949 morts",
+  "Philippines : 441 événements, 1047 morts",
+  "Kenya : 187 événements, 578 morts",
+  "South Sudan : 149 événements, 2878 morts"
+ ],
+ "seuil_q90": {
+  "questions": 546,
+  "n_confirmation": 252,
+  "oui": 0.139,
+  "perte_bot": 0.4054,
+  "perte_bn": 0.4124,
+  "perte_ln": 0.4207,
+  "exploration": {
+   "perte_bot": 0.5193,
+   "perte_bn": 0.5287,
+   "perte_ln": 0.5218
+  },
+  "ecart_moyen": 0.0154,
+  "intervalle_corrige": [
+   -0.0062,
+   0.0365
+  ],
+  "verdict": "non tranché"
+ },
+ "seuil_double_mediane": {
+  "questions": 546,
+  "n_confirmation": 252,
+  "oui": 0.23,
+  "perte_bot": 0.5323,
+  "perte_bn": 0.5403,
+  "perte_ln": 0.544,
+  "exploration": {
+   "perte_bot": 0.6037,
+   "perte_bn": 0.6134,
+   "perte_ln": 0.6044
+  }
+ }
+}
