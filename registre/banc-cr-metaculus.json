@@ -1,0 +1,166 @@
+{
+ "note": "perte log, plus bas = mieux ; B = taux du bot (fenêtres disjointes) ; aucun modèle de langue",
+ "releve": "2026-11-17",
+ "journal": [
+  "ucdp/Sudan : 2244 événements",
+  "ucdp/Ukraine : 5000 événements, plafond de l'API atteint : groupe retiré (tronqué)",
+  "ucdp/Myanmar : 4312 événements",
+  "ucdp/Syria : 2896 événements",
+  "ucdp/Somalia : 1087 événements",
+  "ucdp/DR Congo : 3106 événements",
+  "ucdp/Nigeria : 3309 événements",
+  "ucdp/Burkina Faso : 2029 événements",
+  "ucdp/Mali : 1898 événements",
+  "ucdp/Niger : 440 événements",
+  "ucdp/Ethiopia : 3464 événements",
+  "ucdp/Yemen : 1510 événements",
+  "ucdp/Afghanistan : 748 événements",
+  "ucdp/Pakistan : 3357 événements",
+  "ucdp/India : 785 événements",
+  "ucdp/Colombia : 2885 événements",
+  "ucdp/Mexico : 5000 événements, plafond de l'API atteint : groupe retiré (tronqué)",
+  "ucdp/Cameroon : 851 événements",
+  "ucdp/Mozambique : 539 événements",
+  "ucdp/Israel : 5000 événements, plafond de l'API atteint : groupe retiré (tronqué)",
+  "ucdp/Iraq : 698 événements",
+  "ucdp/Haiti : 432 événements",
+  "ucdp/Philippines : 313 événements",
+  "ucdp/Kenya : 156 événements",
+  "ucdp/South Sudan : 113 événements",
+  "coupures_internet/IR : 269 événements",
+  "coupures_internet/IQ : 321 événements",
+  "coupures_internet/SY : 282 événements",
+  "coupures_internet/SD : 226 événements",
+  "coupures_internet/ET : 431 événements",
+  "coupures_internet/MM : 231 événements",
+  "coupures_internet/PK : 75 événements",
+  "coupures_internet/IN : 77 événements",
+  "coupures_internet/RU : 27 événements",
+  "coupures_internet/UA : 106 événements",
+  "coupures_internet/VE : 339 événements",
+  "coupures_internet/CU : 110 événements",
+  "coupures_internet/SN : 126 événements",
+  "coupures_internet/KE : 124 événements",
+  "coupures_internet/NG : 751 événements",
+  "coupures_internet/LY : 98 événements",
+  "coupures_internet/YE : 77 événements",
+  "coupures_internet/AF : 345 événements",
+  "coupures_internet/BD : 129 événements",
+  "coupures_internet/TR : 73 événements",
+  "sanctions_us/RUSSIA-EO14024 : 3993 événements",
+  "sanctions_us/IRAN : 1491 événements",
+  "sanctions_us/SDGT : 966 événements",
+  "sanctions_us/CYBER2 : 50 événements",
+  "sanctions_us/GLOMAG : 116 événements",
+  "sanctions_us/DPRK : 93 événements",
+  "sanctions_us/VENEZUELA : 73 événements",
+  "sanctions_us/SDNTK : 0 événements"
+ ],
+ "par_echelle": {
+  "30 jours": {
+   "k_juges": 3,
+   "sources": {
+    "coupures_internet": {
+     "questions": 520,
+     "avec_noyau": 500,
+     "n_confirmation": 240,
+     "perte_B": 0.6926,
+     "perte_noyau": 0.6867,
+     "oui": 0.562,
+     "ecart_moyen": -0.0059,
+     "intervalle_corrige": [
+      -0.0454,
+      0.0391
+     ],
+     "verdict": "non tranché"
+    },
+    "sanctions_us": {
+     "questions": 208,
+     "avec_noyau": 200,
+     "n_confirmation": 96,
+     "perte_B": 0.421,
+     "perte_noyau": 0.5102,
+     "oui": 0.281,
+     "ecart_moyen": 0.0892,
+     "intervalle_corrige": [
+      0.0107,
+      0.1509
+     ],
+     "verdict": "moins bon que B"
+    },
+    "ucdp": {
+     "questions": 572,
+     "avec_noyau": 550,
+     "n_confirmation": 264,
+     "perte_B": 0.6864,
+     "perte_noyau": 0.6433,
+     "oui": 0.511,
+     "ecart_moyen": -0.0432,
+     "intervalle_corrige": [
+      -0.0852,
+      0.0267
+     ],
+     "verdict": "non tranché"
+    }
+   }
+  },
+  "7 jours": {
+   "k_juges": 0,
+   "sources": {
+    "coupures_internet": {
+     "questions": 540,
+     "avec_noyau": 520,
+     "n_confirmation": 260,
+     "perte_B": 0.5636,
+     "perte_noyau": 0.6404,
+     "oui": 0.331
+    },
+    "sanctions_us": {
+     "questions": 216,
+     "avec_noyau": 208,
+     "n_confirmation": 104,
+     "perte_B": 0.3014,
+     "perte_noyau": 0.357,
+     "oui": 0.144
+    },
+    "ucdp": {
+     "questions": 594,
+     "avec_noyau": 572,
+     "n_confirmation": 286,
+     "perte_B": 0.7033,
+     "perte_noyau": 0.6519,
+     "oui": 0.531
+    }
+   }
+  },
+  "90 jours": {
+   "k_juges": 0,
+   "sources": {
+    "coupures_internet": {
+     "questions": 480,
+     "avec_noyau": 420,
+     "n_confirmation": 200,
+     "perte_B": 0.672,
+     "perte_noyau": 0.7082,
+     "oui": 0.57
+    },
+    "sanctions_us": {
+     "questions": 192,
+     "avec_noyau": 168,
+     "n_confirmation": 80,
+     "perte_B": 0.5568,
+     "perte_noyau": 0.671,
+     "oui": 0.362
+    },
+    "ucdp": {
+     "questions": 528,
+     "avec_noyau": 462,
+     "n_confirmation": 220,
+     "perte_B": 0.6916,
+     "perte_noyau": 0.6594,
+     "oui": 0.527
+    }
+   }
+  }
+ }
+}
