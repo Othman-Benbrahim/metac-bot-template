@@ -1,9 +1,9 @@
 {
- "note": "perte log, plus bas = mieux ; aucun modèle de langue ; critère : 30 jours, par source",
+ "note": "perte log, plus bas = mieux ; aucun modèle de langue ; critère : 30 jours, par source ; groupes tronqués retirés (0.10.236)",
  "releve": "2026-11-17",
  "journal": [
   "ucdp/Sudan : 1860 événements",
-  "ucdp/Ukraine : 5000 événements",
+  "ucdp/Ukraine : 5000 événements, plafond de l'API atteint : groupe retiré (tronqué)",
   "ucdp/Myanmar : 2222 événements",
   "ucdp/Syria : 1887 événements",
   "ucdp/Somalia : 840 événements",
@@ -18,10 +18,10 @@
   "ucdp/Pakistan : 2970 événements",
   "ucdp/India : 568 événements",
   "ucdp/Colombia : 2463 événements",
-  "ucdp/Mexico : 5000 événements",
+  "ucdp/Mexico : 5000 événements, plafond de l'API atteint : groupe retiré (tronqué)",
   "ucdp/Cameroon : 557 événements",
   "ucdp/Mozambique : 437 événements",
-  "ucdp/Israel : 5000 événements",
+  "ucdp/Israel : 5000 événements, plafond de l'API atteint : groupe retiré (tronqué)",
   "ucdp/Iraq : 449 événements",
   "ucdp/Haiti : 382 événements",
   "ucdp/Philippines : 196 événements",
@@ -47,14 +47,14 @@
   "coupures_internet/AF : 274 événements",
   "coupures_internet/BD : 115 événements",
   "coupures_internet/TR : 64 événements",
-  "usgs_seismes/M4.5 : 5000 événements",
+  "usgs_seismes/M4.5 : 5000 événements, plafond de l'API atteint : groupe retiré (tronqué)",
   "usgs_seismes/M5.5 : 1604 événements",
-  "gdacs/EQ : 100 événements",
-  "gdacs/TC : 100 événements",
-  "gdacs/FL : 100 événements",
+  "gdacs/EQ : 100 événements, plafond de l'API atteint : groupe retiré (tronqué)",
+  "gdacs/TC : 100 événements, plafond de l'API atteint : groupe retiré (tronqué)",
+  "gdacs/FL : 100 événements, plafond de l'API atteint : groupe retiré (tronqué)",
   "gdacs/VO : 79 événements",
-  "gdacs/DR : 88 événements",
-  "gdacs/WF : 100 événements",
+  "gdacs/DR : 100 événements, plafond de l'API atteint : groupe retiré (tronqué)",
+  "gdacs/WF : 100 événements, plafond de l'API atteint : groupe retiré (tronqué)",
   "lancements/US : 560 événements",
   "lancements/PRC : 276 événements",
   "lancements/CIS : 60 événements",
@@ -73,7 +73,7 @@
  ],
  "par_echelle": {
   "30 jours": {
-   "k_juges": 4,
+   "k_juges": 3,
    "sources": {
     "coupures_internet": {
      "questions": 370,
@@ -84,24 +84,18 @@
      "oui": 0.345,
      "ecart_moyen": -0.0231,
      "intervalle_corrige": [
-      -0.1077,
-      0.0445
+      -0.1074,
+      0.0439
      ],
      "verdict": "non tranché"
     },
     "gdacs": {
-     "questions": 60,
-     "avec_noyau": 56,
-     "n_confirmation": 34,
-     "perte_B": 0.6682,
-     "perte_noyau": 0.6801,
-     "oui": 0.382,
-     "ecart_moyen": 0.0119,
-     "intervalle_corrige": [
-      -0.1696,
-      0.1799
-     ],
-     "verdict": "non tranché"
+     "questions": 23,
+     "avec_noyau": 21,
+     "n_confirmation": 10,
+     "perte_B": 0.6756,
+     "perte_noyau": 0.6081,
+     "oui": 0.3
     },
     "lancements": {
      "questions": 129,
@@ -112,8 +106,8 @@
      "oui": 0.283,
      "ecart_moyen": 0.0301,
      "intervalle_corrige": [
-      -0.0507,
-      0.1056
+      -0.0469,
+      0.1048
      ],
      "verdict": "non tranché"
     },
@@ -126,26 +120,26 @@
      "oui": 0.357
     },
     "ucdp": {
-     "questions": 624,
-     "avec_noyau": 576,
-     "n_confirmation": 292,
-     "perte_B": 0.72,
-     "perte_noyau": 0.6774,
-     "oui": 0.445,
-     "ecart_moyen": -0.0426,
+     "questions": 569,
+     "avec_noyau": 526,
+     "n_confirmation": 264,
+     "perte_B": 0.7195,
+     "perte_noyau": 0.6767,
+     "oui": 0.447,
+     "ecart_moyen": -0.0428,
      "intervalle_corrige": [
-      -0.071,
-      -0.0155
+      -0.0726,
+      -0.0175
      ],
      "verdict": "meilleur que B"
     },
     "usgs_seismes": {
-     "questions": 33,
-     "avec_noyau": 31,
-     "n_confirmation": 16,
-     "perte_B": 0.6262,
-     "perte_noyau": 0.6272,
-     "oui": 0.312
+     "questions": 26,
+     "avec_noyau": 24,
+     "n_confirmation": 12,
+     "perte_B": 0.7066,
+     "perte_noyau": 0.6949,
+     "oui": 0.417
     }
    }
   },
@@ -161,12 +155,12 @@
      "oui": 0.23
     },
     "gdacs": {
-     "questions": 120,
-     "avec_noyau": 119,
-     "n_confirmation": 83,
-     "perte_B": 0.5711,
-     "perte_noyau": 0.6562,
-     "oui": 0.289
+     "questions": 42,
+     "avec_noyau": 41,
+     "n_confirmation": 19,
+     "perte_B": 0.3864,
+     "perte_noyau": 0.3874,
+     "oui": 0.105
     },
     "lancements": {
      "questions": 318,
@@ -185,20 +179,20 @@
      "oui": 0.25
     },
     "ucdp": {
-     "questions": 2380,
-     "avec_noyau": 2359,
-     "n_confirmation": 1077,
-     "perte_B": 0.6663,
-     "perte_noyau": 0.6448,
-     "oui": 0.406
+     "questions": 2150,
+     "avec_noyau": 2131,
+     "n_confirmation": 956,
+     "perte_B": 0.6598,
+     "perte_noyau": 0.6377,
+     "oui": 0.393
     },
     "usgs_seismes": {
-     "questions": 142,
-     "avec_noyau": 141,
-     "n_confirmation": 67,
-     "perte_B": 0.6795,
-     "perte_noyau": 0.5986,
-     "oui": 0.403
+     "questions": 115,
+     "avec_noyau": 114,
+     "n_confirmation": 54,
+     "perte_B": 0.6879,
+     "perte_noyau": 0.5874,
+     "oui": 0.426
     }
    }
   },
@@ -214,12 +208,12 @@
      "oui": 0.365
     },
     "gdacs": {
-     "questions": 55,
-     "avec_noyau": 47,
-     "n_confirmation": 27,
-     "perte_B": 0.6638,
-     "perte_noyau": 0.7024,
-     "oui": 0.481
+     "questions": 23,
+     "avec_noyau": 19,
+     "n_confirmation": 9,
+     "perte_B": 0.719,
+     "perte_noyau": 0.6922,
+     "oui": 0.444
     },
     "lancements": {
      "questions": 101,
@@ -238,20 +232,20 @@
      "oui": 0.343
     },
     "ucdp": {
-     "questions": 579,
-     "avec_noyau": 483,
-     "n_confirmation": 244,
-     "perte_B": 0.7668,
-     "perte_noyau": 0.6777,
-     "oui": 0.467
+     "questions": 524,
+     "avec_noyau": 439,
+     "n_confirmation": 220,
+     "perte_B": 0.7474,
+     "perte_noyau": 0.6774,
+     "oui": 0.45
     },
     "usgs_seismes": {
-     "questions": 33,
-     "avec_noyau": 29,
-     "n_confirmation": 16,
-     "perte_B": 0.8349,
-     "perte_noyau": 0.9588,
-     "oui": 0.375
+     "questions": 24,
+     "avec_noyau": 20,
+     "n_confirmation": 10,
+     "perte_B": 0.8235,
+     "perte_noyau": 0.894,
+     "oui": 0.6
     }
    }
   }
