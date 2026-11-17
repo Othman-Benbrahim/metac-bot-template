@@ -53,3 +53,20 @@ sauf ce qui suit, tout fixé ici avant de calculer.
 - Critère des ombres de B (`critere_ombre_b`) : 100 premières questions, second regard à 200, blocs jeu × source.
 - Réserve : en bourse, le retour vers la moyenne est faible ou inversé (élan) ; sur les températures, la saison domine.
   Le test peut échouer : c'est voulu.
+
+## Sources d'événements du bot (ajout du 2026-11-17, 19 h 20, avant tout passage ; décision d'auteur : « plus on
+## testera, mieux ce sera »)
+
+Adoptée comme B du banc GDELT (19 h 10). Avant toute entrée dans le bot en direct : test sur les sources d'événements
+que le bot interroge (`banc_cr_sources.py`, essai `classe_reference_sources`).
+- Six sources, groupes fixés dans le code avant le passage : UCDP (25 pays), IODA (20 pays), USGS (M ≥ 4,5 et ≥ 5,5),
+  GDACS (6 types d'aléa), lancements CelesTrak (7 propriétaires), sanctions OFAC (8 programmes).
+- Questions : « plus d'événements dans les F jours après d0 que dans les F jours avant ? », posée si au moins 1 événement
+  avant ; même noyau (largeurs 1 ; 1) ; la classe mêle les groupes d'une même source.
+- Critère : par source, à 30 jours, au moins 30 questions de confirmation (d0 à partir du 2025-11-01) ; bootstrap par
+  mois ; risque `es.risque_corrige(1) / k`, k = sources jugées. 7 et 90 jours : rapportés, non jugés.
+- Une source « meilleure que B » devient candidate à l'entrée dans le bot ; l'entrée reste une décision datée.
+- Attendu (Claude, avant le résultat) : gain sur UCDP, IODA, sanctions (rafales) ; rien ou perte sur les lancements
+  (cadence régulière, tendance) ; incertain sur les séismes (répliques en rafales, mais fond poissonnien).
+- Réserves : UCDP est lu au plus 5 pages de 1 000 événements par version (un pays très actif peut être tronqué) ; les
+  dates des sanctions sont celles de la première apparition chez OpenSanctions.

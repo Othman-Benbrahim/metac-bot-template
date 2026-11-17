@@ -134,6 +134,10 @@ ESSAIS = {
                 "objet": "B des séries pondéré par la ressemblance (position dans l'année, élan sur h jours) contre B, "
                          "questions réelles FRED et DBnomics",
                 "doc": "preenregistrements/classe-reference.md"},
+    "classe_reference_sources": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+                                 "objet": "classe de référence pondérée contre B sur les sources d'événements du bot "
+                                          "(UCDP, IODA, USGS, GDACS, lancements, OFAC), par source, à 30 jours",
+                                 "doc": "preenregistrements/classe-reference.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
