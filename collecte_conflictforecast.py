@@ -20,7 +20,9 @@ premier passage avait enregistré les fichiers bruts (4,2 Go) ; on ne garde plus
 Registre : registre/conflictforecast.csv (version, isocode, periode, cible, horizon, p_all, p_text, p_hist) :
   version = répertoire mensuel (AAAA-MM) ; periode = dernier mois de données de cette version (AAAAMM) ;
   cible = armedconf | anyviolence (probabilités) | lnbest (intensité, log des morts par habitant) ;
-  horizon = 3 ou 12 mois ; p_all = modèle « best » (texte + histoire), p_text = modèle texte, p_hist = histoire seule.
+  horizon = 3 ou 12 mois ; p_all = modèle « best » (texte + histoire), p_text = modèle texte, p_hist = histoire seule ;
+  actuel (0.10.231) = valeur observée de la cible au dernier mois de données (pour lnbest : le niveau de départ, qui
+  permet de lire une ESCALADE prévue = prévision − niveau actuel).
 Fichiers nationaux seulement (le fichier par carreaux est laissé de côté). Une seconde de pause entre deux
 téléchargements ; une version déjà extraite n'est pas relue ; le répertoire « latest » est ignoré (doublon du dernier
 mois daté).
@@ -41,7 +43,7 @@ import httpx
 API = ("https://api.backendless.com/C177D0DC-B3D5-818C-FF1E-1CC11BC69600/C5F2917E-C2F6-4F7D-9063-69555274134E/"
        "services/fileService")
 SORTIE = Path("registre") / "conflictforecast.csv"
-COLONNES = ["version", "isocode", "periode", "cible", "horizon", "p_all", "p_text", "p_hist"]
+COLONNES = ["version", "isocode", "periode", "cible", "horizon", "p_all", "p_text", "p_hist", "actuel"]
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche non commerciale ; GitHub Othman-Benbrahim)",
       "accept": "application/json"}
 
@@ -95,8 +97,10 @@ def extraire(texte: str, version: str, fichier: str) -> list[dict]:
             p_all, p_text, p_hist = x.get(f"{pref}_all"), x.get(f"{pref}_text"), x.get(f"{pref}_hist")
         else:                                            # ancien format (2021-2024) : best_model, text_model
             p_all, p_text, p_hist = x.get("best_model"), x.get("text_model"), ""
+        actuel = x.get(cible) if cible != "lnbest" else (x.get("lnbest") or x.get("lnbest_pc"))
         out.append({"version": version, "isocode": x.get("isocode", ""), "periode": derniere, "cible": cible,
-                    "horizon": horizon, "p_all": p_all or "", "p_text": p_text or "", "p_hist": p_hist or ""})
+                    "horizon": horizon, "p_all": p_all or "", "p_text": p_text or "", "p_hist": p_hist or "",
+                    "actuel": actuel or ""})
     return out
 
 
@@ -104,7 +108,12 @@ def principal(maximum: int) -> int:
     import csv as _csv
     deja = set()
     if SORTIE.exists():
-        deja = {x["version"] for x in _csv.DictReader(SORTIE.open(encoding="utf-8"))}
+        with SORTIE.open(encoding="utf-8") as f:
+            entete = f.readline().strip().split(",")
+        if entete != COLONNES:                       # 0.10.231 : colonne « actuel » ajoutée : tout relire une fois
+            SORTIE.unlink()
+        else:
+            deja = {x["version"] for x in _csv.DictReader(SORTIE.open(encoding="utf-8"))}
     SORTIE.parent.mkdir(exist_ok=True)
     neuf = not SORTIE.exists()
     lus, n_lignes = 0, 0

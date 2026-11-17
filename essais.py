@@ -117,6 +117,10 @@ ESSAIS = {
     "jugement_aveugle": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 100, "statut": "ouvert",
                          "objet": "jugement du modèle sans voir B, combiné mécaniquement à B, contre A qui voit B (conflits)",
                          "doc": "preenregistrements/jugement-aveugle.md"},
+    "conflictforecast": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+                         "objet": "ConflictForecast lu comme indicateur (escalade prévue, toute violence probable) : δ par "
+                                  "état fixé avant 2026, jugé sur 2026 ; version utilisable le 25 du mois suivant ses données",
+                         "doc": "preenregistrements/conflictforecast.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",

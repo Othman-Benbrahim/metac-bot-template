@@ -27,6 +27,8 @@ class TestCF(unittest.TestCase):
     def test_extraire_derniere_periode(self):
         r = cf.extraire(NOUVEAU, "2026-10", "conflictforecast_ons_armedconf_03.csv")
         self.assertEqual([(x["isocode"], x["periode"], x["p_all"]) for x in r], [("UKR", 202610, "0.99"), ("SEN", 202610, "0.03")])
+        INT = "isocode,period,int_lnbest_03_text,int_lnbest_03_hist,int_lnbest_03_all,fatalities_UCDP,lnbest\nUKR,202610,5,6,7.5,900,6.8\n"
+        self.assertEqual(cf.extraire(INT, "2026-10", "conflictforecast_int_lnbest_03.csv")[0]["actuel"], "6.8")
         r = cf.extraire(ANCIEN, "2021-09", "conflictforecast_armedconf_3.csv")
         self.assertEqual([(x["periode"], x["p_all"], x["p_text"]) for x in r], [(202108, "0.85", "0.25")])
 
