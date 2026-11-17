@@ -1,0 +1,862 @@
+{
+  "note": "gain = perte log ajustée − perte log de B sur la confirmation (négatif = mieux) ; hasard : 200 redistributions des indicateurs entre pays du même mois",
+  "questions": 5526,
+  "combinaisons_par_type": 92,
+  "tests_juges": 92,
+  "reussites": {
+    "reel": 53,
+    "hasard_moyenne": 41.74,
+    "hasard_95e_centile": 51.0,
+    "p": 0.0448
+  },
+  "gain_total": {
+    "reel": -0.2258,
+    "hasard_moyenne": -0.0236,
+    "p": 0.3085
+  },
+  "meilleur_gain": {
+    "reel": -0.1269,
+    "hasard_moyenne": -0.0977
+  },
+  "presence": {
+    "M10": 225,
+    "M11": 350,
+    "M14": 22,
+    "M17": 581,
+    "FC": 258,
+    "SC": 286,
+    "HR": 1202,
+    "EL": 784
+  },
+  "juges": [
+    {
+      "type": "force",
+      "combi": "M10 × FC × SC",
+      "n_exploration": 11,
+      "n_confirmation": 11,
+      "delta": -0.6318,
+      "gain": -0.1269,
+      "p_corrige": 0.2139
+    },
+    {
+      "type": "force",
+      "combi": "M10 × FC × HR",
+      "n_exploration": 15,
+      "n_confirmation": 12,
+      "delta": -0.521,
+      "gain": -0.121,
+      "p_corrige": 0.2488
+    },
+    {
+      "type": "force",
+      "combi": "M10 × FC",
+      "n_exploration": 18,
+      "n_confirmation": 13,
+      "delta": -0.3496,
+      "gain": -0.0914,
+      "p_corrige": 0.4876
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × M11",
+      "n_exploration": 10,
+      "n_confirmation": 11,
+      "delta": -0.383,
+      "gain": -0.0885,
+      "p_corrige": 0.5124
+    },
+    {
+      "type": "force",
+      "combi": "M10 × SC",
+      "n_exploration": 21,
+      "n_confirmation": 24,
+      "delta": -0.4644,
+      "gain": -0.0571,
+      "p_corrige": 0.8308
+    },
+    {
+      "type": "force",
+      "combi": "M11 × EL",
+      "n_exploration": 27,
+      "n_confirmation": 26,
+      "delta": -0.3239,
+      "gain": -0.0494,
+      "p_corrige": 0.8905
+    },
+    {
+      "type": "force",
+      "combi": "M10 × SC × HR",
+      "n_exploration": 18,
+      "n_confirmation": 21,
+      "delta": -0.4926,
+      "gain": -0.0419,
+      "p_corrige": 0.9502
+    },
+    {
+      "type": "emeutes",
+      "combi": "M11",
+      "n_exploration": 58,
+      "n_confirmation": 55,
+      "delta": -0.1608,
+      "gain": -0.0316,
+      "p_corrige": 0.9851
+    },
+    {
+      "type": "emeutes",
+      "combi": "M10 × M17",
+      "n_exploration": 11,
+      "n_confirmation": 39,
+      "delta": -0.2222,
+      "gain": -0.0246,
+      "p_corrige": 0.99
+    },
+    {
+      "type": "force",
+      "combi": "SC × HR × EL",
+      "n_exploration": 13,
+      "n_confirmation": 17,
+      "delta": -0.2451,
+      "gain": -0.0243,
+      "p_corrige": 0.99
+    },
+    {
+      "type": "emeutes",
+      "combi": "M11 × EL",
+      "n_exploration": 17,
+      "n_confirmation": 18,
+      "delta": -0.0731,
+      "gain": -0.0234,
+      "p_corrige": 0.99
+    },
+    {
+      "type": "force",
+      "combi": "FC × SC × HR",
+      "n_exploration": 42,
+      "n_confirmation": 33,
+      "delta": -0.2981,
+      "gain": -0.023,
+      "p_corrige": 0.99
+    },
+    {
+      "type": "force",
+      "combi": "M10 × M17 × HR",
+      "n_exploration": 10,
+      "n_confirmation": 43,
+      "delta": -0.1521,
+      "gain": -0.0212,
+      "p_corrige": 0.995
+    },
+    {
+      "type": "force",
+      "combi": "M10 × HR",
+      "n_exploration": 50,
+      "n_confirmation": 52,
+      "delta": -0.1801,
+      "gain": -0.0206,
+      "p_corrige": 0.995
+    },
+    {
+      "type": "force",
+      "combi": "M10",
+      "n_exploration": 67,
+      "n_confirmation": 67,
+      "delta": -0.1909,
+      "gain": -0.0203,
+      "p_corrige": 0.995
+    },
+    {
+      "type": "force",
+      "combi": "M10 × M17",
+      "n_exploration": 13,
+      "n_confirmation": 49,
+      "delta": -0.1512,
+      "gain": -0.0191,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "FC × HR",
+      "n_exploration": 90,
+      "n_confirmation": 57,
+      "delta": -0.171,
+      "gain": -0.0169,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "EL",
+      "n_exploration": 185,
+      "n_confirmation": 183,
+      "delta": -0.1468,
+      "gain": -0.0161,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M11",
+      "n_exploration": 85,
+      "n_confirmation": 82,
+      "delta": -0.2173,
+      "gain": -0.014,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "FC × SC",
+      "n_exploration": 56,
+      "n_confirmation": 58,
+      "delta": -0.2528,
+      "gain": -0.0138,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × EL",
+      "n_exploration": 26,
+      "n_confirmation": 25,
+      "delta": -0.3116,
+      "gain": -0.0132,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M11 × EL",
+      "n_exploration": 53,
+      "n_confirmation": 51,
+      "delta": -0.1718,
+      "gain": -0.0129,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "EL",
+      "n_exploration": 113,
+      "n_confirmation": 95,
+      "delta": -0.1652,
+      "gain": -0.0127,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10",
+      "n_exploration": 104,
+      "n_confirmation": 115,
+      "delta": -0.1223,
+      "gain": -0.012,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "FC × HR × EL",
+      "n_exploration": 15,
+      "n_confirmation": 15,
+      "delta": 0.2722,
+      "gain": -0.0116,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "FC",
+      "n_exploration": 140,
+      "n_confirmation": 103,
+      "delta": -0.2509,
+      "gain": -0.0102,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M11",
+      "n_exploration": 162,
+      "n_confirmation": 155,
+      "delta": -0.1173,
+      "gain": -0.0095,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "SC × EL",
+      "n_exploration": 20,
+      "n_confirmation": 25,
+      "delta": -0.135,
+      "gain": -0.0091,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "FC × EL",
+      "n_exploration": 29,
+      "n_confirmation": 25,
+      "delta": 0.2904,
+      "gain": -0.0086,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M10 × FC × HR",
+      "n_exploration": 10,
+      "n_confirmation": 10,
+      "delta": -0.1314,
+      "gain": -0.0072,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "SC",
+      "n_exploration": 128,
+      "n_confirmation": 152,
+      "delta": -0.0846,
+      "gain": -0.007,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × SC",
+      "n_exploration": 21,
+      "n_confirmation": 24,
+      "delta": -0.0593,
+      "gain": -0.0066,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × SC × HR",
+      "n_exploration": 18,
+      "n_confirmation": 21,
+      "delta": -0.147,
+      "gain": -0.0065,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M10 × FC",
+      "n_exploration": 12,
+      "n_confirmation": 11,
+      "delta": -0.0617,
+      "gain": -0.0063,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "HR",
+      "n_exploration": 444,
+      "n_confirmation": 418,
+      "delta": -0.139,
+      "gain": -0.0062,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "SC × HR",
+      "n_exploration": 93,
+      "n_confirmation": 107,
+      "delta": -0.0743,
+      "gain": -0.0061,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "SC",
+      "n_exploration": 116,
+      "n_confirmation": 154,
+      "delta": -0.0909,
+      "gain": -0.0061,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "HR",
+      "n_exploration": 323,
+      "n_confirmation": 280,
+      "delta": -0.1621,
+      "gain": -0.0059,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "FC × SC",
+      "n_exploration": 56,
+      "n_confirmation": 58,
+      "delta": -0.101,
+      "gain": -0.0057,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M10",
+      "n_exploration": 48,
+      "n_confirmation": 57,
+      "delta": -0.0462,
+      "gain": -0.0047,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "FC × EL",
+      "n_exploration": 28,
+      "n_confirmation": 25,
+      "delta": -0.14,
+      "gain": -0.0041,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M17 × FC",
+      "n_exploration": 20,
+      "n_confirmation": 74,
+      "delta": -0.0254,
+      "gain": -0.0037,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "SC × HR",
+      "n_exploration": 97,
+      "n_confirmation": 107,
+      "delta": -0.0453,
+      "gain": -0.0036,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × HR",
+      "n_exploration": 68,
+      "n_confirmation": 62,
+      "delta": -0.072,
+      "gain": -0.0032,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M17 × HR × EL",
+      "n_exploration": 12,
+      "n_confirmation": 53,
+      "delta": -0.0278,
+      "gain": -0.0028,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "FC × SC × HR",
+      "n_exploration": 42,
+      "n_confirmation": 33,
+      "delta": -0.1038,
+      "gain": -0.002,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "SC × HR",
+      "n_exploration": 71,
+      "n_confirmation": 75,
+      "delta": -0.0134,
+      "gain": -0.0019,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M11 × HR",
+      "n_exploration": 37,
+      "n_confirmation": 33,
+      "delta": -0.0186,
+      "gain": -0.0016,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M17",
+      "n_exploration": 75,
+      "n_confirmation": 242,
+      "delta": -0.0058,
+      "gain": -0.0004,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "SC × EL",
+      "n_exploration": 21,
+      "n_confirmation": 23,
+      "delta": -0.0067,
+      "gain": -0.0003,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "HR",
+      "n_exploration": 620,
+      "n_confirmation": 542,
+      "delta": -0.0134,
+      "gain": -0.0003,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "FC",
+      "n_exploration": 147,
+      "n_confirmation": 98,
+      "delta": -0.0267,
+      "gain": -0.0001,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "EL",
+      "n_exploration": 375,
+      "n_confirmation": 343,
+      "delta": -0.0746,
+      "gain": -0.0,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "SC × HR × EL",
+      "n_exploration": 13,
+      "n_confirmation": 15,
+      "delta": 0.0232,
+      "gain": 0.0003,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "HR × EL",
+      "n_exploration": 120,
+      "n_confirmation": 105,
+      "delta": 0.1059,
+      "gain": 0.0006,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "FC",
+      "n_exploration": 85,
+      "n_confirmation": 57,
+      "delta": 0.0423,
+      "gain": 0.0008,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "SC",
+      "n_exploration": 84,
+      "n_confirmation": 98,
+      "delta": 0.0077,
+      "gain": 0.001,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "HR × EL",
+      "n_exploration": 48,
+      "n_confirmation": 43,
+      "delta": -0.0672,
+      "gain": 0.0013,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M11 × HR",
+      "n_exploration": 56,
+      "n_confirmation": 37,
+      "delta": 0.0105,
+      "gain": 0.0015,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "FC × HR",
+      "n_exploration": 92,
+      "n_confirmation": 58,
+      "delta": -0.0636,
+      "gain": 0.0017,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M17 × FC × HR",
+      "n_exploration": 15,
+      "n_confirmation": 49,
+      "delta": 0.0103,
+      "gain": 0.0019,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M17 × EL",
+      "n_exploration": 12,
+      "n_confirmation": 34,
+      "delta": 0.1273,
+      "gain": 0.0026,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M10 × HR",
+      "n_exploration": 38,
+      "n_confirmation": 45,
+      "delta": 0.0332,
+      "gain": 0.0031,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M17 × HR",
+      "n_exploration": 57,
+      "n_confirmation": 183,
+      "delta": 0.0712,
+      "gain": 0.0037,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M17 × HR",
+      "n_exploration": 75,
+      "n_confirmation": 267,
+      "delta": 0.0636,
+      "gain": 0.0048,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M17 × EL",
+      "n_exploration": 23,
+      "n_confirmation": 85,
+      "delta": 0.0645,
+      "gain": 0.0054,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M17 × FC × HR",
+      "n_exploration": 15,
+      "n_confirmation": 49,
+      "delta": 0.3395,
+      "gain": 0.0057,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M11 × HR",
+      "n_exploration": 23,
+      "n_confirmation": 16,
+      "delta": 0.0223,
+      "gain": 0.0058,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M17",
+      "n_exploration": 94,
+      "n_confirmation": 398,
+      "delta": 0.0929,
+      "gain": 0.0068,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "HR × EL",
+      "n_exploration": 86,
+      "n_confirmation": 83,
+      "delta": 0.0647,
+      "gain": 0.0096,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M17 × SC",
+      "n_exploration": 11,
+      "n_confirmation": 120,
+      "delta": 0.1338,
+      "gain": 0.0104,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "FC × HR × EL",
+      "n_exploration": 15,
+      "n_confirmation": 15,
+      "delta": 0.0514,
+      "gain": 0.0106,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M17 × FC",
+      "n_exploration": 17,
+      "n_confirmation": 48,
+      "delta": 0.328,
+      "gain": 0.011,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "FC × HR",
+      "n_exploration": 62,
+      "n_confirmation": 37,
+      "delta": 0.1835,
+      "gain": 0.0118,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M17 × FC",
+      "n_exploration": 22,
+      "n_confirmation": 73,
+      "delta": 0.2235,
+      "gain": 0.0125,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M17",
+      "n_exploration": 116,
+      "n_confirmation": 440,
+      "delta": 0.176,
+      "gain": 0.0154,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M17 × SC",
+      "n_exploration": 11,
+      "n_confirmation": 116,
+      "delta": 0.1395,
+      "gain": 0.0173,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M17 × HR",
+      "n_exploration": 82,
+      "n_confirmation": 278,
+      "delta": 0.2586,
+      "gain": 0.0182,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M17 × FC × HR",
+      "n_exploration": 13,
+      "n_confirmation": 34,
+      "delta": 0.3302,
+      "gain": 0.0188,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "force",
+      "combi": "M17 × EL",
+      "n_exploration": 18,
+      "n_confirmation": 82,
+      "delta": 0.1536,
+      "gain": 0.0196,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "FC × SC",
+      "n_exploration": 39,
+      "n_confirmation": 40,
+      "delta": 0.2033,
+      "gain": 0.0222,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "FC × SC × HR",
+      "n_exploration": 31,
+      "n_confirmation": 26,
+      "delta": 0.175,
+      "gain": 0.0244,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M17 × HR × EL",
+      "n_exploration": 13,
+      "n_confirmation": 50,
+      "delta": 0.334,
+      "gain": 0.0278,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × FC",
+      "n_exploration": 18,
+      "n_confirmation": 13,
+      "delta": -0.4081,
+      "gain": 0.0338,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M10 × SC × HR",
+      "n_exploration": 15,
+      "n_confirmation": 20,
+      "delta": 0.1614,
+      "gain": 0.0459,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M11 × HR × EL",
+      "n_exploration": 12,
+      "n_confirmation": 13,
+      "delta": 0.1516,
+      "gain": 0.046,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "emeutes",
+      "combi": "M10 × SC",
+      "n_exploration": 17,
+      "n_confirmation": 21,
+      "delta": 0.1764,
+      "gain": 0.0525,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × FC × SC",
+      "n_exploration": 11,
+      "n_confirmation": 11,
+      "delta": -0.5458,
+      "gain": 0.0585,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M11 × M17",
+      "n_exploration": 13,
+      "n_confirmation": 32,
+      "delta": 0.5976,
+      "gain": 0.0637,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × M17 × HR",
+      "n_exploration": 11,
+      "n_confirmation": 46,
+      "delta": 0.4383,
+      "gain": 0.0638,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × M17",
+      "n_exploration": 14,
+      "n_confirmation": 55,
+      "delta": 0.4317,
+      "gain": 0.0763,
+      "p_corrige": 1.0
+    },
+    {
+      "type": "manifestations",
+      "combi": "M10 × FC × HR",
+      "n_exploration": 15,
+      "n_confirmation": 12,
+      "delta": -0.6138,
+      "gain": 0.0943,
+      "p_corrige": 1.0
+    }
+  ],
+  "non_juges": 184
+}
