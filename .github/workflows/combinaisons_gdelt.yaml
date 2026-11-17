@@ -1,0 +1,41 @@
+name: Combinaisons de mécanismes, questions fabriquées (GDELT)
+
+# 0.10.226 : même grille de bon sens, sur environ 5 500 questions fabriquées à partir des comptes GDELT (depuis
+# septembre 2024) ; exploration avant le 2025-11-01, confirmation ensuite. Aucun modèle de langue : gratuit.
+# À lancer APRÈS « Calendrier des élections » (historique depuis 2024-06-01).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  combinaisons_gdelt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Combinaisons
+        timeout-minutes: 90         # sur l étape, pour que « Enregistrer » garde les lignes écrites
+        run: uv run python combinaisons_gdelt.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/combinaisons-gdelt.jsonl registre/combinaisons-gdelt.json registre/voisins.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : combinaisons de mécanismes (GDELT) du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

@@ -146,9 +146,10 @@ def bootstrap(ecarts: list[tuple[str, float]], risque: float, tirages: int = 200
     return bs[i], bs[j]
 
 
-def resumer(ls: list[dict]) -> dict:
-    explo = [x for x in ls if x["jeu"] < COUPURE]
-    conf = [x for x in ls if x["jeu"] >= COUPURE]
+def resumer(ls: list[dict], coupure: str = COUPURE, k_bancs: int = 1) -> dict:
+    """`k_bancs` : nombre de bancs qui jugent la même grille (le risque est divisé d'autant)."""
+    explo = [x for x in ls if x["jeu"] < coupure]
+    conf = [x for x in ls if x["jeu"] >= coupure]
     res, jugeables = [], []
     for (a, b), verdict in GRILLE.items():
         for fam in sorted(familles_paire(a, b)):
@@ -169,7 +170,7 @@ def resumer(ls: list[dict]) -> dict:
             res.append(ligne)
     k = max(1, len(jugeables))
     import essais as es
-    risque = es.risque_corrige(1) / k
+    risque = es.risque_corrige(1) / k / k_bancs
     for ligne in jugeables:
         a, b = ligne["paire"].split(" × ")
         cc = cases(conf, a, b, ligne["famille"])["11"]
@@ -186,7 +187,7 @@ def resumer(ls: list[dict]) -> dict:
     tem = [x for x in jugeables if x["bon_sens"] == "temoin"]
     part = lambda xs: (round(sum(x["verdict"] == "confirmée" for x in xs) / len(xs), 3) if xs else None)
     return {"note": "perte log, plus bas = mieux ; aucun modèle de langue ; δ fixé sur l'exploration, jugé sur la "
-                    "confirmation", "coupure": COUPURE, "questions": len(ls), "exploration": len(explo),
+                    "confirmation", "coupure": coupure, "questions": len(ls), "exploration": len(explo),
             "confirmation": len(conf), "k_juges": len(jugeables), "risque_corrige": round(risque, 6),
             "valeur_du_bon_sens": {"plausibles_jugees": len(plaus), "part_confirmees": part(plaus),
                                    "temoins_juges": len(tem), "part_confirmes": part(tem)},
@@ -263,7 +264,7 @@ async def principal(depuis: str) -> int:
                 n_ecrites += 1
             fo.flush()
             print(f"{j} : {len(items)} questions")
-    r = resumer(lignes())
+    r = resumer(lignes(), k_bancs=2)        # 0.10.226 : deux bancs jugent la même grille
     RESUME.write_text(json.dumps(r, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"{n_ecrites} questions écrites")
     print(json.dumps({k: v for k, v in r.items() if k != "paires"}, ensure_ascii=False, indent=1))

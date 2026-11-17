@@ -87,3 +87,20 @@ additifs, mais je ne les considère pas comme de bons candidats. »
 - M17 n'est mesurable qu'à partir de juillet 2025 (12 mois de rivalités) ; M10 seulement si le calendrier électoral
   couvre la fenêtre (rattrapage Wikidata depuis le 2024-06-01).
 - Code : `combinaisons.py` (bot 0.10.225), workflow « Combinaisons de mécanismes ».
+
+## Second banc : questions fabriquées sur GDELT (décision d'auteur du 2026-11-17, 13 h 50)
+Constat avant tout passage : environ 23 questions ACLED « une fois » par jeu ForecastBench, donc environ 390 en
+exploration ; la case « les deux » compterait souvent moins de 10 questions. L'auteur a décidé de fabriquer des
+questions à partir des comptes GDELT déjà collectés. Fixé avant tout passage (`combinaisons_gdelt.py`, bot 0.10.226) :
+- pour chaque pays et chaque premier du mois depuis le 2024-09-01 : plus de manifestations (posée si ≥ 10 dans les
+  30 jours avant), plus d'émeutes (≥ 5), plus de démonstrations de force visant le pays (≥ 5, famille stratégique),
+  dans les 30 jours suivants que dans les 30 jours précédents ; au plus 3 jours GDELT manquants par fenêtre ;
+- B : part des « oui » du même pays et du même type parmi les mois où la question se posait et dont l'issue était
+  connue avant la date, lissée (k + 1) / (n + 2) ;
+- exploration avant le 2025-11-01, confirmation ensuite ; jugement identique (combinaisons.resumer) ;
+- les DEUX bancs jugent la même grille : le risque de chacun est divisé par deux en plus ;
+- effectif connu avant toute mesure (comptage des questions seulement) : 5 526 questions, 198 pays, 24 mois
+  (manifestations 1 404 + 1 466, émeutes 505 + 561, force 829 + 761, exploration + confirmation).
+Réserves : issue mesurée par GDELT et non par ACLED ; pour M11, indicateur et issue viennent de la même presse (aucun
+volume de presse total par pays n'est collecté pour le contrôler) ; questions d'un même mois corrélées (bootstrap par
+mois).
