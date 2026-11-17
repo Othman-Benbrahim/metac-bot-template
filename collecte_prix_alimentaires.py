@@ -32,7 +32,10 @@ import httpx
 
 BASE = "https://microdata.worldbank.org/index.php"
 CATALOGUE = 4509
-RESSOURCES = f"{BASE}/api/catalog/{CATALOGUE}/resources"
+IDNO = "WLD_2021_RTFP-CTRY_v02_M"
+# 0.10.217 : l'API NADA attend l'identifiant texte de l'étude (« idno ») ; l'adresse numérique répond 400
+RESSOURCES = [f"{BASE}/api/catalog/resources/{IDNO}", f"{BASE}/api/catalog/{IDNO}/resources",
+              f"{BASE}/api/catalog/{CATALOGUE}/resources"]
 TELECHARGER = f"{BASE}/catalog/{CATALOGUE}/download/{{rid}}"
 CODES = "https://raw.githubusercontent.com/datasets/country-codes/main/data/country-codes.csv"
 REGISTRE = Path("registre") / "prix-alimentaires.csv"
@@ -42,14 +45,27 @@ _FICHIER = re.compile(r"WLD_RTFP_country_(\d{4}-\d{2}-\d{2})", re.I)
 
 
 def ressources(c: httpx.Client) -> list[dict]:
-    r = c.get(RESSOURCES)
-    r.raise_for_status()
-    j = r.json()
-    if isinstance(j, dict):
-        for k in ("resources", "result", "rows", "data"):
-            if isinstance(j.get(k), list):
-                return j[k]
-    return j if isinstance(j, list) else []
+    """Liste des ressources de l'étude ; essaie les adresses de RESSOURCES dans l'ordre."""
+    erreurs = []
+    for u in RESSOURCES:
+        try:
+            r = c.get(u)
+            r.raise_for_status()
+            j = r.json()
+        except Exception as e:
+            erreurs.append(f"{u.split('/api/')[1]} : {type(e).__name__} {str(e)[:60]}")
+            continue
+        if isinstance(j, dict):
+            for k in ("resources", "result", "rows", "data", "files"):
+                v = j.get(k)
+                if isinstance(v, dict):
+                    v = v.get("rows") or v.get("resources") or list(v.values())
+                if isinstance(v, list):
+                    return v
+        if isinstance(j, list):
+            return j
+        erreurs.append(f"{u.split('/api/')[1]} : forme inattendue {str(j)[:80]}")
+    raise RuntimeError(" | ".join(erreurs))
 
 
 def choisir(res: list[dict]) -> tuple[str | None, str | None]:
@@ -118,7 +134,7 @@ def principal() -> int:
         try:
             res = ressources(c)
         except Exception as e:
-            _sommaire(f"## Prix alimentaires (RTFP)\n\nAPI du catalogue inaccessible : {type(e).__name__}: {str(e)[:150]}")
+            _sommaire(f"## Prix alimentaires (RTFP)\n\nAPI du catalogue inaccessible : {type(e).__name__}: {str(e)[:500]}")
             return 1
         rid, version = choisir(res)
         if a.sonde:
