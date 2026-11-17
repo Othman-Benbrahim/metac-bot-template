@@ -149,6 +149,16 @@ ESSAIS = {
                                    "objet": "classe de référence pondérée contre le taux du bot, questions « au moins N "
                                             "événements ? » (UCDP, OFAC, IODA), par source, à 30 jours",
                                    "doc": "preenregistrements/classe-reference.md"},
+    "m11_grappe": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+                   "objet": "M11 en grappe (au moins 2 voisins et la moitié en hausse) contre la classe pondérée, GDELT",
+                   "doc": "preenregistrements/geo-math.md"},
+    "alerte_precoce": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+                       "objet": "signes avant-coureurs (variance et autocorrélation en hausse) sur les questions "
+                                "d'escalade, contre la classe pondérée, GDELT",
+                       "doc": "preenregistrements/geo-math.md"},
+    "richardson": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+                   "objet": "lognormale (queue lourde) contre le taux du bot, morts UCDP au-dessus du quantile 90 %",
+                   "doc": "preenregistrements/geo-math.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
