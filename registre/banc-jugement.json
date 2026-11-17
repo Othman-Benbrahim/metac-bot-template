@@ -1,0 +1,91 @@
+{
+ "questions": 3645,
+ "n_confirmation": 1855,
+ "oui_confirmation": 0.299,
+ "perte": {
+  "p_R0": 0.6795,
+  "p_R1": 0.6933,
+  "p_S": 0.6462
+ },
+ "discrimination": {
+  "p_R0": 0.001,
+  "p_R1": 0.029,
+  "p_S": 0.042
+ },
+ "par_source": {
+  "metaculus": {
+   "n": 398,
+   "oui": 0.173,
+   "p_R0": 0.4676,
+   "p_R1": 0.4658,
+   "p_S": 0.4559
+  },
+  "manifold": {
+   "n": 439,
+   "oui": 0.367,
+   "p_R0": 0.7081,
+   "p_R1": 0.708,
+   "p_S": 0.68
+  },
+  "polymarket": {
+   "n": 896,
+   "oui": 0.337,
+   "p_R0": 0.7756,
+   "p_R1": 0.7867,
+   "p_S": 0.737
+  },
+  "infer": {
+   "n": 122,
+   "oui": 0.189,
+   "p_R0": 0.5626,
+   "p_R1": 0.696,
+   "p_S": 0.478
+  }
+ },
+ "par_forme": {
+  "election": {
+   "n": 624,
+   "oui": 0.324,
+   "p_R1": 0.7774,
+   "p_S": 0.7162
+  },
+  "justice": {
+   "n": 28,
+   "oui": 0.107,
+   "p_R1": 0.4223,
+   "p_S": 0.3565
+  },
+  "seuil": {
+   "n": 212,
+   "oui": 0.222,
+   "p_R1": 0.6736,
+   "p_S": 0.5924
+  },
+  "echeance": {
+   "n": 570,
+   "oui": 0.181,
+   "p_R1": 0.4896,
+   "p_S": 0.473
+  },
+  "autre": {
+   "n": 421,
+   "oui": 0.475,
+   "p_R1": 0.8721,
+   "p_S": 0.8231
+  }
+ },
+ "ecart_moyen": -0.0471,
+ "intervalle_corrige": [
+  -0.0836,
+  -0.0159
+ ],
+ "verdict": "semblables meilleures que R1",
+ "foule_descriptif": {
+  "n": 1855,
+  "perte_foule": 0.3595,
+  "perte_R1_memes": 0.6933,
+  "perte_S_memes": 0.6462
+ },
+ "regle_cohorte": "clôture prévue au moins 30 jours avant le passage (correction du biais de censure)",
+ "note": "perte log, plus bas = mieux ; aucun modèle de langue ; la foule n'est qu'un repère descriptif"
+}
