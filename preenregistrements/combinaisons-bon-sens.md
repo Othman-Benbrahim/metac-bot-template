@@ -1,7 +1,7 @@
 # Combinaisons de mécanismes : grille de bon sens (proposée le 2026-11-17)
 
-**Statut : PROPOSITION de Claude, à corriger puis valider par l'auteur. Rien n'est calculé.** La date du commit prouve
-que cette grille précède toute mesure.
+**Statut : VALIDÉE par l'auteur le 2026-11-17 (12 h 00), avec une réserve (ci-dessous). Grille proposée par Claude,
+commitée avant toute mesure (commit 711d600) ; la validation ne change aucun verdict.**
 
 ## Origine
 Théorie de l'auteur (2026-11-17, 11 h 44) : une situation complexe est un agrégat de situations simples, chacune avec
@@ -68,4 +68,22 @@ Bilan : 4 renforcements (dont 1 faible), 5 additifs, 1 redondant, 5 témoins.
   « les deux » peut manquer d'effectif plus que les autres.
 
 ## Validation de l'auteur
-_(à remplir : corrections éventuelles, date et heure de la décision)_
+Décision du 2026-11-17 (12 h 00) : « D'accord, je valide à part pour les dates de mémoire qui viennent se rajouter.
+L'additif me semble bancal et risque de ne pas fonctionner, le reste tient la route. Tu peux conserver les deux
+additifs, mais je ne les considère pas comme de bons candidats. »
+- Les deux paires additives avec les dates de mémoire, **M10 × M14** et **M11 × M14**, sont gardées et calculées,
+  marquées « additif (faible selon l'auteur) ». C'est un second pronostic, celui de l'auteur, que la mesure pourra
+  confirmer ou démentir. (Lecture de Claude : la troisième paire additive avec M14, M4 × M14, n'est pas visée ; à
+  corriger si c'était le cas.)
+- Tout le reste de la grille est validé tel quel.
+
+## Ce qui a été fixé en codant (avant tout passage)
+- Questions : ACLED de ForecastBench, forme « une fois », tous les jeux depuis le 2024-07-21 ; B corrigé.
+- Exploration : jeux avant le 2026-01-01 ; confirmation : jeux à partir du 2026-01-01.
+- Ajustement de la case « les deux » : δ = ln((O + 0,5) / (E + 0,5)) fixé sur l'exploration, ajouté en logit à B.
+- Jugée si au moins 10 questions dans la case « les deux » à chacune des deux étapes ; risque de la règle d'adoption
+  commune (5 % / nombre d'essais ouverts) divisé encore par k, k = nombre de paires × familles jugées ; bootstrap par
+  jeu, 2 000 tirages, graine 0.
+- M17 n'est mesurable qu'à partir de juillet 2025 (12 mois de rivalités) ; M10 seulement si le calendrier électoral
+  couvre la fenêtre (rattrapage Wikidata depuis le 2024-06-01).
+- Code : `combinaisons.py` (bot 0.10.225), workflow « Combinaisons de mécanismes ».

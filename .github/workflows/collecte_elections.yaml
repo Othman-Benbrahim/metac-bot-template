@@ -9,7 +9,7 @@ on:
     inputs:
       depuis:
         description: "premier jour (AAAA-MM-JJ)"
-        default: "2026-01-01"
+        default: "2024-06-01"
 
 concurrency:
   group: collecte-elections
@@ -32,7 +32,7 @@ jobs:
       - run: uv sync --locked
       - name: Collecte
         timeout-minutes: 20
-        run: uv run python collecte_elections.py --depuis "${{ github.event.inputs.depuis || '2026-01-01' }}"
+        run: uv run python collecte_elections.py --depuis "${{ github.event.inputs.depuis || '2024-06-01' }}"
       - name: Enregistrer
         if: always()
         run: |

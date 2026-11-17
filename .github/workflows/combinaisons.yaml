@@ -1,0 +1,41 @@
+name: Combinaisons de mécanismes (bon sens, exploration, confirmation)
+
+# 0.10.225 : grille de bon sens validée par l'auteur le 2026-11-17 (preenregistrements/combinaisons-bon-sens.md) ;
+# exploration avant 2026, confirmation à partir de 2026. Aucun modèle de langue : gratuit.
+# À lancer APRÈS « Calendrier des élections » (historique depuis 2024-06-01).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  combinaisons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Combinaisons
+        timeout-minutes: 90          # 0.10.125 : sur l'étape, pour que « Enregistrer » garde les lignes écrites
+        run: uv run python combinaisons.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/combinaisons.jsonl registre/combinaisons.json registre/voisins.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : combinaisons de mécanismes du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

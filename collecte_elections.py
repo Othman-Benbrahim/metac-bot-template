@@ -14,7 +14,7 @@ la date d'une question ; l'indicateur sépare donc « élection dans les 30 jour
 prévue dans les 30 jours APRÈS » (fuite possible pour les élections anticipées, déclarée).
 
 Registre : registre/elections.csv.
-Usage : python collecte_elections.py [--depuis AAAA-MM-JJ] [--jusqua AAAA-MM-JJ]
+Usage : python collecte_elections.py [--depuis AAAA-MM-JJ, défaut 2024-06-01] [--jusqua AAAA-MM-JJ]
 """
 from __future__ import annotations
 
@@ -75,7 +75,7 @@ def interroger(c: httpx.Client, debut: date, fin: date) -> list[dict] | None:
 
 def principal() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--depuis", default="2026-01-01")
+    ap.add_argument("--depuis", default="2024-06-01")   # 0.10.225 : historique pour les combinaisons de mécanismes
     ap.add_argument("--jusqua", default="")
     a = ap.parse_args()
     aujourd_hui = datetime.now(timezone.utc).date()

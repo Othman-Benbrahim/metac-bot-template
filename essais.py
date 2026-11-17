@@ -110,6 +110,10 @@ ESSAIS = {
     "ombre_absence": {"ouvert_le": "2026-11-13", "type": "intervalle", "n": 30, "statut": "ouvert",
                       "objet": "cote de B divisée par 2 pour les états nuls d'absence",
                       "doc": "preenregistrements/ombre-absence.md"},
+    "combinaisons": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+                     "objet": "combinaisons de deux mécanismes (grille de bon sens) : δ fixé sur l'exploration (avant 2026), "
+                              "jugé sur la confirmation (2026) ; correction interne supplémentaire par le nombre de paires jugées",
+                     "doc": "preenregistrements/combinaisons-bon-sens.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
