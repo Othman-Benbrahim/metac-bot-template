@@ -129,9 +129,9 @@ def principal(maximum: int) -> int:
         except Exception as e:
             print(f"API indisponible : {type(e).__name__}: {str(e)[:200]}")
             return 1
-        noms = sorted((version_iso(str(d.get("name", "")).strip("/")), str(d.get("name", "")).strip("/"))
-                      for d in reps if d.get("name"))
-        noms = [(v, n) for v, n in noms if v]
+        noms = [(version_iso(str(d.get("name", "")).strip("/")), str(d.get("name", "")).strip("/"))
+                for d in reps if d.get("name")]
+        noms = sorted((v, n) for v, n in noms if v)          # « latest » (None) écarté AVANT le tri
         print(f"{len(noms)} versions datées : {noms[0][0]} → {noms[-1][0]}")
         for v, nom in noms:
             if v in deja or lus >= maximum:
