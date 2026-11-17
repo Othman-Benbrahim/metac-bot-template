@@ -41,6 +41,8 @@ STRICTEMENT avant la date du jeu :
   pays dans les 90 jours (GDELT, code CAMEO 163, acteur chinois, pays visé).
 - avis_navigation (0.10.206, en ombre, module Chine, couche 3) : avertissements de navigation militaires en zone
   chinoise concernant le pays, émis dans les 14 jours (NGA, HYDROPAC).
+- force_chinoise (0.10.224, en ombre, module Chine, couche 3, relais de avis_navigation) : démonstrations de force
+  chinoises visant le pays dans les 14 jours (GDELT, racine CAMEO 15, acteur chinois → pays).
 - feux (0.10.208, en ombre) : points chauds détectés par satellite (NASA FIRMS, VIIRS), log(14 jours / 14 jours
   précédents).
 - silence_statistique (0.10.209, en ombre, fiche M15) : publications prévues du Bureau national des statistiques
@@ -784,6 +786,24 @@ def avis_navigation(cca2: str | None, d0: date, fenetre: int = 14) -> dict:
     return {"present": True, "valeur": n, "fenetre_jours": fenetre}
 
 
+def force_chinoise(cca2: str | None, d0: date, fenetre: int = 14, couverture_min: float = 0.85) -> dict:
+    """0.10.224 (module Chine, couche 3, en ombre ; décision d'auteur du 2026-11-17, 10 h 41) : relais de
+    `avis_navigation`, dont la source (NGA) est en maintenance et n'a jamais livré. Valeur : démonstrations de force
+    (racine CAMEO 15 : mises en alerte, mobilisations, manœuvres) d'un acteur chinois visant le pays, dans les
+    `fenetre` jours avant la date, d'après `registre/gdelt-paires-jour.csv` (déjà collecté depuis juillet 2024).
+    Différence avec la source NGA : un avertissement de navigation ANNONCE l'exercice ; GDELT relève la démonstration
+    une fois rapportée par la presse. Signal plus tardif et plus bruité, mais disponible et avec un historique.
+    Calculé à côté de `avis_navigation`, pas à sa place : les deux restent comparables si la NGA revient."""
+    if not cca2 or cca2 == "CN" or not PAIRES_JOUR.exists() or not PAIRES_JOURS.exists():
+        return {"present": False, "raison": "pays inconnu, Chine elle-même ou registre absent"}
+    a, b = (d0 - timedelta(days=fenetre)).isoformat(), d0.isoformat()
+    if sum(1 for j in PAIRES_JOURS.read_text(encoding="utf-8").split() if a <= j < b) < couverture_min * fenetre:
+        return {"present": False, "raison": "période non couverte"}
+    n = sum(int(x["force"]) for x in csv.DictReader(PAIRES_JOUR.open(encoding="utf-8"))
+            if x["a"] == "CN" and x["b"] == cca2 and a <= x["jour"] < b)
+    return {"present": True, "valeur": n, "fenetre_jours": fenetre}
+
+
 FEUX = Path("registre") / "feux.csv"
 FEUX_JOURS = Path("registre") / "feux-jours.txt"
 
@@ -975,7 +995,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "force_chinoise", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -1047,6 +1067,9 @@ async def principal() -> int:
                 if "avis_navigation" not in fait and AVIS_NAVIGATION.exists():   # 0.10.206, module Chine
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["avis_navigation"] = avis_navigation(code, d0)
+                if "force_chinoise" not in fait and PAIRES_JOUR.exists():       # 0.10.224, relais de la NGA
+                    code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
+                    ligne["force_chinoise"] = force_chinoise(code, d0)
                 if "feux" not in fait and FEUX.exists():                         # 0.10.208, NASA FIRMS
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["feux"] = feux(code, d0)
@@ -1073,7 +1096,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "force_chinoise", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if k in ligne))
         await tg.fermer()
     return 0
 

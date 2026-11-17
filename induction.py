@@ -71,6 +71,8 @@ ETATS = {
                             ("aucune contre-mesure chinoise contre le pays", lambda v: v == 0)),       # 0.10.205
     "avis_navigation": (("zone de tir ou d'exercice chinoise annoncée près du pays (14 jours)", lambda v: v >= 1),
                         ("aucun avertissement militaire chinois près du pays", lambda v: v == 0)),     # 0.10.206
+    "force_chinoise": (("démonstration de force chinoise visant le pays (≥ 1 événement GDELT en 14 jours)", lambda v: v >= 1),
+                       ("aucune démonstration de force chinoise visant le pays", lambda v: v == 0)),  # 0.10.224
     "feux": (("les feux montent dans le pays (× 1,5)", lambda v: v > 0.4),
              ("les feux reculent (÷ 1,5)", lambda v: v < -0.4)),                                      # 0.10.208
     "silence_statistique": (("une publication statistique chinoise prévue manque ou tarde (30 jours)", lambda v: v >= 1),
@@ -108,7 +110,7 @@ def joindre_niche(lignes: list[dict]) -> list[dict]:
         m = n.get((x.get("pays"), x.get("jeu")))
         if m:
             x = dict(x, presents=dict(x.get("presents") or {}))
-            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival"):
+            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "force_chinoise", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival"):
                 v = m.get(k) or {}
                 if k == "vols" and v.get("arrivees_2j") == 0 and v.get("arrivees_2j_quatre_semaines_avant") == 0:
                     continue                          # 0.10.145 : couverture OpenSky absente, pas une mesure

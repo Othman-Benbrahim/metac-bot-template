@@ -46,7 +46,11 @@ class TestM17(unittest.TestCase):
                 self.assertEqual(ni.rivalites(d0), {("CN", "JP"), ("CN", "PH")})
                 r = ni.alignement_rival("PH", d0)
                 self.assertEqual((r["valeur"], r["puissances"]), (2, ["CN"]))
-                self.assertEqual(ni.alignement_rival("FR", d0)["valeur"], 0)   # la Chine n'est ni rivale ni voisine de la France
+                self.assertEqual(ni.alignement_rival("FR", d0)["valeur"], 0)
+                fj.write_text("jour,a,b,coop_mil,force\n2026-11-05,CN,PH,0,3\n2026-11-06,PH,CN,0,4\n2026-10-01,CN,PH,0,9\n",
+                              encoding="utf-8")
+                self.assertEqual(ni.force_chinoise("PH", d0)["valeur"], 3)      # 0.10.224 : sens CN → pays, 14 jours
+                self.assertFalse(ni.force_chinoise("CN", d0)["present"])   # la Chine n'est ni rivale ni voisine de la France
 
 
     def test_liste_fixe(self):

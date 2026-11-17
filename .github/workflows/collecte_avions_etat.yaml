@@ -5,7 +5,7 @@ name: Collecte quotidienne des avions d'État (ombre)
 on:
   schedule:
     - cron: "37 2 * * *"
-    - cron: "37 14 * * *"   # second passage, sans effet si la veille est déjà lue
+    - cron: "37 16 * * *"   # second passage (17 h 37 à Paris en hiver, après le retour des crédits OpenSky), sans effet si la veille est déjà lue
   workflow_dispatch:
 
 concurrency:
