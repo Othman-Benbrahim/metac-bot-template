@@ -125,7 +125,9 @@ ESSAIS = {
                          "objet": "B par classe de référence pondérée par la ressemblance (tous pays, noyau fixé d'avance) "
                                   "contre B, questions fabriquées GDELT",
                          "doc": "preenregistrements/classe-reference.md"},
-    "b_noyau": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 100, "statut": "ouvert",
+    "b_noyau": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 100, "statut": "clos",
+                "clos_le": "2026-11-17", "verdict": "non adopté (séries réelles : écart +0,004 sur les 200 premières, "
+                                                  "intervalle corrigé [−0,052 ; +0,052] ; gain descriptif sur DBnomics hors critère)",
                 "objet": "B des séries pondéré par la ressemblance (position dans l'année, élan sur h jours) contre B, "
                          "questions réelles FRED et DBnomics",
                 "doc": "preenregistrements/classe-reference.md"},
