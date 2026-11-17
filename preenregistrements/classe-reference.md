@@ -77,3 +77,15 @@ autres sources non tranchées ou non jugées. Mais plusieurs relevés atteignent
 Mexique, Israël à 5 000 ; USGS M ≥ 4,5 à 5 000 ; GDACS à 100 pour quatre aléas) : leur fin de série manque et ressemble
 à un calme. Second passage, même critère, groupes au plafond retirés. Le verdict UCDP ne tient que s'il tient aussi
 sans les groupes tronqués.
+
+### Décision d'auteur du 2026-11-17 (19 h 35) : domaine retenu
+« Je valide pour les conflits et les sanctions, ainsi que les coupures d'internet, pas la peine de refaire des tests pour
+le reste, le bon sens me fait dire que les catastrophes, les séismes et les lancements spatiaux n'ont absolument rien à
+voir avec cette logique. »
+- Domaine retenu par l'auteur : UCDP (conflits), OFAC (sanctions), IODA (coupures d'Internet). Catastrophes (GDACS),
+  séismes (USGS) et lancements : écartés, sans autre test.
+- Statut des preuves, noté pour mémoire : UCDP meilleur que B au critère (contrôle de troncature en cours) ; IODA non
+  tranché (écart −0,023, intervalle [−0,108 ; +0,045]) ; OFAC trop peu de questions pour être jugé (28 ; écart
+  descriptif −0,070). Pour IODA et OFAC, le choix relève du bon sens de l'auteur, pas du critère.
+- Avant l'entrée dans le bot : test sur la forme des questions Metaculus (fenêtres et seuil du puits), pour ces trois
+  sources seulement.
