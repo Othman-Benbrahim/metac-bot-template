@@ -136,7 +136,12 @@ ESSAIS = {
                 "objet": "B des séries pondéré par la ressemblance (position dans l'année, élan sur h jours) contre B, "
                          "questions réelles FRED et DBnomics",
                 "doc": "preenregistrements/classe-reference.md"},
-    "classe_reference_sources": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+    "classe_reference_sources": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "clos",
+                                 "clos_le": "2026-11-17",
+                                 "verdict": "UCDP meilleur que B, tenu sans les pays tronqués (écart −0,043, intervalle "
+                                            "corrigé [−0,073 ; −0,018]) ; IODA non tranché, OFAC non jugé (28 questions) ; "
+                                            "domaine retenu par l'auteur : UCDP, OFAC, IODA (19 h 35) ; entrée dans le bot "
+                                            "après le test sur la forme des questions Metaculus",
                                  "objet": "classe de référence pondérée contre B sur les sources d'événements du bot "
                                           "(UCDP, IODA, USGS, GDACS, lancements, OFAC), par source, à 30 jours",
                                  "doc": "preenregistrements/classe-reference.md"},
