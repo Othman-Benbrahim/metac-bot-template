@@ -42,6 +42,8 @@ from pathlib import Path
 
 import httpx
 
+import dico_grasland as dg
+
 FLUX = {
     "officiel": [
         # 0.10.167 : ReliefWeb retiré (page vide pour GitHub et FeedBurner ; API réservée aux organisations)
@@ -129,6 +131,8 @@ CLDR = "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/c
 COMPTES = Path("registre") / "rss-comptes.csv"
 VUS = Path("registre") / "rss-vus.txt"
 TITRES = Path("registre") / "rss-titres.csv"  # 0.10.198 : empreintes de titres (jamais les titres), pour les reprises
+REGIONS = Path("registre") / "rss-regions.csv"   # 0.10.219 : macro-régions (dictionnaire Grasland-Toureille), en ombre
+ACCORD = Path("registre") / "rss-accord.csv"     # 0.10.219 : accord entre nos pays et ceux du second codeur
 SANTE = Path("registre") / "rss-sante.csv"   # 0.10.162 : état de chaque flux (dernier essai, dernier succès, dernier nouvel article)
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
@@ -340,6 +344,18 @@ def bilan_sante(lignes: list[dict], aujourdhui: str, silence: int = 7) -> str:
     return "\n".join(out)
 
 
+def bilan_accord(accord: dict, ecarts_nous: dict, ecarts_eux: dict) -> str:
+    """0.10.219 : accord cumulé entre notre détection (noms et gentilés) et le second codeur (Grasland-Toureille)."""
+    if not accord:
+        return "Second codeur (Grasland-Toureille) : aucun compte."
+    c, n, e = (sum(v[i] for v in accord.values()) for i in range(3))
+    tot = c + n + e
+    top = lambda d: ", ".join(f"{k} {v}" for k, v in sorted(d.items(), key=lambda t: -t[1])[:8]) or "aucun"
+    return (f"## Second codeur (Grasland-Toureille, en ombre)\n\nCumul : {c} mentions communes, {n} vues par nous seuls, "
+            f"{e} par eux seuls (accord {c / tot:.0%}).\nCe passage, pays vus par nous seuls : {top(ecarts_nous)} ; "
+            f"par eux seuls : {top(ecarts_eux)}.")
+
+
 def principal() -> int:
     vus = set(VUS.read_text(encoding="utf-8").split()) if VUS.exists() else set()
     comptes: dict[tuple, int] = {}
@@ -352,6 +368,16 @@ def principal() -> int:
         for x in csv.DictReader(TITRES.open(encoding="utf-8")):
             titres[x["empreinte"]] = x["jour"]
     reprises: dict[str, int] = {}
+    regions: dict[tuple, int] = {}
+    if REGIONS.exists():
+        for x in csv.DictReader(REGIONS.open(encoding="utf-8")):
+            regions[(x["region"], x["jour"], x["famille"])] = int(x["articles"])
+    accord: dict[tuple, list] = {}
+    if ACCORD.exists():
+        for x in csv.DictReader(ACCORD.open(encoding="utf-8")):
+            accord[(x["pays"], x["jour"])] = [int(x["commun"]), int(x["nous_seul"]), int(x["eux_seul"])]
+    ecarts_nous: dict[str, int] = {}
+    ecarts_eux: dict[str, int] = {}
     aujourdhui = datetime.now(timezone.utc).date().isoformat()
     sante = {x["url"]: x for x in csv.DictReader(SANTE.open(encoding="utf-8"))} if SANTE.exists() else {}
     with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c:
@@ -362,6 +388,10 @@ def principal() -> int:
         motifs_de = noms_pays(c, ("en", "fr", "de"))
         larges_de = motifs_larges(motifs_de, adj) if adj else motifs_de
         print(f"{len(adj)} adjectifs de nationalité" + ("" if adj else " : source indisponible, comptes « _large » non écrits ce jour") + ".")
+        # 0.10.219 (en ombre) : second codeur, dictionnaire de Grasland et Toureille (capitales, chefs d'État, macro-régions)
+        gr = dg.charger(c, ("en", "fr"))
+        gr_de = dg.charger(c, ("en", "fr", "de")) if gr else []
+        print(f"{len(gr)} expressions du dictionnaire Grasland-Toureille" + ("" if gr else " : source indisponible, comptes « _grasland » non écrits ce jour") + ".")
         for famille, urls in FLUX.items():
             for url in urls:
                 try:
@@ -400,6 +430,23 @@ def principal() -> int:
                     for p in pays_large:
                         for fa in familles_larges:
                             comptes[(p, a["jour"], fa)] = comptes.get((p, a["jour"], fa), 0) + 1
+                    if gr:
+                        pays_gr, regions_gr = dg.detecter(a["texte"], gr_de if famille in ALLEMAND else gr)
+                        for p in pays_gr:
+                            for fa in familles:
+                                comptes[(p, a["jour"], fa + "_grasland")] = comptes.get((p, a["jour"], fa + "_grasland"), 0) + 1
+                        for rg in regions_gr:
+                            for fa in familles:
+                                regions[(rg, a["jour"], fa)] = regions.get((rg, a["jour"], fa), 0) + 1
+                        nous = pays_large if (larges or famille in LARGE_SEUL) else pays
+                        for p in nous | pays_gr:
+                            k = (p, a["jour"])
+                            v = accord.setdefault(k, [0, 0, 0])
+                            v[0 if (p in nous and p in pays_gr) else 1 if p in nous else 2] += 1
+                            if p not in pays_gr:
+                                ecarts_nous[p] = ecarts_nous.get(p, 0) + 1
+                            elif p not in nous:
+                                ecarts_eux[p] = ecarts_eux.get(p, 0) + 1
                     n += 1
                 nouveaux += n
                 st = sante.setdefault(url, {"url": url, "dernier_succes": "", "dernier_nouveau": ""})
@@ -416,6 +463,18 @@ def principal() -> int:
         for (p, j, fa), n in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
             w.writerow([p, j, fa, n])
     VUS.write_text("\n".join(sorted(vus)), encoding="utf-8")
+    if regions:
+        with REGIONS.open("w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["region", "jour", "famille", "articles"])
+            for (rg, j, fa), n in sorted(regions.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
+                w.writerow([rg, j, fa, n])
+    if accord:
+        with ACCORD.open("w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["pays", "jour", "commun", "nous_seul", "eux_seul"])
+            for (p, j), v in sorted(accord.items(), key=lambda t: (t[0][1], t[0][0])):
+                w.writerow([p, j, *v])
     limite = datetime.now(timezone.utc).date().toordinal() - 2 * FENETRE_TITRES
     with TITRES.open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
@@ -431,6 +490,7 @@ def principal() -> int:
         for u in sorted(actuels & set(sante)):
             w.writerow({k: sante[u].get(k, "") for k in w.fieldnames})
     rapport = bilan_sante([sante[u] for u in sorted(actuels & set(sante))], aujourdhui)
+    rapport += "\n\n" + bilan_accord(accord, ecarts_nous, ecarts_eux)
     rapport += ("\n\nReprises écartées (même titre déjà compté à moins de 30 jours) : "
                 + (", ".join(f"{k} {v}" for k, v in sorted(reprises.items())) or "aucune") + ".")
     print(rapport)
