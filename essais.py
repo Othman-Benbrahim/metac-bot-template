@@ -149,10 +149,13 @@ ESSAIS = {
                                    "objet": "classe de référence pondérée contre le taux du bot, questions « au moins N "
                                             "événements ? » (UCDP, OFAC, IODA), par source, à 30 jours",
                                    "doc": "preenregistrements/classe-reference.md"},
-    "m11_grappe": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+    "m11_grappe": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "clos", "clos_le": "2026-11-17",
+                   "verdict": "non adopté (δ négatif en exploration, contraire au sens attendu ; rien en confirmation)",
                    "objet": "M11 en grappe (au moins 2 voisins et la moitié en hausse) contre la classe pondérée, GDELT",
                    "doc": "preenregistrements/geo-math.md"},
-    "alerte_precoce": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+    "alerte_precoce": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "clos", "clos_le": "2026-11-17",
+                       "verdict": "non adopté (δ positif en exploration, comme attendu, mais pire que B en confirmation "
+                                  "sur les manifestations, intervalle [+0,002 ; +0,053])",
                        "objet": "signes avant-coureurs (variance et autocorrélation en hausse) sur les questions "
                                 "d'escalade, contre la classe pondérée, GDELT",
                        "doc": "preenregistrements/geo-math.md"},
