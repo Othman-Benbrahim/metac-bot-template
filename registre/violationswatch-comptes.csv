@@ -40,6 +40,7 @@ Ethiopia,2026-11-10,High,1
 India,2026-11-10,Low,1
 Israel,2026-11-10,Low,1
 Nigeria,2026-11-10,High,1
+Nigeria,2026-11-10,Medium,1
 Palestine,2026-11-10,High,1
 Palestine,2026-11-10,Low,1
 Palestine,2026-11-10,Medium,2
@@ -101,5 +102,16 @@ Sudan,2026-11-15,Medium,1
 Syria,2026-11-15,Medium,1
 Ukraine,2026-11-15,Medium,2
 Yemen,2026-11-15,High,1
+Ethiopia,2026-11-16,High,1
+India,2026-11-16,Medium,1
+Nigeria,2026-11-16,High,2
+Nigeria,2026-11-16,Medium,3
+Palestine,2026-11-16,Medium,2
+Russia,2026-11-16,Medium,1
+Sudan,2026-11-16,Critical,1
+Ukraine,2026-11-16,High,1
 Ukraine,2026-11-16,Medium,1
+Yemen,2026-11-16,High,3
 Yemen,2026-11-16,Medium,1
+Myanmar,2026-11-17,Medium,1
+Palestine,2026-11-17,Medium,1
