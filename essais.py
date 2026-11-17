@@ -117,7 +117,9 @@ ESSAIS = {
     "jugement_aveugle": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 100, "statut": "ouvert",
                          "objet": "jugement du modèle sans voir B, combiné mécaniquement à B, contre A qui voit B (conflits)",
                          "doc": "preenregistrements/jugement-aveugle.md"},
-    "conflictforecast": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+    "conflictforecast": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "clos",
+                         "clos_le": "2026-11-17", "verdict": "non adopté (12 cases jugées, aucune confirmée ; violence, "
+                                                           "escalade prévue : δ +0,32 en exploration, écart +0,004 en confirmation)",
                          "objet": "ConflictForecast lu comme indicateur (escalade prévue, toute violence probable) : δ par "
                                   "état fixé avant 2026, jugé sur 2026 ; version utilisable le 25 du mois suivant ses données",
                          "doc": "preenregistrements/conflictforecast.md"},
