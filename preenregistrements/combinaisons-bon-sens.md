@@ -104,3 +104,18 @@ questions à partir des comptes GDELT déjà collectés. Fixé avant tout passag
 Réserves : issue mesurée par GDELT et non par ACLED ; pour M11, indicateur et issue viennent de la même presse (aucun
 volume de presse total par pays n'est collecté pour le contrôler) ; questions d'un même mois corrélées (bootstrap par
 mois).
+
+## Troisième étape : balayage exhaustif comparé au hasard (décision d'auteur du 2026-11-17, 14 h 30)
+Constat (premier passage du banc GDELT, 14 h 26) : 11 tests jugés, aucune combinaison confirmée ; ce constat ne
+distingue pas « rien à trouver » de « trop peu pour voir ». L'auteur demande de tester toutes les combinaisons, hors
+bon sens. Fixé avant tout passage (`combinaisons_balayage.py`, bot 0.10.228) :
+- huit indicateurs (M10, M11, M14, M17, force chinoise, contre-mesures chinoises ≥ 3 en 90 jours, actes hostiles russes
+  ≥ 3 en 30 jours, élan propre des manifestations log > 0,4), seuls, par paires et par triplets : 92 combinaisons × 3
+  types de questions fabriquées (manifestations, émeutes, force) ;
+- même ajustement δ que le banc GDELT, exploration avant le 2025-11-01, au moins 10 questions par étape ;
+- « réussite » : gain de perte log négatif sur la confirmation ;
+- hasard : 200 redistributions des états entre pays du même mois (graine 0) ; p global sur le nombre de réussites et
+  sur le gain total ; p corrigé par combinaison selon le meilleur gain de chaque tirage (Westfall-Young).
+Lecture prévue : si les réussites ne dépassent pas le hasard (p ≥ 0,05), il n'y a pas, dans ces indicateurs, plus de
+structure que le hasard n'en produit ; une combinaison n'est retenue comme piste que si son p corrigé est < 0,05, puis
+elle est soumise au bon sens (explication) et à l'observatoire avant toute décision.
