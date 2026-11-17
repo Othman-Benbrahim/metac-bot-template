@@ -1,4 +1,720 @@
 qid,pays,date,type,nom
+Q116842868,AT,2024-06-01,election,2024 European Parliament election in Austria
+Q117421927,IE,2024-06-01,election,2024 Irish local elections
+Q126166879,TR,2024-06-01,election,Q126166879
+Q65042773,IN,2024-06-01,election,2024 Indian general election
+Q106751136,MX,2024-06-02,election,2024 Mexican presidential election
+Q107134355,MX,2024-06-02,election,2024 Mexican legislative election
+Q111737492,MX,2024-06-02,election,Q111737492
+Q113317928,MX,2024-06-02,election,2024 Mexican general election
+Q135986114,MX,2024-06-02,election,2024 Mexican Senate election in Quintana Roo
+Q115925349,US,2024-06-04,referendum,2024 Green Party presidential primaries
+Q105494567,RO,2024-06-09,election,2024 Romanian local elections
+Q113125511,CH,2024-06-09,referendum,Q113125511
+Q117661656,BG,2024-06-09,election,June 2024 Bulgarian parliamentary election
+Q118945297,DK,2024-06-09,election,2024 European Parliament election in Denmark
+Q119608409,EE,2024-06-09,election,2024 European Parliament election in Estonia
+Q119701193,BE,2024-06-09,election,2024 Belgian regional elections
+Q121267700,HU,2024-06-09,election,2024 European Parliament election in Hungary
+Q123431962,ES,2024-06-09,election,2024 European Parliament election in Spain
+Q123858118,IT,2024-06-09,election,2024 European Parliament election in Italy
+Q124216931,HR,2024-06-09,election,2024 European Parliament election in Croatia
+Q124693354,CY,2024-06-09,election,2024 Cypriot local elections
+Q126098309,SI,2024-06-09,referendum,2024 Slovenian referendum
+Q131704066,SI,2024-06-09,referendum,Q131704066
+Q131704067,SI,2024-06-09,referendum,Q131704067
+Q131704068,SI,2024-06-09,referendum,Q131704068
+Q84081335,BE,2024-06-09,election,2024 Belgian federal election
+Q84081988,SM,2024-06-09,election,2024 San Marino general election
+Q126430659,ZA,2024-06-14,election,2024 South African presidential election
+Q124671608,SE,2024-06-16,referendum,Q124671608
+Q129162559,LI,2024-06-16,referendum,Building of a new state hospital
+Q125510567,AU,2024-06-22,election,2024 Northern Tablelands state by-election
+Q124568852,IT,2024-06-24,election,2024 Italian local elections
+Q126094609,CA,2024-06-24,election,2024 Toronto—St. Paul's federal by-election
+Q125167204,US,2024-06-25,election,2024 Colorado's 4th congressional district special election
+Q100718513,MN,2024-06-28,election,2024 Mongolian parliamentary election
+Q83974189,MR,2024-06-29,election,2024 Mauritanian presidential election
+Q117246373,UY,2024-06-30,election,"Uruguayan presidential primaries, 2024"
+Q126502290,BL,2024-06-30,election,Q126502290
+Q126502312,PM,2024-06-30,election,Q126502312
+Q126870265,FR,2024-06-30,election,first round of the 2024 French legislative elections
+Q111954761,IN,2024-07-01,election,2024 Indian Rajya Sabha elections
+Q126957202,VA,2024-07-01,election,July 2024 Consistory
+Q126891455,GB,2024-07-04,election,2024 United Kingdom general election in Clacton
+Q126892824,GB,2024-07-04,election,2024 United Kingdom general election in Rochdale
+Q126896063,GB,2024-07-04,election,2024 United Kingdom general election in Belfast East
+Q126896098,GB,2024-07-04,election,2024 United Kingdom general election in Richmond and Northallerton
+Q126923264,GB,2024-07-04,election,2024 United Kingdom general election in Islington North
+Q127162631,GB,2024-07-04,election,2024 United Kingdom general election in South West Norfolk
+Q130223946,GB,2024-07-04,election,2024 United Kingdom general election in Huntingdon
+Q130238982,GB,2024-07-04,election,2024 United Kingdom general election in Ilford North
+Q130382995,GB,2024-07-04,election,2024 Wigan Metropolitan Borough Council by-election in Leigh South
+Q78851988,GB,2024-07-04,election,2024 United Kingdom general election
+Q111588743,IR,2024-07-05,election,2024 Iranian presidential election
+Q126191532,MY,2024-07-06,election,2024 Sungai Bakap by-election
+Q126469235,FR,2024-07-07,election,2024 French legislative election
+Q126502290,MF,2024-07-07,election,Q126502290
+Q126502342,WF,2024-07-07,election,Q126502342
+Q126871044,FR,2024-07-07,election,second round of the 2024 French legislative elections
+Q116673608,RW,2024-07-15,election,2024 Rwandan presidential election
+Q122889782,RW,2024-07-15,election,2024 Rwandan general election
+Q125935043,SY,2024-07-15,election,2024 Syrian parliamentary election
+Q84036200,RW,2024-07-15,election,2024 Rwandan parliamentary election
+Q65072493,VE,2024-07-28,election,2024 Venezuelan presidential election
+Q140399424,CK,2024-08-15,election,2024 Cook Islands local elections
+Q141986428,TH,2024-08-16,election,2024 Thai prime ministership election
+Q127039931,MY,2024-08-17,election,2024 Nenggiri by-election
+Q100718589,ME,2024-08-31,election,2024 Montenegrin parliamentary election
+Q124417096,KI,2024-08-31,election,2024 Kiribati parliamentary election
+Q129608847,NU,2024-08-31,referendum,2024 Niuean constitutional referendum
+Q121597076,CZ,2024-09-01,election,2024 Czech regional elections
+Q130295456,RW,2024-09-01,election,Q130295456
+Q131503017,AZ,2024-09-01,election,2024 Nakhchivan Supreme Assembly election
+Q86344763,AZ,2024-09-01,election,2024 Azerbaijani parliamentary election
+Q130237224,GB,2024-09-04,election,first round of the 2024 Conservative Party leadership election
+Q128311918,GB,2024-09-05,election,2024 Manchester City Council by-election in Baguley
+Q106746723,DZ,2024-09-07,election,2024 Algerian presidential election
+Q122974148,RU,2024-09-08,election,2024 Russian elections
+Q125451503,RU,2024-09-08,election,2024 Murmansk Oblast gubernatorial election
+Q101499687,JO,2024-09-10,election,2024 Jordanian general election
+Q130237240,GB,2024-09-10,election,second round of the 2024 Conservative Party leadership election
+Q123757788,NF,2024-09-14,election,2024 Norfolk Island local election
+Q130538042,CA,2024-09-16,election,"September 16, 2024 Canadian federal by-elections"
+Q104830250,IN,2024-09-18,election,2024 Jammu and Kashmir Legislative Assembly election
+Q113317674,LK,2024-09-21,election,2024 Sri Lankan presidential election
+Q129978822,CZ,2024-09-21,election,Q129978822
+Q128239187,CH,2024-09-22,referendum,Swiss federal popular initiative «Für die Zukunft unserer Natur und Landschaft (Biodiversitätsinitiative)»
+Q129162560,LI,2024-09-22,referendum,International Monetary Fund
+Q129840456,JP,2024-09-23,election,2024 Constitutional Democratic Party of Japan presidential election
+Q124054131,JP,2024-09-27,election,2024 Liberal Democratic Party (Japan) leadership election
+Q128007721,IL,2024-09-29,election,2024 Israeli chief rabbi elections
+Q71784130,AT,2024-09-29,election,2024 Austrian legislative election
+Q121682837,CZ,2024-10-01,election,2024 Czech Senate election
+Q124639477,GB,2024-10-01,election,2024 University of Oxford Chancellor election
+Q130468251,GB,2024-10-01,election,fifth round of the 2024 Conservative Party leadership election
+Q115656294,TN,2024-10-06,election,2024 Tunisian presidential election
+Q123253377,KZ,2024-10-06,election,2024 Kazakh nuclear power referendum
+Q123578034,BA,2024-10-06,election,2024 Bosnian municipal elections
+Q125470939,BR,2024-10-06,election,Belém municipal election in 2024
+Q125573533,BR,2024-10-06,election,2024 Belo Horizonte mayoral election
+Q126205667,BR,2024-10-06,election,Aracaju municipal election in 2024
+Q126740365,BR,2024-10-06,election,Lauro de Freitas municipal election in 2024
+Q127425643,BR,2024-10-06,election,Feira de Santana municipal election in 2024
+Q130236398,BR,2024-10-06,election,Barreiras municipal election in 2024
+Q130493035,ET,2024-10-07,election,2024 Ethiopian presidential election
+Q130272986,GB,2024-10-08,election,third round of the 2024 Conservative Party leadership election
+Q106751204,MZ,2024-10-09,election,2024 Mozambican presidential election
+Q116686989,MZ,2024-10-09,election,2024 Mozambican general election
+Q124767556,MZ,2024-10-09,election,2024 Mozambican legislative election
+Q130468209,GB,2024-10-09,election,fourth round of the 2024 Conservative Party leadership election
+Q104902465,LT,2024-10-13,election,2024 Lithuanian parliamentary election
+Q105024666,BE,2024-10-13,election,2024 Belgian provincial and local elections
+Q110930240,BE,2024-10-13,election,2024 elections in Belgium
+Q129384871,MO,2024-10-13,election,2024 Macanese Chief Executive election
+Q130226717,GR,2024-10-13,election,2024 PASOK – KINAL leadership election
+Q136669582,BF,2024-10-16,referendum,Q136669582
+Q130382850,GB,2024-10-17,election,2024 Stockport Metropolitan Borough Council by-election in Bredbury Green and Romiley
+Q130382895,GB,2024-10-17,election,2024 Stockport Metropolitan Borough Council by-election in Cheadle West and Gatley
+Q104873510,CA,2024-10-19,election,2024 British Columbia general election
+Q125055898,IQ,2024-10-20,election,2024 Iraqi Kurdistan parliamentary election
+Q125407738,MD,2024-10-20,referendum,2024 Moldovan European Union membership constitutional referendum
+Q130974521,VN,2024-10-21,election,October 2024 Vietnamese presidential election
+Q125727403,MS,2024-10-24,election,2024 Montserratian general election
+Q99013942,KI,2024-10-25,election,2024 Kiribati presidential election
+Q102350982,GE,2024-10-26,election,2024 Georgian parliamentary election
+Q102417555,UY,2024-10-27,election,2024 Uruguayan general election
+Q109383045,JP,2024-10-27,election,50th General Election of the House of Representatives
+Q115376958,CL,2024-10-27,election,2024 Chilean municipal elections
+Q115376959,CL,2024-10-27,election,2024 Chilean regional elections
+Q124296694,BR,2024-10-27,election,2024 Brazilian municipal elections
+Q125955635,CL,2024-10-27,election,2024 Biobío Region municipal elections
+Q127429146,UY,2024-10-27,referendum,2024 Uruguayan constitutional referendum on retirement and pension policy
+Q127809945,BR,2024-10-27,election,Q127809945
+Q128937818,BG,2024-10-27,election,October 2024 Bulgarian parliamentary election
+Q130270250,UY,2024-10-27,referendum,2024 Uruguayan constitutional referendum on nighttime police raids
+Q130349059,UZ,2024-10-27,election,2024 Uzbek parliamentary election
+Q130726988,TR,2024-10-27,election,Q130726988
+Q130744339,LI,2024-10-27,referendum,Q130744339
+Q131010829,JP,2024-10-27,election,Q131010829
+Q83980675,UY,2024-10-27,election,2024 Uruguayan presidential election
+Q84079827,UY,2024-10-27,election,2024 Uruguayan parliamentary election
+Q135932071,CA,2024-10-28,election,2024 Saskatchewan general election in Lumsden-Morse
+Q116449433,BW,2024-10-30,election,2024 Botswana general election
+Q102350381,LT,2024-10-31,election,2024 Lithuanian parliamentary election
+Q130382945,GB,2024-10-31,election,2024 Stockport Metropolitan Borough Council by-election in Bramhall South and Woodford
+Q130383074,GB,2024-10-31,election,2024 Salford City Council by-election in Eccles
+Q130746722,GB,2024-10-31,election,2024 Rochdale Metropolitan Borough Council by-election in North Middleton
+Q131238636,CZ,2024-11-02,referendum,November 2024 Green Party (Czech Republic) leadership election
+Q104821709,MD,2024-11-03,election,2024 Moldovan presidential election
+Q131297979,TR,2024-11-03,election,Q131297979
+Q101110072,US,2024-11-05,election,2024 United States presidential election
+Q102351072,PW,2024-11-05,election,2024 Palauan parliamentary election
+Q102351142,PW,2024-11-05,election,2024 Palauan general election
+Q110130771,US,2024-11-05,election,2024 United States gubernatorial elections
+Q110252005,US,2024-11-05,election,2024 United States elections
+Q115604581,US,2024-11-05,election,2024 United States House of Representatives elections
+Q115802948,US,2024-11-05,election,2024 Vermont gubernatorial election
+Q115813750,US,2024-11-05,election,2024 United States House of Representatives elections in West Virginia
+Q115945749,US,2024-11-05,election,2024 United States House of Representatives elections in Washington
+Q116006951,US,2024-11-05,election,2024 United States House of Representatives elections in New Jersey
+Q116029258,US,2024-11-05,election,2024 United States House of Representatives elections in Illinois
+Q116044653,US,2024-11-05,election,2024 United States House of Representatives elections in New York
+Q116274982,US,2024-11-05,election,2024 United States House of Representatives elections in Indiana
+Q117355413,US,2024-11-05,election,2024 United States House of Representatives elections in Nebraska
+Q117443253,US,2024-11-05,election,2024 United States House of Representatives elections in Georgia
+Q117481196,US,2024-11-05,election,2024 San Francisco mayoral election
+Q117598975,US,2024-11-05,election,2024 United States House of Representatives election in Puerto Rico
+Q117995742,US,2024-11-05,election,2024 West Virginia House of Delegates election
+Q118901740,US,2024-11-05,election,2024 United States House of Representatives elections in Rhode Island
+Q118903154,US,2024-11-05,election,2024 United States House of Representatives elections in Kansas
+Q118904252,US,2024-11-05,election,2024 United States House of Representatives elections in Iowa
+Q118904943,US,2024-11-05,election,2024 United States House of Representatives elections in Connecticut
+Q118943656,US,2024-11-05,election,2024 United States House of Representatives elections in Louisiana
+Q118944963,US,2024-11-05,election,2024 United States House of Representatives election in Delaware
+Q118995680,US,2024-11-05,election,2024 West Virginia Secretary of State election
+Q119285750,US,2024-11-05,election,2024 West Virginia Attorney General election
+Q123532596,US,2024-11-05,election,2024 United States House of Representatives elections in Kentucky
+Q123600972,US,2024-11-05,election,2024 United States Shadow Senator election in the District of Columbia
+Q123663487,US,2024-11-05,election,2024 Council of the District of Columbia election
+Q124061024,US,2024-11-05,election,2024 United States House of Representatives elections in Mississippi
+Q124304382,US,2024-11-05,election,2024 United States House of Representatives elections in Hawaii
+Q124367074,US,2024-11-05,election,2024 United States House of Representatives election in North Dakota
+Q124474301,US,2024-11-05,election,2024 Colorado House of Representatives election
+Q124547939,MP,2024-11-05,election,2024 United States House of Representatives election in Northern Mariana Islands
+Q124571775,US,2024-11-05,election,2024 United States state treasurer elections
+Q124785308,PR,2024-11-05,election,2024 Puerto Rican general election
+Q124854051,VI,2024-11-05,election,2024 United States House of Representatives election in United States Virgin Islands
+Q125121321,US,2024-11-05,election,2024 Salt Lake County mayoral election
+Q126203586,US,2024-11-05,election,2024 Wisconsin's 8th congressional district special election
+Q126415073,US,2024-11-05,election,2024 Minnesota Senate District 45 special election
+Q127179199,PR,2024-11-05,referendum,2024 Puerto Rican status referendum
+Q130364080,US,2024-11-05,referendum,2024 California Proposition 36
+Q130467037,US,2024-11-05,referendum,2024 Alaska Ballot Measure 2
+Q130760647,QA,2024-11-05,referendum,2024 Qatari constitutional referendum
+Q134589613,US,2024-11-05,election,2024 California City mayoral election
+Q60519315,US,2024-11-05,election,2024 United States Senate elections
+Q131143039,CZ,2024-11-09,election,Q131143039
+Q116687026,MU,2024-11-10,election,2024 Mauritian general election
+Q102351194,PW,2024-11-12,election,2024 Palauan presidential election
+Q124333683,LK,2024-11-14,election,2024 Sri Lankan parliamentary election
+Q130581174,AU,2024-11-16,election,2024 Black state by-election
+Q130615680,GA,2024-11-16,referendum,2024 Gabonese constitutional referendum
+Q130288685,SN,2024-11-17,election,2024 Senegalese parliamentary election
+Q106751449,NA,2024-11-27,election,2024 Namibian presidential election
+Q119718141,ID,2024-11-27,election,2024 Indonesian local elections
+Q125960402,ID,2024-11-27,election,2024 Central Java gubernatorial election
+Q125960548,ID,2024-11-27,election,2024 East Java gubernatorial election
+Q125968394,ID,2024-11-27,election,2024 Semarang mayoral election
+Q131325101,TZ,2024-11-27,election,2024 Tanzanian local elections
+Q135297506,ID,2024-11-27,election,2024 Jeneponto's regent general election
+Q136554357,ID,2024-11-27,election,2024 Palangka Raya mayoral election
+Q84035613,NA,2024-11-27,election,2024 Namibian parliamentary election
+Q86345233,IE,2024-11-29,election,2024 Irish general election
+Q109385503,IS,2024-11-30,election,2024 Icelandic parliamentary election
+Q84035192,MU,2024-11-30,election,2024 Mauritian parliamentary election
+Q104033187,RO,2024-12-01,election,2024 Romanian parliamentary election
+Q131228548,JP,2024-12-01,election,Q131228548
+Q136677329,CV,2024-12-01,election,Q136677329
+Q84027698,HR,2024-12-01,election,2024 Croatian presidential election
+Q131389093,AW,2024-12-06,election,2024 Aruban general election
+Q131538491,MU,2024-12-06,election,2024 Mauritian presidential election
+Q84029141,RO,2024-12-06,election,2024 Romanian presidential election
+Q104054170,GH,2024-12-07,election,2024 Ghanaian general election
+Q104054176,GH,2024-12-07,election,2024 Ghanaian parliamentary election
+Q104054192,GH,2024-12-07,election,2024 Ghanaian presidential election
+Q131169978,VA,2024-12-07,election,Consistory - 2024
+Q131186743,PL,2024-12-07,referendum,2024 Civic Coalition presidential primary
+Q131436262,FR,2024-12-08,election,Q131436262
+Q131444268,CH,2024-12-11,election,2024 Swiss presidential election
+Q133271816,DE,2024-12-12,election,Q133271816
+Q116980456,GE,2024-12-14,election,2024 Georgian presidential election
+Q130896205,BO,2024-12-15,election,2024 Bolivian judicial election
+Q131314345,CA,2024-12-16,election,2024 Cloverdale—Langley City federal by-election
+Q22677229,TD,2024-12-29,election,2024 Chadian parliamentary election
+Q100717749,BO,2025-01-01,election,2025 Bolivian parliamentary election
+Q103767106,MM,2025-01-01,election,2025 Myanmar parliamentary election
+Q104776076,CF,2025-01-01,election,2025 Central African presidential election
+Q104776080,NE,2025-01-01,election,2025 Nigerien legislative election
+Q106747083,BF,2025-01-01,election,2025 Burkinabé presidential election
+Q106751664,NE,2025-01-01,election,2025 Nigerien presidential election
+Q106753422,TZ,2025-01-01,election,2025 Tanzanian presidential election
+Q110160192,HN,2025-01-01,election,2025 Honduran legislative election
+Q110160228,HN,2025-01-01,election,2025 Honduran presidential election
+Q110160739,CL,2025-01-01,election,2025 Chilean parliamentary election
+Q110160824,QA,2025-01-01,election,2025 Qatari legislative election
+Q113574091,XK,2025-01-01,election,February 2025 Kosovan parliamentary election
+Q124705661,EC,2025-01-01,election,2025 Ecuadorian general election
+Q130966144,CZ,2025-01-01,election,2025 Brno-City by-election
+Q131374880,US,2025-01-01,election,2025 United States House of Representatives elections
+Q131680755,FR,2025-01-01,election,Q131680755
+Q132744608,SE,2025-01-01,election,2025 Centre Party (Sweden) leadership election
+Q132745025,NA,2025-01-01,election,Q132745025
+Q132745070,NA,2025-01-01,election,Q132745070
+Q134234296,SE,2025-01-01,election,Q134234296
+Q134693455,PT,2025-01-01,election,2025 Portuguese Socialist Party leadership election
+Q135581038,DE,2025-01-01,election,Q135581038
+Q136165139,GB,2025-01-01,election,2025 Labour Party deputy leadership election
+Q136479231,MX,2025-01-01,election,Q136479231
+Q136504922,SE,2025-01-01,election,Q136504922
+Q136808015,FR,2025-01-01,election,Q136808015
+Q84027154,AM,2025-01-01,election,next Armenian presidential election
+Q86343179,KM,2025-01-01,election,next Comorian parliamentary election
+Q86343481,TG,2025-01-01,election,next Togolese presidential election
+Q99018369,TT,2025-01-01,election,2025 Trinidad and Tobago general election
+Q126478386,KM,2025-01-12,election,2025 Comorian parliamentary election
+Q137558384,HU,2025-01-12,election,Q137558384
+Q131840502,AG,2025-01-14,election,2025 St. Peter by-election
+Q131545093,VU,2025-01-16,election,2025 Vanuatuan general election
+Q137719539,US,2025-01-17,referendum,2025 January Republican National Committee chairmanship election
+Q131471313,GR,2025-01-25,election,2025 Greek presidential election
+Q99015824,BY,2025-01-26,election,2025 Belarusian presidential election
+Q131783028,US,2025-01-28,election,2025 Minnesota Senate District 60 special election
+Q131503272,AZ,2025-01-29,election,2025 Azerbaijan municipal elections
+Q131858633,AZ,2025-01-29,election,2025 Azerbaijan municipal elections
+Q124803331,BR,2025-02-01,election,2025 President of the Chamber of Deputies of Brazil election
+Q105556112,LI,2025-02-02,election,2025 Liechtenstein parliamentary election
+Q136697543,IN,2025-02-05,election,2025 Milkipur by-election
+Q131447752,TC,2025-02-07,election,2025 Turks and Caicos Islands general election
+Q131425523,AU,2025-02-08,election,2025 Prahran state by-election
+Q131605831,AU,2025-02-08,election,2025 Werribee state by-election
+Q132295852,IN,2025-02-11,election,2025 Bilaspur Municipal Corporation election
+Q132560671,TG,2025-02-15,election,2025 togolese senate election
+Q131745608,KM,2025-02-16,election,Q131745608
+Q112631086,IL,2025-02-18,election,2024 Israeli municipal elections
+Q131933391,BM,2025-02-18,election,2025 Bermudian general election
+Q108761711,DE,2025-02-23,election,2025 German federal election
+Q132184366,AI,2025-02-26,election,2025 Anguillian general election
+Q131759062,CH,2025-03-01,election,2025 Swiss Federal Council election
+Q133015256,SH,2025-03-05,election,2025 Tristan da Cunha general election
+Q131689733,CA,2025-03-09,election,2025 Liberal Party of Canada leadership election
+Q131923945,DZ,2025-03-09,election,2025 Algerian Council of the Nation election
+Q131418250,GL,2025-03-11,election,2025 Greenlandic general election
+Q132369978,US,2025-03-11,election,2025 Mississippi House of Representatives District 23 special election
+Q102350299,BZ,2025-03-12,election,2025 Belizean parliamentary election
+Q126029205,BZ,2025-03-12,election,2025 Belizean general election
+Q133539783,UG,2025-03-13,election,2025 Kawempe North by-election
+Q133751634,CA,2025-03-18,election,2025 Transcona provincial by-election
+Q132004985,TR,2025-03-23,referendum,2025 Republican People's Party presidential primaries
+Q133844216,US,2025-03-25,election,2025 Pennsylvania Senate District 36 special election
+Q100718155,GN,2025-03-31,election,2025 Guinean legislative election
+Q100718444,ML,2025-03-31,election,2020 Malian parliamentary election
+Q100719406,TJ,2025-03-31,election,2025 Tajik parliamentary election
+Q131345242,US,2025-04-01,election,2025 Florida's 6th congressional district special election
+Q131353891,US,2025-04-01,election,2025 Florida's 1st congressional district special election
+Q132235719,GL,2025-04-01,election,2025 Greenlandic local elections
+Q132146795,CA,2025-04-05,election,2025 Vancouver City Council by-election
+Q133821308,US,2025-04-08,election,"2025 Columbia, Missouri mayoral election"
+Q133267445,GB,2025-04-10,election,2025 Tameside Metropolitan Borough Council by-election in Longdendale
+Q84030903,GA,2025-04-12,election,2025 Gabonese presidential election
+Q122012625,FI,2025-04-13,election,2025 Finnish county elections
+Q122014350,FI,2025-04-13,election,2025 Finnish municipal elections
+Q131449348,FI,2025-04-13,election,Q131449348
+Q134287004,US,2025-04-15,election,2025 Mississippi Senate District 18 special election
+Q134376285,US,2025-04-22,election,2025 Connecticut House of Representatives District 113 special election
+Q134389551,LR,2025-04-22,election,2025 Nimba County Senate by-election
+Q132677326,MY,2025-04-26,election,2025 Ayer Kuning by-election
+Q108239356,TT,2025-04-28,election,2025 Trinidad and Tobago general election
+Q108803782,CA,2025-04-28,election,2025 Canadian federal election
+Q133799943,CA,2025-04-28,election,2025 Canadian federal election in British Columbia
+Q133802759,CA,2025-04-28,election,2025 Canadian federal election in Ontario
+Q133821365,CA,2025-04-28,election,2025 Canadian federal election in Alberta
+Q133821376,CA,2025-04-28,election,2025 Canadian federal election in Newfoundland and Labrador
+Q134877129,CA,2025-04-28,election,2025 Canadian federal election in Saskatchewan
+Q133844156,US,2025-04-29,election,2025 Minnesota Senate District 6 special election
+Q131443239,KY,2025-04-30,election,2025 Caymanian general election
+Q133971990,GB,2025-04-30,referendum,2025 Caymanian referendum
+Q116186012,GB,2025-05-01,election,2025 United Kingdom local elections
+Q124481157,GB,2025-05-01,election,2025 Cornwall Council election
+Q133254738,GB,2025-05-01,election,2025 Runcorn and Helsby by-election
+Q133885943,GB,2025-05-01,election,2025 Rochdale Metropolitan Borough Council by-election in Balderstone and Kirkholt
+Q133999044,VA,2025-05-01,election,2025 conclave
+Q136206721,SG,2025-05-01,election,2025 Singaporean General Election in Hougang Single Member Constituency
+Q136206981,SG,2025-05-01,election,2025 Singaporean General Election in Jalan Kayu Single Member Constituency
+Q136207024,SG,2025-05-01,election,2025 Singaporean General Election in Jurong Central Single Member Constituency
+Q136221195,SG,2025-05-01,election,2025 Singaporean General Election in Aljunied Group Representation Constituency
+Q136231128,SG,2025-05-01,election,2025 Singaporean General Election in Ang Mo Kio Group Representation Constituency
+Q136231200,SG,2025-05-01,election,2025 Singaporean General Election in Bishan-Toa Payoh Group Representation Constituency
+Q100719175,SG,2025-05-03,election,2025 Singaporean general election
+Q112317546,AU,2025-05-03,election,2025 Australian federal election
+Q125747133,TG,2025-05-03,election,2025 Togolese presidential election
+Q133799590,AU,2025-05-03,election,2025 Australian Senate election
+Q131398188,RO,2025-05-04,election,2025 Romanian presidential election
+Q116287501,LK,2025-05-06,election,2025 Sri Lankan local elections
+Q134392213,JP,2025-05-09,election,2025 Suffragette Representative Election
+Q106625095,AL,2025-05-11,election,2025 Albanian parliamentary election
+Q117289270,UY,2025-05-11,election,2025 Uruguayan municipal elections
+Q133854212,SI,2025-05-11,referendum,Slovenian artist pensions referendum. 2025
+Q112629690,PH,2025-05-12,election,2025 Philippine Senate election
+Q112629738,PH,2025-05-12,election,2025 Philippine House of Representatives elections
+Q124362241,PH,2025-05-12,election,2025 Philippine general election
+Q138048815,PH,2025-05-12,election,"2025 San Fernando, Pampanga, local elections"
+Q139890410,PH,2025-05-12,election,2025 Pangasinan gubernatorial election
+Q23728457,PH,2025-05-12,election,2025 Philippine local elections
+Q134354073,AU,2025-05-13,election,2025 Liberal Party of Australia leadership election
+Q125201429,PT,2025-05-18,election,2025 Portuguese legislative election
+Q132444963,HR,2025-05-18,election,2025 Zagreb local elections
+Q134503320,FR,2025-05-18,election,2025 The Republicans (France) leadership election
+Q142100647,SE,2025-05-18,election,Q142100647
+Q134590127,US,2025-05-20,election,2025 New York Senate District 22 special election
+Q134429167,BB,2025-05-21,election,2025 St. James North by-election
+Q126193068,AU,2025-05-24,election,2025 Tasmanian Legislative Council periodic election
+Q104032361,VE,2025-05-25,election,2025 Venezuelan parliamentary election
+Q131362330,SR,2025-05-25,election,2025 Surinamese general election
+Q99011044,BI,2025-05-31,election,2025 Burundian general election
+Q99011194,BI,2025-05-31,election,2025 Burundian legislative election
+Q99011376,BI,2025-05-31,election,2025 Burundian presidential election
+Q99017064,SR,2025-05-31,election,2025 Surinamese parliamentary election
+Q106570612,PL,2025-06-01,election,2025 Polish presidential election
+Q117433900,KR,2025-06-03,election,2025 South Korean presidential election
+Q131367290,US,2025-06-03,election,2025 Gulfport mayoral election
+Q125635437,BI,2025-06-05,election,2025 Burundian parliamentary election
+Q133860850,GB,2025-06-05,election,"2025 Hamilton, Larkhall and Stonehouse by-election"
+Q131544738,LV,2025-06-07,election,2025 Latvian municipal elections
+Q134515598,RS,2025-06-08,election,2025 Serbian local elections
+Q131680403,IT,2025-06-09,election,2025 Italian local elections
+Q132800534,IT,2025-06-09,referendum,2025 Italian referendum
+Q134836540,CA,2025-06-23,election,2025 Edmonton-Strathcona provincial by-election
+Q134882969,CA,2025-06-23,election,2025 Edmonton-Ellerslie provincial by-election
+Q134882971,CA,2025-06-23,election,2025 Olds-Didsbury-Three Hills provincial by-election
+Q134286557,CL,2025-06-29,election,2025 Unity for Chile presidential primaries
+Q112516856,IN,2025-07-01,election,2025 Rajya Sabha elections
+Q135228476,SR,2025-07-06,election,Q135228476
+Q135488477,TG,2025-07-17,election,Q135488477
+Q125699140,JP,2025-07-20,election,2025 Japanese House of Councillors election
+Q135315667,TW,2025-07-26,referendum,2025 Taiwanese recall votes
+Q99007047,KN,2025-07-31,election,2025 Saint Kitts and Nevis general election
+Q134470154,GB,2025-08-01,election,2025 Green Party of England and Wales leadership election
+Q135961138,PL,2025-08-01,election,2025 Zabrze mayoral election
+Q135741948,EG,2025-08-04,election,2025 Egyptian Senate election
+Q135796642,CA,2025-08-12,election,2025 Charlottetown-Hillsborough Park provincial by-election
+Q135796643,CA,2025-08-12,election,2025 Brackley-Hunter River provincial by-election
+Q100717731,BO,2025-08-17,election,2025 Bolivian general election
+Q134488374,CA,2025-08-18,election,2025 Battle River—Crowfoot federal by-election
+Q134570885,TW,2025-08-23,referendum,2025 Taiwanese referendum
+Q131412120,US,2025-08-26,election,"2025 Birmingham, Alabama mayoral election"
+Q134604111,WS,2025-08-29,election,2025 Samoan general election
+Q116442752,JM,2025-09-01,election,2025 Jamaican general election
+Q134510244,TR,2025-09-01,election,Q134510244
+Q99017478,GY,2025-09-01,election,2025 Guyanese general election
+Q133837317,GB,2025-09-03,election,2025 Saint Helena general election
+Q132472780,NO,2025-09-08,election,2025 Norwegian Sámi parliamentary election
+Q97203837,NO,2025-09-08,election,2025 Norwegian parliamentary election
+Q134729981,US,2025-09-09,election,2025 Virginia's 11th congressional district special election
+Q135441650,IN,2025-09-09,election,2025 Indian vice presidential election
+Q135912044,BD,2025-09-09,election,2025 DUCSU election
+Q131861054,RU,2025-09-14,election,2025 Kamchatka Krai gubernatorial election
+Q133306067,MO,2025-09-14,election,2025 Macanese legislative election
+Q137850322,PM,2025-09-14,election,2025 Saint-Pierre-et-Miquelon senatorial by-election
+Q125212807,MW,2025-09-16,election,2025 Malawian presidential election
+Q125635401,MW,2025-09-16,election,2025 Malawian general election
+Q122418236,SE,2025-09-21,election,2025 Swedish Church Assembly elections
+Q133800909,GN,2025-09-21,referendum,2025 Guinean constitutional referendum
+Q133281425,US,2025-09-23,election,2025 Arizona's 7th congressional district special election
+Q102351529,SC,2025-09-25,election,2025 Seychellois parliamentary election
+Q135918912,CH,2025-09-25,referendum,Q135918912
+Q136014326,GB,2025-09-25,election,2025 Manchester City Council by-election in Woodhouse Park
+Q106752992,SC,2025-09-27,election,2025 Seychellois presidential election
+Q125635420,SC,2025-09-27,election,2025 Seychellois general election
+Q110119310,MD,2025-09-28,election,2025 Moldovan parliamentary election
+Q136405214,DE,2025-09-28,election,2025 Cologne mayoral election
+Q102351276,JM,2025-09-30,election,2025 Jamaican parliamentary election
+Q135983798,GB,2025-10-02,election,2025 Wigan Metropolitan Borough Council by-election in Wigan Central
+Q108882455,CZ,2025-10-04,election,2025 Czech legislative election
+Q133568392,GE,2025-10-04,election,2025 Georgian local elections
+Q136136312,JP,2025-10-04,election,2025 Liberal Democratic Party (Japan) presidential election
+Q135265257,SY,2025-10-05,election,2025 Syrian parliamentary election
+Q142100654,SE,2025-10-05,election,Q142100654
+Q111592998,BB,2025-10-07,election,2025 Barbadian presidential election
+Q115632249,NR,2025-10-11,election,2025 Nauruan parliamentary election
+Q130467052,NZ,2025-10-11,election,2025 New Zealand local elections
+Q131127475,NZ,2025-10-11,referendum,2025 New Zealand local referendums on Māori wards and constituencies
+Q136235997,NZ,2025-10-11,election,2025 New Zealand regional council elections
+Q136432136,NZ,2025-10-11,election,Results of the 2025 New Zealand territorial authority elections in the West Coast
+Q136479456,NR,2025-10-11,election,2025 Nauruan constitutional referendum
+Q120913144,PT,2025-10-12,election,2025 Portuguese local elections
+Q135509593,PT,2025-10-12,election,2025 Moita local elections
+Q135509594,PT,2025-10-12,election,2025 Coruche local elections
+Q135509595,PT,2025-10-12,election,2025 Lousada local elections
+Q135509596,PT,2025-10-12,election,2025 Oliveira do Hospital local elections
+Q135509597,PT,2025-10-12,election,2025 Penamacor local elections
+Q135509598,PT,2025-10-12,election,2025 Campo Maior local elections
+Q135509599,PT,2025-10-12,election,2025 Idanha-a-Nova local elections
+Q135509600,PT,2025-10-12,election,2025 Gavião local elections
+Q135509601,PT,2025-10-12,election,2025 Lousã local elections
+Q135509602,PT,2025-10-12,election,2025 Vila do Corvo local elections
+Q135509603,PT,2025-10-12,election,2025 São João da Pesqueira local elections
+Q135509605,PT,2025-10-12,election,2025 Velas local elections
+Q135509606,PT,2025-10-12,election,2025 Tabuaço local elections
+Q135509607,PT,2025-10-12,election,2025 Castanheira de Pera local elections
+Q135509611,PT,2025-10-12,election,2025 Setúbal local elections
+Q135509616,PT,2025-10-12,election,2025 Póvoa de Lanhoso local elections
+Q135509618,PT,2025-10-12,election,2025 Povoação local elections
+Q135509620,PT,2025-10-12,election,2025 Azambuja local elections
+Q135509621,PT,2025-10-12,election,2025 Batalha local elections
+Q135509623,PT,2025-10-12,election,2025 Palmela local elections
+Q135509624,PT,2025-10-12,election,2025 Mortágua local elections
+Q135509625,PT,2025-10-12,election,2025 Resende local elections
+Q135509626,PT,2025-10-12,election,2025 Mondim de Basto local elections
+Q135509634,PT,2025-10-12,election,2025 Guimarães local elections
+Q135509637,PT,2025-10-12,election,2025 Miranda do Corvo local elections
+Q135509638,PT,2025-10-12,election,2025 Vagos local elections
+Q135509639,PT,2025-10-12,election,2025 Arganil local elections
+Q135509640,PT,2025-10-12,election,2025 Alter do Chão local elections
+Q135509641,PT,2025-10-12,election,2025 Alvito local elections
+Q135509642,PT,2025-10-12,election,2025 Montemor-o-Novo local elections
+Q135509643,PT,2025-10-12,election,2025 Vieira do Minho local elections
+Q135509644,PT,2025-10-12,election,2025 Vidigueira local elections
+Q135509645,PT,2025-10-12,election,2025 Vila Verde local elections
+Q135509646,PT,2025-10-12,election,2025 Nordeste local elections
+Q135509647,PT,2025-10-12,election,2025 Portel local elections
+Q135509648,PT,2025-10-12,election,2025 Alcobaça local elections
+Q135509649,PT,2025-10-12,election,2025 Nelas local elections
+Q135509650,PT,2025-10-12,election,2025 Alijó local elections
+Q135509651,PT,2025-10-12,election,2025 Vila Real de Santo António local elections
+Q135509652,PT,2025-10-12,election,2025 Montalegre local elections
+Q135509653,PT,2025-10-12,election,2025 Santa Comba Dão local elections
+Q135509654,PT,2025-10-12,election,2025 Borba local elections
+Q135509655,PT,2025-10-12,election,2025 Torres Vedras local elections
+Q135509656,PT,2025-10-12,election,2025 Paços de Ferreira local elections
+Q135509657,PT,2025-10-12,election,2025 Madalena local elections
+Q135509658,PT,2025-10-12,election,2025 Vila de Rei local elections
+Q135509659,PT,2025-10-12,election,2025 Santa Cruz das Flores local elections
+Q135509660,PT,2025-10-12,election,2025 Vila do Porto local elections
+Q135509661,PT,2025-10-12,election,2025 Sesimbra local elections
+Q135509662,PT,2025-10-12,election,2025 Lajes do Pico local elections
+Q135509663,PT,2025-10-12,election,2025 Manteigas local elections
+Q135509664,PT,2025-10-12,election,2025 Aljezur local elections
+Q135509665,PT,2025-10-12,election,2025 Alcanena local elections
+Q135509675,PT,2025-10-12,election,2025 Beja local elections
+Q135509680,PT,2025-10-12,election,2025 Celorico da Beira local elections
+Q135509683,PT,2025-10-12,election,2025 Mogadouro local elections
+Q135509684,PT,2025-10-12,election,2025 Esposende local elections
+Q135509685,PT,2025-10-12,election,2025 Ferreira do Alentejo local elections
+Q135509686,PT,2025-10-12,election,2025 Loulé local elections
+Q135509687,PT,2025-10-12,election,2025 Gouveia local elections
+Q135509688,PT,2025-10-12,election,2025 Valpaços local elections
+Q135509690,PT,2025-10-12,election,2025 Monforte local elections
+Q135509699,PT,2025-10-12,election,2025 Proença-a-Nova local elections
+Q135509700,PT,2025-10-12,election,2025 Ribeira de Pena local elections
+Q135509707,PT,2025-10-12,election,2025 Mêda local elections
+Q135509708,PT,2025-10-12,election,2025 Sabugal local elections
+Q135509709,PT,2025-10-12,election,2025 Fundão local elections
+Q135509711,PT,2025-10-12,election,2025 São Roque do Pico local elections
+Q135509712,PT,2025-10-12,election,2025 Lajes das Flores local elections
+Q135509713,PT,2025-10-12,election,2025 Entroncamento local elections
+Q135509715,PT,2025-10-12,election,2025 Reguengos de Monsaraz local elections
+Q135509716,PT,2025-10-12,election,2025 Vila Nova da Barquinha local elections
+Q135509717,PT,2025-10-12,election,2025 Vila Velha de Ródão local elections
+Q135509718,PT,2025-10-12,election,2025 Ferreira do Zêzere local elections
+Q135509725,PT,2025-10-12,election,2025 Vila do Bispo local elections
+Q135509729,PT,2025-10-12,election,2025 Mealhada local elections
+Q135509730,PT,2025-10-12,election,2025 Oliveira do Bairro local elections
+Q135509732,PT,2025-10-12,election,2025 Portimão local elections
+Q135509733,PT,2025-10-12,election,2025 Mirandela local elections
+Q135509734,PT,2025-10-12,election,2025 Macedo de Cavaleiros local elections
+Q135509735,PT,2025-10-12,election,2025 Vila Flor local elections
+Q135509736,PT,2025-10-12,election,2025 Penela local elections
+Q135509737,PT,2025-10-12,election,2025 Almeida local elections
+Q135509738,PT,2025-10-12,election,2025 Câmara de Lobos local elections
+Q135509739,PT,2025-10-12,election,2025 Trancoso local elections
+Q135509740,PT,2025-10-12,election,2025 Machico local elections
+Q135509741,PT,2025-10-12,election,2025 Olhão local elections
+Q135509742,PT,2025-10-12,election,2025 Silves local elections
+Q135509744,PT,2025-10-12,election,2025 Ourém local elections
+Q135509745,PT,2025-10-12,election,2025 Carregal do Sal local elections
+Q135509746,PT,2025-10-12,election,2025 Santo Tirso local elections
+Q135509747,PT,2025-10-12,election,2025 Sátão local elections
+Q135509748,PT,2025-10-12,election,2025 Pombal local elections
+Q135509749,PT,2025-10-12,election,2025 Castelo de Vide local elections
+Q135509750,PT,2025-10-12,election,2025 Penacova local elections
+Q135509751,PT,2025-10-12,election,2025 Santa Marta de Penaguião local elections
+Q135509752,PT,2025-10-12,election,2025 Tábua local elections
+Q135509754,PT,2025-10-12,election,2025 Tarouca local elections
+Q135509755,PT,2025-10-12,election,2025 Redondo local elections
+Q135509756,PT,2025-10-12,election,2025 Mação local elections
+Q135509757,PT,2025-10-12,election,2025 Pedrógão Grande local elections
+Q135509758,PT,2025-10-12,election,2025 Calheta local elections
+Q135509760,PT,2025-10-12,election,2025 Praia da Vitória local elections
+Q135509764,PT,2025-10-12,election,2025 Ílhavo local elections
+Q135509765,PT,2025-10-12,election,2025 Estarreja local elections
+Q135509766,PT,2025-10-12,election,2025 Castelo de Paiva local elections
+Q135509767,PT,2025-10-12,election,2025 Alvaiázere local elections
+Q135509769,PT,2025-10-12,election,2025 Cabeceiras de Basto local elections
+Q135509770,PT,2025-10-12,election,2025 Carrazeda de Ansiães local elections
+Q135509773,PT,2025-10-12,election,2025 São João da Madeira local elections
+Q135509774,PT,2025-10-12,election,2025 Vila Franca do Campo local elections
+Q135509775,PT,2025-10-12,election,2025 Ribeira Grande local elections
+Q135509776,PT,2025-10-12,election,2025 Arraiolos local elections
+Q135509778,PT,2025-10-12,election,2025 Santana local elections
+Q135509781,PT,2025-10-12,election,2025 Cinfães local elections
+Q135509783,PT,2025-10-12,election,2025 Felgueiras local elections
+Q135509784,PT,2025-10-12,election,2025 Rio Maior local elections
+Q135509785,PT,2025-10-12,election,2025 Chamusca local elections
+Q135509786,PT,2025-10-12,election,2025 Sernancelhe local elections
+Q135509787,PT,2025-10-12,election,2025 Mira local elections
+Q135509788,PT,2025-10-12,election,2025 Oleiros local elections
+Q135509789,PT,2025-10-12,election,2025 Grândola local elections
+Q135509790,PT,2025-10-12,election,2025 Alpiarça local elections
+Q135509791,PT,2025-10-12,election,2025 Sousel local elections
+Q135509800,PT,2025-10-12,election,2025 Barreiro local elections
+Q135509808,PT,2025-10-12,election,2025 Ribeira Brava local elections
+Q135509809,PT,2025-10-12,election,2025 Caldas da Rainha local elections
+Q135509812,PT,2025-10-12,election,2025 Ovar local elections
+Q135509813,PT,2025-10-12,election,2025 Monção local elections
+Q135509814,PT,2025-10-12,election,2025 Figueira da Foz local elections
+Q135509815,PT,2025-10-12,election,2025 Paredes de Coura local elections
+Q135509819,PT,2025-10-12,election,2025 Alfândega da Fé local elections
+Q135509820,PT,2025-10-12,election,2025 Celorico de Basto local elections
+Q135509821,PT,2025-10-12,election,2025 Cuba local elections
+Q135509822,PT,2025-10-12,election,2025 Tomar local elections
+Q135509823,PT,2025-10-12,election,2025 Figueira de Castelo Rodrigo local elections
+Q135509824,PT,2025-10-12,election,2025 Fronteira local elections
+Q135509825,PT,2025-10-12,election,2025 Santa Cruz local elections
+Q135509826,PT,2025-10-12,election,2025 Arruda dos Vinhos local elections
+Q135509827,PT,2025-10-12,election,2025 Lagos local elections
+Q135509828,PT,2025-10-12,election,2025 Penalva do Castelo local elections
+Q135509829,PT,2025-10-12,election,2025 Avis local elections
+Q135509831,PT,2025-10-12,election,2025 Moimenta da Beira local elections
+Q135509832,PT,2025-10-12,election,2025 Aljustrel local elections
+Q135509833,PT,2025-10-12,election,2025 Penafiel local elections
+Q135509834,PT,2025-10-12,election,2025 Lagoa local elections
+Q135509835,PT,2025-10-12,election,2025 Lourinhã local elections
+Q135509836,PT,2025-10-12,election,2025 Vendas Novas local elections
+Q135509837,PT,2025-10-12,election,2025 Santiago do Cacém local elections
+Q135509838,PT,2025-10-12,election,2025 Santa Cruz da Graciosa local elections
+Q135509839,PT,2025-10-12,election,2025 Porto de Mós local elections
+Q135509840,PT,2025-10-12,election,2025 Vila Viçosa local elections
+Q135509841,PT,2025-10-12,election,2025 Viana do Alentejo local elections
+Q135509842,PT,2025-10-12,election,2025 Espinho local elections
+Q135509843,PT,2025-10-12,election,2025 Seia local elections
+Q135509844,PT,2025-10-12,election,2025 Mora local elections
+Q135509845,PT,2025-10-12,election,2025 Marco de Canaveses local elections
+Q135509846,PT,2025-10-12,election,2025 Sertã local elections
+Q135509848,PT,2025-10-12,election,2025 Porto Moniz local elections
+Q135509849,PT,2025-10-12,election,2025 Sines local elections
+Q135509852,PT,2025-10-12,election,2025 Oliveira de Azeméis local elections
+Q135509853,PT,2025-10-12,election,2025 Góis local elections
+Q135509854,PT,2025-10-12,election,2025 Vila Nova de Poiares local elections
+Q135509855,PT,2025-10-12,election,2025 Ponte de Lima local elections
+Q135509856,PT,2025-10-12,election,2025 Arcos de Valdevez local elections
+Q135509857,PT,2025-10-12,election,2025 Ponte da Barca local elections
+Q135509858,PT,2025-10-12,election,2025 Vila Nova de Foz Côa local elections
+Q135509859,PT,2025-10-12,election,2025 Serpa local elections
+Q135509860,PT,2025-10-12,election,2025 Torre de Moncorvo local elections
+Q135509862,PT,2025-10-12,election,2025 Ansião local elections
+Q135509868,PT,2025-10-12,election,2025 Paredes local elections
+Q135509869,PT,2025-10-12,election,2025 Sardoal local elections
+Q135509870,PT,2025-10-12,election,2025 Fornos de Algodres local elections
+Q135509871,PT,2025-10-12,election,2025 Figueiró dos Vinhos local elections
+Q135509874,PT,2025-10-12,election,2025 Calheta local elections
+Q135509875,PT,2025-10-12,election,2025 Tondela local elections
+Q135509876,PT,2025-10-12,election,2025 Belmonte local elections
+Q135509877,PT,2025-10-12,election,2025 Penedono local elections
+Q135509878,PT,2025-10-12,election,2025 Pinhel local elections
+Q135509879,PT,2025-10-12,election,2025 Almodôvar local elections
+Q135509880,PT,2025-10-12,election,2025 Pampilhosa da Serra local elections
+Q135509881,PT,2025-10-12,election,2025 Mourão local elections
+Q135509882,PT,2025-10-12,election,2025 Crato local elections
+Q135509883,PT,2025-10-12,election,2025 Mesão Frio local elections
+Q135509895,PT,2025-10-12,election,2025 Lagoa local elections
+Q135509903,PT,2025-10-12,election,2025 Barrancos local elections
+Q135509908,PT,2025-10-12,election,2025 Terras de Bouro local elections
+Q135509909,PT,2025-10-12,election,2025 Vimioso local elections
+Q136541153,KZ,2025-10-12,election,2025 Semey akim election
+Q83965747,CM,2025-10-12,election,2025 Cameroonian presidential election
+Q136503306,NR,2025-10-14,election,2025 Nauruan presidential election
+Q136085182,GB,2025-10-16,election,2025 Trafford Metropolitan Borough Council by-election in Broadheath
+Q134287142,TW,2025-10-18,election,2025 Kuomintang chairmanship election
+Q135483694,GA,2025-10-18,election,2025 Gabonese parliamentary election
+Q100717775,BO,2025-10-19,election,2025 Bolivian presidential election
+Q132167309,EE,2025-10-19,election,2025 Estonian municipal elections
+Q135990437,GB,2025-10-23,election,2025 Caerphilly by-election
+Q84027875,IE,2025-10-24,election,2025 Irish presidential election
+Q106747494,CI,2025-10-25,election,2025 Ivorian presidential election
+Q136718162,MV,2025-10-25,referendum,2025 Addu referendum
+Q125635411,TZ,2025-10-29,election,2025 Tanzanian general election
+Q102351371,TZ,2025-10-31,election,2025 Tanzanian parliamentary election
+Q133212410,CA,2025-11-02,election,2025 Quebec municipal elections
+Q135228344,CA,2025-11-02,election,2025 Lévis municipal election
+Q137723597,CA,2025-11-02,election,Q137723597
+Q137723599,CA,2025-11-02,election,Q137723599
+Q137723600,CA,2025-11-02,election,Q137723600
+Q137723601,CA,2025-11-02,election,Q137723601
+Q137723602,CA,2025-11-02,election,Q137723602
+Q137723603,CA,2025-11-02,election,Q137723603
+Q137723604,CA,2025-11-02,election,Q137723604
+Q137723605,CA,2025-11-02,election,Q137723605
+Q137723606,CA,2025-11-02,election,Q137723606
+Q137723607,CA,2025-11-02,election,Q137723607
+Q137723608,CA,2025-11-02,election,Q137723608
+Q137723610,CA,2025-11-02,election,Q137723610
+Q137723611,CA,2025-11-02,election,Q137723611
+Q137723612,CA,2025-11-02,election,Q137723612
+Q137723613,CA,2025-11-02,election,Q137723613
+Q137723614,CA,2025-11-02,election,Q137723614
+Q137723615,CA,2025-11-02,election,Q137723615
+Q137723616,CA,2025-11-02,election,Q137723616
+Q137723617,CA,2025-11-02,election,Q137723617
+Q137723618,CA,2025-11-02,election,Q137723618
+Q137723619,CA,2025-11-02,election,Q137723619
+Q137723620,CA,2025-11-02,election,Q137723620
+Q137723621,CA,2025-11-02,election,Q137723621
+Q137723622,CA,2025-11-02,election,Q137723622
+Q137723623,CA,2025-11-02,election,Q137723623
+Q137723624,CA,2025-11-02,election,Q137723624
+Q137723625,CA,2025-11-02,election,Q137723625
+Q137723626,CA,2025-11-02,election,Q137723626
+Q137723627,CA,2025-11-02,election,Q137723627
+Q137723628,CA,2025-11-02,election,Q137723628
+Q137723630,CA,2025-11-02,election,Q137723630
+Q137723631,CA,2025-11-02,election,Q137723631
+Q137723632,CA,2025-11-02,election,Q137723632
+Q137723633,CA,2025-11-02,election,Q137723633
+Q137723634,CA,2025-11-02,election,Q137723634
+Q137723635,CA,2025-11-02,election,Q137723635
+Q137723636,CA,2025-11-02,election,Q137723636
+Q137723637,CA,2025-11-02,election,Q137723637
+Q137723638,CA,2025-11-02,election,Q137723638
+Q137723640,CA,2025-11-02,election,Q137723640
+Q137723641,CA,2025-11-02,election,Q137723641
+Q110174239,US,2025-11-04,election,2025 United States gubernatorial elections
+Q134303479,US,2025-11-04,election,2025 Mississippi State Senate special election
+Q134437677,US,2025-11-04,election,2025 Helena mayoral election
+Q135880917,US,2025-11-05,referendum,Election Rigging Response Act
+Q135976629,CA,2025-11-08,election,2025 Québec solidaire co-spokesperson election
+Q102350815,EG,2025-11-10,election,2025 Egyptian parliamentary election
+Q110160763,IQ,2025-11-11,election,2025 Iraqi parliamentary election
+Q114066111,CL,2025-11-16,election,2025 Chilean general election
+Q136722981,EC,2025-11-16,referendum,Q136722981
+Q117820584,DK,2025-11-18,election,2025 Danish local elections
+Q131328014,DK,2025-11-18,election,Q131328014
+Q135448150,DK,2025-11-18,election,Q135448150
+Q125747136,TO,2025-11-20,election,2025 Tongan general election
+Q136522199,GB,2025-11-20,election,2025 Trafford Metropolitan Borough Council by-election in Hale
+Q136840461,SI,2025-11-23,referendum,2025 Slovenian assisted dying referendum
+Q132745349,NA,2025-11-26,election,2025 Namibian local and regional elections
+Q137369796,AU,2025-11-29,referendum,2025 Snowy Valleys Council de-amalgamation referendum
+Q102351453,BF,2025-11-30,election,2025 Burkinabé parliamentary election
+Q103768254,VC,2025-11-30,election,2025 Vincentian general election
+Q110160181,HN,2025-11-30,election,2025 Honduran general election
+Q127602071,CH,2025-11-30,referendum,Q127602071
+Q131418263,KG,2025-11-30,election,2025 Kyrgyz parliamentary election
+Q136352589,CH,2025-11-30,referendum,Q136352589
+Q136595426,PE,2025-11-30,referendum,2025 Peruvian Aprista Party presidential primary
+Q108501833,LC,2025-12-01,election,2025 Saint Lucian general election
+Q132132498,HK,2025-12-07,election,2025 Hong Kong legislative election
+Q139548648,JP,2025-12-08,election,Q139548648
+Q137168620,IN,2025-12-09,election,2025 Thiruvananthapuram Municipal Corporation election
+Q137427387,CH,2025-12-10,election,Q137427387
+Q110661097,FK,2025-12-11,election,2025 Falkland Islands general election
+Q137126657,GB,2025-12-11,election,2025 Falkland Islands general election in Camp
+Q137126674,GB,2025-12-11,election,2025 Falkland Islands general election in Stanley
+Q106515089,CI,2025-12-27,election,2025 Ivorian parliamentary election
+Q104771495,CF,2025-12-28,election,2025 Central African general election
+Q106747591,GN,2025-12-28,election,2026 Guinean presidential election
+Q110362982,MM,2025-12-28,election,next Myanmar general election
+Q136881555,XK,2025-12-28,election,December 2025 Kosovan parliamentary election
 Q104771478,CY,2026-01-01,election,2026 Cypriot legislative election
 Q106555011,XK,2026-01-01,election,2026 Kosovan presidential election
 Q106747355,DJ,2026-01-01,election,2026 Djiboutian presidential election
