@@ -167,10 +167,16 @@ ESSAIS = {
                               "la binomiale négative aussi ; le comptage des fenêtres passées reste le meilleur",
                    "objet": "lognormale (queue lourde) contre le taux du bot, morts UCDP au-dessus du quantile 90 %",
                    "doc": "preenregistrements/geo-math.md"},
-    "front_diffusion": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
+    "front_diffusion": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "clos", "clos_le": "2026-11-17",
+                        "verdict": "non adopté (front présent 31 % du temps ; δ −0,06 en exploration, écart −0,002, "
+                                   "[−0,009 ; +0,005] en confirmation)",
                         "objet": "front de diffusion entre carreaux PRIO-GRID (UCDP) contre la classe pondérée, par pays",
                         "doc": "preenregistrements/front-diffusion.md"},
-    "richardson_evenements": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+    "richardson_evenements": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "clos",
+                              "clos_le": "2026-11-17",
+                              "verdict": "non adopté (α de Hill 1,27, loi de puissance bien présente ; mais +0,008, "
+                                         "[−0,034 ; +0,050] contre le taux du bot à 100 morts ; piste a posteriori : "
+                                         "gain là où le pays a déjà connu de grands événements, perte ailleurs)",
                               "objet": "Richardson à la bonne échelle : taille des événements universelle (Pareto, tous "
                                        "pays) × fréquence locale, contre le taux du bot, « au moins un événement de 100 morts »",
                               "doc": "preenregistrements/geo-math.md"},
