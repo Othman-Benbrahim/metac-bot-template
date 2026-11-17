@@ -40,6 +40,10 @@ import combinaisons as cb
 import combinaisons_gdelt as cg
 
 SORTIE = Path("registre") / "banc-cr-sources.json"
+# 0.10.236 (contrôle fixé le 2026-11-17, 19 h 35, après le premier passage, AVANT d'en voir l'effet) : un groupe dont le
+# relevé atteint le plafond de l'API (UCDP et USGS : 5 000 ; GDACS : 100) est TRONQUÉ (la fin de sa série manque et
+# ressemble à un calme) ; il est retiré. Le premier passage, qui les gardait, reste au registre pour comparaison.
+PLAFONDS = {"ucdp": 5000, "usgs_seismes": 5000, "gdacs": 100}
 COUPURE = cg.COUPURE
 N_MIN = 30
 PAYS_UCDP = ("Sudan", "Ukraine", "Myanmar", "Syria", "Somalia", "DR Congo", "Nigeria", "Burkina Faso", "Mali", "Niger",
@@ -120,6 +124,10 @@ async def collecter(avant: date) -> tuple[dict, dict, list[str]]:
         except Exception as e:
             journal.append(f"{src}/{grp} : {type(e).__name__}: {apz.masquer(str(e))[:120]}")
             continue
+        n_brut = len(r.get("points") or [])
+        if n_brut >= PLAFONDS.get(src, 10 ** 9):
+            journal.append(f"{src}/{grp} : {n_brut} événements, plafond de l'API atteint : groupe retiré (tronqué)")
+            continue
         c = comptes_jour(r.get("points") or [], debut)
         comptes[(src, grp)] = c
         debuts[src] = min(debuts.get(src, debut), debut)
@@ -134,7 +142,7 @@ def principal() -> int:
     print("\n".join(journal))
     couverts = {s: jours(d, avant) for s, d in debuts.items()}
     dernier = avant - timedelta(days=1)
-    res = {"note": "perte log, plus bas = mieux ; aucun modèle de langue ; critère : 30 jours, par source",
+    res = {"note": "perte log, plus bas = mieux ; aucun modèle de langue ; critère : 30 jours, par source ; groupes tronqués retirés (0.10.236)",
            "releve": avant.isoformat(), "journal": journal, "par_echelle": {}}
     for f in (30, 7, 90):
         xs = cas_source(comptes, couverts, dernier, f)

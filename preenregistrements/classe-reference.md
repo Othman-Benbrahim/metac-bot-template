@@ -70,3 +70,10 @@ que le bot interroge (`banc_cr_sources.py`, essai `classe_reference_sources`).
   (cadence régulière, tendance) ; incertain sur les séismes (répliques en rafales, mais fond poissonnien).
 - Réserves : UCDP est lu au plus 5 pages de 1 000 événements par version (un pays très actif peut être tronqué) ; les
   dates des sanctions sont celles de la première apparition chez OpenSanctions.
+
+### Contrôle de troncature (ajout du 2026-11-17, 19 h 35, après le premier passage, avant d'en voir l'effet)
+Premier passage (run 44145838529) : UCDP meilleur que B (écart −0,043, intervalle corrigé [−0,071 ; −0,016]) ; les
+autres sources non tranchées ou non jugées. Mais plusieurs relevés atteignent le plafond de l'API (UCDP : Ukraine,
+Mexique, Israël à 5 000 ; USGS M ≥ 4,5 à 5 000 ; GDACS à 100 pour quatre aléas) : leur fin de série manque et ressemble
+à un calme. Second passage, même critère, groupes au plafond retirés. Le verdict UCDP ne tient que s'il tient aussi
+sans les groupes tronqués.
