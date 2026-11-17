@@ -1,0 +1,24 @@
+{
+  "note": "borne haute des erreurs de fidélité : nombres (au moins deux chiffres, ou décimal) de la synthèse absents du corpus lu ; un absent peut être un calcul, une conversion ou une connaissance du modèle",
+  "azure_ai/gpt-5-mini": {
+    "syntheses": 30,
+    "nombres": 507,
+    "absents": 6,
+    "part_nombres_absents": 0.0118,
+    "part_syntheses_avec_absent": 0.1667,
+    "par_source": {
+      "acled": {
+        "syntheses": 13,
+        "part_nombres_absents": 0.0
+      },
+      "dbnomics": {
+        "syntheses": 7,
+        "part_nombres_absents": 0.0157
+      },
+      "fred": {
+        "syntheses": 10,
+        "part_nombres_absents": 0.0182
+      }
+    }
+  }
+}
