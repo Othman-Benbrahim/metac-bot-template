@@ -243,6 +243,22 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
   liste calculée demeure.
 - État : **observatoire** (indicateur `alignement_rival`, en ombre).
 
+### M18. L'espace aérien se vide avant les frappes
+- Indicateur : `vols` (indicateurs de niche, déjà calculé depuis 0.10.140) : arrivées à l'aéroport principal du pays
+  (OpenSky), 2 jours avant la date contre les 2 mêmes jours quatre semaines plus tôt ; état « présent » : baisse de plus
+  de 20 % (log < −0,22, seuil déjà fixé dans l'observatoire).
+- Sens fixé d'avance : baisse → action militaire ou frappe visant le pays plus probable que son taux de base (+). Raison :
+  les compagnies aériennes reçoivent avertissements et consignes avant le public et évitent l'espace aérien.
+- Domaine : questions sur une frappe, une action militaire ou une escalade visant le pays ; exclues : les autres. (Dans
+  l'observatoire, le sens de M8 pour `vols` reste non fixé sur les autres familles.)
+- Origine : StrikeRadar (méthode publiée, aucune validation statistique), où le nombre d'avions commerciaux au-dessus de
+  l'Iran pèse 24 % du score ; trouvé dans le tri de l'annuaire OSINT du 2026-11-17 (`claude/tri-osint-start-me-2026-11-17.md`).
+  Décision d'auteur du 2026-11-17 (15 h 21).
+- Réserves : une baisse d'arrivées peut aussi venir d'une grève, d'une saison, d'une panne de couverture OpenSky (déjà
+  exclue quand les deux fenêtres valent 0) ; StrikeRadar mesure le survol d'une zone, nous les arrivées à un aéroport
+  (moins direct, mais avec un historique) ; crédits OpenSky limités.
+- État : **observatoire** (aucun code nouveau : l'indicateur existe).
+
 ## Ce que ce catalogue n'est pas
 Ni une liste de « causes » démontrées, ni un réservoir où l'on choisit après coup la fiche qui aurait marché. Le
 nombre de fiches augmente le risque de trouver une régularité par hasard ; c'est pourquoi le sens est fixé avant
