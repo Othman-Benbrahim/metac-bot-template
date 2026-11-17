@@ -30,3 +30,12 @@ discrimination (moyenne de p sur les « oui » moins sur les « non »), par pla
 R1 bat nettement R0 (la forme et l'horizon comptent). SEMBLABLES : gain modeste mais réel sur la discrimination, car les
 questions d'une même série (le même événement à des dates différentes, le même type d'annonce) se ressemblent par le
 texte ; risque : des voisines de même texte mais d'issue indépendante n'apportent que du bruit.
+
+## Correction du 2026-11-17 (21 h 10), après le premier passage et AVANT le second : biais de censure
+Premier passage (local, 21 h 00) : 40 % de « oui » sur les questions de 2026 contre 5 à 14 % en 2025, et des références
+pires que pile ou face (R0 : 0,84). Cause : parmi les questions récentes, seules celles qui ont fini « oui » tôt sont
+déjà résolues ; les « non » attendent leur échéance. Ce premier passage est NUL (son verdict, « semblables meilleures »,
+n'est pas retenu). Règle ajoutée, rien d'autre ne change :
+- seules les questions dont la clôture prévue (date du jeu + horizon) est passée depuis au moins 30 jours entrent ;
+- une question ne sert de voisine ou au calcul de R0 et R1 que si sa clôture prévue ET sa résolution précèdent la date
+  du jeu de la question jugée.

@@ -41,6 +41,13 @@ REGISTRE = Path("registre") / "jugement-questions.jsonl"
 SORTIE = Path("registre") / "banc-jugement.json"
 SOURCES = ("metaculus", "manifold", "polymarket", "infer")
 COUPURE = "2026-01-01"
+# 0.10.242 (correction du 2026-11-17, 21 h 10, AVANT le second passage) : biais de censure découvert au premier passage.
+# Les questions récentes déjà résolues sont surtout celles qui ont fini « oui » tôt (l'événement a eu lieu avant
+# l'échéance) ; celles qui finiront « non » attendent leur échéance. D'où 40 % de « oui » en 2026 contre 5 à 14 % en
+# 2025, et des références faussées. Règle : seules les questions dont la CLÔTURE PRÉVUE est passée depuis au moins
+# 30 jours (cohorte complète : « oui » et « non » observés) entrent dans le banc ; une question ne sert de voisine ou
+# de référence que si sa clôture prévue ET sa résolution précèdent la date du jeu jugé.
+MARGE_CLOTURE = 30
 K_VOISINES = 50
 M = 5.0
 FORMES = [
@@ -96,6 +103,19 @@ async def recolter(depuis: date) -> tuple[list[dict], dict]:
     return sorted(lignes.values(), key=lambda x: (x["jeu"], x["source"], x["id"])), foule
 
 
+def cohorte_complete(xs: list[dict], aujourdhui: date | None = None) -> list[dict]:
+    from datetime import timedelta
+    limite = ((aujourdhui or date.today()) - timedelta(days=MARGE_CLOTURE)).isoformat()
+    out = []
+    for x in xs:
+        if x.get("horizon") is None:
+            continue
+        cloture = (date.fromisoformat(x["jeu"]) + timedelta(days=x["horizon"])).isoformat()
+        if cloture <= limite:
+            out.append(dict(x, cloture=cloture))
+    return out
+
+
 def calculer(xs: list[dict]) -> None:
     from sklearn.feature_extraction.text import TfidfVectorizer
     import numpy as np
@@ -103,7 +123,7 @@ def calculer(xs: list[dict]) -> None:
         x["forme"], x["tranche"] = forme(x["titre"]), tranche(x["horizon"])
     vec = TfidfVectorizer(stop_words="english", min_df=2, sublinear_tf=True)
     X = vec.fit_transform([x["titre"] for x in xs])
-    res = np.array([x["resolue_le"] for x in xs])
+    res = np.array([max(x["resolue_le"], x.get("cloture", "")) for x in xs])   # résolue ET close avant le jeu
     ids = np.array([f'{x["source"]}:{x["id"]}' for x in xs])
     y = np.array([x["issue"] for x in xs], dtype=float)
     src = np.array([x["source"] for x in xs])
@@ -167,8 +187,10 @@ def principal() -> int:
     with REGISTRE.open("w", encoding="utf-8") as fo:
         for x in xs:
             fo.write(json.dumps(x, ensure_ascii=False) + "\n")
+    xs = cohorte_complete(xs)
     calculer(xs)
     r = resumer(xs, foule)
+    r["regle_cohorte"] = f"clôture prévue au moins {MARGE_CLOTURE} jours avant le passage (correction du biais de censure)"
     r["note"] = "perte log, plus bas = mieux ; aucun modèle de langue ; la foule n'est qu'un repère descriptif"
     SORTIE.write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
     texte = json.dumps(r, ensure_ascii=False, indent=1)

@@ -28,5 +28,14 @@ class T(unittest.TestCase):
         self.assertIn("perte", r)
 
 
+class TCohorte(unittest.TestCase):
+    def test_cohorte(self):
+        from datetime import date
+        xs = [{"jeu": "2026-01-01", "horizon": 30}, {"jeu": "2026-10-01", "horizon": 60}, {"jeu": "2026-01-01", "horizon": None}]
+        r = bj.cohorte_complete(xs, date(2026, 11, 17))
+        self.assertEqual(len(r), 1)
+        self.assertEqual(r[0]["cloture"], "2026-01-31")
+
+
 if __name__ == "__main__":
     unittest.main()
