@@ -1,0 +1,31 @@
+{
+  "version_bot": "0.10.243",
+  "n": 122,
+  "note": "perte log, plus bas = mieux ; A et M sur les mêmes entrées",
+  "B_semblables": 0.4547,
+  "A": 0.3957,
+  "M": 0.3618,
+  "discrimination": {
+    "B": 0.022,
+    "A": 0.184,
+    "M": 0.19
+  },
+  "oui": 0.172,
+  "critere": {
+    "n_nouveaux": 122,
+    "regard": 0,
+    "n_juge": 122,
+    "blocs": 19,
+    "ecart_moyen": -0.03391402588839121,
+    "intervalle_90_par_blocs": [
+      -0.08409601550772472,
+      0.016234434332387464
+    ],
+    "intervalle_corrige": [
+      -0.11454622002077125,
+      0.04736953964415315
+    ],
+    "niveau_corrige": 0.9909,
+    "verdict": "en attente (moins de 100 questions de jeux non vus)"
+  }
+}
