@@ -3,7 +3,7 @@
  "coupure": "2025-11-01",
  "questions": 5526,
  "avec_noyau": 4617,
- "risque_corrige": 0.004545,
+ "risque_corrige": 0.004167,
  "exploration": {
   "n": 1879,
   "perte_B": 0.7208,
@@ -64,5 +64,121 @@
   "2.0/0.5": 0.6159,
   "2.0/1.0": 0.6226,
   "2.0/2.0": 0.6311
+ },
+ "echelles": {
+  "7 jours": {
+   "note": "perte log, plus bas = mieux ; aucun modèle de langue ; largeurs fixées d'avance",
+   "coupure": "2025-11-01",
+   "questions": 20861,
+   "avec_noyau": 20472,
+   "risque_corrige": 0.002083,
+   "exploration": {
+    "n": 10691,
+    "perte_B": 0.6432,
+    "perte_noyau": 0.579,
+    "par_type": {
+     "emeutes": {
+      "n": 1985,
+      "perte_B": 0.5923,
+      "perte_noyau": 0.5177
+     },
+     "force": {
+      "n": 2691,
+      "perte_B": 0.6096,
+      "perte_noyau": 0.536
+     },
+     "manifestations": {
+      "n": 6015,
+      "perte_B": 0.6751,
+      "perte_noyau": 0.6185
+     }
+    }
+   },
+   "confirmation": {
+    "n": 9781,
+    "perte_B": 0.5954,
+    "perte_noyau": 0.5644,
+    "par_type": {
+     "emeutes": {
+      "n": 1598,
+      "perte_B": 0.513,
+      "perte_noyau": 0.4808
+     },
+     "force": {
+      "n": 2678,
+      "perte_B": 0.551,
+      "perte_noyau": 0.5186
+     },
+     "manifestations": {
+      "n": 5505,
+      "perte_B": 0.6409,
+      "perte_noyau": 0.6109
+     }
+    }
+   },
+   "ecart_moyen": -0.031,
+   "intervalle_corrige": [
+    -0.0374,
+    -0.0227
+   ],
+   "verdict": "meilleur que B",
+   "plateau": {
+    "0.5/0.5": 0.5467,
+    "0.5/1.0": 0.5458,
+    "0.5/2.0": 0.5478,
+    "1.0/0.5": 0.5623,
+    "1.0/1.0": 0.5644,
+    "1.0/2.0": 0.57,
+    "2.0/0.5": 0.5773,
+    "2.0/1.0": 0.583,
+    "2.0/2.0": 0.5933
+   }
+  },
+  "90 jours": {
+   "note": "perte log, plus bas = mieux ; aucun modèle de langue ; largeurs fixées d'avance",
+   "coupure": "2025-11-01",
+   "questions": 4062,
+   "avec_noyau": 1903,
+   "risque_corrige": 0.002083,
+   "confirmation": {
+    "n": 1903,
+    "perte_B": 0.7401,
+    "perte_noyau": 0.6494,
+    "par_type": {
+     "emeutes": {
+      "n": 365,
+      "perte_B": 0.7046,
+      "perte_noyau": 0.6107
+     },
+     "force": {
+      "n": 583,
+      "perte_B": 0.7546,
+      "perte_noyau": 0.6092
+     },
+     "manifestations": {
+      "n": 955,
+      "perte_B": 0.7448,
+      "perte_noyau": 0.6887
+     }
+    }
+   },
+   "ecart_moyen": -0.0908,
+   "intervalle_corrige": [
+    -0.1112,
+    -0.0627
+   ],
+   "verdict": "meilleur que B",
+   "plateau": {
+    "0.5/0.5": 0.6402,
+    "0.5/1.0": 0.6388,
+    "0.5/2.0": 0.638,
+    "1.0/0.5": 0.6459,
+    "1.0/1.0": 0.6494,
+    "1.0/2.0": 0.6521,
+    "2.0/0.5": 0.6496,
+    "2.0/1.0": 0.6562,
+    "2.0/2.0": 0.6622
+   }
+  }
  }
 }
