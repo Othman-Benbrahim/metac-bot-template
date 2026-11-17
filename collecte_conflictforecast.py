@@ -13,9 +13,17 @@ obligatoire :
   Mueller, Hannes, Christopher Rauh, Ben Seimon (2024). Introducing a global dataset on conflict forecasts and news
   topics. Data & Policy 6, https://doi.org/10.1017/dap.2024.10.
 
-Registre : registre/conflictforecast/<répertoire>/<fichier>.csv — fichiers NATIONAUX seulement (le fichier par
-carreaux, « Grid Risk », est laissé de côté : trop lourd et hors de notre échelle) et le livre des codes.
-Une seconde de pause entre deux téléchargements ; un répertoire déjà présent n'est pas relu.
+Chaque fichier mensuel contient TOUTE la série depuis 2010 (ajustements compris, environ 20 Mo) ; seule la DERNIÈRE
+période de chaque version est la prévision réellement publiée ce mois-là. Correction du 2026-11-17 (16 h 25) : le
+premier passage avait enregistré les fichiers bruts (4,2 Go) ; on ne garde plus que cette dernière période.
+
+Registre : registre/conflictforecast.csv (version, isocode, periode, cible, horizon, p_all, p_text, p_hist) :
+  version = répertoire mensuel (AAAA-MM) ; periode = dernier mois de données de cette version (AAAAMM) ;
+  cible = armedconf | anyviolence (probabilités) | lnbest (intensité, log des morts par habitant) ;
+  horizon = 3 ou 12 mois ; p_all = modèle « best » (texte + histoire), p_text = modèle texte, p_hist = histoire seule.
+Fichiers nationaux seulement (le fichier par carreaux est laissé de côté). Une seconde de pause entre deux
+téléchargements ; une version déjà extraite n'est pas relue ; le répertoire « latest » est ignoré (doublon du dernier
+mois daté).
 
     python collecte_conflictforecast.py [--max 200]
 """
@@ -32,7 +40,8 @@ import httpx
 
 API = ("https://api.backendless.com/C177D0DC-B3D5-818C-FF1E-1CC11BC69600/C5F2917E-C2F6-4F7D-9063-69555274134E/"
        "services/fileService")
-DOSSIER = Path("registre") / "conflictforecast"
+SORTIE = Path("registre") / "conflictforecast.csv"
+COLONNES = ["version", "isocode", "periode", "cible", "horizon", "p_all", "p_text", "p_hist"]
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche non commerciale ; GitHub Othman-Benbrahim)",
       "accept": "application/json"}
 
@@ -46,9 +55,64 @@ def propre(nom: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", nom)
 
 
+def version_iso(nom: str) -> str | None:
+    """« 10-2026 » → « 2026-10 » ; None pour « latest » ou un nom inattendu."""
+    m = re.fullmatch(r"(\d{2})-(\d{4})", nom)
+    return f"{m.group(2)}-{m.group(1)}" if m else None
+
+
+def cible_horizon(fichier: str) -> tuple[str, int] | None:
+    n = fichier.lower()
+    m = re.search(r"(armedconf|anyviolence|lnbest)\D*?(\d+)\.csv$", n)
+    return (m.group(1), int(m.group(2))) if m else None
+
+
+def extraire(texte: str, version: str, fichier: str) -> list[dict]:
+    """Lignes de la DERNIÈRE période du fichier : la prévision publiée dans cette version."""
+    import csv as _csv
+    import io as _io
+    ch = cible_horizon(fichier)
+    if not ch:
+        return []
+    cible, horizon = ch
+    lignes = list(_csv.DictReader(_io.StringIO(texte)))
+    if not lignes:
+        return []
+    def periode(x: dict) -> int | None:
+        try:
+            if x.get("period"):
+                return int(float(x["period"]))
+            return int(float(x["year"])) * 100 + int(float(x["month"]))
+        except (TypeError, ValueError):
+            return None
+    derniere = max(p for p in (periode(x) for x in lignes) if p is not None)
+    out = []
+    for x in lignes:
+        if periode(x) != derniere:
+            continue
+        pref = next((k[:-4] for k in x if k and k.endswith("_all")), None)
+        if pref:
+            p_all, p_text, p_hist = x.get(f"{pref}_all"), x.get(f"{pref}_text"), x.get(f"{pref}_hist")
+        else:                                            # ancien format (2021-2024) : best_model, text_model
+            p_all, p_text, p_hist = x.get("best_model"), x.get("text_model"), ""
+        out.append({"version": version, "isocode": x.get("isocode", ""), "periode": derniere, "cible": cible,
+                    "horizon": horizon, "p_all": p_all or "", "p_text": p_text or "", "p_hist": p_hist or ""})
+    return out
+
+
 def principal(maximum: int) -> int:
-    DOSSIER.mkdir(parents=True, exist_ok=True)
-    with httpx.Client(headers=UA, timeout=120, follow_redirects=True) as c:
+    import csv as _csv
+    deja = set()
+    if SORTIE.exists():
+        deja = {x["version"] for x in _csv.DictReader(SORTIE.open(encoding="utf-8"))}
+    SORTIE.parent.mkdir(exist_ok=True)
+    neuf = not SORTIE.exists()
+    lus, n_lignes = 0, 0
+    with httpx.Client(headers=UA, timeout=180, follow_redirects=True) as c, \
+            SORTIE.open("a", encoding="utf-8", newline="") as fo:
+        w = _csv.DictWriter(fo, fieldnames=COLONNES)
+        if neuf:
+            w.writeheader()
         try:
             r = c.get(f"{API}/get-all-directories")
             r.raise_for_status()
@@ -56,15 +120,13 @@ def principal(maximum: int) -> int:
         except Exception as e:
             print(f"API indisponible : {type(e).__name__}: {str(e)[:200]}")
             return 1
-        noms = sorted({str(d.get("name", "")).strip("/") for d in reps if d.get("name")})
-        print(f"{len(noms)} répertoires : {noms[:5]} … {noms[-5:]}")
-        lus, fichiers = 0, 0
-        for nom in noms:
-            cible = DOSSIER / propre(nom)
-            if cible.exists() and any(cible.iterdir()):
+        noms = sorted((version_iso(str(d.get("name", "")).strip("/")), str(d.get("name", "")).strip("/"))
+                      for d in reps if d.get("name"))
+        noms = [(v, n) for v, n in noms if v]
+        print(f"{len(noms)} versions datées : {noms[0][0]} → {noms[-1][0]}")
+        for v, nom in noms:
+            if v in deja or lus >= maximum:
                 continue
-            if lus >= maximum:
-                break
             time.sleep(1)
             try:
                 rl = c.get(f"{API}/get-file-listing", params={"date": nom})
@@ -73,10 +135,10 @@ def principal(maximum: int) -> int:
             except Exception as e:
                 print(f"  {nom} : liste indisponible ({type(e).__name__})")
                 continue
-            cible.mkdir(parents=True, exist_ok=True)
+            n_v = 0
             for f in liste:
                 fn = str(f.get("name", ""))
-                if not garder(fn) or not f.get("publicUrl"):
+                if not garder(fn) or not f.get("publicUrl") or not cible_horizon(fn):
                     continue
                 time.sleep(1)
                 try:
@@ -85,22 +147,16 @@ def principal(maximum: int) -> int:
                 except Exception as e:
                     print(f"  {nom}/{fn} : {type(e).__name__}")
                     continue
-                (cible / propre(fn)).write_bytes(rf.content)
-                fichiers += 1
+                for ligne in extraire(rf.text, v, fn):
+                    w.writerow(ligne)
+                    n_v += 1
+            fo.flush()
             lus += 1
-            print(f"  {nom} : {sorted(p.name for p in cible.iterdir())}")
-    # aperçu du plus récent répertoire lu, pour écrire ensuite la comparaison sur les bons noms de colonnes
-    reps_locaux = sorted(p for p in DOSSIER.iterdir() if p.is_dir() and any(p.iterdir()))
-    if reps_locaux:
-        dernier = reps_locaux[-1]
-        for p in sorted(dernier.iterdir()):
-            lignes = p.read_text(encoding="utf-8", errors="replace").splitlines()
-            print(f"\n--- {dernier.name}/{p.name} ({len(lignes)} lignes) ---")
-            print("\n".join(l[:300] for l in lignes[:4]))
-    bilan = (f"ConflictForecast : {lus} répertoires mensuels lus, {fichiers} fichiers ; "
-             f"{len(reps_locaux)} répertoires en registre. Données : Mueller et Rauh (2022), Mueller, Rauh et Seimon "
-             f"(2024), conflictforecast.org.")
-    print("\n" + bilan)
+            n_lignes += n_v
+            print(f"  {v} : {n_v} lignes")
+    bilan = (f"ConflictForecast : {lus} versions mensuelles extraites, {n_lignes} lignes ; données : Mueller et Rauh "
+             f"(2022), Mueller, Rauh et Seimon (2024), conflictforecast.org.")
+    print(bilan)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fo:
             fo.write(f"## ConflictForecast\n\n{bilan}\n")
