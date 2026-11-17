@@ -1,0 +1,68 @@
+{
+ "note": "perte log, plus bas = mieux ; aucun modèle de langue ; largeurs fixées d'avance",
+ "coupure": "2025-11-01",
+ "questions": 5526,
+ "avec_noyau": 4617,
+ "risque_corrige": 0.004545,
+ "exploration": {
+  "n": 1879,
+  "perte_B": 0.7208,
+  "perte_noyau": 0.6347,
+  "par_type": {
+   "emeutes": {
+    "n": 386,
+    "perte_B": 0.7192,
+    "perte_noyau": 0.6294
+   },
+   "force": {
+    "n": 511,
+    "perte_B": 0.6954,
+    "perte_noyau": 0.589
+   },
+   "manifestations": {
+    "n": 982,
+    "perte_B": 0.7346,
+    "perte_noyau": 0.6606
+   }
+  }
+ },
+ "confirmation": {
+  "n": 2738,
+  "perte_B": 0.6708,
+  "perte_noyau": 0.6061,
+  "par_type": {
+   "emeutes": {
+    "n": 505,
+    "perte_B": 0.6352,
+    "perte_noyau": 0.5592
+   },
+   "force": {
+    "n": 829,
+    "perte_B": 0.6529,
+    "perte_noyau": 0.5764
+   },
+   "manifestations": {
+    "n": 1404,
+    "perte_B": 0.6941,
+    "perte_noyau": 0.6406
+   }
+  }
+ },
+ "ecart_moyen": -0.0646,
+ "intervalle_corrige": [
+  -0.0897,
+  -0.0449
+ ],
+ "verdict": "meilleur que B",
+ "plateau": {
+  "0.5/0.5": 0.5883,
+  "0.5/1.0": 0.5875,
+  "0.5/2.0": 0.588,
+  "1.0/0.5": 0.603,
+  "1.0/1.0": 0.6061,
+  "1.0/2.0": 0.61,
+  "2.0/0.5": 0.6159,
+  "2.0/1.0": 0.6226,
+  "2.0/2.0": 0.6311
+ }
+}
