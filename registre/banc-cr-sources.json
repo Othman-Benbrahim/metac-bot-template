@@ -1,0 +1,259 @@
+{
+ "note": "perte log, plus bas = mieux ; aucun modèle de langue ; critère : 30 jours, par source",
+ "releve": "2026-11-17",
+ "journal": [
+  "ucdp/Sudan : 1860 événements",
+  "ucdp/Ukraine : 5000 événements",
+  "ucdp/Myanmar : 2222 événements",
+  "ucdp/Syria : 1887 événements",
+  "ucdp/Somalia : 840 événements",
+  "ucdp/DR Congo : 2266 événements",
+  "ucdp/Nigeria : 2657 événements",
+  "ucdp/Burkina Faso : 1426 événements",
+  "ucdp/Mali : 1578 événements",
+  "ucdp/Niger : 343 événements",
+  "ucdp/Ethiopia : 2883 événements",
+  "ucdp/Yemen : 1190 événements",
+  "ucdp/Afghanistan : 552 événements",
+  "ucdp/Pakistan : 2970 événements",
+  "ucdp/India : 568 événements",
+  "ucdp/Colombia : 2463 événements",
+  "ucdp/Mexico : 5000 événements",
+  "ucdp/Cameroon : 557 événements",
+  "ucdp/Mozambique : 437 événements",
+  "ucdp/Israel : 5000 événements",
+  "ucdp/Iraq : 449 événements",
+  "ucdp/Haiti : 382 événements",
+  "ucdp/Philippines : 196 événements",
+  "ucdp/Kenya : 99 événements",
+  "ucdp/South Sudan : 103 événements",
+  "coupures_internet/IR : 202 événements",
+  "coupures_internet/IQ : 273 événements",
+  "coupures_internet/SY : 242 événements",
+  "coupures_internet/SD : 174 événements",
+  "coupures_internet/ET : 405 événements",
+  "coupures_internet/MM : 200 événements",
+  "coupures_internet/PK : 55 événements",
+  "coupures_internet/IN : 70 événements",
+  "coupures_internet/RU : 20 événements",
+  "coupures_internet/UA : 78 événements",
+  "coupures_internet/VE : 264 événements",
+  "coupures_internet/CU : 95 événements",
+  "coupures_internet/SN : 113 événements",
+  "coupures_internet/KE : 101 événements",
+  "coupures_internet/NG : 504 événements",
+  "coupures_internet/LY : 87 événements",
+  "coupures_internet/YE : 64 événements",
+  "coupures_internet/AF : 274 événements",
+  "coupures_internet/BD : 115 événements",
+  "coupures_internet/TR : 64 événements",
+  "usgs_seismes/M4.5 : 5000 événements",
+  "usgs_seismes/M5.5 : 1604 événements",
+  "gdacs/EQ : 100 événements",
+  "gdacs/TC : 100 événements",
+  "gdacs/FL : 100 événements",
+  "gdacs/VO : 79 événements",
+  "gdacs/DR : 88 événements",
+  "gdacs/WF : 100 événements",
+  "lancements/US : 560 événements",
+  "lancements/PRC : 276 événements",
+  "lancements/CIS : 60 événements",
+  "lancements/IND : 21 événements",
+  "lancements/JPN : 47 événements",
+  "lancements/ESA : 18 événements",
+  "lancements/FR : 24 événements",
+  "sanctions_us/RUSSIA-EO14024 : 3675 événements",
+  "sanctions_us/IRAN : 1485 événements",
+  "sanctions_us/SDGT : 944 événements",
+  "sanctions_us/CYBER2 : 49 événements",
+  "sanctions_us/GLOMAG : 116 événements",
+  "sanctions_us/DPRK : 86 événements",
+  "sanctions_us/VENEZUELA : 73 événements",
+  "sanctions_us/SDNTK : 0 événements"
+ ],
+ "par_echelle": {
+  "30 jours": {
+   "k_juges": 4,
+   "sources": {
+    "coupures_internet": {
+     "questions": 370,
+     "avec_noyau": 342,
+     "n_confirmation": 174,
+     "perte_B": 0.6397,
+     "perte_noyau": 0.6166,
+     "oui": 0.345,
+     "ecart_moyen": -0.0231,
+     "intervalle_corrige": [
+      -0.1077,
+      0.0445
+     ],
+     "verdict": "non tranché"
+    },
+    "gdacs": {
+     "questions": 60,
+     "avec_noyau": 56,
+     "n_confirmation": 34,
+     "perte_B": 0.6682,
+     "perte_noyau": 0.6801,
+     "oui": 0.382,
+     "ecart_moyen": 0.0119,
+     "intervalle_corrige": [
+      -0.1696,
+      0.1799
+     ],
+     "verdict": "non tranché"
+    },
+    "lancements": {
+     "questions": 129,
+     "avec_noyau": 117,
+     "n_confirmation": 60,
+     "perte_B": 0.5393,
+     "perte_noyau": 0.5694,
+     "oui": 0.283,
+     "ecart_moyen": 0.0301,
+     "intervalle_corrige": [
+      -0.0507,
+      0.1056
+     ],
+     "verdict": "non tranché"
+    },
+    "sanctions_us": {
+     "questions": 75,
+     "avec_noyau": 66,
+     "n_confirmation": 28,
+     "perte_B": 0.6361,
+     "perte_noyau": 0.5662,
+     "oui": 0.357
+    },
+    "ucdp": {
+     "questions": 624,
+     "avec_noyau": 576,
+     "n_confirmation": 292,
+     "perte_B": 0.72,
+     "perte_noyau": 0.6774,
+     "oui": 0.445,
+     "ecart_moyen": -0.0426,
+     "intervalle_corrige": [
+      -0.071,
+      -0.0155
+     ],
+     "verdict": "meilleur que B"
+    },
+    "usgs_seismes": {
+     "questions": 33,
+     "avec_noyau": 31,
+     "n_confirmation": 16,
+     "perte_B": 0.6262,
+     "perte_noyau": 0.6272,
+     "oui": 0.312
+    }
+   }
+  },
+  "7 jours": {
+   "k_juges": 0,
+   "sources": {
+    "coupures_internet": {
+     "questions": 828,
+     "avec_noyau": 820,
+     "n_confirmation": 396,
+     "perte_B": 0.5265,
+     "perte_noyau": 0.5349,
+     "oui": 0.23
+    },
+    "gdacs": {
+     "questions": 120,
+     "avec_noyau": 119,
+     "n_confirmation": 83,
+     "perte_B": 0.5711,
+     "perte_noyau": 0.6562,
+     "oui": 0.289
+    },
+    "lancements": {
+     "questions": 318,
+     "avec_noyau": 316,
+     "n_confirmation": 153,
+     "perte_B": 0.457,
+     "perte_noyau": 0.4687,
+     "oui": 0.222
+    },
+    "sanctions_us": {
+     "questions": 149,
+     "avec_noyau": 148,
+     "n_confirmation": 64,
+     "perte_B": 0.5737,
+     "perte_noyau": 0.5623,
+     "oui": 0.25
+    },
+    "ucdp": {
+     "questions": 2380,
+     "avec_noyau": 2359,
+     "n_confirmation": 1077,
+     "perte_B": 0.6663,
+     "perte_noyau": 0.6448,
+     "oui": 0.406
+    },
+    "usgs_seismes": {
+     "questions": 142,
+     "avec_noyau": 141,
+     "n_confirmation": 67,
+     "perte_B": 0.6795,
+     "perte_noyau": 0.5986,
+     "oui": 0.403
+    }
+   }
+  },
+  "90 jours": {
+   "k_juges": 0,
+   "sources": {
+    "coupures_internet": {
+     "questions": 352,
+     "avec_noyau": 297,
+     "n_confirmation": 148,
+     "perte_B": 0.6965,
+     "perte_noyau": 0.6161,
+     "oui": 0.365
+    },
+    "gdacs": {
+     "questions": 55,
+     "avec_noyau": 47,
+     "n_confirmation": 27,
+     "perte_B": 0.6638,
+     "perte_noyau": 0.7024,
+     "oui": 0.481
+    },
+    "lancements": {
+     "questions": 101,
+     "avec_noyau": 84,
+     "n_confirmation": 41,
+     "perte_B": 0.7788,
+     "perte_noyau": 0.6279,
+     "oui": 0.366
+    },
+    "sanctions_us": {
+     "questions": 101,
+     "avec_noyau": 76,
+     "n_confirmation": 35,
+     "perte_B": 0.6483,
+     "perte_noyau": 0.6658,
+     "oui": 0.343
+    },
+    "ucdp": {
+     "questions": 579,
+     "avec_noyau": 483,
+     "n_confirmation": 244,
+     "perte_B": 0.7668,
+     "perte_noyau": 0.6777,
+     "oui": 0.467
+    },
+    "usgs_seismes": {
+     "questions": 33,
+     "avec_noyau": 29,
+     "n_confirmation": 16,
+     "perte_B": 0.8349,
+     "perte_noyau": 0.9588,
+     "oui": 0.375
+    }
+   }
+  }
+ }
+}
