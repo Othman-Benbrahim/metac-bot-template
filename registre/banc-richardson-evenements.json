@@ -1,0 +1,40 @@
+{
+ "note": "perte log, plus bas = mieux ; aucun modèle de langue ; données UCDP GED (CC BY 4.0)",
+ "alpha_hill_tout": 1.27,
+ "seuil_100": {
+  "questions": 3200,
+  "n_confirmation": 800,
+  "oui": 0.165,
+  "confirmation": {
+   "bot": 0.3988,
+   "loi": 0.407,
+   "emp": 0.3869
+  },
+  "exploration": {
+   "bot": 0.3174,
+   "loi": 0.3334,
+   "emp": 0.3242
+  },
+  "ecart_moyen": 0.0081,
+  "intervalle_corrige": [
+   -0.0335,
+   0.0497
+  ],
+  "verdict": "non tranché"
+ },
+ "seuil_25": {
+  "questions": 3200,
+  "n_confirmation": 800,
+  "oui": 0.492,
+  "confirmation": {
+   "bot": 0.6941,
+   "loi": 0.8416,
+   "emp": 0.884
+  },
+  "exploration": {
+   "bot": 0.5293,
+   "loi": 0.6731,
+   "emp": 0.7008
+  }
+ }
+}

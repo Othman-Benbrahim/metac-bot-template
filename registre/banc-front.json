@@ -1,0 +1,29 @@
+{
+ "questions": 3009,
+ "presence_front": 0.308,
+ "n_exploration": 704,
+ "n_confirmation": 224,
+ "reference_confirmation": {
+  "n": 794,
+  "perte_B_compte": 0.7013,
+  "perte_classe_ponderee": 0.6817
+ },
+ "delta": -0.0618,
+ "oui_front_exploration": [
+  301,
+  320.2
+ ],
+ "oui_front_confirmation": [
+  98,
+  105.8
+ ],
+ "perte_B": 0.6766,
+ "perte_ajustee": 0.6749,
+ "ecart_moyen": -0.0017,
+ "intervalle_corrige": [
+  -0.0085,
+  0.0047
+ ],
+ "verdict": "non confirmé",
+ "note": "perte log, plus bas = mieux ; B = classe de référence pondérée ; données UCDP GED (CC BY 4.0)"
+}
