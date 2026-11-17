@@ -170,6 +170,10 @@ ESSAIS = {
     "front_diffusion": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 10, "statut": "ouvert",
                         "objet": "front de diffusion entre carreaux PRIO-GRID (UCDP) contre la classe pondérée, par pays",
                         "doc": "preenregistrements/front-diffusion.md"},
+    "richardson_evenements": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 30, "statut": "ouvert",
+                              "objet": "Richardson à la bonne échelle : taille des événements universelle (Pareto, tous "
+                                       "pays) × fréquence locale, contre le taux du bot, « au moins un événement de 100 morts »",
+                              "doc": "preenregistrements/geo-math.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",

@@ -11,7 +11,8 @@ Pettersson et Öberg (2025).
 Le plafond de 5 pages du puits du bot est contourné proprement : une requête par pays et par ANNÉE, pages suivies
 jusqu'au bout (au plus 60 pages par année).
 
-Registre : registre/ucdp-cellules.csv.gz (pays, jour, cellule, evenements, morts), comptes par pays, jour et carreau ;
+Registre : registre/ucdp-cellules.csv.gz (pays, jour, cellule, evenements, morts, max_morts), comptes par pays, jour et
+carreau ; max_morts (0.10.240) = morts du plus grand événement du carreau ce jour-là (loi de Richardson, par événement) ;
 relu en entier à chaque passage (les versions annuelles révisent le passé).
 
     python collecte_ucdp_grille.py [--debut 2015]
@@ -71,9 +72,10 @@ async def principal(debut: int) -> int:
                 if not x["jour"] or x["cellule"] in (None, ""):
                     continue
                 k = (pays, x["jour"], int(x["cellule"]))
-                v = comptes.setdefault(k, [0, 0.0])
+                v = comptes.setdefault(k, [0, 0.0, 0.0])
                 v[0] += 1
                 v[1] += float(x["morts"] or 0)
+                v[2] = max(v[2], float(x["morts"] or 0))
                 n_pays += 1
         for vc in apz.versions_candidates(f"{an_annuelle + 1}-01-01", aujourdhui, annuelle):
             m = int(vc.split(".")[-1])
@@ -87,18 +89,19 @@ async def principal(debut: int) -> int:
                 if not x["jour"] or x["cellule"] in (None, "") or not x["jour"].startswith(f"{an_annuelle + 1}-{m:02d}"):
                     continue
                 k = (pays, x["jour"], int(x["cellule"]))
-                v = comptes.setdefault(k, [0, 0.0])
+                v = comptes.setdefault(k, [0, 0.0, 0.0])
                 v[0] += 1
                 v[1] += float(x["morts"] or 0)
+                v[2] = max(v[2], float(x["morts"] or 0))
                 n_pays += 1
         journal.append(f"{pays} : {n_pays} événements")
         print(journal[-1], flush=True)
     SORTIE.parent.mkdir(exist_ok=True)
     with gzip.open(SORTIE, "wt", encoding="utf-8", newline="") as fo:
         w = csv.writer(fo)
-        w.writerow(["pays", "jour", "cellule", "evenements", "morts"])
-        for (p, j, c), (n, m) in sorted(comptes.items()):
-            w.writerow([p, j, c, n, round(m)])
+        w.writerow(["pays", "jour", "cellule", "evenements", "morts", "max_morts"])
+        for (p, j, c), (n, m, mx) in sorted(comptes.items()):
+            w.writerow([p, j, c, n, round(m), round(mx)])
     bilan = (f"UCDP par carreau : {len(comptes)} lignes, {requetes} requêtes ; " + " ; ".join(x for x in journal if "tronqué" in x or "Error" in x))
     print(bilan)
     if os.environ.get("GITHUB_STEP_SUMMARY"):

@@ -29,6 +29,7 @@ jobs:
         env:
           UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
       - run: uv run python banc_front.py
+      - run: uv run python banc_richardson_evenements.py
         timeout-minutes: 60
         env:
           UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
@@ -37,7 +38,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/ucdp-cellules.csv.gz registre/banc-front.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/ucdp-cellules.csv.gz registre/banc-front.json registre/banc-richardson-evenements.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : front de diffusion du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase || (sleep 20 && git pull --rebase)

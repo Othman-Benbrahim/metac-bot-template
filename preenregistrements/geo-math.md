@@ -37,3 +37,17 @@ confirmation ; jugé si au moins 10 questions aux deux étapes ; bootstrap par m
 ## Pas testé maintenant
 Calendrier spatial (soudure, transhumance) : deux ans d'historique seulement, trop peu de répétitions des saisons.
 Barrière linguistique : seulement si la grappe montre quelque chose (Ockham).
+
+## Richardson à la bonne échelle (ajout du 2026-11-17, 20 h 15, avant tout passage ; décision d'auteur, 20 h 06)
+Le test 3 (clos) ajustait une queue lourde aux morts MENSUELS d'un pays ; Richardson parle de la TAILLE des événements,
+avec une loi commune à tous, la fréquence seule étant locale. `banc_richardson_evenements.py`, essai
+`richardson_evenements` :
+- unité : le plus grand événement d'un carreau PRIO-GRID un jour donné (UCDP, `max_morts`) ;
+- questions par pays, premier de chaque mois depuis 2016 : « au moins un événement de T morts ou plus dans les 30 jours ? »
+  (T = 100 jugé ; T = 25 rapporté) ;
+- B_bot : fenêtres disjointes passées du pays (règle de compter) ;
+- B_rich : 1 − exp(−λ · 30 · S(T)), λ = événements par jour du pays sur 365 jours, S(T) = S(10) · (T/10)^(−α), α de Hill
+  sur les tailles ≥ 10 de TOUS les pays sur 5 ans avant d0 ; variante empirique (S(T) comptée) rapportée ;
+- critère : confirmation d0 ≥ 2024-01-01, bootstrap par mois, risque `es.risque_corrige(1)` ; meilleur si borne haute < 0.
+- Attendu : gain surtout pour les pays dont le passé ne compte aucun événement de cette taille (le bot dit alors 1/(2n),
+  la loi universelle dit mieux).
