@@ -116,13 +116,47 @@ def cohorte_complete(xs: list[dict], aujourdhui: date | None = None) -> list[dic
     return out
 
 
+MOTS_VIDES = Path("registre") / "mots-vides-anglais.txt"
+
+
+def tfidf(textes: list[str]):
+    """TF-IDF sans dépendance (mêmes réglages que scikit-learn : mots de 2 lettres ou plus, mots vides anglais,
+    min_df = 2, tf sous-linéaire, idf lissé, normalisation L2) ; matrice creuse en dictionnaires."""
+    import numpy as np
+    vides = set(MOTS_VIDES.read_text(encoding="utf-8").split())
+    docs = [[m for m in re.findall(r"(?u)\b\w\w+\b", (t or "").lower()) if m not in vides] for t in textes]
+    df: dict[str, int] = {}
+    for d in docs:
+        for m in set(d):
+            df[m] = df.get(m, 0) + 1
+    vocab = {m: i for i, m in enumerate(sorted(m for m, n in df.items() if n >= 2))}
+    n = len(docs)
+    idf = {m: math.log((1 + n) / (1 + df[m])) + 1 for m in vocab}
+    lignes = []
+    for d in docs:
+        tf: dict[int, float] = {}
+        for m in d:
+            if m in vocab:
+                tf[vocab[m]] = tf.get(vocab[m], 0) + 1
+        lignes.append(tf)
+    inv = {i: m for m, i in vocab.items()}
+    out = []
+    for tf in lignes:
+        v = {i: (1 + math.log(c)) * idf[inv[i]] for i, c in tf.items()}
+        nrm = math.sqrt(sum(x * x for x in v.values())) or 1.0
+        out.append({i: x / nrm for i, x in v.items()})
+    return out
+
+
 def calculer(xs: list[dict]) -> None:
-    from sklearn.feature_extraction.text import TfidfVectorizer
     import numpy as np
     for x in xs:
         x["forme"], x["tranche"] = forme(x["titre"]), tranche(x["horizon"])
-    vec = TfidfVectorizer(stop_words="english", min_df=2, sublinear_tf=True)
-    X = vec.fit_transform([x["titre"] for x in xs])
+    V = tfidf([x["titre"] for x in xs])
+    index: dict[int, list[tuple[int, float]]] = {}
+    for j, v in enumerate(V):
+        for i, w in v.items():
+            index.setdefault(i, []).append((j, w))
     res = np.array([max(x["resolue_le"], x.get("cloture", "")) for x in xs])   # résolue ET close avant le jeu
     ids = np.array([f'{x["source"]}:{x["id"]}' for x in xs])
     y = np.array([x["issue"] for x in xs], dtype=float)
@@ -138,8 +172,12 @@ def calculer(xs: list[dict]) -> None:
         if ok.sum() == 0:
             x["p_S"] = float(r1)
             continue
-        sims = (X[ok] @ X[i].T).toarray().ravel()
-        idx = np.argsort(-sims)[:K_VOISINES]
+        tout = np.zeros(len(xs))
+        for t, w in V[i].items():
+            for j, wj in index[t]:
+                tout[j] += w * wj
+        sims = tout[ok]
+        idx = np.argsort(-sims, kind="stable")[:K_VOISINES]
         w = np.clip(sims[idx], 0, None)
         x["p_S"] = float((w @ y[ok][idx] + M * r1) / (w.sum() + M))
         x["sim_max"] = round(float(sims[idx[0]]), 3)

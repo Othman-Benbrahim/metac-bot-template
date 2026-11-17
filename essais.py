@@ -184,6 +184,10 @@ ESSAIS = {
                             "objet": "questions de jugement (ForecastBench) : 50 questions semblables résolues contre le "
                                      "statu quo par plateforme, forme et horizon",
                             "doc": "preenregistrements/jugement-semblables.md"},
+    "jugement_alphabet": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 150, "statut": "ouvert",
+                          "objet": "questions de jugement Metaculus : bot standard (A) contre le même passé par l'alphabet "
+                                   "en matriochka (M), départ des semblables",
+                          "doc": "preenregistrements/jugement-alphabet.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
