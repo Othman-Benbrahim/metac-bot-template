@@ -688,6 +688,69 @@ def contremesures_chine(cca2: str | None, d0: date, fenetre: int = 90, couvertur
     return {"present": True, "valeur": n, "fenetre_jours": fenetre}
 
 
+PAIRES_JOUR = Path("registre") / "gdelt-paires-jour.csv"
+PAIRES_MOIS = Path("registre") / "gdelt-paires-mois.csv"
+PAIRES_JOURS = Path("registre") / "gdelt-paires-jours.txt"
+RIVALITE_MIN_CONFLITS = 200      # 0.10.222, fixés avant toute mesure : au moins 200 événements conflictuels en 12 mois
+RIVALITE_MIN_PART = 0.35         # et au moins 35 % des événements de la paire
+
+
+def rivalites(d0: date) -> set[tuple[str, str]]:
+    """0.10.222 (M17) : paires de pays rivales à la date d0, calculées sur les 12 mois COMPLETS avant le mois de d0
+    (GDELT, QuadClass 3 et 4 : conflit verbal et matériel). Ensemble vide si moins de 11 de ces mois sont couverts."""
+    if not PAIRES_MOIS.exists() or not PAIRES_JOURS.exists():
+        return set()
+    m0 = date(d0.year, d0.month, 1)
+    mois = []
+    for k in range(1, 13):
+        a, mm = m0.year, m0.month - k
+        while mm <= 0:
+            a, mm = a - 1, mm + 12
+        mois.append(f"{a}-{mm:02d}")
+    couverts = {j[:7] for j in PAIRES_JOURS.read_text(encoding="utf-8").split()}
+    if sum(m in couverts for m in mois) < 11:
+        return set()
+    tot: dict[tuple, list[int]] = {}
+    for x in csv.DictReader(PAIRES_MOIS.open(encoding="utf-8")):
+        if x["mois"] in mois:
+            v = tot.setdefault((x["a"], x["b"]), [0, 0])
+            v[0] += int(x["evenements"])
+            v[1] += int(x["conflit"])
+    return {k for k, (n, c) in tot.items() if c >= RIVALITE_MIN_CONFLITS and c >= RIVALITE_MIN_PART * n}
+
+
+def alignement_rival(cca2: str | None, d0: date, fenetre: int = 14, couverture_min: float = 0.85) -> dict:
+    """0.10.222 (M17, en ombre) : « le resserrement militaire d'un pays avec le rival d'une puissance appelle une
+    démonstration de force de cette puissance ». Valeur : nombre d'événements de coopération militaire (CAMEO 062,
+    0312, dans les deux sens) entre le pays X et un partenaire R, dans les `fenetre` jours avant d0, tels qu'il existe
+    une puissance P ≠ X rivale de R ET rivale ou voisine terrestre de X. Rivalités calculées par `rivalites(d0)`."""
+    if not cca2 or not PAIRES_JOUR.exists() or not PAIRES_JOURS.exists():
+        return {"present": False, "raison": "pays inconnu ou registre absent"}
+    a = (d0 - timedelta(days=fenetre)).isoformat()
+    lus = {j for j in PAIRES_JOURS.read_text(encoding="utf-8").split() if a <= j < d0.isoformat()}
+    if len(lus) < couverture_min * fenetre:
+        return {"present": False, "raison": "période non couverte"}
+    riv = rivalites(d0)
+    if not riv:
+        return {"present": False, "raison": "rivalités incalculables (moins de 11 mois couverts)"}
+    rivaux: dict[str, set[str]] = {}
+    for u, v in riv:
+        rivaux.setdefault(u, set()).add(v)
+        rivaux.setdefault(v, set()).add(u)
+    proches_x = rivaux.get(cca2, set()) | set(voisins(cca2))
+    n, puissances = 0, set()
+    for x in csv.DictReader(PAIRES_JOUR.open(encoding="utf-8")):
+        if not (a <= x["jour"] < d0.isoformat()) or int(x["coop_mil"]) == 0 or cca2 not in (x["a"], x["b"]):
+            continue
+        r = x["b"] if x["a"] == cca2 else x["a"]
+        p = (rivaux.get(r, set()) & proches_x) - {cca2}
+        if p:
+            n += int(x["coop_mil"])
+            puissances |= p
+    return {"present": True, "valeur": n, "puissances": sorted(puissances), "fenetre_jours": fenetre,
+            "rivalites": len(riv)}
+
+
 AVIS_NAVIGATION = Path("registre") / "avis-navigation-chine.csv"
 AVIS_JOURS = Path("registre") / "avis-navigation-jours.txt"
 
@@ -898,7 +961,7 @@ async def principal() -> int:
                 x = json.loads(l)
                 # 0.10.142 : seule une mesure réussie compte comme faite ; les échecs sont retentés
                 mesures.setdefault((x["pays"], x["jeu"]), set()).update(
-                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires") if (x.get(k) or {}).get("present")
+                    k for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if (x.get(k) or {}).get("present")
                     and (k != "telegram" or x[k].get("methode") == "canaux"))
     couples = sorted({(x["pays"], x["jeu"]) for x in lignes if x.get("pays")})
     cache, cache_csv, cache_pays = {}, {}, {}
@@ -962,6 +1025,8 @@ async def principal() -> int:
                 if "recit_russe" not in fait and RECIT_RUSSE.exists():          # 0.10.202, M12
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["recit_russe"] = recit_russe(code, d0)
+                if "alignement_rival" not in fait and PAIRES_JOUR.exists():          # 0.10.222, M17
+                    ligne["alignement_rival"] = alignement_rival(code, d0)
                 if "contremesures_chine" not in fait and CHINE_SANCTIONS.exists():   # 0.10.204, module Chine
                     code = await os_.code_pays(pays) or (await __import__("banc_indicateurs").fiche_pays(c, pays, cache_pays)).get("cca2")
                     ligne["contremesures_chine"] = contremesures_chine(code, d0)
@@ -994,7 +1059,7 @@ async def principal() -> int:
                 f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
                 f.flush()
                 print(f"{pays[:22]:22s} {jeu} : " + " · ".join(f"{k} {(ligne[k] or {}).get('valeur')}"
-                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires") if k in ligne))
+                                                            for k in ("wikimodif", "prix_alim", "vols", "telegram", "violationswatch", "rss_presse", "rss_officiel", "brouillage_gps", "gdelt", "ooni", "portwatch", "radar", "sanctions", "elections", "avions_etat", "voisins", "acaps", "recit_russe", "dates_memoire", "contremesures_chine", "avis_navigation", "feux", "silence_statistique", "prix_alimentaires", "alignement_rival") if k in ligne))
         await tg.fermer()
     return 0
 

@@ -58,6 +58,14 @@ RACINES_HOSTILES = ("18", "19", "20")
 C_CODE, C_PAYS_ACTEUR2 = 26, 17         # EventCode ; Actor2CountryCode
 CHINE = Path("registre") / "gdelt-chine-sanctions.csv"
 JOURS_C = Path("registre") / "gdelt-chine-jours.txt"
+# 0.10.222 (M17, en ombre) : paires de pays. Coopération militaire (CAMEO 062 « coopérer militairement », 0312 « exprimer
+# l'intention de coopérer militairement ») et démonstrations de force (racine 15) par jour et par paire orientée ; volume
+# total et volume conflictuel (QuadClass 3 et 4) par mois et par paire non orientée, pour calculer les rivalités.
+C_QUAD = 29
+CODES_COOP = ("062", "0312")
+PAIRES_J = Path("registre") / "gdelt-paires-jour.csv"
+PAIRES_M = Path("registre") / "gdelt-paires-mois.csv"
+JOURS_P = Path("registre") / "gdelt-paires-jours.txt"
 
 
 def table_iso3(c: httpx.Client) -> dict[str, str]:
@@ -81,6 +89,56 @@ def sanctions_chine(texte_csv: str, iso3: dict[str, str]) -> dict[str, int]:
         if p and p != "CN":
             out[p] = out.get(p, 0) + 1
     return out
+
+
+def paires(texte_csv: str, iso3: dict[str, str]) -> tuple[dict[tuple, list[int]], dict[tuple, list[int]]]:
+    """0.10.222 : (jour : {(acteur1, acteur2) : [coopération militaire, démonstrations de force]},
+    mois : {(a, b) triés : [événements, événements conflictuels]}), entre deux pays différents."""
+    jour: dict[tuple, list[int]] = {}
+    mois: dict[tuple, list[int]] = {}
+    for col in csv.reader(io.StringIO(texte_csv), delimiter="\t"):
+        if len(col) <= C_PAYS_ACTION:
+            continue
+        a, b = iso3.get(col[C_PAYS_ACTEUR1]), iso3.get(col[C_PAYS_ACTEUR2])
+        if not a or not b or a == b:
+            continue
+        m = mois.setdefault(tuple(sorted((a, b))), [0, 0])
+        m[0] += 1
+        if col[C_QUAD] in ("3", "4"):
+            m[1] += 1
+        coop, force = col[C_CODE] in CODES_COOP, col[C_RACINE] == "15"
+        if coop or force:
+            v = jour.setdefault((a, b), [0, 0])
+            v[0] += coop
+            v[1] += force
+    return jour, mois
+
+
+def lire_p() -> tuple[dict[tuple, list[int]], dict[tuple, list[int]], set[str]]:
+    pj, pm = {}, {}
+    if PAIRES_J.exists():
+        for x in csv.DictReader(PAIRES_J.open(encoding="utf-8")):
+            pj[(x["jour"], x["a"], x["b"])] = [int(x["coop_mil"]), int(x["force"])]
+    if PAIRES_M.exists():
+        for x in csv.DictReader(PAIRES_M.open(encoding="utf-8")):
+            pm[(x["mois"], x["a"], x["b"])] = [int(x["evenements"]), int(x["conflit"])]
+    return pj, pm, (set(JOURS_P.read_text(encoding="utf-8").split()) if JOURS_P.exists() else set())
+
+
+def ecrire_p(pj: dict, pm: dict, jours_p: set[str]) -> None:
+    PAIRES_J.parent.mkdir(exist_ok=True)
+    with PAIRES_J.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["jour", "a", "b", "coop_mil", "force"])
+        for k in sorted(pj):
+            w.writerow([*k, *pj[k]])
+    with PAIRES_M.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["mois", "a", "b", "evenements", "conflit"])
+        for k in sorted(pm):
+            if pm[k][0] >= 3:                     # paires presque muettes écartées (taille du registre)
+                w.writerow([*k, *pm[k]])
+    JOURS_P.write_text("\n".join(sorted(jours_p)) + "\n", encoding="utf-8")
 
 
 def lire_c() -> tuple[dict[tuple, int], set[str]]:
@@ -216,6 +274,7 @@ def principal() -> int:
     comptes, jours = lire()
     hostiles, jours_h = lire_h()
     chine, jours_c = lire_c()
+    pj, pm, jours_p = lire_p()
     lus = absents = 0
     with httpx.Client(headers=UA, follow_redirects=True, timeout=120) as c:
         fips = table_fips(c)
@@ -224,7 +283,7 @@ def principal() -> int:
         d = debut
         while d <= hier:
             j = d.isoformat()
-            if j in jours and j in jours_h and j in jours_c:
+            if j in jours and j in jours_h and j in jours_c and j in jours_p:
                 d += timedelta(days=1)
                 continue
             try:
@@ -252,6 +311,15 @@ def principal() -> int:
                 for p, v in sanctions_chine(texte, iso3).items():
                     chine[(p, j)] = v
                 jours_c.add(j)
+                if j not in jours_p:                 # les totaux mensuels ne sont ajoutés qu'une fois par jour
+                    jr, mo = paires(texte, iso3)
+                    for k, v in jr.items():
+                        pj[(j, *k)] = v
+                    for k, v in mo.items():
+                        t = pm.setdefault((j[:7], *k), [0, 0])
+                        t[0] += v[0]
+                        t[1] += v[1]
+                    jours_p.add(j)
             lus += 1
             tot = [sum(v[i] for v in par_pays.values()) for i in range(3)]
             print(f"  {j} : {tot[0]} manifestations, {tot[1]} émeutes, {len(par_pays)} pays")
@@ -259,10 +327,12 @@ def principal() -> int:
                 ecrire(comptes, jours)          # sauvegarde régulière pendant un long rattrapage
                 ecrire_h(hostiles, jours_h)
                 ecrire_c(chine, jours_c)
+                ecrire_p(pj, pm, jours_p)
             d += timedelta(days=1)
     ecrire(comptes, jours)
     ecrire_h(hostiles, jours_h)
     ecrire_c(chine, jours_c)
+    ecrire_p(pj, pm, jours_p)
     bilan = f"{lus} jour(s) lus, {absents} absent(s) ; {len(jours)} jours couverts au total."
     print(bilan)
     if os.environ.get("GITHUB_STEP_SUMMARY"):

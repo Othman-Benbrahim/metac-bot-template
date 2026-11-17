@@ -205,6 +205,30 @@ grosses erreurs) ; il ne la juge jamais. Une fiche proposée par un modèle port
 - État : **hypothèse à observer** (sans indicateur ; n'entre pas dans l'observatoire tant qu'aucun compte
   automatisable n'existe).
 
+### M17. Le resserrement militaire avec le rival d'une puissance appelle sa démonstration de force
+- Indicateur : `alignement_rival` (indicateurs de niche) : nombre d'événements GDELT de coopération militaire (CAMEO 062
+  « coopérer militairement », 0312 « exprimer l'intention de coopérer militairement », dans les deux sens) entre le pays
+  X et un partenaire R, dans les 14 jours avant la date, tels qu'il existe une puissance P ≠ X rivale de R ET rivale ou
+  voisine terrestre de X.
+- Rivalités : CALCULÉES, pas listées à la main (décision d'auteur : une liste figée vieillit). Une paire est rivale si,
+  sur les 12 mois complets avant le mois de la question, elle compte au moins 200 événements conflictuels GDELT
+  (QuadClass 3 et 4, conflit verbal et matériel) ET au moins 35 % de conflit dans ses événements. Seuils fixés avant
+  toute mesure, jamais ajustés sur les issues. La liste produite sera relue une fois pour vérifier qu'elle ressemble à
+  la réalité (GDELT a des biais de codage), sans retouche des seuils après lecture des résultats.
+- Sens fixé d'avance : valeur élevée (≥ 2) → action militaire ou coercitive de P concernant X plus probable à court
+  terme que son taux de base (+).
+- Domaine : questions sur une action militaire, coercitive ou une escalade impliquant le pays ; exclues : les autres.
+- Échelle de temps : jours à semaines.
+- Origine : pilote des analyses stratégiques sur Le Rubicon (2026-11-17), « Le renforcement du partenariat de sécurité
+  Japon-Philippines provoque une réponse chinoise de démonstration de force » (« Un rocher et le problème chinois des
+  trois mers », octobre 2026), généralisé en mécanisme à la demande de l'auteur ; autres cas connus : ventes d'armes
+  américaines à Taïwan suivies d'exercices chinois ; étapes d'adhésion à l'OTAN et réactions russes. Décision d'auteur
+  du 2026-11-17 (5 h 32).
+- Réserves : GDELT code mal le sens de certains événements (la Chine « sanctionnant » la Russie dans les contre-mesures) ; le
+  dénominateur (volume de presse sur la paire) gonfle les grands pays ; la liste des rivalités n'existe qu'à partir de
+  12 mois de collecte (rattrapage depuis juillet 2024 nécessaire).
+- État : **observatoire** (indicateur `alignement_rival`, en ombre).
+
 ## Ce que ce catalogue n'est pas
 Ni une liste de « causes » démontrées, ni un réservoir où l'on choisit après coup la fiche qui aurait marché. Le
 nombre de fiches augmente le risque de trouver une régularité par hasard ; c'est pourquoi le sens est fixé avant
