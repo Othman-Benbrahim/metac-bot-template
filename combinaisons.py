@@ -252,11 +252,12 @@ async def principal(depuis: str) -> int:
                 nom = bi.pays_de(x["titre"])
                 cca2 = pays.get((nom or "").lower())
                 fam = __import__("banc_indicateurs_frais").famille(x["titre"])
-                cle = (cca2, j, x["titre"].split("'")[1] if "'" in x["titre"] else "")
+                cle = (cca2, j)                  # les indicateurs ne dépendent que du pays et de la date ; M4 du titre
                 if cle not in cache_etats:
                     cache_etats[cle] = etats(cca2, x["titre"], date.fromisoformat(j), debut_el)
+                e = dict(cache_etats[cle], M4=etats(None, x["titre"], date.fromisoformat(j), None)["M4"])
                 fo.write(json.dumps({"jeu": j, "question_id": x["qid"], "pays": nom, "cca2": cca2, "famille": fam,
-                                     "issue": x["issue"], "p_B": fb.b_acled(m), "etats": cache_etats[cle],
+                                     "issue": x["issue"], "p_B": fb.b_acled(m), "etats": e,
                                      "licence": "ForecastBench, Forecasting Research Institute, CC BY-SA 4.0"},
                                     ensure_ascii=False) + "\n")
                 n_ecrites += 1
