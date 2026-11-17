@@ -1,0 +1,41 @@
+{
+  "version_bot": "0.10.227",
+  "n": 131,
+  "note": "perte log, plus bas = mieux ; A_voit, A_aveugle et C_aveugle sur les mêmes entrées",
+  "A_voit": 0.5223,
+  "A_aveugle": 0.5097,
+  "C_aveugle": 0.5052,
+  "B": 0.5162,
+  "distance_a_B": {
+    "A_voit": 0.025,
+    "A_aveugle": 0.067
+  },
+  "p_moyenne": {
+    "A_voit": 0.36,
+    "A_aveugle": 0.362,
+    "B": 0.336,
+    "observe": 0.336
+  },
+  "critere": {
+    "n_nouveaux": 131,
+    "regard": 1,
+    "n_juge": 100,
+    "blocs": 3,
+    "ecart_moyen": -0.019198782457946924,
+    "intervalle_90_par_blocs": [
+      -0.035786488001760944,
+      4.187785377587529e-05
+    ],
+    "intervalle_corrige": [
+      -0.04732143371779739,
+      0.005959029827704256
+    ],
+    "niveau_corrige": 0.9889,
+    "verdict": "critère non atteint ; un second regard à 200"
+  },
+  "audit_b": {
+    "alertes": [],
+    "a_surveiller": [],
+    "seuil": "|z| > 3.0 sur au moins 20 questions, écart répété dans au moins 3 jeux"
+  }
+}
