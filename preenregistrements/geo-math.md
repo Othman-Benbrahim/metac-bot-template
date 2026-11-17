@@ -51,3 +51,14 @@ avec une loi commune à tous, la fréquence seule étant locale. `banc_richardso
 - critère : confirmation d0 ≥ 2024-01-01, bootstrap par mois, risque `es.risque_corrige(1)` ; meilleur si borne haute < 0.
 - Attendu : gain surtout pour les pays dont le passé ne compte aucun événement de cette taille (le bot dit alors 1/(2n),
   la loi universelle dit mieux).
+
+## Richardson conditionnel (ajout du 2026-11-17, 20 h 30, AVANT toute question nouvelle ; décision d'auteur, 20 h 27)
+Piste née d'un diagnostic a posteriori (run 44155280927, NON préenregistré) : la loi commune perd sur les pays sans
+grand événement passé (0,300 contre 0,197 pour le bot) et gagne sur les pays au passé meurtrier (0,499 contre 0,572).
+Règle fixée ici, jamais ajustée ensuite :
+- si le pays a connu au moins un événement de 100 morts ou plus dans les 5 ans avant d0 : B_rich (loi de Pareto commune
+  × fréquence du pays, mêmes calculs) ; sinon : le taux du bot ;
+- questions NOUVELLES seulement, de deux sortes : (1) les pays UCDP hors des 25 déjà vus (aucune de leurs questions n'a
+  servi au diagnostic), toutes périodes depuis 2016 ; (2) pour les 25 pays, les mois à venir (d0 ≥ 2026-11-01) ;
+- critère : contre le taux du bot, « au moins un événement de 100 morts dans 30 jours ? », bootstrap par mois, risque
+  `es.risque_corrige(1)` ; la partie (1) juge dès qu'elle a 30 questions du sous-groupe « passé meurtrier ».
