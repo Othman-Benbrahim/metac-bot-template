@@ -114,6 +114,9 @@ ESSAIS = {
                      "objet": "combinaisons de deux mécanismes (grille de bon sens) : δ fixé sur l'exploration (avant 2026), "
                               "jugé sur la confirmation (2026) ; correction interne supplémentaire par le nombre de paires jugées",
                      "doc": "preenregistrements/combinaisons-bon-sens.md"},
+    "jugement_aveugle": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 100, "statut": "ouvert",
+                         "objet": "jugement du modèle sans voir B, combiné mécaniquement à B, contre A qui voit B (conflits)",
+                         "doc": "preenregistrements/jugement-aveugle.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
