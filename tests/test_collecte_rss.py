@@ -219,3 +219,13 @@ class TestCorrectiv(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSigles(unittest.TestCase):
+    """0.10.220 : sigles en majuscules, casse stricte."""
+    def test_sigles(self):
+        l = cr.motifs_larges([], {})
+        self.assertEqual(cr.detecter_large("US inflation slows", l), {"US"})
+        self.assertEqual(cr.detecter_large("U.S.-China talks", l), {"US"})
+        self.assertEqual(cr.detecter_large("la RDC et l'EAU", l), {"CD", "AE"})
+        self.assertEqual(cr.detecter_large("USAID cuts ; USB ; plus", l), set())

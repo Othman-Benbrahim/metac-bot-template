@@ -166,6 +166,11 @@ EXCLUSIONS = re.compile(r"(?<![\w-])(latin|south|north|central|native|african|pa
                         r"|(?<![\w-])(indian ocean|océan indien|west indian|indian country|french fries|french toast)(?![\w-])", re.I)
 ADJECTIFS_HORS = {"islander", "channel islander", "virgin islander"}
 CASSE_STRICTE = {"polish", "polishes"}
+# 0.10.220 : sigles en majuscules, casse stricte (« US inflation », « U.S. strikes », « l'EAU », « la RDC »). Angle mort
+# révélé par le second codeur au premier passage (32 mentions des États-Unis vues par lui seul) ; « usa », « rdc » et
+# « drc » figuraient déjà dans `noms_pays` mais étaient écartés par le filtre des noms de moins de quatre lettres.
+SIGLES = {"US": "US", "U.S.": "US", "U.S.A.": "US", "USA": "US", "UK": "GB", "U.K.": "GB", "UAE": "AE", "EAU": "AE",
+          "RDC": "CD", "DRC": "CD", "RCA": "CF"}
 
 
 def adjectifs(c: httpx.Client) -> dict[str, str]:
@@ -201,6 +206,8 @@ def motifs_larges(motifs: list[tuple[re.Pattern, str]], adj: dict[str, str]) -> 
             tous.append((r"(?<![\w-])" + re.escape(a.capitalize()) + r"(?![\w-])", code, 0))
         else:
             tous.append((r"(?<![\w-])" + re.escape(a) + r"(?![\w-])", code, re.I))
+    for sigle, code in SIGLES.items():
+        tous.append((r"(?<![\w.-])" + re.escape(sigle) + r"(?!\w)", code, 0))   # « U.S.-China » compte
     def longueur(motif: str) -> int:
         return len(re.sub(r"\(\?<?[!=][^)]*\)", "", motif).replace("\\", ""))
     return [(re.compile(m, f), code) for m, code, f in sorted(tous, key=lambda t: -longueur(t[0]))]
@@ -435,6 +442,10 @@ def principal() -> int:
                         for p in pays_gr:
                             for fa in familles:
                                 comptes[(p, a["jour"], fa + "_grasland")] = comptes.get((p, a["jour"], fa + "_grasland"), 0) + 1
+                        # 0.10.220 : compte « fusion » (pays vu par l'un OU l'autre codeur), la capture la plus complète
+                        for p in (pays_large if (larges or famille in LARGE_SEUL) else pays) | pays_gr:
+                            for fa in familles:
+                                comptes[(p, a["jour"], fa + "_fusion")] = comptes.get((p, a["jour"], fa + "_fusion"), 0) + 1
                         for rg in regions_gr:
                             for fa in familles:
                                 regions[(rg, a["jour"], fa)] = regions.get((rg, a["jour"], fa), 0) + 1
