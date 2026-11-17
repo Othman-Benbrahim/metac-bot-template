@@ -32,3 +32,24 @@ Les mois passés ne se valent pas : ceux qui ressemblaient au mois présent, au 
 - Le noyau mêle tous les pays : il peut perdre ce que B sait d'un pays particulier.
 - z capte surtout le retour vers la moyenne : si le noyau gagne, c'est la première lecture à vérifier.
 - Reste en ombre jusqu'à une décision datée de l'auteur.
+
+## Autres échelles (ajout du 2026-11-17, 18 h 50, avant tout passage de ces échelles ; décision d'auteur : « Let's go »)
+
+Le premier passage (30 jours, GDELT) a donné B_noyau meilleur que B. Vérification à d'autres échelles, mêmes règles
+sauf ce qui suit, tout fixé ici avant de calculer.
+
+### Autre échelle de temps (GDELT, `cas_echelle`)
+- Fenêtres de 7 jours (ancres chaque lundi depuis 2024-07-01) et de 90 jours (ancres chaque premier du mois).
+- Seuils de question ⌈seuil × fenêtre / 30⌉ ; jours manquants tolérés ⌈3 × fenêtre / 30⌉.
+- m = ln((avant + 1) / (fenêtre précédente de même longueur + 1)).
+- Même noyau (largeurs 1 ; 1), même confirmation (à partir du 2025-11-01), bootstrap par mois ; les deux échelles sont
+  jugées ensemble : risque `es.risque_corrige(1) / 2`.
+- Lecture : si le gain tient à 7, 30 et 90 jours, c'est un mécanisme ; à 30 jours seulement, un accident.
+
+### Autre domaine, questions réelles (séries FRED et DBnomics de ForecastBench, `banc_bn.py`, essai `b_noyau`)
+- Classe : les intervalles de h jours de la même série sur 5 ans (ceux de B).
+- z(t) = (valeur − moyenne de l'année avant t) / écart-type de l'année ; m(t) = (valeur − valeur h jours avant) / même
+  écart-type ; w = max(0,005 ; exp(−½ Δz² − ½ Δm²)) ; P = (Σ w·hausse + ½) / (Σ w + 1).
+- Critère des ombres de B (`critere_ombre_b`) : 100 premières questions, second regard à 200, blocs jeu × source.
+- Réserve : en bourse, le retour vers la moyenne est faible ou inversé (élan) ; sur les températures, la saison domine.
+  Le test peut échouer : c'est voulu.

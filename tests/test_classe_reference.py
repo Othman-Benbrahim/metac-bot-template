@@ -20,5 +20,19 @@ class T(unittest.TestCase):
         self.assertGreater(xs[2]["p_K"], 0.5)
 
 
+class TNoyauSeries(unittest.TestCase):
+    def test_retour_moyenne(self):
+        from datetime import date, timedelta
+        import banc_forecastbench as fb
+        # série qui oscille : haut une semaine, bas la suivante ; à D on est en haut → la hausse est rare
+        d0 = date(2026, 1, 1)
+        pts = [{"date": (d0 - timedelta(days=k)).isoformat(), "valeur": 10.0 if (k // 7) % 2 == 0 else 0.0}
+               for k in range(1, 2400)]
+        pts.append({"date": (d0 - timedelta(days=1)).isoformat(), "valeur": 10.0})
+        r = fb.b_noyau(pts, 7, d0)
+        self.assertIsNotNone(r)
+        self.assertLess(r["p"], 0.3)
+
+
 if __name__ == "__main__":
     unittest.main()

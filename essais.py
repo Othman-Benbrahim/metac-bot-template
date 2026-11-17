@@ -125,6 +125,10 @@ ESSAIS = {
                          "objet": "B par classe de référence pondérée par la ressemblance (tous pays, noyau fixé d'avance) "
                                   "contre B, questions fabriquées GDELT",
                          "doc": "preenregistrements/classe-reference.md"},
+    "b_noyau": {"ouvert_le": "2026-11-17", "type": "intervalle", "n": 100, "statut": "ouvert",
+                "objet": "B des séries pondéré par la ressemblance (position dans l'année, élan sur h jours) contre B, "
+                         "questions réelles FRED et DBnomics",
+                "doc": "preenregistrements/classe-reference.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",

@@ -245,6 +245,74 @@ def b_tendance(points: list[dict], h: int, avant: date, annees: int = 5, demi_vi
     return {"p": (k + 0.5) / (w + 1), "poids": round(w, 1), "hausses_ponderees": round(k, 1), "demi_vie": demi_vie}
 
 
+# 0.10.233 (décision d'auteur du 2026-11-17, « Let's go », EN OMBRE ; pré-enregistrement classe-reference.md, partie
+# « autre domaine ») : B par classe de référence pondérée par la RESSEMBLANCE. Mêmes intervalles de h jours que B (5 ans,
+# strictement avant D, même appariement) ; chaque intervalle commençant en t pèse selon la ressemblance de la série en t
+# avec la série en D, sur deux nombres connus à la date :
+#   z(t) = (v_t − moyenne des valeurs des 365 jours avant t) / écart-type de ces valeurs ;
+#   m(t) = (v_t − valeur au dernier point à t − h ou avant) / même écart-type ;
+#   w = max(0,005 ; exp(−½ Δz² − ½ Δm²)) ; P(hausse) = (Σ w × hausse + ½) / (Σ w + 1) (Jeffreys, comme B).
+# Au moins 10 points dans l'année avant t et un écart-type non nul ; au moins 20 intervalles pondérables, sinon rien.
+def b_noyau(points: list[dict], h: int, avant: date, annees: int = 5, hz: float = 1.0, hm: float = 1.0) -> dict | None:
+    import bisect
+    import math
+    if h <= 0:
+        return None
+    pts = sorted((date.fromisoformat(p["date"][:10]), float(p["valeur"])) for p in points
+                 if p.get("date") and p.get("valeur") is not None and p["date"][:10] < avant.isoformat())
+    pts = [p for p in pts if p[0] >= avant - timedelta(days=365 * (annees + 1) + h)]
+    if len(pts) < 30:
+        return None
+    ts = [p[0] for p in pts]
+    vs = [p[1] for p in pts]
+    s1, s2 = [0.0], [0.0]
+    for v in vs:
+        s1.append(s1[-1] + v)
+        s2.append(s2[-1] + v * v)
+
+    def etat(i: int) -> tuple[float, float] | None:
+        a = bisect.bisect_left(ts, ts[i] - timedelta(days=365))
+        n = i - a
+        if n < 10:
+            return None
+        moy = (s1[i] - s1[a]) / n
+        var = (s2[i] - s2[a]) / n - moy * moy
+        if var <= 1e-12:
+            return None
+        sd = math.sqrt(var)
+        j = bisect.bisect_right(ts, ts[i] - timedelta(days=h)) - 1
+        if j < 0:
+            return None
+        return (vs[i] - moy) / sd, (vs[i] - vs[j]) / sd
+
+    present = etat(len(pts) - 1)
+    if present is None:
+        return None
+    debut = avant - timedelta(days=365 * annees)
+    k = w = 0.0
+    n = 0
+    j = 0
+    for i, (t, v) in enumerate(pts):
+        if t < debut:
+            continue
+        cible = t + timedelta(days=h)
+        while j < len(pts) and pts[j][0] < cible:
+            j += 1
+        if j >= len(pts):
+            break
+        e = etat(i)
+        if e is None:
+            continue
+        poids = max(0.005, math.exp(-0.5 * ((e[0] - present[0]) / hz) ** 2 - 0.5 * ((e[1] - present[1]) / hm) ** 2))
+        w += poids
+        k += poids * (pts[j][1] > v)
+        n += 1
+    if n < 20:
+        return None
+    return {"p": (k + 0.5) / (w + 1), "poids": round(w, 1), "intervalles": n, "z": round(present[0], 3),
+            "m": round(present[1], 3)}
+
+
 # 0.10.104 (décision d'auteur du 2026-11-15, EN OMBRE ; pré-enregistrement b-saisonnier.md) : un troisième taux de base
 # pour les séries, SAISONNIER. Constat : sur DBnomics (surtout des températures Météo-France), B annonce ~50 % alors que
 # ~26 % des questions se résolvent OUI ; B compte les hausses sur toute l'année. Règle fixée AVANT toute mesure :
@@ -331,6 +399,10 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
                 x["_b_saison"] = b_saison(r.get("points") or [], h, d0)
             except Exception as e:
                 x["_b_saison"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+            try:                                      # 0.10.233 : classe de référence pondérée, en ombre
+                x["_b_noyau"] = b_noyau(r.get("points") or [], h, d0)
+            except Exception as e:
+                x["_b_noyau"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
             try:                                      # 0.10.131 : taux de base récent (tendance), en ombre
                 x["_b_tendance"] = b_tendance(r.get("points") or [], h, d0)
             except Exception as e:

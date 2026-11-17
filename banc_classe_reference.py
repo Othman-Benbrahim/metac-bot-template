@@ -71,6 +71,51 @@ def cas(comptes: dict, jm: set[str], jp: set[str], dernier: date) -> list[dict]:
     return out
 
 
+def cas_echelle(comptes: dict, jm: set[str], jp: set[str], dernier: date, fenetre: int) -> list[dict]:
+    """0.10.233 (autre échelle de temps) : fenêtres de `fenetre` jours ; ancres chaque semaine (7 j) ou chaque premier
+    du mois (sinon) ; seuils de question ⌈MIN × fenetre / 30⌉, jours manquants tolérés ⌈3 × fenetre / 30⌉ ;
+    m = ln((avant + 1) / (fenêtre précédente de même longueur + 1)), calculée directement."""
+    seuil = {t: math.ceil(v * fenetre / 30) for t, v in cg.MIN_AVANT.items()}
+    manque = math.ceil(cg.MANQUE_MAX * fenetre / 30)
+    if fenetre == 7:
+        d, ancres = date(2024, 7, 1), []
+        while d <= dernier - timedelta(days=fenetre):
+            ancres.append(d)
+            d += timedelta(days=7)
+    else:
+        ancres = cg.mois(date(2024, 7, 1), dernier - timedelta(days=fenetre))
+
+    def somme(serie, debut, couverts):
+        jours = [(debut + timedelta(days=k)).isoformat() for k in range(fenetre)]
+        if sum(1 for j in jours if j not in couverts) > manque:
+            return None
+        return sum(serie.get(j, 0) for j in jours)
+    out = []
+    for (typ, pays), serie in sorted(comptes.items()):
+        couverts = jp if typ == "force" else jm
+        avants: list[tuple[date, int]] = []
+        histo: list[tuple[date, int]] = []
+        for d0 in ancres:
+            avant = somme(serie, d0 - timedelta(days=fenetre), couverts)
+            apres = somme(serie, d0, couverts)
+            if avant is None or apres is None:
+                continue
+            prec = somme(serie, d0 - timedelta(days=2 * fenetre), couverts)
+            issue = int(apres > avant)
+            if avant >= seuil[typ] and d0 >= cg.DEBUT:
+                connus = [y for fin, y in histo if fin <= d0]
+                x = {"jeu": d0.isoformat(), "type": typ, "pays": pays, "issue": issue,
+                     "p_B": (sum(connus) + 1) / (len(connus) + 2), "fin": (d0 + timedelta(days=fenetre)).isoformat()}
+                anciens = [a for t, a in avants if t <= d0]
+                if len(anciens) >= HIST_MIN and prec is not None:
+                    x["z"] = math.log((avant + 1) / (sum(anciens) / len(anciens) + 1))
+                    x["m"] = math.log((avant + 1) / (prec + 1))
+                out.append(x)
+                histo.append((d0 + timedelta(days=fenetre), issue))
+            avants.append((d0, avant))
+    return out
+
+
 def noyau(xs: list[dict], hz: float = H_Z, hm: float = H_M) -> None:
     """Ajoute p_K (B_noyau) aux cas qui ont z et m ; la classe : même type, tous pays, fenêtre « après » finie avant d0."""
     par_type: dict[str, list[dict]] = {}
@@ -97,12 +142,14 @@ def perte(xs: list[dict], cle: str) -> float:
     return sum(cb.pl(x[cle], x["issue"]) for x in xs) / len(xs)
 
 
-def resumer(xs: list[dict], coupure: str = cg.COUPURE) -> dict:
+def resumer(xs: list[dict], coupure: str = cg.COUPURE, k_echelles: int = 1) -> dict:
+    """`k_echelles` (0.10.233) : les échelles de temps 7 et 90 jours sont jugées ensemble, risque divisé par 2 ;
+    bootstrap par MOIS (les semaines d'un même mois forment un bloc)."""
     import essais as es
     jug = [x for x in xs if "p_K" in x]
     explo = [x for x in jug if x["jeu"] < coupure]
     conf = [x for x in jug if x["jeu"] >= coupure]
-    risque = es.risque_corrige(1)
+    risque = es.risque_corrige(1) / k_echelles
     r = {"note": "perte log, plus bas = mieux ; aucun modèle de langue ; largeurs fixées d'avance",
          "coupure": coupure, "questions": len(xs), "avec_noyau": len(jug), "risque_corrige": round(risque, 6)}
     for nom, ls in (("exploration", explo), ("confirmation", conf)):
@@ -112,7 +159,7 @@ def resumer(xs: list[dict], coupure: str = cg.COUPURE) -> dict:
                                        "perte_noyau": round(perte(s, "p_K"), 4)}
                                    for t in sorted({x["type"] for x in ls}) for s in [[x for x in ls if x["type"] == t]]}}
     if len(conf) >= 30:
-        ec = [(x["jeu"], cb.pl(x["p_K"], x["issue"]) - cb.pl(x["p_B"], x["issue"])) for x in conf]
+        ec = [(x["jeu"][:7], cb.pl(x["p_K"], x["issue"]) - cb.pl(x["p_B"], x["issue"])) for x in conf]
         bas, haut = cb.bootstrap(ec, risque)
         r["ecart_moyen"] = round(sum(e for _, e in ec) / len(ec), 4)
         r["intervalle_corrige"] = [round(bas, 4), round(haut, 4)]
@@ -131,6 +178,13 @@ def principal() -> int:
         for hm in GRILLE:
             noyau(xs, hz, hm)
     r = resumer(xs)
+    r["echelles"] = {}
+    for f in (7, 90):                                   # 0.10.233 : autres échelles de temps
+        ys = cas_echelle(comptes, jm, jp, dernier, f)
+        for hz in GRILLE:
+            for hm in GRILLE:
+                noyau(ys, hz, hm)
+        r["echelles"][f"{f} jours"] = resumer(ys, k_echelles=2)
     SORTIE.write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
     texte = json.dumps({k: v for k, v in r.items() if k != "note"}, ensure_ascii=False, indent=1)
     print(texte)
