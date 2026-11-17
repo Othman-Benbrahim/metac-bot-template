@@ -43,6 +43,7 @@ from pathlib import Path
 import httpx
 
 import dico_grasland as dg
+import dico_newsmap as dn
 
 FLUX = {
     "officiel": [
@@ -133,6 +134,8 @@ VUS = Path("registre") / "rss-vus.txt"
 TITRES = Path("registre") / "rss-titres.csv"  # 0.10.198 : empreintes de titres (jamais les titres), pour les reprises
 REGIONS = Path("registre") / "rss-regions.csv"   # 0.10.219 : macro-régions (dictionnaire Grasland-Toureille), en ombre
 ACCORD = Path("registre") / "rss-accord.csv"     # 0.10.219 : accord entre nos pays et ceux du second codeur
+TROIS = Path("registre") / "rss-trois-codeurs.csv"  # 0.10.221 : profils de réponse des trois codeurs (Newsmap en 3e)
+N_PAYS = 250                                     # univers des codes pays, pour le profil « 000 » du modèle latent
 SANTE = Path("registre") / "rss-sante.csv"   # 0.10.162 : état de chaque flux (dernier essai, dernier succès, dernier nouvel article)
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
@@ -363,6 +366,29 @@ def bilan_accord(accord: dict, ecarts_nous: dict, ecarts_eux: dict) -> str:
             f"par eux seuls : {top(ecarts_eux)}.")
 
 
+def bilan_trois(trois: dict) -> str:
+    """0.10.221 : modèle à classe latente sur les profils cumulés des trois codeurs (tous pays confondus)."""
+    prof: dict[str, int] = {}
+    articles = 0
+    for (p, _, pr), n in trois.items():
+        if p == "_articles":
+            articles += n
+        else:
+            prof[pr] = prof.get(pr, 0) + n
+    vus = sum(prof.values())
+    if vus < 200:
+        return f"Trois codeurs (nous, Grasland-Toureille, Newsmap) : {vus} mention(s) cumulée(s), trop peu pour le modèle latent (200)."
+    prof["000"] = max(0, articles * N_PAYS - vus)
+    r = dn.classe_latente(prof)
+    l = [f"## Trois codeurs, modèle à classe latente (en ombre, erreurs supposées indépendantes : indicatif)", "",
+         f"{vus} mentions cumulées sur {articles} articles. Profils (nous, Grasland, Newsmap) : "
+         + ", ".join(f"{k} {v}" for k, v in sorted(prof.items()) if k != "000") + "."]
+    for nom in ("nous", "grasland", "newsmap"):
+        v = r[nom]
+        l.append(f"- {nom} : sensibilité {v['sensibilite']:.0%}, fausses alertes {1 - v['specificite']:.3%} des cases.")
+    return "\n".join(l)
+
+
 def principal() -> int:
     vus = set(VUS.read_text(encoding="utf-8").split()) if VUS.exists() else set()
     comptes: dict[tuple, int] = {}
@@ -383,6 +409,10 @@ def principal() -> int:
     if ACCORD.exists():
         for x in csv.DictReader(ACCORD.open(encoding="utf-8")):
             accord[(x["pays"], x["jour"])] = [int(x["commun"]), int(x["nous_seul"]), int(x["eux_seul"])]
+    trois: dict[tuple, int] = {}
+    if TROIS.exists():
+        for x in csv.DictReader(TROIS.open(encoding="utf-8")):
+            trois[(x["pays"], x["jour"], x["profil"])] = int(x["n"])
     ecarts_nous: dict[str, int] = {}
     ecarts_eux: dict[str, int] = {}
     aujourdhui = datetime.now(timezone.utc).date().isoformat()
@@ -398,6 +428,10 @@ def principal() -> int:
         # 0.10.219 (en ombre) : second codeur, dictionnaire de Grasland et Toureille (capitales, chefs d'État, macro-régions)
         gr = dg.charger(c, ("en", "fr"))
         gr_de = dg.charger(c, ("en", "fr", "de")) if gr else []
+        # 0.10.221 (en ombre) : troisième codeur, dictionnaire de Newsmap (K. Watanabe ; français : C. Grasland)
+        nm = dn.charger(c, ("en", "fr")) if gr else []
+        nm_de = dn.charger(c, ("en", "fr", "de")) if nm else []
+        print(f"{len(nm)} expressions du dictionnaire Newsmap" + ("" if nm else " : source indisponible, profils à trois codeurs non écrits ce jour") + ".")
         print(f"{len(gr)} expressions du dictionnaire Grasland-Toureille" + ("" if gr else " : source indisponible, comptes « _grasland » non écrits ce jour") + ".")
         for famille, urls in FLUX.items():
             for url in urls:
@@ -446,10 +480,16 @@ def principal() -> int:
                         for p in (pays_large if (larges or famille in LARGE_SEUL) else pays) | pays_gr:
                             for fa in familles:
                                 comptes[(p, a["jour"], fa + "_fusion")] = comptes.get((p, a["jour"], fa + "_fusion"), 0) + 1
+                        nous = pays_large if (larges or famille in LARGE_SEUL) else pays
+                        if nm:
+                            pays_nm = dn.detecter(a["texte"], nm_de if famille in ALLEMAND else nm)
+                            for p in nous | pays_gr | pays_nm:
+                                k = (p, a["jour"], f"{int(p in nous)}{int(p in pays_gr)}{int(p in pays_nm)}")
+                                trois[k] = trois.get(k, 0) + 1
+                            trois[("_articles", a["jour"], "total")] = trois.get(("_articles", a["jour"], "total"), 0) + 1
                         for rg in regions_gr:
                             for fa in familles:
                                 regions[(rg, a["jour"], fa)] = regions.get((rg, a["jour"], fa), 0) + 1
-                        nous = pays_large if (larges or famille in LARGE_SEUL) else pays
                         for p in nous | pays_gr:
                             k = (p, a["jour"])
                             v = accord.setdefault(k, [0, 0, 0])
@@ -480,6 +520,12 @@ def principal() -> int:
             w.writerow(["region", "jour", "famille", "articles"])
             for (rg, j, fa), n in sorted(regions.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
                 w.writerow([rg, j, fa, n])
+    if trois:
+        with TROIS.open("w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["pays", "jour", "profil", "n"])
+            for (p, j, pr), n in sorted(trois.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
+                w.writerow([p, j, pr, n])
     if accord:
         with ACCORD.open("w", encoding="utf-8", newline="") as f:
             w = csv.writer(f)
@@ -502,6 +548,7 @@ def principal() -> int:
             w.writerow({k: sante[u].get(k, "") for k in w.fieldnames})
     rapport = bilan_sante([sante[u] for u in sorted(actuels & set(sante))], aujourdhui)
     rapport += "\n\n" + bilan_accord(accord, ecarts_nous, ecarts_eux)
+    rapport += "\n\n" + bilan_trois(trois)
     rapport += ("\n\nReprises écartées (même titre déjà compté à moins de 30 jours) : "
                 + (", ".join(f"{k} {v}" for k, v in sorted(reprises.items())) or "aucune") + ".")
     print(rapport)
