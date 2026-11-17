@@ -729,6 +729,31 @@ def feux(cca2: str | None, d0: date, couverture_min: int = 26) -> dict:
 
 CALENDRIER_NBS = Path("registre") / "calendrier-nbs.csv"
 PUBLICATIONS_NBS = Path("registre") / "publications-nbs.csv"
+FERIES_CHINE = Path("registre") / "jours-feries-chine.csv"   # 0.10.216 : congés officiels (Conseil d'État), à renouveler
+
+
+def _feries_chine() -> set[date]:
+    out: set[date] = set()
+    if FERIES_CHINE.exists():
+        for x in csv.DictReader(FERIES_CHINE.open(encoding="utf-8")):
+            d, f = date.fromisoformat(x["debut"]), date.fromisoformat(x["fin"])
+            while d <= f:
+                out.add(d)
+                d += timedelta(days=1)
+    return out
+
+
+def echeance_nbs(prevue: date, tolerance: int, feries: set[date]) -> date:
+    """0.10.216 : date limite d'une publication = date prévue + tolérance, prolongée d'un jour par jour férié chinois
+    compris dans l'intervalle (le site anglais ne publie pas pendant les « semaines d'or » : PMI du 30 avril paru le
+    6 mai, PMI du 30 septembre paru le 8 octobre 2026)."""
+    limite = prevue + timedelta(days=tolerance)
+    while True:
+        n = sum(1 for k in range((limite - prevue).days + 1) if prevue + timedelta(days=k) in feries)
+        nouvelle = prevue + timedelta(days=tolerance + n)
+        if nouvelle == limite:
+            return limite
+        limite = nouvelle
 
 
 def silence_statistique(cca2: str | None, d0: date, fenetre: int = 30, tolerance: int = 3) -> dict:
@@ -745,14 +770,16 @@ def silence_statistique(cca2: str | None, d0: date, fenetre: int = 30, tolerance
     debut = max(min(x["jour"] for x in obs), (d0 - timedelta(days=fenetre)).isoformat())
     a_temps = retard = absente = 0
     manquantes = []
+    feries = _feries_chine()
     for x in csv.DictReader(CALENDRIER_NBS.open(encoding="utf-8")):
         e = date.fromisoformat(x["date_prevue"])
-        if not (debut <= (e - timedelta(days=1)).isoformat() and e + timedelta(days=tolerance) < d0):
+        limite = echeance_nbs(e, tolerance, feries)
+        if not (debut <= (e - timedelta(days=1)).isoformat() and limite < d0):
             continue
         vues = [date.fromisoformat(o["jour"]) for o in obs if o["publication"] == x["publication"]]
-        if any(e - timedelta(days=1) <= v <= e + timedelta(days=tolerance) for v in vues):
+        if any(e - timedelta(days=1) <= v <= limite for v in vues):
             a_temps += 1
-        elif any(e + timedelta(days=tolerance) < v for v in vues):
+        elif any(limite < v for v in vues):
             retard += 1
             manquantes.append(f"{x['publication']} {x['date_prevue']} (retard)")
         else:

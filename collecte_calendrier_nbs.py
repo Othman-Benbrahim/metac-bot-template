@@ -49,7 +49,7 @@ MOTIFS = [
     ("ventes_detail", r"Retail Sales"),
     ("revenus_menages", r"Income and Consumption Expenditure"),
     ("prix_logements", r"Sales Prices of Commercial Residential"),
-    ("profits_industriels", r"Profits of Industrial Enterprises"),
+    ("profits_industriels", r"Profits? of Industrial Enterprises"),
 ]
 _LIEN = re.compile(r'<a[^>]+href="([^"]*?/(\d{6})/t(\d{8})_\d+\.html)"[^>]*>(.*?)</a>', re.I | re.S)
 

@@ -35,6 +35,15 @@ class TestNBS(unittest.TestCase):
                 r = ni.silence_statistique("CN", date(2026, 11, 12))
                 self.assertNotIn("ipc 2026-11-09 (absente)", r.get("manquantes", []))
 
+    def test_titre_profit_singulier(self):
+        self.assertEqual(cn.publication("Profit of Industrial Enterprises above the Designated Size in 2025"),
+                         "profits_industriels")
+
+    def test_echeance_feries(self):
+        f = {date(2026, 10, d) for d in range(1, 8)}
+        self.assertEqual(ni.echeance_nbs(date(2026, 9, 30), 3, f), date(2026, 10, 10))
+        self.assertEqual(ni.echeance_nbs(date(2026, 11, 9), 3, f), date(2026, 11, 12))
+
 
 if __name__ == "__main__":
     unittest.main()
