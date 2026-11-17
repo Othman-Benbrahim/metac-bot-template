@@ -1,0 +1,214 @@
+{
+ "note": "perte log, plus bas = mieux ; δ fixé sur l'exploration, jugé sur la confirmation ; aucun modèle de langue ; données ConflictForecast : Mueller et Rauh (2022), Mueller, Rauh et Seimon (2024)",
+ "coupure": "2026-01-01",
+ "questions": 1018,
+ "avec_conflictforecast": 806,
+ "k_juges": 12,
+ "risque_corrige": 0.000347,
+ "cellules": [
+  {
+   "indicateur": "ESC",
+   "famille": "mobilisation",
+   "etat": 1,
+   "attendue": false,
+   "n_exploration": 38,
+   "n_confirmation": 38,
+   "delta": -0.011,
+   "perte_B": 0.5998,
+   "perte_ajustee": 0.599,
+   "ecart_moyen": -0.0007,
+   "intervalle_corrige": [
+    -0.0031,
+    0.0024
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "ESC",
+   "famille": "mobilisation",
+   "etat": 0,
+   "attendue": false,
+   "n_exploration": 75,
+   "n_confirmation": 86,
+   "delta": 0.2552,
+   "perte_B": 0.5299,
+   "perte_ajustee": 0.5406,
+   "ecart_moyen": 0.0107,
+   "intervalle_corrige": [
+    -0.0236,
+    0.0396
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "ESC",
+   "famille": "strategique",
+   "etat": 1,
+   "attendue": false,
+   "n_exploration": 19,
+   "n_confirmation": 25,
+   "delta": 0.1814,
+   "perte_B": 0.8064,
+   "perte_ajustee": 0.7919,
+   "ecart_moyen": -0.0145,
+   "intervalle_corrige": [
+    -0.0839,
+    0.0563
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "ESC",
+   "famille": "strategique",
+   "etat": 0,
+   "attendue": false,
+   "n_exploration": 38,
+   "n_confirmation": 53,
+   "delta": 0.1548,
+   "perte_B": 0.5943,
+   "perte_ajustee": 0.6055,
+   "ecart_moyen": 0.0112,
+   "intervalle_corrige": [
+    -0.021,
+    0.0493
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "ESC",
+   "famille": "violence",
+   "etat": 1,
+   "attendue": true,
+   "n_exploration": 75,
+   "n_confirmation": 89,
+   "delta": 0.3225,
+   "perte_B": 0.6921,
+   "perte_ajustee": 0.6961,
+   "ecart_moyen": 0.004,
+   "intervalle_corrige": [
+    -0.0466,
+    0.0597
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "ESC",
+   "famille": "violence",
+   "etat": 0,
+   "attendue": true,
+   "n_exploration": 128,
+   "n_confirmation": 141,
+   "delta": -0.0322,
+   "perte_B": 0.3826,
+   "perte_ajustee": 0.3821,
+   "ecart_moyen": -0.0006,
+   "intervalle_corrige": [
+    -0.0031,
+    0.0022
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "AV",
+   "famille": "mobilisation",
+   "etat": 1,
+   "attendue": false,
+   "n_exploration": 35,
+   "n_confirmation": 40,
+   "delta": 0.1128,
+   "perte_B": 0.6124,
+   "perte_ajustee": 0.6132,
+   "ecart_moyen": 0.0008,
+   "intervalle_corrige": [
+    -0.0249,
+    0.0229
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "AV",
+   "famille": "mobilisation",
+   "etat": 0,
+   "attendue": false,
+   "n_exploration": 78,
+   "n_confirmation": 84,
+   "delta": 0.1806,
+   "perte_B": 0.5222,
+   "perte_ajustee": 0.5346,
+   "ecart_moyen": 0.0124,
+   "intervalle_corrige": [
+    -0.0112,
+    0.0308
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "AV",
+   "famille": "strategique",
+   "etat": 1,
+   "attendue": false,
+   "n_exploration": 19,
+   "n_confirmation": 23,
+   "delta": 0.2825,
+   "perte_B": 0.8066,
+   "perte_ajustee": 0.8115,
+   "ecart_moyen": 0.0049,
+   "intervalle_corrige": [
+    -0.1283,
+    0.111
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "AV",
+   "famille": "strategique",
+   "etat": 0,
+   "attendue": false,
+   "n_exploration": 38,
+   "n_confirmation": 55,
+   "delta": 0.045,
+   "perte_B": 0.602,
+   "perte_ajustee": 0.6028,
+   "ecart_moyen": 0.0009,
+   "intervalle_corrige": [
+    -0.0101,
+    0.0116
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "AV",
+   "famille": "violence",
+   "etat": 1,
+   "attendue": true,
+   "n_exploration": 76,
+   "n_confirmation": 81,
+   "delta": 0.3269,
+   "perte_B": 0.7409,
+   "perte_ajustee": 0.7365,
+   "ecart_moyen": -0.0044,
+   "intervalle_corrige": [
+    -0.0736,
+    0.0546
+   ],
+   "verdict": "non confirmé"
+  },
+  {
+   "indicateur": "AV",
+   "famille": "violence",
+   "etat": 0,
+   "attendue": true,
+   "n_exploration": 128,
+   "n_confirmation": 149,
+   "delta": -0.0742,
+   "perte_B": 0.3727,
+   "perte_ajustee": 0.3706,
+   "ecart_moyen": -0.0021,
+   "intervalle_corrige": [
+    -0.0096,
+    0.0038
+   ],
+   "verdict": "non confirmé"
+  }
+ ]
+}
