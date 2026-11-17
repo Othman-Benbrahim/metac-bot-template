@@ -1,0 +1,93 @@
+{
+ "note": "perte log, plus bas = mieux ; B = classe de référence pondérée ; aucun modèle de langue",
+ "m11_grappe": {
+  "k_juges": 2,
+  "risque_corrige": 0.001923,
+  "cellules": [
+   {
+    "cellule": "manifestations",
+    "n_exploration": 213,
+    "n_confirmation": 154,
+    "presence": 0.149,
+    "delta": -0.0836,
+    "perte_B": 0.6315,
+    "perte_ajustee": 0.6279,
+    "ecart_moyen": -0.0035,
+    "intervalle_corrige": [
+     -0.0137,
+     0.0073
+    ],
+    "verdict": "non confirmé"
+   },
+   {
+    "cellule": "emeutes",
+    "n_exploration": 63,
+    "n_confirmation": 44,
+    "presence": 0.11,
+    "delta": -0.1872,
+    "perte_B": 0.5623,
+    "perte_ajustee": 0.5828,
+    "ecart_moyen": 0.0204,
+    "intervalle_corrige": [
+     -0.0174,
+     0.051
+    ],
+    "verdict": "non confirmé"
+   }
+  ],
+  "questions": 3936
+ },
+ "alerte_precoce": {
+  "k_juges": 3,
+  "risque_corrige": 0.001282,
+  "cellules": [
+   {
+    "cellule": "manifestations",
+    "n_exploration": 172,
+    "n_confirmation": 331,
+    "presence": 0.171,
+    "delta": 0.5794,
+    "perte_B": 0.3245,
+    "perte_ajustee": 0.3547,
+    "ecart_moyen": 0.0302,
+    "intervalle_corrige": [
+     0.0015,
+     0.0533
+    ],
+    "verdict": "non confirmé"
+   },
+   {
+    "cellule": "emeutes",
+    "n_exploration": 68,
+    "n_confirmation": 109,
+    "presence": 0.18,
+    "delta": 0.1459,
+    "perte_B": 0.3927,
+    "perte_ajustee": 0.3953,
+    "ecart_moyen": 0.0027,
+    "intervalle_corrige": [
+     -0.0167,
+     0.0162
+    ],
+    "verdict": "non confirmé"
+   },
+   {
+    "cellule": "force",
+    "n_exploration": 86,
+    "n_confirmation": 148,
+    "presence": 0.171,
+    "delta": 0.4917,
+    "perte_B": 0.4664,
+    "perte_ajustee": 0.4843,
+    "ecart_moyen": 0.0179,
+    "intervalle_corrige": [
+     -0.0449,
+     0.0693
+    ],
+    "verdict": "non confirmé"
+   }
+  ],
+  "questions": 6207,
+  "oui": 0.142
+ }
+}
