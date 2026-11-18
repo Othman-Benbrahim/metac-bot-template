@@ -48,6 +48,8 @@ COLLECTES = (
     ("collecte_nowcast_inflation.yaml", "jours_ouvres"), ("veille_articles.yaml", "groupe_bancs"),
     ("collecte_telegram.yaml", None),
     ("gdelt_bigquery.yaml", None),            # 0.10.277 : requête groupée de nuit (questions ouvertes, 30 jours)
+    ("collecte_certificats.yaml", None),      # 0.10.299 : sources hors cadre (certificats, routines, Federal Register)
+    ("collecte_routines.yaml", None), ("collecte_federal_register.yaml", None),
 )
 
 

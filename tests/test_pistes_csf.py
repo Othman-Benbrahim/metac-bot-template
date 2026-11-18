@@ -219,6 +219,44 @@ class Wikipedia(unittest.TestCase):
         self.assertEqual(asyncio.run(w.protections(c, "Bank of England", date(2026, 1, 1), date(2026, 3, 31))), 2)
 
 
+class SourcesHorsCadre(unittest.TestCase):
+    def test_certificats_nouveaux_noms(self):
+        import collecte_certificats as cc
+        vus = {"api.openai.com"}
+        n = cc.nouveaux_noms([{"id": 7, "not_before": "2026-10-01T00:00:00Z",
+                               "dns_names": ["api.openai.com", "*.gpt-6.openai.com", "gpt-6.openai.com"]}], vus)
+        self.assertEqual([x["nom"] for x in n], ["gpt-6.openai.com"])
+        self.assertEqual(n[0]["vu_le"], "2026-10-01")
+
+    def test_routines_rss_et_atom(self):
+        import collecte_routines as cr
+        rss = b"""<rss><channel><item><guid>a</guid><pubDate>Tue, 17 Nov 2026 10:00:00 GMT</pubDate></item>
+                 <item><link>b</link><pubDate>Wed, 18 Nov 2026 10:00:00 +0300</pubDate></item></channel></rss>"""
+        self.assertEqual(cr.elements(rss), [("a", "2026-11-17"), ("b", "2026-11-18")])
+        atom = b"""<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>x</id><updated>2026-11-16T08:00:00Z</updated></entry></feed>"""
+        self.assertEqual(cr.elements(atom), [("x", "2026-11-16")])
+
+    def test_federal_register(self):
+        import collecte_federal_register as fr
+        d = {"results": [{"document_number": "2026-1", "type": "Rule", "title": "T", "agencies": [{"name": "EPA"}],
+                          "filed_at": "2026-11-18T08:45:00-05:00", "publication_date": "2026-11-20"}]}
+        vus = set()
+        self.assertEqual(fr.lignes(d, vus, "2026-11-18")[0]["agences"], ["EPA"])
+        self.assertEqual(fr.lignes(d, vus, "2026-11-18"), [])           # déjà vu
+
+    def test_politesse_robots(self):
+        import politesse
+
+        class Rep:
+            def __init__(self, t, code=200): self.text, self.status_code = t, code
+
+        class C:
+            def get(self, url, **k): return Rep("User-agent: *\nDisallow: /prive/")
+        politesse._ROBOTS.clear()
+        self.assertTrue(politesse.autorise(C(), "https://exemple.org/public/feed"))
+        self.assertFalse(politesse.autorise(C(), "https://exemple.org/prive/feed"))
+
+
 class FiltreAzure(unittest.TestCase):
     def test_variantes(self):
         import banc_filtre_azure as bfa

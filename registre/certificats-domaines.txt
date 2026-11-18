@@ -1,0 +1,15 @@
+# domaines suivis par collecte_certificats.py (un par ligne ; 0.10.299)
+openai.com
+chatgpt.com
+anthropic.com
+claude.ai
+x.ai
+grok.com
+mistral.ai
+deepseek.com
+deepmind.google
+meta.ai
+perplexity.ai
+kimi.com
+z.ai
+qwen.ai

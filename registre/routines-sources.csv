@@ -1,0 +1,10 @@
+source,url
+kremlin_president_en,http://en.kremlin.ru/events/president/news/feed
+maison_blanche,https://www.whitehouse.gov/news/feed/
+departement_etat,https://www.state.gov/rss-feed/press-releases/feed/
+pentagone,https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=945&max=10
+onu_presse,https://press.un.org/en/rss.xml
+otan,https://www.nato.int/cps/rss/en/natohq/rssFeed.xsl/rssFeed.xml
+commission_europeenne,https://ec.europa.eu/commission/presscorner/api/rss?language=en
+elysee,https://www.elysee.fr/front/rss
+gouvernement_chine_mae,https://www.mfa.gov.cn/eng/xw/fyrbt/rss.xml
