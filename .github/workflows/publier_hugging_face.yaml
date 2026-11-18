@@ -1,0 +1,46 @@
+name: "Publier le jeu de données sur Hugging Face"
+
+# 0.10.268 : envoie donnees/jeu-jugement/<version> vers un dépôt de jeu de données Hugging Face.
+# Lancement MANUEL seulement : rien ne sort sans le geste de l'auteur.
+# Prérequis (une fois) : un jeton Hugging Face en écriture dans le secret HF_TOKEN ;
+# le nom du dépôt (« compte/nom ») dans la variable HF_DATASET, ou dans le champ ci-dessous.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "version du jeu (dossier sous donnees/jeu-jugement)"
+        default: "v0"
+      depot:
+        description: "dépôt Hugging Face « compte/nom » (vide = variable HF_DATASET)"
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Publier
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DEPOT: ${{ github.event.inputs.depot || vars.HF_DATASET }}
+          VERSION: ${{ github.event.inputs.version || 'v0' }}
+        run: |
+          if [ -z "$HF_TOKEN" ] || [ -z "$DEPOT" ]; then echo "::error::secret HF_TOKEN ou dépôt (HF_DATASET) manquant"; exit 1; fi
+          test -d "donnees/jeu-jugement/$VERSION" || { echo "::error::dossier donnees/jeu-jugement/$VERSION absent"; exit 1; }
+          pip install -q "huggingface_hub==0.26.2"
+          python - <<'PY'
+          import os
+          from huggingface_hub import HfApi
+          api, depot, v = HfApi(token=os.environ["HF_TOKEN"]), os.environ["DEPOT"], os.environ["VERSION"]
+          api.create_repo(depot, repo_type="dataset", private=True, exist_ok=True)   # créé PRIVÉ ; à rendre public à la main
+          api.upload_folder(folder_path=f"donnees/jeu-jugement/{v}", repo_id=depot, repo_type="dataset",
+                            commit_message=f"jeu de questions de jugement {v} (depuis GitHub {os.environ.get('GITHUB_SHA', '')[:7]})")
+          print(f"Publié : https://huggingface.co/datasets/{depot}")
+          PY
