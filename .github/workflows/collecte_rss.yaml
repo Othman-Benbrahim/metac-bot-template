@@ -3,9 +3,7 @@ name: Collecte quotidienne des flux RSS (ombre)
 # 0.10.152 : comptes quotidiens (pays × jour × famille) des flux RSS officiels (ReliefWeb, avis de voyage, GDACS,
 # USGS) et de la presse francophone internationale retenue ; sans texte. Gratuit, rien de posté.
 on:
-  schedule:
-    - cron: "37 6 * * *"
-    - cron: "37 18 * * *"   # 0.10.166 : second passage, GitHub retarde ou saute des passages programmés (doublons écartés par empreinte)
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
 
 # file à part : une collecte programmée ne doit jamais prendre la place d'attente d'un banc lancé à la main

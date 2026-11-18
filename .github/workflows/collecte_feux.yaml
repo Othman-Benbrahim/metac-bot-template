@@ -3,9 +3,7 @@ name: Collecte quotidienne des feux par pays (NASA FIRMS, ombre)
 # 0.10.208 : points chauds détectés par satellite (VIIRS), comptés par pays et par jour. Clé gratuite : secret
 # FIRMS_MAP_KEY. Premier passage : « depuis » = 2026-06-01 (rattrapage, plusieurs minutes).
 on:
-  schedule:
-    - cron: "17 6 * * *"
-    - cron: "17 18 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       depuis:

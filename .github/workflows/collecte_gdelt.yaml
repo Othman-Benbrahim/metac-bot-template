@@ -3,9 +3,7 @@ name: Collecte quotidienne GDELT (manifestations, ombre)
 # 0.10.173 : comptes quotidiens de manifestations et d'émeutes par pays (GDELT, codes CAMEO 14 et 145) ; gratuit, sans
 # clé, rien de posté. Premier passage à la main avec « depuis » pour rattraper l'historique.
 on:
-  schedule:
-    - cron: "47 8 * * *"
-    - cron: "47 20 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       depuis:

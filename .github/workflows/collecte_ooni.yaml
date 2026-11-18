@@ -3,9 +3,7 @@ name: Collecte quotidienne OONI (censure, ombre)
 # 0.10.175 : parts de mesures anormales par pays et par jour (OONI, CC BY-NC-SA 4.0), sites web et messageries ;
 # gratuit, sans clé, rien de posté. Premier passage à la main avec « depuis » pour rattraper l'historique.
 on:
-  schedule:
-    - cron: "53 9 * * *"
-    - cron: "53 21 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       depuis:

@@ -3,9 +3,7 @@ name: Collecte quotidienne des avions d'État (ombre)
 # 0.10.180 : vols de la veille des avions d'État de régimes autoritaires (plane-alert-db « Dictator Alert », OpenSky),
 # comptés par pays ; environ 1 300 crédits OpenSky par jour. Comptes seulement (règle éthique des sources).
 on:
-  schedule:
-    - cron: "37 2 * * *"
-    - cron: "37 16 * * *"   # second passage (17 h 37 à Paris en hiver, après le retour des crédits OpenSky), sans effet si la veille est déjà lue
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
 
 concurrency:

@@ -3,9 +3,7 @@ name: Relevé quotidien du nowcast d'inflation (Cleveland, ombre)
 # 0.10.181 : nowcasts d'inflation de la Fed de Cleveland, relevés chaque jour ouvré ; nos relevés datés font
 # l'historique sans fuite (la Fed ne publie pas ses millésimes en téléchargement). Rien de posté.
 on:
-  schedule:
-    - cron: "11 16 * * 1-5"
-    - cron: "11 22 * * 1-5"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
 
 concurrency:

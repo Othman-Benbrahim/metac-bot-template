@@ -5,8 +5,7 @@ name: Veille d'articles
 # assigné à l'auteur les liste (notification GitHub par e-mail). Rien n'entre dans le bot.
 
 on:
-  schedule:
-    - cron: "23 6 * * *"
+  # 0.10.246 : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       jours:

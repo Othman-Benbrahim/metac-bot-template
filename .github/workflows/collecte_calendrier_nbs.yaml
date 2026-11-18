@@ -3,9 +3,7 @@ name: Collecte quotidienne des publications statistiques chinoises (NBS, M15, om
 # 0.10.209 : liste des communiqués anglais du Bureau national des statistiques chinois, confrontée au calendrier
 # officiel (registre/calendrier-nbs.csv). Premier passage : « pages » = 15 pour remonter plusieurs mois.
 on:
-  schedule:
-    - cron: "29 7 * * *"
-    - cron: "29 19 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       pages:

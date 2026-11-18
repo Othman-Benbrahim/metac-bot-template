@@ -3,9 +3,7 @@ name: Collecte quotidienne Cloudflare Radar (coupures, ombre)
 # 0.10.177 : coupures d'internet par pays et par cause (Cloudflare Radar, CC BY-NC 4.0) ; jeton en lecture seule
 # (secret CLOUDFLARE_RADAR_TOKEN) ; rien de posté. Premier passage à la main avec « depuis » pour l'historique.
 on:
-  schedule:
-    - cron: "29 11 * * *"
-    - cron: "29 23 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       depuis:

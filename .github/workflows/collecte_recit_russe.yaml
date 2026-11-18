@@ -3,9 +3,7 @@ name: Collecte quotidienne du récit russe par pays (GDELT DOC, M12, ombre)
 # 0.10.202 : volume quotidien des articles de sources russes qui nomment chaque pays (API DOC 2.0 de GDELT, gratuite,
 # sans clé) ; fenêtre glissante de trois mois relue à chaque passage. Environ 30 minutes (5 secondes entre requêtes).
 on:
-  schedule:
-    - cron: "23 4 * * *"
-    - cron: "23 16 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       pays:

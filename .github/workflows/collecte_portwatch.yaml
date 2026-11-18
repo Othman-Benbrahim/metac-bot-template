@@ -3,8 +3,7 @@ name: Collecte quotidienne PortWatch (détroits, ombre)
 # 0.10.176 : passages quotidiens de navires dans huit détroits (IMF PortWatch), à petite dose : une requête par
 # détroit et par passage, année en cours, un passage par jour. Source : IMF PortWatch. Rien de posté.
 on:
-  schedule:
-    - cron: "13 3 * * *"   # 0.10.185 : heure creuse (quota ArcGIS partagé saturé en journée)
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
 
 concurrency:

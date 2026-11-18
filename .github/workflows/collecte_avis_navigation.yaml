@@ -3,9 +3,7 @@ name: Collecte quotidienne des avertissements de navigation (NGA, exercices chin
 # 0.10.206 : avertissements de navigation du Pacifique republiés par la NGA (domaine public) ; on garde ceux qui
 # nomment une zone chinoise. Gratuit, une requête par passage. « sonde = oui » vérifie sans rien écrire.
 on:
-  schedule:
-    - cron: "41 5 * * *"
-    - cron: "41 17 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       sonde:

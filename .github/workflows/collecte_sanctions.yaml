@@ -3,9 +3,7 @@ name: Collecte quotidienne des sanctions (OFAC, Royaume-Uni, ombre)
 # 0.10.178 : nouvelles désignations par pays visé (OFAC, domaine public ; GOV.UK, Open Government Licence) ; rien de
 # posté. Premier passage à la main avec « depuis » pour l'historique.
 on:
-  schedule:
-    - cron: "41 12 * * *"
-    - cron: "41 0 * * *"   # second passage : GitHub retarde ou saute des passages programmés
+  # 0.10.246 : plus de tâche programmée propre : lancée la nuit par le planificateur (planificateur.yaml)
   workflow_dispatch:
     inputs:
       depuis:
