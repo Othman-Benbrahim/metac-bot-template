@@ -218,10 +218,18 @@ ESSAIS = {
              "objet": "B par retour vers la moyenne (Ornstein-Uhlenbeck autour d'une tendance linéaire) contre B, "
                       "questions réelles FRED et DBnomics ; aucun appel à un modèle",
              "doc": "preenregistrements/b-ou.md"},
-    "acteur_nomme": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "acteur_nomme": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+                     "verdict": "non reproduit : 174 questions de 2025 avec acteur, N 0,463 contre R1 0,443 (PIRE, "
+                                "+0,020, intervalle corrigé [−0,018 ; +0,058]) ; toutes questions de 2025 +0,002. En "
+                                "2025 ces questions se résolvent OUI à 17 % (36 % en 2026) : l'effet de 2026 tenait à "
+                                "la période, pas à l'acteur (run 44374695099)",
                      "objet": "taux de base corrigé par la classe « la question nomme un acteur » contre R1, questions "
                               "de 2025 (idée née des données de 2026)",
                      "doc": "preenregistrements/acteur-nomme.md"},
+    "tendance_attention_large": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                                 "objet": "taux des semblables S ajusté par la tendance de l'attention GDELT, contre S, "
+                                          "~890 questions distinctes de 2026 ; aucun appel à un modèle",
+                                 "doc": "preenregistrements/tendance-attention-large.md"},
     "tendance_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
                            "verdict": "non adopté : 119 questions distinctes (87 avec articles), M ajusté 0,4405 contre M 0,4473, écart −0,007, intervalle corrigé [−0,050 ; +0,036] ; signal faible et dans le sens attendu (rang tendance / issue 0,18 ; β appris sur tout 0,55 ; ratés 15 → 13) ; à refaire quand plus de questions résolues auront leurs comptes (run 44373600462)",
                            "objet": "M ajusté par la tendance de l'attention GDELT (10 derniers jours contre les 80 "

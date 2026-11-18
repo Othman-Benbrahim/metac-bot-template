@@ -20,6 +20,7 @@ Secrets : GCP_SA_KEY (compte de service, rôle Utilisateur de tâches BigQuery) 
     python gdelt_bq.py --mode court    # mêmes questions, 48 dernières heures, fusionnées
     python gdelt_bq.py --mode bancs    # questions distinctes des bancs de jugement, 90 jours avant la date du jeu
     python gdelt_bq.py --mode comptes  # 0.10.281 : mêmes questions, mêmes filtres, NOMBRE d'articles par jour
+    python gdelt_bq.py --mode comptes_jeu  # 0.10.290 : comptes pour les questions distinctes de 2026 du jeu de données
 """
 from __future__ import annotations
 
@@ -37,7 +38,8 @@ COMPTEUR = Path("registre/bigquery-compteur.json")
 TOURNOI = Path("registre/gdelt-bq-tournoi.json")
 BANCS = Path("registre/gdelt-bq-bancs.json")
 COMPTES = Path("registre/gdelt-bq-comptes.json")
-PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0}
+COMPTES_JEU = Path("registre/gdelt-bq-comptes-jeu.json")
+PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0, "comptes_jeu": 120.0}
 PLAFOND_MOIS_GO = 800.0
 PAR_QUESTION = 15
 
@@ -253,6 +255,30 @@ def mode_comptes() -> int:
     return 0
 
 
+def mode_comptes_jeu() -> int:
+    """0.10.290 (préenregistrement tendance-attention-large.md) : comptes quotidiens, 90 jours avant la PREMIÈRE date
+    de jeu, pour chaque question distincte de 2026 du jeu de données (toutes plateformes)."""
+    import banc_jugement as bj
+    xs = bj.cohorte_complete([json.loads(l) for l in bj.REGISTRE.read_text(encoding="utf-8").splitlines() if l.strip()])
+    vus, qs = set(), []
+    for x in sorted(xs, key=lambda x: x["jeu"]):
+        k = f'{x["source"]}:{x["id"]}'
+        if k in vus:
+            continue
+        vus.add(k)
+        if x["jeu"] < "2026-01-01":
+            continue
+        jeu = date.fromisoformat(x["jeu"][:10])
+        qs.append({"qid": f'{k}:{x["jeu"]}', "titre": x["titre"],
+                   "debut": (jeu - timedelta(days=90)).isoformat(), "fin": (jeu - timedelta(days=1)).isoformat()})
+    res = lancer(qs, "comptes_jeu", agreger=True)
+    COMPTES_JEU.write_text(json.dumps({q["qid"]: {"debut": q["debut"], "fin": q["fin"], "jours": res.get(q["qid"], {}),
+                                                  "filtrable": bool(sum(requis_et_options(q["titre"]), []))}
+                                       for q in qs}, ensure_ascii=False), encoding="utf-8")
+    print(f"{len(qs)} question(s) distincte(s) ; {sum(1 for q in qs if res.get(q['qid']))} avec au moins un article.")
+    return 0
+
+
 def mode_bancs() -> int:
     import banc_jugement_alphabet as bja
     vus, qs = set(), []
@@ -276,7 +302,8 @@ def principal(mode: str) -> int:
         print("::warning::GCP_SA_KEY ou GCP_PROJET absent : GDELT par BigQuery sauté.")
         return 0
     try:
-        return mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes" else mode_tournoi(mode)
+        return (mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
+                else mode_comptes_jeu() if mode == "comptes_jeu" else mode_tournoi(mode))
     except RuntimeError as e:
         print(f"::warning::{e}")
         return 0
@@ -284,5 +311,5 @@ def principal(mode: str) -> int:
 
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
-    a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes"], default="nuit")
+    a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes", "comptes_jeu"], default="nuit")
     sys.exit(principal(a.parse_args().mode))

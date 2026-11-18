@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "nuit (tournoi, 30 jours), bancs (titres, questions des bancs) ou comptes (articles par jour, questions des bancs)"
+        description: "nuit (tournoi, 30 jours), bancs (titres, questions des bancs), comptes (articles par jour, questions des bancs) ou comptes_jeu (articles par jour, questions de 2026 du jeu de données)"
         default: "nuit"
 
 concurrency:
@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/gdelt-bq-tournoi.json registre/gdelt-bq-bancs.json registre/gdelt-bq-comptes.json registre/bigquery-compteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/gdelt-bq-tournoi.json registre/gdelt-bq-bancs.json registre/gdelt-bq-comptes.json registre/gdelt-bq-comptes-jeu.json registre/bigquery-compteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : GDELT par BigQuery du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase

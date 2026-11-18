@@ -81,6 +81,17 @@ class RetourMoyenne(unittest.TestCase):
         self.assertLess(fb.b_ou(rw, 7, d0)["bic_ecart"], 2)  # marche avec dérive : B garde la main
 
 
+class TendanceLarge(unittest.TestCase):
+    def test_loo_rapide_identique(self):
+        import banc_tendance_large as btl
+        ls = [{"p_S": 0.4, "issue": i % 2, "tendance": (1.0 if i % 2 else -1.0) * (1 + i % 3)} for i in range(30)]
+        p1, beta = btl.loo(ls, "p_S")
+        p2 = ba.loo([dict(x, p_M=x["p_S"]) for x in ls], ba.ajuste_tendance, "tendance", ba.GRILLE_BETA)
+        for a, b in zip(p1, p2):
+            self.assertAlmostEqual(a, b)
+        self.assertGreater(beta, 0)
+
+
 class FiltreAzure(unittest.TestCase):
     def test_variantes(self):
         import banc_filtre_azure as bfa
