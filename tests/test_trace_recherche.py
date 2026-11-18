@@ -104,7 +104,8 @@ class TGdelt(unittest.TestCase):
     def test_mots_et_fenetre(self):
         import alphabet_recherche as ar_
         self.assertEqual(ar_.gdelt_mots('Will "X" win the 2026 vote in EU?'), "win vote")
-        self.assertEqual(ar_.gdelt_mots("Will Anthropic file an S-1 before June?"), 'Anthropic file "S-1" June')
+        self.assertEqual(ar_.gdelt_mots("Will Anthropic file an S-1 before June?"), 'Anthropic "S-1" June file')
+        self.assertEqual(ar_.gdelt_mots("Will President Luiz Inacio Lula be reelected in Brazil?"), "President Lula Brazil reelected")
 
     def test_429_puis_succes(self):
         import alphabet_recherche as ar_

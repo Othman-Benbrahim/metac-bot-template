@@ -163,6 +163,7 @@ async def _gdelt_attendre() -> None:
 
 
 _MOTS_VIDES: set[str] | None = None
+GDELT_MOTS = 4
 
 
 def _mots_vides() -> set[str]:
@@ -179,14 +180,30 @@ def gdelt_mots(requete: str) -> str:
     """0.10.264-0.10.266 (sonde GDELT du 2026-11-18, run 44303267909) : GDELT exige TOUS les mots de la requête ;
     les mots vides (« Will », « the »…) la rendent trop étroite. Il refuse les mots de moins de 3 lettres et tout
     tiret hors guillemets (« S-1 », « mail-in » : « illegal character ») : un mot à tiret est mis entre guillemets."""
+    # 0.10.275 (sonde du 2026-11-18 par le pont : 7 réponses vides sur 20, requêtes de 6 à 8 mots) : GDELT exige
+    # TOUS les mots ; on garde au plus 4 mots, les noms propres d'abord (majuscule hors début de phrase), puis les
+    # autres dans l'ordre, sans doublon.
+    # Une suite de noms propres (« Luiz Inacio Lula ») ne garde que son premier et son dernier mot.
     vides = _mots_vides()
-    mots = []
-    for w in re.sub(r"[^\w\s-]", " ", requete).split():
+    propres, autres, vus, suite = [], [], set(), []
+
+    def fermer():
+        propres.extend(suite if len(suite) <= 2 else [suite[0], suite[-1]])
+        suite.clear()
+    for i, w in enumerate(re.sub(r"[^\w\s-]", " ", requete).split()):
         w = w.strip("-")
-        if len(w) <= 2 or w.isdigit() or w.lower() in vides:
+        if len(w) <= 2 or w.isdigit() or w.lower() in vides or w.lower() in vus:
+            fermer()
             continue
-        mots.append(f'"{w}"' if "-" in w else w)
-    return " ".join(mots[:8])
+        vus.add(w.lower())
+        mot = f'"{w}"' if "-" in w else w
+        if w[0].isupper() and i > 0:
+            suite.append(mot)
+        else:
+            fermer()
+            autres.append(mot)
+    fermer()
+    return " ".join((propres + autres)[:GDELT_MOTS])
 
 
 async def gdelt(requete: str, avant: datetime | None = None) -> str:
