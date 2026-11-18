@@ -418,10 +418,10 @@ def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b
     return {"n_nouveaux": len(tous), "regard": rg, "n_juge": len(nv), "blocs": len(cles), "ecart_moyen": moy,
             "intervalle_90_par_blocs": [bas, haut], "intervalle_corrige": [bas_c, haut_c],
             "niveau_corrige": round(1 - 2 * es.risque_corrige(max(rg, 1)), 4),
-            "verdict": ("en attente (moins de 100 questions de jeux non vus)" if rg == 0 else
+            "verdict": (f"en attente (moins de {N} questions de jeux non vus)" if rg == 0 else
                         "critère atteint : décision d'auteur à prendre" if moy < 0 and haut_c < 0 else
                         "critère nominal seulement (pas au niveau corrigé)" if moy < 0 and haut < 0 else
-                        "critère non atteint" + (" ; un second regard à 200" if rg == 1 else " ; essai à clore"))}
+                        "critère non atteint" + (f" ; un second regard à {2 * N}" if rg == 1 else " ; essai à clore"))}
 
 
 def critere_b_ar(lignes: list[dict]) -> dict:
