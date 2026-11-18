@@ -9,15 +9,15 @@ on:
       max_questions:
         description: "questions nouvelles au plus pour ce passage (0 = toutes)"
         default: "0"
-  # Mode minibench. Les questions ne restent ouvertes que 3 heures, à heure aléatoire : contrôle toutes les 20 minutes.
+  # Mode minibench. Les questions ne restent ouvertes que 3 heures, à heure aléatoire.
+  # 0.10.278 (2026-11-18) : le déclenchement programmé « toutes les 20 minutes » n'a été honoré que 12 fois en 4 jours
+  # (GitHub retarde ou saute ces tâches, et la file partagée avec les bancs les écrasait). C'est désormais le VEILLEUR
+  # (veilleur.yaml) qui lance ce bot dès qu'une question nouvelle s'ouvre ; plus de déclenchement programmé ici.
   # 0.6.0 : aucun plafond par défaut (ALPHABET_MAX_QUESTIONS = 0 : toutes les questions ouvertes) ; un plafond
   # quotidien reste possible en donnant un nombre à cette variable. Un contrôle sans question nouvelle ne sonde aucun
   # modèle, ne coûte rien et n'écrit rien dans le dépôt.
-  schedule:
-    - cron: "*/20 * * * *"
-
 concurrency:
-  group: bot-alphabet-registre   # partagé avec le score : une seule écriture du registre à la fois
+  group: bot-alphabet-tournoi   # 0.10.278 : file à part ; les bancs (plusieurs heures) ne bloquent plus le bot
   cancel-in-progress: false
 
 permissions:
@@ -119,6 +119,9 @@ jobs:
             git config user.email "alphabet-bot@users.noreply.github.com"
             git add registre
             git commit -m "registre : prévisions du $(date -u +%Y-%m-%dT%H:%MZ)"
-            git pull --rebase
-            git push
+            # 0.10.278 : la file du bot n'est plus celle des bancs : un envoi peut croiser le leur ; on retente
+            for i in 1 2 3 4 5; do
+              git pull --rebase -X theirs && git push && break
+              echo "envoi refusé (essai $i), nouvel essai"; sleep $((i * 10))
+            done
           fi

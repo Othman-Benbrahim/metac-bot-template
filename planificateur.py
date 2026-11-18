@@ -104,8 +104,9 @@ class Github:
             out += r.json().get("workflow_runs", [])
         return out
 
-    def lancer(self, fichier: str) -> None:
-        r = self.c.post(f"{API}/actions/workflows/{fichier}/dispatches", json={"ref": "main"})
+    def lancer(self, fichier: str, entrees: dict | None = None) -> None:
+        corps = {"ref": "main", **({"inputs": entrees} if entrees else {})}
+        r = self.c.post(f"{API}/actions/workflows/{fichier}/dispatches", json=corps)
         r.raise_for_status()
 
 
