@@ -98,3 +98,49 @@ class TSansFoule(unittest.TestCase):
             self.assertNotIn(mot, r)
         for garde in ("Le Sénat vote mardi.", "Le texte a été amendé.", "committee approved", "manifold of options"):
             self.assertIn(garde, r)
+
+
+class TGdelt(unittest.TestCase):
+    def test_mots_et_fenetre(self):
+        import alphabet_recherche as ar_
+        self.assertEqual(ar_.gdelt_mots('Will "X" win the 2026 vote in EU?'), "Will win the vote")
+
+    def test_reessai_sur_limite(self):
+        import alphabet_recherche as ar_
+        ar_.GDELT_ECART = 0
+        reponses = iter([("Please limit requests to one every 5 seconds", None),
+                         ("", {"articles": [{"seendate": "20260101T000000Z", "title": "T", "url": "https://a.org/x",
+                                             "domain": "a.org", "sourcecountry": "FR", "language": "French"}]})])
+        params_vus = []
+
+        class R:
+            def __init__(self, t, j):
+                self.text, self._j, self.status_code = t, j, 200
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                if self._j is None:
+                    raise ValueError
+                return self._j
+
+        class C:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *a):
+                return False
+
+            async def get(self, url, params):
+                params_vus.append(params)
+                return R(*next(reponses))
+        ancien = ar_.httpx.AsyncClient
+        ar_.httpx.AsyncClient = lambda timeout: C()
+        try:
+            t = asyncio.run(ar_.gdelt("ceasefire Ukraine", datetime(2026, 3, 1, tzinfo=timezone.utc)))
+        finally:
+            ar_.httpx.AsyncClient = ancien
+        self.assertIn("https://a.org/x", t)
+        self.assertEqual(len(params_vus), 2)
+        self.assertEqual(params_vus[0]["startdatetime"], "20251201000000")

@@ -70,7 +70,7 @@ def tracer(texte: str, jeu: str) -> dict:
             suspectes.append({**s, "motif": motif})
     if (texte or "").startswith("("):
         moteur = "aucun résultat" if texte == AUCUN else "panne"
-    return {"moteur": moteur, "n_sources": len(sources), **({"panne": texte[:200]} if moteur == "panne" else {}), "sources": sources, "suspectes": suspectes,
+    return {"moteur": moteur, "n_sources": len(sources), **({"panne": texte[:600]} if moteur == "panne" else {}), "sources": sources, "suspectes": suspectes,
             "empreinte": hashlib.sha1((texte or "").encode()).hexdigest()[:16], "longueur": len(texte or "")}
 
 
@@ -105,7 +105,7 @@ async def chercher_fige(cle: str, requete: str, avant: datetime, chercher) -> tu
             t = AUCUN
             ecrire_cache(cle, t)
             return t, False
-        return f"(recherche indisponible : {type(e).__name__}: {msg[:150]})", False
+        return f"(recherche indisponible : {type(e).__name__}: {msg[:500]})", False
     ecrire_cache(cle, t)
     return t, False
 

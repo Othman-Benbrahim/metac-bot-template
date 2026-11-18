@@ -139,19 +139,59 @@ async def tinyfish(requete: str, avant: datetime | None = None) -> str:
     return "\n\n".join(lignes)
 
 
+_GDELT_VERROU = None
+_GDELT_DERNIER = 0.0
+GDELT_ECART = 5.5            # 0.10.264 : GDELT demande une requête toutes les 5 secondes au plus
+
+
+async def _gdelt_attendre() -> None:
+    """Une seule requête GDELT à la fois, espacées d'au moins GDELT_ECART secondes (tout le processus)."""
+    import asyncio
+    import time
+    global _GDELT_VERROU, _GDELT_DERNIER
+    boucle = asyncio.get_running_loop()
+    if _GDELT_VERROU is None or _GDELT_VERROU[0] is not boucle:     # un verrou par boucle d'événements
+        _GDELT_VERROU = (boucle, asyncio.Lock())
+    async with _GDELT_VERROU[1]:
+        attente = GDELT_ECART - (time.monotonic() - _GDELT_DERNIER)
+        if attente > 0:
+            await asyncio.sleep(attente)
+        _GDELT_DERNIER = time.monotonic()
+
+
+def gdelt_mots(requete: str) -> str:
+    """0.10.264 : GDELT refuse les mots de moins de 3 lettres et les requêtes trop longues ; ni guillemets ni ponctuation."""
+    mots = [w for w in re.sub(r"[^\w\s-]", " ", requete).split() if len(w) > 2 and not w.isdigit()]
+    return " ".join(mots[:12])
+
+
 async def gdelt(requete: str, avant: datetime | None = None) -> str:
-    """GDELT DOC 2.0 : articles de presse mondiaux, sans clé. Renvoie titres, liens et dates (pas le texte)."""
-    mots = " ".join(w for w in re.sub(r"[^\w\s-]", " ", requete).split() if len(w) > 2)[:250]
-    params = {"query": mots, "mode": "artlist", "format": "json", "maxrecords": 15, "sort": "datedesc"}
+    """GDELT DOC 2.0 : articles de presse mondiaux, sans clé. Renvoie titres, liens et dates (pas le texte).
+    0.10.264 : l'espacement demandé par GDELT est respecté ; une réponse « limit requests » est retentée une fois ;
+    toute réponse non JSON remonte avec son texte (pour savoir pourquoi, au lieu d'une simple « panne »).
+    En mode liste d'articles, GDELT ne regarde que les 3 derniers mois de la fenêtre demandée (blog GDELT, DOC 2.0)."""
+    params = {"query": gdelt_mots(requete), "mode": "artlist", "format": "json", "maxrecords": 15, "sort": "datedesc"}
     if avant is not None:
         params["enddatetime"] = avant.strftime("%Y%m%d%H%M%S")
+        from datetime import timedelta
+        params["startdatetime"] = (avant - timedelta(days=90)).strftime("%Y%m%d%H%M%S")
+    res = None
     async with httpx.AsyncClient(timeout=DELAI) as c:
-        r = await c.get("https://api.gdeltproject.org/api/v2/doc/doc", params=params)
-        r.raise_for_status()
-        try:
-            res = r.json().get("articles") or []
-        except ValueError:                    # GDELT répond en texte quand la requête lui déplaît
-            raise RuntimeError(f"GDELT : {r.text[:120]}")
+        for essai in range(2):
+            await _gdelt_attendre()
+            r = await c.get("https://api.gdeltproject.org/api/v2/doc/doc", params=params)
+            r.raise_for_status()
+            try:
+                res = r.json().get("articles") or []
+                break
+            except ValueError:                    # GDELT répond en texte quand la requête lui déplaît
+                texte = " ".join(r.text.split())[:200]
+                if essai == 0 and re.search(r"limit requests|one every", texte, re.I):
+                    continue
+                if not texte:                      # corps vide : aucun article
+                    res = []
+                    break
+                raise RuntimeError(f"GDELT : {texte}")
     return "\n\n".join(_ligne(x.get("seendate"), x.get("title"), x.get("url"),
                               f"source : {x.get('domain')} ({x.get('sourcecountry')}, {x.get('language')})")
                        for x in res)
@@ -211,7 +251,7 @@ class Chaine:
             except Exception as e:
                 self.echecs[nom] = self.echecs.get(nom, 0) + 1
                 self.erreurs[nom] = f"{type(e).__name__}: {e}"[:200]
-                erreurs.append(f"{nom} : {type(e).__name__}")
+                erreurs.append(f"{nom} : {type(e).__name__}: {str(e)[:160]}")      # 0.10.264 : le pourquoi
                 continue
             texte = sans_foule(filtrer(texte, retro=avant is not None))[0]
             if texte and texte.strip():
