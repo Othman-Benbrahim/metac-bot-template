@@ -1,0 +1,119 @@
+{
+  "version_bot": "0.10.286",
+  "questions": 119,
+  "avec_articles": 87,
+  "note": "une ligne par question distincte ; paramètre appris en laissant la question jugée de côté",
+  "descriptif": {
+    "spearman_tendance_issue": 0.18,
+    "spearman_sursaut_issue": 0.063,
+    "sursaut_moyen_rates": 0.507,
+    "sursaut_moyen_autres": 0.454,
+    "pics_isoles_retires": {
+      "jours": 25,
+      "questions_touchees": 13
+    },
+    "spearman_sursaut_brut_issue": 0.047
+  },
+  "tendance": {
+    "perte_M": 0.4473,
+    "perte_ajustee": 0.4405,
+    "parametre_sur_tout": 0.55,
+    "critere": {
+      "n_nouveaux": 119,
+      "regard": 1,
+      "n_juge": 119,
+      "blocs": 119,
+      "bloc_par": "question",
+      "ecart_moyen": -0.006793126852522404,
+      "intervalle_90_par_blocs": [
+        -0.03277263478548896,
+        0.017823494490163624
+      ],
+      "intervalle_corrige": [
+        -0.04980514234910316,
+        0.03609940659629364
+      ],
+      "niveau_corrige": 0.9944,
+      "verdict": "critère non atteint ; essai à clore"
+    },
+    "profils": {
+      "M": {
+        "n": 119,
+        "oui": 27,
+        "perte_log": 0.4473,
+        "perte_venue_des_oui": 0.2886,
+        "perte_venue_des_non": 0.1586,
+        "rates_oui_sous_30": 15,
+        "fausses_alertes_non_sur_50": 2,
+        "brier": 0.1436,
+        "fiabilite_plus_bas_mieux": 0.0192,
+        "resolution_plus_haut_mieux": 0.051,
+        "incertitude": 0.1754
+      },
+      "ajuste": {
+        "n": 119,
+        "oui": 27,
+        "perte_log": 0.4405,
+        "perte_venue_des_oui": 0.2858,
+        "perte_venue_des_non": 0.1547,
+        "rates_oui_sous_30": 13,
+        "fausses_alertes_non_sur_50": 3,
+        "brier": 0.1389,
+        "fiabilite_plus_bas_mieux": 0.0139,
+        "resolution_plus_haut_mieux": 0.051,
+        "incertitude": 0.1754
+      }
+    }
+  },
+  "sursaut": {
+    "perte_M": 0.4473,
+    "perte_ajustee": 0.4521,
+    "parametre_sur_tout": 0.05,
+    "critere": {
+      "n_nouveaux": 119,
+      "regard": 1,
+      "n_juge": 119,
+      "blocs": 119,
+      "bloc_par": "question",
+      "ecart_moyen": 0.0047962598191906404,
+      "intervalle_90_par_blocs": [
+        0.0029353403688064726,
+        0.006643065048705872
+      ],
+      "intervalle_corrige": [
+        0.0017024989092854453,
+        0.007745293227258143
+      ],
+      "niveau_corrige": 0.9944,
+      "verdict": "critère non atteint ; essai à clore"
+    },
+    "profils": {
+      "M": {
+        "n": 119,
+        "oui": 27,
+        "perte_log": 0.4473,
+        "perte_venue_des_oui": 0.2886,
+        "perte_venue_des_non": 0.1586,
+        "rates_oui_sous_30": 15,
+        "fausses_alertes_non_sur_50": 2,
+        "brier": 0.1436,
+        "fiabilite_plus_bas_mieux": 0.0192,
+        "resolution_plus_haut_mieux": 0.051,
+        "incertitude": 0.1754
+      },
+      "ajuste": {
+        "n": 119,
+        "oui": 27,
+        "perte_log": 0.4521,
+        "perte_venue_des_oui": 0.2872,
+        "perte_venue_des_non": 0.1649,
+        "rates_oui_sous_30": 15,
+        "fausses_alertes_non_sur_50": 2,
+        "brier": 0.1444,
+        "fiabilite_plus_bas_mieux": 0.0193,
+        "resolution_plus_haut_mieux": 0.051,
+        "incertitude": 0.1754
+      }
+    }
+  }
+}
