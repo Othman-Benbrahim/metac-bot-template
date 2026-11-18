@@ -1,0 +1,24 @@
+{
+  "haiku_dit_connaitre": {
+    "questions": 30,
+    "sources_par_question": 3.27,
+    "questions_avec_source_suspecte": 0,
+    "motifs": {},
+    "moteurs": {
+      "exa2": 26,
+      "aucun": 3,
+      "tinyfish": 1
+    }
+  },
+  "autres": {
+    "questions": 279,
+    "sources_par_question": 2.42,
+    "questions_avec_source_suspecte": 0,
+    "motifs": {},
+    "moteurs": {
+      "exa2": 201,
+      "aucun": 63,
+      "tinyfish": 15
+    }
+  }
+}
