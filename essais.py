@@ -226,7 +226,14 @@ ESSAIS = {
                            "objet": "M éloigné des extrêmes quand l'attention GDELT arrive en rafales (indice de "
                                     "Goh-Barabási), contre M seul ; aucun appel à un modèle",
                            "doc": "preenregistrements/sursauts-attention.md"},
-    "credibilite_acteurs": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "credibilite_acteurs": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
+                            "clos_le": "2026-11-18",
+                            "verdict": "non adopté : critère nominal seulement. 163 questions distinctes de 2026 : C "
+                                       "0,736 contre R1 0,818 (écart −0,082, intervalle 90 % [−0,155 ; −0,004], "
+                                       "corrigé [−0,211 ; +0,045]) ; contre S −0,035, non atteint. Le gain vient du "
+                                       "calibrage (fiabilité 0,055 → 0,029 : ces questions se résolvent OUI plus "
+                                       "souvent que R1 ne le dit), pas de la discrimination entre acteurs (résolution "
+                                       "0,007 → 0,008) (run 44373402637)",
                             "objet": "taux de « oui » par catégorie d'acteur × genre d'acte, contre le taux forme × "
                                      "horizon (R1) ; titres et issues seulement",
                             "doc": "preenregistrements/credibilite-acteurs.md"},
