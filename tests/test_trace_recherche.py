@@ -53,3 +53,32 @@ class TTrace(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TFiltre(unittest.TestCase):
+    def test_marches_et_pages_vivantes(self):
+        import alphabet_recherche as ar_
+        t = ("[moteur : exa]\n[2026-01-02] Marché — https://polymarket.com/event/x\nextrait\n\n"
+             "[2026-01-02] Wiki — https://en.wikipedia.org/wiki/X\nextrait\n\n[2026-01-02] Presse — https://apnews.com/a\nextrait")
+        r = ar_.filtrer(t, retro=True)
+        self.assertNotIn("polymarket", r)
+        self.assertNotIn("wikipedia", r)
+        self.assertIn("apnews", r)
+        self.assertIn("wikipedia", ar_.filtrer(t, retro=False))
+        self.assertNotIn("polymarket", ar_.filtrer(t, retro=False))
+
+    def test_aucun_resultat_gele_panne_non(self):
+        tr.CACHE = Path(tempfile.mkdtemp()) / "c"
+
+        async def vide(q, avant):
+            raise RuntimeError("aucun moteur de recherche n'a répondu (exa : aucun résultat ; gdelt : aucun résultat)")
+
+        async def panne(q, avant):
+            raise RuntimeError("aucun moteur de recherche n'a répondu (exa : HTTPStatusError ; gdelt : aucun résultat)")
+        d = datetime(2026, 3, 1, tzinfo=timezone.utc)
+        t, _ = asyncio.run(tr.chercher_fige("v", "t", d, vide))
+        self.assertEqual((t, tr.lire_cache("v")), (tr.AUCUN, tr.AUCUN))
+        self.assertEqual(tr.tracer(t, "2026-03-01")["moteur"], "aucun résultat")
+        t, _ = asyncio.run(tr.chercher_fige("p", "t", d, panne))
+        self.assertIsNone(tr.lire_cache("p"))
+        self.assertEqual(tr.tracer(t, "2026-03-01")["moteur"], "panne")

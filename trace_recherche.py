@@ -22,6 +22,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 CACHE = Path("cache/recherche-jugement")
+AUCUN = "(aucun résultat publié avant la date chez aucun moteur)"
 _MOTEUR = re.compile(r"^\[moteur : ([^\]]+)\]")
 _SOURCE = re.compile(r"^\[([^\]]*)\] (.*?) — (\S*)\s*$")
 _DATE = re.compile(r"(20\d\d|19\d\d)-(\d\d)-(\d\d)")
@@ -67,7 +68,9 @@ def tracer(texte: str, jeu: str) -> dict:
                  "sans date" if d is None else None)
         if motif:
             suspectes.append({**s, "motif": motif})
-    return {"moteur": moteur, "n_sources": len(sources), "sources": sources, "suspectes": suspectes,
+    if (texte or "").startswith("("):
+        moteur = "aucun résultat" if texte == AUCUN else "panne"
+    return {"moteur": moteur, "n_sources": len(sources), **({"panne": texte[:200]} if moteur == "panne" else {}), "sources": sources, "suspectes": suspectes,
             "empreinte": hashlib.sha1((texte or "").encode()).hexdigest()[:16], "longueur": len(texte or "")}
 
 
@@ -89,13 +92,20 @@ def ecrire_cache(cle: str, texte: str) -> None:
 
 async def chercher_fige(cle: str, requete: str, avant: datetime, chercher) -> tuple[str, bool]:
     """Le texte gelé s'il existe, sinon une recherche neuve gelée aussitôt. Rend (texte, venait_du_cache)."""
+    import alphabet_recherche as ar_
     t = lire_cache(cle)
     if t is not None:
-        return t, True
+        return ar_.filtrer(t, retro=True), True     # 0.10.260 : le gel antérieur au filtre est filtré à la lecture
     try:
         t = await chercher(requete, avant)
     except Exception as e:
-        return f"(recherche indisponible : {type(e).__name__})", False
+        msg = str(e)
+        if "aucun moteur" in msg and all("aucun résultat" in m for m in msg.split("(", 1)[-1].split(";")):
+            # 0.10.260 : rien n'existe avant la date chez aucun moteur : c'est une réponse, elle se gèle
+            t = AUCUN
+            ecrire_cache(cle, t)
+            return t, False
+        return f"(recherche indisponible : {type(e).__name__}: {msg[:150]})", False
     ecrire_cache(cle, t)
     return t, False
 
@@ -117,6 +127,7 @@ def resumer_traces(ls: list[dict]) -> dict:
                 motifs[s["motif"]] = motifs.get(s["motif"], 0) + 1
         out[nom] = {"questions": n, "sources_par_question": round(sum(x["trace"]["n_sources"] for x in g) / n, 2),
                     "questions_avec_source_suspecte": sum(1 for x in g if x["trace"]["suspectes"]),
+                    "sans_recherche": sum(1 for x in g if x["trace"]["moteur"] in ("aucun", "panne", "aucun résultat")),
                     "motifs": motifs,
                     "moteurs": {m: sum(1 for x in g if x["trace"]["moteur"] == m) for m in {x["trace"]["moteur"] for x in g}}}
     return out
@@ -135,7 +146,9 @@ async def principal(n: int) -> int:
         return 1
     base = bv.base_banc()
     haiku = {x["question_id"]: bool(x["haiku"].get("exclue")) for x in bv.lignes()}
-    deja = {json.loads(l)["question_id"] for l in TRACES.read_text(encoding="utf-8").splitlines()} if TRACES.exists() else set()
+    # 0.10.260 : une recherche en échec (« aucun » ou « panne ») est retentée ; la dernière ligne d'une question fait foi
+    anciennes = [json.loads(l) for l in TRACES.read_text(encoding="utf-8").splitlines() if l.strip()] if TRACES.exists() else []
+    deja = {x["question_id"] for x in anciennes if x["trace"]["moteur"] not in ("aucun", "panne")}
     faites = 0
     with TRACES.open("a", encoding="utf-8") as f:
         for x in bja.candidates():
@@ -150,7 +163,8 @@ async def principal(n: int) -> int:
                                 "haiku_dit_connaitre": haiku.get(qid), "trace": tracer(texte, x["jeu"]),
                                 "cache": du_cache}, ensure_ascii=False) + "\n")
             faites += 1
-    ls = [json.loads(l) for l in TRACES.read_text(encoding="utf-8").splitlines() if l.strip()]
+    ls = list({x["question_id"]: x for x in (json.loads(l) for l in TRACES.read_text(encoding="utf-8").splitlines()
+                                              if l.strip())}.values())
     r = resumer_traces(ls)
     Path("registre/trace-recherche-jugement.json").write_text(json.dumps(r, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"{faites} recherche(s) tracée(s) et gelée(s).\n" + json.dumps(r, ensure_ascii=False, indent=1))

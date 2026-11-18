@@ -81,7 +81,9 @@ async def chercher_avant(requete: str, avant: datetime) -> str:
 async def _exa_avant(requete: str, avant: datetime) -> str:
     """Recherche Exa bornée à la date d'information : seules les pages DATÉES et publiées avant comptent."""
     from forecasting_tools.ai_models.exa_searcher import ExaSearcher, SearchInput
-    s = SearchInput(web_search_query=requete, highlight_query=requete, include_domains=[], exclude_domains=[],
+    import alphabet_recherche as ar_
+    exclus = list(ar_.PREVISION_FOULE + ar_.PAGES_VIVANTES)       # 0.10.260 : ni cotes, ni pages vivantes
+    s = SearchInput(web_search_query=requete, highlight_query=requete, include_domains=[], exclude_domains=exclus,
                     include_text=None, start_published_date=None, end_published_date=avant)
     sources = await ExaSearcher(include_text=False, include_highlights=True, num_results=6).invoke(s)
     garde = [x for x in sources if x.published_date is not None and x.published_date.astimezone(timezone.utc) <= avant]

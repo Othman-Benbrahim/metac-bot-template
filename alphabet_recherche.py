@@ -20,6 +20,35 @@ import httpx
 ORDRE_DEFAUT = "exa,tavily,tinyfish,gdelt"
 DELAI = 40
 
+# 0.10.260 (trace du 2026-11-18, run 44291087818) : la recherche ramenait des pages de marchés de prédiction
+# (Polymarket, Manifold) ; la règle « jamais de cote ni de prévision de foule en entrée » n'était tenue que par la
+# consigne. Elle l'est désormais par le code, pour tous les moteurs. Wikipédia est une page vivante : en recherche
+# RÉTROSPECTIVE (date d'information fixée), sa date affichée ne garantit pas son contenu ; elle est écartée là.
+PREVISION_FOULE = ("polymarket.com", "manifold.markets", "kalshi.com", "predictit.org", "metaculus.com",
+                   "gjopen.com", "goodjudgment.com", "infer-pub.com", "randforecastinginitiative.org",
+                   "insightprediction.com", "smarkets.com", "betfair.com", "oddschecker.com", "futuur.com",
+                   "predyx.com", "limitless.exchange", "myriad.markets", "hedgehog.markets")
+PAGES_VIVANTES = ("wikipedia.org", "wikiwand.com", "wikidata.org", "ballotpedia.org")
+_URL_BLOC = re.compile(r"^\[[^\]]*\] .*? — (\S+)\s*$", re.M)
+
+
+def domaine_exclu(url: str, retro: bool) -> bool:
+    from urllib.parse import urlparse
+    d = urlparse(url or "").netloc.lower()
+    interdits = PREVISION_FOULE + (PAGES_VIVANTES if retro else ())
+    return any(d == x or d.endswith("." + x) for x in interdits)
+
+
+def filtrer(texte: str, retro: bool) -> str:
+    """Retire les blocs « [date] titre — adresse » dont l'adresse est exclue ; garde l'en-tête du moteur."""
+    blocs, garde = (texte or "").split("\n\n"), []
+    for b in blocs:
+        m = _URL_BLOC.search(b)
+        if m and domaine_exclu(m.group(1), retro):
+            continue
+        garde.append(b)
+    return "\n\n".join(garde)
+
 
 def _ligne(date, titre, url, extrait) -> str:
     return f"[{date or 's.d.'}] {titre or ''} — {url or ''}\n{(extrait or '').strip()}"
@@ -155,6 +184,7 @@ class Chaine:
                 self.erreurs[nom] = f"{type(e).__name__}: {e}"[:200]
                 erreurs.append(f"{nom} : {type(e).__name__}")
                 continue
+            texte = filtrer(texte, retro=avant is not None)
             if texte and texte.strip():
                 etiquette = "exa2" if nom == "exa" and self.seconde_cle else nom
                 self.usage[etiquette] = self.usage.get(etiquette, 0) + 1
