@@ -36,6 +36,8 @@ UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Be
 PAUSE = 8.0                      # l'API DOC demande au plus une requête toutes les 5 secondes ; les adresses de GitHub
                                  # étant partagées, 5,5 s ne suffisait pas (164 refus « 429 » sur 196 au premier passage)
 ATTENTES_429 = (30, 90)          # 0.10.210 : deux nouvelles tentatives espacées après un refus « 429 »
+DUREE_MAX = 110 * 60             # 0.10.245 : budget du passage (le pas de temps du workflow est de 150 min) ; au-delà, on
+                                 # écrit ce qui est lu et le passage suivant reprend avec les pays les moins à jour
 ARRET_429 = 8                    # refus persistants d'affilée : on s'arrête et l'on garde ce qui est lu
 SEUIL_ALIBI = 20
 MOTS_ALIBI = '(provocation OR staged OR "false flag")'
@@ -114,7 +116,7 @@ def principal() -> int:
     hier = (datetime.now(timezone.utc).date() - timedelta(days=1)).isoformat()
     il_y_a_14 = (datetime.now(timezone.utc).date() - timedelta(days=15)).isoformat()
     ok = echecs = alibis = 0
-    with httpx.Client(headers=UA, timeout=90, follow_redirects=True) as c:
+    with httpx.Client(headers=UA, timeout=45, follow_redirects=True) as c:   # 0.10.245 : 90 → 45 s par requête
         noms = pays_et_noms(c)
         # 0.10.210 : les pays les moins à jour d'abord, pour qu'un passage interrompu reprenne là où l'autre s'est arrêté
         dernier = {}
@@ -122,8 +124,12 @@ def principal() -> int:
             dernier[p_] = max(dernier.get(p_, ""), j_)
         cibles = [p.strip().upper() for p in a.pays.split(",") if p.strip()] or sorted(noms, key=lambda p: (dernier.get(p, ""), p))
         refus = 0
-        print(f"{len(cibles)} pays.")
+        debut = time.monotonic()
+        print(f"{len(cibles)} pays.", flush=True)
         for p in cibles:
+            if time.monotonic() - debut > DUREE_MAX:
+                print(f"  budget de {DUREE_MAX // 60} min atteint : arrêt ; le prochain passage reprendra ici.", flush=True)
+                break
             nom = noms.get(p)
             if not nom:
                 continue
@@ -134,7 +140,7 @@ def principal() -> int:
             except Exception as e:
                 echecs += 1
                 refus = refus + 1 if "429" in str(e) else 0
-                print(f"  {p} : échec ({type(e).__name__}: {str(e)[:80]})")
+                print(f"  {p} : échec ({type(e).__name__}: {str(e)[:80]})", flush=True)
                 if refus >= ARRET_429:
                     print(f"  {refus} refus « 429 » d'affilée malgré les attentes : arrêt ; le prochain passage reprendra ici.")
                     break
@@ -164,7 +170,9 @@ def principal() -> int:
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(f"## Récit russe par pays (M12)\n\n{bilan}\n")
-    return 0 if ok else 1
+    if not ok:
+        print("::warning::aucun pays lu (API DOC de GDELT indisponible ou saturée).")
+    return 0
 
 
 if __name__ == "__main__":

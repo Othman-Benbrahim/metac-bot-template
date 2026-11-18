@@ -101,8 +101,9 @@ def principal() -> int:
             time.sleep(0.4)
     par_pays = compter(vols, aeroports)
     print(f"{hier} : {lus} avions lus, {len(vols)} vols, {sum(v[0] for v in par_pays.values())} arrivées à l'étranger.")
-    if coupe:
-        return 1
+    if coupe:                                          # 0.10.245 : quota du jour épuisé = situation normale, pas une panne
+        print("::warning::crédits OpenSky épuisés : jour non marqué comme lu, le prochain passage le reprendra.")
+        return 0
     comptes = {}
     if SORTIE.exists():
         comptes = {(x["jour"], x["pays"]): [int(x["arrivees_etrangeres"]), int(x["departs_vers_etranger"])]

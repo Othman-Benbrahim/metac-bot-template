@@ -125,7 +125,12 @@ def principal() -> int:
     a_.add_argument("--sonde", action="store_true", help="vérifier l'accès et le contenu, sans rien écrire")
     a = a_.parse_args()
     with httpx.Client(headers=UA, timeout=90, follow_redirects=True) as c:
-        tous = lire_api(c)
+        try:
+            tous = lire_api(c)
+        except RuntimeError as e:                          # 0.10.245 : panne de la NGA (maintenance depuis plusieurs jours)
+            print(f"::warning::{e} : rien d'écrit ce passage (jour non compté) ; relais : force_chinoise (GDELT).")
+            _sommaire(f"## Avertissements de navigation (NGA)\n\n{e} : panne de la source, rien d'écrit ce passage.")
+            return 0
     fiches = [f for f in (classer(w) for w in tous) if f]
     mil = [f for f in fiches if f["militaire"]]
     l = [f"## Avertissements de navigation (NGA) : {len(tous)} en cours",
