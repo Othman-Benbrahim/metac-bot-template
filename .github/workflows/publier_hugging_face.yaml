@@ -39,7 +39,9 @@ jobs:
           import os
           from huggingface_hub import HfApi
           api, depot, v = HfApi(token=os.environ["HF_TOKEN"]), os.environ["DEPOT"], os.environ["VERSION"]
-          api.create_repo(depot, repo_type="dataset", private=True, exist_ok=True)   # créé PRIVÉ ; à rendre public à la main
+          if "/" not in depot:                     # 0.10.269 : nom seul → préfixé par le compte du jeton
+              depot = f"{api.whoami()['name']}/{depot}"
+          depot = api.create_repo(depot, repo_type="dataset", private=True, exist_ok=True).repo_id   # créé PRIVÉ
           api.upload_folder(folder_path=f"donnees/jeu-jugement/{v}", repo_id=depot, repo_type="dataset",
                             commit_message=f"jeu de questions de jugement {v} (depuis GitHub {os.environ.get('GITHUB_SHA', '')[:7]})")
           print(f"Publié : https://huggingface.co/datasets/{depot}")
