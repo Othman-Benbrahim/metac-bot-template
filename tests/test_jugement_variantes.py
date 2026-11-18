@@ -34,6 +34,7 @@ class TPassage(unittest.TestCase):
     def test_passage_simule(self):
         d = Path(tempfile.mkdtemp())
         bv.FICHIER, bv.RESUME = d / "v.jsonl", d / "v.json"
+        bv.tr.CACHE = d / "cache"
 
         async def faux_appeler(modele, consigne):
             if "AVOCAT DU OUI dans" in consigne:

@@ -31,6 +31,12 @@ jobs:
         with:
           version: "0.13.1"
       - run: uv sync --locked
+      - name: Restaurer la recherche gelée
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+          restore-keys: recherche-jugement-
       - name: "Banc jugement : bot standard contre alphabet"
         run: uv run python banc_jugement_alphabet.py --n "${{ github.event.inputs.n || '150' }}" --budget "${{ github.event.inputs.budget || '4' }}"
         env:
@@ -40,6 +46,12 @@ jobs:
           EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
           TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
           ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
+      - name: Garder la recherche gelée
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
       - name: Enregistrer
         if: always()
         run: |

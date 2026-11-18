@@ -33,6 +33,7 @@ from pathlib import Path
 import alphabet_modeles as am
 import alphabet_pipeline as ap
 import alphabet_retro as ar
+import trace_recherche as tr
 import banc_forecastbench as fb
 import banc_jugement_alphabet as bja
 import garde_injection as gi
@@ -203,11 +204,9 @@ async def principal(n: int, budget: float, budget_bedrock: float) -> int:
             b = base[qid]
             p_b, notes = float(b["p_B"]), b.get("notes") or {}
             info = datetime.fromisoformat(x["jeu"]).replace(tzinfo=timezone.utc)
-            try:
-                rech = await ar.chercher_avant(x["titre"], info)
-            except Exception as e:
-                rech = f"(recherche indisponible : {type(e).__name__})"
-            res: dict = {}
+            # 0.10.258 : recherche gelée par question (cache) et tracée (trace_recherche.py)
+            rech, du_cache = await tr.chercher_fige(qid, x["titre"], info, ar.chercher_avant)
+            res: dict = {"recherche": {**tr.tracer(rech, x["jeu"]), "cache": du_cache}}
             with MonetaryCostManager() as cm:
                 if len(notes) >= 4:
                     try:

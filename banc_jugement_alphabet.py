@@ -33,6 +33,7 @@ from pathlib import Path
 import alphabet_modeles as am
 import alphabet_pipeline as ap
 import alphabet_retro as ar
+import trace_recherche as tr
 import banc_a as ba
 import banc_forecastbench as fb
 import banc_jugement as bj
@@ -209,11 +210,9 @@ async def principal(n: int, budget: float) -> int:
             p_b = float(x["p_S"])
             with MonetaryCostManager() as cm:
                 info = datetime.fromisoformat(x["jeu"]).replace(tzinfo=timezone.utc)
-                try:
-                    rech = await ar.chercher_avant(x["titre"], info)
-                except Exception as e:
-                    rech = f"(recherche indisponible : {type(e).__name__})"
-                res, exclue = {}, False
+                # 0.10.258 : recherche gelée par question (cache) et tracée (trace_recherche.py)
+                rech, du_cache = await tr.chercher_fige(qid, x["titre"], info, ar.chercher_avant)
+                res, exclue = {"recherche": {**tr.tracer(rech, x["jeu"]), "cache": du_cache}}, False
                 try:
                     r = ap.extraire_json(await am.llm(MODELE, temperature=0.2, timeout=300, allowed_tries=2).invoke(
                         consigne_a(q, p_b, rech, x["jeu"])))
