@@ -1,0 +1,9 @@
+{
+ "table": "gdelt-bq.gdeltv2.gkg_partitioned",
+ "essai_a_blanc_go": {
+  "1 jour, colonnes utiles, sans filtre": 0.38,
+  "1 jour, titre seul (Extras) + adresse": 0.11,
+  "90 jours, titre + adresse, filtre mots-clés": 15.1,
+  "90 jours, personnes + adresse": 4.44
+ }
+}
