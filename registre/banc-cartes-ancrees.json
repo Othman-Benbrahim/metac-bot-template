@@ -1,0 +1,50 @@
+{
+  "version_bot": "0.10.281",
+  "questions": 114,
+  "note": "Spearman : accord de rang entre lecteurs",
+  "accord_declencheur": {
+    "n_communs": 57,
+    "ancrees": 0.326,
+    "libres": 0.356,
+    "gain": -0.03,
+    "n_ancrees_toutes": 92,
+    "accord_ancrees_toutes": 0.388,
+    "n_libres_toutes": 70
+  },
+  "accord_proportion": {
+    "n_communs": 7,
+    "ancrees": null,
+    "libres": null,
+    "gain": null,
+    "n_ancrees_toutes": 13,
+    "accord_ancrees_toutes": 0.594,
+    "n_libres_toutes": 70
+  },
+  "hallucinations_gpt": {
+    "faits_proposes": 31,
+    "faits_rejetes": 9,
+    "part": 0.29
+  },
+  "hallucinations_haiku": {
+    "faits_proposes": 65,
+    "faits_rejetes": 22,
+    "part": 0.338
+  },
+  "issue_gpt_declencheur": {
+    "n": 92,
+    "spearman": 0.063
+  },
+  "issue_gpt_proportion": {
+    "n": 20,
+    "spearman": 0.301
+  },
+  "issue_haiku_declencheur": {
+    "n": 114,
+    "spearman": 0.075
+  },
+  "issue_haiku_proportion": {
+    "n": 21,
+    "spearman": 0.034
+  },
+  "verdict_principal": "ancrage non retenu"
+}
