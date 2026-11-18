@@ -52,7 +52,7 @@ def resumer(ls: list[dict]) -> dict:
              M_banc_descriptif=round(sum(pl(x["p_M_banc"], x["issue"]) for x in ok) / n, 4),
              oui=sum(x["issue"] for x in ok))
     c = sr.critere_ombre_b([dict(x, p_B=x["p_B"], o={"p": x["p_M_aveugle"]}) for x in ok], "o", "abstention",
-                           exclure_vus=False, bloc_par="question")
+                           exclure_vus=False, bloc_par="question", tout_juger=True)
     r["critere"] = c
     import profil_erreurs as pe          # 0.10.265 : les deux côtés des erreurs, toujours affichés
     r["profils"] = pe.profils(ok, {"semblables": "p_B", "M_aveugle": "p_M_aveugle"})

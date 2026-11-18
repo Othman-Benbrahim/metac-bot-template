@@ -203,6 +203,9 @@ ESSAIS = {
                       "objet": "questions semblables trouvées par le sens (embeddings bge-small) contre par les mots "
                                "(TF-IDF) ; un seul regard, réplique 2025 exigée",
                       "doc": "preenregistrements/jugement-sens.md"},
+    "gdelt_complement": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                         "objet": "titres GDELT (BigQuery) ajoutés à la recherche de M, contre la recherche seule",
+                         "doc": "preenregistrements/gdelt-complement.md"},
     "abstention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
                    "objet": "sans recherche, M aveugle contre taux des semblables ; abstention adoptée sauf si le "
                             "modèle aveugle gagne (intervalle 90 % sous zéro)",

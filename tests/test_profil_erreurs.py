@@ -43,7 +43,8 @@ class TUnites(unittest.TestCase):
         """Tout banc de jugement doit tirer ses intervalles PAR QUESTION (garde-fou contre l'erreur du 2026-11-18)."""
         import re
         from pathlib import Path
-        for f in ("banc_jugement_alphabet.py", "banc_jugement_variantes.py", "banc_abstention.py"):
+        for f in ("banc_jugement_alphabet.py", "banc_jugement_variantes.py", "banc_abstention.py",
+                  "banc_gdelt_complement.py"):
             s = Path(f).read_text(encoding="utf-8")
             appels = re.findall(r"critere_ombre_b\((?:[^()]|\([^()]*\))*\)", s, re.S)
             self.assertTrue(appels, f)

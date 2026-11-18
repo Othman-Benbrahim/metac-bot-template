@@ -384,7 +384,7 @@ JEUX_VUS_B_AR = {"2026-09-27", "2026-10-11", "2026-10-25"}
 
 
 def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b_autoregressif",
-                    exclure_vus: bool = True, bloc_par: str = "jeu") -> dict:
+                    exclure_vus: bool = True, bloc_par: str = "jeu", tout_juger: bool = False) -> dict:
     """0.10.104 : généralisé à toute ombre de B (`cle`, essai de essais.py). B_AR remplace B pour les séries si, sur au moins 100 questions de jeux non vus : perte log de B_AR inférieure à
     celle de B, ET intervalle à 90 % de l'écart (bootstrap par blocs « jeu × source », 2 000 tirages, graine 0)
     entièrement sous 0. Même alors, le passage en officiel est une décision d'auteur datée.
@@ -397,12 +397,14 @@ def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b
     tous = [x for x in lignes if not exclure_vus or (x.get("jeu") or x["question_id"].split(":")[1]) not in JEUX_VUS_B_AR]
     if not tous:
         return {"n_nouveaux": 0, "verdict": "en attente (aucune question de jeu non vu)"}
-    N = es.ESSAIS[essai]["n"]
+    # 0.10.280 : un banc à échantillon unique (abstention, complément GDELT…) se juge sur TOUTES ses lignes, en un
+    # seul regard ; sans cela, un essai réglé sur n = 1 n'aurait jugé que ses 2 premières lignes.
+    N = len(tous) if tout_juger else es.ESSAIS[essai]["n"]
     rg = es.regard(len(tous), N)
     if rg == 2:
         # 0.10.105 : les regards se font DANS L'ORDRE même si 2N lignes arrivent d'un coup (banc du taux de base du
         # 2026-11-15) : le second regard n'existe que si le premier n'a pas déjà conclu à l'adoption.
-        r1 = critere_ombre_b(tous[:N], cle, essai, exclure_vus, bloc_par)
+        r1 = critere_ombre_b(tous[:N], cle, essai, exclure_vus, bloc_par, tout_juger)
         if str(r1.get("verdict", "")).startswith("critère atteint"):
             return dict(r1, n_nouveaux=len(tous))
     nv = tous[: (N if rg == 1 else 2 * N if rg == 2 else len(tous))]
