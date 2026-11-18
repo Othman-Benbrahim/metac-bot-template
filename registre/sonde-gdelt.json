@@ -1,0 +1,250 @@
+{
+ "bilan": {
+  "HTTPStatusError": 30,
+  "articles": 3,
+  "RuntimeError (texte GDELT)": 3,
+  "vide": 4
+ },
+ "questions": [
+  {
+   "question_id": "metaculus:22310:2026-05-24",
+   "jeu": "2026-05-24",
+   "requete": "Will President Luiz Inacio Lula Silva reelected Brazil president October",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+President+Luiz+Inacio+Lula+Silva+reelected+Brazil+president+October&mode=artlist&format=json&maxrec"
+  },
+  {
+   "question_id": "metaculus:22310:2026-07-05",
+   "jeu": "2026-07-05",
+   "requete": "Will President Luiz Inacio Lula Silva reelected Brazil president October",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+President+Luiz+Inacio+Lula+Silva+reelected+Brazil+president+October&mode=artlist&format=json&maxrec"
+  },
+  {
+   "question_id": "metaculus:22310:2026-08-02",
+   "jeu": "2026-08-02",
+   "requete": "Will President Luiz Inacio Lula Silva reelected Brazil president October",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+President+Luiz+Inacio+Lula+Silva+reelected+Brazil+president+October&mode=artlist&format=json&maxrec"
+  },
+  {
+   "question_id": "metaculus:22310:2026-08-16",
+   "jeu": "2026-08-16",
+   "requete": "Will President Luiz Inacio Lula Silva reelected Brazil president October",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+President+Luiz+Inacio+Lula+Silva+reelected+Brazil+president+October&mode=artlist&format=json&maxrec"
+  },
+  {
+   "question_id": "metaculus:40599:2026-03-01",
+   "jeu": "2026-03-01",
+   "requete": "Viktor Orbán leads party the Hungarian Election will become Prime Minister",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Viktor+Orb%C3%A1n+leads+party+the+Hungarian+Election+will+become+Prime+Minister&mode=artlist&format=json"
+  },
+  {
+   "question_id": "metaculus:40599:2026-03-15",
+   "jeu": "2026-03-15",
+   "requete": "Viktor Orbán leads party the Hungarian Election will become Prime Minister",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Viktor+Orb%C3%A1n+leads+party+the+Hungarian+Election+will+become+Prime+Minister&mode=artlist&format=json"
+  },
+  {
+   "question_id": "metaculus:40875:2026-03-01",
+   "jeu": "2026-03-01",
+   "requete": "Will the number manufacturing jobs the for February above million",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+the+number+manufacturing+jobs+the+for+February+above+million&mode=artlist&format=json&maxrecords=15"
+  },
+  {
+   "question_id": "metaculus:40938:2026-06-21",
+   "jeu": "2026-06-21",
+   "requete": "Will California Emissions Reporting Laws and Effect September",
+   "gdelt": "11 article(s)"
+  },
+  {
+   "question_id": "metaculus:40938:2026-07-19",
+   "jeu": "2026-07-19",
+   "requete": "Will California Emissions Reporting Laws and Effect September",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+California+Emissions+Reporting+Laws+and+Effect+September&mode=artlist&format=json&maxrecords=15&sor"
+  },
+  {
+   "question_id": "metaculus:41206:2026-03-15",
+   "jeu": "2026-03-15",
+   "requete": "Will Anthropic file initial registration statement S-1 with the SEC launch IPO",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Anthropic+file+initial+registration+statement+S-1+with+the+SEC+launch+IPO&mode=artlist&format=json&"
+  },
+  {
+   "question_id": "metaculus:41206:2026-03-29",
+   "jeu": "2026-03-29",
+   "requete": "Will Anthropic file initial registration statement S-1 with the SEC launch IPO",
+   "gdelt": "RuntimeError: GDELT : One or more of your keywords contained an illegal character. To use a dash in a word, place it in quotes like \"f-16\"."
+  },
+  {
+   "question_id": "metaculus:41206:2026-04-12",
+   "jeu": "2026-04-12",
+   "requete": "Will Anthropic file initial registration statement S-1 with the SEC launch IPO",
+   "gdelt": "RuntimeError: GDELT : One or more of your keywords contained an illegal character. To use a dash in a word, place it in quotes like \"f-16\"."
+  },
+  {
+   "question_id": "metaculus:41206:2026-04-26",
+   "jeu": "2026-04-26",
+   "requete": "Will Anthropic file initial registration statement S-1 with the SEC launch IPO",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Anthropic+file+initial+registration+statement+S-1+with+the+SEC+launch+IPO&mode=artlist&format=json&"
+  },
+  {
+   "question_id": "metaculus:41206:2026-05-10",
+   "jeu": "2026-05-10",
+   "requete": "Will Anthropic file initial registration statement S-1 with the SEC launch IPO",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Anthropic+file+initial+registration+statement+S-1+with+the+SEC+launch+IPO&mode=artlist&format=json&"
+  },
+  {
+   "question_id": "metaculus:41206:2026-05-24",
+   "jeu": "2026-05-24",
+   "requete": "Will Anthropic file initial registration statement S-1 with the SEC launch IPO",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Anthropic+file+initial+registration+statement+S-1+with+the+SEC+launch+IPO&mode=artlist&format=json&"
+  },
+  {
+   "question_id": "metaculus:41370:2026-02-01",
+   "jeu": "2026-02-01",
+   "requete": "Will there least one podium sweep the Winter Olympic Games",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+there+least+one+podium+sweep+the+Winter+Olympic+Games&mode=artlist&format=json&maxrecords=15&sort=d"
+  },
+  {
+   "question_id": "metaculus:41508:2026-03-01",
+   "jeu": "2026-03-01",
+   "requete": "Will the Community beat Nathan Young the Metaculus Cup Spring",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+the+Community+beat+Nathan+Young+the+Metaculus+Cup+Spring&mode=artlist&format=json&maxrecords=15&sor"
+  },
+  {
+   "question_id": "metaculus:41508:2026-03-15",
+   "jeu": "2026-03-15",
+   "requete": "Will the Community beat Nathan Young the Metaculus Cup Spring",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+the+Community+beat+Nathan+Young+the+Metaculus+Cup+Spring&mode=artlist&format=json&maxrecords=15&sor"
+  },
+  {
+   "question_id": "metaculus:41804:2026-04-26",
+   "jeu": "2026-04-26",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Sudan+Emergency+Response+Rooms+win+the+Nobel+Peace+Prize&mode=artlist&format=json&maxrecords=15&sor"
+  },
+  {
+   "question_id": "metaculus:41804:2026-05-10",
+   "jeu": "2026-05-10",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Sudan+Emergency+Response+Rooms+win+the+Nobel+Peace+Prize&mode=artlist&format=json&maxrecords=15&sor"
+  },
+  {
+   "question_id": "metaculus:41804:2026-06-07",
+   "jeu": "2026-06-07",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Sudan+Emergency+Response+Rooms+win+the+Nobel+Peace+Prize&mode=artlist&format=json&maxrecords=15&sor"
+  },
+  {
+   "question_id": "metaculus:41804:2026-07-19",
+   "jeu": "2026-07-19",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "réponse vide (aucun article)"
+  },
+  {
+   "question_id": "metaculus:41804:2026-08-02",
+   "jeu": "2026-08-02",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Sudan+Emergency+Response+Rooms+win+the+Nobel+Peace+Prize&mode=artlist&format=json&maxrecords=15&sor"
+  },
+  {
+   "question_id": "metaculus:41804:2026-08-16",
+   "jeu": "2026-08-16",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "réponse vide (aucun article)"
+  },
+  {
+   "question_id": "metaculus:41804:2026-08-30",
+   "jeu": "2026-08-30",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "réponse vide (aucun article)"
+  },
+  {
+   "question_id": "metaculus:41804:2026-09-13",
+   "jeu": "2026-09-13",
+   "requete": "Will Sudan Emergency Response Rooms win the Nobel Peace Prize",
+   "gdelt": "réponse vide (aucun article)"
+  },
+  {
+   "question_id": "metaculus:42480:2026-03-29",
+   "jeu": "2026-03-29",
+   "requete": "Will Pam Bondi out Attorney General before May",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Pam+Bondi+out+Attorney+General+before+May&mode=artlist&format=json&maxrecords=15&sort=datedesc&endd"
+  },
+  {
+   "question_id": "metaculus:43527:2026-06-21",
+   "jeu": "2026-06-21",
+   "requete": "Will federal courts block the USPS mail-in ballot restrictions before Election Day",
+   "gdelt": "RuntimeError: GDELT : One or more of your keywords contained an illegal character. To use a dash in a word, place it in quotes like \"f-16\"."
+  },
+  {
+   "question_id": "metaculus:43527:2026-07-05",
+   "jeu": "2026-07-05",
+   "requete": "Will federal courts block the USPS mail-in ballot restrictions before Election Day",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+federal+courts+block+the+USPS+mail-in+ballot+restrictions+before+Election+Day&mode=artlist&format=j"
+  },
+  {
+   "question_id": "metaculus:43527:2026-08-02",
+   "jeu": "2026-08-02",
+   "requete": "Will federal courts block the USPS mail-in ballot restrictions before Election Day",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+federal+courts+block+the+USPS+mail-in+ballot+restrictions+before+Election+Day&mode=artlist&format=j"
+  },
+  {
+   "question_id": "metaculus:43637:2026-07-05",
+   "jeu": "2026-07-05",
+   "requete": "Will the Alberta independence referendum pass",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+the+Alberta+independence+referendum+pass&mode=artlist&format=json&maxrecords=15&sort=datedesc&endda"
+  },
+  {
+   "question_id": "metaculus:43637:2026-08-02",
+   "jeu": "2026-08-02",
+   "requete": "Will the Alberta independence referendum pass",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+the+Alberta+independence+referendum+pass&mode=artlist&format=json&maxrecords=15&sort=datedesc&endda"
+  },
+  {
+   "question_id": "metaculus:43703:2026-07-19",
+   "jeu": "2026-07-19",
+   "requete": "Will hurricane make landfall the continental United States before September",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+hurricane+make+landfall+the+continental+United+States+before+September&mode=artlist&format=json&max"
+  },
+  {
+   "question_id": "metaculus:43822:2026-07-05",
+   "jeu": "2026-07-05",
+   "requete": "Will Iceland vote Yes the negotiations referendum",
+   "gdelt": "15 article(s)"
+  },
+  {
+   "question_id": "metaculus:43822:2026-07-19",
+   "jeu": "2026-07-19",
+   "requete": "Will Iceland vote Yes the negotiations referendum",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Iceland+vote+Yes+the+negotiations+referendum&mode=artlist&format=json&maxrecords=15&sort=datedesc&e"
+  },
+  {
+   "question_id": "metaculus:43844:2026-08-02",
+   "jeu": "2026-08-02",
+   "requete": "Will Hakainde Hichilema receive least the vote the first round Zambia presidential",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+Hakainde+Hichilema+receive+least+the+vote+the+first+round+Zambia+presidential&mode=artlist&format=j"
+  },
+  {
+   "question_id": "metaculus:43984:2026-07-05",
+   "jeu": "2026-07-05",
+   "requete": "Will the Liberal Party officially nominate Flávio Bolsonaro its candidate for president",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+the+Liberal+Party+officially+nominate+Fl%C3%A1vio+Bolsonaro+its+candidate+for+president&mode=artlis"
+  },
+  {
+   "question_id": "metaculus:43991:2026-07-05",
+   "jeu": "2026-07-05",
+   "requete": "July will Marine Pen ineligible run the French presidential election",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=July+will+Marine+Pen+ineligible+run+the+French+presidential+election&mode=artlist&format=json&maxrecords"
+  },
+  {
+   "question_id": "metaculus:43992:2026-07-05",
+   "jeu": "2026-07-05",
+   "requete": "Will July the warmest July record according Copernicus",
+   "gdelt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Will+July+the+warmest+July+record+according+Copernicus&mode=artlist&format=json&maxrecords=15&sort=dated"
+  },
+  {
+   "question_id": "metaculus:43992:2026-07-19",
+   "jeu": "2026-07-19",
+   "requete": "Will July the warmest July record according Copernicus",
+   "gdelt": "15 article(s)"
+  }
+ ]
+}
