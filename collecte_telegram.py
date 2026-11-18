@@ -287,7 +287,7 @@ def principal() -> int:
         ecrire_csv(MESSAGES, MS_C, messages)
     actives = sum(1 for x in chaines if x["statut"] == "active")
     bilan = (f"{releve} : {lus} chaînes lues sur {actives} actives, {nouveaux} nouveaux messages, {pleines} chaîne(s) incomplète(s) (plafond de {PAGES_MAX} pages) ; "
-             f"{len(mouvements)} mouvement(s) de liste ; contrôle : {DIAG['balises_relais']} balise(s) « forwarded_from » dans le HTML, {sum(1 for m in messages if m["relaye_de"])} relais lus au total. Métadonnées seulement (aucun texte gardé). Source : aperçus publics t.me.")
+             f"{len(mouvements)} mouvement(s) de liste ; contrôle : {DIAG['balises_relais']} balise(s) « forwarded_from » dans le HTML, {sum(1 for m in messages if m['relaye_de'])} relais lus au total. Métadonnées seulement (aucun texte gardé). Source : aperçus publics t.me.")
     print(bilan)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
