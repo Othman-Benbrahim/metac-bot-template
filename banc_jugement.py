@@ -117,6 +117,13 @@ def cohorte_complete(xs: list[dict], aujourdhui: date | None = None) -> list[dic
 
 
 MOTS_VIDES = Path("registre") / "mots-vides-anglais.txt"
+SEUIL_DOUBLON = 0.8
+
+
+def cosinus(a: dict, b: dict) -> float:
+    if len(a) > len(b):
+        a, b = b, a
+    return sum(w * b.get(i, 0.0) for i, w in a.items())
 
 
 def tfidf(textes: list[str]):
@@ -170,7 +177,7 @@ def calculer(xs: list[dict]) -> None:
         r1 = (y[o1].sum() + M * r0) / (o1.sum() + M)
         x["p_R0"], x["p_R1"] = float(r0), float(r1)
         if ok.sum() == 0:
-            x["p_S"] = float(r1)
+            x["p_S"] = x["p_SD"] = float(r1)
             continue
         tout = np.zeros(len(xs))
         for t, w in V[i].items():
@@ -181,6 +188,24 @@ def calculer(xs: list[dict]) -> None:
         w = np.clip(sims[idx], 0, None)
         x["p_S"] = float((w @ y[ok][idx] + M * r1) / (w.sum() + M))
         x["sim_max"] = round(float(sims[idx[0]]), 3)
+        # 0.10.247 : variante sans doublons (preenregistrements/jugement-doublons.md)
+        cand = np.nonzero(ok)[0]
+        ordre = cand[np.argsort(-tout[cand], kind="stable")]
+        retenus, vus = [], set()
+        for j in ordre:
+            if len(retenus) >= K_VOISINES or tout[j] <= 0:
+                break
+            if ids[j] in vus:
+                continue
+            if any(cosinus(V[j], V[k]) > SEUIL_DOUBLON for k in retenus):
+                continue
+            retenus.append(j)
+            vus.add(ids[j])
+        if retenus:
+            wd = np.array([tout[j] for j in retenus])
+            x["p_SD"] = float((wd @ y[retenus] + M * r1) / (wd.sum() + M))
+        else:
+            x["p_SD"] = float(r1)
 
 
 def resumer(xs: list[dict], foule: dict | None = None) -> dict:
@@ -203,6 +228,17 @@ def resumer(xs: list[dict], foule: dict | None = None) -> dict:
                            **{k: pm(v, k) for k in ("p_R1", "p_S")}}
                        for f in ("election", "justice", "seuil", "echeance", "autre")
                        for v in [[x for x in conf if x["forme"] == f]] if v}}
+    if conf and "p_SD" in conf[0]:                     # 0.10.247 : sans doublons contre semblables
+        ed = [(f'{x["source"]}:{x["id"]}', cb.pl(x["p_SD"], x["issue"]) - cb.pl(x["p_S"], x["issue"])) for x in conf]
+        bd, hd = cb.bootstrap(ed, es.risque_corrige(1))
+        meta = [x for x in conf if x["source"] == "metaculus"]
+        r["doublons"] = {"perte_S": pm(conf, "p_S"), "perte_SD": pm(conf, "p_SD"),
+                         "ecart_moyen": round(sum(e for _, e in ed) / len(ed), 4),
+                         "intervalle_corrige": [round(bd, 4), round(hd, 4)],
+                         "verdict": "sans doublons meilleure" if hd < 0 else ("sans doublons moins bonne" if bd > 0 else "non tranché"),
+                         "metaculus": {"n": len(meta), "perte_S": pm(meta, "p_S"), "perte_SD": pm(meta, "p_SD")},
+                         "par_source": {so: {"perte_S": pm(v, "p_S"), "perte_SD": pm(v, "p_SD")}
+                                        for so in SOURCES for v in [[x for x in conf if x["source"] == so]] if v}}
     if len(conf) >= 30:
         ec = [(f'{x["source"]}:{x["id"]}', cb.pl(x["p_S"], x["issue"]) - cb.pl(x["p_R1"], x["issue"])) for x in conf]
         bas, haut = cb.bootstrap(ec, es.risque_corrige(1))

@@ -188,6 +188,10 @@ ESSAIS = {
                           "objet": "questions de jugement Metaculus : bot standard (A) contre le même passé par l'alphabet "
                                    "en matriochka (M), départ des semblables",
                           "doc": "preenregistrements/jugement-alphabet.md"},
+    "jugement_doublons": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 30, "statut": "ouvert",
+                          "objet": "questions semblables sans doublons (une voisine par question, cosinus ≤ 0,8 entre "
+                                   "voisines) contre les semblables actuelles",
+                          "doc": "preenregistrements/jugement-doublons.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
