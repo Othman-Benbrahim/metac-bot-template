@@ -1,18 +1,18 @@
 {
   "version_bot": "0.10.246",
-  "n": 159,
+  "n": 217,
   "note": "perte log, plus bas = mieux ; A et M sur les mêmes entrées",
-  "B_semblables": 0.4678,
-  "A": 0.386,
-  "M": 0.3489,
+  "B_semblables": 0.4497,
+  "A": 0.3657,
+  "M": 0.3354,
   "discrimination": {
-    "B": 0.006,
-    "A": 0.207,
-    "M": 0.221
+    "B": 0.013,
+    "A": 0.224,
+    "M": 0.23
   },
-  "oui": 0.17,
+  "oui": 0.161,
   "critere": {
-    "n_nouveaux": 159,
+    "n_nouveaux": 217,
     "regard": 1,
     "n_juge": 150,
     "blocs": 19,
