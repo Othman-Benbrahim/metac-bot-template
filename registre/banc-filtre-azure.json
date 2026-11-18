@@ -1,0 +1,29 @@
+{
+  "version_bot": "0.10.289",
+  "questions": 22,
+  "note": "nombre de consignes refusées par variante",
+  "identique": {
+    "essais": 22,
+    "refus": 22,
+    "acceptees": 0,
+    "autres_erreurs": 0
+  },
+  "recherche_4000": {
+    "essais": 22,
+    "refus": 22,
+    "acceptees": 0,
+    "autres_erreurs": 0
+  },
+  "sans_mot_pour_mot": {
+    "essais": 22,
+    "refus": 19,
+    "acceptees": 3,
+    "autres_erreurs": 0
+  },
+  "sans_criteres": {
+    "essais": 22,
+    "refus": 17,
+    "acceptees": 5,
+    "autres_erreurs": 0
+  }
+}
