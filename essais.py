@@ -192,7 +192,11 @@ ESSAIS = {
                           "objet": "questions de jugement Metaculus : bot standard (A) contre le même passé par l'alphabet "
                                    "en matriochka (M), départ des semblables",
                           "doc": "preenregistrements/jugement-alphabet.md"},
-    "jugement_sens": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "jugement_sens": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+                      "verdict": "non retenu : 2026 (1 861 questions) sens 0,659 contre mots 0,645, écart +0,014, "
+                                 "intervalle corrigé [−0,022 ; +0,051] ; réplique 2025 : sens MOINS bon (+0,015, "
+                                 "[+0,005 ; +0,027]) ; meilleur sur Polymarket seul (−0,029), pire sur Manifold (+0,089), "
+                                 "Metaculus +0,027 (run 44294691789)",
                       "objet": "questions semblables trouvées par le sens (embeddings bge-small) contre par les mots "
                                "(TF-IDF) ; un seul regard, réplique 2025 exigée",
                       "doc": "preenregistrements/jugement-sens.md"},

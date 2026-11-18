@@ -39,6 +39,35 @@ def domaine_exclu(url: str, retro: bool) -> bool:
     return any(d == x or d.endswith("." + x) for x in interdits)
 
 
+_FOULE = re.compile(
+    r"polymarket|kalshi|manifold\.markets|manifold markets|\bon manifold\b|predictit|metaculus|good judgment|gjopen|"
+    r"smarkets|betfair|oddschecker|prediction[- ]markets?|betting (?:markets?|odds|exchanges?)|bookmakers?|"
+    r"sportsbooks?|community (?:prediction|forecast)|crowd(?:sourced)? forecasts?|superforecasters?|"
+    r"implied probability|traders? (?:are )?pric(?:e|ing)|march[ée]s? de pr[ée]diction|cotes? des? (?:paris|bookmakers?)",
+    re.I)
+_PHRASE = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9«\"(\[])")
+
+
+def sans_foule(texte: str) -> tuple[str, int]:
+    """0.10.261 : retire d'un texte rédigé (synthèse d'un chercheur) toute phrase qui cite une cote, un marché de
+    prédiction ou une prévision de foule, et toute adresse de ces sites. Ligne par ligne, puis phrase par phrase dans
+    une ligne. Rend (texte nettoyé, nombre de phrases retirées). Règle tenue par le code, pas par la consigne."""
+    retirees, lignes = 0, []
+    for ligne in (texte or "").split("\n"):
+        if not _FOULE.search(ligne) and not any(x in ligne.lower() for x in PREVISION_FOULE):
+            lignes.append(ligne)
+            continue
+        garde = []
+        for ph in _PHRASE.split(ligne):
+            if _FOULE.search(ph) or any(x in ph.lower() for x in PREVISION_FOULE):
+                retirees += 1
+            else:
+                garde.append(ph)
+        if garde:
+            lignes.append(" ".join(garde))
+    return "\n".join(lignes), retirees
+
+
 def filtrer(texte: str, retro: bool) -> str:
     """Retire les blocs « [date] titre — adresse » dont l'adresse est exclue ; garde l'en-tête du moteur."""
     blocs, garde = (texte or "").split("\n\n"), []
@@ -184,7 +213,7 @@ class Chaine:
                 self.erreurs[nom] = f"{type(e).__name__}: {e}"[:200]
                 erreurs.append(f"{nom} : {type(e).__name__}")
                 continue
-            texte = filtrer(texte, retro=avant is not None)
+            texte = sans_foule(filtrer(texte, retro=avant is not None))[0]
             if texte and texte.strip():
                 etiquette = "exa2" if nom == "exa" and self.seconde_cle else nom
                 self.usage[etiquette] = self.usage.get(etiquette, 0) + 1

@@ -91,6 +91,15 @@ class AlphabetBot(FallTemplateBot2026):
         return self._chaine_
 
     async def run_research(self, question) -> str:
+        """0.10.261 : toute recherche générale passe par alphabet_recherche.sans_foule (aucune cote ni prévision de
+        foule n'arrive au modèle, quelle que soit la source)."""
+        import alphabet_recherche as ar_
+        texte, n = ar_.sans_foule(await self._run_research_brut(question))
+        if n:
+            print(f"Recherche : {n} phrase(s) citant une cote ou une prévision de foule retirée(s).")
+        return texte
+
+    async def _run_research_brut(self, question) -> str:
         """Recherche générale du bras A (bot modèle). 0.6.1 : si Exa échoue, seconde clé Exa, puis Tavily, GDELT."""
         try:
             return await super().run_research(question)
@@ -111,6 +120,8 @@ class AlphabetBot(FallTemplateBot2026):
             texte = await self._chaine().chercher(requete)
         else:
             texte = await self._chercher_avec(genre, requete)
+        import alphabet_recherche as ar_
+        texte = ar_.sans_foule(texte)[0]                     # 0.10.261 : aucune cote ni prévision de foule
         second = self._second_chercheur()
         if second is None:
             return texte
@@ -118,7 +129,7 @@ class AlphabetBot(FallTemplateBot2026):
             texte2 = await self._chercher_avec(second, requete)
         except Exception as e:  # la seconde source n'est qu'un complément
             texte2 = f"(seconde source indisponible : {type(e).__name__})"
-        return f"{texte}\n\n--- SECONDE SOURCE ---\n{texte2}"
+        return f"{texte}\n\n--- SECONDE SOURCE ---\n{ar_.sans_foule(texte2)[0]}"
 
     async def _historique(self, cles: list[str], aujourdhui: str) -> list[dict]:
         """0.3.0 : questions binaires RÉSOLUES de Metaculus, cherchées par mots-clés. Rend les issues seulement :

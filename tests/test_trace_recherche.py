@@ -82,3 +82,19 @@ class TFiltre(unittest.TestCase):
         t, _ = asyncio.run(tr.chercher_fige("p", "t", d, panne))
         self.assertIsNone(tr.lire_cache("p"))
         self.assertEqual(tr.tracer(t, "2026-03-01")["moteur"], "panne")
+
+
+class TSansFoule(unittest.TestCase):
+    def test_phrases_retirees(self):
+        import alphabet_recherche as ar_
+        t = ("Le Sénat vote mardi. Polymarket donne 72 % au oui. Le texte a été amendé.\n"
+             "- Kalshi traders are pricing a 60% chance\n"
+             "- Reuters: the committee approved the bill on March 3.\n"
+             "Source : https://manifold.markets/x/y\n"
+             "The manifold of options remains open.")
+        r, n = ar_.sans_foule(t)
+        self.assertEqual(n, 3)
+        for mot in ("Polymarket", "Kalshi", "manifold.markets"):
+            self.assertNotIn(mot, r)
+        for garde in ("Le Sénat vote mardi.", "Le texte a été amendé.", "committee approved", "manifold of options"):
+            self.assertIn(garde, r)

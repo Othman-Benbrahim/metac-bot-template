@@ -95,7 +95,7 @@ async def chercher_fige(cle: str, requete: str, avant: datetime, chercher) -> tu
     import alphabet_recherche as ar_
     t = lire_cache(cle)
     if t is not None:
-        return ar_.filtrer(t, retro=True), True     # 0.10.260 : le gel antérieur au filtre est filtré à la lecture
+        return ar_.sans_foule(ar_.filtrer(t, retro=True))[0], True     # 0.10.260 : le gel antérieur au filtre est filtré à la lecture
     try:
         t = await chercher(requete, avant)
     except Exception as e:
