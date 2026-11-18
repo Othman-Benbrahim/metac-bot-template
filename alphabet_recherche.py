@@ -203,10 +203,16 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
         from datetime import timedelta
         params["startdatetime"] = (avant - timedelta(days=90)).strftime("%Y%m%d%H%M%S")
     res = None
-    async with httpx.AsyncClient(timeout=DELAI) as c:
+    # 0.10.272 : pont par visiondufutur.com (décision d'auteur du 2026-11-18, 15 h 21) quand GDELT_PONT est réglé ;
+    # le pont espace lui-même ses requêtes et garde un cache (pont-visiondufutur/gdelt.php)
+    pont = (os.environ.get("GDELT_PONT") or "").strip()
+    url = pont or "https://api.gdeltproject.org/api/v2/doc/doc"
+    entetes = {"X-Pont-Cle": os.environ.get("GDELT_PONT_CLE", "")} if pont else {}
+    async with httpx.AsyncClient(timeout=DELAI + (60 if pont else 0)) as c:
         for essai in range(GDELT_ESSAIS):
-            await _gdelt_attendre()
-            r = await c.get("https://api.gdeltproject.org/api/v2/doc/doc", params=params)
+            if not pont:
+                await _gdelt_attendre()
+            r = await (c.get(url, params=params, headers=entetes) if pont else c.get(url, params=params))
             if getattr(r, "status_code", 200) == 429 and essai < GDELT_ESSAIS - 1:
                 # 0.10.266 : 30 refus « 429 » sur 40 malgré l'espacement (adresses partagées des serveurs de GitHub) :
                 # attente croissante, ou celle que GDELT demande (Retry-After), puis nouvel essai
@@ -222,10 +228,13 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
             r.raise_for_status()
             _GDELT_REFUS = 0
             try:
-                res = r.json().get("articles") or []
+                corps = r.json()
+                if isinstance(corps, dict) and "texte_gdelt" in corps:     # réponse texte de GDELT, relayée par le pont
+                    raise ValueError(corps["texte_gdelt"])
+                res = corps.get("articles") or []
                 break
-            except ValueError:                    # GDELT répond en texte quand la requête lui déplaît
-                texte = " ".join(r.text.split())[:200]
+            except ValueError as e:               # GDELT répond en texte quand la requête lui déplaît
+                texte = " ".join((str(e) if str(e) and pont else r.text).split())[:200]
                 if essai < GDELT_ESSAIS - 1 and re.search(r"limit requests|one every", texte, re.I):
                     continue
                 if not texte:                      # corps vide : aucun article

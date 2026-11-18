@@ -215,3 +215,41 @@ class TGdeltCoupure(unittest.TestCase):
             ar_.httpx.AsyncClient = ancien
             ar_._GDELT_REFUS = 0
         self.assertLessEqual(len(appels), ar_.GDELT_REFUS_MAX * ar_.GDELT_ESSAIS + 1)
+
+
+class TGdeltPont(unittest.TestCase):
+    def test_passe_par_le_pont_avec_la_cle(self):
+        import os
+        import alphabet_recherche as ar_
+        ar_._GDELT_REFUS = 0
+        vus = []
+
+        class R:
+            status_code, headers, text = 200, {}, ""
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"articles": [{"seendate": "20260101T000000Z", "title": "T", "url": "https://a.org/x"}]}
+
+        class C:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *a):
+                return False
+
+            async def get(self, url, params, headers=None):
+                vus.append((url, headers))
+                return R()
+        os.environ["GDELT_PONT"], os.environ["GDELT_PONT_CLE"] = "https://exemple.org/pont/gdelt.php", "k" * 30
+        ancien = ar_.httpx.AsyncClient
+        ar_.httpx.AsyncClient = lambda timeout: C()
+        try:
+            t = asyncio.run(ar_.gdelt("ceasefire Ukraine", None))
+        finally:
+            ar_.httpx.AsyncClient = ancien
+            del os.environ["GDELT_PONT"], os.environ["GDELT_PONT_CLE"]
+        self.assertIn("https://a.org/x", t)
+        self.assertEqual(vus[0], ("https://exemple.org/pont/gdelt.php", {"X-Pont-Cle": "k" * 30}))

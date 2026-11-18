@@ -70,6 +70,8 @@ jobs:
           EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          GDELT_PONT: ${{ vars.GDELT_PONT }}
+          GDELT_PONT_CLE: ${{ secrets.GDELT_PONT_CLE }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
           UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}

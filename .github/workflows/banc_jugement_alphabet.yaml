@@ -45,6 +45,8 @@ jobs:
           EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
           EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
           TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          GDELT_PONT: ${{ vars.GDELT_PONT }}
+          GDELT_PONT_CLE: ${{ secrets.GDELT_PONT_CLE }}
           ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
       - name: Garder la recherche gelée
         if: always()
