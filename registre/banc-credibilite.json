@@ -1,0 +1,151 @@
+{
+  "version_bot": "0.10.286",
+  "questions_test": 163,
+  "note": "questions distinctes de 2026 dont l'acteur est reconnu ; C contre R1 (forme × horizon)",
+  "perte": {
+    "R1": 0.8182,
+    "S": 0.7707,
+    "C": 0.7359
+  },
+  "cellules_test": {
+    "banque_centrale|acte": {
+      "n": 4,
+      "oui": 0.25
+    },
+    "banque_centrale|autre": {
+      "n": 18,
+      "oui": 0.389
+    },
+    "entreprise|acte": {
+      "n": 3,
+      "oui": 0.0
+    },
+    "entreprise|annonce": {
+      "n": 2,
+      "oui": 0.0
+    },
+    "entreprise|autre": {
+      "n": 31,
+      "oui": 0.355
+    },
+    "executif|acte": {
+      "n": 19,
+      "oui": 0.474
+    },
+    "executif|annonce": {
+      "n": 6,
+      "oui": 0.167
+    },
+    "executif|autre": {
+      "n": 28,
+      "oui": 0.464
+    },
+    "legislatif_judiciaire|acte": {
+      "n": 2,
+      "oui": 0.5
+    },
+    "legislatif_judiciaire|annonce": {
+      "n": 1,
+      "oui": 0.0
+    },
+    "legislatif_judiciaire|autre": {
+      "n": 35,
+      "oui": 0.371
+    },
+    "organisation_internationale|acte": {
+      "n": 4,
+      "oui": 0.0
+    },
+    "organisation_internationale|annonce": {
+      "n": 2,
+      "oui": 0.0
+    },
+    "organisation_internationale|autre": {
+      "n": 8,
+      "oui": 0.25
+    }
+  },
+  "critere": {
+    "n_nouveaux": 163,
+    "regard": 1,
+    "n_juge": 163,
+    "blocs": 163,
+    "bloc_par": "question",
+    "ecart_moyen": -0.08230217464981329,
+    "intervalle_90_par_blocs": [
+      -0.15544671398240398,
+      -0.0036943557134106616
+    ],
+    "intervalle_corrige": [
+      -0.21064474121202734,
+      0.04534579904340409
+    ],
+    "niveau_corrige": 0.9944,
+    "verdict": "critère nominal seulement (pas au niveau corrigé)"
+  },
+  "secondaire_contre_S": {
+    "n_nouveaux": 163,
+    "regard": 1,
+    "n_juge": 163,
+    "blocs": 163,
+    "bloc_par": "question",
+    "ecart_moyen": -0.034793759275709865,
+    "intervalle_90_par_blocs": [
+      -0.09952153966266075,
+      0.03169601327004018
+    ],
+    "intervalle_corrige": [
+      -0.14045365311027636,
+      0.07897126900959199
+    ],
+    "niveau_corrige": 0.9944,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "profils": {
+    "R1": {
+      "n": 163,
+      "oui": 58,
+      "perte_log": 0.8182,
+      "perte_venue_des_oui": 0.6913,
+      "perte_venue_des_non": 0.1269,
+      "rates_oui_sous_30": 54,
+      "fausses_alertes_non_sur_50": 0,
+      "brier": 0.2754,
+      "fiabilite_plus_bas_mieux": 0.0545,
+      "resolution_plus_haut_mieux": 0.0074,
+      "incertitude": 0.2292
+    },
+    "S": {
+      "n": 163,
+      "oui": 58,
+      "perte_log": 0.7707,
+      "perte_venue_des_oui": 0.6311,
+      "perte_venue_des_non": 0.1396,
+      "rates_oui_sous_30": 47,
+      "fausses_alertes_non_sur_50": 0,
+      "brier": 0.2618,
+      "fiabilite_plus_bas_mieux": 0.0353,
+      "resolution_plus_haut_mieux": 0.0017,
+      "incertitude": 0.2292
+    },
+    "C": {
+      "n": 163,
+      "oui": 58,
+      "perte_log": 0.7359,
+      "perte_venue_des_oui": 0.5568,
+      "perte_venue_des_non": 0.1791,
+      "rates_oui_sous_30": 41,
+      "fausses_alertes_non_sur_50": 5,
+      "brier": 0.2502,
+      "fiabilite_plus_bas_mieux": 0.0288,
+      "resolution_plus_haut_mieux": 0.0083,
+      "incertitude": 0.2292
+    }
+  },
+  "unites": {
+    "lignes": 163,
+    "questions_distinctes": 163,
+    "questions_oui_distinctes": 58,
+    "alerte": null
+  }
+}
