@@ -81,6 +81,22 @@ class RetourMoyenne(unittest.TestCase):
         self.assertLess(fb.b_ou(rw, 7, d0)["bic_ecart"], 2)  # marche avec dérive : B garde la main
 
 
+class FiltreAzure(unittest.TestCase):
+    def test_variantes(self):
+        import banc_filtre_azure as bfa
+        q = {"titre": "Will X happen?", "cloture": "2026-12-31", "criteres": "CRITERES-ICI"}
+        rech = "a" * 5000 + "FIN-RECHERCHE"
+        base = bfa.consigne("identique", q, rech, "2026-01-01")
+        self.assertIn("MOT POUR MOT", base)
+        s = bfa.consigne("sans_mot_pour_mot", q, rech, "2026-01-01")
+        self.assertNotIn("MOT POUR MOT", s)
+        self.assertNotIn("sera rejetée", s)
+        self.assertNotIn("phrase exacte", s)
+        self.assertNotIn("FIN-RECHERCHE", bfa.consigne("recherche_4000", q, rech, "2026-01-01"))
+        self.assertNotIn("CRITERES-ICI", bfa.consigne("sans_criteres", q, rech, "2026-01-01"))
+        self.assertTrue(bfa.est_refus(Exception("The response was filtered due to the prompt triggering Azure")))
+
+
 class Credibilite(unittest.TestCase):
     def test_categories(self):
         self.assertEqual(bc.categorie("Will the ECB cut rates before June?"), "banque_centrale")
