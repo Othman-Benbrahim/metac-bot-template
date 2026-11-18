@@ -1,0 +1,57 @@
+{
+  "version_bot": "0.10.280",
+  "n": 75,
+  "unites": {
+    "lignes": 75,
+    "questions_distinctes": 75,
+    "questions_oui_distinctes": 16,
+    "alerte": null
+  },
+  "note": "perte log, plus bas = mieux ; écart = avec − sans",
+  "profils": {
+    "sans": {
+      "n": 75,
+      "oui": 16,
+      "perte_log": 0.4634,
+      "perte_venue_des_oui": 0.2964,
+      "perte_venue_des_non": 0.167,
+      "rates_oui_sous_30": 11,
+      "fausses_alertes_non_sur_50": 2,
+      "brier": 0.1497,
+      "fiabilite_plus_bas_mieux": 0.0314,
+      "resolution_plus_haut_mieux": 0.0461,
+      "incertitude": 0.1678
+    },
+    "avec": {
+      "n": 75,
+      "oui": 16,
+      "perte_log": 0.4735,
+      "perte_venue_des_oui": 0.3072,
+      "perte_venue_des_non": 0.1664,
+      "rates_oui_sous_30": 8,
+      "fausses_alertes_non_sur_50": 1,
+      "brier": 0.1512,
+      "fiabilite_plus_bas_mieux": 0.0078,
+      "resolution_plus_haut_mieux": 0.0266,
+      "incertitude": 0.1678
+    }
+  },
+  "critere": {
+    "n_nouveaux": 75,
+    "regard": 1,
+    "n_juge": 75,
+    "blocs": 75,
+    "bloc_par": "question",
+    "ecart_moyen": 0.010120197723262331,
+    "intervalle_90_par_blocs": [
+      -0.016394082043911132,
+      0.03809647828414087
+    ],
+    "intervalle_corrige": [
+      -0.03147512855253672,
+      0.05550040656969543
+    ],
+    "niveau_corrige": 0.9933,
+    "verdict": "critère non atteint ; un second regard à 150"
+  }
+}
