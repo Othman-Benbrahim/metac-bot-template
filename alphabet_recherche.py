@@ -139,6 +139,12 @@ async def tinyfish(requete: str, avant: datetime | None = None) -> str:
     return "\n\n".join(lignes)
 
 
+import contextvars
+
+# 0.10.277 : question en cours de traitement par le bot (fixée par alphabet_bot) ; quand des résultats GDELT par
+# BigQuery existent pour elle (gdelt_bq.py, requête groupée de nuit et mise à jour courte), ils remplacent l'API.
+QUESTION_COURANTE: contextvars.ContextVar = contextvars.ContextVar("question_courante", default=None)
+
 _GDELT_VERROU = None
 _GDELT_DERNIER = 0.0
 GDELT_ECART = 5.5            # 0.10.264 : GDELT demande une requête toutes les 5 secondes au plus
@@ -212,6 +218,15 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
     toute réponse non JSON remonte avec son texte (pour savoir pourquoi, au lieu d'une simple « panne »).
     En mode liste d'articles, GDELT ne regarde que les 3 derniers mois de la fenêtre demandée (blog GDELT, DOC 2.0)."""
     global _GDELT_REFUS
+    qid = QUESTION_COURANTE.get()
+    if qid is not None and avant is None:                   # bot du tournoi : résultats BigQuery d'abord
+        try:
+            import gdelt_bq
+            t = gdelt_bq.pour_question(qid)
+            if t:
+                return t.split("\n", 1)[1] if t.startswith("[moteur :") else t
+        except Exception:
+            pass
     if _GDELT_REFUS >= GDELT_REFUS_MAX:
         raise RuntimeError(f"GDELT coupé pour ce passage ({_GDELT_REFUS} refus 429 de suite)")
     params = {"query": gdelt_mots(requete), "mode": "artlist", "format": "json", "maxrecords": 15, "sort": "datedesc"}

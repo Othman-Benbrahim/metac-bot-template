@@ -95,6 +95,7 @@ class AlphabetBot(FallTemplateBot2026):
         foule n'arrive au modèle, quelle que soit la source)."""
         import alphabet_recherche as ar_
         import bras_m
+        ar_.QUESTION_COURANTE.set(question.id_of_question or question.id_of_post or question.page_url)   # 0.10.277
         if getattr(self, "_disjoncte", False):
             raise RuntimeError("disjoncteur de recherche déclenché : question non traitée, reprise au prochain passage")
         try:
@@ -297,6 +298,8 @@ class AlphabetBot(FallTemplateBot2026):
         return await self.get_llm("default", "llm").invoke(consigne)
 
     async def _run_forecast_on_binary(self, question: BinaryQuestion, research: str) -> ReasonedPrediction[float]:
+        import alphabet_recherche as ar_
+        ar_.QUESTION_COURANTE.set(question.id_of_question or question.id_of_post or question.page_url)   # 0.10.277
         a = await super()._run_forecast_on_binary(question, research)  # bras A, avant toute carte
         # 0.10.5 (skill §35, Murphy 2026) : K − 1 essais de plus du modèle seul, en ombre, avant toute carte. Éteint
         # par défaut (ALPHABET_A_ESSAIS = 1) : chaque essai coûte un appel au modèle principal.

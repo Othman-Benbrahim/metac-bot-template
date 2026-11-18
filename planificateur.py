@@ -47,6 +47,7 @@ COLLECTES = (
     ("collecte_recit_russe.yaml", None), ("collecte_avions_etat.yaml", "apres_minuit"),
     ("collecte_nowcast_inflation.yaml", "jours_ouvres"), ("veille_articles.yaml", "groupe_bancs"),
     ("collecte_telegram.yaml", None),
+    ("gdelt_bigquery.yaml", None),            # 0.10.277 : requête groupée de nuit (questions ouvertes, 30 jours)
 )
 
 

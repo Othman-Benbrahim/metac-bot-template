@@ -1,0 +1,49 @@
+name: "GDELT par BigQuery (requête groupée)"
+
+# 0.10.277 : nuit = questions ouvertes du tournoi sur 30 jours (lancé par le planificateur) ; bancs = questions
+# distinctes des bancs de jugement, 90 jours avant la date du jeu (manuel). Filtrage chez Google, essai à blanc et
+# plafonds avant chaque requête (gdelt_bq.py).
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "nuit (tournoi, 30 jours) ou bancs (questions des bancs)"
+        default: "nuit"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  gdelt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Requête groupée
+        run: uv run --with "google-cloud-bigquery==3.27.0" python -u gdelt_bq.py --mode "${{ github.event.inputs.mode || 'nuit' }}"
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJET: ${{ vars.GCP_PROJET }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/gdelt-bq-tournoi.json registre/gdelt-bq-bancs.json registre/bigquery-compteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : GDELT par BigQuery du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

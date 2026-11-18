@@ -43,6 +43,15 @@ jobs:
           key: fastembed-paraphrase-multilingual-MiniLM-L12-v2
       - name: Contrôle du skill
         run: python alphabet-situationnel/scripts/moteur.py audit
+      - name: GDELT par BigQuery, mise à jour courte (48 h)
+        # 0.10.277 : requête groupée pour toutes les questions ouvertes, filtrée chez Google ; sautée sans les secrets
+        continue-on-error: true
+        timeout-minutes: 10
+        run: uv run --with "google-cloud-bigquery==3.27.0" python gdelt_bq.py --mode court
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJET: ${{ vars.GCP_PROJET }}
       - name: Prévoir
         # 0.9.6 : un vrai blocage s'arrête ici, et l'étape « Enregistrer le registre » (if: always()) garde ce qui a été
         # écrit. Un passage de test complet (exploratoire, non binaires) prend 30 à 50 minutes : ne pas l'annuler.
