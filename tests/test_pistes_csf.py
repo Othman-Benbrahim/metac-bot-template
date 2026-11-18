@@ -46,6 +46,24 @@ class Attention(unittest.TestCase):
         self.assertEqual(gq.PLAFOND_REQUETE_GO["comptes"], 120.0)
 
 
+class RetourMoyenne(unittest.TestCase):
+    def test_ou_rappelle_un_niveau_haut(self):
+        import random
+        from datetime import date, timedelta
+
+        import banc_forecastbench as fb
+        random.seed(1)
+        d0, x, pts = date(2026, 1, 1), 0.0, []
+        for i in range(400):
+            x = 0.8 * x + random.gauss(0, 1)
+            pts.append({"date": (d0 - timedelta(days=400 - i)).isoformat(), "valeur": x})
+        pts[-1]["valeur"] = 5.0
+        r = fb.b_ou(pts, 7, d0)
+        self.assertLess(r["p"], 0.1)
+        self.assertTrue(0 <= r["phi"] <= 0.999)
+        self.assertIsNone(fb.b_ou(pts[:10], 7, d0))
+
+
 class Credibilite(unittest.TestCase):
     def test_categories(self):
         self.assertEqual(bc.categorie("Will the ECB cut rates before June?"), "banque_centrale")

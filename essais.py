@@ -214,6 +214,10 @@ ESSAIS = {
                    "objet": "sans recherche, M aveugle contre taux des semblables ; abstention adoptée sauf si le "
                             "modèle aveugle gagne (intervalle 90 % sous zéro)",
                    "doc": "preenregistrements/abstention.md"},
+    "b_ou": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 100, "statut": "ouvert",
+             "objet": "B par retour vers la moyenne (Ornstein-Uhlenbeck autour d'une tendance linéaire) contre B, "
+                      "questions réelles FRED et DBnomics ; aucun appel à un modèle",
+             "doc": "preenregistrements/b-ou.md"},
     "tendance_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
                            "objet": "M ajusté par la tendance de l'attention GDELT (10 derniers jours contre les 80 "
                                     "précédents), contre M seul ; aucun appel à un modèle",

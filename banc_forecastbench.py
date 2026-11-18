@@ -211,6 +211,62 @@ def b_ar(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | Non
             "part_sans_changement": round(p_egal, 4), "points": len(pts)}
 
 
+# 0.10.283 (décision d'auteur du 2026-11-18, 19 h 08, « on teste, c'est gratuit » ; EN OMBRE ; préenregistrement
+# preenregistrements/b-ou.md) : retour vers la moyenne (Ornstein-Uhlenbeck discret) autour d'une tendance linéaire.
+# b_ar travaille sur les VARIATIONS (marche aléatoire, sans rappel) ; aucun B ne regarde l'écart du NIVEAU à son
+# équilibre. Règle fixée AVANT toute mesure, jamais ajustée sur les issues :
+#   - mêmes points que B (5 ans, strictement avant D) ; pas natif, k = arrondi de h / écart médian ;
+#   - moindres carrés v_t = a + b·t + φ·v_(t−1) + e (t = rang de l'observation), φ borné à [0 ; 0,999] ;
+#   - espérance itérée sur k pas : E_m = a + b·(T+m) + φ·E_(m−1), E_0 = v_T ; variance σ²(1 − φ^(2k))/(1 − φ²) ;
+#   - P(hausse) = (1 − part des intervalles sans changement, comme b_ar) × Φ((E_k − v_T) / écart-type) ;
+#   - bornée à 0,001–0,999. Rien n'est posté ; comparé à B par la perte log (essai b_ou).
+def b_ou(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | None:
+    import math
+    import statistics as st_
+
+    import numpy as np
+    pts = sorted((date.fromisoformat(p["date"][:10]), float(p["valeur"])) for p in points
+                 if p.get("date") and p.get("valeur") is not None and p["date"][:10] < avant.isoformat())
+    pts = [p for p in pts if p[0] >= avant - timedelta(days=365 * annees)]
+    if len(pts) < 30 or h <= 0:
+        return None
+    pas = st_.median([(b[0] - a[0]).days for a, b in zip(pts, pts[1:])]) or 1
+    k = max(1, round(h / pas))
+    v = np.array([p[1] for p in pts], dtype=float)
+    t = np.arange(1, len(v), dtype=float)
+    X = np.column_stack([np.ones(len(t)), t, v[:-1]])
+    coef, *_ = np.linalg.lstsq(X, v[1:], rcond=None)
+    a, b, phi = (float(c) for c in coef)
+    if phi < 0 or phi > 0.999:                    # bornes : refaire l'ajustement avec φ fixé à la borne
+        phi = min(max(phi, 0.0), 0.999)
+        X2 = np.column_stack([np.ones(len(t)), t])
+        (a, b), *_ = np.linalg.lstsq(X2, v[1:] - phi * v[:-1], rcond=None)
+        a, b = float(a), float(b)
+    res = v[1:] - (a + b * t + phi * v[:-1])
+    sigma = math.sqrt(float(res @ res) / max(1, len(res) - 3))
+    T = len(v) - 1
+    e = float(v[-1])
+    for m in range(1, k + 1):
+        e = a + b * (T + m) + phi * e
+    var = sigma ** 2 * (k if phi >= 0.999999 else (1 - phi ** (2 * k)) / (1 - phi ** 2))
+    n = egal = 0
+    j = 0
+    for tt, val in pts:
+        cible = tt + timedelta(days=h)
+        while j < len(pts) and pts[j][0] < cible:
+            j += 1
+        if j >= len(pts):
+            break
+        n += 1
+        egal += pts[j][1] == val
+    p_egal = egal / n if n else 0.0
+    ecart = e - float(v[-1])
+    p_haut = (1.0 if ecart > 0 else 0.0) if var <= 0 else 0.5 * (1 + math.erf(ecart / math.sqrt(2 * var)))
+    p = max(0.001, min(0.999, (1 - p_egal) * p_haut))
+    return {"p": p, "phi": round(phi, 4), "pas_jours": pas, "k": k, "ecart_attendu": ecart,
+            "ecart_type": math.sqrt(max(var, 0)), "part_sans_changement": round(p_egal, 4), "points": len(pts)}
+
+
 # 0.10.131 (décision d'auteur du 2026-11-15, EN OMBRE ; pré-enregistrement b-tendance.md) : B qui pèse davantage les
 # semaines récentes. Constat du garde-fou sur B (audit_b.py) : écarts de crédit FRED, B 40 % annoncés, 75 % observés,
 # même sens dans 7 jeux sur 9 ; B compte les hausses sur 5 ans et ne voit pas la tendance en cours. Règle fixée AVANT
@@ -403,6 +459,10 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
                 x["_b_noyau"] = b_noyau(r.get("points") or [], h, d0)
             except Exception as e:
                 x["_b_noyau"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+            try:                                      # 0.10.283 : retour vers la moyenne (OU), en ombre
+                x["_b_ou"] = b_ou(r.get("points") or [], h, d0)
+            except Exception as e:
+                x["_b_ou"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
             try:                                      # 0.10.131 : taux de base récent (tendance), en ombre
                 x["_b_tendance"] = b_tendance(r.get("points") or [], h, d0)
             except Exception as e:

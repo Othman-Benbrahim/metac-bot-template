@@ -1,0 +1,49 @@
+name: Banc retour vers la moyenne (OU), séries réelles (ombre)
+
+# 0.10.283 : B par retour vers la moyenne (Ornstein-Uhlenbeck autour d'une tendance), contre B, sur les questions de
+# séries ForecastBench résolues (FRED, DBnomics). Aucun modèle de langue : gratuit. preenregistrements/b-ou.md
+on:
+  workflow_dispatch:
+    inputs:
+      apres:
+        description: "jeux postérieurs à cette date"
+        default: "2026-07-01"
+      max:
+        description: "questions nouvelles au plus"
+        default: "1000"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_ou:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Banc retour vers la moyenne (séries)
+        timeout-minutes: 120
+        run: uv run python banc_ou.py --apres "${{ github.event.inputs.apres || '2026-07-01' }}" --max "${{ github.event.inputs.max || '1000' }}"
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/banc-ou.jsonl registre/banc-ou.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc du retour vers la moyenne du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
