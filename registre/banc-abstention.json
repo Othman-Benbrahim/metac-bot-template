@@ -1,0 +1,63 @@
+{
+  "version_bot": "0.10.292",
+  "questions_sans_recherche": 21,
+  "n": 20,
+  "note": "perte log, plus bas = mieux ; écart = M aveugle − semblables",
+  "semblables": 0.4108,
+  "M_aveugle": 0.3823,
+  "M_banc_descriptif": 0.3811,
+  "oui": 3,
+  "critere": {
+    "n_nouveaux": 20,
+    "regard": 1,
+    "n_juge": 20,
+    "blocs": 11,
+    "bloc_par": "question",
+    "ecart_moyen": -0.028475917266838423,
+    "intervalle_90_par_blocs": [
+      -0.0985304382789153,
+      0.05341715628310477
+    ],
+    "intervalle_corrige": [
+      -0.14885080519889682,
+      0.11561167634013222
+    ],
+    "niveau_corrige": 0.9933,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "profils": {
+    "semblables": {
+      "n": 20,
+      "oui": 3,
+      "perte_log": 0.4108,
+      "perte_venue_des_oui": 0.2199,
+      "perte_venue_des_non": 0.1909,
+      "rates_oui_sous_30": 2,
+      "fausses_alertes_non_sur_50": 0,
+      "brier": 0.127,
+      "fiabilite_plus_bas_mieux": 0.0115,
+      "resolution_plus_haut_mieux": 0.0164,
+      "incertitude": 0.1275
+    },
+    "M_aveugle": {
+      "n": 20,
+      "oui": 3,
+      "perte_log": 0.3823,
+      "perte_venue_des_oui": 0.2198,
+      "perte_venue_des_non": 0.1625,
+      "rates_oui_sous_30": 3,
+      "fausses_alertes_non_sur_50": 0,
+      "brier": 0.1205,
+      "fiabilite_plus_bas_mieux": 0.078,
+      "resolution_plus_haut_mieux": 0.09,
+      "incertitude": 0.1275
+    }
+  },
+  "unites": {
+    "lignes": 20,
+    "questions_distinctes": 11,
+    "questions_oui_distinctes": 3,
+    "alerte": "20 lignes pour 11 questions distinctes : la preuve repose sur 11, pas sur 20 (intervalles par question)"
+  },
+  "verdict": "abstention ADOPTABLE : le modèle aveugle ne bat pas les semblables"
+}
