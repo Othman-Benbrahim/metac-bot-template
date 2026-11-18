@@ -1,0 +1,48 @@
+{
+  "version_bot": "0.10.297",
+  "lignes_lues": 291,
+  "questions_lues": 117,
+  "lignes_fuite": 111,
+  "questions_fuite": 58,
+  "lignes_fuite_non_citee": 15,
+  "part_lignes_fuite": 0.381,
+  "note": "fuite = information postérieure à la date de la question, révélant l'issue, citée et vérifiée",
+  "perte_fuite": {
+    "A": 0.3826,
+    "M": 0.3992
+  },
+  "perte_propre": {
+    "A": 0.3813,
+    "M": 0.335
+  },
+  "M_contre_A_sur_lignes_propres": {
+    "n_nouveaux": 180,
+    "regard": 1,
+    "n_juge": 180,
+    "blocs": 86,
+    "bloc_par": "question",
+    "ecart_moyen": -0.046301842014615895,
+    "intervalle_90_par_blocs": [
+      -0.07916710778658013,
+      -0.01315866384306046
+    ],
+    "intervalle_corrige": [
+      -0.09908447808660163,
+      0.0047361080485295295
+    ],
+    "niveau_corrige": 0.9933,
+    "verdict": "critère nominal seulement (pas au niveau corrigé)"
+  },
+  "unites_propres": {
+    "lignes": 180,
+    "questions_distinctes": 86,
+    "questions_oui_distinctes": 14,
+    "alerte": "180 lignes pour 86 questions distinctes : la preuve repose sur 86, pas sur 180 (intervalles par question)"
+  },
+  "unites": {
+    "lignes": 291,
+    "questions_distinctes": 117,
+    "questions_oui_distinctes": 26,
+    "alerte": "291 lignes pour 117 questions distinctes : la preuve repose sur 117, pas sur 291 (intervalles par question)"
+  }
+}
