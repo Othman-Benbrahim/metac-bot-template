@@ -145,7 +145,9 @@ def questions_tournoi() -> list[tuple[str, str]]:
     vus, out = set(), []
     for cible in (client.CURRENT_AI_COMPETITION_ID, client.CURRENT_MINIBENCH_ID):
         try:
-            for q in client.get_all_open_questions_from_tournament(cible):
+            ouvertes = client.get_all_open_questions_from_tournament(cible)
+            print(f"Tournoi {cible} : {len(ouvertes)} question(s) ouverte(s).", flush=True)
+            for q in ouvertes:
                 qid = str(getattr(q, "id_of_question", None) or getattr(q, "id_of_post", None) or q.page_url)
                 if qid not in vus:
                     vus.add(qid)
