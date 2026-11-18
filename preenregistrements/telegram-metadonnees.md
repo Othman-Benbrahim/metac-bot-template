@@ -46,3 +46,11 @@ n'est ajusté (pas de régression, pas de seuil choisi après coup).
 - Plus de 30 % des passages en échec (blocage, changement de format des aperçus) : essai déclaré nul, pas jugé.
 - Pages pleines fréquentes (plus de 20 messages par jour pour une chaîne) : le rythme de cette chaîne est censuré ;
   elle sera exclue des signaux 1 à 3, liste écrite avant le jugement.
+
+## Amendement de collecte (2026-11-18, 0.10.251), avant tout calcul de signal
+Premier passage (run 44237976381) : 20 chaînes sur 20 lues, mais 19 remplissaient leur unique page de 20 messages
+(quelques heures seulement pour les plus actives). La collecte remonte désormais chaque chaîne page par page jusqu'au
+dernier message connu (au plus 15 pages). Les signaux, l'issue et la règle ci-dessus ne changent pas. La règle
+d'exclusion des « pages pleines » vise maintenant les chaînes dont la remontée est notée incomplète.
+La liste Whittaker n'a pas répondu au premier passage (ConnectError) : elle est réessayée à chaque passage tant
+qu'elle n'a pas été chargée. Les comptes de bots ne comptent plus comme citations.

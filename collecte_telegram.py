@@ -20,8 +20,11 @@ Liste des chaînes (registre/telegram-chaines.csv : chaine, groupe, origine, ajo
   échoue 7 passages de suite. Une chaîne muette ou disparue reste au registre (son silence est une donnée).
 Registres : registre/telegram-messages.csv (chaine, id, heure, vues, relaye_de, cite) ; registre/telegram-releves.csv
 (releve, chaine, statut_http, messages_lus) ; registre/telegram-liste-journal.csv (jour, chaine, mouvement, raison).
-Une pause de 3 secondes entre deux chaînes ; une page par chaîne et par passage (les chaînes très actives peuvent
-dépasser 20 messages par jour : le passage note alors « page pleine » dans le relevé).
+Une pause de 3 secondes entre deux pages. 0.10.251 (après le premier passage, run 44237976381 : 19 chaînes sur 20
+remplissaient leur unique page de 20 messages, soit quelques heures seulement pour les plus actives) : chaque chaîne
+est remontée page par page (?before=) jusqu'au dernier message déjà connu, ou sur 26 heures pour une chaîne nouvelle,
+au plus 15 pages ; le relevé note si la remontée est complète. Budget total : 35 minutes. Les comptes de bots
+(nom finissant par « bot ») ne comptent pas comme citations.
 
     python collecte_telegram.py
 """
@@ -60,7 +63,9 @@ NOM = re.compile(r"^[A-Za-z][A-Za-z0-9_]{3,31}$")
 ENTREES_MAX, SEUIL_CITATIONS, SEUIL_CITANTS, MUETTE_JOURS, ECHECS_MAX = 10, 5, 2, 30, 7
 CH_C = ["chaine", "groupe", "origine", "ajoutee_le", "statut"]
 MS_C = ["chaine", "id", "heure", "vues", "relaye_de", "cite"]
-RL_C = ["releve", "chaine", "statut_http", "messages_lus"]
+RL_C = ["releve", "chaine", "statut_http", "messages_lus", "pages", "complet"]
+DIAG = Counter()   # contrôle de lecture : balises de relais vues dans le HTML brut
+PAGES_MAX, PLANCHER_HEURES, DUREE_MAX = 15, 26, 35 * 60
 JL_C = ["jour", "chaine", "mouvement", "raison"]
 _DECOUPE = re.compile(r'<div class="tgme_widget_message_wrap')
 _POST = re.compile(r'data-post="([^"/]+)/(\d+)"')
@@ -96,7 +101,7 @@ def lire_page(page: str, chaine: str) -> list[dict]:
         b = _RELAIS_BALISE.search(bloc)
         r = _HREF.search(b.group(0)) if b else None   # relais d'une chaîne privée : pas de lien, pas de nom gardé
         relaye = r.group(1) if r else ""
-        cites = sorted({c for c in _LIEN.findall(bloc) if c.lower() not in (chaine.lower(), p.group(1).lower(),
+        cites = sorted({c for c in _LIEN.findall(bloc) if not c.lower().endswith("bot") and c.lower() not in (chaine.lower(), p.group(1).lower(),
                                                                          relaye.lower(), "share", "joinchat", "addstickers",
                                                                          "proxy", "iv", "contact", "addlist", "boost")})
         out.append({"chaine": p.group(1), "id": int(p.group(2)), "heure": heure,
@@ -117,6 +122,11 @@ def ecrire_csv(p: Path, champs: list[str], lignes: list[dict]) -> None:
 
 
 def ajouter_csv(p: Path, champs: list[str], lignes: list[dict]) -> None:
+    if p.exists():
+        with p.open(encoding="utf-8") as f:
+            entete = next(csv.reader(f), [])
+        if entete != champs:                                    # colonnes ajoutées : on réécrit, cases vides
+            ecrire_csv(p, champs, [{k: l.get(k, "") for k in champs} for l in lire_csv(p)])
     neuf = not p.exists()
     with p.open("a", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=champs)
@@ -125,9 +135,14 @@ def ajouter_csv(p: Path, champs: list[str], lignes: list[dict]) -> None:
         w.writerows(lignes)
 
 
-def noyau(c: httpx.Client, jour: str) -> list[dict]:
-    lignes = {n.lower(): {"chaine": n, "groupe": g, "origine": "cheyenne", "ajoutee_le": jour, "statut": "active"}
-              for n, g in NOYAU_CHEYENNE}
+def noyau(jour: str) -> list[dict]:
+    return [{"chaine": n, "groupe": g, "origine": "cheyenne", "ajoutee_le": jour, "statut": "active"} for n, g in NOYAU_CHEYENNE]
+
+
+def whittaker(c: httpx.Client, chaines: list[dict], jour: str) -> list[dict]:
+    """Ajoute les chaînes des sections conflits de la liste Whittaker ; renvoie les ajouts ([] si indisponible)."""
+    lignes = {x["chaine"].lower(): x for x in chaines}
+    ajouts = []
     try:
         r = c.get(WHITTAKER)
         r.raise_for_status()
@@ -136,9 +151,39 @@ def noyau(c: httpx.Client, jour: str) -> list[dict]:
             h = (x.get("handle") or "").lstrip("@")
             if g and NOM.match(h) and h.lower() not in lignes:
                 lignes[h.lower()] = {"chaine": h, "groupe": g, "origine": "whittaker", "ajoutee_le": jour, "statut": "active"}
+                ajouts.append(lignes[h.lower()])
     except Exception as e:
-        print(f"Liste Whittaker indisponible ({type(e).__name__}) : noyau Cheyenne seul.")
-    return sorted(lignes.values(), key=lambda x: (x["groupe"], x["chaine"].lower()))
+        print(f"Liste Whittaker indisponible ({type(e).__name__}) : nouvel essai au prochain passage.")
+        return []
+    if not ajouts:
+        print("Liste Whittaker lue, aucune chaîne nouvelle dans les sections retenues.")
+    return ajouts
+
+
+def remonter(c: httpx.Client, chaine: str, dernier_id: int, plancher: str, pages_max: int) -> tuple[str, list[dict], int, bool]:
+    """Remonte l'aperçu page par page (?before=) jusqu'au dernier message connu, ou jusqu'au plancher horaire
+    si la chaîne est nouvelle. Renvoie (statut HTTP, messages, pages lues, complet)."""
+    ms, url, code = [], f"https://t.me/s/{chaine}", ""
+    for page in range(1, pages_max + 1):
+        if page > 1:
+            time.sleep(3)
+        try:
+            r = c.get(url)
+            code = str(r.status_code)
+        except Exception as e:
+            return (code or type(e).__name__), ms, page, False
+        if r.status_code != 200:
+            return code, ms, page, False
+        DIAG["balises_relais"] += r.text.count("forwarded_from")
+        lot = lire_page(r.text, chaine)
+        if not lot:
+            return code, ms, page, True                       # début de la chaîne atteint (ou page vide)
+        ms += lot
+        bas = min(lot, key=lambda m: m["id"])
+        if bas["id"] <= dernier_id or bas["heure"] < plancher:
+            return code, ms, page, True
+        url = f"https://t.me/s/{chaine}?before={bas['id']}"
+    return code, ms, pages_max, False
 
 
 def mettre_a_jour(chaines: list[dict], messages: list[dict], releves: list[dict], jour: str) -> list[dict]:
@@ -195,26 +240,33 @@ def principal() -> int:
     with httpx.Client(headers=UA, timeout=40, follow_redirects=True) as c:
         chaines = lire_csv(CHAINES)
         if not chaines:
-            chaines = noyau(c, jour)
-            ajouter_csv(JOURNAL, JL_C, [{"jour": jour, "chaine": x["chaine"], "mouvement": "entrée", "raison": f"noyau ({x['origine']})"}
+            chaines = noyau(jour)
+            ajouter_csv(JOURNAL, JL_C, [{"jour": jour, "chaine": x["chaine"], "mouvement": "entrée", "raison": "noyau (cheyenne)"}
                                          for x in chaines])
+        if not any(l["raison"] == "noyau (whittaker)" for l in lire_csv(JOURNAL)):
+            ajouts = whittaker(c, chaines, jour)
+            chaines += ajouts
+            ajouter_csv(JOURNAL, JL_C, [{"jour": jour, "chaine": x["chaine"], "mouvement": "entrée", "raison": "noyau (whittaker)"}
+                                         for x in ajouts])
         messages = lire_csv(MESSAGES)
         deja = {(m["chaine"].lower(), m["id"]): m for m in messages}
-        lus, pleines, nouveaux, rel = 0, 0, 0, []
+        derniers = defaultdict(int)
+        for (k, i) in deja:
+            derniers[k] = max(derniers[k], int(i))
+        plancher = (maintenant - timedelta(hours=PLANCHER_HEURES)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        debut, lus, pleines, nouveaux, rel = time.monotonic(), 0, 0, 0, []
         for x in chaines:
             if x["statut"] == "disparue":
                 continue
+            if time.monotonic() - debut > DUREE_MAX:
+                rel.append({"releve": releve, "chaine": x["chaine"], "statut_http": "temps", "messages_lus": 0, "pages": 0, "complet": "non"})
+                continue
             time.sleep(3)
-            try:
-                r = c.get(f"https://t.me/s/{x['chaine']}")
-                code = str(r.status_code)
-                ms = lire_page(r.text, x["chaine"]) if r.status_code == 200 else []
-            except Exception as e:
-                code, ms = type(e).__name__, []
-            rel.append({"releve": releve, "chaine": x["chaine"], "statut_http": code, "messages_lus": len(ms)})
+            code, ms, pages, complet = remonter(c, x["chaine"], derniers[x["chaine"].lower()], plancher, PAGES_MAX)
+            rel.append({"releve": releve, "chaine": x["chaine"], "statut_http": code, "messages_lus": len(ms),
+                        "pages": pages, "complet": "oui" if complet else "non"})
             lus += code == "200"
-            if ms and all((m["chaine"].lower(), str(m["id"])) not in deja for m in ms) and len(ms) >= 15:
-                pleines += 1
+            pleines += code == "200" and not complet
             for m in ms:
                 k = (m["chaine"].lower(), str(m["id"]))
                 if k in deja:
@@ -234,8 +286,8 @@ def principal() -> int:
         ecrire_csv(CHAINES, CH_C, chaines)
         ecrire_csv(MESSAGES, MS_C, messages)
     actives = sum(1 for x in chaines if x["statut"] == "active")
-    bilan = (f"{releve} : {lus} chaînes lues sur {actives} actives, {nouveaux} nouveaux messages, {pleines} page(s) pleine(s) ; "
-             f"{len(mouvements)} mouvement(s) de liste. Métadonnées seulement (aucun texte gardé). Source : aperçus publics t.me.")
+    bilan = (f"{releve} : {lus} chaînes lues sur {actives} actives, {nouveaux} nouveaux messages, {pleines} chaîne(s) incomplète(s) (plafond de {PAGES_MAX} pages) ; "
+             f"{len(mouvements)} mouvement(s) de liste ; contrôle : {DIAG['balises_relais']} balise(s) « forwarded_from » dans le HTML, {sum(1 for m in messages if m["relaye_de"])} relais lus au total. Métadonnées seulement (aucun texte gardé). Source : aperçus publics t.me.")
     print(bilan)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:

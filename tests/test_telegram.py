@@ -71,5 +71,43 @@ class TListe(unittest.TestCase):
         self.assertEqual(sum(m["mouvement"] == "entrée" for m in mv), ct.ENTREES_MAX)
 
 
+class Faux:
+    """Client factice : trois pages de 2 messages, ids décroissants."""
+    def __init__(self):
+        self.urls = []
+
+    def get(self, url):
+        self.urls.append(url)
+        avant = int(url.split("before=")[1]) if "before=" in url else 107
+        corps = "".join(f'<div class="tgme_widget_message_wrap"><div data-post="x_chaine/{i}">'
+                        f'<time datetime="2026-11-18T0{i - 100}:00:00+00:00"></time></div></div>'
+                        for i in (avant - 2, avant - 1) if i > 100)
+        return type("R", (), {"status_code": 200, "text": corps})()
+
+
+class TRemonter(unittest.TestCase):
+    def setUp(self):
+        ct.time.sleep = lambda s: None
+
+    def test_jusqu_au_connu(self):
+        f = Faux()
+        code, ms, pages, complet = ct.remonter(f, "x_chaine", 103, "2000-01-01", 15)
+        self.assertEqual((code, pages, complet), ("200", 2, True))
+        self.assertEqual(sorted(m["id"] for m in ms), [103, 104, 105, 106])
+
+    def test_plafond(self):
+        code, ms, pages, complet = ct.remonter(Faux(), "x_chaine", 0, "2000-01-01", 2)
+        self.assertEqual((pages, complet), (2, False))
+
+    def test_debut_de_chaine(self):
+        code, ms, pages, complet = ct.remonter(Faux(), "x_chaine", 0, "2000-01-01", 15)
+        self.assertTrue(complet)
+        self.assertEqual(min(m["id"] for m in ms), 101)
+
+    def test_bots_exclus(self):
+        page = PAGE.replace("https://t.me/warmonitors/9", "https://t.me/newsDeepStatebot")
+        self.assertEqual(ct.lire_page(page, "DeepStateUA")[0]["cite"], "")
+
+
 if __name__ == "__main__":
     unittest.main()
