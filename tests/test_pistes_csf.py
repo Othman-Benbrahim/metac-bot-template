@@ -154,6 +154,30 @@ class Capture(unittest.TestCase):
         self.assertEqual(ligne["trace"]["moteur"], "exa2")
         self.assertNotIn("texte", json.dumps(ligne))                    # le texte n'entre jamais dans le dépôt
 
+    def test_archive_privee_seulement(self):
+        import tempfile
+        from types import SimpleNamespace
+
+        import archiver_captures as ac
+        d = Path(tempfile.mkdtemp())
+        (d / "a.txt").write_text("x")
+        (d / "b.txt").write_text("y")
+        envois = []
+
+        class Api:
+            def __init__(self, prive): self.prive = prive
+            def whoami(self): return {"name": "moi"}
+            def create_repo(self, *a, **k): return SimpleNamespace(repo_id="moi/alphabet-captures")
+            def repo_info(self, *a, **k): return SimpleNamespace(private=self.prive)
+            def list_repo_files(self, *a, **k): return ["recherches/a.txt"]
+            def upload_folder(self, **k): envois.append(k["allow_patterns"])
+
+        self.assertEqual(ac.archiver(Api(True), "alphabet-captures", d), 1)
+        self.assertEqual(envois, [["b.txt"]])                            # seuls les nouveaux fichiers
+        with self.assertRaises(RuntimeError):
+            ac.archiver(Api(False), "alphabet-captures", d)               # dépôt public : rien n'est envoyé
+        self.assertEqual(len(envois), 1)
+
     def test_fuite_consigne(self):
         import banc_fuite_recherche as bf
         c = bf.consigne("Will X?", "2026-03-01", 1, "texte de recherche")

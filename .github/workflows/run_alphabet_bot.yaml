@@ -123,6 +123,13 @@ jobs:
         with:
           path: cache/recherche-tournoi
           key: recherche-tournoi-${{ github.run_id }}
+      - name: Archiver les recherches capturées sur Hugging Face (0.10.297 ; dépôt PRIVÉ, vérifié avant envoi)
+        if: always()
+        continue-on-error: true
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_CAPTURES: ${{ vars.HF_CAPTURES }}
+        run: uv run --with "huggingface_hub==0.26.2" python archiver_captures.py
       - name: Enregistrer le registre
         if: always()
         run: |

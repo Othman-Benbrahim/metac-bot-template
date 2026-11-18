@@ -18,4 +18,6 @@ recherches gelées, sans fuite, et comparer à ce qui a été posté.
 
 ## Limites connues
 Le cache de GitHub Actions n'est pas un stockage durable (10 Go par dépôt, entrées non lues depuis 7 jours effacées) ;
-il est relu à chaque passage du bot. Un archivage plus sûr (ailleurs que dans le dépôt public) reste à décider.
+il est relu à chaque passage du bot. Archive durable (décision d'auteur du 2026-11-18, 22 h 14) : dépôt Hugging Face
+PRIVÉ « alphabet-captures », distinct du jeu public ; archiver_captures.py vérifie avant chaque envoi que le dépôt est
+privé et n'envoie rien sinon.
