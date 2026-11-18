@@ -1,0 +1,177 @@
+{
+  "version_bot": "0.10.291",
+  "questions": 892,
+  "avec_articles": 628,
+  "note": "questions distinctes de 2026 (première date de jeu) ; base S ; β appris sans la question jugée",
+  "spearman_tendance_issue": 0.094,
+  "base_S": {
+    "perte_base": 0.6588,
+    "perte_ajustee": 0.6572,
+    "beta_sur_tout": 0.25,
+    "critere": {
+      "n_nouveaux": 892,
+      "regard": 1,
+      "n_juge": 892,
+      "blocs": 892,
+      "bloc_par": "question",
+      "ecart_moyen": -0.0016560634808957845,
+      "intervalle_90_par_blocs": [
+        -0.006948234960553742,
+        0.003750598635664442
+      ],
+      "intervalle_corrige": [
+        -0.010424420652477106,
+        0.0071015725289939125
+      ],
+      "niveau_corrige": 0.9938,
+      "verdict": "critère non atteint ; essai à clore"
+    },
+    "par_source": {
+      "infer": {
+        "n": 10,
+        "base": 0.9525,
+        "ajustee": 0.8984
+      },
+      "manifold": {
+        "n": 155,
+        "base": 0.6452,
+        "ajustee": 0.6361
+      },
+      "metaculus": {
+        "n": 127,
+        "base": 0.5667,
+        "ajustee": 0.5564
+      },
+      "polymarket": {
+        "n": 600,
+        "base": 0.6769,
+        "ajustee": 0.6799
+      }
+    },
+    "profils": {
+      "base": {
+        "n": 892,
+        "oui": 262,
+        "perte_log": 0.6588,
+        "perte_venue_des_oui": 0.5249,
+        "perte_venue_des_non": 0.1339,
+        "rates_oui_sous_30": 222,
+        "fausses_alertes_non_sur_50": 8,
+        "brier": 0.2199,
+        "fiabilite_plus_bas_mieux": 0.0186,
+        "resolution_plus_haut_mieux": 0.0059,
+        "incertitude": 0.2074
+      },
+      "ajuste": {
+        "n": 892,
+        "oui": 262,
+        "perte_log": 0.6572,
+        "perte_venue_des_oui": 0.5221,
+        "perte_venue_des_non": 0.1351,
+        "rates_oui_sous_30": 209,
+        "fausses_alertes_non_sur_50": 12,
+        "brier": 0.2192,
+        "fiabilite_plus_bas_mieux": 0.0191,
+        "resolution_plus_haut_mieux": 0.0064,
+        "incertitude": 0.2074
+      }
+    }
+  },
+  "critere_principal": {
+    "n_nouveaux": 892,
+    "regard": 1,
+    "n_juge": 892,
+    "blocs": 892,
+    "bloc_par": "question",
+    "ecart_moyen": -0.0016560634808957845,
+    "intervalle_90_par_blocs": [
+      -0.006948234960553742,
+      0.003750598635664442
+    ],
+    "intervalle_corrige": [
+      -0.010424420652477106,
+      0.0071015725289939125
+    ],
+    "niveau_corrige": 0.9938,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "base_R1": {
+    "perte_base": 0.7017,
+    "perte_ajustee": 0.6971,
+    "beta_sur_tout": 0.35,
+    "critere": {
+      "n_nouveaux": 892,
+      "regard": 1,
+      "n_juge": 892,
+      "blocs": 892,
+      "bloc_par": "question",
+      "ecart_moyen": -0.004557101211330429,
+      "intervalle_90_par_blocs": [
+        -0.012343860346117898,
+        0.003791877462056061
+      ],
+      "intervalle_corrige": [
+        -0.017571609966132315,
+        0.009482344087031329
+      ],
+      "niveau_corrige": 0.9938,
+      "verdict": "critère non atteint ; essai à clore"
+    },
+    "par_source": {
+      "infer": {
+        "n": 10,
+        "base": 1.5349,
+        "ajustee": 1.4304
+      },
+      "manifold": {
+        "n": 155,
+        "base": 0.6619,
+        "ajustee": 0.6444
+      },
+      "metaculus": {
+        "n": 127,
+        "base": 0.5819,
+        "ajustee": 0.5679
+      },
+      "polymarket": {
+        "n": 600,
+        "base": 0.7234,
+        "ajustee": 0.7258
+      }
+    },
+    "profils": {
+      "base": {
+        "n": 892,
+        "oui": 262,
+        "perte_log": 0.7017,
+        "perte_venue_des_oui": 0.5711,
+        "perte_venue_des_non": 0.1306,
+        "rates_oui_sous_30": 217,
+        "fausses_alertes_non_sur_50": 1,
+        "brier": 0.2265,
+        "fiabilite_plus_bas_mieux": 0.0222,
+        "resolution_plus_haut_mieux": 0.0027,
+        "incertitude": 0.2074
+      },
+      "ajuste": {
+        "n": 892,
+        "oui": 262,
+        "perte_log": 0.6971,
+        "perte_venue_des_oui": 0.5662,
+        "perte_venue_des_non": 0.1309,
+        "rates_oui_sous_30": 212,
+        "fausses_alertes_non_sur_50": 7,
+        "brier": 0.2246,
+        "fiabilite_plus_bas_mieux": 0.0204,
+        "resolution_plus_haut_mieux": 0.0036,
+        "incertitude": 0.2074
+      }
+    }
+  },
+  "unites": {
+    "lignes": 892,
+    "questions_distinctes": 892,
+    "questions_oui_distinctes": 262,
+    "alerte": null
+  }
+}
