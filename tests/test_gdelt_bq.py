@@ -86,3 +86,10 @@ class TGdeltBQ(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TFiltre(unittest.TestCase):
+    def test_noms_exiges_titres_optionnels(self):
+        self.assertEqual(gb.requis_et_options("Will Jerome Powell be removed as Fed Chair before July?"),
+                         (["jerome", "powell"], ["fed", "chair"]))
+        self.assertEqual(gb.requis_et_options("Will manufacturing jobs for February be above 12 million?")[0], [])

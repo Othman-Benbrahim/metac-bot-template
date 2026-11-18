@@ -45,6 +45,21 @@ def mots(titre: str) -> list[str]:
     return [m.strip('"').lower() for m in ar_.gdelt_mots(titre).split() if len(m.strip('"')) > 2]
 
 
+TITRES_COMMUNS = {"president", "prime", "minister", "chair", "fed", "ceo", "governor", "senator", "king", "queen",
+                  "chancellor", "secretary", "general", "party", "election", "court", "supreme", "house", "senate",
+                  "january", "february", "march", "april", "may", "june", "july", "august", "september", "october",
+                  "november", "december", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
+
+
+def requis_et_options(titre: str) -> tuple[list[str], list[str]]:
+    """0.10.279 (premier passage des bancs : trop de bruit avec « 2 mots sur 4 ») : les NOMS PROPRES de la question
+    sont tous exigés dans le titre de l'article ; les autres mots-clés sont des options dont une au moins est exigée."""
+    tous = mots(titre)
+    propres = {w.lower() for i, w in enumerate(re.findall(r"[\w-]+", titre)) if i > 0 and w[:1].isupper()}
+    requis = [w for w in tous if w in propres and w not in TITRES_COMMUNS][:2]   # 2 noms au plus, les plus distinctifs
+    return requis, [w for w in tous if w not in requis]
+
+
 def cle(qid: str) -> str:
     return hashlib.sha1(str(qid).encode()).hexdigest()[:16]
 
@@ -62,15 +77,19 @@ g AS (
 ),
 m AS (
   SELECT q.qid, g.vu, g.url, g.titre,
-         (SELECT COUNTIF(STRPOS(LOWER(g.titre), w) > 0) FROM UNNEST(q.mots) w) AS trouves,
-         ARRAY_LENGTH(q.mots) AS n_mots
+         (SELECT COUNTIF(STRPOS(LOWER(g.titre), w) > 0) FROM UNNEST(q.requis) w) AS r_trouves,
+         ARRAY_LENGTH(q.requis) AS n_requis,
+         (SELECT COUNTIF(STRPOS(LOWER(g.titre), w) > 0) FROM UNNEST(q.options) w) AS o_trouves,
+         ARRAY_LENGTH(q.options) AS n_options
   FROM g JOIN q ON g.jour BETWEEN TIMESTAMP(q.debut) AND TIMESTAMP(q.fin)
   WHERE g.titre IS NOT NULL
 )
-SELECT qid, vu, url, titre, trouves FROM m
-WHERE trouves >= LEAST(2, n_mots)
-QUALIFY ROW_NUMBER() OVER (PARTITION BY qid, url ORDER BY vu) = 1
-   AND ROW_NUMBER() OVER (PARTITION BY qid ORDER BY trouves DESC, vu DESC) <= {PAR_QUESTION}
+SELECT qid, vu, url, titre, r_trouves + o_trouves AS trouves FROM m
+WHERE r_trouves = n_requis
+  AND (CASE WHEN n_requis = 0 THEN o_trouves >= LEAST(2, n_options)
+            ELSE (n_options = 0 OR o_trouves >= 1) END)
+QUALIFY ROW_NUMBER() OVER (PARTITION BY qid, LOWER(titre) ORDER BY vu) = 1
+   AND ROW_NUMBER() OVER (PARTITION BY qid ORDER BY r_trouves + o_trouves DESC, vu DESC) <= {PAR_QUESTION}
 """
 
 
@@ -80,8 +99,11 @@ def compteur() -> dict:
 
 def lancer(questions: list[dict], mode: str, client=None) -> dict[str, list[dict]]:
     """questions : [{qid, titre, debut (AAAA-MM-JJ), fin}] → {qid: [{vu, url, titre}]}. Essai à blanc d'abord."""
-    qs = [dict(q, mots=mots(q["titre"])) for q in questions]
-    qs = [q for q in qs if q["mots"]]
+    qs = []
+    for q in questions:
+        r, o = requis_et_options(q["titre"])
+        if r or o:
+            qs.append(dict(q, requis=r, options=o))
     if not qs:
         return {}
     from google.cloud import bigquery
@@ -92,7 +114,8 @@ def lancer(questions: list[dict], mode: str, client=None) -> dict[str, list[dict
     d0, d1 = min(q["debut"] for q in qs), max(q["fin"] for q in qs)
     params = [bigquery.ArrayQueryParameter("qs", "STRUCT", [bigquery.StructQueryParameter(
         None, bigquery.ScalarQueryParameter("qid", "STRING", str(q["qid"])),
-        bigquery.ArrayQueryParameter("mots", "STRING", q["mots"]),
+        bigquery.ArrayQueryParameter("requis", "STRING", q["requis"]),
+        bigquery.ArrayQueryParameter("options", "STRING", q["options"]),
         bigquery.ScalarQueryParameter("debut", "STRING", q["debut"]),
         bigquery.ScalarQueryParameter("fin", "STRING", q["fin"])) for q in qs]),
         bigquery.ScalarQueryParameter("d0", "STRING", d0), bigquery.ScalarQueryParameter("d1", "STRING", d1)]
@@ -116,8 +139,9 @@ def lancer(questions: list[dict], mode: str, client=None) -> dict[str, list[dict
     out: dict[str, list[dict]] = {}
     for r in lignes:
         vu = str(r["vu"])
+        import html
         out.setdefault(r["qid"], []).append({"vu": f"{vu[:4]}-{vu[4:6]}-{vu[6:8]}", "url": r["url"],
-                                             "titre": re.sub(r"\s+", " ", r["titre"] or "")[:200]})
+                                             "titre": re.sub(r"\s+", " ", html.unescape(r["titre"] or ""))[:200]})
     for v in out.values():
         v.sort(key=lambda a: a["vu"], reverse=True)
     return out
