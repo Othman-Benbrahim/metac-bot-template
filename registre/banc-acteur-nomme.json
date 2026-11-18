@@ -1,0 +1,101 @@
+{
+  "version_bot": "0.10.289",
+  "questions_acteur": 174,
+  "questions_toutes": 863,
+  "note": "questions distinctes de 2025 ; N (classe acteur / aucun) contre R1",
+  "perte_acteur": {
+    "R1": 0.4433,
+    "S": 0.4386,
+    "N": 0.463
+  },
+  "oui_acteur": 0.167,
+  "perte_toutes": {
+    "R1": 0.3984,
+    "S": 0.3898,
+    "N": 0.4002
+  },
+  "oui_toutes": 0.136,
+  "critere": {
+    "n_nouveaux": 174,
+    "regard": 1,
+    "n_juge": 174,
+    "blocs": 174,
+    "bloc_par": "question",
+    "ecart_moyen": 0.01972267052902338,
+    "intervalle_90_par_blocs": [
+      -0.002931843377893214,
+      0.041883408250205624
+    ],
+    "intervalle_corrige": [
+      -0.017993881824358876,
+      0.057492520819224076
+    ],
+    "niveau_corrige": 0.9938,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "secondaire_toutes": {
+    "n_nouveaux": 863,
+    "regard": 1,
+    "n_juge": 863,
+    "blocs": 863,
+    "bloc_par": "question",
+    "ecart_moyen": 0.0017561580710744873,
+    "intervalle_90_par_blocs": [
+      -0.012131848512308481,
+      0.015455959288438157
+    ],
+    "intervalle_corrige": [
+      -0.018876379988256076,
+      0.023677292445273973
+    ],
+    "niveau_corrige": 0.9938,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "profils_acteur": {
+    "R1": {
+      "n": 174,
+      "oui": 29,
+      "perte_log": 0.4433,
+      "perte_venue_des_oui": 0.288,
+      "perte_venue_des_non": 0.1554,
+      "rates_oui_sous_30": 26,
+      "fausses_alertes_non_sur_50": 1,
+      "brier": 0.138,
+      "fiabilite_plus_bas_mieux": 0.0128,
+      "resolution_plus_haut_mieux": 0.0162,
+      "incertitude": 0.1389
+    },
+    "S": {
+      "n": 174,
+      "oui": 29,
+      "perte_log": 0.4386,
+      "perte_venue_des_oui": 0.2819,
+      "perte_venue_des_non": 0.1567,
+      "rates_oui_sous_30": 25,
+      "fausses_alertes_non_sur_50": 0,
+      "brier": 0.136,
+      "fiabilite_plus_bas_mieux": 0.0039,
+      "resolution_plus_haut_mieux": 0.005,
+      "incertitude": 0.1389
+    },
+    "N": {
+      "n": 174,
+      "oui": 29,
+      "perte_log": 0.463,
+      "perte_venue_des_oui": 0.2907,
+      "perte_venue_des_non": 0.1723,
+      "rates_oui_sous_30": 28,
+      "fausses_alertes_non_sur_50": 0,
+      "brier": 0.1426,
+      "fiabilite_plus_bas_mieux": 0.0033,
+      "resolution_plus_haut_mieux": 0.0019,
+      "incertitude": 0.1389
+    }
+  },
+  "unites": {
+    "lignes": 174,
+    "questions_distinctes": 174,
+    "questions_oui_distinctes": 29,
+    "alerte": null
+  }
+}
