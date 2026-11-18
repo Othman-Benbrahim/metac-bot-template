@@ -226,7 +226,13 @@ ESSAIS = {
                      "objet": "taux de base corrigé par la classe « la question nomme un acteur » contre R1, questions "
                               "de 2025 (idée née des données de 2026)",
                      "doc": "preenregistrements/acteur-nomme.md"},
-    "tendance_attention_large": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "tendance_attention_large": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
+                                 "clos_le": "2026-11-18",
+                                 "verdict": "non adopté : 892 questions distinctes de 2026 (628 avec articles), S ajusté "
+                                            "0,6572 contre S 0,6588, écart −0,002, intervalle corrigé [−0,010 ; +0,007] ; "
+                                            "β appris positif (+0,25 sur S, +0,35 sur R1), rang tendance / issue 0,09 ; "
+                                            "gain sur Metaculus (−0,010), Manifold (−0,009), perte sur Polymarket "
+                                            "(+0,003) — sous-groupes vus APRÈS coup (run 44383204002)",
                                  "objet": "taux des semblables S ajusté par la tendance de l'attention GDELT, contre S, "
                                           "~890 questions distinctes de 2026 ; aucun appel à un modèle",
                                  "doc": "preenregistrements/tendance-attention-large.md"},
