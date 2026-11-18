@@ -218,6 +218,10 @@ ESSAIS = {
              "objet": "B par retour vers la moyenne (Ornstein-Uhlenbeck autour d'une tendance linéaire) contre B, "
                       "questions réelles FRED et DBnomics ; aucun appel à un modèle",
              "doc": "preenregistrements/b-ou.md"},
+    "acteur_nomme": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                     "objet": "taux de base corrigé par la classe « la question nomme un acteur » contre R1, questions "
+                              "de 2025 (idée née des données de 2026)",
+                     "doc": "preenregistrements/acteur-nomme.md"},
     "tendance_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
                            "objet": "M ajusté par la tendance de l'attention GDELT (10 derniers jours contre les 80 "
                                     "précédents), contre M seul ; aucun appel à un modèle",
