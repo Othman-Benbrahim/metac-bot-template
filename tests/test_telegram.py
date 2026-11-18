@@ -111,3 +111,16 @@ class TRemonter(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TRelaisFormes(unittest.TestCase):
+    def test_formes_de_relais(self):
+        formes = [
+            '<div class="tgme_widget_message_forwarded_from accent_color">Forwarded from <a class="tgme_widget_message_forwarded_from_name" href="https://t.me/rybar/77"><span dir="auto">R</span></a></div>',
+            '<div class="tgme_widget_message_forwarded_from accent_color">Forwarded from <a href="https://t.me/rybar/77" class="tgme_widget_message_forwarded_from_name">R</a></div>',
+            '<div class="tgme_widget_message_forwarded_from"><a class="tgme_widget_message_forwarded_from_name" href="https://t.me/rybar"><span>R</span></a> <a class="tgme_widget_message_forwarded_from_author">auteur</a></div>',
+        ]
+        for f in formes:
+            page = ('<div class="tgme_widget_message_wrap"><div data-post="x_chaine/5">' + f +
+                    '<time datetime="2026-11-18T03:00:00+00:00"></time></div></div>')
+            self.assertEqual(ct.lire_page(page, "x_chaine")[0]["relaye_de"], "rybar", f)

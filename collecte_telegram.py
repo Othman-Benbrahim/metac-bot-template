@@ -64,6 +64,7 @@ ENTREES_MAX, SEUIL_CITATIONS, SEUIL_CITANTS, MUETTE_JOURS, ECHECS_MAX = 10, 5, 2
 CH_C = ["chaine", "groupe", "origine", "ajoutee_le", "statut"]
 MS_C = ["chaine", "id", "heure", "vues", "relaye_de", "cite"]
 RL_C = ["releve", "chaine", "statut_http", "messages_lus", "pages", "complet"]
+DIAG_EXTRAITS: list[str] = []   # balises de relais non lues (attributs seulement, texte retiré)
 DIAG = Counter()   # contrôle de lecture : balises de relais vues dans le HTML brut
 PAGES_MAX, PLANCHER_HEURES, DUREE_MAX = 15, 26, 35 * 60
 JL_C = ["jour", "chaine", "mouvement", "raison"]
@@ -71,7 +72,7 @@ _DECOUPE = re.compile(r'<div class="tgme_widget_message_wrap')
 _POST = re.compile(r'data-post="([^"/]+)/(\d+)"')
 _HEURE = re.compile(r'<time datetime="([^"]+)"')
 _VUES = re.compile(r'tgme_widget_message_views">([^<]+)<')
-_RELAIS_BALISE = re.compile(r'<a\b[^>]*tgme_widget_message_forwarded_from_name[^>]*>')
+_RELAIS_BALISE = re.compile(r'tgme_widget_message_forwarded_from(?:_name)?\b.{0,600}?</(?:div|a)>', re.S)   # 0.10.256 : tout le bloc
 _HREF = re.compile(r'href="https?://t\.me/([A-Za-z][A-Za-z0-9_]{3,31})')
 _LIEN = re.compile(r'href="https?://t\.me/(?:s/)?([A-Za-z][A-Za-z0-9_]{3,31})(?:/\d+)?["?]')
 
@@ -101,6 +102,8 @@ def lire_page(page: str, chaine: str) -> list[dict]:
         b = _RELAIS_BALISE.search(bloc)
         r = _HREF.search(b.group(0)) if b else None   # relais d'une chaîne privée : pas de lien, pas de nom gardé
         relaye = r.group(1) if r else ""
+        if b and not relaye and len(DIAG_EXTRAITS) < 3:                # contrôle : forme de la balise (sans texte)
+            DIAG_EXTRAITS.append(re.sub(r">[^<]{0,200}<", "><", b.group(0))[:300])
         cites = sorted({c for c in _LIEN.findall(bloc) if not c.lower().endswith("bot") and c.lower() not in (chaine.lower(), p.group(1).lower(),
                                                                          relaye.lower(), "share", "joinchat", "addstickers",
                                                                          "proxy", "iv", "contact", "addlist", "boost")})
@@ -272,6 +275,9 @@ def principal() -> int:
                 if k in deja:
                     if m["vues"] != "":
                         deja[k]["vues"] = m["vues"]          # les vues croissent : on garde la dernière mesure
+                    for champ in ("relaye_de", "cite"):          # 0.10.256 : complète une lecture antérieure ratée
+                        if m[champ] and not deja[k].get(champ):
+                            deja[k][champ] = m[champ]
                 else:
                     m["id"] = str(m["id"])
                     deja[k] = m
@@ -289,6 +295,8 @@ def principal() -> int:
     bilan = (f"{releve} : {lus} chaînes lues sur {actives} actives, {nouveaux} nouveaux messages, {pleines} chaîne(s) incomplète(s) (plafond de {PAGES_MAX} pages) ; "
              f"{len(mouvements)} mouvement(s) de liste ; contrôle : {DIAG['balises_relais']} balise(s) « forwarded_from » dans le HTML, {sum(1 for m in messages if m['relaye_de'])} relais lus au total. Métadonnées seulement (aucun texte gardé). Source : aperçus publics t.me.")
     print(bilan)
+    for e in DIAG_EXTRAITS:
+        print(f"Balise de relais non lue (attributs seulement) : {e}")
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(f"## Observatoire Telegram (métadonnées)\n\n{bilan}\n")
