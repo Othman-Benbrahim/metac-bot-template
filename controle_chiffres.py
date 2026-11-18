@@ -43,6 +43,10 @@ def ignorable(texte: str, debut: int, fin: int, v: float, d: int) -> bool:
         return True                                   # date ou heure
     if re.search(r"(0\.10\.|v|bot |version |§ ?|run |ch\. ?|p\. ?|chapitre |Q|Haiku |Sonnet |Opus |Fable |Mythos )$", avant):
         return True                                   # version, section, run, page
+    if re.search(r"(^|\n)\s*$", avant) and re.match(r"\. ", apres):
+        return True                                   # numéro d'une liste (« 3. … » en début de ligne)
+    if re.search(r"arXiv ?$|doi:? ?$", avant):
+        return True                                   # identifiant d'article
     if re.search(r"[A-Za-z]-$", avant) or re.match(r"-[A-Za-z]", apres):
         return True                                   # nom de modèle ou de produit (gpt-5-mini, Qwen3-4B…)
     if d == 0 and abs(v) >= 10_000_000:

@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -57,6 +58,44 @@ Réponds seulement par un objet JSON :
 {{"revele": "oui" ou "non", "citation": "phrase recopiée du texte, ou null", "pourquoi": "une phrase"}}"""
 
 
+MOIS = {m: i + 1 for i, m in enumerate("janvier février mars avril mai juin juillet août septembre octobre novembre "
+                                       "décembre".split())}
+MOIS.update({m.lower(): i + 1 for i, m in enumerate("January February March April May June July August September October "
+                                                    "November December".split())})
+
+
+def dates(t: str) -> list:
+    """Dates écrites dans un texte (ISO, JJ/MM/AAAA, « 12 novembre 2026 », « September 2026 » → fin de mois approchée)."""
+    from datetime import date
+    out = []
+    for y, m, d in re.findall(r"(20\d\d)-(\d\d)-(\d\d)", t):
+        try:
+            out.append(date(int(y), int(m), int(d)))
+        except ValueError:
+            pass
+    for d, m, y in re.findall(r"(\d{1,2})/(\d{1,2})/(20\d\d)", t):
+        try:
+            out.append(date(int(y), int(m), int(d)))
+        except ValueError:
+            pass
+    for d, m, y in re.findall(r"(\d{1,2})\s+([A-Za-zéû]+)\s+(20\d\d)", t):
+        if m.lower() in MOIS:
+            out.append(date(int(y), MOIS[m.lower()], min(int(d), 28)))
+    for m, y in re.findall(r"([A-Za-zéû]+)\s+(20\d\d)", t):
+        if m.lower() in MOIS:
+            out.append(date(int(y), MOIS[m.lower()], 28))
+    return out
+
+
+def stricte(x: dict) -> bool:
+    """0.10.300 (APRÈS le premier passage, descriptif) : Haiku a souvent compté des faits ANTÉRIEURS à la question
+    (consigne non respectée) ; une fuite « stricte » exige en plus une date postérieure à la date de la question dans
+    la citation ou l'explication."""
+    from datetime import date
+    jeu = date.fromisoformat(x["question_id"].split(":")[-1][:10])
+    return x.get("verdict") == "fuite" and any(d > jeu for d in dates((x.get("citation") or "") + " " + (x.get("pourquoi") or "")))
+
+
 def resumer(ls: list[dict]) -> dict:
     import profil_erreurs as pe
     import score_registre as sr
@@ -79,6 +118,16 @@ def resumer(ls: list[dict]) -> dict:
             bloc_par="question", tout_juger=True)
         out["unites_propres"] = pe.unites(propre)
     out["unites"] = pe.unites(ok)
+    # 0.10.300 : relecture stricte (descriptive, définie après le premier passage)
+    qs_strictes = {":".join(x["question_id"].split(":")[:2]) for x in ok if stricte(x)}
+    st = [x for x in ok if ":".join(x["question_id"].split(":")[:2]) in qs_strictes]
+    reste = [x for x in ok if ":".join(x["question_id"].split(":")[:2]) not in qs_strictes]
+    out["stricte_descriptif"] = {"lignes_fuite_stricte": sum(1 for x in ok if stricte(x)), "questions_fuite_stricte": len(qs_strictes),
+                                 "perte_questions_touchees": {k: round(sum(pl(x[f"p_{k}"], x["issue"]) for x in st) / len(st), 4)
+                                                              for k in ("A", "M")} if st else None,
+                                 "perte_questions_sans_fuite_stricte": {k: round(sum(pl(x[f"p_{k}"], x["issue"]) for x in reste) / len(reste), 4)
+                                                                        for k in ("A", "M")} if reste else None,
+                                 "lignes_sans_fuite_stricte": len(reste)}
     return out
 
 

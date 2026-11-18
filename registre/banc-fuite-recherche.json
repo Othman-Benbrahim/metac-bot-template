@@ -1,5 +1,5 @@
 {
-  "version_bot": "0.10.297",
+  "version_bot": "0.10.299",
   "lignes_lues": 291,
   "questions_lues": 117,
   "lignes_fuite": 111,
@@ -21,16 +21,16 @@
     "n_juge": 180,
     "blocs": 86,
     "bloc_par": "question",
-    "ecart_moyen": -0.046301842014615895,
+    "ecart_moyen": -0.04630184201461593,
     "intervalle_90_par_blocs": [
-      -0.07916710778658013,
-      -0.01315866384306046
+      -0.07916710778658018,
+      -0.013158663843060452
     ],
     "intervalle_corrige": [
-      -0.09908447808660163,
-      0.0047361080485295295
+      -0.09908447808660173,
+      0.004736108048529525
     ],
-    "niveau_corrige": 0.9933,
+    "niveau_corrige": 0.9938,
     "verdict": "critère nominal seulement (pas au niveau corrigé)"
   },
   "unites_propres": {
@@ -44,5 +44,18 @@
     "questions_distinctes": 117,
     "questions_oui_distinctes": 26,
     "alerte": "291 lignes pour 117 questions distinctes : la preuve repose sur 117, pas sur 291 (intervalles par question)"
+  },
+  "stricte_descriptif": {
+    "lignes_fuite_stricte": 74,
+    "questions_fuite_stricte": 47,
+    "perte_questions_touchees": {
+      "A": 0.3648,
+      "M": 0.3593
+    },
+    "perte_questions_sans_fuite_stricte": {
+      "A": 0.3977,
+      "M": 0.3597
+    },
+    "lignes_sans_fuite_stricte": 150
   }
 }
