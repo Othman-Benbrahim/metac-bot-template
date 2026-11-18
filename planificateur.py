@@ -50,6 +50,8 @@ COLLECTES = (
     ("gdelt_bigquery.yaml", None),            # 0.10.277 : requête groupée de nuit (questions ouvertes, 30 jours)
     ("collecte_certificats.yaml", None),      # 0.10.299 : sources hors cadre (certificats, routines, Federal Register)
     ("collecte_routines.yaml", None), ("collecte_federal_register.yaml", None),
+    ("collecte_euipo.yaml", None), ("collecte_congres.yaml", None),   # 0.10.301 : clés données par l'auteur
+    ("collecte_tribunaux.yaml", None),
 )
 
 

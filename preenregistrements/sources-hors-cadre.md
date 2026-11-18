@@ -20,6 +20,9 @@ résolues la croiseront.
 | Rythme de publication des sites officiels (flux RSS) | collecte_routines.py | PÉRIODICITÉ, SEUIL | chaque nuit |
 | Federal Register, inspection publique (textes avant publication) | collecte_federal_register.py | DÉCLENCHEUR | chaque nuit |
 | Interdictions de survol FAA | sonde_tfr.py (sonde seulement) | RÉSEAU, RÉCIPROCITÉ | manuel |
+| Dépôts de marques des laboratoires d'IA (EUIPO, 0.10.301) | collecte_euipo.py | DÉCLENCHEUR | chaque nuit |
+| Congrès américain : réunions de commissions, nominations (0.10.301) | collecte_congres.py | DÉCLENCHEUR | chaque nuit |
+| Tribunaux américains (CourtListener, 0.10.301) | collecte_tribunaux.py | DÉCLENCHEUR | chaque nuit |
 
 ## Bancs prévus (à préenregistrer quand les données suffiront)
 - Certificats : sur les questions résolues de sortie de modèles d'IA, un nom de produit apparu dans les certificats
@@ -28,6 +31,8 @@ résolues la croiseront.
   plus souvent un événement de la question liée ?
 - Federal Register : un texte en inspection publique qui correspond à une question ouverte (agence et mots du titre).
 
-## En attente d'une intervention de l'auteur (clés gratuites)
-USPTO (marques), USAJOBS (offres d'emploi publiques), CourtListener (audiences), congress.gov (agenda du Congrès),
-Cert Spotter (clé facultative : limite plus haute). Aucune n'est indispensable pour démarrer.
+## Clés (2026-11-19)
+Enregistrées par l'auteur : EUIPO (EUIPO_CLIENT_ID, EUIPO_CLIENT_SECRET), congress.gov (CONGRESS_CLE), CourtListener
+(COURTLISTENER_CLE), Cert Spotter (CERTSPOTTER_CLE, droit limité à la recherche). Écartées : USPTO (vidéo
+d'identification exigée, refusée par l'auteur) ; USAJOBS (adresse courriel transmise à chaque requête ; écartée par
+l'auteur).

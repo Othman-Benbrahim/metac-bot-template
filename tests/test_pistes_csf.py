@@ -4,6 +4,7 @@ import tempfile
 os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-test-")  # registre fictif avant tout import
 os.environ["ALPHABET_TESTS"] = "1"
 
+import json
 import unittest
 from pathlib import Path
 
@@ -243,6 +244,35 @@ class SourcesHorsCadre(unittest.TestCase):
         vus = set()
         self.assertEqual(fr.lignes(d, vus, "2026-11-18")[0]["agences"], ["EPA"])
         self.assertEqual(fr.lignes(d, vus, "2026-11-18"), [])           # déjà vu
+
+    def test_euipo_congres_tribunaux(self):
+        import os
+        from datetime import date
+
+        import collecte_congres as cg
+        import collecte_euipo as ce
+        import collecte_tribunaux as ct
+        self.assertEqual(ce.requete("OpenAI*", date(2026, 7, 1)), 'applicants.name=="OpenAI*";applicationDate>=2026-07-01')
+        l = ce.ligne({"applicationNumber": "019000001", "applicationDate": "2026-10-02T00:00:00",
+                      "wordMarkSpecification": {"verbalElement": "GPT-6"}, "status": "RECEIVED"}, "OpenAI*", "2026-11-19")
+        self.assertEqual((l["verbal"], l["depot"]), ("GPT-6", "2026-10-02"))
+        r = cg.reunion({"committeeMeeting": {"eventId": 1, "chamber": "Senate", "title": "Nomination hearing",
+                                             "meetingStatus": "Scheduled", "date": "2026-12-03T15:00:00Z",
+                                             "committees": [{"name": "Armed Services"}], "witnesses": [{"name": "X"}]}},
+                       "2026-11-19")
+        self.assertEqual((r["date"], r["commissions"]), ("2026-12-03", ["Armed Services"]))
+        self.assertNotIn("witnesses", json.dumps(r))                      # jamais les témoins
+        n = cg.nomination({"congress": 119, "number": 512, "description": "D", "latestAction": {"text": "Confirmed",
+                                                                                              "actionDate": "2026-11-10"}},
+                          "2026-11-19")
+        self.assertEqual((n["id"], n["derniere_action"]), ("119-512", "Confirmed"))
+        self.assertEqual(ct.dossier({"id": 9, "court_id": "scotus", "case_name": "A v. B", "date_argued": "2026-12-01"},
+                                    "2026-11-19")["plaidoirie"], "2026-12-01")
+        for m, v in ((ce, "EUIPO_CLIENT_ID"), (cg, "CONGRESS_CLE"), (ct, "COURTLISTENER_CLE")):
+            ancien = os.environ.pop(v, None)
+            self.assertEqual(m.principal(), 0)                             # sans clé : rien, sans erreur
+            if ancien:
+                os.environ[v] = ancien
 
     def test_politesse_robots(self):
         import politesse

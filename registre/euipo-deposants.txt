@@ -1,0 +1,14 @@
+# déposants ENTREPRISES suivis par collecte_euipo.py (0.10.301) ; « * » = joker de l'interface (RSQL)
+OpenAI*
+Anthropic*
+Google LLC
+xAI*
+X.AI*
+Mistral AI*
+DeepSeek*
+Meta Platforms*
+Perplexity*
+Moonshot AI*
+Nvidia*
+Apple Inc*
+Microsoft Corporation
