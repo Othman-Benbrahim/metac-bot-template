@@ -196,7 +196,8 @@ ESSAIS = {
                       "verdict": "non retenu : 2026 (1 861 questions) sens 0,659 contre mots 0,645, écart +0,014, "
                                  "intervalle corrigé [−0,022 ; +0,051] ; réplique 2025 : sens MOINS bon (+0,015, "
                                  "[+0,005 ; +0,027]) ; meilleur sur Polymarket seul (−0,029), pire sur Manifold (+0,089), "
-                                 "Metaculus +0,027 (run 44294691789)",
+                                 "Metaculus +0,027 (run 44294691789) ; règle « Polymarket seul » (préenregistrée après coup, 12 h 45) : "
+                                 "NON reproduite, Polymarket 2025 sens MOINS bon (+0,022, [+0,008 ; +0,037], run 44297515492)",
                       "objet": "questions semblables trouvées par le sens (embeddings bge-small) contre par les mots "
                                "(TF-IDF) ; un seul regard, réplique 2025 exigée",
                       "doc": "preenregistrements/jugement-sens.md"},
