@@ -1,0 +1,59 @@
+name: "Banc jugement : variantes de M et réplique Haiku"
+
+# 0.10.254 : avocat du OUI et formulation neutre (gpt-5-mini, crédits Azure) ; réplique du banc A contre M sur
+# Claude Haiku 4.5 (crédits Bedrock, jusqu'au 23 novembre). preenregistrements/jugement-variantes.md
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "nombre de questions"
+        default: "150"
+      budget:
+        description: "plafond Azure (gpt-5-mini) en dollars"
+        default: "3"
+      budget_bedrock:
+        description: "plafond Bedrock (Haiku, crédits) en dollars"
+        default: "15"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_jugement_variantes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: "Banc jugement : variantes de M et réplique Haiku"
+        run: uv run python banc_jugement_variantes.py --n "${{ github.event.inputs.n || '150' }}" --budget "${{ github.event.inputs.budget || '3' }}" --budget-bedrock "${{ github.event.inputs.budget_bedrock || '15' }}"
+        env:
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/banc-jugement-variantes.jsonl registre/banc-jugement-variantes.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc jugement variantes du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

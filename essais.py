@@ -192,6 +192,17 @@ ESSAIS = {
                           "objet": "questions de jugement Metaculus : bot standard (A) contre le même passé par l'alphabet "
                                    "en matriochka (M), départ des semblables",
                           "doc": "preenregistrements/jugement-alphabet.md"},
+    "avocat_oui": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 150, "statut": "ouvert", "lecteur": "gpt-5-mini",
+                   "objet": "M avec un « avocat du OUI » avant le jugement final, contre M refait sur la même recherche",
+                   "doc": "preenregistrements/jugement-variantes.md"},
+    "formulation_neutre": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 150, "statut": "ouvert",
+                           "lecteur": "gpt-5-mini",
+                           "objet": "jugement final de M posé en deux issues symétriques, contre M refait (oui/non)",
+                           "doc": "preenregistrements/jugement-variantes.md"},
+    "replique_haiku": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 150, "statut": "ouvert",
+                       "lecteur": "claude-haiku-4-5",
+                       "objet": "réplique du banc jugement_alphabet sur un second lecteur : M contre A, Claude Haiku 4.5",
+                       "doc": "preenregistrements/jugement-variantes.md"},
     "m_officiel": {"ouvert_le": "2026-11-18", "type": "seuil", "n": 100, "statut": "ouvert", "depuis_version": "0.10.253",
                    "objet": "bras M (matriochka) POSTÉ en compétition par décision d'auteur (2026-11-18 5 h 55), A en "
                             "ombre ; règle d'arrêt : après 100 questions résolues, retour en arrière si M − A > +0,03",

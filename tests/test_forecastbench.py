@@ -467,9 +467,9 @@ class Tests(unittest.TestCase):
         import essais as es
         import score_registre as sr
         k = es.k_intervalle()
-        self.assertEqual(k, 10)                    # 0.10.137 : + desaccord, signaux_couteux clos ; 0.10.225 : + combinaisons ; 0.10.227 : + jugement_aveugle ; 0.10.231 : + conflictforecast ; 0.10.232 : + classe_reference ; 0.10.233 : + b_noyau, clos le jour même ; 0.10.234 : classe_reference adoptée ; 0.10.235 : + classe_reference_sources ; conflictforecast clos ; classe_reference_sources clos ; 0.10.237 : + classe_reference_metaculus ; 0.10.238 : + m11_grappe, alerte_precoce, richardson (les deux premiers clos) ; 0.10.239 : + front_diffusion ; metaculus et richardson clos ; 0.10.240 : + richardson_evenements ; front et richardson_evenements clos ; 0.10.241 : + jugement_semblables ; 0.10.243 : + jugement_alphabet ; 0.10.247 : + jugement_doublons, clos ; 0.10.252 : jugement_alphabet clos
-        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 10)
-        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 20)
+        self.assertEqual(k, 13)                    # 0.10.137 : + desaccord, signaux_couteux clos ; 0.10.225 : + combinaisons ; 0.10.227 : + jugement_aveugle ; 0.10.231 : + conflictforecast ; 0.10.232 : + classe_reference ; 0.10.233 : + b_noyau, clos le jour même ; 0.10.234 : classe_reference adoptée ; 0.10.235 : + classe_reference_sources ; conflictforecast clos ; classe_reference_sources clos ; 0.10.237 : + classe_reference_metaculus ; 0.10.238 : + m11_grappe, alerte_precoce, richardson (les deux premiers clos) ; 0.10.239 : + front_diffusion ; metaculus et richardson clos ; 0.10.240 : + richardson_evenements ; front et richardson_evenements clos ; 0.10.241 : + jugement_semblables ; 0.10.243 : + jugement_alphabet ; 0.10.247 : + jugement_doublons, clos ; 0.10.252 : jugement_alphabet clos ; 0.10.254 : + avocat_oui, formulation_neutre, replique_haiku
+        self.assertAlmostEqual(es.risque_corrige(1), 0.05 / 13)
+        self.assertAlmostEqual(es.risque_corrige(2), 0.05 / 26)
         self.assertEqual([es.regard(n, 100) for n in (50, 100, 199, 200, 500)], [0, 1, 1, 2, 2])
         t = sorted(range(1000))
         self.assertEqual(es.bornes(t, 0.05), (50, 949))
@@ -479,7 +479,7 @@ class Tests(unittest.TestCase):
         c = sr.critere_b_ar(L)
         self.assertEqual((c["regard"], c["n_juge"]), (1, 100))
         self.assertTrue(c["verdict"].startswith("critère atteint"))
-        self.assertEqual(es.resume()["ouverts"], 12)             # 0.10.137 : cinq essais clos ; 0.10.225 : + combinaisons ; 0.10.227 : + jugement_aveugle ; 0.10.231 : + conflictforecast ; 0.10.232 : + classe_reference ; 0.10.233 : + b_noyau, clos le jour même ; 0.10.234 : classe_reference adoptée ; 0.10.235 : + classe_reference_sources ; conflictforecast clos ; classe_reference_sources clos ; 0.10.237 : + classe_reference_metaculus ; 0.10.238 : + m11_grappe, alerte_precoce, richardson (les deux premiers clos) ; 0.10.239 : + front_diffusion ; metaculus et richardson clos ; 0.10.240 : + richardson_evenements ; front et richardson_evenements clos ; 0.10.241 : + jugement_semblables ; 0.10.243 : + jugement_alphabet ; 0.10.247 : + jugement_doublons, clos ; 0.10.252 : jugement_alphabet clos ; 0.10.253 : + m_officiel
+        self.assertEqual(es.resume()["ouverts"], 15)             # 0.10.137 : cinq essais clos ; 0.10.225 : + combinaisons ; 0.10.227 : + jugement_aveugle ; 0.10.231 : + conflictforecast ; 0.10.232 : + classe_reference ; 0.10.233 : + b_noyau, clos le jour même ; 0.10.234 : classe_reference adoptée ; 0.10.235 : + classe_reference_sources ; conflictforecast clos ; classe_reference_sources clos ; 0.10.237 : + classe_reference_metaculus ; 0.10.238 : + m11_grappe, alerte_precoce, richardson (les deux premiers clos) ; 0.10.239 : + front_diffusion ; metaculus et richardson clos ; 0.10.240 : + richardson_evenements ; front et richardson_evenements clos ; 0.10.241 : + jugement_semblables ; 0.10.243 : + jugement_alphabet ; 0.10.247 : + jugement_doublons, clos ; 0.10.252 : jugement_alphabet clos ; 0.10.253 : + m_officiel ; 0.10.254 : + avocat_oui, formulation_neutre, replique_haiku
         import pathlib
         racine = pathlib.Path(__file__).resolve().parents[1]
         for k, e in es.ESSAIS.items():                            # chaque essai a son pré-enregistrement commité
