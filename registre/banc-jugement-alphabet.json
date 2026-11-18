@@ -1,31 +1,31 @@
 {
-  "version_bot": "0.10.246",
-  "n": 217,
+  "version_bot": "0.10.249",
+  "n": 309,
   "note": "perte log, plus bas = mieux ; A et M sur les mêmes entrées",
-  "B_semblables": 0.4497,
-  "A": 0.3657,
-  "M": 0.3354,
+  "B_semblables": 0.4527,
+  "A": 0.3813,
+  "M": 0.3622,
   "discrimination": {
-    "B": 0.013,
-    "A": 0.224,
-    "M": 0.23
+    "B": 0.015,
+    "A": 0.209,
+    "M": 0.197
   },
-  "oui": 0.161,
+  "oui": 0.162,
   "critere": {
-    "n_nouveaux": 217,
-    "regard": 1,
-    "n_juge": 150,
-    "blocs": 19,
-    "ecart_moyen": -0.02560461973976882,
+    "n_nouveaux": 309,
+    "regard": 2,
+    "n_juge": 300,
+    "blocs": 20,
+    "ecart_moyen": -0.019447554833253042,
     "intervalle_90_par_blocs": [
-      -0.070546773424388,
-      0.01988675550752796
+      -0.04949672719664745,
+      0.008768471516428927
     ],
     "intervalle_corrige": [
-      -0.09764794936921432,
-      0.04516127489817521
+      -0.07494982062908923,
+      0.030659460034709818
     ],
-    "niveau_corrige": 0.9909,
-    "verdict": "critère non atteint ; un second regard à 200"
+    "niveau_corrige": 0.9955,
+    "verdict": "critère non atteint ; essai à clore"
   }
 }
