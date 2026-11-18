@@ -1,0 +1,25 @@
+name: Sonde Telegram et ISW (lecture seule, rien d'enregistré)
+
+# 0.10.249 : lit robots.txt de t.me et de l'ISW, un aperçu public de chaîne et deux bilans récents de l'ISW (chaînes
+# citées), pause de 3 s, une douzaine de requêtes au plus. N'écrit rien dans le dépôt.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sonde:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Sonde
+        timeout-minutes: 10
+        run: uv run python sonde_telegram.py
