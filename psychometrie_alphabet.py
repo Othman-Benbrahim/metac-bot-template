@@ -135,7 +135,21 @@ def kappa_pondere(a: list[int], b: list[int], k: int = 4) -> float | None:
     return None if de == 0 else 1 - do / de
 
 
+def une_par_question(xs: list[dict]) -> list[dict]:
+    """0.10.267 : une seule ligne par question distincte (la première date de jeu). Les bancs de jugement reprennent
+    la même question à plusieurs dates (309 lignes = 119 questions) : compter chaque répétition comme une observation
+    indépendante gonflait la significativité des cartes (examens du 2026-11-17 et du 2026-11-18, corrigés)."""
+    if not xs or "question_id" not in xs[0]:
+        return xs
+    vu = {}
+    for x in sorted(xs, key=lambda x: str(x["question_id"]).split(":")[-1]):
+        vu.setdefault(":".join(str(x["question_id"]).split(":")[:2]), x)
+    return list(vu.values())
+
+
 def examiner(xs: list[dict], fiab: list[dict] | None = None) -> dict:
+    n_lignes = len(xs)
+    xs = une_par_question(xs)
     seuil = 0.05 / len(CARTES)
     formes = sorted({x.get("forme", "autre") for x in xs})
     statuts = {"tout": {c: statut_carte(xs, c, seuil) for c in CARTES}}
@@ -149,7 +163,7 @@ def examiner(xs: list[dict], fiab: list[dict] | None = None) -> dict:
             rho = spearman([r[i] for r in m], [r[j] for r in m])
             if rho is not None:
                 red.append({"paire": f"{CARTES[i]} × {CARTES[j]}", "rho": round(rho, 3), "redondante": abs(rho) > 0.7})
-    out = {"n": len(xs), "oui": round(sum(x["issue"] for x in xs) / len(xs), 3) if xs else None,
+    out = {"n": len(xs), "n_lignes": n_lignes, "oui": round(sum(x["issue"] for x in xs) / len(xs), 3) if xs else None,
            "seuil_par_type": round(seuil, 4), "statuts": statuts,
            "redondance": sorted(red, key=lambda r: -r["rho"]),
            "premiere_composante": None if not m else round(premiere_composante(m) or 0, 3)}

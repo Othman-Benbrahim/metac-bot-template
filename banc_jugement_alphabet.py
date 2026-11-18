@@ -170,9 +170,10 @@ def resumer(ls: list[dict]) -> dict:
                 "discrimination": {"B": disc("p_B"), "A": disc("p_A"), "M": disc("p_M")},
                 "oui": round(sum(x["issue"] for x in ok) / n, 3),
                 "critere": sr.critere_ombre_b([dict(x, p_B=x["p_A"], o={"p": x["p_M"]}) for x in ok], "o",
-                                              "jugement_alphabet", exclure_vus=False)})
+                                              "jugement_alphabet", exclure_vus=False, bloc_par="question")})
     import profil_erreurs as pe          # 0.10.265 : les deux côtés des erreurs, toujours affichés
     out["profils"] = pe.profils(ok, {"B": "p_B", "A": "p_A", "M": "p_M"})
+    out["unites"] = pe.unites(ok)
     return out
 
 

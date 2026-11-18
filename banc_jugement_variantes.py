@@ -141,7 +141,7 @@ def resumer(ls: list[dict]) -> dict:
         return {"n": n, ref: round(sum(pl(x[ref], x["issue"]) for x in ok) / n, 4),
                 var: round(sum(pl(x[var], x["issue"]) for x in ok) / n, 4),
                 "critere": sr.critere_ombre_b([dict(x, p_B=x[ref], o={"p": x[var]}) for x in ok], "o", essai,
-                                              exclure_vus=False)}
+                                              exclure_vus=False, bloc_par="question")}
     out["gpt_avocat_oui"] = comparer(ls, "p_M_refait", "p_M_avocat", "avocat_oui")
     out["gpt_formulation_neutre"] = comparer(ls, "p_M_refait", "p_M_neutre", "formulation_neutre")
     out["haiku_replique_M_contre_A"] = comparer([dict(x, **{"hA": x.get("haiku", {}).get("p_A"),
@@ -153,6 +153,7 @@ def resumer(ls: list[dict]) -> dict:
         out["haiku_avocat_descriptif"] = {"n": len(ok), "M": round(sum(pl(x["hM"], x["issue"]) for x in ok) / len(ok), 4),
                                           "M_avocat": round(sum(pl(x["hMav"], x["issue"]) for x in ok) / len(ok), 4)}
     import profil_erreurs as pe          # 0.10.265 : les deux côtés des erreurs, toujours affichés
+    out["unites"] = pe.unites(ls)
     out["profils_gpt"] = pe.profils(ls, {"M_refait": "p_M_refait", "M_avocat": "p_M_avocat", "M_neutre": "p_M_neutre"})
     out["profils_haiku"] = pe.profils([dict(x, hA=x.get("haiku", {}).get("p_A"), hM=x.get("haiku", {}).get("p_M"),
                                             hMav=x.get("haiku", {}).get("p_M_avocat")) for x in ls
@@ -164,7 +165,8 @@ def resumer(ls: list[dict]) -> dict:
     out["oui_mis_bas"] = {k: sum(1 for x in oui if x.get(k) is not None and x[k] <= 0.23)
                           for k in ("p_M_refait", "p_M_avocat", "p_M_neutre")}
     out["oui_mis_bas"]["n_oui"] = len(oui)
-    notes_h = [{"issue": x["issue"], "forme": x.get("forme", "autre"), "notes": x["haiku"]["notes"]}
+    notes_h = [{"question_id": x["question_id"], "issue": x["issue"], "forme": x.get("forme", "autre"),
+                "notes": x["haiku"]["notes"]}
                for x in ls if (x.get("haiku") or {}).get("notes") and not x["haiku"].get("exclue")]
     if len(notes_h) >= 30:
         out["cartes_haiku"] = ps.examiner(notes_h)

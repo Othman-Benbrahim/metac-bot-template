@@ -1,5 +1,5 @@
 {
-  "version_bot": "0.10.266",
+  "version_bot": "0.10.267",
   "n_lignes": 150,
   "note": "perte log, plus bas = mieux",
   "gpt_avocat_oui": {
@@ -10,15 +10,16 @@
       "n_nouveaux": 148,
       "regard": 0,
       "n_juge": 148,
-      "blocs": 19,
+      "blocs": 87,
+      "bloc_par": "question",
       "ecart_moyen": -0.034999974198023115,
       "intervalle_90_par_blocs": [
-        -0.06935944790230358,
-        -0.0062162554079979665
+        -0.07699251324947948,
+        -0.002901526427141896
       ],
       "intervalle_corrige": [
-        -0.08777424942997056,
-        0.008728065501127598
+        -0.11361725504040535,
+        0.013450510041162404
       ],
       "niveau_corrige": 0.9929,
       "verdict": "en attente (moins de 150 questions de jeux non vus)"
@@ -32,15 +33,16 @@
       "n_nouveaux": 150,
       "regard": 1,
       "n_juge": 150,
-      "blocs": 19,
+      "blocs": 88,
+      "bloc_par": "question",
       "ecart_moyen": -0.02192526175587176,
       "intervalle_90_par_blocs": [
-        -0.05974982239102528,
-        0.01090312750764573
+        -0.05625128650720516,
+        0.0069440527457012725
       ],
       "intervalle_corrige": [
-        -0.08803744504450937,
-        0.03106278846407191
+        -0.0882088700541771,
+        0.02230385308720022
       ],
       "niveau_corrige": 0.9929,
       "verdict": "critère non atteint ; un second regard à 300"
@@ -54,15 +56,16 @@
       "n_nouveaux": 120,
       "regard": 0,
       "n_juge": 120,
-      "blocs": 19,
+      "blocs": 75,
+      "bloc_par": "question",
       "ecart_moyen": -0.0515310620189969,
       "intervalle_90_par_blocs": [
-        -0.09642538951828844,
-        0.0003962083063850268
+        -0.1352210732358508,
+        0.028032772508215207
       ],
       "intervalle_corrige": [
-        -0.1219023157874138,
-        0.03638116269618298
+        -0.1894860795723671,
+        0.06692716770629725
       ],
       "niveau_corrige": 0.9929,
       "verdict": "en attente (moins de 150 questions de jeux non vus)"
@@ -72,6 +75,12 @@
     "n": 120,
     "M": 0.4247,
     "M_avocat": 0.4149
+  },
+  "unites": {
+    "lignes": 150,
+    "questions_distinctes": 88,
+    "questions_oui_distinctes": 17,
+    "alerte": "150 lignes pour 88 questions distinctes : la preuve repose sur 88, pas sur 150 (intervalles par question)"
   },
   "profils_gpt": {
     "M_refait": {
@@ -162,474 +171,459 @@
     "n_oui": 26
   },
   "cartes_haiku": {
-    "n": 120,
-    "oui": 0.167,
+    "n": 75,
+    "n_lignes": 120,
+    "oui": 0.2,
     "seuil_par_type": 0.0071,
     "statuts": {
       "tout": {
         "tendance": {
-          "n": 120,
-          "n_haut": 54,
-          "n_bas": 66,
-          "effet": 0.135,
-          "p_bon_sens": 0.051,
-          "p_mauvais_sens": 0.984,
+          "n": 75,
+          "n_haut": 36,
+          "n_bas": 39,
+          "effet": 0.203,
+          "p_bon_sens": 0.026,
+          "p_mauvais_sens": 0.9945,
           "statut": "non démontrée"
         },
         "engagements": {
-          "n": 120,
-          "n_haut": 28,
-          "n_bas": 92,
-          "effet": 0.155,
-          "p_bon_sens": 0.0575,
-          "p_mauvais_sens": 0.982,
+          "n": 75,
+          "n_haut": 22,
+          "n_bas": 53,
+          "effet": 0.167,
+          "p_bon_sens": 0.0975,
+          "p_mauvais_sens": 0.9735,
           "statut": "non démontrée"
         },
         "decideurs": {
-          "n": 120,
-          "n_haut": 46,
-          "n_bas": 74,
-          "effet": 0.223,
-          "p_bon_sens": 0.0025,
-          "p_mauvais_sens": 1.0,
-          "statut": "démontrée"
-        },
-        "declencheur": {
-          "n": 120,
-          "n_haut": 43,
-          "n_bas": 77,
-          "effet": 0.284,
-          "p_bon_sens": 0.001,
-          "p_mauvais_sens": 1.0,
-          "statut": "démontrée"
-        },
-        "freins": {
-          "n": 120,
-          "n_haut": 79,
+          "n": 75,
+          "n_haut": 34,
           "n_bas": 41,
-          "effet": 0.117,
-          "p_bon_sens": 0.085,
-          "p_mauvais_sens": 0.9725,
+          "effet": 0.226,
+          "p_bon_sens": 0.0105,
+          "p_mauvais_sens": 0.9975,
           "statut": "non démontrée"
         },
-        "duree": {
-          "n": 120,
-          "n_haut": 75,
-          "n_bas": 45,
-          "effet": 0.196,
-          "p_bon_sens": 0.0035,
+        "declencheur": {
+          "n": 75,
+          "n_haut": 31,
+          "n_bas": 44,
+          "effet": 0.264,
+          "p_bon_sens": 0.006,
           "p_mauvais_sens": 0.999,
           "statut": "démontrée"
         },
+        "freins": {
+          "n": 75,
+          "n_haut": 46,
+          "n_bas": 29,
+          "effet": 0.124,
+          "p_bon_sens": 0.1499,
+          "p_mauvais_sens": 0.953,
+          "statut": "non démontrée"
+        },
+        "duree": {
+          "n": 75,
+          "n_haut": 52,
+          "n_bas": 23,
+          "effet": 0.226,
+          "p_bon_sens": 0.022,
+          "p_mauvais_sens": 0.9985,
+          "statut": "non démontrée"
+        },
         "proportion": {
-          "n": 120,
-          "n_haut": 31,
-          "n_bas": 89,
-          "effet": 0.254,
-          "p_bon_sens": 0.002,
-          "p_mauvais_sens": 1.0,
+          "n": 75,
+          "n_haut": 22,
+          "n_bas": 53,
+          "effet": 0.296,
+          "p_bon_sens": 0.0065,
+          "p_mauvais_sens": 0.998,
           "statut": "démontrée"
         }
       },
       "autre": {
         "tendance": {
-          "n": 13,
+          "n": 11,
           "n_haut": 7,
-          "n_bas": 6,
+          "n_bas": 4,
           "effet": 0.143,
-          "p_bon_sens": 0.5512,
-          "p_mauvais_sens": 1.0,
-          "statut": "non démontrée"
+          "statut": "non démontrée (trop peu)"
         },
         "engagements": {
-          "n": 13,
+          "n": 11,
           "n_haut": 4,
-          "n_bas": 9,
+          "n_bas": 7,
           "effet": 0.25,
           "statut": "non démontrée (trop peu)"
         },
         "decideurs": {
-          "n": 13,
+          "n": 11,
           "n_haut": 5,
-          "n_bas": 8,
+          "n_bas": 6,
           "effet": 0.2,
-          "p_bon_sens": 0.3953,
+          "p_bon_sens": 0.4528,
           "p_mauvais_sens": 1.0,
           "statut": "non démontrée"
         },
         "declencheur": {
-          "n": 13,
-          "n_haut": 7,
-          "n_bas": 6,
-          "effet": -0.167,
+          "n": 11,
+          "n_haut": 6,
+          "n_bas": 5,
+          "effet": -0.2,
           "p_bon_sens": 1.0,
-          "p_mauvais_sens": 0.4428,
+          "p_mauvais_sens": 0.4708,
           "statut": "non démontrée"
         },
         "freins": {
-          "n": 13,
-          "n_haut": 7,
+          "n": 11,
+          "n_haut": 5,
           "n_bas": 6,
-          "effet": -0.143,
+          "effet": -0.2,
           "p_bon_sens": 1.0,
-          "p_mauvais_sens": 0.5272,
+          "p_mauvais_sens": 0.4533,
           "statut": "non démontrée"
         },
         "duree": {
-          "n": 13,
+          "n": 11,
           "n_haut": 8,
-          "n_bas": 5,
+          "n_bas": 3,
           "effet": 0.125,
-          "p_bon_sens": 0.6367,
-          "p_mauvais_sens": 1.0,
-          "statut": "non démontrée"
+          "statut": "non démontrée (trop peu)"
         },
         "proportion": {
-          "n": 13,
+          "n": 11,
           "n_haut": 3,
-          "n_bas": 10,
+          "n_bas": 8,
           "effet": 0.333,
           "statut": "non démontrée (trop peu)"
         }
       },
       "echeance": {
         "tendance": {
-          "n": 69,
-          "n_haut": 34,
-          "n_bas": 35,
-          "effet": 0.208,
-          "p_bon_sens": 0.0265,
-          "p_mauvais_sens": 0.993,
+          "n": 43,
+          "n_haut": 22,
+          "n_bas": 21,
+          "effet": 0.316,
+          "p_bon_sens": 0.012,
+          "p_mauvais_sens": 0.9995,
           "statut": "non démontrée"
         },
         "engagements": {
-          "n": 69,
-          "n_haut": 21,
-          "n_bas": 48,
-          "effet": 0.25,
-          "p_bon_sens": 0.0185,
-          "p_mauvais_sens": 0.9965,
+          "n": 43,
+          "n_haut": 16,
+          "n_bas": 27,
+          "effet": 0.264,
+          "p_bon_sens": 0.049,
+          "p_mauvais_sens": 0.994,
           "statut": "non démontrée"
         },
         "decideurs": {
-          "n": 69,
-          "n_haut": 30,
-          "n_bas": 39,
-          "effet": 0.249,
-          "p_bon_sens": 0.011,
-          "p_mauvais_sens": 0.9985,
+          "n": 43,
+          "n_haut": 21,
+          "n_bas": 22,
+          "effet": 0.335,
+          "p_bon_sens": 0.0075,
+          "p_mauvais_sens": 1.0,
           "statut": "non démontrée"
         },
         "declencheur": {
-          "n": 69,
-          "n_haut": 16,
-          "n_bas": 53,
+          "n": 43,
+          "n_haut": 13,
+          "n_bas": 30,
           "effet": 0.362,
-          "p_bon_sens": 0.002,
+          "p_bon_sens": 0.014,
           "p_mauvais_sens": 0.9995,
-          "statut": "démontrée"
+          "statut": "non démontrée"
         },
         "freins": {
-          "n": 69,
-          "n_haut": 52,
-          "n_bas": 17,
-          "effet": 0.101,
-          "p_bon_sens": 0.2649,
-          "p_mauvais_sens": 0.9095,
+          "n": 43,
+          "n_haut": 30,
+          "n_bas": 13,
+          "effet": 0.141,
+          "p_bon_sens": 0.2624,
+          "p_mauvais_sens": 0.933,
           "statut": "non démontrée"
         },
         "duree": {
-          "n": 69,
-          "n_haut": 42,
-          "n_bas": 27,
-          "effet": 0.14,
-          "p_bon_sens": 0.1064,
-          "p_mauvais_sens": 0.977,
+          "n": 43,
+          "n_haut": 30,
+          "n_bas": 13,
+          "effet": 0.19,
+          "p_bon_sens": 0.1604,
+          "p_mauvais_sens": 0.976,
           "statut": "non démontrée"
         },
         "proportion": {
-          "n": 69,
-          "n_haut": 18,
-          "n_bas": 51,
-          "effet": 0.235,
-          "p_bon_sens": 0.034,
-          "p_mauvais_sens": 0.995,
+          "n": 43,
+          "n_haut": 14,
+          "n_bas": 29,
+          "effet": 0.325,
+          "p_bon_sens": 0.0195,
+          "p_mauvais_sens": 0.9965,
           "statut": "non démontrée"
         }
       },
       "election": {
         "tendance": {
-          "n": 18,
-          "n_haut": 4,
-          "n_bas": 14,
-          "effet": 0.464,
+          "n": 10,
+          "n_haut": 2,
+          "n_bas": 8,
+          "effet": 0.75,
           "statut": "non démontrée (trop peu)"
         },
         "engagements": {
-          "n": 18,
+          "n": 10,
           "n_haut": 0,
-          "n_bas": 18,
+          "n_bas": 10,
           "effet": null,
           "statut": "non démontrée (trop peu)"
         },
         "decideurs": {
-          "n": 18,
-          "n_haut": 3,
-          "n_bas": 15,
-          "effet": 0.733,
+          "n": 10,
+          "n_haut": 1,
+          "n_bas": 9,
+          "effet": 0.667,
           "statut": "non démontrée (trop peu)"
         },
         "declencheur": {
-          "n": 18,
-          "n_haut": 13,
-          "n_bas": 5,
-          "effet": 0.538,
-          "p_bon_sens": 0.0595,
-          "p_mauvais_sens": 1.0,
-          "statut": "non démontrée"
+          "n": 10,
+          "n_haut": 6,
+          "n_bas": 4,
+          "effet": 0.667,
+          "statut": "non démontrée (trop peu)"
         },
         "freins": {
-          "n": 18,
-          "n_haut": 10,
-          "n_bas": 8,
-          "effet": 0.425,
-          "p_bon_sens": 0.0825,
-          "p_mauvais_sens": 0.9915,
-          "statut": "non démontrée"
+          "n": 10,
+          "n_haut": 6,
+          "n_bas": 4,
+          "effet": 0.583,
+          "statut": "non démontrée (trop peu)"
         },
         "duree": {
-          "n": 18,
-          "n_haut": 14,
-          "n_bas": 4,
-          "effet": 0.5,
+          "n": 10,
+          "n_haut": 7,
+          "n_bas": 3,
+          "effet": 0.571,
           "statut": "non démontrée (trop peu)"
         },
         "proportion": {
-          "n": 18,
-          "n_haut": 5,
-          "n_bas": 13,
-          "effet": 0.569,
-          "p_bon_sens": 0.051,
-          "p_mauvais_sens": 0.998,
-          "statut": "non démontrée"
+          "n": 10,
+          "n_haut": 2,
+          "n_bas": 8,
+          "effet": 0.75,
+          "statut": "non démontrée (trop peu)"
         }
       },
       "justice": {
         "tendance": {
-          "n": 8,
+          "n": 3,
           "n_haut": 1,
-          "n_bas": 7,
+          "n_bas": 2,
           "effet": 0.0,
           "statut": "non démontrée (trop peu)"
         },
         "engagements": {
-          "n": 8,
+          "n": 3,
           "n_haut": 0,
-          "n_bas": 8,
+          "n_bas": 3,
           "effet": null,
           "statut": "non démontrée (trop peu)"
         },
         "decideurs": {
-          "n": 8,
+          "n": 3,
           "n_haut": 1,
-          "n_bas": 7,
+          "n_bas": 2,
           "effet": 0.0,
           "statut": "non démontrée (trop peu)"
         },
         "declencheur": {
-          "n": 8,
+          "n": 3,
           "n_haut": 1,
-          "n_bas": 7,
+          "n_bas": 2,
           "effet": 0.0,
           "statut": "non démontrée (trop peu)"
         },
         "freins": {
-          "n": 8,
-          "n_haut": 8,
+          "n": 3,
+          "n_haut": 3,
           "n_bas": 0,
           "effet": null,
           "statut": "non démontrée (trop peu)"
         },
         "duree": {
-          "n": 8,
+          "n": 3,
           "n_haut": 1,
-          "n_bas": 7,
+          "n_bas": 2,
           "effet": 0.0,
           "statut": "non démontrée (trop peu)"
         },
         "proportion": {
-          "n": 8,
+          "n": 3,
           "n_haut": 0,
-          "n_bas": 8,
+          "n_bas": 3,
           "effet": null,
           "statut": "non démontrée (trop peu)"
         }
       },
       "seuil": {
         "tendance": {
-          "n": 12,
-          "n_haut": 8,
+          "n": 8,
+          "n_haut": 4,
           "n_bas": 4,
           "effet": -0.25,
           "statut": "non démontrée (trop peu)"
         },
         "engagements": {
-          "n": 12,
-          "n_haut": 3,
-          "n_bas": 9,
-          "effet": -0.111,
+          "n": 8,
+          "n_haut": 2,
+          "n_bas": 6,
+          "effet": -0.167,
           "statut": "non démontrée (trop peu)"
         },
         "decideurs": {
-          "n": 12,
-          "n_haut": 7,
-          "n_bas": 5,
-          "effet": 0.143,
-          "p_bon_sens": 0.5837,
-          "p_mauvais_sens": 1.0,
-          "statut": "non démontrée"
+          "n": 8,
+          "n_haut": 6,
+          "n_bas": 2,
+          "effet": 0.167,
+          "statut": "non démontrée (trop peu)"
         },
         "declencheur": {
-          "n": 12,
-          "n_haut": 6,
-          "n_bas": 6,
-          "effet": 0.167,
-          "p_bon_sens": 0.4963,
-          "p_mauvais_sens": 1.0,
-          "statut": "non démontrée"
+          "n": 8,
+          "n_haut": 5,
+          "n_bas": 3,
+          "effet": 0.2,
+          "statut": "non démontrée (trop peu)"
         },
         "freins": {
-          "n": 12,
+          "n": 8,
           "n_haut": 2,
-          "n_bas": 10,
-          "effet": 0.1,
+          "n_bas": 6,
+          "effet": 0.167,
           "statut": "non démontrée (trop peu)"
         },
         "duree": {
-          "n": 12,
-          "n_haut": 10,
+          "n": 8,
+          "n_haut": 6,
           "n_bas": 2,
-          "effet": 0.1,
+          "effet": 0.167,
           "statut": "non démontrée (trop peu)"
         },
         "proportion": {
-          "n": 12,
-          "n_haut": 5,
-          "n_bas": 7,
-          "effet": -0.143,
-          "p_bon_sens": 1.0,
-          "p_mauvais_sens": 0.5897,
-          "statut": "non démontrée"
+          "n": 8,
+          "n_haut": 3,
+          "n_bas": 5,
+          "effet": -0.2,
+          "statut": "non démontrée (trop peu)"
         }
       }
     },
     "redondance": [
       {
         "paire": "tendance × proportion",
-        "rho": 0.797,
+        "rho": 0.809,
         "redondante": true
       },
       {
         "paire": "tendance × decideurs",
-        "rho": 0.75,
+        "rho": 0.757,
+        "redondante": true
+      },
+      {
+        "paire": "engagements × decideurs",
+        "rho": 0.702,
         "redondante": true
       },
       {
         "paire": "declencheur × freins",
-        "rho": 0.704,
-        "redondante": true
-      },
-      {
-        "paire": "freins × duree",
-        "rho": 0.694,
+        "rho": 0.689,
         "redondante": false
       },
       {
         "paire": "declencheur × duree",
-        "rho": 0.692,
-        "redondante": false
-      },
-      {
-        "paire": "engagements × decideurs",
-        "rho": 0.672,
+        "rho": 0.674,
         "redondante": false
       },
       {
         "paire": "decideurs × proportion",
-        "rho": 0.664,
+        "rho": 0.669,
         "redondante": false
       },
       {
-        "paire": "freins × proportion",
-        "rho": 0.617,
+        "paire": "freins × duree",
+        "rho": 0.636,
         "redondante": false
       },
       {
         "paire": "tendance × engagements",
-        "rho": 0.604,
+        "rho": 0.62,
         "redondante": false
       },
       {
         "paire": "tendance × freins",
-        "rho": 0.601,
+        "rho": 0.56,
         "redondante": false
       },
       {
-        "paire": "decideurs × freins",
-        "rho": 0.551,
+        "paire": "freins × proportion",
+        "rho": 0.553,
         "redondante": false
       },
       {
         "paire": "decideurs × declencheur",
-        "rho": 0.525,
-        "redondante": false
-      },
-      {
-        "paire": "declencheur × proportion",
-        "rho": 0.524,
-        "redondante": false
-      },
-      {
-        "paire": "engagements × proportion",
-        "rho": 0.505,
-        "redondante": false
-      },
-      {
-        "paire": "duree × proportion",
-        "rho": 0.498,
+        "rho": 0.495,
         "redondante": false
       },
       {
         "paire": "tendance × declencheur",
-        "rho": 0.477,
+        "rho": 0.493,
         "redondante": false
       },
       {
         "paire": "engagements × declencheur",
-        "rho": 0.465,
+        "rho": 0.49,
+        "redondante": false
+      },
+      {
+        "paire": "decideurs × freins",
+        "rho": 0.481,
+        "redondante": false
+      },
+      {
+        "paire": "engagements × proportion",
+        "rho": 0.48,
+        "redondante": false
+      },
+      {
+        "paire": "declencheur × proportion",
+        "rho": 0.431,
         "redondante": false
       },
       {
         "paire": "tendance × duree",
-        "rho": 0.445,
+        "rho": 0.419,
+        "redondante": false
+      },
+      {
+        "paire": "duree × proportion",
+        "rho": 0.398,
         "redondante": false
       },
       {
         "paire": "decideurs × duree",
-        "rho": 0.433,
+        "rho": 0.371,
         "redondante": false
       },
       {
         "paire": "engagements × freins",
-        "rho": 0.395,
+        "rho": 0.336,
         "redondante": false
       },
       {
         "paire": "engagements × duree",
-        "rho": 0.315,
+        "rho": 0.318,
         "redondante": false
       }
     ],
-    "premiere_composante": 0.621
+    "premiere_composante": 0.606
   }
 }

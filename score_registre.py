@@ -384,7 +384,7 @@ JEUX_VUS_B_AR = {"2026-09-27", "2026-10-11", "2026-10-25"}
 
 
 def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b_autoregressif",
-                    exclure_vus: bool = True) -> dict:
+                    exclure_vus: bool = True, bloc_par: str = "jeu") -> dict:
     """0.10.104 : généralisé à toute ombre de B (`cle`, essai de essais.py). B_AR remplace B pour les séries si, sur au moins 100 questions de jeux non vus : perte log de B_AR inférieure à
     celle de B, ET intervalle à 90 % de l'écart (bootstrap par blocs « jeu × source », 2 000 tirages, graine 0)
     entièrement sous 0. Même alors, le passage en officiel est une décision d'auteur datée.
@@ -402,20 +402,25 @@ def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b
     if rg == 2:
         # 0.10.105 : les regards se font DANS L'ORDRE même si 2N lignes arrivent d'un coup (banc du taux de base du
         # 2026-11-15) : le second regard n'existe que si le premier n'a pas déjà conclu à l'adoption.
-        r1 = critere_ombre_b(tous[:N], cle, essai, exclure_vus)
+        r1 = critere_ombre_b(tous[:N], cle, essai, exclure_vus, bloc_par)
         if str(r1.get("verdict", "")).startswith("critère atteint"):
             return dict(r1, n_nouveaux=len(tous))
     nv = tous[: (N if rg == 1 else 2 * N if rg == 2 else len(tous))]
     ec = [pl(x[cle]["p"], x["issue"]) - pl(x["p_B"], x["issue"]) for x in nv]
     blocs: dict[str, list[float]] = {}
     for x, e in zip(nv, ec):
-        blocs.setdefault(f"{x.get('jeu') or x['question_id'].split(':')[1]}:{x['question_id'].split(':')[2]}", []).append(e)
+        # 0.10.267 : bancs de jugement, bloc_par="question" : une même question revient à plusieurs dates de jeu
+        # (309 lignes = 119 questions) ; les tirer ensemble, sinon l'intervalle est trop étroit
+        cle_bloc = (":".join(x["question_id"].split(":")[:2]) if bloc_par == "question" else
+                    f"{x.get('jeu') or x['question_id'].split(':')[1]}:{x['question_id'].split(':')[2]}")
+        blocs.setdefault(cle_bloc, []).append(e)
     rnd, cles = _r.Random(0), sorted(blocs)
     boots = sorted((lambda t: sum(t) / len(t))([e for _ in cles for e in blocs[rnd.choice(cles)]]) for _ in range(2000))
     bas, haut = boots[100], boots[1899]
     bas_c, haut_c = es.bornes(boots, es.risque_corrige(max(rg, 1)))
     moy = sum(ec) / len(ec)
-    return {"n_nouveaux": len(tous), "regard": rg, "n_juge": len(nv), "blocs": len(cles), "ecart_moyen": moy,
+    return {"n_nouveaux": len(tous), "regard": rg, "n_juge": len(nv), "blocs": len(cles), "bloc_par": bloc_par,
+            "ecart_moyen": moy,
             "intervalle_90_par_blocs": [bas, haut], "intervalle_corrige": [bas_c, haut_c],
             "niveau_corrige": round(1 - 2 * es.risque_corrige(max(rg, 1)), 4),
             "verdict": (f"en attente (moins de {N} questions de jeux non vus)" if rg == 0 else

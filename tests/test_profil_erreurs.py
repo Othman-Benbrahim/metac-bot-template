@@ -29,3 +29,28 @@ class TProfil(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TUnites(unittest.TestCase):
+    def test_alerte_repetitions(self):
+        ls = [{"question_id": f"metaculus:{q}:2026-0{j}-01", "issue": q % 2} for q in range(10) for j in (1, 2, 3)]
+        r = pe.unites(ls)
+        self.assertEqual((r["lignes"], r["questions_distinctes"], r["questions_oui_distinctes"]), (30, 10, 5))
+        self.assertIsNotNone(r["alerte"])
+        self.assertIsNone(pe.unites(ls[::3])["alerte"])
+
+    def test_bancs_de_jugement_par_question(self):
+        """Tout banc de jugement doit tirer ses intervalles PAR QUESTION (garde-fou contre l'erreur du 2026-11-18)."""
+        import re
+        from pathlib import Path
+        for f in ("banc_jugement_alphabet.py", "banc_jugement_variantes.py", "banc_abstention.py"):
+            s = Path(f).read_text(encoding="utf-8")
+            appels = re.findall(r"critere_ombre_b\((?:[^()]|\([^()]*\))*\)", s, re.S)
+            self.assertTrue(appels, f)
+            for a in appels:
+                self.assertIn('bloc_par="question"', a, f)
+
+    def test_examen_des_cartes_par_question(self):
+        import psychometrie_alphabet as ps
+        ls = [{"question_id": f"m:{q}:2026-0{j}-01", "issue": 1, "notes": {}} for q in range(4) for j in (1, 2)]
+        self.assertEqual(len(ps.une_par_question(ls)), 4)

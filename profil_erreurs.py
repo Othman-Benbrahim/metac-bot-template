@@ -50,3 +50,15 @@ def profils(lignes: list[dict], bras: dict[str, str]) -> dict:
     """{nom: profil} pour chaque bras (nom → clé de probabilité) sur les MÊMES questions (celles où tous existent)."""
     ok = [x for x in lignes if x.get("issue") in (0, 1) and all(x.get(k) is not None for k in bras.values())]
     return {nom: profil([(x[k], x["issue"]) for x in ok]) for nom, k in bras.items()}
+
+
+def unites(lignes: list[dict]) -> dict:
+    """0.10.267 : garde-fou automatique de tout bilan de jugement. Une même question peut revenir à plusieurs dates
+    de jeu ; le nombre qui compte pour la preuve est celui des QUESTIONS DISTINCTES, pas des lignes. Erreur de Claude
+    du 2026-11-17/18 : « 309 questions » qui n'étaient que 119, intervalles et examens des cartes gonflés."""
+    qs = [":".join(str(x["question_id"]).split(":")[:2]) for x in lignes if x.get("question_id")]
+    d = len(set(qs))
+    oui = len({q for q, x in zip(qs, lignes) if x.get("issue") == 1})
+    return {"lignes": len(lignes), "questions_distinctes": d, "questions_oui_distinctes": oui,
+            "alerte": (f"{len(lignes)} lignes pour {d} questions distinctes : la preuve repose sur {d}, pas sur "
+                       f"{len(lignes)} (intervalles par question)") if d and len(lignes) > 1.1 * d else None}

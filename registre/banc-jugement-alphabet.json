@@ -1,5 +1,5 @@
 {
-  "version_bot": "0.10.266",
+  "version_bot": "0.10.267",
   "n": 309,
   "note": "perte log, plus bas = mieux ; A et M sur les mêmes entrées",
   "B_semblables": 0.4527,
@@ -15,15 +15,16 @@
     "n_nouveaux": 309,
     "regard": 2,
     "n_juge": 300,
-    "blocs": 20,
+    "blocs": 117,
+    "bloc_par": "question",
     "ecart_moyen": -0.019447554833253042,
     "intervalle_90_par_blocs": [
-      -0.049496727196647466,
-      0.008768471516428922
+      -0.053052786289638054,
+      0.016902670607397564
     ],
     "intervalle_corrige": [
-      -0.07751422018975967,
-      0.03421155865460614
+      -0.0739135543461051,
+      0.04376238314690841
     ],
     "niveau_corrige": 0.9964,
     "verdict": "critère non atteint ; essai à clore"
@@ -68,5 +69,11 @@
       "resolution_plus_haut_mieux": 0.0338,
       "incertitude": 0.1356
     }
+  },
+  "unites": {
+    "lignes": 309,
+    "questions_distinctes": 119,
+    "questions_oui_distinctes": 27,
+    "alerte": "309 lignes pour 119 questions distinctes : la preuve repose sur 119, pas sur 309 (intervalles par question)"
   }
 }
