@@ -24,3 +24,14 @@ b = (σ − μ) / (σ + μ) des comptes quotidiens, de −1 (régulier) à 1 (ra
 ## Limites connues
 Même échantillon que la tendance. L'indice dépend du volume : un sujet peu couvert paraît « en rafales » ; on le dit
 si les ratés sont surtout des questions à très peu d'articles.
+
+## Amendement du 2026-11-18, 19 h 16 (avant toute requête des comptes)
+Décision d'auteur (« oui, évidemment »), sur le modèle du filtre de cohérence de J. Landrevie (physical-tracking) :
+l'indice est calculé APRÈS retrait des pics isolés. Un jour intérieur au-dessus de 5 × base (base = max(médiane des
+90 jours, 1)), dont la veille ET le lendemain restent sous 2 × base, est ramené à la médiane ; les deux jours du bord
+ne sont pas touchés. Seul l'indice filtré est jugé (essai sursauts_attention inchangé) ; l'indice brut et le nombre
+de pics retirés sont affichés, sans jugement. La tendance (tendance-attention.md) n'est pas filtrée.
+Réserve écrite avant les données : l'analogie avec le sport est imparfaite. Un sprint d'une seule image est
+physiquement impossible ; un jour d'actualité isolé est souvent un VRAI événement (les doublons de titres sont déjà
+retirés par la requête). Le filtre peut donc effacer du signal autant que du bruit ; l'affichage de l'indice brut
+permet de le voir.

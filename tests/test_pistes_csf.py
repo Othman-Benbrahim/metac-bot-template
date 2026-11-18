@@ -26,6 +26,17 @@ class Attention(unittest.TestCase):
         self.assertLess(ba.sursaut([3] * 90), -0.9)              # régulier
         self.assertGreater(ba.sursaut([0] * 89 + [50]), 0.8)     # rafale
 
+    def test_pics_isoles(self):
+        s = [1] * 90
+        s[40] = 30                                   # pic isolé : ramené à la médiane
+        self.assertEqual(ba.sans_pics_isoles(s)[40], 1.0)
+        s[41] = 20                                   # pic confirmé par le lendemain : gardé
+        self.assertEqual(ba.sans_pics_isoles(s)[40], 30.0)
+        b = [1] * 89 + [30]                          # bord (J−1) : jamais touché
+        self.assertEqual(ba.sans_pics_isoles(b)[-1], 30.0)
+        self.assertLess(ba.sursaut([1] * 40 + [9] + [1] * 49), ba.sursaut([1] * 40 + [9] + [1] * 49, filtre=False))
+        self.assertIsNone(ba.sursaut([0] * 40 + [9] + [0] * 49))      # seul jour d actualité, isolé : plus rien
+
     def test_ajustement_garde_le_sens(self):
         for p in (0.05, 0.3, 0.7, 0.95):
             q = ba.ajuste_sursaut(p, 1.0, 0.6)

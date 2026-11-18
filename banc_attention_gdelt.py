@@ -46,10 +46,29 @@ def tendance(s: list[int] | None) -> float:
     return math.log((r + 0.1) / (a + 0.1))
 
 
-def sursaut(s: list[int] | None) -> float | None:
+def sans_pics_isoles(s: list[int]) -> list[float]:
+    """0.10.284 (décision d'auteur du 2026-11-18, 19 h 16 ; repris du filtre de cohérence de J. Landrevie,
+    physical-tracking) : un jour INTÉRIEUR au-dessus de 5 × base, dont la veille ET le lendemain restent sous 2 × base,
+    est ramené à la médiane (base = max(médiane des 90 jours, 1)). Les deux jours du bord ne sont pas touchés : un pic
+    à J−1 ne peut pas être confirmé."""
+    import statistics as st_
+    med = float(st_.median(s))
+    base = max(med, 1.0)
+    out = [float(v) for v in s]
+    for i in range(1, len(s) - 1):
+        if s[i] > 5 * base and s[i - 1] <= 2 * base and s[i + 1] <= 2 * base:
+            out[i] = med
+    return out
+
+
+def sursaut(s: list[int] | None, filtre: bool = True) -> float | None:
     """Indice de sursaut de Goh et Barabási, (σ − μ) / (σ + μ), entre −1 (régulier) et 1 (rafales) ; None sans article."""
     if not s or sum(s) == 0:
         return None
+    if filtre:
+        s = sans_pics_isoles(s)
+        if sum(s) == 0:
+            return None
     mu = sum(s) / len(s)
     sd = math.sqrt(sum((v - mu) ** 2 for v in s) / len(s))
     return (sd - mu) / (sd + mu)
@@ -90,7 +109,9 @@ def donnees() -> list[dict]:
         vus.add(q)
         s = serie(entree)
         out.append({"question_id": x["question_id"], "jeu": x["question_id"].split(":")[-1], "issue": x["issue"],
-                    "p_M": x["p_M"], "articles": sum(s) if s else 0, "tendance": tendance(s), "sursaut": sursaut(s)})
+                    "p_M": x["p_M"], "articles": sum(s) if s else 0, "tendance": tendance(s), "sursaut": sursaut(s),
+                    "sursaut_brut": sursaut(s, filtre=False),
+                    "pics_retires": sum(1 for a, b in zip(s, sans_pics_isoles(s)) if a != b) if s and sum(s) else 0})
     return out
 
 
@@ -120,6 +141,10 @@ def resumer(ls: list[dict]) -> dict:
         if len(avec) >= 10 else None,
         "sursaut_moyen_rates": _moy([x["sursaut"] for x in avec if x["issue"] == 1 and x["p_M"] < 0.3]),
         "sursaut_moyen_autres": _moy([x["sursaut"] for x in avec if not (x["issue"] == 1 and x["p_M"] < 0.3)]),
+        "pics_isoles_retires": {"jours": sum(x["pics_retires"] for x in ls),
+                                "questions_touchees": sum(1 for x in ls if x["pics_retires"])},
+        "spearman_sursaut_brut_issue": round(ps.spearman([x["sursaut_brut"] for x in avec], [x["issue"] for x in avec]), 3)
+        if len(avec) >= 10 else None,
     }
     for nom, ajuste, cle, grille, essai in (("tendance", ajuste_tendance, "tendance", GRILLE_BETA, "tendance_attention"),
                                             ("sursaut", ajuste_sursaut, "sursaut", GRILLE_LAMBDA, "sursauts_attention")):
