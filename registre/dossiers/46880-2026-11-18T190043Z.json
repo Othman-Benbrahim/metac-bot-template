@@ -1,0 +1,271 @@
+{
+ "candidats": [
+  "CTR@5",
+  "SEU@5",
+  "TRC@5"
+ ],
+ "contre_candidate": [
+  "TRC@5"
+ ],
+ "mots": [
+  {
+   "carte": "CTR",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Le Banco Central del Paraguay (BCP) a prolongé le plazo pour payer las garantías de depósitos liées à Ueno Bank de 15 días adicionales (du 17 novembre 2026 au 2 décembre 2026), en invoquant la necesidad de verificaciones; par ailleurs, le cadre normatif paraguayo impose plazos máximos (p. ex. pagos en un máximo de 15 días naturales selon l'analyse de la réglementation).",
+   "objet": "délais et obligations réglementaires pour le paiement de la garantie de dépôts",
+   "source": "ABC (article 2026-11-18) ; IMF / évaluation (référence sur délai légal de pago, 2022)",
+   "source_url": "https://www.abc.com.py/economia/2026/11/18/crisis-ueno-bank-bcp-extiende-plazo-para-pagar-garantias-de-depositos-por-15-dias-mas/#:~:text=Econom%C3%ADa%2018%20de%20noviembre%20de,plazo%20ampliado%2C%20expresaron%20los%20interventores.",
+   "source_urls": [
+    "https://www.imf.org/-/media/files/publications/cr/2022/english/1pryea2022003.pdf",
+    "https://www.abc.com.py/economia/2026/11/18/crisis-ueno-bank-bcp-extiende-plazo-para-pagar-garantias-de-depositos-por-15-dias-mas/#:~:text=Econom%C3%ADa%2018%20de%20noviembre%20de,plazo%20ampliado%2C%20expresaron%20los%20interventores."
+   ],
+   "date_consultation": "2026-11-18",
+   "classe_source": "contemporain",
+   "contre_observation": "Malgré l'existence de plazos legales et de l'extension du plazo, des ahorristas restent sin pago efectivo en raison de bloqueos operacionales — l'extension indique que la contrainte règlementaire est mobilisée mais n'a pas produit un paiement immédiat.",
+   "portee": "substantielle",
+   "test": "pistolet",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "un rapport d'institution internationale (IMF) décrivant le cadre légal pour les plazos de pago ; un média national (ABC) rendant compte d'une décision opérationnelle datée : deux producteurs distincts et de nature différente."
+   },
+   "passage": [
+    {
+     "localisation": "ABC, 18 novembre 2026, titre + 1er paragraphe",
+     "relation": "soutient",
+     "extrait": "El BCP extiende plazo para pagar garantías de depósitos por 15 días más ... plazo ampliado al 2 de diciembre de 2026, dijeron los interventores."
+    },
+    {
+     "localisation": "IMF (évaluation, 2022), section sur proteccion de depositos",
+     "relation": "soutient",
+     "extrait": "La ley paraguaya exige pagos 'within a maximum of 15 natural days' (exigencia de marco temporal máximo para desembolsos de garantía)."
+    }
+   ],
+   "garantie": {
+    "mecanisme": "Une règle légale sur plazos de pago active (contrainte formelle) force les autorités à publier échéances ou extensions et structure leur marge opérationnelle : l'option de ne pas fixer de calendrier devient coûteuse légalement et politiquement.",
+    "support": {
+     "type": "texte",
+     "reference": "IMF country report (évaluation des cadres de garantie de dépôts) ; communiqué ABC (18-11-2026)",
+     "disponible_le": "2022-01-01"
+    },
+    "attendu": "les autorités affichent et appliquent un calendrier ou prolongation en fonction de vérifications opérationnelles",
+    "contredirait": "l'absence totale de toute référence à des plazos légaux ou à des prolongations datées dans les communications officielles"
+   },
+   "option": {
+    "acteur": "BCP / FGD",
+    "avant": "paiements dans le délai légal sans extension",
+    "apres": "prolonger le délai et publier une extension formelle (change la contrainte temporelle applicable)"
+   },
+   "a6": "CTR@5 : HIE → (la contrainte n'implique pas une hiérarchie interne en soi) ; INC → (la contrainte n'est pas une montée en puissance) ; POL → (aucune polarisation politique explicite observée dans les communiqués) ; SEU → (la contrainte et un seuil sont distincts : la contrainte fixe un délai, le seuil situe une couverture) ; TRC → (les besoins de vérification opérationnelle soutiennent l'activation de la contrainte)",
+   "force_initiale": "F"
+  },
+  {
+   "carte": "TRC",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Les interventores / directeur du FGD (José Maciel) et la couverture médiatique rapportent que la vérification de titres des Certificados de Depósito de Ahorro (CDA) — instruments negociables et susceptibles d'endosos/transfers — a retardé les pagos et explique que il faut verificar legitimidad del poseedor actual; le BCP a indiqué l'ouverture d'une plataforma (12/11/2026) pour la carga de CDA y la acreditación, mais malgré 'acreditación al 100%' persistían bloqueos por verificación de títulos.",
+   "objet": "difficultés opérationnelles de vérification de titres (CDA) et conséquences sur démarrage des paiements",
+   "source": "La Nación (11-2026) ; ABC (11-11-2026 et 11-18-2026) ; site BCP (annonce plateforme, capture Wayback 12-11-2026)",
+   "source_url": "https://web.archive.org/web/20261112151555/https://www.bcp.gov.py/",
+   "source_urls": [
+    "https://www.lanacion.com.py/negocios/2026/11/17/por-que-siguen-bloqueados-algunos-cda/",
+    "https://www.abc.com.py/economia/2026/11/11/ahorristas-de-ueno-bcp-dice-que-culmino-el-proceso-de-acreditacion-al-100-de-beneficiarios-pero-persisten-bloqueos/#:~:text=Econom%C3%ADa%2011%20de%20noviembre%20de,pueden%20comunicarse%20al%20correo%20fgdpagos%40bcp.gov.py."
+   ],
+   "date_consultation": "2026-11-18",
+   "classe_source": "contemporain",
+   "contre_observation": "Le BCP a annoncé l'habilitation d'une plateforme (12/11/2026) et déclaré 'acreditación al 100%', suggérant que certains jalons opérationnels ont été atteints; néanmoins, les bloqueos persistent spécifiquement là où la vérification de titres reste en suspens.",
+   "portee": "substantielle",
+   "test": "pistolet",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "origine",
+    "motif": "deux médias nationaux (La Nación et ABC) plus une capture officielle du site du BCP annonçant la plateforme : producteurs distincts (média local, média national, source institutionnelle)."
+   },
+   "passage": [
+    {
+     "localisation": "La Nación, 17 novembre 2026, paragraphe explicativo",
+     "relation": "soutient",
+     "extrait": "CDAs son instrumentos negociables que pueden ser endosados o transferidos... requiere verificar que quien reclama el fondo es el legítimo tenedor actual del título."
+    },
+    {
+     "localisation": "ABC, 11 novembre 2026, titre + paragraphe",
+     "relation": "soutient",
+     "extrait": "El BCP dice que culminó el proceso de acreditación al 100% de beneficiarios, pero persisten bloqueos porque deben verificarse físicamente los CDA y sus endosos."
+    },
+    {
+     "localisation": "BCP sitio web (Wayback capture 2026-11-12)",
+     "relation": "soutient",
+     "extrait": "IMPORTANTE: El Banco Central del Paraguay habilitará la plataforma en la que los ahorristas tendrán que cargar la información de sus CDA a partir de este jueves 12/11/2026..."
+    }
+   ],
+   "a6": "TRC@5 : CTR → (la contrainte temporelle est activée par les besoins de vérification) ; PER → (la situation peut aboutir à un calendrier si vérifications terminées, mais pas encore) ; SEU → (les seuils de couverture existent, mais ne suppriment pas l'effet des vérifications) ; SEU → (rejeté ici : pas d'irréversibilité observée)",
+   "force_initiale": "F"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le Banco Central del Paraguay (BCP), son Equipo Interventor, ou le Fondo de Garantía de Depósitos (FGD) ont-ils publié, sur leurs canaux officiels ou par communiqué de presse, une déclaration publique indiquant un jour-calendrier précis pour le début des pagos de CDA de ueno bank au plus tard le 2026-11-28 ?",
+   "si_oui": "CTR@5",
+   "si_non": "indetermine",
+   "resolution": "trouver un communiqué officiel (site web du BCP, note du FGD, communiqué de l'Equipo Interventor, ou publication sur comptes officiels de réseaux sociaux institutionnels) daté ≤ 2026-11-28 qui mentionne explicitement une DATE calendaire précise (jour/mois/année) pour le début des pagos a los tenedores de CDA de ueno bank.",
+   "justification": {
+    "oui": "Une déclaration officielle datée nommant un jour-calendrier précis démontrerait que l'autorité a fixé publiquement une échéance formelle, ce qui mobilise la contrainte temporelle documentée (CTR) et verrait la contrainte se matérialiser en date publique.",
+    "non": "L'absence d'une telle déclaration sur les canaux officiels signifierait que, malgré extensions ou annonces opérationnelles, aucune date calendaire précise et officielle n'a été publiée avant le 2026-11-28, laissant la résolution de la question ouverte selon le critère demandé."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "SEU@5": "[marqueur_non_rempli] Les faits trouvés documentent l'existence d'un plafond de couverture (75 salarios mínimos) et d'annonces de calendriers opérationnels (p. ex. habilitación de plataforma) mais n'établissent pas un marqueur observable d'un franchissement irréversible au sens de SEUIL (acte daté supprimant le retour par le même chemin). Aucun fait daté ne montre ici une bascule irréversible ou un acte juridique consumé qui fermerait une option antérieure."
+ },
+ "_categories_rejet": {
+  "SEU@5": "marqueur_non_rempli"
+ },
+ "_details_rejet": {
+  "SEU@5": {
+   "fait_attendu": "Un acte juridique ou opérationnel daté (par ex. publication officielle) instaurant un changement irréversible de régime — par exemple, l'ordre public et exécutoire de commencer paiements à partir d'une date précise entraînant la mise en paiement sans possibilité de retour par la même voie.",
+   "extrait_proche": "Paraguay: la protection de dépôts est definida en '75 salarios mínimos' (analyse et description du système de couverture) — voir synthèse sur les seuils de couverture et calendrier (résultat [4])."
+  }
+ },
+ "etat": "[2026-11-18 | 11 jours] CONTRAINTE@5[f] + TRACE·MÉMOIRE@5[f]",
+ "disponible_le": "2026-11-18",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "How often have legal or regulatory constraints (laws, caps, formal deadlines) led central banks or deposit-insurance agencies in Latin America (2000-2026) to publish a specific calendar day for the start of depositor reimbursements during bank resolutions?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@5",
+    "SEU@5"
+   ],
+   "requete": "In past Latin American bank resolutions (2000-2026), were public announcements of a precise payment start date more commonly driven by legal/regulatory deadlines and requirements, or by the crossing of numerical coverage thresholds that triggered staged payments?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "Are there cases in Latin America between 2000 and 2026 where, despite clear legal frameworks for deposit guarantees, central banks did not announce a specific calendar day for payout start and instead left timing indefinite?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "SEU@5"
+   ],
+   "requete": "How often has the existence of explicit coverage thresholds or caps (e.g., fixed currency ceilings expressed in multiples of minimum wage) resulted in deposit-insurance bodies announcing a scheduled calendar day to complete staged payments during bank interventions in Latin America 2000-2026?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "SEU@5",
+    "TRC@5"
+   ],
+   "requete": "In past bank interventions (Latin America, 2000-2026), were announcements of exact payment start dates more frequently associated with the fact that coverage thresholds were reached (allowing straightforward payouts) or instead obstructed by case-by-case title verification and record-path dependencies that delayed calendar scheduling?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "SEU@5"
+   ],
+   "requete": "Are there documented instances (2000-2026) where, even though numerical coverage thresholds were clearly defined, authorities refrained from naming a specific payout date because operational, legal or political issues prevented calendaring?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRC@5"
+   ],
+   "requete": "How often has the need for individually verifying titles/ownership or other path-dependent record issues caused central banks or guarantee funds to postpone announcing a concrete calendar day for deposit-insurance payments in Latin America (2000-2026)?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRC@5",
+    "CTR@5"
+   ],
+   "requete": "For bank resolution payout timing (Latin America, 2000-2026), which factor more often prevented the publication of a specific start date: legal/regulatory ambiguity or operational path-dependent processes such as title verification and missing records?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRC@5"
+   ],
+   "requete": "Are there cases from 2000-2026 where despite extensive title-verification needs, authorities still published a specific calendar day for deposit payouts, and if so how were operational risks managed?",
+   "executee": true,
+   "date_execution": "2026-11-18"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "PÉRIODICITÉ@5 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "La question sera résolue OUI si, d'ici le 2026-11-28 23:59 (UTC−3), le Banco Central del Paraguay, son Equipo Interventor ou le Fondo de Garantía de Depósitos publie officiellement un communiqué (ou une résolution) donnant un jour calendaire précis comme date de début des paiements du FGD aux titulaires de CDA émis par ueno bank S.A.",
+   "source_resolution": {
+    "emetteur": "Banco Central del Paraguay (BCP) ou Equipo Interventor du BCP ou Fondo de Garantía de Depósitos (FGD)",
+    "document": "communiqué de presse, communiqué officiel ou résolution publié(e) sur le site officiel de l'émetteur ou diffusé(e) via ses canaux officiels, ou citation directe de ce communiqué dans une source crédible",
+    "regle_ambiguite": "la déclaration doit nommer explicitement un jour calendaire (par ex. '11 novembre 2026'); les mentions vagues ('décembre', 'dans les prochains jours', 'la seconde étape') ou annonces concernant d'autres types de créances ne comptent pas."
+   },
+   "vue_exterieure": {
+    "frequence": 0.0033461772459947273,
+    "classe_de_reference": "annonces publiques officielles émises par le Banco Central del Paraguay (BCP), son Equipo Interventor ou le Fondo de Garantía de Depósitos (FGD) qui nomment un jour calendaire précis comme date de début des paiements aux titulaires de Certificados de Depósito de Ahorro (CDA) lors d'une intervention bancaire",
+    "source": "synthèse des résultats de recherche listés sous [R1] et [R2] (moteur exa2)",
+    "periode": "2000-2026",
+    "disponible_le": "2026-11-18",
+    "classe_alternative": null,
+    "motif_sans_alternative": "Aucune autre base honnête et vérifiable (registre exhaustif) n'a été fournie pour compter ce type précis d'annonces sur 2000–2026 ; le seul jeu de résultats exploitable ici est [R1]/[R2]. Le Wayback (capture du site du BCP) ne peut pas être utilisé automatiquement pour un comptage et son usage prévu a échoué, donc on n'a pas d'alternative robuste.",
+    "ecart_critere": "identique : les cas comptés correspondent à des annonces officielles de banques centrales ou d'agences de garantie de dépôts en Amérique latine nommant un jour calendaire précis comme début des paiements ; toutefois les exemples incluent différentes juridictions (IPAB, COSEDE, BCP) et ne détaillent pas toujours si l'annonce ciblait spécifiquement des 'CDA' au sens paraguayen — ils restent néanmoins du même type d'événement (annonce d'un jour calendaire de démarrage des paiements par l'autorité compétente)."
+   }
+  }
+ ],
+ "_reparations": [
+  "CTR@5 : A7 substantielle sur F → f (force_initiale F)",
+  "TRC@5 : garantie retirée (TRC@5 : garantie.support.type parmi texte, loi, donnee, cas)",
+  "TRC@5 : A7 substantielle sur F → f (force_initiale F)",
+  "liaison illisible retirée : {'de': 'TRC@5', 'type': 'appui', 'a': 'CTR@5'}"
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "CTR@5",
+   "vers": "cible",
+   "extrait": "Based on the available search results, legal/regulatory deadlines and requirements appear to be the more dominant driver of public announcements regarding precise payment start dates in Latin American bank resolutions, though the evidence is somewhat limited.",
+   "source": ""
+  },
+  {
+   "instruction": "bloque",
+   "de": "CTR@5",
+   "extrait": "I cannot find evidence of a pattern where legal or regulatory constraints have frequently led central banks or deposit-insurance agencies in Latin America to publish a specific calendar day for the start of depositor reimbursements during bank resolutions.",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "TRC@5",
+   "vers": "cible",
+   "extrait": "The available evidence suggests that legal/regulatory deadlines are the primary driver of payment start date announcements in Latin American bank resolutions during this period.",
+   "source": ""
+  }
+ ]
+}
