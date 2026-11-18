@@ -1,0 +1,41 @@
+name: "Banc Wikipédia (pages vues et protections)"
+
+# 0.10.298 : aucune clé, aucun modèle ; API officielles de la Wikimedia Foundation. preenregistrements/wikipedia.md
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  wikipedia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecter (pages vues, protections)
+        run: uv run python -u banc_wikipedia.py --collecter
+      - name: Banc
+        run: uv run python -u banc_wikipedia.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/wikipedia-comptes.json registre/banc-wikipedia.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc Wikipédia du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

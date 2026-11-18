@@ -186,6 +186,39 @@ class Capture(unittest.TestCase):
         self.assertEqual(bf.resumer([])["lignes_lues"], 0)
 
 
+class Wikipedia(unittest.TestCase):
+    def test_entites(self):
+        import banc_wikipedia as w
+        self.assertEqual(w.entites("Will Volodymyr Zelenskyy and Vladimir Putin meet before May 1, 2026?"),
+                         ["Volodymyr Zelenskyy", "Vladimir Putin"])
+        self.assertEqual(w.entites("Will the Bank of England cut rates?"), ["Bank of England"])
+        self.assertEqual(w.entites("Will it rain tomorrow?"), [])
+
+    def test_collecte_avec_faux_wikimedia(self):
+        import asyncio
+
+        import banc_wikipedia as w
+
+        class Rep:
+            def __init__(self, d, code=200): self.d, self.status_code = d, code
+            def json(self): return self.d
+            def raise_for_status(self): pass
+
+        class Client:
+            async def get(self, url, params=None):
+                if params and params.get("list") == "search":
+                    return Rep({"query": {"search": [{"title": "Bank of England"}]}})
+                if params and params.get("list") == "logevents":
+                    return Rep({"query": {"logevents": [{}, {}]}})
+                return Rep({"items": [{"timestamp": "2026030100", "views": 120}]})
+        c = Client()
+        from datetime import date
+        self.assertEqual(asyncio.run(w.article(c, "Bank of England", {})), "Bank of England")
+        self.assertEqual(asyncio.run(w.vues(c, "Bank of England", date(2026, 1, 1), date(2026, 3, 31))),
+                         {"2026-03-01": 120})
+        self.assertEqual(asyncio.run(w.protections(c, "Bank of England", date(2026, 1, 1), date(2026, 3, 31))), 2)
+
+
 class FiltreAzure(unittest.TestCase):
     def test_variantes(self):
         import banc_filtre_azure as bfa
