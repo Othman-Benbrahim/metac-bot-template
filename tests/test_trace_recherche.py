@@ -181,3 +181,37 @@ class TGdelt(unittest.TestCase):
         self.assertIn("https://a.org/x", t)
         self.assertEqual(len(params_vus), 2)
         self.assertEqual(params_vus[0]["startdatetime"], "20251201000000")
+
+
+class TGdeltCoupure(unittest.TestCase):
+    def test_coupe_apres_refus_persistants(self):
+        import alphabet_recherche as ar_
+        ar_.GDELT_ECART, ar_.GDELT_PAUSE_429, ar_._GDELT_REFUS = 0, 0, 0
+        appels = []
+
+        class R:
+            status_code, headers, text = 429, {}, ""
+
+            def raise_for_status(self):
+                raise RuntimeError("429")
+
+        class C:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *a):
+                return False
+
+            async def get(self, url, params):
+                appels.append(1)
+                return R()
+        ancien = ar_.httpx.AsyncClient
+        ar_.httpx.AsyncClient = lambda timeout: C()
+        try:
+            for _ in range(5):
+                with self.assertRaises(RuntimeError):
+                    asyncio.run(ar_.gdelt("x y z", None))
+        finally:
+            ar_.httpx.AsyncClient = ancien
+            ar_._GDELT_REFUS = 0
+        self.assertLessEqual(len(appels), ar_.GDELT_REFUS_MAX * ar_.GDELT_ESSAIS + 1)

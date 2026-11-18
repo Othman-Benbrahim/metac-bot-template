@@ -23,6 +23,7 @@ async def principal() -> int:
     pannes = {q for q, x in derniere.items() if x["trace"]["moteur"] in ("panne", "aucun", "aucun résultat")}
     titres = {f'{x["source"]}:{x["id"]}:{x["jeu"]}': x for x in bja.candidates()}
     bilan, lignes = Counter(), []
+    ar_.GDELT_REFUS_MAX = 10 ** 6          # la sonde veut voir chaque réponse, sans coupure
     for qid in sorted(pannes):
         x = titres.get(qid)
         if not x:
@@ -37,7 +38,9 @@ async def principal() -> int:
             etat = f"{type(e).__name__}: {str(e)[:200]}"
             bilan[type(e).__name__ + (" (texte GDELT)" if "GDELT :" in str(e) else "")] += 1
         lignes.append({"question_id": qid, "jeu": x["jeu"], "requete": ar_.gdelt_mots(x["titre"]), "gdelt": etat})
-        print(f"{x['jeu']} | {ar_.gdelt_mots(x['titre'])[:70]} | {etat}")
+        print(f"{x['jeu']} | {ar_.gdelt_mots(x['titre'])[:70]} | {etat}", flush=True)   # 0.10.271 : au fil de l'eau
+        Path("registre/sonde-gdelt.json").write_text(json.dumps({"bilan": dict(bilan), "questions": lignes},
+                                                               ensure_ascii=False, indent=1), encoding="utf-8")
     Path("registre/sonde-gdelt.json").write_text(json.dumps({"bilan": dict(bilan), "questions": lignes},
                                                            ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(dict(bilan), ensure_ascii=False))

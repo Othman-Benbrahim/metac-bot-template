@@ -143,6 +143,8 @@ _GDELT_VERROU = None
 _GDELT_DERNIER = 0.0
 GDELT_ECART = 5.5            # 0.10.264 : GDELT demande une requête toutes les 5 secondes au plus
 GDELT_ESSAIS, GDELT_PAUSE_429 = 4, 8.0   # 0.10.266 : 429 → attendre 8, 16, 32 s (ou Retry-After) et réessayer
+GDELT_REFUS_MAX = 3          # 0.10.271 : après 3 questions refusées de suite (429 persistant), GDELT est coupé
+_GDELT_REFUS = 0             # pour le reste du processus : une panne durable ne doit pas ralentir chaque question
 
 
 async def _gdelt_attendre() -> None:
@@ -192,6 +194,9 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
     0.10.264 : l'espacement demandé par GDELT est respecté ; une réponse « limit requests » est retentée une fois ;
     toute réponse non JSON remonte avec son texte (pour savoir pourquoi, au lieu d'une simple « panne »).
     En mode liste d'articles, GDELT ne regarde que les 3 derniers mois de la fenêtre demandée (blog GDELT, DOC 2.0)."""
+    global _GDELT_REFUS
+    if _GDELT_REFUS >= GDELT_REFUS_MAX:
+        raise RuntimeError(f"GDELT coupé pour ce passage ({_GDELT_REFUS} refus 429 de suite)")
     params = {"query": gdelt_mots(requete), "mode": "artlist", "format": "json", "maxrecords": 15, "sort": "datedesc"}
     if avant is not None:
         params["enddatetime"] = avant.strftime("%Y%m%d%H%M%S")
@@ -212,7 +217,10 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
                     attente = 0.0
                 await asyncio.sleep(max(attente, GDELT_PAUSE_429 * 2 ** essai))
                 continue
+            if getattr(r, "status_code", 200) == 429:
+                _GDELT_REFUS += 1
             r.raise_for_status()
+            _GDELT_REFUS = 0
             try:
                 res = r.json().get("articles") or []
                 break

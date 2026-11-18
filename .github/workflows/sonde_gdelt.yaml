@@ -10,7 +10,7 @@ permissions:
 jobs:
   sonde:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,7 +21,8 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Sonde
-        run: uv run python sonde_gdelt.py
+        run: uv run python -u sonde_gdelt.py
+        timeout-minutes: 80
       - name: Enregistrer
         if: always()
         run: |
