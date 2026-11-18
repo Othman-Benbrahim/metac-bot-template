@@ -23,7 +23,7 @@ import alphabet_pipeline as ap
 import banc_jugement as bj
 
 VERSION = "v0"
-DOSSIER = Path("donnees/jeu-jugement") / VERSION
+RACINE = Path("donnees/jeu-jugement")
 COUPURE = "2026-01-01"
 COLONNES = ["source", "id", "jeu", "premiere_apparition", "partie", "titre", "forme", "horizon_jours", "tranche",
             "cloture", "resolue_le", "issue", "taux_plateforme_R0", "taux_forme_horizon_R1", "taux_semblables_S"]
@@ -91,7 +91,9 @@ def construire() -> list[dict]:
     return lignes
 
 
-def principal() -> int:
+def principal(version: str = VERSION) -> int:
+    """0.10.270 : version donnée en argument (la publication mensuelle utilise « AAAA-MM »)."""
+    DOSSIER = RACINE / version
     ls = construire()
     DOSSIER.mkdir(parents=True, exist_ok=True)
     with (DOSSIER / "questions.jsonl").open("w", encoding="utf-8") as f:
@@ -103,7 +105,7 @@ def principal() -> int:
         w.writerows(ls)
     n = len(ls)
     (DOSSIER / "README.md").write_text(FICHE.format(
-        version=VERSION, n=n, d=sum(l["premiere_apparition"] for l in ls), coupure=COUPURE,
+        version=version, n=n, d=sum(l["premiere_apparition"] for l in ls), coupure=COUPURE,
         na=sum(l["partie"] == "apprentissage" for l in ls), nt=sum(l["partie"] == "test" for l in ls),
         oui=sum(l["issue"] for l in ls) / n), encoding="utf-8")
     print(f"{n} lignes, {sum(l['premiere_apparition'] for l in ls)} questions distinctes → {DOSSIER}")
@@ -111,4 +113,7 @@ def principal() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(principal())
+    import argparse
+    a = argparse.ArgumentParser()
+    a.add_argument("--version", default=VERSION)
+    sys.exit(principal(a.parse_args().version))

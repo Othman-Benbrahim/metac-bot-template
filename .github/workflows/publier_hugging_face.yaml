@@ -1,48 +1,86 @@
 name: "Publier le jeu de données sur Hugging Face"
 
-# 0.10.268 : envoie donnees/jeu-jugement/<version> vers un dépôt de jeu de données Hugging Face.
-# Lancement MANUEL seulement : rien ne sort sans le geste de l'auteur.
-# Prérequis (une fois) : un jeton Hugging Face en écriture dans le secret HF_TOKEN ;
-# le nom du dépôt (« compte/nom ») dans la variable HF_DATASET, ou dans le champ ci-dessous.
+# 0.10.268-0.10.270 : envoie donnees/jeu-jugement/<version> vers un dépôt de jeu de données Hugging Face.
+# - Lancement manuel : version au choix (refaite si le dossier n'existe pas).
+# - Chaque mois (demande de l'auteur du 2026-11-18, 15 h 10) : les questions résolues sont récoltées à nouveau
+#   (ForecastBench, aucun modèle), le jeu « AAAA-MM » est construit, commité, puis publié ; une étiquette AAAA-MM est
+#   posée sur Hugging Face pour retrouver chaque version.
+# Prérequis : secret HF_TOKEN (jeton en écriture) ; variable HF_DATASET (« nom » ou « compte/nom »).
 on:
+  schedule:
+    - cron: "17 2 1 * *"      # le 1er de chaque mois, 2 h 17 UTC (la nuit)
   workflow_dispatch:
     inputs:
       version:
-        description: "version du jeu (dossier sous donnees/jeu-jugement)"
-        default: "v0"
+        description: "version du jeu (dossier sous donnees/jeu-jugement ; vide = AAAA-MM du jour)"
+        default: ""
       depot:
-        description: "dépôt Hugging Face « compte/nom » (vide = variable HF_DATASET)"
+        description: "dépôt Hugging Face « nom » ou « compte/nom » (vide = variable HF_DATASET)"
         default: ""
 
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   publier:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Publier
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Version
+        id: v
+        run: |
+          V="${{ github.event.inputs.version }}"
+          if [ -z "$V" ]; then V="$(date -u +%Y-%m)"; fi
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+      - name: Récolter les questions résolues et construire le jeu
+        if: github.event_name == 'schedule' || !hashFiles(format('donnees/jeu-jugement/{0}/questions.jsonl', steps.v.outputs.version))
+        run: |
+          uv run python banc_jugement.py > /dev/null
+          uv run python jeu_donnees.py --version "${{ steps.v.outputs.version }}"
+      - name: Enregistrer dans le dépôt GitHub
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          git add donnees/jeu-jugement registre/jugement-questions.jsonl registre/banc-jugement.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "données : jeu de questions de jugement ${{ steps.v.outputs.version }}"
+            git pull --rebase
+            git push
+          fi
+      - name: Publier sur Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           DEPOT: ${{ github.event.inputs.depot || vars.HF_DATASET }}
-          VERSION: ${{ github.event.inputs.version || 'v0' }}
+          VERSION: ${{ steps.v.outputs.version }}
         run: |
-          if [ -z "$HF_TOKEN" ] || [ -z "$DEPOT" ]; then echo "::error::secret HF_TOKEN ou dépôt (HF_DATASET) manquant"; exit 1; fi
-          test -d "donnees/jeu-jugement/$VERSION" || { echo "::error::dossier donnees/jeu-jugement/$VERSION absent"; exit 1; }
-          pip install -q "huggingface_hub==0.26.2"
-          python - <<'PY'
+          if [ -z "$HF_TOKEN" ] || [ -z "$DEPOT" ]; then echo "::warning::secret HF_TOKEN ou variable HF_DATASET manquant : jeu construit, rien publié"; exit 0; fi
+          uv run --with "huggingface_hub==0.26.2" python - <<'PY'
           import os
           from huggingface_hub import HfApi
           api, depot, v = HfApi(token=os.environ["HF_TOKEN"]), os.environ["DEPOT"], os.environ["VERSION"]
-          if "/" not in depot:                     # 0.10.269 : nom seul → préfixé par le compte du jeton
+          if "/" not in depot:                     # nom seul → préfixé par le compte du jeton
               depot = f"{api.whoami()['name']}/{depot}"
           depot = api.create_repo(depot, repo_type="dataset", private=True, exist_ok=True).repo_id   # créé PRIVÉ
           api.upload_folder(folder_path=f"donnees/jeu-jugement/{v}", repo_id=depot, repo_type="dataset",
                             commit_message=f"jeu de questions de jugement {v} (depuis GitHub {os.environ.get('GITHUB_SHA', '')[:7]})")
-          print(f"Publié : https://huggingface.co/datasets/{depot}")
+          try:
+              api.create_tag(depot, tag=v, repo_type="dataset", exist_ok=True)
+          except TypeError:                        # anciennes versions sans exist_ok
+              try:
+                  api.create_tag(depot, tag=v, repo_type="dataset")
+              except Exception as e:
+                  print(f"étiquette {v} non posée : {e}")
+          print(f"Publié : https://huggingface.co/datasets/{depot} (version {v})")
           PY
