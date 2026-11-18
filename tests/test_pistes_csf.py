@@ -92,6 +92,30 @@ class TendanceLarge(unittest.TestCase):
         self.assertGreater(beta, 0)
 
 
+class StructureArbre(unittest.TestCase):
+    def test_k2_trouve_un_vrai_lien_et_pas_le_bruit(self):
+        import random
+
+        import banc_structure_arbre as bsa
+        rnd = random.Random(3)
+        d = []
+        for _ in range(400):
+            x = {c: rnd.randint(1, 4) for c in bsa.CLES}
+            x["issue"] = int(rnd.random() < (0.9 if x["proportion"] >= 3 else 0.1))
+            d.append(x)
+        par = bsa.k2(d, list(bsa.CLES) + ["issue"])
+        self.assertIn("proportion", par["issue"])
+        self.assertEqual(len(bsa.aretes(par)) - len(par["issue"]), 0)   # aucune note liée à une autre (bruit pur)
+
+    def test_bdeu_prefere_le_vide_sur_peu_de_donnees_bruitees(self):
+        import random
+
+        import banc_structure_arbre as bsa
+        rnd = random.Random(1)
+        d = [{**{c: rnd.randint(1, 4) for c in bsa.CLES}, "issue": rnd.randint(0, 1)} for _ in range(60)]
+        self.assertEqual(bsa.k2(d, list(bsa.CLES) + ["issue"])["issue"], ())
+
+
 class FiltreAzure(unittest.TestCase):
     def test_variantes(self):
         import banc_filtre_azure as bfa
