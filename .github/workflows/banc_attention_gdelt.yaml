@@ -1,0 +1,39 @@
+name: "Banc attention GDELT : tendance et sursauts"
+
+# 0.10.281 : sans appel à un modèle, sans clé. preenregistrements/tendance-attention.md, sursauts-attention.md ; lancer d'abord « GDELT par BigQuery » en mode comptes
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: "Banc attention GDELT : tendance et sursauts"
+        run: uv run python -u banc_attention_gdelt.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/banc-attention-gdelt.json ]; then git add registre/banc-attention-gdelt.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc de l'attention GDELT du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

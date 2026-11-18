@@ -210,6 +210,18 @@ ESSAIS = {
                    "objet": "sans recherche, M aveugle contre taux des semblables ; abstention adoptée sauf si le "
                             "modèle aveugle gagne (intervalle 90 % sous zéro)",
                    "doc": "preenregistrements/abstention.md"},
+    "tendance_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                           "objet": "M ajusté par la tendance de l'attention GDELT (10 derniers jours contre les 80 "
+                                    "précédents), contre M seul ; aucun appel à un modèle",
+                           "doc": "preenregistrements/tendance-attention.md"},
+    "sursauts_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                           "objet": "M éloigné des extrêmes quand l'attention GDELT arrive en rafales (indice de "
+                                    "Goh-Barabási), contre M seul ; aucun appel à un modèle",
+                           "doc": "preenregistrements/sursauts-attention.md"},
+    "credibilite_acteurs": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                            "objet": "taux de « oui » par catégorie d'acteur × genre d'acte, contre le taux forme × "
+                                     "horizon (R1) ; titres et issues seulement",
+                            "doc": "preenregistrements/credibilite-acteurs.md"},
     "avocat_oui": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 150, "statut": "ouvert", "lecteur": "gpt-5-mini",
                    "objet": "M avec un « avocat du OUI » avant le jugement final, contre M refait sur la même recherche",
                    "doc": "preenregistrements/jugement-variantes.md"},

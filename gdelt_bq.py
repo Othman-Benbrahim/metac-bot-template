@@ -19,6 +19,7 @@ Secrets : GCP_SA_KEY (compte de service, rôle Utilisateur de tâches BigQuery) 
     python gdelt_bq.py --mode nuit     # questions ouvertes du tournoi, 30 jours
     python gdelt_bq.py --mode court    # mêmes questions, 48 dernières heures, fusionnées
     python gdelt_bq.py --mode bancs    # questions distinctes des bancs de jugement, 90 jours avant la date du jeu
+    python gdelt_bq.py --mode comptes  # 0.10.281 : mêmes questions, mêmes filtres, NOMBRE d'articles par jour
 """
 from __future__ import annotations
 
@@ -35,7 +36,8 @@ TABLE = "gdelt-bq.gdeltv2.gkg_partitioned"
 COMPTEUR = Path("registre/bigquery-compteur.json")
 TOURNOI = Path("registre/gdelt-bq-tournoi.json")
 BANCS = Path("registre/gdelt-bq-bancs.json")
-PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0}
+COMPTES = Path("registre/gdelt-bq-comptes.json")
+PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0}
 PLAFOND_MOIS_GO = 800.0
 PAR_QUESTION = 15
 
@@ -93,11 +95,26 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY qid, LOWER(titre) ORDER BY vu) = 1
 """
 
 
+def sql_comptes() -> str:
+    """0.10.281 (préenregistrements tendance-attention, sursauts-attention) : même filtre que sql(), titres en double
+    retirés, puis NOMBRE d'articles par question et par jour. Même coût (mêmes colonnes, mêmes jours lus)."""
+    base = sql(0).split("SELECT qid, vu, url, titre, r_trouves + o_trouves AS trouves FROM m")[0]
+    return base + """, f AS (
+  SELECT qid, vu, titre FROM m
+  WHERE r_trouves = n_requis
+    AND (CASE WHEN n_requis = 0 THEN o_trouves >= LEAST(2, n_options)
+              ELSE (n_options = 0 OR o_trouves >= 1) END)
+  QUALIFY ROW_NUMBER() OVER (PARTITION BY qid, LOWER(titre) ORDER BY vu) = 1
+)
+SELECT qid, SUBSTR(CAST(vu AS STRING), 1, 8) AS jour, COUNT(*) AS n FROM f GROUP BY qid, jour
+"""
+
+
 def compteur() -> dict:
     return json.loads(COMPTEUR.read_text(encoding="utf-8")) if COMPTEUR.exists() else {}
 
 
-def lancer(questions: list[dict], mode: str, client=None) -> dict[str, list[dict]]:
+def lancer(questions: list[dict], mode: str, client=None, agreger: bool = False) -> dict:
     """questions : [{qid, titre, debut (AAAA-MM-JJ), fin}] → {qid: [{vu, url, titre}]}. Essai à blanc d'abord."""
     qs = []
     for q in questions:
@@ -119,7 +136,7 @@ def lancer(questions: list[dict], mode: str, client=None) -> dict[str, list[dict
         bigquery.ScalarQueryParameter("debut", "STRING", q["debut"]),
         bigquery.ScalarQueryParameter("fin", "STRING", q["fin"])) for q in qs]),
         bigquery.ScalarQueryParameter("d0", "STRING", d0), bigquery.ScalarQueryParameter("d1", "STRING", d1)]
-    texte = sql(len(qs))
+    texte = sql_comptes() if agreger else sql(len(qs))
     essai = client.query(texte, job_config=bigquery.QueryJobConfig(dry_run=True, use_query_cache=False,
                                                                   query_parameters=params))
     go = essai.total_bytes_processed / 1e9
@@ -136,6 +153,12 @@ def lancer(questions: list[dict], mode: str, client=None) -> dict[str, list[dict
     cpt[mois] = round(deja + go, 3)
     COMPTEUR.parent.mkdir(exist_ok=True)
     COMPTEUR.write_text(json.dumps(cpt, ensure_ascii=False, indent=1), encoding="utf-8")
+    if agreger:                                      # {qid: {AAAA-MM-JJ: n}}
+        cpts: dict[str, dict[str, int]] = {}
+        for r in lignes:
+            j = str(r["jour"])
+            cpts.setdefault(r["qid"], {})[f"{j[:4]}-{j[4:6]}-{j[6:8]}"] = int(r["n"])
+        return cpts
     out: dict[str, list[dict]] = {}
     for r in lignes:
         vu = str(r["vu"])
@@ -205,6 +228,31 @@ def mode_tournoi(mode: str) -> int:
     return 0
 
 
+def questions_bancs() -> list[dict]:
+    import banc_jugement_alphabet as bja
+    vus, qs = set(), []
+    for x in sorted(bja.candidates(), key=lambda x: x["jeu"]):
+        k = f'{x["source"]}:{x["id"]}'
+        if k in vus:
+            continue
+        vus.add(k)
+        jeu = date.fromisoformat(x["jeu"][:10])
+        qs.append({"qid": f'{x["source"]}:{x["id"]}:{x["jeu"]}', "titre": x["titre"],
+                   "debut": (jeu - timedelta(days=90)).isoformat(), "fin": (jeu - timedelta(days=1)).isoformat()})
+    return qs
+
+
+def mode_comptes() -> int:
+    """0.10.281 : nombre d'articles par jour sur les 90 jours avant le jeu (questions distinctes des bancs)."""
+    qs = questions_bancs()
+    res = lancer(qs, "comptes", agreger=True)
+    COMPTES.write_text(json.dumps({q["qid"]: {"debut": q["debut"], "fin": q["fin"], "jours": res.get(q["qid"], {}),
+                                              "filtrable": bool(sum(requis_et_options(q["titre"]), []))}
+                                   for q in qs}, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{len(qs)} question(s) distincte(s) ; {sum(1 for q in qs if res.get(q['qid']))} avec au moins un article.")
+    return 0
+
+
 def mode_bancs() -> int:
     import banc_jugement_alphabet as bja
     vus, qs = set(), []
@@ -228,7 +276,7 @@ def principal(mode: str) -> int:
         print("::warning::GCP_SA_KEY ou GCP_PROJET absent : GDELT par BigQuery sauté.")
         return 0
     try:
-        return mode_bancs() if mode == "bancs" else mode_tournoi(mode)
+        return mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes" else mode_tournoi(mode)
     except RuntimeError as e:
         print(f"::warning::{e}")
         return 0
@@ -236,5 +284,5 @@ def principal(mode: str) -> int:
 
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
-    a.add_argument("--mode", choices=["nuit", "court", "bancs"], default="nuit")
+    a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes"], default="nuit")
     sys.exit(principal(a.parse_args().mode))
