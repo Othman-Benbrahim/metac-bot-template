@@ -46,6 +46,7 @@ COLLECTES = (
     ("collecte_avis_navigation.yaml", None), ("collecte_portwatch.yaml", None),
     ("collecte_recit_russe.yaml", None), ("collecte_avions_etat.yaml", "apres_minuit"),
     ("collecte_nowcast_inflation.yaml", "jours_ouvres"), ("veille_articles.yaml", "groupe_bancs"),
+    ("collecte_telegram.yaml", None),
 )
 
 

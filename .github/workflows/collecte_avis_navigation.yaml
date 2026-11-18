@@ -8,7 +8,7 @@ on:
     inputs:
       sonde:
         description: "oui = vérifier l'accès et le contenu sans rien écrire"
-        default: "oui"
+        default: "non"
 
 concurrency:
   group: collecte-avis-navigation
