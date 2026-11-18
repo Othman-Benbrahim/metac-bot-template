@@ -21,6 +21,7 @@ Secrets : GCP_SA_KEY (compte de service, rôle Utilisateur de tâches BigQuery) 
     python gdelt_bq.py --mode bancs    # questions distinctes des bancs de jugement, 90 jours avant la date du jeu
     python gdelt_bq.py --mode comptes  # 0.10.281 : mêmes questions, mêmes filtres, NOMBRE d'articles par jour
     python gdelt_bq.py --mode comptes_jeu  # 0.10.290 : comptes pour les questions distinctes de 2026 du jeu de données
+    python gdelt_bq.py --mode comptes_metaculus_2025  # 0.10.293 : questions Metaculus distinctes d'avant 2026
 """
 from __future__ import annotations
 
@@ -39,7 +40,9 @@ TOURNOI = Path("registre/gdelt-bq-tournoi.json")
 BANCS = Path("registre/gdelt-bq-bancs.json")
 COMPTES = Path("registre/gdelt-bq-comptes.json")
 COMPTES_JEU = Path("registre/gdelt-bq-comptes-jeu.json")
-PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0, "comptes_jeu": 120.0}
+COMPTES_META_2025 = Path("registre/gdelt-bq-comptes-metaculus-2025.json")
+PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0, "comptes_jeu": 120.0,
+                     "comptes_metaculus_2025": 120.0}
 PLAFOND_MOIS_GO = 800.0
 PAR_QUESTION = 15
 
@@ -255,9 +258,11 @@ def mode_comptes() -> int:
     return 0
 
 
-def mode_comptes_jeu() -> int:
+def mode_comptes_jeu(avant_2026: bool = False, source: str | None = None, sortie: Path = COMPTES_JEU,
+                     mode: str = "comptes_jeu") -> int:
     """0.10.290 (préenregistrement tendance-attention-large.md) : comptes quotidiens, 90 jours avant la PREMIÈRE date
-    de jeu, pour chaque question distincte de 2026 du jeu de données (toutes plateformes)."""
+    de jeu, pour chaque question distincte de 2026 du jeu de données (toutes plateformes). 0.10.293 : variante
+    « questions Metaculus d'avant 2026 » (préenregistrement tendance-metaculus.md)."""
     import banc_jugement as bj
     xs = bj.cohorte_complete([json.loads(l) for l in bj.REGISTRE.read_text(encoding="utf-8").splitlines() if l.strip()])
     vus, qs = set(), []
@@ -266,13 +271,13 @@ def mode_comptes_jeu() -> int:
         if k in vus:
             continue
         vus.add(k)
-        if x["jeu"] < "2026-01-01":
+        if (x["jeu"] >= "2026-01-01") == avant_2026 or (source and x["source"] != source):
             continue
         jeu = date.fromisoformat(x["jeu"][:10])
         qs.append({"qid": f'{k}:{x["jeu"]}', "titre": x["titre"],
                    "debut": (jeu - timedelta(days=90)).isoformat(), "fin": (jeu - timedelta(days=1)).isoformat()})
-    res = lancer(qs, "comptes_jeu", agreger=True)
-    COMPTES_JEU.write_text(json.dumps({q["qid"]: {"debut": q["debut"], "fin": q["fin"], "jours": res.get(q["qid"], {}),
+    res = lancer(qs, mode, agreger=True)
+    sortie.write_text(json.dumps({q["qid"]: {"debut": q["debut"], "fin": q["fin"], "jours": res.get(q["qid"], {}),
                                                   "filtrable": bool(sum(requis_et_options(q["titre"]), []))}
                                        for q in qs}, ensure_ascii=False), encoding="utf-8")
     print(f"{len(qs)} question(s) distincte(s) ; {sum(1 for q in qs if res.get(q['qid']))} avec au moins un article.")
@@ -303,7 +308,9 @@ def principal(mode: str) -> int:
         return 0
     try:
         return (mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
-                else mode_comptes_jeu() if mode == "comptes_jeu" else mode_tournoi(mode))
+                else mode_comptes_jeu() if mode == "comptes_jeu"
+                else mode_comptes_jeu(True, "metaculus", COMPTES_META_2025, mode) if mode == "comptes_metaculus_2025"
+                else mode_tournoi(mode))
     except RuntimeError as e:
         print(f"::warning::{e}")
         return 0
@@ -311,5 +318,6 @@ def principal(mode: str) -> int:
 
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
-    a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes", "comptes_jeu"], default="nuit")
+    a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes", "comptes_jeu",
+                                           "comptes_metaculus_2025"], default="nuit")
     sys.exit(principal(a.parse_args().mode))

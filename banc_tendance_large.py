@@ -21,8 +21,8 @@ COMPTES = Path("registre/gdelt-bq-comptes-jeu.json")
 RESUME = Path("registre/banc-tendance-large.json")
 
 
-def donnees() -> list[dict]:
-    cpt = json.loads(COMPTES.read_text(encoding="utf-8")) if COMPTES.exists() else {}
+def donnees(fichier: Path = COMPTES) -> list[dict]:
+    cpt = json.loads(fichier.read_text(encoding="utf-8")) if fichier.exists() else {}
     xs = bj.cohorte_complete([json.loads(l) for l in bj.REGISTRE.read_text(encoding="utf-8").splitlines() if l.strip()])
     bj.calculer(xs)
     out = []

@@ -116,6 +116,25 @@ class StructureArbre(unittest.TestCase):
         self.assertEqual(bsa.k2(d, list(bsa.CLES) + ["issue"])["issue"], ())
 
 
+class Couverture(unittest.TestCase):
+    def test_rang_et_verdict(self):
+        import couverture_numerique as cn
+        cent = [(0.1, 10.0), (0.2, 20.0), (0.4, 40.0), (0.6, 60.0), (0.8, 80.0), (0.9, 90.0)]
+        self.assertEqual(cn.rang(5.0, cent), 0.05)
+        self.assertEqual(cn.rang(95.0, cent), 0.95)
+        self.assertAlmostEqual(cn.rang(50.0, cent), 0.5)
+        self.assertEqual(cn.rang("haut", cent), 0.95)
+        self.assertIsNone(cn.valeur("annulled", {}))
+        self.assertEqual(cn.valeur("below_lower_bound", {}), "bas")
+        self.assertIsNotNone(cn.valeur("2026-12-01T00:00:00Z", {"is_date": True}))
+        prev = {"declared_percentiles": [{"percentile": p, "value": v} for p, v in cent]}
+        j = [{"question_id": str(i), "type": "numerique", "horodatage": "2026-11-01", "prediction": prev} for i in range(40)]
+        trop = [{"question_id": str(i), "issue": "200" if i % 2 else "1"} for i in range(40)]   # tout hors fourchette
+        self.assertTrue(cn.calculer(j, trop)["verdict"].startswith("fourchettes trop étroites"))
+        bien = [{"question_id": str(i), "issue": str(10 + 2 * i)} for i in range(40)]
+        self.assertTrue(cn.calculer(j, bien)["verdict"].startswith("pas de signal"))
+
+
 class FiltreAzure(unittest.TestCase):
     def test_variantes(self):
         import banc_filtre_azure as bfa

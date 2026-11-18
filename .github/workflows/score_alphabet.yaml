@@ -35,6 +35,8 @@ jobs:
           # 0.10.193 : le jeton du compte bot ne voit pas les résolutions (question.resolution = None) ; un jeton de
           # lecture d'un compte personnel (secret METACULUS_TOKEN_LECTURE) est pris en priorité s'il existe
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN_LECTURE || secrets.METACULUS_TOKEN }}
+      - name: Couverture des fourchettes numériques (0.10.293, descriptif)
+        run: uv run python couverture_numerique.py || true
       - name: Pépinière de l'arbre (0.10.8)
         run: |
           if [ -f registre/journal-bot.jsonl ]; then uv run python pepiniere.py --enregistrer; fi

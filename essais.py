@@ -226,6 +226,10 @@ ESSAIS = {
                      "objet": "taux de base corrigé par la classe « la question nomme un acteur » contre R1, questions "
                               "de 2025 (idée née des données de 2026)",
                      "doc": "preenregistrements/acteur-nomme.md"},
+    "tendance_metaculus": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                           "objet": "S ajusté par la tendance de l'attention GDELT, β appris sur Metaculus 2026 et "
+                                    "appliqué tel quel aux questions Metaculus d'avant 2026",
+                           "doc": "preenregistrements/tendance-metaculus.md"},
     "tendance_attention_large": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
                                  "clos_le": "2026-11-18",
                                  "verdict": "non adopté : 892 questions distinctes de 2026 (628 avec articles), S ajusté "
