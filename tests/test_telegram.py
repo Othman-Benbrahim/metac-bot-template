@@ -30,7 +30,7 @@ class TLecture(unittest.TestCase):
         a, b = ms
         self.assertEqual((a["id"], a["heure"], a["vues"], a["relaye_de"], a["cite"]),
                          (101, "2026-11-18T00:10:00Z", 189000, "rybar", "warmonitors"))
-        self.assertEqual((b["relaye_de"], b["cite"], b["vues"]), ("", "", 1200000))
+        self.assertEqual((b["relaye_de"], b["cite"], b["vues"]), ("~", "", 1200000))
 
     def test_aucun_texte(self):
         for m in ct.lire_page(PAGE, "DeepStateUA"):
@@ -124,3 +124,15 @@ class TRelaisFormes(unittest.TestCase):
             page = ('<div class="tgme_widget_message_wrap"><div data-post="x_chaine/5">' + f +
                     '<time datetime="2026-11-18T03:00:00+00:00"></time></div></div>')
             self.assertEqual(ct.lire_page(page, "x_chaine")[0]["relaye_de"], "rybar", f)
+
+
+class TRelaisSansLien(unittest.TestCase):
+    def test_relais_sans_lien_aucun_nom(self):
+        f = ('<div class="tgme_widget_message_forwarded_from accent_color"><span class="tgme_widget_message_forwarded_from_name">'
+             '<span dir="auto">Jean Dupont</span></span><span class="tgme_widget_message_forwarded_from_author" dir="auto">J. D.</span></div>')
+        page = ('<div class="tgme_widget_message_wrap"><div data-post="x_chaine/5">' + f +
+                '<time datetime="2026-11-18T03:00:00+00:00"></time></div></div>')
+        m = ct.lire_page(page, "x_chaine")[0]
+        self.assertEqual(m["relaye_de"], "~")
+        self.assertNotIn("Dupont", " ".join(map(str, m.values())))
+        self.assertEqual(ct.mettre_a_jour([], [dict(m, id="5")] * 9, [], "2026-12-01"), [])

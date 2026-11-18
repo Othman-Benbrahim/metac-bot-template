@@ -20,6 +20,9 @@ Liste des chaînes (registre/telegram-chaines.csv : chaine, groupe, origine, ajo
   échoue 7 passages de suite. Une chaîne muette ou disparue reste au registre (son silence est une donnée).
 Registres : registre/telegram-messages.csv (chaine, id, heure, vues, relaye_de, cite) ; registre/telegram-releves.csv
 (releve, chaine, statut_http, messages_lus) ; registre/telegram-liste-journal.csv (jour, chaine, mouvement, raison).
+Relais (0.10.257) : quand l'aperçu donne un lien vers la chaîne d'origine, son nom public est gardé ; sinon (cas le
+plus courant : nom affiché seulement, parfois la signature d'une personne) on note « ~ », sans aucun nom. La mise à
+jour de la liste repose donc surtout sur les CITATIONS (liens t.me dans les messages).
 Une pause de 3 secondes entre deux pages. 0.10.251 (après le premier passage, run 44237976381 : 19 chaînes sur 20
 remplissaient leur unique page de 20 messages, soit quelques heures seulement pour les plus actives) : chaque chaîne
 est remontée page par page (?before=) jusqu'au dernier message déjà connu, ou sur 26 heures pour une chaîne nouvelle,
@@ -101,8 +104,11 @@ def lire_page(page: str, chaine: str) -> list[dict]:
         v = _VUES.search(bloc)
         b = _RELAIS_BALISE.search(bloc)
         r = _HREF.search(b.group(0)) if b else None   # relais d'une chaîne privée : pas de lien, pas de nom gardé
-        relaye = r.group(1) if r else ""
-        if b and not relaye and len(DIAG_EXTRAITS) < 3:                # contrôle : forme de la balise (sans texte)
+        relaye = r.group(1) if r else ("~" if b else "")
+        # 0.10.257 (run 44244447844) : la plupart des relais n'ont PAS de lien, seulement le nom affiché de
+        # l'expéditeur et parfois la signature d'une personne. Ni l'un ni l'autre n'est gardé (pas de personnes
+        # privées) : « ~ » note seulement qu'il s'agit d'un relais d'origine non identifiable.
+        if b and not r and "forwarded_from_name" not in b.group(0) and len(DIAG_EXTRAITS) < 3:
             DIAG_EXTRAITS.append(re.sub(r">[^<]{0,200}<", "><", b.group(0))[:300])
         cites = sorted({c for c in _LIEN.findall(bloc) if not c.lower().endswith("bot") and c.lower() not in (chaine.lower(), p.group(1).lower(),
                                                                          relaye.lower(), "share", "joinchat", "addstickers",
