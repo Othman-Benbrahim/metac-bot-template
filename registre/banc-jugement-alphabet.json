@@ -1,5 +1,5 @@
 {
-  "version_bot": "0.10.249",
+  "version_bot": "0.10.266",
   "n": 309,
   "note": "perte log, plus bas = mieux ; A et M sur les mêmes entrées",
   "B_semblables": 0.4527,
@@ -18,14 +18,55 @@
     "blocs": 20,
     "ecart_moyen": -0.019447554833253042,
     "intervalle_90_par_blocs": [
-      -0.04949672719664745,
-      0.008768471516428927
+      -0.049496727196647466,
+      0.008768471516428922
     ],
     "intervalle_corrige": [
-      -0.07494982062908923,
-      0.030659460034709818
+      -0.07751422018975967,
+      0.03421155865460614
     ],
-    "niveau_corrige": 0.9955,
+    "niveau_corrige": 0.9964,
     "verdict": "critère non atteint ; essai à clore"
+  },
+  "profils": {
+    "B": {
+      "n": 309,
+      "oui": 50,
+      "perte_log": 0.4527,
+      "perte_venue_des_oui": 0.2718,
+      "perte_venue_des_non": 0.1809,
+      "rates_oui_sous_30": 40,
+      "fausses_alertes_non_sur_50": 1,
+      "brier": 0.14,
+      "fiabilite_plus_bas_mieux": 0.008,
+      "resolution_plus_haut_mieux": 0.0025,
+      "incertitude": 0.1356
+    },
+    "A": {
+      "n": 309,
+      "oui": 50,
+      "perte_log": 0.3813,
+      "perte_venue_des_oui": 0.1781,
+      "perte_venue_des_non": 0.2033,
+      "rates_oui_sous_30": 21,
+      "fausses_alertes_non_sur_50": 8,
+      "brier": 0.1166,
+      "fiabilite_plus_bas_mieux": 0.0111,
+      "resolution_plus_haut_mieux": 0.0303,
+      "incertitude": 0.1356
+    },
+    "M": {
+      "n": 309,
+      "oui": 50,
+      "perte_log": 0.3622,
+      "perte_venue_des_oui": 0.2027,
+      "perte_venue_des_non": 0.1595,
+      "rates_oui_sous_30": 27,
+      "fausses_alertes_non_sur_50": 5,
+      "brier": 0.1107,
+      "fiabilite_plus_bas_mieux": 0.0086,
+      "resolution_plus_haut_mieux": 0.0338,
+      "incertitude": 0.1356
+    }
   }
 }

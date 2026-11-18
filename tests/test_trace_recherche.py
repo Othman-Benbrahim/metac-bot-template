@@ -103,7 +103,44 @@ class TSansFoule(unittest.TestCase):
 class TGdelt(unittest.TestCase):
     def test_mots_et_fenetre(self):
         import alphabet_recherche as ar_
-        self.assertEqual(ar_.gdelt_mots('Will "X" win the 2026 vote in EU?'), "Will win the vote")
+        self.assertEqual(ar_.gdelt_mots('Will "X" win the 2026 vote in EU?'), "win vote")
+        self.assertEqual(ar_.gdelt_mots("Will Anthropic file an S-1 before June?"), 'Anthropic file "S-1" June')
+
+    def test_429_puis_succes(self):
+        import alphabet_recherche as ar_
+        ar_.GDELT_ECART, ar_.GDELT_PAUSE_429 = 0, 0
+        etats = iter([429, 429, 200])
+        appels = []
+
+        class R:
+            def __init__(self, code):
+                self.status_code, self.headers, self.text = code, {}, ""
+
+            def raise_for_status(self):
+                if self.status_code >= 400:
+                    raise RuntimeError("HTTP")
+
+            def json(self):
+                return {"articles": [{"seendate": "20260101T000000Z", "title": "T", "url": "https://a.org/x"}]}
+
+        class C:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *a):
+                return False
+
+            async def get(self, url, params):
+                appels.append(1)
+                return R(next(etats))
+        ancien = ar_.httpx.AsyncClient
+        ar_.httpx.AsyncClient = lambda timeout: C()
+        try:
+            t = asyncio.run(ar_.gdelt("ceasefire Ukraine", None))
+        finally:
+            ar_.httpx.AsyncClient = ancien
+        self.assertEqual(len(appels), 3)
+        self.assertIn("https://a.org/x", t)
 
     def test_reessai_sur_limite(self):
         import alphabet_recherche as ar_

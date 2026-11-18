@@ -54,6 +54,8 @@ def resumer(ls: list[dict]) -> dict:
     c = sr.critere_ombre_b([dict(x, p_B=x["p_B"], o={"p": x["p_M_aveugle"]}) for x in ok], "o", "abstention",
                            exclure_vus=False)
     r["critere"] = c
+    import profil_erreurs as pe          # 0.10.265 : les deux côtés des erreurs, toujours affichés
+    r["profils"] = pe.profils(ok, {"semblables": "p_B", "M_aveugle": "p_M_aveugle"})
     iv = c.get("intervalle_90_par_blocs")
     r["verdict"] = ("abstention REJETÉE : le modèle aveugle bat les semblables" if iv and iv[1] < 0
                     else "abstention ADOPTABLE : le modèle aveugle ne bat pas les semblables")

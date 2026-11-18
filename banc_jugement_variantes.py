@@ -152,7 +152,14 @@ def resumer(ls: list[dict]) -> dict:
     if ok:
         out["haiku_avocat_descriptif"] = {"n": len(ok), "M": round(sum(pl(x["hM"], x["issue"]) for x in ok) / len(ok), 4),
                                           "M_avocat": round(sum(pl(x["hMav"], x["issue"]) for x in ok) / len(ok), 4)}
-    # « oui » surprenants : combien de « oui » chaque bras met à 23 % ou moins
+    import profil_erreurs as pe          # 0.10.265 : les deux côtés des erreurs, toujours affichés
+    out["profils_gpt"] = pe.profils(ls, {"M_refait": "p_M_refait", "M_avocat": "p_M_avocat", "M_neutre": "p_M_neutre"})
+    out["profils_haiku"] = pe.profils([dict(x, hA=x.get("haiku", {}).get("p_A"), hM=x.get("haiku", {}).get("p_M"),
+                                            hMav=x.get("haiku", {}).get("p_M_avocat")) for x in ls
+                                       if not (x.get("haiku") or {}).get("exclue")],
+                                      {"A": "hA", "M": "hM", "M_avocat": "hMav"})
+    # « oui » surprenants : combien de « oui » chaque bras met à 23 % ou moins (descriptif ; ne jamais juger sur ce
+    # seul côté : voir profils, qui montrent aussi les fausses alertes)
     oui = [x for x in ls if x["issue"] == 1]
     out["oui_mis_bas"] = {k: sum(1 for x in oui if x.get(k) is not None and x[k] <= 0.23)
                           for k in ("p_M_refait", "p_M_avocat", "p_M_neutre")}

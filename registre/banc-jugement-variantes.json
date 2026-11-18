@@ -1,5 +1,5 @@
 {
-  "version_bot": "0.10.254",
+  "version_bot": "0.10.266",
   "n_lignes": 150,
   "note": "perte log, plus bas = mieux",
   "gpt_avocat_oui": {
@@ -14,13 +14,13 @@
       "ecart_moyen": -0.034999974198023115,
       "intervalle_90_par_blocs": [
         -0.06935944790230358,
-        -0.006216255407997966
+        -0.0062162554079979665
       ],
       "intervalle_corrige": [
-        -0.08777424942997057,
-        0.0087280655011276
+        -0.08777424942997056,
+        0.008728065501127598
       ],
-      "niveau_corrige": 0.9923,
+      "niveau_corrige": 0.9929,
       "verdict": "en attente (moins de 150 questions de jeux non vus)"
     }
   },
@@ -33,16 +33,16 @@
       "regard": 1,
       "n_juge": 150,
       "blocs": 19,
-      "ecart_moyen": -0.02192526175587175,
+      "ecart_moyen": -0.02192526175587176,
       "intervalle_90_par_blocs": [
-        -0.059749822391025255,
-        0.010903127507645728
+        -0.05974982239102528,
+        0.01090312750764573
       ],
       "intervalle_corrige": [
-        -0.08803744504450936,
+        -0.08803744504450937,
         0.03106278846407191
       ],
-      "niveau_corrige": 0.9923,
+      "niveau_corrige": 0.9929,
       "verdict": "critère non atteint ; un second regard à 300"
     }
   },
@@ -58,13 +58,13 @@
       "ecart_moyen": -0.0515310620189969,
       "intervalle_90_par_blocs": [
         -0.09642538951828844,
-        0.00039620830638502683
+        0.0003962083063850268
       ],
       "intervalle_corrige": [
-        -0.12190231578741388,
-        0.03638116269618297
+        -0.1219023157874138,
+        0.03638116269618298
       ],
-      "niveau_corrige": 0.9923,
+      "niveau_corrige": 0.9929,
       "verdict": "en attente (moins de 150 questions de jeux non vus)"
     }
   },
@@ -72,6 +72,88 @@
     "n": 120,
     "M": 0.4247,
     "M_avocat": 0.4149
+  },
+  "profils_gpt": {
+    "M_refait": {
+      "n": 148,
+      "oui": 26,
+      "perte_log": 0.4028,
+      "perte_venue_des_oui": 0.2274,
+      "perte_venue_des_non": 0.1754,
+      "rates_oui_sous_30": 14,
+      "fausses_alertes_non_sur_50": 3,
+      "brier": 0.1257,
+      "fiabilite_plus_bas_mieux": 0.015,
+      "resolution_plus_haut_mieux": 0.037,
+      "incertitude": 0.1448
+    },
+    "M_avocat": {
+      "n": 148,
+      "oui": 26,
+      "perte_log": 0.3678,
+      "perte_venue_des_oui": 0.2247,
+      "perte_venue_des_non": 0.1431,
+      "rates_oui_sous_30": 14,
+      "fausses_alertes_non_sur_50": 0,
+      "brier": 0.1112,
+      "fiabilite_plus_bas_mieux": 0.0106,
+      "resolution_plus_haut_mieux": 0.0443,
+      "incertitude": 0.1448
+    },
+    "M_neutre": {
+      "n": 148,
+      "oui": 26,
+      "perte_log": 0.3803,
+      "perte_venue_des_oui": 0.2293,
+      "perte_venue_des_non": 0.151,
+      "rates_oui_sous_30": 14,
+      "fausses_alertes_non_sur_50": 4,
+      "brier": 0.1181,
+      "fiabilite_plus_bas_mieux": 0.0079,
+      "resolution_plus_haut_mieux": 0.0359,
+      "incertitude": 0.1448
+    }
+  },
+  "profils_haiku": {
+    "A": {
+      "n": 120,
+      "oui": 20,
+      "perte_log": 0.4762,
+      "perte_venue_des_oui": 0.1047,
+      "perte_venue_des_non": 0.3715,
+      "rates_oui_sous_30": 4,
+      "fausses_alertes_non_sur_50": 18,
+      "brier": 0.1536,
+      "fiabilite_plus_bas_mieux": 0.0489,
+      "resolution_plus_haut_mieux": 0.0358,
+      "incertitude": 0.1389
+    },
+    "M": {
+      "n": 120,
+      "oui": 20,
+      "perte_log": 0.4247,
+      "perte_venue_des_oui": 0.1587,
+      "perte_venue_des_non": 0.2659,
+      "rates_oui_sous_30": 7,
+      "fausses_alertes_non_sur_50": 13,
+      "brier": 0.1372,
+      "fiabilite_plus_bas_mieux": 0.0371,
+      "resolution_plus_haut_mieux": 0.0395,
+      "incertitude": 0.1389
+    },
+    "M_avocat": {
+      "n": 120,
+      "oui": 20,
+      "perte_log": 0.4149,
+      "perte_venue_des_oui": 0.1559,
+      "perte_venue_des_non": 0.259,
+      "rates_oui_sous_30": 6,
+      "fausses_alertes_non_sur_50": 9,
+      "brier": 0.1299,
+      "fiabilite_plus_bas_mieux": 0.0278,
+      "resolution_plus_haut_mieux": 0.0363,
+      "incertitude": 0.1389
+    }
   },
   "oui_mis_bas": {
     "p_M_refait": 12,

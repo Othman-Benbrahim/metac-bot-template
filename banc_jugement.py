@@ -220,6 +220,7 @@ def resumer(xs: list[dict], foule: dict | None = None) -> dict:
     r = {"questions": len(xs), "n_confirmation": len(conf),
          "oui_confirmation": round(sum(x["issue"] for x in conf) / len(conf), 3) if conf else None,
          "perte": {k: pm(conf, k) for k in ("p_R0", "p_R1", "p_S")},
+         "profils": __import__("profil_erreurs").profils(conf, {"R0": "p_R0", "R1": "p_R1", "S": "p_S"}),   # 0.10.265
          "discrimination": {k: disc(conf, k) for k in ("p_R0", "p_R1", "p_S")},
          "par_source": {s: {"n": len(v), "oui": round(sum(x["issue"] for x in v) / len(v), 3),
                             **{k: pm(v, k) for k in ("p_R0", "p_R1", "p_S")}}

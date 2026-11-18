@@ -55,12 +55,14 @@ def calculer_sens(xs: list[dict], V) -> None:
 def comparer(s: list[dict], risque: float) -> dict:
     if not s:
         return {"n": 0}
+    import profil_erreurs as pe          # 0.10.265 : les deux côtés des erreurs, toujours affichés
     pm = lambda k: round(sum(cb.pl(x[k], x["issue"]) for x in s) / len(s), 4)
     e = [(f'{x["source"]}:{x["id"]}', cb.pl(x["p_SE"], x["issue"]) - cb.pl(x["p_S"], x["issue"])) for x in s]
     bas, haut = cb.bootstrap(e, risque)
     return {"n": len(s), "perte_R1": pm("p_R1"), "perte_S_mots": pm("p_S"), "perte_SE_sens": pm("p_SE"),
             "ecart_moyen": round(sum(v for _, v in e) / len(e), 4), "intervalle": [round(bas, 4), round(haut, 4)],
-            "verdict": "sens meilleur" if haut < 0 else ("sens moins bon" if bas > 0 else "non tranché")}
+            "verdict": "sens meilleur" if haut < 0 else ("sens moins bon" if bas > 0 else "non tranché"),
+            "profils": pe.profils(s, {"mots": "p_S", "sens": "p_SE"})}
 
 
 def resumer(xs: list[dict]) -> dict:

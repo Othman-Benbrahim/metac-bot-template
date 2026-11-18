@@ -142,6 +142,7 @@ async def tinyfish(requete: str, avant: datetime | None = None) -> str:
 _GDELT_VERROU = None
 _GDELT_DERNIER = 0.0
 GDELT_ECART = 5.5            # 0.10.264 : GDELT demande une requête toutes les 5 secondes au plus
+GDELT_ESSAIS, GDELT_PAUSE_429 = 4, 8.0   # 0.10.266 : 429 → attendre 8, 16, 32 s (ou Retry-After) et réessayer
 
 
 async def _gdelt_attendre() -> None:
@@ -159,10 +160,31 @@ async def _gdelt_attendre() -> None:
         _GDELT_DERNIER = time.monotonic()
 
 
+_MOTS_VIDES: set[str] | None = None
+
+
+def _mots_vides() -> set[str]:
+    global _MOTS_VIDES
+    if _MOTS_VIDES is None:
+        from pathlib import Path
+        f = Path(__file__).parent / "registre" / "mots-vides-anglais.txt"
+        _MOTS_VIDES = {l.strip().lower() for l in f.read_text(encoding="utf-8").splitlines() if l.strip()} if f.exists() else set()
+        _MOTS_VIDES |= {"will", "would", "before", "after", "least", "more", "than", "according"}
+    return _MOTS_VIDES
+
+
 def gdelt_mots(requete: str) -> str:
-    """0.10.264 : GDELT refuse les mots de moins de 3 lettres et les requêtes trop longues ; ni guillemets ni ponctuation."""
-    mots = [w for w in re.sub(r"[^\w\s-]", " ", requete).split() if len(w) > 2 and not w.isdigit()]
-    return " ".join(mots[:12])
+    """0.10.264-0.10.266 (sonde GDELT du 2026-11-18, run 44303267909) : GDELT exige TOUS les mots de la requête ;
+    les mots vides (« Will », « the »…) la rendent trop étroite. Il refuse les mots de moins de 3 lettres et tout
+    tiret hors guillemets (« S-1 », « mail-in » : « illegal character ») : un mot à tiret est mis entre guillemets."""
+    vides = _mots_vides()
+    mots = []
+    for w in re.sub(r"[^\w\s-]", " ", requete).split():
+        w = w.strip("-")
+        if len(w) <= 2 or w.isdigit() or w.lower() in vides:
+            continue
+        mots.append(f'"{w}"' if "-" in w else w)
+    return " ".join(mots[:8])
 
 
 async def gdelt(requete: str, avant: datetime | None = None) -> str:
@@ -177,16 +199,26 @@ async def gdelt(requete: str, avant: datetime | None = None) -> str:
         params["startdatetime"] = (avant - timedelta(days=90)).strftime("%Y%m%d%H%M%S")
     res = None
     async with httpx.AsyncClient(timeout=DELAI) as c:
-        for essai in range(2):
+        for essai in range(GDELT_ESSAIS):
             await _gdelt_attendre()
             r = await c.get("https://api.gdeltproject.org/api/v2/doc/doc", params=params)
+            if getattr(r, "status_code", 200) == 429 and essai < GDELT_ESSAIS - 1:
+                # 0.10.266 : 30 refus « 429 » sur 40 malgré l'espacement (adresses partagées des serveurs de GitHub) :
+                # attente croissante, ou celle que GDELT demande (Retry-After), puis nouvel essai
+                import asyncio
+                try:
+                    attente = float(getattr(r, "headers", {}).get("Retry-After") or 0)
+                except (TypeError, ValueError):
+                    attente = 0.0
+                await asyncio.sleep(max(attente, GDELT_PAUSE_429 * 2 ** essai))
+                continue
             r.raise_for_status()
             try:
                 res = r.json().get("articles") or []
                 break
             except ValueError:                    # GDELT répond en texte quand la requête lui déplaît
                 texte = " ".join(r.text.split())[:200]
-                if essai == 0 and re.search(r"limit requests|one every", texte, re.I):
+                if essai < GDELT_ESSAIS - 1 and re.search(r"limit requests|one every", texte, re.I):
                     continue
                 if not texte:                      # corps vide : aucun article
                     res = []
