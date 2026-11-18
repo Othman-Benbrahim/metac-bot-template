@@ -203,7 +203,11 @@ ESSAIS = {
                       "objet": "questions semblables trouvées par le sens (embeddings bge-small) contre par les mots "
                                "(TF-IDF) ; un seul regard, réplique 2025 exigée",
                       "doc": "preenregistrements/jugement-sens.md"},
-    "gdelt_complement": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "gdelt_complement": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+                         "verdict": "non retenu : 75 questions distinctes, perte AVEC 0,4735 contre SANS 0,4634, écart "
+                                    "+0,010, intervalle corrigé [−0,031 ; +0,056] ; moins de ratés (11 → 8) mais "
+                                    "résolution plus faible (0,046 → 0,027) ; les titres restent un relais "
+                                    "(run 44358972727)",
                          "objet": "titres GDELT (BigQuery) ajoutés à la recherche de M, contre la recherche seule",
                          "doc": "preenregistrements/gdelt-complement.md"},
     "abstention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",

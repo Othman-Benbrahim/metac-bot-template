@@ -428,7 +428,8 @@ def critere_ombre_b(lignes: list[dict], cle: str = "ombre_b_ar", essai: str = "b
             "verdict": (f"en attente (moins de {N} questions de jeux non vus)" if rg == 0 else
                         "critère atteint : décision d'auteur à prendre" if moy < 0 and haut_c < 0 else
                         "critère nominal seulement (pas au niveau corrigé)" if moy < 0 and haut < 0 else
-                        "critère non atteint" + (f" ; un second regard à {2 * N}" if rg == 1 else " ; essai à clore"))}
+                        "critère non atteint" + (f" ; un second regard à {2 * N}" if rg == 1 and not tout_juger
+                                                 else " ; essai à clore"))}
 
 
 def critere_b_ar(lignes: list[dict]) -> dict:
