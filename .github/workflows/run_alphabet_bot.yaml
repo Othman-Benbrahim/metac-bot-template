@@ -87,6 +87,9 @@ jobs:
           ALPHABET_PETIT_LLM: ${{ vars.ALPHABET_PETIT_LLM }}
           ALPHABET_LECTURE_HORS_STRATE: ${{ vars.ALPHABET_LECTURE_HORS_STRATE }}
           ALPHABET_TRADUCTION: ${{ vars.ALPHABET_TRADUCTION || '1' }}   # 0.10.7 (§37) : allumé par défaut (un appel de plus) ; « 0 » l'éteint
+          ALPHABET_PAUSE: ${{ vars.ALPHABET_PAUSE }}             # 0.10.263 : « oui » = aucun passage ne poste
+          ALPHABET_POSTER_M: ${{ vars.ALPHABET_POSTER_M }}       # 0.10.263 : « non » = le bras M n'est plus posté
+          ALPHABET_ABSTENTION: ${{ vars.ALPHABET_ABSTENTION }}   # 0.10.263 : « oui » = pas de recherche, pas de jugement
           ALPHABET_A_ESSAIS: ${{ vars.ALPHABET_A_ESSAIS }}       # 0.10.5 (§35) : K essais du bras A en ombre (1 = éteint)
           ALPHABET_PRESELECTION: ${{ vars.ALPHABET_PRESELECTION || '1' }}   # 0.10.15 : présélection par plongement, en ombre
           FASTEMBED_CACHE_PATH: /home/runner/.cache/fastembed

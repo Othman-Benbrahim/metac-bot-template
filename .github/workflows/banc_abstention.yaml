@@ -1,0 +1,62 @@
+name: "Banc jugement : règle d'abstention"
+
+# 0.10.263 : sans recherche, le modèle aveugle contre le taux des semblables. preenregistrements/abstention.md
+on:
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: "plafond Azure (gpt-5-mini) en dollars"
+        default: "1"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  abstention:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Restaurer la recherche gelée
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+          restore-keys: recherche-jugement-
+      - name: "Règle d'abstention"
+        run: uv run python banc_abstention.py --budget "${{ github.event.inputs.budget || '1' }}"
+        env:
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
+      - name: Garder la recherche gelée
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/banc-abstention.jsonl registre/banc-abstention.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc de l'abstention du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

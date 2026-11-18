@@ -94,9 +94,28 @@ class AlphabetBot(FallTemplateBot2026):
         """0.10.261 : toute recherche générale passe par alphabet_recherche.sans_foule (aucune cote ni prévision de
         foule n'arrive au modèle, quelle que soit la source)."""
         import alphabet_recherche as ar_
-        texte, n = ar_.sans_foule(await self._run_research_brut(question))
+        import bras_m
+        if getattr(self, "_disjoncte", False):
+            raise RuntimeError("disjoncteur de recherche déclenché : question non traitée, reprise au prochain passage")
+        try:
+            texte, n = ar_.sans_foule(await self._run_research_brut(question))
+        except Exception:
+            # une recherche en échec compte pour le disjoncteur, puis l'erreur suit son cours (question non postée)
+            self._n_recherches = getattr(self, "_n_recherches", 0) + 1
+            self._n_vides = getattr(self, "_n_vides", 0) + 1
+            if disjoncter(self._n_recherches, self._n_vides):
+                self._disjoncte = True
+            raise
         if n:
             print(f"Recherche : {n} phrase(s) citant une cote ou une prévision de foule retirée(s).")
+        # 0.10.263 : disjoncteur (Khmelinskaya, Q6) : une panne générale de recherche n'est pas une information
+        self._n_recherches = getattr(self, "_n_recherches", 0) + 1
+        self._n_vides = getattr(self, "_n_vides", 0) + bras_m.recherche_vide(texte)
+        if disjoncter(self._n_recherches, self._n_vides):
+            self._disjoncte = True
+            print(f"::warning::Disjoncteur de recherche : {self._n_vides} recherches vides sur {self._n_recherches} ; "
+                  "plus aucune question n'est traitée dans ce passage (reprise au suivant).")
+            raise RuntimeError("disjoncteur de recherche déclenché")
         return texte
 
     async def _run_research_brut(self, question) -> str:
@@ -430,6 +449,19 @@ def problemes(bot: AlphabetBot, env=os.environ) -> tuple[list[str], list[str]]:
     return bloquants, avertissements
 
 
+SEUIL_DISJONCTEUR, MIN_DISJONCTEUR = 0.3, 5
+
+
+def disjoncter(n: int, vides: int) -> bool:
+    """0.10.263 : au moins 5 recherches dans le passage, et plus de 30 % vides : panne, pas information."""
+    return n >= MIN_DISJONCTEUR and vides / n > SEUIL_DISJONCTEUR
+
+
+def en_pause(env=os.environ) -> bool:
+    """0.10.263 : interrupteur général (variable du dépôt ALPHABET_PAUSE = « oui ») : aucun passage ne poste."""
+    return str(env.get("ALPHABET_PAUSE", "")).strip().lower() in ("oui", "1", "true", "on")
+
+
 def construire(publier: bool) -> AlphabetBot:
     return AlphabetBot(
         llms=configuration() or None,
@@ -563,6 +595,9 @@ if __name__ == "__main__":
         print("❌  --sans-publier n'est admis qu'en mode test_questions (règlement : pas de prévisualisation sur les "
               "questions ouvertes du tournoi).")
         sys.exit(1)
+    if en_pause():
+        print("⏸  ALPHABET_PAUSE est à « oui » (variable du dépôt) : passage arrêté, rien n'est posté ni dépensé.")
+        sys.exit(0)
     os.environ["ALPHABET_MODE"] = args.mode  # 0.2.0 (audit, B5/rec. 11) : chaque ligne du registre porte son mode
     check_environment(strict=True)  # jeton Metaculus et clé de modèle, sinon arrêt en rouge
     client = MetaculusClient()

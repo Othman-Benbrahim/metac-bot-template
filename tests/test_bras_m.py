@@ -78,3 +78,51 @@ class TPipeline(unittest.TestCase):
         self.assertEqual((r.bras_poste, r.p_poste), ("M", 0.21))
         self.assertEqual(lignes[0]["bras_M"]["p"], 0.21)
         self.assertIn("Posted arm: M", r.commentaire)
+
+
+class TReglesCode(unittest.TestCase):
+    def test_recherche_vide(self):
+        import trace_recherche as tr
+        self.assertTrue(bm.recherche_vide(""))
+        self.assertTrue(bm.recherche_vide(tr.AUCUN))
+        self.assertTrue(bm.recherche_vide("(recherche indisponible : RuntimeError)"))
+        self.assertTrue(bm.recherche_vide("[moteur : exa]\ncourt"))
+        self.assertFalse(bm.recherche_vide("[moteur : exa]\n" + "Le comité a voté le texte en première lecture. " * 6))
+        self.assertTrue(bm.recherche_vide("Polymarket gives 70%. " * 20))      # rien d'utile une fois la foule retirée
+
+    def test_interrupteur(self):
+        self.assertTrue(bm.m_coupe({"ALPHABET_POSTER_M": "non"}))
+        self.assertFalse(bm.m_coupe({}))
+        import os
+        os.environ["ALPHABET_POSTER_M"] = "non"
+        try:
+            self.assertEqual(bm.choisir_m("A", 0.5, None, {"statut": "estime", "p": 0.2}), ("A", 0.5))
+        finally:
+            del os.environ["ALPHABET_POSTER_M"]
+
+    def test_abstention(self):
+        import os
+        self.assertFalse(bm.abstention_active({}))
+        os.environ["ALPHABET_ABSTENTION"] = "oui"
+        ancien = bm.semblables
+        bm.semblables = lambda *a: 0.12
+
+        async def llm(c):
+            raise AssertionError("le modèle ne doit pas être appelé")
+        try:
+            m = asyncio.run(bm.prevoir_m(llm, "Will X?", "", "", date(2027, 1, 1), "", date(2026, 11, 18)))
+        finally:
+            del os.environ["ALPHABET_ABSTENTION"]
+            bm.semblables = ancien
+        self.assertEqual((m["statut"], m["abstention"], m["p"]), ("estime", True, 0.12))
+        self.assertIn("No usable research", bm.commentaire_m(0.4, m, "r"))
+
+
+class TBot(unittest.TestCase):
+    def test_disjoncteur_et_pause(self):
+        import alphabet_bot as ab
+        self.assertFalse(ab.disjoncter(4, 4))
+        self.assertFalse(ab.disjoncter(10, 3))
+        self.assertTrue(ab.disjoncter(10, 4))
+        self.assertTrue(ab.en_pause({"ALPHABET_PAUSE": "oui"}))
+        self.assertFalse(ab.en_pause({}))

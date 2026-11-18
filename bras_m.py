@@ -63,6 +63,10 @@ async def prevoir_m(llm: ap.Llm, titre: str, criteres: str, contexte: str, clotu
         return {"statut": "erreur", "motif": f"semblables : {type(e).__name__}: {e}"[:300]}
     if p_b is None:
         return {"statut": "erreur", "motif": "registre des questions semblables absent"}
+    if recherche_vide(recherche) and abstention_active():
+        # pas de recherche : le modèle ne juge pas à l'aveugle ; on poste le taux des questions semblables
+        return {"statut": "estime", "abstention": True, "p_depart": round(p_b, 4), "notes": {},
+                "p": round(min(0.99, max(0.01, p_b)), 4), "raison": "no usable research: similar-questions rate posted"}
     q = {"titre": titre, "criteres": criteres or "", "contexte": contexte or "", "cloture": cloture.isoformat()}
     jeu = aujourdhui.isoformat()
     try:
@@ -79,9 +83,34 @@ async def prevoir_m(llm: ap.Llm, titre: str, criteres: str, contexte: str, clotu
             "raison": str(r.get("raison", ""))[:500]}
 
 
+def m_coupe(env=None) -> bool:
+    """0.10.263 : interrupteur manuel (variable du dépôt ALPHABET_POSTER_M = « non ») lu à chaque question."""
+    import os
+    env = os.environ if env is None else env
+    return not POSTER_M or str(env.get("ALPHABET_POSTER_M", "")).strip().lower() in ("non", "0", "false", "off")
+
+
+def recherche_vide(texte: str) -> bool:
+    """0.10.263 : pas de quoi juger — rien, une panne, « aucun résultat », ou moins de 200 caractères utiles."""
+    import alphabet_recherche as ar_
+    import trace_recherche as tr
+    t = ar_.sans_foule((texte or "").strip())[0].strip()
+    t = t.split("\n", 1)[1].strip() if t.startswith("[moteur :") and "\n" in t else t
+    return (len(t) < 200 or t.startswith("(recherche indisponible") or t == tr.AUCUN
+            or "aucun moteur de recherche n'a répondu" in t)
+
+
+def abstention_active(env=None) -> bool:
+    """0.10.263 : règle « pas de recherche, pas de jugement du modèle », ÉTEINTE tant que le banc ne l'a pas jugée
+    (preenregistrements/abstention.md) ; variable du dépôt ALPHABET_ABSTENTION = « oui » pour l'allumer."""
+    import os
+    env = os.environ if env is None else env
+    return str(env.get("ALPHABET_ABSTENTION", "")).strip().lower() in ("oui", "1", "true", "on")
+
+
 def choisir_m(poste: str, p_poste: float, methode_b: str | None, m: dict | None) -> tuple[str, float]:
     """M remplace A, ou B tiré de la seule vue du modèle ; jamais un taux calculé."""
-    if not POSTER_M or not m or m.get("statut") != "estime":
+    if m_coupe() or not m or m.get("statut") != "estime":
         return poste, p_poste
     if poste == "B" and str(methode_b or "").startswith(METHODES_GARDEES):
         return poste, p_poste
@@ -106,6 +135,11 @@ def texte_cartes(m: dict) -> str:
 
 
 def commentaire_m(p_A: float, m: dict, a_raison: str) -> str:
+    if m.get("abstention"):
+        return "\n".join([
+            "Situational-alphabet bot. No usable research was found for this question, so no model judgment is "
+            "posted (abstention rule, coded): the forecast is the share of YES among similar resolved questions, "
+            f"{m['p_depart']:.3f}.", f"Arm A, model alone, NOT posted: {p_A:.3f}."])
     return "\n".join([
         "Situational-alphabet bot. Posted arm: M, the alphabet as nested simple situations (\"matriochka\").",
         f"Starting point: share of YES among similar resolved questions: {m['p_depart']:.3f}.",

@@ -201,6 +201,10 @@ ESSAIS = {
                       "objet": "questions semblables trouvées par le sens (embeddings bge-small) contre par les mots "
                                "(TF-IDF) ; un seul regard, réplique 2025 exigée",
                       "doc": "preenregistrements/jugement-sens.md"},
+    "abstention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                   "objet": "sans recherche, M aveugle contre taux des semblables ; abstention adoptée sauf si le "
+                            "modèle aveugle gagne (intervalle 90 % sous zéro)",
+                   "doc": "preenregistrements/abstention.md"},
     "avocat_oui": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 150, "statut": "ouvert", "lecteur": "gpt-5-mini",
                    "objet": "M avec un « avocat du OUI » avant le jugement final, contre M refait sur la même recherche",
                    "doc": "preenregistrements/jugement-variantes.md"},
