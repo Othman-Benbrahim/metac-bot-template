@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          if [ -e registre/banc-tendance-large.json ]; then git add registre/banc-acteur-nomme.json; fi
+          if [ -e registre/banc-tendance-large.json ]; then git add registre/banc-tendance-large.json; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : banc de la tendance large du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase
