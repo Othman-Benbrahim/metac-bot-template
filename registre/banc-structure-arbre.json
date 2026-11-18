@@ -1,0 +1,113 @@
+{
+  "version_bot": "0.10.291",
+  "note": "descriptif ; K2 + score BDeu (ESS 1), au plus 2 parents, ordre : notes dans l'ordre des critères puis issue ; stabilité : 500 rééchantillonnages des questions ; lien stable si présent ≥ 70 %",
+  "gpt": {
+    "questions": 119,
+    "oui": 27,
+    "parents_issue": [],
+    "aretes_echantillon_complet": [
+      "engagements → decideurs"
+    ],
+    "aretes_stables": [
+      "engagements → decideurs (78%)"
+    ],
+    "aretes_vers_issue_frequence": {
+      "proportion → issue": 0.236,
+      "declencheur → issue": 0.2,
+      "tendance → issue": 0.186,
+      "freins → issue": 0.172,
+      "decideurs → issue": 0.084,
+      "engagements → issue": 0.016,
+      "duree → issue": 0.014
+    },
+    "aretes_frequentes_top15": [
+      "engagements → decideurs (78%)",
+      "tendance → proportion (48%)",
+      "freins → proportion (35%)",
+      "decideurs → freins (27%)",
+      "proportion → issue (24%)",
+      "tendance → engagements (20%)",
+      "declencheur → issue (20%)",
+      "tendance → decideurs (20%)",
+      "tendance → issue (19%)",
+      "freins → issue (17%)",
+      "engagements → declencheur (14%)",
+      "decideurs → declencheur (13%)",
+      "engagements → freins (10%)",
+      "decideurs → proportion (9%)",
+      "decideurs → issue (8%)"
+    ],
+    "parents_issue_selon_ordre": {},
+    "verification_predictive": {
+      "perte_issue_par_parents_appris": 0.5439,
+      "perte_issue_seule": 0.5439
+    }
+  },
+  "haiku": {
+    "questions": 75,
+    "oui": 15,
+    "parents_issue": [
+      "freins"
+    ],
+    "aretes_echantillon_complet": [
+      "decideurs → freins",
+      "freins → duree",
+      "freins → issue",
+      "tendance → decideurs",
+      "tendance → engagements",
+      "tendance → proportion"
+    ],
+    "aretes_stables": [
+      "tendance → proportion (100%)",
+      "tendance → engagements (84%)",
+      "decideurs → freins (71%)"
+    ],
+    "aretes_vers_issue_frequence": {
+      "engagements → issue": 0.4,
+      "proportion → issue": 0.35,
+      "freins → issue": 0.21,
+      "declencheur → issue": 0.116,
+      "duree → issue": 0.086,
+      "decideurs → issue": 0.058,
+      "tendance → issue": 0.002
+    },
+    "aretes_frequentes_top15": [
+      "tendance → proportion (100%)",
+      "tendance → engagements (84%)",
+      "decideurs → freins (71%)",
+      "tendance → decideurs (66%)",
+      "freins → duree (60%)",
+      "declencheur → freins (59%)",
+      "engagements → declencheur (58%)",
+      "engagements → decideurs (56%)",
+      "tendance → declencheur (49%)",
+      "declencheur → duree (41%)",
+      "engagements → issue (40%)",
+      "proportion → issue (35%)",
+      "freins → issue (21%)",
+      "decideurs → declencheur (13%)",
+      "declencheur → issue (12%)"
+    ],
+    "parents_issue_selon_ordre": {
+      "freins": "20/20"
+    },
+    "verification_predictive": {
+      "perte_issue_par_parents_appris": 0.5399,
+      "perte_issue_seule": 0.5139
+    }
+  },
+  "unites": {
+    "gpt": {
+      "lignes": 119,
+      "questions_distinctes": 119,
+      "questions_oui_distinctes": 27,
+      "alerte": null
+    },
+    "haiku": {
+      "lignes": 75,
+      "questions_distinctes": 75,
+      "questions_oui_distinctes": 15,
+      "alerte": null
+    }
+  }
+}
