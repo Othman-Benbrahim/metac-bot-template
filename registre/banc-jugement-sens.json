@@ -1,0 +1,80 @@
+{
+ "modele": "BAAI/bge-small-en-v1.5",
+ "questions": 3651,
+ "confirmation_2026": {
+  "n": 1861,
+  "perte_R1": 0.6924,
+  "perte_S_mots": 0.6453,
+  "perte_SE_sens": 0.659,
+  "ecart_moyen": 0.0136,
+  "intervalle": [
+   -0.0218,
+   0.0509
+  ],
+  "verdict": "non tranché"
+ },
+ "replique_2025": {
+  "n": 1790,
+  "perte_R1": 0.3941,
+  "perte_S_mots": 0.3867,
+  "perte_SE_sens": 0.4021,
+  "ecart_moyen": 0.0154,
+  "intervalle": [
+   0.0046,
+   0.0272
+  ],
+  "verdict": "sens moins bon"
+ },
+ "par_source_2026": {
+  "metaculus": {
+   "n": 404,
+   "perte_R1": 0.4651,
+   "perte_S_mots": 0.4548,
+   "perte_SE_sens": 0.4815,
+   "ecart_moyen": 0.0267,
+   "intervalle": [
+    -0.0099,
+    0.0689
+   ],
+   "verdict": "non tranché"
+  },
+  "manifold": {
+   "n": 439,
+   "perte_R1": 0.708,
+   "perte_S_mots": 0.6799,
+   "perte_SE_sens": 0.7684,
+   "ecart_moyen": 0.0885,
+   "intervalle": [
+    0.0263,
+    0.1547
+   ],
+   "verdict": "sens moins bon"
+  },
+  "polymarket": {
+   "n": 896,
+   "perte_R1": 0.7867,
+   "perte_S_mots": 0.737,
+   "perte_SE_sens": 0.7077,
+   "ecart_moyen": -0.0294,
+   "intervalle": [
+    -0.0539,
+    -0.0058
+   ],
+   "verdict": "sens meilleur"
+  },
+  "infer": {
+   "n": 122,
+   "perte_R1": 0.696,
+   "perte_S_mots": 0.4781,
+   "perte_SE_sens": 0.4949,
+   "ecart_moyen": 0.0168,
+   "intervalle": [
+    -0.0309,
+    0.0729
+   ],
+   "verdict": "non tranché"
+  }
+ },
+ "note": "perte log, plus bas = mieux ; écart = sens − mots ; aucun modèle génératif",
+ "verdict_final": "sens non retenu"
+}
