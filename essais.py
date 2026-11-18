@@ -192,6 +192,10 @@ ESSAIS = {
                           "objet": "questions de jugement Metaculus : bot standard (A) contre le même passé par l'alphabet "
                                    "en matriochka (M), départ des semblables",
                           "doc": "preenregistrements/jugement-alphabet.md"},
+    "jugement_sens": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+                      "objet": "questions semblables trouvées par le sens (embeddings bge-small) contre par les mots "
+                               "(TF-IDF) ; un seul regard, réplique 2025 exigée",
+                      "doc": "preenregistrements/jugement-sens.md"},
     "avocat_oui": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 150, "statut": "ouvert", "lecteur": "gpt-5-mini",
                    "objet": "M avec un « avocat du OUI » avant le jugement final, contre M refait sur la même recherche",
                    "doc": "preenregistrements/jugement-variantes.md"},
