@@ -53,7 +53,7 @@ class TestsConfiguration(unittest.TestCase):
         ligne = {"bras_poste": "C", "bras": {"C": {"statut": "estime"}}}
         texte, code = ab.bilan([object()], [ligne], True)
         self.assertEqual(code, 0)
-        self.assertIn("bras C posté : 1", texte)
+        self.assertIn("bras C : 1", texte)
         self.assertIn("bras B : 0", texte)
         _, code = ab.bilan([RuntimeError("clé refusée")], [], True)
         self.assertEqual(code, 1)                      # tout a échoué : passage en rouge

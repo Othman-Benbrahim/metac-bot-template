@@ -31,7 +31,7 @@ from pathlib import Path
 from typing import Awaitable, Callable
 import garde_injection as gi
 
-VERSION_BOT = "0.10.252"
+VERSION_BOT = "0.10.253"
 
 DOSSIER_SKILL = Path(os.environ.get("ALPHABET_SKILL_DIR", Path(__file__).parent / "alphabet-situationnel")).resolve()
 MOTEUR = DOSSIER_SKILL / "scripts" / "moteur.py"
@@ -2992,7 +2992,7 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                           recherche_reelle: bool, maintenant: datetime | None = None, publie: bool = True,
                           mode: str | None = None, historique: Historique | None = None,
                           critique: Llm | None = None, essais_A: list[float] | None = None,
-                          negation: dict | None = None) -> Resultat:
+                          negation: dict | None = None, matriochka: dict | None = None) -> Resultat:
     maintenant = maintenant or datetime.now(timezone.utc)
     aujourdhui = maintenant.date().isoformat()
     jours = max(1, (q.resolution - maintenant.date()).days)
@@ -3007,6 +3007,9 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
     except Exception as e:  # 0.1.7 : une erreur de l'alphabet laisse quand même sa ligne au registre (bras A posté)
         c = {"statut": "erreur", "motif": f"{type(e).__name__} : {str(e)[:300]}"}
     poste, p_poste = choisir_bras(c, p_A)
+    if matriochka is not None:   # 0.10.253 : bras M (bras_m.py, décision d'auteur du 2026-11-18)
+        import bras_m
+        poste, p_poste = bras_m.choisir_m(poste, p_poste, methode_B(c), matriochka)
     vue = c.get("vue") or {}
     corr = correction_retro()
     modeles = modeles_actifs()
@@ -3045,8 +3048,17 @@ async def prevoir_binaire(q: Question, recherche: str, p_A: float, a_raison: str
                             "correction": ({k: corr.get(k) for k in ("decalage_logit", "n", "calcule_le")}
                                            if corr and c.get("p_C") is not None else None)}},
              "bras_poste": poste, "p_poste": p_poste,
+             **({"bras_M": matriochka} if matriochka is not None else {}),
              "aiguillage": aiguillage_ombre(q.titre, q.criteres, c, p_A)}     # 0.10.118 : en ombre
-    texte = commentaire(q, p_A, a_raison, c, poste)
+    if poste == "M":
+        import bras_m
+        texte = bras_m.commentaire_m(p_A, matriochka, a_raison)
+    else:
+        texte = commentaire(q, p_A, a_raison, c, poste)
+        if matriochka and matriochka.get("statut") == "estime":   # les cartes restent visibles même non postées
+            import bras_m
+            texte += (f"\n\nArm M (alphabet as nested simple situations), computed but NOT posted: {matriochka['p']:.3f}.\n"
+                      + bras_m.texte_cartes(matriochka))
     if not publie:  # 0.2.0 (audit, B5) : un passage à blanc ne prétend pas avoir posté
         texte = texte.replace("Posted arm:", "Arm selected (dry run, not posted):", 1)
     # 0.5.1 : le commentaire envoyé est scellé avec la prévision (identifiant de question, bras, texte).

@@ -297,6 +297,13 @@ class AlphabetBot(FallTemplateBot2026):
                         contexte=question.background_info or "", criteres=question.resolution_criteria or "",
                         precisions=question.fine_print or "",
                         resolution=fin.astimezone(timezone.utc).date())
+        # 0.10.253 (décision d'auteur du 2026-11-18) : bras M, l'alphabet en matriochka ; posté selon bras_m.choisir_m.
+        try:
+            import bras_m
+            matriochka = await bras_m.prevoir_m(self._llm, q.titre, q.criteres, q.contexte, q.resolution, research,
+                                                datetime.now(timezone.utc).date())
+        except Exception as e:  # M qui échoue ne bloque rien : on retombe sur la règle précédente
+            matriochka = {"statut": "erreur", "motif": f"{type(e).__name__}: {e}"[:300]}
         try:
             r = await ap.prevoir_binaire(q, research, a.prediction_value, a.reasoning, self._llm, self._chercher,
                                          self._recherche_reelle(), publie=bool(self.publish_reports_to_metaculus),
@@ -304,7 +311,7 @@ class AlphabetBot(FallTemplateBot2026):
                                          historique=None if os.environ.get("ALPHABET_HISTORIQUE") == "0"
                                          else self._historique,
                                          critique=self._critique if os.environ.get("ALPHABET_CONTRADICTEUR") else None,
-                                         essais_A=essais_A or None, negation=negation)
+                                         essais_A=essais_A or None, negation=negation, matriochka=matriochka)
         except Exception as e:
             # 0.8.0 (audit M-10) : les erreurs de l'alphabet sont déjà journalisées par prevoir_binaire (statut
             # « erreur », bras A posté). Une exception qui arrive ici veut dire que la ligne n'a PAS été écrite :
@@ -509,7 +516,7 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dic
     """Bilan lisible du passage et code de sortie : 1 si des questions ont été trouvées mais rien n'a été prévu."""
     ok = [r for r in rapports if not isinstance(r, BaseException)]
     ko = [r for r in rapports if isinstance(r, BaseException)]
-    bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in ("A", "B", "C", "AB")}
+    bras = {b: sum(x.get("bras_poste") == b for x in nouvelles) for b in ("A", "B", "C", "AB", "M")}
     statuts, motifs = {}, {}
     for x in nouvelles:
         s = x["bras"]["C"].get("statut")
@@ -521,7 +528,7 @@ def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dic
         "BILAN DU PASSAGE",
         f"  questions traitées : {len(rapports)}  (prévues : {len(ok)}, en échec : {len(ko)})",
         f"  {'postées sur Metaculus' if publier else 'NON postées (--sans-publier)'} : {len(ok)}",
-        f"  questions binaires journalisées : {len(nouvelles)}  (bras C posté : {bras['C']}, bras B : {bras['B']}, bras A : {bras['A']})",
+        f"  questions binaires journalisées : {len(nouvelles)}  (bras M posté : {bras['M']}, bras C : {bras['C']}, bras B : {bras['B']}, bras A : {bras['A']})",
         f"  statuts de l'alphabet : {statuts or '—'}",
         f"  motifs de rejet des candidates : {motifs or '—'}",
         f"  autres questions journalisées (bras A seul) : {len(autres or [])}",

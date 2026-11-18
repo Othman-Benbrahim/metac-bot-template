@@ -509,7 +509,7 @@ class Tests(unittest.TestCase):
             s = sr.scorer(reg, issues)
             self.assertEqual(s["resolues"], 3)
             self.assertEqual(s["apparie_ABC"]["n"], 1)               # seule la ligne aux trois bras est appariée
-            self.assertEqual(s["bras_poste"], {"A": 1, "B": 1, "C": 1, "AB": 0})
+            self.assertEqual(s["bras_poste"], {"A": 1, "B": 1, "C": 1, "AB": 0, "M": 0})
             self.assertEqual(s["bras"]["B"]["n"], 2)
             self.assertIn("C_noisy_or", s["C_noisy_or_sur_C"]["verdict"])
             self.assertIn("C_tempere", s["C_tempere_sur_C"]["verdict"])        # 0.10.5 (§35)

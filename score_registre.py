@@ -1409,6 +1409,10 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                 "score_reference_metaculus": sum(score_reference(p, y) for p, y in paires) / n,
                 "brier": sum(brier(p, y) for p, y in paires) / n}
 
+    import bras_m   # 0.10.253 : règle d'arrêt du bras M posté (preenregistrements/m-officiel.md)
+    arret_m = bras_m.regle_arret([(x["bras_M"]["p"], x["bras"]["A"]["p"], issues[x["question_id"]]) for x in resolues
+                                  if x.get("bras_poste") == "M" and (x.get("bras_M") or {}).get("p") is not None
+                                  and x["bras"]["A"].get("p") is not None])
     comp = None
     if apparies:
         comp = {"n": len(apparies), "biais_C": biais_C(apparies),
@@ -1560,7 +1564,8 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
             "motifs_rejet": {"compte": motifs,
                              "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; "
                                         "contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"},
-            "bras_poste": {b: sum(x["bras_poste"] == b for x in questions) for b in ("A", "B", "C", "AB")}}
+            "bras_poste": {b: sum(x["bras_poste"] == b for x in questions) for b in ("A", "B", "C", "AB", "M")},
+            "regle_arret_M": arret_m}
 
 
 if __name__ == "__main__":
