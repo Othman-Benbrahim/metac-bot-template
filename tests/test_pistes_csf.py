@@ -5,6 +5,7 @@ os.environ["ALPHABET_REGISTRE"] = tempfile.mkdtemp(prefix="registre-test-")  # r
 os.environ["ALPHABET_TESTS"] = "1"
 
 import unittest
+from pathlib import Path
 
 import banc_attention_gdelt as ba
 import banc_credibilite as bc
@@ -133,6 +134,32 @@ class Couverture(unittest.TestCase):
         self.assertTrue(cn.calculer(j, trop)["verdict"].startswith("fourchettes trop étroites"))
         bien = [{"question_id": str(i), "issue": str(10 + 2 * i)} for i in range(40)]
         self.assertTrue(cn.calculer(j, bien)["verdict"].startswith("pas de signal"))
+
+
+class Capture(unittest.TestCase):
+    def test_capture_ecrit_metadonnees_et_texte_sans_lever(self):
+        import json
+        import tempfile
+        from types import SimpleNamespace
+
+        import alphabet_pipeline as ap
+        import capture_recherche as cr
+        cr.DOSSIER = Path(tempfile.mkdtemp())
+        q = SimpleNamespace(id_of_question=123, id_of_post=None, page_url="https://www.metaculus.com/questions/1/",
+                            scheduled_resolution_time=None, close_time=None)
+        nom = cr.capturer(q, "[moteur : exa2]\n[2026-11-01] Titre — https://exemple.org/a\ntexte")
+        self.assertTrue((cr.DOSSIER / nom).exists())
+        ligne = json.loads((ap.registre_ecrivable() / "capture-tournoi.jsonl").read_text().splitlines()[-1])
+        self.assertEqual(ligne["question_id"], "123")
+        self.assertEqual(ligne["trace"]["moteur"], "exa2")
+        self.assertNotIn("texte", json.dumps(ligne))                    # le texte n'entre jamais dans le dépôt
+
+    def test_fuite_consigne(self):
+        import banc_fuite_recherche as bf
+        c = bf.consigne("Will X?", "2026-03-01", 1, "texte de recherche")
+        self.assertIn("OUI", c)
+        self.assertIn("2026-03-01", c)
+        self.assertEqual(bf.resumer([])["lignes_lues"], 0)
 
 
 class FiltreAzure(unittest.TestCase):

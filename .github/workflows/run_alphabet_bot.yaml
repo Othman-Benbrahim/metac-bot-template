@@ -52,6 +52,12 @@ jobs:
           METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
           GCP_PROJET: ${{ vars.GCP_PROJET }}
+      - name: Restaurer les recherches capturées (0.10.296)
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/recherche-tournoi
+          key: recherche-tournoi-${{ github.run_id }}
+          restore-keys: recherche-tournoi-
       - name: Prévoir
         # 0.9.6 : un vrai blocage s'arrête ici, et l'étape « Enregistrer le registre » (if: always()) garde ce qui a été
         # écrit. Un passage de test complet (exploratoire, non binaires) prend 30 à 50 minutes : ne pas l'annuler.
@@ -111,6 +117,12 @@ jobs:
           # 0.10.33 : budget en dollars depuis une date (vide ou 0 = aucun) ; coûts dans registre/couts.jsonl
           ALPHABET_BUDGET_USD: ${{ vars.ALPHABET_BUDGET_USD }}
           ALPHABET_BUDGET_DEPUIS: ${{ vars.ALPHABET_BUDGET_DEPUIS }}
+      - name: Garder les recherches capturées (0.10.296 ; texte jamais publié dans le dépôt)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: cache/recherche-tournoi
+          key: recherche-tournoi-${{ github.run_id }}
       - name: Enregistrer le registre
         if: always()
         run: |

@@ -117,6 +117,8 @@ class AlphabetBot(FallTemplateBot2026):
             print(f"::warning::Disjoncteur de recherche : {self._n_vides} recherches vides sur {self._n_recherches} ; "
                   "plus aucune question n'est traitée dans ce passage (reprise au suivant).")
             raise RuntimeError("disjoncteur de recherche déclenché")
+        import capture_recherche                 # 0.10.296 : capture en direct (ForecastGym) ; ne change rien au posté
+        capture_recherche.capturer(question, texte)
         return texte
 
     async def _run_research_brut(self, question) -> str:
