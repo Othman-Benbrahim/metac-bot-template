@@ -22,3 +22,13 @@ par plateforme, et sur les seules questions Metaculus.
 ## Attendu (Claude)
 Petit gain ou rien : les doublons ne touchent que les questions qui ont des séries ; la variante peut aussi perdre, si la
 répétition d'une série porte une information réelle (une série qui finit toujours « non »).
+
+## Réplication sur les séries (ajout du 2026-11-18, 4 h 08, AVANT le calcul ; décision d'auteur, 4 h 06)
+Premier passage (2026) : non tranché de justesse (−0,015, [−0,034 ; +0,001]), gain surtout sur Polymarket et INFER.
+Choisir ces plateformes APRÈS avoir vu le résultat serait un choix a posteriori ; on le soumet donc à des données qui
+n'ont jamais servi à cette comparaison : les questions des jeux de 2025 (cohorte complète).
+- Questions : Polymarket et INFER seulement, jeux du 2025-01-01 au 2025-12-31.
+- Comparaison : p_SD contre p_S (mêmes calculs qu'au premier passage), bootstrap par question, risque
+  `es.risque_corrige(1)` ; « sans doublons meilleure sur les séries » si la borne haute < 0.
+- Si c'est confirmé : la variante devient le départ pour ces deux plateformes seulement (décision d'auteur datée) ;
+  sinon, le gain de 2026 est tenu pour du hasard.
