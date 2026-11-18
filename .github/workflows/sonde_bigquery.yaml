@@ -1,0 +1,37 @@
+name: "Sonde BigQuery GDELT (essai à blanc, gratuit)"
+
+# 0.10.276 : mesure ce que liraient nos requêtes, sans rien exécuter ni consommer.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sonde:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - name: Sonde
+        run: uv run --no-project --with "google-cloud-bigquery==3.27.0" python -u sonde_bigquery.py
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJET: ${{ vars.GCP_PROJET }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/sonde-bigquery.json ]; then git add registre/sonde-bigquery.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : sonde BigQuery du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
