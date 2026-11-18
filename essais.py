@@ -210,7 +210,12 @@ ESSAIS = {
                                     "(run 44358972727)",
                          "objet": "titres GDELT (BigQuery) ajoutés à la recherche de M, contre la recherche seule",
                          "doc": "preenregistrements/gdelt-complement.md"},
-    "abstention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "abstention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+                   "verdict": "abstention ADOPTABLE selon la règle préenregistrée (le modèle aveugle ne bat pas les "
+                              "semblables), mais sans preuve dans un sens ni dans l'autre : 20 lignes pour 11 questions "
+                              "distinctes, 3 oui ; M aveugle 0,382 contre semblables 0,411 (écart −0,028, intervalle "
+                              "corrigé [−0,149 ; +0,116]). Reste désactivée (ALPHABET_ABSTENTION) : rien ne change côté "
+                              "Metaculus avant le tournoi (décision du 2026-11-18, 19 h 40) (run 44384289376)",
                    "objet": "sans recherche, M aveugle contre taux des semblables ; abstention adoptée sauf si le "
                             "modèle aveugle gagne (intervalle 90 % sous zéro)",
                    "doc": "preenregistrements/abstention.md"},
