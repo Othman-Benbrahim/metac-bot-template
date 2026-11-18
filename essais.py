@@ -222,11 +222,13 @@ ESSAIS = {
                      "objet": "taux de base corrigé par la classe « la question nomme un acteur » contre R1, questions "
                               "de 2025 (idée née des données de 2026)",
                      "doc": "preenregistrements/acteur-nomme.md"},
-    "tendance_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "tendance_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+                           "verdict": "non adopté : 119 questions distinctes (87 avec articles), M ajusté 0,4405 contre M 0,4473, écart −0,007, intervalle corrigé [−0,050 ; +0,036] ; signal faible et dans le sens attendu (rang tendance / issue 0,18 ; β appris sur tout 0,55 ; ratés 15 → 13) ; à refaire quand plus de questions résolues auront leurs comptes (run 44373600462)",
                            "objet": "M ajusté par la tendance de l'attention GDELT (10 derniers jours contre les 80 "
                                     "précédents), contre M seul ; aucun appel à un modèle",
                            "doc": "preenregistrements/tendance-attention.md"},
-    "sursauts_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "sursauts_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+                           "verdict": "non adopté : M éloigné des extrêmes 0,4521 contre M 0,4473, écart +0,005, intervalle corrigé [+0,002 ; +0,008] entièrement AU-DESSUS de zéro (pire) ; λ appris sur tout 0,05 (règle presque inutilisée) ; rang sursaut / issue 0,06 (brut 0,05), 25 pics isolés retirés sur 13 questions (run 44373600462)",
                            "objet": "M éloigné des extrêmes quand l'attention GDELT arrive en rafales (indice de "
                                     "Goh-Barabási), contre M seul ; aucun appel à un modèle",
                            "doc": "preenregistrements/sursauts-attention.md"},
