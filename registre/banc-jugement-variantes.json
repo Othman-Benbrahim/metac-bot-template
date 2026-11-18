@@ -1,5 +1,5 @@
 {
-  "version_bot": "0.10.267",
+  "version_bot": "0.10.273",
   "n_lignes": 150,
   "note": "perte log, plus bas = mieux",
   "gpt_avocat_oui": {
@@ -624,6 +624,69 @@
         "redondante": false
       }
     ],
-    "premiere_composante": 0.606
+    "premiere_composante": 0.606,
+    "contributions_ajustees": {
+      "n": 75,
+      "oui": 15,
+      "frein_ridge": 5.0,
+      "cartes": {
+        "tendance": {
+          "apport": 0.077,
+          "intervalle_90": [
+            -0.213,
+            0.463
+          ],
+          "lecture": "indécis"
+        },
+        "engagements": {
+          "apport": 0.294,
+          "intervalle_90": [
+            -0.044,
+            0.622
+          ],
+          "lecture": "indécis"
+        },
+        "decideurs": {
+          "apport": 0.013,
+          "intervalle_90": [
+            -0.278,
+            0.324
+          ],
+          "lecture": "indécis"
+        },
+        "declencheur": {
+          "apport": 0.355,
+          "intervalle_90": [
+            0.041,
+            0.667
+          ],
+          "lecture": "apport propre positif"
+        },
+        "freins": {
+          "apport": 0.049,
+          "intervalle_90": [
+            -0.277,
+            0.305
+          ],
+          "lecture": "indécis"
+        },
+        "duree": {
+          "apport": 0.116,
+          "intervalle_90": [
+            -0.131,
+            0.411
+          ],
+          "lecture": "indécis"
+        },
+        "proportion": {
+          "apport": 0.34,
+          "intervalle_90": [
+            0.059,
+            0.648
+          ],
+          "lecture": "apport propre positif"
+        }
+      }
+    }
   }
 }

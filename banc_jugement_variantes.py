@@ -166,7 +166,7 @@ def resumer(ls: list[dict]) -> dict:
                           for k in ("p_M_refait", "p_M_avocat", "p_M_neutre")}
     out["oui_mis_bas"]["n_oui"] = len(oui)
     notes_h = [{"question_id": x["question_id"], "issue": x["issue"], "forme": x.get("forme", "autre"),
-                "notes": x["haiku"]["notes"]}
+                "p_B": x.get("p_B"), "notes": x["haiku"]["notes"]}
                for x in ls if (x.get("haiku") or {}).get("notes") and not x["haiku"].get("exclue")]
     if len(notes_h) >= 30:
         out["cartes_haiku"] = ps.examiner(notes_h)

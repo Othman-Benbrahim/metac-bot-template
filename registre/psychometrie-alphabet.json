@@ -468,5 +468,68 @@
       "redondante": false
     }
   ],
-  "premiere_composante": 0.373
+  "premiere_composante": 0.373,
+  "contributions_ajustees": {
+    "n": 119,
+    "oui": 27,
+    "frein_ridge": 5.0,
+    "cartes": {
+      "tendance": {
+        "apport": 0.288,
+        "intervalle_90": [
+          -0.035,
+          0.651
+        ],
+        "lecture": "indécis"
+      },
+      "engagements": {
+        "apport": 0.02,
+        "intervalle_90": [
+          -0.255,
+          0.352
+        ],
+        "lecture": "indécis"
+      },
+      "decideurs": {
+        "apport": 0.192,
+        "intervalle_90": [
+          -0.133,
+          0.529
+        ],
+        "lecture": "indécis"
+      },
+      "declencheur": {
+        "apport": 0.287,
+        "intervalle_90": [
+          -0.062,
+          0.577
+        ],
+        "lecture": "indécis"
+      },
+      "freins": {
+        "apport": -0.149,
+        "intervalle_90": [
+          -0.508,
+          0.202
+        ],
+        "lecture": "indécis"
+      },
+      "duree": {
+        "apport": 0.063,
+        "intervalle_90": [
+          -0.253,
+          0.442
+        ],
+        "lecture": "indécis"
+      },
+      "proportion": {
+        "apport": 0.359,
+        "intervalle_90": [
+          0.045,
+          0.715
+        ],
+        "lecture": "apport propre positif"
+      }
+    }
+  }
 }

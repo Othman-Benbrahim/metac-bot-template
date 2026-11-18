@@ -147,6 +147,43 @@ def une_par_question(xs: list[dict]) -> list[dict]:
     return list(vu.values())
 
 
+def contributions_ajustees(xs: list[dict], l2: float = 5.0, tirages: int = 500, graine: int = 0) -> dict | None:
+    """0.10.273 (décision d'auteur du 2026-11-18, 15 h 58, d'après l'analyse « plus/minus ajusté » du basket, RAPM) :
+    l'apport PROPRE de chaque carte, toutes les cartes présentes ensemble (elles sont notées ensemble et se mêlent,
+    comme des coéquipiers), en partant du taux de départ (logit de p_B), régression logistique avec frein ridge.
+    Intervalle 90 % par rééchantillonnage des questions. Descriptif : un apport ajusté n'est pas une cause."""
+    import math
+    import random
+    ok = [x for x in xs if x.get("p_B") is not None and x.get("issue") in (0, 1)
+          and all(c in (x.get("notes") or {}) for c in CARTES)]
+    if len(ok) < 30:
+        return None
+    note = lambda x, c: (x["notes"][c]["note"] if isinstance(x["notes"][c], dict) else x["notes"][c]) - 2.5
+    lg = lambda p: math.log(min(.99, max(.01, p)) / (1 - min(.99, max(.01, p))))
+    X = [[1.0, lg(float(x["p_B"]))] + [note(x, c) for c in CARTES] for x in ok]
+    y = [float(x["issue"]) for x in ok]
+
+    def ajuster(ix):
+        import numpy as np
+        A, b = np.array([X[i] for i in ix]), np.array([y[i] for i in ix])
+        w, R = np.zeros(A.shape[1]), np.diag([0.0, 0.0] + [l2] * (A.shape[1] - 2))
+        for _ in range(60):
+            p = 1 / (1 + np.exp(-A @ w))
+            w -= np.linalg.solve(A.T @ (A * (p * (1 - p))[:, None]) + R + 1e-6 * np.eye(len(w)), A.T @ (p - b) + R @ w)
+        return w
+    w = ajuster(range(len(ok)))
+    rnd = random.Random(graine)
+    boots = [ajuster([rnd.randrange(len(ok)) for _ in ok]) for _ in range(tirages)]
+    out = {"n": len(ok), "oui": int(sum(y)), "frein_ridge": l2, "cartes": {}}
+    for j, c in enumerate(CARTES):
+        v = sorted(float(b[j + 2]) for b in boots)
+        bas, haut = v[int(0.05 * len(v))], v[int(0.95 * len(v)) - 1]
+        out["cartes"][c] = {"apport": round(float(w[j + 2]), 3), "intervalle_90": [round(bas, 3), round(haut, 3)],
+                            "lecture": "apport propre positif" if bas > 0 else "apport propre négatif" if haut < 0
+                            else "indécis"}
+    return out
+
+
 def examiner(xs: list[dict], fiab: list[dict] | None = None) -> dict:
     n_lignes = len(xs)
     xs = une_par_question(xs)
@@ -167,6 +204,7 @@ def examiner(xs: list[dict], fiab: list[dict] | None = None) -> dict:
            "seuil_par_type": round(seuil, 4), "statuts": statuts,
            "redondance": sorted(red, key=lambda r: -r["rho"]),
            "premiere_composante": None if not m else round(premiere_composante(m) or 0, 3)}
+    out["contributions_ajustees"] = contributions_ajustees(xs)      # 0.10.273 : façon RAPM, sur questions distinctes
     if fiab:
         par = {}
         for c in CARTES:
