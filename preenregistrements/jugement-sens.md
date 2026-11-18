@@ -18,3 +18,9 @@ donnent un meilleur taux de départ que des voisines trouvées par les mots comm
   l'écart moyen doit aussi être négatif sur les questions de 2025 (réplique), sans exigence d'intervalle.
 - Retenu en ombre si les deux conditions sont remplies ; sinon non retenu. Adoption : décision datée de l'auteur.
 - Rapporté sans être jugé : écart par source (Metaculus, Manifold, Polymarket, INFER).
+
+## Ajout du 2026-11-18, 12 h 45, après le résultat (run 44294691789), avant tout calcul par source sur 2025
+Question de l'auteur : se servir du sens sur les seules questions Polymarket (seule source gagnante en 2026, −0,029).
+Ce sous-groupe a été trouvé APRÈS coup, parmi quatre sources : il ne vaut que s'il se reproduit. Règle : le sens est
+retenu pour Polymarket si, sur les questions Polymarket de 2025, l'écart est négatif avec un intervalle (risque
+0,05/4, quatre sources regardées) entièrement sous zéro. Sinon, non retenu.

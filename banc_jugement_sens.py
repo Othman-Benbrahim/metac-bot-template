@@ -72,6 +72,10 @@ def resumer(xs: list[dict]) -> dict:
          "replique_2025": comparer(repl, 0.05),
          "par_source_2026": {so: comparer([x for x in conf if x["source"] == so], 0.05) for so in bj.SOURCES
                              if any(x["source"] == so for x in conf)},
+         # 0.10.262 : réplique par source, demandée après coup (Polymarket seul gagnait en 2026) ; décisive pour une
+         # règle « par source » : elle doit se reproduire en 2025, sans quoi c'est un sous-groupe trouvé par chance
+         "par_source_2025": {so: comparer([x for x in repl if x["source"] == so], 0.05 / 4) for so in bj.SOURCES
+                             if any(x["source"] == so for x in repl)},
          "note": "perte log, plus bas = mieux ; écart = sens − mots ; aucun modèle génératif"}
     c, p = r["confirmation_2026"], r["replique_2025"]
     r["verdict_final"] = ("sens retenu en ombre (critère atteint et même sens en 2025)"
