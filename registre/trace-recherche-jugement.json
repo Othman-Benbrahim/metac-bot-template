@@ -1,24 +1,25 @@
 {
   "haiku_dit_connaitre": {
     "questions": 30,
-    "sources_par_question": 3.27,
+    "sources_par_question": 3.37,
     "questions_avec_source_suspecte": 0,
+    "sans_recherche": 0,
     "motifs": {},
     "moteurs": {
-      "exa2": 26,
-      "aucun": 3,
-      "tinyfish": 1
+      "exa2": 27,
+      "tinyfish": 3
     }
   },
   "autres": {
     "questions": 279,
-    "sources_par_question": 2.42,
+    "sources_par_question": 2.53,
     "questions_avec_source_suspecte": 0,
+    "sans_recherche": 40,
     "motifs": {},
     "moteurs": {
-      "exa2": 201,
-      "aucun": 63,
-      "tinyfish": 15
+      "exa2": 220,
+      "panne": 40,
+      "tinyfish": 19
     }
   }
 }
