@@ -35,6 +35,10 @@ def lignes() -> list[dict]:
     return [json.loads(l) for l in FICHIER.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
+def _bic(x: dict) -> bool:
+    return float((x.get("ombre_b_ou") or {}).get("bic_ecart") or 0.0) >= 2.0
+
+
 def resumer(ls: list[dict]) -> dict:
     import audit_b
     import score_registre as sr
@@ -53,6 +57,15 @@ def resumer(ls: list[dict]) -> dict:
            "par_source": {s: {"n": len(v), "B": moy(v, lambda x: x["p_B"]), "B_OU": moy(v, lambda x: x["ombre_b_ou"]["p"])}
                           for s in SOURCES for v in [[x for x in jug if x["source_question"] == s]] if v},
            "critere": sr.critere_ombre_b(jug, "ombre_b_ou", "b_ou", exclure_vus=False),
+           # 0.10.285 : variante AFFICHÉE, non jugée (amendement de b-ou.md) : le rappel seulement si le BIC le préfère
+           # d'au moins 2 points sur l'historique de la série ; sinon B
+           "variante_bic": {"n": len(jug), "rappel_choisi": sum(1 for x in jug if _bic(x)),
+                            "B": moy(jug, lambda x: x["p_B"]), "B_OU": moy(jug, lambda x: x["ombre_b_ou"]["p"]),
+                            "B_OU_si_BIC": moy(jug, lambda x: x["ombre_b_ou"]["p"] if _bic(x) else x["p_B"]),
+                            "par_source": {s: {"n": len(v), "rappel_choisi": sum(1 for x in v if _bic(x)),
+                                               "B": moy(v, lambda x: x["p_B"]),
+                                               "B_OU_si_BIC": moy(v, lambda x: x["ombre_b_ou"]["p"] if _bic(x) else x["p_B"])}
+                                           for s in SOURCES for v in [[x for x in jug if x["source_question"] == s]] if v}},
            "audit_b": audit_b.pour_resume(ls)}
     return out
 

@@ -29,3 +29,11 @@ saisonnières (températures de Météo-France dans DBnomics), que la règle ne 
 Sur une marche aléatoire avec dérive simulée (400 points, dérive +0,1 par pas), φ estimé à 0,99 et P(hausse à 7
 pas) = 0,47 au lieu d'environ 0,6 : l'estimation de φ par moindres carrés est biaisée vers le rappel quand la série
 n'en a pas (biais de Dickey-Fuller). La règle n'est PAS modifiée pour autant ; le banc tranchera.
+
+## Amendement du 2026-11-18, 19 h 30 (avant le premier passage du banc)
+Décision d'auteur (« oui »), à partir d'un post sur l'AIC et le BIC. Variante AFFICHÉE, NON JUGÉE (pas d'essai de
+plus) : pour chaque série, BIC gaussien sur son seul historique (5 ans avant la date) du modèle de rappel (a, b, φ, σ :
+4 paramètres) contre la marche aléatoire avec dérive (Δv = c + e : 2 paramètres), sur les mêmes n points. Le rappel
+n'est utilisé que si son BIC est plus bas d'au moins 2 points ; sinon B. But : corriger série par série le défaut
+noté plus haut (rappel vu à tort sur les séries qui dérivent). Si la variante fait nettement mieux que le rappel
+appliqué partout, un essai propre sera préenregistré ; elle ne peut pas être adoptée sur ce banc.

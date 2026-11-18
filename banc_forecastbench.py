@@ -244,6 +244,14 @@ def b_ou(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | Non
         a, b = float(a), float(b)
     res = v[1:] - (a + b * t + phi * v[:-1])
     sigma = math.sqrt(float(res @ res) / max(1, len(res) - 3))
+    # 0.10.285 (amendement b-ou.md, décision d'auteur du 2026-11-18, 19 h 30) : BIC gaussien, sur l'historique seul,
+    # du modèle de rappel (a, b, φ, σ : 4 paramètres) contre la marche aléatoire avec dérive (Δv = c + e : 2).
+    nb = len(res)
+    dv = v[1:] - v[:-1]
+    rss_m = float(((dv - dv.mean()) ** 2).sum())
+    rss_r = float(res @ res)
+    bic = lambda rss, k_: nb * math.log(max(rss, 1e-300) / nb) + k_ * math.log(nb)
+    bic_ecart = bic(rss_m, 2) - bic(rss_r, 4)        # > 0 : le rappel est préféré
     T = len(v) - 1
     e = float(v[-1])
     for m in range(1, k + 1):
@@ -263,7 +271,7 @@ def b_ou(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | Non
     ecart = e - float(v[-1])
     p_haut = (1.0 if ecart > 0 else 0.0) if var <= 0 else 0.5 * (1 + math.erf(ecart / math.sqrt(2 * var)))
     p = max(0.001, min(0.999, (1 - p_egal) * p_haut))
-    return {"p": p, "phi": round(phi, 4), "pas_jours": pas, "k": k, "ecart_attendu": ecart,
+    return {"p": p, "phi": round(phi, 4), "bic_ecart": round(bic_ecart, 2), "pas_jours": pas, "k": k, "ecart_attendu": ecart,
             "ecart_type": math.sqrt(max(var, 0)), "part_sans_changement": round(p_egal, 4), "points": len(pts)}
 
 

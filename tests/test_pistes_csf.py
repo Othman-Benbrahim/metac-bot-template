@@ -73,6 +73,12 @@ class RetourMoyenne(unittest.TestCase):
         self.assertLess(r["p"], 0.1)
         self.assertTrue(0 <= r["phi"] <= 0.999)
         self.assertIsNone(fb.b_ou(pts[:10], 7, d0))
+        self.assertGreater(r["bic_ecart"], 2)              # rappel réel : le BIC le préfère
+        x, rw = 0.0, []
+        for i in range(400):
+            x = x + 0.1 + random.gauss(0, 1)
+            rw.append({"date": (d0 - timedelta(days=400 - i)).isoformat(), "valeur": x})
+        self.assertLess(fb.b_ou(rw, 7, d0)["bic_ecart"], 2)  # marche avec dérive : B garde la main
 
 
 class Credibilite(unittest.TestCase):
