@@ -32,3 +32,8 @@ n'ont jamais servi à cette comparaison : les questions des jeux de 2025 (cohort
   `es.risque_corrige(1)` ; « sans doublons meilleure sur les séries » si la borne haute < 0.
 - Si c'est confirmé : la variante devient le départ pour ces deux plateformes seulement (décision d'auteur datée) ;
   sinon, le gain de 2026 est tenu pour du hasard.
+
+### Résultat de la réplication (2026-11-18, 4 h 10)
+1 158 questions (Polymarket 1 031, INFER 127 ; 8 % de oui) : semblables 0,306, sans doublons 0,312 ; écart +0,006,
+intervalle corrigé [−0,007 ; +0,014] → **non reproduit** (même sens contraire sur les deux plateformes). Le gain de 2026
+est tenu pour du hasard ; les semblables actuelles restent le départ partout.

@@ -190,7 +190,8 @@ ESSAIS = {
                           "doc": "preenregistrements/jugement-alphabet.md"},
     "jugement_doublons": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 30, "statut": "clos", "clos_le": "2026-11-18",
                           "verdict": "non adopté, de justesse : −0,015, intervalle corrigé [−0,034 ; +0,001] ; gain surtout "
-                                     "sur Polymarket et INFER, rien sur Metaculus (0,455 → 0,452)",
+                                     "sur Polymarket et INFER, rien sur Metaculus (0,455 → 0,452) ; réplication sur Polymarket et INFER, jeux de 2025 : NON reproduite (+0,006, "
+                                     "[−0,007 ; +0,014]) : gain de 2026 tenu pour du hasard",
                           "objet": "questions semblables sans doublons (une voisine par question, cosinus ≤ 0,8 entre "
                                    "voisines) contre les semblables actuelles",
                           "doc": "preenregistrements/jugement-doublons.md"},
