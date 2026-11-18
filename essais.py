@@ -203,14 +203,14 @@ ESSAIS = {
                       "objet": "questions semblables trouvées par le sens (embeddings bge-small) contre par les mots "
                                "(TF-IDF) ; un seul regard, réplique 2025 exigée",
                       "doc": "preenregistrements/jugement-sens.md"},
-    "gdelt_complement": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+    "gdelt_complement": {"resume": ["registre/banc-gdelt-complement.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
                          "verdict": "non retenu : 75 questions distinctes, perte AVEC 0,4735 contre SANS 0,4634, écart "
                                     "+0,010, intervalle corrigé [−0,031 ; +0,056] ; moins de ratés (11 → 8) mais "
                                     "résolution plus faible (0,046 → 0,027) ; les titres restent un relais "
                                     "(run 44358972727)",
                          "objet": "titres GDELT (BigQuery) ajoutés à la recherche de M, contre la recherche seule",
                          "doc": "preenregistrements/gdelt-complement.md"},
-    "abstention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+    "abstention": {"resume": ["registre/banc-abstention.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
                    "verdict": "abstention ADOPTABLE selon la règle préenregistrée (le modèle aveugle ne bat pas les "
                               "semblables), mais sans preuve dans un sens ni dans l'autre : 20 lignes pour 11 questions "
                               "distinctes, 3 oui ; M aveugle 0,382 contre semblables 0,411 (écart −0,028, intervalle "
@@ -223,9 +223,9 @@ ESSAIS = {
              "objet": "B par retour vers la moyenne (Ornstein-Uhlenbeck autour d'une tendance linéaire) contre B, "
                       "questions réelles FRED et DBnomics ; aucun appel à un modèle",
              "doc": "preenregistrements/b-ou.md"},
-    "acteur_nomme": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+    "acteur_nomme": {"resume": ["registre/banc-acteur-nomme.json", "registre/banc-credibilite.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
                      "verdict": "non reproduit : 174 questions de 2025 avec acteur, N 0,463 contre R1 0,443 (PIRE, "
-                                "+0,020, intervalle corrigé [−0,018 ; +0,058]) ; toutes questions de 2025 +0,002. En "
+                                "+0,020, intervalle corrigé [−0,018 ; +0,057]) ; toutes questions de 2025 +0,002. En "
                                 "2025 ces questions se résolvent OUI à 17 % (36 % en 2026) : l'effet de 2026 tenait à "
                                 "la période, pas à l'acteur (run 44374695099)",
                      "objet": "taux de base corrigé par la classe « la question nomme un acteur » contre R1, questions "
@@ -235,7 +235,7 @@ ESSAIS = {
                            "objet": "S ajusté par la tendance de l'attention GDELT, β appris sur Metaculus 2026 et "
                                     "appliqué tel quel aux questions Metaculus d'avant 2026",
                            "doc": "preenregistrements/tendance-metaculus.md"},
-    "tendance_attention_large": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
+    "tendance_attention_large": {"resume": ["registre/banc-tendance-large.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
                                  "clos_le": "2026-11-18",
                                  "verdict": "non adopté : 892 questions distinctes de 2026 (628 avec articles), S ajusté "
                                             "0,6572 contre S 0,6588, écart −0,002, intervalle corrigé [−0,010 ; +0,007] ; "
@@ -245,17 +245,17 @@ ESSAIS = {
                                  "objet": "taux des semblables S ajusté par la tendance de l'attention GDELT, contre S, "
                                           "~890 questions distinctes de 2026 ; aucun appel à un modèle",
                                  "doc": "preenregistrements/tendance-attention-large.md"},
-    "tendance_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+    "tendance_attention": {"resume": ["registre/banc-attention-gdelt.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
                            "verdict": "non adopté : 119 questions distinctes (87 avec articles), M ajusté 0,4405 contre M 0,4473, écart −0,007, intervalle corrigé [−0,050 ; +0,036] ; signal faible et dans le sens attendu (rang tendance / issue 0,18 ; β appris sur tout 0,55 ; ratés 15 → 13) ; à refaire quand plus de questions résolues auront leurs comptes (run 44373600462)",
                            "objet": "M ajusté par la tendance de l'attention GDELT (10 derniers jours contre les 80 "
                                     "précédents), contre M seul ; aucun appel à un modèle",
                            "doc": "preenregistrements/tendance-attention.md"},
-    "sursauts_attention": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
+    "sursauts_attention": {"resume": ["registre/banc-attention-gdelt.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos", "clos_le": "2026-11-18",
                            "verdict": "non adopté : M éloigné des extrêmes 0,4521 contre M 0,4473, écart +0,005, intervalle corrigé [+0,002 ; +0,008] entièrement AU-DESSUS de zéro (pire) ; λ appris sur tout 0,05 (règle presque inutilisée) ; rang sursaut / issue 0,06 (brut 0,05), 25 pics isolés retirés sur 13 questions (run 44373600462)",
                            "objet": "M éloigné des extrêmes quand l'attention GDELT arrive en rafales (indice de "
                                     "Goh-Barabási), contre M seul ; aucun appel à un modèle",
                            "doc": "preenregistrements/sursauts-attention.md"},
-    "credibilite_acteurs": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
+    "credibilite_acteurs": {"resume": ["registre/banc-credibilite.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
                             "clos_le": "2026-11-18",
                             "verdict": "non adopté : critère nominal seulement. 163 questions distinctes de 2026 : C "
                                        "0,736 contre R1 0,818 (écart −0,082, intervalle 90 % [−0,155 ; −0,004], "

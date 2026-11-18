@@ -1,0 +1,12 @@
+Fiches de résultats (0.10.295) : copie, dans le dépôt, des fiches publiées dans le projet claude.ai.
+
+Règle (décision d'auteur du 2026-11-18, 21 h 48) : avant toute publication d'une fiche de résultat,
+1. elle est écrite ici, avec en tête « sources: registre/….json » (et « constantes: 90; 30 » pour les nombres de
+   conception) ;
+2. la partie chiffrée peut être produite par « python controle_chiffres.py --bloc registre/banc-x.json » ;
+3. « python controle_chiffres.py fiches/x.md » doit répondre OK ; un nombre lu dans le journal d'un run s'écrit
+   [journal: …], une estimation [estimation: …], un calcul [calc: a - b = c] (recalculé) ;
+4. la fiche est publiée dans le projet depuis ce fichier, sans recopie.
+Le test tests/test_controle_chiffres.py vérifie toutes les fiches et les verdicts d'essais à chaque envoi : s'il
+échoue après un nouveau passage d'un banc, la fiche ne correspond plus au résultat et doit être mise à jour.
+Une affirmation qualitative (« les refus portent sur la guerre ») cite les données qui l'appuient.
