@@ -286,7 +286,8 @@ def collecter() -> int:
     import politesse
     from urllib.parse import quote
     deja = lire_archives()
-    qs = [x for x in questions() if x["forme"]]
+    import banc_jugement as bj
+    qs = [x for x in questions() if x["forme"] and x["jeu"] >= bj.COUPURE]      # seules les questions jugées
     cles = sorted({(x["forme"]["election"], x["jeu"]) for x in qs} - set(deja))
     print(f"{len(qs)} questions dans la brique ; {len(cles)} couples (élection, date) à archiver.", flush=True)
     ARCHIVES.parent.mkdir(parents=True, exist_ok=True)
@@ -297,7 +298,7 @@ def collecter() -> int:
             if r.status_code == 429:
                 time.sleep(10 * (essai + 1))
                 continue
-            time.sleep(0.5)
+            time.sleep(0.2)
             return r.json() if r.status_code == 200 else {}
         return {}
 
