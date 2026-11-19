@@ -25,6 +25,11 @@
      "id": "chine_maintien",
      "structure": "maintien",
      "statut": "absence"
+    },
+    {
+     "id": "bresil_gouverneurs_senat",
+     "structure": "course",
+     "statut": "source"
     }
    ],
    "abstentions": [
@@ -235,7 +240,13 @@
    "espaces": [
     "amerique_latine"
    ],
-   "regles": [],
+   "regles": [
+    {
+     "id": "bresil_gouverneurs_senat",
+     "structure": "course",
+     "statut": "source"
+    }
+   ],
    "abstentions": [],
    "inconnus": {
     "absence": 5,
@@ -929,8 +940,8 @@
   }
  ],
  "regles": {
-  "source": 31,
-  "absence": 3,
+  "source": 32,
+  "absence": 4,
   "auteur": 2
  },
  "parlements_ipu": {
@@ -957,6 +968,7 @@
   "coups_d_etat_frequence",
   "chefs_d_etat_sortie_irreguliere",
   "second_tour_retournement",
-  "parlements_mode_de_scrutin"
+  "parlements_mode_de_scrutin",
+  "erreur_infranationale_mesuree"
  ]
 }

@@ -444,3 +444,25 @@ regles:
     sources:
       - {titre: "Union interparlementaire, Parline data explorer, export du 2026-11-20 (CC BY-NC-SA), fourni par l'auteur", url: "https://data.ipu.org/fr/data-explorer/", consulte: "2026-11-20"}
     statut: source
+
+  - id: bresil_gouverneurs_senat
+    ecosysteme: "Brésil · élections des États (gouverneur, sénateur)"
+    espace: amerique_latine
+    echelle: {axe: taille, tranche: "État fédéré"}
+    structure: course
+    regle: "Gouverneur : majorité absolue des suffrages valables (50 % + 1) ; sinon second tour entre les deux plus votés. Sénat : majorité simple, le plus voté est élu, pas de second tour."
+    parametres: {gouverneur: {majorite: 50, second_tour: deux_premiers}, senat: majorite_simple}
+    sources:
+      - {titre: "Tribunal régional électoral de São Paulo, Sistema majoritário ou proporcional? Entenda a diferença dos modelos de votação, juin 2026", url: "https://www.tre-sp.jus.br/comunicacao/noticias/2026/Junho/sistema-majoritario-ou-proporcional-entenda-a-diferenca-dos-modelos-de-votacao", consulte: "2026-11-20"}
+    statut: source
+
+  - id: erreur_infranationale_mesuree
+    ecosysteme: "Élections infranationales · erreur des sondages"
+    espace: monde
+    echelle: {axe: taille, tranche: "État fédéré, Land, province, grande ville"}
+    structure: course
+    regle: "Aucune étude publiée relevée ; l'erreur est MESURÉE par erreur_regionale.py (sondages de la dernière semaine contre résultat, pages Wikipédia d'élections passées) pour les États brésiliens, les Länder, les provinces canadiennes, les grandes villes américaines et les collectivités coréennes. Une échelle n'est utilisée qu'à partir de 30 élections mesurées ; le retournement au second tour des gouverneurs brésiliens est mesuré de la même façon."
+    parametres: {}
+    sources: []
+    statut: absence
+    aide: "aucune : la mesure se fait par la collecte erreur_regionale.py (workflow lancé une fois par l'auteur)"

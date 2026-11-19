@@ -1,10 +1,10 @@
 # Socle du programme écosystémique
 
-Règles coutumières : {'source': 31, 'absence': 3, 'auteur': 2} ; valables partout : us_erreur_selon_temps_restant, regimes_fermes_inertie, regimes_fermes_contestation, sondages_erreur_comparee, voix_vers_sieges, presidentielles_mode_de_scrutin, onu_conseil_securite_vote, coups_d_etat_frequence, chefs_d_etat_sortie_irreguliere, second_tour_retournement, parlements_mode_de_scrutin. Briques : seuil (vitesse) valide, course (taille) non tranché.
+Règles coutumières : {'source': 32, 'absence': 4, 'auteur': 2} ; valables partout : us_erreur_selon_temps_restant, regimes_fermes_inertie, regimes_fermes_contestation, sondages_erreur_comparee, voix_vers_sieges, presidentielles_mode_de_scrutin, onu_conseil_securite_vote, coups_d_etat_frequence, chefs_d_etat_sortie_irreguliere, second_tour_retournement, parlements_mode_de_scrutin, erreur_infranationale_mesuree. Briques : seuil (vitesse) valide, course (taille) non tranché.
 
 | Fiche | Espaces des règles | Règles (dont absences) | Inconnus | Natures des traces |
 |---|---|---|---|---|
-| alimentation-mondiale | asie, amerique_latine | 4 (1) | absence 8 | stock 2, flux 6, potentiel 1, gradient 2 |
+| alimentation-mondiale | asie, amerique_latine | 5 (1) | absence 8 | stock 2, flux 6, potentiel 1, gradient 2 |
 | calendriers-echeances | — | 0 (0) | absence 2 | phase 3, gradient 1, potentiel 1 |
 | climat-extremes | — | 0 (0) | absence 6 | gradient 8, stock 3, flux 4 |
 | competitions-culture | — | 0 (0) | absence 7 | — |
@@ -13,7 +13,7 @@ Règles coutumières : {'source': 31, 'absence': 3, 'auteur': 2} ; valables part
 | dette-emergents | — | 0 (0) | absence 6 | potentiel 3, flux 5, phase 1 |
 | eau-moyen-orient | afrique, asie | 10 (2) | absence 10 | gradient 3, flux 3, stock 1 |
 | economie-chinoise | asie | 4 (1) | absence 6, conflictuel 1 | flux 9, phase 3, gradient 3 |
-| elections-amerique-latine | amerique_latine | 0 (0) | absence 5, confusion 1 | potentiel 1, flux 1 |
+| elections-amerique-latine | amerique_latine | 1 (0) | absence 5, confusion 1 | potentiel 1, flux 1 |
 | energie-mondiale | — | 0 (0) | absence 2 | flux 6, stock 1, potentiel 1, gradient 3 |
 | epidemies | — | 0 (0) | absence 6 | gradient 1, flux 2 |
 | foret-et-sols-vivants | — | 0 (0) | absence 13 | — |

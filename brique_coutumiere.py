@@ -57,7 +57,8 @@ PAYS = {"mongolia": "MN", "mongolian": "MN", "kazakhstan": "KZ", "kyrgyz": "KG",
         "polish": "PL", "romania": "RO", "romanian": "RO", "austria": "AT", "austrian": "AT", "indonesia": "ID",
         "indonesian": "ID", "south korea": "KR", "korean": "KR", "taiwan": "TW", "taiwanese": "TW", "philippines": "PH",
         "philippine": "PH", "cameroon": "CM", "tanzania": "TZ", "democratic republic of the congo": "CD", "dr congo": "CD", "mexico": "MX", "mexican": "MX",
-        "venezuela": "VE", "venezuelan": "VE", "sri lanka": "LK"}
+        "venezuela": "VE", "russia": "RU", "russian": "RU", "canada": "CA", "canadian": "CA", "australia": "AU",
+        "australian": "AU", "venezuelan": "VE", "sri lanka": "LK"}
 # région de la règle second_tour_retournement ; TR et l'Asie centrale : rattachement incertain ou trop peu de cas → monde
 REGION = {**dict.fromkeys(["NG", "KE", "SN", "CI", "GH", "ZW", "MZ", "UG"], "afrique"),
           **dict.fromkeys(["BR", "AR", "CO", "CL", "PE"], "amerique_latine"),
@@ -79,14 +80,75 @@ def multiplicateur(jours: float) -> float:
     return float(np.interp(max(jours, 0), xs, ys))
 
 
+ECHELLES = {
+    "bresil_etats": [bs._norm(x) for x in ("Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Federal District",
+                     "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Minas Gerais", "Pará", "Paraíba", "Paraná",
+                     "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande", "Rondônia", "Roraima", "Santa Catarina",
+                     "São Paulo", "Sergipe", "Tocantins")],
+    "allemagne_lander": ["baden", "bavaria", "berlin state", "brandenburg", "bremen", "hamburg", "hesse", "lower saxony",
+                         "mecklenburg", "north rhine", "rhineland", "saarland", "saxony", "sachsen", "schleswig",
+                         "thuringia"],
+    "canada_provinces": ["alberta", "british columbia", "manitoba", "new brunswick", "newfoundland", "nova scotia",
+                         "ontario", "prince edward", "quebec", "saskatchewan"],
+}
+
+
+def _mesure_infra(echelle: str) -> dict | None:
+    f = Path("registre") / "erreur-regionale" / "mesures.json"
+    if not f.exists():
+        return None
+    return (json.loads(f.read_text(encoding="utf-8")) or {}).get(echelle)
+
+
+def echelle_infranationale(e: str, f: dict) -> dict | None:
+    """Élections infranationales : erreur MESURÉE (erreur_regionale.py) si l'échelle réunit 30 élections, sinon
+    abstention. None = pas une élection infranationale reconnue."""
+    titre = (f.get("titre") or "").lower()
+    if any(w in e for w in ("mayor", "mayoral", "city council", "municipal")):
+        import erreur_regionale as er
+        villes_us = {bs._norm(v) for v in er.VILLES} | {"nyc"}
+        villes_kr = {bs._norm(v) for v in er.COREE_VILLES}
+        echelle = ("etats_unis_villes" if any(s in e for s in ETATS_US | villes_us) or "nyc" in titre
+                   else "coree_collectivites" if any(v in e for v in villes_kr) else None)
+        if not echelle:
+            return {"motif": "élection municipale hors États-Unis : erreur non mesurée"}
+    elif ("gubernatorial" in e or "governor" in e or "senate" in e) and any(k in e for k in ECHELLES["bresil_etats"]) \
+            and not any(s in e for s in ETATS_US):
+        echelle = "bresil_etats"
+    elif "gubernatorial" in e and any(bs._norm(p_) in e for p_ in __import__("erreur_regionale").COREE_PROVINCES):
+        echelle = "coree_collectivites"
+    elif any(k in e for k in ECHELLES["allemagne_lander"]) and ("state" in e or "parliament" in e):
+        echelle = "allemagne_lander"
+    elif any(k in e for k in ECHELLES["canada_provinces"]) and "general election" in e:
+        echelle = "canada_provinces"
+    else:
+        return None
+    m = _mesure_infra(echelle)
+    if not m or m.get("statut") != "mesurable":
+        return {"motif": f"élection infranationale ({echelle}) : erreur des sondages non mesurée ou moins de 30 élections"}
+    if "seats" in titre or "largest party" in titre:
+        return {"motif": f"sièges à l'échelle infranationale ({echelle}) : voix → sièges mesuré seulement au niveau national"}
+    r = {"sigma": m["sigma"], "fenetre": 7, "type": echelle,
+         "regles": ["erreur_infranationale_mesuree", "us_erreur_selon_temps_restant"]}
+    if echelle == "bresil_etats" and "senate" not in e and f["evenement"] == "gagne":
+        if m.get("taux_retournement") is None:
+            return {"motif": "gouverneur brésilien : retournement au second tour non mesuré (moins de 30 seconds tours)"}
+        return {**r, "mode": "deux_tours", "retournement": m["taux_retournement"],
+                "regles": r["regles"] + ["bresil_gouverneurs_senat"]}
+    if echelle == "bresil_etats":
+        r["regles"].append("bresil_gouverneurs_senat")
+    return {**r, "mode": "un_tour"}
+
+
 def rattacher(f: dict) -> dict:
     """Forme de la question → règles applicables, ou abstention avec la règle qui manque."""
     e = bs._norm(f["election"])
     us = (any(s in e for s in ETATS_US) or re.search(r"\bus\b", e) is not None
           or any(w in e for w in ("u.s.", "united states", "congress")))
     pays = next((v for k, v in sorted(PAYS.items(), key=lambda kv: -len(kv[0])) if k in e), None)
-    if any(w in e for w in ("mayor", "mayoral", "city council", "municipal")):
-        return {"motif": "élection municipale : aucune règle d'erreur des sondages à cette échelle"}
+    infra = echelle_infranationale(e, f)
+    if infra is not None:
+        return infra
     if "primary" in e or "nomination" in e or f["classe"] == "S3":
         if us and "president" not in e:
             return {"motif": "primaire d'État américaine : us_erreur_primaires_d_etat (absence)"}

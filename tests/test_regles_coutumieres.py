@@ -73,3 +73,14 @@ def test_voix_sieges():
     assert p_net > 0.95 and 0.4 < p_serre < 0.7
     assert "rang autre" in bc.rattacher({**f, "rang": 2})["motif"]
     assert not any(r["id"] == "europe_formation_gouvernement" and r["statut"] == "absence" for r in bc.rc.regles())
+
+
+# 0.10.376 : échelles infranationales
+def test_infranational():
+    import brique_coutumiere as bc
+    f = {"election": "2026 Bahia gubernatorial election", "evenement": "gagne", "rang": 1, "classe": "S1", "titre": ""}
+    r = bc.echelle_infranationale(bc.bs._norm(f["election"]), f)
+    assert r is not None and ("bresil_etats" in r.get("motif", "") or r.get("type") == "bresil_etats")
+    g = {**f, "election": "2026 Seoul Mayoral Election"}
+    assert "coree" in str(bc.echelle_infranationale(bc.bs._norm(g["election"]), g))
+    assert bc.echelle_infranationale("2026 french presidential election", f) is None
