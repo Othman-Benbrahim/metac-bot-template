@@ -235,6 +235,14 @@ ESSAIS = {
                            "objet": "S ajusté par la tendance des pages vues Wikipédia des entités de la question, "
                                     "contre S, ~890 questions distinctes de 2026 ; aucun appel à un modèle",
                            "doc": "preenregistrements/wikipedia.md"},
+    "graphe_questions": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 1, "statut": "ouvert",
+                         "objet": "S corrigé, derrière une porte apprise, par les erreurs récentes de S sur les questions "
+                                  "qui partagent une entité (idée GraFT) ; aucun appel à un modèle",
+                         "doc": "preenregistrements/graphe-questions.md"},
+    "alphabet_correction_finale": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 1, "statut": "ouvert",
+                                   "objet": "A corrigé après coup par le score des 7 notes de cartes, derrière une porte "
+                                            "apprise, contre A (idée GraFT) ; aucun nouvel appel",
+                                   "doc": "preenregistrements/alphabet-correction-finale.md"},
     "tendance_metaculus": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
                            "objet": "S ajusté par la tendance de l'attention GDELT, β appris sur Metaculus 2026 et "
                                     "appliqué tel quel aux questions Metaculus d'avant 2026",

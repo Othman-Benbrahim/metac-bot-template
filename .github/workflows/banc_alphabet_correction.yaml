@@ -1,0 +1,39 @@
+name: "Banc de l alphabet en correction finale (GraFT)"
+
+# 0.10.305 : sans appel à un modèle, sans clé (idée GraFT)
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: "Banc de l alphabet en correction finale (GraFT)"
+        run: uv run python -u banc_alphabet_correction.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/banc-alphabet-correction.json ]; then git add registre/banc-alphabet-correction.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc-alphabet-correction du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
