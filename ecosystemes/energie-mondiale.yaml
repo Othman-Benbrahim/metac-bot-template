@@ -31,8 +31,8 @@ compartiments:
   acteurs:
   - {nom: réserve stratégique américaine, taille: macro, espace: pays, vitesse: semaines, organisation: statut, facette: collectif}
   traces:
-  - {source: stocks commerciaux de brut américains (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:WCESTUS1'}
-  - {source: réserve stratégique américaine (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:WCSSTUS1'}
+  - {source: "stocks commerciaux de brut américains (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)", statut: "a_brancher"}
+  - {source: "réserve stratégique américaine (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)", statut: "a_brancher"}
 - id: transport
   nom: Transport
   organisation: technique

@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'ponts_en_attente': 8, 'relations_a_verifier': 366, 'relations_avec_intensite': 172, 'compartiments_sans_trace_collectee': 121}
+Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'ponts_en_attente': 8, 'relations_a_verifier': 366, 'relations_avec_intensite': 172, 'compartiments_sans_trace_collectee': 122}
 
 ## Thèmes à écrire (ponts en attente)
 - **infrastructures-critiques** (2 pont(s)) : climat-extremes:exposes → infrastructures-critiques:reseaux (réseaux électriques et de transport face aux extrêmes) ; eau-moyen-orient:dessalement → infrastructures-critiques:reseaux (les usines de dessalement, infrastructures vulnérables)
@@ -62,6 +62,7 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - economie-chinoise:epizooties : déclarations publiques à l'Organisation mondiale de la santé animale (WAHIS) (a_brancher)
 - economie-chinoise:sols_chimie : statistiques agricoles publiques (a_brancher)
 - energie-mondiale:production : communiqués des réunions de l'OPEP+ (a_brancher), nombre de forages actifs (publication hebdomadaire publique) (a_brancher)
+- energie-mondiale:stocks : stocks commerciaux de brut américains (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu) (a_brancher), réserve stratégique américaine (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu) (a_brancher)
 - energie-mondiale:chimie_combustion : émissions mondiales de CO2 (Global Carbon Project, données publiques) (a_brancher)
 - energie-mondiale:nucleaire_civil : base publique des réacteurs de l'AIEA (PRIS) (a_brancher)
 - epidemies:agent : bases publiques de séquences génétiques et bulletins de surveillance des variants (a_brancher)

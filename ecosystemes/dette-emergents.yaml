@@ -75,7 +75,7 @@ compartiments:
       - {nom: "un ménage", taille: "micro", espace: "local", vitesse: "mois", organisation: "societe", facette: "collectif"}
     niveau: {espace: "pays", temps: "publication mensuelle", vitesse: "mois", taille: "macro"}
     traces:
-      - {source: "indice mondial des prix alimentaires (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM"}
+      - {source: "indice mondial des prix alimentaires (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM:var12"}
   - id: politique_interieure
     organisation: "societe"
     nom: "Politique intérieure et contestation"

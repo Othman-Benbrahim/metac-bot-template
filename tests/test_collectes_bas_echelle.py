@@ -31,3 +31,10 @@ def test_adaptateur_nowcast(tmp_path: Path):
     (tmp_path / "nowcast-inflation.csv").write_text("releve_le,periode,mesure,valeur\n2026-11-16,November 2026,variation_mensuelle:CPI,0.14\n",
                                                     encoding="utf-8")
     assert ad.lire("nowcast:variation_mensuelle:CPI", tmp_path) == [("2026-11-16", 0.14)]
+
+
+def test_variation_pour_les_series_a_tendance(tmp_path: Path):
+    lignes = ["serie,jour,valeur"] + [f"CPIAUCSL,2025-{m:02d}-01,{100 + m}" for m in range(1, 13)] + ["CPIAUCSL,2026-01-01,115.0"]
+    (tmp_path / "fred.csv").write_text("\n".join(lignes) + "\n", encoding="utf-8")
+    s = ad.lire("fred:CPIAUCSL:var12", tmp_path)
+    assert s == [("2026-01-01", round(100 * (115 / 101 - 1), 4))]

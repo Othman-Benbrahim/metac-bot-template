@@ -85,7 +85,7 @@ compartiments:
       - {nom: "les contrats à terme sur le blé", taille: "macro", espace: "mondial", vitesse: "minutes", organisation: "economie", facette: "collectif"}
     niveau: {espace: "mondial", temps: "séances ; indices mensuels", vitesse: "jours à mois", taille: "macro"}
     traces:
-      - {source: "indice mondial des prix alimentaires du FMI (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM"}
+      - {source: "indice mondial des prix alimentaires du FMI (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM:var12"}
   - id: "climat"
     organisation: "meteo"
     nom: "Climat de la saison"

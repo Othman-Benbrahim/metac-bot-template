@@ -81,7 +81,7 @@ compartiments:
       - {nom: "département de l'Énergie", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays et marchés mondiaux", temps: "décisions datées ; saison de conduite estivale", vitesse: "semaines à mois", taille: "macro"}
     traces:
-      - {source: "réserve stratégique américaine de brut (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:WCSSTUS1"}
+      - {source: "réserve stratégique américaine de brut (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)", statut: "a_brancher"}
       - {source: "prix du WTI (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILWTICO"}
   - id: sanctions
     organisation: "geopolitique"

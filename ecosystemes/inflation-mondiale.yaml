@@ -16,7 +16,7 @@ compartiments:
   elements: [céréales, huiles, engrais, récoltes, interdictions d'export]
   niveau: {espace: mondial, temps: saisons ; récoltes, vitesse: mois, taille: macro}
   traces:
-  - {source: indice mondial des prix alimentaires du FMI (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:PFOODINDEXM'}
+  - {source: indice mondial des prix alimentaires du FMI (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:PFOODINDEXM:var12'}
 - id: prix_conso
   nom: Prix à la consommation
   organisation: economie
@@ -25,7 +25,7 @@ compartiments:
   - {nom: un ménage, taille: micro, espace: local, vitesse: mois, organisation: economie, facette: collectif}
   niveau: {espace: pays, temps: publication mensuelle, vitesse: mois, taille: macro}
   traces:
-  - {source: indice des prix américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:CPIAUCSL'}
+  - {source: indice des prix américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:CPIAUCSL:var12'}
   - {source: prévision immédiate de l'inflation (Réserve fédérale de Cleveland), statut: collecte, fichier: collecte_nowcast_inflation.py, adaptateur: 'nowcast:variation_mensuelle:CPI'}
 - id: salaires
   nom: Salaires et emploi
@@ -36,7 +36,7 @@ compartiments:
   - {nom: les syndicats et les branches, taille: méso, espace: pays, vitesse: année, organisation: societe, facette: collectif}
   niveau: {espace: pays, temps: contrats annuels, vitesse: mois à années, taille: méso à macro}
   traces:
-  - {source: salaire horaire moyen américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:CES0500000003'}
+  - {source: salaire horaire moyen américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:CES0500000003:var12'}
   - {source: taux de chômage américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:UNRATE'}
 - id: anticipations
   nom: Anticipations d'inflation

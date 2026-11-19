@@ -112,9 +112,28 @@ ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux":
                "fred": fred, "meteo": meteo, "climat": climat}
 
 
+def variation(serie: list[tuple[str, float]], pas: int) -> list[tuple[str, float]]:
+    """Variation en % sur `pas` relevés (0.10.323) : pour une série à tendance (un indice de prix qui monte chaque mois),
+    c'est le rythme qui dit l'intensité, pas le niveau."""
+    return [(serie[i][0], round(100 * (serie[i][1] / serie[i - pas][1] - 1), 4)) for i in range(pas, len(serie)) if serie[i - pas][1]]
+
+
 def lire(nom: str, reg: Path = REG) -> list[tuple[str, float]]:
     """« portwatch:ormuz:petroliers » → série datée ; nom inconnu → erreur explicite."""
     type_, *params = nom.split(":")
+    if params and params[-1].startswith("var") and params[-1][3:].isdigit():   # « fred:CPIAUCSL:var12 »
+        return variation(lire(":".join([type_] + params[:-1]), reg), int(params[-1][3:]))
     if type_ not in ADAPTATEURS:
         raise KeyError(f"adaptateur inconnu : {type_} (connus : {sorted(ADAPTATEURS)})")
     return ADAPTATEURS[type_](reg, *params)
+
+
+# 0.10.323 : les adaptateurs des sources déjà collectées mais encore « dormantes » vivent dans des modules à part
+# (adaptateurs_sources_*.py), chacun inscrivant ses fonctions dans ADAPTATEURS.
+import importlib as _il
+import pkgutil as _pk
+for _m in sorted(m.name for m in _pk.iter_modules([str(Path(__file__).resolve().parent)]) if m.name.startswith("adaptateurs_sources_")):
+    try:
+        _il.import_module(_m)
+    except Exception as _e:                                    # un module cassé ne doit pas casser la carte
+        print(f"adaptateurs : {_m} ignoré ({type(_e).__name__}: {_e})")

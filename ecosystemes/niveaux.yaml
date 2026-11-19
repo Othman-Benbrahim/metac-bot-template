@@ -113,6 +113,13 @@ niveaux:
     vitesse: "jours à années"
     inertie: 0.2
     relations_propres: ["santé, âge, fatigue", "convictions et apprentissage", "réputation et image de soi"]
+  - id: "psychologique"
+    rang: 4
+    nom: "Psychologique (perceptions, émotions, biais, motivations, en individu et en foule)"
+    taille: "micro à méso"
+    vitesse: "secondes à années"
+    inertie: 0.3
+    relations_propres: ["perception sélective et biais cognitifs (confirmation, ancrage, aversion à la perte)", "émotions qui accélèrent ou figent la décision (peur, colère, honte, fierté)", "motivation, besoin de reconnaissance et de cohérence", "contagion émotionnelle et panique en foule", "les mots ne sont qu'un instrument conventionnel de l'intention apparente : on juge sur les actes, pas sur le discours"]
   - id: "entourage"
     rang: 5
     nom: "Entourage (cercle direct et indirect d'un décideur)"
@@ -162,10 +169,15 @@ niveaux:
     vitesse: "semaines à décennies"
     inertie: 0.7
     relations_propres: ["équilibre des puissances", "dissuasion", "alignement et réalignement des blocs", "réciprocité (donnant-donnant, rancune)"]
+# 0.10.323 (remarque de l'auteur, 2026-11-19, 6 h 11) : une force est agnostique quant à sa nature. Un animal, un
+# insecte, un éboulement, un arbre qui pousse ou qui tombe, une culture, une foule ou un État agissent chacun à leur
+# échelle ; la carte ne fait aucune différence de principe entre une force humaine et une force non humaine. Les
+# « acteurs » des fiches sont donc des forces au sens large : la facette dit seulement de quelle nature elles sont.
 facettes:
   # Un même acteur public peut apparaître sous trois facettes distinctes (rappel de l'auteur : « différencier la
   # personne de son statut, et surtout de son idéologie ») ; chacune vit à son niveau et obéit à ses relations.
   personne: "la personne, par ses faits publics (niveau personne)"
+  psyche: "ce qui se passe dans la tête, déduit des actes publics et jamais d'un diagnostic (niveau psychologique)"
   statut: "la fonction qu'elle occupe, ses pouvoirs et ses limites (niveau statut)"
   ideologie: "les idées qu'elle porte ou qui la portent (niveau ideologie)"
   collectif: "un groupe, une organisation, un État"

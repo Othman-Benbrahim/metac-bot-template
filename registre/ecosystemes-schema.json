@@ -555,7 +555,7 @@
      "source": "indice mondial des prix alimentaires du FMI (FRED)",
      "statut": "collecte",
      "fichier": "collecte_fred.py",
-     "adaptateur": "fred:PFOODINDEXM"
+     "adaptateur": "fred:PFOODINDEXM:var12"
     }
    ],
    "acteurs": [
@@ -2935,7 +2935,7 @@
      "source": "indice mondial des prix alimentaires (FRED)",
      "statut": "collecte",
      "fichier": "collecte_fred.py",
-     "adaptateur": "fred:PFOODINDEXM"
+     "adaptateur": "fred:PFOODINDEXM:var12"
     }
    ],
    "acteurs": [
@@ -5521,16 +5521,12 @@
    },
    "traces": [
     {
-     "source": "stocks commerciaux de brut américains (FRED)",
-     "statut": "collecte",
-     "fichier": "collecte_fred.py",
-     "adaptateur": "fred:WCESTUS1"
+     "source": "stocks commerciaux de brut américains (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)",
+     "statut": "a_brancher"
     },
     {
-     "source": "réserve stratégique américaine (FRED)",
-     "statut": "collecte",
-     "fichier": "collecte_fred.py",
-     "adaptateur": "fred:WCSSTUS1"
+     "source": "réserve stratégique américaine (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)",
+     "statut": "a_brancher"
     }
    ],
    "acteurs": [
@@ -8338,7 +8334,7 @@
      "source": "indice mondial des prix alimentaires du FMI (FRED)",
      "statut": "collecte",
      "fichier": "collecte_fred.py",
-     "adaptateur": "fred:PFOODINDEXM"
+     "adaptateur": "fred:PFOODINDEXM:var12"
     }
    ],
    "acteurs": []
@@ -8374,7 +8370,7 @@
      "source": "indice des prix américain (FRED)",
      "statut": "collecte",
      "fichier": "collecte_fred.py",
-     "adaptateur": "fred:CPIAUCSL"
+     "adaptateur": "fred:CPIAUCSL:var12"
     },
     {
      "source": "prévision immédiate de l'inflation (Réserve fédérale de Cleveland)",
@@ -8440,7 +8436,7 @@
      "source": "salaire horaire moyen américain (FRED)",
      "statut": "collecte",
      "fichier": "collecte_fred.py",
-     "adaptateur": "fred:CES0500000003"
+     "adaptateur": "fred:CES0500000003:var12"
     },
     {
      "source": "taux de chômage américain (FRED)",
@@ -12552,10 +12548,8 @@
    },
    "traces": [
     {
-     "source": "réserve stratégique américaine de brut (FRED)",
-     "statut": "collecte",
-     "fichier": "collecte_fred.py",
-     "adaptateur": "fred:WCSSTUS1"
+     "source": "réserve stratégique américaine de brut (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)",
+     "statut": "a_brancher"
     },
     {
      "source": "prix du WTI (FRED)",
@@ -23763,6 +23757,6 @@
   "ponts_en_attente": 8,
   "relations_a_verifier": 366,
   "relations_avec_intensite": 172,
-  "compartiments_sans_trace_collectee": 121
+  "compartiments_sans_trace_collectee": 122
  }
 }
