@@ -2,7 +2,6 @@
 import json
 from pathlib import Path
 
-import pytest
 
 import adaptateurs as ad
 import adaptateurs_sources_a as sa
@@ -109,11 +108,12 @@ def test_nbs_paru_et_prevu(tmp_path):
     assert s["2026-01-01"] == 8.0 and s["2026-01-09"] == 0.0 and s["2026-01-10"] == 32.0
 
 
-@pytest.mark.parametrize("nom", ["avions", "avions:US", "tfr", "tfr:SECURITY", "violations", "radar", "radar:IR",
-                                 "certificats", "federal_register", "congres", "congres:nominations", "tribunaux:scotus",
-                                 "elections:US", "memoire:RU", "feries_chine", "publications_nbs", "calendrier_nbs"])
-def test_vrai_registre(nom):
-    s = ad.lire(nom)
-    assert isinstance(s, list)
-    assert all(isinstance(j, str) and isinstance(v, float) for j, v in s)
-    assert [j for j, _ in s] == sorted(j for j, _ in s)
+def test_vrai_registre():
+    # sans pytest (la CI lance unittest, où pytest n'est pas installé)
+    for nom in ["avions", "avions:US", "tfr", "tfr:SECURITY", "violations", "radar", "radar:IR", "certificats",
+                "federal_register", "congres", "congres:nominations", "tribunaux:scotus", "elections:US", "memoire:RU",
+                "feries_chine", "publications_nbs", "calendrier_nbs"]:
+        s = ad.lire(nom)
+        assert isinstance(s, list), nom
+        assert all(isinstance(j, str) and isinstance(v, float) for j, v in s), nom
+        assert [j for j, _ in s] == sorted(j for j, _ in s), nom
