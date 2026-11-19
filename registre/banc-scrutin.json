@@ -1,0 +1,20 @@
+{
+ "questions_electorales": 329,
+ "confirmation": 247,
+ "jugees": 0,
+ "abstentions": {
+  "hors brique (forme)": 77,
+  "pas d'archive ou de tableau": 170
+ },
+ "perte": {
+  "semblables": null,
+  "brique": null
+ },
+ "ecart_brique_moins_semblables": null,
+ "intervalle_corrige": null,
+ "verdict": "trop peu de questions jugées",
+ "par_classe": {},
+ "empreinte_sha256": "c1436c34dce6b5ef85ec00a30b2c868365373a442938da4ab660c69e4a3485c5",
+ "risque_corrige": 0.0033333333333333335,
+ "note": "perte log, plus bas = mieux ; aucune donnée lue hors des archives ; ombre"
+}
