@@ -2,7 +2,7 @@ theme: alimentation-mondiale
 nom: "Alimentation mondiale (cultures, engrais, prix)"
 declaration:
   but: "comprendre ce qui fait les récoltes, les stocks et les prix alimentaires dans le monde, et ce qu'ils transmettent (inflation, tensions sociales, exportations interdites)"
-  limites: "dedans les sols, l'eau, les cultures et leurs ravageurs, les engrais, les stocks, le commerce des grains, les prix ; dehors l'élevage et la pêche en détail, la nutrition"
+  limites: "dedans les sols, l'eau, les cultures et leurs ravageurs, les engrais, les stocks, le commerce des grains, les prix ; l'élevage y entre comme fait écologique (pâturage, fumier, méthane, zoonoses) ; dehors la pêche en détail, la nutrition"
   observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; données publiques seulement"
   date: "2026-11-19"
   espace: "les grands bassins céréaliers (mer Noire, Amériques, Inde, Chine) et les pays importateurs"
@@ -11,91 +11,139 @@ declaration:
   taille: "une parcelle, un bassin de production, le marché mondial"
 compartiments:
   - id: "sols"
+    organisation: "mineral"
     nom: "Sols et terres cultivées"
     elements: ["fertilité", "matière organique", "érosion", "salinisation", "surfaces cultivées"]
     acteurs:
-      - {nom: "une parcelle", taille: "micro", espace: "parcelle", vitesse: "saisons"}
-      - {nom: "un grand bassin céréalier", taille: "méso", espace: "région", vitesse: "années"}
+      - {nom: "une parcelle", taille: "micro", espace: "parcelle", vitesse: "saisons", organisation: "vegetal", facette: "non_humain"}
+      - {nom: "un grand bassin céréalier", taille: "méso", espace: "région", vitesse: "années", organisation: "mineral", facette: "non_humain"}
     niveau: {espace: "parcelle à continent", temps: "saisons ; décennies", vitesse: "saisons à décennies", taille: "micro à macro"}
     traces:
       - {source: "indices de végétation par satellite (NDVI, données publiques)", statut: "a_brancher"}
   - id: "eau_agricole"
+    organisation: "eau"
     nom: "Eau agricole"
     elements: ["pluie utile", "irrigation", "nappes", "humidité du sol"]
     acteurs:
-      - {nom: "une nappe phréatique", taille: "méso", espace: "bassin", vitesse: "années"}
+      - {nom: "une nappe phréatique", taille: "méso", espace: "bassin", vitesse: "années", organisation: "eau", facette: "non_humain"}
     niveau: {espace: "bassin versant", temps: "saison des pluies", vitesse: "semaines à années", taille: "méso"}
     traces:
       - {source: "humidité du sol et indices de sécheresse (données publiques)", statut: "a_brancher"}
   - id: "cultures"
+    organisation: "vegetal"
     nom: "Cultures et récoltes"
     elements: ["blé", "maïs", "riz", "soja", "oléagineux", "rendements"]
     acteurs:
-      - {nom: "un champ de blé", taille: "micro", espace: "parcelle", vitesse: "saison"}
-      - {nom: "la récolte d'un grand exportateur", taille: "macro", espace: "pays", vitesse: "saison"}
+      - {nom: "un champ de blé", taille: "micro", espace: "parcelle", vitesse: "saison", organisation: "vegetal", facette: "non_humain"}
+      - {nom: "la récolte d'un grand exportateur", taille: "macro", espace: "pays", vitesse: "saison", organisation: "vegetal", facette: "non_humain"}
     niveau: {espace: "parcelle à continent", temps: "calendriers culturaux", vitesse: "saison", taille: "micro à macro"}
     traces:
       - {source: "prévisions de récolte publiques (FAO, USDA)", statut: "a_brancher"}
   - id: "ravageurs"
+    organisation: "animal"
     nom: "Ravageurs et maladies des cultures"
     elements: ["criquets", "rouilles du blé", "maladies favorisées par la chaleur et l'humidité"]
     acteurs:
-      - {nom: "un essaim de criquets", taille: "méso", espace: "région", vitesse: "semaines"}
+      - {nom: "un essaim de criquets", taille: "méso", espace: "région", vitesse: "semaines", organisation: "animal", facette: "non_humain"}
     niveau: {espace: "région", temps: "saisons humides", vitesse: "semaines", taille: "méso"}
     traces:
       - {source: "bulletins de veille acridienne (FAO, publics)", statut: "a_brancher"}
   - id: "engrais"
+    organisation: "economie"
     nom: "Engrais"
     elements: ["azote (fabriqué avec du gaz naturel)", "phosphate", "potasse", "pays exportateurs"]
     acteurs:
-      - {nom: "une usine d'ammoniac", taille: "micro", espace: "site", vitesse: "semaines"}
-      - {nom: "les exportateurs de potasse (en agrégat)", taille: "macro", espace: "mondial", vitesse: "mois"}
+      - {nom: "une usine d'ammoniac", taille: "micro", espace: "site", vitesse: "semaines", organisation: "technique", facette: "collectif"}
+      - {nom: "les exportateurs de potasse (en agrégat)", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "economie", facette: "collectif"}
     niveau: {espace: "mondial", temps: "campagnes d'épandage", vitesse: "mois", taille: "macro"}
     traces:
       - {source: "prix du gaz Henry Hub (FRED), intrant de l'azote", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DHHNGSP"}
   - id: "stocks"
+    organisation: "economie"
     nom: "Stocks de grains"
     elements: ["stocks des grands exportateurs", "stocks chinois", "réserves publiques"]
     acteurs:
-      - {nom: "les réserves publiques chinoises", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "les réserves publiques chinoises", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "campagne annuelle", vitesse: "mois", taille: "macro"}
     traces:
       - {source: "bilans offre-demande publics (USDA, AMIS)", statut: "a_brancher"}
   - id: "commerce"
+    organisation: "economie"
     nom: "Commerce des grains"
     elements: ["routes de la mer Noire", "détroits", "interdictions d'exportation", "fret vrac"]
     acteurs:
-      - {nom: "un vraquier", taille: "micro", espace: "navire", vitesse: "semaines"}
-      - {nom: "un gouvernement qui interdit l'export", taille: "macro", espace: "pays", vitesse: "jours"}
+      - {nom: "un vraquier", taille: "micro", espace: "navire", vitesse: "semaines", organisation: "technique", facette: "non_humain"}
+      - {nom: "un gouvernement qui interdit l'export", taille: "macro", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
     niveau: {espace: "routes mondiales", temps: "campagne commerciale", vitesse: "jours à mois", taille: "méso à macro"}
     traces:
       - {source: "IMF PortWatch (navires au Bosphore, sortie de la mer Noire)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:bosphore:navires"}
   - id: "prix"
+    organisation: "economie"
     nom: "Prix alimentaires mondiaux"
     elements: ["indices mondiaux des prix alimentaires", "contrats à terme sur les grains", "prix locaux"]
     acteurs:
-      - {nom: "les contrats à terme sur le blé", taille: "macro", espace: "mondial", vitesse: "minutes"}
+      - {nom: "les contrats à terme sur le blé", taille: "macro", espace: "mondial", vitesse: "minutes", organisation: "economie", facette: "collectif"}
     niveau: {espace: "mondial", temps: "séances ; indices mensuels", vitesse: "jours à mois", taille: "macro"}
     traces:
       - {source: "indice mondial des prix alimentaires du FMI (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM"}
   - id: "climat"
+    organisation: "meteo"
     nom: "Climat de la saison"
     elements: ["sécheresses", "vagues de chaleur", "excès de pluie", "oscillations El Niño et La Niña"]
     acteurs:
-      - {nom: "une masse d'air chaud persistante", taille: "méso", espace: "région", vitesse: "semaines"}
+      - {nom: "une masse d'air chaud persistante", taille: "méso", espace: "région", vitesse: "semaines", organisation: "meteo", facette: "non_humain"}
     niveau: {espace: "régionale à mondiale", temps: "saisons", vitesse: "semaines à saisons", taille: "méso à macro"}
     traces:
       - {source: "anomalie de température à Delhi (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:delhi"}
       - {source: "anomalie de température à Shanghai (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:shanghai"}
   - id: "importateurs"
+    organisation: "societe"
     nom: "Pays importateurs et ménages"
     elements: ["dépendance aux importations", "part de l'alimentation dans les dépenses", "subventions du pain", "tensions sociales"]
     acteurs:
-      - {nom: "un ménage pauvre (en agrégat)", taille: "micro", espace: "local", vitesse: "semaines"}
-      - {nom: "un État importateur de blé", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "un ménage pauvre (en agrégat)", taille: "micro", espace: "local", vitesse: "semaines", organisation: "societe", facette: "collectif"}
+      - {nom: "un État importateur de blé", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "mois ; budgets annuels", vitesse: "semaines à mois", taille: "micro à macro"}
     traces:
       - {source: "prix alimentaires locaux (FAO, publics)", statut: "a_brancher"}
+  - id: "elevage"
+    organisation: "animal"
+    nom: "Élevage (fait écologique et économique)"
+    elements: ["troupeaux", "pâturage", "fumier qui fertilise", "méthane", "concurrence avec l'homme pour les grains fourragers", "zoonoses"]
+    acteurs:
+      - {nom: "un troupeau", taille: "micro", espace: "parcelle", vitesse: "saisons", organisation: "animal", facette: "non_humain"}
+      - {nom: "les grands élevages industriels (en agrégat)", taille: "macro", espace: "mondial", vitesse: "années", organisation: "economie", facette: "collectif"}
+    niveau: {espace: "parcelle à continent", temps: "cycles d'élevage", vitesse: "saisons à années", taille: "micro à macro"}
+    traces:
+      - {source: "statistiques publiques du cheptel (FAOSTAT)", statut: "a_brancher"}
+  - id: "chimie_sols"
+    organisation: "chimique"
+    nom: "Chimie des sols (azote, phosphore, potasse, acidité)"
+    elements: ["azote disponible", "phosphore", "potassium", "acidité", "lessivage des nitrates"]
+    acteurs:
+      - {nom: "le cycle de l'azote d'une parcelle", taille: "micro", espace: "parcelle", vitesse: "saisons", organisation: "chimique", facette: "non_humain"}
+    niveau: {espace: "parcelle à bassin", temps: "saisons ; décennies", vitesse: "saisons à décennies", taille: "micro à méso"}
+    traces:
+      - {source: "cartes publiques des sols (teneurs en nutriments, acidité)", statut: "a_brancher"}
+  - id: "pathogenes"
+    organisation: "microbiologique"
+    nom: "Pathogènes des plantes et des animaux"
+    elements: ["rouilles et mildious", "virus des cultures", "grippe aviaire", "peste porcine"]
+    acteurs:
+      - {nom: "une souche de rouille du blé", taille: "micro", espace: "région", vitesse: "semaines", organisation: "microbiologique", facette: "non_humain"}
+      - {nom: "un virus de grippe aviaire", taille: "micro", espace: "continent", vitesse: "semaines", organisation: "microbiologique", facette: "non_humain"}
+    niveau: {espace: "parcelle à continent", temps: "saisons ; épizooties", vitesse: "jours à mois", taille: "micro"}
+    traces:
+      - {source: "notifications publiques des maladies animales (OMSA, WAHIS)", statut: "a_brancher"}
+  - id: "pollinisateurs"
+    organisation: "animal"
+    nom: "Pollinisateurs"
+    elements: ["abeilles domestiques et sauvages", "insectes pollinisateurs"]
+    acteurs:
+      - {nom: "une colonie d'abeilles", taille: "micro", espace: "site", vitesse: "saisons", organisation: "animal", facette: "non_humain"}
+    niveau: {espace: "paysage agricole", temps: "saisons de floraison", vitesse: "saisons", taille: "micro à méso"}
+    traces:
+      - {source: "suivis publics des colonies et des pollinisateurs", statut: "a_brancher"}
 relations:
   - {de: "climat", vers: "eau_agricole", effet: "±", delai: "semaines", force: "forte", intensite: {mesure: "anomalie de pluie et de température de la saison", regle: "seuil"}, coupure: "irrigation", statut: "a_verifier", texte: "la saison décide de l'eau disponible ; une sécheresse ne compte qu'au-delà d'un seuil"}
   - {de: "eau_agricole", vers: "cultures", effet: "+", delai: "semaines à saison", force: "forte", intensite: {mesure: "déficit d'humidité du sol", regle: "seuil"}, coupure: "irrigation et variétés résistantes", statut: "a_verifier", texte: "sous un seuil d'eau, les rendements chutent d'un coup"}
@@ -111,6 +159,13 @@ relations:
   - {de: "prix", vers: "commerce", effet: "±", retour: "±", delai: "semaines", force: "moyenne", coupure: "accords commerciaux", statut: "a_verifier", texte: "quand les prix montent, des exportateurs ferment leurs frontières pour protéger leur marché intérieur"}
   - {de: "prix", vers: "importateurs", effet: "-", delai: "semaines à mois", force: "forte", intensite: {mesure: "écart des prix à leur moyenne", regle: "seuil"}, coupure: "subventions, aide alimentaire", statut: "a_verifier", texte: "au-delà d'un seuil de prix, les ménages pauvres et les budgets publics décrochent (lien documenté avec les émeutes, à vérifier)"}
   - {de: "prix", vers: "cultures", effet: "+", delai: "saison à année", force: "faible", coupure: "surfaces disponibles", statut: "a_verifier", texte: "des prix hauts font semer plus la saison suivante"}
+  - {de: "chimie_sols", vers: "cultures", effet: "+", delai: "saison", force: "forte", intensite: {mesure: "élément le plus limitant (azote, phosphore ou potasse)", regle: "seuil"}, coupure: "apports d'engrais", statut: "a_verifier", texte: "le rendement suit l'élément qui manque le plus : abondants partout sauf un, il plafonne quand même"}
+  - {de: "engrais", vers: "chimie_sols", effet: "+", delai: "saison", force: "forte", intensite: {mesure: "doses épandues", regle: "saturation"}, coupure: "lessivage vers les rivières", statut: "a_verifier", texte: "les engrais remplissent le sol en nutriments, jusqu'à saturation ; l'excès part dans l'eau"}
+  - {de: "elevage", vers: "chimie_sols", effet: "+", retour: "+", forme: "mutualisme", delai: "saisons", force: "moyenne", coupure: "élevage hors-sol séparé des cultures", statut: "a_verifier", texte: "le fumier rend au sol l'azote et le phosphore que l'herbe a pris"}
+  - {de: "elevage", vers: "cultures", effet: "-", retour: "+", delai: "mois", force: "moyenne", coupure: "élevage à l'herbe", statut: "a_verifier", texte: "les troupeaux nourris aux grains entrent en concurrence avec l'alimentation humaine pour les récoltes"}
+  - {de: "pathogenes", vers: "elevage", effet: "-", retour: "+", delai: "semaines", force: "forte", intensite: {mesure: "foyers déclarés", regle: "seuil"}, coupure: "abattages et vaccination", statut: "a_verifier", texte: "une épizootie décime les troupeaux ; au-delà d'un seuil de foyers, les abattages massifs coupent l'offre"}
+  - {de: "pathogenes", vers: "cultures", effet: "-", retour: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "humidité et chaleur de la saison", regle: "seuil"}, coupure: "variétés résistantes", statut: "a_verifier", texte: "une nouvelle souche de rouille ou de mildiou peut contourner les résistances d'une région entière"}
+  - {de: "pollinisateurs", vers: "cultures", effet: "+", retour: "+", forme: "mutualisme", delai: "saison", force: "moyenne", coupure: "céréales pollinisées par le vent", statut: "a_verifier", texte: "les pollinisateurs font les fruits et les oléagineux, et vivent des fleurs (au sein du vivant, entre animal et végétal)"}
 ponts:
   - {depuis: "prix", vers: "inflation-mondiale:alimentation", nature: "les prix alimentaires entrent dans l'inflation"}
   - {depuis: "engrais", vers: "energie-mondiale:prix", nature: "l'azote se fabrique avec du gaz naturel"}
