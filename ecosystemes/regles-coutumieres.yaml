@@ -1,6 +1,6 @@
 # Règles coutumières par écosystème et par échelle (lot 1 : élections américaines, inertie des régimes fermés ;
 # lot 2 : Europe et erreur des sondages comparée ; lot 3 : Afrique ; lot 4 : Asie, Océanie et table mondiale des
-# présidentielles).
+# présidentielles ; lot 5 : procédures — Congrès américain, Conseil de sécurité).
 # Décisions de l'auteur du 2026-11-19 (22 h 43 à 22 h 59) : ne pas déduire ; écrire les règles telles qu'elles existent,
 # chacune avec sa source ; sans source, la case reste vide (« absence ») et la brique s'abstient. Pour les régimes
 # opaques : privilégier la règle d'inertie. Ce fichier n'est pas une fiche (pas de clé « theme ») : regles_coutumieres.py
@@ -343,3 +343,38 @@ regles:
     sources: []
     statut: absence
     aide: "une règle chiffrée propre à la Chine, s'il en existe (calendrier des congrès du Parti, limites d'âge informelles)"
+
+  # ---------------------------------------------------------------- lot 5 : procédures
+  - id: us_senat_cloture
+    ecosysteme: "États-Unis · Sénat, clôture des débats"
+    espace: amerique_du_nord
+    echelle: {axe: espace, tranche: "chambre fédérale"}
+    structure: procedure
+    regle: "Pour clore le débat sur un texte de loi (et donc franchir l'obstruction), il faut les trois cinquièmes du Sénat : 60 voix, sauf vacance de plus d'un siège. Pour les nominations présidentielles, la majorité simple des votants suffit depuis le 21 novembre 2013 (toutes sauf la Cour suprême), et pour la Cour suprême depuis le 6 avril 2017. Une loi qui n'a pas 60 soutiens au Sénat ne passe donc pas, sauf procédure dérogatoire (par exemple le budget par réconciliation, non sourcé dans ce lot)."
+    parametres: {cloture_lois: 60, cloture_nominations: majorite_simple, depuis_nominations: "2013-11-21", depuis_cour_supreme: "2017-04-06"}
+    sources:
+      - {titre: "Service de recherche du Congrès, Majority Cloture for Nominations: Implications and the Nuclear Proceedings, R43331, 2013", url: "https://www.everycrsreport.com/reports/R43331.html", consulte: "2026-11-19"}
+      - {titre: "Service de recherche du Congrès, Senate Proceedings Establishing Majority Cloture for Supreme Court Nominations, R44819, 2017", url: "https://www.everycrsreport.com/reports/R44819.html", consulte: "2026-11-19"}
+    statut: source
+
+  - id: us_congres_productivite
+    ecosysteme: "États-Unis · Congrès, lois adoptées"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "législature de deux ans"}
+    structure: procedure
+    regle: "Le 119e Congrès (2025-2026) a adopté 121 lois publiques au 14 octobre 2026 (109 de fond, 12 symboliques), le deuxième total le plus bas des 40 dernières années à ce stade ; le 118e en avait 106. Du 100e au 110e Congrès, environ 440 lois avant le jour de l'élection, dont environ 306 de fond. Une grande part des lois passe après l'élection : 168 des 274 lois du 118e Congrès (61 %) pendant la session de fin de mandat."
+    parametres: {lois_119e_au_2026_10_14: 121, lois_118e_meme_date: 106, moyenne_100e_110e_avant_election: 440, part_apres_election_118e: 0.61}
+    sources:
+      - {titre: "Pew Research Center, So far, the 119th Congress is among the least productive of the past 40 years, 15 octobre 2026", url: "https://www.pewresearch.org/short-reads/2026/10/15/so-far-the-119th-congress-is-among-the-least-productive-of-the-past-40-years", consulte: "2026-11-19"}
+    statut: source
+
+  - id: onu_conseil_securite_vote
+    ecosysteme: "ONU · Conseil de sécurité"
+    espace: monde
+    echelle: {axe: espace, tranche: "15 membres, dont 5 permanents"}
+    structure: procedure
+    regle: "Questions de procédure : 9 voix pour. Toutes les autres questions : 9 voix pour, y compris les voix concordantes des membres permanents (le veto) ; une partie à un différend s'abstient dans les décisions prises au titre du chapitre VI. Une résolution de fond qui touche un intérêt direct d'un membre permanent passe donc rarement."
+    parametres: {voix_requises: 9, membres: 15, permanents: 5, veto: true}
+    sources:
+      - {titre: "Charte des Nations unies, article 27 (bibliothèque des droits de l'homme de l'université du Minnesota)", url: "https://hrlibrary.umn.edu/instree/chapter5.html", consulte: "2026-11-19"}
+    statut: source
