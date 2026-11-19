@@ -20,7 +20,7 @@ résolues la croiseront.
 | Rythme de publication des sites officiels (flux RSS) | collecte_routines.py | PÉRIODICITÉ, SEUIL | chaque nuit |
 | Federal Register, inspection publique (textes avant publication) | collecte_federal_register.py | DÉCLENCHEUR | chaque nuit |
 | Interdictions de survol FAA | sonde_tfr.py (sonde seulement) | RÉSEAU, RÉCIPROCITÉ | manuel |
-| Dépôts de marques des laboratoires d'IA (EUIPO, 0.10.301) | collecte_euipo.py | DÉCLENCHEUR | chaque nuit |
+| Dépôts de marques des laboratoires d'IA (EUIPO, 0.10.301) | collecte_euipo.py | DÉCLENCHEUR | RETIRÉ (0.10.303) : pièce d'identité exigée par l'EUIPO, refusée par l'auteur |
 | Congrès américain : réunions de commissions, nominations (0.10.301) | collecte_congres.py | DÉCLENCHEUR | chaque nuit |
 | Tribunaux américains (CourtListener, 0.10.301) | collecte_tribunaux.py | DÉCLENCHEUR | chaque nuit |
 
@@ -33,6 +33,6 @@ résolues la croiseront.
 
 ## Clés (2026-11-19)
 Enregistrées par l'auteur : EUIPO (EUIPO_CLIENT_ID, EUIPO_CLIENT_SECRET), congress.gov (CONGRESS_CLE), CourtListener
-(COURTLISTENER_CLE), Cert Spotter (CERTSPOTTER_CLE, droit limité à la recherche). Écartées : USPTO (vidéo
+(COURTLISTENER_CLE), Cert Spotter (CERTSPOTTER_CLE, droit limité à la recherche). Écartées : EUIPO (pièce d'identité exigée après inscription, 2026-11-19, refusée par l'auteur) ; USPTO (vidéo
 d'identification exigée, refusée par l'auteur) ; USAJOBS (adresse courriel transmise à chaque requête ; écartée par
 l'auteur).
