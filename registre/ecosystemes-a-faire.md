@@ -1,14 +1,15 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 2, 'compartiments': 20, 'relations': 25, 'ponts': 14, 'ponts_en_attente': 12, 'relations_a_verifier': 25, 'relations_avec_intensite': 9, 'compartiments_sans_trace_collectee': 6}
+Bilan : {'themes': 3, 'compartiments': 30, 'relations': 38, 'ponts': 21, 'ponts_en_attente': 15, 'relations_a_verifier': 38, 'relations_avec_intensite': 15, 'compartiments_sans_trace_collectee': 1}
 
 ## Thèmes à écrire (ponts en attente)
-- **inflation-mondiale** (2 pont(s)) : energie-mondiale:prix → inflation-mondiale:energie (l'énergie entre dans l'inflation et dans les décisions des banques centrales) ; ormuz:prix → inflation-mondiale:energie (l'énergie entre dans l'inflation et donc dans les banques centrales)
-- **transport-maritime** (2 pont(s)) : energie-mondiale:transport → transport-maritime:detroits (le système des passages maritimes) ; ormuz:navigation → transport-maritime:detroits (Ormuz, Bab-el-Mandeb, Suez forment un même système de passages)
+- **transport-maritime** (3 pont(s)) : energie-mondiale:transport → transport-maritime:detroits (le système des passages maritimes) ; inflation-mondiale:approvisionnement → transport-maritime:detroits (les détroits et le fret) ; ormuz:navigation → transport-maritime:detroits (Ormuz, Bab-el-Mandeb, Suez forment un même système de passages)
+- **economie-chinoise** (2 pont(s)) : energie-mondiale:demande → economie-chinoise:activite (la Chine est le premier importateur) ; inflation-mondiale:statistiques → economie-chinoise:statistiques (fiabilité des chiffres officiels chinois)
+- **politique-americaine** (2 pont(s)) : energie-mondiale:decisions → politique-americaine:energie (réserves stratégiques, sanctions, prix à la pompe et élections) ; inflation-mondiale:budget → politique-americaine:budget (droits de douane, déficits, pression sur la Réserve fédérale)
 - **russie-ukraine** (1 pont(s)) : energie-mondiale:decisions → russie-ukraine:sanctions (sanctions et plafond de prix sur le pétrole russe)
-- **economie-chinoise** (1 pont(s)) : energie-mondiale:demande → economie-chinoise:activite (la Chine est le premier importateur)
 - **climat-extremes** (1 pont(s)) : energie-mondiale:climat → climat-extremes:saisons (hivers, ouragans, vagues de chaleur)
-- **politique-americaine** (1 pont(s)) : energie-mondiale:decisions → politique-americaine:energie (réserves stratégiques, sanctions, prix à la pompe et élections)
+- **alimentation-mondiale** (1 pont(s)) : inflation-mondiale:alimentation → alimentation-mondiale:prix (récoltes, engrais, interdictions d'export)
+- **dette-emergents** (1 pont(s)) : inflation-mondiale:monnaies → dette-emergents:monnaies (un dollar fort serre les pays endettés en dollars)
 - **iran-nucleaire** (1 pont(s)) : ormuz:interieur_iran → iran-nucleaire:negociations (le programme nucléaire et les sanctions se négocient ensemble)
 - **rivalite-sino-americaine** (1 pont(s)) : ormuz:puissances → rivalite-sino-americaine:energie (la sécurité des approvisionnements chinois)
 - **guerre-levant** (1 pont(s)) : ormuz:force → guerre-levant:iran (les fronts régionaux de l'Iran et de ses alliés)
@@ -16,11 +17,6 @@ Bilan : {'themes': 2, 'compartiments': 20, 'relations': 25, 'ponts': 14, 'ponts_
 
 ## Compartiments sans trace collectée (à notre portée ? ou oubliés ?)
 - energie-mondiale:production : communiqués des réunions de l'OPEP+ (a_brancher), nombre de forages actifs (publication hebdomadaire publique) (a_brancher)
-- energie-mondiale:stocks : stocks hebdomadaires américains (publication officielle publique) (a_brancher)
-- energie-mondiale:prix : prix quotidien du Brent (données publiques) (a_brancher)
-- energie-mondiale:climat : températures et prévisions saisonnières (données publiques) (a_brancher)
-- ormuz:milieu : températures et vents (Open-Meteo ou réanalyses) (a_brancher)
-- ormuz:prix : prix quotidien du Brent (FRED, données publiques) (a_brancher)
 
 ## Relations à vérifier sur une source relue
 - energie-mondiale:production → energie-mondiale:prix [forcage] plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise, le moindre arrêt fait bondir les prix
@@ -36,6 +32,19 @@ Bilan : {'themes': 2, 'compartiments': 20, 'relations': 25, 'ponts': 14, 'ponts_
 - energie-mondiale:climat → energie-mondiale:demande [forcage] un hiver froid fait monter la demande de gaz et de fioul
 - energie-mondiale:climat → energie-mondiale:production [forcage] ouragans dans le golfe du Mexique, arrêts de plateformes
 - energie-mondiale:recits → energie-mondiale:prix [forcage] annonces et menaces bougent les prix avant les flux
+- inflation-mondiale:energie → inflation-mondiale:prix_conso [forcage] l'énergie passe vite dans les prix, d'abord par les carburants
+- inflation-mondiale:alimentation → inflation-mondiale:prix_conso [forcage] les prix alimentaires pèsent plus lourd dans les pays pauvres
+- inflation-mondiale:prix_conso → inflation-mondiale:salaires [mutualisme] boucle prix-salaires : chacun nourrit l'autre quand le travail manque
+- inflation-mondiale:prix_conso → inflation-mondiale:anticipations [forcage] une inflation qui dure désancre les anticipations ; elles ne redescendent pas par le même chemin
+- inflation-mondiale:anticipations → inflation-mondiale:prix_conso [forcage] des anticipations hautes font fixer des prix et des salaires plus hauts
+- inflation-mondiale:prix_conso → inflation-mondiale:banques_centrales [predation] boucle de régulation : l'inflation fait monter les taux, les taux freinent l'inflation
+- inflation-mondiale:banques_centrales → inflation-mondiale:salaires [forcage] la hausse des taux refroidit l'activité et le marché du travail, avec un long retard
+- inflation-mondiale:banques_centrales → inflation-mondiale:monnaies [forcage] des taux américains plus hauts renforcent le dollar
+- inflation-mondiale:monnaies → inflation-mondiale:prix_conso [forcage] un dollar fort importe de l'inflation chez les autres et en exporte peu aux États-Unis
+- inflation-mondiale:approvisionnement → inflation-mondiale:prix_conso [forcage] des chaînes bloquées font monter les prix des biens
+- inflation-mondiale:budget → inflation-mondiale:prix_conso [forcage] subventions et boucliers baissent les prix mesurés ; déficits et droits de douane les montent
+- inflation-mondiale:budget → inflation-mondiale:banques_centrales [competition] quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre
+- inflation-mondiale:statistiques → inflation-mondiale:banques_centrales [forcage] les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée
 - ormuz:milieu → ormuz:flux_energie [contrainte] le goulet concentre le flux sur un seul passage étroit
 - ormuz:flux_energie → ormuz:prix [forcage] une baisse du flux fait monter les prix mondiaux
 - ormuz:force → ormuz:navigation [predation] saisies, menaces et mines pèsent sur la navigation (prédation : la force gagne un levier)

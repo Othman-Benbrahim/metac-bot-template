@@ -1,6 +1,7 @@
 {
  "themes": [
   "energie-mondiale",
+  "inflation-mondiale",
   "ormuz"
  ],
  "noeuds": [
@@ -171,8 +172,16 @@
    },
    "traces": [
     {
-     "source": "stocks hebdomadaires américains (publication officielle publique)",
-     "statut": "a_brancher"
+     "source": "stocks commerciaux de brut américains (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:WCESTUS1"
+    },
+    {
+     "source": "réserve stratégique américaine (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:WCSSTUS1"
     }
    ],
    "acteurs": [
@@ -300,8 +309,10 @@
    },
    "traces": [
     {
-     "source": "prix quotidien du Brent (données publiques)",
-     "statut": "a_brancher"
+     "source": "prix quotidien du Brent (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:DCOILBRENTEU"
     }
    ],
    "acteurs": [
@@ -455,8 +466,16 @@
    },
    "traces": [
     {
-     "source": "températures et prévisions saisonnières (données publiques)",
-     "statut": "a_brancher"
+     "source": "anomalie de température à Berlin (chauffage européen, Open-Meteo)",
+     "statut": "collecte",
+     "fichier": "collecte_meteo.py",
+     "adaptateur": "meteo:berlin"
+    },
+    {
+     "source": "anomalie de température à Houston (golfe du Mexique, Open-Meteo)",
+     "statut": "collecte",
+     "fichier": "collecte_meteo.py",
+     "adaptateur": "meteo:houston"
     }
    ],
    "acteurs": []
@@ -501,6 +520,546 @@
    "acteurs": []
   },
   {
+   "id": "inflation-mondiale:energie",
+   "theme": "inflation-mondiale",
+   "nom": "Prix de l'énergie",
+   "niveau": {
+    "espace": "mondial",
+    "temps": "séances ; factures mensuelles",
+    "vitesse": "jours à mois",
+    "taille": "macro"
+   },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     1,
+     30
+    ],
+    "temps": "séances ; factures mensuelles"
+   },
+   "traces": [
+    {
+     "source": "prix du Brent (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:DCOILBRENTEU"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "inflation-mondiale:alimentation",
+   "theme": "inflation-mondiale",
+   "nom": "Prix alimentaires",
+   "niveau": {
+    "espace": "mondial",
+    "temps": "saisons ; récoltes",
+    "vitesse": "mois",
+    "taille": "macro"
+   },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     30,
+     30
+    ],
+    "temps": "saisons ; récoltes"
+   },
+   "traces": [
+    {
+     "source": "indice mondial des prix alimentaires du FMI (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:PFOODINDEXM"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "inflation-mondiale:prix_conso",
+   "theme": "inflation-mondiale",
+   "nom": "Prix à la consommation",
+   "niveau": {
+    "espace": "pays",
+    "temps": "publication mensuelle",
+    "vitesse": "mois",
+    "taille": "macro"
+   },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     30,
+     30
+    ],
+    "temps": "publication mensuelle"
+   },
+   "traces": [
+    {
+     "source": "indice des prix américain (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:CPIAUCSL"
+    },
+    {
+     "source": "prévision immédiate de l'inflation (Réserve fédérale de Cleveland)",
+     "statut": "collecte",
+     "fichier": "collecte_nowcast_inflation.py",
+     "adaptateur": "nowcast:variation_mensuelle:CPI"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un ménage",
+     "taille": "micro",
+     "espace": "local",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "inflation-mondiale:salaires",
+   "theme": "inflation-mondiale",
+   "nom": "Salaires et emploi",
+   "niveau": {
+    "espace": "pays",
+    "temps": "contrats annuels",
+    "vitesse": "mois à années",
+    "taille": "méso à macro"
+   },
+   "axes": {
+    "taille": [
+     2,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     30,
+     365
+    ],
+    "temps": "contrats annuels"
+   },
+   "traces": [
+    {
+     "source": "salaire horaire moyen américain (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:CES0500000003"
+    },
+    {
+     "source": "taux de chômage américain (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:UNRATE"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "une entreprise",
+     "taille": "micro",
+     "espace": "local",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "les syndicats et les branches",
+     "taille": "méso",
+     "espace": "pays",
+     "vitesse": "année",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       365,
+       365
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "inflation-mondiale:anticipations",
+   "theme": "inflation-mondiale",
+   "nom": "Anticipations d'inflation",
+   "niveau": {
+    "espace": "pays",
+    "temps": "séances ; enquêtes mensuelles",
+    "vitesse": "jours à mois",
+    "taille": "macro"
+   },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     1,
+     30
+    ],
+    "temps": "séances ; enquêtes mensuelles"
+   },
+   "traces": [
+    {
+     "source": "inflation anticipée à 10 ans (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:T10YIE"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "inflation-mondiale:banques_centrales",
+   "theme": "inflation-mondiale",
+   "nom": "Banques centrales",
+   "niveau": {
+    "espace": "pays et zones monétaires",
+    "temps": "réunions datées",
+    "vitesse": "semaines",
+    "taille": "macro"
+   },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     7,
+     7
+    ],
+    "temps": "réunions datées"
+   },
+   "traces": [
+    {
+     "source": "taux effectif de la Réserve fédérale (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:DFF"
+    },
+    {
+     "source": "taux de dépôt de la BCE (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:ECBDFR"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "Réserve fédérale",
+     "taille": "macro",
+     "espace": "mondial",
+     "vitesse": "semaines",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       7,
+       7
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "Banque centrale européenne",
+     "taille": "macro",
+     "espace": "continent",
+     "vitesse": "semaines",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       4,
+       4
+      ],
+      "vitesse_jours": [
+       7,
+       7
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "Banque populaire de Chine",
+     "taille": "macro",
+     "espace": "pays",
+     "vitesse": "semaines",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       7,
+       7
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "inflation-mondiale:monnaies",
+   "theme": "inflation-mondiale",
+   "nom": "Monnaies et dollar",
+   "niveau": {
+    "espace": "mondial",
+    "temps": "séances",
+    "vitesse": "jours",
+    "taille": "macro"
+   },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     1,
+     1
+    ],
+    "temps": "séances"
+   },
+   "traces": [
+    {
+     "source": "indice large du dollar (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:DTWEXBGS"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "inflation-mondiale:approvisionnement",
+   "theme": "inflation-mondiale",
+   "nom": "Chaînes d'approvisionnement",
+   "niveau": {
+    "espace": "routes mondiales",
+    "temps": "semaines à mois",
+    "vitesse": "semaines",
+    "taille": "méso à macro"
+   },
+   "axes": {
+    "taille": [
+     2,
+     3
+    ],
+    "espace": [
+     2,
+     5
+    ],
+    "vitesse_jours": [
+     7,
+     7
+    ],
+    "temps": "semaines à mois"
+   },
+   "traces": [
+    {
+     "source": "IMF PortWatch (porte-conteneurs à Suez)",
+     "statut": "collecte",
+     "fichier": "collecte_portwatch.py",
+     "adaptateur": "portwatch:suez:porte_conteneurs"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "inflation-mondiale:budget",
+   "theme": "inflation-mondiale",
+   "nom": "Politique budgétaire",
+   "niveau": {
+    "espace": "pays",
+    "temps": "lois de finances ; échéances électorales",
+    "vitesse": "mois à années",
+    "taille": "macro"
+   },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     30,
+     365
+    ],
+    "temps": "lois de finances ; échéances électorales"
+   },
+   "traces": [
+    {
+     "source": "taux américain à 10 ans (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:DGS10"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un gouvernement national",
+     "taille": "macro",
+     "espace": "pays",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "inflation-mondiale:statistiques",
+   "theme": "inflation-mondiale",
+   "nom": "Statistiques officielles (convention)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "calendriers de publication",
+    "vitesse": "mois",
+    "taille": "méso"
+   },
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     30,
+     30
+    ],
+    "temps": "calendriers de publication"
+   },
+   "traces": [
+    {
+     "source": "calendrier des statistiques chinoises",
+     "statut": "collecte",
+     "fichier": "collecte_calendrier_nbs.py"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un institut statistique national",
+     "taille": "méso",
+     "espace": "pays",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
    "id": "ormuz:milieu",
    "theme": "ormuz",
    "nom": "Milieu physique",
@@ -527,8 +1086,10 @@
    },
    "traces": [
     {
-     "source": "températures et vents (Open-Meteo ou réanalyses)",
-     "statut": "a_brancher"
+     "source": "anomalie de température à Bandar Abbas (Open-Meteo)",
+     "statut": "collecte",
+     "fichier": "collecte_meteo.py",
+     "adaptateur": "meteo:bandar_abbas"
     }
    ],
    "acteurs": []
@@ -1011,8 +1572,10 @@
    },
    "traces": [
     {
-     "source": "prix quotidien du Brent (FRED, données publiques)",
-     "statut": "a_brancher"
+     "source": "prix quotidien du Brent (FRED)",
+     "statut": "collecte",
+     "fichier": "collecte_fred.py",
+     "adaptateur": "fred:DCOILBRENTEU"
     }
    ],
    "acteurs": []
@@ -1317,6 +1880,232 @@
    "texte": "annonces et menaces bougent les prix avant les flux"
   },
   {
+   "de": "inflation-mondiale:energie",
+   "vers": "inflation-mondiale:prix_conso",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "semaines à mois",
+   "force": "forte",
+   "intensite": {
+    "mesure": "écart du Brent à sa moyenne récente",
+    "regle": "proportionnelle"
+   },
+   "coupure": "boucliers tarifaires et subventions",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "l'énergie passe vite dans les prix, d'abord par les carburants"
+  },
+  {
+   "de": "inflation-mondiale:alimentation",
+   "vers": "inflation-mondiale:prix_conso",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "écart de l'indice alimentaire à sa moyenne",
+    "regle": "proportionnelle"
+   },
+   "coupure": "part de l'alimentation dans le panier (forte dans les pays pauvres)",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les prix alimentaires pèsent plus lourd dans les pays pauvres"
+  },
+  {
+   "de": "inflation-mondiale:prix_conso",
+   "vers": "inflation-mondiale:salaires",
+   "forme": "mutualisme",
+   "forme_ecrite": true,
+   "effet": "+",
+   "retour": "+",
+   "style": null,
+   "delai": "mois à années",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "tension sur le marché du travail",
+    "regle": "seuil"
+   },
+   "coupure": "chômage élevé, salaires non indexés",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "boucle prix-salaires : chacun nourrit l'autre quand le travail manque"
+  },
+  {
+   "de": "inflation-mondiale:prix_conso",
+   "vers": "inflation-mondiale:anticipations",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "durée de l'inflation au-dessus de la cible",
+    "regle": "hysteresis"
+   },
+   "coupure": "banque centrale crédible",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "une inflation qui dure désancre les anticipations ; elles ne redescendent pas par le même chemin"
+  },
+  {
+   "de": "inflation-mondiale:anticipations",
+   "vers": "inflation-mondiale:prix_conso",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "crédibilité retrouvée",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "des anticipations hautes font fixer des prix et des salaires plus hauts"
+  },
+  {
+   "de": "inflation-mondiale:prix_conso",
+   "vers": "inflation-mondiale:banques_centrales",
+   "forme": "predation",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": "-",
+   "style": null,
+   "delai": "semaines",
+   "force": "forte",
+   "intensite": null,
+   "coupure": "contraintes politiques sur la banque centrale",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "boucle de régulation : l'inflation fait monter les taux, les taux freinent l'inflation"
+  },
+  {
+   "de": "inflation-mondiale:banques_centrales",
+   "vers": "inflation-mondiale:salaires",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "mois à années",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "politique budgétaire expansive",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "la hausse des taux refroidit l'activité et le marché du travail, avec un long retard"
+  },
+  {
+   "de": "inflation-mondiale:banques_centrales",
+   "vers": "inflation-mondiale:monnaies",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": null,
+   "coupure": "si les autres banques centrales suivent",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "des taux américains plus hauts renforcent le dollar"
+  },
+  {
+   "de": "inflation-mondiale:monnaies",
+   "vers": "inflation-mondiale:prix_conso",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "variation du dollar",
+    "regle": "proportionnelle"
+   },
+   "coupure": "économies peu importatrices",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "un dollar fort importe de l'inflation chez les autres et en exporte peu aux États-Unis"
+  },
+  {
+   "de": "inflation-mondiale:approvisionnement",
+   "vers": "inflation-mondiale:prix_conso",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "perturbations des détroits et du fret",
+    "regle": "seuil"
+   },
+   "coupure": "stocks des entreprises",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "des chaînes bloquées font monter les prix des biens"
+  },
+  {
+   "de": "inflation-mondiale:budget",
+   "vers": "inflation-mondiale:prix_conso",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "économie en sous-emploi",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "subventions et boucliers baissent les prix mesurés ; déficits et droits de douane les montent"
+  },
+  {
+   "de": "inflation-mondiale:budget",
+   "vers": "inflation-mondiale:banques_centrales",
+   "forme": "competition",
+   "forme_ecrite": true,
+   "effet": "-",
+   "retour": "-",
+   "style": null,
+   "delai": "mois",
+   "force": "faible",
+   "intensite": null,
+   "coupure": "coordination",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre"
+  },
+  {
+   "de": "inflation-mondiale:statistiques",
+   "vers": "inflation-mondiale:banques_centrales",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "révisions ultérieures",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée"
+  },
+  {
    "de": "ormuz:milieu",
    "vers": "ormuz:flux_energie",
    "forme": "contrainte",
@@ -1532,7 +2321,7 @@
    "de": "energie-mondiale:prix",
    "vers": "inflation-mondiale:energie",
    "nature": "l'énergie entre dans l'inflation et dans les décisions des banques centrales",
-   "resolu": false
+   "resolu": true
   },
   {
    "de": "energie-mondiale:decisions",
@@ -1565,6 +2354,48 @@
    "resolu": false
   },
   {
+   "de": "inflation-mondiale:energie",
+   "vers": "energie-mondiale:prix",
+   "nature": "le prix de l'énergie vient du marché mondial",
+   "resolu": true
+  },
+  {
+   "de": "inflation-mondiale:energie",
+   "vers": "ormuz:prix",
+   "nature": "un choc sur Ormuz passe par les prix de l'énergie",
+   "resolu": true
+  },
+  {
+   "de": "inflation-mondiale:approvisionnement",
+   "vers": "transport-maritime:detroits",
+   "nature": "les détroits et le fret",
+   "resolu": false
+  },
+  {
+   "de": "inflation-mondiale:alimentation",
+   "vers": "alimentation-mondiale:prix",
+   "nature": "récoltes, engrais, interdictions d'export",
+   "resolu": false
+  },
+  {
+   "de": "inflation-mondiale:monnaies",
+   "vers": "dette-emergents:monnaies",
+   "nature": "un dollar fort serre les pays endettés en dollars",
+   "resolu": false
+  },
+  {
+   "de": "inflation-mondiale:budget",
+   "vers": "politique-americaine:budget",
+   "nature": "droits de douane, déficits, pression sur la Réserve fédérale",
+   "resolu": false
+  },
+  {
+   "de": "inflation-mondiale:statistiques",
+   "vers": "economie-chinoise:statistiques",
+   "nature": "fiabilité des chiffres officiels chinois",
+   "resolu": false
+  },
+  {
    "de": "ormuz:prix",
    "vers": "energie-mondiale:prix",
    "nature": "le prix du brut relie Ormuz à tous les importateurs",
@@ -1574,7 +2405,7 @@
    "de": "ormuz:prix",
    "vers": "inflation-mondiale:energie",
    "nature": "l'énergie entre dans l'inflation et donc dans les banques centrales",
-   "resolu": false
+   "resolu": true
   },
   {
    "de": "ormuz:interieur_iran",
@@ -1608,13 +2439,13 @@
   }
  ],
  "bilan": {
-  "themes": 2,
-  "compartiments": 20,
-  "relations": 25,
-  "ponts": 14,
-  "ponts_en_attente": 12,
-  "relations_a_verifier": 25,
-  "relations_avec_intensite": 9,
-  "compartiments_sans_trace_collectee": 6
+  "themes": 3,
+  "compartiments": 30,
+  "relations": 38,
+  "ponts": 21,
+  "ponts_en_attente": 15,
+  "relations_a_verifier": 38,
+  "relations_avec_intensite": 15,
+  "compartiments_sans_trace_collectee": 1
  }
 }

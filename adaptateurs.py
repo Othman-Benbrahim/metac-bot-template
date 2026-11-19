@@ -62,7 +62,40 @@ def dyade(reg: Path, a: str, b: str) -> list[tuple[str, float]]:
     return sorted((k, v["somme_g"] / (v["n"] + 5)) for k, v in s.items())
 
 
-ADAPTATEURS = {"portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade}
+def fred(reg: Path, serie: str) -> list[tuple[str, float]]:
+    """Une série publique de la FRED (collecte_fred.py) : Brent, stocks, taux, inflation, dollar, alimentation."""
+    return sorted((r["jour"], float(r["valeur"])) for r in _csv(reg, "fred.csv") if r["serie"] == serie)
+
+
+def meteo(reg: Path, point: str) -> list[tuple[str, float]]:
+    """ANOMALIE de température du jour (°C) par rapport aux mêmes jours de l'année (± 7 jours) des années
+    précédentes, pour un point (collecte_meteo.py). Jours sans référence (première année) : écartés."""
+    from datetime import date
+    serie = sorted((r["jour"], float(r["t_moy"])) for r in _csv(reg, "meteo-points.csv") if r["point"] == point)
+    par_jour: dict[int, list[tuple[int, float]]] = {}
+    for j, t in serie:
+        d = date.fromisoformat(j)
+        par_jour.setdefault(d.timetuple().tm_yday, []).append((d.year, t))
+    out = []
+    for j, t in serie:
+        d = date.fromisoformat(j)
+        doy = d.timetuple().tm_yday
+        ref = [x for k in range(doy - 7, doy + 8) for (an, x) in par_jour.get((k - 1) % 366 + 1, []) if an < d.year]
+        if len(ref) >= 15:
+            out.append((j, round(t - sum(ref) / len(ref), 2)))
+    return out
+
+
+def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
+    """Prévision immédiate de l'inflation (Réserve fédérale de Cleveland, collecte_nowcast_inflation.py), par jour de
+    relevé ; mesure par exemple « variation_mensuelle:CPI » (les deux-points de la mesure sont gardés)."""
+    mesure = ":".join(parties)
+    return sorted((r["releve_le"], float(r["valeur"])) for r in _csv(reg, "nowcast-inflation.csv")
+                  if r["mesure"] == mesure and r["valeur"] not in ("", None))
+
+
+ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+               "fred": fred, "meteo": meteo}
 
 
 def lire(nom: str, reg: Path = REG) -> list[tuple[str, float]]:

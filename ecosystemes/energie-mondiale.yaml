@@ -35,7 +35,8 @@ compartiments:
     acteurs:
       - {nom: "réserve stratégique américaine", taille: "macro", espace: "pays", vitesse: "semaines"}
     traces:
-      - {source: "stocks hebdomadaires américains (publication officielle publique)", statut: "a_brancher"}
+      - {source: "stocks commerciaux de brut américains (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:WCESTUS1"}
+      - {source: "réserve stratégique américaine (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:WCSSTUS1"}
   - id: transport
     nom: Transport
     elements: [détroits (Ormuz, Bab-el-Mandeb, Malacca), canal de Suez, oléoducs, méthaniers, fret]
@@ -57,7 +58,7 @@ compartiments:
       - {nom: "un fonds spéculatif", taille: "méso", espace: "mondial", vitesse: "minutes"}
       - {nom: "les contrats à terme sur le Brent", taille: "macro", espace: "mondial", vitesse: "minutes"}
     traces:
-      - {source: "prix quotidien du Brent (données publiques)", statut: "a_brancher"}
+      - {source: "prix quotidien du Brent (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILBRENTEU"}
   - id: decisions
     nom: Décisions et conventions
     elements: [quotas de l'OPEP+, sanctions et plafonds de prix, ventes de réserves stratégiques, taxes et subventions]
@@ -77,7 +78,8 @@ compartiments:
     elements: [hivers froids ou doux, ouragans dans le golfe du Mexique, vagues de chaleur]
     niveau: {espace: "régionale", temps: "saisons", vitesse: "jours (tempêtes) à saisons", taille: "méso à macro"}
     traces:
-      - {source: "températures et prévisions saisonnières (données publiques)", statut: "a_brancher"}
+      - {source: "anomalie de température à Berlin (chauffage européen, Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:berlin"}
+      - {source: "anomalie de température à Houston (golfe du Mexique, Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:houston"}
   - id: recits
     nom: Récits et anticipations
     elements: [déclarations des producteurs, prévisions des agences, couverture médiatique, sentiment des marchés]

@@ -15,7 +15,7 @@ compartiments:
     elements: [goulet étroit et peu profond, chaleur extrême, mer semi-fermée, eau douce rare et dessalement sur les rives]
     niveau: {espace: "le détroit et le golfe", temps: "permanent ; saisons de chaleur", vitesse: "très lente (relief) ; jours (tempêtes de chaleur, sable)", taille: "méso"}
     traces:
-      - {source: "températures et vents (Open-Meteo ou réanalyses)", statut: "a_brancher"}
+      - {source: "anomalie de température à Bandar Abbas (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:bandar_abbas"}
   - id: flux_energie
     nom: Flux d'énergie
     elements: [pétrole brut, produits raffinés, gaz naturel liquéfié, exportateurs du Golfe, routes de contournement par oléoducs (Arabie saoudite vers la mer Rouge, Émirats vers Fujaïrah)]
@@ -77,7 +77,7 @@ compartiments:
     elements: [prix du brut (Brent), prix du GNL en Asie et en Europe, fret pétrolier, primes de risque]
     niveau: {espace: "marchés mondiaux", temps: "séances quotidiennes", vitesse: "minutes à semaines", taille: "macro"}
     traces:
-      - {source: "prix quotidien du Brent (FRED, données publiques)", statut: "a_brancher"}
+      - {source: "prix quotidien du Brent (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILBRENTEU"}
   - id: interieur_iran
     nom: Intérieur iranien
     elements: [économie sous sanctions, recettes pétrolières, inflation, stress hydrique, contestation, équilibre des pouvoirs (en agrégat)]

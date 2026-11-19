@@ -19,5 +19,6 @@ def test_resume_ordonne_les_fiches_non_ecrites_d_abord():
           {"question_id": "4", "titre": "Mexico packages?", "themes": [{"id": "securite-radiologique", "nom": "Sources radioactives"}]}]
     r = it.resumer(ls, it.themes_connus())
     ordre = [x["theme"] for x in r["ordre"]]
-    assert ordre[0] == "securite-radiologique" and ordre[-1] == "ormuz"
+    ecrits = [x["fiche_ecrite"] for x in r["ordre"]]
+    assert ordre[0] == "securite-radiologique" and ecrits == sorted(ecrits)     # fiches écrites en dernier
     assert next(x for x in r["ordre"] if x["theme"] == "energie-mondiale")["ponts_qui_l_appellent"] == 1
