@@ -343,6 +343,12 @@ ESSAIS = {
                        "objet": "brique « scrutin » (règle, sondages à la date, erreur habituelle, temps restant) contre "
                                 "les semblables, sur les questions électorales résolues, par classe homologue",
                        "doc": "preenregistrements/etalon-scrutin.md"},
+    "emotions_questions": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 30, "statut": "clos", "clos_le": "2026-11-19",
+                           "verdict": "non tranché (E − P = +0,003, [−0,013 ; +0,022], 929 questions) ; descriptif : les "
+                                      "titres chargés d'émotions négatives se résolvent PLUS souvent par oui en 2026 (34 % "
+                                      "contre 29 %), à l'inverse d'avant 2026 : hypothèse du forçage non confirmée",
+                           "objet": "émotions de la formulation des titres (EmoAtlas) ajoutées au recalibrage des semblables",
+                           "doc": "preenregistrements/emotions-questions.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",

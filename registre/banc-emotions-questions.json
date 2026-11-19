@@ -1,0 +1,40 @@
+{
+ "n_confirmation": 1861,
+ "questions_distinctes": 929,
+ "perte": {
+  "p_S": 0.6453,
+  "p_P": 0.6625,
+  "p_E": 0.6658
+ },
+ "ecart_E_moins_P": 0.0034,
+ "intervalle_corrige": [
+  -0.0131,
+  0.022
+ ],
+ "verdict": "non tranché",
+ "descriptif": {
+  "chargee_negatif": {
+   "n": 213,
+   "part_oui": 0.343,
+   "p_S_moyen": 0.17,
+   "perte_P": 0.7414,
+   "perte_E": 0.8363
+  },
+  "neutre": {
+   "n": 1648,
+   "part_oui": 0.292,
+   "p_S_moyen": 0.192,
+   "perte_P": 0.6523,
+   "perte_E": 0.6438
+  }
+ },
+ "coefficients_avant_coupure": {
+  "constante": -0.833,
+  "logit_S": 0.54,
+  "charge_negative": -0.425,
+  "charge_positive": -0.407,
+  "surprise": -0.101
+ },
+ "risque_corrige": 0.003125,
+ "note": "perte log, plus bas = mieux ; titres seuls ; émotions EmoAtlas (Plutchik, lexique NRC) ; ombre"
+}
