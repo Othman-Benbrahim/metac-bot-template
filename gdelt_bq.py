@@ -41,8 +41,11 @@ BANCS = Path("registre/gdelt-bq-bancs.json")
 COMPTES = Path("registre/gdelt-bq-comptes.json")
 COMPTES_JEU = Path("registre/gdelt-bq-comptes-jeu.json")
 COMPTES_META_2025 = Path("registre/gdelt-bq-comptes-metaculus-2025.json")
+DYADES = Path("registre/gdelt-dyades.json")          # 0.10.312 : réciprocité entre États (preenregistrements/reciprocite-dyades.md)
+TABLE_EVENEMENTS = "gdelt-bq.gdeltv2.events_partitioned"
+DYADES_DEBUT, DYADES_FIN, DYADES_N = "2023-01-01", "2026-10-31", 40
 PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0, "comptes_jeu": 120.0,
-                     "comptes_metaculus_2025": 120.0}
+                     "comptes_metaculus_2025": 120.0, "dyades": 120.0}
 PLAFOND_MOIS_GO = 800.0
 PAR_QUESTION = 15
 
@@ -302,12 +305,69 @@ def mode_bancs() -> int:
     return 0
 
 
+def sql_dyades() -> str:
+    """Paires de gouvernements et d'armées de deux pays différents, par semaine et par sens ; les DYADES_N paires les
+    plus actives. Partition filtrée sur la période (coût borné par l'essai à blanc)."""
+    return f"""
+WITH e AS (
+  SELECT Actor1CountryCode AS a, Actor2CountryCode AS b, GoldsteinScale AS g, QuadClass AS c,
+         DATE_TRUNC(PARSE_DATE('%Y%m%d', CAST(SQLDATE AS STRING)), WEEK(MONDAY)) AS semaine
+  FROM `{TABLE_EVENEMENTS}`
+  WHERE _PARTITIONTIME BETWEEN TIMESTAMP(@d0) AND TIMESTAMP(@d1)
+    AND SQLDATE BETWEEN CAST(REPLACE(@d0, '-', '') AS INT64) AND CAST(REPLACE(@d1, '-', '') AS INT64)
+    AND Actor1Type1Code IN ('GOV', 'MIL') AND Actor2Type1Code IN ('GOV', 'MIL')
+    AND Actor1CountryCode IS NOT NULL AND Actor2CountryCode IS NOT NULL
+    AND Actor1CountryCode != Actor2CountryCode),
+paires AS (
+  SELECT LEAST(a, b) AS p1, GREATEST(a, b) AS p2, COUNT(*) AS n FROM e GROUP BY p1, p2
+  ORDER BY n DESC LIMIT {DYADES_N})
+SELECT e.a, e.b, CAST(e.semaine AS STRING) AS semaine, COUNT(*) AS n, SUM(e.g) AS somme_g,
+       COUNTIF(e.c = 1) AS coop_verbale, COUNTIF(e.c = 2) AS coop_materielle,
+       COUNTIF(e.c = 3) AS conflit_verbal, COUNTIF(e.c = 4) AS conflit_materiel
+FROM e JOIN paires ON LEAST(e.a, e.b) = paires.p1 AND GREATEST(e.a, e.b) = paires.p2
+GROUP BY e.a, e.b, semaine"""
+
+
+def mode_dyades(client=None) -> int:
+    from google.cloud import bigquery
+    if client is None:
+        from google.oauth2 import service_account
+        cred = service_account.Credentials.from_service_account_info(json.loads(os.environ["GCP_SA_KEY"]))
+        client = bigquery.Client(project=os.environ["GCP_PROJET"], credentials=cred)
+    params = [bigquery.ScalarQueryParameter("d0", "STRING", DYADES_DEBUT),
+              bigquery.ScalarQueryParameter("d1", "STRING", DYADES_FIN)]
+    texte = sql_dyades()
+    essai = client.query(texte, job_config=bigquery.QueryJobConfig(dry_run=True, use_query_cache=False,
+                                                                  query_parameters=params))
+    go = essai.total_bytes_processed / 1e9
+    mois = datetime.now(timezone.utc).strftime("%Y-%m")
+    cpt = compteur()
+    deja = float(cpt.get(mois, 0.0))
+    print(f"BigQuery (dyades) : {DYADES_DEBUT} → {DYADES_FIN}, essai à blanc {go:.2f} Go ; mois {mois} : {deja:.1f} Go", flush=True)
+    if go > PLAFOND_REQUETE_GO["dyades"]:
+        raise RuntimeError(f"requête refusée : {go:.1f} Go > plafond {PLAFOND_REQUETE_GO['dyades']} Go (dyades)")
+    if deja + go > PLAFOND_MOIS_GO:
+        raise RuntimeError(f"requête refusée : le mois atteindrait {deja + go:.0f} Go (> {PLAFOND_MOIS_GO:.0f} Go)")
+    lignes = list(client.query(texte, job_config=bigquery.QueryJobConfig(query_parameters=params)).result())
+    cpt[mois] = round(deja + go, 3)
+    COMPTEUR.write_text(json.dumps(cpt, ensure_ascii=False, indent=1), encoding="utf-8")
+    out: dict[str, dict] = {}
+    for r in lignes:
+        out.setdefault(f'{r["a"]}>{r["b"]}', {})[r["semaine"]] = {
+            "n": int(r["n"]), "somme_g": round(float(r["somme_g"] or 0), 2), "coop_verbale": int(r["coop_verbale"]),
+            "coop_materielle": int(r["coop_materielle"]), "conflit_verbal": int(r["conflit_verbal"]),
+            "conflit_materiel": int(r["conflit_materiel"])}
+    DYADES.write_text(json.dumps({"debut": DYADES_DEBUT, "fin": DYADES_FIN, "sens": out}, ensure_ascii=False), encoding="utf-8")
+    print(f"{len(out)} sens de paires ; {sum(len(v) for v in out.values())} semaines-sens.")
+    return 0
+
+
 def principal(mode: str) -> int:
     if not os.environ.get("GCP_SA_KEY") or not os.environ.get("GCP_PROJET"):
         print("::warning::GCP_SA_KEY ou GCP_PROJET absent : GDELT par BigQuery sauté.")
         return 0
     try:
-        return (mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
+        return (mode_dyades() if mode == "dyades" else mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
                 else mode_comptes_jeu() if mode == "comptes_jeu"
                 else mode_comptes_jeu(True, "metaculus", COMPTES_META_2025, mode) if mode == "comptes_metaculus_2025"
                 else mode_tournoi(mode))
@@ -319,5 +379,5 @@ def principal(mode: str) -> int:
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
     a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes", "comptes_jeu",
-                                           "comptes_metaculus_2025"], default="nuit")
+                                           "comptes_metaculus_2025", "dyades"], default="nuit")
     sys.exit(principal(a.parse_args().mode))
