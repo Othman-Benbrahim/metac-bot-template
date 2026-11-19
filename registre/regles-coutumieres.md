@@ -1,6 +1,6 @@
 # Règles coutumières : bilan
 
-31 règles ; source 25, absence 4, auteur 2.
+33 règles ; source 27, absence 4, auteur 2.
 
 | espace | structure | statut | n |
 |---|---|---|---|
@@ -19,8 +19,9 @@
 | europe | procedure | absence | 1 |
 | europe | procedure | source | 2 |
 | monde | course | source | 3 |
-| monde | evenement_rare | source | 1 |
+| monde | evenement_rare | source | 2 |
 | monde | maintien | auteur | 1 |
+| monde | maintien | source | 1 |
 | monde | procedure | source | 1 |
 | oceanie | course | source | 1 |
 

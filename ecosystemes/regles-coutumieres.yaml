@@ -378,3 +378,26 @@ regles:
     sources:
       - {titre: "Charte des Nations unies, article 27 (bibliothèque des droits de l'homme de l'université du Minnesota)", url: "https://hrlibrary.umn.edu/instree/chapter5.html", consulte: "2026-11-19"}
     statut: source
+
+  # ---------------------------------------------------------------- lot 5 : événements rares et maintien
+  - id: coups_d_etat_frequence
+    ecosysteme: "Monde · coups d'État"
+    espace: monde
+    echelle: {axe: temps, tranche: "année"}
+    structure: evenement_rare
+    regle: "De 1950 à 2010, 457 tentatives de coup d'État dans le monde, dont 227 réussies (49,7 %). L'Afrique et les Amériques en concentrent la plupart (36,5 % et 31,9 % selon le texte ; la figure 1 compte 169 cas africains, soit 37 %). Le nombre de tentatives baisse sur la période (pics au milieu des années 1960, 1970 et au début des années 1990) ; la réussite remonte après 2003 (12 sur 18). Ce sont des ordres de grandeur pour un taux de base, pas une loi pour un pays donné."
+    parametres: {tentatives_1950_2010: 457, reussies: 227, taux_reussite: 0.497, part_afrique: 0.365, reussite_depuis_2003: "12/18"}
+    sources:
+      - {titre: "Powell et Thyne, Global instances of coups from 1950 to 2010: A new dataset, Journal of Peace Research, 2011", url: "https://www.uky.edu/~clthyn2/powell-thyne-JPR-2011.pdf", consulte: "2026-11-19"}
+    statut: source
+
+  - id: chefs_d_etat_sortie_irreguliere
+    ecosysteme: "Monde · maintien des dirigeants"
+    espace: monde
+    echelle: {axe: temps, tranche: "mois"}
+    structure: maintien
+    regle: "Les sorties irrégulières de dirigeants (coup, révolte, assassinat) sont très rares : 45 cas de mars 2001 à mars 2014 sur environ 26 000 pays-mois, soit 0,17 % des pays-mois ; sur la même période, 16 coups. Pour une question « X sera-t-il encore au pouvoir à telle date ? », le point de départ est le maintien, sauf échéance électorale ou limite de mandat."
+    parametres: {cas_2001_2014: 45, pays_mois: 26000, taux_mensuel: 0.0017}
+    sources:
+      - {titre: "Beger, Dorff et Ward, Irregular Leadership Changes in 2014: Forecasts using ensemble, split-population duration models, 2014", url: "https://arxiv.org/abs/1409.7105", consulte: "2026-11-19"}
+    statut: source
