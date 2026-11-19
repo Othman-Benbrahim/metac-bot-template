@@ -1,0 +1,36 @@
+# Type d'inconnu par compartiment (taxonomie de Smithson, 1989 ; i2Insights 2022), décision d'auteur du 2026-11-19, 20 h 50.
+# Ce fichier n'est pas une fiche (pas de clé « theme ») : ecosystemes.charger l'ignore ; inconnus.py le lit.
+# Types permis :
+#   erreur      : confusion (une chose prise pour une autre), inexactitude (mauvaise estimation), absence (rien ne
+#                 l'observe), probabilite, ambiguite (plusieurs états distincts possibles), flou (une fourchette),
+#                 conflictuel (des sources se contredisent ; ajout de Smithson)
+#   ignorance   : hors_sujet (ce qu'on ne cherche pas à savoir), tabou (ce qu'on n'a pas le droit de dire),
+#   active        indecidable (ne peut être tranché, même en principe)
+# « absence » est aussi DÉDUITE par inconnus.py pour tout compartiment sans trace collectée : on ne l'écrit ici que
+# lorsqu'elle est structurelle (aucune trace possible, pas seulement pas encore branchée).
+# Chaque entrée porte sa raison : un fait ou une source, jamais une impression.
+compartiments:
+  "humain:opinion_privee":
+    types: [tabou]
+    raison: "Kuran (1995) : la préférence privée est cachée en public par la falsification ; elle ne se lit que par ses bascules"
+  "humain:falsification":
+    types: [tabou, conflictuel]
+    raison: "écart entre ce qui est dit et ce qui est pensé (Kuran) ; le dit et le pensé se contredisent par définition"
+  "humain:reseaux_discrets":
+    types: [tabou, absence]
+    raison: "réseaux discrets par statut (Bauer et Dachez, 2025) ; en ombre ; aucune trace publique de leurs décisions"
+  "humain:intention":
+    types: [absence]
+    raison: "la fiche le dit : aucune trace directe non intrusive en agrégat ; se lit seulement dans les sondages publiés"
+  "elections-amerique-latine:economie":
+    types: [confusion]
+    raison: "diagnostic du 2026-11-19 : l'indice large du dollar (monde) mesurait l'économie nationale ; mauvais étalon"
+  "elections-amerique-latine:humeur":
+    types: [absence]
+    raison: "sondages à brancher ; étalon électoral en cours de test (preenregistrements/etalon-scrutin.md)"
+  "economie-chinoise:statistiques":
+    types: [conflictuel]
+    raison: "statistiques officielles et mesures externes (électricité, fret, navires) peuvent diverger : le dit contre le compté"
+  "iran-nucleaire:verification":
+    types: [absence]
+    raison: "inspections de l'AIEA interrompues ou limitées : la continuité de la connaissance des stocks n'est plus assurée"
