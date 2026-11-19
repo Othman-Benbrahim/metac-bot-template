@@ -56,8 +56,12 @@ def principal() -> int:
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=40) as c:
         r = c.post(JETON, data={"grant_type": "client_credentials", "client_id": cid, "client_secret": secret,
                                 "scope": "uid"})
+        if r.status_code == 401:                   # 0.10.302 : certains serveurs OIDC exigent l'authentification Basic
+            r = c.post(JETON, data={"grant_type": "client_credentials", "scope": "uid"}, auth=(cid, secret))
         if r.status_code >= 400:
-            print(f"::warning::jeton EUIPO refusé (HTTP {r.status_code}) : {r.text[:200]}")
+            print(f"::warning::jeton EUIPO refusé (HTTP {r.status_code}, formulaire puis Basic) : {r.text[:200]} — "
+                  "vérifier que l'application est abonnée au plan de « Trademark search » et que les identifiants "
+                  "sont ceux de PRODUCTION (pas du bac à sable)")
             return 0
         jeton = r.json()["access_token"]
         entetes = {"X-IBM-Client-Id": cid, "Authorization": f"Bearer {jeton}", "Accept-Language": "en"}

@@ -29,7 +29,7 @@ DOMAINES = REG / "certificats-domaines.txt"
 SORTIE = REG / "certificats.jsonl"
 ETAT = REG / "certificats-etat.json"
 API = "https://api.certspotter.com/v1/issuances"
-PAGES_MAX = 8                 # par domaine et par passage : l'historique se rattrape de nuit en nuit
+PAGES_MAX = 2                 # 0.10.302 : par domaine et par passage ; le quota est partagé entre domaines
 DEFAUT = ["openai.com", "chatgpt.com", "anthropic.com", "claude.ai", "x.ai", "grok.com", "mistral.ai",
           "deepseek.com", "deepmind.google", "meta.ai", "perplexity.ai", "kimi.com", "z.ai", "qwen.ai"]
 
@@ -60,8 +60,14 @@ def principal() -> int:
     total, sante = 0, {}
     collecte = datetime.now(timezone.utc).date().isoformat()
     with httpx.Client(headers=entetes, timeout=40) as c, SORTIE.open("a", encoding="utf-8") as f:
-        for d in domaines():
+        limite = False
+        ordre = sorted(domaines(), key=lambda d: (d in etat, etat.get("_tour", {}).get(d, "")))   # les moins avancés d'abord
+        for d in ordre:
             n_d = 0
+            if limite:
+                sante[d] = "non interrogé (limite atteinte plus tôt)"
+                print(f"{d} : {sante[d]}", flush=True)
+                continue
             try:
                 for _ in range(PAGES_MAX):
                     params = {"domain": d, "include_subdomains": "true", "expand": "dns_names"}
@@ -70,6 +76,7 @@ def principal() -> int:
                     r = c.get(API, params=params)
                     if r.status_code == 429:
                         sante[d] = "limite atteinte (reprise au prochain passage)"
+                        limite = True
                         break
                     r.raise_for_status()
                     lot = r.json()
@@ -83,6 +90,8 @@ def principal() -> int:
                 sante.setdefault(d, "ok")
             except Exception as e:
                 sante[d] = f"{type(e).__name__}: {str(e)[:120]}"
+            if not limite:
+                etat.setdefault("_tour", {})[d] = collecte
             total += n_d
             print(f"{d} : {n_d} nouveau(x) nom(s) ; {sante[d]}", flush=True)
     ETAT.write_text(json.dumps(etat, ensure_ascii=False, indent=1), encoding="utf-8")

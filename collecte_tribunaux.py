@@ -57,11 +57,16 @@ def principal() -> int:
         demandes += [("search", {"type": "r", "q": q.strip(), "order_by": "dateFiled desc"})
                      for q in REQUETES.read_text(encoding="utf-8").splitlines() if q.strip() and not q.startswith("#")]
     n, faites = 0, 0
-    with httpx.Client(headers={"User-Agent": politesse.UA, "Authorization": f"Token {cle}"}, timeout=40) as c, \
+    with httpx.Client(headers={"User-Agent": politesse.UA, "Authorization": f"Token {cle}"}, timeout=90) as c, \
             SORTIE.open("a", encoding="utf-8") as f:
         for chemin, params in demandes[:MAX_REQUETES]:
-            r = c.get(f"{API}/{chemin}/", params=params)
             faites += 1
+            try:
+                r = c.get(f"{API}/{chemin}/", params=params)
+            except httpx.HTTPError as e:                     # 0.10.302 : un délai dépassé n'arrête pas la collecte
+                print(f"{chemin} {params} : {type(e).__name__}")
+                time.sleep(PAUSE)
+                continue
             if r.status_code == 429:
                 print("limite CourtListener atteinte : reprise au prochain passage")
                 break
