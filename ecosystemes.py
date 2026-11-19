@@ -168,7 +168,10 @@ def mermaid(fiche: dict) -> str:
     fleche = {"competition": "<-.->", "mutualisme": "<==>", "predation": "-->", "forcage": "==>", "contrainte": "-.->"}
     for r in fiche["relations"]:
         forme = r.get("forme") or forme_deduite(r["effet"], r.get("retour"))
-        l.append(f'  {r["de"]} {fleche.get(forme, "-->")}|{forme}| {r["vers"]}')
+        etiquette = f'{forme} {r["effet"]}' + (f'/{r["retour"]}' if r.get("retour") is not None else "")
+        if r.get("intensite"):
+            etiquette += f' · intensité ({r["intensite"].get("regle")})'
+        l.append(f'  {r["de"]} {fleche.get(forme, "-->")}|"{etiquette}"| {r["vers"]}')
     return "\n".join(l)
 
 
