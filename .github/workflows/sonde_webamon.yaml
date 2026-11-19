@@ -1,0 +1,40 @@
+name: "Sonde Webamon (forme des réponses, sans clé ; ombre)"
+
+# 0.10.340 : sonde avant toute collecte (demande de l auteur du 2026-11-19, 12 h 24) ; lancée à la main seulement ;
+# rien n'entre dans le bot. preenregistrements/sources-hors-cadre.md
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: sonde-webamon
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u sonde_webamon.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/webamon-sonde.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : sonde Webamon du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
