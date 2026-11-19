@@ -10,3 +10,7 @@ def test_formes_et_adaptateur(tmp_path: Path):
     (tmp_path / "webamon.csv").write_text("index,jour,total\nscans,2026-11-18,1200\nnew_domains,2026-11-18,90000\n",
                                          encoding="utf-8")
     assert ad.lire("webamon:scans", tmp_path) == [("2026-11-18", 1200.0)]
+
+
+def test_sous_la_limite_du_reglement():
+    assert cw.MAX_REQUETES <= 25

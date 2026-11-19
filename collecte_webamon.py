@@ -6,7 +6,7 @@ par jour (aucun domaine, aucune adresse, rien de l'index des données volées) :
 - new_domains : nouveaux domaines enregistrés ce jour-là ;
 - scans : analyses d'URL soumises ce jour-là (hameçonnage et menaces confondus).
 
-Petite dose : à chaque passage, au plus MAX_REQUETES requêtes, pour les jours manquants des JOURS derniers jours (le
+Petite dose : à chaque passage, au plus MAX_REQUETES requêtes (le règlement en permet 25), pour les jours manquants des JOURS derniers jours (le
 plus récent d'abord), une pause entre deux. La syntaxe de date de l'index n'étant pas documentée, on essaie quelques
 formes sur un jour connu et l'on garde la première qui rend un compte strictement entre 0 et le total ; si aucune ne
 convient, on n'écrit rien.
@@ -29,7 +29,7 @@ BASE = "https://search.webamon.com"
 SORTIE = Path("registre") / "webamon.csv"
 INDEX = ("new_domains", "scans")
 JOURS = 90
-MAX_REQUETES = 30
+MAX_REQUETES = 20          # règlement Webamon : 25 au plus (rappel de l'auteur, 2026-11-19, 15 h 22) ; marge de 5
 PAUSE = 5.0
 FORMES = ('date:[{j} TO {j}]', 'date:"{j}"', 'date:{j}*', 'date:[{j} TO {k}}}')
 
