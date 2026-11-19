@@ -123,6 +123,15 @@ def equilibres(mu: float, sigma: float, base: float = 0.0, n: int = 2001) -> dic
             "part_haute": max(stables) if stables else None}
 
 
+def poids_de(r: dict) -> float:
+    """Poids d'une relation : mesuré (calibrer.py) s'il existe, sinon le paramètre « poids » écrit dans la fiche
+    (0.10.330, Ajzen : les poids des piliers de l'intention varient selon l'acte), sinon la force en mots."""
+    if r.get("mesure"):
+        return r["poids_mesure"]
+    p = (r.get("parametres") or {}).get("poids")
+    return float(p) if p is not None else POIDS_FORCE.get(r.get("force") or "inconnue", 0.4)
+
+
 def asymetrie(r: dict, ampleur: float) -> float:
     """Kahneman (théorie des perspectives) : une perte par rapport au point de référence pèse plus qu'un gain de même
     taille. Une relation peut porter « lambda_pertes » (départ 2) et « sens_perte » (+ ou −, le sens de la source qui
@@ -308,7 +317,7 @@ class Carte:
                     if r.get("pont") is True:
                         poids = 0.5
                     else:
-                        poids = r["poids_mesure"] if r.get("mesure") else POIDS_FORCE.get(r.get("force") or "inconnue", 0.4)
+                        poids = poids_de(r)
                         regle = (r.get("intensite") or {}).get("regle") if isinstance(r.get("intensite"), dict) else None
                         poids *= self._mult(r, regle, max(abs(self.intensite(src)), 2 * abs(a)), atteints)
                         poids *= asymetrie(r, a)
@@ -407,7 +416,7 @@ class Carte:
                 s = SIGNE.get(r.get("effet"), None)
                 if s == 0.0:
                     continue
-                poids = r["poids_mesure"] if r.get("mesure") else POIDS_FORCE.get(r.get("force") or "inconnue", 0.4)
+                poids = poids_de(r)
                 regle = (r.get("intensite") or {}).get("regle") if isinstance(r.get("intensite"), dict) else None
                 # l'intensité du moment : celle qu'on observe (|z| de la source), ou celle de l'effet qui arrive lui-même
                 # (un choc assez fort franchit un seuil même là où aucune trace ne le mesure)

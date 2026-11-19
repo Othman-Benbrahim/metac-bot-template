@@ -250,3 +250,31 @@ def test_pont_calibre_donne_le_sens(tmp_path: Path):
     assert lien["effet"] == "+" and lien["mesure"] and lien["delai_mesure"] == 14
     c2 = ca.Carte(calibration=None)
     assert next(x for x in c2.sortants["humain:agenda"] if x["vers"] == "politique-americaine:executif")["effet"] == "±"
+
+
+# --- 0.10.330 : Ajzen ---
+def test_compatibilite_des_lieux():
+    assert cb.lieux("manifestations:US") == {"US"} and cb.lieux("dyade:RUS:UKR") == {"RU", "UA"}
+    assert cb.lieux("meteo:delhi") == {"IN"} and cb.lieux("fred:PFOODINDEXM:var12") is None and cb.lieux("telegram:tout") is None
+    assert not cb.compatibles("manifestations:US", "ucdp:Sudan") and cb.compatibles("hostilites:UA", "dyade:RUS:UKR")
+    assert cb.compatibles("fred:UNRATE", "fred:T10YIE") and cb.compatibles("telegram:tout", "hostilites:UA")
+
+
+def test_intention_et_controle(tmp_path: Path):
+    c = ca.Carte(reg=tmp_path, calibration=None)
+    r = next(x for x in c.sortants["humain:attitude"] if x["vers"] == "humain:intention")
+    assert ca.poids_de(r) == 0.6                                         # le paramètre « poids » remplace la force en mots
+    assert ("humain:controle_percu", 0.4) in c.modulateurs["humain:intention>humain:passage_acte"]
+    seul = c.simuler({"humain:attitude": 1.0}, 180, 7, maintenu=True)
+    bloque = c.simuler({"humain:attitude": 1.0, "humain:controle_percu": -1.0}, 180, 7, maintenu=True)
+    assert seul["humain:passage_acte"]["pic"] > 1.0
+    assert abs((bloque.get("humain:passage_acte") or {"pic": 0})["pic"]) < 0.3        # sans contrôle, pas de bascule
+
+
+# --- 0.10.331 : Haidt ---
+def test_fiche_humain_haidt(tmp_path: Path):
+    f = ec.charger(ec.DOSSIER)["humain"]
+    assert "polarisation" in {c["id"] for c in f["compartiments"]}
+    c = ca.Carte(reg=tmp_path, calibration=None)
+    r = c.simuler({"humain:tri": 1.0}, 3650, 30, maintenu=True)
+    assert r["humain:polarisation"]["pic"] > 0 and r["humain:hierarchie"]["pic"] > 0      # contestation du rang

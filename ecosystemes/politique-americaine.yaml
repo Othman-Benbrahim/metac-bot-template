@@ -716,3 +716,6 @@ ponts:
 - depuis: eau_fleuves
   vers: alimentation-mondiale:commerce
   nature: les exportations de céréales descendent le Mississippi
+- depuis: regles_electorales
+  vers: humain:polarisation
+  nature: primaires, découpage des circonscriptions et financement des campagnes pèsent sur la polarisation (Haidt, ch. 12)

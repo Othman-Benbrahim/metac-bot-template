@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 35, 'compartiments': 412, 'relations': 605, 'ponts': 249, 'ponts_en_attente': 0, 'relations_a_verifier': 605, 'relations_avec_intensite': 274, 'compartiments_sans_trace_collectee': 188}
+Bilan : {'themes': 35, 'compartiments': 417, 'relations': 624, 'ponts': 251, 'ponts_en_attente': 0, 'relations_a_verifier': 624, 'relations_avec_intensite': 276, 'compartiments_sans_trace_collectee': 192}
 
 ## Thèmes à écrire (ponts en attente)
 
@@ -112,6 +112,10 @@ Bilan : {'themes': 35, 'compartiments': 412, 'relations': 605, 'ponts': 249, 'po
 - humain:opinion_publique : prises de position publiques datées (pétitions, déclarations, votes nominaux) (a_brancher)
 - humain:disponibilite : attention publique à un sujet (pages vues Wikipédia, volume d'articles GDELT par sujet) (a_brancher)
 - humain:aspiration : attentes des ménages à un an et à cinq ans (Michigan) : l'aspiration se lit dans la partie lente des attentes (a_brancher)
+- humain:attitude : enquêtes publiques posant la question de l'acte lui-même (intention de voter, de manifester, d'émigrer) (a_brancher)
+- humain:norme_percue : enquêtes de normes perçues ; à défaut, l'opinion publique exprimée (a_brancher)
+- humain:intention : aucune trace directe non intrusive en agrégat ; se lit dans les sondages d'intention publiés (a_brancher)
+- humain:polarisation : écart idéologique entre partis au Congrès (Voteview, DW-NOMINATE) ; part des électeurs vivant dans des circonscriptions très déséquilibrées (a_brancher)
 - inflation-mondiale:elevage_cultures : alertes publiques de santé animale (OMSA) (a_brancher)
 - inflation-mondiale:epidemies : alertes publiques de l'OMS et de l'OMSA (a_brancher)
 - information-cyber:foules : aucune trace directe ; lisible dans les pics d'attention et le ton (inconnue)
@@ -497,6 +501,25 @@ Bilan : {'themes': 35, 'compartiments': 412, 'relations': 605, 'ponts': 249, 'po
 - humain:disponibilite → humain:agenda [forcage] un problème n'entre à l'agenda des décideurs qu'au-delà d'un seuil d'attention
 - humain:passage_acte → humain:agenda [forcage] la rue force l'agenda
 - humain:agenda → humain:agenda [forcage] propre au niveau statut : un problème qui occupe l'agenda en chasse d'autres ; l'attention retombe vers les routines
+- humain:opinion_privee → humain:attitude [forcage] une opinion sur une cause ne devient attitude envers un acte précis que par les conséquences attendues de cet acte
+- humain:opinion_publique → humain:norme_percue [forcage] ce qui se dit et se fait autour de soi fixe la norme perçue
+- humain:conventions → humain:norme_percue [forcage] les conventions établies sont la norme par défaut
+- humain:falsification → humain:norme_percue [forcage] quand chacun cache ce qu'il pense, chacun surestime l'adhésion des autres à la norme officielle (ignorance collective)
+- humain:hierarchie → humain:controle_percu [forcage] une autorité qui réprime réduit le contrôle perçu ; une autorité qui autorise ou faiblit l'accroît
+- humain:stress_chronique → humain:controle_percu [forcage] la précarité retire temps et moyens
+- humain:attitude → humain:intention [forcage] premier pilier de l'intention
+- humain:norme_percue → humain:intention [forcage] deuxième pilier : pousse vers l'acte ou en détourne selon ce que la norme approuve
+- humain:controle_percu → humain:intention [forcage] troisième pilier : on n'a l'intention que de ce qu'on se croit capable de faire
+- humain:intention → humain:passage_acte [forcage] l'intention devient acte quand l'occasion se présente et que le contrôle réel le permet
+- humain:controle_percu → humain:intention [forcage] le contrôle perçu abaisse le seuil du passage de l'intention à l'acte (il le modère, en plus de nourrir l'intention)
+- humain:passage_acte → humain:intention [forcage] l'acte répété dans un contexte stable devient habitude et nourrit l'intention suivante
+- humain:tri → humain:polarisation [forcage] le tri en enclaves de mode de vie supprime les voisins de l'autre camp et durcit l'écart
+- humain:morale → humain:polarisation [forcage] chaque camp tourne autour de valeurs sacrées différentes et justifie après coup ; chacun voit l'autre aveugle
+- humain:polarisation → humain:nous_eux [forcage] l'adversaire politique devient un ennemi permanent plutôt qu'un collègue
+- humain:nous_eux → humain:polarisation [forcage] une frontière de groupe dure se fixe en camps idéologiques
+- humain:treve → humain:polarisation [forcage] des liens personnels entre camps (amitiés, familles qui se fréquentent) changent les intuitions avant les idées : remède indirect
+- humain:polarisation → humain:agenda [forcage] blocage : moins de solutions communes, l'agenda se remplit de combats
+- humain:polarisation → humain:hierarchie [forcage] la contestation du rang devient permanente
 - inflation-mondiale:energie → inflation-mondiale:prix_conso [forcage] l'énergie passe vite dans les prix, d'abord par les carburants
 - inflation-mondiale:alimentation → inflation-mondiale:prix_conso [forcage] les prix alimentaires pèsent plus lourd dans les pays pauvres
 - inflation-mondiale:prix_conso → inflation-mondiale:salaires [mutualisme] boucle prix-salaires : chacun nourrit l'autre quand le travail manque

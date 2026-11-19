@@ -7,9 +7,9 @@
   "seuil_regle": 1.5
  },
  "bilan": {
-  "relations": 605,
-  "mesurees": 152,
-  "compartiments_persistance": 112,
+  "relations": 624,
+  "mesurees": 153,
+  "compartiments_persistance": 113,
   "decomposabilite": {
    "dedans": {
     "n": 51,
@@ -20,14 +20,15 @@
     "r_moyen": 0.245
    }
   },
-  "significatives": 21,
+  "incompatibles": 3,
+  "significatives": 20,
   "signe_contredit": 6,
   "non_calibrables": {
-   "source_sans_serie": 400,
-   "cible_sans_serie": 80,
+   "source_sans_serie": 413,
+   "cible_sans_serie": 83,
    "boucle_sur_soi": 17,
    "meme_serie": 3,
-   "modulation_sans_series": 2
+   "modulation_sans_series": 3
   }
  },
  "relations": {
@@ -434,6 +435,14 @@
    "cible": "telegram:tout",
    "effet_ecrit": "+",
    "concorde": false
+  },
+  "humain:stress_chronique>humain:controle_percu": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 4,
+   "source": "fred:UNRATE",
+   "cible": "ooni:RU",
+   "effet_ecrit": "-",
+   "concorde": null
   },
   "inflation-mondiale:energie>inflation-mondiale:prix_conso": {
    "verdict": "significatif",
@@ -1434,7 +1443,7 @@
    "type": "influence"
   },
   "pont:humain:passage_acte>migrations-demographie:migrations": {
-   "verdict": "significatif",
+   "verdict": "incompatible",
    "r": 0.3,
    "n": 114,
    "retard": 1,
@@ -1442,6 +1451,7 @@
    "delai_jours": 7,
    "signe": "+",
    "poids": 0.6,
+   "verdict_brut": "significatif",
    "source": "manifestations:US",
    "cible": "ucdp:Sudan",
    "type": "influence"
@@ -1512,7 +1522,7 @@
    "type": "influence"
   },
   "pont:information-cyber:censure>humain:falsification": {
-   "verdict": "non_significatif",
+   "verdict": "incompatible",
    "r": -0.154,
    "n": 24,
    "retard": 0,
@@ -1520,6 +1530,7 @@
    "delai_jours": 0,
    "signe": "-",
    "poids": 0.309,
+   "verdict_brut": "non_significatif",
    "source": "ooni:IR",
    "cible": "ooni:RU",
    "type": "influence"
@@ -1723,7 +1734,7 @@
    "type": "influence"
   },
   "pont:russie-ukraine:front>humain:passage_acte": {
-   "verdict": "non_significatif",
+   "verdict": "incompatible",
    "r": 0.012,
    "n": 24,
    "retard": 0,
@@ -1731,6 +1742,7 @@
    "delai_jours": 0,
    "signe": "+",
    "poids": 0.024,
+   "verdict_brut": "non_significatif",
    "source": "feux:UA",
    "cible": "manifestations:US",
    "type": "influence"
@@ -2099,6 +2111,13 @@
    "n": 621,
    "tau_jours": 336.7,
    "serie": "fred:T10YIE"
+  },
+  "humain:controle_percu": {
+   "phi": 0.508,
+   "pas": "semaine",
+   "n": 25,
+   "tau_jours": 10.3,
+   "serie": "ooni:RU"
   },
   "inflation-mondiale:energie": {
    "phi": 0.973,

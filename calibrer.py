@@ -162,6 +162,47 @@ def mesurer_modulation(m: list[float], x: list[float], y: list[float], retard: i
             "gain": round(max(0.0, min(1.5, gain)), 3)}
 
 
+# Ajzen (Attitudes, Personality and Behavior), principe de COMPATIBILITÉ : une mesure ne prédit une autre que si elles
+# portent sur la même action, la même cible, le même contexte et le même temps. Ici, le contexte le plus sûr à lire est
+# le lieu : dans la fiche générique « humain » (et ses ponts), où une relation décrit UNE population, une mesure entre
+# séries de pays différents est déclarée « incompatible » et la carte ne l'utilise pas. Ailleurs (géopolitique,
+# finance), relier deux pays est le propos même : pas de contrôle. Lieu inconnu ou mondial : pas de contrôle.
+VILLES = {"delhi": "IN", "houston": "US", "berlin": "DE", "shanghai": "CN", "kyiv": "UA", "moscou": "RU",
+          "teheran": "IR", "bandar_abbas": "IR"}
+ISO3 = {"RUS": "RU", "UKR": "UA", "ISR": "IL", "IRN": "IR", "USA": "US", "LBN": "LB", "CHN": "CN", "TWN": "TW"}
+NOMS = {"Sudan": "SD", "Ukraine": "UA", "Palestine": "PS", "Yemen": "YE", "Israel": "IL", "Lebanon": "LB", "Syria": "SY"}
+FRED_MONDE = {"PFOODINDEXM", "DCOILBRENTEU", "ECBDFR"}
+GEO = {"manifestations", "hostilites", "paire", "paire_mois", "dyade", "ooni", "feux", "sanctions", "violations", "ucdp",
+       "prix_alimentaires", "acaps", "acaps_risques", "radar", "avions", "voisins", "sanctions_chine"}
+
+
+def lieux(adaptateur: str) -> set[str] | None:
+    """Pays d'une série (codes ISO2), None si inconnu ou mondial."""
+    nom, *par = adaptateur.split(":")
+    if nom == "fred":
+        return None if par and par[0] in FRED_MONDE else {"US"}
+    if nom in ("meteo", "climat"):
+        return {VILLES[par[0]]} if par and par[0] in VILLES else None
+    if nom == "federal_register" or nom == "congres" or nom == "tribunaux":
+        return {"US"}
+    if nom not in GEO:
+        return None
+    out = set()
+    for x in par:
+        if len(x) == 2 and x.isupper():
+            out.add(x)
+        elif x in ISO3:
+            out.add(ISO3[x])
+        elif x in NOMS:
+            out.add(NOMS[x])
+    return out or None
+
+
+def compatibles(ax: str, ay: str) -> bool:
+    a, b = lieux(ax), lieux(ay)
+    return a is None or b is None or bool(a & b)
+
+
 def lire_serie(adaptateur: str, reg: Path) -> list:
     if adaptateur.split(":")[0] in COMPTES_A_REBOURS:
         return []
@@ -252,6 +293,8 @@ def calibrer(dossier: Path = ec.DOSSIER, reg: Path = ad.REG) -> dict:
             continue
         x, y, pas = aligner(sx, sy)
         m = mesurer(x, y, pas) if x else {"verdict": "chevauchement_insuffisant", "n": 0}
+        if "humain:" in cle and not compatibles(ax, ay) and m["verdict"] in ("significatif", "non_significatif"):
+            m["verdict_brut"], m["verdict"] = m["verdict"], "incompatible"
         par = r.get("parametres") or {}
         if "lambda_pertes" in par and x and "retard" in m:
             m.update(mesurer_asymetrie(x, y, m["retard"], float(par.get("sens_perte", -1))))
@@ -286,6 +329,8 @@ def calibrer(dossier: Path = ec.DOSSIER, reg: Path = ad.REG) -> dict:
             continue
         x, y, pas = aligner(sx, sy)
         m = mesurer(x, y, pas) if x else {"verdict": "chevauchement_insuffisant", "n": 0}
+        if "humain:" in p["de"] + p["vers"] and not compatibles(ax, ay) and m["verdict"] in ("significatif", "non_significatif"):
+            m["verdict_brut"], m["verdict"] = m["verdict"], "incompatible"
         m.update(source=ax, cible=ay, type=p.get("type", "influence"))
         rel[f"pont:{p['de']}>{p['vers']}"] = m
     comp = {nid: dict(persistance(sr), serie=a) for nid, (a, sr) in series.items() if a}
@@ -296,6 +341,7 @@ def calibrer(dossier: Path = ec.DOSSIER, reg: Path = ad.REG) -> dict:
     decomposabilite = {"dedans": moy(lambda k: not k.startswith(("pont:", "module:"))), "entre": moy(lambda k: k.startswith("pont:"))}
     bilan = {"relations": len(s["relations"]), "mesurees": len(rel), "compartiments_persistance": len(comp),
              "decomposabilite": decomposabilite,
+             "incompatibles": sum(v["verdict"] == "incompatible" for v in rel.values()),
              "significatives": sum(v["verdict"] == "significatif" for v in rel.values()),
              "signe_contredit": sum(v.get("concorde") is False and v["verdict"] == "significatif" for v in rel.values()),
              "non_calibrables": raisons}

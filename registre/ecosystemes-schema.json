@@ -11466,6 +11466,177 @@
    "acteurs": []
   },
   {
+   "id": "humain:attitude",
+   "theme": "humain",
+   "nom": "Attitude envers l'acte (le juger bon ou mauvais pour soi, pas seulement juger la cause)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "semaines à années",
+    "vitesse": "semaines",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     7,
+     7
+    ],
+    "temps": "semaines à années"
+   },
+   "traces": [
+    {
+     "source": "enquêtes publiques posant la question de l'acte lui-même (intention de voter, de manifester, d'émigrer)",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:norme_percue",
+   "theme": "humain",
+   "nom": "Norme perçue (ce que les proches approuvent et font, tel qu'on le croit)",
+   "niveau": {
+    "espace": "région à pays",
+    "temps": "semaines à années",
+    "vitesse": "semaines",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     2,
+     3
+    ],
+    "vitesse_jours": [
+     7,
+     7
+    ],
+    "temps": "semaines à années"
+   },
+   "traces": [
+    {
+     "source": "enquêtes de normes perçues ; à défaut, l'opinion publique exprimée",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:controle_percu",
+   "theme": "humain",
+   "nom": "Contrôle perçu (pouvoir le faire : ressources, obstacles, risque encouru)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "jours à années",
+    "vitesse": "jours à mois",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     1,
+     30
+    ],
+    "temps": "jours à années"
+   },
+   "traces": [
+    {
+     "source": "coupures et censure du réseau dans le pays (OONI, Russie) : un obstacle concret à l'action collective",
+     "statut": "collecte",
+     "adaptateur": "ooni:RU"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:intention",
+   "theme": "humain",
+   "nom": "Intention (être prêt à le faire)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "jours à mois",
+    "vitesse": "jours à semaines",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     1,
+     7
+    ],
+    "temps": "jours à mois"
+   },
+   "traces": [
+    {
+     "source": "aucune trace directe non intrusive en agrégat ; se lit dans les sondages d'intention publiés",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:polarisation",
+   "theme": "humain",
+   "nom": "Polarisation (écart entre camps, liens transversaux perdus, blocage)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "années à décennies",
+    "vitesse": "années",
+    "taille": "macro"
+   },
+   "organisation": "ideologie",
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     365,
+     365
+    ],
+    "temps": "années à décennies"
+   },
+   "traces": [
+    {
+     "source": "écart idéologique entre partis au Congrès (Voteview, DW-NOMINATE) ; part des électeurs vivant dans des circonscriptions très déséquilibrées",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
    "id": "inflation-mondiale:energie",
    "theme": "inflation-mondiale",
    "nom": "Prix de l'énergie",
@@ -30594,6 +30765,383 @@
    "module": null
   },
   {
+   "de": "humain:opinion_privee",
+   "vers": "humain:attitude",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "semaines",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 4 (compatibilité)",
+   "texte": "une opinion sur une cause ne devient attitude envers un acte précis que par les conséquences attendues de cet acte",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:opinion_publique",
+   "vers": "humain:norme_percue",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 6",
+   "texte": "ce qui se dit et se fait autour de soi fixe la norme perçue",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:conventions",
+   "vers": "humain:norme_percue",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 6",
+   "texte": "les conventions établies sont la norme par défaut",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:falsification",
+   "vers": "humain:norme_percue",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "semaines",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 6 ; Kuran",
+   "texte": "quand chacun cache ce qu'il pense, chacun surestime l'adhésion des autres à la norme officielle (ignorance collective)",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:hierarchie",
+   "vers": "humain:controle_percu",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 5",
+   "texte": "une autorité qui réprime réduit le contrôle perçu ; une autorité qui autorise ou faiblit l'accroît",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:stress_chronique",
+   "vers": "humain:controle_percu",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 5",
+   "texte": "la précarité retire temps et moyens",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:attitude",
+   "vers": "humain:intention",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 6",
+   "texte": "premier pilier de l'intention",
+   "parametres": {
+    "poids": 0.6
+   },
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:norme_percue",
+   "vers": "humain:intention",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 6",
+   "texte": "deuxième pilier : pousse vers l'acte ou en détourne selon ce que la norme approuve",
+   "parametres": {
+    "poids": 0.4
+   },
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:controle_percu",
+   "vers": "humain:intention",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 6",
+   "texte": "troisième pilier : on n'a l'intention que de ce qu'on se croit capable de faire",
+   "parametres": {
+    "poids": 0.5
+   },
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:intention",
+   "vers": "humain:passage_acte",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": {
+    "mesure": "part de la population prête à agir",
+    "regle": "seuil"
+   },
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 5",
+   "texte": "l'intention devient acte quand l'occasion se présente et que le contrôle réel le permet",
+   "parametres": {
+    "seuil": 1.5
+   },
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:controle_percu",
+   "vers": "humain:intention",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "0",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 5-6",
+   "texte": "le contrôle perçu abaisse le seuil du passage de l'intention à l'acte (il le modère, en plus de nourrir l'intention)",
+   "parametres": {
+    "gain": 0.4
+   },
+   "series": null,
+   "module": "humain:intention>humain:passage_acte"
+  },
+  {
+   "de": "humain:passage_acte",
+   "vers": "humain:intention",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "semaines",
+   "force": "faible",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Ajzen, ch. 4 (routines et habitudes)",
+   "texte": "l'acte répété dans un contexte stable devient habitude et nourrit l'intention suivante",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:tri",
+   "vers": "humain:polarisation",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Haidt, ch. 12",
+   "texte": "le tri en enclaves de mode de vie supprime les voisins de l'autre camp et durcit l'écart",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:morale",
+   "vers": "humain:polarisation",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Haidt, ch. 12 et conclusion",
+   "texte": "chaque camp tourne autour de valeurs sacrées différentes et justifie après coup ; chacun voit l'autre aveugle",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:polarisation",
+   "vers": "humain:nous_eux",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "forte",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Haidt, ch. 12",
+   "texte": "l'adversaire politique devient un ennemi permanent plutôt qu'un collègue",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:nous_eux",
+   "vers": "humain:polarisation",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "hostilité entre camps",
+    "regle": "saturation"
+   },
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Haidt, ch. 12",
+   "texte": "une frontière de groupe dure se fixe en camps idéologiques",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:treve",
+   "vers": "humain:polarisation",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "faible",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Haidt, ch. 12",
+   "texte": "des liens personnels entre camps (amitiés, familles qui se fréquentent) changent les intuitions avant les idées : remède indirect",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:polarisation",
+   "vers": "humain:agenda",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Haidt, ch. 12",
+   "texte": "blocage : moins de solutions communes, l'agenda se remplit de combats",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:polarisation",
+   "vers": "humain:hierarchie",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Haidt, ch. 12",
+   "texte": "la contestation du rang devient permanente",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
    "de": "inflation-mondiale:energie",
    "vers": "inflation-mondiale:prix_conso",
    "forme": "forcage",
@@ -37556,6 +38104,13 @@
    "type": "influence"
   },
   {
+   "de": "humain:polarisation",
+   "vers": "politique-americaine:congres",
+   "nature": "blocages et tactique de la terre brûlée au Congrès (Haidt, ch. 12)",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
    "de": "inflation-mondiale:energie",
    "vers": "energie-mondiale:prix",
    "nature": "le prix de l'énergie vient du marché mondial",
@@ -38109,6 +38664,13 @@
    "type": "influence"
   },
   {
+   "de": "politique-americaine:regles_electorales",
+   "vers": "humain:polarisation",
+   "nature": "primaires, découpage des circonscriptions et financement des campagnes pèsent sur la polarisation (Haidt, ch. 12)",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
    "de": "relief-et-montagnes:chateaux_d_eau",
    "vers": "oceans-et-fleuves:glaces",
    "nature": "neige et glaciers des montagnes",
@@ -38513,12 +39075,12 @@
  ],
  "bilan": {
   "themes": 35,
-  "compartiments": 412,
-  "relations": 605,
-  "ponts": 249,
+  "compartiments": 417,
+  "relations": 624,
+  "ponts": 251,
   "ponts_en_attente": 0,
-  "relations_a_verifier": 605,
-  "relations_avec_intensite": 274,
-  "compartiments_sans_trace_collectee": 188
+  "relations_a_verifier": 624,
+  "relations_avec_intensite": 276,
+  "compartiments_sans_trace_collectee": 192
  }
 }
