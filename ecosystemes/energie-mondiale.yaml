@@ -1,0 +1,100 @@
+theme: energie-mondiale
+nom: Énergie mondiale (pétrole et gaz)
+declaration:
+  but: comprendre ce qui fait le prix et la disponibilité du pétrole et du gaz dans le monde, et ce qu'ils transmettent aux autres écosystèmes (questions du tournoi sur le Brent, l'inflation, les sanctions, les détroits)
+  limites: dedans la production, la demande, les stocks, le transport, le raffinage, les marchés, les décisions des producteurs et les sanctions ; dehors l'électricité et les renouvelables (seulement comme tendance de fond), le charbon, la géologie des gisements
+  observateur: notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; données publiques seulement
+  date: 2026-11-19
+  espace: le monde, avec ses points de passage (détroits, oléoducs, terminaux de gaz liquéfié)
+  temps: de la séance de marché à la décennie (cycles d'investissement, transition énergétique) ; mémoire des chocs de 1973, 1979, 1990, 2008, 2020, 2022
+  vitesse: la minute (marchés), la semaine (stocks publiés), le mois (décisions des producteurs), l'année (investissements)
+  taille: une raffinerie, un pays producteur, le marché mondial
+compartiments:
+  - id: production
+    nom: Production
+    elements: [pays de l'OPEP+ et leurs quotas, pétrole de schiste américain, Russie, capacité de production inutilisée (surtout dans le Golfe)]
+    niveau: {espace: bassins producteurs, temps: décisions mensuelles ; forages sur des mois, vitesse: mois, taille: macro}
+    traces:
+      - {source: communiqués des réunions de l'OPEP+, statut: a_brancher}
+      - {source: nombre de forages actifs (publication hebdomadaire publique), statut: a_brancher}
+  - id: demande
+    nom: Demande
+    elements: [Chine, Inde, pays de l'OCDE, saisons (conduite estivale, chauffage hivernal), activité économique]
+    niveau: {espace: grandes économies, temps: saisons ; cycles économiques, vitesse: mois, taille: macro}
+    traces:
+      - {source: prévision immédiate de l'inflation et indicateurs d'activité, statut: collecte, fichier: collecte_nowcast_inflation.py}
+      - {source: calendrier des statistiques chinoises, statut: collecte, fichier: collecte_calendrier_nbs.py}
+  - id: stocks
+    nom: Stocks
+    elements: [stocks commerciaux, réserves stratégiques (américaines et autres), stockage flottant]
+    niveau: {espace: pays consommateurs, temps: publication hebdomadaire, vitesse: semaines, taille: macro}
+    traces:
+      - {source: stocks hebdomadaires américains (publication officielle publique), statut: a_brancher}
+  - id: transport
+    nom: Transport
+    elements: [détroits (Ormuz, Bab-el-Mandeb, Malacca), canal de Suez, oléoducs, méthaniers, fret]
+    niveau: {espace: routes mondiales, temps: traversées de jours à semaines, vitesse: jours, taille: méso à macro}
+    traces:
+      - {source: IMF PortWatch, statut: collecte, fichier: collecte_portwatch.py}
+      - {source: avis aux navigateurs, statut: collecte, fichier: collecte_avis_navigation.py}
+  - id: raffinage
+    nom: Raffinage
+    elements: [capacités de raffinage, marges, arrêts (incidents, maintenance, attaques de drones)]
+    niveau: {espace: grands pôles de raffinage, temps: maintenance saisonnière, vitesse: jours à mois, taille: méso}
+    traces:
+      - {source: feux actifs sur les sites industriels (FIRMS), statut: collecte, fichier: collecte_feux.py}
+  - id: prix
+    nom: Prix et marchés
+    elements: [Brent, WTI, prix du gaz (Europe, Asie), contrats à terme, positions des fonds, dollar]
+    niveau: {espace: marchés mondiaux, temps: séances quotidiennes, vitesse: minutes à semaines, taille: macro}
+    traces:
+      - {source: prix quotidien du Brent (données publiques), statut: a_brancher}
+  - id: decisions
+    nom: Décisions et conventions
+    elements: [quotas de l'OPEP+, sanctions et plafonds de prix, ventes de réserves stratégiques, taxes et subventions]
+    niveau: {espace: États et cartels, temps: réunions et textes datés, vitesse: semaines à mois, taille: macro}
+    traces:
+      - {source: listes de sanctions, statut: collecte, fichier: collecte_sanctions.py}
+      - {source: Federal Register, statut: collecte, fichier: collecte_federal_register.py}
+  - id: conflits
+    nom: Conflits et sécurité des approvisionnements
+    elements: [guerres touchant producteurs ou routes, frappes sur les infrastructures, saisies de navires]
+    niveau: {espace: régions productrices et routes, temps: incidents, vitesse: heures à jours, taille: méso}
+    traces:
+      - {source: GDELT, paires d'États, statut: collecte, fichier: gdelt_bq.py}
+      - {source: avions d'État, statut: collecte, fichier: collecte_avions_etat.py}
+  - id: climat
+    nom: Climat et saisons
+    elements: [hivers froids ou doux, ouragans dans le golfe du Mexique, vagues de chaleur]
+    niveau: {espace: régionale, temps: saisons, vitesse: jours (tempêtes) à saisons, taille: méso à macro}
+    traces:
+      - {source: températures et prévisions saisonnières (données publiques), statut: a_brancher}
+  - id: recits
+    nom: Récits et anticipations
+    elements: [déclarations des producteurs, prévisions des agences, couverture médiatique, sentiment des marchés]
+    niveau: {espace: médiatique mondial, temps: cycle de l'information, vitesse: heures, taille: micro à macro}
+    traces:
+      - {source: GDELT, statut: collecte, fichier: collecte_gdelt.py}
+      - {source: routines officielles, statut: collecte, fichier: collecte_routines.py}
+relations:
+  - {de: production, vers: prix, effet: "-", delai: semaines à mois, force: forte, intensite: {mesure: capacité inutilisée restante, regle: seuil}, coupure: tant qu'il reste une capacité inutilisée, un arrêt est compensé, statut: a_verifier, texte: plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise, le moindre arrêt fait bondir les prix}
+  - {de: demande, vers: prix, effet: "+", delai: mois, force: forte, coupure: récession, statut: a_verifier, texte: une demande forte fait monter les prix}
+  - {de: stocks, vers: prix, effet: "-", delai: semaines, force: moyenne, intensite: {mesure: niveau des stocks par rapport à la moyenne saisonnière, regle: saturation}, coupure: stocks bas, statut: a_verifier, texte: les stocks amortissent les chocs ; bas, ils n'amortissent plus}
+  - {de: transport, vers: prix, effet: "±", delai: jours, force: forte, intensite: {mesure: incidents récents sur les détroits, regle: seuil}, coupure: routes de contournement, statut: a_verifier, texte: un goulet fermé ou menacé fait monter les prix}
+  - {de: conflits, vers: transport, effet: "-", delai: heures à jours, force: forte, coupure: escortes, contournements, statut: a_verifier, texte: attaques et menaces sur les routes}
+  - {de: conflits, vers: raffinage, effet: "-", delai: jours, force: moyenne, coupure: réparations, statut: a_verifier, texte: frappes sur les raffineries et terminaux (drones)}
+  - {de: raffinage, vers: prix, effet: "±", delai: semaines, force: moyenne, coupure: marges et importations de produits, statut: a_verifier, texte: un arrêt de raffinage fait monter les produits plus que le brut}
+  - {de: decisions, vers: production, effet: "±", delai: mois, force: forte, coupure: tricherie sur les quotas, statut: a_verifier, texte: les quotas de l'OPEP+ et les sanctions décident de la production réelle}
+  - {de: prix, vers: decisions, effet: "±", retour: "±", delai: semaines à mois, force: moyenne, coupure: désaccords entre membres, statut: a_verifier, texte: les producteurs réagissent aux prix (baisse de quotas quand les prix chutent) ; boucle de régulation}
+  - {de: prix, vers: demande, effet: "-", delai: mois à années, force: faible, coupure: besoins incompressibles, statut: a_verifier, texte: des prix hauts finissent par freiner la demande}
+  - {de: climat, vers: demande, effet: "±", delai: jours à saisons, force: moyenne, intensite: {mesure: anomalie de température par rapport à la saison, regle: proportionnelle}, coupure: stocks pleins, statut: a_verifier, texte: un hiver froid fait monter la demande de gaz et de fioul}
+  - {de: climat, vers: production, effet: "-", delai: jours, force: moyenne, coupure: hors saison des ouragans, statut: a_verifier, texte: ouragans dans le golfe du Mexique, arrêts de plateformes}
+  - {de: recits, vers: prix, effet: "±", delai: heures, force: moyenne, intensite: {mesure: tension géopolitique du moment, regle: proportionnelle}, coupure: démenti, statut: a_verifier, texte: annonces et menaces bougent les prix avant les flux}
+ponts:
+  - {depuis: transport, vers: ormuz:navigation, nature: Ormuz est le premier goulet du système}
+  - {depuis: prix, vers: inflation-mondiale:energie, nature: l'énergie entre dans l'inflation et dans les décisions des banques centrales}
+  - {depuis: decisions, vers: russie-ukraine:sanctions, nature: sanctions et plafond de prix sur le pétrole russe}
+  - {depuis: demande, vers: economie-chinoise:activite, nature: la Chine est le premier importateur}
+  - {depuis: climat, vers: climat-extremes:saisons, nature: hivers, ouragans, vagues de chaleur}
+  - {depuis: transport, vers: transport-maritime:detroits, nature: le système des passages maritimes}
+  - {depuis: decisions, vers: politique-americaine:energie, nature: réserves stratégiques, sanctions, prix à la pompe et élections}
