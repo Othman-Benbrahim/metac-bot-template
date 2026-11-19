@@ -13,6 +13,7 @@ Familles (choisies par l'auteur) :
   (0.10.160), IATA (0.10.161) ; famille dérivée « notation » : articles économiques qui nomment une agence de notation ;
 - renseignement et lettres_fr (0.10.156) : Intelligence Online, Africa Intelligence ; La Lettre, Glitz (Indigo
   Publications), titres seuls ;
+- conseil_ue (0.10.356, en ombre) : communiqués du Conseil de l'UE (sanctions, accords, conclusions) ;
 - cyber (0.10.199, en ombre) : CERT-FR (ANSSI) ; rapports « Menaces et incidents » qui nomment un attaquant ou un pays ;
 - verification et enquete (0.10.200, en ombre) : Correctiv, vérifications de faits (pression de désinformation) et
   enquêtes ; noms de pays allemands en plus, pour ces deux familles seulement ;
@@ -101,6 +102,9 @@ FLUX = {
         "https://feeds.feedburner.com/europa/7KToFj21lKH",  # doc/motions         # propositions de résolution
         "https://feeds.feedburner.com/europa/4MusBpiFxYU",  # doc/texts-adopted   # textes adoptés
     ],
+    # 0.10.356 (décision d'auteur du 2026-11-19, 16 h 15, en ombre) : là où l'UE décide (sanctions, accords, conclusions).
+    # Famille séparée : « parlement_ue » est lue par le bot, celle-ci ne l'est pas (rien de neuf côté Metaculus).
+    "conseil_ue": ["https://www.consilium.europa.eu/en/rss/pressreleases.ashx"],   # Conseil de l'UE : communiqués
     # 0.10.199 (décision d'auteur du 2026-11-16, 18 h 28, en ombre) : CERT-FR (ANSSI). Les avis et alertes portent sur
     # des produits ; ce qui compte ici, ce sont les rapports « Menaces et incidents » qui nomment un attaquant ou un pays
     # (acte public d'une agence d'État). Pays reconnus par noms ET adjectifs (« iranienne »).
@@ -240,7 +244,7 @@ ALLEMAND = {"verification", "enquete"}   # 0.10.200 : noms allemands (CLDR « de
 # les familles « officiel » et « sante » répètent légitimement un même intitulé pour des événements distincts (mise à
 # jour d'un avis de voyage, nouveau séisme au même endroit, nouveau bulletin OMS sur le même pays), elles ne sont pas
 # dédoublonnées par titre. Un titre de moins de 5 mots n'est pas assez distinctif : il n'est pas dédoublonné.
-DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue"}
+DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 
