@@ -1,0 +1,15 @@
+# Mécanismes à connaître (non mesurables), registre ouvert le 2026-11-19 à la demande de l'auteur ; texte complet dans
+# le document du projet « mecanismes-a-connaitre ». Ce fichier n'est pas une fiche (pas de clé « theme »).
+# Chaque mécanisme dit OÙ il s'applique (s_applique_a) et la GARDE en place dans le programme.
+mecanismes:
+  - {id: depeches, nom: "reprise des dépêches (amont commun de la presse)", s_applique_a: [declaration], garde: "deux sources indépendantes au minimum ; presse ↔ presse et GDELT ↔ UCDP marqués « amont partagé » (ecart_dit_compte.py)"}
+  - {id: sondage_emetteur, nom: "le sondage révèle aussi son émetteur", s_applique_a: [declaration], garde: "un sondage est classé déclaration (classer_series.py), jamais mesure"}
+  - {id: note_qualite, nom: "la note de qualité n'est pas une mesure (Goldstein, gestuelle)", s_applique_a: [declaration], garde: "comptes de gestes à la place du ton (adaptateur gestes:) ; test de garde sur la nature des traces"}
+  - {id: etat_declarant, nom: "l'État n'est pas au-dessus", s_applique_a: [declaration], garde: "statistiques et rapports d'État classés selon ce qu'ils comptent, avec leur émetteur"}
+  - {id: barnum, nom: "lecture à froid (effet Barnum)", s_applique_a: [lecture], garde: "une lecture sans probabilité notée sur l'issue réelle ne compte pas"}
+  - {id: precision_apparente, nom: "prédiction précise en apparence, probable en réalité", s_applique_a: [lecture], garde: "juger sur le registre complet des prévisions notées"}
+  - {id: deux_poches, nom: "les deux poches (multiple outs)", s_applique_a: [essai], garde: "préenregistrement ; risque corrigé selon le nombre d'essais ouverts ; un test lancé une fois"}
+  - {id: forcage, nom: "le forçage (choix illusoire)", s_applique_a: [question], garde: "forme de la question lue avant l'issue ; brique qui s'abstient hors forme"}
+  - {id: communication, nom: "la communication volontaire", s_applique_a: [declaration], garde: "écart dit / compté, personnalités publiques et institutions seulement"}
+  - {id: detournement, nom: "le détournement d'attention (distraction prévisible)", s_applique_a: [calendrier], garde: "fêtes programmées, pas commémorations ; premier test sans effet visible"}
+  - {id: eloquence, nom: "l'éloquence n'est pas la justesse", s_applique_a: [lecture, essai], garde: "la confiance verbale d'un modèle n'est jamais une probabilité"}

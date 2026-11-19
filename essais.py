@@ -343,6 +343,10 @@ ESSAIS = {
                        "objet": "brique « scrutin » (règle, sondages à la date, erreur habituelle, temps restant) contre "
                                 "les semblables, sur les questions électorales résolues, par classe homologue",
                        "doc": "preenregistrements/etalon-scrutin.md"},
+    "scrutin_coutumier": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 30, "statut": "ouvert",
+                          "objet": "brique « scrutin » sur les seules règles coutumières sourcées (second tour, erreur par "
+                                   "type d'élection et temps restant) contre les semblables ; abstention sans règle",
+                          "doc": "preenregistrements/scrutin-coutumier.md"},
     "emotions_questions": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 30, "statut": "clos", "clos_le": "2026-11-19",
                            "verdict": "non tranché (E − P = +0,003, [−0,013 ; +0,022], 929 questions) ; descriptif : les "
                                       "titres chargés d'émotions négatives se résolvent PLUS souvent par oui en 2026 (34 % "

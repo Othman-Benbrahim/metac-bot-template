@@ -1,0 +1,951 @@
+{
+ "fiches": {
+  "alimentation-mondiale": {
+   "espaces": [
+    "asie",
+    "amerique_latine"
+   ],
+   "regles": [
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 8
+   },
+   "natures": {
+    "stock": 2,
+    "flux": 6,
+    "potentiel": 1,
+    "gradient": 2
+   },
+   "declarations": 0
+  },
+  "calendriers-echeances": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 2
+   },
+   "natures": {
+    "phase": 3,
+    "gradient": 1,
+    "potentiel": 1
+   },
+   "declarations": 0
+  },
+  "climat-extremes": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 6
+   },
+   "natures": {
+    "gradient": 8,
+    "stock": 3,
+    "flux": 4
+   },
+   "declarations": 0
+  },
+  "competitions-culture": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 7
+   },
+   "natures": {},
+   "declarations": 0
+  },
+  "crises-bancaires": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 1
+   },
+   "natures": {
+    "flux": 1,
+    "potentiel": 5
+   },
+   "declarations": 0
+  },
+  "cycles-biogeochimiques": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 6
+   },
+   "natures": {
+    "flux": 2,
+    "gradient": 2,
+    "potentiel": 2
+   },
+   "declarations": 0
+  },
+  "dette-emergents": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 6
+   },
+   "natures": {
+    "potentiel": 3,
+    "flux": 5,
+    "phase": 1
+   },
+   "declarations": 0
+  },
+  "eau-moyen-orient": {
+   "espaces": [
+    "afrique",
+    "asie"
+   ],
+   "regles": [
+    {
+     "id": "afrique_limites_de_mandat",
+     "structure": "maintien",
+     "statut": "source"
+    },
+    {
+     "id": "afrique_reelection_sortants",
+     "structure": "course",
+     "statut": "absence"
+    },
+    {
+     "id": "afrique_lecture_auteur",
+     "structure": "contexte",
+     "statut": "auteur"
+    },
+    {
+     "id": "afrique_frontieres_coloniales",
+     "structure": "evenement_rare",
+     "statut": "source"
+    },
+    {
+     "id": "afrique_mines_conflits",
+     "structure": "evenement_rare",
+     "statut": "source"
+    },
+    {
+     "id": "afrique_flux_financiers_illicites",
+     "structure": "contexte",
+     "statut": "source"
+    },
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "afrique_reelection_sortants",
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 10
+   },
+   "natures": {
+    "gradient": 3,
+    "flux": 3,
+    "stock": 1
+   },
+   "declarations": 0
+  },
+  "economie-chinoise": {
+   "espaces": [
+    "asie"
+   ],
+   "regles": [
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 6,
+    "conflictuel": 1
+   },
+   "natures": {
+    "flux": 9,
+    "phase": 3,
+    "gradient": 3
+   },
+   "declarations": 0
+  },
+  "elections-amerique-latine": {
+   "espaces": [
+    "amerique_latine"
+   ],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 5,
+    "confusion": 1
+   },
+   "natures": {
+    "potentiel": 1,
+    "flux": 1
+   },
+   "declarations": 0
+  },
+  "energie-mondiale": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 2
+   },
+   "natures": {
+    "flux": 6,
+    "stock": 1,
+    "potentiel": 1,
+    "gradient": 3
+   },
+   "declarations": 0
+  },
+  "epidemies": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 6
+   },
+   "natures": {
+    "gradient": 1,
+    "flux": 2
+   },
+   "declarations": 0
+  },
+  "foret-et-sols-vivants": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 13
+   },
+   "natures": {},
+   "declarations": 0
+  },
+  "guerre-levant": {
+   "espaces": [
+    "asie"
+   ],
+   "regles": [
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 4
+   },
+   "natures": {
+    "flux": 17
+   },
+   "declarations": 0
+  },
+  "humain": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 23,
+    "tabou": 3,
+    "conflictuel": 1
+   },
+   "natures": {
+    "gradient": 5,
+    "stock": 1,
+    "flux": 14,
+    "déclaration": 1,
+    "phase": 4
+   },
+   "declarations": 0
+  },
+  "inflation-mondiale": {
+   "espaces": [
+    "amerique_du_nord",
+    "asie"
+   ],
+   "regles": [
+    {
+     "id": "us_president_college",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_primaires_second_tour",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_primaires_systemes_speciaux",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_erreur_sondages_par_echelle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_erreur_primaires_d_etat",
+     "structure": "course",
+     "statut": "absence"
+    },
+    {
+     "id": "us_avantage_sortant_congres",
+     "structure": "maintien",
+     "statut": "source"
+    },
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    },
+    {
+     "id": "us_senat_cloture",
+     "structure": "procedure",
+     "statut": "source"
+    },
+    {
+     "id": "us_congres_productivite",
+     "structure": "procedure",
+     "statut": "source"
+    }
+   ],
+   "abstentions": [
+    "us_erreur_primaires_d_etat",
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 2
+   },
+   "natures": {
+    "potentiel": 5,
+    "flux": 5,
+    "stock": 1,
+    "gradient": 2,
+    "phase": 1
+   },
+   "declarations": 0
+  },
+  "information-cyber": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 1
+   },
+   "natures": {
+    "flux": 7,
+    "stock": 1
+   },
+   "declarations": 0
+  },
+  "infrastructures-critiques": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 2
+   },
+   "natures": {
+    "flux": 4,
+    "potentiel": 1,
+    "gradient": 1
+   },
+   "declarations": 0
+  },
+  "iran-nucleaire": {
+   "espaces": [
+    "asie"
+   ],
+   "regles": [
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 4
+   },
+   "natures": {
+    "flux": 9,
+    "phase": 1,
+    "potentiel": 1,
+    "gradient": 1,
+    "stock": 1
+   },
+   "declarations": 0
+  },
+  "liban-institutions": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 3
+   },
+   "natures": {
+    "flux": 4
+   },
+   "declarations": 0
+  },
+  "migrations-demographie": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 5
+   },
+   "natures": {
+    "stock": 2,
+    "flux": 1,
+    "gradient": 1
+   },
+   "declarations": 0
+  },
+  "non-proliferation": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 5
+   },
+   "natures": {
+    "flux": 4
+   },
+   "declarations": 0
+  },
+  "nucleaire-radiologique": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 7
+   },
+   "natures": {},
+   "declarations": 0
+  },
+  "observateur-mesure": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 2
+   },
+   "natures": {
+    "flux": 2
+   },
+   "declarations": 0
+  },
+  "oceans-et-fleuves": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 6
+   },
+   "natures": {
+    "gradient": 3,
+    "stock": 1,
+    "flux": 2
+   },
+   "declarations": 0
+  },
+  "ormuz": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 2
+   },
+   "natures": {
+    "gradient": 2,
+    "flux": 9,
+    "potentiel": 1,
+    "stock": 1
+   },
+   "declarations": 0
+  },
+  "politique-americaine": {
+   "espaces": [
+    "amerique_du_nord"
+   ],
+   "regles": [
+    {
+     "id": "us_president_college",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_primaires_second_tour",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_primaires_systemes_speciaux",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_erreur_sondages_par_echelle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "us_erreur_primaires_d_etat",
+     "structure": "course",
+     "statut": "absence"
+    },
+    {
+     "id": "us_avantage_sortant_congres",
+     "structure": "maintien",
+     "statut": "source"
+    },
+    {
+     "id": "us_senat_cloture",
+     "structure": "procedure",
+     "statut": "source"
+    },
+    {
+     "id": "us_congres_productivite",
+     "structure": "procedure",
+     "statut": "source"
+    }
+   ],
+   "abstentions": [
+    "us_erreur_primaires_d_etat"
+   ],
+   "inconnus": {
+    "absence": 1
+   },
+   "natures": {
+    "flux": 20,
+    "phase": 1,
+    "potentiel": 3,
+    "gradient": 2
+   },
+   "declarations": 0
+  },
+  "relief-et-montagnes": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 7
+   },
+   "natures": {
+    "gradient": 2,
+    "flux": 3
+   },
+   "declarations": 0
+  },
+  "rivalite-sino-americaine": {
+   "espaces": [
+    "asie"
+   ],
+   "regles": [
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 1
+   },
+   "natures": {
+    "flux": 14,
+    "potentiel": 2
+   },
+   "declarations": 0
+  },
+  "russie-ukraine": {
+   "espaces": [
+    "europe"
+   ],
+   "regles": [
+    {
+     "id": "france_legislatives",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "seuils_parlements_nationaux_europe",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "seuils_elections_europeennes",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "ue_majorite_qualifiee",
+     "structure": "procedure",
+     "statut": "source"
+    },
+    {
+     "id": "ue_sanctions_russie",
+     "structure": "procedure",
+     "statut": "source"
+    },
+    {
+     "id": "europe_formation_gouvernement",
+     "structure": "procedure",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "europe_formation_gouvernement"
+   ],
+   "inconnus": {
+    "absence": 3
+   },
+   "natures": {
+    "flux": 17,
+    "stock": 2,
+    "potentiel": 1,
+    "phase": 1
+   },
+   "declarations": 0
+  },
+  "sciences-techniques": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 1
+   },
+   "natures": {
+    "flux": 3,
+    "potentiel": 2,
+    "gradient": 1
+   },
+   "declarations": 0
+  },
+  "securite-europeenne": {
+   "espaces": [
+    "europe"
+   ],
+   "regles": [
+    {
+     "id": "france_legislatives",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "seuils_parlements_nationaux_europe",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "seuils_elections_europeennes",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "ue_majorite_qualifiee",
+     "structure": "procedure",
+     "statut": "source"
+    },
+    {
+     "id": "ue_sanctions_russie",
+     "structure": "procedure",
+     "statut": "source"
+    },
+    {
+     "id": "europe_formation_gouvernement",
+     "structure": "procedure",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "europe_formation_gouvernement"
+   ],
+   "inconnus": {
+    "absence": 4
+   },
+   "natures": {
+    "flux": 4,
+    "potentiel": 1
+   },
+   "declarations": 0
+  },
+  "securite-publique": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 5
+   },
+   "natures": {
+    "flux": 1
+   },
+   "declarations": 0
+  },
+  "soleil-espace": {
+   "espaces": [],
+   "regles": [],
+   "abstentions": [],
+   "inconnus": {
+    "absence": 7
+   },
+   "natures": {
+    "flux": 1
+   },
+   "declarations": 0
+  },
+  "transport-maritime": {
+   "espaces": [
+    "asie"
+   ],
+   "regles": [
+    {
+     "id": "indonesie_presidentielle",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "japon_chambre_basse",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "inde_scrutin_uninominal",
+     "structure": "course",
+     "statut": "source"
+    },
+    {
+     "id": "chine_maintien",
+     "structure": "maintien",
+     "statut": "absence"
+    }
+   ],
+   "abstentions": [
+    "chine_maintien"
+   ],
+   "inconnus": {
+    "absence": 6
+   },
+   "natures": {
+    "flux": 8
+   },
+   "declarations": 0
+  }
+ },
+ "briques": {
+  "seuil": {
+   "axe": "vitesse",
+   "statut": "valide"
+  },
+  "course": {
+   "axe": "taille",
+   "statut": "non tranché"
+  }
+ },
+ "mecanismes": [
+  {
+   "id": "depeches",
+   "nom": "reprise des dépêches (amont commun de la presse)",
+   "garde": "deux sources indépendantes au minimum ; presse ↔ presse et GDELT ↔ UCDP marqués « amont partagé » (ecart_dit_compte.py)"
+  },
+  {
+   "id": "sondage_emetteur",
+   "nom": "le sondage révèle aussi son émetteur",
+   "garde": "un sondage est classé déclaration (classer_series.py), jamais mesure"
+  },
+  {
+   "id": "note_qualite",
+   "nom": "la note de qualité n'est pas une mesure (Goldstein, gestuelle)",
+   "garde": "comptes de gestes à la place du ton (adaptateur gestes:) ; test de garde sur la nature des traces"
+  },
+  {
+   "id": "etat_declarant",
+   "nom": "l'État n'est pas au-dessus",
+   "garde": "statistiques et rapports d'État classés selon ce qu'ils comptent, avec leur émetteur"
+  },
+  {
+   "id": "barnum",
+   "nom": "lecture à froid (effet Barnum)",
+   "garde": "une lecture sans probabilité notée sur l'issue réelle ne compte pas"
+  },
+  {
+   "id": "precision_apparente",
+   "nom": "prédiction précise en apparence, probable en réalité",
+   "garde": "juger sur le registre complet des prévisions notées"
+  },
+  {
+   "id": "deux_poches",
+   "nom": "les deux poches (multiple outs)",
+   "garde": "préenregistrement ; risque corrigé selon le nombre d'essais ouverts ; un test lancé une fois"
+  },
+  {
+   "id": "forcage",
+   "nom": "le forçage (choix illusoire)",
+   "garde": "forme de la question lue avant l'issue ; brique qui s'abstient hors forme"
+  },
+  {
+   "id": "communication",
+   "nom": "la communication volontaire",
+   "garde": "écart dit / compté, personnalités publiques et institutions seulement"
+  },
+  {
+   "id": "detournement",
+   "nom": "le détournement d'attention (distraction prévisible)",
+   "garde": "fêtes programmées, pas commémorations ; premier test sans effet visible"
+  },
+  {
+   "id": "eloquence",
+   "nom": "l'éloquence n'est pas la justesse",
+   "garde": "la confiance verbale d'un modèle n'est jamais une probabilité"
+  }
+ ],
+ "regles": {
+  "source": 28,
+  "absence": 4,
+  "auteur": 2
+ },
+ "regles_monde": [
+  "us_erreur_selon_temps_restant",
+  "regimes_fermes_inertie",
+  "regimes_fermes_contestation",
+  "sondages_erreur_comparee",
+  "presidentielles_mode_de_scrutin",
+  "onu_conseil_securite_vote",
+  "coups_d_etat_frequence",
+  "chefs_d_etat_sortie_irreguliere",
+  "second_tour_retournement"
+ ]
+}

@@ -401,3 +401,18 @@ regles:
     sources:
       - {titre: "Beger, Dorff et Ward, Irregular Leadership Changes in 2014: Forecasts using ensemble, split-population duration models, 2014", url: "https://arxiv.org/abs/1409.7105", consulte: "2026-11-19"}
     statut: source
+
+  - id: second_tour_retournement
+    ecosysteme: "Monde · présidentielles à deux tours, issue du second tour"
+    espace: monde
+    echelle: {axe: espace, tranche: "région du monde"}
+    structure: course
+    regle: "De 1945 à 2020 (423 présidentielles à deux tours, 73 pays), 42,8 % des élections vont au second tour ; le premier du premier tour gagne le second dans 70,7 % des cas, le deuxième dans 29,3 % (53 retournements sur 181 seconds tours). Part des seconds tours gagnés par le deuxième, par région : Europe 31,6 %, Amérique latine 24 %, Afrique 21,6 %, Asie 54 %, Océanie 50 %. Asie (environ 11 seconds tours) et Océanie (environ 4) ont trop peu de cas : la règle du registre des briques (moins de 30 cas = insuffisant) renvoie au chiffre mondial. Recoupement Amérique latine 1978-2017 : 34 seconds tours sur 46 gagnés par le premier du premier tour (12 retournements)."
+    parametres:
+      retournement: {monde: 0.293, europe: 0.316, amerique_latine: 0.24, afrique: 0.216, asie: 0.54, oceanie: 0.5}
+      seconds_tours_estimes: {europe: 79, amerique_latine: 50, afrique: 37, asie: 11, oceanie: 4}
+      minimum_cas: 30
+    sources:
+      - {titre: "Passarelli, article sur les seconds tours présidentiels, université La Sapienza, 2022 (figure 1, tableau 2, note 17)", url: "https://iris.uniroma1.it/retrieve/a858b9d9-3b9f-4fea-b7c1-40a9fe5fb2fa/Passarelli_Runoff_2022.pdf", consulte: "2026-11-19"}
+      - {titre: "Brookings, Winning runoff elections in Latin America", url: "https://www.brookings.edu/articles/winning-runoff-elections-in-latin-america", consulte: "2026-11-19"}
+    statut: source
