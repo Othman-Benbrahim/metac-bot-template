@@ -1,20 +1,37 @@
 {
  "questions_electorales": 329,
  "confirmation": 247,
- "jugees": 0,
+ "jugees": 20,
  "abstentions": {
-  "hors brique (forme)": 77,
-  "pas d'archive ou de tableau": 170
+  "aucun sondage du sujet dans les 30 jours": 119,
+  "hors brique (forme)": 79,
+  "pas d'archive ou de tableau": 29
  },
  "perte": {
-  "semblables": null,
-  "brique": null
+  "semblables": 0.6701,
+  "brique": 1.1961
  },
- "ecart_brique_moins_semblables": null,
+ "ecart_brique_moins_semblables": 0.526,
  "intervalle_corrige": null,
  "verdict": "trop peu de questions jugées",
- "par_classe": {},
- "empreinte_sha256": "c1436c34dce6b5ef85ec00a30b2c868365373a442938da4ab660c69e4a3485c5",
+ "par_classe": {
+  "S1": {
+   "n": 5,
+   "semblables": 0.8395,
+   "brique": 0.933
+  },
+  "S2": {
+   "n": 3,
+   "semblables": 0.3198,
+   "brique": 0.0567
+  },
+  "S3": {
+   "n": 12,
+   "semblables": 0.6871,
+   "brique": 1.5906
+  }
+ },
+ "empreinte_sha256": "d8cc88d5f71b52b1a10a66f2ae5f7895b442cb53d17581089a9916c280eb0412",
  "risque_corrige": 0.0033333333333333335,
  "note": "perte log, plus bas = mieux ; aucune donnée lue hors des archives ; ombre"
 }
