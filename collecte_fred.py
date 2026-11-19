@@ -44,6 +44,8 @@ SERIES = {
     "VIXCLS": "indice de volatilité implicite du S&P 500, quotidien (crises bancaires : confiance)",
     "DPSACBW027SBOG": "dépôts des banques commerciales américaines, hebdomadaire (crises bancaires : dépôts)",
     "UMCSENT": "confiance des ménages américains (Université du Michigan), mensuel (humain : attente)",
+    "CBBTCUSD": "cours du bitcoin (Coinbase), quotidien (crises bancaires : cryptomonnaies) ; 0.10.358",
+    "CBETHUSD": "cours de l'ether (Coinbase), quotidien (crises bancaires : cryptomonnaies) ; 0.10.358",
 }
 
 

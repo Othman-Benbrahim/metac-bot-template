@@ -131,6 +131,17 @@ def climat(reg: Path, point: str) -> list[tuple[str, float]]:
     return out
 
 
+def pub(reg: Path, serie: str) -> list[tuple[str, float]]:
+    """Séries publiques (collecte_series_publiques.py) : banquise, météo spatiale, El Niño, fleuves, sécheresse, récoltes
+    prévues par l'USDA, prépublications arXiv."""
+    return sorted((r["jour"], float(r["valeur"])) for r in _csv(reg, "series-publiques.csv") if r["serie"] == serie)
+
+
+def port(reg: Path, nom: str, colonne: str = "escales") -> list[tuple[str, float]]:
+    """Escales quotidiennes d'un port (IMF PortWatch, collecte_portwatch.py)."""
+    return sorted((r["jour"], float(r[colonne] or 0)) for r in _csv(reg, "portwatch-ports.csv") if r["port"] == nom)
+
+
 def seismes(reg: Path, colonne: str = "m6") -> list[tuple[str, float]]:
     """Séismes par jour (catalogue USGS, collecte_seismes.py) : m45, m6, m7 (nombre au-dessus de la magnitude), mmax,
     iran_m45 (plateau iranien). Les jours sans séisme sont dans le registre (zéro)."""
@@ -183,7 +194,8 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
-               "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue}
+               "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
+               "pub": pub, "port": port}
 
 
 def variation(serie: list[tuple[str, float]], pas: int) -> list[tuple[str, float]]:

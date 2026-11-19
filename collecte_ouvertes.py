@@ -35,6 +35,12 @@ CO2 = "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv"
 WIKI = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/"
         "{article}/daily/{debut}/{fin}")
 ARTICLES = ["War", "Protest", "Riot", "Terrorism", "Coup_d'état", "Recession", "Inflation", "Pandemic"]  # liste fixe
+# 0.10.358 (décision d'auteur du 2026-11-19, 16 h 41) : attention publique aux récits de complot (humain:croyance_complot),
+# liste fixe d'articles anglais ; seules les pages vues comptent, jamais le contenu.
+ARTICLES_COMPLOT = ["Conspiracy_theory", "QAnon", "Great_Replacement_conspiracy_theory", "New_World_Order_conspiracy_theory",
+                    "Illuminati", "Chemtrail_conspiracy_theory", "Deep_state", "Moon_landing_conspiracy_theories",
+                    "Flat_Earth", "Reptilian_conspiracy_theory"]
+LISTES = {"attention_crise": ARTICLES, "attention_complot": ARTICLES_COMPLOT}
 DEBUT = "2016-01-01"
 PAUSE = 2.0
 
@@ -111,22 +117,23 @@ def principal() -> int:
             time.sleep(PAUSE)
         exemple = WIKI.format(article=ARTICLES[0], debut=DEBUT.replace("-", ""), fin=fin)
         if politesse.autorise(c, exemple):
-            total: dict[str, float] = {}
-            complets = 0
-            for a in ARTICLES:
-                try:
-                    v = vues(c.get(WIKI.format(article=a, debut=DEBUT.replace("-", ""), fin=fin)).raise_for_status().json())
-                except Exception as e:
-                    v = {}
-                    print(f"::warning::attention {a} : {type(e).__name__}")
-                if v:
-                    complets += 1
-                    for j, x in v.items():
-                        total[j] = total.get(j, 0.0) + x
-                time.sleep(PAUSE)
-            if complets == len(ARTICLES):                 # somme faussée si un article manque : on garde l'ancienne
-                series["attention_crise"] = sorted(total.items())
-            print(f"attention_crise : {complets}/{len(ARTICLES)} articles, {len(total)} jours", flush=True)
+            for nom_liste, liste in LISTES.items():
+                total: dict[str, float] = {}
+                complets = 0
+                for a in liste:
+                    try:
+                        v = vues(c.get(WIKI.format(article=a, debut=DEBUT.replace("-", ""), fin=fin)).raise_for_status().json())
+                    except Exception as e:
+                        v = {}
+                        print(f"::warning::{nom_liste} {a} : {type(e).__name__}")
+                    if v:
+                        complets += 1
+                        for j, x in v.items():
+                            total[j] = total.get(j, 0.0) + x
+                    time.sleep(PAUSE)
+                if complets == len(liste):                 # somme faussée si un article manque : on garde l'ancienne
+                    series[nom_liste] = sorted(total.items())
+                print(f"{nom_liste} : {complets}/{len(liste)} articles, {len(total)} jours", flush=True)
         else:
             print("::warning::Wikimedia : refusé par robots.txt ; rien collecté.")
     if not series:

@@ -176,8 +176,14 @@ compartiments:
     vitesse: jours
     taille: méso
   traces:
-  - source: statistiques portuaires publiques (temps d'attente, volumes)
-    statut: a_brancher
+  - source: escales quotidiennes à Rotterdam (IMF PortWatch)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: port:rotterdam
+  - source: escales quotidiennes à Singapour (IMF PortWatch)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: port:singapour
 - id: securite
   nom: Sécurité des routes
   organisation: geopolitique

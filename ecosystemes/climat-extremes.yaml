@@ -54,8 +54,10 @@ compartiments:
     vitesse: mois à saisons
     taille: macro
   traces:
-  - source: indice ENSO mensuel (NOAA, public)
-    statut: a_brancher
+  - source: anomalie hebdomadaire de la mer en région Niño 3.4 (NOAA CPC)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:nino34_anomalie
 - id: atmosphere
   organisation: meteo
   nom: Circulation atmosphérique
@@ -138,8 +140,10 @@ compartiments:
     vitesse: mois
     taille: méso à macro
   traces:
-  - source: indices de sécheresse (moniteurs publics)
-    statut: a_brancher
+  - source: part des États-Unis en sécheresse sévère ou pire (US Drought Monitor)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:secheresse_us_d2plus
 - id: tempetes
   organisation: meteo
   nom: Tempêtes et pluies extrêmes
@@ -330,8 +334,14 @@ compartiments:
     vitesse: années à décennies
     taille: macro
   traces:
-  - source: indices publics d'activité solaire et étendue de la banquise (NOAA, NSIDC)
-    statut: a_brancher
+  - source: étendue quotidienne de la banquise arctique (NSIDC)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:banquise_arctique
+  - source: nombre quotidien de taches solaires (GFZ Potsdam)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:taches_solaires
 - id: relief
   organisation: relief
   nom: Relief (montagnes, plateaux, côtes)

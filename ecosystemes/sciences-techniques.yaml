@@ -43,7 +43,7 @@ compartiments:
     elements: ["publications", "universités", "financements publics"]
     niveau: {espace: "mondial", temps: "années", vitesse: "mois à décennies", taille: "micro à macro"}
     traces:
-      - {source: "dépôts publics de prépublications (arXiv)", statut: "a_brancher"}
+      - {source: "prépublications en apprentissage automatique par jour (arXiv cs.LG)", statut: "collecte", fichier: "collecte_series_publiques.py", adaptateur: "pub:arxiv_cs_lg"}
   - id: "capitaux"
     nom: "Capitaux et valorisations"
     organisation: "economie"

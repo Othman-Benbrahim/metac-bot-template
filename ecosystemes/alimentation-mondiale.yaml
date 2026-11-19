@@ -93,8 +93,14 @@ compartiments:
     vitesse: saison
     taille: micro à macro
   traces:
-  - source: prévisions de récolte publiques (FAO, USDA)
-    statut: a_brancher
+  - source: stocks mondiaux de blé prévus en fin de campagne (USDA PSD, comme le WASDE)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:psd_ble_stocks
+  - source: production mondiale de maïs prévue (USDA PSD)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:psd_mais_production
 - id: ravageurs
   organisation: animal
   nom: Ravageurs et maladies des cultures

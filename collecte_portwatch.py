@@ -34,6 +34,13 @@ import httpx
 SERVICE = ("https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/"
            "FeatureServer/0/query")
 SORTIE = Path("registre") / "portwatch-detroits.csv"
+# 0.10.358 (décision d'auteur du 2026-11-19, 16 h 41) : escales quotidiennes de quelques ports clés (transport-maritime:ports),
+# même source, même règle (année en cours seulement).
+SERVICE_PORTS = ("https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Ports_Data/"
+                 "FeatureServer/0/query")
+SORTIE_PORTS = Path("registre") / "portwatch-ports.csv"
+PORTS = {"rotterdam": "Rotterdam", "singapour": "Singapore", "shanghai": "Shanghai", "bandar_abbas": "Bandar Abbas",
+         "jebel_ali": "Jebel Ali", "los_angeles": "Los Angeles"}
 REFERENCE = Path("registre") / "portwatch-reference.csv"
 REFERENCE_DETROITS = {"ormuz": 2025}            # exception écrite : un détroit, une année d'avant-crise
 DEBUT = "2026-06-01"
@@ -52,12 +59,13 @@ DETROITS = {
 }
 
 
-def requete(c: httpx.Client, motif: str, annee: int) -> list[dict]:
-    params = {"where": f"portname LIKE '%{motif}%' AND year = {annee}", "outFields": "date,portname,n_total,n_tanker,n_container",
+def requete(c: httpx.Client, motif: str, annee: int, service: str = SERVICE,
+            champs: str = "date,portname,n_total,n_tanker,n_container") -> list[dict]:
+    params = {"where": f"portname LIKE '%{motif}%' AND year = {annee}", "outFields": champs,
               "orderByFields": "date ASC", "resultRecordCount": 1000, "f": "json"}
     for essai in range(6):
         try:
-            r = c.get(SERVICE, params=params)
+            r = c.get(service, params=params)
             if r.status_code == 429 or r.status_code >= 500:
                 time.sleep(65)
                 continue
@@ -86,6 +94,45 @@ def jour(attr: dict) -> str | None:
     if isinstance(d, str) and len(d) >= 10:
         return d[:10]
     return None
+
+
+def escales(attr: dict) -> list[int] | None:
+    """Escales du jour (toutes, pétroliers, porte-conteneurs), noms de champs tolérés (« portcalls », « n_total »)."""
+    def v(*cles):
+        for k in cles:
+            if attr.get(k) is not None:
+                return int(attr[k])
+        return None
+    t = v("portcalls", "n_total")
+    return None if t is None else [t, v("portcalls_tanker", "n_tanker") or 0, v("portcalls_container", "n_container") or 0]
+
+
+def ports(c: httpx.Client, annee: int) -> None:
+    deja = {}
+    if SORTIE_PORTS.exists():
+        deja = {(x["port"], x["jour"]): [int(x["escales"]), int(x["petroliers"]), int(x["porte_conteneurs"])]
+                for x in csv.DictReader(SORTIE_PORTS.open(encoding="utf-8"))}
+    for nom, motif in PORTS.items():
+        lignes = requete(c, motif, annee, SERVICE_PORTS, "*")
+        noms = {str(a.get("portname")) for a in lignes}
+        if len(noms) > 1:
+            print(f"  port {nom} : plusieurs ports correspondent ({sorted(noms)}) : ignoré, table à préciser")
+            time.sleep(15)
+            continue
+        n = 0
+        for a in lignes:
+            j, e = jour(a), escales(a)
+            if j and j >= DEBUT and e is not None:
+                n += deja.get((nom, j)) != e
+                deja[(nom, j)] = e
+        print(f"  port {nom:12s} {sorted(noms)} : {len(lignes)} jours, {n} nouveaux ou modifiés")
+        time.sleep(15)
+    if deja:
+        with SORTIE_PORTS.open("w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["port", "jour", "escales", "petroliers", "porte_conteneurs"])
+            for (p, j), v in sorted(deja.items(), key=lambda t: (t[0][1], t[0][0])):
+                w.writerow([p, j, *v])
 
 
 def lire() -> dict[tuple, list[int]]:
@@ -119,6 +166,10 @@ def principal() -> int:
             dernier = max((jour(a) or "" for a in lignes), default="—")
             print(f"  {nom:16s} {sorted(noms)} : {len(lignes)} jours en {annee}, dernier {dernier}, {n} nouveaux ou modifiés")
             time.sleep(15)
+        try:
+            ports(c, annee)
+        except Exception as e:
+            print(f"::warning::ports : {type(e).__name__}")
         if not REFERENCE.exists():
             ref = []
             for nom, an in REFERENCE_DETROITS.items():

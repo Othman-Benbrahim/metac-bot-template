@@ -51,7 +51,8 @@ compartiments:
       - {nom: "le Rhin, le Mississippi, le Yangtsé, le Nil (exemples)", taille: "méso", espace: "bassin", vitesse: "saisons", organisation: "eau", facette: "non_humain"}
     niveau: {espace: "bassins versants", temps: "saisons", vitesse: "jours à saisons", taille: "méso"}
     traces:
-      - {source: "débits publics des grands fleuves (USGS, services nationaux)", statut: "a_brancher"}
+      - {source: "niveau du Rhin à Kaub (PEGELONLINE)", statut: "collecte", fichier: "collecte_series_publiques.py", adaptateur: "pub:rhin_kaub_cm"}
+      - {source: "débit du Mississippi à Saint-Louis (USGS)", statut: "collecte", fichier: "collecte_series_publiques.py", adaptateur: "pub:mississippi_saint_louis"}
   - id: "nappes"
     nom: "Nappes souterraines"
     organisation: "eau"

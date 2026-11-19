@@ -71,7 +71,7 @@ compartiments:
       - {nom: "une société cotée détentrice de bitcoins", taille: "méso", espace: "mondial", vitesse: "jours", organisation: "economie", facette: "collectif"}
     niveau: {espace: "mondial", temps: "continu, sans fermeture", vitesse: "minutes", taille: "méso"}
     traces:
-      - {source: "cours publics des cryptomonnaies", statut: "a_brancher"}
+      - {source: "cours du bitcoin (Coinbase, via FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:CBBTCUSD"}
   - id: "regulateurs"
     nom: "Régulateurs et prêteurs en dernier ressort"
     organisation: "statut"

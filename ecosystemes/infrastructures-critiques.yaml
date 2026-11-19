@@ -58,7 +58,7 @@ compartiments:
     elements: ["tempêtes géomagnétiques", "courants induits dans les longues lignes", "perturbation du GPS et des satellites"]
     niveau: {espace: "planète", temps: "cycle solaire", vitesse: "heures", taille: "macro"}
     traces:
-      - {source: "indices géomagnétiques publics (NOAA, centre de prévision de la météo spatiale)", statut: "a_brancher"}
+      - {source: "indice géomagnétique Ap quotidien (GFZ Potsdam)", statut: "collecte", fichier: "collecte_series_publiques.py", adaptateur: "pub:geomag_ap"}
   - id: "attaques"
     nom: "Attaques et sabotages (effets publics)"
     organisation: "geopolitique"

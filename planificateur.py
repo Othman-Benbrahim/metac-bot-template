@@ -54,7 +54,7 @@ COLLECTES = (
                                               # pièce d'identité exigée, refusée par l'auteur)
     ("collecte_tribunaux.yaml", None),
     ("collecte_tfr.yaml", None),              # 0.10.304 : interdictions de survol FAA (liste JSON trouvée par la sonde)
-    ("collecte_fred.yaml", None), ("collecte_meteo.yaml", None), ("collecte_eia.yaml", None), ("collecte_ouvertes.yaml", None), ("collecte_webamon.yaml", None), ("collecte_openmeasures.yaml", None), ("collecte_seismes.yaml", None), ("collecte_gfs.yaml", None),   # 0.10.318 : traces du bas de l'échelle (écosystèmes)
+    ("collecte_fred.yaml", None), ("collecte_meteo.yaml", None), ("collecte_eia.yaml", None), ("collecte_ouvertes.yaml", None), ("collecte_webamon.yaml", None), ("collecte_openmeasures.yaml", None), ("collecte_seismes.yaml", None), ("collecte_gfs.yaml", None), ("collecte_series_publiques.yaml", None),   # 0.10.318 : traces du bas de l'échelle (écosystèmes)
 )
 
 
