@@ -34,6 +34,7 @@ SIGNE = {"+": 1.0, "-": -1.0, "0": 0.0, "±": None}            # None : sens ind
 DELAIS = (("permanent", 0), ("minute", 0), ("heure", 0.2), ("jour", 2), ("semaine", 10), ("mois", 45),
           ("trimestre", 90), ("saison", 90), ("an", 365), ("décennie", 3650))
 SEUIL_PROPAGATION = 0.05
+AMPLEUR_MAX = 2.0          # un seuil franchi amplifie ; sans plafond, les boucles à seuil s'emballent sans fin
 # Les axes dans la propagation (rappel de l'auteur, 4 h 34 : « tous les acteurs n'agissent pas à la même échelle »).
 # Hypothèses de départ, à calibrer sur nos séries : chaque niveau d'échelle MONTÉ atténue l'effet (un navire ne fait
 # pas un marché) sauf si la relation est à seuil (le petit qui fait basculer le grand) ; un effet qui DESCEND
@@ -168,6 +169,7 @@ class Carte:
                 if r.get("pont") is not True:
                     poids *= facteur_echelle(src.get("taille"), cib.get("taille"), regle)
                 nouvelle = ampl * poids * (s if s is not None else 1.0)
+                nouvelle = max(-AMPLEUR_MAX, min(AMPLEUR_MAX, nouvelle))
                 if r.get("pont") is not True:
                     nouvelle *= passage_de_niveau(nouvelle, self.noeuds.get(nid, {}).get("organisation"),
                                                   self.noeuds.get(r["vers"], {}).get("organisation"), self.niveaux, regle)
