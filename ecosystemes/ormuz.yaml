@@ -49,6 +49,7 @@ compartiments:
     statut: collecte
     fichier: collecte_portwatch.py
     adaptateur: portwatch:ormuz:petroliers
+    habitude: portwatch_ref:ormuz:petroliers
 - id: navigation
   nom: Navigation commerciale
   organisation: economie
@@ -88,6 +89,7 @@ compartiments:
     statut: collecte
     fichier: collecte_portwatch.py
     adaptateur: portwatch:ormuz:navires
+    habitude: portwatch_ref:ormuz:navires
   - source: avis aux navigateurs (NGA)
     statut: collecte
     fichier: collecte_avis_navigation.py

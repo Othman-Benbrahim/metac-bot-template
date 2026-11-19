@@ -123,6 +123,18 @@ def equilibres(mu: float, sigma: float, base: float = 0.0, n: int = 2001) -> dic
             "part_haute": max(stables) if stables else None}
 
 
+def habitude_de_reference(serie: list[tuple[str, float]], ref: list[tuple[str, float]], demi: int = 30) -> list[float]:
+    """Valeurs de la série de référence aux mêmes dates de l'année (± demi jours autour du dernier relevé) : une
+    habitude d'avant-crise et de même saison. Vide si moins de 20 valeurs (on garde alors l'habitude glissante)."""
+    from datetime import date as _d
+    if not serie or not ref:
+        return []
+    j = _d.fromisoformat(serie[-1][0][:10]).timetuple().tm_yday
+    out = [v for d, v in ref if min(abs(_d.fromisoformat(d[:10]).timetuple().tm_yday - j),
+                                    366 - abs(_d.fromisoformat(d[:10]).timetuple().tm_yday - j)) <= demi]
+    return out if len(out) >= 20 else []
+
+
 def poids_de(r: dict) -> float:
     """Poids d'une relation : mesuré (calibrer.py) s'il existe, sinon le paramètre « poids » écrit dans la fiche
     (0.10.330, Ajzen : les poids des piliers de l'intention varient selon l'acte), sinon la force en mots."""
@@ -250,11 +262,16 @@ class Carte:
                 pas = ecarts[len(ecarts) // 2] if ecarts else 1
                 n_rec, n_base = (7, 90) if pas <= 3 else (1, 26) if pas <= 10 else (1, 24)
                 recent, avant = v[-n_rec:], v[-(n_rec + n_base):-n_rec]
+                base = "glissante"
+                if tr.get("habitude"):                    # 0.10.335 : habitude d'avant-crise (exception Ormuz)
+                    ref = habitude_de_reference(serie, ad.lire(tr["habitude"], self.reg))
+                    if ref:
+                        avant, base = ref, tr["habitude"]
                 sd = statistics.pstdev(avant) or 1e-9
                 z = (statistics.mean(recent) - statistics.mean(avant)) / sd
                 out[nid] = {"adaptateur": tr["adaptateur"], "dernier_jour": serie[-1][0], "derniere_valeur": round(v[-1], 4),
                             "moyenne_7j": round(statistics.mean(recent), 4), "moyenne_90j": round(statistics.mean(avant), 4),
-                            "z": round(z, 2)}
+                            "z": round(z, 2), "habitude": base}
                 break
         self._etat = out
         return out

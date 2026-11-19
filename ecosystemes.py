@@ -110,7 +110,7 @@ def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
 
 
 CLES_PERMISES = {
-    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur"},
+    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur", "habitude"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
                  "module", "parametres", "series"},

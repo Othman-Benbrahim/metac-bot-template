@@ -13,6 +13,12 @@ téléchargement en masse. D'où des limites strictes, inscrites dans le code :
   - deux passages par jour au plus ; aucune redistribution de la base, seulement les comptes dérivés ci-dessous.
 
 Registre : registre/portwatch-detroits.csv (detroit, jour, navires, petroliers, porte_conteneurs).
+
+0.10.335 — exception pour Ormuz (décision d'auteur du 2026-11-19, 11 h 24) : depuis juin le détroit tourne à environ
+deux navires par jour ; mesurée sur la seule année en cours, la crise devient l'habitude et la carte voit Ormuz normal.
+Une RÉFÉRENCE d'avant-crise est donc lue une seule fois : l'année 2025 pour Ormuz seulement (une requête, ≤ 365
+jours, même petite dose), dans registre/portwatch-reference.csv, jamais relue si le fichier existe. Elle ne sert qu'à
+l'habitude (adaptateur portwatch_ref, clé de trace « habitude ») ; l'état du jour vient toujours de l'année en cours.
 """
 from __future__ import annotations
 
@@ -28,6 +34,8 @@ import httpx
 SERVICE = ("https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/"
            "FeatureServer/0/query")
 SORTIE = Path("registre") / "portwatch-detroits.csv"
+REFERENCE = Path("registre") / "portwatch-reference.csv"
+REFERENCE_DETROITS = {"ormuz": 2025}            # exception écrite : un détroit, une année d'avant-crise
 DEBUT = "2026-06-01"
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
@@ -111,6 +119,19 @@ def principal() -> int:
             dernier = max((jour(a) or "" for a in lignes), default="—")
             print(f"  {nom:16s} {sorted(noms)} : {len(lignes)} jours en {annee}, dernier {dernier}, {n} nouveaux ou modifiés")
             time.sleep(15)
+        if not REFERENCE.exists():
+            ref = []
+            for nom, an in REFERENCE_DETROITS.items():
+                for a in requete(c, DETROITS[nom][0], an):
+                    j = jour(a)
+                    if j and j.startswith(str(an)):
+                        ref.append((nom, j, int(a.get("n_total") or 0), int(a.get("n_tanker") or 0), int(a.get("n_container") or 0)))
+                print(f"  référence {nom} {an} : {sum(1 for r in ref if r[0] == nom)} jours")
+            if ref:
+                with REFERENCE.open("w", encoding="utf-8", newline="") as f:
+                    w = csv.writer(f)
+                    w.writerow(["detroit", "jour", "navires", "petroliers", "porte_conteneurs"])
+                    w.writerows(sorted(ref, key=lambda r: (r[1], r[0])))
     SORTIE.parent.mkdir(exist_ok=True)
     with SORTIE.open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)

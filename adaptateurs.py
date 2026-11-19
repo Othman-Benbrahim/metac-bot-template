@@ -28,6 +28,11 @@ def portwatch(reg: Path, detroit: str, colonne: str = "navires") -> list[tuple[s
     return sorted((r["jour"], float(r[colonne] or 0)) for r in _csv(reg, "portwatch-detroits.csv") if r["detroit"] == detroit)
 
 
+def portwatch_ref(reg: Path, detroit: str, colonne: str = "navires") -> list[tuple[str, float]]:
+    """Année de référence d'avant-crise d'un détroit (exception Ormuz, 0.10.335) : sert d'habitude, pas d'état du jour."""
+    return sorted((r["jour"], float(r[colonne] or 0)) for r in _csv(reg, "portwatch-reference.csv") if r["detroit"] == detroit)
+
+
 def ooni(reg: Path, pays: str) -> list[tuple[str, float]]:
     """Part des mesures OONI en anomalie, par jour, pour un pays (censure, coupures)."""
     j: dict[str, list[float]] = {}
@@ -114,7 +119,8 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia}
+               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia,
+               "portwatch_ref": portwatch_ref}
 
 
 def variation(serie: list[tuple[str, float]], pas: int) -> list[tuple[str, float]]:

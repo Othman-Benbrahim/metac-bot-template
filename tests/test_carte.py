@@ -81,3 +81,15 @@ def test_facettes_validees():
                             "acteurs": [{"nom": "n", "taille": "micro", "facette": "aura"}]}], "relations": [], "ponts": []}
     e = " | ".join(ec.valider(f))
     assert "niveau d'organisation inconnu 'astral'" in e and "facette inconnue 'aura'" in e
+
+
+def test_habitude_avant_crise_ormuz(tmp_path):
+    """0.10.335 : l'habitude d'Ormuz vient de 2025 (même saison), pas des mois de crise."""
+    from datetime import date, timedelta
+    import carte as ca
+    d0 = date(2026, 6, 1)
+    crise = [((d0 + timedelta(days=i)).isoformat(), 2.0 + (i % 3)) for i in range(150)]
+    ref = [((date(2025, 1, 1) + timedelta(days=i)).isoformat(), 40.0 + (i % 5)) for i in range(365)]
+    base = ca.habitude_de_reference(crise, ref)
+    assert len(base) == 61 and min(base) >= 40                                   # ± 30 jours autour du 28 octobre
+    assert ca.habitude_de_reference(crise, ref[:10]) == []                       # trop court : habitude glissante
