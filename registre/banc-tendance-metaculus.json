@@ -1,0 +1,63 @@
+{
+  "version_bot": "0.10.304",
+  "questions_apprentissage_2026": 127,
+  "questions_test": 109,
+  "test_avec_articles": 67,
+  "note": "β appris sur Metaculus 2026, appliqué tel quel à Metaculus avant 2026 ; base S",
+  "beta_appris_2026": 0.6,
+  "perte_S": 0.5329,
+  "perte_ajustee": 0.5478,
+  "critere": {
+    "n_nouveaux": 109,
+    "regard": 1,
+    "n_juge": 109,
+    "blocs": 109,
+    "bloc_par": "question",
+    "ecart_moyen": 0.014912837714243515,
+    "intervalle_90_par_blocs": [
+      -0.02084107598607734,
+      0.05744279285800988
+    ],
+    "intervalle_corrige": [
+      -0.040521854864746194,
+      0.08554994318437441
+    ],
+    "niveau_corrige": 0.9938,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "profils": {
+    "S": {
+      "n": 109,
+      "oui": 26,
+      "perte_log": 0.5329,
+      "perte_venue_des_oui": 0.2283,
+      "perte_venue_des_non": 0.3046,
+      "rates_oui_sous_30": 4,
+      "fausses_alertes_non_sur_50": 1,
+      "brier": 0.1763,
+      "fiabilite_plus_bas_mieux": 0.0158,
+      "resolution_plus_haut_mieux": 0.02,
+      "incertitude": 0.1816
+    },
+    "ajuste": {
+      "n": 109,
+      "oui": 26,
+      "perte_log": 0.5478,
+      "perte_venue_des_oui": 0.2461,
+      "perte_venue_des_non": 0.3017,
+      "rates_oui_sous_30": 7,
+      "fausses_alertes_non_sur_50": 5,
+      "brier": 0.1792,
+      "fiabilite_plus_bas_mieux": 0.0278,
+      "resolution_plus_haut_mieux": 0.0288,
+      "incertitude": 0.1816
+    }
+  },
+  "unites": {
+    "lignes": 109,
+    "questions_distinctes": 109,
+    "questions_oui_distinctes": 26,
+    "alerte": null
+  },
+  "spearman_tendance_issue_test": 0.059
+}
