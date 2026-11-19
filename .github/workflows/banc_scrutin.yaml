@@ -1,0 +1,43 @@
+name: "Banc brique scrutin (étalons électoraux, ombre)"
+
+# 0.10.364 : préenregistrement preenregistrements/etalon-scrutin.md (essai etalon_scrutin). 1) archive les versions
+# datées des pages Wikipédia de sondages (identifiant de version, tableau extrait) ; 2) calcule la brique hors réseau
+# sur ces seules archives et la compare aux semblables. Aucun modèle de langue. Rien n'entre dans le bot.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_scrutin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Archiver les sondages datés (Wikipédia)
+        run: uv run python banc_scrutin.py --collecter
+      - name: Évaluer la brique (hors réseau)
+        run: uv run python banc_scrutin.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/scrutins/archives.jsonl registre/scrutins/detail.jsonl registre/banc-scrutin.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc de la brique scrutin du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
