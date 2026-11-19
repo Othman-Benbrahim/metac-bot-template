@@ -1,4 +1,7 @@
-"""Collecte des températures quotidiennes en quelques points clés des écosystèmes (Open-Meteo, archive) — 0.10.318.
+"""Collecte des températures quotidiennes en quelques points clés des écosystèmes — 0.10.318, source changée en 0.10.322.
+
+0.10.322 : le premier passage (run 44458151315) a trouvé l'archive d'Open-Meteo interdite aux robots par son robots.txt ;
+on la respecte et on passe à NASA POWER (données quotidiennes publiques de la NASA, sans clé), même sortie.
 
 Décision de l'auteur, 2026-11-19, 4 h 43. Open-Meteo : données de réanalyse publiques, gratuites pour un usage non
 commercial, sans clé ; une requête par point et par passage. Rien n'entre dans le bot. L'historique long (depuis DEBUT)
@@ -22,7 +25,7 @@ import politesse
 
 REG = Path(os.environ.get("ALPHABET_REGISTRE", "registre"))
 SORTIE = REG / "meteo-points.csv"
-URL = "https://archive-api.open-meteo.com/v1/archive"
+URL = "https://power.larc.nasa.gov/api/temporal/daily/point"
 DEBUT = "2016-01-01"
 PAUSE = 2.0
 # point : (latitude, longitude, écosystème et compartiment qui le lisent)
@@ -43,18 +46,18 @@ def principal() -> int:
     lignes = []
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=90) as c:
         if not politesse.autorise(c, URL):
-            print("::warning::Open-Meteo : refusé par robots.txt ; rien collecté.")
+            print("::warning::NASA POWER : refusé par robots.txt ; rien collecté.")
             return 0
         for nom, (lat, lon, _) in POINTS.items():
             try:
-                r = c.get(URL, params={"latitude": lat, "longitude": lon, "start_date": DEBUT, "end_date": fin,
-                                       "daily": "temperature_2m_mean", "timezone": "UTC"})
+                r = c.get(URL, params={"parameters": "T2M", "community": "AG", "latitude": lat, "longitude": lon,
+                                       "start": DEBUT.replace("-", ""), "end": fin.replace("-", ""), "format": "JSON"})
                 r.raise_for_status()
-                d = r.json().get("daily") or {}
-                vals = [(j, t) for j, t in zip(d.get("time", []), d.get("temperature_2m_mean", [])) if t is not None]
+                serie = ((r.json().get("properties") or {}).get("parameter") or {}).get("T2M") or {}
+                vals = [(f"{k[:4]}-{k[4:6]}-{k[6:8]}", float(v)) for k, v in sorted(serie.items()) if v is not None and float(v) > -900]
             except Exception as e:
                 vals = []
-                print(f"::warning::Open-Meteo {nom} : {type(e).__name__}")
+                print(f"::warning::NASA POWER {nom} : {type(e).__name__}")
             lignes += [(nom, j, t) for j, t in vals]
             print(f"{nom} : {len(vals)} jours" + (f", dernier {vals[-1]}" if vals else ""), flush=True)
             time.sleep(PAUSE)
@@ -65,7 +68,7 @@ def principal() -> int:
         w = csv.writer(f)
         w.writerow(["point", "jour", "t_moy"])
         w.writerows(lignes)
-    print(f"Open-Meteo : {len(lignes)} valeurs.")
+    print(f"NASA POWER : {len(lignes)} valeurs.")
     return 0
 
 
