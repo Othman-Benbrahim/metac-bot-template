@@ -1,0 +1,112 @@
+theme: "securite-publique"
+nom: "Sécurité publique, crime organisé et trafics"
+declaration:
+  but: "comprendre comment les alertes, les polices, la justice et les trafics interagissent, au niveau des institutions et des phénomènes agrégés ; questions du tournoi au niveau du mécanisme : sources radioactives volées (signalement, recherche, récupération), affaires judiciaires"
+  limites: "dedans les alertes et la protection civile, les polices et la justice, les trafics agrégés (drogues, armes, êtres humains, matières dangereuses), la corruption, les prisons ; dehors tout détail opérationnel, toute personne privée, les guerres (fiches dédiées)"
+  observateur: "notre carte, regard extérieur, sources publiques ; aucune personne privée suivie"
+  date: "2026-11-19"
+  espace: "une ville, un pays, les routes des trafics"
+  temps: "de l'alerte en heures aux carrières criminelles et aux réformes de décennies"
+  vitesse: "l'heure (une alerte), le mois (une enquête), l'année (une réforme)"
+  taille: "micro (un vol) à macro (une économie criminelle transnationale)"
+compartiments:
+  - id: "alertes"
+    nom: "Alertes et protection civile"
+    organisation: "statut"
+    elements: ["alertes publiques", "avis de recherche d'objets dangereux", "consignes à la population"]
+    acteurs:
+      - {nom: "une autorité de protection civile", taille: "méso", espace: "pays", vitesse: "heures", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "ville à pays", temps: "heures à jours", vitesse: "heures", taille: "méso"}
+    traces:
+      - {source: "communiqués publics des autorités de sûreté et de protection civile", statut: "a_brancher"}
+  - id: "polices"
+    nom: "Polices et enquêtes"
+    organisation: "statut"
+    elements: ["enquêtes", "saisies", "coopération internationale"]
+    acteurs:
+      - {nom: "une police nationale", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays", temps: "enquêtes de semaines à années", vitesse: "jours à mois", taille: "méso à macro"}
+    traces:
+      - {source: "communiqués publics des polices et d'Interpol", statut: "a_brancher"}
+  - id: "justice"
+    nom: "Justice"
+    organisation: "statut"
+    elements: ["procès", "renvois devant une juridiction", "peines"]
+    niveau: {espace: "juridiction", temps: "procédures longues", vitesse: "mois à années", taille: "méso"}
+    traces:
+      - {source: "dossiers judiciaires publics (CourtListener)", statut: "collecte", fichier: "collecte_tribunaux.py"}
+  - id: "trafics"
+    nom: "Trafics (drogues, armes, êtres humains, matières dangereuses)"
+    organisation: "economie"
+    elements: ["routes", "marchés illicites", "prix de rue", "vols de matières dangereuses (en agrégat)"]
+    acteurs:
+      - {nom: "un réseau criminel transnational", taille: "macro", espace: "routes", vitesse: "mois", organisation: "economie", facette: "collectif"}
+    niveau: {espace: "routes transnationales", temps: "saisons de récolte et de production", vitesse: "semaines à années", taille: "méso à macro"}
+    traces:
+      - {source: "rapports publics de l'ONUDC", statut: "a_brancher"}
+  - id: "corruption"
+    nom: "Corruption"
+    organisation: "entourage"
+    elements: ["complicités", "pots-de-vin", "protection"]
+    niveau: {espace: "institution", temps: "années", vitesse: "mois", taille: "micro à méso"}
+    traces:
+      - {source: "indices publics de perception de la corruption", statut: "a_brancher"}
+  - id: "prisons"
+    nom: "Prisons"
+    organisation: "statut"
+    elements: ["surpopulation", "contrôle des gangs depuis les prisons", "évasions"]
+    niveau: {espace: "pays", temps: "années", vitesse: "jours (mutinerie) à années", taille: "méso"}
+    traces:
+      - {source: "statistiques pénitentiaires publiques", statut: "a_brancher"}
+  - id: "peur"
+    nom: "Peur et sentiment d'insécurité"
+    organisation: "psychologique"
+    elements: ["peur du crime", "panique après une alerte", "défiance envers les autorités"]
+    acteurs:
+      - {nom: "la population d'une ville, en agrégat", taille: "méso", espace: "ville", vitesse: "jours", organisation: "psychologique", facette: "psyche"}
+    niveau: {espace: "ville à pays", temps: "jours à années", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "flux RSS de presse", statut: "collecte", fichier: "collecte_rss.py"}
+  - id: "politique"
+    nom: "Politique de sécurité"
+    organisation: "ideologie"
+    elements: ["discours de fermeté", "réformes pénales", "états d'urgence"]
+    niveau: {espace: "pays", temps: "mandats", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "routines officielles des gouvernements", statut: "collecte", fichier: "collecte_routines.py"}
+  - id: "frontieres"
+    nom: "Frontières et ports"
+    organisation: "convention"
+    elements: ["contrôles douaniers", "ports", "points de passage"]
+    niveau: {espace: "frontières", temps: "continu", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "IMF PortWatch (Panama, porte-conteneurs)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:panama:porte_conteneurs"}
+  - id: "sanctions"
+    nom: "Sanctions et blanchiment"
+    organisation: "geopolitique"
+    elements: ["désignations de réseaux criminels", "gel d'avoirs", "circuits de blanchiment"]
+    niveau: {espace: "mondial", temps: "décisions datées", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "listes de sanctions (OFAC, Royaume-Uni, UE)", statut: "collecte", fichier: "collecte_sanctions.py"}
+relations:
+  - {de: "trafics", vers: "alertes", effet: "+", delai: "heures à jours", force: "moyenne", intensite: {mesure: "dangerosité de l'objet volé", regle: "seuil"}, coupure: "vol non signalé", statut: "a_verifier", texte: "un vol de matière dangereuse déclenche une alerte publique au-delà d'un seuil de danger"}
+  - {de: "alertes", vers: "polices", effet: "+", delai: "heures", force: "forte", coupure: "manque de moyens", statut: "a_verifier", texte: "l'alerte mobilise la recherche (relation propre au niveau statut)"}
+  - {de: "polices", vers: "alertes", effet: "-", delai: "jours à semaines", force: "moyenne", coupure: "objet jamais retrouvé", statut: "a_verifier", texte: "une récupération annoncée clôt l'alerte"}
+  - {de: "alertes", vers: "peur", effet: "+", delai: "heures", force: "moyenne", intensite: {mesure: "couverture médiatique de l'alerte", regle: "seuil"}, coupure: "communication claire", statut: "a_verifier", texte: "une alerte mal expliquée fait passer l'inquiétude au niveau psychologique"}
+  - {de: "polices", vers: "justice", effet: "+", delai: "mois", force: "moyenne", coupure: "preuves insuffisantes", statut: "a_verifier", texte: "les enquêtes alimentent les procès, avec retard"}
+  - {de: "corruption", vers: "polices", effet: "-", delai: "mois", force: "forte", intensite: {mesure: "degré de complicité dans l'institution", regle: "seuil"}, coupure: "contrôles internes, réformes", statut: "a_verifier", texte: "au niveau de l'entourage, la complicité neutralise l'institution au-delà d'un seuil"}
+  - {de: "trafics", vers: "corruption", effet: "+", retour: "+", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "mutualisme : l'argent des trafics achète la protection, qui protège les trafics"}
+  - {de: "polices", vers: "trafics", effet: "-", retour: "-", style: "inconnu", delai: "mois", force: "moyenne", coupure: "déplacement des routes", statut: "a_verifier", texte: "compétition : la pression policière déplace les trafics plus qu'elle ne les supprime (effet ballon)"}
+  - {de: "prisons", vers: "trafics", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "surpopulation", regle: "seuil"}, coupure: "contrôle des communications", statut: "a_verifier", texte: "des prisons surpeuplées deviennent des centres de commandement des gangs"}
+  - {de: "peur", vers: "politique", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "sentiment d'insécurité", regle: "hysteresis"}, coupure: "baisse durable de la criminalité", statut: "a_verifier", texte: "la peur pousse aux discours et lois de fermeté, et ne redescend pas au rythme des faits"}
+  - {de: "politique", vers: "prisons", effet: "+", delai: "années", force: "moyenne", coupure: "alternatives à la prison", statut: "a_verifier", texte: "les politiques de fermeté remplissent les prisons"}
+  - {de: "frontieres", vers: "trafics", effet: "-", delai: "semaines", force: "moyenne", coupure: "corruption aux frontières", statut: "a_verifier", texte: "les contrôles aux ports et frontières renchérissent les trafics"}
+  - {de: "sanctions", vers: "trafics", effet: "-", delai: "mois", force: "faible", coupure: "circuits de blanchiment alternatifs", statut: "a_verifier", texte: "les désignations frappent l'argent des réseaux, partiellement"}
+ponts:
+  - {depuis: "alertes", vers: "nucleaire-radiologique:signalement", nature: "les sources radioactives perdues ou volées", type: "meme"}
+  - {depuis: "justice", vers: "politique-americaine:tribunaux", nature: "les tribunaux américains"}
+  - {depuis: "frontieres", vers: "transport-maritime:ports", nature: "les ports comme points de passage des trafics"}
+  - {depuis: "sanctions", vers: "russie-ukraine:sanctions", nature: "les mêmes outils de sanction et de gel d'avoirs"}
+  - {depuis: "corruption", vers: "dette-emergents:politique_interieure", nature: "corruption et instabilité politique"}
+  - {depuis: "trafics", vers: "information-cyber:cyber", nature: "rançongiciels et marchés illicites en ligne"}
+  - {depuis: "justice", vers: "liban-institutions:justice", nature: "les affaires judiciaires du tournoi au Liban"}

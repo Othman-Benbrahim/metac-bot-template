@@ -1,0 +1,115 @@
+theme: "sciences-techniques"
+nom: "Sciences et techniques (dont l'intelligence artificielle)"
+declaration:
+  but: "comprendre ce qui accélère ou freine la recherche, les lancements de produits et la diffusion des techniques, y compris l'intelligence artificielle ; questions du tournoi sur les lancements de modèles, les offres des laboratoires, la course entre États"
+  limites: "dedans la recherche, les laboratoires et les entreprises, les puces et le calcul, l'énergie et l'eau des centres de données, la régulation, la diffusion des innovations, la course entre États ; dehors les usages militaires détaillés"
+  observateur: "notre carte, regard extérieur, depuis l'Europe ; un modèle d'IA écrit cette fiche, ce qui est un biais déclaré"
+  date: "2026-11-19"
+  espace: "un laboratoire, une filière, le monde"
+  temps: "du lancement d'un produit à la décennie de recherche"
+  vitesse: "la semaine (une annonce), l'année (une génération de puces), la décennie (une science)"
+  taille: "micro (une équipe) à macro (une filière mondiale)"
+compartiments:
+  - id: "ia"
+    nom: "Intelligence artificielle (modèles, laboratoires, produits)"
+    organisation: "technique"
+    elements: ["modèles", "laboratoires", "lancements de produits", "offres et tarifs"]
+    acteurs:
+      - {nom: "un laboratoire d'IA", taille: "méso", espace: "mondial", vitesse: "semaines", organisation: "economie", facette: "collectif"}
+      - {nom: "la conviction d'une course vers une IA générale", taille: "macro", espace: "mondial", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
+    niveau: {espace: "mondial", temps: "cycles de lancement de mois", vitesse: "semaines à mois", taille: "méso à macro"}
+    traces:
+      - {source: "certificats émis pour les domaines des laboratoires (signes de nouveaux services)", statut: "collecte", fichier: "collecte_certificats.py"}
+  - id: "calcul"
+    nom: "Puces et calcul"
+    organisation: "technique"
+    elements: ["puces avancées", "usines de semi-conducteurs", "centres de calcul"]
+    acteurs:
+      - {nom: "un fondeur de puces", taille: "macro", espace: "mondial", vitesse: "années", organisation: "economie", facette: "collectif"}
+    niveau: {espace: "quelques pôles mondiaux", temps: "générations de puces", vitesse: "mois à années", taille: "macro"}
+    traces:
+      - {source: "IMF PortWatch (détroit de Taïwan, porte-conteneurs)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:taiwan:porte_conteneurs"}
+  - id: "energie_eau"
+    nom: "Énergie et eau des centres de données"
+    organisation: "physique"
+    elements: ["électricité", "chaleur à évacuer", "eau de refroidissement"]
+    niveau: {espace: "site à région", temps: "saisons", vitesse: "jours à années", taille: "méso"}
+    traces:
+      - {source: "prix du gaz Henry Hub (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DHHNGSP"}
+      - {source: "anomalie de température à Houston", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:houston"}
+  - id: "recherche"
+    nom: "Recherche scientifique"
+    organisation: "technique"
+    elements: ["publications", "universités", "financements publics"]
+    niveau: {espace: "mondial", temps: "années", vitesse: "mois à décennies", taille: "micro à macro"}
+    traces:
+      - {source: "dépôts publics de prépublications (arXiv)", statut: "a_brancher"}
+  - id: "capitaux"
+    nom: "Capitaux et valorisations"
+    organisation: "economie"
+    elements: ["levées de fonds", "investissements dans les centres de calcul", "attentes des marchés"]
+    niveau: {espace: "mondial", temps: "trimestres", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "taux américain à 10 ans (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DGS10"}
+  - id: "adoption"
+    nom: "Diffusion et adoption"
+    organisation: "societe"
+    elements: ["premiers utilisateurs", "entreprises clientes", "usages quotidiens"]
+    acteurs:
+      - {nom: "un utilisateur", taille: "micro", espace: "local", vitesse: "jours", organisation: "psychologique", facette: "psyche"}
+    niveau: {espace: "pays à mondial", temps: "années", vitesse: "mois", taille: "micro à macro"}
+    traces:
+      - {source: "pages vues Wikipédia des produits", statut: "collecte", fichier: "banc_wikipedia.py"}
+  - id: "regulation"
+    nom: "Régulation"
+    organisation: "statut"
+    elements: ["lois sur l'IA", "contrôles d'exportation des puces", "autorités de concurrence et de protection des données"]
+    acteurs:
+      - {nom: "un régulateur national ou européen", taille: "macro", espace: "continent", vitesse: "mois", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "juridictions", temps: "textes et décisions datés", vitesse: "mois à années", taille: "macro"}
+    traces:
+      - {source: "Federal Register (règles et contrôles d'exportation)", statut: "collecte", fichier: "collecte_federal_register.py"}
+  - id: "course_etats"
+    nom: "Course entre États"
+    organisation: "geopolitique"
+    elements: ["États-Unis", "Chine", "Europe", "subventions", "contrôles"]
+    niveau: {espace: "mondial", temps: "années", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "ton des gestes des États-Unis envers la Chine (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:CHN"}
+  - id: "talents"
+    nom: "Talents et équipes"
+    organisation: "entourage"
+    elements: ["chercheurs", "départs et recrutements", "fondateurs"]
+    niveau: {espace: "quelques villes", temps: "mois", vitesse: "semaines", taille: "micro à méso"}
+    traces:
+      - {source: "annonces publiques de recrutement et de départ", statut: "inconnue"}
+  - id: "attentes"
+    nom: "Attentes et engouement"
+    organisation: "psychologique"
+    elements: ["engouement", "déception", "peur du retard"]
+    niveau: {espace: "mondial", temps: "mois", vitesse: "semaines", taille: "méso à macro"}
+    traces:
+      - {source: "attention médiatique (GDELT)", statut: "collecte", fichier: "collecte_gdelt.py"}
+relations:
+  - {de: "calcul", vers: "ia", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "disponibilité des puces avancées", regle: "seuil"}, coupure: "méthodes plus économes en calcul", statut: "a_verifier", texte: "sans assez de calcul, pas de nouveau modèle : la puce borne le produit"}
+  - {de: "ia", vers: "calcul", effet: "+", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "chaque génération de modèles réclame plus de calcul (boucle propre au niveau technique)"}
+  - {de: "calcul", vers: "energie_eau", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "chaleur de l'été, niveau des fleuves", regle: "seuil"}, coupure: "refroidissement à l'air, sites froids", statut: "a_verifier", texte: "le calcul consomme électricité et eau ; une vague de chaleur peut brider un centre"}
+  - {de: "energie_eau", vers: "calcul", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "tension sur le réseau électrique", regle: "seuil"}, coupure: "production propre sur site", statut: "a_verifier", texte: "le physique borne le technique : sans électricité ni eau, le calcul s'arrête"}
+  - {de: "capitaux", vers: "calcul", effet: "+", delai: "mois", force: "forte", coupure: "taux élevés, déception", statut: "a_verifier", texte: "les levées de fonds financent les centres de calcul"}
+  - {de: "attentes", vers: "capitaux", effet: "+", delai: "semaines", force: "forte", intensite: {mesure: "engouement médiatique", regle: "hysteresis"}, coupure: "déception des résultats", statut: "a_verifier", texte: "l'engouement attire les capitaux ; la déception les retire plus vite qu'il ne les a attirés"}
+  - {de: "ia", vers: "attentes", effet: "+", delai: "jours", force: "moyenne", coupure: "lancement décevant", statut: "a_verifier", texte: "un lancement réussi nourrit l'engouement"}
+  - {de: "ia", vers: "adoption", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "part d'utilisateurs déjà acquis", regle: "seuil"}, coupure: "coût, méfiance", statut: "a_verifier", texte: "la diffusion suit une courbe en S : lente, puis rapide au-delà d'un seuil d'adoption"}
+  - {de: "course_etats", vers: "regulation", effet: "±", delai: "mois", force: "forte", coupure: "accords internationaux", statut: "a_verifier", texte: "la course pousse à des contrôles d'exportation contre le rival et à des règles plus souples chez soi"}
+  - {de: "regulation", vers: "calcul", effet: "-", delai: "mois", force: "forte", coupure: "contournement, production locale", statut: "a_verifier", texte: "les contrôles d'exportation privent le rival de puces avancées"}
+  - {de: "regulation", vers: "ia", effet: "±", delai: "mois", force: "moyenne", coupure: "juridiction plus souple ailleurs", statut: "a_verifier", texte: "les règles retardent ou orientent certains lancements selon les pays"}
+  - {de: "talents", vers: "ia", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "départs de chercheurs clés", regle: "seuil"}, coupure: "équipes nombreuses", statut: "a_verifier", texte: "au niveau de l'entourage : une vague de départs peut changer le rythme d'un laboratoire"}
+  - {de: "recherche", vers: "ia", effet: "+", delai: "années", force: "moyenne", coupure: "secret industriel", statut: "a_verifier", texte: "la recherche ouverte nourrit les produits, avec retard"}
+  - {de: "course_etats", vers: "capitaux", effet: "+", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les subventions publiques s'ajoutent aux capitaux privés"}
+ponts:
+  - {depuis: "calcul", vers: "rivalite-sino-americaine:technologie", nature: "les puces au cœur de la rivalité", type: "meme"}
+  - {depuis: "energie_eau", vers: "oceans-et-fleuves:refroidissement", nature: "l'eau qui refroidit les centres de données", type: "meme"}
+  - {depuis: "energie_eau", vers: "energie-mondiale:demande", nature: "les centres de données tirent la demande d'électricité et de gaz"}
+  - {depuis: "calcul", vers: "rivalite-sino-americaine:terres_rares", nature: "terres rares et matériaux des puces"}
+  - {depuis: "regulation", vers: "politique-americaine:executif", nature: "décrets et contrôles d'exportation"}
+  - {depuis: "ia", vers: "information-cyber:cyber", nature: "l'IA comme outil d'attaque et de défense informatique"}
+  - {depuis: "calcul", vers: "infrastructures-critiques:reseaux", nature: "les centres de données comme infrastructure"}
