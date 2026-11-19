@@ -1,0 +1,92 @@
+{
+  "version_bot": "0.10.304",
+  "questions": 892,
+  "avec_articles": 859,
+  "note": "questions distinctes de 2026 ; base S ; β appris sans la question jugée ; pages vues Wikipédia (en)",
+  "perte_S": 0.6588,
+  "perte_ajustee": 0.6587,
+  "beta_sur_tout": -0.25,
+  "critere": {
+    "n_nouveaux": 892,
+    "regard": 1,
+    "n_juge": 892,
+    "blocs": 892,
+    "bloc_par": "question",
+    "ecart_moyen": -9.57415906642696e-05,
+    "intervalle_90_par_blocs": [
+      -0.004879933257231536,
+      0.004532085039724675
+    ],
+    "intervalle_corrige": [
+      -0.00818676912605547,
+      0.007891089568123628
+    ],
+    "niveau_corrige": 0.9938,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "par_source": {
+    "infer": {
+      "n": 10,
+      "S": 0.9525,
+      "ajustee": 0.9149
+    },
+    "manifold": {
+      "n": 155,
+      "S": 0.6452,
+      "ajustee": 0.635
+    },
+    "metaculus": {
+      "n": 127,
+      "S": 0.5667,
+      "ajustee": 0.5737
+    },
+    "polymarket": {
+      "n": 600,
+      "S": 0.6769,
+      "ajustee": 0.6786
+    }
+  },
+  "profils": {
+    "S": {
+      "n": 892,
+      "oui": 262,
+      "perte_log": 0.6588,
+      "perte_venue_des_oui": 0.5249,
+      "perte_venue_des_non": 0.1339,
+      "rates_oui_sous_30": 222,
+      "fausses_alertes_non_sur_50": 8,
+      "brier": 0.2199,
+      "fiabilite_plus_bas_mieux": 0.0186,
+      "resolution_plus_haut_mieux": 0.0059,
+      "incertitude": 0.2074
+    },
+    "ajuste": {
+      "n": 892,
+      "oui": 262,
+      "perte_log": 0.6587,
+      "perte_venue_des_oui": 0.525,
+      "perte_venue_des_non": 0.1338,
+      "rates_oui_sous_30": 220,
+      "fausses_alertes_non_sur_50": 1,
+      "brier": 0.2195,
+      "fiabilite_plus_bas_mieux": 0.0161,
+      "resolution_plus_haut_mieux": 0.0037,
+      "incertitude": 0.2074
+    }
+  },
+  "unites": {
+    "lignes": 892,
+    "questions_distinctes": 892,
+    "questions_oui_distinctes": 262,
+    "alerte": null
+  },
+  "spearman_tendance_issue": -0.008,
+  "protections_descriptif": {
+    "questions_avec_protection": 116,
+    "oui_avec_protection": 0.353,
+    "S_moyen_avec_protection": 0.182,
+    "oui_sans_protection": 0.289,
+    "S_moyen_sans_protection": 0.175
+  },
+  "rang_wikipedia_contre_gdelt": 0.348
+}
