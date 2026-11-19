@@ -1,4 +1,5 @@
-# Règles coutumières par écosystème et par échelle (lot 1 : élections américaines ; inertie des régimes fermés).
+# Règles coutumières par écosystème et par échelle (lot 1 : élections américaines, inertie des régimes fermés ;
+# lot 2 : Europe et erreur des sondages comparée).
 # Décisions de l'auteur du 2026-11-19 (22 h 43 à 22 h 59) : ne pas déduire ; écrire les règles telles qu'elles existent,
 # chacune avec sa source ; sans source, la case reste vide (« absence ») et la brique s'abstient. Pour les régimes
 # opaques : privilégier la règle d'inertie. Ce fichier n'est pas une fiche (pas de clé « theme ») : regles_coutumieres.py
@@ -75,15 +76,15 @@ regles:
     aide: "une étude ou une base qui chiffre l'erreur des sondages de primaires de gouverneur, de Sénat ou de Chambre"
 
   - id: us_erreur_selon_temps_restant
-    ecosysteme: "États-Unis · sondages, éloignement du scrutin"
-    espace: amerique_du_nord
-    echelle: {axe: temps, tranche: "plus de 21 jours avant le vote"}
+    ecosysteme: "Élections nationales (45 pays, dont les États-Unis) · sondages, éloignement du scrutin"
+    espace: monde
+    echelle: {axe: temps, tranche: "jours avant le vote"}
     structure: course
-    regle: "Comment l'erreur des sondages grandit quand le vote est loin : aucune source chiffrée relevée dans ce lot. La formule σ·√(1 + t/30) du préenregistrement etalon-scrutin était une invention de Claude ; elle est retirée au profit d'une abstention au-delà de 21 jours, jusqu'à source."
-    parametres: {}
-    sources: []
-    statut: absence
-    aide: "une étude sur l'évolution de l'erreur des sondages en fonction du temps avant le scrutin (par exemple Jennings et Wlezien sur la chronologie des élections)"
+    regle: "Erreur absolue moyenne par parti ou candidat, sondages nationaux : près de 4 points entre 150 et 200 jours avant le vote, environ 3 points à 50 jours, moins de 2 points la veille. À 200 jours : 3,3 points pour les législatives, 5,9 pour les présidentielles ; l'écart se réduit sans disparaître. Remplace la formule σ·√(1 + t/30) du préenregistrement etalon-scrutin, qui était une invention de Claude (lot 1). Ne vaut pas pour les primaires ni pour les scrutins locaux (sondages nationaux seulement)."
+    parametres: {erreur_part_points: {j150_200: 4.0, j50: 3.0, veille: 2.0}, erreur_part_j200: {legislatives: 3.3, presidentielles: 5.9}}
+    sources:
+      - {titre: "Jennings et Wlezien, Election polling errors across time and space, Nature Human Behaviour 2(4), 2018, figure 1", url: "https://eprints.soton.ac.uk/421260/1/JenningsWlezien_PollingErrors.pdf", consulte: "2026-11-19"}
+    statut: source
 
   - id: us_avantage_sortant_congres
     ecosysteme: "États-Unis · Congrès, sortants qui se représentent"
@@ -141,3 +142,86 @@ regles:
     sources: []
     statut: absence
     aide: "une base ou une étude sur la part des sortants réélus aux présidentielles africaines (par exemple Posner et Young, ou les travaux sur l'avantage du sortant en Afrique)"
+
+  # ---------------------------------------------------------------- lot 2 : Europe (et erreur des sondages comparée)
+  - id: sondages_erreur_comparee
+    ecosysteme: "Élections nationales · sondages de la dernière semaine (220 élections, 32 pays)"
+    espace: monde
+    echelle: {axe: taille, tranche: "national, selon le système électoral et la taille du parti"}
+    structure: course
+    regle: "Erreur absolue moyenne sur la part d'un parti ou d'un candidat, sondages de la dernière semaine : 2,03 points au total (2,1 dans les années 1940-1970, 2,0 depuis 2000 ; pas de tendance d'ensemble). Présidentielles 2,70, législatives 1,83 ; proportionnelle 1,62, scrutin uninominal 2,28 ; grands partis (plus de 20 %) 2,28, petits partis 1,29 ; partis au pouvoir 2,05, opposition 1,71. Pour une erreur normale, σ ≈ erreur moyenne / 0,8."
+    parametres:
+      erreur_part_points: {ensemble: 2.03, presidentielles: 2.70, legislatives: 1.83, proportionnelle: 1.62, uninominal: 2.28, grands_partis: 2.28, petits_partis: 1.29, au_pouvoir: 2.05, opposition: 1.71}
+      conversion_sigma: 0.8
+    sources:
+      - {titre: "Jennings et Wlezien, Election polling errors across time and space, Nature Human Behaviour 2(4), 2018, table 2", url: "https://eprints.soton.ac.uk/421260/1/JenningsWlezien_PollingErrors.pdf", consulte: "2026-11-19"}
+    statut: source
+
+  - id: france_legislatives
+    ecosysteme: "France · élections législatives (scrutin uninominal à deux tours)"
+    espace: europe
+    echelle: {axe: taille, tranche: circonscription}
+    structure: course
+    regle: "Élu au premier tour : majorité absolue des suffrages exprimés ET au moins le quart des inscrits. Au second tour, la majorité relative suffit. Pour se maintenir au second tour : au moins 12,5 % des inscrits ; si un seul candidat atteint ce seuil, le suivant peut se maintenir ; si aucun, les deux premiers."
+    parametres: {premier_tour: {majorite_exprimes: 50, quart_inscrits: 25}, qualification_inscrits: 12.5}
+    sources:
+      - {titre: "Code électoral, articles L. 126 et L. 162 (reproduits par le Sénat)", url: "https://www.senat.fr/reglement/pouvoirs_publics31.html", consulte: "2026-11-19"}
+    statut: source
+
+  - id: seuils_parlements_nationaux_europe
+    ecosysteme: "Europe · élection des parlements nationaux (proportionnelle)"
+    espace: europe
+    echelle: {axe: taille, tranche: national}
+    structure: course
+    regle: "Seuil légal pour obtenir des sièges : Allemagne 5 % ; Pays-Bas 0,67 % (une voix pour un siège) ; Pologne 5 % (partis), 8 % (alliances) ; Tchéquie 5 %, 8 % (alliance de deux), 11 % (plus) ; Hongrie 5 %, 10 %, 15 % ; Roumanie 5 %, 10 % ; Slovaquie 5 %, 7 % (2 à 3 partis), 10 % (4 et plus) ; Suède 4 % ; Autriche 4 % ; Norvège 4 % (sièges compensatoires seulement) ; Bulgarie 4 % ; Lettonie 5 % ; Italie 3 % ; Grèce 3 % ; Espagne 3 % par circonscription ; Belgique 5 % par circonscription ; Danemark 2 % ; Portugal aucun seuil légal."
+    parametres:
+      seuil_parti: {DE: 5, NL: 0.67, PL: 5, CZ: 5, HU: 5, RO: 5, SK: 5, SE: 4, AT: 4, NO: 4, BG: 4, LV: 5, IT: 3, GR: 3, ES: 3, BE: 5, DK: 2, PT: 0}
+      seuil_alliance: {PL: 8, CZ: [8, 11], HU: [10, 15], RO: 10, SK: [7, 10]}
+    sources:
+      - {titre: "Electoral threshold, table des seuils nationaux (Wikiwand, reprise de Wikipédia)", url: "https://wikiwand.com/en/Electoral_threshold", consulte: "2026-11-19"}
+    statut: source
+
+  - id: seuils_elections_europeennes
+    ecosysteme: "Union européenne · élections au Parlement européen"
+    espace: europe
+    echelle: {axe: taille, tranche: "national (liste par État)"}
+    structure: course
+    regle: "Le droit de l'UE plafonne le seuil à 5 % des suffrages exprimés. Seuils de 2024 : 5 % en Tchéquie, France, Croatie, Lettonie, Lituanie (7 % pour les listes communes), Hongrie, Pologne, Roumanie et Slovaquie ; 4 % en Italie, Autriche et Suède ; 3 % en Grèce ; 1,8 % à Chypre ; les autres États n'ont pas de seuil légal."
+    parametres: {plafond_ue: 5, seuil: {CZ: 5, FR: 5, HR: 5, LV: 5, LT: 5, HU: 5, PL: 5, RO: 5, SK: 5, IT: 4, AT: 4, SE: 4, GR: 3, CY: 1.8}}
+    sources:
+      - {titre: "EPRS, Electoral thresholds in European Parliament elections, PE 749.770, avril 2024, tableau 1", url: "https://www.europarl.europa.eu/RegData/etudes/BRIE/2023/749770/EPRS_BRI(2023)749770_EN.pdf", consulte: "2026-11-19"}
+    statut: source
+
+  - id: ue_majorite_qualifiee
+    ecosysteme: "Union européenne · décisions du Conseil à la majorité qualifiée"
+    espace: europe
+    echelle: {axe: espace, tranche: "UE à 27"}
+    structure: procedure
+    regle: "Majorité qualifiée : au moins 55 % des États (15 sur 27) représentant au moins 65 % de la population. Une minorité de blocage doit compter au moins 4 États. Les abstentions comptent comme des votes contre. Majorité qualifiée renforcée (proposition qui ne vient ni de la Commission ni du Haut Représentant) : 72 % des États (20 sur 27) et 65 % de la population."
+    parametres: {etats_min: 15, population_min: 65, minorite_blocage_etats: 4, renforcee_etats_min: 20}
+    sources:
+      - {titre: "Conseil de l'UE, Qualified majority", url: "https://www.consilium.europa.eu/en/council-eu/voting-system/qualified-majority/", consulte: "2026-11-19"}
+    statut: source
+
+  - id: ue_sanctions_russie
+    ecosysteme: "Union européenne · sanctions contre la Russie"
+    espace: europe
+    echelle: {axe: temps, tranche: "cycle de renouvellement"}
+    structure: procedure
+    regle: "Les sanctions économiques contre la Russie sont renouvelées par périodes de six mois depuis juillet 2016. Échéances indiquées en juillet 2026 : sanctions économiques au 31 juillet 2027 ; listes individuelles (intégrité territoriale de l'Ukraine) au 15 septembre 2026 ; Crimée et Sébastopol au 23 juin 2027 ; Donetsk, Louhansk, Zaporijjia et Kherson au 24 février 2027 ; détournement de fonds publics ukrainiens au 6 mars 2027. 21 paquets de sanctions adoptés à cette date. Ces actes relèvent de la politique étrangère et de sécurité commune, où le Conseil décide à l'unanimité sauf disposition contraire : un seul État peut bloquer un paquet ou un renouvellement."
+    parametres: {periode_renouvellement_mois: 6, echeances: {economiques: "2027-07-31", listes_individuelles: "2026-09-15", crimee: "2027-06-23", oblasts_occupes: "2027-02-24", fonds_detournes: "2027-03-06"}, paquets_adoptes: 21, unanimite: true}
+    sources:
+      - {titre: "Conseil de l'UE, EU sanctions against Russia (page revue le 23 juillet 2026)", url: "https://www.consilium.europa.eu/en/policies/sanctions-against-russia", consulte: "2026-11-19"}
+      - {titre: "Traité sur l'Union européenne, article 31 (unanimité en politique étrangère et de sécurité commune)", url: "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:12016M031", consulte: "2026-11-19"}
+    statut: source
+
+  - id: europe_formation_gouvernement
+    ecosysteme: "Europe · formation des gouvernements de coalition"
+    espace: europe
+    echelle: {axe: temps, tranche: "jours entre l'élection et l'investiture"}
+    structure: procedure
+    regle: "Durée habituelle de formation d'un gouvernement de coalition, par pays : aucune moyenne chiffrée relevée dans ce lot (la source consultée couvre 153 coalitions de dix pays, 1978-2017, mais ne donne pas de durée moyenne)."
+    parametres: {}
+    sources: []
+    statut: absence
+    aide: "les durées de formation par pays (bases ParlGov ou Representative Democracy Data Archive, ou une étude comparée)"
