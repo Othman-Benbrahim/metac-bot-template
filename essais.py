@@ -331,7 +331,11 @@ ESSAIS = {
                        "objet": "traits de la carte (écart à l'habitude, marges de bascule) au jour du jeu, ajoutés au "
                                 "recalibrage des questions semblables",
                        "doc": "preenregistrements/proxemie-carte.md"},
-    "b_echeance": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 100, "statut": "ouvert",
+    "b_echeance": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 100, "statut": "clos", "clos_le": "2026-11-19",
+                   "verdict": "non adopté (run 44588853070 : écart +0,003, intervalle corrigé [−0,002 ; +0,009], 832 "
+                              "questions) ; hypothèse fausse : 812 séries sur 832 sont quotidiennes ou hebdomadaires, "
+                              "toutes les fenêtres contiennent une observation ; les 26 % de « oui » DBnomics du "
+                              "rétrospectif viennent de deux jeux, pas du calendrier",
                    "objet": "B des séries à l'échéance (report de la dernière observation, calendrier des observations) "
                             "contre B, questions réelles FRED et DBnomics",
                    "doc": "preenregistrements/echeance.md"},
