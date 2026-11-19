@@ -164,7 +164,7 @@ compartiments:
   traces:
   - source: "dyades d'événements gouvernement et armée (GDELT, mode dyades) ; banc_reciprocite.py"
     statut: "collecte"
-    adaptateur: "dyade:UKR:RUS"
+    adaptateur: "gestes:UKR:RUS"
 - id: "nous_eux"
   nom: "Nous contre eux (frontière de groupe, menace extérieure, déshumanisation)"
   organisation: "psychologique"
@@ -266,9 +266,9 @@ compartiments:
     vitesse: "semaines"
     taille: "micro à méso"
   traces:
-  - source: "ton des gestes de la Russie envers l'Ukraine (Goldstein hebdomadaire, GDELT mode dyades) : la coopération monte, la trêve se lit"
+  - source: "nombre de gestes de la Russie envers l'Ukraine par semaine (GDELT mode dyades)"
     statut: "collecte"
-    adaptateur: "dyade:RUS:UKR"
+    adaptateur: "gestes:RUS:UKR"
 - id: "tri"
   nom: "Tri et mélange (où l'on vit, s'assoit, adhère, selon la composition autour de soi)"
   organisation: "societe"
@@ -720,7 +720,7 @@ relations:
   texte: "le contact prolongé et un but commun estompent la frontière"
 - de: "treve"
   vers: "passage_acte"
-  series: ["dyade:RUS:UKR", "hostilites:UA"]
+  series: ["gestes:RUS:UKR", "hostilites:UA"]
   effet: "-"
   delai: "jours"
   force: "moyenne"

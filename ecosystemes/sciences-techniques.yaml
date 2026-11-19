@@ -75,7 +75,7 @@ compartiments:
     elements: ["États-Unis", "Chine", "Europe", "subventions", "contrôles"]
     niveau: {espace: "mondial", temps: "années", vitesse: "mois", taille: "macro"}
     traces:
-      - {source: "ton des gestes des États-Unis envers la Chine (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:CHN"}
+      - {source: "nombre de gestes des États-Unis envers la Chine (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:USA:CHN"}
   - id: "talents"
     nom: "Talents et équipes"
     organisation: "entourage"

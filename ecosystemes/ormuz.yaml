@@ -180,10 +180,10 @@ compartiments:
     organisation: geopolitique
     facette: collectif
   traces:
-  - source: GDELT, ton des gestes des États-Unis envers l'Iran
+  - source: GDELT, nombre de gestes des États-Unis envers l'Iran
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:USA:IRN
+    adaptateur: gestes:USA:IRN
   - source: Federal Register, Congrès
     statut: collecte
     fichier: collecte_federal_register.py

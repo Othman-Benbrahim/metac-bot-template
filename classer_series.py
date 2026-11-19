@@ -12,7 +12,9 @@ Cinq natures (les deux dernières s'imposent à l'usage, à valider par l'auteur
 - potentiel : niveau d'où naissent les gradients (prix, taux, température brute) ;
 - gradient : écart entre deux potentiels, dans l'espace ou dans le temps (anomalie par rapport à la normale) ;
 - phase : position dans un calendrier (compte à rebours), ni stock ni flux.
-« à trancher » : la nature dépend d'un choix que seul l'auteur peut faire ; la raison est donnée.
+Décisions de l'auteur (2026-11-19, 18 h 23) : une note de qualité d'un échange n'est pas une mesure (dyade: écarté,
+remplacé par le nombre de gestes) ; un sondage est une « déclaration » qui dépend de l'échantillon, du contexte et de
+l'émetteur du questionnaire ; les sorties de modèles (GFS, ConflictForecast) sont des mesures.
 
 Sortie : registre/nature-des-series.csv ; résumé à l'écran.
 """
@@ -68,9 +70,10 @@ PAR_TYPE = {
     "memoire": ("phase", "jours avant la prochaine date de mémoire"),
     "feries_chine": ("phase", "jours avant le prochain férié"),
     "calendrier_nbs": ("phase", "jours avant la prochaine publication prévue"),
-    "dyade": ("à trancher", "ton moyen des gestes de A envers B : QUALITÉ d'un flux, pas une quantité ; flux ou gradient relationnel ?"),
-    "meteo_prevue": ("à trancher", "écart annoncé par un modèle : un gradient, mais prévu, pas observé"),
-    "conflictforecast": ("à trancher", "probabilité publiée par un modèle tiers : une croyance, pas une mesure"),
+    "gestes": ("flux", "gestes de A envers B par semaine (compte, sans note de qualité)"),
+    "dyade": ("écarté", "note de qualité d'un échange (Goldstein) : pas une mesure (auteur, 2026-11-19)"),
+    "meteo_prevue": ("gradient", "écart à la normale annoncé par le modèle GFS (mesure d'un modèle)"),
+    "conflictforecast": ("potentiel", "niveau de risque publié par le modèle ConflictForecast (mesure d'un modèle)"),
     "nowcast": ("flux", "variation mensuelle des prix prévue (taux de variation)"),
     "prix_alimentaires": ("flux", "inflation alimentaire mensuelle (taux de variation d'un potentiel)"),
 }
@@ -82,7 +85,9 @@ PAR_SERIE = {
     "fred:T10YIE": ("gradient", "écart entre taux nominal et taux indexé (inflation anticipée)"),
     "fred:VIXCLS": ("potentiel", "prix du risque (volatilité implicite)"),
     "fred:UNRATE": ("stock", "chômeurs présents, en part de la population active"),
-    "fred:UMCSENT": ("à trancher", "confiance DÉCLARÉE des ménages : variable humaine, pas une quantité physique"),
+    "fred:UMCSENT": ("déclaration", "réponses à un questionnaire (Université du Michigan) : mesure l'acte de déclarer sous ce "
+                                    "questionnaire, cet échantillon et cet émetteur, pas la confiance elle-même ; à lire aussi "
+                                    "comme conséquence (le chômage la précède, r = −0,37 mesuré)"),
     "fred:CPIAUCSL:var12": ("flux", "inflation : taux de variation du niveau des prix"),
     "fred:CES0500000003:var12": ("flux", "taux de variation des salaires"),
     "fred:PFOODINDEXM:var12": ("flux", "taux de variation des prix alimentaires mondiaux"),

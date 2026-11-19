@@ -52,14 +52,14 @@ compartiments:
     vitesse: jours à mois
     taille: macro
   traces:
-  - source: ton des gestes d'Israël envers l'Iran (GDELT)
+  - source: nombre de gestes d'Israël envers l'Iran (GDELT)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:ISR:IRN
-  - source: ton des gestes d'Israël envers le Liban (GDELT)
+    adaptateur: gestes:ISR:IRN
+  - source: nombre de gestes d'Israël envers le Liban (GDELT)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:ISR:LBN
+    adaptateur: gestes:ISR:LBN
   - source: manifestations par jour en Israël (GDELT)
     statut: collecte
     adaptateur: manifestations:IL
@@ -238,10 +238,10 @@ compartiments:
     vitesse: jours à années
     taille: macro
   traces:
-  - source: ton des gestes de l'Iran envers Israël (GDELT)
+  - source: nombre de gestes de l'Iran envers Israël (GDELT)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:IRN:ISR
+    adaptateur: gestes:IRN:ISR
   - source: coupures et censure d'internet en Iran (OONI)
     statut: collecte
     fichier: collecte_ooni.py
@@ -473,7 +473,7 @@ relations:
   delai: jours
   force: forte
   intensite:
-    mesure: incidents récents et ton des gestes (GDELT)
+    mesure: incidents récents et nombre de gestes (GDELT)
     regle: proportionnelle
   coupure: cessez-le-feu en vigueur
   statut: a_verifier
@@ -499,7 +499,7 @@ relations:
   delai: jours à semaines
   force: forte
   intensite:
-    mesure: ton des gestes entre les deux gouvernements (GDELT)
+    mesure: nombre de gestes entre les deux gouvernements (GDELT)
     regle: seuil
   coupure: dissuasion mutuelle
   statut: a_verifier

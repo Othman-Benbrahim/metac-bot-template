@@ -53,7 +53,7 @@ compartiments:
     elements: ["armée libanaise", "branche armée du Hezbollah (en agrégat)", "cessez-le-feu et désarmement en discussion"]
     niveau: {espace: "pays et frontière sud", temps: "incidents à années", vitesse: "jours à années", taille: "macro"}
     traces:
-      - {source: "ton des gestes israéliens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:ISR:LBN"}
+      - {source: "nombre de gestes israéliens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:ISR:LBN"}
   - id: "banque_centrale"
     nom: "Banque centrale et crise financière"
     organisation: "economie"
@@ -78,7 +78,7 @@ compartiments:
     elements: ["Iran", "Arabie saoudite et pays du Golfe", "France et États-Unis", "FMI et bailleurs"]
     niveau: {espace: "région et monde", temps: "années", vitesse: "semaines à années", taille: "macro"}
     traces:
-      - {source: "ton des gestes iraniens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:IRN:LBN"}
+      - {source: "nombre de gestes iraniens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:IRN:LBN"}
   - id: "internet_information"
     nom: "Information et coupures"
     organisation: "technique"

@@ -44,7 +44,7 @@ compartiments:
     elements: ["garantie américaine perçue", "pression sur les budgets", "achats d'équipements américains"]
     niveau: {espace: "Atlantique Nord", temps: "mandats", vitesse: "semaines à années", taille: "macro"}
     traces:
-      - {source: "ton des gestes américains envers l'Allemagne (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:DEU"}
+      - {source: "nombre de gestes américains envers l'Allemagne (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:USA:DEU"}
   - id: "menace"
     nom: "Menace perçue (Russie)"
     organisation: "geopolitique"

@@ -339,10 +339,10 @@ compartiments:
     vitesse: semaines à années
     taille: macro
   traces:
-  - source: GDELT, ton des gestes des États-Unis envers la Chine
+  - source: GDELT, nombre de gestes des États-Unis envers la Chine
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:USA:CHN
+    adaptateur: gestes:USA:CHN
   - source: listes de sanctions visant la Chine
     statut: collecte
     fichier: collecte_sanctions.py
@@ -492,7 +492,7 @@ relations:
   delai: semaines à mois
   force: forte
   intensite:
-    mesure: tension commerciale du moment (ton des gestes entre États)
+    mesure: tension commerciale du moment (nombre de gestes entre États)
     regle: seuil
   coupure: trêves commerciales, réacheminement par des pays tiers
   statut: a_verifier

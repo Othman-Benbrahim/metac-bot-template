@@ -59,12 +59,25 @@ def sanctions(reg: Path, pays: str) -> list[tuple[str, float]]:
 
 
 def dyade(reg: Path, a: str, b: str) -> list[tuple[str, float]]:
-    """Ton moyen hebdomadaire (Goldstein, −10 conflit à +10 coopération) des gestes de A envers B (GDELT)."""
+    """Ton moyen hebdomadaire (Goldstein, −10 conflit à +10 coopération) des gestes de A envers B (GDELT).
+    0.10.360 : retiré des fiches (une note de qualité n'est pas une mesure) ; gardé pour le banc de réciprocité déjà publié."""
     f = reg / "gdelt-dyades.json"
     if not f.exists():
         return []
     s = json.loads(f.read_text(encoding="utf-8"))["sens"].get(f"{a}>{b}", {})
     return sorted((k, v["somme_g"] / (v["n"] + 5)) for k, v in s.items())
+
+
+def gestes(reg: Path, a: str, b: str, categorie: str = "n") -> list[tuple[str, float]]:
+    """NOMBRE hebdomadaire de gestes de A envers B (GDELT, mode dyades) ; catégorie : n (tous), coop_verbale,
+    coop_materielle, conflit_verbal, conflit_materiel. 0.10.360 (décision d'auteur du 2026-11-19, 18 h 23) : remplace
+    dyade: dans les fiches ; une note donnée à la qualité d'un échange (échelle de Goldstein) n'a pas de valeur de
+    mesure, un compte en a une."""
+    f = reg / "gdelt-dyades.json"
+    if not f.exists():
+        return []
+    s = json.loads(f.read_text(encoding="utf-8"))["sens"].get(f"{a}>{b}", {})
+    return sorted((k, float(v.get(categorie, 0))) for k, v in s.items())
 
 
 def fred(reg: Path, serie: str) -> list[tuple[str, float]]:
@@ -195,7 +208,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
-               "pub": pub, "port": port}
+               "pub": pub, "port": port, "gestes": gestes}
 
 
 def variation(serie: list[tuple[str, float]], pas: int) -> list[tuple[str, float]]:

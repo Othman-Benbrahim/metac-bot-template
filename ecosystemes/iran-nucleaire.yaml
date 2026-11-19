@@ -39,14 +39,14 @@ compartiments:
     vitesse: semaines
     taille: méso à macro
   traces:
-  - source: ton des gestes des États-Unis envers l'Iran (GDELT)
+  - source: nombre de gestes des États-Unis envers l'Iran (GDELT)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:USA:IRN
-  - source: ton des gestes de l'Iran envers les États-Unis (GDELT)
+    adaptateur: gestes:USA:IRN
+  - source: nombre de gestes de l'Iran envers les États-Unis (GDELT)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:IRN:USA
+    adaptateur: gestes:IRN:USA
   - source: routines officielles des ministères
     statut: collecte
     fichier: collecte_routines.py
@@ -276,10 +276,10 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
-  - source: ton des gestes de la Chine envers l'Iran (GDELT)
+  - source: nombre de gestes de la Chine envers l'Iran (GDELT)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:CHN:IRN
+    adaptateur: gestes:CHN:IRN
 - id: voisins
   organisation: geopolitique
   nom: Voisins régionaux
@@ -308,10 +308,10 @@ compartiments:
     vitesse: jours à années
     taille: macro
   traces:
-  - source: ton des gestes d'Israël envers l'Iran (GDELT)
+  - source: nombre de gestes d'Israël envers l'Iran (GDELT)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:ISR:IRN
+    adaptateur: gestes:ISR:IRN
 - id: conseil_securite
   organisation: convention
   nom: Conseil de sécurité et droit international
@@ -430,7 +430,7 @@ relations:
   delai: semaines
   force: forte
   intensite:
-    mesure: ton des gestes entre les deux gouvernements (GDELT)
+    mesure: nombre de gestes entre les deux gouvernements (GDELT)
     regle: proportionnelle
   coupure: ouverture d'un canal de négociation
   statut: a_verifier

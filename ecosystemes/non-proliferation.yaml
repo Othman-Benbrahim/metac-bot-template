@@ -48,14 +48,14 @@ compartiments:
     elements: ["doctrines déclarées", "garanties aux alliés", "traités de limitation"]
     niveau: {espace: "monde", temps: "décennies", vitesse: "années", taille: "macro"}
     traces:
-      - {source: "ton des gestes américains envers la Russie (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:RUS"}
+      - {source: "nombre de gestes américains envers la Russie (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:USA:RUS"}
   - id: "etats_du_seuil"
     nom: "États proches du seuil ou hors traité"
     organisation: "geopolitique"
     elements: ["États qui ne sont pas parties au traité", "programmes sous inspection contestée", "menaces de retrait"]
     niveau: {espace: "régions", temps: "années", vitesse: "mois", taille: "macro"}
     traces:
-      - {source: "ton des gestes américains envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:IRN"}
+      - {source: "nombre de gestes américains envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:USA:IRN"}
   - id: "zones"
     nom: "Zones exemptes d'armes nucléaires"
     organisation: "convention"

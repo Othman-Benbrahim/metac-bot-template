@@ -73,3 +73,23 @@ def test_escales_et_listes():
     assert cp.escales({"portcalls": 5, "portcalls_tanker": 2, "portcalls_container": None}) == [5, 2, 0]
     assert cp.escales({"n_total": 7}) == [7, 0, 0] and cp.escales({}) is None
     assert set(co.LISTES) == {"attention_crise", "attention_complot"} and len(co.ARTICLES_COMPLOT) == 10
+
+
+def test_gestes_compte_sans_note(tmp_path: Path):
+    import json
+    (tmp_path / "gdelt-dyades.json").write_text(json.dumps({"sens": {"RUS>UKR": {
+        "2026-11-09": {"n": 40, "somme_g": -120.0, "coop_verbale": 5, "coop_materielle": 1, "conflit_verbal": 10, "conflit_materiel": 24}}}}),
+        encoding="utf-8")
+    assert ad.lire("gestes:RUS:UKR", tmp_path) == [("2026-11-09", 40.0)]
+    assert ad.lire("gestes:RUS:UKR:conflit_materiel", tmp_path) == [("2026-11-09", 24.0)]
+
+
+def test_toute_trace_branchee_a_une_nature():
+    """Garde-fou (2026-11-19) : aucune série n'entre dans une fiche sans dire ce qu'elle compte ; une note de qualité
+    (Goldstein) ou une nature inconnue fait échouer le contrôle."""
+    import classer_series as cs
+    import ecosystemes as ec
+    mauvaises = [t["adaptateur"] for f in ec.charger(ec.DOSSIER).values() for c in f.get("compartiments", [])
+                 for t in c.get("traces") or [] if isinstance(t, dict) and t.get("adaptateur")
+                 and cs.nature(t["adaptateur"])[0] in ("non classé", "écarté")]
+    assert not mauvaises, mauvaises

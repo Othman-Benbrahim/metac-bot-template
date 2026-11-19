@@ -120,10 +120,10 @@ compartiments:
     vitesse: semaines à mois
     taille: macro
   traces:
-  - source: GDELT, ton des gestes des États-Unis envers l'Ukraine
+  - source: GDELT, nombre de gestes des États-Unis envers l'Ukraine
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:USA:UKR
+    adaptateur: gestes:USA:UKR
   - source: Congrès américain (réunions, textes)
     statut: collecte
     fichier: collecte_congres.py
@@ -279,10 +279,10 @@ compartiments:
     vitesse: semaines
     taille: macro
   traces:
-  - source: GDELT, ton des gestes de la Russie envers l'Ukraine
+  - source: GDELT, nombre de gestes de la Russie envers l'Ukraine
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:RUS:UKR
+    adaptateur: gestes:RUS:UKR
   - source: routines officielles (Kremlin)
     statut: collecte
     fichier: collecte_routines.py

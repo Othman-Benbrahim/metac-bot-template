@@ -237,10 +237,10 @@ compartiments:
     vitesse: semaines
     taille: macro
   traces:
-  - source: GDELT, ton des gestes des États-Unis envers la Chine
+  - source: GDELT, nombre de gestes des États-Unis envers la Chine
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:USA:CHN
+    adaptateur: gestes:USA:CHN
   - source: routines officielles (ministère chinois des Affaires étrangères, Maison-Blanche)
     statut: collecte
     fichier: collecte_routines.py

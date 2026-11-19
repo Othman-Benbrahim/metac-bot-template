@@ -269,10 +269,10 @@ compartiments:
     vitesse: mois à années
     taille: macro
   traces:
-  - source: GDELT, ton des gestes de l'Égypte envers l'Éthiopie
+  - source: GDELT, nombre de gestes de l'Égypte envers l'Éthiopie
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: dyade:EGY:ETH
+    adaptateur: gestes:EGY:ETH
   - source: coupures d'internet en Irak (Cloudflare Radar)
     statut: collecte
     adaptateur: radar:IQ
