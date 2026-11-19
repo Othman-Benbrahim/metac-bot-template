@@ -85,8 +85,7 @@ def test_gestes_compte_sans_note(tmp_path: Path):
 
 
 def test_toute_trace_branchee_a_une_nature():
-    """Garde-fou (2026-11-19) : aucune série n'entre dans une fiche sans dire ce qu'elle compte ; une note de qualité
-    (Goldstein) ou une nature inconnue fait échouer le contrôle."""
+    """Garde-fou (2026-11-19) : aucune série n'entre dans une fiche sans dire ce qu'elle compte (nature connue)."""
     import classer_series as cs
     import ecosystemes as ec
     mauvaises = [t["adaptateur"] for f in ec.charger(ec.DOSSIER).values() for c in f.get("compartiments", [])

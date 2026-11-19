@@ -14,7 +14,8 @@ Cinq natures (les deux dernières s'imposent à l'usage, à valider par l'auteur
 - phase : position dans un calendrier (compte à rebours), ni stock ni flux.
 Décisions de l'auteur (2026-11-19, 18 h 23) : une note de qualité d'un échange n'est pas une mesure (dyade: écarté,
 remplacé par le nombre de gestes) ; un sondage est une « déclaration » qui dépend de l'échantillon, du contexte et de
-l'émetteur du questionnaire ; les sorties de modèles (GFS, ConflictForecast) sont des mesures.
+l'émetteur du questionnaire ; les sorties de modèles (GFS, ConflictForecast) sont des mesures. 18 h 32 : une déclaration
+n'est pas jetée ; elle renseigne sur son ÉMETTEUR (épiphénomène, intention, communication trompeuse), États compris.
 
 Sortie : registre/nature-des-series.csv ; résumé à l'écran.
 """
@@ -71,7 +72,9 @@ PAR_TYPE = {
     "feries_chine": ("phase", "jours avant le prochain férié"),
     "calendrier_nbs": ("phase", "jours avant la prochaine publication prévue"),
     "gestes": ("flux", "gestes de A envers B par semaine (compte, sans note de qualité)"),
-    "dyade": ("écarté", "note de qualité d'un échange (Goldstein) : pas une mesure (auteur, 2026-11-19)"),
+    "dyade": ("déclaration", "note de qualité d'un échange (Goldstein) : ne mesure pas la relation entre A et B, mais la façon "
+                             "dont les médias la racontent (émetteur : codage GDELT des récits) ; à lire en écart avec le compte "
+                             "des gestes (auteur, 2026-11-19, 18 h 32)"),
     "meteo_prevue": ("gradient", "écart à la normale annoncé par le modèle GFS (mesure d'un modèle)"),
     "conflictforecast": ("potentiel", "niveau de risque publié par le modèle ConflictForecast (mesure d'un modèle)"),
     "nowcast": ("flux", "variation mensuelle des prix prévue (taux de variation)"),
