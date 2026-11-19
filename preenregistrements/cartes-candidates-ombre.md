@@ -38,3 +38,9 @@ consigne générique (« We are presenting you with two probability questions…
 codé ce texte vide de la même façon à chaque fois. Ces questions sont écartées (après le mélange de graine 1, pour
 garder l'ordre du tirage) et exclues du résumé. Le premier banc de couverture (2026) n'en contenait aucune. Erreur de
 Claude : le filtre manquait au tirage étendu à 2025.
+
+## Statut (décision d'auteur, 2026-11-19, 4 h 25)
+Banc de couverture étendue arrêté par l'auteur (codeurs IA trop instables pour trancher). Les cinq candidates NE sont
+PAS closes : elles restent en ombre, définies ici et dans banc_couverture_alphabet.CANDIDATES, disponibles pour tout
+banc futur ; « si elles ont une utilité, elles joueront sur le résultat ». Rien dans le bot avant le tournoi (décision
+du 2026-11-18, 19 h 40).
