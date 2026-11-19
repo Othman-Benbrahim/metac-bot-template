@@ -247,7 +247,11 @@ ESSAIS = {
                          "objet": "S corrigé, derrière une porte apprise, par les erreurs récentes de S sur les questions "
                                   "qui partagent une entité (idée GraFT) ; aucun appel à un modèle",
                          "doc": "preenregistrements/graphe-questions.md"},
-    "alphabet_correction_finale": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "alphabet_correction_finale": {"resume": ["registre/banc-alphabet-correction.json"], "ouvert_le": "2026-11-19", "type": "intervalle", "n": 1, "statut": "clos",
+                                   "clos_le": "2026-11-19",
+                                   "verdict": "non retenu : 119 questions (310 lignes), A corrigé 0,3694 contre A 0,3804, "
+                                              "écart −0,011, intervalle corrigé [−0,038 ; +0,018] ; M 0,3622 reste "
+                                              "meilleur ; réplique Haiku contraire (0,4762 → 0,4855) (run 44433422760)",
                                    "objet": "A corrigé après coup par le score des 7 notes de cartes, derrière une porte "
                                             "apprise, contre A (idée GraFT) ; aucun nouvel appel",
                                    "doc": "preenregistrements/alphabet-correction-finale.md"},
