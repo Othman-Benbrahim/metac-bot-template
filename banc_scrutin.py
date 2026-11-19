@@ -40,7 +40,7 @@ DEUX_TOURS = {"brazil", "brazilian", "peru", "peruvian", "chile", "chilean", "co
               "poland", "polish", "costa rica", "argentina", "argentine", "congo", "uruguay", "guatemala", "dominican",
               "georgia", "louisiana", "texas", "mississippi", "minas gerais", "bahia", "rio de janeiro", "sao paulo",
               "são paulo"}
-HORS_FORME = re.compile(r"\bby \d+-\d+%|popular vote|rounds or fewer|majority of seats|every region|if trump|before "
+HORS_FORME = re.compile(r"\d+\s*-\s*\d+ seats|\bby \d+-\d+%|popular vote|rounds or fewer|majority of seats|every region|if trump|before "
                         r"september|electoral votes|margin", re.I)
 
 
@@ -62,7 +62,8 @@ def forme(titre: str) -> dict | None:
     sujet, verbe, reste = m.group(1).strip(), m.group(2).lower(), m.group(3).strip()
     rang = {"first": 1, "second": 2, "third": 3, "fourth": 4, "1st": 1, "2nd": 2, "3rd": 3, "4th": 4}
     s_ = (verbe + " " + reste).lower()
-    r = re.search(r"\b(first|second|third|fourth|1st|2nd|3rd|4th)(?:[ -]place|[ -]most)", s_)
+    r = (re.search(r"\b(first|second|third|fourth|1st|2nd|3rd|4th)(?:[ -]place|[ -]most)", s_)
+         or re.search(r"^(?:place|finish in|finish) (first|second|third|fourth|1st|2nd|3rd|4th)\b", s_))
     if verbe in ("qualify for", "advance to"):
         ev, k = "qualifie", 2
     elif r:
@@ -71,6 +72,8 @@ def forme(titre: str) -> dict | None:
         ev, k = "rang", 1
     else:
         ev, k = "gagne", 1
+    reste = re.sub(r"^(?:in |at )?(?:the )?(?:\d+(?:st|nd|rd|th)|first|second|third|fourth)?(?:[ -](?:place|most \w+))?\s*"
+                   r"(?:in |of )?(?:the )?(?:(?:1st|2nd|first|second) round of (?:the )?)?", "", reste, flags=re.I)
     el = re.search(r"((?:the )?(?:\d{4} |next )?[A-Z0-9][^?]*?(?:election|primary|nomination|elections|runoff))", reste)
     election = (el.group(1) if el else reste).strip()
     election = re.sub(r"^(the )?(most seats|most votes|second[- ]most seats|third[- ]most seats)( in| at)?( the)?\s*", "", election, flags=re.I)
@@ -258,69 +261,99 @@ def lire_archives() -> dict[tuple[str, str], dict]:
     for l in ARCHIVES.read_text(encoding="utf-8").splitlines():
         if l.strip():
             a = json.loads(l)
-            out[(a["election"], a["jour"])] = a
+            if a.get("revision"):
+                out[(a["election"], a["jour"])] = a
     return out
 
 
 # ---------------------------------------------------------------- 5. collecte (réseau)
 
+GENERIQUES = {"the", "next", "election", "elections", "presidential", "parliamentary", "general", "state", "primary",
+              "governor", "gubernatorial", "mayoral", "runoff", "republican", "democratic", "nomination", "of", "in"}
+
+
+def _titre_plausible(titre: str, election: str) -> bool:
+    """La page trouvée doit porter un mot distinctif de l'élection (pays, État, ville, année)."""
+    mots = [w for w in _norm(election).split() if w not in GENERIQUES and len(w) >= 3]
+    t = _norm(titre)
+    return bool(mots) and any(w[:5] in t for w in mots)
+
+
 def collecter() -> int:
+    """Archive, pour chaque (élection, date), la version de la page de sondages en vigueur à cette date. Passe par
+    l'API Wikimedia (api.wikimedia.org, permise par robots.txt ; l'API MediaWiki de en.wikipedia.org est refusée)."""
     import httpx
     import politesse
+    from urllib.parse import quote
     deja = lire_archives()
     qs = [x for x in questions() if x["forme"]]
     cles = sorted({(x["forme"]["election"], x["jeu"]) for x in qs} - set(deja))
     print(f"{len(qs)} questions dans la brique ; {len(cles)} couples (élection, date) à archiver.", flush=True)
     ARCHIVES.parent.mkdir(parents=True, exist_ok=True)
+
+    def get(c, url, **kw):
+        for essai in range(3):
+            r = c.get(url, **kw)
+            if r.status_code == 429:
+                time.sleep(10 * (essai + 1))
+                continue
+            time.sleep(0.5)
+            return r.json() if r.status_code == 200 else {}
+        return {}
+
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=60, follow_redirects=True) as c, \
             ARCHIVES.open("a", encoding="utf-8") as f:
-        action_ok = politesse.autorise(c, API + "?action=query")
-        core_ok = politesse.autorise(c, CORE + "/search/page")
-        print(f"robots.txt : API MediaWiki {'autorisée' if action_ok else 'refusée'} ; API Wikimedia {'autorisée' if core_ok else 'refusée'}")
-        if not action_ok and not core_ok:
+        if not politesse.autorise(c, CORE + "/search/page"):
+            print("::warning::API Wikimedia refusée par robots.txt ; rien collecté.")
             return 0
         titres: dict[str, str | None] = {}
+        for election, _ in cles:
+            if election in titres:
+                continue
+            titres[election] = None
+            for q in (f"Opinion polling for the {election}", election):
+                pages = (get(c, CORE + "/search/page", params={"q": q, "limit": 5}) or {}).get("pages") or []
+                bons = [p["title"] for p in pages if _titre_plausible(p["title"], election)]
+                bons.sort(key=lambda t: "polling" not in t.lower())
+                if bons:
+                    titres[election] = bons[0]
+                    break
+        par_titre: dict[str, list[tuple[str, str]]] = {}
         for election, jour in cles:
-            if election not in titres:
-                titres[election] = None
-                for q in (f"Opinion polling for the {election}", election):
-                    try:
-                        if action_ok:
-                            d = c.get(API, params={"action": "query", "list": "search", "srsearch": q, "srlimit": 1,
-                                                    "format": "json"}).json()
-                            r = (d.get("query") or {}).get("search") or []
-                            t = r[0]["title"] if r else None
-                        else:
-                            d = c.get(CORE + "/search/page", params={"q": q, "limit": 1}).json()
-                            r = d.get("pages") or []
-                            t = r[0]["title"] if r else None
-                    except Exception:
-                        t = None
-                    time.sleep(1.0)
-                    if t and ("polling" in t.lower() or q == election):
-                        titres[election] = t
-                        break
-            titre = titres[election]
-            rec = {"election": election, "jour": jour, "titre": titre, "revision": None, "horodatage": None, "tableaux": []}
-            if titre and action_ok:
-                try:
-                    d = c.get(API, params={"action": "query", "prop": "revisions", "titles": titre, "rvlimit": 1,
-                                           "rvdir": "older", "rvstart": f"{jour}T23:59:59Z",
-                                           "rvprop": "ids|timestamp|content", "rvslots": "main", "format": "json",
-                                           "formatversion": 2}).json()
-                    rv = (((d.get("query") or {}).get("pages") or [{}])[0].get("revisions") or [None])[0]
-                    if rv:
-                        texte = rv["slots"]["main"]["content"]
-                        rec.update(revision=rv["revid"], horodatage=rv["timestamp"],
-                                   tableaux=[{"colonnes": t["colonnes"], "lignes": [(d_.isoformat(), v) for d_, v in t["lignes"]]}
-                                             for t in tableaux(texte, int(jour[:4]))],
-                                   date_scrutin=_date_scrutin(texte))
-                except Exception as e:
-                    rec["erreur"] = type(e).__name__
-                time.sleep(1.0)
-            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-            f.flush()
-            print(f"{election[:60]} @ {jour} : {titre} rév. {rec['revision']} · {len(rec['tableaux'])} tableau(x)", flush=True)
+            if titres[election]:
+                par_titre.setdefault(titres[election], []).append((election, jour))
+            else:
+                f.write(json.dumps({"election": election, "jour": jour, "titre": None, "revision": None,
+                                    "tableaux": []}, ensure_ascii=False) + "\n")
+        for titre, besoins in par_titre.items():
+            plus_ancien = min(j for _, j in besoins)
+            revs, url, n = [], CORE + f"/page/{quote(titre.replace(' ', '_'), safe='')}/history", 0
+            while url and n < 200:                                   # 20 versions par page d'historique
+                d = get(c, url)
+                lot = d.get("revisions") or []
+                revs += [(x["timestamp"], x["id"]) for x in lot]
+                n += 1
+                if not lot or lot[-1]["timestamp"][:10] < plus_ancien:
+                    break
+                url = d.get("older")
+            revs.sort()
+            textes: dict[int, str] = {}
+            for election, jour in besoins:
+                avant = [r for r in revs if r[0][:10] <= jour]
+                rec = {"election": election, "jour": jour, "titre": titre, "revision": None, "horodatage": None,
+                       "tableaux": []}
+                if avant:
+                    ts, rid = avant[-1]
+                    if rid not in textes:
+                        textes[rid] = (get(c, CORE + f"/revision/{rid}") or {}).get("source") or ""
+                    texte = textes[rid]
+                    rec.update(revision=rid, horodatage=ts, date_scrutin=_date_scrutin(texte),
+                               tableaux=[{"colonnes": t["colonnes"], "lignes": [(d_.isoformat(), v) for d_, v in t["lignes"]]}
+                                         for t in tableaux(texte, int(jour[:4]))])
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                f.flush()
+                print(f"{election[:60]} @ {jour} : {titre} rév. {rec['revision']} · {len(rec['tableaux'])} tableau(x) "
+                      f"({len(revs)} versions lues)", flush=True)
     return 0
 
 
