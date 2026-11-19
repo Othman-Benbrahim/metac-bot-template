@@ -239,7 +239,11 @@ ESSAIS = {
                            "objet": "S ajusté par la tendance des pages vues Wikipédia des entités de la question, "
                                     "contre S, ~890 questions distinctes de 2026 ; aucun appel à un modèle",
                            "doc": "preenregistrements/wikipedia.md"},
-    "graphe_questions": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "graphe_questions": {"resume": ["registre/banc-graphe-questions.json"], "ouvert_le": "2026-11-19", "type": "intervalle", "n": 1, "statut": "clos",
+                         "clos_le": "2026-11-19",
+                         "verdict": "non retenu : 1878 questions (647 avec voisines), S corrigé 0,5368 contre S 0,5374, "
+                                    "écart −0,0006, intervalle corrigé [−0,005 ; +0,003] ; porte α = −1,8 (à l'envers de "
+                                    "l'hypothèse : rappel, pas persistance) (run 44433157311)",
                          "objet": "S corrigé, derrière une porte apprise, par les erreurs récentes de S sur les questions "
                                   "qui partagent une entité (idée GraFT) ; aucun appel à un modèle",
                          "doc": "preenregistrements/graphe-questions.md"},
