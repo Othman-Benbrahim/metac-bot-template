@@ -8,26 +8,26 @@
  },
  "bilan": {
   "relations": 624,
-  "mesurees": 153,
+  "mesurees": 155,
   "compartiments_persistance": 113,
   "decomposabilite": {
    "dedans": {
-    "n": 51,
-    "r_moyen": 0.216
+    "n": 52,
+    "r_moyen": 0.222
    },
    "entre": {
-    "n": 23,
-    "r_moyen": 0.245
+    "n": 24,
+    "r_moyen": 0.241
    }
   },
   "incompatibles": 3,
-  "significatives": 20,
+  "significatives": 22,
   "signe_contredit": 6,
   "non_calibrables": {
    "source_sans_serie": 413,
    "cible_sans_serie": 83,
    "boucle_sur_soi": 17,
-   "meme_serie": 3,
+   "meme_serie": 2,
    "modulation_sans_series": 3
   }
  },
@@ -343,44 +343,38 @@
    "concorde": null
   },
   "humain:stress_chronique>humain:attente": {
-   "verdict": "non_significatif",
-   "r": 0.108,
-   "n": 136,
-   "retard": 4,
+   "verdict": "significatif",
+   "r": -0.374,
+   "n": 139,
+   "retard": 0,
    "pas": "mois",
-   "delai_jours": 120,
-   "signe": "+",
-   "poids": 0.216,
-   "lambda_pertes": 0.43,
-   "t_asymetrie": 2.17,
-   "lambda_significatif": true,
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.748,
+   "lambda_pertes": 1.23,
+   "t_asymetrie": -0.28,
+   "lambda_significatif": false,
    "source": "fred:UNRATE",
-   "cible": "fred:T10YIE",
+   "cible": "fred:UMCSENT",
    "effet_ecrit": "-",
-   "concorde": false
+   "concorde": true
   },
   "humain:attente>humain:passage_acte": {
    "verdict": "non_significatif",
-   "r": 0.226,
-   "n": 111,
-   "retard": 11,
-   "pas": "semaine",
-   "delai_jours": 77,
-   "signe": "+",
-   "poids": 0.451,
-   "rapport_pentes": 5.53,
-   "regle": "seuil",
-   "seuil": 1.5,
-   "mu": 1.5,
-   "sigma": 0.1,
-   "delta_bic": -7.46,
-   "lambda_pertes": 1.86,
-   "t_asymetrie": 0.72,
+   "r": -0.195,
+   "n": 25,
+   "retard": 1,
+   "pas": "mois",
+   "delai_jours": 30,
+   "signe": "-",
+   "poids": 0.391,
+   "lambda_pertes": 0.12,
+   "t_asymetrie": 1.07,
    "lambda_significatif": false,
-   "source": "fred:T10YIE",
+   "source": "fred:UMCSENT",
    "cible": "manifestations:US",
    "effet_ecrit": "-",
-   "concorde": false
+   "concorde": true
   },
   "humain:nous_eux>humain:passage_acte": {
    "verdict": "non_significatif",
@@ -435,6 +429,22 @@
    "cible": "telegram:tout",
    "effet_ecrit": "+",
    "concorde": false
+  },
+  "humain:risque_percu>humain:attente": {
+   "verdict": "significatif",
+   "r": -0.266,
+   "n": 137,
+   "retard": 3,
+   "pas": "mois",
+   "delai_jours": 90,
+   "signe": "-",
+   "poids": 0.532,
+   "rapport_pentes": 1.01,
+   "regle": "proportionnelle",
+   "source": "fred:T10YIE",
+   "cible": "fred:UMCSENT",
+   "effet_ecrit": "-",
+   "concorde": true
   },
   "humain:stress_chronique>humain:controle_percu": {
    "verdict": "chevauchement_insuffisant",
@@ -1456,6 +1466,21 @@
    "cible": "ucdp:Sudan",
    "type": "influence"
   },
+  "pont:humain:attente>inflation-mondiale:anticipations": {
+   "verdict": "non_significatif",
+   "r": 0.156,
+   "n": 133,
+   "retard": 7,
+   "pas": "mois",
+   "delai_jours": 210,
+   "signe": "+",
+   "poids": 0.312,
+   "rapport_pentes": 0.32,
+   "regle": "saturation",
+   "source": "fred:UMCSENT",
+   "cible": "fred:T10YIE",
+   "type": "influence"
+  },
   "pont:humain:falsification>observateur-mesure:biais": {
    "verdict": "non_significatif",
    "r": 0.295,
@@ -2078,11 +2103,11 @@
    "serie": "fred:UNRATE"
   },
   "humain:attente": {
-   "phi": 0.979,
-   "pas": "semaine",
-   "n": 621,
-   "tau_jours": 336.7,
-   "serie": "fred:T10YIE"
+   "phi": 0.876,
+   "pas": "mois",
+   "n": 141,
+   "tau_jours": 226.8,
+   "serie": "fred:UMCSENT"
   },
   "humain:nous_eux": {
    "phi": 0.016,
