@@ -1,6 +1,7 @@
 theme: "humain"
 nom: "Ce qui pousse l'humain à agir (de la seconde aux millénaires)"
 # 0.10.325 — première lecture intégrée : Behave (Sapolsky, 2017), mémo lectures/sapolsky-behave.md.
+# 0.10.343 — Bronner, La démocratie des crédules (2013) : marché cognitif. Mémo lectures/bronner-democratie-credules.md.
 # 0.10.342 — Norenzayan (Big Gods) par la critique de Soler (2016) : deux hypothèses concurrentes sur croyances. Mémo lectures/soler-big-gods.md.
 # 0.10.338 — croyances, réseaux discrets (EN OMBRE) et croyance en des forces cachées (décision d'auteur du 2026-11-19, 12 h 00).
 # 0.10.331 — septième : The Righteous Mind (Haidt, 2012 ; éd. roumaine 2015, ch. 12 et conclusion), mémo lectures/haidt-righteous-mind.md.
@@ -490,6 +491,18 @@ compartiments:
     taille: "méso"
   traces:
   - source: "attention publique aux récits de complot (pages vues Wikipédia d'une liste fixe d'articles)"
+    statut: "a_brancher"
+- id: "marche_cognitif"
+  nom: "Marché cognitif (offre d'information sans filtre, concurrence entre médias et entre croyances)"
+  organisation: "technique"
+  elements: ["la massification de l'information facilite la recherche de ce qui confirme (théorème de la crédulité informationnelle, Bronner)", "les croyants motivés produisent plus de contenu que les sceptiques : une minorité occupe l'offre (paradoxe d'Olson appliqué aux croyances)", "millefeuille argumentatif : des arguments faibles empilés paraissent solides par leur nombre", "concurrence entre médias : publier vite plutôt que vérifier (dilemme du prisonnier), temps d'incubation d'une rumeur réduit à quelques jours", "fiabilité et concurrence : un peu de concurrence sert le vrai, trop le dessert (courbe FIC)"]
+  niveau:
+    espace: "pays à monde"
+    temps: "heures à années"
+    vitesse: "heures à jours"
+    taille: "méso à macro"
+  traces:
+  - source: "volume quotidien d'articles et de messages (GDELT, flux suivis), mesure de l'offre ; la demande reste non mesurée"
     statut: "a_brancher"
 relations:
 # --- propres au corps et au psychologique ---
@@ -1334,6 +1347,58 @@ relations:
   statut: "conteste"
   source: "Soler (2016)"
   texte: "une hiérarchie qui exploite par la religion provoque des défenses : schismes, apostasie, sectes millénaristes, incroyance"
+# --- Bronner, La démocratie des crédules (2013) ---
+- de: "marche_cognitif"
+  vers: "croyance_complot"
+  effet: "+"
+  delai: "semaines"
+  force: "moyenne"
+  intensite: {mesure: "offre d'information non filtrée par rapport à l'habitude", regle: "seuil"}
+  statut: "a_verifier"
+  source: "Bronner, ch. I-III"
+  texte: "plus l'offre est abondante et concurrentielle, plus il est facile de ne trouver que ce qui confirme ; au-delà d'un seuil de concurrence, la fiabilité baisse (courbe FIC)"
+  parametres: {seuil: 1.5}
+- de: "croyance_complot"
+  vers: "marche_cognitif"
+  effet: "+"
+  delai: "jours"
+  force: "moyenne"
+  intensite: {mesure: "production de contenus par les croyants", regle: "saturation"}
+  statut: "a_verifier"
+  source: "Bronner, ch. II (paradoxe d'Olson)"
+  texte: "les croyants motivés occupent l'offre ; les sceptiques, nombreux mais peu motivés, laissent faire : la boucle s'entretient"
+- de: "passage_acte"
+  vers: "croyance_complot"
+  effet: "+"
+  delai: "jours"
+  force: "moyenne"
+  statut: "a_verifier"
+  source: "Bronner, ch. II (temps d'incubation réduit)"
+  texte: "après un événement spectaculaire, une version conspirationniste paraît en quelques jours"
+- de: "disponibilite"
+  vers: "croyance_complot"
+  effet: "+"
+  delai: "jours"
+  force: "faible"
+  statut: "a_verifier"
+  source: "Bronner, ch. II-III (effet râteau, négligence de la taille de l'échantillon) ; Kahneman"
+  texte: "des coïncidences saillantes sont lues comme un dessein (« comme par hasard »)"
+- de: "symboles"
+  vers: "croyance_complot"
+  effet: "+"
+  delai: "jours"
+  force: "faible"
+  statut: "a_verifier"
+  source: "Bronner, ch. IV (effet Othello)"
+  texte: "un récit qui unifie des faits disparates rend crédible une conclusion improbable"
+- de: "marche_cognitif"
+  vers: "disponibilite"
+  effet: "+"
+  delai: "jours"
+  force: "moyenne"
+  statut: "a_verifier"
+  source: "Bronner, ch. III (emballements médiatiques)"
+  texte: "la concurrence entre médias fabrique des emballements : un fait isolé devient une vague"
 ponts:
 - depuis: "passage_acte"
   vers: "politique-americaine:elections"
@@ -1405,3 +1470,10 @@ ponts:
 - depuis: "croyance_complot"
   vers: "politique-americaine:elections"
   nature: "contestation des résultats"
+- depuis: "marche_cognitif"
+  vers: "information-cyber:recits"
+  type: "meme"
+  nature: "l'offre de récits en ligne"
+- depuis: "croyance_complot"
+  vers: "observateur-mesure:biais"
+  nature: "l'opinion visible en ligne surreprésente les minorités motivées (Bronner) : ne pas la prendre pour l'opinion"
