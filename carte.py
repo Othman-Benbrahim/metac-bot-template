@@ -58,6 +58,12 @@ MU_DEFAUT = 2.0
 INTENSITE_MAX = 4.0
 # Comptes à rebours (jours jusqu'à la prochaine échéance) : des calendriers, pas des intensités (lus par calibrer.py aussi)
 COMPTES_A_REBOURS = ("elections", "memoire", "feries_chine", "calendrier_nbs")
+
+
+def est_compte_a_rebours(adaptateur: str) -> bool:
+    """Un calendrier brut ; transformé en proximité (« :procheN », 0.10.338), il redevient une intensité."""
+    p = adaptateur.split(":")
+    return p[0] in COMPTES_A_REBOURS and not (p[-1].startswith("proche") and p[-1][6:].isdigit())
 GAIN_PROPRE_MAX = 0.9      # simulation : une boucle sur soi seule ne fait pas basculer (il faut un circuit entre compartiments)
 SIGMA_DEFAUT = 0.5
 CALIBRATION = Path("registre/calibration.json")
@@ -175,7 +181,8 @@ def multiplicateur(regle: str | None, intensite: float, seuil: float = SEUIL_DEF
 
 
 class Carte:
-    def __init__(self, dossier: Path = ec.DOSSIER, reg: Path = ad.REG, calibration: Path | None = CALIBRATION):
+    def __init__(self, dossier: Path = ec.DOSSIER, reg: Path = ad.REG, calibration: Path | None = CALIBRATION,
+                 ombre: bool = False):
         self.fiches = ec.charger(dossier)
         erreurs = [e for f in self.fiches.values() for e in ec.valider(f)]
         if erreurs:
@@ -194,7 +201,10 @@ class Carte:
             self.persistance = {k: v["tau_jours"] for k, v in comp.items() if v.get("tau_jours")}
         self.sortants: dict[str, list[dict]] = {}
         self.modulateurs: dict[str, list[tuple[str, float]]] = {}
+        self.ombre = ombre
         for r in self.s["relations"]:
+            if r.get("statut") == "ombre" and not ombre:   # 0.10.338 : mécanisme en ombre, hors propagation
+                continue
             cle = f"{r['de']}>{r['vers']}"
             par = r.get("parametres") or {}
             r = dict(r, cle=cle, seuil=float(par.get("seuil", SEUIL_DEFAUT)), mu=float(par.get("mu", MU_DEFAUT)),
@@ -280,7 +290,7 @@ class Carte:
         """|z| plafonné à INTENSITE_MAX : une série dont l'habitude est presque nulle (collecte qui démarre) donne des z
         de plusieurs centaines qui ne disent rien de plus qu'« très au-dessus »."""
         e = self.etat().get(nid) or {}
-        if str(e.get("adaptateur", "")).split(":")[0] in COMPTES_A_REBOURS:     # un calendrier n'est pas une intensité
+        if est_compte_a_rebours(str(e.get("adaptateur", ""))):                  # un calendrier n'est pas une intensité
             return 0.0
         z = float(e.get("z") or 0.0)
         return max(-INTENSITE_MAX, min(INTENSITE_MAX, z))
@@ -379,7 +389,7 @@ class Carte:
                     continue
                 baisse = r.get("seuil", SEUIL_DEFAUT) - self.seuil_effectif(r, {})
                 s_eff = self.seuil_effectif(r, {}) if regle == "seuil" else max(SEUIL_PLANCHER, r.get("mu", MU_DEFAUT) - baisse)
-                trace = src in self.etat() and str(self.etat()[src].get("adaptateur", "")).split(":")[0] not in COMPTES_A_REBOURS
+                trace = src in self.etat() and not est_compte_a_rebours(str(self.etat()[src].get("adaptateur", "")))
                 i = abs(self.intensite(src)) if trace else None
                 out.append({"relation": r.get("cle"), "regle": regle, "seuil_effectif": round(s_eff, 2),
                             "intensite": None if i is None else round(i, 2),

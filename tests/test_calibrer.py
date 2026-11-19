@@ -198,7 +198,8 @@ def test_marges_de_bascule():
     m = c.marges_de_bascule(500)
     connues = [x["marge"] for x in m if x["marge"] is not None]
     assert connues == sorted(connues) and all(x["regle"] in ("seuil", "masse_critique") for x in m)
-    assert not any(x["relation"].startswith("humain:symboles>") and x["marge"] is not None for x in m)   # memoire = calendrier
+    # 0.10.338 : symboles lit « memoire:RU:proche7 » (une proximité, donc une intensité) avant le compte à rebours brut
+    assert c.etat().get("humain:symboles", {}).get("adaptateur", "memoire:RU:proche7").endswith("proche7")
 
 
 # --- 0.10.328 : Kahneman ---
@@ -278,3 +279,21 @@ def test_fiche_humain_haidt(tmp_path: Path):
     c = ca.Carte(reg=tmp_path, calibration=None)
     r = c.simuler({"humain:tri": 1.0}, 3650, 30, maintenu=True)
     assert r["humain:polarisation"]["pic"] > 0 and r["humain:hierarchie"]["pic"] > 0      # contestation du rang
+
+
+# --- 0.10.338 : mécanismes en ombre ; comptes à rebours transformés en proximité ---
+def test_ombre_hors_propagation():
+    c = ca.Carte(calibration=None)
+    c2 = ca.Carte(calibration=None, ombre=True)
+    vers = lambda k: {r["vers"] for r in k.sortants.get("humain:reseaux_discrets", [])}
+    assert vers(c) == {"humain:croyance_complot"}                         # seule relation non ombre
+    assert {"humain:hierarchie", "humain:agenda", "humain:conventions"} <= vers(c2)
+    assert "ombre" in ec.STATUTS
+
+
+def test_proximite_d_un_compte_a_rebours(tmp_path: Path, monkeypatch):
+    import adaptateurs as ad
+    monkeypatch.setitem(ad.ADAPTATEURS, "faux", lambda reg: [("2026-01-01", 10.0), ("2026-01-02", 7.0), ("2026-01-09", 0.0)])
+    assert ad.lire("faux:proche7", tmp_path) == [("2026-01-01", 0.0), ("2026-01-02", 1.0), ("2026-01-09", 1.0)]
+    assert ca.est_compte_a_rebours("memoire:RU") and not ca.est_compte_a_rebours("memoire:RU:proche7")
+    assert cb.lire_serie("elections:US", tmp_path) == []

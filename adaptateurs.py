@@ -137,6 +137,10 @@ def variation(serie: list[tuple[str, float]], pas: int) -> list[tuple[str, float
 def lire(nom: str, reg: Path = REG) -> list[tuple[str, float]]:
     """« portwatch:ormuz:petroliers » → série datée ; nom inconnu → erreur explicite."""
     type_, *params = nom.split(":")
+    if params and params[-1].startswith("proche") and params[-1][6:].isdigit():   # « memoire:RU:proche7 » (0.10.338)
+        # un compte à rebours devient une intensité : 1 les N jours qui précèdent l'échéance (et le jour même), 0 sinon
+        n = int(params[-1][6:])
+        return [(j, 1.0 if 0 <= v <= n else 0.0) for j, v in lire(":".join([type_] + params[:-1]), reg)]
     if params and params[-1].startswith("var") and params[-1][3:].isdigit():   # « fred:CPIAUCSL:var12 »
         return variation(lire(":".join([type_] + params[:-1]), reg), int(params[-1][3:]))
     if type_ not in ADAPTATEURS:

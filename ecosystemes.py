@@ -36,7 +36,9 @@ EFFETS = ("+", "-", "0", "±")
 FORMES = ("competition", "predation", "mutualisme", "commensalisme", "amensalisme", "neutralisme", "forcage",
           "contrainte", "ambivalent")
 STYLES = ("donnant-donnant", "rancunier", "conciliant", "indifferent", "inconnu")
-STATUTS = ("a_verifier", "verifie", "conteste")
+STATUTS = ("a_verifier", "verifie", "conteste", "ombre")
+# 0.10.338 (décision d'auteur du 2026-11-19, 12 h 00) : « ombre » = mécanisme supposé, à étudier, que la carte garde
+# HORS de la propagation et de la simulation (Carte(ombre=True) pour l'inclure) ; calibrer.py le mesure quand même.
 TRACES = ("collecte", "a_brancher", "fermee", "inconnue")
 FORCES = ("faible", "moyenne", "forte", "inconnue")
 # 0.10.315 (idée de l'auteur, 2026-11-19, 3 h 56) : l'INTENSITÉ. La force d'une relation n'est pas fixe : plus

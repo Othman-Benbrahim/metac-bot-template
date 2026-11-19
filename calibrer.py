@@ -204,7 +204,7 @@ def compatibles(ax: str, ay: str) -> bool:
 
 
 def lire_serie(adaptateur: str, reg: Path) -> list:
-    if adaptateur.split(":")[0] in COMPTES_A_REBOURS:
+    if carte.est_compte_a_rebours(adaptateur):
         return []
     try:
         s = ad.lire(adaptateur, reg)
@@ -257,7 +257,7 @@ def persistance(serie: list[tuple[str, float]]) -> dict:
 
 def premiere_serie(noeud: dict, reg: Path) -> tuple[str | None, list]:
     for tr in noeud.get("traces") or []:
-        if tr.get("adaptateur") and tr["adaptateur"].split(":")[0] not in COMPTES_A_REBOURS:
+        if tr.get("adaptateur") and not carte.est_compte_a_rebours(tr["adaptateur"]):
             try:
                 s = ad.lire(tr["adaptateur"], reg)
             except Exception:
