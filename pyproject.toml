@@ -25,6 +25,7 @@ integrations = [
 dev = [
     "hypothesis>=6.170.15",
     "ipykernel>=6.29.5,<7",
+    "pytest>=8",
 ]
 
 [tool.uv]

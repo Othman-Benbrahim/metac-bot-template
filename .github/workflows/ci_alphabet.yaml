@@ -21,8 +21,10 @@ jobs:
       - run: uv sync --locked
       - name: Audit du skill (sommes de contrôle)
         run: python alphabet-situationnel/scripts/moteur.py audit
+      # 0.10.332 : pytest au lieu de unittest. unittest ne voit que les classes TestCase ; les tests écrits en fonctions
+      # (carte, écosystèmes, calibration, adaptateurs, bancs…) n'étaient jamais exécutés ici. pytest lance les deux.
       - name: Tests
-        run: uv run python -m unittest discover -s tests -v
+        run: uv run python -m pytest tests -q -p no:cacheprovider
         env:
           ALPHABET_SKILL_DIR: alphabet-situationnel
           ALPHABET_REGISTRE: ${{ runner.temp }}/registre-ci
