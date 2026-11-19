@@ -1,0 +1,88 @@
+{
+  "version_bot": "0.10.308",
+  "questions": 1878,
+  "avec_voisines": 647,
+  "note": "questions distinctes (première date de jeu), toutes années ; base S ; voisines = même entité, résolues dans les 180 jours avant le jeu ; α appris sans la question jugée",
+  "perte_S": 0.5374,
+  "perte_corrigee": 0.5368,
+  "alpha_sur_tout": -1.8,
+  "critere": {
+    "n_nouveaux": 1878,
+    "regard": 1,
+    "n_juge": 1878,
+    "blocs": 1878,
+    "bloc_par": "question",
+    "ecart_moyen": -0.000632459083555728,
+    "intervalle_90_par_blocs": [
+      -0.0031166346464794664,
+      0.0016084945449435456
+    ],
+    "intervalle_corrige": [
+      -0.004505706143904744,
+      0.00336114990405814
+    ],
+    "niveau_corrige": 0.9938,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "descriptif_questions_avec_voisines": {
+    "n": 647,
+    "perte_S": 0.5405,
+    "perte_corrigee": 0.5387
+  },
+  "par_source": {
+    "infer": {
+      "n": 44,
+      "S": 0.5695,
+      "corrigee": 0.5678
+    },
+    "manifold": {
+      "n": 299,
+      "S": 0.6049,
+      "corrigee": 0.5982
+    },
+    "metaculus": {
+      "n": 236,
+      "S": 0.5511,
+      "corrigee": 0.5428
+    },
+    "polymarket": {
+      "n": 1299,
+      "S": 0.5183,
+      "corrigee": 0.5205
+    }
+  },
+  "profils": {
+    "S": {
+      "n": 1878,
+      "oui": 406,
+      "perte_log": 0.5374,
+      "perte_venue_des_oui": 0.3686,
+      "perte_venue_des_non": 0.1689,
+      "rates_oui_sous_30": 320,
+      "fausses_alertes_non_sur_50": 9,
+      "brier": 0.174,
+      "fiabilite_plus_bas_mieux": 0.0089,
+      "resolution_plus_haut_mieux": 0.0038,
+      "incertitude": 0.1695
+    },
+    "corrige": {
+      "n": 1878,
+      "oui": 406,
+      "perte_log": 0.5368,
+      "perte_venue_des_oui": 0.3718,
+      "perte_venue_des_non": 0.165,
+      "rates_oui_sous_30": 323,
+      "fausses_alertes_non_sur_50": 1,
+      "brier": 0.1734,
+      "fiabilite_plus_bas_mieux": 0.0082,
+      "resolution_plus_haut_mieux": 0.0038,
+      "incertitude": 0.1695
+    }
+  },
+  "unites": {
+    "lignes": 1878,
+    "questions_distinctes": 1878,
+    "questions_oui_distinctes": 406,
+    "alerte": null
+  }
+}
