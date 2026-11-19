@@ -1,0 +1,462 @@
+{
+ "themes": [
+  "ormuz"
+ ],
+ "noeuds": [
+  {
+   "id": "ormuz:milieu",
+   "theme": "ormuz",
+   "nom": "Milieu physique",
+   "niveau": {
+    "espace": "le détroit et le golfe",
+    "temps": "permanent ; saisons de chaleur",
+    "vitesse": "très lente (relief) ; jours (tempêtes de chaleur",
+    "sable)": null,
+    "taille": "méso"
+   },
+   "traces": [
+    {
+     "source": "températures et vents (Open-Meteo ou réanalyses)",
+     "statut": "a_brancher"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:flux_energie",
+   "theme": "ormuz",
+   "nom": "Flux d'énergie",
+   "niveau": {
+    "espace": "le détroit vers l'Asie",
+    "l'Europe": null,
+    "temps": "contrats ; flux quotidiens",
+    "vitesse": "jours",
+    "taille": "macro"
+   },
+   "traces": [
+    {
+     "source": "IMF PortWatch (transits du détroit)",
+     "statut": "collecte",
+     "fichier": "collecte_portwatch.py"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:navigation",
+   "theme": "ormuz",
+   "nom": "Navigation commerciale",
+   "niveau": {
+    "espace": "les couloirs de navigation",
+    "temps": "traversée de quelques heures",
+    "vitesse": "heures à semaines",
+    "taille": "micro (un navire) à méso (une flotte)"
+   },
+   "traces": [
+    {
+     "source": "IMF PortWatch",
+     "statut": "collecte",
+     "fichier": "collecte_portwatch.py"
+    },
+    {
+     "source": "avis aux navigateurs (NGA)",
+     "statut": "collecte",
+     "fichier": "collecte_avis_navigation.py"
+    },
+    {
+     "source": "primes d'assurance risques de guerre",
+     "statut": "fermee"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:riverains",
+   "theme": "ormuz",
+   "nom": "États riverains",
+   "niveau": {
+    "espace": "États",
+    "temps": "mandats",
+    "régimes": null,
+    "vitesse": "semaines à années",
+    "taille": "macro"
+   },
+   "traces": [
+    {
+     "source": "GDELT",
+     "événements entre gouvernements (paires d'États)": null,
+     "statut": "collecte",
+     "fichier": "gdelt_bq.py"
+    },
+    {
+     "source": "routines officielles (sites des ministères)",
+     "statut": "collecte",
+     "fichier": "collecte_routines.py"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:puissances",
+   "theme": "ormuz",
+   "nom": "Puissances extérieures",
+   "niveau": {
+    "espace": "mondial",
+    "temps": "alliances de long terme ; décisions politiques",
+    "vitesse": "jours à années",
+    "taille": "macro"
+   },
+   "traces": [
+    {
+     "source": "GDELT",
+     "paires d'États": null,
+     "statut": "collecte",
+     "fichier": "gdelt_bq.py"
+    },
+    {
+     "source": "Federal Register",
+     "Congrès": null,
+     "statut": "collecte",
+     "fichier": "collecte_federal_register.py"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:force",
+   "theme": "ormuz",
+   "nom": "Force armée",
+   "niveau": {
+    "espace": "le détroit et ses abords",
+    "temps": "incidents ; postures saisonnières",
+    "vitesse": "heures à jours",
+    "taille": "méso"
+   },
+   "traces": [
+    {
+     "source": "avions d'État (vols militaires visibles)",
+     "statut": "collecte",
+     "fichier": "collecte_avions_etat.py"
+    },
+    {
+     "source": "avis aux navigateurs (zones d'exercice)",
+     "statut": "collecte",
+     "fichier": "collecte_avis_navigation.py"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:droit",
+   "theme": "ormuz",
+   "nom": "Droit et conventions",
+   "niveau": {
+    "espace": "juridictions",
+    "temps": "textes durables ; décisions datées",
+    "vitesse": "semaines à décennies",
+    "taille": "macro"
+   },
+   "traces": [
+    {
+     "source": "listes de sanctions",
+     "statut": "collecte",
+     "fichier": "collecte_sanctions.py"
+    },
+    {
+     "source": "Federal Register",
+     "statut": "collecte",
+     "fichier": "collecte_federal_register.py"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:prix",
+   "theme": "ormuz",
+   "nom": "Prix et marchés",
+   "niveau": {
+    "espace": "marchés mondiaux",
+    "temps": "séances quotidiennes",
+    "vitesse": "minutes à semaines",
+    "taille": "macro"
+   },
+   "traces": [
+    {
+     "source": "prix quotidien du Brent (FRED",
+     "données publiques)": null,
+     "statut": "a_brancher"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:interieur_iran",
+   "theme": "ormuz",
+   "nom": "Intérieur iranien",
+   "niveau": {
+    "espace": "Iran",
+    "temps": "mois à années",
+    "vitesse": "mois ; jours en crise",
+    "taille": "macro"
+   },
+   "traces": [
+    {
+     "source": "coupures et censure d'internet (OONI",
+     "Cloudflare Radar)": null,
+     "statut": "collecte",
+     "fichier": "collecte_ooni.py"
+    }
+   ]
+  },
+  {
+   "id": "ormuz:recits",
+   "theme": "ormuz",
+   "nom": "Récits et attention",
+   "niveau": {
+    "espace": "médiatique mondial",
+    "temps": "cycle de l'information",
+    "vitesse": "heures à jours",
+    "taille": "micro à macro"
+   },
+   "traces": [
+    {
+     "source": "GDELT",
+     "statut": "collecte",
+     "fichier": "collecte_gdelt.py"
+    },
+    {
+     "source": "Telegram (chaînes publiques)",
+     "statut": "collecte",
+     "fichier": "collecte_telegram.py"
+    }
+   ]
+  }
+ ],
+ "relations": [
+  {
+   "de": "ormuz:milieu",
+   "vers": "ormuz:flux_energie",
+   "forme": "contrainte",
+   "forme_ecrite": true,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "permanent",
+   "force": "forte",
+   "coupure": "les oléoducs de contournement n'absorbent qu'une partie du flux (part à vérifier)",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "le goulet concentre le flux sur un seul passage étroit"
+  },
+  {
+   "de": "ormuz:flux_energie",
+   "vers": "ormuz:prix",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "coupure": "stocks stratégiques et capacités inutilisées ailleurs amortissent",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "une baisse du flux fait monter les prix mondiaux"
+  },
+  {
+   "de": "ormuz:force",
+   "vers": "ormuz:navigation",
+   "forme": "predation",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "+",
+   "style": null,
+   "delai": "heures",
+   "force": "forte",
+   "coupure": "escortes navales",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "saisies"
+  },
+  {
+   "de": "ormuz:navigation",
+   "vers": "ormuz:prix",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "jours à semaines",
+   "force": "moyenne",
+   "coupure": "si le flux physique continue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "assurance et fret transmettent le risque aux prix avant tout arrêt physique"
+  },
+  {
+   "de": "ormuz:puissances",
+   "vers": "ormuz:riverains",
+   "forme": "competition",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "-",
+   "style": "inconnu",
+   "delai": "semaines",
+   "force": "forte",
+   "coupure": "négociation",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "rivalité États-Unis–Iran (style à mesurer au banc de la réciprocité"
+  },
+  {
+   "de": "ormuz:puissances",
+   "vers": "ormuz:interieur_iran",
+   "forme": "mutualisme",
+   "forme_ecrite": true,
+   "effet": "+",
+   "retour": "+",
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "coupure": "sanctions secondaires sur les acheteurs",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "Chine–Iran"
+  },
+  {
+   "de": "ormuz:droit",
+   "vers": "ormuz:flux_energie",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "semaines à mois",
+   "force": "moyenne",
+   "coupure": "flotte fantôme et transbordements",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les sanctions réduisent et détournent les exportations iraniennes sans les arrêter"
+  },
+  {
+   "de": "ormuz:prix",
+   "vers": "ormuz:interieur_iran",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "coupure": "volumes sous sanctions",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les recettes de l'Iran dépendent du prix autant que des volumes vendus"
+  },
+  {
+   "de": "ormuz:interieur_iran",
+   "vers": "ormuz:force",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "semaines",
+   "force": "inconnue",
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "une pression intérieure peut pousser à l'escalade extérieure ou à la retenue"
+  },
+  {
+   "de": "ormuz:milieu",
+   "vers": "ormuz:interieur_iran",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "saisons à années",
+   "force": "inconnue",
+   "coupure": "dessalement et importations",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "chaleur et rareté de l'eau pèsent sur la vie et la contestation"
+  },
+  {
+   "de": "ormuz:recits",
+   "vers": "ormuz:prix",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "heures",
+   "force": "moyenne",
+   "coupure": "démenti ou absence d'incident physique",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "une menace verbale bouge les prix avant tout fait"
+  },
+  {
+   "de": "ormuz:force",
+   "vers": "ormuz:recits",
+   "forme": "mutualisme",
+   "forme_ecrite": true,
+   "effet": "+",
+   "retour": "+",
+   "style": null,
+   "delai": "heures",
+   "force": "moyenne",
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "démonstrations de force et récits se nourrissent (signalisation)"
+  }
+ ],
+ "ponts": [
+  {
+   "de": "ormuz:prix",
+   "vers": "energie-mondiale:prix",
+   "nature": "le prix du brut relie Ormuz à tous les importateurs",
+   "resolu": false
+  },
+  {
+   "de": "ormuz:prix",
+   "vers": "inflation-mondiale:energie",
+   "nature": "l'énergie entre dans l'inflation et donc dans les banques centrales",
+   "resolu": false
+  },
+  {
+   "de": "ormuz:interieur_iran",
+   "vers": "iran-nucleaire:negociations",
+   "nature": "le programme nucléaire et les sanctions se négocient ensemble",
+   "resolu": false
+  },
+  {
+   "de": "ormuz:puissances",
+   "vers": "rivalite-sino-americaine:energie",
+   "nature": "la sécurité des approvisionnements chinois",
+   "resolu": false
+  },
+  {
+   "de": "ormuz:force",
+   "vers": "guerre-levant:iran",
+   "nature": "les fronts régionaux de l'Iran et de ses alliés",
+   "resolu": false
+  },
+  {
+   "de": "ormuz:navigation",
+   "vers": "transport-maritime:detroits",
+   "nature": "Ormuz",
+   "resolu": false
+  },
+  {
+   "de": "ormuz:milieu",
+   "vers": "eau-moyen-orient:rarete",
+   "nature": "la rareté de l'eau douce dans la région",
+   "resolu": false
+  }
+ ],
+ "bilan": {
+  "themes": 1,
+  "compartiments": 10,
+  "relations": 12,
+  "ponts": 7,
+  "ponts_en_attente": 7,
+  "relations_a_verifier": 12,
+  "compartiments_sans_trace_collectee": 2
+ }
+}

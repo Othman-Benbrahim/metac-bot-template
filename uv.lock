@@ -1309,6 +1309,7 @@ dependencies = [
     { name = "openai" },
     { name = "python-decouple" },
     { name = "python-dotenv" },
+    { name = "pyyaml" },
     { name = "requests" },
 ]
 
@@ -1331,6 +1332,7 @@ requires-dist = [
     { name = "openai", specifier = ">=2.0.0,<3" },
     { name = "python-decouple", specifier = ">=3.8,<4" },
     { name = "python-dotenv", specifier = ">=1.0.1,<2" },
+    { name = "pyyaml", specifier = ">=6.0" },
     { name = "requests", specifier = ">=2.32.3,<3" },
 ]
 
