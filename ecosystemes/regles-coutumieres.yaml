@@ -217,15 +217,32 @@ regles:
     statut: source
 
   - id: europe_formation_gouvernement
-    ecosysteme: "Europe · formation des gouvernements de coalition"
+    ecosysteme: "Démocraties parlementaires (Europe et OCDE) · formation du gouvernement après une élection"
     espace: europe
-    echelle: {axe: temps, tranche: "jours entre l'élection et l'investiture"}
+    echelle: {axe: temps, tranche: "jours entre l'élection et le premier gouvernement non intérimaire"}
     structure: procedure
-    regle: "Durée habituelle de formation d'un gouvernement de coalition, par pays : aucune moyenne chiffrée relevée dans ce lot (la source consultée couvre 153 coalitions de dix pays, 1978-2017, mais ne donne pas de durée moyenne)."
-    parametres: {}
-    sources: []
-    statut: absence
-    aide: "les durées de formation par pays (bases ParlGov ou Representative Democracy Data Archive, ou une étude comparée)"
+    regle: "Mesuré sur 234 élections législatives depuis 2000 dans 37 pays : durée médiane 31 jours ; plus de 30 jours dans 51% des cas, plus de 90 jours dans 7.3% ; maximum 541 jours (Belgique). Très variable selon le pays : quelques jours au Royaume-Uni, en France, en Grèce ou à Malte ; médiane de 125 jours aux Pays-Bas et de 139 en Belgique. La règle par pays (paramètres) prime sur la médiane d'ensemble ; chaque pays compte 4 à 9 élections, donc moins de 30 : ses chiffres sont des ordres de grandeur."
+    parametres:
+      ensemble: {n: 234, mediane: 31, p30: 0.509, p90: 0.073}
+      par_pays: {"AUS": {"n": 8, "mediane": 13.5, "p30": 0.0, "p90": 0.0}, "AUT": {"n": 6, "mediane": 87.0, "p30": 1.0, "p90": 0.5}, "BEL": {"n": 5, "mediane": 139, "p30": 0.8, "p90": 0.6}, "BGR": {"n": 7, "mediane": 36, "p30": 0.714, "p90": 0.0}, "CAN": {"n": 8, "mediane": 15.0, "p30": 0.125, "p90": 0.0}, "CHE": {"n": 5, "mediane": 52, "p30": 1.0, "p90": 0.0}, "CYP": {"n": 5, "mediane": 0, "p30": 0.0, "p90": 0.0}, "CZE": {"n": 6, "mediane": 71.5, "p30": 0.667, "p90": 0.167}, "DEU": {"n": 6, "mediane": 69.0, "p30": 0.833, "p90": 0.167}, "DNK": {"n": 7, "mediane": 10, "p30": 0.143, "p90": 0.0}, "ESP": {"n": 6, "mediane": 39.5, "p30": 1.0, "p90": 0.167}, "EST": {"n": 6, "mediane": 39.0, "p30": 0.833, "p90": 0.0}, "FIN": {"n": 6, "mediane": 46.5, "p30": 1.0, "p90": 0.0}, "FRA": {"n": 5, "mediane": 1, "p30": 0.0, "p90": 0.0}, "GBR": {"n": 6, "mediane": 1.0, "p30": 0.0, "p90": 0.0}, "GRC": {"n": 9, "mediane": 2, "p30": 0.0, "p90": 0.0}, "HRV": {"n": 7, "mediane": 30, "p30": 0.429, "p90": 0.0}, "HUN": {"n": 6, "mediane": 35.0, "p30": 1.0, "p90": 0.0}, "IRL": {"n": 5, "mediane": 21, "p30": 0.4, "p90": 0.2}, "ISL": {"n": 7, "mediane": 26, "p30": 0.429, "p90": 0.0}, "ISR": {"n": 8, "mediane": 56.5, "p30": 1.0, "p90": 0.0}, "ITA": {"n": 6, "mediane": 33.5, "p30": 0.5, "p90": 0.0}, "JPN": {"n": 8, "mediane": 10.0, "p30": 0.125, "p90": 0.0}, "LTU": {"n": 6, "mediane": 45.0, "p30": 0.833, "p90": 0.0}, "LUX": {"n": 4, "mediane": 47.0, "p30": 1.0, "p90": 0.0}, "LVA": {"n": 7, "mediane": 33, "p30": 1.0, "p90": 0.143}, "MLT": {"n": 5, "mediane": 3, "p30": 0.0, "p90": 0.0}, "NLD": {"n": 7, "mediane": 125, "p30": 1.0, "p90": 0.714}, "NOR": {"n": 6, "mediane": 35.5, "p30": 0.833, "p90": 0.0}, "NZL": {"n": 7, "mediane": 18, "p30": 0.143, "p90": 0.0}, "POL": {"n": 6, "mediane": 30.5, "p30": 0.5, "p90": 0.0}, "PRT": {"n": 7, "mediane": 20, "p30": 0.143, "p90": 0.0}, "ROU": {"n": 6, "mediane": 23.0, "p30": 0.167, "p90": 0.0}, "SVK": {"n": 6, "mediane": 23.0, "p30": 0.0, "p90": 0.0}, "SVN": {"n": 7, "mediane": 55, "p30": 1.0, "p90": 0.0}, "SWE": {"n": 6, "mediane": 27.0, "p30": 0.5, "p90": 0.167}, "TUR": {"n": 6, "mediane": 22.0, "p30": 0.167, "p90": 0.0}}
+    sources:
+      - {titre: "ParlGov, Döring et Manow, version du 12 août 2024 (view_election, view_cabinet), fourni par l'auteur ; mesures : registre/parlgov/mesures.json (mesures_parlgov.py)", url: "https://parlgov.org/", consulte: "2026-11-20"}
+    statut: source
+
+  - id: voix_vers_sieges
+    ecosysteme: "Démocraties parlementaires · passage des voix aux sièges"
+    espace: monde
+    echelle: {axe: taille, tranche: "national, selon le système électoral (relevé IPU)"}
+    structure: course
+    regle: "Mesuré sur 240 élections législatives depuis 2000 (ParlGov) : le premier en voix est aussi premier en sièges dans 95% des cas ; à la proportionnelle de liste, 98.2% (164 élections) : 95.3% quand les deux premiers sont à moins de 3 points (43 cas), 99.2% au-delà (121 cas). Quand ils divergent, le premier en sièges est le deuxième en voix dans 11 cas sur 12. Mixte compensatoire : 19 élections, aucun désaccord, mais moins de 30 cas par tranche : on applique les taux de l'ensemble. Système de l'élection lu dans le relevé IPU de 2026 (approximation : un pays peut avoir changé de système depuis 2000)."
+    parametres:
+      accord_premier:
+        List PR: {moins_3: 0.953, plus_3: 0.992}
+        MMP: {moins_3: 0.839, plus_3: 0.989}
+      desaccords_vers_deuxieme: "11/12"
+    sources:
+      - {titre: "ParlGov, Döring et Manow, version du 12 août 2024 (view_election, view_cabinet), fourni par l'auteur ; mesures : registre/parlgov/mesures.json (mesures_parlgov.py)", url: "https://parlgov.org/", consulte: "2026-11-20"}
+    statut: source
 
   # ---------------------------------------------------------------- lot 3 : Afrique
   - id: afrique_lecture_auteur

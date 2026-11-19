@@ -1,0 +1,411 @@
+{
+ "source": "ParlGov, Döring et Manow, version du 12 août 2024",
+ "periode": "élections depuis 2000-01-01",
+ "voix_vers_sieges": {
+  "deux tours": {
+   "n": 5,
+   "premier_en_voix_premier_en_sieges": 1.0,
+   "deuxieme_en_voix_deuxieme_en_sieges": 1.0,
+   "desaccords": 0,
+   "desaccords_au_profit_du_deuxieme": 0,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 2,
+     "taux": 1.0
+    },
+    "3-100": {
+     "n": 3,
+     "taux": 1.0
+    }
+   }
+  },
+  "ensemble": {
+   "n": 240,
+   "premier_en_voix_premier_en_sieges": 0.95,
+   "deuxieme_en_voix_deuxieme_en_sieges": 0.908,
+   "desaccords": 12,
+   "desaccords_au_profit_du_deuxieme": 11,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 62,
+     "taux": 0.839
+    },
+    "3-100": {
+     "n": 178,
+     "taux": 0.989
+    }
+   }
+  },
+  "mixte compensatoire": {
+   "n": 19,
+   "premier_en_voix_premier_en_sieges": 1.0,
+   "deuxieme_en_voix_deuxieme_en_sieges": 1.0,
+   "desaccords": 0,
+   "desaccords_au_profit_du_deuxieme": 0,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 3,
+     "taux": 1.0
+    },
+    "3-100": {
+     "n": 16,
+     "taux": 1.0
+    }
+   }
+  },
+  "parallèle": {
+   "n": 20,
+   "premier_en_voix_premier_en_sieges": 0.8,
+   "deuxieme_en_voix_deuxieme_en_sieges": 0.65,
+   "desaccords": 4,
+   "desaccords_au_profit_du_deuxieme": 3,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 4,
+     "taux": 0.25
+    },
+    "3-100": {
+     "n": 16,
+     "taux": 0.938
+    }
+   }
+  },
+  "proportionnelle de liste": {
+   "n": 164,
+   "premier_en_voix_premier_en_sieges": 0.982,
+   "deuxieme_en_voix_deuxieme_en_sieges": 0.939,
+   "desaccords": 3,
+   "desaccords_au_profit_du_deuxieme": 3,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 43,
+     "taux": 0.953
+    },
+    "3-100": {
+     "n": 121,
+     "taux": 0.992
+    }
+   }
+  },
+  "uninominal un tour": {
+   "n": 14,
+   "premier_en_voix_premier_en_sieges": 0.857,
+   "deuxieme_en_voix_deuxieme_en_sieges": 0.857,
+   "desaccords": 2,
+   "desaccords_au_profit_du_deuxieme": 2,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 4,
+     "taux": 0.5
+    },
+    "3-100": {
+     "n": 10,
+     "taux": 1.0
+    }
+   }
+  },
+  "vote préférentiel": {
+   "n": 8,
+   "premier_en_voix_premier_en_sieges": 0.75,
+   "deuxieme_en_voix_deuxieme_en_sieges": 0.75,
+   "desaccords": 2,
+   "desaccords_au_profit_du_deuxieme": 2,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 3,
+     "taux": 0.333
+    },
+    "3-100": {
+     "n": 5,
+     "taux": 1.0
+    }
+   }
+  },
+  "vote unique transférable": {
+   "n": 10,
+   "premier_en_voix_premier_en_sieges": 0.9,
+   "deuxieme_en_voix_deuxieme_en_sieges": 0.9,
+   "desaccords": 1,
+   "desaccords_au_profit_du_deuxieme": 1,
+   "par_ecart_points": {
+    "0-3": {
+     "n": 3,
+     "taux": 0.667
+    },
+    "3-100": {
+     "n": 7,
+     "taux": 1.0
+    }
+   }
+  }
+ },
+ "formation_gouvernement": {
+  "AUS": {
+   "n": 8,
+   "mediane_jours": 13.5,
+   "p_plus_30": 0.0,
+   "p_plus_90": 0.0,
+   "max": 24
+  },
+  "AUT": {
+   "n": 6,
+   "mediane_jours": 87.0,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.5,
+   "max": 102
+  },
+  "BEL": {
+   "n": 5,
+   "mediane_jours": 139,
+   "p_plus_30": 0.8,
+   "p_plus_90": 0.6,
+   "max": 541
+  },
+  "BGR": {
+   "n": 7,
+   "mediane_jours": 36,
+   "p_plus_30": 0.714,
+   "p_plus_90": 0.0,
+   "max": 65
+  },
+  "CAN": {
+   "n": 8,
+   "mediane_jours": 15.0,
+   "p_plus_30": 0.125,
+   "p_plus_90": 0.0,
+   "max": 36
+  },
+  "CHE": {
+   "n": 5,
+   "mediane_jours": 52,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.0,
+   "max": 52
+  },
+  "CYP": {
+   "n": 5,
+   "mediane_jours": 0,
+   "p_plus_30": 0.0,
+   "p_plus_90": 0.0,
+   "max": 0
+  },
+  "CZE": {
+   "n": 6,
+   "mediane_jours": 71.5,
+   "p_plus_30": 0.667,
+   "p_plus_90": 0.167,
+   "max": 249
+  },
+  "DEU": {
+   "n": 6,
+   "mediane_jours": 69.0,
+   "p_plus_30": 0.833,
+   "p_plus_90": 0.167,
+   "max": 171
+  },
+  "DNK": {
+   "n": 7,
+   "mediane_jours": 10,
+   "p_plus_30": 0.143,
+   "p_plus_90": 0.0,
+   "max": 44
+  },
+  "ESP": {
+   "n": 6,
+   "mediane_jours": 39.5,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.167,
+   "max": 125
+  },
+  "EST": {
+   "n": 6,
+   "mediane_jours": 39.0,
+   "p_plus_30": 0.833,
+   "p_plus_90": 0.0,
+   "max": 57
+  },
+  "FIN": {
+   "n": 6,
+   "mediane_jours": 46.5,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.0,
+   "max": 79
+  },
+  "FRA": {
+   "n": 5,
+   "mediane_jours": 1,
+   "p_plus_30": 0.0,
+   "p_plus_90": 0.0,
+   "max": 3
+  },
+  "GBR": {
+   "n": 6,
+   "mediane_jours": 1.0,
+   "p_plus_30": 0.0,
+   "p_plus_90": 0.0,
+   "max": 5
+  },
+  "GRC": {
+   "n": 9,
+   "mediane_jours": 2,
+   "p_plus_30": 0.0,
+   "p_plus_90": 0.0,
+   "max": 15
+  },
+  "HRV": {
+   "n": 7,
+   "mediane_jours": 30,
+   "p_plus_30": 0.429,
+   "p_plus_90": 0.0,
+   "max": 75
+  },
+  "HUN": {
+   "n": 6,
+   "mediane_jours": 35.0,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.0,
+   "max": 61
+  },
+  "IRL": {
+   "n": 5,
+   "mediane_jours": 21,
+   "p_plus_30": 0.4,
+   "p_plus_90": 0.2,
+   "max": 140
+  },
+  "ISL": {
+   "n": 7,
+   "mediane_jours": 26,
+   "p_plus_30": 0.429,
+   "p_plus_90": 0.0,
+   "max": 73
+  },
+  "ISR": {
+   "n": 8,
+   "mediane_jours": 56.5,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.0,
+   "max": 82
+  },
+  "ITA": {
+   "n": 6,
+   "mediane_jours": 33.5,
+   "p_plus_30": 0.5,
+   "p_plus_90": 0.0,
+   "max": 89
+  },
+  "JPN": {
+   "n": 8,
+   "mediane_jours": 10.0,
+   "p_plus_30": 0.125,
+   "p_plus_90": 0.0,
+   "max": 50
+  },
+  "LTU": {
+   "n": 6,
+   "mediane_jours": 45.0,
+   "p_plus_30": 0.833,
+   "p_plus_90": 0.0,
+   "max": 60
+  },
+  "LUX": {
+   "n": 4,
+   "mediane_jours": 47.0,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.0,
+   "max": 52
+  },
+  "LVA": {
+   "n": 7,
+   "mediane_jours": 33,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.143,
+   "max": 109
+  },
+  "MLT": {
+   "n": 5,
+   "mediane_jours": 3,
+   "p_plus_30": 0.0,
+   "p_plus_90": 0.0,
+   "max": 4
+  },
+  "NLD": {
+   "n": 7,
+   "mediane_jours": 125,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.714,
+   "max": 299
+  },
+  "NOR": {
+   "n": 6,
+   "mediane_jours": 35.5,
+   "p_plus_30": 0.833,
+   "p_plus_90": 0.0,
+   "max": 39
+  },
+  "NZL": {
+   "n": 7,
+   "mediane_jours": 18,
+   "p_plus_30": 0.143,
+   "p_plus_90": 0.0,
+   "max": 33
+  },
+  "POL": {
+   "n": 6,
+   "mediane_jours": 30.5,
+   "p_plus_30": 0.5,
+   "p_plus_90": 0.0,
+   "max": 40
+  },
+  "PRT": {
+   "n": 7,
+   "mediane_jours": 20,
+   "p_plus_30": 0.143,
+   "p_plus_90": 0.0,
+   "max": 59
+  },
+  "ROU": {
+   "n": 6,
+   "mediane_jours": 23.0,
+   "p_plus_30": 0.167,
+   "p_plus_90": 0.0,
+   "max": 31
+  },
+  "SVK": {
+   "n": 6,
+   "mediane_jours": 23.0,
+   "p_plus_30": 0.0,
+   "p_plus_90": 0.0,
+   "max": 26
+  },
+  "SVN": {
+   "n": 7,
+   "mediane_jours": 55,
+   "p_plus_30": 1.0,
+   "p_plus_90": 0.0,
+   "max": 75
+  },
+  "SWE": {
+   "n": 6,
+   "mediane_jours": 27.0,
+   "p_plus_30": 0.5,
+   "p_plus_90": 0.167,
+   "max": 131
+  },
+  "TUR": {
+   "n": 6,
+   "mediane_jours": 22.0,
+   "p_plus_30": 0.167,
+   "p_plus_90": 0.0,
+   "max": 38
+  },
+  "ensemble": {
+   "n": 234,
+   "mediane_jours": 31.0,
+   "p_plus_30": 0.509,
+   "p_plus_90": 0.073,
+   "max": 541
+  }
+ },
+ "note": "fréquences observées ; gouvernement intérimaire exclu ; première équipe non intérimaire après l'élection"
+}

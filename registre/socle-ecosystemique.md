@@ -1,6 +1,6 @@
 # Socle du programme écosystémique
 
-Règles coutumières : {'source': 29, 'absence': 4, 'auteur': 2} ; valables partout : us_erreur_selon_temps_restant, regimes_fermes_inertie, regimes_fermes_contestation, sondages_erreur_comparee, presidentielles_mode_de_scrutin, onu_conseil_securite_vote, coups_d_etat_frequence, chefs_d_etat_sortie_irreguliere, second_tour_retournement, parlements_mode_de_scrutin. Briques : seuil (vitesse) valide, course (taille) non tranché.
+Règles coutumières : {'source': 31, 'absence': 3, 'auteur': 2} ; valables partout : us_erreur_selon_temps_restant, regimes_fermes_inertie, regimes_fermes_contestation, sondages_erreur_comparee, voix_vers_sieges, presidentielles_mode_de_scrutin, onu_conseil_securite_vote, coups_d_etat_frequence, chefs_d_etat_sortie_irreguliere, second_tour_retournement, parlements_mode_de_scrutin. Briques : seuil (vitesse) valide, course (taille) non tranché.
 
 | Fiche | Espaces des règles | Règles (dont absences) | Inconnus | Natures des traces |
 |---|---|---|---|---|
@@ -33,9 +33,9 @@ Règles coutumières : {'source': 29, 'absence': 4, 'auteur': 2} ; valables part
 | politique-americaine | amerique_du_nord | 8 (1) | absence 1 | flux 20, phase 1, potentiel 3, gradient 2 |
 | relief-et-montagnes | — | 0 (0) | absence 7 | gradient 2, flux 3 |
 | rivalite-sino-americaine | asie | 4 (1) | absence 1 | flux 14, potentiel 2 |
-| russie-ukraine | europe | 6 (1) | absence 3 | flux 17, stock 2, potentiel 1, phase 1 |
+| russie-ukraine | europe | 6 (0) | absence 3 | flux 17, stock 2, potentiel 1, phase 1 |
 | sciences-techniques | — | 0 (0) | absence 1 | flux 3, potentiel 2, gradient 1 |
-| securite-europeenne | europe | 6 (1) | absence 4 | flux 4, potentiel 1 |
+| securite-europeenne | europe | 6 (0) | absence 4 | flux 4, potentiel 1 |
 | securite-publique | — | 0 (0) | absence 5 | flux 1 |
 | soleil-espace | — | 0 (0) | absence 7 | flux 1 |
 | transport-maritime | asie | 4 (1) | absence 6 | flux 8 |

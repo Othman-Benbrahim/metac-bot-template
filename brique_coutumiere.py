@@ -114,7 +114,16 @@ def rattacher(f: dict) -> dict:
             return {"motif": "élection législative : système électoral absent du relevé IPU"}
         titre = f.get("titre", "").lower()
         if "seats" in titre or "largest party" in titre:
-            return {"motif": f"sièges ({sy}) : pas de règle sourcée voix → sièges"}
+            if not any(k in sy for k in ("List PR", "MMP")):
+                return {"motif": f"sièges ({sy}) : voix → sièges mesuré seulement à la proportionnelle"}
+            if f["evenement"] != "rang" or f["rang"] != 1:
+                return {"motif": "sièges, rang autre que premier : pas de règle mesurée"}
+            vs = _p("voix_vers_sieges")
+            j = _p("sondages_erreur_comparee")
+            return {"mode": "sieges", "sigma": j["erreur_part_points"]["proportionnelle"] / j["conversion_sigma"], "fenetre": 7,
+                    "pays": pays, "accord": vs["accord_premier"]["List PR" if "List PR" in sy else "MMP"],
+                    "regles": ["parlements_mode_de_scrutin", "voix_vers_sieges", "sondages_erreur_comparee",
+                               "us_erreur_selon_temps_restant"], "type": "sieges_proportionnelle"}
         if not (f["evenement"] == "rang" and "votes" in titre):
             return {"motif": f"élection législative ({sy}) : seule la question « le plus de voix » relève d'une course"}
         famille = ("proportionnelle" if any(k in sy for k in ("List PR", "MMP", "STV"))
@@ -155,6 +164,12 @@ def probabilite(parts: dict, f: dict, r: dict, jours: int) -> float:
         p = (rang == f["rang"]).mean()
     elif f["evenement"] == "qualifie":
         p = (rang <= 2).mean()
+    elif r["mode"] == "sieges":
+        # voix_vers_sieges : le premier en voix est premier en sièges avec le taux mesuré, selon l'écart des deux premiers
+        top = np.sort(x, axis=1)
+        ecart = top[:, -1] - top[:, -2]
+        a = np.where(ecart < 3, r["accord"]["moins_3"], r["accord"]["plus_3"])
+        p = np.where(rang == 1, a, np.where(rang == 2, 1 - a, 0.0)).mean()
     elif r["mode"] == "deux_tours":
         c = r["retournement"]
         p = np.where(x[:, i] > 50, 1.0, np.where(rang == 1, 1 - c, np.where(rang == 2, c, 0.0))).mean()

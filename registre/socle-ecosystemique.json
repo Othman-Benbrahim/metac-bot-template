@@ -724,12 +724,10 @@
     {
      "id": "europe_formation_gouvernement",
      "structure": "procedure",
-     "statut": "absence"
+     "statut": "source"
     }
    ],
-   "abstentions": [
-    "europe_formation_gouvernement"
-   ],
+   "abstentions": [],
    "inconnus": {
     "absence": 3
    },
@@ -788,12 +786,10 @@
     {
      "id": "europe_formation_gouvernement",
      "structure": "procedure",
-     "statut": "absence"
+     "statut": "source"
     }
    ],
-   "abstentions": [
-    "europe_formation_gouvernement"
-   ],
+   "abstentions": [],
    "inconnus": {
     "absence": 4
    },
@@ -933,8 +929,8 @@
   }
  ],
  "regles": {
-  "source": 29,
-  "absence": 4,
+  "source": 31,
+  "absence": 3,
   "auteur": 2
  },
  "parlements_ipu": {
@@ -955,6 +951,7 @@
   "regimes_fermes_inertie",
   "regimes_fermes_contestation",
   "sondages_erreur_comparee",
+  "voix_vers_sieges",
   "presidentielles_mode_de_scrutin",
   "onu_conseil_securite_vote",
   "coups_d_etat_frequence",

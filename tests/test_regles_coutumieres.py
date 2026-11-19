@@ -57,4 +57,19 @@ def test_systemes_ipu():
          "titre": "Will X win the most votes in the 2025 Netherlands parliamentary election?"}
     r = bc.rattacher(f)
     assert r["type"] == "legislative_proportionnelle" and abs(r["sigma"] - 1.62 / 0.8) < 1e-9
-    assert "voix → sièges" in bc.rattacher({**f, "titre": "Will X win the most seats in the 2025 Netherlands parliamentary election?"})["motif"]
+    # 0.10.375 : les sièges à la proportionnelle sont jugés (voix_vers_sieges, ParlGov)
+    assert bc.rattacher({**f, "titre": "Will X win the most seats in the 2025 Netherlands parliamentary election?"})["mode"] == "sieges"
+
+
+# 0.10.375 : mesures ParlGov
+def test_voix_sieges():
+    import brique_coutumiere as bc
+    f = {"election": "2025 Netherlands parliamentary election", "evenement": "rang", "rang": 1, "classe": "S2",
+         "titre": "Will X win the most seats in the 2025 Netherlands parliamentary election?"}
+    r = bc.rattacher(f)
+    assert r["mode"] == "sieges" and r["accord"]["moins_3"] < r["accord"]["plus_3"]
+    p_net = bc.probabilite({"A": 30, "B": 20, "C": 15, "__sujet__": "A"}, f, r, 0)
+    p_serre = bc.probabilite({"A": 25, "B": 24, "C": 15, "__sujet__": "A"}, f, r, 0)
+    assert p_net > 0.95 and 0.4 < p_serre < 0.7
+    assert "rang autre" in bc.rattacher({**f, "rang": 2})["motif"]
+    assert not any(r["id"] == "europe_formation_gouvernement" and r["statut"] == "absence" for r in bc.rc.regles())
