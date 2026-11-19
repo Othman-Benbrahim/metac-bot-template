@@ -214,8 +214,8 @@ def valider(fiche: dict) -> list[str]:
             cible = [x for x in fiche.get("relations") or [] if x.get("de") == de and x.get("vers") == vers]
             if not cible:
                 err.append(f"{lab} : module {mod!r} ne désigne aucune relation de la fiche (écrire de>vers)")
-            elif (cible[0].get("intensite") or {}).get("regle") != "seuil":
-                err.append(f"{lab} : module {mod!r} vise une relation sans règle « seuil » (rien à abaisser)")
+            elif (cible[0].get("intensite") or {}).get("regle") not in ("seuil", "masse_critique"):
+                err.append(f"{lab} : module {mod!r} vise une relation sans règle « seuil » ni « masse_critique » (rien à abaisser)")
         # 0.10.325 : « series » impose les deux séries de calibration [source, cible], prises parmi les traces des
         # deux compartiments, pour que la mesure compare le même lieu aux deux bouts
         ser = r.get("series")

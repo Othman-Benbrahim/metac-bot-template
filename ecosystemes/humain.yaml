@@ -1,6 +1,7 @@
 theme: "humain"
 nom: "Ce qui pousse l'humain à agir (de la seconde aux millénaires)"
 # 0.10.325 — première lecture intégrée : Behave (Sapolsky, 2017), mémo lectures/sapolsky-behave.md.
+# 0.10.347 — influence × connexion : liens, convergence éditoriale, amplification algorithmique (lectures/reseaux-influence.md).
 # 0.10.345 — Au cœur des loges (Bauer, Dachez et al., 2021) : faits et chiffres sur les réseaux discrets, toujours en ombre. Mémo lectures/bauer-dachez-au-coeur-des-loges.md.
 # 0.10.344 — Barkun, A Culture of Conspiracy (2013). Mémo lectures/barkun-culture-of-conspiracy.md.
 # 0.10.343 — Bronner, La démocratie des crédules (2013) : marché cognitif. Mémo lectures/bronner-democratie-credules.md.
@@ -507,6 +508,42 @@ compartiments:
     taille: "méso à macro"
   traces:
   - source: "volume quotidien d'articles et de messages (GDELT, flux suivis), mesure de l'offre ; la demande reste non mesurée"
+    statut: "a_brancher"
+- id: "liens"
+  nom: "Tissu des liens (proches, connaissances, connaissances de connaissances)"
+  organisation: "societe"
+  elements: ["couches emboîtées d'environ 5, 15, 50 et 150 personnes, de force décroissante (Dunbar ; rapport ≈ 3)", "liens faibles qui relient les groupes (Granovetter) ; les modérément faibles sont les plus utiles (Rajkumar et al. 2022)", "environ 4,7 intermédiaires séparent deux comptes Facebook (Backstrom et al. 2012) ; notre modèle extrapolé donne 4,6 pour la planète", "la contagion d'un comportement passe surtout par les proches : sur le vote, l'effet des amis proches a été estimé à environ quatre fois celui du message lui-même (Bond et al. 2012)"]
+  niveau:
+    espace: "site à monde"
+    temps: "jours à décennies"
+    vitesse: "jours"
+    taille: "micro à macro"
+  traces:
+  - source: "modèle synthétique reseau_influence.py (aucune personne réelle) ; enquêtes publiques de sociabilité"
+    statut: "a_brancher"
+- id: "convergence_editoriale"
+  nom: "Convergence éditoriale (peu de propriétaires pour beaucoup de titres)"
+  organisation: "economie"
+  elements: ["en France, 41 titres d'information sur 53 recensés appartiennent à un milliardaire ou à une famille (d'après Le Monde diplomatique et Acrimed, décembre 2025)", "un propriétaire peut aligner plusieurs titres sur une même ligne", "mesuré sur ce qui est publié (part de couverture par sujet et par groupe de propriétaires), jamais en prêtant des intentions"]
+  niveau:
+    espace: "pays"
+    temps: "années"
+    vitesse: "mois"
+    taille: "macro"
+  traces:
+  - source: "table des propriétaires (donnees/medias) croisée avec les comptes GDELT par domaine"
+    statut: "a_brancher"
+- id: "amplification_algorithmique"
+  nom: "Amplification algorithmique (peu de plateformes pour beaucoup de lecteurs)"
+  organisation: "technique"
+  elements: ["le fil algorithmique fait atteindre à certains contenus 1,5 à 2,7 fois plus de monde que le fil chronologique ; la droite modérée amplifiée plus que la gauche dans 6 pays sur 7 étudiés (Huszár et al. 2022, Twitter)", "passer au fil chronologique pendant trois mois a changé l'exposition sans changer la polarisation mesurée (Guess et al. 2023, Facebook et Instagram)", "propriétaires et modèles de revenus : donnees/medias/plateformes.csv"]
+  niveau:
+    espace: "monde"
+    temps: "jours à années"
+    vitesse: "heures"
+    taille: "macro"
+  traces:
+  - source: "changements datés des algorithmes et de la modération annoncés par les plateformes"
     statut: "a_brancher"
 relations:
 # --- propres au corps et au psychologique ---
@@ -1441,6 +1478,65 @@ relations:
   source: "Au cœur des loges (2021), livre I, ch. IX ; Barkun, ch. 8"
   texte: "quand un pouvoir adopte la croyance au complot, il interdit : lois de Vichy des 13 et 14 août 1940, effectifs du Grand Orient de 28 000 (1939) à 5 500 (1944)"
   parametres: {seuil: 2.0}
+# --- Influence × connexion (recherche du 2026-11-19 ; modèle reseau_influence.py) ---
+- de: "convergence_editoriale"
+  vers: "opinion_privee"
+  effet: "0"
+  module: "opinion_privee>opinion_publique"
+  delai: "semaines"
+  force: "moyenne"
+  statut: "a_verifier"
+  source: "modèle reseau_influence.py (2026-11-19)"
+  texte: "les médias convaincent peu directement (1,6 % dans le modèle) mais abaissent partout le seuil : la cascade entre proches fait le reste"
+  parametres: {gain: 0.4}
+- de: "convergence_editoriale"
+  vers: "disponibilite"
+  effet: "+"
+  delai: "jours"
+  force: "moyenne"
+  statut: "a_verifier"
+  source: "agenda-setting ; Bronner"
+  texte: "plusieurs titres d'un même propriétaire mettent le même sujet en avant"
+- de: "amplification_algorithmique"
+  vers: "marche_cognitif"
+  effet: "+"
+  delai: "heures"
+  force: "forte"
+  statut: "a_verifier"
+  source: "Huszár et al. 2022"
+  texte: "le fil choisit ce qui engage et en multiplie la portée"
+- de: "amplification_algorithmique"
+  vers: "disponibilite"
+  effet: "+"
+  delai: "jours"
+  force: "moyenne"
+  statut: "a_verifier"
+  source: "Huszár et al. 2022 ; Bronner"
+  texte: "ce que le fil amplifie revient à l'esprit"
+- de: "amplification_algorithmique"
+  vers: "polarisation"
+  effet: "+"
+  delai: "mois"
+  force: "faible"
+  statut: "conteste"
+  source: "Guess et al. 2023 (aucun effet mesuré en trois mois) contre l'hypothèse courante"
+  texte: "effet sur la polarisation non établi : l'expérience de 2020 ne le trouve pas à trois mois"
+- de: "liens"
+  vers: "opinion_publique"
+  effet: "+"
+  delai: "jours"
+  force: "forte"
+  statut: "a_verifier"
+  source: "Bond et al. 2012 ; modèle reseau_influence.py"
+  texte: "ce qui se dit passe par les proches ; les liens lointains relient les foyers de la cascade"
+- de: "liens"
+  vers: "passage_acte"
+  effet: "+"
+  delai: "jours"
+  force: "moyenne"
+  statut: "a_verifier"
+  source: "Bond et al. 2012"
+  texte: "on agit quand ses proches agissent"
 ponts:
 - depuis: "passage_acte"
   vers: "politique-americaine:elections"
@@ -1519,3 +1615,7 @@ ponts:
 - depuis: "croyance_complot"
   vers: "observateur-mesure:biais"
   nature: "l'opinion visible en ligne surreprésente les minorités motivées (Bronner) : ne pas la prendre pour l'opinion"
+- depuis: "amplification_algorithmique"
+  vers: "information-cyber:plateformes"
+  type: "meme"
+  nature: "les plateformes et leurs algorithmes"
