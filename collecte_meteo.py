@@ -23,7 +23,7 @@ import csv
 import os
 import sys
 import time
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import httpx
@@ -35,6 +35,9 @@ SORTIE = REG / "meteo-points.csv"
 BASE = "https://noaa-ghcn-pds.s3.amazonaws.com"
 URL = BASE + "/csv/by_station/{station}.csv"
 RAYON_KM = 150
+RAYON_MAX_KM = 300          # 0.10.339 : si rien à 150 km (Delhi, Iran au premier passage), on élargit
+ESSAIS_STATIONS = 3         # stations essayées par point, de la plus proche à la plus lointaine
+FRAICHEUR_JOURS = 45        # une station dont le dernier relevé a plus de 45 jours cède la place à la suivante
 DEBUT = "2016-01-01"
 PAUSE = 2.0
 # point : (latitude, longitude, écosystème et compartiment qui le lisent)
@@ -78,10 +81,19 @@ def lire_inventaire(texte: str, an_min: int) -> set[str]:
     return {k for k, v in el.items() if "TAVG" in v or {"TMAX", "TMIN"} <= v}
 
 
+def candidates(stations: dict, valides: set[str], lat: float, lon: float) -> list[tuple[str, float]]:
+    """Stations admises par distance croissante : d'abord dans RAYON_KM, sinon dans RAYON_MAX_KM."""
+    c = sorted((distance_km((lat, lon), stations[s][:2]), s) for s in valides if s in stations)
+    for r in (RAYON_KM, RAYON_MAX_KM):
+        dedans = [(s, round(d, 1)) for d, s in c if d <= r]
+        if dedans:
+            return dedans[:ESSAIS_STATIONS]
+    return []
+
+
 def choisir(stations: dict, valides: set[str], lat: float, lon: float) -> tuple[str, float] | None:
-    c = [(distance_km((lat, lon), stations[s][:2]), s) for s in valides if s in stations]
-    c = [x for x in c if x[0] <= RAYON_KM]
-    return (min(c)[1], round(min(c)[0], 1)) if c else None
+    c = candidates(stations, valides, lat, lon)
+    return c[0] if c else None
 
 
 def lire_station(texte: str, debut: str) -> list[tuple[str, float]]:
@@ -120,16 +132,27 @@ def principal() -> int:
             return 0
         print(f"GHCN-Daily : {len(stations)} stations, {len(valides)} avec températures cette année.")
         for nom, (lat, lon, _) in POINTS.items():
-            ch = choisir(stations, valides, lat, lon)
-            if not ch:
-                print(f"::warning::{nom} : aucune station à moins de {RAYON_KM} km")
+            cands = candidates(stations, valides, lat, lon)
+            if not cands:
+                print(f"::warning::{nom} : aucune station à moins de {RAYON_MAX_KM} km")
                 continue
-            st, km = ch
-            try:
-                vals = lire_station(c.get(URL.format(station=st)).raise_for_status().text, DEBUT)
-            except Exception as e:
-                vals = []
-                print(f"::warning::GHCN-Daily {nom} ({st}) : {type(e).__name__}")
+            limite = (date.today() - timedelta(days=FRAICHEUR_JOURS)).isoformat()
+            meilleur = (None, 0.0, [])
+            for st, km in cands:                       # la plus proche qui soit fraîche ; sinon la plus fraîche
+                try:
+                    v = lire_station(c.get(URL.format(station=st)).raise_for_status().text, DEBUT)
+                except Exception as e:
+                    v = []
+                    print(f"::warning::GHCN-Daily {nom} ({st}) : {type(e).__name__}")
+                if v and (not meilleur[2] or v[-1][0] > meilleur[2][-1][0]):
+                    meilleur = (st, km, v)
+                if v and v[-1][0] >= limite:
+                    meilleur = (st, km, v)
+                    break
+                time.sleep(PAUSE)
+            st, km, vals = meilleur
+            if not st:
+                continue
             lignes += [(nom, j, t) for j, t in vals]
             print(f"{nom} : station {st} {stations[st][2]} à {km} km, {len(vals)} jours"
                   + (f", dernier {vals[-1]}" if vals else ""), flush=True)

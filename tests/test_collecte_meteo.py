@@ -26,3 +26,10 @@ def test_lire_station():
 
 def test_distance():
     assert abs(cm.distance_km((48.8566, 2.3522), (51.5074, -0.1278)) - 344) < 5   # Paris-Londres
+
+
+def test_rayon_elargi():
+    st = cm.lire_stations("IR000407540  35.6830   51.3170 1191.0    TEHRAN-MEHRABAD\n")
+    v = {"IR000407540"}
+    assert cm.candidates(st, v, 27.18, 56.27) == []                       # Bandar Abbas : Téhéran est à ~ 950 km
+    assert cm.candidates(st, v, 33.9, 51.4)[0][0] == "IR000407540"        # ~ 200 km : admis au rayon élargi
