@@ -81,6 +81,7 @@ def etats_par_jeu(jeux: list[str]) -> dict[str, dict]:
         out = {}
         for j in jeux:
             coupe.date = j
+            c.aujourdhui = __import__("datetime").date.fromisoformat(j)
             c._etat = None
             e = c.etat()
             marges = c.marges_de_bascule(10_000)

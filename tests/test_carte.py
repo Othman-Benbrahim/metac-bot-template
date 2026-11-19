@@ -93,3 +93,20 @@ def test_habitude_avant_crise_ormuz(tmp_path):
     base = ca.habitude_de_reference(crise, ref)
     assert len(base) == 61 and min(base) >= 40                                   # ± 30 jours autour du 28 octobre
     assert ca.habitude_de_reference(crise, ref[:10]) == []                       # trop court : habitude glissante
+
+
+def test_serie_perimee_ignoree(tmp_path, monkeypatch):
+    """0.10.349 : une série dont le dernier relevé est trop vieux ne donne pas l'état du jour."""
+    import datetime as dt
+    import adaptateurs as ad
+    import carte as ca
+    vieux = [((dt.date(2026, 1, 1) + dt.timedelta(days=i)).isoformat(), float(i % 7)) for i in range(60)]
+    monkeypatch.setitem(ad.ADAPTATEURS, "meteo", lambda reg, point: vieux)
+    c = ca.Carte(reg=tmp_path, calibration=None)
+    c.aujourdhui = dt.date(2026, 11, 19)
+    e = c.etat()
+    perimes = [v for v in e.values() if "perime" in v and "z" not in v]
+    assert perimes and all("meteo:" in v["perime"] for v in perimes)
+    c2 = ca.Carte(reg=tmp_path, calibration=None)
+    c2.aujourdhui = dt.date(2026, 3, 15)
+    assert any("z" in v and str(v.get("adaptateur", "")).startswith("meteo:") for v in c2.etat().values())

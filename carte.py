@@ -201,6 +201,8 @@ class Carte:
             self.persistance = {k: v["tau_jours"] for k, v in comp.items() if v.get("tau_jours")}
         self.sortants: dict[str, list[dict]] = {}
         self.modulateurs: dict[str, list[tuple[str, float]]] = {}
+        from datetime import date as _d0
+        self.aujourdhui = _d0.today()                     # banc_proxemie la recule au jour du jeu
         self.ombre = ombre
         for r in self.s["relations"]:
             if r.get("statut") == "ombre" and not ombre:   # 0.10.338 : mécanisme en ombre, hors propagation
@@ -263,6 +265,15 @@ class Carte:
                     out.setdefault(nid, {})["erreur"] = f"{tr['adaptateur']} : {type(e).__name__}"
                     continue
                 if len(serie) < 20:
+                    continue
+                # 0.10.349 : une série qui ne bouge plus (station arrêtée, collecte en panne) ne dit pas l'état du jour :
+                # dernier relevé plus vieux que max(45 jours, 3 pas) → on passe à la trace suivante
+                from datetime import date as _dd
+                _pas = sorted((_dd.fromisoformat(b[0][:10]) - _dd.fromisoformat(a[0][:10])).days
+                              for a, b in zip(serie[-30:], serie[-29:]))
+                _pas = _pas[len(_pas) // 2] if _pas else 1
+                if (self.aujourdhui - _dd.fromisoformat(serie[-1][0][:10])).days > max(45, 3 * _pas):
+                    out.setdefault(nid, {})["perime"] = f"{tr['adaptateur']} : dernier relevé {serie[-1][0][:10]}"
                     continue
                 v = [x for _, x in serie]
                 # fenêtres selon la fréquence de la série (0.10.322) : quotidienne → 7 derniers relevés contre les 90
