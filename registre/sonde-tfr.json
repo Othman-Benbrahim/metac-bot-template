@@ -1,0 +1,23 @@
+{
+ "https://tfr.faa.gov/tfr2/list.jsp": {
+  "etat": 200,
+  "type": "text/html",
+  "taille": 8302,
+  "mentions_vip": 0,
+  "extrait": "<!doctype html>\n<html lang=\"en\" data-n-head=\"%7B%22lang%22:%7B%221%22:%22en%22%7D%7D\">\n  <head>\n    <title>Federal Aviation Administration - Graphic TFRs</title><meta data-n-head=\"1\" charset=\"utf-8\"><meta data-n-head=\"1\" name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta data-n-head="
+ },
+ "https://tfr.faa.gov/tfr3/": {
+  "etat": 200,
+  "type": "text/html",
+  "taille": 8302,
+  "mentions_vip": 0,
+  "extrait": "<!doctype html>\n<html lang=\"en\" data-n-head=\"%7B%22lang%22:%7B%221%22:%22en%22%7D%7D\">\n  <head>\n    <title>Federal Aviation Administration - Graphic TFRs</title><meta data-n-head=\"1\" charset=\"utf-8\"><meta data-n-head=\"1\" name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta data-n-head="
+ },
+ "https://tfr.faa.gov/tfrapi/exportTfrList": {
+  "etat": 200,
+  "type": "application/json",
+  "taille": 16679,
+  "mentions_vip": 1,
+  "extrait": "[ {\n  \"notam_id\" : \"6/8739\",\n  \"type\" : \"SPECIAL\",\n  \"facility\" : \"ZLA\",\n  \"state\" : \"USA\",\n  \"description\" : \"  USA, Sunday, November 22, 2026 UTC\",\n  \"creation_date\" : \"11/18/2026\"\n}, {\n  \"notam_id\" : \"6/8738\",\n  \"type\" : \"SPECIAL\",\n  \"facility\" : \"ZLA\",\n  \"state\" : \"USA\",\n  \"description\" : \"  USA"
+ }
+}
