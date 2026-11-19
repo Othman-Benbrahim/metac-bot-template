@@ -339,6 +339,10 @@ ESSAIS = {
                    "objet": "B des séries à l'échéance (report de la dernière observation, calendrier des observations) "
                             "contre B, questions réelles FRED et DBnomics",
                    "doc": "preenregistrements/echeance.md"},
+    "etalon_scrutin": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 100, "statut": "ouvert",
+                       "objet": "brique « scrutin » (règle, sondages à la date, erreur habituelle, temps restant) contre "
+                                "les semblables, sur les questions électorales résolues, par classe homologue",
+                       "doc": "preenregistrements/etalon-scrutin.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",

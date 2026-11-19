@@ -1,0 +1,43 @@
+# La brique « scrutin » : étalons de l'écosystème électoral (préenregistrement, 2026-11-19, 20 h 25)
+
+Décisions de l'auteur du 2026-11-19 :
+- 20 h 09 : chaque écosystème a ses propres variables, à connaître avant de les appliquer ; lire une situation n'est pas forcément la mesurer, surtout sans le bon étalon.
+- 20 h 12 : fixer les étalons précisément et tester que la règle s'applique avant de l'inscrire dans une fiche.
+- 20 h 17 : la règle doit être une brique réutilisable dans les cas HOMOLOGUES (même structure, et non simple ressemblance : analogie ≠ homologie), et le test doit être reproductible et automatisable.
+
+Essai `etalon_scrutin`. Ombre : rien dans le bot, rien côté Metaculus avant le tournoi.
+
+## 1. La brique (définie par sa structure, pas par sa géographie)
+
+Une question relève de la brique quand sa STRUCTURE est celle d'un scrutin. Le pays, la région ou le nom du candidat ne décident de rien. Classes homologues :
+
+| Classe | Règle du scrutin | Formes de question admises |
+|---|---|---|
+| S1 | majoritaire à deux tours : > 50 % au premier tour pour gagner, sinon les deux premiers au second tour | gagne ; se qualifie pour le second tour ; finit au rang k au premier tour |
+| S2 | majoritaire à un tour (le premier gagne) | gagne ; finit au rang k |
+| S3 | primaire ou investiture d'un parti | est investi |
+
+Toute autre forme (sièges à la proportionnelle, coalitions, dates d'annonce) est hors brique : la brique s'abstient, et la question reste à la lecture.
+
+## 2. Étalons (variables propres de l'écosystème)
+
+- **E1 · Règle** : la classe S1, S2 ou S3 et son seuil. Table écrite à la main par pays et par type d'élection (`etalons/scrutins.csv`), sourcée (loi électorale ou page Wikipédia de l'élection).
+- **E2 · Sondages** : moyenne des sondages publiés dans les 30 jours qui précèdent la date de la question, lue sur la page Wikipédia « Opinion polling for … » **dans sa version à cette date** (historique des versions, identifiant de version archivé). Sans sondage dans les 30 jours : abstention.
+- **E3 · Erreur habituelle** : écart-type de l'erreur sur la part d'un candidat, σ₀ = 2,5 points à la veille du vote (ordre de grandeur de Jennings et Wlezien, 2018), élargi selon le temps restant : σ(t) = σ₀ · √(1 + t / 30), t en jours avant le vote. Fixé ici, jamais ajusté sur les issues.
+- **E4 · Temps restant** : jours entre la date de la question et le scrutin (calendrier électoral du registre ou date de la page).
+
+E5 (sortant) et E6 (économie du pays) sont déclarés comme variables de l'écosystème, mais **hors de ce test**. On les teste ensuite, un par un, comme corrections.
+
+## 3. Calcul (déterministe)
+Tirages de Monte-Carlo (20 000, graine fixe 0) : part de chaque candidat = moyenne des sondages + erreur normale σ(t), indépendante par candidat, parts renormalisées à 100 % ; on applique la règle E1 et on compte la fréquence de l'événement demandé. Probabilité bornée à [0,02 ; 0,98].
+
+## 4. Reproductibilité et automatisation
+- Chaque entrée est archivée au registre : identifiant de version Wikipédia, table extraite en CSV, date. Une seconde exécution sur les mêmes archives doit donner les mêmes probabilités (empreinte SHA-256 publiée).
+- Le rattachement d'une question à la brique se fait par règles écrites (formes de question, table des pays), sans modèle de langue. Une question non reconnue est hors brique.
+
+## 5. Test décisif
+- **Questions** : toutes les questions électorales résolues de la cohorte des questions de jugement (239 repérées, dont 180 en confirmation), quel que soit le pays.
+- **Comparaison** sur les mêmes questions : semblables (p_S, taux de base actuel) contre brique. En descriptif : la carte actuelle.
+- **Critère** (risque corrigé d'`essais.py`) : la brique est retenue si la perte log de la brique est plus basse que celle des semblables, avec un intervalle de l'écart entièrement sous 0, sur les questions où la brique ne s'abstient pas. Le taux d'abstention est publié.
+- **Homologie** : on publie le résultat par classe (S1, S2, S3) et par région. Une brique qui gagne en Amérique latine mais perd ailleurs, dans la même classe, n'est pas une brique : c'est une analogie.
+- Même en cas de succès, l'inscription dans les fiches et le passage dans le bot sont des décisions d'auteur datées, après le tournoi pour le bot.
