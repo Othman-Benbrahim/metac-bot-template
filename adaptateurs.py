@@ -131,6 +131,48 @@ def climat(reg: Path, point: str) -> list[tuple[str, float]]:
     return out
 
 
+def seismes(reg: Path, colonne: str = "m6") -> list[tuple[str, float]]:
+    """Séismes par jour (catalogue USGS, collecte_seismes.py) : m45, m6, m7 (nombre au-dessus de la magnitude), mmax,
+    iran_m45 (plateau iranien). Les jours sans séisme sont dans le registre (zéro)."""
+    return [(r["jour"], float(r[colonne])) for r in _csv(reg, "seismes-usgs.csv")]
+
+
+def meteo_prevue(reg: Path, point: str, echeance: str = "") -> list[tuple[str, float]]:
+    """Chaleur ANNONCÉE (GFS, collecte_gfs.py), datée du jour du run : anomalie de la température prévue par rapport
+    aux mêmes jours de l'année des années précédentes à la station GHCN du point (même référence que meteo:).
+    Sans échéance : moyenne des anomalies de J+1 à J+7 ; « meteo_prevue:delhi:3 » : J+3 seulement.
+    Biais grille/station : retranché quand au moins 10 paires (prévision à J+1, observation du même jour) existent
+    dans les 60 jours qui précèdent le run."""
+    from datetime import date, timedelta
+    obs = {j: t for j, t in ((r["jour"], float(r["t_moy"])) for r in _csv(reg, "meteo-points.csv") if r["point"] == point)}
+    par_doy: dict[int, list[tuple[int, float]]] = {}
+    for j, t in obs.items():
+        d = date.fromisoformat(j)
+        par_doy.setdefault(d.timetuple().tm_yday, []).append((d.year, t))
+
+    def normale(j: str) -> float | None:
+        d = date.fromisoformat(j)
+        doy = d.timetuple().tm_yday
+        ref = [x for k in range(doy - 7, doy + 8) for (an, x) in par_doy.get((k - 1) % 366 + 1, []) if an < d.year]
+        return sum(ref) / len(ref) if len(ref) >= 15 else None
+
+    prev = [r for r in _csv(reg, "gfs-previsions.csv") if r["point"] == point]
+    j1 = {r["jour"]: float(r["t_moy"]) for r in prev if r["echeance"] == "1"}
+    par_run: dict[str, list[tuple[str, float]]] = {}
+    for r in prev:
+        if not echeance or r["echeance"] == echeance:
+            par_run.setdefault(r["run"], []).append((r["jour"], float(r["t_moy"])))
+    out = []
+    for run, jours in sorted(par_run.items()):
+        d0 = date.fromisoformat(run)
+        paires = [j1[j] - obs[j] for j in j1 if j in obs and d0 - timedelta(days=60) <= date.fromisoformat(j) < d0]
+        biais = sum(paires) / len(paires) if len(paires) >= 10 else 0.0
+        an = [t - biais - n for j, t in jours if (n := normale(j)) is not None]
+        if an:
+            out.append((run, round(sum(an) / len(an), 2)))
+    return out
+
+
 def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
     """Prévision immédiate de l'inflation (Réserve fédérale de Cleveland, collecte_nowcast_inflation.py), par jour de
     relevé ; mesure par exemple « variation_mensuelle:CPI » (les deux-points de la mesure sont gardés)."""
@@ -141,7 +183,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
-               "portwatch_ref": portwatch_ref}
+               "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue}
 
 
 def variation(serie: list[tuple[str, float]], pas: int) -> list[tuple[str, float]]:

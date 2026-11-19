@@ -110,6 +110,14 @@ compartiments:
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:houston
+  - source: chaleur annoncée à Delhi, J+1 à J+7 (prévision GFS de la NOAA, en anomalie)
+    statut: collecte
+    fichier: collecte_gfs.py
+    adaptateur: meteo_prevue:delhi
+  - source: chaleur annoncée à Berlin, J+1 à J+7 (prévision GFS de la NOAA, en anomalie)
+    statut: collecte
+    fichier: collecte_gfs.py
+    adaptateur: meteo_prevue:berlin
 - id: secheresses
   organisation: eau
   nom: Sécheresses

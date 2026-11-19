@@ -417,8 +417,10 @@ compartiments:
     vitesse: siècle ; seconde (séisme)
     taille: méso à macro
   traces:
-  - source: catalogue public des séismes (USGS)
-    statut: a_brancher
+  - source: séismes de magnitude 4,5 et plus sur le plateau iranien, par jour (catalogue USGS)
+    statut: collecte
+    fichier: collecte_seismes.py
+    adaptateur: seismes:iran_m45
 relations:
 - de: etats_unis
   vers: pouvoir_iranien

@@ -51,7 +51,7 @@ compartiments:
       - {nom: "une faille active", taille: "méso", espace: "région", vitesse: "siècle ; seconde", organisation: "mineral", facette: "non_humain"}
     niveau: {espace: "zones de failles et arcs volcaniques", temps: "accumulation sur des siècles, rupture en secondes", vitesse: "siècle ; seconde", taille: "méso à macro"}
     traces:
-      - {source: "catalogue public des séismes (USGS)", statut: "a_brancher"}
+      - {source: "séismes de magnitude 6 et plus, par jour (catalogue USGS)", statut: "collecte", fichier: "collecte_seismes.py", adaptateur: "seismes:m6"}
   - id: "cotes_detroits"
     nom: "Côtes et détroits"
     organisation: "relief"

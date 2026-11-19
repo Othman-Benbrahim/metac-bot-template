@@ -1,0 +1,40 @@
+name: "Collecte prévisions GFS (température annoncée aux points météo ; ombre)"
+
+# 0.10.355 : décision d'auteur du 2026-11-19 (15 h 57), sources citées par Agentic Earth prises à la source.
+# Lancée par le planificateur ; rien n'entre dans le bot.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-gfs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run --with pygrib python collecte_gfs.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e "registre/gfs-previsions.csv" ]; then git add "registre/gfs-previsions.csv"; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : prévisions GFS du $(date -u +%Y-%m-%d)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
