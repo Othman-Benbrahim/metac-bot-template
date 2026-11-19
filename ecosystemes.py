@@ -37,6 +37,12 @@ STYLES = ("donnant-donnant", "rancunier", "conciliant", "indifferent", "inconnu"
 STATUTS = ("a_verifier", "verifie", "conteste")
 TRACES = ("collecte", "a_brancher", "fermee", "inconnue")
 FORCES = ("faible", "moyenne", "forte", "inconnue")
+# 0.10.315 (idée de l'auteur, 2026-11-19, 3 h 56) : l'INTENSITÉ. La force d'une relation n'est pas fixe : plus
+# l'intensité du moment est forte (tension, chaleur, rareté, attention), plus la relation transmet. On distingue :
+# - force : ce que la relation transmet d'ordinaire (structurel) ;
+# - intensite.mesure : ce qui dit l'intensité du moment (une trace) ;
+# - intensite.regle : comment la force varie avec l'intensité.
+REGLES_INTENSITE = ("proportionnelle", "seuil", "saturation", "hysteresis", "inconnue")
 
 
 def forme_deduite(effet: str, retour: str | None) -> str:
@@ -96,6 +102,12 @@ def valider(fiche: dict) -> list[str]:
             err.append(f"{lab} : statut {r.get('statut')!r} hors de {STATUTS}")
         if r.get("force", "inconnue") not in FORCES:
             err.append(f"{lab} : force {r.get('force')!r} hors de {FORCES}")
+        it = r.get("intensite")
+        if it is not None:
+            if not isinstance(it, dict) or not it.get("mesure"):
+                err.append(f"{lab} : intensité sans « mesure » (ce qui dit l'intensité du moment)")
+            elif it.get("regle") not in REGLES_INTENSITE:
+                err.append(f"{lab} : règle d'intensité {it.get('regle')!r} hors de {REGLES_INTENSITE}")
     for p in fiche.get("ponts") or []:
         if p.get("depuis") not in ids:
             err.append(f"{t} pont : « {p.get('depuis')} » n'est pas un compartiment de la fiche")
@@ -114,7 +126,7 @@ def assembler(fiches: dict[str, dict]) -> dict:
             forme = r.get("forme") or forme_deduite(r["effet"], r.get("retour"))
             liens.append({"de": f"{t}:{r['de']}", "vers": f"{t}:{r['vers']}", "forme": forme,
                           "forme_ecrite": r.get("forme") is not None, **{k: r.get(k) for k in
-                          ("effet", "retour", "style", "delai", "force", "coupure", "statut", "source", "texte")}})
+                          ("effet", "retour", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte")}})
         for p in f.get("ponts") or []:
             cible_theme, cible_comp = str(p["vers"]).split(":", 1)
             existe = cible_theme in fiches and any(c["id"] == cible_comp for c in fiches[cible_theme]["compartiments"])
@@ -123,6 +135,7 @@ def assembler(fiches: dict[str, dict]) -> dict:
             "bilan": {"themes": len(fiches), "compartiments": len(noeuds), "relations": len(liens), "ponts": len(ponts),
                       "ponts_en_attente": sum(not p["resolu"] for p in ponts),
                       "relations_a_verifier": sum(l["statut"] == "a_verifier" for l in liens),
+                      "relations_avec_intensite": sum(bool(l.get("intensite")) for l in liens),
                       "compartiments_sans_trace_collectee": sum(not any(tr.get("statut") == "collecte" for tr in n["traces"])
                                                                for n in noeuds)}}
 

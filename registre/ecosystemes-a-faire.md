@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 1, 'compartiments': 10, 'relations': 12, 'ponts': 7, 'ponts_en_attente': 7, 'relations_a_verifier': 12, 'compartiments_sans_trace_collectee': 2}
+Bilan : {'themes': 1, 'compartiments': 10, 'relations': 12, 'ponts': 7, 'ponts_en_attente': 7, 'relations_a_verifier': 12, 'relations_avec_intensite': 4, 'compartiments_sans_trace_collectee': 2}
 
 ## Thèmes à écrire (ponts en attente)
 - **energie-mondiale** (1 pont(s)) : ormuz:prix → energie-mondiale:prix (le prix du brut relie Ormuz à tous les importateurs)

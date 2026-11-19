@@ -36,3 +36,14 @@ def test_assemblage_et_ponts():
     assert s["bilan"]["ponts_en_attente"] == 1 and s["relations"][0]["forme"] == "forcage"
     assert s["bilan"]["compartiments_sans_trace_collectee"] == 1
     assert "**c**" in ec.a_faire(s)
+
+
+def test_intensite():
+    base = {"theme": "t", "nom": "T", "declaration": {k: "x" for k in ("but", "limites", "observateur", "date") + ec.AXES},
+            "compartiments": [{"id": "a", "niveau": {k: "x" for k in ec.AXES}}], "ponts": []}
+    ok = dict(base, relations=[{"de": "a", "vers": "a", "effet": "+", "statut": "a_verifier",
+                                "intensite": {"mesure": "tension", "regle": "seuil"}}])
+    assert ec.valider(ok) == []
+    ko = dict(base, relations=[{"de": "a", "vers": "a", "effet": "+", "statut": "a_verifier", "intensite": {"regle": "seuil"}}])
+    assert any("sans « mesure »" in e for e in ec.valider(ko))
+    assert ec.assembler({"t": ok})["bilan"]["relations_avec_intensite"] == 1

@@ -33,7 +33,10 @@ relations:
     forme: (facultatif) competition | predation | mutualisme | commensalisme | amensalisme | neutralisme | forcage | contrainte | ambivalent
     style: (facultatif, éléments qui se répondent) donnant-donnant | rancunier | conciliant | indifferent | inconnu
     delai: délai typique de transmission
-    force: faible | moyenne | forte | inconnue
+    force: faible | moyenne | forte | inconnue   # ce que la relation transmet d'ordinaire
+    intensite:                    # (facultatif) la force varie avec l'intensité du moment
+      mesure: ce qui dit l'intensité (une trace : tension, chaleur, rareté, attention…)
+      regle: proportionnelle | seuil | saturation | hysteresis | inconnue
     coupure: où et quand le lien se coupe
     statut: a_verifier | verifie | conteste
     source: (si vérifié) la source relue
@@ -43,3 +46,9 @@ ponts:
 ```
 Sans forme écrite, la forme est déduite des deux effets (− / − compétition, + / + mutualisme, + / − prédation,
 + / 0 commensalisme, − / 0 amensalisme, 0 / 0 neutralisme ; sans retour : forçage).
+
+## L'intensité (idée de l'auteur, 2026-11-19)
+La force d'une relation n'est pas fixe : plus l'intensité du moment est forte, plus la relation transmet. Exemples :
+en temps calme, une menace verbale sur Ormuz bouge à peine les prix ; en pleine crise, la même phrase les fait bondir.
+La règle dit comment : proportionnelle (plus d'intensité, plus de transmission), seuil (rien puis tout), saturation
+(la transmission plafonne), hystérésis (elle ne redescend pas par le même chemin qu'elle est montée).
