@@ -19,7 +19,7 @@ compartiments:
       - {nom: "la fonction présidentielle (pouvoirs, limites, contre-pouvoirs)", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "statut"}
       - {nom: "le programme et l'idéologie portés par l'exécutif", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
       - {nom: "l'entourage direct (cabinet, conseillers) et indirect (alliés, financeurs déclarés)", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
-      - {nom: "une agence fédérale", taille: "méso", espace: "pays", vitesse: "mois"}
+      - {nom: "une agence fédérale", taille: "méso", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "mandat ; décisions quotidiennes", vitesse: "jours à mois", taille: "macro"}
     traces:
       - {source: "Federal Register (textes en inspection publique avant publication)", statut: "collecte", fichier: "collecte_federal_register.py"}
@@ -29,9 +29,9 @@ compartiments:
     nom: "Congrès"
     elements: ["Chambre des représentants", "Sénat", "commissions", "lois", "confirmations des nominations"]
     acteurs:
-      - {nom: "un élu ou une élue du Congrès (fonction publique)", taille: "micro", espace: "pays", vitesse: "semaines"}
-      - {nom: "une commission parlementaire", taille: "méso", espace: "pays", vitesse: "semaines"}
-      - {nom: "la majorité de chaque chambre", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "un élu ou une élue du Congrès (fonction publique)", taille: "micro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "statut"}
+      - {nom: "une commission parlementaire", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+      - {nom: "la majorité de chaque chambre", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "sessions ; législature de deux ans", vitesse: "semaines à mois", taille: "méso à macro"}
     traces:
       - {source: "réunions de commissions et nominations (API du Congrès)", statut: "collecte", fichier: "collecte_congres.py"}
@@ -40,8 +40,8 @@ compartiments:
     nom: "Tribunaux"
     elements: ["Cour suprême", "cours d'appel fédérales", "injonctions", "contentieux contre l'exécutif"]
     acteurs:
-      - {nom: "un juge fédéral de première instance (fonction publique)", taille: "micro", espace: "région", vitesse: "jours"}
-      - {nom: "la Cour suprême", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "un juge fédéral de première instance (fonction publique)", taille: "micro", espace: "région", vitesse: "jours", organisation: "statut", facette: "statut"}
+      - {nom: "la Cour suprême", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "juridictions", temps: "procédures ; session annuelle de la Cour suprême", vitesse: "jours à années", taille: "micro à macro"}
     traces:
       - {source: "dossiers judiciaires (CourtListener : Cour suprême, cour d'appel du district de Columbia)", statut: "collecte", fichier: "collecte_tribunaux.py"}
@@ -50,8 +50,8 @@ compartiments:
     nom: "Élections et opinion"
     elements: ["calendrier électoral", "élections de mi-mandat", "primaires", "cote de popularité", "découpage des circonscriptions"]
     acteurs:
-      - {nom: "un électeur", taille: "micro", espace: "local", vitesse: "année"}
-      - {nom: "les deux grands partis (en agrégat)", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "un électeur", taille: "micro", espace: "local", vitesse: "année", organisation: "societe", facette: "personne"}
+      - {nom: "les deux grands partis (en agrégat)", taille: "macro", espace: "pays", vitesse: "mois", organisation: "ideologie", facette: "collectif"}
     niveau: {espace: "circonscriptions et États", temps: "cycle de deux ans ; dates d'élection fixes", vitesse: "mois à années", taille: "micro à macro"}
     traces:
       - {source: "résultats officiels et calendriers électoraux (commissions électorales des États)", statut: "a_brancher"}
@@ -60,7 +60,7 @@ compartiments:
     nom: "Budget et dette fédérale"
     elements: ["lois de finances", "plafond de la dette", "fermeture des services fédéraux faute de budget", "déficits", "émissions du Trésor"]
     acteurs:
-      - {nom: "Trésor américain", taille: "macro", espace: "mondial", vitesse: "semaines"}
+      - {nom: "Trésor américain", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "exercice budgétaire au 1er octobre ; échéances du plafond de la dette", vitesse: "semaines à mois", taille: "macro"}
     traces:
       - {source: "taux américain à 10 ans (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DGS10"}
@@ -69,7 +69,7 @@ compartiments:
     nom: "Commerce et droits de douane"
     elements: ["droits de douane", "exemptions", "accords commerciaux", "contrôles des exportations"]
     acteurs:
-      - {nom: "représentant au Commerce et département du Commerce", taille: "méso", espace: "mondial", vitesse: "semaines"}
+      - {nom: "représentant au Commerce et département du Commerce", taille: "méso", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "mondial", temps: "annonces, délais d'application, recours", vitesse: "jours à mois", taille: "macro"}
     traces:
       - {source: "Federal Register (proclamations et avis tarifaires)", statut: "collecte", fichier: "collecte_federal_register.py"}
@@ -78,7 +78,7 @@ compartiments:
     nom: "Politique énergétique"
     elements: ["réserve stratégique de pétrole", "permis de forage et d'exportation de gaz liquéfié", "prix à la pompe", "sanctions énergétiques"]
     acteurs:
-      - {nom: "département de l'Énergie", taille: "méso", espace: "pays", vitesse: "semaines"}
+      - {nom: "département de l'Énergie", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays et marchés mondiaux", temps: "décisions datées ; saison de conduite estivale", vitesse: "semaines à mois", taille: "macro"}
     traces:
       - {source: "réserve stratégique américaine de brut (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:WCSSTUS1"}
@@ -88,7 +88,7 @@ compartiments:
     nom: "Sanctions et politique étrangère économique"
     elements: ["désignations du Trésor", "sanctions secondaires", "levées et dérogations"]
     acteurs:
-      - {nom: "bureau du contrôle des avoirs étrangers du Trésor", taille: "méso", espace: "mondial", vitesse: "semaines"}
+      - {nom: "bureau du contrôle des avoirs étrangers du Trésor", taille: "méso", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "mondial", temps: "désignations datées", vitesse: "jours à mois", taille: "macro"}
     traces:
       - {source: "listes de sanctions (désignations visant l'Iran)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:IR"}
@@ -98,7 +98,7 @@ compartiments:
     nom: "Réserve fédérale (institution)"
     elements: ["indépendance", "nominations au conseil des gouverneurs", "pressions politiques sur les taux"]
     acteurs:
-      - {nom: "Réserve fédérale", taille: "macro", espace: "mondial", vitesse: "semaines"}
+      - {nom: "Réserve fédérale", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays et monde", temps: "réunions toutes les six semaines environ ; mandats des gouverneurs", vitesse: "semaines", taille: "macro"}
     traces:
       - {source: "taux effectif de la Réserve fédérale (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DFF"}
@@ -107,10 +107,52 @@ compartiments:
     nom: "États fédérés"
     elements: ["gouverneurs", "législatures des États", "procureurs généraux des États", "recours contre le fédéral"]
     acteurs:
-      - {nom: "un État fédéré", taille: "méso", espace: "région", vitesse: "mois"}
+      - {nom: "un État fédéré", taille: "méso", espace: "région", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "États", temps: "sessions législatives des États", vitesse: "semaines à mois", taille: "méso"}
     traces:
       - {source: "recours devant les tribunaux fédéraux (CourtListener)", statut: "collecte", fichier: "collecte_tribunaux.py"}
+  - id: "entourage"
+    organisation: "entourage"
+    nom: "Entourage et coalition de soutien"
+    elements: ["cabinet et conseillers (entourage direct)", "alliés au Congrès, gouverneurs, financeurs déclarés (entourage indirect)", "rivalités pour l'accès", "loyauté et disgrâce"]
+    acteurs:
+      - {nom: "le cabinet et les conseillers de la Maison-Blanche (en agrégat)", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
+      - {nom: "les financeurs déclarés des campagnes (en agrégat, données publiques)", taille: "méso", espace: "pays", vitesse: "mois", organisation: "entourage", facette: "collectif"}
+    niveau: {espace: "pays", temps: "nominations et départs datés", vitesse: "semaines à mois", taille: "méso"}
+    traces:
+      - {source: "déclarations publiques de financement électoral (FEC)", statut: "a_brancher"}
+      - {source: "nominations au Sénat (Congrès)", statut: "collecte", fichier: "collecte_congres.py"}
+  - id: "regles_electorales"
+    organisation: "convention"
+    nom: "Règles électorales et découpages (convention)"
+    elements: ["collège électoral", "découpage des circonscriptions", "règles de vote fixées par les États", "certification des résultats"]
+    acteurs:
+      - {nom: "les législatures des États fédérés", taille: "méso", espace: "région", vitesse: "années", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays et États", temps: "recensements décennaux ; cycles électoraux", vitesse: "années", taille: "méso à macro"}
+    traces:
+      - {source: "recours devant les tribunaux fédéraux (CourtListener)", statut: "collecte", fichier: "collecte_tribunaux.py"}
+  - id: "eau_fleuves"
+    organisation: "eau"
+    nom: "Fleuves et eau (Mississippi, Colorado)"
+    elements: ["Mississippi, artère des exportations de céréales", "niveaux bas en sécheresse", "partage du Colorado entre États (accords de bassin)"]
+    acteurs:
+      - {nom: "le Mississippi", taille: "macro", espace: "région", vitesse: "saisons", organisation: "eau", facette: "non_humain"}
+      - {nom: "le Colorado", taille: "macro", espace: "région", vitesse: "années", organisation: "eau", facette: "non_humain"}
+    niveau: {espace: "bassins", temps: "saisons ; décennies", vitesse: "saisons à décennies", taille: "macro"}
+    traces:
+      - {source: "niveaux et débits publics (USGS)", statut: "a_brancher"}
+  - id: "climat_risques"
+    organisation: "climat"
+    nom: "Climat et catastrophes (ouragans, incendies, chaleur)"
+    elements: ["ouragans sur le golfe du Mexique", "incendies de l'Ouest", "vagues de chaleur", "coût des catastrophes et aide fédérale"]
+    acteurs:
+      - {nom: "une saison des ouragans", taille: "macro", espace: "région", vitesse: "saisons", organisation: "meteo", facette: "non_humain"}
+      - {nom: "l'agence fédérale de gestion des urgences", taille: "méso", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "régions exposées", temps: "saisons ; décennies", vitesse: "jours à décennies", taille: "méso à macro"}
+    traces:
+      - {source: "anomalie de température à Houston (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:houston"}
+      - {source: "dérive du climat à Houston (anomalie glissante sur un an)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:houston"}
+      - {source: "feux actifs aux États-Unis (FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:US"}
 relations:
   - {de: "executif", vers: "congres", effet: "±", retour: "±", style: "inconnu", delai: "semaines", force: "forte", intensite: {mesure: "écart de majorité entre la présidence et chaque chambre", regle: "seuil"}, coupure: "majorités alignées", statut: "a_verifier", texte: "quand les majorités divergent, chacun bloque l'autre ; alignées, elles s'appuient"}
   - {de: "tribunaux", vers: "executif", effet: "-", retour: "±", delai: "jours à mois", force: "forte", coupure: "décision de la Cour suprême en dernier ressort", statut: "a_verifier", texte: "injonctions et arrêts suspendent ou annulent des décrets ; l'exécutif fait appel ou réécrit"}
@@ -125,6 +167,13 @@ relations:
   - {de: "executif", vers: "sanctions", effet: "+", delai: "jours", force: "forte", coupure: "dérogations, accords diplomatiques", statut: "a_verifier", texte: "les désignations relèvent de l'exécutif et se décident sans vote"}
   - {de: "executif", vers: "energie", effet: "±", delai: "semaines", force: "moyenne", intensite: {mesure: "prix à la pompe et proximité électorale", regle: "proportionnelle"}, coupure: "niveau de la réserve stratégique", statut: "a_verifier", texte: "ventes de la réserve stratégique et permis d'exportation suivent les prix et le calendrier électoral"}
   - {de: "congres", vers: "executif", effet: "±", delai: "semaines à mois", force: "moyenne", coupure: "majorité alignée", statut: "a_verifier", texte: "confirmations des nominations et contrôle parlementaire"}
+  - {de: "entourage", vers: "executif", effet: "±", retour: "±", delai: "semaines", force: "moyenne", intensite: {mesure: "départs et nominations récents", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "l'entourage filtre l'information et pèse sur les décisions ; une vague de départs ou de disgrâces le recompose et change la ligne"}
+  - {de: "elections", vers: "entourage", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "alliés et financeurs suivent la dynamique électorale : une défaite les éloigne, une victoire les rapproche"}
+  - {de: "regles_electorales", vers: "elections", effet: "±", forme: "contrainte", delai: "années", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "règles et découpages bornent ce qu'un même vote produit en sièges"}
+  - {de: "tribunaux", vers: "regles_electorales", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les recours redessinent les cartes et les règles de vote"}
+  - {de: "executif", vers: "etats_federes", effet: "±", retour: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "au sein du niveau statut : le fédéralisme, où l'État fédéral ordonne et les États résistent, appliquent ou contournent"}
+  - {de: "climat_risques", vers: "etats_federes", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "gravité de la catastrophe", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "une catastrophe majeure franchit le seuil de la déclaration fédérale et appelle l'aide de l'État fédéral"}
+  - {de: "eau_fleuves", vers: "etats_federes", effet: "-", retour: "-", delai: "années", force: "moyenne", intensite: {mesure: "niveau des réservoirs du bassin", regle: "seuil"}, coupure: "accords de partage renégociés", statut: "a_verifier", texte: "quand le Colorado baisse, les États d'amont et d'aval se disputent les mêmes volumes"}
 ponts:
   - {depuis: "energie", vers: "energie-mondiale:decisions", nature: "réserve stratégique, sanctions, exportations de gaz liquéfié"}
   - {depuis: "budget", vers: "inflation-mondiale:budget", nature: "déficits et droits de douane dans l'inflation"}
@@ -134,3 +183,5 @@ ponts:
   - {depuis: "sanctions", vers: "iran-nucleaire:negociations", nature: "sanctions et négociations nucléaires vont ensemble"}
   - {depuis: "commerce", vers: "economie-chinoise:exterieur", nature: "les droits de douane visant la Chine"}
   - {depuis: "commerce", vers: "rivalite-sino-americaine:energie", nature: "la rivalité commerciale et technologique"}
+  - {depuis: "climat_risques", vers: "climat-extremes:tempetes", nature: "ouragans et tempêtes"}
+  - {depuis: "eau_fleuves", vers: "alimentation-mondiale:commerce", nature: "les exportations de céréales descendent le Mississippi"}

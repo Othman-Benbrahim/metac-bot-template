@@ -11,82 +11,124 @@ declaration:
   taille: "une entreprise, une filière, un État, le système mondial"
 compartiments:
   - id: commerce
+    organisation: "economie"
     nom: "Commerce et droits de douane"
     elements: ["droits de douane", "trêves commerciales", "achats agricoles et énergétiques", "réacheminement par des pays tiers"]
     acteurs:
-      - {nom: "une entreprise exportatrice", taille: "micro", espace: "local", vitesse: "mois"}
-      - {nom: "Représentant américain au commerce", taille: "macro", espace: "mondial", vitesse: "semaines"}
-      - {nom: "ministère chinois du Commerce", taille: "macro", espace: "mondial", vitesse: "semaines"}
+      - {nom: "une entreprise exportatrice", taille: "micro", espace: "local", vitesse: "mois", organisation: "economie", facette: "collectif"}
+      - {nom: "Représentant américain au commerce", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+      - {nom: "ministère chinois du Commerce", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "mondial", temps: "annonces datées ; trêves de quelques mois", vitesse: "semaines à mois", taille: "macro"}
     traces:
       - {source: "Federal Register (décrets et droits de douane)", statut: "collecte", fichier: "collecte_federal_register.py"}
       - {source: "IMF PortWatch, porte-conteneurs à Malacca", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:porte_conteneurs"}
   - id: technologie
+    organisation: "technique"
     nom: "Technologie et contrôles"
     elements: ["semi-conducteurs avancés", "contrôles à l'exportation", "terres rares et métaux critiques", "listes d'entités"]
     acteurs:
-      - {nom: "un fabricant de puces", taille: "méso", espace: "mondial", vitesse: "mois"}
-      - {nom: "Département du Commerce américain (BIS)", taille: "macro", espace: "mondial", vitesse: "mois"}
+      - {nom: "un fabricant de puces", taille: "méso", espace: "mondial", vitesse: "mois", organisation: "technique", facette: "collectif"}
+      - {nom: "Département du Commerce américain (BIS)", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "chaînes de valeur mondiales", temps: "règles datées ; cycles industriels de plusieurs années", vitesse: "mois à années", taille: "méso à macro"}
     traces:
       - {source: "listes de sanctions et d'entités visant la Chine", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:CN"}
   - id: energie
+    organisation: "economie"
     nom: "Énergie et sécurité des approvisionnements"
     elements: ["importations chinoises de pétrole et de gaz (Golfe, Russie, Iran)", "exportations américaines de gaz liquéfié", "routes maritimes (Malacca, Ormuz)", "stocks stratégiques"]
     acteurs:
-      - {nom: "Chine (importateur)", taille: "macro", espace: "mondial", vitesse: "mois"}
-      - {nom: "États-Unis (exportateur)", taille: "macro", espace: "mondial", vitesse: "mois"}
+      - {nom: "Chine (importateur)", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
+      - {nom: "États-Unis (exportateur)", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
     niveau: {espace: "routes mondiales de l'énergie", temps: "contrats ; stocks", vitesse: "semaines à mois", taille: "macro"}
     traces:
       - {source: "IMF PortWatch, pétroliers à Malacca", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:petroliers"}
       - {source: "prix du Brent (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILBRENTEU"}
   - id: taiwan
+    organisation: "geopolitique"
     nom: "Taïwan et mers de Chine"
     elements: ["exercices militaires autour de Taïwan", "patrouilles dans le détroit", "mer de Chine méridionale", "incidents aériens et navals"]
     acteurs:
-      - {nom: "Armée populaire de libération", taille: "macro", espace: "région", vitesse: "jours"}
-      - {nom: "Taïwan (autorités)", taille: "méso", espace: "pays", vitesse: "jours"}
-      - {nom: "un navire ou un avion de patrouille", taille: "micro", espace: "site", vitesse: "heures"}
+      - {nom: "Armée populaire de libération", taille: "macro", espace: "région", vitesse: "jours", organisation: "statut", facette: "collectif"}
+      - {nom: "Taïwan (autorités)", taille: "méso", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
+      - {nom: "un navire ou un avion de patrouille", taille: "micro", espace: "site", vitesse: "heures", organisation: "technique", facette: "collectif"}
     niveau: {espace: "détroit et mers régionales", temps: "exercices datés ; anniversaires et élections", vitesse: "heures à semaines", taille: "micro à macro"}
     traces:
       - {source: "IMF PortWatch, navires dans le détroit de Taïwan", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:taiwan:navires"}
       - {source: "violations aériennes (rapports publics)", statut: "collecte", fichier: "collecte_violationswatch.py"}
       - {source: "avions d'État", statut: "collecte", fichier: "collecte_avions_etat.py"}
   - id: alliances
+    organisation: "geopolitique"
     nom: "Alliances et alignements"
     elements: ["Japon, Corée du Sud, Philippines, Australie", "partenariat sino-russe", "pays non alignés", "BRICS"]
     niveau: {espace: "mondial", temps: "sommets ; traités", vitesse: "mois à années", taille: "macro"}
     traces:
       - {source: "GDELT, paires d'États", statut: "collecte", fichier: "gdelt_bq.py"}
   - id: diplomatie
+    organisation: "geopolitique"
     nom: "Diplomatie au sommet"
     elements: ["rencontres des dirigeants", "appels", "canaux militaires", "visites ministérielles"]
     acteurs:
-      - {nom: "États-Unis (exécutif)", taille: "macro", espace: "pays", vitesse: "semaines"}
-      - {nom: "Chine (direction du Parti et de l'État)", taille: "macro", espace: "pays", vitesse: "semaines"}
+      - {nom: "le dirigeant chinois en personne (faits et déclarations publics)", taille: "micro", espace: "pays", vitesse: "jours", organisation: "personne", facette: "personne"}
+      - {nom: "la ligne idéologique du Parti (renaissance nationale, autonomie technologique — en agrégat)", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
+      - {nom: "le président américain en personne (faits et déclarations publics)", taille: "micro", espace: "pays", vitesse: "jours", organisation: "personne", facette: "personne"}
+      - {nom: "États-Unis (exécutif)", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+      - {nom: "Chine (direction du Parti et de l'État)", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "capitales", temps: "calendrier des sommets", vitesse: "semaines", taille: "macro"}
     traces:
       - {source: "GDELT, ton des gestes des États-Unis envers la Chine", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:CHN"}
       - {source: "routines officielles (ministère chinois des Affaires étrangères, Maison-Blanche)", statut: "collecte", fichier: "collecte_routines.py"}
   - id: finance
+    organisation: "economie"
     nom: "Finance et monnaies"
     elements: ["dette américaine détenue par la Chine", "yuan", "accès aux marchés", "sanctions financières"]
     niveau: {espace: "mondial", temps: "séances ; décisions datées", vitesse: "jours à mois", taille: "macro"}
     traces:
       - {source: "indice large du dollar (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DTWEXBGS"}
   - id: economie_chine
+    organisation: "economie"
     nom: "Économie chinoise exposée"
     elements: ["exportations", "surcapacités industrielles", "immobilier", "emploi des jeunes"]
     niveau: {espace: "Chine", temps: "statistiques mensuelles", vitesse: "mois", taille: "macro"}
     traces:
       - {source: "calendrier des statistiques chinoises", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
   - id: recits
+    organisation: "ideologie"
     nom: "Récits et opinions"
     elements: ["discours de puissance", "nationalismes", "couverture médiatique", "censure"]
     niveau: {espace: "médiatique mondial", temps: "cycle de l'information", vitesse: "heures à jours", taille: "micro à macro"}
     traces:
       - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
       - {source: "censure d'internet en Chine (OONI)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:CN"}
+  - id: "terres_rares"
+    organisation: "chimique"
+    nom: "Terres rares et minerais critiques"
+    elements: ["terres rares (aimants, moteurs)", "gallium, germanium, graphite", "raffinage très concentré en Chine (à vérifier)", "contrôles d'exportation"]
+    acteurs:
+      - {nom: "les gisements et les raffineries de terres rares", taille: "méso", espace: "pays", vitesse: "années", organisation: "chimique", facette: "non_humain"}
+      - {nom: "ministère chinois du Commerce (licences d'exportation)", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "mondial", temps: "décisions datées ; années pour ouvrir une mine", vitesse: "semaines à années", taille: "méso à macro"}
+    traces:
+      - {source: "annonces publiques de contrôles d'exportation (ministère chinois du Commerce)", statut: "a_brancher"}
+      - {source: "sanctions et listes visant la Chine", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:CN"}
+  - id: "detroit_relief"
+    organisation: "relief"
+    nom: "Détroit de Taïwan et géographie insulaire"
+    elements: ["un bras de mer à franchir (largeur à vérifier)", "typhons et saisons de mer forte", "chaînes d'îles du Pacifique occidental"]
+    acteurs:
+      - {nom: "le détroit de Taïwan", taille: "macro", espace: "région", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
+      - {nom: "la saison des typhons", taille: "méso", espace: "région", vitesse: "saisons", organisation: "meteo", facette: "non_humain"}
+    niveau: {espace: "détroit", temps: "permanent ; saisons", vitesse: "saisons à millénaire", taille: "macro"}
+    traces:
+      - {source: "IMF PortWatch, navires dans le détroit de Taïwan", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:taiwan:navires"}
+  - id: "atomique"
+    organisation: "atomique"
+    nom: "Dissuasion nucléaire (niveau institutionnel)"
+    elements: ["arsenaux en agrégat", "doctrines déclarées", "dialogues de maîtrise des armements"]
+    acteurs:
+      - {nom: "les doctrines nucléaires déclarées des deux puissances", taille: "macro", espace: "mondial", vitesse: "décennie", organisation: "ideologie", facette: "ideologie"}
+    niveau: {espace: "mondial", temps: "décennies", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "rapports publics (SIPRI, déclarations officielles)", statut: "a_brancher"}
 relations:
   - {de: "commerce", vers: "diplomatie", effet: "-", retour: "-", forme: "competition", style: "inconnu", delai: "semaines", force: "forte", intensite: {mesure: "droits de douane annoncés récemment", regle: "proportionnelle"}, coupure: "trêve négociée", statut: "a_verifier", texte: "chaque hausse de droits appelle une riposte ; le style de la relation est à mesurer (paire USA–CHN au banc de la réciprocité)"}
   - {de: "technologie", vers: "economie_chine", effet: "-", delai: "mois à années", force: "moyenne", intensite: {mesure: "nouvelles entités sanctionnées", regle: "saturation"}, coupure: "substitution par la production chinoise", statut: "a_verifier", texte: "les contrôles freinent les filières de pointe, puis poussent à l'autonomie"}
@@ -100,6 +142,13 @@ relations:
   - {de: "finance", vers: "commerce", effet: "±", delai: "semaines", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "le dollar et le yuan amortissent ou amplifient l'effet des droits de douane"}
   - {de: "recits", vers: "diplomatie", effet: "±", delai: "jours", force: "faible", intensite: {mesure: "tension médiatique du moment", regle: "proportionnelle"}, coupure: "contrôle des récits par les deux gouvernements", statut: "a_verifier", texte: "les nationalismes réduisent la marge de compromis"}
   - {de: "taiwan", vers: "energie", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "incidents dans le détroit", regle: "seuil"}, coupure: "routes alternatives", statut: "a_verifier", texte: "une crise dans le détroit menacerait des routes de l'énergie et du commerce asiatiques"}
+  - {de: "terres_rares", vers: "technologie", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "contrôles d'exportation annoncés récemment", regle: "seuil"}, coupure: "stocks et nouvelles mines hors de Chine", statut: "a_verifier", texte: "puces, aimants et batteries dépendent de minerais raffinés surtout en Chine ; une restriction franchit le seuil d'une pénurie"}
+  - {de: "diplomatie", vers: "terres_rares", effet: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les licences d'exportation suivent l'état des négociations"}
+  - {de: "detroit_relief", vers: "taiwan", effet: "-", forme: "contrainte", delai: "permanent", force: "forte", intensite: {mesure: "saison des typhons et mer forte", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "la mer et ses saisons bornent ce qui peut être tenté à travers le détroit"}
+  - {de: "atomique", vers: "taiwan", effet: "-", delai: "permanent", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la dissuasion borne l'escalade entre les deux puissances"}
+  - {de: "taiwan", vers: "technologie", effet: "-", delai: "jours", force: "forte", intensite: {mesure: "tension autour de Taïwan", regle: "seuil"}, coupure: "usines de puces construites ailleurs", statut: "a_verifier", texte: "la fabrication des puces les plus avancées est concentrée à Taïwan : une crise y touche toute la filière"}
+  - {de: "alliances", vers: "diplomatie", effet: "±", retour: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "au sein du niveau géopolitique : les alignements des voisins pèsent sur le dialogue au sommet, qui les rassure ou les inquiète"}
+  - {de: "recits", vers: "taiwan", effet: "±", delai: "semaines", force: "faible", intensite: {mesure: "mobilisation nationaliste du moment", regle: "seuil"}, coupure: "censure et contrôle du récit", statut: "a_verifier", texte: "un récit nationaliste ne bouge le niveau géopolitique qu'au-delà d'un seuil de mobilisation"}
 ponts:
   - {depuis: "energie", vers: "ormuz:puissances", nature: "la sécurité des approvisionnements chinois passe par Ormuz"}
   - {depuis: "energie", vers: "energie-mondiale:demande", nature: "la Chine est le premier importateur"}
@@ -108,3 +157,4 @@ ponts:
   - {depuis: "commerce", vers: "inflation-mondiale:approvisionnement", nature: "les droits de douane et les chaînes d'approvisionnement"}
   - {depuis: "commerce", vers: "politique-americaine:budget", nature: "les droits de douane dans la politique américaine"}
   - {depuis: "alliances", vers: "russie-ukraine:soutiens", nature: "le partenariat sino-russe"}
+  - {depuis: "detroit_relief", vers: "transport-maritime:detroits", nature: "le détroit de Taïwan, l'un des passages les plus fréquentés"}

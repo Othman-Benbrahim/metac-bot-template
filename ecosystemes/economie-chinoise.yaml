@@ -11,97 +11,147 @@ declaration:
   taille: "un ménage, une entreprise, une province, l'économie nationale"
 compartiments:
   - id: activite
+    organisation: "economie"
     nom: "Activité économique"
     elements: ["production industrielle", "investissement", "commerce de détail", "objectif de croissance annuel"]
     acteurs:
-      - {nom: "une usine exportatrice", taille: "micro", espace: "site", vitesse: "semaines"}
-      - {nom: "une province", taille: "méso", espace: "région", vitesse: "mois"}
+      - {nom: "une usine exportatrice", taille: "micro", espace: "site", vitesse: "semaines", organisation: "economie", facette: "collectif"}
+      - {nom: "une province", taille: "méso", espace: "région", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "publications mensuelles et trimestrielles", vitesse: "mois", taille: "macro"}
     traces:
       - {source: "calendrier des statistiques chinoises (Bureau national des statistiques)", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
       - {source: "feux actifs sur les zones industrielles (activité thermique, FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:CN"}
   - id: immobilier
+    organisation: "economie"
     nom: "Immobilier et collectivités locales"
     elements: ["promoteurs endettés", "ventes de logements", "ventes de terrains des collectivités", "dette des véhicules de financement locaux"]
     acteurs:
-      - {nom: "un ménage acheteur", taille: "micro", espace: "local", vitesse: "mois"}
-      - {nom: "un promoteur immobilier", taille: "méso", espace: "pays", vitesse: "mois"}
-      - {nom: "une collectivité locale", taille: "méso", espace: "région", vitesse: "année"}
+      - {nom: "un ménage acheteur", taille: "micro", espace: "local", vitesse: "mois", organisation: "economie", facette: "collectif"}
+      - {nom: "un promoteur immobilier", taille: "méso", espace: "pays", vitesse: "mois", organisation: "economie", facette: "collectif"}
+      - {nom: "une collectivité locale", taille: "méso", espace: "région", vitesse: "année", organisation: "statut", facette: "collectif"}
     niveau: {espace: "villes et provinces", temps: "cycles de plusieurs années", vitesse: "mois à années", taille: "méso à macro"}
     traces:
       - {source: "prix et ventes de logements (publication mensuelle officielle)", statut: "a_brancher"}
   - id: exportations
+    organisation: "economie"
     nom: "Industrie et exportations"
     elements: ["excédent commercial", "surcapacités", "véhicules électriques, panneaux solaires, acier", "droits de douane étrangers"]
     acteurs:
-      - {nom: "un grand groupe industriel", taille: "méso", espace: "mondial", vitesse: "mois"}
+      - {nom: "un grand groupe industriel", taille: "méso", espace: "mondial", vitesse: "mois", organisation: "economie", facette: "collectif"}
     niveau: {espace: "routes commerciales mondiales", temps: "commandes et saisons commerciales", vitesse: "semaines à mois", taille: "macro"}
     traces:
       - {source: "IMF PortWatch (porte-conteneurs dans le détroit de Malacca)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:porte_conteneurs"}
       - {source: "IMF PortWatch (porte-conteneurs dans le détroit de Taïwan)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:taiwan:porte_conteneurs"}
   - id: consommation
+    organisation: "economie"
     nom: "Consommation des ménages"
     elements: ["confiance", "épargne de précaution", "prix à la consommation proches de zéro (à vérifier)", "subventions à l'achat"]
     acteurs:
-      - {nom: "un ménage urbain", taille: "micro", espace: "local", vitesse: "mois"}
+      - {nom: "un ménage urbain", taille: "micro", espace: "local", vitesse: "mois", organisation: "economie", facette: "collectif"}
     niveau: {espace: "pays", temps: "mois ; fêtes et saisons", vitesse: "mois", taille: "macro"}
     traces:
       - {source: "commerce de détail et prix à la consommation (publication officielle)", statut: "a_brancher"}
   - id: emploi
+    organisation: "societe"
     nom: "Emploi et chômage des jeunes"
     elements: ["chômage urbain", "chômage des jeunes", "diplômés de l'été", "emploi informel"]
     acteurs:
-      - {nom: "un jeune diplômé", taille: "micro", espace: "local", vitesse: "mois"}
+      - {nom: "un jeune diplômé", taille: "micro", espace: "local", vitesse: "mois", organisation: "societe", facette: "personne"}
     niveau: {espace: "villes", temps: "publication mensuelle ; pic estival des diplômés", vitesse: "mois", taille: "macro"}
     traces:
       - {source: "taux de chômage des jeunes (publication officielle mensuelle)", statut: "a_brancher"}
   - id: politique_monetaire
+    organisation: "statut"
     nom: "Politique monétaire et budgétaire"
     elements: ["taux de référence des prêts", "réserves obligatoires", "obligations spéciales", "plans de relance"]
     acteurs:
-      - {nom: "Banque populaire de Chine", taille: "macro", espace: "pays", vitesse: "semaines"}
-      - {nom: "ministère des Finances", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "Banque populaire de Chine", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+      - {nom: "ministère des Finances", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "réunions et annonces datées", vitesse: "semaines à mois", taille: "macro"}
     traces:
       - {source: "communiqués de la banque centrale chinoise (publics)", statut: "a_brancher"}
   - id: pouvoir
+    organisation: "statut"
     nom: "Pouvoir et orientations politiques"
     elements: ["plénums et sessions annuelles", "objectifs du plan", "priorités industrielles", "campagnes réglementaires"]
     acteurs:
-      - {nom: "Parti communiste chinois (direction centrale, en agrégat)", taille: "macro", espace: "pays", vitesse: "mois"}
-      - {nom: "Conseil des affaires de l'État", taille: "macro", espace: "pays", vitesse: "semaines"}
+      - {nom: "le secrétaire général en personne (faits et déclarations publics)", taille: "micro", espace: "pays", vitesse: "jours", organisation: "personne", facette: "personne"}
+      - {nom: "la ligne du Parti (prospérité commune, sécurité, autonomie — en agrégat)", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
+      - {nom: "l'entourage au sommet (comité permanent, en agrégat)", taille: "méso", espace: "pays", vitesse: "mois", organisation: "entourage", facette: "collectif"}
+      - {nom: "Parti communiste chinois (direction centrale, en agrégat)", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
+      - {nom: "Conseil des affaires de l'État", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
     niveau: {espace: "pays", temps: "calendrier politique (sessions annuelles, plénums, plans quinquennaux)", vitesse: "mois à années", taille: "macro"}
     traces:
       - {source: "censure et coupures d'internet (OONI, part des mesures en anomalie)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:CN"}
       - {source: "routines officielles (ministère chinois des Affaires étrangères)", statut: "collecte", fichier: "collecte_routines.py"}
   - id: statistiques
+    organisation: "convention"
     nom: "Statistiques officielles (convention)"
     elements: ["calendrier de publication", "séries suspendues ou redéfinies", "révisions", "écarts avec les indicateurs indirects"]
     acteurs:
-      - {nom: "Bureau national des statistiques", taille: "méso", espace: "pays", vitesse: "mois"}
+      - {nom: "Bureau national des statistiques", taille: "méso", espace: "pays", vitesse: "mois", organisation: "convention", facette: "collectif"}
     niveau: {espace: "pays", temps: "calendrier de publication", vitesse: "mois", taille: "méso"}
     traces:
       - {source: "calendrier des statistiques chinoises (publications tenues, retardées ou suspendues)", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
   - id: matieres_premieres
+    organisation: "economie"
     nom: "Demande de matières premières"
     elements: ["pétrole importé (y compris sous sanctions)", "minerai de fer", "cuivre", "gaz naturel liquéfié", "stocks stratégiques"]
     acteurs:
-      - {nom: "une raffinerie indépendante du Shandong", taille: "micro", espace: "site", vitesse: "semaines"}
-      - {nom: "les grandes compagnies pétrolières d'État", taille: "macro", espace: "mondial", vitesse: "mois"}
+      - {nom: "une raffinerie indépendante du Shandong", taille: "micro", espace: "site", vitesse: "semaines", organisation: "economie", facette: "collectif"}
+      - {nom: "les grandes compagnies pétrolières d'État", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "economie", facette: "collectif"}
     niveau: {espace: "routes d'importation mondiales", temps: "contrats et saisons", vitesse: "semaines à mois", taille: "macro"}
     traces:
       - {source: "IMF PortWatch (pétroliers dans le détroit de Malacca)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:petroliers"}
       - {source: "anomalie de température à Shanghai (demande d'énergie, Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:shanghai"}
   - id: exterieur
+    organisation: "geopolitique"
     nom: "Relations économiques extérieures"
     elements: ["droits de douane américains et européens", "contrôles des exportations technologiques", "sanctions", "investissements à l'étranger"]
     acteurs:
-      - {nom: "Chine (État)", taille: "macro", espace: "mondial", vitesse: "semaines"}
-      - {nom: "États-Unis (État)", taille: "macro", espace: "mondial", vitesse: "semaines"}
+      - {nom: "Chine (État)", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
+      - {nom: "États-Unis (État)", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
     niveau: {espace: "mondial", temps: "annonces et négociations datées", vitesse: "semaines à années", taille: "macro"}
     traces:
       - {source: "GDELT, ton des gestes des États-Unis envers la Chine", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:CHN"}
       - {source: "listes de sanctions visant la Chine", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:CN"}
+  - id: "eau_fleuves"
+    organisation: "eau"
+    nom: "Eau et fleuves (nord sec, sud humide)"
+    elements: ["stress hydrique de la plaine du Nord", "Yangtsé et fleuve Jaune", "transfert d'eau du Sud vers le Nord", "hydroélectricité dépendante des pluies"]
+    acteurs:
+      - {nom: "le Yangtsé", taille: "macro", espace: "région", vitesse: "saisons", organisation: "eau", facette: "non_humain"}
+      - {nom: "un grand barrage hydroélectrique", taille: "méso", espace: "site", vitesse: "saisons", organisation: "technique", facette: "non_humain"}
+    niveau: {espace: "bassins", temps: "saisons ; décennies", vitesse: "saisons à années", taille: "macro"}
+    traces:
+      - {source: "anomalie de température à Shanghai (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:shanghai"}
+      - {source: "dérive du climat à Shanghai (anomalie glissante sur un an)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:shanghai"}
+  - id: "demographie"
+    organisation: "societe"
+    nom: "Démographie (vieillissement, baisse des naissances)"
+    elements: ["population qui diminue (à vérifier)", "générations nombreuses à la retraite", "moins de jeunes ménages", "exode rural achevé en partie"]
+    acteurs:
+      - {nom: "les générations nombreuses qui partent à la retraite", taille: "macro", espace: "pays", vitesse: "décennie", organisation: "societe", facette: "collectif"}
+    niveau: {espace: "pays", temps: "générations", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "annuaires statistiques publics (Bureau national des statistiques)", statut: "a_brancher"}
+  - id: "epizooties"
+    organisation: "microbiologique"
+    nom: "Épizooties et épidémies"
+    elements: ["peste porcine africaine et élevage porcin", "grippes aviaires", "épidémies humaines et mesures sanitaires"]
+    acteurs:
+      - {nom: "le cheptel porcin", taille: "macro", espace: "pays", vitesse: "mois", organisation: "animal", facette: "non_humain"}
+      - {nom: "un virus animal", taille: "micro", espace: "site", vitesse: "jours", organisation: "microbiologique", facette: "non_humain"}
+    niveau: {espace: "pays", temps: "vagues de quelques mois", vitesse: "jours à mois", taille: "micro à macro"}
+    traces:
+      - {source: "déclarations publiques à l'Organisation mondiale de la santé animale (WAHIS)", statut: "a_brancher"}
+  - id: "sols_chimie"
+    organisation: "chimique"
+    nom: "Sols, engrais et pollution"
+    elements: ["usage intensif d'engrais", "métaux lourds dans une partie des sols (à vérifier)", "sécurité alimentaire comme priorité d'État"]
+    niveau: {espace: "pays", temps: "décennies", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "statistiques agricoles publiques", statut: "a_brancher"}
 relations:
   - {de: "immobilier", vers: "activite", effet: "-", delai: "mois à années", force: "forte", intensite: {mesure: "baisse des ventes de logements et défauts de promoteurs", regle: "hysteresis"}, coupure: "relance ciblée de l'immobilier", statut: "a_verifier", texte: "la crise immobilière pèse longtemps sur l'investissement ; la confiance ne revient pas par le même chemin"}
   - {de: "immobilier", vers: "consommation", effet: "-", delai: "mois", force: "moyenne", coupure: "garanties publiques sur les logements vendus avant construction", statut: "a_verifier", texte: "le logement est l'épargne principale des ménages ; sa baisse les rend prudents"}
@@ -115,6 +165,12 @@ relations:
   - {de: "activite", vers: "matieres_premieres", effet: "+", delai: "semaines à mois", force: "forte", coupure: "stocks stratégiques constitués à bas prix", statut: "a_verifier", texte: "la demande chinoise de pétrole, de fer et de cuivre suit l'industrie et la construction"}
   - {de: "statistiques", vers: "politique_monetaire", effet: "±", delai: "semaines", force: "faible", coupure: "révisions", statut: "a_verifier", texte: "les décisions et les marchés réagissent au chiffre publié, convention dont la fiabilité est débattue"}
   - {de: "emploi", vers: "pouvoir", effet: "-", delai: "mois à années", force: "inconnue", coupure: "contrôle social", statut: "a_verifier", texte: "le chômage des jeunes est une pression lente sur la légitimité"}
+  - {de: "eau_fleuves", vers: "activite", effet: "-", delai: "semaines", force: "moyenne", intensite: {mesure: "sécheresse et chaleur sur les bassins hydroélectriques", regle: "seuil"}, coupure: "centrales thermiques de relais", statut: "a_verifier", texte: "une sécheresse fait baisser l'hydroélectricité et peut imposer des coupures aux usines"}
+  - {de: "demographie", vers: "immobilier", effet: "-", delai: "années", force: "moyenne", intensite: {mesure: "nombre de jeunes ménages", regle: "hysteresis"}, coupure: "inconnue", statut: "a_verifier", texte: "moins de jeunes ménages, moins de demande de logements, et la confiance ne revient pas au même rythme"}
+  - {de: "demographie", vers: "consommation", effet: "-", delai: "années", force: "moyenne", coupure: "protection sociale élargie", statut: "a_verifier", texte: "le vieillissement pousse à l'épargne de précaution"}
+  - {de: "epizooties", vers: "consommation", effet: "-", delai: "mois", force: "moyenne", intensite: {mesure: "ampleur de l'épizootie", regle: "seuil"}, coupure: "réserves publiques de viande", statut: "a_verifier", texte: "une épizootie qui décime le cheptel porcin fait bondir le prix du porc et pèse sur le budget des ménages"}
+  - {de: "sols_chimie", vers: "pouvoir", effet: "±", delai: "années", force: "faible", intensite: {mesure: "alertes sur la sécurité alimentaire", regle: "seuil"}, coupure: "importations", statut: "a_verifier", texte: "la qualité des sols ne remonte au niveau du pouvoir qu'à travers une alerte sur la sécurité alimentaire"}
+  - {de: "pouvoir", vers: "statistiques", effet: "±", retour: "±", delai: "mois", force: "moyenne", forme: "ambivalent", coupure: "révision des méthodes", statut: "a_verifier", texte: "entre statut et convention : le pouvoir décide de ce qui est publié et comment, et les chiffres publiés bornent à leur tour son récit"}
 ponts:
   - {depuis: "matieres_premieres", vers: "energie-mondiale:demande", nature: "la Chine est le premier importateur de pétrole"}
   - {depuis: "matieres_premieres", vers: "ormuz:puissances", nature: "la Chine achète l'essentiel du pétrole iranien (à vérifier)"}
@@ -123,3 +179,5 @@ ponts:
   - {depuis: "exportations", vers: "transport-maritime:detroits", nature: "Malacca, Taïwan et Suez portent les exportations chinoises"}
   - {depuis: "politique_monetaire", vers: "inflation-mondiale:banques_centrales", nature: "la Banque populaire de Chine parmi les grandes banques centrales"}
   - {depuis: "exterieur", vers: "politique-americaine:commerce", nature: "droits de douane décidés à Washington"}
+  - {depuis: "eau_fleuves", vers: "climat-extremes:secheresses", nature: "sécheresses et vagues de chaleur sur les bassins chinois"}
+  - {depuis: "epizooties", vers: "alimentation-mondiale:prix", nature: "le porc et les importations de soja et de céréales"}

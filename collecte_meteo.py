@@ -33,6 +33,8 @@ POINTS = {
     "berlin": (52.52, 13.41, "énergie mondiale : climat (chauffage européen, gaz)"),
     "shanghai": (31.23, 121.47, "énergie mondiale : demande (Chine)"),
     "delhi": (28.61, 77.21, "énergie mondiale : demande (Inde, chaleur et électricité)"),
+    "kyiv": (50.45, 30.52, "russie-ukraine : hiver et saisons (boue, gel, front)"),
+    "moscou": (55.76, 37.62, "russie-ukraine : hiver et saisons ; demande de gaz"),
 }
 
 
