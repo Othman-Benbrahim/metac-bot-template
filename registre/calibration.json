@@ -7,28 +7,28 @@
   "seuil_regle": 1.5
  },
  "bilan": {
-  "relations": 624,
-  "mesurees": 190,
-  "compartiments_persistance": 127,
+  "relations": 656,
+  "mesurees": 242,
+  "compartiments_persistance": 156,
   "decomposabilite": {
    "dedans": {
-    "n": 61,
-    "r_moyen": 0.228
+    "n": 83,
+    "r_moyen": 0.211
    },
    "entre": {
-    "n": 29,
-    "r_moyen": 0.215
+    "n": 44,
+    "r_moyen": 0.199
    }
   },
-  "incompatibles": 3,
-  "significatives": 24,
-  "signe_contredit": 6,
+  "incompatibles": 4,
+  "significatives": 35,
+  "signe_contredit": 13,
   "non_calibrables": {
-   "source_sans_serie": 390,
-   "cible_sans_serie": 89,
+   "cible_sans_serie": 115,
+   "source_sans_serie": 362,
    "boucle_sur_soi": 17,
    "meme_serie": 2,
-   "modulation_sans_series": 3
+   "modulation_sans_series": 4
   }
  },
  "relations": {
@@ -48,6 +48,90 @@
    "effet_ecrit": "±",
    "concorde": null
   },
+  "climat-extremes:tendance>climat-extremes:saisons": {
+   "verdict": "non_significatif",
+   "r": 0.097,
+   "n": 449,
+   "retard": 5,
+   "pas": "semaine",
+   "delai_jours": 35,
+   "signe": "+",
+   "poids": 0.194,
+   "rapport_pentes": 1.65,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.5,
+   "sigma": 0.1,
+   "delta_bic": -12.35,
+   "source": "climat:delhi",
+   "cible": "meteo:berlin",
+   "effet_ecrit": "+",
+   "concorde": true
+  },
+  "climat-extremes:saisons>climat-extremes:exposes": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 17,
+   "source": "meteo:berlin",
+   "cible": "ooni:IN",
+   "effet_ecrit": "-",
+   "concorde": null
+  },
+  "crises-bancaires:confiance>crises-bancaires:depots": {
+   "verdict": "significatif",
+   "r": 0.132,
+   "n": 558,
+   "retard": 7,
+   "pas": "semaine",
+   "delai_jours": 49,
+   "signe": "+",
+   "poids": 0.265,
+   "rapport_pentes": 6.7,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 3.0,
+   "sigma": 1.0,
+   "delta_bic": -1.91,
+   "source": "fred:VIXCLS",
+   "cible": "fred:DPSACBW027SBOG:var52",
+   "effet_ecrit": "-",
+   "concorde": false
+  },
+  "crises-bancaires:depots>crises-bancaires:confiance": {
+   "verdict": "non_significatif",
+   "r": -0.094,
+   "n": 563,
+   "retard": 2,
+   "pas": "semaine",
+   "delai_jours": 14,
+   "signe": "-",
+   "poids": 0.189,
+   "rapport_pentes": 5.03,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 3.0,
+   "sigma": 0.1,
+   "delta_bic": -6.18,
+   "source": "fred:DPSACBW027SBOG:var52",
+   "cible": "fred:VIXCLS",
+   "effet_ecrit": "+",
+   "concorde": false
+  },
+  "crises-bancaires:bilans>crises-bancaires:confiance": {
+   "verdict": "non_significatif",
+   "r": -0.054,
+   "n": 620,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.107,
+   "rapport_pentes": 0.33,
+   "regle": "saturation",
+   "source": "fred:DGS10",
+   "cible": "fred:VIXCLS",
+   "effet_ecrit": "-",
+   "concorde": true
+  },
   "crises-bancaires:marches>crises-bancaires:bilans": {
    "verdict": "significatif",
    "r": 0.214,
@@ -66,6 +150,114 @@
    "source": "fred:DTWEXBGS",
    "cible": "fred:DGS10",
    "effet_ecrit": "-",
+   "concorde": false
+  },
+  "crises-bancaires:regulateurs>crises-bancaires:depots": {
+   "verdict": "significatif",
+   "r": -0.24,
+   "n": 561,
+   "retard": 4,
+   "pas": "semaine",
+   "delai_jours": 28,
+   "signe": "-",
+   "poids": 0.481,
+   "rapport_pentes": 1.09,
+   "regle": "proportionnelle",
+   "source": "fred:DFF",
+   "cible": "fred:DPSACBW027SBOG:var52",
+   "effet_ecrit": "+",
+   "concorde": false
+  },
+  "crises-bancaires:depots>crises-bancaires:regulateurs": {
+   "verdict": "significatif",
+   "r": -0.162,
+   "n": 565,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.323,
+   "rapport_pentes": 1.55,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 3.0,
+   "sigma": 0.5,
+   "delta_bic": -7.75,
+   "source": "fred:DPSACBW027SBOG:var52",
+   "cible": "fred:DFF",
+   "effet_ecrit": "+",
+   "concorde": false
+  },
+  "crises-bancaires:depots>crises-bancaires:marches": {
+   "verdict": "significatif",
+   "r": -0.125,
+   "n": 557,
+   "retard": 8,
+   "pas": "semaine",
+   "delai_jours": 56,
+   "signe": "-",
+   "poids": 0.251,
+   "rapport_pentes": 0.37,
+   "regle": "saturation",
+   "source": "fred:DPSACBW027SBOG:var52",
+   "cible": "fred:DTWEXBGS",
+   "effet_ecrit": "-",
+   "concorde": true
+  },
+  "crises-bancaires:regulateurs>crises-bancaires:confiance": {
+   "verdict": "significatif",
+   "r": -0.123,
+   "n": 620,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.246,
+   "rapport_pentes": 1.56,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.75,
+   "sigma": 0.1,
+   "delta_bic": -8.71,
+   "source": "fred:DFF",
+   "cible": "fred:VIXCLS",
+   "effet_ecrit": "+",
+   "concorde": false
+  },
+  "cycles-biogeochimiques:climat>cycles-biogeochimiques:eau": {
+   "verdict": "non_significatif",
+   "r": -0.067,
+   "n": 446,
+   "retard": 11,
+   "pas": "semaine",
+   "delai_jours": 77,
+   "signe": "-",
+   "poids": 0.133,
+   "rapport_pentes": 10.86,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 2.0,
+   "sigma": 0.1,
+   "delta_bic": -8.46,
+   "source": "climat:berlin",
+   "cible": "meteo:delhi",
+   "effet_ecrit": "+",
+   "concorde": false
+  },
+  "cycles-biogeochimiques:eau>cycles-biogeochimiques:climat": {
+   "verdict": "non_significatif",
+   "r": -0.041,
+   "n": 456,
+   "retard": 1,
+   "pas": "semaine",
+   "delai_jours": 7,
+   "signe": "-",
+   "poids": 0.081,
+   "rapport_pentes": 1.38,
+   "regle": "proportionnelle",
+   "source": "meteo:delhi",
+   "cible": "climat:berlin",
+   "effet_ecrit": "+",
    "concorde": false
   },
   "dette-emergents:monnaies>dette-emergents:dette_publique": {
@@ -190,6 +382,14 @@
    "source": "feux:CN",
    "cible": "portwatch:malacca:petroliers",
    "effet_ecrit": "+",
+   "concorde": null
+  },
+  "economie-chinoise:eau_fleuves>economie-chinoise:activite": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 12,
+   "source": "meteo:shanghai",
+   "cible": "feux:CN",
+   "effet_ecrit": "-",
    "concorde": null
   },
   "elections-amerique-latine:recoltes_exports>elections-amerique-latine:economie": {
@@ -322,6 +522,42 @@
    "effet_ecrit": "-",
    "concorde": true
   },
+  "energie-mondiale:climat>energie-mondiale:demande": {
+   "verdict": "non_significatif",
+   "r": -0.111,
+   "n": 499,
+   "retard": 10,
+   "pas": "semaine",
+   "delai_jours": 70,
+   "signe": "-",
+   "poids": 0.223,
+   "rapport_pentes": 1.77,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.0,
+   "sigma": 0.1,
+   "delta_bic": -11.76,
+   "source": "meteo:berlin",
+   "cible": "eia:WRPUPUS2",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
+  "energie-mondiale:climat>energie-mondiale:production": {
+   "verdict": "non_significatif",
+   "r": 0.128,
+   "n": 508,
+   "retard": 1,
+   "pas": "semaine",
+   "delai_jours": 7,
+   "signe": "+",
+   "poids": 0.256,
+   "rapport_pentes": 0.57,
+   "regle": "saturation",
+   "source": "meteo:berlin",
+   "cible": "eia:WCRFPUS2",
+   "effet_ecrit": "-",
+   "concorde": false
+  },
   "energie-mondiale:recits>energie-mondiale:prix": {
    "verdict": "non_significatif",
    "r": 0.35,
@@ -335,6 +571,22 @@
    "cible": "fred:DCOILBRENTEU",
    "effet_ecrit": "±",
    "concorde": null
+  },
+  "energie-mondiale:climat_regime>energie-mondiale:climat": {
+   "verdict": "significatif",
+   "r": -0.399,
+   "n": 456,
+   "retard": 1,
+   "pas": "semaine",
+   "delai_jours": 7,
+   "signe": "-",
+   "poids": 0.798,
+   "rapport_pentes": 0.83,
+   "regle": "proportionnelle",
+   "source": "climat:berlin",
+   "cible": "meteo:berlin",
+   "effet_ecrit": "+",
+   "concorde": false
   },
   "energie-mondiale:decisions>energie-mondiale:prix": {
    "verdict": "non_significatif",
@@ -456,6 +708,20 @@
    "effet_ecrit": "-",
    "concorde": true
   },
+  "humain:attente>humain:hierarchie": {
+   "verdict": "non_significatif",
+   "r": 0.158,
+   "n": 26,
+   "retard": 1,
+   "pas": "mois",
+   "delai_jours": 30,
+   "signe": "+",
+   "poids": 0.315,
+   "source": "fred:UMCSENT",
+   "cible": "elections:US:proche30",
+   "effet_ecrit": "-",
+   "concorde": false
+  },
   "humain:reciprocite>humain:treve": {
    "verdict": "significatif",
    "r": 0.229,
@@ -504,6 +770,20 @@
    "effet_ecrit": "-",
    "concorde": true
   },
+  "humain:symboles>humain:nous_eux": {
+   "verdict": "non_significatif",
+   "r": 0.383,
+   "n": 45,
+   "retard": 3,
+   "pas": "semaine",
+   "delai_jours": 21,
+   "signe": "+",
+   "poids": 0.765,
+   "source": "memoire:RU:proche7",
+   "cible": "telegram:tout",
+   "effet_ecrit": "+",
+   "concorde": true
+  },
   "humain:nous_eux>humain:passage_acte": {
    "verdict": "non_significatif",
    "r": 0.433,
@@ -537,6 +817,80 @@
    "cible": "telegram:tout",
    "effet_ecrit": "+",
    "concorde": true
+  },
+  "humain:hierarchie>humain:passage_acte": {
+   "verdict": "non_significatif",
+   "r": -0.105,
+   "n": 117,
+   "retard": 3,
+   "pas": "semaine",
+   "delai_jours": 21,
+   "signe": "-",
+   "poids": 0.211,
+   "rapport_pentes": 0.44,
+   "regle": "saturation",
+   "source": "elections:US:proche30",
+   "cible": "manifestations:US",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
+  "humain:symboles>humain:treve": {
+   "verdict": "non_significatif",
+   "r": -0.152,
+   "n": 135,
+   "retard": 11,
+   "pas": "semaine",
+   "delai_jours": 77,
+   "signe": "-",
+   "poids": 0.303,
+   "rapport_pentes": 0.49,
+   "regle": "saturation",
+   "source": "memoire:RU:proche7",
+   "cible": "dyade:RUS:UKR",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
+  "humain:hierarchie>humain:falsification": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 22,
+   "source": "elections:US:proche30",
+   "cible": "ooni:RU",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
+  "humain:passage_acte>humain:disponibilite": {
+   "verdict": "non_significatif",
+   "r": 0.235,
+   "n": 122,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "+",
+   "poids": 0.47,
+   "source": "manifestations:US",
+   "cible": "ouvert:attention_crise",
+   "effet_ecrit": "+",
+   "concorde": true
+  },
+  "humain:disponibilite>humain:risque_percu": {
+   "verdict": "significatif",
+   "r": -0.268,
+   "n": 567,
+   "retard": 1,
+   "pas": "semaine",
+   "delai_jours": 7,
+   "signe": "-",
+   "poids": 0.537,
+   "rapport_pentes": 1.75,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 3.0,
+   "sigma": 0.5,
+   "delta_bic": -5.41,
+   "source": "ouvert:attention_crise",
+   "cible": "fred:T10YIE",
+   "effet_ecrit": "+",
+   "concorde": false
   },
   "humain:risque_percu>humain:nous_eux": {
    "verdict": "non_significatif",
@@ -574,12 +928,68 @@
    "effet_ecrit": "-",
    "concorde": true
   },
+  "humain:symboles>humain:disponibilite": {
+   "verdict": "non_significatif",
+   "r": 0.188,
+   "n": 145,
+   "retard": 5,
+   "pas": "semaine",
+   "delai_jours": 35,
+   "signe": "+",
+   "poids": 0.376,
+   "rapport_pentes": 1.04,
+   "regle": "proportionnelle",
+   "source": "memoire:RU:proche7",
+   "cible": "ouvert:attention_crise",
+   "effet_ecrit": "+",
+   "concorde": true
+  },
+  "humain:hierarchie>humain:controle_percu": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 22,
+   "source": "elections:US:proche30",
+   "cible": "ooni:RU",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
   "humain:stress_chronique>humain:controle_percu": {
    "verdict": "chevauchement_insuffisant",
    "n": 4,
    "source": "fred:UNRATE",
    "cible": "ooni:RU",
    "effet_ecrit": "-",
+   "concorde": null
+  },
+  "humain:polarisation>humain:nous_eux": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 0,
+   "source": "ouvert:polarisation_chambre",
+   "cible": "telegram:tout",
+   "effet_ecrit": "+",
+   "concorde": null
+  },
+  "humain:nous_eux>humain:polarisation": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 0,
+   "source": "telegram:tout",
+   "cible": "ouvert:polarisation_chambre",
+   "effet_ecrit": "+",
+   "concorde": null
+  },
+  "humain:treve>humain:polarisation": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 0,
+   "source": "dyade:RUS:UKR",
+   "cible": "ouvert:polarisation_chambre",
+   "effet_ecrit": "-",
+   "concorde": null
+  },
+  "humain:polarisation>humain:hierarchie": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 0,
+   "source": "ouvert:polarisation_chambre",
+   "cible": "elections:US:proche30",
+   "effet_ecrit": "+",
    "concorde": null
   },
   "inflation-mondiale:energie>inflation-mondiale:prix_conso": {
@@ -846,6 +1256,34 @@
    "effet_ecrit": "-",
    "concorde": false
   },
+  "infrastructures-critiques:chaleur_tempetes>infrastructures-critiques:demande": {
+   "verdict": "significatif",
+   "r": -0.334,
+   "n": 423,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.669,
+   "rapport_pentes": 5.91,
+   "regle": "masse_critique",
+   "seuil": 1.5,
+   "mu": 3.0,
+   "sigma": 1.0,
+   "delta_bic": 59.07,
+   "source": "meteo:houston",
+   "cible": "fred:DHHNGSP",
+   "effet_ecrit": "+",
+   "concorde": false
+  },
+  "infrastructures-critiques:chaleur_tempetes>infrastructures-critiques:reseaux": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 0,
+   "source": "meteo:houston",
+   "cible": "ooni:IR",
+   "effet_ecrit": "-",
+   "concorde": null
+  },
   "iran-nucleaire:etats_unis>iran-nucleaire:pouvoir_iranien": {
    "verdict": "non_significatif",
    "r": 0.043,
@@ -948,11 +1386,35 @@
    "effet_ecrit": "+",
    "concorde": false
   },
+  "migrations-demographie:climat_milieu>migrations-demographie:migrations": {
+   "verdict": "non_significatif",
+   "r": 0.065,
+   "n": 451,
+   "retard": 3,
+   "pas": "semaine",
+   "delai_jours": 21,
+   "signe": "+",
+   "poids": 0.13,
+   "rapport_pentes": 0.07,
+   "regle": "saturation",
+   "source": "climat:delhi",
+   "cible": "ucdp:Sudan",
+   "effet_ecrit": "+",
+   "concorde": true
+  },
   "non-proliferation:sanctions>non-proliferation:etats_du_seuil": {
    "verdict": "chevauchement_insuffisant",
    "n": 19,
    "source": "sanctions:IR",
    "cible": "dyade:USA:IRN",
+   "effet_ecrit": "-",
+   "concorde": null
+  },
+  "ormuz:milieu>ormuz:flux_energie": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 18,
+   "source": "meteo:bandar_abbas",
+   "cible": "portwatch:ormuz:petroliers",
    "effet_ecrit": "-",
    "concorde": null
   },
@@ -1016,6 +1478,14 @@
    "source": "fred:DCOILBRENTEU",
    "cible": "ooni:IR",
    "effet_ecrit": "±",
+   "concorde": null
+  },
+  "ormuz:milieu>ormuz:interieur_iran": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 18,
+   "source": "meteo:bandar_abbas",
+   "cible": "ooni:IR",
+   "effet_ecrit": "-",
    "concorde": null
   },
   "ormuz:recits>ormuz:prix": {
@@ -1500,6 +1970,21 @@
    "cible": "fred:DCOILBRENTEU",
    "type": "influence"
   },
+  "pont:alimentation-mondiale:climat>climat-extremes:saisons": {
+   "verdict": "non_significatif",
+   "r": -0.109,
+   "n": 504,
+   "retard": 3,
+   "pas": "semaine",
+   "delai_jours": 21,
+   "signe": "-",
+   "poids": 0.219,
+   "rapport_pentes": 0.93,
+   "regle": "proportionnelle",
+   "source": "meteo:delhi",
+   "cible": "meteo:berlin",
+   "type": "influence"
+  },
   "pont:alimentation-mondiale:commerce>transport-maritime:detroits": {
    "verdict": "chevauchement_insuffisant",
    "n": 23,
@@ -1533,6 +2018,21 @@
    "cible": "fred:UNRATE",
    "type": "influence"
   },
+  "pont:climat-extremes:saisons>ormuz:milieu": {
+   "verdict": "non_significatif",
+   "r": 0.08,
+   "n": 459,
+   "retard": 8,
+   "pas": "semaine",
+   "delai_jours": 56,
+   "signe": "+",
+   "poids": 0.16,
+   "rapport_pentes": 0.97,
+   "regle": "proportionnelle",
+   "source": "meteo:berlin",
+   "cible": "meteo:bandar_abbas",
+   "type": "influence"
+  },
   "pont:climat-extremes:exposes>infrastructures-critiques:reseaux": {
    "verdict": "non_significatif",
    "r": -0.281,
@@ -1544,6 +2044,26 @@
    "poids": 0.561,
    "source": "ooni:IN",
    "cible": "ooni:IR",
+   "type": "influence"
+  },
+  "pont:climat-extremes:saisons>humain:indices": {
+   "verdict": "incompatible",
+   "r": 0.1,
+   "n": 497,
+   "retard": 10,
+   "pas": "semaine",
+   "delai_jours": 70,
+   "signe": "+",
+   "poids": 0.199,
+   "rapport_pentes": 12.07,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.25,
+   "sigma": 0.1,
+   "delta_bic": -8.38,
+   "verdict_brut": "non_significatif",
+   "source": "meteo:berlin",
+   "cible": "meteo:delhi",
    "type": "influence"
   },
   "pont:crises-bancaires:marches>politique-americaine:reserve_federale": {
@@ -1564,6 +2084,36 @@
    "source": "fred:DTWEXBGS",
    "cible": "fred:DFF",
    "type": "influence"
+  },
+  "pont:cycles-biogeochimiques:climat>climat-extremes:tendance": {
+   "verdict": "non_significatif",
+   "r": 0.125,
+   "n": 444,
+   "retard": 10,
+   "pas": "semaine",
+   "delai_jours": 70,
+   "signe": "+",
+   "poids": 0.249,
+   "rapport_pentes": 1.19,
+   "regle": "proportionnelle",
+   "source": "climat:berlin",
+   "cible": "climat:delhi",
+   "type": "meme"
+  },
+  "pont:cycles-biogeochimiques:eau>oceans-et-fleuves:cycle": {
+   "verdict": "non_significatif",
+   "r": 0.057,
+   "n": 494,
+   "retard": 8,
+   "pas": "semaine",
+   "delai_jours": 56,
+   "signe": "+",
+   "poids": 0.113,
+   "rapport_pentes": 0.95,
+   "regle": "proportionnelle",
+   "source": "meteo:delhi",
+   "cible": "meteo:shanghai",
+   "type": "meme"
   },
   "pont:cycles-biogeochimiques:combustion>energie-mondiale:demande": {
    "verdict": "non_significatif",
@@ -1597,6 +2147,21 @@
    "delta_bic": -6.96,
    "source": "fred:DGS10",
    "cible": "fred:DFF",
+   "type": "influence"
+  },
+  "pont:eau-moyen-orient:chaleur>climat-extremes:saisons": {
+   "verdict": "significatif",
+   "r": -0.243,
+   "n": 509,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.485,
+   "rapport_pentes": 0.94,
+   "regle": "proportionnelle",
+   "source": "meteo:teheran",
+   "cible": "meteo:berlin",
    "type": "influence"
   },
   "pont:eau-moyen-orient:etats_riverains>guerre-levant:iran": {
@@ -1691,6 +2256,21 @@
    "cible": "portwatch:suez:porte_conteneurs",
    "type": "influence"
   },
+  "pont:epidemies:milieu>climat-extremes:saisons": {
+   "verdict": "non_significatif",
+   "r": -0.109,
+   "n": 504,
+   "retard": 3,
+   "pas": "semaine",
+   "delai_jours": 21,
+   "signe": "-",
+   "poids": 0.219,
+   "rapport_pentes": 0.93,
+   "regle": "proportionnelle",
+   "source": "meteo:delhi",
+   "cible": "meteo:berlin",
+   "type": "meme"
+  },
   "pont:guerre-levant:iran>iran-nucleaire:negociations": {
    "verdict": "non_significatif",
    "r": -0.167,
@@ -1732,6 +2312,19 @@
    "cible": "fred:PFOODINDEXM:var12",
    "type": "influence"
   },
+  "pont:guerre-levant:recits>humain:symboles": {
+   "verdict": "significatif",
+   "r": 0.561,
+   "n": 36,
+   "retard": 12,
+   "pas": "semaine",
+   "delai_jours": 84,
+   "signe": "+",
+   "poids": 1.0,
+   "source": "telegram:tout",
+   "cible": "memoire:RU:proche7",
+   "type": "influence"
+  },
   "pont:humain:passage_acte>migrations-demographie:migrations": {
    "verdict": "incompatible",
    "r": 0.3,
@@ -1761,6 +2354,36 @@
    "cible": "fred:T10YIE",
    "type": "influence"
   },
+  "pont:humain:hierarchie>politique-americaine:elections": {
+   "verdict": "non_significatif",
+   "r": -0.105,
+   "n": 117,
+   "retard": 3,
+   "pas": "semaine",
+   "delai_jours": 21,
+   "signe": "-",
+   "poids": 0.211,
+   "rapport_pentes": 0.44,
+   "regle": "saturation",
+   "source": "elections:US:proche30",
+   "cible": "manifestations:US",
+   "type": "influence"
+  },
+  "pont:humain:attente>crises-bancaires:confiance": {
+   "verdict": "non_significatif",
+   "r": 0.211,
+   "n": 139,
+   "retard": 1,
+   "pas": "mois",
+   "delai_jours": 30,
+   "signe": "+",
+   "poids": 0.421,
+   "rapport_pentes": 0.85,
+   "regle": "proportionnelle",
+   "source": "fred:UMCSENT",
+   "cible": "fred:VIXCLS",
+   "type": "influence"
+  },
   "pont:humain:falsification>observateur-mesure:biais": {
    "verdict": "non_significatif",
    "r": 0.295,
@@ -1772,6 +2395,26 @@
    "poids": 0.59,
    "source": "ooni:RU",
    "cible": "telegram:tout",
+   "type": "influence"
+  },
+  "pont:humain:disponibilite>observateur-mesure:biais": {
+   "verdict": "non_significatif",
+   "r": -0.228,
+   "n": 46,
+   "retard": 2,
+   "pas": "semaine",
+   "delai_jours": 14,
+   "signe": "-",
+   "poids": 0.456,
+   "source": "ouvert:attention_crise",
+   "cible": "telegram:tout",
+   "type": "influence"
+  },
+  "pont:humain:polarisation>politique-americaine:congres": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 0,
+   "source": "ouvert:polarisation_chambre",
+   "cible": "congres",
    "type": "influence"
   },
   "pont:inflation-mondiale:prix_conso>humain:stress_chronique": {
@@ -1824,6 +2467,26 @@
    "n": 17,
    "source": "certificats",
    "cible": "ooni:IR",
+   "type": "influence"
+  },
+  "pont:information-cyber:infrastructure>oceans-et-fleuves:refroidissement": {
+   "verdict": "non_significatif",
+   "r": 0.243,
+   "n": 36,
+   "retard": 4,
+   "pas": "semaine",
+   "delai_jours": 28,
+   "signe": "+",
+   "poids": 0.485,
+   "source": "certificats",
+   "cible": "meteo:berlin",
+   "type": "influence"
+  },
+  "pont:information-cyber:recits>humain:symboles": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 12,
+   "source": "recit_russe:MD",
+   "cible": "memoire:RU:proche7",
    "type": "influence"
   },
   "pont:information-cyber:censure>humain:falsification": {
@@ -1917,6 +2580,13 @@
    "cible": "feux:LB",
    "type": "meme"
   },
+  "pont:migrations-demographie:climat_milieu>climat-extremes:exposes": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 23,
+   "source": "climat:delhi",
+   "cible": "ooni:IN",
+   "type": "meme"
+  },
   "pont:migrations-demographie:migrations>guerre-levant:humanitaire": {
    "verdict": "non_significatif",
    "r": -0.245,
@@ -1956,6 +2626,21 @@
    "source": "telegram:tout",
    "cible": "recit_russe:MD",
    "type": "influence"
+  },
+  "pont:oceans-et-fleuves:cycle>cycles-biogeochimiques:eau": {
+   "verdict": "non_significatif",
+   "r": 0.075,
+   "n": 497,
+   "retard": 5,
+   "pas": "semaine",
+   "delai_jours": 35,
+   "signe": "+",
+   "poids": 0.151,
+   "rapport_pentes": 1.1,
+   "regle": "proportionnelle",
+   "source": "meteo:shanghai",
+   "cible": "meteo:delhi",
+   "type": "meme"
   },
   "pont:oceans-et-fleuves:navigation_fluviale>transport-maritime:detroits": {
    "verdict": "chevauchement_insuffisant",
@@ -2017,6 +2702,32 @@
    "n": 23,
    "source": "portwatch:taiwan:navires",
    "cible": "portwatch:suez:porte_conteneurs",
+   "type": "meme"
+  },
+  "pont:relief-et-montagnes:cotes_detroits>ormuz:milieu": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 18,
+   "source": "portwatch:taiwan:navires",
+   "cible": "meteo:bandar_abbas",
+   "type": "influence"
+  },
+  "pont:relief-et-montagnes:climat>climat-extremes:tendance": {
+   "verdict": "significatif",
+   "r": -0.171,
+   "n": 453,
+   "retard": 7,
+   "pas": "semaine",
+   "delai_jours": 49,
+   "signe": "-",
+   "poids": 0.342,
+   "rapport_pentes": 1.88,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.75,
+   "sigma": 0.1,
+   "delta_bic": -8.43,
+   "source": "climat:teheran",
+   "cible": "climat:delhi",
    "type": "meme"
   },
   "pont:rivalite-sino-americaine:energie>ormuz:puissances": {
@@ -2153,6 +2864,21 @@
    "cible": "certificats",
    "type": "meme"
   },
+  "pont:sciences-techniques:energie_eau>oceans-et-fleuves:refroidissement": {
+   "verdict": "non_significatif",
+   "r": 0.098,
+   "n": 503,
+   "retard": 6,
+   "pas": "semaine",
+   "delai_jours": 42,
+   "signe": "+",
+   "poids": 0.196,
+   "rapport_pentes": 1.26,
+   "regle": "proportionnelle",
+   "source": "fred:DHHNGSP",
+   "cible": "meteo:berlin",
+   "type": "meme"
+  },
   "pont:sciences-techniques:energie_eau>energie-mondiale:demande": {
    "verdict": "non_significatif",
    "r": -0.101,
@@ -2248,12 +2974,33 @@
    "tau_jours": 477.4,
    "serie": "fred:PFOODINDEXM:var12"
   },
+  "alimentation-mondiale:climat": {
+   "phi": 0.433,
+   "pas": "semaine",
+   "n": 514,
+   "tau_jours": 8.4,
+   "serie": "meteo:delhi"
+  },
+  "calendriers-echeances:saisons": {
+   "phi": 0.468,
+   "pas": "semaine",
+   "n": 507,
+   "tau_jours": 9.2,
+   "serie": "meteo:kyiv"
+  },
   "calendriers-echeances:marches": {
    "phi": 0.998,
    "pas": "semaine",
    "n": 621,
    "tau_jours": 4210.7,
    "serie": "fred:DFF"
+  },
+  "climat-extremes:saisons": {
+   "phi": 0.382,
+   "pas": "semaine",
+   "n": 510,
+   "tau_jours": 7.3,
+   "serie": "meteo:berlin"
   },
   "climat-extremes:feux": {
    "phi": 0.704,
@@ -2262,12 +3009,33 @@
    "tau_jours": 19.9,
    "serie": "feux:US"
   },
+  "climat-extremes:tendance": {
+   "phi": 0.993,
+   "pas": "semaine",
+   "n": 461,
+   "tau_jours": 1064.0,
+   "serie": "climat:delhi"
+  },
   "climat-extremes:exposes": {
    "phi": 0.562,
    "pas": "semaine",
    "n": 25,
    "tau_jours": 12.1,
    "serie": "ooni:IN"
+  },
+  "crises-bancaires:depots": {
+   "phi": 0.997,
+   "pas": "semaine",
+   "n": 566,
+   "tau_jours": 2302.7,
+   "serie": "fred:DPSACBW027SBOG:var52"
+  },
+  "crises-bancaires:confiance": {
+   "phi": 0.9,
+   "pas": "semaine",
+   "n": 621,
+   "tau_jours": 66.5,
+   "serie": "fred:VIXCLS"
   },
   "crises-bancaires:bilans": {
    "phi": 0.994,
@@ -2290,6 +3058,13 @@
    "tau_jours": 4210.7,
    "serie": "fred:DFF"
   },
+  "cycles-biogeochimiques:eau": {
+   "phi": 0.433,
+   "pas": "semaine",
+   "n": 514,
+   "tau_jours": 8.4,
+   "serie": "meteo:delhi"
+  },
   "cycles-biogeochimiques:combustion": {
    "phi": 0.973,
    "pas": "semaine",
@@ -2303,6 +3078,13 @@
    "n": 621,
    "tau_jours": 40.7,
    "serie": "fred:DHHNGSP"
+  },
+  "cycles-biogeochimiques:climat": {
+   "phi": 0.991,
+   "pas": "semaine",
+   "n": 458,
+   "tau_jours": 816.2,
+   "serie": "climat:berlin"
   },
   "dette-emergents:monnaies": {
    "phi": 0.978,
@@ -2346,6 +3128,13 @@
    "tau_jours": 21.1,
    "serie": "feux:ZM"
   },
+  "eau-moyen-orient:chaleur": {
+   "phi": 0.409,
+   "pas": "semaine",
+   "n": 516,
+   "tau_jours": 7.8,
+   "serie": "meteo:teheran"
+  },
   "eau-moyen-orient:villes": {
    "phi": 0.787,
    "pas": "semaine",
@@ -2359,6 +3148,13 @@
    "n": 25,
    "tau_jours": 10.8,
    "serie": "radar:IQ"
+  },
+  "eau-moyen-orient:climat_regime": {
+   "phi": 0.992,
+   "pas": "semaine",
+   "n": 464,
+   "tau_jours": 901.6,
+   "serie": "climat:teheran"
   },
   "economie-chinoise:activite": {
    "phi": 0.373,
@@ -2400,6 +3196,13 @@
    "n": 198,
    "tau_jours": 5.6,
    "serie": "dyade:USA:CHN"
+  },
+  "economie-chinoise:eau_fleuves": {
+   "phi": 0.249,
+   "pas": "semaine",
+   "n": 505,
+   "tau_jours": 5.0,
+   "serie": "meteo:shanghai"
   },
   "elections-amerique-latine:economie": {
    "phi": 0.978,
@@ -2456,12 +3259,33 @@
    "n": 62,
    "serie": "sanctions:RU"
   },
+  "energie-mondiale:climat": {
+   "phi": 0.382,
+   "pas": "semaine",
+   "n": 510,
+   "tau_jours": 7.3,
+   "serie": "meteo:berlin"
+  },
   "energie-mondiale:recits": {
    "phi": 0.681,
    "pas": "semaine",
    "n": 27,
    "tau_jours": 18.2,
    "serie": "wikipedia:Petroleum"
+  },
+  "energie-mondiale:climat_regime": {
+   "phi": 0.991,
+   "pas": "semaine",
+   "n": 458,
+   "tau_jours": 816.2,
+   "serie": "climat:berlin"
+  },
+  "epidemies:milieu": {
+   "phi": 0.433,
+   "pas": "semaine",
+   "n": 514,
+   "tau_jours": 8.4,
+   "serie": "meteo:delhi"
   },
   "epidemies:economie": {
    "phi": 0.153,
@@ -2519,6 +3343,13 @@
    "tau_jours": 1.7,
    "serie": "telegram:tout"
   },
+  "humain:indices": {
+   "phi": 0.433,
+   "pas": "semaine",
+   "n": 514,
+   "tau_jours": 8.4,
+   "serie": "meteo:delhi"
+  },
   "humain:stress_chronique": {
    "phi": 0.823,
    "pas": "mois",
@@ -2547,6 +3378,20 @@
    "tau_jours": 1.7,
    "serie": "telegram:tout"
   },
+  "humain:hierarchie": {
+   "phi": 0.81,
+   "pas": "semaine",
+   "n": 128,
+   "tau_jours": 33.3,
+   "serie": "elections:US:proche30"
+  },
+  "humain:symboles": {
+   "phi": 0.203,
+   "pas": "semaine",
+   "n": 151,
+   "tau_jours": 4.4,
+   "serie": "memoire:RU:proche7"
+  },
   "humain:passage_acte": {
    "phi": 0.37,
    "pas": "semaine",
@@ -2568,6 +3413,13 @@
    "tau_jours": 10.3,
    "serie": "ooni:RU"
   },
+  "humain:disponibilite": {
+   "phi": 0.637,
+   "pas": "semaine",
+   "n": 569,
+   "tau_jours": 15.5,
+   "serie": "ouvert:attention_crise"
+  },
   "humain:risque_percu": {
    "phi": 0.979,
    "pas": "semaine",
@@ -2581,6 +3433,13 @@
    "n": 25,
    "tau_jours": 10.3,
    "serie": "ooni:RU"
+  },
+  "humain:polarisation": {
+   "phi": 0.956,
+   "pas": "mois",
+   "n": 85,
+   "tau_jours": 665.9,
+   "serie": "ouvert:polarisation_chambre"
   },
   "inflation-mondiale:energie": {
    "phi": 0.973,
@@ -2644,6 +3503,13 @@
    "tau_jours": 1250.5,
    "serie": "fred:DGS10"
   },
+  "inflation-mondiale:climat_regime": {
+   "phi": 0.993,
+   "pas": "semaine",
+   "n": 461,
+   "tau_jours": 1064.0,
+   "serie": "climat:delhi"
+  },
   "information-cyber:censure": {
    "phi": 0.787,
    "pas": "semaine",
@@ -2678,6 +3544,13 @@
    "n": 621,
    "tau_jours": 40.7,
    "serie": "fred:DHHNGSP"
+  },
+  "infrastructures-critiques:chaleur_tempetes": {
+   "phi": 0.289,
+   "pas": "semaine",
+   "n": 424,
+   "tau_jours": 5.6,
+   "serie": "meteo:houston"
   },
   "iran-nucleaire:negociations": {
    "phi": 0.144,
@@ -2741,6 +3614,13 @@
    "tau_jours": 1.7,
    "serie": "ucdp:Sudan"
   },
+  "migrations-demographie:climat_milieu": {
+   "phi": 0.993,
+   "pas": "semaine",
+   "n": 461,
+   "tau_jours": 1064.0,
+   "serie": "climat:delhi"
+  },
   "migrations-demographie:economie": {
    "phi": 0.823,
    "pas": "mois",
@@ -2783,12 +3663,40 @@
    "tau_jours": 12.8,
    "serie": "portwatch:ormuz:navires"
   },
+  "oceans-et-fleuves:cycle": {
+   "phi": 0.249,
+   "pas": "semaine",
+   "n": 505,
+   "tau_jours": 5.0,
+   "serie": "meteo:shanghai"
+  },
   "oceans-et-fleuves:navigation_fluviale": {
    "phi": 0.03,
    "pas": "semaine",
    "n": 24,
    "tau_jours": 2.0,
    "serie": "portwatch:panama:navires"
+  },
+  "oceans-et-fleuves:refroidissement": {
+   "phi": 0.382,
+   "pas": "semaine",
+   "n": 510,
+   "tau_jours": 7.3,
+   "serie": "meteo:berlin"
+  },
+  "oceans-et-fleuves:climat": {
+   "phi": 0.993,
+   "pas": "semaine",
+   "n": 461,
+   "tau_jours": 1064.0,
+   "serie": "climat:delhi"
+  },
+  "ormuz:milieu": {
+   "phi": 0.411,
+   "pas": "semaine",
+   "n": 474,
+   "tau_jours": 7.9,
+   "serie": "meteo:bandar_abbas"
   },
   "ormuz:flux_energie": {
    "phi": 0.605,
@@ -2846,6 +3754,13 @@
    "tau_jours": 35.5,
    "serie": "wikipedia:Strait of Hormuz"
   },
+  "ormuz:climat_regime": {
+   "phi": 0.995,
+   "pas": "semaine",
+   "n": 417,
+   "tau_jours": 1407.9,
+   "serie": "climat:bandar_abbas"
+  },
   "politique-americaine:congres": {
    "phi": 0.17,
    "pas": "semaine",
@@ -2889,17 +3804,31 @@
    "serie": "fred:DFF"
   },
   "politique-americaine:climat_risques": {
-   "phi": 0.704,
+   "phi": 0.289,
    "pas": "semaine",
-   "n": 25,
-   "tau_jours": 19.9,
-   "serie": "feux:US"
+   "n": 424,
+   "tau_jours": 5.6,
+   "serie": "meteo:houston"
+  },
+  "relief-et-montagnes:pluies_orographiques": {
+   "phi": 0.409,
+   "pas": "semaine",
+   "n": 516,
+   "tau_jours": 7.8,
+   "serie": "meteo:teheran"
   },
   "relief-et-montagnes:cotes_detroits": {
    "phi": -0.36,
    "pas": "semaine",
    "n": 24,
    "serie": "portwatch:taiwan:navires"
+  },
+  "relief-et-montagnes:climat": {
+   "phi": 0.992,
+   "pas": "semaine",
+   "n": 464,
+   "tau_jours": 901.6,
+   "serie": "climat:teheran"
   },
   "rivalite-sino-americaine:commerce": {
    "phi": 0.153,
