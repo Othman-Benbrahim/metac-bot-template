@@ -1,0 +1,42 @@
+name: "Relevé airplanes.live (militaires et codes d'urgence, ombre)"
+
+# 0.10.354 : quatre requêtes toutes les 6 heures à l'API d'airplanes.live (usage non commercial, sans clé) : militaires
+# (contrôle de couverture avec adsb.fi) et codes d'urgence 7700, 7600, 7500 ; comptes par pays. Rien de posté.
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-airplaneslive
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        timeout-minutes: 10
+        run: uv run python collecte_airplaneslive.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/militaires-airplaneslive.csv registre/urgences-airplaneslive.csv registre/airplaneslive-releves.txt; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : airplanes.live du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi

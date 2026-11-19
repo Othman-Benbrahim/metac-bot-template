@@ -27,6 +27,7 @@ compartiments:
     elements: ["délestages", "pertes de synchronisme", "effet domino entre réseaux (électricité vers eau et télécommunications)"]
     niveau: {espace: "région à pays", temps: "minutes à jours", vitesse: "secondes à heures", taille: "méso à macro"}
     traces:
+      - {source: "aéronefs affichant le code d'urgence 7700, moyenne par jour (airplanes.live)", statut: "collecte", fichier: "collecte_airplaneslive.py", adaptateur: "urgences:7700"}
       - {source: "rapports publics des gestionnaires de réseau après incident", statut: "a_brancher"}
   - id: "demande"
     nom: "Demande et charge"
@@ -65,6 +66,7 @@ compartiments:
     niveau: {espace: "pays à mers", temps: "incidents", vitesse: "heures", taille: "méso"}
     traces:
       - {source: "GDELT (événements publics)", statut: "collecte", fichier: "collecte_gdelt.py"}
+      - {source: "aéronefs affichant le code 7500 (intervention illicite), moyenne par jour (airplanes.live)", statut: "collecte", fichier: "collecte_airplaneslive.py", adaptateur: "urgences:7500"}
   - id: "operateurs_regulateurs"
     nom: "Opérateurs et régulateurs"
     organisation: "statut"

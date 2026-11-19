@@ -75,6 +75,32 @@ def _jours_avant(echeances: list[str], debut: str, fin: str) -> list[tuple[str, 
 
 # ---- espace aérien
 
+def _par_jour_releves(lignes: list[dict], releves_fichier: str, reg: Path, garder) -> list[tuple[str, float]]:
+    """Moyenne par jour des comptes par relevé (relevés réussis à zéro compris)."""
+    par_releve: dict[str, float] = {}
+    for r in lignes:
+        if garder(r):
+            par_releve[r["releve"]] = par_releve.get(r["releve"], 0.0) + float(r["appareils"] or 0)
+    f = reg / releves_fichier
+    tous = set(f.read_text(encoding="utf-8").split()) if f.exists() else {r["releve"] for r in lignes}
+    jours: dict[str, list[float]] = {}
+    for rel in tous:
+        jours.setdefault(rel[:10], []).append(par_releve.get(rel, 0.0))
+    return sorted((j, sum(v) / len(v)) for j, v in jours.items())
+
+
+def avions_al(reg: Path, pays: str = TOUS) -> list[tuple[str, float]]:
+    """Avions militaires visibles selon airplanes.live (contrôle de couverture d'adsb.fi), moyenne par jour."""
+    return _par_jour_releves(ad._csv(reg, "militaires-airplaneslive.csv"), "airplaneslive-releves.txt", reg,
+                             lambda r: pays == TOUS or r["pays"] == pays)
+
+
+def urgences(reg: Path, code: str = "7700", pays: str = TOUS) -> list[tuple[str, float]]:
+    """Aéronefs affichant un code d'urgence (7700 urgence, 7600 panne radio, 7500 détournement), moyenne par jour."""
+    return _par_jour_releves(ad._csv(reg, "urgences-airplaneslive.csv"), "airplaneslive-releves.txt", reg,
+                             lambda r: r["code"] == code and (pays == TOUS or r["pays"] == pays))
+
+
 def avions(reg: Path, pays: str = TOUS) -> list[tuple[str, float]]:
     """Avions militaires visibles (adsb.fi), moyenne par jour des relevés ; pays ISO2, « mer », ou tous (somme)."""
     par_releve: dict[str, float] = {}
@@ -248,4 +274,5 @@ ad.ADAPTATEURS.update({
     "avions": avions, "tfr": tfr, "violations": violations, "radar": radar, "certificats": certificats,
     "federal_register": federal_register, "congres": congres, "tribunaux": tribunaux, "elections": elections,
     "memoire": memoire, "feries_chine": feries_chine, "publications_nbs": publications_nbs, "calendrier_nbs": calendrier_nbs,
+    "avions_al": avions_al, "urgences": urgences,
 })
