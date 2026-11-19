@@ -1,0 +1,124 @@
+theme: "relief-et-montagnes"
+nom: "Relief et montagnes (obstacle, abri, partage)"
+declaration:
+  but: "comprendre ce que le relief impose : obstacle aux armées, aux échanges et aux migrations, abri, réserve d'eau, partage des eaux et des pluies, et ce qu'il impose en retour aux frontières, aux routes et aux guerres"
+  limites: "dedans les chaînes de montagnes, les cols et vallées, les plaines, les côtes et détroits, les séismes et volcans, les routes et frontières qui en dépendent ; dehors la géologie profonde détaillée"
+  observateur: "notre carte, regard extérieur ; sources géographiques et géologiques publiques"
+  date: "2026-11-19"
+  espace: "du col et de la vallée à la chaîne de montagnes et au continent"
+  temps: "le relief change sur des millions d'années ; un séisme en secondes ; une saison de neige ferme un col"
+  vitesse: "la seconde (séisme), la saison (cols fermés par la neige), le millénaire (érosion)"
+  taille: "méso (une vallée) à macro (une chaîne, un continent)"
+compartiments:
+  - id: "chaines"
+    nom: "Chaînes de montagnes"
+    organisation: "relief"
+    elements: ["Himalaya, Alpes, Andes, Caucase, Zagros (exemples)", "altitude", "pentes"]
+    acteurs:
+      - {nom: "l'Himalaya", taille: "macro", espace: "continent", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
+      - {nom: "le Zagros", taille: "macro", espace: "région", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
+    niveau: {espace: "région à continent", temps: "millions d'années", vitesse: "millénaire", taille: "macro"}
+    traces:
+      - {source: "modèles numériques de terrain publics (SRTM)", statut: "a_brancher"}
+  - id: "obstacles"
+    nom: "Obstacles et passages (cols, vallées, goulets)"
+    organisation: "relief"
+    elements: ["cols", "vallées", "défilés", "plaines ouvertes"]
+    acteurs:
+      - {nom: "un col de haute montagne", taille: "méso", espace: "site", vitesse: "saisons", organisation: "relief", facette: "non_humain"}
+    niveau: {espace: "cols et vallées", temps: "permanent ; saisons de neige", vitesse: "saisons", taille: "méso"}
+    traces:
+      - {source: "état public des routes et cols (services nationaux)", statut: "a_brancher"}
+  - id: "chateaux_d_eau"
+    nom: "Châteaux d'eau (neige et glaciers des montagnes)"
+    organisation: "eau"
+    elements: ["neige", "glaciers", "sources des grands fleuves"]
+    niveau: {espace: "massifs", temps: "saisons à décennies", vitesse: "saisons", taille: "méso à macro"}
+    traces:
+      - {source: "couverture neigeuse par satellite (NASA MODIS)", statut: "a_brancher"}
+  - id: "pluies_orographiques"
+    nom: "Pluies et ombre pluviométrique"
+    organisation: "meteo"
+    elements: ["versant au vent arrosé", "versant sous le vent sec", "moussons arrêtées par les chaînes"]
+    niveau: {espace: "versants", temps: "saisons", vitesse: "jours à saisons", taille: "méso"}
+    traces:
+      - {source: "anomalie de température à Téhéran (versant sec du Zagros et de l'Elbourz)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:teheran"}
+  - id: "seismes_volcans"
+    nom: "Séismes et volcans"
+    organisation: "mineral"
+    elements: ["failles", "séismes", "éruptions", "tsunamis"]
+    acteurs:
+      - {nom: "une faille active", taille: "méso", espace: "région", vitesse: "siècle ; seconde", organisation: "mineral", facette: "non_humain"}
+    niveau: {espace: "zones de failles et arcs volcaniques", temps: "accumulation sur des siècles, rupture en secondes", vitesse: "siècle ; seconde", taille: "méso à macro"}
+    traces:
+      - {source: "catalogue public des séismes (USGS)", statut: "a_brancher"}
+  - id: "cotes_detroits"
+    nom: "Côtes et détroits"
+    organisation: "relief"
+    elements: ["détroits", "ports naturels", "isthmes"]
+    niveau: {espace: "côtes", temps: "permanent", vitesse: "millénaire", taille: "méso"}
+    traces:
+      - {source: "passages au détroit de Taïwan (IMF PortWatch)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:taiwan:navires"}
+      - {source: "passages au Bosphore (IMF PortWatch)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:bosphore:navires"}
+  - id: "sols_versants"
+    nom: "Sols des versants et érosion"
+    organisation: "mineral"
+    elements: ["glissements de terrain", "érosion", "terrasses cultivées"]
+    niveau: {espace: "versants", temps: "saisons à siècles", vitesse: "saisons", taille: "méso"}
+    traces:
+      - {source: "inventaires publics de glissements de terrain", statut: "a_brancher"}
+  - id: "routes_frontieres"
+    nom: "Routes et frontières"
+    organisation: "convention"
+    elements: ["frontières tracées sur les crêtes ou les fleuves", "routes de montagne", "tunnels"]
+    acteurs:
+      - {nom: "une frontière de crête", taille: "méso", espace: "région", vitesse: "décennie", organisation: "convention", facette: "collectif"}
+    niveau: {espace: "régions frontalières", temps: "décennies", vitesse: "années", taille: "méso"}
+    traces:
+      - {source: "aucune trace ouverte branchée", statut: "inconnue"}
+  - id: "guerres"
+    nom: "Guerres et relief"
+    organisation: "geopolitique"
+    elements: ["défense des hauteurs", "fronts figés en montagne", "plaines ouvertes aux offensives"]
+    acteurs:
+      - {nom: "les États en conflit sur une frontière de montagne", taille: "macro", espace: "région", vitesse: "années", organisation: "geopolitique", facette: "collectif"}
+    niveau: {espace: "théâtres", temps: "campagnes saisonnières", vitesse: "saisons", taille: "méso à macro"}
+    traces:
+      - {source: "aucune trace ouverte branchée", statut: "inconnue"}
+  - id: "populations"
+    nom: "Populations de montagne et de vallée"
+    organisation: "societe"
+    elements: ["isolement", "refuges", "migrations vers les plaines"]
+    niveau: {espace: "vallées", temps: "générations", vitesse: "années", taille: "méso"}
+    traces:
+      - {source: "aucune trace ouverte branchée", statut: "inconnue"}
+  - id: "climat"
+    nom: "Climat (régime de long terme)"
+    organisation: "climat"
+    elements: ["réchauffement plus rapide en altitude (à vérifier)", "limite des neiges qui remonte"]
+    niveau: {espace: "massifs", temps: "décennies", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "dérive annuelle de la température à Téhéran", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:teheran"}
+relations:
+  - {de: "chaines", vers: "obstacles", effet: "+", forme: "contrainte", delai: "permanent", force: "forte", coupure: "tunnels, aviation", statut: "a_verifier", texte: "une chaîne ne se franchit que par quelques cols et vallées, qui concentrent tous les passages"}
+  - {de: "chaines", vers: "pluies_orographiques", effet: "±", delai: "jours", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "la chaîne arrête les nuages : un versant arrosé, l'autre sec (passage du relief à la météo)"}
+  - {de: "pluies_orographiques", vers: "chateaux_d_eau", effet: "+", delai: "saisons", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les pluies et neiges des hauteurs remplissent les réserves de glace et de neige"}
+  - {de: "climat", vers: "chateaux_d_eau", effet: "-", delai: "années", force: "forte", intensite: {mesure: "dérive de la température en altitude", regle: "hysteresis"}, coupure: "inconnue", statut: "a_verifier", texte: "le réchauffement fond les glaciers des montagnes ; ils ne se reforment pas au même rythme"}
+  - {de: "obstacles", vers: "guerres", effet: "±", delai: "saisons", force: "forte", coupure: "aviation, drones", statut: "a_verifier", texte: "le relief fige les fronts, protège qui tient les hauteurs, et ouvre les plaines aux offensives (passage du relief à la géopolitique)"}
+  - {de: "obstacles", vers: "routes_frontieres", effet: "+", forme: "contrainte", delai: "décennie", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "frontières et routes suivent crêtes, cols et vallées : la convention s'appuie sur le relief"}
+  - {de: "routes_frontieres", vers: "guerres", effet: "±", delai: "années", force: "moyenne", intensite: {mesure: "frontières contestées sur des crêtes ou des glaciers", regle: "seuil"}, coupure: "accords de délimitation", statut: "a_verifier", texte: "une frontière de crête mal définie devient un point de friction"}
+  - {de: "seismes_volcans", vers: "sols_versants", effet: "+", delai: "secondes", force: "forte", intensite: {mesure: "magnitude", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "un séisme déclenche des glissements de terrain (au sein du niveau minéral : lente accumulation, rupture brutale)"}
+  - {de: "seismes_volcans", vers: "populations", effet: "-", delai: "secondes", force: "forte", intensite: {mesure: "magnitude et proximité des villes", regle: "seuil"}, coupure: "constructions parasismiques", statut: "a_verifier", texte: "un grand séisme tue et déplace ; l'effet passe du minéral au social seulement au-delà d'un seuil de force"}
+  - {de: "seismes_volcans", vers: "climat", effet: "-", delai: "mois", force: "faible", intensite: {mesure: "soufre projeté dans la stratosphère", regle: "seuil"}, coupure: "petites éruptions", statut: "a_verifier", texte: "une très grande éruption refroidit le climat une ou deux années (rare)"}
+  - {de: "sols_versants", vers: "obstacles", effet: "-", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "un glissement coupe une route ou un col"}
+  - {de: "obstacles", vers: "populations", effet: "-", retour: "0", delai: "générations", force: "moyenne", coupure: "routes modernes", statut: "a_verifier", texte: "le relief isole les vallées : abri pour les uns, enfermement pour les autres"}
+  - {de: "cotes_detroits", vers: "guerres", effet: "±", delai: "jours", force: "forte", intensite: {mesure: "tension autour du détroit", regle: "seuil"}, coupure: "routes de contournement", statut: "a_verifier", texte: "un détroit étroit donne un levier à qui tient ses rives"}
+  - {de: "chateaux_d_eau", vers: "populations", effet: "+", delai: "saisons", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les montagnes donnent l'eau aux plaines peuplées en aval"}
+ponts:
+  - {depuis: "chateaux_d_eau", vers: "oceans-et-fleuves:glaces", nature: "neige et glaciers des montagnes", type: "meme"}
+  - {depuis: "chateaux_d_eau", vers: "eau-moyen-orient:fleuves", nature: "le Tigre et l'Euphrate naissent dans les montagnes de Turquie"}
+  - {depuis: "cotes_detroits", vers: "transport-maritime:detroits", nature: "les détroits sont des reliefs", type: "meme"}
+  - {depuis: "cotes_detroits", vers: "ormuz:milieu", nature: "le goulet d'Ormuz"}
+  - {depuis: "guerres", vers: "russie-ukraine:front", nature: "les plaines ukrainiennes, les fleuves comme lignes de front"}
+  - {depuis: "guerres", vers: "guerre-levant:liban", nature: "le relief libanais et le plateau du Golan"}
+  - {depuis: "climat", vers: "climat-extremes:tendance", nature: "la dérive du climat", type: "meme"}

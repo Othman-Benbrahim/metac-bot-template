@@ -1,0 +1,129 @@
+theme: "cycles-biogeochimiques"
+nom: "Cycles biogéochimiques (carbone, azote, soufre, phosphore, eau)"
+declaration:
+  but: "relier l'atome et la molécule à la roche, à l'eau, à l'air, au vivant et à l'humain : comprendre comment les éléments circulent, s'accumulent ou manquent, et ce que cela transmet au climat, aux sols, aux cultures et aux sociétés"
+  limites: "dedans les grands réservoirs et flux de carbone, d'azote, de soufre, de phosphore et d'eau, le vivant qui les fait circuler, les apports humains (combustion, engrais, élevage, mines) ; dehors la chimie industrielle détaillée et les marchés (thèmes voisins)"
+  observateur: "notre carte, regard extérieur ; sources scientifiques publiques"
+  date: "2026-11-19"
+  espace: "de la parcelle et du grain de sol à la planète"
+  temps: "de la saison au million d'années (roches), avec la perturbation humaine depuis l'industrialisation"
+  vitesse: "la saison (croissance des plantes), la décennie (accumulation dans l'air), le millénaire (roches, océan profond)"
+  taille: "micro (molécules, microbes) à macro (atmosphère, océans)"
+compartiments:
+  - id: "carbone"
+    nom: "Carbone (air, océan, vivant, roche)"
+    organisation: "chimique"
+    elements: ["dioxyde de carbone et méthane de l'air", "carbone des sols et des forêts", "carbonates et combustibles fossiles"]
+    acteurs:
+      - {nom: "une molécule de dioxyde de carbone", taille: "micro", espace: "planète", vitesse: "siècle", organisation: "chimique", facette: "non_humain"}
+      - {nom: "le stock de carbone de l'atmosphère", taille: "macro", espace: "planète", vitesse: "décennie", organisation: "chimique", facette: "non_humain"}
+    niveau: {espace: "planète", temps: "décennies à millénaires", vitesse: "décennie", taille: "micro à macro"}
+    traces:
+      - {source: "concentrations mensuelles de dioxyde de carbone (NOAA, Mauna Loa)", statut: "a_brancher"}
+  - id: "azote"
+    nom: "Azote (air, sols, engrais, eaux)"
+    organisation: "chimique"
+    elements: ["azote de l'air", "fixation par les bactéries et par l'industrie", "nitrates lessivés", "protoxyde d'azote"]
+    acteurs:
+      - {nom: "les bactéries fixatrices des racines", taille: "micro", espace: "site", vitesse: "saisons", organisation: "microbiologique", facette: "non_humain"}
+    niveau: {espace: "parcelle à planète", temps: "saisons à décennies", vitesse: "saisons", taille: "micro à macro"}
+    traces:
+      - {source: "statistiques publiques d'usage d'engrais (FAO)", statut: "a_brancher"}
+  - id: "soufre"
+    nom: "Soufre (volcans, combustion, pluies acides)"
+    organisation: "chimique"
+    elements: ["dioxyde de soufre", "sulfates", "acidité des pluies"]
+    niveau: {espace: "région", temps: "jours à années", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "mesures satellitaires publiques du dioxyde de soufre (Copernicus)", statut: "a_brancher"}
+  - id: "phosphore"
+    nom: "Phosphore (roches, engrais, eaux)"
+    organisation: "mineral"
+    elements: ["roches phosphatées", "engrais phosphatés", "ruissellement vers les lacs et les côtes"]
+    acteurs:
+      - {nom: "les gisements de phosphate, concentrés dans peu de pays (à vérifier)", taille: "macro", espace: "pays", vitesse: "siècle", organisation: "mineral", facette: "non_humain"}
+    niveau: {espace: "gisements à bassins versants", temps: "millions d'années (roche) ; saisons (engrais)", vitesse: "saisons à siècle", taille: "méso à macro"}
+    traces:
+      - {source: "production minière publique (USGS)", statut: "a_brancher"}
+  - id: "eau"
+    nom: "Eau (évaporation, pluie, transpiration)"
+    organisation: "eau"
+    elements: ["vapeur d'eau", "pluies", "transpiration des plantes", "eau des cellules vivantes"]
+    niveau: {espace: "planète", temps: "jours à années", vitesse: "jours", taille: "micro à macro"}
+    traces:
+      - {source: "anomalie de température (évaporation) à Delhi", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:delhi"}
+  - id: "microbes_du_sol"
+    nom: "Microbes du sol"
+    organisation: "microbiologique"
+    elements: ["décomposeurs", "nitrification et dénitrification", "méthanogènes des sols inondés"]
+    acteurs:
+      - {nom: "une communauté microbienne de sol", taille: "micro", espace: "site", vitesse: "jours", organisation: "microbiologique", facette: "non_humain"}
+    niveau: {espace: "grain de sol à parcelle", temps: "jours à saisons", vitesse: "jours", taille: "micro"}
+    traces:
+      - {source: "aucune trace ouverte connue", statut: "inconnue"}
+  - id: "vegetation"
+    nom: "Végétation (photosynthèse)"
+    organisation: "vegetal"
+    elements: ["forêts", "prairies", "cultures", "plancton végétal des océans"]
+    niveau: {espace: "parcelle à planète", temps: "saisons", vitesse: "saisons", taille: "micro à macro"}
+    traces:
+      - {source: "indices de végétation par satellite (NASA MODIS)", statut: "a_brancher"}
+  - id: "elevage"
+    nom: "Élevage (fait écologique autant qu'économique)"
+    organisation: "animal"
+    elements: ["ruminants et méthane", "fumiers et azote", "pâturage", "cultures fourragères"]
+    acteurs:
+      - {nom: "un troupeau", taille: "micro", espace: "site", vitesse: "saisons", organisation: "animal", facette: "non_humain"}
+      - {nom: "les éleveurs d'une région", taille: "méso", espace: "région", vitesse: "années", organisation: "economie", facette: "collectif"}
+    niveau: {espace: "parcelle à continent", temps: "saisons à décennies", vitesse: "saisons", taille: "micro à macro"}
+    traces:
+      - {source: "effectifs d'élevage publics (FAO)", statut: "a_brancher"}
+  - id: "combustion"
+    nom: "Combustion et industrie"
+    organisation: "technique"
+    elements: ["charbon, pétrole, gaz", "ciment", "feux de forêt et de brûlis"]
+    acteurs:
+      - {nom: "les centrales et les industries", taille: "macro", espace: "mondial", vitesse: "années", organisation: "technique", facette: "collectif"}
+    niveau: {espace: "mondial", temps: "décennies", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "prix du Brent (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILBRENTEU"}
+      - {source: "feux actifs au Brésil (FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:BR"}
+  - id: "engrais"
+    nom: "Engrais et mines"
+    organisation: "economie"
+    elements: ["synthèse industrielle de l'ammoniac (au gaz)", "potasse", "phosphates"]
+    acteurs:
+      - {nom: "l'agriculture intensive et sa doctrine du rendement", taille: "macro", espace: "mondial", vitesse: "décennie", organisation: "ideologie", facette: "ideologie"}
+    niveau: {espace: "mondial", temps: "campagnes agricoles", vitesse: "saisons", taille: "macro"}
+    traces:
+      - {source: "prix du gaz Henry Hub (FRED), base de l'ammoniac", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DHHNGSP"}
+  - id: "climat"
+    nom: "Climat (régime de long terme)"
+    organisation: "climat"
+    elements: ["effet de serre", "température moyenne", "régimes de pluie"]
+    niveau: {espace: "planète", temps: "décennies", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "dérive annuelle de la température à Berlin", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:berlin"}
+relations:
+  - {de: "combustion", vers: "carbone", effet: "+", delai: "jours", force: "forte", coupure: "baisse des combustibles fossiles", statut: "a_verifier", texte: "la combustion libère dans l'air le carbone stocké dans les roches"}
+  - {de: "carbone", vers: "climat", effet: "+", delai: "décennie", force: "forte", intensite: {mesure: "concentration de dioxyde de carbone", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "plus de gaz à effet de serre réchauffe le climat (passage du chimique au climatique)"}
+  - {de: "climat", vers: "eau", effet: "+", delai: "années", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "un air plus chaud contient plus de vapeur : pluies plus fortes et sécheresses plus dures"}
+  - {de: "eau", vers: "climat", effet: "+", delai: "jours à saisons", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la vapeur d'eau amplifie le réchauffement (rétroaction au sein du système air-eau)"}
+  - {de: "vegetation", vers: "carbone", effet: "-", retour: "+", delai: "saisons", force: "forte", intensite: {mesure: "sécheresse et chaleur", regle: "seuil"}, coupure: "forêts qui meurent ou brûlent deviennent sources", statut: "a_verifier", texte: "la photosynthèse retire du carbone de l'air, qui nourrit la plante (mutualisme chimique-végétal) ; au-delà d'un seuil de stress, le puits devient source"}
+  - {de: "microbes_du_sol", vers: "carbone", effet: "+", delai: "saisons", force: "moyenne", intensite: {mesure: "température du sol", regle: "proportionnelle"}, coupure: "sols froids ou secs", statut: "a_verifier", texte: "les décomposeurs rendent le carbone à l'air, plus vite quand il fait chaud"}
+  - {de: "microbes_du_sol", vers: "azote", effet: "±", delai: "jours", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "au sein du sol vivant, les bactéries fixent, transforment et relâchent l'azote"}
+  - {de: "engrais", vers: "azote", effet: "+", delai: "saisons", force: "forte", coupure: "prix du gaz et des engrais", statut: "a_verifier", texte: "l'industrie fixe autant d'azote que le vivant ou plus (à vérifier)"}
+  - {de: "azote", vers: "vegetation", effet: "+", delai: "saisons", force: "forte", intensite: {mesure: "excès d'azote", regle: "saturation"}, coupure: "au-delà de la saturation, l'excès part dans les eaux", statut: "a_verifier", texte: "l'azote nourrit les plantes jusqu'à saturation ; l'excès pollue rivières et côtes"}
+  - {de: "elevage", vers: "carbone", effet: "+", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les ruminants émettent du méthane (passage de l'animal au chimique)"}
+  - {de: "elevage", vers: "azote", effet: "+", delai: "saisons", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "fumiers et lisiers chargent les sols et les eaux en azote"}
+  - {de: "vegetation", vers: "elevage", effet: "+", retour: "-", delai: "saisons", force: "moyenne", intensite: {mesure: "charge de bétail par hectare", regle: "seuil"}, coupure: "rotation des pâturages", statut: "a_verifier", texte: "la prairie nourrit le troupeau ; au-delà d'une charge, le surpâturage la détruit (prédation)"}
+  - {de: "combustion", vers: "soufre", effet: "+", delai: "jours", force: "moyenne", coupure: "désulfuration", statut: "a_verifier", texte: "charbon et fioul libèrent du soufre, qui retombe en pluies acides"}
+  - {de: "phosphore", vers: "engrais", effet: "+", delai: "années", force: "forte", intensite: {mesure: "concentration géographique des gisements", regle: "seuil"}, coupure: "recyclage", statut: "a_verifier", texte: "le phosphore des engrais vient de quelques roches, ressource finie à l'échelle humaine"}
+ponts:
+  - {depuis: "soufre", vers: "foret-et-sols-vivants:pluies_acides", nature: "le soufre retombe en pluies acides", type: "meme"}
+  - {depuis: "climat", vers: "climat-extremes:tendance", nature: "la dérive du climat", type: "meme"}
+  - {depuis: "engrais", vers: "alimentation-mondiale:engrais", nature: "les engrais des cultures", type: "meme"}
+  - {depuis: "azote", vers: "alimentation-mondiale:sols", nature: "la fertilité des sols cultivés"}
+  - {depuis: "eau", vers: "oceans-et-fleuves:cycle", nature: "le cycle de l'eau", type: "meme"}
+  - {depuis: "carbone", vers: "oceans-et-fleuves:oceans", nature: "l'océan absorbe une part du carbone et s'acidifie"}
+  - {depuis: "combustion", vers: "energie-mondiale:demande", nature: "la combustion suit la demande d'énergie", type: "meme"}

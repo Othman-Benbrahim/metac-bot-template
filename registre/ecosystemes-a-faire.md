@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'ponts_en_attente': 7, 'relations_a_verifier': 199, 'relations_avec_intensite': 88, 'compartiments_sans_trace_collectee': 51}
+Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'ponts_en_attente': 8, 'relations_a_verifier': 366, 'relations_avec_intensite': 172, 'compartiments_sans_trace_collectee': 121}
 
 ## Thèmes à écrire (ponts en attente)
 - **infrastructures-critiques** (2 pont(s)) : climat-extremes:exposes → infrastructures-critiques:reseaux (réseaux électriques et de transport face aux extrêmes) ; eau-moyen-orient:dessalement → infrastructures-critiques:reseaux (les usines de dessalement, infrastructures vulnérables)
@@ -8,6 +8,7 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - **elections-amerique-latine** (1 pont(s)) : dette-emergents:politique_interieure → elections-amerique-latine:scrutins (élections et ajustements en Amérique latine)
 - **liban-institutions** (1 pont(s)) : guerre-levant:liban → liban-institutions:justice (les institutions et la justice libanaises (questions du tournoi))
 - **non-proliferation** (1 pont(s)) : iran-nucleaire:conseil_securite → non-proliferation:regime (le régime mondial de non-prolifération)
+- **securite-publique** (1 pont(s)) : nucleaire-radiologique:signalement → securite-publique:alertes (les alertes publiques et la protection civile (thème à écrire))
 - **securite-europeenne** (1 pont(s)) : russie-ukraine:soutiens → securite-europeenne:defense (le réarmement européen et l'OTAN)
 
 ## Compartiments sans trace collectée (à notre portée ? ou oubliés ?)
@@ -17,17 +18,32 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - alimentation-mondiale:ravageurs : bulletins de veille acridienne (FAO, publics) (a_brancher)
 - alimentation-mondiale:stocks : bilans offre-demande publics (USDA, AMIS) (a_brancher)
 - alimentation-mondiale:importateurs : prix alimentaires locaux (FAO, publics) (a_brancher)
+- alimentation-mondiale:elevage : statistiques publiques du cheptel (FAOSTAT) (a_brancher)
+- alimentation-mondiale:chimie_sols : cartes publiques des sols (teneurs en nutriments, acidité) (a_brancher)
+- alimentation-mondiale:pathogenes : notifications publiques des maladies animales (OMSA, WAHIS) (a_brancher)
+- alimentation-mondiale:pollinisateurs : suivis publics des colonies et des pollinisateurs (a_brancher)
 - climat-extremes:oceans : températures de surface de la mer (NOAA, publiques) (a_brancher)
 - climat-extremes:oscillations : indice ENSO mensuel (NOAA, public) (a_brancher)
 - climat-extremes:atmosphere : réanalyses atmosphériques (publiques) (a_brancher)
 - climat-extremes:secheresses : indices de sécheresse (moniteurs publics) (a_brancher)
 - climat-extremes:tempetes : avis des centres cycloniques (publics) (a_brancher)
 - climat-extremes:vegetation : indices de végétation par satellite (publics) (a_brancher)
-- climat-extremes:tendance : anomalies mondiales de température (publiques) (a_brancher)
+- climat-extremes:chimie_atmosphere : concentrations mondiales de CO2 et de méthane (NOAA, publiques) (a_brancher)
+- climat-extremes:rayonnement : indices publics d'activité solaire et étendue de la banquise (NOAA, NSIDC) (a_brancher)
+- climat-extremes:relief : modèles numériques de terrain publics (a_brancher)
+- cycles-biogeochimiques:carbone : concentrations mensuelles de dioxyde de carbone (NOAA, Mauna Loa) (a_brancher)
+- cycles-biogeochimiques:azote : statistiques publiques d'usage d'engrais (FAO) (a_brancher)
+- cycles-biogeochimiques:soufre : mesures satellitaires publiques du dioxyde de soufre (Copernicus) (a_brancher)
+- cycles-biogeochimiques:phosphore : production minière publique (USGS) (a_brancher)
+- cycles-biogeochimiques:microbes_du_sol : aucune trace ouverte connue (inconnue)
+- cycles-biogeochimiques:vegetation : indices de végétation par satellite (NASA MODIS) (a_brancher)
+- cycles-biogeochimiques:elevage : effectifs d'élevage publics (FAO) (a_brancher)
 - dette-emergents:reserves : réserves de change publiées par les banques centrales (a_brancher)
 - dette-emergents:banques : communiqués des banques centrales et autorités bancaires (a_brancher)
 - dette-emergents:creanciers : annonces de restructuration (communiqués officiels) (a_brancher)
 - dette-emergents:fmi : communiqués de presse du FMI (accords au niveau des services, revues) (a_brancher)
+- dette-emergents:notations_definitions : communiqués publics des agences de notation (a_brancher)
+- dette-emergents:gisements : statistiques publiques de production minière (USGS) (a_brancher)
 - eau-moyen-orient:pluies : précipitations par satellite (publiques) (a_brancher)
 - eau-moyen-orient:fleuves : débits et niveaux des fleuves (publications publiques, altimétrie satellitaire) (a_brancher)
 - eau-moyen-orient:barrages : niveaux des retenues par satellite (publics) (a_brancher)
@@ -35,11 +51,25 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - eau-moyen-orient:rarete : indicateurs de stress hydrique (publics, annuels) (a_brancher)
 - eau-moyen-orient:dessalement : aucune trace ouverte connue des volumes produits (inconnue)
 - eau-moyen-orient:irrigation : indices de végétation des plaines irriguées (publics) (a_brancher)
+- eau-moyen-orient:relief : modèles numériques de terrain publics (SRTM) (a_brancher)
+- eau-moyen-orient:chimie_eau : relevés publics de qualité de l'eau (programmes de surveillance nationaux et ONU-Environnement) (a_brancher)
+- eau-moyen-orient:maladies_hydriques : bulletins publics de l'OMS sur le choléra (a_brancher)
 - economie-chinoise:immobilier : prix et ventes de logements (publication mensuelle officielle) (a_brancher)
 - economie-chinoise:consommation : commerce de détail et prix à la consommation (publication officielle) (a_brancher)
 - economie-chinoise:emploi : taux de chômage des jeunes (publication officielle mensuelle) (a_brancher)
 - economie-chinoise:politique_monetaire : communiqués de la banque centrale chinoise (publics) (a_brancher)
+- economie-chinoise:demographie : annuaires statistiques publics (Bureau national des statistiques) (a_brancher)
+- economie-chinoise:epizooties : déclarations publiques à l'Organisation mondiale de la santé animale (WAHIS) (a_brancher)
+- economie-chinoise:sols_chimie : statistiques agricoles publiques (a_brancher)
 - energie-mondiale:production : communiqués des réunions de l'OPEP+ (a_brancher), nombre de forages actifs (publication hebdomadaire publique) (a_brancher)
+- energie-mondiale:chimie_combustion : émissions mondiales de CO2 (Global Carbon Project, données publiques) (a_brancher)
+- energie-mondiale:nucleaire_civil : base publique des réacteurs de l'AIEA (PRIS) (a_brancher)
+- epidemies:agent : bases publiques de séquences génétiques et bulletins de surveillance des variants (a_brancher)
+- epidemies:reservoirs : notifications publiques d'épizooties (Organisation mondiale de la santé animale, WAHIS) (a_brancher)
+- epidemies:malades : tableaux de bord publics de l'OMS et des agences nationales (a_brancher)
+- epidemies:comportements : indices publics de mobilité (a_brancher)
+- epidemies:convention : déclarations publiques de l'OMS (a_brancher)
+- epidemies:technique : autorisations publiques des agences du médicament (a_brancher)
 - foret-et-sols-vivants:emissions : inventaires publics d'émissions et qualité de l'air (a_brancher)
 - foret-et-sols-vivants:pluies_acides : réseaux publics de mesure de l'acidité des pluies (a_brancher)
 - foret-et-sols-vivants:sol_mineral : cartes publiques des sols (a_brancher)
@@ -54,14 +84,55 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - foret-et-sols-vivants:climat : dérive annuelle de la température (anomalie glissante sur 365 jours, Open-Meteo, point le plus proche à brancher) (a_brancher)
 - foret-et-sols-vivants:interventions : statistiques publiques de récolte de bois et d'usage de pesticides (a_brancher)
 - guerre-levant:humanitaire : rapports publics OCHA et ACAPS (a_brancher)
+- guerre-levant:relief : modèles numériques de terrain publics (a_brancher)
+- guerre-levant:eau : rapports publics des agences de l'ONU sur l'eau et l'assainissement (a_brancher)
+- guerre-levant:epidemies : bulletins publics de l'OMS (a_brancher)
+- guerre-levant:convention : documents publics de l'ONU (a_brancher)
+- inflation-mondiale:elevage_cultures : alertes publiques de santé animale (OMSA) (a_brancher)
+- inflation-mondiale:epidemies : alertes publiques de l'OMS et de l'OMSA (a_brancher)
 - iran-nucleaire:verification : rapports publics de l'Agence internationale de l'énergie atomique (a_brancher)
 - iran-nucleaire:conseil_securite : documents publics du Conseil de sécurité de l'ONU (a_brancher)
+- iran-nucleaire:surete_atomique : rapports publics de l'AIEA (sûreté et vérification) (a_brancher)
+- iran-nucleaire:relief_sites : modèles numériques de terrain publics (a_brancher)
+- iran-nucleaire:sismicite : catalogue public des séismes (USGS) (a_brancher)
+- nucleaire-radiologique:atome : aucune trace propre : phénomène connu par la physique (inconnue)
+- nucleaire-radiologique:sources : registres publics nationaux des sources et autorisations (a_brancher)
+- nucleaire-radiologique:electricite : base publique des réacteurs de l'AIEA (PRIS) (a_brancher)
+- nucleaire-radiologique:signalement : alertes publiques des protections civiles et régulateurs (a_brancher)
+- nucleaire-radiologique:sante : rapports publics des autorités sanitaires (a_brancher)
+- nucleaire-radiologique:environnement : réseaux publics de mesure de la radioactivité de l'air (a_brancher)
+- nucleaire-radiologique:convention : classements INES publiés (a_brancher)
+- oceans-et-fleuves:oceans : indices publics ENSO et température de surface de la mer (NOAA) (a_brancher)
+- oceans-et-fleuves:niveau_mer : altimétrie satellitaire publique (NASA, Copernicus) (a_brancher)
+- oceans-et-fleuves:glaces : étendue de la banquise (NSIDC, données publiques) (a_brancher)
+- oceans-et-fleuves:fleuves : débits publics des grands fleuves (USGS, services nationaux) (a_brancher)
+- oceans-et-fleuves:nappes : anomalies de masse d'eau par satellite (GRACE, NASA) (a_brancher)
+- oceans-et-fleuves:vivant_aquatique : statistiques publiques de pêche (FAO) (a_brancher)
+- oceans-et-fleuves:barrages : niveaux publics des réservoirs (a_brancher)
+- ormuz:mer_golfe : température de surface de la mer (NOAA, données publiques) (a_brancher)
+- ormuz:pollution_marine : alertes publiques de pollution marine (organisations régionales, presse) (a_brancher)
 - politique-americaine:elections : résultats officiels et calendriers électoraux (commissions électorales des États) (a_brancher)
+- politique-americaine:eau_fleuves : niveaux et débits publics (USGS) (a_brancher)
+- relief-et-montagnes:chaines : modèles numériques de terrain publics (SRTM) (a_brancher)
+- relief-et-montagnes:obstacles : état public des routes et cols (services nationaux) (a_brancher)
+- relief-et-montagnes:chateaux_d_eau : couverture neigeuse par satellite (NASA MODIS) (a_brancher)
+- relief-et-montagnes:seismes_volcans : catalogue public des séismes (USGS) (a_brancher)
+- relief-et-montagnes:sols_versants : inventaires publics de glissements de terrain (a_brancher)
+- relief-et-montagnes:routes_frontieres : aucune trace ouverte branchée (inconnue)
+- relief-et-montagnes:guerres : aucune trace ouverte branchée (inconnue)
+- relief-et-montagnes:populations : aucune trace ouverte branchée (inconnue)
+- rivalite-sino-americaine:atomique : rapports publics (SIPRI, déclarations officielles) (a_brancher)
 - russie-ukraine:capacites : budgets et annonces industrielles publiques (a_brancher)
+- russie-ukraine:relief_fleuves : cartes topographiques et hydrographiques publiques (a_brancher)
+- russie-ukraine:hiver_saisons : anomalies de température à Kyiv et Moscou (Open-Meteo, points à ajouter à collecte_meteo.py) (a_brancher)
+- russie-ukraine:atomique : communiqués publics de l'AIEA sur la sûreté en Ukraine (a_brancher)
 - transport-maritime:fret : indices publics de fret conteneur (publications hebdomadaires gratuites) (a_brancher)
 - transport-maritime:assurances : primes de risque de guerre (fermee)
 - transport-maritime:ports : statistiques portuaires publiques (temps d'attente, volumes) (a_brancher)
 - transport-maritime:climat : niveau du lac Gatún (publication publique de l'autorité du canal) (a_brancher)
+- transport-maritime:fleuves : niveaux publics des lacs du canal (Autorité du canal de Panama) et des grands fleuves (a_brancher)
+- transport-maritime:oceans : étendue de la glace de mer (NSIDC, données publiques) (a_brancher)
+- transport-maritime:epidemies_ports : alertes publiques de l'OMS (a_brancher)
 
 ## Relations à vérifier sur une source relue
 - alimentation-mondiale:climat → alimentation-mondiale:eau_agricole [forcage] la saison décide de l'eau disponible ; une sécheresse ne compte qu'au-delà d'un seuil
@@ -78,6 +149,13 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - alimentation-mondiale:prix → alimentation-mondiale:commerce [ambivalent] quand les prix montent, des exportateurs ferment leurs frontières pour protéger leur marché intérieur
 - alimentation-mondiale:prix → alimentation-mondiale:importateurs [forcage] au-delà d'un seuil de prix, les ménages pauvres et les budgets publics décrochent (lien documenté avec les émeutes, à vérifier)
 - alimentation-mondiale:prix → alimentation-mondiale:cultures [forcage] des prix hauts font semer plus la saison suivante
+- alimentation-mondiale:chimie_sols → alimentation-mondiale:cultures [forcage] le rendement suit l'élément qui manque le plus : abondants partout sauf un, il plafonne quand même
+- alimentation-mondiale:engrais → alimentation-mondiale:chimie_sols [forcage] les engrais remplissent le sol en nutriments, jusqu'à saturation ; l'excès part dans l'eau
+- alimentation-mondiale:elevage → alimentation-mondiale:chimie_sols [mutualisme] le fumier rend au sol l'azote et le phosphore que l'herbe a pris
+- alimentation-mondiale:elevage → alimentation-mondiale:cultures [predation] les troupeaux nourris aux grains entrent en concurrence avec l'alimentation humaine pour les récoltes
+- alimentation-mondiale:pathogenes → alimentation-mondiale:elevage [predation] une épizootie décime les troupeaux ; au-delà d'un seuil de foyers, les abattages massifs coupent l'offre
+- alimentation-mondiale:pathogenes → alimentation-mondiale:cultures [predation] une nouvelle souche de rouille ou de mildiou peut contourner les résistances d'une région entière
+- alimentation-mondiale:pollinisateurs → alimentation-mondiale:cultures [mutualisme] les pollinisateurs font les fruits et les oléagineux, et vivent des fleurs (au sein du vivant, entre animal et végétal)
 - climat-extremes:oceans → climat-extremes:oscillations [forcage] la chaleur du Pacifique équatorial fait basculer El Niño ou La Niña
 - climat-extremes:oscillations → climat-extremes:atmosphere [forcage] les oscillations déplacent pluies et chaleurs sur plusieurs continents (télé-connexions)
 - climat-extremes:atmosphere → climat-extremes:saisons [forcage] un blocage qui dure transforme un temps chaud en vague de chaleur
@@ -92,6 +170,27 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - climat-extremes:saisons → climat-extremes:exposes [forcage] au-delà d'un seuil de chaleur ou de froid, réseaux et santé cèdent
 - climat-extremes:tempetes → climat-extremes:exposes [forcage] cyclones et inondations frappent infrastructures et récoltes
 - climat-extremes:exposes → climat-extremes:vegetation [forcage] urbanisation et défrichement réduisent la végétation qui tamponnait les extrêmes
+- climat-extremes:chimie_atmosphere → climat-extremes:rayonnement [forcage] les gaz à effet de serre retiennent la chaleur : le bilan d'énergie penche vers le réchauffement
+- climat-extremes:rayonnement → climat-extremes:tendance [forcage] un bilan d'énergie positif fait monter les températures de fond
+- climat-extremes:rayonnement → climat-extremes:rayonnement [forcage] au sein du niveau physique : moins de glace, moins de lumière renvoyée, plus de chaleur, encore moins de glace (rétroaction d'albédo)
+- climat-extremes:oceans → climat-extremes:chimie_atmosphere [predation] les océans absorbent une part du CO2 ; plus chauds et plus acides, ils en absorbent moins
+- climat-extremes:relief → climat-extremes:secheresses [forcage] une chaîne de montagnes arrête les pluies : un versant arrosé, l'autre sec (ombre pluviométrique)
+- climat-extremes:relief → climat-extremes:atmosphere [contrainte] le relief canalise les vents et fixe la place des blocages et des moussons
+- climat-extremes:tendance → climat-extremes:oscillations [forcage] le climat de fond peut changer la fréquence des épisodes El Niño (débat scientifique, à vérifier)
+- cycles-biogeochimiques:combustion → cycles-biogeochimiques:carbone [forcage] la combustion libère dans l'air le carbone stocké dans les roches
+- cycles-biogeochimiques:carbone → cycles-biogeochimiques:climat [forcage] plus de gaz à effet de serre réchauffe le climat (passage du chimique au climatique)
+- cycles-biogeochimiques:climat → cycles-biogeochimiques:eau [forcage] un air plus chaud contient plus de vapeur : pluies plus fortes et sécheresses plus dures
+- cycles-biogeochimiques:eau → cycles-biogeochimiques:climat [forcage] la vapeur d'eau amplifie le réchauffement (rétroaction au sein du système air-eau)
+- cycles-biogeochimiques:vegetation → cycles-biogeochimiques:carbone [predation] la photosynthèse retire du carbone de l'air, qui nourrit la plante (mutualisme chimique-végétal) ; au-delà d'un seuil de stress, le puits devient source
+- cycles-biogeochimiques:microbes_du_sol → cycles-biogeochimiques:carbone [forcage] les décomposeurs rendent le carbone à l'air, plus vite quand il fait chaud
+- cycles-biogeochimiques:microbes_du_sol → cycles-biogeochimiques:azote [forcage] au sein du sol vivant, les bactéries fixent, transforment et relâchent l'azote
+- cycles-biogeochimiques:engrais → cycles-biogeochimiques:azote [forcage] l'industrie fixe autant d'azote que le vivant ou plus (à vérifier)
+- cycles-biogeochimiques:azote → cycles-biogeochimiques:vegetation [forcage] l'azote nourrit les plantes jusqu'à saturation ; l'excès pollue rivières et côtes
+- cycles-biogeochimiques:elevage → cycles-biogeochimiques:carbone [forcage] les ruminants émettent du méthane (passage de l'animal au chimique)
+- cycles-biogeochimiques:elevage → cycles-biogeochimiques:azote [forcage] fumiers et lisiers chargent les sols et les eaux en azote
+- cycles-biogeochimiques:vegetation → cycles-biogeochimiques:elevage [predation] la prairie nourrit le troupeau ; au-delà d'une charge, le surpâturage la détruit (prédation)
+- cycles-biogeochimiques:combustion → cycles-biogeochimiques:soufre [forcage] charbon et fioul libèrent du soufre, qui retombe en pluies acides
+- cycles-biogeochimiques:phosphore → cycles-biogeochimiques:engrais [forcage] le phosphore des engrais vient de quelques roches, ressource finie à l'échelle humaine
 - dette-emergents:monnaies → dette-emergents:dette_publique [forcage] une dépréciation gonfle la dette en dollars ; au-delà d'un seuil elle devient insoutenable
 - dette-emergents:monnaies → dette-emergents:inflation_locale [forcage] la dévaluation renchérit les importations, carburants et pain d'abord
 - dette-emergents:reserves → dette-emergents:monnaies [forcage] des réserves suffisantes défendent la monnaie ; épuisées, la chute est brutale
@@ -104,6 +203,12 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - dette-emergents:matieres_premieres → dette-emergents:reserves [forcage] les recettes d'exportation remplissent ou vident les réserves selon les prix
 - dette-emergents:creanciers → dette-emergents:monnaies [forcage] les flux des investisseurs entrent et sortent avec l'humeur mondiale
 - dette-emergents:politique_interieure → dette-emergents:dette_publique [forcage] élections et instabilité changent la volonté de payer ou d'ajuster
+- dette-emergents:notations_definitions → dette-emergents:creanciers [forcage] une dégradation sous un seuil de note oblige des fonds à vendre : la convention déclenche le flux
+- dette-emergents:notations_definitions → dette-emergents:dette_publique [forcage] ce qui « compte comme » défaut change le coût de la dette et l'accès aux marchés
+- dette-emergents:dette_publique → dette-emergents:notations_definitions [ambivalent] au sein du couple économie-convention : la dette qui monte fait baisser la note, qui renchérit la dette
+- dette-emergents:recoltes_catastrophes → dette-emergents:matieres_premieres [forcage] une sécheresse ou un cyclone coupe les recettes d'exportation agricoles
+- dette-emergents:recoltes_catastrophes → dette-emergents:dette_publique [forcage] une catastrophe majeure creuse la dette d'un petit pays d'un coup
+- dette-emergents:gisements → dette-emergents:matieres_premieres [forcage] les gisements font les recettes, mais attachent le pays aux cycles des prix
 - eau-moyen-orient:pluies → eau-moyen-orient:fleuves [forcage] pluies et fonte des neiges font les crues des fleuves
 - eau-moyen-orient:pluies → eau-moyen-orient:nappes [forcage] les pluies rechargent lentement les seules nappes renouvelables
 - eau-moyen-orient:chaleur → eau-moyen-orient:barrages [forcage] la chaleur évapore les retenues
@@ -118,6 +223,14 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - eau-moyen-orient:dessalement → eau-moyen-orient:rarete [forcage] le dessalement fournit l'eau des villes du Golfe ; une usine arrêtée crée une pénurie immédiate
 - eau-moyen-orient:rarete → eau-moyen-orient:villes [forcage] des coupures qui durent font descendre les gens dans la rue (lien à vérifier par pays)
 - eau-moyen-orient:villes → eau-moyen-orient:rarete [forcage] la croissance urbaine accroît la demande et les fuites
+- eau-moyen-orient:relief → eau-moyen-orient:pluies [forcage] les montagnes captent les pluies et la neige qui nourrissent les fleuves ; l'autre versant reste sec
+- eau-moyen-orient:relief → eau-moyen-orient:fleuves [contrainte] les lignes de partage des eaux décident quels pays partagent quel fleuve, et lequel est en amont
+- eau-moyen-orient:climat_regime → eau-moyen-orient:pluies [forcage] la dérive du climat réduit la neige et les pluies utiles
+- eau-moyen-orient:fleuves → eau-moyen-orient:nappes [forcage] relation propre au niveau de l'eau : les crues rechargent les nappes
+- eau-moyen-orient:irrigation → eau-moyen-orient:chimie_eau [forcage] irriguer sans drainer sale les sols ; un sol salé ne redevient pas fertile par le même chemin
+- eau-moyen-orient:dessalement → eau-moyen-orient:chimie_eau [forcage] la saumure rejetée rend le Golfe plus salé autour des usines
+- eau-moyen-orient:rarete → eau-moyen-orient:maladies_hydriques [forcage] quand l'eau potable manque assez longtemps, les maladies hydriques reviennent
+- eau-moyen-orient:maladies_hydriques → eau-moyen-orient:villes [forcage] une épidémie d'eau passe du niveau microbien au niveau social quand elle devient assez forte
 - economie-chinoise:immobilier → economie-chinoise:activite [forcage] la crise immobilière pèse longtemps sur l'investissement ; la confiance ne revient pas par le même chemin
 - economie-chinoise:immobilier → economie-chinoise:consommation [forcage] le logement est l'épargne principale des ménages ; sa baisse les rend prudents
 - economie-chinoise:consommation → economie-chinoise:activite [forcage] une consommation faible laisse l'activité dépendre des exportations et de l'investissement
@@ -130,6 +243,12 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - economie-chinoise:activite → economie-chinoise:matieres_premieres [forcage] la demande chinoise de pétrole, de fer et de cuivre suit l'industrie et la construction
 - economie-chinoise:statistiques → economie-chinoise:politique_monetaire [forcage] les décisions et les marchés réagissent au chiffre publié, convention dont la fiabilité est débattue
 - economie-chinoise:emploi → economie-chinoise:pouvoir [forcage] le chômage des jeunes est une pression lente sur la légitimité
+- economie-chinoise:eau_fleuves → economie-chinoise:activite [forcage] une sécheresse fait baisser l'hydroélectricité et peut imposer des coupures aux usines
+- economie-chinoise:demographie → economie-chinoise:immobilier [forcage] moins de jeunes ménages, moins de demande de logements, et la confiance ne revient pas au même rythme
+- economie-chinoise:demographie → economie-chinoise:consommation [forcage] le vieillissement pousse à l'épargne de précaution
+- economie-chinoise:epizooties → economie-chinoise:consommation [forcage] une épizootie qui décime le cheptel porcin fait bondir le prix du porc et pèse sur le budget des ménages
+- economie-chinoise:sols_chimie → economie-chinoise:pouvoir [forcage] la qualité des sols ne remonte au niveau du pouvoir qu'à travers une alerte sur la sécurité alimentaire
+- economie-chinoise:pouvoir → economie-chinoise:statistiques [ambivalent] entre statut et convention : le pouvoir décide de ce qui est publié et comment, et les chiffres publiés bornent à leur tour son récit
 - energie-mondiale:production → energie-mondiale:prix [forcage] plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise, le moindre arrêt fait bondir les prix
 - energie-mondiale:demande → energie-mondiale:prix [forcage] une demande forte fait monter les prix
 - energie-mondiale:stocks → energie-mondiale:prix [forcage] les stocks amortissent les chocs ; bas, ils n'amortissent plus
@@ -143,6 +262,28 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - energie-mondiale:climat → energie-mondiale:demande [forcage] un hiver froid fait monter la demande de gaz et de fioul
 - energie-mondiale:climat → energie-mondiale:production [forcage] ouragans dans le golfe du Mexique, arrêts de plateformes
 - energie-mondiale:recits → energie-mondiale:prix [forcage] annonces et menaces bougent les prix avant les flux
+- energie-mondiale:demande → energie-mondiale:chimie_combustion [forcage] brûler plus d'énergie fossile rejette plus de carbone et de soufre
+- energie-mondiale:chimie_combustion → energie-mondiale:climat_regime [forcage] le carbone accumulé réchauffe le climat ; l'effet traverse les niveaux, du chimique au climat, par accumulation lente
+- energie-mondiale:climat_regime → energie-mondiale:climat [forcage] le régime climatique rend plus fréquents les hivers anormaux, les vagues de chaleur et les ouragans de la saison
+- energie-mondiale:nucleaire_civil → energie-mondiale:demande [forcage] des réacteurs disponibles réduisent le besoin de gaz pour l'électricité ; des arrêts imprévus le font bondir
+- energie-mondiale:decisions → energie-mondiale:nucleaire_civil [forcage] autorisations, sorties ou relances du nucléaire décident du parc disponible (une convention qui agit sur l'atomique)
+- energie-mondiale:transport → energie-mondiale:raffinage [forcage] au sein du niveau technique : un transport interrompu prive les raffineries de brut
+- energie-mondiale:decisions → energie-mondiale:prix [forcage] une décision ou une sanction publiée bouge le prix avant tout flux physique (convention vers économie)
+- epidemies:agent → epidemies:agent [forcage] propre au niveau microbiologique : réplication et sélection font apparaître des variants plus transmissibles
+- epidemies:reservoirs → epidemies:reservoirs [forcage] propre au niveau animal : un élevage dense amplifie une épizootie
+- epidemies:reservoirs → epidemies:agent [forcage] le passage de l'animal à l'humain (zoonose) est rare et demande un contact assez fort
+- epidemies:agent → epidemies:malades [predation] l'agent vit aux dépens des hôtes (prédation) ; l'immunité qu'ils acquièrent le freine
+- epidemies:malades → epidemies:malades [forcage] propre à la contagion : au-dessus d'un seuil de contacts, la croissance devient exponentielle
+- epidemies:milieu → epidemies:malades [forcage] les saisons rythment les vagues (hiver pour les virus respiratoires, chaleur et pluies pour les maladies à moustiques)
+- epidemies:comportements → epidemies:malades [competition] les gestes barrières freinent la contagion ; la lassitude, une fois installée, ne recule pas vite
+- epidemies:malades → epidemies:convention [forcage] la maladie n'existe socialement qu'une fois nommée, définie et comptée ; une déclaration ne vient qu'au-delà d'un seuil
+- epidemies:convention → epidemies:autorites [forcage] une déclaration d'urgence déclenche les pouvoirs exceptionnels
+- epidemies:convention → epidemies:malades [forcage] changer la définition de cas change le nombre compté sans changer la maladie
+- epidemies:autorites → epidemies:comportements [ambivalent] les consignes changent les comportements, d'autant plus que la confiance est haute
+- epidemies:autorites → epidemies:economie [forcage] fermetures et restrictions pèsent sur l'activité
+- epidemies:technique → epidemies:malades [forcage] vaccins et traitements réduisent la sévérité
+- epidemies:recits → epidemies:comportements [forcage] rumeurs et polarisation font accepter ou refuser les mesures
+- epidemies:economie → epidemies:technique [forcage] les chaînes d'approvisionnement conditionnent la production de tests et de vaccins
 - foret-et-sols-vivants:emissions → foret-et-sols-vivants:pluies_acides [forcage] les fumées chargent les pluies en acides
 - foret-et-sols-vivants:pluies_acides → foret-et-sols-vivants:sol_mineral [forcage] les pluies acidifient le sol quand son pouvoir tampon est épuisé
 - foret-et-sols-vivants:sol_mineral → foret-et-sols-vivants:champignons_symbiotiques [forcage] un sol trop acide fait disparaître les champignons utiles
@@ -174,6 +315,14 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - guerre-levant:humanitaire → guerre-levant:recits [forcage] la situation humanitaire nourrit les récits et la pression internationale
 - guerre-levant:recits → guerre-levant:puissances [forcage] l'opinion pèse sur les gouvernements occidentaux et régionaux
 - guerre-levant:liban → guerre-levant:syrie_irak [forcage] les recompositions libanaises et syriennes se répondent
+- guerre-levant:relief → guerre-levant:liban [contrainte] hauteurs et vallées structurent depuis longtemps les zones de confrontation et les lignes de séparation
+- guerre-levant:relief → guerre-levant:eau [forcage] les hauteurs reçoivent les pluies qui nourrissent le Jourdain et les nappes : contrôler les hauteurs, c'est toucher à l'eau
+- guerre-levant:eau → guerre-levant:gaza [forcage] une nappe épuisée et salée rend la vie intenable au-delà d'un seuil
+- guerre-levant:eau → guerre-levant:epidemies [forcage] moins d'eau potable, plus d'épidémies ; le passage au niveau microbien se fait sous un seuil d'accès
+- guerre-levant:humanitaire → guerre-levant:epidemies [forcage] vaccinations et assainissement freinent les épidémies, si l'aide entre
+- guerre-levant:epidemies → guerre-levant:humanitaire [forcage] une épidémie déborde les secours ; assez forte, elle impose parfois des trêves sanitaires
+- guerre-levant:convention → guerre-levant:mediateurs [forcage] reconnaissances et résolutions donnent ou retirent un cadre aux trêves ; un fait conventionnel change par déclaration
+- guerre-levant:puissances → guerre-levant:mediateurs [mutualisme] relation propre au niveau géopolitique : puissances et médiateurs s'appuient l'un sur l'autre (mutualisme)
 - inflation-mondiale:energie → inflation-mondiale:prix_conso [forcage] l'énergie passe vite dans les prix, d'abord par les carburants
 - inflation-mondiale:alimentation → inflation-mondiale:prix_conso [forcage] les prix alimentaires pèsent plus lourd dans les pays pauvres
 - inflation-mondiale:prix_conso → inflation-mondiale:salaires [mutualisme] boucle prix-salaires : chacun nourrit l'autre quand le travail manque
@@ -187,6 +336,13 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - inflation-mondiale:budget → inflation-mondiale:prix_conso [forcage] subventions et boucliers baissent les prix mesurés ; déficits et droits de douane les montent
 - inflation-mondiale:budget → inflation-mondiale:banques_centrales [competition] quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre
 - inflation-mondiale:statistiques → inflation-mondiale:banques_centrales [forcage] les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée
+- inflation-mondiale:epidemies → inflation-mondiale:elevage_cultures [forcage] une épizootie (grippe aviaire, peste porcine) décime des élevages : l'effet passe du microbe à l'animal
+- inflation-mondiale:elevage_cultures → inflation-mondiale:alimentation [forcage] des pertes d'élevage ou de récolte font monter certains prix alimentaires (œufs, porc, céréales)
+- inflation-mondiale:epidemies → inflation-mondiale:approvisionnement [forcage] une épidémie humaine ferme usines, ports et frontières
+- inflation-mondiale:epidemies → inflation-mondiale:statistiques [forcage] un virus existe, mais ce qui en est compté dépend de conventions : définition d'un cas, déclaration d'urgence, méthode des indices de prix
+- inflation-mondiale:climat_regime → inflation-mondiale:elevage_cultures [forcage] un climat plus chaud et plus sec réduit rendements et pâturages
+- inflation-mondiale:monnaies → inflation-mondiale:energie [forcage] au sein du niveau économique : un dollar fort renchérit l'énergie, payée en dollars, pour les autres pays
+- inflation-mondiale:budget → inflation-mondiale:statistiques [forcage] au croisement du statut et de la convention : subventions et boucliers changent le chiffre mesuré sans changer la cause
 - iran-nucleaire:etats_unis → iran-nucleaire:pouvoir_iranien [competition] rivalité de long terme ; chacun réduit les options de l'autre
 - iran-nucleaire:etats_unis → iran-nucleaire:sanctions [forcage] l'exécutif américain décide l'essentiel des sanctions primaires et secondaires
 - iran-nucleaire:sanctions → iran-nucleaire:societe_iranienne [forcage] les sanctions pèsent sur la monnaie, les prix et l'emploi ; l'effet plafonne quand tout est déjà sanctionné
@@ -202,6 +358,40 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - iran-nucleaire:europe → iran-nucleaire:negociations [forcage] les Européens servent de médiateurs et de signataires, avec une marge propre limitée
 - iran-nucleaire:voisins → iran-nucleaire:etats_unis [forcage] Israël et les monarchies du Golfe pèsent sur la ligne américaine, dans un sens ou dans l'autre
 - iran-nucleaire:recits → iran-nucleaire:negociations [forcage] lignes rouges publiques et démentis compliquent ou préparent les concessions
+- iran-nucleaire:sismicite → iran-nucleaire:surete_atomique [forcage] un pays sismique fait peser un risque de sûreté sur ses installations ; le passage du niveau minéral au niveau atomique demande un séisme fort
+- iran-nucleaire:sismicite → iran-nucleaire:societe_iranienne [forcage] un grand séisme frappe la société d'un coup
+- iran-nucleaire:surete_atomique → iran-nucleaire:verification [forcage] un incident de sûreté attire missions et rapports de l'AIEA
+- iran-nucleaire:surete_atomique → iran-nucleaire:voisins [forcage] une contamination ne s'arrête pas aux frontières : les voisins s'en inquiètent au-delà d'un seuil
+- iran-nucleaire:relief_sites → iran-nucleaire:verification [contrainte] ce qui est abrité sous le relief est plus difficile à vérifier de l'extérieur
+- iran-nucleaire:europe → iran-nucleaire:etats_unis [mutualisme] relation propre au niveau géopolitique : coordination occidentale (mutualisme), plus ou moins serrée
+- iran-nucleaire:russie_chine → iran-nucleaire:etats_unis [competition] relation propre au niveau géopolitique : rivalité des puissances qui borne toute solution au Conseil
+- nucleaire-radiologique:atome → nucleaire-radiologique:atome [forcage] propre au niveau atomique : l'activité d'une source décroît d'elle-même selon sa demi-vie
+- nucleaire-radiologique:atome → nucleaire-radiologique:sources [commensalisme] la radioactivité fait l'utilité de la source (soigner, contrôler des soudures) et son danger
+- nucleaire-radiologique:sources → nucleaire-radiologique:signalement [forcage] une perte ou un vol déclenche l'alerte ; plus la source est dangereuse, plus l'alerte est large et rapide
+- nucleaire-radiologique:signalement → nucleaire-radiologique:sources [forcage] recherche puis récupération : la plupart des sources signalées sont retrouvées (part à vérifier)
+- nucleaire-radiologique:signalement → nucleaire-radiologique:recits [forcage] l'alerte publique fait l'actualité
+- nucleaire-radiologique:sources → nucleaire-radiologique:sante [forcage] une source sortie de son contrôle peut exposer des personnes qui l'ignorent
+- nucleaire-radiologique:sources → nucleaire-radiologique:environnement [forcage] la contamination n'apparaît que si l'enveloppe est brisée
+- nucleaire-radiologique:surete → nucleaire-radiologique:sources [ambivalent] autorisations, inspections et registres réduisent les pertes
+- nucleaire-radiologique:surete → nucleaire-radiologique:signalement [forcage] les régulateurs pilotent la recherche et notifient l'AIEA
+- nucleaire-radiologique:convention → nucleaire-radiologique:signalement [forcage] la catégorie de la source et le classement de l'événement décident de l'ampleur de la réponse et de ce qui est rendu public
+- nucleaire-radiologique:electricite → nucleaire-radiologique:environnement [forcage] en temps normal presque rien ; au-delà d'un seuil d'accident, une contamination durable
+- nucleaire-radiologique:recits → nucleaire-radiologique:electricite [forcage] la peur après un accident fait fermer des réacteurs ; elle ne retombe pas par le même chemin
+- nucleaire-radiologique:traites → nucleaire-radiologique:surete [forcage] les traités donnent à l'AIEA ses garanties et ses inspections
+- nucleaire-radiologique:environnement → nucleaire-radiologique:sante [forcage] propre au passage chimique-vivant : la contamination entre dans l'eau, les sols et les aliments
+- oceans-et-fleuves:climat → oceans-et-fleuves:oceans [mutualisme] l'océan absorbe l'essentiel de la chaleur ajoutée, puis la rend : il amortit et prolonge le réchauffement
+- oceans-et-fleuves:oceans → oceans-et-fleuves:cycle [forcage] les oscillations océaniques déplacent les pluies sur des continents entiers
+- oceans-et-fleuves:climat → oceans-et-fleuves:glaces [forcage] les glaces fondent ; elles ne se reconstituent pas au même rythme
+- oceans-et-fleuves:glaces → oceans-et-fleuves:niveau_mer [forcage] moins de glace sur les terres, plus de mer (au sein du système eau-océan)
+- oceans-et-fleuves:glaces → oceans-et-fleuves:fleuves [forcage] les glaciers nourrissent les fleuves l'été ; quand ils ont trop fondu, l'étiage s'effondre
+- oceans-et-fleuves:cycle → oceans-et-fleuves:fleuves [forcage] des pluies au-delà d'un seuil font déborder les fleuves
+- oceans-et-fleuves:cycle → oceans-et-fleuves:nappes [forcage] les pluies rechargent lentement les nappes
+- oceans-et-fleuves:barrages → oceans-et-fleuves:fleuves [predation] le barrage prend l'eau et les sédiments du fleuve (prédation) ; les deltas en aval s'enfoncent
+- oceans-et-fleuves:barrages → oceans-et-fleuves:nappes [forcage] l'irrigation vide les nappes plus vite qu'elles ne se remplissent
+- oceans-et-fleuves:fleuves → oceans-et-fleuves:navigation_fluviale [forcage] sous un niveau critique, les péniches ne passent plus ou passent à moitié pleines (passage de l'eau à l'économie)
+- oceans-et-fleuves:fleuves → oceans-et-fleuves:refroidissement [forcage] un fleuve trop chaud ou trop bas fait réduire la production des centrales
+- oceans-et-fleuves:oceans → oceans-et-fleuves:vivant_aquatique [forcage] chaleur et acidité blanchissent les récifs et déplacent les poissons ; les remontées d'eaux froides nourrissent le plancton
+- oceans-et-fleuves:niveau_mer → oceans-et-fleuves:fleuves [forcage] la mer remonte dans les deltas et sale les eaux douces
 - ormuz:milieu → ormuz:flux_energie [contrainte] le goulet concentre le flux sur un seul passage étroit
 - ormuz:flux_energie → ormuz:prix [forcage] une baisse du flux fait monter les prix mondiaux
 - ormuz:force → ormuz:navigation [predation] saisies, menaces et mines pèsent sur la navigation (prédation : la force gagne un levier)
@@ -214,6 +404,12 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - ormuz:milieu → ormuz:interieur_iran [forcage] chaleur et rareté de l'eau pèsent sur la vie et la contestation
 - ormuz:recits → ormuz:prix [forcage] une menace verbale bouge les prix avant tout fait
 - ormuz:force → ormuz:recits [mutualisme] démonstrations de force et récits se nourrissent (signalisation)
+- ormuz:climat_regime → ormuz:mer_golfe [forcage] le réchauffement du climat réchauffe une mer déjà chaude et peu profonde
+- ormuz:mer_golfe → ormuz:riverains [forcage] une mer trop chaude ou polluée gêne le dessalement dont dépendent les villes riveraines
+- ormuz:force → ormuz:pollution_marine [forcage] une attaque ou un accident sur un pétrolier peut provoquer une marée noire
+- ormuz:pollution_marine → ormuz:mer_golfe [forcage] les hydrocarbures et la saumure dégradent une mer qui se renouvelle lentement
+- ormuz:navigation → ormuz:flux_energie [forcage] au sein du niveau économique : sans navires disponibles et assurés, le flux d'énergie ne passe pas
+- ormuz:milieu → ormuz:force [contrainte] le relief du détroit (îles, côtes proches, passage étroit) donne un avantage à qui tient les rives
 - politique-americaine:executif → politique-americaine:congres [ambivalent] quand les majorités divergent, chacun bloque l'autre ; alignées, elles s'appuient
 - politique-americaine:tribunaux → politique-americaine:executif [ambivalent] injonctions et arrêts suspendent ou annulent des décrets ; l'exécutif fait appel ou réécrit
 - politique-americaine:etats_federes → politique-americaine:tribunaux [forcage] les États portent une part des recours contre les décisions fédérales
@@ -227,6 +423,27 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - politique-americaine:executif → politique-americaine:sanctions [forcage] les désignations relèvent de l'exécutif et se décident sans vote
 - politique-americaine:executif → politique-americaine:energie [forcage] ventes de la réserve stratégique et permis d'exportation suivent les prix et le calendrier électoral
 - politique-americaine:congres → politique-americaine:executif [forcage] confirmations des nominations et contrôle parlementaire
+- politique-americaine:entourage → politique-americaine:executif [ambivalent] l'entourage filtre l'information et pèse sur les décisions ; une vague de départs ou de disgrâces le recompose et change la ligne
+- politique-americaine:elections → politique-americaine:entourage [forcage] alliés et financeurs suivent la dynamique électorale : une défaite les éloigne, une victoire les rapproche
+- politique-americaine:regles_electorales → politique-americaine:elections [contrainte] règles et découpages bornent ce qu'un même vote produit en sièges
+- politique-americaine:tribunaux → politique-americaine:regles_electorales [forcage] les recours redessinent les cartes et les règles de vote
+- politique-americaine:executif → politique-americaine:etats_federes [ambivalent] au sein du niveau statut : le fédéralisme, où l'État fédéral ordonne et les États résistent, appliquent ou contournent
+- politique-americaine:climat_risques → politique-americaine:etats_federes [forcage] une catastrophe majeure franchit le seuil de la déclaration fédérale et appelle l'aide de l'État fédéral
+- politique-americaine:eau_fleuves → politique-americaine:etats_federes [competition] quand le Colorado baisse, les États d'amont et d'aval se disputent les mêmes volumes
+- relief-et-montagnes:chaines → relief-et-montagnes:obstacles [contrainte] une chaîne ne se franchit que par quelques cols et vallées, qui concentrent tous les passages
+- relief-et-montagnes:chaines → relief-et-montagnes:pluies_orographiques [forcage] la chaîne arrête les nuages : un versant arrosé, l'autre sec (passage du relief à la météo)
+- relief-et-montagnes:pluies_orographiques → relief-et-montagnes:chateaux_d_eau [forcage] les pluies et neiges des hauteurs remplissent les réserves de glace et de neige
+- relief-et-montagnes:climat → relief-et-montagnes:chateaux_d_eau [forcage] le réchauffement fond les glaciers des montagnes ; ils ne se reforment pas au même rythme
+- relief-et-montagnes:obstacles → relief-et-montagnes:guerres [forcage] le relief fige les fronts, protège qui tient les hauteurs, et ouvre les plaines aux offensives (passage du relief à la géopolitique)
+- relief-et-montagnes:obstacles → relief-et-montagnes:routes_frontieres [contrainte] frontières et routes suivent crêtes, cols et vallées : la convention s'appuie sur le relief
+- relief-et-montagnes:routes_frontieres → relief-et-montagnes:guerres [forcage] une frontière de crête mal définie devient un point de friction
+- relief-et-montagnes:seismes_volcans → relief-et-montagnes:sols_versants [forcage] un séisme déclenche des glissements de terrain (au sein du niveau minéral : lente accumulation, rupture brutale)
+- relief-et-montagnes:seismes_volcans → relief-et-montagnes:populations [forcage] un grand séisme tue et déplace ; l'effet passe du minéral au social seulement au-delà d'un seuil de force
+- relief-et-montagnes:seismes_volcans → relief-et-montagnes:climat [forcage] une très grande éruption refroidit le climat une ou deux années (rare)
+- relief-et-montagnes:sols_versants → relief-et-montagnes:obstacles [forcage] un glissement coupe une route ou un col
+- relief-et-montagnes:obstacles → relief-et-montagnes:populations [amensalisme] le relief isole les vallées : abri pour les uns, enfermement pour les autres
+- relief-et-montagnes:cotes_detroits → relief-et-montagnes:guerres [forcage] un détroit étroit donne un levier à qui tient ses rives
+- relief-et-montagnes:chateaux_d_eau → relief-et-montagnes:populations [forcage] les montagnes donnent l'eau aux plaines peuplées en aval
 - rivalite-sino-americaine:commerce → rivalite-sino-americaine:diplomatie [competition] chaque hausse de droits appelle une riposte ; le style de la relation est à mesurer (paire USA–CHN au banc de la réciprocité)
 - rivalite-sino-americaine:technologie → rivalite-sino-americaine:economie_chine [forcage] les contrôles freinent les filières de pointe, puis poussent à l'autonomie
 - rivalite-sino-americaine:technologie → rivalite-sino-americaine:commerce [competition] contrôles sur les puces contre restrictions sur les terres rares : chacun use de son levier
@@ -239,6 +456,13 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - rivalite-sino-americaine:finance → rivalite-sino-americaine:commerce [forcage] le dollar et le yuan amortissent ou amplifient l'effet des droits de douane
 - rivalite-sino-americaine:recits → rivalite-sino-americaine:diplomatie [forcage] les nationalismes réduisent la marge de compromis
 - rivalite-sino-americaine:taiwan → rivalite-sino-americaine:energie [forcage] une crise dans le détroit menacerait des routes de l'énergie et du commerce asiatiques
+- rivalite-sino-americaine:terres_rares → rivalite-sino-americaine:technologie [forcage] puces, aimants et batteries dépendent de minerais raffinés surtout en Chine ; une restriction franchit le seuil d'une pénurie
+- rivalite-sino-americaine:diplomatie → rivalite-sino-americaine:terres_rares [forcage] les licences d'exportation suivent l'état des négociations
+- rivalite-sino-americaine:detroit_relief → rivalite-sino-americaine:taiwan [contrainte] la mer et ses saisons bornent ce qui peut être tenté à travers le détroit
+- rivalite-sino-americaine:atomique → rivalite-sino-americaine:taiwan [forcage] la dissuasion borne l'escalade entre les deux puissances
+- rivalite-sino-americaine:taiwan → rivalite-sino-americaine:technologie [forcage] la fabrication des puces les plus avancées est concentrée à Taïwan : une crise y touche toute la filière
+- rivalite-sino-americaine:alliances → rivalite-sino-americaine:diplomatie [ambivalent] au sein du niveau géopolitique : les alignements des voisins pèsent sur le dialogue au sommet, qui les rassure ou les inquiète
+- rivalite-sino-americaine:recits → rivalite-sino-americaine:taiwan [forcage] un récit nationaliste ne bouge le niveau géopolitique qu'au-delà d'un seuil de mobilisation
 - russie-ukraine:capacites → russie-ukraine:front [forcage] les capacités décident de ce que le front peut faire ; une pénurie fait basculer
 - russie-ukraine:soutiens → russie-ukraine:capacites [forcage] l'aide extérieure alimente les capacités ukrainiennes (et, en face, les livraisons de munitions et de drones à la Russie)
 - russie-ukraine:sanctions → russie-ukraine:economie_russe [forcage] les sanctions érodent l'économie russe lentement ; chaque paquet ajoute moins
@@ -251,6 +475,14 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - russie-ukraine:mer_noire → russie-ukraine:economie_ukraine [forcage] le corridor maritime fait vivre les exportations agricoles
 - russie-ukraine:front → russie-ukraine:mer_noire [forcage] les frappes sur Odessa et les navires réduisent les passages
 - russie-ukraine:soutiens → russie-ukraine:negociations [ambivalent] les soutiens pèsent sur les conditions et le calendrier des négociations
+- russie-ukraine:relief_fleuves → russie-ukraine:front [contrainte] les fleuves et les marais figent des lignes ; la plaine ouverte laisse les forces exposées
+- russie-ukraine:hiver_saisons → russie-ukraine:front [forcage] la boue du dégel arrête les offensives ; le gel les rouvre
+- russie-ukraine:hiver_saisons → russie-ukraine:economie_ukraine [forcage] le froid multiplie l'effet des frappes sur le réseau électrique
+- russie-ukraine:front → russie-ukraine:sols_agriculture [forcage] mines et pollution retirent des terres à la culture ; elles ne reviennent pas au rythme où elles sont perdues
+- russie-ukraine:sols_agriculture → russie-ukraine:mer_noire [forcage] les récoltes remplissent le corridor d'exportation
+- russie-ukraine:front → russie-ukraine:atomique [forcage] des combats près d'une centrale menacent son alimentation et sa sûreté
+- russie-ukraine:atomique → russie-ukraine:negociations [forcage] la sûreté nucléaire est un des rares sujets discutés par les deux camps, sous l'égide de l'AIEA
+- russie-ukraine:front → russie-ukraine:soutiens [ambivalent] au sein du niveau géopolitique : un revers sur le front mobilise ou décourage les soutiens, qui changent à leur tour le rapport de force
 - transport-maritime:securite → transport-maritime:detroits [forcage] au-delà de quelques attaques, les compagnies évitent le passage entier
 - transport-maritime:detroits → transport-maritime:contournement [commensalisme] ce que perd un détroit se reporte sur le contournement (le cap de Bonne-Espérance pour la mer Rouge)
 - transport-maritime:contournement → transport-maritime:fret [forcage] des traversées plus longues immobilisent des navires et font monter le fret
@@ -263,3 +495,9 @@ Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'po
 - transport-maritime:flottes → transport-maritime:securite [ambivalent] les compagnies et les forces armées s'ajustent l'une à l'autre (escortes demandées, routes choisies)
 - transport-maritime:recits → transport-maritime:assurances [forcage] une menace annoncée suffit parfois à relever le risque perçu
 - transport-maritime:detroits → transport-maritime:ports [forcage] un passage rouvert après une crise envoie des vagues de navires dans les ports
+- transport-maritime:climat → transport-maritime:fleuves [forcage] une sécheresse fait baisser lacs et fleuves
+- transport-maritime:fleuves → transport-maritime:detroits [forcage] quand le lac qui alimente les écluses baisse, le canal de Panama limite les passages (l'eau agit sur un passage)
+- transport-maritime:oceans → transport-maritime:contournement [forcage] la fonte de la glace arctique ouvre peu à peu une route du Nord
+- transport-maritime:epidemies_ports → transport-maritime:ports [forcage] une épidémie ferme ou ralentit des ports : le microbe arrête le gros
+- transport-maritime:fret → transport-maritime:flottes [predation] au sein du niveau économique : un fret cher attire les commandes de navires, qui finissent par faire baisser le fret
+- transport-maritime:ports → transport-maritime:contournement [forcage] au sein du niveau technique : la capacité des ports de rechange décide si un contournement est praticable
