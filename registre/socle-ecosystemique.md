@@ -1,6 +1,6 @@
 # Socle du programme écosystémique
 
-Règles coutumières : {'source': 28, 'absence': 4, 'auteur': 2} ; valables partout : us_erreur_selon_temps_restant, regimes_fermes_inertie, regimes_fermes_contestation, sondages_erreur_comparee, presidentielles_mode_de_scrutin, onu_conseil_securite_vote, coups_d_etat_frequence, chefs_d_etat_sortie_irreguliere, second_tour_retournement. Briques : seuil (vitesse) valide, course (taille) non tranché.
+Règles coutumières : {'source': 29, 'absence': 4, 'auteur': 2} ; valables partout : us_erreur_selon_temps_restant, regimes_fermes_inertie, regimes_fermes_contestation, sondages_erreur_comparee, presidentielles_mode_de_scrutin, onu_conseil_securite_vote, coups_d_etat_frequence, chefs_d_etat_sortie_irreguliere, second_tour_retournement, parlements_mode_de_scrutin. Briques : seuil (vitesse) valide, course (taille) non tranché.
 
 | Fiche | Espaces des règles | Règles (dont absences) | Inconnus | Natures des traces |
 |---|---|---|---|---|

@@ -46,3 +46,15 @@ def test_ipu():
     f = {"election": "next Kuwaiti parliamentary election", "evenement": "rang", "rang": 1, "classe": "S2", "titre": ""}
     bc.PAYS.setdefault("kuwait", "KW")
     assert "suspendu" in bc.rattacher(f)["motif"]
+
+
+# 0.10.374 : systèmes électoraux IPU
+def test_systemes_ipu():
+    import ipu_parlements as ipu
+    import brique_coutumiere as bc
+    assert "List PR" in ipu.systeme("NL") and "MMP" in ipu.systeme("DE")
+    f = {"election": "2025 Netherlands parliamentary election", "evenement": "rang", "rang": 1, "classe": "S2",
+         "titre": "Will X win the most votes in the 2025 Netherlands parliamentary election?"}
+    r = bc.rattacher(f)
+    assert r["type"] == "legislative_proportionnelle" and abs(r["sigma"] - 1.62 / 0.8) < 1e-9
+    assert "voix → sièges" in bc.rattacher({**f, "titre": "Will X win the most seats in the 2025 Netherlands parliamentary election?"})["motif"]

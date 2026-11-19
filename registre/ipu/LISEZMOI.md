@@ -14,3 +14,10 @@ programmes par son fichier robots, on ne la lit pas). 281 chambres : dates de la
 Décision d'auteur du 2026-11-19 : utilisation validée (question de la clause « pas d'utilisation commerciale » posée
 et tranchée par l'auteur). Lu par `ipu_parlements.py`. Ce n'est PAS une source de résultats (ni voix, ni sièges, ni
 participation, ni système électoral détaillé).
+
+## Systèmes électoraux (export du 2026-11-20)
+
+`systemes-electoraux-2026-11-20.csv` : deux exports du Data explorer fournis par l'auteur, fusionnés par chambre —
+système et sous-système électoral, sièges majoritaires et proportionnels (systèmes mixtes), chambre suspendue, membres
+non élus au suffrage direct, vote obligatoire, âges de vote et d'éligibilité. Même licence. Règle de la base :
+`parlements_mode_de_scrutin`.

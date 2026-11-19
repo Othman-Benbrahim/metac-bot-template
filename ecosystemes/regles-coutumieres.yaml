@@ -416,3 +416,14 @@ regles:
       - {titre: "Passarelli, article sur les seconds tours présidentiels, université La Sapienza, 2022 (figure 1, tableau 2, note 17)", url: "https://iris.uniroma1.it/retrieve/a858b9d9-3b9f-4fea-b7c1-40a9fe5fb2fa/Passarelli_Runoff_2022.pdf", consulte: "2026-11-19"}
       - {titre: "Brookings, Winning runoff elections in Latin America", url: "https://www.brookings.edu/articles/winning-runoff-elections-in-latin-america", consulte: "2026-11-19"}
     statut: source
+
+  - id: parlements_mode_de_scrutin
+    ecosysteme: "Monde · élection des parlements (chambre basse ou unique)"
+    espace: monde
+    echelle: {axe: taille, tranche: "national, par chambre"}
+    structure: course
+    regle: "Système électoral de chaque chambre (281 chambres, novembre 2026), lu dans le relevé IPU Parline : chambres basses ou uniques 74 à la proportionnelle de liste, 43 au scrutin majoritaire uninominal à un tour, 22 en scrutin parallèle, 14 à deux tours, 9 en mixte avec compensation proportionnelle, 8 au vote unique non transférable, 2 au vote unique transférable, 2 au vote préférentiel, 2 au scrutin majoritaire plurinominal. Le relevé dit aussi quelles chambres sont suspendues, non élues au suffrage direct, et où le vote est obligatoire. Il ne donne ni la taille des circonscriptions ni la formule de répartition : le passage des voix aux sièges reste sans règle."
+    parametres: {fichier: "registre/ipu/systemes-electoraux-2026-11-20.csv", lecteur: "ipu_parlements.py"}
+    sources:
+      - {titre: "Union interparlementaire, Parline data explorer, export du 2026-11-20 (CC BY-NC-SA), fourni par l'auteur", url: "https://data.ipu.org/fr/data-explorer/", consulte: "2026-11-20"}
+    statut: source

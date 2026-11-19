@@ -109,9 +109,22 @@ def rattacher(f: dict) -> dict:
             return {"motif": "parlement suspendu (IPU) : règle d'inertie des régimes fermés, pas une course"}
         if ipu.elue_directement(pays) is False:
             return {"motif": "chambre non élue au suffrage direct (IPU) : les sondages ne s'appliquent pas"}
-        if f["evenement"] == "rang" and "seats" in f.get("titre", "").lower():
-            return {"motif": "sièges : pas de règle sourcée voix → sièges pour ce système"}
-        return {"motif": "élection non présidentielle : mode de scrutin non inscrit pour ce pays"}
+        sy = ipu.systeme(pays)
+        if not sy:
+            return {"motif": "élection législative : système électoral absent du relevé IPU"}
+        titre = f.get("titre", "").lower()
+        if "seats" in titre or "largest party" in titre:
+            return {"motif": f"sièges ({sy}) : pas de règle sourcée voix → sièges"}
+        if not (f["evenement"] == "rang" and "votes" in titre):
+            return {"motif": f"élection législative ({sy}) : seule la question « le plus de voix » relève d'une course"}
+        famille = ("proportionnelle" if any(k in sy for k in ("List PR", "MMP", "STV"))
+                   else "uninominal" if any(k in sy for k in ("FPTP", "TRS", "AV", "BV")) else None)
+        if not famille:
+            return {"motif": f"élection législative ({sy}) : système hors des familles de sondages_erreur_comparee"}
+        j = _p("sondages_erreur_comparee")
+        return {"mode": "un_tour", "sigma": j["erreur_part_points"][famille] / j["conversion_sigma"], "fenetre": 7, "pays": pays,
+                "regles": ["parlements_mode_de_scrutin", "sondages_erreur_comparee", "us_erreur_selon_temps_restant"],
+                "type": f"legislative_{famille}"}
     m = _p("presidentielles_mode_de_scrutin")
     mode = "deux_tours" if pays in m["deux_tours"] else "un_tour" if pays in m["un_tour"] else None
     if mode is None:

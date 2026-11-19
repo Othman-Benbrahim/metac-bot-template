@@ -1,6 +1,6 @@
 """Parlements du monde, relevé IPU Parline (bot 0.10.373, ombre).
 
-Lit registre/ipu/parlements-*.csv (export fourni à la main par l'auteur ; l'API est fermée aux programmes, on ne la lit
+Lit registre/ipu/parlements-*.csv et systemes-electoraux-*.csv (export fourni à la main par l'auteur ; l'API est fermée aux programmes, on ne la lit
 pas). Trois usages :
 - statut : chambre « Suspendu » → règle d'inertie des régimes fermés (regimes_fermes_inertie) pour les questions
   « tiendra-t-il des élections » ;
@@ -48,6 +48,23 @@ def basse(iso: str) -> dict | None:
 def elue_directement(iso: str) -> bool | None:
     c = basse(iso)
     return None if c is None else c["designation"] == "Scrutin direct"
+
+
+@lru_cache(maxsize=1)
+def systemes() -> dict[str, dict]:
+    fs = sorted(DOSSIER.glob("systemes-electoraux-*.csv"))
+    return {r["chambre_code"]: r for r in csv.DictReader(fs[-1].open(encoding="utf-8"))} if fs else {}
+
+
+def systeme(iso: str) -> str | None:
+    """Sous-catégorie du système électoral de la chambre basse (ou unique) : « Scrutin proportionnel de liste (List PR) »…"""
+    c = basse(iso)
+    return ((systemes().get(c["chambre_code"]) or {}).get("sous_systeme") or None) if c else None
+
+
+def vote_obligatoire(iso: str) -> str | None:
+    c = basse(iso)
+    return ((systemes().get(c["chambre_code"]) or {}).get("vote_obligatoire") or None) if c else None
 
 
 def _date(s: str) -> date | None:
