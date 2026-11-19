@@ -1,0 +1,92 @@
+{
+  "version_bot": "0.10.308",
+  "note": "base A (jugement sans alphabet) ; score = moyenne des 7 notes centrées, freins inversé ; α appris sans la question jugée ; principal : notes de gpt-5-mini",
+  "principal": {
+    "lignes": 310,
+    "perte_A": 0.3804,
+    "perte_corrigee": 0.3694,
+    "alpha_sur_tout": 1.4,
+    "critere": {
+      "n_nouveaux": 310,
+      "regard": 1,
+      "n_juge": 310,
+      "blocs": 119,
+      "bloc_par": "question",
+      "ecart_moyen": -0.011032080651149998,
+      "intervalle_90_par_blocs": [
+        -0.02688420719409503,
+        0.006057530008154572
+      ],
+      "intervalle_corrige": [
+        -0.03801587618711256,
+        0.01761534404657708
+      ],
+      "niveau_corrige": 0.9938,
+      "verdict": "critère non atteint ; essai à clore"
+    },
+    "secondaire_contre_M": {
+      "n": 309,
+      "perte_M": 0.3622,
+      "perte_corrigee": 0.3704
+    },
+    "secondaire_base_B": {
+      "n": 310,
+      "perte_B": 0.4517,
+      "perte_corrigee": 0.3912,
+      "alpha_sur_tout": 2.0
+    },
+    "unites": {
+      "lignes": 310,
+      "questions_distinctes": 119,
+      "questions_oui_distinctes": 27,
+      "alerte": "310 lignes pour 119 questions distinctes : la preuve repose sur 119, pas sur 310 (intervalles par question)"
+    }
+  },
+  "critere_principal": {
+    "n_nouveaux": 310,
+    "regard": 1,
+    "n_juge": 310,
+    "blocs": 119,
+    "bloc_par": "question",
+    "ecart_moyen": -0.011032080651149998,
+    "intervalle_90_par_blocs": [
+      -0.02688420719409503,
+      0.006057530008154572
+    ],
+    "intervalle_corrige": [
+      -0.03801587618711256,
+      0.01761534404657708
+    ],
+    "niveau_corrige": 0.9938,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "descriptif_sans_fuite_stricte": {
+    "lignes": 164,
+    "perte_A": 0.3896,
+    "perte_corrigee": 0.3893,
+    "alpha_sur_tout": 0.9
+  },
+  "replique_haiku": {
+    "lignes": 120,
+    "perte_A": 0.4762,
+    "perte_corrigee": 0.4855,
+    "alpha_sur_tout": -0.1,
+    "secondaire_contre_M": {
+      "n": 120,
+      "perte_M": 0.4247,
+      "perte_corrigee": 0.4855
+    },
+    "secondaire_base_B": {
+      "n": 120,
+      "perte_B": 0.4609,
+      "perte_corrigee": 0.3992,
+      "alpha_sur_tout": 2.0
+    },
+    "unites": {
+      "lignes": 120,
+      "questions_distinctes": 75,
+      "questions_oui_distinctes": 15,
+      "alerte": "120 lignes pour 75 questions distinctes : la preuve repose sur 75, pas sur 120 (intervalles par question)"
+    }
+  }
+}
