@@ -40,7 +40,7 @@ DEUX_TOURS = {"brazil", "brazilian", "peru", "peruvian", "chile", "chilean", "co
               "poland", "polish", "costa rica", "argentina", "argentine", "congo", "uruguay", "guatemala", "dominican",
               "georgia", "louisiana", "texas", "mississippi", "minas gerais", "bahia", "rio de janeiro", "sao paulo",
               "são paulo"}
-HORS_FORME = re.compile(r"\d+\s*-\s*\d+ seats|\bby \d+-\d+%|popular vote|rounds or fewer|majority of seats|every region|if trump|before "
+HORS_FORME = re.compile(r"\bby \d+%? or more|\d+\s*-\s*\d+ seats|\bby \d+-\d+%|popular vote|rounds or fewer|majority of seats|every region|if trump|before "
                         r"september|electoral votes|margin", re.I)
 
 
@@ -215,11 +215,11 @@ def moyenne_sondages(tabs: list[dict], jour: date, sujet: str) -> dict | None:
 
 # ---------------------------------------------------------------- 3. calcul (déterministe)
 
-def probabilite(parts: dict, f: dict, jours_restants: int) -> float:
+def probabilite(parts: dict, f: dict, jours_restants: int, sigma0: float = SIGMA0) -> float:
     noms = [k for k in parts if k != "__sujet__"]
     mu = np.array([parts[k] for k in noms], dtype=float)
     i = noms.index(parts["__sujet__"])
-    sigma = SIGMA0 * math.sqrt(1 + max(jours_restants, 0) / 30)
+    sigma = sigma0 * math.sqrt(1 + max(jours_restants, 0) / 30)
     g = np.random.default_rng(GRAINE)
     x = np.clip(mu + g.normal(0, sigma, size=(TIRAGES, len(mu))), 0.01, None)
     x = 100 * x / x.sum(axis=1, keepdims=True)
