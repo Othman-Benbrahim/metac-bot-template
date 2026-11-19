@@ -10,6 +10,10 @@ on:
       budget_bedrock:
         description: "plafond Bedrock (Haiku, crédits) en dollars"
         default: "1"
+      etendu:
+        description: "0.10.311 : 16 contre 21 cartes (5 candidates en ombre) sur des situations neuves"
+        type: boolean
+        default: true
 
 concurrency:
   group: bot-alphabet-registre
@@ -32,7 +36,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: "Couverture de l'alphabet"
-        run: uv run python -u banc_couverture_alphabet.py --budget "${{ github.event.inputs.budget || '1' }}" --budget-bedrock "${{ github.event.inputs.budget_bedrock || '1' }}"
+        run: uv run python -u banc_couverture_alphabet.py --budget "${{ github.event.inputs.budget || '1' }}" --budget-bedrock "${{ github.event.inputs.budget_bedrock || '1' }}" ${{ github.event.inputs.etendu == 'true' && '--etendu' || '' }}
         env:
           AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
           AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
@@ -43,7 +47,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/banc-couverture-alphabet.jsonl registre/banc-couverture-alphabet.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/banc-couverture-alphabet.jsonl registre/banc-couverture-alphabet.json registre/banc-couverture-etendue.jsonl registre/banc-couverture-etendue.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : banc de couverture de l'alphabet du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase

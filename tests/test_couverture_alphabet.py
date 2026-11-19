@@ -21,3 +21,19 @@ def test_resumer_couverture():
     r = bc.resumer(ls, ["HIE", "SEU"])
     assert r["codees_par_les_deux"] == 10 and r["gpt"]["couverture"] == 1.0 and r["haiku"]["couverture"] == 0.9
     assert r["couverture_les_deux"] == 0.9 and r["gpt"]["jamais_utilisees"] == ["SEU"] and len(r["restes"]) == 1
+
+
+def test_etendu_lecture_des_candidates():
+    def code(cartes, essentiel):
+        return {"ok": True, "cartes": cartes, "rejetees": 0, "reste": None, "reste_essentiel": essentiel}
+    ls = []
+    for i in range(20):
+        avec = i % 2 == 0
+        ls.append({"qid": f"m:{i}:2025-01-01", "titre": "t",
+                   "gpt16": code(["HIE"], True), "haiku16": code(["HIE"], True),
+                   "gpt21": code(["HIE"] + (["CMP"] if avec else []), not avec),
+                   "haiku21": code(["HIE"] + (["CMP"] if avec else []), not avec)})
+    r = bc.resumer_etendu(ls, ["HIE", "SEU"])
+    assert r["candidates"]["CMP"]["passe"] and not r["candidates"]["CNV"]["passe"]
+    assert r["ensemble"]["couverture_monte_pour_les_deux"]
+    assert set(bc.CANDIDATES) == {"CMP", "ITN", "CAP", "MAR", "CNV"}
