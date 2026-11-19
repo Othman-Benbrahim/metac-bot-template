@@ -224,11 +224,11 @@ compartiments:
     vitesse: jours (tempêtes) à saisons
     taille: méso à macro
   traces:
-  - source: anomalie de température à Berlin (chauffage européen, Open-Meteo)
+  - source: anomalie de température à Berlin (chauffage européen, NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:berlin
-  - source: anomalie de température à Houston (golfe du Mexique, Open-Meteo)
+  - source: anomalie de température à Houston (golfe du Mexique, NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:houston
@@ -313,7 +313,7 @@ compartiments:
     vitesse: décennie
     taille: macro
   traces:
-  - source: dérive annuelle de la température à Berlin (Open-Meteo)
+  - source: dérive annuelle de la température à Berlin (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: climat:berlin

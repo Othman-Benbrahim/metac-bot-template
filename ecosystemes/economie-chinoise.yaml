@@ -308,7 +308,7 @@ compartiments:
     statut: collecte
     fichier: collecte_portwatch.py
     adaptateur: portwatch:malacca:petroliers
-  - source: anomalie de température à Shanghai (demande d'énergie, Open-Meteo)
+  - source: anomalie de température à Shanghai (demande d'énergie, NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:shanghai
@@ -374,7 +374,7 @@ compartiments:
     vitesse: saisons à années
     taille: macro
   traces:
-  - source: anomalie de température à Shanghai (Open-Meteo)
+  - source: anomalie de température à Shanghai (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:shanghai

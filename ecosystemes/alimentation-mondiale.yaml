@@ -249,11 +249,11 @@ compartiments:
     vitesse: semaines à saisons
     taille: méso à macro
   traces:
-  - source: anomalie de température à Delhi (Open-Meteo)
+  - source: anomalie de température à Delhi (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:delhi
-  - source: anomalie de température à Shanghai (Open-Meteo)
+  - source: anomalie de température à Shanghai (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:shanghai

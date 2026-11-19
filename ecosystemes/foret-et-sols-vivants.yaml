@@ -102,7 +102,7 @@ compartiments:
     elements: ["températures moyennes", "régime des pluies", "sécheresses répétées"]
     niveau: {espace: "région", temps: "décennies", vitesse: "décennie", taille: "macro"}
     traces:
-      - {source: "dérive annuelle de la température (anomalie glissante sur 365 jours, Open-Meteo, point le plus proche à brancher)", statut: "a_brancher"}
+      - {source: "dérive annuelle de la température (anomalie glissante sur 365 jours, NASA POWER, point le plus proche à brancher)", statut: "a_brancher"}
   - id: "interventions"
     nom: "Interventions humaines"
     organisation: "economie"

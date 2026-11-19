@@ -98,15 +98,15 @@ compartiments:
     vitesse: semaines à saisons
     taille: méso
   traces:
-  - source: anomalie de température à Berlin (Open-Meteo)
+  - source: anomalie de température à Berlin (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:berlin
-  - source: anomalie de température à Delhi (Open-Meteo)
+  - source: anomalie de température à Delhi (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:delhi
-  - source: anomalie de température à Houston (Open-Meteo)
+  - source: anomalie de température à Houston (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:houston
@@ -224,11 +224,11 @@ compartiments:
   traces:
   - source: anomalies mondiales de température (publiques)
     statut: a_brancher
-  - source: dérive annuelle de la température à Delhi (Open-Meteo, anomalie glissante sur 365 jours)
+  - source: dérive annuelle de la température à Delhi (NASA POWER, anomalie glissante sur 365 jours)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: climat:delhi
-  - source: dérive annuelle de la température à Berlin (Open-Meteo)
+  - source: dérive annuelle de la température à Berlin (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: climat:berlin

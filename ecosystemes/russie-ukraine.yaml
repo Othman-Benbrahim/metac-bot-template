@@ -385,7 +385,7 @@ compartiments:
     vitesse: saisons à décennies
     taille: macro
   traces:
-  - source: anomalies de température à Kyiv et Moscou (Open-Meteo, points à ajouter à collecte_meteo.py)
+  - source: anomalies de température à Kyiv et Moscou (NASA POWER, points à ajouter à collecte_meteo.py)
     statut: a_brancher
 - id: sols_agriculture
   organisation: mineral

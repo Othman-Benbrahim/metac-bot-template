@@ -54,11 +54,11 @@ compartiments:
     vitesse: jours à saisons
     taille: méso
   traces:
-  - source: anomalie de température à Téhéran (Open-Meteo)
+  - source: anomalie de température à Téhéran (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:teheran
-  - source: anomalie de température à Bandar Abbas (Open-Meteo)
+  - source: anomalie de température à Bandar Abbas (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:bandar_abbas
@@ -370,7 +370,7 @@ compartiments:
     vitesse: décennie
     taille: macro
   traces:
-  - source: dérive annuelle de la température à Téhéran (anomalie glissante sur 365 jours, Open-Meteo)
+  - source: dérive annuelle de la température à Téhéran (anomalie glissante sur 365 jours, NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: climat:teheran

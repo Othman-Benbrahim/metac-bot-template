@@ -181,7 +181,7 @@ compartiments:
     statut: collecte
     fichier: collecte_ooni.py
     adaptateur: ooni:IR
-  - source: anomalie de température à Téhéran (Open-Meteo)
+  - source: anomalie de température à Téhéran (NASA POWER)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:teheran

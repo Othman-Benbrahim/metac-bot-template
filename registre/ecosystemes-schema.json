@@ -631,13 +631,13 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Delhi (Open-Meteo)",
+     "source": "anomalie de température à Delhi (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:delhi"
     },
     {
-     "source": "anomalie de température à Shanghai (Open-Meteo)",
+     "source": "anomalie de température à Shanghai (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:shanghai"
@@ -1841,19 +1841,19 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Berlin (Open-Meteo)",
+     "source": "anomalie de température à Berlin (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:berlin"
     },
     {
-     "source": "anomalie de température à Delhi (Open-Meteo)",
+     "source": "anomalie de température à Delhi (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:delhi"
     },
     {
-     "source": "anomalie de température à Houston (Open-Meteo)",
+     "source": "anomalie de température à Houston (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:houston"
@@ -2180,13 +2180,13 @@
      "statut": "a_brancher"
     },
     {
-     "source": "dérive annuelle de la température à Delhi (Open-Meteo, anomalie glissante sur 365 jours)",
+     "source": "dérive annuelle de la température à Delhi (NASA POWER, anomalie glissante sur 365 jours)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "climat:delhi"
     },
     {
-     "source": "dérive annuelle de la température à Berlin (Open-Meteo)",
+     "source": "dérive annuelle de la température à Berlin (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "climat:berlin"
@@ -5096,13 +5096,13 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Téhéran (Open-Meteo)",
+     "source": "anomalie de température à Téhéran (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:teheran"
     },
     {
-     "source": "anomalie de température à Bandar Abbas (Open-Meteo)",
+     "source": "anomalie de température à Bandar Abbas (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:bandar_abbas"
@@ -5914,7 +5914,7 @@
    },
    "traces": [
     {
-     "source": "dérive annuelle de la température à Téhéran (anomalie glissante sur 365 jours, Open-Meteo)",
+     "source": "dérive annuelle de la température à Téhéran (anomalie glissante sur 365 jours, NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "climat:teheran"
@@ -6670,7 +6670,7 @@
      "adaptateur": "portwatch:malacca:petroliers"
     },
     {
-     "source": "anomalie de température à Shanghai (demande d'énergie, Open-Meteo)",
+     "source": "anomalie de température à Shanghai (demande d'énergie, NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:shanghai"
@@ -6842,7 +6842,7 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Shanghai (Open-Meteo)",
+     "source": "anomalie de température à Shanghai (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:shanghai"
@@ -8008,13 +8008,13 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Berlin (chauffage européen, Open-Meteo)",
+     "source": "anomalie de température à Berlin (chauffage européen, NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:berlin"
     },
     {
-     "source": "anomalie de température à Houston (golfe du Mexique, Open-Meteo)",
+     "source": "anomalie de température à Houston (golfe du Mexique, NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:houston"
@@ -8211,7 +8211,7 @@
    },
    "traces": [
     {
-     "source": "dérive annuelle de la température à Berlin (Open-Meteo)",
+     "source": "dérive annuelle de la température à Berlin (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "climat:berlin"
@@ -8383,7 +8383,7 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Delhi (Open-Meteo)",
+     "source": "anomalie de température à Delhi (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:delhi"
@@ -9261,7 +9261,7 @@
    },
    "traces": [
     {
-     "source": "dérive annuelle de la température (anomalie glissante sur 365 jours, Open-Meteo, point le plus proche à brancher)",
+     "source": "dérive annuelle de la température (anomalie glissante sur 365 jours, NASA POWER, point le plus proche à brancher)",
      "statut": "a_brancher"
     }
    ],
@@ -11291,7 +11291,7 @@
    },
    "traces": [
     {
-     "source": "dérive annuelle de la température à Delhi (Open-Meteo)",
+     "source": "dérive annuelle de la température à Delhi (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "climat:delhi"
@@ -12688,7 +12688,7 @@
      "adaptateur": "ooni:IR"
     },
     {
-     "source": "anomalie de température à Téhéran (Open-Meteo)",
+     "source": "anomalie de température à Téhéran (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:teheran"
@@ -16273,7 +16273,7 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Bandar Abbas (Open-Meteo)",
+     "source": "anomalie de température à Bandar Abbas (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:bandar_abbas"
@@ -17105,7 +17105,7 @@
    },
    "traces": [
     {
-     "source": "dérive annuelle de la température à Bandar Abbas (Open-Meteo)",
+     "source": "dérive annuelle de la température à Bandar Abbas (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "climat:bandar_abbas"
@@ -18244,7 +18244,7 @@
    },
    "traces": [
     {
-     "source": "anomalie de température à Houston (Open-Meteo)",
+     "source": "anomalie de température à Houston (NASA POWER)",
      "statut": "collecte",
      "fichier": "collecte_meteo.py",
      "adaptateur": "meteo:houston"
@@ -20680,7 +20680,7 @@
    },
    "traces": [
     {
-     "source": "anomalies de température à Kyiv et Moscou (Open-Meteo, points à ajouter à collecte_meteo.py)",
+     "source": "anomalies de température à Kyiv et Moscou (NASA POWER, points à ajouter à collecte_meteo.py)",
      "statut": "a_brancher"
     }
    ],
