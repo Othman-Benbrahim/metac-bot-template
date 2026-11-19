@@ -43,7 +43,7 @@ compartiments:
       - {nom: "une vague de chaleur", taille: "méso", espace: "région", vitesse: "jours", organisation: "meteo", facette: "non_humain"}
     niveau: {espace: "région", temps: "saisons", vitesse: "jours", taille: "méso"}
     traces:
-      - {source: "anomalie de température à Houston (NASA POWER)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:houston"}
+      - {source: "anomalie de température à Houston (GHCN-Daily, station au sol)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:houston"}
   - id: "eau_refroidissement"
     nom: "Eau de refroidissement et de production"
     organisation: "eau"

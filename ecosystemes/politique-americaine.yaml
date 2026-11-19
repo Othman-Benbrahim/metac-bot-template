@@ -475,7 +475,7 @@ compartiments:
     vitesse: jours à décennies
     taille: méso à macro
   traces:
-  - source: anomalie de température à Houston (NASA POWER)
+  - source: anomalie de température à Houston (GHCN-Daily, station au sol)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:houston

@@ -48,10 +48,10 @@ compartiments:
     vitesse: "minutes à jours"
     taille: "micro à méso"
   traces:
-  - source: "anomalie de température à Delhi (NASA POWER)"
+  - source: "anomalie de température à Delhi (GHCN-Daily, station au sol)"
     statut: "collecte"
     adaptateur: "meteo:delhi"
-  - source: "anomalie de température à Houston (NASA POWER)"
+  - source: "anomalie de température à Houston (GHCN-Daily, station au sol)"
     statut: "collecte"
     adaptateur: "meteo:houston"
 - id: "hormones"

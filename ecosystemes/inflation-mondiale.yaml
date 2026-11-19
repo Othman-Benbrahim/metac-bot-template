@@ -331,7 +331,7 @@ compartiments:
     vitesse: décennie
     taille: macro
   traces:
-  - source: dérive annuelle de la température à Delhi (NASA POWER)
+  - source: dérive annuelle de la température à Delhi (GHCN-Daily, station au sol)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: climat:delhi

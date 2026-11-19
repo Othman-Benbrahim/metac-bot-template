@@ -25,7 +25,7 @@ compartiments:
     vitesse: très lente (relief) ; jours (tempêtes de chaleur, sable)
     taille: méso
   traces:
-  - source: anomalie de température à Bandar Abbas (NASA POWER)
+  - source: anomalie de température à Bandar Abbas (GHCN-Daily, station au sol)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: meteo:bandar_abbas
@@ -373,7 +373,7 @@ compartiments:
     vitesse: décennie
     taille: macro
   traces:
-  - source: dérive annuelle de la température à Bandar Abbas (NASA POWER)
+  - source: dérive annuelle de la température à Bandar Abbas (GHCN-Daily, station au sol)
     statut: collecte
     fichier: collecte_meteo.py
     adaptateur: climat:bandar_abbas
