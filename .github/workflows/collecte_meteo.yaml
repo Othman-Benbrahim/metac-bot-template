@@ -1,4 +1,4 @@
-name: "Collecte météo Open-Meteo (anomalies de température ; ombre)"
+name: "Collecte météo NASA POWER (anomalies de température ; ombre)"
 
 # 0.10.318 : écosystèmes, traces du bas de l échelle ; hors cadre (décision d'auteur du 2026-11-18, 22 h 35). Lancée la nuit par le planificateur ;
 # rien n'entre dans le bot. preenregistrements/sources-hors-cadre.md
