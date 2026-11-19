@@ -1,0 +1,10 @@
+jour,source,etat,nouveaux
+2026-11-19,kremlin_president_en,ok,20
+2026-11-19,maison_blanche,ok,30
+2026-11-19,departement_etat,HTTP 403,0
+2026-11-19,pentagone,ok,10
+2026-11-19,onu_presse,HTTP 404,0
+2026-11-19,otan,HTTP 404,0
+2026-11-19,commission_europeenne,ok,10
+2026-11-19,elysee,HTTP 404,0
+2026-11-19,gouvernement_chine_mae,"ParseError: mismatched tag: line 37, column 2",0
