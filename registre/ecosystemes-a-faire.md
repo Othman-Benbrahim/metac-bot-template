@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 35, 'compartiments': 405, 'relations': 584, 'ponts': 241, 'ponts_en_attente': 0, 'relations_a_verifier': 584, 'relations_avec_intensite': 268, 'compartiments_sans_trace_collectee': 184}
+Bilan : {'themes': 35, 'compartiments': 408, 'relations': 593, 'ponts': 244, 'ponts_en_attente': 0, 'relations_a_verifier': 593, 'relations_avec_intensite': 271, 'compartiments_sans_trace_collectee': 186}
 
 ## Thèmes à écrire (ponts en attente)
 
@@ -108,6 +108,8 @@ Bilan : {'themes': 35, 'compartiments': 405, 'relations': 584, 'ponts': 241, 'po
 - humain:tri : indices publics de ségrégation résidentielle (recensements) ; déplacements internes (IDMC) (a_brancher)
 - humain:conventions : violations publiques datées d'une norme (premier emploi d'une arme, rupture d'un cessez-le-feu, sortie d'un traité) (a_brancher)
 - humain:dilemme : respect daté d'accords de partage (quotas de pêche, eaux transfrontalières, quotas de l'OPEP+) (a_brancher)
+- humain:opinion_privee : aucune trace directe : par définition cachée ; lue seulement par contraste (écart entre vote secret et parole publique, révélations après un changement de régime) (fermee)
+- humain:opinion_publique : prises de position publiques datées (pétitions, déclarations, votes nominaux) (a_brancher)
 - inflation-mondiale:elevage_cultures : alertes publiques de santé animale (OMSA) (a_brancher)
 - inflation-mondiale:epidemies : alertes publiques de l'OMS et de l'OMSA (a_brancher)
 - information-cyber:foules : aucune trace directe ; lisible dans les pics d'attention et le ton (inconnue)
@@ -472,6 +474,15 @@ Bilan : {'themes': 35, 'compartiments': 405, 'relations': 584, 'ponts': 241, 'po
 - humain:hierarchie → humain:dilemme [forcage] une autorité qui fait respecter la règle rend la coopération rationnelle ; contestée, elle ne la garantit plus
 - humain:stress_chronique → humain:dilemme [forcage] la rareté pousse chacun à prendre avant les autres
 - humain:dilemme → humain:treve [forcage] une coopération qui tient dans un domaine rend la trêve plus probable dans les autres
+- humain:hierarchie → humain:falsification [forcage] une autorité qui punit la dissidence élargit l'écart ; une autorité contestée le réduit
+- humain:conventions → humain:falsification [forcage] une norme sociale dominante fait dire ce qui est attendu (sanction sociale, pas seulement politique)
+- humain:stress_chronique → humain:opinion_privee [forcage] la précarité nourrit un mécontentement privé qui peut rester muet longtemps
+- humain:opinion_privee → humain:opinion_publique [forcage] la dissidence privée ne s'exprime qu'au-delà du seuil politique de chacun ; seuils distribués et cachés : cascade possible à tout moment
+- humain:falsification → humain:opinion_publique [forcage] plus l'écart est grand, moins l'opinion publique dit l'opinion privée
+- humain:opinion_publique → humain:opinion_publique [forcage] propre au niveau social : chaque voix exprimée abaisse le coût de la suivante (effet d'entraînement)
+- humain:opinion_publique → humain:falsification [forcage] quand beaucoup parlent, dire vrai ne coûte plus : l'écart se referme d'un coup, d'où la surprise des révolutions
+- humain:falsification → humain:opinion_privee [forcage] falsification de la connaissance : un discours public sans contradiction façonne, à la longue, les croyances privées des générations suivantes (conservatisme collectif)
+- humain:opinion_publique → humain:passage_acte [forcage] une opinion publique qui bascule descend dans la rue
 - inflation-mondiale:energie → inflation-mondiale:prix_conso [forcage] l'énergie passe vite dans les prix, d'abord par les carburants
 - inflation-mondiale:alimentation → inflation-mondiale:prix_conso [forcage] les prix alimentaires pèsent plus lourd dans les pays pauvres
 - inflation-mondiale:prix_conso → inflation-mondiale:salaires [mutualisme] boucle prix-salaires : chacun nourrit l'autre quand le travail manque

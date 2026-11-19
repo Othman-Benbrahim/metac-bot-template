@@ -179,3 +179,22 @@ def test_fiche_humain_schelling():
     assert {"tri", "conventions", "dilemme"} <= ids
     r = next(x for x in f["relations"] if x["de"] == x["vers"] == "passage_acte")
     assert r["intensite"]["regle"] == "masse_critique" and set(r["parametres"]) == {"mu", "sigma"}
+
+
+# --- 0.10.327 : Kuran ---
+def test_fiche_humain_kuran_et_cascade(tmp_path: Path):
+    f = ec.charger(ec.DOSSIER)["humain"]
+    assert {"opinion_privee", "falsification", "opinion_publique"} <= {c["id"] for c in f["compartiments"]}
+    c = ca.Carte(reg=tmp_path, calibration=None)
+    calme = c.simuler({"humain:opinion_privee": 0.5}, 365, 7, maintenu=True)
+    cascade = c.simuler({"humain:opinion_privee": 1.5}, 365, 7, maintenu=True)
+    assert "humain:opinion_publique" not in calme                          # le mécontentement reste muet
+    assert cascade["humain:opinion_publique"]["pic"] > 1.0 and cascade["humain:falsification"]["pic"] < 0
+
+
+def test_marges_de_bascule():
+    c = ca.Carte(calibration=None)
+    m = c.marges_de_bascule(500)
+    connues = [x["marge"] for x in m if x["marge"] is not None]
+    assert connues == sorted(connues) and all(x["regle"] in ("seuil", "masse_critique") for x in m)
+    assert not any(x["relation"].startswith("humain:symboles>") and x["marge"] is not None for x in m)   # memoire = calendrier

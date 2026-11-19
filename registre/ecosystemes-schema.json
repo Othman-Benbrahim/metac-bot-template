@@ -11225,6 +11225,109 @@
    "acteurs": []
   },
   {
+   "id": "humain:opinion_privee",
+   "theme": "humain",
+   "nom": "Opinion privée (ce que l'on pense, invisible tant que dire coûte)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "mois à générations",
+    "vitesse": "mois à décennies",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     30,
+     3650
+    ],
+    "temps": "mois à générations"
+   },
+   "traces": [
+    {
+     "source": "aucune trace directe : par définition cachée ; lue seulement par contraste (écart entre vote secret et parole publique, révélations après un changement de régime)",
+     "statut": "fermee"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:falsification",
+   "theme": "humain",
+   "nom": "Falsification des préférences (écart entre ce qu'on pense et ce qu'on dit)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "mois à décennies",
+    "vitesse": "jours à années",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     1,
+     365
+    ],
+    "temps": "mois à décennies"
+   },
+   "traces": [
+    {
+     "source": "coût de l'expression approché par la censure mesurée en Russie (OONI) : le moteur de l'écart, pas l'écart lui-même",
+     "statut": "collecte",
+     "adaptateur": "ooni:RU"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:opinion_publique",
+   "theme": "humain",
+   "nom": "Opinion publique (ce qui se dit, se signe, se vote à découvert)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "jours à années",
+    "vitesse": "jours",
+    "taille": "méso"
+   },
+   "organisation": "societe",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     1,
+     1
+    ],
+    "temps": "jours à années"
+   },
+   "traces": [
+    {
+     "source": "prises de position publiques datées (pétitions, déclarations, votes nominaux)",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
    "id": "inflation-mondiale:energie",
    "theme": "inflation-mondiale",
    "nom": "Prix de l'énergie",
@@ -29920,6 +30023,192 @@
    "module": null
   },
   {
+   "de": "humain:hierarchie",
+   "vers": "humain:falsification",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "±",
+   "retour": null,
+   "style": null,
+   "delai": "semaines",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 5",
+   "texte": "une autorité qui punit la dissidence élargit l'écart ; une autorité contestée le réduit",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:conventions",
+   "vers": "humain:falsification",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 2 et 5",
+   "texte": "une norme sociale dominante fait dire ce qui est attendu (sanction sociale, pas seulement politique)",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:stress_chronique",
+   "vers": "humain:opinion_privee",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 15-16",
+   "texte": "la précarité nourrit un mécontentement privé qui peut rester muet longtemps",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:opinion_privee",
+   "vers": "humain:opinion_publique",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "part de la population dont le seuil politique est franchi",
+    "regle": "masse_critique"
+   },
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 4",
+   "texte": "la dissidence privée ne s'exprime qu'au-delà du seuil politique de chacun ; seuils distribués et cachés : cascade possible à tout moment",
+   "parametres": {
+    "mu": 2.0,
+    "sigma": 0.75
+   },
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:falsification",
+   "vers": "humain:opinion_publique",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 3",
+   "texte": "plus l'écart est grand, moins l'opinion publique dit l'opinion privée",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:opinion_publique",
+   "vers": "humain:opinion_publique",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "nombre de voix déjà exprimées",
+    "regle": "masse_critique"
+   },
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 4",
+   "texte": "propre au niveau social : chaque voix exprimée abaisse le coût de la suivante (effet d'entraînement)",
+   "parametres": {
+    "mu": 1.5,
+    "sigma": 0.5
+   },
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:opinion_publique",
+   "vers": "humain:falsification",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 4 et 16",
+   "texte": "quand beaucoup parlent, dire vrai ne coûte plus : l'écart se referme d'un coup, d'où la surprise des révolutions",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:falsification",
+   "vers": "humain:opinion_privee",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "décennie",
+   "force": "faible",
+   "intensite": {
+    "mesure": "durée pendant laquelle un discours unique domine",
+    "regle": "hysteresis"
+   },
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 10-11",
+   "texte": "falsification de la connaissance : un discours public sans contradiction façonne, à la longue, les croyances privées des générations suivantes (conservatisme collectif)",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:opinion_publique",
+   "vers": "humain:passage_acte",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kuran, ch. 15-16",
+   "texte": "une opinion publique qui bascule descend dans la rue",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
    "de": "inflation-mondiale:energie",
    "vers": "inflation-mondiale:prix_conso",
    "forme": "forcage",
@@ -36833,6 +37122,20 @@
    "type": "influence"
   },
   {
+   "de": "humain:falsification",
+   "vers": "observateur-mesure:biais",
+   "nature": "les sondages et déclarations recueillis sous contrainte sous-estiment la dissidence (Kuran)",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "humain:opinion_publique",
+   "vers": "information-cyber:foules",
+   "nature": "les cascades d'opinion passent par les foules en ligne",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
    "de": "inflation-mondiale:energie",
    "vers": "energie-mondiale:prix",
    "nature": "le prix de l'énergie vient du marché mondial",
@@ -36948,6 +37251,13 @@
    "de": "information-cyber:recits",
    "vers": "humain:symboles",
    "nature": "les récits portent les métaphores de souillure et de terre sacrée",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "information-cyber:censure",
+   "vers": "humain:falsification",
+   "nature": "la censure élève le coût de dire vrai",
    "resolu": true,
    "type": "influence"
   },
@@ -37783,12 +38093,12 @@
  ],
  "bilan": {
   "themes": 35,
-  "compartiments": 405,
-  "relations": 584,
-  "ponts": 241,
+  "compartiments": 408,
+  "relations": 593,
+  "ponts": 244,
   "ponts_en_attente": 0,
-  "relations_a_verifier": 584,
-  "relations_avec_intensite": 268,
-  "compartiments_sans_trace_collectee": 184
+  "relations_a_verifier": 593,
+  "relations_avec_intensite": 271,
+  "compartiments_sans_trace_collectee": 186
  }
 }

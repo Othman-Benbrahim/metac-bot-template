@@ -34,6 +34,7 @@ from pathlib import Path
 from statistics import NormalDist
 
 import adaptateurs as ad
+import carte
 import ecosystemes as ec
 
 SORTIE = Path("registre/calibration.json")
@@ -43,7 +44,7 @@ ALPHA = 0.05
 SEUIL_REGLE = 1.5
 # Les comptes à rebours (jours jusqu'à la prochaine échéance) sont des calendriers, pas des intensités : leur différence
 # vaut −1 par jour sauf au saut ; les corréler fabrique des liens. Exclus de la mesure.
-COMPTES_A_REBOURS = ("elections", "memoire", "feries_chine", "calendrier_nbs")
+from carte import COMPTES_A_REBOURS  # noqa: E402  (une seule liste, partagée avec la carte)
 
 
 def pas_jours(serie: list[tuple[str, float]]) -> float:
@@ -97,7 +98,6 @@ def pente(a: list[float], b: list[float]) -> float:
 def ajuster_masse_critique(x: list[float], y: list[float]) -> dict:
     """Schelling : y ≈ b · x · (0,3 + 1,2 · Φ((|x| − mu)/sigma)), seuils individuels distribués (mu, sigma) ; grille fixe,
     b par moindres carrés ; comparée à la droite y ≈ b · x par le BIC (2 paramètres de plus)."""
-    import carte
     n = len(x)
     def sse(m):
         num = sum(p * mm * q for p, mm, q in zip(x, m, y))

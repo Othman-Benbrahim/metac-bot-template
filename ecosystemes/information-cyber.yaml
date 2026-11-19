@@ -406,3 +406,6 @@ ponts:
 - depuis: recits
   vers: humain:symboles
   nature: les récits portent les métaphores de souillure et de terre sacrée
+- depuis: censure
+  vers: humain:falsification
+  nature: la censure élève le coût de dire vrai

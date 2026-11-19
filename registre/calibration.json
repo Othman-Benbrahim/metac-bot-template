@@ -7,14 +7,14 @@
   "seuil_regle": 1.5
  },
  "bilan": {
-  "relations": 584,
+  "relations": 593,
   "mesurees": 99,
   "significatives": 14,
   "signe_contredit": 6,
   "non_calibrables": {
-   "source_sans_serie": 390,
-   "cible_sans_serie": 74,
-   "boucle_sur_soi": 14,
+   "source_sans_serie": 395,
+   "cible_sans_serie": 77,
+   "boucle_sur_soi": 15,
    "meme_serie": 2,
    "modulation_sans_series": 2
   }

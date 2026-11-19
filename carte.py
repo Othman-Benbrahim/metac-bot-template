@@ -56,6 +56,8 @@ REVISIONS_MAX = 2
 # seuil net, dont elle est la version continue (sigma → 0 redonne le seuil).
 MU_DEFAUT = 2.0
 INTENSITE_MAX = 4.0
+# Comptes à rebours (jours jusqu'à la prochaine échéance) : des calendriers, pas des intensités (lus par calibrer.py aussi)
+COMPTES_A_REBOURS = ("elections", "memoire", "feries_chine", "calendrier_nbs")
 GAIN_PROPRE_MAX = 0.9      # simulation : une boucle sur soi seule ne fait pas basculer (il faut un circuit entre compartiments)
 SIGMA_DEFAUT = 0.5
 CALIBRATION = Path("registre/calibration.json")
@@ -226,7 +228,10 @@ class Carte:
     def intensite(self, nid: str) -> float:
         """|z| plafonné à INTENSITE_MAX : une série dont l'habitude est presque nulle (collecte qui démarre) donne des z
         de plusieurs centaines qui ne disent rien de plus qu'« très au-dessus »."""
-        z = float((self.etat().get(nid) or {}).get("z") or 0.0)
+        e = self.etat().get(nid) or {}
+        if str(e.get("adaptateur", "")).split(":")[0] in COMPTES_A_REBOURS:     # un calendrier n'est pas une intensité
+            return 0.0
+        z = float(e.get("z") or 0.0)
         return max(-INTENSITE_MAX, min(INTENSITE_MAX, z))
 
     def seuil_effectif(self, r: dict, atteints: dict[str, dict] | None = None) -> float:
@@ -319,7 +324,7 @@ class Carte:
                     continue
                 baisse = r.get("seuil", SEUIL_DEFAUT) - self.seuil_effectif(r, {})
                 s_eff = self.seuil_effectif(r, {}) if regle == "seuil" else max(SEUIL_PLANCHER, r.get("mu", MU_DEFAUT) - baisse)
-                trace = src in self.etat()
+                trace = src in self.etat() and str(self.etat()[src].get("adaptateur", "")).split(":")[0] not in COMPTES_A_REBOURS
                 i = abs(self.intensite(src)) if trace else None
                 out.append({"relation": r.get("cle"), "regle": regle, "seuil_effectif": round(s_eff, 2),
                             "intensite": None if i is None else round(i, 2),
