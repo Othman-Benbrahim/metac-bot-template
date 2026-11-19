@@ -30,6 +30,7 @@ compartiments:
     traces:
       - {source: "routines officielles (Commission européenne, OTAN)", statut: "collecte", fichier: "collecte_routines.py"}
       - {source: "communiqués du Conseil de l'UE qui nomment la Russie, par jour (RSS)", statut: "collecte", fichier: "collecte_rss.py", adaptateur: "rss:RU:conseil_ue"}
+      - {source: "communiqués et agenda du Parlement européen qui nomment la Russie, par jour (RSS)", statut: "collecte", fichier: "collecte_rss.py", adaptateur: "rss:RU:parlement_ue_presse"}
   - id: "industrie"
     nom: "Industrie de défense"
     organisation: "economie"
