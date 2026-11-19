@@ -1,0 +1,19 @@
+{
+ "bresil_etats": {
+  "elections": 1,
+  "erreur_absolue_moyenne": 5.82,
+  "mediane": 5.82,
+  "sigma": 7.28,
+  "statut": "insuffisant",
+  "seconds_tours": 0,
+  "retournements": 0,
+  "taux_retournement": null,
+  "detail": [
+   {
+    "titre": "2014 São Paulo gubernatorial election",
+    "erreur_moyenne": 5.82,
+    "n_parts": 3
+   }
+  ]
+ }
+}
