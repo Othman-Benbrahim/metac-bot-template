@@ -123,6 +123,18 @@ def equilibres(mu: float, sigma: float, base: float = 0.0, n: int = 2001) -> dic
             "part_haute": max(stables) if stables else None}
 
 
+def asymetrie(r: dict, ampleur: float) -> float:
+    """Kahneman (théorie des perspectives) : une perte par rapport au point de référence pèse plus qu'un gain de même
+    taille. Une relation peut porter « lambda_pertes » (départ 2) et « sens_perte » (+ ou −, le sens de la source qui
+    est une perte) : l'effet est multiplié par lambda quand la source va dans ce sens. Le point de référence de la carte
+    est l'habitude de chaque série (le z est déjà un écart à l'habitude)."""
+    lam = r.get("lambda_pertes")
+    if not lam or not ampleur:
+        return 1.0
+    perte = (ampleur > 0) == (r.get("sens_perte", "-") == "+")
+    return float(lam) if perte else 1.0
+
+
 def multiplicateur(regle: str | None, intensite: float, seuil: float = SEUIL_DEFAUT,
                    mu: float = MU_DEFAUT, sigma: float = SIGMA_DEFAUT) -> float:
     """Comment la force d'une relation varie avec l'intensité observée (|z| de la source) ; 1 sans intensité connue.
@@ -155,6 +167,10 @@ class Carte:
         self.calibration: dict[str, dict] = {}
         if calibration is not None and Path(calibration).exists():
             self.calibration = json.loads(Path(calibration).read_text(encoding="utf-8")).get("relations", {})
+        self.persistance: dict[str, float] = {}
+        if calibration is not None and Path(calibration).exists():
+            comp = json.loads(Path(calibration).read_text(encoding="utf-8")).get("compartiments", {})
+            self.persistance = {k: v["tau_jours"] for k, v in comp.items() if v.get("tau_jours")}
         self.sortants: dict[str, list[dict]] = {}
         self.modulateurs: dict[str, list[tuple[str, float]]] = {}
         for r in self.s["relations"]:
@@ -162,6 +178,9 @@ class Carte:
             par = r.get("parametres") or {}
             r = dict(r, cle=cle, seuil=float(par.get("seuil", SEUIL_DEFAUT)), mu=float(par.get("mu", MU_DEFAUT)),
                      sigma=float(par.get("sigma", SIGMA_DEFAUT)))
+            if "lambda_pertes" in par:
+                r["lambda_pertes"] = float(par["lambda_pertes"])
+                r["sens_perte"] = "+" if float(par.get("sens_perte", -1)) > 0 else "-"
             m = self.calibration.get(cle) or {}
             # un signe mesuré contraire à la lecture ne retourne pas la relation : il la signale (« contredite ») pour
             # qu'on relise le mécanisme ; seule une mesure qui concorde (ou un sens écrit ±) remplace les valeurs écrites
@@ -171,6 +190,8 @@ class Carte:
                 r.update(mesure=True, poids_mesure=m["poids"], delai_mesure=m["delai_jours"],
                          effet=m.get("signe", r.get("effet")), seuil=m.get("seuil", r["seuil"]),
                          mu=m.get("mu", r["mu"]), sigma=m.get("sigma", r["sigma"]))
+                if m.get("lambda_pertes") and r.get("lambda_pertes") and m.get("lambda_significatif"):
+                    r["lambda_pertes"] = m["lambda_pertes"]
                 if m.get("regle"):
                     r["intensite"] = dict(r.get("intensite") or {"mesure": "calibration"}, regle=m["regle"])
             if r.get("module"):
@@ -189,8 +210,12 @@ class Carte:
                     self.sortants.setdefault(a, []).append({"de": a, "vers": b, "forme": "pont", "effet": "+",
                                                             "force": "forte", "delai": "permanent", "pont": True})
             else:                                 # influence : un sens, transmission partielle, sens indéterminé
-                self.sortants.setdefault(p["de"], []).append({"de": p["de"], "vers": p["vers"], "forme": "pont", "effet": "±",
-                                                              "force": "moyenne", "delai": "jours", "pont": "influence"})
+                lien = {"de": p["de"], "vers": p["vers"], "forme": "pont", "effet": "±", "force": "moyenne", "delai": "jours",
+                        "pont": "influence", "cle": f"pont:{p['de']}>{p['vers']}"}
+                m = self.calibration.get(lien["cle"]) or {}
+                if m.get("verdict") == "significatif":   # 0.10.329 : la mesure donne le sens, la force et le délai
+                    lien.update(effet=m["signe"], mesure=True, poids_mesure=m["poids"], delai_mesure=m["delai_jours"])
+                self.sortants.setdefault(p["de"], []).append(lien)
         self._etat: dict[str, dict] | None = None
 
     def etat(self) -> dict[str, dict]:
@@ -286,6 +311,7 @@ class Carte:
                         poids = r["poids_mesure"] if r.get("mesure") else POIDS_FORCE.get(r.get("force") or "inconnue", 0.4)
                         regle = (r.get("intensite") or {}).get("regle") if isinstance(r.get("intensite"), dict) else None
                         poids *= self._mult(r, regle, max(abs(self.intensite(src)), 2 * abs(a)), atteints)
+                        poids *= asymetrie(r, a)
                         sa, sc = self.noeuds.get(src, {}).get("axes", {}), self.noeuds.get(r["vers"], {}).get("axes", {})
                         poids *= facteur_echelle(sa.get("taille"), sc.get("taille"), regle)
                         poids *= passage_de_niveau(a * poids, self.noeuds.get(src, {}).get("organisation"),
@@ -296,6 +322,9 @@ class Carte:
             for nid in set(cible) | set(x):
                 vj = self.noeuds.get(nid, {}).get("axes", {}).get("vitesse_jours")
                 alpha = min(1.0, pas / max(vj[0] if vj else pas, 1e-9)) if vj and vj[0] > 0 else 1.0
+                tau = self.persistance.get(nid)               # retour vers l'habitude MESURÉ (calibrer.py, AR(1))
+                if tau:
+                    alpha = 1 - math.exp(-pas / tau)
                 prec = val(nid, t - 1)
                 v = prec + alpha * (cible.get(nid, 0.0) - prec)
                 x.setdefault(nid, [0.0] * t).append(max(-AMPLEUR_MAX, min(AMPLEUR_MAX, v)))
@@ -383,6 +412,7 @@ class Carte:
                 # l'intensité du moment : celle qu'on observe (|z| de la source), ou celle de l'effet qui arrive lui-même
                 # (un choc assez fort franchit un seuil même là où aucune trace ne le mesure)
                 poids *= self._mult(r, regle, max(abs(self.intensite(nid)), 2 * abs(ampl)), vus)
+                poids *= asymetrie(r, ampl)
                 src, cib = self.noeuds.get(nid, {}).get("axes", {}), self.noeuds.get(r["vers"], {}).get("axes", {})
                 if r.get("pont") is not True:
                     poids *= facteur_echelle(src.get("taille"), cib.get("taille"), regle)

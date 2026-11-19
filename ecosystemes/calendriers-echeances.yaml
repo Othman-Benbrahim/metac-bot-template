@@ -405,3 +405,6 @@ ponts:
 - depuis: dates_limites
   vers: observateur-mesure:biais
   nature: la date limite est une convention de mesure
+- depuis: dates_limites
+  vers: humain:agenda
+  nature: 'une échéance impose un problème à l''agenda (Simon : l''attention suit les échéances)'

@@ -1,5 +1,6 @@
 """0.10.325 : calibration mesurée, modulation de seuil (Behave), fiche humain."""
 import json
+import math
 import random
 from datetime import date, timedelta
 from pathlib import Path
@@ -142,7 +143,7 @@ def test_simulation_pas_a_pas_bascule_selon_l_ampleur(tmp_path: Path):
     c = ca.Carte(reg=tmp_path, calibration=None)                          # aucun état observé : seuils intacts
     petit = c.simuler({"humain:stress_chronique": 0.2}, 365, 7)
     grand = c.simuler({"humain:stress_chronique": 1.0}, 365, 7)
-    assert "humain:passage_acte" not in petit
+    assert abs((petit.get("humain:passage_acte") or {"pic": 0})["pic"]) < 0.3      # pas de bascule (pertes ×2 : une trace)
     assert grand["humain:passage_acte"]["pic"] > 1.0
     assert len(grand["humain:passage_acte"]["trajectoire"]) == 365 // 7 + 1
 
@@ -198,3 +199,54 @@ def test_marges_de_bascule():
     connues = [x["marge"] for x in m if x["marge"] is not None]
     assert connues == sorted(connues) and all(x["regle"] in ("seuil", "masse_critique") for x in m)
     assert not any(x["relation"].startswith("humain:symboles>") and x["marge"] is not None for x in m)   # memoire = calendrier
+
+
+# --- 0.10.328 : Kahneman ---
+def test_asymetrie_des_pertes():
+    r = {"lambda_pertes": 2.0, "sens_perte": "-"}
+    assert ca.asymetrie(r, -1.0) == 2.0 and ca.asymetrie(r, 1.0) == 1.0 and ca.asymetrie({}, -1.0) == 1.0
+    random.seed(6)
+    x = [random.gauss(0, 1) for _ in range(500)]
+    y = [(2.0 if v < 0 else 1.0) * v + random.gauss(0, 0.3) for v in x]
+    m = cb.mesurer_asymetrie(x, y, 0, -1)
+    assert m["lambda_significatif"] and abs(m["lambda_pertes"] - 2.0) < 0.3
+
+
+def test_persistance_retour_vers_la_moyenne():
+    random.seed(7)
+    v, e = [], 0.0
+    for _ in range(300):
+        e = 0.8 * e + random.gauss(0, 1)
+        v.append(e)
+    p = cb.persistance(_serie(v))
+    assert abs(p["phi"] - 0.8) < 0.1 and abs(p["tau_jours"] - (-7 / math.log(0.8))) < 15
+
+
+def test_fiche_humain_kahneman():
+    f = ec.charger(ec.DOSSIER)["humain"]
+    assert {"disponibilite", "risque_percu"} <= {c["id"] for c in f["compartiments"]}
+    c = ca.Carte(calibration=None)
+    r = next(x for x in c.sortants["humain:attente"] if x["vers"] == "humain:passage_acte")
+    assert r["lambda_pertes"] == 2.0 and r["sens_perte"] == "-"
+
+
+# --- 0.10.329 : Simon ---
+def test_fiche_humain_simon_et_insatisfaction(tmp_path: Path):
+    f = ec.charger(ec.DOSSIER)["humain"]
+    assert {"aspiration", "agenda"} <= {c["id"] for c in f["compartiments"]}
+    c = ca.Carte(reg=tmp_path, calibration=None)
+    r = c.simuler({"humain:attente": -1.0}, 730, 7)                     # chute de l'attente, impulsion
+    asp = r["humain:aspiration"]
+    assert asp["pic"] < 0 and asp["jour_pic"] > 7                        # l'aspiration suit, avec retard
+
+
+def test_pont_calibre_donne_le_sens(tmp_path: Path):
+    cal = {"relations": {"pont:humain:agenda>politique-americaine:executif": {
+        "verdict": "significatif", "poids": 0.7, "delai_jours": 14, "signe": "+"}}}
+    p = tmp_path / "cal.json"
+    p.write_text(json.dumps(cal), encoding="utf-8")
+    c = ca.Carte(calibration=p)
+    lien = next(x for x in c.sortants["humain:agenda"] if x["vers"] == "politique-americaine:executif")
+    assert lien["effet"] == "+" and lien["mesure"] and lien["delai_mesure"] == 14
+    c2 = ca.Carte(calibration=None)
+    assert next(x for x in c2.sortants["humain:agenda"] if x["vers"] == "politique-americaine:executif")["effet"] == "±"

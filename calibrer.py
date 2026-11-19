@@ -172,6 +172,48 @@ def lire_serie(adaptateur: str, reg: Path) -> list:
     return s if len(s) >= N_MIN else []
 
 
+def mesurer_asymetrie(x: list[float], y: list[float], retard: int, sens_perte: float) -> dict:
+    """Kahneman, aversion aux pertes : y = b·x + c·x·[x dans le sens de la perte] ; λ = |b + c| / |b| ; c testé (t)."""
+    a, b = x[: len(x) - retard], y[retard:]
+    d = [1.0 if (p > 0) == (sens_perte > 0) else 0.0 for p in a]
+    x1, x2 = a, [p * q for p, q in zip(a, d)]
+    s11, s22, s12 = sum(v * v for v in x1), sum(v * v for v in x2), sum(p * q for p, q in zip(x1, x2))
+    s1y, s2y = sum(p * q for p, q in zip(x1, b)), sum(p * q for p, q in zip(x2, b))
+    det = s11 * s22 - s12 * s12
+    n = len(a)
+    if det <= 1e-9 or n < N_MIN or sum(d) < 6 or n - sum(d) < 6:
+        return {"lambda_verdict": "insuffisant"}
+    cb = (s11 * s2y - s12 * s1y) / det
+    bb = (s22 * s1y - s12 * s2y) / det
+    res = [q - bb * p - cb * r for p, r, q in zip(x1, x2, b)]
+    s2 = sum(e * e for e in res) / max(n - 2, 1)
+    se_c = math.sqrt(s2 * s11 / det)
+    lam = abs(bb + cb) / max(abs(bb), 1e-6)
+    return {"lambda_pertes": round(min(lam, 5.0), 2), "t_asymetrie": round(cb / max(se_c, 1e-12), 2),
+            "lambda_significatif": abs(cb / max(se_c, 1e-12)) > NormalDist().inv_cdf(1 - ALPHA / 2)}
+
+
+def persistance(serie: list[tuple[str, float]]) -> dict:
+    """Kahneman, ch. 17 : le retour vers la moyenne. AR(1) sur la série au pas naturel (semaine ou mois), tendance
+    linéaire retirée : φ, puis le temps caractéristique τ = −pas / ln φ (jours) que la simulation utilise."""
+    pas = "semaine" if pas_jours(serie) <= 10 else "mois"
+    g = regrouper(serie, pas)
+    v = [g[k] for k in sorted(g)]
+    n = len(v)
+    if n < N_MIN:
+        return {}
+    t = list(range(n))
+    b = pente(t, v)
+    m = statistics.mean(v) - b * statistics.mean(t)
+    e = [y - (m + b * i) for i, y in zip(t, v)]
+    phi = correlation(e[:-1], e[1:])
+    j = 7 if pas == "semaine" else 30
+    out = {"phi": round(phi, 3), "pas": pas, "n": n}
+    if 0 < phi < 0.999:
+        out["tau_jours"] = round(-j / math.log(phi), 1)
+    return out
+
+
 def premiere_serie(noeud: dict, reg: Path) -> tuple[str | None, list]:
     for tr in noeud.get("traces") or []:
         if tr.get("adaptateur") and tr["adaptateur"].split(":")[0] not in COMPTES_A_REBOURS:
@@ -210,6 +252,9 @@ def calibrer(dossier: Path = ec.DOSSIER, reg: Path = ad.REG) -> dict:
             continue
         x, y, pas = aligner(sx, sy)
         m = mesurer(x, y, pas) if x else {"verdict": "chevauchement_insuffisant", "n": 0}
+        par = r.get("parametres") or {}
+        if "lambda_pertes" in par and x and "retard" in m:
+            m.update(mesurer_asymetrie(x, y, m["retard"], float(par.get("sens_perte", -1))))
         m.update(source=ax, cible=ay, effet_ecrit=r.get("effet"),
                  concorde=(None if r.get("effet") in ("±", "0") or "signe" not in m else m["signe"] == r.get("effet")))
         rel[cle] = m
@@ -230,13 +275,33 @@ def calibrer(dossier: Path = ec.DOSSIER, reg: Path = ad.REG) -> dict:
         mm = mesurer_modulation(*d, retard) if d[0] else {"verdict": "chevauchement_insuffisant", "n": 0}
         mm.update(modulateur=am)
         rel[f"module:{r['de']}>{r['module']}"] = mm
-    bilan = {"relations": len(s["relations"]), "mesurees": len(rel),
+    # Simon (architecture de la complexité, 1962) : un système complexe est « presque décomposable » — liens forts et
+    # rapides à l'intérieur des sous-systèmes, faibles et lents entre eux. Test sur nos données : les ponts entre fiches
+    # sont mesurés comme les relations, et le bilan compare |r| moyen dedans et entre.
+    for p in s["ponts"]:
+        if not p["resolu"] or p["de"] == p["vers"]:
+            continue
+        (ax, sx), (ay, sy) = series.get(p["de"], (None, [])), series.get(p["vers"], (None, []))
+        if not ax or not ay or ax == ay:
+            continue
+        x, y, pas = aligner(sx, sy)
+        m = mesurer(x, y, pas) if x else {"verdict": "chevauchement_insuffisant", "n": 0}
+        m.update(source=ax, cible=ay, type=p.get("type", "influence"))
+        rel[f"pont:{p['de']}>{p['vers']}"] = m
+    comp = {nid: dict(persistance(sr), serie=a) for nid, (a, sr) in series.items() if a}
+    comp = {k: v for k, v in comp.items() if "phi" in v}
+    def moy(sel):
+        v = [abs(m["r"]) for k, m in rel.items() if sel(k) and "r" in m]
+        return {"n": len(v), "r_moyen": round(statistics.mean(v), 3) if v else None}
+    decomposabilite = {"dedans": moy(lambda k: not k.startswith(("pont:", "module:"))), "entre": moy(lambda k: k.startswith("pont:"))}
+    bilan = {"relations": len(s["relations"]), "mesurees": len(rel), "compartiments_persistance": len(comp),
+             "decomposabilite": decomposabilite,
              "significatives": sum(v["verdict"] == "significatif" for v in rel.values()),
              "signe_contredit": sum(v.get("concorde") is False and v["verdict"] == "significatif" for v in rel.values()),
              "non_calibrables": raisons}
     return {"date": date.today().isoformat(), "methode": {"retard_max": RETARD_MAX, "n_min": N_MIN, "alpha": ALPHA,
                                                           "seuil_regle": SEUIL_REGLE},
-            "bilan": bilan, "relations": rel}
+            "bilan": bilan, "relations": rel, "compartiments": comp}
 
 
 def principal() -> int:

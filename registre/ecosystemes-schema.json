@@ -11328,6 +11328,144 @@
    "acteurs": []
   },
   {
+   "id": "humain:disponibilite",
+   "theme": "humain",
+   "nom": "Disponibilité (ce qui vient à l'esprit : récent, saillant, chargé d'émotion)",
+   "niveau": {
+    "espace": "pays à monde",
+    "temps": "jours à mois",
+    "vitesse": "jours",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     5
+    ],
+    "vitesse_jours": [
+     1,
+     1
+    ],
+    "temps": "jours à mois"
+   },
+   "traces": [
+    {
+     "source": "attention publique à un sujet (pages vues Wikipédia, volume d'articles GDELT par sujet)",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:risque_percu",
+   "theme": "humain",
+   "nom": "Risque perçu (poids donné aux probabilités, aux pertes et au cadre)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "jours à mois",
+    "vitesse": "jours à semaines",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     1,
+     7
+    ],
+    "temps": "jours à mois"
+   },
+   "traces": [
+    {
+     "source": "anticipations d'inflation des ménages (Michigan) et des marchés (T10YIE) : la part du risque perçu qui se lit",
+     "statut": "collecte",
+     "adaptateur": "fred:T10YIE"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:aspiration",
+   "theme": "humain",
+   "nom": "Niveau d'aspiration (ce qu'on juge satisfaisant, qui suit l'expérience avec retard)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "mois à années",
+    "vitesse": "mois",
+    "taille": "méso"
+   },
+   "organisation": "psychologique",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     30,
+     30
+    ],
+    "temps": "mois à années"
+   },
+   "traces": [
+    {
+     "source": "attentes des ménages à un an et à cinq ans (Michigan) : l'aspiration se lit dans la partie lente des attentes",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "humain:agenda",
+   "theme": "humain",
+   "nom": "Agenda des organisations (l'attention rare des décideurs ; routines hors crise)",
+   "niveau": {
+    "espace": "pays",
+    "temps": "semaines à années",
+    "vitesse": "semaines",
+    "taille": "méso"
+   },
+   "organisation": "statut",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     7,
+     7
+    ],
+    "temps": "semaines à années"
+   },
+   "traces": [
+    {
+     "source": "documents présidentiels publiés au Federal Register (volume d'actes de l'exécutif américain)",
+     "statut": "collecte",
+     "adaptateur": "federal_register:Presidential Document"
+    }
+   ],
+   "acteurs": []
+  },
+  {
    "id": "inflation-mondiale:energie",
    "theme": "inflation-mondiale",
    "nom": "Prix de l'énergie",
@@ -29305,7 +29443,10 @@
    "statut": "a_verifier",
    "source": "Behave, ch. 2 (anticipation) ; lecture économique",
    "texte": "la précarité assombrit l'attente",
-   "parametres": null,
+   "parametres": {
+    "lambda_pertes": 2.0,
+    "sens_perte": 1
+   },
    "series": null,
    "module": null
   },
@@ -29328,7 +29469,9 @@
    "source": "Behave, ch. 2",
    "texte": "une attente qui s'effondre mobilise (rue, vote sanction) plus qu'une misère attendue",
    "parametres": {
-    "seuil": 1.5
+    "seuil": 1.5,
+    "lambda_pertes": 2.0,
+    "sens_perte": -1
    },
    "series": null,
    "module": null
@@ -30075,7 +30218,10 @@
    "statut": "a_verifier",
    "source": "Kuran, ch. 15-16",
    "texte": "la précarité nourrit un mécontentement privé qui peut rester muet longtemps",
-   "parametres": null,
+   "parametres": {
+    "lambda_pertes": 2.0,
+    "sens_perte": 1
+   },
    "series": null,
    "module": null
   },
@@ -30204,6 +30350,245 @@
    "statut": "a_verifier",
    "source": "Kuran, ch. 15-16",
    "texte": "une opinion publique qui bascule descend dans la rue",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:passage_acte",
+   "vers": "humain:disponibilite",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kahneman, ch. 12-13",
+   "texte": "un acte collectif spectaculaire devient l'exemple qui revient à l'esprit",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:disponibilite",
+   "vers": "humain:disponibilite",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "couverture médiatique du sujet",
+    "regle": "saturation"
+   },
+   "coupure": "un autre sujet prend la place",
+   "statut": "a_verifier",
+   "source": "Kahneman, ch. 13 (Kuran et Sunstein)",
+   "texte": "propre au niveau psychologique : cascade de disponibilité, jusqu'à saturation de l'attention",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:disponibilite",
+   "vers": "humain:risque_percu",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": {
+    "mesure": "saillance et émotion de l'exemple",
+    "regle": "saturation"
+   },
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kahneman, ch. 13 et 30",
+   "texte": "ce qui vient facilement à l'esprit paraît probable ; un événement rare et vif est surpondéré",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:risque_percu",
+   "vers": "humain:nous_eux",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "semaines",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kahneman, ch. 13 ; Behave, ch. 11",
+   "texte": "la peur cherche un responsable dans l'autre groupe",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:risque_percu",
+   "vers": "humain:attente",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kahneman, ch. 26-28",
+   "texte": "un risque perçu plus grand assombrit l'attente",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:symboles",
+   "vers": "humain:disponibilite",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "faible",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Kahneman, ch. 4-5 (amorçage, aisance)",
+   "texte": "une date, un mot, une image ramènent les exemples associés",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:attente",
+   "vers": "humain:aspiration",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "forte",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Simon 1955, d'après Parthenay",
+   "texte": "l'aspiration suit l'expérience, avec retard : elle monte après les succès, baisse après les échecs",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:aspiration",
+   "vers": "humain:passage_acte",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Simon ; March et Simon (recherche déclenchée par l'insatisfaction)",
+   "texte": "à attente égale, une aspiration plus haute fait plus d'insatisfaits : passage_acte suit l'écart aspiration − attente",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:aspiration",
+   "vers": "humain:opinion_privee",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "mois",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Simon",
+   "texte": "le mécontentement privé est relatif à ce qu'on attendait",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:disponibilite",
+   "vers": "humain:agenda",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "attention publique au problème",
+    "regle": "seuil"
+   },
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Simon (attention rare), d'après Parthenay",
+   "texte": "un problème n'entre à l'agenda des décideurs qu'au-delà d'un seuil d'attention",
+   "parametres": {
+    "seuil": 2.0
+   },
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:passage_acte",
+   "vers": "humain:agenda",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Simon",
+   "texte": "la rue force l'agenda",
+   "parametres": null,
+   "series": null,
+   "module": null
+  },
+  {
+   "de": "humain:agenda",
+   "vers": "humain:agenda",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "semaines",
+   "force": "faible",
+   "intensite": null,
+   "coupure": null,
+   "statut": "a_verifier",
+   "source": "Simon (attention rare)",
+   "texte": "propre au niveau statut : un problème qui occupe l'agenda en chasse d'autres ; l'attention retombe vers les routines",
    "parametres": null,
    "series": null,
    "module": null
@@ -36485,6 +36870,13 @@
    "type": "influence"
   },
   {
+   "de": "calendriers-echeances:dates_limites",
+   "vers": "humain:agenda",
+   "nature": "une échéance impose un problème à l'agenda (Simon : l'attention suit les échéances)",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
    "de": "climat-extremes:saisons",
    "vers": "energie-mondiale:climat",
    "nature": "hivers et chaleurs dans la demande d'énergie",
@@ -37132,6 +37524,34 @@
    "de": "humain:opinion_publique",
    "vers": "information-cyber:foules",
    "nature": "les cascades d'opinion passent par les foules en ligne",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "humain:disponibilite",
+   "vers": "observateur-mesure:biais",
+   "nature": "les questions naissent des événements saillants ; la saillance gonfle la probabilité perçue au-delà de la fréquence de base (Kahneman)",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "humain:risque_percu",
+   "vers": "securite-publique:peur",
+   "nature": "le risque perçu nourrit la peur publique",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "humain:agenda",
+   "vers": "politique-americaine:executif",
+   "nature": "ce qui occupe l'agenda devient acte de l'exécutif",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "humain:agenda",
+   "vers": "energie-mondiale:decisions",
+   "nature": "l'attention des décideurs détermine quelles décisions énergétiques sont prises et quand",
    "resolu": true,
    "type": "influence"
   },
@@ -38093,12 +38513,12 @@
  ],
  "bilan": {
   "themes": 35,
-  "compartiments": 408,
-  "relations": 593,
-  "ponts": 244,
+  "compartiments": 412,
+  "relations": 605,
+  "ponts": 249,
   "ponts_en_attente": 0,
-  "relations_a_verifier": 593,
-  "relations_avec_intensite": 271,
-  "compartiments_sans_trace_collectee": 186
+  "relations_a_verifier": 605,
+  "relations_avec_intensite": 274,
+  "compartiments_sans_trace_collectee": 188
  }
 }

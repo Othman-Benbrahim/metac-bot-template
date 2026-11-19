@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 35, 'compartiments': 408, 'relations': 593, 'ponts': 244, 'ponts_en_attente': 0, 'relations_a_verifier': 593, 'relations_avec_intensite': 271, 'compartiments_sans_trace_collectee': 186}
+Bilan : {'themes': 35, 'compartiments': 412, 'relations': 605, 'ponts': 249, 'ponts_en_attente': 0, 'relations_a_verifier': 605, 'relations_avec_intensite': 274, 'compartiments_sans_trace_collectee': 188}
 
 ## Thèmes à écrire (ponts en attente)
 
@@ -110,6 +110,8 @@ Bilan : {'themes': 35, 'compartiments': 408, 'relations': 593, 'ponts': 244, 'po
 - humain:dilemme : respect daté d'accords de partage (quotas de pêche, eaux transfrontalières, quotas de l'OPEP+) (a_brancher)
 - humain:opinion_privee : aucune trace directe : par définition cachée ; lue seulement par contraste (écart entre vote secret et parole publique, révélations après un changement de régime) (fermee)
 - humain:opinion_publique : prises de position publiques datées (pétitions, déclarations, votes nominaux) (a_brancher)
+- humain:disponibilite : attention publique à un sujet (pages vues Wikipédia, volume d'articles GDELT par sujet) (a_brancher)
+- humain:aspiration : attentes des ménages à un an et à cinq ans (Michigan) : l'aspiration se lit dans la partie lente des attentes (a_brancher)
 - inflation-mondiale:elevage_cultures : alertes publiques de santé animale (OMSA) (a_brancher)
 - inflation-mondiale:epidemies : alertes publiques de l'OMS et de l'OMSA (a_brancher)
 - information-cyber:foules : aucune trace directe ; lisible dans les pics d'attention et le ton (inconnue)
@@ -483,6 +485,18 @@ Bilan : {'themes': 35, 'compartiments': 408, 'relations': 593, 'ponts': 244, 'po
 - humain:opinion_publique → humain:falsification [forcage] quand beaucoup parlent, dire vrai ne coûte plus : l'écart se referme d'un coup, d'où la surprise des révolutions
 - humain:falsification → humain:opinion_privee [forcage] falsification de la connaissance : un discours public sans contradiction façonne, à la longue, les croyances privées des générations suivantes (conservatisme collectif)
 - humain:opinion_publique → humain:passage_acte [forcage] une opinion publique qui bascule descend dans la rue
+- humain:passage_acte → humain:disponibilite [forcage] un acte collectif spectaculaire devient l'exemple qui revient à l'esprit
+- humain:disponibilite → humain:disponibilite [forcage] propre au niveau psychologique : cascade de disponibilité, jusqu'à saturation de l'attention
+- humain:disponibilite → humain:risque_percu [forcage] ce qui vient facilement à l'esprit paraît probable ; un événement rare et vif est surpondéré
+- humain:risque_percu → humain:nous_eux [forcage] la peur cherche un responsable dans l'autre groupe
+- humain:risque_percu → humain:attente [forcage] un risque perçu plus grand assombrit l'attente
+- humain:symboles → humain:disponibilite [forcage] une date, un mot, une image ramènent les exemples associés
+- humain:attente → humain:aspiration [forcage] l'aspiration suit l'expérience, avec retard : elle monte après les succès, baisse après les échecs
+- humain:aspiration → humain:passage_acte [forcage] à attente égale, une aspiration plus haute fait plus d'insatisfaits : passage_acte suit l'écart aspiration − attente
+- humain:aspiration → humain:opinion_privee [forcage] le mécontentement privé est relatif à ce qu'on attendait
+- humain:disponibilite → humain:agenda [forcage] un problème n'entre à l'agenda des décideurs qu'au-delà d'un seuil d'attention
+- humain:passage_acte → humain:agenda [forcage] la rue force l'agenda
+- humain:agenda → humain:agenda [forcage] propre au niveau statut : un problème qui occupe l'agenda en chasse d'autres ; l'attention retombe vers les routines
 - inflation-mondiale:energie → inflation-mondiale:prix_conso [forcage] l'énergie passe vite dans les prix, d'abord par les carburants
 - inflation-mondiale:alimentation → inflation-mondiale:prix_conso [forcage] les prix alimentaires pèsent plus lourd dans les pays pauvres
 - inflation-mondiale:prix_conso → inflation-mondiale:salaires [mutualisme] boucle prix-salaires : chacun nourrit l'autre quand le travail manque
