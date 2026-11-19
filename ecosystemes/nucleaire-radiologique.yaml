@@ -1,0 +1,118 @@
+theme: "nucleaire-radiologique"
+nom: "Nucléaire civil et sources radioactives (sûreté et institutions)"
+declaration:
+  but: "comprendre, au niveau institutionnel et de sûreté seulement, comment l'atome sert (électricité, médecine, industrie) ou nuit (incidents, contamination, pertes et vols de sources), et comment les signalements, recherches et déclarations se déroulent (questions du tournoi sur des sources radioactives volées)"
+  limites: "dedans la radioactivité comme phénomène, les usages civils, les sources scellées, les régulateurs et l'AIEA, les registres publics d'incidents, la santé et l'environnement en agrégat, les seuils et échelles, les traités de non-prolifération ; dehors tout détail technique ou opérationnel sur les matières, les procédés, les quantités ou les armes ; le programme iranien (fiche iran-nucleaire)"
+  observateur: "notre carte, regard extérieur, sources publiques institutionnelles ; aucun détail opérationnel"
+  date: "2026-11-19"
+  espace: "d'un hôpital ou d'un chantier à la planète (traités, retombées)"
+  temps: "de l'heure (un vol signalé) aux demi-vies (jours à millénaires) ; mémoire des grands accidents"
+  vitesse: "heures (signalement), jours (recherche), années (réglementation, démantèlement), millénaires (déchets)"
+  taille: "micro (atome, source) à macro (traités, parc électronucléaire mondial)"
+compartiments:
+  - id: "atome"
+    nom: "Radioactivité (phénomène physique)"
+    organisation: "atomique"
+    elements: ["désintégration et demi-vie", "rayonnement", "décroissance avec le temps et la distance"]
+    acteurs:
+      - {nom: "un radionucléide (en général)", taille: "micro", espace: "site", vitesse: "années", organisation: "atomique", facette: "non_humain"}
+    niveau: {espace: "site", temps: "demi-vies de jours à millénaires", vitesse: "années", taille: "micro"}
+    traces:
+      - {source: "aucune trace propre : phénomène connu par la physique", statut: "inconnue"}
+  - id: "sources"
+    nom: "Sources radioactives scellées (usages médicaux et industriels)"
+    organisation: "technique"
+    elements: ["radiographie industrielle des soudures", "radiothérapie et imagerie", "jauges industrielles", "sources en fin de vie ou orphelines"]
+    acteurs:
+      - {nom: "une entreprise de radiographie industrielle (en agrégat)", taille: "micro", espace: "site", vitesse: "jours", organisation: "economie", facette: "collectif"}
+      - {nom: "un hôpital équipé", taille: "micro", espace: "site", vitesse: "mois", organisation: "technique", facette: "collectif"}
+    niveau: {espace: "sites et transports", temps: "durée de vie des sources", vitesse: "jours à années", taille: "micro à méso"}
+    traces:
+      - {source: "registres publics nationaux des sources et autorisations", statut: "a_brancher"}
+  - id: "electricite"
+    nom: "Électricité nucléaire"
+    organisation: "technique"
+    elements: ["parc de réacteurs", "arrêts et redémarrages", "constructions et prolongations"]
+    acteurs:
+      - {nom: "un exploitant électronucléaire", taille: "méso", espace: "pays", vitesse: "mois", organisation: "economie", facette: "collectif"}
+    niveau: {espace: "pays", temps: "décennies d'exploitation", vitesse: "mois à années", taille: "méso à macro"}
+    traces:
+      - {source: "base publique des réacteurs de l'AIEA (PRIS)", statut: "a_brancher"}
+  - id: "surete"
+    nom: "Sûreté et sécurité (régulateurs, AIEA)"
+    organisation: "statut"
+    elements: ["autorités de sûreté nationales", "inspections et autorisations", "AIEA", "base de données des incidents et trafics (ITDB)"]
+    acteurs:
+      - {nom: "Agence internationale de l'énergie atomique", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+      - {nom: "une autorité de sûreté nationale", taille: "méso", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays et monde", temps: "décisions et rapports datés", vitesse: "jours à années", taille: "méso à macro"}
+    traces:
+      - {source: "communiqués publics des régulateurs et de l'AIEA (fiches ITDB annuelles)", statut: "a_brancher"}
+      - {source: "routines officielles (sites des institutions)", statut: "collecte", fichier: "collecte_routines.py"}
+  - id: "signalement"
+    nom: "Signalement, recherche et récupération"
+    organisation: "statut"
+    elements: ["alerte publique après perte ou vol", "recherche par les autorités", "récupération et mise en sûreté", "communication de fin d'alerte"]
+    acteurs:
+      - {nom: "une protection civile nationale", taille: "méso", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "région", temps: "jours à semaines", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "alertes publiques des protections civiles et régulateurs", statut: "a_brancher"}
+  - id: "sante"
+    nom: "Santé (exposition, en agrégat)"
+    organisation: "personne"
+    elements: ["exposition accidentelle", "soins", "suivi à long terme"]
+    acteurs:
+      - {nom: "une personne exposée (en agrégat, jamais nommée)", taille: "micro", espace: "local", vitesse: "jours à années", organisation: "personne", facette: "personne"}
+    niveau: {espace: "local", temps: "jours à décennies", vitesse: "jours à années", taille: "micro"}
+    traces:
+      - {source: "rapports publics des autorités sanitaires", statut: "a_brancher"}
+  - id: "environnement"
+    nom: "Environnement (eau, sols, air)"
+    organisation: "chimique"
+    elements: ["contamination localisée", "transfert dans l'eau et les sols", "retombées après accident majeur"]
+    niveau: {espace: "site à région", temps: "années à siècles", vitesse: "années", taille: "micro à macro"}
+    traces:
+      - {source: "réseaux publics de mesure de la radioactivité de l'air", statut: "a_brancher"}
+  - id: "convention"
+    nom: "Convention (seuils, échelles, déclarations)"
+    organisation: "convention"
+    elements: ["seuils réglementaires d'exposition", "échelle internationale des événements nucléaires (INES)", "déclaration d'incident", "catégories de sources selon leur danger"]
+    niveau: {espace: "pays et monde", temps: "textes durables ; déclarations datées", vitesse: "jours à décennies", taille: "méso à macro"}
+    traces:
+      - {source: "classements INES publiés", statut: "a_brancher"}
+  - id: "recits"
+    nom: "Récits et peur"
+    organisation: "ideologie"
+    elements: ["peur du nucléaire", "couverture médiatique des alertes", "débat énergétique"]
+    niveau: {espace: "médiatique", temps: "cycle de l'information ; décennies de débat", vitesse: "heures à années", taille: "micro à macro"}
+    traces:
+      - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
+  - id: "traites"
+    nom: "Non-prolifération (traités)"
+    organisation: "geopolitique"
+    elements: ["traité de non-prolifération", "garanties de l'AIEA", "contrôles des exportations"]
+    niveau: {espace: "mondial", temps: "décennies", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "listes de sanctions", statut: "collecte", fichier: "collecte_sanctions.py"}
+relations:
+  - {de: "atome", vers: "atome", effet: "-", delai: "années", force: "forte", coupure: "aucune", statut: "a_verifier", texte: "propre au niveau atomique : l'activité d'une source décroît d'elle-même selon sa demi-vie"}
+  - {de: "atome", vers: "sources", effet: "+", retour: "0", delai: "permanent", force: "forte", coupure: "fin de vie de la source", statut: "a_verifier", texte: "la radioactivité fait l'utilité de la source (soigner, contrôler des soudures) et son danger"}
+  - {de: "sources", vers: "signalement", effet: "+", delai: "heures à jours", force: "forte", intensite: {mesure: "catégorie de danger de la source", regle: "seuil"}, coupure: "perte non déclarée", statut: "a_verifier", texte: "une perte ou un vol déclenche l'alerte ; plus la source est dangereuse, plus l'alerte est large et rapide"}
+  - {de: "signalement", vers: "sources", effet: "-", delai: "jours", force: "moyenne", coupure: "source abandonnée ou déplacée loin", statut: "a_verifier", texte: "recherche puis récupération : la plupart des sources signalées sont retrouvées (part à vérifier)"}
+  - {de: "signalement", vers: "recits", effet: "+", delai: "heures", force: "forte", coupure: "communication rassurante", statut: "a_verifier", texte: "l'alerte publique fait l'actualité"}
+  - {de: "sources", vers: "sante", effet: "-", delai: "jours", force: "forte", intensite: {mesure: "durée et proximité de l'exposition", regle: "seuil"}, coupure: "mise en sûreté rapide", statut: "a_verifier", texte: "une source sortie de son contrôle peut exposer des personnes qui l'ignorent"}
+  - {de: "sources", vers: "environnement", effet: "-", delai: "jours à années", force: "moyenne", intensite: {mesure: "intégrité de l'enveloppe de la source", regle: "seuil"}, coupure: "source restée scellée", statut: "a_verifier", texte: "la contamination n'apparaît que si l'enveloppe est brisée"}
+  - {de: "surete", vers: "sources", effet: "-", retour: "±", delai: "mois", force: "moyenne", coupure: "contrôles faibles, sources orphelines", statut: "a_verifier", texte: "autorisations, inspections et registres réduisent les pertes"}
+  - {de: "surete", vers: "signalement", effet: "+", delai: "heures", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les régulateurs pilotent la recherche et notifient l'AIEA"}
+  - {de: "convention", vers: "signalement", effet: "±", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la catégorie de la source et le classement de l'événement décident de l'ampleur de la réponse et de ce qui est rendu public"}
+  - {de: "electricite", vers: "environnement", effet: "-", delai: "années", force: "faible", intensite: {mesure: "gravité d'un accident", regle: "seuil"}, coupure: "fonctionnement normal", statut: "a_verifier", texte: "en temps normal presque rien ; au-delà d'un seuil d'accident, une contamination durable"}
+  - {de: "recits", vers: "electricite", effet: "-", delai: "années", force: "moyenne", intensite: {mesure: "souvenir d'un accident récent", regle: "hysteresis"}, coupure: "crise énergétique", statut: "a_verifier", texte: "la peur après un accident fait fermer des réacteurs ; elle ne retombe pas par le même chemin"}
+  - {de: "traites", vers: "surete", effet: "+", delai: "années", force: "moyenne", coupure: "retrait d'un État", statut: "a_verifier", texte: "les traités donnent à l'AIEA ses garanties et ses inspections"}
+  - {de: "environnement", vers: "sante", effet: "-", delai: "années", force: "moyenne", coupure: "évacuation, restrictions alimentaires", statut: "a_verifier", texte: "propre au passage chimique-vivant : la contamination entre dans l'eau, les sols et les aliments"}
+ponts:
+  - {depuis: "traites", vers: "iran-nucleaire:verification", nature: "les garanties de l'AIEA appliquées au programme iranien"}
+  - {depuis: "electricite", vers: "energie-mondiale:production", nature: "le nucléaire dans le bouquet énergétique"}
+  - {depuis: "environnement", vers: "alimentation-mondiale:sols", nature: "la contamination des sols touche les cultures"}
+  - {depuis: "surete", vers: "politique-americaine:executif", nature: "régulation fédérale et sécurité des sources"}
+  - {depuis: "signalement", vers: "securite-publique:alertes", nature: "les alertes publiques et la protection civile (thème à écrire)"}
