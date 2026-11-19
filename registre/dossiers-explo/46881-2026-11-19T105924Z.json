@@ -1,0 +1,216 @@
+{
+ "candidats": [
+  "INC@5",
+  "CRO@5",
+  "RES@5"
+ ],
+ "contre_candidate": [
+  "RES@5"
+ ],
+ "mots": [
+  {
+   "carte": "INC",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Des cas documentés (Cannes 2001, Cannes 2004, Locarno 2001, Venice 2004, Cannes 2005, Cannes 2009) montrent que des jurys profondément divisés ont conduit à des choix de prix inattendus, souvent par compromis après des délibérations prolongées.",
+   "objet": "mécanique des délibérations de jury aux grands festivals internationaux",
+   "source": "The Hollywood Reporter; Filmibeat (résumés dans les résultats de recherche fournis)",
+   "source_url": "https://www.hollywoodreporter.com/lists/cannes-palme-dor-wrong-film-winner/#:~:text=By%20Patrick%20Brzeski%2C%20Scott%20Roxborough",
+   "date_consultation": "2026-11-19",
+   "classe_source": "contemporain",
+   "contre_observation": "Quelques exemples montrent qu'un favori pré-festival a parfois gagné malgré des tensions (ex. Cannes 2004: Fahrenheit 9/11), mais ces cas sont décrits comme proches et n'infirment pas le rôle récurrent de la division de jury dans les surprises.",
+   "portee": "substantielle",
+   "force_initiale": "F",
+   "test": "pistolet",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "The Hollywood Reporter (analyse synthétique des palmes et controverses) ; Filmibeat (compte rendu d'un cas de Venice 2004) — deux producteurs éditoriaux distincts couvrant événements différents."
+   },
+   "passage": [
+    {
+     "localisation": "The Hollywood Reporter, liste d'exemples (résumé)",
+     "relation": "soutient",
+     "extrait": "‘Cannes 2001... the deliberations involved passion and even anger... The Son's Room emerged as the safe middle-ground choice’"
+    },
+    {
+     "localisation": "Filmibeat (Venice 2004 reportage cité)",
+     "relation": "soutient",
+     "extrait": "‘Still Life gets Venice... the jury was reportedly split 4-3 over the main prize and held an extra meeting...’"
+    }
+   ],
+   "a6": "CTR@5 → (les contraintes institutionnelles peuvent borner les options mais n'expliquent pas la dynamique de compromis interne) ; EME@5 → (EME est l'événement visé par le plan; INC@5 explique le mécanisme d'apparition d'un gagnant 'autre' par délibération conflictuelle)"
+  },
+  {
+   "carte": "CRO",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Plusieurs exemples montrent que l'augmentation du 'buzz' ou de la momentum d'un film pendant un festival (standing ovations, prix intermédiaires, accueil critique) a précédé des victoires majeures (ex. Parasite 2019, Anora 2024).",
+   "objet": "effet de la dynamique d'accueil (buzz/momentum) sur l'attribution du prix majeur d'un festival",
+   "source": "TheWrap (exemples Parasite, Anora) ; Reuters (exemple Toronto/Precious résumé dans les résultats)",
+   "source_url": "https://www.thewrap.com/best-picture-oscar-winners-that-launched-at-the-toronto-film-festival-photos/#:~:text=Parasite",
+   "date_consultation": "2026-11-19",
+   "classe_source": "contemporain",
+   "contre_observation": "Analyses synthétiques (The Conversation / études citées dans les résultats) soulignent que les réseaux industriels et affiliations de jurés peuvent parfois être plus prédictifs que le seul buzz de festival.",
+   "portee": "marginale",
+   "test": "cerceau",
+   "corroboration": "unique",
+   "passage": [
+    {
+     "localisation": "TheWrap (récapitulatif de cas, Parasite / Anora)",
+     "relation": "soutient",
+     "extrait": "‘Parasite... received standing ovation at Cannes and went on to win Palme d'Or; Anora debuted at Cannes with a long standing ovation and won the Palme d'Or’"
+    }
+   ],
+   "a6": "EME@5 → (l'apparition d'un gagnant 'autre' peut aussi résulter d'un pic de momentum non anticipé) ; PRO@5 → (les professionnels et la campagne influent sur la conversion du buzz en prix)"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le compte-rendu officiel de la remise de l'Étoile d'Or (ou une enquête de presse fondée sur des sources du jury) mentionne-t-il explicitement une impasse ou un compromis de délibération pour la décision du 28 novembre 2026 ?",
+   "si_oui": "INC@5",
+   "si_non": "indetermine",
+   "resolution": "communiqué officiel du Marrakech International Film Festival ou articles de presse publiés entre le 28 et le 30 novembre 2026 faisant état d'une fracture de jury, d'une réunion supplémentaire, d'un vote serré ou d'un choix présenté comme compromis.",
+   "justification": {
+    "oui": "Une mention datée d'une impasse/compromis est précisément le marqueur observable central d'INCERTITUDE — elle établit que l'indétermination des acteurs a organisé la conduite et mené à une issue inattendue.",
+    "non": "L'absence d'un tel compte-rendu laisserait ouverte la possibilité que la décision ait suivi d'autres logiques (par ex. un gagnant favori), rendant l'ancrage d'INC incertain."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "RES@5": "[marqueur_non_rempli] [marqueur_non_rempli] Les résultats fournis documentent cas ponctuels de liens professionnels (jurés / réalisateurs / producteurs) mais n'exposent pas une topologie de réseau complète avec au moins trois nœuds et leurs liens détaillés, exigée par le marqueur observable de RÉSEAU."
+ },
+ "etat": "[2026-11-19 | 10 jours] INCERTITUDE@5[f] + CROISSANCE@5[f]",
+ "disponible_le": "2026-11-19",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@5"
+   ],
+   "requete": "instances where international film festival juries produced unexpected Best Film winners after close/divided deliberations 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@5"
+   ],
+   "requete": "cases where reports of jury division existed but the pre-festival favorite still won Best Film at international festivals 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "INC@5",
+    "CRO@5"
+   ],
+   "requete": "do surprise Best Film winners at festivals more often follow close jury divisions or the late momentum growth of a film during the festival 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@5"
+   ],
+   "requete": "films that gained strong momentum (buzz, interim awards, audience/press momentum during a festival) and then won the top festival prize 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@5"
+   ],
+   "requete": "examples where a film built momentum during a festival but failed to convert that into the festival's top prize 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@5",
+    "RES@5"
+   ],
+   "requete": "is festival-winning momentum more predictive of a surprise Best Film win than the influence of industry/jury networks 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "RES@5"
+   ],
+   "requete": "cases where industry connections, co-production networks or known ties between jurors and filmmakers correlated with a film winning top prizes at festivals 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "RES@5"
+   ],
+   "requete": "instances where strong industry networks or juror-filmmaker ties did not produce a top prize for the connected film 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "INC@5",
+    "RES@5"
+   ],
+   "requete": "for surprise winners at festivals, which factor is more common: jury indecision/division or influence of juror/industry networks 2000..2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "ÉMERGENCE@5 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "programmee",
+   "resolution": "La réponse 'Other outcome' tiendra si, lors de l'édition 2026, l'Étoile d'Or est attribuée à un film qui n'est pas l'une des options listées, est partagée entre plusieurs films, ou s'il n'y a pas de gagnant annoncé avant le 1er janvier 2027.",
+   "source_resolution": {
+    "emetteur": "Marrakech International Film Festival Foundation (organisateur officiel)",
+    "document": "Communiqué officiel des lauréats / page officielle des récompenses pour l'édition 2026",
+    "regle_ambiguite": "Si le communiqué officiel nomme un seul film comme lauréat unique, l'issue est non-'Other outcome' si ce film correspond à une option listée; si le communiqué nomme un film différent, annonce un partage (ex æquo) ou n'annonce pas de lauréat avant le 2027-01-01, l'issue est 'Other outcome'."
+   },
+   "vue_exterieure": {
+    "frequence": 0.024109589041095888,
+    "classe_de_reference": "{\n \"classe_de_reference\": \"attribution de l'Étoile d'Or (Golden Star) du meilleur film lors d'une édition annuelle du Marrakech International Film Festival\",\n \"unite\": \"une edition du festival où l'Étoile d'Or est attribuée à un film (les editions où aucune Étoile d'Or n'est remise comptent comme 0)\",\n \"population\": \"toutes les editions annuelles du Marrakech International Film Festival couvrant la periode historique consideree (chaque annee = une occasion d'attribution)\",\n \"periode\": \"2001-2025\",\n \"mise_a_l_echelle\": \"estimer la frequence par fenetre de 10 jours : (nombre de fois ou l'Étoile d'Or a ete attribuee pendant 2001-2025) / (nombre d'annees couverte) = taux par an ; puis convertir en taux pour 10 jours en multipliant par 10/365. (Autre formulation : frequence_par_fenetre_10j = frequence_par_an * 10/365.)\",\n \"sources_visees\": \"[R1], [R4]\"\n}",
+    "source": "R1: 'Marrakech International Film Festival winners list 2000..2025' (compilation issue de recherche web)",
+    "periode": "2001-2025",
+    "disponible_le": "2026-11-19",
+    "classe_alternative": null,
+    "motif_sans_alternative": "Aucune autre classe de référence crédible et strictement compatible n'a été fournie par les sources visées; on utilise la liste compilée [R1].",
+    "ecart_critere": "différent : la classe compte si l'Étoile d'Or a été attribuée (présence/absence par édition) sur 2001-2025; elle ne dit rien sur quel film gagnera en 2026, qui est la question à résoudre."
+   },
+   "programmation": {
+    "qui": "l'organisation du Marrakech International Film Festival et le jury de l'Official Competition (présidé par Marion Cotillard)",
+    "engagement": "le calendrier officiel du festival fixe la cérémonie de clôture et la remise de l'Étoile d'Or au 28 novembre 2026 ; le programme et la composition du jury sont publiés sur le site et communiqués de presse du festival"
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "INC@5",
+   "vers": "cible",
+   "extrait": "The most compelling evidence points to jury deadlock as a primary driver of surprise wins:",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "CRO@5",
+   "vers": "cible",
+   "extrait": "However, Anora (2024) demonstrates the momentum pattern. The film 'came into awards season with plenty of buzz' after its Palme d'Or win at Cannes, and this festival victory 'kicked Anora into overdrive' for subsequent awards consideration",
+   "source": ""
+  }
+ ]
+}
