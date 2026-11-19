@@ -21,8 +21,9 @@ gpt-5-mini (Azure) et Claude Haiku 4.5 (Bedrock), température 0,2, même consig
 - « cartes » : les cartes dont la STRUCTURE est présente, chacune avec le passage du titre qui l'ancre ;
 - « reste » : une structure essentielle à la situation qu'aucune carte ne saisit, ou null ;
 - « reste_essentiel » : vrai si, sans ce reste, le codage manque l'essentiel.
-Une carte ne compte que si son passage figure mot pour mot dans le titre (cartes_ancrees.citation_verifiee) : pas de
-carte par simple résonance. Aucune carte est une réponse admise.
+Une carte ne compte que si son passage figure mot pour mot dans le titre (même normalisation que
+cartes_ancrees.citation_verifiee, mais longueur minimale 3 caractères au lieu de 20, les titres étant courts ;
+précisé avant tout lancement) : pas de carte par simple résonance. Aucune carte est une réponse admise.
 
 ## Mesures (fixées)
 1. Couverture : part des situations sans reste essentiel, par codeur et pour les deux à la fois.
