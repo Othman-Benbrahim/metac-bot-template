@@ -706,3 +706,6 @@ ponts:
 - depuis: liban
   vers: liban-institutions:justice
   nature: les institutions et la justice libanaises (questions du tournoi)
+- depuis: recits
+  vers: humain:symboles
+  nature: récits de guerre et symboles

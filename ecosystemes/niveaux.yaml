@@ -29,6 +29,17 @@ niveaux:
     vitesse: "heures à années"
     inertie: 0.3
     relations_propres: ["réplication et croissance exponentielle", "mutation et sélection", "contagion d'un hôte à l'autre", "immunité et résistance", "symbiose (microbiotes)"]
+  # 0.10.325 (lecture de Behave, Sapolsky 2017 ; décision de l'auteur, 2026-11-19, 6 h 33 : cartographier les
+  # causalités qui poussent l'humain à agir). Le corps a ses relations propres : une hormone ne CAUSE pas un acte,
+  # elle abaisse le seuil auquel un stimulus du milieu le déclenche (relation de modulation, clé « module »).
+  # Toujours en agrégat (une population, une cohorte) ; jamais le corps d'une personne nommée.
+  - id: "corps"
+    nom: "Corps (système nerveux, hormones, gènes exprimés, sommeil, faim, santé), en agrégat"
+    rang: 3
+    taille: "micro"
+    vitesse: "secondes (réflexe) à décennies (empreinte de l'enfance)"
+    inertie: 0.3
+    relations_propres: ["une hormone module et sensibilise plus qu'elle ne cause : elle abaisse des seuils", "stress aigu qui mobilise, stress chronique qui use (courbe en U inversé)", "plasticité : l'expérience remodèle les circuits, plus vite chez l'enfant et l'adolescent", "empreinte précoce durable (adversité de l'enfance, vie prénatale), en partie réversible, d'autant moins que l'on tarde", "un gène est un potentiel dont l'effet dépend du milieu (interaction gène-milieu)", "la peur et l'agression partagent leurs circuits", "l'attente de la récompense mobilise plus que la récompense"]
   - id: "physique"
     nom: "Physique (énergie, chaleur, rayonnement solaire, gravité, mouvements)"
     rang: 3

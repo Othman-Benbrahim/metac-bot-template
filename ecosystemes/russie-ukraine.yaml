@@ -670,3 +670,6 @@ ponts:
 - depuis: sols_agriculture
   vers: alimentation-mondiale:sols
   nature: les terres noires dans l'offre mondiale de céréales
+- depuis: front
+  vers: humain:passage_acte
+  nature: les hostilités nourrissent le mécanisme général du passage à l'acte

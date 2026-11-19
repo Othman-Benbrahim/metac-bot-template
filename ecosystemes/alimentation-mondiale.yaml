@@ -639,3 +639,6 @@ ponts:
 - depuis: importateurs
   vers: dette-emergents:monnaies
   nature: les importateurs paient en dollars
+- depuis: prix
+  vers: humain:stress_chronique
+  nature: le prix de la nourriture pèse sur le stress des ménages

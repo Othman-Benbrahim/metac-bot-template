@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 34, 'compartiments': 385, 'relations': 543, 'ponts': 220, 'ponts_en_attente': 0, 'relations_a_verifier': 543, 'relations_avec_intensite': 249, 'compartiments_sans_trace_collectee': 173}
+Bilan : {'themes': 35, 'compartiments': 405, 'relations': 584, 'ponts': 241, 'ponts_en_attente': 0, 'relations_a_verifier': 584, 'relations_avec_intensite': 268, 'compartiments_sans_trace_collectee': 184}
 
 ## Thèmes à écrire (ponts en attente)
 
@@ -97,6 +97,17 @@ Bilan : {'themes': 34, 'compartiments': 385, 'relations': 543, 'ponts': 220, 'po
 - guerre-levant:eau : rapports publics des agences de l'ONU sur l'eau et l'assainissement (a_brancher)
 - guerre-levant:epidemies : bulletins publics de l'OMS (a_brancher)
 - guerre-levant:convention : documents publics de l'ONU (a_brancher)
+- humain:instant : aucune trace directe non intrusive ; se lit seulement par ses effets agrégés (passage à l'acte) (fermee)
+- humain:hormones : aucune trace non intrusive ; compartiment latent, lu par ses modulations (fermee)
+- humain:jeunesse : structure par âge (Nations unies, World Population Prospects ; Banque mondiale) (a_brancher)
+- humain:enfance : exposition cumulée d'une génération à la violence organisée (UCDP, par pays et par décennie) ; échelle trop lente pour une calibration hebdomadaire (a_brancher)
+- humain:genes_milieu : aucune trace non intrusive pertinente ; compartiment de structure (fermee)
+- humain:culture_ecologie : enquêtes de valeurs (World Values Survey) et cartes ethnographiques publiques (a_brancher)
+- humain:morale : enquêtes d'opinion publiques (a_brancher)
+- humain:empathie : attention publique à une crise (pages vues Wikipédia, appels de fonds) (a_brancher)
+- humain:tri : indices publics de ségrégation résidentielle (recensements) ; déplacements internes (IDMC) (a_brancher)
+- humain:conventions : violations publiques datées d'une norme (premier emploi d'une arme, rupture d'un cessez-le-feu, sortie d'un traité) (a_brancher)
+- humain:dilemme : respect daté d'accords de partage (quotas de pêche, eaux transfrontalières, quotas de l'OPEP+) (a_brancher)
 - inflation-mondiale:elevage_cultures : alertes publiques de santé animale (OMSA) (a_brancher)
 - inflation-mondiale:epidemies : alertes publiques de l'OMS et de l'OMSA (a_brancher)
 - information-cyber:foules : aucune trace directe ; lisible dans les pics d'attention et le ton (inconnue)
@@ -420,6 +431,47 @@ Bilan : {'themes': 34, 'compartiments': 385, 'relations': 543, 'ponts': 220, 'po
 - guerre-levant:epidemies → guerre-levant:humanitaire [forcage] une épidémie déborde les secours ; assez forte, elle impose parfois des trêves sanitaires
 - guerre-levant:convention → guerre-levant:mediateurs [forcage] reconnaissances et résolutions donnent ou retirent un cadre aux trêves ; un fait conventionnel change par déclaration
 - guerre-levant:puissances → guerre-levant:mediateurs [mutualisme] relation propre au niveau géopolitique : puissances et médiateurs s'appuient l'un sur l'autre (mutualisme)
+- humain:indices → humain:instant [forcage] un indice du milieu déclenche l'alerte avant la conscience
+- humain:instant → humain:passage_acte [forcage] l'alerte ne devient acte collectif qu'au-delà d'un seuil ; le seuil est ce que les autres compartiments abaissent
+- humain:hormones → humain:instant [forcage] une hormone ne cause pas l'acte : elle abaisse le seuil auquel l'alerte le déclenche
+- humain:indices → humain:instant [forcage] la chaleur prolongée abaisse aussi le seuil du passage à l'acte (modulation, en plus du déclenchement)
+- humain:stress_chronique → humain:hormones [forcage] la précarité qui dure entretient l'état de stress ; au-delà, l'usure plutôt que la mobilisation
+- humain:stress_chronique → humain:nous_eux [forcage] la rareté et l'insécurité durcissent la frontière de groupe et cherchent un coupable
+- humain:stress_chronique → humain:attente [forcage] la précarité assombrit l'attente
+- humain:attente → humain:passage_acte [forcage] une attente qui s'effondre mobilise (rue, vote sanction) plus qu'une misère attendue
+- humain:attente → humain:hierarchie [forcage] une attente déçue retire du crédit à ceux qui tiennent le rang
+- humain:jeunesse → humain:passage_acte [forcage] une population jeune prend plus de risques collectifs, surtout entre pairs
+- humain:passage_acte → humain:enfance [forcage] la violence d'aujourd'hui est l'adversité précoce de la génération qui la subit
+- humain:enfance → humain:stress_chronique [forcage] une génération marquée tôt réagit plus fort au stress une fois adulte : la boucle se ferme sur des décennies
+- humain:genes_milieu → humain:hormones [forcage] les gènes règlent la sensibilité, dans un sens ou l'autre selon le milieu
+- humain:enfance → humain:genes_milieu [forcage] l'adversité précoce change l'expression des gènes, parfois sur plusieurs générations
+- humain:culture_ecologie → humain:morale [forcage] l'écologie d'origine façonne ce qui paraît moral
+- humain:culture_ecologie → humain:passage_acte [forcage] dans une culture de l'honneur, un affront public déclenche plus facilement la riposte
+- humain:reciprocite → humain:treve [forcage] des adversaires qui se font face longtemps et peuvent se rendre la pareille inventent la retenue
+- humain:treve → humain:nous_eux [forcage] le contact prolongé et un but commun estompent la frontière
+- humain:treve → humain:passage_acte [forcage] une trêve tenue fait baisser les hostilités
+- humain:nous_eux → humain:nous_eux [forcage] propre au niveau psychologique : la frontière s'entretient elle-même (polarisation), jusqu'à saturation
+- humain:symboles → humain:nous_eux [forcage] une métaphore de dégoût appliquée à un groupe ouvre la voie à la déshumanisation
+- humain:nous_eux → humain:empathie [forcage] plus la frontière est dure, moins la douleur des autres compte
+- humain:empathie → humain:passage_acte [forcage] l'empathie retient, mais faiblement : ressentir n'est pas agir
+- humain:nous_eux → humain:passage_acte [forcage] une frontière durcie rend la violence collective acceptable
+- humain:stress_chronique → humain:nous_eux [forcage] la précarité abaisse le seuil auquel la frontière de groupe devient violence
+- humain:passage_acte → humain:nous_eux [mutualisme] la violence subie durcit la frontière, qui appelle la riposte : cycle de vengeance
+- humain:hierarchie → humain:hormones [forcage] une hiérarchie qui vacille stresse ceux d'en haut ; stable, elle stresse ceux d'en bas
+- humain:hierarchie → humain:passage_acte [forcage] l'autorité proche et légitime obtient l'obéissance, pour la violence comme pour la retenue ; un seul dissident visible la fragilise
+- humain:morale → humain:passage_acte [forcage] la morale intuitive justifie après coup autant qu'elle retient
+- humain:symboles → humain:treve [forcage] sur une valeur sacrée, une offre matérielle durcit le refus ; un geste symbolique peut ouvrir la trêve
+- humain:passage_acte → humain:passage_acte [forcage] propre au niveau social : chacun agit quand assez d'autres agissent ; les seuils individuels sont distribués, d'où une masse critique et un point de bascule
+- humain:nous_eux → humain:tri [forcage] une préférence modérée pour les siens suffit, par départs en chaîne, à séparer les groupes
+- humain:tri → humain:nous_eux [forcage] des groupes séparés n'ont plus de contact : la frontière durcit, et la séparation s'entretient
+- humain:tri → humain:treve [forcage] sans lieux communs, moins d'occasions de trêve
+- humain:conventions → humain:passage_acte [forcage] une convention ou un tabou tenus retiennent l'acte parce que chacun s'attend à ce que les autres les respectent
+- humain:passage_acte → humain:conventions [forcage] chaque violation use la norme ; une fois rompue, elle ne revient pas à son niveau d'avant
+- humain:symboles → humain:conventions [forcage] un symbole partagé sert de point focal où les attentes se rejoignent
+- humain:reciprocite → humain:dilemme [forcage] la répétition et la réputation font coopérer dans un dilemme à plusieurs
+- humain:hierarchie → humain:dilemme [forcage] une autorité qui fait respecter la règle rend la coopération rationnelle ; contestée, elle ne la garantit plus
+- humain:stress_chronique → humain:dilemme [forcage] la rareté pousse chacun à prendre avant les autres
+- humain:dilemme → humain:treve [forcage] une coopération qui tient dans un domaine rend la trêve plus probable dans les autres
 - inflation-mondiale:energie → inflation-mondiale:prix_conso [forcage] l'énergie passe vite dans les prix, d'abord par les carburants
 - inflation-mondiale:alimentation → inflation-mondiale:prix_conso [forcage] les prix alimentaires pèsent plus lourd dans les pays pauvres
 - inflation-mondiale:prix_conso → inflation-mondiale:salaires [mutualisme] boucle prix-salaires : chacun nourrit l'autre quand le travail manque

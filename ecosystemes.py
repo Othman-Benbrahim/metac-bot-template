@@ -44,7 +44,11 @@ FORCES = ("faible", "moyenne", "forte", "inconnue")
 # - force : ce que la relation transmet d'ordinaire (structurel) ;
 # - intensite.mesure : ce qui dit l'intensité du moment (une trace) ;
 # - intensite.regle : comment la force varie avec l'intensité.
-REGLES_INTENSITE = ("proportionnelle", "seuil", "saturation", "hysteresis", "inconnue")
+REGLES_INTENSITE = ("proportionnelle", "seuil", "saturation", "hysteresis", "masse_critique", "inconnue")
+# 0.10.326 (Schelling, Micromotives and Macrobehavior) : « masse_critique » — chacun agit quand assez d'autres agissent,
+# et les seuils individuels sont DISTRIBUÉS (moyenne mu, dispersion sigma, en unités d'intensité |z|). La réponse
+# collective suit la fonction de répartition de ces seuils : une courbe en S, dont le « seuil » net est le cas limite
+# (sigma → 0). Paramètres de la relation : mu, sigma (calibrés par calibrer.py).
 
 
 # 0.10.317 (rappel de l'auteur, 2026-11-19, 4 h 34) : les quatre axes doivent être lisibles par le code, et SURTOUT la
@@ -108,11 +112,17 @@ def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
 CLES_PERMISES = {
     "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
-    "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte"},
+    "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
+                 "module", "parametres", "series"},
     "pont": {"depuis", "vers", "nature", "type"}}
 # 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
 # soit qu'un compartiment INFLUE sur l'autre fiche (type: influence, par défaut : transmission partielle, avec retard).
 TYPES_PONT = ("meme", "influence")
+
+
+# 0.10.326 (Schelling, ch. 2, « les mathématiques inéluctables des chaises musicales ») : une IDENTITÉ comptable tient
+# quels que soient les motifs : variation(total) = Σ coefficient × variation(terme). Clé de fiche « identites ».
+CLES_IDENTITE = {"total", "termes", "texte"}
 
 
 def cles_inconnues(fiche: dict) -> list[str]:
@@ -132,6 +142,9 @@ def cles_inconnues(fiche: dict) -> list[str]:
         voir(r, "relation", f"relation {r.get('de')} → {r.get('vers')}")
     for p in fiche.get("ponts") or []:
         voir(p, "pont", "ponts")
+    for x in fiche.get("identites") or []:
+        for k in set(x) - CLES_IDENTITE:
+            err.append(f"{t} identites : clé inconnue {k!r}")
     return err
 
 
@@ -191,6 +204,34 @@ def valider(fiche: dict) -> list[str]:
                 err.append(f"{lab} : intensité sans « mesure » (ce qui dit l'intensité du moment)")
             elif it.get("regle") not in REGLES_INTENSITE:
                 err.append(f"{lab} : règle d'intensité {it.get('regle')!r} hors de {REGLES_INTENSITE}")
+        # 0.10.325 : une relation de MODULATION ne transmet rien d'elle-même ; elle abaisse le seuil d'une autre
+        # relation de la fiche, écrite « de>vers » (Sapolsky : l'hormone sensibilise, le milieu déclenche)
+        mod = r.get("module")
+        if mod is not None:
+            de, _, vers = str(mod).partition(">")
+            cible = [x for x in fiche.get("relations") or [] if x.get("de") == de and x.get("vers") == vers]
+            if not cible:
+                err.append(f"{lab} : module {mod!r} ne désigne aucune relation de la fiche (écrire de>vers)")
+            elif (cible[0].get("intensite") or {}).get("regle") != "seuil":
+                err.append(f"{lab} : module {mod!r} vise une relation sans règle « seuil » (rien à abaisser)")
+        # 0.10.325 : « series » impose les deux séries de calibration [source, cible], prises parmi les traces des
+        # deux compartiments, pour que la mesure compare le même lieu aux deux bouts
+        ser = r.get("series")
+        if ser is not None:
+            comp = {c.get("id"): c for c in fiche.get("compartiments") or []}
+            ok = isinstance(ser, list) and len(ser) == 2 and all(
+                any(tr.get("adaptateur") == a for tr in (comp.get(b) or {}).get("traces") or [])
+                for a, b in zip(ser, (r.get("de"), r.get("vers"))))
+            if not ok:
+                err.append(f"{lab} : series {ser!r} doit nommer [adaptateur de la source, adaptateur de la cible]")
+        par = r.get("parametres")
+        if par is not None and not (isinstance(par, dict) and all(isinstance(v, (int, float)) for v in par.values())):
+            err.append(f"{lab} : parametres doit être un dictionnaire nom → valeur de départ (nombre)")
+    for x in fiche.get("identites") or []:
+        termes = x.get("termes") or {}
+        if x.get("total") not in ids or not termes or any(k not in ids for k in termes) \
+                or not all(isinstance(v, (int, float)) and v != 0 for v in termes.values()):
+            err.append(f"{t} identité {x.get('total')!r} : total et termes doivent être des compartiments, coefficients non nuls")
     for p in fiche.get("ponts") or []:
         if p.get("depuis") not in ids:
             err.append(f"{t} pont : « {p.get('depuis')} » n'est pas un compartiment de la fiche")
@@ -214,13 +255,17 @@ def assembler(fiches: dict[str, dict]) -> dict:
             forme = r.get("forme") or forme_deduite(r["effet"], r.get("retour"))
             liens.append({"de": f"{t}:{r['de']}", "vers": f"{t}:{r['vers']}", "forme": forme,
                           "forme_ecrite": r.get("forme") is not None, **{k: r.get(k) for k in
-                          ("effet", "retour", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte")}})
+                          ("effet", "retour", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
+                           "parametres", "series")},
+                          "module": (f"{t}:{r['module'].split('>')[0]}>{t}:{r['module'].split('>')[1]}" if r.get("module") else None)})
         for p in f.get("ponts") or []:
             cible_theme, cible_comp = str(p["vers"]).split(":", 1)
             existe = cible_theme in fiches and any(c["id"] == cible_comp for c in fiches[cible_theme]["compartiments"])
             ponts.append({"de": f"{t}:{p['depuis']}", "vers": p["vers"], "nature": p.get("nature"), "resolu": existe,
                           "type": p.get("type", "influence")})
-    return {"themes": sorted(fiches), "noeuds": noeuds, "relations": liens, "ponts": ponts,
+    identites = [{"total": f"{t}:{x['total']}", "termes": {f"{t}:{k}": v for k, v in x["termes"].items()},
+                  "texte": x.get("texte")} for t, f in fiches.items() for x in f.get("identites") or []]
+    return {"themes": sorted(fiches), "noeuds": noeuds, "relations": liens, "ponts": ponts, "identites": identites,
             "bilan": {"themes": len(fiches), "compartiments": len(noeuds), "relations": len(liens), "ponts": len(ponts),
                       "ponts_en_attente": sum(not p["resolu"] for p in ponts),
                       "relations_a_verifier": sum(l["statut"] == "a_verifier" for l in liens),

@@ -555,3 +555,10 @@ ponts:
 - depuis: statistiques
   vers: economie-chinoise:statistiques
   nature: fiabilité des chiffres officiels chinois
+- depuis: prix_conso
+  vers: humain:stress_chronique
+  nature: la hausse des prix devient précarité vécue
+- depuis: salaires
+  vers: humain:stress_chronique
+  nature: 'salaires réels et chômage : la même précarité'
+  type: meme

@@ -41,6 +41,7 @@ SERIES = {
     "UNRATE": "taux de chômage américain, mensuel (inflation mondiale : salaires et emploi)",
     "CES0500000003": "salaire horaire moyen américain, mensuel (inflation mondiale : salaires et emploi)",
     "PFOODINDEXM": "indice mondial des prix alimentaires (FMI), mensuel (inflation mondiale : alimentation)",
+    "UMCSENT": "confiance des ménages américains (Université du Michigan), mensuel (humain : attente)",
 }
 
 

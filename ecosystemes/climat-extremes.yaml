@@ -575,3 +575,6 @@ ponts:
 - depuis: exposes
   vers: infrastructures-critiques:reseaux
   nature: réseaux électriques et de transport face aux extrêmes
+- depuis: saisons
+  vers: humain:indices
+  nature: la chaleur anormale est un indice du milieu qui raccourcit la patience

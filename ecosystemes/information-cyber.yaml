@@ -403,3 +403,6 @@ ponts:
 - depuis: foules
   vers: epidemies:comportements
   nature: panique et confiance en temps d'épidémie
+- depuis: recits
+  vers: humain:symboles
+  nature: les récits portent les métaphores de souillure et de terre sacrée

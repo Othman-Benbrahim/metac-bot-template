@@ -530,3 +530,9 @@ ponts:
 - depuis: decisions
   vers: politique-americaine:energie
   nature: réserves stratégiques, sanctions, prix à la pompe et élections
+identites:
+- total: stocks
+  termes:
+    production: 1
+    demande: -1
+  texte: 'variation des stocks = production − demande (Schelling, ch. 2 : une identité tient quels que soient les motifs)'
