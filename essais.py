@@ -243,7 +243,11 @@ ESSAIS = {
                                    "objet": "A corrigé après coup par le score des 7 notes de cartes, derrière une porte "
                                             "apprise, contre A (idée GraFT) ; aucun nouvel appel",
                                    "doc": "preenregistrements/alphabet-correction-finale.md"},
-    "tendance_metaculus": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "tendance_metaculus": {"resume": ["registre/banc-tendance-metaculus.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
+                           "clos_le": "2026-11-19",
+                           "verdict": "non reproduit : 109 questions Metaculus d'avant 2026, β 0,6 appris sur 2026, "
+                                      "S ajusté 0,5478 contre S 0,5329, écart +0,015, intervalle corrigé "
+                                      "[−0,041 ; +0,086] ; rang tendance / issue 0,059 (run 44428107762)",
                            "objet": "S ajusté par la tendance de l'attention GDELT, β appris sur Metaculus 2026 et "
                                     "appliqué tel quel aux questions Metaculus d'avant 2026",
                            "doc": "preenregistrements/tendance-metaculus.md"},
