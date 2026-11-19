@@ -87,6 +87,17 @@ def webamon(reg: Path, index: str = "new_domains") -> list[tuple[str, float]]:
     return sorted((r["jour"], float(r["total"])) for r in _csv(reg, "webamon.csv") if r["index"] == index)
 
 
+def openmeasures(reg: Path, site: str = "telegram", serie: str = "complot") -> list[tuple[str, float]]:
+    """Part quotidienne d'une série de termes (collecte_openmeasures.py) dans le volume de la plateforme, en pour
+    dix mille messages de référence ; « brut » en dernier paramètre rend le compte non normalisé."""
+    lignes = _csv(reg, "openmeasures.csv")
+    n = {r["jour"]: float(r["n"]) for r in lignes if r["site"] == site and r["serie"] == serie}
+    if serie == "reference":
+        return sorted(n.items())
+    ref = {r["jour"]: float(r["n"]) for r in lignes if r["site"] == site and r["serie"] == "reference"}
+    return sorted((j, round(1e4 * v / ref[j], 3)) for j, v in n.items() if ref.get(j))
+
+
 def meteo(reg: Path, point: str) -> list[tuple[str, float]]:
     """ANOMALIE de température du jour (°C) par rapport aux mêmes jours de l'année (± 7 jours) des années
     précédentes, pour un point (collecte_meteo.py). Jours sans référence (première année) : écartés."""
@@ -129,7 +140,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon,
+               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref}
 
 

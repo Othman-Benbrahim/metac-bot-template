@@ -495,6 +495,9 @@ compartiments:
     vitesse: "semaines"
     taille: "méso"
   traces:
+  - source: "part des messages Telegram portant le vocabulaire du Nouvel Ordre mondial (Open Measures, API publique, contenus de plus de six mois ; comptes seulement)"
+    statut: "collecte"
+    adaptateur: "openmeasures:telegram:complot"
   - source: "attention publique aux récits de complot (pages vues Wikipédia d'une liste fixe d'articles)"
     statut: "a_brancher"
 - id: "marche_cognitif"
