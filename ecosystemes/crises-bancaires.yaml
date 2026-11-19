@@ -19,7 +19,7 @@ compartiments:
       - {nom: "une banque régionale", taille: "méso", espace: "pays", vitesse: "jours", organisation: "economie", facette: "collectif"}
     niveau: {espace: "banque à pays", temps: "jours", vitesse: "heures à semaines", taille: "micro à méso"}
     traces:
-      - {source: "publications des banques centrales sur les dépôts bancaires", statut: "a_brancher"}
+      - {source: "dépôts des banques commerciales américaines (FRED DPSACBW027SBOG), variation sur un an", statut: "collecte", adaptateur: "fred:DPSACBW027SBOG:var52"}
   - id: "confiance"
     nom: "Confiance et panique"
     organisation: "psychologique"
@@ -28,6 +28,7 @@ compartiments:
       - {nom: "la foule des déposants", taille: "méso", espace: "pays", vitesse: "heures", organisation: "psychologique", facette: "psyche"}
     niveau: {espace: "pays", temps: "heures à semaines", vitesse: "heures", taille: "micro à méso"}
     traces:
+      - {source: "volatilité implicite du S&P 500 (VIX, FRED VIXCLS) : la peur qui se lit sur les marchés", statut: "collecte", adaptateur: "fred:VIXCLS"}
       - {source: "attention médiatique et recherches en ligne sur une banque", statut: "a_brancher"}
   - id: "bilans"
     nom: "Bilans et pertes"

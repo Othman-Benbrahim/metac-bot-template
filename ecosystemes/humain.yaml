@@ -340,8 +340,9 @@ compartiments:
     vitesse: "jours"
     taille: "méso"
   traces:
-  - source: "attention publique à un sujet (pages vues Wikipédia, volume d'articles GDELT par sujet)"
-    statut: "a_brancher"
+  - source: "pages vues Wikipédia d'une liste fixe de concepts de crise (guerre, manifestation, émeute, terrorisme, coup d'État, récession, inflation, pandémie), somme quotidienne"
+    statut: "collecte"
+    adaptateur: "ouvert:attention_crise"
 - id: "risque_percu"
   nom: "Risque perçu (poids donné aux probabilités, aux pertes et au cadre)"
   organisation: "psychologique"
@@ -439,7 +440,10 @@ compartiments:
     vitesse: "années"
     taille: "macro"
   traces:
-  - source: "écart idéologique entre partis au Congrès (Voteview, DW-NOMINATE) ; part des électeurs vivant dans des circonscriptions très déséquilibrées"
+  - source: "écart des médianes républicaine et démocrate (DW-NOMINATE, Voteview), Chambre, par Congrès"
+    statut: "collecte"
+    adaptateur: "ouvert:polarisation_chambre"
+  - source: "part des électeurs vivant dans des circonscriptions très déséquilibrées"
     statut: "a_brancher"
 relations:
 # --- propres au corps et au psychologique ---

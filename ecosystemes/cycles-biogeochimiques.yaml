@@ -19,7 +19,7 @@ compartiments:
       - {nom: "le stock de carbone de l'atmosphère", taille: "macro", espace: "planète", vitesse: "décennie", organisation: "chimique", facette: "non_humain"}
     niveau: {espace: "planète", temps: "décennies à millénaires", vitesse: "décennie", taille: "micro à macro"}
     traces:
-      - {source: "concentrations mensuelles de dioxyde de carbone (NOAA, Mauna Loa)", statut: "a_brancher"}
+      - {source: "concentrations mensuelles de dioxyde de carbone (NOAA GML, Mauna Loa), variation sur un an", statut: "collecte", adaptateur: "ouvert:co2_mauna_loa:var12"}
   - id: "azote"
     nom: "Azote (air, sols, engrais, eaux)"
     organisation: "chimique"
