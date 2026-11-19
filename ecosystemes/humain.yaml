@@ -1,6 +1,7 @@
 theme: "humain"
 nom: "Ce qui pousse l'humain à agir (de la seconde aux millénaires)"
 # 0.10.325 — première lecture intégrée : Behave (Sapolsky, 2017), mémo lectures/sapolsky-behave.md.
+# 0.10.344 — Barkun, A Culture of Conspiracy (2013). Mémo lectures/barkun-culture-of-conspiracy.md.
 # 0.10.343 — Bronner, La démocratie des crédules (2013) : marché cognitif. Mémo lectures/bronner-democratie-credules.md.
 # 0.10.342 — Norenzayan (Big Gods) par la critique de Soler (2016) : deux hypothèses concurrentes sur croyances. Mémo lectures/soler-big-gods.md.
 # 0.10.338 — croyances, réseaux discrets (EN OMBRE) et croyance en des forces cachées (décision d'auteur du 2026-11-19, 12 h 00).
@@ -483,7 +484,7 @@ compartiments:
 - id: "croyance_complot"
   nom: "Croyance en des forces cachées (complots, pouvoirs occultes mondiaux)"
   organisation: "psychologique"
-  elements: ["croire qu'un groupe secret dirige le monde (les « Illuminati », dissous en 1785, en sont le cas d'école) est un fait psychologique mesurable, quelle que soit la réalité du groupe", "monte avec l'incertitude, la perte de contrôle et la défiance", "elle durcit la frontière de groupe et la contestation des autorités", "elle se nourrit du secret réel des réseaux discrets, qui lui donne prise"]
+  elements: ["croire qu'un groupe secret dirige le monde (les « Illuminati », dissous en 1785, en sont le cas d'école) est un fait psychologique mesurable, quelle que soit la réalité du groupe", "monte avec l'incertitude, la perte de contrôle et la défiance", "elle durcit la frontière de groupe et la contestation des autorités", "elle se nourrit du secret réel des réseaux discrets, qui lui donne prise", "trois principes : rien n'arrive par hasard, rien n'est ce qu'il paraît, tout est lié (Barkun)", "trois tailles : complot d'un événement, complot systémique (une organisation qui infiltre), superconspiration (complots emboîtés sous une force invisible) ; plus elle explique, moins elle est réfutable, car le sceptique devient complice", "savoir stigmatisé : ce que les institutions rejettent passe pour vrai parce que rejeté", "boucs émissaires récurrents : juifs, francs-maçons, catholiques ; la croyance désigne des minorités", "la plupart des croyants n'agissent pas ; la violence, rare, vient surtout d'individus isolés"]
   niveau:
     espace: "pays à monde"
     temps: "semaines à années"
@@ -1399,6 +1400,33 @@ relations:
   statut: "a_verifier"
   source: "Bronner, ch. III (emballements médiatiques)"
   texte: "la concurrence entre médias fabrique des emballements : un fait isolé devient une vague"
+# --- Barkun, A Culture of Conspiracy (2e éd., 2013) ---
+- de: "croyances"
+  vers: "croyance_complot"
+  effet: "+"
+  delai: "mois"
+  force: "faible"
+  statut: "a_verifier"
+  source: "Barkun, ch. 2 et 15 (millénarisme improvisé)"
+  texte: "l'attente d'une fin des temps cherche un ennemi caché qui l'annonce ou la prépare ; complot et millénarisme se fondent"
+- de: "hierarchie"
+  vers: "croyance_complot"
+  effet: "+"
+  delai: "mois"
+  force: "faible"
+  statut: "a_verifier"
+  source: "Barkun, ch. 2 (savoir stigmatisé)"
+  texte: "quand les autorités sont contestées, leur démenti devient une preuve : ce qui est rejeté par l'institution passe pour vrai"
+- de: "croyance_complot"
+  vers: "passage_acte"
+  effet: "+"
+  delai: "mois"
+  force: "faible"
+  intensite: {mesure: "radicalité des récits de complot (superconspiration, ennemi désigné)", regle: "seuil"}
+  statut: "a_verifier"
+  source: "Barkun, ch. 13"
+  texte: "la croyance reste presque toujours rhétorique ; au-delà d'un seuil élevé, quelques individus isolés passent à la violence"
+  parametres: {seuil: 2.5}
 ponts:
 - depuis: "passage_acte"
   vers: "politique-americaine:elections"
