@@ -13,88 +13,102 @@ compartiments:
   - id: milieu
     nom: Milieu physique
     elements: [goulet étroit et peu profond, chaleur extrême, mer semi-fermée, eau douce rare et dessalement sur les rives]
-    niveau: {espace: le détroit et le golfe, temps: permanent ; saisons de chaleur, vitesse: très lente (relief) ; jours (tempêtes de chaleur, sable), taille: méso}
+    niveau: {espace: "le détroit et le golfe", temps: "permanent ; saisons de chaleur", vitesse: "très lente (relief) ; jours (tempêtes de chaleur, sable)", taille: "méso"}
     traces:
-      - {source: températures et vents (Open-Meteo ou réanalyses), statut: a_brancher}
+      - {source: "températures et vents (Open-Meteo ou réanalyses)", statut: "a_brancher"}
   - id: flux_energie
     nom: Flux d'énergie
     elements: [pétrole brut, produits raffinés, gaz naturel liquéfié, exportateurs du Golfe, routes de contournement par oléoducs (Arabie saoudite vers la mer Rouge, Émirats vers Fujaïrah)]
-    niveau: {espace: le détroit vers l'Asie, l'Europe, temps: contrats ; flux quotidiens, vitesse: jours, taille: macro}
+    niveau: {espace: "le détroit vers l'Asie, l'Europe", temps: "contrats ; flux quotidiens", vitesse: "jours", taille: "macro"}
     traces:
-      - {source: IMF PortWatch (transits du détroit), statut: collecte, fichier: collecte_portwatch.py}
+      - {source: "IMF PortWatch (pétroliers par jour dans le détroit)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:ormuz:petroliers"}
   - id: navigation
     nom: Navigation commerciale
     elements: [pétroliers et méthaniers, armateurs, assurances risques de guerre, fret, signaux AIS, flotte « fantôme » des cargaisons sous sanctions]
-    niveau: {espace: les couloirs de navigation, temps: traversée de quelques heures, vitesse: heures à semaines, taille: micro (un navire) à méso (une flotte)}
+    niveau: {espace: "les couloirs de navigation", temps: "traversée de quelques heures", vitesse: "heures à semaines", taille: "micro (un navire) à méso (une flotte)"}
+    acteurs:
+      - {nom: "un pétrolier et son équipage", taille: "micro", espace: "navire", vitesse: "heures"}
+      - {nom: "un armateur", taille: "méso", espace: "routes", vitesse: "semaines"}
+      - {nom: "les assureurs du risque de guerre", taille: "méso", espace: "mondial", vitesse: "jours"}
     traces:
-      - {source: IMF PortWatch, statut: collecte, fichier: collecte_portwatch.py}
-      - {source: avis aux navigateurs (NGA), statut: collecte, fichier: collecte_avis_navigation.py}
-      - {source: primes d'assurance risques de guerre, statut: fermee}
+      - {source: "IMF PortWatch (navires par jour)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:ormuz:navires"}
+      - {source: "avis aux navigateurs (NGA)", statut: "collecte", fichier: "collecte_avis_navigation.py"}
+      - {source: "primes d'assurance risques de guerre", statut: "fermee"}
   - id: riverains
     nom: États riverains
     elements: [Iran (rive nord), Oman (péninsule de Musandam, rive sud), Émirats arabes unis, autres États du Golfe]
-    niveau: {espace: États, temps: mandats, régimes, vitesse: semaines à années, taille: macro}
+    niveau: {espace: "États", temps: "mandats, régimes", vitesse: "semaines à années", taille: "macro"}
+    acteurs:
+      - {nom: "Iran", taille: "macro", espace: "pays", vitesse: "semaines"}
+      - {nom: "Oman", taille: "méso", espace: "pays", vitesse: "mois"}
     traces:
-      - {source: GDELT, événements entre gouvernements (paires d'États), statut: collecte, fichier: gdelt_bq.py}
-      - {source: routines officielles (sites des ministères), statut: collecte, fichier: collecte_routines.py}
+      - {source: "GDELT, événements entre gouvernements (paires d'États)", statut: "collecte", fichier: "gdelt_bq.py"}
+      - {source: "routines officielles (sites des ministères)", statut: "collecte", fichier: "collecte_routines.py"}
   - id: puissances
     nom: Puissances extérieures
     elements: [États-Unis (présence navale régionale), Chine (premier acheteur de pétrole iranien, à vérifier), Inde, Japon, Corée du Sud, Europe]
-    niveau: {espace: mondial, temps: alliances de long terme ; décisions politiques, vitesse: jours à années, taille: macro}
+    niveau: {espace: "mondial", temps: "alliances de long terme ; décisions politiques", vitesse: "jours à années", taille: "macro"}
+    acteurs:
+      - {nom: "États-Unis", taille: "macro", espace: "mondial", vitesse: "semaines"}
+      - {nom: "Chine", taille: "macro", espace: "mondial", vitesse: "mois"}
     traces:
-      - {source: GDELT, paires d'États, statut: collecte, fichier: gdelt_bq.py}
-      - {source: Federal Register, Congrès, statut: collecte, fichier: collecte_federal_register.py}
+      - {source: "GDELT, ton des gestes des États-Unis envers l'Iran", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:IRN"}
+      - {source: "Federal Register, Congrès", statut: "collecte", fichier: "collecte_federal_register.py"}
   - id: force
     nom: Force armée
     elements: [marine des Gardiens de la révolution (vedettes rapides, mines, missiles côtiers, drones), marines occidentales et escortes, saisies de navires]
-    niveau: {espace: le détroit et ses abords, temps: incidents ; postures saisonnières, vitesse: heures à jours, taille: méso}
+    niveau: {espace: "le détroit et ses abords", temps: "incidents ; postures saisonnières", vitesse: "heures à jours", taille: "méso"}
+    acteurs:
+      - {nom: "une vedette rapide ou un drone", taille: "micro", espace: "site", vitesse: "heures"}
+      - {nom: "la marine des Gardiens de la révolution", taille: "méso", espace: "détroit", vitesse: "jours"}
+      - {nom: "la présence navale américaine dans la région", taille: "méso", espace: "golfe", vitesse: "jours"}
     traces:
-      - {source: avions d'État (vols militaires visibles), statut: collecte, fichier: collecte_avions_etat.py}
-      - {source: avis aux navigateurs (zones d'exercice), statut: collecte, fichier: collecte_avis_navigation.py}
+      - {source: "avions d'État (vols militaires visibles)", statut: "collecte", fichier: "collecte_avions_etat.py"}
+      - {source: "avis aux navigateurs (zones d'exercice)", statut: "collecte", fichier: "collecte_avis_navigation.py"}
   - id: droit
     nom: Droit et conventions
     elements: [régime du passage en transit (droit de la mer ; position iranienne à vérifier), sanctions américaines et européennes, accords et cessez-le-feu, statut des eaux et des îles disputées]
-    niveau: {espace: juridictions, temps: textes durables ; décisions datées, vitesse: semaines à décennies, taille: macro}
+    niveau: {espace: "juridictions", temps: "textes durables ; décisions datées", vitesse: "semaines à décennies", taille: "macro"}
     traces:
-      - {source: listes de sanctions, statut: collecte, fichier: collecte_sanctions.py}
-      - {source: Federal Register, statut: collecte, fichier: collecte_federal_register.py}
+      - {source: "listes de sanctions visant l'Iran", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:IR"}
+      - {source: "Federal Register", statut: "collecte", fichier: "collecte_federal_register.py"}
   - id: prix
     nom: Prix et marchés
     elements: [prix du brut (Brent), prix du GNL en Asie et en Europe, fret pétrolier, primes de risque]
-    niveau: {espace: marchés mondiaux, temps: séances quotidiennes, vitesse: minutes à semaines, taille: macro}
+    niveau: {espace: "marchés mondiaux", temps: "séances quotidiennes", vitesse: "minutes à semaines", taille: "macro"}
     traces:
-      - {source: prix quotidien du Brent (FRED, données publiques), statut: a_brancher}
+      - {source: "prix quotidien du Brent (FRED, données publiques)", statut: "a_brancher"}
   - id: interieur_iran
     nom: Intérieur iranien
     elements: [économie sous sanctions, recettes pétrolières, inflation, stress hydrique, contestation, équilibre des pouvoirs (en agrégat)]
-    niveau: {espace: Iran, temps: mois à années, vitesse: mois ; jours en crise, taille: macro}
+    niveau: {espace: "Iran", temps: "mois à années", vitesse: "mois ; jours en crise", taille: "macro"}
     traces:
-      - {source: coupures et censure d'internet (OONI, Cloudflare Radar), statut: collecte, fichier: collecte_ooni.py}
+      - {source: "coupures et censure d'internet (OONI, part des mesures en anomalie)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IR"}
   - id: recits
     nom: Récits et attention
     elements: [déclarations officielles, menaces et démentis, couverture médiatique, chaînes Telegram]
-    niveau: {espace: médiatique mondial, temps: cycle de l'information, vitesse: heures à jours, taille: micro à macro}
+    niveau: {espace: "médiatique mondial", temps: "cycle de l'information", vitesse: "heures à jours", taille: "micro à macro"}
     traces:
-      - {source: GDELT, statut: collecte, fichier: collecte_gdelt.py}
-      - {source: Telegram (chaînes publiques), statut: collecte, fichier: collecte_telegram.py}
+      - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
+      - {source: "Telegram (chaînes publiques)", statut: "collecte", fichier: "collecte_telegram.py"}
 relations:
-  - {de: milieu, vers: flux_energie, effet: "-", forme: contrainte, delai: permanent, force: forte, coupure: les oléoducs de contournement n'absorbent qu'une partie du flux (part à vérifier), statut: a_verifier, texte: le goulet concentre le flux sur un seul passage étroit}
-  - {de: flux_energie, vers: prix, effet: "±", delai: jours, force: forte, intensite: {mesure: marge de capacité inutilisée ailleurs et niveau des stocks, regle: saturation}, coupure: stocks stratégiques et capacités inutilisées ailleurs amortissent, statut: a_verifier, texte: une baisse du flux fait monter les prix mondiaux}
-  - {de: force, vers: navigation, effet: "-", retour: "+", delai: heures, force: forte, intensite: {mesure: incidents et saisies récents (avis aux navigateurs, GDELT), regle: seuil}, coupure: escortes navales, statut: a_verifier, texte: saisies, menaces et mines pèsent sur la navigation (prédation : la force gagne un levier)}
-  - {de: navigation, vers: prix, effet: "±", delai: jours à semaines, force: moyenne, coupure: si le flux physique continue, la prime retombe, statut: a_verifier, texte: assurance et fret transmettent le risque aux prix avant tout arrêt physique}
-  - {de: puissances, vers: riverains, effet: "-", retour: "-", style: inconnu, delai: semaines, force: forte, coupure: négociation, statut: a_verifier, texte: rivalité États-Unis–Iran (style à mesurer au banc de la réciprocité, paire USA–IRN)}
-  - {de: puissances, vers: interieur_iran, effet: "+", retour: "+", forme: mutualisme, delai: mois, force: moyenne, coupure: sanctions secondaires sur les acheteurs, statut: a_verifier, texte: Chine–Iran, pétrole contre devises et soutien diplomatique (relation propre à la Chine, pas à toutes les puissances)}
-  - {de: droit, vers: flux_energie, effet: "-", delai: semaines à mois, force: moyenne, coupure: flotte fantôme et transbordements, statut: a_verifier, texte: les sanctions réduisent et détournent les exportations iraniennes sans les arrêter}
-  - {de: prix, vers: interieur_iran, effet: "±", delai: mois, force: moyenne, coupure: volumes sous sanctions, statut: a_verifier, texte: les recettes de l'Iran dépendent du prix autant que des volumes vendus}
-  - {de: interieur_iran, vers: force, effet: "±", delai: semaines, force: inconnue, coupure: inconnue, statut: a_verifier, texte: une pression intérieure peut pousser à l'escalade extérieure ou à la retenue}
-  - {de: milieu, vers: interieur_iran, effet: "-", delai: saisons à années, force: inconnue, intensite: {mesure: anomalie de chaleur et de pluie, regle: seuil}, coupure: dessalement et importations, statut: a_verifier, texte: chaleur et rareté de l'eau pèsent sur la vie et la contestation}
-  - {de: recits, vers: prix, effet: "±", delai: heures, force: moyenne, intensite: {mesure: tension États-Unis–Iran du moment (paires d'États GDELT), regle: proportionnelle}, coupure: démenti ou absence d'incident physique, statut: a_verifier, texte: une menace verbale bouge les prix avant tout fait}
-  - {de: force, vers: recits, effet: "+", retour: "+", forme: mutualisme, delai: heures, force: moyenne, coupure: inconnue, statut: a_verifier, texte: démonstrations de force et récits se nourrissent (signalisation)}
+  - {de: "milieu", vers: "flux_energie", effet: "-", forme: "contrainte", delai: "permanent", force: "forte", coupure: "les oléoducs de contournement n'absorbent qu'une partie du flux (part à vérifier)", statut: "a_verifier", texte: "le goulet concentre le flux sur un seul passage étroit"}
+  - {de: "flux_energie", vers: "prix", effet: "±", delai: "jours", force: "forte", intensite: {mesure: "marge de capacité inutilisée ailleurs et niveau des stocks", regle: "saturation"}, coupure: "stocks stratégiques et capacités inutilisées ailleurs amortissent", statut: "a_verifier", texte: "une baisse du flux fait monter les prix mondiaux"}
+  - {de: "force", vers: "navigation", effet: "-", retour: "+", delai: "heures", force: "forte", intensite: {mesure: "incidents et saisies récents (avis aux navigateurs, GDELT)", regle: "seuil"}, coupure: "escortes navales", statut: "a_verifier", texte: "saisies, menaces et mines pèsent sur la navigation (prédation : la force gagne un levier)"}
+  - {de: "navigation", vers: "prix", effet: "±", delai: "jours à semaines", force: "moyenne", coupure: "si le flux physique continue, la prime retombe", statut: "a_verifier", texte: "assurance et fret transmettent le risque aux prix avant tout arrêt physique"}
+  - {de: "puissances", vers: "riverains", effet: "-", retour: "-", style: "inconnu", delai: "semaines", force: "forte", coupure: "négociation", statut: "a_verifier", texte: "rivalité États-Unis–Iran (style à mesurer au banc de la réciprocité, paire USA–IRN)"}
+  - {de: "puissances", vers: "interieur_iran", effet: "+", retour: "+", forme: "mutualisme", delai: "mois", force: "moyenne", coupure: "sanctions secondaires sur les acheteurs", statut: "a_verifier", texte: "Chine–Iran, pétrole contre devises et soutien diplomatique (relation propre à la Chine, pas à toutes les puissances)"}
+  - {de: "droit", vers: "flux_energie", effet: "-", delai: "semaines à mois", force: "moyenne", coupure: "flotte fantôme et transbordements", statut: "a_verifier", texte: "les sanctions réduisent et détournent les exportations iraniennes sans les arrêter"}
+  - {de: "prix", vers: "interieur_iran", effet: "±", delai: "mois", force: "moyenne", coupure: "volumes sous sanctions", statut: "a_verifier", texte: "les recettes de l'Iran dépendent du prix autant que des volumes vendus"}
+  - {de: "interieur_iran", vers: "force", effet: "±", delai: "semaines", force: "inconnue", coupure: "inconnue", statut: "a_verifier", texte: "une pression intérieure peut pousser à l'escalade extérieure ou à la retenue"}
+  - {de: "milieu", vers: "interieur_iran", effet: "-", delai: "saisons à années", force: "inconnue", intensite: {mesure: "anomalie de chaleur et de pluie", regle: "seuil"}, coupure: "dessalement et importations", statut: "a_verifier", texte: "chaleur et rareté de l'eau pèsent sur la vie et la contestation"}
+  - {de: "recits", vers: "prix", effet: "±", delai: "heures", force: "moyenne", intensite: {mesure: "tension États-Unis–Iran du moment (paires d'États GDELT)", regle: "proportionnelle"}, coupure: "démenti ou absence d'incident physique", statut: "a_verifier", texte: "une menace verbale bouge les prix avant tout fait"}
+  - {de: "force", vers: "recits", effet: "+", retour: "+", forme: "mutualisme", delai: "heures", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "démonstrations de force et récits se nourrissent (signalisation)"}
 ponts:
-  - {depuis: prix, vers: energie-mondiale:prix, nature: le prix du brut relie Ormuz à tous les importateurs}
-  - {depuis: prix, vers: inflation-mondiale:energie, nature: l'énergie entre dans l'inflation et donc dans les banques centrales}
-  - {depuis: interieur_iran, vers: iran-nucleaire:negociations, nature: le programme nucléaire et les sanctions se négocient ensemble}
-  - {depuis: puissances, vers: rivalite-sino-americaine:energie, nature: la sécurité des approvisionnements chinois}
-  - {depuis: force, vers: guerre-levant:iran, nature: les fronts régionaux de l'Iran et de ses alliés}
-  - {depuis: navigation, vers: transport-maritime:detroits, nature: Ormuz, Bab-el-Mandeb, Suez forment un même système de passages}
-  - {depuis: milieu, vers: eau-moyen-orient:rarete, nature: la rareté de l'eau douce dans la région}
+  - {depuis: "prix", vers: "energie-mondiale:prix", nature: "le prix du brut relie Ormuz à tous les importateurs"}
+  - {depuis: "prix", vers: "inflation-mondiale:energie", nature: "l'énergie entre dans l'inflation et donc dans les banques centrales"}
+  - {depuis: "interieur_iran", vers: "iran-nucleaire:negociations", nature: "le programme nucléaire et les sanctions se négocient ensemble"}
+  - {depuis: "puissances", vers: "rivalite-sino-americaine:energie", nature: "la sécurité des approvisionnements chinois"}
+  - {depuis: "force", vers: "guerre-levant:iran", nature: "les fronts régionaux de l'Iran et de ses alliés"}
+  - {depuis: "navigation", vers: "transport-maritime:detroits", nature: "Ormuz, Bab-el-Mandeb, Suez forment un même système de passages"}
+  - {depuis: "milieu", vers: "eau-moyen-orient:rarete", nature: "la rareté de l'eau douce dans la région"}

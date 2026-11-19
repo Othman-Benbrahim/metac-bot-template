@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -45,6 +46,34 @@ FORCES = ("faible", "moyenne", "forte", "inconnue")
 REGLES_INTENSITE = ("proportionnelle", "seuil", "saturation", "hysteresis", "inconnue")
 
 
+# 0.10.317 (rappel de l'auteur, 2026-11-19, 4 h 34) : les quatre axes doivent être lisibles par le code, et SURTOUT la
+# taille : tous les acteurs n'agissent pas à la même échelle. Chaque axe écrit en mots est lu en grandeur ordonnée.
+TAILLES = {"micro": 1, "méso": 2, "meso": 2, "macro": 3}
+NOMS_TAILLE = {1: "micro", 2: "méso", 3: "macro"}
+ESPACES = ((1, ("site", "local", "navire", "parcelle", "raffinerie", "plateforme")),
+           (2, ("détroit", "golfe", "bassin", "région", "théâtre", "couloir", "abords", "route", "pôle", "juridiction")),
+           (3, ("état", "pays", "national", "iran", "producteur", "cartel")),
+           (4, ("continent", "asie", "europe", "économies")),
+           (5, ("mondial", "mondiaux", "monde", "planète", "global")))
+VITESSES = (("seconde", 0.0), ("minute", 0.001), ("heure", 0.05), ("jour", 1), ("semaine", 7), ("mois", 30),
+            ("trimestre", 90), ("saison", 90), ("année", 365), ("an ", 365), ("décennie", 3650), ("siècle", 36500))
+
+
+def _plage(valeurs: list[float]) -> list[float] | None:
+    return [min(valeurs), max(valeurs)] if valeurs else None
+
+
+def axes(niveau: dict) -> dict:
+    """Les quatre axes en grandeurs : taille 1 (micro) à 3 (macro), espace 1 (site) à 5 (monde), vitesse en jours
+    (temps caractéristique de changement), temps gardé en mots (calendrier, mémoire). Une plage si le texte en donne
+    une (« micro à macro » → [1, 3])."""
+    tx = {k: str(niveau.get(k) or "").lower() for k in AXES}
+    taille = _plage([v for m, v in TAILLES.items() if re.search(rf"\b{m}", tx["taille"])])
+    espace = _plage([n for n, mots in ESPACES if any(m in tx["espace"] for m in mots)])
+    vitesse = _plage([j for m, j in VITESSES if m in tx["vitesse"] + " "])
+    return {"taille": taille, "espace": espace, "vitesse_jours": vitesse, "temps": niveau.get("temps")}
+
+
 def forme_deduite(effet: str, retour: str | None) -> str:
     """Forme écologique d'après l'effet de la source sur la cible et le retour de la cible sur la source.
     Sans retour (élément non vivant, influence à sens unique) : forçage."""
@@ -65,8 +94,34 @@ def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
     return out
 
 
+CLES_PERMISES = {
+    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur"}, "acteur": {"nom", "taille", "espace", "vitesse"},
+    "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte"},
+    "pont": {"depuis", "vers", "nature"}}
+
+
+def cles_inconnues(fiche: dict) -> list[str]:
+    """Une virgule non protégée dans une ligne YAML { … } fabrique une clé parasite et tronque le texte : on la refuse."""
+    t, err = fiche.get("theme", "?"), []
+    def voir(objet, sorte, ou):
+        if isinstance(objet, dict):
+            for k in set(objet) - CLES_PERMISES[sorte]:
+                err.append(f"{t} {ou} : clé inconnue {k!r} (virgule à mettre entre guillemets ?)")
+    for c in fiche.get("compartiments") or []:
+        voir(c.get("niveau"), "niveau", f"{c.get('id')}.niveau")
+        for x in c.get("traces") or []:
+            voir(x, "trace", f"{c.get('id')}.traces")
+        for x in c.get("acteurs") or []:
+            voir(x, "acteur", f"{c.get('id')}.acteurs")
+    for r in fiche.get("relations") or []:
+        voir(r, "relation", f"relation {r.get('de')} → {r.get('vers')}")
+    for p in fiche.get("ponts") or []:
+        voir(p, "pont", "ponts")
+    return err
+
+
 def valider(fiche: dict) -> list[str]:
-    err = []
+    err = cles_inconnues(fiche)
     t = fiche.get("theme", "?")
     for k in ("theme", "nom", "declaration", "compartiments", "relations"):
         if k not in fiche:
@@ -82,6 +137,11 @@ def valider(fiche: dict) -> list[str]:
         for a in AXES:
             if a not in (c.get("niveau") or {}):
                 err.append(f"{t}:{c.get('id')} : niveau d'action sans « {a} »")
+        if (c.get("niveau") or {}).get("taille") and axes(c["niveau"])["taille"] is None:
+            err.append(f"{t}:{c.get('id')} : taille illisible (écrire micro, méso ou macro, ou une plage)")
+        for a in c.get("acteurs") or []:
+            if not a.get("nom") or axes({"taille": a.get("taille")})["taille"] is None:
+                err.append(f"{t}:{c.get('id')} : acteur sans nom ou sans taille lisible ({a})")
         for tr in c.get("traces") or []:
             if tr.get("statut") not in TRACES:
                 err.append(f"{t}:{c.get('id')} : statut de trace inconnu {tr.get('statut')!r}")
@@ -121,7 +181,9 @@ def assembler(fiches: dict[str, dict]) -> dict:
     for t, f in fiches.items():
         for c in f["compartiments"]:
             noeuds.append({"id": f"{t}:{c['id']}", "theme": t, "nom": c.get("nom", c["id"]), "niveau": c["niveau"],
-                           "traces": c.get("traces") or []})
+                           "axes": axes(c["niveau"]), "traces": c.get("traces") or [],
+                           "acteurs": [dict(a, axes=axes({"taille": a.get("taille"), "espace": a.get("espace"),
+                                                          "vitesse": a.get("vitesse")})) for a in c.get("acteurs") or []]})
         for r in f["relations"]:
             forme = r.get("forme") or forme_deduite(r["effet"], r.get("retour"))
             liens.append({"de": f"{t}:{r['de']}", "vers": f"{t}:{r['vers']}", "forme": forme,
@@ -162,9 +224,16 @@ def a_faire(s: dict) -> str:
 
 
 def mermaid(fiche: dict) -> str:
-    l = ["flowchart LR"]
+    l = ["flowchart LR",
+         "  classDef micro fill:#fff7e6,stroke:#d48806", "  classDef meso fill:#e6f4ff,stroke:#1677ff",
+         "  classDef macro fill:#f0e6ff,stroke:#722ed1,stroke-width:3px"]
     for c in fiche["compartiments"]:
-        l.append(f'  {c["id"]}["{c.get("nom", c["id"])}"]')
+        ax = axes(c["niveau"])
+        ta = ax["taille"] or [2, 2]
+        echelle = NOMS_TAILLE[ta[0]] + ("" if ta[0] == ta[1] else f"–{NOMS_TAILLE[ta[1]]}")
+        acteurs = "".join(f"<br/>· {a['nom']} ({a.get('taille')})" for a in c.get("acteurs") or [])
+        l.append(f'  {c["id"]}["<b>{c.get("nom", c["id"])}</b><br/><i>{echelle} · {c["niveau"].get("vitesse", "")}</i>{acteurs}"]')
+        l.append(f'  class {c["id"]} {"micro" if ta[1] == 1 else "macro" if ta[0] == 3 else "meso"}')
     fleche = {"competition": "<-.->", "mutualisme": "<==>", "predation": "-->", "forcage": "==>", "contrainte": "-.->"}
     for r in fiche["relations"]:
         forme = r.get("forme") or forme_deduite(r["effet"], r.get("retour"))

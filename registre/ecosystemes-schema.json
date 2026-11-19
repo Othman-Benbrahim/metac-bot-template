@@ -14,6 +14,21 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     2,
+     3
+    ],
+    "vitesse_jours": [
+     30,
+     30
+    ],
+    "temps": "décisions mensuelles ; forages sur des mois"
+   },
    "traces": [
     {
      "source": "communiqués des réunions de l'OPEP+",
@@ -22,6 +37,71 @@
     {
      "source": "nombre de forages actifs (publication hebdomadaire publique)",
      "statut": "a_brancher"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un puits de schiste",
+     "taille": "micro",
+     "espace": "site",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "Arabie saoudite",
+     "taille": "macro",
+     "espace": "mondial",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "OPEP+",
+     "taille": "macro",
+     "espace": "mondial",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
     }
    ]
   },
@@ -35,6 +115,21 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     4,
+     4
+    ],
+    "vitesse_jours": [
+     30,
+     30
+    ],
+    "temps": "saisons ; cycles économiques"
+   },
    "traces": [
     {
      "source": "prévision immédiate de l'inflation et indicateurs d'activité",
@@ -46,7 +141,8 @@
      "statut": "collecte",
      "fichier": "collecte_calendrier_nbs.py"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "energie-mondiale:stocks",
@@ -58,10 +154,48 @@
     "vitesse": "semaines",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     7,
+     7
+    ],
+    "temps": "publication hebdomadaire"
+   },
    "traces": [
     {
      "source": "stocks hebdomadaires américains (publication officielle publique)",
      "statut": "a_brancher"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "réserve stratégique américaine",
+     "taille": "macro",
+     "espace": "pays",
+     "vitesse": "semaines",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       7,
+       7
+      ],
+      "temps": null
+     }
     }
    ]
   },
@@ -75,18 +209,35 @@
     "vitesse": "jours",
     "taille": "méso à macro"
    },
+   "axes": {
+    "taille": [
+     2,
+     3
+    ],
+    "espace": [
+     2,
+     5
+    ],
+    "vitesse_jours": [
+     1,
+     1
+    ],
+    "temps": "traversées de jours à semaines"
+   },
    "traces": [
     {
-     "source": "IMF PortWatch",
+     "source": "IMF PortWatch (pétroliers à Bab-el-Mandeb)",
      "statut": "collecte",
-     "fichier": "collecte_portwatch.py"
+     "fichier": "collecte_portwatch.py",
+     "adaptateur": "portwatch:bab_el_mandeb:petroliers"
     },
     {
      "source": "avis aux navigateurs",
      "statut": "collecte",
      "fichier": "collecte_avis_navigation.py"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "energie-mondiale:raffinage",
@@ -98,13 +249,29 @@
     "vitesse": "jours à mois",
     "taille": "méso"
    },
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     1,
+     30
+    ],
+    "temps": "maintenance saisonnière"
+   },
    "traces": [
     {
      "source": "feux actifs sur les sites industriels (FIRMS)",
      "statut": "collecte",
      "fichier": "collecte_feux.py"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "energie-mondiale:prix",
@@ -116,10 +283,69 @@
     "vitesse": "minutes à semaines",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     0.001,
+     7
+    ],
+    "temps": "séances quotidiennes"
+   },
    "traces": [
     {
      "source": "prix quotidien du Brent (données publiques)",
      "statut": "a_brancher"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un fonds spéculatif",
+     "taille": "méso",
+     "espace": "mondial",
+     "vitesse": "minutes",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       0.001,
+       0.001
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "les contrats à terme sur le Brent",
+     "taille": "macro",
+     "espace": "mondial",
+     "vitesse": "minutes",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       0.001,
+       0.001
+      ],
+      "temps": null
+     }
     }
    ]
   },
@@ -133,18 +359,35 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     7,
+     30
+    ],
+    "temps": "réunions et textes datés"
+   },
    "traces": [
     {
-     "source": "listes de sanctions",
+     "source": "listes de sanctions visant la Russie",
      "statut": "collecte",
-     "fichier": "collecte_sanctions.py"
+     "fichier": "collecte_sanctions.py",
+     "adaptateur": "sanctions:RU"
     },
     {
      "source": "Federal Register",
      "statut": "collecte",
      "fichier": "collecte_federal_register.py"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "energie-mondiale:conflits",
@@ -156,10 +399,24 @@
     "vitesse": "heures à jours",
     "taille": "méso"
    },
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     0.05,
+     1
+    ],
+    "temps": "incidents"
+   },
    "traces": [
     {
-     "source": "GDELT",
-     "paires d'États": null,
+     "source": "GDELT, paires d'États",
      "statut": "collecte",
      "fichier": "gdelt_bq.py"
     },
@@ -168,7 +425,8 @@
      "statut": "collecte",
      "fichier": "collecte_avions_etat.py"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "energie-mondiale:climat",
@@ -180,12 +438,28 @@
     "vitesse": "jours (tempêtes) à saisons",
     "taille": "méso à macro"
    },
+   "axes": {
+    "taille": [
+     2,
+     3
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     1,
+     90
+    ],
+    "temps": "saisons"
+   },
    "traces": [
     {
      "source": "températures et prévisions saisonnières (données publiques)",
      "statut": "a_brancher"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "energie-mondiale:recits",
@@ -196,6 +470,21 @@
     "temps": "cycle de l'information",
     "vitesse": "heures",
     "taille": "micro à macro"
+   },
+   "axes": {
+    "taille": [
+     1,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     0.05,
+     0.05
+    ],
+    "temps": "cycle de l'information"
    },
    "traces": [
     {
@@ -208,7 +497,8 @@
      "statut": "collecte",
      "fichier": "collecte_routines.py"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "ormuz:milieu",
@@ -217,35 +507,66 @@
    "niveau": {
     "espace": "le détroit et le golfe",
     "temps": "permanent ; saisons de chaleur",
-    "vitesse": "très lente (relief) ; jours (tempêtes de chaleur",
-    "sable)": null,
+    "vitesse": "très lente (relief) ; jours (tempêtes de chaleur, sable)",
     "taille": "méso"
+   },
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     1,
+     1
+    ],
+    "temps": "permanent ; saisons de chaleur"
    },
    "traces": [
     {
      "source": "températures et vents (Open-Meteo ou réanalyses)",
      "statut": "a_brancher"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "ormuz:flux_energie",
    "theme": "ormuz",
    "nom": "Flux d'énergie",
    "niveau": {
-    "espace": "le détroit vers l'Asie",
-    "l'Europe": null,
+    "espace": "le détroit vers l'Asie, l'Europe",
     "temps": "contrats ; flux quotidiens",
     "vitesse": "jours",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     2,
+     4
+    ],
+    "vitesse_jours": [
+     1,
+     1
+    ],
+    "temps": "contrats ; flux quotidiens"
+   },
    "traces": [
     {
-     "source": "IMF PortWatch (transits du détroit)",
+     "source": "IMF PortWatch (pétroliers par jour dans le détroit)",
      "statut": "collecte",
-     "fichier": "collecte_portwatch.py"
+     "fichier": "collecte_portwatch.py",
+     "adaptateur": "portwatch:ormuz:petroliers"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "ormuz:navigation",
@@ -257,11 +578,27 @@
     "vitesse": "heures à semaines",
     "taille": "micro (un navire) à méso (une flotte)"
    },
+   "axes": {
+    "taille": [
+     1,
+     2
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     0.05,
+     7
+    ],
+    "temps": "traversée de quelques heures"
+   },
    "traces": [
     {
-     "source": "IMF PortWatch",
+     "source": "IMF PortWatch (navires par jour)",
      "statut": "collecte",
-     "fichier": "collecte_portwatch.py"
+     "fichier": "collecte_portwatch.py",
+     "adaptateur": "portwatch:ormuz:navires"
     },
     {
      "source": "avis aux navigateurs (NGA)",
@@ -272,6 +609,71 @@
      "source": "primes d'assurance risques de guerre",
      "statut": "fermee"
     }
+   ],
+   "acteurs": [
+    {
+     "nom": "un pétrolier et son équipage",
+     "taille": "micro",
+     "espace": "navire",
+     "vitesse": "heures",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       0.05,
+       0.05
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "un armateur",
+     "taille": "méso",
+     "espace": "routes",
+     "vitesse": "semaines",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       2,
+       2
+      ],
+      "vitesse_jours": [
+       7,
+       7
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "les assureurs du risque de guerre",
+     "taille": "méso",
+     "espace": "mondial",
+     "vitesse": "jours",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       1,
+       1
+      ],
+      "temps": null
+     }
+    }
    ]
   },
   {
@@ -280,15 +682,28 @@
    "nom": "États riverains",
    "niveau": {
     "espace": "États",
-    "temps": "mandats",
-    "régimes": null,
+    "temps": "mandats, régimes",
     "vitesse": "semaines à années",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     7,
+     365
+    ],
+    "temps": "mandats, régimes"
+   },
    "traces": [
     {
-     "source": "GDELT",
-     "événements entre gouvernements (paires d'États)": null,
+     "source": "GDELT, événements entre gouvernements (paires d'États)",
      "statut": "collecte",
      "fichier": "gdelt_bq.py"
     },
@@ -296,6 +711,50 @@
      "source": "routines officielles (sites des ministères)",
      "statut": "collecte",
      "fichier": "collecte_routines.py"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "Iran",
+     "taille": "macro",
+     "espace": "pays",
+     "vitesse": "semaines",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       7,
+       7
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "Oman",
+     "taille": "méso",
+     "espace": "pays",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
     }
    ]
   },
@@ -309,18 +768,76 @@
     "vitesse": "jours à années",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     1,
+     365
+    ],
+    "temps": "alliances de long terme ; décisions politiques"
+   },
    "traces": [
     {
-     "source": "GDELT",
-     "paires d'États": null,
+     "source": "GDELT, ton des gestes des États-Unis envers l'Iran",
      "statut": "collecte",
-     "fichier": "gdelt_bq.py"
+     "fichier": "gdelt_bq.py",
+     "adaptateur": "dyade:USA:IRN"
     },
     {
-     "source": "Federal Register",
-     "Congrès": null,
+     "source": "Federal Register, Congrès",
      "statut": "collecte",
      "fichier": "collecte_federal_register.py"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "États-Unis",
+     "taille": "macro",
+     "espace": "mondial",
+     "vitesse": "semaines",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       7,
+       7
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "Chine",
+     "taille": "macro",
+     "espace": "mondial",
+     "vitesse": "mois",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       30,
+       30
+      ],
+      "temps": null
+     }
     }
    ]
   },
@@ -334,6 +851,21 @@
     "vitesse": "heures à jours",
     "taille": "méso"
    },
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     0.05,
+     1
+    ],
+    "temps": "incidents ; postures saisonnières"
+   },
    "traces": [
     {
      "source": "avions d'État (vols militaires visibles)",
@@ -344,6 +876,71 @@
      "source": "avis aux navigateurs (zones d'exercice)",
      "statut": "collecte",
      "fichier": "collecte_avis_navigation.py"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "une vedette rapide ou un drone",
+     "taille": "micro",
+     "espace": "site",
+     "vitesse": "heures",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       0.05,
+       0.05
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "la marine des Gardiens de la révolution",
+     "taille": "méso",
+     "espace": "détroit",
+     "vitesse": "jours",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       2,
+       2
+      ],
+      "vitesse_jours": [
+       1,
+       1
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "la présence navale américaine dans la région",
+     "taille": "méso",
+     "espace": "golfe",
+     "vitesse": "jours",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       2,
+       2
+      ],
+      "vitesse_jours": [
+       1,
+       1
+      ],
+      "temps": null
+     }
     }
    ]
   },
@@ -357,18 +954,35 @@
     "vitesse": "semaines à décennies",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     7,
+     3650
+    ],
+    "temps": "textes durables ; décisions datées"
+   },
    "traces": [
     {
-     "source": "listes de sanctions",
+     "source": "listes de sanctions visant l'Iran",
      "statut": "collecte",
-     "fichier": "collecte_sanctions.py"
+     "fichier": "collecte_sanctions.py",
+     "adaptateur": "sanctions:IR"
     },
     {
      "source": "Federal Register",
      "statut": "collecte",
      "fichier": "collecte_federal_register.py"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "ormuz:prix",
@@ -380,13 +994,28 @@
     "vitesse": "minutes à semaines",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     0.001,
+     7
+    ],
+    "temps": "séances quotidiennes"
+   },
    "traces": [
     {
-     "source": "prix quotidien du Brent (FRED",
-     "données publiques)": null,
+     "source": "prix quotidien du Brent (FRED, données publiques)",
      "statut": "a_brancher"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "ormuz:interieur_iran",
@@ -398,14 +1027,30 @@
     "vitesse": "mois ; jours en crise",
     "taille": "macro"
    },
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     3,
+     3
+    ],
+    "vitesse_jours": [
+     1,
+     30
+    ],
+    "temps": "mois à années"
+   },
    "traces": [
     {
-     "source": "coupures et censure d'internet (OONI",
-     "Cloudflare Radar)": null,
+     "source": "coupures et censure d'internet (OONI, part des mesures en anomalie)",
      "statut": "collecte",
-     "fichier": "collecte_ooni.py"
+     "fichier": "collecte_ooni.py",
+     "adaptateur": "ooni:IR"
     }
-   ]
+   ],
+   "acteurs": []
   },
   {
    "id": "ormuz:recits",
@@ -416,6 +1061,21 @@
     "temps": "cycle de l'information",
     "vitesse": "heures à jours",
     "taille": "micro à macro"
+   },
+   "axes": {
+    "taille": [
+     1,
+     3
+    ],
+    "espace": [
+     5,
+     5
+    ],
+    "vitesse_jours": [
+     0.05,
+     1
+    ],
+    "temps": "cycle de l'information"
    },
    "traces": [
     {
@@ -428,7 +1088,8 @@
      "statut": "collecte",
      "fichier": "collecte_telegram.py"
     }
-   ]
+   ],
+   "acteurs": []
   }
  ],
  "relations": [
@@ -446,10 +1107,10 @@
     "mesure": "capacité inutilisée restante",
     "regle": "seuil"
    },
-   "coupure": "tant qu'il reste une capacité inutilisée",
+   "coupure": "tant qu'il reste une capacité inutilisée, un arrêt est compensé",
    "statut": "a_verifier",
    "source": null,
-   "texte": "plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise"
+   "texte": "plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise, le moindre arrêt fait bondir les prix"
   },
   {
    "de": "energie-mondiale:demande",
@@ -484,7 +1145,7 @@
    "coupure": "stocks bas",
    "statut": "a_verifier",
    "source": null,
-   "texte": "les stocks amortissent les chocs ; bas"
+   "texte": "les stocks amortissent les chocs ; bas, ils n'amortissent plus"
   },
   {
    "de": "energie-mondiale:transport",
@@ -516,7 +1177,7 @@
    "delai": "heures à jours",
    "force": "forte",
    "intensite": null,
-   "coupure": "escortes",
+   "coupure": "escortes, contournements",
    "statut": "a_verifier",
    "source": null,
    "texte": "attaques et menaces sur les routes"
@@ -634,7 +1295,7 @@
    "coupure": "hors saison des ouragans",
    "statut": "a_verifier",
    "source": null,
-   "texte": "ouragans dans le golfe du Mexique"
+   "texte": "ouragans dans le golfe du Mexique, arrêts de plateformes"
   },
   {
    "de": "energie-mondiale:recits",
@@ -701,14 +1362,13 @@
    "delai": "heures",
    "force": "forte",
    "intensite": {
-    "mesure": "incidents et saisies récents (avis aux navigateurs",
-    "GDELT)": null,
+    "mesure": "incidents et saisies récents (avis aux navigateurs, GDELT)",
     "regle": "seuil"
    },
    "coupure": "escortes navales",
    "statut": "a_verifier",
    "source": null,
-   "texte": "saisies"
+   "texte": "saisies, menaces et mines pèsent sur la navigation (prédation : la force gagne un levier)"
   },
   {
    "de": "ormuz:navigation",
@@ -721,7 +1381,7 @@
    "delai": "jours à semaines",
    "force": "moyenne",
    "intensite": null,
-   "coupure": "si le flux physique continue",
+   "coupure": "si le flux physique continue, la prime retombe",
    "statut": "a_verifier",
    "source": null,
    "texte": "assurance et fret transmettent le risque aux prix avant tout arrêt physique"
@@ -740,7 +1400,7 @@
    "coupure": "négociation",
    "statut": "a_verifier",
    "source": null,
-   "texte": "rivalité États-Unis–Iran (style à mesurer au banc de la réciprocité"
+   "texte": "rivalité États-Unis–Iran (style à mesurer au banc de la réciprocité, paire USA–IRN)"
   },
   {
    "de": "ormuz:puissances",
@@ -756,7 +1416,7 @@
    "coupure": "sanctions secondaires sur les acheteurs",
    "statut": "a_verifier",
    "source": null,
-   "texte": "Chine–Iran"
+   "texte": "Chine–Iran, pétrole contre devises et soutien diplomatique (relation propre à la Chine, pas à toutes les puissances)"
   },
   {
    "de": "ormuz:droit",
@@ -889,7 +1549,7 @@
   {
    "de": "energie-mondiale:climat",
    "vers": "climat-extremes:saisons",
-   "nature": "hivers",
+   "nature": "hivers, ouragans, vagues de chaleur",
    "resolu": false
   },
   {
@@ -901,7 +1561,7 @@
   {
    "de": "energie-mondiale:decisions",
    "vers": "politique-americaine:energie",
-   "nature": "réserves stratégiques",
+   "nature": "réserves stratégiques, sanctions, prix à la pompe et élections",
    "resolu": false
   },
   {
@@ -937,7 +1597,7 @@
   {
    "de": "ormuz:navigation",
    "vers": "transport-maritime:detroits",
-   "nature": "Ormuz",
+   "nature": "Ormuz, Bab-el-Mandeb, Suez forment un même système de passages",
    "resolu": false
   },
   {

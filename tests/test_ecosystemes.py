@@ -40,10 +40,16 @@ def test_assemblage_et_ponts():
 
 def test_intensite():
     base = {"theme": "t", "nom": "T", "declaration": {k: "x" for k in ("but", "limites", "observateur", "date") + ec.AXES},
-            "compartiments": [{"id": "a", "niveau": {k: "x" for k in ec.AXES}}], "ponts": []}
+            "compartiments": [{"id": "a", "niveau": {**{k: "x" for k in ec.AXES}, "taille": "méso"}}], "ponts": []}
     ok = dict(base, relations=[{"de": "a", "vers": "a", "effet": "+", "statut": "a_verifier",
                                 "intensite": {"mesure": "tension", "regle": "seuil"}}])
     assert ec.valider(ok) == []
     ko = dict(base, relations=[{"de": "a", "vers": "a", "effet": "+", "statut": "a_verifier", "intensite": {"regle": "seuil"}}])
     assert any("sans « mesure »" in e for e in ec.valider(ko))
     assert ec.assembler({"t": ok})["bilan"]["relations_avec_intensite"] == 1
+
+
+def test_virgule_non_protegee_refusee():
+    import yaml
+    f = yaml.safe_load('theme: t\nrelations:\n  - {de: a, vers: b, effet: "+", statut: a_verifier, texte: saisies, menaces}\n')
+    assert any("clé inconnue" in e for e in ec.cles_inconnues(f))
