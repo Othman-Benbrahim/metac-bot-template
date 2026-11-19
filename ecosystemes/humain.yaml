@@ -1,6 +1,7 @@
 theme: "humain"
 nom: "Ce qui pousse l'humain à agir (de la seconde aux millénaires)"
 # 0.10.325 — première lecture intégrée : Behave (Sapolsky, 2017), mémo lectures/sapolsky-behave.md.
+# 0.10.345 — Au cœur des loges (Bauer, Dachez et al., 2021) : faits et chiffres sur les réseaux discrets, toujours en ombre. Mémo lectures/bauer-dachez-au-coeur-des-loges.md.
 # 0.10.344 — Barkun, A Culture of Conspiracy (2013). Mémo lectures/barkun-culture-of-conspiracy.md.
 # 0.10.343 — Bronner, La démocratie des crédules (2013) : marché cognitif. Mémo lectures/bronner-democratie-credules.md.
 # 0.10.342 — Norenzayan (Big Gods) par la critique de Soler (2016) : deux hypothèses concurrentes sur croyances. Mémo lectures/soler-big-gods.md.
@@ -472,14 +473,16 @@ compartiments:
 - id: "reseaux_discrets"
   nom: "Réseaux discrets à pignon sur rue (sociétés initiatiques, clubs d'influence) — EN OMBRE"
   organisation: "statut"
-  elements: ["obédiences maçonniques déclarées (en France, associations publiques, prises de position publiques sur la laïcité ou la bioéthique)", "clubs et cercles de dirigeants aux listes partiellement publiques", "mécanisme supposé : cooptation, capital social, accès aux décideurs, coordination discrète", "jamais lu au niveau des personnes : institutions et actes publics seulement"]
+  elements: ["obédiences maçonniques déclarées (en France, associations publiques, prises de position publiques sur la laïcité ou la bioéthique)", "clubs et cercles de dirigeants aux listes partiellement publiques", "mécanisme supposé : cooptation, capital social, accès aux décideurs, coordination discrète", "jamais lu au niveau des personnes : institutions et actes publics seulement", "faits (Bauer, Dachez et al., 2021) : Grand Orient de France 1 350 loges et 55 000 adhérents en 2020 (28 000 en 1939, 5 500 en 1944, 15 000 en 1960, 43 000 en 2000) ; Grande Loge de France 880 loges et 33 000 frères en 2013", "recrutement par cooptation : parrain, enquêtes, trois scrutins des maîtres de la loge", "Convent annuel du Grand Orient début septembre ; « questions à l'étude des loges » (laïcité, paix, éthique, questions sociales) traitées par toutes les loges, synthèses régionales, positions publiques", "consultations par les pouvoirs publics documentées (lois de bioéthique, début des années 2000) ; précédent : plus de 155 loges à la création du Parti républicain radical (1901)", "cible récurrente : dissoutes par Vichy (lois des 13 et 14 août 1940)"]
   niveau:
     espace: "pays"
     temps: "années à siècles"
     vitesse: "mois"
     taille: "méso"
   traces:
-  - source: "prises de position publiques datées des obédiences et des clubs (communiqués, auditions parlementaires)"
+  - source: "prises de position publiques datées des obédiences et des clubs (communiqués, auditions parlementaires) ; Convent du Grand Orient chaque début septembre"
+    statut: "a_brancher"
+  - source: "effectifs déclarés des obédiences (séries publiques par décennie)"
     statut: "a_brancher"
 - id: "croyance_complot"
   nom: "Croyance en des forces cachées (complots, pouvoirs occultes mondiaux)"
@@ -1274,7 +1277,7 @@ relations:
   force: "faible"
   statut: "ombre"
   source: "hypothèse de l'auteur (2026-11-19), à étudier"
-  texte: "accès aux décideurs : un sujet porté par un réseau discret entre plus vite à l'agenda (ex. lois de laïcité, bioéthique) ; mécanisme supposé, non testé"
+  texte: "accès aux décideurs : un sujet porté par un réseau discret entre plus vite à l'agenda ; mécanisme documenté dans sa FORME (questions à l'étude des loges, consultations sur la bioéthique au début des années 2000), pas dans son EFFET : en ombre tant qu'il n'est pas mesuré"
 - de: "reseaux_discrets"
   vers: "conventions"
   effet: "+"
@@ -1427,6 +1430,17 @@ relations:
   source: "Barkun, ch. 13"
   texte: "la croyance reste presque toujours rhétorique ; au-delà d'un seuil élevé, quelques individus isolés passent à la violence"
   parametres: {seuil: 2.5}
+# --- Bauer, Dachez et al., Au cœur des loges (Que sais-je ?, 2021) ---
+- de: "croyance_complot"
+  vers: "reseaux_discrets"
+  effet: "-"
+  delai: "mois"
+  force: "forte"
+  intensite: {mesure: "pouvoir qui fait sienne la croyance au complot maçonnique", regle: "seuil"}
+  statut: "a_verifier"
+  source: "Au cœur des loges (2021), livre I, ch. IX ; Barkun, ch. 8"
+  texte: "quand un pouvoir adopte la croyance au complot, il interdit : lois de Vichy des 13 et 14 août 1940, effectifs du Grand Orient de 28 000 (1939) à 5 500 (1944)"
+  parametres: {seuil: 2.0}
 ponts:
 - depuis: "passage_acte"
   vers: "politique-americaine:elections"
