@@ -1,0 +1,93 @@
+{
+ "detections": {
+  "statut_http": 200,
+  "forme": {
+   "search_string": "str",
+   "lucene_query": "str",
+   "index": "str",
+   "total_hits": 0,
+   "results": [],
+   "pagination": {
+    "from": "int",
+    "size": "int",
+    "returned": "int",
+    "has_more": "bool",
+    "current_page": "int",
+    "total_pages": "int",
+    "next_from": "NoneType",
+    "prev_from": "NoneType"
+   }
+  }
+ },
+ "new_domains": {
+  "statut_http": 200,
+  "forme": {
+   "search_string": "str",
+   "lucene_query": "str",
+   "index": "str",
+   "total_hits": 311868608,
+   "results": [
+    {
+     "domain": "str",
+     "tld": "str",
+     "date": "str"
+    }
+   ],
+   "pagination": {
+    "from": "int",
+    "size": "int",
+    "returned": "int",
+    "has_more": "bool",
+    "current_page": "int",
+    "total_pages": "int",
+    "next_from": "int",
+    "prev_from": "NoneType"
+   }
+  }
+ },
+ "scans": {
+  "statut_http": 200,
+  "forme": {
+   "search_string": "str",
+   "lucene_query": "str",
+   "index": "str",
+   "total_hits": 150158558,
+   "results": [
+    {
+     "matched_fields": [],
+     "completion_utc": "str",
+     "date": "str",
+     "domain_name": "str",
+     "engine_id": "str",
+     "errors": [
+      {
+       "error": "str",
+       "url": "str"
+      }
+     ],
+     "feed": "str",
+     "report_id": "str",
+     "save_resources": "str",
+     "scan_status": "str",
+     "scan_time": "str",
+     "source": "str",
+     "sub_domain": "str",
+     "submission_url": "str",
+     "submission_utc": "str",
+     "tag": "str",
+     "tld": "str"
+    }
+   ],
+   "pagination": {
+    "from": "int",
+    "size": "int",
+    "returned": "int",
+    "has_more": "bool",
+    "current_page": "int",
+    "total_pages": "int",
+    "next_from": "int",
+    "prev_from": "NoneType"
+   }
+  }
+ }
+}
