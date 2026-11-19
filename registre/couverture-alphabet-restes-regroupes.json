@@ -1,0 +1,43 @@
+{
+  "note": "regroupement des restes par mots-clés, écrit APRÈS lecture des restes (descriptif, 2026-11-19) ; seuil préenregistré : chaque codeur dans au moins 5 % des 99 situations",
+  "situations": 99,
+  "motifs": {
+    "competition": "compétition|concurren|rival|adversari|élection|électoral|somme nulle|zéro-sum|dissuasion|jeu stratégique|interaction stratégique|affrontement",
+    "intention_decision": "intention|discrétionnaire|décision|choix|agency|agence|volonté|calcul stratégique",
+    "convention_mesure": "statisti|mesure|méthodolog|définition|ambiguït|officiel|légitimit|reconnaissance|nominal|arbitre|souverainet|attribution|imputab",
+    "marche_prix": "marché|prix|offre|demande|volatilit|investisseur|recettes",
+    "capacite": "capacit|ressources|logisti"
+  },
+  "groupes": {
+    "competition": {
+      "gpt": 20,
+      "haiku": 40,
+      "les_deux": 14,
+      "candidate": true
+    },
+    "intention_decision": {
+      "gpt": 10,
+      "haiku": 23,
+      "les_deux": 5,
+      "candidate": true
+    },
+    "convention_mesure": {
+      "gpt": 5,
+      "haiku": 11,
+      "les_deux": 2,
+      "candidate": true
+    },
+    "marche_prix": {
+      "gpt": 9,
+      "haiku": 7,
+      "les_deux": 4,
+      "candidate": true
+    },
+    "capacite": {
+      "gpt": 7,
+      "haiku": 12,
+      "les_deux": 2,
+      "candidate": true
+    }
+  }
+}
