@@ -331,6 +331,10 @@ ESSAIS = {
                        "objet": "traits de la carte (écart à l'habitude, marges de bascule) au jour du jeu, ajoutés au "
                                 "recalibrage des questions semblables",
                        "doc": "preenregistrements/proxemie-carte.md"},
+    "b_echeance": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 100, "statut": "ouvert",
+                   "objet": "B des séries à l'échéance (report de la dernière observation, calendrier des observations) "
+                            "contre B, questions réelles FRED et DBnomics",
+                   "doc": "preenregistrements/echeance.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",

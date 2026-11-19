@@ -156,6 +156,71 @@ def b_hausse(points: list[dict], h: int, avant: date, annees: int = 5) -> tuple[
     return (k + 0.5) / (n + 1), k, n
 
 
+# 0.10.362 (décision d'auteur du 2026-11-19, 18 h 58, EN OMBRE) : B À L'ÉCHÉANCE. La règle de résolution de ForecastBench
+# prend, pour une date sans observation, la DERNIÈRE observation antérieure (report). b_hausse compare chaque point au
+# PREMIER point postérieur à t + h : pour une série mensuelle à 7 jours, il compare deux mois successifs, alors qu'à la
+# résolution la valeur n'a souvent pas bougé (aucune observation datée dans la fenêtre) → « non ». Règle fixée AVANT
+# toute mesure (préenregistrement preenregistrements/echeance.md) :
+#   - mêmes points que B (5 ans strictement avant D) ; valeur d'un jour = dernière observation datée ≤ ce jour ;
+#   - calendrier des observations déduit de l'écart médian s : ≤ 4 j quotidien (jours de semaine observés), 5-10 hebdo
+#     (jour de semaine), 25-35 mensuel (jour du mois), 80-100 trimestriel (mois mod 3, jour), 170-190 semestriel,
+#     350-380 annuel (mois, jour) ; clés relevées sur les 2 dernières années ; autre écart → None ;
+#   - classe de la fenêtre (D, D + h] : contient-elle au moins une date d'observation attendue ?
+#   - historique : chaque jour civil d des 5 ans tel que d + h ≤ dernière observation ; « hausse » = valeur(d + h) >
+#     valeur(d), comptée dans la classe de SA fenêtre ; P = (k + ½)/(n + 1) dans la classe de la fenêtre à D.
+def _cle_calendrier(s: float):
+    if s <= 4 or 5 <= s <= 10:
+        return lambda d: d.weekday()
+    if 25 <= s <= 35:
+        return lambda d: d.day
+    if 80 <= s <= 100:
+        return lambda d: (d.month % 3, d.day)
+    if 170 <= s <= 190:
+        return lambda d: (d.month % 6, d.day)
+    if 350 <= s <= 380:
+        return lambda d: (d.month, d.day)
+    return None
+
+
+def b_echeance(points: list[dict], h: int, avant: date, annees: int = 5) -> dict | None:
+    import bisect
+    import statistics as st_
+    pts = sorted((date.fromisoformat(p["date"][:10]), float(p["valeur"])) for p in points
+                 if p.get("date") and p.get("valeur") is not None and p["date"][:10] < avant.isoformat())
+    pts = [p for p in pts if p[0] >= avant - timedelta(days=365 * annees)]
+    if len(pts) < 20 or h <= 0:
+        return None
+    jours = [p[0] for p in pts]
+    s = st_.median((b - a).days for a, b in zip(jours, jours[1:]))
+    cle = _cle_calendrier(s)
+    if cle is None:
+        return None
+    cles = {cle(d) for d in jours if d >= jours[-1] - timedelta(days=730)}
+
+    def obs_dans(a: date, b: date) -> bool:
+        return any(cle(a + timedelta(days=i)) in cles for i in range(1, (b - a).days + 1))
+
+    def valeur(d: date):
+        i = bisect.bisect_right(jours, d) - 1
+        return pts[i][1] if i >= 0 else None
+
+    compte = {True: [0, 0], False: [0, 0]}
+    d = jours[0]
+    while d + timedelta(days=h) <= jours[-1]:
+        v0, v1 = valeur(d), valeur(d + timedelta(days=h))
+        if v0 is not None and v1 is not None:
+            c = compte[obs_dans(d, d + timedelta(days=h))]
+            c[1] += 1
+            c[0] += v1 > v0
+        d += timedelta(days=1)
+    classe = obs_dans(avant, avant + timedelta(days=h))
+    k, n = compte[classe]
+    if n < 10:
+        return None
+    return {"p": (k + 0.5) / (n + 1), "k": k, "n": n, "fenetre_avec_observation": classe, "ecart_median_jours": s,
+            "regle": "report de la dernière observation ; classe de la fenêtre selon le calendrier des observations"}
+
+
 # 0.10.92 (décision d'auteur du 2026-11-14, EN OMBRE) : un second taux de base pour les séries, par un modèle
 # autorégressif. Le but n'est pas de battre C mais de trouver la meilleure prévision ; B par comptage est-il le meilleur
 # B possible ? Règle fixée AVANT toute mesure, jamais ajustée sur les issues :
@@ -471,6 +536,10 @@ async def vue_calculee(x: dict, q: dict, jeu: str) -> dict | None:
                 x["_b_ou"] = b_ou(r.get("points") or [], h, d0)
             except Exception as e:
                 x["_b_ou"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
+            try:                                      # 0.10.362 : B à l'échéance (report, calendrier), en ombre
+                x["_b_echeance"] = b_echeance(r.get("points") or [], h, d0)
+            except Exception as e:
+                x["_b_echeance"] = {"erreur": f"{type(e).__name__}: {e}"[:200]}
             try:                                      # 0.10.131 : taux de base récent (tendance), en ombre
                 x["_b_tendance"] = b_tendance(r.get("points") or [], h, d0)
             except Exception as e:
