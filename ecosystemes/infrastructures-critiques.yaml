@@ -1,0 +1,103 @@
+theme: "infrastructures-critiques"
+nom: "Infrastructures critiques (réseaux)"
+declaration:
+  but: "comprendre comment les réseaux dont dépend une société (électricité, eau, transport, télécommunications, dessalement, câbles sous-marins) tiennent, cèdent et entraînent les autres dans leur chute ; niveau des effets publics seulement"
+  limites: "dedans les réseaux, leurs dépendances mutuelles, leur exposition au climat et aux attaques, leurs opérateurs et régulateurs ; dehors tout détail sur les vulnérabilités ou les moyens d'attaque"
+  observateur: "notre carte, regard extérieur, sources publiques (coupures signalées, régulateurs)"
+  date: "2026-11-19"
+  espace: "une ville, un pays, les liaisons sous-marines entre continents"
+  temps: "de la panne de quelques heures aux investissements sur des décennies"
+  vitesse: "la seconde (une cascade de délestages), le jour (réparation), la décennie (vieillissement)"
+  taille: "micro (un transformateur) à macro (un réseau continental)"
+compartiments:
+  - id: "reseaux"
+    nom: "Réseaux et leurs interdépendances"
+    organisation: "technique"
+    elements: ["réseau électrique", "eau potable et assainissement", "transport", "télécommunications", "dessalement", "câbles sous-marins"]
+    acteurs:
+      - {nom: "un poste de transformation", taille: "micro", espace: "site", vitesse: "secondes", organisation: "technique", facette: "non_humain"}
+      - {nom: "un réseau électrique national", taille: "macro", espace: "pays", vitesse: "secondes", organisation: "technique", facette: "collectif"}
+    niveau: {espace: "ville à continent", temps: "fonctionnement continu", vitesse: "secondes à années", taille: "micro à macro"}
+    traces:
+      - {source: "coupures d'internet vues par Cloudflare Radar", statut: "collecte", fichier: "collecte_radar.py"}
+      - {source: "censure et coupures d'internet (OONI, Iran à titre d'exemple)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IR"}
+  - id: "cascades"
+    nom: "Défaillances en cascade"
+    organisation: "technique"
+    elements: ["délestages", "pertes de synchronisme", "effet domino entre réseaux (électricité vers eau et télécommunications)"]
+    niveau: {espace: "région à pays", temps: "minutes à jours", vitesse: "secondes à heures", taille: "méso à macro"}
+    traces:
+      - {source: "rapports publics des gestionnaires de réseau après incident", statut: "a_brancher"}
+  - id: "demande"
+    nom: "Demande et charge"
+    organisation: "economie"
+    elements: ["pointes de consommation", "climatisation et chauffage", "centres de données"]
+    niveau: {espace: "pays", temps: "heures et saisons", vitesse: "heures", taille: "macro"}
+    traces:
+      - {source: "prix du gaz Henry Hub (FRED), indicateur de tension énergétique", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DHHNGSP"}
+  - id: "chaleur_tempetes"
+    nom: "Chaleur, tempêtes et extrêmes"
+    organisation: "meteo"
+    elements: ["vagues de chaleur", "tempêtes et cyclones", "gel", "inondations"]
+    acteurs:
+      - {nom: "une vague de chaleur", taille: "méso", espace: "région", vitesse: "jours", organisation: "meteo", facette: "non_humain"}
+    niveau: {espace: "région", temps: "saisons", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "anomalie de température à Houston (NASA POWER)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:houston"}
+  - id: "eau_refroidissement"
+    nom: "Eau de refroidissement et de production"
+    organisation: "eau"
+    elements: ["fleuves qui refroidissent centrales et centres de données", "eau de mer pour le dessalement"]
+    niveau: {espace: "bassin", temps: "saisons", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "débits et températures des fleuves (services hydrologiques publics)", statut: "a_brancher"}
+  - id: "physique_espace"
+    nom: "Physique et météo spatiale"
+    organisation: "physique"
+    elements: ["tempêtes géomagnétiques", "courants induits dans les longues lignes", "perturbation du GPS et des satellites"]
+    niveau: {espace: "planète", temps: "cycle solaire", vitesse: "heures", taille: "macro"}
+    traces:
+      - {source: "indices géomagnétiques publics (NOAA, centre de prévision de la météo spatiale)", statut: "a_brancher"}
+  - id: "attaques"
+    nom: "Attaques et sabotages (effets publics)"
+    organisation: "geopolitique"
+    elements: ["cyberattaques attribuées publiquement", "sabotages de câbles ou de gazoducs signalés", "frappes sur des infrastructures en guerre"]
+    niveau: {espace: "pays à mers", temps: "incidents", vitesse: "heures", taille: "méso"}
+    traces:
+      - {source: "GDELT (événements publics)", statut: "collecte", fichier: "collecte_gdelt.py"}
+  - id: "operateurs_regulateurs"
+    nom: "Opérateurs et régulateurs"
+    organisation: "statut"
+    elements: ["gestionnaires de réseau", "régulateurs de l'énergie et des télécommunications", "plans de secours"]
+    acteurs:
+      - {nom: "un gestionnaire de réseau de transport", taille: "méso", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays", temps: "règles pluriannuelles", vitesse: "mois", taille: "méso"}
+    traces:
+      - {source: "Federal Register (règles américaines)", statut: "collecte", fichier: "collecte_federal_register.py"}
+  - id: "population"
+    nom: "Population et confiance"
+    organisation: "psychologique"
+    elements: ["peur et colère après une panne longue", "confiance dans les services publics", "comportements de stockage"]
+    acteurs:
+      - {nom: "les usagers d'une ville privée de courant", taille: "méso", espace: "ville", vitesse: "jours", organisation: "psychologique", facette: "psyche"}
+    niveau: {espace: "ville à pays", temps: "jours à années", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "aucune trace ouverte directe", statut: "inconnue"}
+relations:
+  - {de: "reseaux", vers: "cascades", effet: "+", delai: "minutes", force: "forte", intensite: {mesure: "marge de capacité restante du réseau", regle: "seuil"}, coupure: "îlotage et délestage maîtrisé", statut: "a_verifier", texte: "propre au niveau technique : une défaillance locale se propage quand les marges sont épuisées"}
+  - {de: "cascades", vers: "reseaux", effet: "-", delai: "heures", force: "forte", coupure: "secours et redondances", statut: "a_verifier", texte: "la cascade éteint les réseaux qui dépendent du premier (électricité vers eau et télécommunications)"}
+  - {de: "demande", vers: "reseaux", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "pointe de consommation par rapport à la capacité", regle: "seuil"}, coupure: "effacement de consommation", statut: "a_verifier", texte: "une pointe de demande tend le réseau jusqu'au délestage"}
+  - {de: "chaleur_tempetes", vers: "demande", effet: "+", delai: "jours", force: "moyenne", intensite: {mesure: "anomalie de température", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "la chaleur fait monter la climatisation, le froid le chauffage"}
+  - {de: "chaleur_tempetes", vers: "reseaux", effet: "-", delai: "heures", force: "forte", intensite: {mesure: "vent, gel, inondation", regle: "seuil"}, coupure: "enfouissement des lignes", statut: "a_verifier", texte: "passage de la météo à la technique : seule une tempête forte abat les lignes"}
+  - {de: "eau_refroidissement", vers: "reseaux", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "température et débit du fleuve", regle: "seuil"}, coupure: "refroidissement en circuit fermé", statut: "a_verifier", texte: "un fleuve trop chaud ou trop bas fait baisser la production des centrales"}
+  - {de: "physique_espace", vers: "reseaux", effet: "-", delai: "heures", force: "faible", intensite: {mesure: "indice géomagnétique", regle: "seuil"}, coupure: "protections des transformateurs", statut: "a_verifier", texte: "rare : une tempête solaire très forte induit des courants qui endommagent les grands transformateurs"}
+  - {de: "attaques", vers: "reseaux", effet: "-", retour: "+", delai: "heures", force: "moyenne", coupure: "réparation rapide, redondance des câbles", statut: "a_verifier", texte: "une attaque publique coupe un réseau et donne un levier à l'attaquant (prédation)"}
+  - {de: "operateurs_regulateurs", vers: "reseaux", effet: "+", delai: "années", force: "moyenne", coupure: "sous-investissement", statut: "a_verifier", texte: "les règles et les investissements décident de la robustesse"}
+  - {de: "cascades", vers: "population", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "durée de la coupure", regle: "seuil"}, coupure: "communication claire des autorités", statut: "a_verifier", texte: "passage de la technique au psychologique : au-delà de quelques jours, la gêne devient colère et défiance"}
+  - {de: "population", vers: "operateurs_regulateurs", effet: "±", delai: "mois", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "la colère publique pousse aux réformes ou aux boucs émissaires"}
+ponts:
+  - {depuis: "reseaux", vers: "climat-extremes:exposes", nature: "les réseaux sont parmi les plus exposés aux extrêmes"}
+  - {depuis: "eau_refroidissement", vers: "oceans-et-fleuves:refroidissement", nature: "le même phénomène vu par les fleuves", type: "meme"}
+  - {depuis: "reseaux", vers: "eau-moyen-orient:dessalement", nature: "le dessalement dépend de l'électricité"}
+  - {depuis: "attaques", vers: "russie-ukraine:front", nature: "frappes sur les infrastructures en guerre"}
+  - {depuis: "demande", vers: "energie-mondiale:demande", nature: "la charge électrique tire la demande de gaz"}

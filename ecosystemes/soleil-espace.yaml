@@ -1,114 +1,363 @@
-theme: "soleil-espace"
-nom: "Soleil et espace proche"
+theme: soleil-espace
+nom: Soleil et espace proche
 declaration:
-  but: "comprendre ce que le Soleil et l'espace proche font aux systèmes techniques et humains : tempêtes géomagnétiques, GPS, satellites, réseaux électriques, communications"
-  limites: "dedans le cycle solaire, les éruptions et éjections de masse coronale, la magnétosphère, les satellites et les débris, les effets sur le GPS, la radio et les réseaux, les alertes ; dehors l'astronomie lointaine et le climat de long terme (fiche climat)"
-  observateur: "notre carte, regard extérieur, sources publiques de surveillance spatiale"
-  date: "2026-11-19"
-  espace: "du Soleil à la surface de la Terre ; effets plus forts aux hautes latitudes"
-  temps: "cycle solaire d'environ onze ans (à vérifier) ; tempêtes de quelques jours"
-  vitesse: "l'heure (arrivée d'une tempête), le jour, la décennie (cycle)"
-  taille: "micro (un récepteur GPS) à macro (la magnétosphère)"
+  but: 'comprendre ce que le Soleil et l''espace proche font aux systèmes techniques et humains : tempêtes géomagnétiques, GPS, satellites, réseaux électriques, communications'
+  limites: dedans le cycle solaire, les éruptions et éjections de masse coronale, la magnétosphère, les satellites et les débris, les effets sur le GPS, la radio et les réseaux, les alertes ; dehors l'astronomie
+    lointaine et le climat de long terme (fiche climat)
+  observateur: notre carte, regard extérieur, sources publiques de surveillance spatiale
+  date: '2026-11-19'
+  espace: du Soleil à la surface de la Terre ; effets plus forts aux hautes latitudes
+  temps: cycle solaire d'environ onze ans (à vérifier) ; tempêtes de quelques jours
+  vitesse: l'heure (arrivée d'une tempête), le jour, la décennie (cycle)
+  taille: micro (un récepteur GPS) à macro (la magnétosphère)
 compartiments:
-  - id: "soleil"
-    nom: "Activité solaire"
-    organisation: "physique"
-    elements: ["cycle solaire", "taches solaires", "éruptions", "éjections de masse coronale", "vent solaire"]
-    acteurs:
-      - {nom: "le Soleil", taille: "macro", espace: "système solaire", vitesse: "jours à décennie", organisation: "physique", facette: "non_humain"}
-    niveau: {espace: "système solaire", temps: "cycle d'environ onze ans (à vérifier)", vitesse: "heures à décennie", taille: "macro"}
-    traces:
-      - {source: "indices d'activité solaire et alertes (NOAA SWPC, publics)", statut: "a_brancher"}
-  - id: "magnetosphere"
-    nom: "Magnétosphère et ionosphère"
-    organisation: "physique"
-    elements: ["champ magnétique terrestre", "tempêtes géomagnétiques", "perturbations de l'ionosphère", "aurores"]
-    acteurs:
-      - {nom: "la magnétosphère terrestre", taille: "macro", espace: "planète", vitesse: "heures", organisation: "physique", facette: "non_humain"}
-    niveau: {espace: "planète, hautes latitudes surtout", temps: "tempêtes de quelques jours", vitesse: "heures à jours", taille: "macro"}
-    traces:
-      - {source: "indice géomagnétique Kp (NOAA, public)", statut: "a_brancher"}
-  - id: "gps"
-    nom: "Navigation par satellite (GPS)"
-    organisation: "technique"
-    elements: ["précision du positionnement", "pertes de signal", "brouillage et leurrage (cause humaine, à distinguer)"]
-    acteurs:
-      - {nom: "un récepteur GPS d'avion ou de navire", taille: "micro", espace: "site", vitesse: "secondes", organisation: "technique", facette: "non_humain"}
-    niveau: {espace: "mondial", temps: "continu", vitesse: "secondes à heures", taille: "micro à macro"}
-    traces:
-      - {source: "brouillage GPS observé (gpsjam)", statut: "collecte", fichier: "brouillage_gps.py"}
-  - id: "satellites"
-    nom: "Satellites et constellations"
-    organisation: "technique"
-    elements: ["satellites de communication et d'observation", "constellations en orbite basse", "freinage atmosphérique pendant les tempêtes"]
-    acteurs:
-      - {nom: "un opérateur de constellation", taille: "méso", espace: "mondial", vitesse: "mois", organisation: "economie", facette: "collectif"}
-    niveau: {espace: "orbites terrestres", temps: "durée de vie des satellites", vitesse: "jours à années", taille: "méso à macro"}
-    traces:
-      - {source: "catalogues publics d'objets en orbite", statut: "a_brancher"}
-  - id: "debris"
-    nom: "Débris spatiaux"
-    organisation: "physique"
-    elements: ["fragments en orbite", "collisions", "réaction en chaîne possible (syndrome de Kessler)"]
-    niveau: {espace: "orbites basses", temps: "années à siècles", vitesse: "années", taille: "micro à macro"}
-    traces:
-      - {source: "catalogues publics d'objets en orbite", statut: "a_brancher"}
-  - id: "reseaux"
-    nom: "Réseaux électriques"
-    organisation: "technique"
-    elements: ["transformateurs", "courants induits géomagnétiquement", "lignes à haute tension des hautes latitudes"]
-    niveau: {espace: "réseaux nationaux", temps: "heures de tempête", vitesse: "minutes à jours", taille: "macro"}
-    traces:
-      - {source: "aucune trace ouverte directe", statut: "inconnue"}
-  - id: "radio"
-    nom: "Communications radio et aviation"
-    organisation: "technique"
-    elements: ["radio haute fréquence", "routes aériennes polaires", "communications maritimes"]
-    niveau: {espace: "mondial, polaire surtout", temps: "heures", vitesse: "heures", taille: "méso"}
-    traces:
-      - {source: "aucune trace ouverte directe", statut: "inconnue"}
-  - id: "alertes"
-    nom: "Alertes et échelles (convention)"
-    organisation: "convention"
-    elements: ["échelles de tempête géomagnétique (G1 à G5)", "alertes radio et radiation", "consignes aux opérateurs"]
-    acteurs:
-      - {nom: "un centre public de prévision de la météo spatiale", taille: "méso", espace: "pays", vitesse: "heures", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "pays et mondial", temps: "heures à jours", vitesse: "heures", taille: "méso"}
-    traces:
-      - {source: "alertes publiques de la NOAA SWPC", statut: "a_brancher"}
-  - id: "meteorites"
-    nom: "Météorites et objets géocroiseurs (rare)"
-    organisation: "physique"
-    elements: ["petits bolides fréquents", "objets dangereux très rares", "surveillance et déviation"]
-    niveau: {espace: "planète", temps: "rare", vitesse: "secondes (impact) à décennies (surveillance)", taille: "micro à macro"}
-    traces:
-      - {source: "catalogues publics d'objets géocroiseurs", statut: "a_brancher"}
-  - id: "recits"
-    nom: "Récits et perception du risque"
-    organisation: "psychologique"
-    elements: ["aurores spectaculaires qui attirent l'attention", "peur d'un grand black-out", "sous-estimation d'un risque rare"]
-    niveau: {espace: "médiatique", temps: "jours", vitesse: "heures à jours", taille: "méso"}
-    traces:
-      - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
+- id: soleil
+  nom: Activité solaire
+  organisation: physique
+  elements:
+  - cycle solaire
+  - taches solaires
+  - éruptions
+  - éjections de masse coronale
+  - vent solaire
+  acteurs:
+  - nom: le Soleil
+    taille: macro
+    espace: système solaire
+    vitesse: jours à décennie
+    organisation: physique
+    facette: non_humain
+  niveau:
+    espace: système solaire
+    temps: cycle d'environ onze ans (à vérifier)
+    vitesse: heures à décennie
+    taille: macro
+  traces:
+  - source: indices d'activité solaire et alertes (NOAA SWPC, publics)
+    statut: a_brancher
+- id: magnetosphere
+  nom: Magnétosphère et ionosphère
+  organisation: physique
+  elements:
+  - champ magnétique terrestre
+  - tempêtes géomagnétiques
+  - perturbations de l'ionosphère
+  - aurores
+  acteurs:
+  - nom: la magnétosphère terrestre
+    taille: macro
+    espace: planète
+    vitesse: heures
+    organisation: physique
+    facette: non_humain
+  niveau:
+    espace: planète, hautes latitudes surtout
+    temps: tempêtes de quelques jours
+    vitesse: heures à jours
+    taille: macro
+  traces:
+  - source: indice géomagnétique Kp (NOAA, public)
+    statut: a_brancher
+- id: gps
+  nom: Navigation par satellite (GPS)
+  organisation: technique
+  elements:
+  - précision du positionnement
+  - pertes de signal
+  - brouillage et leurrage (cause humaine, à distinguer)
+  acteurs:
+  - nom: un récepteur GPS d'avion ou de navire
+    taille: micro
+    espace: site
+    vitesse: secondes
+    organisation: technique
+    facette: non_humain
+  niveau:
+    espace: mondial
+    temps: continu
+    vitesse: secondes à heures
+    taille: micro à macro
+  traces:
+  - source: brouillage GPS observé (gpsjam)
+    statut: collecte
+    fichier: brouillage_gps.py
+- id: satellites
+  nom: Satellites et constellations
+  organisation: technique
+  elements:
+  - satellites de communication et d'observation
+  - constellations en orbite basse
+  - freinage atmosphérique pendant les tempêtes
+  acteurs:
+  - nom: un opérateur de constellation
+    taille: méso
+    espace: mondial
+    vitesse: mois
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: orbites terrestres
+    temps: durée de vie des satellites
+    vitesse: jours à années
+    taille: méso à macro
+  traces:
+  - source: catalogues publics d'objets en orbite
+    statut: a_brancher
+  - source: interdictions de survol pour opérations spatiales (FAA)
+    statut: collecte
+    adaptateur: tfr:SPACE OPERATIONS
+- id: debris
+  nom: Débris spatiaux
+  organisation: physique
+  elements:
+  - fragments en orbite
+  - collisions
+  - réaction en chaîne possible (syndrome de Kessler)
+  niveau:
+    espace: orbites basses
+    temps: années à siècles
+    vitesse: années
+    taille: micro à macro
+  traces:
+  - source: catalogues publics d'objets en orbite
+    statut: a_brancher
+- id: reseaux
+  nom: Réseaux électriques
+  organisation: technique
+  elements:
+  - transformateurs
+  - courants induits géomagnétiquement
+  - lignes à haute tension des hautes latitudes
+  niveau:
+    espace: réseaux nationaux
+    temps: heures de tempête
+    vitesse: minutes à jours
+    taille: macro
+  traces:
+  - source: aucune trace ouverte directe
+    statut: inconnue
+- id: radio
+  nom: Communications radio et aviation
+  organisation: technique
+  elements:
+  - radio haute fréquence
+  - routes aériennes polaires
+  - communications maritimes
+  niveau:
+    espace: mondial, polaire surtout
+    temps: heures
+    vitesse: heures
+    taille: méso
+  traces:
+  - source: aucune trace ouverte directe
+    statut: inconnue
+- id: alertes
+  nom: Alertes et échelles (convention)
+  organisation: convention
+  elements:
+  - échelles de tempête géomagnétique (G1 à G5)
+  - alertes radio et radiation
+  - consignes aux opérateurs
+  acteurs:
+  - nom: un centre public de prévision de la météo spatiale
+    taille: méso
+    espace: pays
+    vitesse: heures
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays et mondial
+    temps: heures à jours
+    vitesse: heures
+    taille: méso
+  traces:
+  - source: alertes publiques de la NOAA SWPC
+    statut: a_brancher
+- id: meteorites
+  nom: Météorites et objets géocroiseurs (rare)
+  organisation: physique
+  elements:
+  - petits bolides fréquents
+  - objets dangereux très rares
+  - surveillance et déviation
+  niveau:
+    espace: planète
+    temps: rare
+    vitesse: secondes (impact) à décennies (surveillance)
+    taille: micro à macro
+  traces:
+  - source: catalogues publics d'objets géocroiseurs
+    statut: a_brancher
+- id: recits
+  nom: Récits et perception du risque
+  organisation: psychologique
+  elements:
+  - aurores spectaculaires qui attirent l'attention
+  - peur d'un grand black-out
+  - sous-estimation d'un risque rare
+  niveau:
+    espace: médiatique
+    temps: jours
+    vitesse: heures à jours
+    taille: méso
+  traces:
+  - source: GDELT
+    statut: collecte
+    fichier: collecte_gdelt.py
 relations:
-  - {de: "soleil", vers: "magnetosphere", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "vitesse et orientation magnétique de l'éjection de masse coronale", regle: "seuil"}, coupure: "éjection qui manque la Terre", statut: "a_verifier", texte: "propre au niveau physique : une éjection dirigée vers la Terre déclenche une tempête géomagnétique en un à trois jours (à vérifier)"}
-  - {de: "soleil", vers: "radio", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "classe de l'éruption", regle: "seuil"}, coupure: "côté nuit de la Terre", statut: "a_verifier", texte: "le rayonnement d'une forte éruption coupe la radio haute fréquence côté jour en quelques minutes"}
-  - {de: "magnetosphere", vers: "gps", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "niveau de tempête", regle: "seuil"}, coupure: "corrections différentielles", statut: "a_verifier", texte: "une ionosphère perturbée dégrade la précision du positionnement"}
-  - {de: "magnetosphere", vers: "reseaux", effet: "-", delai: "heures", force: "forte", intensite: {mesure: "niveau de tempête", regle: "seuil"}, coupure: "protections des transformateurs, basses latitudes", statut: "a_verifier", texte: "une tempête extrême induit des courants qui peuvent endommager des transformateurs ; rien en dessous d'un seuil"}
-  - {de: "magnetosphere", vers: "satellites", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "niveau de tempête", regle: "seuil"}, coupure: "orbites hautes", statut: "a_verifier", texte: "la tempête chauffe la haute atmosphère, qui freine les satellites bas : certains retombent"}
-  - {de: "satellites", vers: "debris", effet: "+", delai: "années", force: "moyenne", intensite: {mesure: "densité d'objets sur une orbite", regle: "seuil"}, coupure: "désorbitation en fin de vie", statut: "a_verifier", texte: "plus de satellites, plus de débris"}
-  - {de: "debris", vers: "debris", effet: "+", delai: "années", force: "moyenne", intensite: {mesure: "densité de débris", regle: "seuil"}, coupure: "nettoyage des orbites", statut: "a_verifier", texte: "propre au niveau physique : au-delà d'une densité, chaque collision crée des débris qui en provoquent d'autres"}
-  - {de: "debris", vers: "satellites", effet: "-", retour: "+", delai: "années", force: "moyenne", coupure: "manœuvres d'évitement", statut: "a_verifier", texte: "les débris menacent les satellites, qui en produisent (prédation)"}
-  - {de: "gps", vers: "radio", effet: "0", delai: "heures", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau technique : deux systèmes touchés par la même cause, sans effet direct l'un sur l'autre (neutralisme)"}
-  - {de: "alertes", vers: "reseaux", effet: "+", delai: "heures", force: "moyenne", coupure: "alerte tardive", statut: "a_verifier", texte: "une alerte permet aux opérateurs de protéger leurs réseaux ; la convention de l'échelle déclenche l'action"}
-  - {de: "magnetosphere", vers: "alertes", effet: "+", delai: "heures", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "la tempête observée fait monter le niveau d'alerte"}
-  - {de: "magnetosphere", vers: "recits", effet: "+", delai: "heures", force: "moyenne", intensite: {mesure: "visibilité des aurores loin des pôles", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "des aurores visibles en basses latitudes font exploser l'attention"}
-  - {de: "recits", vers: "alertes", effet: "±", delai: "jours", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "un risque rare est sous-estimé jusqu'à l'événement, puis surestimé"}
-  - {de: "meteorites", vers: "recits", effet: "+", delai: "heures", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "un bolide visible ou un objet annoncé dangereux mobilise l'attention bien au-delà du risque réel"}
+- de: soleil
+  vers: magnetosphere
+  effet: +
+  delai: jours
+  force: forte
+  intensite:
+    mesure: vitesse et orientation magnétique de l'éjection de masse coronale
+    regle: seuil
+  coupure: éjection qui manque la Terre
+  statut: a_verifier
+  texte: 'propre au niveau physique : une éjection dirigée vers la Terre déclenche une tempête géomagnétique en un à trois jours (à vérifier)'
+- de: soleil
+  vers: radio
+  effet: '-'
+  delai: heures
+  force: moyenne
+  intensite:
+    mesure: classe de l'éruption
+    regle: seuil
+  coupure: côté nuit de la Terre
+  statut: a_verifier
+  texte: le rayonnement d'une forte éruption coupe la radio haute fréquence côté jour en quelques minutes
+- de: magnetosphere
+  vers: gps
+  effet: '-'
+  delai: heures
+  force: moyenne
+  intensite:
+    mesure: niveau de tempête
+    regle: seuil
+  coupure: corrections différentielles
+  statut: a_verifier
+  texte: une ionosphère perturbée dégrade la précision du positionnement
+- de: magnetosphere
+  vers: reseaux
+  effet: '-'
+  delai: heures
+  force: forte
+  intensite:
+    mesure: niveau de tempête
+    regle: seuil
+  coupure: protections des transformateurs, basses latitudes
+  statut: a_verifier
+  texte: une tempête extrême induit des courants qui peuvent endommager des transformateurs ; rien en dessous d'un seuil
+- de: magnetosphere
+  vers: satellites
+  effet: '-'
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: niveau de tempête
+    regle: seuil
+  coupure: orbites hautes
+  statut: a_verifier
+  texte: 'la tempête chauffe la haute atmosphère, qui freine les satellites bas : certains retombent'
+- de: satellites
+  vers: debris
+  effet: +
+  delai: années
+  force: moyenne
+  intensite:
+    mesure: densité d'objets sur une orbite
+    regle: seuil
+  coupure: désorbitation en fin de vie
+  statut: a_verifier
+  texte: plus de satellites, plus de débris
+- de: debris
+  vers: debris
+  effet: +
+  delai: années
+  force: moyenne
+  intensite:
+    mesure: densité de débris
+    regle: seuil
+  coupure: nettoyage des orbites
+  statut: a_verifier
+  texte: 'propre au niveau physique : au-delà d''une densité, chaque collision crée des débris qui en provoquent d''autres'
+- de: debris
+  vers: satellites
+  effet: '-'
+  retour: +
+  delai: années
+  force: moyenne
+  coupure: manœuvres d'évitement
+  statut: a_verifier
+  texte: les débris menacent les satellites, qui en produisent (prédation)
+- de: gps
+  vers: radio
+  effet: '0'
+  delai: heures
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'propre au niveau technique : deux systèmes touchés par la même cause, sans effet direct l''un sur l''autre (neutralisme)'
+- de: alertes
+  vers: reseaux
+  effet: +
+  delai: heures
+  force: moyenne
+  coupure: alerte tardive
+  statut: a_verifier
+  texte: une alerte permet aux opérateurs de protéger leurs réseaux ; la convention de l'échelle déclenche l'action
+- de: magnetosphere
+  vers: alertes
+  effet: +
+  delai: heures
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: la tempête observée fait monter le niveau d'alerte
+- de: magnetosphere
+  vers: recits
+  effet: +
+  delai: heures
+  force: moyenne
+  intensite:
+    mesure: visibilité des aurores loin des pôles
+    regle: seuil
+  coupure: inconnue
+  statut: a_verifier
+  texte: des aurores visibles en basses latitudes font exploser l'attention
+- de: recits
+  vers: alertes
+  effet: ±
+  delai: jours
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: un risque rare est sous-estimé jusqu'à l'événement, puis surestimé
+- de: meteorites
+  vers: recits
+  effet: +
+  delai: heures
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: un bolide visible ou un objet annoncé dangereux mobilise l'attention bien au-delà du risque réel
 ponts:
-  - {depuis: "reseaux", vers: "infrastructures-critiques:reseaux", nature: "les réseaux électriques face aux tempêtes solaires"}
-  - {depuis: "gps", vers: "transport-maritime:securite", nature: "le GPS dégradé ou brouillé gêne la navigation"}
-  - {depuis: "alertes", vers: "securite-publique:alertes", nature: "les alertes publiques de météo spatiale"}
-  - {depuis: "soleil", vers: "climat-extremes:rayonnement", nature: "le rayonnement solaire, variable sur le cycle"}
-  - {depuis: "satellites", vers: "rivalite-sino-americaine:technologie", nature: "la course aux constellations"}
-  - {depuis: "recits", vers: "information-cyber:recits", nature: "l'attention aux événements spatiaux"}
+- depuis: reseaux
+  vers: infrastructures-critiques:reseaux
+  nature: les réseaux électriques face aux tempêtes solaires
+- depuis: gps
+  vers: transport-maritime:securite
+  nature: le GPS dégradé ou brouillé gêne la navigation
+- depuis: alertes
+  vers: securite-publique:alertes
+  nature: les alertes publiques de météo spatiale
+- depuis: soleil
+  vers: climat-extremes:rayonnement
+  nature: le rayonnement solaire, variable sur le cycle
+- depuis: satellites
+  vers: rivalite-sino-americaine:technologie
+  nature: la course aux constellations
+- depuis: recits
+  vers: information-cyber:recits
+  nature: l'attention aux événements spatiaux

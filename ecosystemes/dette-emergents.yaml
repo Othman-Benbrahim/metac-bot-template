@@ -1,152 +1,545 @@
 theme: dette-emergents
-nom: "Dette des pays émergents et en développement"
+nom: Dette des pays émergents et en développement
 declaration:
-  but: "comprendre ce qui pousse un pays émergent ou pauvre vers la crise de dette ou de change (défaut, dévaluation, programme du FMI, contrôle des capitaux), et ce que cela transmet (questions du tournoi sur les monnaies, les défauts, les banques en difficulté, les programmes du FMI)"
-  limites: "dedans la dette publique et privée en devises, les monnaies, les réserves de change, les banques locales, les créanciers (marchés, Chine, Club de Paris), le FMI et la Banque mondiale, l'inflation locale et la contestation ; dehors la croissance de long terme et la démographie"
-  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; pays lus en agrégat, jamais de personne privée"
-  date: "2026-11-19"
-  espace: "les pays émergents et en développement, et les marchés financiers mondiaux (dollar, taux américains)"
-  temps: "de la séance (change) à la décennie (restructurations) ; mémoire des crises de 1982, 1994, 1997-1998, 2001, 2013, 2022"
-  vitesse: "le jour (attaque sur la monnaie, retraits bancaires), le mois (échéances, revues du FMI), l'année (restructurations)"
-  taille: "un déposant, une banque, un pays, le système financier mondial"
+  but: comprendre ce qui pousse un pays émergent ou pauvre vers la crise de dette ou de change (défaut, dévaluation, programme du FMI, contrôle des capitaux), et ce que cela transmet (questions du tournoi
+    sur les monnaies, les défauts, les banques en difficulté, les programmes du FMI)
+  limites: dedans la dette publique et privée en devises, les monnaies, les réserves de change, les banques locales, les créanciers (marchés, Chine, Club de Paris), le FMI et la Banque mondiale, l'inflation
+    locale et la contestation ; dehors la croissance de long terme et la démographie
+  observateur: notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; pays lus en agrégat, jamais de personne privée
+  date: '2026-11-19'
+  espace: les pays émergents et en développement, et les marchés financiers mondiaux (dollar, taux américains)
+  temps: de la séance (change) à la décennie (restructurations) ; mémoire des crises de 1982, 1994, 1997-1998, 2001, 2013, 2022
+  vitesse: le jour (attaque sur la monnaie, retraits bancaires), le mois (échéances, revues du FMI), l'année (restructurations)
+  taille: un déposant, une banque, un pays, le système financier mondial
 compartiments:
-  - id: monnaies
-    organisation: "economie"
-    nom: "Monnaies et change"
-    elements: ["taux de change", "dévaluations", "marchés parallèles", "contrôles des capitaux"]
-    acteurs:
-      - {nom: "une banque centrale de pays émergent", taille: "macro", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "pays", temps: "séances ; régimes de change", vitesse: "jours à mois", taille: "macro"}
-    traces:
-      - {source: "indice large du dollar (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DTWEXBGS"}
-      - {source: "taux de change officiels et parallèles par pays (banques centrales)", statut: "a_brancher"}
-  - id: dette_publique
-    organisation: "economie"
-    nom: "Dette publique en devises"
-    elements: ["obligations en dollars", "échéances", "écarts de taux par rapport aux États-Unis", "notations"]
-    acteurs:
-      - {nom: "un ministère des Finances", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
-      - {nom: "une agence de notation", taille: "méso", espace: "mondial", vitesse: "mois", organisation: "convention", facette: "collectif"}
-    niveau: {espace: "pays", temps: "calendrier des échéances", vitesse: "semaines à années", taille: "macro"}
-    traces:
-      - {source: "taux américain à 10 ans (référence des écarts, FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DGS10"}
-  - id: reserves
-    organisation: "economie"
-    nom: "Réserves de change"
-    elements: ["réserves en devises", "or", "lignes d'échange entre banques centrales"]
-    niveau: {espace: "pays", temps: "publication mensuelle", vitesse: "semaines à mois", taille: "macro"}
-    traces:
-      - {source: "réserves de change publiées par les banques centrales", statut: "a_brancher"}
-  - id: banques
-    organisation: "economie"
-    nom: "Banques locales"
-    elements: ["dépôts", "retraits massifs", "fermetures et faillites de banques", "garanties des dépôts"]
-    acteurs:
-      - {nom: "un déposant", taille: "micro", espace: "local", vitesse: "jours", organisation: "societe", facette: "collectif"}
-      - {nom: "une banque locale", taille: "méso", espace: "pays", vitesse: "jours", organisation: "economie", facette: "collectif"}
-      - {nom: "l'autorité de surveillance bancaire", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "pays", temps: "jours (retraits) à années (assainissement)", vitesse: "jours à mois", taille: "micro à méso"}
-    traces:
-      - {source: "communiqués des banques centrales et autorités bancaires", statut: "a_brancher"}
-  - id: creanciers
-    organisation: "economie"
-    nom: "Créanciers"
-    elements: ["investisseurs sur les marchés", "Chine (prêts bilatéraux)", "Club de Paris", "cadre commun du G20"]
-    acteurs:
-      - {nom: "les fonds d'investissement (en agrégat)", taille: "macro", espace: "mondial", vitesse: "jours", organisation: "economie", facette: "collectif"}
-      - {nom: "Chine (prêteur bilatéral)", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "négociations de plusieurs mois à plusieurs années", vitesse: "mois à années", taille: "macro"}
-    traces:
-      - {source: "annonces de restructuration (communiqués officiels)", statut: "a_brancher"}
-  - id: fmi
-    organisation: "statut"
-    nom: "FMI et Banque mondiale"
-    elements: ["programmes", "revues trimestrielles", "conditions (subventions, change, budget)", "décaissements"]
-    acteurs:
-      - {nom: "Fonds monétaire international", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "revues datées ; conseils d'administration", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "communiqués de presse du FMI (accords au niveau des services, revues)", statut: "a_brancher"}
-  - id: inflation_locale
-    organisation: "economie"
-    nom: "Inflation locale"
-    elements: ["prix des importations", "carburants et pain", "subventions", "indexation"]
-    acteurs:
-      - {nom: "un ménage", taille: "micro", espace: "local", vitesse: "mois", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "pays", temps: "publication mensuelle", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "indice mondial des prix alimentaires (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM:var12"}
-  - id: politique_interieure
-    organisation: "societe"
-    nom: "Politique intérieure et contestation"
-    elements: ["gouvernement", "élections", "manifestations contre l'austérité", "coupures d'internet"]
-    acteurs:
-      - {nom: "un gouvernement", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-      - {nom: "les mouvements de protestation (en agrégat)", taille: "méso", espace: "pays", vitesse: "jours", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "pays", temps: "mandats ; jours de crise", vitesse: "jours à années", taille: "méso à macro"}
-    traces:
-      - {source: "censure et coupures d'internet (OONI ; exemple : Argentine)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:AR"}
-  - id: matieres_premieres
-    organisation: "economie"
-    nom: "Recettes de matières premières"
-    elements: ["exportations de pétrole, de métaux, de produits agricoles", "termes de l'échange"]
-    niveau: {espace: "pays exportateurs", temps: "saisons ; cycles des prix", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "prix du Brent (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILBRENTEU"}
-  - id: "notations_definitions"
-    organisation: "convention"
-    nom: "Notations, définitions et statistiques (convention)"
-    elements: ["notes des agences", "définition du défaut (paiement manqué, restructuration « en difficulté »)", "seuils d'éligibilité des fonds", "statistiques de dette publiées ou cachées"]
-    acteurs:
-      - {nom: "les trois grandes agences de notation (en agrégat)", taille: "méso", espace: "mondial", vitesse: "mois", organisation: "convention", facette: "collectif"}
-      - {nom: "les indices obligataires et leurs règles d'inclusion", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "convention", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "revues périodiques ; annonces datées", vitesse: "jours à mois", taille: "méso à macro"}
-    traces:
-      - {source: "communiqués publics des agences de notation", statut: "a_brancher"}
-  - id: "recoltes_catastrophes"
-    organisation: "meteo"
-    nom: "Récoltes et catastrophes naturelles"
-    elements: ["sécheresses et récoltes perdues", "cyclones et inondations", "séismes", "coûts de reconstruction"]
-    acteurs:
-      - {nom: "un cyclone sur une petite île", taille: "méso", espace: "région", vitesse: "jours", organisation: "meteo", facette: "non_humain"}
-      - {nom: "une sécheresse sur un pays agricole", taille: "macro", espace: "pays", vitesse: "saisons", organisation: "eau", facette: "non_humain"}
-    niveau: {espace: "pays", temps: "saisons ; événements", vitesse: "jours à saisons", taille: "méso à macro"}
-    traces:
-      - {source: "feux actifs par pays (FIRMS), signe de sécheresse et d'incendies", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:ZM"}
-      - {source: "base publique des catastrophes (EM-DAT, inscription gratuite)", statut: "a_brancher"}
-  - id: "gisements"
-    organisation: "mineral"
-    nom: "Gisements et ressources du sous-sol"
-    elements: ["pétrole", "cuivre", "cobalt", "lithium", "or", "épuisement des gisements"]
-    acteurs:
-      - {nom: "un gisement de cuivre ou de cobalt", taille: "méso", espace: "site", vitesse: "décennie", organisation: "mineral", facette: "non_humain"}
-    niveau: {espace: "pays producteurs", temps: "durée de vie des mines", vitesse: "décennie", taille: "méso"}
-    traces:
-      - {source: "statistiques publiques de production minière (USGS)", statut: "a_brancher"}
+- id: monnaies
+  organisation: economie
+  nom: Monnaies et change
+  elements:
+  - taux de change
+  - dévaluations
+  - marchés parallèles
+  - contrôles des capitaux
+  acteurs:
+  - nom: une banque centrale de pays émergent
+    taille: macro
+    espace: pays
+    vitesse: jours
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: séances ; régimes de change
+    vitesse: jours à mois
+    taille: macro
+  traces:
+  - source: indice large du dollar (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DTWEXBGS
+  - source: taux de change officiels et parallèles par pays (banques centrales)
+    statut: a_brancher
+- id: dette_publique
+  organisation: economie
+  nom: Dette publique en devises
+  elements:
+  - obligations en dollars
+  - échéances
+  - écarts de taux par rapport aux États-Unis
+  - notations
+  acteurs:
+  - nom: un ministère des Finances
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  - nom: une agence de notation
+    taille: méso
+    espace: mondial
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: calendrier des échéances
+    vitesse: semaines à années
+    taille: macro
+  traces:
+  - source: taux américain à 10 ans (référence des écarts, FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DGS10
+- id: reserves
+  organisation: economie
+  nom: Réserves de change
+  elements:
+  - réserves en devises
+  - or
+  - lignes d'échange entre banques centrales
+  niveau:
+    espace: pays
+    temps: publication mensuelle
+    vitesse: semaines à mois
+    taille: macro
+  traces:
+  - source: réserves de change publiées par les banques centrales
+    statut: a_brancher
+- id: banques
+  organisation: economie
+  nom: Banques locales
+  elements:
+  - dépôts
+  - retraits massifs
+  - fermetures et faillites de banques
+  - garanties des dépôts
+  acteurs:
+  - nom: un déposant
+    taille: micro
+    espace: local
+    vitesse: jours
+    organisation: societe
+    facette: collectif
+  - nom: une banque locale
+    taille: méso
+    espace: pays
+    vitesse: jours
+    organisation: economie
+    facette: collectif
+  - nom: l'autorité de surveillance bancaire
+    taille: méso
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: jours (retraits) à années (assainissement)
+    vitesse: jours à mois
+    taille: micro à méso
+  traces:
+  - source: communiqués des banques centrales et autorités bancaires
+    statut: a_brancher
+- id: creanciers
+  organisation: economie
+  nom: Créanciers
+  elements:
+  - investisseurs sur les marchés
+  - Chine (prêts bilatéraux)
+  - Club de Paris
+  - cadre commun du G20
+  acteurs:
+  - nom: les fonds d'investissement (en agrégat)
+    taille: macro
+    espace: mondial
+    vitesse: jours
+    organisation: economie
+    facette: collectif
+  - nom: Chine (prêteur bilatéral)
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: négociations de plusieurs mois à plusieurs années
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: annonces de restructuration (communiqués officiels)
+    statut: a_brancher
+- id: fmi
+  organisation: statut
+  nom: FMI et Banque mondiale
+  elements:
+  - programmes
+  - revues trimestrielles
+  - conditions (subventions, change, budget)
+  - décaissements
+  acteurs:
+  - nom: Fonds monétaire international
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: revues datées ; conseils d'administration
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: communiqués de presse du FMI (accords au niveau des services, revues)
+    statut: a_brancher
+- id: inflation_locale
+  organisation: economie
+  nom: Inflation locale
+  elements:
+  - prix des importations
+  - carburants et pain
+  - subventions
+  - indexation
+  acteurs:
+  - nom: un ménage
+    taille: micro
+    espace: local
+    vitesse: mois
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: publication mensuelle
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: indice mondial des prix alimentaires (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:PFOODINDEXM:var12
+  - source: inflation alimentaire mensuelle au Nigeria (PAM)
+    statut: collecte
+    adaptateur: prix_alimentaires:NG
+- id: politique_interieure
+  organisation: societe
+  nom: Politique intérieure et contestation
+  elements:
+  - gouvernement
+  - élections
+  - manifestations contre l'austérité
+  - coupures d'internet
+  acteurs:
+  - nom: un gouvernement
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: les mouvements de protestation (en agrégat)
+    taille: méso
+    espace: pays
+    vitesse: jours
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: mandats ; jours de crise
+    vitesse: jours à années
+    taille: méso à macro
+  traces:
+  - source: 'censure et coupures d''internet (OONI ; exemple : Argentine)'
+    statut: collecte
+    fichier: collecte_ooni.py
+    adaptateur: ooni:AR
+  - source: jours avant la prochaine élection connue au Brésil (Wikidata)
+    statut: collecte
+    adaptateur: elections:BR
+  - source: manifestations par jour au Kenya (GDELT)
+    statut: collecte
+    adaptateur: manifestations:KE
+- id: matieres_premieres
+  organisation: economie
+  nom: Recettes de matières premières
+  elements:
+  - exportations de pétrole, de métaux, de produits agricoles
+  - termes de l'échange
+  niveau:
+    espace: pays exportateurs
+    temps: saisons ; cycles des prix
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: prix du Brent (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DCOILBRENTEU
+- id: notations_definitions
+  organisation: convention
+  nom: Notations, définitions et statistiques (convention)
+  elements:
+  - notes des agences
+  - définition du défaut (paiement manqué, restructuration « en difficulté »)
+  - seuils d'éligibilité des fonds
+  - statistiques de dette publiées ou cachées
+  acteurs:
+  - nom: les trois grandes agences de notation (en agrégat)
+    taille: méso
+    espace: mondial
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  - nom: les indices obligataires et leurs règles d'inclusion
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: revues périodiques ; annonces datées
+    vitesse: jours à mois
+    taille: méso à macro
+  traces:
+  - source: communiqués publics des agences de notation
+    statut: a_brancher
+- id: recoltes_catastrophes
+  organisation: meteo
+  nom: Récoltes et catastrophes naturelles
+  elements:
+  - sécheresses et récoltes perdues
+  - cyclones et inondations
+  - séismes
+  - coûts de reconstruction
+  acteurs:
+  - nom: un cyclone sur une petite île
+    taille: méso
+    espace: région
+    vitesse: jours
+    organisation: meteo
+    facette: non_humain
+  - nom: une sécheresse sur un pays agricole
+    taille: macro
+    espace: pays
+    vitesse: saisons
+    organisation: eau
+    facette: non_humain
+  niveau:
+    espace: pays
+    temps: saisons ; événements
+    vitesse: jours à saisons
+    taille: méso à macro
+  traces:
+  - source: feux actifs par pays (FIRMS), signe de sécheresse et d'incendies
+    statut: collecte
+    fichier: collecte_feux.py
+    adaptateur: feux:ZM
+  - source: base publique des catastrophes (EM-DAT, inscription gratuite)
+    statut: a_brancher
+- id: gisements
+  organisation: mineral
+  nom: Gisements et ressources du sous-sol
+  elements:
+  - pétrole
+  - cuivre
+  - cobalt
+  - lithium
+  - or
+  - épuisement des gisements
+  acteurs:
+  - nom: un gisement de cuivre ou de cobalt
+    taille: méso
+    espace: site
+    vitesse: décennie
+    organisation: mineral
+    facette: non_humain
+  niveau:
+    espace: pays producteurs
+    temps: durée de vie des mines
+    vitesse: décennie
+    taille: méso
+  traces:
+  - source: statistiques publiques de production minière (USGS)
+    statut: a_brancher
 relations:
-  - {de: "monnaies", vers: "dette_publique", effet: "-", delai: "jours à mois", force: "forte", intensite: {mesure: "ampleur de la dépréciation", regle: "seuil"}, coupure: "dette surtout en monnaie locale", statut: "a_verifier", texte: "une dépréciation gonfle la dette en dollars ; au-delà d'un seuil elle devient insoutenable"}
-  - {de: "monnaies", vers: "inflation_locale", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "ampleur de la dépréciation", regle: "proportionnelle"}, coupure: "subventions et contrôles des prix", statut: "a_verifier", texte: "la dévaluation renchérit les importations, carburants et pain d'abord"}
-  - {de: "reserves", vers: "monnaies", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "mois d'importations couverts par les réserves", regle: "seuil"}, coupure: "aide extérieure", statut: "a_verifier", texte: "des réserves suffisantes défendent la monnaie ; épuisées, la chute est brutale"}
-  - {de: "dette_publique", vers: "creanciers", effet: "-", retour: "-", style: "inconnu", delai: "mois à années", force: "forte", coupure: "accord de restructuration", statut: "a_verifier", texte: "un défaut fait perdre les créanciers et ferme les marchés au pays ; chacun réduit ce que l'autre obtient"}
-  - {de: "fmi", vers: "reserves", effet: "+", retour: "+", forme: "mutualisme", delai: "mois", force: "forte", coupure: "revue non validée", statut: "a_verifier", texte: "un programme apporte des devises et rassure les autres créanciers, contre des conditions"}
-  - {de: "fmi", vers: "politique_interieure", effet: "-", retour: "-", delai: "mois", force: "moyenne", intensite: {mesure: "ampleur des hausses de prix des subventions supprimées", regle: "seuil"}, coupure: "étalement des réformes", statut: "a_verifier", texte: "les conditions d'austérité alimentent la contestation, qui peut faire dérailler le programme"}
-  - {de: "inflation_locale", vers: "politique_interieure", effet: "-", delai: "semaines à mois", force: "moyenne", intensite: {mesure: "hausse du prix du pain et des carburants", regle: "seuil"}, coupure: "transferts aux ménages", statut: "a_verifier", texte: "la hausse des prix de base déclenche des manifestations au-delà d'un seuil"}
-  - {de: "banques", vers: "monnaies", effet: "-", delai: "jours", force: "moyenne", coupure: "garantie des dépôts crédible", statut: "a_verifier", texte: "des retraits massifs convertis en dollars accélèrent la chute de la monnaie"}
-  - {de: "monnaies", vers: "banques", effet: "-", delai: "jours à semaines", force: "moyenne", intensite: {mesure: "vitesse de la dépréciation", regle: "seuil"}, coupure: "contrôle des capitaux", statut: "a_verifier", texte: "une chute de la monnaie fait fuir les déposants (boucle avec la relation inverse)"}
-  - {de: "matieres_premieres", vers: "reserves", effet: "±", delai: "mois", force: "forte", coupure: "économies diversifiées", statut: "a_verifier", texte: "les recettes d'exportation remplissent ou vident les réserves selon les prix"}
-  - {de: "creanciers", vers: "monnaies", effet: "±", delai: "jours", force: "moyenne", intensite: {mesure: "aversion mondiale au risque", regle: "proportionnelle"}, coupure: "contrôle des capitaux", statut: "a_verifier", texte: "les flux des investisseurs entrent et sortent avec l'humeur mondiale"}
-  - {de: "politique_interieure", vers: "dette_publique", effet: "±", delai: "mois", force: "moyenne", coupure: "consensus sur l'ajustement", statut: "a_verifier", texte: "élections et instabilité changent la volonté de payer ou d'ajuster"}
-  - {de: "notations_definitions", vers: "creanciers", effet: "±", delai: "jours", force: "forte", intensite: {mesure: "passage sous la catégorie « investissement »", regle: "seuil"}, coupure: "investisseurs non contraints par les notes", statut: "a_verifier", texte: "une dégradation sous un seuil de note oblige des fonds à vendre : la convention déclenche le flux"}
-  - {de: "notations_definitions", vers: "dette_publique", effet: "±", delai: "jours à mois", force: "moyenne", coupure: "accord amiable reconnu", statut: "a_verifier", texte: "ce qui « compte comme » défaut change le coût de la dette et l'accès aux marchés"}
-  - {de: "dette_publique", vers: "notations_definitions", effet: "-", retour: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "au sein du couple économie-convention : la dette qui monte fait baisser la note, qui renchérit la dette"}
-  - {de: "recoltes_catastrophes", vers: "matieres_premieres", effet: "-", delai: "saisons", force: "moyenne", intensite: {mesure: "ampleur des récoltes perdues ou des destructions", regle: "seuil"}, coupure: "assurance et aide", statut: "a_verifier", texte: "une sécheresse ou un cyclone coupe les recettes d'exportation agricoles"}
-  - {de: "recoltes_catastrophes", vers: "dette_publique", effet: "-", delai: "mois", force: "moyenne", intensite: {mesure: "coût des destructions rapporté à la taille de l'économie", regle: "seuil"}, coupure: "clauses de suspension en cas de catastrophe", statut: "a_verifier", texte: "une catastrophe majeure creuse la dette d'un petit pays d'un coup"}
-  - {de: "gisements", vers: "matieres_premieres", effet: "+", delai: "années", force: "forte", coupure: "chute des prix mondiaux", statut: "a_verifier", texte: "les gisements font les recettes, mais attachent le pays aux cycles des prix"}
+- de: monnaies
+  vers: dette_publique
+  effet: '-'
+  delai: jours à mois
+  force: forte
+  intensite:
+    mesure: ampleur de la dépréciation
+    regle: seuil
+  coupure: dette surtout en monnaie locale
+  statut: a_verifier
+  texte: une dépréciation gonfle la dette en dollars ; au-delà d'un seuil elle devient insoutenable
+- de: monnaies
+  vers: inflation_locale
+  effet: +
+  delai: mois
+  force: forte
+  intensite:
+    mesure: ampleur de la dépréciation
+    regle: proportionnelle
+  coupure: subventions et contrôles des prix
+  statut: a_verifier
+  texte: la dévaluation renchérit les importations, carburants et pain d'abord
+- de: reserves
+  vers: monnaies
+  effet: +
+  delai: jours
+  force: forte
+  intensite:
+    mesure: mois d'importations couverts par les réserves
+    regle: seuil
+  coupure: aide extérieure
+  statut: a_verifier
+  texte: des réserves suffisantes défendent la monnaie ; épuisées, la chute est brutale
+- de: dette_publique
+  vers: creanciers
+  effet: '-'
+  retour: '-'
+  style: inconnu
+  delai: mois à années
+  force: forte
+  coupure: accord de restructuration
+  statut: a_verifier
+  texte: un défaut fait perdre les créanciers et ferme les marchés au pays ; chacun réduit ce que l'autre obtient
+- de: fmi
+  vers: reserves
+  effet: +
+  retour: +
+  forme: mutualisme
+  delai: mois
+  force: forte
+  coupure: revue non validée
+  statut: a_verifier
+  texte: un programme apporte des devises et rassure les autres créanciers, contre des conditions
+- de: fmi
+  vers: politique_interieure
+  effet: '-'
+  retour: '-'
+  delai: mois
+  force: moyenne
+  intensite:
+    mesure: ampleur des hausses de prix des subventions supprimées
+    regle: seuil
+  coupure: étalement des réformes
+  statut: a_verifier
+  texte: les conditions d'austérité alimentent la contestation, qui peut faire dérailler le programme
+- de: inflation_locale
+  vers: politique_interieure
+  effet: '-'
+  delai: semaines à mois
+  force: moyenne
+  intensite:
+    mesure: hausse du prix du pain et des carburants
+    regle: seuil
+  coupure: transferts aux ménages
+  statut: a_verifier
+  texte: la hausse des prix de base déclenche des manifestations au-delà d'un seuil
+- de: banques
+  vers: monnaies
+  effet: '-'
+  delai: jours
+  force: moyenne
+  coupure: garantie des dépôts crédible
+  statut: a_verifier
+  texte: des retraits massifs convertis en dollars accélèrent la chute de la monnaie
+- de: monnaies
+  vers: banques
+  effet: '-'
+  delai: jours à semaines
+  force: moyenne
+  intensite:
+    mesure: vitesse de la dépréciation
+    regle: seuil
+  coupure: contrôle des capitaux
+  statut: a_verifier
+  texte: une chute de la monnaie fait fuir les déposants (boucle avec la relation inverse)
+- de: matieres_premieres
+  vers: reserves
+  effet: ±
+  delai: mois
+  force: forte
+  coupure: économies diversifiées
+  statut: a_verifier
+  texte: les recettes d'exportation remplissent ou vident les réserves selon les prix
+- de: creanciers
+  vers: monnaies
+  effet: ±
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: aversion mondiale au risque
+    regle: proportionnelle
+  coupure: contrôle des capitaux
+  statut: a_verifier
+  texte: les flux des investisseurs entrent et sortent avec l'humeur mondiale
+- de: politique_interieure
+  vers: dette_publique
+  effet: ±
+  delai: mois
+  force: moyenne
+  coupure: consensus sur l'ajustement
+  statut: a_verifier
+  texte: élections et instabilité changent la volonté de payer ou d'ajuster
+- de: notations_definitions
+  vers: creanciers
+  effet: ±
+  delai: jours
+  force: forte
+  intensite:
+    mesure: passage sous la catégorie « investissement »
+    regle: seuil
+  coupure: investisseurs non contraints par les notes
+  statut: a_verifier
+  texte: 'une dégradation sous un seuil de note oblige des fonds à vendre : la convention déclenche le flux'
+- de: notations_definitions
+  vers: dette_publique
+  effet: ±
+  delai: jours à mois
+  force: moyenne
+  coupure: accord amiable reconnu
+  statut: a_verifier
+  texte: ce qui « compte comme » défaut change le coût de la dette et l'accès aux marchés
+- de: dette_publique
+  vers: notations_definitions
+  effet: '-'
+  retour: ±
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'au sein du couple économie-convention : la dette qui monte fait baisser la note, qui renchérit la dette'
+- de: recoltes_catastrophes
+  vers: matieres_premieres
+  effet: '-'
+  delai: saisons
+  force: moyenne
+  intensite:
+    mesure: ampleur des récoltes perdues ou des destructions
+    regle: seuil
+  coupure: assurance et aide
+  statut: a_verifier
+  texte: une sécheresse ou un cyclone coupe les recettes d'exportation agricoles
+- de: recoltes_catastrophes
+  vers: dette_publique
+  effet: '-'
+  delai: mois
+  force: moyenne
+  intensite:
+    mesure: coût des destructions rapporté à la taille de l'économie
+    regle: seuil
+  coupure: clauses de suspension en cas de catastrophe
+  statut: a_verifier
+  texte: une catastrophe majeure creuse la dette d'un petit pays d'un coup
+- de: gisements
+  vers: matieres_premieres
+  effet: +
+  delai: années
+  force: forte
+  coupure: chute des prix mondiaux
+  statut: a_verifier
+  texte: les gisements font les recettes, mais attachent le pays aux cycles des prix
 ponts:
-  - {depuis: "monnaies", vers: "inflation-mondiale:monnaies", nature: "un dollar fort serre les pays endettés en dollars"}
-  - {depuis: "dette_publique", vers: "inflation-mondiale:banques_centrales", nature: "les taux de la Réserve fédérale font le coût de la dette en dollars"}
-  - {depuis: "matieres_premieres", vers: "energie-mondiale:prix", nature: "les prix de l'énergie pour les exportateurs et les importateurs"}
-  - {depuis: "inflation_locale", vers: "alimentation-mondiale:prix", nature: "le prix du blé et du riz importés"}
-  - {depuis: "creanciers", vers: "economie-chinoise:exterieur", nature: "la Chine, grand prêteur bilatéral"}
-  - {depuis: "banques", vers: "crises-bancaires:depots", nature: "faillites et fermetures de banques (exemple du tournoi : Paraguay)"}
-  - {depuis: "politique_interieure", vers: "elections-amerique-latine:scrutins", nature: "élections et ajustements en Amérique latine"}
+- depuis: monnaies
+  vers: inflation-mondiale:monnaies
+  nature: un dollar fort serre les pays endettés en dollars
+- depuis: dette_publique
+  vers: inflation-mondiale:banques_centrales
+  nature: les taux de la Réserve fédérale font le coût de la dette en dollars
+- depuis: matieres_premieres
+  vers: energie-mondiale:prix
+  nature: les prix de l'énergie pour les exportateurs et les importateurs
+- depuis: inflation_locale
+  vers: alimentation-mondiale:prix
+  nature: le prix du blé et du riz importés
+- depuis: creanciers
+  vers: economie-chinoise:exterieur
+  nature: la Chine, grand prêteur bilatéral
+- depuis: banques
+  vers: crises-bancaires:depots
+  nature: 'faillites et fermetures de banques (exemple du tournoi : Paraguay)'
+- depuis: politique_interieure
+  vers: elections-amerique-latine:scrutins
+  nature: élections et ajustements en Amérique latine

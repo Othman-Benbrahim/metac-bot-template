@@ -1,180 +1,664 @@
-theme: "iran-nucleaire"
-nom: "Programme nucléaire iranien et négociations"
+theme: iran-nucleaire
+nom: Programme nucléaire iranien et négociations
 declaration:
-  but: "comprendre ce qui fait avancer, geler ou rompre les négociations sur le programme nucléaire iranien, et ce que cela transmet aux sanctions, à Ormuz et aux marchés (questions du tournoi sur un accord États-Unis–Iran, les inspections, les sanctions)"
-  limites: "dedans les négociations, les inspections et la vérification, les sanctions liées au programme, les positions des puissances et des voisins, la politique intérieure iranienne en agrégat ; dehors tout détail technique du programme (procédés, installations, armement), la guerre au Levant en elle-même (thème voisin, relié par des ponts)"
-  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; niveau institutionnel et diplomatique seulement"
-  date: "2026-11-19"
-  espace: "l'Iran, les capitales négociatrices, Vienne (agence de vérification), New York (Conseil de sécurité), la région du Golfe"
-  temps: "de la déclaration du jour au cycle de plusieurs années ; mémoire de l'accord de 2015, du retrait américain de 2018 et des rondes suivantes (à vérifier)"
-  vitesse: "le jour (déclarations), la semaine (rondes de négociation), le trimestre (rapports de vérification), l'année (régimes de sanctions)"
-  taille: "une délégation, un État, le système international de non-prolifération"
+  but: comprendre ce qui fait avancer, geler ou rompre les négociations sur le programme nucléaire iranien, et ce que cela transmet aux sanctions, à Ormuz et aux marchés (questions du tournoi sur un accord
+    États-Unis–Iran, les inspections, les sanctions)
+  limites: dedans les négociations, les inspections et la vérification, les sanctions liées au programme, les positions des puissances et des voisins, la politique intérieure iranienne en agrégat ; dehors
+    tout détail technique du programme (procédés, installations, armement), la guerre au Levant en elle-même (thème voisin, relié par des ponts)
+  observateur: notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; niveau institutionnel et diplomatique seulement
+  date: '2026-11-19'
+  espace: l'Iran, les capitales négociatrices, Vienne (agence de vérification), New York (Conseil de sécurité), la région du Golfe
+  temps: de la déclaration du jour au cycle de plusieurs années ; mémoire de l'accord de 2015, du retrait américain de 2018 et des rondes suivantes (à vérifier)
+  vitesse: le jour (déclarations), la semaine (rondes de négociation), le trimestre (rapports de vérification), l'année (régimes de sanctions)
+  taille: une délégation, un État, le système international de non-prolifération
 compartiments:
-  - id: "negociations"
-    organisation: "geopolitique"
-    nom: "Négociations"
-    elements: ["rondes de discussions directes ou indirectes", "médiateurs", "propositions et contre-propositions", "accords intérimaires"]
-    acteurs:
-      - {nom: "une délégation de négociateurs", taille: "micro", espace: "site", vitesse: "jours", organisation: "statut", facette: "collectif"}
-      - {nom: "Oman et le Qatar comme médiateurs", taille: "méso", espace: "région", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "capitales et lieux de rencontre", temps: "rondes datées", vitesse: "semaines", taille: "méso à macro"}
-    traces:
-      - {source: "ton des gestes des États-Unis envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:IRN"}
-      - {source: "ton des gestes de l'Iran envers les États-Unis (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:IRN:USA"}
-      - {source: "routines officielles des ministères", statut: "collecte", fichier: "collecte_routines.py"}
-  - id: "verification"
-    organisation: "statut"
-    nom: "Vérification et inspections"
-    elements: ["agence internationale de vérification", "accès des inspecteurs", "rapports trimestriels", "résolutions de son conseil des gouverneurs"]
-    acteurs:
-      - {nom: "Agence internationale de l'énergie atomique", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "Vienne et sites déclarés", temps: "rapports trimestriels ; réunions du conseil", vitesse: "trimestre", taille: "macro"}
-    traces:
-      - {source: "rapports publics de l'Agence internationale de l'énergie atomique", statut: "a_brancher"}
-  - id: "sanctions"
-    organisation: "geopolitique"
-    nom: "Sanctions"
-    elements: ["sanctions américaines primaires et secondaires", "sanctions européennes", "mécanisme de retour des sanctions de l'ONU (à vérifier)", "exemptions"]
-    niveau: {espace: "juridictions", temps: "décisions datées ; régimes durables", vitesse: "semaines à années", taille: "macro"}
-    traces:
-      - {source: "listes de sanctions visant l'Iran", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:IR"}
-      - {source: "Federal Register", statut: "collecte", fichier: "collecte_federal_register.py"}
-  - id: "pouvoir_iranien"
-    organisation: "statut"
-    nom: "Pouvoir iranien"
-    elements: ["Guide suprême", "présidence et gouvernement", "Parlement", "Gardiens de la révolution", "équilibre entre courants (en agrégat)"]
-    acteurs:
-      - {nom: "Iran (État)", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
-      - {nom: "le Parlement iranien", taille: "méso", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
-      - {nom: "la fonction de Guide suprême (pouvoirs, règles de succession)", taille: "macro", espace: "pays", vitesse: "années", organisation: "statut", facette: "statut"}
-      - {nom: "le Guide suprême en personne (âge, santé, déclarations publiques)", taille: "micro", espace: "pays", vitesse: "mois", organisation: "personne", facette: "personne"}
-      - {nom: "l'idéologie de la République islamique", taille: "macro", espace: "pays", vitesse: "décennie", organisation: "ideologie", facette: "ideologie"}
-      - {nom: "l'entourage du pouvoir (conseils, institutions sécuritaires, en agrégat)", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
-    niveau: {espace: "Iran", temps: "mandats ; successions", vitesse: "semaines à années", taille: "macro"}
-    traces:
-      - {source: "chaînes Telegram publiques", statut: "collecte", fichier: "collecte_telegram.py"}
-  - id: "societe_iranienne"
-    organisation: "societe"
-    nom: "Société et économie iraniennes"
-    elements: ["inflation et monnaie", "chômage", "contestation", "accès à internet", "stress hydrique"]
-    acteurs:
-      - {nom: "un ménage iranien", taille: "micro", espace: "local", vitesse: "mois", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "Iran", temps: "mois à années", vitesse: "mois ; jours en crise", taille: "macro"}
-    traces:
-      - {source: "coupures et censure d'internet en Iran (OONI)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IR"}
-      - {source: "anomalie de température à Téhéran (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:teheran"}
-  - id: "etats_unis"
-    organisation: "geopolitique"
-    nom: "États-Unis"
-    elements: ["exécutif", "Congrès", "pression maximale ou détente", "calendrier politique"]
-    acteurs:
-      - {nom: "États-Unis (exécutif)", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "statut"}
-      - {nom: "Congrès américain", taille: "méso", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "mandats ; échéances électorales", vitesse: "semaines à mois", taille: "macro"}
-    traces:
-      - {source: "réunions et nominations du Congrès", statut: "collecte", fichier: "collecte_congres.py"}
-      - {source: "Federal Register", statut: "collecte", fichier: "collecte_federal_register.py"}
-  - id: "europe"
-    organisation: "geopolitique"
-    nom: "Europe (France, Allemagne, Royaume-Uni)"
-    elements: ["signataires européens de l'accord de 2015", "diplomatie de médiation", "sanctions européennes"]
-    acteurs:
-      - {nom: "France, Allemagne et Royaume-Uni (en groupe)", taille: "macro", espace: "continent", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "Europe", temps: "réunions diplomatiques", vitesse: "semaines à mois", taille: "macro"}
-    traces:
-      - {source: "routines officielles (Commission européenne, Élysée)", statut: "collecte", fichier: "collecte_routines.py"}
-  - id: "russie_chine"
-    organisation: "geopolitique"
-    nom: "Russie et Chine"
-    elements: ["membres permanents du Conseil de sécurité", "partenaires économiques de l'Iran", "veto"]
-    acteurs:
-      - {nom: "Chine", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-      - {nom: "Russie", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "alliances de long terme", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "ton des gestes de la Chine envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:CHN:IRN"}
-  - id: "voisins"
-    organisation: "geopolitique"
-    nom: "Voisins régionaux"
-    elements: ["Israël", "Arabie saoudite", "Émirats arabes unis", "perception de la menace", "normalisations régionales"]
-    acteurs:
-      - {nom: "Israël", taille: "macro", espace: "région", vitesse: "jours", organisation: "geopolitique", facette: "collectif"}
-      - {nom: "Arabie saoudite", taille: "macro", espace: "région", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "région", temps: "incidents ; alignements de long terme", vitesse: "jours à années", taille: "macro"}
-    traces:
-      - {source: "ton des gestes d'Israël envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:ISR:IRN"}
-  - id: "conseil_securite"
-    organisation: "convention"
-    nom: "Conseil de sécurité et droit international"
-    elements: ["résolutions", "traité de non-prolifération", "mécanismes de règlement des différends", "calendriers d'expiration (à vérifier)"]
-    niveau: {espace: "New York et juridictions", temps: "textes durables ; échéances datées", vitesse: "mois à années", taille: "macro"}
-    traces:
-      - {source: "documents publics du Conseil de sécurité de l'ONU", statut: "a_brancher"}
-  - id: "recits"
-    organisation: "ideologie"
-    nom: "Récits et signaux"
-    elements: ["déclarations officielles", "menaces et lignes rouges", "démentis", "couverture médiatique"]
-    niveau: {espace: "médiatique mondial", temps: "cycle de l'information", vitesse: "heures à jours", taille: "micro à macro"}
-    traces:
-      - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
-      - {source: "chaînes Telegram publiques", statut: "collecte", fichier: "collecte_telegram.py"}
-  - id: "surete_atomique"
-    organisation: "atomique"
-    nom: "Sûreté atomique civile (niveau institutionnel)"
-    elements: ["sûreté des installations nucléaires civiles", "risque de contamination en cas d'accident ou de dommage", "gestion des déchets", "normes et missions de sûreté de l'AIEA"]
-    acteurs:
-      - {nom: "une centrale ou un réacteur civil (en général)", taille: "méso", espace: "site", vitesse: "années", organisation: "atomique", facette: "non_humain"}
-      - {nom: "l'autorité de sûreté nationale", taille: "méso", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "site à région (contamination)", temps: "décennies ; demi-vies longues", vitesse: "années ; heures en accident", taille: "micro à méso"}
-    traces:
-      - {source: "rapports publics de l'AIEA (sûreté et vérification)", statut: "a_brancher"}
-  - id: "relief_sites"
-    organisation: "relief"
-    nom: "Relief montagneux (fait géographique général)"
-    elements: ["plateau entouré de chaînes (Zagros, Elbourz)", "installations sensibles parfois abritées sous le relief (fait général, sans localisation)"]
-    acteurs:
-      - {nom: "les chaînes du Zagros et de l'Elbourz", taille: "macro", espace: "pays", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
-    niveau: {espace: "pays", temps: "permanent", vitesse: "millénaire", taille: "macro"}
-    traces:
-      - {source: "modèles numériques de terrain publics", statut: "a_brancher"}
-  - id: "sismicite"
-    organisation: "mineral"
-    nom: "Sismicité"
-    elements: ["séismes fréquents sur le plateau iranien", "failles actives"]
-    acteurs:
-      - {nom: "une faille active", taille: "méso", espace: "région", vitesse: "siècle", organisation: "mineral", facette: "non_humain"}
-    niveau: {espace: "pays", temps: "siècles d'accumulation", vitesse: "siècle ; seconde (séisme)", taille: "méso à macro"}
-    traces:
-      - {source: "catalogue public des séismes (USGS)", statut: "a_brancher"}
+- id: negociations
+  organisation: geopolitique
+  nom: Négociations
+  elements:
+  - rondes de discussions directes ou indirectes
+  - médiateurs
+  - propositions et contre-propositions
+  - accords intérimaires
+  acteurs:
+  - nom: une délégation de négociateurs
+    taille: micro
+    espace: site
+    vitesse: jours
+    organisation: statut
+    facette: collectif
+  - nom: Oman et le Qatar comme médiateurs
+    taille: méso
+    espace: région
+    vitesse: semaines
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: capitales et lieux de rencontre
+    temps: rondes datées
+    vitesse: semaines
+    taille: méso à macro
+  traces:
+  - source: ton des gestes des États-Unis envers l'Iran (GDELT)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: dyade:USA:IRN
+  - source: ton des gestes de l'Iran envers les États-Unis (GDELT)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: dyade:IRN:USA
+  - source: routines officielles des ministères
+    statut: collecte
+    fichier: collecte_routines.py
+- id: verification
+  organisation: statut
+  nom: Vérification et inspections
+  elements:
+  - agence internationale de vérification
+  - accès des inspecteurs
+  - rapports trimestriels
+  - résolutions de son conseil des gouverneurs
+  acteurs:
+  - nom: Agence internationale de l'énergie atomique
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: Vienne et sites déclarés
+    temps: rapports trimestriels ; réunions du conseil
+    vitesse: trimestre
+    taille: macro
+  traces:
+  - source: rapports publics de l'Agence internationale de l'énergie atomique
+    statut: a_brancher
+- id: sanctions
+  organisation: geopolitique
+  nom: Sanctions
+  elements:
+  - sanctions américaines primaires et secondaires
+  - sanctions européennes
+  - mécanisme de retour des sanctions de l'ONU (à vérifier)
+  - exemptions
+  niveau:
+    espace: juridictions
+    temps: décisions datées ; régimes durables
+    vitesse: semaines à années
+    taille: macro
+  traces:
+  - source: listes de sanctions visant l'Iran
+    statut: collecte
+    fichier: collecte_sanctions.py
+    adaptateur: sanctions:IR
+  - source: Federal Register
+    statut: collecte
+    fichier: collecte_federal_register.py
+- id: pouvoir_iranien
+  organisation: statut
+  nom: Pouvoir iranien
+  elements:
+  - Guide suprême
+  - présidence et gouvernement
+  - Parlement
+  - Gardiens de la révolution
+  - équilibre entre courants (en agrégat)
+  acteurs:
+  - nom: Iran (État)
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: geopolitique
+    facette: collectif
+  - nom: le Parlement iranien
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  - nom: la fonction de Guide suprême (pouvoirs, règles de succession)
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: statut
+    facette: statut
+  - nom: le Guide suprême en personne (âge, santé, déclarations publiques)
+    taille: micro
+    espace: pays
+    vitesse: mois
+    organisation: personne
+    facette: personne
+  - nom: l'idéologie de la République islamique
+    taille: macro
+    espace: pays
+    vitesse: décennie
+    organisation: ideologie
+    facette: ideologie
+  - nom: l'entourage du pouvoir (conseils, institutions sécuritaires, en agrégat)
+    taille: méso
+    espace: pays
+    vitesse: semaines
+    organisation: entourage
+    facette: collectif
+  niveau:
+    espace: Iran
+    temps: mandats ; successions
+    vitesse: semaines à années
+    taille: macro
+  traces:
+  - source: chaînes Telegram publiques
+    statut: collecte
+    fichier: collecte_telegram.py
+  - source: jours avant la prochaine élection connue en Iran (Wikidata)
+    statut: collecte
+    adaptateur: elections:IR
+  - source: probabilité de violence à 12 mois publiée par ConflictForecast pour l'Iran
+    statut: collecte
+    adaptateur: conflictforecast:IRN
+- id: societe_iranienne
+  organisation: societe
+  nom: Société et économie iraniennes
+  elements:
+  - inflation et monnaie
+  - chômage
+  - contestation
+  - accès à internet
+  - stress hydrique
+  acteurs:
+  - nom: un ménage iranien
+    taille: micro
+    espace: local
+    vitesse: mois
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: Iran
+    temps: mois à années
+    vitesse: mois ; jours en crise
+    taille: macro
+  traces:
+  - source: coupures et censure d'internet en Iran (OONI)
+    statut: collecte
+    fichier: collecte_ooni.py
+    adaptateur: ooni:IR
+  - source: anomalie de température à Téhéran (Open-Meteo)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:teheran
+  - source: coupures d'internet en Iran (Cloudflare Radar)
+    statut: collecte
+    adaptateur: radar:IR
+  - source: manifestations par jour en Iran (GDELT)
+    statut: collecte
+    adaptateur: manifestations:IR
+- id: etats_unis
+  organisation: geopolitique
+  nom: États-Unis
+  elements:
+  - exécutif
+  - Congrès
+  - pression maximale ou détente
+  - calendrier politique
+  acteurs:
+  - nom: États-Unis (exécutif)
+    taille: macro
+    espace: mondial
+    vitesse: semaines
+    organisation: statut
+    facette: statut
+  - nom: Congrès américain
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: mandats ; échéances électorales
+    vitesse: semaines à mois
+    taille: macro
+  traces:
+  - source: réunions et nominations du Congrès
+    statut: collecte
+    fichier: collecte_congres.py
+  - source: Federal Register
+    statut: collecte
+    fichier: collecte_federal_register.py
+  - source: événements conflictuels Iran–États-Unis par mois (GDELT)
+    statut: collecte
+    adaptateur: paire_mois:IR:US:conflit
+- id: europe
+  organisation: geopolitique
+  nom: Europe (France, Allemagne, Royaume-Uni)
+  elements:
+  - signataires européens de l'accord de 2015
+  - diplomatie de médiation
+  - sanctions européennes
+  acteurs:
+  - nom: France, Allemagne et Royaume-Uni (en groupe)
+    taille: macro
+    espace: continent
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: Europe
+    temps: réunions diplomatiques
+    vitesse: semaines à mois
+    taille: macro
+  traces:
+  - source: routines officielles (Commission européenne, Élysée)
+    statut: collecte
+    fichier: collecte_routines.py
+- id: russie_chine
+  organisation: geopolitique
+  nom: Russie et Chine
+  elements:
+  - membres permanents du Conseil de sécurité
+  - partenaires économiques de l'Iran
+  - veto
+  acteurs:
+  - nom: Chine
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  - nom: Russie
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: alliances de long terme
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: ton des gestes de la Chine envers l'Iran (GDELT)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: dyade:CHN:IRN
+- id: voisins
+  organisation: geopolitique
+  nom: Voisins régionaux
+  elements:
+  - Israël
+  - Arabie saoudite
+  - Émirats arabes unis
+  - perception de la menace
+  - normalisations régionales
+  acteurs:
+  - nom: Israël
+    taille: macro
+    espace: région
+    vitesse: jours
+    organisation: geopolitique
+    facette: collectif
+  - nom: Arabie saoudite
+    taille: macro
+    espace: région
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: région
+    temps: incidents ; alignements de long terme
+    vitesse: jours à années
+    taille: macro
+  traces:
+  - source: ton des gestes d'Israël envers l'Iran (GDELT)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: dyade:ISR:IRN
+- id: conseil_securite
+  organisation: convention
+  nom: Conseil de sécurité et droit international
+  elements:
+  - résolutions
+  - traité de non-prolifération
+  - mécanismes de règlement des différends
+  - calendriers d'expiration (à vérifier)
+  niveau:
+    espace: New York et juridictions
+    temps: textes durables ; échéances datées
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: documents publics du Conseil de sécurité de l'ONU
+    statut: a_brancher
+- id: recits
+  organisation: ideologie
+  nom: Récits et signaux
+  elements:
+  - déclarations officielles
+  - menaces et lignes rouges
+  - démentis
+  - couverture médiatique
+  niveau:
+    espace: médiatique mondial
+    temps: cycle de l'information
+    vitesse: heures à jours
+    taille: micro à macro
+  traces:
+  - source: GDELT
+    statut: collecte
+    fichier: collecte_gdelt.py
+  - source: chaînes Telegram publiques
+    statut: collecte
+    fichier: collecte_telegram.py
+- id: surete_atomique
+  organisation: atomique
+  nom: Sûreté atomique civile (niveau institutionnel)
+  elements:
+  - sûreté des installations nucléaires civiles
+  - risque de contamination en cas d'accident ou de dommage
+  - gestion des déchets
+  - normes et missions de sûreté de l'AIEA
+  acteurs:
+  - nom: une centrale ou un réacteur civil (en général)
+    taille: méso
+    espace: site
+    vitesse: années
+    organisation: atomique
+    facette: non_humain
+  - nom: l'autorité de sûreté nationale
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: site à région (contamination)
+    temps: décennies ; demi-vies longues
+    vitesse: années ; heures en accident
+    taille: micro à méso
+  traces:
+  - source: rapports publics de l'AIEA (sûreté et vérification)
+    statut: a_brancher
+- id: relief_sites
+  organisation: relief
+  nom: Relief montagneux (fait géographique général)
+  elements:
+  - plateau entouré de chaînes (Zagros, Elbourz)
+  - installations sensibles parfois abritées sous le relief (fait général, sans localisation)
+  acteurs:
+  - nom: les chaînes du Zagros et de l'Elbourz
+    taille: macro
+    espace: pays
+    vitesse: millénaire
+    organisation: relief
+    facette: non_humain
+  niveau:
+    espace: pays
+    temps: permanent
+    vitesse: millénaire
+    taille: macro
+  traces:
+  - source: modèles numériques de terrain publics
+    statut: a_brancher
+- id: sismicite
+  organisation: mineral
+  nom: Sismicité
+  elements:
+  - séismes fréquents sur le plateau iranien
+  - failles actives
+  acteurs:
+  - nom: une faille active
+    taille: méso
+    espace: région
+    vitesse: siècle
+    organisation: mineral
+    facette: non_humain
+  niveau:
+    espace: pays
+    temps: siècles d'accumulation
+    vitesse: siècle ; seconde (séisme)
+    taille: méso à macro
+  traces:
+  - source: catalogue public des séismes (USGS)
+    statut: a_brancher
 relations:
-  - {de: "etats_unis", vers: "pouvoir_iranien", effet: "-", retour: "-", style: "inconnu", delai: "semaines", force: "forte", intensite: {mesure: "ton des gestes entre les deux gouvernements (GDELT)", regle: "proportionnelle"}, coupure: "ouverture d'un canal de négociation", statut: "a_verifier", texte: "rivalité de long terme ; chacun réduit les options de l'autre"}
-  - {de: "etats_unis", vers: "sanctions", effet: "+", delai: "semaines", force: "forte", coupure: "accord ou exemptions", statut: "a_verifier", texte: "l'exécutif américain décide l'essentiel des sanctions primaires et secondaires"}
-  - {de: "sanctions", vers: "societe_iranienne", effet: "-", delai: "mois", force: "forte", intensite: {mesure: "nombre de désignations récentes visant l'Iran", regle: "saturation"}, coupure: "commerce de contournement", statut: "a_verifier", texte: "les sanctions pèsent sur la monnaie, les prix et l'emploi ; l'effet plafonne quand tout est déjà sanctionné"}
-  - {de: "societe_iranienne", vers: "pouvoir_iranien", effet: "±", retour: "-", delai: "mois", force: "moyenne", intensite: {mesure: "coupures d'internet et contestation", regle: "seuil"}, coupure: "répression ou concessions économiques", statut: "a_verifier", texte: "la pression sociale pousse le pouvoir soit vers un accord qui allège les sanctions, soit vers le durcissement"}
-  - {de: "pouvoir_iranien", vers: "negociations", effet: "±", retour: "±", delai: "semaines", force: "forte", coupure: "consensus interne", statut: "a_verifier", texte: "les rapports de force internes fixent la marge des négociateurs"}
-  - {de: "etats_unis", vers: "negociations", effet: "±", retour: "±", delai: "semaines", force: "forte", coupure: "calendrier électoral américain", statut: "a_verifier", texte: "la ligne de l'exécutif américain ouvre ou ferme la voie d'un accord"}
-  - {de: "negociations", vers: "sanctions", effet: "-", delai: "mois", force: "forte", intensite: {mesure: "rondes tenues récemment", regle: "seuil"}, coupure: "opposition au Congrès ou rupture", statut: "a_verifier", texte: "un accord ne se traduit en levée de sanctions qu'au-delà d'un seuil d'engagements vérifiés"}
-  - {de: "verification", vers: "negociations", effet: "±", delai: "trimestre", force: "forte", coupure: "accès suspendu", statut: "a_verifier", texte: "les rapports de l'agence donnent la base factuelle commune, ou la mettent en doute"}
-  - {de: "pouvoir_iranien", vers: "verification", effet: "±", retour: "±", delai: "semaines", force: "forte", coupure: "accord d'accès", statut: "a_verifier", texte: "l'accès des inspecteurs sert de levier dans les deux sens"}
-  - {de: "verification", vers: "conseil_securite", effet: "+", delai: "mois", force: "moyenne", coupure: "veto", statut: "a_verifier", texte: "une résolution du conseil de l'agence peut porter le dossier au Conseil de sécurité"}
-  - {de: "russie_chine", vers: "conseil_securite", effet: "-", forme: "contrainte", delai: "semaines", force: "forte", coupure: "abstention", statut: "a_verifier", texte: "le veto possible de la Russie ou de la Chine borne ce que le Conseil peut décider"}
-  - {de: "russie_chine", vers: "societe_iranienne", effet: "+", retour: "+", forme: "mutualisme", delai: "mois", force: "moyenne", coupure: "sanctions secondaires sur les acheteurs", statut: "a_verifier", texte: "commerce et soutien diplomatique qui amortissent les sanctions"}
-  - {de: "europe", vers: "negociations", effet: "+", delai: "mois", force: "moyenne", coupure: "alignement sur Washington ou retour des sanctions", statut: "a_verifier", texte: "les Européens servent de médiateurs et de signataires, avec une marge propre limitée"}
-  - {de: "voisins", vers: "etats_unis", effet: "±", delai: "semaines", force: "moyenne", coupure: "normalisations régionales", statut: "a_verifier", texte: "Israël et les monarchies du Golfe pèsent sur la ligne américaine, dans un sens ou dans l'autre"}
-  - {de: "recits", vers: "negociations", effet: "±", delai: "jours", force: "faible", intensite: {mesure: "tension médiatique du moment", regle: "proportionnelle"}, coupure: "canaux discrets", statut: "a_verifier", texte: "lignes rouges publiques et démentis compliquent ou préparent les concessions"}
-  - {de: "sismicite", vers: "surete_atomique", effet: "-", delai: "permanent", force: "moyenne", intensite: {mesure: "magnitude et proximité d'un séisme", regle: "seuil"}, coupure: "normes parasismiques", statut: "a_verifier", texte: "un pays sismique fait peser un risque de sûreté sur ses installations ; le passage du niveau minéral au niveau atomique demande un séisme fort"}
-  - {de: "sismicite", vers: "societe_iranienne", effet: "-", delai: "heures", force: "forte", intensite: {mesure: "magnitude près d'une ville", regle: "seuil"}, coupure: "constructions parasismiques", statut: "a_verifier", texte: "un grand séisme frappe la société d'un coup"}
-  - {de: "surete_atomique", vers: "verification", effet: "±", delai: "semaines", force: "moyenne", intensite: {mesure: "incident de sûreté déclaré", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "un incident de sûreté attire missions et rapports de l'AIEA"}
-  - {de: "surete_atomique", vers: "voisins", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "risque de contamination transfrontière", regle: "seuil"}, coupure: "distance et vents", statut: "a_verifier", texte: "une contamination ne s'arrête pas aux frontières : les voisins s'en inquiètent au-delà d'un seuil"}
-  - {de: "relief_sites", vers: "verification", effet: "-", forme: "contrainte", delai: "permanent", force: "moyenne", coupure: "accès négocié", statut: "a_verifier", texte: "ce qui est abrité sous le relief est plus difficile à vérifier de l'extérieur"}
-  - {de: "europe", vers: "etats_unis", effet: "+", retour: "+", style: "inconnu", delai: "semaines", force: "moyenne", coupure: "désaccords transatlantiques", statut: "a_verifier", texte: "relation propre au niveau géopolitique : coordination occidentale (mutualisme), plus ou moins serrée"}
-  - {de: "russie_chine", vers: "etats_unis", effet: "-", retour: "-", style: "inconnu", delai: "mois", force: "moyenne", coupure: "intérêts communs ponctuels", statut: "a_verifier", texte: "relation propre au niveau géopolitique : rivalité des puissances qui borne toute solution au Conseil"}
+- de: etats_unis
+  vers: pouvoir_iranien
+  effet: '-'
+  retour: '-'
+  style: inconnu
+  delai: semaines
+  force: forte
+  intensite:
+    mesure: ton des gestes entre les deux gouvernements (GDELT)
+    regle: proportionnelle
+  coupure: ouverture d'un canal de négociation
+  statut: a_verifier
+  texte: rivalité de long terme ; chacun réduit les options de l'autre
+- de: etats_unis
+  vers: sanctions
+  effet: +
+  delai: semaines
+  force: forte
+  coupure: accord ou exemptions
+  statut: a_verifier
+  texte: l'exécutif américain décide l'essentiel des sanctions primaires et secondaires
+- de: sanctions
+  vers: societe_iranienne
+  effet: '-'
+  delai: mois
+  force: forte
+  intensite:
+    mesure: nombre de désignations récentes visant l'Iran
+    regle: saturation
+  coupure: commerce de contournement
+  statut: a_verifier
+  texte: les sanctions pèsent sur la monnaie, les prix et l'emploi ; l'effet plafonne quand tout est déjà sanctionné
+- de: societe_iranienne
+  vers: pouvoir_iranien
+  effet: ±
+  retour: '-'
+  delai: mois
+  force: moyenne
+  intensite:
+    mesure: coupures d'internet et contestation
+    regle: seuil
+  coupure: répression ou concessions économiques
+  statut: a_verifier
+  texte: la pression sociale pousse le pouvoir soit vers un accord qui allège les sanctions, soit vers le durcissement
+- de: pouvoir_iranien
+  vers: negociations
+  effet: ±
+  retour: ±
+  delai: semaines
+  force: forte
+  coupure: consensus interne
+  statut: a_verifier
+  texte: les rapports de force internes fixent la marge des négociateurs
+- de: etats_unis
+  vers: negociations
+  effet: ±
+  retour: ±
+  delai: semaines
+  force: forte
+  coupure: calendrier électoral américain
+  statut: a_verifier
+  texte: la ligne de l'exécutif américain ouvre ou ferme la voie d'un accord
+- de: negociations
+  vers: sanctions
+  effet: '-'
+  delai: mois
+  force: forte
+  intensite:
+    mesure: rondes tenues récemment
+    regle: seuil
+  coupure: opposition au Congrès ou rupture
+  statut: a_verifier
+  texte: un accord ne se traduit en levée de sanctions qu'au-delà d'un seuil d'engagements vérifiés
+- de: verification
+  vers: negociations
+  effet: ±
+  delai: trimestre
+  force: forte
+  coupure: accès suspendu
+  statut: a_verifier
+  texte: les rapports de l'agence donnent la base factuelle commune, ou la mettent en doute
+- de: pouvoir_iranien
+  vers: verification
+  effet: ±
+  retour: ±
+  delai: semaines
+  force: forte
+  coupure: accord d'accès
+  statut: a_verifier
+  texte: l'accès des inspecteurs sert de levier dans les deux sens
+- de: verification
+  vers: conseil_securite
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: veto
+  statut: a_verifier
+  texte: une résolution du conseil de l'agence peut porter le dossier au Conseil de sécurité
+- de: russie_chine
+  vers: conseil_securite
+  effet: '-'
+  forme: contrainte
+  delai: semaines
+  force: forte
+  coupure: abstention
+  statut: a_verifier
+  texte: le veto possible de la Russie ou de la Chine borne ce que le Conseil peut décider
+- de: russie_chine
+  vers: societe_iranienne
+  effet: +
+  retour: +
+  forme: mutualisme
+  delai: mois
+  force: moyenne
+  coupure: sanctions secondaires sur les acheteurs
+  statut: a_verifier
+  texte: commerce et soutien diplomatique qui amortissent les sanctions
+- de: europe
+  vers: negociations
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: alignement sur Washington ou retour des sanctions
+  statut: a_verifier
+  texte: les Européens servent de médiateurs et de signataires, avec une marge propre limitée
+- de: voisins
+  vers: etats_unis
+  effet: ±
+  delai: semaines
+  force: moyenne
+  coupure: normalisations régionales
+  statut: a_verifier
+  texte: Israël et les monarchies du Golfe pèsent sur la ligne américaine, dans un sens ou dans l'autre
+- de: recits
+  vers: negociations
+  effet: ±
+  delai: jours
+  force: faible
+  intensite:
+    mesure: tension médiatique du moment
+    regle: proportionnelle
+  coupure: canaux discrets
+  statut: a_verifier
+  texte: lignes rouges publiques et démentis compliquent ou préparent les concessions
+- de: sismicite
+  vers: surete_atomique
+  effet: '-'
+  delai: permanent
+  force: moyenne
+  intensite:
+    mesure: magnitude et proximité d'un séisme
+    regle: seuil
+  coupure: normes parasismiques
+  statut: a_verifier
+  texte: un pays sismique fait peser un risque de sûreté sur ses installations ; le passage du niveau minéral au niveau atomique demande un séisme fort
+- de: sismicite
+  vers: societe_iranienne
+  effet: '-'
+  delai: heures
+  force: forte
+  intensite:
+    mesure: magnitude près d'une ville
+    regle: seuil
+  coupure: constructions parasismiques
+  statut: a_verifier
+  texte: un grand séisme frappe la société d'un coup
+- de: surete_atomique
+  vers: verification
+  effet: ±
+  delai: semaines
+  force: moyenne
+  intensite:
+    mesure: incident de sûreté déclaré
+    regle: seuil
+  coupure: inconnue
+  statut: a_verifier
+  texte: un incident de sûreté attire missions et rapports de l'AIEA
+- de: surete_atomique
+  vers: voisins
+  effet: '-'
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: risque de contamination transfrontière
+    regle: seuil
+  coupure: distance et vents
+  statut: a_verifier
+  texte: 'une contamination ne s''arrête pas aux frontières : les voisins s''en inquiètent au-delà d''un seuil'
+- de: relief_sites
+  vers: verification
+  effet: '-'
+  forme: contrainte
+  delai: permanent
+  force: moyenne
+  coupure: accès négocié
+  statut: a_verifier
+  texte: ce qui est abrité sous le relief est plus difficile à vérifier de l'extérieur
+- de: europe
+  vers: etats_unis
+  effet: +
+  retour: +
+  style: inconnu
+  delai: semaines
+  force: moyenne
+  coupure: désaccords transatlantiques
+  statut: a_verifier
+  texte: 'relation propre au niveau géopolitique : coordination occidentale (mutualisme), plus ou moins serrée'
+- de: russie_chine
+  vers: etats_unis
+  effet: '-'
+  retour: '-'
+  style: inconnu
+  delai: mois
+  force: moyenne
+  coupure: intérêts communs ponctuels
+  statut: a_verifier
+  texte: 'relation propre au niveau géopolitique : rivalité des puissances qui borne toute solution au Conseil'
 ponts:
-  - {depuis: "negociations", vers: "ormuz:interieur_iran", nature: "le programme nucléaire et les sanctions se négocient ensemble"}
-  - {depuis: "sanctions", vers: "ormuz:droit", nature: "les sanctions liées au programme encadrent les exportations passant par Ormuz"}
-  - {depuis: "sanctions", vers: "energie-mondiale:decisions", nature: "les sanctions sur le pétrole iranien entrent dans l'offre mondiale"}
-  - {depuis: "voisins", vers: "guerre-levant:iran", nature: "l'Iran et ses alliés dans les fronts régionaux"}
-  - {depuis: "russie_chine", vers: "rivalite-sino-americaine:energie", nature: "la Chine premier acheteur du pétrole iranien (à vérifier)"}
-  - {depuis: "russie_chine", vers: "russie-ukraine:sanctions", nature: "Russie et Iran, deux économies sous sanctions qui commercent"}
-  - {depuis: "etats_unis", vers: "politique-americaine:energie", nature: "pression maximale ou détente, selon la politique intérieure américaine"}
-  - {depuis: "conseil_securite", vers: "non-proliferation:regime", nature: "le régime mondial de non-prolifération"}
+- depuis: negociations
+  vers: ormuz:interieur_iran
+  nature: le programme nucléaire et les sanctions se négocient ensemble
+- depuis: sanctions
+  vers: ormuz:droit
+  nature: les sanctions liées au programme encadrent les exportations passant par Ormuz
+- depuis: sanctions
+  vers: energie-mondiale:decisions
+  nature: les sanctions sur le pétrole iranien entrent dans l'offre mondiale
+- depuis: voisins
+  vers: guerre-levant:iran
+  nature: l'Iran et ses alliés dans les fronts régionaux
+- depuis: russie_chine
+  vers: rivalite-sino-americaine:energie
+  nature: la Chine premier acheteur du pétrole iranien (à vérifier)
+- depuis: russie_chine
+  vers: russie-ukraine:sanctions
+  nature: Russie et Iran, deux économies sous sanctions qui commercent
+- depuis: etats_unis
+  vers: politique-americaine:energie
+  nature: pression maximale ou détente, selon la politique intérieure américaine
+- depuis: conseil_securite
+  vers: non-proliferation:regime
+  nature: le régime mondial de non-prolifération

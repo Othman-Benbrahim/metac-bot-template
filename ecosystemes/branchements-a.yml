@@ -1,51 +1,217 @@
-# Propositions de branchement des sources dormantes, lot A (0.10.323), à appliquer aux fiches : ajouter la trace
-# {source, statut: collecte, fichier, adaptateur} au compartiment indiqué. Extension .yml et non .yaml : ecosystemes.charger
-# lit tous les *.yaml comme des fiches et lèverait KeyError sur ce fichier.
+# Propositions de branchement appliquées par appliquer_branchements.py (compartiments « a_definir » fixés le 2026-11-19).
 branchements:
-  # --- espace aérien
-  - {adaptateur: "avions:US", fiche: "politique-americaine", compartiment: "executif", source: "avions militaires américains visibles (adsb.fi), moyenne quotidienne", raison: "activité visible de l'appareil militaire sous l'autorité de l'exécutif"}
-  - {adaptateur: "avions", fiche: "rivalite-sino-americaine", compartiment: "alliances", source: "avions militaires visibles dans le monde (adsb.fi)", raison: "posture aérienne d'ensemble des puissances et de leurs alliés"}
-  - {adaptateur: "avions:mer", fiche: "transport-maritime", compartiment: "securite", source: "avions militaires visibles au-dessus des mers (adsb.fi)", raison: "patrouilles et surveillance des routes maritimes"}
-  - {adaptateur: "avions:AE", fiche: "ormuz", compartiment: "force", source: "avions militaires visibles au-dessus des Émirats (adsb.fi)", raison: "activité aérienne militaire sur la rive sud du Golfe"}
-  - {adaptateur: "tfr:SECURITY", fiche: "politique-americaine", compartiment: "executif", source: "interdictions de survol de sécurité créées par jour (FAA)", raison: "les déplacements et dispositifs de sécurité de l'exécutif laissent des interdictions datées"}
-  - {adaptateur: "tfr:VIP", fiche: "politique-americaine", compartiment: "entourage", source: "interdictions de survol VIP (FAA)", raison: "déplacements annoncés des plus hauts responsables et de leur suite"}
-  - {adaptateur: "tfr:SPACE OPERATIONS", fiche: "soleil-espace", compartiment: "a_definir", source: "interdictions de survol pour opérations spatiales (FAA)", raison: "rythme des lancements spatiaux américains"}
-  - {adaptateur: "tfr:HAZARDS", fiche: "climat-extremes", compartiment: "exposes", source: "interdictions de survol pour danger (feux, catastrophes ; FAA)", raison: "les catastrophes en cours ferment l'espace aérien au-dessus des zones touchées"}
-  - {adaptateur: "violations", fiche: "russie-ukraine", compartiment: "front", source: "incidents d'atteinte aux droits recensés par ViolationsWatch (tous pays)", raison: "intensité des violences sur les théâtres suivis, dont l'Ukraine"}
-  - {adaptateur: "violations:Ukraine", fiche: "russie-ukraine", compartiment: "front", source: "incidents recensés en Ukraine (ViolationsWatch)", raison: "intensité des violences liées au front"}
-  - {adaptateur: "violations:Palestine", fiche: "guerre-levant", compartiment: "gaza", source: "incidents recensés en Palestine (ViolationsWatch)", raison: "intensité des violences à Gaza et en Cisjordanie"}
-  - {adaptateur: "violations:Yemen", fiche: "guerre-levant", compartiment: "yemen", source: "incidents recensés au Yémen (ViolationsWatch)", raison: "intensité du conflit yéménite, relié à la mer Rouge"}
-  - {adaptateur: "violations:Sudan", fiche: "alimentation-mondiale", compartiment: "importateurs", source: "incidents recensés au Soudan (ViolationsWatch)", raison: "la guerre au Soudan pèse sur un pays importateur en crise alimentaire"}
-  # --- internet
-  - {adaptateur: "radar", fiche: "information-cyber", compartiment: "a_definir", source: "coupures d'internet en cours par jour (Cloudflare Radar, tous pays)", raison: "intensité mondiale des coupures, quelle qu'en soit la cause"}
-  - {adaptateur: "radar:IR", fiche: "ormuz", compartiment: "interieur_iran", source: "coupures d'internet en Iran (Cloudflare Radar)", raison: "les coupures décidées par l'État accompagnent contestation et tension"}
-  - {adaptateur: "radar:IR", fiche: "iran-nucleaire", compartiment: "societe_iranienne", source: "coupures d'internet en Iran (Cloudflare Radar)", raison: "contrôle de la société par le pouvoir"}
-  - {adaptateur: "radar:IQ", fiche: "eau-moyen-orient", compartiment: "etats_riverains", source: "coupures d'internet en Irak (Cloudflare Radar)", raison: "coupures décidées par l'État (examens, contestation) d'un riverain aval du Tigre et de l'Euphrate"}
-  - {adaptateur: "radar:RU", fiche: "russie-ukraine", compartiment: "opinions", source: "coupures d'internet en Russie (Cloudflare Radar)", raison: "contrôle de l'information et effets des frappes sur les réseaux"}
-  - {adaptateur: "radar:UA", fiche: "russie-ukraine", compartiment: "front", source: "coupures d'internet en Ukraine (Cloudflare Radar)", raison: "les frappes sur l'énergie coupent les réseaux"}
-  - {adaptateur: "certificats", fiche: "rivalite-sino-americaine", compartiment: "technologie", source: "nouveaux certificats des laboratoires d'IA (Cert Spotter)", raison: "les nouveaux noms de services annoncent des lancements de produits avant leur annonce"}
-  - {adaptateur: "certificats", fiche: "information-cyber", compartiment: "a_definir", source: "nouveaux certificats des laboratoires d'IA (Cert Spotter)", raison: "infrastructure visible des services numériques"}
-  # --- institutions américaines
-  - {adaptateur: "federal_register", fiche: "politique-americaine", compartiment: "executif", source: "textes déposés en inspection publique au Federal Register par jour", raison: "rythme réglementaire de l'exécutif, visible la veille de la publication"}
-  - {adaptateur: "federal_register:Presidential Document", fiche: "politique-americaine", compartiment: "executif", source: "documents présidentiels déposés au Federal Register", raison: "décrets et proclamations avant leur publication officielle (aucun dans les relevés actuels : série vide tant qu'il n'en paraît pas)"}
-  - {adaptateur: "federal_register:tous:Treasury", fiche: "politique-americaine", compartiment: "sanctions", source: "textes du Trésor déposés au Federal Register", raison: "les sanctions et contrôles passent par le Trésor"}
-  - {adaptateur: "federal_register:tous:Energy", fiche: "politique-americaine", compartiment: "energie", source: "textes du département de l'Énergie déposés au Federal Register", raison: "décisions sur la réserve stratégique et l'énergie"}
-  - {adaptateur: "federal_register:tous:Environmental Protection", fiche: "politique-americaine", compartiment: "climat_risques", source: "textes de l'EPA déposés au Federal Register", raison: "règles environnementales et climatiques"}
-  - {adaptateur: "federal_register:tous:Securities and Exchange", fiche: "politique-americaine", compartiment: "budget", source: "textes de la SEC déposés au Federal Register", raison: "règles des marchés financiers"}
-  - {adaptateur: "congres", fiche: "politique-americaine", compartiment: "congres", source: "réunions de commission du Congrès par date prévue", raison: "activité du Congrès, y compris les auditions à venir"}
-  - {adaptateur: "congres:nominations", fiche: "politique-americaine", compartiment: "entourage", source: "nominations reçues par le Sénat par jour (comptes seulement)", raison: "les nominations recomposent l'entourage indirect de l'exécutif"}
-  - {adaptateur: "tribunaux:scotus", fiche: "politique-americaine", compartiment: "tribunaux", source: "dossiers déposés à la Cour suprême par jour (CourtListener, comptes)", raison: "charge et rythme de la Cour suprême"}
-  - {adaptateur: "tribunaux:cadc", fiche: "politique-americaine", compartiment: "tribunaux", source: "dossiers déposés à la cour d'appel du district de Columbia (CourtListener, comptes)", raison: "c'est la cour des recours contre les agences fédérales"}
-  # --- calendriers
-  - {adaptateur: "elections:US", fiche: "politique-americaine", compartiment: "elections", source: "jours avant la prochaine élection connue aux États-Unis (Wikidata)", raison: "l'approche des scrutins intensifie la politique intérieure"}
-  - {adaptateur: "elections:US", fiche: "calendriers-echeances", compartiment: "a_definir", source: "jours avant la prochaine élection connue aux États-Unis (Wikidata)", raison: "échéance électorale"}
-  - {adaptateur: "elections:IR", fiche: "iran-nucleaire", compartiment: "pouvoir_iranien", source: "jours avant la prochaine élection connue en Iran (Wikidata)", raison: "les échéances électorales pèsent sur la ligne du pouvoir"}
-  - {adaptateur: "elections:BR", fiche: "dette-emergents", compartiment: "politique_interieure", source: "jours avant la prochaine élection connue au Brésil (Wikidata)", raison: "l'approche d'un scrutin relâche ou durcit la politique budgétaire"}
-  - {adaptateur: "memoire:RU", fiche: "russie-ukraine", compartiment: "opinions", source: "jours avant la prochaine date de mémoire en Russie (9 mai…)", raison: "les dates symboliques structurent annonces, défilés et offensives"}
-  - {adaptateur: "memoire:RU", fiche: "calendriers-echeances", compartiment: "a_definir", source: "jours avant la prochaine date de mémoire en Russie", raison: "échéance symbolique"}
-  - {adaptateur: "feries_chine", fiche: "economie-chinoise", compartiment: "consommation", source: "congés publics chinois (dates officielles)", raison: "les congés font bondir la consommation et creusent la production"}
-  - {adaptateur: "feries_chine", fiche: "economie-chinoise", compartiment: "activite", source: "congés publics chinois (dates officielles)", raison: "les usines s'arrêtent pendant les congés, surtout la fête du Printemps"}
-  - {adaptateur: "publications_nbs", fiche: "economie-chinoise", compartiment: "statistiques", source: "publications parues du Bureau national des statistiques chinois", raison: "rythme réel des publications, y compris les retards et les silences"}
-  - {adaptateur: "calendrier_nbs", fiche: "economie-chinoise", compartiment: "statistiques", source: "jours avant la prochaine publication prévue du Bureau des statistiques chinois", raison: "l'écart entre le prévu et le paru révèle les silences statistiques"}
-  - {adaptateur: "calendrier_nbs:ipc", fiche: "inflation-mondiale", compartiment: "statistiques", source: "jours avant la prochaine publication prévue de l'inflation chinoise", raison: "échéance d'un chiffre suivi par les marchés"}
-  - {adaptateur: "calendrier_nbs", fiche: "calendriers-echeances", compartiment: "a_definir", source: "jours avant la prochaine publication prévue du Bureau des statistiques chinois", raison: "échéance statistique"}
+- adaptateur: avions:US
+  fiche: politique-americaine
+  compartiment: executif
+  source: avions militaires américains visibles (adsb.fi), moyenne quotidienne
+  raison: activité visible de l'appareil militaire sous l'autorité de l'exécutif
+- adaptateur: avions
+  fiche: rivalite-sino-americaine
+  compartiment: alliances
+  source: avions militaires visibles dans le monde (adsb.fi)
+  raison: posture aérienne d'ensemble des puissances et de leurs alliés
+- adaptateur: avions:mer
+  fiche: transport-maritime
+  compartiment: securite
+  source: avions militaires visibles au-dessus des mers (adsb.fi)
+  raison: patrouilles et surveillance des routes maritimes
+- adaptateur: avions:AE
+  fiche: ormuz
+  compartiment: force
+  source: avions militaires visibles au-dessus des Émirats (adsb.fi)
+  raison: activité aérienne militaire sur la rive sud du Golfe
+- adaptateur: tfr:SECURITY
+  fiche: politique-americaine
+  compartiment: executif
+  source: interdictions de survol de sécurité créées par jour (FAA)
+  raison: les déplacements et dispositifs de sécurité de l'exécutif laissent des interdictions datées
+- adaptateur: tfr:VIP
+  fiche: politique-americaine
+  compartiment: entourage
+  source: interdictions de survol VIP (FAA)
+  raison: déplacements annoncés des plus hauts responsables et de leur suite
+- adaptateur: tfr:SPACE OPERATIONS
+  fiche: soleil-espace
+  compartiment: satellites
+  source: interdictions de survol pour opérations spatiales (FAA)
+  raison: rythme des lancements spatiaux américains
+- adaptateur: tfr:HAZARDS
+  fiche: climat-extremes
+  compartiment: exposes
+  source: interdictions de survol pour danger (feux, catastrophes ; FAA)
+  raison: les catastrophes en cours ferment l'espace aérien au-dessus des zones touchées
+- adaptateur: violations
+  fiche: russie-ukraine
+  compartiment: front
+  source: incidents d'atteinte aux droits recensés par ViolationsWatch (tous pays)
+  raison: intensité des violences sur les théâtres suivis, dont l'Ukraine
+- adaptateur: violations:Ukraine
+  fiche: russie-ukraine
+  compartiment: front
+  source: incidents recensés en Ukraine (ViolationsWatch)
+  raison: intensité des violences liées au front
+- adaptateur: violations:Palestine
+  fiche: guerre-levant
+  compartiment: gaza
+  source: incidents recensés en Palestine (ViolationsWatch)
+  raison: intensité des violences à Gaza et en Cisjordanie
+- adaptateur: violations:Yemen
+  fiche: guerre-levant
+  compartiment: yemen
+  source: incidents recensés au Yémen (ViolationsWatch)
+  raison: intensité du conflit yéménite, relié à la mer Rouge
+- adaptateur: violations:Sudan
+  fiche: alimentation-mondiale
+  compartiment: importateurs
+  source: incidents recensés au Soudan (ViolationsWatch)
+  raison: la guerre au Soudan pèse sur un pays importateur en crise alimentaire
+- adaptateur: radar
+  fiche: information-cyber
+  compartiment: coupures
+  source: coupures d'internet en cours par jour (Cloudflare Radar, tous pays)
+  raison: intensité mondiale des coupures, quelle qu'en soit la cause
+- adaptateur: radar:IR
+  fiche: ormuz
+  compartiment: interieur_iran
+  source: coupures d'internet en Iran (Cloudflare Radar)
+  raison: les coupures décidées par l'État accompagnent contestation et tension
+- adaptateur: radar:IR
+  fiche: iran-nucleaire
+  compartiment: societe_iranienne
+  source: coupures d'internet en Iran (Cloudflare Radar)
+  raison: contrôle de la société par le pouvoir
+- adaptateur: radar:IQ
+  fiche: eau-moyen-orient
+  compartiment: etats_riverains
+  source: coupures d'internet en Irak (Cloudflare Radar)
+  raison: coupures décidées par l'État (examens, contestation) d'un riverain aval du Tigre et de l'Euphrate
+- adaptateur: radar:RU
+  fiche: russie-ukraine
+  compartiment: opinions
+  source: coupures d'internet en Russie (Cloudflare Radar)
+  raison: contrôle de l'information et effets des frappes sur les réseaux
+- adaptateur: radar:UA
+  fiche: russie-ukraine
+  compartiment: front
+  source: coupures d'internet en Ukraine (Cloudflare Radar)
+  raison: les frappes sur l'énergie coupent les réseaux
+- adaptateur: certificats
+  fiche: rivalite-sino-americaine
+  compartiment: technologie
+  source: nouveaux certificats des laboratoires d'IA (Cert Spotter)
+  raison: les nouveaux noms de services annoncent des lancements de produits avant leur annonce
+- adaptateur: certificats
+  fiche: information-cyber
+  compartiment: infrastructure
+  source: nouveaux certificats des laboratoires d'IA (Cert Spotter)
+  raison: infrastructure visible des services numériques
+- adaptateur: federal_register
+  fiche: politique-americaine
+  compartiment: executif
+  source: textes déposés en inspection publique au Federal Register par jour
+  raison: rythme réglementaire de l'exécutif, visible la veille de la publication
+- adaptateur: federal_register:Presidential Document
+  fiche: politique-americaine
+  compartiment: executif
+  source: documents présidentiels déposés au Federal Register
+  raison: 'décrets et proclamations avant leur publication officielle (aucun dans les relevés actuels : série vide tant qu''il n''en paraît pas)'
+- adaptateur: federal_register:tous:Treasury
+  fiche: politique-americaine
+  compartiment: sanctions
+  source: textes du Trésor déposés au Federal Register
+  raison: les sanctions et contrôles passent par le Trésor
+- adaptateur: federal_register:tous:Energy
+  fiche: politique-americaine
+  compartiment: energie
+  source: textes du département de l'Énergie déposés au Federal Register
+  raison: décisions sur la réserve stratégique et l'énergie
+- adaptateur: federal_register:tous:Environmental Protection
+  fiche: politique-americaine
+  compartiment: climat_risques
+  source: textes de l'EPA déposés au Federal Register
+  raison: règles environnementales et climatiques
+- adaptateur: federal_register:tous:Securities and Exchange
+  fiche: politique-americaine
+  compartiment: budget
+  source: textes de la SEC déposés au Federal Register
+  raison: règles des marchés financiers
+- adaptateur: congres
+  fiche: politique-americaine
+  compartiment: congres
+  source: réunions de commission du Congrès par date prévue
+  raison: activité du Congrès, y compris les auditions à venir
+- adaptateur: congres:nominations
+  fiche: politique-americaine
+  compartiment: entourage
+  source: nominations reçues par le Sénat par jour (comptes seulement)
+  raison: les nominations recomposent l'entourage indirect de l'exécutif
+- adaptateur: tribunaux:scotus
+  fiche: politique-americaine
+  compartiment: tribunaux
+  source: dossiers déposés à la Cour suprême par jour (CourtListener, comptes)
+  raison: charge et rythme de la Cour suprême
+- adaptateur: tribunaux:cadc
+  fiche: politique-americaine
+  compartiment: tribunaux
+  source: dossiers déposés à la cour d'appel du district de Columbia (CourtListener, comptes)
+  raison: c'est la cour des recours contre les agences fédérales
+- adaptateur: elections:US
+  fiche: politique-americaine
+  compartiment: elections
+  source: jours avant la prochaine élection connue aux États-Unis (Wikidata)
+  raison: l'approche des scrutins intensifie la politique intérieure
+- adaptateur: elections:US
+  fiche: calendriers-echeances
+  compartiment: elections
+  source: jours avant la prochaine élection connue aux États-Unis (Wikidata)
+  raison: échéance électorale
+- adaptateur: elections:IR
+  fiche: iran-nucleaire
+  compartiment: pouvoir_iranien
+  source: jours avant la prochaine élection connue en Iran (Wikidata)
+  raison: les échéances électorales pèsent sur la ligne du pouvoir
+- adaptateur: elections:BR
+  fiche: dette-emergents
+  compartiment: politique_interieure
+  source: jours avant la prochaine élection connue au Brésil (Wikidata)
+  raison: l'approche d'un scrutin relâche ou durcit la politique budgétaire
+- adaptateur: memoire:RU
+  fiche: russie-ukraine
+  compartiment: opinions
+  source: jours avant la prochaine date de mémoire en Russie (9 mai…)
+  raison: les dates symboliques structurent annonces, défilés et offensives
+- adaptateur: memoire:RU
+  fiche: calendriers-echeances
+  compartiment: memoire
+  source: jours avant la prochaine date de mémoire en Russie
+  raison: échéance symbolique
+- adaptateur: feries_chine
+  fiche: economie-chinoise
+  compartiment: consommation
+  source: congés publics chinois (dates officielles)
+  raison: les congés font bondir la consommation et creusent la production
+- adaptateur: feries_chine
+  fiche: economie-chinoise
+  compartiment: activite
+  source: congés publics chinois (dates officielles)
+  raison: les usines s'arrêtent pendant les congés, surtout la fête du Printemps
+- adaptateur: publications_nbs
+  fiche: economie-chinoise
+  compartiment: statistiques
+  source: publications parues du Bureau national des statistiques chinois
+  raison: rythme réel des publications, y compris les retards et les silences
+- adaptateur: calendrier_nbs
+  fiche: economie-chinoise
+  compartiment: statistiques
+  source: jours avant la prochaine publication prévue du Bureau des statistiques chinois
+  raison: l'écart entre le prévu et le paru révèle les silences statistiques
+- adaptateur: calendrier_nbs:ipc
+  fiche: inflation-mondiale
+  compartiment: statistiques
+  source: jours avant la prochaine publication prévue de l'inflation chinoise
+  raison: échéance d'un chiffre suivi par les marchés
+- adaptateur: calendrier_nbs
+  fiche: calendriers-echeances
+  compartiment: publications
+  source: jours avant la prochaine publication prévue du Bureau des statistiques chinois
+  raison: échéance statistique

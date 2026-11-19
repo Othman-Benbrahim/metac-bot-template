@@ -1,120 +1,406 @@
-theme: "epidemies"
-nom: "Épidémies (du virus au monde)"
+theme: epidemies
+nom: Épidémies (du virus au monde)
 declaration:
-  but: "comprendre comment un agent infectieux passe de l'animal à l'humain, se répand, est nommé, compté et déclaré, et ce que cela transmet aux sociétés et aux économies (questions de santé publique, d'alertes et de fermetures)"
-  limites: "dedans le virus et les bactéries, les réservoirs animaux et l'élevage, les saisons, les malades en agrégat, les comportements, les autorités sanitaires, les définitions et déclarations, les vaccins et les tests, les effets économiques ; dehors la biologie fine des agents (aucun détail technique) et les maladies non transmissibles"
-  observateur: "notre carte, regard extérieur, sources publiques de santé ; aucune donnée individuelle"
-  date: "2026-11-19"
-  espace: "d'un élevage ou d'un marché à la planète, par les voyages et le commerce"
-  temps: "de la génération virale (jours) aux vagues saisonnières et aux pandémies (années) ; mémoire des grandes épidémies"
-  vitesse: "jours (contagion), semaines (vagues, déclarations), années (immunité, vaccins)"
-  taille: "micro (virus, malade) à macro (pandémie, économie mondiale)"
+  but: comprendre comment un agent infectieux passe de l'animal à l'humain, se répand, est nommé, compté et déclaré, et ce que cela transmet aux sociétés et aux économies (questions de santé publique, d'alertes
+    et de fermetures)
+  limites: dedans le virus et les bactéries, les réservoirs animaux et l'élevage, les saisons, les malades en agrégat, les comportements, les autorités sanitaires, les définitions et déclarations, les vaccins
+    et les tests, les effets économiques ; dehors la biologie fine des agents (aucun détail technique) et les maladies non transmissibles
+  observateur: notre carte, regard extérieur, sources publiques de santé ; aucune donnée individuelle
+  date: '2026-11-19'
+  espace: d'un élevage ou d'un marché à la planète, par les voyages et le commerce
+  temps: de la génération virale (jours) aux vagues saisonnières et aux pandémies (années) ; mémoire des grandes épidémies
+  vitesse: jours (contagion), semaines (vagues, déclarations), années (immunité, vaccins)
+  taille: micro (virus, malade) à macro (pandémie, économie mondiale)
 compartiments:
-  - id: "agent"
-    nom: "Agent infectieux (virus, bactérie)"
-    organisation: "microbiologique"
-    elements: ["réplication", "mutation et variants", "transmissibilité", "sévérité"]
-    acteurs:
-      - {nom: "un variant", taille: "micro", espace: "site", vitesse: "semaines", organisation: "microbiologique", facette: "non_humain"}
-    niveau: {espace: "d'un hôte à la planète", temps: "générations de quelques jours", vitesse: "jours à mois", taille: "micro"}
-    traces:
-      - {source: "bases publiques de séquences génétiques et bulletins de surveillance des variants", statut: "a_brancher"}
-  - id: "reservoirs"
-    nom: "Réservoirs animaux et élevage"
-    organisation: "animal"
-    elements: ["faune sauvage réservoir", "élevages intensifs", "marchés d'animaux vivants", "épizooties (grippe aviaire, peste porcine)"]
-    acteurs:
-      - {nom: "une population de chauves-souris ou d'oiseaux sauvages", taille: "méso", espace: "région", vitesse: "saisons", organisation: "animal", facette: "non_humain"}
-      - {nom: "un élevage intensif", taille: "micro", espace: "site", vitesse: "semaines", organisation: "animal", facette: "collectif"}
-    niveau: {espace: "élevages, forêts, zones humides", temps: "saisons de migration", vitesse: "semaines à saisons", taille: "micro à méso"}
-    traces:
-      - {source: "notifications publiques d'épizooties (Organisation mondiale de la santé animale, WAHIS)", statut: "a_brancher"}
-  - id: "milieu"
-    nom: "Milieu physique (saisons, chaleur, humidité)"
-    organisation: "physique"
-    elements: ["saison froide et confinement intérieur", "chaleur et vecteurs (moustiques)", "humidité"]
-    niveau: {espace: "région", temps: "saisons", vitesse: "saisons", taille: "méso"}
-    traces:
-      - {source: "anomalie de température à Delhi (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:delhi"}
-  - id: "malades"
-    nom: "Malades et immunité (en agrégat)"
-    organisation: "personne"
-    elements: ["cas", "hospitalisations", "décès", "immunité acquise ou vaccinale"]
-    acteurs:
-      - {nom: "une personne infectée (en agrégat, jamais nommée)", taille: "micro", espace: "local", vitesse: "jours", organisation: "personne", facette: "personne"}
-    niveau: {espace: "pays", temps: "vagues", vitesse: "jours à semaines", taille: "micro à macro"}
-    traces:
-      - {source: "tableaux de bord publics de l'OMS et des agences nationales", statut: "a_brancher"}
-  - id: "comportements"
-    nom: "Comportements et confiance"
-    organisation: "societe"
-    elements: ["contacts et voyages", "gestes barrières", "confiance dans les autorités", "lassitude"]
-    niveau: {espace: "pays", temps: "semaines à années", vitesse: "semaines", taille: "macro"}
-    traces:
-      - {source: "indices publics de mobilité", statut: "a_brancher"}
-  - id: "autorites"
-    nom: "Autorités sanitaires"
-    organisation: "statut"
-    elements: ["ministères de la santé", "agences nationales", "Organisation mondiale de la santé", "règlement sanitaire international"]
-    acteurs:
-      - {nom: "Organisation mondiale de la santé", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-      - {nom: "une agence nationale de santé publique", taille: "méso", espace: "pays", vitesse: "jours", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "pays et monde", temps: "décisions datées", vitesse: "jours à semaines", taille: "méso à macro"}
-    traces:
-      - {source: "bulletins publics de l'OMS (Disease Outbreak News)", statut: "a_brancher"}
-      - {source: "routines officielles (sites des institutions)", statut: "collecte", fichier: "collecte_routines.py"}
-  - id: "convention"
-    nom: "Convention (nommer, définir, compter, déclarer)"
-    organisation: "convention"
-    elements: ["nom de la maladie et du variant", "définition de cas", "statistiques officielles", "déclaration d'urgence de santé publique de portée internationale", "fin d'urgence"]
-    acteurs:
-      - {nom: "le comité d'urgence du règlement sanitaire international", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "convention", facette: "collectif"}
-    niveau: {espace: "pays et monde", temps: "déclarations datées", vitesse: "jours à années", taille: "méso à macro"}
-    traces:
-      - {source: "déclarations publiques de l'OMS", statut: "a_brancher"}
-  - id: "technique"
-    nom: "Vaccins, tests et traitements"
-    organisation: "technique"
-    elements: ["capacité de test", "vaccins", "traitements", "production et distribution"]
-    acteurs:
-      - {nom: "les fabricants de vaccins", taille: "méso", espace: "mondial", vitesse: "mois", organisation: "technique", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "mois à années", vitesse: "mois", taille: "méso à macro"}
-    traces:
-      - {source: "autorisations publiques des agences du médicament", statut: "a_brancher"}
-  - id: "economie"
-    nom: "Économie (fermetures, chaînes d'approvisionnement)"
-    organisation: "economie"
-    elements: ["fermetures", "absentéisme", "chaînes d'approvisionnement", "demande de biens et de services"]
-    niveau: {espace: "pays et monde", temps: "mois", vitesse: "semaines à mois", taille: "macro"}
-    traces:
-      - {source: "IMF PortWatch (porte-conteneurs à Malacca)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:porte_conteneurs"}
-  - id: "recits"
-    nom: "Récits et attention"
-    organisation: "ideologie"
-    elements: ["couverture médiatique", "rumeurs et désinformation", "polarisation sur les mesures"]
-    niveau: {espace: "médiatique mondial", temps: "cycle de l'information", vitesse: "heures à semaines", taille: "micro à macro"}
-    traces:
-      - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
+- id: agent
+  nom: Agent infectieux (virus, bactérie)
+  organisation: microbiologique
+  elements:
+  - réplication
+  - mutation et variants
+  - transmissibilité
+  - sévérité
+  acteurs:
+  - nom: un variant
+    taille: micro
+    espace: site
+    vitesse: semaines
+    organisation: microbiologique
+    facette: non_humain
+  niveau:
+    espace: d'un hôte à la planète
+    temps: générations de quelques jours
+    vitesse: jours à mois
+    taille: micro
+  traces:
+  - source: bases publiques de séquences génétiques et bulletins de surveillance des variants
+    statut: a_brancher
+- id: reservoirs
+  nom: Réservoirs animaux et élevage
+  organisation: animal
+  elements:
+  - faune sauvage réservoir
+  - élevages intensifs
+  - marchés d'animaux vivants
+  - épizooties (grippe aviaire, peste porcine)
+  acteurs:
+  - nom: une population de chauves-souris ou d'oiseaux sauvages
+    taille: méso
+    espace: région
+    vitesse: saisons
+    organisation: animal
+    facette: non_humain
+  - nom: un élevage intensif
+    taille: micro
+    espace: site
+    vitesse: semaines
+    organisation: animal
+    facette: collectif
+  niveau:
+    espace: élevages, forêts, zones humides
+    temps: saisons de migration
+    vitesse: semaines à saisons
+    taille: micro à méso
+  traces:
+  - source: notifications publiques d'épizooties (Organisation mondiale de la santé animale, WAHIS)
+    statut: a_brancher
+- id: milieu
+  nom: Milieu physique (saisons, chaleur, humidité)
+  organisation: physique
+  elements:
+  - saison froide et confinement intérieur
+  - chaleur et vecteurs (moustiques)
+  - humidité
+  niveau:
+    espace: région
+    temps: saisons
+    vitesse: saisons
+    taille: méso
+  traces:
+  - source: anomalie de température à Delhi (Open-Meteo)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:delhi
+- id: malades
+  nom: Malades et immunité (en agrégat)
+  organisation: personne
+  elements:
+  - cas
+  - hospitalisations
+  - décès
+  - immunité acquise ou vaccinale
+  acteurs:
+  - nom: une personne infectée (en agrégat, jamais nommée)
+    taille: micro
+    espace: local
+    vitesse: jours
+    organisation: personne
+    facette: personne
+  niveau:
+    espace: pays
+    temps: vagues
+    vitesse: jours à semaines
+    taille: micro à macro
+  traces:
+  - source: tableaux de bord publics de l'OMS et des agences nationales
+    statut: a_brancher
+- id: comportements
+  nom: Comportements et confiance
+  organisation: societe
+  elements:
+  - contacts et voyages
+  - gestes barrières
+  - confiance dans les autorités
+  - lassitude
+  niveau:
+    espace: pays
+    temps: semaines à années
+    vitesse: semaines
+    taille: macro
+  traces:
+  - source: indices publics de mobilité
+    statut: a_brancher
+- id: autorites
+  nom: Autorités sanitaires
+  organisation: statut
+  elements:
+  - ministères de la santé
+  - agences nationales
+  - Organisation mondiale de la santé
+  - règlement sanitaire international
+  acteurs:
+  - nom: Organisation mondiale de la santé
+    taille: macro
+    espace: mondial
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: une agence nationale de santé publique
+    taille: méso
+    espace: pays
+    vitesse: jours
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays et monde
+    temps: décisions datées
+    vitesse: jours à semaines
+    taille: méso à macro
+  traces:
+  - source: bulletins publics de l'OMS (Disease Outbreak News)
+    statut: a_brancher
+  - source: routines officielles (sites des institutions)
+    statut: collecte
+    fichier: collecte_routines.py
+  - source: articles des flux de santé (OMS, ECDC, Fonds mondial) citant la RD Congo
+    statut: collecte
+    adaptateur: rss:CD:sante
+- id: convention
+  nom: Convention (nommer, définir, compter, déclarer)
+  organisation: convention
+  elements:
+  - nom de la maladie et du variant
+  - définition de cas
+  - statistiques officielles
+  - déclaration d'urgence de santé publique de portée internationale
+  - fin d'urgence
+  acteurs:
+  - nom: le comité d'urgence du règlement sanitaire international
+    taille: macro
+    espace: mondial
+    vitesse: semaines
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays et monde
+    temps: déclarations datées
+    vitesse: jours à années
+    taille: méso à macro
+  traces:
+  - source: déclarations publiques de l'OMS
+    statut: a_brancher
+- id: technique
+  nom: Vaccins, tests et traitements
+  organisation: technique
+  elements:
+  - capacité de test
+  - vaccins
+  - traitements
+  - production et distribution
+  acteurs:
+  - nom: les fabricants de vaccins
+    taille: méso
+    espace: mondial
+    vitesse: mois
+    organisation: technique
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: mois à années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - source: autorisations publiques des agences du médicament
+    statut: a_brancher
+- id: economie
+  nom: Économie (fermetures, chaînes d'approvisionnement)
+  organisation: economie
+  elements:
+  - fermetures
+  - absentéisme
+  - chaînes d'approvisionnement
+  - demande de biens et de services
+  niveau:
+    espace: pays et monde
+    temps: mois
+    vitesse: semaines à mois
+    taille: macro
+  traces:
+  - source: IMF PortWatch (porte-conteneurs à Malacca)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:malacca:porte_conteneurs
+- id: recits
+  nom: Récits et attention
+  organisation: ideologie
+  elements:
+  - couverture médiatique
+  - rumeurs et désinformation
+  - polarisation sur les mesures
+  niveau:
+    espace: médiatique mondial
+    temps: cycle de l'information
+    vitesse: heures à semaines
+    taille: micro à macro
+  traces:
+  - source: GDELT
+    statut: collecte
+    fichier: collecte_gdelt.py
 relations:
-  - {de: "agent", vers: "agent", effet: "+", delai: "semaines", force: "moyenne", coupure: "immunité de la population", statut: "a_verifier", texte: "propre au niveau microbiologique : réplication et sélection font apparaître des variants plus transmissibles"}
-  - {de: "reservoirs", vers: "reservoirs", effet: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "densité des élevages et circulation des animaux", regle: "seuil"}, coupure: "abattages et quarantaines", statut: "a_verifier", texte: "propre au niveau animal : un élevage dense amplifie une épizootie"}
-  - {de: "reservoirs", vers: "agent", effet: "+", delai: "mois", force: "faible", intensite: {mesure: "contacts entre animaux infectés et humains", regle: "seuil"}, coupure: "séparation de la faune et des élevages", statut: "a_verifier", texte: "le passage de l'animal à l'humain (zoonose) est rare et demande un contact assez fort"}
-  - {de: "agent", vers: "malades", effet: "+", retour: "-", delai: "jours", force: "forte", intensite: {mesure: "part de la population sans immunité", regle: "proportionnelle"}, coupure: "immunité acquise", statut: "a_verifier", texte: "l'agent vit aux dépens des hôtes (prédation) ; l'immunité qu'ils acquièrent le freine"}
-  - {de: "malades", vers: "malades", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "nombre de contacts", regle: "seuil"}, coupure: "taux de reproduction sous 1", statut: "a_verifier", texte: "propre à la contagion : au-dessus d'un seuil de contacts, la croissance devient exponentielle"}
-  - {de: "milieu", vers: "malades", effet: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les saisons rythment les vagues (hiver pour les virus respiratoires, chaleur et pluies pour les maladies à moustiques)"}
-  - {de: "comportements", vers: "malades", effet: "-", retour: "-", delai: "semaines", force: "forte", intensite: {mesure: "lassitude face aux mesures", regle: "hysteresis"}, coupure: "lassitude", statut: "a_verifier", texte: "les gestes barrières freinent la contagion ; la lassitude, une fois installée, ne recule pas vite"}
-  - {de: "malades", vers: "convention", effet: "+", delai: "jours à semaines", force: "moyenne", intensite: {mesure: "nombre de cas et de pays touchés", regle: "seuil"}, coupure: "absence de déclaration", statut: "a_verifier", texte: "la maladie n'existe socialement qu'une fois nommée, définie et comptée ; une déclaration ne vient qu'au-delà d'un seuil"}
-  - {de: "convention", vers: "autorites", effet: "+", delai: "jours", force: "forte", coupure: "contestation de la définition", statut: "a_verifier", texte: "une déclaration d'urgence déclenche les pouvoirs exceptionnels"}
-  - {de: "convention", vers: "malades", effet: "±", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "changer la définition de cas change le nombre compté sans changer la maladie"}
-  - {de: "autorites", vers: "comportements", effet: "+", retour: "±", delai: "jours", force: "moyenne", intensite: {mesure: "confiance dans les autorités", regle: "proportionnelle"}, coupure: "défiance", statut: "a_verifier", texte: "les consignes changent les comportements, d'autant plus que la confiance est haute"}
-  - {de: "autorites", vers: "economie", effet: "-", delai: "jours", force: "forte", coupure: "aides publiques", statut: "a_verifier", texte: "fermetures et restrictions pèsent sur l'activité"}
-  - {de: "technique", vers: "malades", effet: "-", delai: "mois", force: "forte", coupure: "accès inégal, variants qui échappent", statut: "a_verifier", texte: "vaccins et traitements réduisent la sévérité"}
-  - {de: "recits", vers: "comportements", effet: "±", delai: "jours", force: "moyenne", intensite: {mesure: "polarisation du débat", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "rumeurs et polarisation font accepter ou refuser les mesures"}
-  - {de: "economie", vers: "technique", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les chaînes d'approvisionnement conditionnent la production de tests et de vaccins"}
+- de: agent
+  vers: agent
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: immunité de la population
+  statut: a_verifier
+  texte: 'propre au niveau microbiologique : réplication et sélection font apparaître des variants plus transmissibles'
+- de: reservoirs
+  vers: reservoirs
+  effet: +
+  delai: semaines
+  force: moyenne
+  intensite:
+    mesure: densité des élevages et circulation des animaux
+    regle: seuil
+  coupure: abattages et quarantaines
+  statut: a_verifier
+  texte: 'propre au niveau animal : un élevage dense amplifie une épizootie'
+- de: reservoirs
+  vers: agent
+  effet: +
+  delai: mois
+  force: faible
+  intensite:
+    mesure: contacts entre animaux infectés et humains
+    regle: seuil
+  coupure: séparation de la faune et des élevages
+  statut: a_verifier
+  texte: le passage de l'animal à l'humain (zoonose) est rare et demande un contact assez fort
+- de: agent
+  vers: malades
+  effet: +
+  retour: '-'
+  delai: jours
+  force: forte
+  intensite:
+    mesure: part de la population sans immunité
+    regle: proportionnelle
+  coupure: immunité acquise
+  statut: a_verifier
+  texte: l'agent vit aux dépens des hôtes (prédation) ; l'immunité qu'ils acquièrent le freine
+- de: malades
+  vers: malades
+  effet: +
+  delai: jours
+  force: forte
+  intensite:
+    mesure: nombre de contacts
+    regle: seuil
+  coupure: taux de reproduction sous 1
+  statut: a_verifier
+  texte: 'propre à la contagion : au-dessus d''un seuil de contacts, la croissance devient exponentielle'
+- de: milieu
+  vers: malades
+  effet: ±
+  delai: semaines
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les saisons rythment les vagues (hiver pour les virus respiratoires, chaleur et pluies pour les maladies à moustiques)
+- de: comportements
+  vers: malades
+  effet: '-'
+  retour: '-'
+  delai: semaines
+  force: forte
+  intensite:
+    mesure: lassitude face aux mesures
+    regle: hysteresis
+  coupure: lassitude
+  statut: a_verifier
+  texte: les gestes barrières freinent la contagion ; la lassitude, une fois installée, ne recule pas vite
+- de: malades
+  vers: convention
+  effet: +
+  delai: jours à semaines
+  force: moyenne
+  intensite:
+    mesure: nombre de cas et de pays touchés
+    regle: seuil
+  coupure: absence de déclaration
+  statut: a_verifier
+  texte: la maladie n'existe socialement qu'une fois nommée, définie et comptée ; une déclaration ne vient qu'au-delà d'un seuil
+- de: convention
+  vers: autorites
+  effet: +
+  delai: jours
+  force: forte
+  coupure: contestation de la définition
+  statut: a_verifier
+  texte: une déclaration d'urgence déclenche les pouvoirs exceptionnels
+- de: convention
+  vers: malades
+  effet: ±
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: changer la définition de cas change le nombre compté sans changer la maladie
+- de: autorites
+  vers: comportements
+  effet: +
+  retour: ±
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: confiance dans les autorités
+    regle: proportionnelle
+  coupure: défiance
+  statut: a_verifier
+  texte: les consignes changent les comportements, d'autant plus que la confiance est haute
+- de: autorites
+  vers: economie
+  effet: '-'
+  delai: jours
+  force: forte
+  coupure: aides publiques
+  statut: a_verifier
+  texte: fermetures et restrictions pèsent sur l'activité
+- de: technique
+  vers: malades
+  effet: '-'
+  delai: mois
+  force: forte
+  coupure: accès inégal, variants qui échappent
+  statut: a_verifier
+  texte: vaccins et traitements réduisent la sévérité
+- de: recits
+  vers: comportements
+  effet: ±
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: polarisation du débat
+    regle: proportionnelle
+  coupure: inconnue
+  statut: a_verifier
+  texte: rumeurs et polarisation font accepter ou refuser les mesures
+- de: economie
+  vers: technique
+  effet: ±
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les chaînes d'approvisionnement conditionnent la production de tests et de vaccins
 ponts:
-  - {depuis: "reservoirs", vers: "alimentation-mondiale:ravageurs", nature: "épizooties et maladies des cultures menacent la même chaîne alimentaire"}
-  - {depuis: "economie", vers: "transport-maritime:ports", nature: "fermetures de ports et congestion"}
-  - {depuis: "economie", vers: "economie-chinoise:activite", nature: "une épidémie en Chine pèse sur l'atelier du monde"}
-  - {depuis: "economie", vers: "inflation-mondiale:approvisionnement", nature: "chaînes bloquées, prix des biens"}
-  - {depuis: "milieu", vers: "climat-extremes:saisons", nature: "les saisons anormales déplacent les vecteurs et les vagues", type: "meme"}
-  - {depuis: "autorites", vers: "politique-americaine:executif", nature: "pouvoirs d'urgence et décisions sanitaires fédérales"}
+- depuis: reservoirs
+  vers: alimentation-mondiale:ravageurs
+  nature: épizooties et maladies des cultures menacent la même chaîne alimentaire
+- depuis: economie
+  vers: transport-maritime:ports
+  nature: fermetures de ports et congestion
+- depuis: economie
+  vers: economie-chinoise:activite
+  nature: une épidémie en Chine pèse sur l'atelier du monde
+- depuis: economie
+  vers: inflation-mondiale:approvisionnement
+  nature: chaînes bloquées, prix des biens
+- depuis: milieu
+  vers: climat-extremes:saisons
+  nature: les saisons anormales déplacent les vecteurs et les vagues
+  type: meme
+- depuis: autorites
+  vers: politique-americaine:executif
+  nature: pouvoirs d'urgence et décisions sanitaires fédérales

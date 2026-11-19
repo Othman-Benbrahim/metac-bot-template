@@ -1,122 +1,407 @@
-theme: "calendriers-echeances"
-nom: "Calendriers et échéances (le temps comme structure)"
+theme: calendriers-echeances
+nom: Calendriers et échéances (le temps comme structure)
 declaration:
-  but: "comprendre comment le calendrier structure les situations : beaucoup de questions se jouent sur une date (scrutin, réunion, publication, anniversaire, date limite), et le temps social impose des rythmes que les acteurs anticipent"
-  limites: "dedans les échéances électorales, les réunions des banques centrales et des producteurs de pétrole, les sessions parlementaires, les publications statistiques, les dates de mémoire, les fêtes et jours fériés, les saisons agricoles et de combat, les dates limites des questions ; dehors le contenu des décisions prises à ces dates (fiches voisines)"
-  observateur: "notre bot et nos collectes de calendriers publics, regard extérieur"
-  date: "2026-11-19"
-  espace: "les pays et institutions dont nous suivons les calendriers, et le monde pour les saisons"
-  temps: "du jour (une publication) au cycle de plusieurs années (mandats) ; mémoire des anniversaires sur des décennies"
-  vitesse: "le jour (une date tombe), la semaine (l'approche d'une échéance), l'année (cycles électoraux et saisons)"
-  taille: "méso à macro"
+  but: 'comprendre comment le calendrier structure les situations : beaucoup de questions se jouent sur une date (scrutin, réunion, publication, anniversaire, date limite), et le temps social impose des
+    rythmes que les acteurs anticipent'
+  limites: dedans les échéances électorales, les réunions des banques centrales et des producteurs de pétrole, les sessions parlementaires, les publications statistiques, les dates de mémoire, les fêtes
+    et jours fériés, les saisons agricoles et de combat, les dates limites des questions ; dehors le contenu des décisions prises à ces dates (fiches voisines)
+  observateur: notre bot et nos collectes de calendriers publics, regard extérieur
+  date: '2026-11-19'
+  espace: les pays et institutions dont nous suivons les calendriers, et le monde pour les saisons
+  temps: du jour (une publication) au cycle de plusieurs années (mandats) ; mémoire des anniversaires sur des décennies
+  vitesse: le jour (une date tombe), la semaine (l'approche d'une échéance), l'année (cycles électoraux et saisons)
+  taille: méso à macro
 compartiments:
-  - id: "elections"
-    nom: "Échéances électorales"
-    organisation: "convention"
-    elements: ["dates de scrutins nationaux", "campagnes", "seconds tours", "mandats"]
-    acteurs:
-      - {nom: "une commission électorale nationale", taille: "méso", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
-      - {nom: "l'électorat d'un pays", taille: "macro", espace: "pays", vitesse: "années", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "pays", temps: "cycles de quatre à sept ans (à vérifier selon les pays)", vitesse: "semaines à années", taille: "macro"}
-    traces:
-      - {source: "élections nationales (Wikidata)", statut: "collecte", fichier: "collecte_elections.py"}
-  - id: "banques_centrales"
-    nom: "Réunions des banques centrales et des producteurs"
-    organisation: "statut"
-    elements: ["réunions de politique monétaire à dates fixes", "réunions de l'OPEP+", "communiqués attendus"]
-    acteurs:
-      - {nom: "un comité de politique monétaire", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-      - {nom: "OPEP+", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "zones monétaires et marché mondial", temps: "calendrier annoncé à l'avance", vitesse: "semaines", taille: "macro"}
-    traces:
-      - {source: "calendriers publics des réunions (Réserve fédérale, BCE, OPEP+)", statut: "a_brancher"}
-  - id: "parlements"
-    nom: "Sessions parlementaires"
-    organisation: "statut"
-    elements: ["sessions et vacances parlementaires", "auditions", "votes budgétaires à date limite"]
-    acteurs:
-      - {nom: "le Congrès américain", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "pays", temps: "sessions annuelles", vitesse: "semaines", taille: "méso à macro"}
-    traces:
-      - {source: "réunions des commissions et nominations du Congrès", statut: "collecte", fichier: "collecte_congres.py"}
-  - id: "publications"
-    nom: "Publications statistiques"
-    organisation: "convention"
-    elements: ["calendriers de publication", "retards et suspensions", "révisions"]
-    acteurs:
-      - {nom: "le Bureau national des statistiques chinois", taille: "méso", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "pays", temps: "mensuel et trimestriel", vitesse: "mois", taille: "méso"}
-    traces:
-      - {source: "calendrier et publications du Bureau des statistiques chinois", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
-  - id: "memoire"
-    nom: "Dates de mémoire et anniversaires"
-    organisation: "ideologie"
-    elements: ["anniversaires de guerres, de révolutions, d'attentats", "commémorations", "dates symboliques choisies pour agir"]
-    acteurs:
-      - {nom: "un régime qui célèbre sa fondation", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
-      - {nom: "un mouvement qui commémore une répression", taille: "méso", espace: "pays", vitesse: "années", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "pays", temps: "cycle annuel ; décennies de mémoire", vitesse: "année", taille: "méso à macro"}
-    traces:
-      - {source: "dates de mémoire (registre du bot)", statut: "collecte", fichier: "indicateurs_niche.py"}
-  - id: "fetes"
-    nom: "Fêtes religieuses et jours fériés"
-    organisation: "ideologie"
-    elements: ["calendriers religieux (lunaires et solaires)", "jours fériés nationaux", "trêves et pics de déplacements"]
-    niveau: {espace: "pays et aires culturelles", temps: "cycle annuel, mobile pour les calendriers lunaires", vitesse: "année", taille: "macro"}
-    traces:
-      - {source: "jours fériés chinois", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
-  - id: "saisons"
-    nom: "Saisons agricoles et de combat"
-    organisation: "climat"
-    elements: ["semis et récoltes", "saison des pluies, boue et gel", "saison des feux", "saison des ouragans"]
-    acteurs:
-      - {nom: "la mousson", taille: "macro", espace: "continent", vitesse: "saisons", organisation: "climat", facette: "non_humain"}
-    niveau: {espace: "régions", temps: "cycle annuel", vitesse: "saisons", taille: "macro"}
-    traces:
-      - {source: "anomalie de température (Kyiv, Delhi)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:kyiv"}
-  - id: "dates_limites"
-    nom: "Dates limites des questions (convention)"
-    organisation: "convention"
-    elements: ["date de résolution d'une question", "« avant le » et « d'ici le »", "fuseaux horaires et sources de résolution"]
-    niveau: {espace: "plateformes de prévision", temps: "de quelques jours à quelques mois", vitesse: "jours", taille: "méso"}
-    traces:
-      - {source: "questions du tournoi et dates de résolution (registre du bot)", statut: "collecte", fichier: "inventaire_themes.py"}
-  - id: "anticipations"
-    nom: "Anticipation des échéances"
-    organisation: "psychologique"
-    elements: ["attente qui fige les décisions avant une date", "effet de date butoir (on agit à la dernière minute)", "fatigue après l'échéance"]
-    acteurs:
-      - {nom: "un négociateur qui attend la dernière minute", taille: "micro", espace: "site", vitesse: "jours", organisation: "psychologique", facette: "psyche"}
-    niveau: {espace: "partout où une date est connue", temps: "les jours qui précèdent et suivent une échéance", vitesse: "jours à semaines", taille: "micro à méso"}
-    traces:
-      - {source: "aucune trace directe ; lisible dans le rythme des déclarations", statut: "inconnue"}
-  - id: "marches"
-    nom: "Marchés et calendrier"
-    organisation: "economie"
-    elements: ["volatilité autour des publications et réunions", "fins de mois et de trimestre", "expirations de contrats"]
-    niveau: {espace: "marchés mondiaux", temps: "jours de publication", vitesse: "heures à jours", taille: "macro"}
-    traces:
-      - {source: "taux directeur effectif de la Réserve fédérale (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DFF"}
+- id: elections
+  nom: Échéances électorales
+  organisation: convention
+  elements:
+  - dates de scrutins nationaux
+  - campagnes
+  - seconds tours
+  - mandats
+  acteurs:
+  - nom: une commission électorale nationale
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  - nom: l'électorat d'un pays
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: cycles de quatre à sept ans (à vérifier selon les pays)
+    vitesse: semaines à années
+    taille: macro
+  traces:
+  - source: élections nationales (Wikidata)
+    statut: collecte
+    fichier: collecte_elections.py
+  - source: jours avant la prochaine élection connue aux États-Unis (Wikidata)
+    statut: collecte
+    adaptateur: elections:US
+- id: banques_centrales
+  nom: Réunions des banques centrales et des producteurs
+  organisation: statut
+  elements:
+  - réunions de politique monétaire à dates fixes
+  - réunions de l'OPEP+
+  - communiqués attendus
+  acteurs:
+  - nom: un comité de politique monétaire
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: OPEP+
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: zones monétaires et marché mondial
+    temps: calendrier annoncé à l'avance
+    vitesse: semaines
+    taille: macro
+  traces:
+  - source: calendriers publics des réunions (Réserve fédérale, BCE, OPEP+)
+    statut: a_brancher
+- id: parlements
+  nom: Sessions parlementaires
+  organisation: statut
+  elements:
+  - sessions et vacances parlementaires
+  - auditions
+  - votes budgétaires à date limite
+  acteurs:
+  - nom: le Congrès américain
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: sessions annuelles
+    vitesse: semaines
+    taille: méso à macro
+  traces:
+  - source: réunions des commissions et nominations du Congrès
+    statut: collecte
+    fichier: collecte_congres.py
+- id: publications
+  nom: Publications statistiques
+  organisation: convention
+  elements:
+  - calendriers de publication
+  - retards et suspensions
+  - révisions
+  acteurs:
+  - nom: le Bureau national des statistiques chinois
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: mensuel et trimestriel
+    vitesse: mois
+    taille: méso
+  traces:
+  - source: calendrier et publications du Bureau des statistiques chinois
+    statut: collecte
+    fichier: collecte_calendrier_nbs.py
+  - source: jours avant la prochaine publication prévue du Bureau des statistiques chinois
+    statut: collecte
+    adaptateur: calendrier_nbs
+- id: memoire
+  nom: Dates de mémoire et anniversaires
+  organisation: ideologie
+  elements:
+  - anniversaires de guerres, de révolutions, d'attentats
+  - commémorations
+  - dates symboliques choisies pour agir
+  acteurs:
+  - nom: un régime qui célèbre sa fondation
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: ideologie
+    facette: ideologie
+  - nom: un mouvement qui commémore une répression
+    taille: méso
+    espace: pays
+    vitesse: années
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: cycle annuel ; décennies de mémoire
+    vitesse: année
+    taille: méso à macro
+  traces:
+  - source: dates de mémoire (registre du bot)
+    statut: collecte
+    fichier: indicateurs_niche.py
+  - source: jours avant la prochaine date de mémoire en Russie
+    statut: collecte
+    adaptateur: memoire:RU
+- id: fetes
+  nom: Fêtes religieuses et jours fériés
+  organisation: ideologie
+  elements:
+  - calendriers religieux (lunaires et solaires)
+  - jours fériés nationaux
+  - trêves et pics de déplacements
+  niveau:
+    espace: pays et aires culturelles
+    temps: cycle annuel, mobile pour les calendriers lunaires
+    vitesse: année
+    taille: macro
+  traces:
+  - source: jours fériés chinois
+    statut: collecte
+    fichier: collecte_calendrier_nbs.py
+- id: saisons
+  nom: Saisons agricoles et de combat
+  organisation: climat
+  elements:
+  - semis et récoltes
+  - saison des pluies, boue et gel
+  - saison des feux
+  - saison des ouragans
+  acteurs:
+  - nom: la mousson
+    taille: macro
+    espace: continent
+    vitesse: saisons
+    organisation: climat
+    facette: non_humain
+  niveau:
+    espace: régions
+    temps: cycle annuel
+    vitesse: saisons
+    taille: macro
+  traces:
+  - source: anomalie de température (Kyiv, Delhi)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:kyiv
+- id: dates_limites
+  nom: Dates limites des questions (convention)
+  organisation: convention
+  elements:
+  - date de résolution d'une question
+  - « avant le » et « d'ici le »
+  - fuseaux horaires et sources de résolution
+  niveau:
+    espace: plateformes de prévision
+    temps: de quelques jours à quelques mois
+    vitesse: jours
+    taille: méso
+  traces:
+  - source: questions du tournoi et dates de résolution (registre du bot)
+    statut: collecte
+    fichier: inventaire_themes.py
+- id: anticipations
+  nom: Anticipation des échéances
+  organisation: psychologique
+  elements:
+  - attente qui fige les décisions avant une date
+  - effet de date butoir (on agit à la dernière minute)
+  - fatigue après l'échéance
+  acteurs:
+  - nom: un négociateur qui attend la dernière minute
+    taille: micro
+    espace: site
+    vitesse: jours
+    organisation: psychologique
+    facette: psyche
+  niveau:
+    espace: partout où une date est connue
+    temps: les jours qui précèdent et suivent une échéance
+    vitesse: jours à semaines
+    taille: micro à méso
+  traces:
+  - source: aucune trace directe ; lisible dans le rythme des déclarations
+    statut: inconnue
+- id: marches
+  nom: Marchés et calendrier
+  organisation: economie
+  elements:
+  - volatilité autour des publications et réunions
+  - fins de mois et de trimestre
+  - expirations de contrats
+  niveau:
+    espace: marchés mondiaux
+    temps: jours de publication
+    vitesse: heures à jours
+    taille: macro
+  traces:
+  - source: taux directeur effectif de la Réserve fédérale (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DFF
 relations:
-  - {de: "anticipations", vers: "anticipations", effet: "+", delai: "jours", force: "moyenne", intensite: {mesure: "jours restant avant l'échéance", regle: "seuil"}, coupure: "échéance repoussée", statut: "a_verifier", texte: "propre au niveau psychologique : plus la date approche, plus l'attente fige les décisions, puis tout se décide à la dernière minute"}
-  - {de: "elections", vers: "anticipations", effet: "+", delai: "semaines", force: "forte", intensite: {mesure: "semaines avant le scrutin", regle: "seuil"}, coupure: "scrutin joué d'avance", statut: "a_verifier", texte: "un scrutin proche gèle les grandes décisions et pousse aux annonces"}
-  - {de: "elections", vers: "parlements", effet: "±", delai: "semaines à mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "propre aux conventions et statuts : le résultat recompose les majorités et le calendrier législatif"}
-  - {de: "banques_centrales", vers: "marches", effet: "±", delai: "heures", force: "forte", intensite: {mesure: "écart entre la décision et ce qui était attendu", regle: "proportionnelle"}, coupure: "décision entièrement anticipée", statut: "a_verifier", texte: "les marchés bougent à la date de réunion selon la surprise, pas selon la décision"}
-  - {de: "publications", vers: "marches", effet: "±", delai: "heures", force: "moyenne", intensite: {mesure: "surprise par rapport au consensus", regle: "proportionnelle"}, coupure: "chiffre conforme", statut: "a_verifier", texte: "une publication surprenante fait bouger les prix le jour même"}
-  - {de: "publications", vers: "publications", effet: "-", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "propre à la convention : un chiffre gênant peut être retardé, suspendu ou redéfini, et le silence devient lui-même un signal"}
-  - {de: "memoire", vers: "anticipations", effet: "+", delai: "jours", force: "moyenne", intensite: {mesure: "valeur symbolique de la date (anniversaire rond)", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "les dates symboliques sont choisies pour agir, manifester ou réprimer"}
-  - {de: "memoire", vers: "memoire", effet: "+", delai: "années", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "propre à l'idéologie : chaque commémoration renforce la suivante, surtout aux anniversaires ronds"}
-  - {de: "fetes", vers: "saisons", effet: "0", delai: "jours", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "neutralisme : les calendriers religieux et les saisons coexistent sans s'influencer (sauf fêtes agricoles)"}
-  - {de: "fetes", vers: "marches", effet: "-", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les longs jours fériés ralentissent l'activité et les échanges, puis rattrapage"}
-  - {de: "saisons", vers: "elections", effet: "±", delai: "mois", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "une mauvaise récolte ou une saison de catastrophes avant un scrutin pèse sur le vote"}
-  - {de: "saisons", vers: "anticipations", effet: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "approche de la saison (gel, pluies, combat)", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "la saison de combat ou de récolte impose son rythme : on attend le gel, on agit avant la boue"}
-  - {de: "dates_limites", vers: "anticipations", effet: "+", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "une question qui se résout à date fixe juge l'événement à ce jour-là ; ce qui arrive le lendemain ne compte pas"}
-  - {de: "dates_limites", vers: "publications", effet: "±", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la résolution d'une question dépend souvent d'une publication à date ; un retard de publication change l'issue mesurée"}
+- de: anticipations
+  vers: anticipations
+  effet: +
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: jours restant avant l'échéance
+    regle: seuil
+  coupure: échéance repoussée
+  statut: a_verifier
+  texte: 'propre au niveau psychologique : plus la date approche, plus l''attente fige les décisions, puis tout se décide à la dernière minute'
+- de: elections
+  vers: anticipations
+  effet: +
+  delai: semaines
+  force: forte
+  intensite:
+    mesure: semaines avant le scrutin
+    regle: seuil
+  coupure: scrutin joué d'avance
+  statut: a_verifier
+  texte: un scrutin proche gèle les grandes décisions et pousse aux annonces
+- de: elections
+  vers: parlements
+  effet: ±
+  delai: semaines à mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'propre aux conventions et statuts : le résultat recompose les majorités et le calendrier législatif'
+- de: banques_centrales
+  vers: marches
+  effet: ±
+  delai: heures
+  force: forte
+  intensite:
+    mesure: écart entre la décision et ce qui était attendu
+    regle: proportionnelle
+  coupure: décision entièrement anticipée
+  statut: a_verifier
+  texte: les marchés bougent à la date de réunion selon la surprise, pas selon la décision
+- de: publications
+  vers: marches
+  effet: ±
+  delai: heures
+  force: moyenne
+  intensite:
+    mesure: surprise par rapport au consensus
+    regle: proportionnelle
+  coupure: chiffre conforme
+  statut: a_verifier
+  texte: une publication surprenante fait bouger les prix le jour même
+- de: publications
+  vers: publications
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'propre à la convention : un chiffre gênant peut être retardé, suspendu ou redéfini, et le silence devient lui-même un signal'
+- de: memoire
+  vers: anticipations
+  effet: +
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: valeur symbolique de la date (anniversaire rond)
+    regle: seuil
+  coupure: inconnue
+  statut: a_verifier
+  texte: les dates symboliques sont choisies pour agir, manifester ou réprimer
+- de: memoire
+  vers: memoire
+  effet: +
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'propre à l''idéologie : chaque commémoration renforce la suivante, surtout aux anniversaires ronds'
+- de: fetes
+  vers: saisons
+  effet: '0'
+  delai: jours
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'neutralisme : les calendriers religieux et les saisons coexistent sans s''influencer (sauf fêtes agricoles)'
+- de: fetes
+  vers: marches
+  effet: '-'
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les longs jours fériés ralentissent l'activité et les échanges, puis rattrapage
+- de: saisons
+  vers: elections
+  effet: ±
+  delai: mois
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: une mauvaise récolte ou une saison de catastrophes avant un scrutin pèse sur le vote
+- de: saisons
+  vers: anticipations
+  effet: +
+  delai: semaines
+  force: moyenne
+  intensite:
+    mesure: approche de la saison (gel, pluies, combat)
+    regle: seuil
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'la saison de combat ou de récolte impose son rythme : on attend le gel, on agit avant la boue'
+- de: dates_limites
+  vers: anticipations
+  effet: +
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: une question qui se résout à date fixe juge l'événement à ce jour-là ; ce qui arrive le lendemain ne compte pas
+- de: dates_limites
+  vers: publications
+  effet: ±
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la résolution d'une question dépend souvent d'une publication à date ; un retard de publication change l'issue mesurée
 ponts:
-  - {depuis: "elections", vers: "politique-americaine:elections", nature: "le calendrier électoral américain", type: "meme"}
-  - {depuis: "banques_centrales", vers: "inflation-mondiale:banques_centrales", nature: "les réunions à date fixe des banques centrales"}
-  - {depuis: "banques_centrales", vers: "energie-mondiale:decisions", nature: "les réunions de l'OPEP+"}
-  - {depuis: "publications", vers: "economie-chinoise:statistiques", nature: "le calendrier des statistiques chinoises", type: "meme"}
-  - {depuis: "saisons", vers: "russie-ukraine:hiver_saisons", nature: "la boue et le gel rythment le front"}
-  - {depuis: "saisons", vers: "alimentation-mondiale:cultures", nature: "semis et récoltes"}
-  - {depuis: "dates_limites", vers: "observateur-mesure:biais", nature: "la date limite est une convention de mesure"}
+- depuis: elections
+  vers: politique-americaine:elections
+  nature: le calendrier électoral américain
+  type: meme
+- depuis: banques_centrales
+  vers: inflation-mondiale:banques_centrales
+  nature: les réunions à date fixe des banques centrales
+- depuis: banques_centrales
+  vers: energie-mondiale:decisions
+  nature: les réunions de l'OPEP+
+- depuis: publications
+  vers: economie-chinoise:statistiques
+  nature: le calendrier des statistiques chinoises
+  type: meme
+- depuis: saisons
+  vers: russie-ukraine:hiver_saisons
+  nature: la boue et le gel rythment le front
+- depuis: saisons
+  vers: alimentation-mondiale:cultures
+  nature: semis et récoltes
+- depuis: dates_limites
+  vers: observateur-mesure:biais
+  nature: la date limite est une convention de mesure

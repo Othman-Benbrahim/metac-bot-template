@@ -1,0 +1,102 @@
+theme: "elections-amerique-latine"
+nom: "Élections en Amérique latine"
+declaration:
+  but: "comprendre ce qui fait le résultat des scrutins et des réformes électorales en Amérique latine, et leur lien avec l'économie et le FMI ; une question du tournoi porte sur la suspension ou la suppression des primaires argentines au Sénat : modéliser le mécanisme législatif"
+  limites: "dedans les scrutins, les primaires et les règles électorales, les partis et les coalitions, les assemblées, l'économie (inflation, monnaie), le FMI ; dehors les détails de chaque campagne"
+  observateur: "notre carte, regard extérieur, ton neutre, sources publiques"
+  date: "2026-11-19"
+  espace: "les pays d'Amérique latine, l'Argentine comme exemple"
+  temps: "du vote d'une loi au cycle électoral de quatre à six ans"
+  vitesse: "la séance (un vote au Sénat), le mois (une campagne), l'année (l'inflation)"
+  taille: "méso (un parti, une chambre) à macro (un pays)"
+compartiments:
+  - id: "scrutins"
+    nom: "Scrutins et primaires"
+    organisation: "societe"
+    elements: ["élections présidentielles et législatives", "primaires obligatoires (en Argentine, les PASO)", "participation"]
+    acteurs:
+      - {nom: "l'électorat d'un pays, en agrégat", taille: "macro", espace: "pays", vitesse: "années", organisation: "societe", facette: "collectif"}
+    niveau: {espace: "pays", temps: "calendrier électoral", vitesse: "mois à années", taille: "macro"}
+    traces:
+      - {source: "calendrier des élections nationales (Wikidata)", statut: "collecte", fichier: "collecte_elections.py"}
+  - id: "regles"
+    nom: "Règles électorales"
+    organisation: "convention"
+    elements: ["lois électorales", "primaires", "seuils et modes de scrutin", "calendrier"]
+    niveau: {espace: "pays", temps: "lois", vitesse: "mois à années", taille: "macro"}
+    traces:
+      - {source: "bulletins officiels des lois (publications publiques)", statut: "a_brancher"}
+  - id: "assemblees"
+    nom: "Assemblées (Sénat et Chambre des députés)"
+    organisation: "statut"
+    elements: ["majorités", "commissions", "« media sanción » (approbation par une chambre)", "vote en séance"]
+    acteurs:
+      - {nom: "le Sénat argentin", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays", temps: "sessions parlementaires", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "ordres du jour publics du Sénat", statut: "a_brancher"}
+  - id: "executif"
+    nom: "Exécutif"
+    organisation: "statut"
+    elements: ["présidence", "décrets", "négociations avec les gouverneurs"]
+    acteurs:
+      - {nom: "la fonction présidentielle", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "statut"}
+      - {nom: "le président en personne, par ses faits publics", taille: "micro", espace: "pays", vitesse: "jours", organisation: "personne", facette: "personne"}
+      - {nom: "le programme porté par l'exécutif", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
+    niveau: {espace: "pays", temps: "mandat", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "GDELT (événements publics)", statut: "collecte", fichier: "collecte_gdelt.py"}
+  - id: "partis_gouverneurs"
+    nom: "Partis, coalitions et gouverneurs"
+    organisation: "entourage"
+    elements: ["blocs parlementaires", "gouverneurs de provinces", "échanges de soutiens"]
+    acteurs:
+      - {nom: "les gouverneurs de provinces, en agrégat", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
+    niveau: {espace: "pays et provinces", temps: "négociations", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "aucune trace ouverte directe", statut: "inconnue"}
+  - id: "economie"
+    nom: "Économie, inflation et monnaie"
+    organisation: "economie"
+    elements: ["inflation", "taux de change", "pauvreté", "réserves"]
+    niveau: {espace: "pays", temps: "mois", vitesse: "jours à mois", taille: "macro"}
+    traces:
+      - {source: "indice large du dollar (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DTWEXBGS"}
+  - id: "fmi"
+    nom: "FMI et créanciers"
+    organisation: "geopolitique"
+    elements: ["programmes et revues", "conditions budgétaires", "déboursements"]
+    niveau: {espace: "pays et institutions internationales", temps: "revues trimestrielles", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "communiqués publics du FMI", statut: "a_brancher"}
+  - id: "humeur"
+    nom: "Humeur des électeurs"
+    organisation: "psychologique"
+    elements: ["colère contre l'inflation", "vote sanction", "espoir dans un outsider", "lassitude des scrutins répétés"]
+    niveau: {espace: "pays", temps: "mois", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "sondages publics", statut: "a_brancher"}
+  - id: "recoltes_exports"
+    nom: "Récoltes et exportations"
+    organisation: "vegetal"
+    elements: ["soja, maïs, blé", "sécheresses", "devises d'exportation"]
+    niveau: {espace: "pampa et régions agricoles", temps: "saisons", vitesse: "saisons", taille: "macro"}
+    traces:
+      - {source: "indice mondial des prix alimentaires (FRED, variation sur 12 mois)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM:var12"}
+relations:
+  - {de: "executif", vers: "assemblees", effet: "±", retour: "±", delai: "semaines", force: "forte", coupure: "majorité hostile", statut: "a_verifier", texte: "propre au niveau statut : l'exécutif propose, les chambres disposent ; sans majorité, un projet reste bloqué"}
+  - {de: "partis_gouverneurs", vers: "assemblees", effet: "±", delai: "semaines", force: "forte", intensite: {mesure: "nombre de voix encore à négocier", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau de l'entourage : les voix des sénateurs se négocient avec les gouverneurs ; un vote passe quand le seuil de la majorité est atteint"}
+  - {de: "assemblees", vers: "regles", effet: "±", delai: "semaines à mois", force: "forte", intensite: {mesure: "approbation par une première chambre", regle: "seuil"}, coupure: "veto ou recours", statut: "a_verifier", texte: "une réforme des primaires exige l'approbation des deux chambres ; la première approbation n'est qu'une étape"}
+  - {de: "regles", vers: "scrutins", effet: "±", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "passage de la convention à la société : supprimer des primaires change qui se présente et comment"}
+  - {de: "economie", vers: "humeur", effet: "-", delai: "mois", force: "forte", intensite: {mesure: "inflation mensuelle", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "l'inflation fait monter la colère des électeurs"}
+  - {de: "humeur", vers: "scrutins", effet: "±", delai: "mois", force: "forte", intensite: {mesure: "écart d'opinion à l'approche du scrutin", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "passage du psychologique à la société : la colère bascule le vote vers la sanction ou l'outsider"}
+  - {de: "scrutins", vers: "assemblees", effet: "±", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les élections de mi-mandat redessinent les majorités"}
+  - {de: "fmi", vers: "economie", effet: "±", retour: "±", delai: "mois", force: "moyenne", intensite: {mesure: "objectifs du programme tenus", regle: "seuil"}, coupure: "rupture du programme", statut: "a_verifier", texte: "déboursements contre conditions ; un objectif manqué suspend l'argent"}
+  - {de: "fmi", vers: "humeur", effet: "-", delai: "mois", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "l'austérité demandée pèse sur l'humeur des électeurs"}
+  - {de: "recoltes_exports", vers: "economie", effet: "+", delai: "saisons", force: "forte", intensite: {mesure: "sécheresse dans la pampa", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "passage du végétal à l'économie : une sécheresse prive le pays de devises"}
+  - {de: "executif", vers: "economie", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les choix de l'exécutif sur la monnaie et le budget"}
+ponts:
+  - {depuis: "economie", vers: "dette-emergents:politique_interieure", nature: "dette, ajustement et politique intérieure"}
+  - {depuis: "fmi", vers: "dette-emergents:fmi", nature: "le FMI vu par la dette des pays émergents", type: "meme"}
+  - {depuis: "recoltes_exports", vers: "alimentation-mondiale:cultures", nature: "un grand exportateur de céréales et de soja"}
+  - {depuis: "economie", vers: "inflation-mondiale:monnaies", nature: "un dollar fort pèse sur les monnaies de la région"}

@@ -1,120 +1,401 @@
-theme: "migrations-demographie"
-nom: "Migrations et démographie"
+theme: migrations-demographie
+nom: Migrations et démographie
 declaration:
-  but: "comprendre ce qui fait naître, vieillir, mourir et se déplacer les populations, et ce que ces mouvements lents ou brusques transmettent aux économies, aux politiques et aux frontières"
-  limites: "dedans la natalité, le vieillissement, la mortalité, les migrations (climatiques, économiques, de guerre), l'urbanisation, les diasporas et leurs transferts d'argent, les politiques migratoires et la psychologie de l'exil et de l'accueil ; dehors les épidémies (fiche voisine) et le détail des marchés du travail"
-  observateur: "notre carte, regard extérieur, à partir de statistiques publiques et de faits publics, toujours en agrégat"
-  date: "2026-11-19"
-  espace: "du village à la planète, avec les grands corridors migratoires"
-  temps: "de la journée (un exode) à la génération (la natalité) ; mémoire des grands exodes du XXe siècle"
-  vitesse: "jours (fuite devant une guerre), années (migrations économiques), décennies (vieillissement)"
-  taille: "micro (un ménage) à macro (une population)"
+  but: comprendre ce qui fait naître, vieillir, mourir et se déplacer les populations, et ce que ces mouvements lents ou brusques transmettent aux économies, aux politiques et aux frontières
+  limites: dedans la natalité, le vieillissement, la mortalité, les migrations (climatiques, économiques, de guerre), l'urbanisation, les diasporas et leurs transferts d'argent, les politiques migratoires
+    et la psychologie de l'exil et de l'accueil ; dehors les épidémies (fiche voisine) et le détail des marchés du travail
+  observateur: notre carte, regard extérieur, à partir de statistiques publiques et de faits publics, toujours en agrégat
+  date: '2026-11-19'
+  espace: du village à la planète, avec les grands corridors migratoires
+  temps: de la journée (un exode) à la génération (la natalité) ; mémoire des grands exodes du XXe siècle
+  vitesse: jours (fuite devant une guerre), années (migrations économiques), décennies (vieillissement)
+  taille: micro (un ménage) à macro (une population)
 compartiments:
-  - id: "natalite_vieillissement"
-    nom: "Natalité et vieillissement"
-    organisation: "societe"
-    elements: ["fécondité", "âge moyen", "pyramide des âges", "dépendance des plus âgés"]
-    acteurs:
-      - {nom: "un ménage qui décide d'avoir ou non un enfant", taille: "micro", espace: "local", vitesse: "années", organisation: "personne", facette: "collectif"}
-      - {nom: "la population d'un pays", taille: "macro", espace: "pays", vitesse: "décennie", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "pays", temps: "générations", vitesse: "décennie", taille: "macro"}
-    traces:
-      - {source: "perspectives démographiques de l'ONU (données publiques)", statut: "a_brancher"}
-  - id: "mortalite"
-    nom: "Mortalité"
-    organisation: "societe"
-    elements: ["espérance de vie", "mortalité infantile", "surmortalité (chaleur, guerre, famine)"]
-    niveau: {espace: "pays", temps: "années", vitesse: "mois à décennies", taille: "macro"}
-    traces:
-      - {source: "statistiques publiques de décès (ONU, instituts nationaux)", statut: "a_brancher"}
-  - id: "migrations"
-    nom: "Migrations"
-    organisation: "societe"
-    elements: ["migrations économiques", "exodes de guerre", "déplacements climatiques", "routes et passeurs (en agrégat)"]
-    acteurs:
-      - {nom: "une personne qui part (en agrégat, jamais nommée)", taille: "micro", espace: "local", vitesse: "jours", organisation: "personne", facette: "collectif"}
-      - {nom: "un flux de réfugiés", taille: "méso", espace: "région", vitesse: "semaines", organisation: "societe", facette: "collectif"}
-      - {nom: "le HCR et l'OIM", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "corridors et régions", temps: "jours à années", vitesse: "jours à années", taille: "micro à macro"}
-    traces:
-      - {source: "statistiques publiques du HCR et de l'OIM (matrice de suivi des déplacements)", statut: "a_brancher"}
-  - id: "urbanisation"
-    nom: "Urbanisation"
-    organisation: "technique"
-    elements: ["exode rural", "bidonvilles", "mégapoles", "logement"]
-    niveau: {espace: "villes", temps: "décennies", vitesse: "années", taille: "méso à macro"}
-    traces:
-      - {source: "données publiques d'urbanisation (ONU-Habitat)", statut: "a_brancher"}
-  - id: "diasporas"
-    nom: "Diasporas et transferts d'argent"
-    organisation: "economie"
-    elements: ["envois de fonds des émigrés", "réseaux familiaux", "influence politique des diasporas"]
-    acteurs:
-      - {nom: "une diaspora", taille: "méso", espace: "mondial", vitesse: "années", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "mensuel (envois)", vitesse: "mois", taille: "méso à macro"}
-    traces:
-      - {source: "données publiques de la Banque mondiale sur les envois de fonds", statut: "a_brancher"}
-  - id: "politiques_migratoires"
-    nom: "Politiques migratoires"
-    organisation: "statut"
-    elements: ["visas", "quotas", "accords de réadmission", "contrôles aux frontières"]
-    acteurs:
-      - {nom: "un gouvernement d'accueil", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "statut"}
-      - {nom: "une doctrine d'ouverture ou de fermeture", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
-    niveau: {espace: "pays", temps: "lois et décrets datés", vitesse: "mois à années", taille: "macro"}
-    traces:
-      - {source: "Federal Register (textes américains sur l'immigration)", statut: "collecte", fichier: "collecte_federal_register.py"}
-  - id: "convention"
-    nom: "Statuts et frontières (convention)"
-    organisation: "convention"
-    elements: ["statut de réfugié", "apatridie", "définition du migrant", "tracé des frontières"]
-    niveau: {espace: "pays", temps: "conventions et lois", vitesse: "années", taille: "macro"}
-    traces:
-      - {source: "textes publics du HCR et des États", statut: "a_brancher"}
-  - id: "psychologie"
-    nom: "Psychologie de l'exil et de l'accueil"
-    organisation: "psychologique"
-    elements: ["peur et espoir du départ", "traumatisme", "peur de l'autre", "hospitalité", "sentiment de déclassement"]
-    acteurs:
-      - {nom: "l'opinion d'un pays d'accueil", taille: "macro", espace: "pays", vitesse: "mois", organisation: "psychologique", facette: "psyche"}
-    niveau: {espace: "local à pays", temps: "mois à générations", vitesse: "jours à années", taille: "micro à macro"}
-    traces:
-      - {source: "GDELT (ton de la couverture sur les migrations)", statut: "collecte", fichier: "collecte_gdelt.py"}
-  - id: "climat_milieu"
-    nom: "Climat et milieu de départ"
-    organisation: "climat"
-    elements: ["sécheresses répétées", "montée des eaux", "chaleur extrême", "sols épuisés"]
-    acteurs:
-      - {nom: "un delta qui s'enfonce", taille: "méso", espace: "région", vitesse: "décennie", organisation: "eau", facette: "non_humain"}
-    niveau: {espace: "régions de départ", temps: "décennies", vitesse: "saisons à décennies", taille: "méso à macro"}
-    traces:
-      - {source: "dérive annuelle de la température à Delhi", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:delhi"}
-  - id: "economie"
-    nom: "Écarts de revenus et emploi"
-    organisation: "economie"
-    elements: ["écarts de salaires entre pays", "pénuries de main-d'œuvre", "chômage des jeunes"]
-    niveau: {espace: "mondial", temps: "cycles économiques", vitesse: "mois à années", taille: "macro"}
-    traces:
-      - {source: "taux de chômage américain (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:UNRATE"}
+- id: natalite_vieillissement
+  nom: Natalité et vieillissement
+  organisation: societe
+  elements:
+  - fécondité
+  - âge moyen
+  - pyramide des âges
+  - dépendance des plus âgés
+  acteurs:
+  - nom: un ménage qui décide d'avoir ou non un enfant
+    taille: micro
+    espace: local
+    vitesse: années
+    organisation: personne
+    facette: collectif
+  - nom: la population d'un pays
+    taille: macro
+    espace: pays
+    vitesse: décennie
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: décennie
+    taille: macro
+  traces:
+  - source: perspectives démographiques de l'ONU (données publiques)
+    statut: a_brancher
+- id: mortalite
+  nom: Mortalité
+  organisation: societe
+  elements:
+  - espérance de vie
+  - mortalité infantile
+  - surmortalité (chaleur, guerre, famine)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois à décennies
+    taille: macro
+  traces:
+  - source: statistiques publiques de décès (ONU, instituts nationaux)
+    statut: a_brancher
+- id: migrations
+  nom: Migrations
+  organisation: societe
+  elements:
+  - migrations économiques
+  - exodes de guerre
+  - déplacements climatiques
+  - routes et passeurs (en agrégat)
+  acteurs:
+  - nom: une personne qui part (en agrégat, jamais nommée)
+    taille: micro
+    espace: local
+    vitesse: jours
+    organisation: personne
+    facette: collectif
+  - nom: un flux de réfugiés
+    taille: méso
+    espace: région
+    vitesse: semaines
+    organisation: societe
+    facette: collectif
+  - nom: le HCR et l'OIM
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: corridors et régions
+    temps: jours à années
+    vitesse: jours à années
+    taille: micro à macro
+  traces:
+  - source: statistiques publiques du HCR et de l'OIM (matrice de suivi des déplacements)
+    statut: a_brancher
+  - source: risques humanitaires ouverts pour l'Ukraine (ACAPS)
+    statut: collecte
+    adaptateur: acaps_risques:UA
+  - source: morts de violence organisée au Soudan par jour (UCDP)
+    statut: collecte
+    adaptateur: ucdp:Sudan
+- id: urbanisation
+  nom: Urbanisation
+  organisation: technique
+  elements:
+  - exode rural
+  - bidonvilles
+  - mégapoles
+  - logement
+  niveau:
+    espace: villes
+    temps: décennies
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: données publiques d'urbanisation (ONU-Habitat)
+    statut: a_brancher
+- id: diasporas
+  nom: Diasporas et transferts d'argent
+  organisation: economie
+  elements:
+  - envois de fonds des émigrés
+  - réseaux familiaux
+  - influence politique des diasporas
+  acteurs:
+  - nom: une diaspora
+    taille: méso
+    espace: mondial
+    vitesse: années
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: mensuel (envois)
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - source: données publiques de la Banque mondiale sur les envois de fonds
+    statut: a_brancher
+- id: politiques_migratoires
+  nom: Politiques migratoires
+  organisation: statut
+  elements:
+  - visas
+  - quotas
+  - accords de réadmission
+  - contrôles aux frontières
+  acteurs:
+  - nom: un gouvernement d'accueil
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  - nom: une doctrine d'ouverture ou de fermeture
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: ideologie
+    facette: ideologie
+  niveau:
+    espace: pays
+    temps: lois et décrets datés
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: Federal Register (textes américains sur l'immigration)
+    statut: collecte
+    fichier: collecte_federal_register.py
+- id: convention
+  nom: Statuts et frontières (convention)
+  organisation: convention
+  elements:
+  - statut de réfugié
+  - apatridie
+  - définition du migrant
+  - tracé des frontières
+  niveau:
+    espace: pays
+    temps: conventions et lois
+    vitesse: années
+    taille: macro
+  traces:
+  - source: textes publics du HCR et des États
+    statut: a_brancher
+- id: psychologie
+  nom: Psychologie de l'exil et de l'accueil
+  organisation: psychologique
+  elements:
+  - peur et espoir du départ
+  - traumatisme
+  - peur de l'autre
+  - hospitalité
+  - sentiment de déclassement
+  acteurs:
+  - nom: l'opinion d'un pays d'accueil
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: psychologique
+    facette: psyche
+  niveau:
+    espace: local à pays
+    temps: mois à générations
+    vitesse: jours à années
+    taille: micro à macro
+  traces:
+  - source: GDELT (ton de la couverture sur les migrations)
+    statut: collecte
+    fichier: collecte_gdelt.py
+- id: climat_milieu
+  nom: Climat et milieu de départ
+  organisation: climat
+  elements:
+  - sécheresses répétées
+  - montée des eaux
+  - chaleur extrême
+  - sols épuisés
+  acteurs:
+  - nom: un delta qui s'enfonce
+    taille: méso
+    espace: région
+    vitesse: décennie
+    organisation: eau
+    facette: non_humain
+  niveau:
+    espace: régions de départ
+    temps: décennies
+    vitesse: saisons à décennies
+    taille: méso à macro
+  traces:
+  - source: dérive annuelle de la température à Delhi
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: climat:delhi
+- id: economie
+  nom: Écarts de revenus et emploi
+  organisation: economie
+  elements:
+  - écarts de salaires entre pays
+  - pénuries de main-d'œuvre
+  - chômage des jeunes
+  niveau:
+    espace: mondial
+    temps: cycles économiques
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: taux de chômage américain (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:UNRATE
 relations:
-  - {de: "natalite_vieillissement", vers: "economie", effet: "-", delai: "décennies", force: "forte", coupure: "immigration de travail, automatisation", statut: "a_verifier", texte: "une population qui vieillit manque de bras et pèse sur les retraites"}
-  - {de: "economie", vers: "migrations", effet: "+", delai: "années", force: "forte", intensite: {mesure: "écart de revenus entre pays de départ et d'arrivée", regle: "seuil"}, coupure: "coût et danger du voyage", statut: "a_verifier", texte: "on part quand l'écart de revenu dépasse le coût du départ"}
-  - {de: "climat_milieu", vers: "migrations", effet: "+", delai: "saisons à décennies", force: "moyenne", intensite: {mesure: "sécheresses répétées, pertes de récoltes", regle: "seuil"}, coupure: "adaptation locale, irrigation", statut: "a_verifier", texte: "un milieu qui ne nourrit plus pousse au départ au-delà d'un seuil de pertes répétées (passage du climat à la société)"}
-  - {de: "migrations", vers: "diasporas", effet: "+", retour: "+", forme: "mutualisme", delai: "années", force: "forte", coupure: "politiques de regroupement familial", statut: "a_verifier", texte: "les départs créent des diasporas, qui attirent et financent les départs suivants (réseaux)"}
-  - {de: "diasporas", vers: "economie", effet: "+", delai: "mois", force: "moyenne", coupure: "sanctions financières, coûts de transfert", statut: "a_verifier", texte: "les envois de fonds soutiennent les économies de départ"}
-  - {de: "migrations", vers: "psychologie", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "rapidité de l'arrivée et visibilité médiatique", regle: "seuil"}, coupure: "intégration, contacts réels", statut: "a_verifier", texte: "une arrivée rapide et très médiatisée fait basculer l'opinion de l'hospitalité à la peur"}
-  - {de: "psychologie", vers: "politiques_migratoires", effet: "-", delai: "mois à années", force: "forte", intensite: {mesure: "part de l'opinion hostile", regle: "seuil"}, coupure: "engagements internationaux", statut: "a_verifier", texte: "la peur collective ferme les frontières au-delà d'un seuil d'opinion (passage du psychologique au statut)"}
-  - {de: "politiques_migratoires", vers: "migrations", effet: "-", retour: "-", delai: "mois", force: "moyenne", coupure: "routes de contournement, passeurs", statut: "a_verifier", texte: "fermer une route en ouvre une autre, plus dangereuse ; les flux et les contrôles se répondent"}
-  - {de: "convention", vers: "migrations", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la même personne est réfugiée, migrante ou clandestine selon la définition : le statut change ce qui est compté et protégé"}
-  - {de: "convention", vers: "politiques_migratoires", effet: "±", delai: "années", force: "moyenne", coupure: "retrait des conventions", statut: "a_verifier", texte: "au sein du droit, les conventions internationales bornent les politiques nationales (relation entre convention et statut)"}
-  - {de: "mortalite", vers: "natalite_vieillissement", effet: "±", delai: "décennies", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau société : la baisse de la mortalité infantile précède la baisse de la natalité (transition démographique)"}
-  - {de: "urbanisation", vers: "natalite_vieillissement", effet: "-", delai: "décennies", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la ville fait baisser la fécondité"}
-  - {de: "migrations", vers: "urbanisation", effet: "+", delai: "années", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "l'exode rural et les arrivées gonflent les villes et leurs quartiers précaires"}
-  - {de: "climat_milieu", vers: "mortalite", effet: "+", delai: "jours à saisons", force: "moyenne", intensite: {mesure: "anomalie de chaleur", regle: "seuil"}, coupure: "climatisation, alertes", statut: "a_verifier", texte: "les vagues de chaleur tuent au-delà d'un seuil, surtout les plus âgés"}
+- de: natalite_vieillissement
+  vers: economie
+  effet: '-'
+  delai: décennies
+  force: forte
+  coupure: immigration de travail, automatisation
+  statut: a_verifier
+  texte: une population qui vieillit manque de bras et pèse sur les retraites
+- de: economie
+  vers: migrations
+  effet: +
+  delai: années
+  force: forte
+  intensite:
+    mesure: écart de revenus entre pays de départ et d'arrivée
+    regle: seuil
+  coupure: coût et danger du voyage
+  statut: a_verifier
+  texte: on part quand l'écart de revenu dépasse le coût du départ
+- de: climat_milieu
+  vers: migrations
+  effet: +
+  delai: saisons à décennies
+  force: moyenne
+  intensite:
+    mesure: sécheresses répétées, pertes de récoltes
+    regle: seuil
+  coupure: adaptation locale, irrigation
+  statut: a_verifier
+  texte: un milieu qui ne nourrit plus pousse au départ au-delà d'un seuil de pertes répétées (passage du climat à la société)
+- de: migrations
+  vers: diasporas
+  effet: +
+  retour: +
+  forme: mutualisme
+  delai: années
+  force: forte
+  coupure: politiques de regroupement familial
+  statut: a_verifier
+  texte: les départs créent des diasporas, qui attirent et financent les départs suivants (réseaux)
+- de: diasporas
+  vers: economie
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: sanctions financières, coûts de transfert
+  statut: a_verifier
+  texte: les envois de fonds soutiennent les économies de départ
+- de: migrations
+  vers: psychologie
+  effet: ±
+  delai: mois
+  force: moyenne
+  intensite:
+    mesure: rapidité de l'arrivée et visibilité médiatique
+    regle: seuil
+  coupure: intégration, contacts réels
+  statut: a_verifier
+  texte: une arrivée rapide et très médiatisée fait basculer l'opinion de l'hospitalité à la peur
+- de: psychologie
+  vers: politiques_migratoires
+  effet: '-'
+  delai: mois à années
+  force: forte
+  intensite:
+    mesure: part de l'opinion hostile
+    regle: seuil
+  coupure: engagements internationaux
+  statut: a_verifier
+  texte: la peur collective ferme les frontières au-delà d'un seuil d'opinion (passage du psychologique au statut)
+- de: politiques_migratoires
+  vers: migrations
+  effet: '-'
+  retour: '-'
+  delai: mois
+  force: moyenne
+  coupure: routes de contournement, passeurs
+  statut: a_verifier
+  texte: fermer une route en ouvre une autre, plus dangereuse ; les flux et les contrôles se répondent
+- de: convention
+  vers: migrations
+  effet: ±
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'la même personne est réfugiée, migrante ou clandestine selon la définition : le statut change ce qui est compté et protégé'
+- de: convention
+  vers: politiques_migratoires
+  effet: ±
+  delai: années
+  force: moyenne
+  coupure: retrait des conventions
+  statut: a_verifier
+  texte: au sein du droit, les conventions internationales bornent les politiques nationales (relation entre convention et statut)
+- de: mortalite
+  vers: natalite_vieillissement
+  effet: ±
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'propre au niveau société : la baisse de la mortalité infantile précède la baisse de la natalité (transition démographique)'
+- de: urbanisation
+  vers: natalite_vieillissement
+  effet: '-'
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la ville fait baisser la fécondité
+- de: migrations
+  vers: urbanisation
+  effet: +
+  delai: années
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'exode rural et les arrivées gonflent les villes et leurs quartiers précaires
+- de: climat_milieu
+  vers: mortalite
+  effet: +
+  delai: jours à saisons
+  force: moyenne
+  intensite:
+    mesure: anomalie de chaleur
+    regle: seuil
+  coupure: climatisation, alertes
+  statut: a_verifier
+  texte: les vagues de chaleur tuent au-delà d'un seuil, surtout les plus âgés
 ponts:
-  - {depuis: "climat_milieu", vers: "climat-extremes:exposes", nature: "les populations exposées aux extrêmes", type: "meme"}
-  - {depuis: "migrations", vers: "guerre-levant:humanitaire", nature: "les exodes de guerre"}
-  - {depuis: "natalite_vieillissement", vers: "economie-chinoise:demographie", nature: "le vieillissement chinois", type: "meme"}
-  - {depuis: "migrations", vers: "politique-americaine:elections", nature: "l'immigration comme enjeu électoral"}
-  - {depuis: "migrations", vers: "eau-moyen-orient:villes", nature: "la rareté de l'eau pousse vers les villes"}
-  - {depuis: "psychologie", vers: "information-cyber:recits", nature: "les récits sur les migrants"}
+- depuis: climat_milieu
+  vers: climat-extremes:exposes
+  nature: les populations exposées aux extrêmes
+  type: meme
+- depuis: migrations
+  vers: guerre-levant:humanitaire
+  nature: les exodes de guerre
+- depuis: natalite_vieillissement
+  vers: economie-chinoise:demographie
+  nature: le vieillissement chinois
+  type: meme
+- depuis: migrations
+  vers: politique-americaine:elections
+  nature: l'immigration comme enjeu électoral
+- depuis: migrations
+  vers: eau-moyen-orient:villes
+  nature: la rareté de l'eau pousse vers les villes
+- depuis: psychologie
+  vers: information-cyber:recits
+  nature: les récits sur les migrants

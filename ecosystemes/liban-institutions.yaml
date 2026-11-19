@@ -1,0 +1,105 @@
+theme: "liban-institutions"
+nom: "Institutions libanaises (justice, État, banque centrale)"
+declaration:
+  but: "comprendre comment décident les institutions libanaises (gouvernement, justice, banque centrale) dans un système de partage confessionnel du pouvoir ; une question du tournoi porte sur le renvoi d'une affaire d'explosifs au Conseil judiciaire : modéliser le mécanisme institutionnel"
+  limites: "dedans le partage confessionnel du pouvoir, le Conseil des ministres, la justice et ses enquêtes publiques, le Conseil judiciaire, la banque centrale et la crise financière, le Hezbollah comme acteur politique et armé en agrégat, les soutiens extérieurs ; dehors la guerre elle-même (fiche guerre-levant)"
+  observateur: "notre carte, regard extérieur, ton neutre, sources publiques"
+  date: "2026-11-19"
+  espace: "le Liban"
+  temps: "de la séance du Conseil des ministres au pacte national de 1943 (à vérifier) et à l'accord de Taëf de 1989 (à vérifier)"
+  vitesse: "la semaine (une décision du gouvernement), le mois (une enquête), la décennie (les équilibres confessionnels)"
+  taille: "méso (une institution) à macro (l'État)"
+compartiments:
+  - id: "justice"
+    nom: "Justice et Conseil judiciaire"
+    organisation: "statut"
+    elements: ["juges d'instruction", "Conseil judiciaire (juridiction pour les atteintes à la sûreté de l'État)", "immunités", "recours et dessaisissements"]
+    acteurs:
+      - {nom: "le Conseil judiciaire", taille: "méso", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
+      - {nom: "un juge d'instruction, dans sa fonction", taille: "micro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "statut"}
+    niveau: {espace: "pays", temps: "procédures de mois à années", vitesse: "mois", taille: "méso"}
+    traces:
+      - {source: "communiqués du Conseil des ministres et de la justice (Agence nationale d'information)", statut: "a_brancher"}
+  - id: "gouvernement"
+    nom: "Conseil des ministres"
+    organisation: "statut"
+    elements: ["décrets de renvoi au Conseil judiciaire", "quorum et consensus entre blocs", "gouvernement d'affaires courantes"]
+    acteurs:
+      - {nom: "la fonction de Premier ministre", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "statut"}
+      - {nom: "le Conseil des ministres", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays", temps: "séances hebdomadaires", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "ordres du jour publics du Conseil des ministres", statut: "a_brancher"}
+  - id: "confessionnalisme"
+    nom: "Partage confessionnel du pouvoir"
+    organisation: "convention"
+    elements: ["répartition des postes par communauté", "droit de blocage implicite", "consensus requis"]
+    niveau: {espace: "pays", temps: "décennies", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "fait institutionnel", statut: "inconnue"}
+  - id: "blocs_politiques"
+    nom: "Blocs politiques et leurs entourages"
+    organisation: "entourage"
+    elements: ["partis communautaires", "loyautés et clientèles", "alliances changeantes"]
+    acteurs:
+      - {nom: "le Hezbollah comme parti politique (en agrégat)", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
+      - {nom: "les autres blocs parlementaires (en agrégat)", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
+    niveau: {espace: "pays", temps: "élections et crises", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "GDELT (événements publics au Liban)", statut: "collecte", fichier: "collecte_gdelt.py"}
+  - id: "force_armee"
+    nom: "Forces armées et groupe armé"
+    organisation: "geopolitique"
+    elements: ["armée libanaise", "branche armée du Hezbollah (en agrégat)", "cessez-le-feu et désarmement en discussion"]
+    niveau: {espace: "pays et frontière sud", temps: "incidents à années", vitesse: "jours à années", taille: "macro"}
+    traces:
+      - {source: "ton des gestes israéliens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:ISR:LBN"}
+  - id: "banque_centrale"
+    nom: "Banque centrale et crise financière"
+    organisation: "economie"
+    elements: ["effondrement de la livre", "dépôts bloqués", "plans avec le FMI", "audits"]
+    acteurs:
+      - {nom: "la Banque du Liban", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays", temps: "années de crise", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "sanctions visant des personnes et entités libanaises (listes publiques)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:LB"}
+  - id: "opinion_colere"
+    nom: "Opinion, colère et attente de justice"
+    organisation: "psychologique"
+    elements: ["exigence de vérité après les explosions", "défiance envers les institutions", "lassitude"]
+    acteurs:
+      - {nom: "les familles de victimes, en agrégat", taille: "méso", espace: "pays", vitesse: "mois", organisation: "psychologique", facette: "psyche"}
+    niveau: {espace: "pays", temps: "anniversaires et enquêtes", vitesse: "semaines à années", taille: "méso"}
+    traces:
+      - {source: "dates de mémoire (anniversaires d'événements, registre des indicateurs de niche)", statut: "collecte", fichier: "indicateurs_niche.py"}
+  - id: "exterieur"
+    nom: "Soutiens et pressions extérieurs"
+    organisation: "geopolitique"
+    elements: ["Iran", "Arabie saoudite et pays du Golfe", "France et États-Unis", "FMI et bailleurs"]
+    niveau: {espace: "région et monde", temps: "années", vitesse: "semaines à années", taille: "macro"}
+    traces:
+      - {source: "ton des gestes iraniens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:IRN:LBN"}
+  - id: "internet_information"
+    nom: "Information et coupures"
+    organisation: "technique"
+    elements: ["médias communautaires", "réseaux sociaux", "coupures d'électricité et d'internet"]
+    niveau: {espace: "pays", temps: "jours", vitesse: "heures à jours", taille: "méso"}
+    traces:
+      - {source: "censure et coupures d'internet au Liban (OONI)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:LB"}
+relations:
+  - {de: "gouvernement", vers: "justice", effet: "+", delai: "semaines", force: "forte", intensite: {mesure: "consensus entre blocs au Conseil des ministres", regle: "seuil"}, coupure: "absence de quorum, gouvernement démissionnaire", statut: "a_verifier", texte: "propre au niveau statut : le renvoi d'une affaire au Conseil judiciaire passe par un décret du Conseil des ministres ; sans consensus, il n'est pas pris (mécanisme à vérifier sur les textes)"}
+  - {de: "confessionnalisme", vers: "gouvernement", effet: "-", forme: "contrainte", delai: "permanent", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le partage confessionnel donne à chaque bloc un pouvoir de blocage"}
+  - {de: "blocs_politiques", vers: "gouvernement", effet: "±", retour: "±", delai: "semaines", force: "forte", coupure: "accord politique global", statut: "a_verifier", texte: "propre au niveau de l'entourage : loyautés et rivalités font et défont les majorités au Conseil"}
+  - {de: "blocs_politiques", vers: "justice", effet: "-", delai: "mois", force: "moyenne", coupure: "pression publique forte", statut: "a_verifier", texte: "recours, immunités et dessaisissements freinent les enquêtes qui touchent un bloc"}
+  - {de: "opinion_colere", vers: "gouvernement", effet: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "mobilisation et proximité d'un anniversaire", regle: "seuil"}, coupure: "lassitude", statut: "a_verifier", texte: "passage du psychologique au statut : seule une mobilisation forte pousse le gouvernement à renvoyer une affaire"}
+  - {de: "force_armee", vers: "blocs_politiques", effet: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "le rapport de force armé pèse sur le poids politique des blocs"}
+  - {de: "exterieur", vers: "blocs_politiques", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les soutiens extérieurs renforcent les blocs qui leur sont proches"}
+  - {de: "exterieur", vers: "banque_centrale", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "réformes exigées réalisées", regle: "seuil"}, coupure: "blocage des réformes", statut: "a_verifier", texte: "l'aide du FMI et des bailleurs ne vient qu'au-delà d'un seuil de réformes"}
+  - {de: "banque_centrale", vers: "opinion_colere", effet: "+", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "des dépôts bloqués nourrissent la colère et la défiance"}
+  - {de: "justice", vers: "opinion_colere", effet: "-", delai: "mois", force: "moyenne", coupure: "verdict jugé partial", statut: "a_verifier", texte: "une avancée judiciaire visible apaise en partie l'exigence de justice"}
+  - {de: "internet_information", vers: "opinion_colere", effet: "+", delai: "jours", force: "faible", coupure: "coupures", statut: "a_verifier", texte: "les réseaux amplifient la colère autour d'une affaire"}
+ponts:
+  - {depuis: "force_armee", vers: "guerre-levant:liban", nature: "le même acteur armé vu par la guerre", type: "meme"}
+  - {depuis: "banque_centrale", vers: "dette-emergents:fmi", nature: "plans du FMI et crise financière"}
+  - {depuis: "exterieur", vers: "guerre-levant:iran", nature: "le soutien iranien"}
+  - {depuis: "banque_centrale", vers: "crises-bancaires:depots", nature: "dépôts bloqués, un cas de crise bancaire"}

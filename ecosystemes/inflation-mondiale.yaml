@@ -1,129 +1,349 @@
 theme: inflation-mondiale
 nom: Inflation mondiale
-declaration: {but: 'comprendre ce qui fait monter ou baisser les prix à la consommation, comment les banques centrales y répondent, et ce que cela transmet (questions du tournoi sur l''inflation, les taux, les monnaies, la dette)', limites: 'dedans les prix de l''énergie et de l''alimentation, les salaires, les anticipations, les banques centrales, les monnaies, les chaînes d''approvisionnement, les statistiques officielles ; dehors la croissance de long terme et la démographie (thèmes voisins)', observateur: 'notre bot et nos sources ouvertes, regard extérieur, depuis l''Europe ; données publiques seulement', date: '2026-11-19', espace: 'les grandes économies (États-Unis, zone euro, Chine) et le monde par les prix des matières premières et le dollar', temps: 'du relevé mensuel au cycle de plusieurs années ; mémoire des années 1970, de 2008 et de 2021-2023', vitesse: 'la séance (marchés), le mois (statistiques, décisions), l''année (salaires, contrats)', taille: 'un ménage, une entreprise,
-    une économie nationale, le monde'}
+declaration:
+  but: comprendre ce qui fait monter ou baisser les prix à la consommation, comment les banques centrales y répondent, et ce que cela transmet (questions du tournoi sur l'inflation, les taux, les monnaies,
+    la dette)
+  limites: dedans les prix de l'énergie et de l'alimentation, les salaires, les anticipations, les banques centrales, les monnaies, les chaînes d'approvisionnement, les statistiques officielles ; dehors
+    la croissance de long terme et la démographie (thèmes voisins)
+  observateur: notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; données publiques seulement
+  date: '2026-11-19'
+  espace: les grandes économies (États-Unis, zone euro, Chine) et le monde par les prix des matières premières et le dollar
+  temps: du relevé mensuel au cycle de plusieurs années ; mémoire des années 1970, de 2008 et de 2021-2023
+  vitesse: la séance (marchés), le mois (statistiques, décisions), l'année (salaires, contrats)
+  taille: un ménage, une entreprise, une économie nationale, le monde
 compartiments:
 - id: energie
   nom: Prix de l'énergie
   organisation: economie
-  elements: [carburants, gaz et électricité des ménages, coûts de production]
-  niveau: {espace: mondial, temps: séances ; factures mensuelles, vitesse: jours à mois, taille: macro}
+  elements:
+  - carburants
+  - gaz et électricité des ménages
+  - coûts de production
+  niveau:
+    espace: mondial
+    temps: séances ; factures mensuelles
+    vitesse: jours à mois
+    taille: macro
   traces:
-  - {source: prix du Brent (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:DCOILBRENTEU'}
+  - source: prix du Brent (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DCOILBRENTEU
 - id: alimentation
   nom: Prix alimentaires
   organisation: economie
-  elements: [céréales, huiles, engrais, récoltes, interdictions d'export]
-  niveau: {espace: mondial, temps: saisons ; récoltes, vitesse: mois, taille: macro}
+  elements:
+  - céréales
+  - huiles
+  - engrais
+  - récoltes
+  - interdictions d'export
+  niveau:
+    espace: mondial
+    temps: saisons ; récoltes
+    vitesse: mois
+    taille: macro
   traces:
-  - {source: indice mondial des prix alimentaires du FMI (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:PFOODINDEXM:var12'}
+  - source: indice mondial des prix alimentaires du FMI (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:PFOODINDEXM:var12
 - id: prix_conso
   nom: Prix à la consommation
   organisation: economie
-  elements: [inflation totale, inflation sous-jacente, loyers, services]
+  elements:
+  - inflation totale
+  - inflation sous-jacente
+  - loyers
+  - services
   acteurs:
-  - {nom: un ménage, taille: micro, espace: local, vitesse: mois, organisation: economie, facette: collectif}
-  niveau: {espace: pays, temps: publication mensuelle, vitesse: mois, taille: macro}
+  - nom: un ménage
+    taille: micro
+    espace: local
+    vitesse: mois
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: publication mensuelle
+    vitesse: mois
+    taille: macro
   traces:
-  - {source: indice des prix américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:CPIAUCSL:var12'}
-  - {source: prévision immédiate de l'inflation (Réserve fédérale de Cleveland), statut: collecte, fichier: collecte_nowcast_inflation.py, adaptateur: 'nowcast:variation_mensuelle:CPI'}
+  - source: indice des prix américain (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:CPIAUCSL:var12
+  - source: prévision immédiate de l'inflation (Réserve fédérale de Cleveland)
+    statut: collecte
+    fichier: collecte_nowcast_inflation.py
+    adaptateur: nowcast:variation_mensuelle:CPI
 - id: salaires
   nom: Salaires et emploi
   organisation: economie
-  elements: [négociations salariales, chômage, tensions sur le marché du travail, indexation]
+  elements:
+  - négociations salariales
+  - chômage
+  - tensions sur le marché du travail
+  - indexation
   acteurs:
-  - {nom: une entreprise, taille: micro, espace: local, vitesse: mois, organisation: economie, facette: collectif}
-  - {nom: les syndicats et les branches, taille: méso, espace: pays, vitesse: année, organisation: societe, facette: collectif}
-  niveau: {espace: pays, temps: contrats annuels, vitesse: mois à années, taille: méso à macro}
+  - nom: une entreprise
+    taille: micro
+    espace: local
+    vitesse: mois
+    organisation: economie
+    facette: collectif
+  - nom: les syndicats et les branches
+    taille: méso
+    espace: pays
+    vitesse: année
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: contrats annuels
+    vitesse: mois à années
+    taille: méso à macro
   traces:
-  - {source: salaire horaire moyen américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:CES0500000003:var12'}
-  - {source: taux de chômage américain (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:UNRATE'}
+  - source: salaire horaire moyen américain (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:CES0500000003:var12
+  - source: taux de chômage américain (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:UNRATE
 - id: anticipations
   nom: Anticipations d'inflation
   organisation: societe
-  elements: [inflation anticipée par les marchés, enquêtes auprès des ménages, crédibilité des banques centrales]
-  niveau: {espace: pays, temps: séances ; enquêtes mensuelles, vitesse: jours à mois, taille: macro}
+  elements:
+  - inflation anticipée par les marchés
+  - enquêtes auprès des ménages
+  - crédibilité des banques centrales
+  niveau:
+    espace: pays
+    temps: séances ; enquêtes mensuelles
+    vitesse: jours à mois
+    taille: macro
   traces:
-  - {source: inflation anticipée à 10 ans (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:T10YIE'}
+  - source: inflation anticipée à 10 ans (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:T10YIE
 - id: banques_centrales
   nom: Banques centrales
   organisation: statut
-  elements: [taux directeurs, bilans, communication, indépendance]
+  elements:
+  - taux directeurs
+  - bilans
+  - communication
+  - indépendance
   acteurs:
-  - {nom: Réserve fédérale, taille: macro, espace: mondial, vitesse: semaines, organisation: statut, facette: collectif}
-  - {nom: Banque centrale européenne, taille: macro, espace: continent, vitesse: semaines, organisation: statut, facette: collectif}
-  - {nom: Banque populaire de Chine, taille: macro, espace: pays, vitesse: semaines, organisation: statut, facette: collectif}
-  - {nom: le président d'une banque centrale (déclarations publiques), taille: micro, espace: pays, vitesse: semaines, organisation: personne, facette: personne}
-  - {nom: la doctrine du ciblage d'inflation, taille: macro, espace: mondial, vitesse: décennie, organisation: ideologie, facette: ideologie}
-  niveau: {espace: pays et zones monétaires, temps: réunions datées, vitesse: semaines, taille: macro}
+  - nom: Réserve fédérale
+    taille: macro
+    espace: mondial
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: Banque centrale européenne
+    taille: macro
+    espace: continent
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: Banque populaire de Chine
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: le président d'une banque centrale (déclarations publiques)
+    taille: micro
+    espace: pays
+    vitesse: semaines
+    organisation: personne
+    facette: personne
+  - nom: la doctrine du ciblage d'inflation
+    taille: macro
+    espace: mondial
+    vitesse: décennie
+    organisation: ideologie
+    facette: ideologie
+  niveau:
+    espace: pays et zones monétaires
+    temps: réunions datées
+    vitesse: semaines
+    taille: macro
   traces:
-  - {source: taux effectif de la Réserve fédérale (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:DFF'}
-  - {source: taux de dépôt de la BCE (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:ECBDFR'}
+  - source: taux effectif de la Réserve fédérale (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DFF
+  - source: taux de dépôt de la BCE (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:ECBDFR
 - id: monnaies
   nom: Monnaies et dollar
   organisation: economie
-  elements: [dollar, monnaies des pays émergents, prix des importations]
-  niveau: {espace: mondial, temps: séances, vitesse: jours, taille: macro}
+  elements:
+  - dollar
+  - monnaies des pays émergents
+  - prix des importations
+  niveau:
+    espace: mondial
+    temps: séances
+    vitesse: jours
+    taille: macro
   traces:
-  - {source: indice large du dollar (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:DTWEXBGS'}
+  - source: indice large du dollar (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DTWEXBGS
 - id: approvisionnement
   nom: Chaînes d'approvisionnement
   organisation: technique
-  elements: [fret maritime, délais de livraison, détroits, droits de douane]
-  niveau: {espace: routes mondiales, temps: semaines à mois, vitesse: semaines, taille: méso à macro}
+  elements:
+  - fret maritime
+  - délais de livraison
+  - détroits
+  - droits de douane
+  niveau:
+    espace: routes mondiales
+    temps: semaines à mois
+    vitesse: semaines
+    taille: méso à macro
   traces:
-  - {source: IMF PortWatch (porte-conteneurs à Suez), statut: collecte, fichier: collecte_portwatch.py, adaptateur: 'portwatch:suez:porte_conteneurs'}
+  - source: IMF PortWatch (porte-conteneurs à Suez)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:suez:porte_conteneurs
 - id: budget
   nom: Politique budgétaire
   organisation: statut
-  elements: [déficits, subventions et boucliers tarifaires, droits de douane, dette publique]
+  elements:
+  - déficits
+  - subventions et boucliers tarifaires
+  - droits de douane
+  - dette publique
   acteurs:
-  - {nom: un gouvernement national, taille: macro, espace: pays, vitesse: mois, organisation: statut, facette: collectif}
-  niveau: {espace: pays, temps: lois de finances ; échéances électorales, vitesse: mois à années, taille: macro}
+  - nom: un gouvernement national
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: lois de finances ; échéances électorales
+    vitesse: mois à années
+    taille: macro
   traces:
-  - {source: taux américain à 10 ans (FRED), statut: collecte, fichier: collecte_fred.py, adaptateur: 'fred:DGS10'}
+  - source: taux américain à 10 ans (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DGS10
 - id: statistiques
   nom: Statistiques officielles (convention)
   organisation: convention
-  elements: [méthodes de calcul, calendriers de publication, révisions, confiance dans les chiffres]
+  elements:
+  - méthodes de calcul
+  - calendriers de publication
+  - révisions
+  - confiance dans les chiffres
   acteurs:
-  - {nom: un institut statistique national, taille: méso, espace: pays, vitesse: mois, organisation: convention, facette: collectif}
-  niveau: {espace: pays, temps: calendriers de publication, vitesse: mois, taille: méso}
+  - nom: un institut statistique national
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: calendriers de publication
+    vitesse: mois
+    taille: méso
   traces:
-  - {source: calendrier des statistiques chinoises, statut: collecte, fichier: collecte_calendrier_nbs.py}
+  - source: calendrier des statistiques chinoises
+    statut: collecte
+    fichier: collecte_calendrier_nbs.py
+  - source: jours avant la prochaine publication prévue de l'inflation chinoise
+    statut: collecte
+    adaptateur: calendrier_nbs:ipc
 - id: elevage_cultures
   nom: Élevage et cultures (le vivant qui nourrit)
   organisation: animal
-  elements: [troupeaux et volailles, cultures, pâturages]
+  elements:
+  - troupeaux et volailles
+  - cultures
+  - pâturages
   acteurs:
-  - {nom: un élevage de volailles, taille: micro, espace: site, vitesse: semaines, organisation: animal, facette: non_humain}
-  - {nom: le cheptel d'un pays, taille: macro, espace: pays, vitesse: années, organisation: animal, facette: non_humain}
-  niveau: {espace: régions agricoles, temps: cycles d'élevage ; saisons, vitesse: mois à années, taille: micro à macro}
+  - nom: un élevage de volailles
+    taille: micro
+    espace: site
+    vitesse: semaines
+    organisation: animal
+    facette: non_humain
+  - nom: le cheptel d'un pays
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: animal
+    facette: non_humain
+  niveau:
+    espace: régions agricoles
+    temps: cycles d'élevage ; saisons
+    vitesse: mois à années
+    taille: micro à macro
   traces:
-  - {source: alertes publiques de santé animale (OMSA), statut: a_brancher}
+  - source: alertes publiques de santé animale (OMSA)
+    statut: a_brancher
 - id: epidemies
   nom: Épidémies (humaines et animales)
   organisation: microbiologique
-  elements: [virus de la grippe aviaire, peste porcine, épidémies humaines qui ferment usines et ports]
+  elements:
+  - virus de la grippe aviaire
+  - peste porcine
+  - épidémies humaines qui ferment usines et ports
   acteurs:
-  - {nom: un virus, taille: micro, espace: mondial, vitesse: jours, organisation: microbiologique, facette: non_humain}
-  niveau: {espace: local à mondial, temps: vagues de semaines à mois, vitesse: jours à mois, taille: micro}
+  - nom: un virus
+    taille: micro
+    espace: mondial
+    vitesse: jours
+    organisation: microbiologique
+    facette: non_humain
+  niveau:
+    espace: local à mondial
+    temps: vagues de semaines à mois
+    vitesse: jours à mois
+    taille: micro
   traces:
-  - {source: alertes publiques de l'OMS et de l'OMSA, statut: a_brancher}
+  - source: alertes publiques de l'OMS et de l'OMSA
+    statut: a_brancher
 - id: climat_regime
   nom: Climat (régime de long terme)
   organisation: climat
-  elements: [réchauffement moyen, sécheresses et chaleurs plus fréquentes sur les zones agricoles]
-  niveau: {espace: mondial, temps: décennies, vitesse: décennie, taille: macro}
+  elements:
+  - réchauffement moyen
+  - sécheresses et chaleurs plus fréquentes sur les zones agricoles
+  niveau:
+    espace: mondial
+    temps: décennies
+    vitesse: décennie
+    taille: macro
   traces:
-  - {source: dérive annuelle de la température à Delhi (Open-Meteo), statut: collecte, fichier: collecte_meteo.py, adaptateur: 'climat:delhi'}
+  - source: dérive annuelle de la température à Delhi (Open-Meteo)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: climat:delhi
 relations:
 - de: energie
   vers: prix_conso
   effet: +
   delai: semaines à mois
   force: forte
-  intensite: {mesure: écart du Brent à sa moyenne récente, regle: proportionnelle}
+  intensite:
+    mesure: écart du Brent à sa moyenne récente
+    regle: proportionnelle
   coupure: boucliers tarifaires et subventions
   statut: a_verifier
   texte: l'énergie passe vite dans les prix, d'abord par les carburants
@@ -132,7 +352,9 @@ relations:
   effet: +
   delai: mois
   force: moyenne
-  intensite: {mesure: écart de l'indice alimentaire à sa moyenne, regle: proportionnelle}
+  intensite:
+    mesure: écart de l'indice alimentaire à sa moyenne
+    regle: proportionnelle
   coupure: part de l'alimentation dans le panier (forte dans les pays pauvres)
   statut: a_verifier
   texte: les prix alimentaires pèsent plus lourd dans les pays pauvres
@@ -143,7 +365,9 @@ relations:
   forme: mutualisme
   delai: mois à années
   force: moyenne
-  intensite: {mesure: tension sur le marché du travail, regle: seuil}
+  intensite:
+    mesure: tension sur le marché du travail
+    regle: seuil
   coupure: chômage élevé, salaires non indexés
   statut: a_verifier
   texte: 'boucle prix-salaires : chacun nourrit l''autre quand le travail manque'
@@ -152,20 +376,53 @@ relations:
   effet: +
   delai: mois
   force: moyenne
-  intensite: {mesure: durée de l'inflation au-dessus de la cible, regle: hysteresis}
+  intensite:
+    mesure: durée de l'inflation au-dessus de la cible
+    regle: hysteresis
   coupure: banque centrale crédible
   statut: a_verifier
   texte: une inflation qui dure désancre les anticipations ; elles ne redescendent pas par le même chemin
-- {de: anticipations, vers: prix_conso, effet: +, delai: mois, force: moyenne, coupure: crédibilité retrouvée, statut: a_verifier, texte: des anticipations hautes font fixer des prix et des salaires plus hauts}
-- {de: prix_conso, vers: banques_centrales, effet: +, retour: '-', delai: semaines, force: forte, coupure: contraintes politiques sur la banque centrale, statut: a_verifier, texte: 'boucle de régulation : l''inflation fait monter les taux, les taux freinent l''inflation'}
-- {de: banques_centrales, vers: salaires, effet: '-', delai: mois à années, force: moyenne, coupure: politique budgétaire expansive, statut: a_verifier, texte: 'la hausse des taux refroidit l''activité et le marché du travail, avec un long retard'}
-- {de: banques_centrales, vers: monnaies, effet: +, delai: jours, force: forte, coupure: si les autres banques centrales suivent, statut: a_verifier, texte: des taux américains plus hauts renforcent le dollar}
+- de: anticipations
+  vers: prix_conso
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: crédibilité retrouvée
+  statut: a_verifier
+  texte: des anticipations hautes font fixer des prix et des salaires plus hauts
+- de: prix_conso
+  vers: banques_centrales
+  effet: +
+  retour: '-'
+  delai: semaines
+  force: forte
+  coupure: contraintes politiques sur la banque centrale
+  statut: a_verifier
+  texte: 'boucle de régulation : l''inflation fait monter les taux, les taux freinent l''inflation'
+- de: banques_centrales
+  vers: salaires
+  effet: '-'
+  delai: mois à années
+  force: moyenne
+  coupure: politique budgétaire expansive
+  statut: a_verifier
+  texte: la hausse des taux refroidit l'activité et le marché du travail, avec un long retard
+- de: banques_centrales
+  vers: monnaies
+  effet: +
+  delai: jours
+  force: forte
+  coupure: si les autres banques centrales suivent
+  statut: a_verifier
+  texte: des taux américains plus hauts renforcent le dollar
 - de: monnaies
   vers: prix_conso
   effet: ±
   delai: mois
   force: moyenne
-  intensite: {mesure: variation du dollar, regle: proportionnelle}
+  intensite:
+    mesure: variation du dollar
+    regle: proportionnelle
   coupure: économies peu importatrices
   statut: a_verifier
   texte: un dollar fort importe de l'inflation chez les autres et en exporte peu aux États-Unis
@@ -174,19 +431,46 @@ relations:
   effet: +
   delai: mois
   force: moyenne
-  intensite: {mesure: perturbations des détroits et du fret, regle: seuil}
+  intensite:
+    mesure: perturbations des détroits et du fret
+    regle: seuil
   coupure: stocks des entreprises
   statut: a_verifier
   texte: des chaînes bloquées font monter les prix des biens
-- {de: budget, vers: prix_conso, effet: ±, delai: mois, force: moyenne, coupure: économie en sous-emploi, statut: a_verifier, texte: subventions et boucliers baissent les prix mesurés ; déficits et droits de douane les montent}
-- {de: budget, vers: banques_centrales, effet: '-', retour: '-', forme: competition, delai: mois, force: faible, coupure: coordination, statut: a_verifier, texte: 'quand le budget relance et la banque centrale freine, chacun réduit l''effet de l''autre'}
-- {de: statistiques, vers: banques_centrales, effet: ±, delai: jours, force: moyenne, coupure: révisions ultérieures, statut: a_verifier, texte: 'les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée'}
+- de: budget
+  vers: prix_conso
+  effet: ±
+  delai: mois
+  force: moyenne
+  coupure: économie en sous-emploi
+  statut: a_verifier
+  texte: subventions et boucliers baissent les prix mesurés ; déficits et droits de douane les montent
+- de: budget
+  vers: banques_centrales
+  effet: '-'
+  retour: '-'
+  forme: competition
+  delai: mois
+  force: faible
+  coupure: coordination
+  statut: a_verifier
+  texte: quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre
+- de: statistiques
+  vers: banques_centrales
+  effet: ±
+  delai: jours
+  force: moyenne
+  coupure: révisions ultérieures
+  statut: a_verifier
+  texte: les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée
 - de: epidemies
   vers: elevage_cultures
   effet: '-'
   delai: semaines
   force: forte
-  intensite: {mesure: nombre de foyers déclarés, regle: seuil}
+  intensite:
+    mesure: nombre de foyers déclarés
+    regle: seuil
   coupure: vaccination, biosécurité
   statut: a_verifier
   texte: 'une épizootie (grippe aviaire, peste porcine) décime des élevages : l''effet passe du microbe à l''animal'
@@ -195,7 +479,9 @@ relations:
   effet: ±
   delai: semaines à mois
   force: moyenne
-  intensite: {mesure: part du cheptel ou de la récolte perdue, regle: seuil}
+  intensite:
+    mesure: part du cheptel ou de la récolte perdue
+    regle: seuil
   coupure: importations, stocks
   statut: a_verifier
   texte: des pertes d'élevage ou de récolte font monter certains prix alimentaires (œufs, porc, céréales)
@@ -204,27 +490,68 @@ relations:
   effet: '-'
   delai: semaines
   force: forte
-  intensite: {mesure: mesures de fermeture en vigueur, regle: seuil}
+  intensite:
+    mesure: mesures de fermeture en vigueur
+    regle: seuil
   coupure: fin des restrictions
   statut: a_verifier
   texte: une épidémie humaine ferme usines, ports et frontières
-- {de: epidemies, vers: statistiques, effet: ±, delai: jours à mois, force: moyenne, coupure: inconnue, statut: a_verifier, texte: 'un virus existe, mais ce qui en est compté dépend de conventions : définition d''un cas, déclaration d''urgence, méthode des indices de prix'}
+- de: epidemies
+  vers: statistiques
+  effet: ±
+  delai: jours à mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'un virus existe, mais ce qui en est compté dépend de conventions : définition d''un cas, déclaration d''urgence, méthode des indices de prix'
 - de: climat_regime
   vers: elevage_cultures
   effet: '-'
   delai: années
   force: moyenne
-  intensite: {mesure: dérive annuelle de la température, regle: proportionnelle}
+  intensite:
+    mesure: dérive annuelle de la température
+    regle: proportionnelle
   coupure: irrigation, variétés adaptées
   statut: a_verifier
   texte: un climat plus chaud et plus sec réduit rendements et pâturages
-- {de: monnaies, vers: energie, effet: ±, delai: jours à semaines, force: moyenne, coupure: pays exportateurs d'énergie, statut: a_verifier, texte: 'au sein du niveau économique : un dollar fort renchérit l''énergie, payée en dollars, pour les autres pays'}
-- {de: budget, vers: statistiques, effet: ±, delai: mois, force: faible, coupure: indépendance de l'institut, statut: a_verifier, texte: 'au croisement du statut et de la convention : subventions et boucliers changent le chiffre mesuré sans changer la cause'}
+- de: monnaies
+  vers: energie
+  effet: ±
+  delai: jours à semaines
+  force: moyenne
+  coupure: pays exportateurs d'énergie
+  statut: a_verifier
+  texte: 'au sein du niveau économique : un dollar fort renchérit l''énergie, payée en dollars, pour les autres pays'
+- de: budget
+  vers: statistiques
+  effet: ±
+  delai: mois
+  force: faible
+  coupure: indépendance de l'institut
+  statut: a_verifier
+  texte: 'au croisement du statut et de la convention : subventions et boucliers changent le chiffre mesuré sans changer la cause'
 ponts:
-- {depuis: energie, vers: 'energie-mondiale:prix', type: meme, nature: le prix de l'énergie vient du marché mondial}
-- {depuis: energie, vers: 'ormuz:prix', type: meme, nature: un choc sur Ormuz passe par les prix de l'énergie}
-- {depuis: approvisionnement, vers: 'transport-maritime:detroits', nature: les détroits et le fret}
-- {depuis: alimentation, vers: 'alimentation-mondiale:prix', nature: 'récoltes, engrais, interdictions d''export'}
-- {depuis: monnaies, vers: 'dette-emergents:monnaies', nature: un dollar fort serre les pays endettés en dollars}
-- {depuis: budget, vers: 'politique-americaine:budget', nature: 'droits de douane, déficits, pression sur la Réserve fédérale'}
-- {depuis: statistiques, vers: 'economie-chinoise:statistiques', nature: fiabilité des chiffres officiels chinois}
+- depuis: energie
+  vers: energie-mondiale:prix
+  type: meme
+  nature: le prix de l'énergie vient du marché mondial
+- depuis: energie
+  vers: ormuz:prix
+  type: meme
+  nature: un choc sur Ormuz passe par les prix de l'énergie
+- depuis: approvisionnement
+  vers: transport-maritime:detroits
+  nature: les détroits et le fret
+- depuis: alimentation
+  vers: alimentation-mondiale:prix
+  nature: récoltes, engrais, interdictions d'export
+- depuis: monnaies
+  vers: dette-emergents:monnaies
+  nature: un dollar fort serre les pays endettés en dollars
+- depuis: budget
+  vers: politique-americaine:budget
+  nature: droits de douane, déficits, pression sur la Réserve fédérale
+- depuis: statistiques
+  vers: economie-chinoise:statistiques
+  nature: fiabilité des chiffres officiels chinois

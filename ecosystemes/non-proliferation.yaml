@@ -1,0 +1,96 @@
+theme: "non-proliferation"
+nom: "Régime de non-prolifération"
+declaration:
+  but: "comprendre ce qui renforce ou érode le régime mondial de non-prolifération nucléaire ; niveau des traités et des institutions seulement, aucun détail technique"
+  limites: "dedans le traité de non-prolifération, l'AIEA, les garanties et inspections, les zones dénucléarisées, les sanctions, la dissuasion au niveau des traités, le Conseil de sécurité ; dehors tout détail sur les matières, les procédés ou les armes"
+  observateur: "notre carte, regard extérieur, ton neutre, sources publiques"
+  date: "2026-11-19"
+  espace: "le monde"
+  temps: "du rapport trimestriel de l'AIEA au cycle de révision du traité tous les cinq ans (à vérifier)"
+  vitesse: "la semaine (une résolution), l'année (un rapport), la décennie (un traité)"
+  taille: "macro"
+compartiments:
+  - id: "regime"
+    nom: "Le régime : traité, normes et confiance"
+    organisation: "convention"
+    elements: ["traité de non-prolifération", "norme du non-recours", "conférences d'examen", "confiance mutuelle"]
+    niveau: {espace: "monde", temps: "décennies", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "documents publics des conférences d'examen (ONU)", statut: "a_brancher"}
+  - id: "aiea"
+    nom: "AIEA, garanties et inspections"
+    organisation: "statut"
+    elements: ["accords de garanties", "rapports au Conseil des gouverneurs", "accès des inspecteurs"]
+    acteurs:
+      - {nom: "l'AIEA", taille: "macro", espace: "monde", vitesse: "mois", organisation: "statut", facette: "collectif"}
+      - {nom: "le Conseil des gouverneurs de l'AIEA", taille: "macro", espace: "monde", vitesse: "trimestre", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "monde", temps: "réunions trimestrielles", vitesse: "trimestre", taille: "macro"}
+    traces:
+      - {source: "rapports et communiqués publics de l'AIEA", statut: "a_brancher"}
+  - id: "conseil_securite"
+    nom: "Conseil de sécurité"
+    organisation: "statut"
+    elements: ["résolutions", "veto des membres permanents", "rétablissement des sanctions"]
+    niveau: {espace: "monde", temps: "séances", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "routines officielles (ONU)", statut: "collecte", fichier: "collecte_routines.py"}
+  - id: "sanctions"
+    nom: "Sanctions"
+    organisation: "economie"
+    elements: ["sanctions multilatérales et unilatérales", "contournement"]
+    niveau: {espace: "monde", temps: "années", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "sanctions visant l'Iran", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:IR"}
+      - {source: "sanctions visant la Corée du Nord", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:KP"}
+  - id: "dissuasion"
+    nom: "Dissuasion des puissances dotées"
+    organisation: "geopolitique"
+    elements: ["doctrines déclarées", "garanties aux alliés", "traités de limitation"]
+    niveau: {espace: "monde", temps: "décennies", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "ton des gestes américains envers la Russie (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:RUS"}
+  - id: "etats_du_seuil"
+    nom: "États proches du seuil ou hors traité"
+    organisation: "geopolitique"
+    elements: ["États qui ne sont pas parties au traité", "programmes sous inspection contestée", "menaces de retrait"]
+    niveau: {espace: "régions", temps: "années", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "ton des gestes américains envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:IRN"}
+  - id: "zones"
+    nom: "Zones exemptes d'armes nucléaires"
+    organisation: "convention"
+    elements: ["traités régionaux de dénucléarisation", "projets de zone au Moyen-Orient"]
+    niveau: {espace: "régions", temps: "décennies", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "fait institutionnel", statut: "inconnue"}
+  - id: "peur_prestige"
+    nom: "Peur, prestige et sentiment d'insécurité"
+    organisation: "psychologique"
+    elements: ["sentiment d'insécurité des dirigeants", "prestige attaché à l'arme", "méfiance envers les garanties"]
+    niveau: {espace: "États", temps: "années", vitesse: "mois à années", taille: "méso à macro"}
+    traces:
+      - {source: "aucune trace ouverte directe", statut: "inconnue"}
+  - id: "civil"
+    nom: "Nucléaire civil"
+    organisation: "atomique"
+    elements: ["centrales et recherche", "coopération civile encadrée", "sûreté"]
+    niveau: {espace: "pays", temps: "décennies", vitesse: "années", taille: "méso à macro"}
+    traces:
+      - {source: "base publique des réacteurs (AIEA)", statut: "a_brancher"}
+relations:
+  - {de: "aiea", vers: "regime", effet: "+", delai: "mois", force: "forte", coupure: "accès refusé aux inspecteurs", statut: "a_verifier", texte: "des inspections crédibles entretiennent la confiance dans le régime"}
+  - {de: "etats_du_seuil", vers: "aiea", effet: "-", retour: "-", delai: "mois", force: "moyenne", intensite: {mesure: "accès des inspecteurs réduit", regle: "seuil"}, coupure: "accord négocié", statut: "a_verifier", texte: "un État qui réduit l'accès entre en compétition avec l'institution ; au-delà d'un seuil, rapport au Conseil des gouverneurs"}
+  - {de: "aiea", vers: "conseil_securite", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "gravité du constat de non-respect", regle: "seuil"}, coupure: "veto", statut: "a_verifier", texte: "propre au niveau statut : un constat grave peut être renvoyé au Conseil de sécurité"}
+  - {de: "conseil_securite", vers: "sanctions", effet: "+", delai: "semaines", force: "forte", coupure: "veto d'un membre permanent", statut: "a_verifier", texte: "les sanctions multilatérales passent par le Conseil, et s'arrêtent au veto"}
+  - {de: "sanctions", vers: "etats_du_seuil", effet: "-", retour: "-", delai: "mois à années", force: "moyenne", intensite: {mesure: "sanctions déjà en place", regle: "saturation"}, coupure: "contournement", statut: "a_verifier", texte: "les sanctions pèsent de moins en moins à mesure qu'elles s'accumulent"}
+  - {de: "peur_prestige", vers: "etats_du_seuil", effet: "+", delai: "années", force: "moyenne", intensite: {mesure: "sentiment d'insécurité", regle: "seuil"}, coupure: "garantie de sécurité crédible", statut: "a_verifier", texte: "passage du psychologique au géopolitique : l'insécurité ressentie pousse vers le seuil"}
+  - {de: "dissuasion", vers: "peur_prestige", effet: "±", delai: "années", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "une garantie crédible rassure les alliés ; une menace nourrit l'insécurité des autres"}
+  - {de: "dissuasion", vers: "regime", effet: "±", delai: "années", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la réduction des arsenaux des puissances dotées renforce la légitimité du traité, son blocage l'érode"}
+  - {de: "etats_du_seuil", vers: "regime", effet: "-", delai: "années", force: "forte", intensite: {mesure: "retrait annoncé ou essai", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "un retrait du traité ou un franchissement du seuil peut entraîner des voisins (effet domino, à vérifier)"}
+  - {de: "zones", vers: "regime", effet: "+", delai: "décennie", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau convention : les zones régionales consolident la norme"}
+  - {de: "civil", vers: "aiea", effet: "+", delai: "années", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "la coopération civile se fait sous garanties, ce qui étend le contrôle"}
+ponts:
+  - {depuis: "regime", vers: "iran-nucleaire:conseil_securite", nature: "le dossier iranien est un test du régime"}
+  - {depuis: "aiea", vers: "iran-nucleaire:verification", nature: "les inspections en Iran", type: "meme"}
+  - {depuis: "civil", vers: "nucleaire-radiologique:surete", nature: "sûreté du nucléaire civil"}
+  - {depuis: "dissuasion", vers: "rivalite-sino-americaine:atomique", nature: "la dimension nucléaire de la rivalité"}

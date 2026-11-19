@@ -1,15 +1,8 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'ponts_en_attente': 8, 'relations_a_verifier': 366, 'relations_avec_intensite': 172, 'compartiments_sans_trace_collectee': 122}
+Bilan : {'themes': 34, 'compartiments': 385, 'relations': 543, 'ponts': 220, 'ponts_en_attente': 0, 'relations_a_verifier': 543, 'relations_avec_intensite': 249, 'compartiments_sans_trace_collectee': 173}
 
 ## Thèmes à écrire (ponts en attente)
-- **infrastructures-critiques** (2 pont(s)) : climat-extremes:exposes → infrastructures-critiques:reseaux (réseaux électriques et de transport face aux extrêmes) ; eau-moyen-orient:dessalement → infrastructures-critiques:reseaux (les usines de dessalement, infrastructures vulnérables)
-- **crises-bancaires** (1 pont(s)) : dette-emergents:banques → crises-bancaires:depots (faillites et fermetures de banques (exemple du tournoi : Paraguay))
-- **elections-amerique-latine** (1 pont(s)) : dette-emergents:politique_interieure → elections-amerique-latine:scrutins (élections et ajustements en Amérique latine)
-- **liban-institutions** (1 pont(s)) : guerre-levant:liban → liban-institutions:justice (les institutions et la justice libanaises (questions du tournoi))
-- **non-proliferation** (1 pont(s)) : iran-nucleaire:conseil_securite → non-proliferation:regime (le régime mondial de non-prolifération)
-- **securite-publique** (1 pont(s)) : nucleaire-radiologique:signalement → securite-publique:alertes (les alertes publiques et la protection civile (thème à écrire))
-- **securite-europeenne** (1 pont(s)) : russie-ukraine:soutiens → securite-europeenne:defense (le réarmement européen et l'OTAN)
 
 ## Compartiments sans trace collectée (à notre portée ? ou oubliés ?)
 - alimentation-mondiale:sols : indices de végétation par satellite (NDVI, données publiques) (a_brancher)
@@ -17,11 +10,12 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - alimentation-mondiale:cultures : prévisions de récolte publiques (FAO, USDA) (a_brancher)
 - alimentation-mondiale:ravageurs : bulletins de veille acridienne (FAO, publics) (a_brancher)
 - alimentation-mondiale:stocks : bilans offre-demande publics (USDA, AMIS) (a_brancher)
-- alimentation-mondiale:importateurs : prix alimentaires locaux (FAO, publics) (a_brancher)
 - alimentation-mondiale:elevage : statistiques publiques du cheptel (FAOSTAT) (a_brancher)
 - alimentation-mondiale:chimie_sols : cartes publiques des sols (teneurs en nutriments, acidité) (a_brancher)
 - alimentation-mondiale:pathogenes : notifications publiques des maladies animales (OMSA, WAHIS) (a_brancher)
 - alimentation-mondiale:pollinisateurs : suivis publics des colonies et des pollinisateurs (a_brancher)
+- calendriers-echeances:banques_centrales : calendriers publics des réunions (Réserve fédérale, BCE, OPEP+) (a_brancher)
+- calendriers-echeances:anticipations : aucune trace directe ; lisible dans le rythme des déclarations (inconnue)
 - climat-extremes:oceans : températures de surface de la mer (NOAA, publiques) (a_brancher)
 - climat-extremes:oscillations : indice ENSO mensuel (NOAA, public) (a_brancher)
 - climat-extremes:atmosphere : réanalyses atmosphériques (publiques) (a_brancher)
@@ -31,6 +25,17 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - climat-extremes:chimie_atmosphere : concentrations mondiales de CO2 et de méthane (NOAA, publiques) (a_brancher)
 - climat-extremes:rayonnement : indices publics d'activité solaire et étendue de la banquise (NOAA, NSIDC) (a_brancher)
 - climat-extremes:relief : modèles numériques de terrain publics (a_brancher)
+- competitions-culture:regles : règlements publics des fédérations et des académies (a_brancher)
+- competitions-culture:forme : résultats sportifs publics (a_brancher)
+- competitions-culture:psychologie : aucune trace directe : déduite des séries de résultats (inconnue)
+- competitions-culture:argent : chiffres publics du box-office (a_brancher)
+- competitions-culture:calendrier : calendriers publics des fédérations et des cérémonies (a_brancher)
+- competitions-culture:milieu : anomalie de température (point le plus proche à brancher) (a_brancher)
+- competitions-culture:geopolitique : décisions publiques des fédérations et des États (a_brancher)
+- crises-bancaires:depots : publications des banques centrales sur les dépôts bancaires (a_brancher)
+- crises-bancaires:confiance : attention médiatique et recherches en ligne sur une banque (a_brancher)
+- crises-bancaires:cryptomonnaies : cours publics des cryptomonnaies (a_brancher)
+- crises-bancaires:convention : communiqués publics des agences de notation (a_brancher)
 - cycles-biogeochimiques:carbone : concentrations mensuelles de dioxyde de carbone (NOAA, Mauna Loa) (a_brancher)
 - cycles-biogeochimiques:azote : statistiques publiques d'usage d'engrais (FAO) (a_brancher)
 - cycles-biogeochimiques:soufre : mesures satellitaires publiques du dioxyde de soufre (Copernicus) (a_brancher)
@@ -55,12 +60,16 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - eau-moyen-orient:chimie_eau : relevés publics de qualité de l'eau (programmes de surveillance nationaux et ONU-Environnement) (a_brancher)
 - eau-moyen-orient:maladies_hydriques : bulletins publics de l'OMS sur le choléra (a_brancher)
 - economie-chinoise:immobilier : prix et ventes de logements (publication mensuelle officielle) (a_brancher)
-- economie-chinoise:consommation : commerce de détail et prix à la consommation (publication officielle) (a_brancher)
 - economie-chinoise:emploi : taux de chômage des jeunes (publication officielle mensuelle) (a_brancher)
 - economie-chinoise:politique_monetaire : communiqués de la banque centrale chinoise (publics) (a_brancher)
 - economie-chinoise:demographie : annuaires statistiques publics (Bureau national des statistiques) (a_brancher)
 - economie-chinoise:epizooties : déclarations publiques à l'Organisation mondiale de la santé animale (WAHIS) (a_brancher)
 - economie-chinoise:sols_chimie : statistiques agricoles publiques (a_brancher)
+- elections-amerique-latine:regles : bulletins officiels des lois (publications publiques) (a_brancher)
+- elections-amerique-latine:assemblees : ordres du jour publics du Sénat (a_brancher)
+- elections-amerique-latine:partis_gouverneurs : aucune trace ouverte directe (inconnue)
+- elections-amerique-latine:fmi : communiqués publics du FMI (a_brancher)
+- elections-amerique-latine:humeur : sondages publics (a_brancher)
 - energie-mondiale:production : communiqués des réunions de l'OPEP+ (a_brancher), nombre de forages actifs (publication hebdomadaire publique) (a_brancher)
 - energie-mondiale:stocks : stocks commerciaux de brut américains (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu) (a_brancher), réserve stratégique américaine (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu) (a_brancher)
 - energie-mondiale:chimie_combustion : émissions mondiales de CO2 (Global Carbon Project, données publiques) (a_brancher)
@@ -84,18 +93,35 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - foret-et-sols-vivants:predateurs : aucune trace ouverte connue (inconnue)
 - foret-et-sols-vivants:climat : dérive annuelle de la température (anomalie glissante sur 365 jours, Open-Meteo, point le plus proche à brancher) (a_brancher)
 - foret-et-sols-vivants:interventions : statistiques publiques de récolte de bois et d'usage de pesticides (a_brancher)
-- guerre-levant:humanitaire : rapports publics OCHA et ACAPS (a_brancher)
 - guerre-levant:relief : modèles numériques de terrain publics (a_brancher)
 - guerre-levant:eau : rapports publics des agences de l'ONU sur l'eau et l'assainissement (a_brancher)
 - guerre-levant:epidemies : bulletins publics de l'OMS (a_brancher)
 - guerre-levant:convention : documents publics de l'ONU (a_brancher)
 - inflation-mondiale:elevage_cultures : alertes publiques de santé animale (OMSA) (a_brancher)
 - inflation-mondiale:epidemies : alertes publiques de l'OMS et de l'OMSA (a_brancher)
+- information-cyber:foules : aucune trace directe ; lisible dans les pics d'attention et le ton (inconnue)
+- infrastructures-critiques:cascades : rapports publics des gestionnaires de réseau après incident (a_brancher)
+- infrastructures-critiques:eau_refroidissement : débits et températures des fleuves (services hydrologiques publics) (a_brancher)
+- infrastructures-critiques:physique_espace : indices géomagnétiques publics (NOAA, centre de prévision de la météo spatiale) (a_brancher)
+- infrastructures-critiques:population : aucune trace ouverte directe (inconnue)
 - iran-nucleaire:verification : rapports publics de l'Agence internationale de l'énergie atomique (a_brancher)
 - iran-nucleaire:conseil_securite : documents publics du Conseil de sécurité de l'ONU (a_brancher)
 - iran-nucleaire:surete_atomique : rapports publics de l'AIEA (sûreté et vérification) (a_brancher)
 - iran-nucleaire:relief_sites : modèles numériques de terrain publics (a_brancher)
 - iran-nucleaire:sismicite : catalogue public des séismes (USGS) (a_brancher)
+- liban-institutions:justice : communiqués du Conseil des ministres et de la justice (Agence nationale d'information) (a_brancher)
+- liban-institutions:gouvernement : ordres du jour publics du Conseil des ministres (a_brancher)
+- liban-institutions:confessionnalisme : fait institutionnel (inconnue)
+- migrations-demographie:natalite_vieillissement : perspectives démographiques de l'ONU (données publiques) (a_brancher)
+- migrations-demographie:mortalite : statistiques publiques de décès (ONU, instituts nationaux) (a_brancher)
+- migrations-demographie:urbanisation : données publiques d'urbanisation (ONU-Habitat) (a_brancher)
+- migrations-demographie:diasporas : données publiques de la Banque mondiale sur les envois de fonds (a_brancher)
+- migrations-demographie:convention : textes publics du HCR et des États (a_brancher)
+- non-proliferation:regime : documents publics des conférences d'examen (ONU) (a_brancher)
+- non-proliferation:aiea : rapports et communiqués publics de l'AIEA (a_brancher)
+- non-proliferation:zones : fait institutionnel (inconnue)
+- non-proliferation:peur_prestige : aucune trace ouverte directe (inconnue)
+- non-proliferation:civil : base publique des réacteurs (AIEA) (a_brancher)
 - nucleaire-radiologique:atome : aucune trace propre : phénomène connu par la physique (inconnue)
 - nucleaire-radiologique:sources : registres publics nationaux des sources et autorisations (a_brancher)
 - nucleaire-radiologique:electricite : base publique des réacteurs de l'AIEA (PRIS) (a_brancher)
@@ -103,6 +129,8 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - nucleaire-radiologique:sante : rapports publics des autorités sanitaires (a_brancher)
 - nucleaire-radiologique:environnement : réseaux publics de mesure de la radioactivité de l'air (a_brancher)
 - nucleaire-radiologique:convention : classements INES publiés (a_brancher)
+- observateur-mesure:psychologie : aucune trace directe : nos décisions datées (inconnue)
+- observateur-mesure:monde : toutes les autres fiches (inconnue)
 - oceans-et-fleuves:oceans : indices publics ENSO et température de surface de la mer (NOAA) (a_brancher)
 - oceans-et-fleuves:niveau_mer : altimétrie satellitaire publique (NASA, Copernicus) (a_brancher)
 - oceans-et-fleuves:glaces : étendue de la banquise (NSIDC, données publiques) (a_brancher)
@@ -112,7 +140,6 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - oceans-et-fleuves:barrages : niveaux publics des réservoirs (a_brancher)
 - ormuz:mer_golfe : température de surface de la mer (NOAA, données publiques) (a_brancher)
 - ormuz:pollution_marine : alertes publiques de pollution marine (organisations régionales, presse) (a_brancher)
-- politique-americaine:elections : résultats officiels et calendriers électoraux (commissions électorales des États) (a_brancher)
 - politique-americaine:eau_fleuves : niveaux et débits publics (USGS) (a_brancher)
 - relief-et-montagnes:chaines : modèles numériques de terrain publics (SRTM) (a_brancher)
 - relief-et-montagnes:obstacles : état public des routes et cols (services nationaux) (a_brancher)
@@ -123,10 +150,27 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - relief-et-montagnes:guerres : aucune trace ouverte branchée (inconnue)
 - relief-et-montagnes:populations : aucune trace ouverte branchée (inconnue)
 - rivalite-sino-americaine:atomique : rapports publics (SIPRI, déclarations officielles) (a_brancher)
-- russie-ukraine:capacites : budgets et annonces industrielles publiques (a_brancher)
 - russie-ukraine:relief_fleuves : cartes topographiques et hydrographiques publiques (a_brancher)
 - russie-ukraine:hiver_saisons : anomalies de température à Kyiv et Moscou (Open-Meteo, points à ajouter à collecte_meteo.py) (a_brancher)
 - russie-ukraine:atomique : communiqués publics de l'AIEA sur la sûreté en Ukraine (a_brancher)
+- sciences-techniques:recherche : dépôts publics de prépublications (arXiv) (a_brancher)
+- sciences-techniques:talents : annonces publiques de recrutement et de départ (inconnue)
+- securite-europeenne:industrie : rapports publics des agences d'armement (a_brancher)
+- securite-europeenne:opinions : baromètres publics (Eurobaromètre) (a_brancher)
+- securite-europeenne:peur_confiance : aucune trace ouverte directe (inconnue)
+- securite-europeenne:geographie : fait géographique (inconnue)
+- securite-publique:alertes : communiqués publics des autorités de sûreté et de protection civile (a_brancher)
+- securite-publique:polices : communiqués publics des polices et d'Interpol (a_brancher)
+- securite-publique:trafics : rapports publics de l'ONUDC (a_brancher)
+- securite-publique:corruption : indices publics de perception de la corruption (a_brancher)
+- securite-publique:prisons : statistiques pénitentiaires publiques (a_brancher)
+- soleil-espace:soleil : indices d'activité solaire et alertes (NOAA SWPC, publics) (a_brancher)
+- soleil-espace:magnetosphere : indice géomagnétique Kp (NOAA, public) (a_brancher)
+- soleil-espace:debris : catalogues publics d'objets en orbite (a_brancher)
+- soleil-espace:reseaux : aucune trace ouverte directe (inconnue)
+- soleil-espace:radio : aucune trace ouverte directe (inconnue)
+- soleil-espace:alertes : alertes publiques de la NOAA SWPC (a_brancher)
+- soleil-espace:meteorites : catalogues publics d'objets géocroiseurs (a_brancher)
 - transport-maritime:fret : indices publics de fret conteneur (publications hebdomadaires gratuites) (a_brancher)
 - transport-maritime:assurances : primes de risque de guerre (fermee)
 - transport-maritime:ports : statistiques portuaires publiques (temps d'attente, volumes) (a_brancher)
@@ -157,6 +201,20 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - alimentation-mondiale:pathogenes → alimentation-mondiale:elevage [predation] une épizootie décime les troupeaux ; au-delà d'un seuil de foyers, les abattages massifs coupent l'offre
 - alimentation-mondiale:pathogenes → alimentation-mondiale:cultures [predation] une nouvelle souche de rouille ou de mildiou peut contourner les résistances d'une région entière
 - alimentation-mondiale:pollinisateurs → alimentation-mondiale:cultures [mutualisme] les pollinisateurs font les fruits et les oléagineux, et vivent des fleurs (au sein du vivant, entre animal et végétal)
+- calendriers-echeances:anticipations → calendriers-echeances:anticipations [forcage] propre au niveau psychologique : plus la date approche, plus l'attente fige les décisions, puis tout se décide à la dernière minute
+- calendriers-echeances:elections → calendriers-echeances:anticipations [forcage] un scrutin proche gèle les grandes décisions et pousse aux annonces
+- calendriers-echeances:elections → calendriers-echeances:parlements [forcage] propre aux conventions et statuts : le résultat recompose les majorités et le calendrier législatif
+- calendriers-echeances:banques_centrales → calendriers-echeances:marches [forcage] les marchés bougent à la date de réunion selon la surprise, pas selon la décision
+- calendriers-echeances:publications → calendriers-echeances:marches [forcage] une publication surprenante fait bouger les prix le jour même
+- calendriers-echeances:publications → calendriers-echeances:publications [forcage] propre à la convention : un chiffre gênant peut être retardé, suspendu ou redéfini, et le silence devient lui-même un signal
+- calendriers-echeances:memoire → calendriers-echeances:anticipations [forcage] les dates symboliques sont choisies pour agir, manifester ou réprimer
+- calendriers-echeances:memoire → calendriers-echeances:memoire [forcage] propre à l'idéologie : chaque commémoration renforce la suivante, surtout aux anniversaires ronds
+- calendriers-echeances:fetes → calendriers-echeances:saisons [forcage] neutralisme : les calendriers religieux et les saisons coexistent sans s'influencer (sauf fêtes agricoles)
+- calendriers-echeances:fetes → calendriers-echeances:marches [forcage] les longs jours fériés ralentissent l'activité et les échanges, puis rattrapage
+- calendriers-echeances:saisons → calendriers-echeances:elections [forcage] une mauvaise récolte ou une saison de catastrophes avant un scrutin pèse sur le vote
+- calendriers-echeances:saisons → calendriers-echeances:anticipations [forcage] la saison de combat ou de récolte impose son rythme : on attend le gel, on agit avant la boue
+- calendriers-echeances:dates_limites → calendriers-echeances:anticipations [forcage] une question qui se résout à date fixe juge l'événement à ce jour-là ; ce qui arrive le lendemain ne compte pas
+- calendriers-echeances:dates_limites → calendriers-echeances:publications [forcage] la résolution d'une question dépend souvent d'une publication à date ; un retard de publication change l'issue mesurée
 - climat-extremes:oceans → climat-extremes:oscillations [forcage] la chaleur du Pacifique équatorial fait basculer El Niño ou La Niña
 - climat-extremes:oscillations → climat-extremes:atmosphere [forcage] les oscillations déplacent pluies et chaleurs sur plusieurs continents (télé-connexions)
 - climat-extremes:atmosphere → climat-extremes:saisons [forcage] un blocage qui dure transforme un temps chaud en vague de chaleur
@@ -178,6 +236,33 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - climat-extremes:relief → climat-extremes:secheresses [forcage] une chaîne de montagnes arrête les pluies : un versant arrosé, l'autre sec (ombre pluviométrique)
 - climat-extremes:relief → climat-extremes:atmosphere [contrainte] le relief canalise les vents et fixe la place des blocages et des moussons
 - climat-extremes:tendance → climat-extremes:oscillations [forcage] le climat de fond peut changer la fréquence des épisodes El Niño (débat scientifique, à vérifier)
+- competitions-culture:regles → competitions-culture:forme [forcage] le format décide de la part du hasard : une élimination directe donne plus de chances au moins fort qu'un championnat long
+- competitions-culture:forme → competitions-culture:psychologie [mutualisme] victoires et confiance se nourrissent, jusqu'à un seuil où la série se brise
+- competitions-culture:psychologie → competitions-culture:forme [forcage] la pression des grands enjeux fait perdre des moyens au-delà d'un seuil
+- competitions-culture:public → competitions-culture:psychologie [forcage] l'avantage du terrain passe par le public (passage de la société au psychologique)
+- competitions-culture:argent → competitions-culture:forme [forcage] les budgets achètent les meilleurs : sur une saison longue, l'argent prédit beaucoup
+- competitions-culture:medias → competitions-culture:public [forcage] les campagnes et les récits orientent les votes du public
+- competitions-culture:public → competitions-culture:argent [forcage] la ferveur fait les recettes et le box-office
+- competitions-culture:regles → competitions-culture:public [forcage] le partage entre jury et public décide de qui compte : une même performance gagne ou perd selon la règle
+- competitions-culture:calendrier → competitions-culture:forme [forcage] un calendrier chargé fatigue et blesse au-delà d'un seuil
+- competitions-culture:milieu → competitions-culture:forme [forcage] la chaleur et l'altitude pèsent sur les organismes non acclimatés (passage de la météo à la personne)
+- competitions-culture:geopolitique → competitions-culture:public [forcage] votes de voisinage et de diaspora dans les concours (Eurovision)
+- competitions-culture:geopolitique → competitions-culture:regles [forcage] exclusions et boycotts changent la liste des concurrents
+- competitions-culture:forme → competitions-culture:forme [competition] propre au niveau personne : la compétition elle-même, ce que l'un gagne l'autre le perd
+- crises-bancaires:confiance → crises-bancaires:depots [forcage] au-delà d'un seuil de peur, les déposants retirent tous ensemble : la ruée
+- crises-bancaires:depots → crises-bancaires:confiance [forcage] les retraits des autres font peur à leur tour : boucle de la panique, propre au niveau psychologique et économique
+- crises-bancaires:recits → crises-bancaires:confiance [forcage] une rumeur ne déclenche la peur que si elle dépasse un seuil de diffusion
+- crises-bancaires:bilans → crises-bancaires:confiance [forcage] des pertes révélées entament la confiance
+- crises-bancaires:marches → crises-bancaires:bilans [forcage] quand les taux montent, les obligations détenues perdent de la valeur
+- crises-bancaires:regulateurs → crises-bancaires:depots [forcage] le prêteur en dernier ressort et la garantie des dépôts arrêtent la ruée
+- crises-bancaires:depots → crises-bancaires:regulateurs [forcage] l'autorité n'intervient qu'au-delà d'un seuil de risque pour le système
+- crises-bancaires:faillites → crises-bancaires:creanciers [ambivalent] une faillite répartit les pertes entre créanciers selon leur rang (relation propre au niveau statut et économie)
+- crises-bancaires:creanciers → crises-bancaires:faillites [forcage] le comité des créanciers pèse sur l'issue : liquidation ou plan de reprise
+- crises-bancaires:cryptomonnaies → crises-bancaires:marches [forcage] une forte chute ne déborde sur les marchés que si l'exposition dépasse un seuil
+- crises-bancaires:marches → crises-bancaires:cryptomonnaies [forcage] les cryptomonnaies suivent l'appétit général pour le risque, en l'amplifiant
+- crises-bancaires:convention → crises-bancaires:creanciers [forcage] une déclaration de défaut ou une dégradation déclenche des ventes forcées : la convention agit sans que rien de matériel n'ait changé
+- crises-bancaires:depots → crises-bancaires:marches [forcage] contagion : quand plusieurs banques vacillent, la crise passe au système
+- crises-bancaires:regulateurs → crises-bancaires:confiance [forcage] une parole d'autorité crédible rassure, une parole hésitante aggrave
 - cycles-biogeochimiques:combustion → cycles-biogeochimiques:carbone [forcage] la combustion libère dans l'air le carbone stocké dans les roches
 - cycles-biogeochimiques:carbone → cycles-biogeochimiques:climat [forcage] plus de gaz à effet de serre réchauffe le climat (passage du chimique au climatique)
 - cycles-biogeochimiques:climat → cycles-biogeochimiques:eau [forcage] un air plus chaud contient plus de vapeur : pluies plus fortes et sécheresses plus dures
@@ -250,6 +335,17 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - economie-chinoise:epizooties → economie-chinoise:consommation [forcage] une épizootie qui décime le cheptel porcin fait bondir le prix du porc et pèse sur le budget des ménages
 - economie-chinoise:sols_chimie → economie-chinoise:pouvoir [forcage] la qualité des sols ne remonte au niveau du pouvoir qu'à travers une alerte sur la sécurité alimentaire
 - economie-chinoise:pouvoir → economie-chinoise:statistiques [ambivalent] entre statut et convention : le pouvoir décide de ce qui est publié et comment, et les chiffres publiés bornent à leur tour son récit
+- elections-amerique-latine:executif → elections-amerique-latine:assemblees [ambivalent] propre au niveau statut : l'exécutif propose, les chambres disposent ; sans majorité, un projet reste bloqué
+- elections-amerique-latine:partis_gouverneurs → elections-amerique-latine:assemblees [forcage] propre au niveau de l'entourage : les voix des sénateurs se négocient avec les gouverneurs ; un vote passe quand le seuil de la majorité est atteint
+- elections-amerique-latine:assemblees → elections-amerique-latine:regles [forcage] une réforme des primaires exige l'approbation des deux chambres ; la première approbation n'est qu'une étape
+- elections-amerique-latine:regles → elections-amerique-latine:scrutins [forcage] passage de la convention à la société : supprimer des primaires change qui se présente et comment
+- elections-amerique-latine:economie → elections-amerique-latine:humeur [forcage] l'inflation fait monter la colère des électeurs
+- elections-amerique-latine:humeur → elections-amerique-latine:scrutins [forcage] passage du psychologique à la société : la colère bascule le vote vers la sanction ou l'outsider
+- elections-amerique-latine:scrutins → elections-amerique-latine:assemblees [forcage] les élections de mi-mandat redessinent les majorités
+- elections-amerique-latine:fmi → elections-amerique-latine:economie [ambivalent] déboursements contre conditions ; un objectif manqué suspend l'argent
+- elections-amerique-latine:fmi → elections-amerique-latine:humeur [forcage] l'austérité demandée pèse sur l'humeur des électeurs
+- elections-amerique-latine:recoltes_exports → elections-amerique-latine:economie [forcage] passage du végétal à l'économie : une sécheresse prive le pays de devises
+- elections-amerique-latine:executif → elections-amerique-latine:economie [forcage] les choix de l'exécutif sur la monnaie et le budget
 - energie-mondiale:production → energie-mondiale:prix [forcage] plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise, le moindre arrêt fait bondir les prix
 - energie-mondiale:demande → energie-mondiale:prix [forcage] une demande forte fait monter les prix
 - energie-mondiale:stocks → energie-mondiale:prix [forcage] les stocks amortissent les chocs ; bas, ils n'amortissent plus
@@ -344,6 +440,31 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - inflation-mondiale:climat_regime → inflation-mondiale:elevage_cultures [forcage] un climat plus chaud et plus sec réduit rendements et pâturages
 - inflation-mondiale:monnaies → inflation-mondiale:energie [forcage] au sein du niveau économique : un dollar fort renchérit l'énergie, payée en dollars, pour les autres pays
 - inflation-mondiale:budget → inflation-mondiale:statistiques [forcage] au croisement du statut et de la convention : subventions et boucliers changent le chiffre mesuré sans changer la cause
+- information-cyber:recits → information-cyber:attention [forcage] un récit chargé d'émotion capte l'attention
+- information-cyber:attention → information-cyber:foules [mutualisme] propre au niveau psychologique : attention et contagion émotionnelle s'entretiennent jusqu'à l'emballement
+- information-cyber:foules → information-cyber:foules [forcage] au-delà d'un seuil, la panique ou l'indignation se propage d'elle-même
+- information-cyber:foules → information-cyber:etats [forcage] une indignation assez large passe du niveau psychologique au géopolitique
+- information-cyber:etats → information-cyber:censure [forcage] un État menacé durcit la censure
+- information-cyber:etats → information-cyber:coupures [forcage] les coupures d'internet suivent les manifestations et les scrutins contestés
+- information-cyber:censure → information-cyber:recits [predation] la censure étouffe les contre-récits et renforce le récit officiel (prédation)
+- information-cyber:censure → information-cyber:coupures [forcage] propre aux mêmes acteurs : quand le filtrage ne suffit plus, on coupe
+- information-cyber:cyber → information-cyber:infrastructure [forcage] une attaque réussie paralyse un service ; l'effet ne passe au physique qu'au-delà d'un seuil
+- information-cyber:infrastructure → information-cyber:coupures [forcage] propre au niveau technique : un câble coupé provoque une coupure régionale
+- information-cyber:plateformes → information-cyber:attention [forcage] les algorithmes amplifient ce qui retient l'attention
+- information-cyber:plateformes → information-cyber:recits [forcage] la modération et les règles des plateformes décident de quels récits circulent
+- information-cyber:langues_biais → information-cyber:attention [forcage] ce qui n'est pas écrit en anglais est moins vu : nos mesures d'attention en héritent
+- information-cyber:recits → information-cyber:etats [forcage] un récit ne change une politique qu'au-delà d'une audience très large ; les mots pèsent moins que les actes
+- infrastructures-critiques:reseaux → infrastructures-critiques:cascades [forcage] propre au niveau technique : une défaillance locale se propage quand les marges sont épuisées
+- infrastructures-critiques:cascades → infrastructures-critiques:reseaux [forcage] la cascade éteint les réseaux qui dépendent du premier (électricité vers eau et télécommunications)
+- infrastructures-critiques:demande → infrastructures-critiques:reseaux [forcage] une pointe de demande tend le réseau jusqu'au délestage
+- infrastructures-critiques:chaleur_tempetes → infrastructures-critiques:demande [forcage] la chaleur fait monter la climatisation, le froid le chauffage
+- infrastructures-critiques:chaleur_tempetes → infrastructures-critiques:reseaux [forcage] passage de la météo à la technique : seule une tempête forte abat les lignes
+- infrastructures-critiques:eau_refroidissement → infrastructures-critiques:reseaux [forcage] un fleuve trop chaud ou trop bas fait baisser la production des centrales
+- infrastructures-critiques:physique_espace → infrastructures-critiques:reseaux [forcage] rare : une tempête solaire très forte induit des courants qui endommagent les grands transformateurs
+- infrastructures-critiques:attaques → infrastructures-critiques:reseaux [predation] une attaque publique coupe un réseau et donne un levier à l'attaquant (prédation)
+- infrastructures-critiques:operateurs_regulateurs → infrastructures-critiques:reseaux [forcage] les règles et les investissements décident de la robustesse
+- infrastructures-critiques:cascades → infrastructures-critiques:population [forcage] passage de la technique au psychologique : au-delà de quelques jours, la gêne devient colère et défiance
+- infrastructures-critiques:population → infrastructures-critiques:operateurs_regulateurs [forcage] la colère publique pousse aux réformes ou aux boucs émissaires
 - iran-nucleaire:etats_unis → iran-nucleaire:pouvoir_iranien [competition] rivalité de long terme ; chacun réduit les options de l'autre
 - iran-nucleaire:etats_unis → iran-nucleaire:sanctions [forcage] l'exécutif américain décide l'essentiel des sanctions primaires et secondaires
 - iran-nucleaire:sanctions → iran-nucleaire:societe_iranienne [forcage] les sanctions pèsent sur la monnaie, les prix et l'emploi ; l'effet plafonne quand tout est déjà sanctionné
@@ -366,6 +487,42 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - iran-nucleaire:relief_sites → iran-nucleaire:verification [contrainte] ce qui est abrité sous le relief est plus difficile à vérifier de l'extérieur
 - iran-nucleaire:europe → iran-nucleaire:etats_unis [mutualisme] relation propre au niveau géopolitique : coordination occidentale (mutualisme), plus ou moins serrée
 - iran-nucleaire:russie_chine → iran-nucleaire:etats_unis [competition] relation propre au niveau géopolitique : rivalité des puissances qui borne toute solution au Conseil
+- liban-institutions:gouvernement → liban-institutions:justice [forcage] propre au niveau statut : le renvoi d'une affaire au Conseil judiciaire passe par un décret du Conseil des ministres ; sans consensus, il n'est pas pris (mécanisme à vérifier sur les textes)
+- liban-institutions:confessionnalisme → liban-institutions:gouvernement [contrainte] le partage confessionnel donne à chaque bloc un pouvoir de blocage
+- liban-institutions:blocs_politiques → liban-institutions:gouvernement [ambivalent] propre au niveau de l'entourage : loyautés et rivalités font et défont les majorités au Conseil
+- liban-institutions:blocs_politiques → liban-institutions:justice [forcage] recours, immunités et dessaisissements freinent les enquêtes qui touchent un bloc
+- liban-institutions:opinion_colere → liban-institutions:gouvernement [forcage] passage du psychologique au statut : seule une mobilisation forte pousse le gouvernement à renvoyer une affaire
+- liban-institutions:force_armee → liban-institutions:blocs_politiques [forcage] le rapport de force armé pèse sur le poids politique des blocs
+- liban-institutions:exterieur → liban-institutions:blocs_politiques [forcage] les soutiens extérieurs renforcent les blocs qui leur sont proches
+- liban-institutions:exterieur → liban-institutions:banque_centrale [forcage] l'aide du FMI et des bailleurs ne vient qu'au-delà d'un seuil de réformes
+- liban-institutions:banque_centrale → liban-institutions:opinion_colere [forcage] des dépôts bloqués nourrissent la colère et la défiance
+- liban-institutions:justice → liban-institutions:opinion_colere [forcage] une avancée judiciaire visible apaise en partie l'exigence de justice
+- liban-institutions:internet_information → liban-institutions:opinion_colere [forcage] les réseaux amplifient la colère autour d'une affaire
+- migrations-demographie:natalite_vieillissement → migrations-demographie:economie [forcage] une population qui vieillit manque de bras et pèse sur les retraites
+- migrations-demographie:economie → migrations-demographie:migrations [forcage] on part quand l'écart de revenu dépasse le coût du départ
+- migrations-demographie:climat_milieu → migrations-demographie:migrations [forcage] un milieu qui ne nourrit plus pousse au départ au-delà d'un seuil de pertes répétées (passage du climat à la société)
+- migrations-demographie:migrations → migrations-demographie:diasporas [mutualisme] les départs créent des diasporas, qui attirent et financent les départs suivants (réseaux)
+- migrations-demographie:diasporas → migrations-demographie:economie [forcage] les envois de fonds soutiennent les économies de départ
+- migrations-demographie:migrations → migrations-demographie:psychologie [forcage] une arrivée rapide et très médiatisée fait basculer l'opinion de l'hospitalité à la peur
+- migrations-demographie:psychologie → migrations-demographie:politiques_migratoires [forcage] la peur collective ferme les frontières au-delà d'un seuil d'opinion (passage du psychologique au statut)
+- migrations-demographie:politiques_migratoires → migrations-demographie:migrations [competition] fermer une route en ouvre une autre, plus dangereuse ; les flux et les contrôles se répondent
+- migrations-demographie:convention → migrations-demographie:migrations [forcage] la même personne est réfugiée, migrante ou clandestine selon la définition : le statut change ce qui est compté et protégé
+- migrations-demographie:convention → migrations-demographie:politiques_migratoires [forcage] au sein du droit, les conventions internationales bornent les politiques nationales (relation entre convention et statut)
+- migrations-demographie:mortalite → migrations-demographie:natalite_vieillissement [forcage] propre au niveau société : la baisse de la mortalité infantile précède la baisse de la natalité (transition démographique)
+- migrations-demographie:urbanisation → migrations-demographie:natalite_vieillissement [forcage] la ville fait baisser la fécondité
+- migrations-demographie:migrations → migrations-demographie:urbanisation [forcage] l'exode rural et les arrivées gonflent les villes et leurs quartiers précaires
+- migrations-demographie:climat_milieu → migrations-demographie:mortalite [forcage] les vagues de chaleur tuent au-delà d'un seuil, surtout les plus âgés
+- non-proliferation:aiea → non-proliferation:regime [forcage] des inspections crédibles entretiennent la confiance dans le régime
+- non-proliferation:etats_du_seuil → non-proliferation:aiea [competition] un État qui réduit l'accès entre en compétition avec l'institution ; au-delà d'un seuil, rapport au Conseil des gouverneurs
+- non-proliferation:aiea → non-proliferation:conseil_securite [forcage] propre au niveau statut : un constat grave peut être renvoyé au Conseil de sécurité
+- non-proliferation:conseil_securite → non-proliferation:sanctions [forcage] les sanctions multilatérales passent par le Conseil, et s'arrêtent au veto
+- non-proliferation:sanctions → non-proliferation:etats_du_seuil [competition] les sanctions pèsent de moins en moins à mesure qu'elles s'accumulent
+- non-proliferation:peur_prestige → non-proliferation:etats_du_seuil [forcage] passage du psychologique au géopolitique : l'insécurité ressentie pousse vers le seuil
+- non-proliferation:dissuasion → non-proliferation:peur_prestige [forcage] une garantie crédible rassure les alliés ; une menace nourrit l'insécurité des autres
+- non-proliferation:dissuasion → non-proliferation:regime [forcage] la réduction des arsenaux des puissances dotées renforce la légitimité du traité, son blocage l'érode
+- non-proliferation:etats_du_seuil → non-proliferation:regime [forcage] un retrait du traité ou un franchissement du seuil peut entraîner des voisins (effet domino, à vérifier)
+- non-proliferation:zones → non-proliferation:regime [forcage] propre au niveau convention : les zones régionales consolident la norme
+- non-proliferation:civil → non-proliferation:aiea [forcage] la coopération civile se fait sous garanties, ce qui étend le contrôle
 - nucleaire-radiologique:atome → nucleaire-radiologique:atome [forcage] propre au niveau atomique : l'activité d'une source décroît d'elle-même selon sa demi-vie
 - nucleaire-radiologique:atome → nucleaire-radiologique:sources [commensalisme] la radioactivité fait l'utilité de la source (soigner, contrôler des soudures) et son danger
 - nucleaire-radiologique:sources → nucleaire-radiologique:signalement [forcage] une perte ou un vol déclenche l'alerte ; plus la source est dangereuse, plus l'alerte est large et rapide
@@ -380,6 +537,18 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - nucleaire-radiologique:recits → nucleaire-radiologique:electricite [forcage] la peur après un accident fait fermer des réacteurs ; elle ne retombe pas par le même chemin
 - nucleaire-radiologique:traites → nucleaire-radiologique:surete [forcage] les traités donnent à l'AIEA ses garanties et ses inspections
 - nucleaire-radiologique:environnement → nucleaire-radiologique:sante [forcage] propre au passage chimique-vivant : la contamination entre dans l'eau, les sols et les aliments
+- observateur-mesure:biais → observateur-mesure:monde [forcage] nous voyons trop ce dont la presse anglophone parle, et trop peu le reste
+- observateur-mesure:definitions → observateur-mesure:monde [forcage] un chiffre dépend de sa définition : changer la définition change ce que nous voyons sans changer le monde
+- observateur-mesure:jeunesse_series → observateur-mesure:monde [forcage] une habitude mesurée en pleine crise cache la crise (Ormuz)
+- observateur-mesure:lecteurs_ia → observateur-mesure:controles [competition] propre au niveau technique : les lecteurs instables obligent à multiplier les contrôles, qui révèlent leur instabilité
+- observateur-mesure:fuite → observateur-mesure:controles [forcage] une fuite gonfle les résultats des bancs rétrospectifs si on ne la mesure pas
+- observateur-mesure:controles → observateur-mesure:psychologie [forcage] le préenregistrement et le contrôle des chiffres bornent l'envie de trouver un signal (passage du statut au psychologique)
+- observateur-mesure:psychologie → observateur-mesure:controles [forcage] après une série d'échecs, la tentation d'essayer jusqu'à ce que ça marche monte au-delà d'un seuil
+- observateur-mesure:psychologie → observateur-mesure:lecteurs_ia [forcage] la consigne du prévisionniste oriente la lecture du modèle (il recopie ce qu'on lui montre)
+- observateur-mesure:biais → observateur-mesure:couverture [forcage] les biais des sources fabriquent les angles morts
+- observateur-mesure:couverture → observateur-mesure:controles [forcage] ce que nous ne voyons pas, aucun contrôle ne peut le vérifier
+- observateur-mesure:lecteurs_ia → observateur-mesure:definitions [forcage] un modèle qui résume peut changer un chiffre ou sa définition (taux mesuré faible au contrôle de fidélité)
+- observateur-mesure:monde → observateur-mesure:jeunesse_series [forcage] le temps qui passe fait mûrir les séries : le monde finit par donner sa référence
 - oceans-et-fleuves:climat → oceans-et-fleuves:oceans [mutualisme] l'océan absorbe l'essentiel de la chaleur ajoutée, puis la rend : il amortit et prolonge le réchauffement
 - oceans-et-fleuves:oceans → oceans-et-fleuves:cycle [forcage] les oscillations océaniques déplacent les pluies sur des continents entiers
 - oceans-et-fleuves:climat → oceans-et-fleuves:glaces [forcage] les glaces fondent ; elles ne se reconstituent pas au même rythme
@@ -484,6 +653,58 @@ Bilan : {'themes': 20, 'compartiments': 252, 'relations': 366, 'ponts': 143, 'po
 - russie-ukraine:front → russie-ukraine:atomique [forcage] des combats près d'une centrale menacent son alimentation et sa sûreté
 - russie-ukraine:atomique → russie-ukraine:negociations [forcage] la sûreté nucléaire est un des rares sujets discutés par les deux camps, sous l'égide de l'AIEA
 - russie-ukraine:front → russie-ukraine:soutiens [ambivalent] au sein du niveau géopolitique : un revers sur le front mobilise ou décourage les soutiens, qui changent à leur tour le rapport de force
+- sciences-techniques:calcul → sciences-techniques:ia [forcage] sans assez de calcul, pas de nouveau modèle : la puce borne le produit
+- sciences-techniques:ia → sciences-techniques:calcul [forcage] chaque génération de modèles réclame plus de calcul (boucle propre au niveau technique)
+- sciences-techniques:calcul → sciences-techniques:energie_eau [forcage] le calcul consomme électricité et eau ; une vague de chaleur peut brider un centre
+- sciences-techniques:energie_eau → sciences-techniques:calcul [forcage] le physique borne le technique : sans électricité ni eau, le calcul s'arrête
+- sciences-techniques:capitaux → sciences-techniques:calcul [forcage] les levées de fonds financent les centres de calcul
+- sciences-techniques:attentes → sciences-techniques:capitaux [forcage] l'engouement attire les capitaux ; la déception les retire plus vite qu'il ne les a attirés
+- sciences-techniques:ia → sciences-techniques:attentes [forcage] un lancement réussi nourrit l'engouement
+- sciences-techniques:ia → sciences-techniques:adoption [forcage] la diffusion suit une courbe en S : lente, puis rapide au-delà d'un seuil d'adoption
+- sciences-techniques:course_etats → sciences-techniques:regulation [forcage] la course pousse à des contrôles d'exportation contre le rival et à des règles plus souples chez soi
+- sciences-techniques:regulation → sciences-techniques:calcul [forcage] les contrôles d'exportation privent le rival de puces avancées
+- sciences-techniques:regulation → sciences-techniques:ia [forcage] les règles retardent ou orientent certains lancements selon les pays
+- sciences-techniques:talents → sciences-techniques:ia [forcage] au niveau de l'entourage : une vague de départs peut changer le rythme d'un laboratoire
+- sciences-techniques:recherche → sciences-techniques:ia [forcage] la recherche ouverte nourrit les produits, avec retard
+- sciences-techniques:course_etats → sciences-techniques:capitaux [forcage] les subventions publiques s'ajoutent aux capitaux privés
+- securite-europeenne:menace → securite-europeenne:peur_confiance [forcage] passage du géopolitique au psychologique : un incident marquant fait monter la peur
+- securite-europeenne:peur_confiance → securite-europeenne:opinions [forcage] la peur rallie l'opinion aux dépenses de défense
+- securite-europeenne:opinions → securite-europeenne:defense [forcage] une opinion favorable rend les budgets votables
+- securite-europeenne:etats_unis → securite-europeenne:defense [forcage] le doute sur l'allié pousse à se réarmer ; une garantie sûre laisse se reposer sur lui
+- securite-europeenne:defense → securite-europeenne:industrie [forcage] les commandes ne se transforment en équipements qu'au rythme de l'industrie
+- securite-europeenne:budgets_dette → securite-europeenne:defense [competition] la défense dispute les budgets aux autres dépenses
+- securite-europeenne:otan_ue → securite-europeenne:defense [forcage] propre au niveau statut : objectifs communs et achats groupés entraînent les retardataires
+- securite-europeenne:defense → securite-europeenne:otan_ue [ambivalent] propre au niveau statut : un État qui traîne affaiblit la cohésion, un État qui accélère la renforce
+- securite-europeenne:geographie → securite-europeenne:menace [contrainte] la plaine ouverte et les corridors étroits concentrent la menace sur le flanc est
+- securite-europeenne:etats_unis → securite-europeenne:peur_confiance [forcage] les déclarations sur la garantie américaine font varier la confiance
+- securite-europeenne:menace → securite-europeenne:otan_ue [forcage] une menace grave resserre l'alliance et fait venir de nouveaux membres
+- securite-publique:trafics → securite-publique:alertes [forcage] un vol de matière dangereuse déclenche une alerte publique au-delà d'un seuil de danger
+- securite-publique:alertes → securite-publique:polices [forcage] l'alerte mobilise la recherche (relation propre au niveau statut)
+- securite-publique:polices → securite-publique:alertes [forcage] une récupération annoncée clôt l'alerte
+- securite-publique:alertes → securite-publique:peur [forcage] une alerte mal expliquée fait passer l'inquiétude au niveau psychologique
+- securite-publique:polices → securite-publique:justice [forcage] les enquêtes alimentent les procès, avec retard
+- securite-publique:corruption → securite-publique:polices [forcage] au niveau de l'entourage, la complicité neutralise l'institution au-delà d'un seuil
+- securite-publique:trafics → securite-publique:corruption [mutualisme] mutualisme : l'argent des trafics achète la protection, qui protège les trafics
+- securite-publique:polices → securite-publique:trafics [competition] compétition : la pression policière déplace les trafics plus qu'elle ne les supprime (effet ballon)
+- securite-publique:prisons → securite-publique:trafics [forcage] des prisons surpeuplées deviennent des centres de commandement des gangs
+- securite-publique:peur → securite-publique:politique [forcage] la peur pousse aux discours et lois de fermeté, et ne redescend pas au rythme des faits
+- securite-publique:politique → securite-publique:prisons [forcage] les politiques de fermeté remplissent les prisons
+- securite-publique:frontieres → securite-publique:trafics [forcage] les contrôles aux ports et frontières renchérissent les trafics
+- securite-publique:sanctions → securite-publique:trafics [forcage] les désignations frappent l'argent des réseaux, partiellement
+- soleil-espace:soleil → soleil-espace:magnetosphere [forcage] propre au niveau physique : une éjection dirigée vers la Terre déclenche une tempête géomagnétique en un à trois jours (à vérifier)
+- soleil-espace:soleil → soleil-espace:radio [forcage] le rayonnement d'une forte éruption coupe la radio haute fréquence côté jour en quelques minutes
+- soleil-espace:magnetosphere → soleil-espace:gps [forcage] une ionosphère perturbée dégrade la précision du positionnement
+- soleil-espace:magnetosphere → soleil-espace:reseaux [forcage] une tempête extrême induit des courants qui peuvent endommager des transformateurs ; rien en dessous d'un seuil
+- soleil-espace:magnetosphere → soleil-espace:satellites [forcage] la tempête chauffe la haute atmosphère, qui freine les satellites bas : certains retombent
+- soleil-espace:satellites → soleil-espace:debris [forcage] plus de satellites, plus de débris
+- soleil-espace:debris → soleil-espace:debris [forcage] propre au niveau physique : au-delà d'une densité, chaque collision crée des débris qui en provoquent d'autres
+- soleil-espace:debris → soleil-espace:satellites [predation] les débris menacent les satellites, qui en produisent (prédation)
+- soleil-espace:gps → soleil-espace:radio [forcage] propre au niveau technique : deux systèmes touchés par la même cause, sans effet direct l'un sur l'autre (neutralisme)
+- soleil-espace:alertes → soleil-espace:reseaux [forcage] une alerte permet aux opérateurs de protéger leurs réseaux ; la convention de l'échelle déclenche l'action
+- soleil-espace:magnetosphere → soleil-espace:alertes [forcage] la tempête observée fait monter le niveau d'alerte
+- soleil-espace:magnetosphere → soleil-espace:recits [forcage] des aurores visibles en basses latitudes font exploser l'attention
+- soleil-espace:recits → soleil-espace:alertes [forcage] un risque rare est sous-estimé jusqu'à l'événement, puis surestimé
+- soleil-espace:meteorites → soleil-espace:recits [forcage] un bolide visible ou un objet annoncé dangereux mobilise l'attention bien au-delà du risque réel
 - transport-maritime:securite → transport-maritime:detroits [forcage] au-delà de quelques attaques, les compagnies évitent le passage entier
 - transport-maritime:detroits → transport-maritime:contournement [commensalisme] ce que perd un détroit se reporte sur le contournement (le cap de Bonne-Espérance pour la mer Rouge)
 - transport-maritime:contournement → transport-maritime:fret [forcage] des traversées plus longues immobilisent des navires et font monter le fret

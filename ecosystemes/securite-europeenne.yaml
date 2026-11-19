@@ -1,0 +1,98 @@
+theme: "securite-europeenne"
+nom: "Sécurité européenne (défense)"
+declaration:
+  but: "comprendre ce qui accélère ou freine le réarmement européen et la cohésion de l'OTAN et de l'Union européenne ; niveau institutionnel"
+  limites: "dedans budgets, industrie de défense, institutions (OTAN, Union européenne), opinions, relation avec les États-Unis et menace perçue ; dehors le détail des armements et des opérations"
+  observateur: "notre carte, regard depuis l'Europe, sources publiques"
+  date: "2026-11-19"
+  espace: "le continent européen et l'Atlantique Nord"
+  temps: "du sommet annuel au cycle d'équipement de dix à vingt ans"
+  vitesse: "la semaine (un sommet), l'année (un budget), la décennie (une industrie)"
+  taille: "méso (un État) à macro (l'alliance)"
+compartiments:
+  - id: "defense"
+    nom: "Défense et réarmement"
+    organisation: "statut"
+    elements: ["budgets de défense", "objectifs de dépense de l'alliance", "achats en commun"]
+    acteurs:
+      - {nom: "un ministère de la défense national", taille: "méso", espace: "pays", vitesse: "année", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays et continent", temps: "lois de programmation", vitesse: "année", taille: "méso à macro"}
+    traces:
+      - {source: "flux RSS institutionnels (Parlement européen, Commission)", statut: "collecte", fichier: "collecte_rss.py"}
+  - id: "otan_ue"
+    nom: "OTAN et Union européenne"
+    organisation: "statut"
+    elements: ["sommets", "unanimité et veto", "articles de défense mutuelle", "instruments financiers européens"]
+    acteurs:
+      - {nom: "l'OTAN", taille: "macro", espace: "continent", vitesse: "mois", organisation: "statut", facette: "collectif"}
+      - {nom: "le Conseil européen", taille: "macro", espace: "continent", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "continent", temps: "sommets et traités", vitesse: "semaines à années", taille: "macro"}
+    traces:
+      - {source: "routines officielles (Commission européenne, OTAN)", statut: "collecte", fichier: "collecte_routines.py"}
+  - id: "industrie"
+    nom: "Industrie de défense"
+    organisation: "economie"
+    elements: ["capacités de production", "carnets de commandes", "goulets (poudres, composants)"]
+    niveau: {espace: "continent", temps: "années", vitesse: "mois à années", taille: "méso"}
+    traces:
+      - {source: "rapports publics des agences d'armement", statut: "a_brancher"}
+  - id: "etats_unis"
+    nom: "Relation avec les États-Unis"
+    organisation: "geopolitique"
+    elements: ["garantie américaine perçue", "pression sur les budgets", "achats d'équipements américains"]
+    niveau: {espace: "Atlantique Nord", temps: "mandats", vitesse: "semaines à années", taille: "macro"}
+    traces:
+      - {source: "ton des gestes américains envers l'Allemagne (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:DEU"}
+  - id: "menace"
+    nom: "Menace perçue (Russie)"
+    organisation: "geopolitique"
+    elements: ["guerre en Ukraine", "incidents aux frontières", "violations d'espace aérien"]
+    niveau: {espace: "flanc est", temps: "incidents à années", vitesse: "jours à années", taille: "macro"}
+    traces:
+      - {source: "violations aériennes signalées", statut: "collecte", fichier: "collecte_violationswatch.py"}
+      - {source: "sanctions visant la Russie", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:RU"}
+  - id: "opinions"
+    nom: "Opinions publiques"
+    organisation: "societe"
+    elements: ["soutien aux dépenses de défense", "lassitude", "partis opposés au réarmement"]
+    niveau: {espace: "pays", temps: "élections", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "baromètres publics (Eurobaromètre)", statut: "a_brancher"}
+  - id: "peur_confiance"
+    nom: "Peur et confiance"
+    organisation: "psychologique"
+    elements: ["sentiment de menace", "confiance dans la protection de l'allié", "réflexe d'union face au danger"]
+    niveau: {espace: "pays", temps: "semaines à années", vitesse: "jours à mois", taille: "méso à macro"}
+    traces:
+      - {source: "aucune trace ouverte directe", statut: "inconnue"}
+  - id: "budgets_dette"
+    nom: "Budgets et dette publique"
+    organisation: "economie"
+    elements: ["déficits", "règles budgétaires européennes", "emprunt commun"]
+    niveau: {espace: "pays et Union", temps: "lois de finances", vitesse: "année", taille: "macro"}
+    traces:
+      - {source: "taux de la facilité de dépôt de la BCE (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:ECBDFR"}
+  - id: "geographie"
+    nom: "Géographie du continent"
+    organisation: "relief"
+    elements: ["plaine d'Europe du Nord", "isthme et corridors étroits", "mers Baltique et Noire"]
+    niveau: {espace: "continent", temps: "permanent", vitesse: "millénaire", taille: "macro"}
+    traces:
+      - {source: "fait géographique", statut: "inconnue"}
+relations:
+  - {de: "menace", vers: "peur_confiance", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "incidents récents aux frontières", regle: "seuil"}, coupure: "habituation", statut: "a_verifier", texte: "passage du géopolitique au psychologique : un incident marquant fait monter la peur"}
+  - {de: "peur_confiance", vers: "opinions", effet: "+", delai: "semaines", force: "moyenne", coupure: "lassitude", statut: "a_verifier", texte: "la peur rallie l'opinion aux dépenses de défense"}
+  - {de: "opinions", vers: "defense", effet: "+", delai: "mois", force: "moyenne", coupure: "élections défavorables", statut: "a_verifier", texte: "une opinion favorable rend les budgets votables"}
+  - {de: "etats_unis", vers: "defense", effet: "±", delai: "mois", force: "forte", intensite: {mesure: "doute sur la garantie américaine", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "le doute sur l'allié pousse à se réarmer ; une garantie sûre laisse se reposer sur lui"}
+  - {de: "defense", vers: "industrie", effet: "+", delai: "années", force: "forte", intensite: {mesure: "capacités de production disponibles", regle: "saturation"}, coupure: "goulets industriels", statut: "a_verifier", texte: "les commandes ne se transforment en équipements qu'au rythme de l'industrie"}
+  - {de: "budgets_dette", vers: "defense", effet: "-", retour: "-", forme: "competition", delai: "année", force: "moyenne", coupure: "emprunt commun", statut: "a_verifier", texte: "la défense dispute les budgets aux autres dépenses"}
+  - {de: "otan_ue", vers: "defense", effet: "+", delai: "mois", force: "moyenne", coupure: "veto d'un membre", statut: "a_verifier", texte: "propre au niveau statut : objectifs communs et achats groupés entraînent les retardataires"}
+  - {de: "defense", vers: "otan_ue", effet: "±", retour: "±", delai: "mois", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau statut : un État qui traîne affaiblit la cohésion, un État qui accélère la renforce"}
+  - {de: "geographie", vers: "menace", effet: "+", forme: "contrainte", delai: "permanent", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la plaine ouverte et les corridors étroits concentrent la menace sur le flanc est"}
+  - {de: "etats_unis", vers: "peur_confiance", effet: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les déclarations sur la garantie américaine font varier la confiance"}
+  - {de: "menace", vers: "otan_ue", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "gravité de l'agression perçue", regle: "seuil"}, coupure: "divergences entre membres", statut: "a_verifier", texte: "une menace grave resserre l'alliance et fait venir de nouveaux membres"}
+ponts:
+  - {depuis: "defense", vers: "russie-ukraine:soutiens", nature: "le soutien à l'Ukraine et le réarmement se décident ensemble"}
+  - {depuis: "etats_unis", vers: "politique-americaine:executif", nature: "la garantie américaine dépend de l'exécutif"}
+  - {depuis: "budgets_dette", vers: "inflation-mondiale:budget", nature: "dépenses publiques et inflation"}
+  - {depuis: "geographie", vers: "relief-et-montagnes:obstacles", nature: "le relief comme obstacle ou couloir", type: "meme"}

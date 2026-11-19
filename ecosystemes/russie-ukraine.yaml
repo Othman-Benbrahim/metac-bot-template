@@ -1,173 +1,672 @@
 theme: russie-ukraine
-nom: "Guerre Russie–Ukraine"
+nom: Guerre Russie–Ukraine
 declaration:
-  but: "comprendre ce qui fait durer, s'intensifier ou s'arrêter la guerre, et ce qu'elle transmet (sanctions, énergie, alimentation, sécurité européenne) — questions du tournoi sur un cessez-le-feu, des rencontres, des sanctions"
-  limites: "dedans le front, les capacités militaires, les soutiens extérieurs, les sanctions, les économies de guerre, les négociations, les opinions ; dehors l'histoire longue de la région (seulement comme mémoire) et la politique intérieure des soutiens (thèmes voisins)"
-  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; aucune source privée"
-  date: "2026-11-19"
-  espace: "le front et l'arrière en Ukraine et en Russie, la mer Noire, les capitales des soutiens, les marchés de l'énergie et du blé"
-  temps: "de la frappe (heures) à la guerre d'usure (années) ; mémoire de 2014, de 2022, des négociations successives"
-  vitesse: "l'heure (frappes), la semaine (front), la saison (offensives, boue, hiver énergétique), l'année (budgets, sanctions)"
-  taille: "une unité, une armée, un État, une coalition"
+  but: comprendre ce qui fait durer, s'intensifier ou s'arrêter la guerre, et ce qu'elle transmet (sanctions, énergie, alimentation, sécurité européenne) — questions du tournoi sur un cessez-le-feu, des
+    rencontres, des sanctions
+  limites: dedans le front, les capacités militaires, les soutiens extérieurs, les sanctions, les économies de guerre, les négociations, les opinions ; dehors l'histoire longue de la région (seulement comme
+    mémoire) et la politique intérieure des soutiens (thèmes voisins)
+  observateur: notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; aucune source privée
+  date: '2026-11-19'
+  espace: le front et l'arrière en Ukraine et en Russie, la mer Noire, les capitales des soutiens, les marchés de l'énergie et du blé
+  temps: de la frappe (heures) à la guerre d'usure (années) ; mémoire de 2014, de 2022, des négociations successives
+  vitesse: l'heure (frappes), la semaine (front), la saison (offensives, boue, hiver énergétique), l'année (budgets, sanctions)
+  taille: une unité, une armée, un État, une coalition
 compartiments:
-  - id: front
-    organisation: "geopolitique"
-    nom: "Front et opérations"
-    elements: ["ligne de front", "offensives et défenses", "frappes de drones et de missiles", "fortifications"]
-    acteurs:
-      - {nom: "une unité ou un drone", taille: "micro", espace: "site", vitesse: "heures", organisation: "technique", facette: "collectif"}
-      - {nom: "les forces armées ukrainiennes", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-      - {nom: "les forces armées russes", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "théâtre", temps: "saisons de combat", vitesse: "heures à semaines", taille: "micro à macro"}
-    traces:
-      - {source: "feux actifs en Ukraine (FIRMS, combats et frappes)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:UA"}
-      - {source: "feux actifs en Russie (frappes sur l'arrière)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:RU"}
-  - id: capacites
-    organisation: "technique"
-    nom: "Capacités militaires et industrie"
-    elements: ["munitions", "production de drones", "effectifs et mobilisation", "défense aérienne"]
-    niveau: {espace: "pays", temps: "cycles de production ; vagues de mobilisation", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "budgets et annonces industrielles publiques", statut: "a_brancher"}
-  - id: soutiens
-    organisation: "geopolitique"
-    nom: "Soutiens extérieurs"
-    elements: ["aide militaire et financière occidentale", "Union européenne", "OTAN", "soutiens de la Russie (Iran, Corée du Nord, Chine en agrégat)"]
-    acteurs:
-      - {nom: "États-Unis", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-      - {nom: "Union européenne", taille: "macro", espace: "continent", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-      - {nom: "Corée du Nord", taille: "méso", espace: "pays", vitesse: "mois", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "mondial", temps: "votes budgétaires ; sommets", vitesse: "semaines à mois", taille: "macro"}
-    traces:
-      - {source: "GDELT, ton des gestes des États-Unis envers l'Ukraine", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:UKR"}
-      - {source: "Congrès américain (réunions, textes)", statut: "collecte", fichier: "collecte_congres.py"}
-  - id: sanctions
-    organisation: "statut"
-    nom: "Sanctions"
-    elements: ["paquets de sanctions européens", "sanctions américaines", "plafond de prix sur le pétrole russe", "avoirs gelés", "sanctions secondaires"]
-    acteurs:
-      - {nom: "Commission européenne", taille: "macro", espace: "continent", vitesse: "mois", organisation: "statut", facette: "collectif"}
-      - {nom: "Trésor américain (OFAC)", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "juridictions", temps: "paquets datés", vitesse: "semaines à mois", taille: "macro"}
-    traces:
-      - {source: "désignations de sanctions visant la Russie", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:RU"}
-  - id: economie_russe
-    organisation: "economie"
-    nom: "Économie de guerre russe"
-    elements: ["recettes pétrolières et gazières", "budget militaire", "inflation et taux de la banque centrale russe", "main-d'œuvre"]
-    acteurs:
-      - {nom: "Banque centrale de Russie", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-    niveau: {espace: "Russie", temps: "budget annuel ; décisions mensuelles", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "prix du Brent (FRED), base des recettes russes", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILBRENTEU"}
-  - id: economie_ukraine
-    organisation: "economie"
-    nom: "Économie et infrastructures ukrainiennes"
-    elements: ["réseau électrique", "exportations par la mer Noire", "aide budgétaire", "population déplacée"]
-    niveau: {espace: "Ukraine", temps: "hivers énergétiques", vitesse: "jours (coupures) à années", taille: "macro"}
-    traces:
-      - {source: "coupures d'internet en Ukraine (OONI, signe des coupures électriques)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:UA"}
-      - {source: "anomalies de température (froid et demande d'énergie)", statut: "a_brancher"}
-  - id: negociations
-    organisation: "geopolitique"
-    nom: "Négociations et diplomatie"
-    elements: ["médiations", "rencontres au sommet", "échanges de prisonniers", "conditions posées par chaque camp"]
-    acteurs:
-      - {nom: "le président russe en personne (faits et déclarations publics)", taille: "micro", espace: "pays", vitesse: "jours", organisation: "personne", facette: "personne"}
-      - {nom: "la fonction présidentielle russe (pouvoirs constitutionnels, décisions de guerre et de paix)", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "statut"}
-      - {nom: "le récit officiel russe sur la sécurité et la puissance (en agrégat)", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
-      - {nom: "l'entourage sécuritaire et politique du Kremlin (en agrégat, faits publics)", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
-      - {nom: "le président ukrainien en personne (faits et déclarations publics)", taille: "micro", espace: "pays", vitesse: "jours", organisation: "personne", facette: "personne"}
-      - {nom: "la fonction présidentielle ukrainienne (loi martiale, élections suspendues — à vérifier)", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "statut"}
-      - {nom: "Russie (gouvernement)", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-      - {nom: "Ukraine (gouvernement)", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-      - {nom: "médiateurs (Turquie, pays du Golfe, Vatican, États-Unis — en agrégat)", taille: "méso", espace: "mondial", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
-    niveau: {espace: "capitales et lieux neutres", temps: "rencontres datées", vitesse: "semaines", taille: "macro"}
-    traces:
-      - {source: "GDELT, ton des gestes de la Russie envers l'Ukraine", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:RUS:UKR"}
-      - {source: "routines officielles (Kremlin)", statut: "collecte", fichier: "collecte_routines.py"}
-  - id: opinions
-    organisation: "societe"
-    nom: "Opinions et cohésion"
-    elements: ["lassitude dans les pays soutiens", "cohésion intérieure en Russie et en Ukraine", "récits officiels"]
-    niveau: {espace: "pays", temps: "élections ; sondages", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "récit officiel russe", statut: "collecte", fichier: "collecte_recit_russe.py"}
-      - {source: "Telegram (chaînes publiques)", statut: "collecte", fichier: "collecte_telegram.py"}
-  - id: mer_noire
-    organisation: "ocean"
-    nom: "Mer Noire et exportations"
-    elements: ["corridor maritime ukrainien", "Bosphore", "ports d'Odessa", "flotte russe"]
-    niveau: {espace: "mer Noire et détroits turcs", temps: "saisons de récolte", vitesse: "jours", taille: "méso"}
-    traces:
-      - {source: "IMF PortWatch, navires au Bosphore", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:bosphore:navires"}
-  - id: "relief_fleuves"
-    organisation: "relief"
-    nom: "Relief et fleuves (plaine, Dniepr, marais)"
-    elements: ["grande plaine ouverte sans obstacle naturel", "le Dniepr comme ligne de partage", "marais et forêts du nord", "rivières qui coupent les axes"]
-    acteurs:
-      - {nom: "le Dniepr", taille: "macro", espace: "région", vitesse: "siècle", organisation: "eau", facette: "non_humain"}
-      - {nom: "la plaine ukrainienne", taille: "macro", espace: "pays", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
-    niveau: {espace: "théâtre", temps: "permanent", vitesse: "millénaire", taille: "macro"}
-    traces:
-      - {source: "cartes topographiques et hydrographiques publiques", statut: "a_brancher"}
-  - id: "hiver_saisons"
-    organisation: "climat"
-    nom: "Hiver et saisons (régime climatique, distinct de la météo)"
-    elements: ["gel qui durcit les sols", "dégel et boue (raspoutitsa)", "froid qui fait monter la demande d'énergie", "dérive vers des hivers plus doux (à vérifier)"]
-    acteurs:
-      - {nom: "l'hiver continental", taille: "macro", espace: "région", vitesse: "saisons", organisation: "climat", facette: "non_humain"}
-    niveau: {espace: "région", temps: "saisons ; décennies", vitesse: "saisons à décennies", taille: "macro"}
-    traces:
-      - {source: "anomalies de température à Kyiv et Moscou (Open-Meteo, points à ajouter à collecte_meteo.py)", statut: "a_brancher"}
-  - id: "sols_agriculture"
-    organisation: "mineral"
-    nom: "Sols et agriculture (terres noires)"
-    elements: ["tchernozioms parmi les sols les plus fertiles", "champs minés et pollués par les combats", "récoltes de blé, maïs, tournesol"]
-    acteurs:
-      - {nom: "les terres noires", taille: "macro", espace: "région", vitesse: "siècle", organisation: "mineral", facette: "non_humain"}
-      - {nom: "une exploitation agricole", taille: "micro", espace: "site", vitesse: "saisons", organisation: "economie", facette: "collectif"}
-    niveau: {espace: "région", temps: "saisons de culture ; siècles pour les sols", vitesse: "saisons à siècles", taille: "micro à macro"}
-    traces:
-      - {source: "feux actifs en Ukraine (FIRMS, brûlis et combats sur les champs)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:UA"}
-  - id: "atomique"
-    organisation: "atomique"
-    nom: "Centrales nucléaires et sûreté (niveau institutionnel)"
-    elements: ["centrales situées près des combats", "alimentation électrique de secours", "présence d'inspecteurs de l'AIEA", "sûreté comme enjeu de négociation"]
-    acteurs:
-      - {nom: "Agence internationale de l'énergie atomique (AIEA)", taille: "macro", espace: "mondial", vitesse: "semaines", organisation: "statut", facette: "collectif"}
-      - {nom: "une centrale nucléaire", taille: "méso", espace: "site", vitesse: "années", organisation: "atomique", facette: "non_humain"}
-    niveau: {espace: "sites", temps: "décennies ; incidents de quelques heures", vitesse: "heures à décennies", taille: "méso"}
-    traces:
-      - {source: "communiqués publics de l'AIEA sur la sûreté en Ukraine", statut: "a_brancher"}
+- id: front
+  organisation: geopolitique
+  nom: Front et opérations
+  elements:
+  - ligne de front
+  - offensives et défenses
+  - frappes de drones et de missiles
+  - fortifications
+  acteurs:
+  - nom: une unité ou un drone
+    taille: micro
+    espace: site
+    vitesse: heures
+    organisation: technique
+    facette: collectif
+  - nom: les forces armées ukrainiennes
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: les forces armées russes
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: théâtre
+    temps: saisons de combat
+    vitesse: heures à semaines
+    taille: micro à macro
+  traces:
+  - source: feux actifs en Ukraine (FIRMS, combats et frappes)
+    statut: collecte
+    fichier: collecte_feux.py
+    adaptateur: feux:UA
+  - source: feux actifs en Russie (frappes sur l'arrière)
+    statut: collecte
+    fichier: collecte_feux.py
+    adaptateur: feux:RU
+  - source: incidents d'atteinte aux droits recensés par ViolationsWatch (tous pays)
+    statut: collecte
+    adaptateur: violations
+  - source: incidents recensés en Ukraine (ViolationsWatch)
+    statut: collecte
+    adaptateur: violations:Ukraine
+  - source: coupures d'internet en Ukraine (Cloudflare Radar)
+    statut: collecte
+    adaptateur: radar:UA
+  - source: actes hostiles d'acteurs russes en Ukraine par jour (GDELT)
+    statut: collecte
+    adaptateur: hostilites:UA
+  - source: messages quotidiens de la chaîne publique de l'armée de l'air ukrainienne
+    statut: collecte
+    adaptateur: telegram:kpszsu
+- id: capacites
+  organisation: technique
+  nom: Capacités militaires et industrie
+  elements:
+  - munitions
+  - production de drones
+  - effectifs et mobilisation
+  - défense aérienne
+  niveau:
+    espace: pays
+    temps: cycles de production ; vagues de mobilisation
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: budgets et annonces industrielles publiques
+    statut: a_brancher
+  - source: démonstrations de force russes envers l'Ukraine par jour (GDELT)
+    statut: collecte
+    adaptateur: paire:RU:UA:force
+- id: soutiens
+  organisation: geopolitique
+  nom: Soutiens extérieurs
+  elements:
+  - aide militaire et financière occidentale
+  - Union européenne
+  - OTAN
+  - soutiens de la Russie (Iran, Corée du Nord, Chine en agrégat)
+  acteurs:
+  - nom: États-Unis
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  - nom: Union européenne
+    taille: macro
+    espace: continent
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  - nom: Corée du Nord
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: mondial
+    temps: votes budgétaires ; sommets
+    vitesse: semaines à mois
+    taille: macro
+  traces:
+  - source: GDELT, ton des gestes des États-Unis envers l'Ukraine
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: dyade:USA:UKR
+  - source: Congrès américain (réunions, textes)
+    statut: collecte
+    fichier: collecte_congres.py
+  - source: actes hostiles d'acteurs russes en Moldavie (GDELT)
+    statut: collecte
+    adaptateur: hostilites:MD
+- id: sanctions
+  organisation: statut
+  nom: Sanctions
+  elements:
+  - paquets de sanctions européens
+  - sanctions américaines
+  - plafond de prix sur le pétrole russe
+  - avoirs gelés
+  - sanctions secondaires
+  acteurs:
+  - nom: Commission européenne
+    taille: macro
+    espace: continent
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  - nom: Trésor américain (OFAC)
+    taille: macro
+    espace: mondial
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: juridictions
+    temps: paquets datés
+    vitesse: semaines à mois
+    taille: macro
+  traces:
+  - source: désignations de sanctions visant la Russie
+    statut: collecte
+    fichier: collecte_sanctions.py
+    adaptateur: sanctions:RU
+  - source: mesures de sanction chinoises visant l'Ukraine (GDELT)
+    statut: collecte
+    adaptateur: sanctions_chine:UA
+- id: economie_russe
+  organisation: economie
+  nom: Économie de guerre russe
+  elements:
+  - recettes pétrolières et gazières
+  - budget militaire
+  - inflation et taux de la banque centrale russe
+  - main-d'œuvre
+  acteurs:
+  - nom: Banque centrale de Russie
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: Russie
+    temps: budget annuel ; décisions mensuelles
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: prix du Brent (FRED), base des recettes russes
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DCOILBRENTEU
+- id: economie_ukraine
+  organisation: economie
+  nom: Économie et infrastructures ukrainiennes
+  elements:
+  - réseau électrique
+  - exportations par la mer Noire
+  - aide budgétaire
+  - population déplacée
+  niveau:
+    espace: Ukraine
+    temps: hivers énergétiques
+    vitesse: jours (coupures) à années
+    taille: macro
+  traces:
+  - source: coupures d'internet en Ukraine (OONI, signe des coupures électriques)
+    statut: collecte
+    fichier: collecte_ooni.py
+    adaptateur: ooni:UA
+  - source: anomalies de température (froid et demande d'énergie)
+    statut: a_brancher
+- id: negociations
+  organisation: geopolitique
+  nom: Négociations et diplomatie
+  elements:
+  - médiations
+  - rencontres au sommet
+  - échanges de prisonniers
+  - conditions posées par chaque camp
+  acteurs:
+  - nom: le président russe en personne (faits et déclarations publics)
+    taille: micro
+    espace: pays
+    vitesse: jours
+    organisation: personne
+    facette: personne
+  - nom: la fonction présidentielle russe (pouvoirs constitutionnels, décisions de guerre et de paix)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  - nom: le récit officiel russe sur la sécurité et la puissance (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: ideologie
+    facette: ideologie
+  - nom: l'entourage sécuritaire et politique du Kremlin (en agrégat, faits publics)
+    taille: méso
+    espace: pays
+    vitesse: semaines
+    organisation: entourage
+    facette: collectif
+  - nom: le président ukrainien en personne (faits et déclarations publics)
+    taille: micro
+    espace: pays
+    vitesse: jours
+    organisation: personne
+    facette: personne
+  - nom: la fonction présidentielle ukrainienne (loi martiale, élections suspendues — à vérifier)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  - nom: Russie (gouvernement)
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: Ukraine (gouvernement)
+    taille: macro
+    espace: pays
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: médiateurs (Turquie, pays du Golfe, Vatican, États-Unis — en agrégat)
+    taille: méso
+    espace: mondial
+    vitesse: semaines
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: capitales et lieux neutres
+    temps: rencontres datées
+    vitesse: semaines
+    taille: macro
+  traces:
+  - source: GDELT, ton des gestes de la Russie envers l'Ukraine
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: dyade:RUS:UKR
+  - source: routines officielles (Kremlin)
+    statut: collecte
+    fichier: collecte_routines.py
+  - source: événements conflictuels Russie–Ukraine par mois (GDELT)
+    statut: collecte
+    adaptateur: paire_mois:RU:UA:conflit
+- id: opinions
+  organisation: societe
+  nom: Opinions et cohésion
+  elements:
+  - lassitude dans les pays soutiens
+  - cohésion intérieure en Russie et en Ukraine
+  - récits officiels
+  niveau:
+    espace: pays
+    temps: élections ; sondages
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: récit officiel russe
+    statut: collecte
+    fichier: collecte_recit_russe.py
+  - source: Telegram (chaînes publiques)
+    statut: collecte
+    fichier: collecte_telegram.py
+  - source: coupures d'internet en Russie (Cloudflare Radar)
+    statut: collecte
+    adaptateur: radar:RU
+  - source: jours avant la prochaine date de mémoire en Russie (9 mai…)
+    statut: collecte
+    adaptateur: memoire:RU
+  - source: messages quotidiens de la chaîne publique du ministère russe de la Défense
+    statut: collecte
+    adaptateur: telegram:mod_russia
+- id: mer_noire
+  organisation: ocean
+  nom: Mer Noire et exportations
+  elements:
+  - corridor maritime ukrainien
+  - Bosphore
+  - ports d'Odessa
+  - flotte russe
+  niveau:
+    espace: mer Noire et détroits turcs
+    temps: saisons de récolte
+    vitesse: jours
+    taille: méso
+  traces:
+  - source: IMF PortWatch, navires au Bosphore
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:bosphore:navires
+- id: relief_fleuves
+  organisation: relief
+  nom: Relief et fleuves (plaine, Dniepr, marais)
+  elements:
+  - grande plaine ouverte sans obstacle naturel
+  - le Dniepr comme ligne de partage
+  - marais et forêts du nord
+  - rivières qui coupent les axes
+  acteurs:
+  - nom: le Dniepr
+    taille: macro
+    espace: région
+    vitesse: siècle
+    organisation: eau
+    facette: non_humain
+  - nom: la plaine ukrainienne
+    taille: macro
+    espace: pays
+    vitesse: millénaire
+    organisation: relief
+    facette: non_humain
+  niveau:
+    espace: théâtre
+    temps: permanent
+    vitesse: millénaire
+    taille: macro
+  traces:
+  - source: cartes topographiques et hydrographiques publiques
+    statut: a_brancher
+- id: hiver_saisons
+  organisation: climat
+  nom: Hiver et saisons (régime climatique, distinct de la météo)
+  elements:
+  - gel qui durcit les sols
+  - dégel et boue (raspoutitsa)
+  - froid qui fait monter la demande d'énergie
+  - dérive vers des hivers plus doux (à vérifier)
+  acteurs:
+  - nom: l'hiver continental
+    taille: macro
+    espace: région
+    vitesse: saisons
+    organisation: climat
+    facette: non_humain
+  niveau:
+    espace: région
+    temps: saisons ; décennies
+    vitesse: saisons à décennies
+    taille: macro
+  traces:
+  - source: anomalies de température à Kyiv et Moscou (Open-Meteo, points à ajouter à collecte_meteo.py)
+    statut: a_brancher
+- id: sols_agriculture
+  organisation: mineral
+  nom: Sols et agriculture (terres noires)
+  elements:
+  - tchernozioms parmi les sols les plus fertiles
+  - champs minés et pollués par les combats
+  - récoltes de blé, maïs, tournesol
+  acteurs:
+  - nom: les terres noires
+    taille: macro
+    espace: région
+    vitesse: siècle
+    organisation: mineral
+    facette: non_humain
+  - nom: une exploitation agricole
+    taille: micro
+    espace: site
+    vitesse: saisons
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: région
+    temps: saisons de culture ; siècles pour les sols
+    vitesse: saisons à siècles
+    taille: micro à macro
+  traces:
+  - source: feux actifs en Ukraine (FIRMS, brûlis et combats sur les champs)
+    statut: collecte
+    fichier: collecte_feux.py
+    adaptateur: feux:UA
+- id: atomique
+  organisation: atomique
+  nom: Centrales nucléaires et sûreté (niveau institutionnel)
+  elements:
+  - centrales situées près des combats
+  - alimentation électrique de secours
+  - présence d'inspecteurs de l'AIEA
+  - sûreté comme enjeu de négociation
+  acteurs:
+  - nom: Agence internationale de l'énergie atomique (AIEA)
+    taille: macro
+    espace: mondial
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: une centrale nucléaire
+    taille: méso
+    espace: site
+    vitesse: années
+    organisation: atomique
+    facette: non_humain
+  niveau:
+    espace: sites
+    temps: décennies ; incidents de quelques heures
+    vitesse: heures à décennies
+    taille: méso
+  traces:
+  - source: communiqués publics de l'AIEA sur la sûreté en Ukraine
+    statut: a_brancher
 relations:
-  - {de: "capacites", vers: "front", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "écart entre munitions produites et consommées", regle: "seuil"}, coupure: "fortifications qui figent le front", statut: "a_verifier", texte: "les capacités décident de ce que le front peut faire ; une pénurie fait basculer"}
-  - {de: "soutiens", vers: "capacites", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "volume de l'aide votée récemment", regle: "proportionnelle"}, coupure: "blocages politiques chez les soutiens", statut: "a_verifier", texte: "l'aide extérieure alimente les capacités ukrainiennes (et, en face, les livraisons de munitions et de drones à la Russie)"}
-  - {de: "sanctions", vers: "economie_russe", effet: "-", delai: "mois à années", force: "moyenne", intensite: {mesure: "nombre de désignations récentes", regle: "saturation"}, coupure: "contournement par des pays tiers et la flotte fantôme", statut: "a_verifier", texte: "les sanctions érodent l'économie russe lentement ; chaque paquet ajoute moins"}
-  - {de: "economie_russe", vers: "capacites", effet: "+", delai: "mois", force: "moyenne", coupure: "goulets de main-d'œuvre et de composants", statut: "a_verifier", texte: "les recettes financent la production militaire"}
-  - {de: "front", vers: "economie_ukraine", effet: "-", delai: "jours", force: "forte", intensite: {mesure: "frappes récentes sur le réseau électrique", regle: "proportionnelle"}, coupure: "défense aérienne", statut: "a_verifier", texte: "les frappes sur l'énergie pèsent surtout en hiver"}
-  - {de: "front", vers: "negociations", effet: "±", delai: "semaines", force: "moyenne", coupure: "objectifs maximalistes", statut: "a_verifier", texte: "chaque camp négocie selon ce qu'il croit pouvoir encore gagner sur le terrain"}
-  - {de: "negociations", vers: "front", effet: "-", retour: "±", style: "inconnu", delai: "semaines", force: "faible", coupure: "méfiance, violations", statut: "a_verifier", texte: "une négociation sérieuse peut geler des secteurs ; style de la relation à mesurer (paire RUS–UKR au banc de la réciprocité)"}
-  - {de: "opinions", vers: "soutiens", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "durée de la guerre et coût perçu", regle: "hysteresis"}, coupure: "menace perçue comme directe", statut: "a_verifier", texte: "la lassitude des opinions use le soutien ; une fois installée, elle ne recule pas facilement"}
-  - {de: "soutiens", vers: "sanctions", effet: "+", delai: "semaines à mois", force: "forte", coupure: "unanimité requise dans l'Union européenne", statut: "a_verifier", texte: "les soutiens décident des sanctions"}
-  - {de: "mer_noire", vers: "economie_ukraine", effet: "+", delai: "semaines", force: "moyenne", coupure: "attaques sur les ports et les navires", statut: "a_verifier", texte: "le corridor maritime fait vivre les exportations agricoles"}
-  - {de: "front", vers: "mer_noire", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "frappes récentes sur les ports", regle: "seuil"}, coupure: "défense des ports", statut: "a_verifier", texte: "les frappes sur Odessa et les navires réduisent les passages"}
-  - {de: "soutiens", vers: "negociations", effet: "±", retour: "±", delai: "semaines", force: "moyenne", coupure: "divergences entre soutiens", statut: "a_verifier", texte: "les soutiens pèsent sur les conditions et le calendrier des négociations"}
-  - {de: "relief_fleuves", vers: "front", effet: "±", forme: "contrainte", delai: "permanent", force: "moyenne", coupure: "drones et frappes à longue portée qui sautent les obstacles", statut: "a_verifier", texte: "les fleuves et les marais figent des lignes ; la plaine ouverte laisse les forces exposées"}
-  - {de: "hiver_saisons", vers: "front", effet: "-", delai: "saisons", force: "moyenne", intensite: {mesure: "gel ou dégel du moment", regle: "seuil"}, coupure: "guerre de drones, peu dépendante du sol", statut: "a_verifier", texte: "la boue du dégel arrête les offensives ; le gel les rouvre"}
-  - {de: "hiver_saisons", vers: "economie_ukraine", effet: "-", delai: "jours", force: "forte", intensite: {mesure: "froid par rapport à la saison", regle: "proportionnelle"}, coupure: "réparations et importations d'électricité", statut: "a_verifier", texte: "le froid multiplie l'effet des frappes sur le réseau électrique"}
-  - {de: "front", vers: "sols_agriculture", effet: "-", delai: "jours", force: "forte", intensite: {mesure: "surface des combats et des frappes", regle: "hysteresis"}, coupure: "déminage (des années à des décennies)", statut: "a_verifier", texte: "mines et pollution retirent des terres à la culture ; elles ne reviennent pas au rythme où elles sont perdues"}
-  - {de: "sols_agriculture", vers: "mer_noire", effet: "+", delai: "saisons", force: "moyenne", coupure: "ports fermés", statut: "a_verifier", texte: "les récoltes remplissent le corridor d'exportation"}
-  - {de: "front", vers: "atomique", effet: "-", delai: "heures", force: "forte", intensite: {mesure: "combats et frappes à proximité des centrales", regle: "seuil"}, coupure: "zone de sûreté négociée", statut: "a_verifier", texte: "des combats près d'une centrale menacent son alimentation et sa sûreté"}
-  - {de: "atomique", vers: "negociations", effet: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la sûreté nucléaire est un des rares sujets discutés par les deux camps, sous l'égide de l'AIEA"}
-  - {de: "front", vers: "soutiens", effet: "±", retour: "±", delai: "semaines", force: "moyenne", coupure: "aide déjà votée pour l'année", statut: "a_verifier", texte: "au sein du niveau géopolitique : un revers sur le front mobilise ou décourage les soutiens, qui changent à leur tour le rapport de force"}
+- de: capacites
+  vers: front
+  effet: +
+  delai: mois
+  force: forte
+  intensite:
+    mesure: écart entre munitions produites et consommées
+    regle: seuil
+  coupure: fortifications qui figent le front
+  statut: a_verifier
+  texte: les capacités décident de ce que le front peut faire ; une pénurie fait basculer
+- de: soutiens
+  vers: capacites
+  effet: +
+  delai: mois
+  force: forte
+  intensite:
+    mesure: volume de l'aide votée récemment
+    regle: proportionnelle
+  coupure: blocages politiques chez les soutiens
+  statut: a_verifier
+  texte: l'aide extérieure alimente les capacités ukrainiennes (et, en face, les livraisons de munitions et de drones à la Russie)
+- de: sanctions
+  vers: economie_russe
+  effet: '-'
+  delai: mois à années
+  force: moyenne
+  intensite:
+    mesure: nombre de désignations récentes
+    regle: saturation
+  coupure: contournement par des pays tiers et la flotte fantôme
+  statut: a_verifier
+  texte: les sanctions érodent l'économie russe lentement ; chaque paquet ajoute moins
+- de: economie_russe
+  vers: capacites
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: goulets de main-d'œuvre et de composants
+  statut: a_verifier
+  texte: les recettes financent la production militaire
+- de: front
+  vers: economie_ukraine
+  effet: '-'
+  delai: jours
+  force: forte
+  intensite:
+    mesure: frappes récentes sur le réseau électrique
+    regle: proportionnelle
+  coupure: défense aérienne
+  statut: a_verifier
+  texte: les frappes sur l'énergie pèsent surtout en hiver
+- de: front
+  vers: negociations
+  effet: ±
+  delai: semaines
+  force: moyenne
+  coupure: objectifs maximalistes
+  statut: a_verifier
+  texte: chaque camp négocie selon ce qu'il croit pouvoir encore gagner sur le terrain
+- de: negociations
+  vers: front
+  effet: '-'
+  retour: ±
+  style: inconnu
+  delai: semaines
+  force: faible
+  coupure: méfiance, violations
+  statut: a_verifier
+  texte: une négociation sérieuse peut geler des secteurs ; style de la relation à mesurer (paire RUS–UKR au banc de la réciprocité)
+- de: opinions
+  vers: soutiens
+  effet: ±
+  delai: mois
+  force: moyenne
+  intensite:
+    mesure: durée de la guerre et coût perçu
+    regle: hysteresis
+  coupure: menace perçue comme directe
+  statut: a_verifier
+  texte: la lassitude des opinions use le soutien ; une fois installée, elle ne recule pas facilement
+- de: soutiens
+  vers: sanctions
+  effet: +
+  delai: semaines à mois
+  force: forte
+  coupure: unanimité requise dans l'Union européenne
+  statut: a_verifier
+  texte: les soutiens décident des sanctions
+- de: mer_noire
+  vers: economie_ukraine
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: attaques sur les ports et les navires
+  statut: a_verifier
+  texte: le corridor maritime fait vivre les exportations agricoles
+- de: front
+  vers: mer_noire
+  effet: '-'
+  delai: jours
+  force: moyenne
+  intensite:
+    mesure: frappes récentes sur les ports
+    regle: seuil
+  coupure: défense des ports
+  statut: a_verifier
+  texte: les frappes sur Odessa et les navires réduisent les passages
+- de: soutiens
+  vers: negociations
+  effet: ±
+  retour: ±
+  delai: semaines
+  force: moyenne
+  coupure: divergences entre soutiens
+  statut: a_verifier
+  texte: les soutiens pèsent sur les conditions et le calendrier des négociations
+- de: relief_fleuves
+  vers: front
+  effet: ±
+  forme: contrainte
+  delai: permanent
+  force: moyenne
+  coupure: drones et frappes à longue portée qui sautent les obstacles
+  statut: a_verifier
+  texte: les fleuves et les marais figent des lignes ; la plaine ouverte laisse les forces exposées
+- de: hiver_saisons
+  vers: front
+  effet: '-'
+  delai: saisons
+  force: moyenne
+  intensite:
+    mesure: gel ou dégel du moment
+    regle: seuil
+  coupure: guerre de drones, peu dépendante du sol
+  statut: a_verifier
+  texte: la boue du dégel arrête les offensives ; le gel les rouvre
+- de: hiver_saisons
+  vers: economie_ukraine
+  effet: '-'
+  delai: jours
+  force: forte
+  intensite:
+    mesure: froid par rapport à la saison
+    regle: proportionnelle
+  coupure: réparations et importations d'électricité
+  statut: a_verifier
+  texte: le froid multiplie l'effet des frappes sur le réseau électrique
+- de: front
+  vers: sols_agriculture
+  effet: '-'
+  delai: jours
+  force: forte
+  intensite:
+    mesure: surface des combats et des frappes
+    regle: hysteresis
+  coupure: déminage (des années à des décennies)
+  statut: a_verifier
+  texte: mines et pollution retirent des terres à la culture ; elles ne reviennent pas au rythme où elles sont perdues
+- de: sols_agriculture
+  vers: mer_noire
+  effet: +
+  delai: saisons
+  force: moyenne
+  coupure: ports fermés
+  statut: a_verifier
+  texte: les récoltes remplissent le corridor d'exportation
+- de: front
+  vers: atomique
+  effet: '-'
+  delai: heures
+  force: forte
+  intensite:
+    mesure: combats et frappes à proximité des centrales
+    regle: seuil
+  coupure: zone de sûreté négociée
+  statut: a_verifier
+  texte: des combats près d'une centrale menacent son alimentation et sa sûreté
+- de: atomique
+  vers: negociations
+  effet: ±
+  delai: semaines
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la sûreté nucléaire est un des rares sujets discutés par les deux camps, sous l'égide de l'AIEA
+- de: front
+  vers: soutiens
+  effet: ±
+  retour: ±
+  delai: semaines
+  force: moyenne
+  coupure: aide déjà votée pour l'année
+  statut: a_verifier
+  texte: 'au sein du niveau géopolitique : un revers sur le front mobilise ou décourage les soutiens, qui changent à leur tour le rapport de force'
 ponts:
-  - {depuis: "sanctions", vers: "energie-mondiale:decisions", nature: "sanctions et plafond de prix sur le pétrole russe"}
-  - {depuis: "economie_russe", vers: "energie-mondiale:production", nature: "la Russie est un grand producteur de pétrole et de gaz"}
-  - {depuis: "mer_noire", vers: "alimentation-mondiale:prix", nature: "le blé et le maïs ukrainiens et russes"}
-  - {depuis: "sanctions", vers: "transport-maritime:droit", nature: "la flotte fantôme"}
-  - {depuis: "soutiens", vers: "politique-americaine:budget", nature: "l'aide votée par le Congrès"}
-  - {depuis: "soutiens", vers: "securite-europeenne:defense", nature: "le réarmement européen et l'OTAN"}
-  - {depuis: "soutiens", vers: "rivalite-sino-americaine:alliances", nature: "le soutien chinois à la Russie et les sanctions secondaires"}
-  - {depuis: "hiver_saisons", vers: "climat-extremes:saisons", nature: "les hivers et leur dérive"}
-  - {depuis: "sols_agriculture", vers: "alimentation-mondiale:sols", nature: "les terres noires dans l'offre mondiale de céréales"}
+- depuis: sanctions
+  vers: energie-mondiale:decisions
+  nature: sanctions et plafond de prix sur le pétrole russe
+- depuis: economie_russe
+  vers: energie-mondiale:production
+  nature: la Russie est un grand producteur de pétrole et de gaz
+- depuis: mer_noire
+  vers: alimentation-mondiale:prix
+  nature: le blé et le maïs ukrainiens et russes
+- depuis: sanctions
+  vers: transport-maritime:droit
+  nature: la flotte fantôme
+- depuis: soutiens
+  vers: politique-americaine:budget
+  nature: l'aide votée par le Congrès
+- depuis: soutiens
+  vers: securite-europeenne:defense
+  nature: le réarmement européen et l'OTAN
+- depuis: soutiens
+  vers: rivalite-sino-americaine:alliances
+  nature: le soutien chinois à la Russie et les sanctions secondaires
+- depuis: hiver_saisons
+  vers: climat-extremes:saisons
+  nature: les hivers et leur dérive
+- depuis: sols_agriculture
+  vers: alimentation-mondiale:sols
+  nature: les terres noires dans l'offre mondiale de céréales

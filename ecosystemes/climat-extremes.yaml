@@ -1,166 +1,577 @@
 theme: climat-extremes
-nom: "Climat et extrêmes saisonniers"
+nom: Climat et extrêmes saisonniers
 declaration:
-  but: "comprendre comment se forment les saisons anormales (chaleurs, sécheresses, pluies, tempêtes, hivers rudes) et ce qu'elles transmettent aux autres écosystèmes (énergie, alimentation, eau, santé, infrastructures)"
-  limites: "dedans les océans, l'atmosphère, les oscillations climatiques, les extrêmes, les sols et la végétation qui les amplifient, les feux ; dehors la politique climatique et les émissions en détail (tendance de fond seulement)"
-  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; données publiques seulement"
-  date: "2026-11-19"
-  espace: "la planète, lue en quelques régions clés"
-  temps: "du jour (une tempête) à la décennie (réchauffement de fond) ; mémoire des grands épisodes El Niño (à vérifier)"
-  vitesse: "l'heure (orage), la semaine (vague de chaleur), la saison (oscillation), la décennie (tendance)"
-  taille: "une cellule orageuse, une masse d'air, un bassin océanique, le climat mondial"
+  but: comprendre comment se forment les saisons anormales (chaleurs, sécheresses, pluies, tempêtes, hivers rudes) et ce qu'elles transmettent aux autres écosystèmes (énergie, alimentation, eau, santé,
+    infrastructures)
+  limites: dedans les océans, l'atmosphère, les oscillations climatiques, les extrêmes, les sols et la végétation qui les amplifient, les feux ; dehors la politique climatique et les émissions en détail
+    (tendance de fond seulement)
+  observateur: notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; données publiques seulement
+  date: '2026-11-19'
+  espace: la planète, lue en quelques régions clés
+  temps: du jour (une tempête) à la décennie (réchauffement de fond) ; mémoire des grands épisodes El Niño (à vérifier)
+  vitesse: l'heure (orage), la semaine (vague de chaleur), la saison (oscillation), la décennie (tendance)
+  taille: une cellule orageuse, une masse d'air, un bassin océanique, le climat mondial
 compartiments:
-  - id: "oceans"
-    organisation: "ocean"
-    nom: "Océans"
-    elements: ["températures de surface", "chaleur stockée", "courants"]
-    acteurs:
-      - {nom: "le Pacifique équatorial", taille: "macro", espace: "océan", vitesse: "mois", organisation: "ocean", facette: "non_humain"}
-    niveau: {espace: "bassins océaniques", temps: "mois à décennies", vitesse: "mois", taille: "macro"}
-    traces:
-      - {source: "températures de surface de la mer (NOAA, publiques)", statut: "a_brancher"}
-  - id: "oscillations"
-    organisation: "climat"
-    nom: "Oscillations climatiques"
-    elements: ["El Niño et La Niña", "dipôle de l'océan Indien", "oscillation nord-atlantique"]
-    acteurs:
-      - {nom: "El Niño-oscillation australe", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "climat", facette: "non_humain"}
-    niveau: {espace: "mondial", temps: "cycles de quelques années", vitesse: "mois à saisons", taille: "macro"}
-    traces:
-      - {source: "indice ENSO mensuel (NOAA, public)", statut: "a_brancher"}
-  - id: "atmosphere"
-    organisation: "meteo"
-    nom: "Circulation atmosphérique"
-    elements: ["courants-jets", "blocages anticycloniques", "masses d'air"]
-    acteurs:
-      - {nom: "un anticyclone de blocage", taille: "méso", espace: "région", vitesse: "semaines", organisation: "meteo", facette: "non_humain"}
-    niveau: {espace: "régional à hémisphérique", temps: "semaines", vitesse: "jours à semaines", taille: "méso à macro"}
-    traces:
-      - {source: "réanalyses atmosphériques (publiques)", statut: "a_brancher"}
-  - id: "saisons"
-    organisation: "meteo"
-    nom: "Saisons anormales"
-    elements: ["vagues de chaleur", "hivers rudes", "saisons trop sèches ou trop humides"]
-    acteurs:
-      - {nom: "une vague de chaleur", taille: "méso", espace: "région", vitesse: "semaines", organisation: "meteo", facette: "non_humain"}
-    niveau: {espace: "régional", temps: "saisons", vitesse: "semaines à saisons", taille: "méso"}
-    traces:
-      - {source: "anomalie de température à Berlin (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:berlin"}
-      - {source: "anomalie de température à Delhi (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:delhi"}
-      - {source: "anomalie de température à Houston (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:houston"}
-  - id: "secheresses"
-    organisation: "eau"
-    nom: "Sécheresses"
-    elements: ["déficit de pluie", "dessèchement des sols", "étiages"]
-    acteurs:
-      - {nom: "un bassin agricole en sécheresse", taille: "méso", espace: "région", vitesse: "mois", organisation: "eau", facette: "non_humain"}
-    niveau: {espace: "régional", temps: "mois à années", vitesse: "mois", taille: "méso à macro"}
-    traces:
-      - {source: "indices de sécheresse (moniteurs publics)", statut: "a_brancher"}
-  - id: "tempetes"
-    organisation: "meteo"
-    nom: "Tempêtes et pluies extrêmes"
-    elements: ["cyclones tropicaux", "moussons extrêmes", "inondations"]
-    acteurs:
-      - {nom: "un cyclone tropical", taille: "méso", espace: "région", vitesse: "jours", organisation: "meteo", facette: "non_humain"}
-    niveau: {espace: "régional", temps: "saison cyclonique", vitesse: "heures à jours", taille: "méso"}
-    traces:
-      - {source: "avis des centres cycloniques (publics)", statut: "a_brancher"}
-  - id: "vegetation"
-    organisation: "vegetal"
-    nom: "Sols et végétation"
-    elements: ["humidité des sols", "couvert végétal", "albédo"]
-    acteurs:
-      - {nom: "une forêt sèche", taille: "méso", espace: "région", vitesse: "saisons", organisation: "vegetal", facette: "non_humain"}
-    niveau: {espace: "local à régional", temps: "saisons", vitesse: "semaines à saisons", taille: "micro à méso"}
-    traces:
-      - {source: "indices de végétation par satellite (publics)", statut: "a_brancher"}
-  - id: "feux"
-    organisation: "vegetal"
-    nom: "Feux de végétation"
-    elements: ["feux de forêt", "feux de brousse", "fumées"]
-    acteurs:
-      - {nom: "un foyer de feu", taille: "micro", espace: "site", vitesse: "heures", organisation: "vegetal", facette: "non_humain"}
-      - {nom: "une saison des feux", taille: "méso", espace: "région", vitesse: "mois", organisation: "climat", facette: "non_humain"}
-    niveau: {espace: "local à régional", temps: "saison des feux", vitesse: "heures à semaines", taille: "micro à méso"}
-    traces:
-      - {source: "feux actifs aux États-Unis (FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:US"}
-      - {source: "feux actifs au Brésil (FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:BR"}
-  - id: "tendance"
-    organisation: "climat"
-    nom: "Réchauffement de fond"
-    elements: ["hausse des températures moyennes", "fréquence croissante des extrêmes"]
-    niveau: {espace: "mondial", temps: "décennies", vitesse: "décennies", taille: "macro"}
-    traces:
-      - {source: "anomalies mondiales de température (publiques)", statut: "a_brancher"}
-      - {source: "dérive annuelle de la température à Delhi (Open-Meteo, anomalie glissante sur 365 jours)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:delhi"}
-      - {source: "dérive annuelle de la température à Berlin (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:berlin"}
-  - id: "exposes"
-    organisation: "technique"
-    nom: "Sociétés et infrastructures exposées"
-    elements: ["réseaux électriques", "récoltes", "villes", "santé", "transports"]
-    acteurs:
-      - {nom: "un réseau électrique régional", taille: "méso", espace: "région", vitesse: "heures", organisation: "technique", facette: "collectif"}
-      - {nom: "une ville en vague de chaleur", taille: "méso", espace: "local", vitesse: "jours", organisation: "societe", facette: "collectif"}
-    niveau: {espace: "local à national", temps: "jours à saisons", vitesse: "heures à semaines", taille: "micro à macro"}
-    traces:
-      - {source: "coupures d'internet par pays (OONI, signe indirect de coupures de courant)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IN"}
-  - id: "chimie_atmosphere"
-    organisation: "chimique"
-    nom: "Chimie de l'atmosphère (gaz à effet de serre, aérosols)"
-    elements: ["dioxyde de carbone", "méthane", "aérosols soufrés qui refroidissent", "vapeur d'eau"]
-    acteurs:
-      - {nom: "le stock de dioxyde de carbone de l'atmosphère", taille: "macro", espace: "mondial", vitesse: "siècle", organisation: "chimique", facette: "non_humain"}
-      - {nom: "un panache volcanique", taille: "méso", espace: "continent", vitesse: "mois", organisation: "chimique", facette: "non_humain"}
-    niveau: {espace: "mondial", temps: "décennies à siècles", vitesse: "années à siècles", taille: "macro"}
-    traces:
-      - {source: "concentrations mondiales de CO2 et de méthane (NOAA, publiques)", statut: "a_brancher"}
-  - id: "rayonnement"
-    organisation: "physique"
-    nom: "Rayonnement et bilan d'énergie"
-    elements: ["rayonnement solaire et ses cycles", "albédo (glace, nuages, sols)", "chaleur stockée"]
-    acteurs:
-      - {nom: "le Soleil", taille: "macro", espace: "mondial", vitesse: "décennie", organisation: "physique", facette: "non_humain"}
-      - {nom: "la banquise arctique", taille: "macro", espace: "continent", vitesse: "années", organisation: "physique", facette: "non_humain"}
-    niveau: {espace: "mondial", temps: "cycles solaires de onze ans environ ; décennies", vitesse: "années à décennies", taille: "macro"}
-    traces:
-      - {source: "indices publics d'activité solaire et étendue de la banquise (NOAA, NSIDC)", statut: "a_brancher"}
-  - id: "relief"
-    organisation: "relief"
-    nom: "Relief (montagnes, plateaux, côtes)"
-    elements: ["chaînes de montagnes", "ombre pluviométrique", "vallées qui canalisent l'air", "côtes basses"]
-    acteurs:
-      - {nom: "l'Himalaya et le plateau tibétain", taille: "macro", espace: "continent", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
-      - {nom: "une chaîne côtière", taille: "méso", espace: "région", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
-    niveau: {espace: "région à continent", temps: "permanent à l'échelle humaine", vitesse: "millénaire", taille: "méso à macro"}
-    traces:
-      - {source: "modèles numériques de terrain publics", statut: "a_brancher"}
+- id: oceans
+  organisation: ocean
+  nom: Océans
+  elements:
+  - températures de surface
+  - chaleur stockée
+  - courants
+  acteurs:
+  - nom: le Pacifique équatorial
+    taille: macro
+    espace: océan
+    vitesse: mois
+    organisation: ocean
+    facette: non_humain
+  niveau:
+    espace: bassins océaniques
+    temps: mois à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: températures de surface de la mer (NOAA, publiques)
+    statut: a_brancher
+- id: oscillations
+  organisation: climat
+  nom: Oscillations climatiques
+  elements:
+  - El Niño et La Niña
+  - dipôle de l'océan Indien
+  - oscillation nord-atlantique
+  acteurs:
+  - nom: El Niño-oscillation australe
+    taille: macro
+    espace: mondial
+    vitesse: mois
+    organisation: climat
+    facette: non_humain
+  niveau:
+    espace: mondial
+    temps: cycles de quelques années
+    vitesse: mois à saisons
+    taille: macro
+  traces:
+  - source: indice ENSO mensuel (NOAA, public)
+    statut: a_brancher
+- id: atmosphere
+  organisation: meteo
+  nom: Circulation atmosphérique
+  elements:
+  - courants-jets
+  - blocages anticycloniques
+  - masses d'air
+  acteurs:
+  - nom: un anticyclone de blocage
+    taille: méso
+    espace: région
+    vitesse: semaines
+    organisation: meteo
+    facette: non_humain
+  niveau:
+    espace: régional à hémisphérique
+    temps: semaines
+    vitesse: jours à semaines
+    taille: méso à macro
+  traces:
+  - source: réanalyses atmosphériques (publiques)
+    statut: a_brancher
+- id: saisons
+  organisation: meteo
+  nom: Saisons anormales
+  elements:
+  - vagues de chaleur
+  - hivers rudes
+  - saisons trop sèches ou trop humides
+  acteurs:
+  - nom: une vague de chaleur
+    taille: méso
+    espace: région
+    vitesse: semaines
+    organisation: meteo
+    facette: non_humain
+  niveau:
+    espace: régional
+    temps: saisons
+    vitesse: semaines à saisons
+    taille: méso
+  traces:
+  - source: anomalie de température à Berlin (Open-Meteo)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:berlin
+  - source: anomalie de température à Delhi (Open-Meteo)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:delhi
+  - source: anomalie de température à Houston (Open-Meteo)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:houston
+- id: secheresses
+  organisation: eau
+  nom: Sécheresses
+  elements:
+  - déficit de pluie
+  - dessèchement des sols
+  - étiages
+  acteurs:
+  - nom: un bassin agricole en sécheresse
+    taille: méso
+    espace: région
+    vitesse: mois
+    organisation: eau
+    facette: non_humain
+  niveau:
+    espace: régional
+    temps: mois à années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - source: indices de sécheresse (moniteurs publics)
+    statut: a_brancher
+- id: tempetes
+  organisation: meteo
+  nom: Tempêtes et pluies extrêmes
+  elements:
+  - cyclones tropicaux
+  - moussons extrêmes
+  - inondations
+  acteurs:
+  - nom: un cyclone tropical
+    taille: méso
+    espace: région
+    vitesse: jours
+    organisation: meteo
+    facette: non_humain
+  niveau:
+    espace: régional
+    temps: saison cyclonique
+    vitesse: heures à jours
+    taille: méso
+  traces:
+  - source: avis des centres cycloniques (publics)
+    statut: a_brancher
+- id: vegetation
+  organisation: vegetal
+  nom: Sols et végétation
+  elements:
+  - humidité des sols
+  - couvert végétal
+  - albédo
+  acteurs:
+  - nom: une forêt sèche
+    taille: méso
+    espace: région
+    vitesse: saisons
+    organisation: vegetal
+    facette: non_humain
+  niveau:
+    espace: local à régional
+    temps: saisons
+    vitesse: semaines à saisons
+    taille: micro à méso
+  traces:
+  - source: indices de végétation par satellite (publics)
+    statut: a_brancher
+- id: feux
+  organisation: vegetal
+  nom: Feux de végétation
+  elements:
+  - feux de forêt
+  - feux de brousse
+  - fumées
+  acteurs:
+  - nom: un foyer de feu
+    taille: micro
+    espace: site
+    vitesse: heures
+    organisation: vegetal
+    facette: non_humain
+  - nom: une saison des feux
+    taille: méso
+    espace: région
+    vitesse: mois
+    organisation: climat
+    facette: non_humain
+  niveau:
+    espace: local à régional
+    temps: saison des feux
+    vitesse: heures à semaines
+    taille: micro à méso
+  traces:
+  - source: feux actifs aux États-Unis (FIRMS)
+    statut: collecte
+    fichier: collecte_feux.py
+    adaptateur: feux:US
+  - source: feux actifs au Brésil (FIRMS)
+    statut: collecte
+    fichier: collecte_feux.py
+    adaptateur: feux:BR
+- id: tendance
+  organisation: climat
+  nom: Réchauffement de fond
+  elements:
+  - hausse des températures moyennes
+  - fréquence croissante des extrêmes
+  niveau:
+    espace: mondial
+    temps: décennies
+    vitesse: décennies
+    taille: macro
+  traces:
+  - source: anomalies mondiales de température (publiques)
+    statut: a_brancher
+  - source: dérive annuelle de la température à Delhi (Open-Meteo, anomalie glissante sur 365 jours)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: climat:delhi
+  - source: dérive annuelle de la température à Berlin (Open-Meteo)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: climat:berlin
+- id: exposes
+  organisation: technique
+  nom: Sociétés et infrastructures exposées
+  elements:
+  - réseaux électriques
+  - récoltes
+  - villes
+  - santé
+  - transports
+  acteurs:
+  - nom: un réseau électrique régional
+    taille: méso
+    espace: région
+    vitesse: heures
+    organisation: technique
+    facette: collectif
+  - nom: une ville en vague de chaleur
+    taille: méso
+    espace: local
+    vitesse: jours
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: local à national
+    temps: jours à saisons
+    vitesse: heures à semaines
+    taille: micro à macro
+  traces:
+  - source: coupures d'internet par pays (OONI, signe indirect de coupures de courant)
+    statut: collecte
+    fichier: collecte_ooni.py
+    adaptateur: ooni:IN
+  - source: interdictions de survol pour danger (feux, catastrophes ; FAA)
+    statut: collecte
+    adaptateur: tfr:HAZARDS
+- id: chimie_atmosphere
+  organisation: chimique
+  nom: Chimie de l'atmosphère (gaz à effet de serre, aérosols)
+  elements:
+  - dioxyde de carbone
+  - méthane
+  - aérosols soufrés qui refroidissent
+  - vapeur d'eau
+  acteurs:
+  - nom: le stock de dioxyde de carbone de l'atmosphère
+    taille: macro
+    espace: mondial
+    vitesse: siècle
+    organisation: chimique
+    facette: non_humain
+  - nom: un panache volcanique
+    taille: méso
+    espace: continent
+    vitesse: mois
+    organisation: chimique
+    facette: non_humain
+  niveau:
+    espace: mondial
+    temps: décennies à siècles
+    vitesse: années à siècles
+    taille: macro
+  traces:
+  - source: concentrations mondiales de CO2 et de méthane (NOAA, publiques)
+    statut: a_brancher
+- id: rayonnement
+  organisation: physique
+  nom: Rayonnement et bilan d'énergie
+  elements:
+  - rayonnement solaire et ses cycles
+  - albédo (glace, nuages, sols)
+  - chaleur stockée
+  acteurs:
+  - nom: le Soleil
+    taille: macro
+    espace: mondial
+    vitesse: décennie
+    organisation: physique
+    facette: non_humain
+  - nom: la banquise arctique
+    taille: macro
+    espace: continent
+    vitesse: années
+    organisation: physique
+    facette: non_humain
+  niveau:
+    espace: mondial
+    temps: cycles solaires de onze ans environ ; décennies
+    vitesse: années à décennies
+    taille: macro
+  traces:
+  - source: indices publics d'activité solaire et étendue de la banquise (NOAA, NSIDC)
+    statut: a_brancher
+- id: relief
+  organisation: relief
+  nom: Relief (montagnes, plateaux, côtes)
+  elements:
+  - chaînes de montagnes
+  - ombre pluviométrique
+  - vallées qui canalisent l'air
+  - côtes basses
+  acteurs:
+  - nom: l'Himalaya et le plateau tibétain
+    taille: macro
+    espace: continent
+    vitesse: millénaire
+    organisation: relief
+    facette: non_humain
+  - nom: une chaîne côtière
+    taille: méso
+    espace: région
+    vitesse: millénaire
+    organisation: relief
+    facette: non_humain
+  niveau:
+    espace: région à continent
+    temps: permanent à l'échelle humaine
+    vitesse: millénaire
+    taille: méso à macro
+  traces:
+  - source: modèles numériques de terrain publics
+    statut: a_brancher
 relations:
-  - {de: "oceans", vers: "oscillations", effet: "±", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "la chaleur du Pacifique équatorial fait basculer El Niño ou La Niña"}
-  - {de: "oscillations", vers: "atmosphere", effet: "±", delai: "mois", force: "forte", intensite: {mesure: "force de l'épisode El Niño ou La Niña", regle: "proportionnelle"}, coupure: "régions non télé-connectées", statut: "a_verifier", texte: "les oscillations déplacent pluies et chaleurs sur plusieurs continents (télé-connexions)"}
-  - {de: "atmosphere", vers: "saisons", effet: "±", delai: "jours à semaines", force: "forte", intensite: {mesure: "durée du blocage anticyclonique", regle: "seuil"}, coupure: "rupture du blocage", statut: "a_verifier", texte: "un blocage qui dure transforme un temps chaud en vague de chaleur"}
-  - {de: "atmosphere", vers: "tempetes", effet: "±", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la circulation dirige et nourrit les tempêtes"}
-  - {de: "oceans", vers: "tempetes", effet: "+", delai: "jours à semaines", force: "forte", intensite: {mesure: "température de surface de la mer", regle: "seuil"}, coupure: "cisaillement des vents", statut: "a_verifier", texte: "une mer chaude au-delà d'un seuil nourrit des cyclones plus intenses"}
-  - {de: "saisons", vers: "secheresses", effet: "+", delai: "semaines à mois", force: "forte", coupure: "retour des pluies", statut: "a_verifier", texte: "chaleur et absence de pluie installent la sécheresse"}
-  - {de: "secheresses", vers: "vegetation", effet: "-", delai: "semaines", force: "forte", intensite: {mesure: "déficit d'humidité du sol", regle: "seuil"}, coupure: "irrigation", statut: "a_verifier", texte: "la végétation tient puis décroche d'un coup"}
-  - {de: "vegetation", vers: "saisons", effet: "-", retour: "-", forme: "competition", delai: "jours à semaines", force: "moyenne", coupure: "pluie", statut: "a_verifier", texte: "boucle : des sols secs chauffent plus l'air, et l'air plus chaud assèche les sols (rétroaction qui entretient la chaleur)"}
-  - {de: "vegetation", vers: "feux", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "sécheresse de la végétation", regle: "seuil"}, coupure: "pluie, coupe-feux", statut: "a_verifier", texte: "une végétation desséchée devient combustible"}
-  - {de: "feux", vers: "vegetation", effet: "-", delai: "jours à années", force: "forte", intensite: {mesure: "surface brûlée", regle: "hysteresis"}, coupure: "repousse", statut: "a_verifier", texte: "les feux détruisent la végétation, qui met des années à revenir (ou ne revient pas à l'identique)"}
-  - {de: "tendance", vers: "saisons", effet: "+", delai: "décennies", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "le réchauffement de fond rend les extrêmes chauds plus fréquents"}
-  - {de: "saisons", vers: "exposes", effet: "-", delai: "jours", force: "forte", intensite: {mesure: "anomalie de température du moment", regle: "seuil"}, coupure: "climatisation, réseaux dimensionnés", statut: "a_verifier", texte: "au-delà d'un seuil de chaleur ou de froid, réseaux et santé cèdent"}
-  - {de: "tempetes", vers: "exposes", effet: "-", delai: "heures à jours", force: "forte", coupure: "alerte et protection", statut: "a_verifier", texte: "cyclones et inondations frappent infrastructures et récoltes"}
-  - {de: "exposes", vers: "vegetation", effet: "-", delai: "années", force: "faible", coupure: "protection des milieux", statut: "a_verifier", texte: "urbanisation et défrichement réduisent la végétation qui tamponnait les extrêmes"}
-  - {de: "chimie_atmosphere", vers: "rayonnement", effet: "+", delai: "années à décennies", force: "forte", coupure: "aérosols qui masquent une partie du réchauffement", statut: "a_verifier", texte: "les gaz à effet de serre retiennent la chaleur : le bilan d'énergie penche vers le réchauffement"}
-  - {de: "rayonnement", vers: "tendance", effet: "+", delai: "décennies", force: "forte", coupure: "chaleur absorbée par les océans", statut: "a_verifier", texte: "un bilan d'énergie positif fait monter les températures de fond"}
-  - {de: "rayonnement", vers: "rayonnement", effet: "+", delai: "années", force: "moyenne", intensite: {mesure: "recul de la banquise et de la neige", regle: "hysteresis"}, coupure: "inconnue", statut: "a_verifier", texte: "au sein du niveau physique : moins de glace, moins de lumière renvoyée, plus de chaleur, encore moins de glace (rétroaction d'albédo)"}
-  - {de: "oceans", vers: "chimie_atmosphere", effet: "-", retour: "+", delai: "décennies", force: "moyenne", intensite: {mesure: "température des eaux de surface", regle: "saturation"}, coupure: "océans plus chauds qui absorbent moins", statut: "a_verifier", texte: "les océans absorbent une part du CO2 ; plus chauds et plus acides, ils en absorbent moins"}
-  - {de: "relief", vers: "secheresses", effet: "+", delai: "permanent", force: "forte", coupure: "vents changeant de direction", statut: "a_verifier", texte: "une chaîne de montagnes arrête les pluies : un versant arrosé, l'autre sec (ombre pluviométrique)"}
-  - {de: "relief", vers: "atmosphere", effet: "±", forme: "contrainte", delai: "permanent", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "le relief canalise les vents et fixe la place des blocages et des moussons"}
-  - {de: "tendance", vers: "oscillations", effet: "±", delai: "décennies", force: "inconnue", intensite: {mesure: "réchauffement de fond accumulé", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "le climat de fond peut changer la fréquence des épisodes El Niño (débat scientifique, à vérifier)"}
+- de: oceans
+  vers: oscillations
+  effet: ±
+  delai: mois
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: la chaleur du Pacifique équatorial fait basculer El Niño ou La Niña
+- de: oscillations
+  vers: atmosphere
+  effet: ±
+  delai: mois
+  force: forte
+  intensite:
+    mesure: force de l'épisode El Niño ou La Niña
+    regle: proportionnelle
+  coupure: régions non télé-connectées
+  statut: a_verifier
+  texte: les oscillations déplacent pluies et chaleurs sur plusieurs continents (télé-connexions)
+- de: atmosphere
+  vers: saisons
+  effet: ±
+  delai: jours à semaines
+  force: forte
+  intensite:
+    mesure: durée du blocage anticyclonique
+    regle: seuil
+  coupure: rupture du blocage
+  statut: a_verifier
+  texte: un blocage qui dure transforme un temps chaud en vague de chaleur
+- de: atmosphere
+  vers: tempetes
+  effet: ±
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la circulation dirige et nourrit les tempêtes
+- de: oceans
+  vers: tempetes
+  effet: +
+  delai: jours à semaines
+  force: forte
+  intensite:
+    mesure: température de surface de la mer
+    regle: seuil
+  coupure: cisaillement des vents
+  statut: a_verifier
+  texte: une mer chaude au-delà d'un seuil nourrit des cyclones plus intenses
+- de: saisons
+  vers: secheresses
+  effet: +
+  delai: semaines à mois
+  force: forte
+  coupure: retour des pluies
+  statut: a_verifier
+  texte: chaleur et absence de pluie installent la sécheresse
+- de: secheresses
+  vers: vegetation
+  effet: '-'
+  delai: semaines
+  force: forte
+  intensite:
+    mesure: déficit d'humidité du sol
+    regle: seuil
+  coupure: irrigation
+  statut: a_verifier
+  texte: la végétation tient puis décroche d'un coup
+- de: vegetation
+  vers: saisons
+  effet: '-'
+  retour: '-'
+  forme: competition
+  delai: jours à semaines
+  force: moyenne
+  coupure: pluie
+  statut: a_verifier
+  texte: 'boucle : des sols secs chauffent plus l''air, et l''air plus chaud assèche les sols (rétroaction qui entretient la chaleur)'
+- de: vegetation
+  vers: feux
+  effet: +
+  delai: jours
+  force: forte
+  intensite:
+    mesure: sécheresse de la végétation
+    regle: seuil
+  coupure: pluie, coupe-feux
+  statut: a_verifier
+  texte: une végétation desséchée devient combustible
+- de: feux
+  vers: vegetation
+  effet: '-'
+  delai: jours à années
+  force: forte
+  intensite:
+    mesure: surface brûlée
+    regle: hysteresis
+  coupure: repousse
+  statut: a_verifier
+  texte: les feux détruisent la végétation, qui met des années à revenir (ou ne revient pas à l'identique)
+- de: tendance
+  vers: saisons
+  effet: +
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: le réchauffement de fond rend les extrêmes chauds plus fréquents
+- de: saisons
+  vers: exposes
+  effet: '-'
+  delai: jours
+  force: forte
+  intensite:
+    mesure: anomalie de température du moment
+    regle: seuil
+  coupure: climatisation, réseaux dimensionnés
+  statut: a_verifier
+  texte: au-delà d'un seuil de chaleur ou de froid, réseaux et santé cèdent
+- de: tempetes
+  vers: exposes
+  effet: '-'
+  delai: heures à jours
+  force: forte
+  coupure: alerte et protection
+  statut: a_verifier
+  texte: cyclones et inondations frappent infrastructures et récoltes
+- de: exposes
+  vers: vegetation
+  effet: '-'
+  delai: années
+  force: faible
+  coupure: protection des milieux
+  statut: a_verifier
+  texte: urbanisation et défrichement réduisent la végétation qui tamponnait les extrêmes
+- de: chimie_atmosphere
+  vers: rayonnement
+  effet: +
+  delai: années à décennies
+  force: forte
+  coupure: aérosols qui masquent une partie du réchauffement
+  statut: a_verifier
+  texte: 'les gaz à effet de serre retiennent la chaleur : le bilan d''énergie penche vers le réchauffement'
+- de: rayonnement
+  vers: tendance
+  effet: +
+  delai: décennies
+  force: forte
+  coupure: chaleur absorbée par les océans
+  statut: a_verifier
+  texte: un bilan d'énergie positif fait monter les températures de fond
+- de: rayonnement
+  vers: rayonnement
+  effet: +
+  delai: années
+  force: moyenne
+  intensite:
+    mesure: recul de la banquise et de la neige
+    regle: hysteresis
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'au sein du niveau physique : moins de glace, moins de lumière renvoyée, plus de chaleur, encore moins de glace (rétroaction d''albédo)'
+- de: oceans
+  vers: chimie_atmosphere
+  effet: '-'
+  retour: +
+  delai: décennies
+  force: moyenne
+  intensite:
+    mesure: température des eaux de surface
+    regle: saturation
+  coupure: océans plus chauds qui absorbent moins
+  statut: a_verifier
+  texte: les océans absorbent une part du CO2 ; plus chauds et plus acides, ils en absorbent moins
+- de: relief
+  vers: secheresses
+  effet: +
+  delai: permanent
+  force: forte
+  coupure: vents changeant de direction
+  statut: a_verifier
+  texte: 'une chaîne de montagnes arrête les pluies : un versant arrosé, l''autre sec (ombre pluviométrique)'
+- de: relief
+  vers: atmosphere
+  effet: ±
+  forme: contrainte
+  delai: permanent
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: le relief canalise les vents et fixe la place des blocages et des moussons
+- de: tendance
+  vers: oscillations
+  effet: ±
+  delai: décennies
+  force: inconnue
+  intensite:
+    mesure: réchauffement de fond accumulé
+    regle: seuil
+  coupure: inconnue
+  statut: a_verifier
+  texte: le climat de fond peut changer la fréquence des épisodes El Niño (débat scientifique, à vérifier)
 ponts:
-  - {depuis: "saisons", vers: "energie-mondiale:climat", nature: "hivers et chaleurs dans la demande d'énergie"}
-  - {depuis: "tempetes", vers: "energie-mondiale:production", nature: "ouragans du golfe du Mexique et plateformes pétrolières"}
-  - {depuis: "secheresses", vers: "alimentation-mondiale:climat", nature: "la sécheresse dans les bassins céréaliers"}
-  - {depuis: "secheresses", vers: "eau-moyen-orient:rarete", nature: "la sécheresse aggrave la rareté de l'eau au Moyen-Orient"}
-  - {depuis: "saisons", vers: "ormuz:milieu", nature: "chaleur extrême sur le Golfe"}
-  - {depuis: "exposes", vers: "infrastructures-critiques:reseaux", nature: "réseaux électriques et de transport face aux extrêmes"}
+- depuis: saisons
+  vers: energie-mondiale:climat
+  nature: hivers et chaleurs dans la demande d'énergie
+- depuis: tempetes
+  vers: energie-mondiale:production
+  nature: ouragans du golfe du Mexique et plateformes pétrolières
+- depuis: secheresses
+  vers: alimentation-mondiale:climat
+  nature: la sécheresse dans les bassins céréaliers
+- depuis: secheresses
+  vers: eau-moyen-orient:rarete
+  nature: la sécheresse aggrave la rareté de l'eau au Moyen-Orient
+- depuis: saisons
+  vers: ormuz:milieu
+  nature: chaleur extrême sur le Golfe
+- depuis: exposes
+  vers: infrastructures-critiques:reseaux
+  nature: réseaux électriques et de transport face aux extrêmes
