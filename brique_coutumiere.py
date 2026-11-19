@@ -104,6 +104,11 @@ def rattacher(f: dict) -> dict:
     if pays is None:
         return {"motif": "pays absent des tables de la base"}
     if "president" not in e:
+        import ipu_parlements as ipu
+        if ipu.suspendu(pays):
+            return {"motif": "parlement suspendu (IPU) : règle d'inertie des régimes fermés, pas une course"}
+        if ipu.elue_directement(pays) is False:
+            return {"motif": "chambre non élue au suffrage direct (IPU) : les sondages ne s'appliquent pas"}
         if f["evenement"] == "rang" and "seats" in f.get("titre", "").lower():
             return {"motif": "sièges : pas de règle sourcée voix → sièges pour ce système"}
         return {"motif": "élection non présidentielle : mode de scrutin non inscrit pour ce pays"}

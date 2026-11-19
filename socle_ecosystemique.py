@@ -41,6 +41,13 @@ def espaces(fiche: dict) -> list[str]:
     return [k for k, ms in MOTS.items() if any(m in t for m in ms)]
 
 
+def _ipu() -> dict:
+    import ipu_parlements as ipu
+    cs = ipu.chambres()
+    return {"chambres": len(cs), "suspendues": sorted({c["pays"] for c in cs if c["statut"] == "Suspendu"}),
+            "non_elues_directement": sum(c["designation"] != "Scrutin direct" for c in cs)}
+
+
 def assembler() -> dict:
     fiches = ec.charger(ec.DOSSIER)
     regles = [r for r in rc.regles()]
@@ -67,6 +74,7 @@ def assembler() -> dict:
                         for s, v in (briques.get("structures") or {}).items()},
             "mecanismes": [{"id": m["id"], "nom": m["nom"], "garde": m["garde"]} for m in mecanismes()],
             "regles": dict(Counter(r["statut"] for r in regles)),
+            "parlements_ipu": _ipu(),
             "regles_monde": [r["id"] for r in regles if r["espace"] == "monde"]}
 
 
@@ -79,6 +87,9 @@ def markdown(s: dict) -> str:
         L.append(f"| {t} | {', '.join(v['espaces']) or '—'} | {len(v['regles'])} ({len(v['abstentions'])}) | "
                  f"{', '.join(f'{k} {n}' for k, n in v['inconnus'].items()) or '—'} | "
                  f"{', '.join(f'{k} {n}' for k, n in v['natures'].items()) or '—'} |")
+    p = s["parlements_ipu"]
+    L += ["", f"Parlements (IPU Parline) : {p['chambres']} chambres, {p['non_elues_directement']} non élues au suffrage direct ; "
+          f"suspendues (inertie des régimes fermés) : {', '.join(p['suspendues'])}."]
     L += ["", "## Mécanismes à connaître (non mesurables) et leur garde", ""]
     L += [f"- **{m['nom']}** : {m['garde']}" for m in s["mecanismes"]]
     return "\n".join(L) + "\n"

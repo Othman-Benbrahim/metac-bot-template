@@ -937,6 +937,19 @@
   "absence": 4,
   "auteur": 2
  },
+ "parlements_ipu": {
+  "chambres": 281,
+  "suspendues": [
+   "Afghanistan",
+   "Kazakhstan",
+   "Koweït",
+   "Mauritanie",
+   "Myanmar",
+   "Soudan",
+   "Turkménistan"
+  ],
+  "non_elues_directement": 71
+ },
  "regles_monde": [
   "us_erreur_selon_temps_restant",
   "regimes_fermes_inertie",

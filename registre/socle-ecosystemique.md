@@ -40,6 +40,8 @@ Règles coutumières : {'source': 28, 'absence': 4, 'auteur': 2} ; valables part
 | soleil-espace | — | 0 (0) | absence 7 | flux 1 |
 | transport-maritime | asie | 4 (1) | absence 6 | flux 8 |
 
+Parlements (IPU Parline) : 281 chambres, 71 non élues au suffrage direct ; suspendues (inertie des régimes fermés) : Afghanistan, Kazakhstan, Koweït, Mauritanie, Myanmar, Soudan, Turkménistan.
+
 ## Mécanismes à connaître (non mesurables) et leur garde
 
 - **reprise des dépêches (amont commun de la presse)** : deux sources indépendantes au minimum ; presse ↔ presse et GDELT ↔ UCDP marqués « amont partagé » (ecart_dit_compte.py)

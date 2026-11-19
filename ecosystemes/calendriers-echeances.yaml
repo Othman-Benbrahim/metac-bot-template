@@ -42,6 +42,9 @@ compartiments:
   - source: élections nationales (Wikidata)
     statut: collecte
     fichier: collecte_elections.py
+  - source: prochaines élections et statut des parlements (IPU Parline, relevé manuel du 2026-11-19, croisé avec Wikidata)
+    statut: collecte
+    fichier: ipu_parlements.py
   - source: jours avant la prochaine élection connue aux États-Unis (Wikidata)
     statut: collecte
     adaptateur: elections:US

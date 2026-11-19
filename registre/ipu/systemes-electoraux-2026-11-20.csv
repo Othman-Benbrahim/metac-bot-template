@@ -1,0 +1,282 @@
+iso,chambre_code,pays,type_chambre,suspendue,systeme,sous_systeme,sieges_majoritaires,sieges_proportionnels,non_elus_directement,vote_obligatoire,age_vote,age_eligibilite
+AF,AF-LC01,Afghanistan,Chambre basse,Oui,Autres systèmes,Vote unique non transférable (SNTV),,,Non,Non,18,25
+AF,AF-UC01,Afghanistan,Chambre haute,Oui,,,,,Oui,Non,,35
+ZA,ZA-LC01,Afrique du Sud,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+ZA,ZA-UC01,Afrique du Sud,Chambre haute,Non,,,,,Oui,Non,18,
+AL,AL-LC01,Albanie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+DZ,DZ-UC01,Algérie,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Oui,Non,,35
+DZ,DZ-LC01,Algérie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+DE,DE-LC01,Allemagne,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),,299,Non,Non,18,18
+DE,DE-UC01,Allemagne,Chambre haute,Non,,,,,Oui,Non,,18
+AD,AD-LC01,Andorre,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,14,Non,Non,18,18
+AO,AO-LC01,Angola,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+AG,AG-UC01,Antigua-et-Barbuda,Chambre haute,Non,,,,,Oui,Non,,21
+AG,AG-LC01,Antigua-et-Barbuda,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+SA,SA-LC01,Arabie saoudite,Chambre basse,Non,,,,,Oui,,,30
+AR,AR-UC01,Argentine,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,"Oui, seulement pour certaines personnes",16,30
+AR,AR-LC01,Argentine,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,"Oui, seulement pour certaines personnes",16,25
+AM,AM-LC01,Arménie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+AU,AU-UC01,Australie,Chambre haute,Non,Scrutin proportionnel,Vote unique transférable (STV),,,Non,Oui,18,18
+AU,AU-LC01,Australie,Chambre basse,Non,Scrutin majoritaire,Vote préférentiel (AV),,,Non,Oui,18,18
+AT,AT-LC01,Autriche,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Oui,Non,16,18
+AT,AT-UC01,Autriche,Chambre haute,Non,,,,,Oui,Non,,18
+AZ,AZ-LC01,Azerbaïdjan,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+BS,BS-LC01,Bahamas,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+BS,BS-UC01,Bahamas,Chambre haute,Non,,,,,Oui,Non,,30
+BH,BH-LC01,Bahreïn,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,20,30
+BH,BH-UC01,Bahreïn,Chambre haute,Non,,,,,Oui,Non,,35
+BD,BD-LC01,Bangladesh,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+BB,BB-LC01,Barbade,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+BB,BB-UC01,Barbade,Chambre haute,Non,,,,,Oui,Non,,21
+BY,BY-UC01,Bélarus,Chambre haute,Non,,,,,Oui,Non,,30
+BY,BY-LC01,Bélarus,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,18,21
+BE,BE-LC01,Belgique,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,18
+BE,BE-UC01,Belgique,Chambre haute,Non,,,,,Oui,Oui,,18
+BZ,BZ-UC01,Belize,Chambre haute,Non,,,,,Oui,Non,,18
+BZ,BZ-LC01,Belize,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+BJ,BJ-LC01,Bénin,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+BJ,BJ-UC01,Bénin,Chambre haute,Non,,,,,Oui,Non,18,
+BT,BT-UC01,Bhoutan,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+BT,BT-LC01,Bhoutan,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+BO,BO-LC01,Bolivie (État plurinational de),Chambre basse,Non,Scrutin mixte,,,,Non,Oui,18,18
+BO,BO-UC01,Bolivie (État plurinational de),Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,18
+BA,BA-UC01,Bosnie-Herzégovine,Chambre haute,Non,,,,,Oui,Non,,18
+BA,BA-LC01,Bosnie-Herzégovine,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+BW,BW-LC01,Botswana,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+BR,BR-UC01,Brésil,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,"Oui, seulement pour certaines personnes",16,35
+BR,BR-LC01,Brésil,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,"Oui, seulement pour certaines personnes",16,21
+BN,BN-LC01,Brunéi Darussalam,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire plurinominal (BV),,,Oui,,18,21
+BG,BG-LC01,Bulgarie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,21
+BF,BF-LC01,Burkina Faso,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Oui,Non,18,21
+BI,BI-UC01,Burundi,Chambre haute,Non,,,,,Oui,Non,,35
+BI,BI-LC01,Burundi,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+CV,CV-LC01,Cabo Verde,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+KH,KH-LC01,Cambodge,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+KH,KH-UC01,Cambodge,Chambre haute,Non,,,,,Oui,Non,,40
+CM,CM-UC01,Cameroun,Chambre haute,Non,,,,,Oui,Non,,40
+CM,CM-LC01,Cameroun,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,20,23
+CA,CA-LC01,Canada,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+CA,CA-UC01,Canada,Chambre haute,Non,,,,,Oui,Non,,30
+CL,CL-UC01,Chili,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,35
+CL,CL-LC01,Chili,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+CN,CN-LC01,Chine,Chambre basse,Non,,,,,Oui,Non,,18
+CY,CY-LC01,Chypre,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,21
+CO,CO-UC01,Colombie,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,30
+CO,CO-LC01,Colombie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+KM,KM-LC01,Comores,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,18,18
+CG,CG-UC01,Congo,Chambre haute,Non,,,,,Oui,Non,,45
+CG,CG-LC01,Congo,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,18,25
+CR,CR-LC01,Costa Rica,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,21
+CI,CI-LC01,Côte d'Ivoire,Chambre basse,Non,Scrutin majoritaire,,,,Non,Non,18,25
+CI,CI-UC01,Côte d'Ivoire,Chambre haute,Non,,,,,Non,Non,,35
+HR,HR-LC01,Croatie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+CU,CU-LC01,Cuba,Chambre basse,Non,Autres systèmes,Vote unique non transférable (SNTV),,,Non,Non,16,18
+DK,DK-LC01,Danemark,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+DJ,DJ-LC01,Djibouti,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),,,Non,Non,18,23
+DM,DM-LC01,Dominique,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+EG,EG-LC01,Égypte,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),268,268,Non,Non,18,25
+EG,EG-UC01,Égypte,Chambre haute,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,100,Non,Non,18,25
+SV,SV-LC01,El Salvador,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+AE,AE-LC01,Émirats arabes unis,Chambre basse,Non,Autres systèmes,Vote unique non transférable (SNTV),,,Oui,,25,25
+EC,EC-LC01,Équateur,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,"Oui, seulement pour certaines personnes",16,18
+ER,ER-LC01,Érythrée,Chambre basse,Non,,,,,Oui,,,
+ES,ES-LC01,Espagne,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+ES,ES-UC01,Espagne,Chambre haute,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,58,Non,Non,18,18
+EE,EE-LC01,Estonie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+SZ,SZ-UC01,Eswatini,Chambre haute,Non,,,,,Oui,Non,,18
+SZ,SZ-LC01,Eswatini,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),59,,Non,Non,18,18
+US,US-UC01,États-Unis d'Amérique,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,30
+US,US-LC01,États-Unis d'Amérique,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+ET,ET-UC01,Éthiopie,Chambre haute,Non,,,,,Oui,Non,,21
+ET,ET-LC01,Éthiopie,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire plurinominal (BV),,,Non,Non,18,18
+RU,RU-UC01,Fédération de Russie,Chambre haute,Non,,,,,Oui,Non,,30
+RU,RU-LC01,Fédération de Russie,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,225,Non,Non,18,21
+FJ,FJ-LC01,Fidji,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+FI,FI-LC01,Finlande,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+FR,FR-LC01,France,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,18,18
+FR,FR-UC01,France,Chambre haute,Non,,,,,Oui,Non,,24
+GA,GA-UC01,Gabon,Chambre haute,Non,,,,,Oui,Non,,40
+GA,GA-LC01,Gabon,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),145,,Non,Non,18,18
+GM,GM-LC01,Gambie,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+GE,GE-LC01,Géorgie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,150,Non,Non,18,21
+GH,GH-LC01,Ghana,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+GR,GR-LC01,Grèce,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,17,25
+GD,GD-UC01,Grenade,Chambre haute,Non,,,,,Oui,Non,,18
+GD,GD-LC01,Grenade,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+GT,GT-LC01,Guatemala,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,32,Non,Non,18,18
+GN,GN-LC01,Guinée,Chambre basse,Non,Scrutin mixte,,98,49,Non,Oui,18,21
+GQ,GQ-LC01,Guinée équatoriale,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+GQ,GQ-UC01,Guinée équatoriale,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+GW,GW-LC01,Guinée-Bissau,Chambre basse,Non,,,,,Oui,Non,18,18
+GY,GY-LC01,Guyana,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+HT,HT-UC01,Haïti,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,30
+HT,HT-LC01,Haïti,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),51,,Non,Non,18,25
+HN,HN-LC01,Honduras,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,21
+HU,HU-LC01,Hongrie,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),,93,Non,Non,18,18
+MH,MH-LC01,Îles Marshall,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+SB,SB-LC01,Îles Salomon,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+IN,IN-UC01,Inde,Chambre haute,Non,,,,,Oui,Non,,30
+IN,IN-LC01,Inde,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+ID,ID-LC01,Indonésie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,17,21
+IR,IR-LC01,Iran (République islamique d'),Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,15,30
+IQ,IQ-LC01,Iraq,Chambre basse,Non,Autres systèmes,Vote unique non transférable (SNTV),,,Non,Non,18,28
+IE,IE-LC01,Irlande,Chambre basse,Non,Scrutin proportionnel,Vote unique transférable (STV),,,Non,Non,18,21
+IE,IE-UC01,Irlande,Chambre haute,Non,,,,,Oui,Non,,21
+IS,IS-LC01,Islande,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+IL,IL-LC01,Israël,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+IT,IT-LC01,Italie,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,398,Non,Non,18,25
+IT,IT-UC01,Italie,Chambre haute,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,199,Non,Non,18,40
+JM,JM-UC01,Jamaïque,Chambre haute,Non,,,,,Oui,Non,,21
+JM,JM-LC01,Jamaïque,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+JP,JP-LC01,Japon,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),289,176,Non,Non,18,25
+JP,JP-UC01,Japon,Chambre haute,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,100,Non,Non,18,30
+JO,JO-UC01,Jordanie,Chambre haute,Non,,,,,Oui,Non,,40
+JO,JO-LC01,Jordanie,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,23,Non,Non,18,25
+KZ,KZ-UC01,Kazakhstan,Chambre haute,Oui,,,,,Oui,Non,,30
+KZ,KZ-LC01,Kazakhstan,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,145,Non,Non,18,25
+KE,KE-LC01,Kenya,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+KE,KE-UC01,Kenya,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+KG,KG-LC01,Kirghizistan,Chambre basse,Non,Autres systèmes,Vote unique non transférable (SNTV),,,Non,Non,21,21
+KI,KI-LC01,Kiribati,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+KW,KW-LC01,Koweït,Chambre basse,Oui,Autres systèmes,Vote unique non transférable (SNTV),,,Non,Non,21,30
+LS,LS-LC01,Lesotho,Chambre basse,Non,Scrutin mixte,,,40,Non,Non,18,18
+LS,LS-UC01,Lesotho,Chambre haute,Non,,,,,Oui,Non,,21
+LV,LV-LC01,Lettonie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+LB,LB-LC01,Liban,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,21,25
+LR,LR-UC01,Libéria,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire plurinominal (BV),,,Non,Non,18,30
+LR,LR-LC01,Libéria,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+LY,LY-LC01,Libye,Chambre basse,Non,Autres systèmes,Vote unique non transférable (SNTV),,80,Non,Non,18,18
+LI,LI-LC01,Liechtenstein,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,18
+LT,LT-LC01,Lituanie,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),70,71,Non,Non,18,21
+LU,LU-LC01,Luxembourg,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,"Oui, seulement pour certaines personnes",18,18
+MK,MK-LC01,Macédoine du Nord,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,120,Non,Non,18,18
+MG,MG-UC01,Madagascar,Chambre haute,Non,,,,,Oui,Non,,35
+MG,MG-LC01,Madagascar,Chambre basse,Non,Scrutin mixte,,,59,Non,Non,18,21
+MY,MY-LC01,Malaisie,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+MY,MY-UC01,Malaisie,Chambre haute,Non,,,,,Oui,Non,,30
+MW,MW-LC01,Malawi,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+MV,MV-LC01,Maldives,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+ML,ML-LC01,Mali,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Oui,Non,18,21
+MT,MT-LC01,Malte,Chambre basse,Non,Scrutin proportionnel,Vote unique transférable (STV),,,Non,Non,16,18
+MA,MA-LC01,Maroc,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+MA,MA-UC01,Maroc,Chambre haute,Non,,,,,Oui,Non,,
+MU,MU-LC01,Maurice,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+MR,MR-LC01,Mauritanie,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,88,Non,Non,18,25
+MR,MR-UC01,Mauritanie,Chambre haute,Oui,,,,,Non,Non,,
+MX,MX-UC01,Mexique,Chambre haute,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),,32,Non,Non,18,25
+MX,MX-LC01,Mexique,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),,200,Non,Non,18,18
+FM,FM-LC01,Micronésie (États fédérés de),Chambre basse,Non,Scrutin majoritaire,,,,Non,Non,18,30
+MC,MC-LC01,Monaco,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+MN,MN-LC01,Mongolie,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),78,48,Non,Non,18,25
+ME,ME-LC01,Monténégro,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+MZ,MZ-LC01,Mozambique,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+MM,MM-LC01,Myanmar,Chambre basse,Oui,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+MM,MM-UC01,Myanmar,Chambre haute,Oui,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+NA,NA-UC01,Namibie,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+NA,NA-LC01,Namibie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+NR,NR-LC01,Naoero,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Oui,20,20
+NP,NP-UC01,Népal,Chambre haute,Non,,,,,Oui,Non,,35
+NP,NP-LC01,Népal,Chambre basse,Non,Scrutin mixte,,,110,Non,Non,18,25
+NI,NI-LC01,Nicaragua,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,16,21
+NE,NE-LC01,Niger,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,105,Non,Non,18,21
+NG,NG-LC01,Nigéria,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,30
+NG,NG-UC01,Nigéria,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,35
+NO,NO-LC01,Norvège,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+NZ,NZ-LC01,Nouvelle-Zélande,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),,51,Non,Non,18,18
+OM,OM-UC01,Oman,Chambre haute,Non,,,,,Oui,Non,,40
+OM,OM-LC01,Oman,Chambre basse,Non,Autres systèmes,Vote unique non transférable (SNTV),,,Non,Non,21,30
+UG,UG-LC01,Ouganda,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+UZ,UZ-LC01,Ouzbékistan,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),75,75,Non,Non,18,25
+UZ,UZ-UC01,Ouzbékistan,Chambre haute,Non,,,,,Oui,Non,,25
+PK,PK-LC01,Pakistan,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+PK,PK-UC01,Pakistan,Chambre haute,Non,,,,,Oui,Non,,30
+PW,PW-LC01,Palaos,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+PW,PW-UC01,Palaos,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire plurinominal (BV),,,Non,Non,18,25
+PA,PA-LC01,Panama,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,,Non,Oui,18,21
+PG,PG-LC01,Papouasie-Nouvelle-Guinée,Chambre basse,Non,Scrutin majoritaire,Vote préférentiel (AV),,,Non,Non,18,25
+PY,PY-UC01,Paraguay,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,35
+PY,PY-LC01,Paraguay,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,25
+NL,NL-LC01,Pays-Bas,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+NL,NL-UC01,Pays-Bas,Chambre haute,Non,,,,,Oui,Non,,18
+PE,PE-LC01,Pérou,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,25
+PE,PE-UC01,Pérou,Chambre haute,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),30,30,Non,Oui,18,45
+PH,PH-LC01,Philippines,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,63,Non,Non,18,25
+PH,PH-UC01,Philippines,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire plurinominal (BV),,,Non,Non,18,35
+PL,PL-UC01,Pologne,Chambre haute,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,30
+PL,PL-LC01,Pologne,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+PT,PT-LC01,Portugal,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+QA,QA-LC01,Qatar,Chambre basse,Non,,,,,Oui,Non,,
+SY,SY-LC01,République arabe syrienne,Chambre basse,Non,,,,,Oui,Non,18,25
+CF,CF-LC01,République centrafricaine,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,,18,25
+KR,KR-LC01,République de Corée,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),254,46,Non,Non,18,18
+MD,MD-LC01,République de Moldova,Chambre basse,Non,Scrutin proportionnel,,,,Non,Non,18,18
+CD,CD-LC01,République démocratique du Congo,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,,Non,Non,18,25
+CD,CD-UC01,République démocratique du Congo,Chambre haute,Non,,,,,Oui,Non,,30
+LA,LA-LC01,République démocratique populaire lao,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+DO,DO-LC01,République dominicaine,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,25
+DO,DO-UC01,République dominicaine,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,25
+KP,KP-LC01,République populaire démocratique de Corée,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,17,17
+TZ,TZ-LC01,République-Unie de Tanzanie,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),272,,Non,Non,18,21
+RO,RO-LC01,Roumanie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,23
+RO,RO-UC01,Roumanie,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,33
+GB,GB-LC01,Royaume-Uni,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+GB,GB-UC01,Royaume-Uni,Chambre haute,Non,,,,,Oui,Non,,21
+RW,RW-LC01,Rwanda,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+RW,RW-UC01,Rwanda,Chambre haute,Non,,,,,Oui,Non,,40
+KN,KN-LC01,Saint-Kitts-et-Nevis,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+SM,SM-LC01,Saint-Marin,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+VC,VC-LC01,Saint-Vincent-et-les Grenadines,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+LC,LC-UC01,Sainte-Lucie,Chambre haute,Non,,,,,Oui,Non,,30
+LC,LC-LC01,Sainte-Lucie,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+WS,WS-LC01,Samoa,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,21,21
+ST,ST-LC01,Sao Tomé-et-Principe,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+SN,SN-LC01,Sénégal,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,53,Non,Non,18,25
+RS,RS-LC01,Serbie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+SC,SC-LC01,Seychelles,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,8,Non,Non,18,18
+SL,SL-LC01,Sierra Leone,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+SG,SG-LC01,Singapour,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Oui,21,21
+SK,SK-LC01,Slovaquie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+SI,SI-LC01,Slovénie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+SI,SI-UC01,Slovénie,Chambre haute,Non,,,,,Oui,Non,,18
+SO,SO-LC01,Somalie,Chambre basse,Non,,,,,Oui,,,25
+SO,SO-UC01,Somalie,Chambre haute,Non,,,,,Oui,,,25
+SD,SD-UC01,Soudan,Chambre haute,Oui,,,,,Oui,Non,,21
+SD,SD-LC01,Soudan,Chambre basse,Oui,Scrutin mixte,,,,Non,Non,18,21
+SS,SS-UC01,Soudan du Sud,Chambre haute,Non,,,,,Oui,,,21
+SS,SS-LC01,Soudan du Sud,Chambre basse,Non,,,,,Oui,,,21
+LK,LK-LC01,Sri Lanka,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,196,Non,Non,18,18
+SE,SE-LC01,Suède,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+CH,CH-UC01,Suisse,Chambre haute,Non,Autres systèmes,Autre<br>,,,Non,Non,18,18
+CH,CH-LC01,Suisse,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,18
+SR,SR-LC01,Suriname,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+TJ,TJ-UC01,Tadjikistan,Chambre haute,Non,,,,,Oui,Non,,35
+TJ,TJ-LC01,Tadjikistan,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),41,22,Non,Non,18,25
+TD,TD-LC01,Tchad,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),83,105,Non,Oui,18,25
+TD,TD-UC01,Tchad,Chambre haute,Non,,,,,Oui,Oui,,35
+CZ,CZ-UC01,Tchéquie,Chambre haute,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,18,40
+CZ,CZ-LC01,Tchéquie,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,21
+TH,TH-UC01,Thaïlande,Chambre haute,Non,,,,,Oui,Oui,,40
+TH,TH-LC01,Thaïlande,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),,100,Non,Oui,18,25
+TL,TL-LC01,Timor-Leste,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,17,17
+TG,TG-LC01,Togo,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+TG,TG-UC01,Togo,Chambre haute,Non,,,,,Non,Non,,35
+TO,TO-LC01,Tonga,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,21,21
+TT,TT-LC01,Trinité-et-Tobago,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,18
+TT,TT-UC01,Trinité-et-Tobago,Chambre haute,Non,,,,,Oui,Non,,25
+TN,TN-UC01,Tunisie,Chambre haute,Non,,,,,Oui,Non,18,23
+TN,TN-LC01,Tunisie,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,18,23
+TR,TR-LC01,Türkiye,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,18
+TM,TM-UC01,Turkménistan,Chambre haute,Oui,,,,,Non,Non,18,30
+TM,TM-LC01,Turkménistan,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+TV,TV-LC01,Tuvalu,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,21
+UA,UA-LC01,Ukraine,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,225,Non,Non,18,21
+UY,UY-LC01,Uruguay,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,25
+UY,UY-UC01,Uruguay,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Oui,18,30
+VU,VU-LC01,Vanuatu,Chambre basse,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,25
+VE,VE-LC01,Venezuela (République bolivarienne du),Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,144,Non,Non,18,21
+VN,VN-LC01,Viet Nam,Chambre basse,Non,Scrutin majoritaire,Scrutin à deux tours (TRS),,,Non,Non,18,21
+YE,YE-UC01,Yémen,Chambre haute,Non,,,,,Oui,Non,,
+YE,YE-LC01,Yémen,Chambre basse,Non,Scrutin majoritaire,Scrutin majoritaire uninominal (FPTP),,,Non,Non,18,25
+ZM,ZM-LC01,Zambie,Chambre basse,Non,Scrutin mixte,Scrutin mixte avec compensation proportionnelle (MMP),226,40,Non,Non,18,21
+ZW,ZW-LC01,Zimbabwe,Chambre basse,Non,Scrutin mixte,Scrutins parallèles (Parallel Systems),,70,Non,Non,18,21
+ZW,ZW-UC01,Zimbabwe,Chambre haute,Non,Scrutin proportionnel,Scrutin proportionnel de liste (List PR),,,Non,Non,18,40

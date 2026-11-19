@@ -35,3 +35,14 @@ def test_socle():
     assert len(s["mecanismes"]) == 11 and all(m["garde"] for m in s["mecanismes"])
     assert "politique-americaine" in s["fiches"] and "amerique_du_nord" in s["fiches"]["politique-americaine"]["espaces"]
     assert "us_erreur_primaires_d_etat" in s["fiches"]["politique-americaine"]["abstentions"]
+
+
+# 0.10.373 : relevé IPU Parline
+def test_ipu():
+    import ipu_parlements as ipu
+    import brique_coutumiere as bc
+    assert len(ipu.chambres()) == 281 and ipu.suspendu("MM") and not ipu.suspendu("FR")
+    assert ipu.elue_directement("DE") is True
+    f = {"election": "next Kuwaiti parliamentary election", "evenement": "rang", "rang": 1, "classe": "S2", "titre": ""}
+    bc.PAYS.setdefault("kuwait", "KW")
+    assert "suspendu" in bc.rattacher(f)["motif"]
