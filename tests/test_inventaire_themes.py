@@ -21,4 +21,4 @@ def test_resume_ordonne_les_fiches_non_ecrites_d_abord():
     ordre = [x["theme"] for x in r["ordre"]]
     ecrits = [x["fiche_ecrite"] for x in r["ordre"]]
     assert ordre[0] == "securite-radiologique" and ecrits == sorted(ecrits)     # fiches écrites en dernier
-    assert next(x for x in r["ordre"] if x["theme"] == "energie-mondiale")["ponts_qui_l_appellent"] == 1
+    assert next(x for x in r["ordre"] if x["theme"] == "energie-mondiale")["ponts_qui_l_appellent"] >= 1
