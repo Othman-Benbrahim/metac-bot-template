@@ -1,0 +1,41 @@
+name: "Collecte cadrage des acteurs par les institutions (EmoAtlas, ombre)"
+
+# 0.10.368 : décision d'auteur du 2026-11-19 (21 h 10). Flux RSS officiels ; scores d'émotions par institution × acteur
+# × semaine ; aucun texte gardé. EmoAtlas installé pour ce seul workflow (ses dépendances ne vont pas au dépôt).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-cadrage
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Environnement EmoAtlas
+        run: |
+          python -m venv /tmp/emo
+          /tmp/emo/bin/pip install -q "numpy<2" emoatlas httpx \
+            "en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl"
+      - name: Collecte
+        run: /tmp/emo/bin/python collecte_cadrage.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/cadrage.csv registre/cadrage-vus.txt; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : cadrage des acteurs du $(date -u +%Y-%m-%d)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
