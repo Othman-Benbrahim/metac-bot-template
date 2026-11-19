@@ -11,90 +11,137 @@ declaration:
   taille: "un puits, un bassin versant, une région"
 compartiments:
   - id: "pluies"
+    organisation: "meteo"
     nom: "Pluies et neige"
     elements: ["pluies d'hiver", "neige des montagnes (Zagros, Taurus)", "variabilité d'une année à l'autre"]
     acteurs:
-      - {nom: "le manteau neigeux du Taurus", taille: "méso", espace: "région", vitesse: "saisons"}
+      - {nom: "le manteau neigeux du Taurus", taille: "méso", espace: "région", vitesse: "saisons", organisation: "meteo", facette: "non_humain"}
     niveau: {espace: "régional", temps: "saison des pluies", vitesse: "saisons", taille: "méso"}
     traces:
       - {source: "précipitations par satellite (publiques)", statut: "a_brancher"}
   - id: "chaleur"
+    organisation: "meteo"
     nom: "Chaleur et évaporation"
     elements: ["vagues de chaleur", "évaporation des retenues", "demande en eau des plantes"]
     acteurs:
-      - {nom: "une vague de chaleur sur le Golfe", taille: "méso", espace: "golfe", vitesse: "semaines"}
+      - {nom: "une vague de chaleur sur le Golfe", taille: "méso", espace: "golfe", vitesse: "semaines", organisation: "meteo", facette: "non_humain"}
     niveau: {espace: "régional", temps: "étés", vitesse: "jours à saisons", taille: "méso"}
     traces:
       - {source: "anomalie de température à Téhéran (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:teheran"}
       - {source: "anomalie de température à Bandar Abbas (Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:bandar_abbas"}
   - id: "fleuves"
+    organisation: "eau"
     nom: "Fleuves partagés"
     elements: ["Tigre et Euphrate (Turquie, Syrie, Irak)", "Nil (Éthiopie, Soudan, Égypte)", "Jourdain"]
     acteurs:
-      - {nom: "l'Euphrate", taille: "macro", espace: "bassin", vitesse: "saisons"}
-      - {nom: "le Nil", taille: "macro", espace: "bassin", vitesse: "saisons"}
+      - {nom: "l'Euphrate", taille: "macro", espace: "bassin", vitesse: "saisons", organisation: "eau", facette: "non_humain"}
+      - {nom: "le Nil", taille: "macro", espace: "bassin", vitesse: "saisons", organisation: "eau", facette: "non_humain"}
     niveau: {espace: "bassins transfrontaliers", temps: "crues et étiages", vitesse: "semaines à saisons", taille: "macro"}
     traces:
       - {source: "débits et niveaux des fleuves (publications publiques, altimétrie satellitaire)", statut: "a_brancher"}
   - id: "barrages"
+    organisation: "technique"
     nom: "Barrages et retenues"
     elements: ["grands barrages turcs", "Grand barrage de la Renaissance éthiopienne", "retenues iraniennes"]
     acteurs:
-      - {nom: "un grand barrage d'amont", taille: "méso", espace: "site", vitesse: "mois"}
+      - {nom: "un grand barrage d'amont", taille: "méso", espace: "site", vitesse: "mois", organisation: "technique", facette: "non_humain"}
     niveau: {espace: "sites sur les fleuves", temps: "remplissage annuel", vitesse: "mois", taille: "méso"}
     traces:
       - {source: "niveaux des retenues par satellite (publics)", statut: "a_brancher"}
   - id: "nappes"
+    organisation: "eau"
     nom: "Nappes souterraines"
     elements: ["nappes renouvelables", "nappes fossiles", "affaissement des sols", "salinisation"]
     acteurs:
-      - {nom: "un puits profond", taille: "micro", espace: "site", vitesse: "années"}
-      - {nom: "une nappe fossile de la péninsule", taille: "macro", espace: "région", vitesse: "décennies"}
+      - {nom: "un puits profond", taille: "micro", espace: "site", vitesse: "années", organisation: "technique", facette: "non_humain"}
+      - {nom: "une nappe fossile de la péninsule", taille: "macro", espace: "région", vitesse: "décennies", organisation: "eau", facette: "non_humain"}
     niveau: {espace: "régional", temps: "décennies", vitesse: "années à décennies", taille: "micro à macro"}
     traces:
       - {source: "variations de masse d'eau par satellite (GRACE, publiques)", statut: "a_brancher"}
   - id: "rarete"
+    organisation: "eau"
     nom: "Rareté de l'eau douce"
     elements: ["eau disponible par habitant", "stress hydrique", "coupures d'eau"]
     niveau: {espace: "pays et villes", temps: "étés ; années sèches", vitesse: "mois à années", taille: "méso à macro"}
     traces:
       - {source: "indicateurs de stress hydrique (publics, annuels)", statut: "a_brancher"}
   - id: "dessalement"
+    organisation: "technique"
     nom: "Dessalement"
     elements: ["usines côtières du Golfe", "énergie consommée", "rejets de saumure"]
     acteurs:
-      - {nom: "une usine de dessalement côtière", taille: "micro", espace: "site", vitesse: "jours"}
+      - {nom: "une usine de dessalement côtière", taille: "micro", espace: "site", vitesse: "jours", organisation: "technique", facette: "non_humain"}
     niveau: {espace: "côtes du Golfe et de la mer Rouge", temps: "continu", vitesse: "jours", taille: "micro à méso"}
     traces:
       - {source: "aucune trace ouverte connue des volumes produits", statut: "inconnue"}
   - id: "irrigation"
+    organisation: "economie"
     nom: "Agriculture irriguée"
     elements: ["blé irrigué", "cultures d'été gourmandes en eau", "techniques d'irrigation"]
     acteurs:
-      - {nom: "une exploitation irriguée", taille: "micro", espace: "parcelle", vitesse: "saisons"}
+      - {nom: "une exploitation irriguée", taille: "micro", espace: "parcelle", vitesse: "saisons", organisation: "economie", facette: "collectif"}
     niveau: {espace: "plaines irriguées", temps: "saisons de culture", vitesse: "saisons", taille: "micro à méso"}
     traces:
       - {source: "indices de végétation des plaines irriguées (publics)", statut: "a_brancher"}
   - id: "villes"
+    organisation: "societe"
     nom: "Villes et populations"
     elements: ["croissance urbaine", "réseaux d'eau", "coupures en été", "contestation"]
     acteurs:
-      - {nom: "une grande ville (Téhéran, Bagdad, Le Caire)", taille: "méso", espace: "local", vitesse: "jours"}
+      - {nom: "une grande ville (Téhéran, Bagdad, Le Caire)", taille: "méso", espace: "local", vitesse: "jours", organisation: "societe", facette: "collectif"}
     niveau: {espace: "villes", temps: "étés", vitesse: "jours à mois", taille: "méso"}
     traces:
       - {source: "coupures d'internet en Iran (OONI, souvent liées aux contestations)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IR"}
       - {source: "coupures d'internet en Irak (OONI)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IQ"}
   - id: "etats_riverains"
+    organisation: "geopolitique"
     nom: "États d'amont et d'aval"
     elements: ["Turquie (amont)", "Syrie et Irak (aval)", "Éthiopie (amont)", "Égypte et Soudan (aval)", "accords de partage"]
     acteurs:
-      - {nom: "Turquie", taille: "macro", espace: "pays", vitesse: "années"}
-      - {nom: "Irak", taille: "macro", espace: "pays", vitesse: "années"}
-      - {nom: "Éthiopie", taille: "macro", espace: "pays", vitesse: "années"}
-      - {nom: "Égypte", taille: "macro", espace: "pays", vitesse: "années"}
+      - {nom: "Turquie", taille: "macro", espace: "pays", vitesse: "années", organisation: "geopolitique", facette: "collectif"}
+      - {nom: "Irak", taille: "macro", espace: "pays", vitesse: "années", organisation: "geopolitique", facette: "collectif"}
+      - {nom: "Éthiopie", taille: "macro", espace: "pays", vitesse: "années", organisation: "geopolitique", facette: "collectif"}
+      - {nom: "Égypte", taille: "macro", espace: "pays", vitesse: "années", organisation: "geopolitique", facette: "collectif"}
     niveau: {espace: "pays", temps: "négociations de longue durée", vitesse: "mois à années", taille: "macro"}
     traces:
       - {source: "GDELT, ton des gestes de l'Égypte envers l'Éthiopie", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:EGY:ETH"}
+  - id: "relief"
+    organisation: "relief"
+    nom: "Relief et partage des eaux"
+    elements: ["chaînes du Taurus et du Zagros", "hauts plateaux éthiopiens", "lignes de partage des eaux entre bassins", "plaines alluviales"]
+    acteurs:
+      - {nom: "la chaîne du Zagros", taille: "macro", espace: "région", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
+      - {nom: "les hauts plateaux éthiopiens", taille: "macro", espace: "région", vitesse: "millénaire", organisation: "relief", facette: "non_humain"}
+    niveau: {espace: "région", temps: "permanent à l'échelle humaine", vitesse: "millénaire", taille: "macro"}
+    traces:
+      - {source: "modèles numériques de terrain publics (SRTM)", statut: "a_brancher"}
+  - id: "chimie_eau"
+    organisation: "chimique"
+    nom: "Chimie de l'eau (salinité, pollution)"
+    elements: ["salinisation des sols et des nappes", "rejets de saumure du dessalement", "pollution agricole et urbaine", "intrusion d'eau de mer dans les nappes côtières"]
+    acteurs:
+      - {nom: "la saumure rejetée dans le Golfe", taille: "méso", espace: "golfe", vitesse: "années", organisation: "chimique", facette: "non_humain"}
+    niveau: {espace: "bassin à golfe", temps: "années à décennies", vitesse: "années", taille: "micro à méso"}
+    traces:
+      - {source: "relevés publics de qualité de l'eau (programmes de surveillance nationaux et ONU-Environnement)", statut: "a_brancher"}
+  - id: "maladies_hydriques"
+    organisation: "microbiologique"
+    nom: "Maladies hydriques"
+    elements: ["choléra", "diarrhées infectieuses", "eau non traitée en temps de coupure ou de guerre"]
+    acteurs:
+      - {nom: "une bactérie du choléra", taille: "micro", espace: "local", vitesse: "jours", organisation: "microbiologique", facette: "non_humain"}
+    niveau: {espace: "quartier à pays", temps: "épidémies saisonnières", vitesse: "jours à semaines", taille: "micro"}
+    traces:
+      - {source: "bulletins publics de l'OMS sur le choléra", statut: "a_brancher"}
+  - id: "climat_regime"
+    organisation: "climat"
+    nom: "Climat (régime de long terme)"
+    elements: ["dérive des températures moyennes", "baisse des pluies et de l'enneigement (à vérifier)", "sécheresses répétées"]
+    acteurs:
+      - {nom: "le régime des pluies méditerranéennes d'hiver", taille: "macro", espace: "région", vitesse: "décennie", organisation: "climat", facette: "non_humain"}
+    niveau: {espace: "région", temps: "décennies", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "dérive annuelle de la température à Téhéran (anomalie glissante sur 365 jours, Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:teheran"}
 relations:
   - {de: "pluies", vers: "fleuves", effet: "+", delai: "semaines à saisons", force: "forte", intensite: {mesure: "anomalie de pluie et de neige de l'hiver", regle: "proportionnelle"}, coupure: "barrages qui retiennent", statut: "a_verifier", texte: "pluies et fonte des neiges font les crues des fleuves"}
   - {de: "pluies", vers: "nappes", effet: "+", delai: "années", force: "faible", coupure: "nappes fossiles, non renouvelées", statut: "a_verifier", texte: "les pluies rechargent lentement les seules nappes renouvelables"}
@@ -110,6 +157,14 @@ relations:
   - {de: "dessalement", vers: "rarete", effet: "-", delai: "jours", force: "moyenne", coupure: "panne ou attaque d'une usine", statut: "a_verifier", texte: "le dessalement fournit l'eau des villes du Golfe ; une usine arrêtée crée une pénurie immédiate"}
   - {de: "rarete", vers: "villes", effet: "-", delai: "jours à semaines", force: "forte", intensite: {mesure: "durée des coupures d'eau en été", regle: "seuil"}, coupure: "rationnement accepté, citernes", statut: "a_verifier", texte: "des coupures qui durent font descendre les gens dans la rue (lien à vérifier par pays)"}
   - {de: "villes", vers: "rarete", effet: "+", delai: "années", force: "moyenne", coupure: "réseaux réparés, fuites réduites", statut: "a_verifier", texte: "la croissance urbaine accroît la demande et les fuites"}
+  - {de: "relief", vers: "pluies", effet: "+", forme: "forcage", delai: "permanent", force: "forte", coupure: "versants sous le vent (ombre pluviométrique)", statut: "a_verifier", texte: "les montagnes captent les pluies et la neige qui nourrissent les fleuves ; l'autre versant reste sec"}
+  - {de: "relief", vers: "fleuves", effet: "±", forme: "contrainte", delai: "permanent", force: "forte", coupure: "aucune à l'échelle humaine", statut: "a_verifier", texte: "les lignes de partage des eaux décident quels pays partagent quel fleuve, et lequel est en amont"}
+  - {de: "climat_regime", vers: "pluies", effet: "-", delai: "années", force: "moyenne", intensite: {mesure: "dérive de la température moyenne", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "la dérive du climat réduit la neige et les pluies utiles"}
+  - {de: "fleuves", vers: "nappes", effet: "+", delai: "mois à années", force: "moyenne", coupure: "lits bétonnés ou asséchés", statut: "a_verifier", texte: "relation propre au niveau de l'eau : les crues rechargent les nappes"}
+  - {de: "irrigation", vers: "chimie_eau", effet: "+", delai: "années", force: "forte", intensite: {mesure: "durée de l'irrigation sans drainage", regle: "hysteresis"}, coupure: "drainage", statut: "a_verifier", texte: "irriguer sans drainer sale les sols ; un sol salé ne redevient pas fertile par le même chemin"}
+  - {de: "dessalement", vers: "chimie_eau", effet: "+", delai: "années", force: "moyenne", coupure: "dilution par les courants", statut: "a_verifier", texte: "la saumure rejetée rend le Golfe plus salé autour des usines"}
+  - {de: "rarete", vers: "maladies_hydriques", effet: "+", delai: "jours à semaines", force: "forte", intensite: {mesure: "durée des coupures d'eau potable", regle: "seuil"}, coupure: "chloration, citernes", statut: "a_verifier", texte: "quand l'eau potable manque assez longtemps, les maladies hydriques reviennent"}
+  - {de: "maladies_hydriques", vers: "villes", effet: "-", delai: "semaines", force: "moyenne", intensite: {mesure: "nombre de cas", regle: "seuil"}, coupure: "systèmes de santé", statut: "a_verifier", texte: "une épidémie d'eau passe du niveau microbien au niveau social quand elle devient assez forte"}
 ponts:
   - {depuis: "rarete", vers: "ormuz:milieu", nature: "la rareté de l'eau douce sur les rives du Golfe"}
   - {depuis: "villes", vers: "ormuz:interieur_iran", nature: "pénuries d'eau et contestation en Iran"}
