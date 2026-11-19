@@ -8,24 +8,24 @@
  },
  "bilan": {
   "relations": 624,
-  "mesurees": 155,
-  "compartiments_persistance": 113,
+  "mesurees": 190,
+  "compartiments_persistance": 127,
   "decomposabilite": {
    "dedans": {
-    "n": 52,
-    "r_moyen": 0.222
+    "n": 61,
+    "r_moyen": 0.228
    },
    "entre": {
-    "n": 24,
-    "r_moyen": 0.241
+    "n": 29,
+    "r_moyen": 0.215
    }
   },
   "incompatibles": 3,
-  "significatives": 22,
+  "significatives": 24,
   "signe_contredit": 6,
   "non_calibrables": {
-   "source_sans_serie": 413,
-   "cible_sans_serie": 83,
+   "source_sans_serie": 390,
+   "cible_sans_serie": 89,
    "boucle_sur_soi": 17,
    "meme_serie": 2,
    "modulation_sans_series": 3
@@ -162,6 +162,14 @@
    "effet_ecrit": "+",
    "concorde": null
   },
+  "economie-chinoise:exterieur>economie-chinoise:exportations": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 20,
+   "source": "dyade:USA:CHN",
+   "cible": "portwatch:malacca:porte_conteneurs",
+   "effet_ecrit": "-",
+   "concorde": null
+  },
   "economie-chinoise:pouvoir>economie-chinoise:statistiques": {
    "verdict": "non_significatif",
    "r": -0.054,
@@ -204,11 +212,83 @@
    "effet_ecrit": "+",
    "concorde": true
   },
+  "energie-mondiale:production>energie-mondiale:prix": {
+   "verdict": "non_significatif",
+   "r": -0.047,
+   "n": 610,
+   "retard": 9,
+   "pas": "semaine",
+   "delai_jours": 63,
+   "signe": "-",
+   "poids": 0.093,
+   "rapport_pentes": 0.25,
+   "regle": "saturation",
+   "source": "eia:WCRFPUS2",
+   "cible": "fred:DCOILBRENTEU",
+   "effet_ecrit": "-",
+   "concorde": true
+  },
+  "energie-mondiale:demande>energie-mondiale:prix": {
+   "verdict": "non_significatif",
+   "r": -0.062,
+   "n": 617,
+   "retard": 2,
+   "pas": "semaine",
+   "delai_jours": 14,
+   "signe": "-",
+   "poids": 0.125,
+   "rapport_pentes": 0.59,
+   "regle": "saturation",
+   "source": "eia:WRPUPUS2",
+   "cible": "fred:DCOILBRENTEU",
+   "effet_ecrit": "+",
+   "concorde": false
+  },
+  "energie-mondiale:stocks>energie-mondiale:prix": {
+   "verdict": "non_significatif",
+   "r": -0.098,
+   "n": 560,
+   "retard": 7,
+   "pas": "semaine",
+   "delai_jours": 49,
+   "signe": "-",
+   "poids": 0.197,
+   "rapport_pentes": 50.43,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.5,
+   "sigma": 0.1,
+   "delta_bic": -9.36,
+   "source": "eia:WCESTUS1:var52",
+   "cible": "fred:DCOILBRENTEU",
+   "effet_ecrit": "-",
+   "concorde": true
+  },
   "energie-mondiale:transport>energie-mondiale:prix": {
    "verdict": "chevauchement_insuffisant",
    "n": 23,
    "source": "portwatch:bab_el_mandeb:petroliers",
    "cible": "fred:DCOILBRENTEU",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
+  "energie-mondiale:decisions>energie-mondiale:production": {
+   "verdict": "non_significatif",
+   "r": 0.133,
+   "n": 55,
+   "retard": 0,
+   "pas": "mois",
+   "delai_jours": 0,
+   "signe": "+",
+   "poids": 0.267,
+   "rapport_pentes": 9.92,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.75,
+   "sigma": 0.1,
+   "delta_bic": -7.1,
+   "source": "sanctions:RU",
+   "cible": "eia:WCRFPUS2",
    "effet_ecrit": "±",
    "concorde": null
   },
@@ -225,6 +305,22 @@
    "cible": "sanctions:RU",
    "effet_ecrit": "±",
    "concorde": null
+  },
+  "energie-mondiale:prix>energie-mondiale:demande": {
+   "verdict": "non_significatif",
+   "r": -0.059,
+   "n": 607,
+   "retard": 12,
+   "pas": "semaine",
+   "delai_jours": 84,
+   "signe": "-",
+   "poids": 0.118,
+   "rapport_pentes": 0.83,
+   "regle": "proportionnelle",
+   "source": "fred:DCOILBRENTEU",
+   "cible": "eia:WRPUPUS2",
+   "effet_ecrit": "-",
+   "concorde": true
   },
   "energie-mondiale:recits>energie-mondiale:prix": {
    "verdict": "non_significatif",
@@ -257,68 +353,52 @@
    "concorde": null
   },
   "guerre-levant:israel>guerre-levant:liban": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 18,
+   "source": "dyade:ISR:IRN",
+   "cible": "feux:LB",
+   "effet_ecrit": "-",
+   "concorde": null
+  },
+  "guerre-levant:israel>guerre-levant:iran": {
    "verdict": "non_significatif",
-   "r": 0.083,
-   "n": 24,
+   "r": 0.226,
+   "n": 137,
    "retard": 0,
    "pas": "semaine",
    "delai_jours": 0,
    "signe": "+",
-   "poids": 0.166,
-   "source": "manifestations:IL",
-   "cible": "feux:LB",
+   "poids": 0.452,
+   "rapport_pentes": 1.21,
+   "regle": "proportionnelle",
+   "source": "dyade:ISR:IRN",
+   "cible": "dyade:IRN:ISR",
    "effet_ecrit": "-",
    "concorde": false
-  },
-  "guerre-levant:israel>guerre-levant:iran": {
-   "verdict": "non_significatif",
-   "r": -0.185,
-   "n": 24,
-   "retard": 0,
-   "pas": "semaine",
-   "delai_jours": 0,
-   "signe": "-",
-   "poids": 0.369,
-   "source": "manifestations:IL",
-   "cible": "ooni:IR",
-   "effet_ecrit": "-",
-   "concorde": true
   },
   "guerre-levant:iran>guerre-levant:liban": {
-   "verdict": "non_significatif",
-   "r": -0.08,
-   "n": 24,
-   "retard": 0,
-   "pas": "semaine",
-   "delai_jours": 0,
-   "signe": "-",
-   "poids": 0.159,
-   "source": "ooni:IR",
+   "verdict": "chevauchement_insuffisant",
+   "n": 19,
+   "source": "dyade:IRN:ISR",
    "cible": "feux:LB",
    "effet_ecrit": "+",
-   "concorde": false
+   "concorde": null
   },
   "guerre-levant:iran>guerre-levant:yemen": {
    "verdict": "chevauchement_insuffisant",
-   "n": 23,
-   "source": "ooni:IR",
+   "n": 19,
+   "source": "dyade:IRN:ISR",
    "cible": "portwatch:bab_el_mandeb:petroliers",
    "effet_ecrit": "+",
    "concorde": null
   },
   "guerre-levant:iran>guerre-levant:syrie_irak": {
-   "verdict": "non_significatif",
-   "r": 0.121,
-   "n": 24,
-   "retard": 0,
-   "pas": "semaine",
-   "delai_jours": 0,
-   "signe": "+",
-   "poids": 0.242,
-   "source": "ooni:IR",
+   "verdict": "chevauchement_insuffisant",
+   "n": 19,
+   "source": "dyade:IRN:ISR",
    "cible": "feux:SY",
    "effet_ecrit": "+",
-   "concorde": true
+   "concorde": null
   },
   "guerre-levant:humanitaire>guerre-levant:recits": {
    "verdict": "chevauchement_insuffisant",
@@ -373,6 +453,54 @@
    "lambda_significatif": false,
    "source": "fred:UMCSENT",
    "cible": "manifestations:US",
+   "effet_ecrit": "-",
+   "concorde": true
+  },
+  "humain:reciprocite>humain:treve": {
+   "verdict": "significatif",
+   "r": 0.229,
+   "n": 198,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "+",
+   "poids": 0.458,
+   "rapport_pentes": 0.11,
+   "regle": "saturation",
+   "source": "dyade:UKR:RUS",
+   "cible": "dyade:RUS:UKR",
+   "effet_ecrit": "+",
+   "concorde": true
+  },
+  "humain:treve>humain:nous_eux": {
+   "verdict": "non_significatif",
+   "r": -0.384,
+   "n": 45,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.768,
+   "rapport_pentes": 0.67,
+   "regle": "proportionnelle",
+   "source": "dyade:RUS:UKR",
+   "cible": "telegram:tout",
+   "effet_ecrit": "-",
+   "concorde": true
+  },
+  "humain:treve>humain:passage_acte": {
+   "verdict": "non_significatif",
+   "r": -0.196,
+   "n": 119,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.391,
+   "rapport_pentes": 0.48,
+   "regle": "saturation",
+   "source": "dyade:RUS:UKR",
+   "cible": "hostilites:UA",
    "effet_ecrit": "-",
    "concorde": true
   },
@@ -756,6 +884,56 @@
    "effet_ecrit": "±",
    "concorde": null
   },
+  "iran-nucleaire:pouvoir_iranien>iran-nucleaire:negociations": {
+   "verdict": "non_significatif",
+   "r": -0.273,
+   "n": 35,
+   "retard": 8,
+   "pas": "mois",
+   "delai_jours": 240,
+   "signe": "-",
+   "poids": 0.547,
+   "source": "conflictforecast:IRN",
+   "cible": "dyade:USA:IRN",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
+  "iran-nucleaire:etats_unis>iran-nucleaire:negociations": {
+   "verdict": "non_significatif",
+   "r": -0.356,
+   "n": 27,
+   "retard": 0,
+   "pas": "mois",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.712,
+   "source": "paire_mois:IR:US:conflit",
+   "cible": "dyade:USA:IRN",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
+  "iran-nucleaire:negociations>iran-nucleaire:sanctions": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 19,
+   "source": "dyade:USA:IRN",
+   "cible": "sanctions:IR",
+   "effet_ecrit": "-",
+   "concorde": null
+  },
+  "iran-nucleaire:voisins>iran-nucleaire:etats_unis": {
+   "verdict": "non_significatif",
+   "r": -0.489,
+   "n": 27,
+   "retard": 0,
+   "pas": "mois",
+   "delai_jours": 0,
+   "signe": "-",
+   "poids": 0.978,
+   "source": "dyade:ISR:IRN",
+   "cible": "paire_mois:IR:US:conflit",
+   "effet_ecrit": "±",
+   "concorde": null
+  },
   "migrations-demographie:economie>migrations-demographie:migrations": {
    "verdict": "non_significatif",
    "r": -0.024,
@@ -769,6 +947,14 @@
    "cible": "ucdp:Sudan",
    "effet_ecrit": "+",
    "concorde": false
+  },
+  "non-proliferation:sanctions>non-proliferation:etats_du_seuil": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 19,
+   "source": "sanctions:IR",
+   "cible": "dyade:USA:IRN",
+   "effet_ecrit": "-",
+   "concorde": null
   },
   "ormuz:flux_energie>ormuz:prix": {
    "verdict": "chevauchement_insuffisant",
@@ -784,6 +970,30 @@
    "source": "portwatch:ormuz:navires",
    "cible": "fred:DCOILBRENTEU",
    "effet_ecrit": "±",
+   "concorde": null
+  },
+  "ormuz:puissances>ormuz:riverains": {
+   "verdict": "non_significatif",
+   "r": -0.18,
+   "n": 102,
+   "retard": 7,
+   "pas": "semaine",
+   "delai_jours": 49,
+   "signe": "-",
+   "poids": 0.361,
+   "rapport_pentes": 0.46,
+   "regle": "saturation",
+   "source": "dyade:USA:IRN",
+   "cible": "voisins:IR",
+   "effet_ecrit": "-",
+   "concorde": true
+  },
+  "ormuz:puissances>ormuz:interieur_iran": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
+   "source": "dyade:USA:IRN",
+   "cible": "ooni:IR",
+   "effet_ecrit": "+",
    "concorde": null
   },
   "ormuz:droit>ormuz:flux_energie": {
@@ -954,9 +1164,9 @@
   },
   "rivalite-sino-americaine:commerce>rivalite-sino-americaine:diplomatie": {
    "verdict": "chevauchement_insuffisant",
-   "n": 5,
+   "n": 20,
    "source": "portwatch:malacca:porte_conteneurs",
-   "cible": "paire_mois:CN:US:conflit",
+   "cible": "dyade:USA:CHN",
    "effet_ecrit": "-",
    "concorde": null
   },
@@ -970,16 +1180,16 @@
   },
   "rivalite-sino-americaine:taiwan>rivalite-sino-americaine:diplomatie": {
    "verdict": "chevauchement_insuffisant",
-   "n": 5,
+   "n": 20,
    "source": "portwatch:taiwan:navires",
-   "cible": "paire_mois:CN:US:conflit",
+   "cible": "dyade:USA:CHN",
    "effet_ecrit": "-",
    "concorde": null
   },
   "rivalite-sino-americaine:diplomatie>rivalite-sino-americaine:taiwan": {
    "verdict": "chevauchement_insuffisant",
-   "n": 5,
-   "source": "paire_mois:CN:US:conflit",
+   "n": 20,
+   "source": "dyade:USA:CHN",
    "cible": "portwatch:taiwan:navires",
    "effet_ecrit": "-",
    "concorde": null
@@ -1010,9 +1220,9 @@
   },
   "rivalite-sino-americaine:recits>rivalite-sino-americaine:diplomatie": {
    "verdict": "chevauchement_insuffisant",
-   "n": 5,
+   "n": 20,
    "source": "ooni:CN",
-   "cible": "paire_mois:CN:US:conflit",
+   "cible": "dyade:USA:CHN",
    "effet_ecrit": "±",
    "concorde": null
   },
@@ -1034,15 +1244,17 @@
   },
   "rivalite-sino-americaine:alliances>rivalite-sino-americaine:diplomatie": {
    "verdict": "non_significatif",
-   "r": -0.367,
-   "n": 25,
-   "retard": 3,
-   "pas": "mois",
-   "delai_jours": 90,
-   "signe": "-",
-   "poids": 0.735,
+   "r": 0.209,
+   "n": 109,
+   "retard": 9,
+   "pas": "semaine",
+   "delai_jours": 63,
+   "signe": "+",
+   "poids": 0.417,
+   "rapport_pentes": 1.42,
+   "regle": "proportionnelle",
    "source": "sanctions_chine:JP",
-   "cible": "paire_mois:CN:US:conflit",
+   "cible": "dyade:USA:CHN",
    "effet_ecrit": "±",
    "concorde": null
   },
@@ -1069,20 +1281,24 @@
    "concorde": false
   },
   "russie-ukraine:soutiens>russie-ukraine:capacites": {
-   "verdict": "non_significatif",
-   "r": -0.157,
-   "n": 111,
-   "retard": 11,
+   "verdict": "significatif",
+   "r": 0.283,
+   "n": 110,
+   "retard": 9,
    "pas": "semaine",
-   "delai_jours": 77,
-   "signe": "-",
-   "poids": 0.313,
-   "rapport_pentes": 0.11,
-   "regle": "saturation",
-   "source": "hostilites:MD",
+   "delai_jours": 63,
+   "signe": "+",
+   "poids": 0.567,
+   "rapport_pentes": 1.52,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 2.5,
+   "sigma": 0.1,
+   "delta_bic": -7.83,
+   "source": "dyade:USA:UKR",
    "cible": "paire:RU:UA:force",
    "effet_ecrit": "+",
-   "concorde": false
+   "concorde": true
   },
   "russie-ukraine:sanctions>russie-ukraine:economie_russe": {
    "verdict": "non_significatif",
@@ -1132,41 +1348,41 @@
   },
   "russie-ukraine:front>russie-ukraine:negociations": {
    "verdict": "chevauchement_insuffisant",
-   "n": 5,
+   "n": 21,
    "source": "feux:UA",
-   "cible": "paire_mois:RU:UA:conflit",
+   "cible": "dyade:RUS:UKR",
    "effet_ecrit": "±",
    "concorde": null
   },
   "russie-ukraine:negociations>russie-ukraine:front": {
    "verdict": "chevauchement_insuffisant",
-   "n": 5,
-   "source": "paire_mois:RU:UA:conflit",
+   "n": 21,
+   "source": "dyade:RUS:UKR",
    "cible": "feux:UA",
    "effet_ecrit": "-",
    "concorde": null
   },
   "russie-ukraine:opinions>russie-ukraine:soutiens": {
-   "verdict": "non_significatif",
-   "r": 0.057,
-   "n": 24,
-   "retard": 0,
-   "pas": "semaine",
-   "delai_jours": 0,
-   "signe": "+",
-   "poids": 0.114,
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
    "source": "radar:RU",
-   "cible": "hostilites:MD",
+   "cible": "dyade:USA:UKR",
    "effet_ecrit": "±",
    "concorde": null
   },
   "russie-ukraine:soutiens>russie-ukraine:sanctions": {
-   "verdict": "chevauchement_insuffisant",
-   "n": 16,
-   "source": "hostilites:MD",
+   "verdict": "non_significatif",
+   "r": 0.41,
+   "n": 24,
+   "retard": 4,
+   "pas": "mois",
+   "delai_jours": 120,
+   "signe": "+",
+   "poids": 0.82,
+   "source": "dyade:USA:UKR",
    "cible": "sanctions:RU",
    "effet_ecrit": "+",
-   "concorde": null
+   "concorde": true
   },
   "russie-ukraine:mer_noire>russie-ukraine:economie_ukraine": {
    "verdict": "chevauchement_insuffisant",
@@ -1185,16 +1401,18 @@
    "concorde": null
   },
   "russie-ukraine:soutiens>russie-ukraine:negociations": {
-   "verdict": "non_significatif",
-   "r": 0.456,
-   "n": 27,
+   "verdict": "significatif",
+   "r": 0.211,
+   "n": 197,
    "retard": 1,
-   "pas": "mois",
-   "delai_jours": 30,
+   "pas": "semaine",
+   "delai_jours": 7,
    "signe": "+",
-   "poids": 0.912,
-   "source": "hostilites:MD",
-   "cible": "paire_mois:RU:UA:conflit",
+   "poids": 0.423,
+   "rapport_pentes": 1.02,
+   "regle": "proportionnelle",
+   "source": "dyade:USA:UKR",
+   "cible": "dyade:RUS:UKR",
    "effet_ecrit": "±",
    "concorde": null
   },
@@ -1207,16 +1425,10 @@
    "concorde": null
   },
   "russie-ukraine:front>russie-ukraine:soutiens": {
-   "verdict": "non_significatif",
-   "r": -0.053,
-   "n": 24,
-   "retard": 0,
-   "pas": "semaine",
-   "delai_jours": 0,
-   "signe": "-",
-   "poids": 0.105,
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
    "source": "feux:UA",
-   "cible": "hostilites:MD",
+   "cible": "dyade:USA:UKR",
    "effet_ecrit": "±",
    "concorde": null
   },
@@ -1243,6 +1455,22 @@
    "cible": "portwatch:taiwan:porte_conteneurs",
    "effet_ecrit": "+",
    "concorde": null
+  },
+  "sciences-techniques:course_etats>sciences-techniques:capitaux": {
+   "verdict": "non_significatif",
+   "r": -0.081,
+   "n": 193,
+   "retard": 4,
+   "pas": "semaine",
+   "delai_jours": 28,
+   "signe": "-",
+   "poids": 0.162,
+   "rapport_pentes": 0.02,
+   "regle": "saturation",
+   "source": "dyade:USA:CHN",
+   "cible": "fred:DGS10",
+   "effet_ecrit": "+",
+   "concorde": false
   },
   "transport-maritime:detroits>transport-maritime:contournement": {
    "verdict": "chevauchement_insuffisant",
@@ -1337,6 +1565,21 @@
    "cible": "fred:DFF",
    "type": "influence"
   },
+  "pont:cycles-biogeochimiques:combustion>energie-mondiale:demande": {
+   "verdict": "non_significatif",
+   "r": -0.059,
+   "n": 607,
+   "retard": 12,
+   "pas": "semaine",
+   "delai_jours": 84,
+   "signe": "-",
+   "poids": 0.118,
+   "rapport_pentes": 0.83,
+   "regle": "proportionnelle",
+   "source": "fred:DCOILBRENTEU",
+   "cible": "eia:WRPUPUS2",
+   "type": "meme"
+  },
   "pont:dette-emergents:dette_publique>inflation-mondiale:banques_centrales": {
    "verdict": "significatif",
    "r": 0.177,
@@ -1357,16 +1600,31 @@
    "type": "influence"
   },
   "pont:eau-moyen-orient:etats_riverains>guerre-levant:iran": {
-   "verdict": "non_significatif",
-   "r": -0.11,
-   "n": 24,
-   "retard": 0,
-   "pas": "semaine",
-   "delai_jours": 0,
-   "signe": "-",
-   "poids": 0.22,
+   "verdict": "chevauchement_insuffisant",
+   "n": 19,
    "source": "radar:IQ",
-   "cible": "ooni:IR",
+   "cible": "dyade:IRN:ISR",
+   "type": "influence"
+  },
+  "pont:economie-chinoise:matieres_premieres>energie-mondiale:demande": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 23,
+   "source": "portwatch:malacca:petroliers",
+   "cible": "eia:WRPUPUS2",
+   "type": "influence"
+  },
+  "pont:economie-chinoise:matieres_premieres>ormuz:puissances": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
+   "source": "portwatch:malacca:petroliers",
+   "cible": "dyade:USA:IRN",
+   "type": "influence"
+  },
+  "pont:economie-chinoise:exterieur>rivalite-sino-americaine:energie": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 20,
+   "source": "dyade:USA:CHN",
+   "cible": "portwatch:malacca:petroliers",
    "type": "influence"
   },
   "pont:economie-chinoise:exportations>transport-maritime:detroits": {
@@ -1389,6 +1647,13 @@
    "source": "portwatch:bab_el_mandeb:petroliers",
    "cible": "portwatch:ormuz:navires",
    "type": "meme"
+  },
+  "pont:energie-mondiale:demande>economie-chinoise:activite": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 23,
+   "source": "eia:WRPUPUS2",
+   "cible": "feux:CN",
+   "type": "influence"
   },
   "pont:energie-mondiale:transport>transport-maritime:detroits": {
    "verdict": "chevauchement_insuffisant",
@@ -1424,6 +1689,21 @@
    "n": 23,
    "source": "portwatch:malacca:porte_conteneurs",
    "cible": "portwatch:suez:porte_conteneurs",
+   "type": "influence"
+  },
+  "pont:guerre-levant:iran>iran-nucleaire:negociations": {
+   "verdict": "non_significatif",
+   "r": -0.167,
+   "n": 141,
+   "retard": 10,
+   "pas": "semaine",
+   "delai_jours": 70,
+   "signe": "-",
+   "poids": 0.334,
+   "rapport_pentes": 0.91,
+   "regle": "proportionnelle",
+   "source": "dyade:IRN:ISR",
+   "cible": "dyade:USA:IRN",
    "type": "influence"
   },
   "pont:guerre-levant:yemen>transport-maritime:detroits": {
@@ -1573,11 +1853,48 @@
    "cible": "ooni:IN",
    "type": "influence"
   },
+  "pont:infrastructures-critiques:demande>energie-mondiale:demande": {
+   "verdict": "non_significatif",
+   "r": -0.101,
+   "n": 608,
+   "retard": 11,
+   "pas": "semaine",
+   "delai_jours": 77,
+   "signe": "-",
+   "poids": 0.202,
+   "rapport_pentes": 0.39,
+   "regle": "saturation",
+   "source": "fred:DHHNGSP",
+   "cible": "eia:WRPUPUS2",
+   "type": "influence"
+  },
+  "pont:iran-nucleaire:negociations>ormuz:interieur_iran": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
+   "source": "dyade:USA:IRN",
+   "cible": "ooni:IR",
+   "type": "influence"
+  },
   "pont:iran-nucleaire:sanctions>energie-mondiale:decisions": {
    "verdict": "chevauchement_insuffisant",
    "n": 18,
    "source": "sanctions:IR",
    "cible": "sanctions:RU",
+   "type": "influence"
+  },
+  "pont:iran-nucleaire:voisins>guerre-levant:iran": {
+   "verdict": "non_significatif",
+   "r": 0.226,
+   "n": 137,
+   "retard": 0,
+   "pas": "semaine",
+   "delai_jours": 0,
+   "signe": "+",
+   "poids": 0.452,
+   "rapport_pentes": 1.21,
+   "regle": "proportionnelle",
+   "source": "dyade:ISR:IRN",
+   "cible": "dyade:IRN:ISR",
    "type": "influence"
   },
   "pont:iran-nucleaire:etats_unis>politique-americaine:energie": {
@@ -1592,6 +1909,13 @@
    "source": "paire_mois:IR:US:conflit",
    "cible": "fred:DCOILWTICO",
    "type": "influence"
+  },
+  "pont:liban-institutions:force_armee>guerre-levant:liban": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 19,
+   "source": "dyade:ISR:LBN",
+   "cible": "feux:LB",
+   "type": "meme"
   },
   "pont:migrations-demographie:migrations>guerre-levant:humanitaire": {
    "verdict": "non_significatif",
@@ -1640,6 +1964,20 @@
    "cible": "portwatch:suez:porte_conteneurs",
    "type": "influence"
   },
+  "pont:ormuz:interieur_iran>iran-nucleaire:negociations": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
+   "source": "ooni:IR",
+   "cible": "dyade:USA:IRN",
+   "type": "influence"
+  },
+  "pont:ormuz:puissances>rivalite-sino-americaine:energie": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
+   "source": "dyade:USA:IRN",
+   "cible": "portwatch:malacca:petroliers",
+   "type": "influence"
+  },
   "pont:ormuz:navigation>transport-maritime:detroits": {
    "verdict": "chevauchement_insuffisant",
    "n": 23,
@@ -1667,12 +2005,33 @@
    "cible": "sanctions:RU",
    "type": "influence"
   },
+  "pont:politique-americaine:sanctions>iran-nucleaire:negociations": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 19,
+   "source": "sanctions:IR",
+   "cible": "dyade:USA:IRN",
+   "type": "influence"
+  },
   "pont:relief-et-montagnes:cotes_detroits>transport-maritime:detroits": {
    "verdict": "chevauchement_insuffisant",
    "n": 23,
    "source": "portwatch:taiwan:navires",
    "cible": "portwatch:suez:porte_conteneurs",
    "type": "meme"
+  },
+  "pont:rivalite-sino-americaine:energie>ormuz:puissances": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 21,
+   "source": "portwatch:malacca:petroliers",
+   "cible": "dyade:USA:IRN",
+   "type": "influence"
+  },
+  "pont:rivalite-sino-americaine:energie>energie-mondiale:demande": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 23,
+   "source": "portwatch:malacca:petroliers",
+   "cible": "eia:WRPUPUS2",
+   "type": "influence"
   },
   "pont:rivalite-sino-americaine:taiwan>transport-maritime:detroits": {
    "verdict": "chevauchement_insuffisant",
@@ -1697,17 +2056,21 @@
   },
   "pont:rivalite-sino-americaine:alliances>russie-ukraine:soutiens": {
    "verdict": "non_significatif",
-   "r": 0.163,
-   "n": 121,
-   "retard": 1,
+   "r": 0.159,
+   "n": 117,
+   "retard": 2,
    "pas": "semaine",
-   "delai_jours": 7,
+   "delai_jours": 14,
    "signe": "+",
-   "poids": 0.326,
-   "rapport_pentes": 0.75,
-   "regle": "proportionnelle",
+   "poids": 0.317,
+   "rapport_pentes": 4.66,
+   "regle": "seuil",
+   "seuil": 1.5,
+   "mu": 1.75,
+   "sigma": 0.1,
+   "delta_bic": -9.31,
    "source": "sanctions_chine:JP",
-   "cible": "hostilites:MD",
+   "cible": "dyade:USA:UKR",
    "type": "influence"
   },
   "pont:rivalite-sino-americaine:detroit_relief>transport-maritime:detroits": {
@@ -1715,6 +2078,21 @@
    "n": 23,
    "source": "portwatch:taiwan:navires",
    "cible": "portwatch:suez:porte_conteneurs",
+   "type": "influence"
+  },
+  "pont:russie-ukraine:economie_russe>energie-mondiale:production": {
+   "verdict": "non_significatif",
+   "r": 0.062,
+   "n": 617,
+   "retard": 2,
+   "pas": "semaine",
+   "delai_jours": 14,
+   "signe": "+",
+   "poids": 0.124,
+   "rapport_pentes": 0.44,
+   "regle": "saturation",
+   "source": "fred:DCOILBRENTEU",
+   "cible": "eia:WCRFPUS2",
    "type": "influence"
   },
   "pont:russie-ukraine:mer_noire>alimentation-mondiale:prix": {
@@ -1726,35 +2104,31 @@
   },
   "pont:russie-ukraine:soutiens>politique-americaine:budget": {
    "verdict": "non_significatif",
-   "r": 0.182,
-   "n": 114,
-   "retard": 8,
+   "r": 0.141,
+   "n": 193,
+   "retard": 6,
    "pas": "semaine",
-   "delai_jours": 56,
+   "delai_jours": 42,
    "signe": "+",
-   "poids": 0.363,
-   "rapport_pentes": 0.43,
+   "poids": 0.281,
+   "rapport_pentes": 0.31,
    "regle": "saturation",
-   "source": "hostilites:MD",
+   "source": "dyade:USA:UKR",
    "cible": "fred:DGS10",
    "type": "influence"
   },
   "pont:russie-ukraine:soutiens>rivalite-sino-americaine:alliances": {
-   "verdict": "significatif",
-   "r": 0.348,
-   "n": 119,
-   "retard": 3,
+   "verdict": "non_significatif",
+   "r": -0.218,
+   "n": 113,
+   "retard": 6,
    "pas": "semaine",
-   "delai_jours": 21,
-   "signe": "+",
-   "poids": 0.696,
-   "rapport_pentes": 7.37,
-   "regle": "seuil",
-   "seuil": 1.5,
-   "mu": 3.0,
-   "sigma": 1.0,
-   "delta_bic": -2.17,
-   "source": "hostilites:MD",
+   "delai_jours": 42,
+   "signe": "-",
+   "poids": 0.435,
+   "rapport_pentes": 0.46,
+   "regle": "saturation",
+   "source": "dyade:USA:UKR",
    "cible": "sanctions_chine:JP",
    "type": "influence"
   },
@@ -1779,11 +2153,33 @@
    "cible": "certificats",
    "type": "meme"
   },
+  "pont:sciences-techniques:energie_eau>energie-mondiale:demande": {
+   "verdict": "non_significatif",
+   "r": -0.101,
+   "n": 608,
+   "retard": 11,
+   "pas": "semaine",
+   "delai_jours": 77,
+   "signe": "-",
+   "poids": 0.202,
+   "rapport_pentes": 0.39,
+   "regle": "saturation",
+   "source": "fred:DHHNGSP",
+   "cible": "eia:WRPUPUS2",
+   "type": "influence"
+  },
   "pont:sciences-techniques:calcul>infrastructures-critiques:reseaux": {
    "verdict": "chevauchement_insuffisant",
    "n": 23,
    "source": "portwatch:taiwan:porte_conteneurs",
    "cible": "ooni:IR",
+   "type": "influence"
+  },
+  "pont:securite-europeenne:etats_unis>politique-americaine:executif": {
+   "verdict": "chevauchement_insuffisant",
+   "n": 0,
+   "source": "dyade:USA:DEU",
+   "cible": "tfr:SECURITY",
    "type": "influence"
   },
   "pont:securite-europeenne:budgets_dette>inflation-mondiale:budget": {
@@ -1998,6 +2394,13 @@
    "tau_jours": 7.6,
    "serie": "portwatch:malacca:petroliers"
   },
+  "economie-chinoise:exterieur": {
+   "phi": 0.284,
+   "pas": "semaine",
+   "n": 198,
+   "tau_jours": 5.6,
+   "serie": "dyade:USA:CHN"
+  },
   "elections-amerique-latine:economie": {
    "phi": 0.978,
    "pas": "semaine",
@@ -2011,6 +2414,27 @@
    "n": 129,
    "tau_jours": 477.4,
    "serie": "fred:PFOODINDEXM:var12"
+  },
+  "energie-mondiale:production": {
+   "phi": 0.964,
+   "pas": "semaine",
+   "n": 620,
+   "tau_jours": 189.0,
+   "serie": "eia:WCRFPUS2"
+  },
+  "energie-mondiale:demande": {
+   "phi": 0.511,
+   "pas": "semaine",
+   "n": 620,
+   "tau_jours": 10.4,
+   "serie": "eia:WRPUPUS2"
+  },
+  "energie-mondiale:stocks": {
+   "phi": 0.987,
+   "pas": "semaine",
+   "n": 568,
+   "tau_jours": 519.4,
+   "serie": "eia:WCESTUS1:var52"
   },
   "energie-mondiale:transport": {
    "phi": 0.348,
@@ -2047,11 +2471,11 @@
    "serie": "portwatch:malacca:porte_conteneurs"
   },
   "guerre-levant:israel": {
-   "phi": 0.438,
+   "phi": 0.521,
    "pas": "semaine",
-   "n": 123,
-   "tau_jours": 8.5,
-   "serie": "manifestations:IL"
+   "n": 152,
+   "tau_jours": 10.7,
+   "serie": "dyade:ISR:IRN"
   },
   "guerre-levant:liban": {
    "phi": 0.655,
@@ -2075,11 +2499,11 @@
    "serie": "portwatch:bab_el_mandeb:petroliers"
   },
   "guerre-levant:iran": {
-   "phi": 0.787,
+   "phi": 0.259,
    "pas": "semaine",
-   "n": 25,
-   "tau_jours": 29.3,
-   "serie": "ooni:IR"
+   "n": 170,
+   "tau_jours": 5.2,
+   "serie": "dyade:IRN:ISR"
   },
   "guerre-levant:humanitaire": {
    "phi": 0.777,
@@ -2109,6 +2533,13 @@
    "tau_jours": 226.8,
    "serie": "fred:UMCSENT"
   },
+  "humain:reciprocite": {
+   "phi": 0.406,
+   "pas": "semaine",
+   "n": 199,
+   "tau_jours": 7.8,
+   "serie": "dyade:UKR:RUS"
+  },
   "humain:nous_eux": {
    "phi": 0.016,
    "pas": "semaine",
@@ -2122,6 +2553,13 @@
    "n": 123,
    "tau_jours": 7.0,
    "serie": "manifestations:US"
+  },
+  "humain:treve": {
+   "phi": 0.39,
+   "pas": "semaine",
+   "n": 200,
+   "tau_jours": 7.4,
+   "serie": "dyade:RUS:UKR"
   },
   "humain:falsification": {
    "phi": 0.508,
@@ -2241,6 +2679,13 @@
    "tau_jours": 40.7,
    "serie": "fred:DHHNGSP"
   },
+  "iran-nucleaire:negociations": {
+   "phi": 0.144,
+   "pas": "semaine",
+   "n": 179,
+   "tau_jours": 3.6,
+   "serie": "dyade:USA:IRN"
+  },
   "iran-nucleaire:sanctions": {
    "phi": 0.062,
    "pas": "mois",
@@ -2269,6 +2714,20 @@
    "tau_jours": 44.2,
    "serie": "paire_mois:IR:US:conflit"
   },
+  "iran-nucleaire:voisins": {
+   "phi": 0.521,
+   "pas": "semaine",
+   "n": 152,
+   "tau_jours": 10.7,
+   "serie": "dyade:ISR:IRN"
+  },
+  "liban-institutions:force_armee": {
+   "phi": 0.398,
+   "pas": "semaine",
+   "n": 151,
+   "tau_jours": 7.6,
+   "serie": "dyade:ISR:LBN"
+  },
   "liban-institutions:internet_information": {
    "phi": -0.177,
    "pas": "semaine",
@@ -2295,6 +2754,20 @@
    "n": 42,
    "tau_jours": 10.8,
    "serie": "sanctions:IR"
+  },
+  "non-proliferation:dissuasion": {
+   "phi": 0.149,
+   "pas": "semaine",
+   "n": 200,
+   "tau_jours": 3.7,
+   "serie": "dyade:USA:RUS"
+  },
+  "non-proliferation:etats_du_seuil": {
+   "phi": 0.144,
+   "pas": "semaine",
+   "n": 179,
+   "tau_jours": 3.6,
+   "serie": "dyade:USA:IRN"
   },
   "observateur-mesure:biais": {
    "phi": 0.016,
@@ -2337,6 +2810,13 @@
    "n": 123,
    "tau_jours": 9.8,
    "serie": "voisins:IR"
+  },
+  "ormuz:puissances": {
+   "phi": 0.144,
+   "pas": "semaine",
+   "n": 179,
+   "tau_jours": 3.6,
+   "serie": "dyade:USA:IRN"
   },
   "ormuz:droit": {
    "phi": 0.062,
@@ -2456,11 +2936,11 @@
    "serie": "sanctions_chine:JP"
   },
   "rivalite-sino-americaine:diplomatie": {
-   "phi": 0.163,
-   "pas": "mois",
-   "n": 29,
-   "tau_jours": 16.6,
-   "serie": "paire_mois:CN:US:conflit"
+   "phi": 0.284,
+   "pas": "semaine",
+   "n": 198,
+   "tau_jours": 5.6,
+   "serie": "dyade:USA:CHN"
   },
   "rivalite-sino-americaine:finance": {
    "phi": 0.978,
@@ -2497,11 +2977,11 @@
    "serie": "paire:RU:UA:force"
   },
   "russie-ukraine:soutiens": {
-   "phi": 0.292,
+   "phi": 0.18,
    "pas": "semaine",
-   "n": 123,
-   "tau_jours": 5.7,
-   "serie": "hostilites:MD"
+   "n": 200,
+   "tau_jours": 4.1,
+   "serie": "dyade:USA:UKR"
   },
   "russie-ukraine:sanctions": {
    "phi": -0.163,
@@ -2524,11 +3004,11 @@
    "serie": "ooni:UA"
   },
   "russie-ukraine:negociations": {
-   "phi": 0.0,
-   "pas": "mois",
-   "n": 29,
-   "tau_jours": 3.8,
-   "serie": "paire_mois:RU:UA:conflit"
+   "phi": 0.39,
+   "pas": "semaine",
+   "n": 200,
+   "tau_jours": 7.4,
+   "serie": "dyade:RUS:UKR"
   },
   "russie-ukraine:opinions": {
    "phi": -0.078,
@@ -2569,6 +3049,20 @@
    "n": 621,
    "tau_jours": 1250.5,
    "serie": "fred:DGS10"
+  },
+  "sciences-techniques:course_etats": {
+   "phi": 0.284,
+   "pas": "semaine",
+   "n": 198,
+   "tau_jours": 5.6,
+   "serie": "dyade:USA:CHN"
+  },
+  "securite-europeenne:etats_unis": {
+   "phi": 0.055,
+   "pas": "semaine",
+   "n": 173,
+   "tau_jours": 2.4,
+   "serie": "dyade:USA:DEU"
   },
   "securite-europeenne:menace": {
    "phi": -0.163,
