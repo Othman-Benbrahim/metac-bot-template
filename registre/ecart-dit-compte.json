@@ -1,0 +1,193 @@
+[
+ {
+  "dit": "dyade:RUS:UKR",
+  "compte": "ucdp:Ukraine",
+  "producteur_dit": "GDELT (codage automatique de la presse)",
+  "producteur_compte": "UCDP, université d'Uppsala (codage humain)",
+  "independance": "amont partagé (presse)",
+  "semaines": 196,
+  "du": "2022-12-26",
+  "au": "2026-09-28",
+  "r_variations": -0.14,
+  "p": 0.0575,
+  "pente_niveaux": -0.161,
+  "semaines_d_ecart": [
+   {
+    "semaine": "2023-04-10",
+    "z": 2.07,
+    "ton": 1.82,
+    "compte": 692.0
+   },
+   {
+    "semaine": "2023-12-25",
+    "z": -2.08,
+    "ton": -4.73,
+    "compte": 1301.0
+   },
+   {
+    "semaine": "2024-03-04",
+    "z": -2.02,
+    "ton": -4.55,
+    "compte": 762.0
+   },
+   {
+    "semaine": "2025-02-24",
+    "z": 2.23,
+    "ton": 1.78,
+    "compte": 4427.0
+   },
+   {
+    "semaine": "2025-05-12",
+    "z": 2.29,
+    "ton": 2.35,
+    "compte": 222.0
+   },
+   {
+    "semaine": "2025-08-11",
+    "z": 2.53,
+    "ton": 2.61,
+    "compte": 453.0
+   },
+   {
+    "semaine": "2025-08-18",
+    "z": 2.73,
+    "ton": 2.35,
+    "compte": 15522.0
+   },
+   {
+    "semaine": "2025-09-01",
+    "z": 2.04,
+    "ton": 1.88,
+    "compte": 391.0
+   },
+   {
+    "semaine": "2025-11-17",
+    "z": 2.12,
+    "ton": 2.02,
+    "compte": 350.0
+   },
+   {
+    "semaine": "2025-12-01",
+    "z": 2.37,
+    "ton": 1.88,
+    "compte": 8917.0
+   },
+   {
+    "semaine": "2026-01-26",
+    "z": 2.78,
+    "ton": 2.56,
+    "compte": 7306.0
+   },
+   {
+    "semaine": "2026-05-25",
+    "z": -2.08,
+    "ton": -4.31,
+    "compte": 102.0
+   }
+  ]
+ },
+ {
+  "dit": "dyade:RUS:UKR",
+  "compte": "feux:UA",
+  "producteur_dit": "GDELT (codage automatique de la presse)",
+  "producteur_compte": "NASA FIRMS (satellites)",
+  "independance": "amont distinct",
+  "semaines": 22,
+  "du": "2026-06-01",
+  "au": "2026-10-26",
+  "r_variations": -0.252,
+  "p": 0.2609,
+  "pente_niveaux": -0.514,
+  "semaines_d_ecart": [
+   {
+    "semaine": "2026-07-20",
+    "z": -2.2,
+    "ton": -3.82,
+    "compte": 2054.0
+   }
+  ]
+ },
+ {
+  "dit": "dyade:ISR:LBN",
+  "compte": "feux:LB",
+  "producteur_dit": "GDELT (codage automatique de la presse)",
+  "producteur_compte": "NASA FIRMS (satellites)",
+  "independance": "amont distinct",
+  "semaines": 20,
+  "du": "2026-06-01",
+  "au": "2026-10-19",
+  "r_variations": -0.453,
+  "p": 0.0435,
+  "pente_niveaux": -0.44,
+  "semaines_d_ecart": []
+ },
+ {
+  "dit": "dyade:IRN:ISR",
+  "compte": "ucdp:Israel",
+  "producteur_dit": "GDELT (codage automatique de la presse)",
+  "producteur_compte": "UCDP, université d'Uppsala (codage humain)",
+  "independance": "amont partagé (presse)",
+  "semaines": 166,
+  "du": "2023-01-02",
+  "au": "2026-09-28",
+  "r_variations": -0.078,
+  "p": 0.3143,
+  "pente_niveaux": -0.056,
+  "semaines_d_ecart": [
+   {
+    "semaine": "2024-01-22",
+    "z": 2.06,
+    "ton": 2.34,
+    "compte": 239.0
+   },
+   {
+    "semaine": "2024-04-01",
+    "z": -2.56,
+    "ton": -5.09,
+    "compte": 609.0
+   },
+   {
+    "semaine": "2024-07-29",
+    "z": -2.11,
+    "ton": -4.37,
+    "compte": 608.0
+   },
+   {
+    "semaine": "2024-10-21",
+    "z": -2.24,
+    "ton": -4.55,
+    "compte": 366.0
+   },
+   {
+    "semaine": "2025-06-09",
+    "z": -3.19,
+    "ton": -6.07,
+    "compte": 408.0
+   },
+   {
+    "semaine": "2025-11-10",
+    "z": -2.39,
+    "ton": -4.6,
+    "compte": 9.0
+   },
+   {
+    "semaine": "2026-02-09",
+    "z": 2.26,
+    "ton": 2.77,
+    "compte": 37.0
+   },
+   {
+    "semaine": "2026-03-09",
+    "z": -2.55,
+    "ton": -4.92,
+    "compte": 34.0
+   },
+   {
+    "semaine": "2026-03-30",
+    "z": -2.26,
+    "ton": -4.44,
+    "compte": 25.0
+   }
+  ]
+ }
+]
