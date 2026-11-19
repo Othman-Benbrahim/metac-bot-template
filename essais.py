@@ -231,7 +231,11 @@ ESSAIS = {
                      "objet": "taux de base corrigé par la classe « la question nomme un acteur » contre R1, questions "
                               "de 2025 (idée née des données de 2026)",
                      "doc": "preenregistrements/acteur-nomme.md"},
-    "tendance_wikipedia": {"ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "ouvert",
+    "tendance_wikipedia": {"resume": ["registre/banc-wikipedia.json"], "ouvert_le": "2026-11-18", "type": "intervalle", "n": 1, "statut": "clos",
+                           "clos_le": "2026-11-19",
+                           "verdict": "non retenu : 892 questions distinctes de 2026 (859 avec article), S ajusté "
+                                      "0,6587 contre S 0,6588, écart nul, intervalle corrigé [−0,008 ; +0,008] ; "
+                                      "β −0,25, rang tendance / issue −0,008 (run 44428639555)",
                            "objet": "S ajusté par la tendance des pages vues Wikipédia des entités de la question, "
                                     "contre S, ~890 questions distinctes de 2026 ; aucun appel à un modèle",
                            "doc": "preenregistrements/wikipedia.md"},
