@@ -4,92 +4,159 @@
 # Chaque niveau : sa taille et sa vitesse typiques, ses relations PROPRES (celles qui ne se voient qu'à ce niveau),
 # et son INERTIE (0 à 1) : la part d'ampleur qu'un effet venu d'un autre niveau doit dépasser pour y passer.
 # Inerties fixées à la main, hypothèses de départ, à calibrer. Fichier lu par ecosystemes.py et carte.py.
+# 0.10.321 (rappel de l'auteur, 2026-11-19, 5 h 40) : du micro au macro, sans oublier le micro — l'atome, la chimie,
+# le virus — ni l'eau, dont sont faits la Terre et tous les êtres vivants, ni le relief qui fait obstacle. Le champ
+# « rang » ordonne les niveaux du plus petit (1) au plus grand ; plusieurs niveaux humains partagent des rangs.
 niveaux:
+  - id: "atomique"
+    nom: "Atomique et nucléaire (noyaux, radioactivité, fission)"
+    rang: 1
+    taille: "micro"
+    vitesse: "seconde ; demi-vies de jours à millénaires"
+    inertie: 0.8
+    relations_propres: ["désintégration radioactive (demi-vie)", "fission et réaction en chaîne (seuil critique)", "rayonnement qui altère la matière et le vivant", "énergie concentrée : bien (électricité, médecine) ou mal (contamination, arme)"]
+  - id: "chimique"
+    nom: "Chimique (éléments, composés, cycles du carbone, de l'azote, du soufre, du phosphore)"
+    rang: 2
+    taille: "micro à macro"
+    vitesse: "secondes à millénaires"
+    inertie: 0.6
+    relations_propres: ["réactions et équilibres (acidité, oxydation)", "cycles biogéochimiques qui relient roche, eau, air et vivant", "accumulation et toxicité (seuils)", "catalyse : une petite quantité change tout"]
+  - id: "microbiologique"
+    nom: "Microbiologique (virus, bactéries, gènes)"
+    rang: 2
+    taille: "micro"
+    vitesse: "heures à années"
+    inertie: 0.3
+    relations_propres: ["réplication et croissance exponentielle", "mutation et sélection", "contagion d'un hôte à l'autre", "immunité et résistance", "symbiose (microbiotes)"]
+  - id: "physique"
+    nom: "Physique (énergie, chaleur, rayonnement solaire, gravité, mouvements)"
+    rang: 3
+    taille: "micro à macro"
+    vitesse: "secondes à millénaires"
+    inertie: 0.7
+    relations_propres: ["conservation et transfert d'énergie", "gradients qui créent des flux (chaleur, pression)", "rayonnement solaire, cycles du Soleil"]
+  - id: "relief"
+    nom: "Relief (montagnes, bassins, côtes, détroits)"
+    rang: 6
+    taille: "méso à macro"
+    vitesse: "millénaire"
+    inertie: 0.95
+    relations_propres: ["obstacle aux mouvements (armées, échanges, migrations)", "ombre pluviométrique (une chaîne arrête les pluies)", "goulet (détroits, cols, vallées)", "partage des eaux entre bassins"]
+  - id: "ocean"
+    nom: "Océans et mers (masses d'eau, courants)"
+    rang: 7
+    taille: "macro"
+    vitesse: "saisons à siècles"
+    inertie: 0.85
+    relations_propres: ["stockage et transport de chaleur", "courants et remontées d'eaux froides", "acidification", "niveau de la mer"]
+  - id: "convention"
+    nom: "Convention (noms, classements, déclarations, définitions, frontières, statistiques)"
+    rang: 6
+    taille: "méso à macro"
+    vitesse: "jours (une déclaration) à décennies"
+    inertie: 0.5
+    relations_propres: ["un fait existe par acceptation ou déclaration (« X compte comme Y dans C », Searle)", "une définition change ce qui est compté (un cas, une pandémie, une récession)", "révision et contestation", "un même phénomène réel peut être nommé ou non, déclaré ou non"]
   - id: "mineral"
+    rang: 5
     nom: "Roches, sols minéraux, relief"
     taille: "méso à macro"
     vitesse: "siècle ; seconde (séisme)"
     inertie: 0.9
     relations_propres: ["altération et érosion", "sédimentation", "acidité ou alcalinité héritée de la roche", "rupture brutale (séisme, glissement) après lente accumulation"]
   - id: "climat"
+    rang: 8
     nom: "Climat (régimes sur des décennies, distinct de la météo)"
     taille: "macro"
     vitesse: "décennie"
     inertie: 0.8
     relations_propres: ["oscillations océan-atmosphère (ENSO)", "rétroactions (albédo, vapeur d'eau, sols secs qui chauffent l'air)", "dérive lente des moyennes et des extrêmes"]
   - id: "meteo"
+    rang: 6
     nom: "Temps qu'il fait (jours, semaines)"
     taille: "méso"
     vitesse: "jours"
     inertie: 0.3
     relations_propres: ["fronts et dépressions", "blocages", "vagues de chaleur, tempêtes"]
   - id: "eau"
+    rang: 5
     nom: "Eau (cycle, fleuves, nappes)"
     taille: "méso à macro"
     vitesse: "jours à années"
     inertie: 0.5
     relations_propres: ["ruissellement et recharge", "crue et étiage", "épuisement des nappes (hystérésis)"]
   - id: "sol_vivant"
+    rang: 3
     nom: "Sol vivant (champignons, microbes, nématodes, vers)"
     taille: "micro"
     vitesse: "semaines à années"
     inertie: 0.4
     relations_propres: ["symbiose racines-champignons (mycorhizes)", "décomposition et recyclage", "parasitisme et maladies du sol"]
   - id: "vegetal"
+    rang: 4
     nom: "Végétal (forêts, prairies, cultures)"
     taille: "micro à macro"
     vitesse: "saisons à décennies"
     inertie: 0.5
     relations_propres: ["compétition pour la lumière et l'eau", "succession (une espèce prépare la suivante)", "allélopathie, défense chimique"]
   - id: "animal"
+    rang: 4
     nom: "Animal (faune sauvage, élevage, insectes)"
     taille: "micro à macro"
     vitesse: "jours à années"
     inertie: 0.4
     relations_propres: ["prédation et chaînes alimentaires", "cascades trophiques", "pullulations et effondrements de populations", "épizooties et zoonoses", "pâturage (l'élevage agit sur le sol et la végétation, pas seulement sur l'économie)"]
   - id: "personne"
+    rang: 4
     nom: "La personne (un individu public, par ses faits publics)"
     taille: "micro"
     vitesse: "jours à années"
     inertie: 0.2
     relations_propres: ["santé, âge, fatigue", "convictions et apprentissage", "réputation et image de soi"]
   - id: "entourage"
+    rang: 5
     nom: "Entourage (cercle direct et indirect d'un décideur)"
     taille: "micro à méso"
     vitesse: "jours à mois"
     inertie: 0.3
     relations_propres: ["loyauté et disgrâce", "rivalité pour l'accès", "filtrage de l'information", "dette et faveur"]
   - id: "statut"
+    rang: 6
     nom: "Statut et institution (rôle, mandat, pouvoirs, contre-pouvoirs)"
     taille: "méso à macro"
     vitesse: "semaines à années"
     inertie: 0.6
     relations_propres: ["délégation et hiérarchie", "contrôle et veto", "règles de succession", "le statut survit à la personne"]
   - id: "ideologie"
+    rang: 7
     nom: "Idéologie et culture (idées, croyances, récits, valeurs)"
     taille: "méso à macro"
     vitesse: "années à décennies"
     inertie: 0.7
     relations_propres: ["diffusion et conversion lente", "polarisation", "orthodoxie et dissidence", "l'idéologie survit à ceux qui la portent"]
   - id: "societe"
+    rang: 7
     nom: "Société (opinion, mouvements, groupes)"
     taille: "méso à macro"
     vitesse: "semaines à années"
     inertie: 0.5
     relations_propres: ["mobilisation et contagion", "lassitude", "basculement d'opinion (seuil)"]
   - id: "economie"
+    rang: 6
     nom: "Économie (marchés, entreprises, prix)"
     taille: "micro à macro"
     vitesse: "minutes à années"
     inertie: 0.4
     relations_propres: ["offre et demande", "contagion financière", "anticipations autoréalisatrices"]
   - id: "technique"
+    rang: 5
     nom: "Technique et infrastructures"
     taille: "micro à macro"
     vitesse: "secondes à décennies"
     inertie: 0.5
     relations_propres: ["défaillances en cascade", "dépendance au chemin des réseaux", "goulots d'étranglement"]
   - id: "geopolitique"
+    rang: 8
     nom: "Géopolitique (États, blocs, alliances)"
     taille: "macro"
     vitesse: "semaines à décennies"
