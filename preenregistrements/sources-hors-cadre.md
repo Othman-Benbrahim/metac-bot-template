@@ -19,7 +19,7 @@ résolues la croiseront.
 | Certificats HTTPS des laboratoires d'IA (Cert Spotter) | collecte_certificats.py | DÉCLENCHEUR | chaque nuit |
 | Rythme de publication des sites officiels (flux RSS) | collecte_routines.py | PÉRIODICITÉ, SEUIL | chaque nuit |
 | Federal Register, inspection publique (textes avant publication) | collecte_federal_register.py | DÉCLENCHEUR | chaque nuit |
-| Interdictions de survol FAA | sonde_tfr.py (sonde seulement) | RÉSEAU, RÉCIPROCITÉ | manuel |
+| Interdictions de survol FAA | collecte_tfr.py (0.10.304 ; liste JSON tfrapi/exportTfrList trouvée par la sonde du 2026-11-19) | RÉSEAU, RÉCIPROCITÉ | nuit |
 | Dépôts de marques des laboratoires d'IA (EUIPO, 0.10.301) | collecte_euipo.py | DÉCLENCHEUR | RETIRÉ (0.10.303) : pièce d'identité exigée par l'EUIPO, refusée par l'auteur |
 | Congrès américain : réunions de commissions, nominations (0.10.301) | collecte_congres.py | DÉCLENCHEUR | chaque nuit |
 | Tribunaux américains (CourtListener, 0.10.301) | collecte_tribunaux.py | DÉCLENCHEUR | chaque nuit |

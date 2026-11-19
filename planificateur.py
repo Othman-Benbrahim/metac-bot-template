@@ -53,6 +53,7 @@ COLLECTES = (
     ("collecte_congres.yaml", None),          # 0.10.301 : clés données par l'auteur (EUIPO retiré en 0.10.303 :
                                               # pièce d'identité exigée, refusée par l'auteur)
     ("collecte_tribunaux.yaml", None),
+    ("collecte_tfr.yaml", None),              # 0.10.304 : interdictions de survol FAA (liste JSON trouvée par la sonde)
 )
 
 
