@@ -1,6 +1,7 @@
 theme: "humain"
 nom: "Ce qui pousse l'humain à agir (de la seconde aux millénaires)"
 # 0.10.325 — première lecture intégrée : Behave (Sapolsky, 2017), mémo lectures/sapolsky-behave.md.
+# 0.10.342 — Norenzayan (Big Gods) par la critique de Soler (2016) : deux hypothèses concurrentes sur croyances. Mémo lectures/soler-big-gods.md.
 # 0.10.338 — croyances, réseaux discrets (EN OMBRE) et croyance en des forces cachées (décision d'auteur du 2026-11-19, 12 h 00).
 # 0.10.331 — septième : The Righteous Mind (Haidt, 2012 ; éd. roumaine 2015, ch. 12 et conclusion), mémo lectures/haidt-righteous-mind.md.
 # 0.10.330 — sixième : Attitudes, Personality and Behavior (Ajzen, 2025), mémo lectures/ajzen-attitudes.md.
@@ -455,7 +456,7 @@ compartiments:
 - id: "croyances"
   nom: "Croyances religieuses et spirituelles (pratiques, rituels, calendriers sacrés)"
   organisation: "ideologie"
-  elements: ["une croyance partagée et ses rituels coûteux soudent un groupe et rendent la coopération possible entre inconnus (Haidt : la morale unit et aveugle)", "dieux moralisateurs et surveillance supposée", "valeurs sacrées qui refusent le marchandage", "calendriers sacrés (jeûnes, fêtes, pèlerinages) qui rythment l'action collective", "institutions religieuses qui médiatisent ou attisent"]
+  elements: ["une croyance partagée et ses rituels coûteux soudent un groupe et rendent la coopération possible entre inconnus (Haidt : la morale unit et aveugle)", "dieux moralisateurs et surveillance supposée", "valeurs sacrées qui refusent le marchandage", "calendriers sacrés (jeûnes, fêtes, pèlerinages) qui rythment l'action collective", "institutions religieuses qui médiatisent ou attisent", "on se conduit mieux quand on se croit observé ; on fait confiance à qui croit (Norenzayan)", "les actes religieux coûteux (jeûne, dons, rites) sont des signaux crédibles d'engagement", "religion vécue souvent transactionnelle (offrandes contre faveurs) plus que morale (Soler)", "défenses contre une religion au service des élites : schismes, apostasie, sectes millénaristes (Soler)"]
   niveau:
     espace: "communauté à civilisation"
     temps: "jours (rites) à millénaires"
@@ -1308,6 +1309,31 @@ relations:
   statut: "a_verifier"
   source: "littérature sur les théories du complot (à lire)"
   texte: "la croyance en un pouvoir occulte conteste les autorités visibles (élections dites truquées, institutions dites captées)"
+# --- Norenzayan, Big Gods (2013), lu par la critique de Soler (Cliodynamics, 2016) : deux hypothèses CONCURRENTES ---
+- de: "croyances"
+  vers: "dilemme"
+  effet: "+"
+  delai: "décennie"
+  force: "moyenne"
+  statut: "conteste"
+  source: "Norenzayan, Big Gods (2013), d'après Soler (2016)"
+  texte: "hypothèse A : des dieux qui surveillent et punissent remplacent la surveillance mutuelle et rendent la coopération possible dans les grands groupes (« de grands dieux pour de grands groupes ») ; preuves surtout expérimentales et occidentales"
+- de: "croyances"
+  vers: "hierarchie"
+  effet: "-"
+  delai: "décennie"
+  force: "moyenne"
+  statut: "conteste"
+  source: "Soler (2016) ; Soler et Lenfesty (2016)"
+  texte: "hypothèse B, concurrente : la religion des grands groupes sert d'abord à maintenir l'inégalité ; les élites exploitent des biais cognitifs, et la contestation du rang baisse"
+- de: "hierarchie"
+  vers: "croyances"
+  effet: "±"
+  delai: "décennie"
+  force: "faible"
+  statut: "conteste"
+  source: "Soler (2016)"
+  texte: "une hiérarchie qui exploite par la religion provoque des défenses : schismes, apostasie, sectes millénaristes, incroyance"
 ponts:
 - depuis: "passage_acte"
   vers: "politique-americaine:elections"
