@@ -37,3 +37,9 @@ def test_etendu_lecture_des_candidates():
     assert r["candidates"]["CMP"]["passe"] and not r["candidates"]["CNV"]["passe"]
     assert r["ensemble"]["couverture_monte_pour_les_deux"]
     assert set(bc.CANDIDATES) == {"CMP", "ITN", "CAP", "MAR", "CNV"}
+
+
+def test_questions_combinees_ecartees():
+    s = bc.situations(etendu=True)
+    assert s and not any(bc.combinee(x) for x in s)
+    assert bc.combinee({"qid": "infer:['1', '2']:2025-01-01", "titre": "x"})

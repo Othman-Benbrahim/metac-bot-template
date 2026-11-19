@@ -71,8 +71,14 @@ def situations(etendu: bool = False) -> list[dict]:
     for s in sorted(par):
         l = par[s][:]
         rnd.shuffle(l)
-        out += l[:PAR_PLATEFORME]
+        # 0.10.316 : les questions COMBINÉES de ForecastBench (identifiant en liste) n'ont pas de situation dans leur
+        # titre, seulement une consigne générique ; elles sont écartées APRÈS le mélange, pour garder le même ordre.
+        out += [x for x in l if not combinee(x)][:PAR_PLATEFORME]
     return out
+
+
+def combinee(x: dict) -> bool:
+    return "[" in x["qid"] or x["titre"].startswith("We are presenting you with two probability questions")
 
 
 def consigne(titre: str, cartes: dict[str, str]) -> str:
@@ -173,6 +179,7 @@ def lignes(fichier: Path = FICHIER) -> list[dict]:
 
 def resumer_etendu(ls: list[dict], base: list[str]) -> dict:
     """Mêmes situations codées avec 16 puis 21 cartes ; lecture fixée dans le préenregistrement."""
+    ls = [x for x in ls if not combinee(x)]
     a = resumer([{**x, "gpt": x["gpt16"], "haiku": x["haiku16"]} for x in ls if "gpt16" in x], base)
     b = resumer([{**x, "gpt": x["gpt21"], "haiku": x["haiku21"]} for x in ls if "gpt21" in x], sorted(set(base) | set(CANDIDATES)))
     out = {"version_bot": ap.VERSION_BOT, "note": "mêmes situations neuves, codées avec 16 puis 21 cartes (5 candidates en ombre)",

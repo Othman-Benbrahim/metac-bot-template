@@ -31,3 +31,10 @@ Une candidate « passe » si : (a) les deux codeurs l'ancrent chacun dans au moi
 codeurs est d'au moins 0,2. L'ensemble « passe » si, avec 21 cartes, la couverture monte pour LES DEUX codeurs et le
 κ moyen ne baisse pas. Ce qui passe est proposé à l'auteur ; rien n'est ajouté par ce banc. INCERTITUDE est rapportée
 à part (vraie par construction sur des questions de prévision). Budget : Azure 2 $, Bedrock 1 $ au plus.
+
+## Correctif (2026-11-19, 4 h 10, pendant le premier passage, avant toute lecture des résultats)
+Le premier passage a tiré 59 questions COMBINÉES de ForecastBench (identifiant en liste) : leur titre n'est qu'une
+consigne générique (« We are presenting you with two probability questions… »), sans situation. Les deux codeurs ont
+codé ce texte vide de la même façon à chaque fois. Ces questions sont écartées (après le mélange de graine 1, pour
+garder l'ordre du tirage) et exclues du résumé. Le premier banc de couverture (2026) n'en contenait aucune. Erreur de
+Claude : le filtre manquait au tirage étendu à 2025.
