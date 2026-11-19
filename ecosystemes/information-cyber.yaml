@@ -159,6 +159,12 @@ compartiments:
     vitesse: heures à semaines
     taille: méso à macro
   traces:
+  - source: analyses d'URL suspectes soumises par jour (Webamon, offre gratuite ; comptes seulement)
+    statut: collecte
+    adaptateur: webamon:scans
+  - source: nouveaux domaines enregistrés par jour (Webamon ; matière première de l'hameçonnage)
+    statut: collecte
+    adaptateur: webamon:new_domains
   - source: avis publics des agences de cybersécurité (CERT-FR et autres)
     statut: collecte
     fichier: collecte_rss.py

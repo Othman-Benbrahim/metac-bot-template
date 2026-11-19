@@ -82,6 +82,11 @@ def ouvert(reg: Path, serie: str) -> list[tuple[str, float]]:
     return sorted((r["jour"], float(r["valeur"])) for r in _csv(reg, "ouvertes.csv") if r["serie"] == serie)
 
 
+def webamon(reg: Path, index: str = "new_domains") -> list[tuple[str, float]]:
+    """Comptes quotidiens Webamon (collecte_webamon.py) : new_domains (nouveaux domaines), scans (analyses d'URL)."""
+    return sorted((r["jour"], float(r["total"])) for r in _csv(reg, "webamon.csv") if r["index"] == index)
+
+
 def meteo(reg: Path, point: str) -> list[tuple[str, float]]:
     """ANOMALIE de température du jour (°C) par rapport aux mêmes jours de l'année (± 7 jours) des années
     précédentes, pour un point (collecte_meteo.py). Jours sans référence (première année) : écartés."""
@@ -124,7 +129,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert,
+               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon,
                "portwatch_ref": portwatch_ref}
 
 
