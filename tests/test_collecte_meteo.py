@@ -33,3 +33,10 @@ def test_rayon_elargi():
     v = {"IR000407540"}
     assert cm.candidates(st, v, 27.18, 56.27) == []                       # Bandar Abbas : Téhéran est à ~ 950 km
     assert cm.candidates(st, v, 33.9, 51.4)[0][0] == "IR000407540"        # ~ 200 km : admis au rayon élargi
+
+
+def test_pays_admis():
+    st = cm.lire_stations("TX000038750  37.4670   53.9670  -22.0    ESENGYLY\nMUM00041242  25.6000   56.2700    5.0    DIBA\n")
+    v = set(st)
+    assert cm.candidates(st, v, 35.69, 51.39, cm.PAYS["teheran"]) == []          # pas de témoin turkmène pour Téhéran
+    assert cm.candidates(st, v, 27.18, 56.27, cm.PAYS["bandar_abbas"])[0][0] == "MUM00041242"

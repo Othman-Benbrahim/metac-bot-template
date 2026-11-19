@@ -36,7 +36,7 @@ BASE = "https://noaa-ghcn-pds.s3.amazonaws.com"
 URL = BASE + "/csv/by_station/{station}.csv"
 RAYON_KM = 150
 RAYON_MAX_KM = 300          # 0.10.339 : si rien à 150 km (Delhi, Iran au premier passage), on élargit
-ESSAIS_STATIONS = 3         # stations essayées par point, de la plus proche à la plus lointaine
+ESSAIS_STATIONS = 6         # stations essayées par point, de la plus proche à la plus lointaine
 FRAICHEUR_JOURS = 45        # une station dont le dernier relevé a plus de 45 jours cède la place à la suivante
 DEBUT = "2016-01-01"
 PAUSE = 2.0
@@ -81,9 +81,18 @@ def lire_inventaire(texte: str, an_min: int) -> set[str]:
     return {k for k, v in el.items() if "TAVG" in v or {"TMAX", "TMIN"} <= v}
 
 
-def candidates(stations: dict, valides: set[str], lat: float, lon: float) -> list[tuple[str, float]]:
-    """Stations admises par distance croissante : d'abord dans RAYON_KM, sinon dans RAYON_MAX_KM."""
-    c = sorted((distance_km((lat, lon), stations[s][:2]), s) for s in valides if s in stations)
+# 0.10.341 : pays admis par point (préfixe FIPS des identifiants GHCN). Le premier passage élargi avait pris pour
+# Téhéran une station du Turkménistan (281 km, autre climat) : mieux vaut rien qu'un faux témoin. Bandar Abbas admet
+# Oman et les Émirats, sur le même détroit.
+PAYS = {"bandar_abbas": ("IR", "MU", "TC"), "teheran": ("IR",), "houston": ("US",), "berlin": ("GM",),
+        "shanghai": ("CH",), "delhi": ("IN",), "kyiv": ("UP",), "moscou": ("RS",)}
+
+
+def candidates(stations: dict, valides: set[str], lat: float, lon: float,
+               pays: tuple[str, ...] | None = None) -> list[tuple[str, float]]:
+    """Stations admises (pays admis) par distance croissante : d'abord dans RAYON_KM, sinon dans RAYON_MAX_KM."""
+    c = sorted((distance_km((lat, lon), stations[s][:2]), s) for s in valides
+               if s in stations and (not pays or s[:2] in pays))
     for r in (RAYON_KM, RAYON_MAX_KM):
         dedans = [(s, round(d, 1)) for d, s in c if d <= r]
         if dedans:
@@ -132,7 +141,7 @@ def principal() -> int:
             return 0
         print(f"GHCN-Daily : {len(stations)} stations, {len(valides)} avec températures cette année.")
         for nom, (lat, lon, _) in POINTS.items():
-            cands = candidates(stations, valides, lat, lon)
+            cands = candidates(stations, valides, lat, lon, PAYS.get(nom))
             if not cands:
                 print(f"::warning::{nom} : aucune station à moins de {RAYON_MAX_KM} km")
                 continue
