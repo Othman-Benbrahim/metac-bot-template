@@ -5,6 +5,10 @@ name: "Banc brique scrutin (étalons électoraux, ombre)"
 # sur ces seules archives et la compare aux semblables. Aucun modèle de langue. Rien n'entre dans le bot.
 on:
   workflow_dispatch:
+    inputs:
+      tout:
+        description: "archiver aussi les questions d'avant 2026 (oui/non)"
+        default: "non"
 
 concurrency:
   group: bot-alphabet-registre
@@ -27,7 +31,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Archiver les sondages datés (Wikipédia)
-        run: uv run python banc_scrutin.py --collecter
+        run: uv run python banc_scrutin.py --collecter ${{ github.event.inputs.tout == 'oui' && '--tout' || '' }}
       - name: Évaluer la brique (hors réseau)
         run: uv run python banc_scrutin.py
       - name: Enregistrer
@@ -35,7 +39,8 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/scrutins/archives.jsonl registre/scrutins/detail.jsonl registre/banc-scrutin.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          uv run python registre_briques.py || true
+          for f in registre/scrutins/archives.jsonl registre/scrutins/detail.jsonl registre/banc-scrutin.json registre/briques.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : banc de la brique scrutin du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase || (sleep 20 && git pull --rebase)

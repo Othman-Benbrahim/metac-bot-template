@@ -128,6 +128,7 @@ def _date(texte: str, annee_defaut: int) -> date | None:
 
 
 def _nombre(texte: str) -> float | None:
+    texte = re.sub(r"\[[^\]]*\]|[*†‡]", "", texte).strip().lstrip("|").strip()
     m = re.fullmatch(r"\s*(\d{1,2}(?:[.,]\d+)?)\s*%?\s*", texte)
     return float(m.group(1).replace(",", ".")) if m else None
 
@@ -181,6 +182,7 @@ def moyenne_sondages(tabs: list[dict], jour: date, sujet: str) -> dict | None:
     cle = [w for w in _norm(sujet).split() if len(w) >= 3 and w not in ("the", "and", "del", "dos", "das")]
     if not cle:
         return None
+    meilleur_resultat, meilleur_n = None, 0
     for tab in tabs:
         cols = tab["colonnes"]
         scores = []
@@ -207,10 +209,12 @@ def moyenne_sondages(tabs: list[dict], jour: date, sujet: str) -> dict | None:
                     if v is not None:
                         somme[i].append(v)
         parts = {cols[i]: float(np.mean(v)) for i, v in somme.items() if v}
-        if cols[idx_sujet] in parts and len(parts) >= 2:
+        n_sujet = len(somme.get(idx_sujet) or [])
+        if cols[idx_sujet] in parts and len(parts) >= 2 and n_sujet > meilleur_n:
+            # 0.10.370 : le tableau qui compte le plus de sondages du sujet dans la fenêtre, et non le premier venu
             parts["__sujet__"] = cols[idx_sujet]
-            return parts
-    return None
+            meilleur_resultat, meilleur_n = parts, n_sujet
+    return meilleur_resultat
 
 
 # ---------------------------------------------------------------- 3. calcul (déterministe)
@@ -279,7 +283,7 @@ def _titre_plausible(titre: str, election: str) -> bool:
     return bool(mots) and any(w[:5] in t for w in mots)
 
 
-def collecter() -> int:
+def collecter(tout: bool = False) -> int:
     """Archive, pour chaque (élection, date), la version de la page de sondages en vigueur à cette date. Passe par
     l'API Wikimedia (api.wikimedia.org, permise par robots.txt ; l'API MediaWiki de en.wikipedia.org est refusée)."""
     import httpx
@@ -287,7 +291,7 @@ def collecter() -> int:
     from urllib.parse import quote
     deja = lire_archives()
     import banc_jugement as bj
-    qs = [x for x in questions() if x["forme"] and x["jeu"] >= bj.COUPURE]      # seules les questions jugées
+    qs = [x for x in questions() if x["forme"] and (tout or x["jeu"] >= bj.COUPURE)]   # --tout : aussi 2024-2025
     cles = sorted({(x["forme"]["election"], x["jeu"]) for x in qs} - set(deja))
     print(f"{len(qs)} questions dans la brique ; {len(cles)} couples (élection, date) à archiver.", flush=True)
     ARCHIVES.parent.mkdir(parents=True, exist_ok=True)
@@ -426,5 +430,6 @@ def evaluer() -> int:
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
     a.add_argument("--collecter", action="store_true")
+    a.add_argument("--tout", action="store_true", help="archiver aussi les questions d'avant 2026 (registre des briques)")
     o = a.parse_args()
-    sys.exit(collecter() if o.collecter else evaluer())
+    sys.exit(collecter(o.tout) if o.collecter else evaluer())

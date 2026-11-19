@@ -1,37 +1,37 @@
 {
  "questions_electorales": 329,
  "confirmation": 247,
- "jugees": 20,
+ "jugees": 25,
  "abstentions": {
-  "aucun sondage du sujet dans les 30 jours": 119,
-  "hors brique (forme)": 79,
+  "aucun sondage du sujet dans les 30 jours": 113,
+  "hors brique (forme)": 80,
   "pas d'archive ou de tableau": 29
  },
  "perte": {
-  "semblables": 0.6701,
-  "brique": 1.1961
+  "semblables": 0.7108,
+  "brique": 0.451
  },
- "ecart_brique_moins_semblables": 0.526,
+ "ecart_brique_moins_semblables": -0.2598,
  "intervalle_corrige": null,
  "verdict": "trop peu de questions jugées",
  "par_classe": {
   "S1": {
-   "n": 5,
-   "semblables": 0.8395,
-   "brique": 0.933
+   "n": 7,
+   "semblables": 0.6169,
+   "brique": 1.0829
   },
   "S2": {
-   "n": 3,
-   "semblables": 0.3198,
-   "brique": 0.0567
+   "n": 4,
+   "semblables": 0.7695,
+   "brique": 0.1769
   },
   "S3": {
-   "n": 12,
-   "semblables": 0.6871,
-   "brique": 1.5906
+   "n": 14,
+   "semblables": 0.741,
+   "brique": 0.2134
   }
  },
- "empreinte_sha256": "d8cc88d5f71b52b1a10a66f2ae5f7895b442cb53d17581089a9916c280eb0412",
+ "empreinte_sha256": "063ae2219c37c01f051ea3610febce62ce4b18423e7dd1e705c218d02d5d3133",
  "risque_corrige": 0.0033333333333333335,
  "note": "perte log, plus bas = mieux ; aucune donnée lue hors des archives ; ombre"
 }

@@ -51,12 +51,19 @@
   "course": {
    "axe": "taille",
    "ensemble": {
-    "n": 25,
-    "statut": "insuffisant"
+    "n": 35,
+    "perte_brique": 0.5649,
+    "perte_reference": 0.7444,
+    "ecart": -0.1795,
+    "intervalle": [
+     -0.6091,
+     0.3013
+    ],
+    "statut": "non tranché"
    },
    "tranches": {
     "infranational": {
-     "n": 4,
+     "n": 9,
      "statut": "insuffisant"
     },
     "national": {
@@ -64,20 +71,23 @@
      "statut": "insuffisant"
     },
     "primaire": {
-     "n": 16,
+     "n": 21,
      "statut": "insuffisant"
     }
    },
    "sigma_retenus": {
     "infranational": [
-     2.5
+     2.5,
+     20.0
     ],
     "national": [
      2.5,
+     4.0,
      20.0
     ],
     "primaire": [
      2.5,
+     13.0,
      20.0
     ]
    }
