@@ -1,0 +1,121 @@
+theme: "information-cyber"
+nom: "Information et cyber"
+declaration:
+  but: "comprendre l'information comme un milieu : comment les récits, la censure, les coupures et les cyberattaques modifient ce que les acteurs savent et croient, donc ce qu'ils font"
+  limites: "dedans les récits et la désinformation, l'attention, la censure et les coupures d'internet, les cyberattaques au niveau de leurs effets publics, les plateformes, les langues et les biais des sources, la psychologie des foules ; dehors tout détail technique offensif, et les personnes privées"
+  observateur: "notre bot et nos collectes de médias et de mesures d'internet, regard extérieur ; nos sources sont elles-mêmes biaisées (presse surtout anglophone)"
+  date: "2026-11-19"
+  espace: "le monde, par pays et par langue"
+  temps: "de l'heure (une rumeur) à la décennie (une plateforme qui naît ou meurt)"
+  vitesse: "la minute (diffusion), le jour (cycle de l'information), l'année (lois sur internet)"
+  taille: "micro (un message) à macro (l'espace médiatique mondial)"
+compartiments:
+  - id: "recits"
+    nom: "Récits et désinformation"
+    organisation: "ideologie"
+    elements: ["récits officiels", "contre-récits", "rumeurs", "campagnes de désinformation (en agrégat)"]
+    acteurs:
+      - {nom: "un média d'État", taille: "méso", espace: "mondial", vitesse: "heures", organisation: "statut", facette: "collectif"}
+      - {nom: "un récit nationaliste", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
+    niveau: {espace: "médiatique mondial", temps: "jours à années", vitesse: "heures à années", taille: "micro à macro"}
+    traces:
+      - {source: "récit russe (sources officielles et médias d'État)", statut: "collecte", fichier: "collecte_recit_russe.py"}
+      - {source: "chaînes Telegram publiques", statut: "collecte", fichier: "collecte_telegram.py"}
+  - id: "attention"
+    nom: "Attention collective"
+    organisation: "psychologique"
+    elements: ["pics d'attention", "lassitude", "agenda des médias"]
+    niveau: {espace: "médiatique", temps: "cycle de l'information", vitesse: "heures à semaines", taille: "méso à macro"}
+    traces:
+      - {source: "volume d'articles GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
+      - {source: "flux RSS de presse et d'institutions", statut: "collecte", fichier: "collecte_rss.py"}
+  - id: "foules"
+    nom: "Psychologie des foules"
+    organisation: "psychologique"
+    elements: ["contagion émotionnelle", "panique", "indignation", "polarisation"]
+    acteurs:
+      - {nom: "une foule en ligne", taille: "méso", espace: "pays", vitesse: "heures", organisation: "psychologique", facette: "psyche"}
+    niveau: {espace: "pays et communautés en ligne", temps: "heures à jours", vitesse: "minutes à jours", taille: "méso"}
+    traces:
+      - {source: "aucune trace directe ; lisible dans les pics d'attention et le ton", statut: "inconnue"}
+  - id: "censure"
+    nom: "Censure et filtrage"
+    organisation: "statut"
+    elements: ["blocage de sites et d'applications", "filtrage", "lois sur les contenus"]
+    acteurs:
+      - {nom: "une autorité de régulation d'internet", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays", temps: "jours à années", vitesse: "jours", taille: "macro"}
+    traces:
+      - {source: "mesures OONI de censure en Iran", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IR"}
+      - {source: "mesures OONI de censure en Russie", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:RU"}
+  - id: "coupures"
+    nom: "Coupures d'internet"
+    organisation: "technique"
+    elements: ["coupures nationales ou régionales", "ralentissements", "pannes de câbles"]
+    niveau: {espace: "pays et régions", temps: "heures à semaines", vitesse: "heures", taille: "méso à macro"}
+    traces:
+      - {source: "coupures d'internet (Cloudflare Radar)", statut: "collecte", fichier: "collecte_radar.py"}
+  - id: "cyber"
+    nom: "Cyberattaques (effets publics)"
+    organisation: "technique"
+    elements: ["rançongiciels touchant des services publics", "attaques contre des infrastructures", "attribution publique à un État"]
+    acteurs:
+      - {nom: "un service public paralysé", taille: "méso", espace: "pays", vitesse: "jours", organisation: "technique", facette: "collectif"}
+    niveau: {espace: "mondial", temps: "jours à mois", vitesse: "heures à semaines", taille: "méso à macro"}
+    traces:
+      - {source: "avis publics des agences de cybersécurité (CERT-FR et autres)", statut: "collecte", fichier: "collecte_rss.py"}
+  - id: "plateformes"
+    nom: "Plateformes et réseaux sociaux"
+    organisation: "economie"
+    elements: ["algorithmes de recommandation", "modération", "migrations d'utilisateurs", "messageries chiffrées"]
+    acteurs:
+      - {nom: "une grande plateforme", taille: "macro", espace: "mondial", vitesse: "mois", organisation: "economie", facette: "collectif"}
+    niveau: {espace: "mondial", temps: "mois à années", vitesse: "jours à années", taille: "macro"}
+    traces:
+      - {source: "certificats émis pour les domaines suivis", statut: "collecte", fichier: "collecte_certificats.py"}
+  - id: "langues_biais"
+    nom: "Langues et biais des sources"
+    organisation: "convention"
+    elements: ["presse surtout anglophone", "angles morts linguistiques", "définitions et codages des événements"]
+    niveau: {espace: "aires linguistiques", temps: "durable", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "trois codeurs des pays cités dans les flux RSS", statut: "collecte", fichier: "collecte_rss.py"}
+  - id: "infrastructure"
+    nom: "Infrastructure physique d'internet"
+    organisation: "technique"
+    elements: ["câbles sous-marins", "centres de données (refroidis à l'eau)", "points d'échange"]
+    niveau: {espace: "océans et pays", temps: "décennies", vitesse: "jours (une panne) à années", taille: "macro"}
+    traces:
+      - {source: "cartes publiques des câbles sous-marins", statut: "a_brancher"}
+  - id: "etats"
+    nom: "États et contrôle de l'information"
+    organisation: "geopolitique"
+    elements: ["souveraineté numérique", "guerre informationnelle", "sanctions contre des médias"]
+    acteurs:
+      - {nom: "un État qui coupe internet pendant des manifestations", taille: "macro", espace: "pays", vitesse: "heures", organisation: "statut", facette: "statut"}
+    niveau: {espace: "pays", temps: "crises et années", vitesse: "heures à années", taille: "macro"}
+    traces:
+      - {source: "sanctions visant des médias (listes publiques)", statut: "collecte", fichier: "collecte_sanctions.py"}
+relations:
+  - {de: "recits", vers: "attention", effet: "+", delai: "heures", force: "moyenne", intensite: {mesure: "charge émotionnelle du récit", regle: "proportionnelle"}, coupure: "lassitude", statut: "a_verifier", texte: "un récit chargé d'émotion capte l'attention"}
+  - {de: "attention", vers: "foules", effet: "+", retour: "+", forme: "mutualisme", delai: "heures", force: "moyenne", intensite: {mesure: "vitesse de diffusion", regle: "seuil"}, coupure: "démenti crédible", statut: "a_verifier", texte: "propre au niveau psychologique : attention et contagion émotionnelle s'entretiennent jusqu'à l'emballement"}
+  - {de: "foules", vers: "foules", effet: "+", delai: "minutes", force: "forte", intensite: {mesure: "part de messages indignés ou paniqués", regle: "seuil"}, coupure: "fatigue", statut: "a_verifier", texte: "au-delà d'un seuil, la panique ou l'indignation se propage d'elle-même"}
+  - {de: "foules", vers: "etats", effet: "±", delai: "jours", force: "moyenne", intensite: {mesure: "taille de la mobilisation", regle: "seuil"}, coupure: "répression", statut: "a_verifier", texte: "une indignation assez large passe du niveau psychologique au géopolitique"}
+  - {de: "etats", vers: "censure", effet: "+", delai: "jours", force: "forte", coupure: "contournement par réseaux privés virtuels", statut: "a_verifier", texte: "un État menacé durcit la censure"}
+  - {de: "etats", vers: "coupures", effet: "+", delai: "heures", force: "forte", intensite: {mesure: "ampleur des manifestations ou d'un scrutin contesté", regle: "seuil"}, coupure: "coût économique de la coupure", statut: "a_verifier", texte: "les coupures d'internet suivent les manifestations et les scrutins contestés"}
+  - {de: "censure", vers: "recits", effet: "-", retour: "+", delai: "jours", force: "moyenne", coupure: "messageries chiffrées", statut: "a_verifier", texte: "la censure étouffe les contre-récits et renforce le récit officiel (prédation)"}
+  - {de: "censure", vers: "coupures", effet: "+", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "propre aux mêmes acteurs : quand le filtrage ne suffit plus, on coupe"}
+  - {de: "cyber", vers: "infrastructure", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "nombre d'attaques publiquement signalées", regle: "seuil"}, coupure: "sauvegardes et redondance", statut: "a_verifier", texte: "une attaque réussie paralyse un service ; l'effet ne passe au physique qu'au-delà d'un seuil"}
+  - {de: "infrastructure", vers: "coupures", effet: "-", delai: "heures", force: "forte", coupure: "câbles redondants", statut: "a_verifier", texte: "propre au niveau technique : un câble coupé provoque une coupure régionale"}
+  - {de: "plateformes", vers: "attention", effet: "+", delai: "heures", force: "forte", coupure: "modération", statut: "a_verifier", texte: "les algorithmes amplifient ce qui retient l'attention"}
+  - {de: "plateformes", vers: "recits", effet: "±", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la modération et les règles des plateformes décident de quels récits circulent"}
+  - {de: "langues_biais", vers: "attention", effet: "±", delai: "jours", force: "moyenne", coupure: "sources multilingues", statut: "a_verifier", texte: "ce qui n'est pas écrit en anglais est moins vu : nos mesures d'attention en héritent"}
+  - {de: "recits", vers: "etats", effet: "±", delai: "semaines", force: "faible", intensite: {mesure: "audience du récit", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "un récit ne change une politique qu'au-delà d'une audience très large ; les mots pèsent moins que les actes"}
+ponts:
+  - {depuis: "censure", vers: "iran-nucleaire:societe_iranienne", nature: "censure et coupures en Iran"}
+  - {depuis: "recits", vers: "russie-ukraine:opinions", nature: "la guerre informationnelle autour de l'Ukraine"}
+  - {depuis: "infrastructure", vers: "infrastructures-critiques:reseaux", nature: "câbles et centres de données comme infrastructures critiques"}
+  - {depuis: "infrastructure", vers: "oceans-et-fleuves:refroidissement", nature: "les centres de données refroidis à l'eau"}
+  - {depuis: "langues_biais", vers: "observateur-mesure:biais", nature: "le biais de nos propres sources", type: "meme"}
+  - {depuis: "cyber", vers: "securite-publique:alertes", nature: "les alertes publiques après une cyberattaque"}
+  - {depuis: "foules", vers: "epidemies:comportements", nature: "panique et confiance en temps d'épidémie"}

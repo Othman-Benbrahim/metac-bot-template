@@ -96,9 +96,11 @@ def niveaux(fichier: Path = NIVEAUX) -> dict:
 def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
     out = {}
     for f in sorted(dossier.glob("*.yaml")):
-        if f.name == "niveaux.yaml":
+        if f.name == "niveaux.yaml" or f.name.startswith("branchements"):
             continue
         d = yaml.safe_load(f.read_text(encoding="utf-8"))
+        if not isinstance(d, dict) or "theme" not in d:        # un fichier qui n'est pas une fiche ne casse rien
+            continue
         out[d["theme"]] = d
     return out
 
