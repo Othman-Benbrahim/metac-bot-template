@@ -45,6 +45,9 @@ compartiments:
     organisation: geopolitique
     facette: collectif
   traces:
+  - source: production de brut américaine (EIA WCRFPUS2)
+    statut: collecte
+    adaptateur: eia:WCRFPUS2
   - source: communiqués des réunions de l'OPEP+
     statut: a_brancher
   - source: nombre de forages actifs (publication hebdomadaire publique)
@@ -65,6 +68,9 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - source: produits pétroliers livrés aux États-Unis, demande apparente (EIA WRPUPUS2)
+    statut: collecte
+    adaptateur: eia:WRPUPUS2
   - source: prévision immédiate de l'inflation et indicateurs d'activité
     statut: collecte
     fichier: collecte_nowcast_inflation.py
@@ -91,10 +97,12 @@ compartiments:
     organisation: statut
     facette: collectif
   traces:
-  - source: stocks commerciaux de brut américains (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)
-    statut: a_brancher
-  - source: réserve stratégique américaine (FRED) — identifiant FRED à trouver (le premier passage n'a rien rendu)
-    statut: a_brancher
+  - source: stocks de brut américains hors réserve stratégique (EIA WCESTUS1), variation sur un an
+    statut: collecte
+    adaptateur: eia:WCESTUS1:var52
+  - source: réserve stratégique américaine (EIA WCSSTUS1)
+    statut: collecte
+    adaptateur: eia:WCSSTUS1
 - id: transport
   nom: Transport
   organisation: technique

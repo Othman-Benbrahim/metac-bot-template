@@ -67,6 +67,11 @@ def fred(reg: Path, serie: str) -> list[tuple[str, float]]:
     return sorted((r["jour"], float(r["valeur"])) for r in _csv(reg, "fred.csv") if r["serie"] == serie)
 
 
+def eia(reg: Path, serie: str) -> list[tuple[str, float]]:
+    """Une série hebdomadaire de l'EIA (collecte_eia.py) : stocks de brut, réserve stratégique, production, demande."""
+    return sorted((r["jour"], float(r["valeur"])) for r in _csv(reg, "eia.csv") if r["serie"] == serie)
+
+
 def meteo(reg: Path, point: str) -> list[tuple[str, float]]:
     """ANOMALIE de température du jour (°C) par rapport aux mêmes jours de l'année (± 7 jours) des années
     précédentes, pour un point (collecte_meteo.py). Jours sans référence (première année) : écartés."""
@@ -109,7 +114,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo, "climat": climat}
+               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia}
 
 
 def variation(serie: list[tuple[str, float]], pas: int) -> list[tuple[str, float]]:
