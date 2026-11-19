@@ -1,0 +1,138 @@
+{
+ "n_confirmation": 1861,
+ "questions_distinctes": 929,
+ "part_touchee": 0.485,
+ "perte": {
+  "p_S": 0.6453,
+  "p_P": 0.6625,
+  "p_C": 0.6649
+ },
+ "ecart_C_moins_P": 0.0024,
+ "intervalle_corrige": [
+  -0.0075,
+  0.014
+ ],
+ "verdict": "non tranché",
+ "touchees": {
+  "n": 902,
+  "perte_P": 0.6558,
+  "perte_C": 0.6777,
+  "intervalle_corrige": [
+   0.0044,
+   0.0429
+  ]
+ },
+ "risque_corrige": 0.0035714285714285718,
+ "par_source": {
+  "metaculus": {
+   "n": 404,
+   "touchees": 207,
+   "p_P": 0.4606,
+   "p_C": 0.4688
+  },
+  "manifold": {
+   "n": 439,
+   "touchees": 190,
+   "p_P": 0.7294,
+   "p_C": 0.7165
+  },
+  "polymarket": {
+   "n": 896,
+   "touchees": 433,
+   "p_P": 0.7442,
+   "p_C": 0.7481
+  },
+  "infer": {
+   "n": 122,
+   "touchees": 72,
+   "p_P": 0.4897,
+   "p_C": 0.5172
+  }
+ },
+ "par_fiche": {
+  "ormuz": {
+   "n": 35,
+   "perte_P": 0.3572,
+   "perte_C": 0.3237
+  },
+  "iran-nucleaire": {
+   "n": 109,
+   "perte_P": 0.8671,
+   "perte_C": 0.8806
+  },
+  "russie-ukraine": {
+   "n": 129,
+   "perte_P": 0.4345,
+   "perte_C": 0.4507
+  },
+  "guerre-levant": {
+   "n": 69,
+   "perte_P": 0.5704,
+   "perte_C": 0.5751
+  },
+  "energie-mondiale": {
+   "n": 32,
+   "perte_P": 0.3832,
+   "perte_C": 0.421
+  },
+  "inflation-mondiale": {
+   "n": 44,
+   "perte_P": 0.8402,
+   "perte_C": 0.9054
+  },
+  "politique-americaine": {
+   "n": 243,
+   "perte_P": 0.6899,
+   "perte_C": 0.7104
+  },
+  "rivalite-sino-americaine": {
+   "n": 80,
+   "perte_P": 0.7673,
+   "perte_C": 0.7727
+  },
+  "economie-chinoise": {
+   "n": 72,
+   "perte_P": 0.6882,
+   "perte_C": 0.6928
+  },
+  "securite-europeenne": {
+   "n": 60,
+   "perte_P": 0.4387,
+   "perte_C": 0.4368
+  },
+  "elections-amerique-latine": {
+   "n": 85,
+   "perte_P": 0.8657,
+   "perte_C": 0.9667
+  },
+  "humain": {
+   "n": 31,
+   "perte_P": 0.68,
+   "perte_C": 0.6532
+  },
+  "sciences-techniques": {
+   "n": 94,
+   "perte_P": 0.5106,
+   "perte_C": 0.5414
+  },
+  "information-cyber": {
+   "n": 23,
+   "perte_P": 0.1408,
+   "perte_C": 0.104
+  },
+  "non-proliferation": {
+   "n": 27,
+   "perte_P": 0.4309,
+   "perte_C": 0.4387
+  }
+ },
+ "coefficients_avant_coupure": {
+  "constante": 0.269,
+  "logit_S": 0.584,
+  "T_moyenne_z": -0.385,
+  "M_max_z": -0.262,
+  "B_marge": -0.41,
+  "touchee": -0.312
+ },
+ "note": "perte log, plus bas = mieux ; carte coupée au jour du jeu, sans calibration ; ombre"
+}

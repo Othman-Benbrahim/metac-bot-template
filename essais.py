@@ -324,6 +324,13 @@ ESSAIS = {
                             "objet": "modèle du rédacteur (forme de la question → issue, régression logistique) contre les "
                                      "questions semblables",
                             "doc": "preenregistrements/redacteur-questions.md"},
+    "proxemie_carte": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 30, "statut": "clos", "clos_le": "2026-11-19",
+                       "verdict": "non tranché sur l'ensemble (C − P = +0,002, [−0,008 ; +0,014], 929 questions) ; sur les "
+                                  "questions touchées par la carte (48,5 %), la carte NUIT : +0,022, [+0,004 ; +0,043] ; "
+                                  "descriptif : Ormuz seul s'améliore (0,357 → 0,324, n = 35)",
+                       "objet": "traits de la carte (écart à l'habitude, marges de bascule) au jour du jeu, ajoutés au "
+                                "recalibrage des questions semblables",
+                       "doc": "preenregistrements/proxemie-carte.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
