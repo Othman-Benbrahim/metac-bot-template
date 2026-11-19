@@ -1,0 +1,84 @@
+{
+ "n_confirmation": 1861,
+ "questions_distinctes": 929,
+ "perte": {
+  "p_R1": 0.6924,
+  "p_S": 0.6453,
+  "p_R": 0.6546,
+  "p_RS": 0.6341
+ },
+ "discrimination": {
+  "p_R1": 0.028,
+  "p_S": 0.041,
+  "p_R": 0.052,
+  "p_RS": 0.047
+ },
+ "ecart_R_moins_S": 0.0093,
+ "intervalle_corrige": [
+  -0.0277,
+  0.0477
+ ],
+ "verdict": "non tranché",
+ "R_contre_R1": {
+  "ecart": -0.0378,
+  "intervalle_corrige": [
+   -0.0752,
+   -0.0039
+  ]
+ },
+ "risque_corrige": 0.0035714285714285718,
+ "par_source": {
+  "metaculus": {
+   "n": 404,
+   "p_R1": 0.4651,
+   "p_S": 0.4548,
+   "p_R": 0.4354,
+   "p_RS": 0.4363
+  },
+  "manifold": {
+   "n": 439,
+   "p_R1": 0.708,
+   "p_S": 0.6799,
+   "p_R": 0.658,
+   "p_RS": 0.6557
+  },
+  "polymarket": {
+   "n": 896,
+   "p_R1": 0.7867,
+   "p_S": 0.737,
+   "p_R": 0.7588,
+   "p_RS": 0.728
+  },
+  "infer": {
+   "n": 122,
+   "p_R1": 0.696,
+   "p_S": 0.4781,
+   "p_R": 0.6028,
+   "p_RS": 0.5214
+  }
+ },
+ "coefficients_avant_coupure": {
+  "n": 1314,
+  "poids": {
+   "constante": -0.674,
+   "source=manifold": -0.51,
+   "source=polymarket": -1.135,
+   "source=infer": -1.281,
+   "forme=election": -0.143,
+   "forme=justice": -0.739,
+   "forme=seuil": -0.11,
+   "forme=echeance": -0.11,
+   "horizon=31-90": -0.061,
+   "horizon=>90": 0.217,
+   "log_horizon": -0.361,
+   "nombre": -0.537,
+   "statu_quo": 0.881,
+   "changement": -0.482,
+   "negation": 1.461,
+   "seuil": 0.893,
+   "echeance": -0.6,
+   "longueur": 0.698
+  }
+ },
+ "note": "perte log, plus bas = mieux ; aucun modèle de langue ; ombre : rien dans le bot avant le tournoi"
+}

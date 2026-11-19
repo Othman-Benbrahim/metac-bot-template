@@ -316,6 +316,14 @@ ESSAIS = {
                           "objet": "questions semblables sans doublons (une voisine par question, cosinus ≤ 0,8 entre "
                                    "voisines) contre les semblables actuelles",
                           "doc": "preenregistrements/jugement-doublons.md"},
+    "redacteur_questions": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 30, "statut": "clos", "clos_le": "2026-11-19",
+                            "verdict": "non tranché contre les semblables : R − S = +0,009, intervalle corrigé [−0,028 ; "
+                                       "+0,048] (929 questions) ; R bat R1 (−0,038, [−0,075 ; −0,004]) ; descriptif : "
+                                       "Metaculus R 0,435 contre S 0,455 (n = 404), moyenne (R + S)/2 la meilleure partout "
+                                       "(0,634) ; rien dans le bot avant le tournoi",
+                            "objet": "modèle du rédacteur (forme de la question → issue, régression logistique) contre les "
+                                     "questions semblables",
+                            "doc": "preenregistrements/redacteur-questions.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
