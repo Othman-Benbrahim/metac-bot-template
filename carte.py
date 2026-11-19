@@ -130,7 +130,13 @@ class Carte:
                 if len(serie) < 20:
                     continue
                 v = [x for _, x in serie]
-                recent, avant = v[-7:], v[-97:-7]
+                # fenêtres selon la fréquence de la série (0.10.322) : quotidienne → 7 derniers relevés contre les 90
+                # précédents ; hebdomadaire → le dernier contre les 26 précédents ; mensuelle → le dernier contre les 24
+                from datetime import date as _d
+                ecarts = sorted((_d.fromisoformat(b[0][:10]) - _d.fromisoformat(a[0][:10])).days for a, b in zip(serie[-30:], serie[-29:]))
+                pas = ecarts[len(ecarts) // 2] if ecarts else 1
+                n_rec, n_base = (7, 90) if pas <= 3 else (1, 26) if pas <= 10 else (1, 24)
+                recent, avant = v[-n_rec:], v[-(n_rec + n_base):-n_rec]
                 sd = statistics.pstdev(avant) or 1e-9
                 z = (statistics.mean(recent) - statistics.mean(avant)) / sd
                 out[nid] = {"adaptateur": tr["adaptateur"], "dernier_jour": serie[-1][0], "derniere_valeur": round(v[-1], 4),
