@@ -1,12 +1,12 @@
 # Règles coutumières par écosystème et par échelle (lot 1 : élections américaines, inertie des régimes fermés ;
-# lot 2 : Europe et erreur des sondages comparée).
+# lot 2 : Europe et erreur des sondages comparée ; lot 3 : Afrique).
 # Décisions de l'auteur du 2026-11-19 (22 h 43 à 22 h 59) : ne pas déduire ; écrire les règles telles qu'elles existent,
 # chacune avec sa source ; sans source, la case reste vide (« absence ») et la brique s'abstient. Pour les régimes
 # opaques : privilégier la règle d'inertie. Ce fichier n'est pas une fiche (pas de clé « theme ») : regles_coutumieres.py
 # le lit et le valide.
 #
 # Champs : id · ecosysteme · espace · echelle {axe, tranche} · structure (course | seuil | procedure | evenement_rare |
-# maintien) · regle (texte) · parametres (lisibles par le programme) · sources [{titre, url, consulte}] · statut
+# maintien | contexte : mécanisme de fond qui règle les a priori d'un écosystème) · regle (texte) · parametres (lisibles par le programme) · sources [{titre, url, consulte}] · statut
 # (source | auteur | absence) · aide (ce que l'auteur pourrait apporter quand la règle manque).
 regles:
 
@@ -225,3 +225,49 @@ regles:
     sources: []
     statut: absence
     aide: "les durées de formation par pays (bases ParlGov ou Representative Democracy Data Archive, ou une étude comparée)"
+
+  # ---------------------------------------------------------------- lot 3 : Afrique
+  - id: afrique_lecture_auteur
+    ecosysteme: "Afrique · écosystème gigogne (continent, États aux frontières héritées, divisions et communautés)"
+    espace: afrique
+    echelle: {axe: espace, tranche: "continent ⊃ États ⊃ divisions administratives et communautés"}
+    structure: contexte
+    regle: "Lecture de l'auteur (2026-11-19, 23 h 12) : continent pauvre en argent mais le plus riche en ressources ; instabilité politique souvent due à la prédation et à l'ingérence étrangères par les filières des multinationales (néocolonialisme) ; divisions administratives héritées de la colonisation ; règles endogènes propres à chaque culture, poussées les unes contre les autres jusqu'aux massacres. Les règles qui suivent chiffrent ce que la littérature permet de chiffrer ; le reste demeure la lecture de l'auteur."
+    parametres: {}
+    sources:
+      - {titre: "Lecture de l'auteur du projet (2026-11-19, 23 h 12)", url: "", consulte: "2026-11-19"}
+    statut: auteur
+
+  - id: afrique_frontieres_coloniales
+    ecosysteme: "Afrique · peuples partagés par les frontières coloniales"
+    espace: afrique
+    echelle: {axe: espace, tranche: "territoire ethnique (843 régions de la carte de Murdock)"}
+    structure: evenement_rare
+    regle: "28 % des territoires ethniques ont été coupés par les frontières tracées lors du partage colonial. Les territoires partagés connaissent environ 57 % d'incidents de violence politique de plus que les autres, à géographie comparable (paludisme, diamants ou pétrole, distance à la côte et à la capitale). Données ACLED, plus de 64 000 incidents géolocalisés, 1997-2013."
+    parametres: {part_territoires_partages: 0.28, surcroit_violence_partages: 0.57, periode: "1997-2013"}
+    sources:
+      - {titre: "Michalopoulos et Papaioannou, The Long-Run Effects of the Scramble for Africa, American Economic Review, 2016 (résumé de l'AEA)", url: "https://www.aeaweb.org/research/are-colonial-era-borders-holding-africa-back", consulte: "2026-11-19"}
+    statut: source
+
+  - id: afrique_mines_conflits
+    ecosysteme: "Afrique · ressources minières et conflits locaux"
+    espace: afrique
+    echelle: {axe: espace, tranche: "cellule de 0,5° × 0,5° (environ 55 km)"}
+    structure: evenement_rare
+    regle: "Une hausse d'un écart-type des prix mondiaux des minerais fait passer la probabilité de conflit dans une cellule minière de 16,9 % à 22,5 % (environ +33 %). La hausse historique des prix explique jusqu'à 21 % de la violence moyenne des pays africains, 1997-2010 (27 minerais). Les violences liées aux mines sont surtout associées aux compagnies ÉTRANGÈRES ; parmi elles, celles qui opèrent dans des pays moins corrompus ou qui suivent des pratiques de responsabilité sociale sont associées à moins de violence (nuance de gouvernance) ; les initiatives de transparence montrent « quelques indices » d'effet."
+    parametres: {proba_conflit_cellule_miniere: {base: 0.169, prix_plus_1_ecart_type: 0.225}, part_violence_expliquee_max: 0.21, periode: "1997-2010"}
+    sources:
+      - {titre: "Berman, Couttenier, Rohner et Thoenig, This Mine Is Mine! How Minerals Fuel Conflicts in Africa, American Economic Review 107(6), 2017", url: "https://www.aeaweb.org/content/file?id=3010", consulte: "2026-11-19"}
+      - {titre: "Université d'Oxford, résumé de l'article", url: "https://www.economics.ox.ac.uk/node/1466036", consulte: "2026-11-19"}
+    statut: source
+
+  - id: afrique_flux_financiers_illicites
+    ecosysteme: "Afrique · sorties de capitaux illicites"
+    espace: afrique
+    echelle: {axe: espace, tranche: continent}
+    structure: contexte
+    regle: "Sorties financières illicites : 88,6 milliards de dollars par an, 3,7 % du PIB africain, presque autant que l'aide publique au développement (48 milliards) et les investissements directs étrangers (54 milliards) réunis (moyennes 2013-2015). Fuite de capitaux cumulée 2000-2015 : 836 milliards. Les matières premières extractives en sont la première composante (40 milliards en 2015). La surfacturation et la sous-facturation des échanges figurent parmi les pratiques en cause."
+    parametres: {flux_illicites_milliards_an: 88.6, part_pib: 0.037, aide_publique_milliards: 48, ide_milliards: 54, fuite_cumulee_2000_2015_milliards: 836, extractif_2015_milliards: 40}
+    sources:
+      - {titre: "CNUCED, Economic Development in Africa Report 2020 : Tackling illicit financial flows for sustainable development in Africa (ONU Info, 28 septembre 2020)", url: "https://news.un.org/en/story/2020/09/1074052", consulte: "2026-11-19"}
+    statut: source

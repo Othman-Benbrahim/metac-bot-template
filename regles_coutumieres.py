@@ -14,7 +14,7 @@ import yaml
 
 FICHIER = Path("ecosystemes") / "regles-coutumieres.yaml"
 SORTIE = Path("registre") / "regles-coutumieres.md"
-STRUCTURES = {"course", "seuil", "procedure", "evenement_rare", "maintien"}
+STRUCTURES = {"course", "seuil", "procedure", "evenement_rare", "maintien", "contexte"}   # contexte : mécanisme de fond
 AXES = {"taille", "vitesse", "espace", "temps"}
 STATUTS = {"source", "auteur", "absence"}
 

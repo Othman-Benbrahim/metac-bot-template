@@ -1,10 +1,13 @@
 # Règles coutumières : bilan
 
-18 règles ; source 14, absence 3, auteur 1.
+22 règles ; source 17, absence 3, auteur 2.
 
 | espace | structure | statut | n |
 |---|---|---|---|
+| afrique | contexte | auteur | 1 |
+| afrique | contexte | source | 1 |
 | afrique | course | absence | 1 |
+| afrique | evenement_rare | source | 2 |
 | afrique | maintien | source | 1 |
 | amerique_du_nord | course | absence | 1 |
 | amerique_du_nord | course | source | 4 |
