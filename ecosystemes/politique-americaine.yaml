@@ -11,16 +11,21 @@ declaration:
   taille: "un élu, une institution, l'État fédéral"
 compartiments:
   - id: executif
+    organisation: "statut"
     nom: "Exécutif"
     elements: ["présidence", "décrets et proclamations", "agences fédérales", "réglementation"]
     acteurs:
-      - {nom: "la présidence", taille: "macro", espace: "pays", vitesse: "jours"}
+      - {nom: "le président en personne (ses faits et déclarations publics)", taille: "micro", espace: "pays", vitesse: "jours", organisation: "personne", facette: "personne"}
+      - {nom: "la fonction présidentielle (pouvoirs, limites, contre-pouvoirs)", taille: "macro", espace: "pays", vitesse: "mois", organisation: "statut", facette: "statut"}
+      - {nom: "le programme et l'idéologie portés par l'exécutif", taille: "macro", espace: "pays", vitesse: "années", organisation: "ideologie", facette: "ideologie"}
+      - {nom: "l'entourage direct (cabinet, conseillers) et indirect (alliés, financeurs déclarés)", taille: "méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
       - {nom: "une agence fédérale", taille: "méso", espace: "pays", vitesse: "mois"}
     niveau: {espace: "pays", temps: "mandat ; décisions quotidiennes", vitesse: "jours à mois", taille: "macro"}
     traces:
       - {source: "Federal Register (textes en inspection publique avant publication)", statut: "collecte", fichier: "collecte_federal_register.py"}
       - {source: "routines officielles (Maison-Blanche, département d'État, défense)", statut: "collecte", fichier: "collecte_routines.py"}
   - id: congres
+    organisation: "statut"
     nom: "Congrès"
     elements: ["Chambre des représentants", "Sénat", "commissions", "lois", "confirmations des nominations"]
     acteurs:
@@ -31,6 +36,7 @@ compartiments:
     traces:
       - {source: "réunions de commissions et nominations (API du Congrès)", statut: "collecte", fichier: "collecte_congres.py"}
   - id: tribunaux
+    organisation: "statut"
     nom: "Tribunaux"
     elements: ["Cour suprême", "cours d'appel fédérales", "injonctions", "contentieux contre l'exécutif"]
     acteurs:
@@ -40,6 +46,7 @@ compartiments:
     traces:
       - {source: "dossiers judiciaires (CourtListener : Cour suprême, cour d'appel du district de Columbia)", statut: "collecte", fichier: "collecte_tribunaux.py"}
   - id: elections
+    organisation: "societe"
     nom: "Élections et opinion"
     elements: ["calendrier électoral", "élections de mi-mandat", "primaires", "cote de popularité", "découpage des circonscriptions"]
     acteurs:
@@ -49,6 +56,7 @@ compartiments:
     traces:
       - {source: "résultats officiels et calendriers électoraux (commissions électorales des États)", statut: "a_brancher"}
   - id: budget
+    organisation: "economie"
     nom: "Budget et dette fédérale"
     elements: ["lois de finances", "plafond de la dette", "fermeture des services fédéraux faute de budget", "déficits", "émissions du Trésor"]
     acteurs:
@@ -57,6 +65,7 @@ compartiments:
     traces:
       - {source: "taux américain à 10 ans (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DGS10"}
   - id: commerce
+    organisation: "economie"
     nom: "Commerce et droits de douane"
     elements: ["droits de douane", "exemptions", "accords commerciaux", "contrôles des exportations"]
     acteurs:
@@ -65,6 +74,7 @@ compartiments:
     traces:
       - {source: "Federal Register (proclamations et avis tarifaires)", statut: "collecte", fichier: "collecte_federal_register.py"}
   - id: energie
+    organisation: "economie"
     nom: "Politique énergétique"
     elements: ["réserve stratégique de pétrole", "permis de forage et d'exportation de gaz liquéfié", "prix à la pompe", "sanctions énergétiques"]
     acteurs:
@@ -74,6 +84,7 @@ compartiments:
       - {source: "réserve stratégique américaine de brut (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:WCSSTUS1"}
       - {source: "prix du WTI (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILWTICO"}
   - id: sanctions
+    organisation: "geopolitique"
     nom: "Sanctions et politique étrangère économique"
     elements: ["désignations du Trésor", "sanctions secondaires", "levées et dérogations"]
     acteurs:
@@ -83,6 +94,7 @@ compartiments:
       - {source: "listes de sanctions (désignations visant l'Iran)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:IR"}
       - {source: "listes de sanctions (désignations visant la Russie)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:RU"}
   - id: reserve_federale
+    organisation: "statut"
     nom: "Réserve fédérale (institution)"
     elements: ["indépendance", "nominations au conseil des gouverneurs", "pressions politiques sur les taux"]
     acteurs:
@@ -91,6 +103,7 @@ compartiments:
     traces:
       - {source: "taux effectif de la Réserve fédérale (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DFF"}
   - id: etats_federes
+    organisation: "statut"
     nom: "États fédérés"
     elements: ["gouverneurs", "législatures des États", "procureurs généraux des États", "recours contre le fédéral"]
     acteurs:

@@ -86,6 +86,20 @@ def meteo(reg: Path, point: str) -> list[tuple[str, float]]:
     return out
 
 
+def climat(reg: Path, point: str) -> list[tuple[str, float]]:
+    """Le CLIMAT et non la météo (rappel de l'auteur) : moyenne glissante sur 365 jours de l'anomalie de température
+    d'un point — la dérive lente, débarrassée des jours et des saisons."""
+    s = meteo(reg, point)
+    out, somme = [], 0.0
+    for i, (j, x) in enumerate(s):
+        somme += x
+        if i >= 365:
+            somme -= s[i - 365][1]
+        if i >= 364:
+            out.append((j, round(somme / 365, 3)))
+    return out
+
+
 def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
     """Prévision immédiate de l'inflation (Réserve fédérale de Cleveland, collecte_nowcast_inflation.py), par jour de
     relevé ; mesure par exemple « variation_mensuelle:CPI » (les deux-points de la mesure sont gardés)."""
@@ -95,7 +109,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo}
+               "fred": fred, "meteo": meteo, "climat": climat}
 
 
 def lire(nom: str, reg: Path = REG) -> list[tuple[str, float]]:

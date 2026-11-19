@@ -1,0 +1,139 @@
+theme: "foret-et-sols-vivants"
+nom: "Forêt et sols vivants (chaîne de Fukuoka)"
+declaration:
+  but: "modéliser une chaîne écologique longue où chaque cause est la conséquence d'une autre, et où les interventions humaines produisent des effets inverses de ceux recherchés ; exemple de départ : la forêt de pins décrite par Fukuoka Masanobu dans L'agriculture naturelle (résumé dans nos mots, non cité)"
+  limites: "dedans le sol (roche et vivant), les champignons, les arbres, les insectes et nématodes, les oiseaux, les rongeurs et leurs prédateurs, la pollution de l'air, le climat, les interventions humaines (coupes, plantations, poisons, élevage) ; dehors les marchés du bois et la politique forestière (thèmes voisins)"
+  observateur: "notre carte, regard extérieur ; l'exemple est japonais, la chaîne est générale"
+  date: "2026-11-19"
+  espace: "une forêt, un versant, une région"
+  temps: "de la saison à plusieurs décennies ; mémoire des sols sur des siècles"
+  vitesse: "la saison (pullulations), l'année (dépérissement), la décennie (succession), le siècle (sols)"
+  taille: "micro (champignon, nématode) à méso (forêt) ; la pollution vient du macro"
+compartiments:
+  - id: "emissions"
+    nom: "Émissions et pollution de l'air"
+    organisation: "technique"
+    elements: ["fumées industrielles", "soufre et azote", "trafic"]
+    acteurs:
+      - {nom: "les industries et le trafic d'une région", taille: "macro", espace: "région", vitesse: "années", organisation: "technique", facette: "collectif"}
+    niveau: {espace: "région à continent", temps: "décennies d'industrialisation", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "inventaires publics d'émissions et qualité de l'air", statut: "a_brancher"}
+  - id: "pluies_acides"
+    nom: "Pluies acides"
+    organisation: "eau"
+    elements: ["acidité des pluies", "dépôts secs"]
+    niveau: {espace: "région", temps: "saisons de pluie", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "réseaux publics de mesure de l'acidité des pluies", statut: "a_brancher"}
+  - id: "sol_mineral"
+    nom: "Acidité du sol minéral"
+    organisation: "mineral"
+    elements: ["roche mère", "acidité (pH)", "pouvoir tampon du sol"]
+    acteurs:
+      - {nom: "la roche mère d'un versant", taille: "méso", espace: "site", vitesse: "siècle", organisation: "mineral", facette: "non_humain"}
+    niveau: {espace: "versant", temps: "siècles", vitesse: "décennie", taille: "méso"}
+    traces:
+      - {source: "cartes publiques des sols", statut: "a_brancher"}
+  - id: "champignons_symbiotiques"
+    nom: "Champignons symbiotiques (mycorhizes)"
+    organisation: "sol_vivant"
+    elements: ["champignons associés aux racines (exemple : le matsutake du pin rouge)", "échange sucres contre eau et minéraux"]
+    acteurs:
+      - {nom: "un réseau mycorhizien", taille: "micro", espace: "site", vitesse: "années", organisation: "sol_vivant", facette: "non_humain"}
+    niveau: {espace: "racines d'un arbre à une parcelle", temps: "années", vitesse: "saisons à années", taille: "micro"}
+    traces:
+      - {source: "relevés mycologiques publics", statut: "inconnue"}
+  - id: "champignons_parasites"
+    nom: "Champignons parasites"
+    organisation: "sol_vivant"
+    elements: ["champignons pathogènes des arbres affaiblis (exemple : Botrytis)"]
+    niveau: {espace: "parcelle", temps: "saisons", vitesse: "semaines à saisons", taille: "micro"}
+    traces:
+      - {source: "surveillance phytosanitaire publique", statut: "a_brancher"}
+  - id: "pins"
+    nom: "Arbres dominants (pins)"
+    organisation: "vegetal"
+    elements: ["pins", "résistance aux parasites", "dépérissement"]
+    acteurs:
+      - {nom: "un pin", taille: "micro", espace: "site", vitesse: "années", organisation: "vegetal", facette: "non_humain"}
+      - {nom: "la pinède d'un versant", taille: "méso", espace: "versant", vitesse: "décennie", organisation: "vegetal", facette: "non_humain"}
+    niveau: {espace: "forêt", temps: "décennies", vitesse: "années", taille: "micro à méso"}
+    traces:
+      - {source: "perte de couvert forestier par satellite (données publiques)", statut: "a_brancher"}
+  - id: "insectes_nematodes"
+    nom: "Insectes et nématodes"
+    organisation: "animal"
+    elements: ["scarabées (longicornes) vecteurs de nématodes", "nématodes qui attaquent le bois"]
+    niveau: {espace: "parcelle à forêt", temps: "générations annuelles", vitesse: "saisons", taille: "micro"}
+    traces:
+      - {source: "surveillance publique des ravageurs forestiers", statut: "a_brancher"}
+  - id: "oiseaux"
+    nom: "Petits oiseaux"
+    organisation: "animal"
+    elements: ["oiseaux insectivores", "nourriture et abris de la forêt mélangée"]
+    niveau: {espace: "forêt", temps: "saisons de reproduction", vitesse: "saisons à années", taille: "micro à méso"}
+    traces:
+      - {source: "comptages participatifs publics d'oiseaux", statut: "a_brancher"}
+  - id: "succession"
+    nom: "Succession végétale (bambous et jeunes pousses)"
+    organisation: "vegetal"
+    elements: ["bambous", "baies", "jeunes cèdres plantés"]
+    niveau: {espace: "trouées de la forêt", temps: "années", vitesse: "saisons à années", taille: "micro à méso"}
+    traces:
+      - {source: "inventaires forestiers publics", statut: "a_brancher"}
+  - id: "rongeurs"
+    nom: "Rongeurs"
+    organisation: "animal"
+    elements: ["souris", "pullulations"]
+    niveau: {espace: "forêt", temps: "générations rapides", vitesse: "semaines à saisons", taille: "micro"}
+    traces:
+      - {source: "aucune trace ouverte connue", statut: "inconnue"}
+  - id: "predateurs"
+    nom: "Prédateurs"
+    organisation: "animal"
+    elements: ["belettes", "serpents", "rapaces"]
+    niveau: {espace: "forêt", temps: "générations annuelles", vitesse: "saisons à années", taille: "micro à méso"}
+    traces:
+      - {source: "aucune trace ouverte connue", statut: "inconnue"}
+  - id: "climat"
+    nom: "Climat (régime de long terme)"
+    organisation: "climat"
+    elements: ["températures moyennes", "régime des pluies", "sécheresses répétées"]
+    niveau: {espace: "région", temps: "décennies", vitesse: "décennie", taille: "macro"}
+    traces:
+      - {source: "dérive annuelle de la température (anomalie glissante sur 365 jours, Open-Meteo, point le plus proche à brancher)", statut: "a_brancher"}
+  - id: "interventions"
+    nom: "Interventions humaines"
+    organisation: "economie"
+    elements: ["coupes rases", "plantations d'une seule espèce", "poisons (raticides, insecticides)", "élevage de prédateurs pour réparer", "élevage et pâturage en lisière"]
+    acteurs:
+      - {nom: "un forestier ou un agriculteur", taille: "micro", espace: "site", vitesse: "saisons", organisation: "economie", facette: "personne"}
+      - {nom: "une administration forestière", taille: "méso", espace: "région", vitesse: "années", organisation: "statut", facette: "collectif"}
+      - {nom: "la doctrine du rendement et de la lutte chimique", taille: "macro", espace: "mondial", vitesse: "décennie", organisation: "ideologie", facette: "ideologie"}
+    niveau: {espace: "parcelle à région", temps: "plans de gestion", vitesse: "saisons à années", taille: "micro à méso"}
+    traces:
+      - {source: "statistiques publiques de récolte de bois et d'usage de pesticides", statut: "a_brancher"}
+relations:
+  - {de: "emissions", vers: "pluies_acides", effet: "+", delai: "jours", force: "forte", coupure: "filtres et réduction des émissions", statut: "a_verifier", texte: "les fumées chargent les pluies en acides"}
+  - {de: "pluies_acides", vers: "sol_mineral", effet: "+", delai: "années", force: "moyenne", intensite: {mesure: "pouvoir tampon restant du sol", regle: "seuil"}, coupure: "roche calcaire qui neutralise", statut: "a_verifier", texte: "les pluies acidifient le sol quand son pouvoir tampon est épuisé"}
+  - {de: "sol_mineral", vers: "champignons_symbiotiques", effet: "-", delai: "années", force: "forte", intensite: {mesure: "acidité du sol", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "un sol trop acide fait disparaître les champignons utiles"}
+  - {de: "champignons_symbiotiques", vers: "champignons_parasites", effet: "-", retour: "-", delai: "saisons", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "compétition au sein du sol vivant : quand le champignon utile disparaît, le parasite prend la place"}
+  - {de: "champignons_symbiotiques", vers: "pins", effet: "+", retour: "+", delai: "années", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "symbiose : l'arbre nourrit le champignon, qui nourrit et protège l'arbre"}
+  - {de: "champignons_parasites", vers: "pins", effet: "-", retour: "+", delai: "saisons", force: "forte", intensite: {mesure: "faiblesse des arbres", regle: "seuil"}, coupure: "arbres vigoureux", statut: "a_verifier", texte: "le parasite tue les arbres affaiblis (prédation)"}
+  - {de: "insectes_nematodes", vers: "pins", effet: "-", retour: "+", delai: "saisons", force: "forte", intensite: {mesure: "densité de scarabées", regle: "proportionnelle"}, coupure: "hivers froids, arbres vigoureux", statut: "a_verifier", texte: "les scarabées portent les nématodes qui attaquent les pins et nourrissent le parasite"}
+  - {de: "oiseaux", vers: "insectes_nematodes", effet: "-", retour: "+", delai: "saisons", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les oiseaux mangent les insectes (prédation au sein du niveau animal)"}
+  - {de: "interventions", vers: "oiseaux", effet: "-", delai: "saisons", force: "moyenne", coupure: "forêts mélangées conservées", statut: "a_verifier", texte: "coupes et plantations d'une seule espèce privent les oiseaux de nourriture : ils partent, les insectes prospèrent"}
+  - {de: "pins", vers: "succession", effet: "-", retour: "-", delai: "années", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "compétition au sein du végétal : quand les pins meurent, les bambous et les jeunes pousses prennent la lumière"}
+  - {de: "succession", vers: "rongeurs", effet: "+", delai: "saisons", force: "forte", intensite: {mesure: "abondance des baies", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "les baies des jeunes bambous font pulluler les souris"}
+  - {de: "rongeurs", vers: "succession", effet: "-", delai: "saisons", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les souris attaquent les jeunes cèdres plantés"}
+  - {de: "predateurs", vers: "rongeurs", effet: "-", retour: "+", delai: "saisons", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "belettes et serpents régulent les souris (prédation, cycle de populations)"}
+  - {de: "interventions", vers: "rongeurs", effet: "-", delai: "jours", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le poison tue les souris…"}
+  - {de: "rongeurs", vers: "predateurs", effet: "+", delai: "saisons", force: "forte", intensite: {mesure: "nombre de proies", regle: "seuil"}, coupure: "proies de rechange", statut: "a_verifier", texte: "…et les prédateurs, privés de proies, déclinent ; pour les sauver, on finit par élever des souris : l'intervention se retourne contre elle-même"}
+  - {de: "climat", vers: "insectes_nematodes", effet: "+", delai: "années", force: "moyenne", intensite: {mesure: "dérive de la température moyenne", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "des hivers plus doux laissent survivre plus d'insectes"}
+  - {de: "climat", vers: "pins", effet: "-", delai: "années", force: "moyenne", intensite: {mesure: "sécheresses répétées", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "les sécheresses répétées affaiblissent les arbres"}
+ponts:
+  - {depuis: "climat", vers: "climat-extremes:tendance", nature: "la dérive du climat", type: "meme"}
+  - {depuis: "sol_mineral", vers: "alimentation-mondiale:sols", nature: "les mêmes mécanismes d'acidification et d'épuisement touchent les sols cultivés"}
+  - {depuis: "insectes_nematodes", vers: "alimentation-mondiale:ravageurs", nature: "ravageurs et pullulations, des forêts aux cultures"}
+  - {depuis: "pins", vers: "climat-extremes:vegetation", nature: "une forêt morte devient combustible"}

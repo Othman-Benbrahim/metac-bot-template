@@ -67,3 +67,11 @@ seuil ; un effet qui DESCEND s'impose ; un compartiment lent met plus de temps �
 ## Attention aux virgules
 Dans une ligne `{ … }`, une virgule sépare les clés : un texte qui contient une virgule doit être entre guillemets
 (`texte: "saisies, menaces et mines"`). Le validateur refuse toute clé inconnue, signe d'une virgule non protégée.
+
+## Niveaux d'organisation et facettes (0.10.320, ecosystemes/niveaux.yaml)
+Chaque compartiment et chaque acteur peut déclarer son niveau d'organisation (`organisation:` minéral, climat, météo,
+eau, sol vivant, végétal, animal, personne, entourage, statut, idéologie, société, économie, technique, géopolitique).
+Chaque niveau a ses relations PROPRES et son INERTIE : un effet venu d'un autre niveau n'y passe entier que s'il est
+assez fort pour y provoquer un changement (sinon un cinquième). Un acteur public peut apparaître sous trois facettes
+(`facette:` personne, statut, idéologie), chacune à son niveau : la personne n'est pas son statut, ni son idéologie.
+Le climat (régime de long terme, adaptateur `climat:<point>`) est distinct de la météo (`meteo:<point>`).

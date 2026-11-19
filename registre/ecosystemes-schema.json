@@ -6,6 +6,7 @@
   "eau-moyen-orient",
   "economie-chinoise",
   "energie-mondiale",
+  "foret-et-sols-vivants",
   "guerre-levant",
   "inflation-mondiale",
   "iran-nucleaire",
@@ -26,6 +27,7 @@
     "vitesse": "saisons à décennies",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -102,6 +104,7 @@
     "vitesse": "semaines à années",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -157,6 +160,7 @@
     "vitesse": "saison",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -233,6 +237,7 @@
     "vitesse": "semaines",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -288,6 +293,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -366,6 +372,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -421,6 +428,7 @@
     "vitesse": "jours à mois",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -499,6 +507,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -556,6 +565,7 @@
     "vitesse": "semaines à saisons",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -619,6 +629,7 @@
     "vitesse": "semaines à mois",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -695,6 +706,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -747,6 +759,7 @@
     "vitesse": "mois à saisons",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -802,6 +815,7 @@
     "vitesse": "jours à semaines",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -857,6 +871,7 @@
     "vitesse": "semaines à saisons",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -926,6 +941,7 @@
     "vitesse": "mois",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -981,6 +997,7 @@
     "vitesse": "heures à jours",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -1036,6 +1053,7 @@
     "vitesse": "semaines à saisons",
     "taille": "micro à méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -1091,6 +1109,7 @@
     "vitesse": "heures à semaines",
     "taille": "micro à méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -1175,6 +1194,7 @@
     "vitesse": "décennies",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1208,6 +1228,7 @@
     "vitesse": "heures à semaines",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -1286,6 +1307,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1347,6 +1369,7 @@
     "vitesse": "semaines à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1425,6 +1448,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1458,6 +1482,7 @@
     "vitesse": "jours à mois",
     "taille": "micro à méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -1555,6 +1580,7 @@
     "vitesse": "mois à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1631,6 +1657,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1686,6 +1713,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1743,6 +1771,7 @@
     "vitesse": "jours à années",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -1821,6 +1850,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -1856,6 +1886,7 @@
     "vitesse": "saisons",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -1911,6 +1942,7 @@
     "vitesse": "jours à saisons",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -1974,6 +2006,7 @@
     "vitesse": "semaines à saisons",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -2050,6 +2083,7 @@
     "vitesse": "mois",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -2105,6 +2139,7 @@
     "vitesse": "années à décennies",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -2181,6 +2216,7 @@
     "vitesse": "mois à années",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -2214,6 +2250,7 @@
     "vitesse": "jours",
     "taille": "micro à méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -2269,6 +2306,7 @@
     "vitesse": "saisons",
     "taille": "micro à méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -2321,6 +2359,7 @@
     "vitesse": "jours à mois",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -2381,6 +2420,7 @@
     "vitesse": "mois à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -2501,6 +2541,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -2584,6 +2625,7 @@
     "vitesse": "mois à années",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -2678,6 +2720,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -2741,6 +2784,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -2796,6 +2840,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -2848,6 +2893,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -2924,6 +2970,7 @@
     "vitesse": "mois à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3007,6 +3054,7 @@
     "vitesse": "mois",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -3063,6 +3111,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3147,6 +3196,7 @@
     "vitesse": "semaines à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3231,6 +3281,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3332,6 +3383,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3371,6 +3423,7 @@
     "vitesse": "semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3434,6 +3487,7 @@
     "vitesse": "jours",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -3474,6 +3528,7 @@
     "vitesse": "jours à mois",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -3508,6 +3563,7 @@
     "vitesse": "minutes à semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3586,6 +3642,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3626,6 +3683,7 @@
     "vitesse": "heures à jours",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -3665,6 +3723,7 @@
     "vitesse": "jours (tempêtes) à saisons",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -3706,6 +3765,7 @@
     "vitesse": "heures",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -3736,6 +3796,616 @@
    "acteurs": []
   },
   {
+   "id": "foret-et-sols-vivants:emissions",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Émissions et pollution de l'air",
+   "niveau": {
+    "espace": "région à continent",
+    "temps": "décennies d'industrialisation",
+    "vitesse": "années",
+    "taille": "macro"
+   },
+   "organisation": "technique",
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     2,
+     4
+    ],
+    "vitesse_jours": [
+     365,
+     365
+    ],
+    "temps": "décennies d'industrialisation"
+   },
+   "traces": [
+    {
+     "source": "inventaires publics d'émissions et qualité de l'air",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "les industries et le trafic d'une région",
+     "taille": "macro",
+     "espace": "région",
+     "vitesse": "années",
+     "organisation": "technique",
+     "facette": "collectif",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       2,
+       2
+      ],
+      "vitesse_jours": [
+       365,
+       365
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "foret-et-sols-vivants:pluies_acides",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Pluies acides",
+   "niveau": {
+    "espace": "région",
+    "temps": "saisons de pluie",
+    "vitesse": "semaines",
+    "taille": "méso"
+   },
+   "organisation": "eau",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     7,
+     7
+    ],
+    "temps": "saisons de pluie"
+   },
+   "traces": [
+    {
+     "source": "réseaux publics de mesure de l'acidité des pluies",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:sol_mineral",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Acidité du sol minéral",
+   "niveau": {
+    "espace": "versant",
+    "temps": "siècles",
+    "vitesse": "décennie",
+    "taille": "méso"
+   },
+   "organisation": "mineral",
+   "axes": {
+    "taille": [
+     2,
+     2
+    ],
+    "espace": null,
+    "vitesse_jours": [
+     3650,
+     3650
+    ],
+    "temps": "siècles"
+   },
+   "traces": [
+    {
+     "source": "cartes publiques des sols",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "la roche mère d'un versant",
+     "taille": "méso",
+     "espace": "site",
+     "vitesse": "siècle",
+     "organisation": "mineral",
+     "facette": "non_humain",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       36500,
+       36500
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "foret-et-sols-vivants:champignons_symbiotiques",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Champignons symbiotiques (mycorhizes)",
+   "niveau": {
+    "espace": "racines d'un arbre à une parcelle",
+    "temps": "années",
+    "vitesse": "saisons à années",
+    "taille": "micro"
+   },
+   "organisation": "sol_vivant",
+   "axes": {
+    "taille": [
+     1,
+     1
+    ],
+    "espace": [
+     1,
+     1
+    ],
+    "vitesse_jours": [
+     90,
+     365
+    ],
+    "temps": "années"
+   },
+   "traces": [
+    {
+     "source": "relevés mycologiques publics",
+     "statut": "inconnue"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un réseau mycorhizien",
+     "taille": "micro",
+     "espace": "site",
+     "vitesse": "années",
+     "organisation": "sol_vivant",
+     "facette": "non_humain",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       365,
+       365
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "foret-et-sols-vivants:champignons_parasites",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Champignons parasites",
+   "niveau": {
+    "espace": "parcelle",
+    "temps": "saisons",
+    "vitesse": "semaines à saisons",
+    "taille": "micro"
+   },
+   "organisation": "sol_vivant",
+   "axes": {
+    "taille": [
+     1,
+     1
+    ],
+    "espace": [
+     1,
+     1
+    ],
+    "vitesse_jours": [
+     7,
+     90
+    ],
+    "temps": "saisons"
+   },
+   "traces": [
+    {
+     "source": "surveillance phytosanitaire publique",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:pins",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Arbres dominants (pins)",
+   "niveau": {
+    "espace": "forêt",
+    "temps": "décennies",
+    "vitesse": "années",
+    "taille": "micro à méso"
+   },
+   "organisation": "vegetal",
+   "axes": {
+    "taille": [
+     1,
+     2
+    ],
+    "espace": null,
+    "vitesse_jours": [
+     365,
+     365
+    ],
+    "temps": "décennies"
+   },
+   "traces": [
+    {
+     "source": "perte de couvert forestier par satellite (données publiques)",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un pin",
+     "taille": "micro",
+     "espace": "site",
+     "vitesse": "années",
+     "organisation": "vegetal",
+     "facette": "non_humain",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       365,
+       365
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "la pinède d'un versant",
+     "taille": "méso",
+     "espace": "versant",
+     "vitesse": "décennie",
+     "organisation": "vegetal",
+     "facette": "non_humain",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": null,
+      "vitesse_jours": [
+       3650,
+       3650
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "foret-et-sols-vivants:insectes_nematodes",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Insectes et nématodes",
+   "niveau": {
+    "espace": "parcelle à forêt",
+    "temps": "générations annuelles",
+    "vitesse": "saisons",
+    "taille": "micro"
+   },
+   "organisation": "animal",
+   "axes": {
+    "taille": [
+     1,
+     1
+    ],
+    "espace": [
+     1,
+     1
+    ],
+    "vitesse_jours": [
+     90,
+     90
+    ],
+    "temps": "générations annuelles"
+   },
+   "traces": [
+    {
+     "source": "surveillance publique des ravageurs forestiers",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:oiseaux",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Petits oiseaux",
+   "niveau": {
+    "espace": "forêt",
+    "temps": "saisons de reproduction",
+    "vitesse": "saisons à années",
+    "taille": "micro à méso"
+   },
+   "organisation": "animal",
+   "axes": {
+    "taille": [
+     1,
+     2
+    ],
+    "espace": null,
+    "vitesse_jours": [
+     90,
+     365
+    ],
+    "temps": "saisons de reproduction"
+   },
+   "traces": [
+    {
+     "source": "comptages participatifs publics d'oiseaux",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:succession",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Succession végétale (bambous et jeunes pousses)",
+   "niveau": {
+    "espace": "trouées de la forêt",
+    "temps": "années",
+    "vitesse": "saisons à années",
+    "taille": "micro à méso"
+   },
+   "organisation": "vegetal",
+   "axes": {
+    "taille": [
+     1,
+     2
+    ],
+    "espace": null,
+    "vitesse_jours": [
+     90,
+     365
+    ],
+    "temps": "années"
+   },
+   "traces": [
+    {
+     "source": "inventaires forestiers publics",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:rongeurs",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Rongeurs",
+   "niveau": {
+    "espace": "forêt",
+    "temps": "générations rapides",
+    "vitesse": "semaines à saisons",
+    "taille": "micro"
+   },
+   "organisation": "animal",
+   "axes": {
+    "taille": [
+     1,
+     1
+    ],
+    "espace": null,
+    "vitesse_jours": [
+     7,
+     90
+    ],
+    "temps": "générations rapides"
+   },
+   "traces": [
+    {
+     "source": "aucune trace ouverte connue",
+     "statut": "inconnue"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:predateurs",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Prédateurs",
+   "niveau": {
+    "espace": "forêt",
+    "temps": "générations annuelles",
+    "vitesse": "saisons à années",
+    "taille": "micro à méso"
+   },
+   "organisation": "animal",
+   "axes": {
+    "taille": [
+     1,
+     2
+    ],
+    "espace": null,
+    "vitesse_jours": [
+     90,
+     365
+    ],
+    "temps": "générations annuelles"
+   },
+   "traces": [
+    {
+     "source": "aucune trace ouverte connue",
+     "statut": "inconnue"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:climat",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Climat (régime de long terme)",
+   "niveau": {
+    "espace": "région",
+    "temps": "décennies",
+    "vitesse": "décennie",
+    "taille": "macro"
+   },
+   "organisation": "climat",
+   "axes": {
+    "taille": [
+     3,
+     3
+    ],
+    "espace": [
+     2,
+     2
+    ],
+    "vitesse_jours": [
+     3650,
+     3650
+    ],
+    "temps": "décennies"
+   },
+   "traces": [
+    {
+     "source": "dérive annuelle de la température (anomalie glissante sur 365 jours, Open-Meteo, point le plus proche à brancher)",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": []
+  },
+  {
+   "id": "foret-et-sols-vivants:interventions",
+   "theme": "foret-et-sols-vivants",
+   "nom": "Interventions humaines",
+   "niveau": {
+    "espace": "parcelle à région",
+    "temps": "plans de gestion",
+    "vitesse": "saisons à années",
+    "taille": "micro à méso"
+   },
+   "organisation": "economie",
+   "axes": {
+    "taille": [
+     1,
+     2
+    ],
+    "espace": [
+     1,
+     2
+    ],
+    "vitesse_jours": [
+     90,
+     365
+    ],
+    "temps": "plans de gestion"
+   },
+   "traces": [
+    {
+     "source": "statistiques publiques de récolte de bois et d'usage de pesticides",
+     "statut": "a_brancher"
+    }
+   ],
+   "acteurs": [
+    {
+     "nom": "un forestier ou un agriculteur",
+     "taille": "micro",
+     "espace": "site",
+     "vitesse": "saisons",
+     "organisation": "economie",
+     "facette": "personne",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       1,
+       1
+      ],
+      "vitesse_jours": [
+       90,
+       90
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "une administration forestière",
+     "taille": "méso",
+     "espace": "région",
+     "vitesse": "années",
+     "organisation": "statut",
+     "facette": "collectif",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       2,
+       2
+      ],
+      "vitesse_jours": [
+       365,
+       365
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "la doctrine du rendement et de la lutte chimique",
+     "taille": "macro",
+     "espace": "mondial",
+     "vitesse": "décennie",
+     "organisation": "ideologie",
+     "facette": "ideologie",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       5,
+       5
+      ],
+      "vitesse_jours": [
+       3650,
+       3650
+      ],
+      "temps": null
+     }
+    }
+   ]
+  },
+  {
    "id": "guerre-levant:israel",
    "theme": "guerre-levant",
    "nom": "Israël",
@@ -3745,6 +4415,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -3829,6 +4500,7 @@
     "vitesse": "heures à semaines",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -3910,6 +4582,7 @@
     "vitesse": "jours à années",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -3993,6 +4666,7 @@
     "vitesse": "jours à années",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -4071,6 +4745,7 @@
     "vitesse": "heures à semaines",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -4160,6 +4835,7 @@
     "vitesse": "jours à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4244,6 +4920,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4326,6 +5003,7 @@
     "vitesse": "semaines",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -4403,6 +5081,7 @@
     "vitesse": "semaines",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -4458,6 +5137,7 @@
     "vitesse": "heures à jours",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -4497,6 +5177,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4532,6 +5213,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4567,6 +5249,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4630,6 +5313,7 @@
     "vitesse": "mois à années",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -4714,6 +5398,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4749,6 +5434,7 @@
     "vitesse": "semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4854,6 +5540,7 @@
     "vitesse": "jours",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4889,6 +5576,7 @@
     "vitesse": "semaines",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -4924,6 +5612,7 @@
     "vitesse": "mois à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -4981,6 +5670,7 @@
     "vitesse": "mois",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -5037,6 +5727,7 @@
     "vitesse": "semaines",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -5123,6 +5814,7 @@
     "vitesse": "trimestre",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5178,6 +5870,7 @@
     "vitesse": "semaines à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5218,6 +5911,7 @@
     "vitesse": "semaines à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5295,6 +5989,7 @@
     "vitesse": "mois ; jours en crise",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5358,6 +6053,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5440,6 +6136,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5496,6 +6193,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5574,6 +6272,7 @@
     "vitesse": "jours à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5652,6 +6351,7 @@
     "vitesse": "mois à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5685,6 +6385,7 @@
     "vitesse": "heures à jours",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -5724,6 +6425,7 @@
     "vitesse": "très lente (relief) ; jours (tempêtes de chaleur, sable)",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -5759,6 +6461,7 @@
     "vitesse": "jours",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5794,6 +6497,7 @@
     "vitesse": "heures à semaines",
     "taille": "micro (un navire) à méso (une flotte)"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -5902,6 +6606,7 @@
     "vitesse": "semaines à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -5984,6 +6689,7 @@
     "vitesse": "jours à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -6067,6 +6773,7 @@
     "vitesse": "heures à jours",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -6170,6 +6877,7 @@
     "vitesse": "semaines à décennies",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -6210,6 +6918,7 @@
     "vitesse": "minutes à semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -6245,6 +6954,7 @@
     "vitesse": "mois ; jours en crise",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -6280,6 +6990,7 @@
     "vitesse": "heures à jours",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -6319,6 +7030,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": "statut",
    "axes": {
     "taille": [
      3,
@@ -6348,10 +7060,35 @@
    ],
    "acteurs": [
     {
-     "nom": "la présidence",
-     "taille": "macro",
+     "nom": "le président en personne (ses faits et déclarations publics)",
+     "taille": "micro",
      "espace": "pays",
      "vitesse": "jours",
+     "organisation": "personne",
+     "facette": "personne",
+     "axes": {
+      "taille": [
+       1,
+       1
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       1,
+       1
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "la fonction présidentielle (pouvoirs, limites, contre-pouvoirs)",
+     "taille": "macro",
+     "espace": "pays",
+     "vitesse": "mois",
+     "organisation": "statut",
+     "facette": "statut",
      "axes": {
       "taille": [
        3,
@@ -6362,8 +7099,54 @@
        3
       ],
       "vitesse_jours": [
-       1,
-       1
+       30,
+       30
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "le programme et l'idéologie portés par l'exécutif",
+     "taille": "macro",
+     "espace": "pays",
+     "vitesse": "années",
+     "organisation": "ideologie",
+     "facette": "ideologie",
+     "axes": {
+      "taille": [
+       3,
+       3
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       365,
+       365
+      ],
+      "temps": null
+     }
+    },
+    {
+     "nom": "l'entourage direct (cabinet, conseillers) et indirect (alliés, financeurs déclarés)",
+     "taille": "méso",
+     "espace": "pays",
+     "vitesse": "semaines",
+     "organisation": "entourage",
+     "facette": "collectif",
+     "axes": {
+      "taille": [
+       2,
+       2
+      ],
+      "espace": [
+       3,
+       3
+      ],
+      "vitesse_jours": [
+       7,
+       7
       ],
       "temps": null
      }
@@ -6401,6 +7184,7 @@
     "vitesse": "semaines à mois",
     "taille": "méso à macro"
    },
+   "organisation": "statut",
    "axes": {
     "taille": [
      2,
@@ -6499,6 +7283,7 @@
     "vitesse": "jours à années",
     "taille": "micro à macro"
    },
+   "organisation": "statut",
    "axes": {
     "taille": [
      1,
@@ -6576,6 +7361,7 @@
     "vitesse": "mois à années",
     "taille": "micro à macro"
    },
+   "organisation": "societe",
    "axes": {
     "taille": [
      1,
@@ -6652,6 +7438,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": "economie",
    "axes": {
     "taille": [
      3,
@@ -6709,6 +7496,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": "economie",
    "axes": {
     "taille": [
      3,
@@ -6765,6 +7553,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": "economie",
    "axes": {
     "taille": [
      3,
@@ -6828,6 +7617,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": "geopolitique",
    "axes": {
     "taille": [
      3,
@@ -6891,6 +7681,7 @@
     "vitesse": "semaines",
     "taille": "macro"
    },
+   "organisation": "statut",
    "axes": {
     "taille": [
      3,
@@ -6948,6 +7739,7 @@
     "vitesse": "semaines à mois",
     "taille": "méso"
    },
+   "organisation": "statut",
    "axes": {
     "taille": [
      2,
@@ -7004,6 +7796,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7108,6 +7901,7 @@
     "vitesse": "mois à années",
     "taille": "méso à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -7186,6 +7980,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7270,6 +8065,7 @@
     "vitesse": "heures à semaines",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -7379,6 +8175,7 @@
     "vitesse": "mois à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7413,6 +8210,7 @@
     "vitesse": "semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7493,6 +8291,7 @@
     "vitesse": "jours à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7528,6 +8327,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7559,6 +8359,7 @@
     "vitesse": "heures à jours",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -7599,6 +8400,7 @@
     "vitesse": "heures à semaines",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -7704,6 +8506,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7737,6 +8540,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7841,6 +8645,7 @@
     "vitesse": "semaines à mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7919,6 +8724,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -7973,6 +8779,7 @@
     "vitesse": "jours (coupures) à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -8009,6 +8816,7 @@
     "vitesse": "semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -8110,6 +8918,7 @@
     "vitesse": "mois",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -8149,6 +8958,7 @@
     "vitesse": "jours",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -8184,6 +8994,7 @@
     "vitesse": "heures à jours",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -8274,6 +9085,7 @@
     "vitesse": "jours à semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -8309,6 +9121,7 @@
     "vitesse": "semaines à années",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -8408,6 +9221,7 @@
     "vitesse": "jours à semaines",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -8463,6 +9277,7 @@
     "vitesse": "jours",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -8518,6 +9333,7 @@
     "vitesse": "jours",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -8573,6 +9389,7 @@
     "vitesse": "heures à semaines",
     "taille": "micro à méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -8676,6 +9493,7 @@
     "vitesse": "jours (tempêtes) à saisons (sécheresse)",
     "taille": "méso"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      2,
@@ -8709,6 +9527,7 @@
     "vitesse": "semaines à années",
     "taille": "macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      3,
@@ -8743,6 +9562,7 @@
     "vitesse": "heures",
     "taille": "micro à macro"
    },
+   "organisation": null,
    "axes": {
     "taille": [
      1,
@@ -10140,6 +10960,302 @@
    "statut": "a_verifier",
    "source": null,
    "texte": "annonces et menaces bougent les prix avant les flux"
+  },
+  {
+   "de": "foret-et-sols-vivants:emissions",
+   "vers": "foret-et-sols-vivants:pluies_acides",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": null,
+   "coupure": "filtres et réduction des émissions",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les fumées chargent les pluies en acides"
+  },
+  {
+   "de": "foret-et-sols-vivants:pluies_acides",
+   "vers": "foret-et-sols-vivants:sol_mineral",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "pouvoir tampon restant du sol",
+    "regle": "seuil"
+   },
+   "coupure": "roche calcaire qui neutralise",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les pluies acidifient le sol quand son pouvoir tampon est épuisé"
+  },
+  {
+   "de": "foret-et-sols-vivants:sol_mineral",
+   "vers": "foret-et-sols-vivants:champignons_symbiotiques",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "forte",
+   "intensite": {
+    "mesure": "acidité du sol",
+    "regle": "seuil"
+   },
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "un sol trop acide fait disparaître les champignons utiles"
+  },
+  {
+   "de": "foret-et-sols-vivants:champignons_symbiotiques",
+   "vers": "foret-et-sols-vivants:champignons_parasites",
+   "forme": "competition",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "-",
+   "style": null,
+   "delai": "saisons",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "compétition au sein du sol vivant : quand le champignon utile disparaît, le parasite prend la place"
+  },
+  {
+   "de": "foret-et-sols-vivants:champignons_symbiotiques",
+   "vers": "foret-et-sols-vivants:pins",
+   "forme": "mutualisme",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": "+",
+   "style": null,
+   "delai": "années",
+   "force": "forte",
+   "intensite": null,
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "symbiose : l'arbre nourrit le champignon, qui nourrit et protège l'arbre"
+  },
+  {
+   "de": "foret-et-sols-vivants:champignons_parasites",
+   "vers": "foret-et-sols-vivants:pins",
+   "forme": "predation",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "+",
+   "style": null,
+   "delai": "saisons",
+   "force": "forte",
+   "intensite": {
+    "mesure": "faiblesse des arbres",
+    "regle": "seuil"
+   },
+   "coupure": "arbres vigoureux",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "le parasite tue les arbres affaiblis (prédation)"
+  },
+  {
+   "de": "foret-et-sols-vivants:insectes_nematodes",
+   "vers": "foret-et-sols-vivants:pins",
+   "forme": "predation",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "+",
+   "style": null,
+   "delai": "saisons",
+   "force": "forte",
+   "intensite": {
+    "mesure": "densité de scarabées",
+    "regle": "proportionnelle"
+   },
+   "coupure": "hivers froids, arbres vigoureux",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les scarabées portent les nématodes qui attaquent les pins et nourrissent le parasite"
+  },
+  {
+   "de": "foret-et-sols-vivants:oiseaux",
+   "vers": "foret-et-sols-vivants:insectes_nematodes",
+   "forme": "predation",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "+",
+   "style": null,
+   "delai": "saisons",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les oiseaux mangent les insectes (prédation au sein du niveau animal)"
+  },
+  {
+   "de": "foret-et-sols-vivants:interventions",
+   "vers": "foret-et-sols-vivants:oiseaux",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "saisons",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "forêts mélangées conservées",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "coupes et plantations d'une seule espèce privent les oiseaux de nourriture : ils partent, les insectes prospèrent"
+  },
+  {
+   "de": "foret-et-sols-vivants:pins",
+   "vers": "foret-et-sols-vivants:succession",
+   "forme": "competition",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "-",
+   "style": null,
+   "delai": "années",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "compétition au sein du végétal : quand les pins meurent, les bambous et les jeunes pousses prennent la lumière"
+  },
+  {
+   "de": "foret-et-sols-vivants:succession",
+   "vers": "foret-et-sols-vivants:rongeurs",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "saisons",
+   "force": "forte",
+   "intensite": {
+    "mesure": "abondance des baies",
+    "regle": "proportionnelle"
+   },
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les baies des jeunes bambous font pulluler les souris"
+  },
+  {
+   "de": "foret-et-sols-vivants:rongeurs",
+   "vers": "foret-et-sols-vivants:succession",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "saisons",
+   "force": "moyenne",
+   "intensite": null,
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les souris attaquent les jeunes cèdres plantés"
+  },
+  {
+   "de": "foret-et-sols-vivants:predateurs",
+   "vers": "foret-et-sols-vivants:rongeurs",
+   "forme": "predation",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": "+",
+   "style": null,
+   "delai": "saisons",
+   "force": "forte",
+   "intensite": null,
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "belettes et serpents régulent les souris (prédation, cycle de populations)"
+  },
+  {
+   "de": "foret-et-sols-vivants:interventions",
+   "vers": "foret-et-sols-vivants:rongeurs",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "jours",
+   "force": "forte",
+   "intensite": null,
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "le poison tue les souris…"
+  },
+  {
+   "de": "foret-et-sols-vivants:rongeurs",
+   "vers": "foret-et-sols-vivants:predateurs",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "saisons",
+   "force": "forte",
+   "intensite": {
+    "mesure": "nombre de proies",
+    "regle": "seuil"
+   },
+   "coupure": "proies de rechange",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "…et les prédateurs, privés de proies, déclinent ; pour les sauver, on finit par élever des souris : l'intervention se retourne contre elle-même"
+  },
+  {
+   "de": "foret-et-sols-vivants:climat",
+   "vers": "foret-et-sols-vivants:insectes_nematodes",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "+",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "dérive de la température moyenne",
+    "regle": "proportionnelle"
+   },
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "des hivers plus doux laissent survivre plus d'insectes"
+  },
+  {
+   "de": "foret-et-sols-vivants:climat",
+   "vers": "foret-et-sols-vivants:pins",
+   "forme": "forcage",
+   "forme_ecrite": false,
+   "effet": "-",
+   "retour": null,
+   "style": null,
+   "delai": "années",
+   "force": "moyenne",
+   "intensite": {
+    "mesure": "sécheresses répétées",
+    "regle": "seuil"
+   },
+   "coupure": "inconnue",
+   "statut": "a_verifier",
+   "source": null,
+   "texte": "les sécheresses répétées affaiblissent les arbres"
   },
   {
    "de": "guerre-levant:israel",
@@ -12218,6 +13334,34 @@
    "type": "influence"
   },
   {
+   "de": "foret-et-sols-vivants:climat",
+   "vers": "climat-extremes:tendance",
+   "nature": "la dérive du climat",
+   "resolu": true,
+   "type": "meme"
+  },
+  {
+   "de": "foret-et-sols-vivants:sol_mineral",
+   "vers": "alimentation-mondiale:sols",
+   "nature": "les mêmes mécanismes d'acidification et d'épuisement touchent les sols cultivés",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "foret-et-sols-vivants:insectes_nematodes",
+   "vers": "alimentation-mondiale:ravageurs",
+   "nature": "ravageurs et pullulations, des forêts aux cultures",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
+   "de": "foret-et-sols-vivants:pins",
+   "vers": "climat-extremes:vegetation",
+   "nature": "une forêt morte devient combustible",
+   "resolu": true,
+   "type": "influence"
+  },
+  {
    "de": "guerre-levant:iran",
    "vers": "ormuz:force",
    "nature": "les fronts régionaux de l'Iran et la pression sur Ormuz",
@@ -12625,13 +13769,13 @@
   }
  ],
  "bilan": {
-  "themes": 14,
-  "compartiments": 138,
-  "relations": 182,
-  "ponts": 100,
+  "themes": 15,
+  "compartiments": 151,
+  "relations": 199,
+  "ponts": 104,
   "ponts_en_attente": 7,
-  "relations_a_verifier": 182,
-  "relations_avec_intensite": 80,
-  "compartiments_sans_trace_collectee": 38
+  "relations_a_verifier": 199,
+  "relations_avec_intensite": 88,
+  "compartiments_sans_trace_collectee": 51
  }
 }

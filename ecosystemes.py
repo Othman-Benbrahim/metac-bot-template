@@ -27,6 +27,7 @@ from pathlib import Path
 import yaml
 
 DOSSIER = Path("ecosystemes")
+NIVEAUX = DOSSIER / "niveaux.yaml"
 SCHEMA = Path("registre/ecosystemes-schema.json")
 A_FAIRE = Path("registre/ecosystemes-a-faire.md")
 
@@ -86,16 +87,25 @@ def forme_deduite(effet: str, retour: str | None) -> str:
     return table.get(paire, "ambivalent")
 
 
+def niveaux(fichier: Path = NIVEAUX) -> dict:
+    """Catalogue des niveaux d'organisation et des facettes d'acteurs (ecosystemes/niveaux.yaml)."""
+    d = yaml.safe_load(fichier.read_text(encoding="utf-8")) if fichier.exists() else {}
+    return {"niveaux": {n["id"]: n for n in d.get("niveaux") or []}, "facettes": d.get("facettes") or {}}
+
+
 def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
     out = {}
     for f in sorted(dossier.glob("*.yaml")):
+        if f.name == "niveaux.yaml":
+            continue
         d = yaml.safe_load(f.read_text(encoding="utf-8"))
         out[d["theme"]] = d
     return out
 
 
 CLES_PERMISES = {
-    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur"}, "acteur": {"nom", "taille", "espace", "vitesse"},
+    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur"},
+    "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte"},
     "pont": {"depuis", "vers", "nature", "type"}}
 # 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
@@ -140,6 +150,14 @@ def valider(fiche: dict) -> list[str]:
         for a in AXES:
             if a not in (c.get("niveau") or {}):
                 err.append(f"{t}:{c.get('id')} : niveau d'action sans « {a} »")
+        cat = niveaux()
+        if c.get("organisation") is not None and c["organisation"] not in cat["niveaux"]:
+            err.append(f"{t}:{c.get('id')} : niveau d'organisation inconnu {c['organisation']!r} (voir ecosystemes/niveaux.yaml)")
+        for a in c.get("acteurs") or []:
+            if a.get("organisation") is not None and a["organisation"] not in cat["niveaux"]:
+                err.append(f"{t}:{c.get('id')} : acteur {a.get('nom')!r}, niveau d'organisation inconnu {a['organisation']!r}")
+            if a.get("facette") is not None and a["facette"] not in cat["facettes"]:
+                err.append(f"{t}:{c.get('id')} : acteur {a.get('nom')!r}, facette inconnue {a['facette']!r}")
         if (c.get("niveau") or {}).get("taille") and axes(c["niveau"])["taille"] is None:
             err.append(f"{t}:{c.get('id')} : taille illisible (écrire micro, méso ou macro, ou une plage)")
         for a in c.get("acteurs") or []:
@@ -186,6 +204,7 @@ def assembler(fiches: dict[str, dict]) -> dict:
     for t, f in fiches.items():
         for c in f["compartiments"]:
             noeuds.append({"id": f"{t}:{c['id']}", "theme": t, "nom": c.get("nom", c["id"]), "niveau": c["niveau"],
+                           "organisation": c.get("organisation"),
                            "axes": axes(c["niveau"]), "traces": c.get("traces") or [],
                            "acteurs": [dict(a, axes=axes({"taille": a.get("taille"), "espace": a.get("espace"),
                                                           "vitesse": a.get("vitesse")})) for a in c.get("acteurs") or []]})

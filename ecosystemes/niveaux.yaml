@@ -1,0 +1,105 @@
+# Niveaux d'organisation (décision de l'auteur, 2026-11-19, 5 h 23) : « décrire les phénomènes causaux de chaque niveau,
+# au sein du niveau même ; à chaque niveau vivent des relations qui lui sont propres ; un phénomène de petite échelle
+# peut influencer d'autres échelles à condition d'être assez fort pour y provoquer un changement ».
+# Chaque niveau : sa taille et sa vitesse typiques, ses relations PROPRES (celles qui ne se voient qu'à ce niveau),
+# et son INERTIE (0 à 1) : la part d'ampleur qu'un effet venu d'un autre niveau doit dépasser pour y passer.
+# Inerties fixées à la main, hypothèses de départ, à calibrer. Fichier lu par ecosystemes.py et carte.py.
+niveaux:
+  - id: "mineral"
+    nom: "Roches, sols minéraux, relief"
+    taille: "méso à macro"
+    vitesse: "siècle ; seconde (séisme)"
+    inertie: 0.9
+    relations_propres: ["altération et érosion", "sédimentation", "acidité ou alcalinité héritée de la roche", "rupture brutale (séisme, glissement) après lente accumulation"]
+  - id: "climat"
+    nom: "Climat (régimes sur des décennies, distinct de la météo)"
+    taille: "macro"
+    vitesse: "décennie"
+    inertie: 0.8
+    relations_propres: ["oscillations océan-atmosphère (ENSO)", "rétroactions (albédo, vapeur d'eau, sols secs qui chauffent l'air)", "dérive lente des moyennes et des extrêmes"]
+  - id: "meteo"
+    nom: "Temps qu'il fait (jours, semaines)"
+    taille: "méso"
+    vitesse: "jours"
+    inertie: 0.3
+    relations_propres: ["fronts et dépressions", "blocages", "vagues de chaleur, tempêtes"]
+  - id: "eau"
+    nom: "Eau (cycle, fleuves, nappes)"
+    taille: "méso à macro"
+    vitesse: "jours à années"
+    inertie: 0.5
+    relations_propres: ["ruissellement et recharge", "crue et étiage", "épuisement des nappes (hystérésis)"]
+  - id: "sol_vivant"
+    nom: "Sol vivant (champignons, microbes, nématodes, vers)"
+    taille: "micro"
+    vitesse: "semaines à années"
+    inertie: 0.4
+    relations_propres: ["symbiose racines-champignons (mycorhizes)", "décomposition et recyclage", "parasitisme et maladies du sol"]
+  - id: "vegetal"
+    nom: "Végétal (forêts, prairies, cultures)"
+    taille: "micro à macro"
+    vitesse: "saisons à décennies"
+    inertie: 0.5
+    relations_propres: ["compétition pour la lumière et l'eau", "succession (une espèce prépare la suivante)", "allélopathie, défense chimique"]
+  - id: "animal"
+    nom: "Animal (faune sauvage, élevage, insectes)"
+    taille: "micro à macro"
+    vitesse: "jours à années"
+    inertie: 0.4
+    relations_propres: ["prédation et chaînes alimentaires", "cascades trophiques", "pullulations et effondrements de populations", "épizooties et zoonoses", "pâturage (l'élevage agit sur le sol et la végétation, pas seulement sur l'économie)"]
+  - id: "personne"
+    nom: "La personne (un individu public, par ses faits publics)"
+    taille: "micro"
+    vitesse: "jours à années"
+    inertie: 0.2
+    relations_propres: ["santé, âge, fatigue", "convictions et apprentissage", "réputation et image de soi"]
+  - id: "entourage"
+    nom: "Entourage (cercle direct et indirect d'un décideur)"
+    taille: "micro à méso"
+    vitesse: "jours à mois"
+    inertie: 0.3
+    relations_propres: ["loyauté et disgrâce", "rivalité pour l'accès", "filtrage de l'information", "dette et faveur"]
+  - id: "statut"
+    nom: "Statut et institution (rôle, mandat, pouvoirs, contre-pouvoirs)"
+    taille: "méso à macro"
+    vitesse: "semaines à années"
+    inertie: 0.6
+    relations_propres: ["délégation et hiérarchie", "contrôle et veto", "règles de succession", "le statut survit à la personne"]
+  - id: "ideologie"
+    nom: "Idéologie et culture (idées, croyances, récits, valeurs)"
+    taille: "méso à macro"
+    vitesse: "années à décennies"
+    inertie: 0.7
+    relations_propres: ["diffusion et conversion lente", "polarisation", "orthodoxie et dissidence", "l'idéologie survit à ceux qui la portent"]
+  - id: "societe"
+    nom: "Société (opinion, mouvements, groupes)"
+    taille: "méso à macro"
+    vitesse: "semaines à années"
+    inertie: 0.5
+    relations_propres: ["mobilisation et contagion", "lassitude", "basculement d'opinion (seuil)"]
+  - id: "economie"
+    nom: "Économie (marchés, entreprises, prix)"
+    taille: "micro à macro"
+    vitesse: "minutes à années"
+    inertie: 0.4
+    relations_propres: ["offre et demande", "contagion financière", "anticipations autoréalisatrices"]
+  - id: "technique"
+    nom: "Technique et infrastructures"
+    taille: "micro à macro"
+    vitesse: "secondes à décennies"
+    inertie: 0.5
+    relations_propres: ["défaillances en cascade", "dépendance au chemin des réseaux", "goulots d'étranglement"]
+  - id: "geopolitique"
+    nom: "Géopolitique (États, blocs, alliances)"
+    taille: "macro"
+    vitesse: "semaines à décennies"
+    inertie: 0.7
+    relations_propres: ["équilibre des puissances", "dissuasion", "alignement et réalignement des blocs", "réciprocité (donnant-donnant, rancune)"]
+facettes:
+  # Un même acteur public peut apparaître sous trois facettes distinctes (rappel de l'auteur : « différencier la
+  # personne de son statut, et surtout de son idéologie ») ; chacune vit à son niveau et obéit à ses relations.
+  personne: "la personne, par ses faits publics (niveau personne)"
+  statut: "la fonction qu'elle occupe, ses pouvoirs et ses limites (niveau statut)"
+  ideologie: "les idées qu'elle porte ou qui la portent (niveau ideologie)"
+  collectif: "un groupe, une organisation, un État"
+  non_humain: "un élément non humain (un fleuve, une forêt, une population animale, une masse d'air)"

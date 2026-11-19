@@ -1,6 +1,6 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 14, 'compartiments': 138, 'relations': 182, 'ponts': 100, 'ponts_en_attente': 7, 'relations_a_verifier': 182, 'relations_avec_intensite': 80, 'compartiments_sans_trace_collectee': 38}
+Bilan : {'themes': 15, 'compartiments': 151, 'relations': 199, 'ponts': 104, 'ponts_en_attente': 7, 'relations_a_verifier': 199, 'relations_avec_intensite': 88, 'compartiments_sans_trace_collectee': 51}
 
 ## Thèmes à écrire (ponts en attente)
 - **infrastructures-critiques** (2 pont(s)) : climat-extremes:exposes → infrastructures-critiques:reseaux (réseaux électriques et de transport face aux extrêmes) ; eau-moyen-orient:dessalement → infrastructures-critiques:reseaux (les usines de dessalement, infrastructures vulnérables)
@@ -40,6 +40,19 @@ Bilan : {'themes': 14, 'compartiments': 138, 'relations': 182, 'ponts': 100, 'po
 - economie-chinoise:emploi : taux de chômage des jeunes (publication officielle mensuelle) (a_brancher)
 - economie-chinoise:politique_monetaire : communiqués de la banque centrale chinoise (publics) (a_brancher)
 - energie-mondiale:production : communiqués des réunions de l'OPEP+ (a_brancher), nombre de forages actifs (publication hebdomadaire publique) (a_brancher)
+- foret-et-sols-vivants:emissions : inventaires publics d'émissions et qualité de l'air (a_brancher)
+- foret-et-sols-vivants:pluies_acides : réseaux publics de mesure de l'acidité des pluies (a_brancher)
+- foret-et-sols-vivants:sol_mineral : cartes publiques des sols (a_brancher)
+- foret-et-sols-vivants:champignons_symbiotiques : relevés mycologiques publics (inconnue)
+- foret-et-sols-vivants:champignons_parasites : surveillance phytosanitaire publique (a_brancher)
+- foret-et-sols-vivants:pins : perte de couvert forestier par satellite (données publiques) (a_brancher)
+- foret-et-sols-vivants:insectes_nematodes : surveillance publique des ravageurs forestiers (a_brancher)
+- foret-et-sols-vivants:oiseaux : comptages participatifs publics d'oiseaux (a_brancher)
+- foret-et-sols-vivants:succession : inventaires forestiers publics (a_brancher)
+- foret-et-sols-vivants:rongeurs : aucune trace ouverte connue (inconnue)
+- foret-et-sols-vivants:predateurs : aucune trace ouverte connue (inconnue)
+- foret-et-sols-vivants:climat : dérive annuelle de la température (anomalie glissante sur 365 jours, Open-Meteo, point le plus proche à brancher) (a_brancher)
+- foret-et-sols-vivants:interventions : statistiques publiques de récolte de bois et d'usage de pesticides (a_brancher)
 - guerre-levant:humanitaire : rapports publics OCHA et ACAPS (a_brancher)
 - iran-nucleaire:verification : rapports publics de l'Agence internationale de l'énergie atomique (a_brancher)
 - iran-nucleaire:conseil_securite : documents publics du Conseil de sécurité de l'ONU (a_brancher)
@@ -130,6 +143,23 @@ Bilan : {'themes': 14, 'compartiments': 138, 'relations': 182, 'ponts': 100, 'po
 - energie-mondiale:climat → energie-mondiale:demande [forcage] un hiver froid fait monter la demande de gaz et de fioul
 - energie-mondiale:climat → energie-mondiale:production [forcage] ouragans dans le golfe du Mexique, arrêts de plateformes
 - energie-mondiale:recits → energie-mondiale:prix [forcage] annonces et menaces bougent les prix avant les flux
+- foret-et-sols-vivants:emissions → foret-et-sols-vivants:pluies_acides [forcage] les fumées chargent les pluies en acides
+- foret-et-sols-vivants:pluies_acides → foret-et-sols-vivants:sol_mineral [forcage] les pluies acidifient le sol quand son pouvoir tampon est épuisé
+- foret-et-sols-vivants:sol_mineral → foret-et-sols-vivants:champignons_symbiotiques [forcage] un sol trop acide fait disparaître les champignons utiles
+- foret-et-sols-vivants:champignons_symbiotiques → foret-et-sols-vivants:champignons_parasites [competition] compétition au sein du sol vivant : quand le champignon utile disparaît, le parasite prend la place
+- foret-et-sols-vivants:champignons_symbiotiques → foret-et-sols-vivants:pins [mutualisme] symbiose : l'arbre nourrit le champignon, qui nourrit et protège l'arbre
+- foret-et-sols-vivants:champignons_parasites → foret-et-sols-vivants:pins [predation] le parasite tue les arbres affaiblis (prédation)
+- foret-et-sols-vivants:insectes_nematodes → foret-et-sols-vivants:pins [predation] les scarabées portent les nématodes qui attaquent les pins et nourrissent le parasite
+- foret-et-sols-vivants:oiseaux → foret-et-sols-vivants:insectes_nematodes [predation] les oiseaux mangent les insectes (prédation au sein du niveau animal)
+- foret-et-sols-vivants:interventions → foret-et-sols-vivants:oiseaux [forcage] coupes et plantations d'une seule espèce privent les oiseaux de nourriture : ils partent, les insectes prospèrent
+- foret-et-sols-vivants:pins → foret-et-sols-vivants:succession [competition] compétition au sein du végétal : quand les pins meurent, les bambous et les jeunes pousses prennent la lumière
+- foret-et-sols-vivants:succession → foret-et-sols-vivants:rongeurs [forcage] les baies des jeunes bambous font pulluler les souris
+- foret-et-sols-vivants:rongeurs → foret-et-sols-vivants:succession [forcage] les souris attaquent les jeunes cèdres plantés
+- foret-et-sols-vivants:predateurs → foret-et-sols-vivants:rongeurs [predation] belettes et serpents régulent les souris (prédation, cycle de populations)
+- foret-et-sols-vivants:interventions → foret-et-sols-vivants:rongeurs [forcage] le poison tue les souris…
+- foret-et-sols-vivants:rongeurs → foret-et-sols-vivants:predateurs [forcage] …et les prédateurs, privés de proies, déclinent ; pour les sauver, on finit par élever des souris : l'intervention se retourne contre elle-même
+- foret-et-sols-vivants:climat → foret-et-sols-vivants:insectes_nematodes [forcage] des hivers plus doux laissent survivre plus d'insectes
+- foret-et-sols-vivants:climat → foret-et-sols-vivants:pins [forcage] les sécheresses répétées affaiblissent les arbres
 - guerre-levant:israel → guerre-levant:gaza [competition] conflit direct, chaque partie réduisant les options de l'autre
 - guerre-levant:israel → guerre-levant:liban [competition] échanges à la frontière ; au-delà d'un seuil, passage à la guerre ouverte
 - guerre-levant:israel → guerre-levant:iran [competition] rivalité directe, par frappes et ripostes ponctuelles plutôt que par guerre continue

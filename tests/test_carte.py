@@ -55,3 +55,29 @@ def test_ponts_meme_et_influence():
     assert types[("ormuz:prix", "energie-mondiale:prix")] == "meme"
     e = {x["compartiment"]: x for x in c.propager({"climat-extremes:saisons": 1.0}, 365)}
     assert e["ormuz:milieu"]["ampleur"] < 1.0 and e["ormuz:milieu"]["jour"] > 0      # influence : partielle, avec retard
+
+
+def test_niveaux_d_organisation_et_passage():
+    cat = ec.niveaux()
+    assert {"mineral", "climat", "meteo", "animal", "personne", "entourage", "statut", "ideologie", "geopolitique"} <= set(cat["niveaux"])
+    assert {"personne", "statut", "ideologie"} <= set(cat["facettes"])
+    n = cat["niveaux"]
+    assert ca.passage_de_niveau(0.9, "personne", "geopolitique", n, None) == 1.0       # assez fort pour changer d'échelle
+    assert ca.passage_de_niveau(0.3, "personne", "geopolitique", n, None) == 0.2       # trop faible : amorti
+    assert ca.passage_de_niveau(0.3, "animal", "animal", n, None) == 1.0               # au sein du même niveau
+
+
+def test_chaine_de_fukuoka():
+    c = ca.Carte()
+    e = {x["compartiment"]: x for x in c.propager({"foret-et-sols-vivants:interventions": 1.0}, 3650)}
+    assert e["foret-et-sols-vivants:rongeurs"]["sens"] == "baisse"
+    assert e["foret-et-sols-vivants:predateurs"]["sens"] == "baisse"                 # le poison prive les prédateurs
+    assert e["foret-et-sols-vivants:insectes_nematodes"]["sens"] == "hausse"         # moins d'oiseaux, plus d'insectes
+
+
+def test_facettes_validees():
+    f = {"theme": "t", "nom": "T", "declaration": {k: "x" for k in ("but", "limites", "observateur", "date") + ec.AXES},
+         "compartiments": [{"id": "a", "organisation": "astral", "niveau": {**{k: "x" for k in ec.AXES}, "taille": "méso"},
+                            "acteurs": [{"nom": "n", "taille": "micro", "facette": "aura"}]}], "relations": [], "ponts": []}
+    e = " | ".join(ec.valider(f))
+    assert "niveau d'organisation inconnu 'astral'" in e and "facette inconnue 'aura'" in e

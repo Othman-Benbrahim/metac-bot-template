@@ -58,6 +58,17 @@ def facteur_echelle(taille_source: list | None, taille_cible: list | None, regle
     return ATTENUATION_MONTEE ** saut if saut > 0 else 1.0
 
 
+def passage_de_niveau(ampleur: float, org_source: str | None, org_cible: str | None, catalogue: dict,
+                      regle: str | None) -> float:
+    """Entre deux niveaux d'organisation différents, un effet ne passe entier que s'il dépasse l'inertie du niveau
+    cible (« assez fort pour y provoquer un changement ») ; sinon il n'en passe qu'un cinquième. Même niveau, niveau
+    inconnu ou relation à seuil déjà prise en compte : facteur 1."""
+    if not org_source or not org_cible or org_source == org_cible or regle == "seuil":
+        return 1.0
+    inertie = float((catalogue.get(org_cible) or {}).get("inertie", 0.0))
+    return 1.0 if abs(ampleur) >= inertie else 0.2
+
+
 def retard_propre(vitesse_cible: list | None) -> float:
     """Un compartiment lent met une part de son temps propre à montrer un changement."""
     return PART_TEMPS_PROPRE * vitesse_cible[0] if vitesse_cible else 0.0
@@ -86,6 +97,7 @@ class Carte:
         self.s = ec.assembler(self.fiches)
         self.reg = reg
         self.noeuds = {n["id"]: n for n in self.s["noeuds"]}
+        self.niveaux = ec.niveaux(dossier / "niveaux.yaml")["niveaux"]
         self.sortants: dict[str, list[dict]] = {}
         for r in self.s["relations"]:
             self.sortants.setdefault(r["de"], []).append(r)
@@ -149,11 +161,16 @@ class Carte:
                     continue
                 poids = POIDS_FORCE.get(r.get("force") or "inconnue", 0.4)
                 regle = (r.get("intensite") or {}).get("regle") if isinstance(r.get("intensite"), dict) else None
-                poids *= multiplicateur(regle, self.intensite(nid))
+                # l'intensité du moment : celle qu'on observe (|z| de la source), ou celle de l'effet qui arrive lui-même
+                # (un choc assez fort franchit un seuil même là où aucune trace ne le mesure)
+                poids *= multiplicateur(regle, max(abs(self.intensite(nid)), 2 * abs(ampl)))
                 src, cib = self.noeuds.get(nid, {}).get("axes", {}), self.noeuds.get(r["vers"], {}).get("axes", {})
                 if r.get("pont") is not True:
                     poids *= facteur_echelle(src.get("taille"), cib.get("taille"), regle)
                 nouvelle = ampl * poids * (s if s is not None else 1.0)
+                if r.get("pont") is not True:
+                    nouvelle *= passage_de_niveau(nouvelle, self.noeuds.get(nid, {}).get("organisation"),
+                                                  self.noeuds.get(r["vers"], {}).get("organisation"), self.niveaux, regle)
                 arrivee = jour + delai_jours(r.get("delai")) + (0 if r.get("pont") is True else retard_propre(cib.get("vitesse_jours")))
                 heapq.heappush(tas, (arrivee, -abs(nouvelle), r["vers"], nouvelle,
                                      sens_connu and s is not None, chemin + [r["vers"]]))
