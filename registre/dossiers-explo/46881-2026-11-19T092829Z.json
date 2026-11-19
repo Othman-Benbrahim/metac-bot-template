@@ -1,0 +1,332 @@
+{
+ "candidats": [
+  "HIE@5",
+  "CTR@5",
+  "INC@5",
+  "RES@5"
+ ],
+ "contre_candidate": [
+  "RES@5"
+ ],
+ "mots": [
+  {
+   "carte": "HIE",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Le Festival International du Film de Marrakech dispose d'un jury présidé et attribue l'Étoile d'Or (grand prix) : palmarès 2001-2025 et présidences de jury listés (Étoile d'Or comme grand prix remis au meilleur long métrage).",
+   "objet": "autorité du jury pour attribuer l'Étoile d'Or",
+   "source": "Tableau palmarès et présidents (résumé, 2001-2025) ; règlement/présentation du festival (compilation et documents officiels).",
+   "source_url": "https://fr.wikipedia.org/wiki/Festival_international_du_film_de_Marrakech#:~:text=%7C%20Festival%20de%20Marrakech%20%7C,membre%20du%20jury%20en%202022",
+   "date_consultation": "2026-11-19",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Tableau récapitulatif, § palmarès (résultat [1])",
+     "relation": "soutient",
+     "extrait": "L'Étoile d'Or est le grand prix du festival, remis au meilleur long métrage de la compétition"
+    },
+    {
+     "localisation": "Règlement de la compétition (résultat [4])",
+     "relation": "soutient",
+     "extrait": "La compétition réserve des conditions d'éligibilité et le festival remet des prix officiels aux films retenus"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "un organe institué (le jury) a la prérogative formelle et historique d'attribuer le grand prix du festival ; cette autorité structure la décision finale du palmarès.",
+    "support": {
+     "type": "texte",
+     "reference": "Tableau palmarès (2001-2025) et règlement/présentation du festival (documents internes et communiqués).",
+     "disponible_le": "2026-11-19"
+    },
+    "attendu": "le jury, constitué et annoncé, délibère et attribue l'Étoile d'Or lors de la cérémonie de clôture (processus de validation effectif).",
+    "contredirait": "une décision du jury explicitement ignorée par le festival (arbitraire), ou l'absence de tout comité déclaré attribuant le prix."
+   },
+   "option": {
+    "acteur": "Le jury (direction du festival / président du jury)",
+    "avant": "attribuer l'Étoile d'Or conformément aux usages et règlements antérieurs",
+    "apres": "prendre une décision sur le lauréat et la publier"
+   },
+   "contre_observation": "Plusieurs éditions n'ont pas eu lieu (annulations 2017, 2020, 2021 selon le tableau palmarès), ce qui montre des interruptions mais non la disparition de l'autorité du jury.",
+   "portee": "marginale",
+   "test": "pistolet",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "une compilation historique (récapitulatif/presse, ex. Wikipedia) ; un document réglementaire/administratif du festival (règlement PDF) : deux producteurs distincts."
+   },
+   "a6": "CTR@5 → (la contrainte peut borner l'éventail de choix du jury, cf. retrait de film) ; PRO → (aucun fait dans les résultats liant HIÉRARCHIE à PROPORTION) ; REC → (aucun fait liant HIÉRARCHIE à RÉCIPROCITÉ trouvé) ; RES → (contre_candidate non documentée dans les résultats)",
+   "source_urls": [
+    "https://fr.wikipedia.org/wiki/Festival_international_du_film_de_Marrakech#:~:text=%7C%20Festival%20de%20Marrakech%20%7C,membre%20du%20jury%20en%202022",
+    "https://marrakech-festival.com/wp-content/uploads/2026/04/OKReglement-et-inscription-FIFM-2026-VAVFVUK-1.pdf"
+   ]
+  },
+  {
+   "carte": "CTR",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Retrait documenté d'un film (Chronicles From the Siege) de la compétition de Marrakech fin 2026 sur décision du détenteur des droits ; le festival a déclaré être 'bound to respect the decision of the company holding the film's rights'.",
+   "objet": "contrainte procédurale/contractuelle retirant une option de la compétition",
+   "source": "Variety (compte rendu du retrait) ; règlement du festival (conditions de respect des décisions des détenteurs de droits).",
+   "source_url": "https://variety.com/2026/film/global/chronicles-from-the-siege-withdrawn-marrakech-1236951684/#:~:text=Nov%2018%2C%202026%203%3A33am%20PT,Middle%20East%20and%20North%20Africa.",
+   "date_consultation": "2026-11-19",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Article Variety (résultat [5])",
+     "relation": "soutient",
+     "extrait": "le film ... a été retiré de la compétition à Marrakech à la dernière minute ... la société de production détentrice des droits a demandé le retrait"
+    },
+    {
+     "localisation": "Règlement du festival (résultat [4])",
+     "relation": "soutient",
+     "extrait": "le festival doit respecter la décision du détenteur des droits"
+    }
+   ],
+   "garantie": {
+    "mecanisme": "une décision contractuelle ou de droits (acteur externe / producteur) peut retirer une option au jury/festival, modifiant l'espace des possibles pour le palmarès.",
+    "support": {
+     "type": "texte",
+     "reference": "Variety (compte rendu du retrait, 18 nov. 2026) ; règlement du festival (conditions relatives aux présentations et droits).",
+     "disponible_le": "2026-11-19"
+    },
+    "attendu": "l'exclusion d'un film de la compétition réduit le champ des candidats et peut modifier la probabilité d'un lauréat 'autre'.",
+    "contredirait": "le retrait d'un film sans effet sur le palmarès (si remplacement direct sans impact), ou l'existence d'une règle empêchant un retrait imposé par un détenteur de droits."
+   },
+   "option": {
+    "acteur": "Détenteur des droits / société de production",
+    "avant": "maintenir le film en compétition",
+    "apres": "demander/obtenir le retrait du film, changeant la sélection"
+   },
+   "contre_observation": "Des exemples existent où des contraintes n'ont pas empêché l'attribution d'un prix (cas de sanctions ou de modifications qui n'ont pas empêché la remise du prix dans d'autres festivals) ; cela nuance mais ne nie pas l'effet possible d'une contrainte.",
+   "portee": "marginale",
+   "test": "pistolet",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "origine",
+    "motif": "un article de presse international (Variety) et le règlement officiel du festival : deux producteurs distincts."
+   },
+   "a6": "HIE@5 → (conflit apparent : la contrainte borne les options du jury) ; INC@5 → (la suppression d'une option accroît l'incertitude sur l'issue pour certains observateurs) ; POL@5 → (aucun fait liant CTR à une polarité politique interne disponible) ; SEU@5 → (aucun fait liant CTR à SEUIL disponible) ; TRC@5 → (aucun fait liant CTR à TRC disponible)",
+   "source_urls": [
+    "https://variety.com/2026/film/global/chronicles-from-the-siege-withdrawn-marrakech-1236951684/#:~:text=Nov%2018%2C%202026%203%3A33am%20PT,Middle%20East%20and%20North%20Africa.",
+    "https://marrakech-festival.com/wp-content/uploads/2026/04/OKReglement-et-inscription-FIFM-2026-VAVFVUK-1.pdf"
+   ]
+  },
+  {
+   "carte": "INC",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Analyses couvrant grands festivals (ex. Cannes 2017, 2025-2026 discussions) indiquent que des situations de forte incertitude pré-festival existent et ont parfois coïncidé avec des vainqueurs inattendus ; la relation est présente mais les études fournissent un support mixte.",
+   "objet": "niveau d'incertitude médiatique/pré-festival et son possible lien avec la survenue d'un lauréat inattendu",
+   "source": "Analyses et synthèses sur l'incidence de l'incertitude pré-festival (ex. analyses comparatives citées dans les résultats [8], [7]).",
+   "source_url": "https://cinemainonetake.substack.com/p/can-emma-jones-predict-the-palme#:~:text=%23%23%23%20Ahead%20of%20the%20Cannes",
+   "date_consultation": "2026-11-19",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Analyse (résultat [8])",
+     "relation": "soutient",
+     "extrait": "Cannes 2026 fournit un exemple récent : 'no obvious winner' had emerged, créant des conditions d'incertitude susceptibles de produire une issue surprenante."
+    }
+   ],
+   "garantie": {
+    "mecanisme": "quand les acteurs (presse, distributeurs, jurys) perçoivent une absence de favori, leurs conduites (couverture, lobby, préparation d'arguments) sont organisées par cette indétermination, augmentant la probabilité d'un choix non attendu.",
+    "support": {
+     "type": "texte",
+     "reference": "analyses comparatives et études de cas (résultat [8] et études citées dans les recherches).",
+     "disponible_le": "2026-11-19"
+    },
+    "attendu": "pré-festival high uncertainty is associated with increased incidence of unexpected winners in some documented cases.",
+    "contredirait": "des séries montrant que, malgré l'incertitude médiatique, les favoris l'emportent systématiquement (ex. analyses Oscars / TIFF montrant souvent des favoris visibles)."
+   },
+   "option": {
+    "acteur": "presse et acteurs de la saison des festivals",
+    "avant": "présence d'un favori clair",
+    "apres": "multiples prétendants sans consensus, pratiques de couverture et prédiction modifiées"
+   },
+   "contre_observation": "Des preuves (analyses des Oscars et d'autres festivals) montrent que souvent les favoris déjà visibles remportent les prix, ce qui nuance l'effet de l'incertitude.",
+   "portee": "marginale",
+   "test": "cerceau",
+   "corroboration": "unique"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le Festival International du Film de Marrakech a-t-il publié un communiqué officiel ou une couverture presse confirmant le lauréat de l'Étoile d'Or (palmarès) avant le 2027-01-01 ?",
+   "si_oui": "HIE@5",
+   "si_non": "indetermine",
+   "resolution": "un communiqué officiel du festival, un communiqué de presse ou une dépêche d'agence listant le lauréat de l'Étoile d'Or datée avant 2027-01-01 (source officielle du festival ou agences de presse internationales).",
+   "justification": {
+    "oui": "si un communiqué officiel annonce le lauréat, cela confirme que l'instance hiérarchique (jury/festival) a exercé son autorité et publié le résultat (appui direct à HIE@5).",
+    "non": "l'absence d'annonce officielle avant 2027-01-01 rend indéterminé si la décision a été prise/communiquée ou si un autre sort (partage, absence de lauréat, retard) s'est produit."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "RES@5": "[aucun_fait] aucun fait pertinent dans les résultats de recherche fournis établissant la carte 'RES' (définition, marqueurs observables ou instance organisationnelle correspondante)."
+ },
+ "etat": "[2026-11-19 | 10 jours] HIÉRARCHIE@5[f] + CONTRAINTE@5[f] + INCERTITUDE@5[f]",
+ "disponible_le": "2026-11-19",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "HIE@5"
+   ],
+   "requete": "Liste des palmarès et des présidents de jury du Festival de Marrakech (années disponibles, 2001-2025) — qui a présidé, et quels films ont obtenu l'Étoile d'Or",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@5"
+   ],
+   "requete": "Analyses ou synthèses comparant l'influence de la composition du jury (profil professionnel, nationalités) sur le choix des lauréats dans les festivals internationaux, focalisé sur Marrakech si disponible (2001-2025)",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "HIE@5"
+   ],
+   "requete": "Cas où la décision du jury de Marrakech a été considérée comme fortement décalée par rapport au consensus critique ou aux prix parallèles (exemples et fréquence, 2001-2025)",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "Règlement de la compétition et critères d'éligibilité à l'Étoile d'Or du Festival de Marrakech (textes de règle, communiqués officiels, changements récents) 2001-2026",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "Études ou cas montrant l'impact des contraintes formelles (retraits de films, disqualifications, règles d'admissibilité) sur l'attribution du grand prix dans les festivals (Marrakech, Cannes, Venise) 2000-2026",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@5"
+   ],
+   "requete": "Instances où des contraintes réglementaires ont empêché l'attribution d'un prix ou ont radicalement modifié le palmarès dans un festival international (exemples 2000-2026)",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@5"
+   ],
+   "requete": "Comparaison presse/pré-festival : listes de favoris publiées avant la cérémonie de Marrakech et résultats finaux (fréquence des divergences) 2001-2025",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "INC@5"
+   ],
+   "requete": "Analyses mesurant si un haut niveau d'incertitude pré-festival (multiples prétendants, absence de favori clair) augmente la probabilité d'un lauréat inattendu dans les grands festivals, 2000-2026",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@5"
+   ],
+   "requete": "Exemples où, malgré une grande incertitude médiatique avant la cérémonie, le gagnant était largement anticipé (consensus a posteriori) aux festivals 2000-2026",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@5",
+    "CTR@5"
+   ],
+   "requete": "Quelle explication est la plus persuasive pour des résultats inattendus : la singularité décisionnelle d'un jury (composition et goût) ou des contraintes/événements formels (retraits, disqualifications) ? études de cas festivals 2000-2026",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "HIE@5",
+    "INC@5"
+   ],
+   "requete": "Comparer l'effet prédictif des caractéristiques du jury vs. du niveau d'incertitude médiatique sur la survenue d'un gagnant inattendu dans les festivals (analyses 2000-2026)",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@5",
+    "INC@5"
+   ],
+   "requete": "Est-ce que les retraits ou contraintes de dernière minute (ex. film retiré) augmentent de façon mesurable la probabilité d'un vainqueur 'autre' comparé à une situation d'incertitude normale ? cas 2000-2026",
+   "executee": true,
+   "date_execution": "2026-11-19"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "HIÉRARCHIE@5 persiste",
+   "semantique": "continue",
+   "temporalite": "programmee",
+   "resolution": "La réponse sera OUI si l'attribution de l'Étoile d'Or 2026 correspond à un film autre que les options listées, ou si le prix est partagé, ou si aucun gagnant n'est annoncé avant le 1er janvier 2027 (autrement dit si le résultat n'est pas exclusivement l'un des autres choix).",
+   "source_resolution": {
+    "emetteur": "Marrakech International Film Festival (site officiel / bureau de presse)",
+    "document": "Annonce officielle des lauréats 2026 (communiqué de presse ou page 'winners' du site du festival daté au plus tard du 2027-01-01)",
+    "regle_ambiguite": "Si le festival publie un gagnant unique de l'Étoile d'Or pour 2026 et que ce film est l'une des options listées, la résolution est NON. Si le festival annonce un partage du prix, retire l'attribution, ou n'annonce aucun vainqueur avant 2027-01-01, la résolution est OUI ('Other outcome')."
+   },
+   "vue_exterieure": {
+    "frequence": 0.024093746577592817,
+    "classe_de_reference": "attributions annuelles de l'Étoile d'Or (prix principal) du Marrakech International Film Festival, telles qu'énumérées dans les listes historiques de la source",
+    "source": "R1 : liste historique des lauréats de l'Étoile d'Or 2001–2025 (Marrakech International Film Festival winners list)",
+    "periode": "2001-2025",
+    "disponible_le": "2026-11-19",
+    "classe_alternative": null,
+    "motif_sans_alternative": "La classe de référence a été imposée et définit précisément l'unité (seules les éditions pour lesquelles la source répertorie une attribution sont comptées). Toute autre classe (p.ex. en incluant les années sans attribution) modifierait la définition imposée et ne peut être utilisée ici.",
+    "ecart_critere": "La classe compte le taux historique d'attributions documentées de l'Étoile d'Or (éd. où un gagnant est listé). La question de résolution porte sur l'issue spécifique de l'édition 2026 (si le gagnant est l'une des options données ou 'Other outcome', incluant partage du prix ou absence de vainqueur annoncée avant 2027-01-01). Différence principale : la classe exclut les années sans attribution (qui, si elles survenaient pour 2026, relèvent pourtant de 'Other outcome' selon la précision)."
+   },
+   "programmation": {
+    "qui": "Festival International du Film de Marrakech (direction du festival et le jury présidé par Marion Cotillard)",
+    "engagement": "programmation officielle et communiqué du festival précisent que le palmarès (Étoile d'Or) sera annoncé lors de la cérémonie de clôture du 28 novembre 2026 (horaire et déroulé publiés dans le programme officiel)"
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "HIE@5",
+   "vers": "cible",
+   "extrait": "Les présidents de jury semblent jouer un rôle significatif.",
+   "source": ""
+  },
+  {
+   "instruction": "bloque",
+   "de": "CTR@5",
+   "extrait": "La composition des jurys peut être stratégiquement influencée par la direction du festival, mais cela ne garantit pas un résultat spécifique",
+   "source": ""
+  },
+  {
+   "instruction": "bloque",
+   "de": "INC@5",
+   "extrait": "les données disponibles ne permettent pas de conclure à une influence directe et mesurable de cette composition sur les choix des lauréats.",
+   "source": ""
+  }
+ ]
+}
