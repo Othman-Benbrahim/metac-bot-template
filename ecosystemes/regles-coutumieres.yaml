@@ -1,5 +1,6 @@
 # Règles coutumières par écosystème et par échelle (lot 1 : élections américaines, inertie des régimes fermés ;
-# lot 2 : Europe et erreur des sondages comparée ; lot 3 : Afrique).
+# lot 2 : Europe et erreur des sondages comparée ; lot 3 : Afrique ; lot 4 : Asie, Océanie et table mondiale des
+# présidentielles).
 # Décisions de l'auteur du 2026-11-19 (22 h 43 à 22 h 59) : ne pas déduire ; écrire les règles telles qu'elles existent,
 # chacune avec sa source ; sans source, la case reste vide (« absence ») et la brique s'abstient. Pour les régimes
 # opaques : privilégier la règle d'inertie. Ce fichier n'est pas une fiche (pas de clé « theme ») : regles_coutumieres.py
@@ -271,3 +272,74 @@ regles:
     sources:
       - {titre: "CNUCED, Economic Development in Africa Report 2020 : Tackling illicit financial flows for sustainable development in Africa (ONU Info, 28 septembre 2020)", url: "https://news.un.org/en/story/2020/09/1074052", consulte: "2026-11-19"}
     statut: source
+
+  # ---------------------------------------------------------------- lot 4 : Asie, Océanie ; table mondiale des présidentielles
+  - id: presidentielles_mode_de_scrutin
+    ecosysteme: "Monde · mode d'élection du président (base de l'International IDEA)"
+    espace: monde
+    echelle: {axe: taille, tranche: national}
+    structure: course
+    regle: "Deux tours (TRS) : Mongolie, Kazakhstan, Kirghizstan, Turquie, Iran, Nigeria, Kenya, Sénégal, Côte d'Ivoire, Ghana, Zimbabwe, Mozambique, Ouganda, Brésil, Argentine, Colombie, Chili, Pérou, France, Portugal, Pologne, Roumanie, Autriche, Indonésie. Un tour, majorité relative (FPTP) : Corée du Sud, Taïwan, Philippines, Cameroun, Tanzanie, RD Congo, Mexique, Venezuela. Vote supplémentaire (SV, préférence de second rang) : Sri Lanka. Les seuils de victoire au premier tour peuvent différer de 50 % selon le pays : une règle nationale propre, quand elle est inscrite dans cette base, prime sur cette table."
+    parametres:
+      deux_tours: [MN, KZ, KG, TR, IR, NG, KE, SN, CI, GH, ZW, MZ, UG, BR, AR, CO, CL, PE, FR, PT, PL, RO, AT, ID]
+      un_tour: [KR, TW, PH, CM, TZ, CD, MX, VE]
+      vote_supplementaire: [LK]
+    sources:
+      - {titre: "International IDEA, Electoral System Design Database, Electoral system for the president (vue par question)", url: "https://www.idea.int/data-tools/question-view/130359", consulte: "2026-11-19"}
+    statut: source
+
+  - id: indonesie_presidentielle
+    ecosysteme: "Indonésie · élection présidentielle"
+    espace: asie
+    echelle: {axe: taille, tranche: national}
+    structure: course
+    regle: "Élu au premier tour : plus de 50 % des voix ET au moins 20 % dans chacune de plus de la moitié des provinces ; sinon second tour entre les deux premiers. Avec deux candidats seulement, la Cour constitutionnelle a jugé que la condition de répartition provinciale ne s'applique pas (la majorité suffit)."
+    parametres: {majorite: 50, seuil_provincial: 20, part_provinces: "plus de la moitié", deux_candidats: majorite_simple}
+    sources:
+      - {titre: "Loi no 7/2017, article 416 (International IDEA)", url: "https://www.idea.int/node/127452", consulte: "2026-11-19"}
+      - {titre: "Cour constitutionnelle d'Indonésie, décision 39/PUU-XVII/2019", url: "https://en.mkri.id/news/details/2019-09-30/Court_Affirms_Provision_on_Vote_Acquisition_of_President_Elect", consulte: "2026-11-19"}
+    statut: source
+
+  - id: japon_chambre_basse
+    ecosysteme: "Japon · Chambre des représentants"
+    espace: asie
+    echelle: {axe: taille, tranche: national}
+    structure: course
+    regle: "Système parallèle : 465 sièges, dont 289 élus au scrutin uninominal et 176 à la proportionnelle, le même jour. La majorité absolue est donc de 233 sièges."
+    parametres: {sieges: 465, uninominal: 289, proportionnelle: 176, majorite_absolue: 233}
+    sources:
+      - {titre: "International IDEA, Electoral system for national legislature : Japon (source : ministère des Affaires intérieures et des Communications)", url: "https://www.idea.int/node/160916", consulte: "2026-11-19"}
+    statut: source
+
+  - id: australie_vote_preferentiel
+    ecosysteme: "Australie · élections fédérales"
+    espace: oceanie
+    echelle: {axe: taille, tranche: "circonscription (Chambre) ; État (Sénat)"}
+    structure: course
+    regle: "Chambre des représentants : un élu par circonscription, vote préférentiel complet ; on transfère les préférences jusqu'à ce qu'un candidat obtienne la majorité absolue (plus de 50 % des bulletins valides). Le premier au décompte des premières préférences n'est donc pas toujours élu. Sénat : plusieurs élus par État, préférences transférées jusqu'au quota. (Le vote obligatoire n'est pas mentionné par la source consultée : non inscrit.)"
+    parametres: {chambre: vote_preferentiel_majorite_absolue, senat: quota_par_etat}
+    sources:
+      - {titre: "Australian Electoral Commission, Preferential voting", url: "https://aec.gov.au/learn/preferential-voting.htm", consulte: "2026-11-19"}
+    statut: source
+
+  - id: inde_scrutin_uninominal
+    ecosysteme: "Inde · élections à la Lok Sabha"
+    espace: asie
+    echelle: {axe: taille, tranche: circonscription}
+    structure: course
+    regle: "Scrutin uninominal majoritaire à un tour : le candidat arrivé en tête dans la circonscription est élu, même sans majorité. (Le nombre de sièges n'est pas donné par la source consultée : non inscrit.)"
+    parametres: {mode: uninominal_un_tour}
+    sources:
+      - {titre: "Australian Electoral Commission, Preferential voting (comparaison : le scrutin majoritaire à un tour est utilisé aux États-Unis, au Royaume-Uni, au Canada et en Inde)", url: "https://aec.gov.au/learn/preferential-voting.htm", consulte: "2026-11-19"}
+    statut: source
+
+  - id: chine_maintien
+    ecosysteme: "Chine · maintien des dirigeants"
+    espace: asie
+    echelle: {axe: temps, tranche: "fenêtre d'une question"}
+    structure: maintien
+    regle: "Régime fermé : la règle d'inertie s'applique (voir regimes_fermes_inertie) ; aucune règle chiffrée propre n'est inscrite dans ce lot."
+    parametres: {}
+    sources: []
+    statut: absence
+    aide: "une règle chiffrée propre à la Chine, s'il en existe (calendrier des congrès du Parti, limites d'âge informelles)"
