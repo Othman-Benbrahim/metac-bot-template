@@ -1,0 +1,102 @@
+theme: "observateur-mesure"
+nom: "L'observateur et la mesure"
+declaration:
+  but: "traiter l'observateur comme un élément du système : nos sources, nos modèles de langue, nos bancs et nous-mêmes déforment ce que nous voyons ; savoir ce que nous voyons mal et ce que nous voyons trop"
+  limites: "dedans nos sources et leurs biais, les statistiques et leurs définitions, la jeunesse de nos séries, les modèles de langue comme lecteurs, la fuite des recherches rétrospectives, nos contrôles, la psychologie du prévisionniste ; dehors le monde lui-même (toutes les autres fiches)"
+  observateur: "nous-mêmes, regard réflexif ; fiche fondée sur nos propres résultats publiés"
+  date: "2026-11-19"
+  espace: "nos données et le monde qu'elles couvrent ou ne couvrent pas"
+  temps: "depuis le début de nos collectes (2026) ; mémoire de nos erreurs publiées"
+  vitesse: "jours (une collecte), semaines (un banc), mois (une série qui mûrit)"
+  taille: "micro (un chiffre recopié) à macro (la couverture mondiale de nos sources)"
+compartiments:
+  - id: "biais"
+    nom: "Biais des sources"
+    organisation: "technique"
+    elements: ["GDELT lit surtout la presse anglophone", "l'attention suit les médias, pas les faits", "pays et sujets peu couverts", "sources qui changent de format"]
+    acteurs:
+      - {nom: "GDELT", taille: "macro", espace: "mondial", vitesse: "heures", organisation: "technique", facette: "collectif"}
+    niveau: {espace: "mondial", temps: "permanent", vitesse: "années", taille: "macro"}
+    traces:
+      - {source: "santé des flux RSS et des sources (registre)", statut: "collecte", fichier: "collecte_rss.py"}
+  - id: "definitions"
+    nom: "Définitions et statistiques (convention)"
+    organisation: "convention"
+    elements: ["ce qui est compté comme un cas, une victime, une récession", "révisions", "statistiques suspendues ou redéfinies"]
+    niveau: {espace: "pays", temps: "calendriers de publication", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "calendrier et publications des statistiques chinoises", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
+  - id: "jeunesse_series"
+    nom: "Jeunesse des séries"
+    organisation: "technique"
+    elements: ["collectes commencées en 2026", "habitude mesurée en pleine crise", "pas de référence d'avant-crise"]
+    niveau: {espace: "nos registres", temps: "quelques mois", vitesse: "mois", taille: "micro à méso"}
+    traces:
+      - {source: "passages de PortWatch à Ormuz (série commencée en pleine crise)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:ormuz:navires"}
+  - id: "lecteurs_ia"
+    nom: "Modèles de langue comme lecteurs"
+    organisation: "technique"
+    elements: ["désaccord entre codeurs (κ mesuré faible au banc de couverture)", "lecteur qui recopie la matrice qu'on lui montre", "refus des filtres", "variabilité d'un tirage à l'autre"]
+    acteurs:
+      - {nom: "un modèle de langue lecteur", taille: "micro", espace: "local", vitesse: "secondes", organisation: "technique", facette: "non_humain"}
+    niveau: {espace: "nos bancs", temps: "chaque appel", vitesse: "secondes", taille: "micro"}
+    traces:
+      - {source: "registres des bancs (accords, refus)", statut: "collecte", fichier: "banc_couverture_alphabet.py"}
+  - id: "fuite"
+    nom: "Fuite des recherches rétrospectives"
+    organisation: "technique"
+    elements: ["une recherche relancée après l'issue laisse filtrer l'avenir", "capture en direct comme remède"]
+    niveau: {espace: "nos bancs", temps: "après coup", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "banc de la fuite des recherches", statut: "collecte", fichier: "banc_fuite_recherche.py"}
+  - id: "controles"
+    nom: "Contrôles et préenregistrement"
+    organisation: "statut"
+    elements: ["préenregistrement daté", "contrôle automatique des chiffres des fiches", "correction pour essais multiples", "publication des erreurs"]
+    acteurs:
+      - {nom: "la règle d'adoption du projet", taille: "méso", espace: "local", vitesse: "semaines", organisation: "statut", facette: "statut"}
+    niveau: {espace: "nos dépôts", temps: "chaque essai", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "essais et fiches contrôlées (registre public)", statut: "collecte", fichier: "controle_chiffres.py"}
+  - id: "psychologie"
+    nom: "Psychologie du prévisionniste"
+    organisation: "psychologique"
+    elements: ["ancrage sur le premier chiffre", "excès de confiance", "envie de trouver un signal", "chemins qui bifurquent (essayer jusqu'à ce que ça marche)"]
+    acteurs:
+      - {nom: "l'auteur et Claude, comme prévisionnistes", taille: "micro", espace: "local", vitesse: "jours", organisation: "psychologique", facette: "psyche"}
+    niveau: {espace: "nous", temps: "chaque décision", vitesse: "heures à semaines", taille: "micro"}
+    traces:
+      - {source: "aucune trace directe : nos décisions datées", statut: "inconnue"}
+  - id: "couverture"
+    nom: "Ce que nous ne voyons pas"
+    organisation: "convention"
+    elements: ["compartiments sans trace", "niveaux presque vides (personne, entourage)", "pays et langues absents de nos sources"]
+    niveau: {espace: "mondial", temps: "permanent", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "liste de travail des écosystèmes (compartiments sans trace collectée)", statut: "collecte", fichier: "ecosystemes.py"}
+  - id: "monde"
+    nom: "Le monde observé"
+    organisation: "geopolitique"
+    elements: ["les situations réelles, que nos mesures ne font qu'approcher"]
+    niveau: {espace: "mondial", temps: "permanent", vitesse: "heures à décennies", taille: "macro"}
+    traces:
+      - {source: "toutes les autres fiches", statut: "inconnue"}
+relations:
+  - {de: "biais", vers: "monde", effet: "±", delai: "permanent", force: "forte", coupure: "sources multiples et dans d'autres langues", statut: "a_verifier", texte: "nous voyons trop ce dont la presse anglophone parle, et trop peu le reste"}
+  - {de: "definitions", vers: "monde", effet: "±", delai: "jours", force: "moyenne", coupure: "révisions ultérieures", statut: "a_verifier", texte: "un chiffre dépend de sa définition : changer la définition change ce que nous voyons sans changer le monde"}
+  - {de: "jeunesse_series", vers: "monde", effet: "-", delai: "permanent", force: "forte", intensite: {mesure: "durée de la série avant la crise en cours", regle: "seuil"}, coupure: "référence d'avant-crise", statut: "a_verifier", texte: "une habitude mesurée en pleine crise cache la crise (Ormuz)"}
+  - {de: "lecteurs_ia", vers: "controles", effet: "-", retour: "-", delai: "jours", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau technique : les lecteurs instables obligent à multiplier les contrôles, qui révèlent leur instabilité"}
+  - {de: "fuite", vers: "controles", effet: "-", delai: "semaines", force: "forte", coupure: "capture en direct des recherches", statut: "a_verifier", texte: "une fuite gonfle les résultats des bancs rétrospectifs si on ne la mesure pas"}
+  - {de: "controles", vers: "psychologie", effet: "-", delai: "jours", force: "forte", coupure: "contrôle contourné", statut: "a_verifier", texte: "le préenregistrement et le contrôle des chiffres bornent l'envie de trouver un signal (passage du statut au psychologique)"}
+  - {de: "psychologie", vers: "controles", effet: "-", delai: "semaines", force: "moyenne", intensite: {mesure: "nombre d'essais ouverts sans résultat", regle: "seuil"}, coupure: "correction pour essais multiples", statut: "a_verifier", texte: "après une série d'échecs, la tentation d'essayer jusqu'à ce que ça marche monte au-delà d'un seuil"}
+  - {de: "psychologie", vers: "lecteurs_ia", effet: "±", delai: "heures", force: "moyenne", coupure: "consignes neutres", statut: "a_verifier", texte: "la consigne du prévisionniste oriente la lecture du modèle (il recopie ce qu'on lui montre)"}
+  - {de: "biais", vers: "couverture", effet: "+", delai: "permanent", force: "forte", coupure: "nouvelles sources", statut: "a_verifier", texte: "les biais des sources fabriquent les angles morts"}
+  - {de: "couverture", vers: "controles", effet: "-", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "ce que nous ne voyons pas, aucun contrôle ne peut le vérifier"}
+  - {de: "lecteurs_ia", vers: "definitions", effet: "±", delai: "secondes", force: "faible", coupure: "contrôle des chiffres", statut: "a_verifier", texte: "un modèle qui résume peut changer un chiffre ou sa définition (taux mesuré faible au contrôle de fidélité)"}
+  - {de: "monde", vers: "jeunesse_series", effet: "+", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "le temps qui passe fait mûrir les séries : le monde finit par donner sa référence"}
+ponts:
+  - {depuis: "biais", vers: "information-cyber:recits", nature: "les récits médiatiques que nos sources reflètent"}
+  - {depuis: "definitions", vers: "economie-chinoise:statistiques", nature: "la fiabilité des chiffres officiels chinois"}
+  - {depuis: "definitions", vers: "epidemies:convention", nature: "la définition de cas", type: "meme"}
+  - {depuis: "jeunesse_series", vers: "ormuz:navigation", nature: "le trafic d'Ormuz, mesuré seulement depuis la crise"}
+  - {depuis: "definitions", vers: "inflation-mondiale:statistiques", nature: "les indices de prix et leurs révisions"}

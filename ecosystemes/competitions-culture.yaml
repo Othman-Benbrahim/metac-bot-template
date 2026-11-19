@@ -1,0 +1,109 @@
+theme: "competitions-culture"
+nom: "Compétitions sportives et culturelles"
+declaration:
+  but: "comprendre ce qui fait gagner ou perdre dans une compétition sportive ou culturelle (championnats, coupes, prix, festivals, box-office) — questions nombreuses sur Polymarket et Manifold"
+  limites: "dedans les règles d'attribution, la forme des concurrents, la psychologie, le public et les jurys, l'argent, les médias, le calendrier ; dehors les élections (fiches politiques) et les paris en eux-mêmes (nous n'utilisons jamais les cotes)"
+  observateur: "notre carte, regard extérieur ; sportifs et artistes seulement en agrégat ou par leurs faits publics"
+  date: "2026-11-19"
+  espace: "du stade au marché mondial du divertissement"
+  temps: "du match à la saison ; mémoire des palmarès"
+  vitesse: "heures (un match), semaines (une compétition), saisons (un championnat), années (une carrière)"
+  taille: "micro (un concurrent) à macro (un marché mondial)"
+compartiments:
+  - id: "regles"
+    nom: "Règles d'attribution (convention)"
+    organisation: "convention"
+    elements: ["formats de compétition (élimination, poules)", "systèmes de vote des jurys et du public", "critères d'éligibilité", "arbitrage et vidéo"]
+    acteurs:
+      - {nom: "une fédération ou une académie", taille: "méso", espace: "mondial", vitesse: "années", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "mondial", temps: "règlements de saison", vitesse: "années", taille: "méso"}
+    traces:
+      - {source: "règlements publics des fédérations et des académies", statut: "a_brancher"}
+  - id: "forme"
+    nom: "Forme et blessures"
+    organisation: "personne"
+    elements: ["résultats récents", "blessures annoncées publiquement", "âge", "fatigue du calendrier"]
+    acteurs:
+      - {nom: "un concurrent (par ses faits publics)", taille: "micro", espace: "local", vitesse: "jours", organisation: "personne", facette: "personne"}
+      - {nom: "une équipe", taille: "micro à méso", espace: "pays", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
+    niveau: {espace: "équipe", temps: "saison", vitesse: "jours à mois", taille: "micro"}
+    traces:
+      - {source: "résultats sportifs publics", statut: "a_brancher"}
+  - id: "psychologie"
+    nom: "Psychologie de la compétition"
+    organisation: "psychologique"
+    elements: ["pression des grands rendez-vous", "confiance après une série", "avantage du terrain", "peur de gagner"]
+    acteurs:
+      - {nom: "le moral d'une équipe (déduit des faits publics)", taille: "micro", espace: "local", vitesse: "jours", organisation: "psychologique", facette: "psyche"}
+    niveau: {espace: "équipe", temps: "match à saison", vitesse: "heures à semaines", taille: "micro"}
+    traces:
+      - {source: "aucune trace directe : déduite des séries de résultats", statut: "inconnue"}
+  - id: "public"
+    nom: "Public et jurys"
+    organisation: "societe"
+    elements: ["votes du public", "jurys professionnels", "affluence", "ferveur nationale"]
+    acteurs:
+      - {nom: "le public d'un pays", taille: "macro", espace: "pays", vitesse: "jours", organisation: "societe", facette: "collectif"}
+      - {nom: "un jury de professionnels", taille: "micro", espace: "mondial", vitesse: "semaines", organisation: "entourage", facette: "collectif"}
+    niveau: {espace: "pays à monde", temps: "soirée de vote, saison", vitesse: "heures à semaines", taille: "micro à macro"}
+    traces:
+      - {source: "pages vues Wikipédia des concurrents", statut: "collecte", fichier: "banc_wikipedia.py"}
+  - id: "argent"
+    nom: "Argent et marchés"
+    organisation: "economie"
+    elements: ["budgets des clubs et des studios", "transferts", "droits télévisés", "box-office"]
+    acteurs:
+      - {nom: "un club ou un studio", taille: "méso", espace: "mondial", vitesse: "mois", organisation: "economie", facette: "collectif"}
+    niveau: {espace: "mondial", temps: "saisons, sorties", vitesse: "semaines à années", taille: "méso à macro"}
+    traces:
+      - {source: "chiffres publics du box-office", statut: "a_brancher"}
+  - id: "medias"
+    nom: "Médias et récits"
+    organisation: "ideologie"
+    elements: ["campagnes de promotion", "favoris désignés", "polémiques", "récit du retour ou de la revanche"]
+    niveau: {espace: "mondial", temps: "cycle de l'information", vitesse: "heures à semaines", taille: "méso à macro"}
+    traces:
+      - {source: "GDELT (attention médiatique)", statut: "collecte", fichier: "collecte_gdelt.py"}
+  - id: "calendrier"
+    nom: "Calendrier des compétitions"
+    organisation: "convention"
+    elements: ["dates des matchs et des cérémonies", "enchaînement des rencontres", "trêves"]
+    niveau: {espace: "mondial", temps: "saisons fixes", vitesse: "semaines", taille: "méso"}
+    traces:
+      - {source: "calendriers publics des fédérations et des cérémonies", statut: "a_brancher"}
+  - id: "milieu"
+    nom: "Milieu physique"
+    organisation: "meteo"
+    elements: ["chaleur", "altitude", "pluie", "pelouse et piste"]
+    acteurs:
+      - {nom: "une vague de chaleur pendant un tournoi", taille: "méso", espace: "région", vitesse: "jours", organisation: "meteo", facette: "non_humain"}
+    niveau: {espace: "site", temps: "jour du match", vitesse: "heures à jours", taille: "micro à méso"}
+    traces:
+      - {source: "anomalie de température (point le plus proche à brancher)", statut: "a_brancher"}
+  - id: "geopolitique"
+    nom: "Géopolitique des compétitions"
+    organisation: "geopolitique"
+    elements: ["exclusions de pays", "boycotts", "votes de voisinage et de diaspora", "pays hôtes"]
+    niveau: {espace: "mondial", temps: "années", vitesse: "mois à années", taille: "macro"}
+    traces:
+      - {source: "décisions publiques des fédérations et des États", statut: "a_brancher"}
+relations:
+  - {de: "regles", vers: "forme", effet: "±", delai: "saison", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le format décide de la part du hasard : une élimination directe donne plus de chances au moins fort qu'un championnat long"}
+  - {de: "forme", vers: "psychologie", effet: "+", retour: "+", forme: "mutualisme", delai: "jours", force: "moyenne", intensite: {mesure: "longueur de la série de victoires ou de défaites", regle: "seuil"}, coupure: "blessure, changement d'entraîneur", statut: "a_verifier", texte: "victoires et confiance se nourrissent, jusqu'à un seuil où la série se brise"}
+  - {de: "psychologie", vers: "forme", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "enjeu du match (finale, élimination)", regle: "seuil"}, coupure: "expérience des grands rendez-vous", statut: "a_verifier", texte: "la pression des grands enjeux fait perdre des moyens au-delà d'un seuil"}
+  - {de: "public", vers: "psychologie", effet: "+", delai: "heures", force: "faible", coupure: "huis clos", statut: "a_verifier", texte: "l'avantage du terrain passe par le public (passage de la société au psychologique)"}
+  - {de: "argent", vers: "forme", effet: "+", delai: "saisons", force: "forte", coupure: "règles de plafond salarial", statut: "a_verifier", texte: "les budgets achètent les meilleurs : sur une saison longue, l'argent prédit beaucoup"}
+  - {de: "medias", vers: "public", effet: "+", delai: "jours", force: "moyenne", intensite: {mesure: "attention médiatique", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "les campagnes et les récits orientent les votes du public"}
+  - {de: "public", vers: "argent", effet: "+", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la ferveur fait les recettes et le box-office"}
+  - {de: "regles", vers: "public", effet: "±", delai: "soirée de vote", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le partage entre jury et public décide de qui compte : une même performance gagne ou perd selon la règle"}
+  - {de: "calendrier", vers: "forme", effet: "-", delai: "semaines", force: "moyenne", intensite: {mesure: "densité des matchs", regle: "seuil"}, coupure: "rotation de l'effectif", statut: "a_verifier", texte: "un calendrier chargé fatigue et blesse au-delà d'un seuil"}
+  - {de: "milieu", vers: "forme", effet: "-", delai: "heures", force: "faible", intensite: {mesure: "chaleur ou altitude inhabituelles", regle: "seuil"}, coupure: "acclimatation", statut: "a_verifier", texte: "la chaleur et l'altitude pèsent sur les organismes non acclimatés (passage de la météo à la personne)"}
+  - {de: "geopolitique", vers: "public", effet: "±", delai: "soirée de vote", force: "moyenne", coupure: "règles de vote", statut: "a_verifier", texte: "votes de voisinage et de diaspora dans les concours (Eurovision)"}
+  - {de: "geopolitique", vers: "regles", effet: "-", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "exclusions et boycotts changent la liste des concurrents"}
+  - {de: "forme", vers: "forme", effet: "-", retour: "-", forme: "competition", delai: "heures", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau personne : la compétition elle-même, ce que l'un gagne l'autre le perd"}
+ponts:
+  - {depuis: "geopolitique", vers: "russie-ukraine:soutiens", nature: "exclusions sportives et culturelles liées à la guerre"}
+  - {depuis: "milieu", vers: "climat-extremes:saisons", nature: "chaleurs extrêmes pendant les grandes compétitions"}
+  - {depuis: "medias", vers: "information-cyber:recits", nature: "les récits médiatiques"}
+  - {depuis: "calendrier", vers: "calendriers-echeances:memoire", nature: "les dates fixes et les anniversaires"}
+  - {depuis: "public", vers: "migrations-demographie:diasporas", nature: "les votes des diasporas"}

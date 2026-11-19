@@ -1,0 +1,52 @@
+# Extension .yml (et non .yaml) : ecosystemes.charger() lit tous les *.yaml du dossier comme des fiches.
+# Propositions de branchement des sources dormantes (lot B, 0.10.323) — à appliquer par le parent, fiches non modifiées ici.
+# Chaque entrée : l'adaptateur (adaptateurs_sources_b.py), la fiche et le compartiment EXISTANT qu'il lit, et pourquoi.
+# Compartiment « a_definir » : la fiche visée est en cours d'écriture ou ce compartiment manque encore.
+branchements:
+  # --- Guerre Russie–Ukraine
+  - {adaptateur: "hostilites:UA", fiche: "russie-ukraine", compartiment: "front", source: "actes hostiles d'acteurs russes en Ukraine par jour (GDELT)", raison: "intensité quotidienne du front, vue par la presse"}
+  - {adaptateur: "paire_mois:RU:UA:conflit", fiche: "russie-ukraine", compartiment: "negociations", source: "événements conflictuels Russie–Ukraine par mois (GDELT)", raison: "le niveau de conflit du mois borne ce que la négociation peut obtenir"}
+  - {adaptateur: "paire:RU:UA:force", fiche: "russie-ukraine", compartiment: "capacites", source: "démonstrations de force russes envers l'Ukraine par jour (GDELT)", raison: "signal des capacités engagées"}
+  - {adaptateur: "telegram:kpszsu", fiche: "russie-ukraine", compartiment: "front", source: "messages quotidiens de la chaîne publique de l'armée de l'air ukrainienne", raison: "le rythme des alertes suit celui des frappes"}
+  - {adaptateur: "telegram:mod_russia", fiche: "russie-ukraine", compartiment: "opinions", source: "messages quotidiens de la chaîne publique du ministère russe de la Défense", raison: "le rythme du récit officiel russe"}
+  - {adaptateur: "hostilites:MD", fiche: "russie-ukraine", compartiment: "soutiens", source: "actes hostiles d'acteurs russes en Moldavie (GDELT)", raison: "la pression russe sur le voisinage des soutiens"}
+  - {adaptateur: "sanctions_chine:UA", fiche: "russie-ukraine", compartiment: "sanctions", source: "mesures de sanction chinoises visant l'Ukraine (GDELT)", raison: "la position chinoise dans le jeu des sanctions"}
+  # --- Levant, Iran, Ormuz
+  - {adaptateur: "paire:IL:IR:force", fiche: "guerre-levant", compartiment: "iran", source: "démonstrations de force d'Israël envers l'Iran par jour (GDELT)", raison: "l'escalade directe entre les deux États"}
+  - {adaptateur: "paire:IL:LB:force", fiche: "guerre-levant", compartiment: "liban", source: "démonstrations de force d'Israël envers le Liban par jour (GDELT)", raison: "le front nord"}
+  - {adaptateur: "manifestations:IL", fiche: "guerre-levant", compartiment: "israel", source: "manifestations par jour en Israël (GDELT)", raison: "la pression intérieure sur la conduite de la guerre"}
+  - {adaptateur: "ucdp:Yemen", fiche: "guerre-levant", compartiment: "yemen", source: "morts de violence organisée au Yémen par jour (UCDP)", raison: "intensité du front yéménite"}
+  - {adaptateur: "telegram:idfofficial", fiche: "guerre-levant", compartiment: "recits", source: "messages quotidiens de la chaîne publique de l'armée israélienne", raison: "le rythme du récit officiel israélien"}
+  - {adaptateur: "telegram:tout", fiche: "guerre-levant", compartiment: "recits", source: "messages quotidiens de toutes les chaînes publiques suivies (comptes seulement)", raison: "l'agitation médiatique régionale"}
+  - {adaptateur: "prix_alimentaires:LB", fiche: "guerre-levant", compartiment: "humanitaire", source: "inflation alimentaire mensuelle au Liban (PAM)", raison: "la pression humanitaire mesurée par le prix de la nourriture"}
+  - {adaptateur: "manifestations:IR", fiche: "iran-nucleaire", compartiment: "societe_iranienne", source: "manifestations par jour en Iran (GDELT)", raison: "la pression de la société sur le pouvoir"}
+  - {adaptateur: "paire_mois:IR:US:conflit", fiche: "iran-nucleaire", compartiment: "etats_unis", source: "événements conflictuels Iran–États-Unis par mois (GDELT)", raison: "la tension de la rivalité, en complément du ton hebdomadaire"}
+  - {adaptateur: "conflictforecast:IRN", fiche: "iran-nucleaire", compartiment: "pouvoir_iranien", source: "probabilité de violence à 12 mois publiée par ConflictForecast pour l'Iran", raison: "un regard extérieur chiffré, publié chaque mois (à ne pas prendre comme vérité : c'est une prévision d'autrui)"}
+  - {adaptateur: "telegram:farsna", fiche: "ormuz", compartiment: "recits", source: "messages quotidiens de l'agence d'État iranienne Fars", raison: "le rythme du récit officiel iranien sur le Golfe"}
+  - {adaptateur: "voisins:IR", fiche: "ormuz", compartiment: "riverains", source: "manifestations chez les voisins terrestres de l'Iran (GDELT)", raison: "l'agitation du voisinage"}
+  # --- Chine, rivalité, Taïwan
+  - {adaptateur: "paire:CN:TW:force", fiche: "rivalite-sino-americaine", compartiment: "taiwan", source: "démonstrations de force chinoises envers Taïwan par jour (GDELT)", raison: "la pression militaire sur le détroit"}
+  - {adaptateur: "sanctions_chine:US", fiche: "rivalite-sino-americaine", compartiment: "commerce", source: "sanctions et boycotts chinois visant les États-Unis par jour (GDELT)", raison: "les représailles commerciales"}
+  - {adaptateur: "paire_mois:CN:US:conflit", fiche: "rivalite-sino-americaine", compartiment: "diplomatie", source: "événements conflictuels Chine–États-Unis par mois (GDELT)", raison: "la température diplomatique"}
+  - {adaptateur: "sanctions_chine:JP", fiche: "rivalite-sino-americaine", compartiment: "alliances", source: "sanctions chinoises visant le Japon (GDELT)", raison: "la pression sur les alliés des États-Unis"}
+  - {adaptateur: "manifestations:CN", fiche: "economie-chinoise", compartiment: "pouvoir", source: "manifestations par jour en Chine (GDELT)", raison: "la contestation que le pouvoir doit contenir"}
+  # --- États-Unis
+  - {adaptateur: "routines:maison_blanche", fiche: "politique-americaine", compartiment: "executif", source: "publications quotidiennes du site de la Maison-Blanche", raison: "le rythme d'action affiché de l'exécutif"}
+  - {adaptateur: "routines:pentagone", fiche: "politique-americaine", compartiment: "sanctions", source: "publications quotidiennes du site du Pentagone", raison: "le rythme de l'appareil de défense, levier de la puissance extérieure"}
+  - {adaptateur: "manifestations:US", fiche: "politique-americaine", compartiment: "elections", source: "manifestations par jour aux États-Unis (GDELT)", raison: "la mobilisation de la société avant les scrutins"}
+  - {adaptateur: "wikipedia:Fed", fiche: "politique-americaine", compartiment: "reserve_federale", source: "pages vues de l'article Fed (relevées pour les bancs)", raison: "l'attention du public sur la Réserve fédérale"}
+  # --- Économie, alimentation, dette
+  - {adaptateur: "prix_alimentaires:EG", fiche: "alimentation-mondiale", compartiment: "importateurs", source: "inflation alimentaire mensuelle en Égypte (PAM)", raison: "un grand importateur de céréales sous tension"}
+  - {adaptateur: "prix_alimentaires:NG", fiche: "dette-emergents", compartiment: "inflation_locale", source: "inflation alimentaire mensuelle au Nigeria (PAM)", raison: "le pain et les carburants dans un pays endetté"}
+  - {adaptateur: "prix_alimentaires:SD", fiche: "alimentation-mondiale", compartiment: "prix", source: "inflation alimentaire mensuelle au Soudan (PAM)", raison: "le prix local là où la faim est la plus forte"}
+  - {adaptateur: "manifestations:KE", fiche: "dette-emergents", compartiment: "politique_interieure", source: "manifestations par jour au Kenya (GDELT)", raison: "la contestation des ajustements budgétaires"}
+  - {adaptateur: "acaps:SD", fiche: "alimentation-mondiale", compartiment: "importateurs", source: "sévérité de la crise humanitaire au Soudan (ACAPS, INFORM)", raison: "la vulnérabilité des populations dépendantes"}
+  - {adaptateur: "wikipedia:Strait of Hormuz", fiche: "ormuz", compartiment: "recits", source: "pages vues de l'article Strait of Hormuz", raison: "l'attention du public sur le détroit"}
+  - {adaptateur: "wikipedia:Petroleum", fiche: "energie-mondiale", compartiment: "recits", source: "pages vues de l'article Petroleum", raison: "l'attention du public sur le pétrole"}
+  # --- Épidémies, migrations, observateur
+  - {adaptateur: "rss:CD:sante", fiche: "epidemies", compartiment: "autorites", source: "articles des flux de santé (OMS, ECDC, Fonds mondial) citant la RD Congo", raison: "les alertes sanitaires publiées"}
+  - {adaptateur: "acaps_risques:UA", fiche: "migrations-demographie", compartiment: "migrations", source: "risques humanitaires ouverts pour l'Ukraine (ACAPS)", raison: "les déplacements de population anticipés par les humanitaires"}
+  - {adaptateur: "ucdp:Sudan", fiche: "migrations-demographie", compartiment: "migrations", source: "morts de violence organisée au Soudan par jour (UCDP)", raison: "la violence pousse les déplacements"}
+  - {adaptateur: "recit_russe:MD", fiche: "information-cyber", compartiment: "a_definir", source: "articles des médias d'État russes sur la Moldavie", raison: "intensité d'un récit d'influence"}
+  - {adaptateur: "rss_region:REG_ORG_EUR_EU:verification", fiche: "information-cyber", compartiment: "a_definir", source: "articles de vérification des faits sur l'Union européenne (flux RSS)", raison: "la désinformation détectée et corrigée"}
+  - {adaptateur: "telegram:tout", fiche: "observateur-mesure", compartiment: "a_definir", source: "volume quotidien des chaînes suivies", raison: "ce que nos propres sources voient, et donc ce qu'elles déforment"}
