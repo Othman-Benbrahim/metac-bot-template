@@ -1,0 +1,129 @@
+theme: "guerre-levant"
+nom: "Guerre au Levant et fronts régionaux"
+declaration:
+  but: "comprendre ce qui fait durer, s'étendre ou retomber les conflits entre Israël, Gaza, le Liban, la Syrie, l'Irak, le Yémen et l'Iran, et ce que cela transmet aux routes maritimes, à l'énergie et aux négociations (questions du tournoi sur les cessez-le-feu, les frappes, le Liban, la mer Rouge)"
+  limites: "dedans les acteurs étatiques et armés connus publiquement (en agrégat), les médiations, les cessez-le-feu, l'aide humanitaire, les puissances extérieures, les routes de la mer Rouge ; dehors tout détail opérationnel ou d'armement, le programme nucléaire iranien en lui-même (thème voisin, relié par un pont)"
+  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; ton neutre, niveau institutionnel et diplomatique"
+  date: "2026-11-19"
+  espace: "Israël et les territoires palestiniens, le Liban, la Syrie, l'Irak, le Yémen, l'Iran, la mer Rouge et le golfe d'Aden"
+  temps: "de l'incident du jour à la décennie ; mémoire des guerres et des cessez-le-feu successifs depuis 2023 (à vérifier)"
+  vitesse: "l'heure (frappe, incident), la semaine (négociation d'une trêve), le mois (aide, reconstruction), l'année (alliances)"
+  taille: "un groupe armé local, un État, la région, les grandes puissances"
+compartiments:
+  - id: "israel"
+    nom: "Israël"
+    elements: ["gouvernement et coalition", "armée", "opinion publique", "otages et prisonniers (en agrégat)", "calendrier politique"]
+    acteurs:
+      - {nom: "Israël (État)", taille: "macro", espace: "région", vitesse: "jours"}
+      - {nom: "la coalition gouvernementale israélienne", taille: "méso", espace: "pays", vitesse: "semaines"}
+    niveau: {espace: "pays et théâtres voisins", temps: "incidents ; échéances électorales", vitesse: "jours à mois", taille: "macro"}
+    traces:
+      - {source: "ton des gestes d'Israël envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:ISR:IRN"}
+      - {source: "ton des gestes d'Israël envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:ISR:LBN"}
+  - id: "gaza"
+    nom: "Gaza et territoires palestiniens"
+    elements: ["population civile", "autorités et groupes armés présents (en agrégat)", "Autorité palestinienne", "Cisjordanie"]
+    acteurs:
+      - {nom: "Hamas (en agrégat)", taille: "méso", espace: "théâtre", vitesse: "jours"}
+      - {nom: "Autorité palestinienne", taille: "méso", espace: "théâtre", vitesse: "mois"}
+    niveau: {espace: "théâtre", temps: "incidents ; trêves", vitesse: "heures à semaines", taille: "méso"}
+    traces:
+      - {source: "chaînes Telegram publiques", statut: "collecte", fichier: "collecte_telegram.py"}
+      - {source: "rapports humanitaires publics (OCHA, ACAPS)", statut: "a_brancher"}
+  - id: "liban"
+    nom: "Liban"
+    elements: ["État libanais et armée", "Hezbollah (en agrégat)", "frontière sud", "crise économique", "institutions et justice"]
+    acteurs:
+      - {nom: "Hezbollah (en agrégat)", taille: "méso", espace: "théâtre", vitesse: "jours"}
+      - {nom: "État libanais", taille: "méso", espace: "pays", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "incidents ; gouvernements successifs", vitesse: "jours à années", taille: "méso"}
+    traces:
+      - {source: "violations aériennes signalées", statut: "collecte", fichier: "collecte_violationswatch.py"}
+      - {source: "feux actifs au Liban (FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:LB"}
+  - id: "syrie_irak"
+    nom: "Syrie et Irak"
+    elements: ["autorités syriennes", "gouvernement irakien", "milices alignées sur l'Iran (en agrégat)", "présence militaire étrangère"]
+    acteurs:
+      - {nom: "gouvernement irakien", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "milices irakiennes alignées sur l'Iran (en agrégat)", taille: "méso", espace: "théâtre", vitesse: "jours"}
+    niveau: {espace: "pays", temps: "incidents ; recompositions politiques", vitesse: "jours à années", taille: "méso à macro"}
+    traces:
+      - {source: "feux actifs en Syrie (FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:SY"}
+  - id: "yemen"
+    nom: "Yémen et mer Rouge"
+    elements: ["Houthis (en agrégat)", "gouvernement reconnu", "attaques contre la navigation", "Bab-el-Mandeb"]
+    acteurs:
+      - {nom: "Houthis (en agrégat)", taille: "méso", espace: "région", vitesse: "jours"}
+      - {nom: "un navire marchand en transit", taille: "micro", espace: "navire", vitesse: "heures"}
+    niveau: {espace: "golfe d'Aden et mer Rouge", temps: "incidents ; campagnes", vitesse: "heures à semaines", taille: "méso"}
+    traces:
+      - {source: "pétroliers à Bab-el-Mandeb (IMF PortWatch)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:bab_el_mandeb:petroliers"}
+      - {source: "porte-conteneurs à Suez (IMF PortWatch)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:suez:porte_conteneurs"}
+      - {source: "avis aux navigateurs (NGA)", statut: "collecte", fichier: "collecte_avis_navigation.py"}
+  - id: "iran"
+    nom: "Iran et son réseau régional"
+    elements: ["soutien aux alliés régionaux", "frappes et ripostes directes (en agrégat)", "dissuasion", "contraintes intérieures"]
+    acteurs:
+      - {nom: "Iran (État)", taille: "macro", espace: "région", vitesse: "semaines"}
+      - {nom: "Gardiens de la révolution (en agrégat)", taille: "méso", espace: "région", vitesse: "jours"}
+    niveau: {espace: "région", temps: "incidents ; stratégie de long terme", vitesse: "jours à années", taille: "macro"}
+    traces:
+      - {source: "ton des gestes de l'Iran envers Israël (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:IRN:ISR"}
+      - {source: "coupures et censure d'internet en Iran (OONI)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:IR"}
+  - id: "puissances"
+    nom: "Puissances extérieures"
+    elements: ["États-Unis (soutien, présence navale, médiation)", "Russie", "Chine", "Europe", "aide militaire et diplomatique"]
+    acteurs:
+      - {nom: "États-Unis", taille: "macro", espace: "mondial", vitesse: "semaines"}
+      - {nom: "Union européenne", taille: "macro", espace: "continent", vitesse: "mois"}
+    niveau: {espace: "mondial", temps: "alliances ; décisions politiques", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "avions d'État (vols militaires visibles)", statut: "collecte", fichier: "collecte_avions_etat.py"}
+      - {source: "Federal Register et Congrès", statut: "collecte", fichier: "collecte_federal_register.py"}
+  - id: "mediateurs"
+    nom: "Médiateurs et diplomatie régionale"
+    elements: ["Égypte", "Qatar", "Arabie saoudite", "Turquie", "Nations unies", "plans de cessez-le-feu"]
+    acteurs:
+      - {nom: "Égypte", taille: "macro", espace: "région", vitesse: "semaines"}
+      - {nom: "Qatar", taille: "méso", espace: "région", vitesse: "semaines"}
+    niveau: {espace: "région", temps: "rondes de négociation", vitesse: "semaines", taille: "méso à macro"}
+    traces:
+      - {source: "routines officielles des ministères", statut: "collecte", fichier: "collecte_routines.py"}
+  - id: "humanitaire"
+    nom: "Situation humanitaire"
+    elements: ["accès de l'aide", "déplacements de population", "infrastructures civiles", "organisations humanitaires"]
+    acteurs:
+      - {nom: "agences de l'ONU et ONG (en agrégat)", taille: "méso", espace: "théâtre", vitesse: "semaines"}
+    niveau: {espace: "théâtres", temps: "semaines à mois", vitesse: "semaines", taille: "méso à macro"}
+    traces:
+      - {source: "rapports publics OCHA et ACAPS", statut: "a_brancher"}
+  - id: "recits"
+    nom: "Récits et opinion"
+    elements: ["déclarations officielles", "images et témoignages", "opinions publiques régionales et occidentales", "pressions sur les gouvernements"]
+    niveau: {espace: "médiatique mondial", temps: "cycle de l'information", vitesse: "heures à jours", taille: "micro à macro"}
+    traces:
+      - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
+      - {source: "chaînes Telegram publiques", statut: "collecte", fichier: "collecte_telegram.py"}
+relations:
+  - {de: "israel", vers: "gaza", effet: "-", retour: "-", style: "inconnu", delai: "jours", force: "forte", intensite: {mesure: "incidents récents et ton des gestes (GDELT)", regle: "proportionnelle"}, coupure: "cessez-le-feu en vigueur", statut: "a_verifier", texte: "conflit direct, chaque partie réduisant les options de l'autre"}
+  - {de: "israel", vers: "liban", effet: "-", retour: "-", style: "inconnu", delai: "jours", force: "forte", intensite: {mesure: "violations aériennes et incidents à la frontière", regle: "seuil"}, coupure: "accord de cessez-le-feu et déploiement de l'armée libanaise", statut: "a_verifier", texte: "échanges à la frontière ; au-delà d'un seuil, passage à la guerre ouverte"}
+  - {de: "israel", vers: "iran", effet: "-", retour: "-", style: "inconnu", delai: "jours à semaines", force: "forte", intensite: {mesure: "ton des gestes entre les deux gouvernements (GDELT)", regle: "seuil"}, coupure: "dissuasion mutuelle", statut: "a_verifier", texte: "rivalité directe, par frappes et ripostes ponctuelles plutôt que par guerre continue"}
+  - {de: "iran", vers: "liban", effet: "+", retour: "+", forme: "mutualisme", delai: "mois", force: "moyenne", coupure: "routes de ravitaillement coupées", statut: "a_verifier", texte: "soutien de l'Iran au Hezbollah, qui sert de levier régional à l'Iran"}
+  - {de: "iran", vers: "yemen", effet: "+", retour: "+", forme: "mutualisme", delai: "mois", force: "moyenne", coupure: "interdictions maritimes", statut: "a_verifier", texte: "soutien de l'Iran aux Houthis (degré à vérifier)"}
+  - {de: "iran", vers: "syrie_irak", effet: "+", delai: "mois", force: "moyenne", coupure: "recompositions politiques à Damas et Bagdad", statut: "a_verifier", texte: "influence par des milices alliées et des liens politiques"}
+  - {de: "yemen", vers: "puissances", effet: "-", retour: "-", style: "inconnu", delai: "jours", force: "moyenne", coupure: "trêve en mer Rouge", statut: "a_verifier", texte: "attaques contre la navigation et frappes en retour"}
+  - {de: "gaza", vers: "yemen", effet: "+", delai: "jours", force: "moyenne", intensite: {mesure: "intensité des combats à Gaza", regle: "proportionnelle"}, coupure: "cessez-le-feu à Gaza", statut: "a_verifier", texte: "les Houthis lient leurs attaques maritimes à la guerre à Gaza (lien déclaré, à vérifier)"}
+  - {de: "puissances", vers: "israel", effet: "±", retour: "±", delai: "semaines", force: "forte", coupure: "politique intérieure américaine", statut: "a_verifier", texte: "soutien militaire et diplomatique des États-Unis, assorti de pressions"}
+  - {de: "mediateurs", vers: "gaza", effet: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "rondes de négociation récentes", regle: "seuil"}, coupure: "rupture des pourparlers", statut: "a_verifier", texte: "les médiations produisent des trêves par paliers, rarement de façon graduelle"}
+  - {de: "gaza", vers: "humanitaire", effet: "-", delai: "jours", force: "forte", coupure: "accès de l'aide garanti", statut: "a_verifier", texte: "les combats détériorent la situation humanitaire"}
+  - {de: "humanitaire", vers: "recits", effet: "+", delai: "jours", force: "moyenne", coupure: "accès des médias limité", statut: "a_verifier", texte: "la situation humanitaire nourrit les récits et la pression internationale"}
+  - {de: "recits", vers: "puissances", effet: "±", delai: "semaines", force: "moyenne", intensite: {mesure: "attention médiatique du moment", regle: "proportionnelle"}, coupure: "élections ou autres crises", statut: "a_verifier", texte: "l'opinion pèse sur les gouvernements occidentaux et régionaux"}
+  - {de: "liban", vers: "syrie_irak", effet: "±", delai: "mois", force: "faible", coupure: "frontière fermée", statut: "a_verifier", texte: "les recompositions libanaises et syriennes se répondent"}
+ponts:
+  - {depuis: "iran", vers: "ormuz:force", nature: "les fronts régionaux de l'Iran et la pression sur Ormuz"}
+  - {depuis: "iran", vers: "iran-nucleaire:negociations", nature: "la guerre régionale pèse sur les négociations nucléaires"}
+  - {depuis: "yemen", vers: "transport-maritime:detroits", nature: "Bab-el-Mandeb et Suez dans le système des passages"}
+  - {depuis: "yemen", vers: "energie-mondiale:transport", nature: "les attaques en mer Rouge détournent pétroliers et méthaniers"}
+  - {depuis: "puissances", vers: "politique-americaine:budget", nature: "aide militaire votée par le Congrès"}
+  - {depuis: "humanitaire", vers: "alimentation-mondiale:prix", nature: "insécurité alimentaire et prix dans les zones de guerre"}
+  - {depuis: "liban", vers: "liban-institutions:justice", nature: "les institutions et la justice libanaises (questions du tournoi)"}

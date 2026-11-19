@@ -102,8 +102,8 @@ relations:
   - {de: "climat", vers: "production", effet: "-", delai: "jours", force: "moyenne", coupure: "hors saison des ouragans", statut: "a_verifier", texte: "ouragans dans le golfe du Mexique, arrêts de plateformes"}
   - {de: "recits", vers: "prix", effet: "±", delai: "heures", force: "moyenne", intensite: {mesure: "tension géopolitique du moment", regle: "proportionnelle"}, coupure: "démenti", statut: "a_verifier", texte: "annonces et menaces bougent les prix avant les flux"}
 ponts:
-  - {depuis: "transport", vers: "ormuz:navigation", nature: "Ormuz est le premier goulet du système"}
-  - {depuis: "prix", vers: "inflation-mondiale:energie", nature: "l'énergie entre dans l'inflation et dans les décisions des banques centrales"}
+  - {depuis: "transport", vers: "ormuz:navigation", type: "meme", nature: "Ormuz est le premier goulet du système"}
+  - {depuis: "prix", vers: "inflation-mondiale:energie", type: "meme", nature: "l'énergie entre dans l'inflation et dans les décisions des banques centrales"}
   - {depuis: "decisions", vers: "russie-ukraine:sanctions", nature: "sanctions et plafond de prix sur le pétrole russe"}
   - {depuis: "demande", vers: "economie-chinoise:activite", nature: "la Chine est le premier importateur"}
   - {depuis: "climat", vers: "climat-extremes:saisons", nature: "hivers, ouragans, vagues de chaleur"}

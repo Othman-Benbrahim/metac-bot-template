@@ -101,8 +101,8 @@ relations:
   - {de: "budget", vers: "banques_centrales", effet: "-", retour: "-", forme: "competition", delai: "mois", force: "faible", coupure: "coordination", statut: "a_verifier", texte: "quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre"}
   - {de: "statistiques", vers: "banques_centrales", effet: "±", delai: "jours", force: "moyenne", coupure: "révisions ultérieures", statut: "a_verifier", texte: "les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée"}
 ponts:
-  - {depuis: "energie", vers: "energie-mondiale:prix", nature: "le prix de l'énergie vient du marché mondial"}
-  - {depuis: "energie", vers: "ormuz:prix", nature: "un choc sur Ormuz passe par les prix de l'énergie"}
+  - {depuis: "energie", vers: "energie-mondiale:prix", type: "meme", nature: "le prix de l'énergie vient du marché mondial"}
+  - {depuis: "energie", vers: "ormuz:prix", type: "meme", nature: "un choc sur Ormuz passe par les prix de l'énergie"}
   - {depuis: "approvisionnement", vers: "transport-maritime:detroits", nature: "les détroits et le fret"}
   - {depuis: "alimentation", vers: "alimentation-mondiale:prix", nature: "récoltes, engrais, interdictions d'export"}
   - {depuis: "monnaies", vers: "dette-emergents:monnaies", nature: "un dollar fort serre les pays endettés en dollars"}

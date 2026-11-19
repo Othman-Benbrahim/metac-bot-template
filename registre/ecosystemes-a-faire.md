@@ -1,24 +1,122 @@
 # Écosystèmes : liste de travail (écrite par ecosystemes.py, ne pas retoucher)
 
-Bilan : {'themes': 3, 'compartiments': 30, 'relations': 38, 'ponts': 21, 'ponts_en_attente': 15, 'relations_a_verifier': 38, 'relations_avec_intensite': 15, 'compartiments_sans_trace_collectee': 1}
+Bilan : {'themes': 14, 'compartiments': 138, 'relations': 182, 'ponts': 100, 'ponts_en_attente': 7, 'relations_a_verifier': 182, 'relations_avec_intensite': 80, 'compartiments_sans_trace_collectee': 38}
 
 ## Thèmes à écrire (ponts en attente)
-- **transport-maritime** (3 pont(s)) : energie-mondiale:transport → transport-maritime:detroits (le système des passages maritimes) ; inflation-mondiale:approvisionnement → transport-maritime:detroits (les détroits et le fret) ; ormuz:navigation → transport-maritime:detroits (Ormuz, Bab-el-Mandeb, Suez forment un même système de passages)
-- **economie-chinoise** (2 pont(s)) : energie-mondiale:demande → economie-chinoise:activite (la Chine est le premier importateur) ; inflation-mondiale:statistiques → economie-chinoise:statistiques (fiabilité des chiffres officiels chinois)
-- **politique-americaine** (2 pont(s)) : energie-mondiale:decisions → politique-americaine:energie (réserves stratégiques, sanctions, prix à la pompe et élections) ; inflation-mondiale:budget → politique-americaine:budget (droits de douane, déficits, pression sur la Réserve fédérale)
-- **russie-ukraine** (1 pont(s)) : energie-mondiale:decisions → russie-ukraine:sanctions (sanctions et plafond de prix sur le pétrole russe)
-- **climat-extremes** (1 pont(s)) : energie-mondiale:climat → climat-extremes:saisons (hivers, ouragans, vagues de chaleur)
-- **alimentation-mondiale** (1 pont(s)) : inflation-mondiale:alimentation → alimentation-mondiale:prix (récoltes, engrais, interdictions d'export)
-- **dette-emergents** (1 pont(s)) : inflation-mondiale:monnaies → dette-emergents:monnaies (un dollar fort serre les pays endettés en dollars)
-- **iran-nucleaire** (1 pont(s)) : ormuz:interieur_iran → iran-nucleaire:negociations (le programme nucléaire et les sanctions se négocient ensemble)
-- **rivalite-sino-americaine** (1 pont(s)) : ormuz:puissances → rivalite-sino-americaine:energie (la sécurité des approvisionnements chinois)
-- **guerre-levant** (1 pont(s)) : ormuz:force → guerre-levant:iran (les fronts régionaux de l'Iran et de ses alliés)
-- **eau-moyen-orient** (1 pont(s)) : ormuz:milieu → eau-moyen-orient:rarete (la rareté de l'eau douce dans la région)
+- **infrastructures-critiques** (2 pont(s)) : climat-extremes:exposes → infrastructures-critiques:reseaux (réseaux électriques et de transport face aux extrêmes) ; eau-moyen-orient:dessalement → infrastructures-critiques:reseaux (les usines de dessalement, infrastructures vulnérables)
+- **crises-bancaires** (1 pont(s)) : dette-emergents:banques → crises-bancaires:depots (faillites et fermetures de banques (exemple du tournoi : Paraguay))
+- **elections-amerique-latine** (1 pont(s)) : dette-emergents:politique_interieure → elections-amerique-latine:scrutins (élections et ajustements en Amérique latine)
+- **liban-institutions** (1 pont(s)) : guerre-levant:liban → liban-institutions:justice (les institutions et la justice libanaises (questions du tournoi))
+- **non-proliferation** (1 pont(s)) : iran-nucleaire:conseil_securite → non-proliferation:regime (le régime mondial de non-prolifération)
+- **securite-europeenne** (1 pont(s)) : russie-ukraine:soutiens → securite-europeenne:defense (le réarmement européen et l'OTAN)
 
 ## Compartiments sans trace collectée (à notre portée ? ou oubliés ?)
+- alimentation-mondiale:sols : indices de végétation par satellite (NDVI, données publiques) (a_brancher)
+- alimentation-mondiale:eau_agricole : humidité du sol et indices de sécheresse (données publiques) (a_brancher)
+- alimentation-mondiale:cultures : prévisions de récolte publiques (FAO, USDA) (a_brancher)
+- alimentation-mondiale:ravageurs : bulletins de veille acridienne (FAO, publics) (a_brancher)
+- alimentation-mondiale:stocks : bilans offre-demande publics (USDA, AMIS) (a_brancher)
+- alimentation-mondiale:importateurs : prix alimentaires locaux (FAO, publics) (a_brancher)
+- climat-extremes:oceans : températures de surface de la mer (NOAA, publiques) (a_brancher)
+- climat-extremes:oscillations : indice ENSO mensuel (NOAA, public) (a_brancher)
+- climat-extremes:atmosphere : réanalyses atmosphériques (publiques) (a_brancher)
+- climat-extremes:secheresses : indices de sécheresse (moniteurs publics) (a_brancher)
+- climat-extremes:tempetes : avis des centres cycloniques (publics) (a_brancher)
+- climat-extremes:vegetation : indices de végétation par satellite (publics) (a_brancher)
+- climat-extremes:tendance : anomalies mondiales de température (publiques) (a_brancher)
+- dette-emergents:reserves : réserves de change publiées par les banques centrales (a_brancher)
+- dette-emergents:banques : communiqués des banques centrales et autorités bancaires (a_brancher)
+- dette-emergents:creanciers : annonces de restructuration (communiqués officiels) (a_brancher)
+- dette-emergents:fmi : communiqués de presse du FMI (accords au niveau des services, revues) (a_brancher)
+- eau-moyen-orient:pluies : précipitations par satellite (publiques) (a_brancher)
+- eau-moyen-orient:fleuves : débits et niveaux des fleuves (publications publiques, altimétrie satellitaire) (a_brancher)
+- eau-moyen-orient:barrages : niveaux des retenues par satellite (publics) (a_brancher)
+- eau-moyen-orient:nappes : variations de masse d'eau par satellite (GRACE, publiques) (a_brancher)
+- eau-moyen-orient:rarete : indicateurs de stress hydrique (publics, annuels) (a_brancher)
+- eau-moyen-orient:dessalement : aucune trace ouverte connue des volumes produits (inconnue)
+- eau-moyen-orient:irrigation : indices de végétation des plaines irriguées (publics) (a_brancher)
+- economie-chinoise:immobilier : prix et ventes de logements (publication mensuelle officielle) (a_brancher)
+- economie-chinoise:consommation : commerce de détail et prix à la consommation (publication officielle) (a_brancher)
+- economie-chinoise:emploi : taux de chômage des jeunes (publication officielle mensuelle) (a_brancher)
+- economie-chinoise:politique_monetaire : communiqués de la banque centrale chinoise (publics) (a_brancher)
 - energie-mondiale:production : communiqués des réunions de l'OPEP+ (a_brancher), nombre de forages actifs (publication hebdomadaire publique) (a_brancher)
+- guerre-levant:humanitaire : rapports publics OCHA et ACAPS (a_brancher)
+- iran-nucleaire:verification : rapports publics de l'Agence internationale de l'énergie atomique (a_brancher)
+- iran-nucleaire:conseil_securite : documents publics du Conseil de sécurité de l'ONU (a_brancher)
+- politique-americaine:elections : résultats officiels et calendriers électoraux (commissions électorales des États) (a_brancher)
+- russie-ukraine:capacites : budgets et annonces industrielles publiques (a_brancher)
+- transport-maritime:fret : indices publics de fret conteneur (publications hebdomadaires gratuites) (a_brancher)
+- transport-maritime:assurances : primes de risque de guerre (fermee)
+- transport-maritime:ports : statistiques portuaires publiques (temps d'attente, volumes) (a_brancher)
+- transport-maritime:climat : niveau du lac Gatún (publication publique de l'autorité du canal) (a_brancher)
 
 ## Relations à vérifier sur une source relue
+- alimentation-mondiale:climat → alimentation-mondiale:eau_agricole [forcage] la saison décide de l'eau disponible ; une sécheresse ne compte qu'au-delà d'un seuil
+- alimentation-mondiale:eau_agricole → alimentation-mondiale:cultures [forcage] sous un seuil d'eau, les rendements chutent d'un coup
+- alimentation-mondiale:climat → alimentation-mondiale:cultures [forcage] quelques jours de chaleur au mauvais moment suffisent à abîmer une récolte
+- alimentation-mondiale:climat → alimentation-mondiale:ravageurs [forcage] chaleur et humidité favorisent criquets et maladies
+- alimentation-mondiale:ravageurs → alimentation-mondiale:cultures [predation] prédation : les ravageurs vivent des cultures
+- alimentation-mondiale:sols → alimentation-mondiale:cultures [forcage] la fertilité des sols porte les rendements sur la durée
+- alimentation-mondiale:cultures → alimentation-mondiale:sols [forcage] une exploitation intensive épuise les sols, qui ne se refont pas au même rythme
+- alimentation-mondiale:engrais → alimentation-mondiale:cultures [forcage] des engrais trop chers font moins épandre, et la récolte suivante baisse
+- alimentation-mondiale:cultures → alimentation-mondiale:stocks [forcage] les récoltes remplissent les stocks
+- alimentation-mondiale:stocks → alimentation-mondiale:prix [forcage] des stocks abondants amortissent les chocs ; bas, chaque nouvelle fait bondir les prix
+- alimentation-mondiale:commerce → alimentation-mondiale:prix [forcage] les interdictions d'export s'entraînent l'une l'autre et font monter les prix mondiaux
+- alimentation-mondiale:prix → alimentation-mondiale:commerce [ambivalent] quand les prix montent, des exportateurs ferment leurs frontières pour protéger leur marché intérieur
+- alimentation-mondiale:prix → alimentation-mondiale:importateurs [forcage] au-delà d'un seuil de prix, les ménages pauvres et les budgets publics décrochent (lien documenté avec les émeutes, à vérifier)
+- alimentation-mondiale:prix → alimentation-mondiale:cultures [forcage] des prix hauts font semer plus la saison suivante
+- climat-extremes:oceans → climat-extremes:oscillations [forcage] la chaleur du Pacifique équatorial fait basculer El Niño ou La Niña
+- climat-extremes:oscillations → climat-extremes:atmosphere [forcage] les oscillations déplacent pluies et chaleurs sur plusieurs continents (télé-connexions)
+- climat-extremes:atmosphere → climat-extremes:saisons [forcage] un blocage qui dure transforme un temps chaud en vague de chaleur
+- climat-extremes:atmosphere → climat-extremes:tempetes [forcage] la circulation dirige et nourrit les tempêtes
+- climat-extremes:oceans → climat-extremes:tempetes [forcage] une mer chaude au-delà d'un seuil nourrit des cyclones plus intenses
+- climat-extremes:saisons → climat-extremes:secheresses [forcage] chaleur et absence de pluie installent la sécheresse
+- climat-extremes:secheresses → climat-extremes:vegetation [forcage] la végétation tient puis décroche d'un coup
+- climat-extremes:vegetation → climat-extremes:saisons [competition] boucle : des sols secs chauffent plus l'air, et l'air plus chaud assèche les sols (rétroaction qui entretient la chaleur)
+- climat-extremes:vegetation → climat-extremes:feux [forcage] une végétation desséchée devient combustible
+- climat-extremes:feux → climat-extremes:vegetation [forcage] les feux détruisent la végétation, qui met des années à revenir (ou ne revient pas à l'identique)
+- climat-extremes:tendance → climat-extremes:saisons [forcage] le réchauffement de fond rend les extrêmes chauds plus fréquents
+- climat-extremes:saisons → climat-extremes:exposes [forcage] au-delà d'un seuil de chaleur ou de froid, réseaux et santé cèdent
+- climat-extremes:tempetes → climat-extremes:exposes [forcage] cyclones et inondations frappent infrastructures et récoltes
+- climat-extremes:exposes → climat-extremes:vegetation [forcage] urbanisation et défrichement réduisent la végétation qui tamponnait les extrêmes
+- dette-emergents:monnaies → dette-emergents:dette_publique [forcage] une dépréciation gonfle la dette en dollars ; au-delà d'un seuil elle devient insoutenable
+- dette-emergents:monnaies → dette-emergents:inflation_locale [forcage] la dévaluation renchérit les importations, carburants et pain d'abord
+- dette-emergents:reserves → dette-emergents:monnaies [forcage] des réserves suffisantes défendent la monnaie ; épuisées, la chute est brutale
+- dette-emergents:dette_publique → dette-emergents:creanciers [competition] un défaut fait perdre les créanciers et ferme les marchés au pays ; chacun réduit ce que l'autre obtient
+- dette-emergents:fmi → dette-emergents:reserves [mutualisme] un programme apporte des devises et rassure les autres créanciers, contre des conditions
+- dette-emergents:fmi → dette-emergents:politique_interieure [competition] les conditions d'austérité alimentent la contestation, qui peut faire dérailler le programme
+- dette-emergents:inflation_locale → dette-emergents:politique_interieure [forcage] la hausse des prix de base déclenche des manifestations au-delà d'un seuil
+- dette-emergents:banques → dette-emergents:monnaies [forcage] des retraits massifs convertis en dollars accélèrent la chute de la monnaie
+- dette-emergents:monnaies → dette-emergents:banques [forcage] une chute de la monnaie fait fuir les déposants (boucle avec la relation inverse)
+- dette-emergents:matieres_premieres → dette-emergents:reserves [forcage] les recettes d'exportation remplissent ou vident les réserves selon les prix
+- dette-emergents:creanciers → dette-emergents:monnaies [forcage] les flux des investisseurs entrent et sortent avec l'humeur mondiale
+- dette-emergents:politique_interieure → dette-emergents:dette_publique [forcage] élections et instabilité changent la volonté de payer ou d'ajuster
+- eau-moyen-orient:pluies → eau-moyen-orient:fleuves [forcage] pluies et fonte des neiges font les crues des fleuves
+- eau-moyen-orient:pluies → eau-moyen-orient:nappes [forcage] les pluies rechargent lentement les seules nappes renouvelables
+- eau-moyen-orient:chaleur → eau-moyen-orient:barrages [forcage] la chaleur évapore les retenues
+- eau-moyen-orient:chaleur → eau-moyen-orient:rarete [forcage] au-delà d'un seuil de chaleur, la demande dépasse ce que les réseaux fournissent
+- eau-moyen-orient:fleuves → eau-moyen-orient:barrages [predation] prédation : les barrages prennent au fleuve l'eau qu'ils stockent
+- eau-moyen-orient:barrages → eau-moyen-orient:etats_riverains [ambivalent] remplir un barrage d'amont en année sèche retire de l'eau à l'aval et tend les relations
+- eau-moyen-orient:etats_riverains → eau-moyen-orient:etats_riverains [competition] amont et aval se disputent un même fleuve (style à mesurer : Égypte–Éthiopie, Irak–Turquie)
+- eau-moyen-orient:irrigation → eau-moyen-orient:nappes [forcage] l'irrigation vide les nappes plus vite qu'elles ne se remplissent ; une nappe affaissée ne se reconstitue pas
+- eau-moyen-orient:nappes → eau-moyen-orient:irrigation [forcage] les nappes portent l'agriculture là où les fleuves manquent
+- eau-moyen-orient:fleuves → eau-moyen-orient:irrigation [forcage] les plaines du Tigre, de l'Euphrate et du Nil vivent de l'eau du fleuve
+- eau-moyen-orient:irrigation → eau-moyen-orient:rarete [forcage] l'agriculture consomme l'essentiel de l'eau douce (part à vérifier) et laisse peu aux villes
+- eau-moyen-orient:dessalement → eau-moyen-orient:rarete [forcage] le dessalement fournit l'eau des villes du Golfe ; une usine arrêtée crée une pénurie immédiate
+- eau-moyen-orient:rarete → eau-moyen-orient:villes [forcage] des coupures qui durent font descendre les gens dans la rue (lien à vérifier par pays)
+- eau-moyen-orient:villes → eau-moyen-orient:rarete [forcage] la croissance urbaine accroît la demande et les fuites
+- economie-chinoise:immobilier → economie-chinoise:activite [forcage] la crise immobilière pèse longtemps sur l'investissement ; la confiance ne revient pas par le même chemin
+- economie-chinoise:immobilier → economie-chinoise:consommation [forcage] le logement est l'épargne principale des ménages ; sa baisse les rend prudents
+- economie-chinoise:consommation → economie-chinoise:activite [forcage] une consommation faible laisse l'activité dépendre des exportations et de l'investissement
+- economie-chinoise:exportations → economie-chinoise:activite [forcage] les exportations compensent la faiblesse intérieure
+- economie-chinoise:exterieur → economie-chinoise:exportations [competition] droits de douane et contrôles d'un côté, représailles de l'autre
+- economie-chinoise:politique_monetaire → economie-chinoise:activite [forcage] baisses de taux et obligations spéciales soutiennent l'activité, moins quand ménages et entreprises ne veulent plus s'endetter
+- economie-chinoise:pouvoir → economie-chinoise:politique_monetaire [forcage] les grandes orientations décident de l'ampleur des relances
+- economie-chinoise:pouvoir → economie-chinoise:statistiques [forcage] un chiffre gênant peut être redéfini ou suspendu (la série du chômage des jeunes a été suspendue puis redéfinie, à vérifier)
+- economie-chinoise:activite → economie-chinoise:emploi [forcage] le chômage des jeunes monte chaque été et quand l'activité ralentit
+- economie-chinoise:activite → economie-chinoise:matieres_premieres [forcage] la demande chinoise de pétrole, de fer et de cuivre suit l'industrie et la construction
+- economie-chinoise:statistiques → economie-chinoise:politique_monetaire [forcage] les décisions et les marchés réagissent au chiffre publié, convention dont la fiabilité est débattue
+- economie-chinoise:emploi → economie-chinoise:pouvoir [forcage] le chômage des jeunes est une pression lente sur la légitimité
 - energie-mondiale:production → energie-mondiale:prix [forcage] plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise, le moindre arrêt fait bondir les prix
 - energie-mondiale:demande → energie-mondiale:prix [forcage] une demande forte fait monter les prix
 - energie-mondiale:stocks → energie-mondiale:prix [forcage] les stocks amortissent les chocs ; bas, ils n'amortissent plus
@@ -32,6 +130,20 @@ Bilan : {'themes': 3, 'compartiments': 30, 'relations': 38, 'ponts': 21, 'ponts_
 - energie-mondiale:climat → energie-mondiale:demande [forcage] un hiver froid fait monter la demande de gaz et de fioul
 - energie-mondiale:climat → energie-mondiale:production [forcage] ouragans dans le golfe du Mexique, arrêts de plateformes
 - energie-mondiale:recits → energie-mondiale:prix [forcage] annonces et menaces bougent les prix avant les flux
+- guerre-levant:israel → guerre-levant:gaza [competition] conflit direct, chaque partie réduisant les options de l'autre
+- guerre-levant:israel → guerre-levant:liban [competition] échanges à la frontière ; au-delà d'un seuil, passage à la guerre ouverte
+- guerre-levant:israel → guerre-levant:iran [competition] rivalité directe, par frappes et ripostes ponctuelles plutôt que par guerre continue
+- guerre-levant:iran → guerre-levant:liban [mutualisme] soutien de l'Iran au Hezbollah, qui sert de levier régional à l'Iran
+- guerre-levant:iran → guerre-levant:yemen [mutualisme] soutien de l'Iran aux Houthis (degré à vérifier)
+- guerre-levant:iran → guerre-levant:syrie_irak [forcage] influence par des milices alliées et des liens politiques
+- guerre-levant:yemen → guerre-levant:puissances [competition] attaques contre la navigation et frappes en retour
+- guerre-levant:gaza → guerre-levant:yemen [forcage] les Houthis lient leurs attaques maritimes à la guerre à Gaza (lien déclaré, à vérifier)
+- guerre-levant:puissances → guerre-levant:israel [ambivalent] soutien militaire et diplomatique des États-Unis, assorti de pressions
+- guerre-levant:mediateurs → guerre-levant:gaza [forcage] les médiations produisent des trêves par paliers, rarement de façon graduelle
+- guerre-levant:gaza → guerre-levant:humanitaire [forcage] les combats détériorent la situation humanitaire
+- guerre-levant:humanitaire → guerre-levant:recits [forcage] la situation humanitaire nourrit les récits et la pression internationale
+- guerre-levant:recits → guerre-levant:puissances [forcage] l'opinion pèse sur les gouvernements occidentaux et régionaux
+- guerre-levant:liban → guerre-levant:syrie_irak [forcage] les recompositions libanaises et syriennes se répondent
 - inflation-mondiale:energie → inflation-mondiale:prix_conso [forcage] l'énergie passe vite dans les prix, d'abord par les carburants
 - inflation-mondiale:alimentation → inflation-mondiale:prix_conso [forcage] les prix alimentaires pèsent plus lourd dans les pays pauvres
 - inflation-mondiale:prix_conso → inflation-mondiale:salaires [mutualisme] boucle prix-salaires : chacun nourrit l'autre quand le travail manque
@@ -45,6 +157,21 @@ Bilan : {'themes': 3, 'compartiments': 30, 'relations': 38, 'ponts': 21, 'ponts_
 - inflation-mondiale:budget → inflation-mondiale:prix_conso [forcage] subventions et boucliers baissent les prix mesurés ; déficits et droits de douane les montent
 - inflation-mondiale:budget → inflation-mondiale:banques_centrales [competition] quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre
 - inflation-mondiale:statistiques → inflation-mondiale:banques_centrales [forcage] les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée
+- iran-nucleaire:etats_unis → iran-nucleaire:pouvoir_iranien [competition] rivalité de long terme ; chacun réduit les options de l'autre
+- iran-nucleaire:etats_unis → iran-nucleaire:sanctions [forcage] l'exécutif américain décide l'essentiel des sanctions primaires et secondaires
+- iran-nucleaire:sanctions → iran-nucleaire:societe_iranienne [forcage] les sanctions pèsent sur la monnaie, les prix et l'emploi ; l'effet plafonne quand tout est déjà sanctionné
+- iran-nucleaire:societe_iranienne → iran-nucleaire:pouvoir_iranien [ambivalent] la pression sociale pousse le pouvoir soit vers un accord qui allège les sanctions, soit vers le durcissement
+- iran-nucleaire:pouvoir_iranien → iran-nucleaire:negociations [ambivalent] les rapports de force internes fixent la marge des négociateurs
+- iran-nucleaire:etats_unis → iran-nucleaire:negociations [ambivalent] la ligne de l'exécutif américain ouvre ou ferme la voie d'un accord
+- iran-nucleaire:negociations → iran-nucleaire:sanctions [forcage] un accord ne se traduit en levée de sanctions qu'au-delà d'un seuil d'engagements vérifiés
+- iran-nucleaire:verification → iran-nucleaire:negociations [forcage] les rapports de l'agence donnent la base factuelle commune, ou la mettent en doute
+- iran-nucleaire:pouvoir_iranien → iran-nucleaire:verification [ambivalent] l'accès des inspecteurs sert de levier dans les deux sens
+- iran-nucleaire:verification → iran-nucleaire:conseil_securite [forcage] une résolution du conseil de l'agence peut porter le dossier au Conseil de sécurité
+- iran-nucleaire:russie_chine → iran-nucleaire:conseil_securite [contrainte] le veto possible de la Russie ou de la Chine borne ce que le Conseil peut décider
+- iran-nucleaire:russie_chine → iran-nucleaire:societe_iranienne [mutualisme] commerce et soutien diplomatique qui amortissent les sanctions
+- iran-nucleaire:europe → iran-nucleaire:negociations [forcage] les Européens servent de médiateurs et de signataires, avec une marge propre limitée
+- iran-nucleaire:voisins → iran-nucleaire:etats_unis [forcage] Israël et les monarchies du Golfe pèsent sur la ligne américaine, dans un sens ou dans l'autre
+- iran-nucleaire:recits → iran-nucleaire:negociations [forcage] lignes rouges publiques et démentis compliquent ou préparent les concessions
 - ormuz:milieu → ormuz:flux_energie [contrainte] le goulet concentre le flux sur un seul passage étroit
 - ormuz:flux_energie → ormuz:prix [forcage] une baisse du flux fait monter les prix mondiaux
 - ormuz:force → ormuz:navigation [predation] saisies, menaces et mines pèsent sur la navigation (prédation : la force gagne un levier)
@@ -57,3 +184,52 @@ Bilan : {'themes': 3, 'compartiments': 30, 'relations': 38, 'ponts': 21, 'ponts_
 - ormuz:milieu → ormuz:interieur_iran [forcage] chaleur et rareté de l'eau pèsent sur la vie et la contestation
 - ormuz:recits → ormuz:prix [forcage] une menace verbale bouge les prix avant tout fait
 - ormuz:force → ormuz:recits [mutualisme] démonstrations de force et récits se nourrissent (signalisation)
+- politique-americaine:executif → politique-americaine:congres [ambivalent] quand les majorités divergent, chacun bloque l'autre ; alignées, elles s'appuient
+- politique-americaine:tribunaux → politique-americaine:executif [ambivalent] injonctions et arrêts suspendent ou annulent des décrets ; l'exécutif fait appel ou réécrit
+- politique-americaine:etats_federes → politique-americaine:tribunaux [forcage] les États portent une part des recours contre les décisions fédérales
+- politique-americaine:elections → politique-americaine:congres [forcage] les élections recomposent les majorités à dates fixes
+- politique-americaine:elections → politique-americaine:executif [forcage] à l'approche d'une élection, les décisions visibles (prix à la pompe, droits de douane) suivent l'opinion
+- politique-americaine:congres → politique-americaine:budget [forcage] sans accord à l'échéance, fermeture des services fédéraux ou risque sur la dette
+- politique-americaine:budget → politique-americaine:reserve_federale [competition] des déficits élevés et une banque centrale qui freine se neutralisent en partie
+- politique-americaine:executif → politique-americaine:reserve_federale [ambivalent] les nominations et la pression publique pèsent sur une institution conçue pour y résister
+- politique-americaine:executif → politique-americaine:commerce [forcage] les droits de douane se décident vite par décret, sous réserve de contestation en justice
+- politique-americaine:tribunaux → politique-americaine:commerce [forcage] des recours peuvent suspendre des droits de douane
+- politique-americaine:executif → politique-americaine:sanctions [forcage] les désignations relèvent de l'exécutif et se décident sans vote
+- politique-americaine:executif → politique-americaine:energie [forcage] ventes de la réserve stratégique et permis d'exportation suivent les prix et le calendrier électoral
+- politique-americaine:congres → politique-americaine:executif [forcage] confirmations des nominations et contrôle parlementaire
+- rivalite-sino-americaine:commerce → rivalite-sino-americaine:diplomatie [competition] chaque hausse de droits appelle une riposte ; le style de la relation est à mesurer (paire USA–CHN au banc de la réciprocité)
+- rivalite-sino-americaine:technologie → rivalite-sino-americaine:economie_chine [forcage] les contrôles freinent les filières de pointe, puis poussent à l'autonomie
+- rivalite-sino-americaine:technologie → rivalite-sino-americaine:commerce [competition] contrôles sur les puces contre restrictions sur les terres rares : chacun use de son levier
+- rivalite-sino-americaine:taiwan → rivalite-sino-americaine:diplomatie [forcage] un incident grave gèle la diplomatie
+- rivalite-sino-americaine:diplomatie → rivalite-sino-americaine:taiwan [forcage] un sommet réussi abaisse la température militaire
+- rivalite-sino-americaine:energie → rivalite-sino-americaine:commerce [forcage] les achats d'énergie américaine servent de monnaie d'échange dans les trêves
+- rivalite-sino-americaine:alliances → rivalite-sino-americaine:taiwan [forcage] les alliances régionales dissuadent et provoquent à la fois
+- rivalite-sino-americaine:commerce → rivalite-sino-americaine:economie_chine [forcage] des droits très hauts coupent des marchés d'exportation
+- rivalite-sino-americaine:economie_chine → rivalite-sino-americaine:diplomatie [forcage] une économie sous pression peut pousser à la détente ou au durcissement
+- rivalite-sino-americaine:finance → rivalite-sino-americaine:commerce [forcage] le dollar et le yuan amortissent ou amplifient l'effet des droits de douane
+- rivalite-sino-americaine:recits → rivalite-sino-americaine:diplomatie [forcage] les nationalismes réduisent la marge de compromis
+- rivalite-sino-americaine:taiwan → rivalite-sino-americaine:energie [forcage] une crise dans le détroit menacerait des routes de l'énergie et du commerce asiatiques
+- russie-ukraine:capacites → russie-ukraine:front [forcage] les capacités décident de ce que le front peut faire ; une pénurie fait basculer
+- russie-ukraine:soutiens → russie-ukraine:capacites [forcage] l'aide extérieure alimente les capacités ukrainiennes (et, en face, les livraisons de munitions et de drones à la Russie)
+- russie-ukraine:sanctions → russie-ukraine:economie_russe [forcage] les sanctions érodent l'économie russe lentement ; chaque paquet ajoute moins
+- russie-ukraine:economie_russe → russie-ukraine:capacites [forcage] les recettes financent la production militaire
+- russie-ukraine:front → russie-ukraine:economie_ukraine [forcage] les frappes sur l'énergie pèsent surtout en hiver
+- russie-ukraine:front → russie-ukraine:negociations [forcage] chaque camp négocie selon ce qu'il croit pouvoir encore gagner sur le terrain
+- russie-ukraine:negociations → russie-ukraine:front [ambivalent] une négociation sérieuse peut geler des secteurs ; style de la relation à mesurer (paire RUS–UKR au banc de la réciprocité)
+- russie-ukraine:opinions → russie-ukraine:soutiens [forcage] la lassitude des opinions use le soutien ; une fois installée, elle ne recule pas facilement
+- russie-ukraine:soutiens → russie-ukraine:sanctions [forcage] les soutiens décident des sanctions
+- russie-ukraine:mer_noire → russie-ukraine:economie_ukraine [forcage] le corridor maritime fait vivre les exportations agricoles
+- russie-ukraine:front → russie-ukraine:mer_noire [forcage] les frappes sur Odessa et les navires réduisent les passages
+- russie-ukraine:soutiens → russie-ukraine:negociations [ambivalent] les soutiens pèsent sur les conditions et le calendrier des négociations
+- transport-maritime:securite → transport-maritime:detroits [forcage] au-delà de quelques attaques, les compagnies évitent le passage entier
+- transport-maritime:detroits → transport-maritime:contournement [commensalisme] ce que perd un détroit se reporte sur le contournement (le cap de Bonne-Espérance pour la mer Rouge)
+- transport-maritime:contournement → transport-maritime:fret [forcage] des traversées plus longues immobilisent des navires et font monter le fret
+- transport-maritime:flottes → transport-maritime:fret [forcage] une flotte abondante amortit les chocs ; pleine, elle n'amortit plus
+- transport-maritime:securite → transport-maritime:assurances [forcage] les zones à risque déclarées font bondir les primes
+- transport-maritime:assurances → transport-maritime:flottes [forcage] des primes trop chères dissuadent les armateurs de passer
+- transport-maritime:climat → transport-maritime:detroits [forcage] une sécheresse limite les passages à Panama
+- transport-maritime:ports → transport-maritime:fret [forcage] les ports engorgés font monter le fret et les délais
+- transport-maritime:droit → transport-maritime:flottes [forcage] les sanctions retirent des navires du marché officiel et en créent un parallèle
+- transport-maritime:flottes → transport-maritime:securite [ambivalent] les compagnies et les forces armées s'ajustent l'une à l'autre (escortes demandées, routes choisies)
+- transport-maritime:recits → transport-maritime:assurances [forcage] une menace annoncée suffit parfois à relever le risque perçu
+- transport-maritime:detroits → transport-maritime:ports [forcage] un passage rouvert après une crise envoie des vagues de navires dans les ports

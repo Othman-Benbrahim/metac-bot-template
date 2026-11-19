@@ -89,11 +89,16 @@ class Carte:
         self.sortants: dict[str, list[dict]] = {}
         for r in self.s["relations"]:
             self.sortants.setdefault(r["de"], []).append(r)
-        for p in self.s["ponts"]:                 # un pont résolu relie deux lectures du même phénomène
-            if p["resolu"]:
+        for p in self.s["ponts"]:
+            if not p["resolu"]:
+                continue
+            if p.get("type") == "meme":           # deux lectures du même phénomène : dans les deux sens, sans perte
                 for a, b in ((p["de"], p["vers"]), (p["vers"], p["de"])):
                     self.sortants.setdefault(a, []).append({"de": a, "vers": b, "forme": "pont", "effet": "+",
                                                             "force": "forte", "delai": "permanent", "pont": True})
+            else:                                 # influence : un sens, transmission partielle, sens indéterminé
+                self.sortants.setdefault(p["de"], []).append({"de": p["de"], "vers": p["vers"], "forme": "pont", "effet": "±",
+                                                              "force": "moyenne", "delai": "jours", "pont": "influence"})
         self._etat: dict[str, dict] | None = None
 
     def etat(self) -> dict[str, dict]:
@@ -146,10 +151,10 @@ class Carte:
                 regle = (r.get("intensite") or {}).get("regle") if isinstance(r.get("intensite"), dict) else None
                 poids *= multiplicateur(regle, self.intensite(nid))
                 src, cib = self.noeuds.get(nid, {}).get("axes", {}), self.noeuds.get(r["vers"], {}).get("axes", {})
-                if not r.get("pont"):
+                if r.get("pont") is not True:
                     poids *= facteur_echelle(src.get("taille"), cib.get("taille"), regle)
                 nouvelle = ampl * poids * (s if s is not None else 1.0)
-                arrivee = jour + delai_jours(r.get("delai")) + (0 if r.get("pont") else retard_propre(cib.get("vitesse_jours")))
+                arrivee = jour + delai_jours(r.get("delai")) + (0 if r.get("pont") is True else retard_propre(cib.get("vitesse_jours")))
                 heapq.heappush(tas, (arrivee, -abs(nouvelle), r["vers"], nouvelle,
                                      sens_connu and s is not None, chemin + [r["vers"]]))
         return sorted(vus.values(), key=lambda x: (x["jour"], -x["ampleur"]))

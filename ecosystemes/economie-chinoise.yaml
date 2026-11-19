@@ -1,0 +1,125 @@
+theme: economie-chinoise
+nom: "Économie chinoise"
+declaration:
+  but: "comprendre ce qui fait l'activité chinoise, sa demande de matières premières, ses exportations et la fiabilité de ses chiffres, et ce que cela transmet aux autres écosystèmes (questions du tournoi sur la croissance, le chômage des jeunes, l'immobilier, les échanges)"
+  limites: "dedans l'activité, l'immobilier et les collectivités locales, l'industrie et les exportations, la consommation, l'emploi, la politique monétaire et budgétaire, les statistiques officielles, la demande de matières premières ; dehors la politique militaire et Taïwan (thème voisin, relié par un pont)"
+  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; chiffres officiels lus comme des conventions"
+  date: "2026-11-19"
+  espace: "la Chine, ses provinces, ses partenaires commerciaux et les marchés mondiaux des matières premières"
+  temps: "du relevé mensuel au plan quinquennal ; mémoire de 2008, 2015 et de la crise immobilière ouverte en 2021 (à vérifier)"
+  vitesse: "la semaine (annonces), le mois (statistiques), l'année (plans, objectifs de croissance)"
+  taille: "un ménage, une entreprise, une province, l'économie nationale"
+compartiments:
+  - id: activite
+    nom: "Activité économique"
+    elements: ["production industrielle", "investissement", "commerce de détail", "objectif de croissance annuel"]
+    acteurs:
+      - {nom: "une usine exportatrice", taille: "micro", espace: "site", vitesse: "semaines"}
+      - {nom: "une province", taille: "méso", espace: "région", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "publications mensuelles et trimestrielles", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "calendrier des statistiques chinoises (Bureau national des statistiques)", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
+      - {source: "feux actifs sur les zones industrielles (activité thermique, FIRMS)", statut: "collecte", fichier: "collecte_feux.py", adaptateur: "feux:CN"}
+  - id: immobilier
+    nom: "Immobilier et collectivités locales"
+    elements: ["promoteurs endettés", "ventes de logements", "ventes de terrains des collectivités", "dette des véhicules de financement locaux"]
+    acteurs:
+      - {nom: "un ménage acheteur", taille: "micro", espace: "local", vitesse: "mois"}
+      - {nom: "un promoteur immobilier", taille: "méso", espace: "pays", vitesse: "mois"}
+      - {nom: "une collectivité locale", taille: "méso", espace: "région", vitesse: "année"}
+    niveau: {espace: "villes et provinces", temps: "cycles de plusieurs années", vitesse: "mois à années", taille: "méso à macro"}
+    traces:
+      - {source: "prix et ventes de logements (publication mensuelle officielle)", statut: "a_brancher"}
+  - id: exportations
+    nom: "Industrie et exportations"
+    elements: ["excédent commercial", "surcapacités", "véhicules électriques, panneaux solaires, acier", "droits de douane étrangers"]
+    acteurs:
+      - {nom: "un grand groupe industriel", taille: "méso", espace: "mondial", vitesse: "mois"}
+    niveau: {espace: "routes commerciales mondiales", temps: "commandes et saisons commerciales", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "IMF PortWatch (porte-conteneurs dans le détroit de Malacca)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:porte_conteneurs"}
+      - {source: "IMF PortWatch (porte-conteneurs dans le détroit de Taïwan)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:taiwan:porte_conteneurs"}
+  - id: consommation
+    nom: "Consommation des ménages"
+    elements: ["confiance", "épargne de précaution", "prix à la consommation proches de zéro (à vérifier)", "subventions à l'achat"]
+    acteurs:
+      - {nom: "un ménage urbain", taille: "micro", espace: "local", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "mois ; fêtes et saisons", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "commerce de détail et prix à la consommation (publication officielle)", statut: "a_brancher"}
+  - id: emploi
+    nom: "Emploi et chômage des jeunes"
+    elements: ["chômage urbain", "chômage des jeunes", "diplômés de l'été", "emploi informel"]
+    acteurs:
+      - {nom: "un jeune diplômé", taille: "micro", espace: "local", vitesse: "mois"}
+    niveau: {espace: "villes", temps: "publication mensuelle ; pic estival des diplômés", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "taux de chômage des jeunes (publication officielle mensuelle)", statut: "a_brancher"}
+  - id: politique_monetaire
+    nom: "Politique monétaire et budgétaire"
+    elements: ["taux de référence des prêts", "réserves obligatoires", "obligations spéciales", "plans de relance"]
+    acteurs:
+      - {nom: "Banque populaire de Chine", taille: "macro", espace: "pays", vitesse: "semaines"}
+      - {nom: "ministère des Finances", taille: "macro", espace: "pays", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "réunions et annonces datées", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "communiqués de la banque centrale chinoise (publics)", statut: "a_brancher"}
+  - id: pouvoir
+    nom: "Pouvoir et orientations politiques"
+    elements: ["plénums et sessions annuelles", "objectifs du plan", "priorités industrielles", "campagnes réglementaires"]
+    acteurs:
+      - {nom: "Parti communiste chinois (direction centrale, en agrégat)", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "Conseil des affaires de l'État", taille: "macro", espace: "pays", vitesse: "semaines"}
+    niveau: {espace: "pays", temps: "calendrier politique (sessions annuelles, plénums, plans quinquennaux)", vitesse: "mois à années", taille: "macro"}
+    traces:
+      - {source: "censure et coupures d'internet (OONI, part des mesures en anomalie)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:CN"}
+      - {source: "routines officielles (ministère chinois des Affaires étrangères)", statut: "collecte", fichier: "collecte_routines.py"}
+  - id: statistiques
+    nom: "Statistiques officielles (convention)"
+    elements: ["calendrier de publication", "séries suspendues ou redéfinies", "révisions", "écarts avec les indicateurs indirects"]
+    acteurs:
+      - {nom: "Bureau national des statistiques", taille: "méso", espace: "pays", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "calendrier de publication", vitesse: "mois", taille: "méso"}
+    traces:
+      - {source: "calendrier des statistiques chinoises (publications tenues, retardées ou suspendues)", statut: "collecte", fichier: "collecte_calendrier_nbs.py"}
+  - id: matieres_premieres
+    nom: "Demande de matières premières"
+    elements: ["pétrole importé (y compris sous sanctions)", "minerai de fer", "cuivre", "gaz naturel liquéfié", "stocks stratégiques"]
+    acteurs:
+      - {nom: "une raffinerie indépendante du Shandong", taille: "micro", espace: "site", vitesse: "semaines"}
+      - {nom: "les grandes compagnies pétrolières d'État", taille: "macro", espace: "mondial", vitesse: "mois"}
+    niveau: {espace: "routes d'importation mondiales", temps: "contrats et saisons", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "IMF PortWatch (pétroliers dans le détroit de Malacca)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:petroliers"}
+      - {source: "anomalie de température à Shanghai (demande d'énergie, Open-Meteo)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:shanghai"}
+  - id: exterieur
+    nom: "Relations économiques extérieures"
+    elements: ["droits de douane américains et européens", "contrôles des exportations technologiques", "sanctions", "investissements à l'étranger"]
+    acteurs:
+      - {nom: "Chine (État)", taille: "macro", espace: "mondial", vitesse: "semaines"}
+      - {nom: "États-Unis (État)", taille: "macro", espace: "mondial", vitesse: "semaines"}
+    niveau: {espace: "mondial", temps: "annonces et négociations datées", vitesse: "semaines à années", taille: "macro"}
+    traces:
+      - {source: "GDELT, ton des gestes des États-Unis envers la Chine", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "dyade:USA:CHN"}
+      - {source: "listes de sanctions visant la Chine", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:CN"}
+relations:
+  - {de: "immobilier", vers: "activite", effet: "-", delai: "mois à années", force: "forte", intensite: {mesure: "baisse des ventes de logements et défauts de promoteurs", regle: "hysteresis"}, coupure: "relance ciblée de l'immobilier", statut: "a_verifier", texte: "la crise immobilière pèse longtemps sur l'investissement ; la confiance ne revient pas par le même chemin"}
+  - {de: "immobilier", vers: "consommation", effet: "-", delai: "mois", force: "moyenne", coupure: "garanties publiques sur les logements vendus avant construction", statut: "a_verifier", texte: "le logement est l'épargne principale des ménages ; sa baisse les rend prudents"}
+  - {de: "consommation", vers: "activite", effet: "+", delai: "mois", force: "moyenne", coupure: "épargne de précaution", statut: "a_verifier", texte: "une consommation faible laisse l'activité dépendre des exportations et de l'investissement"}
+  - {de: "exportations", vers: "activite", effet: "+", delai: "semaines à mois", force: "forte", coupure: "droits de douane étrangers", statut: "a_verifier", texte: "les exportations compensent la faiblesse intérieure"}
+  - {de: "exterieur", vers: "exportations", effet: "-", retour: "-", style: "inconnu", delai: "semaines à mois", force: "forte", intensite: {mesure: "tension commerciale du moment (ton des gestes entre États)", regle: "seuil"}, coupure: "trêves commerciales, réacheminement par des pays tiers", statut: "a_verifier", texte: "droits de douane et contrôles d'un côté, représailles de l'autre"}
+  - {de: "politique_monetaire", vers: "activite", effet: "+", delai: "mois", force: "moyenne", coupure: "piège de liquidité (crédit peu demandé)", statut: "a_verifier", texte: "baisses de taux et obligations spéciales soutiennent l'activité, moins quand ménages et entreprises ne veulent plus s'endetter"}
+  - {de: "pouvoir", vers: "politique_monetaire", effet: "±", delai: "semaines à mois", force: "forte", coupure: "aucune connue", statut: "a_verifier", texte: "les grandes orientations décident de l'ampleur des relances"}
+  - {de: "pouvoir", vers: "statistiques", effet: "±", delai: "mois", force: "moyenne", coupure: "indicateurs indirects publics", statut: "a_verifier", texte: "un chiffre gênant peut être redéfini ou suspendu (la série du chômage des jeunes a été suspendue puis redéfinie, à vérifier)"}
+  - {de: "activite", vers: "emploi", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "nombre de diplômés entrant sur le marché du travail", regle: "seuil"}, coupure: "emploi public et informel", statut: "a_verifier", texte: "le chômage des jeunes monte chaque été et quand l'activité ralentit"}
+  - {de: "activite", vers: "matieres_premieres", effet: "+", delai: "semaines à mois", force: "forte", coupure: "stocks stratégiques constitués à bas prix", statut: "a_verifier", texte: "la demande chinoise de pétrole, de fer et de cuivre suit l'industrie et la construction"}
+  - {de: "statistiques", vers: "politique_monetaire", effet: "±", delai: "semaines", force: "faible", coupure: "révisions", statut: "a_verifier", texte: "les décisions et les marchés réagissent au chiffre publié, convention dont la fiabilité est débattue"}
+  - {de: "emploi", vers: "pouvoir", effet: "-", delai: "mois à années", force: "inconnue", coupure: "contrôle social", statut: "a_verifier", texte: "le chômage des jeunes est une pression lente sur la légitimité"}
+ponts:
+  - {depuis: "matieres_premieres", vers: "energie-mondiale:demande", nature: "la Chine est le premier importateur de pétrole"}
+  - {depuis: "matieres_premieres", vers: "ormuz:puissances", nature: "la Chine achète l'essentiel du pétrole iranien (à vérifier)"}
+  - {depuis: "statistiques", vers: "inflation-mondiale:statistiques", nature: "la fiabilité des chiffres officiels chinois"}
+  - {depuis: "exterieur", vers: "rivalite-sino-americaine:energie", nature: "rivalité commerciale et technologique avec les États-Unis"}
+  - {depuis: "exportations", vers: "transport-maritime:detroits", nature: "Malacca, Taïwan et Suez portent les exportations chinoises"}
+  - {depuis: "politique_monetaire", vers: "inflation-mondiale:banques_centrales", nature: "la Banque populaire de Chine parmi les grandes banques centrales"}
+  - {depuis: "exterieur", vers: "politique-americaine:commerce", nature: "droits de douane décidés à Washington"}

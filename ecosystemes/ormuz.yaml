@@ -105,8 +105,8 @@ relations:
   - {de: "recits", vers: "prix", effet: "±", delai: "heures", force: "moyenne", intensite: {mesure: "tension États-Unis–Iran du moment (paires d'États GDELT)", regle: "proportionnelle"}, coupure: "démenti ou absence d'incident physique", statut: "a_verifier", texte: "une menace verbale bouge les prix avant tout fait"}
   - {de: "force", vers: "recits", effet: "+", retour: "+", forme: "mutualisme", delai: "heures", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "démonstrations de force et récits se nourrissent (signalisation)"}
 ponts:
-  - {depuis: "prix", vers: "energie-mondiale:prix", nature: "le prix du brut relie Ormuz à tous les importateurs"}
-  - {depuis: "prix", vers: "inflation-mondiale:energie", nature: "l'énergie entre dans l'inflation et donc dans les banques centrales"}
+  - {depuis: "prix", vers: "energie-mondiale:prix", type: "meme", nature: "le prix du brut relie Ormuz à tous les importateurs"}
+  - {depuis: "prix", vers: "inflation-mondiale:energie", type: "meme", nature: "l'énergie entre dans l'inflation et donc dans les banques centrales"}
   - {depuis: "interieur_iran", vers: "iran-nucleaire:negociations", nature: "le programme nucléaire et les sanctions se négocient ensemble"}
   - {depuis: "puissances", vers: "rivalite-sino-americaine:energie", nature: "la sécurité des approvisionnements chinois"}
   - {depuis: "force", vers: "guerre-levant:iran", nature: "les fronts régionaux de l'Iran et de ses alliés"}

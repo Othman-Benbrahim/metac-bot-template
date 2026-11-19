@@ -44,7 +44,9 @@ relations:
     source: (si vérifié) la source relue
     texte: une phrase
 ponts:
-  - {depuis: compartiment, vers: autre-theme:compartiment, nature: une phrase}
+  - {depuis: compartiment, vers: autre-theme:compartiment, nature: une phrase, type: meme | influence}
+    # meme : les deux fiches lisent le même phénomène (transmission entière, dans les deux sens)
+    # influence (par défaut) : le compartiment influe sur l'autre fiche (partielle, avec retard, sens à préciser)
 ```
 Sans forme écrite, la forme est déduite des deux effets (− / − compétition, + / + mutualisme, + / − prédation,
 + / 0 commensalisme, − / 0 amensalisme, 0 / 0 neutralisme ; sans retour : forçage).

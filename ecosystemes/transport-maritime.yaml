@@ -1,0 +1,113 @@
+theme: transport-maritime
+nom: "Transport maritime mondial"
+declaration:
+  but: "comprendre comment le système des routes maritimes, des détroits et des ports absorbe ou transmet un choc (fermeture d'un passage, attaque, sanction, sécheresse d'un canal) et ce qu'il transmet aux prix, à l'énergie et aux chaînes d'approvisionnement"
+  limites: "dedans les détroits et canaux, les routes de contournement, les flottes, le fret, les assurances, les ports, les marines qui sécurisent les routes ; dehors la construction navale, le transport aérien et terrestre (sauf comme alternative)"
+  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; données publiques seulement"
+  date: "2026-11-19"
+  espace: "les océans et leurs goulets (Ormuz, Bab-el-Mandeb, Suez, Malacca, Panama, Bosphore, Taïwan, cap de Bonne-Espérance)"
+  temps: "de la traversée (heures) au cycle du fret (années) ; mémoire de l'Ever Given (2021), des attaques en mer Rouge (depuis 2023), de la sécheresse de Panama (2023-2024) — à vérifier"
+  vitesse: "l'heure (incident), la semaine (déroutement, fret spot), le mois (contrats), l'année (flottes)"
+  taille: "un navire, une compagnie, une route, le système mondial"
+compartiments:
+  - id: detroits
+    nom: "Détroits et canaux"
+    elements: ["Ormuz", "Bab-el-Mandeb", "canal de Suez", "Malacca", "canal de Panama", "Bosphore", "détroit de Taïwan"]
+    acteurs:
+      - {nom: "Autorité du canal de Suez", taille: "méso", espace: "site", vitesse: "jours"}
+      - {nom: "Autorité du canal de Panama", taille: "méso", espace: "site", vitesse: "jours"}
+    niveau: {espace: "goulets régionaux", temps: "permanent ; incidents datés", vitesse: "heures à jours", taille: "méso"}
+    traces:
+      - {source: "IMF PortWatch, porte-conteneurs à Suez", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:suez:porte_conteneurs"}
+      - {source: "IMF PortWatch, navires à Bab-el-Mandeb", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:bab_el_mandeb:navires"}
+      - {source: "IMF PortWatch, navires à Panama", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:panama:navires"}
+  - id: contournement
+    nom: "Routes de contournement"
+    elements: ["cap de Bonne-Espérance", "oléoducs terrestres", "ponts ferroviaires", "route maritime du Nord"]
+    niveau: {espace: "routes mondiales", temps: "semaines de traversée supplémentaires", vitesse: "jours à semaines", taille: "macro"}
+    traces:
+      - {source: "IMF PortWatch, navires au cap de Bonne-Espérance", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:bonne_esperance:navires"}
+  - id: flottes
+    nom: "Flottes et armateurs"
+    elements: ["porte-conteneurs", "pétroliers", "vraquiers", "méthaniers", "flotte « fantôme » sous sanctions"]
+    acteurs:
+      - {nom: "un navire et son équipage", taille: "micro", espace: "navire", vitesse: "heures"}
+      - {nom: "une grande compagnie de conteneurs", taille: "méso", espace: "mondial", vitesse: "semaines"}
+      - {nom: "les alliances de compagnies", taille: "macro", espace: "mondial", vitesse: "mois"}
+    niveau: {espace: "mondial", temps: "rotations ; renouvellement des flottes sur des années", vitesse: "semaines à années", taille: "micro à macro"}
+    traces:
+      - {source: "IMF PortWatch, pétroliers à Malacca", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:malacca:petroliers"}
+  - id: fret
+    nom: "Prix du fret"
+    elements: ["fret conteneur au comptant", "fret pétrolier", "contrats annuels", "surcharges"]
+    acteurs:
+      - {nom: "un chargeur (importateur ou exportateur)", taille: "micro", espace: "local", vitesse: "semaines"}
+    niveau: {espace: "mondial", temps: "indices hebdomadaires", vitesse: "jours à semaines", taille: "macro"}
+    traces:
+      - {source: "indices publics de fret conteneur (publications hebdomadaires gratuites)", statut: "a_brancher"}
+  - id: assurances
+    nom: "Assurances et risque de guerre"
+    elements: ["primes de risque de guerre", "zones à haut risque déclarées", "réassurance"]
+    acteurs:
+      - {nom: "les assureurs maritimes", taille: "méso", espace: "mondial", vitesse: "jours"}
+    niveau: {espace: "mondial", temps: "révisions des zones à risque", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "primes de risque de guerre", statut: "fermee"}
+  - id: ports
+    nom: "Ports et terminaux"
+    elements: ["grands ports à conteneurs", "terminaux pétroliers et gaziers", "engorgement", "grèves"]
+    acteurs:
+      - {nom: "un port et ses dockers", taille: "méso", espace: "site", vitesse: "jours"}
+    niveau: {espace: "sites", temps: "temps d'attente quotidiens", vitesse: "jours", taille: "méso"}
+    traces:
+      - {source: "statistiques portuaires publiques (temps d'attente, volumes)", statut: "a_brancher"}
+  - id: securite
+    nom: "Sécurité des routes"
+    elements: ["marines d'escorte", "attaques de drones et de missiles", "piraterie", "mines", "saisies de navires"]
+    acteurs:
+      - {nom: "les forces houthies (en agrégat)", taille: "méso", espace: "région", vitesse: "jours"}
+      - {nom: "les missions navales internationales", taille: "méso", espace: "région", vitesse: "semaines"}
+      - {nom: "une vedette, un drone ou une mine", taille: "micro", espace: "site", vitesse: "heures"}
+    niveau: {espace: "abords des détroits", temps: "incidents ; campagnes", vitesse: "heures à semaines", taille: "micro à méso"}
+    traces:
+      - {source: "avis aux navigateurs (NGA)", statut: "collecte", fichier: "collecte_avis_navigation.py"}
+      - {source: "avions d'État (patrouilles visibles)", statut: "collecte", fichier: "collecte_avions_etat.py"}
+  - id: climat
+    nom: "Climat et eau des canaux"
+    elements: ["niveau des lacs du canal de Panama", "tempêtes et typhons", "glaces de l'Arctique"]
+    niveau: {espace: "régional", temps: "saisons ; années sèches", vitesse: "jours (tempêtes) à saisons (sécheresse)", taille: "méso"}
+    traces:
+      - {source: "niveau du lac Gatún (publication publique de l'autorité du canal)", statut: "a_brancher"}
+  - id: droit
+    nom: "Droit, sanctions et règles"
+    elements: ["liberté de navigation et passage en transit", "sanctions sur les navires et les cargaisons", "règles environnementales (carburants)", "pavillons de complaisance"]
+    niveau: {espace: "juridictions et haute mer", temps: "textes durables ; désignations datées", vitesse: "semaines à années", taille: "macro"}
+    traces:
+      - {source: "listes de sanctions", statut: "collecte", fichier: "collecte_sanctions.py"}
+  - id: recits
+    nom: "Récits et attention"
+    elements: ["alertes des compagnies", "communiqués militaires", "couverture médiatique"]
+    niveau: {espace: "médiatique mondial", temps: "cycle de l'information", vitesse: "heures", taille: "micro à macro"}
+    traces:
+      - {source: "GDELT", statut: "collecte", fichier: "collecte_gdelt.py"}
+relations:
+  - {de: "securite", vers: "detroits", effet: "-", delai: "heures à jours", force: "forte", intensite: {mesure: "attaques et incidents récents près des goulets", regle: "seuil"}, coupure: "escortes navales efficaces", statut: "a_verifier", texte: "au-delà de quelques attaques, les compagnies évitent le passage entier"}
+  - {de: "detroits", vers: "contournement", effet: "-", retour: "0", forme: "commensalisme", delai: "jours", force: "forte", coupure: "capacité des routes alternatives", statut: "a_verifier", texte: "ce que perd un détroit se reporte sur le contournement (le cap de Bonne-Espérance pour la mer Rouge)"}
+  - {de: "contournement", vers: "fret", effet: "+", delai: "semaines", force: "forte", intensite: {mesure: "part du trafic dérouté", regle: "proportionnelle"}, coupure: "surcapacité des flottes", statut: "a_verifier", texte: "des traversées plus longues immobilisent des navires et font monter le fret"}
+  - {de: "flottes", vers: "fret", effet: "-", delai: "mois à années", force: "moyenne", intensite: {mesure: "taux d'utilisation des flottes", regle: "saturation"}, coupure: "commandes de navires en retard", statut: "a_verifier", texte: "une flotte abondante amortit les chocs ; pleine, elle n'amortit plus"}
+  - {de: "securite", vers: "assurances", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "incidents récents", regle: "seuil"}, coupure: "retour au calme prolongé", statut: "a_verifier", texte: "les zones à risque déclarées font bondir les primes"}
+  - {de: "assurances", vers: "flottes", effet: "-", delai: "jours", force: "moyenne", coupure: "garanties publiques d'assurance", statut: "a_verifier", texte: "des primes trop chères dissuadent les armateurs de passer"}
+  - {de: "climat", vers: "detroits", effet: "-", delai: "semaines à saisons", force: "moyenne", intensite: {mesure: "niveau des lacs du canal de Panama", regle: "seuil"}, coupure: "saison des pluies", statut: "a_verifier", texte: "une sécheresse limite les passages à Panama"}
+  - {de: "ports", vers: "fret", effet: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "temps d'attente aux ports", regle: "proportionnelle"}, coupure: "baisse de la demande", statut: "a_verifier", texte: "les ports engorgés font monter le fret et les délais"}
+  - {de: "droit", vers: "flottes", effet: "-", delai: "semaines à mois", force: "moyenne", coupure: "flotte fantôme et changements de pavillon", statut: "a_verifier", texte: "les sanctions retirent des navires du marché officiel et en créent un parallèle"}
+  - {de: "flottes", vers: "securite", effet: "±", retour: "±", style: "inconnu", delai: "jours", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "les compagnies et les forces armées s'ajustent l'une à l'autre (escortes demandées, routes choisies)"}
+  - {de: "recits", vers: "assurances", effet: "+", delai: "heures à jours", force: "faible", coupure: "absence d'incident physique", statut: "a_verifier", texte: "une menace annoncée suffit parfois à relever le risque perçu"}
+  - {de: "detroits", vers: "ports", effet: "±", delai: "semaines", force: "moyenne", coupure: "étalement des arrivées", statut: "a_verifier", texte: "un passage rouvert après une crise envoie des vagues de navires dans les ports"}
+ponts:
+  - {depuis: "detroits", vers: "ormuz:navigation", nature: "Ormuz est un des goulets du système"}
+  - {depuis: "detroits", vers: "energie-mondiale:transport", nature: "le transport de l'énergie passe par les mêmes détroits"}
+  - {depuis: "fret", vers: "inflation-mondiale:approvisionnement", nature: "le fret entre dans le coût des biens"}
+  - {depuis: "droit", vers: "russie-ukraine:sanctions", nature: "la flotte fantôme du pétrole russe"}
+  - {depuis: "detroits", vers: "rivalite-sino-americaine:taiwan", nature: "le détroit de Taïwan et la mer de Chine méridionale"}
+  - {depuis: "climat", vers: "climat-extremes:saisons", nature: "sécheresses, typhons, glaces"}
+  - {depuis: "securite", vers: "guerre-levant:iran", nature: "les attaques en mer Rouge liées aux fronts régionaux"}

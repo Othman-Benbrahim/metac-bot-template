@@ -1,0 +1,107 @@
+theme: dette-emergents
+nom: "Dette des pays émergents et en développement"
+declaration:
+  but: "comprendre ce qui pousse un pays émergent ou pauvre vers la crise de dette ou de change (défaut, dévaluation, programme du FMI, contrôle des capitaux), et ce que cela transmet (questions du tournoi sur les monnaies, les défauts, les banques en difficulté, les programmes du FMI)"
+  limites: "dedans la dette publique et privée en devises, les monnaies, les réserves de change, les banques locales, les créanciers (marchés, Chine, Club de Paris), le FMI et la Banque mondiale, l'inflation locale et la contestation ; dehors la croissance de long terme et la démographie"
+  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; pays lus en agrégat, jamais de personne privée"
+  date: "2026-11-19"
+  espace: "les pays émergents et en développement, et les marchés financiers mondiaux (dollar, taux américains)"
+  temps: "de la séance (change) à la décennie (restructurations) ; mémoire des crises de 1982, 1994, 1997-1998, 2001, 2013, 2022"
+  vitesse: "le jour (attaque sur la monnaie, retraits bancaires), le mois (échéances, revues du FMI), l'année (restructurations)"
+  taille: "un déposant, une banque, un pays, le système financier mondial"
+compartiments:
+  - id: monnaies
+    nom: "Monnaies et change"
+    elements: ["taux de change", "dévaluations", "marchés parallèles", "contrôles des capitaux"]
+    acteurs:
+      - {nom: "une banque centrale de pays émergent", taille: "macro", espace: "pays", vitesse: "jours"}
+    niveau: {espace: "pays", temps: "séances ; régimes de change", vitesse: "jours à mois", taille: "macro"}
+    traces:
+      - {source: "indice large du dollar (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DTWEXBGS"}
+      - {source: "taux de change officiels et parallèles par pays (banques centrales)", statut: "a_brancher"}
+  - id: dette_publique
+    nom: "Dette publique en devises"
+    elements: ["obligations en dollars", "échéances", "écarts de taux par rapport aux États-Unis", "notations"]
+    acteurs:
+      - {nom: "un ministère des Finances", taille: "macro", espace: "pays", vitesse: "mois"}
+      - {nom: "une agence de notation", taille: "méso", espace: "mondial", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "calendrier des échéances", vitesse: "semaines à années", taille: "macro"}
+    traces:
+      - {source: "taux américain à 10 ans (référence des écarts, FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DGS10"}
+  - id: reserves
+    nom: "Réserves de change"
+    elements: ["réserves en devises", "or", "lignes d'échange entre banques centrales"]
+    niveau: {espace: "pays", temps: "publication mensuelle", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "réserves de change publiées par les banques centrales", statut: "a_brancher"}
+  - id: banques
+    nom: "Banques locales"
+    elements: ["dépôts", "retraits massifs", "fermetures et faillites de banques", "garanties des dépôts"]
+    acteurs:
+      - {nom: "un déposant", taille: "micro", espace: "local", vitesse: "jours"}
+      - {nom: "une banque locale", taille: "méso", espace: "pays", vitesse: "jours"}
+      - {nom: "l'autorité de surveillance bancaire", taille: "méso", espace: "pays", vitesse: "semaines"}
+    niveau: {espace: "pays", temps: "jours (retraits) à années (assainissement)", vitesse: "jours à mois", taille: "micro à méso"}
+    traces:
+      - {source: "communiqués des banques centrales et autorités bancaires", statut: "a_brancher"}
+  - id: creanciers
+    nom: "Créanciers"
+    elements: ["investisseurs sur les marchés", "Chine (prêts bilatéraux)", "Club de Paris", "cadre commun du G20"]
+    acteurs:
+      - {nom: "les fonds d'investissement (en agrégat)", taille: "macro", espace: "mondial", vitesse: "jours"}
+      - {nom: "Chine (prêteur bilatéral)", taille: "macro", espace: "mondial", vitesse: "mois"}
+    niveau: {espace: "mondial", temps: "négociations de plusieurs mois à plusieurs années", vitesse: "mois à années", taille: "macro"}
+    traces:
+      - {source: "annonces de restructuration (communiqués officiels)", statut: "a_brancher"}
+  - id: fmi
+    nom: "FMI et Banque mondiale"
+    elements: ["programmes", "revues trimestrielles", "conditions (subventions, change, budget)", "décaissements"]
+    acteurs:
+      - {nom: "Fonds monétaire international", taille: "macro", espace: "mondial", vitesse: "mois"}
+    niveau: {espace: "mondial", temps: "revues datées ; conseils d'administration", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "communiqués de presse du FMI (accords au niveau des services, revues)", statut: "a_brancher"}
+  - id: inflation_locale
+    nom: "Inflation locale"
+    elements: ["prix des importations", "carburants et pain", "subventions", "indexation"]
+    acteurs:
+      - {nom: "un ménage", taille: "micro", espace: "local", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "publication mensuelle", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "indice mondial des prix alimentaires (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:PFOODINDEXM"}
+  - id: politique_interieure
+    nom: "Politique intérieure et contestation"
+    elements: ["gouvernement", "élections", "manifestations contre l'austérité", "coupures d'internet"]
+    acteurs:
+      - {nom: "un gouvernement", taille: "macro", espace: "pays", vitesse: "semaines"}
+      - {nom: "les mouvements de protestation (en agrégat)", taille: "méso", espace: "pays", vitesse: "jours"}
+    niveau: {espace: "pays", temps: "mandats ; jours de crise", vitesse: "jours à années", taille: "méso à macro"}
+    traces:
+      - {source: "censure et coupures d'internet (OONI ; exemple : Argentine)", statut: "collecte", fichier: "collecte_ooni.py", adaptateur: "ooni:AR"}
+  - id: matieres_premieres
+    nom: "Recettes de matières premières"
+    elements: ["exportations de pétrole, de métaux, de produits agricoles", "termes de l'échange"]
+    niveau: {espace: "pays exportateurs", temps: "saisons ; cycles des prix", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "prix du Brent (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILBRENTEU"}
+relations:
+  - {de: "monnaies", vers: "dette_publique", effet: "-", delai: "jours à mois", force: "forte", intensite: {mesure: "ampleur de la dépréciation", regle: "seuil"}, coupure: "dette surtout en monnaie locale", statut: "a_verifier", texte: "une dépréciation gonfle la dette en dollars ; au-delà d'un seuil elle devient insoutenable"}
+  - {de: "monnaies", vers: "inflation_locale", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "ampleur de la dépréciation", regle: "proportionnelle"}, coupure: "subventions et contrôles des prix", statut: "a_verifier", texte: "la dévaluation renchérit les importations, carburants et pain d'abord"}
+  - {de: "reserves", vers: "monnaies", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "mois d'importations couverts par les réserves", regle: "seuil"}, coupure: "aide extérieure", statut: "a_verifier", texte: "des réserves suffisantes défendent la monnaie ; épuisées, la chute est brutale"}
+  - {de: "dette_publique", vers: "creanciers", effet: "-", retour: "-", style: "inconnu", delai: "mois à années", force: "forte", coupure: "accord de restructuration", statut: "a_verifier", texte: "un défaut fait perdre les créanciers et ferme les marchés au pays ; chacun réduit ce que l'autre obtient"}
+  - {de: "fmi", vers: "reserves", effet: "+", retour: "+", forme: "mutualisme", delai: "mois", force: "forte", coupure: "revue non validée", statut: "a_verifier", texte: "un programme apporte des devises et rassure les autres créanciers, contre des conditions"}
+  - {de: "fmi", vers: "politique_interieure", effet: "-", retour: "-", delai: "mois", force: "moyenne", intensite: {mesure: "ampleur des hausses de prix des subventions supprimées", regle: "seuil"}, coupure: "étalement des réformes", statut: "a_verifier", texte: "les conditions d'austérité alimentent la contestation, qui peut faire dérailler le programme"}
+  - {de: "inflation_locale", vers: "politique_interieure", effet: "-", delai: "semaines à mois", force: "moyenne", intensite: {mesure: "hausse du prix du pain et des carburants", regle: "seuil"}, coupure: "transferts aux ménages", statut: "a_verifier", texte: "la hausse des prix de base déclenche des manifestations au-delà d'un seuil"}
+  - {de: "banques", vers: "monnaies", effet: "-", delai: "jours", force: "moyenne", coupure: "garantie des dépôts crédible", statut: "a_verifier", texte: "des retraits massifs convertis en dollars accélèrent la chute de la monnaie"}
+  - {de: "monnaies", vers: "banques", effet: "-", delai: "jours à semaines", force: "moyenne", intensite: {mesure: "vitesse de la dépréciation", regle: "seuil"}, coupure: "contrôle des capitaux", statut: "a_verifier", texte: "une chute de la monnaie fait fuir les déposants (boucle avec la relation inverse)"}
+  - {de: "matieres_premieres", vers: "reserves", effet: "±", delai: "mois", force: "forte", coupure: "économies diversifiées", statut: "a_verifier", texte: "les recettes d'exportation remplissent ou vident les réserves selon les prix"}
+  - {de: "creanciers", vers: "monnaies", effet: "±", delai: "jours", force: "moyenne", intensite: {mesure: "aversion mondiale au risque", regle: "proportionnelle"}, coupure: "contrôle des capitaux", statut: "a_verifier", texte: "les flux des investisseurs entrent et sortent avec l'humeur mondiale"}
+  - {de: "politique_interieure", vers: "dette_publique", effet: "±", delai: "mois", force: "moyenne", coupure: "consensus sur l'ajustement", statut: "a_verifier", texte: "élections et instabilité changent la volonté de payer ou d'ajuster"}
+ponts:
+  - {depuis: "monnaies", vers: "inflation-mondiale:monnaies", nature: "un dollar fort serre les pays endettés en dollars"}
+  - {depuis: "dette_publique", vers: "inflation-mondiale:banques_centrales", nature: "les taux de la Réserve fédérale font le coût de la dette en dollars"}
+  - {depuis: "matieres_premieres", vers: "energie-mondiale:prix", nature: "les prix de l'énergie pour les exportateurs et les importateurs"}
+  - {depuis: "inflation_locale", vers: "alimentation-mondiale:prix", nature: "le prix du blé et du riz importés"}
+  - {depuis: "creanciers", vers: "economie-chinoise:exterieur", nature: "la Chine, grand prêteur bilatéral"}
+  - {depuis: "banques", vers: "crises-bancaires:depots", nature: "faillites et fermetures de banques (exemple du tournoi : Paraguay)"}
+  - {depuis: "politique_interieure", vers: "elections-amerique-latine:scrutins", nature: "élections et ajustements en Amérique latine"}

@@ -1,0 +1,123 @@
+theme: politique-americaine
+nom: "Politique américaine (institutions et mécanismes)"
+declaration:
+  but: "comprendre comment les institutions américaines produisent des décisions (lois, décrets, budgets, droits de douane, sanctions, nominations) et ce que ces décisions transmettent aux autres écosystèmes (nombreuses questions du tournoi)"
+  limites: "dedans l'exécutif, le Congrès, les tribunaux, la Réserve fédérale (en tant qu'institution), les élections, les États fédérés, l'opinion, et les leviers budget, commerce, énergie, sanctions ; dehors les programmes partisans en eux-mêmes et les personnes privées"
+  observateur: "notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; description des mécanismes, sans jugement partisan"
+  date: "2026-11-19"
+  espace: "les États-Unis (fédéral et États fédérés), et le monde par leurs décisions"
+  temps: "du décret signé en un jour au mandat de quatre ans et aux arrêts de la Cour suprême ; calendrier électoral (élections de mi-mandat en novembre 2026)"
+  vitesse: "le jour (décrets, annonces), la semaine (votes, recours), le mois (budgets, réglementation), l'année (élections, jurisprudence)"
+  taille: "un élu, une institution, l'État fédéral"
+compartiments:
+  - id: executif
+    nom: "Exécutif"
+    elements: ["présidence", "décrets et proclamations", "agences fédérales", "réglementation"]
+    acteurs:
+      - {nom: "la présidence", taille: "macro", espace: "pays", vitesse: "jours"}
+      - {nom: "une agence fédérale", taille: "méso", espace: "pays", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "mandat ; décisions quotidiennes", vitesse: "jours à mois", taille: "macro"}
+    traces:
+      - {source: "Federal Register (textes en inspection publique avant publication)", statut: "collecte", fichier: "collecte_federal_register.py"}
+      - {source: "routines officielles (Maison-Blanche, département d'État, défense)", statut: "collecte", fichier: "collecte_routines.py"}
+  - id: congres
+    nom: "Congrès"
+    elements: ["Chambre des représentants", "Sénat", "commissions", "lois", "confirmations des nominations"]
+    acteurs:
+      - {nom: "un élu ou une élue du Congrès (fonction publique)", taille: "micro", espace: "pays", vitesse: "semaines"}
+      - {nom: "une commission parlementaire", taille: "méso", espace: "pays", vitesse: "semaines"}
+      - {nom: "la majorité de chaque chambre", taille: "macro", espace: "pays", vitesse: "mois"}
+    niveau: {espace: "pays", temps: "sessions ; législature de deux ans", vitesse: "semaines à mois", taille: "méso à macro"}
+    traces:
+      - {source: "réunions de commissions et nominations (API du Congrès)", statut: "collecte", fichier: "collecte_congres.py"}
+  - id: tribunaux
+    nom: "Tribunaux"
+    elements: ["Cour suprême", "cours d'appel fédérales", "injonctions", "contentieux contre l'exécutif"]
+    acteurs:
+      - {nom: "un juge fédéral de première instance (fonction publique)", taille: "micro", espace: "région", vitesse: "jours"}
+      - {nom: "la Cour suprême", taille: "macro", espace: "pays", vitesse: "mois"}
+    niveau: {espace: "juridictions", temps: "procédures ; session annuelle de la Cour suprême", vitesse: "jours à années", taille: "micro à macro"}
+    traces:
+      - {source: "dossiers judiciaires (CourtListener : Cour suprême, cour d'appel du district de Columbia)", statut: "collecte", fichier: "collecte_tribunaux.py"}
+  - id: elections
+    nom: "Élections et opinion"
+    elements: ["calendrier électoral", "élections de mi-mandat", "primaires", "cote de popularité", "découpage des circonscriptions"]
+    acteurs:
+      - {nom: "un électeur", taille: "micro", espace: "local", vitesse: "année"}
+      - {nom: "les deux grands partis (en agrégat)", taille: "macro", espace: "pays", vitesse: "mois"}
+    niveau: {espace: "circonscriptions et États", temps: "cycle de deux ans ; dates d'élection fixes", vitesse: "mois à années", taille: "micro à macro"}
+    traces:
+      - {source: "résultats officiels et calendriers électoraux (commissions électorales des États)", statut: "a_brancher"}
+  - id: budget
+    nom: "Budget et dette fédérale"
+    elements: ["lois de finances", "plafond de la dette", "fermeture des services fédéraux faute de budget", "déficits", "émissions du Trésor"]
+    acteurs:
+      - {nom: "Trésor américain", taille: "macro", espace: "mondial", vitesse: "semaines"}
+    niveau: {espace: "pays", temps: "exercice budgétaire au 1er octobre ; échéances du plafond de la dette", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "taux américain à 10 ans (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DGS10"}
+  - id: commerce
+    nom: "Commerce et droits de douane"
+    elements: ["droits de douane", "exemptions", "accords commerciaux", "contrôles des exportations"]
+    acteurs:
+      - {nom: "représentant au Commerce et département du Commerce", taille: "méso", espace: "mondial", vitesse: "semaines"}
+    niveau: {espace: "mondial", temps: "annonces, délais d'application, recours", vitesse: "jours à mois", taille: "macro"}
+    traces:
+      - {source: "Federal Register (proclamations et avis tarifaires)", statut: "collecte", fichier: "collecte_federal_register.py"}
+  - id: energie
+    nom: "Politique énergétique"
+    elements: ["réserve stratégique de pétrole", "permis de forage et d'exportation de gaz liquéfié", "prix à la pompe", "sanctions énergétiques"]
+    acteurs:
+      - {nom: "département de l'Énergie", taille: "méso", espace: "pays", vitesse: "semaines"}
+    niveau: {espace: "pays et marchés mondiaux", temps: "décisions datées ; saison de conduite estivale", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "réserve stratégique américaine de brut (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:WCSSTUS1"}
+      - {source: "prix du WTI (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DCOILWTICO"}
+  - id: sanctions
+    nom: "Sanctions et politique étrangère économique"
+    elements: ["désignations du Trésor", "sanctions secondaires", "levées et dérogations"]
+    acteurs:
+      - {nom: "bureau du contrôle des avoirs étrangers du Trésor", taille: "méso", espace: "mondial", vitesse: "semaines"}
+    niveau: {espace: "mondial", temps: "désignations datées", vitesse: "jours à mois", taille: "macro"}
+    traces:
+      - {source: "listes de sanctions (désignations visant l'Iran)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:IR"}
+      - {source: "listes de sanctions (désignations visant la Russie)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:RU"}
+  - id: reserve_federale
+    nom: "Réserve fédérale (institution)"
+    elements: ["indépendance", "nominations au conseil des gouverneurs", "pressions politiques sur les taux"]
+    acteurs:
+      - {nom: "Réserve fédérale", taille: "macro", espace: "mondial", vitesse: "semaines"}
+    niveau: {espace: "pays et monde", temps: "réunions toutes les six semaines environ ; mandats des gouverneurs", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "taux effectif de la Réserve fédérale (FRED)", statut: "collecte", fichier: "collecte_fred.py", adaptateur: "fred:DFF"}
+  - id: etats_federes
+    nom: "États fédérés"
+    elements: ["gouverneurs", "législatures des États", "procureurs généraux des États", "recours contre le fédéral"]
+    acteurs:
+      - {nom: "un État fédéré", taille: "méso", espace: "région", vitesse: "mois"}
+    niveau: {espace: "États", temps: "sessions législatives des États", vitesse: "semaines à mois", taille: "méso"}
+    traces:
+      - {source: "recours devant les tribunaux fédéraux (CourtListener)", statut: "collecte", fichier: "collecte_tribunaux.py"}
+relations:
+  - {de: "executif", vers: "congres", effet: "±", retour: "±", style: "inconnu", delai: "semaines", force: "forte", intensite: {mesure: "écart de majorité entre la présidence et chaque chambre", regle: "seuil"}, coupure: "majorités alignées", statut: "a_verifier", texte: "quand les majorités divergent, chacun bloque l'autre ; alignées, elles s'appuient"}
+  - {de: "tribunaux", vers: "executif", effet: "-", retour: "±", delai: "jours à mois", force: "forte", coupure: "décision de la Cour suprême en dernier ressort", statut: "a_verifier", texte: "injonctions et arrêts suspendent ou annulent des décrets ; l'exécutif fait appel ou réécrit"}
+  - {de: "etats_federes", vers: "tribunaux", effet: "+", delai: "jours à semaines", force: "moyenne", coupure: "aucune connue", statut: "a_verifier", texte: "les États portent une part des recours contre les décisions fédérales"}
+  - {de: "elections", vers: "congres", effet: "±", delai: "mois à années", force: "forte", coupure: "dates fixes du calendrier électoral", statut: "a_verifier", texte: "les élections recomposent les majorités à dates fixes"}
+  - {de: "elections", vers: "executif", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "proximité d'une élection et cote de popularité", regle: "proportionnelle"}, coupure: "fin du dernier mandat possible", statut: "a_verifier", texte: "à l'approche d'une élection, les décisions visibles (prix à la pompe, droits de douane) suivent l'opinion"}
+  - {de: "congres", vers: "budget", effet: "±", delai: "semaines à mois", force: "forte", intensite: {mesure: "proximité de l'échéance budgétaire ou du plafond de la dette", regle: "seuil"}, coupure: "loi de financement temporaire", statut: "a_verifier", texte: "sans accord à l'échéance, fermeture des services fédéraux ou risque sur la dette"}
+  - {de: "budget", vers: "reserve_federale", effet: "-", retour: "-", forme: "competition", delai: "mois", force: "faible", coupure: "coordination en crise", statut: "a_verifier", texte: "des déficits élevés et une banque centrale qui freine se neutralisent en partie"}
+  - {de: "executif", vers: "reserve_federale", effet: "±", retour: "0", delai: "semaines à mois", force: "moyenne", intensite: {mesure: "tension publique entre la présidence et la Réserve fédérale", regle: "seuil"}, coupure: "indépendance garantie par la loi et les tribunaux", statut: "a_verifier", texte: "les nominations et la pression publique pèsent sur une institution conçue pour y résister"}
+  - {de: "executif", vers: "commerce", effet: "±", delai: "jours", force: "forte", coupure: "tribunaux et Congrès (base légale des droits de douane)", statut: "a_verifier", texte: "les droits de douane se décident vite par décret, sous réserve de contestation en justice"}
+  - {de: "tribunaux", vers: "commerce", effet: "-", delai: "semaines à mois", force: "moyenne", coupure: "nouvelle base légale", statut: "a_verifier", texte: "des recours peuvent suspendre des droits de douane"}
+  - {de: "executif", vers: "sanctions", effet: "+", delai: "jours", force: "forte", coupure: "dérogations, accords diplomatiques", statut: "a_verifier", texte: "les désignations relèvent de l'exécutif et se décident sans vote"}
+  - {de: "executif", vers: "energie", effet: "±", delai: "semaines", force: "moyenne", intensite: {mesure: "prix à la pompe et proximité électorale", regle: "proportionnelle"}, coupure: "niveau de la réserve stratégique", statut: "a_verifier", texte: "ventes de la réserve stratégique et permis d'exportation suivent les prix et le calendrier électoral"}
+  - {de: "congres", vers: "executif", effet: "±", delai: "semaines à mois", force: "moyenne", coupure: "majorité alignée", statut: "a_verifier", texte: "confirmations des nominations et contrôle parlementaire"}
+ponts:
+  - {depuis: "energie", vers: "energie-mondiale:decisions", nature: "réserve stratégique, sanctions, exportations de gaz liquéfié"}
+  - {depuis: "budget", vers: "inflation-mondiale:budget", nature: "déficits et droits de douane dans l'inflation"}
+  - {depuis: "reserve_federale", vers: "inflation-mondiale:banques_centrales", nature: "la Réserve fédérale est la première banque centrale du monde"}
+  - {depuis: "sanctions", vers: "ormuz:droit", nature: "les sanctions américaines contre l'Iran"}
+  - {depuis: "sanctions", vers: "russie-ukraine:sanctions", nature: "les sanctions contre la Russie"}
+  - {depuis: "sanctions", vers: "iran-nucleaire:negociations", nature: "sanctions et négociations nucléaires vont ensemble"}
+  - {depuis: "commerce", vers: "economie-chinoise:exterieur", nature: "les droits de douane visant la Chine"}
+  - {depuis: "commerce", vers: "rivalite-sino-americaine:energie", nature: "la rivalité commerciale et technologique"}

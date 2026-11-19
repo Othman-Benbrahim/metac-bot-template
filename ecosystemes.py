@@ -97,7 +97,10 @@ def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
 CLES_PERMISES = {
     "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur"}, "acteur": {"nom", "taille", "espace", "vitesse"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte"},
-    "pont": {"depuis", "vers", "nature"}}
+    "pont": {"depuis", "vers", "nature", "type"}}
+# 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
+# soit qu'un compartiment INFLUE sur l'autre fiche (type: influence, par défaut : transmission partielle, avec retard).
+TYPES_PONT = ("meme", "influence")
 
 
 def cles_inconnues(fiche: dict) -> list[str]:
@@ -173,6 +176,8 @@ def valider(fiche: dict) -> list[str]:
             err.append(f"{t} pont : « {p.get('depuis')} » n'est pas un compartiment de la fiche")
         if ":" not in str(p.get("vers", "")):
             err.append(f"{t} pont : « vers » doit s'écrire theme:compartiment")
+        if p.get("type", "influence") not in TYPES_PONT:
+            err.append(f"{t} pont : type {p.get('type')!r} hors de {TYPES_PONT}")
     return err
 
 
@@ -192,7 +197,8 @@ def assembler(fiches: dict[str, dict]) -> dict:
         for p in f.get("ponts") or []:
             cible_theme, cible_comp = str(p["vers"]).split(":", 1)
             existe = cible_theme in fiches and any(c["id"] == cible_comp for c in fiches[cible_theme]["compartiments"])
-            ponts.append({"de": f"{t}:{p['depuis']}", "vers": p["vers"], "nature": p.get("nature"), "resolu": existe})
+            ponts.append({"de": f"{t}:{p['depuis']}", "vers": p["vers"], "nature": p.get("nature"), "resolu": existe,
+                          "type": p.get("type", "influence")})
     return {"themes": sorted(fiches), "noeuds": noeuds, "relations": liens, "ponts": ponts,
             "bilan": {"themes": len(fiches), "compartiments": len(noeuds), "relations": len(liens), "ponts": len(ponts),
                       "ponts_en_attente": sum(not p["resolu"] for p in ponts),
@@ -244,6 +250,32 @@ def mermaid(fiche: dict) -> str:
     return "\n".join(l)
 
 
+def mermaid_themes(fiches: dict[str, dict]) -> str:
+    """Vue d'ensemble : un nœud par fiche (taille dominante en couleur), une arête par paire de fiches reliées par des
+    ponts (épaisseur = nombre de ponts) ; thèmes sans fiche en pointillés."""
+    s = assembler(fiches)
+    l = ["flowchart LR", "  classDef ecrite fill:#f0e6ff,stroke:#722ed1,stroke-width:2px",
+         "  classDef attente fill:#ffffff,stroke:#999,stroke-dasharray: 4 4"]
+    ident = lambda t: t.replace("-", "_")
+    for t, f in fiches.items():
+        l.append(f'  {ident(t)}["<b>{f.get("nom", t)}</b><br/>{len(f["compartiments"])} compartiments · {len(f["relations"])} relations"]')
+        l.append(f"  class {ident(t)} ecrite")
+    paires: dict[tuple[str, str], int] = {}
+    for p in s["ponts"]:
+        a, b = p["de"].split(":")[0], p["vers"].split(":")[0]
+        if a != b:
+            k = tuple(sorted((a, b)))
+            paires[k] = paires.get(k, 0) + 1
+    for a, b in paires:
+        for x in (a, b):
+            if x not in fiches:
+                l.append(f'  {ident(x)}["{x}"]')
+                l.append(f"  class {ident(x)} attente")
+    for (a, b), n in sorted(paires.items()):
+        l.append(f"  {ident(a)} {'===' if n > 1 else '---'} {ident(b)}")
+    return "\n".join(dict.fromkeys(l))
+
+
 def principal(args) -> int:
     fiches = charger()
     erreurs = [e for f in fiches.values() for e in valider(f)]
@@ -251,7 +283,7 @@ def principal(args) -> int:
         print("\n".join(erreurs))
         return 1
     if args.mermaid:
-        print(mermaid(fiches[args.mermaid]))
+        print(mermaid_themes(fiches) if args.mermaid == "themes" else mermaid(fiches[args.mermaid]))
         return 0
     s = assembler(fiches)
     SCHEMA.write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")

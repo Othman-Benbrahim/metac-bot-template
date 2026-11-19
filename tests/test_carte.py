@@ -47,3 +47,11 @@ def test_adaptateurs(tmp_path: Path):
         assert False
     except KeyError:
         pass
+
+
+def test_ponts_meme_et_influence():
+    c = ca.Carte()
+    types = {(p["de"], p["vers"]): p["type"] for p in c.s["ponts"]}
+    assert types[("ormuz:prix", "energie-mondiale:prix")] == "meme"
+    e = {x["compartiment"]: x for x in c.propager({"climat-extremes:saisons": 1.0}, 365)}
+    assert e["ormuz:milieu"]["ampleur"] < 1.0 and e["ormuz:milieu"]["jour"] > 0      # influence : partielle, avec retard
