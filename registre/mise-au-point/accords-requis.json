@@ -1,0 +1,45 @@
+{
+ "questions_procedure": 667,
+ "jugees": 667,
+ "avec_classe_de_30": 528,
+ "pertes": {
+  "I témoin": 0.6112,
+  "V accords requis": 0.6161
+ },
+ "V_moins_I": {
+  "moyenne": 0.005,
+  "intervalle_90": [
+   0.0022,
+   0.0081
+  ]
+ },
+ "descriptif_part_oui_par_tranche": {
+  "1": {
+   "n": 571,
+   "part_oui": 0.303
+  },
+  "2": {
+   "n": 61,
+   "part_oui": 0.328
+  },
+  "3+": {
+   "n": 35,
+   "part_oui": 0.171
+  }
+ },
+ "descriptif_sans_etats_unis": {
+  "1": {
+   "n": 480,
+   "part_oui": 0.285
+  },
+  "2": {
+   "n": 48,
+   "part_oui": 0.25
+  },
+  "3+": {
+   "n": 33,
+   "part_oui": 0.152
+  }
+ },
+ "note": "mise au point, pas un verdict ; perte log, plus bas = mieux ; Tsebelis prédit une part de oui décroissante"
+}
