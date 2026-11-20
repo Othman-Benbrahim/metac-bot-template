@@ -7,6 +7,7 @@ nom: "Graphite naturel en paillettes (et graphite synthétique)"
 sources:
   s2: {titre: "USGS, Mineral Commodity Summaries 2026, chapitre graphite (naturel)", url: "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-graphite.pdf", consulte: "2026-11-20"}
   s3: {titre: "USGS, Mineral Commodity Summaries 2026, tableau 4 (contrôles des exportations par pays), données au 21 novembre 2025", url: "https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release", consulte: "2026-11-20"}
+  s4: {titre: "Nations unies, UN Comtrade (aperçu public), exportations chinoises SH 250410, 250490 et 380110 vers le monde, collecte du 20 novembre 2026 (registre/matieres/comtrade-graphite.csv)", url: "https://comtradeapi.un.org/public/v1/preview/C/M/HS", consulte: "2026-11-20"}
   s1: {titre: "Holden et Sy, Graphite's hidden economics: From geology and flake size to the cost curve, S&P Global Market Intelligence, 18 novembre 2026", url: "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/11/graphites-hidden-economics-from-geology-and-flake-size-to-the-cost-curve", consulte: "2026-11-20"}
 maillons:
   - id: gisement
@@ -60,6 +61,10 @@ maillons:
       - {nom: "part chinoise de la transformation", valeur: "non renseigné", unite: "%", date: "", temps: structurel, source: s1}
       - {nom: "exportations chinoises de graphite naturel, 9 premiers mois de 2025", valeur: "115 000 (+6 % sur un an)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
       - {nom: "exportations chinoises de graphite sphérique purifié, 9 premiers mois de 2025", valeur: "37 400 (+29 % sur un an)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
+      - {nom: "exportations chinoises de graphite artificiel (SH 380110), volume annuel", valeur: "411 900 (2022) ; 562 900 (2023) ; 564 600 (2024)", unite: "t", date: "2024", temps: conjoncturel, source: s4}
+      - {nom: "valeur unitaire à l'exportation, graphite artificiel (calculée : valeur / poids)", valeur: "2,81 (2022) ; 2,28 (2023) ; 1,53 (2024)", unite: "$/kg", date: "2024", temps: conjoncturel, source: s4}
+      - {nom: "exportations chinoises de graphite naturel en paillettes (SH 250410), volume annuel", valeur: "163 600 (2022) ; 169 400 (2023) ; 126 300 (2024)", unite: "t", date: "2024", temps: conjoncturel, source: s4}
+      - {nom: "valeur unitaire à l'exportation, graphite naturel en paillettes (calculée)", valeur: "2,17 (2022) ; 1,55 (2023) ; 1,42 (2024)", unite: "$/kg", date: "2024", temps: conjoncturel, source: s4}
     bascules:
       - {nom: "contrôles chinois à l'exportation", regle: "licence d'exportation exigée pour le graphite depuis 2023, et pour les produits liés aux batteries au lithium et aux matières d'anode en graphite artificiel depuis 2025 (avec, la même année, terres rares, tungstène, molybdène, etc.) ; série mensuelle des exportations dans registre/matieres/comtrade-graphite.csv", source: s3}
       - {nom: "interdiction namibienne d'exporter les minerais bruts", regle: "minerais et concentrés de cobalt, graphite, lithium, manganèse et terres rares, depuis 2023", source: s3}
@@ -95,4 +100,4 @@ traces:
 lacunes:
   - "part chinoise chiffrée de la transformation (l'extraction est connue : 78 % en 2025)"
   - "dates précises (jour) des contrôles chinois de 2023 et 2025"
-  - "série de prix datée"
+  - "série de prix datée : seule une valeur unitaire à l'exportation (Comtrade, annuelle, 2022 à 2024) ; l'aperçu public de Comtrade ne renvoie aucune donnée chinoise mensuelle pour 2025 et 2026 (collecte du 20 novembre 2026) ; la Banque mondiale ne suit pas le graphite"
