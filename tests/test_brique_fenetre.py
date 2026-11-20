@@ -20,3 +20,11 @@ def test_calcul_chronologique():
     bf.calculer(xs)
     assert xs[-1]["niveau_F"] == "acteur×fenêtre" and 0.24 < xs[-1]["p_F"] < 0.3
     assert xs[0]["niveau_F"] == "base"                    # rien de passé avant le 2025-01-15
+
+
+def test_traits_etat():
+    gd = {"k": {"fin": "2026-03-31", "jours": {"2026-03-30": 10, "2026-01-15": 8}}}
+    wk = {"k": {"fin": "2026-03-31", "jours": "{'2026-03-29': 100}", "protections": "2"}}
+    t = bf.traits_etat("k", gd, wk)
+    assert len(t) == 7 and t[0] > 0 and t[2] == 1.0 and t[5] == 1.0 and t[6] > 0
+    assert bf.traits_etat("absent", gd, wk) == [0.0] * 6 + [0.0]

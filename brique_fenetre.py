@@ -158,9 +158,110 @@ def evaluer(avec_foule: bool) -> int:
     return 0
 
 
+# ---------------------------------------------------------------- 0.10.379 : la brique + l'état présent du système
+
+ETAT_SORTIE = REG / "banc-brique-fenetre-etat.json"
+
+
+def _jours(v) -> dict:
+    if isinstance(v, str):
+        import ast
+        try:
+            v = ast.literal_eval(v)
+        except (ValueError, SyntaxError):
+            return {}
+    return v or {}
+
+
+def traits_etat(cle: str, gd: dict, wk: dict) -> list[float]:
+    """État présent à la date du jeu (90 jours avant, rien après) : pour l'attention de la presse (GDELT, articles par
+    jour) et celle du public (Wikipédia, pages vues) : tendance (10 derniers jours contre les 80 d'avant, en log) et
+    niveau (log de la moyenne quotidienne) ; protections de page Wikipédia (conflit d'édition) ; présence de chaque
+    signal. Signal absent : 0."""
+    out = []
+    for src in (gd.get(cle), wk.get(cle)):
+        j = _jours((src or {}).get("jours"))
+        fin = (src or {}).get("fin")
+        if not j or not fin:
+            out += [0.0, 0.0, 0.0]
+            continue
+        from datetime import date as d_, timedelta
+        f = d_.fromisoformat(fin)
+        n10 = sum(int(c) for k, c in j.items() if d_.fromisoformat(k) > f - timedelta(days=10))
+        n90 = sum(int(c) for c in j.values())
+        out += [float(np.log((n10 / 10 + 0.5) / ((n90 - n10) / 80 + 0.5))), float(np.log1p(n90 / 90)), 1.0]
+    try:
+        prot = float((wk.get(cle) or {}).get("protections") or 0)
+    except ValueError:
+        prot = 0.0
+    return out + [float(np.log1p(prot))]
+
+
+def evaluer_etat(avec_foule: bool) -> int:
+    """Moteur complet : semblables + brique (acteur × fenêtre) + état présent, combinés par une régression logistique
+    apprise à chaque date sur les seules questions passées (au moins 50, deux issues) ; sinon p_S."""
+    import banc_jugement as bj
+    import banc_redacteur as br
+    import essais as es
+    cb = bj.cb
+    foule = {}
+    if avec_foule:
+        _, foule = asyncio.run(bj.recolter(date(2024, 7, 1)))
+    gd = json.loads((REG / "gdelt-bq-comptes-jeu.json").read_text(encoding="utf-8"))
+    wk = json.loads((REG / "wikipedia-comptes.json").read_text(encoding="utf-8"))
+    xs = cohorte()
+    bj.calculer(xs)
+    calculer(xs)
+    xs = [x for x in xs if x["structure"] in OCCURRENCE and f'{x["source"]}:{x["id"]}:{x["jeu"]}' in gd]
+    lg = lambda p: float(np.log(min(0.98, max(0.02, p)) / (1 - min(0.98, max(0.02, p)))))
+    X = np.array([[1.0, lg(x["p_S"]), lg(x["p_F"])] + traits_etat(f'{x["source"]}:{x["id"]}:{x["jeu"]}', gd, wk) for x in xs])
+    y = np.array([x["issue"] for x in xs], dtype=float)
+    fin = np.array([max(x["resolue_le"], x.get("cloture", "")) for x in xs])
+    for jeu in sorted({x["jeu"] for x in xs}):
+        ok = fin < jeu
+        cibles = [i for i, x in enumerate(xs) if x["jeu"] == jeu]
+        if ok.sum() < 50 or len(set(y[ok])) < 2:
+            for i in cibles:
+                xs[i]["p_M"] = xs[i]["p_S"]
+            continue
+        w = br.ajuster(X[ok], y[ok])
+        for i in cibles:
+            xs[i]["p_M"] = float(min(0.98, max(0.02, 1 / (1 + np.exp(-X[i] @ w)))))
+    pm = lambda s, k: round(sum(cb.pl(x[k], x["issue"]) for x in s) / len(s), 4) if s else None
+    risque = es.risque_corrige(1)
+    ec = [(f'{x["source"]}:{x["id"]}', cb.pl(x["p_M"], x["issue"]) - cb.pl(x["p_S"], x["issue"])) for x in xs]
+    eb = [(f'{x["source"]}:{x["id"]}', cb.pl(x["p_M"], x["issue"]) - cb.pl(x["p_R1"], x["issue"])) for x in xs]
+    bas, haut = cb.bootstrap(ec, risque)
+    bas_b, haut_b = cb.bootstrap(eb, risque)
+    verdict = lambda b, h, nom: (f"le moteur bat {nom}" if h < 0 else f"le moteur perd contre {nom}" if b > 0 else "non tranché")
+    fc = [(x, foule[(x["source"], x["id"], x["jeu"])]) for x in xs if (x["source"], x["id"], x["jeu"]) in foule]
+    w_fin = br.ajuster(X[fin < "9999"], y) if len(xs) >= 50 else None
+    r = {"n": len(xs), "questions_distinctes": len({k for k, _ in ec}),
+         "avec_gdelt": int(X[:, 5].sum()), "avec_wikipedia": int(X[:, 8].sum()),
+         "perte": {"taux_de_base": pm(xs, "p_R1"), "semblables": pm(xs, "p_S"), "brique": pm(xs, "p_F"), "moteur": pm(xs, "p_M")},
+         "contre_semblables": {"ecart": round(sum(e for _, e in ec) / len(ec), 4), "intervalle_corrige": [round(bas, 4), round(haut, 4)],
+                               "verdict": verdict(bas, haut, "les semblables")},
+         "contre_taux_de_base": {"ecart": round(sum(e for _, e in eb) / len(eb), 4), "intervalle_corrige": [round(bas_b, 4), round(haut_b, 4)],
+                                 "verdict": verdict(bas_b, haut_b, "le taux de base")},
+         "foule_descriptif": ({"n": len(fc), "perte_foule": round(sum(cb.pl(f, x["issue"]) for x, f in fc) / len(fc), 4),
+                               "perte_moteur_memes": round(sum(cb.pl(x["p_M"], x["issue"]) for x, _ in fc) / len(fc), 4)} if fc else None),
+         "coefficients_sur_tout_descriptif": (dict(zip(["constante", "logit_S", "logit_F", "presse_tendance", "presse_niveau",
+                                                         "presse_presente", "public_tendance", "public_niveau", "public_present",
+                                                         "protections"], [round(float(v), 3) for v in w_fin])) if w_fin is not None else None),
+         "par_acteur": {a: {"n": len(v), "perte_semblables": pm(v, "p_S"), "perte_moteur": pm(v, "p_M")}
+                        for a in sorted({x["acteur"] for x in xs}) for v in [[x for x in xs if x["acteur"] == a]]},
+         "risque_corrige": risque,
+         "note": "perte log, plus bas = mieux ; questions d'occurrence de 2026 ; état présent : 90 jours avant le jeu, rien après ; "
+                 "la foule n'est qu'un repère, jamais une entrée ; ombre"}
+    ETAT_SORTIE.write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(json.dumps(r, ensure_ascii=False, indent=1))
+    return 0
+
+
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
     a.add_argument("--couverture", action="store_true")
     a.add_argument("--foule", action="store_true")
+    a.add_argument("--etat", action="store_true", help="0.10.379 : moteur complet (semblables + brique + état présent)")
     o = a.parse_args()
-    sys.exit(couverture() if o.couverture else evaluer(o.foule))
+    sys.exit(couverture() if o.couverture else evaluer_etat(o.foule) if o.etat else evaluer(o.foule))
