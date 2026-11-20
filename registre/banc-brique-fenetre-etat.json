@@ -1,0 +1,99 @@
+{
+ "n": 424,
+ "questions_distinctes": 424,
+ "avec_gdelt": 288,
+ "avec_wikipedia": 398,
+ "perte": {
+  "taux_de_base": 0.6819,
+  "semblables": 0.6407,
+  "brique": 0.6745,
+  "moteur": 0.6456
+ },
+ "contre_semblables": {
+  "ecart": 0.0049,
+  "intervalle_corrige": [
+   -0.0511,
+   0.0569
+  ],
+  "verdict": "non tranché"
+ },
+ "contre_taux_de_base": {
+  "ecart": -0.0362,
+  "intervalle_corrige": [
+   -0.1112,
+   0.0303
+  ],
+  "verdict": "non tranché"
+ },
+ "foule_descriptif": {
+  "n": 424,
+  "perte_foule": 0.3943,
+  "perte_moteur_memes": 0.6456
+ },
+ "coefficients_sur_tout_descriptif": {
+  "constante": 0.255,
+  "logit_S": 0.614,
+  "logit_F": 0.199,
+  "presse_tendance": 0.735,
+  "presse_niveau": 0.136,
+  "presse_presente": 0.235,
+  "public_tendance": -0.345,
+  "public_niveau": -0.009,
+  "public_present": -0.024,
+  "protections": 0.099
+ },
+ "par_acteur": {
+  "autre": {
+   "n": 125,
+   "perte_semblables": 0.5406,
+   "perte_moteur": 0.6166
+  },
+  "chef": {
+   "n": 39,
+   "perte_semblables": 1.0122,
+   "perte_moteur": 0.9336
+  },
+  "entreprise": {
+   "n": 49,
+   "perte_semblables": 0.6967,
+   "perte_moteur": 0.6414
+  },
+  "etat": {
+   "n": 65,
+   "perte_semblables": 0.4734,
+   "perte_moteur": 0.4729
+  },
+  "executif": {
+   "n": 22,
+   "perte_semblables": 0.8198,
+   "perte_moteur": 0.7355
+  },
+  "international": {
+   "n": 38,
+   "perte_semblables": 0.8875,
+   "perte_moteur": 0.7928
+  },
+  "judiciaire": {
+   "n": 11,
+   "perte_semblables": 0.4814,
+   "perte_moteur": 0.4679
+  },
+  "legislatif": {
+   "n": 19,
+   "perte_semblables": 0.7559,
+   "perte_moteur": 0.7279
+  },
+  "militaire": {
+   "n": 53,
+   "perte_semblables": 0.5237,
+   "perte_moteur": 0.6009
+  },
+  "nature": {
+   "n": 3,
+   "perte_semblables": 0.1705,
+   "perte_moteur": 0.3226
+  }
+ },
+ "risque_corrige": 0.0029411764705882353,
+ "note": "perte log, plus bas = mieux ; questions d'occurrence de 2026 ; état présent : 90 jours avant le jeu, rien après ; la foule n'est qu'un repère, jamais une entrée ; ombre"
+}
