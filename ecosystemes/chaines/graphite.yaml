@@ -6,6 +6,7 @@ matiere: graphite
 nom: "Graphite naturel en paillettes (et graphite synthétique)"
 sources:
   s2: {titre: "USGS, Mineral Commodity Summaries 2026, chapitre graphite (naturel)", url: "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-graphite.pdf", consulte: "2026-11-20"}
+  s3: {titre: "USGS, Mineral Commodity Summaries 2026, tableau 4 (contrôles des exportations par pays), données au 21 novembre 2025", url: "https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release", consulte: "2026-11-20"}
   s1: {titre: "Holden et Sy, Graphite's hidden economics: From geology and flake size to the cost curve, S&P Global Market Intelligence, 18 novembre 2026", url: "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/11/graphites-hidden-economics-from-geology-and-flake-size-to-the-cost-curve", consulte: "2026-11-20"}
 maillons:
   - id: gisement
@@ -60,7 +61,8 @@ maillons:
       - {nom: "exportations chinoises de graphite naturel, 9 premiers mois de 2025", valeur: "115 000 (+6 % sur un an)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
       - {nom: "exportations chinoises de graphite sphérique purifié, 9 premiers mois de 2025", valeur: "37 400 (+29 % sur un an)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
     bascules:
-      - {nom: "contrôles chinois à l'exportation", regle: "non renseigné par ces sources ; à documenter (lien : rivalite-sino-americaine:terres_rares, licences d'exportation) ; série mensuelle des exportations dans registre/matieres/comtrade-graphite.csv", source: s1}
+      - {nom: "contrôles chinois à l'exportation", regle: "licence d'exportation exigée pour le graphite depuis 2023, et pour les produits liés aux batteries au lithium et aux matières d'anode en graphite artificiel depuis 2025 (avec, la même année, terres rares, tungstène, molybdène, etc.) ; série mensuelle des exportations dans registre/matieres/comtrade-graphite.csv", source: s3}
+      - {nom: "interdiction namibienne d'exporter les minerais bruts", regle: "minerais et concentrés de cobalt, graphite, lithium, manganèse et terres rares, depuis 2023", source: s3}
       - {nom: "droits antidumping américains sur la matière active d'anode chinoise", regle: "résultats préliminaires du département du Commerce : 93,50 % ; droits compensateurs de 11,58 % à 721,03 % selon l'entreprise", source: s2}
   - id: usage
     nom: "Usages"
@@ -92,5 +94,5 @@ traces:
   - "registre/rss-matieres.csv, matière « graphite » (S&P Global Energy et presse économique, comptes quotidiens)"
 lacunes:
   - "part chinoise chiffrée de la transformation (l'extraction est connue : 78 % en 2025)"
-  - "contrôles chinois à l'exportation (dates, produits visés)"
+  - "dates précises (jour) des contrôles chinois de 2023 et 2025"
   - "série de prix datée"

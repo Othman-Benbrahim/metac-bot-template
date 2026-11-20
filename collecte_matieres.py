@@ -28,7 +28,10 @@ import httpx
 import politesse
 
 DOSSIER = Path("registre") / "matieres"
-BM_XLSX = "https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx"
+# 0.10.392 : le dossier 2025 s'arrête en décembre 2025 (run 44749409258) ; on essaie d'abord le dossier 2026
+BM_XLSX_LISTE = ["https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+                 "https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx"]
+BM_XLSX = BM_XLSX_LISTE[-1]
 USGS_DOI = "https://doi.org/10.5066/P1WKQ63T"
 COMTRADE = "https://comtradeapi.un.org/public/v1/preview/C/M/HS"
 CHINE = 156
@@ -42,7 +45,12 @@ def banque_mondiale(c: httpx.Client) -> int:
     if not politesse.autorise(c, BM_XLSX):
         print("::warning::Banque mondiale : refusé par robots.txt")
         return 0
-    r = c.get(BM_XLSX)
+    r = None
+    for url in BM_XLSX_LISTE:
+        r = c.get(url)
+        if r.status_code == 200 and r.content[:2] == b"PK":
+            print(f"Banque mondiale : fichier {url.split('/doc/')[1][:40]}…")
+            break
     r.raise_for_status()
     wb = load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
     ws = next((w for w in wb.worksheets if "monthly" in w.title.lower() and "price" in w.title.lower()), wb.worksheets[0])
@@ -108,22 +116,40 @@ def usgs(c: httpx.Client) -> int:
     return n
 
 
+def _comtrade_get(c: httpx.Client, params: dict) -> list[dict]:
+    """Un appel à l'aperçu public, avec attente croissante sur 429 (limite de débit) ; le corps d'une erreur 400 est
+    affiché pour le diagnostic."""
+    for essai in range(5):
+        r = c.get(COMTRADE.replace("/M/", f"/{params.pop('_freq', 'M')}/") if "_freq" in params else COMTRADE, params=params)
+        if r.status_code == 429:
+            time.sleep(15 * (essai + 1))
+            continue
+        if r.status_code != 200:
+            print(f"  Comtrade {params.get('period')} {params.get('cmdCode')} : HTTP {r.status_code} {r.text[:200]!r}")
+            return []
+        return (r.json() or {}).get("data") or []
+    print(f"  Comtrade {params.get('period')} {params.get('cmdCode')} : limite de débit, abandon")
+    return []
+
+
 def comtrade(c: httpx.Client, annees=range(2022, 2027)) -> int:
+    """0.10.392 (run 44749409258 : HTTP 400 et 429 alternés) : un mois par appel, pause de 6 s, attente croissante."""
     if not politesse.autorise(c, COMTRADE):
         print("::warning::Comtrade : refusé par robots.txt")
         return 0
+    from datetime import date
+    fin = date.today().strftime("%Y%m")
     lignes = []
     for a in annees:
-        periodes = ",".join(f"{a}{m:02d}" for m in range(1, 13))
-        for code in PRODUITS:
-            r = c.get(COMTRADE, params={"reporterCode": CHINE, "period": periodes, "cmdCode": code, "flowCode": "X",
-                                        "partnerCode": 0})
-            time.sleep(1.5)
-            if r.status_code != 200:
-                print(f"  Comtrade {a} {code} : HTTP {r.status_code}")
-                continue
-            for x in (r.json() or {}).get("data") or []:
-                lignes.append([x.get("period"), code, x.get("flowCode"), x.get("primaryValue"), x.get("netWgt")])
+        for m in range(1, 13):
+            periode = f"{a}{m:02d}"
+            if periode > fin:
+                break
+            for code in PRODUITS:
+                for x in _comtrade_get(c, {"reporterCode": CHINE, "period": periode, "cmdCode": code, "flowCode": "X",
+                                           "partnerCode": 0}):
+                    lignes.append([x.get("period"), code, x.get("flowCode"), x.get("primaryValue"), x.get("netWgt")])
+                time.sleep(6)
     out = DOSSIER / "comtrade-graphite.csv"
     with out.open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
