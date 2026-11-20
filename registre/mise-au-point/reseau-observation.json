@@ -1,0 +1,253 @@
+{
+ "questions_avec_acteur": 1672,
+ "taux_general": 0.246,
+ "fenetre_jours": 180,
+ "lien_min": 3,
+ "propagation_part_oui_selon_oui_recents": {
+  "tous": {
+   "même acteur (rappel)": {
+    "bas (< 20 % de oui récents)": [
+     0.262,
+     210
+    ],
+    "moyen (20-40 %)": [
+     0.245,
+     375
+    ],
+    "haut (≥ 40 %)": [
+     0.275,
+     255
+    ]
+   },
+   "acteurs liés": {
+    "bas (< 20 % de oui récents)": [
+     0.307,
+     215
+    ],
+    "moyen (20-40 %)": [
+     0.254,
+     394
+    ],
+    "haut (≥ 40 %)": [
+     0.195,
+     154
+    ]
+   }
+  },
+  "guerre-levant": {
+   "même acteur (rappel)": {
+    "bas (< 20 % de oui récents)": [
+     0.273,
+     22
+    ],
+    "moyen (20-40 %)": [
+     0.364,
+     11
+    ],
+    "haut (≥ 40 %)": [
+     0.429,
+     7
+    ]
+   },
+   "acteurs liés": {
+    "bas (< 20 % de oui récents)": [
+     0.5,
+     14
+    ],
+    "moyen (20-40 %)": [
+     0.125,
+     8
+    ],
+    "haut (≥ 40 %)": [
+     0.0,
+     2
+    ]
+   }
+  },
+  "politique-americaine": {
+   "même acteur (rappel)": {
+    "bas (< 20 % de oui récents)": [
+     0.385,
+     13
+    ],
+    "moyen (20-40 %)": [
+     0.33,
+     109
+    ],
+    "haut (≥ 40 %)": [
+     0.485,
+     66
+    ]
+   },
+   "acteurs liés": {
+    "bas (< 20 % de oui récents)": [
+     0.371,
+     62
+    ],
+    "moyen (20-40 %)": [
+     0.357,
+     84
+    ],
+    "haut (≥ 40 %)": [
+     0.647,
+     17
+    ]
+   }
+  },
+  "rivalite-sino-americaine": {
+   "même acteur (rappel)": {
+    "bas (< 20 % de oui récents)": [
+     0.221,
+     68
+    ],
+    "moyen (20-40 %)": [
+     0.06,
+     50
+    ],
+    "haut (≥ 40 %)": [
+     0.211,
+     19
+    ]
+   },
+   "acteurs liés": {
+    "bas (< 20 % de oui récents)": [
+     0.2,
+     5
+    ],
+    "moyen (20-40 %)": [
+     0.172,
+     64
+    ],
+    "haut (≥ 40 %)": [
+     0.133,
+     45
+    ]
+   }
+  },
+  "russie-ukraine": {
+   "même acteur (rappel)": {
+    "bas (< 20 % de oui récents)": [
+     0.225,
+     40
+    ],
+    "moyen (20-40 %)": [
+     0.239,
+     88
+    ],
+    "haut (≥ 40 %)": [
+     0.208,
+     48
+    ]
+   },
+   "acteurs liés": {
+    "bas (< 20 % de oui récents)": [
+     0.393,
+     28
+    ],
+    "moyen (20-40 %)": [
+     0.218,
+     124
+    ],
+    "haut (≥ 40 %)": [
+     0.143,
+     35
+    ]
+   }
+  },
+  "securite-europeenne": {
+   "même acteur (rappel)": {
+    "bas (< 20 % de oui récents)": [
+     0.353,
+     17
+    ],
+    "moyen (20-40 %)": [
+     0.192,
+     26
+    ],
+    "haut (≥ 40 %)": [
+     0.167,
+     18
+    ]
+   },
+   "acteurs liés": {
+    "bas (< 20 % de oui récents)": [
+     0.364,
+     11
+    ],
+    "moyen (20-40 %)": [
+     0.161,
+     31
+    ],
+    "haut (≥ 40 %)": [
+     0.091,
+     11
+    ]
+   }
+  }
+ },
+ "position_part_oui": {
+  "central (≥ 20 partenaires)": [
+   0.283,
+   685
+  ],
+  "périphérique (< 5)": [
+   0.204,
+   476
+  ],
+  "intermédiaire (5-19)": [
+   0.235,
+   511
+  ]
+ },
+ "acteurs_les_plus_centraux": [
+  [
+   "USA",
+   28
+  ],
+  [
+   "Russia",
+   25
+  ],
+  [
+   "PRC",
+   25
+  ],
+  [
+   "UN",
+   23
+  ],
+  [
+   "EU",
+   19
+  ],
+  [
+   "Israel",
+   15
+  ],
+  [
+   "Ukraine",
+   13
+  ],
+  [
+   "Canada",
+   10
+  ],
+  [
+   "Turkey",
+   10
+  ],
+  [
+   "Albania",
+   9
+  ],
+  [
+   "Australia",
+   9
+  ],
+  [
+   "NATO",
+   9
+  ]
+ ],
+ "note": "observation, pas un test : (part de oui, nombre de questions) ; rien n'entre dans le bot"
+}
