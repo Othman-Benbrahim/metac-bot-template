@@ -1,0 +1,40 @@
+﻿Source,Year,Units,Critical_mineral,Primary_prod,Secondary_prod,Prod_notes,Apparent_Consumption,Consumption_Notes,Net_Import_Reliance,Primary_import_sources_2021-24,Import_source_notes,Leading_source_country,Leading_country_prod,Leading_source_precent_world,World_total_prod,World_prod_notes
+MCS2026,2025_estimated,metric tons,Aluminum (bauxite),W,NA,,1700000,Reported consumption.,>75,Jamaica,,Guinea,150000000,34,440000000,Excludes U.S. production.
+MCS2026,2025_estimated,metric tons,Antimony,W,3500,,45000,,91,China,Includes Hong Kong.,China,40000,36,110000,
+MCS2026,2025_estimated,metric tons,Arsenic ,0,NA,,6300,,100,China,Includes Hong Kong.,Peru,30000,49,61000,Arsenic trioxide.
+MCS2026,2025_estimated,metric tons,Barite,W,NA,,W,,>75,India,,India,3000000,34,8700000,Excludes U.S. production.
+MCS2026,2025_estimated,metric tons,Beryllium,230,NA,,230,,E,Kazakhstan,,United States,230,53,430,
+MCS2026,2025_estimated,metric tons,Bismuth,0,80,Smelter production.,1000,,92,China,Includes Hong Kong.,China,14000,88,16000,
+MCS2026,2025_estimated,metric tons,Boron,W,NA,,W,,E,Turkey,,Turkey,1500000,W,W,
+MCS2026,2025_estimated,metric tons,Chromium,0,100000,,480000,,79,South Africa,,South Africa,23000000,45,51000000,
+MCS2026,2025_estimated,metric tons,Cobalt,300,2000,,9600,,79,Norway,,Congo (Kinshasa),230000,74,310000,
+MCS2026,2025_estimated,metric tons,Copper,1000000,60000,,2200000,,57,Chile,,Chile,5300000,23,23000000,
+MCS2026,2025_estimated,metric tons,Fluorspar,NA,NA,,370000,,100,Mexico,,China,6000000,60,10000000,
+MCS2026,2025_estimated,metric tons,Gallium,0,NA,,19,Reported consumption.,100,Canada,,China,900,100,900,
+MCS2026,2025_estimated,metric tons,Germanium,0,NA,Refinery production.,NA,,>50,Belgium,,China,NA,NA,NA,
+MCS2026,2025_estimated,metric tons,Graphite (natural),0,0,,71000,,100,China,Includes Hong Kong.,China,1400000,78,1800000,
+MCS2026,2025_estimated,metric tons,Indium,0,NA,Refinery production.,220,,100, Republic of Korea,,China,760,69,1100,
+MCS2026,2025_estimated,metric tons,Lead,270000,1000000,,1500000,,33,Canada,,China,1900000,42,4500000,
+MCS2026,2025_estimated,metric tons,Lithium,W,NA,,W,,>50,Chile,,Australia,92000,32,290000,Excludes U.S. production.
+MCS2026,2025_estimated,metric tons,Magnesium,0,110000,Refinery production.,40000,Reported consumption.,>75,Israel,,China,950000,86,1100000,Smelter production.
+MCS2026,2025_estimated,metric tons,Manganese,0,NA,,640000,,100,Gabon,,South Africa,7600000,37,20000000,
+MCS2026,2025_estimated,metric tons,Nickel,10000,W,,220000,Nickel in primary metal and secondary scrap. ,41,Canada,,Indonesia,2600000,67,3900000,
+MCS2026,2025_estimated,metric tons,Niobium,0,NA,,9900,,100,Brazil,,Brazil,104000,93,112000,
+MCS2026,2025_estimated,metric tons,Palladium ,6,50,,130,,57,South Africa,,Russia,84,44,190,
+MCS2026,2025_estimated,metric tons,Phosphate rock,20000000,NA,,21000000,,16,Peru,,China,110000000,44,250000000,
+MCS2026,2025_estimated,metric tons,Platinum ,2,9,,92,,89,South Africa,,South Africa,120,71,170,
+MCS2026,2025_estimated,metric tons,Potash,500000,NA,,5900000,,92,Canada,,Canada,15000000,31,49000000,
+MCS2026,2025_estimated,metric tons,Rare earths (compounds and metals)9,8900,NA,,27000,,67,China,Includes Hong Kong.,China,270000,69,390000,
+MCS2026,2025_estimated,metric tons,Rhenium,10,NA,,38,,75,Chile,,Chile,30,37,81,
+MCS2026,2025_estimated,metric tons,Scandium,0,0,,NA,,100,Japan,,China,NA,NA,80,
+MCS2026,2025_estimated,metric tons,Silicon,W,NA,,W,,>50,Brazil,,China,4000000,87,4600000,Excludes U.S. production.
+MCS2026,2025_estimated,metric tons,Silver,1100,1000,,9400,,77,Mexico,,Mexico,6300,24,26000,
+MCS2026,2025_estimated,metric tons,Tantalum,0,NA,,890,,100,China,Includes Hong Kong.,Congo (Kinshasa),1300,52,2500,
+MCS2026,2025_estimated,metric tons,Tellurium,W,NA,Refinery production.,W,,>25,Canada,,China,800,80,1000,Excludes U.S. production.
+MCS2026,2025_estimated,metric tons,Tin ,0,17000,,43000,,77,Peru,,China,71000,24,290000,
+MCS2026,2025_estimated,metric tons,Titanium (metal),0,NA,Refinery production.,44000,Excludes U.S. production.,100,Japan,,China,260000,70,370000,
+MCS2026,2025_estimated,metric tons,Tungsten,0,W,,W,,>50,China,Includes Hong Kong.,China,67000,79,85000,
+MCS2026,2025_estimated,metric tons,Vanadium,0,7500,,13000,,41,Canada,,China,82000,75,110000,
+MCS2026,2025_estimated,metric tons,Yttrium,NA,NA,,300,,100,China,Includes Hong Kong.,China,NA,NA,NA,
+MCS2026,2025_estimated,metric tons,Zinc,220000,,Primary production includes both primary and secondary metal production.,820000,,73,Canada,,China,4100000,32,13000000,
+MCS2026,2025_estimated,metric tons,Zirconium (ores and concentrates),"<100,000",NA,,<100000,,<25,South Africa,,Australia,400000,33,1200000,

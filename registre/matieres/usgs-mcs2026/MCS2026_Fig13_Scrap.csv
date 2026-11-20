@@ -1,0 +1,16 @@
+﻿Source,Scrap_type,Year,Scrap_value_mdol,Percent_domestic,Percent_imported,Percent_exported,Critical_List
+MCS2026,Antimony,2025_estimate,191,99.7,0.29,0.01,Y
+MCS2026,Lead,2025_estimate,2460,95.34,0.18,4.48,Y
+MCS2026,Tin,2025_estimate,330,93.32,4.48,2.19,Y
+MCS2026,Zinc,2025_estimate,488,88.11,3.69,8.2,Y
+MCS2026,Nickel,2025_estimate,2440,79.89,14.42,5.69,Y
+MCS2026,Gold,2025_estimate,12100,78.58,4.05,17.37,N
+MCS2026,Iron and Steel,2025_estimate,25000,70.43,7.88,21.69,N
+MCS2026,Magnesium Metal,2025_estimate,281,64.15,35.64,0.22,Y
+MCS2026,Cobalt,2025_estimate,68,58.82,29.41,11.76,Y
+MCS2026,Platinum-group metals,2025_estimate,4980,57.5,23.19,19.31,Y
+MCS2026,Aluminum,2025_estimate,12500,50.4,16,33.6,Y
+MCS2026,Silver,2025_estimate,3350,40.15,6.85,53.01,Y
+MCS2026,Chromium,2025_estimate,977,35.47,32.28,32.25,Y
+MCS2026,Copper,2025_estimate,7890,21.55,10.01,68.44,Y
+MCS2026,Titanium,2025_estimate,287,2.68,73.49,23.83,Y

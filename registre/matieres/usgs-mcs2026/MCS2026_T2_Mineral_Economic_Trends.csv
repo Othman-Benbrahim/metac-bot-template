@@ -1,0 +1,6 @@
+﻿Source,Year,GDP_bil_dols,Index_Total_Indust_Production_base_2017,Index_Manufacturing_All_base_2017,Index_Manufacturing_NonMetallic_Mineral_Products_base_2017,Index_Manufacturing_Primary_Metals_All_base_2017,Index_Manufacturing_Iron_Steel_base_2017,Index_Manufacturing_Aluminum_base_2017,Index_Manufacturing_Nonferrous_NonAl_base_2017,Index_Manufacturing_Chemicals_base_2017,Index_Total_Mining_base_2017,Index_Mining_Coal_base_2017,Index_Mining_Oil_Gas_base_2017,Index_Mining_Metals_2017,Index_Mining_Nonmetallic_base_2017,Capacity_Utilization_Total_Industry_pct,Capacity_Utilization_Mining_All_pct,Capacity_Utilization_Mining_Metals_pct,Capacity_Utilization_Mining_Nonmetallic_pct,Housing_Starts_thsnds,Light_Vehicle_Sales_thsnds,Highway_Construction_Value_bil_dols
+MCS2026,2021,23726,99,98,101,96,102,97,95,100,106,75,123,92,103,77,76,65,85,1603,14947,103
+MCS2026,2022,26055,101,98,103,100,107,105,97,96,115,77,131,87,107,78,84,61,87,1552,13754,115
+MCS2026,2023,27812,101,97,101,100,108,98,98,98,120,76,141,85,107,77,85,60,87,1421,15503,139
+MCS2026,2024,29298,100,96,95,97,104,98,94,100,119,67,144,81,102,76,83,57,83,1371,15858,145
+MCS2026,2025_estimated,30264,100,98,97,99,110,98,93,103,120,70,150,80,100,76,85,57,85,1380,16200,140

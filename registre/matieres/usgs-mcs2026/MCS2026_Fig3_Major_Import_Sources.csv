@@ -1,0 +1,192 @@
+﻿Source,Commodity,Import_Source_2021_24,Percent,NIR,Critical_Mineral
+MCS2026,Antimony,China,55,91,Y
+MCS2026,Antimony,Belgium,12,91,Y
+MCS2026,Antimony,Thailand,8,91,Y
+MCS2026,Antimony,India,6,91,Y
+MCS2026,Antimony,Other,19,91,Y
+MCS2026,Barite,India,39,75,Y
+MCS2026,Barite,China,21,75,Y
+MCS2026,Barite,Morocco,19,75,Y
+MCS2026,Barite,Mexico,14,75,Y
+MCS2026,Barite,Other,7,75,Y
+MCS2026,Boron,Turkey,90,0,Y
+MCS2026,Boron,Bolivia,6,0,Y
+MCS2026,Boron,Other,4,0,Y
+MCS2026,Cobalt,Norway,26,79,Y
+MCS2026,Cobalt,Finland,16,79,Y
+MCS2026,Cobalt,Canada,14,79,Y
+MCS2026,Cobalt,Japan,14,79,Y
+MCS2026,Cobalt,Other,30,79,Y
+MCS2026,"Copper, refined",Chile,68,57,Y
+MCS2026,"Copper, refined",Canada,16,57,Y
+MCS2026,"Copper, refined",Peru,7,57,Y
+MCS2026,"Copper, refined",Mexico,6,57,Y
+MCS2026,"Copper, refined",Other,3,57,Y
+MCS2026,Fluorspar,Mexico,64,100,Y
+MCS2026,Fluorspar,Vietnam,12,100,Y
+MCS2026,Fluorspar,China,10,100,Y
+MCS2026,Fluorspar,South Africa,9,100,Y
+MCS2026,Fluorspar,Other,5,100,Y
+MCS2026,Gallium,Canada,28,100,Y
+MCS2026,Gallium,Japan,22,100,Y
+MCS2026,Gallium,China,18,100,Y
+MCS2026,Gallium,Germany,16,100,Y
+MCS2026,Gallium,Other,16,100,Y
+MCS2026,Germanium,Belgium,41,50,Y
+MCS2026,Germanium,China,23,50,Y
+MCS2026,Germanium,Canada,17,50,Y
+MCS2026,Germanium,Germany,14,50,Y
+MCS2026,Germanium,Other,5,50,Y
+MCS2026,Hafnium,NA,NA,NA,Y
+MCS2026,"Lead, refined",Canada,31,33,Y
+MCS2026,"Lead, refined",Republic of Korea,16,33,Y
+MCS2026,"Lead, refined",Mexico,15,33,Y
+MCS2026,"Lead, refined",Australia,13,33,Y
+MCS2026,"Lead, refined",Other,25,33,Y
+MCS2026,Lithium,Chile,54,50,Y
+MCS2026,Lithium,Argentina,43,50,Y
+MCS2026,Lithium,Other,3,50,Y
+MCS2026,"Magnesium, compounds",China,58,59,Y
+MCS2026,"Magnesium, compounds",Brazil,8,59,Y
+MCS2026,"Magnesium, compounds",Canada,8,59,Y
+MCS2026,"Magnesium, compounds",Israel,8,59,Y
+MCS2026,"Magnesium, compounds",Other,18,59,Y
+MCS2026,"Magnesium, metal",Israel,20,75,Y
+MCS2026,"Magnesium, metal",Canada,15,75,Y
+MCS2026,"Magnesium, metal",Turkey,11,75,Y
+MCS2026,"Magnesium, metal",Czechia,9,75,Y
+MCS2026,"Magnesium, metal",Other,45,75,Y
+MCS2026,Manganese,Gabon,23,100,Y
+MCS2026,Manganese,South Africa,21,100,Y
+MCS2026,Manganese,Malaysia,11,100,Y
+MCS2026,Manganese,Australia,10,100,Y
+MCS2026,Manganese,Other,35,100,Y
+MCS2026,Nickel,Canada,44,41,Y
+MCS2026,Nickel,Norway,11,41,Y
+MCS2026,Nickel,Australia,8,41,Y
+MCS2026,Nickel,Brazil,7,41,Y
+MCS2026,Nickel,Other,30,41,Y
+MCS2026,"Phosphate, rock",Peru,99,16,Y
+MCS2026,"Phosphate, rock",Other,1,16,Y
+MCS2026,"Rare Earths, compounds and metals",China,71,67,Y
+MCS2026,"Rare Earths, compounds and metals",Malaysia,13,67,Y
+MCS2026,"Rare Earths, compounds and metals",Japan,5,67,Y
+MCS2026,"Rare Earths, compounds and metals",Estonia,5,67,Y
+MCS2026,"Rare Earths, compounds and metals",Other,6,67,Y
+MCS2026,Scandium,Japan,89,100,Y
+MCS2026,Scandium,China,11,100,Y
+MCS2026,Silicon,Brazil,25,50,Y
+MCS2026,Silicon,Canada,20,50,Y
+MCS2026,Silicon,Russia,18,50,Y
+MCS2026,Silicon,Malaysia,8,50,Y
+MCS2026,Silicon,Other,29,50,Y
+MCS2026,"Tin, refined",Peru,31,77,Y
+MCS2026,"Tin, refined",Bolivia,27,77,Y
+MCS2026,"Tin, refined",Indonesia,15,77,Y
+MCS2026,"Tin, refined",Brazil,10,77,Y
+MCS2026,"Tin, refined",Other,17,77,Y
+MCS2026,"Titanium, mineral concentrates",South Africa,32,86,Y
+MCS2026,"Titanium, mineral concentrates",Madagascar,16,86,Y
+MCS2026,"Titanium, mineral concentrates",Canada,13,86,Y
+MCS2026,"Titanium, mineral concentrates",Australia,11,86,Y
+MCS2026,"Titanium, mineral concentrates",Other,28,86,Y
+MCS2026,Tungsten,China,26,50,Y
+MCS2026,Tungsten,Germany,14,50,Y
+MCS2026,Tungsten,Bolivia,8,50,Y
+MCS2026,Tungsten,Vietnam,8,50,Y
+MCS2026,Tungsten,Other,44,50,Y
+MCS2026,Yttrium,China,70,100,Y
+MCS2026,Yttrium,Germany,11,100,Y
+MCS2026,Yttrium,Austria,8,100,Y
+MCS2026,Yttrium,Republic of Korea,4,100,Y
+MCS2026,Yttrium,Other,7,100,Y
+MCS2026,"Zinc, refined",Canada,57,73,Y
+MCS2026,"Zinc, refined",Mexico,15,73,Y
+MCS2026,"Zinc, refined",Peru,8,73,Y
+MCS2026,"Zinc, refined",Republic of Korea,7,73,Y
+MCS2026,"Zinc, refined",Other,13,73,Y
+MCS2026,"Zirconium, ores and concentrates",South Africa,48,25,Y
+MCS2026,"Zirconium, ores and concentrates",Australia,35,25,Y
+MCS2026,"Zirconium, ores and concentrates",Senegal,15,25,Y
+MCS2026,"Zirconium, ores and concentrates",Other,2,25,Y
+MCS2026,Aluminum,Canada,56,60,N
+MCS2026,Aluminum,United Arab Emirates,8,60,N
+MCS2026,Aluminum,Bahrain,4,60,N
+MCS2026,Aluminum,China,3,60,N
+MCS2026,Aluminum,Other,29,60,N
+MCS2026,Arsenic,China,45,100,N
+MCS2026,Arsenic,Malaysia,30,100,N
+MCS2026,Arsenic,Morocco,16,100,N
+MCS2026,Arsenic,Other,9,100,N
+MCS2026,Beryllium,Kazakhstan,31,0,N
+MCS2026,Beryllium,Latvia,25,0,N
+MCS2026,Beryllium,Japan,19,0,N
+MCS2026,Beryllium,Germany,5,0,N
+MCS2026,Beryllium,Other,20,0,N
+MCS2026,Bismuth,China,56,92,N
+MCS2026,Bismuth,Republic of Korea,22,92,N
+MCS2026,Bismuth,Germany,13,92,N
+MCS2026,Bismuth,Other,9,92,N
+MCS2026,Cesium,NA,100,100,N
+MCS2026,Chromium,South Africa,31,79,N
+MCS2026,Chromium,Kazakhstan,11,79,N
+MCS2026,Chromium,Finland,6,79,N
+MCS2026,Chromium,Canada,5,79,N
+MCS2026,Chromium,Other,47,79,N
+MCS2026,"Graphite, natural",China,46,100,N
+MCS2026,"Graphite, natural",Canada,13,100,N
+MCS2026,"Graphite, natural",Mozambique,13,100,N
+MCS2026,"Graphite, natural",Mexico,12,100,N
+MCS2026,"Graphite, natural",Other,16,100,N
+MCS2026,Indium,Republic of Korea,25,100,N
+MCS2026,Indium,Japan,22,100,N
+MCS2026,Indium,China,12,100,N
+MCS2026,Indium,Canada,11,100,N
+MCS2026,Indium,Other,30,100,N
+MCS2026,Iridium,NA,100,NA,N
+MCS2026,Metallurgical coal,NA,100,NA,N
+MCS2026,Niobium,Brazil,67,100,N
+MCS2026,Niobium,Canada,28,100,N
+MCS2026,Niobium,Other,5,100,N
+MCS2026,Palladium,South Africa,37,57,N
+MCS2026,Palladium,Russia,36,57,N
+MCS2026,Palladium,Belgium,6,57,N
+MCS2026,Palladium,Canada,6,57,N
+MCS2026,Palladium,Other,15,57,N
+MCS2026,Platinum,South Africa,49,89,N
+MCS2026,Platinum,Belgium,10,89,N
+MCS2026,Platinum,Germany,10,89,N
+MCS2026,Platinum,Italy,8,89,N
+MCS2026,Platinum,Other,23,89,N
+MCS2026,Potash,Canada,79,92,N
+MCS2026,Potash,Russia,12,92,N
+MCS2026,Potash,Israel,3,92,N
+MCS2026,Potash,Other,6,92,N
+MCS2026,Rhenium,Chile,31,75,N
+MCS2026,Rhenium,Canada,27,75,N
+MCS2026,Rhenium,Germany,16,75,N
+MCS2026,Rhenium,Poland,14,75,N
+MCS2026,Rhenium,Other,12,75,N
+MCS2026,Rhodium,NA,100,NA,N
+MCS2026,Rubidium,NA,100,NA,N
+MCS2026,Silver,Mexico,47,77,N
+MCS2026,Silver,Canada,18,77,N
+MCS2026,Silver,Chile,5,77,N
+MCS2026,Silver,Turkey,5,77,N
+MCS2026,Silver,Other,25,77,N
+MCS2026,Tantalum,China,22,100,N
+MCS2026,Tantalum,Australia,14,100,N
+MCS2026,Tantalum,Germany,11,100,N
+MCS2026,Tantalum,Indonesia,7,100,N
+MCS2026,Tantalum,Other,46,100,N
+MCS2026,Tellurium,Canada,64,25,N
+MCS2026,Tellurium,Philippines,14,25,N
+MCS2026,Tellurium,Japan,8,25,N
+MCS2026,Tellurium,Germany,5,25,N
+MCS2026,Tellurium,Other,9,25,N
+MCS2026,Uranium,NA,100,NA,N
+MCS2026,Vanadium,Canada,34,41,N
+MCS2026,Vanadium,Brazil,13,41,N
+MCS2026,Vanadium,South Africa,13,41,N
+MCS2026,Vanadium,Austria,10,41,N
+MCS2026,Vanadium,Other,30,41,N
