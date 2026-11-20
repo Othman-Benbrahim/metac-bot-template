@@ -3,78 +3,156 @@
   "question_id": "43329",
   "titre": "Will the sitting U.S. president’s net worth reach ≥4x its value before they became president at any point in the following years? (2025-2026)",
   "resolution": "2027-01-01",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 1,
+   "plus_proche": "Will another sitting Australian MP join One Nation in 2026?",
+   "jaccard": 0.056,
+   "ecarte_par": "mise trop faible"
+  }
  },
  {
   "question_id": "43330",
   "titre": "Will the sitting U.S. president’s net worth reach ≥4x its value before they became president at any point in the following years? (2027-2028)",
   "resolution": "2029-01-01",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 1,
+   "plus_proche": "Will another sitting Australian MP join One Nation in 2026?",
+   "jaccard": 0.056,
+   "ecarte_par": "mise trop faible"
+  }
  },
  {
   "question_id": "43332",
   "titre": "Will any of Belgium, France, Italy, Luxembourg, Netherlands, and/or Germany leave the EU before 2027?",
   "resolution": "2027-01-31",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 66,
+   "plus_proche": "Will Belgium win the UEFA EURO 2028?",
+   "jaccard": 0.083,
+   "ecarte_par": "mise trop faible"
+  }
  },
  {
   "question_id": "46821",
   "titre": "Will Volodymyr Zelenskyy attend the Special European Council in Brussels in person on 26–27 November 2026?",
   "resolution": "2026-11-27",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 430,
+   "plus_proche": "Will Trump meet with Volodymyr Zelenskyy by November 30, 2026?",
+   "jaccard": 0.273,
+   "ecarte_par": "mise trop faible"
+  }
  },
  {
   "question_id": "46833",
   "titre": "Will Argentina's Senate give media sanción to a bill suspending or eliminating the PASO primaries in its 26 November 2026 session?",
   "resolution": "2026-11-27",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 25,
+   "plus_proche": "Will Party A control the Senate after the 2026 Midterm elections?",
+   "jaccard": 0.059,
+   "ecarte_par": "fermé"
+  }
  },
  {
   "question_id": "46834",
   "titre": "Will Lebanon's cabinet refer the Dahr al-Baidar explosives case to the Judicial Council before November 28, 2026?",
   "resolution": "2026-11-28",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 185,
+   "plus_proche": "Will Hezbollah target Israel by November 15, 2026?",
+   "jaccard": 0.071,
+   "ecarte_par": "fermé"
+  }
  },
  {
   "question_id": "46835",
   "titre": "Will Mexican federal authorities have confirmed recovery of all nine radioactive packages stolen in the November 7, 2026 Tlaxcala truck crash by November 27, 2026?",
   "resolution": "2026-11-27",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 26,
+   "plus_proche": "US Dollar / Mexican Peso (USD/MXN) Up or Down on November 20?",
+   "jaccard": 0.105,
+   "ecarte_par": "pas Oui/Non"
+  }
  },
  {
   "question_id": "46849",
   "titre": "Will the U.S. Trustee's official committee of unsecured creditors in The Children's Place Chapter 11 case have seven or more members as of November 27, 2026?",
   "resolution": "2026-11-27",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 152,
+   "plus_proche": "Will there be at least 4600 measles cases in the U.S. by November 30, 2026?",
+   "jaccard": 0.133,
+   "ecarte_par": "fermé"
+  }
  },
  {
   "question_id": "46852",
   "titre": "Will Strategy (MSTR) close below $100 on Friday, November 27, 2026?",
   "resolution": "2026-11-27",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 12,
+   "plus_proche": "Will Strategy (MicroStrategy) (MSTR) be added to the S&P 500 by December 31, 2026?",
+   "jaccard": 0.222,
+   "ecarte_par": "mise trop faible"
+  }
  },
  {
   "question_id": "46861",
   "titre": "Will front-month ICE Brent crude futures (January 2027 contract) settle above $100.00 per barrel on 27 November 2026?",
   "resolution": "2026-11-28",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 682,
+   "plus_proche": "Will Trump say \"Autism\" in November?",
+   "jaccard": 0.071,
+   "ecarte_par": "mise trop faible"
+  }
  },
  {
   "question_id": "46868",
   "titre": "Will at least one of the two Ir-192 sources stolen from the Rivers State radiography facility be publicly confirmed recovered by 28 November 2026?",
   "resolution": "2026-11-28",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 226,
+   "plus_proche": "Will One Piece be the #1 searched TV show on Google this year?",
+   "jaccard": 0.05,
+   "ecarte_par": "mise trop faible"
+  }
  },
  {
   "question_id": "46880",
   "titre": "Will the Banco Central del Paraguay announce a payment start date for ueno bank CDA holders by 28 November 2026?",
   "resolution": "2026-11-29",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 264,
+   "plus_proche": "Will Marine Le Pen win the 2027 French presidential election?",
+   "jaccard": 0.0,
+   "ecarte_par": "nombres différents"
+  }
  },
  {
   "question_id": "46884",
   "titre": "Will the Belgian State and Engie conclude an agreement for Belgium's acquisition of Engie's nuclear activities before December 14, 2026?",
   "resolution": "2026-12-14",
-  "statut": "aucun marché conforme"
+  "statut": "aucun marché conforme",
+  "diagnostic": {
+   "candidats": 789,
+   "plus_proche": "Will Israel recognize Palestine before 2027?",
+   "jaccard": 0.067,
+   "ecarte_par": "mise trop faible"
+  }
  }
 ]
