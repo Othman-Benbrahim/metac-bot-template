@@ -372,7 +372,38 @@ class AlphabetBot(FallTemplateBot2026):
             raise RuntimeError(f"registre non écrit : prévision non postée ({type(e).__name__}: {e})"[:300]) from e
         logger.info("alphabet : %s bras %s p=%.3f (A=%.3f B=%s C=%s)", question.page_url, r.bras_poste, r.p_poste,
                     r.p_A, r.p_B, r.p_C)
+        # 0.10.399 (décision d'auteur du 2026-11-20, 19 h 34) : questions de seuil de prix, modèle log-normal calibré
+        # (preenregistrements/seuils-de-prix-calibrage.md : −0,206 contre le taux de base sur 138 questions). La
+        # prévision du pipeline reste scellée dans le journal ; le remplacement est scellé dans journal-seuils.jsonl.
+        sp_ = self._seuil_de_prix(question, q, r.p_poste)
+        if sp_ is not None:
+            return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
+
+    def _seuil_de_prix(self, question, q, p_pipeline: float) -> dict | None:
+        """Modèle de seuil de prix (seuils_prix.estimer) ; None si la question n'est pas reconnue, si les prix manquent,
+        ou si l'écriture du journal échoue (on poste alors la prévision du pipeline)."""
+        try:
+            import seuils_prix as spx
+            jour = datetime.now(timezone.utc).date().isoformat()
+            fin = spx.echeance(question.question_text or "", jour) or q.resolution.isoformat()
+            e = spx.estimer(question.question_text or "", jour, fin)
+            if e is None:
+                return None
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p"], "seuil": e}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-seuils.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            sens = "above" if e["au_dessus"] else "below"
+            forme = ("at the stated date" if e["type"] == "date" else "at any time before the deadline")
+            e["texte"] = (f"\n\nPrice-threshold rule (coded): last known price {e['dernier_prix']:,.2f} on {e['date_prix']}, "
+                          f"30-day annualised volatility {e['sigma_annuel']:.0%}, threshold {e['k']:,.2f} ({sens}, {forme}), "
+                          f"deadline {e['echeance']}; driftless lognormal model gives {e['p']:.1%}.")
+            return e
+        except Exception as ex:   # le modèle qui échoue ne bloque rien
+            logger.warning("seuil de prix : non appliqué (%s)", type(ex).__name__)
+            return None
 
 
 BASCULES: list[dict] = []     # 0.7.4 : remplacements en cours de passage (journal du bilan)
