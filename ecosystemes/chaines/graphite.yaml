@@ -5,6 +5,7 @@
 matiere: graphite
 nom: "Graphite naturel en paillettes (et graphite synthétique)"
 sources:
+  s2: {titre: "USGS, Mineral Commodity Summaries 2026, chapitre graphite (naturel)", url: "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-graphite.pdf", consulte: "2026-11-20"}
   s1: {titre: "Holden et Sy, Graphite's hidden economics: From geology and flake size to the cost curve, S&P Global Market Intelligence, 18 novembre 2026", url: "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/11/graphites-hidden-economics-from-geology-and-flake-size-to-the-cost-curve", consulte: "2026-11-20"}
 maillons:
   - id: gisement
@@ -20,6 +21,12 @@ maillons:
       - {nom: "teneur du minerai brut (carbone graphitique total)", valeur: "3 à 18", unite: "%", date: "2026", temps: structurel, source: s1}
       - {nom: "teneur, Balama (Mozambique)", valeur: "16 à 20", unite: "%", date: "2026", temps: structurel, source: s1}
       - {nom: "teneur, Matawinie (Canada)", valeur: 4.5, unite: "%", date: "2026", temps: structurel, source: s1}
+      - {nom: "réserves, Chine", valeur: 100, unite: "millions de tonnes", date: "2026", temps: structurel, source: s2}
+      - {nom: "réserves, Brésil", valeur: 74, unite: "millions de tonnes", date: "2026", temps: structurel, source: s2}
+      - {nom: "réserves, Madagascar", valeur: 27, unite: "millions de tonnes", date: "2026", temps: structurel, source: s2}
+      - {nom: "réserves, Mozambique", valeur: 25, unite: "millions de tonnes", date: "2026", temps: structurel, source: s2}
+      - {nom: "réserves, Tanzanie", valeur: 18, unite: "millions de tonnes", date: "2026", temps: structurel, source: s2}
+      - {nom: "ressources récupérables hors réserves", valeur: "plus de 800", unite: "millions de tonnes", date: "2026", temps: structurel, source: s2}
     bascules: []
   - id: extraction
     nom: "Extraction et concentration (flottation)"
@@ -35,6 +42,11 @@ maillons:
       - {nom: "coût, Balama", valeur: 575, unite: "$/t", date: "2026", temps: conjoncturel, source: s1}
       - {nom: "coût, quartile haut", valeur: "plus de 600, jusqu'à près de 1 600", unite: "$/t", date: "2026", temps: conjoncturel, source: s1}
       - {nom: "coût de trésorerie moyen attendu", valeur: "435 (2026) → 574 (2030), +32 %", unite: "$/t", date: "2026", temps: conjoncturel, source: s1}
+      - {nom: "production minière mondiale", valeur: "1 550 000 (2024) ; 1 800 000 (2025, estimation)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
+      - {nom: "production minière, Chine", valeur: "1 270 000 (2024) ; 1 400 000 (2025, estimation)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
+      - {nom: "part de la Chine dans la production minière (calculée : 1 400 000 / 1 800 000)", valeur: 0.78, unite: "part", date: "2025", temps: conjoncturel, source: s2}
+      - {nom: "production, Madagascar ; Tanzanie ; Brésil ; Mozambique", valeur: "80 000 ; 75 000 ; 65 000 ; 60 000 (2025, estimation)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
+      - {nom: "Tanzanie : production plus que doublée en 2025", valeur: "27 000 → 75 000", unite: "t", date: "2025", temps: conjoncturel, source: s2}
     bascules:
       - {nom: "prix sous le coût de trésorerie", regle: "au prix d'environ 450 $/t FOB Chine, la plupart des mines hors de Chine produisent à leur coût de trésorerie total ou en dessous", source: s1}
   - id: transformation
@@ -45,8 +57,11 @@ maillons:
     variables:
       - {nom: "qualité batterie (graphite sphérique)", valeur: "≥ 99,95", unite: "% de carbone", date: "2026", temps: structurel, source: s1}
       - {nom: "part chinoise de la transformation", valeur: "non renseigné", unite: "%", date: "", temps: structurel, source: s1}
+      - {nom: "exportations chinoises de graphite naturel, 9 premiers mois de 2025", valeur: "115 000 (+6 % sur un an)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
+      - {nom: "exportations chinoises de graphite sphérique purifié, 9 premiers mois de 2025", valeur: "37 400 (+29 % sur un an)", unite: "t", date: "2025", temps: conjoncturel, source: s2}
     bascules:
-      - {nom: "contrôles chinois à l'exportation", regle: "non renseigné par cette source ; à documenter (lien : rivalite-sino-americaine:terres_rares, licences d'exportation)", source: s1}
+      - {nom: "contrôles chinois à l'exportation", regle: "non renseigné par ces sources ; à documenter (lien : rivalite-sino-americaine:terres_rares, licences d'exportation) ; série mensuelle des exportations dans registre/matieres/comtrade-graphite.csv", source: s1}
+      - {nom: "droits antidumping américains sur la matière active d'anode chinoise", regle: "résultats préliminaires du département du Commerce : 93,50 % ; droits compensateurs de 11,58 % à 721,03 % selon l'entreprise", source: s2}
   - id: usage
     nom: "Usages"
     axes: {espace: "mondial", temps: "années", vitesse: "mois", taille: macro}
@@ -63,14 +78,19 @@ maillons:
     acteurs: ["acheteurs (fabricants d'anodes)", "producteurs"]
     variables:
       - {nom: "prix", valeur: 450, unite: "$/t FOB Chine", date: "2026-11", temps: conjoncturel, source: s1}
+      - {nom: "valeur unitaire des importations américaines, paillettes", valeur: 1000, unite: "$/t (ports étrangers)", date: "2025", temps: conjoncturel, source: s2}
+      - {nom: "dépendance américaine aux importations", valeur: 100, unite: "% de la consommation apparente", date: "2021-2025", temps: structurel, source: s2}
+      - {nom: "origine des importations américaines 2021-2024", valeur: "Chine 46 %, Canada 13 %, Mozambique 13 %, Mexique 12 %, autres 16 %", unite: "", date: "2021-2024", temps: conjoncturel, source: s2}
     bascules: []
 liens_fiches:
   - "rivalite-sino-americaine:terres_rares"
   - "rivalite-sino-americaine:technologie"
   - "sciences-techniques:calcul"
 traces:
+  - "registre/matieres/comtrade-graphite.csv (exportations chinoises mensuelles, UN Comtrade)"
+  - "registre/matieres/usgs-mcs2026/ (USGS, annuel)"
   - "registre/rss-matieres.csv, matière « graphite » (S&P Global Energy et presse économique, comptes quotidiens)"
 lacunes:
-  - "part chinoise chiffrée de l'extraction et de la transformation"
+  - "part chinoise chiffrée de la transformation (l'extraction est connue : 78 % en 2025)"
   - "contrôles chinois à l'exportation (dates, produits visés)"
   - "série de prix datée"

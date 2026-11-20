@@ -11,3 +11,10 @@ def test_chaine_graphite_valide():
 def test_matieres():
     assert cr.MATIERES["graphite"].search("Graphite prices fall") and not cr.MATIERES["acier"].search("Steelers win")
     assert len(cr.FLUX["sp_energie"]) == 14 and "sp_energie" in cr.DEDOUBLONNER
+
+
+def test_collecte_matieres():
+    import collecte_matieres as cm
+    import collecte_fred as cf
+    assert set(cm.PRODUITS) == {"250410", "250490", "380110"} and cm.MOIS.match("2026M10")
+    assert "PCOPPUSDM" in cf.SERIES and "PURANUSDM" in cf.SERIES

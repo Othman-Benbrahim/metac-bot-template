@@ -46,6 +46,15 @@ SERIES = {
     "UMCSENT": "confiance des ménages américains (Université du Michigan), mensuel (humain : attente)",
     "CBBTCUSD": "cours du bitcoin (Coinbase), quotidien (crises bancaires : cryptomonnaies) ; 0.10.358",
     "CBETHUSD": "cours de l'ether (Coinbase), quotidien (crises bancaires : cryptomonnaies) ; 0.10.358",
+    # 0.10.389 (décision d'auteur du 2026-11-20, 14 h 48) : prix mondiaux mensuels du FMI, matières stratégiques
+    "PCOPPUSDM": "prix mondial du cuivre (FMI), mensuel (matières stratégiques) ; 0.10.389",
+    "PNICKUSDM": "prix mondial du nickel (FMI), mensuel (matières stratégiques) ; 0.10.389",
+    "PURANUSDM": "prix mondial de l'uranium (FMI), mensuel (matières stratégiques) ; 0.10.389",
+    "PALUMUSDM": "prix mondial de l'aluminium (FMI), mensuel (matières stratégiques) ; 0.10.389",
+    "PIORECRUSDM": "prix mondial du minerai de fer (FMI), mensuel (matières stratégiques) ; 0.10.389",
+    "PZINCUSDM": "prix mondial du zinc (FMI), mensuel (matières stratégiques) ; 0.10.389",
+    "PWHEAMTUSDM": "prix mondial du blé (FMI), mensuel (alimentation mondiale) ; 0.10.389",
+    "PMAIZMTUSDM": "prix mondial du maïs (FMI), mensuel (alimentation mondiale) ; 0.10.389",
 }
 
 
