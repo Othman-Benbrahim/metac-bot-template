@@ -182,3 +182,43 @@ liens:
       - {titre: "Crowell & Moring, U.S.-China Trade Truce Extended Two Months, septembre 2026", url: "https://www.cmtradelaw.com/2026/09/u-s-china-trade-truce-extended-two-months-bis-affiliates-rule-suspension-follows/", consulte: "2026-11-20"}
       - {titre: "Nixon Peabody, BIS formally suspends the Affiliates Rule until January 10, 2027, 6 novembre 2026", url: "https://www.nixonpeabody.com/insights/alerts/2026/11/06/bis-formally-suspends-the-affiliates-rule-until-january-10-2027", consulte: "2026-11-20"}
       - {titre: "Benchmark Minerals, China extends pause on rare earth and battery export controls until 2027, 9 novembre 2026", url: "https://source.benchmarkminerals.com/article/china-extends-pause-on-rare-earth-and-battery-export-controls-until-2027", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 4 : Levant et Iran
+  - id: il_formation_du_gouvernement
+    de: "guerre-levant:la fonction de Premier ministre (pouvoirs, dépendance à la coalition)"
+    vers: "guerre-levant:la coalition gouvernementale israélienne"
+    relation: depend_de
+    domaine: formation du gouvernement
+    regle: "Élection de la Knesset le 27 octobre 2026 ; aucun bloc n'a la majorité (61 sièges sur 120). Le président Herzog a chargé Gadi Eisenkot de former le gouvernement (67 députés l'ont recommandé, 46 pour Netanyahu ; annonce le 7 novembre, mandat remis le 8 novembre). Délai de 28 jours, prolongeable de 14 jours par le président : fin vers le 6 décembre 2026, ou le 20 décembre avec prolongation (calcul de date). En cas d'échec, Netanyahu pourrait être chargé à son tour ; une nouvelle élection début 2027 est possible. D'ici là, le gouvernement Netanyahu reste en fonction."
+    temps: {statut: conjoncturel, cycle: "législature de la Knesset (formation du gouvernement)", phase: "mandat d'Eisenkot après l'élection du 27 octobre 2026", depuis: "2026-11-08", jusqua: "2026-12-20", a_revoir_le: ["2026-12-07", "2026-12-21"]}
+    sources:
+      - {titre: "Service de recherche du Congrès, Israel's 2026 Knesset Election, IN12751, 30 octobre 2026", url: "https://www.everycrsreport.com/reports/IN12751.html", consulte: "2026-11-20"}
+      - {titre: "Times of Israel, President Herzog taps Eisenkot to form coalition, but path remains fraught, 7 novembre 2026", url: "https://www.timesofisrael.com/president-herzog-taps-eisenkot-to-form-coalition-but-path-remains-fraught/", consulte: "2026-11-20"}
+      - {titre: "Axios, Israel's Herzog taps Gadi Eisenkot to form government, 7 novembre 2026", url: "https://www.axios.com/2026/11/07/israel-eisenkot-netanyahu-government-herzog", consulte: "2026-11-20"}
+  - id: gaza_force_de_stabilisation
+    de: "guerre-levant:l'Assemblée générale et le Conseil de sécurité de l'ONU"
+    vers: "guerre-levant:Israël (État)"
+    relation: depend_de
+    domaine: cessez-le-feu de Gaza
+    regle: "Rapport du Conseil de la paix au Conseil de sécurité, 17 novembre 2026 : le déploiement de la force de stabilisation est retardé faute d'approbation israélienne ; ce déploiement conditionne le retrait des troupes israéliennes, le désarmement du Hamas et la reconstruction. Frappes israéliennes et activité militaire du Hamas continuent ; le rapport avertit que le cessez-le-feu peut s'effondrer et qu'il n'y aurait alors « aucune feuille de route à laquelle revenir »."
+    temps: {statut: conjoncturel, cycle: "cessez-le-feu de Gaza (feuille de route)", phase: "mise en œuvre bloquée, rapport du 17 novembre 2026", depuis: "2026-11-17", a_revoir_le: ["2026-12-17"]}
+    sources:
+      - {titre: "Associated Press (via KSAT), Board of Peace delivers bleak report on Gaza, 17 novembre 2026", url: "https://www.ksat.com/news/world/2026/11/17/board-of-peace-delivers-bleak-report-on-gaza-warning-of-ceasefire-collapse-without-immediate-action/", consulte: "2026-11-20"}
+  - id: ir_sanctions_onu_retablies
+    de: "iran-nucleaire:France, Allemagne et Royaume-Uni (en groupe)"
+    vers: "iran-nucleaire:Iran (État)"
+    relation: conditionne
+    domaine: sanctions
+    regle: "Les trois Européens ont déclenché le mécanisme de retour des sanctions (« snapback ») le 28 août 2025 ; les sanctions de l'ONU sont rétablies depuis le 27 septembre 2025. La Chine et la Russie en contestent la légalité, ce qui limite leur application par ces deux pays."
+    temps: {statut: structurel, depuis: "2025-09-27"}
+    sources:
+      - {titre: "Service de recherche du Congrès, Iran and Nuclear Weapons, IF11583, mis à jour le 13 octobre 2026", url: "https://www.everycrsreport.com/reports/IF11583.html", consulte: "2026-11-20"}
+  - id: ir_verification_aiea_limitee
+    de: "iran-nucleaire:Agence internationale de l'énergie atomique"
+    vers: "iran-nucleaire:Iran (État)"
+    relation: depend_de
+    domaine: vérification
+    regle: "Après les frappes de juin 2025, l'AIEA a retiré ses inspecteurs ; la surveillance ne repose plus que sur l'accord de garanties généralisées, selon l'accès que l'Iran consent. Le 9 septembre 2026, le Conseil des gouverneurs a adopté une résolution signalant au Conseil de sécurité le non-respect par l'Iran."
+    temps: {statut: structurel, depuis: "2025-06"}
+    sources:
+      - {titre: "Service de recherche du Congrès, Iran and Nuclear Weapons, IF11583, mis à jour le 13 octobre 2026", url: "https://www.everycrsreport.com/reports/IF11583.html", consulte: "2026-11-20"}

@@ -19,3 +19,7 @@
 | us_tarifs_ieepa_annules | le président en personne | peut_bloquer | la Cour suprême | droits de douane | structurel depuis 2026-02-20 |
 | cn_licences_exportation_mineraux | ministère chinois du Commerce | conditionne | États-Unis (exécutif) | minerais critiques | structurel depuis 2023 |
 | treve_sino_americaine | Chine (direction du Parti et de l'État) | conditionne | États-Unis (exécutif) | contrôles à l'exportation | conjoncturel (trêve commerciale sino-américaine (renouvellements) : prolongation jusqu'au 10 janvier 2027) |
+| il_formation_du_gouvernement | la fonction de Premier ministre (pouvoirs, dépendance à la coalition) | depend_de | la coalition gouvernementale israélienne | formation du gouvernement | conjoncturel (législature de la Knesset (formation du gouvernement) : mandat d'Eisenkot après l'élection du 27 octobre 2026) |
+| gaza_force_de_stabilisation | l'Assemblée générale et le Conseil de sécurité de l'ONU | depend_de | Israël (État) | cessez-le-feu de Gaza | conjoncturel (cessez-le-feu de Gaza (feuille de route) : mise en œuvre bloquée, rapport du 17 novembre 2026) |
+| ir_sanctions_onu_retablies | France, Allemagne et Royaume-Uni (en groupe) | conditionne | Iran (État) | sanctions | structurel depuis 2025-09-27 |
+| ir_verification_aiea_limitee | Agence internationale de l'énergie atomique | depend_de | Iran (État) | vérification | structurel depuis 2025-06 |
