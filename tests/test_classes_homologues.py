@@ -13,3 +13,13 @@ def test_classe():
     assert k["fiche"] == "politique-americaine" and k["rapport"] == "large"     # Trump nommé en premier
     assert ch.classe("Will the Senate pass the bill before July?", 30)["rapport"] == "courte"      # chambre : vitesse en mois
     assert ch.classe("Will it rain in Paris tomorrow?", 1) is None
+
+
+def test_motifs_sans_faux_amis():
+    """Le pronom « who » n'est pas l'OMS ; Google Trends et Metaculus ne sont pas des laboratoires d'IA."""
+    assert ch.classe("Who will win the Royal Society science book prize?", 30) is None
+    assert ch.classe("Will the WHO declare a PHEIC for H5N1 before 2027?", 30)["fiche"] == "epidemies"
+    assert ch.classe('Will there be a new all-time peak in Google Trends for "power outage"?', 30) is None
+    assert ch.classe("Will Metaculus add a meta discussion feature?", 30) is None
+    assert ch.classe("Will Google release a chatbot in 2016?", 30)["fiche"] == "sciences-techniques"
+    assert ch.classe("Will AlphaGo beat Lee Sedol in March 2016?", 30)["fiche"] == "sciences-techniques"
