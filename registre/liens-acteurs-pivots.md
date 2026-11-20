@@ -9,4 +9,6 @@ Nigeria 5 ; OPEP 5 ; Haïti 5 ; Taïwan 5.
 Couverts par les liens (après le lot 9) : Cour suprême, Réserve fédérale, Iran, Houthis, Russie-Ukraine, UE, Israël,
 Congrès et Sénat, OPEP+. Couverts par la brique des scrutins : élections.
 Ajoutés le 2026-11-20 au soir : fiche Soudan et lot 10 (trêves) ; lot 11 (négociation États-Unis–Russie sur l'Ukraine).
-Non couverts : Inde, Brésil, Venezuela, Danemark (Groenland), Haïti, Hongrie (fiches à créer ou à étendre).
+Lot 12 (2026-11-20) : Brésil (Lula réélu), Venezuela (transition sans date), Haïti (élection reportée à juillet 2027),
+Groenland (accord de sécurité ratifié), accord commercial États-Unis–Inde. Hongrie : déjà couverte (lot 6, levée du veto
+sous Magyar). Questions restantes sans lien : sport (Neymar), Starlink en Inde, PIB Inde-Japon, rencontre Russie-Inde-Chine.

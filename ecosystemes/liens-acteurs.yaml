@@ -469,3 +469,52 @@ liens:
     temps: {statut: conjoncturel, cycle: "négociation de paix russo-ukrainienne (reprises et interruptions)", phase: "reprise des pourparlers directs, novembre 2026", depuis: "2026-11-12", a_revoir_le: ["2026-12-01"]}
     sources:
       - {titre: "Al Jazeera, US envoys and Putin agree to continue Russia-Ukraine peace talks, 12 novembre 2026", url: "https://www.aljazeera.com/news/2026/11/12/us-envoys-arrive-in-moscow-for-russia-ukraine-talks-with-putin", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 12 : Brésil, Venezuela, Haïti, Groenland
+  - id: br_lula_reelu
+    de: "elections-amerique-latine:l'électorat d'un pays, en agrégat"
+    vers: "elections-amerique-latine:la fonction présidentielle"
+    relation: nomme
+    domaine: élection présidentielle brésilienne
+    regle: "Second tour du 25 octobre 2026 : Lula réélu (un peu plus de 51 %, plus de 64 millions de voix) contre Flávio Bolsonaro (48 %) ; investiture le 5 janvier 2027. Flávio Bolsonaro ne reconnaît pas le résultat et dit vouloir le faire annuler (prolongation du vote de deux heures décidée par la Cour suprême) : bataille judiciaire probable."
+    temps: {statut: conjoncturel, cycle: "mandat présidentiel brésilien (quatre ans)", phase: "entre l'élection et l'investiture", depuis: "2026-10-25", jusqua: "2027-01-05", a_revoir_le: ["2027-01-06"]}
+    sources:
+      - {titre: "Al Jazeera, Lula holds off far right with victory in Brazil presidential election, 26 octobre 2026", url: "https://aljazeera.com/news/2026/10/26/lula-holds-off-far-right-with-victory-in-brazil-presidential-election", consulte: "2026-11-20"}
+  - id: ve_transition_sans_date
+    de: "elections-amerique-latine:la fonction présidentielle"
+    vers: "politique-americaine:le président en personne (ses faits et déclarations publics)"
+    relation: depend_de
+    domaine: transition vénézuélienne
+    regle: "Après la capture de Nicolás Maduro par un raid américain (janvier 2026), Delcy Rodríguez (PSUV, ancienne vice-présidente) gouverne par intérim depuis le 3 janvier 2026, avec le soutien de la Maison-Blanche ; les États-Unis gardent un rôle actif, dont le contrôle des ressources pétrolières. Aucune date d'élection n'est fixée (octobre 2026) : Trump et Rodríguez annoncent des élections ; María Corina Machado les veut avant juillet 2027 ; des pourparlers soutenus par Washington entre une partie de l'opposition et le gouvernement intérimaire visent d'abord à réformer la Cour suprême et le conseil électoral."
+    temps: {statut: conjoncturel, cycle: "transition après la chute de Maduro", phase: "intérim Rodríguez, élection non datée", depuis: "2026-01-03", a_revoir_le: ["2027-01-03"]}
+    sources:
+      - {titre: "Al Jazeera, Venezuelans demand elections in first national protest in nearly two years, 23 octobre 2026", url: "https://www.aljazeera.com/news/2026/10/23/venezuelans-demand-elections-in-first-national-protest-in-nearly-two-years", consulte: "2026-11-20"}
+  - id: ht_elections_reportees
+    de: "elections-amerique-latine:l'électorat d'un pays, en agrégat"
+    vers: "elections-amerique-latine:la fonction présidentielle"
+    relation: conditionne
+    domaine: élection haïtienne
+    regle: "Haïti n'a pas tenu d'élection nationale depuis 2016 ; chaque calendrier a glissé (2019, 2021, 2022, 2025, puis 30 août 2026, puis 13 décembre 2026). Le 28 octobre 2026, le Conseil électoral provisoire a reporté le premier tour au 18 juillet 2027, le second tour et les élections locales au 4 octobre 2027 (violence des gangs, déplacements, sécurité des bureaux de vote). Taux de base observé : aucune date annoncée n'a été tenue depuis 2019."
+    temps: {statut: conjoncturel, cycle: "calendriers électoraux haïtiens (reports successifs)", phase: "premier tour annoncé pour le 18 juillet 2027", depuis: "2026-10-28", jusqua: "2027-07-18", a_revoir_le: ["2027-03-01", "2027-07-19"]}
+    sources:
+      - {titre: "L'Union Suite, Haiti postpones presidential election until July 2027, 28 octobre 2026", url: "https://www.lunionsuite.com/haiti-postpones-presidential-election-until-july-2027-extending-countrys-decade-long-wait-for-a-national-vote/", consulte: "2026-11-20"}
+      - {titre: "Wikipédia (en anglais), 2026 Haitian general election (historique des reports, jusqu'à août 2026)", url: "https://en.wikipedia.org/wiki/2026_Haitian_general_election", consulte: "2026-11-20"}
+  - id: groenland_accord_securite
+    de: "politique-americaine:le président en personne (ses faits et déclarations publics)"
+    vers: "securite-europeenne:un ministère de la défense national"
+    relation: conditionne
+    domaine: Groenland
+    regle: "Accord de sécurité États-Unis–Danemark–Groenland signé en septembre 2026, ratifié par le Parlement groenlandais (novembre) puis à l'unanimité par le Parlement danois le 19 novembre 2026 ; en vigueur à la notification danoise. Il élargit le rôle militaire américain (défense antimissile « Golden Dome », deux nouvelles bases à préciser), réaffirme la souveraineté danoise et l'autodétermination des Groenlandais ; aucun achat. Accord exécutif : pas de vote du Sénat américain. Origine : la crise de janvier 2026 à l'OTAN, quand le président n'excluait pas la force pour acquérir l'île."
+    temps: {statut: conjoncturel, cycle: "relation États-Unis–Danemark sur le Groenland", phase: "accord ratifié, entrée en vigueur à la notification", depuis: "2026-11-19", a_revoir_le: ["2027-01-15"]}
+    sources:
+      - {titre: "GV Wire (Reuters), Denmark ratifies Trump deal over Greenland, hoping to end conflict, 19 novembre 2026", url: "https://gvwire.com/2026/11/19/denmark-ratifies-trump-deal-over-greenland-hoping-to-end-conflict/", consulte: "2026-11-20"}
+      - {titre: "Al Jazeera, Greenland parliament approves security deal with US, Denmark, 3 novembre 2026", url: "https://www.aljazeera.com/news/2026/11/3/greenland-parliament-approves-security-deal-with-us-denmark", consulte: "2026-11-20"}
+  - id: us_inde_accord_commercial_cadre
+    de: "rivalite-sino-americaine:Représentant américain au commerce"
+    vers: "rivalite-sino-americaine:États-Unis (exécutif)"
+    relation: depend_de
+    domaine: accord commercial États-Unis–Inde
+    regle: "Cadre d'accord intérimaire annoncé les 6-9 février 2026 : retrait du droit additionnel de 25 % (lié à l'engagement indien de cesser d'acheter du pétrole russe), droit « réciproque » ramené de 25 % à 18 %. L'accord intérimaire reste à finaliser et l'accord commercial bilatéral complet est en négociation (droits restants, barrières non tarifaires, services, propriété intellectuelle…), sans échéance fixée. Une question « accord finalisé avant telle date » porte sur ces textes, pas sur le cadre de février."
+    temps: {statut: conjoncturel, cycle: "négociation commerciale États-Unis–Inde", phase: "cadre intérimaire de février 2026, accord complet en négociation", depuis: "2026-02-06", a_revoir_le: ["2027-02-06"]}
+    sources:
+      - {titre: "Maison-Blanche, Fact Sheet: The United States and India Announce Historic Trade Deal, 9 février 2026", url: "https://www.whitehouse.gov/fact-sheets/2026/02/fact-sheet-the-united-states-and-india-announce-historic-trade-deal/", consulte: "2026-11-20"}
