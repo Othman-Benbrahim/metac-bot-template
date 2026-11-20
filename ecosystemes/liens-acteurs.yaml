@@ -449,3 +449,23 @@ liens:
     temps: {statut: structurel, depuis: "2023-04-15"}
     sources:
       - {titre: "Institut d'études de sécurité de l'Union européenne, The fall of El-Fasher: Sudan's war outpaces truce plan", url: "https://www.iss.europa.eu/publications/commentary/fall-el-fasher-sudans-war-outpaces-truce-plan", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 11 : négociation États-Unis–Russie sur l'Ukraine
+  - id: ru_ua_negociation_reprise
+    de: "russie-ukraine:médiateurs (Turquie, pays du Golfe, Vatican, États-Unis — en agrégat)"
+    vers: "russie-ukraine:la fonction présidentielle russe (pouvoirs constitutionnels, décisions de guerre et de paix)"
+    relation: depend_de
+    domaine: négociation de paix
+    regle: "Le 12 novembre 2026 à Moscou, les envoyés américains Kushner et Witkoff et Vladimir Poutine conviennent de reprendre les pourparlers directs, interrompus depuis neuf mois. Points de blocage : le territoire (Kiev refuse de céder le Donbass ; Moscou tient pour frontière les quatre régions annexées, qu'elle ne contrôle pas entièrement) et les garanties de sécurité (Moscou refuse toute présence durable de troupes européennes en Ukraine ; États-Unis, Europe et Ukraine alignés selon l'OTAN). Suite annoncée : discussion Trump-Poutine au sommet de l'APEC en Chine fin novembre 2026, rencontre des envoyés avec Zelensky à Dublin. Aucune échéance fixée. Un accord exige l'accord des deux présidents ; une rencontre n'est pas un accord."
+    temps: {statut: conjoncturel, cycle: "négociation de paix russo-ukrainienne (reprises et interruptions)", phase: "reprise des pourparlers directs, novembre 2026", depuis: "2026-11-12", a_revoir_le: ["2026-12-01"]}
+    sources:
+      - {titre: "Al Jazeera, US envoys and Putin agree to continue Russia-Ukraine peace talks, 12 novembre 2026", url: "https://www.aljazeera.com/news/2026/11/12/us-envoys-arrive-in-moscow-for-russia-ukraine-talks-with-putin", consulte: "2026-11-20"}
+  - id: ua_president_peut_bloquer_cession
+    de: "russie-ukraine:le président ukrainien en personne (faits et déclarations publics)"
+    vers: "russie-ukraine:médiateurs (Turquie, pays du Golfe, Vatican, États-Unis — en agrégat)"
+    relation: peut_bloquer
+    domaine: négociation de paix
+    regle: "Kiev refuse la cession du Donbass exigée par Moscou (novembre 2026) : un accord négocié entre Washington et Moscou ne vaut pas accord ukrainien. Sous loi martiale, aucune élection ne peut changer le titulaire (voir ua_elections_suspendues_sous_loi_martiale)."
+    temps: {statut: conjoncturel, cycle: "négociation de paix russo-ukrainienne (reprises et interruptions)", phase: "reprise des pourparlers directs, novembre 2026", depuis: "2026-11-12", a_revoir_le: ["2026-12-01"]}
+    sources:
+      - {titre: "Al Jazeera, US envoys and Putin agree to continue Russia-Ukraine peace talks, 12 novembre 2026", url: "https://www.aljazeera.com/news/2026/11/12/us-envoys-arrive-in-moscow-for-russia-ukraine-talks-with-putin", consulte: "2026-11-20"}
