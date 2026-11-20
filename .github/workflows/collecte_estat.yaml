@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/estat-tableaux-tokyo.json registre/estat-tokyo-cpi.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/estat-tableaux-tokyo.json registre/estat-tokyo-cpi.csv registre/estat-meta-tokyo.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : e-Stat du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase || (sleep 20 && git pull --rebase)
