@@ -1,0 +1,444 @@
+{
+ "decision_v2_nouvelles": {
+  "n": 427,
+  "couverture_80": 0.766,
+  "couverture_60": 0.595,
+  "entreprises": {
+   "ABT": {
+    "n": 22,
+    "couverture_80": 0.773,
+    "couverture_60": 0.682
+   },
+   "ADI": {
+    "n": 18,
+    "couverture_80": 0.611,
+    "couverture_60": 0.5
+   },
+   "ADP": {
+    "n": 20,
+    "couverture_80": 0.9,
+    "couverture_60": 0.65
+   },
+   "ADSK": {
+    "n": 21,
+    "couverture_80": 0.857,
+    "couverture_60": 0.714
+   },
+   "AMAT": {
+    "n": 14,
+    "couverture_80": 0.786,
+    "couverture_60": 0.571
+   },
+   "AMGN": {
+    "n": 6,
+    "couverture_80": 1.0,
+    "couverture_60": 0.333
+   },
+   "CL": {
+    "n": 22,
+    "couverture_80": 0.773,
+    "couverture_60": 0.5
+   },
+   "DE": {
+    "n": 34,
+    "couverture_80": 0.676,
+    "couverture_60": 0.529
+   },
+   "EBAY": {
+    "n": 22,
+    "couverture_80": 0.909,
+    "couverture_60": 0.636
+   },
+   "FDX": {
+    "n": 16,
+    "couverture_80": 0.938,
+    "couverture_60": 0.875
+   },
+   "GILD": {
+    "n": 18,
+    "couverture_80": 0.833,
+    "couverture_60": 0.722
+   },
+   "HON": {
+    "n": 22,
+    "couverture_80": 0.682,
+    "couverture_60": 0.591
+   },
+   "LOW": {
+    "n": 17,
+    "couverture_80": 0.824,
+    "couverture_60": 0.412
+   },
+   "MRK": {
+    "n": 18,
+    "couverture_80": 1.0,
+    "couverture_60": 1.0
+   },
+   "PG": {
+    "n": 20,
+    "couverture_80": 0.6,
+    "couverture_60": 0.45
+   },
+   "SNPS": {
+    "n": 18,
+    "couverture_80": 0.556,
+    "couverture_60": 0.278
+   },
+   "TGT": {
+    "n": 21,
+    "couverture_80": 0.762,
+    "couverture_60": 0.571
+   },
+   "TMO": {
+    "n": 22,
+    "couverture_80": 0.818,
+    "couverture_60": 0.636
+   },
+   "UPS": {
+    "n": 22,
+    "couverture_80": 0.636,
+    "couverture_60": 0.591
+   },
+   "VZ": {
+    "n": 54,
+    "couverture_80": 0.722,
+    "couverture_60": 0.574
+   }
+  }
+ },
+ "descriptif_v1_nouvelles": {
+  "n": 604,
+  "couverture_80": 0.704,
+  "couverture_60": 0.533,
+  "entreprises": {
+   "ABT": {
+    "n": 30,
+    "couverture_80": 0.7,
+    "couverture_60": 0.567
+   },
+   "ADI": {
+    "n": 26,
+    "couverture_80": 0.385,
+    "couverture_60": 0.269
+   },
+   "ADP": {
+    "n": 28,
+    "couverture_80": 0.75,
+    "couverture_60": 0.536
+   },
+   "ADSK": {
+    "n": 29,
+    "couverture_80": 0.828,
+    "couverture_60": 0.69
+   },
+   "AMAT": {
+    "n": 22,
+    "couverture_80": 0.727,
+    "couverture_60": 0.5
+   },
+   "AMGN": {
+    "n": 14,
+    "couverture_80": 0.571,
+    "couverture_60": 0.429
+   },
+   "BKNG": {
+    "n": 3,
+    "couverture_80": 1.0,
+    "couverture_60": 0.333
+   },
+   "CL": {
+    "n": 30,
+    "couverture_80": 0.767,
+    "couverture_60": 0.6
+   },
+   "CMCSA": {
+    "n": 6,
+    "couverture_80": 0.833,
+    "couverture_60": 0.5
+   },
+   "DE": {
+    "n": 50,
+    "couverture_80": 0.68,
+    "couverture_60": 0.54
+   },
+   "EBAY": {
+    "n": 30,
+    "couverture_80": 0.867,
+    "couverture_60": 0.667
+   },
+   "FDX": {
+    "n": 24,
+    "couverture_80": 0.833,
+    "couverture_60": 0.625
+   },
+   "GILD": {
+    "n": 26,
+    "couverture_80": 0.577,
+    "couverture_60": 0.5
+   },
+   "HON": {
+    "n": 30,
+    "couverture_80": 0.7,
+    "couverture_60": 0.567
+   },
+   "LOW": {
+    "n": 25,
+    "couverture_80": 0.88,
+    "couverture_60": 0.68
+   },
+   "MRK": {
+    "n": 26,
+    "couverture_80": 0.846,
+    "couverture_60": 0.615
+   },
+   "PG": {
+    "n": 28,
+    "couverture_80": 0.714,
+    "couverture_60": 0.464
+   },
+   "SNPS": {
+    "n": 26,
+    "couverture_80": 0.5,
+    "couverture_60": 0.346
+   },
+   "TGT": {
+    "n": 29,
+    "couverture_80": 0.793,
+    "couverture_60": 0.586
+   },
+   "TMO": {
+    "n": 30,
+    "couverture_80": 0.633,
+    "couverture_60": 0.467
+   },
+   "UPS": {
+    "n": 30,
+    "couverture_80": 0.7,
+    "couverture_60": 0.533
+   },
+   "VZ": {
+    "n": 62,
+    "couverture_80": 0.613,
+    "couverture_60": 0.484
+   }
+  }
+ },
+ "descriptif_v2_anciennes": {
+  "n": 1054,
+  "couverture_80": 0.776,
+  "couverture_60": 0.6,
+  "entreprises": {
+   "AAPL": {
+    "n": 19,
+    "couverture_80": 0.947,
+    "couverture_60": 0.842
+   },
+   "ABNB": {
+    "n": 10,
+    "couverture_80": 0.9,
+    "couverture_60": 0.5
+   },
+   "ADBE": {
+    "n": 54,
+    "couverture_80": 0.852,
+    "couverture_60": 0.704
+   },
+   "AMD": {
+    "n": 22,
+    "couverture_80": 0.955,
+    "couverture_60": 0.727
+   },
+   "AMZN": {
+    "n": 22,
+    "couverture_80": 0.773,
+    "couverture_60": 0.682
+   },
+   "AVGO": {
+    "n": 18,
+    "couverture_80": 0.5,
+    "couverture_60": 0.389
+   },
+   "BA": {
+    "n": 34,
+    "couverture_80": 0.618,
+    "couverture_60": 0.559
+   },
+   "BAC": {
+    "n": 54,
+    "couverture_80": 0.796,
+    "couverture_60": 0.63
+   },
+   "CAT": {
+    "n": 46,
+    "couverture_80": 0.783,
+    "couverture_60": 0.522
+   },
+   "COIN": {
+    "n": 10,
+    "couverture_80": 0.9,
+    "couverture_60": 0.6
+   },
+   "CRM": {
+    "n": 21,
+    "couverture_80": 0.81,
+    "couverture_60": 0.619
+   },
+   "CSCO": {
+    "n": 20,
+    "couverture_80": 0.7,
+    "couverture_60": 0.35
+   },
+   "CVX": {
+    "n": 18,
+    "couverture_80": 0.833,
+    "couverture_60": 0.667
+   },
+   "DIS": {
+    "n": 19,
+    "couverture_80": 0.895,
+    "couverture_60": 0.842
+   },
+   "GOOGL": {
+    "n": 16,
+    "couverture_80": 0.875,
+    "couverture_60": 0.625
+   },
+   "HD": {
+    "n": 21,
+    "couverture_80": 0.762,
+    "couverture_60": 0.571
+   },
+   "IBM": {
+    "n": 54,
+    "couverture_80": 0.722,
+    "couverture_60": 0.574
+   },
+   "INTC": {
+    "n": 18,
+    "couverture_80": 0.667,
+    "couverture_60": 0.5
+   },
+   "INTU": {
+    "n": 16,
+    "couverture_80": 1.0,
+    "couverture_60": 1.0
+   },
+   "JNJ": {
+    "n": 22,
+    "couverture_80": 0.727,
+    "couverture_60": 0.727
+   },
+   "JPM": {
+    "n": 7,
+    "couverture_80": 0.857,
+    "couverture_60": 0.857
+   },
+   "KO": {
+    "n": 18,
+    "couverture_80": 0.944,
+    "couverture_60": 0.778
+   },
+   "LLY": {
+    "n": 54,
+    "couverture_80": 0.685,
+    "couverture_60": 0.407
+   },
+   "MA": {
+    "n": 2,
+    "couverture_80": 1.0,
+    "couverture_60": 1.0
+   },
+   "MCD": {
+    "n": 54,
+    "couverture_80": 0.759,
+    "couverture_60": 0.537
+   },
+   "META": {
+    "n": 22,
+    "couverture_80": 0.818,
+    "couverture_60": 0.636
+   },
+   "MSFT": {
+    "n": 24,
+    "couverture_80": 0.667,
+    "couverture_60": 0.417
+   },
+   "MU": {
+    "n": 19,
+    "couverture_80": 0.632,
+    "couverture_60": 0.579
+   },
+   "NFLX": {
+    "n": 54,
+    "couverture_80": 0.759,
+    "couverture_60": 0.611
+   },
+   "NKE": {
+    "n": 16,
+    "couverture_80": 1.0,
+    "couverture_60": 0.812
+   },
+   "NOW": {
+    "n": 18,
+    "couverture_80": 0.611,
+    "couverture_60": 0.444
+   },
+   "ORCL": {
+    "n": 20,
+    "couverture_80": 0.8,
+    "couverture_60": 0.5
+   },
+   "PANW": {
+    "n": 20,
+    "couverture_80": 0.85,
+    "couverture_60": 0.7
+   },
+   "PFE": {
+    "n": 3,
+    "couverture_80": 1.0,
+    "couverture_60": 0.667
+   },
+   "PLTR": {
+    "n": 10,
+    "couverture_80": 0.5,
+    "couverture_60": 0.3
+   },
+   "QCOM": {
+    "n": 55,
+    "couverture_80": 0.745,
+    "couverture_60": 0.636
+   },
+   "SBUX": {
+    "n": 23,
+    "couverture_80": 0.826,
+    "couverture_60": 0.696
+   },
+   "SNOW": {
+    "n": 9,
+    "couverture_80": 0.778,
+    "couverture_60": 0.444
+   },
+   "TXN": {
+    "n": 22,
+    "couverture_80": 0.818,
+    "couverture_60": 0.636
+   },
+   "UNH": {
+    "n": 54,
+    "couverture_80": 0.722,
+    "couverture_60": 0.5
+   },
+   "V": {
+    "n": 15,
+    "couverture_80": 1.0,
+    "couverture_60": 0.667
+   },
+   "WMT": {
+    "n": 21,
+    "couverture_80": 0.762,
+    "couverture_60": 0.619
+   }
+  }
+ },
+ "note": "critère sur decision_v2_nouvelles : 0,75-0,85 (80 %) et 0,55-0,65 (60 %)"
+}
