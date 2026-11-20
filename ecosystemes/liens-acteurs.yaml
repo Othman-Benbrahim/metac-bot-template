@@ -222,3 +222,63 @@ liens:
     temps: {statut: structurel, depuis: "2025-06"}
     sources:
       - {titre: "Service de recherche du Congrès, Iran and Nuclear Weapons, IF11583, mis à jour le 13 octobre 2026", url: "https://www.everycrsreport.com/reports/IF11583.html", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 5 : épidémies
+  - id: oms_urgence_declaree_apres_comite
+    de: "epidemies:Organisation mondiale de la santé"
+    vers: "epidemies:le comité d'urgence du règlement sanitaire international"
+    relation: depend_de
+    domaine: déclaration d'urgence
+    regle: "L'urgence de santé publique de portée internationale est déterminée par le directeur général de l'OMS après avis du comité d'urgence, qui se réunit pour chaque événement ; les recommandations temporaires sont prolongées par périodes de trois mois (exemple : poliomyélite, comité réuni le 30 septembre 2026, prolongation au 12 novembre 2026). Depuis les amendements de 2024, le directeur général dit aussi si l'événement est une « urgence pandémique »."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "OMS, déclaration de la 46e réunion du comité d'urgence du RSI sur la poliomyélite, 13 novembre 2026", url: "https://www.who.int/news/item/13-11-2026-statement-of-the-forty-sixth-meeting-of-the-polio-ihr-emergency-committee", consulte: "2026-11-20"}
+  - id: oms_urgences_en_vigueur
+    de: "epidemies:Organisation mondiale de la santé"
+    vers: "epidemies:un variant"
+    relation: nomme
+    domaine: déclaration d'urgence
+    regle: "Urgences de portée internationale en vigueur au 20 novembre 2026 : (1) poliomyélite (poliovirus sauvage de type 1, endémique en Afghanistan et au Pakistan, et poliovirus dérivés de souches vaccinales), maintenue le 12 novembre 2026, recommandations prolongées de trois mois (fin vers le 12 février 2027, calcul de date) ; (2) Ebola, espèce Bundibugyo, en RD Congo, déclarée à partir de mi-mai 2026, maintenue le 18 novembre 2026 (plus de 11 300 cas et 5 500 décès annoncés le 17 novembre ; cas aussi au Kenya, en Ouganda et au Nigeria). Aucune n'est qualifiée d'urgence pandémique. Aucun vaccin homologué contre Bundibugyo (essais en cours)."
+    temps: {statut: conjoncturel, cycle: "recommandations temporaires du RSI (trois mois)", phase: "polio prolongée le 12 novembre 2026 ; Ebola maintenue le 18 novembre 2026", depuis: "2026-11-12", jusqua: "2027-02-12", a_revoir_le: ["2026-12-23", "2027-02-13"]}
+    sources:
+      - {titre: "OMS, déclaration de la 46e réunion du comité d'urgence du RSI sur la poliomyélite, 13 novembre 2026", url: "https://www.who.int/news/item/13-11-2026-statement-of-the-forty-sixth-meeting-of-the-polio-ihr-emergency-committee", consulte: "2026-11-20"}
+      - {titre: "Anadolu, l'OMS maintient l'urgence internationale pour Ebola en RD Congo, 18 novembre 2026", url: "https://www.aa.com.tr/en/life/who-says-ebola-outbreak-in-dr-congo-remains-public-health-emergency-of-international-concern/4129534", consulte: "2026-11-20"}
+      - {titre: "HNGN, WHO Keeps Ebola Emergency Status as Congo Cases Top 11,000, 19 novembre 2026", url: "https://www.hngn.com/articles/273679/20261119/ebola-deaths-pass-5300-outbreak-reaches-kenya-nigeria.htm", consulte: "2026-11-20"}
+  - id: rsi_amende_urgence_pandemique
+    de: "epidemies:une agence nationale de santé publique"
+    vers: "epidemies:Organisation mondiale de la santé"
+    relation: depend_de
+    domaine: règlement sanitaire international
+    regle: "Les amendements de 2024 au RSI sont en vigueur depuis le 19 septembre 2025 ; ils créent un niveau d'alerte au-dessus de l'urgence internationale, l'« urgence pandémique ». 11 des 196 États parties les ont rejetés et restent liés par la version antérieure (185 liés par la nouvelle, calcul)."
+    temps: {statut: structurel, depuis: "2025-09-19"}
+    sources:
+      - {titre: "OMS, les amendements au RSI entrent en vigueur, 19 septembre 2025", url: "https://www.who.int/news/item/19-09-2025-amended-international-health-regulations-enter-into-force", consulte: "2026-11-20"}
+  - id: us_retrait_oms
+    de: "epidemies:une agence nationale de santé publique"
+    vers: "epidemies:Organisation mondiale de la santé"
+    relation: ne_depend_pas_de
+    domaine: gouvernance sanitaire mondiale
+    regle: "Les États-Unis ont achevé leur retrait de l'OMS le 22 janvier 2026, au terme d'un processus d'un an annoncé le 20 janvier 2025. Les agences américaines (CDC) n'agissent plus comme agences d'un État membre de l'OMS."
+    temps: {statut: structurel, depuis: "2026-01-22"}
+    sources:
+      - {titre: "CDC, United States Completes WHO Withdrawal, 22 janvier 2026", url: "https://www.cdc.gov/media/releases/2026/united-states-completes-who-withdrawal.html", consulte: "2026-11-20"}
+  - id: accord_pandemie_attend_annexe_pabs
+    de: "epidemies:Organisation mondiale de la santé"
+    vers: "epidemies:les fabricants de vaccins"
+    relation: conditionne
+    domaine: accord sur les pandémies
+    regle: "L'accord de l'OMS sur les pandémies (adopté en mai 2025) ne peut pas être ouvert à la signature tant que l'annexe sur l'accès aux pathogènes et le partage des avantages (PABS) n'est pas adoptée. Point de blocage : partage obligatoire ou volontaire, par les fabricants, des produits issus des données de pathogènes. Mandat de négociation prolongé d'un an ; session de novembre 2026 sans texte agréé ; prochaines sessions 11-15 janvier, 15-19 février et 15-25 mars 2027 ; objectif : Assemblée mondiale de la santé de mai 2027."
+    temps: {statut: conjoncturel, cycle: "négociation de l'annexe PABS", phase: "mandat prolongé, objectif mai 2027", depuis: "2026-05", jusqua: "2027-05-31", a_revoir_le: ["2027-03-26", "2027-06-01"]}
+    sources:
+      - {titre: "Global Biodefense, WHO Pandemic Agreement Stalls as Nations Fail to Resolve Pathogen-Sharing Deadlock, 14 mai 2026", url: "https://globalbiodefense.com/2026/05/14/who-pandemic-agreement-pabs-negotiation-unresolved-benefit-sharing/", consulte: "2026-11-20"}
+      - {titre: "Healthcare MEA, WHO member states advance pandemic agreement negotiations ahead of May 2027 deadline, 18 novembre 2026", url: "https://www.healthcaremea.com/2026/11/18/who-member-states-advance-pandemic-agreement-negotiations-ahead-of-may-2027-deadline/", consulte: "2026-11-20"}
+  - id: us_rougeole_decompte_cdc
+    de: "epidemies:une agence nationale de santé publique"
+    vers: "epidemies:une personne infectée (en agrégat, jamais nommée)"
+    relation: confirme
+    domaine: comptage des cas
+    regle: "Aux États-Unis, le décompte des cas de rougeole est celui des cas confirmés déclarés au CDC, arrêté le jeudi à midi et publié chaque semaine ; un « foyer » compte au moins 3 cas liés. 5 412 cas confirmés en 2026 au 12 novembre (dont 18 chez des visiteurs étrangers). L'Organisation panaméricaine de la santé a annoncé le 17 novembre 2026 la perte du statut d'élimination de la rougeole, détenu depuis 2000. Une question sur un seuil de cas se résout au rythme de cette publication hebdomadaire, non au jour de l'infection."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "CDC, Measles Cases and Outbreaks, mis à jour le 13 novembre 2026", url: "https://www.cdc.gov/measles/data-research/index.html", consulte: "2026-11-20"}
+      - {titre: "La Voce di New York, RFK Jr. Pivots on MMR Vaccine After U.S. Stripped of Measles-Free Status, 19 novembre 2026", url: "https://lavocedinewyork.com/en/news/2026/11/19/rfk-jr-pivots-on-mmr-vaccine-after-u-s-stripped-of-measles-free-status", consulte: "2026-11-20"}

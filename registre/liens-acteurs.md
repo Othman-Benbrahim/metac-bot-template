@@ -23,3 +23,9 @@
 | gaza_force_de_stabilisation | l'Assemblée générale et le Conseil de sécurité de l'ONU | depend_de | Israël (État) | cessez-le-feu de Gaza | conjoncturel (cessez-le-feu de Gaza (feuille de route) : mise en œuvre bloquée, rapport du 17 novembre 2026) |
 | ir_sanctions_onu_retablies | France, Allemagne et Royaume-Uni (en groupe) | conditionne | Iran (État) | sanctions | structurel depuis 2025-09-27 |
 | ir_verification_aiea_limitee | Agence internationale de l'énergie atomique | depend_de | Iran (État) | vérification | structurel depuis 2025-06 |
+| oms_urgence_declaree_apres_comite | Organisation mondiale de la santé | depend_de | le comité d'urgence du règlement sanitaire international | déclaration d'urgence | structurel |
+| oms_urgences_en_vigueur | Organisation mondiale de la santé | nomme | un variant | déclaration d'urgence | conjoncturel (recommandations temporaires du RSI (trois mois) : polio prolongée le 12 novembre 2026 ; Ebola maintenue le 18 novembre 2026) |
+| rsi_amende_urgence_pandemique | une agence nationale de santé publique | depend_de | Organisation mondiale de la santé | règlement sanitaire international | structurel depuis 2025-09-19 |
+| us_retrait_oms | une agence nationale de santé publique | ne_depend_pas_de | Organisation mondiale de la santé | gouvernance sanitaire mondiale | structurel depuis 2026-01-22 |
+| accord_pandemie_attend_annexe_pabs | Organisation mondiale de la santé | conditionne | les fabricants de vaccins | accord sur les pandémies | conjoncturel (négociation de l'annexe PABS : mandat prolongé, objectif mai 2027) |
+| us_rougeole_decompte_cdc | une agence nationale de santé publique | confirme | une personne infectée (en agrégat, jamais nommée) | comptage des cas | structurel |
