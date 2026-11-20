@@ -1,0 +1,230 @@
+{
+ "ensemble": {
+  "n": 1403,
+  "couverture_80": 0.731,
+  "couverture_60": 0.55
+ },
+ "entreprises": {
+  "AAPL": {
+   "n": 27,
+   "couverture_80": 0.778,
+   "couverture_60": 0.593
+  },
+  "ABNB": {
+   "n": 18,
+   "couverture_80": 0.944,
+   "couverture_60": 0.778
+  },
+  "ADBE": {
+   "n": 62,
+   "couverture_80": 0.758,
+   "couverture_60": 0.548
+  },
+  "AMD": {
+   "n": 30,
+   "couverture_80": 0.767,
+   "couverture_60": 0.533
+  },
+  "AMZN": {
+   "n": 30,
+   "couverture_80": 0.8,
+   "couverture_60": 0.567
+  },
+  "AVGO": {
+   "n": 26,
+   "couverture_80": 0.731,
+   "couverture_60": 0.462
+  },
+  "BA": {
+   "n": 42,
+   "couverture_80": 0.714,
+   "couverture_60": 0.571
+  },
+  "BAC": {
+   "n": 62,
+   "couverture_80": 0.726,
+   "couverture_60": 0.581
+  },
+  "CAT": {
+   "n": 54,
+   "couverture_80": 0.685,
+   "couverture_60": 0.519
+  },
+  "COIN": {
+   "n": 18,
+   "couverture_80": 0.833,
+   "couverture_60": 0.722
+  },
+  "CRM": {
+   "n": 29,
+   "couverture_80": 0.69,
+   "couverture_60": 0.621
+  },
+  "CSCO": {
+   "n": 28,
+   "couverture_80": 0.679,
+   "couverture_60": 0.643
+  },
+  "CVX": {
+   "n": 26,
+   "couverture_80": 0.731,
+   "couverture_60": 0.615
+  },
+  "DIS": {
+   "n": 27,
+   "couverture_80": 0.852,
+   "couverture_60": 0.667
+  },
+  "GOOGL": {
+   "n": 24,
+   "couverture_80": 0.833,
+   "couverture_60": 0.583
+  },
+  "HD": {
+   "n": 29,
+   "couverture_80": 0.828,
+   "couverture_60": 0.586
+  },
+  "IBM": {
+   "n": 62,
+   "couverture_80": 0.71,
+   "couverture_60": 0.532
+  },
+  "INTC": {
+   "n": 26,
+   "couverture_80": 0.692,
+   "couverture_60": 0.538
+  },
+  "INTU": {
+   "n": 24,
+   "couverture_80": 0.875,
+   "couverture_60": 0.5
+  },
+  "JNJ": {
+   "n": 30,
+   "couverture_80": 0.667,
+   "couverture_60": 0.567
+  },
+  "JPM": {
+   "n": 15,
+   "couverture_80": 0.8,
+   "couverture_60": 0.667
+  },
+  "KO": {
+   "n": 26,
+   "couverture_80": 0.769,
+   "couverture_60": 0.654
+  },
+  "LLY": {
+   "n": 62,
+   "couverture_80": 0.677,
+   "couverture_60": 0.516
+  },
+  "MA": {
+   "n": 10,
+   "couverture_80": 0.7,
+   "couverture_60": 0.3
+  },
+  "MCD": {
+   "n": 62,
+   "couverture_80": 0.645,
+   "couverture_60": 0.516
+  },
+  "META": {
+   "n": 30,
+   "couverture_80": 0.8,
+   "couverture_60": 0.6
+  },
+  "MSFT": {
+   "n": 32,
+   "couverture_80": 0.906,
+   "couverture_60": 0.75
+  },
+  "MU": {
+   "n": 27,
+   "couverture_80": 0.63,
+   "couverture_60": 0.37
+  },
+  "NFLX": {
+   "n": 62,
+   "couverture_80": 0.645,
+   "couverture_60": 0.435
+  },
+  "NKE": {
+   "n": 24,
+   "couverture_80": 0.708,
+   "couverture_60": 0.458
+  },
+  "NOW": {
+   "n": 26,
+   "couverture_80": 0.808,
+   "couverture_60": 0.692
+  },
+  "NVDA": {
+   "n": 3,
+   "couverture_80": 0.333,
+   "couverture_60": 0.333
+  },
+  "ORCL": {
+   "n": 28,
+   "couverture_80": 0.821,
+   "couverture_60": 0.536
+  },
+  "PANW": {
+   "n": 28,
+   "couverture_80": 0.643,
+   "couverture_60": 0.536
+  },
+  "PFE": {
+   "n": 11,
+   "couverture_80": 1.0,
+   "couverture_60": 0.455
+  },
+  "PLTR": {
+   "n": 18,
+   "couverture_80": 0.556,
+   "couverture_60": 0.389
+  },
+  "QCOM": {
+   "n": 63,
+   "couverture_80": 0.698,
+   "couverture_60": 0.46
+  },
+  "SBUX": {
+   "n": 35,
+   "couverture_80": 0.686,
+   "couverture_60": 0.571
+  },
+  "SNOW": {
+   "n": 17,
+   "couverture_80": 0.588,
+   "couverture_60": 0.471
+  },
+  "TSLA": {
+   "n": 6,
+   "couverture_80": 0.5,
+   "couverture_60": 0.333
+  },
+  "TXN": {
+   "n": 30,
+   "couverture_80": 0.567,
+   "couverture_60": 0.467
+  },
+  "UNH": {
+   "n": 62,
+   "couverture_80": 0.742,
+   "couverture_60": 0.548
+  },
+  "V": {
+   "n": 23,
+   "couverture_80": 0.826,
+   "couverture_60": 0.609
+  },
+  "WMT": {
+   "n": 29,
+   "couverture_80": 0.862,
+   "couverture_60": 0.655
+  }
+ },
+ "note": "attendu 0,80 et 0,60 ; critère 0,75-0,85 et 0,55-0,65 sur l'ensemble"
+}
