@@ -428,3 +428,24 @@ liens:
     sources:
       - {titre: "NBC News, Oman says it mediated a ceasefire between U.S., Yemen's Houthis, mai 2025", url: "https://www.nbcnews.com/world/yemen/oman-says-mediated-ceasefire-us-yemens-houthis-rcna205175", consulte: "2026-11-20"}
       - {titre: "BTimes (Reuters), U.S. officials hold secret Oman talks with Houthis, 16 septembre 2026", url: "https://www.btimesonline.com/articles/178409/20260916/us-officials-hold-secret-oman-talks-with-houthis-as-group-pledges-not-to-target-american-or-israeli-ships.htm", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 10 : Soudan (fiche créée le 2026-11-20)
+  - id: soudan_treves_echouent
+    de: "soudan:médiateurs extérieurs (États-Unis, Arabie saoudite, Égypte, Émirats, Suisse, ONU, Union africaine, en agrégat)"
+    vers: "soudan:Forces armées soudanaises (en agrégat)"
+    relation: depend_de
+    domaine: trêve
+    regle: "Une trêve n'existe que si les deux forces l'appliquent ; depuis avril 2023, toutes ont échoué : déclaration de Djeddah (mai 2023, États-Unis et Arabie saoudite), qui a brièvement ouvert l'accès humanitaire puis s'est effondrée ; trêves locales de l'IGAD et de l'Union africaine, parfois rompues en quelques heures ; initiatives américaines de 2025-2026 (ALPS à Genève) ; les FSR ont dit accepter la proposition des médiateurs en novembre 2025 sans effet durable. En septembre 2026, les États-Unis relancent l'appel à une trêve humanitaire de 90 jours ; chaque camp affirme gagner. Taux de base observé : aucune trêve tenue en trois ans et demi."
+    temps: {statut: conjoncturel, cycle: "annonces de trêve et violations", phase: "appel américain à une trêve de 90 jours (septembre 2026)", depuis: "2023-04-15", a_revoir_le: ["2026-12-20"]}
+    sources:
+      - {titre: "Al Jazeera, Why do Sudan's humanitarian truces keep failing and who is to blame?, 21 septembre 2026", url: "https://aljazeera.com/news/2026/9/21/why-do-sudans-humanitarian-truces-keep-failing-and-who-is-to-blame", consulte: "2026-11-20"}
+      - {titre: "Al Jazeera, RSF says it agrees to mediators' ceasefire proposal in Sudan war, 6 novembre 2025", url: "https://www.aljazeera.com/news/2025/11/6/rsf-says-it-agrees-to-mediators-ceasefire-proposal-in-sudan-war", consulte: "2026-11-20"}
+  - id: soudan_fsr_peuvent_bloquer_treve
+    de: "soudan:Forces de soutien rapide (en agrégat)"
+    vers: "soudan:médiateurs extérieurs (États-Unis, Arabie saoudite, Égypte, Émirats, Suisse, ONU, Union africaine, en agrégat)"
+    relation: peut_bloquer
+    domaine: trêve
+    regle: "Chacune des deux forces peut faire échouer une trêve en reprenant les combats ; la chute d'El Fasher aux mains des FSR (octobre 2025) a devancé le plan de trêve des médiateurs."
+    temps: {statut: structurel, depuis: "2023-04-15"}
+    sources:
+      - {titre: "Institut d'études de sécurité de l'Union européenne, The fall of El-Fasher: Sudan's war outpaces truce plan", url: "https://www.iss.europa.eu/publications/commentary/fall-el-fasher-sudans-war-outpaces-truce-plan", consulte: "2026-11-20"}

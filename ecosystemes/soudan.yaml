@@ -1,0 +1,64 @@
+theme: "soudan"
+nom: "Guerre au Soudan (armée, Forces de soutien rapide, médiations)"
+declaration:
+  but: "comprendre ce qui fait durer, déplacer ou suspendre la guerre au Soudan, et pourquoi les trêves échouent ; les questions du tournoi portent sur les trêves, le contrôle des villes, la famine et les médiations (10 questions Metaculus en 2025-2026 au registre de jugement)"
+  limites: "dedans les deux forces en guerre depuis avril 2023, leurs soutiens extérieurs, les médiateurs, l'aide humanitaire et la famine ; dehors la guerre au Levant et la mer Rouge (fiche guerre-levant), sauf par les ponts"
+  observateur: "notre carte, regard extérieur, ton neutre, sources publiques ; aucune personne privée"
+  date: "2026-11-20"
+  espace: "le Soudan (18 États ; combats dans 13 d'entre eux selon Al Jazeera, septembre 2026), ses frontières avec le Tchad, la Libye, l'Égypte, le Soudan du Sud"
+  temps: "de la journée (une attaque de drone) à la guerre commencée en avril 2023"
+  vitesse: "le jour (une frappe), la semaine (une trêve annoncée), le mois (la prise d'une ville), l'année (la guerre)"
+  taille: "micro (un village assiégé) à macro (l'État, la région)"
+compartiments:
+  - id: "armee"
+    nom: "Forces armées soudanaises et leurs alliés"
+    organisation: "geopolitique"
+    elements: ["Forces armées soudanaises (SAF)", "milices et groupes alliés", "gouvernement établi à Port-Soudan"]
+    acteurs:
+      - {nom: "Forces armées soudanaises (en agrégat)", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
+    niveau: {espace: "est, centre et nord du pays", temps: "guerre depuis avril 2023", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "événements UCDP au Soudan (registre/ucdp-cellules.csv.gz)", statut: "collecte", fichier: "collecte_ucdp_grille.py"}
+  - id: "fsr"
+    nom: "Forces de soutien rapide (FSR, en anglais RSF)"
+    organisation: "geopolitique"
+    elements: ["Forces de soutien rapide", "contrôle du Darfour après la chute d'El Fasher (octobre 2025)", "gouvernement parallèle annoncé (à vérifier)"]
+    acteurs:
+      - {nom: "Forces de soutien rapide (en agrégat)", taille: "macro", espace: "ouest du pays", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
+    niveau: {espace: "Darfour et Kordofan", temps: "guerre depuis avril 2023", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "événements UCDP au Soudan (registre/ucdp-cellules.csv.gz)", statut: "collecte", fichier: "collecte_ucdp_grille.py"}
+  - id: "mediation"
+    nom: "Médiateurs et trêves"
+    organisation: "geopolitique"
+    elements: ["déclaration de Djeddah (mai 2023, États-Unis et Arabie saoudite)", "efforts de l'IGAD et de l'Union africaine", "initiative ALPS à Genève (2025-2026)", "trêve humanitaire de 90 jours proposée par les États-Unis"]
+    acteurs:
+      - {nom: "médiateurs extérieurs (États-Unis, Arabie saoudite, Égypte, Émirats, Suisse, ONU, Union africaine, en agrégat)", taille: "macro", espace: "région et monde", vitesse: "semaines", organisation: "geopolitique", facette: "collectif"}
+    niveau: {espace: "région et monde", temps: "cycles d'annonces et d'échecs", vitesse: "semaines", taille: "macro"}
+    traces:
+      - {source: "annonces de trêve et leurs violations (presse, ONU)", statut: "a_brancher"}
+  - id: "soutiens"
+    nom: "Soutiens extérieurs des belligérants"
+    organisation: "geopolitique"
+    elements: ["armes et financements venus de l'étranger (à vérifier source par source)", "or et routes commerciales"]
+    niveau: {espace: "région", temps: "années", vitesse: "mois", taille: "macro"}
+    traces:
+      - {source: "sanctions visant des personnes et entités soudanaises (listes publiques)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:SD"}
+  - id: "humanitaire"
+    nom: "Famine, déplacements et aide"
+    organisation: "societe"
+    elements: ["famine déclarée dans plusieurs zones (à vérifier par l'IPC)", "déplacés et réfugiés", "accès humanitaire", "système d'aide « au bord de l'effondrement » selon l'ONU (septembre 2026)"]
+    acteurs:
+      - {nom: "agences de l'ONU et ONG (en agrégat)", taille: "macro", espace: "pays", vitesse: "semaines", organisation: "statut", facette: "collectif"}
+    niveau: {espace: "pays", temps: "saisons et récoltes", vitesse: "semaines à mois", taille: "macro"}
+    traces:
+      - {source: "prix alimentaires (registre)", statut: "collecte", fichier: "collecte_prix_alimentaires.py"}
+relations:
+  - {de: "armee", vers: "mediation", effet: "-", delai: "semaines", force: "forte", coupure: "épuisement militaire ou pression extérieure forte", statut: "a_verifier", texte: "chaque camp affirme gagner ; l'armée est accusée de faire traîner les pourparlers (Al Jazeera, 21 septembre 2026)"}
+  - {de: "fsr", vers: "mediation", effet: "-", delai: "semaines", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les FSR acceptent des trêves sur le papier (novembre 2025) sans qu'elles tiennent sur le terrain"}
+  - {de: "soutiens", vers: "armee", effet: "+", delai: "mois", force: "moyenne", coupure: "sanctions effectives", statut: "a_verifier", texte: "les soutiens extérieurs prolongent la capacité de combat"}
+  - {de: "soutiens", vers: "fsr", effet: "+", delai: "mois", force: "moyenne", coupure: "sanctions effectives", statut: "a_verifier", texte: "idem"}
+  - {de: "mediation", vers: "humanitaire", effet: "+", delai: "semaines", force: "faible", coupure: "violation de la trêve", statut: "a_verifier", texte: "une trêve ouvre brièvement l'accès humanitaire (Djeddah, mai 2023), puis s'effondre"}
+ponts:
+  - {depuis: "humanitaire", vers: "alimentation-mondiale:prix", nature: "famine et prix alimentaires"}
+  - {depuis: "soutiens", vers: "guerre-levant:mediateurs", nature: "mêmes puissances régionales médiatrices"}
