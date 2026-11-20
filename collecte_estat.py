@@ -60,6 +60,12 @@ def _liste(x):
     return x if isinstance(x, list) else ([x] if x else [])
 
 
+def _sans_code(nom: str) -> str:
+    """e-Stat préfixe souvent le nom par son code (« 0161 生鮮食品を除く総合 ») : on l'enlève."""
+    t = (nom or "").split(" ", 1)
+    return t[1] if len(t) == 2 and t[0].isalnum() and t[0].isascii() else (nom or "")
+
+
 def codes_voulus(meta: dict) -> tuple[dict, dict]:
     """Pour chaque dimension sauf le temps : le code dont le nom est une cible (ou l'unique code). Rend aussi les noms
     des mois (code de temps -> nom)."""
@@ -72,7 +78,7 @@ def codes_voulus(meta: dict) -> tuple[dict, dict]:
         trouve = None
         for noms in CIBLES.values():
             for n in noms:
-                trouve = trouve or next((c["@code"] for c in cl if c["@name"] == n), None)
+                trouve = trouve or next((c["@code"] for c in cl if _sans_code(c["@name"]) == n), None)
         if trouve is None and len(cl) == 1:
             trouve = cl[0]["@code"]
         if trouve is None:
@@ -93,7 +99,8 @@ def collecte(c: httpx.Client, cle: str) -> int:
     for base, tid in TABLEAUX_RETENUS.items():
         meta = c.get(f"{API}/getMetaInfo", params={"appId": cle, "statsDataId": tid}).json()
         time.sleep(1)
-        metas[base] = {o["@id"]: {"nom": o.get("@name"), "codes": [(x["@code"], x["@name"]) for x in _liste(o.get("CLASS"))][:80]}
+        metas[base] = {o["@id"]: {"nom": o.get("@name"), "codes": [(x["@code"], x["@name"]) for x in _liste(o.get("CLASS"))
+                                                                     if o["@id"] != "cat01" or "総合" in x["@name"]][:80]}
                        for o in _liste(meta["GET_META_INFO"]["METADATA_INF"]["CLASS_INF"]["CLASS_OBJ"])}
         try:
             choix, temps = codes_voulus(meta)
