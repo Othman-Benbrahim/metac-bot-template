@@ -29,3 +29,14 @@ Confirmé si P − I < 0 et l'intervalle à 90 % exclut 0 (ensemble des question
 le critère : conflit seul, politique seul, extension UCDP seule, Polymarket et Manifold (descriptif).
 Non confirmé : le motif était propre à l'échantillon d'origine ; on le garde comme observation, rien n'entre dans le bot.
 Confirmé : candidat pour le bot, à vérifier contre sa sortie réelle sur le journal (cadre, point 1.3).
+
+## Résultat (2026-11-20, 19 h 00) : non confirmé
+399 questions jugées (Metaculus, INFER, 2024-2026), 258 ajustées. P − I = +0,0129, intervalle à 90 % [−0,0048 ; +0,0279] :
+la propagation ne fait pas mieux que le témoin (plutôt moins bien). Part de OUI : peu de OUI liés récents 11,3 % (257),
+moyen 14,9 % (141), beaucoup 1 question seulement. Le motif d'origine ne se retrouve pas : sur la période 2024-2026,
+presque aucune question ne suit une vague de OUI liés, et celles qui suivent peu de OUI se résolvent MOINS souvent OUI.
+Conflit seul : +0,0231 [−0,0005 ; +0,0405] ; politique seule : −0,0147 [−0,0332 ; +0,0101] (non tranché) ; extension
+UCDP : +0,0083 ; Polymarket et Manifold (descriptif) : −0,0019 [−0,0142 ; +0,0093].
+Lecture : le motif observé sur 2015-2023 tenait surtout à la période (2021-2022, vague d'événements et questions sur le
+pire) ; il ne se transpose pas. Gardé comme observation ; rien n'entre dans le bot. Fichier :
+`registre/mise-au-point/reseau-propagation.json`.

@@ -1,0 +1,148 @@
+{
+ "critere (jugé, tout)": {
+  "n": 399,
+  "ajustees (b ≠ 0)": 258,
+  "pertes": {
+   "I": 0.3996,
+   "P": 0.4125
+  },
+  "P_moins_I": {
+   "moyenne": 0.0129,
+   "intervalle_90": [
+    -0.0048,
+    0.0279
+   ]
+  },
+  "part_oui_par_b": {
+   "1": [
+    0.113,
+    257
+   ],
+   "0": [
+    0.149,
+    141
+   ],
+   "-1": [
+    1.0,
+    1
+   ]
+  }
+ },
+ "conflit seul": {
+  "n": 291,
+  "ajustees (b ≠ 0)": 187,
+  "pertes": {
+   "I": 0.3996,
+   "P": 0.4228
+  },
+  "P_moins_I": {
+   "moyenne": 0.0231,
+   "intervalle_90": [
+    -0.0005,
+    0.0405
+   ]
+  },
+  "part_oui_par_b": {
+   "1": [
+    0.102,
+    186
+   ],
+   "0": [
+    0.173,
+    104
+   ],
+   "-1": [
+    1.0,
+    1
+   ]
+  }
+ },
+ "politique seul": {
+  "n": 108,
+  "ajustees (b ≠ 0)": 71,
+  "pertes": {
+   "I": 0.3995,
+   "P": 0.3848
+  },
+  "P_moins_I": {
+   "moyenne": -0.0147,
+   "intervalle_90": [
+    -0.0332,
+    0.0101
+   ]
+  },
+  "part_oui_par_b": {
+   "1": [
+    0.141,
+    71
+   ],
+   "0": [
+    0.081,
+    37
+   ],
+   "-1": [
+    0.0,
+    0
+   ]
+  }
+ },
+ "extension UCDP seule": {
+  "n": 47,
+  "ajustees (b ≠ 0)": 6,
+  "pertes": {
+   "I": 0.1978,
+   "P": 0.2062
+  },
+  "P_moins_I": {
+   "moyenne": 0.0083,
+   "intervalle_90": [
+    0.0,
+    0.0212
+   ]
+  },
+  "part_oui_par_b": {
+   "1": [
+    0.0,
+    6
+   ],
+   "0": [
+    0.0,
+    41
+   ],
+   "-1": [
+    0.0,
+    0
+   ]
+  }
+ },
+ "descriptif Polymarket et Manifold": {
+  "n": 547,
+  "ajustees (b ≠ 0)": 375,
+  "pertes": {
+   "I": 0.5518,
+   "P": 0.5499
+  },
+  "P_moins_I": {
+   "moyenne": -0.0019,
+   "intervalle_90": [
+    -0.0142,
+    0.0093
+   ]
+  },
+  "part_oui_par_b": {
+   "1": [
+    0.268,
+    358
+   ],
+   "0": [
+    0.279,
+    172
+   ],
+   "-1": [
+    0.0,
+    17
+   ]
+  }
+ },
+ "note": "perte log, plus bas = mieux ; P − I < 0 : la propagation aide ; b = +1 : peu de oui liés récents"
+}
