@@ -172,3 +172,49 @@ def echeance(t: str, jour: str) -> str | None:
         a = int(jour[:4]) + (1 if MOIS[mo] < int(jour[5:7]) else 0)
         return (date(a + (MOIS[mo] == 12), MOIS[mo] % 12 + 1, 1) - timedelta(days=1)).isoformat()
     return None
+
+
+# ---- 0.10.401 : fourchettes pour les questions numériques de prix (même modèle log-normal sans dérive)
+def quantile_normal(p: float) -> float:
+    """Inverse de la loi normale (Acklam), précision suffisante pour des percentiles."""
+    a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02, 1.383577518672690e+02,
+         -3.066479806614716e+01, 2.506628277459239e+00]
+    b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02, 6.680131188771972e+01,
+         -1.328068155288572e+01]
+    c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00,
+         4.374664141464968e+00, 2.938163982698783e+00]
+    d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00, 3.754408661907416e+00]
+    if p < 0.02425:
+        q = math.sqrt(-2 * math.log(p))
+        return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1)
+    if p > 1 - 0.02425:
+        return -quantile_normal(1 - p)
+    q = p - 0.5
+    r = q * q
+    return (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q / (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1)
+
+
+def quantiles(s0: float, sigma: float, t_ans: float, ps=(0.1, 0.2, 0.4, 0.6, 0.8, 0.9)) -> list[tuple[float, float]]:
+    """Percentiles (p, valeur) du prix à la date, log-normal sans dérive."""
+    e = sigma * math.sqrt(max(t_ans, 1 / 365))
+    return [(p, s0 * math.exp(e * quantile_normal(p))) for p in ps]
+
+
+CLOTURE = re.compile(r"\b(close|closing|settle|settlement|price)\b", re.I)
+FAMILLE_FOURCHETTES = {"CBBTCUSD", "CBETHUSD", "DCOILBRENTEU", "NASDAQCOM", "SP500", "DJIA"}   # calibrées (0.10.401)
+
+
+def fourchette(titre: str, jour: str, fin: str | None) -> dict | None:
+    """Percentiles du prix de clôture pour une question numérique « à combien clôturera l'actif à telle date ? ».
+    None si l'actif n'est pas dans la famille calibrée, si le titre porte un seuil, ou si les prix manquent."""
+    a = actif(titre)
+    if a not in FAMILLE_FOURCHETTES or not CLOTURE.search(titre or "") or not fin or fin <= jour:
+        return None
+    e = etat(a, jour, 30)
+    pts = [j for j, _ in points(a) if j < jour]
+    if not e or not pts or (date.fromisoformat(jour) - date.fromisoformat(pts[-1])).days > FRAICHEUR_JOURS:
+        return None
+    s0, sigma = e
+    t = max(annees(pts[-1], fin), 1 / 365)
+    return {"actif": a, "dernier_prix": s0, "date_prix": pts[-1], "sigma_annuel": round(sigma, 4), "echeance": fin,
+            "percentiles": quantiles(s0, sigma, t)}

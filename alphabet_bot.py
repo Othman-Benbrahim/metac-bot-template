@@ -275,7 +275,28 @@ class AlphabetBot(FallTemplateBot2026):
             finally:
                 question.unit_of_measure = unite
         rp, ex = await self._explorer_autre(question, "numerique", rp, research)
-        return self._journaliser_autre(question, "numerique", rp, ex)
+        # 0.10.401 (décision d'auteur du 2026-11-20, 20 h 04) : fourchettes de prix du modèle log-normal pour les
+        # clôtures d'actifs calibrés (preenregistrements/fourchettes-de-prix.md) ; distribution du bot scellée à côté.
+        extra = {}
+        try:
+            import seuils_prix as spx
+            from forecasting_tools import NumericDistribution, Percentile
+            jour = datetime.now(timezone.utc).date().isoformat()
+            fin = spx.echeance(question.question_text or "", jour)
+            f = spx.fourchette(question.question_text or "", jour, fin)
+            if f is not None:
+                v = rp.prediction_value
+                extra = {"prediction_brute": v.model_dump(mode="json") if hasattr(v, "model_dump") else str(v),
+                         "fourchette_prix": {k: f[k] for k in ("actif", "dernier_prix", "date_prix", "sigma_annuel", "echeance")}}
+                dist = NumericDistribution.from_question([Percentile(percentile=p, value=x) for p, x in f["percentiles"]], question)
+                texte = (f"\n\nPrice-range rule (coded): last known close {f['dernier_prix']:,.2f} on {f['date_prix']}, 30-day "
+                         f"annualised volatility {f['sigma_annuel']:.0%}, horizon to {f['echeance']}; driftless lognormal "
+                         f"percentiles: " + ", ".join(f"P{int(p*100)} {x:,.2f}" for p, x in f["percentiles"]) + ".")
+                rp = ReasonedPrediction(prediction_value=dist, reasoning=(rp.reasoning or "") + texte)
+        except Exception as e:      # la fourchette qui échoue ne bloque rien : on garde celle du bot
+            logger.warning("fourchette de prix : non appliquée (%s)", type(e).__name__)
+            extra = {}
+        return self._journaliser_autre(question, "numerique", rp, ex, extra)
 
     async def _run_forecast_on_multiple_choice(self, question, research):
         rp = await super()._run_forecast_on_multiple_choice(question, research)

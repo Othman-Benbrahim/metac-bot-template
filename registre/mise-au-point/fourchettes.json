@@ -1,0 +1,89 @@
+{
+ "actifs": {
+  "CBBTCUSD": {
+   "7 j": {
+    "n": 462,
+    "couverture_80": 0.755,
+    "couverture_60": 0.619
+   },
+   "14 j": {
+    "n": 462,
+    "couverture_80": 0.76,
+    "couverture_60": 0.591
+   }
+  },
+  "CBETHUSD": {
+   "7 j": {
+    "n": 462,
+    "couverture_80": 0.764,
+    "couverture_60": 0.621
+   },
+   "14 j": {
+    "n": 462,
+    "couverture_80": 0.734,
+    "couverture_60": 0.589
+   }
+  },
+  "DCOILBRENTEU": {
+   "7 j": {
+    "n": 462,
+    "couverture_80": 0.751,
+    "couverture_60": 0.567
+   },
+   "14 j": {
+    "n": 462,
+    "couverture_80": 0.755,
+    "couverture_60": 0.587
+   }
+  },
+  "NASDAQCOM": {
+   "7 j": {
+    "n": 462,
+    "couverture_80": 0.725,
+    "couverture_60": 0.541
+   },
+   "14 j": {
+    "n": 462,
+    "couverture_80": 0.768,
+    "couverture_60": 0.55
+   }
+  },
+  "SP500": {
+   "7 j": {
+    "n": 462,
+    "couverture_80": 0.766,
+    "couverture_60": 0.552
+   },
+   "14 j": {
+    "n": 462,
+    "couverture_80": 0.777,
+    "couverture_60": 0.569
+   }
+  },
+  "DJIA": {
+   "7 j": {
+    "n": 462,
+    "couverture_80": 0.745,
+    "couverture_60": 0.578
+   },
+   "14 j": {
+    "n": 462,
+    "couverture_80": 0.781,
+    "couverture_60": 0.589
+   }
+  }
+ },
+ "ensemble": {
+  "7 j": {
+   "n": 2772,
+   "couverture_80": 0.751,
+   "couverture_60": 0.58
+  },
+  "14 j": {
+   "n": 2772,
+   "couverture_80": 0.763,
+   "couverture_60": 0.579
+  }
+ },
+ "note": "attendu : 0,80 et 0,60 ; plus bas = fourchettes trop étroites ; plus haut = trop larges"
+}

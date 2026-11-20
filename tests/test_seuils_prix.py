@@ -39,3 +39,16 @@ def test_estimer_et_fraicheur(monkeypatch):
 def test_echeance():
     assert sp.echeance("Will Bitcoin reach $110,000 by December 31, 2025?", "2025-03-02") == "2025-12-31"
     assert sp.echeance("Will bitcoin trade below $20,000 before 2023?", "2022-05-24") == "2022-12-31"
+
+
+def test_quantiles_et_fourchette(monkeypatch):
+    import math
+    assert abs(sp.quantile_normal(0.9) - 1.2816) < 1e-3 and abs(sp.quantile_normal(0.1) + 1.2816) < 1e-3
+    q = dict(sp.quantiles(100, 0.5, 14 / 365))
+    assert q[0.1] < 100 < q[0.9] and abs(math.log(q[0.9] / 100) + math.log(q[0.1] / 100)) < 1e-9
+    pts = [(f"2026-10-{d:02d}", 20000 * math.exp(0.01 * ((-1) ** d))) for d in range(1, 32)] + \
+          [(f"2026-11-{d:02d}", 20000 * math.exp(0.01 * ((-1) ** d))) for d in range(1, 18)]
+    monkeypatch.setattr(sp, "series", lambda: {"NASDAQCOM": pts})
+    f = sp.fourchette("What will the Nasdaq Composite (^IXIC) close at on Friday, November 27, 2026?", "2026-11-18", "2026-11-27")
+    assert f and len(f["percentiles"]) == 6
+    assert sp.fourchette("What will Nvidia's (NVDA) closing share price be on Friday, November 27, 2026?", "2026-11-18", "2026-11-27") is None
