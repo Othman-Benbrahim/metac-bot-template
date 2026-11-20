@@ -7,7 +7,9 @@ api.twelvedata.com refuse les robots d'indexation). Partout ailleurs (pages, flu
 reste respecté.
 Conditions de l'offre gratuite (usage personnel et interne) : AUCUN cours brut n'est écrit dans le dépôt public ; les
 cours sont lus à la demande, gardés en mémoire le temps d'un passage, et seuls des chiffres dérivés (dernier prix,
-volatilité) sont scellés. Débit : une requête toutes les 8 s au plus (8 par minute, 800 par jour).
+volatilité) sont scellés. Cours NON ajustés (adjust=none ; le défaut de Twelve Data est « splits ») : les seuils
+des questions sont écrits en prix de l'époque, avant les divisions d'actions (Tesla 2020 et 2022, Nvidia 2021 et 2024,
+Apple 2020, MicroStrategy 2024) ; passage 1 du banc invalide pour cette raison (2026-11-20). Débit : une requête toutes les 8 s au plus (8 par minute, 800 par jour).
 """
 from __future__ import annotations
 
@@ -36,7 +38,7 @@ def cours(symbole: str, debut: str = "2018-01-01") -> tuple[tuple[str, float], .
     try:
         with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=60) as c:
             r = c.get(URL, params={"symbol": symbole, "interval": "1day", "start_date": debut, "outputsize": 5000,
-                                   "order": "ASC", "apikey": cle})
+                                   "order": "ASC", "adjust": "none", "apikey": cle})
         _DERNIER_APPEL[0] = time.monotonic()
         d = r.json()
         if d.get("status") != "ok":

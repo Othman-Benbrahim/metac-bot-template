@@ -9,3 +9,11 @@ l'auteur (19 h 49, option 1) : cours d'actions lus chez Twelve Data avec sa clé
 - Calcul, témoin et critère : identiques au passage d'origine (M − I < 0, intervalle à 90 % excluant 0).
 - Si le critère est atteint : `ACTIONS_DANS_LE_BOT = True` (règle de l'auteur : vérifié à son niveau → introduit).
 - Lancé une fois, dans GitHub (workflow banc_seuils_actions.yaml) ; seul le fichier de résultats est enregistré.
+
+## Passage 1 (2026-11-20, 19 h 54) : invalide, erreur de mesure prouvée
+Run 44796864729 : M − I = +0,2996 [+0,0156 ; +0,6332]. Cause : Twelve Data renvoie par défaut des cours AJUSTÉS des
+divisions d'actions (paramètre `adjust`, défaut `splits`, documentation : https://twelvedata.com/docs/llms/market-data/time-series.md),
+alors que les seuils des questions sont écrits en prix de l'époque. Les pertes se concentrent exactement sur les actions
+divisées pendant la période (Tesla 1,15 ; MicroStrategy 4,61 ; Apple 0,81), pas sur les autres (Nvidia 0,01 sur des
+questions de 2023). Correctif : `adjust=none`. Fichier conservé : `registre/mise-au-point/seuils-prix-actions-passage1-errone.json`.
+Un seul nouveau passage.
