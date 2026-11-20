@@ -1,0 +1,181 @@
+{
+ "candidats": [
+  "CRO@6",
+  "CTR@6",
+  "TRA@6",
+  "SEU@6"
+ ],
+ "contre_candidate": [
+  "CTR@6"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [],
+ "rejets": {
+  "CRO@6": "[contredit] A7 : contre-observation substantielle sur une lecture f",
+  "CTR@6": "[contredit] A7 : contre-observation substantielle sur une lecture f",
+  "TRA@6": "[contredit] A7 : contre-observation substantielle sur une lecture f",
+  "SEU@6": "[contredit] A7 : contre-observation substantielle sur une lecture f"
+ },
+ "etat": "",
+ "disponible_le": "2026-11-20",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "tendance historique du nombre d'entreprises cotées dont la capitalisation boursière dépasse 1 000 milliards USD, périodisation journalière/hebdomadaire/annuelle, 2018-2026",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "exemples documentés (société + date) où une forte croissance économique/sectorielle ou croissance des profits a été l'explication principale pour qu'une société franchisse et conserve > $1T de capitalisation, 2010-2026",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "cas où une poussée de croissance a brièvement porté la capitalisation d'une société au-dessus de $1T puis retombée en dessous dans les mois suivants (courtes incursions > $1T), 2018-2026",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "instances 2015-2026 où des facteurs structurels ou réglementaires (antitrust, limites de flottant, changements comptables, restrictions sur rachats d'actions) ont limité ou réduit la capitalisation proche de $1T",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "analyses distinguant cas où des contraintes (réglementaires, structurelles) ont empêché l'accès ou la pérennisation au-delà de $1T versus cas dominés par facteurs de marché, 2010-2026",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "exemples où, malgré des contraintes réglementaires ou structurelles notables, des sociétés ont néanmoins dépassé et maintenu une capitalisation > $1T (preuves 2010-2026)",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "TRA@6"
+   ],
+   "requete": "cas où des événements de transformation d'entreprise (IPO majeure, introduction d'un produit/plateforme, acquisition transformante, scission) ont entraîné des sauts de capitalisation conduisant à > $1T, 2010-2026",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "TRA@6"
+   ],
+   "requete": "comparaison d'exemples montrant si l'entrée dans le club des > $1T provient principalement d'une transformation d'entreprise (IPO/M&A/plateforme) ou d'une croissance organique du marché, 2010-2026",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "TRA@6"
+   ],
+   "requete": "exemples où des transformations d'entreprise significatives n'ont pas abouti à une capitalisation soutenue > $1T (2010-2026)",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "requete": "preuves empiriques distinguant situations où la croissance de marché a permis de franchir $1T de celles où des contraintes ont empêché ce franchissement (cas comparés, 2018-2026)",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "TRA@6"
+   ],
+   "requete": "comparaison d'incidents où la cause principale d'un franchissement de $1T était la croissance organique sectorielle versus une transformation d'entreprise (IPO/M&A), 2010-2026",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "TRA@6"
+   ],
+   "requete": "preuves montrant si les transformations d'entreprise peuvent contourner ou amplifier les contraintes structurelles en vue d'atteindre > $1T, ou si les contraintes neutralisent l'effet des transformations (2010-2026)",
+   "executee": true,
+   "date_execution": "2026-11-20"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 persiste",
+   "semantique": "presence",
+   "temporalite": "generique",
+   "resolution": "La réponse sera YES exactement si et seulement si le snapshot CompaniesMarketCap daté du 2026-12-18 (après clôture US 16:00 ET) montre exactement 14 entreprises cotées avec capitalisation en USD > 1 000 000 000 000 ; sinon ce sera NO.",
+   "source_resolution": {
+    "emetteur": "CompaniesMarketCap",
+    "document": "snapshot du site CompaniesMarketCap (page listant les entreprises par market cap) daté 2026-12-18",
+    "regle_ambiguite": "utiliser la capitalisation en USD rapportée après la clôture des marchés américains (16:00 ET) le 2026-12-18 ; si CompaniesMarketCap n'a pas de snapshot pour cette date, appliquer la règle de la classe_de_reference : prendre le snapshot de bourse le plus proche dans la fenêtre 2026-11-20—2026-12-19."
+   },
+   "vue_exterieure": {
+    "frequence": 0.45,
+    "classe_de_reference": "nombre d'entreprises cotées, telles que listées par CompaniesMarketCap, dont la capitalisation boursière rapportée en USD dépasse 1 000 milliards (1 trillion) à une date donnée",
+    "source": "synthèse web fondée sur [R1],[R2],[R3] (compilations publiques : Kilocorn / itrillion / Wikipédia et articles de synthèse cités dans R1–R3)",
+    "periode": "2026-11-20 — 2026-12-19",
+    "disponible_le": "2026-11-20",
+    "classe_alternative": null,
+    "motif_sans_alternative": "La classe de référence exige explicitement le snapshot CompaniesMarketCap du 2026-12-18 ; il n'existe pas d'autre registre public unique et aussi directement comparable et daté (autoritatif) disponible dans les sources consultées au 2026-11-20, donc je n'ai pas de classe alternative d'égale qualité.",
+    "ecart_critere": "la classe_de_reference exige le comptage sur CompaniesMarketCap (snapshot daté). Les sources utilisées sont des compilations secondaires et parfois incohérentes (ex. inclusion possible d'entités non cotées ou d'IPO/erreurs de date) — écart : approximation fondée sur compilations, pas inspection du snapshot CompaniesMarketCap lui‑même."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "CRO@6",
+   "vers": "cible",
+   "extrait": "Based on the search results, here are the key documented examples where strong economic/sectorial growth or profit growth was the primary explanation for companies crossing and maintaining >$1T market capitalization:",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "TRA@6",
+   "vers": "cible",
+   "extrait": "**Accélération récente** : L'année 2026 a vu une accélération particulière avec l'entrée de 5 nouvelles entreprises, notamment dans le secteur des semi-conducteurs [4](https://www.marketscreener.com/news/right-on-the-trillion-mark-ce7f5ad2de89f220#:~:text=Romain%20Fournier%20Published%20on%2005%2F27%2F2026,a%20...%20%2C%20...%20strongest).",
+   "source": "https://www.marketscreener.com/news/right-on-the-trillion-mark-ce7f5ad2de89f220#:~:text=Romain%20Fournier%20Published%20on%2005%2F27%2F2026,a%20...%20%2C%20...%20strongest"
+  },
+  {
+   "instruction": "lien",
+   "de": "CTR@6",
+   "vers": "cible",
+   "extrait": "**Concentration géographique** : Sur les 19 entreprises du club du trillion, **10 sont américaines**, 2 sont coréennes (Samsung, SK Hynix), 1 taïwanaise (TSMC), 1 saoudienne (Saudi Aramco), et 1 chinoise (PetroChina) [1](https://fr.wikipedia.org/wiki/Liste_des_entreprises_par_capitalisation_boursi%C3%A8re#:~:text=Voici%20une%20liste%20des%20soci%C3%A9t%C3%A9s,500%20milliards%20de%20dollars%20%5B33%5D.)[6](https://en.wikipedia.org/wiki/List_of_public_corporations_by_market_capitalization#:~:text=List%20of%20public%20corporations%20by,only%20one%20class%20is%20considered.).",
+   "source": "https://fr.wikipedia.org/wiki/Liste_des_entreprises_par_capitalisation_boursi%C3%A8re#:~:text=Voici%20une%20liste%20des%20soci%C3%A9t%C3%A9s,500%20milliards%20de%20dollars%20%5B33%5D."
+  }
+ ]
+}
