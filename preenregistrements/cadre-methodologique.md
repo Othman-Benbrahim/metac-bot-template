@@ -29,3 +29,9 @@ Origine :
 
 ## 3. Suite
 Travail écosystémique sur les facteurs causaux multiples, dans les deux cadres ci-dessus.
+
+## 4. Sources : décisions de l'auteur du 2026-11-20 (21 h 10)
+- Les prévisions d'experts (consensus des analystes, prévisions publiées par les entreprises ou les institutions) sont
+  permises en entrée. Restent interdites : les cotes des marchés de prédiction et les prévisions de foule.
+- EDGAR (SEC) : adresse de contact gardée en secret (SEC_CONTACT_EMAIL), jamais écrite dans le dépôt.
+- e-Stat (statistiques officielles du Japon) : clé gratuite, gardée en secret (ESTAT_APP_ID).
