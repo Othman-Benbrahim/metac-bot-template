@@ -1,0 +1,183 @@
+{
+ "questions_occurrence": 14256,
+ "groupes": {
+  "tout": {
+   "n": 14256,
+   "pertes": {
+    "A semblables (base)": 0.6285,
+    "B brique comme base": 0.6372,
+    "C adjuvant (écart brique − taux de base)": 0.6333,
+    "D adjuvant « chef » seulement": 0.6313,
+    "E adjuvant par acteur": 0.6354,
+    "F mélange fixe 80/20": 0.6251,
+    "G écart appris, semblables non recalibrés": 0.6309,
+    "H mélange fixe 90/10": 0.6265,
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": 0.6245
+   },
+   "ecart_contre_A_intervalle_90": {
+    "C adjuvant (écart brique − taux de base)": [
+     0.0029,
+     0.0066
+    ],
+    "D adjuvant « chef » seulement": [
+     0.0006,
+     0.005
+    ],
+    "E adjuvant par acteur": [
+     0.0045,
+     0.0094
+    ],
+    "F mélange fixe 80/20": [
+     -0.0042,
+     -0.0027
+    ],
+    "G écart appris, semblables non recalibrés": [
+     0.0018,
+     0.0029
+    ],
+    "H mélange fixe 90/10": [
+     -0.0024,
+     -0.0016
+    ],
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": [
+     -0.0049,
+     -0.0031
+    ]
+   }
+  },
+  "metaculus_gjopen_cset (2015-2024)": {
+   "n": 2437,
+   "pertes": {
+    "A semblables (base)": 0.6016,
+    "B brique comme base": 0.6071,
+    "C adjuvant (écart brique − taux de base)": 0.615,
+    "D adjuvant « chef » seulement": 0.6118,
+    "E adjuvant par acteur": 0.6179,
+    "F mélange fixe 80/20": 0.5988,
+    "G écart appris, semblables non recalibrés": 0.6055,
+    "H mélange fixe 90/10": 0.5999,
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": 0.5979
+   },
+   "ecart_contre_A_intervalle_90": {
+    "C adjuvant (écart brique − taux de base)": [
+     0.0079,
+     0.0185
+    ],
+    "D adjuvant « chef » seulement": [
+     0.0049,
+     0.0153
+    ],
+    "E adjuvant par acteur": [
+     0.0102,
+     0.0223
+    ],
+    "F mélange fixe 80/20": [
+     -0.0042,
+     -0.0013
+    ],
+    "G écart appris, semblables non recalibrés": [
+     0.0015,
+     0.0064
+    ],
+    "H mélange fixe 90/10": [
+     -0.0024,
+     -0.0009
+    ],
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": [
+     -0.0049,
+     -0.0026
+    ]
+   }
+  },
+  "manifold (2015-2024)": {
+   "n": 9692,
+   "pertes": {
+    "A semblables (base)": 0.6681,
+    "B brique comme base": 0.6692,
+    "C adjuvant (écart brique − taux de base)": 0.67,
+    "D adjuvant « chef » seulement": 0.6674,
+    "E adjuvant par acteur": 0.6697,
+    "F mélange fixe 80/20": 0.6633,
+    "G écart appris, semblables non recalibrés": 0.669,
+    "H mélange fixe 90/10": 0.6654,
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": 0.6645
+   },
+   "ecart_contre_A_intervalle_90": {
+    "C adjuvant (écart brique − taux de base)": [
+     -0.0003,
+     0.0041
+    ],
+    "D adjuvant « chef » seulement": [
+     -0.003,
+     0.0014
+    ],
+    "E adjuvant par acteur": [
+     -0.0008,
+     0.0039
+    ],
+    "F mélange fixe 80/20": [
+     -0.0056,
+     -0.0039
+    ],
+    "G écart appris, semblables non recalibrés": [
+     0.0005,
+     0.0011
+    ],
+    "H mélange fixe 90/10": [
+     -0.0031,
+     -0.0023
+    ],
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": [
+     -0.0043,
+     -0.0029
+    ]
+   }
+  },
+  "registre ForecastBench (2024-2026)": {
+   "n": 2127,
+   "pertes": {
+    "A semblables (base)": 0.4789,
+    "B brique comme base": 0.5262,
+    "C adjuvant (écart brique − taux de base)": 0.4869,
+    "D adjuvant « chef » seulement": 0.4889,
+    "E adjuvant par acteur": 0.4991,
+    "F mélange fixe 80/20": 0.4811,
+    "G écart appris, semblables non recalibrés": 0.4864,
+    "H mélange fixe 90/10": 0.4796,
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": 0.4726
+   },
+   "ecart_contre_A_intervalle_90": {
+    "C adjuvant (écart brique − taux de base)": [
+     0.0031,
+     0.013
+    ],
+    "D adjuvant « chef » seulement": [
+     0.0024,
+     0.0193
+    ],
+    "E adjuvant par acteur": [
+     0.0103,
+     0.0312
+    ],
+    "F mélange fixe 80/20": [
+     -0.0009,
+     0.0051
+    ],
+    "G écart appris, semblables non recalibrés": [
+     0.0051,
+     0.0099
+    ],
+    "H mélange fixe 90/10": [
+     -0.0008,
+     0.0022
+    ],
+    "I témoin : mélange 80/20 avec le taux de base au lieu de la brique": [
+     -0.011,
+     -0.0012
+    ]
+   }
+  }
+ },
+ "coefficient_G_dernier": -0.04,
+ "note": "mise au point, pas un verdict ; perte log, plus bas = mieux ; intervalles bilatéraux à 90 %, sans correction"
+}
