@@ -1,0 +1,317 @@
+{
+ "ensemble": {
+  "7 j": {
+   "n": 12675,
+   "couverture_80": 0.826,
+   "couverture_60": 0.665
+  },
+  "14 j": {
+   "n": 12675,
+   "couverture_80": 0.767,
+   "couverture_60": 0.585
+  }
+ },
+ "pays": {
+  "Afghanistan": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.759,
+    "couverture_60": 0.56
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.686,
+    "couverture_60": 0.467
+   }
+  },
+  "Burkina Faso": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.826,
+    "couverture_60": 0.659
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.757,
+    "couverture_60": 0.598
+   }
+  },
+  "Cameroon": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.817,
+    "couverture_60": 0.617
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.795,
+    "couverture_60": 0.602
+   }
+  },
+  "Colombia": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.826,
+    "couverture_60": 0.619
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.744,
+    "couverture_60": 0.533
+   }
+  },
+  "DR Congo": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.801,
+    "couverture_60": 0.617
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.736,
+    "couverture_60": 0.562
+   }
+  },
+  "Ethiopia": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.844,
+    "couverture_60": 0.714
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.789,
+    "couverture_60": 0.602
+   }
+  },
+  "Haiti": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.905,
+    "couverture_60": 0.821
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.864,
+    "couverture_60": 0.738
+   }
+  },
+  "India": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.771,
+    "couverture_60": 0.604
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.748,
+    "couverture_60": 0.535
+   }
+  },
+  "Iraq": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.781,
+    "couverture_60": 0.588
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.712,
+    "couverture_60": 0.519
+   }
+  },
+  "Israel": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.85,
+    "couverture_60": 0.755
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.787,
+    "couverture_60": 0.698
+   }
+  },
+  "Kenya": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.901,
+    "couverture_60": 0.819
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.813,
+    "couverture_60": 0.667
+   }
+  },
+  "Mali": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.817,
+    "couverture_60": 0.617
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.757,
+    "couverture_60": 0.54
+   }
+  },
+  "Mexico": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.803,
+    "couverture_60": 0.627
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.763,
+    "couverture_60": 0.57
+   }
+  },
+  "Mozambique": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.836,
+    "couverture_60": 0.694
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.777,
+    "couverture_60": 0.615
+   }
+  },
+  "Myanmar": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.848,
+    "couverture_60": 0.688
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.779,
+    "couverture_60": 0.574
+   }
+  },
+  "Niger": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.909,
+    "couverture_60": 0.781
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.832,
+    "couverture_60": 0.651
+   }
+  },
+  "Nigeria": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.795,
+    "couverture_60": 0.629
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.769,
+    "couverture_60": 0.58
+   }
+  },
+  "Pakistan": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.846,
+    "couverture_60": 0.635
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.769,
+    "couverture_60": 0.588
+   }
+  },
+  "Philippines": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.84,
+    "couverture_60": 0.661
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.775,
+    "couverture_60": 0.578
+   }
+  },
+  "Somalia": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.803,
+    "couverture_60": 0.625
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.767,
+    "couverture_60": 0.578
+   }
+  },
+  "South Sudan": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.882,
+    "couverture_60": 0.781
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.822,
+    "couverture_60": 0.637
+   }
+  },
+  "Sudan": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.864,
+    "couverture_60": 0.726
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.803,
+    "couverture_60": 0.607
+   }
+  },
+  "Syria": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.753,
+    "couverture_60": 0.574
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.665,
+    "couverture_60": 0.487
+   }
+  },
+  "Ukraine": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.795,
+    "couverture_60": 0.621
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.738,
+    "couverture_60": 0.54
+   }
+  },
+  "Yemen": {
+   "7 j": {
+    "n": 507,
+    "couverture_80": 0.777,
+    "couverture_60": 0.59
+   },
+   "14 j": {
+    "n": 507,
+    "couverture_80": 0.722,
+    "couverture_60": 0.552
+   }
+  }
+ },
+ "note": "attendu 0,80 et 0,60 ; plus bas = trop étroit ; plus haut = trop large"
+}
