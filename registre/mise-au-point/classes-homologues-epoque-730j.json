@@ -1,0 +1,143 @@
+{
+ "fenetre_epoque_jours": 730,
+ "questions_occurrence": 14256,
+ "dans_une_classe": 3185,
+ "jugees (classe de 30 passées ou plus)": 1134,
+ "groupes": {
+  "registre ForecastBench 2024-2026 (le monde des fiches)": {
+   "n": 495,
+   "questions_distinctes": 235,
+   "pertes": {
+    "A semblables": 0.4855,
+    "I témoin moyenne générale": 0.4852,
+    "J classe homologue": 0.4858
+   },
+   "J_moins_I": {
+    "moyenne": 0.0005,
+    "intervalle_90": [
+     -0.0083,
+     0.0094
+    ]
+   }
+  },
+  "Metaculus, GJOpen, CSET 2015-2024": {
+   "n": 143,
+   "questions_distinctes": 143,
+   "pertes": {
+    "A semblables": 0.5033,
+    "I témoin moyenne générale": 0.4992,
+    "J classe homologue": 0.4874
+   },
+   "J_moins_I": {
+    "moyenne": -0.0118,
+    "intervalle_90": [
+     -0.0203,
+     -0.0035
+    ]
+   }
+  },
+  "Manifold 2015-2024": {
+   "n": 496,
+   "questions_distinctes": 496,
+   "pertes": {
+    "A semblables": 0.624,
+    "I témoin moyenne générale": 0.6224,
+    "J classe homologue": 0.6215
+   },
+   "J_moins_I": {
+    "moyenne": -0.0009,
+    "intervalle_90": [
+     -0.0055,
+     0.0038
+    ]
+   }
+  },
+  "tout": {
+   "n": 1134,
+   "questions_distinctes": 874,
+   "pertes": {
+    "A semblables": 0.5483,
+    "I témoin moyenne générale": 0.547,
+    "J classe homologue": 0.5454
+   },
+   "J_moins_I": {
+    "moyenne": -0.0016,
+    "intervalle_90": [
+     -0.006,
+     0.0028
+    ]
+   }
+  }
+ },
+ "par_classe_hors_manifold": {
+  "sciences-techniques|economie|large": {
+   "n": 119,
+   "J_moins_I": 0.015
+  },
+  "russie-ukraine|statut|large": {
+   "n": 86,
+   "J_moins_I": -0.0036
+  },
+  "sciences-techniques|economie|a_sa_mesure": {
+   "n": 81,
+   "J_moins_I": -0.0
+  },
+  "politique-americaine|personne|large": {
+   "n": 68,
+   "J_moins_I": -0.017
+  },
+  "rivalite-sino-americaine|statut|large": {
+   "n": 67,
+   "J_moins_I": -0.014
+  },
+  "politique-americaine|statut|courte": {
+   "n": 41,
+   "J_moins_I": 0.0191
+  },
+  "sciences-techniques|economie|courte": {
+   "n": 35,
+   "J_moins_I": 0.026
+  },
+  "guerre-levant|geopolitique|large": {
+   "n": 31,
+   "J_moins_I": -0.0227
+  },
+  "epidemies|statut|courte": {
+   "n": 28,
+   "J_moins_I": -0.0491
+  },
+  "russie-ukraine|statut|a_sa_mesure": {
+   "n": 21,
+   "J_moins_I": -0.0098
+  },
+  "politique-americaine|statut|a_sa_mesure": {
+   "n": 20,
+   "J_moins_I": 0.0147
+  },
+  "iran-nucleaire|geopolitique|a_sa_mesure": {
+   "n": 18,
+   "J_moins_I": -0.027
+  },
+  "politique-americaine|statut|large": {
+   "n": 9,
+   "J_moins_I": 0.028
+  },
+  "epidemies|microbiologique|large": {
+   "n": 6,
+   "J_moins_I": -0.0272
+  },
+  "russie-ukraine|statut|courte": {
+   "n": 5,
+   "J_moins_I": -0.0038
+  },
+  "russie-ukraine|personne|large": {
+   "n": 2,
+   "J_moins_I": 0.0136
+  },
+  "securite-europeenne|statut|large": {
+   "n": 1,
+   "J_moins_I": -0.1095
+  }
+ },
+ "note": "mise au point, pas un verdict ; perte log, plus bas = mieux ; J − I < 0 : la classe homologue aide plus que la moyenne"
+}

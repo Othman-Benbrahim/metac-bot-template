@@ -28,7 +28,12 @@ import classes_homologues as ch
 import fenetre_variantes as fv
 
 SORTIE = Path("registre") / "mise-au-point" / "classes-homologues.json"
+if len(sys.argv) > 1:
+    SORTIE = Path("registre") / "mise-au-point" / f"classes-homologues-epoque-{sys.argv[1]}j.json"
 MIN_N, M, POIDS = 30, 5.0, 0.2
+# 0.10.386 (accord de l'auteur, 2026-11-20, 12 h 48) : axe du temps — la classe ne garde que les questions passées de la
+# même époque du système, résolues dans les FENETRE_EPOQUE jours avant la date jugée (None : tout le passé)
+FENETRE_EPOQUE = int(sys.argv[1]) if len(sys.argv) > 1 else None
 
 
 def lg(p):
@@ -56,6 +61,9 @@ def principal() -> int:
         if not x["classe"]:
             continue
         ok = (fin < x["jeu"]) & (ids != ids[i]) & (cl == x["classe"])
+        if FENETRE_EPOQUE:
+            from datetime import date, timedelta
+            ok &= fin >= (date.fromisoformat(x["jeu"]) - timedelta(days=FENETRE_EPOQUE)).isoformat()
         if ok.sum() < MIN_N:
             continue
         r = (y[ok].sum() + M * x["p_R1"]) / (ok.sum() + M)
@@ -68,7 +76,7 @@ def principal() -> int:
                "Metaculus, GJOpen, CSET 2015-2024": [x for x in cibles if x["source"] in ("fr_metaculus", "fr_gjopen", "fr_cset")],
                "Manifold 2015-2024": [x for x in cibles if x["source"] == "fr_manifold"],
                "tout": cibles}
-    r = {"questions_occurrence": len(occ), "dans_une_classe": sum(1 for x in occ if x["classe"]),
+    r = {"fenetre_epoque_jours": FENETRE_EPOQUE, "questions_occurrence": len(occ), "dans_une_classe": sum(1 for x in occ if x["classe"]),
          "jugees (classe de 30 passées ou plus)": len(cibles), "groupes": {}}
     for g, s in groupes.items():
         if not s:
