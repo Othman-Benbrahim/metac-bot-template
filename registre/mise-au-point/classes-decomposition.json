@@ -1,188 +1,188 @@
 {
- "ensemble_fixe": 1134,
+ "ensemble_fixe": 1111,
  "groupes": {
   "Metaculus, GJOpen, CSET 2015-2024": {
-   "n": 143,
-   "questions_distinctes": 143,
+   "n": 153,
+   "questions_distinctes": 153,
    "variante_moins_I": {
     "écosystème seul": {
-     "moyenne": -0.0008,
+     "moyenne": 0.0139,
      "intervalle_90": [
-      -0.0086,
-      0.0064
+      0.0082,
+      0.0193
      ]
     },
     "nature seule": {
-     "moyenne": 0.0037,
+     "moyenne": 0.0108,
      "intervalle_90": [
-      -0.0043,
-      0.0108
+      0.0052,
+      0.0164
      ]
     },
     "rapport seul": {
-     "moyenne": 0.0065,
+     "moyenne": 0.0133,
      "intervalle_90": [
-      0.0014,
-      0.0116
+      0.0086,
+      0.0178
      ]
     },
     "époque seule (taux récent, sans structure)": {
-     "moyenne": 0.009,
+     "moyenne": 0.0133,
      "intervalle_90": [
-      0.0029,
-      0.0148
+      0.0082,
+      0.0183
      ]
     },
     "écosystème + nature": {
-     "moyenne": -0.0013,
+     "moyenne": 0.0117,
      "intervalle_90": [
-      -0.009,
-      0.006
+      0.0063,
+      0.0169
      ]
     },
     "écosystème + rapport": {
-     "moyenne": -0.0089,
+     "moyenne": 0.0066,
      "intervalle_90": [
-      -0.017,
-      -0.0009
+      0.0005,
+      0.0127
      ]
     },
     "nature + rapport": {
-     "moyenne": 0.001,
+     "moyenne": 0.0104,
      "intervalle_90": [
-      -0.0057,
-      0.0073
+      0.0051,
+      0.0155
      ]
     },
     "classe complète": {
-     "moyenne": -0.0118,
+     "moyenne": 0.0043,
      "intervalle_90": [
-      -0.0203,
-      -0.0035
+      -0.0019,
+      0.0107
      ]
     }
    }
   },
   "ForecastBench 2024-2026": {
-   "n": 495,
-   "questions_distinctes": 235,
+   "n": 489,
+   "questions_distinctes": 234,
    "variante_moins_I": {
     "écosystème seul": {
-     "moyenne": 0.0012,
+     "moyenne": 0.0006,
      "intervalle_90": [
-      -0.0083,
-      0.0103
+      -0.009,
+      0.0095
      ]
     },
     "nature seule": {
-     "moyenne": 0.0033,
+     "moyenne": 0.0026,
      "intervalle_90": [
-      -0.0073,
-      0.0133
+      -0.0078,
+      0.0124
      ]
     },
     "rapport seul": {
-     "moyenne": 0.0019,
+     "moyenne": 0.0017,
      "intervalle_90": [
-      -0.006,
-      0.0091
+      -0.0056,
+      0.0089
      ]
     },
     "époque seule (taux récent, sans structure)": {
-     "moyenne": 0.0034,
+     "moyenne": 0.0035,
      "intervalle_90": [
-      -0.005,
-      0.0111
+      -0.0047,
+      0.0113
      ]
     },
     "écosystème + nature": {
-     "moyenne": 0.0003,
+     "moyenne": -0.0004,
      "intervalle_90": [
-      -0.0099,
-      0.0101
+      -0.0103,
+      0.009
      ]
     },
     "écosystème + rapport": {
-     "moyenne": 0.0013,
+     "moyenne": 0.0001,
      "intervalle_90": [
-      -0.0072,
-      0.0097
+      -0.0082,
+      0.0078
      ]
     },
     "nature + rapport": {
-     "moyenne": 0.0021,
+     "moyenne": 0.0007,
      "intervalle_90": [
-      -0.0066,
-      0.0107
+      -0.0078,
+      0.0091
      ]
     },
     "classe complète": {
-     "moyenne": 0.0005,
+     "moyenne": -0.0007,
      "intervalle_90": [
-      -0.0083,
-      0.0094
+      -0.0092,
+      0.0078
      ]
     }
    }
   },
   "Manifold 2015-2024": {
-   "n": 496,
-   "questions_distinctes": 496,
+   "n": 469,
+   "questions_distinctes": 469,
    "variante_moins_I": {
     "écosystème seul": {
-     "moyenne": 0.0004,
+     "moyenne": -0.0005,
      "intervalle_90": [
-      -0.0033,
-      0.0041
+      -0.0039,
+      0.0029
      ]
     },
     "nature seule": {
-     "moyenne": 0.0002,
+     "moyenne": -0.0005,
      "intervalle_90": [
-      -0.0037,
-      0.004
+      -0.004,
+      0.0029
      ]
     },
     "rapport seul": {
-     "moyenne": -0.0021,
+     "moyenne": -0.0025,
      "intervalle_90": [
-      -0.0047,
-      0.0007
+      -0.0052,
+      0.0004
      ]
     },
     "époque seule (taux récent, sans structure)": {
-     "moyenne": -0.0013,
+     "moyenne": -0.0017,
      "intervalle_90": [
-      -0.0042,
-      0.0017
+      -0.0047,
+      0.0014
      ]
     },
     "écosystème + nature": {
-     "moyenne": 0.0002,
+     "moyenne": -0.0009,
      "intervalle_90": [
-      -0.0035,
-      0.004
+      -0.0044,
+      0.0027
      ]
     },
     "écosystème + rapport": {
-     "moyenne": 0.0004,
+     "moyenne": -0.0009,
      "intervalle_90": [
-      -0.0038,
-      0.0046
+      -0.005,
+      0.0033
      ]
     },
     "nature + rapport": {
-     "moyenne": 0.0001,
+     "moyenne": -0.0002,
      "intervalle_90": [
-      -0.0035,
-      0.0039
+      -0.0037,
+      0.0031
      ]
     },
     "classe complète": {
-     "moyenne": -0.0009,
+     "moyenne": -0.0026,
      "intervalle_90": [
-      -0.0055,
-      0.0038
+      -0.0072,
+      0.0021
      ]
     }
    }
@@ -215,15 +215,15 @@
   },
   "epidemies": {
    "a_sa_mesure": {
-    "n": 69,
-    "part_oui": 0.246
+    "n": 27,
+    "part_oui": 0.407
    },
    "courte": {
-    "n": 59,
-    "part_oui": 0.119
+    "n": 10,
+    "part_oui": 0.2
    },
    "large": {
-    "n": 78,
+    "n": 63,
     "part_oui": 0.333
    }
   },
@@ -263,16 +263,16 @@
   },
   "politique-americaine": {
    "a_sa_mesure": {
-    "n": 155,
-    "part_oui": 0.31
+    "n": 158,
+    "part_oui": 0.304
    },
    "courte": {
-    "n": 106,
-    "part_oui": 0.387
+    "n": 140,
+    "part_oui": 0.307
    },
    "large": {
-    "n": 201,
-    "part_oui": 0.368
+    "n": 206,
+    "part_oui": 0.383
    }
   },
   "rivalite-sino-americaine": {
@@ -299,22 +299,22 @@
     "part_oui": 0.269
    },
    "large": {
-    "n": 240,
-    "part_oui": 0.117
+    "n": 241,
+    "part_oui": 0.12
    }
   },
   "sciences-techniques": {
    "a_sa_mesure": {
-    "n": 98,
-    "part_oui": 0.204
+    "n": 91,
+    "part_oui": 0.176
    },
    "courte": {
-    "n": 54,
-    "part_oui": 0.185
+    "n": 62,
+    "part_oui": 0.194
    },
    "large": {
-    "n": 134,
-    "part_oui": 0.164
+    "n": 125,
+    "part_oui": 0.128
    }
   },
   "securite-europeenne": {

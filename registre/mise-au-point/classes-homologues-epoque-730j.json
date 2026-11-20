@@ -1,118 +1,114 @@
 {
  "fenetre_epoque_jours": 730,
  "questions_occurrence": 14256,
- "dans_une_classe": 3185,
- "jugees (classe de 30 passées ou plus)": 1134,
+ "dans_une_classe": 3048,
+ "jugees (classe de 30 passées ou plus)": 1111,
  "groupes": {
   "registre ForecastBench 2024-2026 (le monde des fiches)": {
-   "n": 495,
-   "questions_distinctes": 235,
+   "n": 489,
+   "questions_distinctes": 234,
    "pertes": {
-    "A semblables": 0.4855,
-    "I témoin moyenne générale": 0.4852,
-    "J classe homologue": 0.4858
+    "A semblables": 0.4776,
+    "I témoin moyenne générale": 0.4764,
+    "J classe homologue": 0.4758
    },
    "J_moins_I": {
-    "moyenne": 0.0005,
+    "moyenne": -0.0007,
     "intervalle_90": [
-     -0.0083,
-     0.0094
+     -0.0092,
+     0.0078
     ]
    }
   },
   "Metaculus, GJOpen, CSET 2015-2024": {
-   "n": 143,
-   "questions_distinctes": 143,
+   "n": 153,
+   "questions_distinctes": 153,
    "pertes": {
-    "A semblables": 0.5033,
-    "I témoin moyenne générale": 0.4992,
-    "J classe homologue": 0.4874
+    "A semblables": 0.4838,
+    "I témoin moyenne générale": 0.4771,
+    "J classe homologue": 0.4814
    },
    "J_moins_I": {
-    "moyenne": -0.0118,
+    "moyenne": 0.0043,
     "intervalle_90": [
-     -0.0203,
-     -0.0035
+     -0.0019,
+     0.0107
     ]
    }
   },
   "Manifold 2015-2024": {
-   "n": 496,
-   "questions_distinctes": 496,
+   "n": 469,
+   "questions_distinctes": 469,
    "pertes": {
-    "A semblables": 0.624,
-    "I témoin moyenne générale": 0.6224,
-    "J classe homologue": 0.6215
+    "A semblables": 0.6189,
+    "I témoin moyenne générale": 0.6176,
+    "J classe homologue": 0.6151
    },
    "J_moins_I": {
-    "moyenne": -0.0009,
+    "moyenne": -0.0026,
     "intervalle_90": [
-     -0.0055,
-     0.0038
+     -0.0072,
+     0.0021
     ]
    }
   },
   "tout": {
-   "n": 1134,
-   "questions_distinctes": 874,
+   "n": 1111,
+   "questions_distinctes": 856,
    "pertes": {
-    "A semblables": 0.5483,
-    "I témoin moyenne générale": 0.547,
-    "J classe homologue": 0.5454
+    "A semblables": 0.5381,
+    "I témoin moyenne générale": 0.5361,
+    "J classe homologue": 0.5353
    },
    "J_moins_I": {
-    "moyenne": -0.0016,
+    "moyenne": -0.0008,
     "intervalle_90": [
-     -0.006,
-     0.0028
+     -0.0053,
+     0.0032
     ]
    }
   }
  },
  "par_classe_hors_manifold": {
   "sciences-techniques|economie|large": {
-   "n": 119,
-   "J_moins_I": 0.015
+   "n": 110,
+   "J_moins_I": 0.0161
   },
   "russie-ukraine|statut|large": {
    "n": 86,
    "J_moins_I": -0.0036
   },
   "sciences-techniques|economie|a_sa_mesure": {
-   "n": 81,
-   "J_moins_I": -0.0
+   "n": 79,
+   "J_moins_I": -0.004
+  },
+  "politique-americaine|statut|courte": {
+   "n": 76,
+   "J_moins_I": 0.0198
   },
   "politique-americaine|personne|large": {
    "n": 68,
-   "J_moins_I": -0.017
+   "J_moins_I": -0.0172
   },
   "rivalite-sino-americaine|statut|large": {
    "n": 67,
    "J_moins_I": -0.014
   },
-  "politique-americaine|statut|courte": {
-   "n": 41,
-   "J_moins_I": 0.0191
-  },
   "sciences-techniques|economie|courte": {
-   "n": 35,
-   "J_moins_I": 0.026
+   "n": 41,
+   "J_moins_I": 0.0209
   },
   "guerre-levant|geopolitique|large": {
    "n": 31,
    "J_moins_I": -0.0227
-  },
-  "epidemies|statut|courte": {
-   "n": 28,
-   "J_moins_I": -0.0491
   },
   "russie-ukraine|statut|a_sa_mesure": {
    "n": 21,
    "J_moins_I": -0.0098
   },
   "politique-americaine|statut|a_sa_mesure": {
-   "n": 20,
-   "J_moins_I": 0.0147
+   "n": 21,
+   "J_moins_I": 0.014
   },
   "iran-nucleaire|geopolitique|a_sa_mesure": {
    "n": 18,
@@ -120,7 +116,7 @@
   },
   "politique-americaine|statut|large": {
    "n": 9,
-   "J_moins_I": 0.028
+   "J_moins_I": 0.0288
   },
   "epidemies|microbiologique|large": {
    "n": 6,
@@ -137,6 +133,10 @@
   "securite-europeenne|statut|large": {
    "n": 1,
    "J_moins_I": -0.1095
+  },
+  "politique-americaine|personne|a_sa_mesure": {
+   "n": 1,
+   "J_moins_I": 0.0329
   }
  },
  "note": "mise au point, pas un verdict ; perte log, plus bas = mieux ; J − I < 0 : la classe homologue aide plus que la moyenne"
