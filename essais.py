@@ -24,6 +24,10 @@ RISQUE = 0.05          # unilatéral, celui de « l'intervalle à 90 % sous 0 »
 
 # id → ouverture, objet, type de critère (« intervalle » : soumis à la correction ; « seuil » : critère descriptif),
 # N du premier regard, pré-enregistrement.
+# 0.10.382 : règle de mise au point et de confirmation séparées (preenregistrements/regle-mise-au-point-confirmation.md) :
+# un essai décisif ne se juge que sur des questions dont le jeu est postérieur à cette date, une fois par brique.
+CONFIRMATION_DEPUIS = "2026-11-20"
+
 ESSAIS = {
     "liens_empiriques": {"ouvert_le": "2026-11-14", "type": "intervalle", "n": 100, "statut": "clos",
                          "clos_le": "2026-11-14", "verdict": "non adopté (C empirique = B sur le jugement)",

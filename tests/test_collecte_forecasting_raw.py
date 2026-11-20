@@ -14,3 +14,11 @@ def test_convertir():
     x = xs[0]
     assert x["source"] == "gjopen" and x["id"] == "683" and x["horizon"] == 55 and x["issue"] == 0
     assert "background" not in x and "community_predictions" not in x
+
+
+def test_formats():
+    assert cf._jour(1510012800) == "2017-11-07" and cf._jour(1510012800000) == "2017-11-07"
+    xs = cf.convertir([{"question_type": "Binary", "is_resolved": "True", "resolution": "YES", "date_begin": 1510012800000,
+                        "date_close": "2018-01-01", "date_resolve_at": None, "url": "https://manifold.markets/x/abc",
+                        "question": "q", "data_source": "manifold"}])
+    assert xs and xs[0]["issue"] == 1 and xs[0]["jeu"] == "2017-11-07"

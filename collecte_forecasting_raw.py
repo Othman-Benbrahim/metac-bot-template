@@ -23,31 +23,65 @@ LICENCE = "forecasting_raw (Halawi et al., 2024), Hugging Face YuehHanChen/forec
 
 
 def _jour(v) -> str | None:
-    s = str(v or "")[:10]
+    """Date au format AAAA-MM-JJ : chaîne ISO, objet date ou horodatage numérique (secondes ou millisecondes)."""
+    if v is None or v == "":
+        return None
+    if isinstance(v, (int, float)) and not isinstance(v, bool):
+        from datetime import datetime, timezone
+        t = float(v) / (1000 if float(v) > 1e11 else 1)
+        try:
+            return datetime.fromtimestamp(t, tz=timezone.utc).date().isoformat()
+        except (OverflowError, OSError, ValueError):
+            return None
+    s = str(v)[:10]
     return s if re.fullmatch(r"\d{4}-\d{2}-\d{2}", s) else None
+
+
+def _vrai(v) -> bool:
+    return v is True or str(v).strip().lower() in ("true", "1", "yes")
+
+
+REJETS: dict = {}
+
+
+def _rejet(r: dict, motif: str) -> None:
+    cle = (str(r.get("data_source")), motif)
+    REJETS[cle] = REJETS.get(cle, 0) + 1
 
 
 def convertir(lignes: list[dict]) -> list[dict]:
     out, vus = [], set()
     for r in lignes:
-        if str(r.get("question_type")) != "binary" or not r.get("is_resolved"):
+        if str(r.get("question_type")).strip().lower() != "binary":
+            _rejet(r, "pas binaire")
             continue
+        if not _vrai(r.get("is_resolved")):
+            _rejet(r, "non résolue")
+            continue
+        res_brut = r.get("resolution")
+        if isinstance(res_brut, str) and res_brut.strip().lower() in ("yes", "no", "true", "false"):
+            res_brut = 1.0 if res_brut.strip().lower() in ("yes", "true") else 0.0
         try:
-            issue = float(r.get("resolution"))
+            issue = float(res_brut)
         except (TypeError, ValueError):
+            _rejet(r, f"issue illisible ({str(res_brut)[:12]})")
             continue
         if issue not in (0.0, 1.0):
+            _rejet(r, "issue ni 0 ni 1")
             continue
         debut, fin, res = _jour(r.get("date_begin")), _jour(r.get("date_close")), _jour(r.get("date_resolve_at"))
         if not debut or not (fin or res):
+            _rejet(r, f"date manquante ({type(r.get('date_begin')).__name__})")
             continue
         cloture = min(x for x in (fin, res) if x)
         horizon = (date.fromisoformat(cloture) - date.fromisoformat(debut)).days
         if horizon < 0:
+            _rejet(r, "clôture avant ouverture")
             continue
         ident = str(r.get("url") or "").rstrip("/").split("/")[-1] or str(len(out))
         cle = (r.get("data_source"), ident)
         if cle in vus:
+            _rejet(r, "doublon")
             continue
         vus.add(cle)
         out.append({"source": str(r.get("data_source")), "id": ident, "jeu": debut, "titre": str(r.get("question") or "")[:300],
@@ -78,6 +112,13 @@ def principal() -> int:
     from collections import Counter
     print(f"{len(lignes)} lignes lues ; {len(xs)} questions binaires résolues gardées ; "
           f"{dict(Counter(x['source'] for x in xs))} ; {xs[0]['jeu']} → {xs[-1]['jeu']}")
+    print("lignes par source :", dict(Counter(str(r.get("data_source")) for r in lignes)))
+    print("écartées :", {f"{a} · {b}": n for (a, b), n in sorted(REJETS.items(), key=lambda kv: -kv[1])})
+    exemples = {}
+    for r in lignes:
+        exemples.setdefault(str(r.get("data_source")), {k: (type(v).__name__, str(v)[:40]) for k, v in r.items()
+                                                        if k in ("question_type", "is_resolved", "resolution", "date_begin", "date_close", "date_resolve_at", "url")})
+    print("exemple par source :", json.dumps(exemples, ensure_ascii=False))
     return 0
 
 
