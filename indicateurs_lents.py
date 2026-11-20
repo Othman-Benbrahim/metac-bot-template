@@ -42,7 +42,10 @@ _AILLEURS = _re.compile(r"\b(tokyo|japan\w*|euro\w*|uk|britain|british|china|chi
 
 def fourchette_publication(titre: str) -> dict | None:
     """Fourchette de la prochaine publication d'une série FRED reconnue dans le titre (question numérique) ; seulement
-    pour une question américaine sans mention d'un autre pays."""
+    pour une question américaine sans mention d'un autre pays. 0.10.405 : inflation de Tokyo (e-Stat)."""
+    t_ = fourchette_tokyo(titre)
+    if t_ is not None:
+        return t_
     if not _US.search(titre or "") or _AILLEURS.search(titre or ""):
         return None
     for rx, serie, tr in SERIES:
@@ -60,3 +63,37 @@ def fourchette_publication(titre: str) -> dict | None:
     if not f:
         return None
     return {"serie": serie, "transformation": tr, "derniere_valeur": round(x[-1], 3), "date": pts[-1][0], "percentiles": f}
+
+
+# ---- branchement (0.10.405) : inflation de Tokyo hors produits frais, e-Stat (preenregistrements/inflation-tokyo.md,
+# critère atteint : 0,751 / 0,610). This service uses API functions from e-Stat, however its contents are not
+# guaranteed by government.
+MENTION_ESTAT = "This service uses API functions from e-Stat, however its contents are not guaranteed by government."
+_ESTAT = _Path("registre") / "estat-tokyo-cpi.csv"
+_TOKYO = _re.compile(r"\btokyo\b.*\bcore\b.*\b(cpi|consumer price|inflation)\b|\bcore\b.*\b(cpi|consumer price)\b.*\btokyo\b", _re.I)
+_MOIS = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august",
+                                      "september", "october", "november", "december"], 1)}
+_MOIS_RX = _re.compile(r"\b(" + "|".join(_MOIS) + r")\s+(20\d\d)\b", _re.I)
+
+
+def fourchette_tokyo(titre: str) -> dict | None:
+    """Mois demandé = mois suivant la dernière valeur publiée (seul horizon calibré) ; sinon rien."""
+    if not _TOKYO.search(titre or "") or not _ESTAT.exists():
+        return None
+    m = _MOIS_RX.search(titre or "")
+    if not m:
+        return None
+    cible = f"{m.group(2)}-{_MOIS[m.group(1).lower()]:02d}"
+    pts = sorted((r["mois"], float(r["inflation_hors_frais_sur_un_an"]))
+                 for r in _csv.DictReader(_ESTAT.open(encoding="utf-8")) if r["base"] == "2025")
+    if not pts:
+        return None
+    a, mo = map(int, pts[-1][0].split("-"))
+    suivant = f"{a + mo // 12}-{mo % 12 + 1:02d}"
+    if cible != suivant:
+        return None
+    f = fourchette_suivante([v for _, v in pts])
+    if not f:
+        return None
+    return {"serie": "TOKYO_CORE_CPI", "transformation": "glissement publié", "derniere_valeur": pts[-1][1],
+            "date": pts[-1][0], "percentiles": f, "mention": MENTION_ESTAT}

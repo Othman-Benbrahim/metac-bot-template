@@ -3,6 +3,8 @@ name: "Collecte EDGAR et calibrage des résultats d entreprise (ombre)"
 # 0.10.405 : résultats trimestriels publiés à la SEC (données publiques) ; adresse de contact en secret, jamais écrite.
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "41 6 * * *"   # chaque jour : un trimestre publié entre dans les données avant la question suivante
 
 concurrency:
   group: bot-alphabet-registre

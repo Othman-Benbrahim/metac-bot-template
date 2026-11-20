@@ -3,6 +3,8 @@ name: "Collecte e-Stat, inflation de Tokyo (ombre)"
 # 0.10.405 : inflation de Tokyo (e-Stat, clé en secret). This service uses API functions from e-Stat, however its contents are not guaranteed by government.
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "23 5 * * *"   # chaque jour : la publication de Tokyo tombe en fin de mois
 
 concurrency:
   group: bot-alphabet-registre

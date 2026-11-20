@@ -44,3 +44,12 @@ Brown et Rozeff, *Journal of Accounting Research*, 1979).
 25 nouvelles entreprises (LMT, T, ABBV, VZ : séries trop courtes ou vides), 427 prévisions : intervalle 80 % → 0,766 ;
 60 % → 0,595. Descriptif : v1 sur les mêmes 0,704 / 0,533 (la correction saisonnière fait la différence) ; v2 sur les
 50 anciennes 0,776 / 0,600.
+
+## Branchement (0.10.406, décision de l'auteur du 2026-11-20, 21 h 43 : option 2)
+Le modèle v2 ne remplace la réponse du bot que si la recherche du bot ne contient ni prévision publiée par l'entreprise
+(« guidance ») ni consensus des analystes ; sinon le bot garde sa réponse et le modèle est scellé en ombre
+(`resultats_entreprise_ombre` dans le journal), pour comparaison à la résolution. Questions numériques : percentiles
+10 à 90 du modèle. Choix multiple (tranches) : probabilités tirées de la fonction quantile testée ; au-delà des extrêmes
+observés, une masse 1/(n+1) de chaque côté qui décroît exponentiellement (queues non testées, choix fixé). L'ancrage
+1/N ne s'applique pas quand le modèle remplace le bot (il a été validé sur des candidats, pas sur des tranches).
+Garde : le dernier trimestre collecté doit avoir moins de 170 jours ; EDGAR est recollecté chaque jour.

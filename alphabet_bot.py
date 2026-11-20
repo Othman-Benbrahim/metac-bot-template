@@ -294,22 +294,45 @@ class AlphabetBot(FallTemplateBot2026):
                 i_ = ilx.fourchette_publication(question.question_text or "")
                 if i_ is not None:
                     f = {"actif": f"indicateur {i_['serie']}", "dernier_prix": i_["derniere_valeur"], "date_prix": i_["date"],
-                         "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": i_["percentiles"]}
+                         "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": i_["percentiles"],
+                         "mention": i_.get("mention")}
             if f is None:   # 0.10.403 : total CDC de la rougeole, comptes cumulés v1 (pari d'auteur)
                 import comptes_cumules as ccx
                 r_ = ccx.fourchette_rougeole(question.question_text or "", jour, fin or q_fin(question))
                 if r_ is not None:
                     f = {"actif": "rougeole CDC", "dernier_prix": r_["dernier_total"], "date_prix": r_["date_total"],
                          "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": r_["percentiles"]}
+            ombre = None
+            if f is None:   # 0.10.406 : chiffre d'affaires trimestriel (Foster 1977), option 2 de l'auteur
+                import resultats_entreprises as rex
+                tk = rex.entreprise(question.question_text or "")
+                m_ = rex.modele(tk, jour) if tk else None
+                e_ = rex.echelle_numerique(m_, getattr(question, "lower_bound", None),
+                                           getattr(question, "upper_bound", None)) if m_ else None
+                if m_ and e_:
+                    pc = rex.percentiles(m_, e_)
+                    if rex.info_publiee(research or ""):
+                        ombre = {"resultats_entreprise_ombre": {"ticker": tk, "percentiles": pc,
+                                                                 "dernier_trimestre": m_["dernier_trimestre"]}}
+                    else:
+                        f = {"actif": f"revenu {tk}", "dernier_prix": m_["dernier_chiffre"], "date_prix": m_["dernier_trimestre"],
+                             "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": pc,
+                             "commentaire": rex.ligne_commentaire(m_)}
+            if ombre:
+                extra = ombre
             if f is not None:
                 v = rp.prediction_value
                 extra = {"prediction_brute": v.model_dump(mode="json") if hasattr(v, "model_dump") else str(v),
                          "fourchette_prix": {k: f[k] for k in ("actif", "dernier_prix", "date_prix", "sigma_annuel", "echeance")}}
                 dist = NumericDistribution.from_question([Percentile(percentile=p, value=x) for p, x in f["percentiles"]], question)
                 pct = ", ".join(f"P{int(p*100)} {x:,.2f}" for p, x in f["percentiles"])
-                if str(f["actif"]).startswith("indicateur "):
+                if f.get("commentaire"):
+                    texte = f["commentaire"] + f" Percentiles: {pct}."
+                elif str(f["actif"]).startswith("indicateur "):
                     texte = (f"\n\nSlow-indicator rule (coded): last published value {f['dernier_prix']:,.3f} ({f['date_prix']}), "
                              f"next release drawn from the 36 past release-to-release changes; percentiles: {pct}.")
+                    if f.get("mention"):   # 0.10.405 : mention exigée par e-Stat
+                        texte += f" Source: e-Stat (Statistics Bureau of Japan). {f['mention']}"
                 elif f["actif"] == "rougeole CDC":
                     texte = (f"\n\nCumulative-count rule (coded): last CDC total {f['dernier_prix']:,.0f} as of {f['date_prix']}, "
                              f"future weekly increments drawn from the recent pace and its past variations (CDC forecast-hub "
@@ -331,6 +354,27 @@ class AlphabetBot(FallTemplateBot2026):
         # 85 % bot + 15 % répartition égale ; la répartition brute du bot reste scellée dans le journal
         # (preenregistrements/choix-multiple-ancre-uniforme.md, suivi par choix_multiple_ancre.py).
         brute, extra = rp, {}
+        # 0.10.406 : tranches de chiffre d'affaires trimestriel (Foster 1977, option 2 de l'auteur) : le modèle remplace
+        # le bot seulement sans prévision de l'entreprise ni consensus dans la recherche ; sinon il est scellé en ombre.
+        try:
+            import resultats_entreprises as rex
+            tk = rex.entreprise(question.question_text or "")
+            m_ = rex.modele(tk, datetime.now(timezone.utc).date().isoformat()) if tk else None
+            v = rp.prediction_value
+            valeur = v.model_dump(mode="json") if hasattr(v, "model_dump") else v
+            r_ = rex.repartition(m_, [str(o["option_name"]) for o in valeur["predicted_options"]]) if m_ else None
+            if r_ is not None:
+                if rex.info_publiee(research or ""):
+                    extra = {"resultats_entreprise_ombre": {"ticker": tk, "repartition": r_,
+                                                            "dernier_trimestre": m_["dernier_trimestre"]}}
+                else:
+                    mel = type(v).model_validate({"predicted_options": [{"option_name": k, "probability": q} for k, q in r_.items()]})
+                    rp = ReasonedPrediction(prediction_value=mel, reasoning=(rp.reasoning or "") + rex.ligne_commentaire(m_))
+                    return self._journaliser_autre(question, "choix_multiple", rp, ex,
+                                                   {"prediction_brute": valeur, "resultats_entreprise": tk})
+        except Exception as e:
+            logger.warning("tranches de chiffre d'affaires : non appliquées (%s)", type(e).__name__)
+            extra = {}
         try:
             import choix_multiple_ancre as cma
             v = rp.prediction_value
@@ -339,7 +383,7 @@ class AlphabetBot(FallTemplateBot2026):
             m = cma.melange(p)
             mel = type(v).model_validate({"predicted_options": [{"option_name": k, "probability": q} for k, q in m.items()]})
             rp = ReasonedPrediction(prediction_value=mel, reasoning=(rp.reasoning or "") + cma.ligne_commentaire(len(p)))
-            extra = {"prediction_brute": valeur, "ancrage_1_sur_n": cma.W}
+            extra = {**extra, "prediction_brute": valeur, "ancrage_1_sur_n": cma.W}
         except Exception as e:      # l'ancrage qui échoue ne bloque rien : on poste la répartition du bot
             logger.warning("choix multiple : ancrage 1/N non appliqué (%s)", type(e).__name__)
             rp = brute
