@@ -1,0 +1,38 @@
+name: "Vérifier des flux RSS candidats depuis GitHub (rien n'est collecté)"
+
+# 0.10.391 : avant d'ajouter une source, vérifier qu'elle accepte les serveurs de GitHub (robots, code HTTP, articles).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-rss
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Vérifier
+        run: uv run python verifier_flux.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/verification-flux.md ]; then git add registre/verification-flux.md; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : vérification des flux du $(date -u +%Y-%m-%dT%H:%MZ)"
+            for i in 1 2 3; do git pull --rebase && git push && break; sleep 20; done
+          fi
