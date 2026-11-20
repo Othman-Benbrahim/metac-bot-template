@@ -343,7 +343,11 @@ ESSAIS = {
                        "objet": "brique « scrutin » (règle, sondages à la date, erreur habituelle, temps restant) contre "
                                 "les semblables, sur les questions électorales résolues, par classe homologue",
                        "doc": "preenregistrements/etalon-scrutin.md"},
-    "brique_fenetre": {"ouvert_le": "2026-11-20", "type": "intervalle", "n": 100, "statut": "ouvert",
+    "brique_fenetre": {"ouvert_le": "2026-11-20", "type": "intervalle", "n": 100, "statut": "clos", "clos_le": "2026-11-20",
+                       "verdict": "non adopté (run 44646412558, 969 questions, 438 distinctes) : contre les semblables "
+                                  "+0,045 [−0,009 ; +0,108], non tranché, penche vers la perte ; contre le taux de base "
+                                  "−0,007 [−0,087 ; +0,065], non tranché ; foule 0,334 contre 0,614. Descriptif : gain net "
+                                  "sur l'acteur « chef » (0,83 contre 1,02 et 1,26), perte sur « État » (0,58 contre 0,43)",
                        "objet": "occurrence dans une fenêtre : taux de « oui » mesuré par acteur × longueur de fenêtre "
                                 "(questions passées seulement) contre les semblables et le taux de base",
                        "doc": "preenregistrements/brique-fenetre.md"},
