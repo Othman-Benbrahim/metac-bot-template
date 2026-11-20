@@ -150,3 +150,35 @@ liens:
     sources:
       - {titre: "Service européen pour l'action extérieure, le Conseil prolonge les sanctions économiques de six mois, 22 décembre 2025", url: "https://www.eeas.europa.eu/delegations/ukraine/russia%E2%80%99s-war-aggression-against-ukraine-council-extends-economic-sanctions-further-6-months_en", consulte: "2026-11-20"}
       - {titre: "Service européen pour l'action extérieure, le Conseil prolonge les sanctions économiques d'un an (juin 2026)", url: "https://eeas.europa.eu/delegations/ukraine/russia%E2%80%99s-war-aggression-against-ukraine-council-extends-economic-sanctions-another-year_en", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 3 : rivalité sino-américaine
+  - id: us_tarifs_ieepa_annules
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:la Cour suprême"
+    relation: peut_bloquer
+    domaine: droits de douane
+    regle: "Le 20 février 2026 (Learning Resources c. Trump ; Trump c. V.O.S. Selections, 6 contre 3), la Cour suprême a jugé que la loi IEEPA n'autorise pas le président à imposer des droits de douane. Restent d'autres fondements, non tranchés par l'arrêt : section 232 (acier, aluminium, automobiles), section 301 (droits sur les importations chinoises), section 122 (surtaxe temporaire de 150 jours au plus, 15 % au plus, invoquée par le président après l'arrêt)."
+    temps: {statut: structurel, depuis: "2026-02-20"}
+    sources:
+      - {titre: "Service de recherche du Congrès, Supreme Court Rules Against Tariffs Imposed Under IEEPA, LSB11398, 23 février 2026", url: "https://www.everycrsreport.com/files/2026-02-23_LSB11398_fc8005c048e8dfa7ee66c828dab240a29d0b979e.html", consulte: "2026-11-20"}
+  - id: cn_licences_exportation_mineraux
+    de: "rivalite-sino-americaine:ministère chinois du Commerce"
+    vers: "rivalite-sino-americaine:États-Unis (exécutif)"
+    relation: conditionne
+    domaine: minerais critiques
+    regle: "La Chine exige des licences d'exportation : graphite (2023), gallium et germanium (2023), antimoine (2024), terres rares, tungstène, molybdène et produits liés aux batteries au lithium et aux matières d'anode en graphite artificiel (2025), argent (2026). Ces licences conditionnent l'approvisionnement américain (dépendance de 100 % au graphite importé, chaîne ecosystemes/chaines/graphite.yaml)."
+    temps: {statut: structurel, depuis: "2023"}
+    sources:
+      - {titre: "USGS, Mineral Commodity Summaries 2026, tableau 4 (contrôles des exportations par pays), données au 21 novembre 2025", url: "https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release", consulte: "2026-11-20"}
+  - id: treve_sino_americaine
+    de: "rivalite-sino-americaine:Chine (direction du Parti et de l'État)"
+    vers: "rivalite-sino-americaine:États-Unis (exécutif)"
+    relation: conditionne
+    domaine: contrôles à l'exportation
+    regle: "Trêve commerciale de novembre 2025, pour un an : la Chine suspend les contrôles du 9 octobre 2025 (terres rares, batteries au lithium, matières d'anode en graphite) ; les États-Unis suspendent la « règle des affiliés » (50 %) du BIS à partir du 10 novembre 2025 et ramènent le droit « fentanyl » de 20 % à 10 %. Prolongée le 24 septembre 2026 jusqu'au 10 janvier 2027 ; formalisée côté américain (règle du BIS publiée le 9 novembre 2026) et côté chinois (avis du ministère du Commerce du 9 novembre 2026, la veille de l'échéance). Toute question qui dépasse le 10 janvier 2027 franchit une échéance de cette phase."
+    temps: {statut: conjoncturel, cycle: "trêve commerciale sino-américaine (renouvellements)", phase: "prolongation jusqu'au 10 janvier 2027", depuis: "2025-11-10", jusqua: "2027-01-10", a_revoir_le: ["2027-01-11"]}
+    sources:
+      - {titre: "Morrison Foerster, United States and China Reach Trade Agreement, 13 novembre 2025", url: "https://www.mofo.com/resources/insights/251113-united-states-and-china-reach-trade-agreement", consulte: "2026-11-20"}
+      - {titre: "Crowell & Moring, U.S.-China Trade Truce Extended Two Months, septembre 2026", url: "https://www.cmtradelaw.com/2026/09/u-s-china-trade-truce-extended-two-months-bis-affiliates-rule-suspension-follows/", consulte: "2026-11-20"}
+      - {titre: "Nixon Peabody, BIS formally suspends the Affiliates Rule until January 10, 2027, 6 novembre 2026", url: "https://www.nixonpeabody.com/insights/alerts/2026/11/06/bis-formally-suspends-the-affiliates-rule-until-january-10-2027", consulte: "2026-11-20"}
+      - {titre: "Benchmark Minerals, China extends pause on rare earth and battery export controls until 2027, 9 novembre 2026", url: "https://source.benchmarkminerals.com/article/china-extends-pause-on-rare-earth-and-battery-export-controls-until-2027", consulte: "2026-11-20"}
