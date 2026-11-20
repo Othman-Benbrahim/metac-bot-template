@@ -23,6 +23,8 @@ Familles (choisies par l'auteur) :
 Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres. 0.10.199, en ombre :
 comptes parallèles « famille_large » qui reconnaissent aussi les adjectifs de nationalité (mledoze/countries, ODbL) ;
 les comptes historiques gardent leur définition (noms seuls).
+- sp_energie (0.10.388, en ombre) : S&P Global Energy, 14 flux de matières premières et d'énergie ; avec « economie »,
+  comptes par MATIÈRE stratégique dans registre/rss-matieres.csv (matière, jour, famille, articles).
 Registres : registre/rss-comptes.csv (pays, jour, famille, articles) ; registre/rss-vus.txt (empreintes des articles
 déjà comptés, pour ne pas compter deux fois un article encore présent le lendemain) ; registre/rss-titres.csv
 (0.10.198 : empreintes des titres normalisés et jour, pour ne pas compter une reprise du même article ; jamais le titre).
@@ -106,6 +108,11 @@ FLUX = {
     # 0.10.356 (décision d'auteur du 2026-11-19, 16 h 15, en ombre) : là où l'UE décide (sanctions, accords, conclusions).
     # Famille séparée : « parlement_ue » est lue par le bot, celle-ci ne l'est pas (rien de neuf côté Metaculus).
     "conseil_ue": ["https://www.consilium.europa.eu/en/rss/pressreleases.ashx"],   # Conseil de l'UE : communiqués
+    # 0.10.388 (décision d'auteur du 2026-11-20, 14 h 35, en ombre) : S&P Global Energy (ex-Platts), 14 flux gratuits
+    # (titres et résumés), matières premières et énergie ; non lue par le bot ; comptes par pays ET par matière.
+    "sp_energie": [f"https://www.spglobal.com/energy/en/rss/{f}" for f in (
+        "oil", "oil-crude", "oil-refined-products", "natural-gas", "lng", "electric-power", "coal", "metals",
+        "chemicals", "fertilizers", "agriculture", "shipping", "energy-transition", "blog")],
     # 0.10.357 : Parlement européen, communiqués de presse et agenda de la semaine (relais FeedBurner créés par l'auteur le
     # 2026-11-19) ; famille séparée de « parlement_ue » (lue par le bot), en ombre.
     "parlement_ue_presse": [
@@ -251,7 +258,18 @@ ALLEMAND = {"verification", "enquete"}   # 0.10.200 : noms allemands (CLDR « de
 # les familles « officiel » et « sante » répètent légitimement un même intitulé pour des événements distincts (mise à
 # jour d'un avis de voyage, nouveau séisme au même endroit, nouveau bulletin OMS sur le même pays), elles ne sont pas
 # dédoublonnées par titre. Un titre de moins de 5 mots n'est pas assez distinctif : il n'est pas dédoublonné.
-DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse"}
+# 0.10.388 : matières stratégiques reconnues dans les titres et résumés (comptes matière × jour × famille, jamais le texte)
+MATIERES = {m: re.compile(rx, re.I) for m, rx in {
+    "graphite": r"\bgraphite", "lithium": r"\blithium", "nickel": r"\bnickel", "cobalt": r"\bcobalt",
+    "cuivre": r"\bcopper", "terres_rares": r"rare earth|\brees?\b", "uranium": r"\buranium", "aluminium": r"\balumin",
+    "acier": r"\bsteel\b", "minerai_fer": r"iron ore", "petrole": r"\b(crude|oil|brent|wti)\b", "gaz": r"natural gas|\blng\b",
+    "charbon": r"\bcoal\b", "electricite": r"\bpower prices?|electricity", "engrais": r"fertili[sz]er|\burea\b|potash|ammonia",
+    "ble": r"\bwheat", "mais": r"\bcorn\b|\bmaize", "soja": r"\bsoy", "fret_maritime": r"freight|tanker|container|shipping",
+    "carbone": r"carbon (market|price|credit)|emissions trading|\bets\b", "hydrogene": r"hydrogen"}.items()}
+FAMILLES_MATIERES = {"sp_energie", "economie"}
+MATIERES_CSV = Path("registre") / "rss-matieres.csv"
+
+DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 
@@ -428,6 +446,10 @@ def principal() -> int:
     ecarts_eux: dict[str, int] = {}
     aujourdhui = datetime.now(timezone.utc).date().isoformat()
     sante = {x["url"]: x for x in csv.DictReader(SANTE.open(encoding="utf-8"))} if SANTE.exists() else {}
+    matieres: dict[tuple, int] = {}
+    if MATIERES_CSV.exists():
+        for x in csv.DictReader(MATIERES_CSV.open(encoding="utf-8")):
+            matieres[(x["matiere"], x["jour"], x["famille"])] = int(x["articles"])
     with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c:
         motifs = noms_pays(c)
         print(f"{len(motifs)} noms de pays (anglais et français).")
@@ -465,6 +487,10 @@ def principal() -> int:
                         reprises[famille] = reprises.get(famille, 0) + 1
                         continue
                     pays = detecter(a["texte"], motifs)
+                    if famille in FAMILLES_MATIERES:
+                        for m, rx in MATIERES.items():
+                            if rx.search(a["texte"]):
+                                matieres[(m, a["jour"], famille)] = matieres.get((m, a["jour"], famille), 0) + 1
                     familles = [famille] + (["notation"] if famille == "economie" and NOTATION.search(a["texte"]) else [])
                     # 0.10.199, en ombre : comptes parallèles « famille_large » (noms ET adjectifs) ; les comptes
                     # historiques (noms seuls) gardent leur définition. La famille cyber ne compte qu'en large.
@@ -525,6 +551,12 @@ def principal() -> int:
         for (p, j, fa), n in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
             w.writerow([p, j, fa, n])
     VUS.write_text("\n".join(sorted(vus)), encoding="utf-8")
+    if matieres:
+        with MATIERES_CSV.open("w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["matiere", "jour", "famille", "articles"])
+            for (m, j, fa), n in sorted(matieres.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
+                w.writerow([m, j, fa, n])
     if regions:
         with REGIONS.open("w", encoding="utf-8", newline="") as f:
             w = csv.writer(f)

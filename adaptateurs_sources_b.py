@@ -184,7 +184,8 @@ def rss(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:
     """Articles des flux RSS suivis (institutions, santé, vérification…) citant un pays (ISO2), par jour."""
     c: dict[str, float] = {}
     for r in _lignes(reg, "rss-comptes.csv"):
-        if r["pays"] == pays and (famille == "tout" or r["famille"] == famille):
+        # 0.10.388 : « tout » garde sa composition d'avant (sp_energie en est exclue)
+        if r["pays"] == pays and ((famille == "tout" and not r["famille"].startswith("sp_energie")) or r["famille"] == famille):
             c[r["jour"]] = c.get(r["jour"], 0.0) + _f(r["articles"])
     return sorted(c.items())
 
@@ -193,7 +194,7 @@ def rss_region(reg: Path, region: str, famille: str = "tout") -> list[tuple[str,
     """Articles des flux RSS suivis rattachés à une région ou organisation (code de région du collecteur), par jour."""
     c: dict[str, float] = {}
     for r in _lignes(reg, "rss-regions.csv"):
-        if r["region"] == region and (famille == "tout" or r["famille"] == famille):
+        if r["region"] == region and ((famille == "tout" and not r["famille"].startswith("sp_energie")) or r["famille"] == famille):
             c[r["jour"]] = c.get(r["jour"], 0.0) + _f(r["articles"])
     return sorted(c.items())
 

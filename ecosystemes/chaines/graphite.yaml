@@ -1,0 +1,76 @@
+# Chaîne de valeur d'une matière stratégique : cas d'école (décision de l'auteur, 2026-11-20, 14 h 31 et 14 h 35).
+# Chaque maillon est placé sur les quatre axes (espace, temps, vitesse, taille), avec ses acteurs, ses variables (valeur,
+# unité, date, statut temporel structurel / conjoncturel, source) et ses points de bascule. Rien n'est déduit : une valeur
+# absente est écrite « non renseigné ». Ce fichier n'est pas une fiche (pas de clé « theme »).
+matiere: graphite
+nom: "Graphite naturel en paillettes (et graphite synthétique)"
+sources:
+  s1: {titre: "Holden et Sy, Graphite's hidden economics: From geology and flake size to the cost curve, S&P Global Market Intelligence, 18 novembre 2026", url: "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/11/graphites-hidden-economics-from-geology-and-flake-size-to-the-cost-curve", consulte: "2026-11-20"}
+maillons:
+  - id: gisement
+    nom: "Gisement (géologie)"
+    axes: {espace: "région géologique", temps: "millénaires", vitesse: "immobile à l'échelle humaine", taille: macro}
+    acteurs:
+      - "ceinture mobile du Mozambique"
+      - "bouclier canadien"
+      - "socle cratonique du nord-est de la Chine"
+      - "Afrique de l'Est : Mozambique, Tanzanie, vers l'Ouganda et l'Éthiopie ; Malawi, Zimbabwe, Madagascar"
+    variables:
+      - {nom: "réserves mondiales de graphite contenu", valeur: 310, unite: "millions de tonnes", date: "2026", temps: structurel, source: s1}
+      - {nom: "teneur du minerai brut (carbone graphitique total)", valeur: "3 à 18", unite: "%", date: "2026", temps: structurel, source: s1}
+      - {nom: "teneur, Balama (Mozambique)", valeur: "16 à 20", unite: "%", date: "2026", temps: structurel, source: s1}
+      - {nom: "teneur, Matawinie (Canada)", valeur: 4.5, unite: "%", date: "2026", temps: structurel, source: s1}
+    bascules: []
+  - id: extraction
+    nom: "Extraction et concentration (flottation)"
+    axes: {espace: "site", temps: "années (vie de la mine)", vitesse: "mois", taille: méso}
+    acteurs:
+      - "groupes chinois de Yunshan et Beishan"
+      - "Balama (Mozambique)"
+      - "producteurs du quartile haut : Norvège, Canada, Brésil"
+    variables:
+      - {nom: "récupération par flottation", valeur: "85 à 96", unite: "%", date: "2026", temps: structurel, source: s1}
+      - {nom: "concentré commercial de référence", valeur: "94 à 96,5", unite: "% de carbone", date: "2026", temps: structurel, source: s1}
+      - {nom: "coût, Yunshan et Beishan", valeur: "220 à 228", unite: "$/t", date: "2026", temps: conjoncturel, source: s1}
+      - {nom: "coût, Balama", valeur: 575, unite: "$/t", date: "2026", temps: conjoncturel, source: s1}
+      - {nom: "coût, quartile haut", valeur: "plus de 600, jusqu'à près de 1 600", unite: "$/t", date: "2026", temps: conjoncturel, source: s1}
+      - {nom: "coût de trésorerie moyen attendu", valeur: "435 (2026) → 574 (2030), +32 %", unite: "$/t", date: "2026", temps: conjoncturel, source: s1}
+    bascules:
+      - {nom: "prix sous le coût de trésorerie", regle: "au prix d'environ 450 $/t FOB Chine, la plupart des mines hors de Chine produisent à leur coût de trésorerie total ou en dessous", source: s1}
+  - id: transformation
+    nom: "Purification, sphéronisation, graphite synthétique"
+    axes: {espace: "pays (usines)", temps: "années", vitesse: "mois", taille: macro}
+    acteurs:
+      - "Chine : domine l'extraction, la transformation intermédiaire et le graphite synthétique (part non chiffrée par la source)"
+    variables:
+      - {nom: "qualité batterie (graphite sphérique)", valeur: "≥ 99,95", unite: "% de carbone", date: "2026", temps: structurel, source: s1}
+      - {nom: "part chinoise de la transformation", valeur: "non renseigné", unite: "%", date: "", temps: structurel, source: s1}
+    bascules:
+      - {nom: "contrôles chinois à l'exportation", regle: "non renseigné par cette source ; à documenter (lien : rivalite-sino-americaine:terres_rares, licences d'exportation)", source: s1}
+  - id: usage
+    nom: "Usages"
+    axes: {espace: "mondial", temps: "années", vitesse: "mois", taille: macro}
+    acteurs:
+      - "anodes de batteries lithium-ion (paillettes fines et moyennes)"
+      - "réfractaires et retardateurs de flamme (grandes paillettes)"
+      - "graphite expansé, aéronautique (très grandes paillettes)"
+    variables:
+      - {nom: "premier débouché", valeur: "batteries, devant l'acier depuis fin 2025", unite: "", date: "2025", temps: conjoncturel, source: s1}
+    bascules: []
+  - id: prix
+    nom: "Prix et débouché"
+    axes: {espace: "mondial", temps: "jours", vitesse: "jours", taille: macro}
+    acteurs: ["acheteurs (fabricants d'anodes)", "producteurs"]
+    variables:
+      - {nom: "prix", valeur: 450, unite: "$/t FOB Chine", date: "2026-11", temps: conjoncturel, source: s1}
+    bascules: []
+liens_fiches:
+  - "rivalite-sino-americaine:terres_rares"
+  - "rivalite-sino-americaine:technologie"
+  - "sciences-techniques:calcul"
+traces:
+  - "registre/rss-matieres.csv, matière « graphite » (S&P Global Energy et presse économique, comptes quotidiens)"
+lacunes:
+  - "part chinoise chiffrée de l'extraction et de la transformation"
+  - "contrôles chinois à l'exportation (dates, produits visés)"
+  - "série de prix datée"
