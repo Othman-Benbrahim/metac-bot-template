@@ -282,3 +282,44 @@ liens:
     sources:
       - {titre: "CDC, Measles Cases and Outbreaks, mis à jour le 13 novembre 2026", url: "https://www.cdc.gov/measles/data-research/index.html", consulte: "2026-11-20"}
       - {titre: "La Voce di New York, RFK Jr. Pivots on MMR Vaccine After U.S. Stripped of Measles-Free Status, 19 novembre 2026", url: "https://lavocedinewyork.com/en/news/2026/11/19/rfk-jr-pivots-on-mmr-vaccine-after-u-s-stripped-of-measles-free-status", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 6 : sécurité européenne
+  - id: otan_decisions_par_consensus
+    de: "securite-europeenne:l'OTAN"
+    vers: "securite-europeenne:un ministère de la défense national"
+    relation: depend_de
+    domaine: décisions de l'Alliance
+    regle: "Toutes les décisions de l'OTAN sont prises par consensus, après discussion et consultation entre les pays membres : il n'y a pas de vote, un seul allié peut empêcher une décision."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "OTAN, The consultation process and Article 4", url: "https://www.nato.int/en/what-we-do/introduction-to-nato/the-consultation-process-and-article-4", consulte: "2026-11-20"}
+  - id: otan_article_4_invoque
+    de: "securite-europeenne:un ministère de la défense national"
+    vers: "securite-europeenne:l'OTAN"
+    relation: conditionne
+    domaine: consultations (article 4)
+    regle: "Tout allié peut demander des consultations s'il estime son intégrité territoriale, son indépendance politique ou sa sécurité menacées. Neuf invocations recensées par l'OTAN : 2003, 2012 (deux), 2014, 2015, 2020, 2022 (huit alliés ensemble), 10 septembre 2025 (Pologne, drones russes), 23 septembre 2025 (Estonie, avions russes) ; aucune en 2026 au 20 novembre. Soit 9 en 23 ans depuis 2003 (environ 0,4 par an, calcul), avec deux en septembre 2025 : la fréquence récente est plus haute que la moyenne."
+    temps: {statut: structurel, depuis: "2003-02-10"}
+    sources:
+      - {titre: "OTAN, The consultation process and Article 4", url: "https://www.nato.int/en/what-we-do/introduction-to-nato/the-consultation-process-and-article-4", consulte: "2026-11-20"}
+  - id: otan_objectif_cinq_pour_cent
+    de: "securite-europeenne:l'OTAN"
+    vers: "securite-europeenne:un ministère de la défense national"
+    relation: conditionne
+    domaine: dépenses de défense
+    regle: "Engagement de La Haye (juin 2025) : 5 % du PIB par an d'ici 2035, dont 3,5 % pour la défense au sens strict et 1,5 % pour les dépenses liées à la sécurité ; l'aide à l'Ukraine compte. En 2025, tous les alliés ont atteint 2 % selon l'OTAN (Islande exclue). Estimations 2026, publiées le 7 juillet 2026 avant le sommet d'Ankara : cinq alliés au-dessus de 3,5 % (Lituanie 5,33 %, Estonie 5,1 %, Lettonie 4,92 %, Pologne 4,68 %, Grèce 3,65 %) ; la Tchéquie, la Hongrie et la Slovénie pouvaient passer sous 2 %. L'OTAN publie ces estimations une fois par an, avant le sommet : une question sur le niveau de dépense d'un allié se résout à cette publication."
+    temps: {statut: conjoncturel, cycle: "estimations annuelles de dépenses de défense de l'OTAN", phase: "estimations 2026 (7 juillet 2026)", depuis: "2026-07-07", a_revoir_le: ["2027-06-15"]}
+    sources:
+      - {titre: "Service de recherche du Congrès, NATO: Issues for the July 2026 Ankara Summit, R49018, 2 juillet 2026", url: "https://www.everycrsreport.com/reports/R49018.html", consulte: "2026-11-20"}
+      - {titre: "Al-Monitor (Reuters), Five NATO members seen to spend over 3.5% of GDP on core defence this year, juillet 2026", url: "https://www.al-monitor.com/originals/2026/07/five-nato-members-seen-spend-over-35-gdp-core-defence-year-alliance-estimates", consulte: "2026-11-20"}
+      - {titre: "Forbes, What Happened At The 2026 NATO Summit In Turkey?, 9 juillet 2026", url: "https://www.forbes.com/sites/marktemnycky/2026/07/09/what-happened-at-the-2026-nato-summit/", consulte: "2026-11-20"}
+  - id: ue_adhesion_ukraine_groupes_de_chapitres
+    de: "russie-ukraine:Ukraine (gouvernement)"
+    vers: "russie-ukraine:Union européenne"
+    relation: depend_de
+    domaine: adhésion à l'Union européenne
+    regle: "L'ouverture de chaque groupe de chapitres de négociation exige l'unanimité des États membres (approbation de l'examen analytique, puis positions communes, puis conférence intergouvernementale). La Hongrie a bloqué les groupes 4 et 5 de l'Ukraine (réunions des 20 et 27 octobre, 3 et 10 novembre 2026) puis a signalé le 20 novembre 2026 qu'elle levait ce blocage ; Péter Magyar est Premier ministre depuis le 9 mai 2026, après la défaite de Viktor Orbán. Prochain Conseil Affaires générales, où se tiennent d'ordinaire ces conférences : 15 décembre 2026. La Moldavie suit le même calendrier."
+    temps: {statut: conjoncturel, cycle: "négociations d'adhésion (ouverture des groupes de chapitres)", phase: "levée du blocage hongrois sur les groupes 4 et 5", depuis: "2026-11-20", a_revoir_le: ["2026-12-16"]}
+    sources:
+      - {titre: "Evropeiska Pravda, Hungary lifts veto on opening EU negotiation clusters 4 and 5 with Ukraine, 20 novembre 2026", url: "https://www.eurointegration.com.ua/eng/news/2026/11/20/7250427/", consulte: "2026-11-20"}
+      - {titre: "Al Jazeera, Peter Magyar sworn in as Hungary's PM, ending Orban's 16 years in power, 9 mai 2026", url: "https://www.aljazeera.com/news/2026/5/9/peter-magyar-sworn-in-as-hungarys-pm-ending-orbans-16-years-in-power", consulte: "2026-11-20"}

@@ -29,3 +29,7 @@
 | us_retrait_oms | une agence nationale de santé publique | ne_depend_pas_de | Organisation mondiale de la santé | gouvernance sanitaire mondiale | structurel depuis 2026-01-22 |
 | accord_pandemie_attend_annexe_pabs | Organisation mondiale de la santé | conditionne | les fabricants de vaccins | accord sur les pandémies | conjoncturel (négociation de l'annexe PABS : mandat prolongé, objectif mai 2027) |
 | us_rougeole_decompte_cdc | une agence nationale de santé publique | confirme | une personne infectée (en agrégat, jamais nommée) | comptage des cas | structurel |
+| otan_decisions_par_consensus | l'OTAN | depend_de | un ministère de la défense national | décisions de l'Alliance | structurel |
+| otan_article_4_invoque | un ministère de la défense national | conditionne | l'OTAN | consultations (article 4) | structurel depuis 2003-02-10 |
+| otan_objectif_cinq_pour_cent | l'OTAN | conditionne | un ministère de la défense national | dépenses de défense | conjoncturel (estimations annuelles de dépenses de défense de l'OTAN : estimations 2026 (7 juillet 2026)) |
+| ue_adhesion_ukraine_groupes_de_chapitres | Ukraine (gouvernement) | depend_de | Union européenne | adhésion à l'Union européenne | conjoncturel (négociations d'adhésion (ouverture des groupes de chapitres) : levée du blocage hongrois sur les groupes 4 et 5) |
