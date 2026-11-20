@@ -23,8 +23,8 @@ Familles (choisies par l'auteur) :
 Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres. 0.10.199, en ombre :
 comptes parallèles « famille_large » qui reconnaissent aussi les adjectifs de nationalité (mledoze/countries, ODbL) ;
 les comptes historiques gardent leur définition (noms seuls).
-- sp_energie (0.10.388, en ombre) : S&P Global Energy, 14 flux de matières premières et d'énergie ; avec « economie »,
-  comptes par MATIÈRE stratégique dans registre/rss-matieres.csv (matière, jour, famille, articles).
+- comptes par MATIÈRE stratégique (0.10.388) dans registre/rss-matieres.csv (matière, jour, famille, articles), sur la
+  famille « economie » ; S&P Global Energy retirée en 0.10.390 (le site refuse les serveurs de GitHub, code 403).
 Registres : registre/rss-comptes.csv (pays, jour, famille, articles) ; registre/rss-vus.txt (empreintes des articles
 déjà comptés, pour ne pas compter deux fois un article encore présent le lendemain) ; registre/rss-titres.csv
 (0.10.198 : empreintes des titres normalisés et jour, pour ne pas compter une reprise du même article ; jamais le titre).
@@ -108,11 +108,8 @@ FLUX = {
     # 0.10.356 (décision d'auteur du 2026-11-19, 16 h 15, en ombre) : là où l'UE décide (sanctions, accords, conclusions).
     # Famille séparée : « parlement_ue » est lue par le bot, celle-ci ne l'est pas (rien de neuf côté Metaculus).
     "conseil_ue": ["https://www.consilium.europa.eu/en/rss/pressreleases.ashx"],   # Conseil de l'UE : communiqués
-    # 0.10.388 (décision d'auteur du 2026-11-20, 14 h 35, en ombre) : S&P Global Energy (ex-Platts), 14 flux gratuits
-    # (titres et résumés), matières premières et énergie ; non lue par le bot ; comptes par pays ET par matière.
-    "sp_energie": [f"https://www.spglobal.com/energy/en/rss/{f}" for f in (
-        "oil", "oil-crude", "oil-refined-products", "natural-gas", "lng", "electric-power", "coal", "metals",
-        "chemicals", "fertilizers", "agriculture", "shipping", "energy-transition", "blog")],
+    # 0.10.388 → 0.10.390 : S&P Global Energy (14 flux) retirée : le site répond 403 aux serveurs de GitHub (run
+    # 44749464241) ; on ne contourne pas un refus. Les comptes par matière restent tenus sur la famille « economie ».
     # 0.10.357 : Parlement européen, communiqués de presse et agenda de la semaine (relais FeedBurner créés par l'auteur le
     # 2026-11-19) ; famille séparée de « parlement_ue » (lue par le bot), en ombre.
     "parlement_ue_presse": [
@@ -266,7 +263,7 @@ MATIERES = {m: re.compile(rx, re.I) for m, rx in {
     "charbon": r"\bcoal\b", "electricite": r"\bpower prices?|electricity", "engrais": r"fertili[sz]er|\burea\b|potash|ammonia",
     "ble": r"\bwheat", "mais": r"\bcorn\b|\bmaize", "soja": r"\bsoy", "fret_maritime": r"freight|tanker|container|shipping",
     "carbone": r"carbon (market|price|credit)|emissions trading|\bets\b", "hydrogene": r"hydrogen"}.items()}
-FAMILLES_MATIERES = {"sp_energie", "economie"}
+FAMILLES_MATIERES = {"economie"}
 MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 
 DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie"}

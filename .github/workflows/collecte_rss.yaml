@@ -38,6 +38,6 @@ jobs:
           for f in registre/rss-comptes.csv registre/rss-vus.txt registre/rss-sante.csv registre/rss-titres.csv registre/rss-regions.csv registre/rss-accord.csv registre/rss-trois-codeurs.csv registre/rss-matieres.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : flux RSS du $(date -u +%Y-%m-%d)"
-            git pull --rebase
-            git push
+            # 0.10.390 : run 44749464241 perdu sur un envoi concurrent ; trois essais
+            for i in 1 2 3; do git pull --rebase && git push && break; sleep 20; done
           fi
