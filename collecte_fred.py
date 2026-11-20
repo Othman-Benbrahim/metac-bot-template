@@ -45,6 +45,9 @@ SERIES = {
     "DPSACBW027SBOG": "dépôts des banques commerciales américaines, hebdomadaire (crises bancaires : dépôts)",
     "UMCSENT": "confiance des ménages américains (Université du Michigan), mensuel (humain : attente)",
     "CBBTCUSD": "cours du bitcoin (Coinbase), quotidien (crises bancaires : cryptomonnaies) ; 0.10.358",
+    "NASDAQCOM": "indice Nasdaq Composite, quotidien (seuils de prix) ; 0.10.398",
+    "SP500": "indice S&P 500, quotidien (seuils de prix) ; 0.10.398",
+    "DJIA": "indice Dow Jones, quotidien (seuils de prix) ; 0.10.398",
     "CBETHUSD": "cours de l'ether (Coinbase), quotidien (crises bancaires : cryptomonnaies) ; 0.10.358",
     # 0.10.389 (décision d'auteur du 2026-11-20, 14 h 48) : prix mondiaux mensuels du FMI, matières stratégiques
     "PCOPPUSDM": "prix mondial du cuivre (FMI), mensuel (matières stratégiques) ; 0.10.389",
