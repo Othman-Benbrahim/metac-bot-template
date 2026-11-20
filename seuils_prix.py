@@ -16,7 +16,7 @@ ACTIFS = {  # motif du titre → (série FRED, jours de cotation par an)
     "CBBTCUSD": (re.compile(r"\b(bitcoin|btc)\b", re.I), 365),
     "CBETHUSD": (re.compile(r"\b(ethereum|ether|eth)\b", re.I), 365),
     "DCOILBRENTEU": (re.compile(r"\bbrent\b", re.I), 252),
-    "NASDAQCOM": (re.compile(r"\bnasdaq\b", re.I), 252),
+    "NASDAQCOM": (re.compile(r"\bnasdaq\b(?!\s*(ticker|:|-?listed))(?!.{0,40}\bper share\b)", re.I), 252),
     "SP500": (re.compile(r"\b(s&p ?500|spx)\b", re.I), 252),
     "DJIA": (re.compile(r"\bdow jones\b|\bdjia\b", re.I), 252),
 }

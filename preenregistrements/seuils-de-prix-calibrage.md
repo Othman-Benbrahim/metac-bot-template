@@ -25,3 +25,19 @@ indices seront collectées.
 M est retenu comme mécanisme des questions de seuil de prix si M − I < 0 et l'intervalle à 90 % exclut 0. Ensuite
 seulement : branchement dans le bot pour ces questions, avec la règle de l'auteur (mécanisme vérifié à son niveau
 d'application → introduit ; sortie brute scellée).
+
+## Résultat (2026-11-20, 19 h 45)
+Premier passage invalide (fichier conservé : `registre/mise-au-point/seuils-prix-passage1-errone.json`), pour trois
+erreurs de MESURE trouvées en relisant les questions, corrigées avant le second passage :
+1. « NASDAQ Ticker: $NVDA » rangé dans l'indice Nasdaq (7 questions sur des actions) : motif resserré ;
+2. « atteint avant » : le sens était déduit du mot reach, alors que le seuil peut être en dessous du prix (« reach $14k »
+   depuis 19 000) ; la probabilité de toucher est désormais symétrique ;
+3. l'horizon du registre est le délai jusqu'à la RÉSOLUTION, raccourci quand un seuil est touché tôt (fuite de l'issue) :
+   l'échéance est lue dans le titre quand elle y figure (66 questions sur 138 ; les autres gardent l'horizon, ce qui
+   pénalise le modèle, donc joue contre lui).
+Second passage : 138 questions (131 distinctes). Perte : témoin 0,6216 ; M (σ 30 j) 0,4154 ; σ 90 j 0,4320 ;
+σ × 1,5 0,4385. **M − I = −0,2062, intervalle à 90 % [−0,2677 ; −0,1356] : critère atteint.**
+« À la date » : M 0,574 contre 0,697 (54) ; « atteint avant » : M 0,314 contre 0,573 (84). Bitcoin 0,458 contre 0,630 ;
+éther 0,334 contre 0,604. Calibrage : 0-10 % → 8,5 % de oui (47) ; 50-60 % → 81 % (16) ; 60-70 % → 83 % (12).
+Le σ × 1,5 ne fait pas mieux : pas de correction de queues épaisses à ce stade.
+Réserve : la comparaison est faite contre le taux de base, pas contre le bot.

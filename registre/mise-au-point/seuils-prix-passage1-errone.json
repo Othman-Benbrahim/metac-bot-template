@@ -1,0 +1,122 @@
+{
+ "questions_reconnues": 145,
+ "jugees": 145,
+ "questions_distinctes": 138,
+ "pertes": {
+  "I témoin": 0.6257,
+  "M sigma 30 j": 0.7194,
+  "M sigma 90 j": 0.7416,
+  "M sigma x 1,5": 0.7309
+ },
+ "critere_M_moins_I": {
+  "moyenne": 0.0937,
+  "intervalle_90": [
+   -0.0526,
+   0.2632
+  ]
+ },
+ "descriptif": {
+  "M90_moins_I": {
+   "moyenne": 0.1159,
+   "intervalle_90": [
+    -0.0285,
+    0.2903
+   ]
+  },
+  "M15_moins_I": {
+   "moyenne": 0.1052,
+   "intervalle_90": [
+    -0.0379,
+    0.2707
+   ]
+  },
+  "par_type": {
+   "date": {
+    "n": 61,
+    "M": 1.0319,
+    "I": 0.6901
+   },
+   "touche": {
+    "n": 84,
+    "M": 0.4925,
+    "I": 0.5789
+   }
+  },
+  "par_actif": {
+   "CBBTCUSD": {
+    "n": 91,
+    "M": 0.6119,
+    "I": 0.6329
+   },
+   "CBETHUSD": {
+    "n": 43,
+    "M": 0.3574,
+    "I": 0.616
+   },
+   "DCOILBRENTEU": {
+    "n": 2,
+    "M": 0.2978,
+    "I": 0.6931
+   },
+   "DJIA": {
+    "n": 1,
+    "M": 0.1385,
+    "I": 0.539
+   },
+   "NASDAQCOM": {
+    "n": 7,
+    "M": 4.6052,
+    "I": 0.597
+   },
+   "SP500": {
+    "n": 1,
+    "M": 0.2941,
+    "I": 0.539
+   }
+  },
+  "seuil_deja_franchi_au_depart": 2,
+  "calibrage_M (tranche: n, part de oui)": {
+   "0-10 %": [
+    47,
+    0.106
+   ],
+   "10-20 %": [
+    10,
+    0.0
+   ],
+   "20-30 %": [
+    14,
+    0.286
+   ],
+   "30-40 %": [
+    15,
+    0.2
+   ],
+   "40-50 %": [
+    18,
+    0.389
+   ],
+   "50-60 %": [
+    14,
+    0.786
+   ],
+   "60-70 %": [
+    7,
+    0.714
+   ],
+   "70-80 %": [
+    7,
+    0.857
+   ],
+   "80-90 %": [
+    1,
+    1.0
+   ],
+   "90-100 %": [
+    12,
+    0.25
+   ]
+  }
+ },
+ "note": "perte log, plus bas = mieux ; M − I < 0 : le modèle aide ; aucune cote de marché en entrée"
+}
