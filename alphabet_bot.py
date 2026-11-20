@@ -289,10 +289,16 @@ class AlphabetBot(FallTemplateBot2026):
             jour = datetime.now(timezone.utc).date().isoformat()
             fin = spx.echeance(question.question_text or "", jour)
             f = spx.fourchette(question.question_text or "", jour, fin)
+            ombre_ind = None
             if f is None:   # 0.10.404 : indicateurs lents (séries FRED), prochaine publication
                 import indicateurs_lents as ilx
                 i_ = ilx.fourchette_publication(question.question_text or "")
-                if i_ is not None:
+                if i_ is not None and ilx.consensus_trouve(research or ""):
+                    # 0.10.407 (décision de l'auteur du 2026-11-20, 22 h 01) : consensus des économistes dans la
+                    # recherche → le bot garde sa réponse, le modèle est scellé en ombre
+                    ombre_ind = {"indicateur_ombre": {"serie": i_["serie"], "percentiles": i_["percentiles"],
+                                                      "derniere_valeur": i_["derniere_valeur"], "date": i_["date"]}}
+                elif i_ is not None:
                     f = {"actif": f"indicateur {i_['serie']}", "dernier_prix": i_["derniere_valeur"], "date_prix": i_["date"],
                          "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": i_["percentiles"],
                          "mention": i_.get("mention")}
@@ -318,8 +324,8 @@ class AlphabetBot(FallTemplateBot2026):
                         f = {"actif": f"revenu {tk}", "dernier_prix": m_["dernier_chiffre"], "date_prix": m_["dernier_trimestre"],
                              "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": pc,
                              "commentaire": rex.ligne_commentaire(m_)}
-            if ombre:
-                extra = ombre
+            if ombre or ombre_ind:
+                extra = {**(ombre or {}), **(ombre_ind or {})}
             if f is not None:
                 v = rp.prediction_value
                 extra = {"prediction_brute": v.model_dump(mode="json") if hasattr(v, "model_dump") else str(v),

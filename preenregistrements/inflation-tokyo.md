@@ -23,3 +23,8 @@ et leurs sorties un an après restent dans l'épreuve. Lancé une fois (`mise_au
 ## Résultat (2026-11-20, 21 h 46) : critère atteint
 249 prévisions (2006-2026). Intervalle 80 % → 0,751 ; intervalle 60 % → 0,610. Dans les bornes (80 % de justesse,
 du côté étroit).
+
+## Règle d'application (0.10.407, décision de l'auteur du 2026-11-20, 22 h 01)
+Comme pour le chiffre d'affaires (option 2) : le modèle ne remplace la réponse du bot que si la recherche du bot ne
+contient pas de consensus des économistes ; sinon le bot garde sa réponse et le modèle est scellé en ombre
+(`indicateur_ombre` dans le journal), pour comparaison à la résolution.

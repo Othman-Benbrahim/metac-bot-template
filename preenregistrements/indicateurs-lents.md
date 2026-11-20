@@ -21,3 +21,8 @@ seront collectées.
 Branché en 0.10.404 pour les questions numériques sur ces séries américaines (prochaine publication), distribution du bot
 scellée à côté. Inflation de Tokyo : série non collectée (e-Stat demande une clé gratuite). Gallup Corée : la page
 Wikipédia des sondages a environ deux mois de retard ; utilisable pour l'historique, pas pour la dernière valeur.
+
+## Règle d'application (0.10.407, décision de l'auteur du 2026-11-20, 22 h 01)
+Comme pour le chiffre d'affaires (option 2) : le modèle ne remplace la réponse du bot que si la recherche du bot ne
+contient pas de consensus des économistes ; sinon le bot garde sa réponse et le modèle est scellé en ombre
+(`indicateur_ombre` dans le journal), pour comparaison à la résolution.

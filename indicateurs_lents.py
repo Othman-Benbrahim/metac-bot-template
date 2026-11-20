@@ -97,3 +97,15 @@ def fourchette_tokyo(titre: str) -> dict | None:
         return None
     return {"serie": "TOKYO_CORE_CPI", "transformation": "glissement publié", "derniere_valeur": pts[-1][1],
             "date": pts[-1][0], "percentiles": f, "mention": MENTION_ESTAT}
+
+
+# ---- 0.10.407 (décision de l'auteur du 2026-11-20, 22 h 01) : le modèle naïf ne remplace le bot que si sa recherche
+# ne contient pas de consensus des économistes (bien plus précis à un mois) ; sinon il reste en ombre.
+_CONSENSUS = _re.compile(
+    r"\bconsensus\b|\beconomists?\b[^.]{0,60}\b(expect|forecast|estimate|project|see|predict|polled|survey)|"
+    r"\b(reuters|bloomberg|nikkei|quick|dow jones|wall street journal)\b[^.]{0,40}\b(poll|survey)\b|"
+    r"\bmedian (forecast|estimate|expectation)\b|\b(forecasts?|estimates?) (of|for|at) [+-]?\d+(\.\d+)?\s?%", _re.I)
+
+
+def consensus_trouve(recherche: str) -> bool:
+    return bool(_CONSENSUS.search(recherche or ""))

@@ -26,3 +26,10 @@ def test_autres_titres(tmp_path, monkeypatch):
     _serie(tmp_path, monkeypatch)
     assert il.fourchette_tokyo("What will Japan's national core CPI be for January 2026?") is None
     assert il.fourchette_publication("What will Tokyo core CPI be for January 2026? U.S. comparison") is not None
+
+
+def test_consensus():
+    assert il.consensus_trouve("Economists polled by Reuters expect core CPI to rise 2.5%.")
+    assert il.consensus_trouve("The market consensus is 0.3% m/m.")
+    assert il.consensus_trouve("A QUICK survey of economists shows a median forecast of 2.6%.")
+    assert not il.consensus_trouve("Core CPI rose 2.6% in October, after 2.7% in September.")
