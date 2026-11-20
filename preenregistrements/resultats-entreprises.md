@@ -18,3 +18,9 @@ intervalle 60 % entre 0,55 et 0,65. Lancé une fois, dans GitHub (workflow colle
 ## Limite connue
 Le mécanisme ignore la prévision publiée par l'entreprise, souvent l'information la plus précise : il donne une
 fourchette de départ honnête, pas la meilleure possible.
+
+## Résultat (2026-11-20, 21 h 30) : critère manqué, fourchettes trop ÉTROITES
+Collecte EDGAR complète (50 entreprises, 4 486 valeurs trimestrielles ; quelques séries courtes ou vides : CRWD et GS
+sans chiffre d'affaires reconnu, XOM et UBER 4 trimestres). 1 403 prévisions d'un trimestre. Intervalle 80 % → 0,731
+(hors borne, sous 0,75) ; intervalle 60 % → 0,550 (sur la borne basse). Contrairement aux comptes cumulés, l'écart est
+du côté RISQUÉ (trop sûr de soi). Rien dans le bot. Décision de l'auteur attendue.
