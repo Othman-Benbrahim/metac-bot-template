@@ -39,3 +39,7 @@
 | opep_plus_quotas_mensuels | Arabie saoudite | conditionne | OPEP+ | quotas de production | conjoncturel (décisions mensuelles de l'OPEP+ (quotas) : quotas de décembre 2026 maintenus ; cadre 2027 attendu le 29 novembre) |
 | iran_detroit_d_ormuz | Iran (État) | peut_bloquer | OPEP+ | détroit d'Ormuz | conjoncturel (guerre d'Iran de 2026 : cessez-le-feu caduc depuis août 2026 ; détroit presque fermé) |
 | houthis_bab_el_mandeb | Houthis (en agrégat) | peut_bloquer | un navire marchand en transit | navigation en mer Rouge | conjoncturel (guerre d'Iran de 2026 : blocus houthi déclaré en juillet 2026) |
+| us_cour_supreme_session_annuelle | la Cour suprême | peut_bloquer | la fonction présidentielle (pouvoirs, limites, contre-pouvoirs) | contrôle juridictionnel | conjoncturel (session annuelle de la Cour suprême (octobre à fin juin) : session 2026-2027) |
+| us_revocation_gouverneur_fed_bloquee | la Cour suprême | peut_bloquer | le président en personne | révocation des gouverneurs de la Réserve fédérale | structurel depuis 2026-06-29 |
+| us_president_fed_warsh | le président en personne | nomme | Réserve fédérale | présidence de la Réserve fédérale | conjoncturel (mandat du président de la Réserve fédérale (quatre ans) : présidence Warsh) |
+| houthis_cessez_le_feu_etats_unis | Houthis (en agrégat) | conditionne | États-Unis | navigation en mer Rouge | conjoncturel (cessez-le-feu États-Unis–Houthis (médiation omanaise) : engagement renouvelé à Mascate, septembre 2026) |

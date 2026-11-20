@@ -387,3 +387,44 @@ liens:
     temps: {statut: conjoncturel, cycle: "guerre d'Iran de 2026", phase: "blocus houthi déclaré en juillet 2026", depuis: "2026-07", a_revoir_le: ["2026-12-13"]}
     sources:
       - {titre: "ONU Info, Security Council: Fragile Gulf calm tested as threats to Hormuz shipping mount, 13 novembre 2026", url: "https://news.un.org/en/story/2026/11/1168804", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 9 : pivots observés dans les questions Metaculus 2025-2026
+  # (registre de jugement, 936 questions : Cour suprême 32, Réserve fédérale 13, Houthis 7 ; observation du 2026-11-20)
+  - id: us_cour_supreme_session_annuelle
+    de: "politique-americaine:la Cour suprême"
+    vers: "politique-americaine:la fonction présidentielle (pouvoirs, limites, contre-pouvoirs)"
+    relation: peut_bloquer
+    domaine: contrôle juridictionnel
+    regle: "La Cour suprême siège d'octobre à la fin juin : les arrêts des affaires plaidées dans une session sont rendus au plus tard en fin de session (session 2025-2026 : dernier jour d'arrêts vers le 30 juin 2026 ; la séance de clôture a ajouté quatre affaires pour la session suivante). Une question « la Cour décidera-t-elle X avant telle date ? » dépend de ce calendrier : une affaire plaidée en session 2026-2027 sera tranchée d'ici fin juin 2027 au plus tard ; les mesures provisoires (recours d'urgence) peuvent venir à tout moment."
+    temps: {statut: conjoncturel, cycle: "session annuelle de la Cour suprême (octobre à fin juin)", phase: "session 2026-2027", depuis: "2026-10-05", jusqua: "2027-06-30", a_revoir_le: ["2027-07-01"]}
+    sources:
+      - {titre: "SCOTUSblog, The Stat Pack is back, juillet 2026", url: "https://www.scotusblog.com/2026/07/the-stat-pack-is-back/", consulte: "2026-11-20"}
+      - {titre: "SCOTUSblog, A snapshot of the Supreme Court's 2025-26 interim relief docket, octobre 2026", url: "https://www.scotusblog.com/2026/10/a-snapshot-of-the-supreme-courts-2025-26-interim-relief-docket-and-some-surprises-on-it/", consulte: "2026-11-20"}
+  - id: us_revocation_gouverneur_fed_bloquee
+    de: "politique-americaine:la Cour suprême"
+    vers: "politique-americaine:le président en personne"
+    relation: peut_bloquer
+    domaine: révocation des gouverneurs de la Réserve fédérale
+    regle: "Trump c. Cook, 29 juin 2026, 5 contre 4 (mesure provisoire, le litige continue) : Lisa Cook reste gouverneure ; la révocation d'un gouverneur est contrôlable par les tribunaux et le « motif » exigé n'est pas un seuil bas ; le président n'avait pas respecté les garanties de procédure de la loi. À distinguer des autres agences indépendantes (FTC, NLRB, MSPB, CPSC), dont la Cour a laissé révoquer des membres en 2025 pendant les recours."
+    temps: {statut: structurel, depuis: "2026-06-29"}
+    sources:
+      - {titre: "SCOTUSblog, Court prevents Trump from firing Fed governor, 29 juin 2026", url: "https://www.scotusblog.com/2026/06/court-prevents-trump-from-firing-fed-governor/", consulte: "2026-11-20"}
+  - id: us_president_fed_warsh
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:Réserve fédérale"
+    relation: nomme
+    domaine: présidence de la Réserve fédérale
+    regle: "Kevin Warsh, confirmé par le Sénat le 13 mai 2026 (54 contre 45), préside la Réserve fédérale depuis le 15 mai 2026, fin du mandat de Jerome Powell ; mandat de quatre ans (jusque vers mai 2030, calcul de date). Powell reste gouverneur (mandat de gouverneur jusqu'en 2028)."
+    temps: {statut: conjoncturel, cycle: "mandat du président de la Réserve fédérale (quatre ans)", phase: "présidence Warsh", depuis: "2026-05-15", jusqua: "2030-05-15", a_revoir_le: ["2028-01-31"]}
+    sources:
+      - {titre: "Fox News, Senate confirms Kevin Warsh as Federal Reserve chair, 13 mai 2026", url: "https://www.foxnews.com/politics/senate-confirms-kevin-warsh-fed-chair-trumps-economic-vision-comes-focus", consulte: "2026-11-20"}
+  - id: houthis_cessez_le_feu_etats_unis
+    de: "guerre-levant:Houthis (en agrégat)"
+    vers: "guerre-levant:États-Unis"
+    relation: conditionne
+    domaine: navigation en mer Rouge
+    regle: "Cessez-le-feu États-Unis–Houthis de mai 2025, négocié par Oman, après environ deux mois de campagne américaine. En septembre 2026 (pourparlers de Mascate), les Houthis s'engagent à le respecter et à ne viser ni navires américains ni navires israéliens ; les navires saoudiens restent pour eux des cibles (voir houthis_bab_el_mandeb). Une question « le cessez-le-feu sera-t-il rompu ? » porte donc sur les navires américains, pas sur la mer Rouge en général."
+    temps: {statut: conjoncturel, cycle: "cessez-le-feu États-Unis–Houthis (médiation omanaise)", phase: "engagement renouvelé à Mascate, septembre 2026", depuis: "2025-05-06", a_revoir_le: ["2026-12-16"]}
+    sources:
+      - {titre: "NBC News, Oman says it mediated a ceasefire between U.S., Yemen's Houthis, mai 2025", url: "https://www.nbcnews.com/world/yemen/oman-says-mediated-ceasefire-us-yemens-houthis-rcna205175", consulte: "2026-11-20"}
+      - {titre: "BTimes (Reuters), U.S. officials hold secret Oman talks with Houthis, 16 septembre 2026", url: "https://www.btimesonline.com/articles/178409/20260916/us-officials-hold-secret-oman-talks-with-houthis-as-group-pledges-not-to-target-american-or-israeli-ships.htm", consulte: "2026-11-20"}
