@@ -36,3 +36,6 @@
 | ue_reglement_ia_calendrier | un laboratoire d'IA | depend_de | un régulateur national ou européen | régulation de l'IA (Union européenne) | conjoncturel (mise en application échelonnée du règlement sur l'IA : calendrier modifié par l'omnibus (juillet 2026)) |
 | us_lois_ia_des_etats | un laboratoire d'IA | depend_de | un régulateur national ou européen | régulation de l'IA (États-Unis) | conjoncturel (législation des États sur l'IA et tentatives de préemption fédérale : lois d'État en vigueur, préemption non acquise) |
 | us_licences_puces_ia_chine | un fondeur de puces | depend_de | un régulateur national ou européen | exportation de puces d'IA | structurel depuis 2026-01-13 |
+| opep_plus_quotas_mensuels | Arabie saoudite | conditionne | OPEP+ | quotas de production | conjoncturel (décisions mensuelles de l'OPEP+ (quotas) : quotas de décembre 2026 maintenus ; cadre 2027 attendu le 29 novembre) |
+| iran_detroit_d_ormuz | Iran (État) | peut_bloquer | OPEP+ | détroit d'Ormuz | conjoncturel (guerre d'Iran de 2026 : cessez-le-feu caduc depuis août 2026 ; détroit presque fermé) |
+| houthis_bab_el_mandeb | Houthis (en agrégat) | peut_bloquer | un navire marchand en transit | navigation en mer Rouge | conjoncturel (guerre d'Iran de 2026 : blocus houthi déclaré en juillet 2026) |

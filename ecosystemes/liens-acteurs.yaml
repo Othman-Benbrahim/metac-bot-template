@@ -355,3 +355,35 @@ liens:
     sources:
       - {titre: "Bureau de l'industrie et de la sécurité, Department of Commerce Revises License Review Policy for Semiconductors Exported to China, 13 janvier 2026", url: "https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china", consulte: "2026-11-20"}
       - {titre: "WiseVoter, House Panel Moves to Expose Nvidia, AMD China Chip Licenses, 20 novembre 2026", url: "https://wisevoter.com/world/us/2026/11/20/house-panel-expose-nvidia-amd-china-chip-licenses", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 8 : énergie (et guerre d'Iran de 2026)
+  - id: opep_plus_quotas_mensuels
+    de: "energie-mondiale:Arabie saoudite"
+    vers: "energie-mondiale:OPEP+"
+    relation: conditionne
+    domaine: quotas de production
+    regle: "Les quotas sont fixés chaque mois par un sous-groupe (Arabie saoudite, Russie, Irak, Koweït, Kazakhstan, Algérie, Oman) réuni en visioconférence : le 1er novembre 2026, maintien pour décembre du niveau requis de septembre 2026. La réduction volontaire de 1,65 million de barils par jour a été entièrement levée en septembre 2026 ; environ 2 millions de barils par jour de réductions couvrent encore la plupart des membres jusqu'à fin 2026. Les Émirats arabes unis ont quitté l'OPEP et l'OPEP+ le 1er mai 2026. Prochaine réunion le 29 novembre 2026, avec la réunion des 21 membres qui doit fixer les quotas et le cadre de 2027 après une revue des capacités de production."
+    temps: {statut: conjoncturel, cycle: "décisions mensuelles de l'OPEP+ (quotas)", phase: "quotas de décembre 2026 maintenus ; cadre 2027 attendu le 29 novembre", depuis: "2026-11-01", jusqua: "2026-11-29", a_revoir_le: ["2026-11-30"]}
+    sources:
+      - {titre: "OPEP, communiqué du 1er novembre 2026", url: "https://opec.org/pr-detail/2033620-1-november-2026.html", consulte: "2026-11-20"}
+      - {titre: "GV Wire (Reuters), OPEC+ keeps December oil output targets steady ahead of tougher call for 2027, 1er novembre 2026", url: "https://gvwire.com/2026/11/01/opec-keeps-december-oil-output-targets-steady-ahead-of-tougher-call-for-2027/", consulte: "2026-11-20"}
+      - {titre: "Al Jazeera, UAE leaves OPEC in blow to oil cartel during war on Iran, 28 avril 2026", url: "https://www.aljazeera.com/news/2026/4/28/uae-leaves-opec-and-opec", consulte: "2026-11-20"}
+  - id: iran_detroit_d_ormuz
+    de: "iran-nucleaire:Iran (État)"
+    vers: "energie-mondiale:OPEP+"
+    relation: peut_bloquer
+    domaine: détroit d'Ormuz
+    regle: "Guerre d'Iran de 2026 : frappes israéliennes et américaines à partir du 28 février 2026, ripostes iraniennes contre des cibles américaines dans six États du Golfe et en Jordanie. Cessez-le-feu de deux semaines le 8 avril (médiation pakistanaise), blocus naval américain des ports iraniens annoncé les 12-13 avril, nouveau cessez-le-feu de 60 jours en juin (mémorandum d'Islamabad du 17 juin), devenu caduc en août sans accord de paix. Au 13 novembre 2026, il n'y a plus de cessez-le-feu ; l'Iran a presque fermé le détroit d'Ormuz (passages environ 65 % sous le niveau d'avant-guerre selon UKMTO) ; octobre a compté le plus d'incidents maritimes depuis le début de la guerre. Les exportations du Golfe restent sous leurs quotas."
+    temps: {statut: conjoncturel, cycle: "guerre d'Iran de 2026", phase: "cessez-le-feu caduc depuis août 2026 ; détroit presque fermé", depuis: "2026-02-28", a_revoir_le: ["2026-12-13"]}
+    sources:
+      - {titre: "ONU Info, Security Council: Fragile Gulf calm tested as threats to Hormuz shipping mount, 13 novembre 2026", url: "https://news.un.org/en/story/2026/11/1168804", consulte: "2026-11-20"}
+      - {titre: "Wikipédia (en anglais), 2026 Iran war ceasefire (informations jusqu'à mi-juin 2026)", url: "https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire", consulte: "2026-11-20"}
+  - id: houthis_bab_el_mandeb
+    de: "guerre-levant:Houthis (en agrégat)"
+    vers: "guerre-levant:un navire marchand en transit"
+    relation: peut_bloquer
+    domaine: navigation en mer Rouge
+    regle: "En juillet 2026, les Houthis ont déclaré un blocus des navires liés à l'Arabie saoudite ; depuis, les passages par le détroit de Bab el-Mandeb ont baissé d'environ un quart (au 13 novembre 2026)."
+    temps: {statut: conjoncturel, cycle: "guerre d'Iran de 2026", phase: "blocus houthi déclaré en juillet 2026", depuis: "2026-07", a_revoir_le: ["2026-12-13"]}
+    sources:
+      - {titre: "ONU Info, Security Council: Fragile Gulf calm tested as threats to Hormuz shipping mount, 13 novembre 2026", url: "https://news.un.org/en/story/2026/11/1168804", consulte: "2026-11-20"}
