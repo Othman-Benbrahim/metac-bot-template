@@ -44,3 +44,9 @@ incidence ; marche au hasard dont les pas sont les variations symétrisées des 
 Test sur des données que le modèle n'a pas vues : manifestations GDELT par pays (ancrages depuis juillet 2025) et
 séismes M4,5+ mondiaux USGS (depuis 2001). Même critère, sur chacune des deux sources. UCDP rapporté sans effet sur le
 critère. Lancé une fois (`mise_au_point/comptes_cumules_v2_essai.py`).
+
+## Résultat v2 (2026-11-20, 20 h 45) : critère non atteint, fourchettes trop LARGES
+Manifestations GDELT (16 240 ancrages) : 7 j → 0,857 et 0,717 ; 14 j → 0,877 et 0,745. Séismes USGS (1 348) : 7 j →
+0,790 et 0,600 (dans les bornes) ; 14 j → 0,858 et 0,694. UCDP (descriptif) : 7 j → 0,826 et 0,664 ; 14 j → 0,876 et
+0,717. La v2 élargit trop à 14 jours (les pas tirés au hasard s'additionnent plus que les vraies séries ne varient).
+Les deux versions se trompent surtout du côté large. Rien dans le bot.
