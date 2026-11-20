@@ -33,3 +33,6 @@
 | otan_article_4_invoque | un ministère de la défense national | conditionne | l'OTAN | consultations (article 4) | structurel depuis 2003-02-10 |
 | otan_objectif_cinq_pour_cent | l'OTAN | conditionne | un ministère de la défense national | dépenses de défense | conjoncturel (estimations annuelles de dépenses de défense de l'OTAN : estimations 2026 (7 juillet 2026)) |
 | ue_adhesion_ukraine_groupes_de_chapitres | Ukraine (gouvernement) | depend_de | Union européenne | adhésion à l'Union européenne | conjoncturel (négociations d'adhésion (ouverture des groupes de chapitres) : levée du blocage hongrois sur les groupes 4 et 5) |
+| ue_reglement_ia_calendrier | un laboratoire d'IA | depend_de | un régulateur national ou européen | régulation de l'IA (Union européenne) | conjoncturel (mise en application échelonnée du règlement sur l'IA : calendrier modifié par l'omnibus (juillet 2026)) |
+| us_lois_ia_des_etats | un laboratoire d'IA | depend_de | un régulateur national ou européen | régulation de l'IA (États-Unis) | conjoncturel (législation des États sur l'IA et tentatives de préemption fédérale : lois d'État en vigueur, préemption non acquise) |
+| us_licences_puces_ia_chine | un fondeur de puces | depend_de | un régulateur national ou européen | exportation de puces d'IA | structurel depuis 2026-01-13 |

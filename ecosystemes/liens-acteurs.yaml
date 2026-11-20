@@ -323,3 +323,35 @@ liens:
     sources:
       - {titre: "Evropeiska Pravda, Hungary lifts veto on opening EU negotiation clusters 4 and 5 with Ukraine, 20 novembre 2026", url: "https://www.eurointegration.com.ua/eng/news/2026/11/20/7250427/", consulte: "2026-11-20"}
       - {titre: "Al Jazeera, Peter Magyar sworn in as Hungary's PM, ending Orban's 16 years in power, 9 mai 2026", url: "https://www.aljazeera.com/news/2026/5/9/peter-magyar-sworn-in-as-hungarys-pm-ending-orbans-16-years-in-power", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 7 : sciences et techniques
+  - id: ue_reglement_ia_calendrier
+    de: "sciences-techniques:un laboratoire d'IA"
+    vers: "sciences-techniques:un régulateur national ou européen"
+    relation: depend_de
+    domaine: régulation de l'IA (Union européenne)
+    regle: "Règlement européen sur l'IA, calendrier modifié par l'omnibus numérique (règlement (UE) 2026/1744, adopté par le Conseil le 29 juin 2026, publié le 24 juillet 2026, en vigueur le 27 juillet 2026) : obligations des modèles d'IA à usage général depuis le 2 août 2025 (inchangé) ; obligations de transparence (article 50) depuis le 2 août 2026, avec délai jusqu'au 2 décembre 2026 pour le marquage des systèmes déjà sur le marché ; nouvelles pratiques interdites à partir du 2 décembre 2026 ; systèmes à haut risque autonomes (annexe III) reportés au 2 décembre 2027, systèmes intégrés à des produits (annexe I) au 2 août 2028."
+    temps: {statut: conjoncturel, cycle: "mise en application échelonnée du règlement sur l'IA", phase: "calendrier modifié par l'omnibus (juillet 2026)", depuis: "2026-07-27", a_revoir_le: ["2026-12-03", "2027-12-03"]}
+    sources:
+      - {titre: "Gibson Dunn, EU AI Act Omnibus Agreement — Postponed High-Risk Deadlines, 27 mai 2026", url: "https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/", consulte: "2026-11-20"}
+      - {titre: "AI Acto, Digital Omnibus Adopted: AI Act High-Risk Delayed to 2027 (blog de conformité, renvoie à EUR-Lex)", url: "https://www.aiacto.eu/en/blog/digital-omnibus-ai-act-report-2027", consulte: "2026-11-20"}
+  - id: us_lois_ia_des_etats
+    de: "sciences-techniques:un laboratoire d'IA"
+    vers: "sciences-techniques:un régulateur national ou européen"
+    relation: depend_de
+    domaine: régulation de l'IA (États-Unis)
+    regle: "Aux États-Unis, la régulation de l'IA vient des États, pas d'une loi fédérale : Californie SB 53 (modèles de pointe) et Texas TRAIGA en vigueur depuis le 1er janvier 2026 ; la loi du Colorado (SB 24-205) n'est jamais entrée en vigueur, abrogée et remplacée par SB 26-189 (signée le 14 mai 2026, en vigueur le 1er janvier 2027). Le décret présidentiel de décembre 2025 demande au ministère de la Justice de contester les lois des États mais ne les écarte pas lui-même ; en juillet 2025 le Sénat a retiré (99 contre 1) un moratoire fédéral de dix ans ; au 4 avril 2026, aucun tribunal fédéral n'avait invalidé une loi d'État sur l'IA."
+    temps: {statut: conjoncturel, cycle: "législation des États sur l'IA et tentatives de préemption fédérale", phase: "lois d'État en vigueur, préemption non acquise", depuis: "2026-01-01", a_revoir_le: ["2027-01-02"]}
+    sources:
+      - {titre: "Cloud Security Alliance, State AI Laws Take Hold as Federal Preemption Stalls, 4 avril 2026", url: "https://labs.cloudsecurityalliance.org/research/csa-research-note-us-ai-regulation-preemption-compliance-202/", consulte: "2026-11-20"}
+      - {titre: "Intellisee, Colorado AI Act Collapse: SB 24-205 Repeal Briefing", url: "https://intellisee.com/intelligence/colorado-ai-act-sb-24-205-repeal-2026-compliance-briefing/", consulte: "2026-11-20"}
+  - id: us_licences_puces_ia_chine
+    de: "sciences-techniques:un fondeur de puces"
+    vers: "sciences-techniques:un régulateur national ou européen"
+    relation: depend_de
+    domaine: exportation de puces d'IA
+    regle: "Depuis le 13 janvier 2026, le Bureau de l'industrie et de la sécurité (BIS) examine au cas par cas les licences d'exportation vers la Chine de la Nvidia H200, de l'AMD MI325X et de puces similaires, sous conditions (pas de réduction de la capacité disponible pour les clients américains, procédures de contrôle chez l'acheteur chinois, essais indépendants aux États-Unis). Le 19 novembre 2026, la commission des affaires étrangères de la Chambre a approuvé à l'unanimité la divulgation des licences accordées."
+    temps: {statut: structurel, depuis: "2026-01-13"}
+    sources:
+      - {titre: "Bureau de l'industrie et de la sécurité, Department of Commerce Revises License Review Policy for Semiconductors Exported to China, 13 janvier 2026", url: "https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china", consulte: "2026-11-20"}
+      - {titre: "WiseVoter, House Panel Moves to Expose Nvidia, AMD China Chip Licenses, 20 novembre 2026", url: "https://wisevoter.com/world/us/2026/11/20/house-panel-expose-nvidia-amd-china-chip-licenses", consulte: "2026-11-20"}
