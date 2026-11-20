@@ -343,7 +343,13 @@ ESSAIS = {
                        "objet": "brique « scrutin » (règle, sondages à la date, erreur habituelle, temps restant) contre "
                                 "les semblables, sur les questions électorales résolues, par classe homologue",
                        "doc": "preenregistrements/etalon-scrutin.md"},
-    "brique_fenetre_etat": {"ouvert_le": "2026-11-20", "type": "intervalle", "n": 100, "statut": "ouvert",
+    "brique_fenetre_etat": {"ouvert_le": "2026-11-20", "type": "intervalle", "n": 100, "statut": "clos", "clos_le": "2026-11-20",
+                            "verdict": "non adopté (run 44648878733, 424 questions) : contre les semblables +0,005 "
+                                       "[−0,051 ; +0,057], contre le taux de base −0,036 [−0,111 ; +0,030], non tranchés ; "
+                                       "foule 0,394 contre 0,646. Conclusion écrite d'avance : l'attention (presse et public) "
+                                       "ne porte pas l'état du système qui manque à la brique ; pas de relance avec une autre "
+                                       "pièce d'attention. Descriptif (coefficients sur tout, non probants) : tendance de la "
+                                       "presse +0,74, tendance du public −0,35",
                             "objet": "moteur complet : semblables + brique acteur × fenêtre + état présent (attention de "
                                      "la presse et du public, 90 jours avant le jeu) contre les semblables",
                             "doc": "preenregistrements/brique-fenetre-etat.md"},
