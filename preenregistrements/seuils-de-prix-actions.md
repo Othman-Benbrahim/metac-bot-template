@@ -17,3 +17,10 @@ alors que les seuils des questions sont écrits en prix de l'époque. Les pertes
 divisées pendant la période (Tesla 1,15 ; MicroStrategy 4,61 ; Apple 0,81), pas sur les autres (Nvidia 0,01 sur des
 questions de 2023). Correctif : `adjust=none`. Fichier conservé : `registre/mise-au-point/seuils-prix-actions-passage1-errone.json`.
 Un seul nouveau passage.
+
+## Passage 2 (2026-11-20, 19 h 59) : critère non atteint
+Run 44797643488, cours non ajustés. 55 questions (49 distinctes). Perte : témoin 0,6125 ; M (σ 30 j) 0,5631 ; σ 90 j
+0,5832 ; σ × 1,5 0,6047. M − I = −0,0494, intervalle à 90 % [−0,2024 ; +0,1125] : dans le bon sens, non tranché.
+« À la date » 0,575 contre 0,622 (33) ; « atteint avant » 0,545 contre 0,598 (22). Tesla 0,595 contre 0,617 (31) ;
+Apple 0,810 contre 0,687 (10). `ACTIONS_DANS_LE_BOT` reste à False. Reprise possible sur des questions d'actions
+nouvelles, quand elles seront assez nombreuses.
