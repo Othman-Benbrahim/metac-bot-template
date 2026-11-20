@@ -18,6 +18,11 @@ import combinaisons as cb
 import seuils_prix as sp
 
 SORTIE = Path("registre") / "mise-au-point" / "seuils-prix.json"
+# 0.10.400 : les actions ont leur propre passage (--actions, préenregistrement seuils-de-prix-actions.md) ; le passage
+# d'origine reste sur les cryptomonnaies, le Brent et les indices
+ACTIONS_SEULES = "--actions" in sys.argv
+if ACTIONS_SEULES:
+    SORTIE = Path("registre") / "mise-au-point" / "seuils-prix-actions.json"
 NUM = re.compile(r"\$\s?([\d,]+(?:\.\d+)?)\s*([kKmM]?)\b|\b([\d,]+(?:\.\d+)?)\s*([kKmM])\b")
 TOUCHE = re.compile(r"\b(reach|hit|touch|dip|drop|fall|trade (above|below|over|under)|at any (point|time)|again)\b", re.I)
 DATE = re.compile(r"\b(close|closing|settle|be (above|below|over|under)|end (of )?\w+ (above|below))\b", re.I)
@@ -78,7 +83,7 @@ def questions():
             d = json.loads(l)
             t = d["titre"]
             a, k = sp.actif(t), montant(t)
-            if not a or not k:
+            if not a or not k or (a in sp.ACTIONS) != ACTIONS_SEULES:
                 continue
             typ = "touche" if TOUCHE.search(t) else "date" if DATE.search(t) else None
             if not typ:

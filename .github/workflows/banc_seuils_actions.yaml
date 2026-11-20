@@ -1,6 +1,6 @@
-name: "Collecte cours d actions (Twelve Data ; ombre)"
+name: "Banc seuils de prix des actions (Twelve Data ; ombre)"
 
-# 0.10.399 : cours quotidiens d'actions (Twelve Data, offre gratuite). Aucun modèle de langue. Rien n'entre dans le bot.
+# 0.10.400 : calibrage du modèle de seuil de prix sur les questions d'actions ; cours lus à la demande, jamais enregistrés.
 on:
   workflow_dispatch:
 
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  collecte_actions:
+  banc_seuils_actions:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -25,7 +25,7 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Collecter
-        run: uv run python collecte_actions.py
+        run: uv run python mise_au_point/seuils_prix_essai.py --actions
         env:
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
       - name: Enregistrer
@@ -33,9 +33,9 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          if [ -f registre/actions.csv ]; then git add registre/actions.csv; fi
+          if [ -f registre/mise-au-point/seuils-prix-actions.json ]; then git add registre/mise-au-point/seuils-prix-actions.json; fi
           if ! git diff --cached --quiet; then
-            git commit -m "registre : cours d actions du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git commit -m "registre : banc seuils actions du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase || (sleep 20 && git pull --rebase)
             git push || (sleep 20 && git pull --rebase && git push)
           fi

@@ -20,6 +20,22 @@ ACTIFS = {  # motif du titre → (série FRED, jours de cotation par an)
     "SP500": (re.compile(r"\b(s&p ?500|spx)\b", re.I), 252),
     "DJIA": (re.compile(r"\bdow jones\b|\bdjia\b", re.I), 252),
 }
+# 0.10.400 : actions, cours lus à la demande chez Twelve Data (collecte_actions.cours), jamais écrits dans le dépôt.
+# Branchées dans le bot seulement après le calibrage sur les questions d'actions (ACTIONS_DANS_LE_BOT).
+ACTIONS = {
+    "NVDA": r"\b(nvidia|nvda)\b", "AMD": r"\b(amd|advanced micro devices)\b", "AVGO": r"\b(broadcom|avgo)\b",
+    "MU": r"\b(micron|\$?mu)\b(?= (stock|share|close|technology))", "MSTR": r"\b(microstrategy|mstr|strategy \(mstr\))\b",
+    "TSLA": r"\b(tesla|tsla)\b", "AAPL": r"\b(apple|aapl)\b(?! (watch|vision|tv|music|intelligence))",
+    "MSFT": r"\b(microsoft|msft)\b", "GOOGL": r"\b(alphabet|googl?)\b(?= (stock|share|close|class))",
+    "AMZN": r"\b(amazon|amzn)\b(?= (stock|share|close))", "META": r"\b(meta platforms|\$meta)\b",
+    "NFLX": r"\b(netflix|nflx)\b(?= (stock|share|close))", "COIN": r"\b(coinbase|\$coin)\b(?= (stock|share|close))",
+    "PLTR": r"\b(palantir|pltr)\b", "SNOW": r"\b(snowflake|snow)\b(?= (stock|share|close))",
+    "CRM": r"\b(salesforce|crm)\b(?= (stock|share|close))", "INTC": r"\b(intel|intc)\b(?= (stock|share|close))",
+    "ORCL": r"\b(oracle|orcl)\b(?= (stock|share|close))",
+}
+for _s, _rx in ACTIONS.items():
+    ACTIFS[_s] = (re.compile(_rx, re.I), 252)
+ACTIONS_DANS_LE_BOT = False
 
 
 def phi(x: float) -> float:
@@ -54,9 +70,16 @@ def series() -> dict[str, list[tuple[str, float]]]:
     return out
 
 
+def points(serie: str) -> list[tuple[str, float]]:
+    if serie in ACTIONS:
+        import collecte_actions as ca
+        return list(ca.cours(serie))
+    return series().get(serie, [])
+
+
 def etat(serie: str, avant: str, fenetre: int = 30) -> tuple[float, float] | None:
     """(dernier prix connu strictement avant la date, volatilité annualisée sur `fenetre` rendements)."""
-    pts = [v for j, v in series().get(serie, []) if j < avant and v > 0]
+    pts = [v for j, v in points(serie) if j < avant and v > 0]
     if len(pts) < fenetre + 1:
         return None
     r = [math.log(b / a) for a, b in zip(pts[-fenetre - 1:-1], pts[-fenetre:])]
@@ -113,10 +136,10 @@ def estimer(titre: str, jour: str, fin: str) -> dict | None:
     """Probabilité du modèle pour une question de seuil de prix, à la date d'information `jour`, échéance `fin`
     (AAAA-MM-JJ). None si la question n'est pas reconnue ou si les prix manquent ou sont trop anciens."""
     q = lire(titre)
-    if not q or not fin or fin <= jour:
+    if not q or not fin or fin <= jour or (q["actif"] in ACTIONS and not ACTIONS_DANS_LE_BOT):
         return None
     e = etat(q["actif"], jour, 30)
-    pts = [j for j, _ in series().get(q["actif"], []) if j < jour]
+    pts = [j for j, _ in points(q["actif"]) if j < jour]
     if not e or not pts or (date.fromisoformat(jour) - date.fromisoformat(pts[-1])).days > FRAICHEUR_JOURS:
         return None
     s0, sigma = e

@@ -88,6 +88,7 @@ jobs:
           GDELT_PONT: ${{ vars.GDELT_PONT }}
           GDELT_PONT_CLE: ${{ secrets.GDELT_PONT_CLE }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}   # 0.10.400 : cours d actions lus à la demande (seuils de prix)
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
           UCDP_TOKEN: ${{ secrets.UCDP_TOKEN }}
           BLS_API_KEY: ${{ secrets.BLS_API_KEY }}

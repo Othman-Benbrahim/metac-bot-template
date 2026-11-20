@@ -21,7 +21,8 @@ def test_actif():
 def test_lire():
     q = sp.lire("Will Bitcoin reach $110,000 by December 31, 2025?")
     assert q == {"actif": "CBBTCUSD", "k": 110000.0, "type": "touche", "au_dessus": True}
-    assert sp.lire("Will NVIDIA’s (NASDAQ Ticker: $NVDA) stock price close above $480 per share?") is None
+    assert sp.lire("Will NVIDIA’s (NASDAQ Ticker: $NVDA) stock price close above $480 per share?")["actif"] == "NVDA"  # pas l'indice
+    assert sp.estimer("Will Strategy (MSTR) close below $100 on Friday, November 27, 2026?", "2026-11-20", "2026-11-27") is None  # actions pas encore dans le bot
     assert sp.lire("Will Brent crude oil close above $100 on 27 November 2026?")["type"] == "date"
 
 
