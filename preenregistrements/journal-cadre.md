@@ -1,6 +1,6 @@
 # Cadre écosystémique + lecture du bot, sur le journal d'ombre (préenregistrement, 2026-11-20)
 
-Décisions de l'auteur, 2026-11-20 : le bot ne poste rien sur Metaculus tant qu'il n'est pas au point (02 h 00) ; préenregistrer maintenant le test du journal (02 h 02). Origine : les deux bancs de la nuit (`brique_fenetre`, `brique_fenetre_etat`) montrent que la structure seule ne rattrape pas la foule (0,39 à 0,33 contre 0,57 à 0,65) ; la foule lit le contenu de l'actualité. Hypothèse : la couche écosystémique ne remplace pas cette lecture, elle la cadre.
+Décisions de l'auteur, 2026-11-20 : le bot ne poste rien sur Metaculus tant qu'il n'est pas au point (02 h 00) ; préenregistrer maintenant le test du journal (02 h 02). Origine (révision séquentielle : veille du 2026-11-20, dépôt « spikewatch ») : les deux bancs de la nuit (`brique_fenetre`, `brique_fenetre_etat`) montrent que la structure seule ne rattrape pas la foule (0,39 à 0,33 contre 0,57 à 0,65) ; la foule lit le contenu de l'actualité. Hypothèse : la couche écosystémique ne remplace pas cette lecture, elle la cadre.
 
 Essai `journal_cadre`, inscrit dans `essais.py` le jour du lancement seulement (pour ne pas compter dans le risque corrigé tant qu'il attend).
 
@@ -12,9 +12,11 @@ Prévisions binaires d'ombre du bot, scellées (`registre/journal-bot.jsonl`, sc
 - Cadre : p_S, questions semblables du registre de jugement, avec les seules questions résolues et closes avant la date d'information.
 - Mise en commun : moyenne des log-cotes à poids égaux (0,5 / 0,5).
 
-## Condition de lancement et critère
-- Lancement unique quand au moins **100 questions binaires distinctes** sont résolues ; avant, `journal_cadre.py` compte et ne note rien.
-- Critère : perte log de la mise en commun contre le bot seul, intervalle de l'écart corrigé (risque d'`essais.py` au jour du lancement) entièrement sous 0.
+## Suivi et critère (révisé le 2026-11-20 à 11 h 37, avant toute résolution, décision de l'auteur)
+- Suivi **séquentiel valable à tout instant** : e-processus par pari (Waudby-Smith et Ramdas, « Estimating means of bounded random variables by betting », JRSS B, 2024). Écart par question d = perte(commun) − perte(bot), probabilités bornées à [0,01 ; 0,99], questions dans l'ordre de leur résolution ; mise prévisible, calculée sur les écarts précédents seulement.
+- On peut regarder après chaque résolution sans gonfler le risque (inégalité de Ville). **Verdict positif** dès que la richesse du pari atteint 1/α, α = risque corrigé d'`essais.py` au jour du premier regard. **Arrêt sans verdict positif** à 100 questions résolues.
+- Puissance limitée, dite d'avance : avec des écarts bornés à ln 99 et α ≈ 0,003, seul un gain net et régulier atteint le seuil en 100 questions ; un gain faible restera « non tranché ».
+- Hypothèse de travail déclarée : les questions sont traitées comme une suite d'épreuves, dans l'ordre des résolutions.
 - Descriptif : perte du cadre seul.
 
 ## Limite connue
