@@ -53,7 +53,8 @@ COREE_PROVINCES = ["Gyeonggi", "Gangwon", "North Chungcheong", "South Chungcheon
 
 
 def titres() -> list[tuple[str, str]]:
-    t = [(f"{a} {e} gubernatorial election", "bresil_etats") for a in (2014, 2018, 2022) for e in ETATS_BR]
+    t = [(f"{a} {e} {g} election", "bresil_etats") for a in (2014, 2018, 2022) for e in ETATS_BR
+         for g in ("gubernatorial", "state")]           # 0.10.377 : beaucoup de pages s'appellent « 2022 Bahia state election »
     t += [(f"{a} {l} state election", "allemagne_lander") for a in range(2011, 2026) for l in LANDER]
     t += [(f"{a} {p} general election", "canada_provinces") for a in range(2011, 2026) for p in PROVINCES]
     t += [(f"{a} {v} mayoral election", "etats_unis_villes") for a in range(2009, 2026) for v in VILLES]
@@ -78,6 +79,16 @@ def encadre(texte: str) -> dict[str, str]:
         if c and c.group(1).lower() not in out:
             out[c.group(1).lower()] = bs._texte_cellule(c.group(2))[:120]
     return out
+
+
+def lire_page(c, source, titre: str, texte: str) -> dict:
+    annee = int(titre[:4])
+    tabs = bs.tableaux(texte, annee)
+    sond = source(c, f"Opinion polling for the {titre}")
+    if sond:
+        tabs += bs.tableaux(sond, annee)
+    return {"encadre": encadre(texte), "date_scrutin": bs._date_scrutin(texte), "page_sondages": bool(sond),
+            "tableaux": [{"colonnes": t["colonnes"], "lignes": [(d_.isoformat(), v) for d_, v in t["lignes"]]} for t in tabs]}
 
 
 def collecter() -> int:
@@ -115,15 +126,11 @@ def collecter() -> int:
             texte = source(c, titre)
             rec = {"titre": titre, "echelle": echelle, "existe": texte is not None}
             if texte:
-                annee = int(titre[:4])
-                tabs = bs.tableaux(texte, annee)
-                sond = source(c, f"Opinion polling for the {titre}")
-                if sond:
-                    tabs += bs.tableaux(sond, annee)
-                rec.update(encadre=encadre(texte), date_scrutin=bs._date_scrutin(texte), page_sondages=bool(sond),
-                           tableaux=[{"colonnes": t["colonnes"], "lignes": [(d_.isoformat(), v) for d_, v in t["lignes"]]}
-                                     for t in tabs])
-                lus += 1
+                try:
+                    rec.update(lire_page(c, source, titre, texte))
+                    lus += 1
+                except Exception as x:                       # 0.10.377 : une page illisible n'arrête pas la collecte
+                    rec["erreur"] = f"{type(x).__name__}: {x}"[:200]
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
             f.flush()
         print(f"{lus} pages existantes archivées.", flush=True)
@@ -179,6 +186,21 @@ def tours(enc: dict[str, str]) -> tuple[str, str] | None:
     return (a, b) if a and b else None
 
 
+# noms des partis dans l'encadré → sigle des colonnes de sondages (nomenclature, pas une règle)
+SIGLES = [("christian democratic union", "CDU"), ("christian social union", "CSU"), ("social democratic party of germany", "SPD"),
+          ("alliance 90", "Grüne"), ("alliance '90", "Grüne"), ("greens", "Grüne"), ("the left", "Linke"), ("left party", "Linke"),
+          ("free democratic", "FDP"), ("alternative for germany", "AfD"), ("free voters", "FW"), ("pirate", "Piraten"),
+          ("national democratic party of germany", "NPD"), ("sahra wagenknecht", "BSW"), ("south schleswig", "SSW"),
+          ("new democratic", "NDP"), ("progressive conservative", "PC"), ("coalition avenir", "CAQ"),
+          ("parti québécois", "PQ"), ("québec solidaire", "QS"), ("united conservative", "UCP"), ("saskatchewan party", "SKP"),
+          ("green party", "Green"), ("liberal party", "Liberal"), ("people's party", "PPC")]
+
+
+def sigle(nom: str) -> str:
+    n = nom.lower()
+    return next((s_ for k, s_ in SIGLES if k in n), nom)
+
+
 def mesurer() -> dict:
     if not ARCHIVES.exists():
         return {}
@@ -198,7 +220,7 @@ def mesurer() -> dict:
         for nom, res in resultats(r.get("encadre") or {}):
             if res < PART_MIN:
                 continue
-            parts = bs.moyenne_sondages(tabs, jour, nom)
+            parts = bs.moyenne_sondages(tabs, jour, nom) or (bs.moyenne_sondages(tabs, jour, sigle(nom)) if sigle(nom) != nom else None)
             if parts:
                 erreurs.append(abs(parts[parts["__sujet__"]] - res))
         if len(erreurs) >= 2:

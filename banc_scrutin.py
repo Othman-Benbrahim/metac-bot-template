@@ -112,7 +112,10 @@ def _date(texte: str, annee_defaut: int) -> date | None:
     iso = re.findall(r"(\d{4})-(\d{1,2})-(\d{1,2})", t)
     if iso:
         a, m, j = iso[-1]
-        return date(int(a), int(m), int(j))
+        try:
+            return date(int(a), int(m), int(j))
+        except ValueError:                                     # 0.10.377 : « 2022-13-01 » et autres dates impossibles
+            return None
     dm = re.findall(r"(\d{1,2})\s*(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?(?:\s*,?\s*(\d{4}))?", t)
     md = re.findall(r"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(\d{1,2})(?:\s*,?\s*(\d{4}))?", t)
     try:
@@ -150,6 +153,7 @@ def tableaux(wikitexte: str, annee_defaut: int) -> list[dict]:
                 annee = int(h)
             continue
         entetes: list[str] = []
+        brut_h: list[str] = []
         lignes = []
         for lt in lignes_t:
             lt = "\n".join(l for l in lt.strip().split("\n") if l.startswith(("!", "|")))
@@ -158,6 +162,21 @@ def tableaux(wikitexte: str, annee_defaut: int) -> list[dict]:
             cellules_h = [x for x in re.split(r"\n!|!!", "\n" + lt) if x.strip()] if lt.startswith("!") else []
             if cellules_h and not entetes:
                 entetes = [_texte_cellule(x) for x in cellules_h]
+                brut_h = cellules_h
+                continue
+            if cellules_h and entetes and not lignes:
+                # 0.10.377 : deuxième ligne d'en-tête (« Candidate » sur plusieurs colonnes, puis les noms) : on remplace
+                # chaque cellule fusionnée du premier rang par les cellules correspondantes du second
+                suite, fusion = [_texte_cellule(x) for x in cellules_h], []
+                for x, t in zip(brut_h, entetes):
+                    k = re.search(r"colspan\s*=\s*\"?(\d+)", x)
+                    if k and suite:
+                        n = int(k.group(1))
+                        fusion += suite[:n]
+                        suite = suite[n:]
+                    else:
+                        fusion.append(t)
+                entetes = fusion
                 continue
             cells = [x for x in re.split(r"\n\||\|\|", "\n" + lt) if x.strip()]
             if not cells or not entetes:

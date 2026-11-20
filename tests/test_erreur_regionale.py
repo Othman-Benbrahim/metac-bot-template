@@ -33,3 +33,11 @@ def test_titres():
 def test_tours():
     enc = er.encadre(TEXTE.replace("}}", "| 2blank = Second round\n| 2data1 = 52.8%\n| 2data2 = 47.2%\n}}"))
     assert er.tours(enc) == ("1", "1")
+
+
+def test_en_tete_fusionnee_et_sigles():
+    import banc_scrutin as bs
+    t = '{| class="wikitable"\n! rowspan="2" |Date\n! rowspan="2" |Institute\n! colspan="2" |Candidate\n! rowspan="2" |Blank\n|-\n!Jerônimo\n!ACM Neto\n|-\n|28 Sep 2022\n|Ipec\n|38%\n|43%\n|14%\n|}'
+    assert bs.tableaux(t, 2022)[0]["colonnes"] == ["Date", "Institute", "Jerônimo", "ACM Neto", "Blank"]
+    assert bs._date("2022-13-01", 2022) is None
+    assert er.sigle("Christian Democratic Union (Germany)") == "CDU" and er.sigle("Coalition Avenir Québec") == "CAQ"
