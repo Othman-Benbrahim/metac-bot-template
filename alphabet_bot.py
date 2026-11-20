@@ -473,6 +473,14 @@ class AlphabetBot(FallTemplateBot2026):
         # (preenregistrements/seuils-de-prix-calibrage.md : −0,206 contre le taux de base sur 138 questions). La
         # prévision du pipeline reste scellée dans le journal ; le remplacement est scellé dans journal-seuils.jsonl.
         sp_ = self._seuil_de_prix(question, q, r.p_poste)
+        # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
+        # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
+        try:
+            import cotes_ombre as cot
+            await asyncio.to_thread(cot.relever, q.id, q.url, q.titre, q.resolution,
+                                    sp_["p"] if sp_ is not None else r.p_poste, ap.VERSION_BOT)
+        except Exception as e:     # l'ombre qui échoue ne bloque rien
+            logger.warning("cotes en ombre : non relevées (%s)", type(e).__name__)
         if sp_ is not None:
             return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
