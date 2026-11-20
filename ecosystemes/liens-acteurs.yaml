@@ -1,0 +1,89 @@
+# Liens propres aux acteurs (bot 0.10.387, ombre). Décisions de l'auteur du 2026-11-20 : 14 h 01 (donner aux acteurs
+# leurs propres liens, avec des sources : qui contraint qui, qui dépend de qui, et dans quel DOMAINE) ; 14 h 05 (chaque
+# lien porte un champ « temps » : structurel, ou conjoncturel sous une phase datée d'un cycle). Ce fichier n'est pas une
+# fiche (pas de clé « theme »). Les acteurs sont désignés par « fiche:début du nom dans la fiche ».
+# relation : depend_de (A ne peut agir dans ce domaine sans B), peut_bloquer (B peut empêcher ou défaire l'acte de A),
+#            nomme (A désigne B), confirme (B doit approuver la désignation), ne_depend_pas_de (A agit sans B).
+# temps.statut : structurel (vaut à travers les cycles, depuis une date si la règle a changé) ou conjoncturel
+#                (vaut pendant une phase datée d'un cycle nommé) ; une phase inconnue est écrite « inconnue », jamais devinée.
+liens:
+  # ---------------------------------------------------------------- lot 1 : politique américaine
+  - id: us_loi_depend_du_congres
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:la majorité de chaque chambre"
+    relation: depend_de
+    domaine: loi
+    regle: "Une loi doit être adoptée par les deux chambres puis présentée au président ; au Sénat, la clôture du débat sur un texte de loi demande 60 voix (règle us_senat_cloture)."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Constitution des États-Unis, article I, section 7, clause 2 (Cornell LII)", url: "https://www.law.cornell.edu/constitution-conan/article-1/section-7/clause-2/veto-power", consulte: "2026-11-20"}
+      - {titre: "Service de recherche du Congrès, R43331", url: "https://www.everycrsreport.com/reports/R43331.html", consulte: "2026-11-19"}
+  - id: us_veto_bloque_le_congres
+    de: "politique-americaine:la majorité de chaque chambre"
+    vers: "politique-americaine:le président en personne"
+    relation: peut_bloquer
+    domaine: loi
+    regle: "Le président peut renvoyer un texte avec ses objections ; il ne devient loi que s'il est de nouveau adopté par les deux tiers de chaque chambre. De 1789 à aujourd'hui : 2 599 vetos, 112 levés (4,3 %). Premier mandat Trump : 10 vetos, 1 levé ; Biden : 13, aucun ; second mandat Trump (en cours) : 2, aucun."
+    parametres: {vetos_total: 2599, leves_total: 112, majorite_pour_lever: "2/3 de chaque chambre"}
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Constitution des États-Unis, article I, section 7, clause 2 (Cornell LII)", url: "https://www.law.cornell.edu/constitution-conan/article-1/section-7/clause-2/veto-power", consulte: "2026-11-20"}
+      - {titre: "Sénat des États-Unis, Summary of Bills Vetoed, 1789-present", url: "https://www.senate.gov/legislative/vetoes/vetoCounts.htm", consulte: "2026-11-20"}
+  - id: us_decret_sans_le_congres
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:la majorité de chaque chambre"
+    relation: ne_depend_pas_de
+    domaine: décret
+    regle: "Aucune loi n'accorde au président un pouvoir général de décret, mais ce pouvoir est admis ; le Congrès ne peut pas modifier ou révoquer directement un décret ; il peut en annuler l'effet juridique par une loi quand le décret repose sur un pouvoir délégué, mais ces abrogations sont rares à cause de la menace de veto."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Service de recherche du Congrès, Executive Orders: An Introduction, R46738, 2021", url: "https://www.everycrsreport.com/files/2021-03-29_R46738_99ff733be75d877ff2ff38555e5c2cbc0c96fd0b.html", consulte: "2026-11-20"}
+  - id: us_tribunaux_bloquent_les_decrets
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:un juge fédéral"
+    relation: peut_bloquer
+    domaine: décret
+    regle: "Les tribunaux contrôlent parfois la légalité des décrets, selon l'analyse en trois temps du juge Jackson (Youngstown) : le pouvoir du président est au plus bas quand il agit contre la volonté exprimée du Congrès."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Service de recherche du Congrès, R46738, 2021", url: "https://www.everycrsreport.com/files/2021-03-29_R46738_99ff733be75d877ff2ff38555e5c2cbc0c96fd0b.html", consulte: "2026-11-20"}
+      - {titre: "National Constitution Center, Defining the president's constitutional powers to issue executive orders", url: "https://constitutioncenter.org/blog/defining-the-presidents-constitutional-powers-to-issue-executive-orders", consulte: "2026-11-20"}
+  - id: us_decret_revocable_au_mandat_suivant
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:le président en personne"
+    relation: peut_bloquer
+    domaine: décret
+    regle: "Un président suivant peut en général révoquer ou modifier tout décret antérieur, par un nouveau décret ; c'est la voie la plus courante."
+    temps: {statut: conjoncturel, cycle: "mandat présidentiel", phase: "changement de mandat (20 janvier suivant une élection présidentielle)"}
+    sources:
+      - {titre: "Service de recherche du Congrès, R46738, 2021", url: "https://www.everycrsreport.com/files/2021-03-29_R46738_99ff733be75d877ff2ff38555e5c2cbc0c96fd0b.html", consulte: "2026-11-20"}
+  - id: us_nominations_confirmees_par_le_senat
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:la majorité de chaque chambre"
+    relation: confirme
+    domaine: nomination
+    regle: "Les nominations passent par l'avis et le consentement du Sénat ; la clôture se vote à la majorité simple pour toutes les nominations depuis le 21 novembre 2013 (Cour suprême exceptée) et pour la Cour suprême depuis le 6 avril 2017 (règle us_senat_cloture)."
+    temps: {statut: structurel, depuis: "2013-11-21"}
+    sources:
+      - {titre: "Service de recherche du Congrès, R43331", url: "https://www.everycrsreport.com/reports/R43331.html", consulte: "2026-11-19"}
+      - {titre: "Service de recherche du Congrès, R44819", url: "https://www.everycrsreport.com/reports/R44819.html", consulte: "2026-11-19"}
+  - id: us_fed_gouverneurs
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:Réserve fédérale"
+    relation: nomme
+    domaine: politique monétaire
+    regle: "Le président nomme les gouverneurs avec l'avis et le consentement du Sénat, pour quatorze ans ; il ne peut les révoquer que « pour motif » ; le président de la Fed est désigné pour quatre ans. Le président des États-Unis ne décide pas de la politique monétaire."
+    parametres: {mandat_gouverneur_ans: 14, mandat_president_fed_ans: 4, revocation: "pour motif seulement"}
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Federal Reserve Act, section 10 (Réserve fédérale)", url: "https://www.federalreserve.gov/aboutthefed/section10.htm", consulte: "2026-11-20"}
+  - id: us_119e_congres_gouvernement_uni
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:la majorité de chaque chambre"
+    relation: depend_de
+    domaine: loi
+    regle: "Au début du 119e Congrès (3 janvier 2025) : Chambre, 222 républicains et 218 démocrates (délégués compris), un siège vacant ; Sénat, 52 républicains, 45 démocrates et 2 indépendants votant avec eux, un siège vacant. Même parti à la présidence et aux deux chambres : gouvernement uni, mais sans les 60 voix de clôture au Sénat. Phase suivante (Congrès élu le 3 novembre 2026) : inconnue ici, à renseigner avec une source."
+    parametres: {chambre_r: 222, chambre_d: 218, senat_r: 52, senat_d_et_independants: 47}
+    temps: {statut: conjoncturel, cycle: "législature du Congrès (deux ans)", phase: "119e Congrès, gouvernement uni", depuis: "2025-01-03", jusqua: "2027-01-03", phase_suivante: inconnue}
+    sources:
+      - {titre: "Service de recherche du Congrès, Membership of the 119th Congress: A Profile, R48535, 2025", url: "https://www.everycrsreport.com/reports/R48535.html", consulte: "2026-11-20"}
