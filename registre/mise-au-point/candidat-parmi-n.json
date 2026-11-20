@@ -1,0 +1,35 @@
+{
+ "metaculus (jugé)": {
+  "groupes_exclusifs": 30,
+  "questions": 347,
+  "groupes_non_exclusifs (non jugés)": 31,
+  "pertes": {
+   "I témoin": 0.4546,
+   "K 1/N": 0.2499,
+   "K½": 0.2873
+  },
+  "K_moins_I": {
+   "moyenne": -0.2048,
+   "intervalle_90": [
+    -0.242,
+    -0.1558
+   ]
+  },
+  "Kdemi_moins_I": {
+   "moyenne": -0.1674,
+   "intervalle_90": [
+    -0.2001,
+    -0.125
+   ]
+  },
+  "diagnostic": {
+   "groupes avec exactement un OUI": 27,
+   "groupes sans OUI (N incomplet ?)": 3,
+   "groupes avec plusieurs OUI (expression fautive ?)": 0
+  }
+ },
+ "manifold (descriptif)": {
+  "groupes_exclusifs": 0
+ },
+ "note": "mise au point, pas un verdict ; perte log, plus bas = mieux ; K − I < 0 : partir de 1/N aide"
+}
