@@ -19,3 +19,7 @@ Prochaine valeur = dernière valeur + quantiles empiriques des 36 dernières var
 Ancrage chaque mois de 2006-01 à 2026-09 (prévision du mois suivant). Critère : intervalle 80 % entre 0,75 et 0,85,
 intervalle 60 % entre 0,55 et 0,65. Aucun réglage. Les mois touchés par une hausse de TVA (avril 2014, octobre 2019)
 et leurs sorties un an après restent dans l'épreuve. Lancé une fois (`mise_au_point/inflation_tokyo_essai.py`).
+
+## Résultat (2026-11-20, 21 h 46) : critère atteint
+249 prévisions (2006-2026). Intervalle 80 % → 0,751 ; intervalle 60 % → 0,610. Dans les bornes (80 % de justesse,
+du côté étroit).

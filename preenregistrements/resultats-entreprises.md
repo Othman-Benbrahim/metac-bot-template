@@ -39,3 +39,8 @@ Brown et Rozeff, *Journal of Accounting Research*, 1979).
   titre descriptif, sans effet sur la décision.
 - Critère inchangé : intervalle 80 % entre 0,75 et 0,85, intervalle 60 % entre 0,55 et 0,65, sur les nouvelles.
 - Lancé une fois (`mise_au_point/resultats_entreprises_v2_essai.py`, workflow collecte_edgar.yaml).
+
+## Résultat v2 (2026-11-20, 21 h 37) : critère atteint sur les entreprises jamais vues
+25 nouvelles entreprises (LMT, T, ABBV, VZ : séries trop courtes ou vides), 427 prévisions : intervalle 80 % → 0,766 ;
+60 % → 0,595. Descriptif : v1 sur les mêmes 0,704 / 0,533 (la correction saisonnière fait la différence) ; v2 sur les
+50 anciennes 0,776 / 0,600.
