@@ -22,3 +22,9 @@ def test_e_processus():
     assert nul["atteint_a"] is None and nul["richesse"] < 1 / alpha
     # le commun perd : la richesse ne monte pas
     assert tj.e_processus([0.2] * 50, alpha)["richesse"] <= 1.0
+
+
+def test_alpha_journal():
+    # 0.10.384 : échantillon à part, risque de 5 % ; un gain modéré et régulier atteint le seuil 20 en moins de 100 questions
+    assert tj.ALPHA == 0.05
+    assert tj.e_processus([-0.4] * 99, tj.ALPHA)["atteint_a"] is not None

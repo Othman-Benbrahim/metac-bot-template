@@ -28,6 +28,10 @@ SORTIE = REG / "test-journal-cadre.json"
 MAX_QUESTIONS = 100                     # arrêt du suivi sans verdict positif
 BORNE = 0.01                            # probabilités bornées à [0,01 ; 0,99] pour le pari : |écart de perte| ≤ ln 99
 POIDS_CADRE = 0.5                       # fixé d'avance : poids égaux, aucun réglage
+# 0.10.384 (décision de l'auteur, 2026-11-20, 11 h 50, avant toute résolution) : le journal d'ombre est un échantillon
+# à part, qui ne sert à aucun autre essai ; son unique hypothèse est jugée au risque de 5 %, sans la correction du
+# registre (qui protège les essais puisant dans le même échantillon).
+ALPHA = 0.05
 
 
 def lg(p: float) -> float:
@@ -93,7 +97,6 @@ def principal() -> int:
                          ensure_ascii=False))
         return 0
     import banc_jugement as bj
-    import essais as es
     cadre(res)
     borne = lambda p: min(1 - BORNE, max(BORNE, p))
     perte = lambda p, y: -math.log(borne(p) if y else 1 - borne(p))
@@ -103,7 +106,7 @@ def principal() -> int:
     res.sort(key=lambda q: (q["fin"], q["id"]))                         # ordre des résolutions
     res = res[:MAX_QUESTIONS]
     ec = [perte(q["p_C"], q["issue"]) - perte(q["p_A"], q["issue"]) for q in res]
-    alpha = es.risque_corrige(1)
+    alpha = ALPHA
     e = e_processus(ec, alpha)
     pm = lambda k: round(sum(perte(q[k], q["issue"]) for q in res) / len(res), 4)
     verdict = ("le cadre améliore le bot (seuil du pari atteint)" if e["atteint_a"]

@@ -14,8 +14,8 @@ Prévisions binaires d'ombre du bot, scellées (`registre/journal-bot.jsonl`, sc
 
 ## Suivi et critère (révisé le 2026-11-20 à 11 h 37, avant toute résolution, décision de l'auteur)
 - Suivi **séquentiel valable à tout instant** : e-processus par pari (Waudby-Smith et Ramdas, « Estimating means of bounded random variables by betting », JRSS B, 2024). Écart par question d = perte(commun) − perte(bot), probabilités bornées à [0,01 ; 0,99], questions dans l'ordre de leur résolution ; mise prévisible, calculée sur les écarts précédents seulement.
-- On peut regarder après chaque résolution sans gonfler le risque (inégalité de Ville). **Verdict positif** dès que la richesse du pari atteint 1/α, α = risque corrigé d'`essais.py` au jour du premier regard. **Arrêt sans verdict positif** à 100 questions résolues.
-- Puissance limitée, dite d'avance : avec des écarts bornés à ln 99 et α ≈ 0,003, seul un gain net et régulier atteint le seuil en 100 questions ; un gain faible restera « non tranché ».
+- On peut regarder après chaque résolution sans gonfler le risque (inégalité de Ville). **Verdict positif** dès que la richesse du pari atteint 1/α, avec **α = 5 %** (révision du 2026-11-20 à 11 h 50, avant toute résolution, décision de l'auteur : le journal est un échantillon à part, qui ne sert à aucun autre essai ; une seule hypothèse, déclarée d'avance ; la correction du registre ne s'applique pas). **Arrêt sans verdict positif** à 100 questions résolues.
+- Puissance, dite d'avance : seuil de richesse 20 ; un gain faible sur 100 questions peut rester « non tranché ». Le grappillage des petits gains se fait sur l'échantillon de mise au point (17 009 questions), pas ici.
 - Hypothèse de travail déclarée : les questions sont traitées comme une suite d'épreuves, dans l'ordre des résolutions.
 - Descriptif : perte du cadre seul.
 
