@@ -22,3 +22,17 @@ def test_ecart_signe():
 
 def test_e_processus_sans_donnees():
     assert cm.e_processus([])["atteint_a"] is None
+
+
+def test_options_lit_la_repartition_brute():
+    x = {"prediction": {"predicted_options": [{"option_name": "a", "probability": 0.575}, {"option_name": "b", "probability": 0.425}]},
+         "prediction_brute": {"predicted_options": [{"option_name": "a", "probability": 0.65}, {"option_name": "b", "probability": 0.35}]}}
+    assert cm.options(x) == {"a": 0.65, "b": 0.35}
+
+
+def test_melange_dans_le_type_du_bot():
+    from forecasting_tools import PredictedOptionList
+    m = cm.melange({"a": 0.999, "b": 0.001})
+    v = PredictedOptionList.model_validate({"predicted_options": [{"option_name": k, "probability": q} for k, q in m.items()]})
+    assert abs(sum(o.probability for o in v.predicted_options) - 1) < 1e-9
+    assert "15%" in cm.ligne_commentaire(2)

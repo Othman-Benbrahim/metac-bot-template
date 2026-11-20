@@ -23,7 +23,8 @@ W, BORNE, ALPHA, MAX_QUESTIONS = 0.15, 0.001, 0.05, 100
 
 
 def options(x: dict) -> dict[str, float]:
-    p = x["prediction"]
+    """Répartition du bot AVANT l'ancrage (0.10.396 : « prediction_brute » quand le bot a posté le mélange)."""
+    p = x.get("prediction_brute") or x["prediction"]
     p = p if isinstance(p, dict) else ast.literal_eval(p)
     return {str(o["option_name"]): float(o["probability"]) for o in p["predicted_options"]}
 
@@ -31,6 +32,11 @@ def options(x: dict) -> dict[str, float]:
 def melange(p: dict[str, float], w: float = W) -> dict[str, float]:
     n = len(p)
     return {k: (1 - w) * v + w / n for k, v in p.items()}
+
+
+def ligne_commentaire(n: int) -> str:
+    return (f"\n\nAnchoring rule (coded): final probabilities = 85% of the model's distribution + 15% spread evenly "
+            f"over the {n} options (each option keeps at least {0.15 / n:.1%}).")
 
 
 def perte(p: float) -> float:

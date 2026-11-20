@@ -223,7 +223,8 @@ class AlphabetBot(FallTemplateBot2026):
         return ReasonedPrediction(prediction_value=rp.prediction_value,
                                   reasoning=(rp.reasoning or "") + ap.ligne_exploratoire_autre(ex)), ex
 
-    def _journaliser_autre(self, question, genre: str, rp: ReasonedPrediction, exploratoire: dict | None = None):
+    def _journaliser_autre(self, question, genre: str, rp: ReasonedPrediction, exploratoire: dict | None = None,
+                           extra: dict | None = None):
         """Questions hors alphabet (numériques, choix multiples, dates, conditionnelles) : bras A seul, journalisé et scellé
         dans registre/journal-autres.jsonl, pour garder l'historique complet du bot. Un échec d'écriture ne bloque rien."""
         try:
@@ -241,7 +242,7 @@ class AlphabetBot(FallTemplateBot2026):
                      "publie": bool(self.publish_reports_to_metaculus), "mode": os.environ.get("ALPHABET_MODE"),
                      "modeles": ap.modeles_actifs(),
                      "raisonnement_sha256": hashlib.sha256((rp.reasoning or "").encode("utf-8")).hexdigest(),
-                     **({"exploratoire": exploratoire} if exploratoire else {})}
+                     **({"exploratoire": exploratoire} if exploratoire else {}), **(extra or {})}
             # 0.8.0 (audit m-13) : le commentaire envoyé est scellé, comme pour les binaires.
             ligne["commentaire"] = rp.reasoning or ""
             ligne = ap.sans_cles(ligne)          # 0.10.17 : aucune clé d'API dans le registre public
@@ -279,7 +280,23 @@ class AlphabetBot(FallTemplateBot2026):
     async def _run_forecast_on_multiple_choice(self, question, research):
         rp = await super()._run_forecast_on_multiple_choice(question, research)
         rp, ex = await self._explorer_autre(question, "choix_multiple", rp, research)
-        return self._journaliser_autre(question, "choix_multiple", rp, ex)
+        # 0.10.396 (décision d'auteur du 2026-11-20, 16 h 18 : « un pari, un choix d'auteur ») : ancrage sur 1/N,
+        # 85 % bot + 15 % répartition égale ; la répartition brute du bot reste scellée dans le journal
+        # (preenregistrements/choix-multiple-ancre-uniforme.md, suivi par choix_multiple_ancre.py).
+        brute, extra = rp, {}
+        try:
+            import choix_multiple_ancre as cma
+            v = rp.prediction_value
+            valeur = v.model_dump(mode="json") if hasattr(v, "model_dump") else v
+            p = {str(o["option_name"]): float(o["probability"]) for o in valeur["predicted_options"]}
+            m = cma.melange(p)
+            mel = type(v).model_validate({"predicted_options": [{"option_name": k, "probability": q} for k, q in m.items()]})
+            rp = ReasonedPrediction(prediction_value=mel, reasoning=(rp.reasoning or "") + cma.ligne_commentaire(len(p)))
+            extra = {"prediction_brute": valeur, "ancrage_1_sur_n": cma.W}
+        except Exception as e:      # l'ancrage qui échoue ne bloque rien : on poste la répartition du bot
+            logger.warning("choix multiple : ancrage 1/N non appliqué (%s)", type(e).__name__)
+            rp = brute
+        return self._journaliser_autre(question, "choix_multiple", rp, ex, extra)
 
     async def _run_forecast_on_date(self, question, research):
         rp = await super()._run_forecast_on_date(question, research)
