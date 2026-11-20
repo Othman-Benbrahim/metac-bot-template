@@ -110,6 +110,18 @@ FLUX = {
     "conseil_ue": ["https://www.consilium.europa.eu/en/rss/pressreleases.ashx"],   # Conseil de l'UE : communiqués
     # 0.10.388 → 0.10.390 : S&P Global Energy (14 flux) retirée : le site répond 403 aux serveurs de GitHub (run
     # 44749464241) ; on ne contourne pas un refus. Les comptes par matière restent tenus sur la famille « economie ».
+    # 0.10.393 (décision d'auteur du 2026-11-20, 15 h 05) : presse spécialisée mines et énergie, 8 flux vérifiés lisibles
+    # DEPUIS GitHub (run 44750437386 ; MINING.COM 403 et Global Mining Review 404 écartés) ; en ombre, non lue par le bot.
+    "matieres_presse": [
+        "https://www.miningweekly.com/page/latest-news/feed",     # Mining Weekly (reprend aussi Reuters)
+        "https://www.mining-technology.com/feed/",                # Mining Technology
+        "https://www.northernminer.com/feed/",                    # The Northern Miner
+        "https://im-mining.com/feed/",                            # International Mining
+        "https://www.e-mj.com/feed/",                             # Engineering & Mining Journal
+        "https://www.canadianminingjournal.com/feed/",            # Canadian Mining Journal
+        "https://oilprice.com/rss/main",                          # OilPrice.com
+        "https://www.rigzone.com/news/rss/rigzone_latest.aspx",   # Rigzone
+    ],
     # 0.10.357 : Parlement européen, communiqués de presse et agenda de la semaine (relais FeedBurner créés par l'auteur le
     # 2026-11-19) ; famille séparée de « parlement_ue » (lue par le bot), en ombre.
     "parlement_ue_presse": [
@@ -263,10 +275,10 @@ MATIERES = {m: re.compile(rx, re.I) for m, rx in {
     "charbon": r"\bcoal\b", "electricite": r"\bpower prices?|electricity", "engrais": r"fertili[sz]er|\burea\b|potash|ammonia",
     "ble": r"\bwheat", "mais": r"\bcorn\b|\bmaize", "soja": r"\bsoy", "fret_maritime": r"freight|tanker|container|shipping",
     "carbone": r"carbon (market|price|credit)|emissions trading|\bets\b", "hydrogene": r"hydrogen"}.items()}
-FAMILLES_MATIERES = {"economie"}
+FAMILLES_MATIERES = {"economie", "matieres_presse"}
 MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 
-DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie"}
+DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 
