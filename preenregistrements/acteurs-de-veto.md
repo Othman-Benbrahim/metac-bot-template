@@ -31,3 +31,6 @@ Décisions de l'auteur : cadre méthodologique du 2026-11-20 (16 h 50, `cadre-me
 - CHECKS est une mesure par pays, pas par question : une question sur une agence (FDA, banque centrale) relève d'un décideur unique, quel que soit le pays. Le plan B (compte des acteurs requis question par question, par le réseau d'acteurs) traitera ce point.
 - La DPI s'arrête en 2023.
 - Les États-Unis pèsent lourd dans Metaculus, et c'est là que la preuve publiée est la plus discutée (Mayhew contre Binder).
+
+## Résultat (2026-11-20, 17 h 10) : essai clos, rien n'est adopté
+274 questions jugées (160 avec une tranche d'au moins 30 questions passées). V − I = +0,0051, intervalle à 90 % [+0,0012 ; +0,0092] : la variante fait **moins bien** que le témoin. Part de oui par tranche : 1-2 : 0,176 (102) ; 3-4 : 0,409 (127) ; 5+ : 0,267 (45) ; sans les États-Unis : 0,176 ; 0,309 ; 0,182. Le sens n'est pas celui que prédit Tsebelis (les régimes à 1-2 acteurs de veto ont le MOINS de oui) : la mesure par pays capte l'identité du pays et le type de question (« le régime chinois, iranien, nord-coréen fera-t-il telle concession ? »), pas le nombre d'acteurs requis. Fichier : `registre/mise-au-point/acteurs-de-veto.json`. Suite : plan B (acteurs requis question par question).
