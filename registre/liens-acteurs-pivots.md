@@ -8,5 +8,5 @@ Nigeria 5 ; OPEP 5 ; Haïti 5 ; Taïwan 5.
 
 Couverts par les liens (après le lot 9) : Cour suprême, Réserve fédérale, Iran, Houthis, Russie-Ukraine, UE, Israël,
 Congrès et Sénat, OPEP+. Couverts par la brique des scrutins : élections.
-Non couverts : Soudan (aucune fiche ; les liens exigent des acteurs de fiche), rencontres et négociation
-Trump-Poutine, Inde, Brésil, Venezuela, Danemark (Groenland), Haïti, Hongrie.
+Ajoutés le 2026-11-20 au soir : fiche Soudan et lot 10 (trêves) ; lot 11 (négociation États-Unis–Russie sur l'Ukraine).
+Non couverts : Inde, Brésil, Venezuela, Danemark (Groenland), Haïti, Hongrie (fiches à créer ou à étendre).
