@@ -1,0 +1,43 @@
+name: "Banc brique occurrence dans une fenêtre (ombre)"
+
+# 0.10.378 : préenregistrement preenregistrements/brique-fenetre.md (essai brique_fenetre). Calcul hors réseau sur le
+# registre des questions ; la foule (valeur au gel) est relue sur ForecastBench comme repère descriptif, jamais comme
+# entrée, et n'est pas enregistrée. Une seule exécution, par l'auteur. Aucun modèle de langue. Rien n'entre dans le bot.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_brique_fenetre:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Couverture (sans les issues)
+        run: uv run python brique_fenetre.py --couverture
+      - name: Évaluer
+        run: uv run python brique_fenetre.py --foule
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/banc-brique-fenetre.json ]; then git add registre/banc-brique-fenetre.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc de la brique fenêtre du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi

@@ -343,6 +343,10 @@ ESSAIS = {
                        "objet": "brique « scrutin » (règle, sondages à la date, erreur habituelle, temps restant) contre "
                                 "les semblables, sur les questions électorales résolues, par classe homologue",
                        "doc": "preenregistrements/etalon-scrutin.md"},
+    "brique_fenetre": {"ouvert_le": "2026-11-20", "type": "intervalle", "n": 100, "statut": "ouvert",
+                       "objet": "occurrence dans une fenêtre : taux de « oui » mesuré par acteur × longueur de fenêtre "
+                                "(questions passées seulement) contre les semblables et le taux de base",
+                       "doc": "preenregistrements/brique-fenetre.md"},
     "scrutin_coutumier": {"ouvert_le": "2026-11-19", "type": "intervalle", "n": 30, "statut": "ouvert",
                           "objet": "brique « scrutin » sur les seules règles coutumières sourcées (second tour, erreur par "
                                    "type d'élection et temps restant) contre les semblables ; abstention sans règle",
