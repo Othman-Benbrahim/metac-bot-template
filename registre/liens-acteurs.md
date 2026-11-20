@@ -10,3 +10,4 @@
 | us_nominations_confirmees_par_le_senat | le président en personne | confirme | la majorité de chaque chambre | nomination | structurel depuis 2013-11-21 |
 | us_fed_gouverneurs | le président en personne | nomme | Réserve fédérale | politique monétaire | structurel |
 | us_119e_congres_gouvernement_uni | le président en personne | depend_de | la majorité de chaque chambre | loi | conjoncturel (législature du Congrès (deux ans) : 119e Congrès, gouvernement uni) |
+| us_120e_congres | le président en personne | depend_de | la majorité de chaque chambre | loi | conjoncturel (législature du Congrès (deux ans) : 120e Congrès, élu le 3 novembre 2026 (décompte non certifié)) |

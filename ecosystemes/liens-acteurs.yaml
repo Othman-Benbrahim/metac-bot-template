@@ -82,8 +82,18 @@ liens:
     vers: "politique-americaine:la majorité de chaque chambre"
     relation: depend_de
     domaine: loi
-    regle: "Au début du 119e Congrès (3 janvier 2025) : Chambre, 222 républicains et 218 démocrates (délégués compris), un siège vacant ; Sénat, 52 républicains, 45 démocrates et 2 indépendants votant avec eux, un siège vacant. Même parti à la présidence et aux deux chambres : gouvernement uni, mais sans les 60 voix de clôture au Sénat. Phase suivante (Congrès élu le 3 novembre 2026) : inconnue ici, à renseigner avec une source."
+    regle: "Au début du 119e Congrès (3 janvier 2025) : Chambre, 222 républicains et 218 démocrates (délégués compris), un siège vacant ; Sénat, 52 républicains, 45 démocrates et 2 indépendants votant avec eux, un siège vacant. Même parti à la présidence et aux deux chambres : gouvernement uni, mais sans les 60 voix de clôture au Sénat. Phase suivante : lien us_120e_congres."
     parametres: {chambre_r: 222, chambre_d: 218, senat_r: 52, senat_d_et_independants: 47}
-    temps: {statut: conjoncturel, cycle: "législature du Congrès (deux ans)", phase: "119e Congrès, gouvernement uni", depuis: "2025-01-03", jusqua: "2027-01-03", phase_suivante: inconnue}
+    temps: {statut: conjoncturel, cycle: "législature du Congrès (deux ans)", phase: "119e Congrès, gouvernement uni", depuis: "2025-01-03", jusqua: "2027-01-03", phase_suivante: us_120e_congres}
     sources:
       - {titre: "Service de recherche du Congrès, Membership of the 119th Congress: A Profile, R48535, 2025", url: "https://www.everycrsreport.com/reports/R48535.html", consulte: "2026-11-20"}
+  - id: us_120e_congres
+    de: "politique-americaine:le président en personne"
+    vers: "politique-americaine:la majorité de chaque chambre"
+    relation: depend_de
+    domaine: loi
+    regle: "Élections du 3 novembre 2026, décompte de l'Associated Press au 2026-11-20 (13 h 19-13 h 20 UTC), susceptible d'évoluer : Chambre, démocrates 257 sièges gagnés, républicains 172, 6 sièges attribués à personne dans ce décompte ; Sénat, démocrates 56 au total (dont 2 apparentés, sortants compris), républicains 44 au total. Les mentions « majorité atteinte » de l'outil de résultats ne sont pas des proclamations de l'AP. Président républicain en fonction. Le 120e Congrès entre en fonction le 3 janvier 2027 : la phase change en cours de fenêtre pour toute question qui dépasse cette date. À revoir quand les résultats seront certifiés."
+    parametres: {chambre_d_gagnes: 257, chambre_r_gagnes: 172, chambre_non_attribues: 6, senat_d_total: 56, senat_r_total: 44, decompte_du: "2026-11-20"}
+    temps: {statut: conjoncturel, cycle: "législature du Congrès (deux ans)", phase: "120e Congrès, élu le 3 novembre 2026 (décompte non certifié)", depuis: "2027-01-03", jusqua: "2029-01-03"}
+    sources:
+      - {titre: "Associated Press, résultats des élections du 3 novembre 2026 (Chambre et Sénat), décompte au 2026-11-20", url: "https://apnews.com", consulte: "2026-11-20"}
