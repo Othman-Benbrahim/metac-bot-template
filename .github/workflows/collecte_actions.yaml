@@ -1,0 +1,41 @@
+name: "Collecte cours d actions (Twelve Data ; ombre)"
+
+# 0.10.399 : cours quotidiens d'actions (Twelve Data, offre gratuite). Aucun modèle de langue. Rien n'entre dans le bot.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte_actions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecter
+        run: uv run python collecte_actions.py
+        env:
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -f registre/actions.csv ]; then git add registre/actions.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : cours d actions du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
