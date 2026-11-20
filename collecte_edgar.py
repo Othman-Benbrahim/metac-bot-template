@@ -84,20 +84,28 @@ def principal() -> int:
     if not contact:
         print("::warning::SEC_CONTACT_EMAIL absente : rien collecté.")
         return 0
-    ua = f"{politesse.UA} contact {contact}"
+    ua = f"alphabet-situationnel {contact}"   # forme exigée par la SEC : « Nom adresse@domaine »
     lignes = []
     with httpx.Client(headers={"User-Agent": ua}, timeout=60) as c:
         if not politesse.autorise(c, TICKERS):
             print("::warning::SEC : refusé par robots.txt ; rien collecté.")
             return 0
-        carte = {v["ticker"]: int(v["cik_str"]) for v in c.get(TICKERS).json().values()}
+        r = c.get(TICKERS)
+        if r.status_code != 200 or "json" not in r.headers.get("content-type", ""):
+            print(f"::error::SEC : réponse {r.status_code} ({r.headers.get('content-type')}) : {r.text[:200]!r}")
+            return 1
+        carte = {v["ticker"]: int(v["cik_str"]) for v in r.json().values()}
         for t in ENTREPRISES:
             time.sleep(1.0)
             if t not in carte:
                 print(f"::warning::{t} : CIK introuvable")
                 continue
             try:
-                f = c.get(FAITS.format(cik=carte[t])).json()
+                r = c.get(FAITS.format(cik=carte[t]))
+                if r.status_code != 200:
+                    print(f"::warning::{t} : réponse {r.status_code}")
+                    continue
+                f = r.json()
             except Exception as e:
                 print(f"::warning::{t} : {type(e).__name__}")
                 continue
