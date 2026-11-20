@@ -1,0 +1,336 @@
+{
+ "ensemble_fixe": 1134,
+ "groupes": {
+  "Metaculus, GJOpen, CSET 2015-2024": {
+   "n": 143,
+   "questions_distinctes": 143,
+   "variante_moins_I": {
+    "écosystème seul": {
+     "moyenne": -0.0008,
+     "intervalle_90": [
+      -0.0086,
+      0.0064
+     ]
+    },
+    "nature seule": {
+     "moyenne": 0.0037,
+     "intervalle_90": [
+      -0.0043,
+      0.0108
+     ]
+    },
+    "rapport seul": {
+     "moyenne": 0.0065,
+     "intervalle_90": [
+      0.0014,
+      0.0116
+     ]
+    },
+    "époque seule (taux récent, sans structure)": {
+     "moyenne": 0.009,
+     "intervalle_90": [
+      0.0029,
+      0.0148
+     ]
+    },
+    "écosystème + nature": {
+     "moyenne": -0.0013,
+     "intervalle_90": [
+      -0.009,
+      0.006
+     ]
+    },
+    "écosystème + rapport": {
+     "moyenne": -0.0089,
+     "intervalle_90": [
+      -0.017,
+      -0.0009
+     ]
+    },
+    "nature + rapport": {
+     "moyenne": 0.001,
+     "intervalle_90": [
+      -0.0057,
+      0.0073
+     ]
+    },
+    "classe complète": {
+     "moyenne": -0.0118,
+     "intervalle_90": [
+      -0.0203,
+      -0.0035
+     ]
+    }
+   }
+  },
+  "ForecastBench 2024-2026": {
+   "n": 495,
+   "questions_distinctes": 235,
+   "variante_moins_I": {
+    "écosystème seul": {
+     "moyenne": 0.0012,
+     "intervalle_90": [
+      -0.0083,
+      0.0103
+     ]
+    },
+    "nature seule": {
+     "moyenne": 0.0033,
+     "intervalle_90": [
+      -0.0073,
+      0.0133
+     ]
+    },
+    "rapport seul": {
+     "moyenne": 0.0019,
+     "intervalle_90": [
+      -0.006,
+      0.0091
+     ]
+    },
+    "époque seule (taux récent, sans structure)": {
+     "moyenne": 0.0034,
+     "intervalle_90": [
+      -0.005,
+      0.0111
+     ]
+    },
+    "écosystème + nature": {
+     "moyenne": 0.0003,
+     "intervalle_90": [
+      -0.0099,
+      0.0101
+     ]
+    },
+    "écosystème + rapport": {
+     "moyenne": 0.0013,
+     "intervalle_90": [
+      -0.0072,
+      0.0097
+     ]
+    },
+    "nature + rapport": {
+     "moyenne": 0.0021,
+     "intervalle_90": [
+      -0.0066,
+      0.0107
+     ]
+    },
+    "classe complète": {
+     "moyenne": 0.0005,
+     "intervalle_90": [
+      -0.0083,
+      0.0094
+     ]
+    }
+   }
+  },
+  "Manifold 2015-2024": {
+   "n": 496,
+   "questions_distinctes": 496,
+   "variante_moins_I": {
+    "écosystème seul": {
+     "moyenne": 0.0004,
+     "intervalle_90": [
+      -0.0033,
+      0.0041
+     ]
+    },
+    "nature seule": {
+     "moyenne": 0.0002,
+     "intervalle_90": [
+      -0.0037,
+      0.004
+     ]
+    },
+    "rapport seul": {
+     "moyenne": -0.0021,
+     "intervalle_90": [
+      -0.0047,
+      0.0007
+     ]
+    },
+    "époque seule (taux récent, sans structure)": {
+     "moyenne": -0.0013,
+     "intervalle_90": [
+      -0.0042,
+      0.0017
+     ]
+    },
+    "écosystème + nature": {
+     "moyenne": 0.0002,
+     "intervalle_90": [
+      -0.0035,
+      0.004
+     ]
+    },
+    "écosystème + rapport": {
+     "moyenne": 0.0004,
+     "intervalle_90": [
+      -0.0038,
+      0.0046
+     ]
+    },
+    "nature + rapport": {
+     "moyenne": 0.0001,
+     "intervalle_90": [
+      -0.0035,
+      0.0039
+     ]
+    },
+    "classe complète": {
+     "moyenne": -0.0009,
+     "intervalle_90": [
+      -0.0055,
+      0.0038
+     ]
+    }
+   }
+  }
+ },
+ "etat_observe_part_oui": {
+  "climat-extremes": {
+   "a_sa_mesure": {
+    "n": 1,
+    "part_oui": 1.0
+   },
+   "large": {
+    "n": 4,
+    "part_oui": 0.0
+   }
+  },
+  "energie-mondiale": {
+   "a_sa_mesure": {
+    "n": 7,
+    "part_oui": 0.143
+   },
+   "courte": {
+    "n": 14,
+    "part_oui": 0.286
+   },
+   "large": {
+    "n": 4,
+    "part_oui": 0.25
+   }
+  },
+  "epidemies": {
+   "a_sa_mesure": {
+    "n": 69,
+    "part_oui": 0.246
+   },
+   "courte": {
+    "n": 59,
+    "part_oui": 0.119
+   },
+   "large": {
+    "n": 78,
+    "part_oui": 0.333
+   }
+  },
+  "guerre-levant": {
+   "a_sa_mesure": {
+    "n": 26,
+    "part_oui": 0.115
+   },
+   "courte": {
+    "n": 12,
+    "part_oui": 0.333
+   },
+   "large": {
+    "n": 95,
+    "part_oui": 0.274
+   }
+  },
+  "inflation-mondiale": {
+   "large": {
+    "n": 3,
+    "part_oui": 0.667
+   }
+  },
+  "iran-nucleaire": {
+   "a_sa_mesure": {
+    "n": 65,
+    "part_oui": 0.262
+   },
+   "courte": {
+    "n": 25,
+    "part_oui": 0.32
+   },
+   "large": {
+    "n": 87,
+    "part_oui": 0.115
+   }
+  },
+  "politique-americaine": {
+   "a_sa_mesure": {
+    "n": 155,
+    "part_oui": 0.31
+   },
+   "courte": {
+    "n": 106,
+    "part_oui": 0.387
+   },
+   "large": {
+    "n": 201,
+    "part_oui": 0.368
+   }
+  },
+  "rivalite-sino-americaine": {
+   "a_sa_mesure": {
+    "n": 26,
+    "part_oui": 0.154
+   },
+   "courte": {
+    "n": 13,
+    "part_oui": 0.462
+   },
+   "large": {
+    "n": 174,
+    "part_oui": 0.08
+   }
+  },
+  "russie-ukraine": {
+   "a_sa_mesure": {
+    "n": 76,
+    "part_oui": 0.25
+   },
+   "courte": {
+    "n": 26,
+    "part_oui": 0.269
+   },
+   "large": {
+    "n": 240,
+    "part_oui": 0.117
+   }
+  },
+  "sciences-techniques": {
+   "a_sa_mesure": {
+    "n": 98,
+    "part_oui": 0.204
+   },
+   "courte": {
+    "n": 54,
+    "part_oui": 0.185
+   },
+   "large": {
+    "n": 134,
+    "part_oui": 0.164
+   }
+  },
+  "securite-europeenne": {
+   "a_sa_mesure": {
+    "n": 44,
+    "part_oui": 0.182
+   },
+   "courte": {
+    "n": 17,
+    "part_oui": 0.176
+   },
+   "large": {
+    "n": 55,
+    "part_oui": 0.145
+   }
+  }
+ },
+ "note": "mise au point, pas un verdict ; variante − I < 0 : la variante aide plus que la moyenne générale"
+}
