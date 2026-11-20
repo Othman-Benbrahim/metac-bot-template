@@ -1,0 +1,15 @@
+{
+ "w": 0.15,
+ "questions_au_journal": 6,
+ "resolues": 0,
+ "ecart_moyen": null,
+ "e_processus": {
+  "richesse": 1.0,
+  "seuil": 20.0,
+  "atteint_a": null,
+  "trajet": []
+ },
+ "verdict": "en cours",
+ "detail": [],
+ "note": "écart = perte(mélange) − perte(bot) sur l'option gagnante ; négatif : le mélange aide"
+}
