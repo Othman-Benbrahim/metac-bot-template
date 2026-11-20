@@ -74,17 +74,17 @@ def acteurs() -> list[dict]:
     out = []
     for fiche, debut, rx in MOTIFS:
         d = yaml.safe_load((DOSSIER / f"{fiche}.yaml").read_text(encoding="utf-8")) or {}
-        trouve = None
+        trouve, comp = None, None
         for c in d.get("compartiments") or []:
             for a in c.get("acteurs") or []:
                 if isinstance(a, dict) and a.get("nom", "").startswith(debut):
-                    trouve = a
+                    trouve, comp = a, c.get("id")
                     break
             if trouve:
                 break
         if not trouve:
             raise KeyError(f"{fiche} : acteur introuvable « {debut} »")
-        out.append({"fiche": fiche, "acteur": trouve["nom"], "organisation": trouve.get("organisation"),
+        out.append({"fiche": fiche, "compartiment": comp, "acteur": trouve["nom"], "organisation": trouve.get("organisation"),
                     "taille": trouve.get("taille"), "vitesse": trouve.get("vitesse"),
                     "vitesse_jours": JOURS.get(str(trouve.get("vitesse")).strip()), "rx": re.compile(rx, re.I)})
     return out
@@ -111,5 +111,5 @@ def classe(titre: str, horizon: int | None) -> dict | None:
     rp = rapport(horizon, a["vitesse_jours"])
     if rp is None:
         return None
-    return {"fiche": a["fiche"], "acteur": a["acteur"], "organisation": a["organisation"], "taille": a["taille"],
+    return {"fiche": a["fiche"], "compartiment": a["compartiment"], "acteur": a["acteur"], "organisation": a["organisation"], "taille": a["taille"],
             "vitesse": a["vitesse"], "rapport": rp, "cle": f'{a["fiche"]}|{a["organisation"]}|{rp}'}

@@ -1,0 +1,2122 @@
+{
+ "alimentation-mondiale:sols": {
+  "influence": 14.0,
+  "dependance": 24.5,
+  "quadrant": "dependant"
+ },
+ "alimentation-mondiale:eau_agricole": {
+  "influence": 25.5,
+  "dependance": 11.5,
+  "quadrant": "moteur"
+ },
+ "alimentation-mondiale:cultures": {
+  "influence": 35.0,
+  "dependance": 72.0,
+  "quadrant": "relais"
+ },
+ "alimentation-mondiale:ravageurs": {
+  "influence": 14.0,
+  "dependance": 34.5,
+  "quadrant": "dependant"
+ },
+ "alimentation-mondiale:engrais": {
+  "influence": 27.5,
+  "dependance": 2.5,
+  "quadrant": "moteur"
+ },
+ "alimentation-mondiale:stocks": {
+  "influence": 18.5,
+  "dependance": 37.5,
+  "quadrant": "relais"
+ },
+ "alimentation-mondiale:commerce": {
+  "influence": 33.0,
+  "dependance": 17.0,
+  "quadrant": "relais"
+ },
+ "alimentation-mondiale:prix": {
+  "influence": 32.0,
+  "dependance": 33.0,
+  "quadrant": "relais"
+ },
+ "alimentation-mondiale:climat": {
+  "influence": 33.5,
+  "dependance": 4.5,
+  "quadrant": "moteur"
+ },
+ "alimentation-mondiale:importateurs": {
+  "influence": 5.5,
+  "dependance": 22.5,
+  "quadrant": "dependant"
+ },
+ "alimentation-mondiale:elevage": {
+  "influence": 31.5,
+  "dependance": 42.5,
+  "quadrant": "relais"
+ },
+ "alimentation-mondiale:chimie_sols": {
+  "influence": 30.0,
+  "dependance": 13.5,
+  "quadrant": "moteur"
+ },
+ "alimentation-mondiale:pathogenes": {
+  "influence": 27.5,
+  "dependance": 38.5,
+  "quadrant": "relais"
+ },
+ "alimentation-mondiale:pollinisateurs": {
+  "influence": 14.0,
+  "dependance": 25.0,
+  "quadrant": "dependant"
+ },
+ "calendriers-echeances:elections": {
+  "influence": 12.5,
+  "dependance": 1.5,
+  "quadrant": "autonome"
+ },
+ "calendriers-echeances:banques_centrales": {
+  "influence": 15.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "calendriers-echeances:parlements": {
+  "influence": 0.0,
+  "dependance": 3.0,
+  "quadrant": "autonome"
+ },
+ "calendriers-echeances:publications": {
+  "influence": 12.0,
+  "dependance": 12.5,
+  "quadrant": "autonome"
+ },
+ "calendriers-echeances:memoire": {
+  "influence": 6.5,
+  "dependance": 7.0,
+  "quadrant": "autonome"
+ },
+ "calendriers-echeances:fetes": {
+  "influence": 5.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "calendriers-echeances:saisons": {
+  "influence": 19.0,
+  "dependance": 1.0,
+  "quadrant": "moteur"
+ },
+ "calendriers-echeances:dates_limites": {
+  "influence": 18.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "calendriers-echeances:anticipations": {
+  "influence": 4.0,
+  "dependance": 27.5,
+  "quadrant": "dependant"
+ },
+ "calendriers-echeances:marches": {
+  "influence": 0.0,
+  "dependance": 12.0,
+  "quadrant": "autonome"
+ },
+ "climat-extremes:oceans": {
+  "influence": 23.5,
+  "dependance": 7.0,
+  "quadrant": "moteur"
+ },
+ "climat-extremes:oscillations": {
+  "influence": 10.5,
+  "dependance": 11.5,
+  "quadrant": "autonome"
+ },
+ "climat-extremes:atmosphere": {
+  "influence": 25.5,
+  "dependance": 11.0,
+  "quadrant": "moteur"
+ },
+ "climat-extremes:saisons": {
+  "influence": 34.0,
+  "dependance": 40.0,
+  "quadrant": "relais"
+ },
+ "climat-extremes:secheresses": {
+  "influence": 20.0,
+  "dependance": 28.0,
+  "quadrant": "relais"
+ },
+ "climat-extremes:tempetes": {
+  "influence": 8.5,
+  "dependance": 15.5,
+  "quadrant": "dependant"
+ },
+ "climat-extremes:vegetation": {
+  "influence": 20.5,
+  "dependance": 49.5,
+  "quadrant": "relais"
+ },
+ "climat-extremes:feux": {
+  "influence": 10.5,
+  "dependance": 18.0,
+  "quadrant": "dependant"
+ },
+ "climat-extremes:tendance": {
+  "influence": 15.5,
+  "dependance": 18.0,
+  "quadrant": "relais"
+ },
+ "climat-extremes:exposes": {
+  "influence": 8.0,
+  "dependance": 48.0,
+  "quadrant": "dependant"
+ },
+ "climat-extremes:chimie_atmosphere": {
+  "influence": 20.5,
+  "dependance": 5.0,
+  "quadrant": "moteur"
+ },
+ "climat-extremes:rayonnement": {
+  "influence": 14.5,
+  "dependance": 15.0,
+  "quadrant": "dependant"
+ },
+ "climat-extremes:relief": {
+  "influence": 17.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "competitions-culture:regles": {
+  "influence": 24.0,
+  "dependance": 2.0,
+  "quadrant": "moteur"
+ },
+ "competitions-culture:forme": {
+  "influence": 36.0,
+  "dependance": 88.0,
+  "quadrant": "relais"
+ },
+ "competitions-culture:psychologie": {
+  "influence": 20.0,
+  "dependance": 25.5,
+  "quadrant": "relais"
+ },
+ "competitions-culture:public": {
+  "influence": 11.5,
+  "dependance": 10.0,
+  "quadrant": "autonome"
+ },
+ "competitions-culture:argent": {
+  "influence": 15.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "competitions-culture:medias": {
+  "influence": 10.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "competitions-culture:calendrier": {
+  "influence": 12.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "competitions-culture:milieu": {
+  "influence": 11.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "competitions-culture:geopolitique": {
+  "influence": 21.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "crises-bancaires:depots": {
+  "influence": 29.0,
+  "dependance": 30.0,
+  "quadrant": "relais"
+ },
+ "crises-bancaires:confiance": {
+  "influence": 16.5,
+  "dependance": 29.5,
+  "quadrant": "relais"
+ },
+ "crises-bancaires:bilans": {
+  "influence": 5.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "crises-bancaires:faillites": {
+  "influence": 14.0,
+  "dependance": 20.0,
+  "quadrant": "dependant"
+ },
+ "crises-bancaires:creanciers": {
+  "influence": 15.0,
+  "dependance": 13.5,
+  "quadrant": "autonome"
+ },
+ "crises-bancaires:marches": {
+  "influence": 10.0,
+  "dependance": 12.0,
+  "quadrant": "autonome"
+ },
+ "crises-bancaires:cryptomonnaies": {
+  "influence": 9.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "crises-bancaires:regulateurs": {
+  "influence": 27.0,
+  "dependance": 15.0,
+  "quadrant": "relais"
+ },
+ "crises-bancaires:convention": {
+  "influence": 10.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "crises-bancaires:recits": {
+  "influence": 7.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "cycles-biogeochimiques:carbone": {
+  "influence": 25.5,
+  "dependance": 24.0,
+  "quadrant": "relais"
+ },
+ "cycles-biogeochimiques:azote": {
+  "influence": 12.5,
+  "dependance": 14.5,
+  "quadrant": "autonome"
+ },
+ "cycles-biogeochimiques:soufre": {
+  "influence": 2.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "cycles-biogeochimiques:phosphore": {
+  "influence": 9.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "cycles-biogeochimiques:eau": {
+  "influence": 10.5,
+  "dependance": 13.5,
+  "quadrant": "autonome"
+ },
+ "cycles-biogeochimiques:microbes_du_sol": {
+  "influence": 18.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "cycles-biogeochimiques:vegetation": {
+  "influence": 21.5,
+  "dependance": 37.0,
+  "quadrant": "relais"
+ },
+ "cycles-biogeochimiques:elevage": {
+  "influence": 22.0,
+  "dependance": 10.0,
+  "quadrant": "moteur"
+ },
+ "cycles-biogeochimiques:combustion": {
+  "influence": 21.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "cycles-biogeochimiques:engrais": {
+  "influence": 13.0,
+  "dependance": 3.0,
+  "quadrant": "autonome"
+ },
+ "cycles-biogeochimiques:climat": {
+  "influence": 10.0,
+  "dependance": 24.0,
+  "quadrant": "dependant"
+ },
+ "dette-emergents:monnaies": {
+  "influence": 28.0,
+  "dependance": 31.0,
+  "quadrant": "relais"
+ },
+ "dette-emergents:dette_publique": {
+  "influence": 26.5,
+  "dependance": 46.5,
+  "quadrant": "relais"
+ },
+ "dette-emergents:reserves": {
+  "influence": 27.0,
+  "dependance": 24.0,
+  "quadrant": "relais"
+ },
+ "dette-emergents:banques": {
+  "influence": 16.5,
+  "dependance": 16.0,
+  "quadrant": "relais"
+ },
+ "dette-emergents:creanciers": {
+  "influence": 26.5,
+  "dependance": 30.0,
+  "quadrant": "relais"
+ },
+ "dette-emergents:fmi": {
+  "influence": 19.0,
+  "dependance": 24.0,
+  "quadrant": "relais"
+ },
+ "dette-emergents:inflation_locale": {
+  "influence": 12.0,
+  "dependance": 16.5,
+  "quadrant": "dependant"
+ },
+ "dette-emergents:politique_interieure": {
+  "influence": 17.5,
+  "dependance": 21.0,
+  "quadrant": "relais"
+ },
+ "dette-emergents:matieres_premieres": {
+  "influence": 15.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "dette-emergents:notations_definitions": {
+  "influence": 28.0,
+  "dependance": 16.0,
+  "quadrant": "relais"
+ },
+ "dette-emergents:recoltes_catastrophes": {
+  "influence": 14.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "dette-emergents:gisements": {
+  "influence": 9.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "eau-moyen-orient:pluies": {
+  "influence": 17.5,
+  "dependance": 5.0,
+  "quadrant": "moteur"
+ },
+ "eau-moyen-orient:chaleur": {
+  "influence": 28.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "eau-moyen-orient:fleuves": {
+  "influence": 35.0,
+  "dependance": 39.5,
+  "quadrant": "relais"
+ },
+ "eau-moyen-orient:barrages": {
+  "influence": 30.0,
+  "dependance": 35.0,
+  "quadrant": "relais"
+ },
+ "eau-moyen-orient:nappes": {
+  "influence": 18.0,
+  "dependance": 31.5,
+  "quadrant": "relais"
+ },
+ "eau-moyen-orient:rarete": {
+  "influence": 18.0,
+  "dependance": 36.5,
+  "quadrant": "relais"
+ },
+ "eau-moyen-orient:dessalement": {
+  "influence": 18.5,
+  "dependance": 11.0,
+  "quadrant": "moteur"
+ },
+ "eau-moyen-orient:irrigation": {
+  "influence": 27.0,
+  "dependance": 33.0,
+  "quadrant": "relais"
+ },
+ "eau-moyen-orient:villes": {
+  "influence": 12.0,
+  "dependance": 35.0,
+  "quadrant": "dependant"
+ },
+ "eau-moyen-orient:etats_riverains": {
+  "influence": 38.5,
+  "dependance": 33.0,
+  "quadrant": "relais"
+ },
+ "eau-moyen-orient:relief": {
+  "influence": 24.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "eau-moyen-orient:chimie_eau": {
+  "influence": 0.0,
+  "dependance": 15.0,
+  "quadrant": "dependant"
+ },
+ "eau-moyen-orient:maladies_hydriques": {
+  "influence": 5.0,
+  "dependance": 22.5,
+  "quadrant": "dependant"
+ },
+ "eau-moyen-orient:climat_regime": {
+  "influence": 6.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "economie-chinoise:activite": {
+  "influence": 9.0,
+  "dependance": 43.5,
+  "quadrant": "dependant"
+ },
+ "economie-chinoise:immobilier": {
+  "influence": 14.5,
+  "dependance": 3.0,
+  "quadrant": "autonome"
+ },
+ "economie-chinoise:exportations": {
+  "influence": 26.0,
+  "dependance": 10.5,
+  "quadrant": "moteur"
+ },
+ "economie-chinoise:consommation": {
+  "influence": 7.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "economie-chinoise:emploi": {
+  "influence": 4.5,
+  "dependance": 18.0,
+  "quadrant": "dependant"
+ },
+ "economie-chinoise:politique_monetaire": {
+  "influence": 12.5,
+  "dependance": 13.5,
+  "quadrant": "autonome"
+ },
+ "economie-chinoise:pouvoir": {
+  "influence": 19.5,
+  "dependance": 12.0,
+  "quadrant": "moteur"
+ },
+ "economie-chinoise:statistiques": {
+  "influence": 14.0,
+  "dependance": 20.5,
+  "quadrant": "dependant"
+ },
+ "economie-chinoise:matieres_premieres": {
+  "influence": 8.5,
+  "dependance": 27.0,
+  "quadrant": "dependant"
+ },
+ "economie-chinoise:exterieur": {
+  "influence": 18.5,
+  "dependance": 15.5,
+  "quadrant": "relais"
+ },
+ "economie-chinoise:eau_fleuves": {
+  "influence": 10.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "economie-chinoise:demographie": {
+  "influence": 11.0,
+  "dependance": 3.5,
+  "quadrant": "autonome"
+ },
+ "economie-chinoise:epizooties": {
+  "influence": 9.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "economie-chinoise:sols_chimie": {
+  "influence": 4.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "elections-amerique-latine:scrutins": {
+  "influence": 12.0,
+  "dependance": 20.5,
+  "quadrant": "dependant"
+ },
+ "elections-amerique-latine:regles": {
+  "influence": 7.5,
+  "dependance": 16.5,
+  "quadrant": "dependant"
+ },
+ "elections-amerique-latine:assemblees": {
+  "influence": 18.0,
+  "dependance": 24.0,
+  "quadrant": "relais"
+ },
+ "elections-amerique-latine:executif": {
+  "influence": 21.0,
+  "dependance": 16.5,
+  "quadrant": "relais"
+ },
+ "elections-amerique-latine:partis_gouverneurs": {
+  "influence": 12.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "elections-amerique-latine:economie": {
+  "influence": 20.5,
+  "dependance": 12.0,
+  "quadrant": "moteur"
+ },
+ "elections-amerique-latine:fmi": {
+  "influence": 15.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "elections-amerique-latine:humeur": {
+  "influence": 7.5,
+  "dependance": 15.5,
+  "quadrant": "dependant"
+ },
+ "elections-amerique-latine:recoltes_exports": {
+  "influence": 20.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "energie-mondiale:production": {
+  "influence": 9.0,
+  "dependance": 26.5,
+  "quadrant": "dependant"
+ },
+ "energie-mondiale:demande": {
+  "influence": 20.0,
+  "dependance": 34.0,
+  "quadrant": "relais"
+ },
+ "energie-mondiale:stocks": {
+  "influence": 6.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "energie-mondiale:transport": {
+  "influence": 23.5,
+  "dependance": 17.0,
+  "quadrant": "relais"
+ },
+ "energie-mondiale:raffinage": {
+  "influence": 6.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "energie-mondiale:prix": {
+  "influence": 21.0,
+  "dependance": 86.0,
+  "quadrant": "relais"
+ },
+ "energie-mondiale:decisions": {
+  "influence": 28.0,
+  "dependance": 45.0,
+  "quadrant": "relais"
+ },
+ "energie-mondiale:conflits": {
+  "influence": 17.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "energie-mondiale:climat": {
+  "influence": 20.5,
+  "dependance": 13.0,
+  "quadrant": "moteur"
+ },
+ "energie-mondiale:recits": {
+  "influence": 6.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "energie-mondiale:chimie_combustion": {
+  "influence": 6.0,
+  "dependance": 18.0,
+  "quadrant": "dependant"
+ },
+ "energie-mondiale:nucleaire_civil": {
+  "influence": 9.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "energie-mondiale:climat_regime": {
+  "influence": 7.0,
+  "dependance": 7.5,
+  "quadrant": "autonome"
+ },
+ "epidemies:agent": {
+  "influence": 26.5,
+  "dependance": 37.0,
+  "quadrant": "relais"
+ },
+ "epidemies:reservoirs": {
+  "influence": 11.5,
+  "dependance": 4.0,
+  "quadrant": "autonome"
+ },
+ "epidemies:milieu": {
+  "influence": 19.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "epidemies:malades": {
+  "influence": 47.5,
+  "dependance": 68.5,
+  "quadrant": "relais"
+ },
+ "epidemies:comportements": {
+  "influence": 27.5,
+  "dependance": 48.0,
+  "quadrant": "relais"
+ },
+ "epidemies:autorites": {
+  "influence": 28.5,
+  "dependance": 18.5,
+  "quadrant": "relais"
+ },
+ "epidemies:convention": {
+  "influence": 25.0,
+  "dependance": 19.5,
+  "quadrant": "relais"
+ },
+ "epidemies:technique": {
+  "influence": 19.5,
+  "dependance": 5.0,
+  "quadrant": "moteur"
+ },
+ "epidemies:economie": {
+  "influence": 14.0,
+  "dependance": 10.5,
+  "quadrant": "autonome"
+ },
+ "epidemies:recits": {
+  "influence": 7.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "foret-et-sols-vivants:emissions": {
+  "influence": 6.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "foret-et-sols-vivants:pluies_acides": {
+  "influence": 6.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "foret-et-sols-vivants:sol_mineral": {
+  "influence": 12.5,
+  "dependance": 6.0,
+  "quadrant": "autonome"
+ },
+ "foret-et-sols-vivants:champignons_symbiotiques": {
+  "influence": 28.0,
+  "dependance": 35.5,
+  "quadrant": "relais"
+ },
+ "foret-et-sols-vivants:champignons_parasites": {
+  "influence": 28.0,
+  "dependance": 32.5,
+  "quadrant": "relais"
+ },
+ "foret-et-sols-vivants:pins": {
+  "influence": 43.5,
+  "dependance": 47.0,
+  "quadrant": "relais"
+ },
+ "foret-et-sols-vivants:insectes_nematodes": {
+  "influence": 27.0,
+  "dependance": 30.5,
+  "quadrant": "relais"
+ },
+ "foret-et-sols-vivants:oiseaux": {
+  "influence": 8.0,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "foret-et-sols-vivants:succession": {
+  "influence": 29.0,
+  "dependance": 26.0,
+  "quadrant": "relais"
+ },
+ "foret-et-sols-vivants:rongeurs": {
+  "influence": 22.0,
+  "dependance": 24.0,
+  "quadrant": "relais"
+ },
+ "foret-et-sols-vivants:predateurs": {
+  "influence": 15.0,
+  "dependance": 33.0,
+  "quadrant": "dependant"
+ },
+ "foret-et-sols-vivants:climat": {
+  "influence": 24.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "foret-et-sols-vivants:interventions": {
+  "influence": 19.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "guerre-levant:israel": {
+  "influence": 63.0,
+  "dependance": 69.0,
+  "quadrant": "relais"
+ },
+ "guerre-levant:gaza": {
+  "influence": 39.5,
+  "dependance": 34.5,
+  "quadrant": "relais"
+ },
+ "guerre-levant:liban": {
+  "influence": 37.0,
+  "dependance": 43.0,
+  "quadrant": "relais"
+ },
+ "guerre-levant:syrie_irak": {
+  "influence": 0.0,
+  "dependance": 19.5,
+  "quadrant": "dependant"
+ },
+ "guerre-levant:yemen": {
+  "influence": 32.5,
+  "dependance": 35.0,
+  "quadrant": "relais"
+ },
+ "guerre-levant:iran": {
+  "influence": 51.0,
+  "dependance": 55.0,
+  "quadrant": "relais"
+ },
+ "guerre-levant:puissances": {
+  "influence": 37.0,
+  "dependance": 39.0,
+  "quadrant": "relais"
+ },
+ "guerre-levant:mediateurs": {
+  "influence": 20.0,
+  "dependance": 13.0,
+  "quadrant": "moteur"
+ },
+ "guerre-levant:humanitaire": {
+  "influence": 14.0,
+  "dependance": 29.5,
+  "quadrant": "dependant"
+ },
+ "guerre-levant:recits": {
+  "influence": 14.5,
+  "dependance": 8.0,
+  "quadrant": "autonome"
+ },
+ "guerre-levant:relief": {
+  "influence": 21.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "guerre-levant:eau": {
+  "influence": 21.0,
+  "dependance": 3.0,
+  "quadrant": "moteur"
+ },
+ "guerre-levant:epidemies": {
+  "influence": 7.0,
+  "dependance": 15.5,
+  "quadrant": "dependant"
+ },
+ "guerre-levant:convention": {
+  "influence": 6.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "humain:instant": {
+  "influence": 11.0,
+  "dependance": 11.5,
+  "quadrant": "autonome"
+ },
+ "humain:indices": {
+  "influence": 4.5,
+  "dependance": 8.0,
+  "quadrant": "autonome"
+ },
+ "humain:hormones": {
+  "influence": 3.0,
+  "dependance": 19.5,
+  "quadrant": "dependant"
+ },
+ "humain:stress_chronique": {
+  "influence": 75.5,
+  "dependance": 24.5,
+  "quadrant": "relais"
+ },
+ "humain:attente": {
+  "influence": 50.5,
+  "dependance": 15.5,
+  "quadrant": "relais"
+ },
+ "humain:jeunesse": {
+  "influence": 14.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "humain:enfance": {
+  "influence": 19.5,
+  "dependance": 34.0,
+  "quadrant": "relais"
+ },
+ "humain:genes_milieu": {
+  "influence": 2.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "humain:culture_ecologie": {
+  "influence": 18.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "humain:reciprocite": {
+  "influence": 12.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "humain:nous_eux": {
+  "influence": 102.5,
+  "dependance": 149.5,
+  "quadrant": "relais"
+ },
+ "humain:hierarchie": {
+  "influence": 66.5,
+  "dependance": 38.5,
+  "quadrant": "relais"
+ },
+ "humain:morale": {
+  "influence": 21.0,
+  "dependance": 7.5,
+  "quadrant": "moteur"
+ },
+ "humain:empathie": {
+  "influence": 11.0,
+  "dependance": 39.0,
+  "quadrant": "dependant"
+ },
+ "humain:symboles": {
+  "influence": 42.5,
+  "dependance": 12.0,
+  "quadrant": "moteur"
+ },
+ "humain:passage_acte": {
+  "influence": 117.0,
+  "dependance": 199.0,
+  "quadrant": "relais"
+ },
+ "humain:treve": {
+  "influence": 47.5,
+  "dependance": 17.5,
+  "quadrant": "relais"
+ },
+ "humain:tri": {
+  "influence": 34.0,
+  "dependance": 26.0,
+  "quadrant": "relais"
+ },
+ "humain:conventions": {
+  "influence": 48.5,
+  "dependance": 43.0,
+  "quadrant": "relais"
+ },
+ "humain:dilemme": {
+  "influence": 8.0,
+  "dependance": 23.0,
+  "quadrant": "dependant"
+ },
+ "humain:opinion_privee": {
+  "influence": 16.0,
+  "dependance": 19.0,
+  "quadrant": "relais"
+ },
+ "humain:falsification": {
+  "influence": 37.0,
+  "dependance": 40.5,
+  "quadrant": "relais"
+ },
+ "humain:opinion_publique": {
+  "influence": 58.0,
+  "dependance": 39.0,
+  "quadrant": "relais"
+ },
+ "humain:disponibilite": {
+  "influence": 41.5,
+  "dependance": 79.5,
+  "quadrant": "relais"
+ },
+ "humain:risque_percu": {
+  "influence": 46.0,
+  "dependance": 21.0,
+  "quadrant": "relais"
+ },
+ "humain:aspiration": {
+  "influence": 28.0,
+  "dependance": 10.5,
+  "quadrant": "moteur"
+ },
+ "humain:agenda": {
+  "influence": 20.0,
+  "dependance": 68.0,
+  "quadrant": "relais"
+ },
+ "humain:attitude": {
+  "influence": 5.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "humain:norme_percue": {
+  "influence": 5.0,
+  "dependance": 30.0,
+  "quadrant": "dependant"
+ },
+ "humain:controle_percu": {
+  "influence": 10.0,
+  "dependance": 18.0,
+  "quadrant": "dependant"
+ },
+ "humain:intention": {
+  "influence": 33.0,
+  "dependance": 41.0,
+  "quadrant": "relais"
+ },
+ "humain:polarisation": {
+  "influence": 52.0,
+  "dependance": 45.0,
+  "quadrant": "relais"
+ },
+ "humain:croyances": {
+  "influence": 75.5,
+  "dependance": 5.5,
+  "quadrant": "moteur"
+ },
+ "humain:reseaux_discrets": {
+  "influence": 30.0,
+  "dependance": 22.5,
+  "quadrant": "relais"
+ },
+ "humain:croyance_complot": {
+  "influence": 74.0,
+  "dependance": 73.5,
+  "quadrant": "relais"
+ },
+ "humain:marche_cognitif": {
+  "influence": 30.5,
+  "dependance": 18.0,
+  "quadrant": "relais"
+ },
+ "humain:liens": {
+  "influence": 40.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "humain:convergence_editoriale": {
+  "influence": 17.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "humain:amplification_algorithmique": {
+  "influence": 30.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "inflation-mondiale:energie": {
+  "influence": 21.0,
+  "dependance": 25.0,
+  "quadrant": "relais"
+ },
+ "inflation-mondiale:alimentation": {
+  "influence": 15.0,
+  "dependance": 14.5,
+  "quadrant": "autonome"
+ },
+ "inflation-mondiale:prix_conso": {
+  "influence": 34.5,
+  "dependance": 64.5,
+  "quadrant": "relais"
+ },
+ "inflation-mondiale:salaires": {
+  "influence": 19.0,
+  "dependance": 33.0,
+  "quadrant": "relais"
+ },
+ "inflation-mondiale:anticipations": {
+  "influence": 10.0,
+  "dependance": 23.5,
+  "quadrant": "dependant"
+ },
+ "inflation-mondiale:banques_centrales": {
+  "influence": 34.0,
+  "dependance": 57.0,
+  "quadrant": "relais"
+ },
+ "inflation-mondiale:monnaies": {
+  "influence": 22.5,
+  "dependance": 29.5,
+  "quadrant": "relais"
+ },
+ "inflation-mondiale:approvisionnement": {
+  "influence": 15.0,
+  "dependance": 16.0,
+  "quadrant": "dependant"
+ },
+ "inflation-mondiale:budget": {
+  "influence": 20.0,
+  "dependance": 13.5,
+  "quadrant": "moteur"
+ },
+ "inflation-mondiale:statistiques": {
+  "influence": 14.0,
+  "dependance": 10.5,
+  "quadrant": "autonome"
+ },
+ "inflation-mondiale:elevage_cultures": {
+  "influence": 5.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "inflation-mondiale:epidemies": {
+  "influence": 18.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "inflation-mondiale:climat_regime": {
+  "influence": 4.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "information-cyber:recits": {
+  "influence": 22.5,
+  "dependance": 23.5,
+  "quadrant": "relais"
+ },
+ "information-cyber:attention": {
+  "influence": 10.0,
+  "dependance": 26.5,
+  "quadrant": "dependant"
+ },
+ "information-cyber:foules": {
+  "influence": 30.5,
+  "dependance": 43.5,
+  "quadrant": "relais"
+ },
+ "information-cyber:censure": {
+  "influence": 19.0,
+  "dependance": 18.5,
+  "quadrant": "relais"
+ },
+ "information-cyber:coupures": {
+  "influence": 0.0,
+  "dependance": 20.5,
+  "quadrant": "dependant"
+ },
+ "information-cyber:cyber": {
+  "influence": 11.0,
+  "dependance": 12.5,
+  "quadrant": "autonome"
+ },
+ "information-cyber:plateformes": {
+  "influence": 15.0,
+  "dependance": 1.0,
+  "quadrant": "autonome"
+ },
+ "information-cyber:langues_biais": {
+  "influence": 8.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "information-cyber:infrastructure": {
+  "influence": 8.5,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "information-cyber:etats": {
+  "influence": 15.0,
+  "dependance": 14.5,
+  "quadrant": "autonome"
+ },
+ "infrastructures-critiques:reseaux": {
+  "influence": 21.5,
+  "dependance": 43.5,
+  "quadrant": "relais"
+ },
+ "infrastructures-critiques:cascades": {
+  "influence": 16.5,
+  "dependance": 33.0,
+  "quadrant": "relais"
+ },
+ "infrastructures-critiques:demande": {
+  "influence": 13.5,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "infrastructures-critiques:chaleur_tempetes": {
+  "influence": 18.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "infrastructures-critiques:eau_refroidissement": {
+  "influence": 10.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "infrastructures-critiques:physique_espace": {
+  "influence": 4.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "infrastructures-critiques:attaques": {
+  "influence": 18.5,
+  "dependance": 22.0,
+  "quadrant": "relais"
+ },
+ "infrastructures-critiques:operateurs_regulateurs": {
+  "influence": 9.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "infrastructures-critiques:population": {
+  "influence": 2.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "iran-nucleaire:negociations": {
+  "influence": 57.0,
+  "dependance": 76.0,
+  "quadrant": "relais"
+ },
+ "iran-nucleaire:verification": {
+  "influence": 40.5,
+  "dependance": 29.0,
+  "quadrant": "relais"
+ },
+ "iran-nucleaire:sanctions": {
+  "influence": 17.5,
+  "dependance": 46.5,
+  "quadrant": "relais"
+ },
+ "iran-nucleaire:pouvoir_iranien": {
+  "influence": 63.0,
+  "dependance": 76.0,
+  "quadrant": "relais"
+ },
+ "iran-nucleaire:societe_iranienne": {
+  "influence": 24.0,
+  "dependance": 37.5,
+  "quadrant": "relais"
+ },
+ "iran-nucleaire:etats_unis": {
+  "influence": 66.5,
+  "dependance": 59.0,
+  "quadrant": "relais"
+ },
+ "iran-nucleaire:europe": {
+  "influence": 28.0,
+  "dependance": 14.0,
+  "quadrant": "moteur"
+ },
+ "iran-nucleaire:russie_chine": {
+  "influence": 32.5,
+  "dependance": 27.0,
+  "quadrant": "relais"
+ },
+ "iran-nucleaire:voisins": {
+  "influence": 22.5,
+  "dependance": 4.0,
+  "quadrant": "moteur"
+ },
+ "iran-nucleaire:conseil_securite": {
+  "influence": 1.5,
+  "dependance": 26.5,
+  "quadrant": "dependant"
+ },
+ "iran-nucleaire:recits": {
+  "influence": 6.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "iran-nucleaire:surete_atomique": {
+  "influence": 15.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "iran-nucleaire:relief_sites": {
+  "influence": 10.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "iran-nucleaire:sismicite": {
+  "influence": 15.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "liban-institutions:justice": {
+  "influence": 4.0,
+  "dependance": 31.5,
+  "quadrant": "dependant"
+ },
+ "liban-institutions:gouvernement": {
+  "influence": 16.5,
+  "dependance": 24.5,
+  "quadrant": "relais"
+ },
+ "liban-institutions:confessionnalisme": {
+  "influence": 12.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "liban-institutions:blocs_politiques": {
+  "influence": 16.0,
+  "dependance": 19.0,
+  "quadrant": "relais"
+ },
+ "liban-institutions:force_armee": {
+  "influence": 11.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "liban-institutions:banque_centrale": {
+  "influence": 15.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "liban-institutions:opinion_colere": {
+  "influence": 8.0,
+  "dependance": 16.0,
+  "quadrant": "dependant"
+ },
+ "liban-institutions:exterieur": {
+  "influence": 20.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "liban-institutions:internet_information": {
+  "influence": 2.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "migrations-demographie:natalite_vieillissement": {
+  "influence": 10.5,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "migrations-demographie:mortalite": {
+  "influence": 6.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "migrations-demographie:migrations": {
+  "influence": 37.0,
+  "dependance": 49.5,
+  "quadrant": "relais"
+ },
+ "migrations-demographie:urbanisation": {
+  "influence": 6.0,
+  "dependance": 24.5,
+  "quadrant": "dependant"
+ },
+ "migrations-demographie:diasporas": {
+  "influence": 27.5,
+  "dependance": 27.0,
+  "quadrant": "relais"
+ },
+ "migrations-demographie:politiques_migratoires": {
+  "influence": 15.0,
+  "dependance": 24.5,
+  "quadrant": "dependant"
+ },
+ "migrations-demographie:convention": {
+  "influence": 19.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "migrations-demographie:psychologie": {
+  "influence": 10.5,
+  "dependance": 18.5,
+  "quadrant": "dependant"
+ },
+ "migrations-demographie:climat_milieu": {
+  "influence": 21.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "migrations-demographie:economie": {
+  "influence": 22.5,
+  "dependance": 16.5,
+  "quadrant": "relais"
+ },
+ "non-proliferation:regime": {
+  "influence": 1.5,
+  "dependance": 30.5,
+  "quadrant": "dependant"
+ },
+ "non-proliferation:aiea": {
+  "influence": 23.5,
+  "dependance": 9.0,
+  "quadrant": "moteur"
+ },
+ "non-proliferation:conseil_securite": {
+  "influence": 6.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "non-proliferation:sanctions": {
+  "influence": 9.0,
+  "dependance": 14.0,
+  "quadrant": "autonome"
+ },
+ "non-proliferation:dissuasion": {
+  "influence": 9.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "non-proliferation:etats_du_seuil": {
+  "influence": 18.5,
+  "dependance": 16.0,
+  "quadrant": "relais"
+ },
+ "non-proliferation:zones": {
+  "influence": 1.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "non-proliferation:peur_prestige": {
+  "influence": 9.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "non-proliferation:civil": {
+  "influence": 9.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "nucleaire-radiologique:atome": {
+  "influence": 30.0,
+  "dependance": 7.5,
+  "quadrant": "moteur"
+ },
+ "nucleaire-radiologique:sources": {
+  "influence": 28.0,
+  "dependance": 25.5,
+  "quadrant": "relais"
+ },
+ "nucleaire-radiologique:electricite": {
+  "influence": 5.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "nucleaire-radiologique:surete": {
+  "influence": 35.0,
+  "dependance": 12.0,
+  "quadrant": "moteur"
+ },
+ "nucleaire-radiologique:signalement": {
+  "influence": 22.0,
+  "dependance": 30.5,
+  "quadrant": "relais"
+ },
+ "nucleaire-radiologique:sante": {
+  "influence": 0.0,
+  "dependance": 18.5,
+  "quadrant": "dependant"
+ },
+ "nucleaire-radiologique:environnement": {
+  "influence": 4.0,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "nucleaire-radiologique:convention": {
+  "influence": 8.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "nucleaire-radiologique:recits": {
+  "influence": 4.0,
+  "dependance": 16.5,
+  "quadrant": "dependant"
+ },
+ "nucleaire-radiologique:traites": {
+  "influence": 13.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "observateur-mesure:biais": {
+  "influence": 16.5,
+  "dependance": 21.5,
+  "quadrant": "relais"
+ },
+ "observateur-mesure:definitions": {
+  "influence": 13.0,
+  "dependance": 3.0,
+  "quadrant": "autonome"
+ },
+ "observateur-mesure:jeunesse_series": {
+  "influence": 11.5,
+  "dependance": 10.0,
+  "quadrant": "autonome"
+ },
+ "observateur-mesure:lecteurs_ia": {
+  "influence": 10.5,
+  "dependance": 16.0,
+  "quadrant": "dependant"
+ },
+ "observateur-mesure:fuite": {
+  "influence": 10.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "observateur-mesure:controles": {
+  "influence": 14.0,
+  "dependance": 19.0,
+  "quadrant": "dependant"
+ },
+ "observateur-mesure:psychologie": {
+  "influence": 12.0,
+  "dependance": 16.5,
+  "quadrant": "dependant"
+ },
+ "observateur-mesure:couverture": {
+  "influence": 7.0,
+  "dependance": 10.5,
+  "quadrant": "autonome"
+ },
+ "observateur-mesure:monde": {
+  "influence": 6.0,
+  "dependance": 19.5,
+  "quadrant": "dependant"
+ },
+ "oceans-et-fleuves:oceans": {
+  "influence": 33.5,
+  "dependance": 13.5,
+  "quadrant": "moteur"
+ },
+ "oceans-et-fleuves:niveau_mer": {
+  "influence": 12.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "oceans-et-fleuves:glaces": {
+  "influence": 27.5,
+  "dependance": 12.0,
+  "quadrant": "moteur"
+ },
+ "oceans-et-fleuves:cycle": {
+  "influence": 26.5,
+  "dependance": 12.0,
+  "quadrant": "moteur"
+ },
+ "oceans-et-fleuves:fleuves": {
+  "influence": 23.0,
+  "dependance": 30.5,
+  "quadrant": "relais"
+ },
+ "oceans-et-fleuves:nappes": {
+  "influence": 2.5,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "oceans-et-fleuves:vivant_aquatique": {
+  "influence": 0.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "oceans-et-fleuves:barrages": {
+  "influence": 21.0,
+  "dependance": 19.5,
+  "quadrant": "relais"
+ },
+ "oceans-et-fleuves:navigation_fluviale": {
+  "influence": 5.0,
+  "dependance": 19.5,
+  "quadrant": "dependant"
+ },
+ "oceans-et-fleuves:refroidissement": {
+  "influence": 0.0,
+  "dependance": 25.0,
+  "quadrant": "dependant"
+ },
+ "oceans-et-fleuves:climat": {
+  "influence": 31.5,
+  "dependance": 9.0,
+  "quadrant": "moteur"
+ },
+ "ormuz:milieu": {
+  "influence": 25.0,
+  "dependance": 16.5,
+  "quadrant": "relais"
+ },
+ "ormuz:flux_energie": {
+  "influence": 9.0,
+  "dependance": 23.5,
+  "quadrant": "dependant"
+ },
+ "ormuz:navigation": {
+  "influence": 33.5,
+  "dependance": 32.0,
+  "quadrant": "relais"
+ },
+ "ormuz:riverains": {
+  "influence": 12.0,
+  "dependance": 19.5,
+  "quadrant": "dependant"
+ },
+ "ormuz:puissances": {
+  "influence": 16.5,
+  "dependance": 26.0,
+  "quadrant": "relais"
+ },
+ "ormuz:force": {
+  "influence": 33.0,
+  "dependance": 32.5,
+  "quadrant": "relais"
+ },
+ "ormuz:droit": {
+  "influence": 5.0,
+  "dependance": 6.5,
+  "quadrant": "autonome"
+ },
+ "ormuz:prix": {
+  "influence": 12.5,
+  "dependance": 30.0,
+  "quadrant": "dependant"
+ },
+ "ormuz:interieur_iran": {
+  "influence": 19.0,
+  "dependance": 34.0,
+  "quadrant": "relais"
+ },
+ "ormuz:recits": {
+  "influence": 16.0,
+  "dependance": 11.0,
+  "quadrant": "moteur"
+ },
+ "ormuz:mer_golfe": {
+  "influence": 5.0,
+  "dependance": 6.0,
+  "quadrant": "autonome"
+ },
+ "ormuz:pollution_marine": {
+  "influence": 4.0,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "ormuz:climat_regime": {
+  "influence": 4.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "politique-americaine:executif": {
+  "influence": 61.0,
+  "dependance": 73.5,
+  "quadrant": "relais"
+ },
+ "politique-americaine:congres": {
+  "influence": 61.0,
+  "dependance": 50.5,
+  "quadrant": "relais"
+ },
+ "politique-americaine:tribunaux": {
+  "influence": 42.0,
+  "dependance": 41.5,
+  "quadrant": "relais"
+ },
+ "politique-americaine:elections": {
+  "influence": 41.0,
+  "dependance": 43.0,
+  "quadrant": "relais"
+ },
+ "politique-americaine:budget": {
+  "influence": 5.5,
+  "dependance": 35.0,
+  "quadrant": "dependant"
+ },
+ "politique-americaine:commerce": {
+  "influence": 6.5,
+  "dependance": 43.0,
+  "quadrant": "dependant"
+ },
+ "politique-americaine:energie": {
+  "influence": 6.5,
+  "dependance": 32.5,
+  "quadrant": "dependant"
+ },
+ "politique-americaine:sanctions": {
+  "influence": 11.0,
+  "dependance": 31.5,
+  "quadrant": "dependant"
+ },
+ "politique-americaine:reserve_federale": {
+  "influence": 7.5,
+  "dependance": 28.5,
+  "quadrant": "dependant"
+ },
+ "politique-americaine:etats_federes": {
+  "influence": 36.0,
+  "dependance": 27.0,
+  "quadrant": "relais"
+ },
+ "politique-americaine:entourage": {
+  "influence": 22.0,
+  "dependance": 30.0,
+  "quadrant": "relais"
+ },
+ "politique-americaine:regles_electorales": {
+  "influence": 14.0,
+  "dependance": 8.0,
+  "quadrant": "autonome"
+ },
+ "politique-americaine:eau_fleuves": {
+  "influence": 12.5,
+  "dependance": 8.0,
+  "quadrant": "autonome"
+ },
+ "politique-americaine:climat_risques": {
+  "influence": 11.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "relief-et-montagnes:chaines": {
+  "influence": 22.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "relief-et-montagnes:obstacles": {
+  "influence": 14.0,
+  "dependance": 9.0,
+  "quadrant": "autonome"
+ },
+ "relief-et-montagnes:chateaux_d_eau": {
+  "influence": 12.5,
+  "dependance": 15.0,
+  "quadrant": "dependant"
+ },
+ "relief-et-montagnes:pluies_orographiques": {
+  "influence": 10.5,
+  "dependance": 3.0,
+  "quadrant": "autonome"
+ },
+ "relief-et-montagnes:seismes_volcans": {
+  "influence": 12.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "relief-et-montagnes:cotes_detroits": {
+  "influence": 15.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "relief-et-montagnes:sols_versants": {
+  "influence": 10.0,
+  "dependance": 3.0,
+  "quadrant": "autonome"
+ },
+ "relief-et-montagnes:routes_frontieres": {
+  "influence": 4.0,
+  "dependance": 12.0,
+  "quadrant": "autonome"
+ },
+ "relief-et-montagnes:guerres": {
+  "influence": 14.0,
+  "dependance": 20.0,
+  "quadrant": "dependant"
+ },
+ "relief-et-montagnes:populations": {
+  "influence": 0.0,
+  "dependance": 24.5,
+  "quadrant": "dependant"
+ },
+ "relief-et-montagnes:climat": {
+  "influence": 13.0,
+  "dependance": 1.0,
+  "quadrant": "autonome"
+ },
+ "rivalite-sino-americaine:commerce": {
+  "influence": 31.0,
+  "dependance": 39.0,
+  "quadrant": "relais"
+ },
+ "rivalite-sino-americaine:technologie": {
+  "influence": 15.0,
+  "dependance": 47.0,
+  "quadrant": "dependant"
+ },
+ "rivalite-sino-americaine:energie": {
+  "influence": 19.5,
+  "dependance": 28.0,
+  "quadrant": "relais"
+ },
+ "rivalite-sino-americaine:taiwan": {
+  "influence": 36.5,
+  "dependance": 34.0,
+  "quadrant": "relais"
+ },
+ "rivalite-sino-americaine:alliances": {
+  "influence": 29.5,
+  "dependance": 17.5,
+  "quadrant": "relais"
+ },
+ "rivalite-sino-americaine:diplomatie": {
+  "influence": 39.5,
+  "dependance": 43.5,
+  "quadrant": "relais"
+ },
+ "rivalite-sino-americaine:finance": {
+  "influence": 5.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "rivalite-sino-americaine:economie_chine": {
+  "influence": 9.0,
+  "dependance": 22.0,
+  "quadrant": "dependant"
+ },
+ "rivalite-sino-americaine:recits": {
+  "influence": 11.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "rivalite-sino-americaine:terres_rares": {
+  "influence": 9.0,
+  "dependance": 19.0,
+  "quadrant": "dependant"
+ },
+ "rivalite-sino-americaine:detroit_relief": {
+  "influence": 21.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "rivalite-sino-americaine:atomique": {
+  "influence": 11.0,
+  "dependance": 1.0,
+  "quadrant": "autonome"
+ },
+ "russie-ukraine:front": {
+  "influence": 55.0,
+  "dependance": 38.5,
+  "quadrant": "relais"
+ },
+ "russie-ukraine:capacites": {
+  "influence": 28.5,
+  "dependance": 20.5,
+  "quadrant": "relais"
+ },
+ "russie-ukraine:soutiens": {
+  "influence": 50.5,
+  "dependance": 37.0,
+  "quadrant": "relais"
+ },
+ "russie-ukraine:sanctions": {
+  "influence": 14.0,
+  "dependance": 31.5,
+  "quadrant": "dependant"
+ },
+ "russie-ukraine:economie_russe": {
+  "influence": 7.5,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "russie-ukraine:economie_ukraine": {
+  "influence": 0.0,
+  "dependance": 31.5,
+  "quadrant": "dependant"
+ },
+ "russie-ukraine:negociations": {
+  "influence": 24.5,
+  "dependance": 41.0,
+  "quadrant": "relais"
+ },
+ "russie-ukraine:opinions": {
+  "influence": 15.0,
+  "dependance": 5.5,
+  "quadrant": "autonome"
+ },
+ "russie-ukraine:mer_noire": {
+  "influence": 7.0,
+  "dependance": 19.0,
+  "quadrant": "dependant"
+ },
+ "russie-ukraine:relief_fleuves": {
+  "influence": 19.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "russie-ukraine:hiver_saisons": {
+  "influence": 28.5,
+  "dependance": 1.5,
+  "quadrant": "moteur"
+ },
+ "russie-ukraine:sols_agriculture": {
+  "influence": 7.0,
+  "dependance": 21.0,
+  "quadrant": "dependant"
+ },
+ "russie-ukraine:atomique": {
+  "influence": 5.0,
+  "dependance": 21.0,
+  "quadrant": "dependant"
+ },
+ "sciences-techniques:ia": {
+  "influence": 26.0,
+  "dependance": 30.0,
+  "quadrant": "relais"
+ },
+ "sciences-techniques:calcul": {
+  "influence": 34.0,
+  "dependance": 41.5,
+  "quadrant": "relais"
+ },
+ "sciences-techniques:energie_eau": {
+  "influence": 16.5,
+  "dependance": 21.0,
+  "quadrant": "relais"
+ },
+ "sciences-techniques:recherche": {
+  "influence": 10.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "sciences-techniques:capitaux": {
+  "influence": 16.5,
+  "dependance": 8.0,
+  "quadrant": "moteur"
+ },
+ "sciences-techniques:adoption": {
+  "influence": 0.0,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "sciences-techniques:regulation": {
+  "influence": 37.5,
+  "dependance": 3.0,
+  "quadrant": "moteur"
+ },
+ "sciences-techniques:course_etats": {
+  "influence": 17.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "sciences-techniques:talents": {
+  "influence": 10.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "sciences-techniques:attentes": {
+  "influence": 7.5,
+  "dependance": 11.0,
+  "quadrant": "autonome"
+ },
+ "securite-europeenne:defense": {
+  "influence": 18.0,
+  "dependance": 24.0,
+  "quadrant": "relais"
+ },
+ "securite-europeenne:otan_ue": {
+  "influence": 13.5,
+  "dependance": 10.5,
+  "quadrant": "autonome"
+ },
+ "securite-europeenne:industrie": {
+  "influence": 0.0,
+  "dependance": 19.5,
+  "quadrant": "dependant"
+ },
+ "securite-europeenne:etats_unis": {
+  "influence": 28.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "securite-europeenne:menace": {
+  "influence": 11.0,
+  "dependance": 2.0,
+  "quadrant": "autonome"
+ },
+ "securite-europeenne:opinions": {
+  "influence": 9.0,
+  "dependance": 7.0,
+  "quadrant": "autonome"
+ },
+ "securite-europeenne:peur_confiance": {
+  "influence": 4.0,
+  "dependance": 8.0,
+  "quadrant": "autonome"
+ },
+ "securite-europeenne:budgets_dette": {
+  "influence": 12.5,
+  "dependance": 13.0,
+  "quadrant": "autonome"
+ },
+ "securite-europeenne:geographie": {
+  "influence": 12.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "securite-publique:alertes": {
+  "influence": 20.0,
+  "dependance": 33.0,
+  "quadrant": "relais"
+ },
+ "securite-publique:polices": {
+  "influence": 22.0,
+  "dependance": 33.0,
+  "quadrant": "relais"
+ },
+ "securite-publique:justice": {
+  "influence": 6.5,
+  "dependance": 10.0,
+  "quadrant": "autonome"
+ },
+ "securite-publique:trafics": {
+  "influence": 32.0,
+  "dependance": 24.5,
+  "quadrant": "relais"
+ },
+ "securite-publique:corruption": {
+  "influence": 30.5,
+  "dependance": 18.0,
+  "quadrant": "relais"
+ },
+ "securite-publique:prisons": {
+  "influence": 10.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "securite-publique:peur": {
+  "influence": 4.0,
+  "dependance": 28.5,
+  "quadrant": "dependant"
+ },
+ "securite-publique:politique": {
+  "influence": 4.0,
+  "dependance": 19.0,
+  "quadrant": "dependant"
+ },
+ "securite-publique:frontieres": {
+  "influence": 13.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "securite-publique:sanctions": {
+  "influence": 8.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "soleil-espace:soleil": {
+  "influence": 26.5,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "soleil-espace:magnetosphere": {
+  "influence": 27.0,
+  "dependance": 3.0,
+  "quadrant": "moteur"
+ },
+ "soleil-espace:gps": {
+  "influence": 6.0,
+  "dependance": 5.0,
+  "quadrant": "autonome"
+ },
+ "soleil-espace:satellites": {
+  "influence": 15.0,
+  "dependance": 13.0,
+  "quadrant": "autonome"
+ },
+ "soleil-espace:debris": {
+  "influence": 13.0,
+  "dependance": 20.0,
+  "quadrant": "dependant"
+ },
+ "soleil-espace:reseaux": {
+  "influence": 4.5,
+  "dependance": 13.5,
+  "quadrant": "autonome"
+ },
+ "soleil-espace:radio": {
+  "influence": 0.0,
+  "dependance": 4.0,
+  "quadrant": "autonome"
+ },
+ "soleil-espace:alertes": {
+  "influence": 7.0,
+  "dependance": 10.5,
+  "quadrant": "autonome"
+ },
+ "soleil-espace:meteorites": {
+  "influence": 4.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "soleil-espace:recits": {
+  "influence": 7.0,
+  "dependance": 7.0,
+  "quadrant": "autonome"
+ },
+ "transport-maritime:detroits": {
+  "influence": 29.0,
+  "dependance": 47.0,
+  "quadrant": "relais"
+ },
+ "transport-maritime:contournement": {
+  "influence": 7.5,
+  "dependance": 40.0,
+  "quadrant": "dependant"
+ },
+ "transport-maritime:flottes": {
+  "influence": 15.0,
+  "dependance": 22.0,
+  "quadrant": "dependant"
+ },
+ "transport-maritime:fret": {
+  "influence": 9.5,
+  "dependance": 39.0,
+  "quadrant": "dependant"
+ },
+ "transport-maritime:assurances": {
+  "influence": 7.0,
+  "dependance": 7.0,
+  "quadrant": "autonome"
+ },
+ "transport-maritime:ports": {
+  "influence": 10.0,
+  "dependance": 26.5,
+  "quadrant": "dependant"
+ },
+ "transport-maritime:securite": {
+  "influence": 31.0,
+  "dependance": 6.5,
+  "quadrant": "moteur"
+ },
+ "transport-maritime:climat": {
+  "influence": 24.0,
+  "dependance": 0.0,
+  "quadrant": "moteur"
+ },
+ "transport-maritime:droit": {
+  "influence": 10.0,
+  "dependance": 5.5,
+  "quadrant": "autonome"
+ },
+ "transport-maritime:recits": {
+  "influence": 2.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "transport-maritime:fleuves": {
+  "influence": 15.0,
+  "dependance": 3.0,
+  "quadrant": "autonome"
+ },
+ "transport-maritime:oceans": {
+  "influence": 2.5,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ },
+ "transport-maritime:epidemies_ports": {
+  "influence": 9.0,
+  "dependance": 0.0,
+  "quadrant": "autonome"
+ }
+}
