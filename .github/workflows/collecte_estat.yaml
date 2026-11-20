@@ -1,0 +1,41 @@
+name: "Collecte e-Stat, inflation de Tokyo (ombre)"
+
+# 0.10.405 : inflation de Tokyo (e-Stat, clé en secret). This service uses API functions from e-Stat, however its contents are not guaranteed by government.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte_estat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecter
+        run: uv run python collecte_estat.py
+        env:
+          ESTAT_APP_ID: ${{ secrets.ESTAT_APP_ID }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/estat-tableaux-tokyo.json registre/estat-tokyo-cpi.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : e-Stat du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
