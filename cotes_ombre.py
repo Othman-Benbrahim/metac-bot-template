@@ -81,44 +81,65 @@ def candidats(reponse: dict) -> list[dict]:
     return out
 
 
+def _ecart(titre: str, resolution: date, m: dict) -> tuple[str | None, dict]:
+    """Première règle que le marché ne remplit pas (None s'il les remplit toutes), et sa fiche."""
+    q = m.get("question") or ""
+    issues = [str(x).lower() for x in _liste(m.get("outcomes"))]
+    prix = _liste(m.get("outcomePrices"))
+    fiche = {"slug": m.get("slug"), "id": m.get("id"), "question": q, "jaccard": round(jaccard(pleins(q), pleins(titre)), 3)}
+    if issues != ["yes", "no"] or len(prix) != 2:
+        return "pas Oui/Non", fiche
+    if m.get("closed") or m.get("active") is False:
+        return "fermé", fiche
+    try:
+        mise = float(m.get("volumeNum") or m.get("volume") or 0)
+        p_oui = float(prix[0])
+    except (TypeError, ValueError):
+        return "prix illisible", fiche
+    fiche.update(p_oui=p_oui, mise=mise)
+    if mise < MISE_MIN:
+        return "mise trop faible", fiche
+    if nombres(q) != nombres(titre):
+        return "nombres différents", fiche
+    if contraires(q) != contraires(titre):
+        return "sens différent", fiche
+    if fiche["jaccard"] < JACCARD_MIN:
+        return "mots trop éloignés", fiche
+    try:
+        fin = datetime.fromisoformat(str(m.get("endDate")).replace("Z", "+00:00")).date()
+    except ValueError:
+        return "date illisible", fiche
+    fiche["fin"] = fin.isoformat()
+    if abs((fin - resolution).days) > ECART_JOURS:
+        return "date de fin trop éloignée", fiche
+    return None, fiche
+
+
 def apparier(titre: str, resolution: date, marches: list[dict]) -> tuple[dict | None, str]:
     """(marché retenu, motif). Toutes les règles du préenregistrement ; un seul survivant, sinon rien."""
-    survivants = []
+    survivants = {}
     for m in marches:
-        q = m.get("question") or ""
-        issues = [str(x).lower() for x in _liste(m.get("outcomes"))]
-        prix = _liste(m.get("outcomePrices"))
-        if issues != ["yes", "no"] or len(prix) != 2 or m.get("closed") or m.get("active") is False:
-            continue
-        try:
-            mise = float(m.get("volumeNum") or m.get("volume") or 0)
-            p_oui = float(prix[0])
-        except (TypeError, ValueError):
-            continue
-        if mise < MISE_MIN:
-            continue
-        if nombres(q) != nombres(titre) or contraires(q) != contraires(titre):
-            continue
-        j = jaccard(pleins(q), pleins(titre))
-        if j < JACCARD_MIN:
-            continue
-        try:
-            fin = datetime.fromisoformat(str(m.get("endDate")).replace("Z", "+00:00")).date()
-        except ValueError:
-            continue
-        if abs((fin - resolution).days) > ECART_JOURS:
-            continue
-        survivants.append({"slug": m.get("slug"), "id": m.get("id"), "question": q, "p_oui": p_oui, "mise": mise,
-                           "jaccard": round(j, 3), "fin": fin.isoformat()})
-    uniques = {s["id"] or s["slug"]: s for s in survivants}
-    if not uniques:
+        regle, fiche = _ecart(titre, resolution, m)
+        if regle is None:
+            survivants[fiche["id"] or fiche["slug"]] = fiche
+    if not survivants:
         return None, "aucun marché conforme"
-    if len(uniques) > 1:
-        return None, f"ambigu ({len(uniques)} marchés conformes)"
-    return next(iter(uniques.values())), "apparié"
+    if len(survivants) > 1:
+        return None, f"ambigu ({len(survivants)} marchés conformes)"
+    return next(iter(survivants.values())), "apparié"
 
 
-def chercher(titre: str, resolution: date, client: httpx.Client | None = None) -> dict:
+def diagnostic(titre: str, resolution: date, marches: list[dict]) -> dict:
+    """Pour la sonde : nombre de marchés renvoyés et le plus proche (par les mots), avec la règle qui l'écarte."""
+    if not marches:
+        return {"candidats": 0}
+    fiches = [(_ecart(titre, resolution, m)) for m in marches]
+    regle, fiche = max(fiches, key=lambda z: z[1]["jaccard"])
+    return {"candidats": len(marches), "plus_proche": fiche["question"][:160], "jaccard": fiche["jaccard"],
+            "ecarte_par": regle or "conforme"}
+
+
+def chercher(titre: str, resolution: date, client: httpx.Client | None = None, diag: bool = False) -> dict:
     """Interroge Polymarket et applique l'appariement. Ne lève jamais : rend un statut."""
     propre = client is None
     c = client or httpx.Client(headers={"User-Agent": politesse.UA}, timeout=15)
@@ -130,8 +151,12 @@ def chercher(titre: str, resolution: date, client: httpx.Client | None = None) -
         r = c.get(url, params={"q": requete, "limit_per_type": 20, "events_status": "active"})
         if r.status_code != 200:
             return {"statut": f"réponse {r.status_code}"}
-        m, motif = apparier(titre, resolution, candidats(r.json()))
-        return {"statut": motif, "marche": m} if m else {"statut": motif}
+        cands = candidats(r.json())
+        m, motif = apparier(titre, resolution, cands)
+        out = {"statut": motif, "marche": m} if m else {"statut": motif}
+        if diag:
+            out["diagnostic"] = diagnostic(titre, resolution, cands)
+        return out
     except Exception as e:
         return {"statut": f"erreur {type(e).__name__}"}
     finally:
@@ -175,7 +200,7 @@ def sonde() -> int:
     out = []
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=15) as c:
         for qid, (t, res) in sorted(vues.items(), key=lambda z: str(z[0])):
-            out.append({"question_id": qid, "titre": t, "resolution": res.isoformat(), **chercher(t, res, c)})
+            out.append({"question_id": qid, "titre": t, "resolution": res.isoformat(), **chercher(t, res, c, diag=True)})
             time.sleep(1)
     (REG / "sonde-cotes.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     n = sum(1 for x in out if x.get("marche"))
@@ -188,6 +213,10 @@ def sonde() -> int:
     for x in out:
         motifs[x["statut"]] = motifs.get(x["statut"], 0) + 1
     print("motifs :", motifs)
+    for x in out:
+        d = x.get("diagnostic") or {}
+        print(f"* {x['titre'][:70]} | {d.get('candidats', '?')} marchés | plus proche (J {d.get('jaccard')}) : "
+              f"{(d.get('plus_proche') or '')[:70]} | écarté par : {d.get('ecarte_par')}")
     return 0
 
 
