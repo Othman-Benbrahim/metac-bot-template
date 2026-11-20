@@ -140,5 +140,54 @@
     "n_parts": 5
    }
   ]
+ },
+ "bresil_etats": {
+  "elections": 1,
+  "erreur_absolue_moyenne": 5.82,
+  "mediane": 5.82,
+  "sigma": 7.28,
+  "statut": "insuffisant",
+  "seconds_tours": 0,
+  "retournements": 0,
+  "taux_retournement": null,
+  "detail": [
+   {
+    "titre": "2014 São Paulo gubernatorial election",
+    "erreur_moyenne": 5.82,
+    "n_parts": 3
+   }
+  ]
+ },
+ "etats_unis_villes": {
+  "elections": 4,
+  "erreur_absolue_moyenne": 10.2,
+  "mediane": 6.69,
+  "sigma": 12.74,
+  "statut": "insuffisant",
+  "seconds_tours": 3,
+  "retournements": 2,
+  "taux_retournement": null,
+  "detail": [
+   {
+    "titre": "2013 Boston mayoral election",
+    "erreur_moyenne": 5.305,
+    "n_parts": 2
+   },
+   {
+    "titre": "2021 Boston mayoral election",
+    "erreur_moyenne": 3.8000000000000007,
+    "n_parts": 2
+   },
+   {
+    "titre": "2025 New York City mayoral election",
+    "erreur_moyenne": 8.08,
+    "n_parts": 3
+   },
+   {
+    "titre": "2025 San Antonio mayoral election",
+    "erreur_moyenne": 23.595,
+    "n_parts": 2
+   }
+  ]
  }
 }
