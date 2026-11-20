@@ -289,6 +289,12 @@ class AlphabetBot(FallTemplateBot2026):
             jour = datetime.now(timezone.utc).date().isoformat()
             fin = spx.echeance(question.question_text or "", jour)
             f = spx.fourchette(question.question_text or "", jour, fin)
+            if f is None:   # 0.10.404 : indicateurs lents (séries FRED), prochaine publication
+                import indicateurs_lents as ilx
+                i_ = ilx.fourchette_publication(question.question_text or "")
+                if i_ is not None:
+                    f = {"actif": f"indicateur {i_['serie']}", "dernier_prix": i_["derniere_valeur"], "date_prix": i_["date"],
+                         "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": i_["percentiles"]}
             if f is None:   # 0.10.403 : total CDC de la rougeole, comptes cumulés v1 (pari d'auteur)
                 import comptes_cumules as ccx
                 r_ = ccx.fourchette_rougeole(question.question_text or "", jour, fin or q_fin(question))
@@ -301,7 +307,10 @@ class AlphabetBot(FallTemplateBot2026):
                          "fourchette_prix": {k: f[k] for k in ("actif", "dernier_prix", "date_prix", "sigma_annuel", "echeance")}}
                 dist = NumericDistribution.from_question([Percentile(percentile=p, value=x) for p, x in f["percentiles"]], question)
                 pct = ", ".join(f"P{int(p*100)} {x:,.2f}" for p, x in f["percentiles"])
-                if f["actif"] == "rougeole CDC":
+                if str(f["actif"]).startswith("indicateur "):
+                    texte = (f"\n\nSlow-indicator rule (coded): last published value {f['dernier_prix']:,.3f} ({f['date_prix']}), "
+                             f"next release drawn from the 36 past release-to-release changes; percentiles: {pct}.")
+                elif f["actif"] == "rougeole CDC":
                     texte = (f"\n\nCumulative-count rule (coded): last CDC total {f['dernier_prix']:,.0f} as of {f['date_prix']}, "
                              f"future weekly increments drawn from the recent pace and its past variations (CDC forecast-hub "
                              f"baseline, adapted), horizon to {f['echeance']}; percentiles: {pct}.")

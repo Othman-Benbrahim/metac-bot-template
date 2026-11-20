@@ -1,0 +1,30 @@
+{
+ "ensemble": {
+  "n": 461,
+  "couverture_80": 0.785,
+  "couverture_60": 0.586
+ },
+ "series": {
+  "chômage (UNRATE)": {
+   "n": 121,
+   "couverture_80": 0.835,
+   "couverture_60": 0.636
+  },
+  "confiance des ménages (UMCSENT)": {
+   "n": 122,
+   "couverture_80": 0.803,
+   "couverture_60": 0.574
+  },
+  "inflation sur un an (CPIAUCSL)": {
+   "n": 109,
+   "couverture_80": 0.761,
+   "couverture_60": 0.587
+  },
+  "inflation sous-jacente sur un an (CPILFESL)": {
+   "n": 109,
+   "couverture_80": 0.734,
+   "couverture_60": 0.541
+  }
+ },
+ "note": "attendu 0,80 et 0,60 ; critère 0,75-0,85 et 0,55-0,65 sur l'ensemble"
+}
