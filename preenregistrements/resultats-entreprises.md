@@ -24,3 +24,18 @@ Collecte EDGAR complète (50 entreprises, 4 486 valeurs trimestrielles ; quelque
 sans chiffre d'affaires reconnu, XOM et UBER 4 trimestres). 1 403 prévisions d'un trimestre. Intervalle 80 % → 0,731
 (hors borne, sous 0,75) ; intervalle 60 % → 0,550 (sur la borne basse). Contrairement aux comptes cumulés, l'écart est
 du côté RISQUÉ (trop sûr de soi). Rien dans le bot. Décision de l'auteur attendue.
+
+## Version 2 (préenregistrée le 2026-11-20 à 21 h 35, décision de l'auteur : « on peut essayer »)
+Correction tirée de la LITTÉRATURE comptable, pas réglée sur les données vues : les chiffres trimestriels sont
+saisonniers, et le modèle de référence compare chaque trimestre au même trimestre de l'année précédente (Foster,
+« Quarterly Accounting Data: Time-Series Properties and Predictive-Ability Results », *The Accounting Review*, 1977 ;
+Brown et Rozeff, *Journal of Accounting Research*, 1979).
+- Modèle (Foster avec φ = 1, sans dérive), sur le logarithme x du chiffre d'affaires : croissance sur un an
+  g(s) = x(s) − x(s−4) ; prochain trimestre = x(t−3) + g(t) + ε, où ε suit les quantiles empiriques des variations de
+  cette croissance d'un trimestre au suivant, g(s) − g(s−1), sur les 20 derniers trimestres (au moins 12). Fenêtre
+  plus longue que la v1 (12), fixée ici et non réglée.
+- Données jugées : 25 entreprises JAMAIS utilisées (ajoutées à la collecte, liste dans `collecte_edgar.py`,
+  NOUVELLES_V2), trimestres consécutifs seulement. Les 50 anciennes et la v1 sur les nouvelles sont rapportées à
+  titre descriptif, sans effet sur la décision.
+- Critère inchangé : intervalle 80 % entre 0,75 et 0,85, intervalle 60 % entre 0,55 et 0,65, sur les nouvelles.
+- Lancé une fois (`mise_au_point/resultats_entreprises_v2_essai.py`, workflow collecte_edgar.yaml).

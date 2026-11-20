@@ -33,6 +33,10 @@ ENTREPRISES = ["SNOW", "CRM", "NVDA", "AMD", "AVGO", "MU", "MSFT", "AAPL", "GOOG
                "ORCL", "INTC", "PLTR", "COIN", "ADBE", "CSCO", "IBM", "QCOM", "TXN", "INTU", "NOW", "PANW", "CRWD",
                "WMT", "COST", "HD", "NKE", "DIS", "JPM", "BAC", "GS", "V", "MA", "UNH", "JNJ", "PFE", "LLY",
                "KO", "PEP", "MCD", "SBUX", "BA", "CAT", "XOM", "CVX", "UBER", "ABNB"]
+# version 2 (préenregistrée le 2026-11-20, 21 h 35) : entreprises jamais vues, seules jugées
+NOUVELLES_V2 = ["LOW", "TGT", "ADP", "HON", "DE", "UPS", "FDX", "LMT", "MRK", "ABBV", "AMGN", "GILD", "TMO", "ABT",
+                "PG", "CL", "T", "VZ", "CMCSA", "BKNG", "EBAY", "AMAT", "ADI", "SNPS", "ADSK"]
+ENTREPRISES = ENTREPRISES + NOUVELLES_V2
 
 
 def trimestres(faits: dict, concept: str, unite: str) -> list[tuple[str, str, float]]:
