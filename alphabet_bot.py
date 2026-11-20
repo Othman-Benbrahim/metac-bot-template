@@ -47,6 +47,11 @@ def echelle_explicite(question) -> str:
     return note
 
 
+def q_fin(question) -> str | None:
+    fin = getattr(question, "scheduled_resolution_time", None) or getattr(question, "close_time", None)
+    return fin.astimezone(timezone.utc).date().isoformat() if fin else None
+
+
 class AlphabetBot(FallTemplateBot2026):
     """Bras A sur tout ; alphabet (bras B et C) sur les binaires."""
 
@@ -284,14 +289,26 @@ class AlphabetBot(FallTemplateBot2026):
             jour = datetime.now(timezone.utc).date().isoformat()
             fin = spx.echeance(question.question_text or "", jour)
             f = spx.fourchette(question.question_text or "", jour, fin)
+            if f is None:   # 0.10.403 : total CDC de la rougeole, comptes cumulés v1 (pari d'auteur)
+                import comptes_cumules as ccx
+                r_ = ccx.fourchette_rougeole(question.question_text or "", jour, fin or q_fin(question))
+                if r_ is not None:
+                    f = {"actif": "rougeole CDC", "dernier_prix": r_["dernier_total"], "date_prix": r_["date_total"],
+                         "sigma_annuel": 0.0, "echeance": fin or q_fin(question), "percentiles": r_["percentiles"]}
             if f is not None:
                 v = rp.prediction_value
                 extra = {"prediction_brute": v.model_dump(mode="json") if hasattr(v, "model_dump") else str(v),
                          "fourchette_prix": {k: f[k] for k in ("actif", "dernier_prix", "date_prix", "sigma_annuel", "echeance")}}
                 dist = NumericDistribution.from_question([Percentile(percentile=p, value=x) for p, x in f["percentiles"]], question)
-                texte = (f"\n\nPrice-range rule (coded): last known close {f['dernier_prix']:,.2f} on {f['date_prix']}, 30-day "
-                         f"annualised volatility {f['sigma_annuel']:.0%}, horizon to {f['echeance']}; driftless lognormal "
-                         f"percentiles: " + ", ".join(f"P{int(p*100)} {x:,.2f}" for p, x in f["percentiles"]) + ".")
+                pct = ", ".join(f"P{int(p*100)} {x:,.2f}" for p, x in f["percentiles"])
+                if f["actif"] == "rougeole CDC":
+                    texte = (f"\n\nCumulative-count rule (coded): last CDC total {f['dernier_prix']:,.0f} as of {f['date_prix']}, "
+                             f"future weekly increments drawn from the recent pace and its past variations (CDC forecast-hub "
+                             f"baseline, adapted), horizon to {f['echeance']}; percentiles: {pct}.")
+                else:
+                    texte = (f"\n\nPrice-range rule (coded): last known close {f['dernier_prix']:,.2f} on {f['date_prix']}, 30-day "
+                             f"annualised volatility {f['sigma_annuel']:.0%}, horizon to {f['echeance']}; driftless lognormal "
+                             f"percentiles: {pct}.")
                 rp = ReasonedPrediction(prediction_value=dist, reasoning=(rp.reasoning or "") + texte)
         except Exception as e:      # la fourchette qui échoue ne bloque rien : on garde celle du bot
             logger.warning("fourchette de prix : non appliquée (%s)", type(e).__name__)

@@ -26,13 +26,15 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Collecte
-        run: uv run python -u collecte_fred.py
+        run: |
+          uv run python -u collecte_fred.py
+          uv run python -u collecte_rougeole.py || true   # 0.10.403 : total CDC de la rougeole (comptes cumulés)
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/fred.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/fred.csv registre/rougeole-cdc.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : fred du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase

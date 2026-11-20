@@ -50,3 +50,11 @@ Manifestations GDELT (16 240 ancrages) : 7 j → 0,857 et 0,717 ; 14 j → 0,877
 0,790 et 0,600 (dans les bornes) ; 14 j → 0,858 et 0,694. UCDP (descriptif) : 7 j → 0,826 et 0,664 ; 14 j → 0,876 et
 0,717. La v2 élargit trop à 14 jours (les pas tirés au hasard s'additionnent plus que les vraies séries ne varient).
 Les deux versions se trompent surtout du côté large. Rien dans le bot.
+
+## Décision de l'auteur (2026-11-20, 20 h 44) : pari sur la version 1
+« On n'a pas mieux, on prend ce qu'on a, et on limite la casse ; si un meilleur modèle qui a fait ses preuves apparaît,
+on le récupérera. » Version 1 branchée en 0.10.403 pour le total CDC de la rougeole (seule question du journal avec une
+série accessible) ; fourchette du bot scellée à côté. Le CDC n'offre pas de fichier de données : `collecte_rougeole.py`
+relève chaque nuit la phrase « As of <date>, <n> confirmed measles cases » (fichier robots respecté) ; le modèle
+s'applique dès 9 relevés hebdomadaires (environ deux mois). Votes par correspondance (Correos) et pluies de la Sierra :
+pas de série accessible, pas de branchement.
