@@ -1,0 +1,146 @@
+{
+ "n_confirmation": 969,
+ "questions_distinctes": 438,
+ "perte": {
+  "taux_de_base": 0.6202,
+  "semblables": 0.5682,
+  "brique": 0.6135
+ },
+ "contre_semblables": {
+  "ecart": 0.0452,
+  "intervalle_corrige": [
+   -0.0087,
+   0.1077
+  ],
+  "verdict": "non tranché"
+ },
+ "contre_taux_de_base": {
+  "ecart": -0.0068,
+  "intervalle_corrige": [
+   -0.0868,
+   0.0654
+  ],
+  "verdict": "non tranché"
+ },
+ "foule_descriptif": {
+  "n": 969,
+  "perte_foule": 0.3339,
+  "perte_brique_memes": 0.6135
+ },
+ "niveaux": {
+  "acteur": 269,
+  "acteur×fenêtre": 635,
+  "base": 65
+ },
+ "par_acteur": {
+  "autre": {
+   "n": 298,
+   "part_oui": 0.265,
+   "perte_base": 0.5568,
+   "perte_semblables": 0.5131,
+   "perte_brique": 0.6089
+  },
+  "chef": {
+   "n": 88,
+   "part_oui": 0.489,
+   "perte_base": 1.2597,
+   "perte_semblables": 1.0248,
+   "perte_brique": 0.8307
+  },
+  "entreprise": {
+   "n": 112,
+   "part_oui": 0.232,
+   "perte_base": 0.656,
+   "perte_semblables": 0.6291,
+   "perte_brique": 0.6169
+  },
+  "etat": {
+   "n": 148,
+   "part_oui": 0.196,
+   "perte_base": 0.4455,
+   "perte_semblables": 0.4315,
+   "perte_brique": 0.5801
+  },
+  "executif": {
+   "n": 51,
+   "part_oui": 0.353,
+   "perte_base": 0.7851,
+   "perte_semblables": 0.6686,
+   "perte_brique": 0.737
+  },
+  "international": {
+   "n": 94,
+   "part_oui": 0.191,
+   "perte_base": 0.4885,
+   "perte_semblables": 0.5371,
+   "perte_brique": 0.5264
+  },
+  "judiciaire": {
+   "n": 36,
+   "part_oui": 0.083,
+   "perte_base": 0.3627,
+   "perte_semblables": 0.3096,
+   "perte_brique": 0.3477
+  },
+  "legislatif": {
+   "n": 35,
+   "part_oui": 0.429,
+   "perte_base": 0.8689,
+   "perte_semblables": 0.7779,
+   "perte_brique": 0.8689
+  },
+  "militaire": {
+   "n": 101,
+   "part_oui": 0.218,
+   "perte_base": 0.5337,
+   "perte_semblables": 0.4875,
+   "perte_brique": 0.5392
+  },
+  "nature": {
+   "n": 6,
+   "part_oui": 0.0,
+   "perte_base": 0.2507,
+   "perte_semblables": 0.1704,
+   "perte_brique": 0.0808
+  }
+ },
+ "par_fenetre": {
+  "31-90": {
+   "n": 383,
+   "part_oui": 0.272,
+   "perte_base": 0.6488,
+   "perte_semblables": 0.5777,
+   "perte_brique": 0.6524
+  },
+  "8-30": {
+   "n": 372,
+   "part_oui": 0.245,
+   "perte_base": 0.5768,
+   "perte_semblables": 0.5474,
+   "perte_brique": 0.5754
+  },
+  "91-180": {
+   "n": 119,
+   "part_oui": 0.218,
+   "perte_base": 0.5898,
+   "perte_semblables": 0.508,
+   "perte_brique": 0.5199
+  },
+  "<=7": {
+   "n": 90,
+   "part_oui": 0.344,
+   "perte_base": 0.737,
+   "perte_semblables": 0.7034,
+   "perte_brique": 0.7398
+  },
+  ">180": {
+   "n": 5,
+   "part_oui": 0.2,
+   "perte_base": 0.2898,
+   "perte_semblables": 0.3919,
+   "perte_brique": 0.4248
+  }
+ },
+ "risque_corrige": 0.0029411764705882353,
+ "note": "perte log, plus bas = mieux ; questions d'occurrence ; la foule n'est qu'un repère descriptif, jamais une entrée ; ombre"
+}
