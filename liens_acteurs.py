@@ -13,7 +13,7 @@ import yaml
 
 FICHIER = Path("ecosystemes") / "liens-acteurs.yaml"
 SORTIE = Path("registre") / "liens-acteurs.md"
-RELATIONS = {"depend_de", "peut_bloquer", "nomme", "confirme", "ne_depend_pas_de"}
+RELATIONS = {"depend_de", "peut_bloquer", "nomme", "confirme", "ne_depend_pas_de", "conditionne"}
 
 
 def liens() -> list[dict]:

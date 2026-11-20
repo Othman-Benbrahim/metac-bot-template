@@ -11,3 +11,8 @@
 | us_fed_gouverneurs | le président en personne | nomme | Réserve fédérale | politique monétaire | structurel |
 | us_119e_congres_gouvernement_uni | le président en personne | depend_de | la majorité de chaque chambre | loi | conjoncturel (législature du Congrès (deux ans) : 119e Congrès, gouvernement uni) |
 | us_120e_congres | le président en personne | depend_de | la majorité de chaque chambre | loi | conjoncturel (législature du Congrès (deux ans) : 120e Congrès, élu le 3 novembre 2026 (décompte non certifié)) |
+| ru_loi_martiale_par_decret | le président russe en personne | confirme | Russie (gouvernement) | loi martiale | structurel |
+| ru_forces_hors_territoire | le président russe en personne | depend_de | Russie (gouvernement) | emploi des forces armées hors du territoire | structurel |
+| ua_loi_martiale_prolongee_par_la_rada | le président ukrainien en personne | depend_de | Ukraine (gouvernement) | loi martiale | conjoncturel (prolongation de la loi martiale (90 jours) : prolongation du 31 octobre 2026) |
+| ua_elections_suspendues_sous_loi_martiale | la fonction présidentielle ukrainienne | conditionne | Ukraine (gouvernement) | élection | structurel |
+| ue_sanctions_renouvelees_tous_les_six_mois | Commission européenne | depend_de | Union européenne | sanctions | conjoncturel (renouvellement des sanctions (six mois, puis douze mois depuis juin 2026) : échéance du 31 juillet 2027) |

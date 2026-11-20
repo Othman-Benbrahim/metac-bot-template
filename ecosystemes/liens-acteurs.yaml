@@ -3,7 +3,8 @@
 # lien porte un champ « temps » : structurel, ou conjoncturel sous une phase datée d'un cycle). Ce fichier n'est pas une
 # fiche (pas de clé « theme »). Les acteurs sont désignés par « fiche:début du nom dans la fiche ».
 # relation : depend_de (A ne peut agir dans ce domaine sans B), peut_bloquer (B peut empêcher ou défaire l'acte de A),
-#            nomme (A désigne B), confirme (B doit approuver la désignation), ne_depend_pas_de (A agit sans B).
+#            nomme (A désigne B), confirme (B doit approuver la désignation), ne_depend_pas_de (A agit sans B),
+#            conditionne (l'état de B ouvre ou ferme le domaine de A ; 0.10.394).
 # temps.statut : structurel (vaut à travers les cycles, depuis une date si la règle a changé) ou conjoncturel
 #                (vaut pendant une phase datée d'un cycle nommé) ; une phase inconnue est écrite « inconnue », jamais devinée.
 liens:
@@ -99,3 +100,53 @@ liens:
       - {titre: "Associated Press, résultats des élections du 3 novembre 2026 (Chambre et Sénat), décompte au 2026-11-20", url: "https://apnews.com", consulte: "2026-11-20"}
       - {titre: "Constitution des États-Unis, XXe amendement, section 1 (Cornell LII)", url: "https://www.law.cornell.edu/constitution-conan/amendment-20/presidential-and-congressional-terms", consulte: "2026-11-20"}
       - {titre: "USAFacts, When are election results certified?", url: "https://usafacts.org/articles/the-viz-lab/election-certification/", consulte: "2026-11-20"}
+
+  # ---------------------------------------------------------------- lot 2 : Russie-Ukraine
+  - id: ru_loi_martiale_par_decret
+    de: "russie-ukraine:le président russe en personne"
+    vers: "russie-ukraine:Russie (gouvernement)"
+    relation: confirme
+    domaine: loi martiale
+    regle: "Le président est le commandant suprême des forces armées ; en cas d'agression ou de menace immédiate, il instaure la loi martiale par décret et en informe aussitôt le Conseil de la Fédération et la Douma ; le Conseil de la Fédération approuve ce décret (art. 102, b). Le Conseil de la Fédération n'est pas décrit comme acteur dans la fiche : il est rattaché ici à « Russie (gouvernement) »."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Constitution de la Fédération de Russie, articles 87 et 102 (Bucknell University)", url: "https://www.departments.bucknell.edu/russian/const/ch4.html", consulte: "2026-11-20"}
+      - {titre: "Constitution de la Fédération de Russie, chapitre 5, article 102", url: "https://www.departments.bucknell.edu/russian/const/ch5.html", consulte: "2026-11-20"}
+  - id: ru_forces_hors_territoire
+    de: "russie-ukraine:le président russe en personne"
+    vers: "russie-ukraine:Russie (gouvernement)"
+    relation: depend_de
+    domaine: emploi des forces armées hors du territoire
+    regle: "La décision sur la possibilité d'employer les forces armées hors du territoire de la Fédération relève du Conseil de la Fédération (art. 102, d) ; rattaché à « Russie (gouvernement) »."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Constitution de la Fédération de Russie, chapitre 5, article 102", url: "https://www.departments.bucknell.edu/russian/const/ch5.html", consulte: "2026-11-20"}
+  - id: ua_loi_martiale_prolongee_par_la_rada
+    de: "russie-ukraine:le président ukrainien en personne"
+    vers: "russie-ukraine:Ukraine (gouvernement)"
+    relation: depend_de
+    domaine: loi martiale
+    regle: "La loi martiale et la mobilisation générale sont prolongées par périodes de 90 jours, sur décret du président voté par la Rada (le Parlement n'est pas décrit comme acteur dans la fiche : il est rattaché ici à « Ukraine (gouvernement) »). Dernière prolongation connue : lois signées le 26 octobre 2026, 90 jours à partir du 31 octobre 2026 à 5 h 30 (fin vers le 29 janvier 2027, calcul de date)."
+    temps: {statut: conjoncturel, cycle: "prolongation de la loi martiale (90 jours)", phase: "prolongation du 31 octobre 2026", depuis: "2026-10-31", jusqua: "2027-01-29", a_revoir_le: ["2027-01-30"]}
+    sources:
+      - {titre: "Interfax-Ukraine, prolongation de la loi martiale et de la mobilisation, 26 octobre 2026", url: "https://en.interfax.com.ua/news/general/1226342.html", consulte: "2026-11-20"}
+      - {titre: "Verkhovna Rada, prolongation de 90 jours jusqu'au 4 mai 2026 (phase précédente)", url: "https://www.rada.gov.ua/en/news/News/269952.html", consulte: "2026-11-20"}
+  - id: ua_elections_suspendues_sous_loi_martiale
+    de: "russie-ukraine:la fonction présidentielle ukrainienne"
+    vers: "russie-ukraine:Ukraine (gouvernement)"
+    relation: conditionne
+    domaine: élection
+    regle: "La loi de 2015 sur le régime juridique de la loi martiale interdit de tenir des élections pendant la loi martiale, et le Code électoral de 2019 les suspend ; le président en exercice reste en fonction jusqu'à l'élection et l'investiture de son successeur (Constitution, art. 108, 1) ; les pouvoirs de la Rada sont prolongés jusqu'à la première séance de la Rada élue après la fin de la loi martiale (art. 83, 4). Tant que la loi martiale est prolongée, une élection nationale ne peut pas se tenir."
+    temps: {statut: structurel}
+    sources:
+      - {titre: "Verfassungsblog, Ukraine's Constitution in Wartime, 10 février 2025", url: "https://verfassungsblog.de/ukraines-constitution-in-wartime/", consulte: "2026-11-20"}
+  - id: ue_sanctions_renouvelees_tous_les_six_mois
+    de: "russie-ukraine:Commission européenne"
+    vers: "russie-ukraine:Union européenne"
+    relation: depend_de
+    domaine: sanctions
+    regle: "Les sanctions économiques sectorielles contre la Russie sont renouvelées par le Conseil à l'unanimité (règle ue_sanctions_russie, article 31 du traité sur l'Union européenne) ; un seul État membre peut bloquer un renouvellement. Jusqu'en 2025, renouvellements de six mois (dernier : 22 décembre 2025, jusqu'au 31 juillet 2026). En juin 2026, après le Conseil européen des 18-19 juin, renouvellement pour douze mois, jusqu'au 31 juillet 2027 : le cycle s'est allongé, ce qui réduit les occasions de blocage."
+    temps: {statut: conjoncturel, cycle: "renouvellement des sanctions (six mois, puis douze mois depuis juin 2026)", phase: "échéance du 31 juillet 2027", depuis: "2026-06", jusqua: "2027-07-31", a_revoir_le: ["2027-06-30"]}
+    sources:
+      - {titre: "Service européen pour l'action extérieure, le Conseil prolonge les sanctions économiques de six mois, 22 décembre 2025", url: "https://www.eeas.europa.eu/delegations/ukraine/russia%E2%80%99s-war-aggression-against-ukraine-council-extends-economic-sanctions-further-6-months_en", consulte: "2026-11-20"}
+      - {titre: "Service européen pour l'action extérieure, le Conseil prolonge les sanctions économiques d'un an (juin 2026)", url: "https://eeas.europa.eu/delegations/ukraine/russia%E2%80%99s-war-aggression-against-ukraine-council-extends-economic-sanctions-another-year_en", consulte: "2026-11-20"}
