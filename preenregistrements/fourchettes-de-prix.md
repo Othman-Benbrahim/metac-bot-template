@@ -20,3 +20,8 @@ entreprises à mille milliards, résultats d'entreprises).
 Par actif, le Nasdaq à 7 jours sort des bornes (0,725 ; 0,541) ; décision par famille, comme préenregistré.
 Branché dans le bot en 0.10.401 pour les clôtures de bitcoin, éther, Brent, Nasdaq, S&P 500, Dow Jones.
 Actions : passage à faire dans GitHub (workflow banc_fourchettes_actions.yaml).
+
+## Résultat, actions (2026-11-20, 20 h 19) : critère atteint, de justesse
+Run 44800324868, 18 actions, 7 753 ancrages par horizon. Intervalle 80 % : 0,754 à 7 jours, 0,756 à 14 jours ; 60 % :
+0,580 et 0,581. Même biais que la famille FRED (un peu trop étroit). Branché en 0.10.402 (cours lus à la demande).
+Anthropic (ANT) n'est pas dans la liste des actions : pas de fourchette du modèle pour elle.

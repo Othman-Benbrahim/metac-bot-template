@@ -202,6 +202,8 @@ def quantiles(s0: float, sigma: float, t_ans: float, ps=(0.1, 0.2, 0.4, 0.6, 0.8
 
 CLOTURE = re.compile(r"\b(close|closing|settle|settlement|price)\b", re.I)
 FAMILLE_FOURCHETTES = {"CBBTCUSD", "CBETHUSD", "DCOILBRENTEU", "NASDAQCOM", "SP500", "DJIA"}   # calibrées (0.10.401)
+# 0.10.402 : actions calibrées (run 44800324868 : 80 % → 0,754 et 0,756 ; 60 % → 0,580 et 0,581), cours Twelve Data
+FAMILLE_FOURCHETTES |= set(ACTIONS)
 
 
 def fourchette(titre: str, jour: str, fin: str | None) -> dict | None:
