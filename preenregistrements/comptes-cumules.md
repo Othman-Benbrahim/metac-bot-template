@@ -35,3 +35,12 @@ seront collectées ensuite pour un second contrôle.
 12 675 ancrages par échéance (25 pays, 2017-2026). À 7 jours : intervalle 80 % → 0,826 ; 60 % → 0,665 (hors borne, au-
 dessus de 0,65 : fourchette un peu trop LARGE). À 14 jours : 0,767 et 0,585 (dans les bornes). Critère préenregistré
 non atteint (une case sur quatre, de 1,5 point, du côté large). Rien dans le bot à ce stade.
+
+## Version 2 (préenregistrée le 2026-11-20 à 20 h 30, décision de l'auteur : « corriger le modèle »)
+Correction tirée de la LITTÉRATURE, pas réglée sur UCDP : la v1 s'écartait de la baseline publiée (moyenne de 4
+périodes, rapports tirés indépendamment). La v2 suit la description de Cramer et al. (2022) : médiane = dernière
+incidence ; marche au hasard dont les pas sont les variations symétrisées des 52 dernières périodes ; incidence bornée
+à 0 ; les pas s'additionnent, donc la fourchette s'élargit avec l'échéance (`comptes_cumules.fourchette_cumul_v2`).
+Test sur des données que le modèle n'a pas vues : manifestations GDELT par pays (ancrages depuis juillet 2025) et
+séismes M4,5+ mondiaux USGS (depuis 2001). Même critère, sur chacune des deux sources. UCDP rapporté sans effet sur le
+critère. Lancé une fois (`mise_au_point/comptes_cumules_v2_essai.py`).

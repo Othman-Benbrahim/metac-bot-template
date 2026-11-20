@@ -23,3 +23,27 @@ def fourchette_cumul(incidences: list[float], dernier_total: float, h: int, ps=(
     rnd = random.Random(graine)
     totaux = sorted(dernier_total + sum(base * rnd.choice(rapports) for _ in range(h)) for _ in range(tirages))
     return [(p, totaux[min(tirages - 1, int(p * tirages))]) for p in ps]
+
+
+def fourchette_cumul_v2(incidences: list[float], dernier_total: float, h: int, ps=(0.1, 0.2, 0.4, 0.6, 0.8, 0.9),
+                        tirages: int = 2000, graine: int = 0) -> list[tuple[float, float]] | None:
+    """Version 2 (2026-11-20, 20 h 30, décision d'auteur « corriger le modèle ») : la baseline publiée des centres de
+    prévision du CDC telle qu'elle est décrite (Cramer et al., PNAS 2022) — médiane = DERNIÈRE incidence observée ;
+    l'incidence suit une marche au hasard dont les pas sont tirés dans les variations d'une période à l'autre des 52
+    dernières périodes, rendues symétriques (± chaque variation) ; incidence bornée à 0. Les pas s'additionnent d'une
+    période à l'autre, ce qui élargit la fourchette avec l'échéance (la v1 tirait des rapports indépendants)."""
+    if len(incidences) < 8 or h < 1:
+        return None
+    hist = incidences[-53:]
+    pas = [b - a for a, b in zip(hist[:-1], hist[1:])]
+    pas = pas + [-x for x in pas]
+    rnd = random.Random(graine)
+    totaux = []
+    for _ in range(tirages):
+        y, s = incidences[-1], 0.0
+        for _ in range(h):
+            y = max(0.0, y + rnd.choice(pas))
+            s += y
+        totaux.append(dernier_total + s)
+    totaux.sort()
+    return [(p, totaux[min(tirages - 1, int(p * tirages))]) for p in ps]
