@@ -1,38 +1,52 @@
 {
  "version_bot": "0.10.410",
  "version_selection": 4,
- "regles_au_catalogue": 40,
+ "regles_au_catalogue": 53,
  "questions": 119,
- "couvertes": 23,
+ "couvertes": 43,
  "erreurs": 0,
- "rejets_par_motif": {
-  "hors périmètre": 1
- },
+ "rejets_par_motif": {},
  "par_regle": {
   "presidentielles_mode_de_scrutin": 4,
+  "coupe_du_monde_vainqueurs_hotes": 4,
+  "calendriers_annonces_glissent": 3,
   "usmca_revision_conjointe": 2,
+  "us_inculpation_personnalites": 2,
   "us_cour_supreme_calendrier": 2,
+  "records_temperature_persistance": 2,
   "coups_d_etat_frequence": 2,
-  "calendriers_annonces_glissent": 2,
+  "us_senat_cloture": 2,
   "referendums_retour_statu_quo": 2,
   "second_tour_retournement": 1,
+  "anciens_dirigeants_sort": 1,
   "seuils_parlements_nationaux_europe": 1,
   "europe_formation_gouvernement": 1,
   "us_chambre_sanctions_disciplinaires": 1,
+  "us_sanctions_frequence": 1,
   "us_lois_de_finances_provisoires": 1,
-  "chefs_d_etat_sortie_irreguliere": 1,
   "us_entourage_rotation": 1,
+  "bolides_frequence": 1,
   "us_reconciliation_budgetaire": 1,
+  "opep_departs": 1,
+  "royaume_uni_niveau_menace": 1,
+  "papes_voyages": 1,
+  "chefs_d_etat_sortie_irreguliere": 1,
+  "sommets_etats_unis_russie": 1,
   "us_fed_calendrier": 1,
+  "us_ouragans_atterrissage": 1,
   "effet_d_echeance_negociation": 1,
-  "coree_du_nord_essais_nucleaires": 1
+  "us_confirmations_delais": 1,
+  "coree_du_nord_essais_nucleaires": 1,
+  "dow_jones_changements": 1,
+  "royal_mail_hausses_tarifs": 1,
+  "schengen_controles_interieurs": 1
  },
  "detail": [
   {
    "question": "22310",
    "titre": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
    "issue": 1,
-   "evenement": "La réélection du président Luiz Inacio Lula da Silva comme président du Brésil lors de l'élection présidentielle d'octobre 2026.",
+   "evenement": "Que Luiz Inacio Lula da Silva soit réélu président du Brésil lors de l'élection présidentielle d'octobre 2026.",
    "pays": [
     "Brésil"
    ],
@@ -50,11 +64,11 @@
    "question": "24819",
    "titre": "Will the USMCA be extended promptly at its July 2026 joint review?",
    "issue": 0,
-   "evenement": "Prolongation de l'accord USMCA lors de la révision conjointe prévue en juillet 2026.",
+   "evenement": "Prolongation de l'USMCA (accord États-Unis–Mexique–Canada) lors de la révision conjointe de juillet 2026.",
    "pays": [
     "États-Unis",
-    "Canada",
-    "Mexique"
+    "Mexique",
+    "Canada"
    ],
    "regions": [
     "amerique_du_nord"
@@ -72,7 +86,7 @@
    "question": "36871",
    "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
    "issue": 0,
-   "evenement": "La capitalisation boursière combinée des stablecoins USDT et USDC dépassera 300 milliards USD le 30 juin 2026.",
+   "evenement": "La capitalisation boursière combinée des stablecoins USDT et USDC dépassant 300 milliards de dollars US au 30 juin 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -87,7 +101,7 @@
    "question": "37307",
    "titre": "Will  an attempt be made to fire Jerome Powell before the end of his term?",
    "issue": 0,
-   "evenement": "Une tentative de destitution ou de licenciement de Jerome Powell avant la fin de son mandat de président de la Réserve fédérale.",
+   "evenement": "Tentative de licenciement ou de destitution de Jerome Powell avant la fin de son mandat",
    "pays": [
     "États-Unis"
    ],
@@ -102,12 +116,11 @@
    "question": "37523",
    "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
    "issue": 0,
-   "evenement": "La rupture du cessez-le-feu entre les États-Unis et les Houthis yéménites, médiée par Oman, avant juin 2026.",
+   "evenement": "Rupture du cessez-le-feu entre les États-Unis et les Houthis du Yémen, médiée par Oman, avant juin 2026.",
    "pays": [
     "États-Unis"
    ],
    "regions": [
-    "amerique_du_nord",
     "moyen_orient"
    ],
    "regles": [],
@@ -118,7 +131,7 @@
    "question": "38783",
    "titre": "Will the US government file a denaturalization lawsuit against Elon Musk before July 1, 2026?",
    "issue": 0,
-   "evenement": "Le gouvernement des États-Unis intente un procès de dénaturalisation contre Elon Musk avant le 1er juillet 2026.",
+   "evenement": "Le dépôt par le gouvernement des États-Unis d'une poursuite visant à retirer la nationalité américaine d'Elon Musk avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -133,22 +146,30 @@
    "question": "38917",
    "titre": "Will Barack Obama be arrested before July 2026?",
    "issue": 0,
-   "evenement": "arrestation de Barack Obama avant juillet 2026",
+   "evenement": "L'événement est l'arrestation de Barack Obama avant juillet 2026.",
    "pays": [
     "États-Unis"
    ],
    "regions": [
     "amerique_du_nord"
    ],
-   "regles": [],
+   "regles": [
+    "us_inculpation_personnalites",
+    "anciens_dirigeants_sort"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "humain:hierarchie",
+    "politique-americaine:executif",
+    "politique-americaine:tribunaux",
+    "securite-publique:justice"
+   ]
   },
   {
    "question": "38940",
    "titre": "Will over 2/3 of EU member states recognize Palestinian statehood before July 2026?",
    "issue": 0,
-   "evenement": "Plus des deux tiers des États membres de l'Union européenne reconnaîtront la Palestine comme État avant juillet 2026.",
+   "evenement": "La reconnaissance par plus des deux tiers des États membres de l'Union européenne de l'État palestinien avant juillet 2026.",
    "pays": [
     "France"
    ],
@@ -163,7 +184,7 @@
    "question": "39142",
    "titre": "Before July 1, 2026, will the U.S. Supreme Court agree to hear a case that could end the constitutional right to same-sex marriage?",
    "issue": 0,
-   "evenement": "La Cour suprême des États-Unis acceptera d'entendre un pourvoi pouvant mettre fin au droit constitutionnel au mariage entre personnes de même sexe avant le 1er juillet 2026.",
+   "evenement": "Acceptation par la Cour suprême des États-Unis d'un pourvoi qui pourrait mettre fin au droit constitutionnel au mariage homosexuel avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -183,7 +204,7 @@
    "question": "39886",
    "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
    "issue": 0,
-   "evenement": "Tenue d'une réunion trilatérale entre la Russie, l'Inde et la Chine avant le 1er septembre 2026.",
+   "evenement": "Tenue d'une réunion trilatérale en personne entre la Russie, l'Inde et la Chine avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "asie"
@@ -196,9 +217,10 @@
    "question": "39992",
    "titre": "Will Israel participate in the Eurovision Song Contest 2026?",
    "issue": 1,
-   "evenement": "La question dépend de la participation d'Israël au Concours Eurovision de la chanson 2026.",
+   "evenement": "Participation d'Israël au Concours Eurovision de la chanson 2026.",
    "pays": [],
    "regions": [
+    "europe",
     "moyen_orient"
    ],
    "regles": [],
@@ -209,7 +231,7 @@
    "question": "40005",
    "titre": "Will any political party or coalition acquire a supermajority in the 2026 Hungarian parliamentary elections?",
    "issue": 1,
-   "evenement": "Acquisition d'une supermajorité par un parti ou une coalition aux élections législatives hongroises de 2026.",
+   "evenement": "Un parti politique ou une coalition obtiendra une supermajorité à l'Assemblée nationale hongroise lors des élections législatives hongroises de 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -224,9 +246,13 @@
    "question": "40281",
    "titre": "Will any coding tool introduce an integration with brain-computer interface technology before November 2026?",
    "issue": 0,
-   "evenement": "Un outil de programmation (IDE, éditeur, bibliothèque ou service de développement) introduit une intégration avec une technologie d'interface cerveau‑ordinateur avant novembre 2026.",
-   "pays": [],
-   "regions": [],
+   "evenement": "Un outil de codage introduira une intégration avec une technologie d'interface cerveau-ordinateur avant novembre 2026.",
+   "pays": [
+    "États-Unis"
+   ],
+   "regions": [
+    "amerique_du_nord"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -235,7 +261,7 @@
    "question": "40599",
    "titre": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he become Prime Minister?",
    "issue": 0,
-   "evenement": "Viktor Orbán devient Premier ministre à la suite des élections législatives hongroises de 2026.",
+   "evenement": "Viktor Orbán devient Premier ministre après les élections législatives hongroises de 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -250,7 +276,7 @@
    "question": "40695",
    "titre": "Will Jerome Powell cease to be Chair of the Federal Reserve Board of Governors before his term is up?",
    "issue": 0,
-   "evenement": "Jerome Powell cessera d'être président (Chair) du Conseil des gouverneurs de la Réserve fédérale avant la fin de son mandat.",
+   "evenement": "Jerome Powell cesse d'être président (Chair) du Conseil des gouverneurs de la Réserve fédérale avant la fin de son mandat.",
    "pays": [
     "États-Unis"
    ],
@@ -265,10 +291,8 @@
    "question": "40711",
    "titre": "Will the United States, Russia or China detonate a nuclear device before April 1, 2026?",
    "issue": 0,
-   "evenement": "La détonation d'un engin nucléaire par les États-Unis, la Russie ou la Chine avant le 1er avril 2026.",
-   "pays": [
-    "États-Unis"
-   ],
+   "evenement": "Detonation d'un engin nucléaire par les États-Unis, la Russie ou la Chine avant le 1er avril 2026.",
+   "pays": [],
    "regions": [
     "amerique_du_nord",
     "asie"
@@ -281,7 +305,7 @@
    "question": "40849",
    "titre": "Will Tesla discontinue the Cybertruck before April 1, 2026?",
    "issue": 0,
-   "evenement": "Que Tesla discontinue le modèle Cybertruck avant le 1er avril 2026.",
+   "evenement": "La décision de Tesla d'interrompre (discontinuer) la production et la vente du Cybertruck avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -296,7 +320,7 @@
    "question": "40852",
    "titre": "Will the US House of Representatives censure, expel or reprimand any of its members before April 1, 2026?",
    "issue": 0,
-   "evenement": "La Chambre des représentants des États-Unis censure, expulse ou réprimande au moins un de ses membres avant le 1er avril 2026.",
+   "evenement": "La Chambre des représentants des États-Unis censurera, exclura ou réprimandera un de ses membres avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -315,7 +339,7 @@
    "question": "40862",
    "titre": "Will Arizona Senator Mark Kelly, who urged troops to defy \"illegal\" orders, be recalled to active duty in the US military before April 1, 2026?",
    "issue": 0,
-   "evenement": "Le rappel au service actif du sénateur de l'Arizona Mark Kelly dans l'armée américaine avant le 1er avril 2026.",
+   "evenement": "Le fait que le sénateur de l'Arizona Mark Kelly soit rappelé au service actif dans l'armée américaine avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -330,7 +354,7 @@
    "question": "40865",
    "titre": "Will Israel pass the Penal Bill (Death Penalty for Terrorists amendment) into law before April 2026?",
    "issue": 1,
-   "evenement": "Adoption par Israël du projet de loi pénale (amendement instituant la peine de mort pour terroristes) avant avril 2026.",
+   "evenement": "Adoption par l'État d'Israël de la loi dite « Penal Bill » (amendement instaurant la peine de mort pour les terroristes) avant avril 2026.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -343,7 +367,7 @@
    "question": "40875",
    "titre": "Will the number of manufacturing jobs in the US for February 2026 be above 12.7 million?",
    "issue": 0,
-   "evenement": "Le fait que le nombre d'emplois dans le secteur manufacturier aux États-Unis pour février 2026 soit supérieur à 12,7 millions.",
+   "evenement": "Le nombre d'emplois manufacturiers aux États-Unis en février 2026 dépasse 12,7 millions.",
    "pays": [
     "États-Unis"
    ],
@@ -358,7 +382,7 @@
    "question": "40938",
    "titre": "Will California Emissions Reporting Laws SB 253 and SB 261 Be In Effect on September 1, 2026?",
    "issue": 0,
-   "evenement": "Si les lois californiennes de déclaration des émissions SB 253 et SB 261 sont en vigueur le 1er septembre 2026.",
+   "evenement": "Savoir si les lois californiennes SB 253 et SB 261 imposant des obligations de déclaration des émissions sont en vigueur le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -373,24 +397,33 @@
    "question": "41090",
    "titre": "Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
    "issue": 0,
-   "evenement": "Le pays vainqueur de la Coupe du Monde de la FIFA 2026 sera un pays qui n'a jamais gagné auparavant.",
+   "evenement": "Le vainqueur de la Coupe du monde de la FIFA 2026 est un pays qui n'a jamais gagné auparavant.",
    "pays": [
     "États-Unis",
     "Canada",
-    "Mexique"
+    "Mexique",
+    "Brésil",
+    "France"
    ],
    "regions": [
-    "amerique_du_nord"
+    "amerique_du_nord",
+    "amerique_latine",
+    "europe"
    ],
-   "regles": [],
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "competitions-culture:forme",
+    "competitions-culture:public"
+   ]
   },
   {
    "question": "41206",
    "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before July 1, 2026?",
    "issue": 0,
-   "evenement": "Dépôt par Anthropic d'une déclaration d'enregistrement initiale (formulaire S-1) auprès de la SEC en vue d'une introduction en bourse avant le 1er juillet 2026.",
+   "evenement": "Dépôt par Anthropic d'une déclaration d'enregistrement initiale (formulaire S-1) auprès de la SEC visant à lancer une introduction en bourse avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -405,7 +438,7 @@
    "question": "41214",
    "titre": "Will Bitcoin reach a new all-time high price before October 6, 2026?",
    "issue": 0,
-   "evenement": "Atteinte d'un nouveau record historique (all-time high) du prix du Bitcoin avant le 6 octobre 2026.",
+   "evenement": "Bitcoin atteindra un nouveau prix record historique (all-time high) avant le 6 octobre 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -416,29 +449,29 @@
    "question": "41316",
    "titre": "Will the United States impose additional sanctions on Russia related to the Ukraine war before March 14, 2026?",
    "issue": 0,
-   "evenement": "Imposition par les États-Unis de sanctions supplémentaires contre la Russie en lien avec la guerre en Ukraine avant le 14 mars 2026.",
-   "pays": [],
+   "evenement": "Imposition par les États-Unis de sanctions supplémentaires contre la Russie liées à la guerre en Ukraine avant le 14 mars 2026.",
+   "pays": [
+    "États-Unis",
+    "Russie"
+   ],
    "regions": [
-    "amerique_du_nord",
     "europe"
    ],
-   "regles": [],
-   "rejets": [
-    {
-     "id": "us_sanctions_frequence",
-     "motif": "hors périmètre (['États-Unis'] ; question : ['amerique_du_nord', 'europe'])"
-    }
+   "regles": [
+    "us_sanctions_frequence"
    ],
-   "compartiments": []
+   "rejets": [],
+   "compartiments": [
+    "politique-americaine:sanctions"
+   ]
   },
   {
    "question": "41343",
    "titre": "Will any NVIDIA GPUs better than the H200 be allowed to be exported to China before March 14, 2026?",
    "issue": 0,
-   "evenement": "Qu'un ou plusieurs GPU NVIDIA plus performants que le H200 soient autorisés à l'exportation vers la Chine avant le 14 mars 2026.",
+   "evenement": "Autorisation d'exportation vers la Chine de GPU NVIDIA plus performants que le H200 avant le 14 mars 2026.",
    "pays": [],
    "regions": [
-    "amerique_du_nord",
     "asie"
    ],
    "regles": [],
@@ -449,13 +482,8 @@
    "question": "41370",
    "titre": "Will there be at least one podium sweep at the 2026 Winter Olympic Games?",
    "issue": 1,
-   "evenement": "Qu'il y ait au moins un triplé (balayage du podium) aux Jeux olympiques d'hiver de 2026.",
-   "pays": [
-    "États-Unis",
-    "Canada",
-    "Japon",
-    "France"
-   ],
+   "evenement": "Qu'il y ait au moins un balayage du podium (un même pays remportant l'or, l'argent et le bronze) aux Jeux olympiques d'hiver de 2026.",
+   "pays": [],
    "regions": [
     "europe"
    ],
@@ -467,7 +495,7 @@
    "question": "41480",
    "titre": "Will the U.S. Supreme Court's decision in Louisiana v. Callais hold that race-conscious districting is unconstitutional?",
    "issue": 0,
-   "evenement": "La décision de la Cour suprême des États-Unis dans Louisiana v. Callais tiendra que le découpage électoral fondé sur la race est inconstitutionnel.",
+   "evenement": "Décision de la Cour suprême des États-Unis dans Louisiana v. Callais statuant que le redécoupage prenant en compte la race est inconstitutionnel.",
    "pays": [
     "États-Unis"
    ],
@@ -488,10 +516,9 @@
    "titre": "Will the United States intervene militarily in Venezuela again before May 2026?",
    "issue": 0,
    "evenement": "Les États-Unis interviennent militairement au Venezuela avant mai 2026.",
-   "pays": [
-    "États-Unis"
-   ],
+   "pays": [],
    "regions": [
+    "amerique_du_nord",
     "amerique_latine"
    ],
    "regles": [],
@@ -502,7 +529,7 @@
    "question": "41489",
    "titre": "Will Venezuela announce a presidential election before April 1, 2026?",
    "issue": 0,
-   "evenement": "Annonce par le Venezuela d'une élection présidentielle avant le 1er avril 2026.",
+   "evenement": "Annonce par le gouvernement vénézuélien d'une élection présidentielle avant le 1er avril 2026.",
    "pays": [],
    "regions": [
     "amerique_latine"
@@ -515,7 +542,7 @@
    "question": "41508",
    "titre": "Will the Community beat Nathan Young in the Metaculus Cup Spring 2026?",
    "issue": 0,
-   "evenement": "La Community battra Nathan Young dans la Metaculus Cup Spring 2026.",
+   "evenement": "Le résultat de la confrontation (match/compétition) entre la Communauté Metaculus et Nathan Young lors de la Metaculus Cup Spring 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -526,7 +553,7 @@
    "question": "41512",
    "titre": "Will the U.S. Congress still be operating under a continuing resolution (CR) on March 15, 2026?",
    "issue": 0,
-   "evenement": "Le fait que le Congrès des États-Unis fonctionne encore sous une loi de finances provisoire (continuing resolution) le 15 mars 2026.",
+   "evenement": "Le Congrès américain est toujours régi par une loi de finances provisoire (continuing resolution) le 15 mars 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -547,10 +574,11 @@
    "question": "41514",
    "titre": "Before May 1, 2026, will the United States offer to purchase Greenland from Denmark?",
    "issue": 0,
-   "evenement": "L'événement est que les États-Unis feront une offre d'achat pour le Groenland au Danemark avant le 1er mai 2026.",
+   "evenement": "Une offre officielle des États-Unis pour acheter le Groenland au Danemark avant le 1er mai 2026.",
    "pays": [],
    "regions": [
-    "amerique_du_nord"
+    "amerique_du_nord",
+    "europe"
    ],
    "regles": [],
    "rejets": [],
@@ -560,15 +588,25 @@
    "question": "41595",
    "titre": "Will the North Atlantic sea surface temperature reach a daily record high before May 2026?",
    "issue": 0,
-   "evenement": "Atteinte d'un record quotidien de température de surface de la mer dans l'Atlantique Nord avant mai 2026.",
-   "pays": [],
+   "evenement": "La température de surface de la mer dans l'Atlantique Nord atteindra un record journalier avant mai 2026.",
+   "pays": [
+    "États-Unis",
+    "Canada",
+    "Royaume-Uni",
+    "France"
+   ],
    "regions": [
     "amerique_du_nord",
     "europe"
    ],
-   "regles": [],
+   "regles": [
+    "records_temperature_persistance"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "climat-extremes:oceans",
+    "climat-extremes:tendance"
+   ]
   },
   {
    "question": "41804",
@@ -587,7 +625,7 @@
    "question": "41805",
    "titre": "Will Jonathan Ross be indicted or charged in the death of Renee Good before July 1, 2026?",
    "issue": 0,
-   "evenement": "La question dépend de savoir si Jonathan Ross sera mis en examen ou inculpé pour la mort de Renee Good avant le 1er juillet 2026.",
+   "evenement": "Jonathan Ross est inculpé ou mis en accusation pour la mort de Renee Good avant le 1er juillet 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -598,7 +636,7 @@
    "question": "41861",
    "titre": "Will Wagner Moura win the Academy Award for Best Actor at the 2026 Academy Awards?",
    "issue": 0,
-   "evenement": "Wagner Moura remporte l'Oscar du meilleur acteur aux Academy Awards de 2026.",
+   "evenement": "Wagner Moura remporte l'Oscar du meilleur acteur aux Academy Awards 2026.",
    "pays": [
     "États-Unis",
     "Brésil"
@@ -615,10 +653,10 @@
    "question": "41869",
    "titre": "Will Iran's Internet not be \"heavily filtered/whitelisted\" for most users before May 2026?",
    "issue": 0,
-   "evenement": "L'Internet en Iran ne sera pas fortement filtré ou limité à une liste blanche pour la plupart des utilisateurs avant mai 2026.",
+   "evenement": "Iran n'aura pas Internet fortement filtré/whitelisté pour la majorité des utilisateurs avant mai 2026.",
    "pays": [],
    "regions": [
-    "asie"
+    "moyen_orient"
    ],
    "regles": [],
    "rejets": [],
@@ -628,8 +666,10 @@
    "question": "42135",
    "titre": "Will the UK increase the qualifying period for settlement to 10 years before May 2026?",
    "issue": 0,
-   "evenement": "Le Royaume-Uni augmente la période de résidence requise pour le settlement à 10 ans avant mai 2026.",
-   "pays": [],
+   "evenement": "Le Royaume-Uni augmentera la période requise pour l'obtention du settlement à 10 ans avant mai 2026.",
+   "pays": [
+    "Royaume-Uni"
+   ],
    "regions": [
     "europe"
    ],
@@ -656,7 +696,7 @@
    "question": "42274",
    "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before April 1, 2026?",
    "issue": 0,
-   "evenement": "Un modèle d'IA obtient un score de 95 % ou plus sur le classement GPQA Diamond avant le 1er avril 2026.",
+   "evenement": "Un modèle d'IA obtient un score de 95 % ou plus au classement GPQA Diamond avant le 1er avril 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -667,13 +707,9 @@
    "question": "42284",
    "titre": "Will Cloudflare experience another critical incident before May 2026?",
    "issue": 1,
-   "evenement": "La survenue d'un nouvel incident critique affectant les services de Cloudflare avant mai 2026.",
-   "pays": [
-    "États-Unis"
-   ],
-   "regions": [
-    "amerique_du_nord"
-   ],
+   "evenement": "La survenue d'un autre incident critique chez Cloudflare avant mai 2026.",
+   "pays": [],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -682,15 +718,14 @@
    "question": "42430",
    "titre": "Will there be a successful coup in Africa or Latin America before May 1, 2026?",
    "issue": 0,
-   "evenement": "La survenue d'un coup d'État réussi en Afrique ou en Amérique latine avant le 1er mai 2026.",
+   "evenement": "Succès d'un coup d'État en Afrique ou en Amérique latine avant le 1er mai 2026.",
    "pays": [],
    "regions": [
     "afrique",
     "amerique_latine"
    ],
    "regles": [
-    "coups_d_etat_frequence",
-    "chefs_d_etat_sortie_irreguliere"
+    "coups_d_etat_frequence"
    ],
    "rejets": [],
    "compartiments": [
@@ -701,7 +736,7 @@
    "question": "42480",
    "titre": "Will Pam Bondi be out as US Attorney General before May 2026?",
    "issue": 1,
-   "evenement": "Pam Bondi ne sera plus procureure générale des États-Unis avant mai 2026.",
+   "evenement": "Pam Bondi quitte ou cesse d'occuper le poste de procureur général des États-Unis avant mai 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -721,7 +756,7 @@
    "question": "42485",
    "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
    "issue": 1,
-   "evenement": "L'Arabie saoudite conduit une frappe militaire directe contre l'Iran avant le 1er juin 2026.",
+   "evenement": "L'Arabie saoudite mènera une frappe militaire directe contre l'Iran avant le 1er juin 2026.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -734,7 +769,7 @@
    "question": "42489",
    "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
    "issue": 1,
-   "evenement": "Une frappe militaire directe des Émirats arabes unis contre l'Iran avant le 1er juin 2026.",
+   "evenement": "L'événement est une frappe militaire directe des Émirats arabes unis contre l'Iran avant le 1er juin 2026.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -747,11 +782,9 @@
    "question": "42490",
    "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
    "issue": 0,
-   "evenement": "Une rencontre en personne entre Volodymyr Zelenskyy et Vladimir Putin avant le 1er mai 2026.",
+   "evenement": "Rencontre en personne entre Volodymyr Zelenskyy et Vladimir Putin avant le 1er mai 2026.",
    "pays": [],
-   "regions": [
-    "europe"
-   ],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -760,7 +793,7 @@
    "question": "42491",
    "titre": "Will Anthropic be a designated supply chain risk on May 1, 2026?",
    "issue": 1,
-   "evenement": "Anthropic sera désignée comme un risque pour la chaîne d'approvisionnement le 1er mai 2026.",
+   "evenement": "Qu'Anthropic soit officiellement désignée comme un risque pour la chaîne d'approvisionnement le 1er mai 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -775,22 +808,26 @@
    "question": "42540",
    "titre": "Will a 1kt meteor strike take place during March or April 2026?",
    "issue": 0,
-   "evenement": "Un météore provoquant une explosion d'environ 1 kilotonne frappera la Terre pendant mars ou avril 2026.",
+   "evenement": "La survenue d'une explosion dans l'atmosphère ou d'un impact d'un météore d'environ 1 kilotonne pendant mars ou avril 2026.",
    "pays": [],
    "regions": [],
-   "regles": [],
+   "regles": [
+    "bolides_frequence"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "soleil-espace:meteorites"
+   ]
   },
   {
    "question": "42542",
    "titre": "Will the U.S. conduct a ground invasion of Iran before May 2026?",
    "issue": 0,
-   "evenement": "Le lancement par les États-Unis d'une invasion terrestre de l'Iran avant mai 2026.",
+   "evenement": "Les États-Unis lancent une invasion terrestre de l'Iran avant mai 2026.",
    "pays": [],
    "regions": [
     "amerique_du_nord",
-    "asie"
+    "moyen_orient"
    ],
    "regles": [],
    "rejets": [],
@@ -800,7 +837,7 @@
    "question": "42548",
    "titre": "Will gas prices in the US reach a new all-time high before April 1, 2026?",
    "issue": 0,
-   "evenement": "Les prix de l'essence aux États-Unis atteindront un nouveau record historique avant le 1er avril 2026.",
+   "evenement": "Les prix de l'essence aux États-Unis atteignent un nouveau record historique avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -815,20 +852,25 @@
    "question": "42630",
    "titre": "Will Iran participate in the 2026 FIFA World Cup?",
    "issue": 1,
-   "evenement": "La participation de l'équipe nationale d'Iran à la Coupe du monde de la FIFA 2026.",
+   "evenement": "La participation de l'équipe d'Iran à la Coupe du monde de la FIFA 2026.",
    "pays": [],
    "regions": [
-    "asie"
+    "moyen_orient"
    ],
-   "regles": [],
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "competitions-culture:forme",
+    "competitions-culture:public"
+   ]
   },
   {
    "question": "42729",
    "titre": "Will shipping traffic through the Strait of Hormuz return to normal before April 27, 2026?",
    "issue": 0,
-   "evenement": "Retour à la normale du trafic maritime dans le détroit d'Hormuz avant le 27 avril 2026.",
+   "evenement": "Le trafic maritime transitant par le détroit d'Hormuz revient à la normale avant le 27 avril 2026.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -841,7 +883,7 @@
    "question": "42741",
    "titre": "Will total MLB regular-season attendance in 2026 exceed 72 million?",
    "issue": 0,
-   "evenement": "Le total de la fréquentation de la saison régulière de la MLB en 2026 dépassera 72 millions.",
+   "evenement": "Le total de la fréquentation en saison régulière de la MLB en 2026 dépassera 72 millions de spectateurs.",
    "pays": [
     "États-Unis",
     "Canada"
@@ -857,7 +899,7 @@
    "question": "43091",
    "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before June 1, 2026?",
    "issue": 0,
-   "evenement": "un modèle d'IA atteint un score de 95 % ou plus sur le classement GPQA Diamond avant le 1er juin 2026.",
+   "evenement": "Qu'un modèle d'IA obtienne un score de 95 % ou plus sur le classement GPQA Diamond avant le 1er juin 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -876,7 +918,8 @@
     "amerique_du_nord"
    ],
    "regles": [
-    "us_reconciliation_budgetaire"
+    "us_reconciliation_budgetaire",
+    "us_senat_cloture"
    ],
    "rejets": [],
    "compartiments": [
@@ -888,7 +931,7 @@
    "question": "43171",
    "titre": "Will Neymar be called up for Brazil in the 2026 FIFA World Cup?",
    "issue": 1,
-   "evenement": "Neymar sera convoqué dans la sélection du Brésil pour la Coupe du Monde de la FIFA 2026.",
+   "evenement": "Que Neymar soit appelé en sélection du Brésil pour la Coupe du Monde de la FIFA 2026.",
    "pays": [
     "Brésil"
    ],
@@ -903,7 +946,7 @@
    "question": "43257",
    "titre": "Will the CBOE Volatility Index (VIX) close above 30 on more than 5 trading days between April 20, 2026 and May 31, 2026?",
    "issue": 0,
-   "evenement": "Le CBOE Volatility Index (VIX) clôture au-dessus de 30 lors d'une journée de bourse.",
+   "evenement": "Le CBOE Volatility Index (VIX) clôturera au-dessus de 30 lors de plus de 5 jours de bourse entre le 20 avril 2026 et le 31 mai 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -918,7 +961,7 @@
    "question": "43259",
    "titre": "Will the United States and Iran hold another face-to-face diplomatic meeting before June 6, 2026?",
    "issue": 0,
-   "evenement": "La tenue d'une nouvelle rencontre diplomatique en personne entre les États-Unis et l'Iran avant le 6 juin 2026.",
+   "evenement": "Tenue d'une nouvelle rencontre diplomatique en personne entre les États-Unis et l'Iran avant le 6 juin 2026.",
    "pays": [],
    "regions": [
     "amerique_du_nord",
@@ -932,7 +975,7 @@
    "question": "43283",
    "titre": "Will Waymo have a service area of 1,200 square miles before July 1, 2026?",
    "issue": 1,
-   "evenement": "Que Waymo dispose d'une zone de service de 1 200 miles carrés avant le 1er juillet 2026.",
+   "evenement": "Waymo aura une zone de service de 1 200 miles carrés avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -952,18 +995,28 @@
    "question": "43333",
    "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
    "issue": 0,
-   "evenement": "Qu'un autre pays annonce qu'il quittera l'OPEP ou l'OPEP+ avant septembre 2026.",
-   "pays": [],
-   "regions": [],
-   "regles": [],
+   "evenement": "Un pays annonce qu'il va quitter l'OPEP ou l'OPEP+ avant septembre 2026.",
+   "pays": [
+    "Indonésie",
+    "Russie"
+   ],
+   "regions": [
+    "asie",
+    "europe"
+   ],
+   "regles": [
+    "opep_departs"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "energie-mondiale:decisions"
+   ]
   },
   {
    "question": "43343",
    "titre": "Will any host nation (USA, Mexico or Canada) reach the semifinals of the 2026 World Cup?",
    "issue": 0,
-   "evenement": "Un des pays hôtes (États-Unis, Mexique ou Canada) atteindra les demi-finales de la Coupe du Monde 2026.",
+   "evenement": "Au moins un des pays hôtes de la Coupe du monde 2026 (États-Unis, Mexique ou Canada) atteindra les demi-finales du tournoi.",
    "pays": [
     "États-Unis",
     "Mexique",
@@ -972,47 +1025,65 @@
    "regions": [
     "amerique_du_nord"
    ],
-   "regles": [],
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "competitions-culture:forme",
+    "competitions-culture:public"
+   ]
   },
   {
    "question": "43355",
    "titre": "Will Iran and U.S play against each other in the 2026 FIFA World Cup?",
    "issue": 0,
-   "evenement": "Iran et les États-Unis s'affrontent lors de la Coupe du Monde de la FIFA 2026.",
+   "evenement": "Le fait que l'Iran et les États-Unis s'affrontent lors de la Coupe du monde de football 2026.",
    "pays": [],
    "regions": [
     "amerique_du_nord",
     "asie"
    ],
-   "regles": [],
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "competitions-culture:forme",
+    "competitions-culture:public"
+   ]
   },
   {
    "question": "43360",
    "titre": "Will the UK National Threat Level reduce from SEVERE before September 2026?",
    "issue": 0,
-   "evenement": "Réduction du niveau de menace national (National Threat Level) du Royaume‑Uni depuis SEVERE avant septembre 2026.",
-   "pays": [],
+   "evenement": "Réduction du niveau national de menace terroriste du Royaume-Uni depuis « SEVERE » vers un niveau inférieur avant septembre 2026.",
+   "pays": [
+    "Royaume-Uni"
+   ],
    "regions": [
     "europe"
    ],
-   "regles": [],
+   "regles": [
+    "royaume_uni_niveau_menace"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "securite-publique:alertes"
+   ]
   },
   {
    "question": "43435",
    "titre": "Will Pope Leo XIV visit another country other than Spain before September 2026?",
    "issue": 1,
-   "evenement": "Le pape Leo XIV effectuera une visite dans un pays autre que l'Espagne avant septembre 2026.",
+   "evenement": "voyage d'un pape à l'étranger",
    "pays": [],
    "regions": [
     "europe"
    ],
-   "regles": [],
+   "regles": [
+    "papes_voyages"
+   ],
    "rejets": [],
    "compartiments": []
   },
@@ -1020,14 +1091,15 @@
    "question": "43437",
    "titre": "Will there be a successful coup in Africa or Latin America before September 1, 2026?",
    "issue": 0,
-   "evenement": "Il y aura un coup d'État réussi en Afrique ou en Amérique latine avant le 1er septembre 2026.",
+   "evenement": "L'événement dont dépend la réponse est la survenue d'un coup d'État réussi en Afrique ou en Amérique latine avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "afrique",
     "amerique_latine"
    ],
    "regles": [
-    "coups_d_etat_frequence"
+    "coups_d_etat_frequence",
+    "chefs_d_etat_sortie_irreguliere"
    ],
    "rejets": [],
    "compartiments": [
@@ -1038,21 +1110,28 @@
    "question": "43452",
    "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
    "issue": 0,
-   "evenement": "Une rencontre en personne entre Donald Trump et Vladimir Poutine avant le 1er octobre 2026.",
-   "pays": [],
+   "evenement": "Rencontre en personne entre Donald Trump et Vladimir Poutine avant le 1er octobre 2026.",
+   "pays": [
+    "États-Unis",
+    "Russie"
+   ],
    "regions": [
     "amerique_du_nord",
     "europe"
    ],
-   "regles": [],
+   "regles": [
+    "sommets_etats_unis_russie"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "russie-ukraine:negociations"
+   ]
   },
   {
    "question": "43461",
    "titre": "Will at least 5 non-passengers be linked to the MV Hondius hantavirus outbreak before August 2026?",
    "issue": 0,
-   "evenement": "Au moins cinq personnes non-passagères sont liées à l'éclosion de hantavirus associée au navire MV Hondius avant août 2026.",
+   "evenement": "Au moins 5 non-passagers seront liés à l'épidémie de hantavirus du MV Hondius avant août 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -1063,9 +1142,13 @@
    "question": "43479",
    "titre": "Will Claude Mythos or a similar model be publicly released before September 2026?",
    "issue": 1,
-   "evenement": "La mise à disposition publique d'un modèle d'IA comparable à Claude Mythos avant septembre 2026.",
-   "pays": [],
-   "regions": [],
+   "evenement": "Publication publique d'un modèle Claude Mythos ou d'un modèle similaire avant septembre 2026.",
+   "pays": [
+    "États-Unis"
+   ],
+   "regions": [
+    "amerique_du_nord"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1074,7 +1157,7 @@
    "question": "43491",
    "titre": "Will a new High Representative for Bosnia and Herzegovina officially be in place before September 2, 2026?",
    "issue": 0,
-   "evenement": "La mise en place officielle d'un nouveau Haut Représentant pour la Bosnie-Herzégovine avant le 2 septembre 2026.",
+   "evenement": "La prise de fonction officielle d'un nouveau Haut Représentant pour la Bosnie-Herzégovine avant le 2 septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1087,10 +1170,9 @@
    "question": "43494",
    "titre": "Will any U.S. state or EU member state restrict large-scale data center grid connections before September 2026?",
    "issue": 1,
-   "evenement": "Restriction des connexions au réseau à grande échelle pour des centres de données par un État américain ou un État membre de l'UE avant septembre 2026.",
+   "evenement": "Qu'un État des États-Unis ou un État membre de l'Union européenne impose des restrictions aux raccordements à grande échelle de centres de données au réseau électrique avant septembre 2026.",
    "pays": [
-    "États-Unis",
-    "France"
+    "États-Unis"
    ],
    "regions": [
     "amerique_du_nord",
@@ -1119,7 +1201,7 @@
    "question": "43501",
    "titre": "Will Instructure be subject to another major hack before September 1, 2026?",
    "issue": 0,
-   "evenement": "Qu'un piratage informatique majeur touche Instructure avant le 1er septembre 2026.",
+   "evenement": "Instructure subira une nouvelle violation majeure de ses systèmes informatiques (un piratage important) avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1134,7 +1216,7 @@
    "question": "43502",
    "titre": "Will Bitcoin trade above $120,000 before August 1, 2026?",
    "issue": 0,
-   "evenement": "Bitcoin cotera au-dessus de 120 000 dollars avant le 1er août 2026.",
+   "evenement": "Le prix du Bitcoin dépassera 120 000 dollars avant le 1er août 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -1145,7 +1227,7 @@
    "question": "43505",
    "titre": "Will the Senate of the Philippines remove Vice President Sara Duterte from office before September 2026?",
    "issue": 0,
-   "evenement": "La destitution de la vice-présidente Sara Duterte par le Sénat des Philippines avant septembre 2026.",
+   "evenement": "La destitution de la vice‑présidente Sara Duterte par le Sénat des Philippines avant septembre 2026.",
    "pays": [],
    "regions": [
     "asie"
@@ -1158,18 +1240,27 @@
    "question": "43525",
    "titre": "Will OpenAI's ChatGPT Atlas browser be released for Windows before September 1, 2026?",
    "issue": 0,
-   "evenement": "La sortie du navigateur ChatGPT Atlas d'OpenAI pour Windows avant le 1er septembre 2026.",
-   "pays": [],
-   "regions": [],
-   "regles": [],
+   "evenement": "La sortie (mise à disposition officielle) du navigateur ChatGPT Atlas d'OpenAI pour Windows avant le 1er septembre 2026.",
+   "pays": [
+    "États-Unis"
+   ],
+   "regions": [
+    "amerique_du_nord"
+   ],
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ]
   },
   {
    "question": "43527",
    "titre": "Will federal courts block the USPS mail-in ballot restrictions before Election Day?",
    "issue": 1,
-   "evenement": "Le blocage par des tribunaux fédéraux des restrictions du USPS sur les bulletins de vote par correspondance avant le jour de l'élection.",
+   "evenement": "Un tribunal fédéral bloquera l'application des restrictions du USPS sur les bulletins de vote par correspondance avant le jour de l'élection.",
    "pays": [
     "États-Unis"
    ],
@@ -1184,7 +1275,7 @@
    "question": "43615",
    "titre": "Will Shakira's \"Dai Dai\" outpeak Shakira's \"Waka Waka\" on the Billboard Hot 100?",
    "issue": 1,
-   "evenement": "Le pic (position la plus élevée) du single \"Dai Dai\" de Shakira sur le Billboard Hot 100, comparé au pic du single \"Waka Waka\".",
+   "evenement": "La chanson 'Dai Dai' de Shakira atteindra un pic sur le Billboard Hot 100 supérieur au pic atteint par 'Waka Waka'.",
    "pays": [
     "États-Unis"
    ],
@@ -1199,7 +1290,7 @@
    "question": "43637",
    "titre": "Will the 2026 Alberta independence referendum pass?",
    "issue": 0,
-   "evenement": "Le référendum sur l'indépendance de l'Alberta de 2026 est adopté.",
+   "evenement": "Le passage (victoire) du référendum de 2026 sur l'indépendance de l'Alberta.",
    "pays": [
     "Canada"
    ],
@@ -1219,7 +1310,7 @@
    "question": "43688",
    "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
    "issue": 0,
-   "evenement": "La Réserve fédérale américaine augmente la fourchette cible des federal funds avant le 30 juillet 2026.",
+   "evenement": "Décision d'augmenter la fourchette cible des federal funds par la Réserve fédérale avant le 30 juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1239,22 +1330,27 @@
    "question": "43703",
    "titre": "Will a hurricane make landfall in the continental United States before September 1, 2026?",
    "issue": 0,
-   "evenement": "Un ouragan touchera terre dans les États-Unis continentaux avant le 1er septembre 2026.",
+   "evenement": "Atterrissage d'un ouragan sur le territoire continental des États-Unis avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
    "regions": [
     "amerique_du_nord"
    ],
-   "regles": [],
+   "regles": [
+    "us_ouragans_atterrissage"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "climat-extremes:saisons",
+    "climat-extremes:tempetes"
+   ]
   },
   {
    "question": "43707",
    "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
    "issue": 0,
-   "evenement": "La République populaire de Chine imposera un blocus ou une quarantaine de Taïwan avant le 1er septembre 2026.",
+   "evenement": "La réponse dépend de savoir si la République populaire de Chine imposera un blocus ou une quarantaine à Taïwan avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "asie"
@@ -1267,7 +1363,7 @@
    "question": "43708",
    "titre": "Will Starlink's website show South Africa as a country with Starlink availability before September 1, 2026?",
    "issue": 0,
-   "evenement": "Le site Web de Starlink affichera l'Afrique du Sud comme un pays où Starlink est disponible avant le 1er septembre 2026.",
+   "evenement": "La présence de l'Afrique du Sud indiquée sur le site web de Starlink comme pays où Starlink est disponible avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "afrique"
@@ -1280,7 +1376,7 @@
    "question": "43822",
    "titre": "Will Iceland vote Yes in the 2026 EU negotiations referendum?",
    "issue": 0,
-   "evenement": "Vote d'Islande en faveur du « Oui » au référendum de 2026 sur l'ouverture de négociations d'adhésion à l'Union européenne.",
+   "evenement": "L'événement dont dépend la réponse est : l'issue du référendum islandais de 2026 sur l'ouverture des négociations d'adhésion à l'Union européenne (vote Oui ou Non).",
    "pays": [],
    "regions": [
     "europe"
@@ -1298,13 +1394,9 @@
    "question": "43824",
    "titre": "Will the Brookmont Catastrophic Bond ETF drop at least $0.25 within two days before September 2026?",
    "issue": 0,
-   "evenement": "Le cours de l'ETF Brookmont Catastrophic Bond baisse d'au moins 0,25 $ au cours d'une période de deux jours avant septembre 2026.",
-   "pays": [
-    "États-Unis"
-   ],
-   "regions": [
-    "amerique_du_nord"
-   ],
+   "evenement": "La question porte sur la baisse du cours de l'ETF Brookmont Catastrophic Bond d'au moins 0,25 $ au cours d'une fenêtre de deux jours précédant septembre 2026.",
+   "pays": [],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1313,13 +1405,9 @@
    "question": "43841",
    "titre": "Will OpenAI publicly file an initial registration statement (S-1) with the SEC to launch an IPO, before September 1, 2026?",
    "issue": 0,
-   "evenement": "La décision de déposer publiquement une déclaration d'enregistrement initiale (formulaire S-1) auprès de la SEC en vue d'une introduction en bourse (IPO).",
-   "pays": [
-    "États-Unis"
-   ],
-   "regions": [
-    "amerique_du_nord"
-   ],
+   "evenement": "OpenAI dépose publiquement une déclaration d'enregistrement initiale (formulaire S-1) auprès de la SEC pour lancer une introduction en bourse avant le 1er septembre 2026.",
+   "pays": [],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1350,15 +1438,20 @@
    "regions": [
     "amerique_du_nord"
    ],
-   "regles": [],
+   "regles": [
+    "us_inculpation_personnalites"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "politique-americaine:executif",
+    "politique-americaine:tribunaux"
+   ]
   },
   {
    "question": "43881",
    "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
    "issue": 0,
-   "evenement": "Une rencontre en personne entre Volodymyr Zelenskyy et Vladimir Putin avant le 1er septembre 2026.",
+   "evenement": "Rencontre en personne entre Volodymyr Zelenskyy et Vladimir Putin avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1371,7 +1464,7 @@
    "question": "43911",
    "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
    "issue": 0,
-   "evenement": "La conclusion d'un accord négocié (nouvel accord commercial bilatéral) entre les États-Unis et l'Inde avant août 2026.",
+   "evenement": "La finalisation d'un nouvel accord commercial bilatéral entre les États-Unis et l'Inde avant août 2026.",
    "pays": [
     "États-Unis",
     "Inde"
@@ -1408,12 +1501,11 @@
    "question": "43985",
    "titre": "Before September 1, 2026, will Turkish President Recep Tayyip Erdoğan be legally permitted to run for another term?",
    "issue": 0,
-   "evenement": "Le président turc Recep Tayyip Erdoğan soit légalement autorisé à se présenter pour un autre mandat avant le 1er septembre 2026.",
+   "evenement": "Recep Tayyip Erdoğan sera légalement autorisé à se porter candidat à un nouveau mandat présidentiel turc avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "asie",
-    "europe",
-    "moyen_orient"
+    "europe"
    ],
    "regles": [],
    "rejets": [],
@@ -1423,7 +1515,7 @@
    "question": "43986",
    "titre": "Will Ukraine announce a presidential election before September 1, 2026?",
    "issue": 0,
-   "evenement": "Annonce par l'Ukraine de la tenue d'une élection présidentielle avant le 1er septembre 2026.",
+   "evenement": "Ukraine annonce une élection présidentielle avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1436,7 +1528,7 @@
    "question": "43987",
    "titre": "Will the United States provide written notices of withdrawal from the USMCA before September 2026?",
    "issue": 0,
-   "evenement": "La question dépend de savoir si les États-Unis fourniront des avis écrits de retrait de l'USMCA avant septembre 2026.",
+   "evenement": "Les États-Unis envoient des avis écrits de retrait de l'accord USMCA avant septembre 2026.",
    "pays": [
     "États-Unis",
     "Mexique",
@@ -1458,7 +1550,7 @@
    "question": "43991",
    "titre": "On July 8, 2026, will Marine Le Pen be ineligible to run in the 2027 French presidential election?",
    "issue": 0,
-   "evenement": "Savoir si Marine Le Pen est juridiquement inéligible à se présenter à l'élection présidentielle française de 2027 à la date du 8 juillet 2026.",
+   "evenement": "L'inéligibilité de Marine Le Pen à se présenter à l'élection présidentielle française de 2027 à la date du 8 juillet 2026.",
    "pays": [
     "France"
    ],
@@ -1473,33 +1565,44 @@
    "question": "43992",
    "titre": "Will July 2026 be the warmest July on record, according to Copernicus?",
    "issue": 0,
-   "evenement": "Copernicus classera juillet 2026 comme le juillet le plus chaud jamais enregistré.",
+   "evenement": "Que juillet 2026 soit le mois de juillet le plus chaud jamais enregistré selon Copernicus.",
    "pays": [],
    "regions": [],
-   "regles": [],
+   "regles": [
+    "records_temperature_persistance"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "climat-extremes:oceans",
+    "climat-extremes:tendance"
+   ]
   },
   {
    "question": "44117",
    "titre": "Will James M. McDonald be sworn in as US Attorney for the Southern District of New York before August 22, 2026?",
    "issue": 1,
-   "evenement": "James M. McDonald sera assermenté comme US Attorney pour le Southern District of New York avant le 22 août 2026.",
+   "evenement": "La confirmation par le Sénat d'une nomination présidentielle américaine pour le poste de US Attorney pour le Southern District of New York.",
    "pays": [
     "États-Unis"
    ],
    "regions": [
     "amerique_du_nord"
    ],
-   "regles": [],
+   "regles": [
+    "us_confirmations_delais",
+    "us_senat_cloture"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "politique-americaine:congres",
+    "politique-americaine:executif"
+   ]
   },
   {
    "question": "44193",
    "titre": "Will North Korea conduct a nuclear test before September 1, 2026?",
    "issue": 0,
-   "evenement": "La Corée du Nord réalise un essai nucléaire avant le 1er septembre 2026.",
+   "evenement": "La réponse dépend de la survenue d'un essai nucléaire nord-coréen avant le 1er septembre 2026.",
    "pays": [
     "Corée du Nord"
    ],
@@ -1519,10 +1622,10 @@
    "question": "44230",
    "titre": "Will the IAEA conduct an on-site inspection at any of Iran's Natanz, Fordow, or Isfahan nuclear sites before September 1, 2026?",
    "issue": 0,
-   "evenement": "Inspection sur site menée par l'AIEA à Natanz, Fordow ou Isfahan avant le 1er septembre 2026.",
+   "evenement": "Que l'AIEA mène une inspection sur place dans l'un des sites nucléaires iraniens de Natanz, Fordow ou Isfahan avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
-    "moyen_orient"
+    "asie"
    ],
    "regles": [],
    "rejets": [],
@@ -1532,9 +1635,13 @@
    "question": "44239",
    "titre": "Will Elon Musk be a trillionaire on August 31, 2026?",
    "issue": 0,
-   "evenement": "Elon Musk sera trillionnaire le 31 août 2026.",
-   "pays": [],
-   "regions": [],
+   "evenement": "Elon Musk sera trillionnaire (fortune nette au moins 1 000 milliards de dollars US) le 31 août 2026.",
+   "pays": [
+    "États-Unis"
+   ],
+   "regions": [
+    "amerique_du_nord"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1543,7 +1650,7 @@
    "question": "44241",
    "titre": "Will the Lincoln Memorial Reflecting Pool be fully repaired before September 2026?",
    "issue": 0,
-   "evenement": "Achèvement complet du bassin réfléchissant du Lincoln Memorial avant septembre 2026.",
+   "evenement": "La réparation complète du Lincoln Memorial Reflecting Pool avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1563,18 +1670,26 @@
    "question": "44244",
    "titre": "Will another company get dropped from the Dow Jones Industrial Average in July or August 2026?",
    "issue": 0,
-   "evenement": "Une entreprise est retirée du Dow Jones Industrial Average en juillet ou en août 2026.",
-   "pays": [],
-   "regions": [],
-   "regles": [],
+   "evenement": "Qu'une autre entreprise soit retirée du Dow Jones Industrial Average en juillet ou août 2026.",
+   "pays": [
+    "États-Unis"
+   ],
+   "regions": [
+    "amerique_du_nord"
+   ],
+   "regles": [
+    "dow_jones_changements"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "calendriers-echeances:marches"
+   ]
   },
   {
    "question": "44247",
    "titre": "Will Virgin Galactic have a \"Going Concern\" substantial doubt statement in its 10-Q SEC filing for Q2 2026?",
    "issue": 1,
-   "evenement": "Présence d'une mention de doute important quant à la capacité de Virgin Galactic à poursuivre son exploitation (« going concern ») dans son formulaire 10-Q pour le deuxième trimestre 2026.",
+   "evenement": "Virgin Galactic inclura une mention de doute substantiel quant à sa continuité d'exploitation (\"Going Concern\") dans son formulaire 10-Q déposé auprès de la SEC pour le deuxième trimestre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1589,7 +1704,7 @@
    "question": "44395",
    "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
    "issue": 0,
-   "evenement": "Annonce de la retraite d'un juge de la Cour suprême des États-Unis avant le 1er septembre 2026.",
+   "evenement": "Annonce de la retraite d'au moins un juge de la Cour suprême des États-Unis avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1604,10 +1719,11 @@
    "question": "44406",
    "titre": "Will Vladimir Putin visit Iran before September 1, 2026?",
    "issue": 0,
-   "evenement": "Vladimir Poutine effectuera une visite en Iran avant le 1er septembre 2026.",
+   "evenement": "Vladimir Putin effectue une visite en Iran avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
-    "asie"
+    "asie",
+    "moyen_orient"
    ],
    "regles": [],
    "rejets": [],
@@ -1617,7 +1733,7 @@
    "question": "44414",
    "titre": "Will a Tucker Carlson-founded political party file FEC Form 1 before September 2026?",
    "issue": 0,
-   "evenement": "Le dépôt du formulaire FEC Form 1 par un parti politique fondé par Tucker Carlson avant septembre 2026.",
+   "evenement": "Le dépôt d'un formulaire FEC Form 1 par un parti politique fondé par Tucker Carlson avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1632,13 +1748,9 @@
    "question": "44448",
    "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before September 2026?",
    "issue": 0,
-   "evenement": "Dépôt par Anthropic d'une déclaration d'enregistrement initiale (formulaire S-1) auprès de la SEC en vue d'une introduction en bourse avant septembre 2026.",
-   "pays": [
-    "États-Unis"
-   ],
-   "regions": [
-    "amerique_du_nord"
-   ],
+   "evenement": "Anthropic déposera une déclaration d'enregistrement initiale (formulaire S-1) auprès de la SEC pour lancer une introduction en bourse avant septembre 2026.",
+   "pays": [],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1647,7 +1759,7 @@
    "question": "44512",
    "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
    "issue": 0,
-   "evenement": "Démission du gouvernement albanais ou du Premier ministre Edi Rama avant septembre 2026.",
+   "evenement": "Le gouvernement d'Albanie ou le Premier ministre Edi Rama démissionne avant septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1660,9 +1772,15 @@
    "question": "44513",
    "titre": "Will Donald Trump and Vladimir Putin speak on the phone in August 2026?",
    "issue": 0,
-   "evenement": "Un appel téléphonique entre Donald Trump et Vladimir Putin en août 2026.",
-   "pays": [],
-   "regions": [],
+   "evenement": "Un appel téléphonique entre Donald Trump et Vladimir Poutine en août 2026.",
+   "pays": [
+    "États-Unis",
+    "Russie"
+   ],
+   "regions": [
+    "amerique_du_nord",
+    "europe"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1671,7 +1789,7 @@
    "question": "44544",
    "titre": "Will Thomas Massie file to run for any elective office before August 25, 2026?",
    "issue": 0,
-   "evenement": "Thomas Massie déposera une candidature pour une fonction élective avant le 25 août 2026.",
+   "evenement": "Thomas Massie déposera sa candidature à une fonction élective avant le 25 août 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1686,7 +1804,7 @@
    "question": "44547",
    "titre": "Will Mitch McConnell cast a roll-call vote in the U.S. Senate before September 2026?",
    "issue": 0,
-   "evenement": "Que Mitch McConnell participe à un vote par appel nominal (roll-call vote) au Sénat des États-Unis avant septembre 2026.",
+   "evenement": "Mitch McConnell votera lors d'un vote nominal (roll-call) au Sénat des États-Unis avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1712,7 +1830,7 @@
    "question": "44799",
    "titre": "Will a bot finish in the top 5 of the Summer 2026 Metaculus Cup?",
    "issue": 1,
-   "evenement": "Un bot finit parmi les cinq premiers de la Metaculus Cup été 2026.",
+   "evenement": "Un bot finira dans le top 5 de la Metaculus Cup d'été 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -1723,7 +1841,7 @@
    "question": "44919",
    "titre": "Will the United States launch an attack against JNIM in Mali during August 2026?",
    "issue": 0,
-   "evenement": "Lancement d'une attaque américaine contre JNIM au Mali en août 2026.",
+   "evenement": "Le lancement par les États-Unis d'une attaque contre JNIM au Mali pendant août 2026.",
    "pays": [],
    "regions": [
     "afrique",
@@ -1737,20 +1855,26 @@
    "question": "44925",
    "titre": "Will the Royal Mail raise prices on any letters or parcels before September 10, 2026?",
    "issue": 1,
-   "evenement": "Augmentation des prix par Royal Mail sur des lettres ou des colis avant le 10 septembre 2026.",
-   "pays": [],
+   "evenement": "Une hausse des tarifs des lettres ou colis de Royal Mail avant le 10 septembre 2026.",
+   "pays": [
+    "Royaume-Uni"
+   ],
    "regions": [
     "europe"
    ],
-   "regles": [],
+   "regles": [
+    "royal_mail_hausses_tarifs"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "inflation-mondiale:prix_conso"
+   ]
   },
   {
    "question": "44986",
    "titre": "Will the U.S. government's 30-year treasury bond remain in the  ≥5% \"danger zone\" for the entire month of August 2026?",
    "issue": 1,
-   "evenement": "Le rendement de l'obligation du Trésor américain à 30 ans restera supérieur ou égal à 5 % pendant tout le mois d'août 2026.",
+   "evenement": "Le rendement du bon du Trésor américain à 30 ans restera à au moins 5 % pendant tout le mois d'août 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1765,21 +1889,28 @@
    "question": "45015",
    "titre": "Will Italy's Schengen suspension against Spain be lifted before August 30, 2026?",
    "issue": 0,
-   "evenement": "La levée de la suspension de l'espace Schengen imposée par l'Italie à l'encontre de l'Espagne avant le 30 août 2026.",
+   "evenement": "Levée de la suspension par l'Italie des contrôles Schengen à l'encontre de l'Espagne avant le 30 août 2026.",
    "pays": [],
    "regions": [
     "europe"
    ],
-   "regles": [],
+   "regles": [
+    "schengen_controles_interieurs"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "securite-publique:frontieres"
+   ]
   },
   {
    "question": "8393",
    "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
    "issue": 0,
-   "evenement": "Renouvellement (prolongation) de l'accord de contrôle des armements New START jusqu'au moins le 5 février 2027.",
-   "pays": [],
+   "evenement": "Renouvellement de l'accord New START jusqu'au moins le 5 février 2027.",
+   "pays": [
+    "États-Unis",
+    "Russie"
+   ],
    "regions": [
     "amerique_du_nord",
     "europe"
