@@ -1,0 +1,64 @@
+name: "Banc décision d institution (outil adapté au cadre institutionnel)"
+
+# 0.10.409 : décisions d institution résolues (ForecastBench), faits relevés par gpt-5-mini, combinés par le code ;
+# un appel par question, recherche gelée partagée avec le banc de M (crédits Azure). Lancé une fois.
+on:
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: "plafond en dollars pour ce passage"
+        default: "3"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  banc_decision_institution:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Restaurer la recherche gelée
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+          restore-keys: recherche-jugement-
+      - name: "Banc décision d institution (outil adapté au cadre institutionnel)"
+        run: uv run python banc_decision_institution.py --budget "${{ github.event.inputs.budget || '3' }}"
+        env:
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          GDELT_PONT: ${{ vars.GDELT_PONT }}
+          GDELT_PONT_CLE: ${{ secrets.GDELT_PONT_CLE }}
+          ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
+      - name: Garder la recherche gelée
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/banc-decision-institution.jsonl registre/banc-decision-institution.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc décision d institution du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
