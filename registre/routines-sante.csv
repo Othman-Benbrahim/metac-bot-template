@@ -17,3 +17,12 @@ jour,source,etat,nouveaux
 2026-11-20,commission_europeenne,ok,10
 2026-11-20,elysee,HTTP 404,0
 2026-11-20,gouvernement_chine_mae,"ParseError: mismatched tag: line 37, column 2",0
+2026-11-21,kremlin_president_en,ok,6
+2026-11-21,maison_blanche,ok,7
+2026-11-21,departement_etat,HTTP 403,0
+2026-11-21,pentagone,ok,4
+2026-11-21,onu_presse,HTTP 404,0
+2026-11-21,otan,HTTP 404,0
+2026-11-21,commission_europeenne,ok,10
+2026-11-21,elysee,HTTP 404,0
+2026-11-21,gouvernement_chine_mae,"ParseError: mismatched tag: line 37, column 2",0
