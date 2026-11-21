@@ -93,3 +93,8 @@
 {"notam": "6/8983", "type": "VIP", "centre": "ZDC", "etat": "VA", "description": "Sterling, VA, Sunday, November 22, 2026 through Sunday, November 22, 2026 Local", "cree_le": "11/19/2026", "vu_le": "2026-11-20"}
 {"notam": "6/8982", "type": "VIP", "centre": "ZDC", "etat": "VA", "description": "Sterling, VA, Saturday, November 21, 2026 Local", "cree_le": "11/19/2026", "vu_le": "2026-11-20"}
 {"notam": "6/8981", "type": "HAZARDS", "centre": "ZME", "etat": "MS", "description": "8NM NE OXFORD, MS, Friday, November 20, 2026 through Sunday, November 22, 2026 UTC", "cree_le": "11/19/2026", "vu_le": "2026-11-20"}
+{"notam": "6/9267", "type": "HAZARDS", "centre": "ZID", "etat": "KY", "description": "13NM SE OF MANCHESTER, KY, Saturday, November 21, 2026 through Sunday, November 22, 2026 UTC", "cree_le": "11/20/2026", "vu_le": "2026-11-21"}
+{"notam": "6/9262", "type": "HAZARDS", "centre": "ZME", "etat": "MO", "description": "BOLLINGER-CRASS MEML, MO, Friday, November 20, 2026 through Saturday, November 21, 2026 UTC", "cree_le": "11/20/2026", "vu_le": "2026-11-21"}
+{"notam": "6/9186", "type": "HAZARDS", "centre": "ZAU", "etat": "IA", "description": "MIDDLETOWN, IA, Monday, November 23, 2026 through Wednesday, November 25, 2026 UTC", "cree_le": "11/20/2026", "vu_le": "2026-11-21"}
+{"notam": "6/9172", "type": "SECURITY", "centre": "ZJX", "etat": "FL", "description": "MAYPORT, FL, Saturday, November 21, 2026 through Sunday, November 22, 2026 Local", "cree_le": "11/20/2026", "vu_le": "2026-11-21"}
+{"notam": "6/9141", "type": "VIP", "centre": "ZDC", "etat": "VA", "description": "Middleburg, VA, Saturday, November 21, 2026 through Sunday, November 22, 2026 Local", "cree_le": "11/20/2026", "vu_le": "2026-11-21"}
