@@ -554,7 +554,8 @@ def sujet_parti(sujet_: str) -> str:
 LANGUES = {"brazil": "pt", "portug": "pt", "peru": "es", "colombi": "es", "swed": "sv", "hungar": "hu", "russia": "ru",
            "latvia": "lv", "german": "de", "sachsen": "de", "saxony": "de"}
 TOLERANCE_POINTS = 2.0
-TOLERANCE_WIKITEXTE = 0.5                                     # même page, même sondages : l'écart doit être nul
+TOLERANCE_WIKITEXTE = 0.5
+ECART_JOURS_MAX = 14                                          # seconde source : derniers sondages à 14 jours au plus                                     # même page, même sondages : l'écart doit être nul
 
 
 def langue_locale(el: str) -> str | None:
@@ -697,8 +698,12 @@ class Collecteur:
                 s2 = {"langue": loc["langue"], "page": loc["page"], "colonne": col2}
                 if col2:
                     m2 = moyennes(loc["lignes"], jeu, t2)[col2]
-                    s2.update({"moyenne": m2["moyenne"], "n": m2["n"], "dernier": m2["dernier"],
-                               "ecart_points": round(m2["moyenne"] - moy[col]["moyenne"], 2)})
+                    s2.update({"moyenne": m2["moyenne"], "n": m2["n"], "dernier": m2["dernier"]})
+                    ecart_jours = abs((date.fromisoformat(m2["dernier"]) - date.fromisoformat(moy[col]["dernier"])).days)
+                    if ecart_jours <= ECART_JOURS_MAX:         # même période : la comparaison vérifie la lecture
+                        s2["ecart_points"] = round(m2["moyenne"] - moy[col]["moyenne"], 2)
+                    else:                                      # périodes différentes : un écart serait l'opinion qui
+                        s2["non_comparable"] = f"derniers sondages à {ecart_jours} jours d'écart"   # bouge, pas une erreur
                 wiki["seconde_source"] = s2
         if parl and (base := self.base_dawum()):
             ls = lignes_dawum(base, parl)
