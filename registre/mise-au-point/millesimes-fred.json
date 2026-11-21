@@ -1,0 +1,81 @@
+{
+ "ensemble": {
+  "revise": {
+   "n": 1659,
+   "couverture_80": 0.782,
+   "couverture_60": 0.593
+  },
+  "premiere": {
+   "n": 1473,
+   "couverture_80": 0.783,
+   "couverture_60": 0.599
+  }
+ },
+ "series": {
+  "chômage": {
+   "revise": {
+    "n": 421,
+    "couverture_80": 0.805,
+    "couverture_60": 0.639,
+    "mois": 441,
+    "dernier": "2026-10-01"
+   },
+   "premiere": {
+    "n": 421,
+    "couverture_80": 0.819,
+    "couverture_60": 0.658,
+    "mois": 441,
+    "dernier": "2026-10-01"
+   }
+  },
+  "confiance des ménages": {
+   "revise": {
+    "n": 422,
+    "couverture_80": 0.784,
+    "couverture_60": 0.576,
+    "mois": 442,
+    "dernier": "2026-10-01"
+   },
+   "premiere": {
+    "n": 319,
+    "couverture_80": 0.784,
+    "couverture_60": 0.574,
+    "mois": 339,
+    "dernier": "2026-10-01"
+   }
+  },
+  "inflation sur un an": {
+   "revise": {
+    "n": 408,
+    "couverture_80": 0.77,
+    "couverture_60": 0.581,
+    "mois": 441,
+    "dernier": "2026-10-01"
+   },
+   "premiere": {
+    "n": 408,
+    "couverture_80": 0.765,
+    "couverture_60": 0.578,
+    "mois": 441,
+    "dernier": "2026-10-01"
+   }
+  },
+  "inflation sous-jacente sur un an": {
+   "revise": {
+    "n": 408,
+    "couverture_80": 0.767,
+    "couverture_60": 0.576,
+    "mois": 441,
+    "dernier": "2026-10-01"
+   },
+   "premiere": {
+    "n": 325,
+    "couverture_80": 0.76,
+    "couverture_60": 0.572,
+    "mois": 358,
+    "dernier": "2026-10-01"
+   }
+  }
+ },
+ "note": "attendu 0,80 et 0,60 ; « revise » = chiffres d'aujourd'hui (comme l'essai d'origine), « premiere » = valeurs à leur première publication (ALFRED)"
+}
