@@ -578,3 +578,21 @@ ponts:
 - depuis: milieu
   vers: eau-moyen-orient:rarete
   nature: la rareté de l'eau douce dans la région
+faits:
+# 2026-11-21 : faits datés recoupés par au moins deux sources indépendantes (règle de l'auteur), pour le bot en direct ;
+# faits de 2026 : jamais utilisés par les bancs rétrospectifs (questions de 2026).
+- date: 2026-06-17
+  compartiment: puissances
+  fait: "Mémorandum d'entente États-Unis–Iran en 14 points, signé par Trump et Pezeshkian, ouvrant 60 jours de négociation pour un accord nucléaire ; le cessez-le-feu est rompu début juillet selon la DGRIS"
+  sources:
+  - {titre: "NPR, What you need to know about the preliminary U.S.-Iran agreement signed by Trump, 19 juin 2026", url: "https://npr.org/2026/06/19/nx-s1-5863544"}
+  - {titre: "ABC News (Good Morning America), Key takeaways from 14-point memorandum of understanding, 17 juin 2026", url: "https://www.goodmorningamerica.com/news/story/key-takeaways-14-point-memorandum-understanding-us-iran-133976791"}
+  - {titre: "DGRIS, Horizons stratégiques, « Été 2026 : un monde en recomposition » (déclaration, source d'État), 8 octobre 2026", url: "https://feeds.podcastics.com/podcastics/podcasts/rss/8790_3921a9fb6d23027c05e441910fbfe5c3.rss"}
+  statut: recoupe
+- date: 2026-09-12
+  compartiment: flux_energie
+  fait: "L'oléoduc saoudien est-ouest, qui contourne Ormuz vers la mer Rouge, est fermé après des attaques (attribuées à l'Iran par la DGRIS ; la presse cite aussi les Houthis en mer Rouge)"
+  sources:
+  - {titre: "South China Morning Post, Saudi pipeline that bypasses Hormuz shut after attacks, septembre 2026", url: "https://www.scmp.com/news/world/middle-east/article/3367268/saudi-pipeline-bypasses-hormuz-shut-after-attacks"}
+  - {titre: "Honolulu Star-Advertiser (AP), Saudis shut down key oil pipeline as Houthis tighten grip on Red Sea shipping, 12 septembre 2026", url: "https://www.staradvertiser.com/2026/09/12/breaking-news/saudis-shut-down-key-oil-pipeline-as-houthis-tighten-grip-on-red-sea-shipping/"}
+  statut: recoupe

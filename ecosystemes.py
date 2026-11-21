@@ -183,6 +183,13 @@ def valider(fiche: dict) -> list[str]:
         for tr in c.get("traces") or []:
             if tr.get("statut") not in TRACES:
                 err.append(f"{t}:{c.get('id')} : statut de trace inconnu {tr.get('statut')!r}")
+    for f in fiche.get("faits") or []:       # 2026-11-21 : faits datés, au moins deux sources indépendantes
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(f.get("date", ""))):
+            err.append(f"{t} : fait sans date lisible ({str(f.get('fait', ''))[:40]})")
+        if f.get("compartiment") not in ids:
+            err.append(f"{t} : fait rattaché à un compartiment inconnu {f.get('compartiment')!r}")
+        if len([s for s in f.get("sources") or [] if (s or {}).get("url")]) < 2 or f.get("statut") != "recoupe":
+            err.append(f"{t} : fait non recoupé par deux sources ({str(f.get('fait', ''))[:40]})")
     for i, r in enumerate(fiche.get("relations") or []):
         lab = f"{t} relation {i + 1} ({r.get('de')} → {r.get('vers')})"
         for bout in ("de", "vers"):

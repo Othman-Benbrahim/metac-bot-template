@@ -664,3 +664,13 @@ ponts:
 - depuis: conseil_securite
   vers: non-proliferation:regime
   nature: le régime mondial de non-prolifération
+faits:
+# 2026-11-21 : faits datés recoupés par au moins deux sources indépendantes ; jamais utilisés par les bancs rétrospectifs.
+- date: 2026-06-17
+  compartiment: negociations
+  fait: "Mémorandum d'entente États-Unis–Iran en 14 points ouvrant 60 jours de négociation pour un accord nucléaire « robuste et vérifiable » ; selon la DGRIS (8 octobre), le délai n'a produit aucun accord (positions maximalistes, confiance très basse, médiation du Pakistan, du Qatar et d'Oman)"
+  sources:
+  - {titre: "NPR, What you need to know about the preliminary U.S.-Iran agreement signed by Trump, 19 juin 2026", url: "https://npr.org/2026/06/19/nx-s1-5863544"}
+  - {titre: "ABC News (Good Morning America), Key takeaways from 14-point memorandum of understanding, 17 juin 2026", url: "https://www.goodmorningamerica.com/news/story/key-takeaways-14-point-memorandum-understanding-us-iran-133976791"}
+  - {titre: "DGRIS, Horizons stratégiques, « Été 2026 : un monde en recomposition » (déclaration, source d'État), 8 octobre 2026", url: "https://feeds.podcastics.com/podcastics/podcasts/rss/8790_3921a9fb6d23027c05e441910fbfe5c3.rss"}
+  statut: recoupe

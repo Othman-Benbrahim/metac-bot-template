@@ -673,3 +673,13 @@ ponts:
 - depuis: front
   vers: humain:passage_acte
   nature: les hostilités nourrissent le mécanisme général du passage à l'acte
+faits:
+# 2026-11-21 : faits datés recoupés par au moins deux sources indépendantes ; jamais utilisés par les bancs rétrospectifs.
+- date: 2026-06-26
+  compartiment: sanctions
+  fait: "La France saisit un cinquième pétrolier de la flotte fantôme russe (le premier en septembre 2025) ; une quinzaine d'arraisonnements par la France et ses partenaires européens depuis 2025 selon la DGRIS"
+  sources:
+  - {titre: "USNI News, France Seizes 5th Russian Shadow Fleet Tanker, 26 juin 2026", url: "https://news.usni.org/2026/06/26/french-seizes-5th-russian-shadow-fleet-tanker"}
+  - {titre: "Kyiv Independent, France seizes new Russian shadow fleet vessel in Mediterranean", url: "https://kyivindependent.com/france-seizes-new-russian-shadow-fleet-vessel-in-mediterranean/"}
+  - {titre: "DGRIS, Horizons stratégiques, « Été 2026 : un monde en recomposition » (déclaration, source d'État), 8 octobre 2026", url: "https://feeds.podcastics.com/podcastics/podcasts/rss/8790_3921a9fb6d23027c05e441910fbfe5c3.rss"}
+  statut: recoupe

@@ -98,3 +98,20 @@ ponts:
   - {depuis: "etats_unis", vers: "politique-americaine:executif", nature: "la garantie américaine dépend de l'exécutif"}
   - {depuis: "budgets_dette", vers: "inflation-mondiale:budget", nature: "dépenses publiques et inflation"}
   - {depuis: "geographie", vers: "relief-et-montagnes:obstacles", nature: "le relief comme obstacle ou couloir", type: "meme"}
+faits:
+# 2026-11-21 : faits datés recoupés par au moins deux sources indépendantes ; jamais utilisés par les bancs rétrospectifs.
+- date: 2026-07-08
+  compartiment: otan_ue
+  fait: "Déclaration du sommet de l'OTAN à Ankara : une Europe plus forte dans une OTAN plus forte, article 5 réaffirmé ; crise transatlantique redoutée (déclarations de Trump sur le Groenland) mais évitée selon la DGRIS"
+  sources:
+  - {titre: "OTAN, The Ankara Summit Declaration, 8 juillet 2026", url: "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/07/08/the-ankara-summit-declaration"}
+  - {titre: "Atlantic Council, Eleven takeaways from the NATO Summit in Ankara", url: "https://www.atlanticcouncil.org/dispatches/eleven-takeaways-from-the-nato-summit-in-ankara/"}
+  - {titre: "DGRIS, Horizons stratégiques, « Été 2026 : un monde en recomposition » (déclaration, source d'État), 8 octobre 2026", url: "https://feeds.podcastics.com/podcastics/podcasts/rss/8790_3921a9fb6d23027c05e441910fbfe5c3.rss"}
+  statut: recoupe
+- date: 2026-09-01
+  compartiment: menace
+  fait: "L'Allemagne attribue à la Russie un drone porteur d'explosifs trouvé près d'un avion ukrainien à l'aéroport de Leipzig-Halle (action hybride)"
+  sources:
+  - {titre: "Al Jazeera, Germany accuses Russia of drone attack on Leipzig airport, 1er septembre 2026", url: "https://aljazeera.com/news/2026/9/1/germany-accuses-russia-of-drone-attack-on-leipzig-airport"}
+  - {titre: "Euronews, Russia behind drone incident at Leipzig airport, Berlin says, 1er septembre 2026", url: "https://www.euronews.com/my-europe/2026/09/01/russia-behind-drone-incident-at-leipzig-airport-berlin-says"}
+  statut: recoupe
