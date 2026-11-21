@@ -15,3 +15,11 @@ def test_valider_rejette_les_faux_compartiments():
         {"fiche": "politique-americaine", "compartiment": "congres", "regle": "court"}]}, cat)
     assert len(g) == 1 and len(r) == 1          # au plus deux choix lus ; le second est rejeté
     assert c.valider({"choix": []}, cat) == ([], [])
+
+
+def test_regles_compartiments_valides():
+    import regles_coutumieres as rc
+    assert rc.valider() == []
+    faux = [{"id": "x", "structure": "procedure", "echelle": {"axe": "temps"}, "statut": "source",
+             "sources": [{"url": "https://a"}], "compartiments": ["politique-americaine:lune"]}]
+    assert any("compartiment inconnu" in e for e in rc.valider(faux))

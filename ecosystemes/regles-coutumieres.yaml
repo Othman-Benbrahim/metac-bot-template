@@ -17,6 +17,7 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: national}
     structure: course
+    compartiments: [politique-americaine:regles_electorales]
     regle: "Le président est élu par le collège électoral : 270 voix sur 538. Dans 48 États et à Washington DC, le candidat arrivé en tête prend toutes les voix de l'État ; le Maine et le Nebraska répartissent une partie de leurs voix par circonscription."
     parametres: {voix_total: 538, voix_pour_gagner: 270, repartition_par_circonscription: [ME, NE]}
     sources:
@@ -28,6 +29,7 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: primaire}
     structure: course
+    compartiments: [politique-americaine:regles_electorales]
     regle: "Second tour entre les deux premiers si personne n'atteint le seuil de l'État : majorité (plus de 50 %) en Alabama, Arkansas, Géorgie, Mississippi, Oklahoma, Caroline du Sud et Texas ; 30 % plus une voix en Caroline du Nord ; plus de 35 % au Dakota du Sud, seulement pour le Congrès et le gouverneur et seulement avec au moins trois candidats ; en Louisiane, à partir de 2026, majorité pour le Congrès, la Cour suprême de l'État, le BESE et la Public Service Commission. Ailleurs, la majorité relative suffit (le premier gagne)."
     parametres:
       seuil_second_tour: {AL: 50, AR: 50, GA: 50, MS: 50, OK: 50, SC: 50, TX: 50, NC: 30, SD: 35, LA: 50}
@@ -43,6 +45,7 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: primaire}
     structure: course
+    compartiments: [politique-americaine:regles_electorales]
     regle: "Californie et État de Washington : primaire à deux qualifiés (les deux premiers, tous partis confondus, vont à l'élection générale). Alaska : primaire à quatre qualifiés, puis élection générale au vote préférentiel. Maine : vote préférentiel. Nebraska : deux qualifiés pour la seule législature d'État. Dans ces systèmes, « gagner la primaire » ne veut pas dire la même chose qu'ailleurs : la brique s'abstient tant que la règle de calcul propre (qualification, transferts de voix) n'est pas écrite."
     parametres: {deux_qualifies: [CA, WA], quatre_qualifies: [AK], vote_preferentiel: [ME, AK], deux_qualifies_legislature: [NE]}
     sources:
@@ -54,6 +57,7 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: "toutes (par type d'élection)"}
     structure: course
+    compartiments: [politique-americaine:elections]
     regle: "Erreur moyenne des sondages sur l'ÉCART entre les deux premiers, sondages des 21 derniers jours, 1998-2018 : présidentielle générale 4,0 points ; primaires présidentielles 8,7 ; Sénat 5,4 ; gouverneur 5,4 ; Chambre 6,2 ; ensemble 5,9. Cycle 2023-2024 : présidentielle générale 3,4, Sénat 4,1, ensemble 4,5 ; les primaires présidentielles sont le seul type au-dessus de la moyenne. Conversion pour une PART de candidat (hypothèse écrite, pas une source) : erreur sur l'écart ≈ 2 × erreur sur la part ; erreur moyenne absolue ≈ 0,8 σ ; donc σ(part) ≈ erreur sur l'écart / 1,6."
     parametres:
       erreur_ecart_points: {presidentielle_generale: 4.0, primaire_presidentielle: 8.7, senat: 5.4, gouverneur: 5.4, chambre: 6.2, ensemble: 5.9}
@@ -81,6 +85,7 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "jours avant le vote"}
     structure: course
+    compartiments: [politique-americaine:elections, calendriers-echeances:elections]
     regle: "Erreur absolue moyenne par parti ou candidat, sondages nationaux : près de 4 points entre 150 et 200 jours avant le vote, environ 3 points à 50 jours, moins de 2 points la veille. À 200 jours : 3,3 points pour les législatives, 5,9 pour les présidentielles ; l'écart se réduit sans disparaître. Remplace la formule σ·√(1 + t/30) du préenregistrement etalon-scrutin, qui était une invention de Claude (lot 1). Ne vaut pas pour les primaires ni pour les scrutins locaux (sondages nationaux seulement)."
     parametres: {erreur_part_points: {j150_200: 4.0, j50: 3.0, veille: 2.0}, erreur_part_j200: {legislatives: 3.3, presidentielles: 5.9}}
     sources:
@@ -92,6 +97,7 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: "national (Chambre, Sénat)"}
     structure: maintien
+    compartiments: [politique-americaine:elections]
     regle: "Part des sortants réélus parmi ceux qui se représentent, 2000-2022 : Chambre 93,9 % en moyenne (de 85,4 % en 2010 à 97,8 %) ; Sénat 86,9 % (de 78,6 % à 100 %). Défaites en primaire : 72 à la Chambre et 6 au Sénat sur ces douze cycles."
     parametres: {reelection_chambre: 0.939, reelection_senat: 0.869, defaites_primaires_chambre_2000_2022: 72, defaites_primaires_senat_2000_2022: 6, cycles: 12}
     sources:
@@ -105,6 +111,7 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "fenêtre d'une question (semaines à mois)"}
     structure: maintien
+    compartiments: [humain:hierarchie]
     regle: "Règle d'inertie : dans un régime fermé, le dirigeant reste au pouvoir et les manifestations sont étouffées ; les basculements (alternances inattendues) sont des cas limites. La probabilité de départ dans la fenêtre d'une question part donc de très bas et ne monte qu'avec des faits datés (mort, coup d'État en cours, défection de l'armée)."
     parametres: {a_priori: tres_bas}
     sources:
@@ -367,6 +374,7 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: espace, tranche: "chambre fédérale"}
     structure: procedure
+    compartiments: [politique-americaine:congres]
     regle: "Pour clore le débat sur un texte de loi (et donc franchir l'obstruction), il faut les trois cinquièmes du Sénat : 60 voix, sauf vacance de plus d'un siège. Pour les nominations présidentielles, la majorité simple des votants suffit depuis le 21 novembre 2013 (toutes sauf la Cour suprême), et pour la Cour suprême depuis le 6 avril 2017. Une loi qui n'a pas 60 soutiens au Sénat ne passe donc pas, sauf procédure dérogatoire (par exemple le budget par réconciliation, non sourcé dans ce lot)."
     parametres: {cloture_lois: 60, cloture_nominations: majorite_simple, depuis_nominations: "2013-11-21", depuis_cour_supreme: "2017-04-06"}
     sources:
@@ -379,6 +387,7 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "législature de deux ans"}
     structure: procedure
+    compartiments: [politique-americaine:congres]
     regle: "Le 119e Congrès (2025-2026) a adopté 121 lois publiques au 14 octobre 2026 (109 de fond, 12 symboliques), le deuxième total le plus bas des 40 dernières années à ce stade ; le 118e en avait 106. Du 100e au 110e Congrès, environ 440 lois avant le jour de l'élection, dont environ 306 de fond. Une grande part des lois passe après l'élection : 168 des 274 lois du 118e Congrès (61 %) pendant la session de fin de mandat."
     parametres: {lois_119e_au_2026_10_14: 121, lois_118e_meme_date: 106, moyenne_100e_110e_avant_election: 440, part_apres_election_118e: 0.61}
     sources:
@@ -402,6 +411,7 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "année"}
     structure: evenement_rare
+    compartiments: [humain:hierarchie]
     regle: "De 1950 à 2010, 457 tentatives de coup d'État dans le monde, dont 227 réussies (49,7 %). L'Afrique et les Amériques en concentrent la plupart (36,5 % et 31,9 % selon le texte ; la figure 1 compte 169 cas africains, soit 37 %). Le nombre de tentatives baisse sur la période (pics au milieu des années 1960, 1970 et au début des années 1990) ; la réussite remonte après 2003 (12 sur 18). Ce sont des ordres de grandeur pour un taux de base, pas une loi pour un pays donné."
     parametres: {tentatives_1950_2010: 457, reussies: 227, taux_reussite: 0.497, part_afrique: 0.365, reussite_depuis_2003: "12/18"}
     sources:
@@ -413,6 +423,7 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "mois"}
     structure: maintien
+    compartiments: [humain:hierarchie]
     regle: "Les sorties irrégulières de dirigeants (coup, révolte, assassinat) sont très rares : 45 cas de mars 2001 à mars 2014 sur environ 26 000 pays-mois, soit 0,17 % des pays-mois ; sur la même période, 16 coups. Pour une question « X sera-t-il encore au pouvoir à telle date ? », le point de départ est le maintien, sauf échéance électorale ou limite de mandat."
     parametres: {cas_2001_2014: 45, pays_mois: 26000, taux_mensuel: 0.0017}
     sources:
@@ -466,3 +477,108 @@ regles:
     sources: []
     statut: absence
     aide: "aucune : la mesure se fait par la collecte erreur_regionale.py (workflow lancé une fois par l'auteur)"
+
+  # ---------------------------------------------------------------- lot 6 : politique américaine, procédures et calendriers
+  # Piste écosystémique (décision de l'auteur du 2026-11-21) : règles propres des compartiments de la fiche
+  # politique-americaine qui gouvernent les questions du banc de M (carte de couverture). Champ « compartiments » : les
+  # compartiments de fiche que la règle gouverne. Aucune donnée de 2026 ou après dans le texte des règles (le banc porte sur
+  # des questions de 2026 : pas de fuite).
+  - id: us_fed_calendrier
+    ecosysteme: "États-Unis · Réserve fédérale, décisions de taux"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "réunion (environ six semaines)"}
+    structure: procedure
+    compartiments: [politique-americaine:reserve_federale, calendriers-echeances:banques_centrales]
+    regle: "Le comité de politique monétaire (FOMC) tient huit réunions programmées par an, environ une toutes les six semaines, à dates publiées d'avance ; il peut tenir des réunions non programmées si nécessaire. Une décision de taux se prend donc d'ordinaire à une réunion du calendrier : une question « avant telle date » se joue sur les réunions programmées comprises dans la fenêtre."
+    parametres: {reunions_par_an: 8, intervalle_semaines: 6, reunions_non_programmees: possibles}
+    sources:
+      - {titre: "Federal Reserve, What is the FOMC and when does it meet?", url: "https://www.federalreserve.gov/faqs/about_12844.htm", consulte: "2026-11-21"}
+    statut: source
+
+  - id: us_cour_supreme_calendrier
+    ecosysteme: "États-Unis · Cour suprême, session annuelle"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "session (octobre à juin)"}
+    structure: procedure
+    compartiments: [politique-americaine:tribunaux, calendriers-echeances:dates_limites]
+    regle: "La session de la Cour suprême commence, par la loi, le premier lundi d'octobre ; les séances durent d'ordinaire jusqu'à fin juin ou début juillet. Les plaidoiries s'arrêtent en général en avril ; les décisions et ordonnances sortent ensuite jusqu'à la fin de la session, les plus disputées souvent à la fin. Les juges examinent environ 130 demandes de pourvoi par semaine ; les demandes en attente pendant l'été sont tranchées à la « long conference » de fin septembre."
+    parametres: {debut: "premier lundi d'octobre", fin_habituelle: "fin juin ou début juillet", fin_plaidoiries: avril, demandes_par_semaine: 130}
+    sources:
+      - {titre: "Supreme Court of the United States, The Court and Its Procedures", url: "https://www.supremecourt.gov/about/procedures.aspx", consulte: "2026-11-21"}
+      - {titre: "Ballotpedia, Supreme Court term", url: "https://ballotpedia.org/Supreme_Court_term", consulte: "2026-11-21"}
+    statut: source
+
+  - id: us_reconciliation_budgetaire
+    ecosysteme: "États-Unis · Congrès, réconciliation budgétaire"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "résolution budgétaire annuelle"}
+    structure: procedure
+    compartiments: [politique-americaine:congres, politique-americaine:budget]
+    regle: "Une loi de réconciliation échappe à l'obstruction : la majorité simple suffit au Sénat (débat limité à 20 heures), mais la règle Byrd en retire toute disposition étrangère au budget, et y déroger demande 60 voix. Une résolution budgétaire permet au plus une loi par type d'instruction (recettes, dépenses, plafond de la dette), en pratique une seule loi globale. Depuis 1980, 29 lois de réconciliation examinées : 24 promulguées, 4 bloquées par veto, 1 rejetée au Sénat ; soit moins d'une par an, et presque toujours quand un même parti tient la présidence et les deux chambres."
+    parametres: {majorite_senat: simple, debat_heures: 20, derogation_byrd: 60, examinees_depuis_1980: 29, promulguees: 24, veto: 4}
+    sources:
+      - {titre: "Congressional Research Service, The Reconciliation Process: Frequently Asked Questions (R48444)", url: "https://www.everycrsreport.com/reports/R48444.html", consulte: "2026-11-21"}
+    statut: source
+
+  - id: us_lois_de_finances_provisoires
+    ecosysteme: "États-Unis · Congrès, crédits annuels"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "exercice budgétaire (1er octobre)"}
+    structure: maintien
+    compartiments: [politique-americaine:congres, politique-americaine:budget, calendriers-echeances:dates_limites]
+    regle: "Le Congrès vote au moins une loi de finances provisoire (continuing resolution) presque chaque année : dans 46 exercices sur 49 depuis 1977, et dans tous depuis 1998, avec en moyenne près de 5 lois provisoires par exercice, couvrant en moyenne 118 jours. Toutes les lois de crédits n'ont été votées à temps que 4 fois depuis 1977 (la dernière pour l'exercice 1997). Depuis 1976, 20 interruptions de financement, dont 10 ont conduit à une fermeture des services ; les plus longues : 34 jours (décembre 2018 à janvier 2019), 21 jours (1995-1996), 16 jours (2013)."
+    parametres: {exercices_avec_provisoire_depuis_1977: "46/49", moyenne_provisoires_par_an_depuis_1998: 4.79, duree_moyenne_jours: 118, a_temps_depuis_1977: 4, interruptions_depuis_1976: 20, fermetures: 10}
+    sources:
+      - {titre: "Congressional Research Service, Continuing Resolutions: Overview of Components and Practices (R46595), 27 mars 2025", url: "https://www.everycrsreport.com/files/2025-03-27_R46595_a87c245d29ebbdcae251ab0d5a9708d2748f28fd.html", consulte: "2026-11-21"}
+      - {titre: "Office of the Historian, U.S. House, Funding Gaps and Shutdowns in the Federal Government", url: "https://history.house.gov/Institution/Shutdown/Government-Shutdowns/", consulte: "2026-11-21"}
+    statut: source
+
+  - id: us_chambre_sanctions_disciplinaires
+    ecosysteme: "États-Unis · Chambre des représentants, discipline"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "législature"}
+    structure: evenement_rare
+    compartiments: [politique-americaine:congres]
+    regle: "Depuis 1789, la Chambre a exclu 6 membres, en a censuré 29 et réprimandé 13. Censures depuis 2000 : 2010, 2021, trois en 2023, 2025 ; réprimandes : 2009, 2012, 2020, 2025. La censure se vote à la majorité simple, l'exclusion aux deux tiers ; elle est devenue plus fréquente depuis 2021, souvent selon la ligne partisane."
+    parametres: {exclus: 6, censures: 29, reprimandes: 13, censures_depuis_2000: [2010, 2021, 2023, 2023, 2023, 2025]}
+    sources:
+      - {titre: "Wikipedia, List of United States representatives expelled, censured, or reprimanded (d'après le Bureau de l'historien de la Chambre)", url: "https://en.wikipedia.org/wiki/List_of_United_States_representatives_expelled,_censured,_or_reprimanded", consulte: "2026-11-21"}
+    statut: source
+
+  - id: usmca_revision_conjointe
+    ecosysteme: "Amérique du Nord · accord États-Unis–Mexique–Canada (USMCA)"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "révision à six ans, terme à seize ans"}
+    structure: procedure
+    compartiments: [politique-americaine:commerce, calendriers-echeances:dates_limites]
+    regle: "L'accord prend fin seize ans après son entrée en vigueur, sauf prolongation. Au sixième anniversaire, la Commission tient une révision conjointe ; si chaque partie confirme par écrit, par son chef de gouvernement, vouloir prolonger, le terme repart pour seize ans. Si une partie ne confirme pas, la révision devient annuelle pour le reste du terme, et la prolongation reste possible à tout moment par confirmation écrite des trois parties. Ne pas confirmer ne retire donc pas l'accord : cela ouvre des révisions annuelles."
+    parametres: {terme_ans: 16, revision_annee: 6, sans_confirmation: revision_annuelle}
+    sources:
+      - {titre: "Affaires mondiales Canada, ACEUM, chapitre 34, article 34.7 (Réexamen et prolongation de la durée)", url: "https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cusma-aceum/text-texte/34.aspx?lang=eng", consulte: "2026-11-21"}
+    statut: source
+
+  # ---------------------------------------------------------------- lot 7 : calendriers et humain (piste écosystémique)
+  - id: effet_d_echeance_negociation
+    ecosysteme: "Négociations à échéance (accords, contrats, compromis)"
+    espace: monde
+    echelle: {axe: temps, tranche: "dernière part du délai"}
+    structure: contexte
+    compartiments: [calendriers-echeances:dates_limites, calendriers-echeances:anticipations]
+    regle: "Effet d'échéance : les accords se concentrent juste avant la date limite. En laboratoire, 41 % des accords tombent dans les derniers 10 % du temps quand le délai est long (10 minutes), 73 % quand il est court (90 secondes) ; sous forte pression, la moitié des accords se fait dans les cinq dernières secondes, mais les désaccords sont aussi plus nombreux. Les accords de dernière minute sont fréquents dans les négociations internationales et salariales (affirmé sans chiffre de terrain). Pour une question « accord avant telle date » : l'absence d'accord loin de l'échéance dit peu ; l'approche de l'échéance est le moment décisif, et l'issue reste souvent le désaccord."
+    parametres: {part_accords_derniers_10pct_delai_long: 0.41, part_accords_derniers_10pct_delai_court: 0.73, terrain: non_chiffre}
+    sources:
+      - {titre: "Karagözoğlu et Kocher, Bargaining under time pressure from deadlines, Experimental Economics 22(2), 2019", url: "https://www.cambridge.org/core/journals/experimental-economics/article/bargaining-under-time-pressure-from-deadlines/F388EC46629F094DDB48A96AE00F8DCC", consulte: "2026-11-21"}
+      - {titre: "Roth, Murnighan et Schoumaker, The deadline effect in bargaining: some experimental evidence, American Economic Review 78(4), 1988 (référence fondatrice ; résumé non consulté)", url: "https://ideas.repec.org/a/aea/aecrev/v78y1988i4p806-23.html", consulte: "2026-11-21"}
+    statut: source
+
+  - id: referendums_retour_statu_quo
+    ecosysteme: "Référendums · dynamique de campagne"
+    espace: monde
+    echelle: {axe: temps, tranche: "campagne référendaire"}
+    structure: contexte
+    compartiments: [humain:risque_percu, calendriers-echeances:elections]
+    regle: "Le soutien au changement baisse en général pendant la campagne : dans 28 des 37 référendums anglophones étudiés depuis 1990, avec une moyenne de 62 % dans les premiers sondages, 57 % dans les derniers et 52 % au résultat ; chez LeDuc, 17 référendums sur 23 voient l'opinion s'éloigner du oui, avec des déplacements moyens de 17 points ; les reculs du changement sont plus grands que ses progrès. Exception : quand le non devient l'option risquée (le « point de retour » est jugé dangereux), le mouvement peut s'inverser. Les campagnes très liées aux positions des partis sont moins volatiles."
+    parametres: {cas_baisse_changement: "28/37", soutien_moyen: {premiers_sondages: 62, derniers_sondages: 57, resultat: 52}, leduc_cas: "17/23", deplacement_moyen_points: 17}
+    sources:
+      - {titre: "Renwick, Referendums, dans The Sage Handbook of Electoral Behaviour, 2017 (manuscrit final, UCL)", url: "https://discovery-pp.ucl.ac.uk/id/eprint/1555628/1/Renwick%2C%20%27Referendums%27%2C%20in%20Sage%20Handbook%20of%20Electoral%20Behaviour%20%282017%29%20-%20final%20manuscript.pdf", consulte: "2026-11-21"}
+    statut: source

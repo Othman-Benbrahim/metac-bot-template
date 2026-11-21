@@ -23,8 +23,20 @@ def regles() -> list[dict]:
     return (yaml.safe_load(FICHIER.read_text(encoding="utf-8")) or {}).get("regles") or []
 
 
-def valider(rs: list[dict] | None = None) -> list[str]:
+def compartiments_des_fiches() -> dict[str, set]:
+    """theme -> identifiants de ses compartiments (fiches d'écosystème)."""
+    import glob
+    out = {}
+    for f in glob.glob("ecosystemes/*.yaml"):
+        d = yaml.safe_load(open(f, encoding="utf-8"))
+        if isinstance(d, dict) and d.get("theme") and d.get("compartiments"):
+            out[d["theme"]] = {c.get("id") for c in d["compartiments"]}
+    return out
+
+
+def valider(rs: list[dict] | None = None, fiches: dict[str, set] | None = None) -> list[str]:
     rs = regles() if rs is None else rs
+    fiches = compartiments_des_fiches() if fiches is None else fiches
     err, vus = [], set()
     for r in rs:
         i = r.get("id")
@@ -44,6 +56,10 @@ def valider(rs: list[dict] | None = None) -> list[str]:
             err.append(f"{i} : une absence ne porte pas de paramètres")
         if st == "absence" and not r.get("aide"):
             err.append(f"{i} : absence sans aide demandée")
+        for c in r.get("compartiments") or []:       # 2026-11-21 : lien règle → compartiment de fiche (piste écosystémique)
+            f_, _, k_ = str(c).partition(":")
+            if k_ not in fiches.get(f_, set()):
+                err.append(f"{i} : compartiment inconnu {c}")
     return err
 
 
