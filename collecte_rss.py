@@ -131,7 +131,9 @@ FLUX = {
     # 0.10.199 (décision d'auteur du 2026-11-16, 18 h 28, en ombre) : CERT-FR (ANSSI). Les avis et alertes portent sur
     # des produits ; ce qui compte ici, ce sont les rapports « Menaces et incidents » qui nomment un attaquant ou un pays
     # (acte public d'une agence d'État). Pays reconnus par noms ET adjectifs (« iranienne »).
-    "cyber": ["https://cert.cyber.gouv.fr/flux-rss/"],
+    # 2026-11-21 : « https://cert.cyber.gouv.fr/flux-rss/ » renvoyait une page HTML depuis le début (rss-sante.csv :
+    # jamais un succès) ; flux réel du CERT-FR :
+    "cyber": ["https://www.cert.ssi.gouv.fr/feed/"],
     # 0.10.200 (décision d'auteur du 2026-11-16, 18 h 37, en ombre) : Correctiv (rédaction d'enquête allemande).
     # « verification » (Faktencheck : pression de désinformation) est lue AVANT « enquete » (flux général) : un
     # article présent dans les deux flux garde le même identifiant et n'est compté qu'une fois, en vérification.
