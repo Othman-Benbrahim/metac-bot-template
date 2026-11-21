@@ -6,11 +6,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "Democratic Republic of the Congo",
+     "2024 Russian presidential election",
      "page refusée"
     ],
     [
-     "2024 Russian presidential election",
+     "Democratic Republic of the Congo",
      "page refusée"
     ],
     [
@@ -50,7 +50,14 @@
      "n": 3,
      "dernier": "2026-02-23"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": [
+    "colonnes en sigles, sujet nommé : vérifier la correspondance"
+   ]
   },
   "manifold:hnC5dO8EZ5": {
    "election": "Clacton by election",
@@ -60,7 +67,11 @@
    "sujet": "Nigel Farage",
    "colonne_sujet": null,
    "jeu": "2026-08-02",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "manifold:uQdQc8sICZ": {
    "election": "Thomas Massie wins Kentucky's 4th Republican primary in 2026?",
@@ -81,7 +92,12 @@
      "n": 2,
      "dernier": "2026-04-07"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "manifold:yq9hpgsgsU": {
    "election": "2026 Welsh election",
@@ -91,7 +107,11 @@
    "sujet": "",
    "colonne_sujet": null,
    "jeu": "2026-04-26",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "metaculus:22310": {
    "election": "2026 Brazilian presidential election",
@@ -127,7 +147,14 @@
      "n": 1,
      "dernier": "2026-01-26"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 9,
+    "accord": 1.0
+   },
+   "alertes": [
+    "un seul sondage pour le sujet"
+   ]
   },
   "metaculus:40005": {
    "election": "2026 Hungarian parliamentary election",
@@ -137,7 +164,11 @@
    "sujet": "",
    "colonne_sujet": null,
    "jeu": "2026-03-15",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "metaculus:40599": {
    "election": "2026 Hungarian Election",
@@ -147,7 +178,11 @@
    "sujet": "",
    "colonne_sujet": null,
    "jeu": "2026-03-01",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "metaculus:42139": {
    "election": "2026 Peruvian presidential election",
@@ -157,12 +192,20 @@
    "sujet": "Keiko Fujimori",
    "colonne_sujet": null,
    "jeu": "2026-03-29",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "metaculus:43844": {
    "election": "2026 presidential election",
    "statut": "introuvable",
    "essais": [
+    [
+     "Opinion polling for the 2026 Brazilian presidential election",
+     "page refusée"
+    ],
     [
      "Opinion polling for the next Ukrainian presidential election",
      "page refusée"
@@ -172,15 +215,11 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the 2026 Brazilian presidential election",
-     "page refusée"
-    ],
-    [
      "Nationwide opinion polling for the 2024 United States presidential election",
      "page refusée"
     ],
     [
-     "Opinion polling for United States presidential elections",
+     "Opinion polling for the 2026 Portuguese presidential election",
      "page refusée"
     ],
     [
@@ -228,7 +267,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x023a8c2fd2a78c29c9748a44205e2cbe624d86c11ee41b81d4067ddbbf2a135f": {
    "election": "2026 Brazilian presidential election",
@@ -269,7 +313,12 @@
      "n": 5,
      "dernier": "2026-07-15"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced": {
    "election": "2026 Brazilian presidential election",
@@ -310,7 +359,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x0a999ae98b3c9e593cbbd33e2f940df1b071ac0ab9ede42ed12eeb8f7eef461e": {
    "election": "2026 Colombian Chamber of Representatives election",
@@ -456,7 +510,14 @@
      "n": 1,
      "dernier": "2026-06-16"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 6,
+    "accord": 1.0
+   },
+   "alertes": [
+    "un seul sondage pour le sujet"
+   ]
   },
   "polymarket:0x0f1843cae1fa85c263c1f8118554fcff73f8af53d58d0f9fa5283490e69a7d94": {
    "election": "2026 Wisconsin Governor Democratic primary",
@@ -497,7 +558,14 @@
      "n": 1,
      "dernier": "2026-05-15"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": [
+    "un seul sondage pour le sujet"
+   ]
   },
   "polymarket:0x0f8a16fa8809127bc86712e24cea9314cf1eb000c69150ff01b9f10f166903f5": {
    "election": "2026 Brazilian presidential election",
@@ -507,7 +575,11 @@
    "sujet": "Fernando Haddad",
    "colonne_sujet": null,
    "jeu": "2026-04-26",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x112fc8452dde2a783a2dc139bae65454a317532858336b61ad6744d63b1bb569": {
    "election": "next Russian parliamentary election",
@@ -588,7 +660,12 @@
      "n": 5,
      "dernier": "2026-07-30"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x1572a7888f388ba02102e118f7829cf151f5e961d63e8ed9be8ce55d882512a4": {
    "election": "2026 Tocantins Senate election",
@@ -628,7 +705,11 @@
    "sujet": "José Cardoso",
    "colonne_sujet": null,
    "jeu": "2026-01-04",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x190ac165e768e2f4169e79874d7671edd551c4c0a6ab4d4f07f16a2cae903f3b": {
    "election": "2026 Sachsen-Anhalt parliamentary election",
@@ -674,7 +755,10 @@
      "n": 5,
      "dernier": "2026-08-27"
     }
-   }
+   },
+   "alertes": [
+    "colonnes en sigles, sujet nommé : vérifier la correspondance"
+   ]
   },
   "polymarket:0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d": {
    "election": "2026 Brazilian presidential election",
@@ -715,7 +799,12 @@
      "n": 5,
      "dernier": "2026-09-10"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 54,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x1b752eca1cb98032be2d6b30c0e7cb7d7c9c960e50e7ee12b44565ae631fe7ef": {
    "election": "2026 Alaska Governor primary",
@@ -725,7 +814,11 @@
    "sujet": "Bruce Walden",
    "colonne_sujet": null,
    "jeu": "2026-05-24",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x201305cdb4e6a8c4b4c48f1e24835fce62fbfc75efd608255e36c7d504fde6c8": {
    "election": "2026 Iowa Governor Republican primary",
@@ -761,7 +854,14 @@
      "n": 1,
      "dernier": "2026-04-15"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": [
+    "un seul sondage pour le sujet"
+   ]
   },
   "polymarket:0x21ab0908882e00031041d17716d3c6c56d93dfc5f460c551c33fec2ea33ae112": {
    "election": "2026 Michigan Governor Democratic primary",
@@ -782,7 +882,12 @@
      "n": 3,
      "dernier": "2026-05-07"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0x22776ecdacca07302e6cc578cdcf26df93b4233d5a8166cbf131cb32fec425b9": {
    "election": "2026 Tennessee Governor Democratic primary",
@@ -792,7 +897,11 @@
    "sujet": "Jerri Green",
    "colonne_sujet": null,
    "jeu": "2026-06-21",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x2cd24d17f5680dc6e7b7d67c712a223ae85550745597e81bd2d2b8d073443951": {
    "election": "2026 Peruvian presidential election",
@@ -813,26 +922,31 @@
      "n": 2,
      "dernier": "2026-04-25"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 15,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x2f112a1cd954debe3438caac411ca4395cc53be0e1580a5802ab42618b94aff7": {
    "election": "Russia Elections: United Russia Wins Every Region?",
    "statut": "introuvable",
    "essais": [
     [
-     "2026 United States elections",
-     "page refusée"
+     "2026 Russian legislative election",
+     "aucun tableau lisible (HTTP 200)"
     ],
     [
      "United Russia",
      "page refusée"
     ],
     [
-     "2026 Russian legislative election",
-     "aucun tableau lisible (HTTP 200)"
+     "Anti-Russian sentiment",
+     "page refusée"
     ],
     [
-     "Anti-Russian sentiment",
+     "2026 United States elections",
      "page refusée"
     ],
     [
@@ -840,8 +954,8 @@
      "page refusée"
     ],
     [
-     "Elections in Russia",
-     "page refusée"
+     "2026 Russian legislative election",
+     "aucun tableau lisible (HTTP 200)"
     ]
    ]
   },
@@ -853,7 +967,11 @@
    "sujet": "Casey Putsch",
    "colonne_sujet": null,
    "jeu": "2026-03-15",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x3cb06270073639b93774e844b0cb35ac24d51d2fb6ced666401c817618b5c4e2": {
    "election": "2026 Brazil presidential election",
@@ -894,7 +1012,12 @@
      "n": 5,
      "dernier": "2026-09-24"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 54,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x3dbbbe0f8e69b1aee0092e1eca397b24c954c00ecc54995035a8683201ad26aa": {
    "election": "2026 Brazilian presidential election",
@@ -935,7 +1058,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x4427ce55f5fc0cc00f2708f914c585442bce7eede689d5daec4671449dc25f8d": {
    "election": "2026 Alaska Governor primary",
@@ -981,7 +1109,12 @@
      "n": 4,
      "dernier": "2026-05-17"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0x48ec3524f7a9cff57d242904dab60158a7df7c5d4e945d40b1335121c2a83e02": {
    "election": "2026 Latvian parliamentary election",
@@ -1067,7 +1200,14 @@
      "n": 1,
      "dernier": "2026-06-16"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 6,
+    "accord": 1.0
+   },
+   "alertes": [
+    "un seul sondage pour le sujet"
+   ]
   },
   "polymarket:0x502a94e5c525766d5ee7f16c6568131ba1b2cbadb69c703af05a6ef00336ed64": {
    "election": "next Russian parliamentary election",
@@ -1148,7 +1288,12 @@
      "n": 5,
      "dernier": "2026-04-09"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x521d35b8e294b0e0560063a9ed113cef947281fc4d3fea796f1bfb517e68b795": {
    "election": "2026 Arizona Governor Republican primary",
@@ -1169,7 +1314,12 @@
      "n": 3,
      "dernier": "2026-05-15"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0x5418339990df624d3dab616d24b999b1b2adc81d5188c3291c4abcba3edd3e52": {
    "election": "next Moroccan legislative election",
@@ -1280,7 +1430,12 @@
      "n": 5,
      "dernier": "2026-07-30"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x5e460d226d35c34c2922af0b4993a8ddf881332fe06039e321eaee9ae85c21f1": {
    "election": "2026 São Paulo Senate election",
@@ -1303,7 +1458,7 @@
      "page refusée"
     ],
     [
-     "2026 Santa Catarina general election",
+     "2026 Federal District gubernatorial election",
      "page refusée"
     ],
     [
@@ -1333,7 +1488,7 @@
      "page refusée"
     ],
     [
-     "2026 Paraná gubernatorial election",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -1381,7 +1536,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x619165fe3568255c0a048d9350b5011c19f17bcec0474e867a1a983e6411ceff": {
    "election": "general election",
@@ -1400,7 +1560,7 @@
      "page refusée"
     ],
     [
-     "Leadership approval opinion polling for the next United Kingdom general election",
+     "Opinion polling in Scotland for the next United Kingdom general election",
      "page refusée"
     ],
     [
@@ -1492,7 +1652,12 @@
      "n": 5,
      "dernier": "2026-06-18"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x6b59b736ef8ec2c0f88139eb426dfcdbe7a0549e3415884f28b07a9b66602544": {
    "election": "2026 Colorado Governor Democratic primary",
@@ -1502,7 +1667,11 @@
    "sujet": "Phil Weiser",
    "colonne_sujet": null,
    "jeu": "2026-05-24",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x7351fc78d06ad1bf25ee4e4f07d6e404451ba7ea062a4ce968ccdea9145a1ec3": {
    "election": "2026 Tennessee Governor Democratic primary",
@@ -1512,7 +1681,11 @@
    "sujet": "Carnita Atwater",
    "colonne_sujet": null,
    "jeu": "2026-06-21",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x7452216a57a3bef85439820c7bb421fa38e5a5ecff8c43658de515c1df70151e": {
    "election": "2026 Brazilian presidential election",
@@ -1553,7 +1726,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x77954e0830eafc9539916c591f717fb0635f6483bc9949524cb46483cd9b9d39": {
    "election": "2026 Makerfield by-election",
@@ -1563,7 +1741,11 @@
    "sujet": "Andy Burnham",
    "colonne_sujet": null,
    "jeu": "2026-06-07",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x780eda657742337ca48284a55e7f2103d35484f16e05c49271cf1ed4e8cac89c": {
    "election": "Texas Republican Senate Primary",
@@ -1584,7 +1766,12 @@
      "n": 5,
      "dernier": "2026-05-05"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0x781a06aa5779f97724b75ed8128aaf72c4a8955c893a6fefdc0efd7cb001c513": {
    "election": "2026 Texas Republican Primary",
@@ -1594,7 +1781,11 @@
    "sujet": "John Cornyn",
    "colonne_sujet": null,
    "jeu": "2026-03-01",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x78f5630bafa15147941daa2fd2926b43febe6af1544cd9d8527b226914f3ca11": {
    "election": "2026 Peruvian presidential election",
@@ -1604,7 +1795,11 @@
    "sujet": "Alfonso López Chau",
    "colonne_sujet": null,
    "jeu": "2026-03-29",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x7b22caeed454d3c7dbd07b83d8255c74e1482c4f958b4ba4dd0c27b864cd47a2": {
    "election": "2026 Brazilian presidential election",
@@ -1640,7 +1835,12 @@
      "n": 2,
      "dernier": "2026-04-09"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x7b2fbaa6995a068aae8fb08a44f406297f50ce738b34afb3d18fda96ae23643a": {
    "election": "2026 Brazilian presidential election",
@@ -1681,7 +1881,12 @@
      "n": 5,
      "dernier": "2026-09-10"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 54,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x7b91997c6c8ca00643ab322f63af50acf1a0e9b86be130b67e5a19005215e252": {
    "election": "next Russian parliamentary election",
@@ -1762,7 +1967,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x7db131f56117dd3883cb0f6ce289af6176a0f322f943cb4f226122a46619544b": {
    "election": "2026 Alabama Governor Democratic primary",
@@ -1772,7 +1982,11 @@
    "sujet": "Doug Jones",
    "colonne_sujet": null,
    "jeu": "2026-04-26",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x819cc40b88572690508717385d9397af991f8bc929f764fa73c99e5e10c1e55b": {
    "election": "2026 Brazilian presidential election",
@@ -1813,7 +2027,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x83030b249525db4c0bcd83a915776442f4ea32d2fba10825fca4abeb51512d8f": {
    "election": "2026 Brazilian presidential election",
@@ -1854,7 +2073,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x8c48f3acf4177b5ceb012a8a2dc7a9c219eeae4a032d6ddcbc3c2ffab907439a": {
    "election": "next Russian parliamentary election",
@@ -1935,7 +2159,12 @@
      "n": 5,
      "dernier": "2026-04-09"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x8c51f57113fa7c705af2a3b2450a42cf0d0192a49b16db4235fb7d08738a9b07": {
    "election": "2026 California Governor primary",
@@ -1945,7 +2174,11 @@
    "sujet": "Thunder Parley",
    "colonne_sujet": null,
    "jeu": "2026-04-26",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x8ee27c276a1bee094293751285d8a6697674b023196cb21fdd14bf3ca12f6ec0": {
    "election": "2026 Brazilian presidential election",
@@ -1986,7 +2219,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x93657cd9bb7f8f7d7721ace577bc44194716a3f1e2c9dff20e4e454ea51a8842": {
    "election": "next Russian parliamentary election",
@@ -2067,7 +2305,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x93897d7b3c157488d634a23c538b6540a181a91e249c863df9b0b0a8fab65405": {
    "election": "2026 Brazilian presidential election",
@@ -2077,7 +2320,11 @@
    "sujet": "Pablo Marçal",
    "colonne_sujet": null,
    "jeu": "2026-08-30",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x939bf902c7ba884c1310f19b6be20576f823952460f6367c9f10c08cd449ee60": {
    "election": "2026 Ohio Governor Republican primary",
@@ -2087,7 +2334,11 @@
    "sujet": "Vivek Ramaswamy",
    "colonne_sujet": null,
    "jeu": "2026-03-29",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x94ffc785f73c9d70c0c9550b2412842d025d20d02f9e9e20a18cc4598944cbc5": {
    "election": "next Russian parliamentary election",
@@ -2168,7 +2419,12 @@
      "n": 5,
      "dernier": "2026-04-09"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0x988e8c8f6e048dc5d1780da3945e7f0b7ea4e015f670b338e1a87b8ad1e85052": {
    "election": "2026 Mato Grosso do Sul Senate election",
@@ -2208,7 +2464,11 @@
    "sujet": "Ken Paxton",
    "colonne_sujet": null,
    "jeu": "2026-03-01",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xad485c0cfb6058e791ffd719ee3a99bf8ea241975704b5960041ec0fe017dadf": {
    "election": "2026 Sachsen-Anhalt parliamentary election",
@@ -2254,7 +2514,8 @@
      "n": 5,
      "dernier": "2026-08-27"
     }
-   }
+   },
+   "alertes": []
   },
   "polymarket:0xae6d3d20bc8f742922dc40880cd8a8671c10385a9912fa7cd670fba0643dfe96": {
    "election": "2026 Peruvian presidential election",
@@ -2264,7 +2525,11 @@
    "sujet": "Rafael López Aliaga",
    "colonne_sujet": null,
    "jeu": "2026-03-29",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xaeb57cf07ae50c2846d59f46f210b6269b8192afdd875ee7902e65e1ae64c23f": {
    "election": "2026 Tennessee Governor Republican primary",
@@ -2290,7 +2555,12 @@
      "n": 3,
      "dernier": "2026-06-30"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0xafda84d1726c745016d74267018b34884919eb989a399a46bdd3a4968e4a6f4f": {
    "election": "2026 Minnesota Governor Democratic primary",
@@ -2300,18 +2570,22 @@
    "sujet": "Amy Klobuchar",
    "colonne_sujet": null,
    "jeu": "2026-06-07",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xb3891d3b59557cedde1dad5c365db1cff8dffb7aa189cf49ac87639af95a2468": {
    "election": "2026 Maranhão Senate election",
    "statut": "introuvable",
    "essais": [
     [
-     "2026 Brazilian general election",
+     "2026 Federal District gubernatorial election",
      "page refusée"
     ],
     [
-     "2026 Federal District gubernatorial election",
+     "2026 Brazilian general election",
      "page refusée"
     ],
     [
@@ -2323,7 +2597,7 @@
      "page refusée"
     ],
     [
-     "2026 Rio de Janeiro general election",
+     "2026 Paraná gubernatorial election",
      "page refusée"
     ],
     [
@@ -2376,7 +2650,8 @@
      "n": 3,
      "dernier": "2026-06-30"
     }
-   }
+   },
+   "alertes": []
   },
   "polymarket:0xbbd623c4191ca76dec466507375d6df85b403b7e14f9cbd3d09f2c450ae0cd96": {
    "election": "2026 Minnesota Governor Republican primary",
@@ -2402,7 +2677,12 @@
      "n": 5,
      "dernier": "2026-06-29"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0xbca3d70ec52a5a441ccc365a3b1b48b9cd0f08dfff4bc5871e2cd92d0d92caa1": {
    "election": "2026 Brazilian presidential election",
@@ -2443,7 +2723,12 @@
      "n": 5,
      "dernier": "2026-08-13"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0xbd0c2d5f58650e031aba69b54529cf1e85f1f73622530b53b0d261063627c64d": {
    "election": "2026 South Dakota Governor Republican primary",
@@ -2474,7 +2759,12 @@
      "n": 3,
      "dernier": "2026-04-11"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0xc0986d59c913ffbf40a94966e77829ecffe3e0e5bb287713bce5715841409031": {
    "election": "2026 Swedish parliamentary election",
@@ -2484,7 +2774,11 @@
    "sujet": "the Left Party (V)",
    "colonne_sujet": null,
    "jeu": "2026-08-30",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xc23d4f3a1a96576e93f32ab1806c6d85f5a3d1925df7c80bdb97cfd6787b4dfc": {
    "election": "2026 Portugal presidential election",
@@ -2494,7 +2788,11 @@
    "sujet": "Orlando Cruz",
    "colonne_sujet": null,
    "jeu": "2026-01-04",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xc3e3cdca0347d289129169eb6b030784dfce7dec02e08bf836e530c12a055141": {
    "election": "2026 Sergipe Senate election",
@@ -2517,7 +2815,7 @@
      "page refusée"
     ],
     [
-     "2026 Paraná gubernatorial election",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -2534,7 +2832,11 @@
    "sujet": "Keiko Fujimori",
    "colonne_sujet": null,
    "jeu": "2026-03-29",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xc9615bb82d6535d630ff98e8094060bc767d8b9446516e98f84d2001a35e50e7": {
    "election": "next Russian parliamentary election",
@@ -2615,7 +2917,12 @@
      "n": 5,
      "dernier": "2026-04-09"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0xcba20965509d04b5f3ae2c51a221747317aff9387c197ca6d5919e85e5a20ee9": {
    "election": "2026 Brazilian presidential election",
@@ -2656,7 +2963,12 @@
      "n": 5,
      "dernier": "2026-07-15"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 74,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0xd25c820d3aee1c735c0fa62c36f4905632ab8c6988653b5b4134593b3209eb7f": {
    "election": "2026 Minnesota Governor Republican primary",
@@ -2682,7 +2994,14 @@
      "n": 1,
      "dernier": "2026-05-20"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": [
+    "un seul sondage pour le sujet"
+   ]
   },
   "polymarket:0xd7391798f941b8fe16773f96397ef3f91a2fc36939bdd50a78776dbf93ddd280": {
    "election": "2026 Brazilian presidential election",
@@ -2692,7 +3011,11 @@
    "sujet": "Tarcisio de Frietas",
    "colonne_sujet": null,
    "jeu": "2026-08-16",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xd78b6917ee08627da7a527ed3b18700b5479da7b241ce1264cf1a8da806caf72": {
    "election": "next Russian parliamentary election",
@@ -2773,7 +3096,12 @@
      "n": 5,
      "dernier": "2026-07-30"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 52,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0xd8dcf41c1c938ffcf4ed95da62baff3c17a102fb56a6fe524db23145213ffef0": {
    "election": "next Russian parliamentary election",
@@ -2839,7 +3167,12 @@
      "n": 5,
      "dernier": "2026-09-10"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 21,
+    "accord": 0.905
+   },
+   "alertes": []
   },
   "polymarket:0xdf8e2dc5860027decbe6164555c3c1c9645c3bd33e16b9dc57ca87125047d4a8": {
    "election": "2026 Brazilian presidential election",
@@ -2875,7 +3208,12 @@
      "n": 4,
      "dernier": "2026-04-03"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 9,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818": {
    "election": "2026 Swedish parliamentary election",
@@ -2901,7 +3239,12 @@
      "n": 3,
      "dernier": "2026-04-15"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0xe70dc5791fd703624bdd33fbdd6c4374bf51723c4c5e2fb88ee87857dc72d762": {
    "election": "2026 Alaska Governor primary",
@@ -2911,7 +3254,11 @@
    "sujet": "Edna DeVries",
    "colonne_sujet": null,
    "jeu": "2026-07-19",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0xeb44a06c677ce7a47e5fd2007182e020a577395dc3613ad55d3d576e33964c3d": {
    "election": "2026 Michigan Democratic Primary",
@@ -2960,7 +3307,7 @@
      "page refusée"
     ],
     [
-     "Leadership approval opinion polling for the next United Kingdom general election",
+     "Opinion polling in Scotland for the next United Kingdom general election",
      "page refusée"
     ],
     [
@@ -3012,7 +3359,12 @@
      "n": 5,
      "dernier": "2026-09-24"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 54,
+    "accord": 1.0
+   },
+   "alertes": []
   },
   "polymarket:0xfa7a559ac626ee079bd1a58b78a9c32fc9c1d3129e72f7f28b7209b2368a54c1": {
    "election": "Republican Primary",
@@ -3031,11 +3383,11 @@
      "page refusée"
     ],
     [
-     "Nationwide opinion polling for the 2028 Republican Party presidential primaries",
+     "Nationwide opinion polling for the 2016 Republican Party presidential primaries",
      "page refusée"
     ],
     [
-     "Opinion polling for the next Italian general election",
+     "Opinion polling for the 2020 Republican Party presidential primaries",
      "page refusée"
     ],
     [
@@ -3093,7 +3445,12 @@
      "n": 4,
      "dernier": "2026-06-03"
     }
-   }
+   },
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   },
+   "alertes": []
   },
   "polymarket:0xfcde02af15efe40e336d67f0ef9aa49e9d40c37b92961fb890afc4afdbfe54d6": {
    "election": "next Hungarian parliamentary election",
@@ -3103,7 +3460,11 @@
    "sujet": "TISZA – Respect and Freedom Party (TISZA)",
    "colonne_sujet": null,
    "jeu": "2026-03-29",
-   "moyennes": {}
+   "moyennes": {},
+   "relecture_lead": {
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   }
  }
 }
