@@ -344,9 +344,13 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
     """Colonne du sujet : abréviation entre parenthèses, puis nom complet, puis prénom et nom, puis nom seul s'il est
     unique (deux Bolsonaro : pas de choix au hasard)."""
     abre = re.findall(r"\(([^)]+)\)", sujet_)
-    for a in abre:
+    personne = re.compile(r"^\S+(\s+\S+)+\s*\([^)]+\)\s*$")     # « Magdalena Andersson (S) » : une personne
+    for a in abre:                                            # un parti « … (S) » : la colonne « S », jamais la cheffe
+        exacts = [n for n in noms if norm(n) == norm(a)]
+        if exacts:
+            return exacts[0]
         for n in noms:
-            if re.search(rf"\b{re.escape(norm(a))}\b", norm(n)):
+            if re.search(rf"\b{re.escape(norm(a))}\b", norm(n)) and not personne.match(n):
                 return n
     s = re.sub(r"^(the|a)\s+", "", re.sub(r"\(.*?\)", "", norm(sujet_)).strip())
     if not s:

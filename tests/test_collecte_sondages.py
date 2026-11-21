@@ -157,3 +157,11 @@ def test_relecture_par_la_colonne_lead():
     assert [l["verif"] for l in ls if l["table"] == 0] == [True, True, True]
     assert cs.accord_lead([l for l in ls if l["table"] == 1]) == (3, 0.0)
     assert cs.choisir_table(ls, "2026-03-20", "Tisza", False)[0] == 0   # le tableau mal lu est refusé
+
+
+def test_parti_jamais_lu_dans_la_colonne_de_son_chef():
+    noms = ["Nooshi Dadgostar (V)", "Magdalena Andersson (S)", "Ulf Kristersson (M)"]
+    assert cs.colonne("Swedish Social Democratic Party (S)", noms) is None
+    assert cs.colonne("Swedish Social Democratic Party (S)", ["V", "S", "MP", "SD"]) == "S"
+    assert cs.colonne("United Russia (ER)", ["UR", "CPRF", "LDPR"]) == "UR"
+    assert cs.colonne("Apvienotais Saraksts (AS)", ["JV", "ZZS", "AS"]) == "AS"
