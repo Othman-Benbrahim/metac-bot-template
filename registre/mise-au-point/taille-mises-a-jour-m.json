@@ -1,0 +1,53 @@
+{
+ "questions": 119,
+ "jugement": {
+  "n_juge": 92,
+  "perte_k": 0.4899,
+  "perte_M": 0.4813,
+  "ecart": 0.0085,
+  "intervalle_90": [
+   -0.0049,
+   0.0221
+  ],
+  "adopte": false,
+  "k_par_tranche": [
+   {
+    "jusqu_au": "2026-03-01",
+    "k": 0.6,
+    "n_appris": 27,
+    "n_juge": 27
+   },
+   {
+    "jusqu_au": "2026-04-26",
+    "k": 0.75,
+    "n_appris": 54,
+    "n_juge": 28
+   },
+   {
+    "jusqu_au": "2026-06-21",
+    "k": 0.85,
+    "n_appris": 82,
+    "n_juge": 29
+   },
+   {
+    "jusqu_au": "2026-08-02",
+    "k": 0.8,
+    "n_appris": 111,
+    "n_juge": 8
+   }
+  ],
+  "puissance": {
+   "n": 92,
+   "sigma_par_question": 0.0807,
+   "ecart_detectable": 0.0209,
+   "questions_necessaires": {
+    "0.005": 1612,
+    "0.01": 403,
+    "0.02": 101,
+    "0.04": 26
+   }
+  }
+ },
+ "descriptif_k_sur_tout": 0.95,
+ "note": "écart = perte avec k − perte de M (négatif = k aide) ; adopté si l'intervalle à 90 % est entièrement sous 0"
+}
