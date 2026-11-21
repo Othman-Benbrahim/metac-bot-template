@@ -29,3 +29,17 @@ def test_fed_decisions_et_traduction():
     q = tr.p_fed("Will there be no change in Fed interest rates after the April 2026 meeting?", "2026-03-01", "2026-04-30")
     assert 0 < p < 1 and 0 < q < 1 and p + q < 1
     assert tr.p_fed("Will the Fed Cut–Pause–Pause in the next three decisions (Dec–Jan–Mar)?", "2026-03-01", "2026-03-19") is None
+
+
+def test_sondages(tmp_path, monkeypatch):
+    import json
+    f = tmp_path / "s.json"
+    f.write_text(json.dumps({"questions": {"poly:1": {"statut": "ok", "colonne_sujet": "A",
+        "moyennes": {"A": {"moyenne": 30}, "B": {"moyenne": 20}, "C": {"moyenne": 10}}}}}))
+    monkeypatch.setattr(tr, "SONDAGES", f)
+    tr._sondages.cache_clear()
+    assert tr.p_sondages("poly:1", "Will A win the 2026 X election?", 10) > 0.9
+    assert tr.p_sondages("poly:1", "Will A finish in second place in the 2026 X election?", 10) < 0.1
+    assert tr.p_sondages("poly:1", "Will A win a majority of seats?", 10) is None
+    assert tr.p_sondages("poly:2", "Will A win?", 10) is None
+    tr._sondages.cache_clear()

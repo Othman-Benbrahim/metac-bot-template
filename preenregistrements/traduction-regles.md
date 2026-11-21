@@ -29,6 +29,14 @@ taille du mouvement (25 contre 50 et plus) par la part observée parmi les mouve
 Aucune cote de marché ni prévision de foule (les contrats à terme sur les taux restent exclus, décision à prendre
 par l'auteur).
 
+## Ajout du 2026-11-21, 15 h 50 (avant tout regard sur les issues) : sondages électoraux
+Moyenne des 5 derniers sondages terminés au moins 3 jours avant le jeu (collecte_sondages.py, pages de sondages de
+Wikipédia, nombres seulement) ; erreur par candidat tirée des règles sourcées (environ 4 points à 150-200 jours, 3 à
+50 jours, 2 la dernière semaine ; primaires américaines 8,7/√2) ; écart-type 1,25 × erreur ; 4 000 tirages
+indépendants ; probabilité d'être premier, deuxième, troisième, dans les deux premiers, ou au-dessus d'un seuil.
+Les questions de sièges (majorité, fourchettes) ne sont pas traduites. Limite : un sondage ajouté à la page après le
+jeu mais terminé avant peut entrer (marge de 3 jours) ; les sièges sont approchés par le rang en voix.
+
 ## Critère (fixé)
 Perte log brute, une ligne par question ; adopté si l'intervalle à 90 % (bootstrap par question) de C − S est
 entièrement sous 0 : alors, quand la carte robot trouve une règle traduisible, le point de départ de M devient C au

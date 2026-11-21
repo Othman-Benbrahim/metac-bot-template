@@ -35,9 +35,10 @@ def lignes() -> list[dict]:
         if k not in carte or k in vus or x["jeu"] != carte[k]["jeu"]:
             continue
         vus.add(k)
-        ps = {r: p for r in carte[k]["regles"] if (p := tr.p_regle(r, x["titre"], x["horizon"], x["jeu"], x["cloture"])) is not None}
+        ps = {r: p for r in carte[k]["regles"] if (p := tr.p_regle(r, x["titre"], x["horizon"], x["jeu"], x["cloture"], k)) is not None}
         if ps:
-            p_r = tr.combiner(0.5, list(ps.values())) if len(ps) > 1 else list(ps.values())[0]
+            lr = sum(tr._logit(p) for p in ps.values()) / len(ps)          # la règle seule : moyenne des logits
+            p_r = 1 / (1 + 2.718281828459045 ** (-lr))
             out.append({"question": k, "titre": x["titre"], "issue": x["issue"], "p_S": x["p_S"], "p_R": p_r,
                         "p_C": tr.combiner(x["p_S"], list(ps.values())), "regles": ps})
     return out

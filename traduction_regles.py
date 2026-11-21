@@ -17,6 +17,7 @@ combiner(p_S, p_R) : moyenne des logits, à poids égaux (fixée d'avance) ; plu
 from __future__ import annotations
 
 import csv
+import json
 import math
 import re
 from bisect import bisect_right
@@ -50,8 +51,10 @@ def _jours_jusqua(jeu: str, mois: int, jour: int, fin: str) -> bool:
     return False
 
 
-def p_regle(regle: str, titre: str, horizon: float, jeu: str, cloture: str) -> float | None:
+def p_regle(regle: str, titre: str, horizon: float, jeu: str, cloture: str, question: str = "") -> float | None:
     t = titre.lower()
+    if regle in ("sondages_erreur_comparee", "us_erreur_selon_temps_restant", "us_erreur_sondages_par_echelle"):
+        return p_sondages(question, titre, horizon)
     h = float(horizon)
     if regle == "chefs_d_etat_sortie_irreguliere":                       # 0,17 % des pays-mois (2001-2014)
         if re.search(r"\b(election\w*|vote|referendum|resign\w*)\b", t):   # « sauf échéance électorale » (texte de la
@@ -204,6 +207,66 @@ def p_fed(titre: str, jeu: str, cloture: str) -> float | None:
                 p *= _part_taille(dec, sens, True)
             elif re.search(r"\b25 ?bps\b", t) and not re.search(r"\b25\+", t):
                 p *= _part_taille(dec, sens, False)
+    return min(0.99, max(0.01, p))
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Sondages électoraux (2026-11-21, 15 h 24) : moyennes collectées par collecte_sondages.py, erreur historique des
+# règles sourcées. Erreur absolue moyenne par candidat (élections nationales, 45 pays) : environ 4 points à 150-200
+# jours, 3 points à 50 jours, 2 la dernière semaine (us_erreur_selon_temps_restant, sondages_erreur_comparee) ; pour
+# les primaires américaines, erreur sur l'écart 8,7 points (us_erreur_sondages_par_echelle), soit 8,7/√2 par candidat.
+# Écart-type = 1,25 × erreur absolue moyenne (loi normale). Tirages indépendants par candidat, 4 000, graine fixe.
+SONDAGES = Path("registre") / "sondages-questions.json"
+
+
+@lru_cache(maxsize=1)
+def _sondages() -> dict:
+    try:
+        return json.loads(SONDAGES.read_text(encoding="utf-8")).get("questions", {})
+    except Exception:
+        return {}
+
+
+def _erreur_par_candidat(jours: float, primaire: bool) -> float:
+    if primaire:
+        return 8.7 / math.sqrt(2)
+    pts = [(0, 2.0), (7, 2.0), (50, 3.0), (175, 4.0)]
+    if jours >= 175:
+        return 4.0
+    for (a, ea), (b, eb) in zip(pts[:-1], pts[1:]):
+        if a <= jours <= b:
+            return ea + (eb - ea) * (jours - a) / (b - a)
+    return 4.0
+
+
+def p_sondages(question: str, titre: str, horizon: float) -> float | None:
+    import numpy as np
+    q = _sondages().get(question) or {}
+    moy, col = q.get("moyennes") or {}, q.get("colonne_sujet")
+    if q.get("statut") != "ok" or not col or col not in moy or len(moy) < 2:
+        return None
+    t = titre.lower()
+    noms = list(moy)
+    mu = np.array([moy[n]["moyenne"] for n in noms])
+    sd = 1.25 * _erreur_par_candidat(float(horizon), bool(re.search(r"\bprimar(y|ies)\b", t)))
+    rng = np.random.default_rng(sum(map(ord, question)))
+    tirs = rng.normal(mu, sd, size=(4000, len(noms)))
+    i = noms.index(col)
+    rang = (tirs > tirs[:, [i]]).sum(axis=1) + 1                 # 1 = en tête
+    m = re.search(r"\bat least (\d{1,2}(?:\.\d+)?)\s*%", t)
+    if m:
+        p = float((tirs[:, i] >= float(m.group(1))).mean())
+    elif re.search(r"\b(second[- ]most|second place|second)\b", t):
+        p = float((rang == 2).mean())
+    elif re.search(r"\b(third[- ]most|third place|third)\b", t):
+        p = float((rang == 3).mean())
+    elif re.search(r"\b(advance|runoff|qualify|top two|top-two)\b", t):
+        p = float((rang <= 2).mean())
+    elif re.search(r"\b(win|wins|most votes|most seats|first round|become)\b", t) and not re.search(
+            r"\b(majority|supermajority|seats? \d|\d+-\d+ seats|by \d+%|every)\b", t):
+        p = float((rang == 1).mean())
+    else:
+        return None
     return min(0.99, max(0.01, p))
 
 
