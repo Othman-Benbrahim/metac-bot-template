@@ -19,7 +19,7 @@ l'état de départ de la question EST cette situation ET l'événement EST l'obj
 code rejette toute copie inexacte ou condition non affirmée. Mise en garde de l'auteur : pas de « free style ».
 Toute règle dont le texte cite une année de 2026 ou après est exclue en entier (les questions du banc datent de 2026).
 
-    python couverture_regles.py
+    python couverture_regles.py [--ensemble jugement2026] [--budget 3]
 """
 from __future__ import annotations
 
@@ -149,34 +149,67 @@ Rends UNIQUEMENT un objet JSON :
               "est_la_situation": true, "est_l_objet": true}}]}}"""
 
 
-async def principal() -> int:
-    cat = catalogue()
+def questions(ensemble: str) -> dict[str, dict]:
+    """banc_m : les questions distinctes du banc de M ; jugement2026 : toutes les questions de jugement résolues de
+    ForecastBench posées en 2026 (cohorte complète), une par question (son premier jeu) — option (b) de l'auteur,
+    2026-11-21, 14 h 26, pour donner de la puissance au test « M avec position écosystémique »."""
     qs = {}
-    for x in bja.lignes():
-        if x.get("p_M") is not None and not x.get("exclue"):
-            qs[x["question_id"].split(":")[1]] = x          # une ligne par question distincte
-    print(f"{len(cat)} règles sourcées ; {len(qs)} questions distinctes du banc de M.")
-    out = []
-    for qid, x in sorted(qs.items()):
-        try:
-            r = ap.extraire_json(await am.llm(MODELE, temperature=0.2, timeout=180, allowed_tries=2).invoke(
-                consigne(x["titre"], cat)))
-            gardes, rejets = valider(r, cat)
-            out.append({"question": qid, "titre": x["titre"], "issue": x["issue"], "etat_de_depart": str(r.get("etat_de_depart", ""))[:300], "evenement": str(r.get("evenement", ""))[:300],
+    if ensemble == "banc_m":
+        for x in bja.lignes():
+            if x.get("p_M") is not None and not x.get("exclue"):
+                qs[x["question_id"].split(":")[1]] = x
+        return qs
+    import banc_jugement as bj
+    xs = bj.cohorte_complete([json.loads(l) for l in bj.REGISTRE.read_text(encoding="utf-8").splitlines() if l.strip()])
+    for x in sorted(xs, key=lambda x: x["jeu"]):
+        if x["jeu"] >= "2026-01-01":
+            qs.setdefault(f'{x["source"]}:{x["id"]}', x)
+    return qs
+
+
+async def principal(ensemble: str = "banc_m", budget: float = 3.0, paralleles: int = 5) -> int:
+    from forecasting_tools import MonetaryCostManager
+    cat = catalogue()
+    qs = questions(ensemble)
+    sortie = SORTIE if ensemble == "banc_m" else Path("registre") / f"couverture-regles-{ensemble}-v{VERSION}.json"
+    print(f"{len(cat)} règles sourcées ; {len(qs)} questions distinctes ({ensemble}).")
+    sem = asyncio.Semaphore(paralleles)
+    cout = {"total": 0.0}
+
+    async def une(qid: str, x: dict) -> dict:
+        async with sem:
+            if cout["total"] > budget:
+                return {"question": qid, "titre": x["titre"], "erreur": "plafond"}
+            try:
+                with MonetaryCostManager() as cm:
+                    r = ap.extraire_json(await am.llm(MODELE, temperature=0.2, timeout=180, allowed_tries=2).invoke(
+                        consigne(x["titre"], cat)))
+                    cout["total"] += float(cm.current_usage or 0)
+                gardes, rejets = valider(r, cat)
+                return {"question": qid, "titre": x["titre"], "issue": x["issue"], "jeu": x.get("jeu"),
+                        "etat_de_depart": str(r.get("etat_de_depart", ""))[:300], "evenement": str(r.get("evenement", ""))[:300],
                         "pays": r.get("pays") or [], "regions": r.get("regions") or [], "regles": gardes, "rejets": rejets,
-                        "compartiments": sorted({c for i in gardes for c in cat[i]["compartiments"]})})
-        except Exception as e:
-            out.append({"question": qid, "titre": x["titre"], "erreur": f"{type(e).__name__}"})
+                        "compartiments": sorted({c for i in gardes for c in cat[i]["compartiments"]})}
+            except Exception as e:
+                return {"question": qid, "titre": x["titre"], "erreur": f"{type(e).__name__}"}
+
+    out = await asyncio.gather(*(une(q, x) for q, x in sorted(qs.items())))
     compte = collections.Counter(i for o in out for i in o.get("regles", []))
     motifs = collections.Counter(j["motif"].split(" (")[0] for o in out for j in o.get("rejets", []))
-    res = {"version_bot": ap.VERSION_BOT, "version_selection": VERSION, "regles_au_catalogue": len(cat),
+    res = {"version_bot": ap.VERSION_BOT, "version_selection": VERSION, "ensemble": ensemble, "regles_au_catalogue": len(cat),
            "questions": len(out), "couvertes": sum(1 for o in out if o.get("regles")),
-           "erreurs": sum(1 for o in out if "erreur" in o), "rejets_par_motif": dict(motifs),
-           "par_regle": dict(compte.most_common()), "detail": out}
-    SORTIE.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"couvertes : {res['couvertes']} sur {len(out)} ; rejets : {dict(motifs)} ; par règle : {dict(compte.most_common())}")
+           "erreurs": sum(1 for o in out if "erreur" in o), "cout_usd": round(cout["total"], 3),
+           "rejets_par_motif": dict(motifs), "par_regle": dict(compte.most_common()), "detail": out}
+    sortie.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"couvertes : {res['couvertes']} sur {len(out)} ; coût {res['cout_usd']} $ ; rejets : {dict(motifs)} ; "
+          f"par règle : {dict(compte.most_common())}")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(asyncio.run(principal()))
+    import argparse
+    a = argparse.ArgumentParser()
+    a.add_argument("--ensemble", choices=["banc_m", "jugement2026"], default="banc_m")
+    a.add_argument("--budget", type=float, default=3.0)
+    o = a.parse_args()
+    sys.exit(asyncio.run(principal(o.ensemble, o.budget)))

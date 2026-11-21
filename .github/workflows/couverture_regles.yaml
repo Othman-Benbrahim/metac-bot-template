@@ -4,6 +4,15 @@ name: "Carte de couverture des règles sourcées (banc de M, v5, descriptif)"
 # Descriptif, rien dans le bot.
 on:
   workflow_dispatch:
+    inputs:
+      ensemble:
+        description: "banc_m (119 questions du banc de M) ou jugement2026 (toutes les questions de jugement de 2026)"
+        default: "banc_m"
+        type: choice
+        options: [banc_m, jugement2026]
+      budget:
+        description: "plafond en dollars"
+        default: "3"
 
 concurrency:
   group: bot-alphabet-registre
@@ -31,7 +40,7 @@ jobs:
           key: recherche-jugement-${{ github.run_id }}
           restore-keys: recherche-jugement-
       - name: "Carte de couverture des règles sourcées (banc de M, v3, descriptif)"
-        run: uv run python couverture_regles.py
+        run: uv run python couverture_regles.py --ensemble ${{ inputs.ensemble || 'banc_m' }} --budget ${{ inputs.budget || '3' }}
         env:
           AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
           AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
@@ -52,7 +61,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/couverture-regles-banc-m.json registre/couverture-regles-banc-m-v4.json registre/couverture-regles-banc-m-v5.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          for f in registre/couverture-regles-banc-m.json registre/couverture-regles-banc-m-v4.json registre/couverture-regles-banc-m-v5.json registre/couverture-regles-jugement2026-v5.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
           if ! git diff --cached --quiet; then
             git commit -m "registre : couverture des règles du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase
