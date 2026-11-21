@@ -53,3 +53,46 @@ def test_colonne_ambigue():
     assert cs.colonne("Flavio Bolsonaro", noms) == "Flávio Bolsonaro PL"
     assert cs.colonne("Bolsonaro", noms) is None
     assert cs.colonne("Keiko Fujimori", ["Fujimori", "López Aliaga"]) == "Fujimori"
+
+
+def test_pages_refusees_run_44915155718():
+    pc = cs.page_convient
+    assert not pc("2026 United States Senate election in Michigan", "2026 Michigan Governor Democratic primary")
+    assert not pc("2026 United States House of Representatives elections in Colorado", "2026 Colorado Governor Democratic primary")
+    assert not pc("2026 United States House of Representatives elections in Colorado", "2026 Colombian Chamber of Representatives election")
+    assert not pc("Opinion polling for the 2026 Portuguese presidential election", "2026 presidential election")
+    assert not pc("Opinion polling for the next United Kingdom general election", "general election")
+    assert not pc("1993 Russian legislative election", "next Russian parliamentary election", "2026-05-01")
+    assert pc("Opinion polling for the 2026 Russian legislative election", "next Russian parliamentary election", "2026-05-01")
+    assert not pc("2026 United States elections", "Russia Elections: United Russia Wins Every Region")
+    assert cs.election("Will United Russia win the most seats in the next Russian parliamentary election?") == \
+        "next Russian parliamentary election"
+
+
+def test_sigles_initiales_sujets():
+    assert cs.colonne("United Russia (ER)", ["UR", "CPRF", "LDPR", "NP"]) == "UR"
+    assert cs.colonne("New People (NL)", ["UR", "CPRF", "LDPR", "NP"]) == "NP"
+    assert cs.colonne("the Communist Party of the Russian Federation (KPRF)", ["UR", "CPRF", "LDPR"]) == "CPRF"
+    assert cs.colonne("Flavio Bolsonaro", ["Lula PT", "F. Bolsonaro PL", "M. Bolsonaro PL"]) == "F. Bolsonaro PL"
+    assert cs.colonne("Keiko Fujimori", ["Fujimori FP", "Sánchez JP"]) == "Fujimori FP"
+    assert cs.sujet("Will any political party or coalition win a majority?") == ""
+    assert cs.sujet("If Viktor Orbán leads a party, will it win?") == ""
+
+
+HTML3 = """
+<table><tr><th>Poll source</th><th>Date(s) administered</th><th>Marsha Blackburn</th><th>John Rose</th></tr>
+<tr><td>A</td><td>Mar 1–3, 2026</td><td>50</td><td>20</td></tr><tr><td>B</td><td>Apr 1–3, 2026</td><td>52</td><td>18</td></tr></table>
+<table><tr><th>Poll source</th><th>Date(s) administered</th><th>Marsha Blackburn (R)</th><th>Jerri Green (D)</th></tr>
+<tr><td>C</td><td>Mar 5–7, 2026</td><td>55</td><td>35</td></tr><tr><td>C</td><td>Mar 9, 2026</td><td>54</td><td>36</td></tr></table>
+<table><tr><th>Pollster</th><th>Polling period</th><th>Lula PT</th><th>F. Bolsonaro PL</th><th>Others</th></tr>
+<tr><td>D</td><td>4 Mar</td><td>40</td><td>37</td><td>5</td></tr><tr><td>E</td><td>2 Mar</td><td>41</td><td>36</td><td>5</td></tr></table>"""
+
+
+def test_un_seul_tableau_par_question():
+    ls = cs.sondages(HTML3, 2026)
+    assert {l["table"] for l in ls} == {0, 1, 2}           # « Polling period » est lu comme une date
+    t, col = cs.choisir_table(ls, "2026-05-01", "Jerri Green", True)
+    assert t is None and col is None                        # primaire démocrate : l'affiche générale ne compte pas
+    t, col = cs.choisir_table(ls, "2026-05-01", "John Rose", True)
+    assert col == "John Rose" and set(cs.moyennes(ls, "2026-05-01", t)) == {"Marsha Blackburn", "John Rose"}
+    assert cs.choisir_table(ls, "2026-05-01", "Flavio Bolsonaro", False)[1] == "F. Bolsonaro PL"

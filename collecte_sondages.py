@@ -39,7 +39,9 @@ GENERIQUES = {"", "?", "majority", "lead", "others", "other", "oth", "undecided"
               "abst. undec.", "don't know/no answer", "none", "invalid", "spoilt"}
 MOTS_VIDES = {"the", "election", "elections", "primary", "presidential", "general", "parliamentary", "legislative",
               "opinion", "polling", "for", "of", "and", "in", "next", "round", "first", "second", "by-election", "republican",
-              "democratic", "governor", "gubernatorial", "senate", "house", "national", "federal", "state"}
+              "democratic", "governor", "gubernatorial", "senate", "house", "national", "federal", "state", "united", "states",
+              "representatives", "chamber", "assembly", "statewide", "nationwide", "party", "parties", "runoff", "wins", "win"}
+SUFFIXE_PARTI = re.compile(r"\((d|r|dfl|i|l|g|ind|lib|grn)\)\s*$", re.I)     # « Jerri Green (D) » : affiche générale
 
 
 def norm(s: str) -> str:
@@ -155,13 +157,13 @@ def nombre(t: str) -> float | None:
 def sondages(html: str, an_defaut: int) -> list[dict]:
     """Toutes les lignes de sondage lisibles : {fin: date, valeurs: {colonne: %}}."""
     out = []
-    for g in grilles(html):
-        if len(g) < 3:
+    for i_tab, g in enumerate(grilles(html)):
+        if len(g) < 3 or any("aggregat" in norm(c) for c in g[0]):   # moyennes d'agrégateurs : pas des sondages
             continue
         entete, i_date = None, None
         for k, ligne in enumerate(g[:3]):
             for j, c in enumerate(ligne):
-                if re.search(r"\b(date|fieldwork|conducted|administered)\b", norm(c)):
+                if re.search(r"\b(dates?|fieldwork|conducted|administered|polling period|period)\b", norm(c)):
                     entete, i_date = k, j
                     break
             if entete is not None:
@@ -175,7 +177,8 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
         for j in range(max(len(r) for r in g[debut:entete + 1])):
             pile = [r[j] for r in g[debut:entete + 1] if j < len(r) and r[j]]
             utiles = [x for x in pile if norm(x) not in GENERIQUES]
-            noms.append((utiles or pile or [""])[-1])         # le nom le plus bas qui ne soit pas générique
+            nom = re.sub(r"\s*\[[^\]]*\]", "", (utiles or pile or [""])[-1]).strip()   # « ORÖ [hu] » → « ORÖ »
+            noms.append("" if re.search(r"\d|%|^[<>]", nom) else nom)   # « 42–46% », vide : pas une colonne
         for ligne in g[entete + 1:]:
             if len(ligne) <= i_date:
                 continue
@@ -183,14 +186,17 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
             if re.search(r"\b(election|result|results|actual)\b", norm(texte)):
                 continue
             fin = fin_terrain(ligne[i_date], an_defaut)
-            vals = {noms[j]: v for j, c in enumerate(ligne) if j < len(noms) and j != i_date and (v := nombre(c)) is not None
+            vals = {noms[j]: v for j, c in enumerate(ligne) if j < len(noms) and j != i_date and noms[j]
+                    and norm(noms[j]) not in GENERIQUES and (v := nombre(c)) is not None
                     and not re.search(r"\b(sample|size|margin|lead|error|others?|undecided|none)\b", norm(noms[j]))}
             if fin and len(vals) >= 2:
-                out.append({"fin": fin, "valeurs": vals})
+                out.append({"fin": fin, "valeurs": vals, "table": i_tab})
     return out
 
 
-def moyennes(lignes: list[dict], jeu: str) -> dict[str, dict]:
+def moyennes(lignes: list[dict], jeu: str, table: int | None = None) -> dict[str, dict]:
+    if table is not None:
+        lignes = [l for l in lignes if l.get("table") == table]
     limite = date.fromisoformat(jeu) - timedelta(days=MARGE_JOURS)
     par: dict[str, list[tuple[date, float]]] = {}
     for l in lignes:
@@ -204,10 +210,34 @@ def moyennes(lignes: list[dict], jeu: str) -> dict[str, dict]:
     return out
 
 
+def choisir_table(lignes: list[dict], jeu: str, sujet_: str, primaire_de_parti: bool) -> tuple[int | None, str | None]:
+    """Un seul tableau par question (pas de mélange primaire / affiche générale / scénarios) : celui qui contient la
+    colonne du sujet, avec le plus de sondages avant le jeu. Primaire d'un parti : les tableaux dont les noms portent
+    une étiquette de parti (« (D) », « (R) ») sont des affiches générales, donc écartés."""
+    limite = date.fromisoformat(jeu) - timedelta(days=MARGE_JOURS)
+    cands = []
+    for t in sorted({l.get("table") for l in lignes}, key=lambda x: (x is None, x)):
+        ls = [l for l in lignes if l.get("table") == t and l["fin"] <= limite]
+        if not ls:
+            continue
+        noms = sorted({k for l in ls for k in l["valeurs"]})
+        if primaire_de_parti and sum(bool(SUFFIXE_PARTI.search(n)) for n in noms) * 2 >= len(noms):
+            continue
+        col = colonne(sujet_, noms)
+        if col:
+            cands.append((len(ls), max(l["fin"] for l in ls), t, col))
+    if not cands:
+        return None, None
+    _, _, t, col = max(cands, key=lambda c: (c[0], c[1]))
+    return t, col
+
+
 # ------------------------------------------------------------------------------------------------- sujet et page
 def sujet(titre: str) -> str:
     """Le candidat ou le parti dont parle la question (entre « Will » et le verbe)."""
     t = re.sub(r"^\s*(will|is|does)\s+", "", titre, flags=re.I)
+    if re.match(r"(if|any|pro-|no|a|an)\b", t, re.I):         # conditionnel, ensemble de partis : pas un sujet unique
+        return ""
     m = re.match(r"(.+?)\s+(win|wins|finish|advance|gain|receive|get|qualify|become|be elected|lead)\b", t, re.I)
     return (m.group(1) if m else t).strip(" ?")
 
@@ -217,7 +247,10 @@ def election(titre: str) -> str:
     m = re.search(r"\b(20\d\d\s+[^?]*?(?:election|primary|by-election|referendum))(\s+in\s+(?:the\s+)?[A-Z][\w' ]+)?", titre, re.I)
     if m:
         return (m.group(1) + (m.group(2) or "")).strip()
-    m = re.search(r"\b(?:the|next)\s+([^?]*?(?:election|primary|by-election))", titre, re.I)
+    m = re.search(r"\b(next\s+[^?]*?(?:election|primary|by-election))", titre, re.I)   # « next Russian … election »
+    if m:
+        return m.group(1).strip()
+    m = re.search(r".*\bthe\s+([^?]*?(?:election|primary|by-election))", titre, re.I)   # le DERNIER « the »
     return m.group(1).strip() if m else titre
 
 
@@ -225,14 +258,36 @@ def distinctifs(texte: str) -> set[str]:
     return {w for w in re.findall(r"[a-z][a-z'-]{3,}", norm(texte)) if w not in MOTS_VIDES}
 
 
-def page_convient(titre_page: str, el: str) -> bool:
-    """La page doit porter l'année de l'élection et au moins un mot distinctif (pays, État, région, nom)."""
-    ans = re.findall(r"\b20\d\d\b", el)
+def course(texte: str) -> str | None:
+    t = norm(texte)
+    if re.search(r"governor|gubernatorial", t):
+        return "gouverneur"
+    if re.search(r"\bsenate\b", t):
+        return "senat"
+    if re.search(r"\bhouse\b|congress|district|\b\d+(st|nd|rd|th)\b|chamber", t):
+        return "chambre"
+    if re.search(r"president", t):
+        return "presidentielle"
+    return None
+
+
+def page_convient(titre_page: str, el: str, jeu: str = "2026-01-01") -> bool:
+    """La page doit porter l'année de l'élection (sans année : « next », ou une année au moins égale à celle du jeu),
+    le même type de course (gouverneur, Sénat, Chambre, présidentielle) et au moins un mot distinctif commun (pays,
+    État, région, nom). Sans mot distinctif dans le nom de l'élection : refus (mieux vaut pas de sondage qu'un faux)."""
+    ans, ans_p = re.findall(r"\b20\d\d\b", el), re.findall(r"\b(19\d\d|20\d\d)\b", titre_page)
     if ans and ans[0] not in titre_page:
+        return False
+    if not ans and not ("next" in norm(titre_page) or (ans_p and min(map(int, ans_p)) >= int(jeu[:4]))):
+        return False
+    c_el, c_p = course(el), course(titre_page)
+    if c_el and c_el != "presidentielle" and c_p != c_el:
+        return False
+    if c_el in (None, "presidentielle") and c_p in ("gouverneur", "senat", "chambre"):
         return False
     d_el, d_p = distinctifs(el), distinctifs(titre_page)
     racines = lambda xs: {w[:5] for w in xs}                  # brazil / brazilian, peru / peruvian
-    return bool(racines(d_el) & racines(d_p)) if d_el else True
+    return bool(racines(d_el) & racines(d_p))
 
 
 def colonne(sujet_: str, noms: list[str]) -> str | None:
@@ -244,6 +299,13 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
             if re.search(rf"\b{re.escape(norm(a))}\b", norm(n)):
                 return n
     s = re.sub(r"^(the|a)\s+", "", re.sub(r"\(.*?\)", "", norm(sujet_)).strip())
+    if not s:
+        return None
+    sigle = "".join(w[0] for w in re.findall(r"[a-z]+", s) if w not in ("of", "the", "and", "for", "de", "la", "du"))
+    if len(sigle) >= 2:                                       # « United Russia » → UR, « New People » → NP
+        ok = [n for n in noms if sigle in norm(n).split()]
+        if len(ok) == 1:
+            return ok[0]
     entiers = [n for n in noms if s and s in norm(n)]
     if len(entiers) == 1 or (entiers and len(s.split()) >= 2):
         return entiers[0]
@@ -252,6 +314,10 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
         for n in noms:
             if all(re.search(rf"\b{re.escape(w)}\b", norm(n)) for w in (mots[0], mots[-1])):
                 return n
+    if len(mots) >= 2:                                        # « Flavio Bolsonaro » → « F. Bolsonaro PL »
+        ok = [n for n in noms if re.search(rf"\b{re.escape(mots[0][0])}\.\s*{re.escape(mots[-1])}\b", norm(n))]
+        if len(ok) == 1:
+            return ok[0]
     if mots:
         ok = [n for n in noms if re.search(rf"\b{re.escape(mots[-1])}\b", norm(n))]
         if len(ok) == 1:
@@ -278,7 +344,7 @@ def collecter() -> dict:
                     if r.status_code != 200:
                         continue
                     for p in r.json().get("pages", []):
-                        if not page_convient(p.get("title", ""), el):
+                        if not page_convient(p.get("title", ""), el, o["jeu"]):
                             continue
                         h = c.get(f"{API}/page/{p['key']}/html")
                         if h.status_code == 200 and (ls := sondages(h.text, int(o["jeu"][:4]))):
@@ -290,11 +356,14 @@ def collecter() -> dict:
             if info.get("statut") != "ok":
                 out[o["question"]] = {"election": el, "statut": info["statut"]}
                 continue
-            moy = moyennes(info["lignes"], o["jeu"])
-            out[o["question"]] = {"election": el, "statut": "ok" if moy else "aucun_sondage_avant_le_jeu",
-                                  "page": info["page"], "sujet": sujet(o["titre"]),
-                                  "colonne_sujet": colonne(sujet(o["titre"]), list(moy)), "jeu": o["jeu"],
-                                  "moyennes": moy}
+            su = sujet(o["titre"])
+            primaire = bool(re.search(r"\b(democratic|republican|dfl|labour|conservative)\b.*\bprimary\b", norm(o["titre"])))
+            t, col = choisir_table(info["lignes"], o["jeu"], su, primaire)
+            moy = moyennes(info["lignes"], o["jeu"], t) if t is not None else {}
+            statut = "ok" if col else ("sujet_absent_des_tableaux" if moyennes(info["lignes"], o["jeu"])
+                                       else "aucun_sondage_avant_le_jeu")
+            out[o["question"]] = {"election": el, "statut": statut, "page": info["page"], "sujet": su,
+                                  "colonne_sujet": col, "jeu": o["jeu"], "moyennes": moy}
     return {"source": "Wikipédia (en), CC BY-SA 4.0, via api.wikimedia.org ; seuls des nombres sont gardés",
             "questions": out}
 
