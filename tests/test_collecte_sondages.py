@@ -139,3 +139,21 @@ def test_secours_run_44917505006():
     assert cs.election(t) == t
     assert cs.election_de_secours(t, "2026-08-16") == "2026 Brazilian presidential election"
     assert cs.page_convient("Opinion polling for the 2026 Senedd election", "2026 Welsh election")
+
+
+HTML5 = """
+<table><tr><th>Pollster</th><th>Fieldwork date</th><th>Fidesz</th><th>Tisza</th><th>Lead</th></tr>
+<tr><td>A</td><td>1 Mar 2026</td><td>40</td><td>45</td><td>5</td></tr>
+<tr><td>B</td><td>3 Mar 2026</td><td>39</td><td>47</td><td>8</td></tr>
+<tr><td>C</td><td>5 Mar 2026</td><td>41</td><td>46</td><td>+5</td></tr></table>
+<table><tr><th>Pollster</th><th>Fieldwork date</th><th>Fidesz</th><th>Tisza</th><th>Lead</th></tr>
+<tr><td>A</td><td>1 Mar 2026</td><td>40</td><td>45</td><td>12</td></tr>
+<tr><td>B</td><td>3 Mar 2026</td><td>39</td><td>47</td><td>2</td></tr>
+<tr><td>C</td><td>5 Mar 2026</td><td>41</td><td>46</td><td>9</td></tr></table>"""
+
+
+def test_relecture_par_la_colonne_lead():
+    ls = cs.sondages(HTML5, 2026)
+    assert [l["verif"] for l in ls if l["table"] == 0] == [True, True, True]
+    assert cs.accord_lead([l for l in ls if l["table"] == 1]) == (3, 0.0)
+    assert cs.choisir_table(ls, "2026-03-20", "Tisza", False)[0] == 0   # le tableau mal lu est refusé

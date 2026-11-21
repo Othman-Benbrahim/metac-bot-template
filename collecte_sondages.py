@@ -180,6 +180,7 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
             utiles = [x for x in pile if norm(x) not in GENERIQUES]
             nom = re.sub(r"\s*\[[^\]]*\]", "", (utiles or pile or [""])[-1]).strip()   # « ORÖ [hu] » → « ORÖ »
             noms.append("" if re.search(r"\d|%|^[<>]", nom) else nom)   # « 42–46% », vide : pas une colonne
+        i_lead = next((j for j, n in enumerate(noms) if norm(n) == "lead"), None)
         for ligne in g[entete + 1:]:
             if len(ligne) <= i_date:
                 continue
@@ -192,13 +193,30 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
                     and not re.search(r"\b(sample|size|margin|lead|error|others?|undecided|undec|blank|null|none|round)\b",
                                       norm(noms[j]))}
             if fin and len(vals) >= 2 and sum(vals.values()) <= 110:   # une ligne qui dépasse 100 % : pas un sondage
-                lus.append({"fin": fin, "valeurs": vals, "table": i_tab})
+                lus.append({"fin": fin, "valeurs": vals, "table": i_tab, "verif": verif_lead(vals, ligne, i_lead)})
         colonnes = {k for l in lus for k in l["valeurs"]}
         par_ligne = sorted(len(l["valeurs"]) for l in lus)
         if lus and len(colonnes) >= 4 and par_ligne[len(par_ligne) // 2] <= 2:
             continue                                           # matrice de duels de second tour : chaque ligne un duel
         out.extend(lus)
     return out
+
+
+def verif_lead(vals: dict, ligne: list[str], i_lead: int | None) -> bool | None:
+    """Relecture automatique : la colonne « Lead » du tableau, écrite par les rédacteurs, doit valoir l'écart entre les
+    deux premiers chiffres LUS. Si les chiffres sont décalés ou pris dans la mauvaise colonne, l'écart ne tombe plus."""
+    if i_lead is None or i_lead >= len(ligne):
+        return None
+    m = re.match(r"^\s*[+]?\s*(\d{1,2}(?:[.,]\d+)?)\s*%?\s*$", ligne[i_lead] or "")
+    if not m:
+        return None
+    a = sorted(vals.values(), reverse=True)
+    return abs((a[0] - a[1]) - float(m.group(1).replace(",", "."))) <= 0.6
+
+
+def accord_lead(lignes: list[dict]) -> tuple[int, float | None]:
+    v = [l.get("verif") for l in lignes if l.get("verif") is not None]
+    return len(v), (round(sum(v) / len(v), 3) if v else None)
 
 
 def moyennes(lignes: list[dict], jeu: str, table: int | None = None) -> dict[str, dict]:
@@ -232,6 +250,9 @@ def choisir_table(lignes: list[dict], jeu: str, sujet_: str, primaire_de_parti: 
             continue
         noms = sorted({k for l in ls for k in l["valeurs"]})
         if primaire_de_parti and sum(bool(SUFFIXE_PARTI.search(n)) for n in noms) * 2 >= len(noms):
+            continue
+        nv, acc = accord_lead(ls)
+        if nv >= 3 and acc < 0.8:                              # la relecture par la colonne « Lead » échoue : refus
             continue
         col = colonne(sujet_, noms)
         if col and sum(m["moyenne"] for m in moyennes(lignes, jeu, t).values()) <= 110:   # scénarios mêlés : refus
@@ -454,8 +475,10 @@ class Collecteur:
             moy = moyennes(info["lignes"], jeu, t) if t is not None else {}
             statut = "ok" if col else ("sujet_absent_des_tableaux" if moyennes(info["lignes"], jeu)
                                        else "aucun_sondage_dans_les_90_jours_avant_le_jeu")
+            nv, acc = accord_lead([l for l in info["lignes"] if l.get("table") == t]) if t is not None else (0, None)
             wiki = {"election": el, "statut": statut, "source": "wikipedia", "page": info["page"], "sujet": su,
-                    "colonne_sujet": col, "jeu": jeu, "moyennes": moy}
+                    "colonne_sujet": col, "jeu": jeu, "moyennes": moy,
+                    "relecture_lead": {"lignes_verifiees": nv, "accord": acc}}
         if parl and (base := self.base_dawum()):
             ls = lignes_dawum(base, parl)
             t, col = choisir_table(ls, jeu, sujet_parti(su), False)
