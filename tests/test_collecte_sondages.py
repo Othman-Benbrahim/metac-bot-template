@@ -96,3 +96,17 @@ def test_un_seul_tableau_par_question():
     t, col = cs.choisir_table(ls, "2026-05-01", "John Rose", True)
     assert col == "John Rose" and set(cs.moyennes(ls, "2026-05-01", t)) == {"Marsha Blackburn", "John Rose"}
     assert cs.choisir_table(ls, "2026-05-01", "Flavio Bolsonaro", False)[1] == "F. Bolsonaro PL"
+
+
+HTML4 = """
+<table><tr><th>Pollster</th><th>Polling period</th><th>Lula PT</th><th>F. Bolsonaro PL</th><th>Caiado PSD</th><th>Zema Novo</th><th>Blank Null Undec.</th></tr>
+<tr><td>A</td><td>4 Mar</td><td>45</td><td>40</td><td></td><td></td><td>15</td></tr>
+<tr><td>A</td><td>4 Mar</td><td>46</td><td></td><td>38</td><td></td><td>16</td></tr>
+<tr><td>A</td><td>4 Mar</td><td>47</td><td></td><td></td><td>37</td><td>16</td></tr></table>"""
+
+
+def test_duels_et_mots_uniques_run_44916010855():
+    assert cs.sondages(HTML4, 2026) == []                  # matrice de duels : écartée
+    assert cs.colonne("Luiz Inácio Lula da Silva", ["Lula PT", "F. Bolsonaro PL"]) == "Lula PT"
+    assert not cs.page_convient("2026 Texas Attorney General election", "2026 Texas Republican Primary")
+    assert not cs.page_convient("Opinion polling for the 2030 Hungarian parliamentary election", "next Hungarian parliamentary election", "2026-02-01")

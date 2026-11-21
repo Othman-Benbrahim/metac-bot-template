@@ -170,6 +170,7 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
                 break
         if entete is None:
             continue
+        lus = []
         debut = entete
         while entete + 1 < len(g) and not any(nombre(c) is not None for c in g[entete + 1]):
             entete += 1                                        # entêtes sur plusieurs lignes
@@ -188,9 +189,15 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
             fin = fin_terrain(ligne[i_date], an_defaut)
             vals = {noms[j]: v for j, c in enumerate(ligne) if j < len(noms) and j != i_date and noms[j]
                     and norm(noms[j]) not in GENERIQUES and (v := nombre(c)) is not None
-                    and not re.search(r"\b(sample|size|margin|lead|error|others?|undecided|none)\b", norm(noms[j]))}
-            if fin and len(vals) >= 2:
-                out.append({"fin": fin, "valeurs": vals, "table": i_tab})
+                    and not re.search(r"\b(sample|size|margin|lead|error|others?|undecided|undec|blank|null|none|round)\b",
+                                      norm(noms[j]))}
+            if fin and len(vals) >= 2 and sum(vals.values()) <= 110:   # une ligne qui dépasse 100 % : pas un sondage
+                lus.append({"fin": fin, "valeurs": vals, "table": i_tab})
+        colonnes = {k for l in lus for k in l["valeurs"]}
+        par_ligne = sorted(len(l["valeurs"]) for l in lus)
+        if lus and len(colonnes) >= 4 and par_ligne[len(par_ligne) // 2] <= 2:
+            continue                                           # matrice de duels de second tour : chaque ligne un duel
+        out.extend(lus)
     return out
 
 
@@ -268,6 +275,8 @@ def course(texte: str) -> str | None:
         return "chambre"
     if re.search(r"president", t):
         return "presidentielle"
+    if re.search(r"attorney general|lieutenant|secretary of state|mayor|comptroller|treasurer", t):
+        return "autre_poste"
     return None
 
 
@@ -278,12 +287,13 @@ def page_convient(titre_page: str, el: str, jeu: str = "2026-01-01") -> bool:
     ans, ans_p = re.findall(r"\b20\d\d\b", el), re.findall(r"\b(19\d\d|20\d\d)\b", titre_page)
     if ans and ans[0] not in titre_page:
         return False
-    if not ans and not ("next" in norm(titre_page) or (ans_p and min(map(int, ans_p)) >= int(jeu[:4]))):
-        return False
+    if not ans and not ("next" in norm(titre_page)
+                        or (ans_p and all(int(jeu[:4]) <= int(a) <= int(jeu[:4]) + 1 for a in ans_p))):
+        return False                                           # « prochaine » élection : l'année du jeu ou la suivante
     c_el, c_p = course(el), course(titre_page)
     if c_el and c_el != "presidentielle" and c_p != c_el:
         return False
-    if c_el in (None, "presidentielle") and c_p in ("gouverneur", "senat", "chambre"):
+    if c_el in (None, "presidentielle") and c_p in ("gouverneur", "senat", "chambre", "autre_poste"):
         return False
     d_el, d_p = distinctifs(el), distinctifs(titre_page)
     racines = lambda xs: {w[:5] for w in xs}                  # brazil / brazilian, peru / peruvian
@@ -318,8 +328,8 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
         ok = [n for n in noms if re.search(rf"\b{re.escape(mots[0][0])}\.\s*{re.escape(mots[-1])}\b", norm(n))]
         if len(ok) == 1:
             return ok[0]
-    if mots:
-        ok = [n for n in noms if re.search(rf"\b{re.escape(mots[-1])}\b", norm(n))]
+    for w in ([mots[-1]] if mots else []) + sorted((w for w in mots[:-1] if len(w) >= 4), key=len, reverse=True):
+        ok = [n for n in noms if re.search(rf"\b{re.escape(w)}\b", norm(n))]   # « Luiz Inácio Lula da Silva » → « Lula PT »
         if len(ok) == 1:
             return ok[0]
     return None
