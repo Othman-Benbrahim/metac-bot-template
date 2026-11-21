@@ -20,7 +20,7 @@ AXES = {"taille", "vitesse", "espace", "temps"}
 REGIONS = {"monde", "afrique", "amerique_du_nord", "amerique_latine", "asie", "europe", "moyen_orient", "oceanie"}
 PAYS = {"États-Unis": "amerique_du_nord", "Canada": "amerique_du_nord", "Mexique": "amerique_du_nord",
         "France": "europe", "Brésil": "amerique_latine", "Indonésie": "asie", "Japon": "asie", "Australie": "oceanie",
-        "Inde": "asie", "Corée du Nord": "asie"}
+        "Inde": "asie", "Corée du Nord": "asie", "Royaume-Uni": "europe"}
 STATUTS = {"source", "auteur", "absence"}
 
 
