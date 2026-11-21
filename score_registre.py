@@ -1421,6 +1421,14 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
     arret_m = bras_m.regle_arret([(x["bras_M"]["p"], x["bras"]["A"]["p"], issues[x["question_id"]]) for x in resolues
                                   if x.get("bras_poste") == "M" and (x.get("bras_M") or {}).get("p") is not None
                                   and x["bras"]["A"].get("p") is not None])
+    # 0.10.265 : ombre du point de départ C (preenregistrements/traduction-regles.md) : C contre S sur les questions
+    # résolues où la carte robot a trouvé une règle traduite. Descriptif tant qu'il y a moins de quelques dizaines de cas.
+    oc = [((x["bras_M"]["ombre_C"]["p_C"]), x["bras_M"]["p_depart"], issues[x["question_id"]]) for x in resolues
+          if ((x.get("bras_M") or {}).get("ombre_C") or {}).get("p_C") is not None
+          and x["bras_M"].get("p_depart") is not None]
+    ombre_depart_c = ({"n": len(oc), "C": round(sum(log_score(c, y) for c, _, y in oc) / len(oc), 4),
+                       "S": round(sum(log_score(s_, y) for _, s_, y in oc) / len(oc), 4),
+                       "lecture": "perte log, plus bas = mieux ; en ombre, rien n'est posté"} if oc else {"n": 0})
     comp = None
     if apparies:
         comp = {"n": len(apparies), "biais_C": biais_C(apparies),
@@ -1573,7 +1581,7 @@ def scorer(registre: Path, issues: dict[str, int], inclure_essais: bool = False,
                              "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; "
                                         "contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"},
             "bras_poste": {b: sum(x["bras_poste"] == b for x in questions) for b in ("A", "B", "C", "AB", "M")},
-            "regle_arret_M": arret_m}
+            "regle_arret_M": arret_m, "ombre_depart_C": ombre_depart_c}
 
 
 if __name__ == "__main__":

@@ -1,0 +1,41 @@
+name: "Essai à blanc : ombre C sur les questions ouvertes (aucun modèle, rien de posté)"
+
+# 2026-11-21 : à relire AVANT de brancher l'ombre C dans le bot (demande de l'auteur, 16 h 20).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  essai_ombre_c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Lancer
+        env:
+          METACULUS_TOKEN: ${{ secrets.METACULUS_TOKEN }}
+        run: uv run python mise_au_point/ombre_c_ouvertes.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/mise-au-point/ombre-c-ouvertes.json registre/mise-au-point/ombre-c-ouvertes.md; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : essai à blanc ombre C du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi

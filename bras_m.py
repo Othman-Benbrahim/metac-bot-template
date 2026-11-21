@@ -30,6 +30,8 @@ import banc_jugement_alphabet as bja
 POSTER_M = True
 METHODES_GARDEES = ("compte_", "fixee")      # B calculé : M ne le remplace pas
 SEUIL_ARRET, N_ARRET = 0.03, 100
+OMBRE_C = False   # 0.10.265 : ombre du point de départ C, ÉTEINTE tant que l'essai à blanc sur les questions ouvertes
+                  # (mise_au_point/ombre_c_ouvertes.py) n'a pas été relu et validé par l'auteur
 
 
 @lru_cache(maxsize=1)
@@ -54,6 +56,41 @@ def semblables(titre: str, cloture: date, aujourdhui: date) -> float | None:
     return float(xs[-1]["p_S"])
 
 
+@lru_cache(maxsize=1)
+def _catalogue() -> dict:
+    import couverture_regles as cr
+    return cr.catalogue()
+
+
+def ombre_c(titre: str, cloture: date, aujourdhui: date, p_depart: float) -> dict | None:
+    """0.10.265 (décision d'auteur du 2026-11-21, 16 h 17, après l'essai adopté preenregistrements/traduction-regles.md) :
+    EN OMBRE, le point de départ C = combinaison du taux des semblables et des règles traduites par le code (carte robot,
+    traduction_regles ; sondages collectés à la volée par les mêmes règles que le banc). Rien de posté ; tout est gardé
+    dans la ligne du registre (bras_M.ombre_C) pour l'audit et le score."""
+    import carte_robot
+    import collecte_sondages as cs
+    import traduction_regles as tr
+    regles = carte_robot.rattacher(titre, _catalogue())
+    if not regles:
+        return None
+    jeu, h = aujourdhui.isoformat(), max(0, (cloture - aujourdhui).days)
+    sond = cs.pour_question(titre, jeu) if set(regles) & cs.REGLES_SONDAGES else None
+    ps = {}
+    for r in regles:
+        try:
+            p = tr.p_regle(r, titre, h, jeu, cloture.isoformat(), "", sond)
+        except Exception:
+            p = None
+        if p is not None:
+            ps[r] = round(p, 4)
+    out = {"regles_rattachees": regles, "regles_traduites": ps,
+           "p_C": round(tr.combiner(p_depart, list(ps.values())), 4) if ps else None}
+    if sond is not None:
+        out["sondages"] = {k: sond.get(k) for k in ("statut", "source", "page", "sujet", "colonne_sujet", "moyennes",
+                                                     "alertes", "controle_wikipedia", "essais") if sond.get(k) is not None}
+    return out
+
+
 async def prevoir_m(llm: ap.Llm, titre: str, criteres: str, contexte: str, cloture: date, recherche: str,
                     aujourdhui: date) -> dict:
     """Rend {"statut", "p_depart", "notes", "p", "raison"} ; statut « erreur » avec motif si une étape échoue."""
@@ -63,6 +100,18 @@ async def prevoir_m(llm: ap.Llm, titre: str, criteres: str, contexte: str, clotu
         return {"statut": "erreur", "motif": f"semblables : {type(e).__name__}: {e}"[:300]}
     if p_b is None:
         return {"statut": "erreur", "motif": "registre des questions semblables absent"}
+    try:
+        oc = ombre_c(titre, cloture, aujourdhui, p_b) if OMBRE_C else None
+    except Exception as e:                                     # l'ombre qui échoue ne bloque rien
+        oc = {"erreur": f"{type(e).__name__}: {e}"[:300]}
+    r_m = await _prevoir_m(llm, titre, criteres, contexte, cloture, recherche, aujourdhui, p_b)
+    if oc is not None:
+        r_m["ombre_C"] = oc
+    return r_m
+
+
+async def _prevoir_m(llm: ap.Llm, titre: str, criteres: str, contexte: str, cloture: date, recherche: str,
+                     aujourdhui: date, p_b: float) -> dict:
     if recherche_vide(recherche) and abstention_active():
         # pas de recherche : le modèle ne juge pas à l'aveugle ; on poste le taux des questions semblables
         return {"statut": "estime", "abstention": True, "p_depart": round(p_b, 4), "notes": {},

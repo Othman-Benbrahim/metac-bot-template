@@ -51,10 +51,12 @@ def _jours_jusqua(jeu: str, mois: int, jour: int, fin: str) -> bool:
     return False
 
 
-def p_regle(regle: str, titre: str, horizon: float, jeu: str, cloture: str, question: str = "") -> float | None:
+def p_regle(regle: str, titre: str, horizon: float, jeu: str, cloture: str, question: str = "",
+            sondage: dict | None = None) -> float | None:
+    """`sondage` : l'entrée de collecte de la question (bot, questions ouvertes) ; sinon lue dans le registre du banc."""
     t = titre.lower()
     if regle in ("sondages_erreur_comparee", "us_erreur_selon_temps_restant", "us_erreur_sondages_par_echelle"):
-        return p_sondages(question, titre, horizon)
+        return p_sondages(question, titre, horizon, sondage)
     h = float(horizon)
     if regle == "chefs_d_etat_sortie_irreguliere":                       # 0,17 % des pays-mois (2001-2014)
         if re.search(r"\b(election\w*|vote|referendum|resign\w*)\b", t):   # « sauf échéance électorale » (texte de la
@@ -239,9 +241,9 @@ def _erreur_par_candidat(jours: float, primaire: bool) -> float:
     return 4.0
 
 
-def p_sondages(question: str, titre: str, horizon: float) -> float | None:
+def p_sondages(question: str, titre: str, horizon: float, entree: dict | None = None) -> float | None:
     import numpy as np
-    q = _sondages().get(question) or {}
+    q = entree if entree is not None else (_sondages().get(question) or {})
     moy, col = q.get("moyennes") or {}, q.get("colonne_sujet")
     if q.get("statut") != "ok" or not col or col not in moy or len(moy) < 2:
         return None
