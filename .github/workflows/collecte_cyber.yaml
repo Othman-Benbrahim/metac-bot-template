@@ -1,0 +1,42 @@
+name: "Collecte des failles logicielles (catalogue KEV de la CISA, NVD)"
+
+# 2026-11-21 : écosystème « information et cyber » (décision de l auteur, 19 h 33) ; aucun modèle ; rien
+# n'entre dans le bot. sources publiques sans clé.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "53 5 * * *"   # chaque jour
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte_cyber:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecter
+        run: uv run python -u collecte_cyber.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/cyber-kev.csv registre/cyber-nvd-mois.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : cyber du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi

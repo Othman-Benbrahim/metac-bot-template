@@ -168,6 +168,12 @@ compartiments:
   - source: avis publics des agences de cybersécurité (CERT-FR et autres)
     statut: collecte
     fichier: collecte_rss.py
+  - source: failles réellement exploitées, date d'ajout et usage par des rançongiciels (catalogue KEV de la CISA)
+    statut: collecte
+    fichier: collecte_cyber.py
+  - source: failles publiées par mois, dont critiques (NVD du NIST, API 2.0)
+    statut: collecte
+    fichier: collecte_cyber.py
 - id: plateformes
   nom: Plateformes et réseaux sociaux
   organisation: economie
