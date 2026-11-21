@@ -1,0 +1,107 @@
+# Lecture des pages de sondages, lot 1 (54 pays, 148 requêtes)
+
+Statuts : page anglaise introuvable 35, à corriger 11, lu 5, aucun tableau de sondages lisible 1, aucun tableau principal (duels, scénarios ou tableaux de chefs seulement) 2
+
+- **Afrique du Sud** : page anglaise introuvable
+- **Albanie** : page anglaise introuvable
+- **Algérie** : page anglaise introuvable
+- **Allemagne** : à corriger — wikitexte : pas de tableau correspondant, langue locale : aucun tableau lisible
+  - page : Opinion polling for the next German federal election ; dernier sondage 2026-11-16 ; colonnes ['CDU', 'AfD', 'SPD', 'Grüne', 'Linke', 'CSU', 'BSW', 'FDP'] ; total 94.7 ; Lead {'lignes': 84, 'accord': 1.0}
+  - wikitexte : {'tableau_correspondant': False, 'lignes_lues': 0}
+  - langue locale : {'langue': 'de', 'page': 'Wahl zum 22. Deutschen Bundestag/Umfragen und Prognosen', 'lignes_lues': 0}
+- **Argentine** : page anglaise introuvable
+- **Arménie** : page anglaise introuvable
+- **Autriche** : page anglaise introuvable
+- **Azerbaïdjan** : page anglaise introuvable
+- **Bangladesh** : page anglaise introuvable
+- **Belgique** : à corriger — wikitexte : pas de tableau correspondant
+  - page : Opinion polling for the 2029 Belgian elections ; dernier sondage 2026-09-15 ; colonnes ['N-VA', 'VB', 'Vooruit', 'CD&V', 'Anders', 'PVDA', 'Groen'] ; total 98.9 ; Lead {'lignes': 11, 'accord': 1.0}
+  - wikitexte : {'tableau_correspondant': False, 'lignes_lues': 0}
+  - langue locale : {'langue': 'nl', 'statut': 'pas de page liée'}
+- **Biélorussie** : page anglaise introuvable
+- **Bolivie** : page anglaise introuvable
+- **Bosnie-Herzégovine** : page anglaise introuvable
+- **Botswana** : page anglaise introuvable
+- **Brésil** : à corriger — wikitexte divergent
+  - page : Opinion polling for the 2026 Brazilian presidential election ; dernier sondage 2026-08-13 ; colonnes ['Lula PT', 'F. Bolsonaro PL', 'Caiado PSD', 'Zema Novo', 'Santos Mission', 'Cury Avante'] ; total 90.0 ; Lead {'lignes': 74, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 6, 'concordantes': 0, 'divergentes': {'Lula PT': [41.28, 42.44], 'F. Bolsonaro PL': [33.94, 42.26], 'Caiado PSD': [4.94, 2.94], 'Zema Novo': [3.14, 0.36], 'Santos Mission': [4.96, 4.04], 'Cury Avante': [1.76, 2.82]}}
+  - langue locale : {'langue': 'pt', 'page': 'Pesquisas de opinião para a eleição presidencial no Brasil em 2026', 'lignes_lues': 1522, 'statut': 'pas de période commune (30 jours) entre les deux pages', 'dernier_sondage': '2026-10-03', 'colonnes': [], 'colonnes_appariees': 0, 'concordantes': 0, 'divergentes': {}}
+- **Bulgarie** : page anglaise introuvable
+- **Bénin** : page anglaise introuvable
+- **Cameroun** : page anglaise introuvable
+- **Canada** : à corriger — wikitexte : pas de tableau correspondant
+  - page : Opinion polling for the 2025 Canadian federal election ; dernier sondage 2025-04-27 ; colonnes ['CPC', 'LPC', 'NDP', 'BQ', 'PPC', 'GPC'] ; total 101.4 ; Lead {'lignes': 169, 'accord': 1.0}
+  - wikitexte : {'tableau_correspondant': False, 'lignes_lues': 0}
+- **Cap-Vert** : page anglaise introuvable
+- **Chili** : page anglaise introuvable
+- **Chypre** : page anglaise introuvable
+- **Colombie** : page anglaise introuvable
+- **Costa Rica** : page anglaise introuvable
+- **Côte d'Ivoire** : page anglaise introuvable
+- **Danemark** : à corriger — relecture « Lead » en échec, langue locale : aucun tableau lisible
+  - page : Opinion polling for the 2026 Danish general election ; dernier sondage 2026-03-09 ; colonnes ['A', 'V', 'M', 'F', 'Æ', 'I', 'C', 'Ø', 'B', 'Å', 'O', 'H'] ; total 50.3 ; Lead {'lignes': 3, 'accord': 0.0}
+  - wikitexte : {'colonnes_communes': 12, 'concordantes': 12, 'divergentes': {}}
+  - langue locale : {'langue': 'da', 'page': 'Meningsmålinger forud for folketingsvalget 2026', 'lignes_lues': 0}
+- **Estonie** : à corriger — langue locale : aucun tableau lisible
+  - page : Opinion polling for the next Estonian parliamentary election ; dernier sondage 2026-10-21 ; colonnes ['EKRE', 'Kesk', 'SDE', 'Koos', 'Ref', 'Isamaa', 'Parem', 'VL', 'EER'] ; total 102.6 ; Lead {'lignes': 24, 'accord': 0.875}
+  - wikitexte : {'colonnes_communes': 9, 'concordantes': 9, 'divergentes': {}}
+  - langue locale : {'langue': 'et', 'page': 'Eesti erakondade reitingud enne 2027. aasta valimisi', 'lignes_lues': 0}
+- **Finlande** : aucun tableau de sondages lisible
+  - page : Opinion polling for the 2027 Finnish parliamentary election ; dernier sondage None ; colonnes None ; total None ; Lead None
+- **France** : à corriger — wikitexte : pas de tableau correspondant
+  - page : Opinion polling for the 2027 French presidential election ; dernier sondage 2023-10-20 ; colonnes ['Nathalie Arthaud', 'Philippe Poutou', 'Fabien Roussel', 'Jean-Luc Mélenchon', 'Anne Hidalgo', 'Yannick Jadot', 'Emmanuel Macron', 'Jean Lassalle', 'Valérie Pécresse', 'Nicolas Dupont-Aignan', 'Marine Le Pen', 'Éric Zemmour'] ; total 100.1 ; Lead {'lignes': 0, 'accord': None}
+  - wikitexte : {'tableau_correspondant': False, 'lignes_lues': 2}
+  - langue locale : {'langue': 'fr', 'page': "Liste de sondages sur l'élection présidentielle française de 2027", 'lignes_lues': 311, 'statut': 'pas de période commune (30 jours) entre les deux pages', 'dernier_sondage': '2026-11-17', 'colonnes': [], 'colonnes_appariees': 0, 'concordantes': 0, 'divergentes': {}}
+- **Ghana** : page anglaise introuvable
+- **Guatemala** : page anglaise introuvable
+- **Géorgie** : page anglaise introuvable
+- **Honduras** : page anglaise introuvable
+- **Hongrie** : aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)
+  - page : Opinion polling for the 2030 Hungarian parliamentary election ; dernier sondage None ; colonnes None ; total None ; Lead None
+- **Inde** : aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)
+  - page : Opinion polling for the next Indian general election ; dernier sondage None ; colonnes None ; total None ; Lead None
+- **Indonésie** : à corriger — langue locale : aucun tableau lisible
+  - page : Opinion polling for the 2029 Indonesian presidential election ; dernier sondage 2026-10-20 ; colonnes ['Prabowo Subianto Gerindra', 'Anies Baswedan Independent', 'Ganjar Pranowo PDI-P', 'Gibran Rakabuming Independent', 'Agus Yudhoyono Demokrat', 'Dedi Mulyadi Gerindra', 'Sherly Tjoanda Independent', 'Unsure', 'Purbaya Yudhi Sadewa Independent'] ; total 94.5 ; Lead {'lignes': 0, 'accord': None}
+  - wikitexte : {'colonnes_communes': 9, 'concordantes': 9, 'divergentes': {}}
+  - langue locale : {'langue': 'id', 'page': 'Hasil survei pemilihan umum Presiden Indonesia 2029', 'lignes_lues': 0}
+- **Irak** : page anglaise introuvable
+- **Iran** : page anglaise introuvable
+- **Irlande** : page anglaise introuvable
+- **Islande** : page anglaise introuvable
+- **Israël** : à corriger — wikitexte divergent
+  - page : Opinion polling for the 2026 Israeli legislative election ; dernier sondage 2026-12-25 ; colonnes ['Segalovitz', "Ra'am", "Ta'al", 'Hadash', 'Balad', 'Dems', 'Yisrael Beiteinu', 'Yesh Atid', 'Blue & White', 'Yashar', 'Likud', 'Shas'] ; total 58.7 ; Lead {'lignes': 0, 'accord': None}
+  - wikitexte : {'colonnes_communes': 12, 'concordantes': 8, 'divergentes': {"Ra'am": [7.2, 9.0], "Ta'al": [10.4, 9.4], 'Hadash': [10.4, 9.4], 'Balad': [11.2, 13.76]}}
+  - langue locale : {'langue': 'he', 'statut': 'pas de page liée'}
+- **Italie** : à corriger — wikitexte : pas de tableau correspondant
+  - page : Opinion polling for the next Italian general election ; dernier sondage 2026-11-19 ; colonnes ['Approve', 'Disapprove', "Don't know"] ; total 100.9 ; Lead {'lignes': 80, 'accord': 0.988}
+  - wikitexte : {'tableau_correspondant': False, 'lignes_lues': 55}
+  - langue locale : {'langue': 'it', 'statut': 'pas de page liée'}
+- **Jamaïque** : page anglaise introuvable
+- **Japon** : à corriger — wikitexte : pas de tableau correspondant, langue locale : aucun tableau lisible
+  - page : Opinion polling for the next Japanese general election ; dernier sondage 2026-11-16 ; colonnes ['Approve', 'Disapprove', 'Und. / no answer'] ; total 102.8 ; Lead {'lignes': 108, 'accord': 0.954}
+  - wikitexte : {'tableau_correspondant': False, 'lignes_lues': 0}
+  - langue locale : {'langue': 'ja', 'page': '次期日本総選挙に関する世論調査', 'lignes_lues': 0}
+- **Kazakhstan** : page anglaise introuvable
+- **Égypte** : page anglaise introuvable
+- **Équateur** : page anglaise introuvable
+- **États-Unis** : page anglaise introuvable
+- **Éthiopie** : page anglaise introuvable
+- **Australie** : lu
+  - page : Opinion polling for the next Australian federal election ; dernier sondage 2026-06-28 ; colonnes ['Right direction', 'Wrong direction', 'Unsure'] ; total 100.1 ; Lead {'lignes': 0, 'accord': None}
+  - wikitexte : {'colonnes_communes': 3, 'concordantes': 3, 'divergentes': {}}
+- **Corée du Sud** : lu
+  - page : Opinion polling for the next South Korean legislative election ; dernier sondage 2026-12-31 ; colonnes ['DPK', 'PPP', 'RKP', 'RP', 'PP', 'Und./ no ans.', 'BIP', 'SDP', 'NFP'] ; total 101.8 ; Lead {'lignes': 501, 'accord': 0.928}
+  - wikitexte : {'colonnes_communes': 9, 'concordantes': 9, 'divergentes': {}}
+  - langue locale : {'langue': 'ko', 'statut': 'pas de page liée'}
+- **Croatie** : lu
+  - page : Opinion polling for the next Croatian parliamentary election ; dernier sondage 2026-11-08 ; colonnes ['Responses', 'HDZ', 'SDP', 'DP', 'DOMiNO', 'PiP', 'Možemo', 'Most', 'HS', 'Fokus', 'IDS', 'NPS'] ; total 82.0 ; Lead {'lignes': 73, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 18, 'concordantes': 18, 'divergentes': {}}
+  - langue locale : {'langue': 'hr', 'statut': 'pas de page liée'}
+- **Espagne** : lu
+  - page : Opinion polling for the 2026 Spanish general election ; dernier sondage 2026-11-21 ; colonnes ['PSOE FA', 'PSOE', 'PP PSOE', 'PP', 'PP Vox', 'Vox'] ; total 101.3 ; Lead {'lignes': 0, 'accord': None}
+  - wikitexte : {'colonnes_communes': 6, 'concordantes': 6, 'divergentes': {}}
+  - langue locale : {'langue': 'es', 'page': 'Encuestas de opinión para las elecciones generales de España de 2026', 'lignes_lues': 44, 'statut': 'aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)'}
+- **Grèce** : lu
+  - page : Opinion polling for the next Greek parliamentary election ; dernier sondage 2026-11-17 ; colonnes ['ND', 'SYRIZA', 'PASOK', 'KKE', 'EL', 'NIKI', 'PE', 'FL', 'SE', 'DPK', 'ELPIDA', 'ELAS'] ; total 95.1 ; Lead {'lignes': 320, 'accord': 0.981}
+  - wikitexte : {'colonnes_communes': 14, 'concordantes': 14, 'divergentes': {}}
+  - langue locale : {'langue': 'el', 'statut': 'pas de page liée'}

@@ -1,0 +1,770 @@
+{
+ "lot": 1,
+ "requetes": 148,
+ "pays": [
+  {
+   "pays": "Afrique du Sud",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Albanie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Algérie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Allemagne",
+   "page": "Opinion polling for the next German federal election",
+   "tableaux_html": 33,
+   "lignes_lues": 545,
+   "dernier_sondage": "2026-11-16",
+   "colonnes": [
+    "CDU",
+    "AfD",
+    "SPD",
+    "Grüne",
+    "Linke",
+    "CSU",
+    "BSW",
+    "FDP"
+   ],
+   "total_moyennes": 94.7,
+   "lead": {
+    "lignes": 84,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "tableau_correspondant": false,
+    "lignes_lues": 0
+   },
+   "langue_locale": {
+    "langue": "de",
+    "page": "Wahl zum 22. Deutschen Bundestag/Umfragen und Prognosen",
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "wikitexte : pas de tableau correspondant",
+    "langue locale : aucun tableau lisible"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Argentine",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Arménie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Australie",
+   "page": "Opinion polling for the next Australian federal election",
+   "tableaux_html": 31,
+   "lignes_lues": 35,
+   "dernier_sondage": "2026-06-28",
+   "colonnes": [
+    "Right direction",
+    "Wrong direction",
+    "Unsure"
+   ],
+   "total_moyennes": 100.1,
+   "lead": {
+    "lignes": 0,
+    "accord": null
+   },
+   "wikitexte": {
+    "colonnes_communes": 3,
+    "concordantes": 3,
+    "divergentes": {}
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Autriche",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Azerbaïdjan",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Bangladesh",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Belgique",
+   "page": "Opinion polling for the 2029 Belgian elections",
+   "tableaux_html": 16,
+   "lignes_lues": 33,
+   "dernier_sondage": "2026-09-15",
+   "colonnes": [
+    "N-VA",
+    "VB",
+    "Vooruit",
+    "CD&V",
+    "Anders",
+    "PVDA",
+    "Groen"
+   ],
+   "total_moyennes": 98.9,
+   "lead": {
+    "lignes": 11,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "tableau_correspondant": false,
+    "lignes_lues": 0
+   },
+   "langue_locale": {
+    "langue": "nl",
+    "statut": "pas de page liée"
+   },
+   "problemes": [
+    "wikitexte : pas de tableau correspondant"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Bénin",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Biélorussie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Bolivie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Bosnie-Herzégovine",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Botswana",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Brésil",
+   "page": "Opinion polling for the 2026 Brazilian presidential election",
+   "tableaux_html": 16,
+   "lignes_lues": 269,
+   "dernier_sondage": "2026-08-13",
+   "colonnes": [
+    "Lula PT",
+    "F. Bolsonaro PL",
+    "Caiado PSD",
+    "Zema Novo",
+    "Santos Mission",
+    "Cury Avante"
+   ],
+   "total_moyennes": 90.0,
+   "lead": {
+    "lignes": 74,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 6,
+    "concordantes": 0,
+    "divergentes": {
+     "Lula PT": [
+      41.28,
+      42.44
+     ],
+     "F. Bolsonaro PL": [
+      33.94,
+      42.26
+     ],
+     "Caiado PSD": [
+      4.94,
+      2.94
+     ],
+     "Zema Novo": [
+      3.14,
+      0.36
+     ],
+     "Santos Mission": [
+      4.96,
+      4.04
+     ],
+     "Cury Avante": [
+      1.76,
+      2.82
+     ]
+    }
+   },
+   "langue_locale": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "lignes_lues": 1522,
+    "statut": "pas de période commune (30 jours) entre les deux pages",
+    "dernier_sondage": "2026-10-03",
+    "colonnes": [],
+    "colonnes_appariees": 0,
+    "concordantes": 0,
+    "divergentes": {}
+   },
+   "problemes": [
+    "wikitexte divergent"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Bulgarie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Cameroun",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Canada",
+   "page": "Opinion polling for the 2025 Canadian federal election",
+   "tableaux_html": 29,
+   "lignes_lues": 609,
+   "dernier_sondage": "2025-04-27",
+   "colonnes": [
+    "CPC",
+    "LPC",
+    "NDP",
+    "BQ",
+    "PPC",
+    "GPC"
+   ],
+   "total_moyennes": 101.4,
+   "lead": {
+    "lignes": 169,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "tableau_correspondant": false,
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "wikitexte : pas de tableau correspondant"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Cap-Vert",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Chili",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Chypre",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Colombie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Corée du Sud",
+   "page": "Opinion polling for the next South Korean legislative election",
+   "tableaux_html": 16,
+   "lignes_lues": 941,
+   "dernier_sondage": "2026-12-31",
+   "colonnes": [
+    "DPK",
+    "PPP",
+    "RKP",
+    "RP",
+    "PP",
+    "Und./ no ans.",
+    "BIP",
+    "SDP",
+    "NFP"
+   ],
+   "total_moyennes": 101.8,
+   "lead": {
+    "lignes": 501,
+    "accord": 0.928
+   },
+   "wikitexte": {
+    "colonnes_communes": 9,
+    "concordantes": 9,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "ko",
+    "statut": "pas de page liée"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Costa Rica",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Côte d'Ivoire",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Croatie",
+   "page": "Opinion polling for the next Croatian parliamentary election",
+   "tableaux_html": 14,
+   "lignes_lues": 73,
+   "dernier_sondage": "2026-11-08",
+   "colonnes": [
+    "Responses",
+    "HDZ",
+    "SDP",
+    "DP",
+    "DOMiNO",
+    "PiP",
+    "Možemo",
+    "Most",
+    "HS",
+    "Fokus",
+    "IDS",
+    "NPS"
+   ],
+   "total_moyennes": 82.0,
+   "lead": {
+    "lignes": 73,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 18,
+    "concordantes": 18,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "hr",
+    "statut": "pas de page liée"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Danemark",
+   "page": "Opinion polling for the 2026 Danish general election",
+   "tableaux_html": 26,
+   "lignes_lues": 5,
+   "dernier_sondage": "2026-03-09",
+   "colonnes": [
+    "A",
+    "V",
+    "M",
+    "F",
+    "Æ",
+    "I",
+    "C",
+    "Ø",
+    "B",
+    "Å",
+    "O",
+    "H"
+   ],
+   "total_moyennes": 50.3,
+   "lead": {
+    "lignes": 3,
+    "accord": 0.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 12,
+    "concordantes": 12,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "da",
+    "page": "Meningsmålinger forud for folketingsvalget 2026",
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "relecture « Lead » en échec",
+    "langue locale : aucun tableau lisible"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Égypte",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Équateur",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Espagne",
+   "page": "Opinion polling for the 2026 Spanish general election",
+   "tableaux_html": 22,
+   "lignes_lues": 28,
+   "dernier_sondage": "2026-11-21",
+   "colonnes": [
+    "PSOE FA",
+    "PSOE",
+    "PP PSOE",
+    "PP",
+    "PP Vox",
+    "Vox"
+   ],
+   "total_moyennes": 101.3,
+   "lead": {
+    "lignes": 0,
+    "accord": null
+   },
+   "wikitexte": {
+    "colonnes_communes": 6,
+    "concordantes": 6,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "es",
+    "page": "Encuestas de opinión para las elecciones generales de España de 2026",
+    "lignes_lues": 44,
+    "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Estonie",
+   "page": "Opinion polling for the next Estonian parliamentary election",
+   "tableaux_html": 19,
+   "lignes_lues": 47,
+   "dernier_sondage": "2026-10-21",
+   "colonnes": [
+    "EKRE",
+    "Kesk",
+    "SDE",
+    "Koos",
+    "Ref",
+    "Isamaa",
+    "Parem",
+    "VL",
+    "EER"
+   ],
+   "total_moyennes": 102.6,
+   "lead": {
+    "lignes": 24,
+    "accord": 0.875
+   },
+   "wikitexte": {
+    "colonnes_communes": 9,
+    "concordantes": 9,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "et",
+    "page": "Eesti erakondade reitingud enne 2027. aasta valimisi",
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "langue locale : aucun tableau lisible"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "États-Unis",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Éthiopie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Finlande",
+   "page": "Opinion polling for the 2027 Finnish parliamentary election",
+   "tableaux_html": 17,
+   "lignes_lues": 0,
+   "statut": "aucun tableau de sondages lisible"
+  },
+  {
+   "pays": "France",
+   "page": "Opinion polling for the 2027 French presidential election",
+   "tableaux_html": 39,
+   "lignes_lues": 381,
+   "dernier_sondage": "2023-10-20",
+   "colonnes": [
+    "Nathalie Arthaud",
+    "Philippe Poutou",
+    "Fabien Roussel",
+    "Jean-Luc Mélenchon",
+    "Anne Hidalgo",
+    "Yannick Jadot",
+    "Emmanuel Macron",
+    "Jean Lassalle",
+    "Valérie Pécresse",
+    "Nicolas Dupont-Aignan",
+    "Marine Le Pen",
+    "Éric Zemmour"
+   ],
+   "total_moyennes": 100.1,
+   "lead": {
+    "lignes": 0,
+    "accord": null
+   },
+   "wikitexte": {
+    "tableau_correspondant": false,
+    "lignes_lues": 2
+   },
+   "langue_locale": {
+    "langue": "fr",
+    "page": "Liste de sondages sur l'élection présidentielle française de 2027",
+    "lignes_lues": 311,
+    "statut": "pas de période commune (30 jours) entre les deux pages",
+    "dernier_sondage": "2026-11-17",
+    "colonnes": [],
+    "colonnes_appariees": 0,
+    "concordantes": 0,
+    "divergentes": {}
+   },
+   "problemes": [
+    "wikitexte : pas de tableau correspondant"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Géorgie",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Ghana",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Grèce",
+   "page": "Opinion polling for the next Greek parliamentary election",
+   "tableaux_html": 16,
+   "lignes_lues": 321,
+   "dernier_sondage": "2026-11-17",
+   "colonnes": [
+    "ND",
+    "SYRIZA",
+    "PASOK",
+    "KKE",
+    "EL",
+    "NIKI",
+    "PE",
+    "FL",
+    "SE",
+    "DPK",
+    "ELPIDA",
+    "ELAS"
+   ],
+   "total_moyennes": 95.1,
+   "lead": {
+    "lignes": 320,
+    "accord": 0.981
+   },
+   "wikitexte": {
+    "colonnes_communes": 14,
+    "concordantes": 14,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "el",
+    "statut": "pas de page liée"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Guatemala",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Honduras",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Hongrie",
+   "page": "Opinion polling for the 2030 Hungarian parliamentary election",
+   "tableaux_html": 17,
+   "lignes_lues": 12,
+   "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)"
+  },
+  {
+   "pays": "Inde",
+   "page": "Opinion polling for the next Indian general election",
+   "tableaux_html": 22,
+   "lignes_lues": 27,
+   "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)"
+  },
+  {
+   "pays": "Indonésie",
+   "page": "Opinion polling for the 2029 Indonesian presidential election",
+   "tableaux_html": 22,
+   "lignes_lues": 29,
+   "dernier_sondage": "2026-10-20",
+   "colonnes": [
+    "Prabowo Subianto Gerindra",
+    "Anies Baswedan Independent",
+    "Ganjar Pranowo PDI-P",
+    "Gibran Rakabuming Independent",
+    "Agus Yudhoyono Demokrat",
+    "Dedi Mulyadi Gerindra",
+    "Sherly Tjoanda Independent",
+    "Unsure",
+    "Purbaya Yudhi Sadewa Independent"
+   ],
+   "total_moyennes": 94.5,
+   "lead": {
+    "lignes": 0,
+    "accord": null
+   },
+   "wikitexte": {
+    "colonnes_communes": 9,
+    "concordantes": 9,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "id",
+    "page": "Hasil survei pemilihan umum Presiden Indonesia 2029",
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "langue locale : aucun tableau lisible"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Irak",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Iran",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Irlande",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Islande",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Israël",
+   "page": "Opinion polling for the 2026 Israeli legislative election",
+   "tableaux_html": 53,
+   "lignes_lues": 223,
+   "dernier_sondage": "2026-12-25",
+   "colonnes": [
+    "Segalovitz",
+    "Ra'am",
+    "Ta'al",
+    "Hadash",
+    "Balad",
+    "Dems",
+    "Yisrael Beiteinu",
+    "Yesh Atid",
+    "Blue & White",
+    "Yashar",
+    "Likud",
+    "Shas"
+   ],
+   "total_moyennes": 58.7,
+   "lead": {
+    "lignes": 0,
+    "accord": null
+   },
+   "wikitexte": {
+    "colonnes_communes": 12,
+    "concordantes": 8,
+    "divergentes": {
+     "Ra'am": [
+      7.2,
+      9.0
+     ],
+     "Ta'al": [
+      10.4,
+      9.4
+     ],
+     "Hadash": [
+      10.4,
+      9.4
+     ],
+     "Balad": [
+      11.2,
+      13.76
+     ]
+    }
+   },
+   "langue_locale": {
+    "langue": "he",
+    "statut": "pas de page liée"
+   },
+   "problemes": [
+    "wikitexte divergent"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Italie",
+   "page": "Opinion polling for the next Italian general election",
+   "tableaux_html": 100,
+   "lignes_lues": 272,
+   "dernier_sondage": "2026-11-19",
+   "colonnes": [
+    "Approve",
+    "Disapprove",
+    "Don't know"
+   ],
+   "total_moyennes": 100.9,
+   "lead": {
+    "lignes": 80,
+    "accord": 0.988
+   },
+   "wikitexte": {
+    "tableau_correspondant": false,
+    "lignes_lues": 55
+   },
+   "langue_locale": {
+    "langue": "it",
+    "statut": "pas de page liée"
+   },
+   "problemes": [
+    "wikitexte : pas de tableau correspondant"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Jamaïque",
+   "statut": "page anglaise introuvable"
+  },
+  {
+   "pays": "Japon",
+   "page": "Opinion polling for the next Japanese general election",
+   "tableaux_html": 20,
+   "lignes_lues": 145,
+   "dernier_sondage": "2026-11-16",
+   "colonnes": [
+    "Approve",
+    "Disapprove",
+    "Und. / no answer"
+   ],
+   "total_moyennes": 102.8,
+   "lead": {
+    "lignes": 108,
+    "accord": 0.954
+   },
+   "wikitexte": {
+    "tableau_correspondant": false,
+    "lignes_lues": 0
+   },
+   "langue_locale": {
+    "langue": "ja",
+    "page": "次期日本総選挙に関する世論調査",
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "wikitexte : pas de tableau correspondant",
+    "langue locale : aucun tableau lisible"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Kazakhstan",
+   "statut": "page anglaise introuvable"
+  }
+ ]
+}
