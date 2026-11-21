@@ -43,3 +43,8 @@ def test_sondages(tmp_path, monkeypatch):
     assert tr.p_sondages("poly:1", "Will A win a majority of seats?", 10) is None
     assert tr.p_sondages("poly:2", "Will A win?", 10) is None
     tr._sondages.cache_clear()
+
+
+def test_ecart_de_voix_non_traduit():
+    import traduction_regles as tr
+    assert tr.p_sondages("x", "Will John Cornyn win the Texas Republican Senate Primary runoff by 9% or more?", 30) is None

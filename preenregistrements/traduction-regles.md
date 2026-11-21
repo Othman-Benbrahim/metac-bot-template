@@ -58,3 +58,17 @@ Compte au lancement (lignes sans les issues) : 80 questions traduisibles, dont 3
 Retrait fixé : manifold:Q9gNdcP2lc (Hongrie, en-têtes illisibles, Orbán lu à 2,3 %). La collecte et l'essai tournent
 dans le même passage (workflow essai_traduction.yaml) ; le compte final peut gagner quelques questions de sondages
 (Brésil sans nom d'élection, Suède, pays de Galles).
+
+## Résultat (run 44917992026, 2026-11-21, 16 h 14) : ADOPTÉ
+80 questions (31 de sondages au compte de lancement, 43 lignes portant une règle de sondages au passage final, 16 Fed,
+21 fréquences). Perte log : S 0,617 ; R 0,530 ; C 0,458. C − S = −0,159, intervalle à 90 % [−0,259 ; −0,065] :
+entièrement sous 0, critère rempli. R − S = −0,087 [−0,246 ; +0,084] : la règle seule ne suffit pas, c'est la
+combinaison qui gagne.
+Par famille (descriptif) : sondages S 0,659 → C 0,438 ; Fed 0,659 → 0,520 ; fréquences 0,497 → 0,451.
+Contrôles descriptifs (non préenregistrés, ne changent pas le verdict) : bootstrap par élection (55 grappes, les
+questions sœurs comptées ensemble) [−0,248 ; −0,056] ; hors sondages (37 questions) −0,086 [−0,186 ; +0,012], non
+tranché.
+Défaut de traduction constaté après coup : « Cornyn win … runoff by 9% » traduit comme « se qualifier pour le second
+tour » (p 0,98, issue non). Corrigé pour la suite (écart de voix non traduit) ; l'essai n'est pas relancé.
+Suite : C devient le point de départ de M quand la carte robot trouve une règle traduisible, en ombre d'abord sur le
+flux réel.

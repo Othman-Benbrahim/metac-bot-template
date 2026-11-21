@@ -253,6 +253,8 @@ def p_sondages(question: str, titre: str, horizon: float) -> float | None:
     tirs = rng.normal(mu, sd, size=(4000, len(noms)))
     i = noms.index(col)
     rang = (tirs > tirs[:, [i]]).sum(axis=1) + 1                 # 1 = en tête
+    if re.search(r"\bby (more than |at least )?\d+(\.\d+)?\s*(%|points?)", t):   # écart de voix : non traduit
+        return None
     m = re.search(r"\bat least (\d{1,2}(?:\.\d+)?)\s*%", t)
     if m:
         p = float((tirs[:, i] >= float(m.group(1))).mean())
