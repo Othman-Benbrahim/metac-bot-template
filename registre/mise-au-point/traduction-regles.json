@@ -1,27 +1,27 @@
 {
- "n": 80,
- "S": 0.6167,
- "R": 0.5301,
- "C": 0.4577,
- "C_moins_S": -0.159,
+ "n": 78,
+ "S": 0.6054,
+ "R": 0.4932,
+ "C": 0.446,
+ "C_moins_S": -0.1594,
  "intervalle_90_C_S": [
-  -0.2591,
-  -0.0646
+  -0.2539,
+  -0.0685
  ],
- "R_moins_S": -0.0866,
+ "R_moins_S": -0.1122,
  "intervalle_90_R_S": [
-  -0.2455,
-  0.0836
+  -0.2606,
+  0.0419
  ],
  "puissance": {
-  "n": 80,
-  "sigma_par_question": 0.55,
-  "ecart_detectable": 0.1529,
+  "n": 78,
+  "sigma_par_question": 0.5065,
+  "ecart_detectable": 0.1426,
   "questions_necessaires": {
-   "0.005": 74816,
-   "0.01": 18704,
-   "0.02": 4676,
-   "0.04": 1169
+   "0.005": 63444,
+   "0.01": 15861,
+   "0.02": 3966,
+   "0.04": 992
   }
  },
  "adopte": true,
@@ -266,18 +266,6 @@
    }
   },
   {
-   "question": "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818",
-   "titre": "Will the Swedish Social Democratic Party (S) win the most seats in the 2026 Swedish parliamentary election?",
-   "issue": 1,
-   "p_S": 0.1538386684920575,
-   "p_R": 0.98,
-   "p_C": 0.7490416032797438,
-   "regles": {
-    "us_erreur_selon_temps_restant": 0.99,
-    "sondages_erreur_comparee": 0.99
-   }
-  },
-  {
    "question": "manifold:j65AKQZQCjgqa3erm88N",
    "titre": "Will the 2026 FIFA World Cup champion be a first time winner?",
    "issue": 0,
@@ -331,17 +319,6 @@
    "regles": {
     "us_erreur_selon_temps_restant": 0.55875,
     "sondages_erreur_comparee": 0.55875
-   }
-  },
-  {
-   "question": "polymarket:0x780eda657742337ca48284a55e7f2103d35484f16e05c49271cf1ed4e8cac89c",
-   "titre": "Will John Cornyn win the Texas Republican Senate Primary runoff by 9% or more?",
-   "issue": 0,
-   "p_S": 0.21385291098839168,
-   "p_R": 0.98,
-   "p_C": 0.7849893209578026,
-   "regles": {
-    "us_erreur_sondages_par_echelle": 0.99
    }
   },
   {

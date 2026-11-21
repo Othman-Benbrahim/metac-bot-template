@@ -203,11 +203,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "Opinion polling for the 2026 Brazilian presidential election",
+     "Opinion polling for the next Ukrainian presidential election",
      "page refusée"
     ],
     [
-     "Opinion polling for the next Ukrainian presidential election",
+     "Opinion polling for the 2026 Brazilian presidential election",
      "page refusée"
     ],
     [
@@ -383,11 +383,11 @@
      "page refusée"
     ],
     [
-     "2018 Colombian parliamentary election",
+     "2026 Peruvian general election",
      "page refusée"
     ],
     [
-     "2026 Peruvian general election",
+     "2018 Colombian parliamentary election",
      "page refusée"
     ],
     [
@@ -938,11 +938,11 @@
      "aucun tableau lisible (HTTP 200)"
     ],
     [
-     "United Russia",
+     "Anti-Russian sentiment",
      "page refusée"
     ],
     [
-     "Anti-Russian sentiment",
+     "United Russia",
      "page refusée"
     ],
     [
@@ -954,8 +954,8 @@
      "page refusée"
     ],
     [
-     "2026 Russian legislative election",
-     "aucun tableau lisible (HTTP 200)"
+     "United Russia",
+     "page refusée"
     ]
    ]
   },
@@ -1338,11 +1338,11 @@
      "page refusée"
     ],
     [
-     "2008 Spanish general election",
+     "2023 Spanish general election",
      "page refusée"
     ],
     [
-     "2023 Spanish general election",
+     "2008 Spanish general election",
      "page refusée"
     ],
     [
@@ -1488,7 +1488,7 @@
      "page refusée"
     ],
     [
-     "2026 Santa Catarina general election",
+     "2026 Paraná gubernatorial election",
      "page refusée"
     ],
     [
@@ -1560,11 +1560,11 @@
      "page refusée"
     ],
     [
-     "Opinion polling in Scotland for the next United Kingdom general election",
+     "Opinion polling for the next Indian general election",
      "page refusée"
     ],
     [
-     "Opinion polling for the next Indian general election",
+     "Opinion polling for the next Japanese general election",
      "page refusée"
     ],
     [
@@ -2815,7 +2815,7 @@
      "page refusée"
     ],
     [
-     "2026 Santa Catarina general election",
+     "2026 Paraná gubernatorial election",
      "page refusée"
     ],
     [
@@ -3217,34 +3217,17 @@
   },
   "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818": {
    "election": "2026 Swedish parliamentary election",
-   "statut": "ok",
+   "statut": "sujet_absent_des_tableaux",
    "source": "wikipedia",
    "page": "Opinion polling for the 2026 Swedish general election",
    "sujet": "the Swedish Social Democratic Party (S)",
-   "colonne_sujet": "Magdalena Andersson (S)",
+   "colonne_sujet": null,
    "jeu": "2026-04-26",
-   "moyennes": {
-    "Magdalena Andersson (S)": {
-     "moyenne": 39.0,
-     "n": 3,
-     "dernier": "2026-04-15"
-    },
-    "Ulf Kristersson (M)": {
-     "moyenne": 21.67,
-     "n": 3,
-     "dernier": "2026-04-15"
-    },
-    "Jimmie Åkesson (SD)": {
-     "moyenne": 16.67,
-     "n": 3,
-     "dernier": "2026-04-15"
-    }
-   },
+   "moyennes": {},
    "relecture_lead": {
     "lignes_verifiees": 0,
     "accord": null
-   },
-   "alertes": []
+   }
   },
   "polymarket:0xe70dc5791fd703624bdd33fbdd6c4374bf51723c4c5e2fb88ee87857dc72d762": {
    "election": "2026 Alaska Governor primary",
@@ -3307,11 +3290,11 @@
      "page refusée"
     ],
     [
-     "Opinion polling in Scotland for the next United Kingdom general election",
+     "Opinion polling for the next Indian general election",
      "page refusée"
     ],
     [
-     "Opinion polling for the next Indian general election",
+     "Opinion polling for the next Japanese general election",
      "page refusée"
     ],
     [
@@ -3383,7 +3366,7 @@
      "page refusée"
     ],
     [
-     "Nationwide opinion polling for the 2016 Republican Party presidential primaries",
+     "Nationwide opinion polling for the 2028 Republican Party presidential primaries",
      "page refusée"
     ],
     [
