@@ -246,3 +246,9 @@ def test_meme_nom_autre_personne():
     assert cs.colonne("Flavio Bolsonaro", noms) == "F. Bolsonaro PL"
     assert cs.colonne("Luiz Inácio Lula da Silva", noms) == "Lula PT"
     assert cs.colonne("Ronaldo Caiado", noms) == "Caiado PSD"
+
+
+def test_parti_entre_parentheses_pas_de_repli_sur_la_personne():
+    assert cs.colonne("Orban (Fidesz)", ["Orbán", "Magyar"]) is None
+    assert cs.colonne("Orban (Fidesz)", ["Fidesz–KDNP", "Tisza"]) == "Fidesz–KDNP"
+    assert cs.colonne("United Russia (ER)", ["United Russia", "CPRF"]) == "United Russia"

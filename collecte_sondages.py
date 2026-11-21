@@ -482,6 +482,8 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
         for n in noms:
             if re.search(rf"\b{re.escape(norm(a))}\b", norm(n)) and not personne.match(n):
                 return n
+    if any(not re.fullmatch(r"[A-ZÀ-Ý0-9!.\-]{1,6}", x.strip()) for x in abre):
+        return None              # « Orban (Fidesz) » : une personne et son PARTI ; sans colonne du parti, pas de repli
     s = re.sub(r"^(the|a)\s+", "", re.sub(r"\(.*?\)", "", norm(sujet_)).strip())
     if not s:
         return None
