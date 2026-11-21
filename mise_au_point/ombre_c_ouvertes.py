@@ -38,8 +38,9 @@ def questions_ouvertes() -> list[dict]:
 
 def principal() -> int:
     auj = datetime.now(timezone.utc).date()
-    lignes = []
-    for q in questions_ouvertes():
+    lignes, qs = [], questions_ouvertes()
+    print(f"{len(qs)} question(s) binaire(s) ouverte(s) : " + " | ".join(q["titre"][:80] for q in qs))
+    for q in qs:
         try:
             p_s = bras_m.semblables(q["titre"], q["cloture"], auj)
             oc = bras_m.ombre_c(q["titre"], q["cloture"], auj, p_s) if p_s is not None else None
@@ -51,7 +52,7 @@ def principal() -> int:
     SORTIE.with_suffix(".json").write_text(json.dumps({"date": auj.isoformat(), "lignes": lignes}, ensure_ascii=False,
                                                       indent=1, default=str), encoding="utf-8")
     md = [f"# Ombre C, essai à blanc sur les questions ouvertes ({auj})", "",
-          f"{len(lignes)} questions avec au moins une règle rattachée ; "
+          f"{len(qs)} questions binaires ouvertes ; {len(lignes)} avec au moins une règle rattachée ; "
           f"{sum(1 for l in lignes if l.get('p_C') is not None)} avec une traduction.", ""]
     for l in sorted(lignes, key=lambda l: (not (l.get("sondages") or {}).get("alertes"), l["titre"])):
         s = l.get("sondages") or {}
