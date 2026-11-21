@@ -109,7 +109,29 @@ class Client:
         return r
 
 
+TYPES = ("general", "parliamentary", "presidential", "legislative", "federal")
+
+
+def page_directe(cl: Client, adj: str, vus: list) -> dict | None:
+    """Titres construits (« Opinion polling for the next Turkish general election ») : la recherche plein texte de
+    l'API classe mal ces pages (lot 2 : 38 pays sans page, des résultats sur 2008). Wikipédia redirige souvent
+    « next » vers la page de l'année."""
+    for ty in TYPES:
+        titre = f"Opinion polling for the next {adj} {ty} election"
+        r = cl.get(f"{cs.API}/page/{titre.replace(' ', '_')}/bare")
+        if r.status_code == 200:
+            js = r.json()
+            t = js.get("title", titre)
+            vus.append(f"(direct) {t}")
+            ans = [int(a) for a in re.findall(r"\b(20\d\d)\b", t)]
+            if "next" in cs.norm(t) or (ans and max(ans) >= 2025):
+                return {"title": t, "key": js.get("key", t.replace(" ", "_"))}
+    return None
+
+
 def page_anglaise(cl: Client, nom: str, adj: str, vus: list) -> dict | None:
+    if p := page_directe(cl, adj, vus):
+        return p
     # mots du pays sans la liste des mots vides (« United States », « United Kingdom » y perdaient tout)
     racines = {w[:5] for w in re.findall(r"[a-z]{4,}", cs.norm(f"{nom} {adj}"))} - {"repub", "democ"}
     for q in (f"Opinion polling for the next {adj} election", f"Opinion polling {adj} election 2026",
@@ -164,7 +186,9 @@ def tableau_recent(lignes: list[dict]) -> int | None:
         if len(m) < 3 or not 30 <= sum(m.values()) <= 110:
             continue
         if any(re.search(r"\b(approve|disapprove|direction|wrong track|satisf|favou?rable|unfavou?rable|"
-                         r"aprueba|desaprueba)\b", cs.norm(k)) for k in m):
+                         r"aprueba|desaprueba)\b", cs.norm(k)) for k in m) or (
+                {cs.norm(k) for k in m} & {"yes", "ja", "oui", "si", "sim"} and
+                {cs.norm(k) for k in m} & {"no", "nej", "non", "nein", "nao"}):   # question oui / non (référendum)
             continue                                           # popularité ou « bonne direction » : pas un vote
         chefs = sum(bool(PERSONNE_PARTI.match(k)) for k in m) / len(m)
         cands.append((t, chefs < 0.5, max(l["fin"] for l in ls), ls))
@@ -192,7 +216,12 @@ def examiner(cl: Client, fr: str, nom: str, adj: str, lang: str | None) -> dict:
         return {**out, "statut": "aucun tableau de sondages lisible"}
     t = tableau_recent(ls)
     if t is None:
-        return {**out, "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)"}
+        resume = []
+        for tt in sorted({l["table"] for l in ls}):
+            m = derniers([l for l in ls if l["table"] == tt])
+            resume.append({"colonnes": len(m), "total": round(sum(m.values()), 1), "exemples": list(m)[:4]})
+        return {**out, "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)",
+                "tableaux_vus": resume[:8]}
     lt = [l for l in ls if l["table"] == t]
     m_html = derniers(lt)
     nv, acc = cs.accord_lead(lt)
@@ -202,21 +231,30 @@ def examiner(cl: Client, fr: str, nom: str, adj: str, lang: str | None) -> dict:
     w = cl.get(f"{cs.API}/page/{p['key']}")
     if w.status_code == 200 and (src := w.json().get("source")):
         lw = cs.sondages_grilles(cs.grilles_wikitexte(src), 2026)
-        best, score = None, 0.0
+        # le tableau du wikitexte qui partage le plus de SONDAGES (mêmes dates de fin et mêmes colonnes) avec le
+        # tableau HTML retenu ; puis comparaison sondage par sondage, pas en moyenne (Royaume-Uni : un sous-tableau
+        # écossais aux mêmes colonnes avait été pris)
+        cle_l = lambda l: (l["fin"], tuple(sorted(l["valeurs"])))
+        html_par = {}
+        for l in lt:
+            html_par.setdefault(cle_l(l), []).append(l["valeurs"])
+        best, score = None, 0
         for tw in {l["table"] for l in lw}:
-            mw_ = derniers([l for l in lw if l["table"] == tw])
-            if len(mw_) < 3 or not 30 <= sum(mw_.values()) <= 110:     # mêmes refus que pour la lecture HTML
-                continue
-            cols = set(mw_)
-            j = len(cols & set(m_html)) / max(1, len(cols | set(m_html)))
-            if j > score:
-                best, score = tw, j
-        if best is not None and score >= 0.5:
-            m_w = derniers([l for l in lw if l["table"] == best], max(l["fin"] for l in lt))   # même date de fin
-            communs = [k for k in m_html if k in m_w]
-            ok = [k for k in communs if abs(m_w[k] - m_html[k]) <= 0.5]
-            out["wikitexte"] = {"colonnes_communes": len(communs), "concordantes": len(ok),
-                                "divergentes": {k: [m_html[k], m_w[k]] for k in communs if k not in ok}}
+            n = sum(1 for l in lw if l["table"] == tw and cle_l(l) in html_par)
+            if n > score:
+                best, score = tw, n
+        if best is not None and score >= 3:
+            ecarts, ok, div = 0, 0, {}
+            for l in [l for l in lw if l["table"] == best and cle_l(l) in html_par]:
+                proches = min(html_par[cle_l(l)], key=lambda v: sum(abs(v[k] - l["valeurs"][k]) for k in v))
+                for k, v in l["valeurs"].items():
+                    ecarts += 1
+                    if abs(v - proches[k]) <= 0.5:
+                        ok += 1
+                    else:
+                        div[f"{l['fin']} {k}"] = [proches[k], v]
+            out["wikitexte"] = {"sondages_apparies": score, "valeurs_comparees": ecarts, "concordantes": ok,
+                                "divergentes": dict(list(div.items())[:8])}
         else:
             out["wikitexte"] = {"tableau_correspondant": False, "lignes_lues": len(lw)}
     else:
@@ -259,7 +297,7 @@ def examiner(cl: Client, fr: str, nom: str, adj: str, lang: str | None) -> dict:
     if nv >= 3 and acc < 0.8:
         pb.append("relecture « Lead » en échec")
     wt = out.get("wikitexte") or {}
-    if wt.get("divergentes"):
+    if wt.get("valeurs_comparees") and wt["concordantes"] / wt["valeurs_comparees"] < 0.95:
         pb.append("wikitexte divergent")
     if wt.get("tableau_correspondant") is False:
         pb.append("wikitexte : pas de tableau correspondant")
