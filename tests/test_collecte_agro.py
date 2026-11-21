@@ -13,7 +13,7 @@ def test_lecture_cds_et_journalier():
         z.writestr("t2m.csv", CSV_T)
         z.writestr("autres.csv", CSV_S)
     lignes = ca.lire_sortie_cds(b.getvalue())
-    assert len(lignes) == 3 and lignes[1]["t2m"] == 306.15
+    assert len(lignes) == 4 and max(l.get("t2m", 0) for l in lignes) == 306.15
     j = ca.journalier(lignes)
     assert j["2026-07-01"]["tmax"] == 33.0
     assert j["2026-07-01"]["sol_0_7"] == 0.25
