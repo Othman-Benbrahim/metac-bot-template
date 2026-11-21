@@ -6,11 +6,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "2024 Russian presidential election",
+     "Democratic Republic of the Congo",
      "page refusée"
     ],
     [
-     "Democratic Republic of the Congo",
+     "2024 Russian presidential election",
      "page refusée"
     ],
     [
@@ -57,7 +57,8 @@
    },
    "alertes": [
     "colonnes en sigles, sujet nommé : vérifier la correspondance"
-   ]
+   ],
+   "verification": "non_verifie"
   },
   "manifold:hnC5dO8EZ5": {
    "election": "Clacton by election",
@@ -97,7 +98,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "manifold:yq9hpgsgsU": {
    "election": "2026 Welsh election",
@@ -152,9 +154,19 @@
     "lignes_verifiees": 9,
     "accord": 1.0
    },
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Lula PT",
+    "moyenne": 45.38,
+    "n": 5,
+    "dernier": "2026-01-28",
+    "ecart_points": 15.38
+   },
    "alertes": [
     "un seul sondage pour le sujet"
-   ]
+   ],
+   "verification": "desaccord"
   },
   "metaculus:40005": {
    "election": "2026 Hungarian parliamentary election",
@@ -219,7 +231,7 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the 2026 Portuguese presidential election",
+     "Opinion polling for the 2028 Philippine presidential election",
      "page refusée"
     ],
     [
@@ -272,7 +284,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Bolsonaro PL",
+    "moyenne": 45.46,
+    "n": 5,
+    "dernier": "2026-07-30",
+    "ecart_points": 11.52
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x023a8c2fd2a78c29c9748a44205e2cbe624d86c11ee41b81d4067ddbbf2a135f": {
    "election": "2026 Brazilian presidential election",
@@ -318,7 +340,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Flávio PL",
+    "moyenne": 43.02,
+    "n": 5,
+    "dernier": "2026-07-15",
+    "ecart_points": 8.74
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced": {
    "election": "2026 Brazilian presidential election",
@@ -364,7 +396,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Renan MISSÃO",
+    "moyenne": 35.26,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 30.3
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x0a999ae98b3c9e593cbbd33e2f940df1b071ac0ab9ede42ed12eeb8f7eef461e": {
    "election": "2026 Colombian Chamber of Representatives election",
@@ -383,11 +425,11 @@
      "page refusée"
     ],
     [
-     "2026 Peruvian general election",
+     "2018 Colombian parliamentary election",
      "page refusée"
     ],
     [
-     "2018 Colombian parliamentary election",
+     "2026 Peruvian general election",
      "page refusée"
     ],
     [
@@ -517,7 +559,8 @@
    },
    "alertes": [
     "un seul sondage pour le sujet"
-   ]
+   ],
+   "verification": "confirme_lead"
   },
   "polymarket:0x0f1843cae1fa85c263c1f8118554fcff73f8af53d58d0f9fa5283490e69a7d94": {
    "election": "2026 Wisconsin Governor Democratic primary",
@@ -565,7 +608,8 @@
    },
    "alertes": [
     "un seul sondage pour le sujet"
-   ]
+   ],
+   "verification": "non_verifie"
   },
   "polymarket:0x0f8a16fa8809127bc86712e24cea9314cf1eb000c69150ff01b9f10f166903f5": {
    "election": "2026 Brazilian presidential election",
@@ -665,7 +709,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x1572a7888f388ba02102e118f7829cf151f5e961d63e8ed9be8ce55d882512a4": {
    "election": "2026 Tocantins Senate election",
@@ -692,7 +737,7 @@
      "page refusée"
     ],
     [
-     "2026 local electoral calendar",
+     "2026 Brazilian general election",
      "page refusée"
     ]
    ]
@@ -758,7 +803,8 @@
    },
    "alertes": [
     "colonnes en sigles, sujet nommé : vérifier la correspondance"
-   ]
+   ],
+   "verification": "confirme_structure"
   },
   "polymarket:0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d": {
    "election": "2026 Brazilian presidential election",
@@ -804,7 +850,17 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Flávio PL",
+    "moyenne": 46.36,
+    "n": 5,
+    "dernier": "2026-09-10",
+    "ecart_points": 10.16
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x1b752eca1cb98032be2d6b30c0e7cb7d7c9c960e50e7ee12b44565ae631fe7ef": {
    "election": "2026 Alaska Governor primary",
@@ -861,7 +917,8 @@
    },
    "alertes": [
     "un seul sondage pour le sujet"
-   ]
+   ],
+   "verification": "non_verifie"
   },
   "polymarket:0x21ab0908882e00031041d17716d3c6c56d93dfc5f460c551c33fec2ea33ae112": {
    "election": "2026 Michigan Governor Democratic primary",
@@ -887,7 +944,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0x22776ecdacca07302e6cc578cdcf26df93b4233d5a8166cbf131cb32fec425b9": {
    "election": "2026 Tennessee Governor Democratic primary",
@@ -927,7 +985,17 @@
     "lignes_verifiees": 15,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "es",
+    "page": "Anexo:Sondeos de intención de voto para las elecciones presidenciales de Perú de 2026",
+    "colonne": "Sánchez",
+    "moyenne": 50.4,
+    "n": 2,
+    "dernier": "2026-04-25",
+    "ecart_points": 15.4
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x2f112a1cd954debe3438caac411ca4395cc53be0e1580a5802ab42618b94aff7": {
    "election": "Russia Elections: United Russia Wins Every Region?",
@@ -938,10 +1006,6 @@
      "aucun tableau lisible (HTTP 200)"
     ],
     [
-     "Anti-Russian sentiment",
-     "page refusée"
-    ],
-    [
      "United Russia",
      "page refusée"
     ],
@@ -950,12 +1014,16 @@
      "page refusée"
     ],
     [
+     "Anti-Russian sentiment",
+     "page refusée"
+    ],
+    [
      "2011 Russian legislative election",
      "page refusée"
     ],
     [
-     "United Russia",
-     "page refusée"
+     "2026 Russian legislative election",
+     "aucun tableau lisible (HTTP 200)"
     ]
    ]
   },
@@ -1017,7 +1085,17 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Flávio PL",
+    "moyenne": 46.68,
+    "n": 5,
+    "dernier": "2026-09-24",
+    "ecart_points": 7.6
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x3dbbbe0f8e69b1aee0092e1eca397b24c954c00ecc54995035a8683201ad26aa": {
    "election": "2026 Brazilian presidential election",
@@ -1063,7 +1141,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Caiado PSD",
+    "moyenne": 39.62,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 34.68
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x4427ce55f5fc0cc00f2708f914c585442bce7eede689d5daec4671449dc25f8d": {
    "election": "2026 Alaska Governor primary",
@@ -1114,7 +1202,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0x48ec3524f7a9cff57d242904dab60158a7df7c5d4e945d40b1335121c2a83e02": {
    "election": "2026 Latvian parliamentary election",
@@ -1207,7 +1296,8 @@
    },
    "alertes": [
     "un seul sondage pour le sujet"
-   ]
+   ],
+   "verification": "confirme_lead"
   },
   "polymarket:0x502a94e5c525766d5ee7f16c6568131ba1b2cbadb69c703af05a6ef00336ed64": {
    "election": "next Russian parliamentary election",
@@ -1293,7 +1383,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x521d35b8e294b0e0560063a9ed113cef947281fc4d3fea796f1bfb517e68b795": {
    "election": "2026 Arizona Governor Republican primary",
@@ -1319,7 +1410,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0x5418339990df624d3dab616d24b999b1b2adc81d5188c3291c4abcba3edd3e52": {
    "election": "next Moroccan legislative election",
@@ -1338,11 +1430,11 @@
      "page refusée"
     ],
     [
-     "2023 Spanish general election",
+     "2008 Spanish general election",
      "page refusée"
     ],
     [
-     "2008 Spanish general election",
+     "2026 United States House of Representatives elections in Michigan",
      "page refusée"
     ],
     [
@@ -1435,7 +1527,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x5e460d226d35c34c2922af0b4993a8ddf881332fe06039e321eaee9ae85c21f1": {
    "election": "2026 São Paulo Senate election",
@@ -1458,7 +1551,7 @@
      "page refusée"
     ],
     [
-     "2026 Federal District gubernatorial election",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -1541,7 +1634,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Flávio PL",
+    "moyenne": 42.62,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 8.68
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x619165fe3568255c0a048d9350b5011c19f17bcec0474e867a1a983e6411ceff": {
    "election": "general election",
@@ -1657,7 +1760,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x6b59b736ef8ec2c0f88139eb426dfcdbe7a0549e3415884f28b07a9b66602544": {
    "election": "2026 Colorado Governor Democratic primary",
@@ -1731,7 +1835,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Zema NOVO",
+    "moyenne": 38.34,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 35.2
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x77954e0830eafc9539916c591f717fb0635f6483bc9949524cb46483cd9b9d39": {
    "election": "2026 Makerfield by-election",
@@ -1771,7 +1885,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0x781a06aa5779f97724b75ed8128aaf72c4a8955c893a6fefdc0efd7cb001c513": {
    "election": "2026 Texas Republican Primary",
@@ -1840,7 +1955,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Lula PT",
+    "moyenne": 43.8,
+    "n": 5,
+    "dernier": "2026-04-09",
+    "ecart_points": 4.1
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x7b2fbaa6995a068aae8fb08a44f406297f50ce738b34afb3d18fda96ae23643a": {
    "election": "2026 Brazilian presidential election",
@@ -1886,7 +2011,17 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Cury Avante",
+    "moyenne": 40.2,
+    "n": 5,
+    "dernier": "2026-09-09",
+    "ecart_points": 32.6
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x7b91997c6c8ca00643ab322f63af50acf1a0e9b86be130b67e5a19005215e252": {
    "election": "next Russian parliamentary election",
@@ -1972,7 +2107,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x7db131f56117dd3883cb0f6ce289af6176a0f322f943cb4f226122a46619544b": {
    "election": "2026 Alabama Governor Democratic primary",
@@ -2032,7 +2168,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Renan MISSÃO",
+    "moyenne": 35.26,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 30.3
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x83030b249525db4c0bcd83a915776442f4ea32d2fba10825fca4abeb51512d8f": {
    "election": "2026 Brazilian presidential election",
@@ -2078,7 +2224,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Renan MISSÃO",
+    "moyenne": 35.26,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 30.3
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x8c48f3acf4177b5ceb012a8a2dc7a9c219eeae4a032d6ddcbc3c2ffab907439a": {
    "election": "next Russian parliamentary election",
@@ -2164,7 +2320,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x8c51f57113fa7c705af2a3b2450a42cf0d0192a49b16db4235fb7d08738a9b07": {
    "election": "2026 California Governor primary",
@@ -2224,7 +2381,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Lula PT",
+    "moyenne": 45.4,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 4.12
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0x93657cd9bb7f8f7d7721ace577bc44194716a3f1e2c9dff20e4e454ea51a8842": {
    "election": "next Russian parliamentary election",
@@ -2310,7 +2477,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x93897d7b3c157488d634a23c538b6540a181a91e249c863df9b0b0a8fab65405": {
    "election": "2026 Brazilian presidential election",
@@ -2424,7 +2592,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0x988e8c8f6e048dc5d1780da3945e7f0b7ea4e015f670b338e1a87b8ad1e85052": {
    "election": "2026 Mato Grosso do Sul Senate election",
@@ -2515,7 +2684,8 @@
      "dernier": "2026-08-27"
     }
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_structure"
   },
   "polymarket:0xae6d3d20bc8f742922dc40880cd8a8671c10385a9912fa7cd670fba0643dfe96": {
    "election": "2026 Peruvian presidential election",
@@ -2560,7 +2730,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0xafda84d1726c745016d74267018b34884919eb989a399a46bdd3a4968e4a6f4f": {
    "election": "2026 Minnesota Governor Democratic primary",
@@ -2581,11 +2752,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "2026 Federal District gubernatorial election",
+     "2026 Brazilian general election",
      "page refusée"
     ],
     [
-     "2026 Brazilian general election",
+     "2026 Federal District gubernatorial election",
      "page refusée"
     ],
     [
@@ -2597,7 +2768,7 @@
      "page refusée"
     ],
     [
-     "2026 Paraná gubernatorial election",
+     "2026 Rio de Janeiro general election",
      "page refusée"
     ],
     [
@@ -2651,7 +2822,8 @@
      "dernier": "2026-06-30"
     }
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_structure"
   },
   "polymarket:0xbbd623c4191ca76dec466507375d6df85b403b7e14f9cbd3d09f2c450ae0cd96": {
    "election": "2026 Minnesota Governor Republican primary",
@@ -2682,7 +2854,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0xbca3d70ec52a5a441ccc365a3b1b48b9cd0f08dfff4bc5871e2cd92d0d92caa1": {
    "election": "2026 Brazilian presidential election",
@@ -2728,7 +2901,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Caiado PSD",
+    "moyenne": 39.62,
+    "n": 5,
+    "dernier": "2026-08-13",
+    "ecart_points": 34.68
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0xbd0c2d5f58650e031aba69b54529cf1e85f1f73622530b53b0d261063627c64d": {
    "election": "2026 South Dakota Governor Republican primary",
@@ -2764,7 +2947,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0xc0986d59c913ffbf40a94966e77829ecffe3e0e5bb287713bce5715841409031": {
    "election": "2026 Swedish parliamentary election",
@@ -2922,7 +3106,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0xcba20965509d04b5f3ae2c51a221747317aff9387c197ca6d5919e85e5a20ee9": {
    "election": "2026 Brazilian presidential election",
@@ -2968,7 +3153,17 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Renan MISSÃO",
+    "moyenne": 32.82,
+    "n": 5,
+    "dernier": "2026-07-13",
+    "ecart_points": 28.24
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0xd25c820d3aee1c735c0fa62c36f4905632ab8c6988653b5b4134593b3209eb7f": {
    "election": "2026 Minnesota Governor Republican primary",
@@ -3001,7 +3196,8 @@
    },
    "alertes": [
     "un seul sondage pour le sujet"
-   ]
+   ],
+   "verification": "non_verifie"
   },
   "polymarket:0xd7391798f941b8fe16773f96397ef3f91a2fc36939bdd50a78776dbf93ddd280": {
    "election": "2026 Brazilian presidential election",
@@ -3101,7 +3297,8 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0xd8dcf41c1c938ffcf4ed95da62baff3c17a102fb56a6fe524db23145213ffef0": {
    "election": "next Russian parliamentary election",
@@ -3172,7 +3369,8 @@
     "lignes_verifiees": 21,
     "accord": 0.905
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "polymarket:0xdf8e2dc5860027decbe6164555c3c1c9645c3bd33e16b9dc57ca87125047d4a8": {
    "election": "2026 Brazilian presidential election",
@@ -3213,7 +3411,17 @@
     "lignes_verifiees": 9,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Lula PT",
+    "moyenne": 43.04,
+    "n": 5,
+    "dernier": "2026-04-19",
+    "ecart_points": 8.84
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818": {
    "election": "2026 Swedish parliamentary election",
@@ -3347,7 +3555,17 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
-   "alertes": []
+   "seconde_source": {
+    "langue": "pt",
+    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
+    "colonne": "Lula PT",
+    "moyenne": 44.94,
+    "n": 5,
+    "dernier": "2026-09-24",
+    "ecart_points": 4.26
+   },
+   "alertes": [],
+   "verification": "desaccord"
   },
   "polymarket:0xfa7a559ac626ee079bd1a58b78a9c32fc9c1d3129e72f7f28b7209b2368a54c1": {
    "election": "Republican Primary",
@@ -3370,7 +3588,7 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the 2020 Republican Party presidential primaries",
+     "Opinion polling for the next Italian general election",
      "page refusée"
     ],
     [
@@ -3433,7 +3651,8 @@
     "lignes_verifiees": 0,
     "accord": null
    },
-   "alertes": []
+   "alertes": [],
+   "verification": "non_verifie"
   },
   "polymarket:0xfcde02af15efe40e336d67f0ef9aa49e9d40c37b92961fb890afc4afdbfe54d6": {
    "election": "next Hungarian parliamentary election",
