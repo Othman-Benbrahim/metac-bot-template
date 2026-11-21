@@ -1,0 +1,78 @@
+# 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
+# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+theme: union-europeenne
+nom: Union européenne (institutions et politiques communes)
+declaration:
+  but: situer les institutions de l'Union, ses procédures et ses politiques communes, qui encadrent une partie des décisions
+    nationales
+  limites: dedans les institutions (Parlement, Conseil, commissions), l'élargissement, les politiques communes, les relations
+    extérieures de l'Union ; dehors la défense et l'OTAN (fiche securite-europeenne), les sanctions contre la Russie (russie-ukraine)
+  observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
+    identifiés dans listes/emetteurs.txt ; aucune personne privée
+  date: '2026-11-22'
+  espace: l'Union et ses États membres, ses voisins
+  temps: de la séance (un vote) à la décennie (un élargissement)
+  vitesse: la semaine (un Conseil), le mois (une procédure), l'année (un traité)
+  taille: méso à macro
+compartiments:
+- id: institutions
+  nom: Institutions et affaires institutionnelles
+  organisation: statut
+  elements:
+  - Parlement européen et ses commissions
+  - Conseil de l'Union européenne
+  - affaires institutionnelles
+  acteurs:
+  - nom: une institution de l'Union
+    taille: macro
+    espace: Union
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: Union
+    temps: législatures
+    vitesse: semaines
+    taille: macro
+  traces: &id001
+  - source: comptes des termes validés dans les flux RSS (dépôt lecteur-local, listes/valides.txt)
+    statut: a_brancher
+- id: elargissement
+  nom: Élargissement
+  organisation: convention
+  elements:
+  - candidatures et négociations d'adhésion
+  - Balkans occidentaux, Europe de l'Est
+  niveau:
+    espace: Union et voisins
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces: *id001
+- id: politiques_communes
+  nom: Politiques communes
+  organisation: convention
+  elements:
+  - cohésion
+  - marché unique
+  - protection des consommateurs
+  niveau:
+    espace: Union
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces: *id001
+- id: relations_exterieures
+  nom: Relations extérieures
+  organisation: geopolitique
+  elements:
+  - relations extérieures de l'Union
+  - relations avec le Royaume-Uni
+  - relations internationales (en général)
+  niveau:
+    espace: Union et monde
+    temps: années
+    vitesse: semaines
+    taille: macro
+  traces: *id001
+relations: []

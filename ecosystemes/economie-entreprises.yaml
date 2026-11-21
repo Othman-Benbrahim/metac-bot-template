@@ -1,0 +1,108 @@
+# 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
+# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+theme: economie-entreprises
+nom: Économie générale et entreprises
+declaration:
+  but: situer les entreprises, leurs dirigeants et leurs opérations, et la conjoncture générale, quand nos fiches sectorielles
+    ne les couvrent pas
+  limites: dedans conjoncture générale, finance d'entreprise et fusions, entreprises nommées (industrie automobile, distribution,
+    industriels), dirigeants d'entreprise dans leur rôle, immobilier et consommation, règles sectorielles ; dehors l'énergie,
+    les mines (dette-emergents:gisements), les banques (crises-bancaires), l'inflation (inflation-mondiale)
+  observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
+    identifiés dans listes/emetteurs.txt ; aucune personne privée
+  date: '2026-11-22'
+  espace: le monde, par pays
+  temps: du trimestre (des résultats) à la décennie (une industrie)
+  vitesse: le jour (une annonce), le trimestre, l'année
+  taille: micro (une usine) à macro (une économie)
+compartiments:
+- id: conjoncture
+  nom: Conjoncture générale
+  organisation: economie
+  elements:
+  - économie et affaires (en général)
+  - industrie
+  niveau:
+    espace: pays
+    temps: trimestres
+    vitesse: mois
+    taille: macro
+  traces: &id001
+  - source: comptes des termes validés dans les flux RSS (dépôt lecteur-local, listes/valides.txt)
+    statut: a_brancher
+- id: finance_entreprise
+  nom: Finance d'entreprise
+  organisation: economie
+  elements:
+  - investissements et financements
+  - fusions et acquisitions (dont minières)
+  - crédit public à l'exportation (UK Export Finance)
+  niveau:
+    espace: monde
+    temps: mois
+    vitesse: semaines
+    taille: méso
+  traces: *id001
+- id: entreprises
+  nom: Entreprises nommées
+  organisation: economie
+  elements:
+  - Volkswagen et Audi (usines comprises)
+  - Ikea
+  - Emerson
+  - sociétés minières encore à identifier
+  acteurs:
+  - nom: une grande entreprise
+    taille: méso
+    espace: monde
+    vitesse: semaines
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: semaines
+    taille: méso
+  traces: *id001
+- id: dirigeants_entreprise
+  nom: Dirigeants d'entreprise (rôle public)
+  organisation: statut
+  elements:
+  - présidents de directoire et de conseil de surveillance
+  acteurs:
+  - nom: un dirigeant d'entreprise (dans son rôle)
+    taille: micro
+    espace: monde
+    vitesse: semaines
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: monde
+    temps: mandats
+    vitesse: semaines
+    taille: micro
+  traces: *id001
+- id: immobilier_consommation
+  nom: Immobilier et consommation
+  organisation: economie
+  elements:
+  - immobilier
+  - commerce en ligne
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces: *id001
+- id: regles_sectorielles
+  nom: Règles sectorielles
+  organisation: convention
+  elements:
+  - réglementation sectorielle (dont minière)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: méso
+  traces: *id001
+relations: []

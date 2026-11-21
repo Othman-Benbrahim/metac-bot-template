@@ -1,0 +1,70 @@
+# 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
+# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+theme: societe-droits
+nom: Société et droits (droits humains, genre, éducation, santé publique)
+declaration:
+  but: situer les questions de droits, d'égalité, d'éducation et de santé publique hors épidémies, qui structurent l'opinion
+    et les politiques publiques
+  limites: dedans droits humains et droits des peuples autochtones et des animaux, genre et minorités, éducation, santé publique
+    hors épidémies ; dehors les épidémies (fiche epidemies), la polarisation et les croyances (fiche humain)
+  observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
+    identifiés dans listes/emetteurs.txt ; aucune personne privée
+  date: '2026-11-22'
+  espace: par pays
+  temps: de l'année à la génération
+  vitesse: le mois (une loi), l'année, la génération
+  taille: micro (une personne, en agrégat) à macro (une société)
+compartiments:
+- id: droits_humains
+  nom: Droits humains
+  organisation: convention
+  elements:
+  - droits humains
+  - droits des peuples autochtones
+  - droits des animaux
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces: &id001
+  - source: comptes des termes validés dans les flux RSS (dépôt lecteur-local, listes/valides.txt)
+    statut: a_brancher
+- id: genre_minorites
+  nom: Genre et minorités
+  organisation: societe
+  elements:
+  - droits des femmes et genre
+  - personnes LGBTQ+ (marches des fiertés, CSD)
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: années
+    taille: méso à macro
+  traces: *id001
+- id: education
+  nom: Éducation
+  organisation: societe
+  elements:
+  - éducation et formation
+  - aides à l'éducation et à la participation (Allemagne)
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: années
+    taille: macro
+  traces: *id001
+- id: sante_publique
+  nom: Santé publique hors épidémies
+  organisation: corps
+  elements:
+  - cancers et dépistage
+  - grossesse
+  - assurance maladie
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces: *id001
+relations: []

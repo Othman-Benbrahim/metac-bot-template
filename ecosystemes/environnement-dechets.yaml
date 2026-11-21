@@ -1,0 +1,68 @@
+# 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
+# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+theme: environnement-dechets
+nom: Environnement, biodiversité et déchets
+declaration:
+  but: situer les questions d'environnement générales, de biodiversité, de déchets et de pollution chimique que nos fiches
+    climatiques et biogéochimiques ne couvrent pas
+  limites: dedans environnement en général, biodiversité, déchets et économie circulaire, pollution par des substances chimiques
+    ; dehors le climat (climat-extremes), les cycles (cycles-biogeochimiques), la forêt (foret-et-sols-vivants)
+  observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
+    identifiés dans listes/emetteurs.txt ; aucune personne privée
+  date: '2026-11-22'
+  espace: du lieu (une décharge) au monde
+  temps: de l'année au siècle
+  vitesse: le mois (une pollution), l'année, la décennie
+  taille: micro à macro
+compartiments:
+- id: environnement
+  nom: Environnement (en général)
+  organisation: convention
+  elements:
+  - environnement
+  - politiques environnementales
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: années
+    taille: macro
+  traces: &id001
+  - source: comptes des termes validés dans les flux RSS (dépôt lecteur-local, listes/valides.txt)
+    statut: a_brancher
+- id: biodiversite
+  nom: Biodiversité
+  organisation: animal
+  elements:
+  - nature et biodiversité
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces: *id001
+- id: dechets
+  nom: Déchets et économie circulaire
+  organisation: technique
+  elements:
+  - déchets
+  - élimination
+  - valorisation des déchets
+  - économie circulaire
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: méso
+  traces: *id001
+- id: pollution_chimique
+  nom: Pollution chimique
+  organisation: chimique
+  elements:
+  - solvants (hexane)
+  niveau:
+    espace: lieux
+    temps: années
+    vitesse: mois
+    taille: micro à méso
+  traces: *id001
+relations: []
