@@ -1,0 +1,5546 @@
+{
+ "source": "Wikipédia (en), CC BY-SA 4.0, via api.wikimedia.org ; seuls des nombres sont gardés",
+ "questions": {
+  "infer:1722": {
+   "election": "2026 Presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2027 French presidential election",
+   "sujet": "Denis Sassour Nguesso",
+   "colonne_sujet": null,
+   "jeu": "2026-02-15",
+   "moyennes": {
+    "Mélenchon LFI": {
+     "moyenne": 35.5,
+     "n": 2,
+     "dernier": "2024-04-05"
+    },
+    "Le Pen RN": {
+     "moyenne": 64.5,
+     "n": 2,
+     "dernier": "2024-04-05"
+    }
+   }
+  },
+  "manifold:Q9gNdcP2lc": {
+   "election": "Will Orban (Fidesz) win the Hungarian Election on April 12th?",
+   "statut": "ok",
+   "page": "2020s",
+   "sujet": "Orban (Fidesz)",
+   "colonne_sujet": null,
+   "jeu": "2026-03-15",
+   "moyennes": {
+    "Deaths": {
+     "moyenne": 14.8,
+     "n": 5,
+     "dernier": "2025-12-14"
+    },
+    "Injuries": {
+     "moyenne": 36.0,
+     "n": 5,
+     "dernier": "2025-12-14"
+    }
+   }
+  },
+  "manifold:hnC5dO8EZ5": {
+   "election": "Clacton by election",
+   "statut": "introuvable"
+  },
+  "manifold:uQdQc8sICZ": {
+   "election": "Thomas Massie wins Kentucky's 4th Republican primary in 2026?",
+   "statut": "ok",
+   "page": "2026 United States Senate election in Kentucky",
+   "sujet": "Thomas Massie",
+   "colonne_sujet": null,
+   "jeu": "2026-05-10",
+   "moyennes": {
+    "Andy Barr": {
+     "moyenne": 31.8,
+     "n": 5,
+     "dernier": "2026-05-05"
+    },
+    "Daniel Cameron": {
+     "moyenne": 30.0,
+     "n": 5,
+     "dernier": "2026-05-05"
+    },
+    "Nate Morris": {
+     "moyenne": 12.4,
+     "n": 5,
+     "dernier": "2026-05-05"
+    },
+    "Charles Booker": {
+     "moyenne": 33.0,
+     "n": 3,
+     "dernier": "2026-03-31"
+    },
+    "Amy McGrath": {
+     "moyenne": 22.33,
+     "n": 3,
+     "dernier": "2026-03-31"
+    },
+    "Pamela Stevenson": {
+     "moyenne": 3.33,
+     "n": 3,
+     "dernier": "2026-03-31"
+    },
+    "Logan Forsythe": {
+     "moyenne": 1.5,
+     "n": 2,
+     "dernier": "2026-02-02"
+    },
+    "Joel Willett": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2025-10-18"
+    },
+    "Andy Barr (R)": {
+     "moyenne": 49.0,
+     "n": 1,
+     "dernier": "2025-12-19"
+    },
+    "Charles Booker (D)": {
+     "moyenne": 38.0,
+     "n": 1,
+     "dernier": "2025-12-19"
+    }
+   }
+  },
+  "manifold:yq9hpgsgsU": {
+   "election": "2026 Welsh election",
+   "statut": "ok",
+   "page": "Opinion polling on Welsh independence",
+   "sujet": "pro-independence parties",
+   "colonne_sujet": null,
+   "jeu": "2026-04-26",
+   "moyennes": {
+    "Yes": {
+     "moyenne": 29.4,
+     "n": 5,
+     "dernier": "2026-01-12"
+    },
+    "No": {
+     "moyenne": 56.2,
+     "n": 5,
+     "dernier": "2026-01-12"
+    },
+    "Total favourable": {
+     "moyenne": 32.5,
+     "n": 2,
+     "dernier": "2019-05-15"
+    },
+    "In favour": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2019-05-15"
+    },
+    "Indifferent": {
+     "moyenne": 17.5,
+     "n": 2,
+     "dernier": "2019-05-15"
+    },
+    "Against": {
+     "moyenne": 29.5,
+     "n": 2,
+     "dernier": "2019-05-15"
+    },
+    "Total unfavourable": {
+     "moyenne": 50.0,
+     "n": 2,
+     "dernier": "2019-05-15"
+    },
+    "Support independence (%)": {
+     "moyenne": 15.0,
+     "n": 5,
+     "dernier": "2023-06-25"
+    },
+    "Support more powers for the Senedd (%)": {
+     "moyenne": 20.8,
+     "n": 5,
+     "dernier": "2023-06-25"
+    },
+    "Support status quo (%)": {
+     "moyenne": 22.0,
+     "n": 5,
+     "dernier": "2023-06-25"
+    },
+    "Support fewer powers for the Senedd (%)": {
+     "moyenne": 6.8,
+     "n": 5,
+     "dernier": "2023-06-25"
+    },
+    "Support abolition of the Senedd (%)": {
+     "moyenne": 19.2,
+     "n": 5,
+     "dernier": "2023-06-25"
+    },
+    "Total (%)": {
+     "moyenne": 45.0,
+     "n": 1,
+     "dernier": "2020-06-01"
+    },
+    "Conservative (%)": {
+     "moyenne": 79.0,
+     "n": 1,
+     "dernier": "2020-06-01"
+    },
+    "Labour (%)": {
+     "moyenne": 35.0,
+     "n": 1,
+     "dernier": "2020-06-01"
+    },
+    "Lib Dem (%)": {
+     "moyenne": 53.0,
+     "n": 1,
+     "dernier": "2020-06-01"
+    },
+    "Plaid Cymru (%)": {
+     "moyenne": 4.0,
+     "n": 1,
+     "dernier": "2020-06-01"
+    },
+    "Indifferent / no reply (%)": {
+     "moyenne": 21.0,
+     "n": 1,
+     "dernier": "2020-06-01"
+    }
+   }
+  },
+  "metaculus:22310": {
+   "election": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
+   "statut": "introuvable"
+  },
+  "metaculus:40005": {
+   "election": "2026 Hungarian parliamentary election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Hungarian parliamentary election",
+   "sujet": "any political party or coalition acquire a supermajority in the 2026 Hungarian parliamentary elections",
+   "colonne_sujet": null,
+   "jeu": "2026-03-15",
+   "moyennes": {
+    "": {
+     "moyenne": 19.32,
+     "n": 5,
+     "dernier": "2026-03-08"
+    },
+    "Majority": {
+     "moyenne": 10.2,
+     "n": 5,
+     "dernier": "2026-03-08"
+    },
+    "?": {
+     "moyenne": 9.72,
+     "n": 5,
+     "dernier": "2026-02-25"
+    }
+   }
+  },
+  "metaculus:40599": {
+   "election": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he become Prime Minister?",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Hungarian parliamentary election",
+   "sujet": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he",
+   "colonne_sujet": null,
+   "jeu": "2026-03-01",
+   "moyennes": {
+    "": {
+     "moyenne": 28.32,
+     "n": 5,
+     "dernier": "2026-02-25"
+    },
+    "Majority": {
+     "moyenne": 7.6,
+     "n": 5,
+     "dernier": "2026-02-22"
+    },
+    "?": {
+     "moyenne": 9.72,
+     "n": 5,
+     "dernier": "2026-02-25"
+    }
+   }
+  },
+  "metaculus:42139": {
+   "election": "2026 Peruvian presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Peruvian general election",
+   "sujet": "Keiko Fujimori",
+   "colonne_sujet": null,
+   "jeu": "2026-03-29",
+   "moyennes": {
+    "Del Castillo": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Velásquez": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Garrido Lecca": {
+     "moyenne": 15.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    }
+   }
+  },
+  "metaculus:43844": {
+   "election": "vote in the first round of Zambia's 2026 presidential election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x003e6ffdf25f45a8d5679831551658e1b54094187f552fc6ef4b26bca404c971": {
+   "election": "Will Michelle Bolsonaro qualify for Brazil's presidential runoff?",
+   "statut": "introuvable"
+  },
+  "polymarket:0x023a8c2fd2a78c29c9748a44205e2cbe624d86c11ee41b81d4067ddbbf2a135f": {
+   "election": "Will Flavio Bolsonaro qualify for Brazil's presidential runoff?",
+   "statut": "ok",
+   "page": "2026 Colombian presidential election",
+   "sujet": "Flavio Bolsonaro",
+   "colonne_sujet": null,
+   "jeu": "2026-07-19",
+   "moyennes": {
+    "": {
+     "moyenne": 17.9,
+     "n": 5,
+     "dernier": "2026-07-05"
+    },
+    "Blank": {
+     "moyenne": 20.3,
+     "n": 5,
+     "dernier": "2026-06-26"
+    },
+    "Void": {
+     "moyenne": 2.38,
+     "n": 5,
+     "dernier": "2026-05-31"
+    },
+    "Don't know/No answer": {
+     "moyenne": 3.74,
+     "n": 5,
+     "dernier": "2026-07-05"
+    },
+    "Dávila": {
+     "moyenne": 8.1,
+     "n": 1,
+     "dernier": "2026-06-26"
+    },
+    "Galán": {
+     "moyenne": 9.6,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Fajardo": {
+     "moyenne": 9.45,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "López": {
+     "moyenne": 8.9,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Cabal": {
+     "moyenne": 3.9,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Pizarro": {
+     "moyenne": 6.75,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Gaviria": {
+     "moyenne": 2.25,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Quintero": {
+     "moyenne": 3.65,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Márquez": {
+     "moyenne": 5.6,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Vargas": {
+     "moyenne": 2.35,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Bolívar": {
+     "moyenne": 4.75,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Oviedo": {
+     "moyenne": 2.0,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Uribe": {
+     "moyenne": 2.65,
+     "n": 2,
+     "dernier": "2026-06-26"
+    },
+    "Noguera": {
+     "moyenne": 3.3,
+     "n": 1,
+     "dernier": "2026-06-26"
+    },
+    "Murillo": {
+     "moyenne": 0.5,
+     "n": 1,
+     "dernier": "2026-06-26"
+    },
+    "Valencia": {
+     "moyenne": 0.7,
+     "n": 1,
+     "dernier": "2026-06-26"
+    },
+    "Muhamad": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2026-05-09"
+    }
+   }
+  },
+  "polymarket:0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Renan Santos",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x0a999ae98b3c9e593cbbd33e2f940df1b071ac0ab9ede42ed12eeb8f7eef461e": {
+   "election": "2026 Colombian Chamber of Representatives election",
+   "statut": "ok",
+   "page": "2026 United States House of Representatives elections in Florida",
+   "sujet": "CD",
+   "colonne_sujet": null,
+   "jeu": "2026-03-01",
+   "moyennes": {
+    "Keith Gross": {
+     "moyenne": 34.0,
+     "n": 1,
+     "dernier": "2026-01-24"
+    },
+    "Evan Power": {
+     "moyenne": 32.0,
+     "n": 1,
+     "dernier": "2026-01-24"
+    },
+    "Madison Cawthorn": {
+     "moyenne": 8.0,
+     "n": 1,
+     "dernier": "2025-10-06"
+    },
+    "Chris Collins": {
+     "moyenne": 9.0,
+     "n": 1,
+     "dernier": "2025-10-06"
+    },
+    "Catalina Lauf": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2025-10-06"
+    },
+    "Jim Oberweis": {
+     "moyenne": 8.0,
+     "n": 1,
+     "dernier": "2025-10-06"
+    },
+    "Mike Pedersen": {
+     "moyenne": 2.0,
+     "n": 1,
+     "dernier": "2025-10-06"
+    },
+    "Jim Schwartzel": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-10-06"
+    },
+    "Sheila Cherfilus-McCormick": {
+     "moyenne": 36.5,
+     "n": 2,
+     "dernier": "2026-02-04"
+    },
+    "Dale Holness": {
+     "moyenne": 21.5,
+     "n": 2,
+     "dernier": "2026-02-04"
+    },
+    "Elijah Manley": {
+     "moyenne": 41.0,
+     "n": 3,
+     "dernier": "2026-02-04"
+    },
+    "María Elvira Salazar (R)": {
+     "moyenne": 45.5,
+     "n": 2,
+     "dernier": "2025-07-15"
+    },
+    "Richard Lamondin (D)": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2025-07-15"
+    }
+   }
+  },
+  "polymarket:0x0bde18e0a0220d1f97173850504a1ed4fa90ef2c6a7bc0932952790053ca0c0e": {
+   "election": "Will Haley Stevens win the 2026 Michigan Democratic Primary?",
+   "statut": "ok",
+   "page": "2026 United States Senate election in Michigan",
+   "sujet": "Haley Stevens",
+   "colonne_sujet": "Haley Stevens",
+   "jeu": "2026-06-07",
+   "moyennes": {
+    "Abdul El-Sayed": {
+     "moyenne": 31.2,
+     "n": 5,
+     "dernier": "2026-05-28"
+    },
+    "Mallory McMorrow": {
+     "moyenne": 17.0,
+     "n": 5,
+     "dernier": "2026-05-28"
+    },
+    "Haley Stevens": {
+     "moyenne": 26.4,
+     "n": 5,
+     "dernier": "2026-05-28"
+    },
+    "Gretchen Whitmer": {
+     "moyenne": 51.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Pete Buttigieg": {
+     "moyenne": 27.0,
+     "n": 1,
+     "dernier": "2025-02-08"
+    },
+    "Bill Huizenga": {
+     "moyenne": 15.33,
+     "n": 3,
+     "dernier": "2025-06-19"
+    },
+    "Mike Rogers": {
+     "moyenne": 42.5,
+     "n": 4,
+     "dernier": "2025-06-19"
+    },
+    "Tudor Dixon": {
+     "moyenne": 34.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Abdul El-Sayed (D)": {
+     "moyenne": 42.4,
+     "n": 5,
+     "dernier": "2026-06-04"
+    },
+    "Mike Rogers (R)": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2026-06-04"
+    },
+    "Haley Stevens (D)": {
+     "moyenne": 43.6,
+     "n": 5,
+     "dernier": "2026-05-23"
+    },
+    "Mallory McMorrow (D)": {
+     "moyenne": 42.4,
+     "n": 5,
+     "dernier": "2026-05-23"
+    },
+    "Bill Huizenga (R)": {
+     "moyenne": 40.4,
+     "n": 5,
+     "dernier": "2025-05-08"
+    },
+    "Pete Buttigieg (D)": {
+     "moyenne": 43.5,
+     "n": 2,
+     "dernier": "2025-03-06"
+    },
+    "Gretchen Whitmer (D)": {
+     "moyenne": 44.5,
+     "n": 2,
+     "dernier": "2025-03-13"
+    }
+   }
+  },
+  "polymarket:0x0eac20f7ed673d0e99385158ea468f6540aa208abefb74613f8170c2f9909e53": {
+   "election": "2026 Latvian parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x0f1843cae1fa85c263c1f8118554fcff73f8af53d58d0f9fa5283490e69a7d94": {
+   "election": "2026 Wisconsin Governor Democratic primary",
+   "statut": "ok",
+   "page": "2026 Wisconsin gubernatorial election",
+   "sujet": "Mandela Barnes",
+   "colonne_sujet": "Mandela Barnes",
+   "jeu": "2026-07-05",
+   "moyennes": {
+    "Mandela Barnes": {
+     "moyenne": 20.0,
+     "n": 5,
+     "dernier": "2026-05-15"
+    },
+    "Joel Brennan": {
+     "moyenne": 1.75,
+     "n": 4,
+     "dernier": "2026-05-15"
+    },
+    "David Crowley": {
+     "moyenne": 5.4,
+     "n": 5,
+     "dernier": "2026-05-15"
+    },
+    "Francesca Hong": {
+     "moyenne": 11.4,
+     "n": 5,
+     "dernier": "2026-05-15"
+    },
+    "Sara Rodriguez": {
+     "moyenne": 9.4,
+     "n": 5,
+     "dernier": "2026-05-15"
+    },
+    "Missy Hughes": {
+     "moyenne": 1.2,
+     "n": 5,
+     "dernier": "2026-05-15"
+    },
+    "Kelda Roys": {
+     "moyenne": 1.75,
+     "n": 4,
+     "dernier": "2026-03-18"
+    },
+    "Josh Kaul": {
+     "moyenne": 7.5,
+     "n": 2,
+     "dernier": "2025-11-21"
+    },
+    "Sarah Godlewski": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-11-21"
+    },
+    "Andy Manske": {
+     "moyenne": 4.0,
+     "n": 4,
+     "dernier": "2026-03-18"
+    },
+    "Tom Tiffany": {
+     "moyenne": 36.0,
+     "n": 5,
+     "dernier": "2026-03-18"
+    },
+    "Josh Schoemann": {
+     "moyenne": 7.0,
+     "n": 4,
+     "dernier": "2025-11-21"
+    },
+    "Bill Berrien": {
+     "moyenne": 10.0,
+     "n": 1,
+     "dernier": "2025-07-31"
+    },
+    "Eric Hovde": {
+     "moyenne": 19.5,
+     "n": 2,
+     "dernier": "2025-11-21"
+    },
+    "Tim Michels": {
+     "moyenne": 10.5,
+     "n": 2,
+     "dernier": "2025-11-21"
+    },
+    "Mary Felzkowski": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2025-09-30"
+    },
+    "David Crowley (D)": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2026-03-19"
+    },
+    "Tom Tiffany (R)": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2026-03-19"
+    },
+    "Francesca Hong (D)": {
+     "moyenne": 39.67,
+     "n": 3,
+     "dernier": "2026-03-19"
+    },
+    "Mandela Barnes (D)": {
+     "moyenne": 44.33,
+     "n": 3,
+     "dernier": "2026-03-19"
+    },
+    "Sara Rodriguez (D)": {
+     "moyenne": 42.0,
+     "n": 2,
+     "dernier": "2026-03-19"
+    }
+   }
+  },
+  "polymarket:0x0f8a16fa8809127bc86712e24cea9314cf1eb000c69150ff01b9f10f166903f5": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Fernando Haddad",
+   "colonne_sujet": null,
+   "jeu": "2026-04-26",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x112fc8452dde2a783a2dc139bae65454a317532858336b61ad6744d63b1bb569": {
+   "election": "Liberal Democratic Party of Russia (LDPR) win the second-most seats in the next Russian parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x1572a7888f388ba02102e118f7829cf151f5e961d63e8ed9be8ce55d882512a4": {
+   "election": "2026 Tocantins Senate election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x18b1dc1565575cb2ff48bbc078070170ca3278691860cca7c97131fc657a9530": {
+   "election": "2026 Portugal presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Portuguese presidential election",
+   "sujet": "José Cardoso",
+   "colonne_sujet": null,
+   "jeu": "2026-01-04",
+   "moyennes": {
+    "": {
+     "moyenne": 48.0,
+     "n": 5,
+     "dernier": "2025-12-19"
+    },
+    "O/ U": {
+     "moyenne": 13.74,
+     "n": 5,
+     "dernier": "2024-11-27"
+    },
+    "Oth/ Und": {
+     "moyenne": 18.6,
+     "n": 5,
+     "dernier": "2025-12-19"
+    },
+    "O/U": {
+     "moyenne": 26.94,
+     "n": 5,
+     "dernier": "2025-06-15"
+    }
+   }
+  },
+  "polymarket:0x190ac165e768e2f4169e79874d7671edd551c4c0a6ab4d4f07f16a2cae903f3b": {
+   "election": "2026 Sachsen-Anhalt parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Flávio Bolsonaro",
+   "colonne_sujet": null,
+   "jeu": "2026-09-13",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x1b752eca1cb98032be2d6b30c0e7cb7d7c9c960e50e7ee12b44565ae631fe7ef": {
+   "election": "2026 Alaska Governor primary",
+   "statut": "ok",
+   "page": "2026 Alaska gubernatorial election",
+   "sujet": "Bruce Walden",
+   "colonne_sujet": null,
+   "jeu": "2026-05-24",
+   "moyennes": {
+    "Tom Begich (D)": {
+     "moyenne": 36.2,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Click Bishop (R)": {
+     "moyenne": 13.8,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Dave Bronson (R)": {
+     "moyenne": 11.4,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Matt Claman (D)": {
+     "moyenne": 7.0,
+     "n": 4,
+     "dernier": "2026-05-17"
+    },
+    "Nancy Dahlstrom (R)": {
+     "moyenne": 23.6,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Jonathan Kreiss-Tomkins (D)": {
+     "moyenne": 7.33,
+     "n": 3,
+     "dernier": "2026-05-17"
+    },
+    "Bernadette Wilson (R)": {
+     "moyenne": 24.2,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "RCV round": {
+     "moyenne": 7.0,
+     "n": 5,
+     "dernier": "2025-07-27"
+    },
+    "Adam Crum (R)": {
+     "moyenne": 5.0,
+     "n": 3,
+     "dernier": "2025-07-27"
+    },
+    "Edna DeVries (R)": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-27"
+    },
+    "Mary Peltola (D)": {
+     "moyenne": 60.0,
+     "n": 5,
+     "dernier": "2025-07-27"
+    },
+    "Treg Taylor (R)": {
+     "moyenne": 3.5,
+     "n": 2,
+     "dernier": "2025-07-27"
+    }
+   }
+  },
+  "polymarket:0x201305cdb4e6a8c4b4c48f1e24835fce62fbfc75efd608255e36c7d504fde6c8": {
+   "election": "2026 Iowa Governor Republican primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+   "sujet": "Adam Steen",
+   "colonne_sujet": null,
+   "jeu": "2026-05-10",
+   "moyennes": {
+    "Ted Cruz": {
+     "moyenne": 5.1,
+     "n": 4,
+     "dernier": "2026-03-03"
+    },
+    "Ron DeSantis": {
+     "moyenne": 5.1,
+     "n": 5,
+     "dernier": "2026-04-24"
+    },
+    "Nikki Haley": {
+     "moyenne": 5.26,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Marco Rubio": {
+     "moyenne": 17.74,
+     "n": 5,
+     "dernier": "2026-04-24"
+    },
+    "JD Vance": {
+     "moyenne": 45.76,
+     "n": 5,
+     "dernier": "2026-04-24"
+    },
+    "Robert F. Kennedy Jr.": {
+     "moyenne": 7.52,
+     "n": 4,
+     "dernier": "2025-12-02"
+    },
+    "Donald Trump Jr.": {
+     "moyenne": 8.33,
+     "n": 3,
+     "dernier": "2026-04-24"
+    },
+    "Tulsi Gabbard": {
+     "moyenne": 4.2,
+     "n": 5,
+     "dernier": "2026-03-18"
+    },
+    "Rand Paul": {
+     "moyenne": 4.5,
+     "n": 2,
+     "dernier": "2026-02-16"
+    },
+    "Vivek Ramaswamy": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Robert F. Kennedy Jr": {
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Tim Scott": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-07-21"
+    },
+    "Donald Trump Jr": {
+     "moyenne": 2.5,
+     "n": 1,
+     "dernier": "2025-03-10"
+    }
+   }
+  },
+  "polymarket:0x21ab0908882e00031041d17716d3c6c56d93dfc5f460c551c33fec2ea33ae112": {
+   "election": "2026 Michigan Governor Democratic primary",
+   "statut": "ok",
+   "page": "2026 United States Senate election in Michigan",
+   "sujet": "Jocelyn Benson",
+   "colonne_sujet": null,
+   "jeu": "2026-07-05",
+   "moyennes": {
+    "Abdul El-Sayed": {
+     "moyenne": 38.0,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Mallory McMorrow": {
+     "moyenne": 11.6,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Haley Stevens": {
+     "moyenne": 28.8,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Gretchen Whitmer": {
+     "moyenne": 51.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Pete Buttigieg": {
+     "moyenne": 27.0,
+     "n": 1,
+     "dernier": "2025-02-08"
+    },
+    "Bill Huizenga": {
+     "moyenne": 15.33,
+     "n": 3,
+     "dernier": "2025-06-19"
+    },
+    "Mike Rogers": {
+     "moyenne": 42.5,
+     "n": 4,
+     "dernier": "2025-06-19"
+    },
+    "Tudor Dixon": {
+     "moyenne": 34.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Abdul El-Sayed (D)": {
+     "moyenne": 46.0,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Mike Rogers (R)": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Haley Stevens (D)": {
+     "moyenne": 44.4,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Mallory McMorrow (D)": {
+     "moyenne": 43.2,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Bill Huizenga (R)": {
+     "moyenne": 40.4,
+     "n": 5,
+     "dernier": "2025-05-08"
+    },
+    "Pete Buttigieg (D)": {
+     "moyenne": 43.5,
+     "n": 2,
+     "dernier": "2025-03-06"
+    },
+    "Gretchen Whitmer (D)": {
+     "moyenne": 44.5,
+     "n": 2,
+     "dernier": "2025-03-13"
+    }
+   }
+  },
+  "polymarket:0x22776ecdacca07302e6cc578cdcf26df93b4233d5a8166cbf131cb32fec425b9": {
+   "election": "2026 Tennessee Governor Democratic primary",
+   "statut": "ok",
+   "page": "2026 Tennessee gubernatorial election",
+   "sujet": "Jerri Green",
+   "colonne_sujet": "Jerri Green (D)",
+   "jeu": "2026-06-21",
+   "moyennes": {
+    "Marsha Blackburn": {
+     "moyenne": 58.8,
+     "n": 5,
+     "dernier": "2026-04-27"
+    },
+    "John Rose": {
+     "moyenne": 9.6,
+     "n": 5,
+     "dernier": "2026-04-27"
+    },
+    "Monty Fritts": {
+     "moyenne": 6.6,
+     "n": 5,
+     "dernier": "2026-04-27"
+    },
+    "Marsha Blackburn (R)": {
+     "moyenne": 50.0,
+     "n": 2,
+     "dernier": "2026-04-27"
+    },
+    "Jerri Green (D)": {
+     "moyenne": 27.5,
+     "n": 2,
+     "dernier": "2026-04-27"
+    }
+   }
+  },
+  "polymarket:0x2cd24d17f5680dc6e7b7d67c712a223ae85550745597e81bd2d2b8d073443951": {
+   "election": "2026 Peruvian presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Peruvian general election",
+   "sujet": "Roberto Sánchez Palomino",
+   "colonne_sujet": null,
+   "jeu": "2026-05-10",
+   "moyennes": {
+    "Del Castillo": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Velásquez": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Garrido Lecca": {
+     "moyenne": 15.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    }
+   }
+  },
+  "polymarket:0x2f112a1cd954debe3438caac411ca4395cc53be0e1580a5802ab42618b94aff7": {
+   "election": "Russia Elections: United Russia Wins Every Region?",
+   "statut": "aucun_sondage_avant_le_jeu",
+   "page": "2026 United States elections",
+   "sujet": "Russia Elections: United Russia",
+   "colonne_sujet": null,
+   "jeu": "2026-08-30",
+   "moyennes": {}
+  },
+  "polymarket:0x34fcbccbeaf57becfe5b45c9e1713876e288eb2c8d0f32d57d0c078cea92b6e0": {
+   "election": "2026 Ohio Governor Republican primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+   "sujet": "Casey Putsch",
+   "colonne_sujet": null,
+   "jeu": "2026-03-15",
+   "moyennes": {
+    "Ted Cruz": {
+     "moyenne": 5.1,
+     "n": 4,
+     "dernier": "2026-03-03"
+    },
+    "Ron DeSantis": {
+     "moyenne": 5.14,
+     "n": 5,
+     "dernier": "2026-03-03"
+    },
+    "Nikki Haley": {
+     "moyenne": 5.62,
+     "n": 5,
+     "dernier": "2026-03-03"
+    },
+    "Marco Rubio": {
+     "moyenne": 9.44,
+     "n": 5,
+     "dernier": "2026-03-03"
+    },
+    "JD Vance": {
+     "moyenne": 51.16,
+     "n": 5,
+     "dernier": "2026-03-03"
+    },
+    "Robert F. Kennedy Jr.": {
+     "moyenne": 7.52,
+     "n": 4,
+     "dernier": "2025-12-02"
+    },
+    "Donald Trump Jr.": {
+     "moyenne": 8.5,
+     "n": 2,
+     "dernier": "2025-07-23"
+    },
+    "Tulsi Gabbard": {
+     "moyenne": 3.96,
+     "n": 5,
+     "dernier": "2026-02-16"
+    },
+    "Rand Paul": {
+     "moyenne": 4.5,
+     "n": 2,
+     "dernier": "2026-02-16"
+    },
+    "Vivek Ramaswamy": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Robert F. Kennedy Jr": {
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Tim Scott": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-07-21"
+    },
+    "Donald Trump Jr": {
+     "moyenne": 2.5,
+     "n": 1,
+     "dernier": "2025-03-10"
+    }
+   }
+  },
+  "polymarket:0x3cb06270073639b93774e844b0cb35ac24d51d2fb6ced666401c817618b5c4e2": {
+   "election": "2026 Brazil presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Flavio Bolsonaro",
+   "colonne_sujet": null,
+   "jeu": "2026-09-27",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x3dbbbe0f8e69b1aee0092e1eca397b24c954c00ecc54995035a8683201ad26aa": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Ronaldo Caiado",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x4427ce55f5fc0cc00f2708f914c585442bce7eede689d5daec4671449dc25f8d": {
+   "election": "2026 Alaska Governor primary",
+   "statut": "ok",
+   "page": "2026 Alaska gubernatorial election",
+   "sujet": "Matt Claman",
+   "colonne_sujet": "Matt Claman (D)",
+   "jeu": "2026-06-07",
+   "moyennes": {
+    "Tom Begich (D)": {
+     "moyenne": 36.2,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Click Bishop (R)": {
+     "moyenne": 13.8,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Dave Bronson (R)": {
+     "moyenne": 11.4,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Matt Claman (D)": {
+     "moyenne": 7.0,
+     "n": 4,
+     "dernier": "2026-05-17"
+    },
+    "Nancy Dahlstrom (R)": {
+     "moyenne": 23.6,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "Jonathan Kreiss-Tomkins (D)": {
+     "moyenne": 7.33,
+     "n": 3,
+     "dernier": "2026-05-17"
+    },
+    "Bernadette Wilson (R)": {
+     "moyenne": 24.2,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "RCV round": {
+     "moyenne": 7.0,
+     "n": 5,
+     "dernier": "2025-07-27"
+    },
+    "Adam Crum (R)": {
+     "moyenne": 5.0,
+     "n": 3,
+     "dernier": "2025-07-27"
+    },
+    "Edna DeVries (R)": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-27"
+    },
+    "Mary Peltola (D)": {
+     "moyenne": 60.0,
+     "n": 5,
+     "dernier": "2025-07-27"
+    },
+    "Treg Taylor (R)": {
+     "moyenne": 3.5,
+     "n": 2,
+     "dernier": "2025-07-27"
+    }
+   }
+  },
+  "polymarket:0x48ec3524f7a9cff57d242904dab60158a7df7c5d4e945d40b1335121c2a83e02": {
+   "election": "2026 Latvian parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x502a94e5c525766d5ee7f16c6568131ba1b2cbadb69c703af05a6ef00336ed64": {
+   "election": "most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Russian legislative election",
+   "sujet": "United Russia (ER)",
+   "colonne_sujet": null,
+   "jeu": "2026-04-12",
+   "moyennes": {
+    "": {
+     "moyenne": 5.78,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "Abstention": {
+     "moyenne": 10.52,
+     "n": 5,
+     "dernier": "2026-04-09"
+    }
+   }
+  },
+  "polymarket:0x521d35b8e294b0e0560063a9ed113cef947281fc4d3fea796f1bfb517e68b795": {
+   "election": "2026 Arizona Governor Republican primary",
+   "statut": "ok",
+   "page": "2026 Arizona gubernatorial election",
+   "sujet": "Andy Biggs",
+   "colonne_sujet": "Andy Biggs",
+   "jeu": "2026-06-07",
+   "moyennes": {
+    "Andy Biggs": {
+     "moyenne": 44.6,
+     "n": 5,
+     "dernier": "2026-05-15"
+    },
+    "David Schweikert": {
+     "moyenne": 13.6,
+     "n": 5,
+     "dernier": "2026-05-15"
+    },
+    "Karrin Taylor Robson": {
+     "moyenne": 22.4,
+     "n": 5,
+     "dernier": "2026-01-24"
+    },
+    "Charlie Kirk": {
+     "moyenne": 15.5,
+     "n": 2,
+     "dernier": "2025-05-16"
+    },
+    "Kimberly Yee": {
+     "moyenne": 7.25,
+     "n": 4,
+     "dernier": "2025-05-16"
+    },
+    "Jake Hoffman": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2025-02-13"
+    },
+    "Jack McCain": {
+     "moyenne": 8.0,
+     "n": 1,
+     "dernier": "2025-02-13"
+    },
+    "Katie Hobbs (D)": {
+     "moyenne": 44.0,
+     "n": 5,
+     "dernier": "2026-05-07"
+    },
+    "Andy Biggs (R)": {
+     "moyenne": 37.2,
+     "n": 5,
+     "dernier": "2026-05-07"
+    },
+    "David Schweikert (R)": {
+     "moyenne": 36.75,
+     "n": 4,
+     "dernier": "2026-05-07"
+    },
+    "Karrin Taylor Robson (R)": {
+     "moyenne": 37.8,
+     "n": 5,
+     "dernier": "2026-01-24"
+    }
+   }
+  },
+  "polymarket:0x5418339990df624d3dab616d24b999b1b2adc81d5188c3291c4abcba3edd3e52": {
+   "election": "second-most number of seats in the next Moroccan legislative election",
+   "statut": "ok",
+   "page": "2026 United States Senate election in Michigan",
+   "sujet": "PI",
+   "colonne_sujet": null,
+   "jeu": "2026-08-30",
+   "moyennes": {
+    "Abdul El-Sayed": {
+     "moyenne": 54.56,
+     "n": 5,
+     "dernier": "2026-07-30"
+    },
+    "Mallory McMorrow": {
+     "moyenne": 3.66,
+     "n": 5,
+     "dernier": "2026-07-30"
+    },
+    "Haley Stevens": {
+     "moyenne": 38.5,
+     "n": 5,
+     "dernier": "2026-07-30"
+    },
+    "Gretchen Whitmer": {
+     "moyenne": 51.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Pete Buttigieg": {
+     "moyenne": 27.0,
+     "n": 1,
+     "dernier": "2025-02-08"
+    },
+    "Bill Huizenga": {
+     "moyenne": 15.33,
+     "n": 3,
+     "dernier": "2025-06-19"
+    },
+    "Mike Rogers": {
+     "moyenne": 42.5,
+     "n": 4,
+     "dernier": "2025-06-19"
+    },
+    "Tudor Dixon": {
+     "moyenne": 34.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Abdul El-Sayed (D)": {
+     "moyenne": 48.4,
+     "n": 5,
+     "dernier": "2026-08-20"
+    },
+    "Mike Rogers (R)": {
+     "moyenne": 45.2,
+     "n": 5,
+     "dernier": "2026-08-20"
+    },
+    "Haley Stevens (D)": {
+     "moyenne": 44.4,
+     "n": 5,
+     "dernier": "2026-07-31"
+    },
+    "Mallory McMorrow (D)": {
+     "moyenne": 43.2,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Bill Huizenga (R)": {
+     "moyenne": 40.4,
+     "n": 5,
+     "dernier": "2025-05-08"
+    },
+    "Pete Buttigieg (D)": {
+     "moyenne": 43.5,
+     "n": 2,
+     "dernier": "2025-03-06"
+    },
+    "Gretchen Whitmer (D)": {
+     "moyenne": 44.5,
+     "n": 2,
+     "dernier": "2025-03-13"
+    }
+   }
+  },
+  "polymarket:0x5b14589f33d6496a9e235856d2a4d1b82f50cd36006ebcdef44bcbf9915a643a": {
+   "election": "third-most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Next Bulgarian parliamentary election",
+   "sujet": "United Russia (ER)",
+   "colonne_sujet": null,
+   "jeu": "2026-08-02",
+   "moyennes": {
+    "": {
+     "moyenne": 4.5,
+     "n": 3,
+     "dernier": "2026-07-19"
+    },
+    "NOTA": {
+     "moyenne": 1.87,
+     "n": 3,
+     "dernier": "2026-07-19"
+    }
+   }
+  },
+  "polymarket:0x5e460d226d35c34c2922af0b4993a8ddf881332fe06039e321eaee9ae85c21f1": {
+   "election": "2026 São Paulo Senate election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2010 Brazilian presidential election",
+   "sujet": "André do Prado",
+   "colonne_sujet": null,
+   "jeu": "2026-09-27",
+   "moyennes": {
+    "": {
+     "moyenne": 11.0,
+     "n": 5,
+     "dernier": "2026-09-24"
+    },
+    "Abst. Undec.": {
+     "moyenne": 13.2,
+     "n": 5,
+     "dernier": "2026-09-24"
+    }
+   }
+  },
+  "polymarket:0x5f6dd73dbfb47119fbbd86be3e5bade018e6f5b6b6212839c948e4febe2e6020": {
+   "election": "2026 Sergipe Senate election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x6114306f724135bd1db2f5f3169386decf18f618653c196ef0a6c1afd27f4c73": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Flávio Bolsonaro",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x619165fe3568255c0a048d9350b5011c19f17bcec0474e867a1a983e6411ceff": {
+   "election": "general election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Spanish general election",
+   "sujet": "John Braun",
+   "colonne_sujet": null,
+   "jeu": "2026-05-10",
+   "moyennes": {
+    "Turnout": {
+     "moyenne": 68.3,
+     "n": 1,
+     "dernier": "2026-04-25"
+    },
+    "": {
+     "moyenne": 1.54,
+     "n": 5,
+     "dernier": "2026-04-30"
+    },
+    "?": {
+     "moyenne": 17.32,
+     "n": 5,
+     "dernier": "2026-04-30"
+    },
+    "N": {
+     "moyenne": 8.06,
+     "n": 5,
+     "dernier": "2026-04-30"
+    }
+   }
+  },
+  "polymarket:0x65d9ff5dd4b1cd8974f14335c2bd1fc5f133c1228aeb6e5d83c80f7432a120f0": {
+   "election": "second-most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Next Bulgarian parliamentary election",
+   "sujet": "New People (NL)",
+   "colonne_sujet": null,
+   "jeu": "2026-06-21",
+   "moyennes": {
+    "": {
+     "moyenne": 4.3,
+     "n": 1,
+     "dernier": "2026-05-27"
+    },
+    "NOTA": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2026-05-27"
+    }
+   }
+  },
+  "polymarket:0x6b59b736ef8ec2c0f88139eb426dfcdbe7a0549e3415884f28b07a9b66602544": {
+   "election": "2026 Colorado Governor Democratic primary",
+   "statut": "ok",
+   "page": "2026 United States House of Representatives elections in Colorado",
+   "sujet": "Phil Weiser",
+   "colonne_sujet": null,
+   "jeu": "2026-05-24",
+   "moyennes": {
+    "Jeff Hurd (R)": {
+     "moyenne": 47.0,
+     "n": 2,
+     "dernier": "2026-03-12"
+    },
+    "Alex Kelloff (D)": {
+     "moyenne": 40.0,
+     "n": 2,
+     "dernier": "2026-03-12"
+    },
+    "Jeff Crank (R)": {
+     "moyenne": 43.0,
+     "n": 1,
+     "dernier": "2025-11-03"
+    },
+    "Jessica Killin (D)": {
+     "moyenne": 40.0,
+     "n": 1,
+     "dernier": "2025-11-03"
+    },
+    "Shannon Bird": {
+     "moyenne": 20.25,
+     "n": 4,
+     "dernier": "2026-04-26"
+    },
+    "Evan Munsing": {
+     "moyenne": 5.0,
+     "n": 3,
+     "dernier": "2026-04-26"
+    },
+    "Manny Rutinel": {
+     "moyenne": 20.8,
+     "n": 5,
+     "dernier": "2026-04-26"
+    },
+    "Amie Baca-Oehlert": {
+     "moyenne": 4.0,
+     "n": 1,
+     "dernier": "2025-05-20"
+    },
+    "Yadira Caraveo": {
+     "moyenne": 43.5,
+     "n": 2,
+     "dernier": "2025-05-20"
+    },
+    "Dave Young": {
+     "moyenne": 8.0,
+     "n": 1,
+     "dernier": "2025-05-20"
+    }
+   }
+  },
+  "polymarket:0x7351fc78d06ad1bf25ee4e4f07d6e404451ba7ea062a4ce968ccdea9145a1ec3": {
+   "election": "2026 Tennessee Governor Democratic primary",
+   "statut": "ok",
+   "page": "2026 Tennessee gubernatorial election",
+   "sujet": "Carnita Atwater",
+   "colonne_sujet": null,
+   "jeu": "2026-06-21",
+   "moyennes": {
+    "Marsha Blackburn": {
+     "moyenne": 58.8,
+     "n": 5,
+     "dernier": "2026-04-27"
+    },
+    "John Rose": {
+     "moyenne": 9.6,
+     "n": 5,
+     "dernier": "2026-04-27"
+    },
+    "Monty Fritts": {
+     "moyenne": 6.6,
+     "n": 5,
+     "dernier": "2026-04-27"
+    },
+    "Marsha Blackburn (R)": {
+     "moyenne": 50.0,
+     "n": 2,
+     "dernier": "2026-04-27"
+    },
+    "Jerri Green (D)": {
+     "moyenne": 27.5,
+     "n": 2,
+     "dernier": "2026-04-27"
+    }
+   }
+  },
+  "polymarket:0x7452216a57a3bef85439820c7bb421fa38e5a5ecff8c43658de515c1df70151e": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Romeu Zema",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x77954e0830eafc9539916c591f717fb0635f6483bc9949524cb46483cd9b9d39": {
+   "election": "2026 Makerfield by-election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x780eda657742337ca48284a55e7f2103d35484f16e05c49271cf1ed4e8cac89c": {
+   "election": "Will John Cornyn win the Texas Republican Senate Primary runoff by 9% or more?",
+   "statut": "ok",
+   "page": "2026 United States Senate election in Texas",
+   "sujet": "John Cornyn",
+   "colonne_sujet": "John Cornyn",
+   "jeu": "2026-05-10",
+   "moyennes": {
+    "John Cornyn": {
+     "moyenne": 43.2,
+     "n": 5,
+     "dernier": "2026-05-05"
+    },
+    "Wesley Hunt": {
+     "moyenne": 17.84,
+     "n": 5,
+     "dernier": "2026-03-02"
+    },
+    "Ken Paxton": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2026-05-05"
+    },
+    "Jasmine Crockett": {
+     "moyenne": 45.18,
+     "n": 5,
+     "dernier": "2026-03-02"
+    },
+    "James Talarico": {
+     "moyenne": 49.46,
+     "n": 5,
+     "dernier": "2026-03-02"
+    },
+    "Colin Allred": {
+     "moyenne": 39.8,
+     "n": 5,
+     "dernier": "2025-10-29"
+    },
+    "Beto O'Rourke": {
+     "moyenne": 35.8,
+     "n": 5,
+     "dernier": "2025-10-01"
+    },
+    "Joaquin Castro": {
+     "moyenne": 10.0,
+     "n": 3,
+     "dernier": "2025-09-24"
+    },
+    "Ken Paxton (R)": {
+     "moyenne": 41.6,
+     "n": 5,
+     "dernier": "2026-05-06"
+    },
+    "James Talarico (D)": {
+     "moyenne": 44.2,
+     "n": 5,
+     "dernier": "2026-05-06"
+    },
+    "Ted Brown (L)": {
+     "moyenne": 3.33,
+     "n": 3,
+     "dernier": "2026-05-06"
+    },
+    "John Cornyn (R)": {
+     "moyenne": 40.6,
+     "n": 5,
+     "dernier": "2026-05-06"
+    },
+    "Jasmine Crockett (D)": {
+     "moyenne": 44.8,
+     "n": 5,
+     "dernier": "2026-02-12"
+    },
+    "Colin Allred (D)": {
+     "moyenne": 44.4,
+     "n": 5,
+     "dernier": "2025-11-17"
+    },
+    "Wesley Hunt (R)": {
+     "moyenne": 47.4,
+     "n": 5,
+     "dernier": "2026-01-31"
+    },
+    "Beto O'Rourke (D)": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2025-10-01"
+    }
+   }
+  },
+  "polymarket:0x781a06aa5779f97724b75ed8128aaf72c4a8955c893a6fefdc0efd7cb001c513": {
+   "election": "Will John Cornyn win the 2026 Texas Republican Primary?",
+   "statut": "ok",
+   "page": "2026 United States Senate election in Texas",
+   "sujet": "John Cornyn",
+   "colonne_sujet": "John Cornyn",
+   "jeu": "2026-03-01",
+   "moyennes": {
+    "John Cornyn": {
+     "moyenne": 39.8,
+     "n": 5,
+     "dernier": "2026-02-26"
+    },
+    "Wesley Hunt": {
+     "moyenne": 22.2,
+     "n": 5,
+     "dernier": "2026-02-26"
+    },
+    "Ken Paxton": {
+     "moyenne": 45.6,
+     "n": 5,
+     "dernier": "2026-02-26"
+    },
+    "Jasmine Crockett": {
+     "moyenne": 49.8,
+     "n": 5,
+     "dernier": "2026-02-25"
+    },
+    "James Talarico": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2026-02-25"
+    },
+    "Colin Allred": {
+     "moyenne": 39.8,
+     "n": 5,
+     "dernier": "2025-10-29"
+    },
+    "Beto O'Rourke": {
+     "moyenne": 35.8,
+     "n": 5,
+     "dernier": "2025-10-01"
+    },
+    "Joaquin Castro": {
+     "moyenne": 10.0,
+     "n": 3,
+     "dernier": "2025-09-24"
+    },
+    "Ken Paxton (R)": {
+     "moyenne": 45.6,
+     "n": 5,
+     "dernier": "2026-02-12"
+    },
+    "James Talarico (D)": {
+     "moyenne": 43.8,
+     "n": 5,
+     "dernier": "2026-01-31"
+    },
+    "Ted Brown (L)": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2026-01-31"
+    },
+    "John Cornyn (R)": {
+     "moyenne": 46.6,
+     "n": 5,
+     "dernier": "2026-01-31"
+    },
+    "Jasmine Crockett (D)": {
+     "moyenne": 44.8,
+     "n": 5,
+     "dernier": "2026-02-12"
+    },
+    "Colin Allred (D)": {
+     "moyenne": 44.4,
+     "n": 5,
+     "dernier": "2025-11-17"
+    },
+    "Wesley Hunt (R)": {
+     "moyenne": 47.4,
+     "n": 5,
+     "dernier": "2026-01-31"
+    },
+    "Beto O'Rourke (D)": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2025-10-01"
+    }
+   }
+  },
+  "polymarket:0x78f5630bafa15147941daa2fd2926b43febe6af1544cd9d8527b226914f3ca11": {
+   "election": "2026 Peruvian presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Peruvian general election",
+   "sujet": "Alfonso López Chau",
+   "colonne_sujet": null,
+   "jeu": "2026-03-29",
+   "moyennes": {
+    "Del Castillo": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Velásquez": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Garrido Lecca": {
+     "moyenne": 15.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    }
+   }
+  },
+  "polymarket:0x7b22caeed454d3c7dbd07b83d8255c74e1482c4f958b4ba4dd0c27b864cd47a2": {
+   "election": "Will Luiz Inácio Lula da Silva qualify for Brazil's presidential runoff?",
+   "statut": "introuvable"
+  },
+  "polymarket:0x7b2fbaa6995a068aae8fb08a44f406297f50ce738b34afb3d18fda96ae23643a": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Augusto Cury",
+   "colonne_sujet": null,
+   "jeu": "2026-09-13",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x7b91997c6c8ca00643ab322f63af50acf1a0e9b86be130b67e5a19005215e252": {
+   "election": "Communist Party of the Russian Federation (KPRF) gain the most seats in the next Russian parliamentary election",
+   "statut": "aucun_sondage_avant_le_jeu",
+   "page": "1993 Russian legislative election",
+   "sujet": "the Communist Party of the Russian Federation (KPRF)",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {}
+  },
+  "polymarket:0x7db131f56117dd3883cb0f6ce289af6176a0f322f943cb4f226122a46619544b": {
+   "election": "2026 Alabama Governor Democratic primary",
+   "statut": "aucun_sondage_avant_le_jeu",
+   "page": "2026 United States House of Representatives elections",
+   "sujet": "Doug Jones",
+   "colonne_sujet": null,
+   "jeu": "2026-04-26",
+   "moyennes": {}
+  },
+  "polymarket:0x819cc40b88572690508717385d9397af991f8bc929f764fa73c99e5e10c1e55b": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Renan Santos",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x83030b249525db4c0bcd83a915776442f4ea32d2fba10825fca4abeb51512d8f": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Renan Santos",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x8c48f3acf4177b5ceb012a8a2dc7a9c219eeae4a032d6ddcbc3c2ffab907439a": {
+   "election": "Liberal Democratic Party of Russia (LDPR) gain the most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Russian legislative election",
+   "sujet": "the Liberal Democratic Party of Russia (LDPR)",
+   "colonne_sujet": null,
+   "jeu": "2026-04-12",
+   "moyennes": {
+    "": {
+     "moyenne": 5.78,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "Abstention": {
+     "moyenne": 10.52,
+     "n": 5,
+     "dernier": "2026-04-09"
+    }
+   }
+  },
+  "polymarket:0x8c51f57113fa7c705af2a3b2450a42cf0d0192a49b16db4235fb7d08738a9b07": {
+   "election": "2026 California Governor primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+   "sujet": "Thunder Parley",
+   "colonne_sujet": null,
+   "jeu": "2026-04-26",
+   "moyennes": {
+    "Ted Cruz": {
+     "moyenne": 5.1,
+     "n": 4,
+     "dernier": "2026-03-03"
+    },
+    "Ron DeSantis": {
+     "moyenne": 5.04,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Nikki Haley": {
+     "moyenne": 5.26,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Marco Rubio": {
+     "moyenne": 15.58,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "JD Vance": {
+     "moyenne": 47.32,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Robert F. Kennedy Jr.": {
+     "moyenne": 7.52,
+     "n": 4,
+     "dernier": "2025-12-02"
+    },
+    "Donald Trump Jr.": {
+     "moyenne": 8.5,
+     "n": 2,
+     "dernier": "2025-07-23"
+    },
+    "Tulsi Gabbard": {
+     "moyenne": 4.2,
+     "n": 5,
+     "dernier": "2026-03-18"
+    },
+    "Rand Paul": {
+     "moyenne": 4.5,
+     "n": 2,
+     "dernier": "2026-02-16"
+    },
+    "Vivek Ramaswamy": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Robert F. Kennedy Jr": {
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Tim Scott": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-07-21"
+    },
+    "Donald Trump Jr": {
+     "moyenne": 2.5,
+     "n": 1,
+     "dernier": "2025-03-10"
+    }
+   }
+  },
+  "polymarket:0x8ee27c276a1bee094293751285d8a6697674b023196cb21fdd14bf3ca12f6ec0": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Luiz Inácio Lula da Silva",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x93657cd9bb7f8f7d7721ace577bc44194716a3f1e2c9dff20e4e454ea51a8842": {
+   "election": "most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Russian legislative election",
+   "sujet": "New People (NL)",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "": {
+     "moyenne": 6.04,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Abstention": {
+     "moyenne": 10.54,
+     "n": 5,
+     "dernier": "2026-08-13"
+    }
+   }
+  },
+  "polymarket:0x93897d7b3c157488d634a23c538b6540a181a91e249c863df9b0b0a8fab65405": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Pablo Marçal",
+   "colonne_sujet": null,
+   "jeu": "2026-08-30",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0x939bf902c7ba884c1310f19b6be20576f823952460f6367c9f10c08cd449ee60": {
+   "election": "2026 Ohio Governor Republican primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+   "sujet": "Vivek Ramaswamy",
+   "colonne_sujet": "Vivek Ramaswamy",
+   "jeu": "2026-03-29",
+   "moyennes": {
+    "Ted Cruz": {
+     "moyenne": 5.1,
+     "n": 4,
+     "dernier": "2026-03-03"
+    },
+    "Ron DeSantis": {
+     "moyenne": 5.04,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Nikki Haley": {
+     "moyenne": 5.26,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Marco Rubio": {
+     "moyenne": 15.58,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "JD Vance": {
+     "moyenne": 47.32,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Robert F. Kennedy Jr.": {
+     "moyenne": 7.52,
+     "n": 4,
+     "dernier": "2025-12-02"
+    },
+    "Donald Trump Jr.": {
+     "moyenne": 8.5,
+     "n": 2,
+     "dernier": "2025-07-23"
+    },
+    "Tulsi Gabbard": {
+     "moyenne": 4.2,
+     "n": 5,
+     "dernier": "2026-03-18"
+    },
+    "Rand Paul": {
+     "moyenne": 4.5,
+     "n": 2,
+     "dernier": "2026-02-16"
+    },
+    "Vivek Ramaswamy": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Robert F. Kennedy Jr": {
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Tim Scott": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-07-21"
+    },
+    "Donald Trump Jr": {
+     "moyenne": 2.5,
+     "n": 1,
+     "dernier": "2025-03-10"
+    }
+   }
+  },
+  "polymarket:0x94ffc785f73c9d70c0c9550b2412842d025d20d02f9e9e20a18cc4598944cbc5": {
+   "election": "most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Russian legislative election",
+   "sujet": "United Russia (ER)",
+   "colonne_sujet": null,
+   "jeu": "2026-04-12",
+   "moyennes": {
+    "": {
+     "moyenne": 5.78,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "Abstention": {
+     "moyenne": 10.52,
+     "n": 5,
+     "dernier": "2026-04-09"
+    }
+   }
+  },
+  "polymarket:0x988e8c8f6e048dc5d1780da3945e7f0b7ea4e015f670b338e1a87b8ad1e85052": {
+   "election": "2026 Mato Grosso do Sul Senate election",
+   "statut": "introuvable"
+  },
+  "polymarket:0x99a0fdc1bb6308873bf87eb75a47e21c8340fe20fb6b033444c1d21392da10a9": {
+   "election": "Will Ken Paxton win the 2026 Texas Republican Primary?",
+   "statut": "ok",
+   "page": "2026 Texas gubernatorial election",
+   "sujet": "Ken Paxton",
+   "colonne_sujet": null,
+   "jeu": "2026-03-01",
+   "moyennes": {
+    "Greg Abbott": {
+     "moyenne": 91.0,
+     "n": 1,
+     "dernier": "2026-02-16"
+    },
+    "Evelyn Brooks": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2026-02-16"
+    },
+    "Pete Chambers": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2026-02-16"
+    },
+    "Arturo Espinosa": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2026-02-16"
+    },
+    "Mark V. Goloby": {
+     "moyenne": 1.0,
+     "n": 1,
+     "dernier": "2026-02-16"
+    },
+    "Chris Bell": {
+     "moyenne": 13.0,
+     "n": 5,
+     "dernier": "2026-02-24"
+    },
+    "Bobby Cole": {
+     "moyenne": 4.8,
+     "n": 5,
+     "dernier": "2026-02-24"
+    },
+    "Gina Hinojosa": {
+     "moyenne": 58.4,
+     "n": 5,
+     "dernier": "2026-02-24"
+    },
+    "Angela Villescaz": {
+     "moyenne": 2.5,
+     "n": 4,
+     "dernier": "2026-02-24"
+    },
+    "Andrew White": {
+     "moyenne": 3.5,
+     "n": 2,
+     "dernier": "2026-02-24"
+    },
+    "Greg Abbott (R)": {
+     "moyenne": 47.8,
+     "n": 5,
+     "dernier": "2026-02-22"
+    },
+    "Gina Hinojosa (D)": {
+     "moyenne": 40.6,
+     "n": 5,
+     "dernier": "2026-02-22"
+    },
+    "Pat Dixon (L)": {
+     "moyenne": 4.5,
+     "n": 2,
+     "dernier": "2026-02-03"
+    }
+   }
+  },
+  "polymarket:0xad485c0cfb6058e791ffd719ee3a99bf8ea241975704b5960041ec0fe017dadf": {
+   "election": "2026 Sachsen-Anhalt parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0xae6d3d20bc8f742922dc40880cd8a8671c10385a9912fa7cd670fba0643dfe96": {
+   "election": "2026 Peruvian presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Peruvian general election",
+   "sujet": "Rafael López Aliaga",
+   "colonne_sujet": null,
+   "jeu": "2026-03-29",
+   "moyennes": {
+    "Del Castillo": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Velásquez": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Garrido Lecca": {
+     "moyenne": 15.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    }
+   }
+  },
+  "polymarket:0xaeb57cf07ae50c2846d59f46f210b6269b8192afdd875ee7902e65e1ae64c23f": {
+   "election": "2026 Tennessee Governor Republican primary",
+   "statut": "ok",
+   "page": "2026 Tennessee gubernatorial election",
+   "sujet": "John Rose",
+   "colonne_sujet": "John Rose",
+   "jeu": "2026-07-19",
+   "moyennes": {
+    "Marsha Blackburn": {
+     "moyenne": 54.4,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "John Rose": {
+     "moyenne": 16.0,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Monty Fritts": {
+     "moyenne": 9.2,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Marsha Blackburn (R)": {
+     "moyenne": 50.0,
+     "n": 2,
+     "dernier": "2026-04-27"
+    },
+    "Jerri Green (D)": {
+     "moyenne": 27.5,
+     "n": 2,
+     "dernier": "2026-04-27"
+    }
+   }
+  },
+  "polymarket:0xafda84d1726c745016d74267018b34884919eb989a399a46bdd3a4968e4a6f4f": {
+   "election": "2026 Minnesota Governor Democratic primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Democratic Party presidential primaries",
+   "sujet": "Amy Klobuchar",
+   "colonne_sujet": null,
+   "jeu": "2026-06-07",
+   "moyennes": {
+    "Pete Buttigieg": {
+     "moyenne": 17.54,
+     "n": 5,
+     "dernier": "2026-04-19"
+    },
+    "Kamala Harris": {
+     "moyenne": 10.4,
+     "n": 5,
+     "dernier": "2026-04-19"
+    },
+    "Mark Kelly": {
+     "moyenne": 8.08,
+     "n": 5,
+     "dernier": "2026-04-19"
+    },
+    "Gavin Newsom": {
+     "moyenne": 19.16,
+     "n": 5,
+     "dernier": "2026-04-19"
+    },
+    "Alexandria Ocasio-Cortez": {
+     "moyenne": 10.82,
+     "n": 5,
+     "dernier": "2026-04-19"
+    },
+    "Josh Shapiro": {
+     "moyenne": 3.04,
+     "n": 5,
+     "dernier": "2026-03-15"
+    },
+    "Gretchen Whitmer": {
+     "moyenne": 5.72,
+     "n": 5,
+     "dernier": "2026-04-19"
+    },
+    "JB Pritzker": {
+     "moyenne": 5.02,
+     "n": 5,
+     "dernier": "2026-03-23"
+    },
+    "Cory Booker": {
+     "moyenne": 5.2,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Andy Beshear": {
+     "moyenne": 4.3,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Bernie Sanders": {
+     "moyenne": 5.4,
+     "n": 1,
+     "dernier": "2025-08-12"
+    }
+   }
+  },
+  "polymarket:0xb3891d3b59557cedde1dad5c365db1cff8dffb7aa189cf49ac87639af95a2468": {
+   "election": "2026 Maranhão Senate election",
+   "statut": "introuvable"
+  },
+  "polymarket:0xbb333a67a021476c97c9ac368e9d280ca43fe09782042d3ada92e48955c6a90c": {
+   "election": "2026 Sachsen-Anhalt parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0xbbd623c4191ca76dec466507375d6df85b403b7e14f9cbd3d09f2c450ae0cd96": {
+   "election": "2026 Minnesota Governor Republican primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+   "sujet": "Mike Lindell",
+   "colonne_sujet": null,
+   "jeu": "2026-07-05",
+   "moyennes": {
+    "Ted Cruz": {
+     "moyenne": 5.1,
+     "n": 4,
+     "dernier": "2026-03-03"
+    },
+    "Ron DeSantis": {
+     "moyenne": 8.18,
+     "n": 5,
+     "dernier": "2026-06-25"
+    },
+    "Nikki Haley": {
+     "moyenne": 6.34,
+     "n": 5,
+     "dernier": "2026-05-13"
+    },
+    "Marco Rubio": {
+     "moyenne": 25.32,
+     "n": 5,
+     "dernier": "2026-06-25"
+    },
+    "JD Vance": {
+     "moyenne": 40.62,
+     "n": 5,
+     "dernier": "2026-06-25"
+    },
+    "Robert F. Kennedy Jr.": {
+     "moyenne": 7.52,
+     "n": 4,
+     "dernier": "2025-12-02"
+    },
+    "Donald Trump Jr.": {
+     "moyenne": 8.33,
+     "n": 3,
+     "dernier": "2026-04-24"
+    },
+    "Tulsi Gabbard": {
+     "moyenne": 3.8,
+     "n": 5,
+     "dernier": "2026-06-25"
+    },
+    "Rand Paul": {
+     "moyenne": 3.1,
+     "n": 3,
+     "dernier": "2026-05-13"
+    },
+    "Vivek Ramaswamy": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Robert F. Kennedy Jr": {
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Tim Scott": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-07-21"
+    },
+    "Donald Trump Jr": {
+     "moyenne": 2.5,
+     "n": 1,
+     "dernier": "2025-03-10"
+    }
+   }
+  },
+  "polymarket:0xbca3d70ec52a5a441ccc365a3b1b48b9cd0f08dfff4bc5871e2cd92d0d92caa1": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Ronaldo Caiado",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0xbd0c2d5f58650e031aba69b54529cf1e85f1f73622530b53b0d261063627c64d": {
+   "election": "2026 South Dakota Governor Republican primary",
+   "statut": "ok",
+   "page": "2026 South Dakota gubernatorial election",
+   "sujet": "Larry Rhoden",
+   "colonne_sujet": "Larry Rhoden",
+   "jeu": "2026-04-26",
+   "moyennes": {
+    "Toby Doeden": {
+     "moyenne": 16.5,
+     "n": 4,
+     "dernier": "2026-04-11"
+    },
+    "Jon Hansen": {
+     "moyenne": 13.0,
+     "n": 4,
+     "dernier": "2026-04-11"
+    },
+    "Dusty Johnson": {
+     "moyenne": 30.75,
+     "n": 4,
+     "dernier": "2026-04-11"
+    },
+    "Larry Rhoden": {
+     "moyenne": 22.25,
+     "n": 4,
+     "dernier": "2026-04-11"
+    }
+   }
+  },
+  "polymarket:0xc0986d59c913ffbf40a94966e77829ecffe3e0e5bb287713bce5715841409031": {
+   "election": "2026 Swedish parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0xc23d4f3a1a96576e93f32ab1806c6d85f5a3d1925df7c80bdb97cfd6787b4dfc": {
+   "election": "2026 Portugal presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Portuguese presidential election",
+   "sujet": "Orlando Cruz",
+   "colonne_sujet": null,
+   "jeu": "2026-01-04",
+   "moyennes": {
+    "": {
+     "moyenne": 48.0,
+     "n": 5,
+     "dernier": "2025-12-19"
+    },
+    "O/ U": {
+     "moyenne": 13.74,
+     "n": 5,
+     "dernier": "2024-11-27"
+    },
+    "Oth/ Und": {
+     "moyenne": 18.6,
+     "n": 5,
+     "dernier": "2025-12-19"
+    },
+    "O/U": {
+     "moyenne": 26.94,
+     "n": 5,
+     "dernier": "2025-06-15"
+    }
+   }
+  },
+  "polymarket:0xc3e3cdca0347d289129169eb6b030784dfce7dec02e08bf836e530c12a055141": {
+   "election": "2026 Sergipe Senate election",
+   "statut": "introuvable"
+  },
+  "polymarket:0xc4c3dbcc37a957a817599b0bf9fb5bd6b62b19210b0f527fec57cb75c7ed150a": {
+   "election": "2026 Peruvian presidential election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Peruvian general election",
+   "sujet": "Keiko Fujimori",
+   "colonne_sujet": null,
+   "jeu": "2026-03-29",
+   "moyennes": {
+    "Del Castillo": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Velásquez": {
+     "moyenne": 17.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    },
+    "Garrido Lecca": {
+     "moyenne": 15.0,
+     "n": 1,
+     "dernier": "2025-08-07"
+    }
+   }
+  },
+  "polymarket:0xc9615bb82d6535d630ff98e8094060bc767d8b9446516e98f84d2001a35e50e7": {
+   "election": "most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Russian legislative election",
+   "sujet": "New People (NL)",
+   "colonne_sujet": null,
+   "jeu": "2026-04-12",
+   "moyennes": {
+    "": {
+     "moyenne": 5.78,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "Abstention": {
+     "moyenne": 10.52,
+     "n": 5,
+     "dernier": "2026-04-09"
+    }
+   }
+  },
+  "polymarket:0xcba20965509d04b5f3ae2c51a221747317aff9387c197ca6d5919e85e5a20ee9": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Renan Santos",
+   "colonne_sujet": null,
+   "jeu": "2026-07-19",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0xd25c820d3aee1c735c0fa62c36f4905632ab8c6988653b5b4134593b3209eb7f": {
+   "election": "2026 Minnesota Governor Republican primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+   "sujet": "Lisa Demuth",
+   "colonne_sujet": null,
+   "jeu": "2026-06-07",
+   "moyennes": {
+    "Ted Cruz": {
+     "moyenne": 5.1,
+     "n": 4,
+     "dernier": "2026-03-03"
+    },
+    "Ron DeSantis": {
+     "moyenne": 7.92,
+     "n": 5,
+     "dernier": "2026-05-16"
+    },
+    "Nikki Haley": {
+     "moyenne": 6.34,
+     "n": 5,
+     "dernier": "2026-05-13"
+    },
+    "Marco Rubio": {
+     "moyenne": 21.98,
+     "n": 5,
+     "dernier": "2026-05-16"
+    },
+    "JD Vance": {
+     "moyenne": 41.5,
+     "n": 5,
+     "dernier": "2026-05-16"
+    },
+    "Robert F. Kennedy Jr.": {
+     "moyenne": 7.52,
+     "n": 4,
+     "dernier": "2025-12-02"
+    },
+    "Donald Trump Jr.": {
+     "moyenne": 8.33,
+     "n": 3,
+     "dernier": "2026-04-24"
+    },
+    "Rand Paul": {
+     "moyenne": 3.1,
+     "n": 3,
+     "dernier": "2026-05-13"
+    },
+    "Tulsi Gabbard": {
+     "moyenne": 4.2,
+     "n": 5,
+     "dernier": "2026-03-18"
+    },
+    "Vivek Ramaswamy": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Robert F. Kennedy Jr": {
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Tim Scott": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-07-21"
+    },
+    "Donald Trump Jr": {
+     "moyenne": 2.5,
+     "n": 1,
+     "dernier": "2025-03-10"
+    }
+   }
+  },
+  "polymarket:0xd7391798f941b8fe16773f96397ef3f91a2fc36939bdd50a78776dbf93ddd280": {
+   "election": "Will Tarcisio de Frietas qualify for Brazil's presidential runoff?",
+   "statut": "introuvable"
+  },
+  "polymarket:0xd78b6917ee08627da7a527ed3b18700b5479da7b241ce1264cf1a8da806caf72": {
+   "election": "second-most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "Next Bulgarian parliamentary election",
+   "sujet": "United Russia (ER)",
+   "colonne_sujet": null,
+   "jeu": "2026-08-02",
+   "moyennes": {
+    "": {
+     "moyenne": 4.5,
+     "n": 3,
+     "dernier": "2026-07-19"
+    },
+    "NOTA": {
+     "moyenne": 1.87,
+     "n": 3,
+     "dernier": "2026-07-19"
+    }
+   }
+  },
+  "polymarket:0xd8dcf41c1c938ffcf4ed95da62baff3c17a102fb56a6fe524db23145213ffef0": {
+   "election": "Communist Party of the Russian Federation (KPRF) win the third-most seats in the next Russian parliamentary election",
+   "statut": "ok",
+   "page": "2021 Russian legislative election",
+   "sujet": "the Communist Party of the Russian Federation (KPRF)",
+   "colonne_sujet": null,
+   "jeu": "2026-09-13",
+   "moyennes": {
+    "42–46%": {
+     "moyenne": 45.1,
+     "n": 1,
+     "dernier": "2026-09-09"
+    },
+    "17–19%": {
+     "moyenne": 18.6,
+     "n": 1,
+     "dernier": "2026-09-09"
+    },
+    "11–13%": {
+     "moyenne": 12.0,
+     "n": 1,
+     "dernier": "2026-09-09"
+    },
+    "7–9%": {
+     "moyenne": 8.1,
+     "n": 1,
+     "dernier": "2026-09-09"
+    },
+    "3.5–5%": {
+     "moyenne": 3.6,
+     "n": 2,
+     "dernier": "2026-09-09"
+    },
+    ">3%": {
+     "moyenne": 3.05,
+     "n": 2,
+     "dernier": "2026-09-09"
+    },
+    "—": {
+     "moyenne": 0.25,
+     "n": 2,
+     "dernier": "2026-09-09"
+    },
+    "23–29%": {
+     "moyenne": 26.5,
+     "n": 1,
+     "dernier": "2026-09-09"
+    }
+   }
+  },
+  "polymarket:0xdf8e2dc5860027decbe6164555c3c1c9645c3bd33e16b9dc57ca87125047d4a8": {
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Luiz Inácio Lula da Silva",
+   "colonne_sujet": null,
+   "jeu": "2026-04-26",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818": {
+   "election": "2026 Swedish parliamentary election",
+   "statut": "introuvable"
+  },
+  "polymarket:0xe70dc5791fd703624bdd33fbdd6c4374bf51723c4c5e2fb88ee87857dc72d762": {
+   "election": "2026 Alaska Governor primary",
+   "statut": "ok",
+   "page": "2026 Alaska gubernatorial election",
+   "sujet": "Edna DeVries",
+   "colonne_sujet": "Edna DeVries (R)",
+   "jeu": "2026-07-19",
+   "moyennes": {
+    "Tom Begich (D)": {
+     "moyenne": 34.4,
+     "n": 5,
+     "dernier": "2026-07-01"
+    },
+    "Click Bishop (R)": {
+     "moyenne": 11.6,
+     "n": 5,
+     "dernier": "2026-07-01"
+    },
+    "Dave Bronson (R)": {
+     "moyenne": 18.4,
+     "n": 5,
+     "dernier": "2026-07-01"
+    },
+    "Jonathan Kreiss-Tomkins (D)": {
+     "moyenne": 16.0,
+     "n": 5,
+     "dernier": "2026-07-01"
+    },
+    "Bill Walker (I)": {
+     "moyenne": 9.33,
+     "n": 3,
+     "dernier": "2026-07-01"
+    },
+    "Bernadette Wilson (R)": {
+     "moyenne": 30.6,
+     "n": 5,
+     "dernier": "2026-07-01"
+    },
+    "Matt Claman (D)": {
+     "moyenne": 6.2,
+     "n": 5,
+     "dernier": "2026-06-25"
+    },
+    "Nancy Dahlstrom (R)": {
+     "moyenne": 23.6,
+     "n": 5,
+     "dernier": "2026-05-17"
+    },
+    "RCV round": {
+     "moyenne": 3.0,
+     "n": 5,
+     "dernier": "2026-07-01"
+    },
+    "Adam Crum (R)": {
+     "moyenne": 5.0,
+     "n": 3,
+     "dernier": "2025-07-27"
+    },
+    "Edna DeVries (R)": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-27"
+    },
+    "Mary Peltola (D)": {
+     "moyenne": 60.0,
+     "n": 5,
+     "dernier": "2025-07-27"
+    },
+    "Treg Taylor (R)": {
+     "moyenne": 3.5,
+     "n": 2,
+     "dernier": "2025-07-27"
+    }
+   }
+  },
+  "polymarket:0xeb44a06c677ce7a47e5fd2007182e020a577395dc3613ad55d3d576e33964c3d": {
+   "election": "Will Mallory McMorrow win the 2026 Michigan Democratic Primary?",
+   "statut": "ok",
+   "page": "2026 United States Senate election in Michigan",
+   "sujet": "Mallory McMorrow",
+   "colonne_sujet": "Mallory McMorrow",
+   "jeu": "2026-07-05",
+   "moyennes": {
+    "Abdul El-Sayed": {
+     "moyenne": 38.0,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Mallory McMorrow": {
+     "moyenne": 11.6,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Haley Stevens": {
+     "moyenne": 28.8,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Gretchen Whitmer": {
+     "moyenne": 51.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Pete Buttigieg": {
+     "moyenne": 27.0,
+     "n": 1,
+     "dernier": "2025-02-08"
+    },
+    "Bill Huizenga": {
+     "moyenne": 15.33,
+     "n": 3,
+     "dernier": "2025-06-19"
+    },
+    "Mike Rogers": {
+     "moyenne": 42.5,
+     "n": 4,
+     "dernier": "2025-06-19"
+    },
+    "Tudor Dixon": {
+     "moyenne": 34.0,
+     "n": 2,
+     "dernier": "2025-03-13"
+    },
+    "Abdul El-Sayed (D)": {
+     "moyenne": 46.0,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Mike Rogers (R)": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Haley Stevens (D)": {
+     "moyenne": 44.4,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Mallory McMorrow (D)": {
+     "moyenne": 43.2,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "Bill Huizenga (R)": {
+     "moyenne": 40.4,
+     "n": 5,
+     "dernier": "2025-05-08"
+    },
+    "Pete Buttigieg (D)": {
+     "moyenne": 43.5,
+     "n": 2,
+     "dernier": "2025-03-06"
+    },
+    "Gretchen Whitmer (D)": {
+     "moyenne": 44.5,
+     "n": 2,
+     "dernier": "2025-03-13"
+    }
+   }
+  },
+  "polymarket:0xef720745be0a15b63c392854dacae4227a9deafe11fdf6afe79bdf45754dd10a": {
+   "election": "general election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Spanish general election",
+   "sujet": "Marie Gluesenkamp Perez",
+   "colonne_sujet": null,
+   "jeu": "2026-05-24",
+   "moyennes": {
+    "Turnout": {
+     "moyenne": 68.3,
+     "n": 1,
+     "dernier": "2026-04-25"
+    },
+    "": {
+     "moyenne": 1.52,
+     "n": 5,
+     "dernier": "2026-05-19"
+    },
+    "?": {
+     "moyenne": 16.38,
+     "n": 5,
+     "dernier": "2026-05-19"
+    },
+    "N": {
+     "moyenne": 7.4,
+     "n": 5,
+     "dernier": "2026-05-19"
+    }
+   }
+  },
+  "polymarket:0xf19d6b617a3c6382448444824b42ba172be2d88b8a1491f7dfc7be6327e510a1": {
+   "election": "2026 Brazil presidential election",
+   "statut": "ok",
+   "page": "Nationwide opinion polling for the 2024 United States presidential election",
+   "sujet": "Lula",
+   "colonne_sujet": null,
+   "jeu": "2026-09-27",
+   "moyennes": {
+    "Kamala Harris Democratic": {
+     "moyenne": 48.56,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Donald Trump Republican": {
+     "moyenne": 48.2,
+     "n": 5,
+     "dernier": "2024-11-05"
+    },
+    "Robert F. Kennedy Jr. Independent": {
+     "moyenne": 1.88,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Jill Stein Green": {
+     "moyenne": 0.84,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Chase Oliver Libertarian": {
+     "moyenne": 0.8,
+     "n": 3,
+     "dernier": "2024-11-04"
+    },
+    "Cornel West Independent": {
+     "moyenne": 0.6,
+     "n": 5,
+     "dernier": "2024-11-04"
+    },
+    "Joe Biden Democratic": {
+     "moyenne": 42.22,
+     "n": 5,
+     "dernier": "2024-07-23"
+    },
+    "Liz Cheney Republican": {
+     "moyenne": 34.0,
+     "n": 3,
+     "dernier": "2022-11-19"
+    },
+    "Liz Cheney Independent": {
+     "moyenne": 14.75,
+     "n": 4,
+     "dernier": "2023-02-13"
+    },
+    "Nikki Haley Independent": {
+     "moyenne": 12.4,
+     "n": 2,
+     "dernier": "2024-02-02"
+    },
+    "Andrew Yang Forward": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2022-08-22"
+    },
+    "Chris Christie Republican": {
+     "moyenne": 40.5,
+     "n": 4,
+     "dernier": "2023-09-12"
+    },
+    "Ron DeSantis Republican": {
+     "moyenne": 43.0,
+     "n": 5,
+     "dernier": "2023-12-16"
+    },
+    "Donald Trump Independent": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2023-05-15"
+    },
+    "Vivek Ramaswamy Republican": {
+     "moyenne": 42.33,
+     "n": 3,
+     "dernier": "2023-09-14"
+    },
+    "Mitt Romney Republican": {
+     "moyenne": 30.25,
+     "n": 4,
+     "dernier": "2023-10-17"
+    },
+    "Ted Cruz Republican": {
+     "moyenne": 33.33,
+     "n": 3,
+     "dernier": "2022-11-07"
+    },
+    "Mike Pence Republican": {
+     "moyenne": 41.2,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Nikki Haley Republican": {
+     "moyenne": 45.0,
+     "n": 5,
+     "dernier": "2024-02-19"
+    },
+    "Tim Scott Republican": {
+     "moyenne": 39.4,
+     "n": 5,
+     "dernier": "2023-09-14"
+    },
+    "Generic Republican": {
+     "moyenne": 45.4,
+     "n": 5,
+     "dernier": "2023-11-14"
+    },
+    "Generic Democrat": {
+     "moyenne": 43.0,
+     "n": 2,
+     "dernier": "2024-06-06"
+    },
+    "Pete Buttigieg Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Hillary Clinton Democratic": {
+     "moyenne": 42.2,
+     "n": 5,
+     "dernier": "2024-07-08"
+    },
+    "Bernie Sanders Democratic": {
+     "moyenne": 41.0,
+     "n": 4,
+     "dernier": "2024-07-08"
+    },
+    "Elizabeth Warren Democratic": {
+     "moyenne": 43.45,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gavin Newsom Democratic": {
+     "moyenne": 42.8,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "JB Pritzker Democratic": {
+     "moyenne": 38.5,
+     "n": 2,
+     "dernier": "2024-07-02"
+    },
+    "Josh Shapiro Democratic": {
+     "moyenne": 40.5,
+     "n": 2,
+     "dernier": "2024-07-08"
+    },
+    "Gretchen Whitmer Democratic": {
+     "moyenne": 41.4,
+     "n": 5,
+     "dernier": "2024-07-10"
+    },
+    "Joe Manchin No Labels": {
+     "moyenne": 6.0,
+     "n": 2,
+     "dernier": "2023-08-23"
+    }
+   }
+  },
+  "polymarket:0xfa7a559ac626ee079bd1a58b78a9c32fc9c1d3129e72f7f28b7209b2368a54c1": {
+   "election": "Will Mike Rogers win the Republican Primary for U.S. Senate in Michigan?",
+   "statut": "ok",
+   "page": "2026 United States House of Representatives elections in Michigan",
+   "sujet": "Mike Rogers",
+   "colonne_sujet": null,
+   "jeu": "2026-07-05",
+   "moyennes": {
+    "Bill Huizenga (R)": {
+     "moyenne": 45.67,
+     "n": 3,
+     "dernier": "2026-06-01"
+    },
+    "Sean McCann (D)": {
+     "moyenne": 44.0,
+     "n": 3,
+     "dernier": "2026-06-01"
+    },
+    "Bridget Brink": {
+     "moyenne": 23.8,
+     "n": 5,
+     "dernier": "2026-06-27"
+    },
+    "William Lawrence": {
+     "moyenne": 16.0,
+     "n": 5,
+     "dernier": "2026-06-27"
+    },
+    "Matt Maasdam": {
+     "moyenne": 12.0,
+     "n": 5,
+     "dernier": "2026-06-27"
+    },
+    "Tom Barrett (R)": {
+     "moyenne": 45.6,
+     "n": 5,
+     "dernier": "2026-06-30"
+    },
+    "William Lawrence (D)": {
+     "moyenne": 48.0,
+     "n": 1,
+     "dernier": "2026-06-30"
+    },
+    "Bridget Brink (D)": {
+     "moyenne": 45.33,
+     "n": 3,
+     "dernier": "2026-06-30"
+    },
+    "Matt Maasdam (D)": {
+     "moyenne": 44.67,
+     "n": 3,
+     "dernier": "2026-06-30"
+    },
+    "Michael Bouchard Jr.": {
+     "moyenne": 35.0,
+     "n": 3,
+     "dernier": "2026-05-05"
+    },
+    "Justin Kirk": {
+     "moyenne": 2.33,
+     "n": 3,
+     "dernier": "2026-05-05"
+    },
+    "Robert Lulgjuraj": {
+     "moyenne": 9.0,
+     "n": 3,
+     "dernier": "2026-05-05"
+    },
+    "Eric Chung": {
+     "moyenne": 13.0,
+     "n": 1,
+     "dernier": "2026-04-26"
+    },
+    "Tim Greimel": {
+     "moyenne": 7.0,
+     "n": 1,
+     "dernier": "2026-04-26"
+    },
+    "Christina Hines": {
+     "moyenne": 30.0,
+     "n": 1,
+     "dernier": "2026-04-26"
+    },
+    "Mike Bouchard Jr. (R)": {
+     "moyenne": 42.0,
+     "n": 1,
+     "dernier": "2026-01-17"
+    },
+    "Christina Hines (D)": {
+     "moyenne": 44.0,
+     "n": 1,
+     "dernier": "2026-01-17"
+    }
+   }
+  },
+  "polymarket:0xfbe834154a7b7d8ec4ccd0f5468b58a113bdbf0e7c0a41876ae8b014ab94631b": {
+   "election": "2026 Maine Governor Republican primary",
+   "statut": "ok",
+   "page": "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+   "sujet": "Robert Charles",
+   "colonne_sujet": null,
+   "jeu": "2026-06-07",
+   "moyennes": {
+    "Ted Cruz": {
+     "moyenne": 5.1,
+     "n": 4,
+     "dernier": "2026-03-03"
+    },
+    "Ron DeSantis": {
+     "moyenne": 7.92,
+     "n": 5,
+     "dernier": "2026-05-16"
+    },
+    "Nikki Haley": {
+     "moyenne": 6.34,
+     "n": 5,
+     "dernier": "2026-05-13"
+    },
+    "Marco Rubio": {
+     "moyenne": 21.98,
+     "n": 5,
+     "dernier": "2026-05-16"
+    },
+    "JD Vance": {
+     "moyenne": 41.5,
+     "n": 5,
+     "dernier": "2026-05-16"
+    },
+    "Robert F. Kennedy Jr.": {
+     "moyenne": 7.52,
+     "n": 4,
+     "dernier": "2025-12-02"
+    },
+    "Donald Trump Jr.": {
+     "moyenne": 8.33,
+     "n": 3,
+     "dernier": "2026-04-24"
+    },
+    "Rand Paul": {
+     "moyenne": 3.1,
+     "n": 3,
+     "dernier": "2026-05-13"
+    },
+    "Tulsi Gabbard": {
+     "moyenne": 4.2,
+     "n": 5,
+     "dernier": "2026-03-18"
+    },
+    "Vivek Ramaswamy": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2025-07-30"
+    },
+    "Robert F. Kennedy Jr": {
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2025-08-19"
+    },
+    "Tim Scott": {
+     "moyenne": 5.0,
+     "n": 1,
+     "dernier": "2025-07-21"
+    },
+    "Donald Trump Jr": {
+     "moyenne": 2.5,
+     "n": 1,
+     "dernier": "2025-03-10"
+    }
+   }
+  },
+  "polymarket:0xfcde02af15efe40e336d67f0ef9aa49e9d40c37b92961fb890afc4afdbfe54d6": {
+   "election": "most seats in the next Hungarian parliamentary election",
+   "statut": "aucun_sondage_avant_le_jeu",
+   "page": "Opinion polling for the next Slovenian parliamentary election",
+   "sujet": "TISZA – Respect and Freedom Party (TISZA)",
+   "colonne_sujet": null,
+   "jeu": "2026-03-29",
+   "moyennes": {}
+  }
+ }
+}
