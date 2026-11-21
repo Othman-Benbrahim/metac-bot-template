@@ -1,0 +1,2608 @@
+{
+ "version_bot": "0.10.410",
+ "version_selection": 2,
+ "questions": 119,
+ "sans_fiche": 4,
+ "choix_rejetes_par_le_code": 7,
+ "par_fiche": {
+  "politique-americaine": 52,
+  "calendriers-echeances": 42,
+  "competitions-culture": 15,
+  "sciences-techniques": 13,
+  "crises-bancaires": 9,
+  "humain": 8,
+  "guerre-levant": 7,
+  "observateur-mesure": 7,
+  "information-cyber": 7,
+  "infrastructures-critiques": 7,
+  "securite-publique": 6,
+  "elections-amerique-latine": 5,
+  "russie-ukraine": 5,
+  "non-proliferation": 3,
+  "climat-extremes": 3,
+  "iran-nucleaire": 3,
+  "rivalite-sino-americaine": 2,
+  "migrations-demographie": 2,
+  "soleil-espace": 2,
+  "energie-mondiale": 2,
+  "ormuz": 1,
+  "transport-maritime": 1,
+  "epidemies": 1,
+  "inflation-mondiale": 1,
+  "oceans-et-fleuves": 1
+ },
+ "detail": [
+  {
+   "question": "22310",
+   "titre": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "elections-amerique-latine",
+     "compartiment": "scrutins",
+     "regle": "La législation électorale brésilienne autorise la réélection immédiate pour un second mandat et organise l'élection présidentielle au suffrage universel selon un système majoritaire à deux tours (victoire >50%), mécanisme qui décide à la fois de l'éligibilité de Lula et de la manière dont les voix s"
+    }
+   ],
+   "fiches": [
+    "elections-amerique-latine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Pas applicable — au moins un écosystème (élections-amerique-latine) contient une règle institutionnelle qui gouverne l'issue."
+  },
+  {
+   "question": "24819",
+   "titre": "Will the USMCA be extended promptly at its July 2026 joint review?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "Le Congrès contrôle l'adoption et la modification des lois d'application des accords commerciaux : sans son approbation explicite (ou s'il s'oppose), l'exécutif américain ne peut engager de manière contraignante les États‑Unis pour prolonger l'USMCA, de sorte que la majorité et le calendrier législa"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Le calendrier électoral module fortement les décisions publiques : la proximité des élections (notamment les midterms américaines de novembre 2026) crée une incitation à différer ou à politiser une décision commerciale prise en juillet 2026, rendant une prolongation 'prompt' plus difficile."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème listé ne contient une règle décisive applicable seul."
+  },
+  {
+   "question": "36871",
+   "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "cryptomonnaies",
+     "regle": "En situations de crise de confiance financière, le compartiment «cryptomonnaies» capte ou relâche très rapidement des flux de liquidité (dépôts, trésorerie des entreprises, arbitrages de marché) vers/depuis USDT et USDC, ce mouvement de flux détermine à court terme leur capitalisation agrégée."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "Une décision législative ou réglementaire du Congrès (définition légale des stablecoins, obligations de réserves et d'émetteurs) change directement qui peut émettre et détenir des stablecoins et la confiance des investisseurs, et ainsi fixe un plafond ou une impulsion majeure à leur capitalisation."
+    }
+   ],
+   "fiches": [
+    "crises-bancaires",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contenait une règle décisive, la réponse serait une liste vide."
+  },
+  {
+   "question": "37307",
+   "titre": "Will  an attempt be made to fire Jerome Powell before the end of his term?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "reserve_federale",
+     "regle": "La Réserve fédérale bénéficie d'une indépendance statutaire : le président de la Fed n'est normalement révocable que pour motifs légaux, de sorte qu'une tentative de licenciement serait juridiquement contestable et politiquement coûteuse, et c'est cette règle institutionnelle qui détermine si une te"
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le pouvoir exécutif (le président) peut vouloir pousser à un renvoi, mais la nécessité d'un motif légal, la crainte des coûts politiques et le risque d'affaiblir la crédibilité monétaire sont le mécanisme politique qui décide concrètement si une tentative sera faite."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "37523",
+   "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "guerre-levant",
+     "compartiment": "mediateurs",
+     "regle": "La durabilité d'une trêve médiée par Oman dépend de la capacité du médiateur régional à fournir des canaux de communication et des garanties crédibles (sécurité, échanges, aides et incitations/réassurances régionales) et à coordonner des récompenses et punitions entre acteurs locaux et régionaux, ce"
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "L'exécutif américain détient la capacité unilatérale d'ajuster immédiatement la pression (frappes, posture navale, offres politiques ou calibration des sanctions), et ces décisions modifient directement les coûts pour les Houthis et donc leur incitation à respecter ou rompre la trêve."
+    }
+   ],
+   "fiches": [
+    "guerre-levant",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "La liste resterait vide si aucun compartiment n'énonçait une règle institutionnelle ou mécanique spécifique susceptible de décider l'issue."
+  },
+  {
+   "question": "38783",
+   "titre": "Will the US government file a denaturalization lawsuit against Elon Musk before July 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "La décision de déposer une action de dénaturalisation relève de l'exécutif (DoJ/Attorney General) et obéit à la discrétion de poursuite : le ministère n'engagera une procédure civile de dénaturalisation que si sa politique, ses priorités, la solidité des preuves et le calcul politique (coûts/risques"
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "tribunaux",
+     "regle": "Les tribunaux fédéraux appliquent des règles de compétence et de preuve strictes pour la dénaturalisation (délais, charge de la preuve, motifs légaux) : si ces critères jurisprudentiels rendent l'obtention d'une condamnation improbable, cela décourage ou empêche le dépôt de l'action."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": ""
+  },
+  {
+   "question": "38917",
+   "titre": "Will Barack Obama be arrested before July 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "tribunaux",
+     "regle": "La règle du compartiment 'tribunaux' est que toute arrestation dépend d'une procédure pénale formelle au États‑Unis : des procureurs fédéraux ou d'État doivent décider de porter des charges et obtenir une mise en accusation, une autorisation judiciaire ou un mandat d'arrêt (en respectant normes prob"
+    },
+    {
+     "fiche": "securite-publique",
+     "compartiment": "polices",
+     "regle": "La règle du compartiment 'polices' est que l'exécution matérielle d'une arrestation requiert l'intervention opérationnelle des forces de l'ordre (obtention et exécution du mandat, priorisation des enquêtes, capacités et volonté d'intervenir face à une personnalité protégée), ce qui peut empêcher ou "
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "securite-publique"
+   ],
+   "rejetes": [],
+   "si_aucun": "N/A : au moins un écosystème contient une règle pertinente."
+  },
+  {
+   "question": "38940",
+   "titre": "Will over 2/3 of EU member states recognize Palestinian statehood before July 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Les calendriers électoraux nationaux gouvernent le timing des décisions de reconnaissance car les gouvernements évitent ou retardent des gestes diplomatiques sensibles avant un scrutin et les alternances gouvernementales modifient rapidement la politique étrangère."
+    },
+    {
+     "fiche": "guerre-levant",
+     "compartiment": "recits",
+     "regle": "Les récits et les chocs humanitaires liés au conflit au Levant façonnent l'opinion publique et la pression diplomatique, susceptibles de déclencher des cascades de reconnaissances entre États européens en réaction à une détérioration visible de la situation."
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "guerre-levant"
+   ],
+   "rejetes": [],
+   "si_aucun": ""
+  },
+  {
+   "question": "39142",
+   "titre": "Before July 1, 2026, will the U.S. Supreme Court agree to hear a case that could end the constitutional right to same-sex marriage?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "tribunaux",
+     "regle": "La Cour suprême suit sa procédure interne de certiorari: les requêtes sont triées (cert pool) et une affaire n'est acceptée que si un nombre suffisant de juges (la «rule of four») votent pour la recevoir, la Cour privilégiant les conflits entre cours d'appel ou les questions constitutionnelles majeu"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Les délais de dépôt des pourvois et le rythme des cycles de décision et de conférence de la Cour déterminent si un dossier peut être présenté et formellement inscrit avant le 1er juillet 2026 ; si les délais procéduraux ne sont pas respectés ou si la procédure prend trop de temps, la Cour ne pourra "
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contient une règle pertinente, la bonne réponse serait une liste vide."
+  },
+  {
+   "question": "39886",
+   "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "rivalite-sino-americaine",
+     "compartiment": "diplomatie",
+     "regle": "Le compartiment « diplomatie » prévoit que les sommets entre grandes puissances sont convoqués quand une convergence d'intérêts stratégiques et le besoin de gérer la rivalité (notamment vis‑à‑vis des États‑Unis) rend utile un signal commun, et ce mécanisme déterminera si la Russie, l'Inde et la Chin"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Le compartiment « dates_limites » impose que les acteurs politiques planifient et concentrent réunions et annonces avant échéances ou bornes calendaires significatives (élections, sommets, rentrées), ce calendrier institutionnel décide si une réunion aura lieu avant le 1er septembre 2026."
+    }
+   ],
+   "fiches": [
+    "rivalite-sino-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : au moins un écosystème contient la règle pertinente."
+  },
+  {
+   "question": "39992",
+   "titre": "Will Israel participate in the Eurovision Song Contest 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "Les règles de l'EBU et du concours (adhésion des diffuseurs, conditions d'éligibilité et procédure d'inscription) déterminent formellement si un diffuseur israélien peut inscrire un candidat et donc si Israël participe."
+    },
+    {
+     "fiche": "guerre-levant",
+     "compartiment": "israel",
+     "regle": "En contexte de guerre, les autorités nationales ou le diffuseur public peuvent suspendre ou renoncer à une participation pour des raisons de sécurité, de mobilisation ou de logistique, ce qui peut empêcher Israël de participer indépendamment des règles du concours."
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "guerre-levant"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "40005",
+   "titre": "Will any political party or coalition acquire a supermajority in the 2026 Hungarian parliamentary elections?",
+   "issue": 1,
+   "choix": [],
+   "fiches": [],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème fourni ne contient la règle spécifique qui gouvernera ce résultat : c'est la loi électorale hongroise (mode de scrutin mixte, répartition des sièges, seuils et découpage des circonscr"
+  },
+  {
+   "question": "40281",
+   "titre": "Will any coding tool introduce an integration with brain-computer interface technology before November 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "regulation",
+     "regle": "La réglementation des dispositifs médicaux et des normes de sécurité pour interfaces cerveau‑machine impose des certifications, essais cliniques et exigences de conformité qui retardent ou empêchent la mise sur le marché d'intégrations BCI dans des outils de codage grand public avant novembre 2026."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques"
+   ],
+   "rejetes": [
+    {
+     "fiche": "rivalite-sino-americaine",
+     "compartiment": "technology",
+     "regle": "Les contrôles technologiques et restrictions à l'export (puces avancées, capteurs, coopération internationale) déterminent l'accès aux composants et savoir‑faire nécessaires à des intégrations BCI à grande échelle, limitant quelles entreprises ou pays peuvent lancer de tels outils d'ici novembre 202"
+    }
+   ],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "40599",
+   "titre": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he become Prime Minister?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "humain",
+     "compartiment": "opinion_publique",
+     "regle": "Dans cet écosystème, la règle décisive est que l'opinion publique révélée (ce que les électeurs disent et votent à découvert, agrégée en intentions et en votes) détermine qui obtient la majorité parlementaire : si Orbán conduit un parti en 2026, il ne deviendra Premier ministre que si cette agrégati"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Ici la règle est que le calendrier électoral et les règles procédurales (dépôt de candidatures, modes de scrutin, comptage, modalités d'investiture) organisent qui peut concourir et comment se forme le gouvernement : être tête de liste en 2026 ne conduit au poste de Premier ministre que si, selon ce"
+    }
+   ],
+   "fiches": [
+    "humain",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "La question a des mécanismes pertinents identifiés ci‑dessus; si aucun écosystème n'avait contenu la règle, la réponse serait une liste vide."
+  },
+  {
+   "question": "40695",
+   "titre": "Will Jerome Powell cease to be Chair of the Federal Reserve Board of Governors before his term is up?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "reserve_federale",
+     "regle": "Dans le système politique américain, la règle qui décide est institutionnelle : le président nomme (avec confirmation du Sénat) le Chair de la Fed, et un départ anticipé n'intervient que par démission sous pression politique, par une procédure politique exceptionnelle (impeachment/contestations juri"
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": ""
+  },
+  {
+   "question": "40711",
+   "titre": "Will the United States, Russia or China detonate a nuclear device before April 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Aux États-Unis l'autorité opérationnelle d'ordonner l'emploi d'armes nucléaires appartient à l'exécutif (le président) et les procédures, contrôles et chaînes de commandement propres à cet exécutif déterminent si un ordre de lancement est juridiquement possible et peut être exécuté."
+    },
+    {
+     "fiche": "non-proliferation",
+     "compartiment": "dissuasion",
+     "regle": "Le régime de non‑prolifération et la logique de dissuasion entre puissances dotées (doctrines, tabou nucléaire, coûts diplomatiques et militaires) constituent la règle qui fixe des seuils politiques et stratégiques très élevés, rendant l'emploi volontaire d'un engin nucléaire par une grande puissanc"
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "non-proliferation"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un écosystème contient une règle institutionnelle ou normative qui gouverne directement la décision d'emploi d'armes nucléaires."
+  },
+  {
+   "question": "40849",
+   "titre": "Will Tesla discontinue the Cybertruck before April 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "adoption",
+     "regle": "La poursuite d'un nouveau produit dépend de sa diffusion et de son seuil d'adoption : si le Cybertruck n'atteint pas d'ici là le niveau de ventes et d'échelle industrielle nécessaire pour couvrir ses coûts et les investissements, la règle d'adoption commerciale pousse Tesla à l'arrêter."
+    },
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "bilans",
+     "regle": "Les décisions de supprimer une gamme suivent les contraintes de bilan : si les pertes, la pression sur la trésorerie ou un choc financier rendent la production du Cybertruck insoutenable, la logique comptable et de survie impose sa discontinuation."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "crises-bancaires"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "40852",
+   "titre": "Will the US House of Representatives censure, expel or reprimand any of its members before April 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "La Chambre a des règles institutionnelles spécifiques: le Comité d'éthique enquête et peut recommander des sanctions, l'expulsion d'un membre nécessite l'adoption d'une résolution par la Chambre avec la concurrence des deux tiers (règle constitutionnelle), tandis que la censure ou la réprimande se f"
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable."
+  },
+  {
+   "question": "40862",
+   "titre": "Will Arizona Senator Mark Kelly, who urged troops to defy \"illegal\" orders, be recalled to active duty in the US military before April 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le rappel des réservistes relève de l'exécutif américain : le Président et le secrétaire à la Défense, selon le droit fédéral et les règlements du DoD, peuvent ordonner l'activation de réservistes et définissent les conditions d'admissibilité et d'exemption qui décideront si un sénateur réserviste c"
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "La question est gouvernée par l'exécutif américain (voir ci‑dessus)."
+  },
+  {
+   "question": "40865",
+   "titre": "Will Israel pass the Penal Bill (Death Penalty for Terrorists amendment) into law before April 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "parlements",
+     "regle": "La règle formelle du calendrier parlementaire (séances, lectures, commissions et délais procéduraux) fixe quand un projet de loi peut être inscrit, débattu et mis aux voix : sans créneaux et lectures obligatoires avant avril 2026, le texte ne peut devenir loi."
+    },
+    {
+     "fiche": "guerre-levant",
+     "compartiment": "israel",
+     "regle": "La dynamique de guerre en Israël (priorités de sécurité, état d'urgence, discipline de coalition et focalisation de l'agenda) peut soit suspendre et repousser les travaux législatifs, soit au contraire pousser l'exécutif et la Knesset à accélérer l'adoption de lois jugées urgentes."
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "guerre-levant"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contenait la règle décisive, la réponse attendue serait une liste vide."
+  },
+  {
+   "question": "40875",
+   "titre": "Will the number of manufacturing jobs in the US for February 2026 be above 12.7 million?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "observateur-mesure",
+     "compartiment": "definitions",
+     "regle": "La convention statistique du BLS (définition des emplois manufacturiers, enquête des établissements, ajustements saisonniers et révisions de benchmark) détermine précisément qui est compté et comment le total publié pour février 2026 est calculé, et c'est cette méthode qui fixe si le chiffre dépasse"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "publications",
+     "regle": "Le calendrier et la procédure de publication du rapport mensuel du BLS (date de diffusion, inclusion ou non des révisions rétroactives) décident quelle valeur officielle pour février 2026 sera rendue publique et donc comparée au seuil de 12,7 millions."
+    }
+   ],
+   "fiches": [
+    "observateur-mesure",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un écosystème contient une règle déterminante."
+  },
+  {
+   "question": "40938",
+   "titre": "Will California Emissions Reporting Laws SB 253 and SB 261 Be In Effect on September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "La convention juridique-calendrier : l'entrée en vigueur d'un texte est déterminée par la date inscrite dans la loi (ou par la règle conventionnelle d'effet au 1er janvier suivant), et c'est cette date formelle qui décide si une loi est applicable le 1er septembre 2026."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "etats_federes",
+     "regle": "Au niveau de l'État de Californie, ce sont les actes de l'exécutif et des agences d'application — et le cas échéant les décisions des tribunaux d'État (signatures, règlements d'application ou injonctions) — qui peuvent confirmer, retarder ou suspendre l'effet de SB 253 et SB 261 et donc déterminer s"
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "41090",
+   "titre": "Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "Le règlement de la FIFA pour la Coupe du Monde (format 2026 étendu à 48 équipes, répartition des places qualificatives entre confédérations et modalités de départage en phases à élimination directe) fixe quelles équipes peuvent participer et les chemins par lesquels elles peuvent devenir championnes"
+    }
+   ],
+   "fiches": [
+    "competitions-culture"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème pertinent."
+  },
+  {
+   "question": "41206",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before July 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "capitaux",
+     "regle": "La disponibilité des capitaux et des valorisations spécifiques au secteur de l'IA (tours late‑stage, valorisations de comparables d'IPO et appétit des investisseurs pour les titres technologiques) détermine si Anthropic cherche à lever par des marchés publics : si le financement privé suffit à une v"
+    }
+   ],
+   "fiches": [
+    "sciences-techniques"
+   ],
+   "rejetes": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "marchés",
+     "regle": "L'état des marchés financiers (liquidité, appétit pour les IPO technologiques et performance récente des introductions) fixe la fenêtre pratique pour déposer un S‑1 — une fenêtre de marché défavorable rendra très improbable un dépôt avant le 1er juillet 2026."
+    }
+   ],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "41214",
+   "titre": "Will Bitcoin reach a new all-time high price before October 6, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "banques_centrales",
+     "regle": "Les décisions prises aux réunions des banques centrales (taux directeurs et achats/ventes d'actifs) fixent la trajectoire des taux réels et de la liquidité globale, mécanisme propre à cet écosystème qui détermine l'appétit pour les actifs risqués et donc la probabilité qu'un afflux pousse le Bitcoin"
+    },
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "cryptomonnaies",
+     "regle": "Dans le compartiment «cryptomonnaies», la faillite, la mise en liquidation ou l'intervention réglementaire sur un grand dépositaire/exchange crée des ventes forcées et une perte de confiance spécifiques à ce secteur, un mécanisme qui peut empêcher ou provoquer un nouveau record du prix du Bitcoin se"
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "crises-bancaires"
+   ],
+   "rejetes": [],
+   "si_aucun": "Au moins un des écosystèmes ci‑dessus contient une règle propre susceptible de gouverner l'issue; je l'ai indiquée."
+  },
+  {
+   "question": "41316",
+   "titre": "Will the United States impose additional sanctions on Russia related to the Ukraine war before March 14, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "sanctions",
+     "regle": "Le pouvoir exécutif des États‑Unis (Président, Département du Trésor/OFAC et Département d'État) dispose d'autorités administratives et d'ordres exécutifs permettant d'imposer rapidement des sanctions additionnelles sans vote du Congrès; la volonté présidentielle et l'usage de ces instruments déterm"
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "pas applicable"
+  },
+  {
+   "question": "41343",
+   "titre": "Will any NVIDIA GPUs better than the H200 be allowed to be exported to China before March 14, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "sanctions",
+     "regle": "Les contrôles d'exportation et les sanctions décidés par l'exécutif et le Département du Commerce (licences, listings, plafonds de performance ou interdictions) déterminent légalement quels GPU peuvent être exportés vers la Chine."
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [
+    {
+     "fiche": "rivalite-sino-americaine",
+     "compartiment": "technology",
+     "regle": "Les politiques de contrôle technologique coordonnées dans le cadre de la rivalité USA–Chine (seuils de performance, restrictions multilatérales sur puces et équipements) décident concrètement si des GPU plus performants que le H200 seront autorisés ou bloqués."
+    }
+   ],
+   "si_aucun": "Non applicable : au moins un écosystème ci‑dessus contient une règle déterminante."
+  },
+  {
+   "question": "41370",
+   "titre": "Will there be at least one podium sweep at the 2026 Winter Olympic Games?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "La règle décisive est le plafond d'athlètes qu'un comité national peut inscrire par épreuve et les conventions d'attribution des places/médailles (quotas d'entrée, relais, règles de qualification), qui rendent soit possible soit impossible qu'un même pays prenne les trois premières places."
+    }
+   ],
+   "fiches": [
+    "competitions-culture"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable — au moins un écosystème contient la règle décisive."
+  },
+  {
+   "question": "41480",
+   "titre": "Will the U.S. Supreme Court's decision in Louisiana v. Callais hold that race-conscious districting is unconstitutional?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "tribunaux",
+     "regle": "La décision dépendra de la règle juridictionnelle et de la dynamique de la Cour suprême contenues dans le compartiment 'tribunaux' — en pratique l'application des doctrines d'égalité (Equal Protection), le niveau de contrôle strict sur les classifications raciales, et la façon dont la majorité des j"
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable — un écosystème pertinent a été identifié"
+  },
+  {
+   "question": "41485",
+   "titre": "Will the United States intervene militarily in Venezuela again before May 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le président, en tant que commandant en chef via l'exécutif, peut ordonner le déploiement et les opérations militaires des États‑Unis et cette autorité opérationnelle décide directement si une intervention a lieu."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Le calendrier électoral façonne le timing des actions publiques : les administrations évitent ou programment des interventions selon les échéances (gains politiques ou coûts électoraux), ce calcul temporel peut déterminer si une intervention survient avant mai 2026."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème pertinent (la politique américaine) qui gouverne la décision."
+  },
+  {
+   "question": "41489",
+   "titre": "Will Venezuela announce a presidential election before April 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "elections-amerique-latine",
+     "compartiment": "regles",
+     "regle": "Les règles électorales nationales et le rôle du Conseil national électoral (calendriers constitutionnels, conditions formelles de convocation et procédures administratives) déterminent légalement si et quand un scrutin présidentiel peut être annoncé."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Les échéances électorales et les délais administratifs (fenêtres de convocation, périodes d'inscription et durée légale de campagne) forment des contraintes de calendrier qui décident si une annonce officielle peut valider un appel à l'élection avant le 1er avril 2026."
+    }
+   ],
+   "fiches": [
+    "elections-amerique-latine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un écosystème contient la règle pertinente."
+  },
+  {
+   "question": "41508",
+   "titre": "Will the Community beat Nathan Young in the Metaculus Cup Spring 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "La règle de la compétition sur Metaculus — méthode de calcul du score, métrique de performance retenue et règles de départage/tie‑break définies par l'organisateur — décide formellement qui est déclaré vainqueur de la Metaculus Cup Spring 2026."
+    }
+   ],
+   "fiches": [
+    "competitions-culture"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème pertinent (voir « choix »)."
+  },
+  {
+   "question": "41512",
+   "titre": "Will the U.S. Congress still be operating under a continuing resolution (CR) on March 15, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "budget",
+     "regle": "Le droit budgétaire fédéral veut que le Congrès adopte des lois d'appropriation avant l'expiration des crédits ; à défaut, un continuing resolution (CR) ne maintient le financement que s'il est adopté par la Chambre et le Sénat et signé par le Président — donc la présence d'un CR au 15 mars 2026 dép"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "La date d'expiration inscrite dans le continuing resolution en vigueur (ou dans toute mesure temporaire antérieure) fixe formellement si le CR prend fin ce jour : si le texte expire le 15 mars 2026, il cesse sauf renouvellement; si sa date d'expiration est différente, le CR ne gouverne pas ce 15 mar"
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "N/A : des règles institutionnelles américaines (processus budgétaire et échéances légales) déterminent la réponse."
+  },
+  {
+   "question": "41514",
+   "titre": "Before May 1, 2026, will the United States offer to purchase Greenland from Denmark?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "L'initiative de la politique étrangère appartient à l'exécutif : le président et le Département d'État peuvent décider de formuler et d'annoncer une proposition d'achat de territoire et donc d'offrir d'acheter le Groenland."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "Le Congrès contrôle les crédits et le cadre légal pour l'acquisition de territoire (financement fédéral et, le cas échéant, approbation/ratification sénatoriale des accords), de sorte qu'un achat ne peut être réalisé sans son appui formel."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "41595",
+   "titre": "Will the North Atlantic sea surface temperature reach a daily record high before May 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "climat-extremes",
+     "compartiment": "oceans",
+     "regle": "Les températures de surface de l'Atlantique Nord sont déterminées par l'accumulation et la redistribution de chaleur océanique (chauffage net, courants, remontées et mélange), et cette dynamique océanique produit les anomalies régionales qui peuvent créer des maxima journaliers et donc des records."
+    },
+    {
+     "fiche": "observateur-mesure",
+     "compartiment": "definitions",
+     "regle": "La convention de mesure (jeu de données, période de référence, interpolation spatiale et définition de «record journalier») décide si une valeur observée est officiellement comptée comme un record."
+    }
+   ],
+   "fiches": [
+    "climat-extremes",
+    "observateur-mesure"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "41804",
+   "titre": "Will Sudan's Emergency Response Rooms win the Nobel Peace Prize in 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "Les règles d'attribution et les conventions internes aux prix (statuts, critères d'éligibilité et procédures du comité Nobel) déterminent formellement qui peut être nommé et choisi comme lauréat du Prix Nobel de la Paix."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Le calendrier et les dates limites de nomination et de délibération du comité Nobel (échéances pour soumettre des candidatures et calendrier des réunions) décident si une candidature est recevable et peut être prise en compte pour l'édition 2026."
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "41805",
+   "titre": "Will Jonathan Ross be indicted or charged in the death of Renee Good before July 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "securite-publique",
+     "compartiment": "justice",
+     "regle": "La décision de poursuivre ou de mettre en examen est gouvernée par le mécanisme judiciaire : le ministère public/procureur n'engage des charges que si les éléments d'enquête réunis (par la police) satisfont aux critères juridiques locaux — preuves suffisantes pour qu'une condamnation soit vraisembla"
+    }
+   ],
+   "fiches": [
+    "securite-publique"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème pertinent pour cette question."
+  },
+  {
+   "question": "41861",
+   "titre": "Will Wagner Moura win the Academy Award for Best Actor at the 2026 Academy Awards?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "L'attribution de l'Oscar du meilleur acteur est réglée par les règles de l'Academy (conditions d'admissibilité, procédures de nomination et modalités de scrutin) : ce sont ces règles et le vote des membres qui déterminent formellement qui gagne."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Les dates limites et la fenêtre de qualification des Academy Awards (période de sortie en salles, inscriptions et échéances de vote) décident si une performance est même éligible pour le concours 2026, condition préalable nécessaire pour pouvoir gagner."
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème ne contient la règle spécifique qui déciderait l'issue."
+  },
+  {
+   "question": "41869",
+   "titre": "Will Iran's Internet not be \"heavily filtered/whitelisted\" for most users before May 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "information-cyber",
+     "compartiment": "censure",
+     "regle": "Le compartiment « censure » regroupe les lois, agences et outils techniques (filtrage URL, DPI, listes blanches obligatoires) que l'État peut activer pour restreindre massivement l'accès ; donc la décision politique d'activer ces mécanismes détermine si l'Internet iranien sera fortement filtré/white"
+    },
+    {
+     "fiche": "infrastructures-critiques",
+     "compartiment": "operateurs_regulateurs",
+     "regle": "Le compartiment « operateurs_regulateurs » couvre les opérateurs de backbone, points d'échange et le régulateur qui, par contrôles de routage, obligations contractuelles et architecture nationale d'acheminement, disposent du levier technique nécessaire pour rendre une liste blanche effective à l'éch"
+    }
+   ],
+   "fiches": [
+    "information-cyber",
+    "infrastructures-critiques"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "42135",
+   "titre": "Will the UK increase the qualifying period for settlement to 10 years before May 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "migrations-demographie",
+     "compartiment": "politiques_migratoires",
+     "regle": "La durée requise pour obtenir le settlement relève des politiques migratoires britanniques (Home Office / Immigration Rules) et ne change que par décision ministérielle, instrument réglementaire ou loi, de sorte que l'issue dépend de ce processus spécifique de modification des règles d'immigration."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "parlements",
+     "regle": "La possibilité d'adopter une telle modification avant mai 2026 est gouvernée par le calendrier parlementaire et les procédures législatives : sans temps législatif suffisant ou en cas de dissolution pour élections, une réforme ne peut être votée avant cette date."
+    }
+   ],
+   "fiches": [
+    "migrations-demographie",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : des écosystèmes pertinents ont été identifiés."
+  },
+  {
+   "question": "42139",
+   "titre": "Will Keiko Fujimori advance to the runoff in the 2026 Peruvian presidential election?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "elections-amerique-latine",
+     "compartiment": "regles",
+     "regle": "La règle électorale péruvienne (et les règles régionales qui régissent les scrutins) fixe formellement qui se qualifie pour un second tour — seuils, admission des candidatures et règles d’inéligibilité — et c’est cette application juridique qui décide qui avance au runoff."
+    },
+    {
+     "fiche": "information-cyber",
+     "compartiment": "recits",
+     "regle": "La dynamique des récits et de la désinformation sur les plateformes (visibilité, amplification algorithmique et campagnes narratives) peut déplacer l’attention et l’intention de vote à l’échelle nationale et ainsi suffire à faire entrer ou sortir un candidat du second tour."
+    }
+   ],
+   "fiches": [
+    "elections-amerique-latine",
+    "information-cyber"
+   ],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème ne contient une règle décisive qui rende la réponse certaine."
+  },
+  {
+   "question": "42274",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before April 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "ia",
+     "regle": "La performance sur un benchmark comme GPQA Diamond dépend des décisions et capacités propres à l'écosystème IA — puissance de calcul, architectures, jeux de données, équipes et calendrier de développement et de publication — qui déterminent si et quand un modèle atteint ≥95% et peut être soumis au l"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Les règles de calendrier — fenêtres de soumission, dates limites et fréquence de mise à jour des leaderboards — fixent un horizon temporel contraint : si un modèle n'est pas finalisé et soumis avant le 1er avril 2026, il ne peut apparaître sur le leaderboard avant cette date."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable."
+  },
+  {
+   "question": "42284",
+   "titre": "Will Cloudflare experience another critical incident before May 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "infrastructures-critiques",
+     "compartiment": "cascades",
+     "regle": "La règle de ce compartiment est que les défaillances interconnectées entre opérateurs et composants réseau se propagent en cascade : une panne locale (alimentation, liaison, configuration) peut, via dépendances croisées, devenir un incident critique affectant un fournisseur d'infrastructure comme Cl"
+    },
+    {
+     "fiche": "information-cyber",
+     "compartiment": "cyber",
+     "regle": "La règle de ce compartiment est que la survenue d'une cyberattaque réussie (DDoS massif, exploitation d'un zero‑day ciblant DNS/edge/API) qui contourne les protections opérationnelles est le mécanisme direct qui déclenche un incident critique chez un opérateur comme Cloudflare."
+    }
+   ],
+   "fiches": [
+    "infrastructures-critiques",
+    "information-cyber"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe des écosystèmes pertinents (infrastructures-critiques et information-cyber) qui gouvernent cette issue."
+  },
+  {
+   "question": "42430",
+   "titre": "Will there be a successful coup in Africa or Latin America before May 1, 2026?",
+   "issue": 0,
+   "choix": [],
+   "fiches": [],
+   "rejetes": [],
+   "si_aucun": "Aucun : aucun des écosystèmes listés ne contient une règle spécifique et exclusive qui décide, pour l'ensemble d'Afrique ou d'Amérique latine, de la survenue et du succès d'un coup d'État (il manque u"
+  },
+  {
+   "question": "42480",
+   "titre": "Will Pam Bondi be out as US Attorney General before May 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le président des États‑Unis nomme, supervise et peut révoquer l’Attorney General à sa discrétion, donc le départ de Pam Bondi avant mai 2026 dépend principalement d’une décision présidentielle (ou d’une démission forcée par des pressions issues de l’exécutif)."
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": ""
+  },
+  {
+   "question": "42485",
+   "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "guerre-levant",
+     "compartiment": "iran",
+     "regle": "La capacité dissuasive spécifique de l'Iran — missiles balistiques, forces navales, défense aérienne et réseau de proxies régionaux capables de représailles asymétriques — fixe le coût attendu d'une attaque saoudienne et décide si Riyad franchira le seuil d'une frappe directe."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "La décision de l'exécutif américain — par son soutien militaire, ses avertissements publics, son accès au renseignement et sa capacité d'interposition diplomatique — est le mécanisme externe qui peut autoriser ou contraindre l'Arabie saoudite à lancer ou à renoncer à une frappe directe contre l'Iran"
+    }
+   ],
+   "fiches": [
+    "guerre-levant",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : des écosystèmes pertinents (guerre-levant:iran et politique-americaine:executif) ont été identifiés."
+  },
+  {
+   "question": "42489",
+   "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "La capacité du pouvoir exécutif américain à fournir ou retirer bases, renseignement, autorisations d'accès et soutien militaire/diplomatique aux alliés du Golfe donne aux États‑Unis un pouvoir de contrainte direct qui déterminera si les Émirats arabes unis tentent ou non une frappe contre l'Iran."
+    },
+    {
+     "fiche": "guerre-levant",
+     "compartiment": "puissances",
+     "regle": "La posture et la tolérance des puissances extérieures (menaces de riposte, mesures de désescalade ou d'appui) façonnent la marge d'action des États régionaux : un État du Golfe évitera une attaque directe si les puissances extérieures signalent qu'elle entraînerait une escalade majeure."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "guerre-levant"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un compartiment pertinent a été identifié."
+  },
+  {
+   "question": "42490",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "russie-ukraine",
+     "compartiment": "negociations",
+     "regle": "Le compartiment « négociations » impose que la tenue d'une rencontre en personne entre Zelenskyy et Poutine dépend de la convergence de conditions de négociation spécifiques (cessez‑le‑feu ou gel des opérations, préalables politiques sur frontières/garanties et rôle de médiateurs crédibles) : si ces"
+    }
+   ],
+   "fiches": [
+    "russie-ukraine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un écosystème pertinent a été identifié."
+  },
+  {
+   "question": "42491",
+   "titre": "Will Anthropic be a designated supply chain risk on May 1, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "commerce",
+     "regle": "La désignation formelle d'une entreprise comme « supply chain risk » est déterminée par les agences fédérales américaines (ministère du Commerce/BIS, CISA, Trésor) via leurs pouvoirs légaux et procédures administratives (inscriptions sur listes, règlements et processus inter‑agences) qui appliquent "
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un écosystème contient la règle pertinente."
+  },
+  {
+   "question": "42540",
+   "titre": "Will a 1kt meteor strike take place during March or April 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "soleil-espace",
+     "compartiment": "meteorites",
+     "regle": "La survenue d'un impact de l'ordre de 1 kilotonne pendant une fenêtre donnée est déterminée par la dynamique orbitale et la population d'objets géocroiseurs (trajectoires, tailles, taux d'arrivée) modélisées et surveillées dans ce compartiment."
+    },
+    {
+     "fiche": "observateur-mesure",
+     "compartiment": "couverture",
+     "regle": "La confirmation publique (ou l'ignorance) d'un impact dépend des capacités de détection et de la couverture des sondages, télescopes et capteurs décrites dans ce compartiment, qui décident si un impact est observé et rapporté."
+    }
+   ],
+   "fiches": [
+    "soleil-espace",
+    "observateur-mesure"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable — au moins un écosystème contient une règle pertinente."
+  },
+  {
+   "question": "42542",
+   "titre": "Will the U.S. conduct a ground invasion of Iran before May 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "Le Congrès contrôle les autorisations et le financement de la guerre : sans son approbation (ou en présence d'obstacles législatifs et politiques forts) il est difficile pour l'exécutif d'entreprendre et de soutenir une invasion terrestre prolongée."
+    },
+    {
+     "fiche": "guerre-levant",
+     "compartiment": "puissances",
+     "regle": "Le compartiment \"puissances\" capture le rôle décisif des grandes puissances et alliés extérieurs dont l'opposition ou la dissuasion (diplomatique, économique, militaire) impose des coûts susceptibles d'empêcher l'escalade américaine vers une invasion terrestre de l'Iran."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "guerre-levant"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "42548",
+   "titre": "Will gas prices in the US reach a new all-time high before April 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "energie-mondiale",
+     "compartiment": "prix",
+     "regle": "Les prix de l'essence aux États‑Unis sont déterminés par les prix mondiaux du pétrole et les marges de raffinage sur des marchés physiques et à terme — une hausse soutenue du brut ou des marges entraîne un nouveau record à la pompe."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "energie",
+     "regle": "L'exécutif et les régulateurs fédéraux peuvent, par des décisions comme des libérations de la réserve stratégique, des mesures réglementaires ou fiscales, modifier rapidement l'offre domestique et les prix à la pompe et ainsi empêcher ou provoquer un sommet historique."
+    }
+   ],
+   "fiches": [
+    "energie-mondiale",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe des écosystèmes pertinents pour cette question (voir ci‑dessus)."
+  },
+  {
+   "question": "42630",
+   "titre": "Will Iran participate in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "Les règles et procédures de la FIFA et de la Confédération asiatique — en particulier les critères de qualification, l'attribution des quotas et les dispositions disciplinaires (p.ex. suspension d'une fédération pour ingérence gouvernementale) — décident si l'équipe d'Iran peut se qualifier et être "
+    }
+   ],
+   "fiches": [
+    "competitions-culture"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "42729",
+   "titre": "Will shipping traffic through the Strait of Hormuz return to normal before April 27, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "ormuz",
+     "compartiment": "force",
+     "regle": "La présence, le retrait ou les actions des forces armées dans le détroit (Iran, marines étrangères ou groupes armés) déterminent directement si le passage est sécurisé ou continuellement menacé, et donc si le trafic commercial peut revenir à la normale."
+    },
+    {
+     "fiche": "transport-maritime",
+     "compartiment": "assurances",
+     "regle": "Les armateurs ne rétabliront le transit commercial normal tant que les assureurs maintiennent des surprimes élevées ou des exclusions de couverture pour passage par Ormuz ; la baisse des primes et le retour d'une couverture normale sont une condition pratique nécessaire au retour du trafic."
+    }
+   ],
+   "fiches": [
+    "ormuz",
+    "transport-maritime"
+   ],
+   "rejetes": [],
+   "si_aucun": "n/a"
+  },
+  {
+   "question": "42741",
+   "titre": "Will total MLB regular-season attendance in 2026 exceed 72 million?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "public",
+     "regle": "Le total d'assistance est fixé par la somme des assistances payantes par match, elle dépend spécifiquement du comportement du public sportif local — attractivité des équipes, prix des billets, promotions, politiques sanitaires et capacités des stades — qui fixe la demande moyenne par match et donc l"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "anticipations",
+     "regle": "Les règles de calendrier et d'échéances (notamment les délais et jalons de négociation collective et les conventions de programmation de la ligue) déterminent si la saison régulière 2026 se joue au complet ou est raccourcie, posant un plafond mécanique sur l'assistance totale."
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : j'ai identifié des règles décisionnelles dans les écosystèmes compétitions-culture et calendriers-echeances."
+  },
+  {
+   "question": "43091",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before June 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "ia",
+     "regle": "Le rythme et l'ampleur des progrès techniques dans les laboratoires (accès au calcul, architectures, jeux de données et ingénierie des modèles) déterminent si un modèle peut atteindre ≥95% sur un benchmark comme GPQA avant la date donnée."
+    },
+    {
+     "fiche": "observateur-mesure",
+     "compartiment": "definitions",
+     "regle": "Les conventions de définition et de scoring du benchmark (métriques exactes, formats de réponse acceptés, et présence éventuelle de fuite de données ou recouvrement entre entraînement et test) déterminent si un modèle obtient officiellement un score ≥95%."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "observateur-mesure"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "43167",
+   "titre": "Will the U.S. Senate pass another budget reconciliation bill before July 4, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "budget",
+     "regle": "La procédure de reconciliation budgétaire — qui requiert une résolution budgétaire avec instructions et, soumise à la Byrd Rule, permet au Sénat d'adopter des dispositions fiscales et de dépenses à la majorité simple (51 voix, ou 50+vice‑président) sans filibuster — est le mécanisme institutionnel q"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "parlements",
+     "regle": "Le calendrier des sessions du Congrès et les jours législatifs disponibles au Sénat (périodes de séance, recesses, délais procéduraux) déterminent s'il existe le temps nécessaire pour déposer, amender et voter une loi de reconciliation avant la date cible."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable — des écosystèmes pertinents ont été identifiés."
+  },
+  {
+   "question": "43171",
+   "titre": "Will Neymar be called up for Brazil in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "Les règles de la compétition et des fédérations (éligibilité des joueurs, suspensions éventuelles, taille réglementaire des listes et dates limites de dépôt) déterminent légalement si Neymar peut figurer sur la liste brésilienne pour la Coupe du monde 2026."
+    },
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "forme",
+     "regle": "L'évaluation de la 'forme' (blessures, niveau de performance en club et appréciation du sélectionneur) est le mécanisme opérationnel qui décidera concrètement s'il sera appelé."
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "competitions-culture"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "43257",
+   "titre": "Will the CBOE Volatility Index (VIX) close above 30 on more than 5 trading days between April 20, 2026 and May 31, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "confiance",
+     "regle": "La perte de confiance dans le système financier (défaillances, tensions de liquidité, contagion entre banques) déclenche des ventes massives d'actifs risqués et une forte demande d'options de protection, ce qui pousse durablement les primes de volatilité (VIX) à des niveaux élevés (>30) sur plusieur"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "banques_centrales",
+     "regle": "Les réunions et communications des banques centrales sont des points calendaires focaux où une surprise de politique monétaire ou de forward guidance augmente brutalement l'incertitude des marchés et provoque des pics répétés de volatilité susceptibles de faire monter le VIX au‑dessus de 30 pendant "
+    }
+   ],
+   "fiches": [
+    "crises-bancaires",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contient une règle décisive pour l'issue, renvoyer une liste vide."
+  },
+  {
+   "question": "43259",
+   "titre": "Will the United States and Iran hold another face-to-face diplomatic meeting before June 6, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "iran-nucleaire",
+     "compartiment": "negociations",
+     "regle": "Le compartiment 'negociations' définit les formats, mandats et calendriers des pourparlers nucléaires et crée (ou non) l'occasion formelle d'un face‑à‑face entre États-Unis et Iran, de sorte que sans relance d'un processus négocié il n'y a généralement pas de rencontre en personne."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le compartiment 'executif' porte la prérogative américaine d'autoriser ou d'interdire des rencontres bilatérales avec l'Iran : la décision politique de l'administration (pesant sécurité, sanctions et coûts politiques domestiques) détermine si un face‑à‑face a lieu."
+    }
+   ],
+   "fiches": [
+    "iran-nucleaire",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : les deux compartiments ci‑dessus sont ceux qui déterminent principalement l'issue."
+  },
+  {
+   "question": "43283",
+   "titre": "Will Waymo have a service area of 1,200 square miles before July 1, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "regulation",
+     "regle": "Les règles, certifications et exigences réglementaires propres au domaine des techniques (tests de sécurité, homologations, conditions d'exploitation) déterminent si une entreprise d'AV peut commercialement lancer et étendre un service : sans ces validations techniques et réglementaires, Waymo ne pe"
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "etats_federes",
+     "regle": "Les autorités des États (DMV et régulateurs des transports au niveau des États et comtés) délivrent ou refusent les autorisations opérationnelles et définissent les territoires autorisés ; leur approbation effective pour les juridictions concernées décidera si Waymo peut atteindre une aire de servic"
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : des écosystèmes pertinents ont été identifiés."
+  },
+  {
+   "question": "43333",
+   "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "energie-mondiale",
+     "compartiment": "decisions",
+     "regle": "Le compartiment 'decisions' rassemble les règles et mécanismes propres au marché pétrolier et à l'OPEC/OPEC+ (statuts, conditions d'adhésion et de retrait, procédures d'annonce et calendrier des réunions ministérielles) qui déterminent si un membre peut et choisit publiquement de quitter le cartel."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "anticipations",
+     "regle": "Le compartiment 'anticipations' règle le calendrier politique et institutionnel : les gouvernements et coalitions coordonnent les annonces sensibles avec des échéances (réunions ministérielles de l'OPEC, sommets, cycles électoraux), de sorte que la présence et le calendrier de ces échéances dictent "
+    }
+   ],
+   "fiches": [
+    "energie-mondiale",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème n'avait contenu une règle pertinente, j'aurais renvoyé une liste vide."
+  },
+  {
+   "question": "43343",
+   "titre": "Will any host nation (USA, Mexico or Canada) reach the semifinals of the 2026 World Cup?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "La structure et les règles du tournoi (format à 48 équipes, phases de groupes puis éliminations directes, mode de tirage et statuts des têtes de série et hôtes) déterminent le chemin possible et les probabilités mathématiques qu'une équipe hôte atteigne les demi‑finales."
+    },
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "forme",
+     "regle": "L'état de forme sportif des sélections hôtes (niveau des joueurs, blessures, forme collective et performances match après match) est le mécanisme opérationnel qui décide finalement si l'une d'elles obtient les résultats nécessaires pour atteindre les demi‑finales."
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "competitions-culture"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un écosystème contient une règle pertinente pour cette question."
+  },
+  {
+   "question": "43355",
+   "titre": "Will Iran and U.S play against each other in the 2026 FIFA World Cup?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "Les règles de la FIFA (qualification, tirage au sort, têtes de série et contraintes entre confédérations) déterminent formellement si deux sélections se retrouvent dans le même groupe ou un même tableau et donc si Iran et États‑Unis peuvent être amenés à se jouer en phase finale 2026."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "La politique de l'exécutif américain en matière de visas, de sécurité nationale et d'application des sanctions décide de façon concrète si l'équipe iranienne peut légalement entrer sur le territoire des États‑Unis pour disputer un match organisé sur sol américain."
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable — des écosystèmes pertinents ont été identifiés."
+  },
+  {
+   "question": "43360",
+   "titre": "Will the UK National Threat Level reduce from SEVERE before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "securite-publique",
+     "compartiment": "alertes",
+     "regle": "Le niveau d'alerte national est fixé par les services de sécurité et de renseignement (MI5/Centre antiterroriste) et ne peut être abaissé que si ces évaluations de renseignement montrent de manière soutenue une probabilité significativement réduite d'une attaque — c'est ce mécanisme d'alertes qui dé"
+    }
+   ],
+   "fiches": [
+    "securite-publique"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : au moins un écosystème contient la règle pertinente."
+  },
+  {
+   "question": "43435",
+   "titre": "Will Pope Leo XIV visit another country other than Spain before September 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "fetes",
+     "regle": "Le calendrier liturgique et les échéances institutionnelles du Vatican imposent des fenêtres et des interdits temporels (Carême, Semaine sainte, grandes fêtes, consistoires), de sorte que la planification d'un voyage papal obéit d'abord à ces contraintes calendaires."
+    },
+    {
+     "fiche": "humain",
+     "compartiment": "agenda",
+     "regle": "L'agenda des organisations (attention rare des décideurs) du Saint‑Siège module la décision : le pape n'effectuera un nouveau voyage international que si la visite entre dans les priorités diplomatiques/pastorales et peut être calée dans le calendrier opérationnel du Vatican."
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "humain"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe des règles pertinentes dans les écosystèmes choisis."
+  },
+  {
+   "question": "43437",
+   "titre": "Will there be a successful coup in Africa or Latin America before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "humain",
+     "compartiment": "passage_acte",
+     "regle": "Le mécanisme décisif est le 'passage_acte' : la réussite d'un coup dépend de la conversion d'intentions en action collective par des acteurs clés (officiers, unités, élites) qui franchissent le seuil et prennent le contrôle effectif des leviers du pouvoir."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "La règle spécifique est que les échéances électorales créent des points focaux et des ruptures de légitimité : des scrutins imminents ou contestés structurent les opportunités et les motivations pour qu'une fraction des forces armées tente et peut réussir un coup."
+    }
+   ],
+   "fiches": [
+    "humain",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Pas applicable : les deux compartiments ci‑dessus contiennent les règles déterminantes pour la survenue et le succès d'un coup."
+  },
+  {
+   "question": "43452",
+   "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "L'exécutif américain (le président et son appareil) contrôle formellement l'acceptation d'invitations, les déplacements officiels et les rencontres bilatérales ; sa décision opérationnelle détermine si Donald Trump peut rencontrer en personne un chef d'État étranger."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Les échéances électorales imposent des fenêtres de campagne et des tabous de communication qui contraignent fortement les déplacements et les sommets internationaux des principaux dirigeants, de sorte que la date et le calendrier électoral rendent la tenue d'une rencontre avant le 1er octobre 2026 d"
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "43461",
+   "titre": "Will at least 5 non-passengers be linked to the MV Hondius hantavirus outbreak before August 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "epidemies",
+     "compartiment": "autorites",
+     "regle": "Les autorités sanitaires locales et nationales réalisent les enquêtes, tests et recherches des contacts et sont celles qui officiellement déclarent qu'une personne est « liée » à l'éclosion, donc leur action et décision déterminent si ≥5 non‑passagers seront reconnus et rapportés avant août 2026."
+    },
+    {
+     "fiche": "observateur-mesure",
+     "compartiment": "definitions",
+     "regle": "Les conventions de mesure et de comptage (définition de « lié » à l'éclosion, inclusion des cas probables vs confirmés, fenêtres temporelles d'association) déterminent si les personnes identifiées par les enquêtes sont comptées dans les séries publiques comme liées au MV Hondius avant la date donnée"
+    }
+   ],
+   "fiches": [
+    "epidemies",
+    "observateur-mesure"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contient une règle décisive, répondre par une liste vide."
+  },
+  {
+   "question": "43479",
+   "titre": "Will Claude Mythos or a similar model be publicly released before September 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "ia",
+     "regle": "Dans le compartiment ia des sciences-techniques, ce sont les laboratoires et entreprises d'IA qui décident de publier un modèle : ils pèsent incitations commerciales, évaluations de risques/sécurité, disponibilité de calcul et concurrence, et ces décisions contrôlent si et comment un modèle est rend"
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Dans le compartiment executif de la politique américaine, l'administration peut imposer contrôles à l'export, interdictions ou obligations réglementaires (par décrets ou agences) qui empêchent ou restreignent la mise à disposition publique de modèles d'IA avancés."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "43491",
+   "titre": "Will a new High Representative for Bosnia and Herzegovina officially be in place before September 2, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le gouvernement américain, via l'exécutif et le département d'État en tant que membre principal du Steering Board du Peace Implementation Council, propose, valide ou bloque les candidatures ; son accord est nécessaire pour qu'une nomination du High Representative soit formellement adoptée."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "L'installation officielle d'un nouveau High Representative exige une décision formelle prise lors d'une réunion programmée du Steering Board/PIC : si cette réunion de décision n'a pas lieu avant le 2 septembre 2026, il ne peut y avoir d'entrée en fonction officielle avant cette date."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : au moins un écosystème contient une règle déterminante."
+  },
+  {
+   "question": "43494",
+   "titre": "Will any U.S. state or EU member state restrict large-scale data center grid connections before September 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "infrastructures-critiques",
+     "compartiment": "operateurs_regulateurs",
+     "regle": "Les opérateurs de réseau et les régulateurs nationaux contrôlent l'octroi des raccordements électriques et peuvent décider, via études de capacité, conditions techniques ou moratoires, d'autoriser, limiter ou geler les raccordements de centres de données à grande échelle."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "etats_federes",
+     "regle": "Les autorités des États fédérés (gouverneurs, législatures d'État et commissions de services publics) ont le pouvoir d'imposer par loi ou décision locale des moratoires, conditions d'autorisation ou restrictions sur les raccordements énergétiques de grandes installations sur leur territoire."
+    }
+   ],
+   "fiches": [
+    "infrastructures-critiques",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "43496",
+   "titre": "Will Haiti hold the first round of its presidential election before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "La règle juridique et le calendrier électoral (délais constitutionnels et décisions de l’autorité électorale) fixent formellement la date du premier tour et encadrent les procédures de fixation ou de report du scrutin."
+    },
+    {
+     "fiche": "securite-publique",
+     "compartiment": "polices",
+     "regle": "La capacité des forces de l’ordre à sécuriser bureaux de vote, corridors et électeurs est le mécanisme opérationnel qui permet — ou force le report/annulation — de la tenue effective du premier tour."
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "securite-publique"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème contenant une règle gouvernant la tenue du scrutin."
+  },
+  {
+   "question": "43501",
+   "titre": "Will Instructure be subject to another major hack before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "information-cyber",
+     "compartiment": "cyber",
+     "regle": "La probabilité d'une nouvelle grosse compromission dépend des mécanismes propres au cyber : l'existence et l'exploitation automatisée de vulnérabilités non corrigées, le marché des zero‑days/ransomware et les capacités/motivations des acteurs qui ciblent les services en ligne décident si un fourniss"
+    },
+    {
+     "fiche": "infrastructures-critiques",
+     "compartiment": "attaques",
+     "regle": "Dans les infrastructures critiques, la règle qui gouverne l'issue est que la centralisation et la dépendance sectorielle à un prestataire augmentent l'attractivité et l'impact des attaques — si les protections opérationnelles et la détection ne sont pas à la hauteur, un « major hack » devient beauco"
+    }
+   ],
+   "fiches": [
+    "information-cyber",
+    "infrastructures-critiques"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème pertinent (information-cyber et infrastructures-critiques) qui contient la règle décisive."
+  },
+  {
+   "question": "43502",
+   "titre": "Will Bitcoin trade above $120,000 before August 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "cryptomonnaies",
+     "regle": "La liquidité et la stabilité des acteurs crypto (exchanges, custodians, fonds) — faillites, retraits massifs ou ventes forcées — déterminent des mouvements extrêmes du prix du Bitcoin et peuvent décider s'il franchit ou non 120 000 $."
+    },
+    {
+     "fiche": "inflation-mondiale",
+     "compartiment": "banques_centrales",
+     "regle": "Les décisions des banques centrales sur les taux et la taille de leur bilan modifient la liquidité globale et le coût d'opportunité des actifs risqués, façonnant l'appétit institutionnel pour le Bitcoin et donc sa probabilité d'atteindre 120 000 $."
+    }
+   ],
+   "fiches": [
+    "crises-bancaires",
+    "inflation-mondiale"
+   ],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème ne contient une règle unique et suffisante qui, à lui seul, décide l'issue."
+  },
+  {
+   "question": "43505",
+   "titre": "Will the Senate of the Philippines remove Vice President Sara Duterte from office before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "parlements",
+     "regle": "Les assemblées ne peuvent tenir des procès ou des votes formels qu'en session et selon un calendrier institutionnel : la date et la durée des sessions parlementaires déterminent si un procès en destitution peut être programmé et clos avant septembre 2026."
+    },
+    {
+     "fiche": "elections-amerique-latine",
+     "compartiment": "assemblees",
+     "regle": "Le compartiment 'assemblées' modélise la règle procédurale selon laquelle la destitution d'un membre de l'exécutif dépend d'une procédure législative (impeachment/mise en accusation par la chambre basse puis procès et condamnation par le Sénat selon un seuil de vote constitutionnel), et c'est cette "
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "elections-amerique-latine"
+   ],
+   "rejetes": [],
+   "si_aucun": "null"
+  },
+  {
+   "question": "43525",
+   "titre": "Will OpenAI's ChatGPT Atlas browser be released for Windows before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "ia",
+     "regle": "La décision de lancer un produit d'IA comme ChatGPT Atlas dépend des laboratoires d'IA : ils n'autorisent une mise en production que lorsque la maturité du modèle, les évaluations de sécurité et de conformité, et l'intégration technique (interopérabilité avec Windows, tests, empaquetage) sont satisf"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Les calendriers commerciaux et marketing (fenêtres de lancement liées à conférences, trimestres fiscaux, versions majeures) imposent des dates-limites opérationnelles qui déterminent si la sortie peut être programmée avant le 1er septembre 2026."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "N/A — au moins un écosystème pertinent a été identifié ci‑dessus."
+  },
+  {
+   "question": "43527",
+   "titre": "Will federal courts block the USPS mail-in ballot restrictions before Election Day?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "tribunaux",
+     "regle": "Les tribunaux fédéraux peuvent empêcher une restriction par injonction préliminaire ou ordonnance d'urgence en appliquant la norme juridique spécifique (probabilité de succès au fond, préjudice irréparable, balance des intérêts et intérêt public) et via procédures d'appel/stay qui déterminent si la "
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Le compartiment 'elections' impose que l'imminence de la date électorale et les contraintes logistiques (impression, acheminement, réception des bulletins) conditionnent l'urgence et la portée des décisions judiciaires : les juges prennent en compte les délais administratifs et sont plus susceptible"
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème pertinent (les tribunaux fédéraux et le calendrier électoral)."
+  },
+  {
+   "question": "43615",
+   "titre": "Will Shakira's \"Dai Dai\" outpeak Shakira's \"Waka Waka\" on the Billboard Hot 100?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "La position au Billboard Hot 100 est déterminée par la règle conventionnelle du Billboard qui combine et pèse ventes digitales, équivalents streaming et audience radio ; c’est cette méthode de comptage qui décidera formellement si «Dai Dai» dépasse «Waka Waka»."
+    },
+    {
+     "fiche": "information-cyber",
+     "compartiment": "plateformes",
+     "regle": "Les algorithmes, playlists éditoriales et politiques de promotion des plateformes de streaming contrôlent l’exposition et le nombre d’écoutes mesurées par le Billboard, de sorte que leurs choix algorithmique/éditoriaux détermineront en pratique si «Dai Dai» accumule assez de streams pour outpeaker «"
+    }
+   ],
+   "fiches": [
+    "competitions-culture",
+    "information-cyber"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un écosystème pertinent pour décider de cette issue ; voir la liste ci‑dessus."
+  },
+  {
+   "question": "43637",
+   "titre": "Will the 2026 Alberta independence referendum pass?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "La loi et l'administration électorale qui définissent qui vote, la formulation de la question, les seuils et la nature contraignante du scrutin déterminent si un référendum peut être tenu, validé et compté comme un 'oui' gagnant."
+    },
+    {
+     "fiche": "humain",
+     "compartiment": "opinion_publique",
+     "regle": "Ce que les gens expriment publiquement (signatures, discours, sondages visibles) fonctionne comme un point focal social et un signal de norme qui modèle intentions, mobilisation et vote, pouvant produire des effets de cascade décisifs dans un scrutin serré."
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "humain"
+   ],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème listé ne contient une règle plus décisive que celles-ci pour déterminer l'issue d'un référendum provincial."
+  },
+  {
+   "question": "43688",
+   "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "banques_centrales",
+     "regle": "Le calendrier des réunions des banques centrales fixe les dates où la Fed peut officiellement modifier la fourchette du federal funds ; toute hausse avant le 30 juillet 2026 doit être votée lors d'une réunion programmée avant cette date."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "reserve_federale",
+     "regle": "La Réserve fédérale (FOMC) dispose d'un mécanisme de décision par vote majoritaire fondé sur son cadre institutionnel (double mandat, évaluations de l'inflation et de l'emploi) — c'est ce vote et ce cadre qui déterminent si un relèvement de la fourchette sera adopté."
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contient une règle pertinente, renvoyer une liste vide."
+  },
+  {
+   "question": "43703",
+   "titre": "Will a hurricane make landfall in the continental United States before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "climat-extremes",
+     "compartiment": "tempetes",
+     "regle": "La genèse, l'intensité et la trajectoire des cyclones tropicaux — via la circulation atmosphérique saisonnière et la configuration des crêtes/creux qui dirigent les vents de fond — déterminent si un ouragan sera guidé vers le continent et fera landfall avant le 1er septembre 2026."
+    },
+    {
+     "fiche": "oceans-et-fleuves",
+     "compartiment": "oceans",
+     "regle": "La température de surface de la mer et la chaleur océanique disponible dans l'Atlantique tropical et les Caraïbes contrôlent la probabilité qu'un cyclone se forme et s'entretienne suffisamment pour atteindre et toucher la côte continentale des États‑Unis avant le 1er septembre 2026."
+    }
+   ],
+   "fiches": [
+    "climat-extremes",
+    "oceans-et-fleuves"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : au moins un écosystème contient une règle pertinente."
+  },
+  {
+   "question": "43707",
+   "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "rivalite-sino-americaine",
+     "compartiment": "taiwan",
+     "regle": "Dans le compartiment « taiwan », la décision d'imposer un blocus ou une quarantaine dépend du calcul stratégique de Pékin sur la volonté et la capacité de dissuasion des États‑Unis et de leurs alliés : si la Chine juge que l'alignement US/alliés est suffisant pour lui infliger des coûts inacceptable"
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Dans le compartiment « executif », la règle décisive est que le président et la chaîne de commandement américains déterminent la posture militaire (déploiements, escortes, sanctions) et peuvent soit renforcer la dissuasion soit intervenir, ce qui est le principal facteur empêchant ou autorisant Péki"
+    }
+   ],
+   "fiches": [
+    "rivalite-sino-americaine",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contenait la règle décisive, la réponse attendue serait une liste vide."
+  },
+  {
+   "question": "43708",
+   "titre": "Will Starlink's website show South Africa as a country with Starlink availability before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "infrastructures-critiques",
+     "compartiment": "operateurs_regulateurs",
+     "regle": "La mise en service commerciale et l'annonce publique d'un fournisseur d'accès dépend de l'autorisation du régulateur national (spectre, licences d'exploitation/importation d'équipements, conditions commerciales) : sans ces autorisations le fournisseur ne peut légalement déployer ni afficher le pays "
+    },
+    {
+     "fiche": "soleil-espace",
+     "compartiment": "satellites",
+     "regle": "Un opérateur de constellation n'annonce une zone comme desservie que si la configuration et la capacité de ses satellites (et l'infrastructure sol associée) assurent effectivement couverture et débit dans le territoire concerné, donc l'affichage dépend de la couverture/capacité réelle de la constell"
+    }
+   ],
+   "fiches": [
+    "infrastructures-critiques",
+    "soleil-espace"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe des règles pertinentes dans les écosystèmes ci‑dessus."
+  },
+  {
+   "question": "43822",
+   "titre": "Will Iceland vote Yes in the 2026 EU negotiations referendum?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "humain",
+     "compartiment": "opinion_publique",
+     "regle": "Dans le compartiment opinion_publique : la visibilité de l'opinion (sondages, déclarations publiques, manifestations) crée un point focal conventionnel qui convertit les indécis en électeurs et tend à déterminer quel camp l'emporte au référendum."
+    },
+    {
+     "fiche": "information-cyber",
+     "compartiment": "recits",
+     "regle": "Dans le compartiment recits : les récits et la désinformation amplifiés sur les plateformes rendent saillantes certaines interprétations des enjeux (avantages, risques, souveraineté) et déplacent l'opinion des indécis, déterminant ainsi l'issue."
+    }
+   ],
+   "fiches": [
+    "humain",
+    "information-cyber"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "43824",
+   "titre": "Will the Brookmont Catastrophic Bond ETF drop at least $0.25 within two days before September 2026?",
+   "issue": 0,
+   "choix": [],
+   "fiches": [],
+   "rejetes": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "marchés",
+     "regle": "Sur les marchés financiers le prix d’un ETF est déterminé par la liquidité et les flux (rachats/souscriptions, positions des teneurs de marché) et par la réévaluation du risque des actifs sous-jacents (ici des catastrophe bonds) qui peuvent provoquer en quelques jours une baisse substantielle si la "
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "marchés",
+     "regle": "Le calendrier des marchés (rebalancements d’indices, expirations d’options et fins de période) concentre des flux prévisibles à des dates précises — ces mouvements programmés dans les deux jours précédant le début d’un mois peuvent provoquer une volatilité suffisante pour faire chuter le prix d’un E"
+    }
+   ],
+   "si_aucun": "Il existe au moins un écosystème pertinent qui gouverne l’issue."
+  },
+  {
+   "question": "43841",
+   "titre": "Will OpenAI publicly file an initial registration statement (S-1) with the SEC to launch an IPO, before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "capitaux",
+     "regle": "La décision de déposer un S‑1 est gouvernée par les investisseurs privés et les conditions de valorisation du secteur IA : si les capital‑risqueurs et les principaux investisseurs estiment qu'une introduction permettra de cristalliser une valorisation et d'offrir de la liquidité, ils pousseront le c"
+    },
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "marches",
+     "regle": "La 'fenêtre d'IPO' des marchés publics — définie par la volatilité, l'appétit des investisseurs et les performances récentes d'introductions comparables — décide si les banques et la société jugent opportun de déposer un S‑1 aujourd'hui ou de reporter."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "crises-bancaires"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : les règles de capitaux et des marchés gouvernent classiquement la décision de dépôt d'un S‑1."
+  },
+  {
+   "question": "43844",
+   "titre": "Will Hakainde Hichilema receive at least 65% of the vote in the first round of Zambia's 2026 presidential election?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "humain",
+     "compartiment": "opinion_publique",
+     "regle": "Le compartiment opinion_publique capture la dynamique des soutiens exprimés publiquement et des normes perçues : si un fort effet d'emballement public (bandwagon) se crée en faveur de Hichilema, il convertira les intentions en votes réels et pourra le porter au‑dessus de 65%."
+    },
+    {
+     "fiche": "information-cyber",
+     "compartiment": "plateformes",
+     "regle": "Le compartiment plateformes régit l'amplification algorithmique des récits et la visibilité des concurrents : si les plateformes amplifient massivement un récit de victoire ou réduisent l'exposition des opposants (par censure ou biais), elles peuvent modifier l'information disponible et la mobilisat"
+    }
+   ],
+   "fiches": [
+    "humain",
+    "information-cyber"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un ou plusieurs compartiments pertinents parmi ceux indiqués."
+  },
+  {
+   "question": "43853",
+   "titre": "Will former U.S. Representative George Santos be arrested before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "La décision des autorités exécutives fédérales (en particulier le Department of Justice et les bureaux des procureurs) de porter des accusations, de demander et de programmer l'exécution d'un mandat d'arrêt — selon leurs politiques de mise en accusation, accords de coopération et priorités calendair"
+    },
+    {
+     "fiche": "securite-publique",
+     "compartiment": "polices",
+     "regle": "L'exécution effective d'un mandat d'arrêt dépend des services de police fédéraux ou locaux (FBI, US Marshals, police locale) qui, en fonction de leurs priorités opérationnelles, évaluations de risque, et de la coordination avec les procureurs, décident du moment et de la méthode de l'arrestation."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "securite-publique"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun écosystème ne contenait une règle décisive, la réponse serait une liste vide."
+  },
+  {
+   "question": "43881",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "russie-ukraine",
+     "compartiment": "negociations",
+     "regle": "Le compartiment 'negociations' contient la règle opérationnelle que des rencontres en personne n'ont lieu que si des mécanismes diplomatiques (conditions de cessez‑le‑feu, garanties de sécurité, médiateurs et concessions réciproques) ont créé suffisamment de confiance et d'incitations mutuelles pour"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Le compartiment 'elections' impose la règle selon laquelle les échéances électorales et les fenêtres de campagne structurent l'agenda des chefs d'État en créant des coûts politiques temporels (risques ou opportunités) qui rendent la tenue d'une rencontre avant une date donnée plus ou moins probable."
+    }
+   ],
+   "fiches": [
+    "russie-ukraine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "43911",
+   "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "Le Congrès doit adopter la loi d'application (et contrôle le calendrier législatif et l'autorité de promotion du commerce) pour que des changements tarifaires ou préférences entrent en vigueur, donc son assentiment et son timing déterminent si un accord bilatéral peut être finalisé côté américain av"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Le calendrier électoral (campagnes et risques politiques en Inde et aux États‑Unis) crée des fenêtres favorables ou des blocages opérationnels : les gouvernements retardent ou accélèrent la signature d'accords majeurs pour éviter de subir un coût politique pendant les élections, ce qui contraint la "
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un compartiment ci‑dessus qui contient la règle décisive."
+  },
+  {
+   "question": "43984",
+   "titre": "Will the Liberal Party officially nominate Flávio Bolsonaro as its candidate for president of Brazil before August 15, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "elections-amerique-latine",
+     "compartiment": "regles",
+     "regle": "La réglementation électorale nationale et les statuts des partis déterminent les procédures formelles de sélection et d'enregistrement des candidats par les partis, et c'est cette règle procédurale qui décide si le PL peut officiellement porter Flávio Bolsonaro avant une date donnée."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Le calendrier électoral fixe des dates limites légales d'enregistrement des candidatures auprès de la justice électorale ; la position de cette date par rapport au 15 août 2026 détermine matériellement si une nomination officielle peut être accomplie avant ce jour."
+    }
+   ],
+   "fiches": [
+    "elections-amerique-latine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : la question est couverte par les règles électorales et les dates limites listées ci‑dessus."
+  },
+  {
+   "question": "43985",
+   "titre": "Before September 1, 2026, will Turkish President Recep Tayyip Erdoğan be legally permitted to run for another term?",
+   "issue": 0,
+   "choix": [],
+   "fiches": [],
+   "rejetes": [],
+   "si_aucun": "La question dépend du droit constitutionnel et électoral turc — notamment des textes électoraux, de leur interprétation par la Cour constitutionnelle/Conseil électoral et d'éventuelles décisions du Pa"
+  },
+  {
+   "question": "43986",
+   "titre": "Will Ukraine announce a presidential election before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "La règle constitutionnelle et le code électoral (échéances, délais formels et autorités compétentes) déterminent quand une présidentielle peut être convoquée et annoncée, donc le calendrier légal gouverne la possibilité et le timing d'une annonce."
+    },
+    {
+     "fiche": "russie-ukraine",
+     "compartiment": "negociations",
+     "regle": "La règle opérationnelle du théâtre de guerre : l'état des négociations/cessation des hostilités et le contrôle territorial conditionnent la décision politique de Kyiv d'annoncer une élection nationale, car en présence d'hostilités actives et d'absence de contrôle sur une partie du territoire une ann"
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "russie-ukraine"
+   ],
+   "rejetes": [],
+   "si_aucun": ""
+  },
+  {
+   "question": "43987",
+   "titre": "Will the United States provide written notices of withdrawal from the USMCA before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le pouvoir d'envoyer formellement un avis de retrait d'un accord international relève principalement de l'exécutif américain (le président et ses agences de commerce/affaires étrangères) : c'est leur décision opérationnelle d'adresser ou non un avis écrit aux partenaires, même si le Congrès peut ten"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Le calendrier électoral fixe des incitations fortes pour le timing des décisions sensibles à l'opinion — les administrations tendent à éviter d'envoyer des notifications de retrait susceptibles de provoquer un choc politique avant des échéances électorales importantes, ce qui pèse directement sur la"
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "pas applicable"
+  },
+  {
+   "question": "43991",
+   "titre": "On July 8, 2026, will Marine Le Pen be ineligible to run in the 2027 French presidential election?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "securite-publique",
+     "compartiment": "justice",
+     "regle": "En droit interne, la juridiction pénale française peut, lorsqu'elle condamne pour des faits visés par le Code électoral ou le Code pénal, prononcer une peine complémentaire d'inéligibilité pour une durée déterminée ; l'existence effective de l'inéligibilité à une date donnée dépend du prononcé du ju"
+    }
+   ],
+   "fiches": [
+    "securite-publique"
+   ],
+   "rejetes": [],
+   "si_aucun": "N/A — le compartiment securite-publique/justice contient la règle décisive."
+  },
+  {
+   "question": "43992",
+   "titre": "Will July 2026 be the warmest July on record, according to Copernicus?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "observateur-mesure",
+     "compartiment": "definitions",
+     "regle": "Copernicus applique par convention une méthodologie précise (produit de réanalyse ou d'observation choisi, période de référence, calcul des anomalies, couverture spatiale et lissage) qui définit formellement ce qu'est ‘le juillet le plus chaud’; c'est cette définition méthodologique qui décide si ju"
+    },
+    {
+     "fiche": "climat-extremes",
+     "compartiment": "tendance",
+     "regle": "La tendance de fond du climat (réchauffement global lié aux gaz à effet de serre) fixe la probabilité physique qu'un mois donné dépasse les records précédents : c'est cette dynamique climatique, combinée à la variabilité interannuelle (El Niño, oscillations océaniques, etc.), qui gouverne si les tem"
+    }
+   ],
+   "fiches": [
+    "observateur-mesure",
+    "climat-extremes"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe des écosystèmes pertinents dans la liste qui contiennent la règle déterminante."
+  },
+  {
+   "question": "44117",
+   "titre": "Will James M. McDonald be sworn in as US Attorney for the Southern District of New York before August 22, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "La règle du Sénat (avis et consentement) — auditions en commission, possibilité de 'holds', règles de cloture et calendrier de vote — détermine si et quand un candidat est confirmé et donc peut être assermenté."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Le calendrier institutionnel (sessions du Congrès, recesses, et délais statutaires pour nominations intérimaires) crée des fenêtres et dates limites qui fixent si la confirmation et l'assermentation peuvent juridiquement et pratiquement intervenir avant le 22 août 2026."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Cette question est gouvernée par les fiches ci‑dessus."
+  },
+  {
+   "question": "44193",
+   "titre": "Will North Korea conduct a nuclear test before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "non-proliferation",
+     "compartiment": "peur_prestige",
+     "regle": "Dans le compartiment peur_prestige, les États cherchant reconnaissance et dissuasion utilisent les essais nucléaires comme signal de prestige et de crédibilité — quand les bénéfices politiques et de sécurité perçus l'emportent sur les coûts diplomatiques et sanctionnels, un essai devient la décision"
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "sanctions",
+     "regle": "Dans le compartiment sanctions, la posture américaine (durcissement ou offre de récompenses/soulagement) reconfigure directement les coûts et bénéfices pour Pyongyang, en rendant un essai plus ou moins rentable comme moyen d'obtenir concessions ou de répondre à des pressions."
+    }
+   ],
+   "fiches": [
+    "non-proliferation",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe des écosystèmes retenus."
+  },
+  {
+   "question": "44230",
+   "titre": "Will the IAEA conduct an on-site inspection at any of Iran's Natanz, Fordow, or Isfahan nuclear sites before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "iran-nucleaire",
+     "compartiment": "verification",
+     "regle": "La possibilité d'une inspection sur site est déterminée par l'existence et la mise en œuvre par l'Iran des accords de garanties (et, le cas échéant, du Protocole additionnel) : si Téhéran n'accorde pas l'accès requis ou suspend l'application de ces instruments, l'AIEA ne peut mener d'inspection on‑s"
+    },
+    {
+     "fiche": "non-proliferation",
+     "compartiment": "aiea",
+     "regle": "L'autorité de l'AIEA pour accéder à des installations est encadrée par son régime de garanties et par les décisions du Conseil des gouverneurs (ou, en dernier recours, du Conseil de sécurité) ; sans mandat juridique ou décision politique conférant l'accès, l'agence ne peut imposer d'inspection on‑si"
+    }
+   ],
+   "fiches": [
+    "iran-nucleaire",
+    "non-proliferation"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "44239",
+   "titre": "Will Elon Musk be a trillionaire on August 31, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "capitaux",
+     "regle": "Les cycles de capitaux et les mécanismes de valorisation dans la tech (tours privés, valorisations comparables, introductions en bourse et appétit des investisseurs) déterminent la valeur des participations privées de fondateur et donc la part de richesse non cotée de Musk."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques"
+   ],
+   "rejetes": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "marchés",
+     "regle": "La valorisation boursière et la liquidité des marchés financiers — via capitalisation, mark‑to‑market, ventes, marges et vagues de panique — fixent directement la fortune papier d'un actionnaire majeur et peuvent le faire franchir ou non le seuil de 1 000 milliards $."
+    }
+   ],
+   "si_aucun": "Si aucun écosystème ne contient une règle pertinente, la bonne réponse serait une liste vide."
+  },
+  {
+   "question": "44241",
+   "titre": "Will the Lincoln Memorial Reflecting Pool be fully repaired before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "budget",
+     "regle": "Le calendrier et l'allocation des crédits fédéraux (processus d'appropriation du Congrès et du budget exécutif) déterminent si les fonds sont débloqués à temps pour lancer et achever la réparation complète avant septembre 2026."
+    },
+    {
+     "fiche": "infrastructures-critiques",
+     "compartiment": "operateurs_regulateurs",
+     "regle": "Les procédures de passation de marchés, d'obtention de permis et de gestion de projet des opérateurs et régulateurs (notamment le National Park Service) imposent des étapes et des délais contractuels qui décident si les travaux peuvent être terminés d'ici septembre 2026."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "infrastructures-critiques"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "44244",
+   "titre": "Will another company get dropped from the Dow Jones Industrial Average in July or August 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "convention",
+     "regle": "Les opérateurs d'indices (S&P Dow Jones Indices) suivent des conventions formelles : une valeur est retirée du Dow Jones quand un événement de marché la rend inéligible (fusion/acquisition, radiation/delisting, faillite, ou non-respect des critères de l'indice), et ces règles — appliquées ad hoc au "
+    }
+   ],
+   "fiches": [
+    "crises-bancaires"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable — un écosystème pertinent a été identifié."
+  },
+  {
+   "question": "44247",
+   "titre": "Will Virgin Galactic have a \"Going Concern\" substantial doubt statement in its 10-Q SEC filing for Q2 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "convention",
+     "regle": "La règle comptable et réglementaire spécifique (US GAAP ASC 205‑40 et guidance SEC/PCAOB) impose que la direction et l'auditeur évaluent et divulguent dans le 10‑Q s'il existe un doute substantiel sur la capacité de la société à poursuivre son activité ; cette application de la convention détermine "
+    }
+   ],
+   "fiches": [
+    "crises-bancaires"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : un écosystème pertinent (règles comptables) a été identifié ci‑dessus."
+  },
+  {
+   "question": "44395",
+   "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "tribunaux",
+     "regle": "Les juges de la Cour suprême ont la sécurité d'un mandat à vie et peuvent choisir stratégiquement le moment de leur départ afin que le président en exercice, soumis à la confirmation du Sénat, puisse nommer leur successeur ; donc la composition politique de l'exécutif et du Sénat gouverne fortement "
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Les décisions de démission ou de retraite des hauts magistrats sont souvent synchronisées sur le calendrier électoral : les juges retardent ou avancent une annonce pour coïncider avec des échéances (présidentielle, sénatoriale) qui maximisent les chances d'un successeur idéologiquement proche."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : des écosystèmes pertinents ont été identifiés."
+  },
+  {
+   "question": "44406",
+   "titre": "Will Vladimir Putin visit Iran before September 1, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "russie-ukraine",
+     "compartiment": "soutiens",
+     "regle": "Lorsque la guerre en Ukraine crée un besoin concret de soutiens militaires ou logistiques, Moscou déclenche des rencontres de haut niveau — y compris des visites présidentielles — pour négocier, autoriser et sécuriser des livraisons ou des accords avec des fournisseurs externes comme l'Iran."
+    },
+    {
+     "fiche": "iran-nucleaire",
+     "compartiment": "negociations",
+     "regle": "Les négociations autour du programme nucléaire iranien poussent les États partenaires à organiser des sommets bilatéraux pour coordonner positions et concessions : une visite présidentielle a lieu quand Moscou juge qu'un déplacement est nécessaire pour aligner la stratégie russo‑iranienne ou pour in"
+    }
+   ],
+   "fiches": [
+    "russie-ukraine",
+    "iran-nucleaire"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe au moins un mécanisme pertinent dans les fiches ci‑dessus."
+  },
+  {
+   "question": "44414",
+   "titre": "Will a Tucker Carlson-founded political party file FEC Form 1 before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "regles_electorales",
+     "regle": "Le droit électoral fédéral et les règles de la FEC exigent que toute organisation qui agit comme comité politique — recevant ou dépensant plus de 1 000 $ pour influencer une élection fédérale — s'enregistre en déposant le Formulaire FEC 1 (Statement of Organization) dans les délais prescrits, et c'e"
+    }
+   ],
+   "fiches": [
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable."
+  },
+  {
+   "question": "44448",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "capitaux",
+     "regle": "La fenêtre d'IPO pour une entreprise d'IA est déterminée par le marché des capitaux et les valorisations : les entreprises déposent un S‑1 lorsque le financement privé devient plus cher ou rare et que l'appétit des investisseurs publics permet d'obtenir une valorisation et des conditions supérieur(e"
+    }
+   ],
+   "fiches": [
+    "sciences-techniques"
+   ],
+   "rejetes": [
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "marchés",
+     "regle": "L'état des marchés financiers (liquidité, volatilité et prime de risque) gouverne le calendrier des introductions : en période de panique, resserrement du crédit ou forte baisse des indices, les dépôts d'un S‑1 sont généralement retardés ou annulés."
+    }
+   ],
+   "si_aucun": "non applicable"
+  },
+  {
+   "question": "44512",
+   "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "La tenue et la date des échéances électorales ou des votes parlementaires prévus par le calendrier constitutionnel (élections législatives, municipales ou motions de censure) créent des points obligés où le gouvernement peut être remplacé ou contraint à la démission si les résultats ou majorités cha"
+    },
+    {
+     "fiche": "humain",
+     "compartiment": "opinion_publique",
+     "regle": "L'ampleur et la direction de l'opinion publique mesurée par sondages, manifestations et mobilisation visible produisent une pression politique qui, en franchissant un seuil de délégitimation, peut provoquer la démission du Premier ministre ou du gouvernement."
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "humain"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : des écosystèmes pertinents (calendriers électoraux et dynamique d'opinion) ont été identifiés comme déterminants."
+  },
+  {
+   "question": "44513",
+   "titre": "Will Donald Trump and Vladimir Putin speak on the phone in August 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Les appels officiels entre un président américain et un chef d'État étranger sont autorisés, planifiés et conduits par l'exécutif (Maison‑Blanche et ses services de politique étrangère) qui peut décider d'établir, retarder ou refuser un contact officiel."
+    },
+    {
+     "fiche": "humain",
+     "compartiment": "agenda",
+     "regle": "L'agenda des décideurs (attention rare des organisations, routines hors crise) fixe si un dirigeant dispose de la disponibilité politique et temporelle pour initier ou accepter un appel diplomatique non contraint par une échéance urgente."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "humain"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : la décision résulte d'actes politiques bilatéraux mais les règles de l'exécutif américain et l'agenda des dirigeants sont les mécanismes déterminants."
+  },
+  {
+   "question": "44544",
+   "titre": "Will Thomas Massie file to run for any elective office before August 25, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Les calendriers électoraux fixent des dates de scrutin et des fenêtres administratives de dépôt de candidatures : si aucun dépôt n’est possible avant le 25 août 2026 pour l’élection visée, alors il est impossible légalement qu’il dépose une candidature avant cette date."
+    },
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "regles_electorales",
+     "regle": "Les règles électorales fédérales et étatiques (conditions d’éligibilité, frais, signatures et procédures de dépôt) déterminent concrètement qui peut se porter candidat et quand — ces prescriptions légales et administratives décideront si Massie peut et choisira de déposer une candidature avant le 25"
+    }
+   ],
+   "fiches": [
+    "calendriers-echeances",
+    "politique-americaine"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : au moins un des écosystèmes ci‑dessus contient une règle pertinente."
+  },
+  {
+   "question": "44547",
+   "titre": "Will Mitch McConnell cast a roll-call vote in the U.S. Senate before September 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "congres",
+     "regle": "Les règles du Sénat et le pouvoir de programmation du leadership du Congrès (leaders de parti et présidence du Sénat) déterminent quels scrutins sont mis en séance et donc si un sénateur donné sera appelé à participer à un vote enregistré (roll-call) avant une date donnée."
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "parlements",
+     "regle": "Le calendrier des sessions parlementaires (sessions ordinaires, recesses et convocations extraordinaires) fixe les seules périodes où des votes en séance peuvent se tenir, donc sans session programmée avant septembre 2026 il n'y aura pas de roll-call à enregistrer."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : au moins un compartiment institutionnel (congrès / parlements) contient la règle décisive."
+  },
+  {
+   "question": "44693",
+   "titre": "Will the desktop market share of Linux exceed 8% in August 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "adoption",
+     "regle": "Le compartiment 'adoption' contient le mécanisme de diffusion technologique : le rythme d'adoption (préinstallations OEM, compatibilité des applications et pilotes, soutien des distributions, décisions des entreprises et réseaux d'effets de réseau) fixe directement si la base d'utilisateurs desktop "
+    },
+    {
+     "fiche": "observateur-mesure",
+     "compartiment": "definitions",
+     "regle": "Le compartiment 'definitions' contient la règle de mesure : la convention statistique (périmètre 'desktop' retenu, inclusion/exclusion des variants basés sur Linux, et sources/algorithmes de collecte) décide si la part de marché rapportée dépasse le seuil de 8 % indépendamment du comportement effect"
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "observateur-mesure"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : au moins un écosystème contient une règle pertinente."
+  },
+  {
+   "question": "44799",
+   "titre": "Will a bot finish in the top 5 of the Summer 2026 Metaculus Cup?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "sciences-techniques",
+     "compartiment": "ia",
+     "regle": "La dynamique propre aux modèles d'intelligence artificielle — progrès d'architecture, accès aux jeux de données, capacité de calcul et stratégies de déploiement/automatisation des laboratoires — détermine la précision et la consistance des prédictions d'un bot et donc sa capacité à atteindre le top "
+    },
+    {
+     "fiche": "competitions-culture",
+     "compartiment": "regles",
+     "regle": "Les conventions et règles d'attribution du tournoi — notamment l'admissibilité des participants automatisés, les modalités de soumission, la fenêtre de scoring et la méthode de calcul du classement — décident si un bot peut concourir officiellement et être classé dans le top 5."
+    }
+   ],
+   "fiches": [
+    "sciences-techniques",
+    "competitions-culture"
+   ],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème ne contient une règle spécifique qui déciderait de l'issue."
+  },
+  {
+   "question": "44919",
+   "titre": "Will the United States launch an attack against JNIM in Mali during August 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le compartiment exécutif détient l'autorité formelle d'ordonner des frappes extérieures : le président et son état‑major n'engagent une attaque que si une autorité légale (AUMF / pouvoir exécutif), une évaluation du risque opérationnel et des priorités stratégiques l'autorisent, donc c'est ce mécani"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "elections",
+     "regle": "Le compartiment élections impose un filtrage temporel fort : la proximité d'échéances (notamment les élections de novembre 2026) rend les décideurs de l'exécutif réticents à lancer de nouvelles opérations militaires risquées susceptibles de provoquer des pertes ou une controverse, et ce calcul calen"
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Si aucun mécanisme institutionnel ou calendrical ne gouvernait la décision, la réponse serait indéterminée, mais ici l'exécutif et le calendrier électoral sont pertinents."
+  },
+  {
+   "question": "44925",
+   "titre": "Will the Royal Mail raise prices on any letters or parcels before September 10, 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "infrastructures-critiques",
+     "compartiment": "operateurs_regulateurs",
+     "regle": "Le cadre entre opérateurs et régulateurs (ici : Royal Mail et Ofcom) fixe par des plafonds, consultations et autorisations réglementaires si et quand des augmentations tarifaires postales peuvent être appliquées, donc c'est ce mécanisme qui décidera si des hausses sont possibles avant la date donnée"
+    }
+   ],
+   "fiches": [
+    "infrastructures-critiques"
+   ],
+   "rejetes": [],
+   "si_aucun": "non applicable : un écosystème pertinent (infrastructures-critiques / operateurs_regulateurs) a été identifié."
+  },
+  {
+   "question": "44986",
+   "titre": "Will the U.S. government's 30-year treasury bond remain in the  ≥5% \"danger zone\" for the entire month of August 2026?",
+   "issue": 1,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "reserve_federale",
+     "regle": "La Réserve fédérale, par ses décisions de taux directeurs, son forward guidance et ses opérations de marché (gestion du bilan / achats-ventes d'actifs), façonne les anticipations de taux courts et la prime de terme qui déterminent directement le niveau des rendements des bons du Trésor à 30 ans."
+    },
+    {
+     "fiche": "crises-bancaires",
+     "compartiment": "marches",
+     "regle": "Le compartiment « marchés » — liquidité des teneurs de marché, flux de portefeuille, contraintes de bilan et aversion au risque — peut produire des primes de risque et de liquidité persistantes qui maintiennent le rendement du 30 ans au‑dessus d’un seuil donné indépendamment des seuls fondamentaux."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "crises-bancaires"
+   ],
+   "rejetes": [],
+   "si_aucun": "Non applicable : des compartiments pertinents existent pour décider de l'issue."
+  },
+  {
+   "question": "45015",
+   "titre": "Will Italy's Schengen suspension against Spain be lifted before August 30, 2026?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "migrations-demographie",
+     "compartiment": "politiques_migratoires",
+     "regle": "La levée ou la poursuite d’un contrôle Schengen est dictée par les politiques migratoires nationales et par le Schengen Borders Code : un État peut réintroduire temporairement des contrôles mais doit notifier l’Union, justifier la mesure par la situation des flux et des risques, et la levée dépend d"
+    },
+    {
+     "fiche": "calendriers-echeances",
+     "compartiment": "dates_limites",
+     "regle": "Les cadres calendaires et juridiques (dates limites, durées maximales et procédures de renouvellement prévues par le Schengen Borders Code et par les obligations de notification) imposent des échéances et des réexamens formels qui déterminent si une suspension expire automatiquement ou doit être exp"
+    }
+   ],
+   "fiches": [
+    "migrations-demographie",
+    "calendriers-echeances"
+   ],
+   "rejetes": [],
+   "si_aucun": "Il existe des règles spécifiques dans les fiches ci‑dessous qui gouvernent l’issue."
+  },
+  {
+   "question": "8393",
+   "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
+   "issue": 0,
+   "choix": [
+    {
+     "fiche": "politique-americaine",
+     "compartiment": "executif",
+     "regle": "Le président et l'exécutif américains peuvent conclure ou refuser une extension bilatérale opérationnelle de New START sans nouvelle ratification sénatoriale, donc la volonté de l'exécutif américain est décisive pour prolonger l'accord."
+    },
+    {
+     "fiche": "russie-ukraine",
+     "compartiment": "negociations",
+     "regle": "La posture négociatrice de la Russie — façonnée par la guerre en Ukraine, les sanctions et le désir d'utiliser l'accord comme levier diplomatique — déterminera si Moscou consent à une prolongation jusqu'en 2027."
+    }
+   ],
+   "fiches": [
+    "politique-americaine",
+    "russie-ukraine"
+   ],
+   "rejetes": [],
+   "si_aucun": "Aucun écosystème ne contient une règle spécifique décidant l'issue."
+  }
+ ]
+}
