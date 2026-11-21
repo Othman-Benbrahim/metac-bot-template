@@ -375,7 +375,7 @@ regles:
     echelle: {axe: espace, tranche: "chambre fédérale"}
     structure: procedure
     compartiments: [politique-americaine:congres]
-    regle: "Pour clore le débat sur un texte de loi (et donc franchir l'obstruction), il faut les trois cinquièmes du Sénat : 60 voix, sauf vacance de plus d'un siège. Pour les nominations présidentielles, la majorité simple des votants suffit depuis le 21 novembre 2013 (toutes sauf la Cour suprême), et pour la Cour suprême depuis le 6 avril 2017. Une loi qui n'a pas 60 soutiens au Sénat ne passe donc pas, sauf procédure dérogatoire (par exemple le budget par réconciliation, non sourcé dans ce lot)."
+    regle: "Pour clore le débat sur un texte de loi (et donc franchir l'obstruction), il faut les trois cinquièmes du Sénat : 60 voix, sauf vacance de plus d'un siège. Pour les nominations présidentielles, la majorité simple des votants suffit depuis le 21 novembre 2013 (toutes sauf la Cour suprême), et pour la Cour suprême depuis le 6 avril 2017. Une loi qui n'a pas 60 soutiens au Sénat ne passe donc pas, sauf procédure dérogatoire (le budget par réconciliation : voir us_reconciliation_budgetaire)."
     parametres: {cloture_lois: 60, cloture_nominations: majorite_simple, depuis_nominations: "2013-11-21", depuis_cour_supreme: "2017-04-06"}
     sources:
       - {titre: "Service de recherche du Congrès, Majority Cloture for Nominations: Implications and the Nuclear Proceedings, R43331, 2013", url: "https://www.everycrsreport.com/reports/R43331.html", consulte: "2026-11-19"}
@@ -581,4 +581,66 @@ regles:
     parametres: {cas_baisse_changement: "28/37", soutien_moyen: {premiers_sondages: 62, derniers_sondages: 57, resultat: 52}, leduc_cas: "17/23", deplacement_moyen_points: 17}
     sources:
       - {titre: "Renwick, Referendums, dans The Sage Handbook of Electoral Behaviour, 2017 (manuscrit final, UCL)", url: "https://discovery-pp.ucl.ac.uk/id/eprint/1555628/1/Renwick%2C%20%27Referendums%27%2C%20in%20Sage%20Handbook%20of%20Electoral%20Behaviour%20%282017%29%20-%20final%20manuscript.pdf", consulte: "2026-11-21"}
+    statut: source
+
+  # ---------------------------------------------------------------- lot 8 : politique américaine, nominations, entourage, sanctions
+  - id: us_confirmations_delais
+    ecosysteme: "États-Unis · Sénat, confirmation des nominations"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "de la nomination au vote"}
+    structure: procedure
+    compartiments: [politique-americaine:congres, politique-americaine:executif]
+    regle: "Délai de la nomination à la confirmation : 45 jours sous George W. Bush, 66 sous Obama (Partnership for Public Service) ; 37 jours en moyenne pour les 32 postes de rang ministériel du premier mandat Trump (janvier 2017 à décembre 2019). Depuis 2013, la majorité simple suffit à confirmer (voir us_senat_cloture) : quand le parti du président tient le Sénat, la question est surtout le délai, pas l'issue. Une prise de fonction (prestation de serment) suit de peu la confirmation."
+    parametres: {jours_bush: 45, jours_obama: 66, jours_trump1_rang_ministeriel: 37}
+    sources:
+      - {titre: "Ballotpedia, Days from nomination to confirmation for Trump administration officials (chiffres du Partnership for Public Service)", url: "https://ballotpedia.org/Days_from_nomination_to_confirmation_for_Trump_administration_officials", consulte: "2026-11-21"}
+    statut: source
+
+  - id: us_entourage_rotation
+    ecosysteme: "États-Unis · entourage présidentiel et cabinet"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "mandat"}
+    structure: evenement_rare
+    compartiments: [politique-americaine:entourage, politique-americaine:executif]
+    regle: "Rotation de l'« équipe A » (les principaux conseillers de la Maison-Blanche) : 85 % sur le premier mandat Trump (avril 2020), un record selon Brookings. Les comparaisons par administration depuis Reagan existent dans les graphiques de Brookings mais n'ont pas été relevées : pas de taux de base par an et par poste ministériel dans ce lot."
+    parametres: {equipe_a_trump1_mandat: 0.85}
+    sources:
+      - {titre: "Brookings (K. Dunn Tenpas), Tracking turnover in the Trump administration", url: "https://www.brookings.edu/articles/tracking-turnover-in-the-second-trump-administration", consulte: "2026-11-21"}
+    statut: source
+    aide: "les séries de Brookings par administration (graphiques Datawrapper des figures 1 et 2), pour un taux de départ annuel par poste du cabinet"
+
+  - id: us_sanctions_frequence
+    ecosysteme: "États-Unis · Trésor (OFAC), sanctions"
+    espace: monde
+    echelle: {axe: temps, tranche: "année"}
+    structure: maintien
+    compartiments: [politique-americaine:sanctions]
+    regle: "Les désignations de sanctions sont continues et nombreuses : 2 275 personnes et entités ajoutées à la liste SDN en 2022, 2 502 en 2023, 3 135 en 2024, dont 1 706 liées à la Russie en 2024 (le premier pays visé pour la troisième année), soit en moyenne 44 à 60 inscriptions par semaine. Une question « de nouvelles sanctions avant telle date » porte donc surtout sur la volonté politique de l'administration en place et sur le périmètre exact demandé, pas sur la capacité."
+    parametres: {sdn_2022: 2275, sdn_2023: 2502, sdn_2024: 3135, russie_2024: 1706}
+    sources:
+      - {titre: "Center for a New American Security, Sanctions by the Numbers: 2024 Year in Review, mars 2025", url: "https://www.cnas.org/publications/reports/sanctions-by-the-numbers-2024-year-in-review", consulte: "2026-11-21"}
+    statut: source
+
+  - id: us_inculpation_personnalites
+    ecosysteme: "États-Unis · poursuites contre des personnalités publiques"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "mois"}
+    structure: evenement_rare
+    compartiments: [politique-americaine:tribunaux, politique-americaine:executif]
+    regle: "Taux de base des inculpations ou arrestations de personnalités publiques (anciens présidents, élus, dirigeants) dans un délai de quelques mois : aucune source chiffrée trouvée."
+    parametres: {}
+    sources: []
+    statut: absence
+    aide: "une base des poursuites fédérales contre des élus ou anciens responsables (par exemple les rapports annuels de la section Public Integrity du ministère de la Justice)"
+
+  - id: calendriers_annonces_glissent
+    ecosysteme: "Projets et calendriers annoncés (chantiers, lancements, mises en service)"
+    espace: monde
+    echelle: {axe: temps, tranche: "durée du projet"}
+    structure: contexte
+    compartiments: [calendriers-echeances:anticipations, calendriers-echeances:dates_limites]
+    regle: "Loi d'airain des grands projets : « hors budget, hors délai, encore et encore ». Neuf grands projets sur dix dépassent leur budget, et environ un sur dix seulement finit dans les délais ; les retards de barrages sont de 45 % en moyenne (10 ans prévus, 14,5 réalisés). Une date de mise en service, de réparation ou de lancement annoncée glisse donc d'ordinaire : pour une question « achevé avant telle date », l'annonce du maître d'ouvrage est un plafond optimiste, pas une estimation centrale."
+    parametres: {part_hors_budget: 0.9, part_dans_les_delais: 0.1, retard_moyen_barrages: 0.45}
+    sources:
+      - {titre: "Flyvbjerg, What You Should Know about Megaprojects and Why: An Overview, Project Management Journal 45(2), 2014 (arXiv 1409.0003)", url: "https://arxiv.org/pdf/1409.0003.pdf", consulte: "2026-11-21"}
     statut: source
