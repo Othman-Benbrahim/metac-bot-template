@@ -13,35 +13,15 @@
    "colonne_sujet": "Orbán",
    "jeu": "2026-03-15",
    "moyennes": {
+    "Y": {
+     "moyenne": 44.67,
+     "n": 3,
+     "dernier": "2026-02-23"
+    },
     "Orbán": {
-     "moyenne": 44.0,
-     "n": 5,
-     "dernier": "2026-02-17"
-    },
-    "Magyar": {
-     "moyenne": 36.4,
-     "n": 5,
-     "dernier": "2026-02-17"
-    },
-    "Dobrev": {
-     "moyenne": 5.0,
-     "n": 5,
-     "dernier": "2026-01-27"
-    },
-    "Toroczkai": {
-     "moyenne": 4.8,
-     "n": 5,
-     "dernier": "2026-01-27"
-    },
-    "Márki-Zay": {
-     "moyenne": 18.0,
-     "n": 1,
-     "dernier": "2023-03-29"
-    },
-    "Donáth": {
-     "moyenne": 6.0,
-     "n": 1,
-     "dernier": "2023-02-15"
+     "moyenne": 2.33,
+     "n": 3,
+     "dernier": "2026-02-23"
     }
    }
   },
@@ -178,69 +158,79 @@
    "jeu": "2026-08-30",
    "moyennes": {
     "JV": {
-     "moyenne": 16.46,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 7.3,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "ZZS": {
-     "moyenne": 12.9,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 6.9,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "AS": {
-     "moyenne": 8.54,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 17.1,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "NA": {
-     "moyenne": 11.36,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 9.5,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "ST!": {
-     "moyenne": 8.96,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.9,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "LPV": {
-     "moyenne": 11.64,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 15.0,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "PRO": {
-     "moyenne": 12.2,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 12.1,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "KP": {
-     "moyenne": 2.5,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 0.5,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "LA": {
-     "moyenne": 2.22,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.0,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "S": {
-     "moyenne": 5.14,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.8,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "LKS": {
-     "moyenne": 1.68,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "SV": {
-     "moyenne": 2.2,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 13.8,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
-    "K": {
-     "moyenne": 2.92,
-     "n": 5,
-     "dernier": "2023-12-15"
+    "JKP": {
+     "moyenne": 0.5,
+     "n": 1,
+     "dernier": "2026-06-16"
+    },
+    "ASL": {
+     "moyenne": 1.7,
+     "n": 1,
+     "dernier": "2026-06-16"
+    },
+    "MMN": {
+     "moyenne": 4.5,
+     "n": 1,
+     "dernier": "2026-06-16"
     }
    }
   },
@@ -253,126 +243,45 @@
    "jeu": "2026-07-05",
    "moyennes": {
     "Mandela Barnes": {
-     "moyenne": 20.0,
-     "n": 5,
+     "moyenne": 24.0,
+     "n": 1,
      "dernier": "2026-05-15"
     },
     "Joel Brennan": {
-     "moyenne": 1.75,
-     "n": 4,
+     "moyenne": 2.0,
+     "n": 1,
      "dernier": "2026-05-15"
     },
     "David Crowley": {
-     "moyenne": 5.4,
-     "n": 5,
+     "moyenne": 8.0,
+     "n": 1,
      "dernier": "2026-05-15"
     },
     "Francesca Hong": {
-     "moyenne": 11.4,
-     "n": 5,
+     "moyenne": 9.0,
+     "n": 1,
      "dernier": "2026-05-15"
     },
     "Sara Rodriguez": {
-     "moyenne": 9.4,
-     "n": 5,
+     "moyenne": 12.0,
+     "n": 1,
      "dernier": "2026-05-15"
     },
     "Missy Hughes": {
-     "moyenne": 1.2,
-     "n": 5,
+     "moyenne": 0.0,
+     "n": 1,
      "dernier": "2026-05-15"
-    },
-    "Kelda Roys": {
-     "moyenne": 1.75,
-     "n": 4,
-     "dernier": "2026-03-18"
     }
    }
   },
   "polymarket:0x0f8a16fa8809127bc86712e24cea9314cf1eb000c69150ff01b9f10f166903f5": {
    "election": "2026 Brazilian presidential election",
-   "statut": "ok",
+   "statut": "sujet_absent_des_tableaux",
    "page": "Opinion polling for the 2026 Brazilian presidential election",
    "sujet": "Fernando Haddad",
-   "colonne_sujet": "Haddad",
+   "colonne_sujet": null,
    "jeu": "2026-04-26",
-   "moyennes": {
-    "Lula": {
-     "moyenne": 34.32,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "J. Bolsonaro": {
-     "moyenne": 36.76,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Gomes": {
-     "moyenne": 13.78,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Caiado": {
-     "moyenne": 7.14,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Tebet": {
-     "moyenne": 10.62,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "M. Bolsonaro": {
-     "moyenne": 27.78,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Freitas": {
-     "moyenne": 21.3,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Ratinho": {
-     "moyenne": 11.68,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Zema": {
-     "moyenne": 10.5,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Haddad": {
-     "moyenne": 14.7,
-     "n": 2,
-     "dernier": "2024-11-25"
-    },
-    "Marçal": {
-     "moyenne": 13.13,
-     "n": 3,
-     "dernier": "2024-11-10"
-    },
-    "Leite": {
-     "moyenne": 2.74,
-     "n": 5,
-     "dernier": "2024-07-22"
-    },
-    "Barbalho": {
-     "moyenne": 0.64,
-     "n": 5,
-     "dernier": "2024-07-22"
-    },
-    "Cristina": {
-     "moyenne": 8.55,
-     "n": 2,
-     "dernier": "2024-05-01"
-    },
-    "Moro": {
-     "moyenne": 6.7,
-     "n": 1,
-     "dernier": "2023-10-03"
-    }
-   }
+   "moyennes": {}
   },
   "polymarket:0x112fc8452dde2a783a2dc139bae65454a317532858336b61ad6744d63b1bb569": {
    "election": "next Russian parliamentary election",
@@ -383,74 +292,74 @@
    "jeu": "2026-08-02",
    "moyennes": {
     "UR": {
-     "moyenne": 46.8,
+     "moyenne": 41.6,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "CPRF": {
-     "moyenne": 8.2,
+     "moyenne": 8.8,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "LDPR": {
-     "moyenne": 8.4,
+     "moyenne": 9.4,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "SRZP": {
-     "moyenne": 3.2,
+     "moyenne": 3.4,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "NP": {
-     "moyenne": 3.2,
+     "moyenne": 2.6,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "RPPSJ": {
-     "moyenne": 1.2,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Yabloko": {
-     "moyenne": 0.8,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "CR": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Greens": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "GA": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
+    },
+    "PG": {
+     "moyenne": 0.0,
+     "n": 5,
+     "dernier": "2026-07-30"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
-    },
-    "BLP": {
-     "moyenne": 4.3,
-     "n": 1,
-     "dernier": "2026-06-04"
+     "dernier": "2026-07-30"
     }
    }
   },
@@ -480,34 +389,34 @@
    "jeu": "2026-09-13",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 41.28,
+     "moyenne": 39.84,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 33.94,
+     "moyenne": 36.2,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Caiado PSD": {
-     "moyenne": 4.94,
+     "moyenne": 3.1,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Zema Novo": {
-     "moyenne": 3.14,
+     "moyenne": 1.46,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Santos Mission": {
-     "moyenne": 4.96,
+     "moyenne": 5.56,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Cury Avante": {
-     "moyenne": 1.76,
+     "moyenne": 7.6,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     }
    }
   },
@@ -564,19 +473,14 @@
    "jeu": "2026-07-05",
    "moyennes": {
     "Jocelyn Benson": {
-     "moyenne": 57.2,
-     "n": 5,
+     "moyenne": 60.0,
+     "n": 3,
      "dernier": "2026-05-07"
     },
     "Chris Swanson": {
-     "moyenne": 6.4,
-     "n": 5,
+     "moyenne": 7.0,
+     "n": 3,
      "dernier": "2026-05-07"
-    },
-    "Garlin Gilchrist": {
-     "moyenne": 12.2,
-     "n": 5,
-     "dernier": "2025-11-21"
     }
    }
   },
@@ -631,34 +535,34 @@
    "jeu": "2026-09-27",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 41.28,
+     "moyenne": 40.68,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 33.94,
+     "moyenne": 39.08,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Caiado PSD": {
-     "moyenne": 4.94,
+     "moyenne": 2.94,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Zema Novo": {
-     "moyenne": 3.14,
+     "moyenne": 0.98,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Santos Mission": {
-     "moyenne": 4.96,
+     "moyenne": 4.48,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Cury Avante": {
-     "moyenne": 1.76,
+     "moyenne": 4.92,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     }
    }
   },
@@ -711,38 +615,38 @@
    "jeu": "2026-06-07",
    "moyennes": {
     "Tom Begich (D)": {
-     "moyenne": 20.4,
-     "n": 5,
+     "moyenne": 20.0,
+     "n": 4,
      "dernier": "2026-05-17"
     },
     "Click Bishop (R)": {
-     "moyenne": 7.75,
-     "n": 4,
-     "dernier": "2026-05-17"
-    },
-    "Dave Bronson (R)": {
-     "moyenne": 9.2,
-     "n": 5,
-     "dernier": "2026-05-17"
-    },
-    "Matt Claman (D)": {
-     "moyenne": 7.0,
-     "n": 4,
-     "dernier": "2026-05-17"
-    },
-    "Nancy Dahlstrom (R)": {
-     "moyenne": 4.33,
+     "moyenne": 8.33,
      "n": 3,
      "dernier": "2026-05-17"
     },
-    "Jonathan Kreiss-Tomkins (D)": {
+    "Dave Bronson (R)": {
+     "moyenne": 9.5,
+     "n": 4,
+     "dernier": "2026-05-17"
+    },
+    "Matt Claman (D)": {
      "moyenne": 7.33,
      "n": 3,
      "dernier": "2026-05-17"
     },
+    "Nancy Dahlstrom (R)": {
+     "moyenne": 4.0,
+     "n": 2,
+     "dernier": "2026-05-17"
+    },
+    "Jonathan Kreiss-Tomkins (D)": {
+     "moyenne": 6.5,
+     "n": 2,
+     "dernier": "2026-05-17"
+    },
     "Bernadette Wilson (R)": {
-     "moyenne": 12.8,
-     "n": 5,
+     "moyenne": 12.5,
+     "n": 4,
      "dernier": "2026-05-17"
     }
    }
@@ -756,69 +660,79 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "JV": {
-     "moyenne": 16.46,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 7.3,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "ZZS": {
-     "moyenne": 12.9,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 6.9,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "AS": {
-     "moyenne": 8.54,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 17.1,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "NA": {
-     "moyenne": 11.36,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 9.5,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "ST!": {
-     "moyenne": 8.96,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.9,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "LPV": {
-     "moyenne": 11.64,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 15.0,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "PRO": {
-     "moyenne": 12.2,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 12.1,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "KP": {
-     "moyenne": 2.5,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 0.5,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "LA": {
-     "moyenne": 2.22,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.0,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "S": {
-     "moyenne": 5.14,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.8,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "LKS": {
-     "moyenne": 1.68,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 2.2,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
     "SV": {
-     "moyenne": 2.2,
-     "n": 5,
-     "dernier": "2023-12-15"
+     "moyenne": 13.8,
+     "n": 1,
+     "dernier": "2026-06-16"
     },
-    "K": {
-     "moyenne": 2.92,
-     "n": 5,
-     "dernier": "2023-12-15"
+    "JKP": {
+     "moyenne": 0.5,
+     "n": 1,
+     "dernier": "2026-06-16"
+    },
+    "ASL": {
+     "moyenne": 1.7,
+     "n": 1,
+     "dernier": "2026-06-16"
+    },
+    "MMN": {
+     "moyenne": 4.5,
+     "n": 1,
+     "dernier": "2026-06-16"
     }
    }
   },
@@ -831,69 +745,74 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 52.0,
+     "moyenne": 44.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CPRF": {
-     "moyenne": 6.8,
+     "moyenne": 9.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "LDPR": {
-     "moyenne": 7.6,
+     "moyenne": 8.8,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "SRZP": {
-     "moyenne": 2.4,
+     "moyenne": 3.4,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "NP": {
-     "moyenne": 3.6,
+     "moyenne": 2.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPPSJ": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Yabloko": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CR": {
-     "moyenne": 0.0,
+     "moyenne": 0.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Greens": {
-     "moyenne": 0.4,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "GA": {
+     "moyenne": 0.2,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "PG": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     }
    }
   },
@@ -906,19 +825,14 @@
    "jeu": "2026-06-07",
    "moyennes": {
     "Andy Biggs": {
-     "moyenne": 44.6,
-     "n": 5,
+     "moyenne": 51.67,
+     "n": 3,
      "dernier": "2026-05-15"
     },
     "David Schweikert": {
-     "moyenne": 13.6,
-     "n": 5,
+     "moyenne": 12.33,
+     "n": 3,
      "dernier": "2026-05-15"
-    },
-    "Karrin Taylor Robson": {
-     "moyenne": 22.4,
-     "n": 5,
-     "dernier": "2026-01-24"
     }
    }
   },
@@ -935,74 +849,74 @@
    "jeu": "2026-08-02",
    "moyennes": {
     "UR": {
-     "moyenne": 46.8,
+     "moyenne": 41.6,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "CPRF": {
-     "moyenne": 8.2,
+     "moyenne": 8.8,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "LDPR": {
-     "moyenne": 8.4,
+     "moyenne": 9.4,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "SRZP": {
-     "moyenne": 3.2,
+     "moyenne": 3.4,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "NP": {
-     "moyenne": 3.2,
+     "moyenne": 2.6,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "RPPSJ": {
-     "moyenne": 1.2,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Yabloko": {
-     "moyenne": 0.8,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "CR": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Greens": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "GA": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
+    },
+    "PG": {
+     "moyenne": 0.0,
+     "n": 5,
+     "dernier": "2026-07-30"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
-    },
-    "BLP": {
-     "moyenne": 4.3,
-     "n": 1,
-     "dernier": "2026-06-04"
+     "dernier": "2026-07-30"
     }
    }
   },
@@ -1067,96 +981,85 @@
    "jeu": "2026-06-21",
    "moyennes": {
     "UR": {
-     "moyenne": 47.5,
+     "moyenne": 43.0,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
     },
     "CPRF": {
-     "moyenne": 8.06,
-     "n": 5,
-     "dernier": "2026-06-16"
-    },
-    "LDPR": {
      "moyenne": 8.6,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
+    },
+    "LDPR": {
+     "moyenne": 9.4,
+     "n": 5,
+     "dernier": "2026-06-18"
     },
     "SRZP": {
-     "moyenne": 2.96,
+     "moyenne": 3.8,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
     },
     "NP": {
-     "moyenne": 3.68,
+     "moyenne": 2.8,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
     },
     "RPPSJ": {
-     "moyenne": 1.0,
+     "moyenne": 1.2,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
     },
     "Yabloko": {
-     "moyenne": 1.32,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
     },
     "CR": {
-     "moyenne": 0.4,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
     },
     "Greens": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
     },
     "Rodina": {
-     "moyenne": 0.2,
-     "n": 5,
-     "dernier": "2026-06-16"
-    },
-    "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
+    },
+    "RPFJ": {
+     "moyenne": 0.4,
+     "n": 5,
+     "dernier": "2026-06-18"
     },
     "GA": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-06-16"
+     "dernier": "2026-06-18"
+    },
+    "PG": {
+     "moyenne": 0.0,
+     "n": 5,
+     "dernier": "2026-06-18"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-06-16"
-    },
-    "BLP": {
-     "moyenne": 4.3,
-     "n": 1,
-     "dernier": "2026-06-04"
+     "dernier": "2026-06-18"
     }
    }
   },
   "polymarket:0x6b59b736ef8ec2c0f88139eb426dfcdbe7a0549e3415884f28b07a9b66602544": {
    "election": "2026 Colorado Governor Democratic primary",
-   "statut": "ok",
+   "statut": "aucun_sondage_dans_les_90_jours_avant_le_jeu",
    "page": "2026 Colorado gubernatorial election",
    "sujet": "Phil Weiser",
-   "colonne_sujet": "Phil Weiser",
+   "colonne_sujet": null,
    "jeu": "2026-05-24",
-   "moyennes": {
-    "Michael Bennet": {
-     "moyenne": 53.0,
-     "n": 2,
-     "dernier": "2026-02-01"
-    },
-    "Phil Weiser": {
-     "moyenne": 24.0,
-     "n": 2,
-     "dernier": "2026-02-01"
-    }
-   }
+   "moyennes": {}
   },
   "polymarket:0x7351fc78d06ad1bf25ee4e4f07d6e404451ba7ea062a4ce968ccdea9145a1ec3": {
    "election": "2026 Tennessee Governor Democratic primary",
@@ -1238,7 +1141,7 @@
   },
   "polymarket:0x781a06aa5779f97724b75ed8128aaf72c4a8955c893a6fefdc0efd7cb001c513": {
    "election": "2026 Texas Republican Primary",
-   "statut": "aucun_sondage_avant_le_jeu",
+   "statut": "aucun_sondage_dans_les_90_jours_avant_le_jeu",
    "page": "2026 Texas Railroad Commissioner election",
    "sujet": "John Cornyn",
    "colonne_sujet": null,
@@ -1267,34 +1170,34 @@
    "jeu": "2026-09-13",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 41.28,
+     "moyenne": 39.84,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 33.94,
+     "moyenne": 36.2,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Caiado PSD": {
-     "moyenne": 4.94,
+     "moyenne": 3.1,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Zema Novo": {
-     "moyenne": 3.14,
+     "moyenne": 1.46,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Santos Mission": {
-     "moyenne": 4.96,
+     "moyenne": 5.56,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     },
     "Cury Avante": {
-     "moyenne": 1.76,
+     "moyenne": 7.6,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-10"
     }
    }
   },
@@ -1380,7 +1283,7 @@
   },
   "polymarket:0x7db131f56117dd3883cb0f6ce289af6176a0f322f943cb4f226122a46619544b": {
    "election": "2026 Alabama Governor Democratic primary",
-   "statut": "sujet_absent_des_tableaux",
+   "statut": "aucun_sondage_dans_les_90_jours_avant_le_jeu",
    "page": "2026 Alabama gubernatorial election",
    "sujet": "Doug Jones",
    "colonne_sujet": null,
@@ -1476,69 +1379,74 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 52.0,
+     "moyenne": 44.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CPRF": {
-     "moyenne": 6.8,
+     "moyenne": 9.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "LDPR": {
-     "moyenne": 7.6,
+     "moyenne": 8.8,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "SRZP": {
-     "moyenne": 2.4,
+     "moyenne": 3.4,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "NP": {
-     "moyenne": 3.6,
+     "moyenne": 2.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPPSJ": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Yabloko": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CR": {
-     "moyenne": 0.0,
+     "moyenne": 0.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Greens": {
-     "moyenne": 0.4,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "GA": {
+     "moyenne": 0.2,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "PG": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     }
    }
   },
@@ -1673,88 +1581,12 @@
   },
   "polymarket:0x93897d7b3c157488d634a23c538b6540a181a91e249c863df9b0b0a8fab65405": {
    "election": "2026 Brazilian presidential election",
-   "statut": "ok",
+   "statut": "sujet_absent_des_tableaux",
    "page": "Opinion polling for the 2026 Brazilian presidential election",
    "sujet": "Pablo Marçal",
-   "colonne_sujet": "Marçal",
+   "colonne_sujet": null,
    "jeu": "2026-08-30",
-   "moyennes": {
-    "Lula": {
-     "moyenne": 36.8,
-     "n": 5,
-     "dernier": "2026-05-06"
-    },
-    "J. Bolsonaro": {
-     "moyenne": 36.76,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Gomes": {
-     "moyenne": 13.78,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Caiado": {
-     "moyenne": 7.14,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Tebet": {
-     "moyenne": 10.62,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "M. Bolsonaro": {
-     "moyenne": 27.78,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Freitas": {
-     "moyenne": 25.82,
-     "n": 5,
-     "dernier": "2026-05-06"
-    },
-    "Ratinho": {
-     "moyenne": 11.68,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Zema": {
-     "moyenne": 10.5,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Haddad": {
-     "moyenne": 14.7,
-     "n": 2,
-     "dernier": "2024-11-25"
-    },
-    "Marçal": {
-     "moyenne": 13.13,
-     "n": 3,
-     "dernier": "2024-11-10"
-    },
-    "Leite": {
-     "moyenne": 2.74,
-     "n": 5,
-     "dernier": "2024-07-22"
-    },
-    "Barbalho": {
-     "moyenne": 0.64,
-     "n": 5,
-     "dernier": "2024-07-22"
-    },
-    "Cristina": {
-     "moyenne": 8.55,
-     "n": 2,
-     "dernier": "2024-05-01"
-    },
-    "Moro": {
-     "moyenne": 6.7,
-     "n": 1,
-     "dernier": "2023-10-03"
-    }
-   }
+   "moyennes": {}
   },
   "polymarket:0x939bf902c7ba884c1310f19b6be20576f823952460f6367c9f10c08cd449ee60": {
    "election": "2026 Ohio Governor Republican primary",
@@ -1774,69 +1606,74 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 52.0,
+     "moyenne": 44.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CPRF": {
-     "moyenne": 6.8,
+     "moyenne": 9.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "LDPR": {
-     "moyenne": 7.6,
+     "moyenne": 8.8,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "SRZP": {
-     "moyenne": 2.4,
+     "moyenne": 3.4,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "NP": {
-     "moyenne": 3.6,
+     "moyenne": 2.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPPSJ": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Yabloko": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CR": {
-     "moyenne": 0.0,
+     "moyenne": 0.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Greens": {
-     "moyenne": 0.4,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "GA": {
+     "moyenne": 0.2,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "PG": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     }
    }
   },
@@ -1846,7 +1683,7 @@
   },
   "polymarket:0x99a0fdc1bb6308873bf87eb75a47e21c8340fe20fb6b033444c1d21392da10a9": {
    "election": "2026 Texas Republican Primary",
-   "statut": "aucun_sondage_avant_le_jeu",
+   "statut": "aucun_sondage_dans_les_90_jours_avant_le_jeu",
    "page": "2026 Texas Railroad Commissioner election",
    "sujet": "Ken Paxton",
    "colonne_sujet": null,
@@ -1875,18 +1712,18 @@
    "jeu": "2026-07-19",
    "moyennes": {
     "Marsha Blackburn": {
-     "moyenne": 54.4,
-     "n": 5,
+     "moyenne": 52.67,
+     "n": 3,
      "dernier": "2026-06-30"
     },
     "John Rose": {
-     "moyenne": 16.0,
-     "n": 5,
+     "moyenne": 19.67,
+     "n": 3,
      "dernier": "2026-06-30"
     },
     "Monty Fritts": {
-     "moyenne": 9.2,
-     "n": 5,
+     "moyenne": 10.0,
+     "n": 3,
      "dernier": "2026-06-30"
     }
    }
@@ -1930,16 +1767,6 @@
      "moyenne": 17.6,
      "n": 5,
      "dernier": "2026-06-29"
-    },
-    "Scott Jensen": {
-     "moyenne": 12.0,
-     "n": 1,
-     "dernier": "2026-02-01"
-    },
-    "Kristin Robbins": {
-     "moyenne": 3.0,
-     "n": 1,
-     "dernier": "2026-02-01"
     }
    }
   },
@@ -1992,23 +1819,23 @@
    "jeu": "2026-04-26",
    "moyennes": {
     "Toby Doeden": {
-     "moyenne": 16.5,
-     "n": 4,
+     "moyenne": 17.0,
+     "n": 3,
      "dernier": "2026-04-11"
     },
     "Jon Hansen": {
-     "moyenne": 13.0,
-     "n": 4,
+     "moyenne": 14.0,
+     "n": 3,
      "dernier": "2026-04-11"
     },
     "Dusty Johnson": {
-     "moyenne": 30.75,
-     "n": 4,
+     "moyenne": 31.67,
+     "n": 3,
      "dernier": "2026-04-11"
     },
     "Larry Rhoden": {
-     "moyenne": 22.25,
-     "n": 4,
+     "moyenne": 20.67,
+     "n": 3,
      "dernier": "2026-04-11"
     }
    }
@@ -2048,69 +1875,74 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 52.0,
+     "moyenne": 44.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CPRF": {
-     "moyenne": 6.8,
+     "moyenne": 9.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "LDPR": {
-     "moyenne": 7.6,
+     "moyenne": 8.8,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "SRZP": {
-     "moyenne": 2.4,
+     "moyenne": 3.4,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "NP": {
-     "moyenne": 3.6,
+     "moyenne": 2.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPPSJ": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Yabloko": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CR": {
-     "moyenne": 0.0,
+     "moyenne": 0.6,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Greens": {
-     "moyenne": 0.4,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "GA": {
+     "moyenne": 0.2,
+     "n": 5,
+     "dernier": "2026-04-09"
+    },
+    "PG": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-04-07"
+     "dernier": "2026-04-09"
     }
    }
   },
@@ -2163,29 +1995,19 @@
    "jeu": "2026-06-07",
    "moyennes": {
     "Lisa Demuth": {
-     "moyenne": 18.0,
-     "n": 2,
+     "moyenne": 19.0,
+     "n": 1,
      "dernier": "2026-05-20"
     },
     "Mike Lindell": {
-     "moyenne": 19.5,
-     "n": 2,
+     "moyenne": 21.0,
+     "n": 1,
      "dernier": "2026-05-20"
     },
     "Kendall Qualls": {
-     "moyenne": 10.0,
-     "n": 2,
+     "moyenne": 9.0,
+     "n": 1,
      "dernier": "2026-05-20"
-    },
-    "Scott Jensen": {
-     "moyenne": 12.0,
-     "n": 1,
-     "dernier": "2026-02-01"
-    },
-    "Kristin Robbins": {
-     "moyenne": 3.0,
-     "n": 1,
-     "dernier": "2026-02-01"
     }
    }
   },
@@ -2202,74 +2024,74 @@
    "jeu": "2026-08-02",
    "moyennes": {
     "UR": {
-     "moyenne": 46.8,
+     "moyenne": 41.6,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "CPRF": {
-     "moyenne": 8.2,
+     "moyenne": 8.8,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "LDPR": {
-     "moyenne": 8.4,
+     "moyenne": 9.4,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "SRZP": {
-     "moyenne": 3.2,
+     "moyenne": 3.4,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "NP": {
-     "moyenne": 3.2,
+     "moyenne": 2.6,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "RPPSJ": {
-     "moyenne": 1.2,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Yabloko": {
-     "moyenne": 0.8,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "CR": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Greens": {
      "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 0.2,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "RPFJ": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
     },
     "GA": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
+     "dernier": "2026-07-30"
+    },
+    "PG": {
+     "moyenne": 0.0,
+     "n": 5,
+     "dernier": "2026-07-30"
     },
     "CP": {
      "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-28"
-    },
-    "BLP": {
-     "moyenne": 4.3,
-     "n": 1,
-     "dernier": "2026-06-04"
+     "dernier": "2026-07-30"
     }
    }
   },
@@ -2282,72 +2104,57 @@
    "jeu": "2026-09-13",
    "moyennes": {
     "UR": {
-     "moyenne": 39.66,
+     "moyenne": 32.34,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "CPRF": {
-     "moyenne": 8.8,
+     "moyenne": 15.92,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "LDPR": {
-     "moyenne": 10.08,
+     "moyenne": 9.36,
      "n": 5,
      "dernier": "2026-09-10"
     },
-    "SRZP": {
-     "moyenne": 4.06,
+    "SR": {
+     "moyenne": 4.5,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "NP": {
-     "moyenne": 3.86,
+     "moyenne": 10.54,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "RPPSJ": {
-     "moyenne": 1.0,
+     "moyenne": 2.58,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "Yabloko": {
-     "moyenne": 1.74,
+     "moyenne": 8.56,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "CR": {
-     "moyenne": 0.4,
+     "moyenne": 1.22,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "Greens": {
-     "moyenne": 0.8,
+     "moyenne": 1.9,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "Rodina": {
-     "moyenne": 0.0,
+     "moyenne": 1.56,
      "n": 5,
      "dernier": "2026-09-10"
     },
-    "RPFJ": {
-     "moyenne": 0.2,
-     "n": 5,
-     "dernier": "2026-09-10"
-    },
-    "GA": {
-     "moyenne": 0.0,
-     "n": 5,
-     "dernier": "2026-09-10"
-    },
-    "PG": {
-     "moyenne": 0.0,
-     "n": 5,
-     "dernier": "2026-09-10"
-    },
-    "CP": {
-     "moyenne": 0.0,
+    "PPD": {
+     "moyenne": 1.02,
      "n": 5,
      "dernier": "2026-09-10"
     }
@@ -2362,79 +2169,29 @@
    "jeu": "2026-04-26",
    "moyennes": {
     "Lula": {
-     "moyenne": 34.32,
+     "moyenne": 34.2,
      "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "J. Bolsonaro": {
-     "moyenne": 36.76,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Gomes": {
-     "moyenne": 13.78,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Caiado": {
-     "moyenne": 7.14,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Tebet": {
-     "moyenne": 10.62,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "M. Bolsonaro": {
-     "moyenne": 27.78,
-     "n": 5,
-     "dernier": "2024-11-25"
+     "dernier": "2026-04-19"
     },
     "Freitas": {
-     "moyenne": 21.3,
+     "moyenne": 20.32,
      "n": 5,
-     "dernier": "2024-11-25"
+     "dernier": "2026-04-19"
     },
-    "Ratinho": {
-     "moyenne": 11.68,
+    "Gomes": {
+     "moyenne": 11.72,
+     "n": 4,
+     "dernier": "2026-04-19"
+    },
+    "Caiado": {
+     "moyenne": 3.64,
      "n": 5,
-     "dernier": "2024-11-25"
+     "dernier": "2026-04-19"
     },
     "Zema": {
-     "moyenne": 10.5,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
-    "Haddad": {
-     "moyenne": 14.7,
-     "n": 2,
-     "dernier": "2024-11-25"
-    },
-    "Marçal": {
-     "moyenne": 13.13,
-     "n": 3,
-     "dernier": "2024-11-10"
-    },
-    "Leite": {
-     "moyenne": 2.74,
-     "n": 5,
-     "dernier": "2024-07-22"
-    },
-    "Barbalho": {
-     "moyenne": 0.64,
-     "n": 5,
-     "dernier": "2024-07-22"
-    },
-    "Cristina": {
-     "moyenne": 8.55,
-     "n": 2,
-     "dernier": "2024-05-01"
-    },
-    "Moro": {
-     "moyenne": 6.7,
-     "n": 1,
-     "dernier": "2023-10-03"
+     "moyenne": 3.6,
+     "n": 4,
+     "dernier": "2026-04-03"
     }
    }
   },
@@ -2444,53 +2201,12 @@
   },
   "polymarket:0xe70dc5791fd703624bdd33fbdd6c4374bf51723c4c5e2fb88ee87857dc72d762": {
    "election": "2026 Alaska Governor primary",
-   "statut": "ok",
+   "statut": "sujet_absent_des_tableaux",
    "page": "2026 Alaska gubernatorial election",
    "sujet": "Edna DeVries",
-   "colonne_sujet": "Edna DeVries (R)",
+   "colonne_sujet": null,
    "jeu": "2026-07-19",
-   "moyennes": {
-    "Tom Begich (D)": {
-     "moyenne": 15.4,
-     "n": 5,
-     "dernier": "2025-07-27"
-    },
-    "Click Bishop (R)": {
-     "moyenne": 9.2,
-     "n": 5,
-     "dernier": "2025-07-27"
-    },
-    "Adam Crum (R)": {
-     "moyenne": 5.0,
-     "n": 3,
-     "dernier": "2025-07-27"
-    },
-    "Nancy Dahlstrom (R)": {
-     "moyenne": 43.4,
-     "n": 5,
-     "dernier": "2025-07-27"
-    },
-    "Edna DeVries (R)": {
-     "moyenne": 3.0,
-     "n": 1,
-     "dernier": "2025-07-27"
-    },
-    "Mary Peltola (D)": {
-     "moyenne": 60.0,
-     "n": 5,
-     "dernier": "2025-07-27"
-    },
-    "Treg Taylor (R)": {
-     "moyenne": 3.5,
-     "n": 2,
-     "dernier": "2025-07-27"
-    },
-    "Bernadette Wilson (R)": {
-     "moyenne": 15.6,
-     "n": 5,
-     "dernier": "2025-07-27"
-    }
-   }
+   "moyennes": {}
   },
   "polymarket:0xeb44a06c677ce7a47e5fd2007182e020a577395dc3613ad55d3d576e33964c3d": {
    "election": "2026 Michigan Democratic Primary",
@@ -2509,34 +2225,34 @@
    "jeu": "2026-09-27",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 41.28,
+     "moyenne": 40.68,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 33.94,
+     "moyenne": 39.08,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Caiado PSD": {
-     "moyenne": 4.94,
+     "moyenne": 2.94,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Zema Novo": {
-     "moyenne": 3.14,
+     "moyenne": 0.98,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Santos Mission": {
-     "moyenne": 4.96,
+     "moyenne": 4.48,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     },
     "Cury Avante": {
-     "moyenne": 1.76,
+     "moyenne": 4.92,
      "n": 5,
-     "dernier": "2026-08-13"
+     "dernier": "2026-09-24"
     }
    }
   },
@@ -2553,43 +2269,43 @@
    "jeu": "2026-06-07",
    "moyennes": {
     "Jonathan Bush": {
-     "moyenne": 14.0,
-     "n": 5,
+     "moyenne": 16.5,
+     "n": 4,
      "dernier": "2026-06-03"
     },
     "Robert Charles": {
-     "moyenne": 36.0,
-     "n": 5,
+     "moyenne": 38.5,
+     "n": 4,
      "dernier": "2026-06-03"
     },
     "David Jones": {
-     "moyenne": 7.4,
-     "n": 5,
+     "moyenne": 7.75,
+     "n": 4,
      "dernier": "2026-06-03"
     },
     "James Libby": {
-     "moyenne": 2.8,
-     "n": 5,
+     "moyenne": 0.0,
+     "n": 1,
      "dernier": "2026-06-03"
     },
     "Garrett Mason": {
-     "moyenne": 10.8,
-     "n": 5,
+     "moyenne": 10.75,
+     "n": 4,
      "dernier": "2026-06-03"
     },
     "Owen McCarthy": {
-     "moyenne": 4.4,
-     "n": 5,
+     "moyenne": 3.75,
+     "n": 4,
      "dernier": "2026-06-03"
     },
     "Ben Midgley": {
-     "moyenne": 7.6,
-     "n": 5,
+     "moyenne": 8.5,
+     "n": 4,
      "dernier": "2026-06-03"
     },
     "Robert Wessels": {
-     "moyenne": 3.0,
-     "n": 5,
+     "moyenne": 2.75,
+     "n": 4,
      "dernier": "2026-06-03"
     }
    }
