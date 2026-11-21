@@ -27,3 +27,12 @@ consensus d'experts dans la recherche). Sinon rien ne change. Couvertures et dé
 ## Limite connue d'avance
 Le Kalman suppose des chocs gaussiens ; une rupture brusque (2020, 2022) le pénalise. Les années récentes pèsent autant
 que les anciennes.
+
+## Résultat (2026-11-21, run 44905356688) : le Kalman fait PIRE, le modèle actuel reste
+666 prévisions sur cinq séries. CRPS : actuel 0,580, Kalman 0,621 ; écart relatif +7,1 %, intervalle à 90 %
+[+1,3 % ; +14,6 %], entièrement au-dessus de 0 : le Kalman est nettement moins bon. Par série : chômage +92 % (le
+choc de 2020 gonfle ses variances, fourchettes trop larges ensuite : 92 % des valeurs dans l'intervalle à 80 %),
+confiance des ménages ≈ égalité, inflation +4 %, inflation sous-jacente −4 % (non significatif), Tokyo +5 %.
+Couvertures : le Kalman élargit ses fourchettes (0,811 et 0,652 contre 0,764 et 0,583). Lecture : comme le disait
+l'invité de l'épisode, le simple bat le complexe ici ; la distribution des écarts passés suit mieux les ruptures
+qu'un modèle à chocs gaussiens. Rien ne change dans le bot.
