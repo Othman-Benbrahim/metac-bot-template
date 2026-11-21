@@ -23,3 +23,11 @@ def test_regles_compartiments_valides():
     faux = [{"id": "x", "structure": "procedure", "echelle": {"axe": "temps"}, "statut": "source",
              "sources": [{"url": "https://a"}], "compartiments": ["politique-americaine:lune"]}]
     assert any("compartiment inconnu" in e for e in rc.valider(faux))
+
+
+def test_catalogue_regles_sans_2026():
+    import re
+    import couverture_regles as cr
+    cat = cr.catalogue()
+    assert cat and not any(re.search(r"\b20(2[6-9]|[3-9]\d)\b", v["texte"]) for v in cat.values())
+    assert "us_congres_productivite" not in cat          # cite le 119e Congrès en 2026 : exclue en entier

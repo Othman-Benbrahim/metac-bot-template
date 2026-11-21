@@ -1,0 +1,60 @@
+name: "Carte de couverture des règles sourcées (banc de M, v3, descriptif)"
+
+# Piste écosystémique (2026-11-21) : règles sourcées choisies pour chaque question du banc de M ; environ 120 appels.
+# Descriptif, rien dans le bot.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  couverture_regles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Restaurer la recherche gelée
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+          restore-keys: recherche-jugement-
+      - name: "Carte de couverture des règles sourcées (banc de M, v3, descriptif)"
+        run: uv run python couverture_regles.py
+        env:
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          EXA_API_KEY_2: ${{ secrets.EXA_API_KEY_2 }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          GDELT_PONT: ${{ vars.GDELT_PONT }}
+          GDELT_PONT_CLE: ${{ secrets.GDELT_PONT_CLE }}
+          ALPHABET_RETRO_ORDRE: ${{ vars.ALPHABET_RETRO_ORDRE }}
+      - name: Garder la recherche gelée
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/couverture-regles-banc-m.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : couverture des règles du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
