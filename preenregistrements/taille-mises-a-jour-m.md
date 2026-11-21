@@ -28,3 +28,11 @@ Sinon rien ne change. Le k appris sur tout le banc et le k de chaque tranche son
 Sur ce banc, σ ≈ 0,31 de perte log par question : une centaine de questions jugées ne voit qu'un écart d'environ
 0,07 ou plus. Un recalibrage utile mais petit (0,01 à 0,02) ne se verra pas : un résultat « non adopté » ne dira pas
 que k = 1 est juste, seulement que l'écart n'est pas grand.
+
+## Résultat (2026-11-21, run 44902102451) : critère non atteint, rien ne change
+92 questions jugées (la première tranche sert seulement à apprendre). Perte log : k appris 0,490 contre M 0,481 ;
+écart +0,0085, intervalle à 90 % [−0,005 ; +0,022] : apprendre k sur le passé fait un peu PIRE que M tel quel.
+k appris tranche après tranche : 0,60, 0,75, 0,85, 0,80 ; sur tout le banc : 0,95. Lecture : sur les premières
+questions, M paraissait trop sûr de lui, mais l'impression s'efface à mesure que les questions s'ajoutent ; sur
+l'ensemble, la taille des écarts de M au taux des semblables est presque juste (k ≈ 1). Puissance mesurée : ici σ ≈ 0,08
+par question (deux variantes proches), l'essai voyait un écart de 0,02 ou plus. M posté reste inchangé.
