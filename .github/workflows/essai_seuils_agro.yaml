@@ -1,0 +1,39 @@
+name: "Essai : seuils de chaleur des cultures sur nos mesures (une fois)"
+
+# 2026-11-21 : préenregistrement preenregistrements/seuils-agro.md ; aucun modèle ; après la première collecte ERA5-Land.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  essai_seuils_agro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Lancer
+        run: uv run python mise_au_point/seuils_agro_essai.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/mise-au-point/seuils-agro.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : essai_seuils_agro du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
