@@ -40,3 +40,14 @@ flux réel. Sinon rien ne change. Descriptif : M2 − M0, détail par règle et 
 À compléter avec le nombre de questions couvertes par la carte (σ ≈ 0,1 à 0,3 par question selon la proximité des
 bras ; avec σ ≈ 0,08, 150 questions voient un écart d'environ 0,016). Plafond : 15 $ de crédits Bedrock (4 appels par
 question ; Haiku coûte environ trois à quatre fois plus par mot que gpt-5-mini). Lancé une fois.
+
+## Résultat (2026-11-21, run 44910861817) : critère non atteint, rien ne change dans le bot
+150 questions traitées (Claude Haiku 4.5, 4,53 $ de crédits Bedrock), 22 exclues (le modèle disait connaître
+l'issue), 128 jugées. Perte log : semblables 0,683, M0 0,591, M1 (bonnes règles) 0,588, M2 (règles au hasard) 0,602.
+M1 − M0 = −0,003, intervalle à 90 % [−0,030 ; +0,019] : pas d'effet net. M1 − M2 = −0,014 [−0,044 ; +0,014] ;
+M2 − M0 = +0,011 [−0,003 ; +0,026] : des règles au hasard tendent à nuire, les bonnes règles sont neutres à légèrement
+favorables (descriptif). Le modèle bouge peu sous l'effet des règles : écart moyen |M1 − M0| de 2,2 points de
+probabilité. Par règle (descriptif, petits nombres) : règles de sondages −0,032 sur 41 questions, Fed −0,009 sur 13.
+Lecture : donner les règles en texte à un modèle de langue n'est pas une traduction efficace (il en tient peu compte) ;
+cela conforte la voie de la traduction par le code (traduction_regles.py). Les règles et les faits restent dans les
+fiches. Puissance mesurée : σ ≈ 0,17 par question, l'essai voyait un écart d'environ 0,04.
