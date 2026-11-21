@@ -6,11 +6,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "Democratic Republic of the Congo",
+     "2024 Russian presidential election",
      "page refusée"
     ],
     [
-     "2024 Russian presidential election",
+     "Democratic Republic of the Congo",
      "page refusée"
     ],
     [
@@ -18,11 +18,11 @@
      "page refusée"
     ],
     [
-     "Attempts to overturn the 2020 United States presidential election",
+     "Salvadoran military intervention in Haiti",
      "page refusée"
     ],
     [
-     "Salvadoran military intervention in Haiti",
+     "Attempts to overturn the 2020 United States presidential election",
      "page refusée"
     ],
     [
@@ -40,25 +40,33 @@
    "colonne_sujet": "Orbán",
    "jeu": "2026-03-15",
    "moyennes": {
-    "Y": {
-     "moyenne": 44.67,
-     "n": 3,
-     "dernier": "2026-02-23"
-    },
     "Orbán": {
-     "moyenne": 2.33,
-     "n": 3,
-     "dernier": "2026-02-23"
+     "moyenne": 41.5,
+     "n": 2,
+     "dernier": "2026-02-17"
+    },
+    "Magyar": {
+     "moyenne": 40.0,
+     "n": 2,
+     "dernier": "2026-02-17"
+    },
+    "Dobrev": {
+     "moyenne": 4.0,
+     "n": 1,
+     "dernier": "2026-01-27"
+    },
+    "Toroczkai": {
+     "moyenne": 4.0,
+     "n": 1,
+     "dernier": "2026-01-27"
     }
    },
    "relecture_lead": {
-    "lignes_verifiees": 0,
-    "accord": null
+    "lignes_verifiees": 14,
+    "accord": 1.0
    },
-   "alertes": [
-    "colonnes en sigles, sujet nommé : vérifier la correspondance"
-   ],
-   "verification": "non_verifie"
+   "alertes": [],
+   "verification": "confirme_lead"
   },
   "manifold:hnC5dO8EZ5": {
    "election": "Clacton by election",
@@ -231,7 +239,7 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the 2028 Philippine presidential election",
+     "Opinion polling for the 2026 Portuguese presidential election",
      "page refusée"
     ],
     [
@@ -344,13 +352,13 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Flávio PL",
-    "moyenne": 43.02,
+    "moyenne": 35.92,
     "n": 5,
-    "dernier": "2026-07-15",
-    "ecart_points": 8.74
+    "dernier": "2026-06-30",
+    "ecart_points": 1.64
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced": {
    "election": "2026 Brazilian presidential election",
@@ -400,10 +408,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Renan MISSÃO",
-    "moyenne": 35.26,
+    "moyenne": 7.7,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 30.3
+    "dernier": "2026-06-30",
+    "ecart_points": 2.74
    },
    "alertes": [],
    "verification": "desaccord"
@@ -737,7 +745,7 @@
      "page refusée"
     ],
     [
-     "2026 Brazilian general election",
+     "2026 local electoral calendar",
      "page refusée"
     ]
    ]
@@ -854,13 +862,13 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Flávio PL",
-    "moyenne": 46.36,
+    "moyenne": 35.92,
     "n": 5,
-    "dernier": "2026-09-10",
-    "ecart_points": 10.16
+    "dernier": "2026-06-30",
+    "ecart_points": -0.28
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x1b752eca1cb98032be2d6b30c0e7cb7d7c9c960e50e7ee12b44565ae631fe7ef": {
    "election": "2026 Alaska Governor primary",
@@ -1006,15 +1014,15 @@
      "aucun tableau lisible (HTTP 200)"
     ],
     [
+     "Anti-Russian sentiment",
+     "page refusée"
+    ],
+    [
      "United Russia",
      "page refusée"
     ],
     [
      "2026 United States elections",
-     "page refusée"
-    ],
-    [
-     "Anti-Russian sentiment",
      "page refusée"
     ],
     [
@@ -1089,10 +1097,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Flávio PL",
-    "moyenne": 46.68,
-    "n": 5,
-    "dernier": "2026-09-24",
-    "ecart_points": 7.6
+    "moyenne": 36.53,
+    "n": 3,
+    "dernier": "2026-06-30",
+    "ecart_points": -2.55
    },
    "alertes": [],
    "verification": "desaccord"
@@ -1145,13 +1153,13 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Caiado PSD",
-    "moyenne": 39.62,
+    "moyenne": 4.76,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 34.68
+    "dernier": "2026-06-30",
+    "ecart_points": -0.18
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x4427ce55f5fc0cc00f2708f914c585442bce7eede689d5daec4671449dc25f8d": {
    "election": "2026 Alaska Governor primary",
@@ -1430,7 +1438,7 @@
      "page refusée"
     ],
     [
-     "2008 Spanish general election",
+     "2023 Spanish general election",
      "page refusée"
     ],
     [
@@ -1551,7 +1559,7 @@
      "page refusée"
     ],
     [
-     "2026 Santa Catarina general election",
+     "Flávio Bolsonaro 2026 presidential campaign",
      "page refusée"
     ],
     [
@@ -1581,7 +1589,7 @@
      "page refusée"
     ],
     [
-     "2026 Paraná gubernatorial election",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -1638,13 +1646,13 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Flávio PL",
-    "moyenne": 42.62,
+    "moyenne": 35.92,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 8.68
+    "dernier": "2026-06-30",
+    "ecart_points": 1.98
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x619165fe3568255c0a048d9350b5011c19f17bcec0474e867a1a983e6411ceff": {
    "election": "general election",
@@ -1839,13 +1847,13 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Zema NOVO",
-    "moyenne": 38.34,
+    "moyenne": 3.82,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 35.2
+    "dernier": "2026-06-30",
+    "ecart_points": 0.68
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x77954e0830eafc9539916c591f717fb0635f6483bc9949524cb46483cd9b9d39": {
    "election": "2026 Makerfield by-election",
@@ -1959,10 +1967,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Lula PT",
-    "moyenne": 43.8,
-    "n": 5,
+    "moyenne": 37.53,
+    "n": 3,
     "dernier": "2026-04-09",
-    "ecart_points": 4.1
+    "ecart_points": -2.17
    },
    "alertes": [],
    "verification": "desaccord"
@@ -2015,10 +2023,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Cury Avante",
-    "moyenne": 40.2,
+    "moyenne": 1.24,
     "n": 5,
-    "dernier": "2026-09-09",
-    "ecart_points": 32.6
+    "dernier": "2026-06-30",
+    "ecart_points": -6.36
    },
    "alertes": [],
    "verification": "desaccord"
@@ -2172,10 +2180,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Renan MISSÃO",
-    "moyenne": 35.26,
+    "moyenne": 7.7,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 30.3
+    "dernier": "2026-06-30",
+    "ecart_points": 2.74
    },
    "alertes": [],
    "verification": "desaccord"
@@ -2228,10 +2236,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Renan MISSÃO",
-    "moyenne": 35.26,
+    "moyenne": 7.7,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 30.3
+    "dernier": "2026-06-30",
+    "ecart_points": 2.74
    },
    "alertes": [],
    "verification": "desaccord"
@@ -2385,10 +2393,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Lula PT",
-    "moyenne": 45.4,
+    "moyenne": 44.92,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 4.12
+    "dernier": "2026-06-30",
+    "ecart_points": 3.64
    },
    "alertes": [],
    "verification": "desaccord"
@@ -2768,11 +2776,11 @@
      "page refusée"
     ],
     [
-     "2026 Rio de Janeiro general election",
+     "2026 Paraná gubernatorial election",
      "page refusée"
     ],
     [
-     "2026 Brazilian general election",
+     "2026 local electoral calendar",
      "page refusée"
     ]
    ]
@@ -2905,13 +2913,13 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Caiado PSD",
-    "moyenne": 39.62,
+    "moyenne": 4.76,
     "n": 5,
-    "dernier": "2026-08-13",
-    "ecart_points": 34.68
+    "dernier": "2026-06-30",
+    "ecart_points": -0.18
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0xbd0c2d5f58650e031aba69b54529cf1e85f1f73622530b53b0d261063627c64d": {
    "election": "2026 South Dakota Governor Republican primary",
@@ -2999,7 +3007,7 @@
      "page refusée"
     ],
     [
-     "2026 Paraná gubernatorial election",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -3157,10 +3165,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Renan MISSÃO",
-    "moyenne": 32.82,
+    "moyenne": 7.7,
     "n": 5,
-    "dernier": "2026-07-13",
-    "ecart_points": 28.24
+    "dernier": "2026-06-30",
+    "ecart_points": 3.12
    },
    "alertes": [],
    "verification": "desaccord"
@@ -3559,10 +3567,10 @@
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
     "colonne": "Lula PT",
-    "moyenne": 44.94,
-    "n": 5,
-    "dernier": "2026-09-24",
-    "ecart_points": 4.26
+    "moyenne": 46.87,
+    "n": 3,
+    "dernier": "2026-06-30",
+    "ecart_points": 6.19
    },
    "alertes": [],
    "verification": "desaccord"
@@ -3584,7 +3592,7 @@
      "page refusée"
     ],
     [
-     "Nationwide opinion polling for the 2028 Republican Party presidential primaries",
+     "Nationwide opinion polling for the 2016 Republican Party presidential primaries",
      "page refusée"
     ],
     [
