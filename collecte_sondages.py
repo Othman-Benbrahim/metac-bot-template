@@ -244,9 +244,9 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
             if re.search(rf"\b{re.escape(norm(a))}\b", norm(n)):
                 return n
     s = re.sub(r"^(the|a)\s+", "", re.sub(r"\(.*?\)", "", norm(sujet_)).strip())
-    for n in noms:
-        if s and s in norm(n):
-            return n
+    entiers = [n for n in noms if s and s in norm(n)]
+    if len(entiers) == 1 or (entiers and len(s.split()) >= 2):
+        return entiers[0]
     mots = [w for w in s.split() if len(w) > 2]
     if len(mots) >= 2:
         for n in noms:
