@@ -13,6 +13,10 @@ v4 (décision de l'auteur du 2026-11-21, 12 h 43 : « je valide ») resserre par
    et il recopie l'objet mot pour mot (le code rejette une copie inexacte) ;
 3. il désigne les pays et régions en jeu dans une liste fermée ; le code rejette une règle hors périmètre ;
 4. un identifiant à deux lettres près d'un identifiant réel est corrigé (faute de frappe) ; une invention reste rejetée.
+v5 (décision de l'auteur du 2026-11-21, 13 h 56, d'après le motif situation → événement → situation de l'ontologie
+UFO-B, catalogue OntoUML) : chaque règle porte aussi sa `situation` de départ ; le modèle ne retient une règle que si
+l'état de départ de la question EST cette situation ET l'événement EST l'objet ; il recopie les deux mot pour mot, le
+code rejette toute copie inexacte ou condition non affirmée. Mise en garde de l'auteur : pas de « free style ».
 Toute règle dont le texte cite une année de 2026 ou après est exclue en entier (les questions du banc datent de 2026).
 
     python couverture_regles.py
@@ -32,10 +36,10 @@ import banc_jugement_alphabet as bja
 import regles_coutumieres as rc
 from couverture_fiches import sans_dates_recentes
 
-SORTIE = Path("registre") / "couverture-regles-banc-m-v4.json"     # la v3 reste à côté, pour comparer
+SORTIE = Path("registre") / "couverture-regles-banc-m-v5.json"     # v3 et v4 restent à côté, pour comparer
 MODELE = bja.MODELE
 LONGUEUR = 300          # caractères de règle montrés par règle (l'objet décide, le texte éclaire)
-VERSION = 4
+VERSION = 5
 
 
 def catalogue() -> dict[str, dict]:
@@ -48,7 +52,7 @@ def catalogue() -> dict[str, dict]:
         if sans_dates_recentes(t) != t.strip(" ;,"):   # la règle cite 2026 ou après : exclue en entier
             continue
         out[r["id"]] = {"ecosysteme": sans_dates_recentes(str(r.get("ecosysteme", ""))), "texte": t[:LONGUEUR],
-                        "objet": str(r.get("objet", "")), "perimetre": list(r.get("perimetre") or ["monde"]),
+                        "objet": str(r.get("objet", "")), "situation": str(r.get("situation", "")), "perimetre": list(r.get("perimetre") or ["monde"]),
                         "compartiments": r.get("compartiments") or []}
     return out
 
@@ -96,8 +100,12 @@ def valider(r: dict, cat: dict) -> tuple[list[str], list[dict]]:
             rejets.append({"id": brut, "motif": "identifiant inconnu"})
         elif (c or {}).get("est_l_objet") is not True:
             rejets.append({"id": i, "motif": "l'événement de la question n'est pas l'objet de la règle"})
+        elif (c or {}).get("est_la_situation") is not True:
+            rejets.append({"id": i, "motif": "la situation de départ de la question n'est pas celle de la règle"})
         elif _norm(c.get("objet")) != _norm(cat[i]["objet"]):
             rejets.append({"id": i, "motif": "objet mal recopié"})
+        elif _norm(c.get("situation")) != _norm(cat[i]["situation"]):
+            rejets.append({"id": i, "motif": "situation mal recopiée"})
         elif not dans_perimetre(cat[i]["perimetre"], pays, regions):
             rejets.append({"id": i, "motif": f"hors périmètre ({cat[i]['perimetre']} ; question : {pays or regions})"})
         elif i not in gardes:
@@ -106,22 +114,27 @@ def valider(r: dict, cat: dict) -> tuple[list[str], list[dict]]:
 
 
 def consigne(titre: str, cat: dict[str, dict]) -> str:
-    liste = "\n".join(f"- {i}\n  OBJET : {v['objet']}\n  périmètre : {', '.join(v['perimetre'])}\n  règle : {v['texte']}"
+    liste = "\n".join(f"- {i}\n  SITUATION DE DÉPART : {v['situation']}\n  OBJET : {v['objet']}\n  périmètre : {', '.join(v['perimetre'])}\n  règle : {v['texte']}"
                       for i, v in cat.items())
     pays = ", ".join(rc.PAYS)
     regions = ", ".join(sorted(rc.REGIONS - {"monde"}))
-    return f"""Voici une question de prévision et une liste de règles tirées de sources vérifiées. Chaque règle a un OBJET :
-l'événement qu'elle prédit.
+    return f"""Voici une question de prévision et une liste de règles tirées de sources vérifiées. Chaque règle a une
+SITUATION DE DÉPART (l'état où elle s'applique) et un OBJET (l'événement qu'elle prédit depuis cet état).
 
 Règles strictes :
-1. Dis d'abord quel est l'événement dont dépend la réponse à la question (une phrase).
-2. Retiens une règle SEULEMENT si cet événement EST l'objet de la règle (même type d'événement). Une règle dont l'objet
-   ne fait qu'influencer, permettre ou entourer l'événement ne compte pas. Exemples de rejets : une règle sur le
-   maintien des dirigeants pour une question de rencontre entre dirigeants ; une règle sur les décisions de la banque
-   centrale pour une question de prix du Bitcoin.
-3. Pour chaque règle retenue, recopie son OBJET mot pour mot et mets "est_l_objet": true.
-4. Au plus 3 règles. Si aucune règle n'a pour objet l'événement de la question, rends une liste vide : c'est une
-   réponse normale et fréquente.
+1. Dis d'abord, en une phrase chacun, l'état de départ de la question (ce qui est vrai au moment où elle est posée) et
+   l'événement dont dépend la réponse.
+2. Retiens une règle SEULEMENT si les DEUX conditions sont vraies : l'état de départ de la question EST la situation de
+   départ de la règle (même type de situation), ET l'événement de la question EST l'objet de la règle (même type
+   d'événement). Une règle qui ne fait qu'influencer, permettre ou entourer l'événement ne compte pas. Exemples de
+   rejets : une règle sur le maintien des dirigeants pour une question de rencontre entre dirigeants ; une règle sur
+   les décisions de la banque centrale pour une question de prix du Bitcoin ; une règle sur le palmarès d'une
+   compétition pour une question de participation à cette compétition ; une règle sur le mode de scrutin pour une
+   question sur la tenue ou le report d'une élection.
+3. Pour chaque règle retenue, recopie sa SITUATION DE DÉPART et son OBJET mot pour mot, et mets "est_la_situation": true
+   et "est_l_objet": true.
+4. Au plus 3 règles. Si aucune règle ne remplit les deux conditions, rends une liste vide : c'est une réponse normale
+   et fréquente. N'invente aucune règle et aucun identifiant.
 5. Indique les pays en jeu en les choisissant UNIQUEMENT dans cette liste (sinon liste vide) : {pays} ; et les
    régions en jeu UNIQUEMENT dans celle-ci : {regions}.
 
@@ -131,8 +144,9 @@ RÈGLES :
 {liste}
 
 Rends UNIQUEMENT un objet JSON :
-{{"evenement": "une phrase", "pays": [], "regions": [],
-  "regles": [{{"id": "identifiant", "objet": "objet recopié", "est_l_objet": true}}]}}"""
+{{"etat_de_depart": "une phrase", "evenement": "une phrase", "pays": [], "regions": [],
+  "regles": [{{"id": "identifiant", "situation": "situation recopiée", "objet": "objet recopié",
+              "est_la_situation": true, "est_l_objet": true}}]}}"""
 
 
 async def principal() -> int:
@@ -148,7 +162,7 @@ async def principal() -> int:
             r = ap.extraire_json(await am.llm(MODELE, temperature=0.2, timeout=180, allowed_tries=2).invoke(
                 consigne(x["titre"], cat)))
             gardes, rejets = valider(r, cat)
-            out.append({"question": qid, "titre": x["titre"], "issue": x["issue"], "evenement": str(r.get("evenement", ""))[:300],
+            out.append({"question": qid, "titre": x["titre"], "issue": x["issue"], "etat_de_depart": str(r.get("etat_de_depart", ""))[:300], "evenement": str(r.get("evenement", ""))[:300],
                         "pays": r.get("pays") or [], "regions": r.get("regions") or [], "regles": gardes, "rejets": rejets,
                         "compartiments": sorted({c for i in gardes for c in cat[i]["compartiments"]})})
         except Exception as e:

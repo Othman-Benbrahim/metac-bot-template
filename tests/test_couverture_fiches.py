@@ -39,17 +39,23 @@ def test_v4_objet_perimetre_et_fautes_de_frappe():
     assert all(v["objet"] and v["perimetre"] for v in cat.values())
     assert cr.corriger_id("effect_d_echeance_negociation", cat) == "effet_d_echeance_negociation"
     assert cr.corriger_id("regle_inventee", cat) is None
-    o = cat["us_fed_calendrier"]["objet"]
-    ok, rej = cr.valider({"pays": ["États-Unis"], "regles": [{"id": "us_fed_calendrier", "objet": o, "est_l_objet": True}]}, cat)
+    o, si = cat["us_fed_calendrier"]["objet"], cat["us_fed_calendrier"]["situation"]
+    bon = lambda **k: [{"id": "us_fed_calendrier", "objet": o, "situation": si, "est_l_objet": True, "est_la_situation": True, **k}]
+    ok, rej = cr.valider({"pays": ["États-Unis"], "regles": bon()}, cat)
     assert ok == ["us_fed_calendrier"] and not rej
-    _, rej = cr.valider({"pays": ["États-Unis"], "regles": [{"id": "us_fed_calendrier", "objet": "autre chose", "est_l_objet": True}]}, cat)
+    _, rej = cr.valider({"pays": ["États-Unis"], "regles": bon(objet="autre chose")}, cat)
     assert rej[0]["motif"] == "objet mal recopié"
-    _, rej = cr.valider({"pays": ["États-Unis"], "regles": [{"id": "us_fed_calendrier", "objet": o, "est_l_objet": False}]}, cat)
+    _, rej = cr.valider({"pays": ["États-Unis"], "regles": bon(situation="autre chose")}, cat)
+    assert rej[0]["motif"] == "situation mal recopiée"
+    _, rej = cr.valider({"pays": ["États-Unis"], "regles": bon(est_l_objet=False)}, cat)
     assert "n'est pas l'objet" in rej[0]["motif"]
-    _, rej = cr.valider({"pays": [], "regions": ["afrique"], "regles": [{"id": "us_fed_calendrier", "objet": o, "est_l_objet": True}]}, cat)
+    _, rej = cr.valider({"pays": ["États-Unis"], "regles": bon(est_la_situation=False)}, cat)
+    assert "situation de départ" in rej[0]["motif"]
+    _, rej = cr.valider({"pays": [], "regions": ["afrique"], "regles": bon()}, cat)
     assert rej[0]["motif"].startswith("hors périmètre")
-    ok, _ = cr.valider({"pays": ["Brésil"], "regles": [{"id": "coups_d_etat_frequence",
-                         "objet": cat["coups_d_etat_frequence"]["objet"], "est_l_objet": True}]}, cat)
+    c = cat["coups_d_etat_frequence"]
+    ok, _ = cr.valider({"pays": ["Brésil"], "regles": [{"id": "coups_d_etat_frequence", "objet": c["objet"],
+                         "situation": c["situation"], "est_l_objet": True, "est_la_situation": True}]}, cat)
     assert ok == ["coups_d_etat_frequence"]                  # périmètre monde
     assert cr.dans_perimetre(["amerique_du_nord"], ["Canada"], [])
 

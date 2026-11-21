@@ -63,6 +63,8 @@ def valider(rs: list[dict] | None = None, fiches: dict[str, set] | None = None) 
             err.append(f"{i} : absence sans aide demandée")
         if st == "source" and len(str(r.get("objet") or "")) < 10:   # 2026-11-21 : carte de couverture v4
             err.append(f"{i} : règle sourcée sans objet (l'événement qu'elle prédit)")
+        if st == "source" and len(str(r.get("situation") or "")) < 10:   # 2026-11-21 : carte v5 (motif UFO-B)
+            err.append(f"{i} : règle sourcée sans situation de départ")
         if st == "source":
             per = r.get("perimetre")
             if not per or any(x not in REGIONS and x not in PAYS for x in per):
