@@ -48,3 +48,12 @@ def test_sondages(tmp_path, monkeypatch):
 def test_ecart_de_voix_non_traduit():
     import traduction_regles as tr
     assert tr.p_sondages("x", "Will John Cornyn win the Texas Republican Senate Primary runoff by 9% or more?", 30) is None
+
+
+def test_sondages_non_confirmes_ignores():
+    import traduction_regles as tr
+    e = {"statut": "ok", "colonne_sujet": "A", "moyennes": {"A": {"moyenne": 50, "n": 5}, "B": {"moyenne": 30, "n": 5}}}
+    t = "Will A win the 2026 X election?"
+    assert tr.p_sondages("x", t, 30, {**e, "verification": "confirme_lead"}) > 0.5
+    assert tr.p_sondages("x", t, 30, {**e, "verification": "non_verifie"}) is None
+    assert tr.p_sondages("x", t, 30, {**e, "verification": "desaccord"}) is None

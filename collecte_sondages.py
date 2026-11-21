@@ -172,8 +172,116 @@ def nombre(t: str) -> float | None:
 
 def sondages(html: str, an_defaut: int) -> list[dict]:
     """Toutes les lignes de sondage lisibles : {fin: date, valeurs: {colonne: %}}."""
+    return sondages_grilles(grilles(html), an_defaut)
+
+
+# ------------------------------------------------------------------- seconde lecture : le texte source (wikitexte)
+# Décision de l'auteur (2026-11-21, 17 h 42-17 h 45) : contrôle des tableaux sans colonne « Lead » ni seconde source.
+# Lecteur écrit séparément du lecteur HTML (découpage des cellules, gabarits, fusions) : si les deux trouvent la même
+# moyenne pour le sujet, il n'y a pas d'erreur MÉCANIQUE (colonne décalée, fusion mal dépliée). Il ne voit pas une
+# erreur de SENS (mauvais tableau) : le choix du tableau et de la colonne reste commun aux deux lectures.
+def _wt_niveau0_split(t: str, sep: str) -> list[str]:
+    """Découpe sur `sep` hors de [[…]] et {{…}}."""
+    out, prof_l, prof_t, cur, i = [], 0, 0, "", 0
+    while i < len(t):
+        if t.startswith("[[", i):
+            prof_l += 1; cur += "[["; i += 2; continue
+        if t.startswith("]]", i):
+            prof_l = max(0, prof_l - 1); cur += "]]"; i += 2; continue
+        if t.startswith("{{", i):
+            prof_t += 1; cur += "{{"; i += 2; continue
+        if t.startswith("}}", i):
+            prof_t = max(0, prof_t - 1); cur += "}}"; i += 2; continue
+        if prof_l == 0 and prof_t == 0 and t.startswith(sep, i):
+            out.append(cur); cur = ""; i += len(sep); continue
+        cur += t[i]; i += 1
+    out.append(cur)
+    return out
+
+
+def _wt_gabarit(m: re.Match) -> str:
+    parts = [x.strip() for x in _wt_niveau0_split(m.group(1), "|")]
+    nom = norm(parts[0])
+    args = [a for a in parts[1:] if "=" not in a.split("|")[0][:20] or not re.match(r"^\w+\s*=", a)]
+    if nom in ("dts", "date", "start date", "end date") and len(args) >= 3 and all(re.fullmatch(r"\d{1,4}", a) for a in args[:3]):
+        return f"{int(args[0]):04d}-{int(args[1]):02d}-{int(args[2]):02d}"
+    if nom in ("nowrap", "nobr", "small", "abbr", "tooltip", "nowrap begin") and args:
+        return args[0]
+    if nom in ("sort", "sortname", "hs", "ntsh") and args:
+        return args[-1]
+    if nom.startswith("party shading") or nom in ("n/a", "na", "-", "tba", "efn", "refn", "cn", "citation needed"):
+        return ""
+    return args[-1] if len(args) == 1 and re.fullmatch(r"[\d.,%–\- ]+", args[0]) else ""
+
+
+def _wt_nettoyer(t: str) -> str:
+    t = re.sub(r"<!--.*?-->", "", t, flags=re.S)
+    t = re.sub(r"<ref[^>]*/>", "", t)
+    t = re.sub(r"<ref[^>]*>.*?</ref>", "", t, flags=re.S)
+    t = re.sub(r"<br\s*/?>", " ", t, flags=re.I)
+    t = re.sub(r"</?(small|big|sup|sub|span|b|i|u|s|center|div)[^>]*>", "", t, flags=re.I)
+    for _ in range(4):                                         # gabarits imbriqués, de l'intérieur vers l'extérieur
+        t2 = re.sub(r"\{\{([^{}]*)\}\}", _wt_gabarit, t)
+        if t2 == t:
+            break
+        t = t2
+    t = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", t)
+    t = re.sub(r"\[https?://\S+\s*([^\]]*)\]", r"\1", t)
+    t = t.replace("'''", "").replace("''", "").replace("&nbsp;", " ").replace("&ndash;", "–")
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _wt_cellule(brut: str, th: bool) -> dict:
+    morceaux = _wt_niveau0_split(brut, "|")
+    est_attr = len(morceaux) > 1 and ("=" in morceaux[0] or re.fullmatch(r"\s*(\{\{[^{}]*\}\}\s*)+", morceaux[0]))
+    attr, texte = (morceaux[0], "|".join(morceaux[1:])) if est_attr else ("", brut)   # « {{Party shading/…}} | 45% »
+    ent = lambda k: max(1, int(m.group(1))) if (m := re.search(rf"{k}\s*=\s*\"?(\d+)", attr)) else 1
+    return {"t": _wt_nettoyer(texte), "c": ent("colspan"), "r": ent("rowspan"), "th": th}
+
+
+def grilles_wikitexte(source: str) -> list[list[list[str]]]:
+    """Tableaux du wikitexte → grilles rectangulaires (fusions dépliées par un code distinct de celui du HTML)."""
     out = []
-    for i_tab, g in enumerate(grilles(html)):
+    for bloc in re.findall(r"^\{\|.*?^\|\}", source, flags=re.S | re.M):
+        lignes, ligne = [], None
+        for l in bloc.splitlines()[1:]:
+            l = l.strip()
+            if l.startswith("|}") or l.startswith("|+"):
+                continue
+            if l.startswith("|-"):
+                if ligne:
+                    lignes.append(ligne)
+                ligne = []
+                continue
+            if l[:1] in ("|", "!"):
+                th = l[0] == "!"
+                ligne = [] if ligne is None else ligne
+                for c in _wt_niveau0_split(l[1:], "!!" if th else "||"):
+                    ligne.append(_wt_cellule(c, th))
+            elif ligne:                                        # suite de la cellule précédente sur une autre ligne
+                ligne[-1]["t"] = (ligne[-1]["t"] + " " + _wt_nettoyer(l)).strip()
+        if ligne:
+            lignes.append(ligne)
+        occupe: dict[tuple[int, int], str] = {}               # (ligne, colonne) → texte, fusions comprises
+        for i, row in enumerate(lignes):
+            j = 0
+            for c in row:
+                while (i, j) in occupe:
+                    j += 1
+                for di in range(c["r"]):
+                    for dj in range(c["c"]):
+                        occupe[(i + di, j + dj)] = c["t"]
+                j += c["c"]
+        if occupe:
+            n_l = max(i for i, _ in occupe) + 1
+            n_c = max(j for _, j in occupe) + 1
+            out.append([[occupe.get((i, j), "") for j in range(n_c)] for i in range(min(n_l, len(lignes)))])
+    return out
+
+
+def sondages_grilles(gs: list, an_defaut: int) -> list[dict]:
+    out = []
+    for i_tab, g in enumerate(gs):
         if len(g) < 3 or any("aggregat" in norm(c) for c in g[0]):   # moyennes d'agrégateurs : pas des sondages
             continue
         entete, i_date = None, None
@@ -446,6 +554,7 @@ def sujet_parti(sujet_: str) -> str:
 LANGUES = {"brazil": "pt", "portug": "pt", "peru": "es", "colombi": "es", "swed": "sv", "hungar": "hu", "russia": "ru",
            "latvia": "lv", "german": "de", "sachsen": "de", "saxony": "de"}
 TOLERANCE_POINTS = 2.0
+TOLERANCE_WIKITEXTE = 0.5                                     # même page, même sondages : l'écart doit être nul
 
 
 def langue_locale(el: str) -> str | None:
@@ -461,11 +570,16 @@ def verdict(r: dict) -> str:
     s2 = r.get("seconde_source") or {}
     if s2.get("ecart_points") is not None and abs(s2["ecart_points"]) > TOLERANCE_POINTS:
         return "desaccord"
+    w = r.get("relecture_wikitexte") or {}
+    if w.get("ecart_points") is not None and abs(w["ecart_points"]) > TOLERANCE_WIKITEXTE:
+        return "desaccord_lecture"                             # les deux lecteurs de la même page divergent
     rl = r.get("relecture_lead") or {}
     if (rl.get("lignes_verifiees") or 0) >= 3 and (rl.get("accord") or 0) >= 0.8:
         return "confirme_lead"
     if s2.get("ecart_points") is not None:
         return "confirme_second_source"
+    if w.get("ecart_points") is not None:
+        return "confirme_wikitexte"
     return "non_verifie"
 
 
@@ -536,6 +650,18 @@ class Collecteur:
             print(f"seconde source {lang} indisponible pour {el} : {e}")
         return self.pages[k]
 
+    def relire_wikitexte(self, cle: str, jeu: str) -> list[dict] | None:
+        k = ("wikitexte", cle)
+        if k not in self.pages:
+            self.pages[k] = None
+            try:
+                r = self.c.get(f"{API}/page/{cle}")
+                if r.status_code == 200 and (src := r.json().get("source")):
+                    self.pages[k] = sondages_grilles(grilles_wikitexte(src), int(jeu[:4]))
+            except Exception as e:
+                print(f"wikitexte indisponible pour {cle} : {e}")
+        return self.pages[k]
+
     def evaluer(self, titre: str, jeu: str) -> dict:
         el = election(titre)
         if el == titre:                                        # aucun nom d'élection dans le titre
@@ -556,6 +682,15 @@ class Collecteur:
             wiki = {"election": el, "statut": statut, "source": "wikipedia", "page": info["page"], "sujet": su,
                     "colonne_sujet": col, "jeu": jeu, "moyennes": moy,
                     "relecture_lead": {"lignes_verifiees": nv, "accord": acc}}
+            lw = self.relire_wikitexte(info.get("cle", ""), jeu) if col and info.get("cle") else None
+            if lw:
+                t3, col3 = choisir_table(lw, jeu, su, primaire, tour2)
+                rw = {"colonne": col3}
+                if col3:
+                    m3 = moyennes(lw, jeu, t3)[col3]
+                    rw.update({"moyenne": m3["moyenne"], "n": m3["n"],
+                               "ecart_points": round(m3["moyenne"] - moy[col]["moyenne"], 2)})
+                wiki["relecture_wikitexte"] = rw
             loc = self.page_locale(el, info.get("cle", ""), jeu) if col else None
             if loc:
                 t2, col2 = choisir_table(loc["lignes"], jeu, su, primaire, tour2)
@@ -639,6 +774,7 @@ def principal() -> int:
     import collections
     print("vérification :", dict(collections.Counter(q.get("verification") for q in qs if q.get("statut") == "ok")))
     print("seconde source trouvée :", sum(1 for q in qs if (q.get("seconde_source") or {}).get("ecart_points") is not None))
+    print("relecture wikitexte :", sum(1 for q in qs if (q.get("relecture_wikitexte") or {}).get("ecart_points") is not None))
     return 0
 
 

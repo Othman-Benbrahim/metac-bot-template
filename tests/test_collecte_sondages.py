@@ -199,3 +199,42 @@ def test_premier_tour_contre_duel_run_44925812553():
     assert col == "Caiado PSD" and cs.moyennes(ls, "2026-08-20", t)[col]["moyenne"] == 5   # 1er tour, pas le duel
     t, col = cs.choisir_table(ls, "2026-08-20", "Ronaldo Caiado", False, second_tour=True)
     assert cs.moyennes(ls, "2026-08-20", t)[col]["moyenne"] == 39.5
+
+
+WIKITEXTE = """
+{| class="wikitable sortable"
+|-
+! rowspan=2 | Poll source
+! rowspan=2 | Date(s)<br />administered
+! colspan=3 | Candidates
+|-
+! [[Andy Biggs]]
+! Karrin Taylor<br />Robson
+! Other
+|-
+| [[Emerson College|Emerson]]<ref>{{cite web|url=x}}</ref>
+| {{dts|2026|05|10}}
+| {{Party shading/Republican}} | '''45%'''
+| 22%
+| 8%
+|-
+| Noble Predictive || May 1–3, 2026 || 43% || 24% || 9%
+|}"""
+
+HTML_EQ = """<table><tr><th rowspan="2">Poll source</th><th rowspan="2">Date(s) administered</th><th colspan="3">Candidates</th></tr>
+<tr><th>Andy Biggs</th><th>Karrin Taylor Robson</th><th>Other</th></tr>
+<tr><td>Emerson</td><td>May 10, 2026</td><td>45%</td><td>22%</td><td>8%</td></tr>
+<tr><td>Noble Predictive</td><td>May 1–3, 2026</td><td>43%</td><td>24%</td><td>9%</td></tr></table>"""
+
+
+def test_seconde_lecture_wikitexte():
+    lw = cs.sondages_grilles(cs.grilles_wikitexte(WIKITEXTE), 2026)
+    lh = cs.sondages(HTML_EQ, 2026)
+    assert len(lw) == 2 and lw[0]["fin"] == date(2026, 5, 10) and lw[0]["valeurs"]["Andy Biggs"] == 45
+    jeu = "2026-06-01"
+    tw, cw = cs.choisir_table(lw, jeu, "Andy Biggs", True)
+    th, ch = cs.choisir_table(lh, jeu, "Andy Biggs", True)
+    assert cs.moyennes(lw, jeu, tw)[cw]["moyenne"] == cs.moyennes(lh, jeu, th)[ch]["moyenne"] == 44
+    assert cs.verdict({"source": "wikipedia", "relecture_wikitexte": {"ecart_points": 0.0}}) == "confirme_wikitexte"
+    assert cs.verdict({"source": "wikipedia", "relecture_wikitexte": {"ecart_points": 3.0},
+                       "relecture_lead": {"lignes_verifiees": 5, "accord": 1.0}}) == "desaccord_lecture"

@@ -247,6 +247,8 @@ def p_sondages(question: str, titre: str, horizon: float, entree: dict | None = 
     moy, col = q.get("moyennes") or {}, q.get("colonne_sujet")
     if q.get("statut") != "ok" or not col or col not in moy or len(moy) < 2:
         return None
+    if "verification" in q and not str(q["verification"]).startswith("confirme"):
+        return None                                            # lecture non confirmée : les sondages ne servent pas
     t = titre.lower()
     noms = list(moy)
     mu = np.array([moy[n]["moyenne"] for n in noms])
