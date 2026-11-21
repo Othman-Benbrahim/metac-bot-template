@@ -8,15 +8,18 @@ inopérant, il est inachevé ; il manque l'information ciblée sur le bon écosy
 ## Rasoir d'Ockham
 1. Une phrase : donner à M les règles sourcées qui gouvernent l'événement de la question, depuis sa situation de
    départ, améliore sa prévision.
-2. Paramètres : aucun appris ; les règles sont choisies par la carte v5 (choix fermé, validé par le code).
+2. Paramètres : aucun appris ; les règles sont choisies par la carte robot (motifs figés, reproductibles).
 3. Sens fixé d'avance : M1 meilleur que M0, et meilleur que le placebo M2.
-4. Domaine : questions dont l'événement et la situation de départ sont ceux d'une règle sourcée (carte v5).
+4. Domaine : questions dont le titre contient l'événement et la situation d'une règle sourcée (carte robot).
 5. Plus simple ? Le placebo M2 (règles quelconques) mesure l'explication plus simple : « un texte de règle en plus,
    quel qu'il soit, change la réponse ».
 
 ## Données (fixées)
-Questions de jugement résolues de ForecastBench posées en 2026 (cohorte complète), couvertes par la carte v5
-(`registre/couverture-regles-jugement2026-v5.json`), une ligne par question (le jeu de la carte). Recherche bornée
+Questions de jugement résolues de ForecastBench posées en 2026 (cohorte complète), couvertes par la **carte robot**
+(`carte_robot.py`, `registre/carte-robot-jugement2026.json` : motifs Python écrits à la main et figés, aucun appel de
+modèle ; décision de l'auteur du 2026-11-21, 14 h 45, après la mesure du halo : deux passages identiques de la carte v5
+différaient sur 15 questions sur 119). 217 questions couvertes sur 929 ; 150 au plus sont jugées, dans l'ordre fixé par
+empreinte. Une ligne par question (son premier jeu). Recherche bornée
 et gelée ; taux de départ des semblables ; cotes et prévisions de foule jamais transmises. Exclusion : le modèle dit
 connaître l'issue. Les règles citant 2026 ou après sont exclues du catalogue (pas de fuite).
 

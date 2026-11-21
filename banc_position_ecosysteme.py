@@ -1,8 +1,8 @@
 """Banc « M avec position écosystémique contre M sans » (preenregistrements/position-ecosysteme.md, option (b) de
 l'auteur du 2026-11-21, 14 h 26). Préparé, lancé une seule fois après validation de l'auteur.
 
-Questions : celles de la carte de couverture v5 sur l'ensemble jugement2026 qui ont au moins une règle sourcée
-retenue (registre/couverture-regles-jugement2026-v5.json), une ligne par question (son premier jeu, celui de la carte).
+Questions : celles de la carte robot (carte_robot.py, motifs Python figés, aucun appel de modèle) sur l'ensemble
+jugement2026 qui ont au moins une règle sourcée (registre/carte-robot-jugement2026.json), une ligne par question.
 Recherche bornée avant la date du jeu et GELÉE (cache partagé avec les autres bancs), taux de départ des semblables.
 
 Par question, sur les mêmes entrées :
@@ -37,7 +37,7 @@ import garde_injection as gi
 import trace_recherche as tr
 
 REGISTRE = Path("registre")
-CARTE = REGISTRE / "couverture-regles-jugement2026-v5.json"
+CARTE = REGISTRE / "carte-robot-jugement2026.json"      # robot Python, décision de l'auteur du 2026-11-21, 14 h 45
 FICHIER = REGISTRE / "banc-position-ecosysteme.jsonl"
 RESUME = REGISTRE / "banc-position-ecosysteme.json"
 HAIKU = "bedrock/global.anthropic.claude-haiku-4-5-20251001-v1:0"   # crédits Bedrock (décision de l'auteur, 14 h 36)

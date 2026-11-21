@@ -1,0 +1,968 @@
+{
+ "ensemble": "banc_m",
+ "regles_au_catalogue": 53,
+ "regles_avec_motifs": 50,
+ "questions": 119,
+ "couvertes": 41,
+ "par_regle": {
+  "us_erreur_selon_temps_restant": 4,
+  "sondages_erreur_comparee": 4,
+  "calendriers_annonces_glissent": 4,
+  "presidentielles_mode_de_scrutin": 3,
+  "usmca_revision_conjointe": 2,
+  "us_cour_supreme_calendrier": 2,
+  "coupe_du_monde_vainqueurs_hotes": 2,
+  "records_temperature_persistance": 2,
+  "coups_d_etat_frequence": 2,
+  "referendums_retour_statu_quo": 2,
+  "seuils_parlements_nationaux_europe": 1,
+  "europe_formation_gouvernement": 1,
+  "us_chambre_sanctions_disciplinaires": 1,
+  "us_sanctions_frequence": 1,
+  "us_lois_de_finances_provisoires": 1,
+  "us_entourage_rotation": 1,
+  "bolides_frequence": 1,
+  "us_senat_cloture": 1,
+  "us_reconciliation_budgetaire": 1,
+  "opep_departs": 1,
+  "royaume_uni_niveau_menace": 1,
+  "papes_voyages": 1,
+  "sommets_etats_unis_russie": 1,
+  "us_fed_calendrier": 1,
+  "us_ouragans_atterrissage": 1,
+  "us_inculpation_personnalites": 1,
+  "effet_d_echeance_negociation": 1,
+  "us_confirmations_delais": 1,
+  "coree_du_nord_essais_nucleaires": 1,
+  "dow_jones_changements": 1,
+  "chefs_d_etat_sortie_irreguliere": 1,
+  "royal_mail_hausses_tarifs": 1,
+  "schengen_controles_interieurs": 1
+ },
+ "detail": [
+  {
+   "question": "22310",
+   "titre": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
+   "issue": 1,
+   "jeu": "2026-08-02",
+   "regles": [
+    "presidentielles_mode_de_scrutin"
+   ]
+  },
+  {
+   "question": "24819",
+   "titre": "Will the USMCA be extended promptly at its July 2026 joint review?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": [
+    "usmca_revision_conjointe"
+   ]
+  },
+  {
+   "question": "36871",
+   "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": []
+  },
+  {
+   "question": "37307",
+   "titre": "Will  an attempt be made to fire Jerome Powell before the end of his term?",
+   "issue": 0,
+   "jeu": "2026-02-01",
+   "regles": []
+  },
+  {
+   "question": "37523",
+   "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
+   "issue": 0,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "38783",
+   "titre": "Will the US government file a denaturalization lawsuit against Elon Musk before July 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-06-07",
+   "regles": []
+  },
+  {
+   "question": "38917",
+   "titre": "Will Barack Obama be arrested before July 2026?",
+   "issue": 0,
+   "jeu": "2026-01-04",
+   "regles": []
+  },
+  {
+   "question": "38940",
+   "titre": "Will over 2/3 of EU member states recognize Palestinian statehood before July 2026?",
+   "issue": 0,
+   "jeu": "2026-06-07",
+   "regles": []
+  },
+  {
+   "question": "39142",
+   "titre": "Before July 1, 2026, will the U.S. Supreme Court agree to hear a case that could end the constitutional right to same-sex marriage?",
+   "issue": 0,
+   "jeu": "2026-04-12",
+   "regles": [
+    "us_cour_supreme_calendrier"
+   ]
+  },
+  {
+   "question": "39886",
+   "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": []
+  },
+  {
+   "question": "39992",
+   "titre": "Will Israel participate in the Eurovision Song Contest 2026?",
+   "issue": 1,
+   "jeu": "2026-03-29",
+   "regles": []
+  },
+  {
+   "question": "40005",
+   "titre": "Will any political party or coalition acquire a supermajority in the 2026 Hungarian parliamentary elections?",
+   "issue": 1,
+   "jeu": "2026-03-15",
+   "regles": [
+    "us_erreur_selon_temps_restant",
+    "sondages_erreur_comparee",
+    "seuils_parlements_nationaux_europe"
+   ]
+  },
+  {
+   "question": "40281",
+   "titre": "Will any coding tool introduce an integration with brain-computer interface technology before November 2026?",
+   "issue": 0,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "40599",
+   "titre": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he become Prime Minister?",
+   "issue": 0,
+   "jeu": "2026-03-29",
+   "regles": [
+    "us_erreur_selon_temps_restant",
+    "sondages_erreur_comparee",
+    "europe_formation_gouvernement"
+   ]
+  },
+  {
+   "question": "40695",
+   "titre": "Will Jerome Powell cease to be Chair of the Federal Reserve Board of Governors before his term is up?",
+   "issue": 0,
+   "jeu": "2026-04-26",
+   "regles": []
+  },
+  {
+   "question": "40711",
+   "titre": "Will the United States, Russia or China detonate a nuclear device before April 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": []
+  },
+  {
+   "question": "40849",
+   "titre": "Will Tesla discontinue the Cybertruck before April 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": []
+  },
+  {
+   "question": "40852",
+   "titre": "Will the US House of Representatives censure, expel or reprimand any of its members before April 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": [
+    "us_chambre_sanctions_disciplinaires"
+   ]
+  },
+  {
+   "question": "40862",
+   "titre": "Will Arizona Senator Mark Kelly, who urged troops to defy \"illegal\" orders, be recalled to active duty in the US military before April 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": []
+  },
+  {
+   "question": "40865",
+   "titre": "Will Israel pass the Penal Bill (Death Penalty for Terrorists amendment) into law before April 2026?",
+   "issue": 1,
+   "jeu": "2026-03-01",
+   "regles": []
+  },
+  {
+   "question": "40875",
+   "titre": "Will the number of manufacturing jobs in the US for February 2026 be above 12.7 million?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": []
+  },
+  {
+   "question": "40938",
+   "titre": "Will California Emissions Reporting Laws SB 253 and SB 261 Be In Effect on September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-06-21",
+   "regles": []
+  },
+  {
+   "question": "41090",
+   "titre": "Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
+   "issue": 0,
+   "jeu": "2026-03-29",
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ]
+  },
+  {
+   "question": "41206",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before July 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-29",
+   "regles": []
+  },
+  {
+   "question": "41214",
+   "titre": "Will Bitcoin reach a new all-time high price before October 6, 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": []
+  },
+  {
+   "question": "41316",
+   "titre": "Will the United States impose additional sanctions on Russia related to the Ukraine war before March 14, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": [
+    "us_sanctions_frequence"
+   ]
+  },
+  {
+   "question": "41343",
+   "titre": "Will any NVIDIA GPUs better than the H200 be allowed to be exported to China before March 14, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": []
+  },
+  {
+   "question": "41370",
+   "titre": "Will there be at least one podium sweep at the 2026 Winter Olympic Games?",
+   "issue": 1,
+   "jeu": "2026-02-01",
+   "regles": []
+  },
+  {
+   "question": "41480",
+   "titre": "Will the U.S. Supreme Court's decision in Louisiana v. Callais hold that race-conscious districting is unconstitutional?",
+   "issue": 0,
+   "jeu": "2026-04-26",
+   "regles": [
+    "us_cour_supreme_calendrier"
+   ]
+  },
+  {
+   "question": "41485",
+   "titre": "Will the United States intervene militarily in Venezuela again before May 2026?",
+   "issue": 0,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "41489",
+   "titre": "Will Venezuela announce a presidential election before April 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": []
+  },
+  {
+   "question": "41508",
+   "titre": "Will the Community beat Nathan Young in the Metaculus Cup Spring 2026?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": []
+  },
+  {
+   "question": "41512",
+   "titre": "Will the U.S. Congress still be operating under a continuing resolution (CR) on March 15, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": [
+    "us_lois_de_finances_provisoires"
+   ]
+  },
+  {
+   "question": "41514",
+   "titre": "Before May 1, 2026, will the United States offer to purchase Greenland from Denmark?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": []
+  },
+  {
+   "question": "41595",
+   "titre": "Will the North Atlantic sea surface temperature reach a daily record high before May 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": [
+    "records_temperature_persistance"
+   ]
+  },
+  {
+   "question": "41804",
+   "titre": "Will Sudan's Emergency Response Rooms win the Nobel Peace Prize in 2026?",
+   "issue": 0,
+   "jeu": "2026-08-30",
+   "regles": []
+  },
+  {
+   "question": "41805",
+   "titre": "Will Jonathan Ross be indicted or charged in the death of Renee Good before July 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": []
+  },
+  {
+   "question": "41861",
+   "titre": "Will Wagner Moura win the Academy Award for Best Actor at the 2026 Academy Awards?",
+   "issue": 0,
+   "jeu": "2026-02-15",
+   "regles": []
+  },
+  {
+   "question": "41869",
+   "titre": "Will Iran's Internet not be \"heavily filtered/whitelisted\" for most users before May 2026?",
+   "issue": 0,
+   "jeu": "2026-03-01",
+   "regles": []
+  },
+  {
+   "question": "42135",
+   "titre": "Will the UK increase the qualifying period for settlement to 10 years before May 2026?",
+   "issue": 0,
+   "jeu": "2026-03-29",
+   "regles": []
+  },
+  {
+   "question": "42139",
+   "titre": "Will Keiko Fujimori advance to the runoff in the 2026 Peruvian presidential election?",
+   "issue": 1,
+   "jeu": "2026-03-29",
+   "regles": [
+    "us_erreur_selon_temps_restant",
+    "sondages_erreur_comparee",
+    "presidentielles_mode_de_scrutin"
+   ]
+  },
+  {
+   "question": "42274",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before April 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-15",
+   "regles": []
+  },
+  {
+   "question": "42284",
+   "titre": "Will Cloudflare experience another critical incident before May 2026?",
+   "issue": 1,
+   "jeu": "2026-03-29",
+   "regles": []
+  },
+  {
+   "question": "42430",
+   "titre": "Will there be a successful coup in Africa or Latin America before May 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-04-12",
+   "regles": [
+    "coups_d_etat_frequence"
+   ]
+  },
+  {
+   "question": "42480",
+   "titre": "Will Pam Bondi be out as US Attorney General before May 2026?",
+   "issue": 1,
+   "jeu": "2026-03-29",
+   "regles": [
+    "us_entourage_rotation"
+   ]
+  },
+  {
+   "question": "42485",
+   "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "42489",
+   "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "42490",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-29",
+   "regles": []
+  },
+  {
+   "question": "42491",
+   "titre": "Will Anthropic be a designated supply chain risk on May 1, 2026?",
+   "issue": 1,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "42540",
+   "titre": "Will a 1kt meteor strike take place during March or April 2026?",
+   "issue": 0,
+   "jeu": "2026-03-29",
+   "regles": [
+    "bolides_frequence"
+   ]
+  },
+  {
+   "question": "42542",
+   "titre": "Will the U.S. conduct a ground invasion of Iran before May 2026?",
+   "issue": 0,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "42548",
+   "titre": "Will gas prices in the US reach a new all-time high before April 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-03-29",
+   "regles": []
+  },
+  {
+   "question": "42630",
+   "titre": "Will Iran participate in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "jeu": "2026-05-24",
+   "regles": []
+  },
+  {
+   "question": "42729",
+   "titre": "Will shipping traffic through the Strait of Hormuz return to normal before April 27, 2026?",
+   "issue": 0,
+   "jeu": "2026-04-12",
+   "regles": []
+  },
+  {
+   "question": "42741",
+   "titre": "Will total MLB regular-season attendance in 2026 exceed 72 million?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "43091",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before June 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-04-26",
+   "regles": []
+  },
+  {
+   "question": "43167",
+   "titre": "Will the U.S. Senate pass another budget reconciliation bill before July 4, 2026?",
+   "issue": 1,
+   "jeu": "2026-05-10",
+   "regles": [
+    "us_senat_cloture",
+    "us_reconciliation_budgetaire"
+   ]
+  },
+  {
+   "question": "43171",
+   "titre": "Will Neymar be called up for Brazil in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "jeu": "2026-05-10",
+   "regles": []
+  },
+  {
+   "question": "43257",
+   "titre": "Will the CBOE Volatility Index (VIX) close above 30 on more than 5 trading days between April 20, 2026 and May 31, 2026?",
+   "issue": 0,
+   "jeu": "2026-05-10",
+   "regles": []
+  },
+  {
+   "question": "43259",
+   "titre": "Will the United States and Iran hold another face-to-face diplomatic meeting before June 6, 2026?",
+   "issue": 0,
+   "jeu": "2026-05-10",
+   "regles": []
+  },
+  {
+   "question": "43283",
+   "titre": "Will Waymo have a service area of 1,200 square miles before July 1, 2026?",
+   "issue": 1,
+   "jeu": "2026-05-24",
+   "regles": [
+    "calendriers_annonces_glissent"
+   ]
+  },
+  {
+   "question": "43333",
+   "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": [
+    "opep_departs"
+   ]
+  },
+  {
+   "question": "43343",
+   "titre": "Will any host nation (USA, Mexico or Canada) reach the semifinals of the 2026 World Cup?",
+   "issue": 0,
+   "jeu": "2026-06-21",
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ]
+  },
+  {
+   "question": "43355",
+   "titre": "Will Iran and U.S play against each other in the 2026 FIFA World Cup?",
+   "issue": 0,
+   "jeu": "2026-06-07",
+   "regles": []
+  },
+  {
+   "question": "43360",
+   "titre": "Will the UK National Threat Level reduce from SEVERE before September 2026?",
+   "issue": 0,
+   "jeu": "2026-05-24",
+   "regles": [
+    "royaume_uni_niveau_menace"
+   ]
+  },
+  {
+   "question": "43435",
+   "titre": "Will Pope Leo XIV visit another country other than Spain before September 2026?",
+   "issue": 1,
+   "jeu": "2026-07-05",
+   "regles": [
+    "papes_voyages"
+   ]
+  },
+  {
+   "question": "43437",
+   "titre": "Will there be a successful coup in Africa or Latin America before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": [
+    "coups_d_etat_frequence"
+   ]
+  },
+  {
+   "question": "43452",
+   "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-09-13",
+   "regles": [
+    "sommets_etats_unis_russie"
+   ]
+  },
+  {
+   "question": "43461",
+   "titre": "Will at least 5 non-passengers be linked to the MV Hondius hantavirus outbreak before August 2026?",
+   "issue": 0,
+   "jeu": "2026-06-07",
+   "regles": []
+  },
+  {
+   "question": "43479",
+   "titre": "Will Claude Mythos or a similar model be publicly released before September 2026?",
+   "issue": 1,
+   "jeu": "2026-06-07",
+   "regles": [
+    "calendriers_annonces_glissent"
+   ]
+  },
+  {
+   "question": "43491",
+   "titre": "Will a new High Representative for Bosnia and Herzegovina officially be in place before September 2, 2026?",
+   "issue": 0,
+   "jeu": "2026-06-07",
+   "regles": []
+  },
+  {
+   "question": "43494",
+   "titre": "Will any U.S. state or EU member state restrict large-scale data center grid connections before September 2026?",
+   "issue": 1,
+   "jeu": "2026-06-21",
+   "regles": []
+  },
+  {
+   "question": "43496",
+   "titre": "Will Haiti hold the first round of its presidential election before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-06-21",
+   "regles": []
+  },
+  {
+   "question": "43501",
+   "titre": "Will Instructure be subject to another major hack before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-06-21",
+   "regles": []
+  },
+  {
+   "question": "43502",
+   "titre": "Will Bitcoin trade above $120,000 before August 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-06-07",
+   "regles": []
+  },
+  {
+   "question": "43505",
+   "titre": "Will the Senate of the Philippines remove Vice President Sara Duterte from office before September 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": []
+  },
+  {
+   "question": "43525",
+   "titre": "Will OpenAI's ChatGPT Atlas browser be released for Windows before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-07-05",
+   "regles": [
+    "calendriers_annonces_glissent"
+   ]
+  },
+  {
+   "question": "43527",
+   "titre": "Will federal courts block the USPS mail-in ballot restrictions before Election Day?",
+   "issue": 1,
+   "jeu": "2026-06-21",
+   "regles": []
+  },
+  {
+   "question": "43615",
+   "titre": "Will Shakira's \"Dai Dai\" outpeak Shakira's \"Waka Waka\" on the Billboard Hot 100?",
+   "issue": 1,
+   "jeu": "2026-07-05",
+   "regles": []
+  },
+  {
+   "question": "43637",
+   "titre": "Will the 2026 Alberta independence referendum pass?",
+   "issue": 0,
+   "jeu": "2026-08-02",
+   "regles": [
+    "referendums_retour_statu_quo"
+   ]
+  },
+  {
+   "question": "43688",
+   "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
+   "issue": 0,
+   "jeu": "2026-07-05",
+   "regles": [
+    "us_fed_calendrier"
+   ]
+  },
+  {
+   "question": "43703",
+   "titre": "Will a hurricane make landfall in the continental United States before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": [
+    "us_ouragans_atterrissage"
+   ]
+  },
+  {
+   "question": "43707",
+   "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-06-21",
+   "regles": []
+  },
+  {
+   "question": "43708",
+   "titre": "Will Starlink's website show South Africa as a country with Starlink availability before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-02",
+   "regles": []
+  },
+  {
+   "question": "43822",
+   "titre": "Will Iceland vote Yes in the 2026 EU negotiations referendum?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": [
+    "referendums_retour_statu_quo"
+   ]
+  },
+  {
+   "question": "43824",
+   "titre": "Will the Brookmont Catastrophic Bond ETF drop at least $0.25 within two days before September 2026?",
+   "issue": 0,
+   "jeu": "2026-07-05",
+   "regles": []
+  },
+  {
+   "question": "43841",
+   "titre": "Will OpenAI publicly file an initial registration statement (S-1) with the SEC to launch an IPO, before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "43844",
+   "titre": "Will Hakainde Hichilema receive at least 65% of the vote in the first round of Zambia's 2026 presidential election?",
+   "issue": 0,
+   "jeu": "2026-08-02",
+   "regles": [
+    "us_erreur_selon_temps_restant",
+    "sondages_erreur_comparee",
+    "presidentielles_mode_de_scrutin"
+   ]
+  },
+  {
+   "question": "43853",
+   "titre": "Will former U.S. Representative George Santos be arrested before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": [
+    "us_inculpation_personnalites"
+   ]
+  },
+  {
+   "question": "43881",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "43911",
+   "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
+   "issue": 0,
+   "jeu": "2026-07-05",
+   "regles": [
+    "effet_d_echeance_negociation"
+   ]
+  },
+  {
+   "question": "43984",
+   "titre": "Will the Liberal Party officially nominate Flávio Bolsonaro as its candidate for president of Brazil before August 15, 2026?",
+   "issue": 1,
+   "jeu": "2026-07-05",
+   "regles": []
+  },
+  {
+   "question": "43985",
+   "titre": "Before September 1, 2026, will Turkish President Recep Tayyip Erdoğan be legally permitted to run for another term?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "43986",
+   "titre": "Will Ukraine announce a presidential election before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "43987",
+   "titre": "Will the United States provide written notices of withdrawal from the USMCA before September 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": [
+    "usmca_revision_conjointe"
+   ]
+  },
+  {
+   "question": "43991",
+   "titre": "On July 8, 2026, will Marine Le Pen be ineligible to run in the 2027 French presidential election?",
+   "issue": 0,
+   "jeu": "2026-07-05",
+   "regles": []
+  },
+  {
+   "question": "43992",
+   "titre": "Will July 2026 be the warmest July on record, according to Copernicus?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": [
+    "records_temperature_persistance"
+   ]
+  },
+  {
+   "question": "44117",
+   "titre": "Will James M. McDonald be sworn in as US Attorney for the Southern District of New York before August 22, 2026?",
+   "issue": 1,
+   "jeu": "2026-07-19",
+   "regles": [
+    "us_confirmations_delais"
+   ]
+  },
+  {
+   "question": "44193",
+   "titre": "Will North Korea conduct a nuclear test before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": [
+    "coree_du_nord_essais_nucleaires"
+   ]
+  },
+  {
+   "question": "44230",
+   "titre": "Will the IAEA conduct an on-site inspection at any of Iran's Natanz, Fordow, or Isfahan nuclear sites before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": []
+  },
+  {
+   "question": "44239",
+   "titre": "Will Elon Musk be a trillionaire on August 31, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "44241",
+   "titre": "Will the Lincoln Memorial Reflecting Pool be fully repaired before September 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": [
+    "calendriers_annonces_glissent"
+   ]
+  },
+  {
+   "question": "44244",
+   "titre": "Will another company get dropped from the Dow Jones Industrial Average in July or August 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": [
+    "dow_jones_changements"
+   ]
+  },
+  {
+   "question": "44247",
+   "titre": "Will Virgin Galactic have a \"Going Concern\" substantial doubt statement in its 10-Q SEC filing for Q2 2026?",
+   "issue": 1,
+   "jeu": "2026-08-02",
+   "regles": []
+  },
+  {
+   "question": "44395",
+   "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-07-19",
+   "regles": []
+  },
+  {
+   "question": "44406",
+   "titre": "Will Vladimir Putin visit Iran before September 1, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-02",
+   "regles": []
+  },
+  {
+   "question": "44414",
+   "titre": "Will a Tucker Carlson-founded political party file FEC Form 1 before September 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "44448",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before September 2026?",
+   "issue": 0,
+   "jeu": "2026-08-02",
+   "regles": []
+  },
+  {
+   "question": "44512",
+   "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere"
+   ]
+  },
+  {
+   "question": "44513",
+   "titre": "Will Donald Trump and Vladimir Putin speak on the phone in August 2026?",
+   "issue": 0,
+   "jeu": "2026-08-02",
+   "regles": []
+  },
+  {
+   "question": "44544",
+   "titre": "Will Thomas Massie file to run for any elective office before August 25, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "44547",
+   "titre": "Will Mitch McConnell cast a roll-call vote in the U.S. Senate before September 2026?",
+   "issue": 0,
+   "jeu": "2026-08-02",
+   "regles": []
+  },
+  {
+   "question": "44693",
+   "titre": "Will the desktop market share of Linux exceed 8% in August 2026?",
+   "issue": 1,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "44799",
+   "titre": "Will a bot finish in the top 5 of the Summer 2026 Metaculus Cup?",
+   "issue": 1,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "44919",
+   "titre": "Will the United States launch an attack against JNIM in Mali during August 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": []
+  },
+  {
+   "question": "44925",
+   "titre": "Will the Royal Mail raise prices on any letters or parcels before September 10, 2026?",
+   "issue": 1,
+   "jeu": "2026-08-30",
+   "regles": [
+    "royal_mail_hausses_tarifs"
+   ]
+  },
+  {
+   "question": "44986",
+   "titre": "Will the U.S. government's 30-year treasury bond remain in the  ≥5% \"danger zone\" for the entire month of August 2026?",
+   "issue": 1,
+   "jeu": "2026-08-30",
+   "regles": []
+  },
+  {
+   "question": "45015",
+   "titre": "Will Italy's Schengen suspension against Spain be lifted before August 30, 2026?",
+   "issue": 0,
+   "jeu": "2026-08-16",
+   "regles": [
+    "schengen_controles_interieurs"
+   ]
+  },
+  {
+   "question": "8393",
+   "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
+   "issue": 0,
+   "jeu": "2026-01-18",
+   "regles": []
+  }
+ ]
+}
