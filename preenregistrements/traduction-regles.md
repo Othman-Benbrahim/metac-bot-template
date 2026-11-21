@@ -86,3 +86,20 @@ contrôlées par le passage de collecte suivant, qui porte la relecture, ainsi :
 - Une question dont le tableau n'a pas de colonne « Lead » n'est ni confirmée ni infirmée : elle est comptée à part,
   et son nombre est publié avec le bilan.
 - Sans défaillance prouvée, le résultat du 16 h 14 tient.
+
+## Bilan de relecture et relance (2026-11-21, 17 h 25 - 17 h 31)
+Bilan (collecte du 16 h 22 UTC avec relecture « Lead ») sur les 43 questions de sondages du premier essai : 28
+confirmées par la colonne « Lead », 2 lues dans DAWUM, 13 sans colonne « Lead » (non vérifiables). Aucune ne remplit
+les critères (a)-(c) ; mais une lecture fausse est prouvée par vérification de la page : la question suédoise
+(« Social Democratic Party (S) … most seats ») lue dans le tableau des chefs de parti (« Magdalena Andersson (S) »,
+39 %), pas dans les intentions de vote. Défaut corrigé (commit 54d658c : un parti n'est jamais lu dans la colonne de
+son chef). Décision de l'auteur (17 h 27) : relancer une fois. LE PREMIER RÉSULTAT (16 h 14) EST INVALIDE.
+
+## Résultat de la relance (run 44924797777, 17 h 30) : ADOPTÉ — résultat retenu
+78 questions (la suédoise sort faute de colonne lisible ; « Cornyn … runoff by 9% » n'est plus traduite). Perte log :
+S 0,605 ; R 0,493 ; C 0,446. C − S = −0,159, intervalle à 90 % [−0,254 ; −0,069] : critère rempli. R − S = −0,112
+[−0,261 ; +0,042].
+Par famille (descriptif) : sondages (41) 0,640 → 0,414 ; Fed (16) 0,659 → 0,520 ; fréquences (21) 0,497 → 0,451.
+Bootstrap par élection (53 grappes) : [−0,242 ; −0,068].
+Suite décidée par l'auteur (17 h 17) : branchement direct (pas d'ombre) quand la lecture sera prête ; chaque question
+vérifiée au moment où le bot la traite (relecture « Lead », alertes), sinon S.
