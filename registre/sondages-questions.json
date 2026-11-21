@@ -18,11 +18,11 @@
      "page refusée"
     ],
     [
-     "Salvadoran military intervention in Haiti",
+     "Attempts to overturn the 2020 United States presidential election",
      "page refusée"
     ],
     [
-     "Attempts to overturn the 2020 United States presidential election",
+     "Salvadoran military intervention in Haiti",
      "page refusée"
     ],
     [
@@ -65,6 +65,12 @@
     "lignes_verifiees": 14,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Orbán",
+    "moyenne": 41.5,
+    "n": 2,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -106,8 +112,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Thomas Massie",
+    "moyenne": 49.5,
+    "n": 2,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "manifold:yq9hpgsgsU": {
    "election": "2026 Welsh election",
@@ -161,6 +173,9 @@
    "relecture_lead": {
     "lignes_verifiees": 9,
     "accord": 1.0
+   },
+   "relecture_wikitexte": {
+    "colonne": null
    },
    "seconde_source": {
     "langue": "pt",
@@ -250,59 +265,17 @@
   },
   "polymarket:0x003e6ffdf25f45a8d5679831551658e1b54094187f552fc6ef4b26bca404c971": {
    "election": "2026 Brazilian presidential election",
-   "statut": "ok",
+   "statut": "sujet_absent_des_tableaux",
    "source": "wikipedia",
    "page": "Opinion polling for the 2026 Brazilian presidential election",
    "sujet": "Michelle Bolsonaro",
-   "colonne_sujet": "F. Bolsonaro PL",
+   "colonne_sujet": null,
    "jeu": "2026-08-16",
-   "moyennes": {
-    "Lula PT": {
-     "moyenne": 41.28,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "F. Bolsonaro PL": {
-     "moyenne": 33.94,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Caiado PSD": {
-     "moyenne": 4.94,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Zema Novo": {
-     "moyenne": 3.14,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Santos Mission": {
-     "moyenne": 4.96,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Cury Avante": {
-     "moyenne": 1.76,
-     "n": 5,
-     "dernier": "2026-08-13"
-    }
-   },
+   "moyennes": {},
    "relecture_lead": {
-    "lignes_verifiees": 74,
-    "accord": 1.0
-   },
-   "seconde_source": {
-    "langue": "pt",
-    "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
-    "colonne": "Bolsonaro PL",
-    "moyenne": 45.46,
-    "n": 5,
-    "dernier": "2026-07-30",
-    "ecart_points": 11.52
-   },
-   "alertes": [],
-   "verification": "desaccord"
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "polymarket:0x023a8c2fd2a78c29c9748a44205e2cbe624d86c11ee41b81d4067ddbbf2a135f": {
    "election": "2026 Brazilian presidential election",
@@ -348,6 +321,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "F. Bolsonaro PL",
+    "moyenne": 34.28,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -355,7 +334,7 @@
     "moyenne": 35.92,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 1.64
+    "non_comparable": "derniers sondages à 15 jours d'écart"
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -404,6 +383,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Santos Mission",
+    "moyenne": 4.96,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -411,10 +396,10 @@
     "moyenne": 7.7,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 2.74
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x0a999ae98b3c9e593cbbd33e2f940df1b071ac0ab9ede42ed12eeb8f7eef461e": {
    "election": "2026 Colombian Chamber of Representatives election",
@@ -565,6 +550,12 @@
     "lignes_verifiees": 6,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "AS",
+    "moyenne": 17.1,
+    "n": 1,
+    "ecart_points": 0.0
+   },
    "alertes": [
     "un seul sondage pour le sujet"
    ],
@@ -613,6 +604,9 @@
    "relecture_lead": {
     "lignes_verifiees": 0,
     "accord": null
+   },
+   "relecture_wikitexte": {
+    "colonne": null
    },
    "alertes": [
     "un seul sondage pour le sujet"
@@ -716,6 +710,12 @@
    "relecture_lead": {
     "lignes_verifiees": 52,
     "accord": 1.0
+   },
+   "relecture_wikitexte": {
+    "colonne": "LDPR",
+    "moyenne": 9.4,
+    "n": 5,
+    "ecart_points": 0.0
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -858,6 +858,12 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "F. Bolsonaro PL",
+    "moyenne": 36.2,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -865,7 +871,7 @@
     "moyenne": 35.92,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": -0.28
+    "non_comparable": "derniers sondages à 72 jours d'écart"
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -923,10 +929,16 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Adam Steen",
+    "moyenne": 9.0,
+    "n": 1,
+    "ecart_points": 0.0
+   },
    "alertes": [
     "un seul sondage pour le sujet"
    ],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0x21ab0908882e00031041d17716d3c6c56d93dfc5f460c551c33fec2ea33ae112": {
    "election": "2026 Michigan Governor Democratic primary",
@@ -952,8 +964,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Jocelyn Benson",
+    "moyenne": 60.0,
+    "n": 3,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0x22776ecdacca07302e6cc578cdcf26df93b4233d5a8166cbf131cb32fec425b9": {
    "election": "2026 Tennessee Governor Democratic primary",
@@ -993,6 +1011,12 @@
     "lignes_verifiees": 15,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Sánchez JP",
+    "moyenne": 35.0,
+    "n": 2,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "es",
     "page": "Anexo:Sondeos de intención de voto para las elecciones presidenciales de Perú de 2026",
@@ -1014,11 +1038,11 @@
      "aucun tableau lisible (HTTP 200)"
     ],
     [
-     "Anti-Russian sentiment",
+     "United Russia",
      "page refusée"
     ],
     [
-     "United Russia",
+     "Anti-Russian sentiment",
      "page refusée"
     ],
     [
@@ -1093,6 +1117,12 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "F. Bolsonaro PL",
+    "moyenne": 39.08,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -1100,10 +1130,10 @@
     "moyenne": 36.53,
     "n": 3,
     "dernier": "2026-06-30",
-    "ecart_points": -2.55
+    "non_comparable": "derniers sondages à 86 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x3dbbbe0f8e69b1aee0092e1eca397b24c954c00ecc54995035a8683201ad26aa": {
    "election": "2026 Brazilian presidential election",
@@ -1149,6 +1179,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Caiado PSD",
+    "moyenne": 4.94,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -1156,7 +1192,7 @@
     "moyenne": 4.76,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": -0.18
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -1210,8 +1246,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Matt Claman (D)",
+    "moyenne": 7.33,
+    "n": 3,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0x48ec3524f7a9cff57d242904dab60158a7df7c5d4e945d40b1335121c2a83e02": {
    "election": "2026 Latvian parliamentary election",
@@ -1302,6 +1344,12 @@
     "lignes_verifiees": 6,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "JV",
+    "moyenne": 7.3,
+    "n": 1,
+    "ecart_points": 0.0
+   },
    "alertes": [
     "un seul sondage pour le sujet"
    ],
@@ -1391,6 +1439,12 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "UR",
+    "moyenne": 44.6,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -1418,8 +1472,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Andy Biggs",
+    "moyenne": 51.67,
+    "n": 3,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0x5418339990df624d3dab616d24b999b1b2adc81d5188c3291c4abcba3edd3e52": {
    "election": "next Moroccan legislative election",
@@ -1442,7 +1502,7 @@
      "page refusée"
     ],
     [
-     "2026 United States House of Representatives elections in Michigan",
+     "2008 Spanish general election",
      "page refusée"
     ],
     [
@@ -1535,6 +1595,12 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "UR",
+    "moyenne": 41.6,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -1559,7 +1625,7 @@
      "page refusée"
     ],
     [
-     "Flávio Bolsonaro 2026 presidential campaign",
+     "2026 Federal District gubernatorial election",
      "page refusée"
     ],
     [
@@ -1589,7 +1655,7 @@
      "page refusée"
     ],
     [
-     "2026 Santa Catarina general election",
+     "2026 Paraná gubernatorial election",
      "page refusée"
     ],
     [
@@ -1642,6 +1708,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "F. Bolsonaro PL",
+    "moyenne": 33.94,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -1649,7 +1721,7 @@
     "moyenne": 35.92,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 1.98
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -1768,6 +1840,12 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "NP",
+    "moyenne": 2.8,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -1843,6 +1921,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Zema Novo",
+    "moyenne": 3.14,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -1850,7 +1934,7 @@
     "moyenne": 3.82,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 0.68
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -1893,8 +1977,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "John Cornyn",
+    "moyenne": 43.2,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0x781a06aa5779f97724b75ed8128aaf72c4a8955c893a6fefdc0efd7cb001c513": {
    "election": "2026 Texas Republican Primary",
@@ -1963,6 +2053,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Lula PT",
+    "moyenne": 39.7,
+    "n": 2,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -2019,6 +2115,12 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Cury Avante",
+    "moyenne": 7.6,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -2026,10 +2128,10 @@
     "moyenne": 1.24,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": -6.36
+    "non_comparable": "derniers sondages à 72 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x7b91997c6c8ca00643ab322f63af50acf1a0e9b86be130b67e5a19005215e252": {
    "election": "next Russian parliamentary election",
@@ -2115,6 +2217,12 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "CPRF",
+    "moyenne": 9.4,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -2176,6 +2284,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Santos Mission",
+    "moyenne": 4.96,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -2183,10 +2297,10 @@
     "moyenne": 7.7,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 2.74
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x83030b249525db4c0bcd83a915776442f4ea32d2fba10825fca4abeb51512d8f": {
    "election": "2026 Brazilian presidential election",
@@ -2232,6 +2346,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Santos Mission",
+    "moyenne": 4.96,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -2239,10 +2359,10 @@
     "moyenne": 7.7,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 2.74
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x8c48f3acf4177b5ceb012a8a2dc7a9c219eeae4a032d6ddcbc3c2ffab907439a": {
    "election": "next Russian parliamentary election",
@@ -2328,6 +2448,12 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "LDPR",
+    "moyenne": 8.8,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -2389,6 +2515,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Lula PT",
+    "moyenne": 41.28,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -2396,10 +2528,10 @@
     "moyenne": 44.92,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 3.64
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0x93657cd9bb7f8f7d7721ace577bc44194716a3f1e2c9dff20e4e454ea51a8842": {
    "election": "next Russian parliamentary election",
@@ -2484,6 +2616,12 @@
    "relecture_lead": {
     "lignes_verifiees": 52,
     "accord": 1.0
+   },
+   "relecture_wikitexte": {
+    "colonne": "NP",
+    "moyenne": 2.8,
+    "n": 5,
+    "ecart_points": 0.0
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -2599,6 +2737,12 @@
    "relecture_lead": {
     "lignes_verifiees": 52,
     "accord": 1.0
+   },
+   "relecture_wikitexte": {
+    "colonne": "UR",
+    "moyenne": 44.6,
+    "n": 5,
+    "ecart_points": 0.0
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -2738,8 +2882,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "John Rose",
+    "moyenne": 19.67,
+    "n": 3,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0xafda84d1726c745016d74267018b34884919eb989a399a46bdd3a4968e4a6f4f": {
    "election": "2026 Minnesota Governor Democratic primary",
@@ -2780,7 +2930,7 @@
      "page refusée"
     ],
     [
-     "2026 local electoral calendar",
+     "2026 Brazilian general election",
      "page refusée"
     ]
    ]
@@ -2862,8 +3012,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Mike Lindell",
+    "moyenne": 23.4,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0xbca3d70ec52a5a441ccc365a3b1b48b9cd0f08dfff4bc5871e2cd92d0d92caa1": {
    "election": "2026 Brazilian presidential election",
@@ -2909,6 +3065,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Caiado PSD",
+    "moyenne": 4.94,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -2916,7 +3078,7 @@
     "moyenne": 4.76,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": -0.18
+    "non_comparable": "derniers sondages à 44 jours d'écart"
    },
    "alertes": [],
    "verification": "confirme_lead"
@@ -2955,8 +3117,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Larry Rhoden",
+    "moyenne": 20.67,
+    "n": 3,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0xc0986d59c913ffbf40a94966e77829ecffe3e0e5bb287713bce5715841409031": {
    "election": "2026 Swedish parliamentary election",
@@ -3007,7 +3175,7 @@
      "page refusée"
     ],
     [
-     "2026 Santa Catarina general election",
+     "2026 Paraná gubernatorial election",
      "page refusée"
     ],
     [
@@ -3114,6 +3282,12 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "NP",
+    "moyenne": 2.6,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -3161,6 +3335,12 @@
     "lignes_verifiees": 74,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Santos Mission",
+    "moyenne": 4.58,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -3168,10 +3348,10 @@
     "moyenne": 7.7,
     "n": 5,
     "dernier": "2026-06-30",
-    "ecart_points": 3.12
+    "non_comparable": "derniers sondages à 15 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0xd25c820d3aee1c735c0fa62c36f4905632ab8c6988653b5b4134593b3209eb7f": {
    "election": "2026 Minnesota Governor Republican primary",
@@ -3202,10 +3382,16 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Lisa Demuth",
+    "moyenne": 19.0,
+    "n": 1,
+    "ecart_points": 0.0
+   },
    "alertes": [
     "un seul sondage pour le sujet"
    ],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0xd7391798f941b8fe16773f96397ef3f91a2fc36939bdd50a78776dbf93ddd280": {
    "election": "2026 Brazilian presidential election",
@@ -3305,6 +3491,12 @@
     "lignes_verifiees": 52,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "UR",
+    "moyenne": 41.6,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -3377,6 +3569,12 @@
     "lignes_verifiees": 21,
     "accord": 0.905
    },
+   "relecture_wikitexte": {
+    "colonne": "CPRF",
+    "moyenne": 15.92,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "alertes": [],
    "verification": "confirme_lead"
   },
@@ -3418,6 +3616,12 @@
    "relecture_lead": {
     "lignes_verifiees": 9,
     "accord": 1.0
+   },
+   "relecture_wikitexte": {
+    "colonne": "Lula PT",
+    "moyenne": 38.68,
+    "n": 5,
+    "ecart_points": 4.48
    },
    "seconde_source": {
     "langue": "pt",
@@ -3563,6 +3767,12 @@
     "lignes_verifiees": 54,
     "accord": 1.0
    },
+   "relecture_wikitexte": {
+    "colonne": "Lula PT",
+    "moyenne": 40.68,
+    "n": 5,
+    "ecart_points": 0.0
+   },
    "seconde_source": {
     "langue": "pt",
     "page": "Pesquisas de opinião para a eleição presidencial no Brasil em 2026",
@@ -3570,10 +3780,10 @@
     "moyenne": 46.87,
     "n": 3,
     "dernier": "2026-06-30",
-    "ecart_points": 6.19
+    "non_comparable": "derniers sondages à 86 jours d'écart"
    },
    "alertes": [],
-   "verification": "desaccord"
+   "verification": "confirme_lead"
   },
   "polymarket:0xfa7a559ac626ee079bd1a58b78a9c32fc9c1d3129e72f7f28b7209b2368a54c1": {
    "election": "Republican Primary",
@@ -3592,11 +3802,11 @@
      "page refusée"
     ],
     [
-     "Nationwide opinion polling for the 2016 Republican Party presidential primaries",
+     "Opinion polling for the 2020 Republican Party presidential primaries",
      "page refusée"
     ],
     [
-     "Opinion polling for the next Italian general election",
+     "Nationwide opinion polling for the 2008 Republican Party presidential primaries",
      "page refusée"
     ],
     [
@@ -3659,8 +3869,14 @@
     "lignes_verifiees": 0,
     "accord": null
    },
+   "relecture_wikitexte": {
+    "colonne": "Robert Charles",
+    "moyenne": 38.5,
+    "n": 4,
+    "ecart_points": 0.0
+   },
    "alertes": [],
-   "verification": "non_verifie"
+   "verification": "confirme_wikitexte"
   },
   "polymarket:0xfcde02af15efe40e336d67f0ef9aa49e9d40c37b92961fb890afc4afdbfe54d6": {
    "election": "next Hungarian parliamentary election",
