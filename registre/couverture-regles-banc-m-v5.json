@@ -4,37 +4,37 @@
  "ensemble": "banc_m",
  "regles_au_catalogue": 53,
  "questions": 119,
- "couvertes": 35,
+ "couvertes": 36,
  "erreurs": 0,
- "cout_usd": 0.477,
+ "cout_usd": 0.459,
  "rejets_par_motif": {
-  "objet mal recopié": 3
+  "objet mal recopié": 1
  },
  "par_regle": {
-  "presidentielles_mode_de_scrutin": 3,
-  "coupe_du_monde_vainqueurs_hotes": 3,
+  "presidentielles_mode_de_scrutin": 4,
+  "usmca_revision_conjointe": 3,
+  "us_inculpation_personnalites": 2,
   "us_cour_supreme_calendrier": 2,
+  "coupe_du_monde_vainqueurs_hotes": 2,
   "coups_d_etat_frequence": 2,
-  "calendriers_annonces_glissent": 2,
-  "effet_d_echeance_negociation": 2,
-  "usmca_revision_conjointe": 1,
-  "us_inculpation_personnalites": 1,
+  "referendums_retour_statu_quo": 2,
+  "anciens_dirigeants_sort": 1,
   "seuils_parlements_nationaux_europe": 1,
   "europe_formation_gouvernement": 1,
   "us_chambre_sanctions_disciplinaires": 1,
   "us_sanctions_frequence": 1,
   "us_lois_de_finances_provisoires": 1,
   "us_entourage_rotation": 1,
+  "bolides_frequence": 1,
   "us_reconciliation_budgetaire": 1,
   "opep_departs": 1,
   "royaume_uni_niveau_menace": 1,
-  "papes_voyages": 1,
   "sommets_etats_unis_russie": 1,
-  "referendums_retour_statu_quo": 1,
   "us_fed_calendrier": 1,
   "us_ouragans_atterrissage": 1,
   "records_temperature_persistance": 1,
   "coree_du_nord_essais_nucleaires": 1,
+  "calendriers_annonces_glissent": 1,
   "dow_jones_changements": 1,
   "royal_mail_hausses_tarifs": 1,
   "schengen_controles_interieurs": 1
@@ -45,8 +45,8 @@
    "titre": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
    "issue": 1,
    "jeu": "2026-08-02",
-   "etat_de_depart": "Le président Luiz Inacio Lula da Silva est en fonction et une élection présidentielle brésilienne est prévue en octobre 2026.",
-   "evenement": "L'événement est la réélection de Luiz Inacio Lula da Silva comme président du Brésil en octobre 2026.",
+   "etat_de_depart": "Le président Luiz Inácio Lula da Silva est en fonction et une élection présidentielle brésilienne est prévue en octobre 2026.",
+   "evenement": "Réélection de Luiz Inácio Lula da Silva à la présidence du Brésil lors de l'élection d'octobre 2026.",
    "pays": [
     "Brésil"
    ],
@@ -64,8 +64,8 @@
    "titre": "Will the USMCA be extended promptly at its July 2026 joint review?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "L'accord USMCA est en vigueur et la révision conjointe prévue en juillet 2026 est imminente.",
-   "evenement": "La question porte sur la prolongation rapide (extension prompte) de l'accord USMCA lors de la révision conjointe de juillet 2026.",
+   "etat_de_depart": "L'accord USMCA est en vigueur et arrive à sa révision conjointe prévue en juillet 2026.",
+   "evenement": "Prolongation de l'accord États-Unis–Mexique–Canada (USMCA) lors de la révision conjointe de juillet 2026.",
    "pays": [
     "États-Unis",
     "Canada",
@@ -88,14 +88,10 @@
    "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "La question porte sur la capitalisation boursière combinée actuelle des stablecoins USDT (Tether) et USDC (Circle) au moment où elle est posée.",
-   "evenement": "L'événement est que la capitalisation boursière combinée de USDT et USDC dépassera 300 milliards USD au plus tard le 30 juin 2026.",
-   "pays": [
-    "États-Unis"
-   ],
-   "regions": [
-    "amerique_du_nord"
-   ],
+   "etat_de_depart": "La capitalisation boursière combinée actuelle des stablecoins USDT et USDC au moment où la question est posée.",
+   "evenement": "La capitalisation boursière combinée de USDT et USDC dépasserait 300 milliards USD au plus tard le 30 juin 2026.",
+   "pays": [],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -105,8 +101,8 @@
    "titre": "Will  an attempt be made to fire Jerome Powell before the end of his term?",
    "issue": 0,
    "jeu": "2026-02-01",
-   "etat_de_depart": "Jerome Powell est actuellement le président de la Réserve fédérale des États-Unis et il occupe un mandat en cours.",
-   "evenement": "Une tentative de le démettre de ses fonctions (le licencier) avant la fin de son mandat.",
+   "etat_de_depart": "Jerome Powell est actuellement président (chair) de la Réserve fédérale des États-Unis et il occupe un mandat qui n'est pas encore arrivé à expiration.",
+   "evenement": "Qu'une tentative soit faite pour renvoyer (licencier) Jerome Powell avant la fin de son mandat en tant que président de la Réserve fédérale.",
    "pays": [
     "États-Unis"
    ],
@@ -122,9 +118,11 @@
    "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
    "issue": 0,
    "jeu": "2026-04-12",
-   "etat_de_depart": "Un cessez-le-feu entre les États-Unis et les Houthis du Yémen, médié par Oman, est en vigueur au moment où la question est posée.",
-   "evenement": "Le cessez-le-feu entre les États-Unis et les Houthis du Yémen sera rompu avant juin 2026.",
-   "pays": [],
+   "etat_de_depart": "Un cessez-le-feu entre les États-Unis et les Houthis du Yémen, médié par Oman, est en place au moment où la question est posée.",
+   "evenement": "La rupture de ce cessez-le-feu avant juin 2026.",
+   "pays": [
+    "États-Unis"
+   ],
    "regions": [
     "amerique_du_nord",
     "moyen_orient"
@@ -138,8 +136,8 @@
    "titre": "Will the US government file a denaturalization lawsuit against Elon Musk before July 1, 2026?",
    "issue": 0,
    "jeu": "2026-06-07",
-   "etat_de_depart": "Au moment où la question est posée, Elon Musk est citoyen américain naturalisé.",
-   "evenement": "Le gouvernement des États-Unis dépose une action en dénaturalisation contre Elon Musk avant le 1er juillet 2026.",
+   "etat_de_depart": "Au moment où la question est posée, Elon Musk est une personne de nationalité américaine et aucune action publique de dénaturalisation fédérale contre lui n'a été annoncée.",
+   "evenement": "L'événement est que le gouvernement des États-Unis dépose une plainte fédérale visant à dénaturaliser Elon Musk avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -155,8 +153,8 @@
    "titre": "Will Barack Obama be arrested before July 2026?",
    "issue": 0,
    "jeu": "2026-01-04",
-   "etat_de_depart": "Barack Obama est un ancien président des États-Unis qui, au moment où la question est posée, n'est pas publiquement inculpé ni détenu.",
-   "evenement": "L'arrestation de Barack Obama avant juillet 2026.",
+   "etat_de_depart": "Barack Obama est un ancien responsable public américain (ancien président) et n'est pas inculpé au moment où la question est posée.",
+   "evenement": "L'événement prédit est l'inculpation ou l'arrestation de Barack Obama (ancien responsable public américain) avant juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -164,12 +162,15 @@
     "amerique_du_nord"
    ],
    "regles": [
-    "us_inculpation_personnalites"
+    "us_inculpation_personnalites",
+    "anciens_dirigeants_sort"
    ],
    "rejets": [],
    "compartiments": [
+    "humain:hierarchie",
     "politique-americaine:executif",
-    "politique-americaine:tribunaux"
+    "politique-americaine:tribunaux",
+    "securite-publique:justice"
    ]
   },
   {
@@ -177,9 +178,11 @@
    "titre": "Will over 2/3 of EU member states recognize Palestinian statehood before July 2026?",
    "issue": 0,
    "jeu": "2026-06-07",
-   "etat_de_depart": "La question porte sur l'éventuelle reconnaissance d'un État palestinien par les États membres de l'Union européenne avant juillet 2026.",
-   "evenement": "L'événement est que plus des deux tiers des États membres de l'UE reconnaissent formellement la Palestine avant juillet 2026.",
-   "pays": [],
+   "etat_de_depart": "Au moment de la question, la reconnaissance d'un État est une décision prise individuellement par les gouvernements des États membres de l'Union européenne (pas d'acte unique de l'UE qui les engage tous).",
+   "evenement": "Que plus des deux tiers des États membres de l'Union européenne reconnaissent la Palestine comme État avant juillet 2026.",
+   "pays": [
+    "France"
+   ],
    "regions": [
     "europe"
    ],
@@ -192,8 +195,8 @@
    "titre": "Before July 1, 2026, will the U.S. Supreme Court agree to hear a case that could end the constitutional right to same-sex marriage?",
    "issue": 0,
    "jeu": "2026-04-12",
-   "etat_de_depart": "Il y a une affaire ou un pourvoi pendant devant la Cour suprême américaine.",
-   "evenement": "L'événement est que la Cour suprême américaine accepte de connaître un pourvoi qui pourrait mettre fin au droit constitutionnel au mariage entre personnes de même sexe.",
+   "etat_de_depart": "Il existe une affaire ou un pourvoi potentiel concernant le droit constitutionnel au mariage homosexuel qui n'a pas encore été accepté par la Cour suprême des États-Unis.",
+   "evenement": "La Cour suprême des États-Unis acceptera (accordera l'audience à) un pourvoi qui pourrait mettre fin au droit constitutionnel au mariage homosexuel avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -214,8 +217,8 @@
    "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "À la date de la question, il n'y a pas d'annonce publique confirmant qu'un sommet trilatéral réunissant la Russie, l'Inde et la Chine se tiendra avant le 1er septembre 2026.",
-   "evenement": "Tenue d'une réunion trilatérale en personne entre la Russie, l'Inde et la Chine avant le 1er septembre 2026.",
+   "etat_de_depart": "La question porte sur la possibilité qu'un sommet trilatéral réunissant la Russie, l'Inde et la Chine ait lieu avant le 1er septembre 2026.",
+   "evenement": "Tenue d'une réunion trilatérale (trois pays) entre la Russie, l'Inde et la Chine avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "asie"
@@ -229,12 +232,10 @@
    "titre": "Will Israel participate in the Eurovision Song Contest 2026?",
    "issue": 1,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Au moment de la question, il est incertain si Israël participera au Concours Eurovision de la Chanson 2026.",
-   "evenement": "L'événement est la participation d'Israël au Concours Eurovision de la Chanson 2026.",
+   "etat_de_depart": "Au moment où la question est posée, Israël est membre de l'Union européenne de radio-télévision (UER) et a participé régulièrement au Concours Eurovision de la chanson ces dernières années.",
+   "evenement": "La participation d'Israël au Concours Eurovision de la chanson 2026, c'est-à-dire l'envoi d'un représentant officiel et la présence du pays à la compétition en 2026.",
    "pays": [],
-   "regions": [
-    "moyen_orient"
-   ],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -244,8 +245,8 @@
    "titre": "Will any political party or coalition acquire a supermajority in the 2026 Hungarian parliamentary elections?",
    "issue": 1,
    "jeu": "2026-03-15",
-   "etat_de_depart": "Des élections législatives hongroises sont prévues en 2026.",
-   "evenement": "Un parti politique ou une coalition obtienne une supermajorité de sièges au Parlement hongrois à l'issue de ces élections.",
+   "etat_de_depart": "Élections parlementaires hongroises prévues en 2026.",
+   "evenement": "Acquisition par un parti politique ou une coalition d'une supermajorité au Parlement hongrois lors des élections de 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -261,8 +262,8 @@
    "titre": "Will any coding tool introduce an integration with brain-computer interface technology before November 2026?",
    "issue": 0,
    "jeu": "2026-04-12",
-   "etat_de_depart": "Au moment où la question est posée, il existe des outils de programmation (coding tools) actuels et en développement, et l'horizon temporel considéré s'étend jusqu'à novembre 2026.",
-   "evenement": "L'événement à prévoir est qu'un outil de programmation introduise une intégration avec une technologie d'interface cerveau-ordinateur (brain-computer interface) avant novembre 2026.",
+   "etat_de_depart": "Au moment de la question, il existe des outils de codage (éditeurs, IDE, bibliothèques) et des recherches et prototypes d'interfaces cerveau‑machine (BCI), mais il n'y a pas d'intégration BCI généralisée et largement déployée dans les outils de programmation commerciaux.",
+   "evenement": "Un outil de codage (éditeur, IDE ou bibliothèque de développement) introduira avant novembre 2026 une intégration avec une technologie d'interface cerveau‑machine (BCI).",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -274,8 +275,8 @@
    "titre": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he become Prime Minister?",
    "issue": 0,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Viktor Orbán est le chef d'un parti qui se présente aux élections législatives hongroises de 2026.",
-   "evenement": "Viktor Orbán devient Premier ministre de Hongrie à l'issue des élections de 2026.",
+   "etat_de_depart": "Viktor Orbán dirige un parti pour l'élection législative hongroise de 2026.",
+   "evenement": "Qu'il devienne Premier ministre à l'issue de ces élections.",
    "pays": [],
    "regions": [
     "europe"
@@ -291,8 +292,8 @@
    "titre": "Will Jerome Powell cease to be Chair of the Federal Reserve Board of Governors before his term is up?",
    "issue": 0,
    "jeu": "2026-04-26",
-   "etat_de_depart": "Jerome Powell est actuellement Chair (président) du Board of Governors de la Réserve fédérale des États-Unis et occupe un mandat dont la date de fin est fixée.",
-   "evenement": "Qu'il cesse d'être Chair de la Réserve fédérale avant la fin de ce mandat (par démission, révocation, incapacité ou autre départ anticipé).",
+   "etat_de_depart": "Jerome Powell est actuellement Chair (président) du Board of Governors de la Réserve fédérale des États-Unis.",
+   "evenement": "Il cesse d'être Chair de la Réserve fédérale avant la fin de son mandat.",
    "pays": [
     "États-Unis"
    ],
@@ -308,8 +309,8 @@
    "titre": "Will the United States, Russia or China detonate a nuclear device before April 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "Au moment où la question est posée, il n'y a pas d'annonce publique confirmant qu'un essai nucléaire des États-Unis, de la Russie ou de la Chine ait déjà eu lieu pour la période visée.",
-   "evenement": "Détonation d'un dispositif nucléaire par les États-Unis, la Russie ou la Chine avant le 1er avril 2026.",
+   "etat_de_depart": "La question porte sur la possibilité que les États-Unis, la Russie ou la Chine procèdent à la détonation d'un engin nucléaire avant le 1er avril 2026.",
+   "evenement": "La survenue, avant le 1er avril 2026, d'une détonation d'un dispositif nucléaire par l'un des trois pays mentionnés.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -321,8 +322,8 @@
    "titre": "Will Tesla discontinue the Cybertruck before April 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "Au moment où la question est posée, le Cybertruck est un modèle de véhicule associé à Tesla, existant et proposé par l'entreprise.",
-   "evenement": "L'événement est que Tesla discontinue (cesse la production ou la commercialisation du) Cybertruck avant le 1er avril 2026.",
+   "etat_de_depart": "Au moment de la question, le Cybertruck est un modèle de Tesla en production ou prévu pour production.",
+   "evenement": "La question porte sur l'abandon (discontinuité) du Cybertruck par Tesla avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -338,8 +339,8 @@
    "titre": "Will the US House of Representatives censure, expel or reprimand any of its members before April 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "La Chambre des représentants des États-Unis compte des membres en fonction au moment où la question est posée.",
-   "evenement": "La question porte sur la possibilité qu'au moins un membre soit censuré, expulsé ou réprimandé avant le 1er avril 2026.",
+   "etat_de_depart": "Au moment où la question est posée, des membres de la Chambre des représentants des États-Unis sont en fonction.",
+   "evenement": "La question porte sur la censure, l'expulsion ou la réprimande d'un ou plusieurs membres de la Chambre des représentants des États-Unis avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -359,8 +360,8 @@
    "titre": "Will Arizona Senator Mark Kelly, who urged troops to defy \"illegal\" orders, be recalled to active duty in the US military before April 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "Au moment de la question, Mark Kelly est sénateur de l'Arizona, élu américain en fonction ayant publiquement appelé les soldats à désobéir à des ordres qu'il qualifie d'« illégaux ».",
-   "evenement": "L'événement est qu'il soit rappelé au service actif dans les forces armées des États-Unis avant le 1er avril 2026.",
+   "etat_de_depart": "Mark Kelly est sénateur de l'Arizona et a récemment exhorté des militaires à défier des ordres qu'il a qualifiés d'« illégaux ».",
+   "evenement": "Qu'il soit rappelé au service actif dans l'armée américaine avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -376,8 +377,8 @@
    "titre": "Will Israel pass the Penal Bill (Death Penalty for Terrorists amendment) into law before April 2026?",
    "issue": 1,
    "jeu": "2026-03-01",
-   "etat_de_depart": "Un projet de loi pénale visant à introduire la peine de mort pour les terroristes est en discussion au Parlement israélien (Knesset) avant avril 2026.",
-   "evenement": "L'événement est l'adoption définitive et la promulgation de ce projet de loi par le Parlement israélien avant avril 2026.",
+   "etat_de_depart": "Le projet de loi pénale israélien modifiant le code pour autoriser la peine de mort contre les terroristes est en discussion au moment où la question est posée.",
+   "evenement": "Que l'amendement prévoyant la peine de mort pour les terroristes soit adopté et promulgué en loi en Israël avant avril 2026.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -391,8 +392,8 @@
    "titre": "Will the number of manufacturing jobs in the US for February 2026 be above 12.7 million?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "Nous sommes avant la publication des chiffres d'emploi manufacturier des États-Unis pour février 2026.",
-   "evenement": "Le nombre d'emplois manufacturiers aux États-Unis en février 2026 sera supérieur à 12,7 millions.",
+   "etat_de_depart": "La situation de départ est le nombre d'emplois manufacturiers aux États-Unis tel qu'il est observé pour ou avant février 2026.",
+   "evenement": "L'événement à prévoir est que le nombre d'emplois manufacturiers aux États-Unis en février 2026 soit supérieur à 12,7 millions.",
    "pays": [
     "États-Unis"
    ],
@@ -408,8 +409,8 @@
    "titre": "Will California Emissions Reporting Laws SB 253 and SB 261 Be In Effect on September 1, 2026?",
    "issue": 0,
    "jeu": "2026-06-21",
-   "etat_de_depart": "SB 253 et SB 261 sont des lois californiennes qui établissent des obligations de déclaration des émissions au moment où la question est posée.",
-   "evenement": "L'événement prédit est que ces lois seront en vigueur (applicables) le 1er septembre 2026.",
+   "etat_de_depart": "La Californie a adopté les lois SB 253 et SB 261 qui instituent des obligations de déclaration des émissions ; la question porte sur leur statut d'entrée en vigueur à une date future donnée.",
+   "evenement": "L'événement est que les lois SB 253 et SB 261 soient effectivement en vigueur en Californie le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -425,8 +426,8 @@
    "titre": "Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
    "issue": 0,
    "jeu": "2026-03-29",
-   "etat_de_depart": "La phase finale de la Coupe du monde de la FIFA 2026 est à venir ou en cours, avec ses équipes qualifiées.",
-   "evenement": "L'événement est que le vainqueur de la Coupe du monde 2026 soit un pays qui n'a jamais gagné auparavant.",
+   "etat_de_depart": "La phase finale de la Coupe du monde de football 2026 est à venir ou en cours, avec ses équipes qualifiées.",
+   "evenement": "Que le vainqueur de la Coupe du monde 2026 soit un pays qui n'a jamais gagné auparavant.",
    "pays": [
     "États-Unis",
     "Canada",
@@ -449,8 +450,8 @@
    "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before July 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Anthropic est une société privée basée aux États-Unis qui, au moment de la question, n'a pas déposé de déclaration d'enregistrement initiale (S-1) auprès de la SEC.",
-   "evenement": "Dépôt par Anthropic d'une déclaration d'enregistrement initiale (formulaire S-1) auprès de la SEC en vue d'une introduction en bourse avant le 1er juillet 2026.",
+   "etat_de_depart": "Au moment où la question est posée, Anthropic est une société privée basée aux États-Unis envisagée comme candidate possible à une introduction en bourse.",
+   "evenement": "Dépôt par Anthropic d'un formulaire d'enregistrement initial (S-1) auprès de la SEC pour lancer une offre publique initiale (IPO) avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -466,8 +467,8 @@
    "titre": "Will Bitcoin reach a new all-time high price before October 6, 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "La question porte sur la probabilité que le prix du Bitcoin atteigne un nouveau sommet historique avant le 6 octobre 2026.",
-   "evenement": "L'événement est que le prix du Bitcoin atteigne un nouveau record historique (un prix supérieur à l'ancien record) à une date antérieure au 6 octobre 2026.",
+   "etat_de_depart": "La question prend pour point de départ la situation actuelle du marché du Bitcoin et se focalise sur la période allant jusqu'au 6 octobre 2026.",
+   "evenement": "L'événement à prévoir est que le prix du Bitcoin atteigne un nouveau sommet historique (nouveau all‑time high) avant le 6 octobre 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -479,8 +480,8 @@
    "titre": "Will the United States impose additional sanctions on Russia related to the Ukraine war before March 14, 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "Un programme de sanctions du Trésor américain en vigueur visant la Russie en lien avec la guerre en Ukraine est en place au moment où la question est posée.",
-   "evenement": "L'événement est l'imposition par les États-Unis de nouvelles sanctions (nouvelles désignations OFAC) contre la Russie liées à la guerre en Ukraine avant le 14 mars 2026.",
+   "etat_de_depart": "Le programme de sanctions du Trésor américain est en vigueur au moment où la question est posée.",
+   "evenement": "De nouvelles désignations de sanctions par le Trésor américain (OFAC) visant la Russie en lien avec la guerre en Ukraine avant le 14 mars 2026.",
    "pays": [
     "États-Unis",
     "Russie"
@@ -502,10 +503,12 @@
    "titre": "Will any NVIDIA GPUs better than the H200 be allowed to be exported to China before March 14, 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "Au moment où la question est posée, des contrôles à l'exportation visant certains processeurs graphiques avancés entre les États-Unis (et parfois leurs alliés) et la Chine sont en vigueur.",
-   "evenement": "Savoir si des GPU NVIDIA plus performants que le H200 seront autorisés à être exportés vers la Chine avant le 14 mars 2026.",
+   "etat_de_depart": "Des restrictions d'exportation concernant les GPU NVIDIA vers la Chine sont en vigueur au moment où la question est posée.",
+   "evenement": "Que des GPU NVIDIA supérieurs à la H200 soient autorisés à être exportés vers la Chine avant le 14 mars 2026.",
    "pays": [],
-   "regions": [],
+   "regions": [
+    "asie"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -515,8 +518,8 @@
    "titre": "Will there be at least one podium sweep at the 2026 Winter Olympic Games?",
    "issue": 1,
    "jeu": "2026-02-01",
-   "etat_de_depart": "Les Jeux olympiques d'hiver 2026 sont programmés et à venir.",
-   "evenement": "Qu'il y ait au moins un podium aux Jeux olympiques d'hiver 2026 entièrement occupé par des athlètes d'un même pays (un 'podium sweep').",
+   "etat_de_depart": "Les Jeux olympiques d'hiver de 2026 (Milan‑Cortina) vont avoir lieu et la question porte sur ce qui se passera pendant ces Jeux.",
+   "evenement": "La question porte sur la survenue d'au moins un podium sweep (les trois médailles d'une même épreuve remportées par des athlètes d'un même pays) aux Jeux olympiques d'hiver de 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -530,8 +533,8 @@
    "titre": "Will the U.S. Supreme Court's decision in Louisiana v. Callais hold that race-conscious districting is unconstitutional?",
    "issue": 0,
    "jeu": "2026-04-26",
-   "etat_de_depart": "Une affaire intitulée Louisiana v. Callais est pendante devant la Cour suprême des États-Unis.",
-   "evenement": "La décision de la Cour suprême dans Louisiana v. Callais statuera que le redécoupage fondé sur la race est inconstitutionnel.",
+   "etat_de_depart": "L'affaire Louisiana v. Callais est pendante devant la Cour suprême des États-Unis.",
+   "evenement": "La décision de la Cour suprême des États-Unis sur la constitutionnalité du redécoupage tenant compte de la race.",
    "pays": [
     "États-Unis"
    ],
@@ -552,11 +555,12 @@
    "titre": "Will the United States intervene militarily in Venezuela again before May 2026?",
    "issue": 0,
    "jeu": "2026-04-12",
-   "etat_de_depart": "La question porte sur la possibilité d'une nouvelle intervention militaire des États-Unis au Venezuela avant mai 2026.",
-   "evenement": "L'événement demandé est qu'une intervention militaire américaine au Venezuela ait lieu à nouveau avant mai 2026.",
-   "pays": [],
+   "etat_de_depart": "Au moment où la question est posée, il n'y a pas d'intervention militaire américaine en cours au Venezuela.",
+   "evenement": "L'événement est une nouvelle intervention militaire des États-Unis au Venezuela qui aurait lieu avant mai 2026.",
+   "pays": [
+    "États-Unis"
+   ],
    "regions": [
-    "amerique_du_nord",
     "amerique_latine"
    ],
    "regles": [],
@@ -568,8 +572,8 @@
    "titre": "Will Venezuela announce a presidential election before April 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "Au moment de la question, nous sommes avant le 1er avril 2026 et il n'y a pas d'annonce publique confirmant une élection présidentielle vénézuélienne prévue avant cette date.",
-   "evenement": "Annonce officielle par le gouvernement ou l'autorité électorale du Venezuela d'une élection présidentielle à se tenir avant le 1er avril 2026.",
+   "etat_de_depart": "Au moment où la question est posée, il n'y a pas d'élection présidentielle du Venezuela annoncée pour une date antérieure au 1er avril 2026.",
+   "evenement": "Annonce par le Venezuela d'une élection présidentielle programmée avant le 1er avril 2026.",
    "pays": [],
    "regions": [
     "amerique_latine"
@@ -583,8 +587,8 @@
    "titre": "Will the Community beat Nathan Young in the Metaculus Cup Spring 2026?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "Le tournoi Metaculus Cup Spring 2026 est à venir ou en cours, avec la Communauté et Nathan Young comme concurrents.",
-   "evenement": "La Communauté battra Nathan Young dans la Metaculus Cup Spring 2026.",
+   "etat_de_depart": "La Metaculus Cup Spring 2026 est une compétition de prédiction en cours ou à venir au moment où la question est posée.",
+   "evenement": "La question porte sur la probabilité que la Communauté (Community) devance Nathan Young dans le classement final de la Metaculus Cup Spring 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -596,8 +600,8 @@
    "titre": "Will the U.S. Congress still be operating under a continuing resolution (CR) on March 15, 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "L'exercice budgétaire fédéral américain en cours n'a pas encore adopté toutes les lois de crédits annuelles.",
-   "evenement": "L'événement est que le Congrès américain fonctionne encore sous une loi de finances provisoire (continuing resolution) le 15 mars 2026.",
+   "etat_de_depart": "L'exercice budgétaire fédéral américain est en cours sans que les lois de crédits annuelles aient été adoptées.",
+   "evenement": "Le Congrès voterait ou non une loi de finances provisoire (continuing resolution) ou mènerait à une fermeture du gouvernement fédéral américain à la date donnée.",
    "pays": [
     "États-Unis"
    ],
@@ -619,8 +623,8 @@
    "titre": "Before May 1, 2026, will the United States offer to purchase Greenland from Denmark?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "Au moment de la question, le Groenland est un territoire autonome du Royaume du Danemark et il n'y a pas d'annonce publique connue d'une offre d'achat américaine.",
-   "evenement": "Que les États-Unis fassent une offre pour racheter le Groenland au Danemark avant le 1er mai 2026.",
+   "etat_de_depart": "Nous sommes avant le 1er mai 2026 et la question porte sur la possibilité qu'un État (les États-Unis) propose d'acheter un territoire (le Groenland) appartenant à un autre État (le Danemark).",
+   "evenement": "L'événement considéré est qu'avant le 1er mai 2026 les États-Unis fassent une offre formelle d'achat du Groenland au gouvernement danois.",
    "pays": [],
    "regions": [
     "amerique_du_nord",
@@ -635,10 +639,18 @@
    "titre": "Will the North Atlantic sea surface temperature reach a daily record high before May 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "La question porte sur l'évolution de la série temporelle des températures de surface de la mer dans la région de l'Atlantique Nord telle qu'elle existe au moment où la question est posée.",
-   "evenement": "Que la température de surface de la mer dans l'Atlantique Nord atteigne un record journalier (un nouveau maximum pour un jour donné) avant mai 2026.",
-   "pays": [],
-   "regions": [],
+   "etat_de_depart": "La question porte sur l'évolution de la température de surface de la mer dans l'Atlantique Nord au moment où elle est posée, sans présupposer qu'une série de températures est proche de son record.",
+   "evenement": "L'événement est que la température de surface quotidienne de la mer dans l'Atlantique Nord atteigne un nouveau record journalier avant mai 2026.",
+   "pays": [
+    "États-Unis",
+    "Canada",
+    "Royaume-Uni",
+    "France"
+   ],
+   "regions": [
+    "amerique_du_nord",
+    "europe"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -648,8 +660,8 @@
    "titre": "Will Sudan's Emergency Response Rooms win the Nobel Peace Prize in 2026?",
    "issue": 0,
    "jeu": "2026-08-30",
-   "etat_de_depart": "Les Emergency Response Rooms du Soudan existent et sont actives au moment où la question est posée.",
-   "evenement": "Que les Emergency Response Rooms du Soudan reçoivent le prix Nobel de la paix en 2026.",
+   "etat_de_depart": "Nous sommes avant l'annonce du Prix Nobel de la paix 2026 et les \"Emergency Response Rooms\" du Soudan sont proposées ou potentiellement éligibles.",
+   "evenement": "L'événement est que les \"Emergency Response Rooms\" du Soudan remportent le Prix Nobel de la paix 2026.",
    "pays": [],
    "regions": [
     "afrique"
@@ -663,8 +675,8 @@
    "titre": "Will Jonathan Ross be indicted or charged in the death of Renee Good before July 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "Jonathan Ross est nommé comme possible personne mise en examen ou poursuivie dans une enquête sur le décès de Renee Good, et la question porte sur l'existence d'une inculpation ou d'une mise en accusation avant le 1er juillet 2026.",
-   "evenement": "Que Jonathan Ross soit inculpé ou formellement poursuivi (charged/indicted) pour la mort de Renee Good avant le 1er juillet 2026.",
+   "etat_de_depart": "Au moment où la question est posée, la situation examinée est la possibilité d'une inculpation ou d'une mise en accusation de Jonathan Ross pour la mort de Renee Good.",
+   "evenement": "L'événement à prédire est que Jonathan Ross soit inculpé ou accusé dans la mort de Renee Good avant le 1er juillet 2026.",
    "pays": [
     "Royaume-Uni"
    ],
@@ -680,12 +692,14 @@
    "titre": "Will Wagner Moura win the Academy Award for Best Actor at the 2026 Academy Awards?",
    "issue": 0,
    "jeu": "2026-02-15",
-   "etat_de_depart": "La cérémonie des Academy Awards 2026 n'a pas encore eu lieu et la question porte sur l'attribution du prix du Meilleur Acteur.",
-   "evenement": "Que Wagner Moura remporte l'Oscar du Meilleur Acteur aux Academy Awards 2026.",
+   "etat_de_depart": "La cérémonie des Academy Awards 2026 n'a pas encore eu lieu et la question porte sur l'attribution du prix du meilleur acteur.",
+   "evenement": "Que Wagner Moura remporte l'Academy Award du meilleur acteur lors des Academy Awards 2026.",
    "pays": [
+    "Brésil",
     "États-Unis"
    ],
    "regions": [
+    "amerique_latine",
     "amerique_du_nord"
    ],
    "regles": [],
@@ -697,8 +711,8 @@
    "titre": "Will Iran's Internet not be \"heavily filtered/whitelisted\" for most users before May 2026?",
    "issue": 0,
    "jeu": "2026-03-01",
-   "etat_de_depart": "La question prend pour point de départ la situation actuelle d'accès à Internet en Iran, où des mesures de filtrage et de mise en liste blanche sont appliquées à certains services et utilisateurs.",
-   "evenement": "L'événement considéré est que, avant mai 2026, l'Internet iranien ne soit pas fortement filtré/placé en liste blanche pour la majorité des utilisateurs.",
+   "etat_de_depart": "Actuellement, l'accès à Internet en Iran est largement contrôlé par l'État, avec des épisodes de filtrage massif et l'usage de listes blanches pour certains services.",
+   "evenement": "L'événement évalué est que, avant mai 2026, l'Internet en Iran ne soit pas fortement filtré ni limité à des listes blanches pour la majorité des utilisateurs.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -712,8 +726,8 @@
    "titre": "Will the UK increase the qualifying period for settlement to 10 years before May 2026?",
    "issue": 0,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Le Royaume-Uni a en vigueur des règles d'immigration qui définissent une période de résidence requise pour obtenir le settlement (statut de résident permanent) au moment où la question est posée.",
-   "evenement": "La période de résidence requise pour obtenir le settlement au Royaume-Uni est portée à 10 ans avant mai 2026.",
+   "etat_de_depart": "Au moment de la question, le Royaume-Uni n'a pas encore augmenté la période de résidence exigée pour le settlement à 10 ans.",
+   "evenement": "Une augmentation, par le Royaume-Uni, de la période de résidence requise pour obtenir le settlement à 10 ans avant mai 2026.",
    "pays": [
     "Royaume-Uni"
    ],
@@ -729,19 +743,16 @@
    "titre": "Will Keiko Fujimori advance to the runoff in the 2026 Peruvian presidential election?",
    "issue": 1,
    "jeu": "2026-03-29",
-   "etat_de_depart": "La campagne pour l'élection présidentielle péruvienne de 2026 est en cours avant le premier tour.",
-   "evenement": "Keiko Fujimori se qualifie pour le second tour (runoff) de l'élection présidentielle péruvienne de 2026.",
+   "etat_de_depart": "Il s'agit d'une élection présidentielle péruvienne prévue ou en cours.",
+   "evenement": "L'événement est de savoir si un candidat (Keiko Fujimori) se qualifiera pour le second tour, c'est‑à‑dire l'issue d'une élection présidentielle à deux tours.",
    "pays": [],
    "regions": [
     "amerique_latine"
    ],
-   "regles": [],
-   "rejets": [
-    {
-     "id": "presidentielles_mode_de_scrutin",
-     "motif": "objet mal recopié"
-    }
+   "regles": [
+    "presidentielles_mode_de_scrutin"
    ],
+   "rejets": [],
    "compartiments": []
   },
   {
@@ -749,8 +760,8 @@
    "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before April 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-15",
-   "etat_de_depart": "La situation de départ est qu'on se demande si, avant le 1er avril 2026, un modèle d'IA pourra atteindre un score de 95 % ou plus sur le classement GPQA Diamond.",
-   "evenement": "L'événement à prévoir est qu'au moins un modèle d'IA obtienne un score de 95 % ou plus sur le GPQA Diamond Leaderboard avant le 1er avril 2026.",
+   "etat_de_depart": "Un classement public nommé GPQA Diamond Benchmark Leaderboard existe pour mesurer les scores des modèles d'intelligence artificielle, et la date actuelle est antérieure au 1er avril 2026.",
+   "evenement": "Qu'un modèle d'intelligence artificielle obtienne un score de 95 % ou plus sur le GPQA Diamond Benchmark avant le 1er avril 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -762,8 +773,8 @@
    "titre": "Will Cloudflare experience another critical incident before May 2026?",
    "issue": 1,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Au moment où la question est posée, Cloudflare est une entreprise américaine fournissant des services d'infrastructure Internet et de sécurité.",
-   "evenement": "L'événement est la survenue d'un incident critique supplémentaire affectant Cloudflare avant mai 2026.",
+   "etat_de_depart": "Cloudflare est une entreprise d'infrastructure Internet qui a déjà connu des incidents critiques, et la question porte sur la période précédant mai 2026.",
+   "evenement": "La survenue d'un autre incident critique affectant Cloudflare avant mai 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -779,8 +790,8 @@
    "titre": "Will there be a successful coup in Africa or Latin America before May 1, 2026?",
    "issue": 0,
    "jeu": "2026-04-12",
-   "etat_de_depart": "La situation de départ est l'exposition de pays d'Afrique ou d'Amérique latine à des tentatives de coup d'État dans l'horizon menant au 1er mai 2026.",
-   "evenement": "L'événement est la survenue d'une tentative ou d'une réussite d'un coup d'État (en particulier un coup d'État réussi) dans au moins un pays de ces régions avant le 1er mai 2026.",
+   "etat_de_depart": "Au moment où la question est posée, la période d'intérêt court jusqu'au 1er mai 2026 et elle porte sur la survenue d'un coup d'État réussi en Afrique ou en Amérique latine.",
+   "evenement": "La réponse dépend de la réussite d'un coup d'État (tentative aboutissant au changement de pouvoir) dans un pays d'Afrique ou d'Amérique latine avant le 1er mai 2026.",
    "pays": [],
    "regions": [
     "afrique",
@@ -799,8 +810,8 @@
    "titre": "Will Pam Bondi be out as US Attorney General before May 2026?",
    "issue": 1,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Pam Bondi occupe actuellement le poste de procureure générale des États-Unis au moment où la question est posée.",
-   "evenement": "Pam Bondi quittera le poste de procureure générale des États-Unis avant mai 2026.",
+   "etat_de_depart": "Pam Bondi est en fonction en tant qu'Attorney General (ministre de la Justice) des États-Unis au moment où la question est posée.",
+   "evenement": "Pam Bondi ne sera plus en fonction en tant qu'Attorney General des États-Unis avant mai 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -821,10 +832,12 @@
    "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
    "issue": 1,
    "jeu": "2026-04-12",
-   "etat_de_depart": "À la date de la question, il n'y a pas eu de frappe militaire directe de l'Arabie saoudite contre l'Iran.",
-   "evenement": "Qu'une frappe militaire directe menée par l'Arabie saoudite contre l'Iran ait lieu avant le 1er juin 2026.",
+   "etat_de_depart": "Les relations entre l'Arabie saoudite et l'Iran sont marquées par des tensions régionales et des affrontements par procuration au moment où la question est posée.",
+   "evenement": "L'événement en question est la réalisation d'une frappe militaire directe de l'Arabie saoudite contre l'Iran avant le 1er juin 2026.",
    "pays": [],
-   "regions": [],
+   "regions": [
+    "moyen_orient"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -834,8 +847,8 @@
    "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
    "issue": 1,
    "jeu": "2026-04-12",
-   "etat_de_depart": "Au moment où la question est posée, les Émirats arabes unis et l'Iran sont des États souverains et il n'y a pas eu (à cette date) de frappe militaire directe des Émirats arabes unis contre l'Iran.",
-   "evenement": "Une frappe militaire directe conduite par les Émirats arabes unis contre l'Iran avant le 1er juin 2026.",
+   "etat_de_depart": "Au moment où la question est posée, il n'y a pas de frappe militaire directe confirmée des Émirats arabes unis contre l'Iran avant le 1er juin 2026.",
+   "evenement": "Que les Émirats arabes unis réalisent une frappe militaire directe contre l'Iran avant le 1er juin 2026.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -849,12 +862,10 @@
    "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Au moment de la question, Volodymyr Zelenskyy et Vladimir Putin sont en fonction comme présidents de l'Ukraine et de la Russie et ne se sont pas rencontrés en personne récemment.",
-   "evenement": "La tenue d'une rencontre en personne entre Volodymyr Zelenskyy et Vladimir Putin avant le 1er mai 2026.",
+   "etat_de_depart": "Volodymyr Zelenskyy est président de l'Ukraine et Vladimir Putin est président de la Russie, et les deux sont en fonction au moment où la question est posée.",
+   "evenement": "L'événement est de savoir si Volodymyr Zelenskyy et Vladimir Putin se rencontreront en personne avant le 1er mai 2026.",
    "pays": [],
-   "regions": [
-    "europe"
-   ],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -864,8 +875,8 @@
    "titre": "Will Anthropic be a designated supply chain risk on May 1, 2026?",
    "issue": 1,
    "jeu": "2026-04-12",
-   "etat_de_depart": "Au moment où la question est posée, Anthropic est une entreprise d'intelligence artificielle dont le statut de désignation comme « risque pour la chaîne d'approvisionnement » au 1er mai 2026 est incertain.",
-   "evenement": "Anthropic sera officiellement désignée comme un risque pour la chaîne d'approvisionnement le 1er mai 2026.",
+   "etat_de_depart": "Anthropic est une entreprise d'intelligence artificielle basée aux États-Unis dont la possible désignation comme « supply chain risk » est en question pour la date du 1er mai 2026.",
+   "evenement": "La question porte sur l'événement « Anthropic sera désignée officiellement comme risque pour la chaîne d'approvisionnement le 1er mai 2026 ».",
    "pays": [
     "États-Unis"
    ],
@@ -881,25 +892,28 @@
    "titre": "Will a 1kt meteor strike take place during March or April 2026?",
    "issue": 0,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Nous sommes avant mars 2026 et on demande s'il y aura un impact ou une explosion atmosphérique d'un météore d'environ 1 kilotonne pendant mars ou avril 2026.",
-   "evenement": "La survenue, durant mars ou avril 2026, d'un impact ou d'une explosion atmosphérique d'un météore libérant environ 1 kilotonne d'énergie.",
+   "etat_de_depart": "Au moment où la question est posée, des systèmes de surveillance satellitaire enregistrent les explosions de bolides dans l'atmosphère.",
+   "evenement": "La survenue, entre le 1er mars et le 30 avril 2026, d'une explosion atmosphérique d'un bolide d'environ 1 kilotonne d'énergie.",
    "pays": [],
    "regions": [],
-   "regles": [],
+   "regles": [
+    "bolides_frequence"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "soleil-espace:meteorites"
+   ]
   },
   {
    "question": "42542",
    "titre": "Will the U.S. conduct a ground invasion of Iran before May 2026?",
    "issue": 0,
    "jeu": "2026-04-12",
-   "etat_de_depart": "Au moment où la question est posée, les États-Unis n'ont pas lancé d'invasion terrestre en Iran et la question porte sur la possibilité qu'ils en mènent une avant mai 2026.",
-   "evenement": "Les États-Unis lancent une invasion terrestre du territoire iranien avant mai 2026.",
-   "pays": [
-    "États-Unis"
-   ],
+   "etat_de_depart": "Au moment où la question est posée, les États-Unis et l'Iran sont des États souverains en relations hostiles et rien n'indique dans l'énoncé qu'une invasion terrestre américaine contre l'Iran a déjà commencé.",
+   "evenement": "L'événement considéré est que, avant mai 2026, les États-Unis réalisent une invasion terrestre sur le territoire de l'Iran.",
+   "pays": [],
    "regions": [
+    "amerique_du_nord",
     "moyen_orient"
    ],
    "regles": [],
@@ -911,8 +925,8 @@
    "titre": "Will gas prices in the US reach a new all-time high before April 1, 2026?",
    "issue": 0,
    "jeu": "2026-03-29",
-   "etat_de_depart": "Au moment où la question est posée, on considère les prix actuels de l'essence aux États-Unis comme l'état de départ.",
-   "evenement": "L'événement est que les prix de l'essence aux États-Unis atteignent un nouveau record historique (all-time high) avant le 1er avril 2026.",
+   "etat_de_depart": "Les prix de l'essence aux États-Unis au moment où la question est posée.",
+   "evenement": "Les prix de l'essence aux États-Unis atteindront un nouveau record historique avant le 1er avril 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -928,12 +942,10 @@
    "titre": "Will Iran participate in the 2026 FIFA World Cup?",
    "issue": 1,
    "jeu": "2026-05-24",
-   "etat_de_depart": "L'équipe nationale d'Iran est candidate à la qualification pour la phase finale de la Coupe du monde de la FIFA 2026.",
-   "evenement": "L'événement est la participation (qualification et présence) de l'équipe nationale d'Iran à la phase finale de la Coupe du monde de la FIFA 2026.",
+   "etat_de_depart": "L'état de départ : la question porte sur l'équipe nationale d'Iran et sur son statut de qualification pour la phase finale de la Coupe du monde de la FIFA 2026 (présence ou absence à la compétition).",
+   "evenement": "L'événement dont dépend la réponse : la participation (qualification) effective de l'équipe nationale d'Iran à la Coupe du monde 2026.",
    "pays": [],
-   "regions": [
-    "asie"
-   ],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -943,8 +955,8 @@
    "titre": "Will shipping traffic through the Strait of Hormuz return to normal before April 27, 2026?",
    "issue": 0,
    "jeu": "2026-04-12",
-   "etat_de_depart": "Le trafic maritime dans le détroit d'Hormuz est actuellement perturbé et n'est pas revenu à la normale.",
-   "evenement": "Le trafic maritime dans le détroit d'Hormuz reviendra à la normale avant le 27 avril 2026.",
+   "etat_de_depart": "Au moment où la question est posée, le trafic maritime à travers le détroit d'Ormuz est perturbé et n'est pas revenu à la normale.",
+   "evenement": "Le trafic maritime traversant le détroit d'Ormuz reviendra à la normale avant le 27 avril 2026.",
    "pays": [],
    "regions": [
     "moyen_orient"
@@ -958,8 +970,8 @@
    "titre": "Will total MLB regular-season attendance in 2026 exceed 72 million?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "La saison régulière de la Major League Baseball (MLB) pour 2026 n'a pas encore eu lieu au moment où la question est posée.",
-   "evenement": "Que l'affluence totale en saison régulière de la MLB en 2026 dépasse 72 millions de spectateurs.",
+   "etat_de_depart": "La saison régulière MLB 2026 n'a pas encore eu lieu au moment où la question est posée.",
+   "evenement": "La fréquentation totale de la saison régulière de la Major League Baseball en 2026 dépassera 72 millions.",
    "pays": [
     "États-Unis",
     "Canada"
@@ -976,8 +988,8 @@
    "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before June 1, 2026?",
    "issue": 0,
    "jeu": "2026-04-26",
-   "etat_de_depart": "Il existe un classement GPQA Diamond Benchmark mesurant les scores de modèles d'IA et la date de référence pour la question est antérieure au 1er juin 2026.",
-   "evenement": "L'événement considéré est qu'au moins un modèle d'IA atteigne un score de 95 % ou plus sur le GPQA Diamond Benchmark Leaderboard avant le 1er juin 2026.",
+   "etat_de_depart": "Nous sommes avant le 1er juin 2026 et il existe un classement GPQA Diamond Benchmark Leaderboard qui suit les scores des modèles d'IA.",
+   "evenement": "Qu'un modèle d'IA atteigne un score de 95 % ou plus sur le GPQA Diamond Benchmark Leaderboard avant le 1er juin 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -989,8 +1001,8 @@
    "titre": "Will the U.S. Senate pass another budget reconciliation bill before July 4, 2026?",
    "issue": 1,
    "jeu": "2026-05-10",
-   "etat_de_depart": "Il y a un projet budgétaire au Congrès américain.",
-   "evenement": "Adoption d'une loi de réconciliation budgétaire par le Congrès américain.",
+   "etat_de_depart": "Il existe un projet budgétaire au Congrès américain susceptible d'être traité par la procédure de réconciliation.",
+   "evenement": "Le Sénat américain adoptera une loi de réconciliation budgétaire avant le 4 juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1011,8 +1023,8 @@
    "titre": "Will Neymar be called up for Brazil in the 2026 FIFA World Cup?",
    "issue": 1,
    "jeu": "2026-05-10",
-   "etat_de_depart": "La Coupe du monde FIFA 2026 est à venir et la sélection brésilienne pour le tournoi n'a pas encore publié sa liste de joueurs.",
-   "evenement": "La question porte sur la convocation de Neymar dans l'équipe nationale du Brésil pour la Coupe du monde FIFA 2026.",
+   "etat_de_depart": "La sélection finale de l'équipe nationale du Brésil pour la Coupe du monde de la FIFA 2026 n'a pas encore été annoncée.",
+   "evenement": "Le fait que Neymar soit convoqué par la sélection brésilienne pour la Coupe du monde de la FIFA 2026.",
    "pays": [
     "Brésil"
    ],
@@ -1028,8 +1040,8 @@
    "titre": "Will the CBOE Volatility Index (VIX) close above 30 on more than 5 trading days between April 20, 2026 and May 31, 2026?",
    "issue": 0,
    "jeu": "2026-05-10",
-   "etat_de_depart": "Au moment où la question est posée, le CBOE Volatility Index (VIX) est publié quotidiennement et suivi lors des séances de bourse américaines.",
-   "evenement": "L'événement est que le VIX clôture au-dessus de 30 lors de plus de cinq jours de bourse entre le 20 avril 2026 et le 31 mai 2026.",
+   "etat_de_depart": "Le marché américain est observé pendant la période de trading entre le 20 avril 2026 et le 31 mai 2026, et on considère les clôtures quotidiennes du CBOE Volatility Index (VIX).",
+   "evenement": "L'événement est que le VIX clôturera au‑dessus de 30 lors de plus de cinq jours de bourse entre le 20 avril 2026 et le 31 mai 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1045,8 +1057,8 @@
    "titre": "Will the United States and Iran hold another face-to-face diplomatic meeting before June 6, 2026?",
    "issue": 0,
    "jeu": "2026-05-10",
-   "etat_de_depart": "Les relations diplomatiques formelles entre les États-Unis et l'Iran ne sont pas pleinement normales et les rencontres en personne entre responsables des deux pays sont rares.",
-   "evenement": "Tenue d'une autre rencontre diplomatique en personne entre les États-Unis et l'Iran avant le 6 juin 2026.",
+   "etat_de_depart": "Au moment où la question est posée, les États-Unis et l'Iran ont déjà tenu au moins une rencontre diplomatique en personne et la période considérée s'achève le 6 juin 2026.",
+   "evenement": "Un nouveau face-à-face diplomatique en personne entre les États-Unis et l'Iran aura lieu avant le 6 juin 2026.",
    "pays": [],
    "regions": [
     "amerique_du_nord",
@@ -1061,8 +1073,8 @@
    "titre": "Will Waymo have a service area of 1,200 square miles before July 1, 2026?",
    "issue": 1,
    "jeu": "2026-05-24",
-   "etat_de_depart": "Waymo opère des services de véhicules autonomes et cherche à étendre sa zone de service au moment où la question est posée.",
-   "evenement": "Que Waymo ait une zone de service de 1 200 milles carrés avant le 1er juillet 2026.",
+   "etat_de_depart": "Au moment de la question, Waymo est une entreprise qui exploite des services de véhicules autonomes principalement aux États‑Unis.",
+   "evenement": "L'événement est que Waymo ait une zone de service d'au moins 1 200 miles carrés avant le 1er juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1078,10 +1090,15 @@
    "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "Il existe au moins un pays actuellement membre de l'OPEP.",
-   "evenement": "Qu'un autre pays annonce qu'il quittera l'OPEP ou l'OPEP+ avant septembre 2026.",
-   "pays": [],
-   "regions": [],
+   "etat_de_depart": "Plusieurs pays sont actuellement membres de l'OPEP ou participants à l'OPEP+.",
+   "evenement": "Annonce par un autre pays qu'il quittera l'OPEP ou l'OPEP+ avant septembre 2026.",
+   "pays": [
+    "Russie"
+   ],
+   "regions": [
+    "europe",
+    "asie"
+   ],
    "regles": [
     "opep_departs"
    ],
@@ -1095,8 +1112,8 @@
    "titre": "Will any host nation (USA, Mexico or Canada) reach the semifinals of the 2026 World Cup?",
    "issue": 0,
    "jeu": "2026-06-21",
-   "etat_de_depart": "Phase finale de la Coupe du monde 2026 à venir ou en cours, avec ses équipes qualifiées.",
-   "evenement": "Qu'une des nations hôtes (États-Unis, Mexique ou Canada) atteigne les demi-finales du tournoi.",
+   "etat_de_depart": "La phase finale de la Coupe du monde 2026 est à venir, avec les pays hôtes (États-Unis, Mexique, Canada) qualifiés.",
+   "evenement": "Au moins une des équipes hôtes (États-Unis, Mexique ou Canada) atteint les demi-finales de la Coupe du monde 2026.",
    "pays": [
     "États-Unis",
     "Mexique",
@@ -1119,28 +1136,24 @@
    "titre": "Will Iran and U.S play against each other in the 2026 FIFA World Cup?",
    "issue": 0,
    "jeu": "2026-06-07",
-   "etat_de_depart": "La phase finale de la Coupe du monde de football 2026 est à venir ou en cours, avec ses équipes qualifiées.",
-   "evenement": "Que l'Iran et les États-Unis s'affrontent lors de la Coupe du monde de football 2026.",
+   "etat_de_depart": "La phase finale de la Coupe du monde de la FIFA 2026 est à venir et la question porte sur la tenue éventuelle d'un match entre deux équipes pendant ce tournoi.",
+   "evenement": "La tenue d'un match entre l'équipe nationale d'Iran et celle des États-Unis lors de la phase finale de la Coupe du monde 2026.",
    "pays": [],
    "regions": [
-    "amerique_du_nord"
+    "amerique_du_nord",
+    "moyen_orient"
    ],
-   "regles": [
-    "coupe_du_monde_vainqueurs_hotes"
-   ],
+   "regles": [],
    "rejets": [],
-   "compartiments": [
-    "competitions-culture:forme",
-    "competitions-culture:public"
-   ]
+   "compartiments": []
   },
   {
    "question": "43360",
    "titre": "Will the UK National Threat Level reduce from SEVERE before September 2026?",
    "issue": 0,
    "jeu": "2026-05-24",
-   "etat_de_depart": "Le niveau national de menace terroriste du Royaume-Uni est actuellement \"SEVERE\".",
-   "evenement": "Une réduction du niveau national de menace terroriste du Royaume-Uni depuis \"SEVERE\" avant septembre 2026.",
+   "etat_de_depart": "Le niveau national de menace terroriste du Royaume-Uni est SEVERE au moment où la question est posée.",
+   "evenement": "Réduction du niveau national de menace terroriste du Royaume-Uni depuis SEVERE avant septembre 2026.",
    "pays": [
     "Royaume-Uni"
    ],
@@ -1161,15 +1174,18 @@
    "issue": 1,
    "jeu": "2026-07-05",
    "etat_de_depart": "Le pape Leo XIV est en fonction au moment où la question est posée.",
-   "evenement": "La question porte sur un voyage d'un pape à l'étranger (visiter un pays autre que l'Espagne) avant septembre 2026.",
+   "evenement": "La question porte sur la survenue d'un voyage du pape vers un autre pays que l'Espagne avant septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
    ],
-   "regles": [
-    "papes_voyages"
+   "regles": [],
+   "rejets": [
+    {
+     "id": "papes_voyages",
+     "motif": "objet mal recopié"
+    }
    ],
-   "rejets": [],
    "compartiments": []
   },
   {
@@ -1177,8 +1193,8 @@
    "titre": "Will there be a successful coup in Africa or Latin America before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "Le point de départ est que des pays des régions Afrique ou Amérique latine peuvent être exposés à des tentatives de coup d'État entre maintenant et le 1er septembre 2026.",
-   "evenement": "L'événement est la tentative ou la réussite d'un coup d'État, et en particulier la réussite d'un coup d'État, en Afrique ou en Amérique latine avant le 1er septembre 2026.",
+   "etat_de_depart": "La question est posée avant le 1er septembre 2026 et porte sur la possibilité qu'un pays d'Afrique ou d'Amérique latine subisse une tentative ou un coup d'État réussi avant cette date.",
+   "evenement": "Survenue d'une tentative ou réussite d'un coup d'État en Afrique ou en Amérique latine avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "afrique",
@@ -1197,8 +1213,8 @@
    "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
    "issue": 0,
    "jeu": "2026-09-13",
-   "etat_de_depart": "Les présidents américain et russe sont en fonction et aucun sommet bilatéral n'est annoncé au moment de la question.",
-   "evenement": "Une rencontre en personne entre les présidents américain et russe avant le 1er octobre 2026.",
+   "etat_de_depart": "Les présidents américain et russe sont en fonction, sans sommet annoncé.",
+   "evenement": "Rencontre en personne entre les présidents américain et russe.",
    "pays": [
     "États-Unis",
     "Russie"
@@ -1220,8 +1236,8 @@
    "titre": "Will at least 5 non-passengers be linked to the MV Hondius hantavirus outbreak before August 2026?",
    "issue": 0,
    "jeu": "2026-06-07",
-   "etat_de_depart": "Un foyer de hantavirus lié au navire MV Hondius est en cours au moment où la question est posée.",
-   "evenement": "Au moins cinq personnes qui ne sont pas passagers seront liées à ce foyer de hantavirus avant août 2026.",
+   "etat_de_depart": "Un foyer d'hantavirus lié au navire MV Hondius a été détecté et des cas associés au navire ont été identifiés au moment de la question.",
+   "evenement": "Qu'au moins cinq personnes non-passagères soient liées à l'éclosion d'hantavirus du MV Hondius avant août 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -1233,8 +1249,8 @@
    "titre": "Will Claude Mythos or a similar model be publicly released before September 2026?",
    "issue": 1,
    "jeu": "2026-06-07",
-   "etat_de_depart": "Au moment où la question est posée, Claude Mythos ou un modèle similaire n'a pas encore été rendu public.",
-   "evenement": "La mise à disposition publique d'un modèle comparable (Claude Mythos ou similaire) avant septembre 2026.",
+   "etat_de_depart": "À la date de la question, il est incertain si Claude Mythos ou un modèle similaire a déjà été rendu public avant septembre 2026.",
+   "evenement": "L'événement est la mise à disposition publique d'un modèle appelé Claude Mythos ou d'un modèle similaire avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1250,8 +1266,8 @@
    "titre": "Will a new High Representative for Bosnia and Herzegovina officially be in place before September 2, 2026?",
    "issue": 0,
    "jeu": "2026-06-07",
-   "etat_de_depart": "Il y a actuellement un Haut Représentant pour la Bosnie-Herzégovine en poste au moment où la question est posée.",
-   "evenement": "Qu'un nouveau Haut Représentant pour la Bosnie-Herzégovine soit officiellement en place avant le 2 septembre 2026.",
+   "etat_de_depart": "Au moment où la question est posée, il existe un poste de Haut Représentant pour la Bosnie-Herzégovine et la nomination d'un successeur est envisagée mais pas confirmée.",
+   "evenement": "L'événement est qu'un nouveau Haut Représentant pour la Bosnie-Herzégovine soit officiellement en place avant le 2 septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1265,12 +1281,13 @@
    "titre": "Will any U.S. state or EU member state restrict large-scale data center grid connections before September 2026?",
    "issue": 1,
    "jeu": "2026-06-21",
-   "etat_de_depart": "La question porte sur la possibilité que des États des États‑Unis ou des États membres de l'UE restreignent les raccordements à grande échelle de centres de données au réseau électrique avant septembre 2026.",
-   "evenement": "Qu'au moins un État américain ou au moins un État membre de l'Union européenne impose une restriction sur les raccordements électriques à grande échelle de centres de données avant septembre 2026.",
+   "etat_de_depart": "La question concerne la possibilité que, d'ici septembre 2026, un État américain ou un État membre de l'Union européenne envisage ou prenne des mesures pour restreindre les raccordements électriques à grande échelle destinés aux centres de données.",
+   "evenement": "L'événement est qu'au moins un État américain ou un État membre de l'UE adopte une restriction sur les raccordements au réseau électrique de grands centres de données avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
    "regions": [
+    "amerique_du_nord",
     "europe"
    ],
    "regles": [],
@@ -1282,8 +1299,8 @@
    "titre": "Will Haiti hold the first round of its presidential election before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-06-21",
-   "etat_de_depart": "Haïti est dans la situation d'une élection présidentielle prévue ou en cours.",
-   "evenement": "L'événement est la tenue du premier tour de l'élection présidentielle haïtienne avant le 1er septembre 2026.",
+   "etat_de_depart": "Une élection présidentielle haïtienne est prévue ou en cours, et la question porte sur la date de son premier tour.",
+   "evenement": "La tenue du premier tour de l'élection présidentielle haïtienne avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "amerique_latine"
@@ -1299,8 +1316,8 @@
    "titre": "Will Instructure be subject to another major hack before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-06-21",
-   "etat_de_depart": "La société Instructure, fournisseur américain de logiciels éducatifs, est en activité au moment où la question est posée.",
-   "evenement": "Qu'un piratage majeur touche Instructure avant le 1er septembre 2026.",
+   "etat_de_depart": "Instructure est, au moment où la question est posée, une entreprise de technologie éducative basée aux États-Unis et en activité.",
+   "evenement": "La question porte sur la survenue d'une nouvelle attaque informatique majeure contre Instructure avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1316,8 +1333,8 @@
    "titre": "Will Bitcoin trade above $120,000 before August 1, 2026?",
    "issue": 0,
    "jeu": "2026-06-07",
-   "etat_de_depart": "Nous sommes à un moment antérieur au 1er août 2026 et la question porte sur l'évolution future du prix du Bitcoin d'ici cette date.",
-   "evenement": "L'événement est que le prix du Bitcoin atteigne ou dépasse 120 000 dollars lors d'échanges avant le 1er août 2026.",
+   "etat_de_depart": "Au moment où la question est posée, le prix du Bitcoin est déterminé par les marchés et peut évoluer d'ici le 1er août 2026.",
+   "evenement": "L'événement considéré est que le Bitcoin se négocie au-dessus de 120 000 dollars à un instant quelconque avant le 1er août 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -1329,8 +1346,8 @@
    "titre": "Will the Senate of the Philippines remove Vice President Sara Duterte from office before September 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "La vice-présidente Sara Duterte est en fonction aux Philippines au moment où la question est posée.",
-   "evenement": "Que le Sénat des Philippines la retire de ses fonctions avant septembre 2026.",
+   "etat_de_depart": "La vice-présidente Sara Duterte est actuellement en fonction aux Philippines et la question porte sur la possibilité pour le Sénat philippin de la destituer ou de la retirer de ses fonctions.",
+   "evenement": "Que le Sénat des Philippines retire la vice‑présidente Sara Duterte de ses fonctions avant septembre 2026.",
    "pays": [],
    "regions": [
     "asie"
@@ -1344,30 +1361,21 @@
    "titre": "Will OpenAI's ChatGPT Atlas browser be released for Windows before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-07-05",
-   "etat_de_depart": "La question porte sur un lancement de produit futur — la mise à disposition du navigateur ChatGPT Atlas pour Windows avant le 1er septembre 2026.",
-   "evenement": "La réalisation demandée est la sortie / mise en service du navigateur ChatGPT Atlas sur Windows avant le 1er septembre 2026.",
-   "pays": [
-    "États-Unis"
-   ],
-   "regions": [
-    "amerique_du_nord"
-   ],
-   "regles": [
-    "calendriers_annonces_glissent"
-   ],
+   "etat_de_depart": "Au moment où la question est posée, OpenAI n'a pas encore publié une version du navigateur ChatGPT Atlas pour Windows.",
+   "evenement": "L'événement à prévoir est la publication officielle d'une version du navigateur ChatGPT Atlas pour Windows avant le 1er septembre 2026.",
+   "pays": [],
+   "regions": [],
+   "regles": [],
    "rejets": [],
-   "compartiments": [
-    "calendriers-echeances:anticipations",
-    "calendriers-echeances:dates_limites"
-   ]
+   "compartiments": []
   },
   {
    "question": "43527",
    "titre": "Will federal courts block the USPS mail-in ballot restrictions before Election Day?",
    "issue": 1,
    "jeu": "2026-06-21",
-   "etat_de_depart": "Il y a une contestation judiciaire fédérale en cours contre des restrictions du vote par courrier imposées au USPS avant le jour de l'élection.",
-   "evenement": "Des tribunaux fédéraux bloqueront ces restrictions du vote postal du USPS avant le jour de l'élection.",
+   "etat_de_depart": "Des recours sont pendants devant des juridictions fédérales contre des restrictions imposées aux bulletins postaux du USPS peu avant le jour de l'élection.",
+   "evenement": "Des tribunaux fédéraux émettront une décision empêchant (bloquant) ces restrictions du USPS avant le jour de l'élection.",
    "pays": [
     "États-Unis"
    ],
@@ -1383,8 +1391,8 @@
    "titre": "Will Shakira's \"Dai Dai\" outpeak Shakira's \"Waka Waka\" on the Billboard Hot 100?",
    "issue": 1,
    "jeu": "2026-07-05",
-   "etat_de_depart": "La question porte sur la performance comparative sur le Billboard Hot 100 de deux titres de Shakira, 'Dai Dai' (nouvelle sortie) et le succès antérieur 'Waka Waka'.",
-   "evenement": "Que 'Dai Dai' atteigne un pic sur le Billboard Hot 100 supérieur au pic historique de 'Waka Waka'.",
+   "etat_de_depart": "La question porte actuellement sur la comparaison des pics au classement Billboard Hot 100 de deux chansons de Shakira.",
+   "evenement": "L'événement est que 'Dai Dai' atteigne un pic supérieur à celui de 'Waka Waka' sur le Billboard Hot 100, c'est‑à‑dire une meilleure position au sommet du classement.",
    "pays": [
     "États-Unis"
    ],
@@ -1400,8 +1408,8 @@
    "titre": "Will the 2026 Alberta independence referendum pass?",
    "issue": 0,
    "jeu": "2026-08-02",
-   "etat_de_depart": "Un référendum sur l'indépendance de l'Alberta est prévu en 2026.",
-   "evenement": "Le référendum d'indépendance de l'Alberta en 2026 aboutira à une victoire du \"oui\" (le changement l'emportera).",
+   "etat_de_depart": "Un référendum sur l'indépendance de l'Alberta est prévu en 2026 et une campagne référendaire en cours porte sur ce changement.",
+   "evenement": "La question est de savoir si la victoire du changement (le \"oui\" à l'indépendance) l'emportera au référendum de 2026.",
    "pays": [
     "Canada"
    ],
@@ -1422,8 +1430,8 @@
    "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
    "issue": 0,
    "jeu": "2026-07-05",
-   "etat_de_depart": "La politique monétaire américaine est en cours entre deux réunions du FOMC.",
-   "evenement": "La décision concerne une décision de taux de la Réserve fédérale américaine (hausse de la fourchette cible des fed funds avant le 30 juillet 2026).",
+   "etat_de_depart": "La politique monétaire américaine est entre deux réunions programmées du FOMC.",
+   "evenement": "Une décision de hausse de la fourchette cible des federal funds par la Réserve fédérale américaine avant le 30 juillet 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1444,8 +1452,8 @@
    "titre": "Will a hurricane make landfall in the continental United States before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "La situation actuelle est une saison cyclonique atlantique en cours ou à venir.",
-   "evenement": "L'événement à prévoir est l'atterrissage d'un ouragan sur le territoire continental des États-Unis avant le 1er septembre 2026.",
+   "etat_de_depart": "La situation de départ est une saison cyclonique atlantique en cours ou à venir.",
+   "evenement": "L'événement est l'atterrissage d'un ouragan sur le territoire continental des États-Unis avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1466,8 +1474,8 @@
    "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-06-21",
-   "etat_de_depart": "La question porte sur la période précédant le 1er septembre 2026 et concerne la possibilité qu'avant cette date la République populaire de Chine impose un blocus ou une mise en quarantaine à Taïwan.",
-   "evenement": "La réalisation d'un blocus ou d'une mise en quarantaine de Taïwan par la République populaire de Chine (coupure des accès maritimes et/ou aériens) à une date antérieure au 1er septembre 2026.",
+   "etat_de_depart": "Au moment où la question est posée, la République populaire de Chine et Taïwan sont séparées et aucun blocus ou quarantaine imposé par la RPC sur Taïwan n'est en vigueur.",
+   "evenement": "L'événement est que, avant le 1er septembre 2026, la République populaire de Chine impose un blocus naval ou une quarantaine à l'encontre de Taïwan.",
    "pays": [],
    "regions": [
     "asie"
@@ -1481,8 +1489,8 @@
    "titre": "Will Starlink's website show South Africa as a country with Starlink availability before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-02",
-   "etat_de_depart": "Au moment où la question est posée, le site de Starlink n'indique pas que l'Afrique du Sud est un pays où Starlink est disponible.",
-   "evenement": "Le site de Starlink montrera l'Afrique du Sud comme un pays où Starlink est disponible avant le 1er septembre 2026.",
+   "etat_de_depart": "Un observateur consulte le site web public de Starlink et se demande si l'Afrique du Sud y sera indiquée comme pays avec disponibilité avant le 1er septembre 2026.",
+   "evenement": "Le site web de Starlink affichera l'Afrique du Sud comme un pays avec disponibilité avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "afrique"
@@ -1496,28 +1504,28 @@
    "titre": "Will Iceland vote Yes in the 2026 EU negotiations referendum?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "Une campagne référendaire est en cours en Islande sur un changement lié aux négociations d'adhésion à l'UE prévues en 2026.",
-   "evenement": "L'événement est la victoire du 'oui' (le changement) au référendum de 2026.",
+   "etat_de_depart": "Une campagne référendaire se déroule en Islande à propos d'un changement lié aux négociations avec l'Union européenne pour un référendum prévu en 2026.",
+   "evenement": "Les électeurs islandais votent Oui (victoire du changement) au référendum de 2026 sur les négociations avec l'Union européenne.",
    "pays": [],
    "regions": [
     "europe"
    ],
-   "regles": [],
-   "rejets": [
-    {
-     "id": "referendums_retour_statu_quo",
-     "motif": "objet mal recopié"
-    }
+   "regles": [
+    "referendums_retour_statu_quo"
    ],
-   "compartiments": []
+   "rejets": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "humain:risque_percu"
+   ]
   },
   {
    "question": "43824",
    "titre": "Will the Brookmont Catastrophic Bond ETF drop at least $0.25 within two days before September 2026?",
    "issue": 0,
    "jeu": "2026-07-05",
-   "etat_de_depart": "Le prix en cours de l'ETF Brookmont Catastrophic Bond est considéré, avec une fenêtre temporelle de deux jours juste avant septembre 2026.",
-   "evenement": "Il s'agit d'une baisse du cours de cet ETF d'au moins 0,25 $ sur cette période de deux jours précédant septembre 2026.",
+   "etat_de_depart": "La question est posée avant septembre 2026 et porte sur le cours observable du Brookmont Catastrophic Bond ETF dans les jours précédant septembre 2026.",
+   "evenement": "L'événement est une baisse d'au moins 0,25 $ du prix du Brookmont Catastrophic Bond ETF sur une fenêtre de deux jours se terminant avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1533,8 +1541,8 @@
    "titre": "Will OpenAI publicly file an initial registration statement (S-1) with the SEC to launch an IPO, before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Au moment où la question est posée, on s'interroge sur la possibilité qu'OpenAI dépose publiquement une déclaration d'enregistrement initiale (S-1) auprès de la SEC avant le 1er septembre 2026, sans qu'il soit présumé dans la question qu'un tel dépôt ait déjà eu lieu.",
-   "evenement": "OpenAI dépose publiquement une déclaration d'enregistrement initiale (S-1) auprès de la SEC visant à lancer une introduction en bourse (IPO) avant le 1er septembre 2026.",
+   "etat_de_depart": "OpenAI est une société privée basée aux États-Unis qui, au moment de la question, n'a pas encore déposé publiquement une déclaration d'enregistrement initiale (S-1) auprès de la SEC.",
+   "evenement": "OpenAI déposera publiquement une déclaration d'enregistrement initiale (S-1) auprès de la SEC pour lancer une introduction en bourse avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1550,8 +1558,8 @@
    "titre": "Will Hakainde Hichilema receive at least 65% of the vote in the first round of Zambia's 2026 presidential election?",
    "issue": 0,
    "jeu": "2026-08-02",
-   "etat_de_depart": "Élection présidentielle prévue en Zambie pour 2026, avant le vote du premier tour.",
-   "evenement": "Hakainde Hichilema recevra au moins 65 % des voix au premier tour de l'élection présidentielle zambienne de 2026.",
+   "etat_de_depart": "Élection présidentielle zambienne prévue en 2026, avant le scrutin du premier tour.",
+   "evenement": "Hakainde Hichilema reçoit au moins 65 % des voix au premier tour de l'élection présidentielle de Zambie 2026.",
    "pays": [],
    "regions": [
     "afrique"
@@ -1567,25 +1575,30 @@
    "titre": "Will former U.S. Representative George Santos be arrested before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "George Santos est un ancien membre de la Chambre des représentants des États-Unis et a fait l'objet d'inculpations pénales publiques.",
-   "evenement": "L'événement est une éventuelle arrestation de George Santos avant le 1er septembre 2026.",
+   "etat_de_depart": "État de départ : George Santos est un ancien membre de la Chambre des représentants des États-Unis (ancien élu fédéral) et, pour l'objet de cette question, est considéré comme un élu ou responsable public américain ancien non inculpé.",
+   "evenement": "Événement : arrestation (ou inculpation) de George Santos avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
    "regions": [
     "amerique_du_nord"
    ],
-   "regles": [],
+   "regles": [
+    "us_inculpation_personnalites"
+   ],
    "rejets": [],
-   "compartiments": []
+   "compartiments": [
+    "politique-americaine:executif",
+    "politique-americaine:tribunaux"
+   ]
   },
   {
    "question": "43881",
    "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Les présidents Volodymyr Zelenskyy (Ukraine) et Vladimir Putin (Russie) sont en fonction et, au moment où la question est posée, aucune rencontre bilatérale en personne entre eux n'est annoncée.",
-   "evenement": "Une rencontre en personne entre Volodymyr Zelenskyy et Vladimir Putin ayant lieu avant le 1er septembre 2026.",
+   "etat_de_depart": "Volodymyr Zelenskyy est président de l'Ukraine et Vladimir Putin est président de la Fédération de Russie ; à la date de la question, aucune rencontre bilatérale publique entre eux n'est assurée.",
+   "evenement": "Qu'ils se rencontrent en personne avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1599,8 +1612,8 @@
    "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
    "issue": 0,
    "jeu": "2026-07-05",
-   "etat_de_depart": "Les États-Unis et l'Inde négocient un nouvel accord commercial bilatéral et la question porte sur sa finalisation avant août 2026.",
-   "evenement": "Finalisation d'un nouvel accord commercial bilatéral entre les États-Unis et l'Inde avant août 2026.",
+   "etat_de_depart": "Au moment où la question est posée, les États-Unis et l'Inde n'ont pas finalisé un nouvel accord commercial bilatéral.",
+   "evenement": "La finalisation par les États-Unis et l'Inde d'un nouvel accord commercial bilatéral avant août 2026.",
    "pays": [
     "États-Unis",
     "Inde"
@@ -1609,22 +1622,17 @@
     "amerique_du_nord",
     "asie"
    ],
-   "regles": [
-    "effet_d_echeance_negociation"
-   ],
+   "regles": [],
    "rejets": [],
-   "compartiments": [
-    "calendriers-echeances:anticipations",
-    "calendriers-echeances:dates_limites"
-   ]
+   "compartiments": []
   },
   {
    "question": "43984",
    "titre": "Will the Liberal Party officially nominate Flávio Bolsonaro as its candidate for president of Brazil before August 15, 2026?",
    "issue": 1,
    "jeu": "2026-07-05",
-   "etat_de_depart": "Nous sommes avant l'élection présidentielle brésilienne de 2026 et la question porte sur la décision du Parti libéral (PL) du Brésil de nommer officiellement Flávio Bolsonaro comme candidat.",
-   "evenement": "Le Parti libéral (PL) du Brésil nomme officiellement Flávio Bolsonaro comme candidat à la présidence avant le 15 août 2026.",
+   "etat_de_depart": "Le Parti libéral (Partido Liberal) du Brésil n'a pas, au moment où la question est posée, officiellement nommé Flávio Bolsonaro comme candidat à la présidence du Brésil.",
+   "evenement": "La nomination officielle de Flávio Bolsonaro par le Parti libéral comme candidat à la présidence du Brésil avant le 15 août 2026.",
    "pays": [
     "Brésil"
    ],
@@ -1640,10 +1648,12 @@
    "titre": "Before September 1, 2026, will Turkish President Recep Tayyip Erdoğan be legally permitted to run for another term?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Recep Tayyip Erdoğan est actuellement président de la Turquie et occupe la fonction au moment où la question est posée.",
-   "evenement": "Qu'il soit légalement autorisé à se présenter pour un nouveau mandat présidentiel avant le 1er septembre 2026.",
+   "etat_de_depart": "Le président turc Recep Tayyip Erdoğan est en fonction et la question porte sur sa capacité légale à se porter candidat avant le 1er septembre 2026.",
+   "evenement": "Que Recep Tayyip Erdoğan soit légalement autorisé à se présenter pour un nouveau mandat avant le 1er septembre 2026.",
    "pays": [],
-   "regions": [],
+   "regions": [
+    "asie"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1653,8 +1663,8 @@
    "titre": "Will Ukraine announce a presidential election before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "À la date de la question, l'Ukraine n'a pas annoncé qu'une élection présidentielle se tiendrait avant le 1er septembre 2026.",
-   "evenement": "Annonce par les autorités ukrainiennes qu'une élection présidentielle aura lieu avant le 1er septembre 2026.",
+   "etat_de_depart": "Au moment de la question, on s'interroge sur la possibilité que l'Ukraine annonce la tenue d'une élection présidentielle avant le 1er septembre 2026.",
+   "evenement": "Événement : l'annonce par les autorités ukrainiennes d'une élection présidentielle à se tenir avant le 1er septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1668,32 +1678,32 @@
    "titre": "Will the United States provide written notices of withdrawal from the USMCA before September 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "L'accord USMCA est en vigueur et se trouve avant ou pendant sa révision conjointe (sixième anniversaire).",
-   "evenement": "Les États-Unis fournissent des avis écrits de retrait de l'accord USMCA avant septembre 2026.",
+   "etat_de_depart": "L'accord USMCA est en vigueur et arrive au moment de sa révision conjointe prévue au sixième anniversaire.",
+   "evenement": "Que les États-Unis fournissent des avis écrits de retrait de l'USMCA avant septembre 2026.",
    "pays": [
     "États-Unis",
-    "Canada",
-    "Mexique"
+    "Mexique",
+    "Canada"
    ],
    "regions": [
     "amerique_du_nord"
    ],
-   "regles": [],
-   "rejets": [
-    {
-     "id": "usmca_revision_conjointe",
-     "motif": "objet mal recopié"
-    }
+   "regles": [
+    "usmca_revision_conjointe"
    ],
-   "compartiments": []
+   "rejets": [],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:commerce"
+   ]
   },
   {
    "question": "43991",
    "titre": "On July 8, 2026, will Marine Le Pen be ineligible to run in the 2027 French presidential election?",
    "issue": 0,
    "jeu": "2026-07-05",
-   "etat_de_depart": "Le 8 juillet 2026, la question porte sur l'éligibilité de Marine Le Pen à se présenter à l'élection présidentielle française de 2027.",
-   "evenement": "Marine Le Pen sera inéligible à se présenter à l'élection présidentielle française de 2027.",
+   "etat_de_depart": "Au 8 juillet 2026, Marine Le Pen est une personnalité politique française envisagée comme candidate possible à l'élection présidentielle française de 2027.",
+   "evenement": "L'événement à prévoir est si, à cette date (8 juillet 2026), elle sera inéligible à se présenter à l'élection présidentielle française de 2027.",
    "pays": [
     "France"
    ],
@@ -1709,8 +1719,8 @@
    "titre": "Will July 2026 be the warmest July on record, according to Copernicus?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "La question est posée avant ou pendant juillet 2026 et porte sur la possibilité que juillet 2026 soit le plus chaud jamais mesuré.",
-   "evenement": "Que juillet 2026 soit le juillet le plus chaud jamais enregistré selon Copernicus.",
+   "etat_de_depart": "La série de températures mondiales est proche de son record au moment où la question est posée.",
+   "evenement": "Que juillet 2026 soit le juillet le plus chaud jamais mesuré selon Copernicus.",
    "pays": [],
    "regions": [],
    "regles": [
@@ -1727,8 +1737,8 @@
    "titre": "Will James M. McDonald be sworn in as US Attorney for the Southern District of New York before August 22, 2026?",
    "issue": 1,
    "jeu": "2026-07-19",
-   "etat_de_depart": "La question porte sur la possible nomination et prestation de serment de James M. McDonald au poste de US Attorney pour le Southern District of New York ; il n'est pas précisé ici si sa nomination présidentielle a déjà été transmise au Sénat.",
-   "evenement": "L'événement est que James M. McDonald soit assermenté comme US Attorney pour le Southern District of New York avant le 22 août 2026.",
+   "etat_de_depart": "La question concerne la possibilité que James M. McDonald devienne US Attorney pour le Southern District of New York avant le 22 août 2026.",
+   "evenement": "L'événement prédit est l'assermentation (prise de fonction) de James M. McDonald comme US Attorney pour le Southern District of New York avant le 22 août 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1744,8 +1754,8 @@
    "titre": "Will North Korea conduct a nuclear test before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Le programme nucléaire nord-coréen n'a pas réalisé d'essai depuis septembre 2017.",
-   "evenement": "Un essai nucléaire nord-coréen se produira avant le 1er septembre 2026.",
+   "etat_de_depart": "Le programme nucléaire nord-coréen n'a pas effectué d'essai depuis septembre 2017.",
+   "evenement": "Un essai nucléaire nord-coréen avant le 1er septembre 2026.",
    "pays": [
     "Corée du Nord"
    ],
@@ -1766,12 +1776,10 @@
    "titre": "Will the IAEA conduct an on-site inspection at any of Iran's Natanz, Fordow, or Isfahan nuclear sites before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "L'Agence internationale de l'énergie atomique (AIEA) a le mandat et la capacité technique d'inspecter les sites nucléaires iraniens, et Natanz, Fordow et Ispahan sont des sites nucléaires iraniens concernés.",
-   "evenement": "Qu'une inspection sur site soit conduite par l'AIEA dans au moins l'un des sites iraniens Natanz, Fordow ou Ispahan avant le 1er septembre 2026.",
+   "etat_de_depart": "Au moment où la question est posée, aucune inspection sur site de l'AIEA à Natanz, Fordow ou Isfahan avant le 1er septembre 2026 n'a été réalisée et la décision dépend d'actions futures des autorités iraniennes et de l'AIEA.",
+   "evenement": "Qu'une inspection sur site par l'AIEA ait lieu dans au moins une des installations nucléaires iraniennes (Natanz, Fordow ou Isfahan) avant le 1er septembre 2026.",
    "pays": [],
-   "regions": [
-    "moyen_orient"
-   ],
+   "regions": [],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1781,8 +1789,8 @@
    "titre": "Will Elon Musk be a trillionaire on August 31, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "La situation de départ est que l'on demande si Elon Musk aura atteint une fortune nette donnée à la date du 31 août 2026.",
-   "evenement": "L'événement est que la fortune nette d'Elon Musk atteigne ou dépasse 1 000 milliards de dollars (qu'il soit trillionnaire) le 31 août 2026.",
+   "etat_de_depart": "Au moment où la question est posée, Elon Musk est vivant et son patrimoine net fluctue avec les marchés et la valeur de ses actifs.",
+   "evenement": "Que Elon Musk ait un patrimoine net d'au moins 1 000 milliards de dollars (qu'il soit trillionnaire) au 31 août 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1798,8 +1806,8 @@
    "titre": "Will the Lincoln Memorial Reflecting Pool be fully repaired before September 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "Le chantier de réparation du Lincoln Memorial Reflecting Pool est en cours ou planifié avec une échéance ciblée avant septembre 2026.",
-   "evenement": "Que le Lincoln Memorial Reflecting Pool soit entièrement réparé (achèvement complet des travaux) avant septembre 2026.",
+   "etat_de_depart": "Le Reflecting Pool du Lincoln Memorial fait l'objet d'un chantier de réparation avec une date prévue d'achèvement.",
+   "evenement": "L'achèvement complet des réparations du Reflecting Pool avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1820,8 +1828,8 @@
    "titre": "Will another company get dropped from the Dow Jones Industrial Average in July or August 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "La composition du Dow Jones Industrial Average est en vigueur au moment où la question est posée.",
-   "evenement": "Un changement de composition du Dow Jones Industrial Average, c'est-à-dire qu'une société soit retirée, en juillet ou août 2026.",
+   "etat_de_depart": "La composition actuelle du Dow Jones Industrial Average est en vigueur au moment où la question est posée.",
+   "evenement": "L'événement est le retrait d'une autre entreprise de la composition du Dow Jones Industrial Average en juillet ou août 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1841,8 +1849,8 @@
    "titre": "Will Virgin Galactic have a \"Going Concern\" substantial doubt statement in its 10-Q SEC filing for Q2 2026?",
    "issue": 1,
    "jeu": "2026-08-02",
-   "etat_de_depart": "Virgin Galactic est une société américaine cotée en Bourse qui, au moment où la question est posée, doit déposer son formulaire 10-Q pour le deuxième trimestre 2026.",
-   "evenement": "La présence dans ce formulaire 10-Q d'une déclaration indiquant un doute substantiel sur la capacité de la société à poursuivre son exploitation (une mention « going concern ») pour le T2 2026.",
+   "etat_de_depart": "Virgin Galactic est une société cotée américaine déposant un 10‑Q pour le deuxième trimestre 2026 auprès de la SEC.",
+   "evenement": "La présence dans ce 10‑Q d'une déclaration indiquant un doute substantiel sur la continuité d'exploitation (\"Going Concern\").",
    "pays": [
     "États-Unis"
    ],
@@ -1858,8 +1866,8 @@
    "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-07-19",
-   "etat_de_depart": "Des juges siègent actuellement à la Cour suprême des États-Unis.",
-   "evenement": "Qu'un ou plusieurs juges de la Cour suprême des États-Unis annoncent leur retraite avant le 1er septembre 2026.",
+   "etat_de_depart": "Au moment où la question est posée, des juges siègent à la Cour suprême des États-Unis.",
+   "evenement": "Un ou plusieurs juges de la Cour suprême des États-Unis annonceront leur retraite avant le 1er septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1875,10 +1883,12 @@
    "titre": "Will Vladimir Putin visit Iran before September 1, 2026?",
    "issue": 0,
    "jeu": "2026-08-02",
-   "etat_de_depart": "La question part de l'état suivant : Vladimir Poutine, en tant que dirigeant russe, pourrait effectuer un voyage officiel à l'étranger avant le 1er septembre 2026.",
+   "etat_de_depart": "Vladimir Poutine est le président de la Russie et est en fonction au moment où la question est posée.",
    "evenement": "L'événement est la visite de Vladimir Poutine en Iran avant le 1er septembre 2026.",
    "pays": [],
-   "regions": [],
+   "regions": [
+    "moyen_orient"
+   ],
    "regles": [],
    "rejets": [],
    "compartiments": []
@@ -1888,8 +1898,8 @@
    "titre": "Will a Tucker Carlson-founded political party file FEC Form 1 before September 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Au moment où la question est posée, une initiative ou un projet de parti politique fondé par Tucker Carlson est annoncé ou en cours.",
-   "evenement": "Le parti fondé par Tucker Carlson dépose le formulaire FEC Form 1 auprès de la Federal Election Commission avant septembre 2026.",
+   "etat_de_depart": "La question part de l'hypothèse qu'un parti politique fondé par Tucker Carlson existe ou est en cours de création aux États-Unis au moment où elle est posée.",
+   "evenement": "L'événement est que ce parti dépose auprès de la Federal Election Commission un Formulaire 1 (Statement of Organization) avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1905,8 +1915,8 @@
    "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before September 2026?",
    "issue": 0,
    "jeu": "2026-08-02",
-   "etat_de_depart": "Au moment où la question est posée, Anthropic est une société privée basée aux États‑Unis et aucune déclaration d'enregistrement initiale (formulaire S‑1) pour une IPO n'a été annoncée publiquement.",
-   "evenement": "Que Anthropic dépose une déclaration d'enregistrement initiale (formulaire S‑1) auprès de la Securities and Exchange Commission des États‑Unis en vue de lancer une introduction en bourse avant septembre 2026.",
+   "etat_de_depart": "Anthropic est une entreprise privée américaine d'intelligence artificielle qui, au moment de la question, n'a pas encore déposé une déclaration d'enregistrement initiale (S-1) auprès de la SEC.",
+   "evenement": "Dépôt par Anthropic d'une déclaration d'enregistrement initiale (S-1) auprès de la SEC en vue d'une introduction en bourse avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1922,8 +1932,8 @@
    "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Le gouvernement albanais est en fonction et Edi Rama est Premier ministre au moment où la question est posée.",
-   "evenement": "La démission du gouvernement d'Albanie ou du Premier ministre Edi Rama avant septembre 2026.",
+   "etat_de_depart": "Le gouvernement d'Albanie, dirigé par le Premier ministre Edi Rama, est en fonction au moment où la question est posée.",
+   "evenement": "La question porte sur la démission du gouvernement albanais ou du Premier ministre Edi Rama avant septembre 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -1937,8 +1947,8 @@
    "titre": "Will Donald Trump and Vladimir Putin speak on the phone in August 2026?",
    "issue": 0,
    "jeu": "2026-08-02",
-   "etat_de_depart": "La question porte sur la possibilité qu'un appel téléphonique ait lieu entre Donald Trump et Vladimir Putin en août 2026.",
-   "evenement": "Un appel téléphonique entre Donald Trump et Vladimir Putin en août 2026.",
+   "etat_de_depart": "Au moment où la question est posée, la question porte sur la possibilité d'un échange téléphonique entre Donald Trump et Vladimir Poutine en août 2026.",
+   "evenement": "L'événement est que Donald Trump et Vladimir Poutine se parleront au téléphone durant août 2026.",
    "pays": [
     "États-Unis",
     "Russie"
@@ -1956,8 +1966,8 @@
    "titre": "Will Thomas Massie file to run for any elective office before August 25, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Thomas Massie est actuellement membre de la Chambre des représentants des États-Unis.",
-   "evenement": "Thomas Massie déposera une candidature pour n'importe quelle fonction élective avant le 25 août 2026.",
+   "etat_de_depart": "Au moment où la question est posée, Thomas Massie est un homme politique américain et élu à la Chambre des représentants des États-Unis.",
+   "evenement": "L'événement est qu'il déposera une candidature pour quelque poste électif que ce soit avant le 25 août 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1973,8 +1983,8 @@
    "titre": "Will Mitch McConnell cast a roll-call vote in the U.S. Senate before September 2026?",
    "issue": 0,
    "jeu": "2026-08-02",
-   "etat_de_depart": "Mitch McConnell est sénateur des États-Unis en fonction, siégeant au Sénat américain.",
-   "evenement": "L'événement est que Mitch McConnell participe en émettant un vote par appel nominal (roll-call vote) au Sénat des États-Unis avant septembre 2026.",
+   "etat_de_depart": "Au moment où la question est posée, Mitch McConnell est membre du Sénat des États-Unis et occupe son siège au Sénat américain.",
+   "evenement": "La question porte sur le fait qu'il participera à un vote par appel nominal (roll-call vote) au Sénat des États-Unis avant septembre 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -1990,8 +2000,8 @@
    "titre": "Will the desktop market share of Linux exceed 8% in August 2026?",
    "issue": 1,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Situation actuelle du marché des systèmes d'exploitation de bureau avant août 2026, incluant la part de marché de Linux au moment où la question est posée.",
-   "evenement": "La part de marché des systèmes d'exploitation de bureau Linux dépassera 8 % en août 2026.",
+   "etat_de_depart": "La question porte sur la part de marché des systèmes d'exploitation de bureau pour Linux et la valeur exacte pour août 2026 n'est pas encore connue.",
+   "evenement": "L'événement est que la part de marché desktop de Linux dépasse 8 % en août 2026.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -2003,8 +2013,8 @@
    "titre": "Will a bot finish in the top 5 of the Summer 2026 Metaculus Cup?",
    "issue": 1,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Le Summer 2026 Metaculus Cup est une compétition de prédiction programmée ou en cours sur la plateforme Metaculus, à laquelle peuvent participer des bots et des humains.",
-   "evenement": "Un bot termine classé parmi les cinq premiers (top 5) du Summer 2026 Metaculus Cup.",
+   "etat_de_depart": "Le Summer 2026 Metaculus Cup est une compétition de prédiction prévue ou en cours avec des participants humains et des bots.",
+   "evenement": "Un bot se classe parmi les cinq premiers du classement final du Summer 2026 Metaculus Cup.",
    "pays": [],
    "regions": [],
    "regles": [],
@@ -2016,8 +2026,8 @@
    "titre": "Will the United States launch an attack against JNIM in Mali during August 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "État de départ : la question porte sur la possibilité qu'au moment considéré les États-Unis prennent la décision d'intervenir militairement contre le groupe JNIM au Mali pendant le mois d'août 2026.",
-   "evenement": "Événement : les États-Unis lancent une attaque militaire contre le groupe JNIM (Jama'a Nusrat ul-Islam wa al-Muslimin) sur le territoire malien durant août 2026.",
+   "etat_de_depart": "L'état de départ est que la question porte sur la possibilité que les États-Unis mènent une action militaire contre JNIM au Mali en août 2026.",
+   "evenement": "L'événement est le lancement par les États-Unis d'une attaque contre JNIM au Mali durant août 2026.",
    "pays": [],
    "regions": [
     "afrique",
@@ -2033,7 +2043,7 @@
    "issue": 1,
    "jeu": "2026-08-30",
    "etat_de_depart": "Les tarifs de Royal Mail sont en vigueur au moment où la question est posée.",
-   "evenement": "Hausse des tarifs des lettres ou colis de Royal Mail avant le 10 septembre 2026.",
+   "evenement": "Une hausse des tarifs des lettres ou colis de Royal Mail avant le 10 septembre 2026.",
    "pays": [
     "Royaume-Uni"
    ],
@@ -2053,8 +2063,8 @@
    "titre": "Will the U.S. government's 30-year treasury bond remain in the  ≥5% \"danger zone\" for the entire month of August 2026?",
    "issue": 1,
    "jeu": "2026-08-30",
-   "etat_de_depart": "Le rendement du bon du Trésor américain à 30 ans est actuellement dans la zone ≥5 % (la « zone de danger ») au moment où la question est posée.",
-   "evenement": "Le rendement du bon du Trésor américain à 30 ans restera à ou au‑dessus de 5 % pendant tout le mois d'août 2026.",
+   "etat_de_depart": "Au moment où la question est posée, le rendement du bon du Trésor américain à 30 ans est dans la zone ≥5% (« zone de danger »).",
+   "evenement": "Le rendement du bon du Trésor américain à 30 ans restera au moins 5% pendant tout le mois d'août 2026.",
    "pays": [
     "États-Unis"
    ],
@@ -2070,8 +2080,8 @@
    "titre": "Will Italy's Schengen suspension against Spain be lifted before August 30, 2026?",
    "issue": 0,
    "jeu": "2026-08-16",
-   "etat_de_depart": "Un contrôle temporaire aux frontières intérieures de Schengen, imposé par l'Italie à l'encontre de l'Espagne, est en vigueur ou a été notifié au moment où la question est posée.",
-   "evenement": "La levée de ce contrôle temporaire aux frontières intérieures de Schengen (la fin de la suspension par l'Italie à l'encontre de l'Espagne) avant le 30 août 2026.",
+   "etat_de_depart": "Un contrôle temporaire aux frontières intérieures de Schengen imposé par l'Italie à l'encontre de l'Espagne est en vigueur ou a été notifié au moment où la question est posée.",
+   "evenement": "La levée de ce contrôle temporaire aux frontières intérieures de Schengen avant le 30 août 2026.",
    "pays": [],
    "regions": [
     "europe"
@@ -2089,8 +2099,8 @@
    "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
    "issue": 0,
    "jeu": "2026-01-18",
-   "etat_de_depart": "Le traité New START est en vigueur et arrive à échéance le 5 février 2026.",
-   "evenement": "L'événement est la conclusion d'une prolongation du traité New START qui le maintiendrait en vigueur jusqu'au moins le 5 février 2027.",
+   "etat_de_depart": "Le traité New START est en vigueur et est prévu d'expirer le 5 février 2026.",
+   "evenement": "Le renouvellement (prolongation) du traité New START de sorte qu'il reste en vigueur au moins jusqu'au 5 février 2027.",
    "pays": [
     "États-Unis",
     "Russie"
@@ -2100,12 +2110,12 @@
     "europe"
    ],
    "regles": [
-    "effet_d_echeance_negociation"
+    "usmca_revision_conjointe"
    ],
    "rejets": [],
    "compartiments": [
-    "calendriers-echeances:anticipations",
-    "calendriers-echeances:dates_limites"
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:commerce"
    ]
   }
  ]
