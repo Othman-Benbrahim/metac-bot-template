@@ -23,7 +23,9 @@ connaître l'issue. Les règles citant 2026 ou après sont exclues du catalogue 
 ## Bras (fixés)
 Mêmes notes du comité pour les trois bras. M0 : synthèse finale actuelle de M. M1 : la même, avec le bloc des règles
 retenues (situation de départ, événement, texte). M2 : la même, avec autant de règles tirées au hasard (graine fixe)
-parmi celles d'objet différent. Modèle : gpt-5-mini, comme les autres bancs. Script `banc_position_ecosysteme.py`.
+parmi celles d'objet différent. Modèle : Claude Haiku 4.5 sur les crédits Bedrock (décision de l'auteur, 14 h 36),
+pour les trois bras ; le bot poste M avec gpt-5-mini : un effet trouvé sur Haiku devra être confirmé en ombre sur le
+modèle du bot. Script `banc_position_ecosysteme.py`, 150 questions au plus.
 
 ## Critère (fixé)
 Lecture principale à la manière de Metaculus : perte log brute, toutes les lignes, une par question.
@@ -33,4 +35,5 @@ flux réel. Sinon rien ne change. Descriptif : M2 − M0, détail par règle et 
 
 ## Puissance (verification_a_priori)
 À compléter avec le nombre de questions couvertes par la carte (σ ≈ 0,1 à 0,3 par question selon la proximité des
-bras). Plafond de coût : 8 $ (4 appels par question, recherche gelée réutilisée quand elle existe). Lancé une fois.
+bras ; avec σ ≈ 0,08, 150 questions voient un écart d'environ 0,016). Plafond : 15 $ de crédits Bedrock (4 appels par
+question ; Haiku coûte environ trois à quatre fois plus par mot que gpt-5-mini). Lancé une fois.

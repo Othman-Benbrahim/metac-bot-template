@@ -14,7 +14,7 @@ Par question, sur les mêmes entrées :
   est DIFFÉRENT : mesure ce qu'apporte du texte de règle quelconque.
 Les cotes et prévisions de foule ne sont jamais lues ni transmises.
 
-    python banc_position_ecosysteme.py --budget 8
+    python banc_position_ecosysteme.py --n 150 --budget 15     # Claude Haiku 4.5, crédits Bedrock
 """
 from __future__ import annotations
 
@@ -40,7 +40,8 @@ REGISTRE = Path("registre")
 CARTE = REGISTRE / "couverture-regles-jugement2026-v5.json"
 FICHIER = REGISTRE / "banc-position-ecosysteme.jsonl"
 RESUME = REGISTRE / "banc-position-ecosysteme.json"
-MODELE = bja.MODELE
+HAIKU = "bedrock/global.anthropic.claude-haiku-4-5-20251001-v1:0"   # crédits Bedrock (décision de l'auteur, 14 h 36)
+MODELE = HAIKU
 GRAINE = sum(map(ord, "position-ecosysteme"))
 
 
@@ -110,7 +111,7 @@ def resumer(ls: list[dict]) -> dict:
     return out
 
 
-async def principal(budget: float) -> int:
+async def principal(budget: float, n: int = 150, modele: str = HAIKU) -> int:
     from forecasting_tools import MonetaryCostManager
     if not ar.recherche_bornee_disponible():
         print("Il faut une recherche bornable dans le temps (EXA_API_KEY ou TINYFISH_API_KEY). Rien n'est lancé.")
@@ -127,6 +128,8 @@ async def principal(budget: float) -> int:
             ids = [i for i in ids if i in cat]
             plac = placebo(ids, cat, rng)               # tiré pour chaque question dans l'ordre fixé, même si déjà faite
             qid = f'{x["source"]}:{x["id"]}:{x["jeu"]}'
+            if faites >= n:
+                break
             if qid in deja or not ids:
                 continue
             if fb.depasse(cumul, pire, budget):
@@ -150,7 +153,7 @@ async def principal(budget: float) -> int:
                 info = datetime.fromisoformat(x["jeu"]).replace(tzinfo=timezone.utc)
                 rech, du_cache = await tr.chercher_fige(qid, x["titre"], info, ar.chercher_avant)
                 res["recherche"] = {**tr.tracer(rech, x["jeu"]), "cache": du_cache}
-                llm = lambda: am.llm(MODELE, temperature=0.2, timeout=300, allowed_tries=2)
+                llm = lambda: am.llm(modele, temperature=0.2, timeout=300, allowed_tries=2)
                 try:
                     r = ap.extraire_json(await llm().invoke(bja.consigne_notes(q, p_b, rech, x["jeu"])))
                     notes = bja.lire_notes(r)
@@ -165,7 +168,7 @@ async def principal(budget: float) -> int:
                 cout = float(cm.current_usage or 0)
             ligne = {"type": "banc_position_ecosysteme", "jeu": x["jeu"], "question_id": qid, "source_question": x["source"],
                      "version_bot": ap.VERSION_BOT, "titre": x["titre"], "forme": x["forme"], "issue": x["issue"],
-                     "p_B": p_b, "regles": ids, "placebo": plac, **res, "exclue": exclue, "modele": MODELE,
+                     "p_B": p_b, "regles": ids, "placebo": plac, **res, "exclue": exclue, "modele": modele,
                      "cout_usd": round(cout, 4), "licence": "ForecastBench, Forecasting Research Institute, CC BY-SA 4.0"}
             f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
             f.flush()
@@ -184,6 +187,8 @@ async def principal(budget: float) -> int:
 
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
-    a.add_argument("--budget", type=float, default=8.0)
+    a.add_argument("--budget", type=float, default=15.0)
+    a.add_argument("--n", type=int, default=150)
+    a.add_argument("--modele", default=HAIKU)
     o = a.parse_args()
-    sys.exit(asyncio.run(principal(o.budget)))
+    sys.exit(asyncio.run(principal(o.budget, o.n, o.modele)))
