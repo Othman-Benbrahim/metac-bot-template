@@ -1,0 +1,846 @@
+{
+ "lot": 2,
+ "requetes": 209,
+ "pays": [
+  {
+   "pays": "Kenya",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling for the 2007 Kenyan general election"
+   ]
+  },
+  {
+   "pays": "Kosovo",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Lettonie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the 2022 Latvian parliamentary election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling on the United Kingdom's membership of the European Union (2016–2020)",
+    "Opinion polling on the United Kingdom's membership of the European Union",
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling on the United Kingdom's membership of the European Union",
+    "Opinion polling on the United Kingdom's membership of the European Union (2016–2020)",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Liban",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2026 Israeli legislative election",
+    "Leadership opinion polling for the 2026 Israeli legislative election",
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling for the 2026 Israeli legislative election",
+    "Leadership opinion polling for the 2026 Israeli legislative election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Lituanie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the 2026 Russian legislative election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling on the United Kingdom's membership of the European Union (2016–2020)",
+    "Opinion polling on the United Kingdom's membership of the European Union",
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling for the 2026 Russian legislative election",
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling on the United Kingdom's membership of the European Union",
+    "Opinion polling on the United Kingdom's membership of the European Union (2016–2020)",
+    "Opinion polling for the 2026 Russian legislative election"
+   ]
+  },
+  {
+   "pays": "Luxembourg",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the 2026 Russian legislative election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling on the United Kingdom's membership of the European Union (2016–2020)",
+    "Opinion polling on the United Kingdom's membership of the European Union",
+    "Opinion polling for the 2026 Russian legislative election",
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling on the United Kingdom's membership of the European Union",
+    "Opinion polling on the United Kingdom's membership of the European Union (2016–2020)",
+    "Opinion polling for the 2026 Russian legislative election"
+   ]
+  },
+  {
+   "pays": "Macédoine du Nord",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Malaisie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2013 Philippine Senate election"
+   ]
+  },
+  {
+   "pays": "Malawi",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Malte",
+   "page": "Opinion polling for the 2026 Maltese general election",
+   "tableaux_html": 5,
+   "lignes_lues": 33,
+   "dernier_sondage": "2026-05-23",
+   "colonnes": [
+    "PL",
+    "PN",
+    "AD+PD",
+    "M",
+    "Not voting"
+   ],
+   "total_moyennes": 107.9,
+   "lead": {
+    "lignes": 6,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 5,
+    "concordantes": 5,
+    "divergentes": {}
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Maroc",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Maurice",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Mexique",
+   "page": "Opinion polling for the 2027 Mexican legislative election",
+   "tableaux_html": 14,
+   "lignes_lues": 32,
+   "dernier_sondage": "2026-10-26",
+   "colonnes": [
+    "PAN",
+    "PRI",
+    "PVEM",
+    "PT",
+    "MC",
+    "Morena",
+    "PAZ",
+    "SOMOS",
+    "Und./ no ans."
+   ],
+   "total_moyennes": 94.4,
+   "lead": {
+    "lignes": 24,
+    "accord": 0.542
+   },
+   "wikitexte": {
+    "colonnes_communes": 9,
+    "concordantes": 9,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "es",
+    "statut": "pas de page liée"
+   },
+   "problemes": [
+    "relecture « Lead » en échec"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Moldavie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2021 Moldovan parliamentary election",
+    "Opinion polling for the 2024 Romanian presidential election",
+    "Opinion polling for the 2021 Moldovan parliamentary election"
+   ]
+  },
+  {
+   "pays": "Mongolie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Monténégro",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the next Portuguese legislative election",
+    "Opinion polling for the 2025 Portuguese legislative election",
+    "Opinion polling for the 2024 Portuguese legislative election"
+   ]
+  },
+  {
+   "pays": "Namibie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Népal",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling on the Narendra Modi premiership",
+    "Opinion polling on the Narendra Modi premiership"
+   ]
+  },
+  {
+   "pays": "Nicaragua",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Nigeria",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Norvège",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2026 Russian legislative election",
+    "Opinion polling for the 2017 Norwegian parliamentary election",
+    "2025 opinion polling for the 2026 Israeli legislative election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling for the 2022 Swedish general election",
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling for the 2026 Russian legislative election",
+    "2025 opinion polling for the 2026 Israeli legislative election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling for the 2022 Swedish general election",
+    "Opinion polling for the 2026 Russian legislative election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Nouvelle-Zélande",
+   "page": "Opinion polling for the 2026 New Zealand general election",
+   "tableaux_html": 31,
+   "lignes_lues": 362,
+   "dernier_sondage": "2026-11-03",
+   "colonnes": [
+    "NAT",
+    "LAB",
+    "GRN",
+    "ACT",
+    "NZF",
+    "TPM",
+    "OPP"
+   ],
+   "total_moyennes": 100.0,
+   "lead": {
+    "lignes": 132,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 7,
+    "concordantes": 7,
+    "divergentes": {}
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Pakistan",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling on the Narendra Modi premiership",
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling on the Narendra Modi premiership",
+    "Opinion polling for the 2024 Pakistani general election",
+    "Opinion polling for the 2018 Pakistani general election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Panama",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling on the second Trump presidency",
+    "Opinion polling on the second Trump presidency",
+    "Opinion polling for the 2018 Pakistani general election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Paraguay",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Pays-Bas",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2029 Belgian elections",
+    "Opinion polling for the 2024 Belgian elections",
+    "Opinion polling for the 2021 Dutch general election",
+    "Opinion polling for the 2023 Dutch general election",
+    "Opinion polling for the 2029 Belgian elections",
+    "Opinion polling for the 2026 Russian legislative election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Pérou",
+   "page": "Opinion polling for the 2026 Peruvian general election",
+   "tableaux_html": 14,
+   "lignes_lues": 105,
+   "dernier_sondage": "2026-04-06",
+   "colonnes": [
+    "FP",
+    "JPP",
+    "RP",
+    "OBRAS",
+    "PPT",
+    "PBG",
+    "AN",
+    "PP",
+    "APP",
+    "CooP",
+    "SP",
+    "ID"
+   ],
+   "total_moyennes": 61.8,
+   "lead": {
+    "lignes": 36,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 12,
+    "concordantes": 12,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "es",
+    "page": "Anexo:Sondeos de intención de voto para las elecciones presidenciales de Perú de 2026",
+    "lignes_lues": 319,
+    "statut": "pas de période commune (30 jours) entre les deux pages",
+    "dernier_sondage": "2026-06-07",
+    "colonnes": [],
+    "colonnes_appariees": 0,
+    "concordantes": 0,
+    "divergentes": {}
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Philippines",
+   "page": "Opinion polling for the 2028 Philippine presidential election",
+   "tableaux_html": 14,
+   "lignes_lues": 0,
+   "statut": "aucun tableau de sondages lisible"
+  },
+  {
+   "pays": "Pologne",
+   "page": "Opinion polling for the next Polish parliamentary election",
+   "tableaux_html": 32,
+   "lignes_lues": 545,
+   "dernier_sondage": "2026-11-19",
+   "colonnes": [
+    "PiS",
+    "KO",
+    "PSL",
+    "Lewica",
+    "Razem",
+    "Konfederacja",
+    "KKP",
+    "R+",
+    "Don't know"
+   ],
+   "total_moyennes": 102.5,
+   "lead": {
+    "lignes": 117,
+    "accord": 0.991
+   },
+   "wikitexte": {
+    "colonnes_communes": 9,
+    "concordantes": 9,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "pl",
+    "statut": "pas de page liée"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Portugal",
+   "page": "Opinion polling for the next Portuguese legislative election",
+   "tableaux_html": 20,
+   "lignes_lues": 27,
+   "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)"
+  },
+  {
+   "pays": "République dominicaine",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "République tchèque",
+   "page": "Opinion polling for the 2025 Czech parliamentary election",
+   "tableaux_html": 22,
+   "lignes_lues": 78,
+   "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)"
+  },
+  {
+   "pays": "Roumanie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2024 Romanian parliamentary election",
+    "Opinion polling for the 2024 Romanian presidential election",
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the 2026 Hungarian parliamentary election",
+    "Opinion polling for the 2021 Moldovan parliamentary election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling on the United Kingdom's membership of the European Union (2016–2020)",
+    "Opinion polling for the 2026 Hungarian parliamentary election",
+    "Opinion polling and seat projections for the 2029 European Parliament election",
+    "Opinion polling for the 2022 Hungarian parliamentary election",
+    "Opinion polling for the United Kingdom European Union membership referendum",
+    "Opinion polling for the 2021 Moldovan parliamentary election"
+   ]
+  },
+  {
+   "pays": "Royaume-Uni",
+   "page": "Opinion polling for the next United Kingdom general election",
+   "tableaux_html": 25,
+   "lignes_lues": 642,
+   "dernier_sondage": "2026-12-31",
+   "colonnes": [
+    "Lab",
+    "Con",
+    "Ref",
+    "LD",
+    "Grn",
+    "SNP",
+    "PC"
+   ],
+   "total_moyennes": 96.8,
+   "lead": {
+    "lignes": 264,
+    "accord": 0.996
+   },
+   "wikitexte": {
+    "colonnes_communes": 7,
+    "concordantes": 0,
+    "divergentes": {
+     "Lab": [
+      18.0,
+      14.16
+     ],
+     "Con": [
+      19.0,
+      17.6
+     ],
+     "Ref": [
+      28.8,
+      24.6
+     ],
+     "LD": [
+      13.2,
+      20.2
+     ],
+     "Grn": [
+      13.6,
+      10.0
+     ],
+     "SNP": [
+      3.0,
+      8.4
+     ],
+     "PC": [
+      1.2,
+      1.8
+     ]
+    }
+   },
+   "problemes": [
+    "wikitexte divergent"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Russie",
+   "page": "Opinion polling for the 2026 Russian legislative election",
+   "tableaux_html": 87,
+   "lignes_lues": 308,
+   "dernier_sondage": "2026-12-25",
+   "colonnes": [
+    "UR",
+    "CPRF",
+    "LDPR",
+    "SRZP",
+    "NP",
+    "RPPSJ",
+    "Yabloko",
+    "CR",
+    "Greens",
+    "Rodina",
+    "RPFJ",
+    "GA"
+   ],
+   "total_moyennes": 71.0,
+   "lead": {
+    "lignes": 52,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 14,
+    "concordantes": 11,
+    "divergentes": {
+     "UR": [
+      42.2,
+      46.6
+     ],
+     "CPRF": [
+      9.2,
+      8.0
+     ],
+     "SRZP": [
+      3.8,
+      3.0
+     ]
+    }
+   },
+   "langue_locale": {
+    "langue": "ru",
+    "statut": "pas de page liée"
+   },
+   "problemes": [
+    "wikitexte divergent"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Salvador",
+   "page": "Opinion polling for the 2027 Salvadoran elections",
+   "tableaux_html": 35,
+   "lignes_lues": 9,
+   "dernier_sondage": "2026-05-23",
+   "colonnes": [
+    "Ayala",
+    "Bukele",
+    "Durán",
+    "Rodríguez",
+    "Unsure",
+    "Bukele's brothers",
+    "Callejas",
+    "Castro",
+    "Trigueros"
+   ],
+   "total_moyennes": 75.5,
+   "lead": {
+    "lignes": 2,
+    "accord": 0.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 9,
+    "concordantes": 9,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "es",
+    "statut": "pas de page liée"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Sénégal",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Serbie",
+   "page": "Opinion polling for the 2026 Serbian parliamentary election",
+   "tableaux_html": 4,
+   "lignes_lues": 19,
+   "dernier_sondage": "2026-10-22",
+   "colonnes": [
+    "SNS–led coalition",
+    "SSP",
+    "SRCE",
+    "SPS–JS",
+    "NDSS",
+    "POKS",
+    "SL",
+    "MI–SN",
+    "NPS",
+    "ZLF",
+    "DS",
+    "KP"
+   ],
+   "total_moyennes": 108.2,
+   "lead": {
+    "lignes": 7,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 12,
+    "concordantes": 12,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "sr",
+    "statut": "pas de page liée"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Singapour",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Slovaquie",
+   "page": "Opinion polling for the next Slovak parliamentary election",
+   "tableaux_html": 16,
+   "lignes_lues": 7,
+   "dernier_sondage": "2026-05-11",
+   "colonnes": [
+    "Smer",
+    "Hlas",
+    "SNS",
+    "Republika",
+    "PS",
+    "Democrats",
+    "KDH",
+    "SaS",
+    "Slovakia",
+    "ZĽ",
+    "KÚ",
+    "Hungarian Alliance"
+   ],
+   "total_moyennes": 96.9,
+   "lead": {
+    "lignes": 2,
+    "accord": 1.0
+   },
+   "wikitexte": {
+    "colonnes_communes": 13,
+    "concordantes": 13,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "sk",
+    "statut": "pas de page liée"
+   },
+   "problemes": [],
+   "statut": "lu"
+  },
+  {
+   "pays": "Slovénie",
+   "page": "Opinion polling for the next Slovenian parliamentary election",
+   "tableaux_html": 16,
+   "lignes_lues": 2,
+   "statut": "aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)"
+  },
+  {
+   "pays": "Sri Lanka",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Suède",
+   "page": "Opinion polling for the 2026 Swedish general election",
+   "tableaux_html": 51,
+   "lignes_lues": 109,
+   "dernier_sondage": "2026-05-15",
+   "colonnes": [
+    "Yes",
+    "No",
+    "Unsure"
+   ],
+   "total_moyennes": 100.0,
+   "lead": {
+    "lignes": 0,
+    "accord": null
+   },
+   "wikitexte": {
+    "colonnes_communes": 3,
+    "concordantes": 1,
+    "divergentes": {
+     "Yes": [
+      39.54,
+      31.54
+     ],
+     "No": [
+      44.92,
+      42.0
+     ]
+    }
+   },
+   "langue_locale": {
+    "langue": "sv",
+    "page": "Opinionsundersökningar inför riksdagsvalet i Sverige 2026",
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "wikitexte divergent",
+    "langue locale : aucun tableau lisible"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Suisse",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling on the Nayib Bukele presidency",
+    "Opinion polling on the Nayib Bukele presidency",
+    "Opinion polling for the 2023 Swiss federal election"
+   ]
+  },
+  {
+   "pays": "Taïwan",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2026 Japanese general election",
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling for the 2026 Japanese general election",
+    "Opinion polling on Taiwanese identity",
+    "Opinion polling for the 2024 Taiwanese presidential election",
+    "Opinion polling for the 2026 Japanese general election",
+    "Opinion polling for the 2012 Taiwanese presidential election",
+    "Opinion polling for the 2020 Taiwanese general election",
+    "Opinion polling on the Tsai Ing-wen presidency"
+   ]
+  },
+  {
+   "pays": "Tanzanie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Thaïlande",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Polling station",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Tunisie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Turquie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "Opinion polling for the 2023 Turkish general election",
+    "Opinion polling for the June 2015 Turkish general election",
+    "Opinion polling for the November 2015 Turkish general election",
+    "Opinion polling for the 2023 Turkish parliamentary election",
+    "International opinion polling for the 2008 United States presidential election",
+    "Opinion polling for the November 2015 Turkish general election",
+    "Opinion polling for the 2023 Turkish presidential election",
+    "Opinion polling for the 2018 Turkish general election",
+    "Opinion polling for the 2019 Turkish local elections",
+    "Leadership approval polling for the 2023 Turkish general election",
+    "Opinion polling for the 2023 Turkish parliamentary election",
+    "International opinion polling for the 2016 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Ukraine",
+   "page": "Opinion polling for the next Ukrainian presidential election",
+   "tableaux_html": 30,
+   "lignes_lues": 217,
+   "dernier_sondage": "2026-10-05",
+   "colonnes": [
+    "Zelenskyy SN",
+    "Razumkov RP",
+    "Poroshenko YeS",
+    "Tymoshenko VoB",
+    "Boyko PZZhM",
+    "Biletsky NK",
+    "Zaluzhnyi Ind.",
+    "Fedorov Ind.",
+    "Budanov Ind.",
+    "Goncharenko YeS",
+    "Klitschko UDAR",
+    "Terekhov UKh"
+   ],
+   "total_moyennes": 93.8,
+   "lead": {
+    "lignes": 25,
+    "accord": 0.92
+   },
+   "wikitexte": {
+    "colonnes_communes": 16,
+    "concordantes": 16,
+    "divergentes": {}
+   },
+   "langue_locale": {
+    "langue": "uk",
+    "page": "Наступні вибори Президента України (соціологічні опитування)",
+    "lignes_lues": 0
+   },
+   "problemes": [
+    "langue locale : aucun tableau lisible"
+   ],
+   "statut": "à corriger"
+  },
+  {
+   "pays": "Uruguay",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Venezuela",
+   "statut": "page anglaise introuvable",
+   "titres_vus": []
+  },
+  {
+   "pays": "Zambie",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election"
+   ]
+  },
+  {
+   "pays": "Zimbabwe",
+   "statut": "page anglaise introuvable",
+   "titres_vus": [
+    "International opinion polling for the 2008 United States presidential election"
+   ]
+  }
+ ]
+}

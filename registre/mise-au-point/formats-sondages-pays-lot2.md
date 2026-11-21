@@ -1,0 +1,95 @@
+# Lecture des pages de sondages, lot 2 (54 pays, 209 requêtes)
+
+Statuts : page anglaise introuvable 38, lu 7, à corriger 5, aucun tableau de sondages lisible 1, aucun tableau principal (duels, scénarios ou tableaux de chefs seulement) 3
+
+- **Kenya** : page anglaise introuvable
+- **Kosovo** : page anglaise introuvable
+- **Lettonie** : page anglaise introuvable
+- **Liban** : page anglaise introuvable
+- **Lituanie** : page anglaise introuvable
+- **Luxembourg** : page anglaise introuvable
+- **Macédoine du Nord** : page anglaise introuvable
+- **Malaisie** : page anglaise introuvable
+- **Malawi** : page anglaise introuvable
+- **Maroc** : page anglaise introuvable
+- **Maurice** : page anglaise introuvable
+- **Mexique** : à corriger — relecture « Lead » en échec
+  - page : Opinion polling for the 2027 Mexican legislative election ; dernier sondage 2026-10-26 ; colonnes ['PAN', 'PRI', 'PVEM', 'PT', 'MC', 'Morena', 'PAZ', 'SOMOS', 'Und./ no ans.'] ; total 94.4 ; Lead {'lignes': 24, 'accord': 0.542}
+  - wikitexte : {'colonnes_communes': 9, 'concordantes': 9, 'divergentes': {}}
+  - langue locale : {'langue': 'es', 'statut': 'pas de page liée'}
+- **Moldavie** : page anglaise introuvable
+- **Mongolie** : page anglaise introuvable
+- **Monténégro** : page anglaise introuvable
+- **Namibie** : page anglaise introuvable
+- **Nicaragua** : page anglaise introuvable
+- **Nigeria** : page anglaise introuvable
+- **Norvège** : page anglaise introuvable
+- **Népal** : page anglaise introuvable
+- **Pakistan** : page anglaise introuvable
+- **Panama** : page anglaise introuvable
+- **Paraguay** : page anglaise introuvable
+- **Pays-Bas** : page anglaise introuvable
+- **Philippines** : aucun tableau de sondages lisible
+  - page : Opinion polling for the 2028 Philippine presidential election ; dernier sondage None ; colonnes None ; total None ; Lead None
+- **Portugal** : aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)
+  - page : Opinion polling for the next Portuguese legislative election ; dernier sondage None ; colonnes None ; total None ; Lead None
+- **Roumanie** : page anglaise introuvable
+- **Royaume-Uni** : à corriger — wikitexte divergent
+  - page : Opinion polling for the next United Kingdom general election ; dernier sondage 2026-12-31 ; colonnes ['Lab', 'Con', 'Ref', 'LD', 'Grn', 'SNP', 'PC'] ; total 96.8 ; Lead {'lignes': 264, 'accord': 0.996}
+  - wikitexte : {'colonnes_communes': 7, 'concordantes': 0, 'divergentes': {'Lab': [18.0, 14.16], 'Con': [19.0, 17.6], 'Ref': [28.8, 24.6], 'LD': [13.2, 20.2], 'Grn': [13.6, 10.0], 'SNP': [3.0, 8.4], 'PC': [1.2, 1.8]}}
+- **Russie** : à corriger — wikitexte divergent
+  - page : Opinion polling for the 2026 Russian legislative election ; dernier sondage 2026-12-25 ; colonnes ['UR', 'CPRF', 'LDPR', 'SRZP', 'NP', 'RPPSJ', 'Yabloko', 'CR', 'Greens', 'Rodina', 'RPFJ', 'GA'] ; total 71.0 ; Lead {'lignes': 52, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 14, 'concordantes': 11, 'divergentes': {'UR': [42.2, 46.6], 'CPRF': [9.2, 8.0], 'SRZP': [3.8, 3.0]}}
+  - langue locale : {'langue': 'ru', 'statut': 'pas de page liée'}
+- **République dominicaine** : page anglaise introuvable
+- **République tchèque** : aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)
+  - page : Opinion polling for the 2025 Czech parliamentary election ; dernier sondage None ; colonnes None ; total None ; Lead None
+- **Singapour** : page anglaise introuvable
+- **Slovénie** : aucun tableau principal (duels, scénarios ou tableaux de chefs seulement)
+  - page : Opinion polling for the next Slovenian parliamentary election ; dernier sondage None ; colonnes None ; total None ; Lead None
+- **Sri Lanka** : page anglaise introuvable
+- **Suisse** : page anglaise introuvable
+- **Suède** : à corriger — wikitexte divergent, langue locale : aucun tableau lisible
+  - page : Opinion polling for the 2026 Swedish general election ; dernier sondage 2026-05-15 ; colonnes ['Yes', 'No', 'Unsure'] ; total 100.0 ; Lead {'lignes': 0, 'accord': None}
+  - wikitexte : {'colonnes_communes': 3, 'concordantes': 1, 'divergentes': {'Yes': [39.54, 31.54], 'No': [44.92, 42.0]}}
+  - langue locale : {'langue': 'sv', 'page': 'Opinionsundersökningar inför riksdagsvalet i Sverige 2026', 'lignes_lues': 0}
+- **Sénégal** : page anglaise introuvable
+- **Tanzanie** : page anglaise introuvable
+- **Taïwan** : page anglaise introuvable
+- **Thaïlande** : page anglaise introuvable
+- **Tunisie** : page anglaise introuvable
+- **Turquie** : page anglaise introuvable
+- **Ukraine** : à corriger — langue locale : aucun tableau lisible
+  - page : Opinion polling for the next Ukrainian presidential election ; dernier sondage 2026-10-05 ; colonnes ['Zelenskyy SN', 'Razumkov RP', 'Poroshenko YeS', 'Tymoshenko VoB', 'Boyko PZZhM', 'Biletsky NK', 'Zaluzhnyi Ind.', 'Fedorov Ind.', 'Budanov Ind.', 'Goncharenko YeS', 'Klitschko UDAR', 'Terekhov UKh'] ; total 93.8 ; Lead {'lignes': 25, 'accord': 0.92}
+  - wikitexte : {'colonnes_communes': 16, 'concordantes': 16, 'divergentes': {}}
+  - langue locale : {'langue': 'uk', 'page': 'Наступні вибори Президента України (соціологічні опитування)', 'lignes_lues': 0}
+- **Uruguay** : page anglaise introuvable
+- **Venezuela** : page anglaise introuvable
+- **Zambie** : page anglaise introuvable
+- **Zimbabwe** : page anglaise introuvable
+- **Malte** : lu
+  - page : Opinion polling for the 2026 Maltese general election ; dernier sondage 2026-05-23 ; colonnes ['PL', 'PN', 'AD+PD', 'M', 'Not voting'] ; total 107.9 ; Lead {'lignes': 6, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 5, 'concordantes': 5, 'divergentes': {}}
+- **Nouvelle-Zélande** : lu
+  - page : Opinion polling for the 2026 New Zealand general election ; dernier sondage 2026-11-03 ; colonnes ['NAT', 'LAB', 'GRN', 'ACT', 'NZF', 'TPM', 'OPP'] ; total 100.0 ; Lead {'lignes': 132, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 7, 'concordantes': 7, 'divergentes': {}}
+- **Pologne** : lu
+  - page : Opinion polling for the next Polish parliamentary election ; dernier sondage 2026-11-19 ; colonnes ['PiS', 'KO', 'PSL', 'Lewica', 'Razem', 'Konfederacja', 'KKP', 'R+', "Don't know"] ; total 102.5 ; Lead {'lignes': 117, 'accord': 0.991}
+  - wikitexte : {'colonnes_communes': 9, 'concordantes': 9, 'divergentes': {}}
+  - langue locale : {'langue': 'pl', 'statut': 'pas de page liée'}
+- **Pérou** : lu
+  - page : Opinion polling for the 2026 Peruvian general election ; dernier sondage 2026-04-06 ; colonnes ['FP', 'JPP', 'RP', 'OBRAS', 'PPT', 'PBG', 'AN', 'PP', 'APP', 'CooP', 'SP', 'ID'] ; total 61.8 ; Lead {'lignes': 36, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 12, 'concordantes': 12, 'divergentes': {}}
+  - langue locale : {'langue': 'es', 'page': 'Anexo:Sondeos de intención de voto para las elecciones presidenciales de Perú de 2026', 'lignes_lues': 319, 'statut': 'pas de période commune (30 jours) entre les deux pages', 'dernier_sondage': '2026-06-07', 'colonnes': [], 'colonnes_appariees': 0, 'concordantes': 0, 'divergentes': {}}
+- **Salvador** : lu
+  - page : Opinion polling for the 2027 Salvadoran elections ; dernier sondage 2026-05-23 ; colonnes ['Ayala', 'Bukele', 'Durán', 'Rodríguez', 'Unsure', "Bukele's brothers", 'Callejas', 'Castro', 'Trigueros'] ; total 75.5 ; Lead {'lignes': 2, 'accord': 0.0}
+  - wikitexte : {'colonnes_communes': 9, 'concordantes': 9, 'divergentes': {}}
+  - langue locale : {'langue': 'es', 'statut': 'pas de page liée'}
+- **Serbie** : lu
+  - page : Opinion polling for the 2026 Serbian parliamentary election ; dernier sondage 2026-10-22 ; colonnes ['SNS–led coalition', 'SSP', 'SRCE', 'SPS–JS', 'NDSS', 'POKS', 'SL', 'MI–SN', 'NPS', 'ZLF', 'DS', 'KP'] ; total 108.2 ; Lead {'lignes': 7, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 12, 'concordantes': 12, 'divergentes': {}}
+  - langue locale : {'langue': 'sr', 'statut': 'pas de page liée'}
+- **Slovaquie** : lu
+  - page : Opinion polling for the next Slovak parliamentary election ; dernier sondage 2026-05-11 ; colonnes ['Smer', 'Hlas', 'SNS', 'Republika', 'PS', 'Democrats', 'KDH', 'SaS', 'Slovakia', 'ZĽ', 'KÚ', 'Hungarian Alliance'] ; total 96.9 ; Lead {'lignes': 2, 'accord': 1.0}
+  - wikitexte : {'colonnes_communes': 13, 'concordantes': 13, 'divergentes': {}}
+  - langue locale : {'langue': 'sk', 'statut': 'pas de page liée'}
