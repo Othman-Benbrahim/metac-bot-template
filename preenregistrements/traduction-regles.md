@@ -72,3 +72,17 @@ Défaut de traduction constaté après coup : « Cornyn win … runoff by 9% » 
 tour » (p 0,98, issue non). Corrigé pour la suite (écart de voix non traduit) ; l'essai n'est pas relancé.
 Suite : C devient le point de départ de M quand la carte robot trouve une règle traduisible, en ombre d'abord sur le
 flux réel.
+
+## Ajout du 2026-11-21, 17 h 25 (AVANT le bilan de relecture) : contrôle après coup des lectures de sondages
+Faute de méthode reconnue : la relecture automatique (colonne « Lead » des tableaux) n'existait pas lors de l'essai.
+Les lectures utilisées par l'essai sont celles du commit 5c421cb (registre/sondages-questions.json). Elles sont
+contrôlées par le passage de collecte suivant, qui porte la relecture, ainsi :
+- DÉFAILLANCE PROUVÉE si, pour au moins une question de sondages de l'essai, (a) le tableau utilisé est refusé par la
+  relecture (moins de 80 % d'accord sur au moins 3 lignes vérifiables), ou (b) la moyenne du sujet relue diffère de
+  plus de 2 points de celle utilisée par l'essai, pour le même jeu (au-delà de 2 points, ce n'est plus une retouche
+  de page mais une autre lecture), ou (c) le sujet est lu dans une autre colonne.
+- Alors l'essai est relancé UNE fois, sur les lectures vérifiées, aux mêmes critères ; le second résultat est gardé,
+  quel qu'il soit, et le premier est noté comme invalide.
+- Une question dont le tableau n'a pas de colonne « Lead » n'est ni confirmée ni infirmée : elle est comptée à part,
+  et son nombre est publié avec le bilan.
+- Sans défaillance prouvée, le résultat du 16 h 14 tient.
