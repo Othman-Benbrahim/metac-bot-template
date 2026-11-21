@@ -375,7 +375,9 @@ ESSAIS = {
                                       "contre 29 %), à l'inverse d'avant 2026 : hypothèse du forçage non confirmée",
                            "objet": "émotions de la formulation des titres (EmoAtlas) ajoutées au recalibrage des semblables",
                            "doc": "preenregistrements/emotions-questions.md"},
-    "decision_institution": {"ouvert_le": "2026-11-21", "type": "intervalle", "n": 100, "statut": "ouvert",
+    "decision_institution": {"ouvert_le": "2026-11-21", "type": "intervalle", "n": 100, "statut": "clos", "clos_le": "2026-11-21",
+                             "verdict": "non adopté (run 44884890063, 94 questions) : outil 0,649 contre semblables 0,622, "
+                                        "+0,027 [−0,005 ; +0,063] ; hors Fed 0,720 contre 0,666 ; M 0,418 sur 14 communes",
                              "objet": "décision d'institution avant une échéance : faits relevés (étape prévue, règle, "
                                       "soutien, confirmation) combinés au taux de départ des semblables, contre ces derniers",
                              "doc": "preenregistrements/decision-institution.md"},

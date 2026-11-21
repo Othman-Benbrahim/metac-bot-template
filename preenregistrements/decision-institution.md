@@ -55,3 +55,14 @@ le détail hors Fed est rapporté. Une centaine de questions : seul un effet net
 - Lecture principale à la manière de Metaculus (réserve de l'auteur : mesurer la même chose que le tournoi, sans
   déformer) : perte logarithmique brute moyenne de l'outil contre celle des semblables, sur toutes les questions, avec
   l'intervalle à 90 % ; l'intervalle corrigé est affiché à côté.
+
+## Résultat (2026-11-21, run 44884890063) : critère non atteint, essai clos
+102 questions traitées (4 erreurs, 4 exclues : le modèle disait connaître l'issue), 94 jugées, coût 1,39 $. Faits
+utilisables dans 95 % des cas (coupe-circuit non déclenché). Perte log : outil 0,649 contre semblables 0,622, écart
++0,027, intervalle 90 % [−0,005 ; +0,063] : l'outil fait PIRE. Fed (48) : 0,580 contre 0,579 ; hors Fed (46) : 0,720
+contre 0,666. Sur les 14 questions communes avec M : M 0,418, outil 0,635, semblables 0,583 (descriptif, petit nombre).
+Poids appris sur tout l'échantillon : soutien +0,60, confirmation par les deux +0,56, règle +0,50, confirmation par une
+seule +0,48 (positive, à l'inverse des signaux coûteux sur les conflits), étape prévue +0,15, décision déjà prise 0.
+Lecture : les faits de structure (règle, étape) sont presque toujours trouvés, mais ne séparent pas les oui des non
+au-delà du taux de départ ; combinés en validation croisée sur moins de cent questions, ils ajoutent du bruit. Rien dans
+le bot.
