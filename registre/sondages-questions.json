@@ -7,12 +7,43 @@
   },
   "manifold:Q9gNdcP2lc": {
    "election": "Hungarian Election",
-   "statut": "aucun_sondage_avant_le_jeu",
-   "page": "Opinion polling for the 2030 Hungarian parliamentary election",
+   "statut": "ok",
+   "page": "Opinion polling for the 2026 Hungarian parliamentary election",
    "sujet": "Orban (Fidesz)",
-   "colonne_sujet": null,
+   "colonne_sujet": "Orbán",
    "jeu": "2026-03-15",
-   "moyennes": {}
+   "moyennes": {
+    "Orbán": {
+     "moyenne": 44.0,
+     "n": 5,
+     "dernier": "2026-02-17"
+    },
+    "Magyar": {
+     "moyenne": 36.4,
+     "n": 5,
+     "dernier": "2026-02-17"
+    },
+    "Dobrev": {
+     "moyenne": 5.0,
+     "n": 5,
+     "dernier": "2026-01-27"
+    },
+    "Toroczkai": {
+     "moyenne": 4.8,
+     "n": 5,
+     "dernier": "2026-01-27"
+    },
+    "Márki-Zay": {
+     "moyenne": 18.0,
+     "n": 1,
+     "dernier": "2023-03-29"
+    },
+    "Donáth": {
+     "moyenne": 6.0,
+     "n": 1,
+     "dernier": "2023-02-15"
+    }
+   }
   },
   "manifold:hnC5dO8EZ5": {
    "election": "Clacton by election",
@@ -99,39 +130,34 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -296,11 +322,6 @@
      "n": 5,
      "dernier": "2024-11-25"
     },
-    "Blank Null Undec.": {
-     "moyenne": 18.74,
-     "n": 5,
-     "dernier": "2024-11-25"
-    },
     "M. Bolsonaro": {
      "moyenne": 27.78,
      "n": 5,
@@ -362,74 +383,74 @@
    "jeu": "2026-08-02",
    "moyennes": {
     "UR": {
-     "moyenne": 40.22,
+     "moyenne": 46.8,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CPRF": {
-     "moyenne": 9.48,
+     "moyenne": 8.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "LDPR": {
-     "moyenne": 9.24,
+     "moyenne": 8.4,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "SRZP": {
-     "moyenne": 4.34,
+     "moyenne": 3.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "NP": {
-     "moyenne": 3.82,
+     "moyenne": 3.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "RPPSJ": {
-     "moyenne": 6.14,
+     "moyenne": 1.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Yabloko": {
-     "moyenne": 6.14,
+     "moyenne": 0.8,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CR": {
-     "moyenne": 5.94,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Greens": {
-     "moyenne": 6.14,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Rodina": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "RPFJ": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "GA": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
-    },
-    "PG": {
-     "moyenne": 5.74,
-     "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CP": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
+    },
+    "BLP": {
+     "moyenne": 4.3,
+     "n": 1,
+     "dernier": "2026-06-04"
     }
    }
   },
@@ -459,39 +480,34 @@
    "jeu": "2026-09-13",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -575,12 +591,23 @@
   },
   "polymarket:0x2cd24d17f5680dc6e7b7d67c712a223ae85550745597e81bd2d2b8d073443951": {
    "election": "2026 Peruvian presidential election",
-   "statut": "sujet_absent_des_tableaux",
+   "statut": "ok",
    "page": "Opinion polling for the 2026 Peruvian general election",
    "sujet": "Roberto Sánchez Palomino",
-   "colonne_sujet": null,
+   "colonne_sujet": "Sánchez JP",
    "jeu": "2026-05-10",
-   "moyennes": {}
+   "moyennes": {
+    "Fujimori FP": {
+     "moyenne": 34.5,
+     "n": 2,
+     "dernier": "2026-04-25"
+    },
+    "Sánchez JP": {
+     "moyenne": 35.0,
+     "n": 2,
+     "dernier": "2026-04-25"
+    }
+   }
   },
   "polymarket:0x2f112a1cd954debe3438caac411ca4395cc53be0e1580a5802ab42618b94aff7": {
    "election": "Russia Elections: United Russia Wins Every Region?",
@@ -604,39 +631,34 @@
    "jeu": "2026-09-27",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -649,39 +671,34 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -814,72 +831,67 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 47.04,
+     "moyenne": 52.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CPRF": {
-     "moyenne": 8.32,
+     "moyenne": 6.8,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "LDPR": {
-     "moyenne": 7.38,
+     "moyenne": 7.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "SRZP": {
-     "moyenne": 2.88,
+     "moyenne": 2.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "NP": {
-     "moyenne": 5.28,
+     "moyenne": 3.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPPSJ": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Yabloko": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CR": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Greens": {
-     "moyenne": 9.54,
+     "moyenne": 0.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Rodina": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPFJ": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "GA": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CP": {
-     "moyenne": 9.34,
-     "n": 5,
-     "dernier": "2026-04-07"
-    },
-    "BLP": {
-     "moyenne": 12.62,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     }
@@ -923,74 +935,74 @@
    "jeu": "2026-08-02",
    "moyennes": {
     "UR": {
-     "moyenne": 40.22,
+     "moyenne": 46.8,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CPRF": {
-     "moyenne": 9.48,
+     "moyenne": 8.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "LDPR": {
-     "moyenne": 9.24,
+     "moyenne": 8.4,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "SRZP": {
-     "moyenne": 4.34,
+     "moyenne": 3.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "NP": {
-     "moyenne": 3.82,
+     "moyenne": 3.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "RPPSJ": {
-     "moyenne": 6.14,
+     "moyenne": 1.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Yabloko": {
-     "moyenne": 6.14,
+     "moyenne": 0.8,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CR": {
-     "moyenne": 5.94,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Greens": {
-     "moyenne": 6.14,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Rodina": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "RPFJ": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "GA": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
-    },
-    "PG": {
-     "moyenne": 5.74,
-     "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CP": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
+    },
+    "BLP": {
+     "moyenne": 4.3,
+     "n": 1,
+     "dernier": "2026-06-04"
     }
    }
   },
@@ -1011,39 +1023,34 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -1060,74 +1067,74 @@
    "jeu": "2026-06-21",
    "moyennes": {
     "UR": {
-     "moyenne": 44.9,
+     "moyenne": 47.5,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "CPRF": {
-     "moyenne": 8.34,
+     "moyenne": 8.06,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "LDPR": {
-     "moyenne": 8.68,
+     "moyenne": 8.6,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "SRZP": {
-     "moyenne": 3.36,
+     "moyenne": 2.96,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "NP": {
-     "moyenne": 4.8,
+     "moyenne": 3.68,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "RPPSJ": {
-     "moyenne": 5.94,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "Yabloko": {
-     "moyenne": 4.64,
+     "moyenne": 1.32,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "CR": {
-     "moyenne": 5.94,
+     "moyenne": 0.4,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "Greens": {
-     "moyenne": 5.94,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "Rodina": {
-     "moyenne": 5.74,
+     "moyenne": 0.2,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "RPFJ": {
-     "moyenne": 5.54,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "GA": {
-     "moyenne": 5.54,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "CP": {
-     "moyenne": 5.54,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-06-16"
     },
     "BLP": {
-     "moyenne": 12.8,
-     "n": 5,
-     "dernier": "2026-06-16"
+     "moyenne": 4.3,
+     "n": 1,
+     "dernier": "2026-06-04"
     }
    }
   },
@@ -1169,39 +1176,34 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -1236,8 +1238,8 @@
   },
   "polymarket:0x781a06aa5779f97724b75ed8128aaf72c4a8955c893a6fefdc0efd7cb001c513": {
    "election": "2026 Texas Republican Primary",
-   "statut": "sujet_absent_des_tableaux",
-   "page": "2026 Texas Attorney General election",
+   "statut": "aucun_sondage_avant_le_jeu",
+   "page": "2026 Texas Railroad Commissioner election",
    "sujet": "John Cornyn",
    "colonne_sujet": null,
    "jeu": "2026-03-01",
@@ -1265,39 +1267,34 @@
    "jeu": "2026-09-13",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -1310,72 +1307,72 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "UR": {
-     "moyenne": 39.66,
+     "moyenne": 41.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "CPRF": {
-     "moyenne": 10.02,
+     "moyenne": 9.4,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "LDPR": {
-     "moyenne": 9.46,
+     "moyenne": 9.2,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "SRZP": {
-     "moyenne": 4.38,
+     "moyenne": 3.8,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "NP": {
-     "moyenne": 3.42,
+     "moyenne": 2.8,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "RPPSJ": {
-     "moyenne": 6.24,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Yabloko": {
-     "moyenne": 5.1,
+     "moyenne": 1.6,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "CR": {
-     "moyenne": 4.5,
+     "moyenne": 0.8,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Greens": {
-     "moyenne": 6.24,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Rodina": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "RPFJ": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "GA": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "PG": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "CP": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     }
@@ -1399,39 +1396,34 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -1444,39 +1436,34 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -1489,72 +1476,67 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 47.04,
+     "moyenne": 52.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CPRF": {
-     "moyenne": 8.32,
+     "moyenne": 6.8,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "LDPR": {
-     "moyenne": 7.38,
+     "moyenne": 7.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "SRZP": {
-     "moyenne": 2.88,
+     "moyenne": 2.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "NP": {
-     "moyenne": 5.28,
+     "moyenne": 3.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPPSJ": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Yabloko": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CR": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Greens": {
-     "moyenne": 9.54,
+     "moyenne": 0.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Rodina": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPFJ": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "GA": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CP": {
-     "moyenne": 9.34,
-     "n": 5,
-     "dernier": "2026-04-07"
-    },
-    "BLP": {
-     "moyenne": 12.62,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     }
@@ -1571,12 +1553,43 @@
   },
   "polymarket:0x8ee27c276a1bee094293751285d8a6697674b023196cb21fdd14bf3ca12f6ec0": {
    "election": "2026 Brazilian presidential election",
-   "statut": "sujet_absent_des_tableaux",
+   "statut": "ok",
    "page": "Opinion polling for the 2026 Brazilian presidential election",
    "sujet": "Luiz Inácio Lula da Silva",
-   "colonne_sujet": null,
+   "colonne_sujet": "Lula PT",
    "jeu": "2026-08-16",
-   "moyennes": {}
+   "moyennes": {
+    "Lula PT": {
+     "moyenne": 41.28,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "F. Bolsonaro PL": {
+     "moyenne": 33.94,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Caiado PSD": {
+     "moyenne": 4.94,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Zema Novo": {
+     "moyenne": 3.14,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Santos Mission": {
+     "moyenne": 4.96,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Cury Avante": {
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
+    }
+   }
   },
   "polymarket:0x93657cd9bb7f8f7d7721ace577bc44194716a3f1e2c9dff20e4e454ea51a8842": {
    "election": "next Russian parliamentary election",
@@ -1587,72 +1600,72 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "UR": {
-     "moyenne": 39.66,
+     "moyenne": 41.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "CPRF": {
-     "moyenne": 10.02,
+     "moyenne": 9.4,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "LDPR": {
-     "moyenne": 9.46,
+     "moyenne": 9.2,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "SRZP": {
-     "moyenne": 4.38,
+     "moyenne": 3.8,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "NP": {
-     "moyenne": 3.42,
+     "moyenne": 2.8,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "RPPSJ": {
-     "moyenne": 6.24,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Yabloko": {
-     "moyenne": 5.1,
+     "moyenne": 1.6,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "CR": {
-     "moyenne": 4.5,
+     "moyenne": 0.8,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Greens": {
-     "moyenne": 6.24,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Rodina": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "RPFJ": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "GA": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "PG": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "CP": {
-     "moyenne": 5.84,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-08-13"
     }
@@ -1690,11 +1703,6 @@
      "moyenne": 10.62,
      "n": 5,
      "dernier": "2024-11-25"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.42,
-     "n": 5,
-     "dernier": "2026-05-06"
     },
     "M. Bolsonaro": {
      "moyenne": 27.78,
@@ -1766,72 +1774,67 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 47.04,
+     "moyenne": 52.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CPRF": {
-     "moyenne": 8.32,
+     "moyenne": 6.8,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "LDPR": {
-     "moyenne": 7.38,
+     "moyenne": 7.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "SRZP": {
-     "moyenne": 2.88,
+     "moyenne": 2.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "NP": {
-     "moyenne": 5.28,
+     "moyenne": 3.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPPSJ": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Yabloko": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CR": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Greens": {
-     "moyenne": 9.54,
+     "moyenne": 0.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Rodina": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPFJ": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "GA": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CP": {
-     "moyenne": 9.34,
-     "n": 5,
-     "dernier": "2026-04-07"
-    },
-    "BLP": {
-     "moyenne": 12.62,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     }
@@ -1843,8 +1846,8 @@
   },
   "polymarket:0x99a0fdc1bb6308873bf87eb75a47e21c8340fe20fb6b033444c1d21392da10a9": {
    "election": "2026 Texas Republican Primary",
-   "statut": "sujet_absent_des_tableaux",
-   "page": "2026 Texas Attorney General election",
+   "statut": "aucun_sondage_avant_le_jeu",
+   "page": "2026 Texas Railroad Commissioner election",
    "sujet": "Ken Paxton",
    "colonne_sujet": null,
    "jeu": "2026-03-01",
@@ -1949,39 +1952,34 @@
    "jeu": "2026-08-16",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -2050,72 +2048,67 @@
    "jeu": "2026-04-12",
    "moyennes": {
     "UR": {
-     "moyenne": 47.04,
+     "moyenne": 52.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CPRF": {
-     "moyenne": 8.32,
+     "moyenne": 6.8,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "LDPR": {
-     "moyenne": 7.38,
+     "moyenne": 7.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "SRZP": {
-     "moyenne": 2.88,
+     "moyenne": 2.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "NP": {
-     "moyenne": 5.28,
+     "moyenne": 3.6,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPPSJ": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Yabloko": {
-     "moyenne": 9.74,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CR": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Greens": {
-     "moyenne": 9.54,
+     "moyenne": 0.4,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "Rodina": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "RPFJ": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "GA": {
-     "moyenne": 9.34,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     },
     "CP": {
-     "moyenne": 9.34,
-     "n": 5,
-     "dernier": "2026-04-07"
-    },
-    "BLP": {
-     "moyenne": 12.62,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-04-07"
     }
@@ -2130,39 +2123,34 @@
    "jeu": "2026-07-19",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.2,
+     "moyenne": 40.94,
      "n": 5,
      "dernier": "2026-07-15"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.02,
-     "n": 5,
-     "dernier": "2026-07-15"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 16.2,
+     "moyenne": 34.28,
      "n": 5,
      "dernier": "2026-07-15"
     },
     "Caiado PSD": {
-     "moyenne": 38.7,
+     "moyenne": 7.48,
      "n": 5,
      "dernier": "2026-07-15"
     },
     "Zema Novo": {
-     "moyenne": 38.22,
+     "moyenne": 6.04,
      "n": 5,
      "dernier": "2026-07-15"
     },
     "Santos Mission": {
-     "moyenne": 34.42,
+     "moyenne": 4.58,
      "n": 5,
      "dernier": "2026-07-15"
     },
     "Cury Avante": {
-     "moyenne": 25.7,
-     "n": 2,
-     "dernier": "2026-06-14"
+     "moyenne": 1.72,
+     "n": 5,
+     "dernier": "2026-07-15"
     }
    }
   },
@@ -2214,74 +2202,74 @@
    "jeu": "2026-08-02",
    "moyennes": {
     "UR": {
-     "moyenne": 40.22,
+     "moyenne": 46.8,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CPRF": {
-     "moyenne": 9.48,
+     "moyenne": 8.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "LDPR": {
-     "moyenne": 9.24,
+     "moyenne": 8.4,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "SRZP": {
-     "moyenne": 4.34,
+     "moyenne": 3.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "NP": {
-     "moyenne": 3.82,
+     "moyenne": 3.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "RPPSJ": {
-     "moyenne": 6.14,
+     "moyenne": 1.2,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Yabloko": {
-     "moyenne": 6.14,
+     "moyenne": 0.8,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CR": {
-     "moyenne": 5.94,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Greens": {
-     "moyenne": 6.14,
+     "moyenne": 1.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "Rodina": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "RPFJ": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "GA": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
-    },
-    "PG": {
-     "moyenne": 5.74,
-     "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
     },
     "CP": {
-     "moyenne": 5.74,
+     "moyenne": 0.0,
      "n": 5,
-     "dernier": "2026-07-30"
+     "dernier": "2026-07-28"
+    },
+    "BLP": {
+     "moyenne": 4.3,
+     "n": 1,
+     "dernier": "2026-06-04"
     }
    }
   },
@@ -2294,72 +2282,72 @@
    "jeu": "2026-09-13",
    "moyennes": {
     "UR": {
-     "moyenne": 38.38,
+     "moyenne": 39.66,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "CPRF": {
-     "moyenne": 9.92,
+     "moyenne": 8.8,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "LDPR": {
-     "moyenne": 10.02,
+     "moyenne": 10.08,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "SRZP": {
-     "moyenne": 4.88,
+     "moyenne": 4.06,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "NP": {
-     "moyenne": 4.74,
+     "moyenne": 3.86,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "RPPSJ": {
-     "moyenne": 12.62,
+     "moyenne": 1.0,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "Yabloko": {
-     "moyenne": 5.36,
+     "moyenne": 1.74,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "CR": {
-     "moyenne": 12.22,
+     "moyenne": 0.4,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "Greens": {
-     "moyenne": 12.42,
+     "moyenne": 0.8,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "Rodina": {
-     "moyenne": 12.22,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "RPFJ": {
-     "moyenne": 12.22,
+     "moyenne": 0.2,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "GA": {
-     "moyenne": 12.22,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "PG": {
-     "moyenne": 12.22,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-09-10"
     },
     "CP": {
-     "moyenne": 12.22,
+     "moyenne": 0.0,
      "n": 5,
      "dernier": "2026-09-10"
     }
@@ -2367,12 +2355,88 @@
   },
   "polymarket:0xdf8e2dc5860027decbe6164555c3c1c9645c3bd33e16b9dc57ca87125047d4a8": {
    "election": "2026 Brazilian presidential election",
-   "statut": "sujet_absent_des_tableaux",
+   "statut": "ok",
    "page": "Opinion polling for the 2026 Brazilian presidential election",
    "sujet": "Luiz Inácio Lula da Silva",
-   "colonne_sujet": null,
+   "colonne_sujet": "Lula",
    "jeu": "2026-04-26",
-   "moyennes": {}
+   "moyennes": {
+    "Lula": {
+     "moyenne": 34.32,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "J. Bolsonaro": {
+     "moyenne": 36.76,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "Gomes": {
+     "moyenne": 13.78,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "Caiado": {
+     "moyenne": 7.14,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "Tebet": {
+     "moyenne": 10.62,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "M. Bolsonaro": {
+     "moyenne": 27.78,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "Freitas": {
+     "moyenne": 21.3,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "Ratinho": {
+     "moyenne": 11.68,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "Zema": {
+     "moyenne": 10.5,
+     "n": 5,
+     "dernier": "2024-11-25"
+    },
+    "Haddad": {
+     "moyenne": 14.7,
+     "n": 2,
+     "dernier": "2024-11-25"
+    },
+    "Marçal": {
+     "moyenne": 13.13,
+     "n": 3,
+     "dernier": "2024-11-10"
+    },
+    "Leite": {
+     "moyenne": 2.74,
+     "n": 5,
+     "dernier": "2024-07-22"
+    },
+    "Barbalho": {
+     "moyenne": 0.64,
+     "n": 5,
+     "dernier": "2024-07-22"
+    },
+    "Cristina": {
+     "moyenne": 8.55,
+     "n": 2,
+     "dernier": "2024-05-01"
+    },
+    "Moro": {
+     "moyenne": 6.7,
+     "n": 1,
+     "dernier": "2023-10-03"
+    }
+   }
   },
   "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818": {
    "election": "2026 Swedish parliamentary election",
@@ -2386,11 +2450,6 @@
    "colonne_sujet": "Edna DeVries (R)",
    "jeu": "2026-07-19",
    "moyennes": {
-    "RCV round": {
-     "moyenne": 7.0,
-     "n": 5,
-     "dernier": "2025-07-27"
-    },
     "Tom Begich (D)": {
      "moyenne": 15.4,
      "n": 5,
@@ -2450,39 +2509,34 @@
    "jeu": "2026-09-27",
    "moyennes": {
     "Lula PT": {
-     "moyenne": 44.4,
+     "moyenne": 41.28,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "F. Bolsonaro PL": {
-     "moyenne": 42.82,
-     "n": 5,
-     "dernier": "2026-08-13"
-    },
-    "Blank Null Undec.": {
-     "moyenne": 18.8,
+     "moyenne": 33.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Caiado PSD": {
-     "moyenne": 39.62,
+     "moyenne": 4.94,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Zema Novo": {
-     "moyenne": 38.34,
+     "moyenne": 3.14,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Santos Mission": {
-     "moyenne": 35.26,
+     "moyenne": 4.96,
      "n": 5,
      "dernier": "2026-08-13"
     },
     "Cury Avante": {
-     "moyenne": 27.93,
-     "n": 3,
-     "dernier": "2026-08-09"
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
     }
    }
   },
@@ -2542,8 +2596,8 @@
   },
   "polymarket:0xfcde02af15efe40e336d67f0ef9aa49e9d40c37b92961fb890afc4afdbfe54d6": {
    "election": "next Hungarian parliamentary election",
-   "statut": "aucun_sondage_avant_le_jeu",
-   "page": "Opinion polling for the 2030 Hungarian parliamentary election",
+   "statut": "sujet_absent_des_tableaux",
+   "page": "Opinion polling for the 2026 Hungarian parliamentary election",
    "sujet": "TISZA – Respect and Freedom Party (TISZA)",
    "colonne_sujet": null,
    "jeu": "2026-03-29",
