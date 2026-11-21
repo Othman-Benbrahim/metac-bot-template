@@ -23,6 +23,8 @@ import verification_a_priori as va
 
 CARTE = Path("registre") / "carte-robot-jugement2026.json"
 SORTIE = Path("registre") / "mise-au-point" / "traduction-regles.json"
+# Retraits fixés avant tout regard sur les issues (préenregistrement, ajout de 16 h 15) : lecture de page défaillante.
+RETIREES = {"manifold:Q9gNdcP2lc": "Hongrie : en-têtes de la page illisibles (logos), Orbán lu à 2,3 % dans un tableau marginal"}
 
 
 def lignes() -> list[dict]:
@@ -32,7 +34,7 @@ def lignes() -> list[dict]:
     vus, out = set(), []
     for x in sorted(xs, key=lambda x: x["jeu"]):
         k = f'{x["source"]}:{x["id"]}'
-        if k not in carte or k in vus or x["jeu"] != carte[k]["jeu"]:
+        if k in RETIREES or k not in carte or k in vus or x["jeu"] != carte[k]["jeu"]:
             continue
         vus.add(k)
         ps = {r: p for r in carte[k]["regles"] if (p := tr.p_regle(r, x["titre"], x["horizon"], x["jeu"], x["cloture"], k)) is not None}
@@ -57,7 +59,7 @@ def principal() -> int:
     r = {"n": len(ls), "S": round(float(perte["p_S"].mean()), 4), "R": round(float(perte["p_R"].mean()), 4),
          "C": round(float(perte["p_C"].mean()), 4), "C_moins_S": round(float(dc.mean()), 4), "intervalle_90_C_S": ic(dc),
          "R_moins_S": round(float(dr.mean()), 4), "intervalle_90_R_S": ic(dr), "puissance": va.puissance(dc.tolist()),
-         "adopte": bool(ic(dc)[1] < 0), "detail": ls,
+         "adopte": bool(ic(dc)[1] < 0), "retirees": RETIREES, "detail": ls,
          "note": "perte log, plus bas = mieux ; adopté si l'intervalle à 90 % de C − S est entièrement sous 0"}
     SORTIE.parent.mkdir(parents=True, exist_ok=True)
     SORTIE.write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")

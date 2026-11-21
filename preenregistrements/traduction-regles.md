@@ -46,3 +46,15 @@ lieu de S (en ombre d'abord sur le flux réel). R − S est décrit.
 37 questions : seul un effet grand (de l'ordre de 0,1 de perte log) sortira de l'intervalle. Le résultat sera
 surtout descriptif : quelles règles tirent dans le bon sens, lesquelles non, et pourquoi. Élargir demande de traduire
 davantage de règles (les règles de sondages, par exemple, ont besoin des chiffres des sondages, absents du titre).
+
+## Ajout du 2026-11-21, 16 h 15 (avant tout regard sur les issues) : état de la collecte au lancement
+Collecte corrigée sur quatre passages (44915155718, 44916010855, 44916476984, 44917505006), sans jamais regarder les
+issues : une page par question avec le même type de course, l'année de l'élection (sans année : l'année du jeu ou la
+suivante), un mot distinctif commun ; un seul tableau par question (celui du sujet, le plus récent), affiches générales
+écartées pour les primaires de parti, matrices de duels écartées, tableaux dont les moyennes dépassent 110 % refusés ;
+sondages de plus de 90 jours avant le jeu écartés. Allemagne : DAWUM (base structurée, ODbL) d'abord, Wikipédia en
+contrôle. Questions sans nom d'élection : nom reconstruit à partir du pays et de l'année du jeu.
+Compte au lancement (lignes sans les issues) : 80 questions traduisibles, dont 31 de sondages et 16 de la Fed.
+Retrait fixé : manifold:Q9gNdcP2lc (Hongrie, en-têtes illisibles, Orbán lu à 2,3 %). La collecte et l'essai tournent
+dans le même passage (workflow essai_traduction.yaml) ; le compte final peut gagner quelques questions de sondages
+(Brésil sans nom d'élection, Suède, pays de Galles).

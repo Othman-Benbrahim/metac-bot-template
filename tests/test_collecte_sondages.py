@@ -132,3 +132,10 @@ def test_dawum():
     ls = cs.lignes_dawum(BASE_DAWUM, "Sachsen-Anhalt")
     assert len(ls) == 1 and ls[0]["fin"] == date(2026, 6, 8) and set(ls[0]["valeurs"]) == {"CDU", "AfD", "Linke"}
     assert cs.choisir_table(ls, "2026-07-19", cs.sujet_parti("The Left"), False) == (0, "Linke")
+
+
+def test_secours_run_44917505006():
+    t = "Will Luiz Inácio Lula da Silva qualify for Brazil's presidential runoff?"
+    assert cs.election(t) == t
+    assert cs.election_de_secours(t, "2026-08-16") == "2026 Brazilian presidential election"
+    assert cs.page_convient("Opinion polling for the 2026 Senedd election", "2026 Welsh election")

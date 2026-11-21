@@ -252,6 +252,21 @@ def sujet(titre: str) -> str:
     return (m.group(1) if m else t).strip(" ?")
 
 
+GENTILES = {"brazil": "Brazilian", "colombia": "Colombian", "peru": "Peruvian", "morocco": "Moroccan", "sweden": "Swedish",
+            "hungary": "Hungarian", "russia": "Russian", "portugal": "Portuguese", "latvia": "Latvian", "wales": "Welsh"}
+SYNONYMES_PAGE = {"welsh": "senedd"}                          # « 2026 Welsh election » ↔ « 2026 Senedd election »
+
+
+def election_de_secours(titre: str, jeu: str) -> str | None:
+    """« Will Lula qualify for Brazil's presidential runoff? » : pas de nom d'élection ; on le reconstruit à partir du
+    pays et de l'année du jeu (une question posée avant l'élection porte sur celle de l'année)."""
+    t = norm(titre)
+    for pays, g in GENTILES.items():
+        if re.search(rf"\b{pays}('s)?\b", t) and "president" in t:
+            return f"{jeu[:4]} {g} presidential election"
+    return None
+
+
 def election(titre: str) -> str:
     """Le nom de l'élection tiré du titre (« 2026 Peruvian presidential election », « 2026 Texas Republican primary »)."""
     m = re.search(r"\b(20\d\d\s+[^?]*?(?:election|primary|by-election|referendum))(\s+in\s+(?:the\s+)?[A-Z][\w' ]+)?", titre, re.I)
@@ -299,6 +314,7 @@ def page_convient(titre_page: str, el: str, jeu: str = "2026-01-01") -> bool:
     if c_el in (None, "presidentielle") and c_p in ("gouverneur", "senat", "chambre", "autre_poste"):
         return False
     d_el, d_p = distinctifs(el), distinctifs(titre_page)
+    d_el |= {SYNONYMES_PAGE[w] for w in d_el if w in SYNONYMES_PAGE}
     racines = lambda xs: {w[:5] for w in xs}                  # brazil / brazilian, peru / peruvian
     return bool(racines(d_el) & racines(d_p))
 
@@ -394,9 +410,14 @@ def collecter() -> dict:
                 print(f"DAWUM indisponible : {e}")
         for o in carte:
             el = election(o["titre"])
+            if el == o["titre"]:                               # aucun nom d'élection dans le titre
+                el = election_de_secours(o["titre"], o["jeu"]) or el
             if el not in pages:
                 pages[el], essais[el] = None, []
-                for q in (f"Opinion polling for the {el}", el):
+                variantes = [f"Opinion polling for the {el}", el]
+                if "parliamentary" in el:                      # Suède : « general election » sur Wikipédia
+                    variantes.insert(1, f"Opinion polling for the {el.replace('parliamentary', 'general')}")
+                for q in variantes:
                     url = f"{API}/search/page"
                     if not politesse.autorise(c, url):
                         pages[el] = {"statut": "refusee"}

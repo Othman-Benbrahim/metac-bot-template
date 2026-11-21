@@ -1,0 +1,42 @@
+name: "Essai : traduction des règles par le code (collecte des sondages puis essai, une fois)"
+
+# 2026-11-21 : essai préenregistré (preenregistrements/traduction-regles.md), aucun appel de modèle, lancé une fois par
+# l'auteur. La collecte des sondages tourne juste avant, dans le même passage, pour que l'essai lise des chiffres frais.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  essai_traduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecter les sondages
+        run: uv run python collecte_sondages.py
+      - name: Lancer l'essai
+        run: uv run python mise_au_point/traduction_regles_essai.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/sondages-questions.json registre/mise-au-point/traduction-regles.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : essai_traduction du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
