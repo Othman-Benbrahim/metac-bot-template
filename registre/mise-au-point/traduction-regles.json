@@ -1,0 +1,945 @@
+{
+ "n": 80,
+ "S": 0.6167,
+ "R": 0.5301,
+ "C": 0.4577,
+ "C_moins_S": -0.159,
+ "intervalle_90_C_S": [
+  -0.2591,
+  -0.0646
+ ],
+ "R_moins_S": -0.0866,
+ "intervalle_90_R_S": [
+  -0.2455,
+  0.0836
+ ],
+ "puissance": {
+  "n": 80,
+  "sigma_par_question": 0.55,
+  "ecart_detectable": 0.1529,
+  "questions_necessaires": {
+   "0.005": 74816,
+   "0.01": 18704,
+   "0.02": 4676,
+   "0.04": 1169
+  }
+ },
+ "adopte": true,
+ "retirees": {
+  "manifold:Q9gNdcP2lc": "Hongrie : en-têtes de la page illisibles (logos), Orbán lu à 2,3 % dans un tableau marginal"
+ },
+ "detail": [
+  {
+   "question": "polymarket:0x257b18205f908aef01ef2d1d50e6fea7d29cf5486fe04031d8b101394476faed",
+   "titre": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+   "issue": 1,
+   "p_S": 0.1621052978310982,
+   "p_R": 0.358821398381838,
+   "p_C": 0.2475792757620641,
+   "regles": {
+    "us_fed_calendrier": 0.35882139838183796
+   }
+  },
+  {
+   "question": "polymarket:0x4d162a40c3e3f458b0e0017485d7f9e6ead0cdd0573e38b26e0d5420525ccfa4",
+   "titre": "Fed rate cut by June 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.12063805440466782,
+   "p_R": 0.7636708854931585,
+   "p_C": 0.3996928324085899,
+   "regles": {
+    "us_fed_calendrier": 0.7636708854931585
+   }
+  },
+  {
+   "question": "polymarket:0x7c6c69d91b21cbbea08a13d0ad51c0e96a956045aaadc77bce507c6b0475b66e",
+   "titre": "Fed increases interest rates by 25+ bps after January 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.14403480894103937,
+   "p_R": 0.07692307692307687,
+   "p_C": 0.10587933128822495,
+   "regles": {
+    "us_fed_calendrier": 0.07692307692307687
+   }
+  },
+  {
+   "question": "polymarket:0xde04b189b3f19eaccda02529a3ea67abfc46bff5c0c8fc42d8a2d0ed7b8f0d41",
+   "titre": "Will there be no change in Fed interest rates after the June 2026 meeting?",
+   "issue": 1,
+   "p_S": 0.1534718092330478,
+   "p_R": 0.46795424805503516,
+   "p_C": 0.28536705550084074,
+   "regles": {
+    "us_fed_calendrier": 0.4679542480550352
+   }
+  },
+  {
+   "question": "metaculus:41090",
+   "titre": "Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
+   "issue": 0,
+   "p_S": 0.28479433792944253,
+   "p_R": 0.34210526315789475,
+   "p_C": 0.3127348090539343,
+   "regles": {
+    "coupe_du_monde_vainqueurs_hotes": 0.34210526315789475
+   }
+  },
+  {
+   "question": "metaculus:40852",
+   "titre": "Will the US House of Representatives censure, expel or reprimand any of its members before April 1, 2026?",
+   "issue": 0,
+   "p_S": 0.13642465955363806,
+   "p_R": 0.09386105913758036,
+   "p_C": 0.11341303972540409,
+   "regles": {
+    "us_chambre_sanctions_disciplinaires": 0.09386105913758036
+   }
+  },
+  {
+   "question": "polymarket:0x0d14f5dc9fb3250ec888b1ac8d9fe9a0ce06f9d3ea60fdf138e8690622fea84c",
+   "titre": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.1454799328362273,
+   "p_R": 0.11512465044326767,
+   "p_C": 0.12954738765435556,
+   "regles": {
+    "us_fed_calendrier": 0.11512465044326768
+   }
+  },
+  {
+   "question": "polymarket:0x36e8ca24d2a13435f519f15580d42b45cdbe3bc425fb39a7c2733260357af0fa",
+   "titre": "Will there be no change in Fed interest rates after the April 2026 meeting?",
+   "issue": 1,
+   "p_S": 0.1575448605949468,
+   "p_R": 0.6879078161876996,
+   "p_C": 0.3909961287004853,
+   "regles": {
+    "us_fed_calendrier": 0.6879078161876996
+   }
+  },
+  {
+   "question": "polymarket:0x70909f0ba8256a89c301da58812ae47203df54957a07c7f8b10235e877ad63c2",
+   "titre": "Khamenei out as Supreme Leader of Iran by March 31?",
+   "issue": 1,
+   "p_S": 0.09976455290582582,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.04539776599726022,
+   "regles": {
+    "chefs_d_etat_sortie_irreguliere": 0.001675447666565244
+   }
+  },
+  {
+   "question": "polymarket:0x626d0441b078eefbe2c49047960e7a3b6b4512c235507a2528ccc0f95f2474a6",
+   "titre": "Fed rate cut by April 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.1336624773983612,
+   "p_R": 0.18733860891295295,
+   "p_C": 0.1586674106751324,
+   "regles": {
+    "us_fed_calendrier": 0.18733860891295295
+   }
+  },
+  {
+   "question": "polymarket:0xdde06286a7b9464d344f410ab0b3d2ebc6469904e72c27fd982f65fdbf78768d",
+   "titre": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.13078582546952536,
+   "p_R": 0.12943137476326877,
+   "p_C": 0.13010710121350863,
+   "regles": {
+    "us_fed_calendrier": 0.12943137476326877
+   }
+  },
+  {
+   "question": "metaculus:42430",
+   "titre": "Will there be a successful coup in Africa or Latin America before May 1, 2026?",
+   "issue": 0,
+   "p_S": 0.11506789839994037,
+   "p_R": 0.0859674697179518,
+   "p_C": 0.09957615428604061,
+   "regles": {
+    "coups_d_etat_frequence": 0.08596746971795177
+   }
+  },
+  {
+   "question": "polymarket:0x90c6511dcc9499c2c58786a2456df333a87c97a9cf548acc26f3e4e56fbc36e7",
+   "titre": "Will Trump and Putin not meet?",
+   "issue": 1,
+   "p_S": 0.18880874795598515,
+   "p_R": 0.9246456894377802,
+   "p_C": 0.6282508234139533,
+   "regles": {
+    "sommets_etats_unis_russie": 0.9246456894377802
+   }
+  },
+  {
+   "question": "polymarket:0xd72622d154dfe65b9c019d6afcfe75a55717e5c502db611f555b101aafbf6ec5",
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.1999484716911147,
+   "p_R": 0.021008403361344543,
+   "p_C": 0.06823592283103966,
+   "regles": {
+    "us_fed_calendrier": 0.021008403361344536
+   }
+  },
+  {
+   "question": "polymarket:0x48874462b88af831a4d90479286c6c1d4cd683a6b119d926f85ac66549385b21",
+   "titre": "Miguel Díaz-Canel out as President of Cuba by June 30?",
+   "issue": 0,
+   "p_S": 0.11191643236934062,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.0482656030828341,
+   "regles": {
+    "chefs_d_etat_sortie_irreguliere": 0.004405977446214404
+   }
+  },
+  {
+   "question": "polymarket:0x502a94e5c525766d5ee7f16c6568131ba1b2cbadb69c703af05a6ef00336ed64",
+   "titre": "Will United Russia (ER) gain the most seats in the next Russian parliamentary election?",
+   "issue": 1,
+   "p_S": 0.13075351536839167,
+   "p_R": 0.98,
+   "p_C": 0.7308134863774643,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.99,
+    "sondages_erreur_comparee": 0.99
+   }
+  },
+  {
+   "question": "polymarket:0x8c48f3acf4177b5ceb012a8a2dc7a9c219eeae4a032d6ddcbc3c2ffab907439a",
+   "titre": "Will the Liberal Democratic Party of Russia (LDPR) gain the most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.15206580268321077,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.057046244436956176,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x94ffc785f73c9d70c0c9550b2412842d025d20d02f9e9e20a18cc4598944cbc5",
+   "titre": "Will United Russia (ER) win the most seats in the next Russian parliamentary election?",
+   "issue": 1,
+   "p_S": 0.13443478048419322,
+   "p_R": 0.98,
+   "p_C": 0.733950337701166,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.99,
+    "sondages_erreur_comparee": 0.99
+   }
+  },
+  {
+   "question": "polymarket:0xc9615bb82d6535d630ff98e8094060bc767d8b9446516e98f84d2001a35e50e7",
+   "titre": "Will New People (NL) gain the most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.11041667312806175,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.04791817257977742,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0xbd0c2d5f58650e031aba69b54529cf1e85f1f73622530b53b0d261063627c64d",
+   "titre": "Will Larry Rhoden win the 2026 South Dakota Governor Republican primary election?",
+   "issue": 1,
+   "p_S": 0.2501509868523338,
+   "p_R": 0.13,
+   "p_C": 0.1825175690275116,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.13
+   }
+  },
+  {
+   "question": "polymarket:0xdf8e2dc5860027decbe6164555c3c1c9645c3bd33e16b9dc57ca87125047d4a8",
+   "titre": "Will Luiz Inácio Lula da Silva win the 2026 Brazilian presidential election?",
+   "issue": 1,
+   "p_S": 0.13214403641986583,
+   "p_R": 0.9765,
+   "p_C": 0.7155350507383172,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.9765,
+    "sondages_erreur_comparee": 0.9765
+   }
+  },
+  {
+   "question": "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818",
+   "titre": "Will the Swedish Social Democratic Party (S) win the most seats in the 2026 Swedish parliamentary election?",
+   "issue": 1,
+   "p_S": 0.1538386684920575,
+   "p_R": 0.98,
+   "p_C": 0.7490416032797438,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.99,
+    "sondages_erreur_comparee": 0.99
+   }
+  },
+  {
+   "question": "manifold:j65AKQZQCjgqa3erm88N",
+   "titre": "Will the 2026 FIFA World Cup champion be a first time winner?",
+   "issue": 0,
+   "p_S": 0.2223952191565807,
+   "p_R": 0.34210526315789475,
+   "p_C": 0.2783131497722552,
+   "regles": {
+    "coupe_du_monde_vainqueurs_hotes": 0.34210526315789475
+   }
+  },
+  {
+   "question": "manifold:uQdQc8sICZ",
+   "titre": "Thomas Massie wins Kentucky's 4th Republican primary in 2026?",
+   "issue": 0,
+   "p_S": 0.33511581519536393,
+   "p_R": 0.72925,
+   "p_C": 0.5381362936452934,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.72925
+   }
+  },
+  {
+   "question": "polymarket:0x119db6dda44f109bcdc2ec5e1d9cb8c21fa1a7e66489f59b1190fdfb25c0d515",
+   "titre": "Miguel Díaz-Canel out as leader of Cuba by June 30?",
+   "issue": 0,
+   "p_S": 0.10847812666864959,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.04746650995672359,
+   "regles": {
+    "chefs_d_etat_sortie_irreguliere": 0.0028465905138629344
+   }
+  },
+  {
+   "question": "polymarket:0x201305cdb4e6a8c4b4c48f1e24835fce62fbfc75efd608255e36c7d504fde6c8",
+   "titre": "Will Adam Steen win the 2026 Iowa Governor Republican primary election?",
+   "issue": 0,
+   "p_S": 0.2204143503336327,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.07059817825589698,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x2cd24d17f5680dc6e7b7d67c712a223ae85550745597e81bd2d2b8d073443951",
+   "titre": "Will Roberto Sánchez Palomino win the 2026 Peruvian presidential election?",
+   "issue": 0,
+   "p_S": 0.21714695145505228,
+   "p_R": 0.55875,
+   "p_C": 0.37211827355968513,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.55875,
+    "sondages_erreur_comparee": 0.55875
+   }
+  },
+  {
+   "question": "polymarket:0x780eda657742337ca48284a55e7f2103d35484f16e05c49271cf1ed4e8cac89c",
+   "titre": "Will John Cornyn win the Texas Republican Senate Primary runoff by 9% or more?",
+   "issue": 0,
+   "p_S": 0.21385291098839168,
+   "p_R": 0.98,
+   "p_C": 0.7849893209578026,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.99
+   }
+  },
+  {
+   "question": "polymarket:0xa7cb4135c6d9c36da0e343874dd5b455de739c6d1b9f9f5583dd9320aacf5db2",
+   "titre": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.3021704960682557,
+   "p_R": 0.04323899371069184,
+   "p_C": 0.12272255401973596,
+   "regles": {
+    "us_fed_calendrier": 0.04323899371069183
+   }
+  },
+  {
+   "question": "metaculus:43360",
+   "titre": "Will the UK National Threat Level reduce from SEVERE before September 2026?",
+   "issue": 0,
+   "p_S": 0.1348645349988577,
+   "p_R": 0.04700765738756986,
+   "p_C": 0.08061977452004897,
+   "regles": {
+    "royaume_uni_niveau_menace": 0.047007657387569846
+   }
+  },
+  {
+   "question": "metaculus:43437",
+   "titre": "Will there be a successful coup in Africa or Latin America before September 1, 2026?",
+   "issue": 0,
+   "p_S": 0.04991407212494237,
+   "p_R": 0.2427747062241157,
+   "p_C": 0.11487460286792334,
+   "regles": {
+    "coups_d_etat_frequence": 0.24277470622411568
+   }
+  },
+  {
+   "question": "metaculus:43452",
+   "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
+   "issue": 0,
+   "p_S": 0.11842687026422818,
+   "p_R": 0.10297506209816598,
+   "p_C": 0.11046456341736535,
+   "regles": {
+    "sommets_etats_unis_russie": 0.10297506209816598
+   }
+  },
+  {
+   "question": "polymarket:0x6b2696a265decb06d8b9cd4c2316f8d19e20b0faaebdfbf89008d79443e42898",
+   "titre": "Daniel Noboa out as President of Ecuador by June 30?",
+   "issue": 0,
+   "p_S": 0.17410347041294738,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.06155344944031965,
+   "regles": {
+    "chefs_d_etat_sortie_irreguliere": 0.0020659813682780692
+   }
+  },
+  {
+   "question": "manifold:ZCdtlP2A8u",
+   "titre": "[ACX 2026] Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
+   "issue": 0,
+   "p_S": 0.45236251147660145,
+   "p_R": 0.34210526315789475,
+   "p_C": 0.39591196334379514,
+   "regles": {
+    "coupe_du_monde_vainqueurs_hotes": 0.34210526315789475
+   }
+  },
+  {
+   "question": "metaculus:43333",
+   "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
+   "issue": 0,
+   "p_S": 0.13275999960050477,
+   "p_R": 0.1098440959019639,
+   "p_C": 0.12083425040157826,
+   "regles": {
+    "opep_departs": 0.10984409590196387
+   }
+  },
+  {
+   "question": "metaculus:43435",
+   "titre": "Will Pope Leo XIV visit another country other than Spain before September 2026?",
+   "issue": 1,
+   "p_S": 0.221476047780728,
+   "p_R": 0.3331578491662902,
+   "p_C": 0.2737833796399755,
+   "regles": {
+    "papes_voyages": 0.3331578491662902
+   }
+  },
+  {
+   "question": "polymarket:0x4427ce55f5fc0cc00f2708f914c585442bce7eede689d5daec4671449dc25f8d",
+   "titre": "Will Matt Claman advance from the 2026 Alaska Governor primary election?",
+   "issue": 0,
+   "p_S": 0.23327355139114825,
+   "p_R": 0.16625000000000004,
+   "p_C": 0.197628993526783,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.16625
+   }
+  },
+  {
+   "question": "polymarket:0x521d35b8e294b0e0560063a9ed113cef947281fc4d3fea796f1bfb517e68b795",
+   "titre": "Will Andy Biggs win the 2026 Arizona Governor Republican primary election?",
+   "issue": 1,
+   "p_S": 0.22324004585383964,
+   "p_R": 0.98,
+   "p_C": 0.7895920713819026,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.99
+   }
+  },
+  {
+   "question": "polymarket:0x52fa882beba7627c68eb13f5b917313a422fdfe3d3e75c3073d39f687b84a212",
+   "titre": "Gustavo Petro out as leader of Colombia by June 30?",
+   "issue": 0,
+   "p_S": 0.11069355241450282,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.04798244338701883,
+   "regles": {
+    "chefs_d_etat_sortie_irreguliere": 0.001284761132531509
+   }
+  },
+  {
+   "question": "polymarket:0xd25c820d3aee1c735c0fa62c36f4905632ab8c6988653b5b4134593b3209eb7f",
+   "titre": "Will Lisa Demuth win the 2026 Minnesota Governor Republican primary election?",
+   "issue": 1,
+   "p_S": 0.23446217982799794,
+   "p_R": 0.39175,
+   "p_C": 0.3075447068247007,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.39175
+   }
+  },
+  {
+   "question": "polymarket:0xfbe834154a7b7d8ec4ccd0f5468b58a113bdbf0e7c0a41876ae8b014ab94631b",
+   "titre": "Will Robert Charles win the 2026 Maine Governor Republican primary election?",
+   "issue": 1,
+   "p_S": 0.24809114842406632,
+   "p_R": 0.9727499999999999,
+   "p_C": 0.7743654644436692,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.97275
+   }
+  },
+  {
+   "question": "metaculus:43703",
+   "titre": "Will a hurricane make landfall in the continental United States before September 1, 2026?",
+   "issue": 0,
+   "p_S": 0.23003833071936566,
+   "p_R": 0.5175438596491229,
+   "p_C": 0.36148023569207377,
+   "regles": {
+    "us_ouragans_atterrissage": 0.5175438596491229
+   }
+  },
+  {
+   "question": "polymarket:0x65d9ff5dd4b1cd8974f14335c2bd1fc5f133c1228aeb6e5d83c80f7432a120f0",
+   "titre": "Will New People (NL) win the second-most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.14783354164912163,
+   "p_R": 0.03975000000000001,
+   "p_C": 0.07812212918643585,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.03975,
+    "sondages_erreur_comparee": 0.03975
+   }
+  },
+  {
+   "question": "polymarket:0x876506d8b2bd7a0d3fa4fe18c024eee6e1dd81ee24c26795dadd6cfe4a7b5d0d",
+   "titre": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+   "issue": 1,
+   "p_S": 0.35310570311755285,
+   "p_R": 0.0708249278113999,
+   "p_C": 0.1694189605538846,
+   "regles": {
+    "us_fed_calendrier": 0.07082492781139987
+   }
+  },
+  {
+   "question": "polymarket:0x8bf1c1536ecb1c08fe13c6b71e8ab1f58bf3461c4cb79f5f1679f869a06aef86",
+   "titre": "Will there be no change in Fed interest rates after the July 2026 meeting?",
+   "issue": 1,
+   "p_S": 0.3957357376731489,
+   "p_R": 0.8113207547169812,
+   "p_C": 0.6266039499847514,
+   "regles": {
+    "us_fed_calendrier": 0.8113207547169812
+   }
+  },
+  {
+   "question": "polymarket:0x0f1843cae1fa85c263c1f8118554fcff73f8af53d58d0f9fa5283490e69a7d94",
+   "titre": "Will Mandela Barnes win the 2026 Wisconsin Governor Democratic primary election?",
+   "issue": 0,
+   "p_S": 0.29263592104117037,
+   "p_R": 0.77375,
+   "p_C": 0.5432655258145296,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.77375
+   }
+  },
+  {
+   "question": "polymarket:0x21ab0908882e00031041d17716d3c6c56d93dfc5f460c551c33fec2ea33ae112",
+   "titre": "Will Jocelyn Benson win the 2026 Michigan Governor Democratic primary election?",
+   "issue": 1,
+   "p_S": 0.32053193901833926,
+   "p_R": 0.98,
+   "p_C": 0.8278186742877014,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.99
+   }
+  },
+  {
+   "question": "polymarket:0xa3b36b2d6104d34af4e6c6215fc818e43352e78a748fbfb0b85e3a35f71dec9a",
+   "titre": "Will there be no change in Fed interest rates after the September 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.4006666100226374,
+   "p_R": 0.7179063360881544,
+   "p_C": 0.5660383849250815,
+   "regles": {
+    "us_fed_calendrier": 0.7179063360881544
+   }
+  },
+  {
+   "question": "polymarket:0xbbd623c4191ca76dec466507375d6df85b403b7e14f9cbd3d09f2c450ae0cd96",
+   "titre": "Will Mike Lindell win the 2026 Minnesota Governor Republican primary election?",
+   "issue": 0,
+   "p_S": 0.30314308257056033,
+   "p_R": 0.39525,
+   "p_C": 0.3477745333109113,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.39525
+   }
+  },
+  {
+   "question": "metaculus:44193",
+   "titre": "Will North Korea conduct a nuclear test before September 1, 2026?",
+   "issue": 0,
+   "p_S": 0.31944601103077064,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.08914904977766855,
+   "regles": {
+    "coree_du_nord_essais_nucleaires": 0.005944135058514766
+   }
+  },
+  {
+   "question": "metaculus:44241",
+   "titre": "Will the Lincoln Memorial Reflecting Pool be fully repaired before September 2026?",
+   "issue": 0,
+   "p_S": 0.20425398989341365,
+   "p_R": 0.10000000000000003,
+   "p_C": 0.1444797776024296,
+   "regles": {
+    "calendriers_annonces_glissent": 0.1
+   }
+  },
+  {
+   "question": "polymarket:0xaeb57cf07ae50c2846d59f46f210b6269b8192afdd875ee7902e65e1ae64c23f",
+   "titre": "Will John Rose win the 2026 Tennessee Governor Republican primary election?",
+   "issue": 0,
+   "p_S": 0.2991899466613706,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.08537277911216395,
+   "regles": {
+    "us_erreur_sondages_par_echelle": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0xb5c0abeecb5502e6e8d83155c27819174d8317af3c425c3afc5a8c45257a3793",
+   "titre": "Will the Fed increase interest rates by 25 bps after the July 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.34796047869194896,
+   "p_R": 0.04166666666666667,
+   "p_C": 0.13218739281975325,
+   "regles": {
+    "us_fed_calendrier": 0.041666666666666664
+   }
+  },
+  {
+   "question": "polymarket:0xbb333a67a021476c97c9ac368e9d280ca43fe09782042d3ada92e48955c6a90c",
+   "titre": "Will CDU win the second most seats in the 2026 Sachsen-Anhalt parliamentary elections?",
+   "issue": 1,
+   "p_S": 0.2616235704869492,
+   "p_R": 0.98,
+   "p_C": 0.806454776927768,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.98375,
+    "sondages_erreur_comparee": 0.98375
+   }
+  },
+  {
+   "question": "polymarket:0xcba20965509d04b5f3ae2c51a221747317aff9387c197ca6d5919e85e5a20ee9",
+   "titre": "Will Renan Santos finish in third place in the first round of the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.16709307925049308,
+   "p_R": 0.18375,
+   "p_C": 0.17526576581275385,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.18375,
+    "sondages_erreur_comparee": 0.18375
+   }
+  },
+  {
+   "question": "polymarket:0x112fc8452dde2a783a2dc139bae65454a317532858336b61ad6744d63b1bb569",
+   "titre": "Will the Liberal Democratic Party of Russia (LDPR) win the second-most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.3250202231181169,
+   "p_R": 0.49275,
+   "p_C": 0.40615133474583237,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.49275,
+    "sondages_erreur_comparee": 0.49275
+   }
+  },
+  {
+   "question": "polymarket:0x5b14589f33d6496a9e235856d2a4d1b82f50cd36006ebcdef44bcbf9915a643a",
+   "titre": "Will United Russia (ER) win the third-most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.20331551823235086,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.06731025656163052,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x5e464d85eb49f22d876f3ed6168a7db5e2288e9ae1eb91effd2758e994676f86",
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.30646892976674456,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.08672855372734095,
+   "regles": {
+    "us_fed_calendrier": 0.01948051948051948
+   }
+  },
+  {
+   "question": "polymarket:0xd78b6917ee08627da7a527ed3b18700b5479da7b241ce1264cf1a8da806caf72",
+   "titre": "Will United Russia (ER) win the second-most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.24203000750713521,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.07469562674325649,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "metaculus:44244",
+   "titre": "Will another company get dropped from the Dow Jones Industrial Average in July or August 2026?",
+   "issue": 0,
+   "p_S": 0.32439385509033025,
+   "p_R": 0.02187070108240896,
+   "p_C": 0.09388692782512523,
+   "regles": {
+    "dow_jones_changements": 0.02187070108240896
+   }
+  },
+  {
+   "question": "polymarket:0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced",
+   "titre": "Will Renan Santos win the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.23080600256331246,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.07257489470770188,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x2e4b58fc18dbffd74d5275d89fb076943f21992763c45dcadd81391b83bde13c",
+   "titre": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?",
+   "issue": 0,
+   "p_S": 0.343788395236241,
+   "p_R": 0.04751461988304095,
+   "p_C": 0.13916445272946623,
+   "regles": {
+    "us_fed_calendrier": 0.04751461988304093
+   }
+  },
+  {
+   "question": "polymarket:0x3dbbbe0f8e69b1aee0092e1eca397b24c954c00ecc54995035a8683201ad26aa",
+   "titre": "Will Ronaldo Caiado finish in third place in the first round of the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.19642555002654172,
+   "p_R": 0.35025,
+   "p_C": 0.2663221394615034,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.35025,
+    "sondages_erreur_comparee": 0.35025
+   }
+  },
+  {
+   "question": "polymarket:0x48ec3524f7a9cff57d242904dab60158a7df7c5d4e945d40b1335121c2a83e02",
+   "titre": "Will Jaunā Vienotība (JV) win the most seats in the 2026 Latvian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.2495362666045531,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.07610716437507249,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x6114306f724135bd1db2f5f3169386decf18f618653c196ef0a6c1afd27f4c73",
+   "titre": "Will Flávio Bolsonaro finish in second place in the first round of the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.21631310950917018,
+   "p_R": 0.90925,
+   "p_C": 0.6244816228855828,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.90925,
+    "sondages_erreur_comparee": 0.90925
+   }
+  },
+  {
+   "question": "polymarket:0x7452216a57a3bef85439820c7bb421fa38e5a5ecff8c43658de515c1df70151e",
+   "titre": "Will Romeu Zema finish in third place in the first round of the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.1872893917591322,
+   "p_R": 0.187,
+   "p_C": 0.1871446528204429,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.187,
+    "sondages_erreur_comparee": 0.187
+   }
+  },
+  {
+   "question": "polymarket:0x7b91997c6c8ca00643ab322f63af50acf1a0e9b86be130b67e5a19005215e252",
+   "titre": "Will the Communist Party of the Russian Federation (KPRF) gain the most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.26715420398168543,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.07940456702101603,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x819cc40b88572690508717385d9397af991f8bc929f764fa73c99e5e10c1e55b",
+   "titre": "Will Renan Santos win the first round of the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.22402615905390058,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.07128684333235212,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x83030b249525db4c0bcd83a915776442f4ea32d2fba10825fca4abeb51512d8f",
+   "titre": "Will Renan Santos finish in second place in the first round of the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.1996290959139543,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.0665945324686417,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0x8ee27c276a1bee094293751285d8a6697674b023196cb21fdd14bf3ca12f6ec0",
+   "titre": "Will Luiz Inácio Lula da Silva finish in second place in the first round of the 2026 Brazilian presidential election?",
+   "issue": 1,
+   "p_S": 0.20192985569206706,
+   "p_R": 0.07750000000000001,
+   "p_C": 0.12724474906804956,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.0775,
+    "sondages_erreur_comparee": 0.0775
+   }
+  },
+  {
+   "question": "polymarket:0x93657cd9bb7f8f7d7721ace577bc44194716a3f1e2c9dff20e4e454ea51a8842",
+   "titre": "Will New People (NL) win the most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.21180568176545844,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.06894894267410097,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0xbca3d70ec52a5a441ccc365a3b1b48b9cd0f08dfff4bc5871e2cd92d0d92caa1",
+   "titre": "Will Ronaldo Caiado win the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.24397637416949894,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.07506210440557423,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "metaculus:44925",
+   "titre": "Will the Royal Mail raise prices on any letters or parcels before September 10, 2026?",
+   "issue": 1,
+   "p_S": 0.29244640196819494,
+   "p_R": 0.10000000000000003,
+   "p_C": 0.17648029129661658,
+   "regles": {
+    "royal_mail_hausses_tarifs": 0.1
+   }
+  },
+  {
+   "question": "polymarket:0x0eac20f7ed673d0e99385158ea468f6540aa208abefb74613f8170c2f9909e53",
+   "titre": "Will Apvienotais Saraksts (AS) win the most seats in the 2026 Latvian parliamentary election?",
+   "issue": 1,
+   "p_S": 0.24914184432109254,
+   "p_R": 0.552,
+   "p_C": 0.3900219917155633,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.552,
+    "sondages_erreur_comparee": 0.552
+   }
+  },
+  {
+   "question": "polymarket:0x190ac165e768e2f4169e79874d7671edd551c4c0a6ab4d4f07f16a2cae903f3b",
+   "titre": "Will The Left win the third most seats in the 2026 Sachsen-Anhalt parliamentary elections?",
+   "issue": 0,
+   "p_S": 0.25820692442062737,
+   "p_R": 0.90125,
+   "p_C": 0.640593521817505,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.90125,
+    "sondages_erreur_comparee": 0.90125
+   }
+  },
+  {
+   "question": "polymarket:0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d",
+   "titre": "Will Flávio Bolsonaro win the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.23522693201163164,
+   "p_R": 0.18350000000000002,
+   "p_C": 0.2081817581244787,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.1835,
+    "sondages_erreur_comparee": 0.1835
+   }
+  },
+  {
+   "question": "polymarket:0x7b2fbaa6995a068aae8fb08a44f406297f50ce738b34afb3d18fda96ae23643a",
+   "titre": "Will Augusto Cury finish in second place in the first round of the 2026 Brazilian presidential election?",
+   "issue": 0,
+   "p_S": 0.14081629086754824,
+   "p_R": 0.020000000000000007,
+   "p_C": 0.054672351489955126,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.01,
+    "sondages_erreur_comparee": 0.01
+   }
+  },
+  {
+   "question": "polymarket:0xd8dcf41c1c938ffcf4ed95da62baff3c17a102fb56a6fe524db23145213ffef0",
+   "titre": "Will the Communist Party of the Russian Federation (KPRF) win the third-most seats in the next Russian parliamentary election?",
+   "issue": 0,
+   "p_S": 0.2589276985758626,
+   "p_R": 0.07150000000000002,
+   "p_C": 0.14091498411284445,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.0715,
+    "sondages_erreur_comparee": 0.0715
+   }
+  },
+  {
+   "question": "polymarket:0x3cb06270073639b93774e844b0cb35ac24d51d2fb6ced666401c817618b5c4e2",
+   "titre": "Will Flavio Bolsonaro win the most votes in the first round of the 2026 Brazil presidential election?",
+   "issue": 1,
+   "p_S": 0.2557400136738507,
+   "p_R": 0.3205,
+   "p_C": 0.28703012172216796,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.3205,
+    "sondages_erreur_comparee": 0.3205
+   }
+  },
+  {
+   "question": "polymarket:0xf19d6b617a3c6382448444824b42ba172be2d88b8a1491f7dfc7be6327e510a1",
+   "titre": "Will Lula win the most votes in the first round of the 2026 Brazil presidential election?",
+   "issue": 0,
+   "p_S": 0.271334071497818,
+   "p_R": 0.6765,
+   "p_C": 0.46877428613245353,
+   "regles": {
+    "us_erreur_selon_temps_restant": 0.6765,
+    "sondages_erreur_comparee": 0.6765
+   }
+  }
+ ],
+ "note": "perte log, plus bas = mieux ; adopté si l'intervalle à 90 % de C − S est entièrement sous 0"
+}

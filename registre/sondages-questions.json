@@ -85,63 +85,49 @@
   },
   "manifold:yq9hpgsgsU": {
    "election": "2026 Welsh election",
-   "statut": "introuvable",
-   "essais": [
-    [
-     "Opinion polling for the 2026 Senedd election",
-     "page refusée"
-    ],
-    [
-     "Opinion polling for the next United Kingdom general election",
-     "page refusée"
-    ],
-    [
-     "Opinion polling on Welsh independence",
-     "page refusée"
-    ],
-    [
-     "Opinion polling for the 2024 United Kingdom general election",
-     "page refusée"
-    ],
-    [
-     "Next Senedd election",
-     "page refusée"
-    ],
-    [
-     "2026 Senedd election",
-     "page refusée"
-    ]
-   ]
+   "statut": "sujet_absent_des_tableaux",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Senedd election",
+   "sujet": "",
+   "colonne_sujet": null,
+   "jeu": "2026-04-26",
+   "moyennes": {}
   },
   "metaculus:22310": {
-   "election": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
-   "statut": "introuvable",
-   "essais": [
-    [
-     "Luiz Inácio Lula da Silva",
-     "page refusée"
-    ],
-    [
-     "Lula's Army",
-     "page refusée"
-    ],
-    [
-     "2018 Brazilian general election",
-     "page refusée"
-    ],
-    [
-     "2025 Ecuadorian general election",
-     "page refusée"
-    ],
-    [
-     "Bernie Sanders",
-     "page refusée"
-    ],
-    [
-     "Luiz Inácio Lula da Silva",
-     "page refusée"
-    ]
-   ]
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Brazilian presidential election",
+   "sujet": "President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026",
+   "colonne_sujet": "Lula",
+   "jeu": "2026-02-01",
+   "moyennes": {
+    "Lula": {
+     "moyenne": 30.0,
+     "n": 1,
+     "dernier": "2026-01-26"
+    },
+    "Freitas": {
+     "moyenne": 13.0,
+     "n": 1,
+     "dernier": "2026-01-26"
+    },
+    "Gomes": {
+     "moyenne": 9.0,
+     "n": 1,
+     "dernier": "2026-01-26"
+    },
+    "Zema": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2026-01-26"
+    },
+    "Caiado": {
+     "moyenne": 3.0,
+     "n": 1,
+     "dernier": "2026-01-26"
+    }
+   }
   },
   "metaculus:40005": {
    "election": "2026 Hungarian parliamentary election",
@@ -204,64 +190,86 @@
    ]
   },
   "polymarket:0x003e6ffdf25f45a8d5679831551658e1b54094187f552fc6ef4b26bca404c971": {
-   "election": "Will Michelle Bolsonaro qualify for Brazil's presidential runoff?",
-   "statut": "introuvable",
-   "essais": [
-    [
-     "Attempts to overturn the 2020 United States presidential election",
-     "page refusée"
-    ],
-    [
-     "Political impact of the COVID-19 pandemic",
-     "page refusée"
-    ],
-    [
-     "Francis Suarez",
-     "page refusée"
-    ],
-    [
-     "Tarcísio de Freitas",
-     "page refusée"
-    ],
-    [
-     "Attempts to overturn the 2020 United States presidential election",
-     "page refusée"
-    ],
-    [
-     "Right-wing populism",
-     "page refusée"
-    ]
-   ]
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Brazilian presidential election",
+   "sujet": "Michelle Bolsonaro",
+   "colonne_sujet": "F. Bolsonaro PL",
+   "jeu": "2026-08-16",
+   "moyennes": {
+    "Lula PT": {
+     "moyenne": 41.28,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "F. Bolsonaro PL": {
+     "moyenne": 33.94,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Caiado PSD": {
+     "moyenne": 4.94,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Zema Novo": {
+     "moyenne": 3.14,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Santos Mission": {
+     "moyenne": 4.96,
+     "n": 5,
+     "dernier": "2026-08-13"
+    },
+    "Cury Avante": {
+     "moyenne": 1.76,
+     "n": 5,
+     "dernier": "2026-08-13"
+    }
+   }
   },
   "polymarket:0x023a8c2fd2a78c29c9748a44205e2cbe624d86c11ee41b81d4067ddbbf2a135f": {
-   "election": "Will Flavio Bolsonaro qualify for Brazil's presidential runoff?",
-   "statut": "introuvable",
-   "essais": [
-    [
-     "Upset (competition)",
-     "page refusée"
-    ],
-    [
-     "2026 Colombian presidential election",
-     "page refusée"
-    ],
-    [
-     "Luiz Inácio Lula da Silva",
-     "page refusée"
-    ],
-    [
-     "2026 Colombian presidential election",
-     "page refusée"
-    ],
-    [
-     "Luiz Inácio Lula da Silva",
-     "page refusée"
-    ],
-    [
-     "Tarcísio de Freitas",
-     "page refusée"
-    ]
-   ]
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Brazilian presidential election",
+   "sujet": "Flavio Bolsonaro",
+   "colonne_sujet": "F. Bolsonaro PL",
+   "jeu": "2026-07-19",
+   "moyennes": {
+    "Lula PT": {
+     "moyenne": 40.94,
+     "n": 5,
+     "dernier": "2026-07-15"
+    },
+    "F. Bolsonaro PL": {
+     "moyenne": 34.28,
+     "n": 5,
+     "dernier": "2026-07-15"
+    },
+    "Caiado PSD": {
+     "moyenne": 7.48,
+     "n": 5,
+     "dernier": "2026-07-15"
+    },
+    "Zema Novo": {
+     "moyenne": 6.04,
+     "n": 5,
+     "dernier": "2026-07-15"
+    },
+    "Santos Mission": {
+     "moyenne": 4.58,
+     "n": 5,
+     "dernier": "2026-07-15"
+    },
+    "Cury Avante": {
+     "moyenne": 1.72,
+     "n": 5,
+     "dernier": "2026-07-15"
+    }
+   }
   },
   "polymarket:0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced": {
    "election": "2026 Brazilian presidential election",
@@ -355,7 +363,7 @@
      "page refusée"
     ],
     [
-     "2028 Democratic Party presidential primaries",
+     "2026 United States House of Representatives elections in Michigan",
      "page refusée"
     ],
     [
@@ -812,16 +820,16 @@
    "statut": "introuvable",
    "essais": [
     [
-     "2026 Russian legislative election",
-     "aucun tableau lisible (HTTP 200)"
-    ],
-    [
      "2026 United States elections",
      "page refusée"
     ],
     [
      "United Russia",
      "page refusée"
+    ],
+    [
+     "2026 Russian legislative election",
+     "aucun tableau lisible (HTTP 200)"
     ],
     [
      "Anti-Russian sentiment",
@@ -832,8 +840,8 @@
      "page refusée"
     ],
     [
-     "2026 Russian legislative election",
-     "aucun tableau lisible (HTTP 200)"
+     "Elections in Russia",
+     "page refusée"
     ]
    ]
   },
@@ -1295,7 +1303,7 @@
      "page refusée"
     ],
     [
-     "Flávio Bolsonaro 2026 presidential campaign",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -1392,11 +1400,11 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the next Indian general election",
+     "Leadership approval opinion polling for the next United Kingdom general election",
      "page refusée"
     ],
     [
-     "Opinion polling for the next Japanese general election",
+     "Opinion polling for the next Indian general election",
      "page refusée"
     ],
     [
@@ -1599,34 +1607,40 @@
    "moyennes": {}
   },
   "polymarket:0x7b22caeed454d3c7dbd07b83d8255c74e1482c4f958b4ba4dd0c27b864cd47a2": {
-   "election": "Will Luiz Inácio Lula da Silva qualify for Brazil's presidential runoff?",
-   "statut": "introuvable",
-   "essais": [
-    [
-     "Luiz Inácio Lula da Silva",
-     "page refusée"
-    ],
-    [
-     "Upset (competition)",
-     "page refusée"
-    ],
-    [
-     "Luiz Inácio Lula da Silva",
-     "page refusée"
-    ],
-    [
-     "Leonel Brizola",
-     "page refusée"
-    ],
-    [
-     "Guilherme Boulos",
-     "page refusée"
-    ],
-    [
-     "Tarcísio de Freitas",
-     "page refusée"
-    ]
-   ]
+   "election": "2026 Brazilian presidential election",
+   "statut": "ok",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Brazilian presidential election",
+   "sujet": "Luiz Inácio Lula da Silva",
+   "colonne_sujet": "Lula PT",
+   "jeu": "2026-04-12",
+   "moyennes": {
+    "Lula PT": {
+     "moyenne": 39.7,
+     "n": 2,
+     "dernier": "2026-04-09"
+    },
+    "F. Bolsonaro PL": {
+     "moyenne": 36.0,
+     "n": 2,
+     "dernier": "2026-04-09"
+    },
+    "Caiado PSD": {
+     "moyenne": 5.75,
+     "n": 2,
+     "dernier": "2026-04-09"
+    },
+    "Zema Novo": {
+     "moyenne": 3.5,
+     "n": 2,
+     "dernier": "2026-04-09"
+    },
+    "Santos Mission": {
+     "moyenne": 2.5,
+     "n": 2,
+     "dernier": "2026-04-09"
+    }
+   }
   },
   "polymarket:0x7b2fbaa6995a068aae8fb08a44f406297f50ce738b34afb3d18fda96ae23643a": {
    "election": "2026 Brazilian presidential election",
@@ -2464,33 +2478,13 @@
   },
   "polymarket:0xc0986d59c913ffbf40a94966e77829ecffe3e0e5bb287713bce5715841409031": {
    "election": "2026 Swedish parliamentary election",
-   "statut": "introuvable",
-   "essais": [
-    [
-     "Opinion polling for the 2027 Finnish parliamentary election",
-     "page refusée"
-    ],
-    [
-     "2026 Swedish general election",
-     "aucun tableau lisible (HTTP 200)"
-    ],
-    [
-     "Opinion polling and seat projections for the 2029 European Parliament election",
-     "page refusée"
-    ],
-    [
-     "2030 Swedish general election",
-     "page refusée"
-    ],
-    [
-     "Elections in Sweden",
-     "page refusée"
-    ],
-    [
-     "2026 Swedish general election",
-     "aucun tableau lisible (HTTP 200)"
-    ]
-   ]
+   "statut": "sujet_absent_des_tableaux",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Swedish general election",
+   "sujet": "the Left Party (V)",
+   "colonne_sujet": null,
+   "jeu": "2026-08-30",
+   "moyennes": {}
   },
   "polymarket:0xc23d4f3a1a96576e93f32ab1806c6d85f5a3d1925df7c80bdb97cfd6787b4dfc": {
    "election": "2026 Portugal presidential election",
@@ -2691,9 +2685,14 @@
    }
   },
   "polymarket:0xd7391798f941b8fe16773f96397ef3f91a2fc36939bdd50a78776dbf93ddd280": {
-   "election": "Will Tarcisio de Frietas qualify for Brazil's presidential runoff?",
-   "statut": "introuvable",
-   "essais": []
+   "election": "2026 Brazilian presidential election",
+   "statut": "sujet_absent_des_tableaux",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Brazilian presidential election",
+   "sujet": "Tarcisio de Frietas",
+   "colonne_sujet": null,
+   "jeu": "2026-08-16",
+   "moyennes": {}
   },
   "polymarket:0xd78b6917ee08627da7a527ed3b18700b5479da7b241ce1264cf1a8da806caf72": {
    "election": "next Russian parliamentary election",
@@ -2880,33 +2879,29 @@
   },
   "polymarket:0xe5acfef8707df2e25a99a6e4d9568d033fa063b006022f68375ab3bbcf376818": {
    "election": "2026 Swedish parliamentary election",
-   "statut": "introuvable",
-   "essais": [
-    [
-     "Opinion polling for the 2027 Finnish parliamentary election",
-     "page refusée"
-    ],
-    [
-     "2026 Swedish general election",
-     "aucun tableau lisible (HTTP 200)"
-    ],
-    [
-     "Opinion polling and seat projections for the 2029 European Parliament election",
-     "page refusée"
-    ],
-    [
-     "2030 Swedish general election",
-     "page refusée"
-    ],
-    [
-     "Elections in Sweden",
-     "page refusée"
-    ],
-    [
-     "2026 Swedish general election",
-     "aucun tableau lisible (HTTP 200)"
-    ]
-   ]
+   "statut": "ok",
+   "source": "wikipedia",
+   "page": "Opinion polling for the 2026 Swedish general election",
+   "sujet": "the Swedish Social Democratic Party (S)",
+   "colonne_sujet": "Magdalena Andersson (S)",
+   "jeu": "2026-04-26",
+   "moyennes": {
+    "Magdalena Andersson (S)": {
+     "moyenne": 39.0,
+     "n": 3,
+     "dernier": "2026-04-15"
+    },
+    "Ulf Kristersson (M)": {
+     "moyenne": 21.67,
+     "n": 3,
+     "dernier": "2026-04-15"
+    },
+    "Jimmie Åkesson (SD)": {
+     "moyenne": 16.67,
+     "n": 3,
+     "dernier": "2026-04-15"
+    }
+   }
   },
   "polymarket:0xe70dc5791fd703624bdd33fbdd6c4374bf51723c4c5e2fb88ee87857dc72d762": {
    "election": "2026 Alaska Governor primary",
@@ -2939,7 +2934,7 @@
      "page refusée"
     ],
     [
-     "2028 Democratic Party presidential primaries",
+     "2026 United States House of Representatives elections in Michigan",
      "page refusée"
     ],
     [
@@ -2965,11 +2960,11 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the next Indian general election",
+     "Leadership approval opinion polling for the next United Kingdom general election",
      "page refusée"
     ],
     [
-     "Opinion polling for the next Japanese general election",
+     "Opinion polling for the next Indian general election",
      "page refusée"
     ],
     [
@@ -3040,7 +3035,7 @@
      "page refusée"
     ],
     [
-     "Statewide opinion polling for the 2028 Democratic Party presidential primaries",
+     "Opinion polling for the next Italian general election",
      "page refusée"
     ],
     [
