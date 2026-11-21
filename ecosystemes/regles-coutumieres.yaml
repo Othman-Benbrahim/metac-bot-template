@@ -644,3 +644,16 @@ regles:
     sources:
       - {titre: "Flyvbjerg, What You Should Know about Megaprojects and Why: An Overview, Project Management Journal 45(2), 2014 (arXiv 1409.0003)", url: "https://arxiv.org/pdf/1409.0003.pdf", consulte: "2026-11-21"}
     statut: source
+
+  - id: coree_du_nord_essais_nucleaires
+    ecosysteme: "Corée du Nord · essais nucléaires"
+    espace: asie
+    echelle: {axe: temps, tranche: "année"}
+    structure: evenement_rare
+    compartiments: [non-proliferation:etats_du_seuil, non-proliferation:dissuasion]
+    regle: "Six essais nucléaires en tout : 9 octobre 2006, 25 mai 2009, 12 février 2013, 6 janvier 2016, 9 septembre 2016, 3 septembre 2017 ; aucun depuis septembre 2017 selon la liste tenue à jour. Rythme : six essais en onze ans, puis plus de huit ans sans essai malgré des annonces répétées de préparatifs. Pour une question « essai avant telle date » à quelques mois, le taux de base récent est très bas ; les préparatifs signalés n'ont pas suffi à produire un essai."
+    parametres: {essais: ["2006-10-09", "2009-05-25", "2013-02-12", "2016-01-06", "2016-09-09", "2017-09-03"], dernier: "2017-09-03"}
+    sources:
+      - {titre: "CBS News, A timeline of North Korea's nuclear tests (mis à jour le 3 septembre 2017)", url: "https://www.cbsnews.com/news/north-koreas-nuclear-tests-timeline", consulte: "2026-11-21"}
+      - {titre: "Wikipedia (Wikiwand), List of nuclear weapons tests of North Korea", url: "https://www.wikiwand.com/en/articles/North_Korean_nuclear_test", consulte: "2026-11-21"}
+    statut: source
