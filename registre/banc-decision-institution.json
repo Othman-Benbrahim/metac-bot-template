@@ -1,0 +1,51 @@
+{
+  "version_bot": "0.10.410",
+  "n": 94,
+  "note": "perte log, plus bas = mieux ; outil en validation croisée",
+  "oui": 0.266,
+  "faits_utilisables": 0.947,
+  "semblables": 0.6218,
+  "outil": 0.6489,
+  "fed": {
+    "n": 48,
+    "semblables": 0.579,
+    "outil": 0.5804
+  },
+  "hors_fed": {
+    "n": 46,
+    "semblables": 0.6664,
+    "outil": 0.7204
+  },
+  "coefficients_sur_tout": {
+    "etape": 0.151,
+    "soutien": 0.602,
+    "regle": 0.497,
+    "confirmation_deux": 0.561,
+    "confirmation_une": 0.475,
+    "deja_decide": 0.0
+  },
+  "critere": {
+    "n_nouveaux": 94,
+    "regard": 1,
+    "n_juge": 94,
+    "blocs": 94,
+    "bloc_par": "question",
+    "ecart_moyen": 0.02716246590753277,
+    "intervalle_90_par_blocs": [
+      -0.004674644699807083,
+      0.06324675542160914
+    ],
+    "intervalle_corrige": [
+      -0.008774994222154229,
+      0.07151497910874446
+    ],
+    "niveau_corrige": 0.95,
+    "verdict": "critère non atteint ; essai à clore"
+  },
+  "avec_M": {
+    "n": 14,
+    "semblables": 0.5826,
+    "outil": 0.6353,
+    "M": 0.4182
+  }
+}
