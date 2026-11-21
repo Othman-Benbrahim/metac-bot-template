@@ -1,4 +1,4 @@
-name: "Carte de couverture des règles sourcées (banc de M, v3, descriptif)"
+name: "Carte de couverture des règles sourcées (banc de M, v4, descriptif)"
 
 # Piste écosystémique (2026-11-21) : règles sourcées choisies pour chaque question du banc de M ; environ 120 appels.
 # Descriptif, rien dans le bot.
@@ -52,7 +52,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/couverture-regles-banc-m.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          for f in registre/couverture-regles-banc-m.json registre/couverture-regles-banc-m-v4.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
           if ! git diff --cached --quiet; then
             git commit -m "registre : couverture des règles du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase

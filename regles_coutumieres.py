@@ -16,6 +16,11 @@ FICHIER = Path("ecosystemes") / "regles-coutumieres.yaml"
 SORTIE = Path("registre") / "regles-coutumieres.md"
 STRUCTURES = {"course", "seuil", "procedure", "evenement_rare", "maintien", "contexte"}   # contexte : mécanisme de fond
 AXES = {"taille", "vitesse", "espace", "temps"}
+# 2026-11-21 (carte de couverture v4) : vocabulaire fermé du périmètre d'une règle sourcée
+REGIONS = {"monde", "afrique", "amerique_du_nord", "amerique_latine", "asie", "europe", "moyen_orient", "oceanie"}
+PAYS = {"États-Unis": "amerique_du_nord", "Canada": "amerique_du_nord", "Mexique": "amerique_du_nord",
+        "France": "europe", "Brésil": "amerique_latine", "Indonésie": "asie", "Japon": "asie", "Australie": "oceanie",
+        "Inde": "asie", "Corée du Nord": "asie"}
 STATUTS = {"source", "auteur", "absence"}
 
 
@@ -56,6 +61,12 @@ def valider(rs: list[dict] | None = None, fiches: dict[str, set] | None = None) 
             err.append(f"{i} : une absence ne porte pas de paramètres")
         if st == "absence" and not r.get("aide"):
             err.append(f"{i} : absence sans aide demandée")
+        if st == "source" and len(str(r.get("objet") or "")) < 10:   # 2026-11-21 : carte de couverture v4
+            err.append(f"{i} : règle sourcée sans objet (l'événement qu'elle prédit)")
+        if st == "source":
+            per = r.get("perimetre")
+            if not per or any(x not in REGIONS and x not in PAYS for x in per):
+                err.append(f"{i} : périmètre absent ou inconnu {per}")
         for c in r.get("compartiments") or []:       # 2026-11-21 : lien règle → compartiment de fiche (piste écosystémique)
             f_, _, k_ = str(c).partition(":")
             if k_ not in fiches.get(f_, set()):

@@ -17,6 +17,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: national}
     structure: course
+    objet: "issue de l'élection présidentielle américaine (collège électoral)"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:regles_electorales]
     regle: "Le président est élu par le collège électoral : 270 voix sur 538. Dans 48 États et à Washington DC, le candidat arrivé en tête prend toutes les voix de l'État ; le Maine et le Nebraska répartissent une partie de leurs voix par circonscription."
     parametres: {voix_total: 538, voix_pour_gagner: 270, repartition_par_circonscription: [ME, NE]}
@@ -29,6 +31,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: primaire}
     structure: course
+    objet: "issue d'une primaire américaine qui prévoit un second tour"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:regles_electorales]
     regle: "Second tour entre les deux premiers si personne n'atteint le seuil de l'État : majorité (plus de 50 %) en Alabama, Arkansas, Géorgie, Mississippi, Oklahoma, Caroline du Sud et Texas ; 30 % plus une voix en Caroline du Nord ; plus de 35 % au Dakota du Sud, seulement pour le Congrès et le gouverneur et seulement avec au moins trois candidats ; en Louisiane, à partir de 2026, majorité pour le Congrès, la Cour suprême de l'État, le BESE et la Public Service Commission. Ailleurs, la majorité relative suffit (le premier gagne)."
     parametres:
@@ -45,6 +49,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: primaire}
     structure: course
+    objet: "issue d'une primaire non partisane ou d'un vote préférentiel dans un État américain"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:regles_electorales]
     regle: "Californie et État de Washington : primaire à deux qualifiés (les deux premiers, tous partis confondus, vont à l'élection générale). Alaska : primaire à quatre qualifiés, puis élection générale au vote préférentiel. Maine : vote préférentiel. Nebraska : deux qualifiés pour la seule législature d'État. Dans ces systèmes, « gagner la primaire » ne veut pas dire la même chose qu'ailleurs : la brique s'abstient tant que la règle de calcul propre (qualification, transferts de voix) n'est pas écrite."
     parametres: {deux_qualifies: [CA, WA], quatre_qualifies: [AK], vote_preferentiel: [ME, AK], deux_qualifies_legislature: [NE]}
@@ -57,6 +63,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: "toutes (par type d'élection)"}
     structure: course
+    objet: "écart entre le résultat d'une élection américaine et ses sondages"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:elections]
     regle: "Erreur moyenne des sondages sur l'ÉCART entre les deux premiers, sondages des 21 derniers jours, 1998-2018 : présidentielle générale 4,0 points ; primaires présidentielles 8,7 ; Sénat 5,4 ; gouverneur 5,4 ; Chambre 6,2 ; ensemble 5,9. Cycle 2023-2024 : présidentielle générale 3,4, Sénat 4,1, ensemble 4,5 ; les primaires présidentielles sont le seul type au-dessus de la moyenne. Conversion pour une PART de candidat (hypothèse écrite, pas une source) : erreur sur l'écart ≈ 2 × erreur sur la part ; erreur moyenne absolue ≈ 0,8 σ ; donc σ(part) ≈ erreur sur l'écart / 1,6."
     parametres:
@@ -85,6 +93,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "jours avant le vote"}
     structure: course
+    objet: "écart entre le résultat d'une élection nationale et ses sondages, selon le temps restant avant le vote"
+    perimetre: [monde]
     compartiments: [politique-americaine:elections, calendriers-echeances:elections]
     regle: "Erreur absolue moyenne par parti ou candidat, sondages nationaux : près de 4 points entre 150 et 200 jours avant le vote, environ 3 points à 50 jours, moins de 2 points la veille. À 200 jours : 3,3 points pour les législatives, 5,9 pour les présidentielles ; l'écart se réduit sans disparaître. Remplace la formule σ·√(1 + t/30) du préenregistrement etalon-scrutin, qui était une invention de Claude (lot 1). Ne vaut pas pour les primaires ni pour les scrutins locaux (sondages nationaux seulement)."
     parametres: {erreur_part_points: {j150_200: 4.0, j50: 3.0, veille: 2.0}, erreur_part_j200: {legislatives: 3.3, presidentielles: 5.9}}
@@ -97,6 +107,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: taille, tranche: "national (Chambre, Sénat)"}
     structure: maintien
+    objet: "réélection d'un sortant au Congrès américain"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:elections]
     regle: "Part des sortants réélus parmi ceux qui se représentent, 2000-2022 : Chambre 93,9 % en moyenne (de 85,4 % en 2010 à 97,8 %) ; Sénat 86,9 % (de 78,6 % à 100 %). Défaites en primaire : 72 à la Chambre et 6 au Sénat sur ces douze cycles."
     parametres: {reelection_chambre: 0.939, reelection_senat: 0.869, defaites_primaires_chambre_2000_2022: 72, defaites_primaires_senat_2000_2022: 6, cycles: 12}
@@ -123,6 +135,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "décennie 2010"}
     structure: evenement_rare
+    objet: "succès d'une campagne de contestation non violente qui vise un changement de régime"
+    perimetre: [monde]
     regle: "Les campagnes de résistance non violente qui visaient un changement de régime ou l'expulsion d'une occupation ont réussi dans plus de 40 % des cas des années 1960 à 2010, jusqu'à 65 % dans les années 1990, mais dans moins de 34 % des cas dans les années 2010 ; les campagnes violentes, dans 8 % des cas. Cohérent avec la règle d'inertie : la contestation réussit de moins en moins."
     parametres: {succes_non_violent_2010s_max: 0.34, succes_violent_2010s: 0.08, succes_non_violent_1990s_max: 0.65}
     sources:
@@ -134,6 +148,8 @@ regles:
     espace: afrique
     echelle: {axe: temps, tranche: "durée au pouvoir"}
     structure: maintien
+    objet: "maintien au pouvoir d'un dirigeant africain au-delà des limites de mandat"
+    perimetre: [afrique]
     regle: "14 pays africains ont des dirigeants restés plus de deux mandats après avoir contourné les limites ; 30 pays sur 54 n'ont pas de limite qui fonctionne. Durée au pouvoir : 5 ans en moyenne là où les limites sont respectées, 16 ans (médiane) chez les dirigeants qui les ont contournées. 8 pays ont connu un coup d'État militaire depuis 2015, dont 5 dirigés par un dirigeant ayant contourné les limites (médiane de 30 ans au pouvoir)."
     parametres: {pays_contournement: 14, pays_sans_limite_effective: 30, pays_total: 54, duree_limites_respectees_ans: 5, duree_mediane_contournement_ans: 16, coups_depuis_2015_pays: 8}
     sources:
@@ -157,6 +173,8 @@ regles:
     espace: monde
     echelle: {axe: taille, tranche: "national, selon le système électoral et la taille du parti"}
     structure: course
+    objet: "écart entre le résultat d'une élection nationale et les sondages de la dernière semaine"
+    perimetre: [monde]
     regle: "Erreur absolue moyenne sur la part d'un parti ou d'un candidat, sondages de la dernière semaine : 2,03 points au total (2,1 dans les années 1940-1970, 2,0 depuis 2000 ; pas de tendance d'ensemble). Présidentielles 2,70, législatives 1,83 ; proportionnelle 1,62, scrutin uninominal 2,28 ; grands partis (plus de 20 %) 2,28, petits partis 1,29 ; partis au pouvoir 2,05, opposition 1,71. Pour une erreur normale, σ ≈ erreur moyenne / 0,8."
     parametres:
       erreur_part_points: {ensemble: 2.03, presidentielles: 2.70, legislatives: 1.83, proportionnelle: 1.62, uninominal: 2.28, grands_partis: 2.28, petits_partis: 1.29, au_pouvoir: 2.05, opposition: 1.71}
@@ -170,6 +188,8 @@ regles:
     espace: europe
     echelle: {axe: taille, tranche: circonscription}
     structure: course
+    objet: "élection d'un député ou issue des élections législatives françaises"
+    perimetre: ["France"]
     regle: "Élu au premier tour : majorité absolue des suffrages exprimés ET au moins le quart des inscrits. Au second tour, la majorité relative suffit. Pour se maintenir au second tour : au moins 12,5 % des inscrits ; si un seul candidat atteint ce seuil, le suivant peut se maintenir ; si aucun, les deux premiers."
     parametres: {premier_tour: {majorite_exprimes: 50, quart_inscrits: 25}, qualification_inscrits: 12.5}
     sources:
@@ -181,6 +201,8 @@ regles:
     espace: europe
     echelle: {axe: taille, tranche: national}
     structure: course
+    objet: "entrée d'un parti au parlement national ou répartition des sièges, dans un pays européen"
+    perimetre: [europe]
     regle: "Seuil légal pour obtenir des sièges : Allemagne 5 % ; Pays-Bas 0,67 % (une voix pour un siège) ; Pologne 5 % (partis), 8 % (alliances) ; Tchéquie 5 %, 8 % (alliance de deux), 11 % (plus) ; Hongrie 5 %, 10 %, 15 % ; Roumanie 5 %, 10 % ; Slovaquie 5 %, 7 % (2 à 3 partis), 10 % (4 et plus) ; Suède 4 % ; Autriche 4 % ; Norvège 4 % (sièges compensatoires seulement) ; Bulgarie 4 % ; Lettonie 5 % ; Italie 3 % ; Grèce 3 % ; Espagne 3 % par circonscription ; Belgique 5 % par circonscription ; Danemark 2 % ; Portugal aucun seuil légal."
     parametres:
       seuil_parti: {DE: 5, NL: 0.67, PL: 5, CZ: 5, HU: 5, RO: 5, SK: 5, SE: 4, AT: 4, NO: 4, BG: 4, LV: 5, IT: 3, GR: 3, ES: 3, BE: 5, DK: 2, PT: 0}
@@ -194,6 +216,8 @@ regles:
     espace: europe
     echelle: {axe: taille, tranche: "national (liste par État)"}
     structure: course
+    objet: "sièges obtenus par une liste aux élections européennes"
+    perimetre: [europe]
     regle: "Le droit de l'UE plafonne le seuil à 5 % des suffrages exprimés. Seuils de 2024 : 5 % en Tchéquie, France, Croatie, Lettonie, Lituanie (7 % pour les listes communes), Hongrie, Pologne, Roumanie et Slovaquie ; 4 % en Italie, Autriche et Suède ; 3 % en Grèce ; 1,8 % à Chypre ; les autres États n'ont pas de seuil légal."
     parametres: {plafond_ue: 5, seuil: {CZ: 5, FR: 5, HR: 5, LV: 5, LT: 5, HU: 5, PL: 5, RO: 5, SK: 5, IT: 4, AT: 4, SE: 4, GR: 3, CY: 1.8}}
     sources:
@@ -205,6 +229,8 @@ regles:
     espace: europe
     echelle: {axe: espace, tranche: "UE à 27"}
     structure: procedure
+    objet: "adoption d'une décision par le Conseil de l'Union européenne"
+    perimetre: [europe]
     regle: "Majorité qualifiée : au moins 55 % des États (15 sur 27) représentant au moins 65 % de la population. Une minorité de blocage doit compter au moins 4 États. Les abstentions comptent comme des votes contre. Majorité qualifiée renforcée (proposition qui ne vient ni de la Commission ni du Haut Représentant) : 72 % des États (20 sur 27) et 65 % de la population."
     parametres: {etats_min: 15, population_min: 65, minorite_blocage_etats: 4, renforcee_etats_min: 20}
     sources:
@@ -216,6 +242,8 @@ regles:
     espace: europe
     echelle: {axe: temps, tranche: "cycle de renouvellement"}
     structure: procedure
+    objet: "adoption ou renouvellement des sanctions de l'Union européenne contre la Russie"
+    perimetre: [europe]
     regle: "Les sanctions économiques contre la Russie sont renouvelées par périodes de six mois depuis juillet 2016. Échéances indiquées en juillet 2026 : sanctions économiques au 31 juillet 2027 ; listes individuelles (intégrité territoriale de l'Ukraine) au 15 septembre 2026 ; Crimée et Sébastopol au 23 juin 2027 ; Donetsk, Louhansk, Zaporijjia et Kherson au 24 février 2027 ; détournement de fonds publics ukrainiens au 6 mars 2027. 21 paquets de sanctions adoptés à cette date. Ces actes relèvent de la politique étrangère et de sécurité commune, où le Conseil décide à l'unanimité sauf disposition contraire : un seul État peut bloquer un paquet ou un renouvellement."
     parametres: {periode_renouvellement_mois: 6, echeances: {economiques: "2027-07-31", listes_individuelles: "2026-09-15", crimee: "2027-06-23", oblasts_occupes: "2027-02-24", fonds_detournes: "2027-03-06"}, paquets_adoptes: 21, unanimite: true}
     sources:
@@ -228,6 +256,8 @@ regles:
     espace: europe
     echelle: {axe: temps, tranche: "jours entre l'élection et le premier gouvernement non intérimaire"}
     structure: procedure
+    objet: "formation d'un gouvernement après des législatives dans une démocratie parlementaire"
+    perimetre: [monde]
     regle: "Mesuré sur 234 élections législatives depuis 2000 dans 37 pays : durée médiane 31 jours ; plus de 30 jours dans 51% des cas, plus de 90 jours dans 7.3% ; maximum 541 jours (Belgique). Très variable selon le pays : quelques jours au Royaume-Uni, en France, en Grèce ou à Malte ; médiane de 125 jours aux Pays-Bas et de 139 en Belgique. La règle par pays (paramètres) prime sur la médiane d'ensemble ; chaque pays compte 4 à 9 élections, donc moins de 30 : ses chiffres sont des ordres de grandeur."
     parametres:
       ensemble: {n: 234, mediane: 31, p30: 0.509, p90: 0.073}
@@ -241,6 +271,8 @@ regles:
     espace: monde
     echelle: {axe: taille, tranche: "national, selon le système électoral (relevé IPU)"}
     structure: course
+    objet: "conversion des voix en sièges dans une élection législative"
+    perimetre: [monde]
     regle: "Mesuré sur 240 élections législatives depuis 2000 (ParlGov) : le premier en voix est aussi premier en sièges dans 95% des cas ; à la proportionnelle de liste, 98.2% (164 élections) : 95.3% quand les deux premiers sont à moins de 3 points (43 cas), 99.2% au-delà (121 cas). Quand ils divergent, le premier en sièges est le deuxième en voix dans 11 cas sur 12. Mixte compensatoire : 19 élections, aucun désaccord, mais moins de 30 cas par tranche : on applique les taux de l'ensemble. Système de l'élection lu dans le relevé IPU de 2026 (approximation : un pays peut avoir changé de système depuis 2000)."
     parametres:
       accord_premier:
@@ -268,6 +300,8 @@ regles:
     espace: afrique
     echelle: {axe: espace, tranche: "territoire ethnique (843 régions de la carte de Murdock)"}
     structure: evenement_rare
+    objet: "violence politique dans un territoire ethnique africain"
+    perimetre: [afrique]
     regle: "28 % des territoires ethniques ont été coupés par les frontières tracées lors du partage colonial. Les territoires partagés connaissent environ 57 % d'incidents de violence politique de plus que les autres, à géographie comparable (paludisme, diamants ou pétrole, distance à la côte et à la capitale). Données ACLED, plus de 64 000 incidents géolocalisés, 1997-2013."
     parametres: {part_territoires_partages: 0.28, surcroit_violence_partages: 0.57, periode: "1997-2013"}
     sources:
@@ -279,6 +313,8 @@ regles:
     espace: afrique
     echelle: {axe: espace, tranche: "cellule de 0,5° × 0,5° (environ 55 km)"}
     structure: evenement_rare
+    objet: "conflit local dans une zone minière africaine"
+    perimetre: [afrique]
     regle: "Une hausse d'un écart-type des prix mondiaux des minerais fait passer la probabilité de conflit dans une cellule minière de 16,9 % à 22,5 % (environ +33 %). La hausse historique des prix explique jusqu'à 21 % de la violence moyenne des pays africains, 1997-2010 (27 minerais). Les violences liées aux mines sont surtout associées aux compagnies ÉTRANGÈRES ; parmi elles, celles qui opèrent dans des pays moins corrompus ou qui suivent des pratiques de responsabilité sociale sont associées à moins de violence (nuance de gouvernance) ; les initiatives de transparence montrent « quelques indices » d'effet."
     parametres: {proba_conflit_cellule_miniere: {base: 0.169, prix_plus_1_ecart_type: 0.225}, part_violence_expliquee_max: 0.21, periode: "1997-2010"}
     sources:
@@ -291,6 +327,8 @@ regles:
     espace: afrique
     echelle: {axe: espace, tranche: continent}
     structure: contexte
+    objet: "montant des sorties financières illicites d'Afrique"
+    perimetre: [afrique]
     regle: "Sorties financières illicites : 88,6 milliards de dollars par an, 3,7 % du PIB africain, presque autant que l'aide publique au développement (48 milliards) et les investissements directs étrangers (54 milliards) réunis (moyennes 2013-2015). Fuite de capitaux cumulée 2000-2015 : 836 milliards. Les matières premières extractives en sont la première composante (40 milliards en 2015). La surfacturation et la sous-facturation des échanges figurent parmi les pratiques en cause."
     parametres: {flux_illicites_milliards_an: 88.6, part_pib: 0.037, aide_publique_milliards: 48, ide_milliards: 54, fuite_cumulee_2000_2015_milliards: 836, extractif_2015_milliards: 40}
     sources:
@@ -303,6 +341,8 @@ regles:
     espace: monde
     echelle: {axe: taille, tranche: national}
     structure: course
+    objet: "déroulement ou issue d'une élection présidentielle (à un ou deux tours)"
+    perimetre: [monde]
     regle: "Deux tours (TRS) : Mongolie, Kazakhstan, Kirghizstan, Turquie, Iran, Nigeria, Kenya, Sénégal, Côte d'Ivoire, Ghana, Zimbabwe, Mozambique, Ouganda, Brésil, Argentine, Colombie, Chili, Pérou, France, Portugal, Pologne, Roumanie, Autriche, Indonésie. Un tour, majorité relative (FPTP) : Corée du Sud, Taïwan, Philippines, Cameroun, Tanzanie, RD Congo, Mexique, Venezuela. Vote supplémentaire (SV, préférence de second rang) : Sri Lanka. Les seuils de victoire au premier tour peuvent différer de 50 % selon le pays : une règle nationale propre, quand elle est inscrite dans cette base, prime sur cette table."
     parametres:
       deux_tours: [MN, KZ, KG, TR, IR, NG, KE, SN, CI, GH, ZW, MZ, UG, BR, AR, CO, CL, PE, FR, PT, PL, RO, AT, ID]
@@ -317,6 +357,8 @@ regles:
     espace: asie
     echelle: {axe: taille, tranche: national}
     structure: course
+    objet: "issue de l'élection présidentielle indonésienne"
+    perimetre: ["Indonésie"]
     regle: "Élu au premier tour : plus de 50 % des voix ET au moins 20 % dans chacune de plus de la moitié des provinces ; sinon second tour entre les deux premiers. Avec deux candidats seulement, la Cour constitutionnelle a jugé que la condition de répartition provinciale ne s'applique pas (la majorité suffit)."
     parametres: {majorite: 50, seuil_provincial: 20, part_provinces: "plus de la moitié", deux_candidats: majorite_simple}
     sources:
@@ -329,6 +371,8 @@ regles:
     espace: asie
     echelle: {axe: taille, tranche: national}
     structure: course
+    objet: "majorité à la Chambre des représentants du Japon"
+    perimetre: ["Japon"]
     regle: "Système parallèle : 465 sièges, dont 289 élus au scrutin uninominal et 176 à la proportionnelle, le même jour. La majorité absolue est donc de 233 sièges."
     parametres: {sieges: 465, uninominal: 289, proportionnelle: 176, majorite_absolue: 233}
     sources:
@@ -340,6 +384,8 @@ regles:
     espace: oceanie
     echelle: {axe: taille, tranche: "circonscription (Chambre) ; État (Sénat)"}
     structure: course
+    objet: "élection d'un député ou majorité à la Chambre des représentants australienne"
+    perimetre: ["Australie"]
     regle: "Chambre des représentants : un élu par circonscription, vote préférentiel complet ; on transfère les préférences jusqu'à ce qu'un candidat obtienne la majorité absolue (plus de 50 % des bulletins valides). Le premier au décompte des premières préférences n'est donc pas toujours élu. Sénat : plusieurs élus par État, préférences transférées jusqu'au quota. (Le vote obligatoire n'est pas mentionné par la source consultée : non inscrit.)"
     parametres: {chambre: vote_preferentiel_majorite_absolue, senat: quota_par_etat}
     sources:
@@ -351,6 +397,8 @@ regles:
     espace: asie
     echelle: {axe: taille, tranche: circonscription}
     structure: course
+    objet: "élection d'un député ou majorité à la Lok Sabha"
+    perimetre: ["Inde"]
     regle: "Scrutin uninominal majoritaire à un tour : le candidat arrivé en tête dans la circonscription est élu, même sans majorité. (Le nombre de sièges n'est pas donné par la source consultée : non inscrit.)"
     parametres: {mode: uninominal_un_tour}
     sources:
@@ -374,6 +422,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: espace, tranche: "chambre fédérale"}
     structure: procedure
+    objet: "adoption d'une loi ou confirmation d'une nomination par le Sénat américain"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:congres]
     regle: "Pour clore le débat sur un texte de loi (et donc franchir l'obstruction), il faut les trois cinquièmes du Sénat : 60 voix, sauf vacance de plus d'un siège. Pour les nominations présidentielles, la majorité simple des votants suffit depuis le 21 novembre 2013 (toutes sauf la Cour suprême), et pour la Cour suprême depuis le 6 avril 2017. Une loi qui n'a pas 60 soutiens au Sénat ne passe donc pas, sauf procédure dérogatoire (le budget par réconciliation : voir us_reconciliation_budgetaire)."
     parametres: {cloture_lois: 60, cloture_nominations: majorite_simple, depuis_nominations: "2013-11-21", depuis_cour_supreme: "2017-04-06"}
@@ -387,6 +437,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "législature de deux ans"}
     structure: procedure
+    objet: "nombre de lois adoptées par le Congrès américain"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:congres]
     regle: "Le 119e Congrès (2025-2026) a adopté 121 lois publiques au 14 octobre 2026 (109 de fond, 12 symboliques), le deuxième total le plus bas des 40 dernières années à ce stade ; le 118e en avait 106. Du 100e au 110e Congrès, environ 440 lois avant le jour de l'élection, dont environ 306 de fond. Une grande part des lois passe après l'élection : 168 des 274 lois du 118e Congrès (61 %) pendant la session de fin de mandat."
     parametres: {lois_119e_au_2026_10_14: 121, lois_118e_meme_date: 106, moyenne_100e_110e_avant_election: 440, part_apres_election_118e: 0.61}
@@ -399,6 +451,8 @@ regles:
     espace: monde
     echelle: {axe: espace, tranche: "15 membres, dont 5 permanents"}
     structure: procedure
+    objet: "adoption d'une résolution par le Conseil de sécurité de l'ONU"
+    perimetre: [monde]
     regle: "Questions de procédure : 9 voix pour. Toutes les autres questions : 9 voix pour, y compris les voix concordantes des membres permanents (le veto) ; une partie à un différend s'abstient dans les décisions prises au titre du chapitre VI. Une résolution de fond qui touche un intérêt direct d'un membre permanent passe donc rarement."
     parametres: {voix_requises: 9, membres: 15, permanents: 5, veto: true}
     sources:
@@ -411,6 +465,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "année"}
     structure: evenement_rare
+    objet: "tentative ou réussite d'un coup d'État"
+    perimetre: [monde]
     compartiments: [humain:hierarchie]
     regle: "De 1950 à 2010, 457 tentatives de coup d'État dans le monde, dont 227 réussies (49,7 %). L'Afrique et les Amériques en concentrent la plupart (36,5 % et 31,9 % selon le texte ; la figure 1 compte 169 cas africains, soit 37 %). Le nombre de tentatives baisse sur la période (pics au milieu des années 1960, 1970 et au début des années 1990) ; la réussite remonte après 2003 (12 sur 18). Ce sont des ordres de grandeur pour un taux de base, pas une loi pour un pays donné."
     parametres: {tentatives_1950_2010: 457, reussies: 227, taux_reussite: 0.497, part_afrique: 0.365, reussite_depuis_2003: "12/18"}
@@ -423,6 +479,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "mois"}
     structure: maintien
+    objet: "départ forcé (coup, révolte, assassinat) ou maintien au pouvoir d'un chef d'État ou de gouvernement"
+    perimetre: [monde]
     compartiments: [humain:hierarchie]
     regle: "Les sorties irrégulières de dirigeants (coup, révolte, assassinat) sont très rares : 45 cas de mars 2001 à mars 2014 sur environ 26 000 pays-mois, soit 0,17 % des pays-mois ; sur la même période, 16 coups. Pour une question « X sera-t-il encore au pouvoir à telle date ? », le point de départ est le maintien, sauf échéance électorale ou limite de mandat."
     parametres: {cas_2001_2014: 45, pays_mois: 26000, taux_mensuel: 0.0017}
@@ -435,6 +493,8 @@ regles:
     espace: monde
     echelle: {axe: espace, tranche: "région du monde"}
     structure: course
+    objet: "vainqueur du second tour d'une présidentielle à deux tours"
+    perimetre: [monde]
     regle: "De 1945 à 2020 (423 présidentielles à deux tours, 73 pays), 42,8 % des élections vont au second tour ; le premier du premier tour gagne le second dans 70,7 % des cas, le deuxième dans 29,3 % (53 retournements sur 181 seconds tours). Part des seconds tours gagnés par le deuxième, par région : Europe 31,6 %, Amérique latine 24 %, Afrique 21,6 %, Asie 54 %, Océanie 50 %. Asie (environ 11 seconds tours) et Océanie (environ 4) ont trop peu de cas : la règle du registre des briques (moins de 30 cas = insuffisant) renvoie au chiffre mondial. Recoupement Amérique latine 1978-2017 : 34 seconds tours sur 46 gagnés par le premier du premier tour (12 retournements)."
     parametres:
       retournement: {monde: 0.293, europe: 0.316, amerique_latine: 0.24, afrique: 0.216, asie: 0.54, oceanie: 0.5}
@@ -450,6 +510,8 @@ regles:
     espace: monde
     echelle: {axe: taille, tranche: "national, par chambre"}
     structure: course
+    objet: "issue d'une élection législative selon son mode de scrutin"
+    perimetre: [monde]
     regle: "Système électoral de chaque chambre (281 chambres, novembre 2026), lu dans le relevé IPU Parline : chambres basses ou uniques 74 à la proportionnelle de liste, 43 au scrutin majoritaire uninominal à un tour, 22 en scrutin parallèle, 14 à deux tours, 9 en mixte avec compensation proportionnelle, 8 au vote unique non transférable, 2 au vote unique transférable, 2 au vote préférentiel, 2 au scrutin majoritaire plurinominal. Le relevé dit aussi quelles chambres sont suspendues, non élues au suffrage direct, et où le vote est obligatoire. Il ne donne ni la taille des circonscriptions ni la formule de répartition : le passage des voix aux sièges reste sans règle."
     parametres: {fichier: "registre/ipu/systemes-electoraux-2026-11-20.csv", lecteur: "ipu_parlements.py"}
     sources:
@@ -461,6 +523,8 @@ regles:
     espace: amerique_latine
     echelle: {axe: taille, tranche: "État fédéré"}
     structure: course
+    objet: "élection d'un gouverneur ou d'un sénateur au Brésil"
+    perimetre: ["Brésil"]
     regle: "Gouverneur : majorité absolue des suffrages valables (50 % + 1) ; sinon second tour entre les deux plus votés. Sénat : majorité simple, le plus voté est élu, pas de second tour."
     parametres: {gouverneur: {majorite: 50, second_tour: deux_premiers}, senat: majorite_simple}
     sources:
@@ -488,6 +552,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "réunion (environ six semaines)"}
     structure: procedure
+    objet: "décision de taux de la Réserve fédérale américaine"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:reserve_federale, calendriers-echeances:banques_centrales]
     regle: "Le comité de politique monétaire (FOMC) tient huit réunions programmées par an, environ une toutes les six semaines, à dates publiées d'avance ; il peut tenir des réunions non programmées si nécessaire. Une décision de taux se prend donc d'ordinaire à une réunion du calendrier : une question « avant telle date » se joue sur les réunions programmées comprises dans la fenêtre."
     parametres: {reunions_par_an: 8, intervalle_semaines: 6, reunions_non_programmees: possibles}
@@ -500,6 +566,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "session (octobre à juin)"}
     structure: procedure
+    objet: "décision, ordonnance ou acceptation d'un pourvoi par la Cour suprême américaine"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:tribunaux, calendriers-echeances:dates_limites]
     regle: "La session de la Cour suprême commence, par la loi, le premier lundi d'octobre ; les séances durent d'ordinaire jusqu'à fin juin ou début juillet. Les plaidoiries s'arrêtent en général en avril ; les décisions et ordonnances sortent ensuite jusqu'à la fin de la session, les plus disputées souvent à la fin. Les juges examinent environ 130 demandes de pourvoi par semaine ; les demandes en attente pendant l'été sont tranchées à la « long conference » de fin septembre."
     parametres: {debut: "premier lundi d'octobre", fin_habituelle: "fin juin ou début juillet", fin_plaidoiries: avril, demandes_par_semaine: 130}
@@ -513,6 +581,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "résolution budgétaire annuelle"}
     structure: procedure
+    objet: "adoption d'une loi de réconciliation budgétaire par le Congrès américain"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:congres, politique-americaine:budget]
     regle: "Une loi de réconciliation échappe à l'obstruction : la majorité simple suffit au Sénat (débat limité à 20 heures), mais la règle Byrd en retire toute disposition étrangère au budget, et y déroger demande 60 voix. Une résolution budgétaire permet au plus une loi par type d'instruction (recettes, dépenses, plafond de la dette), en pratique une seule loi globale. Depuis 1980, 29 lois de réconciliation examinées : 24 promulguées, 4 bloquées par veto, 1 rejetée au Sénat ; soit moins d'une par an, et presque toujours quand un même parti tient la présidence et les deux chambres."
     parametres: {majorite_senat: simple, debat_heures: 20, derogation_byrd: 60, examinees_depuis_1980: 29, promulguees: 24, veto: 4}
@@ -525,6 +595,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "exercice budgétaire (1er octobre)"}
     structure: maintien
+    objet: "vote d'une loi de finances provisoire (continuing resolution) ou fermeture du gouvernement fédéral américain"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:congres, politique-americaine:budget, calendriers-echeances:dates_limites]
     regle: "Le Congrès vote au moins une loi de finances provisoire (continuing resolution) presque chaque année : dans 46 exercices sur 49 depuis 1977, et dans tous depuis 1998, avec en moyenne près de 5 lois provisoires par exercice, couvrant en moyenne 118 jours. Toutes les lois de crédits n'ont été votées à temps que 4 fois depuis 1977 (la dernière pour l'exercice 1997). Depuis 1976, 20 interruptions de financement, dont 10 ont conduit à une fermeture des services ; les plus longues : 34 jours (décembre 2018 à janvier 2019), 21 jours (1995-1996), 16 jours (2013)."
     parametres: {exercices_avec_provisoire_depuis_1977: "46/49", moyenne_provisoires_par_an_depuis_1998: 4.79, duree_moyenne_jours: 118, a_temps_depuis_1977: 4, interruptions_depuis_1976: 20, fermetures: 10}
@@ -538,6 +610,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "législature"}
     structure: evenement_rare
+    objet: "censure, réprimande ou exclusion d'un membre de la Chambre des représentants américaine"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:congres]
     regle: "Depuis 1789, la Chambre a exclu 6 membres, en a censuré 29 et réprimandé 13. Censures depuis 2000 : 2010, 2021, trois en 2023, 2025 ; réprimandes : 2009, 2012, 2020, 2025. La censure se vote à la majorité simple, l'exclusion aux deux tiers ; elle est devenue plus fréquente depuis 2021, souvent selon la ligne partisane."
     parametres: {exclus: 6, censures: 29, reprimandes: 13, censures_depuis_2000: [2010, 2021, 2023, 2023, 2023, 2025]}
@@ -550,6 +624,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "révision à six ans, terme à seize ans"}
     structure: procedure
+    objet: "prolongation, révision ou retrait de l'accord États-Unis–Mexique–Canada (USMCA)"
+    perimetre: ["États-Unis", "Mexique", "Canada"]
     compartiments: [politique-americaine:commerce, calendriers-echeances:dates_limites]
     regle: "L'accord prend fin seize ans après son entrée en vigueur, sauf prolongation. Au sixième anniversaire, la Commission tient une révision conjointe ; si chaque partie confirme par écrit, par son chef de gouvernement, vouloir prolonger, le terme repart pour seize ans. Si une partie ne confirme pas, la révision devient annuelle pour le reste du terme, et la prolongation reste possible à tout moment par confirmation écrite des trois parties. Ne pas confirmer ne retire donc pas l'accord : cela ouvre des révisions annuelles."
     parametres: {terme_ans: 16, revision_annee: 6, sans_confirmation: revision_annuelle}
@@ -563,6 +639,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "dernière part du délai"}
     structure: contexte
+    objet: "conclusion d'un accord négocié avant une date limite"
+    perimetre: [monde]
     compartiments: [calendriers-echeances:dates_limites, calendriers-echeances:anticipations]
     regle: "Effet d'échéance : les accords se concentrent juste avant la date limite. En laboratoire, 41 % des accords tombent dans les derniers 10 % du temps quand le délai est long (10 minutes), 73 % quand il est court (90 secondes) ; sous forte pression, la moitié des accords se fait dans les cinq dernières secondes, mais les désaccords sont aussi plus nombreux. Les accords de dernière minute sont fréquents dans les négociations internationales et salariales (affirmé sans chiffre de terrain). Pour une question « accord avant telle date » : l'absence d'accord loin de l'échéance dit peu ; l'approche de l'échéance est le moment décisif, et l'issue reste souvent le désaccord."
     parametres: {part_accords_derniers_10pct_delai_long: 0.41, part_accords_derniers_10pct_delai_court: 0.73, terrain: non_chiffre}
@@ -576,6 +654,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "campagne référendaire"}
     structure: contexte
+    objet: "victoire du changement à un référendum"
+    perimetre: [monde]
     compartiments: [humain:risque_percu, calendriers-echeances:elections]
     regle: "Le soutien au changement baisse en général pendant la campagne : dans 28 des 37 référendums anglophones étudiés depuis 1990, avec une moyenne de 62 % dans les premiers sondages, 57 % dans les derniers et 52 % au résultat ; chez LeDuc, 17 référendums sur 23 voient l'opinion s'éloigner du oui, avec des déplacements moyens de 17 points ; les reculs du changement sont plus grands que ses progrès. Exception : quand le non devient l'option risquée (le « point de retour » est jugé dangereux), le mouvement peut s'inverser. Les campagnes très liées aux positions des partis sont moins volatiles."
     parametres: {cas_baisse_changement: "28/37", soutien_moyen: {premiers_sondages: 62, derniers_sondages: 57, resultat: 52}, leduc_cas: "17/23", deplacement_moyen_points: 17}
@@ -589,6 +669,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "de la nomination au vote"}
     structure: procedure
+    objet: "confirmation par le Sénat d'une nomination présidentielle américaine"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:congres, politique-americaine:executif]
     regle: "Délai de la nomination à la confirmation : 45 jours sous George W. Bush, 66 sous Obama (Partnership for Public Service) ; 37 jours en moyenne pour les 32 postes de rang ministériel du premier mandat Trump (janvier 2017 à décembre 2019). Depuis 2013, la majorité simple suffit à confirmer (voir us_senat_cloture) : quand le parti du président tient le Sénat, la question est surtout le délai, pas l'issue. Une prise de fonction (prestation de serment) suit de peu la confirmation."
     parametres: {jours_bush: 45, jours_obama: 66, jours_trump1_rang_ministeriel: 37}
@@ -601,6 +683,8 @@ regles:
     espace: amerique_du_nord
     echelle: {axe: temps, tranche: "mandat"}
     structure: evenement_rare
+    objet: "départ d'un conseiller principal de la Maison-Blanche ou d'un membre du cabinet américain"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:entourage, politique-americaine:executif]
     regle: "Rotation de l'« équipe A » (les principaux conseillers de la Maison-Blanche) : 85 % sur le premier mandat Trump (avril 2020), un record selon Brookings. Les comparaisons par administration depuis Reagan existent dans les graphiques de Brookings mais n'ont pas été relevées : pas de taux de base par an et par poste ministériel dans ce lot."
     parametres: {equipe_a_trump1_mandat: 0.85}
@@ -614,6 +698,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "année"}
     structure: maintien
+    objet: "nouvelles désignations de sanctions par le Trésor américain (OFAC)"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:sanctions]
     regle: "Les désignations de sanctions sont continues et nombreuses : 2 275 personnes et entités ajoutées à la liste SDN en 2022, 2 502 en 2023, 3 135 en 2024, dont 1 706 liées à la Russie en 2024 (le premier pays visé pour la troisième année), soit en moyenne 44 à 60 inscriptions par semaine. Une question « de nouvelles sanctions avant telle date » porte donc surtout sur la volonté politique de l'administration en place et sur le périmètre exact demandé, pas sur la capacité."
     parametres: {sdn_2022: 2275, sdn_2023: 2502, sdn_2024: 3135, russie_2024: 1706}
@@ -638,6 +724,8 @@ regles:
     espace: monde
     echelle: {axe: temps, tranche: "durée du projet"}
     structure: contexte
+    objet: "achèvement ou mise en service d'un projet annoncé à la date prévue"
+    perimetre: [monde]
     compartiments: [calendriers-echeances:anticipations, calendriers-echeances:dates_limites]
     regle: "Loi d'airain des grands projets : « hors budget, hors délai, encore et encore ». Neuf grands projets sur dix dépassent leur budget, et environ un sur dix seulement finit dans les délais ; les retards de barrages sont de 45 % en moyenne (10 ans prévus, 14,5 réalisés). Une date de mise en service, de réparation ou de lancement annoncée glisse donc d'ordinaire : pour une question « achevé avant telle date », l'annonce du maître d'ouvrage est un plafond optimiste, pas une estimation centrale."
     parametres: {part_hors_budget: 0.9, part_dans_les_delais: 0.1, retard_moyen_barrages: 0.45}
@@ -650,6 +738,8 @@ regles:
     espace: asie
     echelle: {axe: temps, tranche: "année"}
     structure: evenement_rare
+    objet: "essai nucléaire nord-coréen"
+    perimetre: ["Corée du Nord"]
     compartiments: [non-proliferation:etats_du_seuil, non-proliferation:dissuasion]
     regle: "Six essais nucléaires en tout : 9 octobre 2006, 25 mai 2009, 12 février 2013, 6 janvier 2016, 9 septembre 2016, 3 septembre 2017 ; aucun depuis septembre 2017 selon la liste tenue à jour. Rythme : six essais en onze ans, puis plus de huit ans sans essai malgré des annonces répétées de préparatifs. Pour une question « essai avant telle date » à quelques mois, le taux de base récent est très bas ; les préparatifs signalés n'ont pas suffi à produire un essai."
     parametres: {essais: ["2006-10-09", "2009-05-25", "2013-02-12", "2016-01-06", "2016-09-09", "2017-09-03"], dernier: "2017-09-03"}

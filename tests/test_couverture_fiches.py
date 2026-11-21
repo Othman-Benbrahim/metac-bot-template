@@ -31,3 +31,32 @@ def test_catalogue_regles_sans_2026():
     cat = cr.catalogue()
     assert cat and not any(re.search(r"\b20(2[6-9]|[3-9]\d)\b", v["texte"]) for v in cat.values())
     assert "us_congres_productivite" not in cat          # cite le 119e Congrès en 2026 : exclue en entier
+
+
+def test_v4_objet_perimetre_et_fautes_de_frappe():
+    import couverture_regles as cr
+    cat = cr.catalogue()
+    assert all(v["objet"] and v["perimetre"] for v in cat.values())
+    assert cr.corriger_id("effect_d_echeance_negociation", cat) == "effet_d_echeance_negociation"
+    assert cr.corriger_id("regle_inventee", cat) is None
+    o = cat["us_fed_calendrier"]["objet"]
+    ok, rej = cr.valider({"pays": ["États-Unis"], "regles": [{"id": "us_fed_calendrier", "objet": o, "est_l_objet": True}]}, cat)
+    assert ok == ["us_fed_calendrier"] and not rej
+    _, rej = cr.valider({"pays": ["États-Unis"], "regles": [{"id": "us_fed_calendrier", "objet": "autre chose", "est_l_objet": True}]}, cat)
+    assert rej[0]["motif"] == "objet mal recopié"
+    _, rej = cr.valider({"pays": ["États-Unis"], "regles": [{"id": "us_fed_calendrier", "objet": o, "est_l_objet": False}]}, cat)
+    assert "n'est pas l'objet" in rej[0]["motif"]
+    _, rej = cr.valider({"pays": [], "regions": ["afrique"], "regles": [{"id": "us_fed_calendrier", "objet": o, "est_l_objet": True}]}, cat)
+    assert rej[0]["motif"].startswith("hors périmètre")
+    ok, _ = cr.valider({"pays": ["Brésil"], "regles": [{"id": "coups_d_etat_frequence",
+                         "objet": cat["coups_d_etat_frequence"]["objet"], "est_l_objet": True}]}, cat)
+    assert ok == ["coups_d_etat_frequence"]                  # périmètre monde
+    assert cr.dans_perimetre(["amerique_du_nord"], ["Canada"], [])
+
+
+def test_regles_sourcees_ont_objet_et_perimetre():
+    import regles_coutumieres as rc
+    faux = [{"id": "x", "structure": next(iter(rc.STRUCTURES)), "echelle": {"axe": "temps"}, "statut": "source",
+             "sources": [{"url": "u"}], "perimetre": ["Atlantide"]}]
+    err = rc.valider(faux, {})
+    assert any("sans objet" in e for e in err) and any("périmètre" in e for e in err)

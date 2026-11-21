@@ -1,12 +1,19 @@
-"""Carte de couverture v3 : quelles RÈGLES SOURCÉES gouvernent les questions du banc de M (piste écosystémique, décision
-de l'auteur du 2026-11-21, 12 h 17 : « ça me semble la bonne méthode »). Descriptif, rien dans le bot.
+"""Carte de couverture : quelles RÈGLES SOURCÉES gouvernent les questions du banc de M (piste écosystémique).
+Descriptif, rien dans le bot.
 
-Les deux premières cartes laissaient le modèle désigner une fiche (v1) puis rédiger une règle (v2) : il en inventait
-toujours une, souvent tautologique (« la décision relève de l'exécutif »). Ici, il ne rédige rien : il CHOISIT, parmi les
-règles de ecosystemes/regles-coutumieres.yaml qui ont une source, celles qui gouvernent réellement l'issue, ou aucune. Une
-question n'a de position que si une règle sourcée s'applique ; la couverture monte à mesure que les fiches s'achèvent.
-Toute règle dont le texte cite une année de 2026 ou après est exclue en entier (les questions du banc datent de 2026 ;
-un filtre partiel laissait des faits de 2026 sans leur date).
+Historique : v1 (le modèle désignait une fiche) et v2 (il rédigeait une règle) inventaient toujours un rattachement ;
+v3 (2026-11-21, 12 h 17 : il CHOISIT parmi les règles sourcées) a couvert 65 questions sur 119 mais avec environ 30 %
+de rattachements pertinents à la relecture : le modèle se servait des règles comme d'un décor qui « influence »
+l'issue (« Poutine restera au pouvoir, donc la rencontre reste possible », « la Fed influence le Bitcoin »).
+
+v4 (décision de l'auteur du 2026-11-21, 12 h 43 : « je valide ») resserre par des choix fermés :
+1. chaque règle sourcée porte un `objet` (l'événement qu'elle prédit) et un `perimetre` (pays ou régions, vocabulaire
+   fermé de regles_coutumieres) ;
+2. le modèle ne retient une règle que si l'événement de la question EST l'objet de la règle (identité, pas influence),
+   et il recopie l'objet mot pour mot (le code rejette une copie inexacte) ;
+3. il désigne les pays et régions en jeu dans une liste fermée ; le code rejette une règle hors périmètre ;
+4. un identifiant à deux lettres près d'un identifiant réel est corrigé (faute de frappe) ; une invention reste rejetée.
+Toute règle dont le texte cite une année de 2026 ou après est exclue en entier (les questions du banc datent de 2026).
 
     python couverture_regles.py
 """
@@ -15,6 +22,7 @@ from __future__ import annotations
 import asyncio
 import collections
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -24,38 +32,107 @@ import banc_jugement_alphabet as bja
 import regles_coutumieres as rc
 from couverture_fiches import sans_dates_recentes
 
-SORTIE = Path("registre") / "couverture-regles-banc-m.json"
+SORTIE = Path("registre") / "couverture-regles-banc-m-v4.json"     # la v3 reste à côté, pour comparer
 MODELE = bja.MODELE
-LONGUEUR = 420          # caractères de règle montrés par règle
+LONGUEUR = 300          # caractères de règle montrés par règle (l'objet décide, le texte éclaire)
+VERSION = 4
 
 
 def catalogue() -> dict[str, dict]:
-    """id -> {ecosysteme, texte (sans faits de 2026 ou après), compartiments}, règles sourcées seulement."""
+    """id -> {ecosysteme, objet, perimetre, texte (sans faits de 2026 ou après), compartiments} ; règles sourcées."""
     out = {}
     for r in rc.regles():
         if r.get("statut") != "source":
             continue
         t = str(r.get("regle", ""))
-        if sans_dates_recentes(t) != t.strip(" ;,"):   # la règle cite 2026 ou après : exclue en entier (un filtre
-            continue                                   # partiel laissait des faits de 2026 sans leur date)
+        if sans_dates_recentes(t) != t.strip(" ;,"):   # la règle cite 2026 ou après : exclue en entier
+            continue
         out[r["id"]] = {"ecosysteme": sans_dates_recentes(str(r.get("ecosysteme", ""))), "texte": t[:LONGUEUR],
+                        "objet": str(r.get("objet", "")), "perimetre": list(r.get("perimetre") or ["monde"]),
                         "compartiments": r.get("compartiments") or []}
     return out
 
 
+def _norm(s: str) -> str:
+    return re.sub(r"\s+", " ", str(s or "").replace("’", "'").replace("‑", "-")).strip(" .").lower()
+
+
+def corriger_id(i: str, cat: dict) -> str | None:
+    """Identifiant exact, ou à deux caractères près d'un seul identifiant réel (faute de frappe) ; sinon None."""
+    if i in cat:
+        return i
+    proches = [k for k in cat if _distance(i, k) <= 2]
+    return proches[0] if len(proches) == 1 else None
+
+
+def _distance(a: str, b: str) -> int:
+    if abs(len(a) - len(b)) > 2:
+        return 3
+    prec = list(range(len(b) + 1))
+    for x, ca in enumerate(a, 1):
+        cur = [x]
+        for y, cb in enumerate(b, 1):
+            cur.append(min(prec[y] + 1, cur[y - 1] + 1, prec[y - 1] + (ca != cb)))
+        prec = cur
+    return prec[-1]
+
+
+def dans_perimetre(perimetre: list[str], pays: list[str], regions: list[str]) -> bool:
+    if "monde" in perimetre:
+        return True
+    zones = set(regions) | set(pays) | {rc.PAYS[p] for p in pays if p in rc.PAYS}
+    return bool(zones & set(perimetre))
+
+
+def valider(r: dict, cat: dict) -> tuple[list[str], list[dict]]:
+    """Règles gardées et rejets motivés, d'après la réponse du modèle."""
+    pays = [p for p in (r.get("pays") or []) if p in rc.PAYS]
+    regions = [x for x in (r.get("regions") or []) if x in rc.REGIONS]
+    gardes, rejets = [], []
+    for c in (r.get("regles") or [])[:3]:
+        brut = str((c or {}).get("id", ""))
+        i = corriger_id(brut, cat)
+        if i is None:
+            rejets.append({"id": brut, "motif": "identifiant inconnu"})
+        elif (c or {}).get("est_l_objet") is not True:
+            rejets.append({"id": i, "motif": "l'événement de la question n'est pas l'objet de la règle"})
+        elif _norm(c.get("objet")) != _norm(cat[i]["objet"]):
+            rejets.append({"id": i, "motif": "objet mal recopié"})
+        elif not dans_perimetre(cat[i]["perimetre"], pays, regions):
+            rejets.append({"id": i, "motif": f"hors périmètre ({cat[i]['perimetre']} ; question : {pays or regions})"})
+        elif i not in gardes:
+            gardes.append(i)
+    return gardes, rejets
+
+
 def consigne(titre: str, cat: dict[str, dict]) -> str:
-    liste = "\n".join(f"- {i} [{v['ecosysteme']}] : {v['texte']}" for i, v in cat.items())
-    return f"""Voici une question de prévision et une liste de règles, chacune tirée d'une source vérifiée. Choisis les
-règles (au plus 3) qui gouvernent RÉELLEMENT l'issue de cette question : celles qui, appliquées, changent ce qu'on doit
-attendre (une procédure, un calendrier, un taux de base, un seuil). Une règle qui ne parle que du même domaine sans peser
-sur l'issue ne compte pas. Si aucune ne s'applique, rends une liste vide : c'est une réponse normale et fréquente.
+    liste = "\n".join(f"- {i}\n  OBJET : {v['objet']}\n  périmètre : {', '.join(v['perimetre'])}\n  règle : {v['texte']}"
+                      for i, v in cat.items())
+    pays = ", ".join(rc.PAYS)
+    regions = ", ".join(sorted(rc.REGIONS - {"monde"}))
+    return f"""Voici une question de prévision et une liste de règles tirées de sources vérifiées. Chaque règle a un OBJET :
+l'événement qu'elle prédit.
+
+Règles strictes :
+1. Dis d'abord quel est l'événement dont dépend la réponse à la question (une phrase).
+2. Retiens une règle SEULEMENT si cet événement EST l'objet de la règle (même type d'événement). Une règle dont l'objet
+   ne fait qu'influencer, permettre ou entourer l'événement ne compte pas. Exemples de rejets : une règle sur le
+   maintien des dirigeants pour une question de rencontre entre dirigeants ; une règle sur les décisions de la banque
+   centrale pour une question de prix du Bitcoin.
+3. Pour chaque règle retenue, recopie son OBJET mot pour mot et mets "est_l_objet": true.
+4. Au plus 3 règles. Si aucune règle n'a pour objet l'événement de la question, rends une liste vide : c'est une
+   réponse normale et fréquente.
+5. Indique les pays en jeu en les choisissant UNIQUEMENT dans cette liste (sinon liste vide) : {pays} ; et les
+   régions en jeu UNIQUEMENT dans celle-ci : {regions}.
 
 QUESTION : {titre}
 
 RÈGLES :
 {liste}
 
-Rends UNIQUEMENT un objet JSON : {{"regles": ["identifiant", ...], "pourquoi": "une phrase par règle retenue"}}"""
+Rends UNIQUEMENT un objet JSON :
+{{"evenement": "une phrase", "pays": [], "regions": [],
+  "regles": [{{"id": "identifiant", "objet": "objet recopié", "est_l_objet": true}}]}}"""
 
 
 async def principal() -> int:
@@ -70,22 +147,20 @@ async def principal() -> int:
         try:
             r = ap.extraire_json(await am.llm(MODELE, temperature=0.2, timeout=180, allowed_tries=2).invoke(
                 consigne(x["titre"], cat)))
-            choisis = [str(i) for i in (r.get("regles") or [])]
-            gardes = [i for i in choisis if i in cat][:3]
-            out.append({"question": qid, "titre": x["titre"], "issue": x["issue"], "regles": gardes,
-                        "rejetes": [i for i in choisis if i not in cat],
-                        "compartiments": sorted({c for i in gardes for c in cat[i]["compartiments"]}),
-                        "pourquoi": str(r.get("pourquoi", ""))[:400]})
+            gardes, rejets = valider(r, cat)
+            out.append({"question": qid, "titre": x["titre"], "issue": x["issue"], "evenement": str(r.get("evenement", ""))[:300],
+                        "pays": r.get("pays") or [], "regions": r.get("regions") or [], "regles": gardes, "rejets": rejets,
+                        "compartiments": sorted({c for i in gardes for c in cat[i]["compartiments"]})})
         except Exception as e:
             out.append({"question": qid, "titre": x["titre"], "erreur": f"{type(e).__name__}"})
     compte = collections.Counter(i for o in out for i in o.get("regles", []))
-    couvertes = sum(1 for o in out if o.get("regles"))
-    res = {"version_bot": ap.VERSION_BOT, "version_selection": 3, "regles_au_catalogue": len(cat),
-           "questions": len(out), "couvertes": couvertes,
-           "identifiants_inventes": sum(len(o.get("rejetes", [])) for o in out),
+    motifs = collections.Counter(j["motif"].split(" (")[0] for o in out for j in o.get("rejets", []))
+    res = {"version_bot": ap.VERSION_BOT, "version_selection": VERSION, "regles_au_catalogue": len(cat),
+           "questions": len(out), "couvertes": sum(1 for o in out if o.get("regles")),
+           "erreurs": sum(1 for o in out if "erreur" in o), "rejets_par_motif": dict(motifs),
            "par_regle": dict(compte.most_common()), "detail": out}
     SORTIE.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"couvertes : {couvertes} sur {len(out)} ; par règle : {dict(compte.most_common())}")
+    print(f"couvertes : {res['couvertes']} sur {len(out)} ; rejets : {dict(motifs)} ; par règle : {dict(compte.most_common())}")
     return 0
 
 
