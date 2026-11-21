@@ -52,6 +52,15 @@ de `indicateurs-pertinents.md` (2026-11-15) :
   prévision de plus de 0,5 logit en médiane ou ajoute plus de 10 points de prévisions extrêmes, on prend l'écart-type
   conseillé (`sd_conseille`) ou on retire des indicateurs. Cas d'origine : « décision d'institution » (alerte : 0,80 logit,
   extrêmes 1 % → 14 %, sd conseillé 0,52 au lieu de 1).
+- **taille nécessaire** (décision d'auteur du 2026-11-21, 12 h 53) : avant tout essai, `verification_a_priori.puissance`
+  ou `taille_necessaire` dit quel écart le banc peut voir à sa taille. Mesuré sur nos bancs : σ ≈ 0,2 à 0,3 de perte log
+  par question ; une centaine de questions ne voit qu'un écart de 0,05 à 0,07 ; un gain de 0,01 en demande plusieurs
+  milliers. Un essai trop petit pour l'écart visé est décrit comme tel avant d'être lancé.
+- **découpage temporel** (même date) : un outil qui apprend des poids apprend sur le passé et se juge sur la suite
+  (`verification_a_priori.blocs_chronologiques`), jamais par blocs tirés au hasard.
+- **placebo** (même date) : une règle candidate à devenir brique passe `placebo.placebo` : elle doit aider sur les
+  questions dont l'événement est son objet, et pas au-dehors ; une règle qui aide autant au-dehors est « générique »
+  (rétrécissement déguisé) et ne s'inscrit pas comme brique de mécanisme.
 
 ## Le piège des tests trivialement solubles (décisions d'auteur du 2026-11-15, 16 h 33 et 16 h 43)
 Avertissement de Hoover, Blayney et Whittington (« Classical Energies Learn to Reason 1,000x Faster than Looped

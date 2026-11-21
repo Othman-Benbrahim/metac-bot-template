@@ -1,0 +1,271 @@
+{
+ "indicateurs_lents": {
+  "fenetre_24": {
+   "n": 461,
+   "moyenne": 0.515,
+   "sous_0_1": 0.085,
+   "au_dessus_0_9": 0.085,
+   "marge_90_par_bout": 0.023,
+   "deciles": [
+    0.085,
+    0.085,
+    0.104,
+    0.095,
+    0.093,
+    0.119,
+    0.089,
+    0.111,
+    0.102,
+    0.117
+   ],
+   "lecture": "fourchettes trop larges"
+  },
+  "par_serie_fenetre_36": {
+   "UNRATE": {
+    "n": 121,
+    "moyenne": 0.516,
+    "sous_0_1": 0.083,
+    "au_dessus_0_9": 0.099,
+    "marge_90_par_bout": 0.045,
+    "deciles": [
+     0.083,
+     0.083,
+     0.132,
+     0.05,
+     0.083,
+     0.14,
+     0.14,
+     0.107,
+     0.083,
+     0.099
+    ],
+    "lecture": "pas d'écart net à l'uniforme"
+   },
+   "UMCSENT": {
+    "n": 122,
+    "moyenne": 0.505,
+    "sous_0_1": 0.074,
+    "au_dessus_0_9": 0.098,
+    "marge_90_par_bout": 0.045,
+    "deciles": [
+     0.074,
+     0.09,
+     0.156,
+     0.09,
+     0.066,
+     0.107,
+     0.131,
+     0.098,
+     0.09,
+     0.098
+    ],
+    "lecture": "pas d'écart net à l'uniforme"
+   },
+   "CPIAUCSL": {
+    "n": 109,
+    "moyenne": 0.515,
+    "sous_0_1": 0.119,
+    "au_dessus_0_9": 0.092,
+    "marge_90_par_bout": 0.047,
+    "deciles": [
+     0.119,
+     0.055,
+     0.055,
+     0.174,
+     0.055,
+     0.128,
+     0.11,
+     0.101,
+     0.11,
+     0.092
+    ],
+    "lecture": "pas d'écart net à l'uniforme"
+   },
+   "CPILFESL": {
+    "n": 109,
+    "moyenne": 0.522,
+    "sous_0_1": 0.101,
+    "au_dessus_0_9": 0.128,
+    "marge_90_par_bout": 0.047,
+    "deciles": [
+     0.101,
+     0.083,
+     0.11,
+     0.064,
+     0.083,
+     0.101,
+     0.156,
+     0.064,
+     0.11,
+     0.128
+    ],
+    "lecture": "pas d'écart net à l'uniforme"
+   }
+  },
+  "fenetre_36": {
+   "n": 461,
+   "moyenne": 0.514,
+   "sous_0_1": 0.093,
+   "au_dessus_0_9": 0.104,
+   "marge_90_par_bout": 0.023,
+   "deciles": [
+    0.093,
+    0.078,
+    0.115,
+    0.093,
+    0.072,
+    0.119,
+    0.134,
+    0.093,
+    0.098,
+    0.104
+   ],
+   "lecture": "pas d'écart net à l'uniforme"
+  },
+  "fenetre_60": {
+   "n": 413,
+   "moyenne": 0.499,
+   "sous_0_1": 0.109,
+   "au_dessus_0_9": 0.109,
+   "marge_90_par_bout": 0.024,
+   "deciles": [
+    0.109,
+    0.102,
+    0.094,
+    0.102,
+    0.077,
+    0.094,
+    0.138,
+    0.077,
+    0.097,
+    0.109
+   ],
+   "lecture": "pas d'écart net à l'uniforme"
+  }
+ },
+ "tokyo": {
+  "fenetre_24": {
+   "n": 249,
+   "moyenne": 0.504,
+   "sous_0_1": 0.108,
+   "au_dessus_0_9": 0.1,
+   "marge_90_par_bout": 0.031,
+   "deciles": [
+    0.108,
+    0.116,
+    0.056,
+    0.129,
+    0.076,
+    0.096,
+    0.1,
+    0.08,
+    0.116,
+    0.12
+   ],
+   "lecture": "pas d'écart net à l'uniforme"
+  },
+  "fenetre_36": {
+   "n": 249,
+   "moyenne": 0.506,
+   "sous_0_1": 0.108,
+   "au_dessus_0_9": 0.145,
+   "marge_90_par_bout": 0.031,
+   "deciles": [
+    0.108,
+    0.112,
+    0.084,
+    0.048,
+    0.149,
+    0.116,
+    0.056,
+    0.1,
+    0.08,
+    0.145
+   ],
+   "lecture": "fourchettes trop étroites"
+  },
+  "fenetre_60": {
+   "n": 249,
+   "moyenne": 0.503,
+   "sous_0_1": 0.112,
+   "au_dessus_0_9": 0.133,
+   "marge_90_par_bout": 0.031,
+   "deciles": [
+    0.112,
+    0.129,
+    0.064,
+    0.088,
+    0.12,
+    0.076,
+    0.088,
+    0.08,
+    0.108,
+    0.133
+   ],
+   "lecture": "fourchettes trop étroites"
+  }
+ },
+ "chiffre_affaires_nouvelles": {
+  "fenetre_12": {
+   "n": 427,
+   "moyenne": 0.5,
+   "sous_0_1": 0.07,
+   "au_dessus_0_9": 0.066,
+   "marge_90_par_bout": 0.024,
+   "deciles": [
+    0.07,
+    0.141,
+    0.066,
+    0.089,
+    0.087,
+    0.176,
+    0.101,
+    0.073,
+    0.133,
+    0.066
+   ],
+   "lecture": "fourchettes trop larges"
+  },
+  "fenetre_20": {
+   "n": 427,
+   "moyenne": 0.494,
+   "sous_0_1": 0.084,
+   "au_dessus_0_9": 0.077,
+   "marge_90_par_bout": 0.024,
+   "deciles": [
+    0.084,
+    0.101,
+    0.084,
+    0.105,
+    0.098,
+    0.159,
+    0.119,
+    0.084,
+    0.087,
+    0.077
+   ],
+   "lecture": "fourchettes trop larges"
+  },
+  "fenetre_32": {
+   "n": 427,
+   "moyenne": 0.497,
+   "sous_0_1": 0.087,
+   "au_dessus_0_9": 0.077,
+   "marge_90_par_bout": 0.024,
+   "deciles": [
+    0.087,
+    0.105,
+    0.082,
+    0.117,
+    0.084,
+    0.133,
+    0.124,
+    0.096,
+    0.094,
+    0.077
+   ],
+   "lecture": "fourchettes trop larges"
+  }
+ },
+ "note": "descriptif ; fenêtres en service : 36 (indicateurs, Tokyo), 20 (chiffre d'affaires) ; marges binomiales optimistes (séries autocorrélées) ; e-Stat : contenu non garanti par le gouvernement"
+}
