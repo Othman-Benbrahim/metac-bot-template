@@ -257,7 +257,8 @@ def moyennes(lignes: list[dict], jeu: str, table: int | None = None) -> dict[str
     return out
 
 
-def choisir_table(lignes: list[dict], jeu: str, sujet_: str, primaire_de_parti: bool) -> tuple[int | None, str | None]:
+def choisir_table(lignes: list[dict], jeu: str, sujet_: str, primaire_de_parti: bool,
+                  second_tour: bool = False) -> tuple[int | None, str | None]:
     """Un seul tableau par question (pas de mélange primaire / affiche générale / scénarios) : celui qui contient la
     colonne du sujet, avec le plus de sondages avant le jeu. Primaire d'un parti : les tableaux dont les noms portent
     une étiquette de parti (« (D) », « (R) ») sont des affiches générales, donc écartés."""
@@ -276,10 +277,11 @@ def choisir_table(lignes: list[dict], jeu: str, sujet_: str, primaire_de_parti: 
             continue
         col = colonne(sujet_, noms)
         if col and sum(m["moyenne"] for m in moyennes(lignes, jeu, t).values()) <= 110:   # scénarios mêlés : refus
-            cands.append((max(l["fin"] for l in ls), len(ls), t, col))
+            duel = len(noms) == 2                              # tableau à deux colonnes : un duel (second tour)
+            cands.append((duel == second_tour, max(l["fin"] for l in ls), len(ls), t, col))
     if not cands:
         return None, None
-    _, _, t, col = max(cands, key=lambda c: (c[0], c[1]))   # le tableau le plus récent, puis le plus fourni
+    _, _, _, t, col = max(cands, key=lambda c: (c[0], c[1], c[2]))   # le bon tour, puis le plus récent, le plus fourni
     return t, col
 
 
@@ -540,11 +542,13 @@ class Collecteur:
             el = election_de_secours(titre, jeu) or el
         su = sujet(titre)
         primaire = bool(re.search(r"\b(democratic|republican|dfl|labour|conservative)\b.*\bprimary\b", norm(titre)))
+        tour2 = bool(re.search(r"\b(runoff|run-off|second round|segundo turno|segunda vuelta)\b", norm(titre))) and \
+            not re.search(r"\b(advance|qualify|make)\b", norm(titre))   # « se qualifier pour le second tour » : 1er tour
         wiki, struct = None, None
         parl = parlement_dawum(el)
         info = self.page(el, jeu)
         if info.get("statut") == "ok":
-            t, col = choisir_table(info["lignes"], jeu, su, primaire)
+            t, col = choisir_table(info["lignes"], jeu, su, primaire, tour2)
             moy = moyennes(info["lignes"], jeu, t) if t is not None else {}
             statut = "ok" if col else ("sujet_absent_des_tableaux" if moyennes(info["lignes"], jeu)
                                        else "aucun_sondage_dans_les_90_jours_avant_le_jeu")
@@ -554,7 +558,7 @@ class Collecteur:
                     "relecture_lead": {"lignes_verifiees": nv, "accord": acc}}
             loc = self.page_locale(el, info.get("cle", ""), jeu) if col else None
             if loc:
-                t2, col2 = choisir_table(loc["lignes"], jeu, su, primaire)
+                t2, col2 = choisir_table(loc["lignes"], jeu, su, primaire, tour2)
                 s2 = {"langue": loc["langue"], "page": loc["page"], "colonne": col2}
                 if col2:
                     m2 = moyennes(loc["lignes"], jeu, t2)[col2]

@@ -182,3 +182,20 @@ def test_dates_et_verdicts_multilingues():
     assert cs.verdict({"source": "wikipedia", "seconde_source": {"ecart_points": -1.0}}) == "confirme_second_source"
     assert cs.verdict({"source": "wikipedia"}) == "non_verifie"
     assert cs.verdict({"source": "dawum"}) == "confirme_structure"
+
+
+HTML6 = """
+<table><tr><th>Instituto</th><th>Data</th><th>Lula PT</th><th>Flávio PL</th><th>Caiado PSD</th><th>Zema NOVO</th></tr>
+<tr><td>A</td><td>10.08.2026</td><td>40</td><td>35</td><td>5</td><td>3</td></tr>
+<tr><td>B</td><td>12.08.2026</td><td>41</td><td>34</td><td>5</td><td>4</td></tr></table>
+<table><tr><th>Instituto</th><th>Data</th><th>Lula PT</th><th>Caiado PSD</th></tr>
+<tr><td>A</td><td>11.08.2026</td><td>46</td><td>39</td></tr>
+<tr><td>B</td><td>13.08.2026</td><td>45</td><td>40</td></tr></table>"""
+
+
+def test_premier_tour_contre_duel_run_44925812553():
+    ls = cs.sondages(HTML6, 2026)
+    t, col = cs.choisir_table(ls, "2026-08-20", "Ronaldo Caiado", False)
+    assert col == "Caiado PSD" and cs.moyennes(ls, "2026-08-20", t)[col]["moyenne"] == 5   # 1er tour, pas le duel
+    t, col = cs.choisir_table(ls, "2026-08-20", "Ronaldo Caiado", False, second_tour=True)
+    assert cs.moyennes(ls, "2026-08-20", t)[col]["moyenne"] == 39.5
