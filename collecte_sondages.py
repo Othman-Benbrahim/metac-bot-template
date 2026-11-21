@@ -33,6 +33,13 @@ REGLES_SONDAGES = {"sondages_erreur_comparee", "us_erreur_selon_temps_restant", 
 MOIS = {m[:3]: i for i, m in enumerate(("january february march april may june july august september october "
                                         "november december").split(), 1)}
 N_DERNIERS, MARGE_JOURS = 5, 3
+GENERIQUES = {"", "?", "majority", "lead", "others", "other", "oth", "undecided", "und", "n", "turnout", "abstention",
+              "blank", "void", "nota", "candidates", "candidate", "party", "parties", "polling firm", "pollster", "sample",
+              "sample size", "margin", "margin of error", "fieldwork date", "date", "date(s) administered", "o/u", "oth/ und",
+              "abst. undec.", "don't know/no answer", "none", "invalid", "spoilt"}
+MOTS_VIDES = {"the", "election", "elections", "primary", "presidential", "general", "parliamentary", "legislative",
+              "opinion", "polling", "for", "of", "and", "in", "next", "round", "first", "second", "by-election", "republican",
+              "democratic", "governor", "gubernatorial", "senate", "house", "national", "federal", "state"}
 
 
 def norm(s: str) -> str:
@@ -161,9 +168,14 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
                 break
         if entete is None:
             continue
+        debut = entete
         while entete + 1 < len(g) and not any(nombre(c) is not None for c in g[entete + 1]):
-            entete += 1                                        # entêtes sur plusieurs lignes : la dernière nomme
-        noms = g[entete]
+            entete += 1                                        # entêtes sur plusieurs lignes
+        noms = []
+        for j in range(max(len(r) for r in g[debut:entete + 1])):
+            pile = [r[j] for r in g[debut:entete + 1] if j < len(r) and r[j]]
+            utiles = [x for x in pile if norm(x) not in GENERIQUES]
+            noms.append((utiles or pile or [""])[-1])         # le nom le plus bas qui ne soit pas générique
         for ligne in g[entete + 1:]:
             if len(ligne) <= i_date:
                 continue
@@ -201,30 +213,49 @@ def sujet(titre: str) -> str:
 
 
 def election(titre: str) -> str:
-    """Le nom de l'élection tiré du titre (« the 2026 Peruvian presidential election »)."""
-    m = re.search(r"\b(20\d\d [A-Z][^?]*?(election|primary|by-election|referendum))", titre)
+    """Le nom de l'élection tiré du titre (« 2026 Peruvian presidential election », « 2026 Texas Republican primary »)."""
+    m = re.search(r"\b(20\d\d\s+[^?]*?(?:election|primary|by-election|referendum))(\s+in\s+(?:the\s+)?[A-Z][\w' ]+)?", titre, re.I)
     if m:
-        return m.group(1)
-    m = re.search(r"\bthe ([^?]*?(election|primary|by-election))", titre)
-    return m.group(1) if m else titre
+        return (m.group(1) + (m.group(2) or "")).strip()
+    m = re.search(r"\b(?:the|next)\s+([^?]*?(?:election|primary|by-election))", titre, re.I)
+    return m.group(1).strip() if m else titre
+
+
+def distinctifs(texte: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z][a-z'-]{3,}", norm(texte)) if w not in MOTS_VIDES}
+
+
+def page_convient(titre_page: str, el: str) -> bool:
+    """La page doit porter l'année de l'élection et au moins un mot distinctif (pays, État, région, nom)."""
+    ans = re.findall(r"\b20\d\d\b", el)
+    if ans and ans[0] not in titre_page:
+        return False
+    d_el, d_p = distinctifs(el), distinctifs(titre_page)
+    racines = lambda xs: {w[:5] for w in xs}                  # brazil / brazilian, peru / peruvian
+    return bool(racines(d_el) & racines(d_p)) if d_el else True
 
 
 def colonne(sujet_: str, noms: list[str]) -> str | None:
-    s = norm(sujet_)
+    """Colonne du sujet : abréviation entre parenthèses, puis nom complet, puis prénom et nom, puis nom seul s'il est
+    unique (deux Bolsonaro : pas de choix au hasard)."""
     abre = re.findall(r"\(([^)]+)\)", sujet_)
     for a in abre:
         for n in noms:
             if re.search(rf"\b{re.escape(norm(a))}\b", norm(n)):
                 return n
-    s = re.sub(r"\(.*?\)", "", s).strip()
+    s = re.sub(r"^(the|a)\s+", "", re.sub(r"\(.*?\)", "", norm(sujet_)).strip())
     for n in noms:
         if s and s in norm(n):
             return n
     mots = [w for w in s.split() if len(w) > 2]
-    if mots:
+    if len(mots) >= 2:
         for n in noms:
-            if re.search(rf"\b{re.escape(mots[-1])}\b", norm(n)):
+            if all(re.search(rf"\b{re.escape(w)}\b", norm(n)) for w in (mots[0], mots[-1])):
                 return n
+    if mots:
+        ok = [n for n in noms if re.search(rf"\b{re.escape(mots[-1])}\b", norm(n))]
+        if len(ok) == 1:
+            return ok[0]
     return None
 
 
@@ -243,10 +274,12 @@ def collecter() -> dict:
                     if not politesse.autorise(c, url):
                         pages[el] = {"statut": "refusee"}
                         break
-                    r = c.get(url, params={"q": q, "limit": 3})
+                    r = c.get(url, params={"q": q, "limit": 5})
                     if r.status_code != 200:
                         continue
                     for p in r.json().get("pages", []):
+                        if not page_convient(p.get("title", ""), el):
+                            continue
                         h = c.get(f"{API}/page/{p['key']}/html")
                         if h.status_code == 200 and (ls := sondages(h.text, int(o["jeu"][:4]))):
                             pages[el] = {"statut": "ok", "page": p["title"], "lignes": ls}

@@ -28,3 +28,28 @@ def test_sujet_election_colonne():
     assert cs.colonne("Keiko Fujimori", ["Keiko Fujimori", "Rafael López Aliaga"]) == "Keiko Fujimori"
     assert cs.colonne("United Russia (ER)", ["ER", "KPRF", "LDPR"]) == "ER"
     assert cs.colonne("López Aliaga", ["Keiko Fujimori", "Rafael López Aliaga"]) == "Rafael López Aliaga"
+
+
+HTML2 = """
+<table><tr><th rowspan="2">Polling firm</th><th rowspan="2">Fieldwork date</th><th>Fidesz</th><th>Tisza</th><th>Mi Hazánk</th><th rowspan="2">Lead</th></tr>
+<tr><th></th><th></th><th></th></tr>
+<tr><td>Medián</td><td>1–5 Mar 2026</td><td>40</td><td>45</td><td>7</td><td>5</td></tr>
+<tr><td>21 Kutató</td><td>8–10 Mar 2026</td><td>39</td><td>47</td><td>6</td><td>8</td></tr></table>"""
+
+
+def test_entetes_sur_plusieurs_lignes_et_page():
+    m = cs.moyennes(cs.sondages(HTML2, 2026), "2026-03-20")
+    assert set(m) == {"Fidesz", "Tisza", "Mi Hazánk"}
+    assert cs.election("Will Renan Santos win the 2026 Brazilian presidential election?") == "2026 Brazilian presidential election"
+    assert cs.election("Will Denis Sassou Nguesso win the 2026 Presidential election in the Republic of the Congo?").endswith("Republic of the Congo")
+    assert cs.page_convient("Opinion polling for the 2026 Brazilian presidential election", "2026 Brazilian presidential election")
+    assert not cs.page_convient("Nationwide opinion polling for the 2024 United States presidential election", "2026 Brazilian presidential election")
+    assert not cs.page_convient("Statewide opinion polling for the 2028 Republican Party presidential primaries", "2026 Iowa Governor Republican primary")
+    assert cs.page_convient("2026 Iowa gubernatorial election", "2026 Iowa Governor Republican primary")
+
+
+def test_colonne_ambigue():
+    noms = ["Lula PT", "Flávio Bolsonaro PL", "Michelle Bolsonaro PL"]
+    assert cs.colonne("Flavio Bolsonaro", noms) == "Flávio Bolsonaro PL"
+    assert cs.colonne("Bolsonaro", noms) is None
+    assert cs.colonne("Keiko Fujimori", ["Fujimori", "López Aliaga"]) == "Fujimori"
