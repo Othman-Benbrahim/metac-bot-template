@@ -708,16 +708,18 @@ regles:
     statut: source
 
   - id: us_inculpation_personnalites
-    ecosysteme: "États-Unis · poursuites contre des personnalités publiques"
+    ecosysteme: "États-Unis · poursuites contre des responsables publics"
     espace: amerique_du_nord
-    echelle: {axe: temps, tranche: "mois"}
+    echelle: {axe: temps, tranche: "année"}
     structure: evenement_rare
+    objet: "inculpation ou arrestation d'un élu ou d'un responsable public américain, en fonction ou ancien"
+    perimetre: ["États-Unis"]
     compartiments: [politique-americaine:tribunaux, politique-americaine:executif]
-    regle: "Taux de base des inculpations ou arrestations de personnalités publiques (anciens présidents, élus, dirigeants) dans un délai de quelques mois : aucune source chiffrée trouvée."
-    parametres: {}
-    sources: []
-    statut: absence
-    aide: "une base des poursuites fédérales contre des élus ou anciens responsables (par exemple les rapports annuels de la section Public Integrity du ministère de la Justice)"
+    regle: "Poursuites fédérales pour corruption publique (rapport de la section Public Integrity au Congrès) : responsables fédéraux inculpés 364 en 2014, 458 en 2015, puis en baisse jusqu'à 183 en 2022 et 208 en 2023 ; responsables d'État 50 à 139 par an, responsables locaux 122 à 259 par an sur 2014-2023. Ces chiffres couvrent surtout des agents ordinaires : pour une personnalité nommée (ancien président, élu national), l'inculpation dans un délai de quelques mois reste exceptionnelle et dépend d'une procédure déjà connue (enquête, grand jury), pas du taux d'ensemble."
+    parametres: {federaux_inculpes: {"2014": 364, "2015": 458, "2016": 354, "2017": 383, "2018": 275, "2019": 300, "2020": 242, "2021": 246, "2022": 183, "2023": 208}}
+    sources:
+      - {titre: "Département de la Justice, Report to Congress on the Activities and Operations of the Public Integrity Section for 2023 (tableau II)", url: "https://www.justice.gov/criminal/media/1384436/dl", consulte: "2026-11-21"}
+    statut: source
 
   - id: calendriers_annonces_glissent
     ecosysteme: "Projets et calendriers annoncés (chantiers, lancements, mises en service)"
@@ -907,4 +909,18 @@ regles:
     parametres: {jean_paul_ii: [104, 27], benoit_xvi: [24, 8], francois_10_ans: 40}
     sources:
       - {titre: "Aleteia, The Pope's 40 trips abroad in 10 years (février 2023)", url: "https://aleteia.org/2023/02/09/the-popes-40-trips-abroad-in-10-years/", consulte: "2026-11-21"}
+    statut: source
+
+  - id: sommets_etats_unis_russie
+    ecosysteme: "États-Unis et Russie · rencontres au sommet des présidents"
+    espace: monde
+    echelle: {axe: temps, tranche: "année"}
+    structure: evenement_rare
+    objet: "rencontre en personne entre les présidents américain et russe"
+    perimetre: ["États-Unis", "Russie"]
+    compartiments: [russie-ukraine:negociations]
+    regle: "Sommets bilatéraux des présidents américain et russe de 2000 à 2025 : Moscou (juin 2000), Ljubljana (juin 2001), Moscou (mai 2002), Bratislava (février 2005), Prague (avril 2010), Helsinki (juillet 2018), Genève (juin 2021), Anchorage (août 2025). Huit en 26 ans, aucun dans 18 de ces années ; les écarts entre deux sommets vont de 1 à 8 ans. Une rencontre se prépare d'ordinaire par une annonce publique quelques semaines avant (lieu, date)."
+    parametres: {sommets_2000_2025: 8, annees_sans: 18}
+    sources:
+      - {titre: "Wikipedia, List of Russia–United States summits", url: "https://en.wikipedia.org/wiki/List_of_Russia%E2%80%93United_States_summits", consulte: "2026-11-21"}
     statut: source
