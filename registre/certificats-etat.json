@@ -7,10 +7,20 @@
   "claude.ai": "2026-11-20",
   "x.ai": "2026-11-20",
   "grok.com": "2026-11-20",
-  "mistral.ai": "2026-11-20"
+  "mistral.ai": "2026-11-20",
+  "deepseek.com": "2026-11-21",
+  "deepmind.google": "2026-11-21",
+  "meta.ai": "2026-11-21",
+  "perplexity.ai": "2026-11-21",
+  "kimi.com": "2026-11-21"
  },
  "claude.ai": "18495825668",
  "x.ai": "18215501421",
  "grok.com": "18497282639",
- "mistral.ai": "16925515977"
+ "mistral.ai": "16925515977",
+ "deepseek.com": "18431063107",
+ "deepmind.google": "18004589239",
+ "meta.ai": "17177702154",
+ "perplexity.ai": "17492777019",
+ "kimi.com": "18505273376"
 }
