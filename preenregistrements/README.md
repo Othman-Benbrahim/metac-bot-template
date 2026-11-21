@@ -47,6 +47,11 @@ de `indicateurs-pertinents.md` (2026-11-15) :
   au-dessus / au-dessous de la normale) ;
 - **mesure stable** : une mesure qui peut diverger (division par un écart-type quasi nul, régions sèches) est bornée
   ou écartée avant le test.
+- **simulation a priori** (décision d'auteur du 2026-11-21, 12 h 31) : tout outil qui apprend des poids passe
+  `verification_a_priori.simuler` avant son banc (aucun appel de modèle). Si l'a priori, sans aucune donnée, déplace la
+  prévision de plus de 0,5 logit en médiane ou ajoute plus de 10 points de prévisions extrêmes, on prend l'écart-type
+  conseillé (`sd_conseille`) ou on retire des indicateurs. Cas d'origine : « décision d'institution » (alerte : 0,80 logit,
+  extrêmes 1 % → 14 %, sd conseillé 0,52 au lieu de 1).
 
 ## Le piège des tests trivialement solubles (décisions d'auteur du 2026-11-15, 16 h 33 et 16 h 43)
 Avertissement de Hoover, Blayney et Whittington (« Classical Energies Learn to Reason 1,000x Faster than Looped

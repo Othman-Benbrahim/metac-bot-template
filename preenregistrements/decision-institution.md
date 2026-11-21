@@ -66,3 +66,9 @@ seule +0,48 (positive, à l'inverse des signaux coûteux sur les conflits), éta
 Lecture : les faits de structure (règle, étape) sont presque toujours trouvés, mais ne séparent pas les oui des non
 au-delà du taux de départ ; combinés en validation croisée sur moins de cent questions, ils ajoutent du bruit. Rien dans
 le bot.
+
+## Simulation a priori, faite après coup (2026-11-21, 12 h 40)
+`verification_a_priori.py` sur les indicateurs réellement relevés (94 questions) : sans aucune donnée, l'a priori normal
+(0, 1) déplaçait la prévision de 0,80 logit en médiane et faisait passer les prévisions extrêmes (sous 5 % ou au-dessus
+de 95 %) de 1 % à 14 % : alerte, écart-type conseillé ≈ 0,52. Le signal était visible avant le run. L'essai n'est pas
+rejugé avec cet écart-type (un test ne se relance pas pour affiner) ; la vérification sert aux prochains outils.
