@@ -47,3 +47,11 @@ Lancé une fois (`banc_decision_institution.py`, workflow `banc_decision_institu
 ## Limite connue d'avance
 Les décisions de la Fed (réunions fixées, décideur collégial à majorité) pèsent lourd dans l'échantillon (Polymarket) ;
 le détail hors Fed est rapporté. Une centaine de questions : seul un effet net se verra.
+
+## Décisions de l'auteur avant le run (2026-11-21, 9 h 23)
+- Fed : échantillon gardé tel quel (option c) ; le détail hors Fed reste rapporté.
+- Les 15 essais en sommeil (bancs manuels déjà passés, plus alimentés) sont clos sans verdict : la correction compte
+  désormais 2 essais « intervalle » vivants (intervalle corrigé à 95 % au lieu de 99,4 %).
+- Lecture principale à la manière de Metaculus (réserve de l'auteur : mesurer la même chose que le tournoi, sans
+  déformer) : perte logarithmique brute moyenne de l'outil contre celle des semblables, sur toutes les questions, avec
+  l'intervalle à 90 % ; l'intervalle corrigé est affiché à côté.
