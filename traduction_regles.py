@@ -16,9 +16,13 @@ combiner(p_S, p_R) : moyenne des logits, à poids égaux (fixée d'avance) ; plu
 """
 from __future__ import annotations
 
+import csv
 import math
 import re
-from datetime import date
+from bisect import bisect_right
+from datetime import date, timedelta
+from functools import lru_cache
+from pathlib import Path
 
 ANNEES = 365.25
 
@@ -88,11 +92,119 @@ def p_regle(regle: str, titre: str, horizon: float, jeu: str, cloture: str) -> f
         if re.search(r"\b(repair\w*|construct\w*|complet\w*|finish\w*|built)\b", t):   # chantiers seulement (homologie)
             return 0.1
         return None
+    if regle == "us_fed_calendrier":
+        return p_fed(titre, jeu, cloture)
     if regle == "coupe_du_monde_vainqueurs_hotes":                       # premier titre : 6 éditions sur 18 depuis 1950
         if re.search(r"\b(never won|first[- ]time (winner|champion))\b", t):
             return (6 + 0.5) / (18 + 1)
         return None
     return None
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Décisions de la Fed (2026-11-21, 15 h 19 : « commencer par la Fed, les données sont déjà là »).
+# Réunions programmées du FOMC 2021-2026 (dernier jour), d'après le calendrier officiel :
+# https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm (consulté le 2026-11-21).
+FOMC = ("2021-01-27 2021-03-17 2021-04-28 2021-06-16 2021-07-28 2021-09-22 2021-11-03 2021-12-15 2022-01-26 2022-03-16 "
+        "2022-05-04 2022-06-15 2022-07-27 2022-09-21 2022-11-02 2022-12-14 2023-02-01 2023-03-22 2023-05-03 2023-06-14 "
+        "2023-07-26 2023-09-20 2023-11-01 2023-12-13 2024-01-31 2024-03-20 2024-05-01 2024-06-12 2024-07-31 2024-09-18 "
+        "2024-11-07 2024-12-18 2025-01-29 2025-03-19 2025-05-07 2025-06-18 2025-07-30 2025-09-17 2025-10-29 2025-12-10 "
+        "2026-01-28 2026-03-18 2026-04-29 2026-06-17 2026-07-29 2026-09-16 2026-10-28 2026-12-09").split()
+ETATS = ("baisse", "pause", "hausse")
+MOIS = {m: i for i, m in enumerate(("january february march april may june july august september october november "
+                                     "december").split(), 1)}
+
+
+@lru_cache(maxsize=1)
+def _dff() -> tuple[list[str], dict[str, float]]:
+    s = sorted((r["jour"], float(r["valeur"])) for r in csv.DictReader(open(Path("registre") / "fred.csv", encoding="utf-8"))
+               if r["serie"] == "DFF")
+    return [a for a, _ in s], dict(s)
+
+
+def decisions_connues(jeu: str) -> list[tuple[str, float]]:
+    """(réunion, variation du taux effectif en points, arrondie au quart) pour les réunions dont l'effet est visible
+    avant le jeu : médiane des 5 jours ouvrés après moins médiane des 5 jours avant (série DFF de FRED)."""
+    import statistics
+    jours, d = _dff()
+    out = []
+    for m in FOMC:
+        if (date.fromisoformat(m) + timedelta(days=9)).isoformat() >= jeu:
+            break
+        i = bisect_right(jours, m)
+        av, ap = jours[max(0, i - 6):i - 1], jours[i + 1:i + 6]
+        if len(av) < 3 or len(ap) < 3:
+            continue
+        out.append((m, round((statistics.median(d[j] for j in ap) - statistics.median(d[j] for j in av)) * 4) / 4))
+    return out
+
+
+def _etat(v: float) -> int:
+    return 0 if v < 0 else (2 if v > 0 else 1)
+
+
+def _transitions(dec: list[tuple[str, float]]) -> list[list[float]]:
+    n = [[0.5] * 3 for _ in range(3)]                          # Jeffreys
+    for (_, a), (_, b) in zip(dec[:-1], dec[1:]):
+        n[_etat(a)][_etat(b)] += 1
+    return [[x / sum(r) for x in r] for r in n]
+
+
+def _part_taille(dec: list[tuple[str, float]], sens: int, grand: bool) -> float:
+    """Part des mouvements de ce sens qui font ≥ 0,5 point (grand) ou exactement 0,25 (petit), lissée."""
+    v = [abs(x) for _, x in dec if _etat(x) == sens]
+    k = sum(1 for x in v if (x >= 0.5) == grand)
+    return (k + 0.5) / (len(v) + 1)
+
+
+def p_fed(titre: str, jeu: str, cloture: str) -> float | None:
+    t = titre.lower()
+    if re.search(r"\bnext (two|three|four) decisions\b|–|-pause", t):
+        return None
+    dec = decisions_connues(jeu)
+    if len(dec) < 8:
+        return None
+    T = _transitions(dec)
+    avenir = [m for m in FOMC if m >= jeu]
+    m_cible = None
+    mm = re.search(r"\b(" + "|".join(MOIS) + r")\b(?:\s+(20\d\d))?\s+meeting", t)
+    if mm:
+        mois, an = MOIS[mm.group(1)], int(mm.group(2) or jeu[:4])
+        if not mm.group(2) and mois < int(jeu[5:7]):
+            an += 1
+        m_cible = next((m for m in avenir if m.startswith(f"{an}-{mois:02d}")), None)
+    elif re.search(r"\bbefore\b", t):
+        m_cible = max((m for m in avenir if m <= cloture), default=None)
+    if m_cible is None:
+        return None
+    k = avenir.index(m_cible) + 1                               # nombre de réunions jusqu'à la cible incluse
+    sens = 1 if re.search(r"\bno change|pause|hold|unchanged\b", t) else (
+        0 if re.search(r"\b(decrease\w*|cut\w*|lower\w*)\b", t) else (
+            2 if re.search(r"\b(increase\w*|raise\w*|hike\w*)\b", t) else None))
+    if sens is None:
+        return None
+    depart = _etat(dec[-1][1])
+    au_moins_une = re.search(r"\b(by|before)\b", t) and not re.search(r"\bafter the\b", t)
+    if au_moins_une and sens != 1:                              # au moins un mouvement de ce sens en k réunions
+        ok = [i for i in range(3) if i != sens]
+        v = {i: (1.0 if i == depart else 0.0) for i in ok} if depart != sens else None
+        if v is None:
+            v = {i: T[depart][i] for i in ok}
+            k -= 1
+        for _ in range(k):
+            v = {j: sum(v[i] * T[i][j] for i in ok) for j in ok}
+        p = 1 - sum(v.values())
+    else:                                                       # issue de la réunion cible
+        v = [1.0 if i == depart else 0.0 for i in range(3)]
+        for _ in range(k):
+            v = [sum(v[i] * T[i][j] for i in range(3)) for j in range(3)]
+        p = v[sens]
+        if sens != 1:
+            if re.search(r"\b50\+|\b50 ?bps|\b75\b", t):
+                p *= _part_taille(dec, sens, True)
+            elif re.search(r"\b25 ?bps\b", t) and not re.search(r"\b25\+", t):
+                p *= _part_taille(dec, sens, False)
+    return min(0.99, max(0.01, p))
 
 
 def _logit(p: float) -> float:

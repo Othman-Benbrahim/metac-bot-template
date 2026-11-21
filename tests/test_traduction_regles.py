@@ -19,3 +19,13 @@ def test_cas_particuliers():
 def test_combiner():
     assert tr.combiner(0.3, []) == 0.3
     assert 0.3 < tr.combiner(0.3, [0.8]) < 0.8
+
+
+def test_fed_decisions_et_traduction():
+    dec = tr.decisions_connues("2026-03-01")
+    assert dec[-1] == ("2026-01-28", 0.0) and ("2022-06-15", 0.75) in dec
+    assert all(m < "2026-02-20" for m, _ in dec)                      # seulement les réunions visibles avant le jeu
+    p = tr.p_fed("Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?", "2026-03-01", "2026-04-30")
+    q = tr.p_fed("Will there be no change in Fed interest rates after the April 2026 meeting?", "2026-03-01", "2026-04-30")
+    assert 0 < p < 1 and 0 < q < 1 and p + q < 1
+    assert tr.p_fed("Will the Fed Cut–Pause–Pause in the next three decisions (Dec–Jan–Mar)?", "2026-03-01", "2026-03-19") is None
