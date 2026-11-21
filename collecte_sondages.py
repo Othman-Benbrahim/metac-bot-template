@@ -205,12 +205,21 @@ def _wt_gabarit(m: re.Match) -> str:
     args = [a for a in parts[1:] if "=" not in a.split("|")[0][:20] or not re.match(r"^\w+\s*=", a)]
     if nom in ("dts", "date", "start date", "end date") and len(args) >= 3 and all(re.fullmatch(r"\d{1,4}", a) for a in args[:3]):
         return f"{int(args[0]):04d}-{int(args[1]):02d}-{int(args[2]):02d}"
+    if nom in ("opdrts", "opdr", "opinion poll date range") and args:   # {{opdrts|3|9|Nov|2026|year}} → « 3–9 Nov 2026 »
+        mois = next((i for i, a in enumerate(args) if re.fullmatch(r"[A-Za-z]{3,9}", a)), None)
+        an = next((a for a in args if re.fullmatch(r"20\d\d", a)), "")
+        if mois is not None:
+            jours = [a for a in args[:mois] if re.fullmatch(r"\d{1,2}", a)]
+            return f"{'–'.join(jours)} {args[mois]} {an}".strip()
+        return " ".join(args[:3])
     if nom in ("nowrap", "nobr", "small", "abbr", "tooltip", "nowrap begin") and args:
         return args[0]
     if nom in ("sort", "sortname", "hs", "ntsh") and args:
         return args[-1]
     if nom.startswith("party shading") or nom in ("n/a", "na", "-", "tba", "efn", "refn", "cn", "citation needed"):
         return ""
+    if "party" in nom and not re.search(r"colou?r|shading|cell", nom) and args:   # {{Party name|CDU}} → « CDU »
+        return args[-1]
     return args[-1] if len(args) == 1 and re.fullmatch(r"[\d.,%–\- ]+", args[0]) else ""
 
 
@@ -287,7 +296,8 @@ def sondages_grilles(gs: list, an_defaut: int) -> list[dict]:
         entete, i_date = None, None
         for k, ligne in enumerate(g[:3]):
             for j, c in enumerate(ligne):
-                if re.search(r"\b(dates?|datum|datums|fecha|data|fieldwork|conducted|administered|polling period|period|periodo|idopont)\b", norm(c)):
+                if re.search(r"\b(dates?|datum|datums|dato|fecha|data|fieldwork|conducted|administered|polling period|period|periodo|idopont|"
+                               r"kuupaev|tanggal|tarih|termin|pvm|ajankohta|dátum|datas?)\b", norm(c)):
                     entete, i_date = k, j
                     break
             if entete is not None:
@@ -303,7 +313,9 @@ def sondages_grilles(gs: list, an_defaut: int) -> list[dict]:
             pile = [r[j] for r in g[debut:entete + 1] if j < len(r) and r[j]]
             utiles = [x for x in pile if norm(x) not in GENERIQUES]
             nom = re.sub(r"\s*\[[^\]]*\]", "", (utiles or pile or [""])[-1]).strip()   # « ORÖ [hu] » → « ORÖ »
-            noms.append("" if re.search(r"\d|%|^[<>]", nom) else nom)   # « 42–46% », vide : pas une colonne
+            sieges = any(re.search(r"\b(seats?|mandates?|mandats?|sieges?|escanos?|sitze|pladser|mandaty|deputados|"
+                                   r"cadeiras|seggi|zetels)\b", norm(x)) for x in pile)   # sièges, pas des pourcentages
+            noms.append("" if sieges or re.search(r"\d|%|^[<>]", nom) else nom)   # « 42–46% », vide : pas une colonne
         i_lead = next((j for j, n in enumerate(noms) if norm(n) in ("lead", "ventaja", "vantagem", "diferencia", "diff",
                                                                       "kulonbseg", "otryv", "vorsprung")), None)
         for ligne in g[entete + 1:]:
