@@ -503,10 +503,21 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
         if len(ok) == 1:
             return ok[0]
     for w in ([mots[-1]] if mots else []) + sorted((w for w in mots[:-1] if len(w) >= 4), key=len, reverse=True):
-        ok = [n for n in noms if re.search(rf"\b{re.escape(w)}\b", norm(n))]   # « Luiz Inácio Lula da Silva » → « Lula PT »
+        ok = [n for n in noms if re.search(rf"\b{re.escape(w)}\b", norm(n))   # « Luiz Inácio Lula da Silva » → « Lula PT »
+              and not autre_prenom(n, w, mots)]
         if len(ok) == 1:
             return ok[0]
     return None
+
+
+def autre_prenom(nom_col: str, mot: str, mots_sujet: list[str]) -> bool:
+    """« F. Bolsonaro PL » pour « Michelle Bolsonaro » : la colonne porte une AUTRE initiale ou un autre prénom devant le
+    nom commun ; ce n'est pas la même personne (run du 2026-11-21, 16 h 46)."""
+    avant = norm(nom_col).split(mot)[0].split()
+    if not avant or len(mots_sujet) < 2:
+        return False
+    initiales = {x[0] for x in mots_sujet if x != mot}
+    return avant[-1].rstrip(".")[:1] not in initiales
 
 
 # ------------------------------------------------------------------------------------- DAWUM (Allemagne, structuré)

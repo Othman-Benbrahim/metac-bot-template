@@ -238,3 +238,11 @@ def test_seconde_lecture_wikitexte():
     assert cs.verdict({"source": "wikipedia", "relecture_wikitexte": {"ecart_points": 0.0}}) == "confirme_wikitexte"
     assert cs.verdict({"source": "wikipedia", "relecture_wikitexte": {"ecart_points": 3.0},
                        "relecture_lead": {"lignes_verifiees": 5, "accord": 1.0}}) == "desaccord_lecture"
+
+
+def test_meme_nom_autre_personne():
+    noms = ["Lula PT", "F. Bolsonaro PL", "Caiado PSD"]
+    assert cs.colonne("Michelle Bolsonaro", noms) is None
+    assert cs.colonne("Flavio Bolsonaro", noms) == "F. Bolsonaro PL"
+    assert cs.colonne("Luiz Inácio Lula da Silva", noms) == "Lula PT"
+    assert cs.colonne("Ronaldo Caiado", noms) == "Caiado PSD"
