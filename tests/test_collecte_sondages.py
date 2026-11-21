@@ -116,3 +116,19 @@ def test_fraicheur_run_44916476984():
     ls = cs.sondages(HTML3, 2026)                          # sondages de mars et avril 2026
     assert cs.choisir_table(ls, "2026-12-01", "John Rose", True) == (None, None)   # plus de 90 jours : refus
     assert cs.moyennes(ls, "2026-12-01") == {}
+
+
+BASE_DAWUM = {"Parliaments": {"15": {"Shortcut": "Sachsen-Anhalt", "Name": "Sachsen-Anhalt"}, "0": {"Shortcut": "Bundestag", "Name": "Bundestag"}},
+              "Parties": {"1": {"Shortcut": "CDU"}, "7": {"Shortcut": "AfD"}, "5": {"Shortcut": "Linke"}, "0": {"Shortcut": "Sonstige"}},
+              "Surveys": {"a": {"Date": "2026-06-10", "Survey_Period": {"Date_Start": "2026-06-01", "Date_End": "2026-06-08"},
+                                "Parliament_ID": "15", "Results": {"1": 27, "7": 39, "5": 11, "0": 5}},
+                          "b": {"Date": "2026-06-12", "Survey_Period": {"Date_Start": "2026-06-02", "Date_End": "2026-06-09"},
+                                "Parliament_ID": "0", "Results": {"1": 30, "7": 25}}}}
+
+
+def test_dawum():
+    el = cs.election("Will The Left win the third most seats in the 2026 Sachsen-Anhalt parliamentary elections?")
+    assert cs.parlement_dawum(el) == "Sachsen-Anhalt"
+    ls = cs.lignes_dawum(BASE_DAWUM, "Sachsen-Anhalt")
+    assert len(ls) == 1 and ls[0]["fin"] == date(2026, 6, 8) and set(ls[0]["valeurs"]) == {"CDU", "AfD", "Linke"}
+    assert cs.choisir_table(ls, "2026-07-19", cs.sujet_parti("The Left"), False) == (0, "Linke")

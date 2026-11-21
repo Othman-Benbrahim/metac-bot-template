@@ -338,16 +338,64 @@ def colonne(sujet_: str, noms: list[str]) -> str | None:
     return None
 
 
+# ------------------------------------------------------------------------------------- DAWUM (Allemagne, structuré)
+DAWUM = "https://api.dawum.de/"
+LANDER = ("Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
+          "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Saarland", "Sachsen-Anhalt", "Sachsen",
+          "Schleswig-Holstein", "Thüringen", "Bundestag")
+ALIAS_PARTIS = {"the left": "linke", "die linke": "linke", "left party": "linke", "the greens": "grune", "greens": "grune",
+                "alliance 90/the greens": "grune", "alternative for germany": "afd", "christian democratic union": "cdu",
+                "social democratic party": "spd", "free democratic party": "fdp", "sahra wagenknecht alliance": "bsw"}
+
+
+def parlement_dawum(el: str) -> str | None:
+    t = norm(el)
+    for n in LANDER:                                           # Sachsen-Anhalt avant Sachsen
+        if norm(n) in t or (n == "Bundestag" and re.search(r"\b(german federal|bundestag)\b", t)):
+            return n
+    return None
+
+
+def lignes_dawum(base: dict, parlement: str) -> list[dict]:
+    """Base DAWUM (JSON, ODbL) → lignes au même format que les tableaux lus : {fin, valeurs, table}."""
+    ids = {k for k, v in (base.get("Parliaments") or {}).items() if norm(v.get("Name")) == norm(parlement)
+           or norm(v.get("Shortcut")) == norm(parlement)}
+    partis = {k: v.get("Shortcut") or v.get("Name") for k, v in (base.get("Parties") or {}).items()}
+    out = []
+    for v in (base.get("Surveys") or {}).values():
+        if str(v.get("Parliament_ID")) not in ids:
+            continue
+        fin = (v.get("Survey_Period") or {}).get("Date_End") or v.get("Date")
+        vals = {partis.get(str(k), str(k)): float(x) for k, x in (v.get("Results") or {}).items()
+                if norm(partis.get(str(k), "")) not in ("sonstige", "others", "")}
+        if fin and len(vals) >= 2:
+            out.append({"fin": date.fromisoformat(fin[:10]), "valeurs": vals, "table": 0})
+    return out
+
+
+def sujet_parti(sujet_: str) -> str:
+    s = re.sub(r"^(the)\s+", "the ", norm(sujet_))
+    return ALIAS_PARTIS.get(s, sujet_)
+
+
 def collecter() -> dict:
     import httpx
     import politesse
     carte = [o for o in json.loads(CARTE.read_text(encoding="utf-8"))["detail"] if set(o["regles"]) & REGLES_SONDAGES]
-    out, pages = {}, {}
+    out, pages, essais = {}, {}, {}
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=60, follow_redirects=True) as c:
+        base_dawum = None
+        if any(parlement_dawum(election(o["titre"])) for o in carte):
+            try:
+                if politesse.autorise(c, DAWUM):
+                    r = c.get(DAWUM)
+                    base_dawum = r.json() if r.status_code == 200 else None
+            except Exception as e:                             # une source en panne n'arrête pas les autres
+                print(f"DAWUM indisponible : {e}")
         for o in carte:
             el = election(o["titre"])
             if el not in pages:
-                pages[el] = None
+                pages[el], essais[el] = None, []
                 for q in (f"Opinion polling for the {el}", el):
                     url = f"{API}/search/page"
                     if not politesse.autorise(c, url):
@@ -358,27 +406,45 @@ def collecter() -> dict:
                         continue
                     for p in r.json().get("pages", []):
                         if not page_convient(p.get("title", ""), el, o["jeu"]):
+                            essais[el].append([p.get("title", ""), "page refusée"])
                             continue
                         h = c.get(f"{API}/page/{p['key']}/html")
                         if h.status_code == 200 and (ls := sondages(h.text, int(o["jeu"][:4]))):
                             pages[el] = {"statut": "ok", "page": p["title"], "lignes": ls}
                             break
+                        essais[el].append([p.get("title", ""), f"aucun tableau lisible (HTTP {h.status_code})"])
                     if pages[el]:
                         break
-            info = pages[el] or {"statut": "introuvable"}
-            if info.get("statut") != "ok":
-                out[o["question"]] = {"election": el, "statut": info["statut"]}
-                continue
             su = sujet(o["titre"])
             primaire = bool(re.search(r"\b(democratic|republican|dfl|labour|conservative)\b.*\bprimary\b", norm(o["titre"])))
-            t, col = choisir_table(info["lignes"], o["jeu"], su, primaire)
-            moy = moyennes(info["lignes"], o["jeu"], t) if t is not None else {}
-            statut = "ok" if col else ("sujet_absent_des_tableaux" if moyennes(info["lignes"], o["jeu"])
-                                       else "aucun_sondage_dans_les_90_jours_avant_le_jeu")
-            out[o["question"]] = {"election": el, "statut": statut, "page": info["page"], "sujet": su,
-                                  "colonne_sujet": col, "jeu": o["jeu"], "moyennes": moy}
-    return {"source": "Wikipédia (en), CC BY-SA 4.0, via api.wikimedia.org ; seuls des nombres sont gardés",
-            "questions": out}
+            wiki = None
+            info = pages[el] or {"statut": "introuvable"}
+            if info.get("statut") == "ok":
+                t, col = choisir_table(info["lignes"], o["jeu"], su, primaire)
+                moy = moyennes(info["lignes"], o["jeu"], t) if t is not None else {}
+                statut = "ok" if col else ("sujet_absent_des_tableaux" if moyennes(info["lignes"], o["jeu"])
+                                           else "aucun_sondage_dans_les_90_jours_avant_le_jeu")
+                wiki = {"election": el, "statut": statut, "source": "wikipedia", "page": info["page"], "sujet": su,
+                        "colonne_sujet": col, "jeu": o["jeu"], "moyennes": moy}
+            struct = None
+            parl = parlement_dawum(el)
+            if base_dawum and parl:
+                ls = lignes_dawum(base_dawum, parl)
+                t, col = choisir_table(ls, o["jeu"], sujet_parti(su), False)
+                if col:
+                    struct = {"election": el, "statut": "ok", "source": "dawum", "page": f"DAWUM {parl}", "sujet": su,
+                              "colonne_sujet": col, "jeu": o["jeu"], "moyennes": moyennes(ls, o["jeu"], 0)}
+            if struct:                                         # la source structurée d'abord ; Wikipédia en contrôle
+                if wiki and wiki["statut"] == "ok":
+                    a, b = struct["moyennes"][struct["colonne_sujet"]]["moyenne"], wiki["moyennes"][wiki["colonne_sujet"]]["moyenne"]
+                    struct["controle_wikipedia"] = {"moyenne": b, "ecart_points": round(b - a, 2)}
+                out[o["question"]] = struct
+            elif wiki:
+                out[o["question"]] = wiki
+            else:
+                out[o["question"]] = {"election": el, "statut": info["statut"], "essais": essais.get(el, [])[:6]}
+    return {"source": "Wikipédia (en), CC BY-SA 4.0, via api.wikimedia.org ; DAWUM (dawum.de), ODbL, pour "
+                      "l'Allemagne ; seuls des nombres sont gardés", "questions": out}
 
 
 def principal() -> int:
