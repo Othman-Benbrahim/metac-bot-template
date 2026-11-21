@@ -32,11 +32,17 @@ REGLES_SONDAGES = {"sondages_erreur_comparee", "us_erreur_selon_temps_restant", 
                    "presidentielles_mode_de_scrutin", "seuils_parlements_nationaux_europe"}
 MOIS = {m[:3]: i for i, m in enumerate(("january february march april may june july august september october "
                                         "november december").split(), 1)}
+# 0.10.265 : mois en anglais, portugais, espagnol, suédois, hongrois, allemand, russe translittéré (pages locales)
+MOIS_X = {**MOIS, "fev": 2, "abr": 4, "mai": 5, "ago": 8, "set": 9, "out": 10, "dez": 12, "ene": 1, "dic": 12,
+          "maj": 5, "okt": 10, "szept": 9, "ian": 1, "iiun": 6, "iiul": 7, "avg": 8, "sen": 9, "noi": 11, "dek": 12}
+MOIS_RE = "|".join(sorted(MOIS_X, key=len, reverse=True))
 N_DERNIERS, MARGE_JOURS, FRAICHEUR_JOURS = 5, 3, 90   # un sondage de plus de 90 jours avant le jeu ne compte pas
 GENERIQUES = {"", "?", "majority", "lead", "others", "other", "oth", "undecided", "und", "n", "turnout", "abstention",
               "blank", "void", "nota", "candidates", "candidate", "party", "parties", "polling firm", "pollster", "sample",
               "sample size", "margin", "margin of error", "fieldwork date", "date", "date(s) administered", "o/u", "oth/ und",
-              "abst. undec.", "don't know/no answer", "none", "invalid", "spoilt"}
+              "abst. undec.", "don't know/no answer", "none", "invalid", "spoilt", "otros", "outros", "ovriga", "egyeb",
+              "drugie", "indecisos", "ns/nc", "muestra", "amostra", "encuestadora", "instituto", "institut", "ventaja",
+              "vantagem", "diferencia", "kulonbseg", "otryv"}
 MOTS_VIDES = {"the", "election", "elections", "primary", "presidential", "general", "parliamentary", "legislative",
               "opinion", "polling", "for", "of", "and", "in", "next", "round", "first", "second", "by-election", "republican",
               "democratic", "governor", "gubernatorial", "senate", "house", "national", "federal", "state", "united", "states",
@@ -123,21 +129,31 @@ def grilles(html: str) -> list[list[list[str]]]:
 def fin_terrain(texte: str, an_defaut: int) -> date | None:
     """Date de fin de terrain : la DERNIÈRE date lisible de la cellule (« 5–9 Mar 2026 », « Mar 5–9, 2026 », « 2026-03-09 »)."""
     t = norm(texte)
-    m = re.findall(r"(20\d\d)-(\d\d)-(\d\d)", t)
+    m = re.findall(r"(20\d\d)[-.](\d\d)[-.](\d\d)", t)                  # 2026-03-09, 2026.03.09 (Hongrie)
     if m:
         a, mo, j = m[-1]
-        return date(int(a), int(mo), int(j))
+        try:
+            return date(int(a), int(mo), int(j))
+        except ValueError:
+            return None
+    m = re.findall(r"(?<!\d)(\d{1,2})[./](\d{1,2})[./](20\d\d)", t)       # 09.03.2026, 09/03/2026 (pages européennes)
+    if m:
+        j, mo, a = m[-1]
+        try:
+            return date(int(a), int(mo), int(j))
+        except ValueError:
+            return None
     ans = [int(x) for x in re.findall(r"\b(20\d\d)\b", t)]
     an = ans[-1] if ans else an_defaut
     cand = []                                                  # (position, mois, jour) : la DERNIÈRE date du texte
-    for m in re.finditer(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2}(?:\s*[–-]\s*\d{1,2})?)(?!\d)", t):
-        cand.append((m.end(), MOIS[m.group(1)], int(re.findall(r"\d{1,2}", m.group(2))[-1])))
-    for m in re.finditer(r"(?<!\d)(\d{1,2}(?:\s*[–-]\s*\d{1,2})?)\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*", t):
-        cand.append((m.end(), MOIS[m.group(2)], int(re.findall(r"\d{1,2}", m.group(1))[-1])))
+    for m in re.finditer(rf"\b({MOIS_RE})[a-z]*\.?\s+(\d{{1,2}}(?:\s*[–-]\s*\d{{1,2}})?)(?!\d)", t):
+        cand.append((m.end(), MOIS_X[m.group(1)], int(re.findall(r"\d{1,2}", m.group(2))[-1])))
+    for m in re.finditer(rf"(?<!\d)(\d{{1,2}}(?:\s*[–-]\s*\d{{1,2}})?)\.?\s+(?:de\s+)?({MOIS_RE})[a-z]*", t):
+        cand.append((m.end(), MOIS_X[m.group(2)], int(re.findall(r"\d{1,2}", m.group(1))[-1])))
     if not cand:
-        seuls = list(re.finditer(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b", t))
+        seuls = list(re.finditer(rf"\b({MOIS_RE})[a-z]*\b", t))
         if seuls and ans:
-            cand.append((seuls[-1].end(), MOIS[seuls[-1].group(1)], 15))
+            cand.append((seuls[-1].end(), MOIS_X[seuls[-1].group(1)], 15))
     if not cand:
         return None
     _, mo, j = max(cand)
@@ -163,7 +179,7 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
         entete, i_date = None, None
         for k, ligne in enumerate(g[:3]):
             for j, c in enumerate(ligne):
-                if re.search(r"\b(dates?|fieldwork|conducted|administered|polling period|period)\b", norm(c)):
+                if re.search(r"\b(dates?|datum|datums|fecha|data|fieldwork|conducted|administered|polling period|period|periodo|idopont)\b", norm(c)):
                     entete, i_date = k, j
                     break
             if entete is not None:
@@ -180,17 +196,21 @@ def sondages(html: str, an_defaut: int) -> list[dict]:
             utiles = [x for x in pile if norm(x) not in GENERIQUES]
             nom = re.sub(r"\s*\[[^\]]*\]", "", (utiles or pile or [""])[-1]).strip()   # « ORÖ [hu] » → « ORÖ »
             noms.append("" if re.search(r"\d|%|^[<>]", nom) else nom)   # « 42–46% », vide : pas une colonne
-        i_lead = next((j for j, n in enumerate(noms) if norm(n) == "lead"), None)
+        i_lead = next((j for j, n in enumerate(noms) if norm(n) in ("lead", "ventaja", "vantagem", "diferencia", "diff",
+                                                                      "kulonbseg", "otryv", "vorsprung")), None)
         for ligne in g[entete + 1:]:
             if len(ligne) <= i_date:
                 continue
             texte = " ".join(ligne[:max(i_date, 1) + 1])
-            if re.search(r"\b(election|result|results|actual)\b", norm(texte)):
+            if re.search(r"\b(election|result|results|actual|resultados?|eleic\w*|elecciones|valresultat|eredmeny|"
+                         r"itogi|vybory|wahlergebnis)\b", norm(texte)):
                 continue
             fin = fin_terrain(ligne[i_date], an_defaut)
             vals = {noms[j]: v for j, c in enumerate(ligne) if j < len(noms) and j != i_date and noms[j]
                     and norm(noms[j]) not in GENERIQUES and (v := nombre(c)) is not None
-                    and not re.search(r"\b(sample|size|margin|lead|error|others?|undecided|undec|blank|null|none|round)\b",
+                    and not re.search(r"\b(sample|size|margin|lead|error|others?|undecided|undec|blank|null|none|round|otros|"
+                                      r"outros|ovriga|egyeb|drugie|indecis\w*|nulos?|blancos?|brancos?|muestra|amostra|"
+                                      r"marge\w*|ventaja|vantagem|diferen\w*|kulonbseg|otryv)\b",
                                       norm(noms[j]))}
             if fin and len(vals) >= 2 and sum(vals.values()) <= 110:   # une ligne qui dépasse 100 % : pas un sondage
                 lus.append({"fin": fin, "valeurs": vals, "table": i_tab, "verif": verif_lead(vals, ligne, i_lead)})
@@ -419,6 +439,34 @@ def sujet_parti(sujet_: str) -> str:
     return ALIAS_PARTIS.get(s, sujet_)
 
 
+# Seconde source indépendante : la page de la même élection dans la langue du pays (autres rédacteurs, autres tableaux),
+# trouvée par les liens interlangues de la page anglaise retenue (jamais par une recherche libre).
+LANGUES = {"brazil": "pt", "portug": "pt", "peru": "es", "colombi": "es", "swed": "sv", "hungar": "hu", "russia": "ru",
+           "latvia": "lv", "german": "de", "sachsen": "de", "saxony": "de"}
+TOLERANCE_POINTS = 2.0
+
+
+def langue_locale(el: str) -> str | None:
+    t = norm(el)
+    return next((l for k, l in LANGUES.items() if k in t), None)
+
+
+def verdict(r: dict) -> str:
+    """confirme_structure (DAWUM) | confirme_lead | confirme_second_source | desaccord | non_verifie.
+    Un désaccord de la seconde source l'emporte sur la relecture « Lead » (celle-ci ne voit pas un mauvais tableau)."""
+    if r.get("source") == "dawum":
+        return "confirme_structure"
+    s2 = r.get("seconde_source") or {}
+    if s2.get("ecart_points") is not None and abs(s2["ecart_points"]) > TOLERANCE_POINTS:
+        return "desaccord"
+    rl = r.get("relecture_lead") or {}
+    if (rl.get("lignes_verifiees") or 0) >= 3 and (rl.get("accord") or 0) >= 0.8:
+        return "confirme_lead"
+    if s2.get("ecart_points") is not None:
+        return "confirme_second_source"
+    return "non_verifie"
+
+
 class Collecteur:
     """Une recherche de page par élection (mémorisée), la base DAWUM lue une fois ; mêmes règles pour le banc et le bot."""
 
@@ -458,12 +506,33 @@ class Collecteur:
                     continue
                 h = self.c.get(f"{API}/page/{p['key']}/html")
                 if h.status_code == 200 and (ls := sondages(h.text, int(jeu[:4]))):
-                    self.pages[el] = {"statut": "ok", "page": p["title"], "lignes": ls}
+                    self.pages[el] = {"statut": "ok", "page": p["title"], "cle": p["key"], "lignes": ls}
                     break
                 self.essais[el].append([p.get("title", ""), f"aucun tableau lisible (HTTP {h.status_code})"])
             if self.pages[el]:
                 break
         return self.pages[el] or {"statut": "introuvable"}
+
+    def page_locale(self, el: str, cle_en: str, jeu: str) -> dict | None:
+        lang = langue_locale(el)
+        k = (el, lang)
+        if not lang:
+            return None
+        if k in self.pages:
+            return self.pages[k]
+        self.pages[k] = None
+        try:
+            r = self.c.get(f"{API}/page/{cle_en}/links/language")
+            lien = next((x for x in (r.json() if r.status_code == 200 else []) if x.get("code") == lang), None)
+            if lien:
+                base = API.rsplit("/", 1)[0] + f"/{lang}"
+                if self.pol.autorise(self.c, base):
+                    h = self.c.get(f"{base}/page/{lien['key']}/html")
+                    if h.status_code == 200 and (ls := sondages(h.text, int(jeu[:4]))):
+                        self.pages[k] = {"langue": lang, "page": lien["title"], "lignes": ls}
+        except Exception as e:
+            print(f"seconde source {lang} indisponible pour {el} : {e}")
+        return self.pages[k]
 
     def evaluer(self, titre: str, jeu: str) -> dict:
         el = election(titre)
@@ -483,6 +552,15 @@ class Collecteur:
             wiki = {"election": el, "statut": statut, "source": "wikipedia", "page": info["page"], "sujet": su,
                     "colonne_sujet": col, "jeu": jeu, "moyennes": moy,
                     "relecture_lead": {"lignes_verifiees": nv, "accord": acc}}
+            loc = self.page_locale(el, info.get("cle", ""), jeu) if col else None
+            if loc:
+                t2, col2 = choisir_table(loc["lignes"], jeu, su, primaire)
+                s2 = {"langue": loc["langue"], "page": loc["page"], "colonne": col2}
+                if col2:
+                    m2 = moyennes(loc["lignes"], jeu, t2)[col2]
+                    s2.update({"moyenne": m2["moyenne"], "n": m2["n"], "dernier": m2["dernier"],
+                               "ecart_points": round(m2["moyenne"] - moy[col]["moyenne"], 2)})
+                wiki["seconde_source"] = s2
         if parl and (base := self.base_dawum()):
             ls = lignes_dawum(base, parl)
             t, col = choisir_table(ls, jeu, sujet_parti(su), False)
@@ -500,6 +578,7 @@ class Collecteur:
             r = {"election": el, "statut": info["statut"], "essais": self.essais.get(el, [])[:6]}
         if r.get("statut") == "ok":
             r["alertes"] = alertes(r)
+            r["verification"] = verdict(r)
         return r
 
 
@@ -553,6 +632,9 @@ def principal() -> int:
     qs = r["questions"].values()
     print(f"{len(r['questions'])} questions ; ok {sum(1 for q in qs if q.get('statut') == 'ok')} ; "
           f"avec la colonne du sujet {sum(1 for q in qs if q.get('colonne_sujet'))}")
+    import collections
+    print("vérification :", dict(collections.Counter(q.get("verification") for q in qs if q.get("statut") == "ok")))
+    print("seconde source trouvée :", sum(1 for q in qs if (q.get("seconde_source") or {}).get("ecart_points") is not None))
     return 0
 
 

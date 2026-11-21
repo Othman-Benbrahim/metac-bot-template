@@ -165,3 +165,20 @@ def test_parti_jamais_lu_dans_la_colonne_de_son_chef():
     assert cs.colonne("Swedish Social Democratic Party (S)", ["V", "S", "MP", "SD"]) == "S"
     assert cs.colonne("United Russia (ER)", ["UR", "CPRF", "LDPR"]) == "UR"
     assert cs.colonne("Apvienotais Saraksts (AS)", ["JV", "ZZS", "AS"]) == "AS"
+
+
+def test_dates_et_verdicts_multilingues():
+    assert cs.fin_terrain("1–5 de marzo de 2026", 2026) == date(2026, 3, 5)
+    assert cs.fin_terrain("12.04.2026", 2026) == date(2026, 4, 12)
+    assert cs.fin_terrain("2026.03.09.", 2026) == date(2026, 3, 9)
+    assert cs.fin_terrain("5–9 marta 2026", 2026) == date(2026, 3, 9)          # « марта » translittéré
+    assert cs.fin_terrain("3 iiunia 2026", 2026) == date(2026, 6, 3)
+    assert cs.fin_terrain("20 maj 2026", 2026) == date(2026, 5, 20)
+    assert cs.langue_locale("2026 Brazilian presidential election") == "pt"
+    assert cs.langue_locale("2026 Texas Republican primary") is None
+    ok = {"source": "wikipedia", "relecture_lead": {"lignes_verifiees": 5, "accord": 1.0}}
+    assert cs.verdict(ok) == "confirme_lead"
+    assert cs.verdict({**ok, "seconde_source": {"ecart_points": 4.5}}) == "desaccord"
+    assert cs.verdict({"source": "wikipedia", "seconde_source": {"ecart_points": -1.0}}) == "confirme_second_source"
+    assert cs.verdict({"source": "wikipedia"}) == "non_verifie"
+    assert cs.verdict({"source": "dawum"}) == "confirme_structure"
