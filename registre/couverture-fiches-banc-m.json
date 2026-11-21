@@ -1,0 +1,1203 @@
+{
+ "version_bot": "0.10.410",
+ "questions": 119,
+ "sans_fiche": 1,
+ "par_fiche": {
+  "politique-americaine": 53,
+  "calendriers-echeances": 26,
+  "humain": 18,
+  "competitions-culture": 13,
+  "crises-bancaires": 12,
+  "information-cyber": 12,
+  "sciences-techniques": 12,
+  "russie-ukraine": 9,
+  "securite-publique": 8,
+  "inflation-mondiale": 7,
+  "guerre-levant": 7,
+  "elections-amerique-latine": 6,
+  "rivalite-sino-americaine": 5,
+  "observateur-mesure": 4,
+  "climat-extremes": 4,
+  "infrastructures-critiques": 3,
+  "iran-nucleaire": 3,
+  "oceans-et-fleuves": 2,
+  "energie-mondiale": 2,
+  "economie-chinoise": 1,
+  "soudan": 1,
+  "soleil-espace": 1,
+  "ormuz": 1,
+  "transport-maritime": 1,
+  "epidemies": 1,
+  "securite-europeenne": 1,
+  "non-proliferation": 1,
+  "migrations-demographie": 1
+ },
+ "detail": [
+  {
+   "question": "22310",
+   "titre": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
+   "issue": 1,
+   "fiches": [
+    "elections-amerique-latine",
+    "humain"
+   ],
+   "pourquoi": "Parce que l'issue dépend d'abord des règles, institutions et dynamiques électorales propres à l'Amérique latine (scrutin, coalitions, calendrier, campagnes) et des comportements, motivations et réacti"
+  },
+  {
+   "question": "24819",
+   "titre": "Will the USMCA be extended promptly at its July 2026 joint review?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La tenue d'une extension dépend des décisions institutionnelles et politiques (notamment aux États‑Unis, mais aussi au Canada et au Mexique) et du calendrier légal/procédural imposé par la revue conjo"
+  },
+  {
+   "question": "36871",
+   "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
+   "issue": 0,
+   "fiches": [
+    "crises-bancaires",
+    "politique-americaine"
+   ],
+   "pourquoi": "L'évolution de la capitalisation de USDT et USDC dépend surtout de la confiance bancaire et des flux entre crypto et système financier (crises-bancaires) et des décisions réglementaires américaines qu"
+  },
+  {
+   "question": "37307",
+   "titre": "Will  an attempt be made to fire Jerome Powell before the end of his term?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "inflation-mondiale"
+   ],
+   "pourquoi": "La question sera décidée surtout par la politique américaine (qui détient les leviers et la volonté d'initier une tentative de révocation) et, en second lieu, par la situation économique—notamment l'i"
+  },
+  {
+   "question": "37523",
+   "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
+   "issue": 0,
+   "fiches": [
+    "guerre-levant",
+    "politique-americaine"
+   ],
+   "pourquoi": "La survie du cessez‑le‑feu dépend principalement des dynamiques régionales, des calculs et soutiens des acteurs yéménites et iraniens et de la médiation omanaise (guerre-levant), ainsi que des décisio"
+  },
+  {
+   "question": "38783",
+   "titre": "Will the US government file a denaturalization lawsuit against Elon Musk before July 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine"
+   ],
+   "pourquoi": "La décision de déposer une action de dénaturalisation relève des institutions et des choix du gouvernement américain (DOJ/DHS, priorités politiques et juridiques), donc l'issue est gouvernée par la dy"
+  },
+  {
+   "question": "38917",
+   "titre": "Will Barack Obama be arrested before July 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "securite-publique"
+   ],
+   "pourquoi": "Parce que l'issue dépend des décisions des autorités judiciaires et des forces de l'ordre américaines — procureurs, DOJ, tribunaux et exécution des arrestations —, donc des règles de la politique amér"
+  },
+  {
+   "question": "38940",
+   "titre": "Will over 2/3 of EU member states recognize Palestinian statehood before July 2026?",
+   "issue": 0,
+   "fiches": [
+    "guerre-levant",
+    "politique-americaine"
+   ],
+   "pourquoi": "La décision de reconnaître dépend surtout des dynamiques du conflit israélo‑palestinien (violence, cessez‑le-feu, négociations, opinion publique) qui modulent les calculs des gouvernements européens, "
+  },
+  {
+   "question": "39142",
+   "titre": "Before July 1, 2026, will the U.S. Supreme Court agree to hear a case that could end the constitutional right to same-sex marriage?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question est gouvernée par les mécanismes institutionnels judiciaires américains — dépôts de pourvoi, choix des juges et politiques de la Cour — et par le calendrier de dépôt/examen des demandes qu"
+  },
+  {
+   "question": "39886",
+   "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "rivalite-sino-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La tenue d'une réunion trilatérale dépend d'abord des logiques géopolitiques entre la Chine, la Russie et les États-Unis (alignements, pressions et incitations stratégiques) et des contraintes calenda"
+  },
+  {
+   "question": "39992",
+   "titre": "Will Israel participate in the Eurovision Song Contest 2026?",
+   "issue": 1,
+   "fiches": [
+    "competitions-culture",
+    "guerre-levant"
+   ],
+   "pourquoi": "La participation est d'abord gouvernée par les règles, décisions des diffuseurs et de l'EBU liées au concours (competitions-culture) et peut être décidée en pratique par la situation sécuritaire et po"
+  },
+  {
+   "question": "40005",
+   "titre": "Will any political party or coalition acquire a supermajority in the 2026 Hungarian parliamentary elections?",
+   "issue": 1,
+   "fiches": [
+    "humain",
+    "information-cyber"
+   ],
+   "pourquoi": "Le résultat dépend surtout du comportement des électeurs (préférences, mobilisation et alliances d'opposition) et de l'environnement informationnel (médias, récits, censure et désinformation) qui faço"
+  },
+  {
+   "question": "40281",
+   "titre": "Will any coding tool introduce an integration with brain-computer interface technology before November 2026?",
+   "issue": 0,
+   "fiches": [
+    "sciences-techniques",
+    "information-cyber"
+   ],
+   "pourquoi": "La question se joue d'abord sur l'état de la recherche et la diffusion commerciale des BCI (disponibilité de matériel, API et maturité des intégrations), et secondairement sur les risques de sécurité "
+  },
+  {
+   "question": "40599",
+   "titre": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he become Prime Minister?",
+   "issue": 0,
+   "fiches": [
+    "humain"
+   ],
+   "pourquoi": "Le résultat dépend essentiellement des choix des électeurs, des dynamiques partisanes et des coalitions/institutions politiques hongroises — c’est l’action collective des acteurs politiques et des éle"
+  },
+  {
+   "question": "40695",
+   "titre": "Will Jerome Powell cease to be Chair of the Federal Reserve Board of Governors before his term is up?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine"
+   ],
+   "pourquoi": "Parce que la question est tranchée par des mécanismes institutionnels et politiques américains (nomination, confirmation, limites légales à la révocation, pressions présidentielles et sénatoriales), e"
+  },
+  {
+   "question": "40711",
+   "titre": "Will the United States, Russia or China detonate a nuclear device before April 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "russie-ukraine",
+    "rivalite-sino-americaine"
+   ],
+   "pourquoi": "Parce que le recours à une détonation serait d’abord décidé par des logiques d’escalade et de crise militaire entre grandes puissances : une escalade liée à la guerre Russie–Ukraine pour la Russie, et"
+  },
+  {
+   "question": "40849",
+   "titre": "Will Tesla discontinue the Cybertruck before April 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "crises-bancaires",
+    "sciences-techniques"
+   ],
+   "pourquoi": "La décision dépendra des contraintes financières et stratégiques de Tesla (santé du bilan, priorité à la rentabilité) et des contraintes techniques/industrielles (développement, production, coûts) qui"
+  },
+  {
+   "question": "40852",
+   "titre": "Will the US House of Representatives censure, expel or reprimand any of its members before April 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "information-cyber"
+   ],
+   "pourquoi": "La question est gouvernée par les procédures et calculs politiques internes de la Chambre (règles, comités d'éthique, majorités) et par les enquêtes/révélations médiatiques et informations publiques q"
+  },
+  {
+   "question": "40862",
+   "titre": "Will Arizona Senator Mark Kelly, who urged troops to defy \"illegal\" orders, be recalled to active duty in the US military before April 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine"
+   ],
+   "pourquoi": "Parce que le rappel en service actif dépend des règles, autorités et décisions des institutions américaines (DoD, Navy, cadre légal et arbitrages politiques), qui déterminent qui peut être rappelé, et"
+  },
+  {
+   "question": "40865",
+   "titre": "Will Israel pass the Penal Bill (Death Penalty for Terrorists amendment) into law before April 2026?",
+   "issue": 1,
+   "fiches": [
+    "guerre-levant",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "L'issue dépend surtout du contexte sécuritaire au Levant (qui crée la pression politique pour ou contre la peine de mort et module la cohésion de la coalition) et du calendrier parlementaire/électoral"
+  },
+  {
+   "question": "40875",
+   "titre": "Will the number of manufacturing jobs in the US for February 2026 be above 12.7 million?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "economie-chinoise"
+   ],
+   "pourquoi": "L'évolution de l'emploi manufacturier américain dépend d'abord des décisions de politique économique et industrielle internes (demande, subventions, tarifs, fiscalité) et secondairement de la santé et"
+  },
+  {
+   "question": "40938",
+   "titre": "Will California Emissions Reporting Laws SB 253 and SB 261 Be In Effect on September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La mise en vigueur dépend surtout des décisions institutionnelles de l'État (adoption, règlements, éventuels recours juridiques) et du calendrier légal/réglementaire qui fixe les dates d'entrée en vig"
+  },
+  {
+   "question": "41090",
+   "titre": "Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
+   "issue": 0,
+   "fiches": [
+    "competitions-culture"
+   ],
+   "pourquoi": "Parce que la question porte sur le résultat d'un tournoi sportif : performances des équipes, tirage, forme, tactique et blessures — facteurs propres aux compétitions qui déterminent le vainqueur."
+  },
+  {
+   "question": "41206",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before July 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "crises-bancaires",
+    "sciences-techniques"
+   ],
+   "pourquoi": "L'issue dépend d'abord du climat des marchés financiers (valorisations, appétit des investisseurs et conditions de financement) et de la maturité commerciale et réglementaire des technologies d'Anthro"
+  },
+  {
+   "question": "41214",
+   "titre": "Will Bitcoin reach a new all-time high price before October 6, 2026?",
+   "issue": 0,
+   "fiches": [
+    "inflation-mondiale",
+    "crises-bancaires"
+   ],
+   "pourquoi": "Le chemin vers un nouveau sommet dépend d'abord de la liquidité et des taux réels déterminés par les banques centrales (inflation-mondiale) et de la confiance dans le système financier — les crises ba"
+  },
+  {
+   "question": "41316",
+   "titre": "Will the United States impose additional sanctions on Russia related to the Ukraine war before March 14, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "russie-ukraine"
+   ],
+   "pourquoi": "La mise en place de nouvelles sanctions dépend d’abord des décisions des institutions américaines (lois, exécutif, calcul politique) et des évolutions concrètes du conflit Russie–Ukraine qui déclenche"
+  },
+  {
+   "question": "41343",
+   "titre": "Will any NVIDIA GPUs better than the H200 be allowed to be exported to China before March 14, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "rivalite-sino-americaine"
+   ],
+   "pourquoi": "La permission d'exporter des GPU supérieurs au H200 dépend avant tout des décisions réglementaires et exécutives américaines (Commerce/BIS, sanctions, décrets) et de la rivalité stratégique sino‑améri"
+  },
+  {
+   "question": "41370",
+   "titre": "Will there be at least one podium sweep at the 2026 Winter Olympic Games?",
+   "issue": 1,
+   "fiches": [
+    "competitions-culture"
+   ],
+   "pourquoi": "La probabilité d’un balayage de podium est gouvernée par la dynamique sportive elle‑même — profondeur des équipes nationales, formats et règles de qualification, performances et conditions de compétit"
+  },
+  {
+   "question": "41480",
+   "titre": "Will the U.S. Supreme Court's decision in Louisiana v. Callais hold that race-conscious districting is unconstitutional?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine"
+   ],
+   "pourquoi": "Parce que la décision dépend des règles, de la composition et de la jurisprudence de la Cour suprême américaine — la façon dont les juges interprètent la Constitution et les précédents sur le recours "
+  },
+  {
+   "question": "41485",
+   "titre": "Will the United States intervene militarily in Venezuela again before May 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "elections-amerique-latine"
+   ],
+   "pourquoi": "La probabilité d'une intervention dépend d'abord des décisions institutionnelles et de la volonté politique américaines (exécutif, Congrès, coûts/risques), et ensuite des événements internes vénézuéli"
+  },
+  {
+   "question": "41489",
+   "titre": "Will Venezuela announce a presidential election before April 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "elections-amerique-latine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question est gouvernée d'une part par les logiques électorales et institutionnelles propres à l'Amérique latine (stratégie du régime, autorités électorales, pressions internes et externes) et d'aut"
+  },
+  {
+   "question": "41508",
+   "titre": "Will the Community beat Nathan Young in the Metaculus Cup Spring 2026?",
+   "issue": 0,
+   "fiches": [
+    "competitions-culture",
+    "observateur-mesure"
+   ],
+   "pourquoi": "Le résultat dépend d'une compétition de prévision (habileté relative, taille et coordination de la communauté) et des règles/métriques du tournoi qui mesurent qui «gagne». "
+  },
+  {
+   "question": "41512",
+   "titre": "Will the U.S. Congress still be operating under a continuing resolution (CR) on March 15, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La réponse dépend principalement des décisions institutionnelles et du jeu politique au Congrès (politique-americaine) et d'une échéance budgétaire précise qui fixe si un CR doit couvrir le 15 mars 20"
+  },
+  {
+   "question": "41514",
+   "titre": "Before May 1, 2026, will the United States offer to purchase Greenland from Denmark?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine"
+   ],
+   "pourquoi": "La probabilité qu’un tel achat soit proposé dépend d’abord des décisions politiques et diplomatiques américaines (exécutif, priorités géostratégiques et contraintes institutionnelles), donc l’issue es"
+  },
+  {
+   "question": "41595",
+   "titre": "Will the North Atlantic sea surface temperature reach a daily record high before May 2026?",
+   "issue": 0,
+   "fiches": [
+    "climat-extremes",
+    "oceans-et-fleuves"
+   ],
+   "pourquoi": "Parce que la survenue d'un record quotidien de température de surface de l'Atlantique Nord dépend surtout des dynamiques océaniques (stockage et transport de chaleur) et des anomalies climatiques/sais"
+  },
+  {
+   "question": "41804",
+   "titre": "Will Sudan's Emergency Response Rooms win the Nobel Peace Prize in 2026?",
+   "issue": 0,
+   "fiches": [
+    "competitions-culture",
+    "soudan"
+   ],
+   "pourquoi": "La décision revient d'abord aux logiques des prix et compétitions (comité de sélection, nominations, visibilité internationale) et dépend aussi du contexte soudanais (ampleur du conflit, impact et vis"
+  },
+  {
+   "question": "41805",
+   "titre": "Will Jonathan Ross be indicted or charged in the death of Renee Good before July 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "securite-publique"
+   ],
+   "pourquoi": "Parce que la question relève de l'enquête policière, de la collecte de preuves et des décisions du ministère public/du système pénal, c'est l'écosystème de la sécurité publique qui gouverne l'issue."
+  },
+  {
+   "question": "41861",
+   "titre": "Will Wagner Moura win the Academy Award for Best Actor at the 2026 Academy Awards?",
+   "issue": 0,
+   "fiches": [
+    "competitions-culture",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "Le gain d'un Oscar dépend avant tout des mécanismes des prix culturels (sélection, nominations, campagnes et préférences des votants) et du calendrier d'éligibilité qui détermine si la performance peu"
+  },
+  {
+   "question": "41869",
+   "titre": "Will Iran's Internet not be \"heavily filtered/whitelisted\" for most users before May 2026?",
+   "issue": 0,
+   "fiches": [
+    "information-cyber",
+    "humain"
+   ],
+   "pourquoi": "Parce que l'ouverture ou le filtrage massif de l'Internet iranien dépend d'abord des décisions de censure et des capacités de coupure/filtrage (information-cyber) et des choix politiques du régime fac"
+  },
+  {
+   "question": "42135",
+   "titre": "Will the UK increase the qualifying period for settlement to 10 years before May 2026?",
+   "issue": 0,
+   "fiches": [
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question se joue principalement sur le calendrier politique et législatif — échéances électorales, priorité gouvernementale et calendrier parlementaire — qui détermine si une modification peut être"
+  },
+  {
+   "question": "42139",
+   "titre": "Will Keiko Fujimori advance to the runoff in the 2026 Peruvian presidential election?",
+   "issue": 1,
+   "fiches": [
+    "elections-amerique-latine",
+    "humain"
+   ],
+   "pourquoi": "La question dépend des règles électorales, des dynamiques partisanes et institutionnelles au Pérou ainsi que des préférences et comportements des électeurs qui déterminent qui se qualifie pour le seco"
+  },
+  {
+   "question": "42274",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before April 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "sciences-techniques",
+    "observateur-mesure"
+   ],
+   "pourquoi": "La réalisation effective d'un score ≥95% dépend d'abord des progrès en recherche, architecture et disponibilité de calcul et de données (sciences-techniques), et ensuite de la façon dont le benchmark "
+  },
+  {
+   "question": "42284",
+   "titre": "Will Cloudflare experience another critical incident before May 2026?",
+   "issue": 1,
+   "fiches": [
+    "infrastructures-critiques",
+    "information-cyber"
+   ],
+   "pourquoi": "La survenue d’un incident critique chez Cloudflare dépend principalement de la tenue des infrastructures réseaux (centres, câbles, routage, interconnexions) et d’événements liés à l’information/cyber "
+  },
+  {
+   "question": "42430",
+   "titre": "Will there be a successful coup in Africa or Latin America before May 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "humain"
+   ],
+   "pourquoi": "La réussite d'un coup dépend surtout des décisions collectives — loyautés militaires, ruptures des élites et seuils d'action populaires — que couvre l'écosystème «humain»."
+  },
+  {
+   "question": "42480",
+   "titre": "Will Pam Bondi be out as US Attorney General before May 2026?",
+   "issue": 1,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question est gouvernée par les mécanismes politiques et institutionnels américains (nomination, confirmation, démission/limogeage) et par le calendrier électoral/administratif qui détermine si un d"
+  },
+  {
+   "question": "42485",
+   "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "fiches": [
+    "guerre-levant",
+    "politique-americaine"
+   ],
+   "pourquoi": "La probabilité qu'un État pétrolier comme l'Arabie saoudite attaque directement l'Iran est principalement déterminée par la dynamique régionale d'escalade et de représailles (acteurs, proxys, risques "
+  },
+  {
+   "question": "42489",
+   "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "fiches": [
+    "guerre-levant",
+    "politique-americaine"
+   ],
+   "pourquoi": "La probabilité qu’un Émirats attaque directement l’Iran dépend surtout de la dynamique régionale d’escalade entre l’Iran et ses rivaux (réactions, proxys, risques d’extension) et du positionnement/con"
+  },
+  {
+   "question": "42490",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "russie-ukraine",
+    "politique-americaine"
+   ],
+   "pourquoi": "La décision de se rencontrer dépend principalement des dynamiques, intérêts et contraintes de la guerre Russie–Ukraine et, en second lieu, des choix de politique étrangère américaine (soutien, sanctio"
+  },
+  {
+   "question": "42491",
+   "titre": "Will Anthropic be a designated supply chain risk on May 1, 2026?",
+   "issue": 1,
+   "fiches": [
+    "politique-americaine",
+    "information-cyber"
+   ],
+   "pourquoi": "Une telle désignation est d’abord une décision politique et réglementaire (processus gouvernementaux américains) motivée par des évaluations techniques de risque cyber/chaîne d’approvisionnement."
+  },
+  {
+   "question": "42540",
+   "titre": "Will a 1kt meteor strike take place during March or April 2026?",
+   "issue": 0,
+   "fiches": [
+    "soleil-espace"
+   ],
+   "pourquoi": "Parce que la survenue d'un impact météoritique de l'ordre du kiloton est gouvernée par les dynamiques des objets proches de la Terre et des phénomènes de l'espace proche, donc par l'écosystème 'soleil"
+  },
+  {
+   "question": "42542",
+   "titre": "Will the U.S. conduct a ground invasion of Iran before May 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "guerre-levant"
+   ],
+   "pourquoi": "La question est essentiellement déterminée par les mécanismes de décision politique et militaire aux États‑Unis (autorisation, coûts politiques, capacités) et par l'évolution du conflit régional avec "
+  },
+  {
+   "question": "42548",
+   "titre": "Will gas prices in the US reach a new all-time high before April 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "energie-mondiale",
+    "politique-americaine"
+   ],
+   "pourquoi": "La décision essentielle vient du marché mondial du pétrole (offre, OPEP+, conflits, capacités de raffinage et logistique) tandis que les décisions américaines (libérations de la réserve stratégique, s"
+  },
+  {
+   "question": "42630",
+   "titre": "Will Iran participate in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "fiches": [
+    "competitions-culture"
+   ],
+   "pourquoi": "La participation se décide d'abord par la qualification sportive (résultats des éliminatoires de l'AFC, barrages, choix de la fédération) — seuls des événements politiques ou des suspensions extraordi"
+  },
+  {
+   "question": "42729",
+   "titre": "Will shipping traffic through the Strait of Hormuz return to normal before April 27, 2026?",
+   "issue": 0,
+   "fiches": [
+    "ormuz",
+    "transport-maritime"
+   ],
+   "pourquoi": "La décision de trafic dépend d'abord des conditions de sécurité et des choix politiques qui ouvrent ou ferment le détroit d'Ormuz, et ensuite de la réaction opérationnelle des armateurs, assureurs et "
+  },
+  {
+   "question": "42741",
+   "titre": "Will total MLB regular-season attendance in 2026 exceed 72 million?",
+   "issue": 0,
+   "fiches": [
+    "competitions-culture",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La fréquentation totale dépend d'abord de l'attrait sportif et des comportements culturels des fans (performances d'équipes, promotions, concurrence des loisirs) et du calendrier/volume de matchs effe"
+  },
+  {
+   "question": "43091",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before June 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "sciences-techniques",
+    "observateur-mesure"
+   ],
+   "pourquoi": "Parce que l'issue dépend d'abord des progrès en recherche, architectures et puissance de calcul nécessaires pour atteindre de tels scores (sciences-techniques), et accessoirement de la façon dont le b"
+  },
+  {
+   "question": "43167",
+   "titre": "Will the U.S. Senate pass another budget reconciliation bill before July 4, 2026?",
+   "issue": 1,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question dépend d'abord des institutions, majorités et règles du Sénat (procédure de réconciliation, appuis politiques, arbitrages du leadership) et du calendrier politique/budgétaire (délais, éché"
+  },
+  {
+   "question": "43171",
+   "titre": "Will Neymar be called up for Brazil in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "fiches": [
+    "competitions-culture",
+    "humain"
+   ],
+   "pourquoi": "La convocation dépend d'abord de logiques sportives et compétitives (forme, rendement, santé, besoins tactiques) et des décisions humaines du sélectionneur et des dirigeants."
+  },
+  {
+   "question": "43257",
+   "titre": "Will the CBOE Volatility Index (VIX) close above 30 on more than 5 trading days between April 20, 2026 and May 31, 2026?",
+   "issue": 0,
+   "fiches": [
+    "crises-bancaires",
+    "information-cyber"
+   ],
+   "pourquoi": "Le VIX reflète la peur et l'incertitude des marchés, surtout déclenchées par des tensions financières ou des crises (crises-bancaires) et amplifiées/propulsées par la diffusion d'informations, rumeurs"
+  },
+  {
+   "question": "43259",
+   "titre": "Will the United States and Iran hold another face-to-face diplomatic meeting before June 6, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "iran-nucleaire"
+   ],
+   "pourquoi": "La tenue d'une rencontre directe dépend d'abord des choix et contraintes politiques américains (autorisation, coûts politiques, sanctions) et du statut des négociations sur le programme nucléaire iran"
+  },
+  {
+   "question": "43283",
+   "titre": "Will Waymo have a service area of 1,200 square miles before July 1, 2026?",
+   "issue": 1,
+   "fiches": [
+    "sciences-techniques",
+    "politique-americaine"
+   ],
+   "pourquoi": "La décision dépend surtout de la capacité technique et commerciale de Waymo à déployer et exploiter à grande échelle (cartographie, logiciels, flottes, opérations) et des autorisations et décisions ré"
+  },
+  {
+   "question": "43333",
+   "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "energie-mondiale",
+    "politique-americaine"
+   ],
+   "pourquoi": "La sortie d'un pays d'OPEC/OPEC+ est d'abord gouvernée par les logiques du marché pétrolier mondial (prix, quotas, revenus, coordination entre producteurs) et secondairement par des pressions/décision"
+  },
+  {
+   "question": "43343",
+   "titre": "Will any host nation (USA, Mexico or Canada) reach the semifinals of the 2026 World Cup?",
+   "issue": 0,
+   "fiches": [
+    "competitions-culture",
+    "humain"
+   ],
+   "pourquoi": "La question est déterminée par la dynamique sportive — format du tournoi, niveau des équipes, forme, blessures et avantage du pays hôte — et par des décisions et performances humaines (sélections, tac"
+  },
+  {
+   "question": "43355",
+   "titre": "Will Iran and U.S play against each other in the 2026 FIFA World Cup?",
+   "issue": 0,
+   "fiches": [
+    "competitions-culture"
+   ],
+   "pourquoi": "La rencontre dépend des règles sportives : qualification des équipes, tirage au sort et calendrier du tournoi — autant de mécanismes propres aux compétitions sportives."
+  },
+  {
+   "question": "43360",
+   "titre": "Will the UK National Threat Level reduce from SEVERE before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "securite-publique"
+   ],
+   "pourquoi": "La variation du niveau de menace national dépend essentiellement des évaluations des services de sécurité, de l'activité terroriste et des alertes policières, donc des règles de l'écosystème 'securite"
+  },
+  {
+   "question": "43435",
+   "titre": "Will Pope Leo XIV visit another country other than Spain before September 2026?",
+   "issue": 1,
+   "fiches": [
+    "calendriers-echeances",
+    "humain"
+   ],
+   "pourquoi": "La question se décide par le calendrier et les échéances (planning, événements officiels) et par des facteurs humains qui gouvernent la décision de voyager (santé, volonté, logistique et priorités dip"
+  },
+  {
+   "question": "43437",
+   "titre": "Will there be a successful coup in Africa or Latin America before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "humain",
+    "securite-publique"
+   ],
+   "pourquoi": "Un coup d'État se joue principalement sur les décisions, seuils et coalitions humaines (militaires, élites, mobilisations populaires) et sur la capacité/loyauté des forces de sécurité à exécuter ou em"
+  },
+  {
+   "question": "43452",
+   "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "russie-ukraine"
+   ],
+   "pourquoi": "La rencontre dépend avant tout de décisions politiques et institutionnelles — côté américain (coûts politiques, réactions, contraintes juridiques/institutionnelles) — et de la décision stratégique rus"
+  },
+  {
+   "question": "43461",
+   "titre": "Will at least 5 non-passengers be linked to the MV Hondius hantavirus outbreak before August 2026?",
+   "issue": 0,
+   "fiches": [
+    "epidemies"
+   ],
+   "pourquoi": "Parce que la question dépend des dynamiques de transmission, des enquêtes épidémiologiques, du traçage des contacts et de la surveillance sanitaire (diagnostic et déclaration) qui déterminent si des n"
+  },
+  {
+   "question": "43479",
+   "titre": "Will Claude Mythos or a similar model be publicly released before September 2026?",
+   "issue": 1,
+   "fiches": [
+    "sciences-techniques",
+    "politique-americaine"
+   ],
+   "pourquoi": "La sortie publique d'un modèle dépend d'abord de l'avancement technique, des choix de publication et des normes de sécurité des laboratoires (sciences-techniques) et peut être déterminée ou bloquée pa"
+  },
+  {
+   "question": "43491",
+   "titre": "Will a new High Representative for Bosnia and Herzegovina officially be in place before September 2, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "securite-europeenne"
+   ],
+   "pourquoi": "La nomination d'un nouveau Haut Représentant dépend d'accords politiques entre puissances occidentales et organes internationaux : la position américaine et la cohésion/volonté des institutions europé"
+  },
+  {
+   "question": "43494",
+   "titre": "Will any U.S. state or EU member state restrict large-scale data center grid connections before September 2026?",
+   "issue": 1,
+   "fiches": [
+    "infrastructures-critiques",
+    "politique-americaine"
+   ],
+   "pourquoi": "L'issue dépend d'abord des capacités, règles et décisions des réseaux électriques et de leurs régulateurs (qui peuvent restreindre les connexions) et, pour les États‑Unis en particulier, des décisions"
+  },
+  {
+   "question": "43496",
+   "titre": "Will Haiti hold the first round of its presidential election before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "elections-amerique-latine",
+    "securite-publique"
+   ],
+   "pourquoi": "La question dépend surtout des mécanismes électoraux et institutionnels (calendrier, commission, légalité) et de la sécurité sur le terrain (contrôle des zones par des gangs, capacité à organiser des "
+  },
+  {
+   "question": "43501",
+   "titre": "Will Instructure be subject to another major hack before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "information-cyber"
+   ],
+   "pourquoi": "Parce que la probabilité qu'Instructure subisse un nouveau piratage majeur est déterminée principalement par les vulnérabilités techniques, les capacités et motivations des attaquants et la posture de"
+  },
+  {
+   "question": "43502",
+   "titre": "Will Bitcoin trade above $120,000 before August 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "inflation-mondiale",
+    "politique-americaine"
+   ],
+   "pourquoi": "Le prix dépend d'abord de la politique monétaire et des attentes d'inflation (qui déterminent la liquidité et les flux vers les actifs risqués) et des décisions réglementaires américaines qui ouvrent "
+  },
+  {
+   "question": "43505",
+   "titre": "Will the Senate of the Philippines remove Vice President Sara Duterte from office before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "humain",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "L'issue dépend d'abord des décisions humaines — motivations, alliances et pressions qui poussent les sénateurs à engager ou non une procédure et à voter pour une destitution — et du calendrier politiq"
+  },
+  {
+   "question": "43525",
+   "titre": "Will OpenAI's ChatGPT Atlas browser be released for Windows before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "sciences-techniques"
+   ],
+   "pourquoi": "La sortie dépend avant tout du développement, des tests, de l'intégration et des décisions produit/techniques (compatibilité Windows et calendrier de lancement), donc l'écosystème des sciences et tech"
+  },
+  {
+   "question": "43527",
+   "titre": "Will federal courts block the USPS mail-in ballot restrictions before Election Day?",
+   "issue": 1,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question dépend des décisions des tribunaux fédéraux (institutions, jurisprudence, injonctions) et du calendrier procédural et judiciaire (délais d'audience, d'appel et d'exécution) qui détermine s"
+  },
+  {
+   "question": "43615",
+   "titre": "Will Shakira's \"Dai Dai\" outpeak Shakira's \"Waka Waka\" on the Billboard Hot 100?",
+   "issue": 1,
+   "fiches": [
+    "competitions-culture",
+    "information-cyber"
+   ],
+   "pourquoi": "La position au Billboard dépend des règles de compétition culturelle (ventes, streams, airplay, promotion) et des dynamiques d'information/viralité sur les plateformes et médias qui déterminent l'audi"
+  },
+  {
+   "question": "43637",
+   "titre": "Will the 2026 Alberta independence referendum pass?",
+   "issue": 0,
+   "fiches": [
+    "humain",
+    "information-cyber"
+   ],
+   "pourquoi": "Le résultat dépend avant tout des choix et de la mobilisation des électeurs (identité, préférences, niveaux de participation) et de la manière dont l'information, les médias et la désinformation façon"
+  },
+  {
+   "question": "43688",
+   "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
+   "issue": 0,
+   "fiches": [
+    "inflation-mondiale",
+    "crises-bancaires"
+   ],
+   "pourquoi": "La Fed décidera surtout en fonction de l'évolution de l'inflation et du marché du travail (réponse des banques centrales aux prix) et de la stabilité financière — une crise bancaire réduirait fortemen"
+  },
+  {
+   "question": "43703",
+   "titre": "Will a hurricane make landfall in the continental United States before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "climat-extremes",
+    "oceans-et-fleuves"
+   ],
+   "pourquoi": "La survenue et la trajectoire d’un ouragan dépendent des conditions climatiques saisonnières (circulation atmosphérique, instabilités) et des états océaniques (températures de surface, chaleur stockée"
+  },
+  {
+   "question": "43707",
+   "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "rivalite-sino-americaine",
+    "politique-americaine"
+   ],
+   "pourquoi": "La probabilité d’un blocus ou d’une quarantaine est dictée par la dynamique stratégique sino‑américaine (posture militaire, alliances, coûts et escalade) et par les décisions institutionnelles américa"
+  },
+  {
+   "question": "43708",
+   "titre": "Will Starlink's website show South Africa as a country with Starlink availability before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "sciences-techniques",
+    "politique-americaine"
+   ],
+   "pourquoi": "La mise en service et l'affichage d'un pays sur le site dépendent surtout de la capacité technique et du déploiement de la constellation (sciences-techniques) et des autorisations/règles et décisions "
+  },
+  {
+   "question": "43822",
+   "titre": "Will Iceland vote Yes in the 2026 EU negotiations referendum?",
+   "issue": 0,
+   "fiches": [
+    "humain",
+    "information-cyber"
+   ],
+   "pourquoi": "Le oui ou non dépend surtout des motivations et croyances des électeurs islandais (économie, souveraineté, pêche, confiance politique) et de l’environnement informationnel — campagnes, médias et récit"
+  },
+  {
+   "question": "43824",
+   "titre": "Will the Brookmont Catastrophic Bond ETF drop at least $0.25 within two days before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "climat-extremes",
+    "crises-bancaires"
+   ],
+   "pourquoi": "Parce que le cours d'un ETF de catastrophe dépend essentiellement des événements climatiques extrêmes qui peuvent déclencher des pertes sur les cat bonds, et des mouvements/risques financiers (reprici"
+  },
+  {
+   "question": "43841",
+   "titre": "Will OpenAI publicly file an initial registration statement (S-1) with the SEC to launch an IPO, before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "crises-bancaires",
+    "politique-americaine"
+   ],
+   "pourquoi": "Le dépôt d'un S‑1 dépend principalement de la fenêtre des marchés financiers et de l'appétit des investisseurs (conditions de marché, valorisation, risque systémique) ainsi que des décisions et contra"
+  },
+  {
+   "question": "43844",
+   "titre": "Will Hakainde Hichilema receive at least 65% of the vote in the first round of Zambia's 2026 presidential election?",
+   "issue": 0,
+   "fiches": [
+    "humain",
+    "information-cyber"
+   ],
+   "pourquoi": "Le score dépend surtout du comportement des électeurs (préférences, mobilisation, fragmentation de l'opposition, perception de la performance du président) et de l'environnement informationnel (récits"
+  },
+  {
+   "question": "43853",
+   "titre": "Will former U.S. Representative George Santos be arrested before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "securite-publique",
+    "politique-americaine"
+   ],
+   "pourquoi": "La question dépend avant tout des décisions des forces de l'ordre et du système judiciaire (enquête, inculpation, mandat d'arrêt) et secondairement du contexte politique et des choix des autorités féd"
+  },
+  {
+   "question": "43881",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "russie-ukraine",
+    "politique-americaine"
+   ],
+   "pourquoi": "La possibilité d'une rencontre dépend d'abord de l'évolution du conflit Russie–Ukraine (cessation des hostilités, conditions de sécurité et volonté de négocier) et des choix diplomatiques et de levier"
+  },
+  {
+   "question": "43911",
+   "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "rivalite-sino-americaine"
+   ],
+   "pourquoi": "Parce que la conclusion dépendra d'abord des décisions institutionnelles américaines (négociations, approbation du Congrès, politique commerciale) et du contexte géopolitique sino‑américain qui pousse"
+  },
+  {
+   "question": "43984",
+   "titre": "Will the Liberal Party officially nominate Flávio Bolsonaro as its candidate for president of Brazil before August 15, 2026?",
+   "issue": 1,
+   "fiches": [
+    "elections-amerique-latine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La nomination dépend d'abord des dynamiques et règles électorales et partisanes au Brésil (élections en Amérique latine) et du calendrier procédural et des échéances internes qui déterminent si elle p"
+  },
+  {
+   "question": "43985",
+   "titre": "Before September 1, 2026, will Turkish President Recep Tayyip Erdoğan be legally permitted to run for another term?",
+   "issue": 0,
+   "fiches": [],
+   "pourquoi": "La question dépend du droit et des institutions turques (constitution, lois électorales, décisions judiciaires et de l'administration électorale), qui ne sont couverts par aucun des écosystèmes listés"
+  },
+  {
+   "question": "43986",
+   "titre": "Will Ukraine announce a presidential election before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "calendriers-echeances",
+    "russie-ukraine"
+   ],
+   "pourquoi": "La décision d'annoncer une élection dépend surtout des contraintes calendaires et juridiques (délais, procédures) et, de manière cruciale, de l'évolution de la guerre Russie–Ukraine qui conditionne la"
+  },
+  {
+   "question": "43987",
+   "titre": "Will the United States provide written notices of withdrawal from the USMCA before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question dépend avant tout des choix institutionnels et politiques américains (pouvoir exécutif, calculs partisans, contraintes légales) et du calendrier électoral et des échéances qui structurent "
+  },
+  {
+   "question": "43991",
+   "titre": "On July 8, 2026, will Marine Le Pen be ineligible to run in the 2027 French presidential election?",
+   "issue": 0,
+   "fiches": [
+    "securite-publique",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "L'inéligibilité dépend principalement de décisions judiciaires ou de sanctions (mécanismes de sécurité publique) et du calendrier des procédures et d'éventuels appels qui détermine si ces décisions so"
+  },
+  {
+   "question": "43992",
+   "titre": "Will July 2026 be the warmest July on record, according to Copernicus?",
+   "issue": 0,
+   "fiches": [
+    "climat-extremes",
+    "observateur-mesure"
+   ],
+   "pourquoi": "Ce sera d'abord la physique du climat (température atmosphérique et océanique, vagues de chaleur, phénomena comme ENSO) qui déterminera si juillet 2026 est objectivement le plus chaud, et ensuite les "
+  },
+  {
+   "question": "44117",
+   "titre": "Will James M. McDonald be sworn in as US Attorney for the Southern District of New York before August 22, 2026?",
+   "issue": 1,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "Le fait qu'il soit assermenté dépend des mécanismes politiques et institutionnels américains (nomination par l'exécutif, enquêtes administratives, vote/agenda du Sénat pour la confirmation) et du cale"
+  },
+  {
+   "question": "44193",
+   "titre": "Will North Korea conduct a nuclear test before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "humain"
+   ],
+   "pourquoi": "C’est avant tout la décision politique et stratégique du leadership nord‑coréen — motivations, perceptions de menace, besoin de signaler des capacités et l’état de préparation technique — qui détermin"
+  },
+  {
+   "question": "44230",
+   "titre": "Will the IAEA conduct an on-site inspection at any of Iran's Natanz, Fordow, or Isfahan nuclear sites before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "iran-nucleaire",
+    "non-proliferation"
+   ],
+   "pourquoi": "La tenue d'une inspection sur site dépend surtout des négociations et du comportement du programme nucléaire iranien (accès, accords, incitations/punitions) et des règles et décisions du régime intern"
+  },
+  {
+   "question": "44239",
+   "titre": "Will Elon Musk be a trillionaire on August 31, 2026?",
+   "issue": 0,
+   "fiches": [
+    "crises-bancaires",
+    "inflation-mondiale"
+   ],
+   "pourquoi": "La probabilité qu'Elon Musk dépasse 1 000 milliards $ d'ici le 31/08/2026 dépend surtout des valorisations boursières et privées (Tesla, SpaceX, etc.) et de l'appétit pour le risque, gouvernés par la "
+  },
+  {
+   "question": "44241",
+   "titre": "Will the Lincoln Memorial Reflecting Pool be fully repaired before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "infrastructures-critiques",
+    "politique-americaine"
+   ],
+   "pourquoi": "La date de réparation dépend principalement des décisions de financement, d'attribution et d'exécution des travaux (infrastructures critiques) et des choix, priorités et calendriers des autorités fédé"
+  },
+  {
+   "question": "44244",
+   "titre": "Will another company get dropped from the Dow Jones Industrial Average in July or August 2026?",
+   "issue": 0,
+   "fiches": [
+    "crises-bancaires",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "Les sorties du Dow sont dictées par des événements d'entreprise et financiers (faillites, fusions, dé-listings) relevant des mécanismes de crise/finance, et par le calendrier et les fenêtres où le com"
+  },
+  {
+   "question": "44247",
+   "titre": "Will Virgin Galactic have a \"Going Concern\" substantial doubt statement in its 10-Q SEC filing for Q2 2026?",
+   "issue": 1,
+   "fiches": [
+    "crises-bancaires",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La présence d'une mention de doute sur la continuité d'exploitation dépend d'abord de la situation financière, des liquidités et de l'appréciation comptable/auditeur de Virgin Galactic (crises-bancair"
+  },
+  {
+   "question": "44395",
+   "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "humain",
+    "politique-americaine"
+   ],
+   "pourquoi": "La retraite d'un juge relève d'abord de facteurs personnels (santé, âge, stratégie individuelle) et de calculs liés au contexte politique américain (contrôle présidentielle/Sénat et fenêtre de confirm"
+  },
+  {
+   "question": "44406",
+   "titre": "Will Vladimir Putin visit Iran before September 1, 2026?",
+   "issue": 0,
+   "fiches": [
+    "russie-ukraine",
+    "iran-nucleaire"
+   ],
+   "pourquoi": "La tenue d'une visite de Poutine en Iran dépend surtout de la contrainte opérationnelle et politique imposée par la guerre en Ukraine (disponibilité, sécurité et priorités) et des objectifs diplomatiq"
+  },
+  {
+   "question": "44414",
+   "titre": "Will a Tucker Carlson-founded political party file FEC Form 1 before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La question dépend des règles et décisions des institutions politiques américaines (FEC, seuils de financement, stratégie de création de parti) et du calendrier électoral/échéances qui fixe les moment"
+  },
+  {
+   "question": "44448",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "sciences-techniques",
+    "crises-bancaires"
+   ],
+   "pourquoi": "La décision d'Anthropic d'enregistrer un S-1 repose d'abord sur son avancement technologique, sa maturité produit et les enjeux de sécurité/régulation (sciences-techniques), et sur l'appétit et les co"
+  },
+  {
+   "question": "44512",
+   "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "calendriers-echeances",
+    "humain"
+   ],
+   "pourquoi": "La démission dépend essentiellement du calendrier électoral (échéance nationale attendue en 2025) et des choix/actions des acteurs politiques et sociaux (mobilisations, alliances, décisions internes d"
+  },
+  {
+   "question": "44513",
+   "titre": "Will Donald Trump and Vladimir Putin speak on the phone in August 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "russie-ukraine"
+   ],
+   "pourquoi": "La tenue d’un échange dépend surtout des choix et du statut politiques (rôle de Trump, canaux officiels et calculs américains) et du contexte stratégique de la guerre Russie–Ukraine qui conditionne l’"
+  },
+  {
+   "question": "44544",
+   "titre": "Will Thomas Massie file to run for any elective office before August 25, 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "calendriers-echeances"
+   ],
+   "pourquoi": "La décision de Massie dépend d'abord des mécanismes et incitations de la politique américaine (stratégie, primaire, finance, concurrence pour un siège) et des contraintes du calendrier électoral et de"
+  },
+  {
+   "question": "44547",
+   "titre": "Will Mitch McConnell cast a roll-call vote in the U.S. Senate before September 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "humain"
+   ],
+   "pourquoi": "La réponse dépend des règles, procédures et de l'agenda du Sénat (quand et comment ont lieu des roll-call votes) et surtout de la santé, de la disponibilité et des choix personnels de Mitch McConnell "
+  },
+  {
+   "question": "44693",
+   "titre": "Will the desktop market share of Linux exceed 8% in August 2026?",
+   "issue": 1,
+   "fiches": [
+    "sciences-techniques"
+   ],
+   "pourquoi": "La part de marché desktop de Linux dépend essentiellement des lancements et offres produits, du support matériel/drivers, de l'adoption par les éditeurs et des progrès techniques (jeux, compatibilité)"
+  },
+  {
+   "question": "44799",
+   "titre": "Will a bot finish in the top 5 of the Summer 2026 Metaculus Cup?",
+   "issue": 1,
+   "fiches": [
+    "competitions-culture",
+    "sciences-techniques"
+   ],
+   "pourquoi": "Parce que la question est gouvernée d'une part par les règles et mécanismes du tournoi (scoring, classement, échéances) et d'autre part par les capacités techniques des bots (algorithmes, accès aux do"
+  },
+  {
+   "question": "44919",
+   "titre": "Will the United States launch an attack against JNIM in Mali during August 2026?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine"
+   ],
+   "pourquoi": "La question est décidée par les institutions et mécanismes américains (Maison‑Blanche, Pentagone, cadre légal et calcul politique — autorisations, risques, priorités et coalitions régionales) qui déte"
+  },
+  {
+   "question": "44925",
+   "titre": "Will the Royal Mail raise prices on any letters or parcels before September 10, 2026?",
+   "issue": 1,
+   "fiches": [
+    "calendriers-echeances",
+    "inflation-mondiale"
+   ],
+   "pourquoi": "La possibilité d'une hausse avant le 10/09/2026 dépend surtout du calendrier réglementaire (revues tarifaires, dates d'application et approbations) et de la pression des coûts liée à l'inflation qui p"
+  },
+  {
+   "question": "44986",
+   "titre": "Will the U.S. government's 30-year treasury bond remain in the  ≥5% \"danger zone\" for the entire month of August 2026?",
+   "issue": 1,
+   "fiches": [
+    "inflation-mondiale",
+    "politique-americaine"
+   ],
+   "pourquoi": "Le niveau du rendement long des Treasuries est principalement gouverné par les anticipations d'inflation et la politique monétaire (inflation-mondiale) ainsi que par les choix fiscaux, l'offre de dett"
+  },
+  {
+   "question": "45015",
+   "titre": "Will Italy's Schengen suspension against Spain be lifted before August 30, 2026?",
+   "issue": 0,
+   "fiches": [
+    "migrations-demographie",
+    "securite-publique"
+   ],
+   "pourquoi": "La décision de lever une suspension Schengen dépend essentiellement des flux migratoires, des pressions aux frontières et de l'évaluation politique de la sécurité publique que le gouvernement italien "
+  },
+  {
+   "question": "8393",
+   "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
+   "issue": 0,
+   "fiches": [
+    "politique-americaine",
+    "russie-ukraine"
+   ],
+   "pourquoi": "La décision dépend principalement d'arbitrages politico-institutionnels (États‑Unis) et du calcul stratégique russe — fortement conditionné par la guerre Russie–Ukraine — qui déterminent s'ils accepte"
+  }
+ ]
+}
