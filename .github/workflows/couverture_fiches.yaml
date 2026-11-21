@@ -52,7 +52,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/couverture-fiches-banc-m.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
+          for f in registre/couverture-fiches-banc-m-v2.json; do if [ -e "$f" ]; then git add "$f"; fi; done   # 0.10.126 : un fichier absent ne bloque plus les autres
           if ! git diff --cached --quiet; then
             git commit -m "registre : couverture des fiches du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase
