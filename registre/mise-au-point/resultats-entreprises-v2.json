@@ -224,7 +224,7 @@
   }
  },
  "descriptif_v2_anciennes": {
-  "n": 1054,
+  "n": 1055,
   "couverture_80": 0.776,
   "couverture_60": 0.6,
   "entreprises": {
@@ -304,9 +304,9 @@
     "couverture_60": 0.625
    },
    "HD": {
-    "n": 21,
-    "couverture_80": 0.762,
-    "couverture_60": 0.571
+    "n": 22,
+    "couverture_80": 0.773,
+    "couverture_60": 0.591
    },
    "IBM": {
     "n": 54,
