@@ -1,0 +1,45 @@
+name: "Test de lecture : pages de sondages de tous les pays à élections (mise en forme seulement)"
+
+# 2026-11-21 : décision de l'auteur (18 h 02) ; aucune issue, aucun modèle ; API Wikimedia anonyme, une requête
+# toutes les 7,5 s ; deux lots pour rester sous la limite horaire.
+on:
+  workflow_dispatch:
+    inputs:
+      lot:
+        description: "Lot de pays (1 ou 2)"
+        required: true
+        default: "1"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  formats_sondages_pays:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Lancer
+        run: uv run python mise_au_point/formats_sondages_pays.py ${{ github.event.inputs.lot }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/mise-au-point/formats-sondages-pays-lot*.json registre/mise-au-point/formats-sondages-pays-lot*.md; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : formats des sondages par pays du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase || (sleep 20 && git pull --rebase)
+            git push || (sleep 20 && git pull --rebase && git push)
+          fi
