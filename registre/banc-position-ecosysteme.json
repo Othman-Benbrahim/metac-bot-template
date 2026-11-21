@@ -1,0 +1,36 @@
+{
+  "version_bot": "0.10.410",
+  "n": 128,
+  "note": "perte log, plus bas = mieux ; une ligne par question",
+  "B": 0.6826,
+  "M0": 0.5911,
+  "M1": 0.588,
+  "M2": 0.6016,
+  "M1_moins_M0": -0.0031,
+  "intervalle_90_M1_M0": [
+    -0.0299,
+    0.019
+  ],
+  "M1_moins_M2": -0.0137,
+  "intervalle_90_M1_M2": [
+    -0.0441,
+    0.0136
+  ],
+  "M2_moins_M0": 0.0106,
+  "intervalle_90_M2_M0": [
+    -0.0034,
+    0.026
+  ],
+  "puissance": {
+    "n": 128,
+    "sigma_par_question": 0.1721,
+    "ecart_detectable": 0.0378,
+    "questions_necessaires": {
+      "0.005": 7322,
+      "0.01": 1831,
+      "0.02": 458,
+      "0.04": 115
+    }
+  },
+  "adopte": false
+}
