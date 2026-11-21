@@ -983,3 +983,38 @@ regles:
     sources:
       - {titre: "Wikipedia, List of Russia–United States summits", url: "https://en.wikipedia.org/wiki/List_of_Russia%E2%80%93United_States_summits", consulte: "2026-11-21"}
     statut: source
+
+  # 2026-11-21, 18 h 30 (décision de l'auteur, 18 h 10-18 h 26) : seuils agroclimatiques de l'écosystème « alimentation
+  # mondiale ». Chiffres relus dans les sources ; mesure par la collecte ERA5-Land (collecte_agro.py), en anomalie.
+  - id: seuil_chaleur_mais_soja_coton
+    ecosysteme: "Agriculture · rendements du maïs, du soja et du coton face à la chaleur"
+    espace: amerique_du_nord
+    echelle: {axe: temps, tranche: "saison de culture"}
+    structure: seuil
+    objet: "rendement d'une récolte de maïs, de soja ou de coton aux États-Unis selon les températures de la saison"
+    situation: "saison de culture en cours (mars-août pour le maïs et le soja, avril-octobre pour le coton) avec des journées chaudes"
+    perimetre: ["États-Unis"]
+    compartiments: [alimentation-mondiale:cultures, alimentation-mondiale:climat]
+    regle: "Sur les comtés américains de 1950 à 2005, le rendement croît à peu près linéairement avec la température jusqu'à un seuil critique, puis décroît nettement plus vite qu'il ne croissait : 29 °C pour le maïs, 30 °C pour le soja, 32 °C pour le coton. Pour le maïs, remplacer une journée entière à 29 °C par une journée entière à 40 °C réduit le rendement prévu d'environ 7 % ; sur le marché à terme, une journée à 40 °C au lieu de 29 °C fait monter le prix à terme d'environ 4,4 %. Le compte se fait en temps passé au-dessus du seuil pendant la saison, pas en moyenne de saison."
+    parametres: {seuil_mais: 29, seuil_soja: 30, seuil_coton: 32, perte_mais_journee_40_au_lieu_de_29: 0.07, prix_a_terme_journee_40: 0.044, comtes_annees: "1950-2005"}
+    sources:
+      - {titre: "Schlenker et Roberts, Estimating the Impact of Climate Change on Crop Yields: The Importance of Nonlinear Temperature Effects, NBER Working Paper 13799, 2008", url: "https://www.nber.org/papers/w13799", consulte: "2026-11-21"}
+      - {titre: "Schlenker et Roberts, Nonlinear temperature effects indicate severe damages to U.S. crop yields under climate change, PNAS 106(37), 2009", url: "https://www.pnas.org/doi/10.1073/pnas.0906865106", consulte: "2026-11-21"}
+    statut: source
+
+  - id: seuil_chaleur_ble
+    ecosysteme: "Agriculture · rendement du blé face à la chaleur"
+    espace: monde
+    echelle: {axe: temps, tranche: "saison de culture"}
+    structure: seuil
+    objet: "rendement d'une récolte de blé selon les températures maximales de la saison"
+    situation: "blé en fin de cycle (floraison, remplissage du grain) exposé à des maxima élevés"
+    perimetre: [monde]
+    compartiments: [alimentation-mondiale:cultures, alimentation-mondiale:climat]
+    regle: "Une température maximale du jour au-dessus de 34 °C est le seuil critique du blé : au-delà, la plante vieillit plus vite (sénescence accélérée), la saison raccourcit, les grains sont moins nombreux et plus petits. Dans les plaines indo-gangétiques (neuf ans de mesures satellitaires), 2 °C de plus raccourcissent la saison d'environ neuf jours et réduisent le rendement d'environ 20 %. À l'échelle mondiale, la production de blé baisse d'environ 6 % par degré de réchauffement de la température moyenne (intervalle à 50 % : 4,2 à 8,2 %) ; une température moyenne de saison au-dessus de 28 °C empêche la floraison ou la formation du grain."
+    parametres: {tmax_critique: 34, perte_par_degre_mondiale: 0.06, intervalle_50: [0.042, 0.082], inde_2_degres_jours: -9, inde_2_degres_rendement: -0.20, tmoy_saison_echec: 28}
+    sources:
+      - {titre: "Asseng et al., Rising temperatures reduce global wheat production, Nature Climate Change 5, 2015", url: "https://www.nature.com/articles/nclimate2470", consulte: "2026-11-21"}
+      - {titre: "Lobell, Sibley et Ortiz-Monasterio, Extreme heat effects on wheat senescence in India, Nature Climate Change 2, 2012", url: "https://www.doi.org/10.1038/NCLIMATE1356", consulte: "2026-11-21"}
+      - {titre: "Stanford FSI, Extreme heat shortens wheat growing season, reduces yield (29 janvier 2012)", url: "https://fsi.stanford.edu/node/17355", consulte: "2026-11-21"}
+    statut: source
