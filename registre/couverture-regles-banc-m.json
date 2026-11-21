@@ -1,0 +1,1510 @@
+{
+ "version_bot": "0.10.410",
+ "version_selection": 3,
+ "regles_au_catalogue": 40,
+ "questions": 119,
+ "couvertes": 65,
+ "identifiants_inventes": 3,
+ "par_regle": {
+  "chefs_d_etat_sortie_irreguliere": 20,
+  "calendriers_annonces_glissent": 19,
+  "regimes_fermes_contestation": 13,
+  "effet_d_echeance_negociation": 9,
+  "us_fed_calendrier": 8,
+  "us_sanctions_frequence": 8,
+  "us_senat_cloture": 8,
+  "us_lois_de_finances_provisoires": 6,
+  "onu_conseil_securite_vote": 5,
+  "coups_d_etat_frequence": 5,
+  "presidentielles_mode_de_scrutin": 4,
+  "us_confirmations_delais": 4,
+  "sondages_erreur_comparee": 4,
+  "us_cour_supreme_calendrier": 3,
+  "usmca_revision_conjointe": 2,
+  "seuils_parlements_nationaux_europe": 2,
+  "us_reconciliation_budgetaire": 2,
+  "afrique_limites_de_mandat": 2,
+  "referendums_retour_statu_quo": 2,
+  "second_tour_retournement": 1,
+  "us_chambre_sanctions_disciplinaires": 1,
+  "us_president_college": 1,
+  "us_erreur_selon_temps_restant": 1,
+  "coree_du_nord_essais_nucleaires": 1
+ },
+ "detail": [
+  {
+   "question": "22310",
+   "titre": "Will President Luiz Inacio Lula da Silva be reelected as Brazil's president in October of 2026?",
+   "issue": 1,
+   "regles": [
+    "presidentielles_mode_de_scrutin",
+    "second_tour_retournement",
+    "chefs_d_etat_sortie_irreguliere"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "presidentielles_mode_de_scrutin : Le Brésil utilise un scrutin présidentiel à deux tours, donc la réélection peut dépendre d'un second tour organisé lors du même calendrier électoral (ce qui change la procédure et les dates attendues). second_tour_retournement : Les données historiques (70,7 % de victoire du premier du premier tour) modulent la probabilité de réélection selon la position de Lula a"
+  },
+  {
+   "question": "24819",
+   "titre": "Will the USMCA be extended promptly at its July 2026 joint review?",
+   "issue": 0,
+   "regles": [
+    "usmca_revision_conjointe",
+    "effet_d_echeance_negociation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:commerce"
+   ],
+   "pourquoi": "usmca_revision_conjointe: La procédure écrite prévue à la révision conjointe du sixième anniversaire détermine formellement si et quand le terme repart pour seize ans ou si la révision devient annuelle, donc elle gouverne directement la possibilité et le calendrier d'une prolongation en juillet 2026. effet_d_echeance_negociation: L'effet d'échéance rend statistiquement plus probable qu'une décisio"
+  },
+  {
+   "question": "36871",
+   "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_fed_calendrier",
+    "us_sanctions_frequence"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:banques_centrales",
+    "politique-americaine:reserve_federale",
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "us_fed_calendrier : les décisions de taux influent fortement sur la liquidité et l'appétit pour le risque et se prennent lors de réunions programmées ; pour une probabilité « avant le 30 juin 2026 » il faut regarder les réunions programmées dans cette fenêtre car elles gouvernent le calendrier des possibles changements de politique monétaire. us_sanctions_frequence : les inscriptions OFAC sont nom"
+  },
+  {
+   "question": "37307",
+   "titre": "Will  an attempt be made to fire Jerome Powell before the end of his term?",
+   "issue": 0,
+   "regles": [
+    "us_senat_cloture",
+    "us_confirmations_delais"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "politique-americaine:congres",
+    "politique-americaine:executif"
+   ],
+   "pourquoi": "us_senat_cloture: la règle indique que les confirmations de nominations se décident à la majorité simple depuis 2013, donc remplacer le président de la Fed n'exige plus de cloture à 60 voix et est institutionnellement plus faisable ; us_confirmations_delais: quand le parti du président tient le Sénat, la confirmation d'un remplaçant est surtout une question de délai et non d'issue, ce qui affecte "
+  },
+  {
+   "question": "37523",
+   "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
+   "issue": 0,
+   "regles": [
+    "effet_d_echeance_negociation",
+    "us_sanctions_frequence",
+    "onu_conseil_securite_vote"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "Les négociations et accords se concluent ou se brisent souvent juste avant une échéance; si le cessez‑le‑feu a une date‑butoir ou dépend de négociations, cela modifie nettement la probabilité qu'il tienne jusqu'en juin 2026. Les désignations de sanctions par l'OFAC sont très fréquentes, donc de nouvelles mesures américaines avant juin 2026 sont probables et peuvent changer les incitations des Hout"
+  },
+  {
+   "question": "38783",
+   "titre": "Will the US government file a denaturalization lawsuit against Elon Musk before July 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne porte sur les procédures, critères juridiques, ou calendriers administratifs propres aux poursuites de dénaturalisation du gouvernement fédéral ; aucune n'affecte directement la décision ou le calendrier d'un dépôt d'action contre Elon Musk."
+  },
+  {
+   "question": "38917",
+   "titre": "Will Barack Obama be arrested before July 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur les poursuites pénales, l'immunité ou la procédure d'arrestation d'un ancien président américain ; aucune n'influence directement la probabilité ou le calendrier d'une arrestation de Barack Obama."
+  },
+  {
+   "question": "38940",
+   "titre": "Will over 2/3 of EU member states recognize Palestinian statehood before July 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne traite de la reconnaissance unilatérale d'États par des États membres de l'UE ni d'un mécanisme contraignant (procédure, seuil ou calendrier) qui affecterait directement le nombre d'États membres susceptibles de reconnaître la Palestine avant juillet 2026."
+  },
+  {
+   "question": "39142",
+   "titre": "Before July 1, 2026, will the U.S. Supreme Court agree to hear a case that could end the constitutional right to same-sex marriage?",
+   "issue": 0,
+   "regles": [
+    "us_cour_supreme_calendrier"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:tribunaux"
+   ],
+   "pourquoi": "La règle décrit le calendrier de la Cour suprême — session d'octobre à fin juin/début juillet, décisions et ordonnances (dont l'acceptation de pourvois) publiées jusqu'à la fin de la session et environ 130 demandes examinées par semaine — ce qui gouverne directement si un pourvoi susceptible d'annuler le droit au mariage homosexuel peut être accepté avant le 1er juillet 2026."
+  },
+  {
+   "question": "39886",
+   "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "chefs_d_etat_sortie_irreguliere : les sorties irrégulières de dirigeants sont très rares (≈0,17 % des pays-mois), donc le calendrier d'une rencontre trilatérale repose en pratique sur la continuité des chefs en place. regimes_fermes_contestation : les campagnes de contestation non violente réussissent moins souvent récemment dans les régimes autoritaires, donc les risques que des soulèvements empê"
+  },
+  {
+   "question": "39992",
+   "titre": "Will Israel participate in the Eurovision Song Contest 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "40005",
+   "titre": "Will any political party or coalition acquire a supermajority in the 2026 Hungarian parliamentary elections?",
+   "issue": 1,
+   "regles": [
+    "seuils_parlements_nationaux_europe",
+    "sondages_erreur_comparee",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "seuils_parlements_nationaux_europe : fixe les seuils légaux en Hongrie (5 % pour un parti, 10 % pour une alliance de deux, 15 % pour une alliance de trois+), ce qui influe directement sur quelles listes peuvent entrer au Parlement et donc sur la possibilité qu'une formation ou coalition atteigne une supermajorité. sondages_erreur_comparee : donne l'échelle d'erreur typique des sondages législatifs"
+  },
+  {
+   "question": "40281",
+   "titre": "Will any coding tool introduce an integration with brain-computer interface technology before November 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "Les intégrations et grands projets ont tendance à glisser souvent hors délai : une date annoncée de mise en service ou d'intégration est statistiquement susceptible d'être repoussée, ce qui réduit la probabilité qu'une nouvelle intégration BCI arrive avant novembre 2026."
+  },
+  {
+   "question": "40599",
+   "titre": "If Viktor Orbán leads a party in the 2026 Hungarian Election, will he become Prime Minister?",
+   "issue": 0,
+   "regles": [
+    "seuils_parlements_nationaux_europe",
+    "chefs_d_etat_sortie_irreguliere"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "La règle des seuils pour les parlements nationaux précise que la Hongrie applique 5 % pour un parti (10 % pour une alliance de deux, 15 % pour davantage), ce qui affecte directement la conversion voix→sièges et donc la capacité de la liste menée par Orbán d'obtenir la majorité parlementaire requise pour désigner le Premier ministre. La règle sur les sorties irrégulières des dirigeants montre que l"
+  },
+  {
+   "question": "40695",
+   "titre": "Will Jerome Powell cease to be Chair of the Federal Reserve Board of Governors before his term is up?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur la nomination, la révocation ou les motifs/rythmes de départ d'un président de la Fed : les règles listées portent sur élections, procédures parlementaires, calendriers d'organes divers ou tendances générales, mais aucune n'affecte directement l'issue (démission, révocation ou maintien) de Jerome Powell avant la fin de son mandat."
+  },
+  {
+   "question": "40711",
+   "titre": "Will the United States, Russia or China detonate a nuclear device before April 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne traite des essais nucléaires, des moratoires, ni des procédures ou calendriers qui gouvernent la décision de faire détoner un engin nucléaire par les États‑Unis, la Russie ou la Chine ; aucune n'affecte directement l'issue."
+  },
+  {
+   "question": "40849",
+   "titre": "Will Tesla discontinue the Cybertruck before April 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La loi d'airain des grands projets (calendriers_annonces_glissent) s'applique aux calendriers produits/launchs : les dates glissent fréquemment, donc elle réduit la probabilité qu'une décision opérationnelle annoncée ou attendue (comme l'arrêt d'un modèle) intervienne avant une date‑butoir courte comme le 1er avril 2026."
+  },
+  {
+   "question": "40852",
+   "titre": "Will the US House of Representatives censure, expel or reprimand any of its members before April 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_chambre_sanctions_disciplinaires"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "politique-americaine:congres"
+   ],
+   "pourquoi": "Fournit le taux de base historique et les règles de procédure pertinentes (censure à majorité simple, exclusion aux deux tiers) et note une hausse récente des censures/réprimandes, ce qui influence directement la probabilité et la manière dont de telles sanctions pourraient survenir avant le 1er avril 2026."
+  },
+  {
+   "question": "40862",
+   "titre": "Will Arizona Senator Mark Kelly, who urged troops to defy \"illegal\" orders, be recalled to active duty in the US military before April 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "40865",
+   "titre": "Will Israel pass the Penal Bill (Death Penalty for Terrorists amendment) into law before April 2026?",
+   "issue": 1,
+   "regles": [
+    "effet_d_echeance_negociation",
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "effet_d_echeance_negociation : Les négociations parlementaires et de coalition ont tendance à se concentrer juste avant une échéance, donc l'adoption d'une loi controversée est plus probable à l'approche d'une date-butoir. calendriers_annonces_glissent : Les calendriers annoncés pour des décisions ou projets importants glissent souvent; cela réduit la probabilité qu'un texte complexe et disputé so"
+  },
+  {
+   "question": "40875",
+   "titre": "Will the number of manufacturing jobs in the US for February 2026 be above 12.7 million?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne concerne la mesure, la publication ou des seuils/procédures affectant directement le nombre d'emplois manufacturiers aux États‑Unis ; les règles portent sur élections, institutions ou calendriers non liés à la statistique mensuelle de l'emploi, elles n'altèreraient donc pas l'attendu pour février 2026."
+  },
+  {
+   "question": "40938",
+   "titre": "Will California Emissions Reporting Laws SB 253 and SB 261 Be In Effect on September 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur l'entrée en vigueur des lois d'État californiennes, les procédures de référendum/calendrier d'application ou les litiges étatiques qui détermineraient si SB 253 et SB 261 seront effectives au 1ᵉʳ septembre 2026."
+  },
+  {
+   "question": "41090",
+   "titre": "Will the winner of the 2026 FIFA World Cup be a country that has never won before?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne porte sur le football, les tournois internationaux, les équipes nationales ou des facteurs sportifs influençant qui remportera la Coupe du Monde 2026."
+  },
+  {
+   "question": "41206",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before July 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La « loi d'airain » des grands projets montre que les dates annoncées glissent souvent : cela affecte directement l'attente qu'une entreprise respecte un calendrier de dépôt (S‑1) avant une date donnée, en augmentant la probabilité de retard."
+  },
+  {
+   "question": "41214",
+   "titre": "Will Bitcoin reach a new all-time high price before October 6, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_fed_calendrier",
+    "calendriers_annonces_glissent",
+    "us_sanctions_frequence"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:banques_centrales",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:reserve_federale",
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "us_fed_calendrier : Les décisions de taux se prennent d'ordinaire aux huit réunions programmées du FOMC et ces décisions (et leur calendrier) modulent fortement la liquidité et l'appétit pour le risque, donc la probabilité que le Bitcoin atteigne un nouvel ATH avant le 6 octobre 2026. calendriers_annonces_glissent : La tendance générale des grands projets à déraper rend moins fiable tout catalyseu"
+  },
+  {
+   "question": "41316",
+   "titre": "Will the United States impose additional sanctions on Russia related to the Ukraine war before March 14, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_sanctions_frequence"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "Les désignations OFAC sont continues et nombreuses (2 275 en 2022, 3 135 en 2024, dont 1 706 liées à la Russie en 2024), soit un fort taux de base (≈44–60 inscriptions/semaine) qui change l'attente en rendant de nouvelles sanctions avant le 14 mars 2026 plus probables."
+  },
+  {
+   "question": "41343",
+   "titre": "Will any NVIDIA GPUs better than the H200 be allowed to be exported to China before March 14, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_sanctions_frequence"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "Les autorisations ou interdictions d'exportation relèvent du même arsenal de mesures administratives/sanctions et la règle note que les désignations et actions du Trésor (OFAC) sont continues et fréquentes, donc l'issue avant la date dépend surtout de décisions exécutives régulières et de la volonté politique, ce qui affecte directement la probabilité qu'un GPU plus performant que le H200 soit aut"
+  },
+  {
+   "question": "41370",
+   "titre": "Will there be at least one podium sweep at the 2026 Winter Olympic Games?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne concerne le sport, les Jeux olympiques ou les performances/format des épreuves : aucune ne change ce qu’il faut attendre pour qu’il y ait un podium sweep aux JO de 2026."
+  },
+  {
+   "question": "41480",
+   "titre": "Will the U.S. Supreme Court's decision in Louisiana v. Callais hold that race-conscious districting is unconstitutional?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne porte sur la doctrine constitutionnelle ou les critères juridiques que la Cour suprême appliquera pour juger la légalité du redécoupage fondé sur la race ; les règles fournies concernent calendrier, procédures parlementaires ou sujets étrangers et n'affectent pas l'issue matérielle de Louisiana v. Callais."
+  },
+  {
+   "question": "41485",
+   "titre": "Will the United States intervene militarily in Venezuela again before May 2026?",
+   "issue": 0,
+   "regles": [
+    "onu_conseil_securite_vote",
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "onu_conseil_securite_vote : Une intervention internationale légitimée par l'ONU exige une résolution du Conseil de sécurité (9 voix et pas de veto des membres permanents), ce qui réduit fortement la probabilité d'une opération ONU-sanctionnée si un permanent s'y oppose. chefs_d_etat_sortie_irreguliere : Les sorties irrégulières de dirigeants sont très rares, donc un renversement rapide du pouvoir "
+  },
+  {
+   "question": "41489",
+   "titre": "Will Venezuela announce a presidential election before April 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "presidentielles_mode_de_scrutin",
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "presidentielles_mode_de_scrutin : la règle indique que le Venezuela élit son président au suffrage uninominal à un tour, ce qui change la procédure attendue si une élection est annoncée (pas de second tour à planifier). chefs_d_etat_sortie_irreguliere : la règle pose la continuité comme point de départ (les sorties irrégulières sont très rares), ce qui réduit la probabilité a priori d'une annonce "
+  },
+  {
+   "question": "41508",
+   "titre": "Will the Community beat Nathan Young in the Metaculus Cup Spring 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "41512",
+   "titre": "Will the U.S. Congress still be operating under a continuing resolution (CR) on March 15, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_lois_de_finances_provisoires",
+    "us_senat_cloture",
+    "us_reconciliation_budgetaire"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:budget",
+    "politique-americaine:congres"
+   ],
+   "pourquoi": "us_lois_de_finances_provisoires : Le Congrès a recours presque chaque année à au moins une continuing resolution (46 exercices sur 49 depuis 1977, moyenne ~5 CRs couvrant ~118 jours), ce qui augmente fortement la probabilité d'être sous CR à une date donnée comme le 15 mars 2026. us_senat_cloture : La nécessité de 60 voix au Sénat pour clore le débat sur la plupart des textes rend la promulgation "
+  },
+  {
+   "question": "41514",
+   "titre": "Before May 1, 2026, will the United States offer to purchase Greenland from Denmark?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "41595",
+   "titre": "Will the North Atlantic sea surface temperature reach a daily record high before May 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne concerne les processus physiques, les observations océanographiques ou des procédures influençant directement la probabilité qu'une température de surface de la mer atteigne un record ; elles traitent de politiques, d'élections et d'organisations institutionnelles."
+  },
+  {
+   "question": "41804",
+   "titre": "Will Sudan's Emergency Response Rooms win the Nobel Peace Prize in 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "41805",
+   "titre": "Will Jonathan Ross be indicted or charged in the death of Renee Good before July 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur les procédures pénales, les délais d'enquête ou les juridictions compétentes pour une mise en examen ; aucune n'influence donc la probabilité ou le calendrier d'une inculpation avant le 1er juillet 2026."
+  },
+  {
+   "question": "41861",
+   "titre": "Will Wagner Moura win the Academy Award for Best Actor at the 2026 Academy Awards?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne l'Académie des Oscars, les critères d'éligibilité ou le processus de vote qui déterminent qui remportera le prix de meilleur acteur."
+  },
+  {
+   "question": "41869",
+   "titre": "Will Iran's Internet not be \"heavily filtered/whitelisted\" for most users before May 2026?",
+   "issue": 0,
+   "regles": [
+    "regimes_fermes_contestation",
+    "chefs_d_etat_sortie_irreguliere"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "Les campagnes de résistance non violente ont eu moins de succès dans les régimes autoritaires ces dernières années, donc un mouvement populaire est moins susceptible de produire d'ici mai 2026 une ouverture majeure des politiques de filtrage d'Internet en Iran. Les sorties irrégulières de dirigeants sont très rares, ce qui renforce l'hypothèse de continuité du régime et donc de maintien probable d"
+  },
+  {
+   "question": "42135",
+   "titre": "Will the UK increase the qualifying period for settlement to 10 years before May 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne traite de la législation ou des procédures britanniques d'immigration/settlement ; aucune n'influence directement une décision du Royaume‑Uni sur la durée requise pour le settlement."
+  },
+  {
+   "question": "42139",
+   "titre": "Will Keiko Fujimori advance to the runoff in the 2026 Peruvian presidential election?",
+   "issue": 1,
+   "regles": [
+    "presidentielles_mode_de_scrutin",
+    "sondages_erreur_comparee"
+   ],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "presidentielles_mode_de_scrutin : Le Pérou figure parmi les présidentielles à deux tours, donc l'accès au second tour dépend de figurer parmi les deux premiers si personne n'obtient la majorité absolue au premier tour. sondages_erreur_comparee : Les sondages de la dernière semaine ont en moyenne une erreur d'environ 2,7 points pour les présidentielles, ce qui influence l'incertitude sur la part de"
+  },
+  {
+   "question": "42274",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before April 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "Les grands projets et calendriers annoncés glissent d'ordinaire : les dates de mise en service ou de lancement sont souvent repoussées, ce qui réduit la probabilité qu'un modèle atteigne un seuil ambitieux (95 %) avant une date-limite comme le 1er avril 2026."
+  },
+  {
+   "question": "42284",
+   "titre": "Will Cloudflare experience another critical incident before May 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur les incidents techniques, la fiabilité des infrastructures cloud ou les facteurs opérationnels (taux d'incidents, maintenance, architecture) qui détermineraient la probabilité d'une nouvelle panne chez Cloudflare."
+  },
+  {
+   "question": "42430",
+   "titre": "Will there be a successful coup in Africa or Latin America before May 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "coups_d_etat_frequence",
+    "chefs_d_etat_sortie_irreguliere",
+    "afrique_limites_de_mandat"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "coups_d_etat_frequence: donne un taux de base historique et signale que l'Afrique et les Amériques concentrent la plupart des coups, ce qui affecte directement la probabilité d'un coup réussi dans la fenêtre. chefs_d_etat_sortie_irreguliere: fournit un taux de base chiffré (0,17 % des pays‑mois pour sorties irrégulières) utile pour convertir en probabilité sur la période considérée et l'ensemble d"
+  },
+  {
+   "question": "42480",
+   "titre": "Will Pam Bondi be out as US Attorney General before May 2026?",
+   "issue": 1,
+   "regles": [
+    "us_senat_cloture",
+    "us_confirmations_delais",
+    "chefs_d_etat_sortie_irreguliere"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie",
+    "politique-americaine:congres",
+    "politique-americaine:executif"
+   ],
+   "pourquoi": "us_senat_cloture : depuis 2013 la confirmation des nominations présidentielles au Sénat se fait à la majorité simple, ce qui conditionne la possibilité qu'un successeur soit confirmé et donc le remplacement effectif de l'Attorney General ; us_confirmations_delais : les délais moyens de la nomination à la confirmation (de l'ordre de quelques dizaines de jours) déterminent si un remplaçant pourrait "
+  },
+  {
+   "question": "42485",
+   "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne traite de la politique étrangère, de la conduite militaire ou des conditions juridiques/opérationnelles d'une attaque entre États ; elles portent sur des procédures électorales, calendriers institutionnels ou dynamiques internes qui n'affectent pas directement la probabilité d'une frappe saoudienne contre l'Iran."
+  },
+  {
+   "question": "42489",
+   "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune règle fournie ne concerne la politique militaire des ÉAU, les conditions d'emploi de la force contre l'Iran, ni des procédures ou seuils qui affecteraient directement la probabilité ou le calendrier d'une frappe directe."
+  },
+  {
+   "question": "42490",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation",
+    "effet_d_echeance_negociation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "humain:hierarchie"
+   ],
+   "pourquoi": "chefs_d_etat_sortie_irreguliere : Cette règle indique que les sorties irrégulières de dirigeants sont très rares (0,17 % des pays‑mois), donc il est raisonnable de supposer que Zelenskyy et Poutine resteront en fonction à la date considérée, ce qui influe directement sur la possibilité d'une rencontre. regimes_fermes_contestation : La règle montre que les campagnes de contestation réussissent de m"
+  },
+  {
+   "question": "42491",
+   "titre": "Will Anthropic be a designated supply chain risk on May 1, 2026?",
+   "issue": 1,
+   "regles": [
+    "us_sanctions_frequence"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "Les désignations de sanctions sont fréquentes et continues (2 275–3 135 ajouts/an récemment, soit en moyenne des dizaines par semaine), donc la probabilité qu'une nouvelle désignation de type « supply chain risk » survienne avant le 1er mai 2026 dépend fortement de cette cadence et de la volonté politique et la règle modifie l'estimation de l'issue."
+  },
+  {
+   "question": "42540",
+   "titre": "Will a 1kt meteor strike take place during March or April 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "42542",
+   "titre": "Will the U.S. conduct a ground invasion of Iran before May 2026?",
+   "issue": 0,
+   "regles": [
+    "onu_conseil_securite_vote",
+    "us_senat_cloture",
+    "us_lois_de_finances_provisoires"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:budget",
+    "politique-americaine:congres"
+   ],
+   "pourquoi": "onu_conseil_securite_vote: le veto des membres permanents signifie qu'une autorisation du Conseil de sécurité pour une invasion est improbable si un permanent s'y oppose, ce qui change l'évaluation de la probabilité d'une invasion internationale légitimée par l'ONU. us_senat_cloture: le Sénat exige 60 voix pour clore le débat sur la plupart des lois ; toute autorisation ou fondement législatif imp"
+  },
+  {
+   "question": "42548",
+   "titre": "Will gas prices in the US reach a new all-time high before April 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_fed_calendrier",
+    "us_sanctions_frequence",
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:banques_centrales",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:reserve_federale",
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "us_fed_calendrier : les décisions de taux de la Fed (prises aux réunions programmées) modulent la demande, les anticipations d'inflation et le coût du crédit, ce qui influence les prix du pétrole et donc l'essence ; us_sanctions_frequence : la haute fréquence des désignations de sanctions signifie un risque matériel d'interruptions d'offre (p. ex. vis‑à‑vis de producteurs ou intermédiaires) qui pe"
+  },
+  {
+   "question": "42630",
+   "titre": "Will Iran participate in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "42729",
+   "titre": "Will shipping traffic through the Strait of Hormuz return to normal before April 27, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "42741",
+   "titre": "Will total MLB regular-season attendance in 2026 exceed 72 million?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies concerne directement l'affluence sportive, la capacité des stades, le calendrier de la saison MLB ou des facteurs opérationnels spécifiques qui détermineraient si l'assistance régulière de 2026 dépassera 72 millions."
+  },
+  {
+   "question": "43091",
+   "titre": "Will any AI model achieve a score of 95% or higher on the GPQA Diamond Benchmark Leaderboard before June 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "Les grands projets techniques ont l'habitude de déraper (« hors délai ») : les dates de mise en service annoncées sont généralement optimistes, ce qui réduit la probabilité qu'un modèle atteigne un seuil ambitieux (95 % GPQA Diamond) avant le 1er juin 2026."
+  },
+  {
+   "question": "43167",
+   "titre": "Will the U.S. Senate pass another budget reconciliation bill before July 4, 2026?",
+   "issue": 1,
+   "regles": [
+    "us_reconciliation_budgetaire",
+    "us_senat_cloture",
+    "us_lois_de_finances_provisoires"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:budget",
+    "politique-americaine:congres"
+   ],
+   "pourquoi": "us_reconciliation_budgetaire : la réconciliation permet la majorité simple au Sénat mais limite le contenu aux mesures budgétaires et, en pratique, une seule loi globale par résolution budgétaire, ce qui restreint le nombre et le calendrier des textes réconciliatoires possibles avant la date. us_senat_cloture : la règle de clôture (60 voix) rend difficile l'adoption de lois hors réconciliation, do"
+  },
+  {
+   "question": "43171",
+   "titre": "Will Neymar be called up for Brazil in the 2026 FIFA World Cup?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "43257",
+   "titre": "Will the CBOE Volatility Index (VIX) close above 30 on more than 5 trading days between April 20, 2026 and May 31, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_fed_calendrier"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:banques_centrales",
+    "politique-americaine:reserve_federale"
+   ],
+   "pourquoi": "Les décisions de la Fed se prennent d'ordinaire aux réunions programmées du FOMC dont les dates sont publiées à l'avance, et ces réunions sont des sources prévisibles de hausse de la volatilité (pics du VIX) dans la fenêtre considérée."
+  },
+  {
+   "question": "43259",
+   "titre": "Will the United States and Iran hold another face-to-face diplomatic meeting before June 6, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne directement la diplomatie bilatérale ou les conditions calendaire spécifiques d'une rencontre entre les États‑Unis et l'Iran, donc aucune ne modifie l'attente sur la tenue d'une réunion en personne avant le 6 juin 2026."
+  },
+  {
+   "question": "43283",
+   "titre": "Will Waymo have a service area of 1,200 square miles before July 1, 2026?",
+   "issue": 1,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La loi d'airain des grands projets montre que les mises en service annoncées glissent d'ordinaire (seuls ~10 % finissent dans les délais), ce qui réduit la probabilité qu'une expansion comme celle de Waymo atteigne 1 200 milles carrés avant le 1er juillet 2026."
+  },
+  {
+   "question": "43333",
+   "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne traite directement des décisions d’adhésion ou de retrait d’OPEC/OPEC+ ni ne modifie une procédure, un calendrier ou un taux de base pertinent pour prévoir qu’un pays annoncera son retrait avant septembre 2026."
+  },
+  {
+   "question": "43343",
+   "titre": "Will any host nation (USA, Mexico or Canada) reach the semifinals of the 2026 World Cup?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur le football, les formats sportifs ou des facteurs affectant directement les performances des équipes hôtes ; aucune n'influence donc la probabilité qu'un hôte atteigne les demi-finales en 2026."
+  },
+  {
+   "question": "43355",
+   "titre": "Will Iran and U.S play against each other in the 2026 FIFA World Cup?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne les procédures de qualification, le tirage ou le calendrier de la Coupe du Monde ; aucune n'affecte si l'Iran et les États-Unis se rencontreront en 2026."
+  },
+  {
+   "question": "43360",
+   "titre": "Will the UK National Threat Level reduce from SEVERE before September 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "43435",
+   "titre": "Will Pope Leo XIV visit another country other than Spain before September 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne le pape, le Vatican ou les voyages papaux ; aucune n'influence donc la probabilité, le calendrier ou la procédure d'une visite internationale de Pie XIV avant septembre 2026."
+  },
+  {
+   "question": "43437",
+   "titre": "Will there be a successful coup in Africa or Latin America before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "coups_d_etat_frequence",
+    "chefs_d_etat_sortie_irreguliere",
+    "afrique_limites_de_mandat"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "coups_d_etat_frequence fournit le taux historique de tentatives et de succès et montre que l'Afrique et l'Amérique latine concentrent la plupart des cas, donnant un taux de base régional pour la prévision. chefs_d_etat_sortie_irreguliere donne un taux de base par pays‑mois (0,17 %) des sorties irrégulières utilisable pour convertir la fenêtre temporelle en probabilité. afrique_limites_de_mandat id"
+  },
+  {
+   "question": "43452",
+   "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_president_college",
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie",
+    "politique-americaine:regles_electorales"
+   ],
+   "pourquoi": "us_president_college : la règle explique comment et quand un président américain est choisi, donc elle change l'attente selon que Trump redevienne ou non président (statut qui modifie fortement la probabilité et les modalités d'une rencontre officielle). chefs_d_etat_sortie_irreguliere : la rareté des sorties irrégulières de dirigeants signifie que Vladimir Poutine est, toutes choses égales par ai"
+  },
+  {
+   "question": "43461",
+   "titre": "Will at least 5 non-passengers be linked to the MV Hondius hantavirus outbreak before August 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne la surveillance épidémiologique, les procédures d'enquête ou les délais de liaison de cas; aucune n'influence le calendrier, le seuil ou la probabilité qu'au moins 5 non-passagers soient liés à l'épidémie du MV Hondius avant août 2026."
+  },
+  {
+   "question": "43479",
+   "titre": "Will Claude Mythos or a similar model be publicly released before September 2026?",
+   "issue": 1,
+   "regles": [
+    "calendriers_annonces_glissent",
+    "effet_d_echeance_negociation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "calendriers_annonces_glissent : les lancements et mises en service de grands projets glissent d'ordinaire, donc une date de sortie annoncée ou anticipée pour un modèle complexe comme Claude Mythos a une forte probabilité d'être retardée, ce qui réduit la chance d'un déploiement bien avant septembre 2026. effet_d_echeance_negociation : si la publication dépend d'accords réglementaires, de validatio"
+  },
+  {
+   "question": "43491",
+   "titre": "Will a new High Representative for Bosnia and Herzegovina officially be in place before September 2, 2026?",
+   "issue": 0,
+   "regles": [
+    "onu_conseil_securite_vote",
+    "effet_d_echeance_negociation",
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "onu_conseil_securite_vote : les décisions internationales autour d'un poste supervisé ou soutenu par l'ONU peuvent être retardées ou bloquées par l'exigence de votes (9 voix et l'absence de veto des permanents), ce qui influe sur le calendrier d'entrée en fonction ; effet_d_echeance_negociation : la désignation d'un Haut Représentant dépend souvent de négociations entre États et organes internatio"
+  },
+  {
+   "question": "43494",
+   "titre": "Will any U.S. state or EU member state restrict large-scale data center grid connections before September 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne directement la compétence, la procédure législative ou le calendrier de décisions des États américains ou des États membres de l'UE concernant la limitation des raccordements électriques de centres de données, donc aucune n'affecte l'attente sur cette question."
+  },
+  {
+   "question": "43496",
+   "titre": "Will Haiti hold the first round of its presidential election before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "coups_d_etat_frequence",
+    "chefs_d_etat_sortie_irreguliere",
+    "effet_d_echeance_negociation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "humain:hierarchie"
+   ],
+   "pourquoi": "coups_d_etat_frequence : Les tentatives de coup d'État sont historiquement nombreuses et ont une probabilité non négligeable de succès, ce qui augmente sensiblement le risque qu'une élection prévue soit reportée ou annulée. chefs_d_etat_sortie_irreguliere : Les sorties irrégulières de dirigeants sont en revanche rares (0,17 % des pays‑mois), donc en l'absence d'un choc majeur on s'attend plutôt à "
+  },
+  {
+   "question": "43501",
+   "titre": "Will Instructure be subject to another major hack before September 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne concerne la probabilité, la fréquence, les déterminants ou les procédures relatifs aux cyberattaques contre des entreprises privées (comme Instructure), donc aucune n'affecte l'attendu pour cette question."
+  },
+  {
+   "question": "43502",
+   "titre": "Will Bitcoin trade above $120,000 before August 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_fed_calendrier",
+    "us_lois_de_finances_provisoires"
+   ],
+   "rejetes": [
+    "effect_d_echeance_negociation"
+   ],
+   "compartiments": [
+    "calendriers-echeances:banques_centrales",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:budget",
+    "politique-americaine:congres",
+    "politique-americaine:reserve_federale"
+   ],
+   "pourquoi": "us_fed_calendrier : Les décisions de taux, qui influent fortement sur les actifs risqués comme le Bitcoin, se prennent d'ordinaire aux huit réunions programmées du FOMC, donc les opportunités de grandes impulsions se concentrent autour de ces dates. effect_d_echeance_negociation : Les accords se concentrent juste avant les échéances, ce qui augmente la probabilité de mouvements de marché important"
+  },
+  {
+   "question": "43505",
+   "titre": "Will the Senate of the Philippines remove Vice President Sara Duterte from office before September 2026?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere",
+    "coups_d_etat_frequence",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "chefs_d_etat_sortie_irreguliere: Les sorties irrégulières de dirigeants sont très rares (0,17 % des pays‑mois), donc la présomption de maintien réduit la probabilité d'une destitution par le Sénat avant septembre 2026. coups_d_etat_frequence: Les coups d'État restent peu fréquents et ne constituent pas une voie normale de remplacement législatif, ce qui diminue la probabilité d'une éviction extraj"
+  },
+  {
+   "question": "43525",
+   "titre": "Will OpenAI's ChatGPT Atlas browser be released for Windows before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La règle indique que la plupart des grands projets dépassent leurs délais annoncés, ce qui affecte directement la probabilité qu'un lancement logiciel privé survienne avant une date donnée."
+  },
+  {
+   "question": "43527",
+   "titre": "Will federal courts block the USPS mail-in ballot restrictions before Election Day?",
+   "issue": 1,
+   "regles": [
+    "us_cour_supreme_calendrier"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:tribunaux"
+   ],
+   "pourquoi": "La règle us_cour_supreme_calendrier fixe le calendrier de travail et de rendu des décisions de la Cour suprême (session commençant début octobre, décisions/ordonnances publiées ensuite), ce qui affecte directement la probabilité et le calendrier pour qu'une décision ou une ordonnance visant à bloquer des restrictions postales intervienne avant le jour de l'élection."
+  },
+  {
+   "question": "43615",
+   "titre": "Will Shakira's \"Dai Dai\" outpeak Shakira's \"Waka Waka\" on the Billboard Hot 100?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur les charts musicaux, les méthodes de classement du Billboard Hot 100 ni sur des facteurs déterminant directement si un single dépasse un autre."
+  },
+  {
+   "question": "43637",
+   "titre": "Will the 2026 Alberta independence referendum pass?",
+   "issue": 0,
+   "regles": [
+    "referendums_retour_statu_quo",
+    "sondages_erreur_comparee"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "humain:risque_percu"
+   ],
+   "pourquoi": "referendums_retour_statu_quo : Dans la plupart des référendums étudiés, le soutien au changement décroît pendant la campagne, donc un avantage du « oui » tend à s'éroder et rend le succès moins probable qu'un sondage initial ne le suggère. sondages_erreur_comparee : Les sondages de la dernière semaine ont une erreur moyenne d'environ 2 points sur la part d'un camp, ce qui diminue la confiance des "
+  },
+  {
+   "question": "43688",
+   "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_fed_calendrier"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:banques_centrales",
+    "politique-americaine:reserve_federale"
+   ],
+   "pourquoi": "Le FOMC tient huit réunions programmées par an et prend d'ordinaire les décisions de taux à ces réunions, donc la probabilité d'un relèvement avant le 30 juillet 2026 dépend des réunions programmées dans cette fenêtre (avec la possibilité de réunions non programmées si nécessaire)."
+  },
+  {
+   "question": "43703",
+   "titre": "Will a hurricane make landfall in the continental United States before September 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "43707",
+   "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "onu_conseil_securite_vote",
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "onu_conseil_securite_vote : le veto des membres permanents (la Chine incluse) empêche en pratique qu'une résolution contraignante du Conseil de sécurité soit adoptée contre Pékin, ce qui change l'évaluation des conséquences internationales d'un blocus et donc la probabilité qu'il soit tenté. chefs_d_etat_sortie_irreguliere : les sorties irrégulières de dirigeants sont très rares, donc on part du m"
+  },
+  {
+   "question": "43708",
+   "titre": "Will Starlink's website show South Africa as a country with Starlink availability before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La loi d'airain des grands projets (calendriers_annonces_glissent) montre que les mises en service et calendriers annoncés glissent souvent ; appliquée à un déploiement commercial comme Starlink, cela réduit la probabilité qu'une disponibilité prévue apparaisse effectivement sur le site avant le 1er septembre 2026."
+  },
+  {
+   "question": "43822",
+   "titre": "Will Iceland vote Yes in the 2026 EU negotiations referendum?",
+   "issue": 0,
+   "regles": [
+    "referendums_retour_statu_quo"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "humain:risque_percu"
+   ],
+   "pourquoi": "Les référendums montrent une tendance robuste à voir le soutien au changement baisser pendant la campagne (moyennes citées : 62→57→52 et reculs fréquents), ce qui réduit la probabilité qu'un projet de changement obtienne un « oui » d'ici au vote par rapport aux intentions initiales."
+  },
+  {
+   "question": "43824",
+   "titre": "Will the Brookmont Catastrophic Bond ETF drop at least $0.25 within two days before September 2026?",
+   "issue": 0,
+   "regles": [
+    "us_fed_calendrier"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:banques_centrales",
+    "politique-americaine:reserve_federale"
+   ],
+   "pourquoi": "Le calendrier du FOMC fixe les dates des décisions de taux (huit réunions programmées par an, décisions prises d'ordinaire à ces réunions), donc la présence ou l'absence d'une réunion du Fed dans les deux jours précédant septembre 2026 change sensiblement la probabilité d'un mouvement de ~0,25 $ pour un ETF obligataire."
+  },
+  {
+   "question": "43841",
+   "titre": "Will OpenAI publicly file an initial registration statement (S-1) with the SEC to launch an IPO, before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La « loi d'airain des grands projets » indique que les dates de lancement ou de mise en service glissent d'ordinaire, ce qui réduit la probabilité qu'un S‑1 annoncé ou attendu soit effectivement déposé publiquement avant le 1er septembre 2026."
+  },
+  {
+   "question": "43844",
+   "titre": "Will Hakainde Hichilema receive at least 65% of the vote in the first round of Zambia's 2026 presidential election?",
+   "issue": 0,
+   "regles": [
+    "sondages_erreur_comparee",
+    "us_erreur_selon_temps_restant"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-americaine:elections"
+   ],
+   "pourquoi": "sondages_erreur_comparee: donne l'ampleur typique de l'erreur des sondages de la dernière semaine pour une présidentielle (~2,7 points) et permet d'évaluer si un score annoncé proche de 65% est crédible ; us_erreur_selon_temps_restant: indique que l'erreur moyenne des sondages varie avec l'éloignement du scrutin (beaucoup plus grande plusieurs mois avant, plus faible à la veille), ce qui change l'"
+  },
+  {
+   "question": "43853",
+   "titre": "Will former U.S. Representative George Santos be arrested before September 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur les procédures pénales, les compétences du ministère public ou les enquêtes/mandats d'arrêt susceptibles d'entraîner l'arrestation d'un ancien député ; les textes listés traitent d'élections, de seuils, de procédures parlementaires ou de sanctions économiques et n'influencent pas directement la probabilité ou le calendrier d'une arrestation."
+  },
+  {
+   "question": "43881",
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "chefs_d_etat_sortie_irreguliere : les sorties irrégulières de dirigeants sont très rares, donc le point de départ raisonnable pour prédire une rencontre est que les deux chefs d'État restent en fonction jusqu'à la date cible (condition nécessaire pour une rencontre) ; regimes_fermes_contestation : les campagnes de contestation ont moins de succès récemment dans les régimes autoritaires, ce qui réd"
+  },
+  {
+   "question": "43911",
+   "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
+   "issue": 0,
+   "regles": [
+    "us_senat_cloture",
+    "effet_d_echeance_negociation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:congres"
+   ],
+   "pourquoi": "us_senat_cloture : un accord commercial bilatéral exige en pratique une loi d'application qui peut être bloquée par l'obstruction au Sénat (60 voix nécessaires), ce qui change fortement la probabilité et le calendrier de finalisation avant août 2026. effet_d_echeance_negociation : les négociations tendent à se concentrer juste avant une échéance, donc l'existence d'une borne temporelle (la fenêtre"
+  },
+  {
+   "question": "43984",
+   "titre": "Will the Liberal Party officially nominate Flávio Bolsonaro as its candidate for president of Brazil before August 15, 2026?",
+   "issue": 1,
+   "regles": [
+    "calendriers_annonces_glissent",
+    "presidentielles_mode_de_scrutin"
+   ],
+   "rejetes": [
+    "effect_d_echeance_negociation"
+   ],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "effect_d_echeance_negociation : les nominations partisanes et accords internes ont tendance à se concentrer juste avant les échéances, ce qui influe fortement sur la probabilité qu'une désignation intervienne avant une date donnée ; calendriers_annonces_glissent : les dates annoncées pour des décisions et lancements importants glissent souvent, ce qui réduit la probabilité qu'une nomination annonc"
+  },
+  {
+   "question": "43985",
+   "titre": "Before September 1, 2026, will Turkish President Recep Tayyip Erdoğan be legally permitted to run for another term?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne les limites de mandat, la constitution turque ou les règles d'éligibilité présidentielle ; aucune ne change donc l'attente juridique sur la possibilité pour Erdoğan de se représenter."
+  },
+  {
+   "question": "43986",
+   "titre": "Will Ukraine announce a presidential election before September 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne traite des procédures, des délais ou des annonces d'élections présidentielles en Ukraine ; aucune n'influence donc la probabilité qu'elle annonce une élection avant le 1er septembre 2026."
+  },
+  {
+   "question": "43987",
+   "titre": "Will the United States provide written notices of withdrawal from the USMCA before September 2026?",
+   "issue": 0,
+   "regles": [
+    "usmca_revision_conjointe",
+    "effet_d_echeance_negociation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:commerce"
+   ],
+   "pourquoi": "usmca_revision_conjointe : le texte de l'accord prévoit une révision conjointe au sixième anniversaire et exige une confirmation écrite par chaque chef de gouvernement pour prolonger ou, en l'absence de confirmation, instaure une cadence annuelle — donc il fixe une échéance formelle autour de juillet 2026 qui gouverne la possibilité d'envoi d'un avis écrit.; effet_d_echeance_negociation : la règle"
+  },
+  {
+   "question": "43991",
+   "titre": "On July 8, 2026, will Marine Le Pen be ineligible to run in the 2027 French presidential election?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne traite de l'inéligibilité des candidats à l'élection présidentielle française (conditions de candidature, inéligibilité pénale ou administrative, décisions du Conseil constitutionnel), donc aucune n'affecte l'issue de la question."
+  },
+  {
+   "question": "43992",
+   "titre": "Will July 2026 be the warmest July on record, according to Copernicus?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne concerne les observations ou les procédures de Copernicus ni les phénomènes climatiques ; aucune ne modifie ce qu’on doit attendre pour savoir si Copernicus qualifiera juillet 2026 de plus chaud."
+  },
+  {
+   "question": "44117",
+   "titre": "Will James M. McDonald be sworn in as US Attorney for the Southern District of New York before August 22, 2026?",
+   "issue": 1,
+   "regles": [
+    "us_senat_cloture",
+    "us_confirmations_delais"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "politique-americaine:congres",
+    "politique-americaine:executif"
+   ],
+   "pourquoi": "us_senat_cloture: les nominations présidentielles au Sénat se confirment désormais à la majorité simple (pas 60 voix), ce qui change l'issue possible d'une nomination fédérale; us_confirmations_delais: les délais typiques de confirmation (quelques dizaines de jours, variable selon le contrôle du Sénat) influencent directement la probabilité qu'une nomination soit confirmée et que la personne soit "
+  },
+  {
+   "question": "44193",
+   "titre": "Will North Korea conduct a nuclear test before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "coree_du_nord_essais_nucleaires",
+    "calendriers_annonces_glissent",
+    "chefs_d_etat_sortie_irreguliere"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "humain:hierarchie",
+    "non-proliferation:dissuasion",
+    "non-proliferation:etats_du_seuil"
+   ],
+   "pourquoi": "coree_du_nord_essais_nucleaires : fixe un taux de base récent très bas (aucun essai depuis septembre 2017 malgré annonces), ce qui réduit l'attente d'un essai avant le 1er septembre 2026.\ncalendriers_annonces_glissent : montre que les dates annoncées pour des projets ou préparatifs ont tendance à glisser, rendant moins probables des essais annoncés comme imminents.\nchefs_d_etat_sortie_irreguliere "
+  },
+  {
+   "question": "44230",
+   "titre": "Will the IAEA conduct an on-site inspection at any of Iran's Natanz, Fordow, or Isfahan nuclear sites before September 1, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles fournies ne porte sur l'AIEA, les inspections nucléaires, l'Iran ou les procédures d'inspection ; aucune n'affecte donc l'issue de la question."
+  },
+  {
+   "question": "44239",
+   "titre": "Will Elon Musk be a trillionaire on August 31, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne porte directement sur la fortune personnelle d'Elon Musk ni n'impose un mécanisme (seuil, calendrier ou procédure) qui changerait de façon déterminante la probabilité qu'il atteigne 1 000 milliards de dollars d'ici le 31 août 2026."
+  },
+  {
+   "question": "44241",
+   "titre": "Will the Lincoln Memorial Reflecting Pool be fully repaired before September 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent",
+    "us_lois_de_finances_provisoires"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:budget",
+    "politique-americaine:congres"
+   ],
+   "pourquoi": "calendriers_annonces_glissent : les grands chantiers tendent à glisser fréquemment hors délai, ce qui réduit la probabilité qu'une réparation majeure soit achevée avant une date annoncée ; us_lois_de_finances_provisoires : les crédits fédéraux sont souvent votés sous forme de lois de finances provisoires, créant des interruptions et de l'incertitude de financement qui peuvent retarder des travaux "
+  },
+  {
+   "question": "44244",
+   "titre": "Will another company get dropped from the Dow Jones Industrial Average in July or August 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune règle de la liste ne concerne la gouvernance, le calendrier ou les critères de modification de la composition du Dow Jones Industrial Average."
+  },
+  {
+   "question": "44247",
+   "titre": "Will Virgin Galactic have a \"Going Concern\" substantial doubt statement in its 10-Q SEC filing for Q2 2026?",
+   "issue": 1,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La règle montre que les grands projets glissent quasi systématiquement : si les lancements ou la commercialisation de vols de Virgin Galactic sont retardés, cela réduit ou retarde les recettes et augmente le burn cash, ce qui augmente la probabilité qu'un auditeur exige une mention d'incertitude sur la continuité d'exploitation dans le 10‑Q du T2 2026."
+  },
+  {
+   "question": "44395",
+   "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "us_cour_supreme_calendrier",
+    "us_senat_cloture",
+    "us_confirmations_delais"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:congres",
+    "politique-americaine:executif",
+    "politique-americaine:tribunaux"
+   ],
+   "pourquoi": "us_cour_supreme_calendrier : la session de la Cour se termine fin juin/début juillet et les affaires ralentissent en été, donc les annonces de retraite se font souvent pendant l'été et affectent directement la probabilité d'une annonce avant le 1er septembre 2026. us_senat_cloture : depuis 6 avril 2017 la confirmation d'un juge de la Cour suprême se fait à la majorité simple, ce qui change forteme"
+  },
+  {
+   "question": "44406",
+   "titre": "Will Vladimir Putin visit Iran before September 1, 2026?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "chefs_d_etat_sortie_irreguliere : les sorties irrégulières de dirigeants sont très rares, donc le point de départ raisonnable est que Poutine restera en fonction et pourra faire des déplacements officiels avant le 1er septembre 2026. regimes_fermes_contestation : les campagnes de contestation réussissent de moins en moins dans les régimes autoritaires, ce qui diminue la probabilité d'un mouvement "
+  },
+  {
+   "question": "44414",
+   "titre": "Will a Tucker Carlson-founded political party file FEC Form 1 before September 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune règle fournie ne traite des obligations ou du calendrier d'enregistrement auprès de la FEC ; rien n'influence directement la date de dépôt d'un Form 1."
+  },
+  {
+   "question": "44448",
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before September 2026?",
+   "issue": 0,
+   "regles": [
+    "calendriers_annonces_glissent"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "pourquoi": "La loi d'airain des grands projets (« hors budget, hors délai ») montre que les dates de lancement annoncées glissent d'ordinaire, ce qui réduit la probabilité qu'un dépôt prévu (S‑1) ait lieu avant une échéance fixe comme septembre 2026."
+  },
+  {
+   "question": "44512",
+   "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation",
+    "coups_d_etat_frequence"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "chefs_d_etat_sortie_irreguliere: Les sorties irrégulières de dirigeants sont très rares (0,17 % des pays-mois), donc le point de départ raisonnable pour savoir si un dirigeant restera en poste est la continuité sauf échéance électorale ou limite de mandat. regimes_fermes_contestation: Les campagnes de résistance non violente ont un taux de succès en baisse (moins de 34 % dans les années 2010), ce "
+  },
+  {
+   "question": "44513",
+   "titre": "Will Donald Trump and Vladimir Putin speak on the phone in August 2026?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere",
+    "regimes_fermes_contestation",
+    "us_sanctions_frequence"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "humain:hierarchie",
+    "politique-americaine:sanctions"
+   ],
+   "pourquoi": "chefs_d_etat_sortie_irreguliere: Les sorties irrégulières de dirigeants sont très rares, donc il est raisonnable de partir du principe que Vladimir Putin restera en place et donc potentiellement joignable en août 2026.\nregimes_fermes_contestation: Les campagnes de contestation réussissent de moins en moins dans les régimes autoritaires, ce qui renforce l'attente de stabilité du pouvoir russe et do"
+  },
+  {
+   "question": "44544",
+   "titre": "Will Thomas Massie file to run for any elective office before August 25, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "44547",
+   "titre": "Will Mitch McConnell cast a roll-call vote in the U.S. Senate before September 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne porte directement sur la probabilité qu’un sénateur individuel (Mitch McConnell) participe à un scrutin public avant septembre 2026 ; les règles concernent des procédures générales, des calendriers d’élections ou des seuils institutionnels sans gouverner spécifiquement si/ quand il votera."
+  },
+  {
+   "question": "44693",
+   "titre": "Will the desktop market share of Linux exceed 8% in August 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune règle de la liste ne traite des parts de marché logicielles, des lancements/retards de systèmes d'exploitation ou d'un taux de base applicable à la part de marché desktop de Linux, donc aucune n'affecte directement l'issue."
+  },
+  {
+   "question": "44799",
+   "titre": "Will a bot finish in the top 5 of the Summer 2026 Metaculus Cup?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne concerne les compétitions de prévision, les tournois Metaculus, ou les performances de bots ; aucune n'affecte directement la procédure, le calendrier ou les seuils pertinents pour la Metaculus Cup."
+  },
+  {
+   "question": "44919",
+   "titre": "Will the United States launch an attack against JNIM in Mali during August 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": ""
+  },
+  {
+   "question": "44925",
+   "titre": "Will the Royal Mail raise prices on any letters or parcels before September 10, 2026?",
+   "issue": 1,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune règle fournie ne concerne la tarification, la régulation ou le calendrier opérationnel de Royal Mail au Royaume‑Uni ; aucune n'influence directement la probabilité d'une hausse des prix avant le 10/09/2026."
+  },
+  {
+   "question": "44986",
+   "titre": "Will the U.S. government's 30-year treasury bond remain in the  ≥5% \"danger zone\" for the entire month of August 2026?",
+   "issue": 1,
+   "regles": [
+    "us_fed_calendrier",
+    "us_lois_de_finances_provisoires"
+   ],
+   "rejetes": [],
+   "compartiments": [
+    "calendriers-echeances:banques_centrales",
+    "calendriers-echeances:dates_limites",
+    "politique-americaine:budget",
+    "politique-americaine:congres",
+    "politique-americaine:reserve_federale"
+   ],
+   "pourquoi": "us_fed_calendrier : Les décisions de la Fed qui déplacent fortement les taux d'intérêt (et donc influencent les rendements des Treasuries) sont prises surtout aux réunions programmées du FOMC — savoir s'il y a une réunion dans ou juste avant août 2026 change directement la probabilité d'un mouvement qui ferait tomber le 30‑year sous 5 %. us_lois_de_finances_provisoires : Le recours quasi systémati"
+  },
+  {
+   "question": "45015",
+   "titre": "Will Italy's Schengen suspension against Spain be lifted before August 30, 2026?",
+   "issue": 0,
+   "regles": [],
+   "rejetes": [],
+   "compartiments": [],
+   "pourquoi": "Aucune des règles listées ne porte sur les procédures Schengen ou les décisions nationales de rétablir/lever des contrôles aux frontières ; aucune ne change l'attente sur la date de levée de la suspension."
+  },
+  {
+   "question": "8393",
+   "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
+   "issue": 0,
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere"
+   ],
+   "rejetes": [
+    "effect_d_echeance_negociation"
+   ],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "pourquoi": "effect_d_echeance_negociation : les accords tendent à se conclure juste avant la date limite, donc l'approche de l'échéance rend une prolongation de dernière minute plus probable. chefs_d_etat_sortie_irreguliere : les sorties irrégulières de chefs d'État sont très rares, donc l'absence de bouleversement des dirigeants des parties facilite la continuité des négociations et la possibilité de renouve"
+  }
+ ]
+}
