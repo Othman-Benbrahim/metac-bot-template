@@ -1,0 +1,119 @@
+{
+ "decision_ensemble": {
+  "n": 666,
+  "crps_actuel": 0.58,
+  "crps_kalman": 0.6211,
+  "ecart_relatif": 0.0708,
+  "intervalle_90": [
+   0.013,
+   0.1463
+  ],
+  "adopte": false,
+  "couverture_80": {
+   "actuel": 0.764,
+   "kalman": 0.811
+  },
+  "couverture_60": {
+   "actuel": 0.583,
+   "kalman": 0.652
+  }
+ },
+ "par_serie": {
+  "UNRATE": {
+   "n": 110,
+   "crps_actuel": 0.2447,
+   "crps_kalman": 0.4687,
+   "ecart_relatif": 0.9154,
+   "intervalle_90": [
+    0.7087,
+    1.7562
+   ],
+   "adopte": false,
+   "couverture_80": {
+    "actuel": 0.809,
+    "kalman": 0.918
+   },
+   "couverture_60": {
+    "actuel": 0.618,
+    "kalman": 0.809
+   }
+  },
+  "UMCSENT": {
+   "n": 111,
+   "crps_actuel": 2.5595,
+   "crps_kalman": 2.5622,
+   "ecart_relatif": 0.001,
+   "intervalle_90": [
+    -0.0367,
+    0.0448
+   ],
+   "adopte": false,
+   "couverture_80": {
+    "actuel": 0.802,
+    "kalman": 0.793
+   },
+   "couverture_60": {
+    "actuel": 0.559,
+    "kalman": 0.613
+   }
+  },
+  "CPIAUCSL": {
+   "n": 98,
+   "crps_actuel": 0.2431,
+   "crps_kalman": 0.2535,
+   "ecart_relatif": 0.043,
+   "intervalle_90": [
+    -0.0367,
+    0.1557
+   ],
+   "adopte": false,
+   "couverture_80": {
+    "actuel": 0.735,
+    "kalman": 0.755
+   },
+   "couverture_60": {
+    "actuel": 0.551,
+    "kalman": 0.551
+   }
+  },
+  "CPILFESL": {
+   "n": 98,
+   "crps_actuel": 0.1401,
+   "crps_kalman": 0.1347,
+   "ecart_relatif": -0.0385,
+   "intervalle_90": [
+    -0.1211,
+    0.1047
+   ],
+   "adopte": false,
+   "couverture_80": {
+    "actuel": 0.735,
+    "kalman": 0.786
+   },
+   "couverture_60": {
+    "actuel": 0.531,
+    "kalman": 0.673
+   }
+  },
+  "TOKYO": {
+   "n": 249,
+   "crps_actuel": 0.1515,
+   "crps_kalman": 0.1592,
+   "ecart_relatif": 0.0509,
+   "intervalle_90": [
+    -0.0022,
+    0.1082
+   ],
+   "adopte": false,
+   "couverture_80": {
+    "actuel": 0.751,
+    "kalman": 0.803
+   },
+   "couverture_60": {
+    "actuel": 0.61,
+    "kalman": 0.631
+   }
+  }
+ },
+ "note": "écart relatif de CRPS Kalman/actuel − 1 (négatif = Kalman meilleur) ; adopté si l'intervalle à 90 % est entièrement sous 0 ; e-Stat : contenu non garanti par le gouvernement"
+}
