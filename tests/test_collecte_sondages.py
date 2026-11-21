@@ -110,3 +110,9 @@ def test_duels_et_mots_uniques_run_44916010855():
     assert cs.colonne("Luiz Inácio Lula da Silva", ["Lula PT", "F. Bolsonaro PL"]) == "Lula PT"
     assert not cs.page_convient("2026 Texas Attorney General election", "2026 Texas Republican Primary")
     assert not cs.page_convient("Opinion polling for the 2030 Hungarian parliamentary election", "next Hungarian parliamentary election", "2026-02-01")
+
+
+def test_fraicheur_run_44916476984():
+    ls = cs.sondages(HTML3, 2026)                          # sondages de mars et avril 2026
+    assert cs.choisir_table(ls, "2026-12-01", "John Rose", True) == (None, None)   # plus de 90 jours : refus
+    assert cs.moyennes(ls, "2026-12-01") == {}

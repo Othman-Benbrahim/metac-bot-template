@@ -32,7 +32,7 @@ REGLES_SONDAGES = {"sondages_erreur_comparee", "us_erreur_selon_temps_restant", 
                    "presidentielles_mode_de_scrutin", "seuils_parlements_nationaux_europe"}
 MOIS = {m[:3]: i for i, m in enumerate(("january february march april may june july august september october "
                                         "november december").split(), 1)}
-N_DERNIERS, MARGE_JOURS = 5, 3
+N_DERNIERS, MARGE_JOURS, FRAICHEUR_JOURS = 5, 3, 90   # un sondage de plus de 90 jours avant le jeu ne compte pas
 GENERIQUES = {"", "?", "majority", "lead", "others", "other", "oth", "undecided", "und", "n", "turnout", "abstention",
               "blank", "void", "nota", "candidates", "candidate", "party", "parties", "polling firm", "pollster", "sample",
               "sample size", "margin", "margin of error", "fieldwork date", "date", "date(s) administered", "o/u", "oth/ und",
@@ -205,6 +205,8 @@ def moyennes(lignes: list[dict], jeu: str, table: int | None = None) -> dict[str
     if table is not None:
         lignes = [l for l in lignes if l.get("table") == table]
     limite = date.fromisoformat(jeu) - timedelta(days=MARGE_JOURS)
+    debut = date.fromisoformat(jeu) - timedelta(days=FRAICHEUR_JOURS)
+    lignes = [l for l in lignes if l["fin"] >= debut]
     par: dict[str, list[tuple[date, float]]] = {}
     for l in lignes:
         if l["fin"] <= limite:
@@ -222,20 +224,21 @@ def choisir_table(lignes: list[dict], jeu: str, sujet_: str, primaire_de_parti: 
     colonne du sujet, avec le plus de sondages avant le jeu. Primaire d'un parti : les tableaux dont les noms portent
     une étiquette de parti (« (D) », « (R) ») sont des affiches générales, donc écartés."""
     limite = date.fromisoformat(jeu) - timedelta(days=MARGE_JOURS)
+    debut = date.fromisoformat(jeu) - timedelta(days=FRAICHEUR_JOURS)
     cands = []
     for t in sorted({l.get("table") for l in lignes}, key=lambda x: (x is None, x)):
-        ls = [l for l in lignes if l.get("table") == t and l["fin"] <= limite]
+        ls = [l for l in lignes if l.get("table") == t and debut <= l["fin"] <= limite]
         if not ls:
             continue
         noms = sorted({k for l in ls for k in l["valeurs"]})
         if primaire_de_parti and sum(bool(SUFFIXE_PARTI.search(n)) for n in noms) * 2 >= len(noms):
             continue
         col = colonne(sujet_, noms)
-        if col:
-            cands.append((len(ls), max(l["fin"] for l in ls), t, col))
+        if col and sum(m["moyenne"] for m in moyennes(lignes, jeu, t).values()) <= 110:   # scénarios mêlés : refus
+            cands.append((max(l["fin"] for l in ls), len(ls), t, col))
     if not cands:
         return None, None
-    _, _, t, col = max(cands, key=lambda c: (c[0], c[1]))
+    _, _, t, col = max(cands, key=lambda c: (c[0], c[1]))   # le tableau le plus récent, puis le plus fourni
     return t, col
 
 
@@ -371,7 +374,7 @@ def collecter() -> dict:
             t, col = choisir_table(info["lignes"], o["jeu"], su, primaire)
             moy = moyennes(info["lignes"], o["jeu"], t) if t is not None else {}
             statut = "ok" if col else ("sujet_absent_des_tableaux" if moyennes(info["lignes"], o["jeu"])
-                                       else "aucun_sondage_avant_le_jeu")
+                                       else "aucun_sondage_dans_les_90_jours_avant_le_jeu")
             out[o["question"]] = {"election": el, "statut": statut, "page": info["page"], "sujet": su,
                                   "colonne_sujet": col, "jeu": o["jeu"], "moyennes": moy}
     return {"source": "Wikipédia (en), CC BY-SA 4.0, via api.wikimedia.org ; seuls des nombres sont gardés",
