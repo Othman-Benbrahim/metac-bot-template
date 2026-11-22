@@ -1,0 +1,263 @@
+# 0.10.429 — fiche créée le 2026-11-22 (remarque de l'auteur, 5 h 35 : « la notion de corruption n'a pas été traitée, et
+# pourtant elle a de l'importance »). Jusqu'ici un seul compartiment de trois mots dans securite-publique (pont). Chiffres
+# vérifiés le 2026-11-22. Relations à vérifier sur sources. Acteurs publics dans leur rôle public seulement ; aucune
+# personne privée nommée.
+theme: corruption
+nom: Corruption (monde)
+declaration:
+  but: 'comprendre la corruption comme écosystème : où elle naît (marchés publics, ressources), comment elle circule
+    (blanchiment), qui la combat (agences, lois, presse) et ce qu''elle produit (défiance, contestation, perte d''aide) ;
+    score mondial moyen de 42 sur 100 à l''Indice de perception de la corruption 2025, 122 pays sur 182 sous 50, première
+    baisse en plus de dix ans (Transparency International, 10 février 2026)'
+  limites: dedans la grande corruption (au sommet de l'État), la corruption quotidienne (services), les marchés publics,
+    le blanchiment, les dispositifs de lutte, la presse d'enquête et les lanceurs d'alerte, la confiance publique ; dehors
+    le crime organisé et les trafics en général (securite-publique), les procédures politiques nationales
+    (politique-interieure), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (Transparency International, GAFI, Union européenne,
+    département de la Justice des États-Unis, agences nationales) ; une perception mesurée n'est pas une corruption
+    mesurée ; aucune personne privée
+  date: '2026-11-22'
+  espace: l'administration, le pays, les flux financiers mondiaux
+  temps: du jour (une perquisition) à la décennie (une captation installée)
+  vitesse: le jour (révélation, perquisition), le mois (démissions, procès), l'année (indices, lois)
+  taille: micro (un pot-de-vin) à macro (un État capté)
+compartiments:
+- id: perception
+  nom: Perception et mesure de la corruption
+  organisation: convention
+  elements:
+  - Indice de perception de la corruption 2025 - moyenne mondiale 42/100, 122 pays sur 182 sous 50 ; Danemark 89 en tête,
+    Somalie et Soudan du Sud 9 ; cinq pays au-dessus de 80 contre douze il y a dix ans ; depuis 2012, 31 pays en progrès,
+    50 en recul (Transparency International, 10 février 2026)
+  - reculs notés dans des démocraties - États-Unis 64, Royaume-Uni 70, France 66 (même source)
+  - une perception d'experts et d'entreprises, pas un comptage d'actes
+  acteurs:
+  - nom: Transparency International
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Indice de perception de la corruption (Transparency International, données téléchargeables)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: grande_corruption
+  nom: Grande corruption et captation de l'État
+  organisation: statut
+  elements:
+  - détournements et commissions au sommet de l'État, captation des institutions
+  - exemple - opération « Midas » en Ukraine, rendue publique le 10 novembre 2025 - commissions de 10 à 15 % sur les
+    contrats du secteur de l'énergie (Energoatom), plus de 111 millions de dollars et 12 millions d'euros blanchis entre
+    2020 et 2025 selon le bureau anticorruption NABU ; enquête préalable close en novembre 2026 (Ukrainska Pravda)
+  niveau:
+    espace: pays
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: corruption_quotidienne
+  nom: Corruption quotidienne (services publics, police, justice, santé)
+  organisation: societe
+  elements:
+  - pots-de-vin pour accéder à un service, un permis, un jugement
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours
+    taille: micro
+  traces:
+  - source: Baromètre mondial de la corruption (Transparency International, enquêtes auprès des ménages)
+    statut: a_brancher
+  - *id001
+- id: marches_publics
+  nom: Marchés publics et secteurs exposés (énergie, défense, mines, santé)
+  organisation: economie
+  elements:
+  - contrats publics, concessions, commandes d'armement
+  - secteurs à rente - énergie, minerais, infrastructures
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - *id001
+- id: blanchiment
+  nom: Blanchiment et sociétés écrans
+  organisation: economie
+  elements:
+  - circuits financiers, sociétés écrans, places offshore, immobilier
+  - liste grise et liste noire du GAFI (juridictions sous surveillance renforcée, revues à chaque plénière ; dernière le
+    30 octobre 2026)
+  acteurs:
+  - nom: GAFI (Groupe d'action financière)
+    taille: macro
+    espace: monde
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: GAFI, listes des juridictions sous surveillance (publiées après chaque plénière)
+    statut: a_brancher
+  - *id001
+- id: lutte
+  nom: Lutte contre la corruption (lois, agences, parquets)
+  organisation: convention
+  elements:
+  - Union européenne - directive 2026/1021 sur la lutte contre la corruption, publiée le 11 mai 2026 ; transposition en
+    24 mois ; amendes pour les entreprises jusqu'à 5 % du chiffre d'affaires mondial ou 40 millions d'euros pour
+    corruption et détournement (eucrim)
+  - États-Unis - application de la loi sur les pratiques de corruption à l'étranger (FCPA) suspendue par décret le
+    10 février 2025, reprise avec de nouvelles lignes directrices le 9 juin 2025, centrées sur les cartels, la
+    concurrence faite aux entreprises américaines et la sécurité nationale (Harvard Law School Forum)
+  - agences nationales (NABU en Ukraine), Parquet européen
+  acteurs:
+  - nom: Bureau national anticorruption d'Ukraine (NABU)
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  - nom: département de la Justice des États-Unis (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: pays et Union européenne
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: presse_alerte
+  nom: Presse d'enquête et lanceurs d'alerte
+  organisation: societe
+  elements:
+  - enquêtes journalistiques, fuites de documents, consortiums de journalistes
+  - protection des lanceurs d'alerte
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: jours (révélation)
+    taille: méso
+  traces:
+  - *id001
+- id: confiance
+  nom: Confiance publique et réactions
+  organisation: psychologique
+  elements:
+  - défiance envers les institutions, colère, manifestations contre la corruption
+  - conditions de gouvernance posées par les bailleurs et les alliés
+  niveau:
+    espace: pays
+    temps: mois à années
+    vitesse: semaines
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: marches_publics
+  vers: grande_corruption
+  effet: +
+  delai: années
+  force: forte
+  coupure: transparence des contrats et contrôle indépendant
+  statut: a_verifier
+  texte: les gros contrats publics et les secteurs à rente offrent les occasions de commissions (cas Midas, énergie)
+- de: blanchiment
+  vers: grande_corruption
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: transparence des bénéficiaires effectifs
+  statut: a_verifier
+  texte: la possibilité de blanchir les fonds rend la grande corruption profitable
+- de: lutte
+  vers: grande_corruption
+  effet: '-'
+  delai: mois à années
+  force: inconnue
+  coupure: agences affaiblies ou poursuites suspendues
+  statut: a_verifier
+  texte: des agences indépendantes et des lois appliquées font reculer la grande corruption
+- de: presse_alerte
+  vers: lutte
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: répression de la presse
+  statut: a_verifier
+  texte: les révélations déclenchent des enquêtes et des poursuites
+- de: grande_corruption
+  vers: confiance
+  effet: '-'
+  delai: semaines
+  force: forte
+  coupure: sanction rapide et visible
+  statut: a_verifier
+  texte: un scandale révélé fait chuter la confiance et peut déclencher démissions et manifestations
+- de: grande_corruption
+  vers: perception
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: aucune
+  statut: a_verifier
+  texte: la corruption perçue fait baisser le score de l'indice, avec retard (le compartiment cible lit ici le score)
+- de: corruption_quotidienne
+  vers: confiance
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les pots-de-vin du quotidien usent la confiance dans l'État
+ponts:
+- depuis: corruption_quotidienne
+  vers: securite-publique:corruption
+  nature: même phénomène, vu depuis la sécurité publique (complicités, protection)
+  type: meme
+- depuis: blanchiment
+  vers: securite-publique:sanctions
+  nature: sanctions et gel d'avoirs contre les réseaux
+- depuis: grande_corruption
+  vers: politique-interieure:procedures
+  nature: affaires et procédures politiques nationales
+- depuis: lutte
+  vers: union-europeenne:institutions
+  nature: la directive européenne de 2026
+- depuis: lutte
+  vers: politique-americaine:executif
+  nature: la suspension puis la reprise ciblée du FCPA
+- depuis: grande_corruption
+  vers: russie-ukraine:soutiens
+  nature: les scandales ukrainiens pèsent sur le soutien des alliés
+  type: influence
+- depuis: confiance
+  vers: humain:passage_acte
+  nature: colère contre la corruption et passage à l'acte collectif
+- depuis: marches_publics
+  vers: minerais-critiques:concentration
+  nature: rente minière et contrats de concession
+- depuis: grande_corruption
+  vers: plancher-social:inegalites
+  nature: la captation creuse les inégalités
+- depuis: lutte
+  vers: dette-emergents:fmi
+  nature: conditions de gouvernance des programmes du FMI
