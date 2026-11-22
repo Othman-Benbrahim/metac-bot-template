@@ -1,12 +1,16 @@
 # 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
 # que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+# 0.10.417 (2026-11-22, décision de l'auteur 3 h 46) : quatrième des « plus gros trous » : couche d'ozone, qualité de
+# l'air, plastiques, substances chimiques nouvelles, conventions et traités.
 theme: environnement-dechets
-nom: Environnement, biodiversité et déchets
+nom: Environnement, pollutions et substances nouvelles
 declaration:
-  but: situer les questions d'environnement générales, de biodiversité, de déchets et de pollution chimique que nos fiches
-    climatiques et biogéochimiques ne couvrent pas
-  limites: dedans environnement en général, biodiversité, déchets et économie circulaire, pollution par des substances chimiques
-    ; dehors le climat (climat-extremes), les cycles (cycles-biogeochimiques), la forêt (foret-et-sols-vivants)
+  but: situer l'environnement général, la biodiversité, les pollutions de l'air, de l'eau et des sols, les plastiques, les
+    substances chimiques nouvelles (limite planétaire franchie selon Persson et al., 2022), la couche d'ozone et les traités
+    qui les encadrent
+  limites: dedans environnement en général, biodiversité, couche d'ozone, qualité de l'air, plastiques, substances chimiques,
+    conventions et traités ; dehors le climat (climat-extremes), les cycles (cycles-biogeochimiques), la forêt (foret-et-sols-vivants),
+    le corps (corps-humain), l'eau douce (eau-douce-potable), sauf par les ponts
   observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
     identifiés dans listes/emetteurs.txt ; aucune personne privée
   date: '2026-11-22'
@@ -41,28 +45,167 @@ compartiments:
     taille: macro
   traces: *id001
 - id: dechets
-  nom: Déchets et économie circulaire
+  nom: Plastiques (production, déchets, recyclage, fuite)
   organisation: technique
   elements:
-  - déchets
-  - élimination
-  - valorisation des déchets
+  - deux fois plus de déchets plastiques qu'il y a vingt ans, dont 9 % recyclés (OCDE, Global Plastics Outlook)
+  - production en hausse de 79 % entre 2000 et 2015 (Persson et al., 2022)
+  - déchets, élimination, valorisation
   - économie circulaire
   niveau:
     espace: pays
     temps: années
     vitesse: mois
     taille: méso
-  traces: *id001
+  traces:
+  - source: OCDE, Global Plastics Outlook (production, déchets, recyclage)
+    statut: a_brancher
+  - &id002
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+  acteurs:
+  - nom: l'industrie chimique et plastique (en agrégat)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: economie
+    facette: collectif
 - id: pollution_chimique
-  nom: Pollution chimique
+  nom: Substances chimiques nouvelles (PFAS, pesticides, métaux lourds, additifs)
   organisation: chimique
   elements:
+  - environ 350 000 substances chimiques fabriquées sur le marché ; production chimique multipliée par 50 depuis 1950 (Persson
+    et al., 2022)
+  - PFAS (« polluants éternels »)
+  - pesticides
+  - métaux lourds (mercure, plomb)
+  - additifs des plastiques (plus de 10 000 substances)
   - solvants (hexane)
   niveau:
-    espace: lieux
-    temps: années
+    espace: sites à monde
+    temps: années à décennies
+    vitesse: années
+    taille: micro à macro
+  traces:
+  - source: registre REACH de l'Agence européenne des produits chimiques (à vérifier)
+    statut: a_brancher
+  - *id002
+  acteurs:
+  - nom: une agence de régulation chimique
+    taille: méso
+    espace: pays ou Union
+    vitesse: années
+    organisation: statut
+    facette: collectif
+- id: ozone
+  nom: Couche d'ozone
+  organisation: chimique
+  elements:
+  - trou d'ozone 2025 près de 30 % plus petit que le record de 2006, refermé le 1er décembre (OMM)
+  - retour aux valeurs de 1980 vers 2066 en Antarctique, 2045 en Arctique, 2040 ailleurs (évaluation de 2022)
+  - substances appauvrissant l'ozone en baisse d'environ un tiers depuis le pic de 2000
+  niveau:
+    espace: stratosphère, pôles et monde
+    temps: décennies
+    vitesse: saisons à décennies
+    taille: macro
+  traces:
+  - source: bulletins de l'OMM ; surveillance Copernicus (CAMS)
+    statut: a_brancher
+  - *id002
+- id: qualite_air
+  nom: Qualité de l'air (particules, ozone au sol, dioxyde d'azote)
+  organisation: chimique
+  elements:
+  - environ 7 millions de décès prématurés par an liés à l'air extérieur et domestique (OMS)
+  - 99 % de l'humanité au-dessus de la valeur guide de l'OMS pour les particules fines
+  niveau:
+    espace: villes et pays
+    temps: heures à années
+    vitesse: jours
+    taille: micro à macro
+  traces:
+  - source: OpenAQ (licence à vérifier) ; OMS
+    statut: a_brancher
+  - *id002
+- id: traites
+  nom: Conventions et traités (Montréal, Stockholm, Minamata, traité sur le plastique)
+  organisation: convention
+  elements:
+  - protocole de Montréal (1987), ratifié par pratiquement tous les pays (OMM)
+  - convention de Stockholm (polluants organiques persistants)
+  - convention de Minamata (mercure)
+  - 'traité sur le plastique : échec des négociations de Genève le 15 août 2025, sur le plafonnement de la production (Al
+    Jazeera)'
+  niveau:
+    espace: monde
+    temps: années à décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: état des ratifications aux Nations unies ; calendrier des négociations du traité sur le plastique
+    statut: a_brancher
+  - *id002
+  acteurs:
+  - nom: la coalition de la haute ambition (Union européenne, Royaume-Uni, Canada, nombreux pays d'Afrique et d'Amérique latine)
+    taille: macro
+    espace: monde
     vitesse: mois
-    taille: micro à méso
-  traces: *id001
-relations: []
+    organisation: geopolitique
+    facette: collectif
+  - nom: le groupe des pays producteurs de pétrole (Arabie saoudite, Koweït, Russie, Iran, Malaisie)
+    taille: macro
+    espace: monde
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+relations:
+- de: traites
+  vers: ozone
+  effet: +
+  delai: décennies
+  force: forte
+  coupure: non-respect du protocole
+  statut: a_verifier
+  texte: le protocole de Montréal fait baisser les substances appauvrissant l'ozone et refermer le trou (OMM)
+- de: dechets
+  vers: pollution_chimique
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les plastiques portent plus de 10 000 additifs chimiques dans l'environnement (Persson et al., 2022)
+- de: traites
+  vers: dechets
+  effet: '-'
+  delai: années
+  force: inconnue
+  coupure: échec des négociations
+  statut: a_verifier
+  texte: un traité contraignant limiterait la production et la fuite de plastique ; l'opposition des États producteurs de
+    pétrole a fait échouer Genève en 2025
+- de: pollution_chimique
+  vers: biodiversite
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: pesticides et substances persistantes pèsent sur le vivant
+ponts:
+- depuis: qualite_air
+  vers: corps-humain:pollution
+  nature: 'même phénomène : l''air pollué et le corps'
+- depuis: dechets
+  vers: oceans-et-fleuves:plastiques
+  nature: les plastiques finissent dans l'océan
+- depuis: ozone
+  vers: climat-extremes:chimie_atmosphere
+  nature: chimie de l'atmosphère
+- depuis: traites
+  vers: energie-mondiale:decisions
+  nature: le pétrole, matière première du plastique, et les États producteurs
+- depuis: pollution_chimique
+  vers: eau-douce-potable:qualite
+  nature: substances chimiques dans l'eau douce
