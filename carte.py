@@ -51,7 +51,8 @@ SEUIL_DEFAUT = 2.0
 GAIN_DEFAUT = 0.5
 SEUIL_PLANCHER = 0.5
 REVISION = 1.5
-REVISIONS_MAX = 2
+REVISIONS_MAX = 3          # 0.10.437 : 2 → 3 ; les 228 ponts transversaux (0.10.435) ouvrent plus de chemins précoces, qui
+                           # épuisaient les révisions avant l'arrivée de l'effet fort et tardif (intention de 0.10.325)
 # 0.10.326 (Schelling) : masse critique — seuils individuels distribués (mu, sigma en |z|) ; bornes 0,3 et 1,5 comme le
 # seuil net, dont elle est la version continue (sigma → 0 redonne le seuil).
 MU_DEFAUT = 2.0
