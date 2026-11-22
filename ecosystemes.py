@@ -186,6 +186,64 @@ TYPES_PONT = ("meme", "influence", "voisinage")
 CLES_IDENTITE = {"total", "termes", "texte"}
 
 
+# 0.10.461 (conception validée par l'auteur, 2026-11-22, 17 h 48 et 17 h 52) : une fiche peut déclarer ses CYCLES et ses
+# TENSIONS (le seuil est rangé dans la tension). Facultatif. Principe de l'auteur : on part du mécanisme pour l'expliquer,
+# l'identification (période, source) vient ensuite (« l'état précède l'essence ») : un cycle doit décrire son mécanisme ;
+# sa période et ses sources sont facultatives, et son statut dit où l'on en est (mecanisme puis identifie).
+SORTES_CYCLE = ("force", "endogene", "conventionnel")
+STATUTS_CYCLE = ("mecanisme", "identifie")
+FORMES_TENSION = ("cumulative", "oppositionnelle", "desynchronisation")
+HYSTERESIS = ("oui", "non", "inconnu")
+CLES_CYCLE = {"id", "nom", "sorte", "mecanisme", "periode", "phase_vulnerable", "compartiments", "sources", "statut"}
+CLES_TENSION = {"id", "nom", "forme", "entre", "stock", "module_par", "mesure", "seuil", "statut", "texte"}
+CLES_SEUIL = {"habitus", "indicateurs_lents", "bascule", "hysteresis"}
+
+
+def erreurs_cycles_tensions(fiche: dict, ids: set[str]) -> list[str]:
+    t, err = fiche.get("theme", "?"), []
+    cycles = fiche.get("cycles") or []
+    ids_cycles = set()
+    for c in cycles:
+        lab = f"{t} cycle {c.get('id')!r}"
+        for k in set(c) - CLES_CYCLE:
+            err.append(f"{lab} : clé inconnue {k!r}")
+        ids_cycles.add(c.get("id"))
+        if c.get("sorte") not in SORTES_CYCLE:
+            err.append(f"{lab} : sorte {c.get('sorte')!r} hors de {SORTES_CYCLE}")
+        if not str(c.get("mecanisme") or "").strip():
+            err.append(f"{lab} : le mécanisme doit être décrit (on l'explique avant de l'identifier)")
+        if c.get("statut", "mecanisme") not in STATUTS_CYCLE:
+            err.append(f"{lab} : statut {c.get('statut')!r} hors de {STATUTS_CYCLE}")
+        if c.get("statut") == "identifie" and not (c.get("periode") and c.get("sources")):
+            err.append(f"{lab} : un cycle « identifie » porte sa période et ses sources")
+        for x in c.get("compartiments") or []:
+            if x not in ids:
+                err.append(f"{lab} : « {x} » n'est pas un compartiment de la fiche")
+    for x in fiche.get("tensions") or []:
+        lab = f"{t} tension {x.get('id')!r}"
+        for k in set(x) - CLES_TENSION:
+            err.append(f"{lab} : clé inconnue {k!r}")
+        if x.get("forme") not in FORMES_TENSION:
+            err.append(f"{lab} : forme {x.get('forme')!r} hors de {FORMES_TENSION}")
+        entre = x.get("entre") or []
+        if len(entre) != 2:
+            err.append(f"{lab} : « entre » nomme exactement deux pôles")
+        for pole in entre:
+            if ":" not in str(pole) and pole not in ids:
+                err.append(f"{lab} : pôle « {pole} » absent de la fiche (écrire theme:compartiment pour un autre écosystème)")
+        if x.get("forme") == "cumulative" and x.get("stock") not in entre:
+            err.append(f"{lab} : une tension cumulative désigne son stock (« stock », l'un des deux pôles)")
+        for m in x.get("module_par") or []:
+            if ":" not in str(m) and m not in ids_cycles:
+                err.append(f"{lab} : « {m} » n'est pas un cycle de la fiche (écrire theme:cycle pour un autre écosystème)")
+        sl = x.get("seuil") or {}
+        for k in set(sl) - CLES_SEUIL:
+            err.append(f"{lab} seuil : clé inconnue {k!r}")
+        if sl and sl.get("hysteresis", "inconnu") not in HYSTERESIS:
+            err.append(f"{lab} seuil : hysteresis {sl.get('hysteresis')!r} hors de {HYSTERESIS}")
+    return err
+
+
 def cles_inconnues(fiche: dict) -> list[str]:
     """Une virgule non protégée dans une ligne YAML { … } fabrique une clé parasite et tronque le texte : on la refuse."""
     t, err = fiche.get("theme", "?"), []
@@ -304,6 +362,7 @@ def valider(fiche: dict) -> list[str]:
         if x.get("total") not in ids or not termes or any(k not in ids for k in termes) \
                 or not all(isinstance(v, (int, float)) and v != 0 for v in termes.values()):
             err.append(f"{t} identité {x.get('total')!r} : total et termes doivent être des compartiments, coefficients non nuls")
+    err += erreurs_cycles_tensions(fiche, ids)
     for p in fiche.get("ponts") or []:
         if p.get("depuis") not in ids:
             err.append(f"{t} pont : « {p.get('depuis')} » n'est pas un compartiment de la fiche")
@@ -337,7 +396,10 @@ def assembler(fiches: dict[str, dict]) -> dict:
                           "type": p.get("type", "influence")})
     identites = [{"total": f"{t}:{x['total']}", "termes": {f"{t}:{k}": v for k, v in x["termes"].items()},
                   "texte": x.get("texte")} for t, f in fiches.items() for x in f.get("identites") or []]
+    cycles = [{"theme": t, **c} for t, f in fiches.items() for c in f.get("cycles") or []]
+    tensions = [{"theme": t, **x} for t, f in fiches.items() for x in f.get("tensions") or []]
     return {"themes": sorted(fiches), "noeuds": noeuds, "relations": liens, "ponts": ponts, "identites": identites,
+            "cycles": cycles, "tensions": tensions,
             "bilan": {"themes": len(fiches), "compartiments": len(noeuds), "relations": len(liens), "ponts": len(ponts),
                       "ponts_en_attente": sum(not p["resolu"] for p in ponts),
                       "relations_a_verifier": sum(l["statut"] == "a_verifier" for l in liens),

@@ -331,3 +331,73 @@ ponts:
 - depuis: corps
   vers: humain:stress_chronique
   nature: la soif et l'insécurité hydrique comme stress
+# 0.10.461 (conception validée par l'auteur, 2026-11-22, 17 h 48 et 17 h 52) : fiche pilote des cycles et des tensions.
+# On décrit d'abord le mécanisme ; la période et les sources viennent avec l'identification (statut « identifie »).
+cycles:
+- id: saison_hydrologique
+  nom: Saison hydrologique (pluies, fonte des neiges, étiage)
+  sorte: force
+  mecanisme: le rayonnement solaire et la circulation atmosphérique imposent une alternance de saisons humides et
+    sèches ; les ressources se rechargent en saison humide et baissent à l'étiage, quand les prélèvements agricoles sont
+    au plus haut
+  periode: 1 an
+  phase_vulnerable: fin de saison sèche, étiage d'été
+  compartiments: [ressources, prelevements, stress]
+  statut: mecanisme
+- id: oscillations_climatiques
+  nom: Oscillations climatiques (El Niño et La Niña, dipôle de l'océan Indien)
+  sorte: endogene
+  mecanisme: le couplage entre l'océan et l'atmosphère oscille de lui-même et déplace les pluies d'une région à l'autre ;
+    une phase sèche répétée sur plusieurs années vide les réserves plus vite qu'elles ne se reconstituent
+  phase_vulnerable: les années de phase sèche pour la région considérée
+  compartiments: [ressources, stress]
+  statut: mecanisme
+- id: calendrier_partage
+  nom: Calendriers de partage (campagnes d'irrigation, quotas, remplissage des barrages, traités)
+  sorte: conventionnel
+  mecanisme: des règles humaines fixent quand et combien chacun prélève ; leurs échéances (ouverture d'une campagne,
+    remplissage d'un barrage, renégociation ou suspension d'un traité) concentrent la tension à des dates connues d'avance
+  phase_vulnerable: les échéances (remplissage, renégociation, suspension)
+  compartiments: [gouvernance, tensions, prelevements]
+  statut: mecanisme
+tensions:
+- id: epuisement_nappes
+  nom: Épuisement des nappes (pompage plus rapide que la recharge)
+  forme: cumulative
+  entre: [prelevements, nappes]
+  stock: nappes
+  module_par: [saison_hydrologique, oscillations_climatiques]
+  mesure:
+    indicateur: anomalie de masse d'eau souterraine mesurée par satellite (missions GRACE)
+  seuil:
+    habitus: règles communautaires de partage (tours d'eau) et respect des quotas
+    indicateurs_lents: [ancienneté et respect des institutions locales de l'eau]
+    bascule: assèchement durable de la nappe, abandon des puits, intrusion d'eau salée près des côtes
+    hysteresis: oui
+  statut: a_verifier
+  texte: chaque saison où l'on pompe plus que la recharge laisse un déficit qui s'accumule dans la nappe
+- id: amont_aval
+  nom: Amont contre aval (bassins partagés entre États)
+  forme: oppositionnelle
+  entre: [gouvernance, tensions]
+  module_par: [calendrier_partage, oscillations_climatiques]
+  seuil:
+    habitus: traités et commissions de bassin anciens, et leur respect
+    indicateurs_lents: [ancienneté des traités de partage, fréquence des réunions des commissions]
+    bascule: rupture d'un traité, incidents armés autour d'un ouvrage
+    hysteresis: inconnu
+  statut: a_verifier
+  texte: 'l''État d''amont contrôle le débit de l''État d''aval ; la tension est latente tant que les règles de partage
+    tiennent, et s''active aux échéances (remplissage d''un barrage, sécheresse, suspension d''un traité)'
+- id: coutume_marche
+  nom: Droits d'eau coutumiers contre droit de l'État et marché de l'eau
+  forme: desynchronisation
+  entre: [gouvernance, acces]
+  seuil:
+    habitus: systèmes communautaires d'irrigation transmis de génération en génération
+    indicateurs_lents: [part de l'irrigation gérée en commun, conflits d'usage portés en justice]
+    bascule: abandon des systèmes communautaires, privatisation de l'accès
+    hysteresis: inconnu
+  statut: a_verifier
+  texte: la norme ancienne (le partage coutumier) et la nouvelle (le droit écrit, le prix) n'avancent pas à la même
+    vitesse ; la tension croît avec l'écart

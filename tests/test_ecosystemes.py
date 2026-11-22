@@ -81,3 +81,26 @@ def test_trois_sortes_de_ponts():
     f = ec.charger()
     types = {p.get("type", "influence") for x in f.values() for p in x.get("ponts") or []}
     assert types == {"meme", "influence", "voisinage"}
+
+
+def test_cycles_et_tensions():
+    """0.10.461 : cycles (mécanisme obligatoire, période et sources seulement pour « identifie ») et tensions (deux
+    pôles, stock pour une tension cumulative, seuil avec hystérésis)."""
+    import ecosystemes as eco
+    base = {"theme": "t", "nom": "n", "declaration": {}, "relations": [],
+            "compartiments": [{"id": "a"}, {"id": "b"}]}
+    ok = dict(base, cycles=[{"id": "c", "sorte": "force", "mecanisme": "parce que"}],
+              tensions=[{"id": "x", "forme": "cumulative", "entre": ["a", "b"], "stock": "b", "module_par": ["c"],
+                         "seuil": {"hysteresis": "oui"}}])
+    assert not eco.erreurs_cycles_tensions(ok, {"a", "b"})
+    sans_meca = dict(base, cycles=[{"id": "c", "sorte": "force"}])
+    assert any("mécanisme" in e for e in eco.erreurs_cycles_tensions(sans_meca, {"a", "b"}))
+    identifie_nu = dict(base, cycles=[{"id": "c", "sorte": "force", "mecanisme": "m", "statut": "identifie"}])
+    assert any("identifie" in e for e in eco.erreurs_cycles_tensions(identifie_nu, {"a", "b"}))
+    sans_stock = dict(base, tensions=[{"id": "x", "forme": "cumulative", "entre": ["a", "b"]}])
+    assert any("stock" in e for e in eco.erreurs_cycles_tensions(sans_stock, {"a", "b"}))
+    un_pole = dict(base, tensions=[{"id": "x", "forme": "oppositionnelle", "entre": ["a"]}])
+    assert any("deux pôles" in e for e in eco.erreurs_cycles_tensions(un_pole, {"a", "b"}))
+    fiches = eco.charger()
+    eau = fiches["eau-douce-potable"]
+    assert len(eau["cycles"]) == 3 and len(eau["tensions"]) == 3
