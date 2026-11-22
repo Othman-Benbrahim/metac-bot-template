@@ -1,0 +1,226 @@
+# 0.10.453 — fiche créée le 2026-11-22 (angle mort signalé, accord de l'auteur 9 h 23) : organisations internationales et droit
+# international comme écosystème, jusque-là éparpillés. Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: organisations-internationales
+nom: Organisations internationales et droit international
+declaration:
+  but: 'voir le système multilatéral comme un écosystème sous tension : budget ordinaire de l''ONU ramené à 3,45 milliards de dollars pour 2026 (−15 %, près de 19 % des postes supprimés) ; retrait des États-Unis de l''OMS (janvier 2026) et de 66 organisations ; sanctions américaines contre la Cour pénale internationale et départs de cinq États en un an'
+  limites: 'dedans l''ONU et son budget, le Conseil de sécurité, la justice internationale, les institutions financières, le commerce mondial, la santé mondiale, le climat, les retraits, les clubs de puissances, le droit international ; dehors le régime nucléaire (non-proliferation), l''Union européenne (union-europeenne), sauf par les ponts'
+  observateur: 'notre carte, regard extérieur ; sources publiques (ONU, OMS, presse) ; aucune personne privée'
+  date: '2026-11-22'
+  espace: 'le monde'
+  temps: 'de l''année au siècle'
+  vitesse: 'le mois (une résolution), l''année (un budget), la décennie'
+  taille: 'macro'
+compartiments:
+- id: onu
+  nom: Système des Nations unies (budget, réforme)
+  organisation: convention
+  elements:
+  - budget ordinaire 2026 - 3,45 milliards de dollars adopté le 30 décembre 2025, reflet d'une baisse proposée de 15 % ; près de 19 % des postes supprimés (2 900) ; arriérés de 1,586 milliard de dollars (ONU, repris par l'IISD)
+  - 193 États membres ; réforme « UN80 »
+  acteurs:
+  - nom: Assemblée générale des Nations unies
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - &id001
+    source: ONU, presse (IISD, Al Jazeera)
+    statut: a_brancher
+- id: conseil_securite
+  nom: Conseil de sécurité (veto des cinq membres permanents)
+  organisation: geopolitique
+  elements:
+  - Chine, États-Unis, France, Royaume-Uni, Russie disposent du veto ; blocages répétés sur l'Ukraine et Gaza
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: semaines
+    taille: macro
+  traces:
+  - *id001
+- id: justice_internationale
+  nom: Justice internationale (CPI, CIJ)
+  organisation: convention
+  elements:
+  - Cour pénale internationale - 125 États membres ; une douzaine de membres de son personnel sanctionnés par les États-Unis ; retraits annoncés par le Burkina Faso, le Mali et le Niger (2025), le Tchad et le Venezuela (2026) ; la Hongrie est revenue sur son départ (AP, 11 septembre 2026)
+  - Cour internationale de justice (différends entre États)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: AP, As Trump squeezes the International Criminal Court, more countries are leaving (11 septembre 2026)
+    statut: a_brancher
+- id: institutions_financieres
+  nom: FMI, Banque mondiale, banques de développement
+  organisation: economie
+  elements:
+  - prêteurs de dernier ressort et financeurs du développement, avec conditions
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: commerce_mondial
+  nom: Commerce mondial (OMC)
+  organisation: convention
+  elements:
+  - organe d'appel de l'OMC paralysé depuis fin 2019 faute de nomination de juges ; montée des droits de douane unilatéraux
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: sante_mondiale
+  nom: Santé mondiale (OMS)
+  organisation: convention
+  elements:
+  - retrait des États-Unis de l'OMS achevé en janvier 2026 (déclaration de l'OMS, 24 janvier 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: OMS, déclaration sur la notification de retrait des États-Unis (24 janvier 2026)
+    statut: a_brancher
+- id: retraits
+  nom: Retraits et contournement du multilatéralisme
+  organisation: geopolitique
+  elements:
+  - mémorandum présidentiel du 7 janvier 2026 - retrait des États-Unis de 66 organisations (31 entités de l'ONU dont la convention-cadre sur le climat, 35 autres dont le GIEC) (Al Jazeera)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: clubs_puissances
+  nom: Clubs de puissances (G7, G20, OCS, BRICS)
+  organisation: geopolitique
+  elements:
+  - forums sans traité ni secrétariat fort, où se négocient les grandes orientations
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: droit_international
+  nom: Droit international (traités, droit de la guerre, droit de la mer)
+  organisation: convention
+  elements:
+  - Charte des Nations unies, conventions de Genève, convention sur le droit de la mer, traités de désarmement
+  niveau:
+    espace: monde
+    temps: siècles
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: retraits
+  vers: onu
+  effet: '-'
+  delai: années
+  force: forte
+  coupure: contributions d'autres États
+  statut: a_verifier
+  texte: les retraits et les arriérés privent l'ONU de moyens (budget 2026 en baisse de 15 %)
+- de: retraits
+  vers: sante_mondiale
+  effet: '-'
+  delai: années
+  force: forte
+  coupure: financements de remplacement
+  statut: a_verifier
+  texte: le départ du premier contributeur affaiblit l'OMS
+- de: conseil_securite
+  vers: justice_internationale
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: renvoi par le Conseil
+  statut: a_verifier
+  texte: le veto empêche des renvois devant la justice internationale
+- de: retraits
+  vers: justice_internationale
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les sanctions et la pression américaines poussent des États à quitter la CPI
+- de: clubs_puissances
+  vers: onu
+  effet: '-'
+  delai: décennies
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: les décisions se déplacent vers des clubs restreints
+- de: droit_international
+  vers: justice_internationale
+  effet: '+'
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les traités fondent la compétence des cours
+ponts:
+- depuis: conseil_securite
+  vers: non-proliferation:conseil_securite
+  nature: le même Conseil, vu depuis la non-prolifération
+  type: meme
+- depuis: conseil_securite
+  vers: iran-nucleaire:conseil_securite
+  nature: le Conseil et le dossier iranien
+  type: voisinage
+- depuis: justice_internationale
+  vers: dirigeants-elus:justice_immunites
+  nature: mandats d'arrêt contre des dirigeants
+  type: voisinage
+- depuis: institutions_financieres
+  vers: dette-emergents:fmi
+  nature: le FMI vu depuis la dette
+  type: meme
+- depuis: commerce_mondial
+  vers: rivalite-sino-americaine:commerce
+  nature: la guerre commerciale contourne l'OMC
+  type: voisinage
+- depuis: sante_mondiale
+  vers: epidemies:autorites
+  nature: les autorités sanitaires face aux épidémies
+- depuis: retraits
+  vers: environnement-dechets:climat_politique
+  nature: retrait de la convention climat et du GIEC
+- depuis: onu
+  vers: plancher-social:protection_sociale
+  nature: l'aide humanitaire et sociale de l'ONU en baisse
+- depuis: clubs_puissances
+  vers: frontieres:blocs
+  nature: clubs et blocs
+  type: voisinage
+- depuis: droit_international
+  vers: oceans-et-fleuves:haute_mer
+  nature: le traité sur la haute mer
+  type: voisinage
+- depuis: retraits
+  vers: politique-americaine:executif
+  nature: décisions de l'exécutif américain
+  type: voisinage

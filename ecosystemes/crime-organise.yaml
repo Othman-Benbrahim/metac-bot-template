@@ -1,0 +1,212 @@
+# 0.10.453 — fiche créée le 2026-11-22 (angle mort signalé, accord de l'auteur 9 h 23) : crime organisé et économie illicite comme
+# écosystème. Agrégats et groupes publiquement documentés seulement. Chiffres vérifiés le 2026-11-22. Relations à vérifier.
+theme: crime-organise
+nom: Crime organisé et économie illicite
+declaration:
+  but: 'voir l''économie illicite comme un écosystème mondial relié au reste : 316 millions de consommateurs de drogues en 2023 ; production record de cocaïne, 3 708 tonnes (ONUDC, 2025) ; escroqueries organisées depuis l''Asie du Sud-Est, de 88 à 114 milliards de dollars de pertes en 2025 (ONUDC, 2026) ; blanchiment, traite, trafics d''armes et d''espèces'
+  limites: 'dedans les drogues, les cartels et mafias, l''escroquerie et la cybercriminalité, la traite des êtres humains, le blanchiment, les trafics d''armes et d''espèces, la captation d''États, la répression ; dehors la sécurité publique nationale (securite-publique), la corruption (corruption), sauf par les ponts'
+  observateur: 'notre carte, regard extérieur ; sources publiques (ONUDC, presse) ; aucune personne privée'
+  date: '2026-11-22'
+  espace: 'le quartier, la route de trafic, le monde'
+  temps: 'du jour à la décennie'
+  vitesse: 'le jour, le mois, l''année'
+  taille: 'micro (un réseau) à macro (des centaines de milliards)'
+compartiments:
+- id: drogues
+  nom: Marchés des drogues
+  organisation: economie
+  elements:
+  - 316 millions de consommateurs en 2023 (6 % des 15-64 ans) ; cannabis 244 millions, opioïdes 61, amphétamines 30,7, cocaïne 25 millions (ONUDC, Rapport mondial sur les drogues 2025)
+  - cocaïne - production de 3 708 tonnes (+34 %), saisies record de 2 275 tonnes ; captagon vers la péninsule Arabique (même source)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: semaines
+    taille: macro
+  traces:
+  - source: ONUDC, Rapport mondial sur les drogues (annuel)
+    statut: a_brancher
+- id: cartels_mafias
+  nom: Cartels et mafias
+  organisation: geopolitique
+  elements:
+  - violence et concurrence qui gagnent l'Europe de l'Ouest depuis l'Amérique latine ; montée des groupes des Balkans occidentaux (ONUDC, 2025)
+  acteurs:
+  - nom: un cartel ou une mafia
+    taille: méso
+    espace: routes de trafic
+    vitesse: jours
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: pays et routes
+    temps: décennies
+    vitesse: jours
+    taille: méso
+  traces:
+  - &id001
+    source: ONUDC, presse
+    statut: a_brancher
+- id: escroqueries_cyber
+  nom: Escroqueries industrielles et cybercriminalité
+  organisation: technique
+  elements:
+  - Asie du Sud-Est - pertes de 88,3 à 114,1 milliards de dollars en 2025 ; centaines de complexes d'escroquerie, aussi lieux de traite ; activité qui s'étend à d'autres régions (ONUDC, 21 juillet 2026, repris par Fortune)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+- id: traite
+  nom: Traite des êtres humains
+  organisation: societe
+  elements:
+  - travail forcé dans les complexes d'escroquerie, exploitation sexuelle, migrants exploités
+  niveau:
+    espace: routes migratoires
+    temps: années
+    vitesse: semaines
+    taille: méso
+  traces:
+  - *id001
+- id: blanchiment
+  nom: Blanchiment
+  organisation: economie
+  elements:
+  - recyclage des profits par l'immobilier, les sociétés-écrans, les cryptomonnaies
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+- id: trafics_armes_especes
+  nom: Trafics d'armes et d'espèces sauvages
+  organisation: geopolitique
+  elements:
+  - armes légères vers les zones de conflit ; espèces protégées et bois précieux
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: semaines
+    taille: méso
+  traces:
+  - *id001
+- id: captation_etats
+  nom: Captation d'États par le crime
+  organisation: statut
+  elements:
+  - quand des réseaux criminels contrôlent des territoires, des ports ou des élus
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: repression
+  nom: Répression et coopération policière
+  organisation: convention
+  elements:
+  - saisies, extraditions, coopération internationale ; déplacement des réseaux après les descentes (ONUDC, 2026)
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: drogues
+  vers: cartels_mafias
+  effet: '+'
+  delai: années
+  force: forte
+  coupure: effondrement des prix
+  statut: a_verifier
+  texte: les profits de la drogue financent les cartels
+- de: cartels_mafias
+  vers: captation_etats
+  effet: '+'
+  delai: décennies
+  force: moyenne
+  coupure: état de droit solide
+  statut: a_verifier
+  texte: l'argent et la violence achètent ou intimident les autorités
+- de: escroqueries_cyber
+  vers: traite
+  effet: '+'
+  delai: mois
+  force: forte
+  coupure: fermeture des complexes
+  statut: a_verifier
+  texte: les complexes d'escroquerie reposent sur le travail forcé
+- de: cartels_mafias
+  vers: blanchiment
+  effet: '+'
+  delai: mois
+  force: forte
+  coupure: contrôles financiers
+  statut: a_verifier
+  texte: les profits doivent être blanchis
+- de: repression
+  vers: escroqueries_cyber
+  effet: '-'
+  delai: mois
+  force: faible
+  coupure: déplacement des activités
+  statut: a_verifier
+  texte: les descentes déplacent les réseaux plus qu'elles ne les arrêtent
+- de: repression
+  vers: drogues
+  effet: '-'
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: les saisies record n'empêchent pas la hausse de la production
+ponts:
+- depuis: blanchiment
+  vers: corruption:blanchiment
+  nature: le même blanchiment, vu depuis la corruption
+  type: meme
+- depuis: cartels_mafias
+  vers: securite-publique:trafics
+  nature: les trafics vus depuis la sécurité publique
+  type: voisinage
+- depuis: drogues
+  vers: corps-humain:sante_mentale
+  nature: addictions et surdoses
+- depuis: escroqueries_cyber
+  vers: information-cyber:cyber
+  nature: la cybercriminalité
+  type: voisinage
+- depuis: escroqueries_cyber
+  vers: reseaux-sociaux:plateformes
+  nature: les escroqueries passent par les plateformes
+- depuis: blanchiment
+  vers: crises-bancaires:cryptomonnaies
+  nature: les cryptomonnaies dans le blanchiment
+  type: voisinage
+- depuis: trafics_armes_especes
+  vers: biodiversite-sols:surexploitation
+  nature: trafic d'espèces sauvages
+  type: voisinage
+- depuis: trafics_armes_especes
+  vers: afrique-subsaharienne:groupes_armes
+  nature: armes et trafics des groupes armés
+- depuis: traite
+  vers: migrations-demographie:migrations
+  nature: migrants exploités par les réseaux
+  type: voisinage
+- depuis: captation_etats
+  vers: corruption:grande_corruption
+  nature: captation de l'État
+  type: voisinage
+- depuis: drogues
+  vers: guerre-levant:syrie_irak
+  nature: le captagon après la chute d'Assad
+  type: voisinage

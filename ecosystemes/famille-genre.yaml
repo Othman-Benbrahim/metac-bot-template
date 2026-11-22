@@ -1,0 +1,182 @@
+# 0.10.453 — fiche créée le 2026-11-22 (angle mort signalé, accord de l'auteur 9 h 23) : famille, parenté et genre comme
+# structure. Agrégats seulement, aucune personne. Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: famille-genre
+nom: Famille, parenté et genre (une structure)
+declaration:
+  but: 'voir la famille, la parenté et les rôles de genre comme une structure qui organise la transmission, le travail et le pouvoir : environ 650 millions de femmes en vie ont été mariées enfants (UNICEF, repris par la Banque mondiale) ; les femmes ont perdu l''équivalent de 41 jours de travail payé par rapport aux hommes en 2024, surtout à cause des soins non rémunérés (ONU Femmes)'
+  limites: 'dedans les structures familiales, le mariage, la parenté et les clans, l''héritage, les rôles et le travail de soin, les violences de genre en agrégats, la place des femmes au pouvoir ; dehors la natalité (migrations-demographie), les droits (societe-droits), sauf par les ponts'
+  observateur: 'notre carte, regard extérieur ; sources publiques (UNICEF, Banque mondiale, ONU Femmes, OMS) ; agrégats seulement'
+  date: '2026-11-22'
+  espace: 'le foyer, la lignée, le pays, le monde'
+  temps: 'la génération, le siècle'
+  vitesse: 'la génération'
+  taille: 'micro (un foyer) à macro'
+compartiments:
+- id: structures_familiales
+  nom: Structures familiales (nucléaire, élargie, monoparentale, personnes seules)
+  organisation: entourage
+  elements:
+  - recul de la famille élargie et montée des personnes vivant seules dans les pays riches ; familles élargies encore dominantes ailleurs
+  niveau:
+    espace: foyer
+    temps: générations
+    vitesse: décennies
+    taille: micro
+  traces:
+  - &id001
+    source: UNICEF, Banque mondiale, ONU Femmes, OMS
+    statut: a_brancher
+- id: mariage
+  nom: Mariage et unions (dont mariages d'enfants)
+  organisation: convention
+  elements:
+  - environ 650 millions de femmes en vie mariées ou en union avant 18 ans ; près d'une femme sur trois de 20 à 24 ans en Afrique subsaharienne, 26 % en Asie du Sud (UNICEF, repris par la Banque mondiale)
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Banque mondiale, Gender Data Portal, mariage des enfants
+    statut: a_brancher
+- id: parente_clans
+  nom: Parenté, lignées, clans
+  organisation: entourage
+  elements:
+  - solidarités et obligations de lignée ; clans et tribus comme acteurs politiques dans plusieurs pays
+  niveau:
+    espace: local et pays
+    temps: siècles
+    vitesse: générations
+    taille: méso
+  traces:
+  - *id001
+- id: heritage
+  nom: Héritage et transmission
+  organisation: economie
+  elements:
+  - règles d'héritage parfois inégales entre fils et filles ; transmission du patrimoine qui reproduit les positions sociales
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+- id: roles_soin
+  nom: Rôles de genre et travail de soin
+  organisation: societe
+  elements:
+  - les femmes assurent l'essentiel du travail domestique et de soin non rémunéré ; en 2024, elles ont perdu l'équivalent de 41 jours de travail payé par rapport aux hommes (ONU Femmes, 27 octobre 2025)
+  niveau:
+    espace: foyer et pays
+    temps: générations
+    vitesse: décennies
+    taille: macro
+  traces:
+  - *id001
+- id: violences_genre
+  nom: Violences de genre (en agrégats)
+  organisation: societe
+  elements:
+  - environ une femme sur trois subit au cours de sa vie des violences physiques ou sexuelles (OMS, estimations de 2021)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+- id: femmes_pouvoir
+  nom: Femmes au pouvoir
+  organisation: statut
+  elements:
+  - 28 pays dirigés par une femme et 27,5 % des sièges parlementaires en 2026 (voir dirigeants-elus)
+  niveau:
+    espace: pays
+    temps: mandats
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: mariage
+  vers: roles_soin
+  effet: '+'
+  delai: générations
+  force: moyenne
+  coupure: scolarisation des filles
+  statut: a_verifier
+  texte: un mariage précoce enferme dans le travail domestique
+- de: roles_soin
+  vers: femmes_pouvoir
+  effet: '-'
+  delai: générations
+  force: moyenne
+  coupure: partage des tâches, services de garde
+  statut: a_verifier
+  texte: le poids du soin éloigne les femmes des carrières et des mandats
+- de: heritage
+  vers: parente_clans
+  effet: '+'
+  delai: générations
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'héritage entretient la lignée et ses obligations
+- de: structures_familiales
+  vers: roles_soin
+  effet: '0'
+  delai: générations
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: la forme de la famille change qui prend soin de qui — sens à établir selon les cas
+- de: violences_genre
+  vers: femmes_pouvoir
+  effet: '-'
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: les violences réduisent la participation des femmes à la vie publique
+ponts:
+- depuis: mariage
+  vers: societe-droits:genre_minorites
+  nature: droits des femmes et des filles
+  type: voisinage
+- depuis: structures_familiales
+  vers: migrations-demographie:natalite_vieillissement
+  nature: familles et natalité
+  type: voisinage
+- depuis: structures_familiales
+  vers: reseaux-humains:cercles
+  nature: la famille, premier cercle
+  type: voisinage
+- depuis: heritage
+  vers: classes-sociales:capitaux_reproduction
+  nature: l'héritage reproduit les positions
+  type: voisinage
+- depuis: parente_clans
+  vers: frontieres:local
+  nature: clans et identités locales
+  type: voisinage
+- depuis: femmes_pouvoir
+  vers: dirigeants-elus:executifs
+  nature: femmes chefs d'État et de gouvernement
+  type: voisinage
+- depuis: roles_soin
+  vers: plancher-social:travail
+  nature: travail non rémunéré et emploi
+- depuis: mariage
+  vers: croyances-religions:religion_politique
+  nature: droit religieux et droit de la famille
+  type: voisinage
+- depuis: structures_familiales
+  vers: corps-humain:vieillissement
+  nature: les familles aidantes face au vieillissement
+  type: voisinage
+- depuis: violences_genre
+  vers: securite-publique:polices
+  nature: plaintes et réponse policière
+  type: voisinage

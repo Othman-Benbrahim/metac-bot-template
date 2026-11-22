@@ -1,0 +1,191 @@
+# 0.10.453 — fiche créée le 2026-11-22 (angle mort signalé, extrait transmis par l'auteur 9 h 23) : la monnaie comme pouvoir.
+# Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: monnaie-pouvoir
+nom: Monnaie et pouvoir (dollar, or, sanctions, paiements)
+declaration:
+  but: 'voir la monnaie comme instrument de puissance : le dollar représente 56,7 % des réserves de change (FMI, 2e trimestre 2026) ; l''or est devenu le premier actif des réserves officielles (27 %, devant les bons du Trésor américain, 22 %, et l''euro, 15 %, BCE, juin 2026) ; 210 milliards d''euros d''actifs de la banque centrale russe gelés dans l''Union, surtout chez Euroclear'
+  limites: 'dedans les monnaies de réserve, l''or, les sanctions financières, les systèmes de paiement, les monnaies numériques et stablecoins, la dédollarisation, les banques centrales comme acteurs de puissance ; dehors l''inflation (inflation-mondiale), les crises bancaires (crises-bancaires), sauf par les ponts'
+  observateur: 'notre carte, regard extérieur ; sources publiques (FMI, BCE, Conseil mondial de l''or, presse)'
+  date: '2026-11-22'
+  espace: 'le monde'
+  temps: 'de l''année à la décennie'
+  vitesse: 'le jour (une sanction), l''année'
+  taille: 'macro'
+compartiments:
+- id: dollar_reserve
+  nom: Le dollar, monnaie de réserve
+  organisation: economie
+  elements:
+  - parts des réserves de change au 2e trimestre 2026 - dollar 56,70 % (57,18 % au trimestre précédent), euro 20,60 %, yuan 2,11 % (FMI, COFER, 30 septembre 2026)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: trimestres
+    taille: macro
+  traces:
+  - source: FMI, COFER (composition des réserves de change)
+    statut: a_brancher
+- id: or
+  nom: L'or des banques centrales
+  organisation: mineral
+  elements:
+  - achats nets de 328 tonnes en 2025 (345 en 2024) ; premiers acheteurs - Pologne 102 t, Kazakhstan 57, fonds pétrolier d'Azerbaïdjan 53, Brésil 43, Chine et Turquie 27 (Conseil mondial de l'or, repris par Kitco)
+  - or - 27 % des réserves officielles fin 2025, devant les bons du Trésor américain (22 %) et l'euro (15 %) (BCE, 3 juin 2026)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - &id001
+    source: FMI, BCE, Conseil mondial de l'or, presse
+    statut: a_brancher
+- id: sanctions_financieres
+  nom: Sanctions financières et gel d'avoirs
+  organisation: convention
+  elements:
+  - 210 milliards d'euros d'actifs souverains russes gelés dans l'Union, surtout chez Euroclear ; gel rendu indéfini en décembre 2025 (Al Jazeera) ; prêt européen de 90 milliards d'euros à l'Ukraine à la place d'un prêt adossé à ces actifs (presse)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+- id: paiements
+  nom: Systèmes de paiement (SWIFT, CIPS, cartes)
+  organisation: technique
+  elements:
+  - messagerie SWIFT, système chinois CIPS, réseaux nationaux de cartes - exclure un pays d'un réseau est une arme
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+- id: monnaies_numeriques
+  nom: Stablecoins et monnaies numériques
+  organisation: technique
+  elements:
+  - loi américaine GENIUS sur les stablecoins, signée le 18 juillet 2025 (CoinMarketCap) ; euro numérique et yuan numérique en préparation ou en test
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: dedollarisation
+  nom: Dédollarisation (discours et pratiques)
+  organisation: geopolitique
+  elements:
+  - commerce en monnaies nationales, achats d'or, projets de paiement entre BRICS ; part du dollar en lent recul
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: banques_centrales_puissance
+  nom: Banques centrales comme acteurs de puissance
+  organisation: statut
+  elements:
+  - la Réserve fédérale, émettrice du dollar, et ses lignes de swap ; la BCE ; la Banque populaire de Chine
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: sanctions_financieres
+  vers: dedollarisation
+  effet: '+'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: le gel d'avoirs pousse des pays à diversifier hors du dollar et de l'euro
+- de: sanctions_financieres
+  vers: or
+  effet: '+'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'or ne peut pas être gelé à distance s'il est rapatrié — achats des banques centrales
+- de: dedollarisation
+  vers: dollar_reserve
+  effet: '-'
+  delai: décennies
+  force: faible
+  coupure: effets de réseau du dollar
+  statut: a_verifier
+  texte: la diversification grignote la part du dollar
+- de: monnaies_numeriques
+  vers: dollar_reserve
+  effet: '+'
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: les stablecoins adossés au dollar étendent son usage (à confirmer)
+- de: paiements
+  vers: sanctions_financieres
+  effet: '+'
+  delai: jours
+  force: forte
+  coupure: systèmes alternatifs
+  statut: a_verifier
+  texte: le contrôle des réseaux de paiement rend les sanctions efficaces
+- de: banques_centrales_puissance
+  vers: dollar_reserve
+  effet: '+'
+  delai: décennies
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: la Réserve fédérale et ses lignes de swap entretiennent le rôle du dollar
+ponts:
+- depuis: dollar_reserve
+  vers: inflation-mondiale:monnaies
+  nature: le dollar fort et les monnaies
+  type: voisinage
+- depuis: dollar_reserve
+  vers: dette-emergents:monnaies
+  nature: dettes en dollars des pays émergents
+- depuis: sanctions_financieres
+  vers: russie-ukraine:sanctions
+  nature: sanctions contre la Russie
+  type: voisinage
+- depuis: sanctions_financieres
+  vers: union-europeenne:sanctions_ue
+  nature: sanctions de l'Union
+  type: voisinage
+- depuis: banques_centrales_puissance
+  vers: politique-americaine:reserve_federale
+  nature: la Réserve fédérale
+  type: meme
+- depuis: monnaies_numeriques
+  vers: crises-bancaires:cryptomonnaies
+  nature: cryptomonnaies et stablecoins
+  type: voisinage
+- depuis: dedollarisation
+  vers: frontieres:blocs
+  nature: les BRICS et la dédollarisation
+  type: voisinage
+- depuis: dedollarisation
+  vers: rivalite-sino-americaine:finance
+  nature: la finance dans la rivalité sino-américaine
+  type: voisinage
+- depuis: or
+  vers: minerais-critiques:concentration
+  nature: l'or parmi les ressources minérales
+  type: voisinage
+- depuis: paiements
+  vers: information-cyber:infrastructure
+  nature: les réseaux de paiement, infrastructure
+  type: voisinage
