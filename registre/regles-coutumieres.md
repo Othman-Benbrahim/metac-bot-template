@@ -1,6 +1,6 @@
 # Règles coutumières : bilan
 
-64 règles ; source 58, absence 4, auteur 2.
+66 règles ; source 60, absence 4, auteur 2.
 
 | espace | structure | statut | n |
 |---|---|---|---|
@@ -14,6 +14,7 @@
 | amerique_du_nord | evenement_rare | source | 5 |
 | amerique_du_nord | maintien | source | 2 |
 | amerique_du_nord | procedure | source | 7 |
+| amerique_du_nord | seuil | source | 1 |
 | amerique_latine | course | source | 1 |
 | asie | course | source | 3 |
 | asie | evenement_rare | source | 1 |
@@ -28,6 +29,7 @@
 | monde | maintien | auteur | 1 |
 | monde | maintien | source | 4 |
 | monde | procedure | source | 1 |
+| monde | seuil | source | 1 |
 | oceanie | course | source | 1 |
 
 ## Ce que l'auteur pourrait apporter (règles sans source)
