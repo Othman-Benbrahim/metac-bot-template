@@ -1,0 +1,54 @@
+name: "Exploration : graphe des types sur GDELT (un jour)"
+
+# Décision de l'auteur du 2026-11-22, 1 h 45 : « juste pour voir ». GDELT = source orientée connue ; aucune décision
+# ne se prend sur ce résultat. Essai à blanc et plafonds de quota avant la requête (mise_au_point/situations_gdelt.py).
+on:
+  workflow_dispatch:
+    inputs:
+      jour:
+        description: "jour GDELT AAAA-MM-JJ (vide = avant-hier)"
+        default: ""
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  explorer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Listes validées (lecteur-local, dépôt public)
+        uses: actions/checkout@v4
+        with:
+          repository: Othman-Benbrahim/lecteur-local
+          path: lecteur
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Situations GDELT et types de situation
+        run: |
+          J="${{ github.event.inputs.jour }}"
+          uv run --with "google-cloud-bigquery==3.27.0" python -u mise_au_point/situations_gdelt.py --lecteur lecteur ${J:+--jour "$J"}
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJET: ${{ vars.GCP_PROJET }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/situations-gdelt-essai.json registre/bigquery-compteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : exploration des situations GDELT du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
