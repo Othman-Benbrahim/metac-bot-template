@@ -1,0 +1,1034 @@
+{
+ "jour": "2026-11-20",
+ "go_lus": 0.32,
+ "articles_distincts": 236899,
+ "situations": 178154,
+ "part_avec_situation": 0.752,
+ "types_actifs": [
+  {
+   "type": "présidents américain et russe en fonction, sans sommet annoncé [sommets_etats_unis_russie]",
+   "articles": 9747,
+   "sources": {
+    "news.mail.ru": 184,
+    "24tv.ua": 124,
+    "life.ru": 120,
+    "ria.ru": 120,
+    "lenta.ru": 111
+   }
+  },
+  {
+   "type": "ancien chef d'État ou de gouvernement sorti du pouvoir [anciens_dirigeants_sort]",
+   "articles": 4175,
+   "sources": {
+    "baomoi.com": 59,
+    "indiatimes.com": 53,
+    "livelaw.in": 50,
+    "pr-inside.com": 29,
+    "thehindu.com": 26
+   }
+  },
+  {
+   "type": "nomination présidentielle américaine transmise au Sénat [us_confirmations_delais]",
+   "articles": 3108,
+   "sources": {
+    "iheart.com": 189,
+    "thedailybeast.com": 48,
+    "inewsgr.com": 43,
+    "indiatimes.com": 40,
+    "rawstory.com": 34
+   }
+  },
+  {
+   "type": "conseiller principal de la Maison-Blanche ou membre du cabinet américain en fonction [us_entourage_rotation]",
+   "articles": 3108,
+   "sources": {
+    "iheart.com": 189,
+    "thedailybeast.com": 48,
+    "inewsgr.com": 43,
+    "indiatimes.com": 40,
+    "rawstory.com": 34
+   }
+  },
+  {
+   "type": "élu ou responsable public américain, en fonction ou ancien, non inculpé [us_inculpation_personnalites]",
+   "articles": 3108,
+   "sources": {
+    "iheart.com": 189,
+    "thedailybeast.com": 48,
+    "inewsgr.com": 43,
+    "indiatimes.com": 40,
+    "rawstory.com": 34
+   }
+  },
+  {
+   "type": "sanctions de l'Union européenne contre la Russie en vigueur ou proposées [ue_sanctions_russie]",
+   "articles": 944,
+   "sources": {
+    "euronews.com": 19,
+    "n-tv.de": 17,
+    "inewsgr.com": 15,
+    "aol.co.uk": 13,
+    "news.mail.ru": 12
+   }
+  },
+  {
+   "type": "campagne de contestation non violente en cours contre un régime [regimes_fermes_contestation]",
+   "articles": 846,
+   "sources": {
+    "sueddeutsche.de": 34,
+    "baomoi.com": 26,
+    "badische-zeitung.de": 18,
+    "rnz.de": 16,
+    "express.co.uk": 12
+   }
+  },
+  {
+   "type": "série de températures mondiale ou régionale proche de son record [records_temperature_persistance]",
+   "articles": 614,
+   "sources": {
+    "haberler.com": 18,
+    "allafrica.com": 12,
+    "dw.com": 7,
+    "manilatimes.net": 7,
+    "pina.com.fj": 7
+   }
+  },
+  {
+   "type": "élection présidentielle prévue ou en cours [presidentielles_mode_de_scrutin]",
+   "articles": 523,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "bfmtv.com": 8,
+    "euronews.com": 8,
+    "24-ore.com": 6
+   }
+  },
+  {
+   "type": "présidentielle à deux tours dont le premier tour est connu [second_tour_retournement]",
+   "articles": 523,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "bfmtv.com": 8,
+    "euronews.com": 8,
+    "24-ore.com": 6
+   }
+  },
+  {
+   "type": "élection législative à venir [voix_vers_sieges]",
+   "articles": 398,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "n-tv.de": 7,
+    "taipeitimes.com": 6,
+    "24-ore.com": 5
+   }
+  },
+  {
+   "type": "élection législative à venir [parlements_mode_de_scrutin]",
+   "articles": 398,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "n-tv.de": 7,
+    "taipeitimes.com": 6,
+    "24-ore.com": 5
+   }
+  },
+  {
+   "type": "élection nationale à venir, avec des sondages publiés [us_erreur_selon_temps_restant]",
+   "articles": 290,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "taipeitimes.com": 6,
+    "24-ore.com": 5,
+    "blueprint.ng": 5
+   }
+  },
+  {
+   "type": "élection nationale à venir, avec des sondages publiés [sondages_erreur_comparee]",
+   "articles": 290,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "taipeitimes.com": 6,
+    "24-ore.com": 5,
+    "blueprint.ng": 5
+   }
+  },
+  {
+   "type": "campagne référendaire en cours sur un changement [referendums_retour_statu_quo]",
+   "articles": 290,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "taipeitimes.com": 6,
+    "24-ore.com": 5,
+    "blueprint.ng": 5
+   }
+  },
+  {
+   "type": "pape en fonction [papes_voyages]",
+   "articles": 258,
+   "sources": {
+    "dailynayadiganta.com": 20,
+    "bdnews24.com": 11,
+    "antaranews.com": 8,
+    "mzamin.com": 8,
+    "akhbaregy.com": 7
+   }
+  },
+  {
+   "type": "élections législatives tenues ou prévues dans une démocratie parlementaire [europe_formation_gouvernement]",
+   "articles": 205,
+   "sources": {
+    "cfi.net.cn": 12,
+    "welt.de": 8,
+    "tagesspiegel.de": 7,
+    "focus.de": 6,
+    "az-online.de": 5
+   }
+  },
+  {
+   "type": "zone minière africaine face à une variation des prix des minerais [afrique_mines_conflits]",
+   "articles": 142,
+   "sources": {
+    "allafrica.com": 14,
+    "thesun.ng": 6,
+    "chimpreports.com": 5,
+    "ghanamma.com": 5,
+    "leadership.ng": 5
+   }
+  },
+  {
+   "type": "projet de résolution soumis au Conseil de sécurité de l'ONU [onu_conseil_securite_vote]",
+   "articles": 135,
+   "sources": {
+    "euronews.com": 8,
+    "globo.com": 4,
+    "excelsior.com.mx": 3,
+    "diariosigloxxi.com": 2,
+    "elobservador.com.uy": 2
+   }
+  },
+  {
+   "type": "élections législatives à venir dans un pays européen [seuils_parlements_nationaux_europe]",
+   "articles": 126,
+   "sources": {
+    "n-tv.de": 6,
+    "az-online.de": 4,
+    "focus.de": 4,
+    "lr-online.de": 4,
+    "tagesspiegel.de": 4
+   }
+  },
+  {
+   "type": "élections européennes à venir [seuils_elections_europeennes]",
+   "articles": 84,
+   "sources": {
+    "ingenieur.de": 3,
+    "n-tv.de": 3,
+    "24-ore.com": 2,
+    "b92.net": 2,
+    "bentelevision.com": 2
+   }
+  },
+  {
+   "type": "proposition soumise au vote du Conseil de l'Union européenne [ue_majorite_qualifiee]",
+   "articles": 52,
+   "sources": {
+    "ingenieur.de": 3,
+    "irishtimes.com": 2,
+    "news247.gr": 2,
+    "aa.com.tr": 1,
+    "algemeiner.com": 1
+   }
+  },
+  {
+   "type": "élection de la Lok Sabha prévue [inde_scrutin_uninominal]",
+   "articles": 52,
+   "sources": {
+    "khaskhabar.com": 10,
+    "aninews.in": 9,
+    "freepressjournal.in": 4,
+    "fijisun.com.fj": 3,
+    "indiagazette.com": 2
+   }
+  },
+  {
+   "type": "projet budgétaire au Congrès américain [us_reconciliation_budgetaire]",
+   "articles": 51,
+   "sources": {
+    "theepochtimes.com": 3,
+    "weeklyblitz.net": 3,
+    "arabnews.com": 2,
+    "asiaone.com": 2,
+    "freemalaysiatoday.com": 2
+   }
+  },
+  {
+   "type": "exercice budgétaire fédéral américain sans lois de crédits annuelles adoptées [us_lois_de_finances_provisoires]",
+   "articles": 51,
+   "sources": {
+    "theepochtimes.com": 3,
+    "weeklyblitz.net": 3,
+    "arabnews.com": 2,
+    "asiaone.com": 2,
+    "freemalaysiatoday.com": 2
+   }
+  },
+  {
+   "type": "phase finale de la Coupe du monde à venir ou en cours, avec ses équipes qualifiées [coupe_du_monde_vainqueurs_hotes]",
+   "articles": 33,
+   "sources": {
+    "badische-zeitung.de": 3,
+    "oz-online.de": 3,
+    "jawapos.com": 2,
+    "welt.de": 2,
+    "albeu.com": 1
+   }
+  },
+  {
+   "type": "élections législatives françaises convoquées [france_legislatives]",
+   "articles": 11,
+   "sources": {
+    "n-tv.de": 2,
+    "aljazeera.com": 1,
+    "blackagendareport.com": 1,
+    "brf.be": 1,
+    "burundi-agnews.org": 1
+   }
+  },
+  {
+   "type": "dirigeant africain au pouvoir face à une limite de mandat [afrique_limites_de_mandat]",
+   "articles": 7,
+   "sources": {
+    "aljazeera.com": 1,
+    "charentelibre.fr": 1,
+    "courrierinternational.com": 1,
+    "dominicanrepublicpost.com": 1,
+    "ecfr.eu": 1
+   }
+  },
+  {
+   "type": "élection présidentielle indonésienne prévue [indonesie_presidentielle]",
+   "articles": 2,
+   "sources": {
+    "asianjournal.com": 1,
+    "sumutpos.co": 1
+   }
+  },
+  {
+   "type": "élection de la Chambre des représentants du Japon prévue [japon_chambre_basse]",
+   "articles": 2,
+   "sources": {
+    "asianjournal.com": 1,
+    "goskagit.com": 1
+   }
+  },
+  {
+   "type": "territoire ethnique africain coupé ou non par une frontière coloniale [afrique_frontieres_coloniales]",
+   "articles": 1,
+   "sources": {
+    "bladi.net": 1
+   }
+  },
+  {
+   "type": "économies africaines (flux financiers mesurés sur plusieurs années) [afrique_flux_financiers_illicites]",
+   "articles": 1,
+   "sources": {
+    "ibtimes.co.uk": 1
+   }
+  },
+  {
+   "type": "élection fédérale australienne prévue [australie_vote_preferentiel]",
+   "articles": 1,
+   "sources": {
+    "israelnationalnews.com": 1
+   }
+  }
+ ],
+ "types_muets": [
+  "Congrès américain en session [us_congres_productivite]",
+  "accord USMCA en vigueur, avant ou pendant sa révision conjointe [usmca_revision_conjointe]",
+  "affaire ou pourvoi pendant devant la Cour suprême américaine [us_cour_supreme_calendrier]",
+  "blé en fin de cycle (floraison, remplissage du grain) exposé à des maxima élevés [seuil_chaleur_ble]",
+  "campagne présidentielle américaine avant le vote du collège électoral [us_president_college]",
+  "chef d'État ou de gouvernement au pouvoir [chefs_d_etat_sortie_irreguliere]",
+  "composition du Dow Jones Industrial Average en vigueur [dow_jones_changements]",
+  "contrôle temporaire aux frontières intérieures de Schengen en vigueur ou notifié [schengen_controles_interieurs]",
+  "membre de la Chambre des représentants américaine en fonction [us_chambre_sanctions_disciplinaires]",
+  "membre sortant du Congrès américain candidat à sa réélection [us_avantage_sortant_congres]",
+  "niveau national de menace terroriste du Royaume-Uni en vigueur [royaume_uni_niveau_menace]",
+  "négociation en cours avec une date limite connue [effet_d_echeance_negociation]",
+  "pays exposé à une tentative de coup d'État (taux mondial ou régional) [coups_d_etat_frequence]",
+  "pays membre de l'OPEP [opep_departs]",
+  "politique monétaire américaine entre deux réunions du FOMC [us_fed_calendrier]",
+  "primaire américaine en cours dans un État qui prévoit un second tour [us_primaires_second_tour]",
+  "primaire non partisane ou scrutin préférentiel prévu dans un État américain [us_primaires_systemes_speciaux]",
+  "programme de sanctions du Trésor américain en vigueur [us_sanctions_frequence]",
+  "programme nucléaire nord-coréen sans essai depuis septembre 2017 [coree_du_nord_essais_nucleaires]",
+  "projet, chantier ou lancement annoncé avec une date prévue [calendriers_annonces_glissent]",
+  "saison cyclonique atlantique en cours ou à venir [us_ouragans_atterrissage]",
+  "saison de culture en cours (mars-août pour le maïs et le soja, avril-octobre pour le coton) avec des journées chaudes [seuil_chaleur_mais_soja_coton]",
+  "surveillance satellitaire des explosions de bolides dans l'atmosphère [bolides_frequence]",
+  "tarifs de Royal Mail en vigueur [royal_mail_hausses_tarifs]",
+  "texte de loi ou nomination soumis au Sénat américain [us_senat_cloture]",
+  "élection américaine à venir, avec des sondages publiés [us_erreur_sondages_par_echelle]",
+  "élections brésiliennes des gouverneurs ou des sénateurs prévues [bresil_gouverneurs_senat]"
+ ],
+ "termes_les_plus_frequents": [
+  [
+   "United States",
+   39375
+  ],
+  [
+   "China",
+   19616
+  ],
+  [
+   "Russia",
+   16958
+  ],
+  [
+   "United Kingdom",
+   13818
+  ],
+  [
+   "Ukraine",
+   13001
+  ],
+  [
+   "Russian",
+   11510
+  ],
+  [
+   "Italy",
+   10998
+  ],
+  [
+   "India",
+   10805
+  ],
+  [
+   "Germany",
+   10646
+  ],
+  [
+   "France",
+   9681
+  ],
+  [
+   "Spain",
+   8529
+  ],
+  [
+   "Chinese",
+   7330
+  ],
+  [
+   "Turkey",
+   7328
+  ],
+  [
+   "Health",
+   6562
+  ],
+  [
+   "Mexico",
+   6133
+  ],
+  [
+   "Ukrainian",
+   5778
+  ],
+  [
+   "Japan",
+   5708
+  ],
+  [
+   "Taiwan",
+   5248
+  ],
+  [
+   "Brazil",
+   5165
+  ],
+  [
+   "Development",
+   5161
+  ],
+  [
+   "Iran",
+   4887
+  ],
+  [
+   "Canada",
+   4739
+  ],
+  [
+   "Putin",
+   4580
+  ],
+  [
+   "Research",
+   4521
+  ],
+  [
+   "Greece",
+   4404
+  ],
+  [
+   "Poland",
+   4318
+  ],
+  [
+   "Australia",
+   4194
+  ],
+  [
+   "Argentina",
+   4088
+  ],
+  [
+   "Donald Trump",
+   4039
+  ],
+  [
+   "Spanish",
+   4036
+  ],
+  [
+   "AI",
+   3525
+  ],
+  [
+   "Technology",
+   3502
+  ],
+  [
+   "Israel",
+   3420
+  ],
+  [
+   "Indonesia",
+   3222
+  ],
+  [
+   "South Korea",
+   3021
+  ],
+  [
+   "Europe",
+   2915
+  ],
+  [
+   "Colombia",
+   2865
+  ],
+  [
+   "Justice",
+   2840
+  ],
+  [
+   "Berlin",
+   2732
+  ],
+  [
+   "Education",
+   2443
+  ]
+ ],
+ "compartiments": [
+  [
+   "economie-chinoise:exterieur",
+   39420
+  ],
+  [
+   "information-cyber:langues_biais",
+   27181
+  ],
+  [
+   "russie-ukraine:negociations",
+   14650
+  ],
+  [
+   "epidemies:autorites",
+   6572
+  ],
+  [
+   "sciences-techniques:recherche",
+   5987
+  ],
+  [
+   "sciences-techniques:ia",
+   5622
+  ],
+  [
+   "dette-emergents:fmi",
+   5306
+  ],
+  [
+   "rivalite-sino-americaine:taiwan",
+   5256
+  ],
+  [
+   "guerre-levant:iran",
+   4887
+  ],
+  [
+   "securite-publique:justice",
+   4175
+  ],
+  [
+   "politique-americaine:executif",
+   4039
+  ],
+  [
+   "sciences-techniques:adoption",
+   3561
+  ],
+  [
+   "guerre-levant:israel",
+   3509
+  ],
+  [
+   "societe-droits:education",
+   2466
+  ],
+  [
+   "culture-memoire:creation",
+   2048
+  ],
+  [
+   "information-cyber:plateformes",
+   1905
+  ],
+  [
+   "dette-emergents:gisements",
+   1675
+  ],
+  [
+   "guerre-levant:puissances",
+   1614
+  ],
+  [
+   "economie-entreprises:finance_entreprise",
+   1284
+  ],
+  [
+   "environnement-dechets:environnement",
+   1244
+  ],
+  [
+   "securite-europeenne:otan_ue",
+   1226
+  ],
+  [
+   "economie-entreprises:conjoncture",
+   1150
+  ],
+  [
+   "russie-ukraine:sanctions",
+   1079
+  ],
+  [
+   "eau-moyen-orient:etats_riverains",
+   1021
+  ],
+  [
+   "rivalite-sino-americaine:diplomatie",
+   890
+  ],
+  [
+   "alimentation-mondiale:prix",
+   880
+  ],
+  [
+   "humain:jeunesse",
+   868
+  ],
+  [
+   "guerre-levant:mediateurs",
+   810
+  ],
+  [
+   "inflation-mondiale:budget",
+   715
+  ],
+  [
+   "rivalite-sino-americaine:commerce",
+   711
+  ]
+ ],
+ "acteurs": [
+  [
+   "États-Unis (État)",
+   39421
+  ],
+  [
+   "Ukraine (gouvernement)",
+   13001
+  ],
+  [
+   "Taïwan (autorités)",
+   5254
+  ],
+  [
+   "Iran (État)",
+   4887
+  ],
+  [
+   "Putin",
+   4580
+  ],
+  [
+   "Donald Trump",
+   4039
+  ],
+  [
+   "Israël (État)",
+   3432
+  ],
+  [
+   "Arabie saoudite",
+   1886
+  ],
+  [
+   "Union européenne",
+   1614
+  ],
+  [
+   "Anthropic",
+   1575
+  ],
+  [
+   "Commission européenne",
+   1075
+  ],
+  [
+   "Irak",
+   1009
+  ],
+  [
+   "EU",
+   868
+  ],
+  [
+   "xi",
+   857
+  ],
+  [
+   "Qatar",
+   810
+  ],
+  [
+   "Russie",
+   516
+  ],
+  [
+   "Réserve fédérale",
+   513
+  ],
+  [
+   "Friedrich Merz",
+   360
+  ],
+  [
+   "Oman",
+   328
+  ],
+  [
+   "Autorité palestinienne",
+   255
+  ],
+  [
+   "Organisation mondiale de la santé",
+   226
+  ],
+  [
+   "Volkswagen",
+   216
+  ],
+  [
+   "Fonds monétaire international",
+   156
+  ],
+  [
+   "Banque centrale européenne",
+   151
+  ],
+  [
+   "Congrès américain",
+   118
+  ],
+  [
+   "Dominique de Villepin",
+   91
+  ],
+  [
+   "Marine Le Pen",
+   87
+  ],
+  [
+   "AfD",
+   82
+  ],
+  [
+   "Houthis (en agrégat)",
+   80
+  ],
+  [
+   "ministère des Finances",
+   76
+  ]
+ ],
+ "espace": [
+  [
+   "pays:États-Unis",
+   39522
+  ],
+  [
+   "pays:Chine",
+   19619
+  ],
+  [
+   "pays:Russie",
+   17042
+  ],
+  [
+   "pays:Royaume-Uni",
+   13893
+  ],
+  [
+   "pays:Ukraine",
+   13001
+  ],
+  [
+   "pays:Italie",
+   10998
+  ],
+  [
+   "pays:Inde",
+   10808
+  ],
+  [
+   "pays:Allemagne",
+   10649
+  ],
+  [
+   "pays:France",
+   9681
+  ],
+  [
+   "pays:Espagne",
+   8530
+  ],
+  [
+   "pays:Turquie",
+   7328
+  ],
+  [
+   "pays:Mexique",
+   6133
+  ],
+  [
+   "pays:Japon",
+   5708
+  ],
+  [
+   "pays:Taïwan",
+   5254
+  ],
+  [
+   "pays:Brésil",
+   5165
+  ],
+  [
+   "pays:Iran",
+   4887
+  ],
+  [
+   "pays:Canada",
+   4739
+  ],
+  [
+   "pays:Grèce",
+   4404
+  ],
+  [
+   "pays:Pologne",
+   4318
+  ],
+  [
+   "pays:Australie",
+   4194
+  ],
+  [
+   "pays:Argentine",
+   4088
+  ],
+  [
+   "pays:Israël",
+   3432
+  ],
+  [
+   "région:Europe",
+   3408
+  ],
+  [
+   "pays:Indonésie",
+   3222
+  ],
+  [
+   "pays:Corée du Sud",
+   3021
+  ],
+  [
+   "pays:Colombie",
+   2865
+  ],
+  [
+   "lieu:Berlin (Allemagne)",
+   2732
+  ],
+  [
+   "pays:Serbie",
+   2285
+  ],
+  [
+   "pays:Pays-Bas",
+   2217
+  ],
+  [
+   "pays:Portugal",
+   2212
+  ]
+ ],
+ "sources": [
+  [
+   "zazoom.it",
+   2165
+  ],
+  [
+   "163.com",
+   1856
+  ],
+  [
+   "iheart.com",
+   1434
+  ],
+  [
+   "indiatimes.com",
+   1291
+  ],
+  [
+   "haberler.com",
+   1039
+  ],
+  [
+   "inewsgr.com",
+   784
+  ],
+  [
+   "ltn.com.tw",
+   722
+  ],
+  [
+   "yam.com",
+   720
+  ],
+  [
+   "news.yam.md",
+   718
+  ],
+  [
+   "cfi.net.cn",
+   694
+  ],
+  [
+   "sina.com.cn",
+   680
+  ],
+  [
+   "news.mail.ru",
+   623
+  ],
+  [
+   "naslovi.net",
+   596
+  ],
+  [
+   "euronews.com",
+   593
+  ],
+  [
+   "baomoi.com",
+   584
+  ],
+  [
+   "globo.com",
+   573
+  ],
+  [
+   "allafrica.com",
+   531
+  ],
+  [
+   "antaranews.com",
+   525
+  ],
+  [
+   "udn.com",
+   483
+  ],
+  [
+   "manilatimes.net",
+   471
+  ],
+  [
+   "ansa.it",
+   461
+  ],
+  [
+   "life.ru",
+   454
+  ],
+  [
+   "china.com",
+   447
+  ],
+  [
+   "finanznachrichten.de",
+   446
+  ],
+  [
+   "aol.co.uk",
+   445
+  ],
+  [
+   "eastmoney.com",
+   426
+  ],
+  [
+   "zol.com.cn",
+   423
+  ],
+  [
+   "thehindu.com",
+   407
+  ],
+  [
+   "hindustantimes.com",
+   405
+  ],
+  [
+   "aol.com",
+   397
+  ]
+ ],
+ "avertissement": "exploration sur GDELT (source orientée connue), titres et noms seulement ; aucune décision"
+}
