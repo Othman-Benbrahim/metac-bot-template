@@ -1,0 +1,314 @@
+# 0.10.452 — fiche créée le 2026-11-22 (remarque de l'auteur, 9 h 13 : « l'écosystème des partis politiques dans
+# l'ensemble des États du monde, à relier au reste de l'écosystème, y compris les personnes publiques »). Les partis sont
+# rangés en familles (agrégats, selon les classements usuels de science politique) ; le classement d'un parti précis peut
+# être discuté. Les dirigeants sont reliés à leur famille dans acteurs-nommes.yaml (relation « membre_de »). Chiffres
+# vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: partis-politiques
+nom: Partis politiques (familles, systèmes partisans, monde)
+declaration:
+  but: 'situer les partis du monde par familles et par systèmes : 74 % de l''humanité vit en autocratie, 19 % en démocratie
+    électorale, 7 % en démocratie libérale (V-Dem, mars 2026) ; le plus grand parti du monde, le Parti communiste chinois,
+    dépasse 100 millions de membres ; en Europe, environ un électeur sur trois vote pour un parti autoritaire ou populiste
+    (indice EPICenter-Timbro, octobre 2026) et la coalition centrale du Parlement européen pourrait perdre sa majorité
+    (projection Europe Elects, août 2026)'
+  limites: dedans les systèmes partisans, les partis uniques et dominants, les grandes familles idéologiques, les partis
+    personnels, les groupes et internationales de partis, l'adhésion et le militantisme ; dehors les procédures et
+    élections nationales (politique-interieure), les dirigeants (dirigeants-elus, acteurs-nommes.yaml), sauf par les ponts
+  observateur: notre carte, regard extérieur et neutre ; sources publiques (V-Dem, Parlement européen, presse, travaux de
+    science politique) ; aucune préférence partisane
+  date: '2026-11-22'
+  espace: la circonscription, le pays, l'Union européenne, le monde
+  temps: de l'élection au siècle (partis historiques)
+  vitesse: la campagne, la législature, la génération
+  taille: micro (un parti local) à macro (100 millions de membres)
+compartiments:
+- id: systemes_partisans
+  nom: Systèmes partisans
+  organisation: convention
+  elements:
+  - multipartisme, bipartisme, parti dominant, parti unique, États sans partis (certaines monarchies du Golfe)
+  - 74 % de la population mondiale vit en autocratie (électorale ou fermée), 19 % en démocratie électorale, 7 % en
+    démocratie libérale ; 202 pays et territoires évalués (V-Dem, rapport 2026, repris par l'UTS, 17 mars 2026)
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: législatures
+    taille: macro
+  traces:
+  - source: V-Dem, Democracy Report (annuel)
+    statut: a_brancher
+- id: partis_uniques
+  nom: Partis uniques et partis-États
+  organisation: statut
+  elements:
+  - Parti communiste chinois - plus de 100,27 millions de membres fin 2024 (+1,09 million) (Quotidien du peuple, 30 juin
+    2025) ; partis uniques au Viêt Nam, au Laos, à Cuba, en Corée du Nord (Parti du travail)
+  acteurs:
+  - nom: un parti-État
+    taille: macro
+    espace: pays
+    vitesse: décennies
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: partis_dominants
+  nom: Partis dominants dans des régimes à élections
+  organisation: statut
+  elements:
+  - un parti gagne toutes les élections dans un régime où l'opposition est entravée (autocraties électorales) ou
+    simplement dominante (longues hégémonies)
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: conservateurs
+  nom: Conservateurs, chrétiens-démocrates, droite de gouvernement
+  organisation: ideologie
+  elements:
+  - exemples - Parti républicain (États-Unis), CDU (Allemagne), Parti libéral-démocrate (Japon), Likoud (Israël), Parti
+    populaire européen au Parlement européen
+  niveau:
+    espace: pays et Union
+    temps: décennies
+    vitesse: législatures
+    taille: macro
+  traces:
+  - *id001
+- id: liberaux_centristes
+  nom: Libéraux et centristes
+  organisation: ideologie
+  elements:
+  - exemples - Renaissance (France), groupe Renew au Parlement européen, Internationale libérale
+  niveau:
+    espace: pays et Union
+    temps: décennies
+    vitesse: législatures
+    taille: méso
+  traces:
+  - *id001
+- id: gauche_sociale_democrate
+  nom: Sociaux-démocrates, travaillistes, gauche de gouvernement
+  organisation: ideologie
+  elements:
+  - exemples - Parti travailliste (Royaume-Uni), SPD (Allemagne), Parti des travailleurs (Brésil), groupe S&D au Parlement
+    européen, Internationale socialiste
+  niveau:
+    espace: pays et Union
+    temps: siècles
+    vitesse: législatures
+    taille: macro
+  traces:
+  - *id001
+- id: gauche_radicale
+  nom: Gauche radicale et communistes (hors partis-États)
+  organisation: ideologie
+  elements:
+  - groupe de la Gauche au Parlement européen, projeté en hausse (+19 sièges, Europe Elects, août 2026)
+  niveau:
+    espace: pays et Union
+    temps: décennies
+    vitesse: législatures
+    taille: méso
+  traces:
+  - *id001
+- id: ecologistes
+  nom: Écologistes
+  organisation: ideologie
+  elements:
+  - groupe des Verts/ALE au Parlement européen, projeté en baisse (−14 sièges, Europe Elects, août 2026)
+  niveau:
+    espace: pays et Union
+    temps: décennies
+    vitesse: législatures
+    taille: méso
+  traces:
+  - *id001
+- id: droite_radicale_populiste
+  nom: Droite radicale, nationaliste, populiste
+  organisation: ideologie
+  elements:
+  - en Europe, environ un électeur sur trois vote pour un parti autoritaire ou populiste (contre environ 10 % dans les
+    années 1950-1960) ; l'AfD dépasse 20 % en Allemagne ; partis hors du courant dominant dans 11 gouvernements sur 31
+    (indice EPICenter-Timbro, 22 octobre 2026, repris par EUobserver)
+  - groupes Patriotes pour l'Europe et Europe des nations souveraines projetés en hausse (+12 et +19 sièges, Europe Elects)
+  niveau:
+    espace: pays et Union
+    temps: décennies
+    vitesse: législatures
+    taille: macro
+  traces:
+  - source: Authoritarian Populism Index (EPICenter, Timbro)
+    statut: a_brancher
+- id: partis_religieux
+  nom: Conservatismes religieux et partis religieux
+  organisation: ideologie
+  elements:
+  - partis qui fondent leur programme sur une religion ou une identité religieuse - BJP (Inde, nationalisme hindou), AKP
+    (Turquie, conservatisme islamique), partis religieux israéliens, démocraties chrétiennes historiques
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: législatures
+    taille: macro
+  traces:
+  - *id001
+- id: regionalistes
+  nom: Régionalistes, autonomistes, indépendantistes
+  organisation: ideologie
+  elements:
+  - partis qui portent une région ou une nation sans État (Écosse, Catalogne, Flandre, Corse, Québec…)
+  niveau:
+    espace: régions
+    temps: décennies
+    vitesse: législatures
+    taille: micro à méso
+  traces:
+  - *id001
+- id: partis_personnels
+  nom: Partis personnels (construits autour d'un chef)
+  organisation: personne
+  elements:
+  - le parti naît et vit avec son fondateur ; il peut disparaître avec lui
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: méso
+  traces:
+  - *id001
+- id: groupes_internationales
+  nom: Groupes et internationales de partis
+  organisation: convention
+  elements:
+  - Parlement européen - la coalition PPE, S&D et Renew, majoritaire depuis la création de l'assemblée, pourrait perdre sa
+    majorité (projection Europe Elects, Euronews, 12 août 2026)
+  - Internationale socialiste, Internationale libérale, Union démocrate internationale (droite)
+  niveau:
+    espace: Union et monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: adhesion_militantisme
+  nom: Adhésion, militantisme, financement
+  organisation: societe
+  elements:
+  - recul de l'adhésion aux partis en Europe depuis des décennies (van Biezen, LSE) ; montée des primaires, des dons en
+    ligne et des campagnes sur les réseaux sociaux
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: années
+    taille: micro à macro
+  traces:
+  - *id001
+relations:
+- de: systemes_partisans
+  vers: partis_uniques
+  effet: +
+  delai: décennies
+  force: forte
+  coupure: transition démocratique
+  statut: a_verifier
+  texte: un régime fermé ne laisse qu'un parti
+- de: droite_radicale_populiste
+  vers: groupes_internationales
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: alliances nouvelles
+  statut: a_verifier
+  texte: la montée des droites radicales menace la coalition centrale du Parlement européen (le compartiment cible lit ici
+    la majorité de cette coalition)
+- de: droite_radicale_populiste
+  vers: conservateurs
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: alliance ou reprise des thèmes
+  statut: a_verifier
+  texte: la droite radicale prend des électeurs à la droite de gouvernement, qui s'allie à elle ou reprend ses thèmes
+- de: adhesion_militantisme
+  vers: partis_personnels
+  effet: '-'
+  delai: décennies
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: moins de militants, plus de partis bâtis autour d'un chef (le compartiment source lit ici le militantisme)
+- de: ecologistes
+  vers: gauche_sociale_democrate
+  effet: '0'
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: concurrence et alliances au sein de la gauche — sens à établir
+- de: partis_dominants
+  vers: systemes_partisans
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: alternance
+  statut: a_verifier
+  texte: un parti dominant entrave l'opposition et ferme le système (le compartiment cible lit ici son ouverture)
+ponts:
+- depuis: systemes_partisans
+  vers: politique-interieure:partis
+  nature: les partis, vus depuis la politique intérieure
+  type: meme
+- depuis: systemes_partisans
+  vers: politique-interieure:regime
+  nature: régime et système partisan
+  type: voisinage
+- depuis: partis_uniques
+  vers: economie-chinoise:pouvoir
+  nature: le Parti communiste chinois
+  type: voisinage
+- depuis: conservateurs
+  vers: politique-americaine:congres
+  nature: le Parti républicain au Congrès
+  type: voisinage
+- depuis: groupes_internationales
+  vers: union-europeenne:institutions
+  nature: les groupes politiques du Parlement européen
+  type: voisinage
+- depuis: droite_radicale_populiste
+  vers: humain:polarisation
+  nature: les partis et la polarisation
+  type: voisinage
+- depuis: partis_religieux
+  vers: croyances-religions:religion_politique
+  nature: partis religieux et religion en politique
+  type: voisinage
+- depuis: partis_personnels
+  vers: reseaux-sociaux:personnalites
+  nature: le chef qui parle directement à ses abonnés
+  type: voisinage
+- depuis: adhesion_militantisme
+  vers: reseaux-sociaux:donnees_ciblage
+  nature: campagnes ciblées en ligne
+  type: voisinage
+- depuis: gauche_sociale_democrate
+  vers: elections-amerique-latine:partis_gouverneurs
+  nature: les partis en Amérique latine
+  type: voisinage
+- depuis: regionalistes
+  vers: frontieres:administratives
+  nature: régions autonomes et revendications territoriales
+- depuis: systemes_partisans
+  vers: dirigeants-elus:programmes
+  nature: programmes portés par les partis et leurs chefs
+  type: voisinage

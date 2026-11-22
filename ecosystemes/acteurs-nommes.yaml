@@ -21,7 +21,8 @@
 #   proche (proximité rapportée par la presse, sans soutien public déclaré ; ajoutée au second lot, 8 h 05).
 # relations vers la population (le « vers » est un compartiment) : gouverne (par une institution, champ « via »),
 #   elu_par (désigné ou jugé par le vote ou l'opinion), informe (possède ou dirige un média ou une plateforme),
-#   influence_documentee (campagne d'influence établie par une autorité, une justice ou une enquête nommée).
+#   influence_documentee (campagne d'influence établie par une autorité, une justice ou une enquête nommée),
+#   membre_de (appartenance à une famille de partis, fiche partis-politiques ; via = le parti ; ajoutée le 2026-11-22).
 acteurs:
   # ------------------------------------------------------------------ dirigeants
   - id: trump
@@ -911,3 +912,58 @@ liens:
   - {id: g_kirill, de: kirill, vers: croyances-religions:religion_politique, relation: gouverne, via: "Patriarcat de Moscou", domaine: "Église orthodoxe russe", temps: {statut: conjoncturel, cycle: "guerre en Ukraine", phase: "2026"},
      texte: "Chef de l'Église orthodoxe russe, allié du Kremlin ; message d'hommage à Ali Khamenei après sa mort (février-mars 2026).",
      sources: [{titre: "Church Times (6 mars 2026)", url: "https://www.churchtimes.co.uk/articles/2026/13-march/news/world/russian-orthodox-leader-calls-on-russia-to-go-further-in-war-with-ukraine", lecture: lu}]}
+  # ------------------------------------------------------------------ appartenance partisane (remarque de l'auteur, 9 h 13)
+  - {id: m_trump, de: trump, vers: partis-politiques:conservateurs, relation: membre_de, via: "Parti républicain", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti républicain.",
+     sources: [{titre: "Newsweek, départ de Susie Wiles, Stephen Miller chef de cabinet (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: titre}]}
+  - {id: m_vance, de: vance, vers: partis-politiques:conservateurs, relation: membre_de, via: "Parti républicain", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti républicain.",
+     sources: [{titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: titre}]}
+  - {id: m_rubio, de: rubio, vers: partis-politiques:conservateurs, relation: membre_de, via: "Parti républicain", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti républicain.",
+     sources: [{titre: "Newsweek (novembre 2026) : reste en poste, son ministère dément un départ", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: titre}]}
+  - {id: m_macron, de: macron, vers: partis-politiques:liberaux_centristes, relation: membre_de, via: "Renaissance", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Renaissance.",
+     sources: [{titre: "Gouvernement, Sébastien Lecornu est nommé Premier ministre", url: "https://www.info.gouv.fr/actualite/sebastien-lecornu-est-nomme-premier-ministre", lecture: titre}]}
+  - {id: m_lecornu, de: lecornu, vers: partis-politiques:liberaux_centristes, relation: membre_de, via: "Renaissance", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Renaissance.",
+     sources: [{titre: "Vie publique, organigramme du gouvernement Lecornu au 7 novembre 2026", url: "https://www.vie-publique.fr/infographie/300495-infographie-gouvernement-lecornu-organigramme-au-7-novembre-2026", lecture: titre}]}
+  - {id: m_merz, de: merz, vers: partis-politiques:conservateurs, relation: membre_de, via: "CDU", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : CDU.",
+     sources: [{titre: "Al Jazeera, un Allemand sur dix juge Merz à la hauteur après les défaites électorales de la CDU (2 octobre 2026)", url: "https://www.aljazeera.com/news/2026/10/2/just-one-in-10-germans-thinks-merz-is-up-to-the-job-after-election-wipeout", lecture: titre}]}
+  - {id: m_burnham, de: burnham, vers: partis-politiques:gauche_sociale_democrate, relation: membre_de, via: "Parti travailliste", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti travailliste.",
+     sources: [{titre: "OPB (NPR), Andy Burnham becomes U.K. prime minister (20 juillet 2026)", url: "https://www.opb.org/article/2026/07/20/andy-burnham-succeeds-keir-starmer-as-the-u-k-s-7th-prime-minister-in-10-years/", lecture: titre}]}
+  - {id: m_takaichi, de: takaichi, vers: partis-politiques:conservateurs, relation: membre_de, via: "Parti libéral-démocrate", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti libéral-démocrate.",
+     sources: [{titre: "Takaichi reelected as Japan's prime minister with a goal of pushing to the right", url: "https://www.smdailyjournal.com/news/world/takaichi-reelected-as-japans-prime-minister-with-a-goal-of-pushing-to-the-right/article_f832a0a5-8204-5e6c-ae9f-5041d9c779f5.html", lecture: titre}]}
+  - {id: m_lula, de: lula, vers: partis-politiques:gauche_sociale_democrate, relation: membre_de, via: "Parti des travailleurs", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti des travailleurs.",
+     sources: [{titre: "Al Jazeera, Lula holds off far right with victory in Brazil presidential election (26 octobre 2026)", url: "https://aljazeera.com/news/2026/10/26/lula-holds-off-far-right-with-victory-in-brazil-presidential-election", lecture: titre}]}
+  - {id: m_netanyahou, de: netanyahou, vers: partis-politiques:conservateurs, relation: membre_de, via: "Likoud", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Likoud.",
+     sources: [{titre: "AP via KPTV, le président israélien charge l'opposant Gadi Eisenkot de former un gouvernement (7 novembre 2026)", url: "https://www.kptv.com/2026/11/07/setback-netanyahu-israels-president-taps-opposition-candidate-form-government/", lecture: titre}]}
+  - {id: m_modi, de: modi, vers: partis-politiques:partis_religieux, relation: membre_de, via: "BJP", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : BJP.",
+     sources: [{titre: "Bureau du Premier ministre, discours au Forum des dirigeants mondiaux de l'Economic Times 2026", url: "https://www.pmindia.gov.in/en/news_updates/pm-addresses-the-economic-times-world-leaders-forum-2026/", lecture: titre}]}
+  - {id: m_erdogan, de: erdogan, vers: partis-politiques:partis_religieux, relation: membre_de, via: "AKP", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : AKP.",
+     sources: [{titre: "Bulletin des négociations de la Terre (IISD), Erdoğan à la COP31, 11 novembre 2026", url: "https://enb.iisd.org/media/recep-tayyip-erdogan-president-republic-turkiye-2-unfccc-cop31-11nov2026-photo", lecture: titre}]}
+  - {id: m_xi, de: xi, vers: partis-politiques:partis_uniques, relation: membre_de, via: "Parti communiste chinois", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti communiste chinois.",
+     sources: [{titre: "Ambassade de Chine aux États-Unis, President Xi Jinping Meets with U.S. President Donald J. Trump (19 novembre 2026)", url: "https://us.china-embassy.gov.cn/eng/zgyw/202611/t20261119_12063139.htm", lecture: titre}]}
+  - {id: m_kim, de: kim, vers: partis-politiques:partis_uniques, relation: membre_de, via: "Parti du travail de Corée", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti du travail de Corée.",
+     sources: [{titre: "Pravda (Ukraine), Poutine évoque le rôle des soldats nord-coréens à Koursk devant un proche de Kim Jong-un (16 novembre 2026)", url: "https://www.pravda.com.ua/eng/news/2026/11/16/8063179/", lecture: titre}]}
+  - {id: m_poutine, de: poutine, vers: partis-politiques:partis_dominants, relation: membre_de, via: "Russie unie (qui le soutient)", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Russie unie (qui le soutient).",
+     sources: [{titre: "Ambassade de Chine, President Xi Jinping Chairs China-Russia-U.S. Summit (19 novembre 2026)", url: "https://us.china-embassy.gov.cn/eng/zgyw/202611/t20261119_12063266.htm", lecture: titre}]}
+  - {id: m_von_der_leyen, de: von_der_leyen, vers: partis-politiques:conservateurs, relation: membre_de, via: "CDU, Parti populaire européen", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : CDU, Parti populaire européen.",
+     sources: [{titre: "Euronews, von der Leyen juge qu'il est temps d'envisager un mandat de négociation avec la Russie (19 juin 2026)", url: "https://fr.euronews.com/my-europe/2026/06/19/von-der-leyen-juge-quil-est-temps-denvisager-un-mandat-de-negociation-avec-la-russie", lecture: titre}]}
+  - {id: m_costa, de: costa, vers: partis-politiques:gauche_sociale_democrate, relation: membre_de, via: "Parti socialiste portugais", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Parti socialiste portugais.",
+     sources: [{titre: "EUobserver, les dirigeants de l'Union confient les pourparlers de paix sur l'Ukraine à la France, l'Allemagne, le Royaume-Uni, l'Italie, la Pologne et Bruxelles (13 novembre 2026)", url: "https://euobserver.com/248871/eu-leaders-hand-ukraine-peace-talks-to-france-germany-uk-italy-poland-plus-brussels-instead-of-a-single-envoy/", lecture: titre}]}
+  - {id: m_zelensky, de: zelensky, vers: partis-politiques:partis_personnels, relation: membre_de, via: "Serviteur du peuple", domaine: "parti", temps: {statut: conjoncturel, cycle: "vie politique", phase: "en cours"},
+     texte: "Famille de partis : Serviteur du peuple.",
+     sources: [{titre: "Euromaidan Press, le Parlement vote pour un Premier ministre déjà désigné par le président (17 juillet 2026)", url: "https://euromaidanpress.com/2026/07/17/ukraine-reshuffle-constitution-parliament/", lecture: titre}]}

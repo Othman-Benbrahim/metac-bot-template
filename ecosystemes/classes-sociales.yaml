@@ -1,0 +1,276 @@
+# 0.10.452 — fiche créée le 2026-11-22 (remarque de l'auteur, 9 h 13 : « créer des catégories pour l'écosystème des
+# classes sociales, en remettant dans le contexte et en donnant des chiffres quand ils existent »). Contexte : il n'existe
+# pas une seule définition des classes - par le rapport à la propriété (Marx), par la classe, le statut et le parti
+# (Weber), par les capitaux économique, culturel, social et symbolique (Bourdieu), ou par des tranches de revenu et de
+# patrimoine (statistique). La fiche donne les tranches mondiales chiffrées et l'exemple français des catégories
+# socioprofessionnelles. Agrégats seulement, aucune personne. Chiffres vérifiés le 2026-11-22. Relations à vérifier.
+theme: classes-sociales
+nom: Classes sociales (monde et exemple français)
+declaration:
+  but: 'situer les classes sociales avec des chiffres : dans le monde, les 10 % les plus riches détiennent environ 75 % du
+    patrimoine et 53 % des revenus, la moitié la plus pauvre 2 % du patrimoine et 8 % des revenus ; les 0,001 % (moins de
+    60 000 personnes) plus de 6 % du patrimoine (World Inequality Report 2026) ; 817 millions de personnes sous 3 dollars par
+    jour (Banque mondiale, 2025) ; 58 % des travailleurs dans l''informel (OIT) ; en France, les cadres (23 %) dépassent les
+    ouvriers (18 %) depuis 2019 (Insee) ; dans l''OCDE, il faut en moyenne 4,5 générations à une famille modeste pour
+    atteindre le revenu moyen'
+  limites: dedans les très riches, les classes moyennes, les classes populaires, la pauvreté extrême, le travail informel,
+    la paysannerie, les cadres et professions intellectuelles, les indépendants, la mobilité sociale, les capitaux et la
+    reproduction, les hiérarchies héritées ; dehors le plancher social et l'accès aux besoins (plancher-social), les
+    réseaux d'élites (reseaux-humains), sauf par les ponts
+  observateur: notre carte, regard extérieur ; sources publiques (World Inequality Lab, Banque mondiale, OIT, Insee, OCDE,
+    UBS) ; classes vues en agrégats, sans jugement
+  date: '2026-11-22'
+  espace: le pays et le monde
+  temps: la génération, le siècle
+  vitesse: la décennie, la génération
+  taille: macro (des milliards de personnes en tranches)
+compartiments:
+- id: tres_riches
+  nom: Très riches (les 1 %, les 0,001 %)
+  organisation: statut
+  elements:
+  - les 10 % les plus riches - environ 75 % du patrimoine mondial et 53 % des revenus avant impôt ; les 0,001 % (moins de
+    60 000 multimillionnaires) - plus de 6 % du patrimoine, contre près de 4 % en 1995 (World Inequality Report 2026,
+    repris par Al Jazeera, 10 décembre 2025)
+  - près d'un million de nouveaux millionnaires en 2025 (UBS, rapport sur la richesse mondiale, juin 2026, repris par
+    Fortune)
+  niveau:
+    espace: monde
+    temps: générations
+    vitesse: années
+    taille: micro (peu de personnes) à macro (part du patrimoine)
+  traces:
+  - &id001
+    source: World Inequality Database (wid.world, données publiques)
+    statut: a_brancher
+- id: classes_moyennes
+  nom: Classes moyennes
+  organisation: economie
+  elements:
+  - les 40 % du milieu - environ 23 % du patrimoine mondial et 38 % des revenus (World Inequality Report 2026)
+  - la part des adultes possédant moins de 10 000 dollars est passée de près de 75 % en 2000 à un peu plus de 41 % ; le
+    patrimoine médian baisse pourtant dans la plupart des 56 pays suivis (UBS, 2026)
+  - dans les pays riches, une classe moyenne « sous pression » (OCDE)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: classes_populaires
+  nom: Classes populaires (ouvriers, employés)
+  organisation: societe
+  elements:
+  - la moitié la plus pauvre de l'humanité - environ 2 % du patrimoine et 8 % des revenus (World Inequality Report 2026)
+  - France - employés 24,8 % et ouvriers 18,0 % des personnes en emploi en 2024 ; la part des ouvriers a baissé de 11,9
+    points depuis 1982 (Insee, juin 2025)
+  niveau:
+    espace: pays et monde
+    temps: générations
+    vitesse: décennies
+    taille: macro
+  traces:
+  - source: Insee, enquête Emploi (catégories socioprofessionnelles)
+    statut: a_brancher
+- id: pauvrete_extreme
+  nom: Pauvreté extrême
+  organisation: societe
+  elements:
+  - 817 millions de personnes sous le nouveau seuil de 3 dollars par jour (parité de pouvoir d'achat de 2021) en 2024,
+    125 millions de plus qu'avec l'ancien seuil, sans que le monde se soit appauvri (Banque mondiale, juin 2025, repris par
+    Our World in Data)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Banque mondiale, plateforme Pauvreté et inégalités (PIP)
+    statut: a_brancher
+    odd: ['1.1.1']
+- id: travail_informel
+  nom: Travail informel et précarité
+  organisation: economie
+  elements:
+  - près de 58 % des travailleurs du monde ont un emploi informel, sans contrat ni protection sociale (OIT, repris par
+    People Matters, 2026)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: OIT, ILOSTAT (emploi informel)
+    statut: a_brancher
+- id: paysannerie
+  nom: Paysannerie et monde agricole
+  organisation: economie
+  elements:
+  - une large part de l'humanité vit encore de l'agriculture dans les pays à revenu faible ; en France, les agriculteurs ne
+    sont plus que 1,3 % des personnes en emploi (−6,1 points depuis 1982) (Insee, 2025)
+  niveau:
+    espace: campagnes
+    temps: générations
+    vitesse: décennies
+    taille: macro
+  traces:
+  - *id001
+- id: cadres_intellectuels
+  nom: Cadres et professions intellectuelles
+  organisation: statut
+  elements:
+  - France - cadres 23,0 % et professions intermédiaires 25,2 % des personnes en emploi en 2024 ; les cadres dépassent les
+    ouvriers depuis 2019, alors que les ouvriers étaient presque quatre fois plus nombreux en 1982 (Insee, 2025)
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: décennies
+    taille: macro
+  traces:
+  - *id001
+- id: independants
+  nom: Indépendants, artisans, commerçants, petits patrons
+  organisation: economie
+  elements:
+  - France - artisans, commerçants et chefs d'entreprise 6,8 % des personnes en emploi en 2024 (Insee, 2025)
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: décennies
+    taille: méso
+  traces:
+  - *id001
+- id: mobilite_sociale
+  nom: Mobilité sociale (l'ascenseur)
+  organisation: societe
+  elements:
+  - il faut environ 4,5 générations en moyenne dans l'OCDE à une famille modeste pour atteindre le revenu moyen, 2 au
+    Danemark, 11 en Colombie ; le revenu disponible des 10 % du haut vaut environ 9,5 fois celui des 10 % du bas, contre 7
+    fois 25 ans plus tôt (OCDE, « L'ascenseur social en panne ? », 2018, repris par le Forum économique mondial)
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: générations
+    taille: macro
+  traces:
+  - source: OCDE, A Broken Social Elevator? (2018)
+    statut: a_brancher
+- id: capitaux_reproduction
+  nom: Capitaux et reproduction (économique, culturel, social, symbolique)
+  organisation: ideologie
+  elements:
+  - les positions sociales se transmettent par l'argent, mais aussi par l'école, les relations et le prestige (Bourdieu,
+    La Distinction, 1979)
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: générations
+    taille: micro à macro
+  traces:
+  - *id001
+- id: hierarchies_heritees
+  nom: Hiérarchies héritées (statuts de naissance)
+  organisation: statut
+  elements:
+  - systèmes où le rang se transmet par la naissance (castes, noblesses, statuts coutumiers), même là où la loi interdit
+    la discrimination
+  niveau:
+    espace: pays et régions
+    temps: siècles
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: capitaux_reproduction
+  vers: mobilite_sociale
+  effet: '-'
+  delai: générations
+  force: forte
+  coupure: école gratuite et de qualité, impôt sur les successions
+  statut: a_verifier
+  texte: les capitaux hérités freinent la mobilité des autres
+- de: tres_riches
+  vers: classes_moyennes
+  effet: '-'
+  delai: décennies
+  force: moyenne
+  coupure: fiscalité progressive
+  statut: a_verifier
+  texte: la concentration du patrimoine au sommet comprime la part des classes moyennes
+- de: travail_informel
+  vers: pauvrete_extreme
+  effet: +
+  delai: années
+  force: forte
+  coupure: protection sociale universelle
+  statut: a_verifier
+  texte: sans contrat ni protection, un choc fait basculer dans la pauvreté
+- de: mobilite_sociale
+  vers: classes_moyennes
+  effet: +
+  delai: générations
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'ascenseur social nourrit les classes moyennes
+- de: hierarchies_heritees
+  vers: mobilite_sociale
+  effet: '-'
+  delai: générations
+  force: forte
+  coupure: lois et quotas contre les discriminations
+  statut: a_verifier
+  texte: un rang de naissance bloque l'ascension
+- de: paysannerie
+  vers: classes_populaires
+  effet: +
+  delai: générations
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'exode rural fait passer les enfants de paysans dans les classes populaires urbaines
+ponts:
+- depuis: tres_riches
+  vers: plancher-social:inegalites
+  nature: les inégalités, vues depuis le plancher social
+  type: voisinage
+- depuis: pauvrete_extreme
+  vers: plancher-social:pauvrete
+  nature: la même pauvreté extrême
+  type: meme
+- depuis: travail_informel
+  vers: plancher-social:travail
+  nature: travail informel et travail décent
+  type: voisinage
+- depuis: tres_riches
+  vers: reseaux-humains:reseaux_elites
+  nature: les très riches dans les réseaux d'élites
+  type: voisinage
+- depuis: tres_riches
+  vers: medias-diffusion:proprietaires
+  nature: les grandes fortunes possèdent les médias
+- depuis: capitaux_reproduction
+  vers: societe-droits:education
+  nature: l'école, lieu de reproduction et d'ascension
+  type: voisinage
+- depuis: classes_moyennes
+  vers: humain:aspiration
+  nature: l'aspiration à monter, la peur de déclasser
+- depuis: classes_populaires
+  vers: partis-politiques:droite_radicale_populiste
+  nature: une part du vote populaire passe aux droites radicales
+- depuis: hierarchies_heritees
+  vers: humain:hierarchie
+  nature: la hiérarchie, vue depuis les mécanismes humains
+  type: voisinage
+- depuis: pauvrete_extreme
+  vers: humain:besoins_fondamentaux
+  nature: la survie avant tout
+- depuis: travail_informel
+  vers: migrations-demographie:economie
+  nature: l'absence d'emploi décent pousse à partir
+- depuis: classes_populaires
+  vers: politique-interieure:contestation
+  nature: colère sociale et mobilisations

@@ -19,7 +19,7 @@ FICHIER = Path("ecosystemes") / "acteurs-nommes.yaml"
 SORTIE = Path("registre") / "acteurs-nommes.md"
 SORTES = {"dirigeant", "patron", "religieux", "autre"}
 ENTRE_ACTEURS = {"nomme", "commande", "allie", "rival", "negocie_avec", "finance", "associe", "fournit", "desaccord_public", "proche"}
-VERS_POPULATION = {"gouverne", "elu_par", "informe", "influence_documentee"}
+VERS_POPULATION = {"gouverne", "elu_par", "informe", "influence_documentee", "membre_de"}
 LECTURES = {"lu", "titre"}
 NIVEAUX = {1: "proche", 2: "voisin", 3: "éloigné"}
 

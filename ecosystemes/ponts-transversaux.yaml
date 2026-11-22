@@ -405,3 +405,7 @@ ponts:
 - {de: migrations-demographie:migrations, vers: croyances-religions:aires_geographiques, canal: population, nature: "les migrations déplacent les religions"}
 - {de: guerre-levant:recits, vers: croyances-religions:extremes_islam, canal: conflit, nature: "les guerres du Proche-Orient nourrissent le recrutement jihadiste"}
 - {de: reseaux-sociaux:desinformation, vers: croyances-religions:rapports_de_force, canal: information, nature: "rumeurs et propagandes attisent les tensions entre communautés", type: voisinage}
+# ---------- partis et classes sociales (remarque de l'auteur, 2026-11-22, 9 h 13)
+- {de: classes-sociales:classes_populaires, vers: partis-politiques:gauche_sociale_democrate, canal: comportement, nature: "le vote populaire, base historique de la gauche, s'en éloigne en partie", type: voisinage}
+- {de: classes-sociales:tres_riches, vers: partis-politiques:adhesion_militantisme, canal: economie, nature: "les grandes fortunes financent partis et campagnes"}
+- {de: reseaux-sociaux:desinformation, vers: partis-politiques:droite_radicale_populiste, canal: information, nature: "certaines campagnes d'influence étrangères relaient des thèmes antisystème (à vérifier cas par cas)", type: voisinage}
