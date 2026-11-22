@@ -221,7 +221,7 @@ acteurs:
     role: patron de Tesla et de SpaceX, propriétaire de X ; a dirigé le Département de l'efficacité gouvernementale (2025)
     depuis: '2008-10-01'
     cycle: direction d'entreprise (sans terme fixe)
-    compartiments: [information-cyber:plateformes, economie-entreprises:dirigeants_entreprise, soleil-espace:satellites]
+    compartiments: [information-cyber:plateformes, economie-entreprises:dirigeants_entreprise, soleil-espace:satellites, medias-diffusion:plateformes_sociales]
     sources:
       - {titre: "1News (Nouvelle-Zélande), Musk prend ses distances avec MAGA après les pertes des élections de mi-mandat (20 novembre 2026)", url: "https://www.1news.co.nz/2026/11/20/musk-backs-away-from-maga-after-midterm-losses-trump-says-hes-still-a-friend/", consulte: "2026-11-22", lecture: lu}
   - id: zuckerberg
@@ -230,7 +230,7 @@ acteurs:
     role: fondateur et patron de Meta (Facebook, Instagram, WhatsApp)
     depuis: '2004-02-04'
     cycle: direction d'entreprise (contrôle des droits de vote)
-    compartiments: [information-cyber:plateformes, sciences-techniques:ia]
+    compartiments: [information-cyber:plateformes, sciences-techniques:ia, medias-diffusion:plateformes_sociales]
     sources:
       - {titre: "Semafor, How Zuckerberg shaped Trump's AI industry pledge (30 septembre 2026)", url: "https://www.semafor.com/article/09/30/2026/how-zuckerberg-shaped-trumps-ai-industry-pledge", consulte: "2026-11-22", lecture: titre}
   - id: huang
@@ -239,7 +239,7 @@ acteurs:
     role: cofondateur et patron de Nvidia
     depuis: '1993-04-05'
     cycle: direction d'entreprise
-    compartiments: [sciences-techniques:calcul, rivalite-sino-americaine:technologie]
+    compartiments: [sciences-techniques:calcul, rivalite-sino-americaine:technologie, medias-diffusion:geants_mango]
     sources:
       - {titre: "The National, Nvidia, la Chine et le H200 (14 mai 2026)", url: "https://www.thenationalnews.com/future/technology/2026/05/14/nvidia-china-h200-trump/", consulte: "2026-11-22", lecture: titre}
   - id: altman
@@ -248,7 +248,7 @@ acteurs:
     role: patron d'OpenAI
     depuis: '2019-03-01'
     cycle: direction d'entreprise
-    compartiments: [sciences-techniques:ia, sciences-techniques:capitaux]
+    compartiments: [sciences-techniques:ia, sciences-techniques:capitaux, medias-diffusion:geants_mango]
     sources:
       - {titre: "Fortune, Sam Altman dit qu'OpenAI a fait beaucoup de changements pendant ses discussions avec l'administration (9 juillet 2026)", url: "https://fortune.com/2026/07/09/sam-altman-says-openai-made-many-changes-during-talks-with-us-officials/", consulte: "2026-11-22", lecture: titre}
   - id: larry_ellison
@@ -263,12 +263,13 @@ acteurs:
   - id: david_ellison
     nom: David Ellison
     sorte: patron
-    role: patron de Paramount Skydance (CBS), acquéreur de Warner Bros. Discovery (CNN)
+    role: patron de Skydance (Paramount, CBS, et Warner Bros. Discovery avec CNN depuis le rachat finalisé le 6 octobre 2026)
     depuis: '2025-08-07'
     cycle: direction d'entreprise
-    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise, medias-diffusion:cinema_series]
     sources:
       - {titre: "NPR, Warner Bros., Paramount et la famille Ellison (27 février 2026)", url: "https://www.npr.org/2026/02/27/nx-s1-5728865/warner-bros-paramount-ellison-family", consulte: "2026-11-22", lecture: titre}
+      - {titre: "AP via KSAT, Paramount finalise le rachat de Warner Bros. Discovery pour 81 milliards de dollars (6 octobre 2026)", url: "https://www.ksat.com/news/politics/2026/10/06/paramount-closes-on-81-billion-takeover-of-warner-bros-discovery-joining-two-of-americas-oldest-hollywood-studios/", consulte: "2026-11-22", lecture: titre}
   - id: thiel
     nom: Peter Thiel
     sorte: patron
@@ -293,7 +294,7 @@ acteurs:
     role: actionnaire de contrôle d'un groupe de médias français (Canal+, CNews, Europe 1, JDD)
     depuis: '2014-06-24'
     cycle: actionnaire (sans terme)
-    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise, medias-diffusion:proprietaires]
     sources:
       - {titre: "Reporters sans frontières, protagoniste Vincent Bolloré", url: "https://rsf.org/fr/protagoniste-vincent-bollor%C3%A9", consulte: "2026-11-22", lecture: titre}
 
@@ -376,7 +377,7 @@ acteurs:
     role: président de News Corp et patron de Fox Corporation, contrôle de l'empire familial
     depuis: '2023-11-16'
     cycle: direction d'entreprise
-    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise, medias-diffusion:proprietaires]
     sources:
       - {titre: "Euronews, la famille Murdoch parvient à un accord sur le contrôle de son empire (9 septembre 2025)", url: "https://fr.euronews.com/2025/09/09/la-famille-de-rupert-murdoch-parvient-a-un-accord-sur-le-controle-de-son-empire-mediatique", consulte: "2026-11-22", lecture: titre}
   - id: arnault
@@ -385,7 +386,7 @@ acteurs:
     role: président de LVMH, propriétaire de médias français (Les Échos, Le Parisien, L'Opinion, L'Agefi)
     depuis: '1989-01-01'
     cycle: direction d'entreprise
-    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise, medias-diffusion:proprietaires]
     sources:
       - {titre: "FashionUnited, le président de LVMH Bernard Arnault rachète L'Opinion et L'Agefi (juillet 2025)", url: "https://fashionunited.com/news/business/lvmh-chairman-bernard-arnault-acquires-lopinion-and-lagefi/2025070466974", consulte: "2026-11-22", lecture: titre}
   - id: bezos
@@ -394,7 +395,7 @@ acteurs:
     role: fondateur et président exécutif d'Amazon, propriétaire du Washington Post et de Blue Origin
     depuis: '1994-07-05'
     cycle: actionnaire et président exécutif
-    compartiments: [information-cyber:recits, soleil-espace:satellites]
+    compartiments: [information-cyber:recits, soleil-espace:satellites, medias-diffusion:proprietaires]
     sources:
       - {titre: "NPR, les éditoriaux du Washington Post omettent de signaler les intérêts financiers de Bezos (28 octobre 2025)", url: "https://www.npr.org/2025/10/28/nx-s1-5587932/washington-post-editorials-omit-a-key-disclosure-bezos-financial-ties", consulte: "2026-11-22", lecture: titre}
   - id: adani
@@ -406,6 +407,145 @@ acteurs:
     compartiments: [economie-entreprises:dirigeants_entreprise, corruption:grande_corruption]
     sources:
       - {titre: "Investment Week, la pression monte sur Modi autour d'Adani (21 novembre 2024)", url: "https://www.investmentweek.com/politisches-donnerwetter-um-adani-modi-gerat-unter-druck/", consulte: "2026-11-22", lecture: lu}
+
+  # ------------------------------------------------------------------ troisième lot : médias et IA (accord de l'auteur, 8 h 20 et 8 h 24)
+  # Déclaration d'intérêt : Anthropic (Dario Amodei) développe le modèle d'IA qui a écrit ce fichier ; ses liens sont sourcés
+  # comme les autres, y compris quand ils lui sont défavorables.
+  - id: amodei
+    nom: Dario Amodei
+    sorte: patron
+    role: cofondateur et patron d'Anthropic
+    depuis: '2021-01-01'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, sciences-techniques:ia]
+    sources:
+      - {titre: "CBS News, Hegseth déclare Anthropic « risque pour la chaîne d'approvisionnement » (28 février 2026)", url: "https://www.cbsnews.com/news/hegseth-declares-anthropic-supply-chain-risk/", consulte: "2026-11-22", lecture: lu}
+  - id: pichai
+    nom: Sundar Pichai
+    sorte: patron
+    role: patron de Google et d'Alphabet (YouTube, recherche, Gemini)
+    depuis: '2015-10-02'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, medias-diffusion:plateformes_sociales]
+    sources:
+      - {titre: "Google, remarques du patron lors des résultats du troisième trimestre 2026", url: "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/", consulte: "2026-11-22", lecture: titre}
+  - id: kavukcuoglu
+    nom: Koray Kavukcuoglu
+    sorte: patron
+    role: dirige Google DeepMind depuis août 2026 (succède à Demis Hassabis, devenu président de DeepMind et chef scientifique d'Alphabet)
+    depuis: '2026-08-05'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, sciences-techniques:ia]
+    sources:
+      - {titre: "Axios, remaniement de la direction de l'IA chez Google (août 2026)", url: "https://axios.com/2026/08/06/googles-ai-leadership-shuffle", consulte: "2026-11-22", lecture: lu}
+  - id: mohan
+    nom: Neal Mohan
+    sorte: patron
+    role: patron de YouTube
+    depuis: '2023-02-16'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:plateformes_sociales]
+    sources:
+      - {titre: "Alphabet, Neal Mohan, patron de YouTube, à la conférence MoffettNathanson (14 mai 2026)", url: "https://abc.xyz/investor/events/event-details/2026/Neal-Mohan-Chief-Executive-Officer-of-YouTube-at-the-MoffettNathanson-Media-Internet-and-Communications-Conference-on-May-14-2026-2026-jS0gh97PGz/default.aspx", consulte: "2026-11-22", lecture: titre}
+  - id: chew
+    nom: Shou Zi Chew
+    sorte: patron
+    role: patron de TikTok, membre du conseil de la coentreprise américaine
+    depuis: '2021-05-01'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:plateformes_sociales]
+    sources:
+      - {titre: "Fortune, Adam Presser à la tête de TikTok aux États-Unis (24 janvier 2026)", url: "https://fortune.com/2026/01/24/tiktok-social-media-us-ceo-adam-presser-shou-zi-chew-oracle-silverlake-trump-politics/", consulte: "2026-11-22", lecture: lu}
+  - id: presser
+    nom: Adam Presser
+    sorte: patron
+    role: patron de la coentreprise TikTok USDS (activité américaine de TikTok)
+    depuis: '2026-01-22'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:plateformes_sociales]
+    sources:
+      - {titre: "Fortune (24 janvier 2026)", url: "https://fortune.com/2026/01/24/tiktok-social-media-us-ceo-adam-presser-shou-zi-chew-oracle-silverlake-trump-politics/", consulte: "2026-11-22", lecture: lu}
+  - id: liang_wenfeng
+    nom: Liang Wenfeng
+    sorte: patron
+    role: fondateur de DeepSeek (Hangzhou)
+    depuis: '2023-07-17'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, rivalite-sino-americaine:technologie]
+    sources:
+      - {titre: "Gigazine, intervention de Liang Wenfeng (24 juillet 2026)", url: "https://gigazine.net/gsc_news/en/20260724-deepseek-liang-wenfeng-talk/", consulte: "2026-11-22", lecture: titre}
+  - id: eddie_wu
+    nom: Eddie Wu (Wu Yongming)
+    sorte: patron
+    role: patron d'Alibaba (modèles Qwen, puces, nuage)
+    depuis: '2023-09-10'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, rivalite-sino-americaine:technologie]
+    sources:
+      - {titre: "Fortune, Alibaba dévoile une puce d'IA puissante (22 septembre 2026)", url: "https://fortune.com/2026/09/22/alibaba-powerful-ai-chip-xi-trump-us/", consulte: "2026-11-22", lecture: titre}
+  - id: ma_huateng
+    nom: Ma Huateng (Pony Ma)
+    sorte: patron
+    role: fondateur et patron de Tencent (WeChat, jeux vidéo)
+    depuis: '1998-11-11'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:jeux_video, medias-diffusion:plateformes_sociales]
+    sources:
+      - {titre: "Tencent, résultats annuels 2025", url: "https://en.prnasia.com/releases/apac/tencent-announces-2025-annual-and-fourth-quarter-results-525781.shtml", consulte: "2026-11-22", lecture: titre}
+  - id: mensch
+    nom: Arthur Mensch
+    sorte: patron
+    role: cofondateur et patron de Mistral AI (France), dont ASML est le premier actionnaire
+    depuis: '2023-04-28'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, sciences-techniques:ia]
+    sources:
+      - {titre: "Mistral AI, levée de 1,7 milliard d'euros menée par ASML", url: "https://mistral.ai/fr/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai", consulte: "2026-11-22", lecture: titre}
+  - id: d_amaro
+    nom: Josh D'Amaro
+    sorte: patron
+    role: patron de Disney (ABC, Disney+, studios)
+    depuis: '2026-03-18'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:cinema_series, medias-diffusion:television]
+    sources:
+      - {titre: "Fox Business, Josh D'Amaro prend la tête de Disney (18 mars 2026)", url: "https://www.foxbusiness.com/media/new-disney-ceo-josh-damaro-officially-takes-reins-from-bob-iger", consulte: "2026-11-22", lecture: lu}
+  - id: sarandos
+    nom: Ted Sarandos
+    sorte: patron
+    role: codirigeant de Netflix
+    depuis: '2020-07-16'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:cinema_series]
+    sources:
+      - {titre: "Sénat des États-Unis, témoignage de Ted Sarandos (3 février 2026)", url: "https://www.judiciary.senate.gov/imo/media/doc/005a15b1-a2aa-1db4-39fb-e04316c2ed18/2026-02-03_Testimony_Sarandos.pdf", consulte: "2026-11-22", lecture: titre}
+  - id: kretinsky
+    nom: Daniel Kretinsky
+    sorte: patron
+    role: industriel tchèque, propriétaire de médias français (CMI France - Elle, Marianne ; parts du Monde et de TF1) et de l'éditeur Editis
+    depuis: '2018-01-01'
+    cycle: actionnaire
+    compartiments: [medias-diffusion:proprietaires, medias-diffusion:edition]
+    sources:
+      - {titre: "Boursorama, Saadé, Bolloré, Kretinsky : ces milliardaires qui investissent dans les médias (21 août 2023)", url: "https://www.boursorama.com/bourse/actualites/medias-saade-bollore-kretinsky-qui-sont-ces-milliardaires-qui-investissent-massivement-e66e1e072fb472df18e3c1fbf47ab71f", consulte: "2026-11-22", lecture: lu}
+  - id: niel
+    nom: Xavier Niel
+    sorte: patron
+    role: fondateur d'Iliad (Free), actionnaire du Monde et de Nice-Matin
+    depuis: '2010-11-01'
+    cycle: actionnaire
+    compartiments: [medias-diffusion:proprietaires]
+    sources:
+      - {titre: "Boursorama (21 août 2023)", url: "https://www.boursorama.com/bourse/actualites/medias-saade-bollore-kretinsky-qui-sont-ces-milliardaires-qui-investissent-massivement-e66e1e072fb472df18e3c1fbf47ab71f", consulte: "2026-11-22", lecture: lu}
+  - id: saade
+    nom: Rodolphe Saadé
+    sorte: patron
+    role: patron de CMA CGM, propriétaire de La Provence, La Tribune, BFMTV et RMC, Brut
+    depuis: '2017-11-18'
+    cycle: direction d'entreprise et actionnaire
+    compartiments: [medias-diffusion:proprietaires, transport-maritime:flottes]
+    sources:
+      - {titre: "Journal du Net, Altice Media (BFM et RMC) passe chez CMA CGM", url: "https://www.journaldunet.com/business/1531475-rachat-officiel-d-altice-media-bfm-et-rmc-par-cma-cgm/", consulte: "2026-11-22", lecture: titre}
 
 liens:
   # ------------------------------------------------------------------ hiérarchie et nominations
@@ -575,3 +715,58 @@ liens:
   - {id: g_erdogan, de: erdogan, vers: environnement-dechets:climat_politique, relation: gouverne, via: "présidence de la COP31 (Antalya)", domaine: climat, temps: {statut: conjoncturel, cycle: COP annuelles, phase: "COP31, novembre 2026"},
      texte: "Hôte de la conférence, il appelle à traduire les engagements climatiques en actes.",
      sources: [{titre: "Daily Sabah, Erdoğan à la COP31", url: "https://www.dailysabah.com/politics/erdogan-pushes-climate-pledges-into-action-as-cop31-talks-advance/news", lecture: titre}]}
+  # ------------------------------------------------------------------ troisième lot : médias et IA
+  - {id: d_hegseth_amodei, de: hegseth, vers: amodei, relation: desaccord_public, domaine: "usage militaire de l'IA", temps: {statut: conjoncturel, cycle: "mandat présidentiel américain", phase: "depuis le 28 février 2026"},
+     texte: "Hegseth déclare Anthropic risque pour la chaîne d'approvisionnement et le président ordonne aux agences de cesser d'utiliser ses modèles ; Anthropic refuse de lever ses limites (surveillance de masse des Américains, armes entièrement autonomes) et conteste en justice.",
+     sources: [{titre: "CBS News (28 février 2026)", url: "https://www.cbsnews.com/news/hegseth-declares-anthropic-supply-chain-risk/", lecture: lu}]}
+  - {id: g_altman_hegseth, de: altman, vers: hegseth, relation: negocie_avec, domaine: "IA et défense", temps: {statut: conjoncturel, cycle: "mandat présidentiel américain", phase: "février 2026"},
+     texte: "OpenAI en discussion avec le Pentagone après la rupture avec Anthropic.",
+     sources: [{titre: "Fortune (27 février 2026)", url: "https://fortune.com/2026/02/27/openai-in-talks-with-pentagon-after-anthropic-blowup/", lecture: titre}]}
+  - {id: r_amodei_altman, de: amodei, vers: altman, relation: rival, domaine: "modèles d'IA de pointe", temps: {statut: structurel},
+     texte: "Anthropic et OpenAI se disputent le premier rang des modèles et des contrats publics.",
+     sources: [{titre: "Fortune (27 février 2026)", url: "https://fortune.com/2026/02/27/openai-in-talks-with-pentagon-after-anthropic-blowup/", lecture: titre}]}
+  - {id: c_pichai_kavukcuoglu, de: pichai, vers: kavukcuoglu, relation: commande, domaine: "Google DeepMind", temps: {statut: conjoncturel, cycle: "direction d'entreprise", phase: "depuis août 2026"},
+     texte: "Le nouveau patron de Google DeepMind rend compte à Sundar Pichai.",
+     sources: [{titre: "Axios (août 2026)", url: "https://axios.com/2026/08/06/googles-ai-leadership-shuffle", lecture: lu}]}
+  - {id: c_pichai_mohan, de: pichai, vers: mohan, relation: commande, domaine: "YouTube", temps: {statut: structurel},
+     texte: "YouTube est une filiale de Google.",
+     sources: [{titre: "Alphabet (mai 2026)", url: "https://abc.xyz/investor/events/event-details/2026/Neal-Mohan-Chief-Executive-Officer-of-YouTube-at-the-MoffettNathanson-Media-Internet-and-Communications-Conference-on-May-14-2026-2026-jS0gh97PGz/default.aspx", lecture: titre}]}
+  - {id: s_chew_presser, de: chew, vers: presser, relation: associe, domaine: "TikTok", temps: {statut: conjoncturel, cycle: "coentreprise TikTok USDS", phase: "depuis janvier 2026"},
+     texte: "Adam Presser a été le chef de cabinet de Shou Zi Chew (2022-2023) ; Chew siège au conseil de la coentreprise.",
+     sources: [{titre: "Fortune (24 janvier 2026)", url: "https://fortune.com/2026/01/24/tiktok-social-media-us-ceo-adam-presser-shou-zi-chew-oracle-silverlake-trump-politics/", lecture: lu}]}
+  - {id: s_ellison_presser, de: larry_ellison, vers: presser, relation: associe, domaine: "TikTok", temps: {statut: conjoncturel, cycle: "coentreprise TikTok USDS", phase: "depuis janvier 2026"},
+     texte: "Oracle détient 15 % de la coentreprise et héberge les données des utilisateurs américains.",
+     sources: [{titre: "Fortune (24 janvier 2026)", url: "https://fortune.com/2026/01/24/tiktok-social-media-us-ceo-adam-presser-shou-zi-chew-oracle-silverlake-trump-politics/", lecture: lu}]}
+  - {id: r_liang_altman, de: liang_wenfeng, vers: altman, relation: rival, domaine: "modèles d'IA de pointe", temps: {statut: conjoncturel, cycle: "course à l'IA", phase: "DeepSeek-V4, avril 2026"},
+     texte: "DeepSeek estime son modèle V4-Pro à trois à six mois de la frontière tenue par OpenAI et Google.",
+     sources: [{titre: "Al Jazeera (24 avril 2026)", url: "https://www.aljazeera.com/amp/economy/2026/4/24/chinas-deepseek-unveils-latest-model-a-year-after-upending-global-tech", lecture: lu}]}
+  - {id: r_wu_huang, de: eddie_wu, vers: huang, relation: rival, domaine: "puces d'IA", temps: {statut: conjoncturel, cycle: "guerre technologique sino-américaine", phase: "septembre 2026"},
+     texte: "Alibaba dévoile une puce d'IA puissante, alternative chinoise aux puces Nvidia.",
+     sources: [{titre: "Fortune (22 septembre 2026)", url: "https://fortune.com/2026/09/22/alibaba-powerful-ai-chip-xi-trump-us/", lecture: titre}]}
+  - {id: r_mensch_altman, de: mensch, vers: altman, relation: rival, domaine: "modèles d'IA de pointe", temps: {statut: structurel},
+     texte: "Mistral AI, présentée comme la réponse européenne à OpenAI.",
+     sources: [{titre: "Europe's answer to OpenAI just got a $1.5 billion boost from chip giant ASML", url: "https://www.aol.com/articles/europes-answer-openai-just-got-111108748.html", lecture: titre}]}
+  - {id: r_dellison_sarandos, de: david_ellison, vers: sarandos, relation: rival, domaine: "rachat de Warner Bros. Discovery", temps: {statut: conjoncturel, cycle: "rachat", phase: "février 2026"},
+     texte: "Warner Bros. Discovery écarte Netflix au profit de Paramount.",
+     sources: [{titre: "NPR (26 février 2026)", url: "https://www.npr.org/2026/02/26/nx-s1-5727894/warner-bros-discovery-paramount-netflix", lecture: titre}]}
+  - {id: i_pichai, de: pichai, vers: medias-diffusion:plateformes_sociales, relation: informe, via: "Google Search, YouTube, Gemini", domaine: "information", temps: {statut: conjoncturel, cycle: "direction d'entreprise", phase: "en cours"},
+     texte: "Recherche Google, YouTube et Gemini.",
+     sources: [{titre: "Google (troisième trimestre 2026)", url: "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/", lecture: titre}]}
+  - {id: i_presser, de: presser, vers: medias-diffusion:plateformes_sociales, relation: informe, via: "TikTok aux États-Unis", domaine: "information", temps: {statut: conjoncturel, cycle: "coentreprise TikTok USDS", phase: "depuis janvier 2026"},
+     texte: "L'algorithme de TikTok aux États-Unis doit être réentraîné sous contrôle américain.",
+     sources: [{titre: "Fortune (24 janvier 2026)", url: "https://fortune.com/2026/01/24/tiktok-social-media-us-ceo-adam-presser-shou-zi-chew-oracle-silverlake-trump-politics/", lecture: lu}]}
+  - {id: i_ma, de: ma_huateng, vers: medias-diffusion:jeux_video, relation: informe, via: "Tencent Games, WeChat", domaine: "jeux et messagerie", temps: {statut: conjoncturel, cycle: "direction d'entreprise", phase: "en cours"},
+     texte: "Premier éditeur de jeux vidéo et propriétaire de WeChat.",
+     sources: [{titre: "Tencent, résultats annuels 2025", url: "https://en.prnasia.com/releases/apac/tencent-announces-2025-annual-and-fourth-quarter-results-525781.shtml", lecture: titre}]}
+  - {id: i_damaro, de: d_amaro, vers: medias-diffusion:cinema_series, relation: informe, via: "Disney, ABC, Disney+", domaine: "divertissement et information", temps: {statut: conjoncturel, cycle: "direction d'entreprise", phase: "depuis mars 2026"},
+     texte: "Studios Disney, ABC, Disney+.",
+     sources: [{titre: "Fox Business (18 mars 2026)", url: "https://www.foxbusiness.com/media/new-disney-ceo-josh-damaro-officially-takes-reins-from-bob-iger", lecture: lu}]}
+  - {id: i_kretinsky, de: kretinsky, vers: medias-diffusion:presse, relation: informe, via: "CMI France, Editis", domaine: "information", temps: {statut: conjoncturel, cycle: "propriété de médias", phase: "depuis 2018"},
+     texte: "Magazines de Lagardère (Elle), Marianne, Franc-Tireur ; parts du Monde et de TF1 ; éditeur Editis.",
+     sources: [{titre: "Boursorama (21 août 2023)", url: "https://www.boursorama.com/bourse/actualites/medias-saade-bollore-kretinsky-qui-sont-ces-milliardaires-qui-investissent-massivement-e66e1e072fb472df18e3c1fbf47ab71f", lecture: lu}]}
+  - {id: i_niel, de: niel, vers: medias-diffusion:presse, relation: informe, via: "Le Monde, Nice-Matin", domaine: "information", temps: {statut: conjoncturel, cycle: "propriété de médias", phase: "depuis 2010"},
+     texte: "Actionnaire du Monde (dont Télérama) et de Nice-Matin.",
+     sources: [{titre: "Boursorama (21 août 2023)", url: "https://www.boursorama.com/bourse/actualites/medias-saade-bollore-kretinsky-qui-sont-ces-milliardaires-qui-investissent-massivement-e66e1e072fb472df18e3c1fbf47ab71f", lecture: lu}]}
+  - {id: i_saade, de: saade, vers: medias-diffusion:television, relation: informe, via: "BFMTV, RMC, La Provence, La Tribune, Brut", domaine: "information", temps: {statut: conjoncturel, cycle: "propriété de médias", phase: "depuis 2024 pour BFMTV et RMC"},
+     texte: "Rachat d'Altice Media (BFMTV, RMC) à Patrick Drahi, après La Provence, La Tribune et Brut.",
+     sources: [{titre: "Journal du Net", url: "https://www.journaldunet.com/business/1531475-rachat-officiel-d-altice-media-bfm-et-rmc-par-cma-cgm/", lecture: titre}]}

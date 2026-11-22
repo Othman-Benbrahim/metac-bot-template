@@ -1,0 +1,354 @@
+# 0.10.447 — fiche créée le 2026-11-22 (remarque de l'auteur, 8 h 20 : « après les dirigeants, introduire les moyens de
+# diffusion de l'information : internet (réseaux sociaux, liés aux MANGO), jeux vidéo, presse et littérature (exemple
+# français, où l'on a déjà des noms de patrons et leur lien avec les journaux), télévision et cinéma (Hollywood, Bollywood,
+# etc.), liés aux grandes chaînes de diffusion internationales, opposés aux diffuseurs indépendants, qui ont un plus petit
+# réseau ; nommer les dirigeants de ces médias quand c'est possible »). Les dirigeants sont dans acteurs-nommes.yaml.
+# Déclaration d'intérêt : l'une des deux définitions de MANGO inclut Anthropic, qui développe le modèle d'IA qui a écrit
+# cette fiche. Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: medias-diffusion
+nom: Moyens de diffusion de l'information (plateformes, presse, télévision, cinéma, jeux vidéo)
+declaration:
+  but: 'comprendre par où passent l''information et les récits, et qui possède ces canaux : les réseaux sociaux et vidéo
+    sont devenus la première source d''information (54 % des personnes interrogées, devant la télévision à 52 % et les
+    sites d''information à 51 %, Reuters Institute, juin 2026) ; Meta touche 3,64 milliards de personnes par jour ; les
+    jeux vidéo pèsent 213,9 milliards de dollars et 3,7 milliards de joueurs ; en France, une poignée de grandes fortunes
+    possède l''essentiel des médias privés ; face à eux, les médias indépendants ont de plus petits réseaux'
+  limites: dedans les plateformes sociales et vidéo, les géants de la technologie et de l'IA, les créateurs et
+    influenceurs, les jeux vidéo, la presse, l'édition, la télévision, le cinéma et les séries, les diffuseurs
+    internationaux et agences, les médias indépendants, la propriété des médias ; dehors les récits et la désinformation
+    eux-mêmes, la censure et les coupures (information-cyber), les mécanismes psychologiques de l'opinion (humain), sauf
+    par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (Reuters Institute, résultats publiés des entreprises,
+    Newzoo, RSF, presse) ; personnalités publiques dans leur rôle public seulement ; déclaration d'intérêt ci-dessus
+  date: '2026-11-22'
+  espace: le pays, la langue, le monde
+  temps: de l'heure (une publication virale) à la décennie (une concentration, un empire médiatique)
+  vitesse: l'heure, le jour, l'année
+  taille: micro (un créateur) à macro (une plateforme mondiale)
+compartiments:
+- id: plateformes_sociales
+  nom: Réseaux sociaux et plateformes vidéo
+  organisation: technique
+  elements:
+  - Meta (Facebook, Instagram, WhatsApp, Messenger) - 3,64 milliards de personnes actives par jour en moyenne en
+    septembre 2026, +3 % sur un an (Meta, résultats du troisième trimestre, 21 octobre 2026)
+  - TikTok - activité américaine confiée en janvier 2026 à une coentreprise majoritairement américaine (ByteDance 19,9 %,
+    Oracle 15 %, Silver Lake 15 %, MGX d'Abou Dhabi 15 %), dirigée par Adam Presser (Fortune, 24 janvier 2026)
+  - YouTube (Google), X (Elon Musk)
+  - réseaux sociaux et vidéo, première source d'information - 54 % des sondés dans 48 pays ; 30 % en font leur source
+    principale (22 % cinq ans plus tôt) ; 12 % ne s'informent que par eux (Reuters Institute, Digital News Report 2026)
+  acteurs:
+  - nom: une plateforme mondiale
+    taille: macro
+    espace: monde
+    vitesse: heures
+    organisation: technique
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: heures
+    taille: macro
+  traces:
+  - source: Reuters Institute, Digital News Report (annuel, données publiques)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: geants_mango
+  nom: Géants de la technologie et de l'IA (« MANGO »)
+  organisation: economie
+  elements:
+  - MANGO, sigle de 2025-2026 qui succède à FAANG ; deux définitions circulent - Microsoft, Anthropic, Nvidia, Google
+    DeepMind, OpenAI (Axios) ; Meta, Apple, Nvidia, Google, OpenAI (autres analystes)
+  - agents conversationnels (IA) utilisés chaque semaine pour s'informer par 10 % des sondés (16 % des moins de 35 ans) ;
+    20 % font confiance à leurs réponses (Reuters Institute, 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: createurs
+  nom: Créateurs et influenceurs
+  organisation: societe
+  elements:
+  - 27 % s'informent auprès de créateurs ou d'influenceurs centrés sur l'actualité, 46 % auprès de créateurs de tout type
+    (Reuters Institute, 2026)
+  niveau:
+    espace: pays et langues
+    temps: mois
+    vitesse: heures
+    taille: micro à méso
+  traces:
+  - *id001
+- id: jeux_video
+  nom: Jeux vidéo
+  organisation: technique
+  elements:
+  - 213,9 milliards de dollars de revenus prévus en 2026 (+6,1 %), 3,70 milliards de joueurs ; mobile 57 % ; Chine 58,1
+    milliards, États-Unis 53,5 milliards (Newzoo, 11 septembre 2026)
+  - Tencent, premier éditeur mondial - 241,6 milliards de yuans de revenus de jeux en 2025 (résultats annuels de Tencent,
+    repris par la presse financière, à recouper)
+  - les jeux, aussi canaux de récits, de communautés et de diffusion en direct
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: micro à macro
+  traces:
+  - source: Newzoo, rapport annuel sur le marché mondial des jeux
+    statut: a_brancher
+- id: proprietaires
+  nom: Propriétaires des médias (concentration, l'exemple français)
+  organisation: economie
+  elements:
+  - Vincent Bolloré - Canal+, CNews, Europe 1, Le Journal du dimanche, Paris Match, Prisma Media ; Bernard Arnault - Les
+    Échos, Le Parisien, L'Opinion, L'Agefi ; Daniel Kretinsky - Elle, Marianne, Franc-Tireur, part du Monde et de TF1 ;
+    Xavier Niel - Le Monde, Nice-Matin ; Rodolphe Saadé - La Provence, La Tribune, BFMTV et RMC (depuis 2024), Brut ;
+    famille Dassault - Le Figaro ; François Pinault - Le Point ; Bouygues - TF1 (Boursorama, 2023 ; JDN pour BFMTV et
+    RMC ; carte « Médias français, qui possède quoi ? », Le Monde diplomatique et Acrimed)
+  - liberté de la presse - la France 25e, les États-Unis 64e (−7) ; plus de la moitié des pays en situation « difficile »
+    ou « très grave », une première (RSF, classement 2026)
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: data.gouv.fr, « Médias français, qui possède quoi ? » (jeu de données public)
+    statut: a_brancher
+- id: presse
+  nom: Presse écrite et sites d'information
+  organisation: societe
+  elements:
+  - sites et applications d'information - 51 % des sondés, −12 points depuis 2020 ; confiance dans l'information - 37 %,
+    le plus bas depuis 2015 ; 42 % évitent parfois l'actualité (Reuters Institute, 2026)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours
+    taille: méso à macro
+  traces:
+  - *id001
+- id: edition
+  nom: Édition et littérature
+  organisation: ideologie
+  elements:
+  - grands groupes d'édition passés sous le contrôle d'industriels - Editis (Kretinsky, 2023), Hachette par Lagardère
+    (Bolloré) (Boursorama, 2023)
+  niveau:
+    espace: pays et langues
+    temps: années à décennies
+    vitesse: mois
+    taille: méso
+  traces:
+  - *id001
+- id: television
+  nom: Télévision
+  organisation: societe
+  elements:
+  - télévision comme source d'information - 52 % des sondés, −13 points depuis 2020 (Reuters Institute, 2026)
+  - en France, TF1 (Bouygues), M6, BFMTV (Saadé), CNews (Bolloré), et l'audiovisuel public
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: heures
+    taille: macro
+  traces:
+  - *id001
+- id: cinema_series
+  nom: Cinéma et séries (Hollywood, Bollywood, Nollywood…)
+  organisation: ideologie
+  elements:
+  - Hollywood - Paramount a finalisé le rachat de Warner Bros. Discovery pour 81 milliards de dollars le 6 octobre 2026,
+    le groupe prenant le nom de Skydance (AP) ; Josh D'Amaro patron de Disney depuis le 18 mars 2026 (Fox Business)
+  - Inde - 13 395 crores de roupies au box-office en 2025, dont 5 504 pour Bollywood (41 %), un record (Ormax, repris par
+    The Hollywood Reporter India)
+  - Nigeria (Nollywood) - 1 185 films classés par l'office national de classification en 2025 (Premium Times)
+  niveau:
+    espace: monde et langues
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - *id001
+- id: diffuseurs_internationaux
+  nom: Diffuseurs internationaux et agences de presse
+  organisation: geopolitique
+  elements:
+  - agences mondiales (AFP, Reuters, AP) qui alimentent les autres médias
+  - diffuseurs publics ou d'État tournés vers l'étranger - BBC World Service, France Médias Monde, CGTN (65 langues,
+    RSF), RT, Al Jazeera ; arrêt de Voice of America par l'administration Trump pendant que la Russie et la Chine
+    maintiennent leurs diffuseurs (Business Insider)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: heures
+    taille: macro
+  traces:
+  - *id001
+- id: independants
+  nom: Médias indépendants (plus petits réseaux)
+  organisation: societe
+  elements:
+  - médias financés par leurs lecteurs, des fondations ou des dons, sans grand actionnaire industriel ; audience plus
+    réduite, réseau de diffusion plus petit
+  - fin de l'aide américaine au journalisme indépendant à l'étranger avec la suppression de l'USAID (Carnegie, avril 2026)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours
+    taille: micro à méso
+  traces:
+  - *id001
+relations:
+- de: plateformes_sociales
+  vers: presse
+  effet: '-'
+  delai: années
+  force: forte
+  coupure: accords de rémunération des contenus
+  statut: a_verifier
+  texte: audience et publicité passent des journaux aux plateformes (les sites d'information perdent 12 points depuis 2020)
+- de: plateformes_sociales
+  vers: television
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la vidéo en ligne prend la place de la télévision comme source d'information
+- de: plateformes_sociales
+  vers: createurs
+  effet: +
+  delai: mois
+  force: forte
+  coupure: changement d'algorithme ou interdiction
+  statut: a_verifier
+  texte: les plateformes donnent leur audience aux créateurs
+- de: geants_mango
+  vers: plateformes_sociales
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: régulation
+  statut: a_verifier
+  texte: l'IA et l'infrastructure des géants transforment la diffusion (recommandation, résumés, agents conversationnels)
+- de: proprietaires
+  vers: presse
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: indépendance éditoriale garantie (chartes, sociétés de journalistes)
+  statut: a_verifier
+  texte: les propriétaires financent les titres et peuvent orienter leur ligne (le compartiment cible lit ici l'alignement
+    éditorial sur le propriétaire)
+- de: proprietaires
+  vers: television
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: régulateur (Arcom), obligations de pluralisme
+  statut: a_verifier
+  texte: même effet sur les chaînes rachetées
+- de: proprietaires
+  vers: edition
+  effet: +
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: rachats de maisons d'édition par les mêmes industriels
+- de: proprietaires
+  vers: independants
+  effet: '-'
+  delai: années
+  force: faible
+  coupure: soutien des lecteurs
+  statut: a_verifier
+  texte: la concentration réduit la place des indépendants (rachats, concurrence pour l'audience)
+- de: jeux_video
+  vers: createurs
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: diffusion en direct et vidéos de jeux nourrissent l'économie des créateurs
+- de: diffuseurs_internationaux
+  vers: presse
+  effet: +
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les agences alimentent la plupart des rédactions
+ponts:
+- depuis: plateformes_sociales
+  vers: information-cyber:plateformes
+  nature: les mêmes plateformes, vues depuis l'information et le cyber
+  type: meme
+- depuis: plateformes_sociales
+  vers: humain:amplification_algorithmique
+  nature: les algorithmes de recommandation amplifient certains contenus
+- depuis: plateformes_sociales
+  vers: rivalite-sino-americaine:technologie
+  nature: TikTok entre la Chine et les États-Unis
+  type: voisinage
+- depuis: geants_mango
+  vers: sciences-techniques:ia
+  nature: les géants de l'IA
+  type: voisinage
+- depuis: geants_mango
+  vers: economie-entreprises:investissement_ia
+  nature: les investissements dans l'IA
+  type: voisinage
+- depuis: createurs
+  vers: humain:opinion_publique
+  nature: créateurs et influenceurs dans la formation de l'opinion
+- depuis: proprietaires
+  vers: humain:convergence_editoriale
+  nature: des médias de mêmes propriétaires convergent dans leurs choix
+- depuis: proprietaires
+  vers: politique-interieure:elections
+  nature: la propriété des médias à l'approche de la présidentielle de 2027
+- depuis: proprietaires
+  vers: corruption:presse_alerte
+  nature: l'indépendance de la presse d'enquête
+  type: voisinage
+- depuis: presse
+  vers: information-cyber:recits
+  nature: la presse diffuse et cadre les récits
+- depuis: television
+  vers: humain:agenda
+  nature: ce que la télévision montre fixe l'agenda
+- depuis: cinema_series
+  vers: culture-memoire:creation
+  nature: le cinéma et les séries, partie de la création
+  type: voisinage
+- depuis: cinema_series
+  vers: competitions-culture:medias
+  nature: prix et audiences des films
+  type: voisinage
+- depuis: jeux_video
+  vers: competitions-culture:public
+  nature: les compétitions de jeux vidéo et leur public
+  type: voisinage
+- depuis: diffuseurs_internationaux
+  vers: information-cyber:etats
+  nature: les diffuseurs d'État, instruments d'influence
+  type: voisinage
+- depuis: diffuseurs_internationaux
+  vers: information-cyber:langues_biais
+  nature: les langues de diffusion et leurs angles
+  type: voisinage
+- depuis: independants
+  vers: societe-droits:libertes_civiques
+  nature: la place des médias indépendants dans les libertés civiques
+  type: voisinage
+- depuis: presse
+  vers: observateur-mesure:biais
+  nature: nos propres sources sont ces médias
+  type: voisinage
