@@ -291,3 +291,34 @@ ponts:
 - {de: eau-moyen-orient:pluies, vers: cycles-biogeochimiques:eau, canal: eau, nature: "le cycle de l'eau régional"}
 - {de: eau-moyen-orient:dessalement, vers: environnement-dechets:pollution_chimique, canal: sante, nature: "les saumures rejetées en mer"}
 - {de: eau-moyen-orient:villes, vers: plancher-social:acces_energie, canal: energie, nature: "pompage et dessalement exigent de l'électricité"}
+# ---------- vers l'Afrique subsaharienne (accord de l'auteur, 2026-11-22, 7 h 22 : « à condition que ce soit
+# pertinent ») : liens entrants, des autres fiches vers l'Afrique
+- {de: climat-extremes:oscillations, vers: afrique-subsaharienne:croissance, canal: climat, nature: "El Niño pourrait retirer 0,5 point de croissance et ajouter 2,6 points d'inflation en 2027 (FMI)"}
+- {de: alimentation-mondiale:prix, vers: afrique-subsaharienne:croissance, canal: economie, nature: "les prix alimentaires mondiaux pèsent sur l'inflation des pays importateurs"}
+- {de: energie-mondiale:prix, vers: afrique-subsaharienne:croissance, canal: energie, nature: "le prix du pétrole sépare exportateurs (excédents) et importateurs (déficits)"}
+- {de: dette-emergents:creanciers, vers: afrique-subsaharienne:croissance, canal: economie, nature: "les restructurations de dette qui traînent retardent les financements"}
+- {de: dette-emergents:fmi, vers: afrique-subsaharienne:croissance, canal: institution, nature: "programmes du FMI et conditions attachées"}
+- {de: politique-americaine:reserve_federale, vers: afrique-subsaharienne:croissance, canal: economie, nature: "les taux américains renchérissent l'emprunt des États africains"}
+- {de: politique-americaine:commerce, vers: afrique-subsaharienne:integration_commerciale, canal: economie, nature: "droits de douane et préférences commerciales américaines"}
+- {de: politique-americaine:budget, vers: afrique-subsaharienne:deplacements, canal: institution, nature: "la baisse de l'aide humanitaire américaine touche les déplacés"}
+- {de: migrations-demographie:diasporas, vers: afrique-subsaharienne:croissance, canal: economie, nature: "les envois d'argent des diasporas"}
+- {de: migrations-demographie:politiques_migratoires, vers: afrique-subsaharienne:deplacements, canal: population, nature: "les politiques migratoires européennes et les routes du Sahel"}
+- {de: union-europeenne:relations_exterieures, vers: afrique-subsaharienne:integration_commerciale, canal: institution, nature: "accords commerciaux et partenariats de l'Union avec l'Afrique"}
+- {de: minerais-critiques:demande, vers: afrique-subsaharienne:ressources, canal: economie, nature: "la demande de cuivre et de cobalt tire l'extraction en RDC et en Zambie"}
+- {de: minerais-critiques:investissement, vers: afrique-subsaharienne:ressources, canal: economie, nature: "investissements étrangers dans les mines africaines"}
+- {de: economie-chinoise:matieres_premieres, vers: afrique-subsaharienne:ressources, canal: economie, nature: "la Chine, premier acheteur des minerais africains"}
+- {de: economie-chinoise:exterieur, vers: afrique-subsaharienne:puissances_exterieures, canal: economie, nature: "prêts et investissements chinois en Afrique"}
+- {de: rivalite-sino-americaine:diplomatie, vers: afrique-subsaharienne:puissances_exterieures, canal: institution, nature: "l'Afrique dans la rivalité entre Washington et Pékin"}
+- {de: militaire:commerce_armes, vers: afrique-subsaharienne:groupes_armes, canal: conflit, nature: "les armes en circulation au Sahel"}
+- {de: corruption:grande_corruption, vers: afrique-subsaharienne:ressources, canal: institution, nature: "contrats miniers et détournements"}
+- {de: information-cyber:coupures, vers: afrique-subsaharienne:argent_mobile, canal: information, nature: "les coupures d'internet bloquent les paiements mobiles"}
+- {de: information-cyber:plateformes, vers: afrique-subsaharienne:creation_culturelle, canal: information, nature: "les plateformes de musique et de vidéo diffusent les artistes africains"}
+- {de: minerais-critiques:batteries, vers: afrique-subsaharienne:acces_electricite, canal: technique, nature: "batteries et panneaux moins chers, kits solaires plus accessibles"}
+- {de: infrastructures-critiques:reseaux, vers: afrique-subsaharienne:acces_electricite, canal: energie, nature: "réseaux électriques fragiles et délestages"}
+- {de: epidemies:malades, vers: afrique-subsaharienne:deplacements, canal: sante, nature: "épidémies dans les camps de déplacés (choléra, mpox)"}
+- {de: societe-droits:education, vers: afrique-subsaharienne:demographie_jeunesse, canal: population, nature: "l'éducation des filles fait baisser la fécondité"}
+- {de: calendriers-echeances:elections, vers: afrique-subsaharienne:alternances, canal: institution, nature: "le calendrier des élections africaines"}
+- {de: dirigeants-elus:mandats_succession, vers: afrique-subsaharienne:alternances, canal: institution, nature: "limites de mandats respectées ou contournées"}
+- {de: politique-interieure:contestation, vers: afrique-subsaharienne:alternances, canal: comportement, nature: "la rue contre un troisième mandat (Sénégal, 2024)"}
+- {de: humain:jeunesse, vers: afrique-subsaharienne:alternances, canal: comportement, nature: "le vote des jeunes contre les sortants"}
+- {de: politique-interieure:coups_transitions, vers: afrique-subsaharienne:juntes_sahel, canal: institution, nature: "les coups d'État du Sahel", type: meme}
