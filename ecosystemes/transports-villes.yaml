@@ -1,0 +1,294 @@
+# 0.10.421 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 27) : « plus gros trou » suivant de la carte, la ville
+# comme système et les transports terrestres et aériens. Le transport maritime (transport-maritime), les réseaux
+# (infrastructures-critiques) et l'urbanisation comme migration (migrations-demographie) sont reliés par des ponts.
+# Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: transports-villes
+nom: Transports et villes (monde)
+declaration:
+  but: 'comprendre la ville comme système (forme, étalement, gouvernance) et les transports qui la relient et relient le
+    monde (route, transports publics, aérien) : 45 % des 8,2 milliards d''humains vivent dans des villes, 33 mégapoles de
+    plus de 10 millions d''habitants (ONU, World Urbanization Prospects 2025) ; 1,19 million de morts sur les routes chaque
+    année (OMS, 2023)'
+  limites: dedans la forme des villes et leur étalement, les transports publics, la route et ses véhicules,
+    l'électrification des véhicules, la sécurité routière, le transport aérien, la gouvernance urbaine ; dehors le
+    transport maritime (transport-maritime), les réseaux et leurs pannes (infrastructures-critiques), les migrations vers
+    les villes (migrations-demographie), le logement (plancher-social), la qualité de l'air (environnement-dechets), sauf
+    par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (ONU DESA, ONU-Habitat, OMS, AIE, ACI World, OACI) ; aucune
+    personne privée
+  date: '2026-11-22'
+  espace: la ville, le pays, le monde
+  temps: de l'heure (un trajet, un embouteillage) à la décennie (étalement, renouvellement du parc)
+  vitesse: le jour (trafic, fermeture d'un espace aérien), l'année (ventes de véhicules, réseaux), la décennie (forme urbaine)
+  taille: micro (un usager) à macro (le trafic mondial)
+compartiments:
+- id: forme_urbaine
+  nom: Villes, mégapoles, étalement
+  organisation: technique
+  elements:
+  - 45 % des 8,2 milliards d'humains vivent dans des villes ; 33 mégapoles de plus de 10 millions d'habitants (8 en 1975),
+    dont 19 en Asie ; Jakarta, Dhaka, Tokyo en tête (ONU DESA, World Urbanization Prospects 2025, décembre 2025 ; première
+    édition au « degré d'urbanisation », non comparable directement aux anciennes séries)
+  - consommation annuelle de terres urbaines passée de 1,24 % (2015-2020) à 0,83 % (2020-2025), croissance de la
+    population de 1,07 % à 0,81 % (rapport des ODD 2026, 781 villes)
+  acteurs:
+  - nom: une mégapole
+    taille: macro
+    espace: agglomération
+    vitesse: années
+    organisation: technique
+    facette: non_humain
+  - nom: ONU-Habitat
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: ville à monde
+    temps: décennies
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 11.3.1
+    statut: a_brancher
+    odd: ['11.3.1']
+  - source: ONU DESA, World Urbanization Prospects 2025 (données téléchargeables)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: transports_publics
+  nom: Transports publics (accès, réseaux)
+  organisation: technique
+  elements:
+  - part des citadins ayant un accès commode aux transports publics passée de 53,2 % (2020) à 61,5 % (2025) (rapport des
+    ODD 2026, 412 villes de 127 pays)
+  - métros, bus, tramways, trains de banlieue
+  acteurs:
+  - nom: un réseau de métro
+    taille: méso
+    espace: ville
+    vitesse: années
+    organisation: technique
+    facette: non_humain
+  - nom: des citadins usagers des transports publics (en agrégat)
+    taille: macro
+    espace: ville
+    vitesse: jours
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: ville
+    temps: années
+    vitesse: années
+    taille: méso
+  traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 11.2.1
+    statut: a_brancher
+    odd: ['11.2.1']
+  - *id001
+- id: route
+  nom: Voitures, camions, trafic routier
+  organisation: technique
+  elements:
+  - parc de véhicules, ventes, trafic
+  - les transports dépendent du pétrole pour près de 91 % de leur énergie (AIE, page « Transport », sans date)
+  - volumes de passagers et de fret par mode
+  acteurs:
+  - nom: des usagers de la route (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: jours
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours (trafic) à années (parc)
+    taille: micro à macro
+  traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 9.1.2
+    statut: a_brancher
+    odd: ['9.1.2']
+  - *id001
+- id: electrification
+  nom: Électrification des véhicules
+  organisation: technique
+  elements:
+  - plus de 20 millions de voitures électriques vendues en 2025 (+20 %), une voiture neuve sur quatre ; près de 55 % des
+    ventes en Chine (AIE, Global EV Outlook 2026)
+  - 23 millions prévus en 2026, soit 28 % des ventes ; la crise énergétique liée au conflit au Moyen-Orient citée comme
+    moteur (même source)
+  acteurs:
+  - nom: AIE (Agence internationale de l'énergie)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: AIE, Global EV Outlook (données publiques de l'explorateur)
+    statut: a_brancher
+  - *id001
+- id: securite_routiere
+  nom: Morts et blessés de la route
+  organisation: corps
+  elements:
+  - 1,19 million de morts par an, environ 5 % de moins qu'en 2010 ; piétons 23 %, cyclistes 6 %, deux- et trois-roues
+    motorisés 21 % (OMS, rapport mondial sur la sécurité routière, décembre 2023)
+  - neuf morts sur dix dans les pays à revenu faible ou intermédiaire ; première cause de décès des 5-29 ans (même source)
+  acteurs:
+  - nom: OMS (Organisation mondiale de la santé)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 3.6.1
+    statut: a_brancher
+    odd: ['3.6.1']
+  - *id001
+- id: aerien
+  nom: Transport aérien (passagers, espace aérien)
+  organisation: technique
+  elements:
+  - record de 9,8 milliards de passagers dans les aéroports en 2025 (ACI World, rapport annuel 2026, repris par la presse
+    le 23 septembre 2026)
+  - trafic du Moyen-Orient en baisse de 21 % au premier semestre 2026, tensions géopolitiques et fermetures d'espace
+    aérien (même source)
+  acteurs:
+  - nom: OACI (Organisation de l'aviation civile internationale)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  - nom: un grand aéroport de correspondance
+    taille: méso
+    espace: site
+    vitesse: jours
+    organisation: technique
+    facette: non_humain
+  niveau:
+    espace: monde
+    temps: mois à années
+    vitesse: jours (fermetures) à années
+    taille: macro
+  traces:
+  - source: ACI World et OACI (statistiques de trafic publiées)
+    statut: a_brancher
+  - *id001
+- id: gouvernance_urbaine
+  nom: Gouvernance urbaine (municipalités, réseaux de villes, plans de mobilité)
+  organisation: convention
+  elements:
+  - municipalités et autorités organisatrices des transports
+  - plans de mobilité, zones à faibles émissions, péages urbains
+  - réseaux de villes (C40 et autres)
+  acteurs:
+  - nom: une municipalité
+    taille: méso
+    espace: ville
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: ville
+    temps: années
+    vitesse: années (mandats)
+    taille: méso
+  traces:
+  - *id001
+relations:
+- de: forme_urbaine
+  vers: route
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: densification ou réseau de transports publics
+  statut: a_verifier
+  texte: l'étalement allonge les trajets et fait monter le trafic routier
+- de: transports_publics
+  vers: route
+  effet: '-'
+  delai: années
+  force: inconnue
+  coupure: réseau trop lâche ou trop cher
+  statut: a_verifier
+  texte: un accès commode aux transports publics fait baisser le trafic routier, à condition que le réseau soit dense
+- de: route
+  vers: securite_routiere
+  effet: +
+  delai: jours
+  force: forte
+  coupure: vitesse limitée, routes et véhicules plus sûrs
+  statut: a_verifier
+  texte: plus de trafic, plus de morts et de blessés sur la route (le compartiment cible lit ici le nombre de victimes)
+- de: electrification
+  vers: route
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: électricité elle-même produite au pétrole ou au charbon
+  statut: a_verifier
+  texte: l'électrification fait baisser la consommation de pétrole de la route, avec le délai du renouvellement du parc
+    (le compartiment cible lit ici le pétrole consommé)
+- de: gouvernance_urbaine
+  vers: transports_publics
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: budget ou changement de majorité
+  statut: a_verifier
+  texte: les décisions municipales ouvrent ou ferment des lignes
+- de: gouvernance_urbaine
+  vers: forme_urbaine
+  effet: '-'
+  delai: décennies
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: les règles d'urbanisme peuvent freiner l'étalement
+ponts:
+- depuis: forme_urbaine
+  vers: migrations-demographie:urbanisation
+  nature: l'exode rural nourrit la croissance des villes
+- depuis: forme_urbaine
+  vers: plancher-social:logement
+  nature: quartiers informels des villes qui grandissent vite
+- depuis: route
+  vers: environnement-dechets:qualite_air
+  nature: le trafic, source de pollution de l'air en ville
+- depuis: route
+  vers: corps-humain:pollution
+  nature: la pollution du trafic dans les corps
+- depuis: route
+  vers: energie-mondiale:demande
+  nature: la route, grande consommatrice de pétrole
+- depuis: electrification
+  vers: energie-mondiale:demande
+  nature: l'électrification réduit la demande de pétrole
+- depuis: route
+  vers: transport-maritime:ports
+  nature: le fret continue par la route depuis les ports
+- depuis: transports_publics
+  vers: infrastructures-critiques:reseaux
+  nature: les réseaux de transport parmi les réseaux interdépendants
+- depuis: forme_urbaine
+  vers: climat-extremes:exposes
+  nature: chaleur et inondations en ville, populations exposées
+- depuis: aerien
+  vers: securite-europeenne:menace
+  nature: violations et fermetures d'espace aérien
