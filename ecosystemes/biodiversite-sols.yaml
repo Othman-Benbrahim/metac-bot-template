@@ -46,6 +46,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 15.5.1
+    statut: a_brancher
+    odd: ['15.5.1']
   - source: Liste rouge de l'UICN (iucnredlist.org ; usage non commercial, conditions à relire avant branchement)
     statut: a_brancher
   - &id001
@@ -156,6 +159,9 @@ compartiments:
     vitesse: saisons à décennies
     taille: micro à macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 15.3.1
+    statut: a_brancher
+    odd: ['15.3.1']
   - source: FAO, Partenariat mondial sur les sols (cartes mondiales du carbone organique des sols)
     statut: a_brancher
   - *id001
@@ -186,6 +192,9 @@ compartiments:
     vitesse: saisons à décennies
     taille: micro à macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 15.8.1
+    statut: a_brancher
+    odd: ['15.8.1']
   - source: GRIIS (registre mondial des espèces introduites et envahissantes)
     statut: a_brancher
   - *id001
@@ -216,6 +225,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateurs 15.1.2, 14.5.1
+    statut: a_brancher
+    odd: ['15.1.2', '14.5.1']
   - source: Protected Planet (base mondiale des aires protégées WDPA, UNEP-WCMC)
     statut: a_brancher
   - *id001

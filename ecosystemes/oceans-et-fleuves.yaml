@@ -272,6 +272,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 14.4.1
+    statut: a_brancher
+    odd: ['14.4.1']
   - source: FAO FishStat et SOFIA (captures, aquaculture, état des stocks)
     statut: a_brancher
   - &id001

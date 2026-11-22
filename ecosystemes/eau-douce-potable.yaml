@@ -103,6 +103,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 6.1.1
+    statut: a_brancher
+    odd: ['6.1.1']
   - source: JMP OMS/UNICEF (washdata.org), accès à l'eau potable par pays
     statut: a_brancher
   - *id001
@@ -118,6 +121,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 6.2.1
+    statut: a_brancher
+    odd: ['6.2.1']
   - source: JMP OMS/UNICEF (washdata.org), assainissement et hygiène par pays
     statut: a_brancher
   - *id001

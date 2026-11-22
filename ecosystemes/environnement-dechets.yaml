@@ -125,6 +125,9 @@ compartiments:
     vitesse: jours
     taille: micro à macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 11.6.2
+    statut: a_brancher
+    odd: ['11.6.2']
   - source: OpenAQ (licence à vérifier) ; OMS
     statut: a_brancher
   - *id002

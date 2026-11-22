@@ -47,6 +47,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 1.1.1
+    statut: a_brancher
+    odd: ['1.1.1']
   - source: Banque mondiale, Poverty and Inequality Platform (pip.worldbank.org, données publiques)
     statut: a_brancher
   - &id001
@@ -79,6 +82,9 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateurs 8.3.1, 8.5.2, 8.6.1
+    statut: a_brancher
+    odd: ['8.3.1', '8.5.2', '8.6.1']
   - source: ILOSTAT (OIT, données publiques)
     statut: a_brancher
   - *id001
@@ -103,6 +109,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateurs 10.1.1, 10.4.2
+    statut: a_brancher
+    odd: ['10.1.1', '10.4.2']
   - source: WID, World Inequality Database (wid.world, données publiques)
     statut: a_brancher
   - *id001
@@ -131,6 +140,9 @@ compartiments:
     vitesse: années
     taille: méso à macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 11.1.1
+    statut: a_brancher
+    odd: ['11.1.1']
   - source: ONU-Habitat, indicateur ODD 11.1.1 (population urbaine en quartiers informels)
     statut: a_brancher
   - *id001
@@ -154,6 +166,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 1.3.1
+    statut: a_brancher
+    odd: ['1.3.1']
   - source: ILOSTAT, base mondiale de la protection sociale (OIT)
     statut: a_brancher
   - *id001
@@ -177,6 +192,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateurs 7.1.1, 7.1.2
+    statut: a_brancher
+    odd: ['7.1.1', '7.1.2']
   - source: Tracking SDG7 (AIE, IRENA, Division de statistique de l'ONU, Banque mondiale, OMS ; données publiques)
     statut: a_brancher
   - *id001

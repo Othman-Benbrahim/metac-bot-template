@@ -53,3 +53,12 @@ def test_virgule_non_protegee_refusee():
     import yaml
     f = yaml.safe_load('theme: t\nrelations:\n  - {de: a, vers: b, effet: "+", statut: a_verifier, texte: saisies, menaces}\n')
     assert any("clé inconnue" in e for e in ec.cles_inconnues(f))
+
+
+def test_code_odd_verifie():
+    # 0.10.420 : un code ODD de trace doit figurer dans ecosystemes/odd.yaml (vérifié dans le cadre officiel)
+    assert ec.odd()["1.1.1"].startswith("Proportion of the population living below the international poverty line")
+    f = {"theme": "t", "nom": "T", "compartiments": [{"id": "a", "niveau": {}, "traces": [
+        {"source": "s", "statut": "a_brancher", "odd": ["1.1.1", "99.9.9"]}]}], "relations": []}
+    e = " | ".join(ec.valider(f))
+    assert "'99.9.9' absent" in e and "'1.1.1'" not in e

@@ -99,6 +99,13 @@ def niveaux(fichier: Path = NIVEAUX) -> dict:
     return {"niveaux": {n["id"]: n for n in d.get("niveaux") or []}, "facettes": d.get("facettes") or {}}
 
 
+def odd(fichier: Path | None = None) -> dict[str, str]:
+    """Codes officiels des indicateurs ODD vérifiés (ecosystemes/odd.yaml) : code -> libellé."""
+    f = fichier or NIVEAUX.parent / "odd.yaml"
+    d = yaml.safe_load(f.read_text(encoding="utf-8")) if f.exists() else {}
+    return {str(k): v for k, v in (d.get("indicateurs") or {}).items()}
+
+
 def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
     out = {}
     for f in sorted(dossier.glob("*.yaml")):
@@ -112,7 +119,7 @@ def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
 
 
 CLES_PERMISES = {
-    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur", "habitude"},
+    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur", "habitude", "odd"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
                  "module", "parametres", "series"},
@@ -183,6 +190,10 @@ def valider(fiche: dict) -> list[str]:
         for tr in c.get("traces") or []:
             if tr.get("statut") not in TRACES:
                 err.append(f"{t}:{c.get('id')} : statut de trace inconnu {tr.get('statut')!r}")
+            # 0.10.420 : code officiel d'indicateur des ODD, vérifié dans ecosystemes/odd.yaml
+            for code in tr.get("odd") or []:
+                if str(code) not in odd():
+                    err.append(f"{t}:{c.get('id')} : code ODD {code!r} absent de ecosystemes/odd.yaml")
     for f in fiche.get("faits") or []:       # 2026-11-21 : faits datés, au moins deux sources indépendantes
         if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(f.get("date", ""))):
             err.append(f"{t} : fait sans date lisible ({str(f.get('fait', ''))[:40]})")

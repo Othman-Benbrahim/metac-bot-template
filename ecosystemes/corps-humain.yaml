@@ -56,6 +56,9 @@ compartiments:
     vitesse: mois à années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateurs 2.1.1, 2.1.2
+    statut: a_brancher
+    odd: ['2.1.1', '2.1.2']
   - source: SOFI (FAO, FIDA, UNICEF, PAM, OMS), faim par pays
     statut: a_brancher
   - source: alertes de famine IPC
@@ -121,6 +124,9 @@ compartiments:
     vitesse: jours à années
     taille: micro à macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 3.9.1
+    statut: a_brancher
+    odd: ['3.9.1']
   - source: OMS, exposition à la pollution de l'air
     statut: a_brancher
   - source: mesures de la qualité de l'air (OpenAQ, licence à vérifier)
@@ -190,6 +196,9 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 3.8.1
+    statut: a_brancher
+    odd: ['3.8.1']
   - source: OMS, suivi de la couverture sanitaire universelle
     statut: a_brancher
   - *id001
