@@ -62,3 +62,14 @@ def test_code_odd_verifie():
         {"source": "s", "statut": "a_brancher", "odd": ["1.1.1", "99.9.9"]}]}], "relations": []}
     e = " | ".join(ec.valider(f))
     assert "'99.9.9' absent" in e and "'1.1.1'" not in e
+
+
+def test_ponts_transversaux_valides():
+    # 0.10.435 : chaque pont transversal relie deux compartiments existants de deux fiches, par un canal déclaré
+    f = ec.charger()
+    assert ec.erreurs_transversaux(f) == []
+    ponts, canaux = ec.ponts_transversaux()
+    assert len(ponts) >= 150 and "energie" in canaux
+    # ils sont bien ajoutés aux ponts de la fiche de départ, avec leur canal
+    assert any(p.get("canal") == "energie" for p in f["energie-mondiale"]["ponts"])
+    assert not any(p.get("canal") for p in ec.charger(transversaux=False)["energie-mondiale"].get("ponts") or [])

@@ -1,0 +1,268 @@
+# Ponts transversaux entre fiches (0.10.435, décision de l'auteur du 2026-11-22, 6 h 08 : « l'absence de connexions entre
+# les différentes catégories, qui pourtant sont nombreuses […] tout est relié d'une certaine façon, chaque chose à son
+# niveau ; mieux établir les liens, pas seulement quand ils sont très directs »).
+#
+# Ce fichier n'est pas une fiche : ecosystemes.charger() ajoute chaque entrée aux ponts de la fiche de départ. Chaque pont
+# passe par un CANAL nommé (le mécanisme qui transmet), pour qu'on puisse lire la dynamique d'ensemble canal par canal :
+#   energie · climat · eau · vivant · sante · economie · population · conflit · information · institution · technique ·
+#   territoire · comportement
+# Tous sont des ponts d'INFLUENCE (transmission partielle, avec retard), sauf mention « meme ». Ce sont des hypothèses
+# de liaison, écrites à partir des définitions des compartiments et des mécanismes connus ; comme les relations, ils sont
+# à vérifier, et ne portent aucun chiffre.
+canaux:
+  energie: "prix et disponibilité de l'énergie"
+  climat: "climat, météo, extrêmes"
+  eau: "quantité et qualité de l'eau"
+  vivant: "êtres vivants, espèces, pathogènes"
+  sante: "corps, maladies, pollution dans les corps"
+  economie: "prix, revenus, emploi, finance, commerce"
+  population: "naissances, morts, migrations, villes"
+  conflit: "guerres, violences, coercition"
+  information: "récits, attention, opinion"
+  institution: "règles, droit, décisions publiques"
+  technique: "réseaux, machines, savoir-faire"
+  territoire: "relief, distances, passages"
+  comportement: "ce qui pousse les humains à agir"
+ponts:
+# ---------- énergie
+- {de: energie-mondiale:prix, vers: plancher-social:acces_energie, canal: energie, nature: "l'énergie chère prive les ménages pauvres d'électricité et de combustibles"}
+- {de: energie-mondiale:prix, vers: transports-villes:route, canal: energie, nature: "le prix du carburant pèse sur le trafic et le fret routier"}
+- {de: energie-mondiale:prix, vers: economie-entreprises:industrie_manufacturiere, canal: energie, nature: "l'énergie chère réduit la production des industries intensives"}
+- {de: energie-mondiale:prix, vers: dette-emergents:reserves, canal: energie, nature: "la facture énergétique vide les réserves des pays importateurs"}
+- {de: energie-mondiale:prix, vers: politique-interieure:contestation, canal: energie, nature: "les hausses de carburant déclenchent des contestations"}
+- {de: energie-mondiale:production, vers: environnement-dechets:climat_politique, canal: energie, nature: "les combustibles fossiles, première source d'émissions"}
+- {de: energie-mondiale:production, vers: dette-emergents:matieres_premieres, canal: energie, nature: "les recettes pétrolières des pays producteurs"}
+- {de: energie-mondiale:demande, vers: sciences-techniques:calcul, canal: energie, nature: "les centres de données font monter la demande d'électricité"}
+- {de: energie-mondiale:nucleaire_civil, vers: nucleaire-radiologique:electricite, canal: energie, nature: "même parc nucléaire, vu depuis la sûreté", type: meme}
+- {de: energie-mondiale:conflits, vers: guerre-levant:iran, canal: conflit, nature: "les approvisionnements du Golfe sous la menace du conflit"}
+- {de: energie-mondiale:transport, vers: infrastructures-critiques:reseaux, canal: technique, nature: "oléoducs et gazoducs parmi les réseaux critiques"}
+- {de: minerais-critiques:demande, vers: energie-mondiale:demande, canal: energie, nature: "la transition énergétique déplace la demande vers les métaux"}
+# ---------- climat
+- {de: climat-extremes:secheresses, vers: alimentation-mondiale:cultures, canal: climat, nature: "les sécheresses font chuter les récoltes"}
+- {de: climat-extremes:secheresses, vers: migrations-demographie:climat_milieu, canal: climat, nature: "les sécheresses poussent au départ"}
+- {de: climat-extremes:secheresses, vers: afrique-subsaharienne:deplacements, canal: climat, nature: "sécheresses et déplacements au Sahel et dans la Corne"}
+- {de: climat-extremes:tempetes, vers: infrastructures-critiques:chaleur_tempetes, canal: climat, nature: "les tempêtes coupent les réseaux", type: meme}
+- {de: climat-extremes:tempetes, vers: crises-bancaires:bilans, canal: economie, nature: "les sinistres climatiques pèsent sur les assureurs et les banques"}
+- {de: climat-extremes:tempetes, vers: dette-emergents:recoltes_catastrophes, canal: climat, nature: "les catastrophes alourdissent la dette des pays exposés", type: meme}
+- {de: climat-extremes:tendance, vers: corps-humain:chaleur_froid, canal: sante, nature: "le réchauffement multiplie les vagues de chaleur meurtrières"}
+- {de: climat-extremes:tendance, vers: biodiversite-sols:habitats, canal: vivant, nature: "le climat déplace et détruit des habitats"}
+- {de: climat-extremes:tendance, vers: oceans-et-fleuves:recifs, canal: vivant, nature: "le réchauffement des mers blanchit les coraux"}
+- {de: climat-extremes:tendance, vers: epidemies:milieu, canal: vivant, nature: "le climat étend l'aire des moustiques et des pathogènes"}
+- {de: climat-extremes:tendance, vers: oceans-et-fleuves:niveau_mer, canal: climat, nature: "la montée des mers menace les côtes", type: meme}
+- {de: climat-extremes:feux, vers: biodiversite-sols:habitats, canal: vivant, nature: "les feux détruisent des habitats"}
+- {de: climat-extremes:feux, vers: environnement-dechets:qualite_air, canal: sante, nature: "les fumées dégradent l'air sur des milliers de kilomètres"}
+- {de: climat-extremes:saisons, vers: energie-mondiale:demande, canal: climat, nature: "hiver et été font la demande d'énergie"}
+- {de: climat-extremes:oscillations, vers: alimentation-mondiale:climat, canal: climat, nature: "El Niño et La Niña modulent les récoltes mondiales"}
+- {de: climat-extremes:exposes, vers: plancher-social:logement, canal: population, nature: "les plus pauvres vivent dans les lieux les plus exposés"}
+- {de: climat-extremes:atmosphere, vers: transports-villes:aerien, canal: climat, nature: "orages et vents perturbent le trafic aérien"}
+# ---------- eau
+- {de: eau-douce-potable:stress, vers: alimentation-mondiale:eau_agricole, canal: eau, nature: "le manque d'eau limite l'irrigation"}
+- {de: eau-douce-potable:stress, vers: energie-mondiale:climat, canal: eau, nature: "l'eau manque pour refroidir les centrales et pour les barrages"}
+- {de: eau-douce-potable:stress, vers: economie-chinoise:eau_fleuves, canal: eau, nature: "le stress hydrique du nord de la Chine"}
+- {de: eau-douce-potable:acces, vers: societe-droits:genre_minorites, canal: eau, nature: "la corvée d'eau retombe surtout sur les femmes et les filles"}
+- {de: eau-douce-potable:maladies, vers: corps-humain:reproduction, canal: sante, nature: "les maladies hydriques tuent d'abord les jeunes enfants"}
+- {de: eau-douce-potable:tensions, vers: afrique-subsaharienne:corne, canal: conflit, nature: "le Nil et les barrages entre la Corne et l'Égypte"}
+- {de: oceans-et-fleuves:fleuves, vers: transport-maritime:fleuves, canal: eau, nature: "même réseau fluvial, vu depuis le transport", type: meme}
+- {de: oceans-et-fleuves:barrages, vers: energie-mondiale:production, canal: energie, nature: "l'hydroélectricité dans la production d'énergie"}
+- {de: relief-et-montagnes:chateaux_d_eau, vers: asie-du-sud:indus, canal: eau, nature: "l'Himalaya, château d'eau de l'Indus"}
+- {de: relief-et-montagnes:chateaux_d_eau, vers: eau-douce-potable:ressources, canal: eau, nature: "neiges et glaciers des montagnes alimentent les fleuves"}
+# ---------- vivant
+- {de: biodiversite-sols:populations, vers: alimentation-mondiale:pollinisateurs, canal: vivant, nature: "le déclin des insectes et des oiseaux touche la pollinisation"}
+- {de: biodiversite-sols:habitats, vers: epidemies:reservoirs, canal: vivant, nature: "la déforestation rapproche les humains des réservoirs animaux"}
+- {de: biodiversite-sols:surexploitation, vers: securite-publique:trafics, canal: vivant, nature: "le trafic d'espèces sauvages parmi les trafics"}
+- {de: biodiversite-sols:habitats, vers: foret-et-sols-vivants:succession, canal: vivant, nature: "la forêt et sa succession, vues de près"}
+- {de: biodiversite-sols:envahissantes, vers: alimentation-mondiale:ravageurs, canal: vivant, nature: "des espèces envahissantes deviennent ravageurs des cultures"}
+- {de: biodiversite-sols:habitats, vers: economie-entreprises:agriculture, canal: economie, nature: "l'agriculture, première cause de conversion des habitats"}
+- {de: biodiversite-sols:aires_protegees, vers: culture-memoire:tourisme, canal: economie, nature: "les parcs naturels attirent le tourisme"}
+- {de: alimentation-mondiale:elevage, vers: epidemies:reservoirs, canal: vivant, nature: "l'élevage intensif, foyer de grippes animales"}
+- {de: alimentation-mondiale:elevage, vers: economie-chinoise:epizooties, canal: vivant, nature: "les épizooties des élevages chinois"}
+- {de: alimentation-mondiale:pathogenes, vers: inflation-mondiale:elevage_cultures, canal: economie, nature: "maladies des cultures et des bêtes, hausse des prix"}
+- {de: oceans-et-fleuves:peche, vers: alimentation-mondiale:importateurs, canal: vivant, nature: "le poisson, protéine de base de nombreux pays côtiers"}
+- {de: niveaux-de-base:biomasse, vers: alimentation-mondiale:elevage, canal: vivant, nature: "le bétail pèse dix fois plus que les mammifères sauvages"}
+- {de: corps-humain:antimicrobiens, vers: alimentation-mondiale:elevage, canal: sante, nature: "les antibiotiques de l'élevage favorisent les résistances"}
+# ---------- santé et pollution
+- {de: environnement-dechets:qualite_air, vers: transports-villes:forme_urbaine, canal: sante, nature: "l'air des villes, fait de trafic et de chauffage"}
+- {de: environnement-dechets:pollution_chimique, vers: corps-humain:maladies_chroniques, canal: sante, nature: "substances toxiques et maladies chroniques"}
+- {de: environnement-dechets:pollution_chimique, vers: alimentation-mondiale:chimie_sols, canal: sante, nature: "pesticides et métaux dans les sols cultivés"}
+- {de: environnement-dechets:pollution_chimique, vers: biodiversite-sols:populations, canal: vivant, nature: "pesticides et déclin des insectes et des oiseaux"}
+- {de: environnement-dechets:dechets, vers: economie-entreprises:industrie_manufacturiere, canal: economie, nature: "l'industrie produit les plastiques et les déchets"}
+- {de: environnement-dechets:dechets_menagers, vers: plancher-social:logement, canal: sante, nature: "les quartiers informels sans collecte des déchets"}
+- {de: environnement-dechets:eaux_usees, vers: epidemies:milieu, canal: sante, nature: "les eaux usées non traitées propagent choléra et diarrhées"}
+- {de: environnement-dechets:qualite_air, vers: economie-chinoise:activite, canal: economie, nature: "la pollution de l'air, coût de la croissance industrielle"}
+- {de: environnement-dechets:climat_politique, vers: energie-mondiale:decisions, canal: institution, nature: "les engagements climatiques pèsent sur les décisions énergétiques"}
+- {de: environnement-dechets:climat_politique, vers: union-europeenne:politiques_communes, canal: institution, nature: "le marché carbone et les règles climatiques de l'Union"}
+- {de: environnement-dechets:droit_contentieux, vers: economie-entreprises:regles_sectorielles, canal: institution, nature: "procès et règles environnementales contraignent les entreprises"}
+- {de: corps-humain:sante_mentale, vers: humain:stress_chronique, canal: comportement, nature: "stress chronique et santé mentale", type: meme}
+- {de: corps-humain:vieillissement, vers: migrations-demographie:natalite_vieillissement, canal: population, nature: "le vieillissement des populations", type: meme}
+- {de: corps-humain:soins, vers: dette-emergents:dette_publique, canal: economie, nature: "le coût des systèmes de soins dans les budgets"}
+- {de: epidemies:economie, vers: transport-maritime:epidemies_ports, canal: sante, nature: "quarantaines et ports fermés", type: meme}
+- {de: epidemies:malades, vers: corps-humain:soins, canal: sante, nature: "les épidémies saturent les soins"}
+- {de: epidemies:agent, vers: guerre-levant:epidemies, canal: sante, nature: "épidémies dans les zones de guerre (Gaza, Yémen)", type: meme}
+- {de: epidemies:agent, vers: soudan:humanitaire, canal: sante, nature: "choléra et rougeole dans la crise soudanaise"}
+- {de: nucleaire-radiologique:sante, vers: corps-humain:maladies_chroniques, canal: sante, nature: "les rayonnements et les cancers"}
+# ---------- économie
+- {de: inflation-mondiale:prix_conso, vers: politique-interieure:elections, canal: economie, nature: "l'inflation fait perdre les sortants"}
+- {de: inflation-mondiale:prix_conso, vers: plancher-social:pauvrete, canal: economie, nature: "la hausse des prix appauvrit d'abord les pauvres"}
+- {de: inflation-mondiale:banques_centrales, vers: dette-emergents:monnaies, canal: economie, nature: "les taux américains font fuir les capitaux des émergents"}
+- {de: inflation-mondiale:banques_centrales, vers: economie-entreprises:immobilier_consommation, canal: economie, nature: "les taux font le crédit immobilier"}
+- {de: inflation-mondiale:alimentation, vers: politique-interieure:contestation, canal: economie, nature: "émeutes de la faim et du pain"}
+- {de: alimentation-mondiale:prix, vers: plancher-social:pauvrete, canal: economie, nature: "le prix des aliments pèse sur les ménages pauvres"}
+- {de: alimentation-mondiale:prix, vers: afrique-subsaharienne:deplacements, canal: economie, nature: "insécurité alimentaire et déplacements"}
+- {de: alimentation-mondiale:engrais, vers: energie-mondiale:prix, canal: energie, nature: "les engrais azotés sont faits de gaz naturel"}
+- {de: alimentation-mondiale:engrais, vers: russie-ukraine:sanctions, canal: economie, nature: "engrais russes et biélorusses sous sanctions ou exemptions"}
+- {de: economie-chinoise:exportations, vers: inflation-mondiale:approvisionnement, canal: economie, nature: "les prix des biens importés de Chine"}
+- {de: economie-chinoise:matieres_premieres, vers: minerais-critiques:demande, canal: economie, nature: "la demande chinoise de métaux"}
+- {de: economie-chinoise:immobilier, vers: crises-bancaires:bilans, canal: economie, nature: "l'immobilier chinois et le risque bancaire"}
+- {de: economie-chinoise:demographie, vers: migrations-demographie:natalite_vieillissement, canal: population, nature: "la population chinoise qui baisse et vieillit", type: meme}
+- {de: dette-emergents:dette_publique, vers: plancher-social:protection_sociale, canal: economie, nature: "le service de la dette évince les dépenses sociales"}
+- {de: dette-emergents:fmi, vers: politique-interieure:contestation, canal: economie, nature: "programmes d'austérité et contestation"}
+- {de: dette-emergents:creanciers, vers: rivalite-sino-americaine:finance, canal: economie, nature: "la Chine, grand créancier des émergents"}
+- {de: crises-bancaires:confiance, vers: humain:risque_percu, canal: comportement, nature: "la panique bancaire, affaire de risque perçu"}
+- {de: crises-bancaires:cryptomonnaies, vers: corruption:blanchiment, canal: economie, nature: "les cryptomonnaies dans le blanchiment"}
+- {de: crises-bancaires:cryptomonnaies, vers: union-europeenne:sanctions_ue, canal: institution, nature: "les cryptomonnaies russes sous sanctions européennes"}
+- {de: economie-entreprises:echanges, vers: rivalite-sino-americaine:commerce, canal: economie, nature: "les échanges mondiaux pris dans la guerre commerciale"}
+- {de: economie-entreprises:investissement_ia, vers: minerais-critiques:cuivre, canal: economie, nature: "les centres de données consomment du cuivre"}
+- {de: economie-entreprises:services, vers: transports-villes:forme_urbaine, canal: economie, nature: "les services se concentrent dans les villes"}
+- {de: economie-entreprises:agriculture, vers: migrations-demographie:urbanisation, canal: population, nature: "les gains de productivité agricole vident les campagnes"}
+- {de: economie-entreprises:extraction, vers: corruption:marches_publics, canal: institution, nature: "rentes minières et pétrolières, terrain de corruption"}
+- {de: economie-entreprises:defaillances, vers: plancher-social:travail, canal: economie, nature: "les faillites détruisent des emplois"}
+- {de: plancher-social:inegalites, vers: humain:polarisation, canal: comportement, nature: "les inégalités nourrissent la polarisation"}
+- {de: plancher-social:travail, vers: migrations-demographie:economie, canal: population, nature: "le manque d'emploi pousse à émigrer"}
+- {de: plancher-social:pauvrete, vers: corps-humain:nutrition, canal: sante, nature: "la pauvreté et la faim"}
+- {de: plancher-social:pauvrete, vers: securite-publique:trafics, canal: economie, nature: "la pauvreté fournit main-d'œuvre aux trafics"}
+- {de: transports-villes:securite_routiere, vers: corps-humain:soins, canal: sante, nature: "les blessés de la route dans les hôpitaux"}
+- {de: transport-maritime:fret, vers: inflation-mondiale:approvisionnement, canal: economie, nature: "le coût du fret dans les prix", type: meme}
+# ---------- population
+- {de: migrations-demographie:migrations, vers: politique-interieure:partis, canal: population, nature: "l'immigration, thème des partis nationalistes"}
+- {de: migrations-demographie:migrations, vers: union-europeenne:politiques_communes, canal: institution, nature: "le pacte européen sur la migration et l'asile"}
+- {de: migrations-demographie:diasporas, vers: dette-emergents:reserves, canal: economie, nature: "les transferts des émigrés soutiennent les réserves"}
+- {de: migrations-demographie:natalite_vieillissement, vers: plancher-social:protection_sociale, canal: population, nature: "le vieillissement pèse sur les retraites"}
+- {de: migrations-demographie:natalite_vieillissement, vers: economie-entreprises:conjoncture, canal: population, nature: "une population active qui baisse freine la croissance"}
+- {de: migrations-demographie:urbanisation, vers: eau-douce-potable:acces, canal: eau, nature: "la croissance des villes dépasse les réseaux d'eau"}
+- {de: migrations-demographie:natalite_vieillissement, vers: humain:jeunesse, canal: comportement, nature: "une population jeune prend plus de risques collectifs"}
+# ---------- conflit
+- {de: russie-ukraine:front, vers: alimentation-mondiale:commerce, canal: conflit, nature: "la guerre et les exportations de céréales de la mer Noire"}
+- {de: russie-ukraine:front, vers: energie-mondiale:conflits, canal: conflit, nature: "frappes sur les infrastructures énergétiques"}
+- {de: russie-ukraine:front, vers: migrations-demographie:migrations, canal: population, nature: "les réfugiés ukrainiens en Europe"}
+- {de: russie-ukraine:front, vers: culture-memoire:patrimoine_en_guerre, canal: conflit, nature: "le patrimoine ukrainien sous les frappes"}
+- {de: russie-ukraine:atomique, vers: nucleaire-radiologique:surete, canal: conflit, nature: "la centrale de Zaporijia sur la ligne de front"}
+- {de: russie-ukraine:capacites, vers: economie-entreprises:industrie_manufacturiere, canal: conflit, nature: "l'économie de guerre et la production d'armes"}
+- {de: russie-ukraine:negociations, vers: securite-europeenne:menace, canal: conflit, nature: "l'issue des négociations et la menace pour l'Europe"}
+- {de: guerre-levant:gaza, vers: humain:nous_eux, canal: comportement, nature: "la guerre durcit la frontière entre groupes"}
+- {de: guerre-levant:gaza, vers: information-cyber:recits, canal: information, nature: "la guerre des récits sur Gaza"}
+- {de: guerre-levant:yemen, vers: transport-maritime:detroits, canal: territoire, nature: "les attaques en mer Rouge et Bab el-Mandeb"}
+- {de: guerre-levant:iran, vers: iran-nucleaire:pouvoir_iranien, canal: conflit, nature: "la guerre et le programme nucléaire iranien"}
+- {de: guerre-levant:iran, vers: ormuz:force, canal: conflit, nature: "la menace sur le détroit d'Ormuz"}
+- {de: guerre-levant:humanitaire, vers: corps-humain:nutrition, canal: sante, nature: "famine dans les zones assiégées"}
+- {de: soudan:fsr, vers: afrique-subsaharienne:puissances_exterieures, canal: conflit, nature: "les soutiens extérieurs des belligérants soudanais"}
+- {de: soudan:humanitaire, vers: alimentation-mondiale:importateurs, canal: sante, nature: "la famine au Soudan"}
+- {de: afrique-subsaharienne:groupes_armes, vers: alimentation-mondiale:cultures, canal: conflit, nature: "les champs abandonnés sous la menace des groupes armés"}
+- {de: afrique-subsaharienne:ressources, vers: securite-publique:trafics, canal: economie, nature: "l'or et les minerais dans les trafics"}
+- {de: asie-du-sud:inde_pakistan, vers: guerre-levant:puissances, canal: conflit, nature: "les puissances moyennes et les crises régionales"}
+- {de: asie-du-nord-est:coree_du_nord, vers: russie-ukraine:soutiens, canal: conflit, nature: "les munitions et soldats nord-coréens pour la Russie"}
+- {de: asie-du-nord-est:chine_japon, vers: transport-maritime:detroits, canal: territoire, nature: "routes maritimes de la mer de Chine orientale"}
+- {de: securite-europeenne:budgets_dette, vers: plancher-social:protection_sociale, canal: economie, nature: "la défense contre les dépenses sociales"}
+- {de: securite-europeenne:industrie, vers: minerais-critiques:controles_export, canal: technique, nature: "l'industrie de défense dépend des terres rares"}
+- {de: non-proliferation:dissuasion, vers: humain:conventions, canal: comportement, nature: "le tabou nucléaire tient par l'attente"}
+- {de: securite-publique:trafics, vers: corps-humain:sante_mentale, canal: sante, nature: "les drogues, l'addiction et les surdoses"}
+- {de: securite-publique:peur, vers: politique-interieure:partis, canal: comportement, nature: "le sentiment d'insécurité et le vote"}
+# ---------- information
+- {de: information-cyber:recits, vers: politique-interieure:elections, canal: information, nature: "désinformation et campagnes électorales"}
+- {de: information-cyber:recits, vers: crises-bancaires:recits, canal: information, nature: "rumeurs et paniques financières"}
+- {de: information-cyber:recits, vers: epidemies:recits, canal: information, nature: "la désinformation sanitaire", type: meme}
+- {de: information-cyber:plateformes, vers: humain:amplification_algorithmique, canal: information, nature: "les plateformes amplifient", type: meme}
+- {de: information-cyber:cyber, vers: infrastructures-critiques:attaques, canal: technique, nature: "les cyberattaques contre les réseaux", type: meme}
+- {de: information-cyber:cyber, vers: crises-bancaires:depots, canal: technique, nature: "cyberattaques contre les banques"}
+- {de: information-cyber:censure, vers: politique-interieure:regime, canal: information, nature: "la censure, marque des régimes autoritaires"}
+- {de: information-cyber:coupures, vers: politique-interieure:contestation, canal: information, nature: "les coupures d'internet pendant les manifestations"}
+- {de: information-cyber:attention, vers: calendriers-echeances:anticipations, canal: information, nature: "l'attention suit les échéances annoncées"}
+- {de: corruption:presse_alerte, vers: information-cyber:recits, canal: information, nature: "les révélations circulent dans l'espace public"}
+- {de: culture-memoire:usages_memoire, vers: guerre-levant:recits, canal: information, nature: "mémoires concurrentes et récits de guerre"}
+- {de: culture-memoire:usages_memoire, vers: russie-ukraine:opinions, canal: information, nature: "l'histoire mobilisée dans la guerre"}
+- {de: competitions-culture:geopolitique, vers: humain:nous_eux, canal: comportement, nature: "le sport et la fierté nationale"}
+# ---------- institutions
+- {de: politique-americaine:commerce, vers: economie-entreprises:echanges, canal: institution, nature: "les droits de douane américains et le commerce mondial"}
+- {de: politique-americaine:sanctions, vers: iran-nucleaire:sanctions, canal: institution, nature: "les sanctions américaines contre l'Iran", type: meme}
+- {de: politique-americaine:reserve_federale, vers: inflation-mondiale:banques_centrales, canal: economie, nature: "la Réserve fédérale parmi les banques centrales", type: meme}
+- {de: politique-americaine:executif, vers: environnement-dechets:climat_politique, canal: institution, nature: "le retrait américain des engagements climatiques"}
+- {de: politique-americaine:executif, vers: securite-europeenne:etats_unis, canal: institution, nature: "l'engagement américain en Europe", type: meme}
+- {de: politique-americaine:budget, vers: sciences-techniques:recherche, canal: institution, nature: "le financement public de la recherche"}
+- {de: union-europeenne:etat_de_droit, vers: politique-interieure:regime, canal: institution, nature: "l'État de droit dans les États membres"}
+- {de: union-europeenne:relations_exterieures, vers: migrations-demographie:politiques_migratoires, canal: institution, nature: "accords migratoires avec les pays voisins"}
+- {de: politique-interieure:coups_transitions, vers: dette-emergents:fmi, canal: institution, nature: "suspension des programmes après un coup d'État"}
+- {de: politique-interieure:regime, vers: corruption:lutte, canal: institution, nature: "l'indépendance des agences selon le régime"}
+- {de: societe-droits:education, vers: sciences-techniques:talents, canal: population, nature: "l'éducation forme les talents"}
+- {de: societe-droits:education, vers: migrations-demographie:natalite_vieillissement, canal: population, nature: "la scolarisation des filles fait baisser la natalité"}
+- {de: societe-droits:libertes_civiques, vers: humain:falsification, canal: comportement, nature: "quand dire coûte, on cache ce qu'on pense"}
+- {de: calendriers-echeances:elections, vers: elections-amerique-latine:scrutins, canal: institution, nature: "le calendrier des scrutins latino-américains", type: meme}
+- {de: calendriers-echeances:fetes, vers: energie-mondiale:demande, canal: comportement, nature: "fêtes et vacances font la demande de carburant"}
+- {de: liban-institutions:banque_centrale, vers: crises-bancaires:depots, canal: economie, nature: "les dépôts gelés des banques libanaises"}
+- {de: liban-institutions:force_armee, vers: guerre-levant:liban, canal: conflit, nature: "le Hezbollah et l'armée libanaise dans la guerre", type: meme}
+- {de: elections-amerique-latine:economie, vers: dette-emergents:dette_publique, canal: economie, nature: "la dette argentine et les élections"}
+- {de: elections-amerique-latine:recoltes_exports, vers: alimentation-mondiale:commerce, canal: economie, nature: "soja et blé d'Amérique du Sud dans le commerce mondial"}
+# ---------- technique
+- {de: sciences-techniques:ia, vers: information-cyber:recits, canal: technique, nature: "les contenus générés par IA et la désinformation"}
+- {de: sciences-techniques:ia, vers: plancher-social:travail, canal: technique, nature: "l'automatisation et l'emploi"}
+- {de: sciences-techniques:calcul, vers: eau-douce-potable:prelevements, canal: eau, nature: "les centres de données consomment de l'eau de refroidissement"}
+- {de: sciences-techniques:course_etats, vers: rivalite-sino-americaine:technologie, canal: technique, nature: "la course technologique entre puissances", type: meme}
+- {de: sciences-techniques:recherche, vers: epidemies:technique, canal: technique, nature: "vaccins et diagnostics"}
+- {de: soleil-espace:gps, vers: transport-maritime:securite, canal: technique, nature: "le brouillage GPS en mer"}
+- {de: soleil-espace:satellites, vers: information-cyber:infrastructure, canal: technique, nature: "les satellites dans l'infrastructure de l'information"}
+- {de: soleil-espace:magnetosphere, vers: transports-villes:aerien, canal: technique, nature: "les tempêtes solaires perturbent les communications aériennes"}
+- {de: infrastructures-critiques:cascades, vers: economie-entreprises:conjoncture, canal: technique, nature: "les grandes pannes arrêtent l'activité"}
+- {de: transports-villes:electrification, vers: minerais-critiques:batteries, canal: technique, nature: "les batteries des véhicules électriques"}
+- {de: transports-villes:aerien, vers: epidemies:milieu, canal: sante, nature: "l'avion propage les épidémies en quelques jours"}
+# ---------- territoire
+- {de: relief-et-montagnes:cotes_detroits, vers: ormuz:milieu, canal: territoire, nature: "le détroit d'Ormuz, goulet de relief", type: meme}
+- {de: relief-et-montagnes:obstacles, vers: russie-ukraine:relief_fleuves, canal: territoire, nature: "fleuves et plaines dans la guerre d'Ukraine"}
+- {de: relief-et-montagnes:seismes_volcans, vers: infrastructures-critiques:reseaux, canal: territoire, nature: "séismes et réseaux"}
+- {de: relief-et-montagnes:seismes_volcans, vers: transports-villes:aerien, canal: territoire, nature: "les cendres volcaniques ferment l'espace aérien"}
+- {de: relief-et-montagnes:routes_frontieres, vers: securite-publique:frontieres, canal: territoire, nature: "routes de montagne et passages des trafics"}
+- {de: oceans-et-fleuves:haute_mer, vers: transport-maritime:droit, canal: institution, nature: "le traité sur la haute mer et le droit de la mer"}
+# ---------- comportement
+- {de: humain:passage_acte, vers: securite-publique:polices, canal: comportement, nature: "émeutes et maintien de l'ordre"}
+- {de: humain:disponibilite, vers: crises-bancaires:marches, canal: comportement, nature: "les nouvelles saillantes font bouger les marchés"}
+- {de: humain:risque_percu, vers: epidemies:comportements, canal: comportement, nature: "la peur de la maladie change les conduites"}
+- {de: humain:croyances, vers: calendriers-echeances:fetes, canal: comportement, nature: "calendriers religieux et fêtes", type: meme}
+- {de: humain:aspiration, vers: migrations-demographie:psychologie, canal: comportement, nature: "l'espoir d'une vie meilleure pousse à partir"}
+- {de: humain:norme_percue, vers: environnement-dechets:dechets_menagers, canal: comportement, nature: "le tri et la réduction des déchets suivent la norme perçue"}
+- {de: observateur-mesure:biais, vers: information-cyber:langues_biais, canal: information, nature: "nos propres biais de sources et de langues"}
+# ---------- fiches encore peu reliées (second passage, même décision)
+- {de: liban-institutions:banque_centrale, vers: dette-emergents:dette_publique, canal: economie, nature: "le défaut de paiement libanais parmi les dettes en crise"}
+- {de: liban-institutions:confessionnalisme, vers: humain:nous_eux, canal: comportement, nature: "le partage confessionnel du pouvoir et les frontières de groupe"}
+- {de: liban-institutions:exterieur, vers: iran-nucleaire:voisins, canal: conflit, nature: "l'Iran, soutien du Hezbollah"}
+- {de: liban-institutions:opinion_colere, vers: corruption:confiance, canal: comportement, nature: "la colère contre la corruption des élites"}
+- {de: foret-et-sols-vivants:emissions, vers: environnement-dechets:qualite_air, canal: sante, nature: "les émissions soufrées qui acidifient pluies et air"}
+- {de: foret-et-sols-vivants:pins, vers: climat-extremes:vegetation, canal: vivant, nature: "la forêt dans la végétation sensible au climat"}
+- {de: foret-et-sols-vivants:oiseaux, vers: biodiversite-sols:populations, canal: vivant, nature: "les oiseaux dans les populations sauvages"}
+- {de: foret-et-sols-vivants:interventions, vers: economie-entreprises:agriculture, canal: economie, nature: "la gestion forestière dans le secteur primaire"}
+- {de: asie-du-nord-est:japon, vers: inflation-mondiale:banques_centrales, canal: economie, nature: "la Banque du Japon et les taux mondiaux"}
+- {de: asie-du-nord-est:coree_du_sud, vers: sciences-techniques:calcul, canal: technique, nature: "les semi-conducteurs coréens"}
+- {de: asie-du-nord-est:coree_du_nord, vers: information-cyber:cyber, canal: technique, nature: "les vols de cryptomonnaies attribués à la Corée du Nord"}
+- {de: asie-du-nord-est:japon, vers: energie-mondiale:demande, canal: energie, nature: "le Japon, grand importateur de gaz naturel liquéfié"}
+- {de: soudan:armee, vers: guerre-levant:puissances, canal: conflit, nature: "les puissances du Golfe dans la guerre soudanaise"}
+- {de: soudan:humanitaire, vers: migrations-demographie:migrations, canal: population, nature: "les réfugiés soudanais vers le Tchad, l'Égypte, l'Europe"}
+- {de: soudan:fsr, vers: securite-publique:trafics, canal: economie, nature: "l'or soudanais et ses filières"}
+- {de: elections-amerique-latine:humeur, vers: securite-publique:peur, canal: comportement, nature: "l'insécurité, thème décisif des campagnes"}
+- {de: elections-amerique-latine:executif, vers: politique-americaine:commerce, canal: institution, nature: "les relations commerciales avec les États-Unis"}
+- {de: elections-amerique-latine:recoltes_exports, vers: economie-chinoise:matieres_premieres, canal: economie, nature: "la Chine, premier client des matières premières sud-américaines"}
+- {de: non-proliferation:etats_du_seuil, vers: guerre-levant:iran, canal: conflit, nature: "l'Iran au seuil nucléaire et la guerre régionale"}
+- {de: non-proliferation:aiea, vers: nucleaire-radiologique:surete, canal: institution, nature: "l'AIEA, garantie et sûreté"}
+- {de: non-proliferation:peur_prestige, vers: humain:hierarchie, canal: comportement, nature: "la bombe comme rang dans la hiérarchie des États"}
+- {de: niveaux-de-base:bilan_energie, vers: oceans-et-fleuves:oceans, canal: climat, nature: "l'océan stocke l'essentiel de l'énergie accumulée"}
+- {de: niveaux-de-base:composition_air, vers: oceans-et-fleuves:desoxygenation, canal: vivant, nature: "le CO2 dissous acidifie et le réchauffement désoxygène les mers"}
+- {de: competitions-culture:argent, vers: economie-entreprises:services, canal: economie, nature: "le sport et la culture dans l'économie des services"}
+- {de: competitions-culture:calendrier, vers: transports-villes:aerien, canal: population, nature: "les grands événements et les flux de voyageurs"}
+- {de: competitions-culture:medias, vers: information-cyber:attention, canal: information, nature: "les grands événements captent l'attention"}
+- {de: nucleaire-radiologique:electricite, vers: sciences-techniques:energie_eau, canal: energie, nature: "le nucléaire pour alimenter les centres de données"}
+- {de: nucleaire-radiologique:recits, vers: humain:risque_percu, canal: comportement, nature: "la peur de l'atome et le risque perçu"}
+- {de: cycles-biogeochimiques:azote, vers: environnement-dechets:eaux_usees, canal: eau, nature: "nitrates agricoles et pollution de l'eau"}
+- {de: cycles-biogeochimiques:carbone, vers: biodiversite-sols:habitats, canal: vivant, nature: "forêts et sols, puits de carbone"}
+- {de: cycles-biogeochimiques:phosphore, vers: minerais-critiques:concentration, canal: economie, nature: "le phosphate, minerai concentré dans quelques pays"}
+- {de: observateur-mesure:definitions, vers: calendriers-echeances:publications, canal: institution, nature: "les définitions des statistiques et leurs révisions"}
+- {de: observateur-mesure:lecteurs_ia, vers: sciences-techniques:ia, canal: technique, nature: "nos lecteurs sont des modèles d'IA"}
+- {de: soleil-espace:debris, vers: rivalite-sino-americaine:technologie, canal: technique, nature: "l'espace, champ de la rivalité technologique"}
+- {de: soleil-espace:reseaux, vers: infrastructures-critiques:physique_espace, canal: technique, nature: "tempêtes solaires et réseaux électriques", type: meme}
+- {de: union-europeenne:budget, vers: alimentation-mondiale:engrais, canal: economie, nature: "la politique agricole commune et les intrants"}
+- {de: union-europeenne:defense_ue, vers: minerais-critiques:controles_export, canal: technique, nature: "la dépendance européenne aux terres rares"}
+- {de: union-europeenne:politiques_communes, vers: environnement-dechets:pollution_chimique, canal: institution, nature: "les règles européennes sur les substances chimiques (REACH, PFAS)"}

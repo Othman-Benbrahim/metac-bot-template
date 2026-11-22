@@ -106,7 +106,39 @@ def odd(fichier: Path | None = None) -> dict[str, str]:
     return {str(k): v for k, v in (d.get("indicateurs") or {}).items()}
 
 
-def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
+TRANSVERSAUX = "ponts-transversaux.yaml"
+
+
+def ponts_transversaux(dossier: Path = DOSSIER) -> tuple[list[dict], dict[str, str]]:
+    """0.10.435 (décision de l'auteur, 2026-11-22, 6 h 08) : ponts entre fiches écrits à part, chacun avec son CANAL
+    (le mécanisme qui transmet). Rend (entrées, canaux)."""
+    f = dossier / TRANSVERSAUX
+    if not f.exists():
+        return [], {}
+    d = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    return list(d.get("ponts") or []), dict(d.get("canaux") or {})
+
+
+def erreurs_transversaux(fiches: dict[str, dict], dossier: Path = DOSSIER) -> list[str]:
+    """Chaque pont transversal relie deux compartiments existants de deux fiches, par un canal déclaré."""
+    ponts, canaux = ponts_transversaux(dossier)
+    ids = {f"{t}:{c['id']}" for t, x in fiches.items() for c in x.get("compartiments") or []}
+    err = []
+    for p in ponts:
+        de, vers = str(p.get("de", "")), str(p.get("vers", ""))
+        for ref in (de, vers):
+            if ref not in ids:
+                err.append(f"pont transversal {de} → {vers} : « {ref} » n'existe pas")
+        if de.split(":")[0] == vers.split(":")[0]:
+            err.append(f"pont transversal {de} → {vers} : même fiche (c'est une relation, pas un pont)")
+        if p.get("canal") not in canaux:
+            err.append(f"pont transversal {de} → {vers} : canal inconnu {p.get('canal')!r}")
+        if p.get("type", "influence") not in TYPES_PONT:
+            err.append(f"pont transversal {de} → {vers} : type {p.get('type')!r} hors de {TYPES_PONT}")
+    return err
+
+
+def charger(dossier: Path = DOSSIER, transversaux: bool = True) -> dict[str, dict]:
     out = {}
     for f in sorted(dossier.glob("*.yaml")):
         if f.name == "niveaux.yaml" or f.name.startswith("branchements"):
@@ -115,6 +147,21 @@ def charger(dossier: Path = DOSSIER) -> dict[str, dict]:
         if not isinstance(d, dict) or "theme" not in d:        # un fichier qui n'est pas une fiche ne casse rien
             continue
         out[d["theme"]] = d
+    if transversaux:
+        # ajoutés aux ponts de la fiche de départ (sans doublon) ; les entrées fautives sont laissées de côté ici et
+        # signalées par erreurs_transversaux (test du dépôt)
+        ids = {f"{t}:{c['id']}" for t, x in out.items() for c in x.get("compartiments") or []}
+        for p in ponts_transversaux(dossier)[0]:
+            de, vers = str(p.get("de", "")), str(p.get("vers", ""))
+            t, _, cid = de.partition(":")
+            if de not in ids or vers not in ids or t == vers.split(":")[0]:
+                continue
+            liste = out[t].setdefault("ponts", []) or []
+            out[t]["ponts"] = liste
+            if any(q.get("depuis") == cid and q.get("vers") == vers for q in liste):
+                continue
+            liste.append({"depuis": cid, "vers": vers, "nature": p.get("nature", ""),
+                          "type": p.get("type", "influence"), "canal": p.get("canal")})
     return out
 
 
@@ -123,7 +170,7 @@ CLES_PERMISES = {
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
                  "module", "parametres", "series"},
-    "pont": {"depuis", "vers", "nature", "type"}}
+    "pont": {"depuis", "vers", "nature", "type", "canal"}}
 # 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
 # soit qu'un compartiment INFLUE sur l'autre fiche (type: influence, par défaut : transmission partielle, avec retard).
 TYPES_PONT = ("meme", "influence")
