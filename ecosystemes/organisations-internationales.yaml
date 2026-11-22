@@ -95,6 +95,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS OMS Afrique (communiqués, urgences), famille « sante_afrique » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: OMS, déclaration sur la notification de retrait des États-Unis (24 janvier 2026)
     statut: a_brancher
 - id: retraits

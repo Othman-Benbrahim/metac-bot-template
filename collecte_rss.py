@@ -18,6 +18,9 @@ Familles (choisies par l'auteur) :
 - cyber (0.10.199, en ombre) : CERT-FR (ANSSI) ; rapports « Menaces et incidents » qui nomment un attaquant ou un pays ;
 - verification et enquete (0.10.200, en ombre) : Correctiv, vérifications de faits (pression de désinformation) et
   enquêtes ; noms de pays allemands en plus, pour ces deux familles seulement ;
+- monnaie, religion, biodiversite, defense, sante_afrique, crime, genre (0.10.455, en ombre, hors du total « tout ») : BCE,
+  Fed ; Saint-Siège ; Mongabay ; Defense One ; OMS Afrique ; InSight Crime, OCCRP ; ONU Femmes. robots.txt vérifié pour
+  chaque flux à chaque passage (politesse.autorise) : un refus est noté « refuse_robots » dans rss-sante.csv, jamais forcé ;
 - presse : presse francophone internationale retenue dans l'atlas atlasflux.saynete.com (un titre par groupe, regards
   France, Suisse, Canada, Afrique, Asie ; presse régionale qui reprend les mêmes dépêches écartée).
 Pays reconnus par leurs noms anglais ET français (Unicode CLDR), ramenés au code ISO à deux lettres. 0.10.199, en ombre :
@@ -45,6 +48,8 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import httpx
+
+import politesse
 
 import dico_grasland as dg
 import dico_newsmap as dn
@@ -139,6 +144,19 @@ FLUX = {
     # article présent dans les deux flux garde le même identifiant et n'est compté qu'une fois, en vérification.
     "verification": ["https://correctiv.org/thema/faktencheck/feed/"],
     "enquete": ["https://correctiv.org/feed/"],
+    # 0.10.455 (décision d'auteur du 2026-11-22, 10 h 13 : « tout ce qu'on peut brancher », inventaire du jour) : familles
+    # nouvelles, EN OMBRE, pour les compartiments sans trace ; exclues du total « tout » (adaptateurs_sources_b.HORS_TOUT).
+    "monnaie": ["https://www.ecb.europa.eu/rss/press.html",              # BCE : communiqués, discours, entretiens
+                "https://www.federalreserve.gov/feeds/press_all.xml"],   # Réserve fédérale : tous les communiqués
+    "religion": ["https://rss.vatican.va/xml/rss_en.xml",                 # Saint-Siège (vatican.va)
+                 "https://press.vatican.va/content/salastampa/en/bollettino.feedrss.xml"],  # bulletin du Bureau de presse
+    "biodiversite": ["https://news.mongabay.com/feed/"],                 # Mongabay (presse environnementale indépendante)
+    "defense": ["https://www.defenseone.com/rss/all/"],                  # Defense One
+    "sante_afrique": ["https://www.afro.who.int/rss/featured-news.xml",   # OMS Afrique : communiqués (droit d'auteur OMS)
+                      "https://www.afro.who.int/rss/emergencies.xml"],    # OMS Afrique : urgences et épidémies
+    "crime": ["https://www.insightcrime.org/feed/",                       # InSight Crime (crime organisé, Amériques)
+              "https://www.occrp.org/en/feed"],                           # OCCRP (enquêtes : corruption, blanchiment)
+    "genre": ["https://www.unwomen.org/en/rss-feeds/news"],               # ONU Femmes : actualités
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
         "https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868",   # France 24 : monde
@@ -280,7 +298,7 @@ MATIERES = {m: re.compile(rx, re.I) for m, rx in {
 FAMILLES_MATIERES = {"economie", "matieres_presse"}
 MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 
-DEDOUBLONNER = {"presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
+DEDOUBLONNER = {"crime", "defense", "biodiversite", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 
@@ -381,11 +399,13 @@ def bilan_sante(lignes: list[dict], aujourdhui: str, silence: int = 7) -> str:
     erreurs = [x for x in lignes if str(x.get("statut", "")).startswith("erreur")]
     vides = [x for x in lignes if x.get("statut") == "vide"]
     muets = [x for x in lignes if x.get("statut") == "ok" and (age(x.get("dernier_nouveau")) or 0) >= silence]
-    ok = len(lignes) - len(erreurs) - len(vides) - len(muets)
+    refuses = [x for x in lignes if x.get("statut") == "refuse_robots"]   # 0.10.455
+    ok = len(lignes) - len(erreurs) - len(vides) - len(muets) - len(refuses)
     out = [f"## Santé des flux RSS ({aujourdhui})", "",
            f"{len(lignes)} flux : {ok} en bon état, {len(erreurs)} en erreur, {len(vides)} vides, "
-           f"{len(muets)} sans nouvel article depuis {silence} jours ou plus.", ""]
-    for titre, groupe, champ in (("En erreur", erreurs, "statut"), ("Vides", vides, "dernier_succes"),
+           f"{len(muets)} sans nouvel article depuis {silence} jours ou plus, {len(refuses)} refusés par robots.txt.", ""]
+    for titre, groupe, champ in (("En erreur", erreurs, "statut"), ("Refusés par robots.txt", refuses, "dernier_succes"),
+                                 ("Vides", vides, "dernier_succes"),
                                  (f"Muets ({silence} j et plus)", muets, "dernier_nouveau")):
         if groupe:
             out += [f"### {titre}", "", "| famille | flux | détail |", "|---|---|---|"]
@@ -479,6 +499,12 @@ def principal() -> int:
         print(f"{len(gr)} expressions du dictionnaire Grasland-Toureille" + ("" if gr else " : source indisponible, comptes « _grasland » non écrits ce jour") + ".")
         for famille, urls in FLUX.items():
             for url in urls:
+                # 0.10.455 : robots.txt respecté pour chaque flux (politesse.autorise) ; un refus n'est jamais contourné
+                if not politesse.autorise(c, url):
+                    print(f"  flux refusé par robots.txt : {url[:70]}")
+                    st = sante.setdefault(url, {"url": url, "dernier_succes": "", "dernier_nouveau": ""})
+                    st.update(famille=famille, dernier_essai=aujourdhui, statut="refuse_robots", articles=0)
+                    continue
                 try:
                     r = lire(c, url)
                     arts = (articles_oms(r.json()) if "who.int/api/" in url

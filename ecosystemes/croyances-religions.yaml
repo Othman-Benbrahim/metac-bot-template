@@ -65,6 +65,7 @@ compartiments:
     vitesse: générations
     taille: macro
   traces:
+  - {source: "flux RSS Saint-Siège (vatican.va, bulletin du Bureau de presse), famille « religion » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - &id001
     source: Pew Research Center, How the Global Religious Landscape Changed From 2010 to 2020 (juin 2025)
     statut: a_brancher
@@ -299,6 +300,7 @@ compartiments:
     vitesse: générations
     taille: macro
   traces:
+  - {source: "flux RSS Saint-Siège (vatican.va, bulletin du Bureau de presse), famille « religion » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: religion_politique
   nom: Religion et politique (États, partis, autorités religieuses)
@@ -314,6 +316,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS Saint-Siège (vatican.va, bulletin du Bureau de presse), famille « religion » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: extremes_islam
   nom: Franges extrêmes - jihadisme

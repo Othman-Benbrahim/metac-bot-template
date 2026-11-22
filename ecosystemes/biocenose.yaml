@@ -105,6 +105,7 @@ compartiments:
     vitesse: décennies
     taille: macro
   traces:
+  - {source: "flux RSS Mongabay (presse environnementale indépendante), famille « biodiversite » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: Our World in Data, How many species are there?
     statut: a_brancher
 - id: cycle_vivant
@@ -137,6 +138,7 @@ compartiments:
     vitesse: décennies
     taille: méso à macro
   traces:
+  - {source: "flux RSS Mongabay (presse environnementale indépendante), famille « biodiversite » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: espece_humaine
   nom: L'espèce humaine dans la biocénose
@@ -170,6 +172,7 @@ compartiments:
     vitesse: saisons
     taille: méso à macro
   traces:
+  - {source: "flux RSS Mongabay (presse environnementale indépendante), famille « biodiversite » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 relations:
 - de: biotope

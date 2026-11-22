@@ -229,3 +229,25 @@ class TestSigles(unittest.TestCase):
         self.assertEqual(cr.detecter_large("U.S.-China talks", l), {"US"})
         self.assertEqual(cr.detecter_large("la RDC et l'EAU", l), {"CD", "AE"})
         self.assertEqual(cr.detecter_large("USAID cuts ; USB ; plus", l), set())
+
+
+class TestFamillesEnOmbre(unittest.TestCase):
+    """0.10.455 : familles nouvelles en ombre, hors du total « tout » ; refus robots.txt compté à part."""
+
+    def test_familles_et_total(self):
+        import adaptateurs_sources_b as ab
+        nouvelles = {"monnaie": 2, "religion": 2, "biodiversite": 1, "defense": 1, "sante_afrique": 2, "crime": 2, "genre": 1}
+        for f, n in nouvelles.items():
+            self.assertEqual(len(cr.FLUX[f]), n)
+            self.assertTrue(f.startswith(ab.HORS_TOUT))
+            self.assertTrue((f + "_large").startswith(ab.HORS_TOUT))
+        for f in ("sante", "presse", "officiel", "economie"):
+            self.assertFalse(f.startswith(ab.HORS_TOUT))
+
+    def test_bilan_refus_robots(self):
+        b = cr.bilan_sante([{"url": "https://a/feed", "famille": "crime", "statut": "refuse_robots"},
+                            {"url": "https://b/feed", "famille": "presse", "statut": "ok", "dernier_nouveau": "2026-11-22"}],
+                           "2026-11-22")
+        self.assertIn("1 en bon état", b)
+        self.assertIn("1 refusés par robots.txt", b)
+        self.assertIn("Refusés par robots.txt", b)

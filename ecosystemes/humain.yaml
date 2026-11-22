@@ -1583,8 +1583,9 @@ relations:
 ponts:
 - depuis: besoins_fondamentaux
   vers: corps-humain:besoins_vitaux
-  nature: les mêmes besoins vitaux, vus depuis le corps
-  type: meme
+  nature: les mêmes besoins vitaux, vus depuis le corps (en 0.10.455, voisinage ; en « même chose », il faisait une
+    boucle d'emballement avec les ponts arrivés en 0.10.452-454)
+  type: voisinage
 - depuis: besoins_fondamentaux
   vers: securite-publique:peur
   nature: la sécurité physique parmi les besoins de base

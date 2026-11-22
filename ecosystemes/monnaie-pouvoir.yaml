@@ -23,6 +23,7 @@ compartiments:
     vitesse: trimestres
     taille: macro
   traces:
+  - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: FMI, COFER (composition des réserves de change)
     statut: a_brancher
 - id: or
@@ -51,6 +52,7 @@ compartiments:
     vitesse: jours
     taille: macro
   traces:
+  - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: paiements
   nom: Systèmes de paiement (SWIFT, CIPS, cartes)
@@ -63,6 +65,7 @@ compartiments:
     vitesse: jours
     taille: macro
   traces:
+  - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: monnaies_numeriques
   nom: Stablecoins et monnaies numériques
@@ -75,6 +78,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: dedollarisation
   nom: Dédollarisation (discours et pratiques)
@@ -99,6 +103,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 relations:
 - de: sanctions_financieres

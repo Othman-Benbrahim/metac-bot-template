@@ -35,6 +35,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS Defense One, famille « defense » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: base de données du SIPRI sur les dépenses militaires (publique, annuelle)
     statut: a_brancher
   - &id001
@@ -95,6 +96,7 @@ compartiments:
     vitesse: années
     taille: méso à macro
   traces:
+  - {source: "flux RSS Defense One, famille « defense » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: SIPRI, classement des 100 premiers producteurs d'armes (annuel)
     statut: a_brancher
 - id: commerce_armes
@@ -132,6 +134,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS Defense One, famille « defense » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: technologies
   nom: Technologies militaires (drones, missiles, IA, espace, cyber)
@@ -144,6 +147,7 @@ compartiments:
     vitesse: mois à années
     taille: méso à macro
   traces:
+  - {source: "flux RSS Defense One, famille « defense » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: doctrines
   nom: Doctrines, postures et exercices
@@ -156,6 +160,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS Defense One, famille « defense » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: bases_projection
   nom: Bases à l'étranger et projection de puissance

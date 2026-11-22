@@ -86,6 +86,7 @@ compartiments:
     vitesse: jours
     taille: macro
   traces:
+  - {source: "flux RSS ONU Femmes (actualités), famille « genre » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: femmes_pouvoir
   nom: Femmes au pouvoir
@@ -98,6 +99,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS ONU Femmes (actualités), famille « genre » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 relations:
 - de: mariage

@@ -24,6 +24,7 @@ compartiments:
     vitesse: semaines
     taille: macro
   traces:
+  - {source: "flux RSS InSight Crime, famille « crime » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: ONUDC, Rapport mondial sur les drogues (annuel)
     statut: a_brancher
 - id: cartels_mafias
@@ -44,6 +45,7 @@ compartiments:
     vitesse: jours
     taille: méso
   traces:
+  - {source: "flux RSS InSight Crime, famille « crime » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - &id001
     source: ONUDC, presse
     statut: a_brancher
@@ -82,6 +84,7 @@ compartiments:
     vitesse: jours
     taille: macro
   traces:
+  - {source: "flux RSS OCCRP, famille « crime » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: trafics_armes_especes
   nom: Trafics d'armes et d'espèces sauvages
@@ -106,6 +109,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS InSight Crime et OCCRP, famille « crime » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: repression
   nom: Répression et coopération policière

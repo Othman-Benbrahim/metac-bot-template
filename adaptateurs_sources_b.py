@@ -180,12 +180,18 @@ def recit_russe(reg: Path, pays: str, colonne: str = "articles") -> list[tuple[s
     return _avec_zeros(c, sorted({r["jour"] for r in toutes}))
 
 
+# 0.10.455 : familles en ombre exclues du total « tout », qui garde sa composition d'avant (les variantes _large,
+# _grasland, _fusion le sont aussi, par le préfixe).
+HORS_TOUT = ("sp_energie", "matieres_presse", "monnaie", "religion", "biodiversite", "defense", "sante_afrique", "crime",
+             "genre")
+
+
 def rss(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:
     """Articles des flux RSS suivis (institutions, santé, vérification…) citant un pays (ISO2), par jour."""
     c: dict[str, float] = {}
     for r in _lignes(reg, "rss-comptes.csv"):
         # 0.10.388 : « tout » garde sa composition d'avant (sp_energie en est exclue)
-        if r["pays"] == pays and ((famille == "tout" and not r["famille"].startswith(("sp_energie", "matieres_presse"))) or r["famille"] == famille):
+        if r["pays"] == pays and ((famille == "tout" and not r["famille"].startswith(HORS_TOUT)) or r["famille"] == famille):
             c[r["jour"]] = c.get(r["jour"], 0.0) + _f(r["articles"])
     return sorted(c.items())
 
@@ -194,7 +200,7 @@ def rss_region(reg: Path, region: str, famille: str = "tout") -> list[tuple[str,
     """Articles des flux RSS suivis rattachés à une région ou organisation (code de région du collecteur), par jour."""
     c: dict[str, float] = {}
     for r in _lignes(reg, "rss-regions.csv"):
-        if r["region"] == region and ((famille == "tout" and not r["famille"].startswith(("sp_energie", "matieres_presse"))) or r["famille"] == famille):
+        if r["region"] == region and ((famille == "tout" and not r["famille"].startswith(HORS_TOUT)) or r["famille"] == famille):
             c[r["jour"]] = c.get(r["jour"], 0.0) + _f(r["articles"])
     return sorted(c.items())
 
