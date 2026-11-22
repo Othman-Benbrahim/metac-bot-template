@@ -154,8 +154,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: macro
-  traces:
-  - *id001
+  traces: *id001
 - id: etat_de_droit
   nom: État de droit et conditionnalité
   organisation: convention
@@ -167,8 +166,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: macro
-  traces:
-  - *id001
+  traces: *id001
 relations:
 - de: institutions
   vers: sanctions_ue
