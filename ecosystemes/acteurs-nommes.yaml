@@ -1,0 +1,407 @@
+# Acteurs nommés et leurs réseaux (bot 0.10.444, ombre). Décision de l'auteur du 2026-11-22, 7 h 41 et 7 h 49 :
+# « nommer les acteurs conjoncturels qui changent de façon cyclique, à côté des mécanismes durables » (chefs d'État,
+# grands patrons, autres acteurs importants), leurs réseaux (hypothèse de l'auteur : réseau et influence), le niveau des
+# liens (1 proche, 2 voisin, 3 éloigné, au sens de la distance dans le graphe : calculé sur la carte, jamais écrit à la
+# main) et ce qui les relie à la population (pouvoir, hiérarchie, gouvernance par une institution, information). Premier
+# lot choisi par l'auteur (7 h 50) : dirigeants et patrons.
+#
+# Règles (permanentes du dépôt) : personnalités publiques dans leur rôle public seulement ; aucune inférence
+# psychologique ou médicale ; chaque acteur et chaque lien a au moins une source avec adresse ; « lecture » dit si la
+# source a été lue (lu) ou seulement repérée par son titre dans une recherche (titre : à recouper). Une allégation (procès
+# en cours, accusation) est écrite comme telle, jamais comme un fait établi. « influence_documentee » (manipulation) n'est
+# admise qu'avec une source officielle, judiciaire ou une enquête nommée.
+#
+# Un acteur nommé est CONJONCTUREL : il occupe une fonction pendant une phase d'un cycle (mandat, direction d'entreprise) ;
+# le rôle durable reste l'acteur générique de la fiche (« role_generique », facultatif) et le compartiment de rattachement.
+#
+# relations entre acteurs : nomme (A désigne B à une fonction), commande (A est au-dessus de B dans une hiérarchie),
+#   allie (soutien public réciproque), rival (concurrence ouverte pour un même pouvoir), negocie_avec (rencontres,
+#   accords), finance (argent déclaré ou rapporté de A vers B ou son camp), associe (cofondateurs, partenaires d'affaires),
+#   fournit (contrats de l'entreprise de A avec l'administration de B), desaccord_public (désaccord exprimé publiquement).
+# relations vers la population (le « vers » est un compartiment) : gouverne (par une institution, champ « via »),
+#   elu_par (désigné ou jugé par le vote ou l'opinion), informe (possède ou dirige un média ou une plateforme),
+#   influence_documentee (campagne d'influence établie par une autorité, une justice ou une enquête nommée).
+acteurs:
+  # ------------------------------------------------------------------ dirigeants
+  - id: trump
+    nom: Donald Trump
+    sorte: dirigeant
+    role: 47e président des États-Unis
+    depuis: '2025-01-20'
+    cycle: mandat présidentiel américain (4 ans, jusqu'au 20 janvier 2029)
+    compartiments: [politique-americaine:executif, dirigeants-elus:executifs]
+    role_generique: "politique-americaine:le président en personne"
+    sources:
+      - {titre: "Newsweek, départ de Susie Wiles, Stephen Miller chef de cabinet (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", consulte: "2026-11-22", lecture: lu}
+  - id: vance
+    nom: JD Vance
+    sorte: dirigeant
+    role: vice-président des États-Unis
+    depuis: '2025-01-20'
+    cycle: mandat présidentiel américain
+    compartiments: [politique-americaine:executif]
+    sources:
+      - {titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", consulte: "2026-11-22", lecture: lu}
+  - id: rubio
+    nom: Marco Rubio
+    sorte: dirigeant
+    role: secrétaire d'État des États-Unis
+    depuis: '2025-01-21'
+    cycle: mandat présidentiel américain (révocable par le président)
+    compartiments: [politique-americaine:executif, dirigeants-elus:ministres]
+    sources:
+      - {titre: "Newsweek (novembre 2026) : reste en poste, son ministère dément un départ", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", consulte: "2026-11-22", lecture: lu}
+  - id: hegseth
+    nom: Pete Hegseth
+    sorte: dirigeant
+    role: secrétaire à la Défense des États-Unis
+    depuis: '2025-01-25'
+    cycle: mandat présidentiel américain (révocable par le président)
+    compartiments: [militaire:doctrines, dirigeants-elus:ministres]
+    sources:
+      - {titre: "Newsweek (novembre 2026) : reste en poste sous forte pression ; articles de mise en accusation annoncés par un élu", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", consulte: "2026-11-22", lecture: lu}
+  - id: miller
+    nom: Stephen Miller
+    sorte: dirigeant
+    role: chef de cabinet de la Maison-Blanche
+    depuis: '2026-11-09'
+    cycle: mandat présidentiel américain (révocable par le président)
+    compartiments: [dirigeants-elus:entourage, politique-americaine:entourage]
+    sources:
+      - {titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", consulte: "2026-11-22", lecture: lu}
+  - id: warsh
+    nom: Kevin Warsh
+    sorte: dirigeant
+    role: président de la Réserve fédérale
+    depuis: '2026-05-22'
+    cycle: mandat de président de la Fed (4 ans)
+    compartiments: [politique-americaine:reserve_federale, inflation-mondiale:banques_centrales]
+    sources:
+      - {titre: "Al Jazeera, Kevin Warsh sworn in as new US Fed chair (22 mai 2026)", url: "https://aljazeera.com/economy/2026/5/22/kevin-warsh-sworn-in-as-new-us-fed-chair", consulte: "2026-11-22", lecture: titre}
+  - id: xi
+    nom: Xi Jinping
+    sorte: dirigeant
+    role: président de la République populaire de Chine, secrétaire général du Parti communiste
+    depuis: '2013-03-14'
+    cycle: mandats de cinq ans (limite de mandats supprimée en 2018)
+    compartiments: [rivalite-sino-americaine:diplomatie, economie-chinoise:pouvoir, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Ambassade de Chine aux États-Unis, President Xi Jinping Meets with U.S. President Donald J. Trump (19 novembre 2026)", url: "https://us.china-embassy.gov.cn/eng/zgyw/202611/t20261119_12063139.htm", consulte: "2026-11-22", lecture: titre}
+  - id: poutine
+    nom: Vladimir Poutine
+    sorte: dirigeant
+    role: président de la Fédération de Russie
+    depuis: '2012-05-07'
+    cycle: mandat présidentiel russe (6 ans, réélu en 2024)
+    compartiments: [russie-ukraine:negociations, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Ambassade de Chine, President Xi Jinping Chairs China-Russia-U.S. Summit (19 novembre 2026)", url: "https://us.china-embassy.gov.cn/eng/zgyw/202611/t20261119_12063266.htm", consulte: "2026-11-22", lecture: titre}
+  - id: lavrov
+    nom: Sergueï Lavrov
+    sorte: dirigeant
+    role: ministre russe des Affaires étrangères
+    depuis: '2004-03-09'
+    cycle: révocable par le président
+    compartiments: [russie-ukraine:negociations, dirigeants-elus:ministres]
+    sources:
+      - {titre: "NV, Lavrov écarté de la délégation au G20, toujours ministre (6 novembre 2025)", url: "https://english.nv.ua/nation/putin-sidelines-lavrov-after-failed-u-s-talks-50558614.html", consulte: "2026-11-22", lecture: lu}
+  - id: zelensky
+    nom: Volodymyr Zelensky
+    sorte: dirigeant
+    role: président de l'Ukraine
+    depuis: '2019-05-20'
+    cycle: mandat présidentiel (élection suspendue par la loi martiale)
+    compartiments: [russie-ukraine:negociations, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Euromaidan Press, le Parlement vote pour un Premier ministre déjà désigné par le président (17 juillet 2026)", url: "https://euromaidanpress.com/2026/07/17/ukraine-reshuffle-constitution-parliament/", consulte: "2026-11-22", lecture: titre}
+  - id: koretskyi
+    nom: Serhii Koretskyi
+    sorte: dirigeant
+    role: Premier ministre de l'Ukraine
+    depuis: '2026-07-16'
+    cycle: révocable par la Rada
+    compartiments: [russie-ukraine:economie_ukraine, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Gouvernement ukrainien, Verkhovna Rada appoints Sergii Koretskyi Prime Minister of Ukraine", url: "https://www.kmu.gov.ua/en/news/verkhovna-rada-pryznachyla-serhiia-koretskoho-premier-ministrom-ukrainy", consulte: "2026-11-22", lecture: titre}
+  - id: netanyahou
+    nom: Benyamin Netanyahou
+    sorte: dirigeant
+    role: Premier ministre d'Israël (gouvernement sortant après les élections du 27 octobre 2026)
+    depuis: '2022-12-29'
+    cycle: législature (élections du 27 octobre 2026 ; coalition en formation)
+    compartiments: [guerre-levant:israel, dirigeants-elus:executifs]
+    sources:
+      - {titre: "AP via KPTV, le président israélien charge l'opposant Gadi Eisenkot de former un gouvernement (7 novembre 2026)", url: "https://www.kptv.com/2026/11/07/setback-netanyahu-israels-president-taps-opposition-candidate-form-government/", consulte: "2026-11-22", lecture: lu}
+  - id: eisenkot
+    nom: Gadi Eisenkot
+    sorte: dirigeant
+    role: chef de l'opposition israélienne, chargé de former un gouvernement (jusqu'à six semaines)
+    depuis: '2026-11-07'
+    cycle: formation de la coalition après les élections du 27 octobre 2026
+    compartiments: [guerre-levant:israel, politique-interieure:elections]
+    sources:
+      - {titre: "AP via KPTV (7 novembre 2026)", url: "https://www.kptv.com/2026/11/07/setback-netanyahu-israels-president-taps-opposition-candidate-form-government/", consulte: "2026-11-22", lecture: lu}
+  - id: mojtaba_khamenei
+    nom: Mojtaba Khamenei
+    sorte: dirigeant
+    role: Guide suprême de l'Iran
+    depuis: '2026-03-09'
+    cycle: fonction à vie (désigné par l'Assemblée des experts après la mort d'Ali Khamenei, tué le 28 février 2026)
+    compartiments: [iran-nucleaire:pouvoir_iranien, guerre-levant:iran]
+    sources:
+      - {titre: "Al Jazeera, Iran authorities support continuity with backing for Mojtaba Khamenei (9 mars 2026)", url: "https://www.aljazeera.com/news/2026/3/9/irans-authorities-showcase-continuity-as-they-back-new-leader-during-war", consulte: "2026-11-22", lecture: lu}
+  - id: pezeshkian
+    nom: Massoud Pezeshkian
+    sorte: dirigeant
+    role: président de l'Iran
+    depuis: '2024-07-28'
+    cycle: mandat présidentiel iranien (4 ans)
+    compartiments: [iran-nucleaire:negociations, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Saudi Gazette, Iran ouvert à des négociations pour sortir de la situation « ni guerre ni paix », selon Pezeshkian (novembre 2026)", url: "https://saudigazette.com.sa/article/666120/world/iran-open-to-negotiations-to-end-no-war-no-peace-situation-says-pezeshkian", consulte: "2026-11-22", lecture: titre}
+  - id: macron
+    nom: Emmanuel Macron
+    sorte: dirigeant
+    role: président de la République française
+    depuis: '2017-05-14'
+    cycle: second et dernier mandat (élection présidentielle en 2027)
+    compartiments: [politique-interieure:gouvernement, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Gouvernement, Sébastien Lecornu est nommé Premier ministre", url: "https://www.info.gouv.fr/actualite/sebastien-lecornu-est-nomme-premier-ministre", consulte: "2026-11-22", lecture: titre}
+  - id: lecornu
+    nom: Sébastien Lecornu
+    sorte: dirigeant
+    role: Premier ministre de la France
+    depuis: '2025-09-09'
+    cycle: révocable (motion de censure, démission) ; gouvernement Lecornu en place au 7 novembre 2026
+    compartiments: [politique-interieure:gouvernement, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Vie publique, organigramme du gouvernement Lecornu au 7 novembre 2026", url: "https://www.vie-publique.fr/infographie/300495-infographie-gouvernement-lecornu-organigramme-au-7-novembre-2026", consulte: "2026-11-22", lecture: titre}
+  - id: merz
+    nom: Friedrich Merz
+    sorte: dirigeant
+    role: chancelier fédéral d'Allemagne
+    depuis: '2025-05-06'
+    cycle: législature fédérale (4 ans)
+    compartiments: [politique-interieure:gouvernement, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Al Jazeera, un Allemand sur dix juge Merz à la hauteur après les défaites électorales de la CDU (2 octobre 2026)", url: "https://www.aljazeera.com/news/2026/10/2/just-one-in-10-germans-thinks-merz-is-up-to-the-job-after-election-wipeout", consulte: "2026-11-22", lecture: titre}
+  - id: burnham
+    nom: Andy Burnham
+    sorte: dirigeant
+    role: Premier ministre du Royaume-Uni
+    depuis: '2026-07-20'
+    cycle: législature (succède à Keir Starmer, démissionnaire)
+    compartiments: [politique-interieure:gouvernement, dirigeants-elus:executifs]
+    sources:
+      - {titre: "OPB (NPR), Andy Burnham becomes U.K. prime minister (20 juillet 2026)", url: "https://www.opb.org/article/2026/07/20/andy-burnham-succeeds-keir-starmer-as-the-u-k-s-7th-prime-minister-in-10-years/", consulte: "2026-11-22", lecture: titre}
+  - id: takaichi
+    nom: Sanae Takaichi
+    sorte: dirigeant
+    role: Première ministre du Japon
+    depuis: '2025-10-21'
+    cycle: législature (reconduite après sa victoire électorale)
+    compartiments: [asie-du-nord-est:japon, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Takaichi reelected as Japan's prime minister with a goal of pushing to the right", url: "https://www.smdailyjournal.com/news/world/takaichi-reelected-as-japans-prime-minister-with-a-goal-of-pushing-to-the-right/article_f832a0a5-8204-5e6c-ae9f-5041d9c779f5.html", consulte: "2026-11-22", lecture: titre}
+  - id: lula
+    nom: Luiz Inácio Lula da Silva
+    sorte: dirigeant
+    role: président du Brésil, réélu pour un quatrième mandat le 25 octobre 2026
+    depuis: '2023-01-01'
+    cycle: mandat présidentiel brésilien (4 ans ; nouveau mandat au 1er janvier 2027)
+    compartiments: [elections-amerique-latine:executif, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Al Jazeera, Lula holds off far right with victory in Brazil presidential election (26 octobre 2026)", url: "https://aljazeera.com/news/2026/10/26/lula-holds-off-far-right-with-victory-in-brazil-presidential-election", consulte: "2026-11-22", lecture: titre}
+  # ------------------------------------------------------------------ patrons
+  - id: musk
+    nom: Elon Musk
+    sorte: patron
+    role: patron de Tesla et de SpaceX, propriétaire de X ; a dirigé le Département de l'efficacité gouvernementale (2025)
+    depuis: '2008-10-01'
+    cycle: direction d'entreprise (sans terme fixe)
+    compartiments: [information-cyber:plateformes, economie-entreprises:dirigeants_entreprise, soleil-espace:satellites]
+    sources:
+      - {titre: "1News (Nouvelle-Zélande), Musk prend ses distances avec MAGA après les pertes des élections de mi-mandat (20 novembre 2026)", url: "https://www.1news.co.nz/2026/11/20/musk-backs-away-from-maga-after-midterm-losses-trump-says-hes-still-a-friend/", consulte: "2026-11-22", lecture: lu}
+  - id: zuckerberg
+    nom: Mark Zuckerberg
+    sorte: patron
+    role: fondateur et patron de Meta (Facebook, Instagram, WhatsApp)
+    depuis: '2004-02-04'
+    cycle: direction d'entreprise (contrôle des droits de vote)
+    compartiments: [information-cyber:plateformes, sciences-techniques:ia]
+    sources:
+      - {titre: "Semafor, How Zuckerberg shaped Trump's AI industry pledge (30 septembre 2026)", url: "https://www.semafor.com/article/09/30/2026/how-zuckerberg-shaped-trumps-ai-industry-pledge", consulte: "2026-11-22", lecture: titre}
+  - id: huang
+    nom: Jensen Huang
+    sorte: patron
+    role: cofondateur et patron de Nvidia
+    depuis: '1993-04-05'
+    cycle: direction d'entreprise
+    compartiments: [sciences-techniques:calcul, rivalite-sino-americaine:technologie]
+    sources:
+      - {titre: "The National, Nvidia, la Chine et le H200 (14 mai 2026)", url: "https://www.thenationalnews.com/future/technology/2026/05/14/nvidia-china-h200-trump/", consulte: "2026-11-22", lecture: titre}
+  - id: altman
+    nom: Sam Altman
+    sorte: patron
+    role: patron d'OpenAI
+    depuis: '2019-03-01'
+    cycle: direction d'entreprise
+    compartiments: [sciences-techniques:ia, sciences-techniques:capitaux]
+    sources:
+      - {titre: "Fortune, Sam Altman dit qu'OpenAI a fait beaucoup de changements pendant ses discussions avec l'administration (9 juillet 2026)", url: "https://fortune.com/2026/07/09/sam-altman-says-openai-made-many-changes-during-talks-with-us-officials/", consulte: "2026-11-22", lecture: titre}
+  - id: larry_ellison
+    nom: Larry Ellison
+    sorte: patron
+    role: cofondateur et président d'Oracle
+    depuis: '1977-06-16'
+    cycle: direction d'entreprise
+    compartiments: [sciences-techniques:calcul, economie-entreprises:dirigeants_entreprise]
+    sources:
+      - {titre: "TechCrunch, OpenAI s'associe à SoftBank et Oracle (Stargate, 21 janvier 2025)", url: "https://techcrunch.com/2025/01/21/openai-teams-up-with-softbank-and-oracle-on-50b-data-center-project", consulte: "2026-11-22", lecture: titre}
+  - id: david_ellison
+    nom: David Ellison
+    sorte: patron
+    role: patron de Paramount Skydance (CBS), acquéreur de Warner Bros. Discovery (CNN)
+    depuis: '2025-08-07'
+    cycle: direction d'entreprise
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    sources:
+      - {titre: "NPR, Warner Bros., Paramount et la famille Ellison (27 février 2026)", url: "https://www.npr.org/2026/02/27/nx-s1-5728865/warner-bros-paramount-ellison-family", consulte: "2026-11-22", lecture: titre}
+  - id: thiel
+    nom: Peter Thiel
+    sorte: patron
+    role: investisseur, cofondateur de Palantir et de PayPal
+    depuis: '2003-05-01'
+    cycle: investisseur (sans terme)
+    compartiments: [sciences-techniques:capitaux, economie-entreprises:dirigeants_entreprise]
+    sources:
+      - {titre: "RNZ, Peter Thiel a aidé à faire de JD Vance le faiseur de rois républicain (1er août 2025)", url: "https://www.rnz.co.nz/news/top/568768/libertarian-tech-titan-peter-thiel-helped-make-jd-vance-the-republican-kingmaker-s-influence-is-growing", consulte: "2026-11-22", lecture: titre}
+  - id: karp
+    nom: Alex Karp
+    sorte: patron
+    role: cofondateur et patron de Palantir
+    depuis: '2004-05-01'
+    cycle: direction d'entreprise
+    compartiments: [militaire:technologies, economie-entreprises:dirigeants_entreprise]
+    sources:
+      - {titre: "The Register, Palantir pourrait recevoir 244 millions de dollars du Pentagone sans appel d'offres (11 août 2026)", url: "https://theregister.com/public-sector/2026/08/11/palantir-could-receive-244m-pentagon-no-bid-contract/5286438", consulte: "2026-11-22", lecture: titre}
+  - id: bollore
+    nom: Vincent Bolloré
+    sorte: patron
+    role: actionnaire de contrôle d'un groupe de médias français (Canal+, CNews, Europe 1, JDD)
+    depuis: '2014-06-24'
+    cycle: actionnaire (sans terme)
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    sources:
+      - {titre: "Reporters sans frontières, protagoniste Vincent Bolloré", url: "https://rsf.org/fr/protagoniste-vincent-bollor%C3%A9", consulte: "2026-11-22", lecture: titre}
+
+liens:
+  # ------------------------------------------------------------------ hiérarchie et nominations
+  - {id: n_trump_warsh, de: trump, vers: warsh, relation: nomme, domaine: politique monétaire, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2026 (prestation de serment le 22 mai)"},
+     texte: "Le président nomme le président de la Fed, confirmé par le Sénat ; Kevin Warsh succède à Jerome Powell.",
+     sources: [{titre: "Al Jazeera (22 mai 2026)", url: "https://aljazeera.com/economy/2026/5/22/kevin-warsh-sworn-in-as-new-us-fed-chair", lecture: titre}]}
+  - {id: n_trump_miller, de: trump, vers: miller, relation: nomme, domaine: Maison-Blanche, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "après les élections de mi-mandat (9 novembre 2026)"},
+     texte: "Stephen Miller passe de chef de cabinet adjoint à chef de cabinet, à la place de Susie Wiles.",
+     sources: [{titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: lu}]}
+  - {id: c_trump_rubio, de: trump, vers: rubio, relation: commande, domaine: politique étrangère, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "second mandat"},
+     texte: "Le secrétaire d'État sert à la discrétion du président.",
+     sources: [{titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: lu}]}
+  - {id: c_trump_hegseth, de: trump, vers: hegseth, relation: commande, domaine: défense, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "second mandat ; sous pression après les élections de mi-mandat"},
+     texte: "Le président dit garder sa confiance au secrétaire à la Défense ; un élu annonce des articles de mise en accusation.",
+     sources: [{titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: lu}]}
+  - {id: d_vance_trump, de: vance, vers: trump, relation: desaccord_public, domaine: guerre contre l'Iran, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2026"},
+     texte: "Le vice-président s'est publiquement distingué du président sur la guerre contre l'Iran.",
+     sources: [{titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: lu}]}
+  - {id: c_poutine_lavrov, de: poutine, vers: lavrov, relation: commande, domaine: diplomatie, temps: {statut: structurel},
+     texte: "Le ministre des Affaires étrangères est nommé et révoqué par le président ; en novembre 2025, Lavrov a été écarté de la délégation au G20 après l'échec d'un sommet avec les États-Unis, le Kremlin démentant une disgrâce.",
+     sources: [{titre: "NV (6 novembre 2025)", url: "https://english.nv.ua/nation/putin-sidelines-lavrov-after-failed-u-s-talks-50558614.html", lecture: lu}]}
+  - {id: n_zelensky_koretskyi, de: zelensky, vers: koretskyi, relation: nomme, domaine: gouvernement, temps: {statut: conjoncturel, cycle: loi martiale, phase: "remaniement de juillet 2026"},
+     texte: "Le président a désigné le Premier ministre, ensuite approuvé par la Rada le 16 juillet 2026, après le renvoi de Ioulia Svyrydenko.",
+     sources: [{titre: "Euromaidan Press (17 juillet 2026)", url: "https://euromaidanpress.com/2026/07/17/ukraine-reshuffle-constitution-parliament/", lecture: titre},
+               {titre: "Gouvernement ukrainien", url: "https://www.kmu.gov.ua/en/news/verkhovna-rada-pryznachyla-serhiia-koretskoho-premier-ministrom-ukrainy", lecture: titre}]}
+  - {id: c_khamenei_pezeshkian, de: mojtaba_khamenei, vers: pezeshkian, relation: commande, domaine: guerre et négociations, temps: {statut: structurel},
+     texte: "Le Guide suprême est au-dessus du président dans la Constitution iranienne ; en novembre 2026, le président dit que le Guide a ordonné de sortir de la situation « ni guerre ni paix ».",
+     sources: [{titre: "Ahram Online, le Guide suprême a ordonné la fin de la situation « ni guerre ni paix », selon le président iranien", url: "https://english.ahram.org.eg/News/582091.aspx", lecture: titre}]}
+  - {id: n_macron_lecornu, de: macron, vers: lecornu, relation: nomme, domaine: gouvernement, temps: {statut: conjoncturel, cycle: second mandat présidentiel, phase: "fin de mandat (présidentielle 2027)"},
+     texte: "Le président nomme le Premier ministre ; le gouvernement reste exposé à la censure de l'Assemblée.",
+     sources: [{titre: "Gouvernement, Sébastien Lecornu est nommé Premier ministre", url: "https://www.info.gouv.fr/actualite/sebastien-lecornu-est-nomme-premier-ministre", lecture: titre}]}
+  # ------------------------------------------------------------------ alliances, rivalités, négociations
+  - {id: a_trump_netanyahou, de: trump, vers: netanyahou, relation: allie, domaine: guerre contre l'Iran, temps: {statut: conjoncturel, cycle: guerre de 2026, phase: "depuis le 28 février 2026"},
+     texte: "Les États-Unis et Israël sont en guerre contre l'Iran depuis le 28 février 2026.",
+     sources: [{titre: "Al Jazeera (9 mars 2026)", url: "https://www.aljazeera.com/news/2026/3/9/irans-authorities-showcase-continuity-as-they-back-new-leader-during-war", lecture: lu}]}
+  - {id: r_eisenkot_netanyahou, de: eisenkot, vers: netanyahou, relation: rival, domaine: pouvoir exécutif, temps: {statut: conjoncturel, cycle: législature israélienne, phase: "formation de la coalition (novembre-décembre 2026)"},
+     texte: "Aucun des deux blocs n'a de majorité ; le président Herzog a d'abord confié la formation du gouvernement à Eisenkot ; Netanyahou appelle à un gouvernement d'union nationale.",
+     sources: [{titre: "AP via KPTV (7 novembre 2026)", url: "https://www.kptv.com/2026/11/07/setback-netanyahu-israels-president-taps-opposition-candidate-form-government/", lecture: lu}]}
+  - {id: g_xi_trump, de: xi, vers: trump, relation: negocie_avec, domaine: "commerce, technologie, Taïwan", temps: {statut: conjoncturel, cycle: mandats en cours, phase: "visite d'État de septembre 2026 ; rencontre du 19 novembre 2026"},
+     texte: "Rencontres au sommet entre les deux présidents en 2026.",
+     sources: [{titre: "Ambassade de Chine (19 novembre 2026)", url: "https://us.china-embassy.gov.cn/eng/zgyw/202611/t20261119_12063139.htm", lecture: titre},
+               {titre: "Maison-Blanche, fiche sur la visite d'État (septembre 2026)", url: "https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-advances-a-fair-and-reciprocal-relationship-with-china-while-hosting-historic-state-visit/", lecture: titre}]}
+  - {id: g_xi_poutine, de: xi, vers: poutine, relation: negocie_avec, domaine: sommet Chine-Russie-États-Unis, temps: {statut: conjoncturel, cycle: mandats en cours, phase: "19 novembre 2026"},
+     texte: "Sommet à trois présidé par Xi Jinping.",
+     sources: [{titre: "Ambassade de Chine (19 novembre 2026)", url: "https://us.china-embassy.gov.cn/eng/zgyw/202611/t20261119_12063266.htm", lecture: titre}]}
+  - {id: g_poutine_trump, de: poutine, vers: trump, relation: negocie_avec, domaine: guerre en Ukraine, temps: {statut: conjoncturel, cycle: mandats en cours, phase: "sommet à trois du 19 novembre 2026"},
+     texte: "Sommet Chine-Russie-États-Unis présidé par Xi Jinping.",
+     sources: [{titre: "Ambassade de Chine (19 novembre 2026)", url: "https://us.china-embassy.gov.cn/eng/zgyw/202611/t20261119_12063266.htm", lecture: titre}]}
+  # ------------------------------------------------------------------ patrons et pouvoir politique
+  - {id: f_musk_trump, de: musk, vers: trump, relation: finance, domaine: élections de mi-mandat 2026, temps: {statut: conjoncturel, cycle: élections américaines, phase: "mi-mandat du 3 novembre 2026"},
+     texte: "Plus de 400 millions de dollars dépensés pour des républicains alignés sur Trump ; Musk dit ensuite ne pas être « MAGA » au sens d'une adhésion aveugle, Trump le dit toujours « ami ».",
+     sources: [{titre: "1News (20 novembre 2026)", url: "https://www.1news.co.nz/2026/11/20/musk-backs-away-from-maga-after-midterm-losses-trump-says-hes-still-a-friend/", lecture: lu}]}
+  - {id: g_zuckerberg_trump, de: zuckerberg, vers: trump, relation: negocie_avec, domaine: politique de l'IA, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "engagement de l'industrie de l'IA (septembre 2026)"},
+     texte: "Le patron de Meta aurait façonné l'engagement de l'industrie de l'IA annoncé par le président (enquête de Semafor).",
+     sources: [{titre: "Semafor (30 septembre 2026)", url: "https://www.semafor.com/article/09/30/2026/how-zuckerberg-shaped-trumps-ai-industry-pledge", lecture: titre}]}
+  - {id: g_huang_trump, de: huang, vers: trump, relation: negocie_avec, domaine: contrôles des exportations de puces vers la Chine, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2025-2026"},
+     texte: "Après des rencontres avec le président, les ventes de puces Nvidia à la Chine ont été de nouveau autorisées (H20 en 2025, question du H200 en 2026).",
+     sources: [{titre: "Tom's Hardware, Trump suspend l'interdiction du H20 après un dîner avec Jensen Huang", url: "https://www.tomshardware.com/tech-industry/artificial-intelligence/trump-reportedly-suspends-nvidia-h20-export-ban-plan-after-usd1-million-dinner-with-jensen-huang", lecture: titre},
+               {titre: "The National (14 mai 2026)", url: "https://www.thenationalnews.com/future/technology/2026/05/14/nvidia-china-h200-trump/", lecture: titre}]}
+  - {id: s_altman_ellison, de: altman, vers: larry_ellison, relation: associe, domaine: centres de données (Stargate), temps: {statut: conjoncturel, cycle: projet Stargate, phase: "depuis janvier 2025"},
+     texte: "OpenAI, Oracle et SoftBank s'associent dans Stargate, annoncé à la Maison-Blanche.",
+     sources: [{titre: "TechCrunch (21 janvier 2025)", url: "https://techcrunch.com/2025/01/21/openai-teams-up-with-softbank-and-oracle-on-50b-data-center-project", lecture: titre}]}
+  - {id: g_altman_trump, de: altman, vers: trump, relation: negocie_avec, domaine: IA et défense, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2025-2026"},
+     texte: "Stargate annoncé par le président ; discussions d'OpenAI avec le Pentagone en 2026.",
+     sources: [{titre: "Fortune, OpenAI en discussion avec le Pentagone (27 février 2026)", url: "https://fortune.com/2026/02/27/openai-in-talks-with-pentagon-after-anthropic-blowup/", lecture: titre}]}
+  - {id: f_lellison_dellison, de: larry_ellison, vers: david_ellison, relation: finance, domaine: rachat de Warner Bros. Discovery, temps: {statut: conjoncturel, cycle: rachat, phase: "2025-2026"},
+     texte: "Larry Ellison a apporté une garantie personnelle de 40,4 milliards de dollars à l'offre de son fils.",
+     sources: [{titre: "Fortune (22 décembre 2025)", url: "https://fortune.com/2025/12/22/paramount-warner-netflix-larry-ellison-personal-guarantee-40-4-billion/", lecture: titre}]}
+  - {id: a_lellison_trump, de: larry_ellison, vers: trump, relation: allie, domaine: médias, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2026"},
+     texte: "Le rachat de Warner Bros. se ferait avec l'appui apparent du président ; une plainte qualifie l'accord de corrompu (allégation, non jugée).",
+     sources: [{titre: "Bloomberg Government, Larry Ellison poursuivi pour un accord « corrompu » avec Trump", url: "https://news.bgov.com/us-law-week/larry-ellison-sued-for-corrupt-trump-deal-to-buy-warner-bros", lecture: titre}]}
+  - {id: f_thiel_vance, de: thiel, vers: vance, relation: finance, domaine: carrière politique, temps: {statut: conjoncturel, cycle: élections américaines, phase: "depuis la sénatoriale de 2022"},
+     texte: "Peter Thiel a soutenu la carrière politique de JD Vance.",
+     sources: [{titre: "RNZ (1er août 2025)", url: "https://www.rnz.co.nz/news/top/568768/libertarian-tech-titan-peter-thiel-helped-make-jd-vance-the-republican-kingmaker-s-influence-is-growing", lecture: titre}]}
+  - {id: s_thiel_karp, de: thiel, vers: karp, relation: associe, domaine: Palantir, temps: {statut: structurel, depuis: "2004"},
+     texte: "Cofondateurs de Palantir.",
+     sources: [{titre: "Fortune, Palantir, Peter Thiel et Alex Karp (19 août 2024)", url: "https://fortune.com/2024/08/19/palantir-ceo-peter-thiel-donald-trump-republicans-democrats-alex-karp/", lecture: titre}]}
+  - {id: p_karp_hegseth, de: karp, vers: hegseth, relation: fournit, domaine: défense, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2026"},
+     texte: "Contrats de Palantir avec le Pentagone, dont un contrat sans appel d'offres envisagé de 244 millions de dollars.",
+     sources: [{titre: "The Register (11 août 2026)", url: "https://theregister.com/public-sector/2026/08/11/palantir-could-receive-244m-pentagon-no-bid-contract/5286438", lecture: titre}]}
+  # ------------------------------------------------------------------ vers la population
+  - {id: p_trump, de: trump, vers: politique-americaine:etats_federes, relation: gouverne, via: "exécutif fédéral (décrets, administrations fédérales)", domaine: gouvernement, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "second mandat"},
+     texte: "Le président gouverne par l'exécutif fédéral ; les États fédérés gardent leurs propres compétences.",
+     sources: [{titre: "Newsweek (novembre 2026)", url: "https://newsweek.com/susie-wiles-exit-chief-of-staff-pete-hegseth-12672553", lecture: lu}]}
+  - {id: e_merz, de: merz, vers: dirigeants-elus:popularite, relation: elu_par, domaine: légitimité, temps: {statut: conjoncturel, cycle: législature fédérale, phase: "après les défaites régionales de septembre 2026"},
+     texte: "Un Allemand sur dix seulement le juge à la hauteur après les défaites de la CDU.",
+     sources: [{titre: "Al Jazeera (2 octobre 2026)", url: "https://www.aljazeera.com/news/2026/10/2/just-one-in-10-germans-thinks-merz-is-up-to-the-job-after-election-wipeout", lecture: titre}]}
+  - {id: e_lula, de: lula, vers: politique-interieure:elections, relation: elu_par, domaine: présidentielle, temps: {statut: conjoncturel, cycle: mandat présidentiel brésilien, phase: "réélu le 25 octobre 2026"},
+     texte: "Réélu au second tour contre Flávio Bolsonaro.",
+     sources: [{titre: "Al Jazeera (26 octobre 2026)", url: "https://aljazeera.com/news/2026/10/26/lula-holds-off-far-right-with-victory-in-brazil-presidential-election", lecture: titre}]}
+  - {id: e_takaichi, de: takaichi, vers: politique-interieure:elections, relation: elu_par, domaine: législatives, temps: {statut: conjoncturel, cycle: législature japonaise, phase: "reconduite après sa victoire électorale"},
+     texte: "Reconduite Première ministre après sa victoire électorale.",
+     sources: [{titre: "Takaichi reelected as Japan's prime minister", url: "https://www.smdailyjournal.com/news/world/takaichi-reelected-as-japans-prime-minister-with-a-goal-of-pushing-to-the-right/article_f832a0a5-8204-5e6c-ae9f-5041d9c779f5.html", lecture: titre}]}
+  - {id: g_warsh, de: warsh, vers: inflation-mondiale:prix_conso, relation: gouverne, via: "Réserve fédérale (taux directeurs)", domaine: prix et crédit, temps: {statut: conjoncturel, cycle: mandat de président de la Fed, phase: "depuis mai 2026"},
+     texte: "La Fed fixe les taux qui pèsent sur les prix, le crédit et l'emploi.",
+     sources: [{titre: "Al Jazeera (22 mai 2026)", url: "https://aljazeera.com/economy/2026/5/22/kevin-warsh-sworn-in-as-new-us-fed-chair", lecture: titre}]}
+  - {id: i_musk, de: musk, vers: information-cyber:plateformes, relation: informe, via: "X (réseau social)", domaine: information, temps: {statut: conjoncturel, cycle: propriété de X, phase: "depuis octobre 2022"},
+     texte: "Propriétaire du réseau social X.",
+     sources: [{titre: "1News (20 novembre 2026)", url: "https://www.1news.co.nz/2026/11/20/musk-backs-away-from-maga-after-midterm-losses-trump-says-hes-still-a-friend/", lecture: lu}]}
+  - {id: i_zuckerberg, de: zuckerberg, vers: information-cyber:plateformes, relation: informe, via: "Facebook, Instagram, WhatsApp", domaine: information, temps: {statut: structurel, depuis: "2004"},
+     texte: "Patron de Meta.",
+     sources: [{titre: "Axios, Meta monte une équipe d'influence bipartisane avant les élections de mi-mandat (31 octobre 2026)", url: "https://axios.com/2026/10/31/meta-bipartisan-influence-team-midterms", lecture: titre}]}
+  - {id: i_dellison, de: david_ellison, vers: information-cyber:recits, relation: informe, via: "CBS, et CNN par le rachat de Warner Bros. Discovery", domaine: information, temps: {statut: conjoncturel, cycle: rachat, phase: "2025-2026"},
+     texte: "Paramount Skydance contrôle CBS et rachète Warner Bros. Discovery, propriétaire de CNN.",
+     sources: [{titre: "NPR (27 février 2026)", url: "https://www.npr.org/2026/02/27/nx-s1-5728865/warner-bros-paramount-ellison-family", lecture: titre},
+               {titre: "Axios, les défis de l'empire médiatique des Ellison (24 janvier 2026)", url: "https://www.axios.com/2026/01/24/ellison-media-paramount-cbs", lecture: titre}]}
+  - {id: i_bollore, de: bollore, vers: information-cyber:recits, relation: informe, via: "CNews, Europe 1, JDD, Canal+", domaine: information, temps: {statut: conjoncturel, cycle: présidentielle française, phase: "avant 2027"},
+     texte: "Selon Reuters (septembre 2026), CNews donne une large tribune à l'extrême droite à l'approche de la présidentielle.",
+     sources: [{titre: "Reuters via Internazionale (4 septembre 2026)", url: "https://www.internazionale.it/ultime-notizie-reuters/2026/09/04/bollore-s-cnews-gives-far-right-a-bullhorn-as-french-presidential-election-looms", lecture: titre},
+               {titre: "Reporters sans frontières, protagoniste Vincent Bolloré", url: "https://rsf.org/fr/protagoniste-vincent-bollor%C3%A9", lecture: titre}]}
