@@ -310,6 +310,9 @@ MATIERES = {m: re.compile(rx, re.I) for m, rx in {
     "carbone": r"carbon (market|price|credit)|emissions trading|\bets\b", "hydrogene": r"hydrogen"}.items()}
 FAMILLES_MATIERES = {"economie", "matieres_presse"}
 MATIERES_CSV = Path("registre") / "rss-matieres.csv"
+# 0.10.457 (décision de l'auteur, 2026-11-22, 11 h 36) : articles nouveaux par famille et par jour, avec ou sans pays
+# reconnu, pour la carte des écosystèmes (lecteur-local) ; compte seulement, jamais le texte
+FAMILLES_CSV = Path("registre") / "rss-familles.csv"
 
 DEDOUBLONNER = {"crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
@@ -494,6 +497,10 @@ def principal() -> int:
     if MATIERES_CSV.exists():
         for x in csv.DictReader(MATIERES_CSV.open(encoding="utf-8")):
             matieres[(x["matiere"], x["jour"], x["famille"])] = int(x["articles"])
+    par_famille: dict[tuple, int] = {}
+    if FAMILLES_CSV.exists():
+        for x in csv.DictReader(FAMILLES_CSV.open(encoding="utf-8")):
+            par_famille[(x["famille"], x["jour"])] = int(x["articles"])
     with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c:
         motifs = noms_pays(c)
         print(f"{len(motifs)} noms de pays (anglais et français).")
@@ -536,6 +543,7 @@ def principal() -> int:
                     if famille in DEDOUBLONNER and reprise(empreinte_titre(a.get("titre")), a["jour"], titres):
                         reprises[famille] = reprises.get(famille, 0) + 1
                         continue
+                    par_famille[(famille, a["jour"])] = par_famille.get((famille, a["jour"]), 0) + 1
                     pays = detecter(a["texte"], motifs)
                     if famille in FAMILLES_MATIERES:
                         for m, rx in MATIERES.items():
@@ -601,6 +609,11 @@ def principal() -> int:
         for (p, j, fa), n in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
             w.writerow([p, j, fa, n])
     VUS.write_text("\n".join(sorted(vus)), encoding="utf-8")
+    with FAMILLES_CSV.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["famille", "jour", "articles"])
+        for (fa, j), n in sorted(par_famille.items(), key=lambda t: (t[0][1], t[0][0])):
+            w.writerow([fa, j, n])
     if matieres:
         with MATIERES_CSV.open("w", encoding="utf-8", newline="") as f:
             w = csv.writer(f)
