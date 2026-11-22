@@ -266,3 +266,28 @@ ponts:
 - {de: union-europeenne:budget, vers: alimentation-mondiale:engrais, canal: economie, nature: "la politique agricole commune et les intrants"}
 - {de: union-europeenne:defense_ue, vers: minerais-critiques:controles_export, canal: technique, nature: "la dépendance européenne aux terres rares"}
 - {de: union-europeenne:politiques_communes, vers: environnement-dechets:pollution_chimique, canal: institution, nature: "les règles européennes sur les substances chimiques (REACH, PFAS)"}
+# ---------- eau au Moyen-Orient (remarque de l'auteur, 2026-11-22, 7 h 12 : « pas assez de liens, humains et
+# géopolitique manquent »)
+- {de: eau-moyen-orient:rarete, vers: humain:besoins_fondamentaux, canal: comportement, nature: "le manque d'eau touche le premier des besoins de survie"}
+- {de: eau-moyen-orient:rarete, vers: humain:stress_chronique, canal: comportement, nature: "coupures et rationnement d'eau, stress durable des populations"}
+- {de: eau-moyen-orient:villes, vers: humain:passage_acte, canal: comportement, nature: "manifestations de la soif (coupures d'eau en été)"}
+- {de: eau-moyen-orient:etats_riverains, vers: humain:nous_eux, canal: comportement, nature: "l'eau partagée, frontière entre « nous » et « eux »"}
+- {de: eau-moyen-orient:villes, vers: politique-interieure:contestation, canal: comportement, nature: "contestations liées à l'eau et à l'électricité"}
+- {de: eau-moyen-orient:villes, vers: iran-nucleaire:societe_iranienne, canal: comportement, nature: "pénuries d'eau et colère dans les villes iraniennes"}
+- {de: eau-moyen-orient:rarete, vers: migrations-demographie:climat_milieu, canal: population, nature: "la sécheresse vide les campagnes"}
+- {de: eau-moyen-orient:rarete, vers: eau-douce-potable:stress, canal: eau, nature: "le Moyen-Orient, région la plus en stress hydrique", type: meme}
+- {de: eau-moyen-orient:maladies_hydriques, vers: corps-humain:besoins_vitaux, canal: sante, nature: "eau insalubre et besoins vitaux"}
+- {de: eau-moyen-orient:fleuves, vers: guerre-levant:syrie_irak, canal: conflit, nature: "le Tigre et l'Euphrate, barrages d'amont et sécheresse en Syrie et en Irak"}
+- {de: eau-moyen-orient:nappes, vers: guerre-levant:gaza, canal: conflit, nature: "l'aquifère côtier et l'eau de Gaza"}
+- {de: eau-moyen-orient:fleuves, vers: guerre-levant:eau, canal: conflit, nature: "le Jourdain et les eaux du Levant", type: meme}
+- {de: eau-moyen-orient:etats_riverains, vers: afrique-subsaharienne:corne, canal: conflit, nature: "le Nil entre l'Égypte, le Soudan et l'Éthiopie"}
+- {de: eau-moyen-orient:dessalement, vers: militaire:technologies, canal: conflit, nature: "les usines de dessalement, cibles possibles de missiles et de drones"}
+- {de: eau-moyen-orient:dessalement, vers: infrastructures-critiques:attaques, canal: technique, nature: "attaques et sabotages contre les installations d'eau"}
+- {de: eau-moyen-orient:etats_riverains, vers: dirigeants-elus:diplomatie_personnelle, canal: institution, nature: "accords sur l'eau négociés entre dirigeants"}
+- {de: eau-moyen-orient:irrigation, vers: alimentation-mondiale:importateurs, canal: economie, nature: "le manque d'eau fait importer les céréales (eau virtuelle)"}
+- {de: eau-moyen-orient:irrigation, vers: economie-entreprises:agriculture, canal: economie, nature: "l'agriculture irriguée, premier usage de l'eau"}
+- {de: eau-moyen-orient:relief, vers: relief-et-montagnes:chateaux_d_eau, canal: territoire, nature: "Taurus et Zagros, châteaux d'eau du Croissant fertile"}
+- {de: eau-moyen-orient:climat_regime, vers: climat-extremes:secheresses, canal: climat, nature: "les sécheresses longues du Moyen-Orient"}
+- {de: eau-moyen-orient:pluies, vers: cycles-biogeochimiques:eau, canal: eau, nature: "le cycle de l'eau régional"}
+- {de: eau-moyen-orient:dessalement, vers: environnement-dechets:pollution_chimique, canal: sante, nature: "les saumures rejetées en mer"}
+- {de: eau-moyen-orient:villes, vers: plancher-social:acces_energie, canal: energie, nature: "pompage et dessalement exigent de l'électricité"}
