@@ -1,0 +1,325 @@
+# 0.10.413 — fiche créée le 2026-11-22 (décision de l'auteur, 3 h 05 - 3 h 08) : premier des « plus gros trous » de la carte
+# (eau douce et potable à l'échelle du monde ; la guerre comme relation, remarque de l'auteur). Relations à vérifier sur sources.
+theme: eau-douce-potable
+nom: Eau douce et potable (monde)
+declaration:
+  but: 'comprendre l''eau douce comme milieu vital à l''échelle du monde : ressources, prélèvements, accès, assainissement,
+    qualité, maladies, besoins du corps, gouvernance et tensions ; 2,1 milliards de personnes sans eau potable gérée en sécurité
+    et 3,4 milliards sans assainissement géré en sécurité (OMS et UNICEF, rapport 2025)'
+  limites: dedans l'eau douce de surface et souterraine, ses usages, son accès, sa qualité, ses maladies, l'eau du corps humain,
+    sa gouvernance et les conflits qu'elle déclenche ou subit ; dehors les océans (oceans-et-fleuves), le cas du Moyen-Orient
+    détaillé (eau-moyen-orient), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (OMS, UNICEF, FAO, WRI, Pacific Institute) ; aucune personne
+    privée
+  date: '2026-11-22'
+  espace: le monde, par pays et par bassin versant
+  temps: de l'heure (la soif) à la décennie (l'épuisement d'une nappe)
+  vitesse: l'heure (déshydratation), la semaine (épidémie de choléra), l'année (prélèvements, accès), la décennie (nappes)
+  taille: micro (une personne, un puits) à macro (un bassin, le monde)
+compartiments:
+- id: ressources
+  nom: Ressources en eau douce (fleuves, lacs, nappes renouvelables)
+  organisation: eau
+  elements:
+  - eau renouvelable disponible par habitant (en baisse de 7 % en dix ans, FAO AQUASTAT 2025)
+  - fleuves et lacs
+  - nappes renouvelables
+  niveau:
+    espace: monde et bassins
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: FAO AQUASTAT (ressources en eau renouvelables par pays)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: stress
+  nom: Stress hydrique (eau prélevée rapportée à l'eau disponible)
+  organisation: eau
+  elements:
+  - stress hydrique de base
+  - variabilité d'une année à l'autre
+  - sécheresses
+  niveau:
+    espace: bassins
+    temps: années
+    vitesse: saisons à années
+    taille: méso à macro
+  traces:
+  - source: WRI Aqueduct 4.0 (stress hydrique de base ; usage libre, citation demandée)
+    statut: a_brancher
+  - *id001
+- id: nappes
+  nom: Nappes souterraines (épuisement)
+  organisation: eau
+  elements:
+  - épuisement des nappes
+  - pompage au-delà de la recharge
+  - affaissement des sols
+  niveau:
+    espace: bassins
+    temps: années à décennies
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: WRI Aqueduct 4.0 (épuisement) ; satellites GRACE-FO de la NASA (masse d'eau)
+    statut: a_brancher
+  - *id001
+- id: prelevements
+  nom: Prélèvements par usage (agriculture, industrie, villes)
+  organisation: economie
+  elements:
+  - agriculture (environ 72 % des prélèvements, FAO AQUASTAT 2025)
+  - industrie et énergie (refroidissement)
+  - eau des villes
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: FAO AQUASTAT (prélèvements par secteur)
+    statut: a_brancher
+  - *id001
+- id: acces
+  nom: Accès à l'eau potable
+  organisation: societe
+  elements:
+  - 2,1 milliards de personnes sans eau potable gérée en sécurité, dont 106 millions buvant une eau de surface non traitée
+    (OMS, UNICEF, 2025)
+  - écarts entre villes et campagnes
+  acteurs:
+  - nom: des ménages sans accès à l'eau potable (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: JMP OMS/UNICEF (washdata.org), accès à l'eau potable par pays
+    statut: a_brancher
+  - *id001
+- id: assainissement
+  nom: Assainissement et hygiène
+  organisation: societe
+  elements:
+  - 3,4 milliards de personnes sans assainissement géré en sécurité, dont 354 millions en défécation à l'air libre
+  - 1,7 milliard sans installation d'hygiène de base à domicile (OMS, UNICEF, 2025)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: JMP OMS/UNICEF (washdata.org), assainissement et hygiène par pays
+    statut: a_brancher
+  - *id001
+- id: qualite
+  nom: Qualité et pollution de l'eau
+  organisation: chimique
+  elements:
+  - nitrates (engrais)
+  - arsenic et fluor naturels
+  - rejets urbains et industriels
+  - plastiques et substances nouvelles
+  niveau:
+    espace: sites à bassins
+    temps: mois à années
+    vitesse: mois
+    taille: micro à méso
+  traces:
+  - source: GEMStat (PNUE), qualité de l'eau douce
+    statut: a_brancher
+  - *id001
+- id: maladies
+  nom: Maladies hydriques (choléra, diarrhées, typhoïde)
+  organisation: microbiologique
+  elements:
+  - choléra
+  - maladies diarrhéiques
+  - typhoïde
+  - parasitoses liées à l'eau
+  acteurs:
+  - nom: un agent pathogène hydrique (Vibrio cholerae, en agrégat)
+    taille: micro
+    espace: villes et camps
+    vitesse: semaines
+    organisation: microbiologique
+    facette: non_humain
+  niveau:
+    espace: pays et villes
+    temps: semaines à années
+    vitesse: semaines
+    taille: micro à méso
+  traces:
+  - source: bulletins d'épidémies de l'OMS (déjà collectés par le bot, collecte_rss)
+    statut: collecte
+    fichier: collecte_rss.py
+  - *id001
+- id: corps
+  nom: L'eau du corps (besoins vitaux, déshydratation, chaleur)
+  organisation: corps
+  elements:
+  - besoins quotidiens en eau
+  - déshydratation
+  - coups de chaleur
+  - vulnérabilité des enfants et des personnes âgées
+  niveau:
+    espace: la personne, en agrégat
+    temps: heures à jours
+    vitesse: heures
+    taille: micro
+  traces:
+  - source: aucune trace directe ; lisible par la chaleur (ERA5-Land, collecte_agro) et la mortalité en agrégat
+    statut: inconnue
+- id: gouvernance
+  nom: Gouvernance et prix de l'eau
+  organisation: convention
+  elements:
+  - droit à l'eau et à l'assainissement (reconnu par l'Assemblée générale des Nations unies en 2010)
+  - régies publiques et concessions privées
+  - tarifs
+  - partage des eaux entre États
+  acteurs:
+  - nom: une autorité de bassin
+    taille: méso
+    espace: bassin
+    vitesse: années
+    organisation: statut
+    facette: collectif
+  - nom: une compagnie des eaux (publique ou privée)
+    taille: méso
+    espace: villes
+    vitesse: mois
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: pays et bassins
+    temps: années
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - *id001
+- id: tensions
+  nom: Tensions et conflits liés à l'eau
+  organisation: geopolitique
+  elements:
+  - l'eau comme déclencheur de violence (accès, contrôle)
+  - l'eau comme arme (coupures, contamination)
+  - les installations d'eau comme victimes des guerres
+  - plus de 1 300 événements recensés depuis l'Antiquité (Pacific Institute, mise à jour de 2022)
+  niveau:
+    espace: bassins, pays et régions
+    temps: jours à décennies
+    vitesse: jours à années
+    taille: micro à macro
+  traces:
+  - source: Pacific Institute, Water Conflict Chronology (événements datés, catégories déclencheur, arme, victime)
+    statut: a_brancher
+  - *id001
+relations:
+- de: prelevements
+  vers: stress
+  effet: +
+  delai: années
+  force: forte
+  coupure: baisse des prélèvements ou hausse des ressources
+  statut: a_verifier
+  texte: le stress hydrique est par définition le rapport des prélèvements à l'eau disponible
+- de: ressources
+  vers: stress
+  effet: '-'
+  delai: saisons
+  force: forte
+  coupure: aucune
+  statut: a_verifier
+  texte: moins d'eau disponible, plus de stress à prélèvements égaux
+- de: prelevements
+  vers: nappes
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: pompage ramené sous la recharge
+  statut: a_verifier
+  texte: le pompage au-delà de la recharge épuise les nappes
+- de: assainissement
+  vers: maladies
+  effet: '-'
+  delai: mois
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: un meilleur assainissement fait reculer les maladies hydriques
+- de: qualite
+  vers: maladies
+  effet: '-'
+  delai: semaines
+  force: moyenne
+  coupure: traitement de l'eau
+  statut: a_verifier
+  texte: une eau de meilleure qualité fait reculer les maladies hydriques
+- de: acces
+  vers: corps
+  effet: +
+  delai: heures
+  force: forte
+  coupure: aucune
+  statut: a_verifier
+  texte: l'accès à l'eau couvre les besoins vitaux du corps
+- de: stress
+  vers: tensions
+  effet: +
+  delai: mois à années
+  force: moyenne
+  coupure: accord de partage ou institution de bassin efficace
+  statut: a_verifier
+  texte: le manque d'eau peut être source de tensions, et l'eau sert de déclencheur de violence (catégorie « déclencheur »
+    du Pacific Institute) ; remarque de l'auteur du 2026-11-22
+- de: tensions
+  vers: acces
+  effet: '-'
+  delai: jours
+  force: moyenne
+  coupure: cessez-le-feu ou protection des installations
+  statut: a_verifier
+  texte: en guerre, l'eau sert d'arme et les installations sont touchées (catégories « arme » et « victime » du Pacific Institute)
+- de: gouvernance
+  vers: tensions
+  effet: '-'
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: des accords de partage et des institutions de bassin peuvent contenir les tensions
+ponts:
+- depuis: stress
+  vers: eau-moyen-orient:rarete
+  nature: même phénomène, détaillé au Moyen-Orient
+- depuis: tensions
+  vers: eau-moyen-orient:etats_riverains
+  nature: tensions entre États d'amont et d'aval
+- depuis: tensions
+  vers: guerre-levant:eau
+  nature: l'eau dans la guerre au Levant (Jourdain, nappes, Litani)
+- depuis: prelevements
+  vers: alimentation-mondiale:eau_agricole
+  nature: l'agriculture, premier usage de l'eau
+- depuis: maladies
+  vers: epidemies:agent
+  nature: agents infectieux transmis par l'eau
+- depuis: nappes
+  vers: oceans-et-fleuves:nappes
+  nature: mêmes nappes, vues depuis le cycle de l'eau
+- depuis: ressources
+  vers: climat-extremes:secheresses
+  nature: les sécheresses réduisent la ressource
+- depuis: corps
+  vers: humain:stress_chronique
+  nature: la soif et l'insécurité hydrique comme stress
