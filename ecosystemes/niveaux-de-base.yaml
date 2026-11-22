@@ -1,0 +1,102 @@
+# 0.10.426 — fiche courte créée le 2026-11-22 (décision de l'auteur, 4 h 34 : « commence dans l'ordre et comble ce qui
+# manque », troisième point : les niveaux de base en fiche courte, en acceptant le doublon). Les niveaux atomique,
+# chimique, microbiologique et physique sont déjà présents dans d'autres fiches (43 compartiments) ; celle-ci ne donne
+# que l'état mesuré à l'échelle de la Terre et relie le reste par des ponts. Chiffres vérifiés le 2026-11-22.
+theme: niveaux-de-base
+nom: Niveaux de base (matière, énergie, vivant microscopique), état de la Terre
+declaration:
+  but: 'donner l''état mesuré des niveaux de base à l''échelle de la Terre, sous les autres fiches : composition de l''air
+    (426,8 ppm de dioxyde de carbone en 2025, Organisation météorologique mondiale), bilan d''énergie de la Terre (plus que
+    doublé en quelques décennies), répartition de la biomasse (550 milliards de tonnes de carbone, dont environ 15 % de
+    bactéries)'
+  limites: dedans trois mesures d'ensemble (air, énergie, biomasse) ; dehors tout le détail, déjà dans climat-extremes,
+    cycles-biogeochimiques, nucleaire-radiologique, soleil-espace, epidemies, biodiversite-sols, reliés par des ponts
+  observateur: notre carte, regard extérieur, sources publiques (OMM, AGU Advances, PNAS) ; aucune personne privée
+  date: '2026-11-22'
+  espace: la Terre entière
+  temps: de l'année (une mesure annuelle) au siècle (depuis 1750)
+  vitesse: l'année
+  taille: macro
+compartiments:
+- id: composition_air
+  nom: Composition de l'air (gaz à effet de serre)
+  organisation: chimique
+  elements:
+  - dioxyde de carbone 426,8 ppm en 2025, 153 % du niveau de 1750, +2,8 ppm en un an ; méthane 1 948 ppb, 267 % du
+    niveau de 1750 ; protoxyde d'azote 339,1 ppb (OMM, Bulletin sur les gaz à effet de serre, octobre 2026)
+  niveau:
+    espace: Terre
+    temps: années à siècles
+    vitesse: années
+    taille: macro
+  traces:
+  - source: NOAA, Global Monitoring Laboratory (séries mensuelles et annuelles publiques)
+    statut: a_brancher
+- id: bilan_energie
+  nom: Bilan d'énergie de la Terre (énergie reçue moins énergie renvoyée)
+  organisation: physique
+  elements:
+  - déséquilibre énergétique de la Terre plus que doublé en quelques décennies ; record en 2023, deux fois la meilleure
+    estimation du GIEC (Mauritsen et al., AGU Advances, 2025, d'après l'université de Stockholm)
+  niveau:
+    espace: Terre
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: NASA CERES (flux radiatifs mesurés par satellite, données publiques)
+    statut: a_brancher
+- id: biomasse
+  nom: Répartition de la biomasse (plantes, bactéries, animaux)
+  organisation: microbiologique
+  elements:
+  - biomasse totale d'environ 550 milliards de tonnes de carbone, dont environ 80 % de plantes et 15 % de bactéries ;
+    humains et bétail pèsent environ dix fois plus que les mammifères sauvages (Bar-On, Phillips et Milo, PNAS,
+    mai 2018)
+  niveau:
+    espace: Terre
+    temps: décennies
+    vitesse: décennies
+    taille: macro
+  traces: []
+relations:
+- de: composition_air
+  vers: bilan_energie
+  effet: +
+  delai: années
+  force: forte
+  coupure: aucune à court terme
+  statut: a_verifier
+  texte: plus de gaz à effet de serre retiennent plus d'énergie (avec les aérosols et les nuages, qui jouent aussi)
+- de: bilan_energie
+  vers: biomasse
+  effet: '-'
+  delai: décennies
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'énergie accumulée réchauffe et modifie les milieux, ce qui pèse sur une partie du vivant
+ponts:
+- depuis: composition_air
+  vers: climat-extremes:chimie_atmosphere
+  nature: même phénomène, vu depuis le climat
+  type: meme
+- depuis: composition_air
+  vers: cycles-biogeochimiques:carbone
+  nature: le carbone de l'air dans son cycle
+- depuis: bilan_energie
+  vers: climat-extremes:rayonnement
+  nature: même phénomène, vu depuis le climat
+  type: meme
+- depuis: bilan_energie
+  vers: soleil-espace:soleil
+  nature: l'énergie reçue du Soleil
+- depuis: biomasse
+  vers: cycles-biogeochimiques:microbes_du_sol
+  nature: les bactéries du sol dans les cycles
+- depuis: biomasse
+  vers: epidemies:agent
+  nature: virus et bactéries qui rendent malade, une part infime du vivant microscopique
+- depuis: biomasse
+  vers: biodiversite-sols:populations
+  nature: les mammifères sauvages, dix fois moins lourds que les humains et le bétail
