@@ -105,7 +105,7 @@ regles:
     situation: "élection nationale à venir, avec des sondages publiés"
     perimetre: [monde]
     compartiments: [politique-americaine:elections, calendriers-echeances:elections]
-    indices: ["poll", "polls", "polling", "sondage", "sondages", "Umfrage", "Umfragen"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["poll|polls|polling|sondage|sondages|Umfrage|Umfragen + elections|wahl|presidential election|élection présidentielle|présidentielle|parliamentary election|élections législatives|législatives|Bundestagswahl|Landtagswahl|Kommunalwahl|Präsidentschaftswahl"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Erreur absolue moyenne par parti ou candidat, sondages nationaux : près de 4 points entre 150 et 200 jours avant le vote, environ 3 points à 50 jours, moins de 2 points la veille. À 200 jours : 3,3 points pour les législatives, 5,9 pour les présidentielles ; l'écart se réduit sans disparaître. Remplace la formule σ·√(1 + t/30) du préenregistrement etalon-scrutin, qui était une invention de Claude (lot 1). Ne vaut pas pour les primaires ni pour les scrutins locaux (sondages nationaux seulement)."
     parametres: {erreur_part_points: {j150_200: 4.0, j50: 3.0, veille: 2.0}, erreur_part_j200: {legislatives: 3.3, presidentielles: 5.9}}
     sources:
@@ -151,7 +151,7 @@ regles:
     situation: "campagne de contestation non violente en cours contre un régime"
     perimetre: [monde]
     compartiments: [humain:passage_acte, politique-interieure:regime]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["protesters", "opposition protests", "manifestants", "Demonstranten", "crackdown", "répression"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["protesters|opposition protests|manifestants|Demonstranten|Protest|Demonstration + junta|junte|anti-government protests|manifestations antigouvernementales|regime change|chute du régime|Regimegegner|mollahs|dictature"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Les campagnes de résistance non violente qui visaient un changement de régime ou l'expulsion d'une occupation ont réussi dans plus de 40 % des cas des années 1960 à 2010, jusqu'à 65 % dans les années 1990, mais dans moins de 34 % des cas dans les années 2010 ; les campagnes violentes, dans 8 % des cas. Cohérent avec la règle d'inertie : la contestation réussit de moins en moins."
     parametres: {succes_non_violent_2010s_max: 0.34, succes_violent_2010s: 0.08, succes_non_violent_1990s_max: 0.65}
     sources:
@@ -195,7 +195,7 @@ regles:
     situation: "élection nationale à venir, avec des sondages publiés"
     perimetre: [monde]
     compartiments: [calendriers-echeances:elections, humain:opinion_publique]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["poll", "polls", "polling", "sondage", "sondages", "Umfrage", "Umfragen"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["poll|polls|polling|sondage|sondages|Umfrage|Umfragen + elections|wahl|presidential election|élection présidentielle|présidentielle|parliamentary election|élections législatives|législatives|Bundestagswahl|Landtagswahl|Kommunalwahl|Präsidentschaftswahl"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Erreur absolue moyenne sur la part d'un parti ou d'un candidat, sondages de la dernière semaine : 2,03 points au total (2,1 dans les années 1940-1970, 2,0 depuis 2000 ; pas de tendance d'ensemble). Présidentielles 2,70, législatives 1,83 ; proportionnelle 1,62, scrutin uninominal 2,28 ; grands partis (plus de 20 %) 2,28, petits partis 1,29 ; partis au pouvoir 2,05, opposition 1,71. Pour une erreur normale, σ ≈ erreur moyenne / 0,8."
     parametres:
       erreur_part_points: {ensemble: 2.03, presidentielles: 2.70, legislatives: 1.83, proportionnelle: 1.62, uninominal: 2.28, grands_partis: 2.28, petits_partis: 1.29, au_pouvoir: 2.05, opposition: 1.71}
@@ -213,7 +213,7 @@ regles:
     situation: "élections législatives françaises convoquées"
     perimetre: ["France"]
     compartiments: [calendriers-echeances:elections, politique-interieure:partis]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["législatives", "élections législatives", "Assemblée nationale", "dissolution"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["dissolution + Assemblée nationale|législatives|élections législatives"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Élu au premier tour : majorité absolue des suffrages exprimés ET au moins le quart des inscrits. Au second tour, la majorité relative suffit. Pour se maintenir au second tour : au moins 12,5 % des inscrits ; si un seul candidat atteint ce seuil, le suivant peut se maintenir ; si aucun, les deux premiers."
     parametres: {premier_tour: {majorite_exprimes: 50, quart_inscrits: 25}, qualification_inscrits: 12.5}
     sources:
@@ -229,7 +229,7 @@ regles:
     situation: "élections législatives à venir dans un pays européen"
     perimetre: [europe]
     compartiments: [calendriers-echeances:elections, politique-interieure:partis]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["parliamentary election", "élections législatives", "Bundestagswahl", "Parlamentswahl", "electoral threshold", "seuil électoral"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["parliamentary election|élections législatives|législatives|Bundestagswahl|Parlamentswahl", "electoral threshold", "seuil électoral"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Seuil légal pour obtenir des sièges : Allemagne 5 % ; Pays-Bas 0,67 % (une voix pour un siège) ; Pologne 5 % (partis), 8 % (alliances) ; Tchéquie 5 %, 8 % (alliance de deux), 11 % (plus) ; Hongrie 5 %, 10 %, 15 % ; Roumanie 5 %, 10 % ; Slovaquie 5 %, 7 % (2 à 3 partis), 10 % (4 et plus) ; Suède 4 % ; Autriche 4 % ; Norvège 4 % (sièges compensatoires seulement) ; Bulgarie 4 % ; Lettonie 5 % ; Italie 3 % ; Grèce 3 % ; Espagne 3 % par circonscription ; Belgique 5 % par circonscription ; Danemark 2 % ; Portugal aucun seuil légal."
     parametres:
       seuil_parti: {DE: 5, NL: 0.67, PL: 5, CZ: 5, HU: 5, RO: 5, SK: 5, SE: 4, AT: 4, NO: 4, BG: 4, LV: 5, IT: 3, GR: 3, ES: 3, BE: 5, DK: 2, PT: 0}
@@ -314,7 +314,7 @@ regles:
     situation: "élection législative à venir"
     perimetre: [monde]
     compartiments: [calendriers-echeances:elections, politique-interieure:partis]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["seats", "sièges", "Sitze", "proportional representation", "proportionnelle"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["seats|sièges|Sitze|proportional representation|proportionnelle + parliamentary election|élections législatives|législatives|Bundestagswahl|Parlamentswahl"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Mesuré sur 240 élections législatives depuis 2000 (ParlGov) : le premier en voix est aussi premier en sièges dans 95% des cas ; à la proportionnelle de liste, 98.2% (164 élections) : 95.3% quand les deux premiers sont à moins de 3 points (43 cas), 99.2% au-delà (121 cas). Quand ils divergent, le premier en sièges est le deuxième en voix dans 11 cas sur 12. Mixte compensatoire : 19 élections, aucun désaccord, mais moins de 30 cas par tranche : on applique les taux de l'ensemble. Système de l'élection lu dans le relevé IPU de 2026 (approximation : un pays peut avoir changé de système depuis 2000)."
     parametres:
       accord_premier:
@@ -362,7 +362,7 @@ regles:
     situation: "zone minière africaine face à une variation des prix des minerais"
     perimetre: [afrique]
     compartiments: [dette-emergents:gisements, dette-emergents:matieres_premieres]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["illegal mining", "artisanal mining", "orpaillage", "galamsey", "mining conflict"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["illegal mining|artisanal mining|orpaillage|galamsey|mining conflict + gold price|cours de l'or|prix de l'or|copper price"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Une hausse d'un écart-type des prix mondiaux des minerais fait passer la probabilité de conflit dans une cellule minière de 16,9 % à 22,5 % (environ +33 %). La hausse historique des prix explique jusqu'à 21 % de la violence moyenne des pays africains, 1997-2010 (27 minerais). Les violences liées aux mines sont surtout associées aux compagnies ÉTRANGÈRES ; parmi elles, celles qui opèrent dans des pays moins corrompus ou qui suivent des pratiques de responsabilité sociale sont associées à moins de violence (nuance de gouvernance) ; les initiatives de transparence montrent « quelques indices » d'effet."
     parametres: {proba_conflit_cellule_miniere: {base: 0.169, prix_plus_1_ecart_type: 0.225}, part_violence_expliquee_max: 0.21, periode: "1997-2010"}
     sources:
@@ -415,7 +415,7 @@ regles:
     situation: "élection présidentielle indonésienne prévue"
     perimetre: ["Indonésie"]
     compartiments: [calendriers-echeances:elections, politique-interieure:dirigeants]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["Indonesian presidential election", "élection présidentielle indonésienne", "Prabowo"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["Indonesian presidential election", "élection présidentielle indonésienne"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Élu au premier tour : plus de 50 % des voix ET au moins 20 % dans chacune de plus de la moitié des provinces ; sinon second tour entre les deux premiers. Avec deux candidats seulement, la Cour constitutionnelle a jugé que la condition de répartition provinciale ne s'applique pas (la majorité suffit)."
     parametres: {majorite: 50, seuil_provincial: 20, part_provinces: "plus de la moitié", deux_candidats: majorite_simple}
     sources:
@@ -509,7 +509,7 @@ regles:
     situation: "Congrès américain en session"
     perimetre: ["États-Unis"]
     compartiments: [politique-americaine:congres]
-    indices: ["legislation", "passed the House", "passed the Senate", "signed into law", "projet de loi"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["passed the House", "passed the Senate", "signed into law", "US Congress|U.S. Congress|United States Congress|Congrès américain|Congrès des États-Unis + legislation|projet de loi"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Le 119e Congrès (2025-2026) a adopté 121 lois publiques au 14 octobre 2026 (109 de fond, 12 symboliques), le deuxième total le plus bas des 40 dernières années à ce stade ; le 118e en avait 106. Du 100e au 110e Congrès, environ 440 lois avant le jour de l'élection, dont environ 306 de fond. Une grande part des lois passe après l'élection : 168 des 274 lois du 118e Congrès (61 %) pendant la session de fin de mandat."
     parametres: {lois_119e_au_2026_10_14: 121, lois_118e_meme_date: 106, moyenne_100e_110e_avant_election: 440, part_apres_election_118e: 0.61}
     sources:
@@ -542,7 +542,7 @@ regles:
     situation: "pays exposé à une tentative de coup d'État (taux mondial ou régional)"
     perimetre: [monde]
     compartiments: [humain:hierarchie]
-    indices: ["coup d'État", "coup d'Etat", "coup attempt", "tentative de coup", "putsch", "junta", "junte", "Putsch", "Militärputsch"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["coup d'État", "coup d'Etat", "coup attempt", "tentative de coup", "putsch", "Putsch", "Militärputsch"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "De 1950 à 2010, 457 tentatives de coup d'État dans le monde, dont 227 réussies (49,7 %). L'Afrique et les Amériques en concentrent la plupart (36,5 % et 31,9 % selon le texte ; la figure 1 compte 169 cas africains, soit 37 %). Le nombre de tentatives baisse sur la période (pics au milieu des années 1960, 1970 et au début des années 1990) ; la réussite remonte après 2003 (12 sur 18). Ce sont des ordres de grandeur pour un taux de base, pas une loi pour un pays donné."
     parametres: {tentatives_1950_2010: 457, reussies: 227, taux_reussite: 0.497, part_afrique: 0.365, reussite_depuis_2003: "12/18"}
     sources:
@@ -558,7 +558,7 @@ regles:
     situation: "chef d'État ou de gouvernement au pouvoir"
     perimetre: [monde]
     compartiments: [humain:hierarchie]
-    indices: ["ousted", "overthrown", "renversé", "assassinated", "assassiné", "forced to resign", "démission"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["ousted", "overthrown", "renversé", "forced to resign"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Les sorties irrégulières de dirigeants (coup, révolte, assassinat) sont très rares : 45 cas de mars 2001 à mars 2014 sur environ 26 000 pays-mois, soit 0,17 % des pays-mois ; sur la même période, 16 coups. Pour une question « X sera-t-il encore au pouvoir à telle date ? », le point de départ est le maintien, sauf échéance électorale ou limite de mandat."
     parametres: {cas_2001_2014: 45, pays_mois: 26000, taux_mensuel: 0.0017}
     sources:
@@ -594,7 +594,7 @@ regles:
     situation: "élection législative à venir"
     perimetre: [monde]
     compartiments: [calendriers-echeances:elections, politique-interieure:partis]  # 2026-11-22, décision de l'auteur 1 h 40
-    indices: ["parliamentary election", "élections législatives", "seats", "sièges"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["parliamentary election|élections législatives|législatives|Bundestagswahl|Parlamentswahl"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Système électoral de chaque chambre (281 chambres, novembre 2026), lu dans le relevé IPU Parline : chambres basses ou uniques 74 à la proportionnelle de liste, 43 au scrutin majoritaire uninominal à un tour, 22 en scrutin parallèle, 14 à deux tours, 9 en mixte avec compensation proportionnelle, 8 au vote unique non transférable, 2 au vote unique transférable, 2 au vote préférentiel, 2 au scrutin majoritaire plurinominal. Le relevé dit aussi quelles chambres sont suspendues, non élues au suffrage direct, et où le vote est obligatoire. Il ne donne ni la taille des circonscriptions ni la formule de répartition : le passage des voix aux sièges reste sans règle."
     parametres: {fichier: "registre/ipu/systemes-electoraux-2026-11-20.csv", lecteur: "ipu_parlements.py"}
     sources:
@@ -658,7 +658,7 @@ regles:
     situation: "affaire ou pourvoi pendant devant la Cour suprême américaine"
     perimetre: ["États-Unis"]
     compartiments: [politique-americaine:tribunaux, calendriers-echeances:dates_limites]
-    indices: ["Supreme Court", "Cour suprême", "certiorari", "justices"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["certiorari", "Supreme Court|Cour suprême + Donald Trump|US Congress|U.S. Congress|United States Congress"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "La session de la Cour suprême commence, par la loi, le premier lundi d'octobre ; les séances durent d'ordinaire jusqu'à fin juin ou début juillet. Les plaidoiries s'arrêtent en général en avril ; les décisions et ordonnances sortent ensuite jusqu'à la fin de la session, les plus disputées souvent à la fin. Les juges examinent environ 130 demandes de pourvoi par semaine ; les demandes en attente pendant l'été sont tranchées à la « long conference » de fin septembre."
     parametres: {debut: "premier lundi d'octobre", fin_habituelle: "fin juin ou début juillet", fin_plaidoiries: avril, demandes_par_semaine: 130}
     sources:
@@ -759,7 +759,7 @@ regles:
     situation: "campagne référendaire en cours sur un changement"
     perimetre: [monde]
     compartiments: [humain:risque_percu, calendriers-echeances:elections]
-    indices: ["referendum", "référendum", "Referendum", "Volksabstimmung", "Volksentscheid"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["referendum|référendum|Referendum|Volksabstimmung|Volksentscheid + referendum campaign|campagne référendaire|Abstimmungskampf"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Le soutien au changement baisse en général pendant la campagne : dans 28 des 37 référendums anglophones étudiés depuis 1990, avec une moyenne de 62 % dans les premiers sondages, 57 % dans les derniers et 52 % au résultat ; chez LeDuc, 17 référendums sur 23 voient l'opinion s'éloigner du oui, avec des déplacements moyens de 17 points ; les reculs du changement sont plus grands que ses progrès. Exception : quand le non devient l'option risquée (le « point de retour » est jugé dangereux), le mouvement peut s'inverser. Les campagnes très liées aux positions des partis sont moins volatiles."
     parametres: {cas_baisse_changement: "28/37", soutien_moyen: {premiers_sondages: 62, derniers_sondages: 57, resultat: 52}, leduc_cas: "17/23", deplacement_moyen_points: 17}
     sources:
@@ -926,7 +926,8 @@ regles:
     situation: "phase finale de la Coupe du monde à venir ou en cours, avec ses équipes qualifiées"
     perimetre: [monde]
     compartiments: [competitions-culture:forme, competitions-culture:public]
-    indices: ["World Cup", "Coupe du monde", "FIFA", "Weltmeisterschaft"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["World Cup", "Coupe du monde", "FIFA", "Weltmeisterschaft"]  # 2026-11-22, décision de l'auteur 2 h 52  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
+    periodes: [["2026-06-11", "2026-07-19"], ["2030-06-01", "2030-07-31"]]
     regle: "De 1930 à 2022, 22 éditions, 8 pays vainqueurs (Brésil 5, Allemagne et Italie 4, Argentine 3, Uruguay et France 2, Angleterre et Espagne 1). Premier titre d'un pays : 8 éditions sur 22, 6 sur 18 depuis 1950 (1954, 1958, 1966, 1978, 1998, 2010), aucun depuis 2010. Pays hôte : demi-finale ou mieux dans 13 éditions sur 22, titre 6 fois ; depuis 1982 (au moins 24 équipes), demi-finale dans 5 éditions sur 11 (1990, 1998, 2002, 2006, 2014), sortie dès le premier tour en 2010 et 2022."
     parametres: {editions: 22, vainqueurs_distincts: 8, premier_titre: 8, premier_titre_depuis_1950: 6, hote_demi: 13, hote_titre: 6, hote_demi_depuis_1982: 5, editions_depuis_1982: 11}
     sources:
@@ -943,7 +944,7 @@ regles:
     situation: "ancien chef d'État ou de gouvernement sorti du pouvoir"
     perimetre: [monde]
     compartiments: [humain:hierarchie, securite-publique:justice]
-    indices: ["former president", "ancien président", "former prime minister", "ancien Premier ministre", "sentenced", "condamné", "in exile", "en exil"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["former president", "ancien président", "former prime minister", "ancien Premier ministre"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
     regle: "Sur 1 802 dirigeants sortis du pouvoir de 1919 à 2003 (base Archigos, 164 pays), 7,6 % de ceux partis de façon régulière (élection, fin de mandat, démission) ont été exilés, emprisonnés ou tués dans l'année (98 sur 1 298, dont 32 emprisonnés), contre 80 % de ceux chassés irrégulièrement (380 sur 473). Pour un ancien dirigeant parti régulièrement, une arrestation dans un délai de quelques mois est donc un événement rare, plus rare encore longtemps après la sortie."
     parametres: {regulier_puni: 98, regulier_total: 1298, irregulier_puni: 380, irregulier_total: 473, regulier_emprisonne: 32}
     sources:
@@ -1057,7 +1058,8 @@ regles:
     situation: "présidents américain et russe en fonction, sans sommet annoncé"
     perimetre: ["États-Unis", "Russie"]
     compartiments: [russie-ukraine:negociations]
-    indices: ["summit", "sommet", "Gipfel", "Gipfeltreffen"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["Putin + Donald Trump"]  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
+    exclure: ["summit", "sommet", "Gipfel", "Gipfeltreffen"]
     regle: "Sommets bilatéraux des présidents américain et russe de 2000 à 2025 : Moscou (juin 2000), Ljubljana (juin 2001), Moscou (mai 2002), Bratislava (février 2005), Prague (avril 2010), Helsinki (juillet 2018), Genève (juin 2021), Anchorage (août 2025). Huit en 26 ans, aucun dans 18 de ces années ; les écarts entre deux sommets vont de 1 à 8 ans. Une rencontre se prépare d'ordinaire par une annonce publique quelques semaines avant (lieu, date)."
     parametres: {sommets_2000_2025: 8, annees_sans: 18}
     sources:
@@ -1075,7 +1077,8 @@ regles:
     situation: "saison de culture en cours (mars-août pour le maïs et le soja, avril-octobre pour le coton) avec des journées chaudes"
     perimetre: ["États-Unis"]
     compartiments: [alimentation-mondiale:cultures, alimentation-mondiale:climat]
-    indices: ["heat stress", "crop yields", "corn", "soybeans", "cotton", "maïs", "soja"]  # 2026-11-22, décision de l'auteur 2 h 52
+    indices: ["heat stress", "crop yields", "corn", "soybeans", "cotton", "maïs", "soja"]  # 2026-11-22, décision de l'auteur 2 h 52  # 2026-11-22, 12 h 16 : correction après le test 1 (combinaisons, exclusions, fenêtres)
+    mois: [3, 4, 5, 6, 7, 8]
     regle: "Sur les comtés américains de 1950 à 2005, le rendement croît à peu près linéairement avec la température jusqu'à un seuil critique, puis décroît nettement plus vite qu'il ne croissait : 29 °C pour le maïs, 30 °C pour le soja, 32 °C pour le coton. Pour le maïs, remplacer une journée entière à 29 °C par une journée entière à 40 °C réduit le rendement prévu d'environ 7 % ; sur le marché à terme, une journée à 40 °C au lieu de 29 °C fait monter le prix à terme d'environ 4,4 %. Le compte se fait en temps passé au-dessus du seuil pendant la saison, pas en moyenne de saison."
     parametres: {seuil_mais: 29, seuil_soja: 30, seuil_coton: 32, perte_mais_journee_40_au_lieu_de_29: 0.07, prix_a_terme_journee_40: 0.044, comtes_annees: "1950-2005"}
     sources:

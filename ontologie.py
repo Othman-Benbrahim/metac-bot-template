@@ -44,6 +44,9 @@ def graphe(regles: list[dict]) -> dict:
                        "perimetre": r.get("perimetre") or [], "compartiments": r.get("compartiments") or [],
                        "parametres": r.get("parametres") or {}, "statut": r.get("statut"),
                        "indices": r.get("indices") or [],
+                       # 2026-11-22 (correction après le test 1) : exclusions et fenêtres de dates de la situation
+                       "exclure": r.get("exclure") or [], "periodes": r.get("periodes") or [],
+                       "mois": r.get("mois") or [],
                        "sources": [x.get("url") for x in r.get("sources") or [] if isinstance(x, dict)]})
         if not r.get("compartiments"):
             manques.append({"regle": r["id"], "manque": "aucun compartiment : la situation ne peut pas être "
