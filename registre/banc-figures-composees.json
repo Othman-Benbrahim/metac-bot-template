@@ -1,0 +1,91 @@
+{
+  "n": 144,
+  "note": "perte log, plus bas = mieux ; M7 et M10 partagent les mêmes sept notes",
+  "B_semblables": 0.4675,
+  "M7": 0.3869,
+  "M10": 0.3854,
+  "discrimination": {
+    "B": 0.001,
+    "M7": 0.19,
+    "M10": 0.202
+  },
+  "part_des_1": {
+    "competition": 0.222,
+    "intention": 0.09,
+    "convention": 0.09
+  },
+  "critere": {
+    "n_nouveaux": 144,
+    "regard": 0,
+    "n_juge": 144,
+    "blocs": 85,
+    "bloc_par": "question",
+    "ecart_moyen": -0.001496726375103368,
+    "intervalle_90_par_blocs": [
+      -0.02253130470441728,
+      0.01907644523787946
+    ],
+    "intervalle_corrige": [
+      -0.025893084199614443,
+      0.023111521715443
+    ],
+    "niveau_corrige": 0.95,
+    "verdict": "en attente (moins de 150 questions de jeux non vus)"
+  },
+  "accord_figures": {
+    "n": 56,
+    "stabilite_r1_r2": {
+      "par_critere": {
+        "competition": {
+          "n": 56,
+          "kappa_pondere": 0.794,
+          "accord_exact": 0.625,
+          "ecart_moyen": 0.446
+        },
+        "intention": {
+          "n": 56,
+          "kappa_pondere": 0.353,
+          "accord_exact": 0.464,
+          "ecart_moyen": 0.643
+        },
+        "convention": {
+          "n": 56,
+          "kappa_pondere": 0.772,
+          "accord_exact": 0.607,
+          "ecart_moyen": 0.411
+        }
+      },
+      "kappa_moyen": 0.64
+    },
+    "accord_r1_x": {
+      "par_critere": {
+        "competition": {
+          "n": 56,
+          "kappa_pondere": 0.59,
+          "accord_exact": 0.446,
+          "ecart_moyen": 0.696
+        },
+        "intention": {
+          "n": 56,
+          "kappa_pondere": 0.425,
+          "accord_exact": 0.518,
+          "ecart_moyen": 0.554
+        },
+        "convention": {
+          "n": 56,
+          "kappa_pondere": 0.426,
+          "accord_exact": 0.393,
+          "ecart_moyen": 0.75
+        }
+      },
+      "kappa_moyen": 0.48
+    },
+    "seuils": {
+      "stable": 0.6,
+      "instable": 0.4,
+      "commun": 0.4,
+      "non_commun": 0.2
+    }
+  },
+  "sautees_sans_recherche_gelee": 6
+}
