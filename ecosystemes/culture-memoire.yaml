@@ -1,17 +1,24 @@
 # 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
-# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+# que nos fiches ne couvraient pas (dépôt lecteur-local).
+# 0.10.431 — complétée le 2026-11-22 (remarque de l'auteur, 5 h 35 : « culture et mémoire à compléter ») : éléments
+# sourcés, acteurs, trois compartiments (patrimoine, patrimoine en guerre, restitutions) et un quatrième (usages
+# politiques de la mémoire), relations à vérifier, ponts. Identifiants d'origine gardés (termes validés rattachés).
 theme: culture-memoire
 nom: Culture et mémoire
 declaration:
-  but: situer la création, l'histoire et la mémoire collective, et le tourisme, qui portent récits et symboles
-  limites: dedans création (arts, cinéma, musique, littérature, photographie), histoire et mémoire, tourisme ; dehors les
-    compétitions et prix (fiche competitions-culture), les dates de mémoire (calendriers-echeances:memoire)
-  observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
-    identifiés dans listes/emetteurs.txt ; aucune personne privée
+  but: 'situer la création, le patrimoine, l''histoire et la mémoire collective, et le tourisme, qui portent récits et
+    symboles ; 25 sites ajoutés au patrimoine mondial et 6 placés en péril en juillet 2026 (UNESCO, 48e session) ;
+    1,52 milliard d''arrivées de touristes internationaux en 2025, un record (ONU Tourisme)'
+  limites: dedans la création (arts, cinéma, musique, littérature, photographie), le patrimoine et sa protection, le
+    patrimoine touché par les guerres, les restitutions, l'histoire et la mémoire et leurs usages politiques, le tourisme ;
+    dehors les compétitions et prix (competitions-culture), les dates de mémoire (calendriers-echeances:memoire), les
+    symboles comme moteurs d'action (humain:symboles), sauf par les ponts
+  observateur: notre carte, regard extérieur ; sources publiques (UNESCO, ONU Tourisme, ICOMOS, lois publiées) ; termes
+    relevés dans les étiquettes des flux RSS du bot (lecteur-local) ; aucune personne privée
   date: '2026-11-22'
   espace: par pays et par langue
   temps: de l'année au siècle
-  vitesse: l'année (une œuvre), la décennie, le siècle
+  vitesse: le jour (une destruction), l'année (une œuvre, une inscription), la décennie, le siècle
   taille: méso à macro
 compartiments:
 - id: creation
@@ -37,6 +44,7 @@ compartiments:
   elements:
   - histoire
   - mémoire de la RDA
+  - récits nationaux, commémorations
   niveau:
     espace: pays
     temps: siècles
@@ -49,10 +57,142 @@ compartiments:
   elements:
   - tourisme
   - voyages
+  - environ 1,52 milliard d'arrivées internationales en 2025 (+4 %), record ; Europe 793 millions, Asie-Pacifique 331
+    millions (91 % du niveau d'avant la pandémie), Afrique 81 millions (+8 %) (ONU Tourisme, repris par l'AFP, 20 janvier
+    2026)
+  acteurs:
+  - nom: ONU Tourisme
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
   niveau:
     espace: monde
     temps: saisons
     vitesse: mois
     taille: méso à macro
   traces: *id001
-relations: []
+- id: patrimoine
+  nom: Patrimoine et sa protection
+  organisation: convention
+  elements:
+  - 48e session du Comité du patrimoine mondial (Busan, 19-29 juillet 2026) - 25 sites inscrits (19 culturels, 5
+    naturels, 1 mixte), dont les plages du Débarquement en Normandie (The Art Newspaper, 29 juillet 2026)
+  - convention du patrimoine mondial, listes indicatives, patrimoine immatériel
+  acteurs:
+  - nom: UNESCO (Comité du patrimoine mondial)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays et monde
+    temps: décennies
+    vitesse: années (une session par an)
+    taille: macro
+  traces:
+  - source: Liste du patrimoine mondial (whc.unesco.org, données publiques)
+    statut: a_brancher
+- id: patrimoine_en_guerre
+  nom: Patrimoine touché par les guerres
+  organisation: geopolitique
+  elements:
+  - six sites placés sur la Liste du patrimoine mondial en péril en juillet 2026, dont Sébastia (Palestine), les châteaux
+    du Jabal Amel et Tyr (Liban), Chersonèse taurique (Ukraine) (The Art Newspaper, 29 juillet 2026)
+  - destructions de monuments, de musées et de bibliothèques en Ukraine, à Gaza, au Liban, au Soudan
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours
+    taille: méso à macro
+  traces:
+  - source: Liste du patrimoine mondial en péril (UNESCO)
+    statut: a_brancher
+- id: restitutions
+  nom: Restitutions de biens culturels
+  organisation: convention
+  elements:
+  - loi française de 2026 sur la restitution - objets pris entre juin 1815 et avril 1972, sur demande d'un État, après
+    avis d'un comité d'experts commun, par décret ; vote final unanime (The Art Newspaper, 14 avril 2026)
+  niveau:
+    espace: pays (anciennes puissances coloniales et pays d'origine)
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces: *id001
+- id: usages_memoire
+  nom: Usages politiques de la mémoire (lois mémorielles, récits concurrents)
+  organisation: ideologie
+  elements:
+  - lois mémorielles, statues et noms de lieux, manuels scolaires
+  - mémoires concurrentes entre États (guerres, colonisation, génocides)
+  niveau:
+    espace: pays et relations entre États
+    temps: décennies
+    vitesse: mois
+    taille: macro
+  traces: *id001
+relations:
+- de: patrimoine_en_guerre
+  vers: patrimoine
+  effet: '-'
+  delai: jours
+  force: forte
+  coupure: protection d'urgence, trêve
+  statut: a_verifier
+  texte: les combats détruisent le patrimoine ; l'UNESCO réagit par l'inscription en péril
+- de: patrimoine
+  vers: tourisme
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: insécurité ou surfréquentation régulée
+  statut: a_verifier
+  texte: une inscription au patrimoine mondial attire des visiteurs
+- de: usages_memoire
+  vers: histoire_memoire
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les pouvoirs mobilisent l'histoire au service d'un récit (le compartiment cible lit ici la place de la mémoire
+    dans le débat public)
+- de: restitutions
+  vers: usages_memoire
+  effet: '-'
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: une restitution peut apaiser une mémoire coloniale conflictuelle entre deux États
+ponts:
+- depuis: histoire_memoire
+  vers: calendriers-echeances:memoire
+  nature: les dates de mémoire et les anniversaires
+- depuis: usages_memoire
+  vers: humain:symboles
+  nature: les symboles de mémoire comme moteurs d'action
+- depuis: usages_memoire
+  vers: humain:nous_eux
+  nature: les récits concurrents nourrissent la frontière entre groupes
+- depuis: patrimoine_en_guerre
+  vers: russie-ukraine:front
+  nature: le patrimoine ukrainien sous les frappes
+  type: influence
+- depuis: patrimoine_en_guerre
+  vers: guerre-levant:liban
+  nature: le patrimoine libanais en péril (Tyr, châteaux du Jabal Amel)
+  type: influence
+- depuis: tourisme
+  vers: transports-villes:aerien
+  nature: le tourisme international dépend du transport aérien
+- depuis: creation
+  vers: competitions-culture:medias
+  nature: les œuvres, les prix et leur écho médiatique
+- depuis: restitutions
+  vers: afrique-subsaharienne:institutions_regionales
+  nature: les demandes de restitution des États africains
+  type: influence
