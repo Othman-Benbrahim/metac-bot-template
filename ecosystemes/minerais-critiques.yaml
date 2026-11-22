@@ -1,0 +1,204 @@
+# 0.10.425 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 34 : « commence dans l'ordre et comble ce qui manque »).
+# Les minerais critiques n'étaient que mentionnés dans rivalite-sino-americaine (terres_rares), sciences-techniques et
+# dette-emergents (gisements). Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: minerais-critiques
+nom: Minerais et métaux critiques (monde)
+declaration:
+  but: 'comprendre les minerais et métaux dont dépendent l''électrification, le numérique et la défense (cuivre, lithium,
+    cobalt, nickel, graphite, terres rares, uranium) : une production et surtout un raffinage très concentrés, en
+    moyenne 72 % pour le premier raffineur hors terres rares en 2025 (AIE, Global Critical Minerals Outlook 2026), des
+    contrôles à l''exportation devenus une arme commerciale, des prix records pour le cuivre'
+  limites: dedans l'extraction, le raffinage, les contrôles à l'exportation, les prix, l'investissement et la demande de
+    ces minerais ; dehors la rivalité sino-américaine dans son ensemble (rivalite-sino-americaine), la dette des pays
+    producteurs (dette-emergents), les conflits de l'est de la RDC (afrique-subsaharienne), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (AIE, presse spécialisée) ; aucune personne privée
+  date: '2026-11-22'
+  espace: la mine, le pays producteur, le marché mondial
+  temps: du jour (une annonce de contrôle) à la décennie (ouvrir une mine)
+  vitesse: le jour (prix, annonces), le mois (quotas, trêves), la décennie (nouvelles mines)
+  taille: méso (une mine, une fonderie) à macro (le marché mondial)
+compartiments:
+- id: concentration
+  nom: Concentration de l'extraction et du raffinage
+  organisation: economie
+  elements:
+  - part moyenne du premier raffineur passée de 70 % (2023) à 72 % (2025), hors terres rares ; la Chine première pour la
+    plupart des minerais, l'Indonésie pour le nickel (AIE, Global Critical Minerals Outlook 2026)
+  - la Chine fait environ la moitié de la fonte mondiale de cuivre, contre 15 % environ en 2005 (AIE, commentaire de 2026)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: AIE, Critical Minerals Data Explorer (données publiques, CC BY 4.0)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: controles_export
+  nom: Contrôles à l'exportation (terres rares, graphite, matériaux de batteries)
+  organisation: geopolitique
+  elements:
+  - nombre de codes douaniers de minerais soumis aux contrôles chinois triplé depuis 2023 (AIE, 2026)
+  - contrôles chinois sur sept terres rares lourdes en avril 2025, élargis en octobre 2025 ; trêve d'un an conclue à
+    Busan fin octobre 2025 ; suspension prolongée le 9 novembre 2026 jusqu'au 10 janvier 2027 (The National,
+    9 novembre 2026)
+  - quotas d'exportation de cobalt de la RDC après la levée de l'interdiction le 16 octobre 2025 ; quota de 96 600 tonnes
+    pour 2026, cadre jusqu'en 2027 (Benchmark Mineral Intelligence, 22 septembre 2025)
+  acteurs:
+  - nom: ministère chinois du Commerce (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  - nom: ARECOMS (autorité congolaise des substances minérales stratégiques)
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: jours (annonces) à mois
+    taille: macro
+  traces:
+  - *id001
+- id: cuivre
+  nom: Cuivre
+  organisation: mineral
+  elements:
+  - prix au-delà de 12 000 dollars la tonne en décembre 2025, brièvement au-delà de 14 500 en séance en janvier 2026 ;
+    perturbations dans plusieurs grandes mines ; frais de traitement des fonderies fixés à 0 dollar la tonne pour 2026,
+    le plus bas jamais convenu (AIE, commentaire de 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours (prix) à années (mines)
+    taille: macro
+  traces:
+  - source: prix du cuivre (Bourse des métaux de Londres ; séries publiques de la Banque mondiale, « Pink Sheet »)
+    statut: a_brancher
+  - *id001
+- id: batteries
+  nom: Métaux des batteries (lithium, cobalt, nickel, graphite)
+  organisation: mineral
+  elements:
+  - investissement dans les métaux des batteries en baisse de plus de 20 % en 2025 (AIE, 2026)
+  - cobalt de la RDC, nickel d'Indonésie, graphite et raffinage du lithium en Chine
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: prix des métaux (Banque mondiale, « Pink Sheet »)
+    statut: a_brancher
+  - *id001
+- id: terres_rares_uranium
+  nom: Terres rares et uranium
+  organisation: mineral
+  elements:
+  - terres rares lourdes, aimants permanents (moteurs, défense)
+  - les trois premiers pays font près des trois quarts de l'extraction d'uranium et environ 70 % de la conversion et de
+    l'enrichissement (AIE, 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: investissement
+  nom: Investissement et nouvelles mines
+  organisation: economie
+  elements:
+  - investissement dans les minerais critiques en baisse de 9 % en 2025, cuivre en hausse de 8 % (AIE, 2026)
+  - délais longs d'ouverture des mines
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: demande
+  nom: Demande (électrification, numérique et IA, défense)
+  organisation: technique
+  elements:
+  - véhicules électriques, réseaux électriques, centres de données, armements
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: controles_export
+  vers: batteries
+  effet: '-'
+  delai: semaines
+  force: forte
+  coupure: trêve commerciale ou sources de remplacement
+  statut: a_verifier
+  texte: les contrôles à l'exportation réduisent l'offre disponible hors du pays qui contrôle
+- de: concentration
+  vers: controles_export
+  effet: +
+  delai: années
+  force: forte
+  coupure: diversification réussie
+  statut: a_verifier
+  texte: plus l'offre est concentrée, plus un contrôle à l'exportation est efficace comme arme
+- de: demande
+  vers: cuivre
+  effet: +
+  delai: mois
+  force: forte
+  coupure: substitution ou ralentissement
+  statut: a_verifier
+  texte: l'électrification et les centres de données font monter la demande et les prix du cuivre
+- de: cuivre
+  vers: investissement
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: des prix élevés attirent l'investissement minier (le cuivre en hausse de 8 % en 2025)
+- de: investissement
+  vers: concentration
+  effet: '-'
+  delai: décennies
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: de nouvelles mines et raffineries hors des pays dominants réduiraient la concentration, avec des délais très longs
+ponts:
+- depuis: controles_export
+  vers: rivalite-sino-americaine:terres_rares
+  nature: les terres rares dans la rivalité sino-américaine
+- depuis: controles_export
+  vers: rivalite-sino-americaine:commerce
+  nature: contrôles et trêves dans la guerre commerciale
+- depuis: batteries
+  vers: afrique-subsaharienne:ressources
+  nature: le cobalt et le coltan de l'est de la RDC
+- depuis: concentration
+  vers: dette-emergents:gisements
+  nature: les gisements des pays producteurs endettés
+- depuis: demande
+  vers: transports-villes:electrification
+  nature: l'électrification des véhicules, grande consommatrice de métaux
+- depuis: demande
+  vers: sciences-techniques:calcul
+  nature: les centres de données, consommateurs de cuivre
+- depuis: terres_rares_uranium
+  vers: energie-mondiale:nucleaire_civil
+  nature: l'uranium du nucléaire civil
+- depuis: cuivre
+  vers: inflation-mondiale:approvisionnement
+  nature: tensions sur les chaînes d'approvisionnement
