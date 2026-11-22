@@ -1,0 +1,307 @@
+# 0.10.438 — fiche créée le 2026-11-22 (remarque de l'auteur, 6 h 48 : « il manque une catégorie militaire […] elle est
+# sous-entendue au travers des conflits, mais c'est un écosystème à part entière, à relier aux écosystèmes connexes »).
+# Les forces armées comme système en temps de paix comme de guerre : budgets, effectifs, armes nucléaires, industrie,
+# commerce des armes, alliances, technologies, doctrines, bases. Les guerres en cours restent dans leurs fiches (ponts).
+# Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: militaire
+nom: Militaire (forces armées, armements, dépenses, monde)
+declaration:
+  but: 'comprendre l''écosystème militaire mondial pour lui-même : 2 887 milliards de dollars de dépenses militaires en
+    2025, 2,5 % du PIB mondial, le plus haut depuis 2009 (SIPRI, avril 2026) ; 12 187 têtes nucléaires en janvier 2026
+    (SIPRI, juin 2026) ; un commerce des armes en hausse de 9,2 % sur 2021-2025 ; un objectif de l''OTAN à 5 % du PIB en
+    2035'
+  limites: dedans les dépenses, les forces et leurs effectifs, les armes nucléaires (arsenaux), l'industrie de l'armement,
+    le commerce des armes, les alliances et leurs engagements, les technologies militaires, les doctrines, les bases et
+    la projection ; dehors les guerres en cours (russie-ukraine, guerre-levant, soudan, afrique-subsaharienne…), le régime
+    de non-prolifération (non-proliferation), la défense européenne détaillée (securite-europeenne), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (SIPRI, OTAN, presse) ; aucune personne privée
+  date: '2026-11-22'
+  espace: le pays, l'alliance, le monde
+  temps: du jour (un tir d'essai, un exercice) à la décennie (un programme d'armement, une doctrine)
+  vitesse: le jour (incidents), l'année (budgets, livraisons), la décennie (programmes, arsenaux)
+  taille: méso (une base, une unité) à macro (une alliance, le monde)
+compartiments:
+- id: depenses
+  nom: Dépenses militaires
+  organisation: economie
+  elements:
+  - 2 887 milliards de dollars en 2025, +2,9 % en termes réels (après +9,7 % l'année précédente) ; 2,5 % du PIB mondial,
+    le plus haut depuis 2009 ; États-Unis, Chine et Russie font 51 % du total (SIPRI, repris le 28 avril 2026)
+  - Europe +14 %, à 864 milliards ; États-Unis −7,5 %, à 954 milliards, faute de nouvelle aide militaire à l'Ukraine en
+    2025 (même source)
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: base de données du SIPRI sur les dépenses militaires (publique, annuelle)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: forces
+  nom: Forces armées et effectifs (active, réserve, conscription)
+  organisation: statut
+  elements:
+  - armées de terre, de mer, de l'air, forces spéciales
+  - service militaire, réserves, recrutement
+  acteurs:
+  - nom: une armée nationale
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - *id001
+- id: arsenaux_nucleaires
+  nom: Arsenaux nucléaires
+  organisation: atomique
+  elements:
+  - 12 187 têtes en janvier 2026, dont environ 9 745 dans les stocks militaires et 4 012 déployées sur missiles et
+    avions ; Russie et États-Unis en détiennent environ 83 % ; Chine autour de 620 (SIPRI, Annuaire 2026, 8 juin 2026)
+  - modernisation et expansion des arsenaux
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: SIPRI, Annuaire (forces nucléaires mondiales)
+    statut: a_brancher
+- id: industrie_armement
+  nom: Industrie de l'armement
+  organisation: technique
+  elements:
+  - chiffre d'affaires record de 679 milliards de dollars en 2024 pour les 100 premiers groupes (+5,9 %) ; groupes
+    américains 334 milliards (+3,8 %) ; européens 151 milliards (+13 %) ; russes +23 % ; chinois −10 % (SIPRI,
+    1er décembre 2025)
+  acteurs:
+  - nom: un grand groupe d'armement
+    taille: méso
+    espace: monde
+    vitesse: années
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: SIPRI, classement des 100 premiers producteurs d'armes (annuel)
+    statut: a_brancher
+- id: commerce_armes
+  nom: Commerce des armes
+  organisation: economie
+  elements:
+  - transferts internationaux en hausse de 9,2 % sur 2021-2025 par rapport à 2016-2020 ; États-Unis 42 %, France 9,8 %,
+    puis Russie, Allemagne, Chine ; premiers importateurs - Ukraine (9,7 %), Inde, Arabie saoudite, Qatar, Pakistan
+    (SIPRI, mars 2026, repris par The National)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: base de données du SIPRI sur les transferts d'armes (publique)
+    statut: a_brancher
+- id: alliances
+  nom: Alliances et engagements de défense
+  organisation: convention
+  elements:
+  - OTAN, sommet de La Haye (25 juin 2025) - 5 % du PIB en 2035, dont 3,5 % pour la défense au sens strict et 1,5 % pour
+    la sécurité au sens large ; revue en 2029 ; l'Espagne refuse et s'en tient à 2 % (Al Jazeera)
+  - traités de défense bilatéraux, garanties de sécurité
+  acteurs:
+  - nom: OTAN
+    taille: macro
+    espace: alliance
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: alliance
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: technologies
+  nom: Technologies militaires (drones, missiles, IA, espace, cyber)
+  organisation: technique
+  elements:
+  - drones et lutte antidrones, missiles et défense antimissile, IA militaire, satellites, guerre électronique, cyber
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois à années
+    taille: méso à macro
+  traces:
+  - *id001
+- id: doctrines
+  nom: Doctrines, postures et exercices
+  organisation: convention
+  elements:
+  - doctrines d'emploi, postures de dissuasion, niveaux d'alerte, grands exercices
+  niveau:
+    espace: pays et alliance
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: bases_projection
+  nom: Bases à l'étranger et projection de puissance
+  organisation: geopolitique
+  elements:
+  - bases et facilités à l'étranger, groupes aéronavals, déploiements avancés
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: semaines (déploiement) à années
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: alliances
+  vers: depenses
+  effet: +
+  delai: années
+  force: forte
+  coupure: refus national (Espagne) ou crise budgétaire
+  statut: a_verifier
+  texte: les engagements d'alliance (5 % en 2035) tirent les budgets militaires
+- de: depenses
+  vers: industrie_armement
+  effet: +
+  delai: années
+  force: forte
+  coupure: capacités de production saturées
+  statut: a_verifier
+  texte: les budgets se traduisent en commandes et en chiffre d'affaires de l'industrie (Europe +13 % en 2024)
+- de: industrie_armement
+  vers: commerce_armes
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: contrôles à l'exportation, embargos
+  statut: a_verifier
+  texte: une industrie qui produit plus exporte plus
+- de: depenses
+  vers: forces
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: recrutement difficile
+  statut: a_verifier
+  texte: les budgets financent les effectifs, l'entraînement et l'équipement
+- de: technologies
+  vers: doctrines
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inertie des institutions militaires
+  statut: a_verifier
+  texte: les drones et l'IA obligent à revoir les doctrines (le compartiment cible lit ici leur renouvellement)
+- de: arsenaux_nucleaires
+  vers: doctrines
+  effet: +
+  delai: années
+  force: forte
+  coupure: accord de maîtrise des armements
+  statut: a_verifier
+  texte: la croissance des arsenaux durcit les postures de dissuasion
+- de: depenses
+  vers: technologies
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la recherche militaire finance les technologies nouvelles
+- de: bases_projection
+  vers: alliances
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: retrait négocié ou expulsion
+  statut: a_verifier
+  texte: les bases à l'étranger matérialisent les alliances et les garanties
+ponts:
+- depuis: depenses
+  vers: securite-europeenne:budgets_dette
+  nature: les budgets de défense européens et la dette
+- depuis: industrie_armement
+  vers: securite-europeenne:industrie
+  nature: l'industrie de défense européenne
+  type: meme
+- depuis: alliances
+  vers: securite-europeenne:otan_ue
+  nature: l'OTAN et l'Union dans la défense européenne
+- depuis: forces
+  vers: russie-ukraine:capacites
+  nature: les capacités engagées dans la guerre d'Ukraine
+- depuis: commerce_armes
+  vers: russie-ukraine:soutiens
+  nature: l'Ukraine, premier importateur d'armes 2021-2025
+- depuis: commerce_armes
+  vers: guerre-levant:puissances
+  nature: les ventes d'armes aux belligérants du Levant et du Golfe
+- depuis: arsenaux_nucleaires
+  vers: non-proliferation:dissuasion
+  nature: les arsenaux et la dissuasion
+- depuis: arsenaux_nucleaires
+  vers: asie-du-nord-est:coree_du_nord
+  nature: l'arsenal nord-coréen
+- depuis: arsenaux_nucleaires
+  vers: asie-du-sud:inde_pakistan
+  nature: deux arsenaux face à face
+- depuis: bases_projection
+  vers: rivalite-sino-americaine:taiwan
+  nature: la présence militaire autour de Taïwan
+- depuis: depenses
+  vers: asie-du-nord-est:japon
+  nature: le réarmement japonais
+- depuis: forces
+  vers: afrique-subsaharienne:juntes_sahel
+  nature: armées au pouvoir au Sahel
+- depuis: technologies
+  vers: sciences-techniques:course_etats
+  nature: la course technologique militaire
+- depuis: technologies
+  vers: information-cyber:cyber
+  nature: le cyber militaire
+- depuis: technologies
+  vers: soleil-espace:satellites
+  nature: les satellites militaires
+- depuis: industrie_armement
+  vers: minerais-critiques:controles_export
+  nature: l'armement dépend des terres rares et des métaux critiques
+- depuis: industrie_armement
+  vers: economie-entreprises:industrie_manufacturiere
+  nature: l'armement dans l'industrie manufacturière
+- depuis: depenses
+  vers: plancher-social:protection_sociale
+  nature: les budgets militaires contre les dépenses sociales
+- depuis: depenses
+  vers: politique-americaine:budget
+  nature: le budget de la défense américain
+- depuis: commerce_armes
+  vers: corruption:marches_publics
+  nature: les marchés d'armement, terrain de corruption
+- depuis: alliances
+  vers: union-europeenne:defense_ue
+  nature: les instruments de défense de l'Union
+- depuis: bases_projection
+  vers: transport-maritime:securite
+  nature: les marines et la sécurité des routes maritimes
+- depuis: doctrines
+  vers: humain:conventions
+  nature: le tabou nucléaire et les conventions tacites
