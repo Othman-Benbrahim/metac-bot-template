@@ -221,7 +221,7 @@ acteurs:
     role: patron de Tesla et de SpaceX, propriétaire de X ; a dirigé le Département de l'efficacité gouvernementale (2025)
     depuis: '2008-10-01'
     cycle: direction d'entreprise (sans terme fixe)
-    compartiments: [information-cyber:plateformes, economie-entreprises:dirigeants_entreprise, soleil-espace:satellites, medias-diffusion:plateformes_sociales]
+    compartiments: [information-cyber:plateformes, economie-entreprises:dirigeants_entreprise, soleil-espace:satellites, medias-diffusion:plateformes_sociales, reseaux-sociaux:proprietaires_ligne]
     sources:
       - {titre: "1News (Nouvelle-Zélande), Musk prend ses distances avec MAGA après les pertes des élections de mi-mandat (20 novembre 2026)", url: "https://www.1news.co.nz/2026/11/20/musk-backs-away-from-maga-after-midterm-losses-trump-says-hes-still-a-friend/", consulte: "2026-11-22", lecture: lu}
   - id: zuckerberg
@@ -230,7 +230,7 @@ acteurs:
     role: fondateur et patron de Meta (Facebook, Instagram, WhatsApp)
     depuis: '2004-02-04'
     cycle: direction d'entreprise (contrôle des droits de vote)
-    compartiments: [information-cyber:plateformes, sciences-techniques:ia, medias-diffusion:plateformes_sociales]
+    compartiments: [information-cyber:plateformes, sciences-techniques:ia, medias-diffusion:plateformes_sociales, reseaux-sociaux:proprietaires_ligne]
     sources:
       - {titre: "Semafor, How Zuckerberg shaped Trump's AI industry pledge (30 septembre 2026)", url: "https://www.semafor.com/article/09/30/2026/how-zuckerberg-shaped-trumps-ai-industry-pledge", consulte: "2026-11-22", lecture: titre}
   - id: huang
@@ -462,7 +462,7 @@ acteurs:
     role: patron de la coentreprise TikTok USDS (activité américaine de TikTok)
     depuis: '2026-01-22'
     cycle: direction d'entreprise
-    compartiments: [medias-diffusion:plateformes_sociales]
+    compartiments: [medias-diffusion:plateformes_sociales, reseaux-sociaux:plateformes]
     sources:
       - {titre: "Fortune (24 janvier 2026)", url: "https://fortune.com/2026/01/24/tiktok-social-media-us-ceo-adam-presser-shou-zi-chew-oracle-silverlake-trump-politics/", consulte: "2026-11-22", lecture: lu}
   - id: liang_wenfeng
@@ -593,6 +593,17 @@ acteurs:
     compartiments: [sciences-techniques:calcul, minerais-critiques:controles_export]
     sources:
       - {titre: "TechCrunch, le patron d'ASML Christophe Fouquet (5 mai 2026)", url: "https://techcrunch.com/2026/05/05/asml-ceo-christophe-fouquet-no-one-is-coming-for-us", consulte: "2026-11-22", lecture: titre}
+
+  # ------------------------------------------------------------------ réseaux sociaux (remarque de l'auteur, 8 h 54)
+  - id: durov
+    nom: Pavel Durov
+    sorte: patron
+    role: fondateur et patron de Telegram
+    depuis: '2013-08-14'
+    cycle: direction d'entreprise
+    compartiments: [reseaux-sociaux:plateformes]
+    sources:
+      - {titre: "TechCrunch, Pavel Durov dit que Telegram compte un milliard d'utilisateurs (19 mars 2025)", url: "https://techcrunch.com/2025/03/19/telegram-founder-pavel-durov-says-app-now-has-1b-users-calls-whatsapp-a-cheap-watered-down-imitation", consulte: "2026-11-22", lecture: titre}
 
 liens:
   # ------------------------------------------------------------------ hiérarchie et nominations
@@ -833,3 +844,13 @@ liens:
   - {id: i_robin_li, de: robin_li, vers: medias-diffusion:plateformes_sociales, relation: informe, domaine: "recherche en ligne", temps: {statut: conjoncturel, cycle: "direction d'entreprise", phase: "en cours"},
      texte: "Baidu, premier moteur de recherche chinois, intègre l'IA à la recherche.",
      sources: [{titre: "KrASIA, Baidu intègre l'IA à la recherche", url: "https://kr-asia.com/baidu-integrates-ai-into-search-as-rivals-pursue-superapp-ambitions", lecture: titre}]}
+  # ------------------------------------------------------------------ réseaux sociaux
+  - {id: i_durov, de: durov, vers: reseaux-sociaux:plateformes, relation: informe, via: "Telegram (canaux et groupes)", domaine: "information", temps: {statut: conjoncturel, cycle: "direction d'entreprise", phase: "un milliard d'utilisateurs revendiqués en 2025"},
+     texte: "Messagerie et canaux publics, utilisés aussi comme relais de campagnes prorusses.",
+     sources: [{titre: "TechCrunch (19 mars 2025)", url: "https://techcrunch.com/2025/03/19/telegram-founder-pavel-durov-says-app-now-has-1b-users-calls-whatsapp-a-cheap-watered-down-imitation", lecture: titre}]}
+  - {id: g_zuckerberg_moderation, de: zuckerberg, vers: reseaux-sociaux:moderation_regulation, relation: gouverne, via: "Meta (règles de modération)", domaine: "modération", temps: {statut: conjoncturel, cycle: "mandat présidentiel américain", phase: "janvier 2025"},
+     texte: "Fin de la vérification des faits par des partenaires extérieurs aux États-Unis, notes de la communauté, règles assouplies.",
+     sources: [{titre: "NPR (7 janvier 2025)", url: "https://www.npr.org/2025/01/07/nx-s1-5251151/meta-fact-checking-mark-zuckerberg-trump", lecture: lu}]}
+  - {id: d_vdl_musk, de: von_der_leyen, vers: musk, relation: desaccord_public, domaine: "règlement sur les services numériques", temps: {statut: conjoncturel, cycle: "mandat de la Commission", phase: "amende du 5 décembre 2025"},
+     texte: "La Commission inflige à X sa première amende au titre du règlement sur les services numériques (120 millions d'euros).",
+     sources: [{titre: "Commission européenne (5 décembre 2025)", url: "https://digital-strategy.ec.europa.eu/en/news/commission-fines-x-eu120-million-under-digital-services-act", lecture: lu}]}

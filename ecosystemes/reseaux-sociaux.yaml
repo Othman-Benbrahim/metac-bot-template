@@ -1,0 +1,350 @@
+# 0.10.450 — fiche créée le 2026-11-22 (remarque de l'auteur, 8 h 54 : « l'écosystème au sein des réseaux sociaux
+# (Facebook, Instagram, TikTok, LinkedIn, X, Mastodon) avec ses réseaux de connaissance et ses représentants officiels -
+# youtubeurs, influenceurs, personnalités publiques ; l'influence de Facebook, le scandale Cambridge Analytica, et plus
+# récemment un détachement, Elon Musk qui soutenait les républicains ; une question reste en suspens : influence ou
+# désinformation ? À lier aux soulèvements (printemps arabe, gilets jaunes), aux campagnes de désinformation (canaux
+# Telegram prorusses), aux théories du complot ; traiter les réseaux sociaux comme un écosystème virtuel à part
+# entière »). Écosystème gigogne : plateforme ⊃ communauté ⊃ groupe ou bulle ⊃ compte. Personnes nommées seulement dans
+# acteurs-nommes.yaml. Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: reseaux-sociaux
+nom: Réseaux sociaux (un écosystème virtuel à part entière)
+declaration:
+  but: 'traiter les réseaux sociaux comme un écosystème virtuel, avec son biotope (les plateformes et leurs algorithmes),
+    sa biocénose (comptes, créateurs, personnalités, groupes) et ses emboîtements (plateforme, communauté, groupe ou
+    bulle, compte) ; y suivre l''influence et la désinformation - Cambridge Analytica (jusqu''à 87 millions de comptes
+    Facebook, amende de 5 milliards de dollars en 2019), la fin de la vérification des faits par Meta aux États-Unis
+    (janvier 2025), la première amende européenne contre X (120 millions d''euros, décembre 2025), les opérations russes
+    documentées (77 pour Storm-1516, Viginum, 2025) - et leur rôle dans des soulèvements (printemps arabe, gilets jaunes,
+    Népal 2025)'
+  limites: dedans les plateformes, le graphe des relations et l'algorithme, les créateurs, les personnalités qui
+    communiquent par les plateformes, les données et le ciblage, les propriétaires et leur ligne, la modération et la
+    régulation, la désinformation, les théories du complot, les soulèvements, et la question influence ou désinformation ;
+    dehors les plateformes vues comme moyens de diffusion (medias-diffusion), les mécanismes des réseaux humains
+    (reseaux-humains), les mécanismes psychologiques (humain), sauf par les ponts
+  observateur: notre carte, regard extérieur ; sources publiques (régulateurs, Viginum, recherche universitaire, presse) ;
+    personnalités publiques dans leur rôle public seulement ; une campagne de désinformation n'est inscrite que si une
+    autorité, une justice ou une enquête nommée l'établit
+  date: '2026-11-22'
+  espace: le compte, le groupe, la plateforme, le monde
+  temps: de la minute (une publication virale) à la décennie (une plateforme)
+  vitesse: la minute, le jour, l'année
+  taille: micro (un compte) à macro (une plateforme de milliards de comptes)
+compartiments:
+- id: plateformes
+  nom: Plateformes (le biotope virtuel)
+  organisation: technique
+  elements:
+  - Meta (Facebook, Instagram, WhatsApp) - 3,64 milliards de personnes actives par jour en septembre 2026 (Meta) ;
+    TikTok ; YouTube ; LinkedIn (réseau professionnel) ; X ; Telegram - un milliard d'utilisateurs actifs revendiqués en
+    mars 2025 (TechCrunch) ; Mastodon et le fédiverse, réseaux décentralisés sans propriétaire unique
+  acteurs:
+  - nom: une plateforme centralisée
+    taille: macro
+    espace: monde
+    vitesse: minutes
+    organisation: technique
+    facette: collectif
+  - nom: un réseau décentralisé (fédiverse)
+    taille: méso
+    espace: monde
+    vitesse: minutes
+    organisation: technique
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: minutes
+    taille: macro
+  traces:
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: graphe_algorithme
+  nom: Graphe des relations et algorithme (qui voit quoi)
+  organisation: societe
+  elements:
+  - amis, abonnés, groupes ; l'algorithme choisit ce qui s'affiche
+  - janvier 2018, Facebook favorise les publications des amis et des groupes ; chez des membres de groupes de gilets
+    jaunes, environ 80 % du fil venait de ces groupes, classés par réactions (Fondation Jean-Jaurès, janvier 2019,
+    analyse des auteurs)
+  niveau:
+    espace: monde
+    temps: mois
+    vitesse: minutes
+    taille: micro à macro
+  traces:
+  - *id001
+- id: createurs
+  nom: Créateurs, youtubeurs, influenceurs
+  organisation: societe
+  elements:
+  - représentants officiels de l'écosystème, rémunérés par l'audience, les marques ou les dons
+  - France - loi du 9 juin 2023 encadrant l'influence commerciale (vie-publique.fr)
+  niveau:
+    espace: langues et pays
+    temps: mois
+    vitesse: heures
+    taille: micro à méso
+  traces:
+  - *id001
+- id: personnalites
+  nom: Personnalités publiques qui communiquent par les plateformes
+  organisation: statut
+  elements:
+  - dirigeants, élus, patrons, célébrités qui s'adressent directement à leurs abonnés, sans passer par la presse (voir le
+    réseau des acteurs nommés)
+  niveau:
+    espace: pays et monde
+    temps: mandats
+    vitesse: heures
+    taille: micro
+  traces:
+  - *id001
+- id: donnees_ciblage
+  nom: Données personnelles et ciblage
+  organisation: economie
+  elements:
+  - Cambridge Analytica - données de jusqu'à 87 millions d'utilisateurs de Facebook recueillies sans leur accord ; amende
+    record de 5 milliards de dollars infligée à Facebook par la FTC (juillet 2019, PBS)
+  - microciblage publicitaire et politique
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+- id: proprietaires_ligne
+  nom: Propriétaires et ligne des plateformes
+  organisation: ideologie
+  elements:
+  - rachat de Twitter par Elon Musk (2022), devenu X ; plus de 400 millions de dollars de Musk pour des républicains aux
+    élections de mi-mandat de 2026, puis prise de distance avec « MAGA » (1News, 20 novembre 2026)
+  - Meta met fin à la vérification des faits par des partenaires extérieurs aux États-Unis et adopte des notes de la
+    communauté, sur le modèle de X (7 janvier 2025, NPR)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: moderation_regulation
+  nom: Modération, régulation, coupures
+  organisation: convention
+  elements:
+  - Union européenne, règlement sur les services numériques - première amende, 120 millions d'euros contre X (badge bleu
+    trompeur, registre publicitaire incomplet, accès des chercheurs entravé), 5 décembre 2025 (Commission européenne)
+  - Népal - blocage de 26 plateformes le 4 septembre 2025, déclencheur d'un soulèvement (Carnegie)
+  niveau:
+    espace: pays et Union
+    temps: mois
+    vitesse: jours
+    taille: macro
+  traces:
+  - source: Commission européenne, décisions au titre du règlement sur les services numériques
+    statut: a_brancher
+- id: desinformation
+  nom: Campagnes de désinformation (établies)
+  organisation: geopolitique
+  elements:
+  - Storm-1516, mode opératoire informationnel russe - 77 opérations documentées jusqu'au 5 mars 2025, visant notamment
+    le public français ; ingérence numérique étrangère selon Viginum (SGDSN, 17 juin 2025)
+  - autres opérations russes documentées (Doppelgänger) ; canaux Telegram prorusses comme relais
+  niveau:
+    espace: pays et monde
+    temps: mois
+    vitesse: heures
+    taille: méso à macro
+  traces:
+  - source: Viginum (SGDSN), rapports publics sur les modes opératoires informationnels
+    statut: a_brancher
+- id: complot
+  nom: Théories du complot
+  organisation: ideologie
+  elements:
+  - récits qui expliquent les événements par un plan caché ; ils circulent mieux dans les groupes fermés
+  niveau:
+    espace: langues et pays
+    temps: années
+    vitesse: jours
+    taille: micro à macro
+  traces:
+  - *id001
+- id: soulevements
+  nom: Soulèvements organisés en ligne
+  organisation: societe
+  elements:
+  - printemps arabe - la semaine avant la démission de Moubarak, les tweets quotidiens sur le changement politique en
+    Égypte passent d'environ 2 300 à 230 000 (Howard et al., université de Washington, 2011)
+  - gilets jaunes - pétition en ligne de mai 2018, grands groupes Facebook créés la semaine du 12 octobre 2018 ; le
+    17 novembre, environ 287 700 manifestants et 2,7 millions de membres d'un groupe qui les comptait (Fondation
+    Jean-Jaurès)
+  - Népal - après le blocage des plateformes, manifestations des 8-10 septembre 2025, 74 morts, démission du Premier
+    ministre ; 7 586 jeunes votent sur Discord pour désigner la Première ministre intérimaire (Carnegie)
+  niveau:
+    espace: pays
+    temps: semaines
+    vitesse: heures
+    taille: macro
+  traces:
+  - *id001
+- id: influence_ou_desinformation
+  nom: Influence ou désinformation ? (la question ouverte)
+  organisation: convention
+  elements:
+  - le même outil sert à convaincre et à tromper ; critères pour trancher - le contenu est-il vrai ? l'émetteur est-il
+    transparent ? y a-t-il coordination de faux comptes ? y a-t-il intention de nuire ?
+  - les plateformes parlent de « comportement inauthentique coordonné » ; l'Union européenne d'« ingérence étrangère »
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: plateformes
+  vers: graphe_algorithme
+  effet: +
+  delai: mois
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: chaque plateforme règle son algorithme, qui fait le fil de chacun
+- de: graphe_algorithme
+  vers: createurs
+  effet: +
+  delai: mois
+  force: forte
+  coupure: changement d'algorithme
+  statut: a_verifier
+  texte: l'algorithme distribue l'audience aux créateurs
+- de: graphe_algorithme
+  vers: soulevements
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: blocage, modération
+  statut: a_verifier
+  texte: les groupes rapprochent des inconnus qui partagent une colère et coordonnent l'action
+- de: donnees_ciblage
+  vers: personnalites
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: protection des données (RGPD)
+  statut: a_verifier
+  texte: le ciblage permet d'adresser à chaque public le message qui le touche
+- de: proprietaires_ligne
+  vers: moderation_regulation
+  effet: '-'
+  delai: mois
+  force: forte
+  coupure: régulateur (règlement européen)
+  statut: a_verifier
+  texte: un propriétaire peut alléger la modération (fin de la vérification des faits chez Meta, choix de X)
+- de: moderation_regulation
+  vers: desinformation
+  effet: '-'
+  delai: semaines
+  force: moyenne
+  coupure: contournement par de nouveaux comptes et canaux
+  statut: a_verifier
+  texte: retirer les réseaux de faux comptes freine les campagnes
+- de: desinformation
+  vers: complot
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les campagnes reprennent et nourrissent les récits complotistes
+- de: moderation_regulation
+  vers: soulevements
+  effet: +
+  delai: jours
+  force: moyenne
+  coupure: régime capable de couper durablement
+  statut: a_verifier
+  texte: bloquer les plateformes peut déclencher la révolte qu'il voulait éviter (Népal, 2025)
+- de: createurs
+  vers: influence_ou_desinformation
+  effet: +
+  delai: semaines
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: les créateurs sont au cœur de la question - influence assumée, publicité cachée ou relais de fausses nouvelles
+- de: complot
+  vers: soulevements
+  effet: +
+  delai: mois
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: la défiance complotiste nourrit parfois les mobilisations
+ponts:
+- depuis: plateformes
+  vers: medias-diffusion:plateformes_sociales
+  nature: les mêmes plateformes, vues comme moyens de diffusion
+  type: meme
+- depuis: createurs
+  vers: medias-diffusion:createurs
+  nature: les mêmes créateurs, vus comme moyens de diffusion
+  type: meme
+- depuis: graphe_algorithme
+  vers: humain:amplification_algorithmique
+  nature: l'algorithme amplifie certains contenus
+- depuis: graphe_algorithme
+  vers: reseaux-humains:cascades
+  nature: les cascades d'influence passent par le graphe
+- depuis: graphe_algorithme
+  vers: reseaux-humains:reseaux_numeriques
+  nature: les réseaux numériques, vus depuis les mécanismes humains
+  type: voisinage
+- depuis: complot
+  vers: humain:croyance_complot
+  nature: la croyance au complot, vue depuis l'humain
+  type: meme
+- depuis: complot
+  vers: epidemies:comportements
+  nature: défiance vaccinale et refus des mesures sanitaires
+- depuis: desinformation
+  vers: information-cyber:recits
+  nature: les campagnes fabriquent des récits
+- depuis: desinformation
+  vers: russie-ukraine:opinions
+  nature: les opérations russes visent l'opinion européenne sur la guerre
+- depuis: desinformation
+  vers: politique-interieure:elections
+  nature: les campagnes ciblent les élections
+- depuis: moderation_regulation
+  vers: information-cyber:censure
+  nature: modération et censure
+  type: voisinage
+- depuis: moderation_regulation
+  vers: union-europeenne:politiques_communes
+  nature: le règlement européen sur les services numériques
+  type: voisinage
+- depuis: soulevements
+  vers: politique-interieure:contestation
+  nature: la contestation organisée en ligne
+  type: voisinage
+- depuis: soulevements
+  vers: humain:passage_acte
+  nature: de l'écran à la rue
+- depuis: donnees_ciblage
+  vers: politique-interieure:elections
+  nature: le ciblage des électeurs
+- depuis: personnalites
+  vers: dirigeants-elus:popularite
+  nature: la communication directe et la popularité
+- depuis: proprietaires_ligne
+  vers: medias-diffusion:proprietaires
+  nature: les propriétaires des plateformes parmi les propriétaires des médias
+  type: voisinage
+- depuis: influence_ou_desinformation
+  vers: observateur-mesure:biais
+  nature: notre propre difficulté à trancher entre influence et désinformation
+  type: voisinage
