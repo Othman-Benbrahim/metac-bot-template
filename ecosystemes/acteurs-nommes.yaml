@@ -547,6 +547,53 @@ acteurs:
     sources:
       - {titre: "Journal du Net, Altice Media (BFM et RMC) passe chez CMA CGM", url: "https://www.journaldunet.com/business/1531475-rachat-officiel-d-altice-media-bfm-et-rmc-par-cma-cgm/", consulte: "2026-11-22", lecture: titre}
 
+  # ------------------------------------------------------------------ complément IA (accord de l'auteur, 8 h 30)
+  - id: ren_zhengfei
+    nom: Ren Zhengfei
+    sorte: patron
+    role: fondateur de Huawei (puces d'IA Ascend)
+    depuis: '1987-09-15'
+    cycle: fondateur (présidence tournante de l'entreprise)
+    compartiments: [medias-diffusion:geants_mango, rivalite-sino-americaine:technologie]
+    sources:
+      - {titre: "Caixin, Ren (Huawei) minimise la pénurie de puces et vante l'IA industrielle (6 décembre 2025)", url: "https://www.caixinglobal.com/2025-12-06/huaweis-ren-downplays-chip-shortage-touts-ai-for-industrial-value-102390385.html", consulte: "2026-11-22", lecture: titre}
+  - id: robin_li
+    nom: Robin Li (Li Yanhong)
+    sorte: patron
+    role: cofondateur et patron de Baidu (recherche, modèles Ernie)
+    depuis: '2000-01-18'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, medias-diffusion:plateformes_sociales]
+    sources:
+      - {titre: "DealStreetAsia, le patron de Baidu promet de ramener Ernie à la frontière de l'IA", url: "https://cdn.dealstreetasia.com/stories/baidu-ernie-revenue-miss-492524/", consulte: "2026-11-22", lecture: titre}
+  - id: yang_zhilin
+    nom: Yang Zhilin
+    sorte: patron
+    role: fondateur et patron de Moonshot AI (modèles Kimi)
+    depuis: '2023-03-01'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, rivalite-sino-americaine:technologie]
+    sources:
+      - {titre: "The National, qui est Yang Zhilin, fondateur de Moonshot (17 juillet 2026)", url: "https://www.thenationalnews.com/future/technology/2026/07/17/who-is-zhilin-yang-kimi-moonshot-cmu/", consulte: "2026-11-22", lecture: titre}
+  - id: nadella
+    nom: Satya Nadella
+    sorte: patron
+    role: patron de Microsoft
+    depuis: '2014-02-04'
+    cycle: direction d'entreprise
+    compartiments: [medias-diffusion:geants_mango, sciences-techniques:ia]
+    sources:
+      - {titre: "TechCrunch, Satya Nadella se dit prêt à exploiter le nouvel accord avec OpenAI (29 avril 2026)", url: "https://techcrunch.com/2026/04/29/satya-nadella-says-hes-ready-to-exploit-the-new-openai-deal/", consulte: "2026-11-22", lecture: titre}
+  - id: fouquet
+    nom: Christophe Fouquet
+    sorte: patron
+    role: patron d'ASML (Pays-Bas), seul fabricant des machines de lithographie EUV, premier actionnaire de Mistral AI
+    depuis: '2024-04-24'
+    cycle: direction d'entreprise
+    compartiments: [sciences-techniques:calcul, minerais-critiques:controles_export]
+    sources:
+      - {titre: "TechCrunch, le patron d'ASML Christophe Fouquet (5 mai 2026)", url: "https://techcrunch.com/2026/05/05/asml-ceo-christophe-fouquet-no-one-is-coming-for-us", consulte: "2026-11-22", lecture: titre}
+
 liens:
   # ------------------------------------------------------------------ hiérarchie et nominations
   - {id: n_trump_warsh, de: trump, vers: warsh, relation: nomme, domaine: politique monétaire, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2026 (prestation de serment le 22 mai)"},
@@ -770,3 +817,19 @@ liens:
   - {id: i_saade, de: saade, vers: medias-diffusion:television, relation: informe, via: "BFMTV, RMC, La Provence, La Tribune, Brut", domaine: "information", temps: {statut: conjoncturel, cycle: "propriété de médias", phase: "depuis 2024 pour BFMTV et RMC"},
      texte: "Rachat d'Altice Media (BFMTV, RMC) à Patrick Drahi, après La Provence, La Tribune et Brut.",
      sources: [{titre: "Journal du Net", url: "https://www.journaldunet.com/business/1531475-rachat-officiel-d-altice-media-bfm-et-rmc-par-cma-cgm/", lecture: titre}]}
+  # ------------------------------------------------------------------ complément IA
+  - {id: r_ren_huang, de: ren_zhengfei, vers: huang, relation: rival, domaine: "puces d'IA", temps: {statut: conjoncturel, cycle: "guerre technologique sino-américaine", phase: "septembre 2026"},
+     texte: "Huawei dévoile de nouvelles technologies de puces et accélère la course face à Nvidia.",
+     sources: [{titre: "AP via KSAT (17 septembre 2026)", url: "https://www.ksat.com/business/2026/09/17/huawei-unveils-new-chip-technologies-as-chinese-firm-steps-up-the-ai-race-with-nvidia/", lecture: titre}]}
+  - {id: r_yang_altman, de: yang_zhilin, vers: altman, relation: rival, domaine: "modèles d'IA de pointe", temps: {statut: conjoncturel, cycle: "course à l'IA", phase: "Kimi K3, juillet 2026"},
+     texte: "Moonshot présente Kimi K3, plus grand modèle ouvert du monde selon l'entreprise, qui se rapproche des rivaux américains.",
+     sources: [{titre: "Dawn (Reuters), Kimi K3", url: "https://www.dawn.com/news/2016173", lecture: titre}]}
+  - {id: s_nadella_altman, de: nadella, vers: altman, relation: associe, domaine: "OpenAI", temps: {statut: conjoncturel, cycle: "accord Microsoft-OpenAI", phase: "nouvel accord de 2025-2026"},
+     texte: "Microsoft, principal partenaire et actionnaire d'OpenAI après sa restructuration, renégocie les termes de leur alliance.",
+     sources: [{titre: "TechCrunch (29 avril 2026)", url: "https://techcrunch.com/2026/04/29/satya-nadella-says-hes-ready-to-exploit-the-new-openai-deal/", lecture: titre}]}
+  - {id: s_fouquet_mensch, de: fouquet, vers: mensch, relation: associe, domaine: "IA européenne", temps: {statut: conjoncturel, cycle: "financement de Mistral AI", phase: "depuis septembre 2025"},
+     texte: "ASML a mené la levée de fonds de Mistral AI et en est devenu le premier actionnaire.",
+     sources: [{titre: "Exclusive-ASML becomes Mistral AI's top shareholder", url: "https://www.aol.com/news/exclusive-asml-becomes-mistral-ai-155415870.html", lecture: titre}]}
+  - {id: i_robin_li, de: robin_li, vers: medias-diffusion:plateformes_sociales, relation: informe, domaine: "recherche en ligne", temps: {statut: conjoncturel, cycle: "direction d'entreprise", phase: "en cours"},
+     texte: "Baidu, premier moteur de recherche chinois, intègre l'IA à la recherche.",
+     sources: [{titre: "KrASIA, Baidu intègre l'IA à la recherche", url: "https://kr-asia.com/baidu-integrates-ai-into-search-as-rivals-pursue-superapp-ambitions", lecture: titre}]}
