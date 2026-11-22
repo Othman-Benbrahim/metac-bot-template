@@ -109,7 +109,7 @@ def principal(a) -> int:
         texte = " ; ".join([titre] + noms_gkg(r["personnes"]) + noms_gkg(r["organisations"])
                            + noms_gkg(r["lieux"], lieux=True))
         src = (r["source"] or "?").lower()
-        s = compter.situation(texte, emetteurs.get(src, {}).get("langue1", ""), termes, [], acteurs, niveaux)
+        s = compter.situation(texte, emetteurs.get(src, {}).get("langue1", ""), termes, [], acteurs, niveaux, src)
         if s is None:
             continue
         n_sit += 1
@@ -118,9 +118,8 @@ def principal(a) -> int:
         comps.update(c["compartiment"] for c in s["compartiments"])
         acts.update(x["acteur"] for x in s["acteurs"])
         esp.update(s["espace"])
-        cs = {c["compartiment"] for c in s["compartiments"]}
         for x in regles:
-            if cs & set(x["compartiments"]) and realiser.compatible(s["espace"], x["perimetre"], continent_de):
+            if realiser.realise(s, x, continent_de):
                 k = f'{noms[x["de"]]} [{x["regle"]}]'
                 types[k] += 1
                 sources_type.setdefault(k, Counter())[src] += 1

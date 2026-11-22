@@ -43,6 +43,7 @@ def graphe(regles: list[dict]) -> dict:
                        "ecosysteme": r.get("ecosysteme"), "echelle": r.get("echelle"),
                        "perimetre": r.get("perimetre") or [], "compartiments": r.get("compartiments") or [],
                        "parametres": r.get("parametres") or {}, "statut": r.get("statut"),
+                       "indices": r.get("indices") or [],
                        "sources": [x.get("url") for x in r.get("sources") or [] if isinstance(x, dict)]})
         if not r.get("compartiments"):
             manques.append({"regle": r["id"], "manque": "aucun compartiment : la situation ne peut pas être "
