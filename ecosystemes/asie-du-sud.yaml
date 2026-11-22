@@ -1,0 +1,219 @@
+# 0.10.423 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 34 : « commence dans l'ordre et comble ce qui manque »,
+# régions absentes). Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources. Acteurs publics dans leur rôle
+# public seulement.
+theme: asie-du-sud
+nom: Asie du Sud (Inde, Pakistan, Afghanistan, Bangladesh)
+declaration:
+  but: 'comprendre les rivalités et les équilibres de l''Asie du Sud : deux puissances nucléaires en conflit ouvert en mai
+    2025 (Inde et Pakistan), un front ouvert entre le Pakistan et l''Afghanistan des talibans depuis février 2026, le
+    traité des eaux de l''Indus suspendu en partie par l''Inde, l''Inde première croissance des grandes économies,
+    l''alternance au Bangladesh'
+  limites: dedans l'Inde, le Pakistan, l'Afghanistan, le Bangladesh, leurs conflits, leurs eaux partagées, leurs
+    puissances alliées vues depuis la région ; dehors la dissuasion vue comme régime mondial (non-proliferation), la Chine
+    vue de l'intérieur (economie-chinoise), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (USIP, presse, Long War Journal, statistiques officielles)
+    ; aucune personne privée
+  date: '2026-11-22'
+  espace: le pays, la frontière, la région
+  temps: du jour (une frappe, un attentat) à la décennie (Cachemire, nappes, croissance)
+  vitesse: le jour (frappes, accrochages), le mois (cessez-le-feu, élections), l'année (croissance, eaux)
+  taille: micro (un poste-frontière) à macro (la région)
+compartiments:
+- id: inde_pakistan
+  nom: Inde et Pakistan (Cachemire, crises militaires)
+  organisation: geopolitique
+  elements:
+  - attentat près de Pahalgam (Cachemire sous administration indienne) le 22 avril 2025, 26 morts ; frappes indiennes
+    (opération Sindoor) début mai 2025, échanges de drones, missiles et artillerie ; cessez-le-feu annoncé le 10 mai 2025,
+    jugé fragile (USIP)
+  - deux États dotés de l'arme nucléaire (même source)
+  acteurs:
+  - nom: gouvernement de l'Inde (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  - nom: armée pakistanaise (statut)
+    taille: macro
+    espace: pays
+    vitesse: jours
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: frontière et région
+    temps: décennies
+    vitesse: jours
+    taille: macro
+  traces:
+  - source: ACLED (événements de violence politique ; usage selon conditions, clé personnelle)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: indus
+  nom: Eaux de l'Indus (traité de 1960)
+  organisation: eau
+  elements:
+  - traité des eaux de l'Indus suspendu en partie par l'Inde après l'attentat d'avril 2025 (USIP)
+  - barrages, débits, saisons de mousson et de fonte
+  niveau:
+    espace: bassin
+    temps: années
+    vitesse: saisons
+    taille: macro
+  traces:
+  - *id001
+- id: afghanistan_pakistan
+  nom: Pakistan et Afghanistan des talibans (TTP, frontière)
+  organisation: geopolitique
+  elements:
+  - accrochages de fin février 2026, « guerre ouverte » déclarée par le ministre pakistanais de la Défense ; attentat
+    revendiqué par une alliance issue du TTP le 18 septembre 2026 (31 morts) ; échanges de tirs répétés en octobre 2026,
+    aucun cessez-le-feu signalé (Long War Journal, octobre 2026)
+  - points de passage fermés depuis plus d'un an, commerce bilatéral en baisse de 95 % sur l'exercice 2026 (même source,
+    d'après l'autorité pakistanaise du commerce)
+  acteurs:
+  - nom: gouvernement taliban d'Afghanistan (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  - nom: TTP (Tehrik-e-Taliban Pakistan)
+    taille: méso
+    espace: région
+    vitesse: jours
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: frontière
+    temps: années
+    vitesse: jours
+    taille: méso à macro
+  traces:
+  - source: ACLED (événements de violence politique)
+    statut: a_brancher
+  - *id001
+- id: inde_puissance
+  nom: Inde, puissance économique et diplomatique
+  organisation: economie
+  elements:
+  - croissance de 7,7 % sur l'exercice 2025-26 (ministère indien de la Statistique, repris le 7 juin 2026) ; sixième
+    économie du monde en PIB nominal (estimations du FMI)
+  - partenariats avec les États-Unis, la Russie, le Golfe
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: trimestres
+    taille: macro
+  traces:
+  - source: ministère indien de la Statistique (MoSPI), comptes trimestriels
+    statut: a_brancher
+  - *id001
+- id: pakistan_interieur
+  nom: Pakistan, pouvoir et économie
+  organisation: statut
+  elements:
+  - place centrale de l'armée
+  - programmes du FMI, dette extérieure
+  - insurrections au Khyber Pakhtunkhwa et au Baloutchistan
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: bangladesh
+  nom: Bangladesh après le soulèvement de 2024
+  organisation: societe
+  elements:
+  - élections du 12 février 2026, l'alliance du BNP obtient 212 des 297 sièges proclamés, l'alliance de la Jamaat 77 ;
+    Ligue Awami exclue du scrutin ; participation de 59,88 % (Al Jazeera, 13 février 2026)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: puissances
+  nom: Puissances extérieures (Chine, États-Unis, Russie, Golfe)
+  organisation: geopolitique
+  elements:
+  - partenariat Chine-Pakistan (armement, corridor économique)
+  - États-Unis médiateurs dans les crises indo-pakistanaises
+  - Russie fournisseur de l'Inde
+  niveau:
+    espace: région
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: inde_pakistan
+  vers: indus
+  effet: '-'
+  delai: semaines
+  force: forte
+  coupure: reprise du traité
+  statut: a_verifier
+  texte: une crise militaire fragilise le partage des eaux (suspension partielle du traité en 2025 ; le compartiment cible
+    lit ici la coopération sur l'eau)
+- de: afghanistan_pakistan
+  vers: pakistan_interieur
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les attentats et les combats à la frontière pèsent sur la sécurité et l'économie du Pakistan
+- de: inde_pakistan
+  vers: pakistan_interieur
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: une crise avec l'Inde renforce la place de l'armée au Pakistan (effet de ralliement)
+- de: puissances
+  vers: inde_pakistan
+  effet: '-'
+  delai: jours
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: la pression extérieure, surtout américaine, aide à arrêter les échanges de tirs (le compartiment cible lit ici
+    l'intensité de la crise)
+- de: inde_pakistan
+  vers: inde_puissance
+  effet: '-'
+  delai: mois
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: une crise militaire pèse peu et brièvement sur l'économie indienne
+ponts:
+- depuis: inde_pakistan
+  vers: non-proliferation:dissuasion
+  nature: deux puissances nucléaires face à face
+- depuis: indus
+  vers: eau-douce-potable:tensions
+  nature: l'eau comme enjeu de tension entre États
+- depuis: indus
+  vers: climat-extremes:secheresses
+  nature: mousson, fonte et sécheresses sur le bassin
+- depuis: puissances
+  vers: rivalite-sino-americaine:alliances
+  nature: la région dans la rivalité sino-américaine
+- depuis: afghanistan_pakistan
+  vers: securite-publique:trafics
+  nature: trafics à travers la frontière
+- depuis: pakistan_interieur
+  vers: dette-emergents:fmi
+  nature: le Pakistan sous programme du FMI
+- depuis: bangladesh
+  vers: politique-interieure:regime
+  nature: alternance et exclusion d'un parti
