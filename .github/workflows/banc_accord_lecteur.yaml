@@ -1,0 +1,61 @@
+name: "Banc accord du lecteur"
+
+# 0.10.427 : stabilité (gpt-5-mini deux fois) et accord entre modèles (Haiku) des sept notes de la matriochka M,
+# sur dossiers complets et recherche gelée. Descriptif. preenregistrements/accord-lecteur.md
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "nombre de questions"
+        default: "60"
+      budget:
+        description: "plafond Azure (gpt-5-mini) en dollars"
+        default: "3"
+      budget_bedrock:
+        description: "plafond Bedrock (Haiku, crédits) en dollars"
+        default: "1"
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  accord:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Recherche gelée
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/recherche-jugement
+          key: recherche-jugement-${{ github.run_id }}
+          restore-keys: recherche-jugement-
+      - name: "Accord du lecteur"
+        run: uv run python -u banc_accord_lecteur.py --n "${{ github.event.inputs.n || '60' }}" --budget "${{ github.event.inputs.budget || '3' }}" --budget-bedrock "${{ github.event.inputs.budget_bedrock || '1' }}"
+        env:
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/banc-accord-lecteur.jsonl registre/banc-accord-lecteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : banc d'accord du lecteur du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
