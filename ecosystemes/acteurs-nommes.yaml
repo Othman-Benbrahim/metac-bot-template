@@ -148,7 +148,7 @@ acteurs:
     role: Guide suprême de l'Iran
     depuis: '2026-03-09'
     cycle: fonction à vie (désigné par l'Assemblée des experts après la mort d'Ali Khamenei, tué le 28 février 2026)
-    compartiments: [iran-nucleaire:pouvoir_iranien, guerre-levant:iran]
+    compartiments: [iran-nucleaire:pouvoir_iranien, guerre-levant:iran, croyances-religions:religion_politique]
     sources:
       - {titre: "Al Jazeera, Iran authorities support continuity with backing for Mojtaba Khamenei (9 mars 2026)", url: "https://www.aljazeera.com/news/2026/3/9/irans-authorities-showcase-continuity-as-they-back-new-leader-during-war", consulte: "2026-11-22", lecture: lu}
   - id: pezeshkian
@@ -605,6 +605,44 @@ acteurs:
     sources:
       - {titre: "TechCrunch, Pavel Durov dit que Telegram compte un milliard d'utilisateurs (19 mars 2025)", url: "https://techcrunch.com/2025/03/19/telegram-founder-pavel-durov-says-app-now-has-1b-users-calls-whatsapp-a-cheap-watered-down-imitation", consulte: "2026-11-22", lecture: titre}
 
+  # ------------------------------------------------------------------ personnalités religieuses (remarque de l'auteur, 9 h 04)
+  - id: leon_xiv
+    nom: Léon XIV (Robert Francis Prevost)
+    sorte: religieux
+    role: pape, chef de l'Église catholique et souverain de l'État de la Cité du Vatican
+    depuis: '2025-05-08'
+    cycle: pontificat (à vie, renonciation possible)
+    compartiments: [croyances-religions:christianisme, croyances-religions:religion_politique]
+    sources:
+      - {titre: "Vatican News, conférence de presse au retour du voyage en Uruguay, Argentine et Pérou (17 novembre 2026)", url: "https://www.vaticannews.va/en/pope/news/2026-11/pope-leo-xiv-press-conference-latin-america-journey.html", consulte: "2026-11-22", lecture: lu}
+  - id: dalai_lama
+    nom: Tenzin Gyatso, 14e dalaï-lama
+    sorte: religieux
+    role: chef spirituel du bouddhisme tibétain
+    depuis: '1940-02-22'
+    cycle: fonction à vie, succession par réincarnation
+    compartiments: [croyances-religions:bouddhisme, croyances-religions:religion_politique]
+    sources:
+      - {titre: "Business Today, la Chine revendique à nouveau le choix du prochain dalaï-lama (9 juillet 2026)", url: "https://www.businesstoday.in/world/story/china-again-claims-right-to-choose-next-dalai-lama-why-tibetan-buddhists-object-542100-2026-07-09", consulte: "2026-11-22", lecture: lu}
+  - id: kirill
+    nom: Kirill
+    sorte: religieux
+    role: patriarche de Moscou et de toute la Russie (Église orthodoxe russe)
+    depuis: '2009-02-01'
+    cycle: fonction à vie
+    compartiments: [croyances-religions:christianisme, croyances-religions:religion_politique]
+    sources:
+      - {titre: "Church Times, déclarations du patriarche Kirill (6 mars 2026)", url: "https://www.churchtimes.co.uk/articles/2026/13-march/news/world/russian-orthodox-leader-calls-on-russia-to-go-further-in-war-with-ukraine", consulte: "2026-11-22", lecture: lu}
+  - id: bartholomee
+    nom: Bartholomée Ier
+    sorte: religieux
+    role: patriarche œcuménique de Constantinople
+    depuis: '1991-11-02'
+    cycle: fonction à vie
+    compartiments: [croyances-religions:christianisme]
+    sources:
+      - {titre: "Le patriarche œcuménique soutient la souveraineté de l'Ukraine (messe des trois ans de guerre)", url: "https://www.yahoo.com/news/ecumenical-orthodox-patriarch-backs-ukraines-144802229.html", consulte: "2026-11-22", lecture: titre}
+
 liens:
   # ------------------------------------------------------------------ hiérarchie et nominations
   - {id: n_trump_warsh, de: trump, vers: warsh, relation: nomme, domaine: politique monétaire, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2026 (prestation de serment le 22 mai)"},
@@ -854,3 +892,22 @@ liens:
   - {id: d_vdl_musk, de: von_der_leyen, vers: musk, relation: desaccord_public, domaine: "règlement sur les services numériques", temps: {statut: conjoncturel, cycle: "mandat de la Commission", phase: "amende du 5 décembre 2025"},
      texte: "La Commission inflige à X sa première amende au titre du règlement sur les services numériques (120 millions d'euros).",
      sources: [{titre: "Commission européenne (5 décembre 2025)", url: "https://digital-strategy.ec.europa.eu/en/news/commission-fines-x-eu120-million-under-digital-services-act", lecture: lu}]}
+  # ------------------------------------------------------------------ personnalités religieuses
+  - {id: a_kirill_poutine, de: kirill, vers: poutine, relation: allie, domaine: "guerre en Ukraine", temps: {statut: conjoncturel, cycle: "guerre en Ukraine", phase: "2022-2026"},
+     texte: "Le patriarche soutient l'effort de guerre russe et salue les opérations militaires.",
+     sources: [{titre: "Church Times, Kirill salue les raids « audacieux » de Poutine en Ukraine (avril 2026)", url: "https://www.churchtimes.co.uk/articles/2026/2-april/news/world/patriarch-kirill-praises-putin-s-daring-ukraine-raids", lecture: titre}]}
+  - {id: a_bartholomee_zelensky, de: bartholomee, vers: zelensky, relation: allie, domaine: "souveraineté de l'Ukraine", temps: {statut: conjoncturel, cycle: "guerre en Ukraine", phase: "depuis 2022"},
+     texte: "Le patriarche œcuménique soutient la souveraineté de l'Ukraine.",
+     sources: [{titre: "Le patriarche œcuménique soutient la souveraineté de l'Ukraine", url: "https://www.yahoo.com/news/ecumenical-orthodox-patriarch-backs-ukraines-144802229.html", lecture: titre}]}
+  - {id: r_bartholomee_kirill, de: bartholomee, vers: kirill, relation: rival, domaine: "autorité sur l'orthodoxie ukrainienne", temps: {statut: conjoncturel, cycle: "rupture entre Moscou et Constantinople", phase: "depuis 2018"},
+     texte: "Moscou a rompu la communion avec Constantinople après la reconnaissance d'une Église orthodoxe d'Ukraine indépendante.",
+     sources: [{titre: "RUSI, l'autre front de Moscou - pourquoi les Églises d'Ukraine sont un enjeu de sécurité", url: "https://www.rusi.org/explore-our-research/publications/commentary/moscows-other-front-why-ukraines-churches-are-security-issue", lecture: titre}]}
+  - {id: d_dalai_xi, de: dalai_lama, vers: xi, relation: desaccord_public, domaine: "succession du dalaï-lama", temps: {statut: conjoncturel, cycle: "succession", phase: "déclarations de juillet 2025 et juillet 2026"},
+     texte: "Le dalaï-lama réserve la reconnaissance de son successeur à sa fondation (Gaden Phodrang) ; Pékin exige l'approbation du gouvernement central et l'urne d'or.",
+     sources: [{titre: "Business Today (9 juillet 2026)", url: "https://www.businesstoday.in/world/story/china-again-claims-right-to-choose-next-dalai-lama-why-tibetan-buddhists-object-542100-2026-07-09", lecture: lu}]}
+  - {id: g_leon, de: leon_xiv, vers: croyances-religions:christianisme, relation: gouverne, via: "Saint-Siège, diocèses", domaine: "Église catholique", temps: {statut: conjoncturel, cycle: "pontificat", phase: "depuis mai 2025"},
+     texte: "Chef d'une Église de 1,422 milliard de fidèles ; appelle à dépasser la polarisation (voyage en Amérique latine, novembre 2026).",
+     sources: [{titre: "Vatican News (17 novembre 2026)", url: "https://www.vaticannews.va/en/pope/news/2026-11/pope-leo-xiv-press-conference-latin-america-journey.html", lecture: lu}]}
+  - {id: g_kirill, de: kirill, vers: croyances-religions:religion_politique, relation: gouverne, via: "Patriarcat de Moscou", domaine: "Église orthodoxe russe", temps: {statut: conjoncturel, cycle: "guerre en Ukraine", phase: "2026"},
+     texte: "Chef de l'Église orthodoxe russe, allié du Kremlin ; message d'hommage à Ali Khamenei après sa mort (février-mars 2026).",
+     sources: [{titre: "Church Times (6 mars 2026)", url: "https://www.churchtimes.co.uk/articles/2026/13-march/news/world/russian-orthodox-leader-calls-on-russia-to-go-further-in-war-with-ukraine", lecture: lu}]}

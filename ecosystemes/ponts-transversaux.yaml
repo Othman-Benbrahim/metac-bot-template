@@ -400,3 +400,8 @@ ponts:
 - {de: frontieres:passages, vers: reseaux-transport:route, canal: territoire, nature: "les contrôles aux frontières ralentissent le trafic"}
 - {de: reseaux-transport:aerien, vers: reseaux-humains:petit_monde, canal: population, nature: "le voyage rapproche les personnes et les liens lointains"}
 - {de: frontieres:local, vers: reseaux-humains:ressemblance, canal: comportement, nature: "on se lie d'abord dans sa langue et sa communauté"}
+# ---------- croyances et religions (remarque de l'auteur, 2026-11-22, 9 h 04)
+- {de: migrations-demographie:natalite_vieillissement, vers: croyances-religions:rapports_de_force, canal: population, nature: "les écarts de fécondité font grandir ou reculer les groupes religieux"}
+- {de: migrations-demographie:migrations, vers: croyances-religions:aires_geographiques, canal: population, nature: "les migrations déplacent les religions"}
+- {de: guerre-levant:recits, vers: croyances-religions:extremes_islam, canal: conflit, nature: "les guerres du Proche-Orient nourrissent le recrutement jihadiste"}
+- {de: reseaux-sociaux:desinformation, vers: croyances-religions:rapports_de_force, canal: information, nature: "rumeurs et propagandes attisent les tensions entre communautés", type: voisinage}

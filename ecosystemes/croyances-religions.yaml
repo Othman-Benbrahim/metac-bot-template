@@ -1,0 +1,545 @@
+# 0.10.451 — fiche créée le 2026-11-22 (remarque de l'auteur, 9 h 04 : « autre écosystème structurel : les croyances et la
+# religion ; lier les aires géographiques à des blocs religieux sans généraliser (ce sont des agrégats) ; parler des cas
+# extrêmes et des sectes ; toutes les religions représentées, y compris les sous-catégories, en plus petit, avec pour
+# chaque bloc en périphérie les sectes et les extrêmes ; à lier aux rapports de force, à la culture, à la politique et à
+# la géopolitique, et aux personnes publiques selon le contexte (le pape, le dalaï-lama…) »). Les sous-catégories sont
+# les acteurs de chaque bloc (petits nœuds sur la carte) ; les extrêmes ont chacun leur compartiment, relié à son bloc.
+# Règles : agrégats, jamais une généralisation sur les croyants d'une religion ou d'un pays ; un extrême n'est inscrit que
+# s'il est documenté (violences, groupes armés, rapports publics) ; un mouvement classé « secte » dans un pays et reconnu
+# ailleurs porte les deux statuts. Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: croyances-religions
+nom: Croyances et religions (blocs, sous-courants, extrêmes, sectes)
+declaration:
+  but: 'situer les grandes familles religieuses comme des agrégats - en 2020, chrétiens 28,8 %, musulmans 25,6 %, sans
+    religion 24,2 %, hindous 14,9 %, bouddhistes 4,1 %, juifs 0,2 %, autres 2,2 % (Pew, juin 2025) -, leurs sous-courants,
+    leurs franges extrêmes et les sectes, et leurs liens avec les rapports de force, la culture, la politique et la
+    géopolitique ; aucun pays n''est uniforme, aucune religion n''est réductible à ses extrêmes'
+  limites: dedans les blocs religieux et les sans-religion, les sous-courants, les extrêmes documentés, les sectes, les
+    aires géographiques en agrégats, religion et politique, les rapports de force démographiques ; dehors les mécanismes
+    psychologiques de la croyance (humain), le patrimoine religieux (culture-memoire), les guerres elles-mêmes (fiches de
+    conflit), sauf par les ponts
+  observateur: notre carte, regard extérieur et neutre ; sources publiques (Pew Research Center, Saint-Siège, Institut pour
+    l'économie et la paix, rapports officiels, presse) ; personnalités religieuses publiques dans leur rôle public
+  date: '2026-11-22'
+  espace: la communauté locale, le pays, l'aire culturelle, le monde
+  temps: de l'année (un mouvement) au millénaire (une religion)
+  vitesse: la génération, le siècle
+  taille: micro (une communauté) à macro (2,3 milliards de chrétiens)
+compartiments:
+- id: christianisme
+  nom: Christianisme
+  organisation: ideologie
+  elements:
+  - 2,3 milliards de chrétiens en 2020 (28,8 %, −1,8 point depuis 2010) ; 31 % vivent en Afrique subsaharienne, 24 % en
+    Amérique latine, 22 % en Europe (Pew, 2025)
+  - 1,422 milliard de catholiques en 2024 (17,8 % de l'humanité) - Amériques 679 millions, Afrique 288, Europe 287, Asie
+    156 (Saint-Siège, agence Fides, octobre 2026)
+  acteurs:
+  - nom: catholiques
+    taille: macro
+    espace: monde
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: protestants et évangéliques (dont pentecôtistes)
+    taille: macro
+    espace: monde
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: orthodoxes
+    taille: méso
+    espace: Europe de l'Est, Russie, Éthiopie
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: Églises orientales (coptes, arméniens, syriaques)
+    taille: méso
+    espace: Proche-Orient, Égypte, Éthiopie
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: siècles
+    vitesse: générations
+    taille: macro
+  traces:
+  - &id001
+    source: Pew Research Center, How the Global Religious Landscape Changed From 2010 to 2020 (juin 2025)
+    statut: a_brancher
+- id: islam
+  nom: Islam
+  organisation: ideologie
+  elements:
+  - 25,6 % de l'humanité en 2020, religion qui a le plus grandi entre 2010 et 2020 (+347 millions) ; 59 % des musulmans
+    vivent en Asie-Pacifique, près de 4 sur 10 en Afrique subsaharienne ou au Moyen-Orient et en Afrique du Nord (Pew,
+    2025)
+  - sunnites environ 87 à 90 %, chiites environ 10 à 13 % (Pew, 2009, estimation à recouper)
+  acteurs:
+  - nom: sunnites
+    taille: macro
+    espace: monde
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: chiites (duodécimains, ismaéliens, zaydites)
+    taille: méso
+    espace: Iran, Irak, Liban, Bahreïn, Azerbaïdjan, Yémen
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: ibadites, soufisme (confréries), ahmadis
+    taille: micro
+    espace: Oman, Afrique, Asie du Sud
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: siècles
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+- id: hindouisme
+  nom: Hindouisme
+  organisation: ideologie
+  elements:
+  - 1,2 milliard en 2020 (14,9 %), dont 99 % en Asie-Pacifique, surtout en Inde et au Népal (Pew, 2025)
+  acteurs:
+  - nom: vishnouisme, shivaïsme, shaktisme, smartisme
+    taille: macro
+    espace: Inde, Népal, diasporas
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: Asie du Sud et diasporas
+    temps: millénaires
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+- id: bouddhisme
+  nom: Bouddhisme
+  organisation: ideologie
+  elements:
+  - 324 millions en 2020 (4,1 %), seul grand groupe à reculer (−19 millions depuis 2010) ; 98 % en Asie-Pacifique (Pew,
+    2025)
+  acteurs:
+  - nom: theravada (Sri Lanka, Thaïlande, Birmanie, Cambodge, Laos)
+    taille: méso
+    espace: Asie du Sud-Est
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: mahayana (Chine, Japon, Corée, Viêt Nam)
+    taille: méso
+    espace: Asie de l'Est
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: vajrayana (bouddhisme tibétain, Mongolie, Bhoutan)
+    taille: micro
+    espace: Himalaya, Mongolie
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: Asie
+    temps: millénaires
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+- id: judaisme
+  nom: Judaïsme
+  organisation: ideologie
+  elements:
+  - 14,8 millions en 2020 (environ 0,2 %) ; 45,9 % au Moyen-Orient et en Afrique du Nord (Israël), 41,2 % en Amérique du
+    Nord (Pew, 2025)
+  acteurs:
+  - nom: orthodoxes et ultra-orthodoxes (haredim)
+    taille: micro
+    espace: Israël, États-Unis, Europe
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: libéraux, réformés, massortis, juifs laïques
+    taille: micro
+    espace: Israël, États-Unis, Europe
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: Israël et diasporas
+    temps: millénaires
+    vitesse: générations
+    taille: méso
+  traces:
+  - *id001
+- id: religions_chinoises
+  nom: Religions chinoises et populaires (taoïsme, confucianisme, cultes populaires, shintoïsme)
+  organisation: ideologie
+  elements:
+  - comptées pour l'essentiel parmi les « autres religions » (2,2 % de l'humanité) ou mêlées aux sans-religion ; pratiques
+    souvent combinées à d'autres appartenances (Pew, 2025)
+  acteurs:
+  - nom: taoïsme, cultes des ancêtres, religion populaire chinoise
+    taille: méso
+    espace: Chine, Taïwan, diasporas
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: shintoïsme
+    taille: micro
+    espace: Japon
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: Asie de l'Est
+    temps: millénaires
+    vitesse: générations
+    taille: méso
+  traces:
+  - *id001
+- id: traditions_autochtones
+  nom: Religions traditionnelles africaines et autochtones
+  organisation: ideologie
+  elements:
+  - religions traditionnelles d'Afrique (culte des ancêtres, vodun…), des Amériques, d'Océanie, souvent combinées avec le
+    christianisme ou l'islam (syncrétisme)
+  acteurs:
+  - nom: religions traditionnelles africaines (dont vodun)
+    taille: méso
+    espace: Afrique, Caraïbes, Brésil
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: spiritualités autochtones des Amériques et d'Océanie
+    taille: micro
+    espace: Amériques, Océanie
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: local
+    temps: millénaires
+    vitesse: générations
+    taille: micro à méso
+  traces:
+  - *id001
+- id: autres_religions
+  nom: Autres religions (sikhisme, jaïnisme, bahaïsme, zoroastrisme…)
+  organisation: ideologie
+  elements:
+  - ensemble des « autres religions » - 2,2 % de l'humanité en 2020, 65 % en Asie-Pacifique (Pew, 2025)
+  acteurs:
+  - nom: sikhs
+    taille: méso
+    espace: Pendjab, diasporas
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  - nom: jaïns, bahaïs, zoroastriens, druzes, yézidis
+    taille: micro
+    espace: Inde, Iran, Proche-Orient, diasporas
+    vitesse: générations
+    organisation: ideologie
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: siècles
+    vitesse: générations
+    taille: micro à méso
+  traces:
+  - *id001
+- id: sans_religion
+  nom: Sans religion (athées, agnostiques, sans appartenance)
+  organisation: ideologie
+  elements:
+  - 1,9 milliard en 2020 (24,2 %, +270 millions depuis 2010) ; 78 % en Asie-Pacifique, surtout en Chine (Pew, 2025)
+  - sortie de la religion d'une génération à l'autre dans plusieurs pays d'Europe, des Amériques et d'Asie de l'Est
+  niveau:
+    espace: monde
+    temps: générations
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+- id: aires_geographiques
+  nom: Aires géographiques (agrégats, jamais uniformes)
+  organisation: convention
+  elements:
+  - majorités chrétiennes - Amériques, Europe, Afrique subsaharienne (l'Afrique subsaharienne compte désormais plus de
+    chrétiens que l'Europe, 30,7 % contre 22,3 % des chrétiens du monde) ; majorités musulmanes - Afrique du Nord,
+    Moyen-Orient, Asie centrale, Pakistan, Bangladesh, Indonésie ; hindoue - Inde, Népal ; bouddhistes - Asie du Sud-Est
+    continentale, Sri Lanka, Bhoutan, Mongolie ; sans religion - Chine (Pew, 2025)
+  - chaque pays abrite des minorités ; les frontières religieuses ne suivent pas les frontières d'États (Nigeria,
+    Liban, Inde)
+  niveau:
+    espace: régions du monde
+    temps: siècles
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+- id: rapports_de_force
+  nom: Rapports de force démographiques
+  organisation: societe
+  elements:
+  - entre 2010 et 2020, l'islam progresse le plus vite (+1,8 point), le christianisme recule en part (−1,8 point), les
+    bouddhistes diminuent (−19 millions) ; le centre de gravité chrétien passe en Afrique (Pew, 2025 ; Saint-Siège, 2026)
+  - les écarts de fécondité, l'âge des populations et les sorties de religion font l'essentiel de ces changements
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: générations
+    taille: macro
+  traces:
+  - *id001
+- id: religion_politique
+  nom: Religion et politique (États, partis, autorités religieuses)
+  organisation: statut
+  elements:
+  - régimes où l'autorité religieuse gouverne (Iran - Guide suprême ; Saint-Siège) ; religions d'État ou officielles ;
+    alliances entre Églises et pouvoirs (Église orthodoxe russe et Kremlin) ; partis religieux ; laïcité
+  - autorité contestée sur les successions religieuses - la Chine revendique d'approuver le prochain dalaï-lama, qui
+    réserve ce choix à sa fondation (Business Today, 9 juillet 2026)
+  niveau:
+    espace: pays et monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: extremes_islam
+  nom: Franges extrêmes - jihadisme
+  organisation: geopolitique
+  elements:
+  - les quatre groupes les plus meurtriers de 2025 - État islamique, JNIM (affilié à al-Qaïda), Tehrik-e-Taliban
+    Pakistan, al-Chabab ; les morts du terrorisme baissent de 28 % en 2025 (Indice mondial du terrorisme 2026, IEP)
+  - une frange armée, rejetée par l'immense majorité des musulmans, qui en sont les premières victimes
+  niveau:
+    espace: Sahel, Moyen-Orient, Asie du Sud, Corne
+    temps: décennies
+    vitesse: jours
+    taille: méso
+  traces:
+  - source: Indice mondial du terrorisme (IEP, annuel)
+    statut: a_brancher
+- id: extremes_christianisme
+  nom: Franges extrêmes - chrétiennes
+  organisation: geopolitique
+  elements:
+  - groupes armés se réclamant du christianisme (Armée de résistance du Seigneur en Afrique centrale, milices
+    anti-balaka en Centrafrique) ; nationalismes chrétiens politiques
+  niveau:
+    espace: Afrique centrale, Amériques, Europe
+    temps: décennies
+    vitesse: mois
+    taille: micro à méso
+  traces:
+  - *id001
+- id: extremes_hindouisme
+  nom: Franges extrêmes - nationalisme hindou radical
+  organisation: geopolitique
+  elements:
+  - courants nationalistes hindous radicaux et violences communautaires contre des minorités (émeutes du Gujarat en 2002,
+    entre autres) ; le nationalisme hindou est aussi un courant politique de gouvernement, à distinguer de ses franges
+    violentes
+  niveau:
+    espace: Inde
+    temps: décennies
+    vitesse: mois
+    taille: méso
+  traces:
+  - *id001
+- id: extremes_bouddhisme
+  nom: Franges extrêmes - nationalisme bouddhiste radical
+  organisation: geopolitique
+  elements:
+  - moines nationalistes radicaux en Birmanie, liés à la persécution des Rohingyas et aux violences du régime militaire
+    (Jamestown Foundation, Terrorism Monitor, 2025) ; mouvements comparables au Sri Lanka
+  niveau:
+    espace: Birmanie, Sri Lanka
+    temps: décennies
+    vitesse: mois
+    taille: micro à méso
+  traces:
+  - source: Jamestown Foundation, Militant Monks Fuel Government Terror in Myanmar (2025)
+    statut: a_brancher
+- id: extremes_judaisme
+  nom: Franges extrêmes - juives
+  organisation: geopolitique
+  elements:
+  - violences de colons extrémistes en Cisjordanie, recensées par le bureau humanitaire de l'ONU (OCHA) ; mouvements
+    religieux nationalistes radicaux
+  niveau:
+    espace: Cisjordanie, Israël
+    temps: années
+    vitesse: jours
+    taille: micro
+  traces:
+  - source: OCHA, données sur les violences de colons (Territoire palestinien occupé)
+    statut: a_brancher
+- id: sectes
+  nom: Sectes et dérives sectaires (en périphérie de tous les blocs)
+  organisation: societe
+  elements:
+  - France - la Miviludes suit les dérives sectaires, de plus en plus tournées vers la santé et les soins non
+    conventionnels (entretien de la Miviludes, Politis, avril 2025)
+  - cas historiques - Ordre du Temple solaire (1994-1995), Aum Shinrikyo (attentat au sarin de Tokyo, 1995)
+  - statuts différents selon les pays - un même mouvement peut être classé secte dans un pays et reconnu comme religion
+    dans un autre (Scientologie, Témoins de Jéhovah)
+  niveau:
+    espace: local à monde
+    temps: années
+    vitesse: mois
+    taille: micro
+  traces:
+  - source: Miviludes, rapports d'activité (vie-publique.fr)
+    statut: a_brancher
+relations:
+- de: rapports_de_force
+  vers: aires_geographiques
+  effet: +
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la démographie déplace le centre de gravité des religions (le christianisme vers l'Afrique)
+- de: religion_politique
+  vers: extremes_islam
+  effet: +
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'instrumentalisation politique d'une religion nourrit ses franges violentes (le compartiment cible lit ici leur
+    capacité de recrutement)
+- de: religion_politique
+  vers: extremes_hindouisme
+  effet: +
+  delai: années
+  force: faible
+  coupure: état de droit, justice indépendante
+  statut: a_verifier
+  texte: un pouvoir qui s'appuie sur l'identité religieuse peut couvrir ses franges violentes
+- de: religion_politique
+  vers: extremes_bouddhisme
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: en Birmanie, le régime militaire s'appuie sur des moines nationalistes radicaux
+- de: extremes_islam
+  vers: islam
+  effet: '-'
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: les violences jihadistes frappent d'abord des musulmans et nourrissent la défiance envers l'ensemble (le
+    compartiment cible lit ici l'image et la sécurité des communautés)
+- de: sans_religion
+  vers: christianisme
+  effet: '-'
+  delai: générations
+  force: moyenne
+  coupure: renouveau religieux
+  statut: a_verifier
+  texte: les sorties de religion font baisser la part chrétienne en Europe et dans les Amériques
+- de: rapports_de_force
+  vers: religion_politique
+  effet: +
+  delai: décennies
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: un groupe qui grandit pèse davantage dans la politique de son pays
+- de: sectes
+  vers: sans_religion
+  effet: '0'
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: les dérives sectaires se développent aussi hors des religions établies (bien-être, santé) — lien à étudier
+ponts:
+- depuis: extremes_islam
+  vers: afrique-subsaharienne:groupes_armes
+  nature: les groupes jihadistes du Sahel
+  type: meme
+- depuis: extremes_islam
+  vers: asie-du-sud:afghanistan_pakistan
+  nature: les talibans pakistanais
+  type: voisinage
+- depuis: extremes_islam
+  vers: afrique-subsaharienne:corne
+  nature: al-Chabab en Somalie
+  type: voisinage
+- depuis: extremes_judaisme
+  vers: guerre-levant:israel
+  nature: colons extrémistes et politique israélienne
+  type: voisinage
+- depuis: extremes_hindouisme
+  vers: asie-du-sud:inde_puissance
+  nature: nationalisme hindou et politique indienne
+  type: voisinage
+- depuis: religion_politique
+  vers: iran-nucleaire:pouvoir_iranien
+  nature: le pouvoir du Guide suprême
+  type: voisinage
+- depuis: religion_politique
+  vers: russie-ukraine:opinions
+  nature: l'Église orthodoxe russe et la guerre
+- depuis: religion_politique
+  vers: politique-interieure:regime
+  nature: religion d'État, partis religieux, laïcité
+  type: voisinage
+- depuis: religion_politique
+  vers: rivalite-sino-americaine:diplomatie
+  nature: la succession du dalaï-lama entre Pékin, l'Inde et les États-Unis
+  type: voisinage
+- depuis: christianisme
+  vers: culture-memoire:patrimoine
+  nature: églises, monastères, pèlerinages
+  type: voisinage
+- depuis: islam
+  vers: culture-memoire:patrimoine
+  nature: mosquées, lieux saints
+  type: voisinage
+- depuis: aires_geographiques
+  vers: frontieres:local
+  nature: traditions et croyances locales
+  type: voisinage
+- depuis: aires_geographiques
+  vers: frontieres:blocs
+  nature: blocs religieux et blocs géopolitiques ne coïncident pas
+  type: voisinage
+- depuis: christianisme
+  vers: humain:symboles
+  nature: les symboles religieux comme moteurs d'action
+  type: voisinage
+- depuis: rapports_de_force
+  vers: humain:nous_eux
+  nature: l'appartenance religieuse trace des frontières de groupe
+- depuis: sectes
+  vers: corps-humain:soins
+  nature: dérives sectaires en santé (refus de traitements)
+- depuis: sectes
+  vers: humain:croyance_complot
+  nature: emprise et récits complotistes
+  type: voisinage
+- depuis: rapports_de_force
+  vers: calendriers-echeances:fetes
+  nature: fêtes religieuses, ramadan, pèlerinages
+  type: voisinage
+- depuis: extremes_christianisme
+  vers: afrique-subsaharienne:grands_lacs
+  nature: groupes armés d'Afrique centrale
+  type: voisinage

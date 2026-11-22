@@ -17,7 +17,7 @@ import ecosystemes as ec
 
 FICHIER = Path("ecosystemes") / "acteurs-nommes.yaml"
 SORTIE = Path("registre") / "acteurs-nommes.md"
-SORTES = {"dirigeant", "patron", "autre"}
+SORTES = {"dirigeant", "patron", "religieux", "autre"}
 ENTRE_ACTEURS = {"nomme", "commande", "allie", "rival", "negocie_avec", "finance", "associe", "fournit", "desaccord_public", "proche"}
 VERS_POPULATION = {"gouverne", "elu_par", "informe", "influence_documentee"}
 LECTURES = {"lu", "titre"}
