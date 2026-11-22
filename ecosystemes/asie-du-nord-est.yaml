@@ -1,0 +1,200 @@
+# 0.10.424 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 34 : « commence dans l'ordre et comble ce qui manque »,
+# régions absentes). Taïwan est détaillé dans rivalite-sino-americaine (pont). Chiffres vérifiés le 2026-11-22.
+# Relations à vérifier sur sources. Acteurs publics dans leur rôle public seulement.
+theme: asie-du-nord-est
+nom: Asie du Nord-Est (Corées, Japon, voisinage de la Chine)
+declaration:
+  but: 'comprendre les équilibres de l''Asie du Nord-Est : une Corée du Nord qui refuse de dénucléariser et reçoit l''aide
+    militaire de la Russie, une Corée du Sud et un Japon alliés des États-Unis, un Japon qui réarme (budget de défense
+    record pour 2026) et une relation Chine-Japon tendue depuis novembre 2025'
+  limites: dedans les deux Corées, le Japon, leurs alliances, leurs différends avec la Chine et la Russie vus depuis la
+    région ; dehors Taïwan et le détroit (rivalite-sino-americaine), la Chine vue de l'intérieur (economie-chinoise), la
+    guerre en Ukraine (russie-ukraine), le régime mondial de non-prolifération (non-proliferation), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (Service de recherche du Congrès américain, Long War
+    Journal, presse) ; aucune personne privée
+  date: '2026-11-22'
+  espace: le pays, la péninsule, la mer du Japon et la mer de Chine orientale
+  temps: du jour (un tir de missile, un verrouillage radar) à la décennie (programmes nucléaires, réarmement)
+  vitesse: le jour (tirs, incidents), le mois (sommets, sanctions), l'année (budgets, alliances)
+  taille: méso (une base, un navire) à macro (la région)
+compartiments:
+- id: coree_du_nord
+  nom: Corée du Nord (programmes nucléaire et balistique)
+  organisation: geopolitique
+  elements:
+  - négociations gelées depuis 2019 ; programmes nucléaire et balistique en expansion ; Kim Jong-un dit qu'il ne
+    dénucléarisera « jamais » (Service de recherche du Congrès, 17 septembre 2026)
+  - tirs de missiles balistiques répétés
+  acteurs:
+  - nom: gouvernement nord-coréen (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: péninsule
+    temps: décennies
+    vitesse: jours (tirs) à années (programmes)
+    taille: macro
+  traces:
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: russie_coree
+  nom: Axe Russie-Corée du Nord
+  organisation: geopolitique
+  elements:
+  - des milliers de soldats nord-coréens aux côtés des forces russes dans la région de Koursk à partir de l'automne 2024
+    (Long War Journal, 7 mai 2026)
+  - aide russe en retour - défense aérienne, guerre électronique, lancements de satellites, missiles (précision du KN-23
+    passée de 500-1 500 m à 50-100 m d'écart circulaire probable, selon les rapports cités par la même source)
+  niveau:
+    espace: Eurasie
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: coree_du_sud
+  nom: Corée du Sud (président Lee Jae-myung)
+  organisation: statut
+  elements:
+  - Lee Jae-myung élu président en juin 2025, mandat jusqu'en juin 2030 (Service de recherche du Congrès, septembre 2026)
+  - accord commercial et d'investissement avec les États-Unis (2025) - droits ramenés à 15 % sur certains biens,
+    350 milliards de dollars d'investissement promis dont 150 pour la construction navale (même source)
+  - projet de sous-marins à propulsion nucléaire (même source)
+  acteurs:
+  - nom: présidence sud-coréenne (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: japon
+  nom: Japon (réarmement, gouvernement Takaichi)
+  organisation: statut
+  elements:
+  - budget de défense record de plus de 9 000 milliards de yens pour l'exercice 2026 (+9,4 %) ; objectif de 2 % du PIB
+    avancé de deux ans (PBS, 26 décembre 2025)
+  acteurs:
+  - nom: gouvernement japonais (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: chine_japon
+  nom: Différends Chine-Japon (Taïwan, mer de Chine orientale)
+  organisation: geopolitique
+  elements:
+  - en novembre 2025, la Première ministre Sanae Takaichi dit que l'armée japonaise pourrait intervenir si la Chine
+    agissait contre Taïwan ; vive réaction de Pékin (presse, novembre 2025)
+  - en décembre 2025, verrouillage radar d'avions japonais par des avions chinois lors d'exercices de porte-avions, protestation
+    de Tokyo (PBS, 26 décembre 2025)
+  - îles Senkaku/Diaoyu
+  niveau:
+    espace: mer de Chine orientale
+    temps: années
+    vitesse: jours (incidents) à mois
+    taille: macro
+  traces:
+  - *id001
+- id: alliances
+  nom: Alliances avec les États-Unis (bases, coopération à trois)
+  organisation: convention
+  elements:
+  - environ 28 500 soldats américains en Corée du Sud (USFK) (Service de recherche du Congrès, septembre 2026)
+  - alliance nippo-américaine, bases au Japon
+  - coopération États-Unis, Japon, Corée du Sud
+  acteurs:
+  - nom: Forces des États-Unis en Corée (USFK)
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: région
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: russie_coree
+  vers: coree_du_nord
+  effet: +
+  delai: mois
+  force: forte
+  coupure: fin de la guerre en Ukraine ou retournement russe
+  statut: a_verifier
+  texte: l'aide militaire russe accroît les capacités nord-coréennes (missiles plus précis, défense aérienne)
+- de: coree_du_nord
+  vers: alliances
+  effet: +
+  delai: mois
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: la menace nord-coréenne resserre les alliances avec les États-Unis
+- de: chine_japon
+  vers: japon
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les tensions avec la Chine accélèrent le réarmement japonais (le compartiment cible lit ici l'effort de défense)
+- de: japon
+  vers: chine_japon
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: geste diplomatique
+  statut: a_verifier
+  texte: le réarmement et les déclarations japonaises sur Taïwan avivent les tensions avec Pékin (boucle avec la
+    relation précédente)
+- de: coree_du_nord
+  vers: coree_du_sud
+  effet: +
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: la menace pousse Séoul vers des capacités propres (sous-marins à propulsion nucléaire ; le compartiment cible
+    lit ici l'effort de défense)
+ponts:
+- depuis: chine_japon
+  vers: rivalite-sino-americaine:taiwan
+  nature: Taïwan, cœur des différends régionaux
+- depuis: alliances
+  vers: rivalite-sino-americaine:alliances
+  nature: les alliances de la région dans la rivalité sino-américaine
+- depuis: russie_coree
+  vers: russie-ukraine:capacites
+  nature: soldats et munitions nord-coréens dans les capacités russes
+  type: influence
+- depuis: coree_du_nord
+  vers: non-proliferation:etats_du_seuil
+  nature: un État doté hors du traité de non-prolifération
+- depuis: coree_du_sud
+  vers: non-proliferation:dissuasion
+  nature: le débat sud-coréen sur la dissuasion
+- depuis: coree_du_sud
+  vers: transport-maritime:flottes
+  nature: la construction navale coréenne, enjeu de l'accord avec les États-Unis
