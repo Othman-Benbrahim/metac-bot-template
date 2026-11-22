@@ -1,29 +1,48 @@
 # 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
-# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+# que nos fiches ne couvraient pas (dépôt lecteur-local).
+# 0.10.430 — complétée le 2026-11-22 (remarque de l'auteur, 5 h 35 : « Union européenne et institutions repérés » comme
+# trous) : éléments sourcés, acteurs, quatre compartiments (budget, sanctions, défense, État de droit), relations à
+# vérifier, ponts. Les identifiants des quatre premiers compartiments sont gardés (termes validés rattachés).
 theme: union-europeenne
 nom: Union européenne (institutions et politiques communes)
 declaration:
-  but: situer les institutions de l'Union, ses procédures et ses politiques communes, qui encadrent une partie des décisions
-    nationales
-  limites: dedans les institutions (Parlement, Conseil, commissions), l'élargissement, les politiques communes, les relations
-    extérieures de l'Union ; dehors la défense et l'OTAN (fiche securite-europeenne), les sanctions contre la Russie (russie-ukraine)
-  observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
-    identifiés dans listes/emetteurs.txt ; aucune personne privée
+  but: 'situer les institutions de l''Union, ses procédures et ses politiques communes, qui encadrent une partie des
+    décisions nationales : budget à long terme 2028-2034 en négociation (1 760 milliards d''euros proposés par la
+    Commission, juillet 2025), vingtième train de sanctions contre la Russie (avril 2026), prêts de défense SAFE
+    (150 milliards), élargissement en cours'
+  limites: dedans les institutions, l'élargissement, les politiques communes, les relations extérieures, le budget, les
+    sanctions comme instrument de l'Union, les instruments de défense de l'Union, l'État de droit ; dehors la défense et
+    l'OTAN dans leur ensemble (securite-europeenne), la guerre en Ukraine (russie-ukraine), la politique nationale des
+    États membres (politique-interieure), sauf par les ponts
+  observateur: notre carte, regard extérieur ; sources officielles de l'Union (Commission, Conseil, Parlement, SEAE) et
+    analyses publiques ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local) ; aucune personne privée
   date: '2026-11-22'
   espace: l'Union et ses États membres, ses voisins
-  temps: de la séance (un vote) à la décennie (un élargissement)
-  vitesse: la semaine (un Conseil), le mois (une procédure), l'année (un traité)
+  temps: de la séance (un vote) à la décennie (un élargissement, un budget de sept ans)
+  vitesse: la semaine (un Conseil), le mois (une procédure), l'année (un traité, un budget)
   taille: méso à macro
 compartiments:
 - id: institutions
   nom: Institutions et affaires institutionnelles
   organisation: statut
   elements:
-  - Parlement européen et ses commissions
-  - Conseil de l'Union européenne
+  - Commission européenne, Parlement européen et ses commissions, Conseil de l'Union européenne, Conseil européen
+  - procédures législatives (codécision), unanimité en politique étrangère et pour le budget à long terme
   - affaires institutionnelles
   acteurs:
   - nom: une institution de l'Union
+    taille: macro
+    espace: Union
+    vitesse: semaines
+    organisation: statut
+    facette: collectif
+  - nom: Commission européenne (statut)
+    taille: macro
+    espace: Union
+    vitesse: semaines
+    organisation: statut
+    facette: statut
+  - nom: Conseil de l'Union européenne
     taille: macro
     espace: Union
     vitesse: semaines
@@ -43,6 +62,19 @@ compartiments:
   elements:
   - candidatures et négociations d'adhésion
   - Balkans occidentaux, Europe de l'Est
+  - Monténégro, candidat le plus avancé - 18 chapitres de négociation sur 33 fermés provisoirement ; adhésion visée en
+    2028 ; chapitres bloqués par la Croatie (PISM, 3 août 2026)
+  - négociations de l'Ukraine suspendues après un veto hongrois sur la déclaration d'élargissement (Novaya Gazeta
+    Europe, 17 décembre 2025)
+  - ratification incertaine en France - référendum ou majorité des trois cinquièmes requis ; 35 % des Français
+    favorables à l'élargissement (PISM, 3 août 2026)
+  acteurs:
+  - nom: un État candidat
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
   niveau:
     espace: Union et voisins
     temps: années
@@ -56,6 +88,7 @@ compartiments:
   - cohésion
   - marché unique
   - protection des consommateurs
+  - politique agricole commune
   niveau:
     espace: Union
     temps: années
@@ -69,10 +102,138 @@ compartiments:
   - relations extérieures de l'Union
   - relations avec le Royaume-Uni
   - relations internationales (en général)
+  - accords commerciaux, droits de douane avec les États-Unis
   niveau:
     espace: Union et monde
     temps: années
     vitesse: semaines
     taille: macro
   traces: *id001
-relations: []
+- id: budget
+  nom: Budget de l'Union (cadre financier pluriannuel)
+  organisation: economie
+  elements:
+  - proposition de la Commission du 16 juillet 2025 pour 2028-2034 - 1 760 milliards d'euros (prix de 2025), 1,26 % du
+    revenu national brut, dont 149,3 milliards pour rembourser la dette du plan de relance ; le Parlement réclame
+    1 930 milliards (1,38 %) (Service de recherche du Parlement européen, 2026)
+  - glissement des dépenses de l'agriculture et de la cohésion vers la compétitivité, la sécurité et la défense (même
+    source)
+  - adoption à l'unanimité du Conseil, avec l'approbation du Parlement
+  niveau:
+    espace: Union
+    temps: sept ans
+    vitesse: mois (négociation)
+    taille: macro
+  traces:
+  - source: Commission européenne, données budgétaires de l'Union (publiques)
+    statut: a_brancher
+- id: sanctions_ue
+  nom: Sanctions de l'Union (instrument)
+  organisation: convention
+  elements:
+  - vingtième train de sanctions contre la Russie adopté le 23 avril 2026 - transactions interdites avec 20 banques
+    russes, 46 navires de plus interdits de ports (632 au total), interdiction des prestataires de cryptomonnaies russes,
+    services aux terminaux de GNL interdits aux entités russes à partir de janvier 2027 (SEAE, 23 avril 2026)
+  - unanimité requise au Conseil
+  niveau:
+    espace: Union et monde
+    temps: années
+    vitesse: mois (un train de sanctions)
+    taille: macro
+  traces:
+  - source: carte des sanctions de l'Union (sanctionsmap.eu, publique)
+    statut: a_brancher
+- id: defense_ue
+  nom: Instruments de défense de l'Union (SAFE, industrie)
+  organisation: technique
+  elements:
+  - SAFE - enveloppe de 150 milliards d'euros de prêts à long terme aux États membres pour des achats de défense, adoptée
+    par le Conseil le 27 mai 2025 ; 19 États membres ont soumis des plans d'investissement (Commission européenne)
+  niveau:
+    espace: Union
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: etat_de_droit
+  nom: État de droit et conditionnalité
+  organisation: convention
+  elements:
+  - procédure de l'article 7, conditionnalité des fonds au respect de l'État de droit, rapports annuels de la Commission
+  - garde-fous prévus dans le futur traité d'adhésion du Monténégro en cas de recul démocratique (PISM, 3 août 2026)
+  niveau:
+    espace: Union
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: institutions
+  vers: sanctions_ue
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: veto d'un État membre (unanimité)
+  statut: a_verifier
+  texte: les sanctions passent par le Conseil à l'unanimité ; un seul État peut les retarder
+- de: institutions
+  vers: elargissement
+  effet: +
+  delai: mois à années
+  force: moyenne
+  coupure: veto d'un État membre ou échec d'une ratification nationale
+  statut: a_verifier
+  texte: chaque étape de l'adhésion exige l'unanimité ; un veto suffit à geler un candidat (Ukraine, décembre 2025)
+- de: etat_de_droit
+  vers: budget
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: levée des réserves
+  statut: a_verifier
+  texte: la conditionnalité peut geler des fonds versés à un État qui ne respecte pas l'État de droit
+- de: budget
+  vers: defense_ue
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: refus du Conseil ou du Parlement
+  statut: a_verifier
+  texte: le prochain budget déplace des moyens vers la sécurité et la défense
+- de: etat_de_droit
+  vers: elargissement
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les exigences d'État de droit ralentissent l'adhésion (chapitres 23 et 24 ouverts en premier, fermés en dernier)
+ponts:
+- depuis: sanctions_ue
+  vers: russie-ukraine:sanctions
+  nature: les sanctions de l'Union contre la Russie
+  type: meme
+- depuis: defense_ue
+  vers: securite-europeenne:otan_ue
+  nature: l'Union et l'OTAN dans la défense européenne
+- depuis: defense_ue
+  vers: securite-europeenne:industrie
+  nature: les achats communs pour l'industrie de défense
+- depuis: elargissement
+  vers: russie-ukraine:negociations
+  nature: l'adhésion de l'Ukraine dans les négociations de paix
+  type: influence
+- depuis: institutions
+  vers: politique-interieure:gouvernement
+  nature: les gouvernements nationaux siègent au Conseil
+- depuis: etat_de_droit
+  vers: corruption:lutte
+  nature: la directive anticorruption de 2026 et le Parquet européen
+- depuis: relations_exterieures
+  vers: rivalite-sino-americaine:commerce
+  nature: l'Union entre les deux grandes puissances commerciales
+- depuis: budget
+  vers: securite-europeenne:budgets_dette
+  nature: financement de la défense et dette
