@@ -22,6 +22,7 @@ Secrets : GCP_SA_KEY (compte de service, rôle Utilisateur de tâches BigQuery) 
     python gdelt_bq.py --mode comptes  # 0.10.281 : mêmes questions, mêmes filtres, NOMBRE d'articles par jour
     python gdelt_bq.py --mode comptes_jeu  # 0.10.290 : comptes pour les questions distinctes de 2026 du jeu de données
     python gdelt_bq.py --mode comptes_metaculus_2025  # 0.10.293 : questions Metaculus distinctes d'avant 2026
+    python gdelt_bq.py --mode manifestations  # 0.10.463 : manifestations par pays et par semaine, 2015-2026 (H2)
 """
 from __future__ import annotations
 
@@ -44,8 +45,14 @@ COMPTES_META_2025 = Path("registre/gdelt-bq-comptes-metaculus-2025.json")
 DYADES = Path("registre/gdelt-dyades.json")          # 0.10.312 : réciprocité entre États (preenregistrements/reciprocite-dyades.md)
 TABLE_EVENEMENTS = "gdelt-bq.gdeltv2.events_partitioned"
 DYADES_DEBUT, DYADES_FIN, DYADES_N = "2023-01-01", "2026-10-31", 40
+# 0.10.463 (décision de l'auteur, 2026-11-22, 19 h 41) : observation de l'état avant pour H2 (signal × terrain).
+# Manifestations (CAMEO, code racine 14) par pays du lieu de l'action (codes FIPS 10-4) et par semaine, avec le total
+# des événements du même pays et de la même semaine (dénominateur : volume de couverture). Observation 2015-2021,
+# test 2022-2026 réservé (claude/preenregistrement-reserve-h2-terrain dans le projet).
+MANIFS = Path("registre/gdelt-manifestations-semaines.csv")
+MANIFS_DEBUT, MANIFS_FIN = "2015-02-19", "2026-11-21"
 PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0, "comptes_jeu": 120.0,
-                     "comptes_metaculus_2025": 120.0, "dyades": 120.0}
+                     "comptes_metaculus_2025": 120.0, "dyades": 120.0, "manifestations": 150.0}
 PLAFOND_MOIS_GO = 800.0
 PAR_QUESTION = 15
 
@@ -362,12 +369,72 @@ def mode_dyades(client=None) -> int:
     return 0
 
 
+def sql_manifestations() -> str:
+    """Par pays (lieu de l'action) et par semaine : tous les événements, manifestations (racine 14), manifestations
+    « racines » (IsRootEvent = 1, l'événement principal de l'article) et articles qui citent une manifestation.
+    Aucun texte, aucun acteur : des comptes."""
+    return f"""
+SELECT ActionGeo_CountryCode AS pays,
+       CAST(DATE_TRUNC(PARSE_DATE('%Y%m%d', CAST(SQLDATE AS STRING)), WEEK(MONDAY)) AS STRING) AS semaine,
+       COUNT(*) AS evenements,
+       COUNTIF(EventRootCode = '14') AS manifs,
+       COUNTIF(EventRootCode = '14' AND IsRootEvent = 1) AS manifs_racine,
+       SUM(IF(EventRootCode = '14', NumArticles, 0)) AS articles_manifs
+FROM `{TABLE_EVENEMENTS}`
+WHERE _PARTITIONTIME BETWEEN TIMESTAMP(@d0) AND TIMESTAMP(@d1)
+  AND SQLDATE BETWEEN CAST(REPLACE(@d0, '-', '') AS INT64) AND CAST(REPLACE(@d1, '-', '') AS INT64)
+  AND ActionGeo_CountryCode IS NOT NULL AND ActionGeo_CountryCode != ''
+GROUP BY pays, semaine"""
+
+
+def mode_manifestations(client=None) -> int:
+    from google.cloud import bigquery
+    if client is None:
+        from google.oauth2 import service_account
+        cred = service_account.Credentials.from_service_account_info(json.loads(os.environ["GCP_SA_KEY"]))
+        client = bigquery.Client(project=os.environ["GCP_PROJET"], credentials=cred)
+    params = [bigquery.ScalarQueryParameter("d0", "STRING", MANIFS_DEBUT),
+              bigquery.ScalarQueryParameter("d1", "STRING", MANIFS_FIN)]
+    texte = sql_manifestations()
+    essai = client.query(texte, job_config=bigquery.QueryJobConfig(dry_run=True, use_query_cache=False,
+                                                                  query_parameters=params))
+    go = essai.total_bytes_processed / 1e9
+    mois = datetime.now(timezone.utc).strftime("%Y-%m")
+    cpt = compteur()
+    deja = float(cpt.get(mois, 0.0))
+    print(f"BigQuery (manifestations) : {MANIFS_DEBUT} → {MANIFS_FIN}, essai à blanc {go:.2f} Go ; mois {mois} : {deja:.1f} Go",
+          flush=True)
+    if go > PLAFOND_REQUETE_GO["manifestations"]:
+        raise RuntimeError(f"requête refusée : {go:.1f} Go > plafond {PLAFOND_REQUETE_GO['manifestations']} Go (manifestations)")
+    if deja + go > PLAFOND_MOIS_GO:
+        raise RuntimeError(f"requête refusée : le mois atteindrait {deja + go:.0f} Go (> {PLAFOND_MOIS_GO:.0f} Go)")
+    lignes = list(client.query(texte, job_config=bigquery.QueryJobConfig(query_parameters=params)).result())
+    cpt[mois] = round(deja + go, 3)
+    COMPTEUR.write_text(json.dumps(cpt, ensure_ascii=False, indent=1), encoding="utf-8")
+    ecrire_manifestations([dict(r) for r in lignes])
+    return 0
+
+
+def ecrire_manifestations(lignes: list[dict], sortie: Path = MANIFS) -> int:
+    import csv
+    cols = ["pays", "semaine", "evenements", "manifs", "manifs_racine", "articles_manifs"]
+    lignes = sorted(lignes, key=lambda r: (r["pays"], r["semaine"]))
+    sortie.parent.mkdir(exist_ok=True)
+    with sortie.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(cols)
+        for r in lignes:
+            w.writerow([r[c] if r[c] is not None else 0 for c in cols])
+    print(f"{len(lignes)} lignes pays-semaine ; {len({r['pays'] for r in lignes})} pays → {sortie}")
+    return len(lignes)
+
+
 def principal(mode: str) -> int:
     if not os.environ.get("GCP_SA_KEY") or not os.environ.get("GCP_PROJET"):
         print("::warning::GCP_SA_KEY ou GCP_PROJET absent : GDELT par BigQuery sauté.")
         return 0
     try:
-        return (mode_dyades() if mode == "dyades" else mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
+        return (mode_manifestations() if mode == "manifestations" else mode_dyades() if mode == "dyades" else mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
                 else mode_comptes_jeu() if mode == "comptes_jeu"
                 else mode_comptes_jeu(True, "metaculus", COMPTES_META_2025, mode) if mode == "comptes_metaculus_2025"
                 else mode_tournoi(mode))
@@ -379,5 +446,5 @@ def principal(mode: str) -> int:
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
     a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes", "comptes_jeu",
-                                           "comptes_metaculus_2025", "dyades"], default="nuit")
+                                           "comptes_metaculus_2025", "dyades", "manifestations"], default="nuit")
     sys.exit(principal(a.parse_args().mode))
