@@ -1054,7 +1054,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "humain:passage_acte",
+    "politique-interieure:regime"
+   ],
    "parametres": {
     "succes_non_violent_2010s_max": 0.34,
     "succes_violent_2010s": 0.08,
@@ -1078,7 +1081,10 @@
    "perimetre": [
     "afrique"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "politique-interieure:dirigeants",
+    "humain:hierarchie"
+   ],
    "parametres": {
     "pays_contournement": 14,
     "pays_sans_limite_effective": 30,
@@ -1105,7 +1111,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "humain:opinion_publique"
+   ],
    "parametres": {
     "erreur_part_points": {
      "ensemble": 2.03,
@@ -1138,7 +1147,10 @@
    "perimetre": [
     "France"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "premier_tour": {
      "majorite_exprimes": 50,
@@ -1164,7 +1176,10 @@
    "perimetre": [
     "europe"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "seuil_parti": {
      "DE": 5,
@@ -1221,7 +1236,10 @@
    "perimetre": [
     "europe"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "union-europeenne:institutions"
+   ],
    "parametres": {
     "plafond_ue": 5,
     "seuil": {
@@ -1259,7 +1277,10 @@
    "perimetre": [
     "europe"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "union-europeenne:institutions",
+    "union-europeenne:politiques_communes"
+   ],
    "parametres": {
     "etats_min": 15,
     "population_min": 65,
@@ -1284,7 +1305,10 @@
    "perimetre": [
     "europe"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "russie-ukraine:sanctions",
+    "union-europeenne:relations_exterieures"
+   ],
    "parametres": {
     "periode_renouvellement_mois": 6,
     "echeances": {
@@ -1316,7 +1340,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "politique-interieure:gouvernement",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "ensemble": {
      "n": 234,
@@ -1567,7 +1594,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "accord_premier": {
      "List PR": {
@@ -1599,7 +1629,10 @@
    "perimetre": [
     "afrique"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "relief-et-montagnes:routes_frontieres",
+    "humain:nous_eux"
+   ],
    "parametres": {
     "part_territoires_partages": 0.28,
     "surcroit_violence_partages": 0.57,
@@ -1623,7 +1656,10 @@
    "perimetre": [
     "afrique"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "dette-emergents:gisements",
+    "dette-emergents:matieres_premieres"
+   ],
    "parametres": {
     "proba_conflit_cellule_miniere": {
      "base": 0.169,
@@ -1651,7 +1687,10 @@
    "perimetre": [
     "afrique"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "securite-publique:sanctions",
+    "securite-publique:corruption"
+   ],
    "parametres": {
     "flux_illicites_milliards_an": 88.6,
     "part_pib": 0.037,
@@ -1678,7 +1717,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:dirigeants"
+   ],
    "parametres": {
     "deux_tours": [
      "MN",
@@ -1738,7 +1780,10 @@
    "perimetre": [
     "Indonésie"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:dirigeants"
+   ],
    "parametres": {
     "majorite": 50,
     "seuil_provincial": 20,
@@ -1764,7 +1809,10 @@
    "perimetre": [
     "Japon"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "sieges": 465,
     "uninominal": 289,
@@ -1789,7 +1837,10 @@
    "perimetre": [
     "Australie"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "chambre": "vote_preferentiel_majorite_absolue",
     "senat": "quota_par_etat"
@@ -1812,7 +1863,10 @@
    "perimetre": [
     "Inde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "mode": "uninominal_un_tour"
    },
@@ -1889,7 +1943,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "iran-nucleaire:conseil_securite",
+    "non-proliferation:conseil_securite"
+   ],
    "parametres": {
     "voix_requises": 9,
     "membres": 15,
@@ -1968,7 +2025,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:dirigeants"
+   ],
    "parametres": {
     "retournement": {
      "monde": 0.293,
@@ -2006,7 +2066,10 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "calendriers-echeances:elections",
+    "politique-interieure:partis"
+   ],
    "parametres": {
     "fichier": "registre/ipu/systemes-electoraux-2026-11-20.csv",
     "lecteur": "ipu_parlements.py"
@@ -2029,7 +2092,10 @@
    "perimetre": [
     "Brésil"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "elections-amerique-latine:scrutins",
+    "elections-amerique-latine:partis_gouverneurs"
+   ],
    "parametres": {
     "gouverneur": {
      "majorite": 50,
@@ -2760,7 +2826,9 @@
    "perimetre": [
     "monde"
    ],
-   "compartiments": [],
+   "compartiments": [
+    "humain:croyances"
+   ],
    "parametres": {
     "jean_paul_ii": [
      104,
@@ -2882,59 +2950,9 @@
    "statut": "auteur"
   },
   {
-   "regle": "regimes_fermes_contestation",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "afrique_limites_de_mandat",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
    "regle": "afrique_reelection_sortants",
    "manque": "situation ou événement non écrit",
    "statut": "absence"
-  },
-  {
-   "regle": "sondages_erreur_comparee",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "france_legislatives",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "seuils_parlements_nationaux_europe",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "seuils_elections_europeennes",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "ue_majorite_qualifiee",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "ue_sanctions_russie",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "europe_formation_gouvernement",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "voix_vers_sieges",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
   },
   {
    "regle": "afrique_lecture_auteur",
@@ -2942,79 +2960,14 @@
    "statut": "auteur"
   },
   {
-   "regle": "afrique_frontieres_coloniales",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "afrique_mines_conflits",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "afrique_flux_financiers_illicites",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "presidentielles_mode_de_scrutin",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "indonesie_presidentielle",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "japon_chambre_basse",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "australie_vote_preferentiel",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "inde_scrutin_uninominal",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
    "regle": "chine_maintien",
    "manque": "situation ou événement non écrit",
    "statut": "absence"
   },
   {
-   "regle": "onu_conseil_securite_vote",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "second_tour_retournement",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "parlements_mode_de_scrutin",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
-   "regle": "bresil_gouverneurs_senat",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
-  },
-  {
    "regle": "erreur_infranationale_mesuree",
    "manque": "situation ou événement non écrit",
    "statut": "absence"
-  },
-  {
-   "regle": "papes_voyages",
-   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
-   "statut": "source"
   }
  ],
  "doublons_probables": [

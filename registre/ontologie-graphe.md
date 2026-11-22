@@ -3,7 +3,7 @@
 Tiré tel quel des règles coutumières : un type de situation mène à un type d'événement par une règle. Rien n'est inventé ni fusionné.
 
 - 58 types de situation, 60 types d'événement, 60 règles reliées
-- 29 manques, 4 doublons probables (à trancher par l'auteur)
+- 6 manques, 4 doublons probables (à trancher par l'auteur)
 
 ## Doublons probables (formulations proches)
 
@@ -16,33 +16,10 @@ Tiré tel quel des règles coutumières : un type de situation mène à un type 
 
 - us_erreur_primaires_d_etat : situation ou événement non écrit (statut absence)
 - regimes_fermes_inertie : situation ou événement non écrit (statut auteur)
-- regimes_fermes_contestation : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- afrique_limites_de_mandat : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
 - afrique_reelection_sortants : situation ou événement non écrit (statut absence)
-- sondages_erreur_comparee : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- france_legislatives : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- seuils_parlements_nationaux_europe : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- seuils_elections_europeennes : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- ue_majorite_qualifiee : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- ue_sanctions_russie : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- europe_formation_gouvernement : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- voix_vers_sieges : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
 - afrique_lecture_auteur : situation ou événement non écrit (statut auteur)
-- afrique_frontieres_coloniales : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- afrique_mines_conflits : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- afrique_flux_financiers_illicites : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- presidentielles_mode_de_scrutin : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- indonesie_presidentielle : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- japon_chambre_basse : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- australie_vote_preferentiel : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- inde_scrutin_uninominal : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
 - chine_maintien : situation ou événement non écrit (statut absence)
-- onu_conseil_securite_vote : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- second_tour_retournement : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- parlements_mode_de_scrutin : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
-- bresil_gouverneurs_senat : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
 - erreur_infranationale_mesuree : situation ou événement non écrit (statut absence)
-- papes_voyages : aucun compartiment : la situation ne peut pas être reconnue dans les situations observées (statut source)
 
 ## Arêtes
 
@@ -54,32 +31,32 @@ Tiré tel quel des règles coutumières : un type de situation mène à un type 
 | élection américaine à venir, avec des sondages publiés | résultat d'une élection américaine prévu d'après les sondages | us_erreur_sondages_par_echelle | course | politique-americaine:elections |
 | élection nationale à venir, avec des sondages publiés | résultat d'une élection nationale prévu d'après les sondages, selon le temps restant avant le vote | us_erreur_selon_temps_restant | course | politique-americaine:elections, calendriers-echeances:elections |
 | membre sortant du Congrès américain candidat à sa réélection | réélection d'un sortant au Congrès américain | us_avantage_sortant_congres | maintien | politique-americaine:elections |
-| campagne de contestation non violente en cours contre un régime | succès d'une campagne de contestation non violente qui vise un changement de régime | regimes_fermes_contestation | evenement_rare |  |
-| dirigeant africain au pouvoir face à une limite de mandat | maintien au pouvoir d'un dirigeant africain au-delà des limites de mandat | afrique_limites_de_mandat | maintien |  |
-| élection nationale à venir, avec des sondages publiés | résultat d'une élection nationale prévu d'après les sondages | sondages_erreur_comparee | course |  |
-| élections législatives françaises convoquées | élection d'un député ou issue des élections législatives françaises | france_legislatives | course |  |
-| élections législatives à venir dans un pays européen | entrée d'un parti au parlement national ou répartition des sièges, dans un pays européen | seuils_parlements_nationaux_europe | course |  |
-| élections européennes à venir | sièges obtenus par une liste aux élections européennes | seuils_elections_europeennes | course |  |
-| proposition soumise au vote du Conseil de l'Union européenne | adoption d'une décision par le Conseil de l'Union européenne | ue_majorite_qualifiee | procedure |  |
-| sanctions de l'Union européenne contre la Russie en vigueur ou proposées | adoption ou renouvellement des sanctions de l'Union européenne contre la Russie | ue_sanctions_russie | procedure |  |
-| élections législatives tenues ou prévues dans une démocratie parlementaire | formation d'un gouvernement après des législatives dans une démocratie parlementaire | europe_formation_gouvernement | procedure |  |
-| élection législative à venir | conversion des voix en sièges dans une élection législative | voix_vers_sieges | course |  |
-| territoire ethnique africain coupé ou non par une frontière coloniale | violence politique dans un territoire ethnique africain | afrique_frontieres_coloniales | evenement_rare |  |
-| zone minière africaine face à une variation des prix des minerais | conflit local dans une zone minière africaine | afrique_mines_conflits | evenement_rare |  |
-| économies africaines (flux financiers mesurés sur plusieurs années) | montant des sorties financières illicites d'Afrique | afrique_flux_financiers_illicites | contexte |  |
-| élection présidentielle prévue ou en cours | déroulement ou issue d'une élection présidentielle (à un ou deux tours) | presidentielles_mode_de_scrutin | course |  |
-| élection présidentielle indonésienne prévue | issue de l'élection présidentielle indonésienne | indonesie_presidentielle | course |  |
-| élection de la Chambre des représentants du Japon prévue | majorité à la Chambre des représentants du Japon | japon_chambre_basse | course |  |
-| élection fédérale australienne prévue | élection d'un député ou majorité à la Chambre des représentants australienne | australie_vote_preferentiel | course |  |
-| élection de la Lok Sabha prévue | élection d'un député ou majorité à la Lok Sabha | inde_scrutin_uninominal | course |  |
+| campagne de contestation non violente en cours contre un régime | succès d'une campagne de contestation non violente qui vise un changement de régime | regimes_fermes_contestation | evenement_rare | humain:passage_acte, politique-interieure:regime |
+| dirigeant africain au pouvoir face à une limite de mandat | maintien au pouvoir d'un dirigeant africain au-delà des limites de mandat | afrique_limites_de_mandat | maintien | politique-interieure:dirigeants, humain:hierarchie |
+| élection nationale à venir, avec des sondages publiés | résultat d'une élection nationale prévu d'après les sondages | sondages_erreur_comparee | course | calendriers-echeances:elections, humain:opinion_publique |
+| élections législatives françaises convoquées | élection d'un député ou issue des élections législatives françaises | france_legislatives | course | calendriers-echeances:elections, politique-interieure:partis |
+| élections législatives à venir dans un pays européen | entrée d'un parti au parlement national ou répartition des sièges, dans un pays européen | seuils_parlements_nationaux_europe | course | calendriers-echeances:elections, politique-interieure:partis |
+| élections européennes à venir | sièges obtenus par une liste aux élections européennes | seuils_elections_europeennes | course | calendriers-echeances:elections, union-europeenne:institutions |
+| proposition soumise au vote du Conseil de l'Union européenne | adoption d'une décision par le Conseil de l'Union européenne | ue_majorite_qualifiee | procedure | union-europeenne:institutions, union-europeenne:politiques_communes |
+| sanctions de l'Union européenne contre la Russie en vigueur ou proposées | adoption ou renouvellement des sanctions de l'Union européenne contre la Russie | ue_sanctions_russie | procedure | russie-ukraine:sanctions, union-europeenne:relations_exterieures |
+| élections législatives tenues ou prévues dans une démocratie parlementaire | formation d'un gouvernement après des législatives dans une démocratie parlementaire | europe_formation_gouvernement | procedure | politique-interieure:gouvernement, politique-interieure:partis |
+| élection législative à venir | conversion des voix en sièges dans une élection législative | voix_vers_sieges | course | calendriers-echeances:elections, politique-interieure:partis |
+| territoire ethnique africain coupé ou non par une frontière coloniale | violence politique dans un territoire ethnique africain | afrique_frontieres_coloniales | evenement_rare | relief-et-montagnes:routes_frontieres, humain:nous_eux |
+| zone minière africaine face à une variation des prix des minerais | conflit local dans une zone minière africaine | afrique_mines_conflits | evenement_rare | dette-emergents:gisements, dette-emergents:matieres_premieres |
+| économies africaines (flux financiers mesurés sur plusieurs années) | montant des sorties financières illicites d'Afrique | afrique_flux_financiers_illicites | contexte | securite-publique:sanctions, securite-publique:corruption |
+| élection présidentielle prévue ou en cours | déroulement ou issue d'une élection présidentielle (à un ou deux tours) | presidentielles_mode_de_scrutin | course | calendriers-echeances:elections, politique-interieure:dirigeants |
+| élection présidentielle indonésienne prévue | issue de l'élection présidentielle indonésienne | indonesie_presidentielle | course | calendriers-echeances:elections, politique-interieure:dirigeants |
+| élection de la Chambre des représentants du Japon prévue | majorité à la Chambre des représentants du Japon | japon_chambre_basse | course | calendriers-echeances:elections, politique-interieure:partis |
+| élection fédérale australienne prévue | élection d'un député ou majorité à la Chambre des représentants australienne | australie_vote_preferentiel | course | calendriers-echeances:elections, politique-interieure:partis |
+| élection de la Lok Sabha prévue | élection d'un député ou majorité à la Lok Sabha | inde_scrutin_uninominal | course | calendriers-echeances:elections, politique-interieure:partis |
 | texte de loi ou nomination soumis au Sénat américain | adoption d'une loi ou confirmation d'une nomination par le Sénat américain | us_senat_cloture | procedure | politique-americaine:congres |
 | Congrès américain en session | nombre de lois adoptées par le Congrès américain | us_congres_productivite | procedure | politique-americaine:congres |
-| projet de résolution soumis au Conseil de sécurité de l'ONU | adoption d'une résolution par le Conseil de sécurité de l'ONU | onu_conseil_securite_vote | procedure |  |
+| projet de résolution soumis au Conseil de sécurité de l'ONU | adoption d'une résolution par le Conseil de sécurité de l'ONU | onu_conseil_securite_vote | procedure | iran-nucleaire:conseil_securite, non-proliferation:conseil_securite |
 | pays exposé à une tentative de coup d'État (taux mondial ou régional) | tentative ou réussite d'un coup d'État | coups_d_etat_frequence | evenement_rare | humain:hierarchie |
 | chef d'État ou de gouvernement au pouvoir | départ forcé (coup, révolte, assassinat) ou maintien au pouvoir d'un chef d'État ou de gouvernement | chefs_d_etat_sortie_irreguliere | maintien | humain:hierarchie |
-| présidentielle à deux tours dont le premier tour est connu | vainqueur du second tour d'une présidentielle à deux tours | second_tour_retournement | course |  |
-| élection législative à venir | issue d'une élection législative selon son mode de scrutin | parlements_mode_de_scrutin | course |  |
-| élections brésiliennes des gouverneurs ou des sénateurs prévues | élection d'un gouverneur ou d'un sénateur au Brésil | bresil_gouverneurs_senat | course |  |
+| présidentielle à deux tours dont le premier tour est connu | vainqueur du second tour d'une présidentielle à deux tours | second_tour_retournement | course | calendriers-echeances:elections, politique-interieure:dirigeants |
+| élection législative à venir | issue d'une élection législative selon son mode de scrutin | parlements_mode_de_scrutin | course | calendriers-echeances:elections, politique-interieure:partis |
+| élections brésiliennes des gouverneurs ou des sénateurs prévues | élection d'un gouverneur ou d'un sénateur au Brésil | bresil_gouverneurs_senat | course | elections-amerique-latine:scrutins, elections-amerique-latine:partis_gouverneurs |
 | politique monétaire américaine entre deux réunions du FOMC | décision de taux de la Réserve fédérale américaine | us_fed_calendrier | procedure | politique-americaine:reserve_federale, calendriers-echeances:banques_centrales |
 | affaire ou pourvoi pendant devant la Cour suprême américaine | décision, ordonnance ou acceptation d'un pourvoi par la Cour suprême américaine | us_cour_supreme_calendrier | procedure | politique-americaine:tribunaux, calendriers-echeances:dates_limites |
 | projet budgétaire au Congrès américain | adoption d'une loi de réconciliation budgétaire par le Congrès américain | us_reconciliation_budgetaire | procedure | politique-americaine:congres, politique-americaine:budget |
@@ -104,7 +81,7 @@ Tiré tel quel des règles coutumières : un type de situation mène à un type 
 | contrôle temporaire aux frontières intérieures de Schengen en vigueur ou notifié | levée ou prolongation d'un contrôle temporaire aux frontières intérieures de Schengen | schengen_controles_interieurs | procedure | securite-publique:frontieres |
 | pays membre de l'OPEP | départ ou suspension d'un pays membre de l'OPEP | opep_departs | evenement_rare | energie-mondiale:decisions |
 | tarifs de Royal Mail en vigueur | hausse des tarifs des lettres ou colis de Royal Mail | royal_mail_hausses_tarifs | maintien | inflation-mondiale:prix_conso |
-| pape en fonction | voyage d'un pape à l'étranger | papes_voyages | maintien |  |
+| pape en fonction | voyage d'un pape à l'étranger | papes_voyages | maintien | humain:croyances |
 | présidents américain et russe en fonction, sans sommet annoncé | rencontre en personne entre les présidents américain et russe | sommets_etats_unis_russie | evenement_rare | russie-ukraine:negociations |
 | saison de culture en cours (mars-août pour le maïs et le soja, avril-octobre pour le coton) avec des journées chaudes | rendement d'une récolte de maïs, de soja ou de coton aux États-Unis selon les températures de la saison | seuil_chaleur_mais_soja_coton | seuil | alimentation-mondiale:cultures, alimentation-mondiale:climat |
 | blé en fin de cycle (floraison, remplissage du grain) exposé à des maxima élevés | rendement d'une récolte de blé selon les températures maximales de la saison | seuil_chaleur_ble | seuil | alimentation-mondiale:cultures, alimentation-mondiale:climat |
