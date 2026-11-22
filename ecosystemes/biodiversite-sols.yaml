@@ -1,0 +1,338 @@
+# 0.10.418 — fiche créée le 2026-11-22 (décision de l'auteur, 3 h 53) : « plus gros trou » suivant de la carte (le vivant à
+# l'échelle du monde : espèces, populations, habitats, sols vivants, espèces envahissantes, aires protégées, accords).
+# Chiffres vérifiés sur les sources citées le 2026-11-22. Relations à vérifier sur sources. Les pollinisateurs restent dans
+# alimentation-mondiale (pont), pour ne pas dupliquer.
+theme: biodiversite-sols
+nom: Biodiversité et sols vivants (monde)
+declaration:
+  but: 'comprendre l''état du vivant à l''échelle du monde et ce qui le fait varier : 48 646 espèces menacées d''extinction
+    sur 172 620 évaluées (Liste rouge de l''UICN, 10 octobre 2025) ; baisse moyenne de 73 % de la taille des populations de
+    vertébrés suivies entre 1970 et 2020 (Indice Planète vivante, WWF et ZSL, 2024)'
+  limites: dedans les espèces, les populations sauvages, les habitats, la surexploitation, la vie du sol, les espèces
+    envahissantes, les aires protégées et les accords internationaux sur le vivant ; dehors les sols cultivés et les
+    pollinisateurs comme facteurs de production (alimentation-mondiale), le cas local de Fukuoka (foret-et-sols-vivants),
+    les pollutions (environnement-dechets), le vivant marin détaillé (oceans-et-fleuves), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (UICN, WWF et ZSL, IPBES, FAO, UNEP-WCMC) ; aucune personne
+    privée
+  date: '2026-11-22'
+  espace: le monde, par pays, par région et par milieu (eau douce, terre, mer)
+  temps: de la saison (une floraison, une invasion qui démarre) au demi-siècle (déclin des populations)
+  vitesse: la saison (cycle de vie), l'année (évaluations, conférences), la décennie (habitats, sols, extinctions)
+  taille: micro (un réseau de champignons, une colonie de vers de terre) à macro (le vivant du monde)
+compartiments:
+- id: especes
+  nom: État des espèces (risque d'extinction)
+  organisation: animal
+  elements:
+  - 172 620 espèces évaluées, dont 48 646 menacées d'extinction (Liste rouge de l'UICN, 10 octobre 2025)
+  - animaux, plantes et champignons (premiers 1 000 champignons évalués en 2025)
+  - catégories de l'UICN (vulnérable, en danger, en danger critique, éteinte)
+  acteurs:
+  - nom: une espèce menacée
+    taille: micro
+    espace: aire de répartition
+    vitesse: années
+    organisation: animal
+    facette: non_humain
+  - nom: UICN (Union internationale pour la conservation de la nature)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Liste rouge de l'UICN (iucnredlist.org ; usage non commercial, conditions à relire avant branchement)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: populations
+  nom: Populations sauvages (abondance)
+  organisation: animal
+  elements:
+  - baisse moyenne de 73 % de la taille des populations suivies, 1970-2020 (près de 35 000 populations de 5 495 espèces de
+    vertébrés ; baisse proportionnelle moyenne, pas un nombre d'animaux perdus)
+  - eau douce −85 %, terre −69 %, mer −56 %
+  - Amérique latine et Caraïbes −95 %, Afrique −76 %, Asie-Pacifique −60 %, Amérique du Nord −39 %, Europe et Asie centrale
+    −35 % (WWF et ZSL, Rapport Planète vivante, 9 octobre 2024)
+  acteurs:
+  - nom: une population de vertébrés suivie
+    taille: micro
+    espace: site
+    vitesse: saisons
+    organisation: animal
+    facette: non_humain
+  - nom: WWF et Société zoologique de Londres (ZSL)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde et régions
+    temps: décennies
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: Indice Planète vivante (livingplanetindex.org, données ZSL)
+    statut: a_brancher
+  - *id001
+- id: habitats
+  nom: Habitats et usage des terres
+  organisation: vegetal
+  elements:
+  - perte et dégradation des habitats, première menace citée, portée surtout par le système alimentaire (WWF, 2024)
+  - déforestation, conversion des prairies et des zones humides
+  - fragmentation des paysages
+  niveau:
+    espace: paysage à monde
+    temps: décennies
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: Global Forest Watch (perte de couvert arboré par pays, données publiques)
+    statut: a_brancher
+  - *id001
+- id: surexploitation
+  nom: Chasse, pêche et commerce d'espèces
+  organisation: animal
+  elements:
+  - surexploitation, deuxième menace citée (WWF, 2024)
+  - chasse et braconnage
+  - commerce légal et illégal d'espèces sauvages
+  acteurs:
+  - nom: CITES (Convention sur le commerce international des espèces menacées)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: saisons à années
+    taille: micro à macro
+  traces:
+  - source: base de données du commerce CITES (commerce déclaré)
+    statut: a_brancher
+  - *id001
+- id: sols_vivants
+  nom: Vie du sol, matière organique, érosion
+  organisation: sol_vivant
+  elements:
+  - 58 % des évaluations régionales montrent une dégradation des sols depuis 2015, environ 10 % une amélioration (FAO, État
+    des ressources en sols du monde 2026, 27 août 2026)
+  - érosion, menace la plus grave ; 81 % des évaluations jugent sa gestion mauvaise ou très mauvaise, 65 % la voient
+    s'aggraver depuis 2015 (même source)
+  - matière organique, déséquilibres en nutriments
+  - organismes du sol (vers de terre, champignons, bactéries)
+  acteurs:
+  - nom: un réseau de champignons du sol
+    taille: micro
+    espace: parcelle
+    vitesse: saisons
+    organisation: sol_vivant
+    facette: non_humain
+  - nom: une colonie de vers de terre
+    taille: micro
+    espace: parcelle
+    vitesse: saisons
+    organisation: sol_vivant
+    facette: non_humain
+  - nom: FAO, Partenariat mondial sur les sols
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: parcelle à continent
+    temps: décennies
+    vitesse: saisons à décennies
+    taille: micro à macro
+  traces:
+  - source: FAO, Partenariat mondial sur les sols (cartes mondiales du carbone organique des sols)
+    statut: a_brancher
+  - *id001
+- id: envahissantes
+  nom: Espèces envahissantes
+  organisation: animal
+  elements:
+  - plus de 37 000 espèces introduites hors de leur aire, plus de 3 500 nuisibles (IPBES, septembre 2023)
+  - rôle clé dans 60 % des extinctions recensées de plantes et d'animaux (même source)
+  - coût supérieur à 423 milliards de dollars par an en 2019 (même source)
+  - îles plus exposées
+  acteurs:
+  - nom: une espèce envahissante sur une île
+    taille: micro
+    espace: île
+    vitesse: saisons
+    organisation: animal
+    facette: non_humain
+  - nom: IPBES (Plateforme intergouvernementale sur la biodiversité et les services écosystémiques)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: île à continent
+    temps: années
+    vitesse: saisons à décennies
+    taille: micro à macro
+  traces:
+  - source: GRIIS (registre mondial des espèces introduites et envahissantes)
+    statut: a_brancher
+  - *id001
+- id: aires_protegees
+  nom: Aires protégées et objectif de 30 %
+  organisation: convention
+  elements:
+  - 17,6 % des terres et eaux intérieures et 8,4 % des océans protégés (Protected Planet Report 2024, UNEP-WCMC et UICN,
+    28 octobre 2024)
+  - 8,5 % des terres à la fois protégées et bien reliées ; haute mer très peu couverte (même source)
+  - objectif de 30 % des terres et des mers protégées d'ici 2030 (cadre de Kunming-Montréal)
+  acteurs:
+  - nom: un État qui déclare ses aires protégées
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: geopolitique
+    facette: collectif
+  - nom: peuples autochtones gardiens de territoires (en agrégat)
+    taille: méso
+    espace: territoire
+    vitesse: décennies
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: monde, par pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Protected Planet (base mondiale des aires protégées WDPA, UNEP-WCMC)
+    statut: a_brancher
+  - *id001
+- id: accords
+  nom: Accords sur le vivant (diversité biologique, Kunming-Montréal, CITES, désertification)
+  organisation: convention
+  elements:
+  - Convention sur la diversité biologique et son cadre mondial de Kunming-Montréal (décembre 2022)
+  - Convention contre la désertification (sa COP17 a reçu le rapport de la FAO sur les sols en 2026)
+  - CITES
+  acteurs:
+  - nom: secrétariat de la Convention sur la diversité biologique
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: années (conférences des parties)
+    taille: macro
+  traces:
+  - source: textes et décisions des conférences des parties (cbd.int, unccd.int, cites.org)
+    statut: a_brancher
+  - *id001
+relations:
+- de: habitats
+  vers: populations
+  effet: +
+  delai: années
+  force: forte
+  coupure: restauration des habitats
+  statut: a_verifier
+  texte: moins d'habitats, moins de populations sauvages (première menace citée par le WWF, 2024)
+- de: populations
+  vers: especes
+  effet: '-'
+  delai: décennies
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: des populations qui s'effondrent font monter le risque d'extinction des espèces
+- de: surexploitation
+  vers: populations
+  effet: '-'
+  delai: années
+  force: forte
+  coupure: quotas ou interdiction du commerce effectivement appliqués
+  statut: a_verifier
+  texte: la chasse, la pêche et le commerce au-delà du renouvellement font baisser les populations
+- de: envahissantes
+  vers: especes
+  effet: +
+  delai: années à décennies
+  force: forte
+  coupure: éradication précoce ou contrôle aux frontières
+  statut: a_verifier
+  texte: les espèces envahissantes font monter les extinctions, surtout sur les îles (rôle clé dans 60 % des extinctions
+    recensées, IPBES 2023) ; le compartiment cible lit ici le risque d'extinction
+- de: sols_vivants
+  vers: habitats
+  effet: +
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: un sol érodé et appauvri en matière organique dégrade les habitats qu'il porte
+- de: aires_protegees
+  vers: habitats
+  effet: +
+  delai: années
+  force: inconnue
+  coupure: aires protégées sur le papier seulement, mal gérées ou isolées
+  statut: a_verifier
+  texte: les aires protégées freinent la perte d'habitats, à condition d'être bien gérées et reliées (effet conditionnel ;
+    moins de 5 % des terres couvertes par des aires dont la gestion a été évaluée, Protected Planet Report 2024)
+- de: accords
+  vers: aires_protegees
+  effet: +
+  delai: années
+  force: inconnue
+  coupure: objectifs non transcrits dans les droits nationaux
+  statut: a_verifier
+  texte: les accords fixent des objectifs (30 % d'ici 2030) que les États transcrivent, avec retard
+ponts:
+- depuis: especes
+  vers: environnement-dechets:biodiversite
+  nature: même sujet, vu depuis les pollutions
+- depuis: sols_vivants
+  vers: foret-et-sols-vivants:sol_mineral
+  nature: le sol vivant, détaillé dans le cas de Fukuoka
+- depuis: sols_vivants
+  vers: foret-et-sols-vivants:champignons_symbiotiques
+  nature: champignons du sol, détaillés dans le cas de Fukuoka
+- depuis: sols_vivants
+  vers: alimentation-mondiale:sols
+  nature: les mêmes sols, vus comme terres cultivées
+- depuis: populations
+  vers: alimentation-mondiale:pollinisateurs
+  nature: les pollinisateurs, vus comme facteur de production (plus de 75 % des cultures alimentaires en dépendent en
+    partie, IPBES 2016)
+- depuis: sols_vivants
+  vers: cycles-biogeochimiques:microbes_du_sol
+  nature: les microbes du sol dans les cycles du carbone et de l'azote
+- depuis: habitats
+  vers: climat-extremes:vegetation
+  nature: le climat déplace et dégrade les habitats
+- depuis: populations
+  vers: oceans-et-fleuves:recifs
+  nature: le vivant marin le plus menacé
+- depuis: surexploitation
+  vers: oceans-et-fleuves:peche
+  nature: la pêche, part marine de la surexploitation
+- depuis: populations
+  vers: eau-douce-potable:ressources
+  nature: les populations d'eau douce, en baisse de 85 %, dépendent des fleuves, lacs et nappes
+- depuis: populations
+  vers: epidemies:reservoirs
+  nature: la faune sauvage comme réservoir de maladies (zoonoses)
