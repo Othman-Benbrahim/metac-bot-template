@@ -1,0 +1,286 @@
+# 0.10.422 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 34 : « commence dans l'ordre et comble ce qui manque »,
+# régions absentes en premier). Le Soudan a sa propre fiche (soudan), reliée par un pont. Chiffres vérifiés le
+# 2026-11-22. Relations à vérifier sur sources. Acteurs publics dans leur rôle public seulement.
+theme: afrique-subsaharienne
+nom: Afrique subsaharienne et Sahel
+declaration:
+  but: 'comprendre les dynamiques politiques et sécuritaires de l''Afrique subsaharienne, centrées sur le Sahel, les
+    Grands Lacs et la Corne : juntes, groupes armés, médiations, puissances extérieures, déplacements ; le Sahel concentre
+    près de la moitié des morts du terrorisme dans le monde en 2025, pour la troisième année de suite (Indice mondial du
+    terrorisme, Institut pour l''économie et la paix, mars 2026) ; près de 45 millions d''Africains déplacés de force
+    (Centre d''études stratégiques de l''Afrique, septembre 2026)'
+  limites: dedans le Sahel central (Mali, Burkina Faso, Niger) et ses voisins côtiers, les Grands Lacs (RDC, Rwanda, M23),
+    la Corne (Somalie, Éthiopie, Érythrée), les institutions régionales, les puissances extérieures, les déplacements,
+    les ressources du sous-sol ; dehors le Soudan (soudan), la dette (dette-emergents), les minerais vus comme marché
+    mondial, sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (IEP, ACSS, HCR, ACLED, presse) ; aucune personne privée
+  date: '2026-11-22'
+  espace: le pays, la région (Sahel, Grands Lacs, Corne), le continent
+  temps: du jour (une attaque, un blocus) à la décennie (insurrections installées)
+  vitesse: le jour (attaques), le mois (médiations, coups d'État), l'année (déplacements, alliances)
+  taille: micro (un convoi, un village) à macro (le continent)
+compartiments:
+- id: juntes_sahel
+  nom: Juntes du Sahel et Alliance des États du Sahel (Mali, Burkina Faso, Niger)
+  organisation: geopolitique
+  elements:
+  - sortie officielle des trois pays de la CEDEAO le 29 janvier 2025 ; confédération de l'Alliance des États du Sahel,
+    passeport et force militaire communs annoncés (presse, janvier-février 2025)
+  - gouvernements militaires issus de coups d'État
+  acteurs:
+  - nom: Alliance des États du Sahel (AES)
+    taille: macro
+    espace: région
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  - nom: gouvernement militaire du Mali (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: région
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: groupes_armes
+  nom: Groupes armés djihadistes (JNIM, État islamique)
+  organisation: geopolitique
+  elements:
+  - le Sahel concentre près de la moitié des 5 582 morts du terrorisme dans le monde en 2025 ; le Burkina Faso, premier
+    pays touché deux années de suite, est dépassé par le Pakistan en 2025 (846 morts, −45 %) (Indice mondial du
+    terrorisme 2026, IEP, 19 mars 2026)
+  - blocus du carburant imposé par le JNIM au Mali à partir du 3 septembre 2025 ; écoles fermées et coupures à Bamako à
+    l'automne 2025 ; blocus total de Bamako annoncé le 28 avril 2026 (presse et Wikipédia, à recouper)
+  acteurs:
+  - nom: JNIM (Groupe de soutien à l'islam et aux musulmans, affilié à al-Qaïda)
+    taille: macro
+    espace: région
+    vitesse: jours
+    organisation: geopolitique
+    facette: collectif
+  - nom: État islamique au Sahel
+    taille: méso
+    espace: région
+    vitesse: jours
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: région
+    temps: années
+    vitesse: jours
+    taille: micro à macro
+  traces:
+  - source: ACLED (événements de violence politique ; usage selon conditions, clé personnelle)
+    statut: a_brancher
+  - source: Indice mondial du terrorisme (IEP, annuel)
+    statut: a_brancher
+  - *id001
+- id: grands_lacs
+  nom: Grands Lacs (RDC, Rwanda, M23)
+  organisation: geopolitique
+  elements:
+  - Goma et Bukavu prises par le M23 au début de 2025 ; accord de paix RDC-Rwanda négocié par les États-Unis (2025) ;
+    accord-cadre de Doha entre la RDC et l'AFC/M23 (novembre 2025) ; feuille de route des négociations le 23 août 2026,
+    combats toujours signalés (Al Jazeera, 23 août 2026)
+  - médiateurs : États-Unis, Qatar, Togo, Suisse, Commission de l'Union africaine (même source)
+  acteurs:
+  - nom: AFC/M23 (alliance rebelle)
+    taille: méso
+    espace: région
+    vitesse: semaines
+    organisation: geopolitique
+    facette: collectif
+  - nom: gouvernement de la RDC (statut)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: statut
+  niveau:
+    espace: région
+    temps: années
+    vitesse: semaines
+    taille: méso à macro
+  traces:
+  - source: ACLED (événements de violence politique)
+    statut: a_brancher
+  - *id001
+- id: corne
+  nom: Corne de l'Afrique (Somalie, Éthiopie, Érythrée)
+  organisation: geopolitique
+  elements:
+  - insurrection d'al-Chabab en Somalie
+  - tensions entre l'Éthiopie et l'Érythrée, accès à la mer
+  - environ 4,4 millions de Somaliens déplacés de force (ACSS, septembre 2026)
+  niveau:
+    espace: région
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: institutions_regionales
+  nom: Institutions régionales (CEDEAO, Union africaine, communautés régionales)
+  organisation: convention
+  elements:
+  - CEDEAO après le départ des trois pays sahéliens
+  - Union africaine, médiations et suspensions après coups d'État
+  acteurs:
+  - nom: CEDEAO (Communauté économique des États de l'Afrique de l'Ouest)
+    taille: macro
+    espace: région
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  - nom: Union africaine
+    taille: macro
+    espace: continent
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: région à continent
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: puissances_exterieures
+  nom: Puissances extérieures (Russie, Chine, France, États-Unis, Turquie, pays du Golfe)
+  organisation: geopolitique
+  elements:
+  - forces russes auprès des juntes sahéliennes
+  - retrait militaire français du Sahel
+  - médiation américaine et qatarie dans les Grands Lacs
+  - investissements chinois et du Golfe
+  niveau:
+    espace: continent
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: deplacements
+  nom: Déplacements forcés
+  organisation: societe
+  elements:
+  - près de 45 millions d'Africains déplacés de force, environ 3 % de la population (45 737 653 au milieu de 2026) ;
+    Soudan 12,3 millions, RDC 6,5, Somalie 4,4, Nigeria 4,1, Burkina Faso 4,0 (probablement sous-compté), Mali 0,87
+    (ACSS d'après le HCR et l'OIM, 15 septembre 2026)
+  - sept pays font environ 85 % du total ; le conflit en est le moteur dominant (même source)
+  acteurs:
+  - nom: des personnes déplacées (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: societe
+    facette: collectif
+  - nom: HCR (Haut-Commissariat des Nations unies pour les réfugiés)
+    taille: macro
+    espace: monde
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: HCR, base de données des réfugiés (données publiques)
+    statut: a_brancher
+  - source: OIM, matrice de suivi des déplacements (DTM)
+    statut: a_brancher
+  - *id001
+- id: ressources
+  nom: Ressources du sous-sol (or, uranium, cobalt, coltan)
+  organisation: mineral
+  elements:
+  - or du Sahel, uranium du Niger
+  - cobalt et coltan de l'est de la RDC, enjeu des combats et des accords
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: groupes_armes
+  vers: deplacements
+  effet: +
+  delai: semaines
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: les attaques et les blocus chassent les populations
+- de: groupes_armes
+  vers: juntes_sahel
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: un blocus ou une offensive affaiblit l'autorité des juntes (cas du blocus de Bamako, 2025-2026)
+- de: juntes_sahel
+  vers: institutions_regionales
+  effet: '-'
+  delai: mois
+  force: forte
+  coupure: retour négocié
+  statut: a_verifier
+  texte: les juntes ont quitté la CEDEAO et affaiblissent l'intégration régionale
+- de: puissances_exterieures
+  vers: juntes_sahel
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: retrait du soutien extérieur
+  statut: a_verifier
+  texte: le soutien militaire russe conforte les juntes
+- de: puissances_exterieures
+  vers: grands_lacs
+  effet: '-'
+  delai: mois
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: les médiations américaine et qatarie cherchent à faire baisser les combats (le compartiment cible lit ici
+    l'intensité des combats)
+- de: ressources
+  vers: grands_lacs
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les minerais financent et motivent les combats dans l'est de la RDC
+ponts:
+- depuis: deplacements
+  vers: soudan:humanitaire
+  nature: le Soudan, premier pays de déplacés en Afrique
+- depuis: deplacements
+  vers: migrations-demographie:migrations
+  nature: les déplacements forcés dans les migrations
+- depuis: groupes_armes
+  vers: securite-publique:trafics
+  nature: trafics qui financent les groupes armés
+- depuis: ressources
+  vers: dette-emergents:gisements
+  nature: les gisements, vus depuis la dette
+- depuis: ressources
+  vers: rivalite-sino-americaine:terres_rares
+  nature: la course aux minerais critiques
+- depuis: deplacements
+  vers: alimentation-mondiale:importateurs
+  nature: insécurité alimentaire des pays importateurs et des déplacés
+- depuis: deplacements
+  vers: plancher-social:pauvrete
+  nature: pauvreté extrême restée élevée en Afrique subsaharienne
