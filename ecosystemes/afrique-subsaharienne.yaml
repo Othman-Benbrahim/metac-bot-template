@@ -1,17 +1,25 @@
 # 0.10.422 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 34 : « commence dans l'ordre et comble ce qui manque »,
 # régions absentes en premier). Le Soudan a sa propre fiche (soudan), reliée par un pont. Chiffres vérifiés le
 # 2026-11-22. Relations à vérifier sur sources. Acteurs publics dans leur rôle public seulement.
+# 0.10.441 — complétée le 2026-11-22 (remarque de l'auteur, 7 h 15 : « quasiment aucun lien, et tous sont négatifs,
+# rapport à la guerre et aux conflits ») : sept compartiments hors conflit (démographie et jeunesse, croissance,
+# intégration commerciale, argent mobile, accès à l'électricité, alternances électorales, création culturelle),
+# relations à vérifier, ponts vers 25 fiches. Le cadrage d'origine, centré sur la sécurité, est élargi.
 theme: afrique-subsaharienne
 nom: Afrique subsaharienne et Sahel
 declaration:
-  but: 'comprendre les dynamiques politiques et sécuritaires de l''Afrique subsaharienne, centrées sur le Sahel, les
-    Grands Lacs et la Corne : juntes, groupes armés, médiations, puissances extérieures, déplacements ; le Sahel concentre
+  but: 'comprendre l''Afrique subsaharienne dans son ensemble : une population jeune (âge médian d''environ 19 ans), une
+    croissance prévue à 4,5 % en 2026 (FMI, octobre 2026), l''argent mobile, l''intégration commerciale, l''accès à
+    l''électricité, des alternances électorales pacifiques (Sénégal, Botswana, Maurice, Ghana en 2024), la création
+    culturelle ; et aussi les dynamiques sécuritaires du Sahel, des Grands Lacs et de la Corne : juntes, groupes armés,
+    médiations, puissances extérieures, déplacements ; le Sahel concentre
     près de la moitié des morts du terrorisme dans le monde en 2025, pour la troisième année de suite (Indice mondial du
     terrorisme, Institut pour l''économie et la paix, mars 2026) ; près de 45 millions d''Africains déplacés de force
     (Centre d''études stratégiques de l''Afrique, septembre 2026)'
   limites: dedans le Sahel central (Mali, Burkina Faso, Niger) et ses voisins côtiers, les Grands Lacs (RDC, Rwanda, M23),
     la Corne (Somalie, Éthiopie, Érythrée), les institutions régionales, les puissances extérieures, les déplacements,
-    les ressources du sous-sol ; dehors le Soudan (soudan), la dette (dette-emergents), les minerais vus comme marché
+    les ressources du sous-sol, la démographie, la croissance, la zone de libre-échange continentale, l'argent mobile,
+    l'accès à l'électricité, les alternances électorales, la création culturelle ; dehors le Soudan (soudan), la dette (dette-emergents), les minerais vus comme marché
     mondial, sauf par les ponts
   observateur: notre carte, regard extérieur, sources publiques (IEP, ACSS, HCR, ACLED, presse) ; aucune personne privée
   date: '2026-11-22'
@@ -212,6 +220,127 @@ compartiments:
     taille: macro
   traces:
   - *id001
+- id: demographie_jeunesse
+  nom: Démographie et jeunesse
+  organisation: societe
+  elements:
+  - Afrique - 19 % de la population mondiale ; âge médian d'environ 19 ans (35 ans projetés en 2100) ; 3,9 enfants par
+    femme, 2,8 projetés en 2050 ; 28 % des moins de 25 ans du monde (46 % en 2100) (Pew Research Center d'après les
+    Perspectives de la population mondiale 2024 de l'ONU, 19 mai 2026)
+  niveau:
+    espace: continent
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: ONU, Perspectives de la population mondiale (données publiques)
+    statut: a_brancher
+- id: croissance
+  nom: Croissance et conjoncture
+  organisation: economie
+  elements:
+  - croissance prévue à 4,5 % en 2026 (4,3 % en avril) ; inflation médiane de 3,4 % en 2025, 4,3 % en 2026, 5 % en 2027 ;
+    intérêts de la dette - environ 12 % des recettes publiques ; aide bilatérale en baisse de 12 % en 2026 ; un épisode
+    El Niño pourrait retirer 0,5 point de croissance en 2027 (FMI, perspectives régionales, repris par TimesLIVE,
+    15 octobre 2026)
+  acteurs:
+  - nom: FMI (département Afrique)
+    taille: macro
+    espace: continent
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays et continent
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: FMI, Perspectives économiques régionales pour l'Afrique subsaharienne (deux fois par an)
+    statut: a_brancher
+- id: integration_commerciale
+  nom: Zone de libre-échange continentale africaine (ZLECAf)
+  organisation: convention
+  elements:
+  - 54 signataires sur 55 membres de l'Union africaine, 50 ratifications ; plus de 39 pays commercent dans l'initiative
+    de commerce guidé ; commerce intra-africain de 213,8 milliards de dollars en 2025, moins de 18 % du commerce du
+    continent (The Rio Times, mise à jour du 19 septembre 2026, à recouper sur le secrétariat de la ZLECAf)
+  acteurs:
+  - nom: secrétariat de la ZLECAf
+    taille: macro
+    espace: continent
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: continent
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: secrétariat de la ZLECAf (au-afcfta.org, état des ratifications)
+    statut: a_brancher
+- id: argent_mobile
+  nom: Argent mobile et paiements numériques
+  organisation: technique
+  elements:
+  - dans le monde, plus de 2 000 milliards de dollars de transactions en 2025, 2,3 milliards de comptes (+268 millions),
+    593 millions de comptes actifs à 30 jours (+15 %) ; l'Afrique subsaharienne fournit l'essentiel des nouveaux comptes
+    (GSMA, rapport sur l'état de l'argent mobile 2026, 24 mars 2026)
+  niveau:
+    espace: pays et continent
+    temps: années
+    vitesse: mois
+    taille: micro (un paiement) à macro
+  traces:
+  - source: GSMA, rapport annuel sur l'argent mobile
+    statut: a_brancher
+- id: acces_electricite
+  nom: Accès à l'électricité
+  organisation: technique
+  elements:
+  - 563 millions de personnes sans électricité en Afrique subsaharienne en 2024, 86 % du manque mondial (Suivi de l'ODD 7,
+    rapport 2026, AIE, IRENA, Banque mondiale)
+  - baisse record de 8 millions des personnes sans électricité en 2025 ; environ 9 millions raccordées par des kits
+    solaires domestiques (AIE, 2026)
+  - Mission 300 (Banque mondiale, Banque africaine de développement) - plus de 50 millions de personnes raccordées dans
+    40 pays, objectif 300 millions en 2030 ; 30 pacs énergétiques nationaux (Banque mondiale, 16 juin 2026)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: micro (un foyer) à macro
+  traces:
+  - source: Suivi de l'ODD 7 (données publiques, indicateur 7.1.1)
+    statut: a_brancher
+    odd: ['7.1.1']
+- id: alternances
+  nom: Alternances électorales et élections
+  organisation: statut
+  elements:
+  - 2024 - changements complets de pouvoir au Sénégal, au Botswana (fin de 58 ans de pouvoir du Parti démocratique du
+    Botswana), à Maurice et au Ghana ; l'ANC perd sa majorité absolue en Afrique du Sud pour la première fois en 30 ans
+    (Al Jazeera, 11 décembre 2024)
+  - contestations postélectorales ailleurs (Mozambique, octobre 2024) (même source)
+  niveau:
+    espace: pays
+    temps: mandats
+    vitesse: jours (le scrutin) à années
+    taille: macro
+  traces:
+  - *id001
+- id: creation_culturelle
+  nom: Création culturelle (musiques, cinéma, littérature)
+  organisation: ideologie
+  elements:
+  - musiques (afrobeats, amapiano), cinéma (Nollywood), littératures, diffusées par les plateformes et les diasporas
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - *id001
 relations:
 - de: groupes_armes
   vers: deplacements
@@ -262,6 +391,62 @@ relations:
   coupure: inconnue
   statut: a_verifier
   texte: les minerais financent et motivent les combats dans l'est de la RDC
+- de: demographie_jeunesse
+  vers: croissance
+  effet: +
+  delai: décennies
+  force: inconnue
+  coupure: emplois trop peu nombreux pour les jeunes
+  statut: a_verifier
+  texte: une population active qui grossit peut porter la croissance (dividende démographique), si les emplois suivent
+- de: acces_electricite
+  vers: croissance
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: réseau instable ou tarifs inabordables
+  statut: a_verifier
+  texte: l'électricité permet d'irriguer, de conserver, de produire et de travailler le soir
+- de: argent_mobile
+  vers: croissance
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: taxes sur les transactions, coupures d'internet
+  statut: a_verifier
+  texte: payer, épargner et emprunter sans banque élargit les échanges
+- de: integration_commerciale
+  vers: croissance
+  effet: +
+  delai: années
+  force: faible
+  coupure: barrières non tarifaires, routes et frontières
+  statut: a_verifier
+  texte: le commerce entre pays africains, encore faible, peut entraîner l'industrie
+- de: integration_commerciale
+  vers: institutions_regionales
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la zone de libre-échange donne aux institutions régionales un projet commun
+- de: groupes_armes
+  vers: croissance
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les blocus et l'insécurité freinent l'activité dans les pays touchés
+- de: alternances
+  vers: institutions_regionales
+  effet: +
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: les alternances pacifiques renforcent la norme démocratique que défendent les institutions régionales
 ponts:
 - depuis: deplacements
   vers: soudan:humanitaire
@@ -284,3 +469,100 @@ ponts:
 - depuis: deplacements
   vers: plancher-social:pauvrete
   nature: pauvreté extrême restée élevée en Afrique subsaharienne
+- depuis: demographie_jeunesse
+  vers: migrations-demographie:natalite_vieillissement
+  nature: la fécondité africaine, seule au-dessus du seuil de remplacement
+- depuis: demographie_jeunesse
+  vers: humain:jeunesse
+  nature: la jeunesse, moteur d'aspirations et de mobilisation
+- depuis: demographie_jeunesse
+  vers: societe-droits:education
+  nature: scolariser une population très jeune
+- depuis: demographie_jeunesse
+  vers: migrations-demographie:urbanisation
+  nature: l'urbanisation la plus rapide du monde
+- depuis: demographie_jeunesse
+  vers: transports-villes:forme_urbaine
+  nature: des villes qui grandissent vite (Lagos, Kinshasa)
+- depuis: croissance
+  vers: dette-emergents:dette_publique
+  nature: les intérêts de la dette, environ 12 % des recettes
+- depuis: croissance
+  vers: dette-emergents:inflation_locale
+  nature: l'inflation médiane en hausse
+- depuis: croissance
+  vers: economie-entreprises:conjoncture
+  nature: une des régions à la croissance la plus forte
+- depuis: croissance
+  vers: plancher-social:pauvrete
+  nature: la croissance et la pauvreté extrême
+- depuis: croissance
+  vers: climat-extremes:oscillations
+  nature: El Niño pourrait retirer 0,5 point de croissance en 2027
+- depuis: integration_commerciale
+  vers: economie-entreprises:echanges
+  nature: le commerce entre pays africains
+- depuis: integration_commerciale
+  vers: transport-maritime:ports
+  nature: les ports et corridors du commerce africain
+- depuis: argent_mobile
+  vers: sciences-techniques:adoption
+  nature: une technologie adoptée d'abord en Afrique
+- depuis: argent_mobile
+  vers: information-cyber:plateformes
+  nature: les plateformes de paiement mobile
+- depuis: argent_mobile
+  vers: crises-bancaires:depots
+  nature: des dépôts hors des banques
+- depuis: acces_electricite
+  vers: plancher-social:acces_energie
+  nature: l'Afrique subsaharienne, 86 % du manque d'électricité mondial
+  type: meme
+- depuis: acces_electricite
+  vers: energie-mondiale:demande
+  nature: la demande d'électricité qui monte
+- depuis: acces_electricite
+  vers: minerais-critiques:batteries
+  nature: kits solaires et batteries
+- depuis: acces_electricite
+  vers: corps-humain:soins
+  nature: des centres de santé électrifiés
+- depuis: alternances
+  vers: politique-interieure:elections
+  nature: les élections et les alternances
+- depuis: alternances
+  vers: dirigeants-elus:departs
+  nature: des sortants battus qui quittent le pouvoir pacifiquement
+- depuis: alternances
+  vers: corruption:perception
+  nature: la corruption, motif de vote contre les sortants (Ghana, Maurice)
+- depuis: alternances
+  vers: dirigeants-elus:mandats_succession
+  nature: le troisième mandat refusé (Sénégal, 2024)
+- depuis: creation_culturelle
+  vers: culture-memoire:creation
+  nature: les musiques et le cinéma africains
+- depuis: creation_culturelle
+  vers: migrations-demographie:diasporas
+  nature: les diasporas, relais de la création
+- depuis: creation_culturelle
+  vers: competitions-culture:medias
+  nature: prix et audiences des artistes africains
+- depuis: ressources
+  vers: minerais-critiques:cuivre
+  nature: le cuivre et le cobalt de la RDC et de la Zambie
+- depuis: ressources
+  vers: energie-mondiale:nucleaire_civil
+  nature: l'uranium du Niger
+- depuis: corne
+  vers: transport-maritime:detroits
+  nature: Bab el-Mandeb et les routes de la mer Rouge
+- depuis: puissances_exterieures
+  vers: militaire:bases_projection
+  nature: les bases étrangères à Djibouti
+- depuis: institutions_regionales
+  vers: dirigeants-elus:diplomatie_personnelle
+  nature: sommets de l'Union africaine et des communautés régionales
+- depuis: deplacements
+  vers: humain:besoins_fondamentaux
+  nature: les déplacés, privés d'abord de la sécurité et de l'abri
