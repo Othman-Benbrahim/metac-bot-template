@@ -187,6 +187,7 @@ compartiments:
     vitesse: jours (fermetures) à années
     taille: macro
   traces:
+  - {source: "flux RSS Simple Flying, famille « transport » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: ACI World et OACI (statistiques de trafic publiées)
     statut: a_brancher
   - *id001

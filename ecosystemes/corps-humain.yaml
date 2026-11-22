@@ -92,6 +92,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS ScienceDaily (psychiatrie), famille « psyche » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: OMS, Atlas de la santé mentale et World mental health today
     statut: a_brancher
   - *id001

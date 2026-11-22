@@ -70,6 +70,7 @@ compartiments:
     vitesse: secondes
     taille: micro
   traces:
+  - {source: "flux RSS ScienceDaily (psychologie), famille « psyche » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: identite_estime
   nom: Identité et estime de soi
@@ -166,6 +167,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS ScienceDaily (psychologie, psychiatrie), famille « psyche » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 relations:
 - de: emotions

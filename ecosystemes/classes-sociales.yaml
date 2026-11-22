@@ -40,6 +40,7 @@ compartiments:
     vitesse: années
     taille: micro (peu de personnes) à macro (part du patrimoine)
   traces:
+  - {source: "flux RSS Inequality.org, famille « inegalites » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - &id001
     source: World Inequality Database (wid.world, données publiques)
     statut: a_brancher

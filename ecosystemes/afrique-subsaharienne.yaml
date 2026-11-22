@@ -54,6 +54,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS AllAfrica, Afrique de l'Ouest, famille « afrique » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - &id001
     source: situations observées (lecteur-local, comptes/situations.jsonl)
     statut: a_brancher
@@ -159,6 +160,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS AllAfrica, Afrique de l'Ouest, famille « afrique » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: puissances_exterieures
   nom: Puissances extérieures (Russie, Chine, France, États-Unis, Turquie, pays du Golfe)

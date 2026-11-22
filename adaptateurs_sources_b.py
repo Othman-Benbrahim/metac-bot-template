@@ -183,7 +183,7 @@ def recit_russe(reg: Path, pays: str, colonne: str = "articles") -> list[tuple[s
 # 0.10.455 : familles en ombre exclues du total « tout », qui garde sa composition d'avant (les variantes _large,
 # _grasland, _fusion le sont aussi, par le préfixe).
 HORS_TOUT = ("sp_energie", "matieres_presse", "monnaie", "religion", "biodiversite", "defense", "sante_afrique", "crime",
-             "genre")
+             "genre", "psyche", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique")   # 0.10.456
 
 
 def rss(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:

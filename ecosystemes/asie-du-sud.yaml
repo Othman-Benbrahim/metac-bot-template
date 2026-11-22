@@ -46,6 +46,7 @@ compartiments:
     vitesse: jours
     taille: macro
   traces:
+  - {source: "flux RSS Dawn et The Diplomat, famille « asie » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: ACLED (événements de violence politique ; usage selon conditions, clé personnelle)
     statut: a_brancher
   - &id001
@@ -124,6 +125,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS Dawn, famille « asie » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: bangladesh
   nom: Bangladesh après le soulèvement de 2024

@@ -77,6 +77,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "flux RSS Korea.net (source d'État) et The Diplomat, famille « asie » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: japon
   nom: Japon (réarmement, gouvernement Takaichi)
@@ -134,6 +135,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS The Diplomat, famille « asie » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 relations:
 - de: russie_coree

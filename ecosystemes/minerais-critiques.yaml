@@ -79,6 +79,7 @@ compartiments:
     vitesse: jours (prix) à années (mines)
     taille: macro
   traces:
+  - {source: "flux RSS MINING.COM, famille « minerais » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: prix du cuivre (Bourse des métaux de Londres ; séries publiques de la Banque mondiale, « Pink Sheet »)
     statut: a_brancher
   - *id001
@@ -135,6 +136,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS MINING.COM, famille « minerais » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 relations:
 - de: controles_export

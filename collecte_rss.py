@@ -157,6 +157,19 @@ FLUX = {
     "crime": ["https://www.insightcrime.org/feed/",                       # InSight Crime (crime organisé, Amériques)
               "https://www.occrp.org/en/feed"],                           # OCCRP (enquêtes : corruption, blanchiment)
     "genre": ["https://www.unwomen.org/en/rss-feeds/news"],               # ONU Femmes : actualités
+    # 0.10.456 (décision d'auteur du 2026-11-22, 11 h 27 : second inventaire, fiches sans source) : en ombre, hors « tout »
+    "psyche": ["https://www.sciencedaily.com/rss/mind_brain/psychology.xml",     # ScienceDaily : psychologie
+               "https://www.sciencedaily.com/rss/mind_brain/psychiatry.xml"],    # ScienceDaily : psychiatrie
+    "asie": ["https://www.dawn.com/feeds/pakistan/",                             # Dawn (Pakistan)
+             "https://thediplomat.com/feed/",                                    # The Diplomat (Asie-Pacifique)
+             "https://www.korea.net/koreanet/rss/news/2"],                       # Korea.net (portail officiel sud-coréen)
+    "transport": ["https://www.railnews.co.uk/rss/news/",                        # Rail News (Royaume-Uni)
+                  "https://simpleflying.com/feed"],                              # Simple Flying (aviation)
+    "tech": ["https://restofworld.org/feed/latest"],                             # Rest of World (tech hors Occident)
+    "minerais": ["https://www.mining.com/feed/"],                                # MINING.COM
+    "inegalites": ["https://feeds.feedburner.com/Inequalityorg"],                # Inequality.org
+    "analyse": ["https://www.atlanticcouncil.org/feed"],                         # Atlantic Council (dont DFRLab)
+    "afrique": ["https://fr.allafrica.com/tools/headlines/rdf/westafrica/headlines.rdf"],  # AllAfrica, Afrique de l'Ouest
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
         "https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868",   # France 24 : monde
@@ -298,7 +311,7 @@ MATIERES = {m: re.compile(rx, re.I) for m, rx in {
 FAMILLES_MATIERES = {"economie", "matieres_presse"}
 MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 
-DEDOUBLONNER = {"crime", "defense", "biodiversite", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
+DEDOUBLONNER = {"crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 

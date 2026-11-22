@@ -109,6 +109,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "flux RSS Inequality.org, famille « inegalites » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateurs 10.1.1, 10.4.2
     statut: a_brancher
     odd: ['10.1.1', '10.4.2']

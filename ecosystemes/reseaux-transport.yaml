@@ -44,6 +44,7 @@ compartiments:
     vitesse: heures
     taille: macro
   traces:
+  - {source: "flux RSS Rail News, famille « transport » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: maritime
   nom: Réseau maritime
@@ -74,6 +75,7 @@ compartiments:
     vitesse: heures
     taille: macro
   traces:
+  - {source: "flux RSS Simple Flying, famille « transport » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: IATA, perspectives du transport aérien
     statut: a_brancher
 - id: noeuds
