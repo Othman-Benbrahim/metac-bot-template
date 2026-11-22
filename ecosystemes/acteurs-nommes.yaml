@@ -17,7 +17,8 @@
 # relations entre acteurs : nomme (A désigne B à une fonction), commande (A est au-dessus de B dans une hiérarchie),
 #   allie (soutien public réciproque), rival (concurrence ouverte pour un même pouvoir), negocie_avec (rencontres,
 #   accords), finance (argent déclaré ou rapporté de A vers B ou son camp), associe (cofondateurs, partenaires d'affaires),
-#   fournit (contrats de l'entreprise de A avec l'administration de B), desaccord_public (désaccord exprimé publiquement).
+#   fournit (contrats de l'entreprise de A avec l'administration de B), desaccord_public (désaccord exprimé publiquement),
+#   proche (proximité rapportée par la presse, sans soutien public déclaré ; ajoutée au second lot, 8 h 05).
 # relations vers la population (le « vers » est un compartiment) : gouverne (par une institution, champ « via »),
 #   elu_par (désigné ou jugé par le vote ou l'opinion), informe (possède ou dirige un média ou une plateforme),
 #   influence_documentee (campagne d'influence établie par une autorité, une justice ou une enquête nommée).
@@ -296,6 +297,116 @@ acteurs:
     sources:
       - {titre: "Reporters sans frontières, protagoniste Vincent Bolloré", url: "https://rsf.org/fr/protagoniste-vincent-bollor%C3%A9", consulte: "2026-11-22", lecture: titre}
 
+  # ------------------------------------------------------------------ second lot (accord de l'auteur, 8 h 05)
+  - id: erdogan
+    nom: Recep Tayyip Erdoğan
+    sorte: dirigeant
+    role: président de la Turquie, hôte de la COP31 (Antalya, novembre 2026)
+    depuis: '2014-08-28'
+    cycle: mandat présidentiel turc (5 ans, réélu en 2023)
+    compartiments: [dirigeants-elus:executifs, environnement-dechets:climat_politique]
+    sources:
+      - {titre: "Bulletin des négociations de la Terre (IISD), Erdoğan à la COP31, 11 novembre 2026", url: "https://enb.iisd.org/media/recep-tayyip-erdogan-president-republic-turkiye-2-unfccc-cop31-11nov2026-photo", consulte: "2026-11-22", lecture: titre}
+  - id: modi
+    nom: Narendra Modi
+    sorte: dirigeant
+    role: Premier ministre de l'Inde
+    depuis: '2014-05-26'
+    cycle: législature indienne (5 ans, reconduit en 2024)
+    compartiments: [asie-du-sud:inde_puissance, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Bureau du Premier ministre, discours au Forum des dirigeants mondiaux de l'Economic Times 2026", url: "https://www.pmindia.gov.in/en/news_updates/pm-addresses-the-economic-times-world-leaders-forum-2026/", consulte: "2026-11-22", lecture: titre}
+  - id: mbs
+    nom: Mohammed ben Salmane
+    sorte: dirigeant
+    role: prince héritier et Premier ministre d'Arabie saoudite, président du fonds souverain PIF
+    depuis: '2017-06-21'
+    cycle: monarchie (héritier désigné)
+    compartiments: [energie-mondiale:decisions, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Asharq Al-Awsat, le conseil du PIF présidé par le prince héritier approuve la stratégie 2026-2030", url: "https://english.aawsat.com/node/5262647", consulte: "2026-11-22", lecture: titre}
+  - id: kim
+    nom: Kim Jong-un
+    sorte: dirigeant
+    role: dirigeant suprême de la Corée du Nord
+    depuis: '2011-12-17'
+    cycle: pouvoir héréditaire sans terme
+    compartiments: [asie-du-nord-est:coree_du_nord, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Pravda (Ukraine), Poutine évoque le rôle des soldats nord-coréens à Koursk devant un proche de Kim Jong-un (16 novembre 2026)", url: "https://www.pravda.com.ua/eng/news/2026/11/16/8063179/", consulte: "2026-11-22", lecture: titre}
+  - id: von_der_leyen
+    nom: Ursula von der Leyen
+    sorte: dirigeant
+    role: présidente de la Commission européenne
+    depuis: '2019-12-01'
+    cycle: mandat de la Commission (5 ans, second mandat jusqu'en 2029)
+    compartiments: [union-europeenne:institutions, dirigeants-elus:executifs]
+    sources:
+      - {titre: "Euronews, von der Leyen juge qu'il est temps d'envisager un mandat de négociation avec la Russie (19 juin 2026)", url: "https://fr.euronews.com/my-europe/2026/06/19/von-der-leyen-juge-quil-est-temps-denvisager-un-mandat-de-negociation-avec-la-russie", consulte: "2026-11-22", lecture: titre}
+  - id: costa
+    nom: António Costa
+    sorte: dirigeant
+    role: président du Conseil européen
+    depuis: '2024-12-01'
+    cycle: mandat de deux ans et demi, renouvelable une fois
+    compartiments: [union-europeenne:institutions]
+    sources:
+      - {titre: "EUobserver, les dirigeants de l'Union confient les pourparlers de paix sur l'Ukraine à la France, l'Allemagne, le Royaume-Uni, l'Italie, la Pologne et Bruxelles (13 novembre 2026)", url: "https://euobserver.com/248871/eu-leaders-hand-ukraine-peace-talks-to-france-germany-uk-italy-poland-plus-brussels-instead-of-a-single-envoy/", consulte: "2026-11-22", lecture: lu}
+  - id: rutte
+    nom: Mark Rutte
+    sorte: dirigeant
+    role: secrétaire général de l'OTAN
+    depuis: '2024-10-01'
+    cycle: mandat de secrétaire général (sans terme fixe, habituellement 4 à 5 ans)
+    compartiments: [militaire:alliances, securite-europeenne:otan_ue]
+    sources:
+      - {titre: "SEAE, déclaration de la présidente von der Leyen avec le secrétaire général de l'OTAN Mark Rutte", url: "https://www.eeas.europa.eu/delegations/ukraine/statement-president-von-der-leyen-nato-secretary-general-mark-rutte_en", consulte: "2026-11-22", lecture: titre}
+  - id: rupert_murdoch
+    nom: Rupert Murdoch
+    sorte: patron
+    role: fondateur de News Corp et Fox Corporation (président émérite)
+    depuis: '1979-01-01'
+    cycle: succession familiale réglée en septembre 2025
+    compartiments: [information-cyber:recits]
+    sources:
+      - {titre: "Fortune, plainte de Trump contre Rupert Murdoch et le Wall Street Journal (13 avril 2026)", url: "https://fortune.com/2026/04/13/trumps-lawsuit-rupert-murdoch-wall-street-journal-epstein/", consulte: "2026-11-22", lecture: titre}
+  - id: lachlan_murdoch
+    nom: Lachlan Murdoch
+    sorte: patron
+    role: président de News Corp et patron de Fox Corporation, contrôle de l'empire familial
+    depuis: '2023-11-16'
+    cycle: direction d'entreprise
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    sources:
+      - {titre: "Euronews, la famille Murdoch parvient à un accord sur le contrôle de son empire (9 septembre 2025)", url: "https://fr.euronews.com/2025/09/09/la-famille-de-rupert-murdoch-parvient-a-un-accord-sur-le-controle-de-son-empire-mediatique", consulte: "2026-11-22", lecture: titre}
+  - id: arnault
+    nom: Bernard Arnault
+    sorte: patron
+    role: président de LVMH, propriétaire de médias français (Les Échos, Le Parisien, L'Opinion, L'Agefi)
+    depuis: '1989-01-01'
+    cycle: direction d'entreprise
+    compartiments: [information-cyber:recits, economie-entreprises:dirigeants_entreprise]
+    sources:
+      - {titre: "FashionUnited, le président de LVMH Bernard Arnault rachète L'Opinion et L'Agefi (juillet 2025)", url: "https://fashionunited.com/news/business/lvmh-chairman-bernard-arnault-acquires-lopinion-and-lagefi/2025070466974", consulte: "2026-11-22", lecture: titre}
+  - id: bezos
+    nom: Jeff Bezos
+    sorte: patron
+    role: fondateur et président exécutif d'Amazon, propriétaire du Washington Post et de Blue Origin
+    depuis: '1994-07-05'
+    cycle: actionnaire et président exécutif
+    compartiments: [information-cyber:recits, soleil-espace:satellites]
+    sources:
+      - {titre: "NPR, les éditoriaux du Washington Post omettent de signaler les intérêts financiers de Bezos (28 octobre 2025)", url: "https://www.npr.org/2025/10/28/nx-s1-5587932/washington-post-editorials-omit-a-key-disclosure-bezos-financial-ties", consulte: "2026-11-22", lecture: titre}
+  - id: adani
+    nom: Gautam Adani
+    sorte: patron
+    role: président du groupe Adani (ports, énergie, infrastructures)
+    depuis: '1988-01-01'
+    cycle: direction d'entreprise
+    compartiments: [economie-entreprises:dirigeants_entreprise, corruption:grande_corruption]
+    sources:
+      - {titre: "Investment Week, la pression monte sur Modi autour d'Adani (21 novembre 2024)", url: "https://www.investmentweek.com/politisches-donnerwetter-um-adani-modi-gerat-unter-druck/", consulte: "2026-11-22", lecture: lu}
+
 liens:
   # ------------------------------------------------------------------ hiérarchie et nominations
   - {id: n_trump_warsh, de: trump, vers: warsh, relation: nomme, domaine: politique monétaire, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "2026 (prestation de serment le 22 mai)"},
@@ -405,3 +516,62 @@ liens:
      texte: "Selon Reuters (septembre 2026), CNews donne une large tribune à l'extrême droite à l'approche de la présidentielle.",
      sources: [{titre: "Reuters via Internazionale (4 septembre 2026)", url: "https://www.internazionale.it/ultime-notizie-reuters/2026/09/04/bollore-s-cnews-gives-far-right-a-bullhorn-as-french-presidential-election-looms", lecture: titre},
                {titre: "Reporters sans frontières, protagoniste Vincent Bolloré", url: "https://rsf.org/fr/protagoniste-vincent-bollor%C3%A9", lecture: titre}]}
+  # ------------------------------------------------------------------ second lot (accord de l'auteur, 8 h 05)
+  - {id: a_costa_macron, de: costa, vers: macron, relation: allie, domaine: pourparlers de paix sur l'Ukraine, temps: {statut: conjoncturel, cycle: guerre en Ukraine, phase: "sommet informel de Dublin, 13 novembre 2026"},
+     texte: "L'équipe européenne des pourparlers réunit les institutions de l'Union et le groupe des cinq (France, Allemagne, Royaume-Uni, Italie, Pologne).",
+     sources: [{titre: "EUobserver (13 novembre 2026)", url: "https://euobserver.com/248871/eu-leaders-hand-ukraine-peace-talks-to-france-germany-uk-italy-poland-plus-brussels-instead-of-a-single-envoy/", lecture: lu}]}
+  - {id: a_costa_merz, de: costa, vers: merz, relation: allie, domaine: pourparlers de paix sur l'Ukraine, temps: {statut: conjoncturel, cycle: guerre en Ukraine, phase: "sommet informel de Dublin, 13 novembre 2026"},
+     texte: "Même équipe européenne des pourparlers.",
+     sources: [{titre: "EUobserver (13 novembre 2026)", url: "https://euobserver.com/248871/eu-leaders-hand-ukraine-peace-talks-to-france-germany-uk-italy-poland-plus-brussels-instead-of-a-single-envoy/", lecture: lu}]}
+  - {id: a_costa_burnham, de: costa, vers: burnham, relation: allie, domaine: pourparlers de paix sur l'Ukraine, temps: {statut: conjoncturel, cycle: guerre en Ukraine, phase: "sommet informel de Dublin, 13 novembre 2026"},
+     texte: "Le Royaume-Uni, hors de l'Union, fait partie du groupe des cinq de la coalition des volontaires.",
+     sources: [{titre: "EUobserver (13 novembre 2026)", url: "https://euobserver.com/248871/eu-leaders-hand-ukraine-peace-talks-to-france-germany-uk-italy-poland-plus-brussels-instead-of-a-single-envoy/", lecture: lu}]}
+  - {id: g_vdl_rutte, de: von_der_leyen, vers: rutte, relation: negocie_avec, domaine: défense européenne et Ukraine, temps: {statut: conjoncturel, cycle: mandats en cours, phase: "2025-2026"},
+     texte: "Déclarations communes de la Commission et de l'OTAN.",
+     sources: [{titre: "SEAE, déclaration commune", url: "https://www.eeas.europa.eu/delegations/ukraine/statement-president-von-der-leyen-nato-secretary-general-mark-rutte_en", lecture: titre}]}
+  - {id: g_rutte_trump, de: rutte, vers: trump, relation: negocie_avec, domaine: "guerre en Ukraine, alliance", temps: {statut: conjoncturel, cycle: mandats en cours, phase: "depuis 2025"},
+     texte: "Le secrétaire général de l'OTAN porte la relation de l'alliance avec le président américain.",
+     sources: [{titre: "Foreign Policy, Rutte, Trump et le cessez-le-feu (22 octobre 2025)", url: "https://foreignpolicy.com/2025/10/22/mark-rutte-trump-russia-ukraine-cease-fire-putin-zelensky/", lecture: titre}]}
+  - {id: a_kim_poutine, de: kim, vers: poutine, relation: allie, domaine: guerre en Ukraine, temps: {statut: conjoncturel, cycle: guerre en Ukraine, phase: "soldats nord-coréens à Koursk (2024-2026)"},
+     texte: "La Corée du Nord a envoyé des soldats combattre pour la Russie ; Poutine leur a rendu hommage en novembre 2026.",
+     sources: [{titre: "Pravda (Ukraine), 16 novembre 2026", url: "https://www.pravda.com.ua/eng/news/2026/11/16/8063179/", lecture: titre},
+               {titre: "The Moscow Times, la Corée du Nord reconnaît que ses soldats ont déminé pour la Russie (5 août 2026)", url: "https://www.themoscowtimes.com/2026/08/05/north-korea-acknowledges-its-troops-cleared-mines-for-russia", lecture: titre}]}
+  - {id: g_erdogan_poutine, de: erdogan, vers: poutine, relation: negocie_avec, domaine: guerre en Ukraine, temps: {statut: conjoncturel, cycle: guerre en Ukraine, phase: "sommet de l'Organisation de coopération de Shanghai (2025)"},
+     texte: "Au sommet de l'OCS, Erdoğan appelle à la paix en Ukraine.",
+     sources: [{titre: "Worthy News, Xi, Poutine et Modi au sommet de Shanghai ; Erdoğan appelle à la paix", url: "https://www.worthynews.com/?p=108373", lecture: titre}]}
+  - {id: g_xi_modi, de: xi, vers: modi, relation: negocie_avec, domaine: Organisation de coopération de Shanghai, temps: {statut: conjoncturel, cycle: mandats en cours, phase: "sommet de l'OCS (2025)"},
+     texte: "Sommet de l'OCS réunissant Xi, Poutine et Modi.",
+     sources: [{titre: "Worthy News", url: "https://www.worthynews.com/?p=108373", lecture: titre}]}
+  - {id: g_mbs_trump, de: mbs, vers: trump, relation: negocie_avec, domaine: "investissements, technologie, défense", temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "sommet saoudo-américain"},
+     texte: "Sommet saoudo-américain, accords et protocoles signés ; investissements du fonds souverain aux États-Unis.",
+     sources: [{titre: "Asharq Al-Awsat, déclaration commune après le sommet saoudo-américain", url: "https://english.aawsat.com/gulf/5210743-joint-statement-following-saudi-us-summit-multiple-agreements-and-memoranda", lecture: titre}]}
+  - {id: r_trump_murdoch, de: trump, vers: rupert_murdoch, relation: desaccord_public, domaine: presse (affaire Epstein), temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "plainte de 2025, rejetée en avril 2026"},
+     texte: "Plainte de 10 milliards de dollars de Trump contre le Wall Street Journal et Rupert Murdoch pour un article sur ses liens avec Epstein, rejetée par un juge.",
+     sources: [{titre: "News4JAX (AP), 13 avril 2026", url: "https://www.news4jax.com/gallery/news/2026/04/13/judge-dismisses-trumps-10b-lawsuit-against-wsj-murdoch-over-reporting-on-ties-to-epstein", lecture: lu}]}
+  - {id: n_murdoch_lachlan, de: rupert_murdoch, vers: lachlan_murdoch, relation: nomme, domaine: succession de l'empire familial, temps: {statut: conjoncturel, cycle: succession familiale, phase: "accord de septembre 2025"},
+     texte: "L'accord familial de septembre 2025 donne à Lachlan le contrôle de l'empire.",
+     sources: [{titre: "Euronews (9 septembre 2025)", url: "https://fr.euronews.com/2025/09/09/la-famille-de-rupert-murdoch-parvient-a-un-accord-sur-le-controle-de-son-empire-mediatique", lecture: titre}]}
+  - {id: p_bezos_trump, de: bezos, vers: trump, relation: proche, domaine: affaires et presse, temps: {statut: conjoncturel, cycle: mandat présidentiel américain, phase: "second mandat"},
+     texte: "Le président dit que Bezos et Zuckerberg « ont été formidables » avec lui.",
+     sources: [{titre: "Trump says Bezos and Zuckerberg have been great", url: "https://www.yahoo.com/news/trump-says-bezos-zuckerberg-great-162214378.html", lecture: titre}]}
+  - {id: p_adani_modi, de: adani, vers: modi, relation: proche, domaine: infrastructures et énergie, temps: {statut: conjoncturel, cycle: mandats de Modi, phase: "depuis 2014"},
+     texte: "Adani est perçu comme un proche de Modi ; son groupe a beaucoup grandi pendant ses mandats ; des procureurs américains l'ont accusé en 2024 d'un système de corruption (accusation, non jugée).",
+     sources: [{titre: "Investment Week (21 novembre 2024)", url: "https://www.investmentweek.com/politisches-donnerwetter-um-adani-modi-gerat-unter-druck/", lecture: lu}]}
+  - {id: i_lachlan, de: lachlan_murdoch, vers: information-cyber:recits, relation: informe, via: "Fox News, The Wall Street Journal, The Times, The Sun", domaine: information, temps: {statut: conjoncturel, cycle: direction d'entreprise, phase: "depuis l'accord de 2025"},
+     texte: "Contrôle de Fox Corporation et de News Corp.",
+     sources: [{titre: "Euronews (9 septembre 2025)", url: "https://fr.euronews.com/2025/09/09/la-famille-de-rupert-murdoch-parvient-a-un-accord-sur-le-controle-de-son-empire-mediatique", lecture: titre}]}
+  - {id: i_arnault, de: arnault, vers: information-cyber:recits, relation: informe, via: "Les Échos, Le Parisien, L'Opinion, L'Agefi", domaine: information, temps: {statut: conjoncturel, cycle: propriété de médias, phase: "rachats de 2025"},
+     texte: "Propriétaire de plusieurs titres de presse française.",
+     sources: [{titre: "FashionUnited (juillet 2025)", url: "https://fashionunited.com/news/business/lvmh-chairman-bernard-arnault-acquires-lopinion-and-lagefi/2025070466974", lecture: titre}]}
+  - {id: i_bezos, de: bezos, vers: information-cyber:recits, relation: informe, via: "The Washington Post", domaine: information, temps: {statut: conjoncturel, cycle: propriété du journal, phase: "depuis 2013 ; recentrage des pages opinion en 2025"},
+     texte: "Propriétaire du Washington Post ; il a recentré les pages opinion sur les libertés individuelles et le libre marché.",
+     sources: [{titre: "Jeff Bezos Exerts More Control Of Washington Post Opinion", url: "https://www.yahoo.com/news/jeff-bezos-exerts-more-control-145125844.html", lecture: titre}]}
+  - {id: g_mbs, de: mbs, vers: energie-mondiale:decisions, relation: gouverne, via: "État saoudien, Aramco, fonds souverain PIF, OPEP+", domaine: pétrole et investissements, temps: {statut: conjoncturel, cycle: monarchie, phase: "stratégie du PIF 2026-2030"},
+     texte: "Le prince héritier préside le fonds souverain et oriente la politique pétrolière du royaume.",
+     sources: [{titre: "Asharq Al-Awsat, stratégie du PIF 2026-2030", url: "https://english.aawsat.com/node/5262647", lecture: titre}]}
+  - {id: g_vdl, de: von_der_leyen, vers: union-europeenne:politiques_communes, relation: gouverne, via: "Commission européenne (initiative législative, exécution)", domaine: politiques communes, temps: {statut: conjoncturel, cycle: mandat de la Commission, phase: "second mandat"},
+     texte: "La Commission propose les lois de l'Union et les exécute.",
+     sources: [{titre: "Euronews (19 juin 2026)", url: "https://fr.euronews.com/my-europe/2026/06/19/von-der-leyen-juge-quil-est-temps-denvisager-un-mandat-de-negociation-avec-la-russie", lecture: titre}]}
+  - {id: g_erdogan, de: erdogan, vers: environnement-dechets:climat_politique, relation: gouverne, via: "présidence de la COP31 (Antalya)", domaine: climat, temps: {statut: conjoncturel, cycle: COP annuelles, phase: "COP31, novembre 2026"},
+     texte: "Hôte de la conférence, il appelle à traduire les engagements climatiques en actes.",
+     sources: [{titre: "Daily Sabah, Erdoğan à la COP31", url: "https://www.dailysabah.com/politics/erdogan-pushes-climate-pledges-into-action-as-cop31-talks-advance/news", lecture: titre}]}
