@@ -1,0 +1,318 @@
+# 0.10.439 — fiche créée le 2026-11-22 (remarque de l'auteur, 7 h 09 : « autre catégorie écosystémique sous-évaluée, les
+# dirigeants et les élus, à développer »). Jusqu'ici un compartiment de politique-interieure (pont « même »). Les
+# dirigeants vus par leurs trois facettes (niveaux.yaml : la personne par ses faits publics, le statut, l'idéologie),
+# toujours dans leur rôle public ; jamais de diagnostic ni de profil psychologique, jamais de personne privée.
+# Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: dirigeants-elus
+nom: Dirigeants et élus (rôle public, monde)
+declaration:
+  but: 'comprendre les dirigeants et les élus comme écosystème : qui gouverne (28 pays dirigés par une femme en 2026, 101
+    pays qui ne l''ont jamais été, ONU Femmes), comment on arrive au pouvoir, comment on y reste et comment on le quitte
+    (19 % de sorties irrégulières et environ 21 % de dirigeants exilés, emprisonnés ou morts dans l''année qui suit leur
+    départ, 1875-2004, base Archigos), ce qui les protège ou les expose (popularité, entourage, justice, immunités)'
+  limites: dedans les chefs d'État et de gouvernement, les ministres, les parlementaires, les mandats et successions, les
+    départs et ce qui suit, la popularité, l'entourage, les programmes, la justice et les immunités, la diplomatie
+    personnelle, l'âge et la santé tels que déclarés publiquement ; dehors les partis et les procédures nationales
+    (politique-interieure), les dirigeants américains détaillés (politique-americaine), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (ONU Femmes, UIP, Archigos, presse) ; personnalités
+    publiques dans leur rôle public seulement ; aucune inférence psychologique ou médicale
+  date: '2026-11-22'
+  espace: le pays, l'alliance, le monde
+  temps: du jour (une déclaration, une démission) à la décennie (un règne long)
+  vitesse: le jour (crise, démission), le mois (sondages, remaniements), le mandat
+  taille: micro (une personne dans son rôle) à macro (le pouvoir d'un État)
+compartiments:
+- id: executifs
+  nom: Chefs d'État et de gouvernement
+  organisation: statut
+  elements:
+  - 28 pays dirigés par une femme chef d'État ou de gouvernement en 2026 ; 101 pays jamais dirigés par une femme (ONU
+    Femmes, 11 mars 2026)
+  - pouvoirs constitutionnels, pouvoirs réels, cohabitation
+  acteurs:
+  - nom: un chef d'État (statut)
+    taille: micro
+    espace: pays
+    vitesse: jours
+    organisation: statut
+    facette: statut
+  - nom: un chef d'État (la personne, par ses faits publics)
+    taille: micro
+    espace: pays
+    vitesse: jours
+    organisation: personne
+    facette: personne
+  niveau:
+    espace: pays
+    temps: mandats
+    vitesse: jours à mois
+    taille: micro à macro
+  traces:
+  - source: Archigos et bases de dirigeants (publiques)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: ministres
+  nom: Ministres et gouvernements
+  organisation: statut
+  elements:
+  - femmes à 22,4 % des postes de ministre dans le monde (ONU Femmes, 11 mars 2026)
+  - remaniements, démissions, coalitions
+  niveau:
+    espace: pays
+    temps: mois à années
+    vitesse: semaines
+    taille: micro à méso
+  traces:
+  - *id001
+- id: parlementaires
+  nom: Parlementaires et élus
+  organisation: statut
+  elements:
+  - femmes à 27,5 % des sièges parlementaires dans le monde, progrès lents (Union interparlementaire et ONU Femmes, mars
+    2026)
+  - élus locaux, régionaux, européens
+  acteurs:
+  - nom: Union interparlementaire (UIP)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: législatures
+    vitesse: mois
+    taille: méso
+  traces:
+  - source: UIP, base Parline (composition des parlements, publique)
+    statut: a_brancher
+- id: mandats_succession
+  nom: Mandats, limites et successions
+  organisation: convention
+  elements:
+  - limites de mandats, réformes constitutionnelles pour les prolonger, successions familiales ou désignées
+  niveau:
+    espace: pays
+    temps: mandats à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: departs
+  nom: Départs du pouvoir et ce qui suit
+  organisation: convention
+  elements:
+  - sur 3 025 dirigeants de 188 pays (1875-2004), 19,07 % sont sortis de façon irrégulière ; dans l'année qui suit leur
+    départ, 12,43 % ont été exilés, 5,09 % emprisonnés, 3,83 % sont morts (Goemans, Gleditsch et Chiozza, « Introducing
+    Archigos »)
+  - démissions, défaites électorales, destitutions, coups d'État, décès en fonction
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours (le départ) à années
+    taille: micro à macro
+  traces:
+  - source: Archigos (dates et modes d'entrée et de sortie des dirigeants)
+    statut: a_brancher
+- id: popularite
+  nom: Popularité et légitimité
+  organisation: societe
+  elements:
+  - cotes d'approbation, sondages, mobilisation de rue
+  niveau:
+    espace: pays
+    temps: mois
+    vitesse: semaines
+    taille: macro
+  traces:
+  - *id001
+- id: entourage
+  nom: Entourage (conseillers, famille au pouvoir, cercles)
+  organisation: entourage
+  elements:
+  - conseillers, chefs de cabinet, proches placés à des postes publics
+  niveau:
+    espace: pays
+    temps: mandats
+    vitesse: semaines
+    taille: micro
+  traces:
+  - *id001
+- id: programmes
+  nom: Idées et programmes portés
+  organisation: ideologie
+  elements:
+  - programmes électoraux, discours, familles politiques
+  acteurs:
+  - nom: un dirigeant (les idées qu'il porte)
+    taille: micro
+    espace: pays
+    vitesse: années
+    organisation: ideologie
+    facette: ideologie
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: micro à macro
+  traces:
+  - *id001
+- id: justice_immunites
+  nom: Justice, immunités et poursuites
+  organisation: convention
+  elements:
+  - procès d'anciens dirigeants, immunités de fonction, mandats d'arrêt internationaux
+  - Cour pénale internationale - décision de juin 2026 indiquant qu'une personne recherchée venue à une conférence de
+    paix convoquée par l'ONU en qualité de chef d'État pourrait échapper à l'arrestation, au moins à court terme (The
+    Moscow Times, 23 juin 2026)
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: mois
+    taille: micro à macro
+  traces:
+  - *id001
+- id: diplomatie_personnelle
+  nom: Diplomatie personnelle (sommets, rencontres, appels)
+  organisation: geopolitique
+  elements:
+  - sommets bilatéraux et multilatéraux, rencontres annoncées ou annulées, relations entre dirigeants
+  niveau:
+    espace: monde
+    temps: semaines à années
+    vitesse: jours
+    taille: micro à macro
+  traces:
+  - *id001
+- id: age_sante
+  nom: Âge et santé des dirigeants (déclarations publiques seulement)
+  organisation: personne
+  elements:
+  - âge en fonction, absences et hospitalisations annoncées officiellement ; aucune inférence ni diagnostic
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours à années
+    taille: micro
+  traces:
+  - *id001
+relations:
+- de: popularite
+  vers: departs
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: régime fermé où la popularité ne décide pas
+  statut: a_verifier
+  texte: une forte impopularité rapproche le départ (défaite, démission, destitution) dans les régimes ouverts (le
+    compartiment cible lit ici le maintien au pouvoir)
+- de: departs
+  vers: mandats_succession
+  effet: '-'
+  delai: années
+  force: inconnue
+  coupure: garanties de sortie (amnistie, exil négocié)
+  statut: a_verifier
+  texte: quand perdre le pouvoir expose à l'exil, à la prison ou à la mort, le dirigeant s'accroche (le compartiment
+    source lit ici le risque après le départ, la cible le respect des limites de mandat)
+- de: justice_immunites
+  vers: departs
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: immunité de fonction
+  statut: a_verifier
+  texte: les poursuites précipitent des démissions, ou retiennent au pouvoir celui que l'immunité protège
+- de: entourage
+  vers: executifs
+  effet: +
+  delai: semaines
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'entourage filtre l'information et oriente les décisions du dirigeant
+- de: age_sante
+  vers: mandats_succession
+  effet: +
+  delai: mois à années
+  force: moyenne
+  coupure: succession déjà organisée
+  statut: a_verifier
+  texte: l'âge et la santé déclarée ouvrent la question de la succession
+- de: programmes
+  vers: popularite
+  effet: +
+  delai: mois
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: les idées portées et leur mise en œuvre font la popularité (le sens dépend du programme)
+- de: diplomatie_personnelle
+  vers: popularite
+  effet: +
+  delai: semaines
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: un sommet réussi peut relever brièvement la popularité (effet de stature)
+- de: parlementaires
+  vers: ministres
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: régime présidentiel
+  statut: a_verifier
+  texte: dans les régimes parlementaires, la majorité fait et défait les gouvernements
+ponts:
+- depuis: executifs
+  vers: politique-interieure:dirigeants
+  nature: les mêmes dirigeants, vus depuis la politique intérieure
+  type: meme
+- depuis: parlementaires
+  vers: politique-interieure:elections
+  nature: les élections désignent les élus
+- depuis: popularite
+  vers: humain:opinion_publique
+  nature: l'opinion publique et l'approbation des dirigeants
+- depuis: entourage
+  vers: politique-americaine:entourage
+  nature: l'entourage présidentiel américain
+- depuis: executifs
+  vers: politique-americaine:executif
+  nature: l'exécutif américain
+- depuis: departs
+  vers: politique-interieure:coups_transitions
+  nature: les coups d'État comme mode de départ
+- depuis: justice_immunites
+  vers: corruption:grande_corruption
+  nature: les poursuites pour corruption au sommet
+- depuis: justice_immunites
+  vers: russie-ukraine:negociations
+  nature: le mandat d'arrêt de la CPI et les conférences de paix
+  type: influence
+- depuis: diplomatie_personnelle
+  vers: rivalite-sino-americaine:diplomatie
+  nature: les sommets entre dirigeants américain et chinois
+- depuis: diplomatie_personnelle
+  vers: guerre-levant:mediateurs
+  nature: les médiateurs et les rencontres de dirigeants
+- depuis: executifs
+  vers: societe-droits:genre_minorites
+  nature: la place des femmes au sommet du pouvoir
+- depuis: mandats_succession
+  vers: calendriers-echeances:elections
+  nature: les échéances électorales et les fins de mandat
+- depuis: programmes
+  vers: humain:polarisation
+  nature: les programmes et la polarisation
+- depuis: executifs
+  vers: militaire:doctrines
+  nature: le chef de l'exécutif, chef des armées et de la dissuasion
+- depuis: departs
+  vers: elections-amerique-latine:executif
+  nature: alternances et départs en Amérique latine
+- depuis: age_sante
+  vers: corps-humain:vieillissement
+  nature: le vieillissement, aussi au sommet du pouvoir
