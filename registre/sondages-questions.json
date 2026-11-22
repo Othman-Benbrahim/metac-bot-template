@@ -33,46 +33,17 @@
   },
   "manifold:Q9gNdcP2lc": {
    "election": "Hungarian Election",
-   "statut": "ok",
+   "statut": "sujet_absent_des_tableaux",
    "source": "wikipedia",
    "page": "Opinion polling for the 2026 Hungarian parliamentary election",
    "sujet": "Orban (Fidesz)",
-   "colonne_sujet": "Orbán",
+   "colonne_sujet": null,
    "jeu": "2026-03-15",
-   "moyennes": {
-    "Orbán": {
-     "moyenne": 41.5,
-     "n": 2,
-     "dernier": "2026-02-17"
-    },
-    "Magyar": {
-     "moyenne": 40.0,
-     "n": 2,
-     "dernier": "2026-02-17"
-    },
-    "Dobrev": {
-     "moyenne": 4.0,
-     "n": 1,
-     "dernier": "2026-01-27"
-    },
-    "Toroczkai": {
-     "moyenne": 4.0,
-     "n": 1,
-     "dernier": "2026-01-27"
-    }
-   },
+   "moyennes": {},
    "relecture_lead": {
-    "lignes_verifiees": 14,
-    "accord": 1.0
-   },
-   "relecture_wikitexte": {
-    "colonne": "Orbán",
-    "moyenne": 41.5,
-    "n": 2,
-    "ecart_points": 0.0
-   },
-   "alertes": [],
-   "verification": "confirme_lead"
+    "lignes_verifiees": 0,
+    "accord": null
+   }
   },
   "manifold:hnC5dO8EZ5": {
    "election": "Clacton by election",
@@ -254,7 +225,7 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the 2026 Portuguese presidential election",
+     "Opinion polling for United States presidential elections",
      "page refusée"
     ],
     [
@@ -452,7 +423,7 @@
      "page refusée"
     ],
     [
-     "2026 United States House of Representatives elections in Michigan",
+     "2028 Democratic Party presidential primaries",
      "page refusée"
     ],
     [
@@ -733,11 +704,11 @@
      "page refusée"
     ],
     [
-     "2026 São Paulo general election",
+     "58th Legislature of the National Congress",
      "page refusée"
     ],
     [
-     "58th Legislature of the National Congress",
+     "2026 São Paulo general election",
      "page refusée"
     ],
     [
@@ -1038,7 +1009,7 @@
      "aucun tableau lisible (HTTP 200)"
     ],
     [
-     "United Russia",
+     "2026 United States elections",
      "page refusée"
     ],
     [
@@ -1046,7 +1017,7 @@
      "page refusée"
     ],
     [
-     "2026 United States elections",
+     "United Russia",
      "page refusée"
     ],
     [
@@ -1486,11 +1457,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "2024 French legislative election",
+     "2024 Russian presidential election",
      "page refusée"
     ],
     [
-     "2024 Russian presidential election",
+     "2024 French legislative election",
      "page refusée"
     ],
     [
@@ -1498,11 +1469,11 @@
      "page refusée"
     ],
     [
-     "2023 Spanish general election",
+     "2008 Spanish general election",
      "page refusée"
     ],
     [
-     "2008 Spanish general election",
+     "2023 Spanish general election",
      "page refusée"
     ],
     [
@@ -1617,15 +1588,15 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the 2010 Brazilian presidential election",
-     "page refusée"
-    ],
-    [
      "2018 São Paulo gubernatorial election",
      "page refusée"
     ],
     [
-     "2026 Federal District gubernatorial election",
+     "Opinion polling for the 2010 Brazilian presidential election",
+     "page refusée"
+    ],
+    [
+     "Flávio Bolsonaro 2026 presidential campaign",
      "page refusée"
     ],
     [
@@ -1655,7 +1626,7 @@
      "page refusée"
     ],
     [
-     "2026 Paraná gubernatorial election",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -2764,11 +2735,11 @@
      "page refusée"
     ],
     [
-     "Same-sex marriage in Brazil",
+     "2026 São Paulo general election",
      "page refusée"
     ],
     [
-     "2026 São Paulo general election",
+     "Same-sex marriage in Brazil",
      "page refusée"
     ],
     [
@@ -2918,11 +2889,11 @@
      "page refusée"
     ],
     [
-     "2026 São Paulo general election",
+     "58th Legislature of the National Congress",
      "page refusée"
     ],
     [
-     "58th Legislature of the National Congress",
+     "2026 São Paulo general election",
      "page refusée"
     ],
     [
@@ -3175,7 +3146,7 @@
      "page refusée"
     ],
     [
-     "2026 Paraná gubernatorial election",
+     "2026 Santa Catarina general election",
      "page refusée"
     ],
     [
@@ -3684,7 +3655,7 @@
      "page refusée"
     ],
     [
-     "2026 United States House of Representatives elections in Michigan",
+     "2028 Democratic Party presidential primaries",
      "page refusée"
     ],
     [
@@ -3790,11 +3761,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "Statewide opinion polling for the 2016 Republican Party presidential primaries",
+     "Statewide opinion polling for the 2028 Republican Party presidential primaries",
      "page refusée"
     ],
     [
-     "Statewide opinion polling for the 2028 Republican Party presidential primaries",
+     "Statewide opinion polling for the 2016 Republican Party presidential primaries",
      "page refusée"
     ],
     [
@@ -3806,7 +3777,7 @@
      "page refusée"
     ],
     [
-     "Nationwide opinion polling for the 2008 Republican Party presidential primaries",
+     "Nationwide opinion polling for the 2016 Republican Party presidential primaries",
      "page refusée"
     ],
     [
