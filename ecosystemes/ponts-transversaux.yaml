@@ -409,3 +409,8 @@ ponts:
 - {de: classes-sociales:classes_populaires, vers: partis-politiques:gauche_sociale_democrate, canal: comportement, nature: "le vote populaire, base historique de la gauche, s'en éloigne en partie", type: voisinage}
 - {de: classes-sociales:tres_riches, vers: partis-politiques:adhesion_militantisme, canal: economie, nature: "les grandes fortunes financent partis et campagnes"}
 - {de: reseaux-sociaux:desinformation, vers: partis-politiques:droite_radicale_populiste, canal: information, nature: "certaines campagnes d'influence étrangères relaient des thèmes antisystème (à vérifier cas par cas)", type: voisinage}
+# ---------- psyché humaine (remarque de l'auteur, 2026-11-22, 9 h 31)
+- {de: plancher-social:pauvrete, vers: psyche:sante_mentale, canal: sante, nature: "la pauvreté pèse sur la santé mentale"}
+- {de: guerre-levant:humanitaire, vers: psyche:sante_mentale, canal: sante, nature: "les traumatismes de guerre"}
+- {de: reseaux-sociaux:graphe_algorithme, vers: psyche:solitude_lien, canal: comportement, nature: "relations en ligne et solitude, lien discuté", type: voisinage}
+- {de: humain:enfance, vers: psyche:developpement, canal: comportement, nature: "l'adversité précoce marque le développement"}

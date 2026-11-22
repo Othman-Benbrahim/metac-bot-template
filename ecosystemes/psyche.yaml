@@ -1,0 +1,389 @@
+# 0.10.454 — fiche créée le 2026-11-22 (remarque de l'auteur, 9 h 31 : « alimenter une fiche sur l'écosystème psychologique des
+# hommes, centré sur le mot « humain », relié à tout ce qui le concerne, une sorte de carte mentale de sa psyché, à relier
+# aux notions de ce qui motive l'homme, qui existent déjà »). Carte mentale : un compartiment central (le soi) et ses
+# branches ; les motivations restent dans « humain » (40 compartiments), reliées ici par des ponts. Mécanismes généraux
+# seulement : aucune inférence psychologique sur une personne réelle. Chiffres vérifiés le 2026-11-22. Relations à vérifier.
+theme: psyche
+nom: Psyché humaine (carte mentale autour du soi)
+declaration:
+  but: 'dresser la carte mentale de la psyché humaine autour d''un centre, le soi : émotions, personnalité, pensée rapide et
+    lente, identité, attachement, développement, inconscient, valeurs, habitudes, solitude, santé mentale ; plus d''un
+    milliard de personnes vivent avec un trouble mental (OMS, 2025) et une sur six se sent seule (OMS, 2025)'
+  limites: dedans les grandes structures de la psyché ; dehors ce qui pousse à agir (humain), le corps (corps-humain), les
+    réseaux de relations (reseaux-humains), sauf par les ponts
+  observateur: notre carte, regard extérieur ; travaux classiques de psychologie et données de l'OMS ; aucune inférence sur
+    une personne réelle
+  date: '2026-11-22'
+  espace: la personne, son entourage, l'humanité
+  temps: de la seconde (une émotion) à la vie entière
+  vitesse: la seconde, l'année, la vie
+  taille: micro (une personne) à macro (des milliards)
+compartiments:
+- id: soi
+  nom: L'humain, le soi (centre de la carte)
+  organisation: personne
+  elements:
+  - le point où se rejoignent le corps, les émotions, la pensée, la mémoire, les liens et les valeurs ; tout le reste de la fiche gravite autour
+  - chaque compartiment de la fiche « Ce qui pousse l'humain à agir » s'y rattache (ponts)
+  niveau:
+    espace: la personne
+    temps: la vie
+    vitesse: secondes à décennies
+    taille: micro
+  traces:
+  - &id001
+    source: travaux classiques de psychologie ; OMS (santé mentale, lien social)
+    statut: a_brancher
+- id: emotions
+  nom: Émotions
+  organisation: psychologique
+  elements:
+  - quelques émotions de base reconnues dans toutes les cultures - joie, tristesse, peur, colère, dégoût, surprise (travaux d'Ekman, années 1970)
+  - elles orientent l'attention, la mémoire et la décision
+  niveau:
+    espace: la personne
+    temps: secondes à jours
+    vitesse: secondes
+    taille: micro
+  traces:
+  - *id001
+- id: personnalite
+  nom: Personnalité (les grands traits)
+  organisation: psychologique
+  elements:
+  - cinq grands traits - ouverture, conscience, extraversion, agréabilité, névrosisme (modèle des « Big Five ») ; stables à l'âge adulte, en partie héritables, modulés par le milieu
+  niveau:
+    espace: la personne
+    temps: décennies
+    vitesse: années
+    taille: micro
+  traces:
+  - *id001
+- id: cognition
+  nom: Pensée rapide et pensée lente, attention, mémoire
+  organisation: psychologique
+  elements:
+  - pensée rapide, intuitive et pensée lente, délibérée (Kahneman, Système 1 et Système 2, 2011) ; attention limitée ; mémoire qui reconstruit plus qu'elle n'enregistre ; biais cognitifs
+  niveau:
+    espace: la personne
+    temps: secondes à années
+    vitesse: secondes
+    taille: micro
+  traces:
+  - *id001
+- id: identite_estime
+  nom: Identité et estime de soi
+  organisation: personne
+  elements:
+  - identités multiples (rôles, appartenances) ; l'appartenance à un groupe nourrit l'estime de soi et la préférence pour son groupe (théorie de l'identité sociale, Tajfel et Turner)
+  niveau:
+    espace: la personne et le groupe
+    temps: années
+    vitesse: mois
+    taille: micro
+  traces:
+  - *id001
+- id: attachement
+  nom: Attachement
+  organisation: entourage
+  elements:
+  - les premiers liens avec les parents façonnent la sécurité affective et la manière d'aimer et de faire confiance (Bowlby, Ainsworth)
+  niveau:
+    espace: la famille
+    temps: enfance à vie
+    vitesse: années
+    taille: micro
+  traces:
+  - *id001
+- id: developpement
+  nom: Développement tout au long de la vie
+  organisation: personne
+  elements:
+  - de l'enfance à la vieillesse, chaque âge a ses tâches et ses crises (Erikson) ; le cerveau reste plastique, surtout tôt
+  niveau:
+    espace: la personne
+    temps: la vie
+    vitesse: années
+    taille: micro
+  traces:
+  - *id001
+- id: inconscient_defenses
+  nom: Inconscient et mécanismes de défense
+  organisation: psychologique
+  elements:
+  - une grande part de la vie mentale échappe à la conscience ; déni, projection, rationalisation protègent de ce qui fait mal
+  niveau:
+    espace: la personne
+    temps: années
+    vitesse: secondes
+    taille: micro
+  traces:
+  - *id001
+- id: valeurs_sens
+  nom: Valeurs et sens
+  organisation: ideologie
+  elements:
+  - valeurs de base (sécurité, pouvoir, réussite, bienveillance, universalisme, tradition…, Schwartz) ; besoin de donner un sens à sa vie (Frankl)
+  niveau:
+    espace: la personne et la culture
+    temps: décennies
+    vitesse: années
+    taille: micro
+  traces:
+  - *id001
+- id: habitudes
+  nom: Habitudes et apprentissage
+  organisation: psychologique
+  elements:
+  - la répétition et la récompense installent des automatismes ; la plupart des gestes quotidiens sont des habitudes
+  niveau:
+    espace: la personne
+    temps: mois à années
+    vitesse: jours
+    taille: micro
+  traces:
+  - *id001
+- id: solitude_lien
+  nom: Solitude et lien social
+  organisation: entourage
+  elements:
+  - environ une personne sur six se sent seule ; plus de 871 000 morts par an associées à la solitude ; 17 à 21 % des 13-29 ans se disent seuls (Commission de l'OMS sur le lien social, 30 juin 2025)
+  niveau:
+    espace: la personne et son entourage
+    temps: mois à années
+    vitesse: mois
+    taille: micro à macro
+  traces:
+  - *id001
+- id: sante_mentale
+  nom: Santé mentale
+  organisation: psychologique
+  elements:
+  - plus d'un milliard de personnes vivent avec un trouble mental, surtout anxiété et dépression ; ces deux troubles coûtent environ 1 000 milliards de dollars par an ; les États y consacrent en médiane 2 % de leur budget de santé (OMS, 2 septembre 2025)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: emotions
+  vers: cognition
+  effet: '+'
+  delai: secondes
+  force: forte
+  coupure: pensée lente mobilisée
+  statut: a_verifier
+  texte: l'émotion colore le jugement et la mémoire (le compartiment cible lit ici la part d'intuition)
+- de: attachement
+  vers: identite_estime
+  effet: '+'
+  delai: années
+  force: forte
+  coupure: relations réparatrices plus tard
+  statut: a_verifier
+  texte: un attachement sûr nourrit l'estime de soi
+- de: developpement
+  vers: personnalite
+  effet: '+'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les expériences de chaque âge façonnent les traits
+- de: solitude_lien
+  vers: sante_mentale
+  effet: '+'
+  delai: mois
+  force: forte
+  coupure: renouer des liens
+  statut: a_verifier
+  texte: la solitude augmente l'anxiété et la dépression (le compartiment cible lit ici la fréquence des troubles)
+- de: habitudes
+  vers: soi
+  effet: '+'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: on devient ce que l'on répète
+- de: valeurs_sens
+  vers: cognition
+  effet: '+'
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les valeurs filtrent ce qu'on remarque et ce qu'on croit
+- de: inconscient_defenses
+  vers: emotions
+  effet: '-'
+  delai: secondes
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les défenses tiennent à distance les émotions pénibles
+- de: identite_estime
+  vers: valeurs_sens
+  effet: '+'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'identité porte des valeurs
+- de: sante_mentale
+  vers: soi
+  effet: '-'
+  delai: mois
+  force: forte
+  coupure: soins
+  statut: a_verifier
+  texte: un trouble mental atteint toute la vie du soi (le compartiment source lit ici la fréquence des troubles)
+- de: emotions
+  vers: soi
+  effet: '+'
+  delai: secondes
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: les émotions sont la façon dont le soi vit ce qui lui arrive
+- de: cognition
+  vers: soi
+  effet: '+'
+  delai: secondes
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: la pensée construit le récit de soi
+ponts:
+- depuis: soi
+  vers: humain:besoins_fondamentaux
+  nature: le soi d'abord vivant - la survie
+  type: voisinage
+- depuis: soi
+  vers: humain:intention
+  nature: le soi décide d'agir
+- depuis: soi
+  vers: humain:attitude
+  nature: ce que le soi juge bon pour lui
+  type: voisinage
+- depuis: soi
+  vers: humain:controle_percu
+  nature: le sentiment de pouvoir agir
+  type: voisinage
+- depuis: soi
+  vers: humain:opinion_privee
+  nature: ce que le soi pense sans le dire
+  type: voisinage
+- depuis: emotions
+  vers: humain:instant
+  nature: la seconde avant - peur, dégoût, élan
+  type: voisinage
+- depuis: emotions
+  vers: humain:hormones
+  nature: émotions et hormones
+  type: voisinage
+- depuis: emotions
+  vers: humain:empathie
+  nature: ressentir avec autrui
+  type: voisinage
+- depuis: emotions
+  vers: humain:disponibilite
+  nature: ce qui est chargé d'émotion vient d'abord à l'esprit
+- depuis: cognition
+  vers: humain:risque_percu
+  nature: pertes, probabilités, cadre
+  type: voisinage
+- depuis: cognition
+  vers: humain:croyance_complot
+  nature: biais et croyances en des forces cachées
+- depuis: cognition
+  vers: humain:marche_cognitif
+  nature: le marché de l'information
+  type: voisinage
+- depuis: identite_estime
+  vers: humain:nous_eux
+  nature: l'identité de groupe trace le nous et le eux
+- depuis: identite_estime
+  vers: humain:hierarchie
+  nature: rang et estime de soi
+  type: voisinage
+- depuis: attachement
+  vers: humain:liens
+  nature: le tissu des liens
+  type: voisinage
+- depuis: attachement
+  vers: humain:enfance
+  nature: l'enfance, temps de l'attachement
+  type: voisinage
+- depuis: developpement
+  vers: humain:jeunesse
+  nature: l'adolescence
+  type: voisinage
+- depuis: personnalite
+  vers: humain:genes_milieu
+  nature: gènes et milieu
+  type: voisinage
+- depuis: valeurs_sens
+  vers: humain:morale
+  nature: valeurs et morale
+  type: voisinage
+- depuis: valeurs_sens
+  vers: humain:croyances
+  nature: sens, religion, spiritualité
+  type: voisinage
+- depuis: valeurs_sens
+  vers: humain:aspiration
+  nature: ce qu'on vise dépend de ce qui compte
+- depuis: habitudes
+  vers: humain:conventions
+  nature: habitudes collectives et conventions
+  type: voisinage
+- depuis: habitudes
+  vers: humain:norme_percue
+  nature: faire comme les proches
+  type: voisinage
+- depuis: inconscient_defenses
+  vers: humain:symboles
+  nature: symboles et images
+  type: voisinage
+- depuis: inconscient_defenses
+  vers: humain:falsification
+  nature: ce qu'on cache aux autres et à soi
+  type: voisinage
+- depuis: solitude_lien
+  vers: humain:stress_chronique
+  nature: la solitude comme stress durable
+- depuis: sante_mentale
+  vers: corps-humain:sante_mentale
+  nature: la même santé mentale, vue depuis le corps
+  type: meme
+- depuis: attachement
+  vers: famille-genre:structures_familiales
+  nature: la famille, lieu de l'attachement
+  type: voisinage
+- depuis: solitude_lien
+  vers: reseaux-humains:cercles
+  nature: les cercles de relations
+  type: voisinage
+- depuis: identite_estime
+  vers: classes-sociales:capitaux_reproduction
+  nature: habitudes de classe et identité
+  type: voisinage
+- depuis: cognition
+  vers: reseaux-sociaux:graphe_algorithme
+  nature: l'attention captée par les algorithmes
+  type: voisinage
+- depuis: identite_estime
+  vers: frontieres:local
+  nature: identités locales
+  type: voisinage
+- depuis: valeurs_sens
+  vers: culture-memoire:creation
+  nature: la création, quête de sens
+  type: voisinage
+- depuis: valeurs_sens
+  vers: croyances-religions:sans_religion
+  nature: sens sans religion
+  type: voisinage
