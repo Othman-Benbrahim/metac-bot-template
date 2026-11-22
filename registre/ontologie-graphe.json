@@ -857,7 +857,12 @@
     ]
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "Electoral College",
+    "collège électoral",
+    "electoral votes",
+    "grands électeurs"
+   ],
    "sources": [
     "https://www.archives.gov/electoral-college/about"
    ]
@@ -899,7 +904,11 @@
     "defaut": "majorite_relative"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "primary runoff",
+    "runoff election",
+    "second tour de la primaire"
+   ],
    "sources": [
     "https://ballotpedia.org/Runoff_primary",
     "https://ballotpedia.org/Primary_election_vote_requirements_by_state"
@@ -938,7 +947,12 @@
     ]
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "ranked-choice",
+    "ranked choice voting",
+    "top-two primary",
+    "jungle primary"
+   ],
    "sources": [
     "https://ballotpedia.org/Primary_election_vote_requirements_by_state"
    ]
@@ -977,7 +991,12 @@
     "conversion_sigma_part": 1.6
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "poll",
+    "polls",
+    "polling",
+    "pollster"
+   ],
    "sources": [
     "https://www.goodreads.com/author_blog_posts/16871327-the-polls-are-all-right",
     "https://www.natesilver.net/p/so-how-did-the-polls-do-in-2024-its"
@@ -1012,7 +1031,15 @@
     }
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "poll",
+    "polls",
+    "polling",
+    "sondage",
+    "sondages",
+    "Umfrage",
+    "Umfragen"
+   ],
    "sources": [
     "https://eprints.soton.ac.uk/421260/1/JenningsWlezien_PollingErrors.pdf"
    ]
@@ -1041,7 +1068,12 @@
     "cycles": 12
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "incumbent",
+    "reelection",
+    "re-election",
+    "seeks reelection"
+   ],
    "sources": [
     "https://www.brookings.edu/wp-content/uploads/2024/11/2-7-Full.pdf",
     "https://www.brookings.edu/wp-content/uploads/2024/11/2-8-Full.pdf"
@@ -1070,7 +1102,14 @@
     "succes_non_violent_1990s_max": 0.65
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "protesters",
+    "opposition protests",
+    "manifestants",
+    "Demonstranten",
+    "crackdown",
+    "répression"
+   ],
    "sources": [
     "https://www.journalofdemocracy.org/articles/the-future-of-nonviolent-resistance/"
    ]
@@ -1101,7 +1140,14 @@
     "coups_depuis_2015_pays": 8
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "term limit",
+    "term limits",
+    "third term",
+    "troisième mandat",
+    "limite de mandats",
+    "constitutional amendment"
+   ],
    "sources": [
     "https://africacenter.org/spotlight/term-limit-evasions-coups-africa-same-coin/"
    ]
@@ -1138,7 +1184,15 @@
     "conversion_sigma": 0.8
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "poll",
+    "polls",
+    "polling",
+    "sondage",
+    "sondages",
+    "Umfrage",
+    "Umfragen"
+   ],
    "sources": [
     "https://eprints.soton.ac.uk/421260/1/JenningsWlezien_PollingErrors.pdf"
    ]
@@ -1168,7 +1222,12 @@
     "qualification_inscrits": 12.5
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "législatives",
+    "élections législatives",
+    "Assemblée nationale",
+    "dissolution"
+   ],
    "sources": [
     "https://www.senat.fr/reglement/pouvoirs_publics31.html"
    ]
@@ -1229,7 +1288,14 @@
     }
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "parliamentary election",
+    "élections législatives",
+    "Bundestagswahl",
+    "Parlamentswahl",
+    "electoral threshold",
+    "seuil électoral"
+   ],
    "sources": [
     "https://wikiwand.com/en/Electoral_threshold"
    ]
@@ -1271,7 +1337,12 @@
     }
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "European elections",
+    "European Parliament elections",
+    "élections européennes",
+    "Europawahl"
+   ],
    "sources": [
     "https://www.europarl.europa.eu/RegData/etudes/BRIE/2023/749770/EPRS_BRI(2023)749770_EN.pdf"
    ]
@@ -1300,7 +1371,13 @@
     "renforcee_etats_min": 20
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "qualified majority",
+    "majorité qualifiée",
+    "unanimity",
+    "unanimité",
+    "Council vote"
+   ],
    "sources": [
     "https://www.consilium.europa.eu/en/council-eu/voting-system/qualified-majority/"
    ]
@@ -1335,7 +1412,12 @@
     "unanimite": true
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "sanctions package",
+    "paquet de sanctions",
+    "Sanktionspaket",
+    "new sanctions"
+   ],
    "sources": [
     "https://www.consilium.europa.eu/en/policies/sanctions-against-russia",
     "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:12016M031"
@@ -1591,7 +1673,13 @@
     }
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "coalition talks",
+    "government formation",
+    "formation du gouvernement",
+    "Koalitionsverhandlungen",
+    "coalition agreement"
+   ],
    "sources": [
     "https://parlgov.org/"
    ]
@@ -1627,7 +1715,13 @@
     "desaccords_vers_deuxieme": "11/12"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "seats",
+    "sièges",
+    "Sitze",
+    "proportional representation",
+    "proportionnelle"
+   ],
    "sources": [
     "https://parlgov.org/"
    ]
@@ -1655,7 +1749,13 @@
     "periode": "1997-2013"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "colonial borders",
+    "frontières coloniales",
+    "ethnic violence",
+    "violences ethniques",
+    "intercommunal violence"
+   ],
    "sources": [
     "https://www.aeaweb.org/research/are-colonial-era-borders-holding-africa-back"
    ]
@@ -1686,7 +1786,13 @@
     "periode": "1997-2010"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "illegal mining",
+    "artisanal mining",
+    "orpaillage",
+    "galamsey",
+    "mining conflict"
+   ],
    "sources": [
     "https://www.aeaweb.org/content/file?id=3010",
     "https://www.economics.ox.ac.uk/node/1466036"
@@ -1718,7 +1824,12 @@
     "extractif_2015_milliards": 40
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "illicit financial flows",
+    "flux financiers illicites",
+    "money laundering",
+    "blanchiment"
+   ],
    "sources": [
     "https://news.un.org/en/story/2020/09/1074052"
    ]
@@ -1782,7 +1893,12 @@
     ]
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "presidential election",
+    "élection présidentielle",
+    "présidentielle",
+    "Präsidentschaftswahl"
+   ],
    "sources": [
     "https://www.idea.int/data-tools/question-view/130359"
    ]
@@ -1811,7 +1927,11 @@
     "deux_candidats": "majorite_simple"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "Indonesian presidential election",
+    "élection présidentielle indonésienne",
+    "Prabowo"
+   ],
    "sources": [
     "https://www.idea.int/node/127452",
     "https://en.mkri.id/news/details/2019-09-30/Court_Affirms_Provision_on_Vote_Acquisition_of_President_Elect"
@@ -1841,7 +1961,12 @@
     "majorite_absolue": 233
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "House of Representatives",
+    "snap election",
+    "lower house election",
+    "Chambre des représentants"
+   ],
    "sources": [
     "https://www.idea.int/node/160916"
    ]
@@ -1868,7 +1993,11 @@
     "senat": "quota_par_etat"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "federal election",
+    "preferential voting",
+    "House of Representatives"
+   ],
    "sources": [
     "https://aec.gov.au/learn/preferential-voting.htm"
    ]
@@ -1894,7 +2023,10 @@
     "mode": "uninominal_un_tour"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "Lok Sabha",
+    "general election"
+   ],
    "sources": [
     "https://aec.gov.au/learn/preferential-voting.htm"
    ]
@@ -1922,7 +2054,12 @@
     "depuis_cour_supreme": "2017-04-06"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "filibuster",
+    "cloture",
+    "Senate vote",
+    "vote au Sénat"
+   ],
    "sources": [
     "https://www.everycrsreport.com/reports/R43331.html",
     "https://www.everycrsreport.com/reports/R44819.html"
@@ -1951,7 +2088,13 @@
     "part_apres_election_118e": 0.61
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "legislation",
+    "passed the House",
+    "passed the Senate",
+    "signed into law",
+    "projet de loi"
+   ],
    "sources": [
     "https://www.pewresearch.org/short-reads/2026/10/15/so-far-the-119th-congress-is-among-the-least-productive-of-the-past-40-years"
    ]
@@ -1980,7 +2123,12 @@
     "veto": true
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "Security Council resolution",
+    "résolution du Conseil de sécurité",
+    "veto",
+    "Sicherheitsrat"
+   ],
    "sources": [
     "https://hrlibrary.umn.edu/instree/chapter5.html"
    ]
@@ -2009,7 +2157,17 @@
     "reussite_depuis_2003": "12/18"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "coup d'État",
+    "coup d'Etat",
+    "coup attempt",
+    "tentative de coup",
+    "putsch",
+    "junta",
+    "junte",
+    "Putsch",
+    "Militärputsch"
+   ],
    "sources": [
     "https://www.uky.edu/~clthyn2/powell-thyne-JPR-2011.pdf"
    ]
@@ -2036,7 +2194,15 @@
     "taux_mensuel": 0.0017
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "ousted",
+    "overthrown",
+    "renversé",
+    "assassinated",
+    "assassiné",
+    "forced to resign",
+    "démission"
+   ],
    "sources": [
     "https://arxiv.org/abs/1409.7105"
    ]
@@ -2077,7 +2243,12 @@
     "minimum_cas": 30
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "runoff",
+    "second round",
+    "second tour",
+    "Stichwahl"
+   ],
    "sources": [
     "https://iris.uniroma1.it/retrieve/a858b9d9-3b9f-4fea-b7c1-40a9fe5fb2fa/Passarelli_Runoff_2022.pdf",
     "https://www.brookings.edu/articles/winning-runoff-elections-in-latin-america"
@@ -2105,7 +2276,12 @@
     "lecteur": "ipu_parlements.py"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "parliamentary election",
+    "élections législatives",
+    "seats",
+    "sièges"
+   ],
    "sources": [
     "https://data.ipu.org/fr/data-explorer/"
    ]
@@ -2135,7 +2311,14 @@
     "senat": "majorite_simple"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "governor",
+    "gouverneur",
+    "senator",
+    "sénateur",
+    "governador",
+    "senador"
+   ],
    "sources": [
     "https://www.tre-sp.jus.br/comunicacao/noticias/2026/Junho/sistema-majoritario-ou-proporcional-entenda-a-diferenca-dos-modelos-de-votacao"
    ]
@@ -2163,7 +2346,16 @@
     "reunions_non_programmees": "possibles"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "FOMC",
+    "rate decision",
+    "interest rate",
+    "interest rates",
+    "taux directeur",
+    "rate cut",
+    "rate hike",
+    "Powell"
+   ],
    "sources": [
     "https://www.federalreserve.gov/faqs/about_12844.htm"
    ]
@@ -2192,7 +2384,12 @@
     "demandes_par_semaine": 130
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "Supreme Court",
+    "Cour suprême",
+    "certiorari",
+    "justices"
+   ],
    "sources": [
     "https://www.supremecourt.gov/about/procedures.aspx",
     "https://ballotpedia.org/Supreme_Court_term"
@@ -2224,7 +2421,11 @@
     "veto": 4
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "reconciliation bill",
+    "budget reconciliation",
+    "réconciliation budgétaire"
+   ],
    "sources": [
     "https://www.everycrsreport.com/reports/R48444.html"
    ]
@@ -2256,7 +2457,12 @@
     "fermetures": 10
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "continuing resolution",
+    "government shutdown",
+    "shutdown",
+    "stopgap"
+   ],
    "sources": [
     "https://www.everycrsreport.com/files/2025-03-27_R46595_a87c245d29ebbdcae251ab0d5a9708d2748f28fd.html",
     "https://history.house.gov/Institution/Shutdown/Government-Shutdowns/"
@@ -2292,7 +2498,13 @@
     ]
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "censure",
+    "censured",
+    "reprimand",
+    "reprimanded",
+    "expelled from the House"
+   ],
    "sources": [
     "https://en.wikipedia.org/wiki/List_of_United_States_representatives_expelled,_censured,_or_reprimanded"
    ]
@@ -2322,7 +2534,12 @@
     "sans_confirmation": "revision_annuelle"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "USMCA",
+    "CUSMA",
+    "T-MEC",
+    "ACEUM"
+   ],
    "sources": [
     "https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cusma-aceum/text-texte/34.aspx?lang=eng"
    ]
@@ -2351,7 +2568,12 @@
     "accord_durable_si_pression": "faible_ou_nulle"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "deadline",
+    "date limite",
+    "ultimatum",
+    "Frist"
+   ],
    "sources": [
     "https://www.cambridge.org/core/journals/experimental-economics/article/bargaining-under-time-pressure-from-deadlines/F388EC46629F094DDB48A96AE00F8DCC",
     "https://ideas.repec.org/a/aea/aecrev/v78y1988i4p806-23.html",
@@ -2386,7 +2608,13 @@
     "deplacement_moyen_points": 17
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "referendum",
+    "référendum",
+    "Referendum",
+    "Volksabstimmung",
+    "Volksentscheid"
+   ],
    "sources": [
     "https://discovery-pp.ucl.ac.uk/id/eprint/1555628/1/Renwick%2C%20%27Referendums%27%2C%20in%20Sage%20Handbook%20of%20Electoral%20Behaviour%20%282017%29%20-%20final%20manuscript.pdf"
    ]
@@ -2414,7 +2642,12 @@
     "jours_trump1_rang_ministeriel": 37
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "confirmation hearing",
+    "Senate confirmation",
+    "confirmed by the Senate",
+    "nominee"
+   ],
    "sources": [
     "https://ballotpedia.org/Days_from_nomination_to_confirmation_for_Trump_administration_officials"
    ]
@@ -2440,7 +2673,14 @@
     "equipe_a_trump1_mandat": 0.85
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "chief of staff",
+    "cabinet secretary",
+    "resigns",
+    "resigned",
+    "fired",
+    "ousted from the cabinet"
+   ],
    "sources": [
     "https://www.brookings.edu/articles/tracking-turnover-in-the-second-trump-administration"
    ]
@@ -2468,7 +2708,12 @@
     "russie_2024": 1706
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "OFAC",
+    "Treasury sanctions",
+    "sanctioned",
+    "designated"
+   ],
    "sources": [
     "https://www.cnas.org/publications/reports/sanctions-by-the-numbers-2024-year-in-review"
    ]
@@ -2505,7 +2750,13 @@
     }
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "indicted",
+    "indictment",
+    "inculpé",
+    "inculpation",
+    "grand jury"
+   ],
    "sources": [
     "https://www.justice.gov/criminal/media/1384436/dl"
    ]
@@ -2533,7 +2784,14 @@
     "retard_moyen_barrages": 0.45
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "delayed",
+    "postponed",
+    "reporté",
+    "retardé",
+    "verschoben",
+    "launch date"
+   ],
    "sources": [
     "https://arxiv.org/pdf/1409.0003.pdf"
    ]
@@ -2567,7 +2825,12 @@
     "dernier": "2017-09-03"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "nuclear test",
+    "essai nucléaire",
+    "Atomtest",
+    "Punggye-ri"
+   ],
    "sources": [
     "https://www.cbsnews.com/news/north-koreas-nuclear-tests-timeline",
     "https://www.wikiwand.com/en/articles/North_Korean_nuclear_test"
@@ -2597,7 +2860,12 @@
     "premier_ouragan_moyen": "08-11"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "hurricane",
+    "ouragan",
+    "landfall",
+    "National Hurricane Center"
+   ],
    "sources": [
     "https://www.aoml.noaa.gov/hrd/hurdat/ushurrlist.htm",
     "https://www.nhc.noaa.gov/climo/"
@@ -2625,7 +2893,13 @@
     "annees_de_donnees": 8.5
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "fireball",
+    "bolide",
+    "meteor",
+    "météore",
+    "meteorite"
+   ],
    "sources": [
     "https://www.nature.com/articles/nature01238"
    ]
@@ -2653,7 +2927,14 @@
     "anomalie_12_mois": 1.64
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "record heat",
+    "record temperature",
+    "record de chaleur",
+    "hottest",
+    "Hitzerekord",
+    "warmest"
+   ],
    "sources": [
     "https://wmo.int/media/news/record-temperature-streak-continues-june"
    ]
@@ -2686,7 +2967,12 @@
     "editions_depuis_1982": 11
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "World Cup",
+    "Coupe du monde",
+    "FIFA",
+    "Weltmeisterschaft"
+   ],
    "sources": [
     "https://www.aljazeera.com/sports/2023/10/25/which-teams-have-won-the-fifa-world-cup",
     "https://theanalyst.com/articles/world-cup-host-nations-how-have-they-performed"
@@ -2717,7 +3003,16 @@
     "regulier_emprisonne": 32
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "former president",
+    "ancien président",
+    "former prime minister",
+    "ancien Premier ministre",
+    "sentenced",
+    "condamné",
+    "in exile",
+    "en exil"
+   ],
    "sources": [
     "https://www.rochester.edu/college/faculty/hgoemans/Publications/WhichWayOut.pdf"
    ]
@@ -2743,7 +3038,11 @@
     "annees": 26
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "Dow Jones",
+    "DJIA",
+    "Dow Jones Industrial Average"
+   ],
    "sources": [
     "https://en.wikipedia.org/wiki/Historical_components_of_the_Dow_Jones_Industrial_Average"
    ]
@@ -2776,7 +3075,12 @@
     ]
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "threat level",
+    "niveau de menace",
+    "JTAC",
+    "terror threat"
+   ],
    "sources": [
     "https://en.wikipedia.org/wiki/UK_Threat_Levels"
    ]
@@ -2807,7 +3111,12 @@
     "exceptionnel_max_ans": 3
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "border controls",
+    "contrôles aux frontières",
+    "Grenzkontrollen",
+    "Schengen"
+   ],
    "sources": [
     "https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en"
    ]
@@ -2832,7 +3141,13 @@
     "departs_2016_2024": 4
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "OPEC",
+    "OPEP",
+    "leave OPEC",
+    "quitte l'OPEP",
+    "OPEC+"
+   ],
    "sources": [
     "https://cnbcafrica.com/2023/factbox-angola-to-quit-opec-reducing-membership-to-12-countries"
    ]
@@ -2862,7 +3177,12 @@
     ]
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "Royal Mail",
+    "stamp price",
+    "stamp prices",
+    "first class stamp"
+   ],
    "sources": [
     "https://www.moneysavingexpert.com/news/2025/03/stamp-price-rise-april/",
     "https://uk.finance.yahoo.com/news/first-class-uk-stamp-rise-144550039.html",
@@ -2897,7 +3217,13 @@
     "francois_10_ans": 40
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "papal visit",
+    "visite du pape",
+    "apostolic journey",
+    "Papstreise",
+    "Pope Leo"
+   ],
    "sources": [
     "https://aleteia.org/2023/02/09/the-popes-40-trips-abroad-in-10-years/"
    ]
@@ -2924,7 +3250,12 @@
     "annees_sans": 18
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "summit",
+    "sommet",
+    "Gipfel",
+    "Gipfeltreffen"
+   ],
    "sources": [
     "https://en.wikipedia.org/wiki/List_of_Russia%E2%80%93United_States_summits"
    ]
@@ -2955,7 +3286,15 @@
     "comtes_annees": "1950-2005"
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "heat stress",
+    "crop yields",
+    "corn",
+    "soybeans",
+    "cotton",
+    "maïs",
+    "soja"
+   ],
    "sources": [
     "https://www.nber.org/papers/w13799",
     "https://www.pnas.org/doi/10.1073/pnas.0906865106"
@@ -2990,7 +3329,14 @@
     "tmoy_saison_echec": 28
    },
    "statut": "source",
-   "indices": [],
+   "indices": [
+    "wheat",
+    "blé",
+    "Weizen",
+    "heat stress",
+    "heatwave",
+    "canicule"
+   ],
    "sources": [
     "https://www.nature.com/articles/nclimate2470",
     "https://www.doi.org/10.1038/NCLIMATE1356",
