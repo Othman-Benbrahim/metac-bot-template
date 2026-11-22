@@ -1,0 +1,3075 @@
+{
+ "situations": [
+  {
+   "id": "S:campagne presidentielle americaine avant le vote du college electoral",
+   "texte": "campagne présidentielle américaine avant le vote du collège électoral",
+   "regles": [
+    "us_president_college"
+   ]
+  },
+  {
+   "id": "S:primaire americaine en cours dans un etat qui prevoit un second tour",
+   "texte": "primaire américaine en cours dans un État qui prévoit un second tour",
+   "regles": [
+    "us_primaires_second_tour"
+   ]
+  },
+  {
+   "id": "S:primaire non partisane ou scrutin preferentiel prevu dans un etat americain",
+   "texte": "primaire non partisane ou scrutin préférentiel prévu dans un État américain",
+   "regles": [
+    "us_primaires_systemes_speciaux"
+   ]
+  },
+  {
+   "id": "S:election americaine a venir avec des sondages publies",
+   "texte": "élection américaine à venir, avec des sondages publiés",
+   "regles": [
+    "us_erreur_sondages_par_echelle"
+   ]
+  },
+  {
+   "id": "S:election nationale a venir avec des sondages publies",
+   "texte": "élection nationale à venir, avec des sondages publiés",
+   "regles": [
+    "us_erreur_selon_temps_restant",
+    "sondages_erreur_comparee"
+   ]
+  },
+  {
+   "id": "S:membre sortant du congres americain candidat a sa reelection",
+   "texte": "membre sortant du Congrès américain candidat à sa réélection",
+   "regles": [
+    "us_avantage_sortant_congres"
+   ]
+  },
+  {
+   "id": "S:campagne de contestation non violente en cours contre un regime",
+   "texte": "campagne de contestation non violente en cours contre un régime",
+   "regles": [
+    "regimes_fermes_contestation"
+   ]
+  },
+  {
+   "id": "S:dirigeant africain au pouvoir face a une limite de mandat",
+   "texte": "dirigeant africain au pouvoir face à une limite de mandat",
+   "regles": [
+    "afrique_limites_de_mandat"
+   ]
+  },
+  {
+   "id": "S:elections legislatives francaises convoquees",
+   "texte": "élections législatives françaises convoquées",
+   "regles": [
+    "france_legislatives"
+   ]
+  },
+  {
+   "id": "S:elections legislatives a venir dans un pays europeen",
+   "texte": "élections législatives à venir dans un pays européen",
+   "regles": [
+    "seuils_parlements_nationaux_europe"
+   ]
+  },
+  {
+   "id": "S:elections europeennes a venir",
+   "texte": "élections européennes à venir",
+   "regles": [
+    "seuils_elections_europeennes"
+   ]
+  },
+  {
+   "id": "S:proposition soumise au vote du conseil de l union europeenne",
+   "texte": "proposition soumise au vote du Conseil de l'Union européenne",
+   "regles": [
+    "ue_majorite_qualifiee"
+   ]
+  },
+  {
+   "id": "S:sanctions de l union europeenne contre la russie en vigueur ou proposees",
+   "texte": "sanctions de l'Union européenne contre la Russie en vigueur ou proposées",
+   "regles": [
+    "ue_sanctions_russie"
+   ]
+  },
+  {
+   "id": "S:elections legislatives tenues ou prevues dans une democratie parlementaire",
+   "texte": "élections législatives tenues ou prévues dans une démocratie parlementaire",
+   "regles": [
+    "europe_formation_gouvernement"
+   ]
+  },
+  {
+   "id": "S:election legislative a venir",
+   "texte": "élection législative à venir",
+   "regles": [
+    "voix_vers_sieges",
+    "parlements_mode_de_scrutin"
+   ]
+  },
+  {
+   "id": "S:territoire ethnique africain coupe ou non par une frontiere coloniale",
+   "texte": "territoire ethnique africain coupé ou non par une frontière coloniale",
+   "regles": [
+    "afrique_frontieres_coloniales"
+   ]
+  },
+  {
+   "id": "S:zone miniere africaine face a une variation des prix des minerais",
+   "texte": "zone minière africaine face à une variation des prix des minerais",
+   "regles": [
+    "afrique_mines_conflits"
+   ]
+  },
+  {
+   "id": "S:economies africaines flux financiers mesures sur plusieurs annees",
+   "texte": "économies africaines (flux financiers mesurés sur plusieurs années)",
+   "regles": [
+    "afrique_flux_financiers_illicites"
+   ]
+  },
+  {
+   "id": "S:election presidentielle prevue ou en cours",
+   "texte": "élection présidentielle prévue ou en cours",
+   "regles": [
+    "presidentielles_mode_de_scrutin"
+   ]
+  },
+  {
+   "id": "S:election presidentielle indonesienne prevue",
+   "texte": "élection présidentielle indonésienne prévue",
+   "regles": [
+    "indonesie_presidentielle"
+   ]
+  },
+  {
+   "id": "S:election de la chambre des representants du japon prevue",
+   "texte": "élection de la Chambre des représentants du Japon prévue",
+   "regles": [
+    "japon_chambre_basse"
+   ]
+  },
+  {
+   "id": "S:election federale australienne prevue",
+   "texte": "élection fédérale australienne prévue",
+   "regles": [
+    "australie_vote_preferentiel"
+   ]
+  },
+  {
+   "id": "S:election de la lok sabha prevue",
+   "texte": "élection de la Lok Sabha prévue",
+   "regles": [
+    "inde_scrutin_uninominal"
+   ]
+  },
+  {
+   "id": "S:texte de loi ou nomination soumis au senat americain",
+   "texte": "texte de loi ou nomination soumis au Sénat américain",
+   "regles": [
+    "us_senat_cloture"
+   ]
+  },
+  {
+   "id": "S:congres americain en session",
+   "texte": "Congrès américain en session",
+   "regles": [
+    "us_congres_productivite"
+   ]
+  },
+  {
+   "id": "S:projet de resolution soumis au conseil de securite de l onu",
+   "texte": "projet de résolution soumis au Conseil de sécurité de l'ONU",
+   "regles": [
+    "onu_conseil_securite_vote"
+   ]
+  },
+  {
+   "id": "S:pays expose a une tentative de coup d etat taux mondial ou regional",
+   "texte": "pays exposé à une tentative de coup d'État (taux mondial ou régional)",
+   "regles": [
+    "coups_d_etat_frequence"
+   ]
+  },
+  {
+   "id": "S:chef d etat ou de gouvernement au pouvoir",
+   "texte": "chef d'État ou de gouvernement au pouvoir",
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere"
+   ]
+  },
+  {
+   "id": "S:presidentielle a deux tours dont le premier tour est connu",
+   "texte": "présidentielle à deux tours dont le premier tour est connu",
+   "regles": [
+    "second_tour_retournement"
+   ]
+  },
+  {
+   "id": "S:elections bresiliennes des gouverneurs ou des senateurs prevues",
+   "texte": "élections brésiliennes des gouverneurs ou des sénateurs prévues",
+   "regles": [
+    "bresil_gouverneurs_senat"
+   ]
+  },
+  {
+   "id": "S:politique monetaire americaine entre deux reunions du fomc",
+   "texte": "politique monétaire américaine entre deux réunions du FOMC",
+   "regles": [
+    "us_fed_calendrier"
+   ]
+  },
+  {
+   "id": "S:affaire ou pourvoi pendant devant la cour supreme americaine",
+   "texte": "affaire ou pourvoi pendant devant la Cour suprême américaine",
+   "regles": [
+    "us_cour_supreme_calendrier"
+   ]
+  },
+  {
+   "id": "S:projet budgetaire au congres americain",
+   "texte": "projet budgétaire au Congrès américain",
+   "regles": [
+    "us_reconciliation_budgetaire"
+   ]
+  },
+  {
+   "id": "S:exercice budgetaire federal americain sans lois de credits annuelles adoptees",
+   "texte": "exercice budgétaire fédéral américain sans lois de crédits annuelles adoptées",
+   "regles": [
+    "us_lois_de_finances_provisoires"
+   ]
+  },
+  {
+   "id": "S:membre de la chambre des representants americaine en fonction",
+   "texte": "membre de la Chambre des représentants américaine en fonction",
+   "regles": [
+    "us_chambre_sanctions_disciplinaires"
+   ]
+  },
+  {
+   "id": "S:accord usmca en vigueur avant ou pendant sa revision conjointe",
+   "texte": "accord USMCA en vigueur, avant ou pendant sa révision conjointe",
+   "regles": [
+    "usmca_revision_conjointe"
+   ]
+  },
+  {
+   "id": "S:negociation en cours avec une date limite connue",
+   "texte": "négociation en cours avec une date limite connue",
+   "regles": [
+    "effet_d_echeance_negociation"
+   ]
+  },
+  {
+   "id": "S:campagne referendaire en cours sur un changement",
+   "texte": "campagne référendaire en cours sur un changement",
+   "regles": [
+    "referendums_retour_statu_quo"
+   ]
+  },
+  {
+   "id": "S:nomination presidentielle americaine transmise au senat",
+   "texte": "nomination présidentielle américaine transmise au Sénat",
+   "regles": [
+    "us_confirmations_delais"
+   ]
+  },
+  {
+   "id": "S:conseiller principal de la maison blanche ou membre du cabinet americain en fonction",
+   "texte": "conseiller principal de la Maison-Blanche ou membre du cabinet américain en fonction",
+   "regles": [
+    "us_entourage_rotation"
+   ]
+  },
+  {
+   "id": "S:programme de sanctions du tresor americain en vigueur",
+   "texte": "programme de sanctions du Trésor américain en vigueur",
+   "regles": [
+    "us_sanctions_frequence"
+   ]
+  },
+  {
+   "id": "S:elu ou responsable public americain en fonction ou ancien non inculpe",
+   "texte": "élu ou responsable public américain, en fonction ou ancien, non inculpé",
+   "regles": [
+    "us_inculpation_personnalites"
+   ]
+  },
+  {
+   "id": "S:projet chantier ou lancement annonce avec une date prevue",
+   "texte": "projet, chantier ou lancement annoncé avec une date prévue",
+   "regles": [
+    "calendriers_annonces_glissent"
+   ]
+  },
+  {
+   "id": "S:programme nucleaire nord coreen sans essai depuis septembre 2017",
+   "texte": "programme nucléaire nord-coréen sans essai depuis septembre 2017",
+   "regles": [
+    "coree_du_nord_essais_nucleaires"
+   ]
+  },
+  {
+   "id": "S:saison cyclonique atlantique en cours ou a venir",
+   "texte": "saison cyclonique atlantique en cours ou à venir",
+   "regles": [
+    "us_ouragans_atterrissage"
+   ]
+  },
+  {
+   "id": "S:surveillance satellitaire des explosions de bolides dans l atmosphere",
+   "texte": "surveillance satellitaire des explosions de bolides dans l'atmosphère",
+   "regles": [
+    "bolides_frequence"
+   ]
+  },
+  {
+   "id": "S:serie de temperatures mondiale ou regionale proche de son record",
+   "texte": "série de températures mondiale ou régionale proche de son record",
+   "regles": [
+    "records_temperature_persistance"
+   ]
+  },
+  {
+   "id": "S:phase finale de la coupe du monde a venir ou en cours avec ses equipes qualifiees",
+   "texte": "phase finale de la Coupe du monde à venir ou en cours, avec ses équipes qualifiées",
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ]
+  },
+  {
+   "id": "S:ancien chef d etat ou de gouvernement sorti du pouvoir",
+   "texte": "ancien chef d'État ou de gouvernement sorti du pouvoir",
+   "regles": [
+    "anciens_dirigeants_sort"
+   ]
+  },
+  {
+   "id": "S:composition du dow jones industrial average en vigueur",
+   "texte": "composition du Dow Jones Industrial Average en vigueur",
+   "regles": [
+    "dow_jones_changements"
+   ]
+  },
+  {
+   "id": "S:niveau national de menace terroriste du royaume uni en vigueur",
+   "texte": "niveau national de menace terroriste du Royaume-Uni en vigueur",
+   "regles": [
+    "royaume_uni_niveau_menace"
+   ]
+  },
+  {
+   "id": "S:controle temporaire aux frontieres interieures de schengen en vigueur ou notifie",
+   "texte": "contrôle temporaire aux frontières intérieures de Schengen en vigueur ou notifié",
+   "regles": [
+    "schengen_controles_interieurs"
+   ]
+  },
+  {
+   "id": "S:pays membre de l opep",
+   "texte": "pays membre de l'OPEP",
+   "regles": [
+    "opep_departs"
+   ]
+  },
+  {
+   "id": "S:tarifs de royal mail en vigueur",
+   "texte": "tarifs de Royal Mail en vigueur",
+   "regles": [
+    "royal_mail_hausses_tarifs"
+   ]
+  },
+  {
+   "id": "S:pape en fonction",
+   "texte": "pape en fonction",
+   "regles": [
+    "papes_voyages"
+   ]
+  },
+  {
+   "id": "S:presidents americain et russe en fonction sans sommet annonce",
+   "texte": "présidents américain et russe en fonction, sans sommet annoncé",
+   "regles": [
+    "sommets_etats_unis_russie"
+   ]
+  },
+  {
+   "id": "S:saison de culture en cours mars aout pour le mais et le soja avril octobre pour le coton avec des journees chaudes",
+   "texte": "saison de culture en cours (mars-août pour le maïs et le soja, avril-octobre pour le coton) avec des journées chaudes",
+   "regles": [
+    "seuil_chaleur_mais_soja_coton"
+   ]
+  },
+  {
+   "id": "S:ble en fin de cycle floraison remplissage du grain expose a des maxima eleves",
+   "texte": "blé en fin de cycle (floraison, remplissage du grain) exposé à des maxima élevés",
+   "regles": [
+    "seuil_chaleur_ble"
+   ]
+  }
+ ],
+ "evenements": [
+  {
+   "id": "E:issue de l election presidentielle americaine college electoral",
+   "texte": "issue de l'élection présidentielle américaine (collège électoral)",
+   "regles": [
+    "us_president_college"
+   ]
+  },
+  {
+   "id": "E:issue d une primaire americaine qui prevoit un second tour",
+   "texte": "issue d'une primaire américaine qui prévoit un second tour",
+   "regles": [
+    "us_primaires_second_tour"
+   ]
+  },
+  {
+   "id": "E:issue d une primaire non partisane ou d un vote preferentiel dans un etat americain",
+   "texte": "issue d'une primaire non partisane ou d'un vote préférentiel dans un État américain",
+   "regles": [
+    "us_primaires_systemes_speciaux"
+   ]
+  },
+  {
+   "id": "E:resultat d une election americaine prevu d apres les sondages",
+   "texte": "résultat d'une élection américaine prévu d'après les sondages",
+   "regles": [
+    "us_erreur_sondages_par_echelle"
+   ]
+  },
+  {
+   "id": "E:resultat d une election nationale prevu d apres les sondages selon le temps restant avant le vote",
+   "texte": "résultat d'une élection nationale prévu d'après les sondages, selon le temps restant avant le vote",
+   "regles": [
+    "us_erreur_selon_temps_restant"
+   ]
+  },
+  {
+   "id": "E:reelection d un sortant au congres americain",
+   "texte": "réélection d'un sortant au Congrès américain",
+   "regles": [
+    "us_avantage_sortant_congres"
+   ]
+  },
+  {
+   "id": "E:succes d une campagne de contestation non violente qui vise un changement de regime",
+   "texte": "succès d'une campagne de contestation non violente qui vise un changement de régime",
+   "regles": [
+    "regimes_fermes_contestation"
+   ]
+  },
+  {
+   "id": "E:maintien au pouvoir d un dirigeant africain au dela des limites de mandat",
+   "texte": "maintien au pouvoir d'un dirigeant africain au-delà des limites de mandat",
+   "regles": [
+    "afrique_limites_de_mandat"
+   ]
+  },
+  {
+   "id": "E:resultat d une election nationale prevu d apres les sondages",
+   "texte": "résultat d'une élection nationale prévu d'après les sondages",
+   "regles": [
+    "sondages_erreur_comparee"
+   ]
+  },
+  {
+   "id": "E:election d un depute ou issue des elections legislatives francaises",
+   "texte": "élection d'un député ou issue des élections législatives françaises",
+   "regles": [
+    "france_legislatives"
+   ]
+  },
+  {
+   "id": "E:entree d un parti au parlement national ou repartition des sieges dans un pays europeen",
+   "texte": "entrée d'un parti au parlement national ou répartition des sièges, dans un pays européen",
+   "regles": [
+    "seuils_parlements_nationaux_europe"
+   ]
+  },
+  {
+   "id": "E:sieges obtenus par une liste aux elections europeennes",
+   "texte": "sièges obtenus par une liste aux élections européennes",
+   "regles": [
+    "seuils_elections_europeennes"
+   ]
+  },
+  {
+   "id": "E:adoption d une decision par le conseil de l union europeenne",
+   "texte": "adoption d'une décision par le Conseil de l'Union européenne",
+   "regles": [
+    "ue_majorite_qualifiee"
+   ]
+  },
+  {
+   "id": "E:adoption ou renouvellement des sanctions de l union europeenne contre la russie",
+   "texte": "adoption ou renouvellement des sanctions de l'Union européenne contre la Russie",
+   "regles": [
+    "ue_sanctions_russie"
+   ]
+  },
+  {
+   "id": "E:formation d un gouvernement apres des legislatives dans une democratie parlementaire",
+   "texte": "formation d'un gouvernement après des législatives dans une démocratie parlementaire",
+   "regles": [
+    "europe_formation_gouvernement"
+   ]
+  },
+  {
+   "id": "E:conversion des voix en sieges dans une election legislative",
+   "texte": "conversion des voix en sièges dans une élection législative",
+   "regles": [
+    "voix_vers_sieges"
+   ]
+  },
+  {
+   "id": "E:violence politique dans un territoire ethnique africain",
+   "texte": "violence politique dans un territoire ethnique africain",
+   "regles": [
+    "afrique_frontieres_coloniales"
+   ]
+  },
+  {
+   "id": "E:conflit local dans une zone miniere africaine",
+   "texte": "conflit local dans une zone minière africaine",
+   "regles": [
+    "afrique_mines_conflits"
+   ]
+  },
+  {
+   "id": "E:montant des sorties financieres illicites d afrique",
+   "texte": "montant des sorties financières illicites d'Afrique",
+   "regles": [
+    "afrique_flux_financiers_illicites"
+   ]
+  },
+  {
+   "id": "E:deroulement ou issue d une election presidentielle a un ou deux tours",
+   "texte": "déroulement ou issue d'une élection présidentielle (à un ou deux tours)",
+   "regles": [
+    "presidentielles_mode_de_scrutin"
+   ]
+  },
+  {
+   "id": "E:issue de l election presidentielle indonesienne",
+   "texte": "issue de l'élection présidentielle indonésienne",
+   "regles": [
+    "indonesie_presidentielle"
+   ]
+  },
+  {
+   "id": "E:majorite a la chambre des representants du japon",
+   "texte": "majorité à la Chambre des représentants du Japon",
+   "regles": [
+    "japon_chambre_basse"
+   ]
+  },
+  {
+   "id": "E:election d un depute ou majorite a la chambre des representants australienne",
+   "texte": "élection d'un député ou majorité à la Chambre des représentants australienne",
+   "regles": [
+    "australie_vote_preferentiel"
+   ]
+  },
+  {
+   "id": "E:election d un depute ou majorite a la lok sabha",
+   "texte": "élection d'un député ou majorité à la Lok Sabha",
+   "regles": [
+    "inde_scrutin_uninominal"
+   ]
+  },
+  {
+   "id": "E:adoption d une loi ou confirmation d une nomination par le senat americain",
+   "texte": "adoption d'une loi ou confirmation d'une nomination par le Sénat américain",
+   "regles": [
+    "us_senat_cloture"
+   ]
+  },
+  {
+   "id": "E:nombre de lois adoptees par le congres americain",
+   "texte": "nombre de lois adoptées par le Congrès américain",
+   "regles": [
+    "us_congres_productivite"
+   ]
+  },
+  {
+   "id": "E:adoption d une resolution par le conseil de securite de l onu",
+   "texte": "adoption d'une résolution par le Conseil de sécurité de l'ONU",
+   "regles": [
+    "onu_conseil_securite_vote"
+   ]
+  },
+  {
+   "id": "E:tentative ou reussite d un coup d etat",
+   "texte": "tentative ou réussite d'un coup d'État",
+   "regles": [
+    "coups_d_etat_frequence"
+   ]
+  },
+  {
+   "id": "E:depart force coup revolte assassinat ou maintien au pouvoir d un chef d etat ou de gouvernement",
+   "texte": "départ forcé (coup, révolte, assassinat) ou maintien au pouvoir d'un chef d'État ou de gouvernement",
+   "regles": [
+    "chefs_d_etat_sortie_irreguliere"
+   ]
+  },
+  {
+   "id": "E:vainqueur du second tour d une presidentielle a deux tours",
+   "texte": "vainqueur du second tour d'une présidentielle à deux tours",
+   "regles": [
+    "second_tour_retournement"
+   ]
+  },
+  {
+   "id": "E:issue d une election legislative selon son mode de scrutin",
+   "texte": "issue d'une élection législative selon son mode de scrutin",
+   "regles": [
+    "parlements_mode_de_scrutin"
+   ]
+  },
+  {
+   "id": "E:election d un gouverneur ou d un senateur au bresil",
+   "texte": "élection d'un gouverneur ou d'un sénateur au Brésil",
+   "regles": [
+    "bresil_gouverneurs_senat"
+   ]
+  },
+  {
+   "id": "E:decision de taux de la reserve federale americaine",
+   "texte": "décision de taux de la Réserve fédérale américaine",
+   "regles": [
+    "us_fed_calendrier"
+   ]
+  },
+  {
+   "id": "E:decision ordonnance ou acceptation d un pourvoi par la cour supreme americaine",
+   "texte": "décision, ordonnance ou acceptation d'un pourvoi par la Cour suprême américaine",
+   "regles": [
+    "us_cour_supreme_calendrier"
+   ]
+  },
+  {
+   "id": "E:adoption d une loi de reconciliation budgetaire par le congres americain",
+   "texte": "adoption d'une loi de réconciliation budgétaire par le Congrès américain",
+   "regles": [
+    "us_reconciliation_budgetaire"
+   ]
+  },
+  {
+   "id": "E:vote d une loi de finances provisoire continuing resolution ou fermeture du gouvernement federal americain",
+   "texte": "vote d'une loi de finances provisoire (continuing resolution) ou fermeture du gouvernement fédéral américain",
+   "regles": [
+    "us_lois_de_finances_provisoires"
+   ]
+  },
+  {
+   "id": "E:censure reprimande ou exclusion d un membre de la chambre des representants americaine",
+   "texte": "censure, réprimande ou exclusion d'un membre de la Chambre des représentants américaine",
+   "regles": [
+    "us_chambre_sanctions_disciplinaires"
+   ]
+  },
+  {
+   "id": "E:prolongation revision ou retrait de l accord etats unis mexique canada usmca",
+   "texte": "prolongation, révision ou retrait de l'accord États-Unis–Mexique–Canada (USMCA)",
+   "regles": [
+    "usmca_revision_conjointe"
+   ]
+  },
+  {
+   "id": "E:conclusion d un accord negocie avant une date limite",
+   "texte": "conclusion d'un accord négocié avant une date limite",
+   "regles": [
+    "effet_d_echeance_negociation"
+   ]
+  },
+  {
+   "id": "E:victoire du changement a un referendum",
+   "texte": "victoire du changement à un référendum",
+   "regles": [
+    "referendums_retour_statu_quo"
+   ]
+  },
+  {
+   "id": "E:confirmation par le senat d une nomination presidentielle americaine",
+   "texte": "confirmation par le Sénat d'une nomination présidentielle américaine",
+   "regles": [
+    "us_confirmations_delais"
+   ]
+  },
+  {
+   "id": "E:depart d un conseiller principal de la maison blanche ou d un membre du cabinet americain",
+   "texte": "départ d'un conseiller principal de la Maison-Blanche ou d'un membre du cabinet américain",
+   "regles": [
+    "us_entourage_rotation"
+   ]
+  },
+  {
+   "id": "E:nouvelles designations de sanctions par le tresor americain ofac",
+   "texte": "nouvelles désignations de sanctions par le Trésor américain (OFAC)",
+   "regles": [
+    "us_sanctions_frequence"
+   ]
+  },
+  {
+   "id": "E:inculpation ou arrestation d un elu ou d un responsable public americain en fonction ou ancien",
+   "texte": "inculpation ou arrestation d'un élu ou d'un responsable public américain, en fonction ou ancien",
+   "regles": [
+    "us_inculpation_personnalites"
+   ]
+  },
+  {
+   "id": "E:achevement ou mise en service d un projet annonce a la date prevue",
+   "texte": "achèvement ou mise en service d'un projet annoncé à la date prévue",
+   "regles": [
+    "calendriers_annonces_glissent"
+   ]
+  },
+  {
+   "id": "E:essai nucleaire nord coreen",
+   "texte": "essai nucléaire nord-coréen",
+   "regles": [
+    "coree_du_nord_essais_nucleaires"
+   ]
+  },
+  {
+   "id": "E:atterrissage d un ouragan sur le territoire continental des etats unis",
+   "texte": "atterrissage d'un ouragan sur le territoire continental des États-Unis",
+   "regles": [
+    "us_ouragans_atterrissage"
+   ]
+  },
+  {
+   "id": "E:explosion dans l atmosphere d un bolide d une energie donnee",
+   "texte": "explosion dans l'atmosphère d'un bolide d'une énergie donnée",
+   "regles": [
+    "bolides_frequence"
+   ]
+  },
+  {
+   "id": "E:record mensuel ou journalier de temperature de l air ou de la mer",
+   "texte": "record mensuel ou journalier de température de l'air ou de la mer",
+   "regles": [
+    "records_temperature_persistance"
+   ]
+  },
+  {
+   "id": "E:vainqueur ou parcours d une equipe a la coupe du monde de football",
+   "texte": "vainqueur ou parcours d'une équipe à la Coupe du monde de football",
+   "regles": [
+    "coupe_du_monde_vainqueurs_hotes"
+   ]
+  },
+  {
+   "id": "E:exil emprisonnement ou poursuite d un ancien chef d etat ou de gouvernement",
+   "texte": "exil, emprisonnement ou poursuite d'un ancien chef d'État ou de gouvernement",
+   "regles": [
+    "anciens_dirigeants_sort"
+   ]
+  },
+  {
+   "id": "E:changement de composition du dow jones industrial average",
+   "texte": "changement de composition du Dow Jones Industrial Average",
+   "regles": [
+    "dow_jones_changements"
+   ]
+  },
+  {
+   "id": "E:changement du niveau national de menace terroriste du royaume uni",
+   "texte": "changement du niveau national de menace terroriste du Royaume-Uni",
+   "regles": [
+    "royaume_uni_niveau_menace"
+   ]
+  },
+  {
+   "id": "E:levee ou prolongation d un controle temporaire aux frontieres interieures de schengen",
+   "texte": "levée ou prolongation d'un contrôle temporaire aux frontières intérieures de Schengen",
+   "regles": [
+    "schengen_controles_interieurs"
+   ]
+  },
+  {
+   "id": "E:depart ou suspension d un pays membre de l opep",
+   "texte": "départ ou suspension d'un pays membre de l'OPEP",
+   "regles": [
+    "opep_departs"
+   ]
+  },
+  {
+   "id": "E:hausse des tarifs des lettres ou colis de royal mail",
+   "texte": "hausse des tarifs des lettres ou colis de Royal Mail",
+   "regles": [
+    "royal_mail_hausses_tarifs"
+   ]
+  },
+  {
+   "id": "E:voyage d un pape a l etranger",
+   "texte": "voyage d'un pape à l'étranger",
+   "regles": [
+    "papes_voyages"
+   ]
+  },
+  {
+   "id": "E:rencontre en personne entre les presidents americain et russe",
+   "texte": "rencontre en personne entre les présidents américain et russe",
+   "regles": [
+    "sommets_etats_unis_russie"
+   ]
+  },
+  {
+   "id": "E:rendement d une recolte de mais de soja ou de coton aux etats unis selon les temperatures de la saison",
+   "texte": "rendement d'une récolte de maïs, de soja ou de coton aux États-Unis selon les températures de la saison",
+   "regles": [
+    "seuil_chaleur_mais_soja_coton"
+   ]
+  },
+  {
+   "id": "E:rendement d une recolte de ble selon les temperatures maximales de la saison",
+   "texte": "rendement d'une récolte de blé selon les températures maximales de la saison",
+   "regles": [
+    "seuil_chaleur_ble"
+   ]
+  }
+ ],
+ "aretes": [
+  {
+   "regle": "us_president_college",
+   "de": "S:campagne presidentielle americaine avant le vote du college electoral",
+   "vers": "E:issue de l election presidentielle americaine college electoral",
+   "structure": "course",
+   "ecosysteme": "États-Unis · élection présidentielle",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:regles_electorales"
+   ],
+   "parametres": {
+    "voix_total": 538,
+    "voix_pour_gagner": 270,
+    "repartition_par_circonscription": [
+     "ME",
+     "NE"
+    ]
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.archives.gov/electoral-college/about"
+   ]
+  },
+  {
+   "regle": "us_primaires_second_tour",
+   "de": "S:primaire americaine en cours dans un etat qui prevoit un second tour",
+   "vers": "E:issue d une primaire americaine qui prevoit un second tour",
+   "structure": "course",
+   "ecosysteme": "États-Unis · primaires d'État (Congrès, gouverneur, offices d'État)",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "primaire"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:regles_electorales"
+   ],
+   "parametres": {
+    "seuil_second_tour": {
+     "AL": 50,
+     "AR": 50,
+     "GA": 50,
+     "MS": 50,
+     "OK": 50,
+     "SC": 50,
+     "TX": 50,
+     "NC": 30,
+     "SD": 35,
+     "LA": 50
+    },
+    "conditions": {
+     "SD": "au moins 3 candidats ; Congrès et gouverneur seulement",
+     "LA": "depuis 2026 ; Congrès, Cour suprême de l'État, BESE, Public Service Commission",
+     "NC": "30 % plus une voix"
+    },
+    "defaut": "majorite_relative"
+   },
+   "statut": "source",
+   "sources": [
+    "https://ballotpedia.org/Runoff_primary",
+    "https://ballotpedia.org/Primary_election_vote_requirements_by_state"
+   ]
+  },
+  {
+   "regle": "us_primaires_systemes_speciaux",
+   "de": "S:primaire non partisane ou scrutin preferentiel prevu dans un etat americain",
+   "vers": "E:issue d une primaire non partisane ou d un vote preferentiel dans un etat americain",
+   "structure": "course",
+   "ecosysteme": "États-Unis · primaires non partisanes et vote préférentiel",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "primaire"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:regles_electorales"
+   ],
+   "parametres": {
+    "deux_qualifies": [
+     "CA",
+     "WA"
+    ],
+    "quatre_qualifies": [
+     "AK"
+    ],
+    "vote_preferentiel": [
+     "ME",
+     "AK"
+    ],
+    "deux_qualifies_legislature": [
+     "NE"
+    ]
+   },
+   "statut": "source",
+   "sources": [
+    "https://ballotpedia.org/Primary_election_vote_requirements_by_state"
+   ]
+  },
+  {
+   "regle": "us_erreur_sondages_par_echelle",
+   "de": "S:election americaine a venir avec des sondages publies",
+   "vers": "E:resultat d une election americaine prevu d apres les sondages",
+   "structure": "course",
+   "ecosysteme": "États-Unis · sondages électoraux",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "toutes (par type d'élection)"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:elections"
+   ],
+   "parametres": {
+    "erreur_ecart_points": {
+     "presidentielle_generale": 4.0,
+     "primaire_presidentielle": 8.7,
+     "senat": 5.4,
+     "gouverneur": 5.4,
+     "chambre": 6.2,
+     "ensemble": 5.9
+    },
+    "erreur_ecart_points_2024": {
+     "presidentielle_generale": 3.4,
+     "senat": 4.1,
+     "ensemble": 4.5
+    },
+    "fenetre_jours": 21,
+    "conversion_sigma_part": 1.6
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.goodreads.com/author_blog_posts/16871327-the-polls-are-all-right",
+    "https://www.natesilver.net/p/so-how-did-the-polls-do-in-2024-its"
+   ]
+  },
+  {
+   "regle": "us_erreur_selon_temps_restant",
+   "de": "S:election nationale a venir avec des sondages publies",
+   "vers": "E:resultat d une election nationale prevu d apres les sondages selon le temps restant avant le vote",
+   "structure": "course",
+   "ecosysteme": "Élections nationales (45 pays, dont les États-Unis) · sondages, éloignement du scrutin",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "jours avant le vote"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "politique-americaine:elections",
+    "calendriers-echeances:elections"
+   ],
+   "parametres": {
+    "erreur_part_points": {
+     "j150_200": 4.0,
+     "j50": 3.0,
+     "veille": 2.0
+    },
+    "erreur_part_j200": {
+     "legislatives": 3.3,
+     "presidentielles": 5.9
+    }
+   },
+   "statut": "source",
+   "sources": [
+    "https://eprints.soton.ac.uk/421260/1/JenningsWlezien_PollingErrors.pdf"
+   ]
+  },
+  {
+   "regle": "us_avantage_sortant_congres",
+   "de": "S:membre sortant du congres americain candidat a sa reelection",
+   "vers": "E:reelection d un sortant au congres americain",
+   "structure": "maintien",
+   "ecosysteme": "États-Unis · Congrès, sortants qui se représentent",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national (Chambre, Sénat)"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:elections"
+   ],
+   "parametres": {
+    "reelection_chambre": 0.939,
+    "reelection_senat": 0.869,
+    "defaites_primaires_chambre_2000_2022": 72,
+    "defaites_primaires_senat_2000_2022": 6,
+    "cycles": 12
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.brookings.edu/wp-content/uploads/2024/11/2-7-Full.pdf",
+    "https://www.brookings.edu/wp-content/uploads/2024/11/2-8-Full.pdf"
+   ]
+  },
+  {
+   "regle": "regimes_fermes_contestation",
+   "de": "S:campagne de contestation non violente en cours contre un regime",
+   "vers": "E:succes d une campagne de contestation non violente qui vise un changement de regime",
+   "structure": "evenement_rare",
+   "ecosysteme": "Régimes autoritaires et fermés · succès des campagnes de contestation",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "décennie 2010"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "succes_non_violent_2010s_max": 0.34,
+    "succes_violent_2010s": 0.08,
+    "succes_non_violent_1990s_max": 0.65
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.journalofdemocracy.org/articles/the-future-of-nonviolent-resistance/"
+   ]
+  },
+  {
+   "regle": "afrique_limites_de_mandat",
+   "de": "S:dirigeant africain au pouvoir face a une limite de mandat",
+   "vers": "E:maintien au pouvoir d un dirigeant africain au dela des limites de mandat",
+   "structure": "maintien",
+   "ecosysteme": "Afrique · durée au pouvoir et limites de mandat",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "durée au pouvoir"
+   },
+   "perimetre": [
+    "afrique"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "pays_contournement": 14,
+    "pays_sans_limite_effective": 30,
+    "pays_total": 54,
+    "duree_limites_respectees_ans": 5,
+    "duree_mediane_contournement_ans": 16,
+    "coups_depuis_2015_pays": 8
+   },
+   "statut": "source",
+   "sources": [
+    "https://africacenter.org/spotlight/term-limit-evasions-coups-africa-same-coin/"
+   ]
+  },
+  {
+   "regle": "sondages_erreur_comparee",
+   "de": "S:election nationale a venir avec des sondages publies",
+   "vers": "E:resultat d une election nationale prevu d apres les sondages",
+   "structure": "course",
+   "ecosysteme": "Élections nationales · sondages de la dernière semaine (220 élections, 32 pays)",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national, selon le système électoral et la taille du parti"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "erreur_part_points": {
+     "ensemble": 2.03,
+     "presidentielles": 2.7,
+     "legislatives": 1.83,
+     "proportionnelle": 1.62,
+     "uninominal": 2.28,
+     "grands_partis": 2.28,
+     "petits_partis": 1.29,
+     "au_pouvoir": 2.05,
+     "opposition": 1.71
+    },
+    "conversion_sigma": 0.8
+   },
+   "statut": "source",
+   "sources": [
+    "https://eprints.soton.ac.uk/421260/1/JenningsWlezien_PollingErrors.pdf"
+   ]
+  },
+  {
+   "regle": "france_legislatives",
+   "de": "S:elections legislatives francaises convoquees",
+   "vers": "E:election d un depute ou issue des elections legislatives francaises",
+   "structure": "course",
+   "ecosysteme": "France · élections législatives (scrutin uninominal à deux tours)",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "circonscription"
+   },
+   "perimetre": [
+    "France"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "premier_tour": {
+     "majorite_exprimes": 50,
+     "quart_inscrits": 25
+    },
+    "qualification_inscrits": 12.5
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.senat.fr/reglement/pouvoirs_publics31.html"
+   ]
+  },
+  {
+   "regle": "seuils_parlements_nationaux_europe",
+   "de": "S:elections legislatives a venir dans un pays europeen",
+   "vers": "E:entree d un parti au parlement national ou repartition des sieges dans un pays europeen",
+   "structure": "course",
+   "ecosysteme": "Europe · élection des parlements nationaux (proportionnelle)",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national"
+   },
+   "perimetre": [
+    "europe"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "seuil_parti": {
+     "DE": 5,
+     "NL": 0.67,
+     "PL": 5,
+     "CZ": 5,
+     "HU": 5,
+     "RO": 5,
+     "SK": 5,
+     "SE": 4,
+     "AT": 4,
+     "false": 4,
+     "BG": 4,
+     "LV": 5,
+     "IT": 3,
+     "GR": 3,
+     "ES": 3,
+     "BE": 5,
+     "DK": 2,
+     "PT": 0
+    },
+    "seuil_alliance": {
+     "PL": 8,
+     "CZ": [
+      8,
+      11
+     ],
+     "HU": [
+      10,
+      15
+     ],
+     "RO": 10,
+     "SK": [
+      7,
+      10
+     ]
+    }
+   },
+   "statut": "source",
+   "sources": [
+    "https://wikiwand.com/en/Electoral_threshold"
+   ]
+  },
+  {
+   "regle": "seuils_elections_europeennes",
+   "de": "S:elections europeennes a venir",
+   "vers": "E:sieges obtenus par une liste aux elections europeennes",
+   "structure": "course",
+   "ecosysteme": "Union européenne · élections au Parlement européen",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national (liste par État)"
+   },
+   "perimetre": [
+    "europe"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "plafond_ue": 5,
+    "seuil": {
+     "CZ": 5,
+     "FR": 5,
+     "HR": 5,
+     "LV": 5,
+     "LT": 5,
+     "HU": 5,
+     "PL": 5,
+     "RO": 5,
+     "SK": 5,
+     "IT": 4,
+     "AT": 4,
+     "SE": 4,
+     "GR": 3,
+     "CY": 1.8
+    }
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.europarl.europa.eu/RegData/etudes/BRIE/2023/749770/EPRS_BRI(2023)749770_EN.pdf"
+   ]
+  },
+  {
+   "regle": "ue_majorite_qualifiee",
+   "de": "S:proposition soumise au vote du conseil de l union europeenne",
+   "vers": "E:adoption d une decision par le conseil de l union europeenne",
+   "structure": "procedure",
+   "ecosysteme": "Union européenne · décisions du Conseil à la majorité qualifiée",
+   "echelle": {
+    "axe": "espace",
+    "tranche": "UE à 27"
+   },
+   "perimetre": [
+    "europe"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "etats_min": 15,
+    "population_min": 65,
+    "minorite_blocage_etats": 4,
+    "renforcee_etats_min": 20
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.consilium.europa.eu/en/council-eu/voting-system/qualified-majority/"
+   ]
+  },
+  {
+   "regle": "ue_sanctions_russie",
+   "de": "S:sanctions de l union europeenne contre la russie en vigueur ou proposees",
+   "vers": "E:adoption ou renouvellement des sanctions de l union europeenne contre la russie",
+   "structure": "procedure",
+   "ecosysteme": "Union européenne · sanctions contre la Russie",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "cycle de renouvellement"
+   },
+   "perimetre": [
+    "europe"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "periode_renouvellement_mois": 6,
+    "echeances": {
+     "economiques": "2027-07-31",
+     "listes_individuelles": "2026-09-15",
+     "crimee": "2027-06-23",
+     "oblasts_occupes": "2027-02-24",
+     "fonds_detournes": "2027-03-06"
+    },
+    "paquets_adoptes": 21,
+    "unanimite": true
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.consilium.europa.eu/en/policies/sanctions-against-russia",
+    "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:12016M031"
+   ]
+  },
+  {
+   "regle": "europe_formation_gouvernement",
+   "de": "S:elections legislatives tenues ou prevues dans une democratie parlementaire",
+   "vers": "E:formation d un gouvernement apres des legislatives dans une democratie parlementaire",
+   "structure": "procedure",
+   "ecosysteme": "Démocraties parlementaires (Europe et OCDE) · formation du gouvernement après une élection",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "jours entre l'élection et le premier gouvernement non intérimaire"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "ensemble": {
+     "n": 234,
+     "mediane": 31,
+     "p30": 0.509,
+     "p90": 0.073
+    },
+    "par_pays": {
+     "AUS": {
+      "n": 8,
+      "mediane": 13.5,
+      "p30": 0.0,
+      "p90": 0.0
+     },
+     "AUT": {
+      "n": 6,
+      "mediane": 87.0,
+      "p30": 1.0,
+      "p90": 0.5
+     },
+     "BEL": {
+      "n": 5,
+      "mediane": 139,
+      "p30": 0.8,
+      "p90": 0.6
+     },
+     "BGR": {
+      "n": 7,
+      "mediane": 36,
+      "p30": 0.714,
+      "p90": 0.0
+     },
+     "CAN": {
+      "n": 8,
+      "mediane": 15.0,
+      "p30": 0.125,
+      "p90": 0.0
+     },
+     "CHE": {
+      "n": 5,
+      "mediane": 52,
+      "p30": 1.0,
+      "p90": 0.0
+     },
+     "CYP": {
+      "n": 5,
+      "mediane": 0,
+      "p30": 0.0,
+      "p90": 0.0
+     },
+     "CZE": {
+      "n": 6,
+      "mediane": 71.5,
+      "p30": 0.667,
+      "p90": 0.167
+     },
+     "DEU": {
+      "n": 6,
+      "mediane": 69.0,
+      "p30": 0.833,
+      "p90": 0.167
+     },
+     "DNK": {
+      "n": 7,
+      "mediane": 10,
+      "p30": 0.143,
+      "p90": 0.0
+     },
+     "ESP": {
+      "n": 6,
+      "mediane": 39.5,
+      "p30": 1.0,
+      "p90": 0.167
+     },
+     "EST": {
+      "n": 6,
+      "mediane": 39.0,
+      "p30": 0.833,
+      "p90": 0.0
+     },
+     "FIN": {
+      "n": 6,
+      "mediane": 46.5,
+      "p30": 1.0,
+      "p90": 0.0
+     },
+     "FRA": {
+      "n": 5,
+      "mediane": 1,
+      "p30": 0.0,
+      "p90": 0.0
+     },
+     "GBR": {
+      "n": 6,
+      "mediane": 1.0,
+      "p30": 0.0,
+      "p90": 0.0
+     },
+     "GRC": {
+      "n": 9,
+      "mediane": 2,
+      "p30": 0.0,
+      "p90": 0.0
+     },
+     "HRV": {
+      "n": 7,
+      "mediane": 30,
+      "p30": 0.429,
+      "p90": 0.0
+     },
+     "HUN": {
+      "n": 6,
+      "mediane": 35.0,
+      "p30": 1.0,
+      "p90": 0.0
+     },
+     "IRL": {
+      "n": 5,
+      "mediane": 21,
+      "p30": 0.4,
+      "p90": 0.2
+     },
+     "ISL": {
+      "n": 7,
+      "mediane": 26,
+      "p30": 0.429,
+      "p90": 0.0
+     },
+     "ISR": {
+      "n": 8,
+      "mediane": 56.5,
+      "p30": 1.0,
+      "p90": 0.0
+     },
+     "ITA": {
+      "n": 6,
+      "mediane": 33.5,
+      "p30": 0.5,
+      "p90": 0.0
+     },
+     "JPN": {
+      "n": 8,
+      "mediane": 10.0,
+      "p30": 0.125,
+      "p90": 0.0
+     },
+     "LTU": {
+      "n": 6,
+      "mediane": 45.0,
+      "p30": 0.833,
+      "p90": 0.0
+     },
+     "LUX": {
+      "n": 4,
+      "mediane": 47.0,
+      "p30": 1.0,
+      "p90": 0.0
+     },
+     "LVA": {
+      "n": 7,
+      "mediane": 33,
+      "p30": 1.0,
+      "p90": 0.143
+     },
+     "MLT": {
+      "n": 5,
+      "mediane": 3,
+      "p30": 0.0,
+      "p90": 0.0
+     },
+     "NLD": {
+      "n": 7,
+      "mediane": 125,
+      "p30": 1.0,
+      "p90": 0.714
+     },
+     "NOR": {
+      "n": 6,
+      "mediane": 35.5,
+      "p30": 0.833,
+      "p90": 0.0
+     },
+     "NZL": {
+      "n": 7,
+      "mediane": 18,
+      "p30": 0.143,
+      "p90": 0.0
+     },
+     "POL": {
+      "n": 6,
+      "mediane": 30.5,
+      "p30": 0.5,
+      "p90": 0.0
+     },
+     "PRT": {
+      "n": 7,
+      "mediane": 20,
+      "p30": 0.143,
+      "p90": 0.0
+     },
+     "ROU": {
+      "n": 6,
+      "mediane": 23.0,
+      "p30": 0.167,
+      "p90": 0.0
+     },
+     "SVK": {
+      "n": 6,
+      "mediane": 23.0,
+      "p30": 0.0,
+      "p90": 0.0
+     },
+     "SVN": {
+      "n": 7,
+      "mediane": 55,
+      "p30": 1.0,
+      "p90": 0.0
+     },
+     "SWE": {
+      "n": 6,
+      "mediane": 27.0,
+      "p30": 0.5,
+      "p90": 0.167
+     },
+     "TUR": {
+      "n": 6,
+      "mediane": 22.0,
+      "p30": 0.167,
+      "p90": 0.0
+     }
+    }
+   },
+   "statut": "source",
+   "sources": [
+    "https://parlgov.org/"
+   ]
+  },
+  {
+   "regle": "voix_vers_sieges",
+   "de": "S:election legislative a venir",
+   "vers": "E:conversion des voix en sieges dans une election legislative",
+   "structure": "course",
+   "ecosysteme": "Démocraties parlementaires · passage des voix aux sièges",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national, selon le système électoral (relevé IPU)"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "accord_premier": {
+     "List PR": {
+      "moins_3": 0.953,
+      "plus_3": 0.992
+     },
+     "MMP": {
+      "moins_3": 0.839,
+      "plus_3": 0.989
+     }
+    },
+    "desaccords_vers_deuxieme": "11/12"
+   },
+   "statut": "source",
+   "sources": [
+    "https://parlgov.org/"
+   ]
+  },
+  {
+   "regle": "afrique_frontieres_coloniales",
+   "de": "S:territoire ethnique africain coupe ou non par une frontiere coloniale",
+   "vers": "E:violence politique dans un territoire ethnique africain",
+   "structure": "evenement_rare",
+   "ecosysteme": "Afrique · peuples partagés par les frontières coloniales",
+   "echelle": {
+    "axe": "espace",
+    "tranche": "territoire ethnique (843 régions de la carte de Murdock)"
+   },
+   "perimetre": [
+    "afrique"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "part_territoires_partages": 0.28,
+    "surcroit_violence_partages": 0.57,
+    "periode": "1997-2013"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.aeaweb.org/research/are-colonial-era-borders-holding-africa-back"
+   ]
+  },
+  {
+   "regle": "afrique_mines_conflits",
+   "de": "S:zone miniere africaine face a une variation des prix des minerais",
+   "vers": "E:conflit local dans une zone miniere africaine",
+   "structure": "evenement_rare",
+   "ecosysteme": "Afrique · ressources minières et conflits locaux",
+   "echelle": {
+    "axe": "espace",
+    "tranche": "cellule de 0,5° × 0,5° (environ 55 km)"
+   },
+   "perimetre": [
+    "afrique"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "proba_conflit_cellule_miniere": {
+     "base": 0.169,
+     "prix_plus_1_ecart_type": 0.225
+    },
+    "part_violence_expliquee_max": 0.21,
+    "periode": "1997-2010"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.aeaweb.org/content/file?id=3010",
+    "https://www.economics.ox.ac.uk/node/1466036"
+   ]
+  },
+  {
+   "regle": "afrique_flux_financiers_illicites",
+   "de": "S:economies africaines flux financiers mesures sur plusieurs annees",
+   "vers": "E:montant des sorties financieres illicites d afrique",
+   "structure": "contexte",
+   "ecosysteme": "Afrique · sorties de capitaux illicites",
+   "echelle": {
+    "axe": "espace",
+    "tranche": "continent"
+   },
+   "perimetre": [
+    "afrique"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "flux_illicites_milliards_an": 88.6,
+    "part_pib": 0.037,
+    "aide_publique_milliards": 48,
+    "ide_milliards": 54,
+    "fuite_cumulee_2000_2015_milliards": 836,
+    "extractif_2015_milliards": 40
+   },
+   "statut": "source",
+   "sources": [
+    "https://news.un.org/en/story/2020/09/1074052"
+   ]
+  },
+  {
+   "regle": "presidentielles_mode_de_scrutin",
+   "de": "S:election presidentielle prevue ou en cours",
+   "vers": "E:deroulement ou issue d une election presidentielle a un ou deux tours",
+   "structure": "course",
+   "ecosysteme": "Monde · mode d'élection du président (base de l'International IDEA)",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "deux_tours": [
+     "MN",
+     "KZ",
+     "KG",
+     "TR",
+     "IR",
+     "NG",
+     "KE",
+     "SN",
+     "CI",
+     "GH",
+     "ZW",
+     "MZ",
+     "UG",
+     "BR",
+     "AR",
+     "CO",
+     "CL",
+     "PE",
+     "FR",
+     "PT",
+     "PL",
+     "RO",
+     "AT",
+     "ID"
+    ],
+    "un_tour": [
+     "KR",
+     "TW",
+     "PH",
+     "CM",
+     "TZ",
+     "CD",
+     "MX",
+     "VE"
+    ],
+    "vote_supplementaire": [
+     "LK"
+    ]
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.idea.int/data-tools/question-view/130359"
+   ]
+  },
+  {
+   "regle": "indonesie_presidentielle",
+   "de": "S:election presidentielle indonesienne prevue",
+   "vers": "E:issue de l election presidentielle indonesienne",
+   "structure": "course",
+   "ecosysteme": "Indonésie · élection présidentielle",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national"
+   },
+   "perimetre": [
+    "Indonésie"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "majorite": 50,
+    "seuil_provincial": 20,
+    "part_provinces": "plus de la moitié",
+    "deux_candidats": "majorite_simple"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.idea.int/node/127452",
+    "https://en.mkri.id/news/details/2019-09-30/Court_Affirms_Provision_on_Vote_Acquisition_of_President_Elect"
+   ]
+  },
+  {
+   "regle": "japon_chambre_basse",
+   "de": "S:election de la chambre des representants du japon prevue",
+   "vers": "E:majorite a la chambre des representants du japon",
+   "structure": "course",
+   "ecosysteme": "Japon · Chambre des représentants",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national"
+   },
+   "perimetre": [
+    "Japon"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "sieges": 465,
+    "uninominal": 289,
+    "proportionnelle": 176,
+    "majorite_absolue": 233
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.idea.int/node/160916"
+   ]
+  },
+  {
+   "regle": "australie_vote_preferentiel",
+   "de": "S:election federale australienne prevue",
+   "vers": "E:election d un depute ou majorite a la chambre des representants australienne",
+   "structure": "course",
+   "ecosysteme": "Australie · élections fédérales",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "circonscription (Chambre) ; État (Sénat)"
+   },
+   "perimetre": [
+    "Australie"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "chambre": "vote_preferentiel_majorite_absolue",
+    "senat": "quota_par_etat"
+   },
+   "statut": "source",
+   "sources": [
+    "https://aec.gov.au/learn/preferential-voting.htm"
+   ]
+  },
+  {
+   "regle": "inde_scrutin_uninominal",
+   "de": "S:election de la lok sabha prevue",
+   "vers": "E:election d un depute ou majorite a la lok sabha",
+   "structure": "course",
+   "ecosysteme": "Inde · élections à la Lok Sabha",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "circonscription"
+   },
+   "perimetre": [
+    "Inde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "mode": "uninominal_un_tour"
+   },
+   "statut": "source",
+   "sources": [
+    "https://aec.gov.au/learn/preferential-voting.htm"
+   ]
+  },
+  {
+   "regle": "us_senat_cloture",
+   "de": "S:texte de loi ou nomination soumis au senat americain",
+   "vers": "E:adoption d une loi ou confirmation d une nomination par le senat americain",
+   "structure": "procedure",
+   "ecosysteme": "États-Unis · Sénat, clôture des débats",
+   "echelle": {
+    "axe": "espace",
+    "tranche": "chambre fédérale"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:congres"
+   ],
+   "parametres": {
+    "cloture_lois": 60,
+    "cloture_nominations": "majorite_simple",
+    "depuis_nominations": "2013-11-21",
+    "depuis_cour_supreme": "2017-04-06"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.everycrsreport.com/reports/R43331.html",
+    "https://www.everycrsreport.com/reports/R44819.html"
+   ]
+  },
+  {
+   "regle": "us_congres_productivite",
+   "de": "S:congres americain en session",
+   "vers": "E:nombre de lois adoptees par le congres americain",
+   "structure": "procedure",
+   "ecosysteme": "États-Unis · Congrès, lois adoptées",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "législature de deux ans"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:congres"
+   ],
+   "parametres": {
+    "lois_119e_au_2026_10_14": 121,
+    "lois_118e_meme_date": 106,
+    "moyenne_100e_110e_avant_election": 440,
+    "part_apres_election_118e": 0.61
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.pewresearch.org/short-reads/2026/10/15/so-far-the-119th-congress-is-among-the-least-productive-of-the-past-40-years"
+   ]
+  },
+  {
+   "regle": "onu_conseil_securite_vote",
+   "de": "S:projet de resolution soumis au conseil de securite de l onu",
+   "vers": "E:adoption d une resolution par le conseil de securite de l onu",
+   "structure": "procedure",
+   "ecosysteme": "ONU · Conseil de sécurité",
+   "echelle": {
+    "axe": "espace",
+    "tranche": "15 membres, dont 5 permanents"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "voix_requises": 9,
+    "membres": 15,
+    "permanents": 5,
+    "veto": true
+   },
+   "statut": "source",
+   "sources": [
+    "https://hrlibrary.umn.edu/instree/chapter5.html"
+   ]
+  },
+  {
+   "regle": "coups_d_etat_frequence",
+   "de": "S:pays expose a une tentative de coup d etat taux mondial ou regional",
+   "vers": "E:tentative ou reussite d un coup d etat",
+   "structure": "evenement_rare",
+   "ecosysteme": "Monde · coups d'État",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "parametres": {
+    "tentatives_1950_2010": 457,
+    "reussies": 227,
+    "taux_reussite": 0.497,
+    "part_afrique": 0.365,
+    "reussite_depuis_2003": "12/18"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.uky.edu/~clthyn2/powell-thyne-JPR-2011.pdf"
+   ]
+  },
+  {
+   "regle": "chefs_d_etat_sortie_irreguliere",
+   "de": "S:chef d etat ou de gouvernement au pouvoir",
+   "vers": "E:depart force coup revolte assassinat ou maintien au pouvoir d un chef d etat ou de gouvernement",
+   "structure": "maintien",
+   "ecosysteme": "Monde · maintien des dirigeants",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "mois"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "humain:hierarchie"
+   ],
+   "parametres": {
+    "cas_2001_2014": 45,
+    "pays_mois": 26000,
+    "taux_mensuel": 0.0017
+   },
+   "statut": "source",
+   "sources": [
+    "https://arxiv.org/abs/1409.7105"
+   ]
+  },
+  {
+   "regle": "second_tour_retournement",
+   "de": "S:presidentielle a deux tours dont le premier tour est connu",
+   "vers": "E:vainqueur du second tour d une presidentielle a deux tours",
+   "structure": "course",
+   "ecosysteme": "Monde · présidentielles à deux tours, issue du second tour",
+   "echelle": {
+    "axe": "espace",
+    "tranche": "région du monde"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "retournement": {
+     "monde": 0.293,
+     "europe": 0.316,
+     "amerique_latine": 0.24,
+     "afrique": 0.216,
+     "asie": 0.54,
+     "oceanie": 0.5
+    },
+    "seconds_tours_estimes": {
+     "europe": 79,
+     "amerique_latine": 50,
+     "afrique": 37,
+     "asie": 11,
+     "oceanie": 4
+    },
+    "minimum_cas": 30
+   },
+   "statut": "source",
+   "sources": [
+    "https://iris.uniroma1.it/retrieve/a858b9d9-3b9f-4fea-b7c1-40a9fe5fb2fa/Passarelli_Runoff_2022.pdf",
+    "https://www.brookings.edu/articles/winning-runoff-elections-in-latin-america"
+   ]
+  },
+  {
+   "regle": "parlements_mode_de_scrutin",
+   "de": "S:election legislative a venir",
+   "vers": "E:issue d une election legislative selon son mode de scrutin",
+   "structure": "course",
+   "ecosysteme": "Monde · élection des parlements (chambre basse ou unique)",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "national, par chambre"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "fichier": "registre/ipu/systemes-electoraux-2026-11-20.csv",
+    "lecteur": "ipu_parlements.py"
+   },
+   "statut": "source",
+   "sources": [
+    "https://data.ipu.org/fr/data-explorer/"
+   ]
+  },
+  {
+   "regle": "bresil_gouverneurs_senat",
+   "de": "S:elections bresiliennes des gouverneurs ou des senateurs prevues",
+   "vers": "E:election d un gouverneur ou d un senateur au bresil",
+   "structure": "course",
+   "ecosysteme": "Brésil · élections des États (gouverneur, sénateur)",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "État fédéré"
+   },
+   "perimetre": [
+    "Brésil"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "gouverneur": {
+     "majorite": 50,
+     "second_tour": "deux_premiers"
+    },
+    "senat": "majorite_simple"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.tre-sp.jus.br/comunicacao/noticias/2026/Junho/sistema-majoritario-ou-proporcional-entenda-a-diferenca-dos-modelos-de-votacao"
+   ]
+  },
+  {
+   "regle": "us_fed_calendrier",
+   "de": "S:politique monetaire americaine entre deux reunions du fomc",
+   "vers": "E:decision de taux de la reserve federale americaine",
+   "structure": "procedure",
+   "ecosysteme": "États-Unis · Réserve fédérale, décisions de taux",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "réunion (environ six semaines)"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:reserve_federale",
+    "calendriers-echeances:banques_centrales"
+   ],
+   "parametres": {
+    "reunions_par_an": 8,
+    "intervalle_semaines": 6,
+    "reunions_non_programmees": "possibles"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.federalreserve.gov/faqs/about_12844.htm"
+   ]
+  },
+  {
+   "regle": "us_cour_supreme_calendrier",
+   "de": "S:affaire ou pourvoi pendant devant la cour supreme americaine",
+   "vers": "E:decision ordonnance ou acceptation d un pourvoi par la cour supreme americaine",
+   "structure": "procedure",
+   "ecosysteme": "États-Unis · Cour suprême, session annuelle",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "session (octobre à juin)"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:tribunaux",
+    "calendriers-echeances:dates_limites"
+   ],
+   "parametres": {
+    "debut": "premier lundi d'octobre",
+    "fin_habituelle": "fin juin ou début juillet",
+    "fin_plaidoiries": "avril",
+    "demandes_par_semaine": 130
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.supremecourt.gov/about/procedures.aspx",
+    "https://ballotpedia.org/Supreme_Court_term"
+   ]
+  },
+  {
+   "regle": "us_reconciliation_budgetaire",
+   "de": "S:projet budgetaire au congres americain",
+   "vers": "E:adoption d une loi de reconciliation budgetaire par le congres americain",
+   "structure": "procedure",
+   "ecosysteme": "États-Unis · Congrès, réconciliation budgétaire",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "résolution budgétaire annuelle"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:congres",
+    "politique-americaine:budget"
+   ],
+   "parametres": {
+    "majorite_senat": "simple",
+    "debat_heures": 20,
+    "derogation_byrd": 60,
+    "examinees_depuis_1980": 29,
+    "promulguees": 24,
+    "veto": 4
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.everycrsreport.com/reports/R48444.html"
+   ]
+  },
+  {
+   "regle": "us_lois_de_finances_provisoires",
+   "de": "S:exercice budgetaire federal americain sans lois de credits annuelles adoptees",
+   "vers": "E:vote d une loi de finances provisoire continuing resolution ou fermeture du gouvernement federal americain",
+   "structure": "maintien",
+   "ecosysteme": "États-Unis · Congrès, crédits annuels",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "exercice budgétaire (1er octobre)"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:congres",
+    "politique-americaine:budget",
+    "calendriers-echeances:dates_limites"
+   ],
+   "parametres": {
+    "exercices_avec_provisoire_depuis_1977": "46/49",
+    "moyenne_provisoires_par_an_depuis_1998": 4.79,
+    "duree_moyenne_jours": 118,
+    "a_temps_depuis_1977": 4,
+    "interruptions_depuis_1976": 20,
+    "fermetures": 10
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.everycrsreport.com/files/2025-03-27_R46595_a87c245d29ebbdcae251ab0d5a9708d2748f28fd.html",
+    "https://history.house.gov/Institution/Shutdown/Government-Shutdowns/"
+   ]
+  },
+  {
+   "regle": "us_chambre_sanctions_disciplinaires",
+   "de": "S:membre de la chambre des representants americaine en fonction",
+   "vers": "E:censure reprimande ou exclusion d un membre de la chambre des representants americaine",
+   "structure": "evenement_rare",
+   "ecosysteme": "États-Unis · Chambre des représentants, discipline",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "législature"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:congres"
+   ],
+   "parametres": {
+    "exclus": 6,
+    "censures": 29,
+    "reprimandes": 13,
+    "censures_depuis_2000": [
+     2010,
+     2021,
+     2023,
+     2023,
+     2023,
+     2025
+    ]
+   },
+   "statut": "source",
+   "sources": [
+    "https://en.wikipedia.org/wiki/List_of_United_States_representatives_expelled,_censured,_or_reprimanded"
+   ]
+  },
+  {
+   "regle": "usmca_revision_conjointe",
+   "de": "S:accord usmca en vigueur avant ou pendant sa revision conjointe",
+   "vers": "E:prolongation revision ou retrait de l accord etats unis mexique canada usmca",
+   "structure": "procedure",
+   "ecosysteme": "Amérique du Nord · accord États-Unis–Mexique–Canada (USMCA)",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "révision à six ans, terme à seize ans"
+   },
+   "perimetre": [
+    "États-Unis",
+    "Mexique",
+    "Canada"
+   ],
+   "compartiments": [
+    "politique-americaine:commerce",
+    "calendriers-echeances:dates_limites"
+   ],
+   "parametres": {
+    "terme_ans": 16,
+    "revision_annee": 6,
+    "sans_confirmation": "revision_annuelle"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cusma-aceum/text-texte/34.aspx?lang=eng"
+   ]
+  },
+  {
+   "regle": "effet_d_echeance_negociation",
+   "de": "S:negociation en cours avec une date limite connue",
+   "vers": "E:conclusion d un accord negocie avant une date limite",
+   "structure": "contexte",
+   "ecosysteme": "Négociations à échéance (accords, contrats, compromis)",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "dernière part du délai"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "calendriers-echeances:dates_limites",
+    "calendriers-echeances:anticipations"
+   ],
+   "parametres": {
+    "part_accords_derniers_10pct_delai_long": 0.41,
+    "part_accords_derniers_10pct_delai_court": 0.73,
+    "terrain_episodes": 68,
+    "accord_durable_si_pression": "faible_ou_nulle"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.cambridge.org/core/journals/experimental-economics/article/bargaining-under-time-pressure-from-deadlines/F388EC46629F094DDB48A96AE00F8DCC",
+    "https://ideas.repec.org/a/aea/aecrev/v78y1988i4p806-23.html",
+    "https://econpapers.repec.org/RePEc:sae:jocore:v:55:y:2011:i:5:p:683-709"
+   ]
+  },
+  {
+   "regle": "referendums_retour_statu_quo",
+   "de": "S:campagne referendaire en cours sur un changement",
+   "vers": "E:victoire du changement a un referendum",
+   "structure": "contexte",
+   "ecosysteme": "Référendums · dynamique de campagne",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "campagne référendaire"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "humain:risque_percu",
+    "calendriers-echeances:elections"
+   ],
+   "parametres": {
+    "cas_baisse_changement": "28/37",
+    "soutien_moyen": {
+     "premiers_sondages": 62,
+     "derniers_sondages": 57,
+     "resultat": 52
+    },
+    "leduc_cas": "17/23",
+    "deplacement_moyen_points": 17
+   },
+   "statut": "source",
+   "sources": [
+    "https://discovery-pp.ucl.ac.uk/id/eprint/1555628/1/Renwick%2C%20%27Referendums%27%2C%20in%20Sage%20Handbook%20of%20Electoral%20Behaviour%20%282017%29%20-%20final%20manuscript.pdf"
+   ]
+  },
+  {
+   "regle": "us_confirmations_delais",
+   "de": "S:nomination presidentielle americaine transmise au senat",
+   "vers": "E:confirmation par le senat d une nomination presidentielle americaine",
+   "structure": "procedure",
+   "ecosysteme": "États-Unis · Sénat, confirmation des nominations",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "de la nomination au vote"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:congres",
+    "politique-americaine:executif"
+   ],
+   "parametres": {
+    "jours_bush": 45,
+    "jours_obama": 66,
+    "jours_trump1_rang_ministeriel": 37
+   },
+   "statut": "source",
+   "sources": [
+    "https://ballotpedia.org/Days_from_nomination_to_confirmation_for_Trump_administration_officials"
+   ]
+  },
+  {
+   "regle": "us_entourage_rotation",
+   "de": "S:conseiller principal de la maison blanche ou membre du cabinet americain en fonction",
+   "vers": "E:depart d un conseiller principal de la maison blanche ou d un membre du cabinet americain",
+   "structure": "evenement_rare",
+   "ecosysteme": "États-Unis · entourage présidentiel et cabinet",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "mandat"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:entourage",
+    "politique-americaine:executif"
+   ],
+   "parametres": {
+    "equipe_a_trump1_mandat": 0.85
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.brookings.edu/articles/tracking-turnover-in-the-second-trump-administration"
+   ]
+  },
+  {
+   "regle": "us_sanctions_frequence",
+   "de": "S:programme de sanctions du tresor americain en vigueur",
+   "vers": "E:nouvelles designations de sanctions par le tresor americain ofac",
+   "structure": "maintien",
+   "ecosysteme": "États-Unis · Trésor (OFAC), sanctions",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:sanctions"
+   ],
+   "parametres": {
+    "sdn_2022": 2275,
+    "sdn_2023": 2502,
+    "sdn_2024": 3135,
+    "russie_2024": 1706
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.cnas.org/publications/reports/sanctions-by-the-numbers-2024-year-in-review"
+   ]
+  },
+  {
+   "regle": "us_inculpation_personnalites",
+   "de": "S:elu ou responsable public americain en fonction ou ancien non inculpe",
+   "vers": "E:inculpation ou arrestation d un elu ou d un responsable public americain en fonction ou ancien",
+   "structure": "evenement_rare",
+   "ecosysteme": "États-Unis · poursuites contre des responsables publics",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "politique-americaine:tribunaux",
+    "politique-americaine:executif"
+   ],
+   "parametres": {
+    "federaux_inculpes": {
+     "2014": 364,
+     "2015": 458,
+     "2016": 354,
+     "2017": 383,
+     "2018": 275,
+     "2019": 300,
+     "2020": 242,
+     "2021": 246,
+     "2022": 183,
+     "2023": 208
+    }
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.justice.gov/criminal/media/1384436/dl"
+   ]
+  },
+  {
+   "regle": "calendriers_annonces_glissent",
+   "de": "S:projet chantier ou lancement annonce avec une date prevue",
+   "vers": "E:achevement ou mise en service d un projet annonce a la date prevue",
+   "structure": "contexte",
+   "ecosysteme": "Projets et calendriers annoncés (chantiers, lancements, mises en service)",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "durée du projet"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "calendriers-echeances:anticipations",
+    "calendriers-echeances:dates_limites"
+   ],
+   "parametres": {
+    "part_hors_budget": 0.9,
+    "part_dans_les_delais": 0.1,
+    "retard_moyen_barrages": 0.45
+   },
+   "statut": "source",
+   "sources": [
+    "https://arxiv.org/pdf/1409.0003.pdf"
+   ]
+  },
+  {
+   "regle": "coree_du_nord_essais_nucleaires",
+   "de": "S:programme nucleaire nord coreen sans essai depuis septembre 2017",
+   "vers": "E:essai nucleaire nord coreen",
+   "structure": "evenement_rare",
+   "ecosysteme": "Corée du Nord · essais nucléaires",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "Corée du Nord"
+   ],
+   "compartiments": [
+    "non-proliferation:etats_du_seuil",
+    "non-proliferation:dissuasion"
+   ],
+   "parametres": {
+    "essais": [
+     "2006-10-09",
+     "2009-05-25",
+     "2013-02-12",
+     "2016-01-06",
+     "2016-09-09",
+     "2017-09-03"
+    ],
+    "dernier": "2017-09-03"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.cbsnews.com/news/north-koreas-nuclear-tests-timeline",
+    "https://www.wikiwand.com/en/articles/North_Korean_nuclear_test"
+   ]
+  },
+  {
+   "regle": "us_ouragans_atterrissage",
+   "de": "S:saison cyclonique atlantique en cours ou a venir",
+   "vers": "E:atterrissage d un ouragan sur le territoire continental des etats unis",
+   "structure": "evenement_rare",
+   "ecosysteme": "États-Unis · ouragans touchant le continent",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "saison"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "climat-extremes:tempetes",
+    "climat-extremes:saisons"
+   ],
+   "parametres": {
+    "saisons": 56,
+    "avec_atterrissage": 43,
+    "avant_1er_septembre": 29,
+    "premier_ouragan_moyen": "08-11"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.aoml.noaa.gov/hrd/hurdat/ushurrlist.htm",
+    "https://www.nhc.noaa.gov/climo/"
+   ]
+  },
+  {
+   "regle": "bolides_frequence",
+   "de": "S:surveillance satellitaire des explosions de bolides dans l atmosphere",
+   "vers": "E:explosion dans l atmosphere d un bolide d une energie donnee",
+   "structure": "evenement_rare",
+   "ecosysteme": "Espace · petits objets frappant l'atmosphère terrestre",
+   "echelle": {
+    "axe": "taille",
+    "tranche": "énergie de l'impact"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "soleil-espace:meteorites"
+   ],
+   "parametres": {
+    "par_an_5kt": 1,
+    "par_an_10mt": 0.001,
+    "annees_de_donnees": 8.5
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.nature.com/articles/nature01238"
+   ]
+  },
+  {
+   "regle": "records_temperature_persistance",
+   "de": "S:serie de temperatures mondiale ou regionale proche de son record",
+   "vers": "E:record mensuel ou journalier de temperature de l air ou de la mer",
+   "structure": "maintien",
+   "ecosysteme": "Climat · records mensuels de température (ERA5)",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "mois"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "climat-extremes:tendance",
+    "climat-extremes:oceans"
+   ],
+   "parametres": {
+    "mois_records_consecutifs": 13,
+    "mois_records_mer": 15,
+    "anomalie_12_mois": 1.64
+   },
+   "statut": "source",
+   "sources": [
+    "https://wmo.int/media/news/record-temperature-streak-continues-june"
+   ]
+  },
+  {
+   "regle": "coupe_du_monde_vainqueurs_hotes",
+   "de": "S:phase finale de la coupe du monde a venir ou en cours avec ses equipes qualifiees",
+   "vers": "E:vainqueur ou parcours d une equipe a la coupe du monde de football",
+   "structure": "course",
+   "ecosysteme": "Football · Coupe du monde masculine",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "édition"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "competitions-culture:forme",
+    "competitions-culture:public"
+   ],
+   "parametres": {
+    "editions": 22,
+    "vainqueurs_distincts": 8,
+    "premier_titre": 8,
+    "premier_titre_depuis_1950": 6,
+    "hote_demi": 13,
+    "hote_titre": 6,
+    "hote_demi_depuis_1982": 5,
+    "editions_depuis_1982": 11
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.aljazeera.com/sports/2023/10/25/which-teams-have-won-the-fifa-world-cup",
+    "https://theanalyst.com/articles/world-cup-host-nations-how-have-they-performed"
+   ]
+  },
+  {
+   "regle": "anciens_dirigeants_sort",
+   "de": "S:ancien chef d etat ou de gouvernement sorti du pouvoir",
+   "vers": "E:exil emprisonnement ou poursuite d un ancien chef d etat ou de gouvernement",
+   "structure": "evenement_rare",
+   "ecosysteme": "Monde · sort des dirigeants après leur sortie du pouvoir",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année après la sortie"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "humain:hierarchie",
+    "securite-publique:justice"
+   ],
+   "parametres": {
+    "regulier_puni": 98,
+    "regulier_total": 1298,
+    "irregulier_puni": 380,
+    "irregulier_total": 473,
+    "regulier_emprisonne": 32
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.rochester.edu/college/faculty/hgoemans/Publications/WhichWayOut.pdf"
+   ]
+  },
+  {
+   "regle": "dow_jones_changements",
+   "de": "S:composition du dow jones industrial average en vigueur",
+   "vers": "E:changement de composition du dow jones industrial average",
+   "structure": "evenement_rare",
+   "ecosysteme": "États-Unis · composition du Dow Jones Industrial Average",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "calendriers-echeances:marches"
+   ],
+   "parametres": {
+    "changements_2000_2025": 14,
+    "annees": 26
+   },
+   "statut": "source",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Historical_components_of_the_Dow_Jones_Industrial_Average"
+   ]
+  },
+  {
+   "regle": "royaume_uni_niveau_menace",
+   "de": "S:niveau national de menace terroriste du royaume uni en vigueur",
+   "vers": "E:changement du niveau national de menace terroriste du royaume uni",
+   "structure": "maintien",
+   "ecosysteme": "Royaume-Uni · niveau national de menace terroriste",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "mois"
+   },
+   "perimetre": [
+    "Royaume-Uni"
+   ],
+   "compartiments": [
+    "securite-publique:alertes"
+   ],
+   "parametres": {
+    "changements_2006_2018": 16,
+    "duree_niveau_stable_mois": [
+     6,
+     24
+    ],
+    "duree_critique_jours": [
+     2,
+     4
+    ]
+   },
+   "statut": "source",
+   "sources": [
+    "https://en.wikipedia.org/wiki/UK_Threat_Levels"
+   ]
+  },
+  {
+   "regle": "schengen_controles_interieurs",
+   "de": "S:controle temporaire aux frontieres interieures de schengen en vigueur ou notifie",
+   "vers": "E:levee ou prolongation d un controle temporaire aux frontieres interieures de schengen",
+   "structure": "procedure",
+   "ecosysteme": "Union européenne · contrôles temporaires aux frontières intérieures de Schengen",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "semestre"
+   },
+   "perimetre": [
+    "europe"
+   ],
+   "compartiments": [
+    "securite-publique:frontieres"
+   ],
+   "parametres": {
+    "imprevisible_mois": [
+     1,
+     3
+    ],
+    "previsible_periode_mois": 6,
+    "previsible_max_ans": 2,
+    "exceptionnel_max_ans": 3
+   },
+   "statut": "source",
+   "sources": [
+    "https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en"
+   ]
+  },
+  {
+   "regle": "opep_departs",
+   "de": "S:pays membre de l opep",
+   "vers": "E:depart ou suspension d un pays membre de l opep",
+   "structure": "evenement_rare",
+   "ecosysteme": "Énergie · composition de l'OPEP",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "energie-mondiale:decisions"
+   ],
+   "parametres": {
+    "departs_2016_2024": 4
+   },
+   "statut": "source",
+   "sources": [
+    "https://cnbcafrica.com/2023/factbox-angola-to-quit-opec-reducing-membership-to-12-countries"
+   ]
+  },
+  {
+   "regle": "royal_mail_hausses_tarifs",
+   "de": "S:tarifs de royal mail en vigueur",
+   "vers": "E:hausse des tarifs des lettres ou colis de royal mail",
+   "structure": "maintien",
+   "ecosysteme": "Royaume-Uni · tarifs postaux de Royal Mail",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "semestre"
+   },
+   "perimetre": [
+    "Royaume-Uni"
+   ],
+   "compartiments": [
+    "inflation-mondiale:prix_conso"
+   ],
+   "parametres": {
+    "hausses": [
+     "2023-10",
+     "2024-04",
+     "2024-10",
+     "2025-04"
+    ]
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.moneysavingexpert.com/news/2025/03/stamp-price-rise-april/",
+    "https://uk.finance.yahoo.com/news/first-class-uk-stamp-rise-144550039.html",
+    "https://www.which.co.uk/news/article/stamp-prices-rise-how-cost-of-posting-letter-has-increased-over-past-five-years-acBIL0s0ZjJS"
+   ]
+  },
+  {
+   "regle": "papes_voyages",
+   "de": "S:pape en fonction",
+   "vers": "E:voyage d un pape a l etranger",
+   "structure": "maintien",
+   "ecosysteme": "Saint-Siège · voyages des papes à l'étranger",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [],
+   "parametres": {
+    "jean_paul_ii": [
+     104,
+     27
+    ],
+    "benoit_xvi": [
+     24,
+     8
+    ],
+    "francois_10_ans": 40
+   },
+   "statut": "source",
+   "sources": [
+    "https://aleteia.org/2023/02/09/the-popes-40-trips-abroad-in-10-years/"
+   ]
+  },
+  {
+   "regle": "sommets_etats_unis_russie",
+   "de": "S:presidents americain et russe en fonction sans sommet annonce",
+   "vers": "E:rencontre en personne entre les presidents americain et russe",
+   "structure": "evenement_rare",
+   "ecosysteme": "États-Unis et Russie · rencontres au sommet des présidents",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "année"
+   },
+   "perimetre": [
+    "États-Unis",
+    "Russie"
+   ],
+   "compartiments": [
+    "russie-ukraine:negociations"
+   ],
+   "parametres": {
+    "sommets_2000_2025": 8,
+    "annees_sans": 18
+   },
+   "statut": "source",
+   "sources": [
+    "https://en.wikipedia.org/wiki/List_of_Russia%E2%80%93United_States_summits"
+   ]
+  },
+  {
+   "regle": "seuil_chaleur_mais_soja_coton",
+   "de": "S:saison de culture en cours mars aout pour le mais et le soja avril octobre pour le coton avec des journees chaudes",
+   "vers": "E:rendement d une recolte de mais de soja ou de coton aux etats unis selon les temperatures de la saison",
+   "structure": "seuil",
+   "ecosysteme": "Agriculture · rendements du maïs, du soja et du coton face à la chaleur",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "saison de culture"
+   },
+   "perimetre": [
+    "États-Unis"
+   ],
+   "compartiments": [
+    "alimentation-mondiale:cultures",
+    "alimentation-mondiale:climat"
+   ],
+   "parametres": {
+    "seuil_mais": 29,
+    "seuil_soja": 30,
+    "seuil_coton": 32,
+    "perte_mais_journee_40_au_lieu_de_29": 0.07,
+    "prix_a_terme_journee_40": 0.044,
+    "comtes_annees": "1950-2005"
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.nber.org/papers/w13799",
+    "https://www.pnas.org/doi/10.1073/pnas.0906865106"
+   ]
+  },
+  {
+   "regle": "seuil_chaleur_ble",
+   "de": "S:ble en fin de cycle floraison remplissage du grain expose a des maxima eleves",
+   "vers": "E:rendement d une recolte de ble selon les temperatures maximales de la saison",
+   "structure": "seuil",
+   "ecosysteme": "Agriculture · rendement du blé face à la chaleur",
+   "echelle": {
+    "axe": "temps",
+    "tranche": "saison de culture"
+   },
+   "perimetre": [
+    "monde"
+   ],
+   "compartiments": [
+    "alimentation-mondiale:cultures",
+    "alimentation-mondiale:climat"
+   ],
+   "parametres": {
+    "tmax_critique": 34,
+    "perte_par_degre_mondiale": 0.06,
+    "intervalle_50": [
+     0.042,
+     0.082
+    ],
+    "inde_2_degres_jours": -9,
+    "inde_2_degres_rendement": -0.2,
+    "tmoy_saison_echec": 28
+   },
+   "statut": "source",
+   "sources": [
+    "https://www.nature.com/articles/nclimate2470",
+    "https://www.doi.org/10.1038/NCLIMATE1356",
+    "https://fsi.stanford.edu/node/17355"
+   ]
+  }
+ ],
+ "manques": [
+  {
+   "regle": "us_erreur_primaires_d_etat",
+   "manque": "situation ou événement non écrit",
+   "statut": "absence"
+  },
+  {
+   "regle": "regimes_fermes_inertie",
+   "manque": "situation ou événement non écrit",
+   "statut": "auteur"
+  },
+  {
+   "regle": "regimes_fermes_contestation",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "afrique_limites_de_mandat",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "afrique_reelection_sortants",
+   "manque": "situation ou événement non écrit",
+   "statut": "absence"
+  },
+  {
+   "regle": "sondages_erreur_comparee",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "france_legislatives",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "seuils_parlements_nationaux_europe",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "seuils_elections_europeennes",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "ue_majorite_qualifiee",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "ue_sanctions_russie",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "europe_formation_gouvernement",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "voix_vers_sieges",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "afrique_lecture_auteur",
+   "manque": "situation ou événement non écrit",
+   "statut": "auteur"
+  },
+  {
+   "regle": "afrique_frontieres_coloniales",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "afrique_mines_conflits",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "afrique_flux_financiers_illicites",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "presidentielles_mode_de_scrutin",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "indonesie_presidentielle",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "japon_chambre_basse",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "australie_vote_preferentiel",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "inde_scrutin_uninominal",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "chine_maintien",
+   "manque": "situation ou événement non écrit",
+   "statut": "absence"
+  },
+  {
+   "regle": "onu_conseil_securite_vote",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "second_tour_retournement",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "parlements_mode_de_scrutin",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "bresil_gouverneurs_senat",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  },
+  {
+   "regle": "erreur_infranationale_mesuree",
+   "manque": "situation ou événement non écrit",
+   "statut": "absence"
+  },
+  {
+   "regle": "papes_voyages",
+   "manque": "aucun compartiment : la situation ne peut pas être reconnue dans les situations observées",
+   "statut": "source"
+  }
+ ],
+ "doublons_probables": [
+  {
+   "a": "élection américaine à venir, avec des sondages publiés",
+   "b": "élection nationale à venir, avec des sondages publiés",
+   "ressemblance": 0.9,
+   "regles": [
+    [
+     "us_erreur_sondages_par_echelle"
+    ],
+    [
+     "us_erreur_selon_temps_restant",
+     "sondages_erreur_comparee"
+    ]
+   ]
+  },
+  {
+   "a": "chef d'État ou de gouvernement au pouvoir",
+   "b": "ancien chef d'État ou de gouvernement sorti du pouvoir",
+   "ressemblance": 0.84,
+   "regles": [
+    [
+     "chefs_d_etat_sortie_irreguliere"
+    ],
+    [
+     "anciens_dirigeants_sort"
+    ]
+   ]
+  },
+  {
+   "a": "résultat d'une élection américaine prévu d'après les sondages",
+   "b": "résultat d'une élection nationale prévu d'après les sondages",
+   "ressemblance": 0.91,
+   "regles": [
+    [
+     "us_erreur_sondages_par_echelle"
+    ],
+    [
+     "sondages_erreur_comparee"
+    ]
+   ]
+  },
+  {
+   "a": "résultat d'une élection nationale prévu d'après les sondages, selon le temps restant avant le vote",
+   "b": "résultat d'une élection nationale prévu d'après les sondages",
+   "ressemblance": 0.76,
+   "regles": [
+    [
+     "us_erreur_selon_temps_restant"
+    ],
+    [
+     "sondages_erreur_comparee"
+    ]
+   ]
+  }
+ ]
+}
