@@ -1,0 +1,280 @@
+# 0.10.419 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 05) : « plus gros trou » suivant de la carte, le plancher
+# social (cadre de référence : plancher social du « donut » de Raworth). Ne reprend que ce qui manquait (pauvreté, travail,
+# inégalités, logement, protection sociale, accès à l'énergie) ; le reste du plancher (faim, santé, eau, éducation, genre,
+# voix politique, justice, liens) est relié par des ponts. Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: plancher-social
+nom: Plancher social (monde)
+declaration:
+  but: 'comprendre ce qui manque aux personnes sous le plancher social, à l''échelle du monde : revenu, travail, logement,
+    protection, énergie, et l''écart entre les plus riches et les plus pauvres ; 824 millions de personnes sous le seuil
+    de 3 $ par jour en 2024, environ 10,1 % du monde (Banque mondiale, septembre 2026)'
+  limites: dedans la pauvreté monétaire, le travail (chômage, informalité, travailleurs pauvres), les inégalités de revenu
+    et de patrimoine, le logement, la protection sociale, l'accès à l'électricité et à une cuisson propre ; dehors la faim
+    et la santé (corps-humain), l'eau (eau-douce-potable), l'éducation et le genre (societe-droits), la voix politique
+    (politique-interieure), la justice (securite-publique), les liens (humain), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (Banque mondiale, OIT, ONU-Habitat, Laboratoire sur les
+    inégalités mondiales, AIE et agences du suivi de l'ODD 7) ; toujours en agrégat, aucune personne privée
+  date: '2026-11-22'
+  espace: le monde, par pays, par ville
+  temps: du mois (perte d'un emploi) à la génération (inégalités de patrimoine)
+  vitesse: le mois (chômage), l'année (pauvreté, logement, prestations), la décennie (inégalités)
+  taille: micro (un ménage) à macro (le monde)
+compartiments:
+- id: pauvrete
+  nom: Pauvreté (seuil de 3 $ par jour et seuils supérieurs)
+  organisation: economie
+  elements:
+  - 824 millions de personnes, environ 10,1 % du monde, sous le seuil de 3 $ par jour (parité de pouvoir d'achat 2021) en
+    2024 ; 9,8 % estimés pour 2026 (Banque mondiale, 22 septembre 2026)
+  - pauvreté extrême restée élevée en Afrique subsaharienne (même source)
+  - seuils supérieurs (pays à revenu intermédiaire)
+  acteurs:
+  - nom: des ménages sous le seuil de pauvreté (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: societe
+    facette: collectif
+  - nom: Banque mondiale
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Banque mondiale, Poverty and Inequality Platform (pip.worldbank.org, données publiques)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: travail
+  nom: Emploi, chômage, informalité, travailleurs pauvres
+  organisation: economie
+  elements:
+  - chômage mondial prévu à 4,9 % en 2026, environ 186 millions de personnes (OIT, Employment and Social Trends 2026,
+    14 janvier 2026)
+  - près de 300 millions de travailleurs sous 3 $ par jour ; 2,1 milliards en emploi informel (même source)
+  - environ 260 millions de jeunes ni en études, ni en emploi, ni en formation (même source)
+  acteurs:
+  - nom: des travailleurs informels (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: economie
+    facette: collectif
+  - nom: OIT (Organisation internationale du travail)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: mois à années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: ILOSTAT (OIT, données publiques)
+    statut: a_brancher
+  - *id001
+- id: inegalites
+  nom: Inégalités de revenu et de patrimoine
+  organisation: economie
+  elements:
+  - les 10 % les plus riches reçoivent 53 % du revenu mondial, les 50 % les plus pauvres 8 % (World Inequality Report
+    2026, décembre 2025 ; chiffre repris par la presse, à vérifier sur wid.world)
+  - patrimoine mondial détenu à environ trois quarts par les 10 % les plus riches, 37 % par le 1 % le plus riche, 2 % par
+    la moitié la plus pauvre (même source, même réserve)
+  acteurs:
+  - nom: Laboratoire sur les inégalités mondiales (World Inequality Lab)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays et monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: WID, World Inequality Database (wid.world, données publiques)
+    statut: a_brancher
+  - *id001
+- id: logement
+  nom: Logement, bidonvilles, sans-abri
+  organisation: societe
+  elements:
+  - 2,8 milliards de personnes sans logement convenable, environ 40 % du monde (ONU-Habitat, 29 mai 2025)
+  - plus de 1,12 milliard en bidonvilles ou quartiers informels ; environ 300 millions sans abri (même source)
+  acteurs:
+  - nom: des habitants de quartiers informels (en agrégat)
+    taille: méso
+    espace: ville
+    vitesse: années
+    organisation: societe
+    facette: collectif
+  - nom: ONU-Habitat
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: ville à pays
+    temps: années
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: ONU-Habitat, indicateur ODD 11.1.1 (population urbaine en quartiers informels)
+    statut: a_brancher
+  - *id001
+- id: protection_sociale
+  nom: Protection sociale (pensions, chômage, famille, santé)
+  organisation: convention
+  elements:
+  - 52,4 % de la population mondiale couverte par au moins une prestation, 47,6 % sans aucune protection (OIT, Rapport
+    mondial sur la protection sociale 2024-26, septembre 2024)
+  - pensions, allocations chômage, prestations familiales
+  acteurs:
+  - nom: un État qui verse des prestations
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: ILOSTAT, base mondiale de la protection sociale (OIT)
+    statut: a_brancher
+  - *id001
+- id: acces_energie
+  nom: Accès à l'électricité et à une cuisson propre
+  organisation: technique
+  elements:
+  - plus de 666 millions de personnes sans électricité, environ 2,1 milliards cuisinant avec des combustibles polluants
+    (Tracking SDG7 2025, données 2023)
+  - 85 % des personnes sans électricité en Afrique subsaharienne (même source)
+  acteurs:
+  - nom: des ménages sans électricité (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Tracking SDG7 (AIE, IRENA, Division de statistique de l'ONU, Banque mondiale, OMS ; données publiques)
+    statut: a_brancher
+  - *id001
+relations:
+- de: travail
+  vers: pauvrete
+  effet: '-'
+  delai: mois
+  force: forte
+  coupure: protection sociale qui compense la perte de revenu
+  statut: a_verifier
+  texte: un emploi formel et correctement payé fait baisser la pauvreté ; le chômage et l'informalité la font monter
+- de: protection_sociale
+  vers: pauvrete
+  effet: '-'
+  delai: mois à années
+  force: forte
+  coupure: prestations trop faibles ou non versées
+  statut: a_verifier
+  texte: les prestations sociales font baisser la pauvreté
+- de: inegalites
+  vers: pauvrete
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: à croissance égale, des inégalités plus fortes freinent la baisse de la pauvreté
+- de: pauvrete
+  vers: logement
+  effet: '-'
+  delai: années
+  force: forte
+  coupure: logement social ou régularisation des quartiers
+  statut: a_verifier
+  texte: plus de pauvreté, moins de logements convenables (le compartiment cible lit ici la part de logements convenables)
+- de: pauvrete
+  vers: acces_energie
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: électrification subventionnée
+  statut: a_verifier
+  texte: la pauvreté freine l'accès à l'électricité et à une cuisson propre
+- de: acces_energie
+  vers: pauvrete
+  effet: '-'
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'accès à l'énergie ouvre des activités et fait reculer la pauvreté (boucle avec la relation précédente)
+ponts:
+- depuis: pauvrete
+  vers: corps-humain:nutrition
+  nature: la faim, part alimentaire du plancher social
+- depuis: protection_sociale
+  vers: corps-humain:soins
+  nature: la couverture des soins, part santé du plancher
+- depuis: logement
+  vers: eau-douce-potable:acces
+  nature: l'accès à l'eau, compté avec le logement convenable par ONU-Habitat
+- depuis: pauvrete
+  vers: societe-droits:education
+  nature: l'éducation, part du plancher détaillée dans société et droits
+- depuis: inegalites
+  vers: societe-droits:genre_minorites
+  nature: les écarts entre femmes et hommes et entre groupes
+- depuis: inegalites
+  vers: politique-interieure:regime
+  nature: la voix politique, part du plancher
+- depuis: pauvrete
+  vers: securite-publique:justice
+  nature: paix et justice, part du plancher
+- depuis: logement
+  vers: humain:liens
+  nature: les liens sociaux, part du plancher
+- depuis: pauvrete
+  vers: humain:stress_chronique
+  nature: la précarité comme stress chronique
+- depuis: inegalites
+  vers: humain:passage_acte
+  nature: inégalités et contestation (manifestation, émeute, vote sanction)
+- depuis: pauvrete
+  vers: inflation-mondiale:prix_conso
+  nature: la hausse des prix pèse d'abord sur les plus pauvres
+- depuis: travail
+  vers: inflation-mondiale:salaires
+  nature: mêmes salaires, vus depuis l'inflation
+- depuis: inegalites
+  vers: migrations-demographie:economie
+  nature: les écarts de revenus poussent à migrer
+- depuis: logement
+  vers: migrations-demographie:urbanisation
+  nature: l'urbanisation rapide fait croître les quartiers informels
+- depuis: logement
+  vers: economie-entreprises:immobilier_consommation
+  nature: le marché immobilier et le coût du logement
+- depuis: acces_energie
+  vers: energie-mondiale:prix
+  nature: le prix de l'énergie pèse sur l'accès
