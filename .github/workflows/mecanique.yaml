@@ -20,6 +20,11 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - name: Articles du collecteur lecteur-local (dépôt public, lecture seule ; 0.10.465)
+        uses: actions/checkout@v4
+        with:
+          repository: Othman-Benbrahim/lecteur-local
+          path: lecteur
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -39,7 +44,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/gdelt-manifestations-recentes.csv registre/mecanique-journal.csv registre/mecanique-issues.csv registre/mecanique-score.json registre/bigquery-compteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/gdelt-manifestations-recentes.csv registre/mecanique-journal.csv registre/mecanique-issues.csv registre/mecanique-score.json registre/mecanique-poids.json registre/bigquery-compteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : mécanique du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase

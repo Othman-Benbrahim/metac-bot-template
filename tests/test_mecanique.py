@@ -74,3 +74,36 @@ class TestMecanique(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestModules(unittest.TestCase):
+    def ctx(self, articles):
+        return {"articles": {"XX": articles}, "elections": {"XX": ["2025-03-20"]},
+                "acte": {"curfew"}, "fait_passe": {"anniversary"}}
+
+    def test_modules_orientes(self):
+        sem = "2025-03-03"
+        arts = [{"jour": "2025-03-04", "emetteur": "a", "officiel": True, "termes": ["curfew"]},
+                {"jour": "2025-03-05", "emetteur": "b", "officiel": False, "termes": ["anniversary"]},
+                {"jour": "2025-03-06", "emetteur": "b", "officiel": False, "termes": []}]
+        x = m.modules("XX", sem, self.ctx(arts))
+        self.assertEqual(x["corroboration"], 1.0)
+        self.assertEqual(x["signal_faible"], 0.0)
+        self.assertAlmostEqual(x["rang_emetteur"], 0.333, places=3)
+        self.assertEqual(x["acte_haut_rang"], 1.0)
+        self.assertAlmostEqual(x["fait_passe"], -0.333, places=3)
+        self.assertEqual(x["echeance"], 1.0)
+        # un signal faible : un seul article officiel, rien dans les 30 jours avant
+        x2 = m.modules("XX", sem, self.ctx(arts[:1]))
+        self.assertEqual(x2["signal_faible"], 1.0)
+        # absence d'articles : zéros (pas un signe contraire)
+        x3 = m.modules("YY", sem, self.ctx(arts))
+        self.assertEqual(sum(abs(v) for v in x3.values()), 0.0)
+
+    def test_boucle(self):
+        etat = {"poids": {k: m.POIDS_DEPART for k in m.MODULES}, "appris_sur": []}
+        j = [{"id": "a", "modules": '{"corroboration": 1.0}'}, {"id": "b", "modules": "{}"}]
+        n = m.apprendre(etat, j, [{"id": "a", "prend": "1"}, {"id": "b", "prend": "0"}])
+        self.assertEqual(n, 1)
+        self.assertGreater(etat["poids"]["corroboration"], m.POIDS_DEPART)
+        self.assertEqual(m.apprendre(etat, j, [{"id": "a", "prend": "1"}]), 0)     # une seule fois par issue

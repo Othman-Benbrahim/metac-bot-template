@@ -1,0 +1,32 @@
+# Termes lus par mecanique.py (bot 0.10.465), à retrouver tels quels dans listes/valides.txt de lecteur-local (seuls
+# les termes validés y sont relevés dans les articles). Proposés par Claude le 2026-11-22 ; validation de l'auteur : voir
+# l'en-tête de chaque liste.
+#
+# acte_haut_rang : actes d'État, d'engagement ou performatifs (grappe émetteur et signal, § 7) ; poussent vers « prend ».
+# fait_passe : un fait passé rapporté dans un calendrier attendu (grappe du temps du texte) ; poussent vers « s'éteint ».
+acte_haut_rang:
+- état d'urgence
+- state of emergency
+- couvre-feu
+- curfew
+- loi martiale
+- martial law
+- dissolution du parlement
+- dissolves parliament
+- coupure d'internet
+- internet shutdown
+- interdiction de manifester
+- protest ban
+- déploiement de l'armée
+- troops deployed
+- démission du gouvernement
+- government resigns
+fait_passe:
+- anniversaire
+- anniversary
+- commémoration
+- commemoration
+- procès
+- on trial
+- ans après
+- years after
