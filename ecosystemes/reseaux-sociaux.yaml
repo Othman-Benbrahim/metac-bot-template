@@ -205,7 +205,67 @@ compartiments:
     taille: macro
   traces:
   - *id001
+- id: corrosion
+  nom: Puissance de corrosion (retourner les libertés d'une démocratie contre elle)
+  organisation: convention
+  elements:
+  - 'trois façons d''infléchir la volonté d''un autre : la coercition (le bélier), l''attraction (la lumière), la corrosion
+    (l''acide), qui retourne contre la cible ses propres propriétés (pluralisme, presse libre, transparence) pour dégrader
+    sa cohésion et sa capacité de mobilisation (Dabila, Escudier et Marti, Sciences Po, 19 novembre 2026 ; concept forgé
+    dans Escudier et Ivaldi, L''Avantage démocratique, Calmann-Lévy, 2026)'
+  - 'trois registres : sémantique (vider les mots de leur sens, ex. le Livre blanc chinois China: Democracy That Works,
+    décembre 2021), factuel (fabriquer ou brouiller les faits et leur attribution), polarisant (attiser les clivages) ;
+    technique transversale : l''inversion accusatoire (whataboutism)'
+  - 'cinq phases : repérage des vulnérabilités, injection, amplification, dégradation de la cohésion, baisse de la
+    capacité de mobilisation ; moment décisif : le relais par des acteurs intérieurs (partis, médias, élus), conscients
+    ou non'
+  - 'deux critères pour la distinguer de la critique légitime : une origine délibérée (un acteur initie, finance ou
+    amplifie) et une finalité géostratégique ; la virulence d''une critique ne suffit pas (les auteurs mettent en garde
+    contre « la main de Moscou derrière chaque colère sociale »)'
+  acteurs:
+  - nom: un État qui corrode un adversaire
+    taille: macro
+    espace: monde
+    vitesse: mois
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: Dabila, Escudier, Marti, « La puissance de corrosion », Sciences Po, 19 novembre 2026 (texte lu le
+      2026-11-22)
+    statut: a_brancher
 relations:
+- de: corrosion
+  vers: desinformation
+  effet: +
+  delai: semaines
+  force: inconnue
+  coupure: détection et désignation publique (Viginum), encadrement des plateformes
+  statut: a_verifier
+  texte: 'phase 2 de la corrosion : injection de contenus (registres factuel et sémantique) ; source : Dabila, Escudier,
+    Marti, Sciences Po, 2026'
+- de: graphe_algorithme
+  vers: corrosion
+  effet: +
+  delai: jours
+  force: inconnue
+  coupure: recommandation non fondée sur l'engagement
+  statut: a_verifier
+  texte: 'phase 3 : la recommandation, qui met en avant les contenus les plus clivants, amplifie la corrosion à moindre
+    coût (« l''accélérateur numérique ») ; source : idem'
+- de: corrosion
+  vers: influence_ou_desinformation
+  effet: +
+  delai: mois
+  force: inconnue
+  coupure: deux critères - origine délibérée et finalité géostratégique établies
+  statut: a_verifier
+  texte: 'la corrosion est un cas tranché de la question ouverte : influence devenue manipulation quand l''origine et la
+    finalité sont établies'
 - de: plateformes
   vers: graphe_algorithme
   effet: +
@@ -287,6 +347,24 @@ relations:
   statut: a_verifier
   texte: la défiance complotiste nourrit parfois les mobilisations
 ponts:
+- depuis: corrosion
+  vers: humain:polarisation
+  nature: 'phase 4 : la corrosion polarisante attise les clivages et désigne à chaque camp un ennemi intérieur'
+  type: influence
+- depuis: corrosion
+  vers: militaire:alliances
+  nature: 'phase 5 : la baisse de la capacité de mobilisation, jusqu''au risque de faire défaut au sein d''une alliance
+    (ex. du soutien occidental à l''Ukraine, selon les auteurs)'
+  type: influence
+- depuis: corrosion
+  vers: partis-politiques:droite_radicale_populiste
+  nature: relais intérieurs, conscients ou non (les auteurs citent des mouvements populistes européens ; à établir cas
+    par cas, sur source judiciaire ou d'enquête)
+  type: voisinage
+- depuis: corrosion
+  vers: societe-droits:libertes_civiques
+  nature: les libertés démocratiques retournées contre la démocratie ; riposte sans les restreindre (paradoxe de Popper)
+  type: voisinage
 - depuis: plateformes
   vers: medias-diffusion:plateformes_sociales
   nature: les mêmes plateformes, vues comme moyens de diffusion

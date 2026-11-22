@@ -414,3 +414,6 @@ ponts:
 - {de: guerre-levant:humanitaire, vers: psyche:sante_mentale, canal: sante, nature: "les traumatismes de guerre"}
 - {de: reseaux-sociaux:graphe_algorithme, vers: psyche:solitude_lien, canal: comportement, nature: "relations en ligne et solitude, lien discuté", type: voisinage}
 - {de: humain:enfance, vers: psyche:developpement, canal: comportement, nature: "l'adversité précoce marque le développement"}
+# ---------- puissance de corrosion (veille de l'auteur, 2026-11-22, 16 h 37 ; Dabila, Escudier, Marti, Sciences Po)
+- {de: classes-sociales:classes_populaires, vers: reseaux-sociaux:corrosion, canal: comportement, nature: "phase 1 : le citoyen désabusé par le déclassement et l'insécurité, première cible de la corrosion"}
+- {de: plancher-social:inegalites, vers: reseaux-sociaux:corrosion, canal: economie, nature: "l'écart entre promesses démocratiques et résultats, réservoir de griefs exploitables"}
