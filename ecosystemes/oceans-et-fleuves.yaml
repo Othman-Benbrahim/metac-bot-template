@@ -1,124 +1,569 @@
-theme: "oceans-et-fleuves"
-nom: "Océans et fleuves (l'eau de la Terre)"
+# 0.10.415 (2026-11-22, décision de l'auteur 3 h 33) : troisième des « plus gros trous » : pêche et aquaculture, récifs,
+# désoxygénation, plastiques, haute mer ajoutés ; récifs et zones mortes sortis du compartiment « vivant aquatique ».
+theme: oceans-et-fleuves
+nom: Océans et fleuves (l'eau de la Terre)
 declaration:
-  but: "comprendre l'eau de la Terre, dont sont faits tous les êtres vivants : comment océans, glaces, fleuves et nappes stockent et déplacent l'eau et la chaleur, et ce que cela transmet aux climats, aux cultures, aux villes, à la navigation et aux machines"
-  limites: "dedans les océans (chaleur, courants, acidification, niveau), les glaces, les fleuves (débits, crues, étiages, deltas), les nappes, le cycle de l'eau, les usages humains (barrages, irrigation, navigation fluviale, refroidissement des centrales et des centres de données) ; dehors la gestion locale de l'eau potable et le dessalement (fiche eau au Moyen-Orient)"
-  observateur: "notre carte, regard extérieur ; sources scientifiques publiques"
-  date: "2026-11-19"
-  espace: "de la cellule (eau du vivant) aux bassins versants et aux océans"
-  temps: "de la crue de quelques jours au siècle (niveau de la mer, glaciers)"
-  vitesse: "le jour (crue), la saison (étiage), la décennie (glaciers), le siècle (océan profond)"
-  taille: "micro (cellule) à macro (océans)"
+  but: 'comprendre l''eau de la Terre, dont sont faits tous les êtres vivants : comment océans, glaces, fleuves et nappes
+    stockent et déplacent l''eau et la chaleur, et ce que cela transmet aux climats, aux cultures, aux villes, à la navigation
+    et aux machines'
+  limites: dedans les océans (chaleur, courants, acidification, niveau), les glaces, les fleuves (débits, crues, étiages,
+    deltas), les nappes, le cycle de l'eau, les usages humains (barrages, irrigation, navigation fluviale, refroidissement
+    des centrales et des centres de données) ; dehors la gestion locale de l'eau potable et le dessalement (fiche eau au Moyen-Orient)
+  observateur: notre carte, regard extérieur ; sources scientifiques publiques
+  date: '2026-11-19'
+  espace: de la cellule (eau du vivant) aux bassins versants et aux océans
+  temps: de la crue de quelques jours au siècle (niveau de la mer, glaciers)
+  vitesse: le jour (crue), la saison (étiage), la décennie (glaciers), le siècle (océan profond)
+  taille: micro (cellule) à macro (océans)
 compartiments:
-  - id: "oceans"
-    nom: "Océans (chaleur, courants, acidification)"
-    organisation: "ocean"
-    elements: ["stock de chaleur", "grands courants", "remontées d'eaux froides", "acidité"]
-    acteurs:
-      - {nom: "le Gulf Stream et la circulation de l'Atlantique", taille: "macro", espace: "continent", vitesse: "décennie", organisation: "ocean", facette: "non_humain"}
-      - {nom: "le Pacifique tropical (El Niño, La Niña)", taille: "macro", espace: "mondial", vitesse: "saisons", organisation: "ocean", facette: "non_humain"}
-    niveau: {espace: "mondial", temps: "saisons à siècles", vitesse: "saisons à siècle", taille: "macro"}
-    traces:
-      - {source: "indices publics ENSO et température de surface de la mer (NOAA)", statut: "a_brancher"}
-  - id: "niveau_mer"
-    nom: "Niveau de la mer et côtes"
-    organisation: "ocean"
-    elements: ["dilatation thermique", "fonte des glaces", "submersions", "deltas qui s'enfoncent"]
-    niveau: {espace: "côtes", temps: "décennies", vitesse: "décennie", taille: "macro"}
-    traces:
-      - {source: "altimétrie satellitaire publique (NASA, Copernicus)", statut: "a_brancher"}
-  - id: "glaces"
-    nom: "Glaces et glaciers"
-    organisation: "eau"
-    elements: ["calottes", "glaciers de montagne", "banquise", "neiges qui alimentent les fleuves"]
-    acteurs:
-      - {nom: "un glacier de l'Himalaya", taille: "méso", espace: "bassin", vitesse: "décennie", organisation: "eau", facette: "non_humain"}
-    niveau: {espace: "montagnes et pôles", temps: "saisons à siècles", vitesse: "saisons à décennie", taille: "méso à macro"}
-    traces:
-      - {source: "étendue de la banquise (NSIDC, données publiques)", statut: "a_brancher"}
-  - id: "cycle"
-    nom: "Cycle de l'eau"
-    organisation: "eau"
-    elements: ["évaporation", "pluies", "neige", "transpiration du vivant"]
-    niveau: {espace: "mondial", temps: "jours à années", vitesse: "jours", taille: "micro à macro"}
-    traces:
-      - {source: "anomalie de température à Shanghai (évaporation, pluies de mousson)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:shanghai"}
-  - id: "fleuves"
-    nom: "Fleuves (débits, crues, étiages, deltas)"
-    organisation: "eau"
-    elements: ["débits", "crues", "étiages", "sédiments et deltas"]
-    acteurs:
-      - {nom: "le Rhin, le Mississippi, le Yangtsé, le Nil (exemples)", taille: "méso", espace: "bassin", vitesse: "saisons", organisation: "eau", facette: "non_humain"}
-    niveau: {espace: "bassins versants", temps: "saisons", vitesse: "jours à saisons", taille: "méso"}
-    traces:
-      - {source: "niveau du Rhin à Kaub (PEGELONLINE)", statut: "collecte", fichier: "collecte_series_publiques.py", adaptateur: "pub:rhin_kaub_cm"}
-      - {source: "débit du Mississippi à Saint-Louis (USGS)", statut: "collecte", fichier: "collecte_series_publiques.py", adaptateur: "pub:mississippi_saint_louis"}
-  - id: "nappes"
-    nom: "Nappes souterraines"
-    organisation: "eau"
-    elements: ["aquifères", "recharge par les pluies", "pompage"]
-    niveau: {espace: "bassins", temps: "décennies à millénaires", vitesse: "décennie", taille: "méso"}
-    traces:
-      - {source: "anomalies de masse d'eau par satellite (GRACE, NASA)", statut: "a_brancher"}
-  - id: "vivant_aquatique"
-    nom: "Vivant aquatique"
-    organisation: "animal"
-    elements: ["plancton", "poissons", "récifs", "zones mortes privées d'oxygène"]
-    niveau: {espace: "côtes et haute mer", temps: "saisons", vitesse: "saisons", taille: "micro à macro"}
-    traces:
-      - {source: "statistiques publiques de pêche (FAO)", statut: "a_brancher"}
-  - id: "barrages"
-    nom: "Barrages et irrigation"
-    organisation: "technique"
-    elements: ["réservoirs", "hydroélectricité", "canaux d'irrigation"]
-    acteurs:
-      - {nom: "un grand barrage", taille: "méso", espace: "bassin", vitesse: "années", organisation: "technique", facette: "non_humain"}
-    niveau: {espace: "bassins", temps: "décennies", vitesse: "saisons", taille: "méso"}
-    traces:
-      - {source: "niveaux publics des réservoirs", statut: "a_brancher"}
-  - id: "navigation_fluviale"
-    nom: "Navigation fluviale et canaux"
-    organisation: "economie"
-    elements: ["péniches", "canaux (Panama, Rhin)", "tirant d'eau"]
-    niveau: {espace: "voies d'eau", temps: "saisons", vitesse: "jours", taille: "méso"}
-    traces:
-      - {source: "passages au canal de Panama (IMF PortWatch)", statut: "collecte", fichier: "collecte_portwatch.py", adaptateur: "portwatch:panama:navires"}
-  - id: "refroidissement"
-    nom: "Refroidissement des machines"
-    organisation: "technique"
-    elements: ["centrales nucléaires et thermiques", "centres de données", "eau prélevée et réchauffée"]
-    acteurs:
-      - {nom: "une centrale en bord de fleuve", taille: "méso", espace: "site", vitesse: "jours", organisation: "technique", facette: "non_humain"}
-      - {nom: "un centre de données", taille: "méso", espace: "site", vitesse: "jours", organisation: "technique", facette: "non_humain"}
-    niveau: {espace: "sites industriels", temps: "jours à saisons", vitesse: "jours", taille: "méso"}
-    traces:
-      - {source: "anomalie de température à Berlin (fleuves chauds l'été)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:berlin"}
-  - id: "climat"
-    nom: "Climat (régime de long terme)"
-    organisation: "climat"
-    elements: ["réchauffement moyen", "régimes de mousson"]
-    niveau: {espace: "mondial", temps: "décennies", vitesse: "décennie", taille: "macro"}
-    traces:
-      - {source: "dérive annuelle de la température à Delhi", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "climat:delhi"}
+- id: oceans
+  nom: Océans (chaleur, courants, acidification)
+  organisation: ocean
+  elements:
+  - stock de chaleur
+  - grands courants
+  - remontées d'eaux froides
+  - acidité
+  acteurs:
+  - nom: le Gulf Stream et la circulation de l'Atlantique
+    taille: macro
+    espace: continent
+    vitesse: décennie
+    organisation: ocean
+    facette: non_humain
+  - nom: le Pacifique tropical (El Niño, La Niña)
+    taille: macro
+    espace: mondial
+    vitesse: saisons
+    organisation: ocean
+    facette: non_humain
+  niveau:
+    espace: mondial
+    temps: saisons à siècles
+    vitesse: saisons à siècle
+    taille: macro
+  traces:
+  - source: indices publics ENSO et température de surface de la mer (NOAA)
+    statut: a_brancher
+- id: niveau_mer
+  nom: Niveau de la mer et côtes
+  organisation: ocean
+  elements:
+  - dilatation thermique
+  - fonte des glaces
+  - submersions
+  - deltas qui s'enfoncent
+  niveau:
+    espace: côtes
+    temps: décennies
+    vitesse: décennie
+    taille: macro
+  traces:
+  - source: altimétrie satellitaire publique (NASA, Copernicus)
+    statut: a_brancher
+- id: glaces
+  nom: Glaces et glaciers
+  organisation: eau
+  elements:
+  - calottes
+  - glaciers de montagne
+  - banquise
+  - neiges qui alimentent les fleuves
+  acteurs:
+  - nom: un glacier de l'Himalaya
+    taille: méso
+    espace: bassin
+    vitesse: décennie
+    organisation: eau
+    facette: non_humain
+  niveau:
+    espace: montagnes et pôles
+    temps: saisons à siècles
+    vitesse: saisons à décennie
+    taille: méso à macro
+  traces:
+  - source: étendue de la banquise (NSIDC, données publiques)
+    statut: a_brancher
+- id: cycle
+  nom: Cycle de l'eau
+  organisation: eau
+  elements:
+  - évaporation
+  - pluies
+  - neige
+  - transpiration du vivant
+  niveau:
+    espace: mondial
+    temps: jours à années
+    vitesse: jours
+    taille: micro à macro
+  traces:
+  - source: anomalie de température à Shanghai (évaporation, pluies de mousson)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:shanghai
+- id: fleuves
+  nom: Fleuves (débits, crues, étiages, deltas)
+  organisation: eau
+  elements:
+  - débits
+  - crues
+  - étiages
+  - sédiments et deltas
+  acteurs:
+  - nom: le Rhin, le Mississippi, le Yangtsé, le Nil (exemples)
+    taille: méso
+    espace: bassin
+    vitesse: saisons
+    organisation: eau
+    facette: non_humain
+  niveau:
+    espace: bassins versants
+    temps: saisons
+    vitesse: jours à saisons
+    taille: méso
+  traces:
+  - source: niveau du Rhin à Kaub (PEGELONLINE)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:rhin_kaub_cm
+  - source: débit du Mississippi à Saint-Louis (USGS)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:mississippi_saint_louis
+- id: nappes
+  nom: Nappes souterraines
+  organisation: eau
+  elements:
+  - aquifères
+  - recharge par les pluies
+  - pompage
+  niveau:
+    espace: bassins
+    temps: décennies à millénaires
+    vitesse: décennie
+    taille: méso
+  traces:
+  - source: anomalies de masse d'eau par satellite (GRACE, NASA)
+    statut: a_brancher
+- id: vivant_aquatique
+  nom: Vivant aquatique
+  organisation: animal
+  elements:
+  - plancton
+  - poissons et mammifères marins
+  - vie des fleuves et des lacs
+  niveau:
+    espace: côtes et haute mer
+    temps: saisons
+    vitesse: saisons
+    taille: micro à macro
+  traces:
+  - source: statistiques publiques de pêche (FAO)
+    statut: a_brancher
+- id: barrages
+  nom: Barrages et irrigation
+  organisation: technique
+  elements:
+  - réservoirs
+  - hydroélectricité
+  - canaux d'irrigation
+  acteurs:
+  - nom: un grand barrage
+    taille: méso
+    espace: bassin
+    vitesse: années
+    organisation: technique
+    facette: non_humain
+  niveau:
+    espace: bassins
+    temps: décennies
+    vitesse: saisons
+    taille: méso
+  traces:
+  - source: niveaux publics des réservoirs
+    statut: a_brancher
+- id: navigation_fluviale
+  nom: Navigation fluviale et canaux
+  organisation: economie
+  elements:
+  - péniches
+  - canaux (Panama, Rhin)
+  - tirant d'eau
+  niveau:
+    espace: voies d'eau
+    temps: saisons
+    vitesse: jours
+    taille: méso
+  traces:
+  - source: passages au canal de Panama (IMF PortWatch)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:panama:navires
+- id: refroidissement
+  nom: Refroidissement des machines
+  organisation: technique
+  elements:
+  - centrales nucléaires et thermiques
+  - centres de données
+  - eau prélevée et réchauffée
+  acteurs:
+  - nom: une centrale en bord de fleuve
+    taille: méso
+    espace: site
+    vitesse: jours
+    organisation: technique
+    facette: non_humain
+  - nom: un centre de données
+    taille: méso
+    espace: site
+    vitesse: jours
+    organisation: technique
+    facette: non_humain
+  niveau:
+    espace: sites industriels
+    temps: jours à saisons
+    vitesse: jours
+    taille: méso
+  traces:
+  - source: anomalie de température à Berlin (fleuves chauds l'été)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:berlin
+- id: climat
+  nom: Climat (régime de long terme)
+  organisation: climat
+  elements:
+  - réchauffement moyen
+  - régimes de mousson
+  niveau:
+    espace: mondial
+    temps: décennies
+    vitesse: décennie
+    taille: macro
+  traces:
+  - source: dérive annuelle de la température à Delhi
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: climat:delhi
+- id: peche
+  nom: Pêche et aquaculture (stocks, captures, élevage)
+  organisation: animal
+  elements:
+  - 223,2 millions de tonnes produites en 2022, dont 51 % des animaux aquatiques par l'aquaculture, pour la première fois
+    devant la pêche (FAO, SOFIA 2024)
+  - 62,3 % des stocks marins suivis pêchés de façon durable en 2021, en recul de 2,3 points depuis 2019 (FAO)
+  acteurs:
+  - nom: une flotte de pêche industrielle
+    taille: méso
+    espace: océans
+    vitesse: mois
+    organisation: economie
+    facette: collectif
+  - nom: des pêcheurs artisans (en agrégat)
+    taille: méso
+    espace: côtes
+    vitesse: semaines
+    organisation: societe
+    facette: collectif
+  niveau:
+    espace: océans et pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: FAO FishStat et SOFIA (captures, aquaculture, état des stocks)
+    statut: a_brancher
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: recifs
+  nom: Récifs coralliens (blanchissement)
+  organisation: animal
+  elements:
+  - 'quatrième blanchissement mondial, de 2023 à mi-2025 : 84 % de la surface des récifs touchée, dans au moins 83 pays et
+    territoires (NOAA)'
+  acteurs:
+  - nom: le corail (colonies, en agrégat)
+    taille: micro
+    espace: récifs
+    vitesse: semaines
+    organisation: animal
+    facette: non_humain
+  niveau:
+    espace: récifs
+    temps: semaines à années
+    vitesse: semaines
+    taille: méso
+  traces:
+  - source: NOAA Coral Reef Watch (alertes de blanchissement par satellite)
+    statut: a_brancher
+  - *id001
+- id: desoxygenation
+  nom: Désoxygénation et zones mortes
+  organisation: chimique
+  elements:
+  - environ 2 % de l'oxygène des océans perdu depuis les années 1950 ; volume d'eau sans oxygène quadruplé depuis les années
+    1960 (UICN)
+  - zones mortes côtières nourries par les engrais et les eaux usées
+  niveau:
+    espace: côtes et océans
+    temps: années à décennies
+    vitesse: années
+    taille: méso à macro
+  traces:
+  - source: UICN et réseau GO2NE (à vérifier)
+    statut: a_brancher
+  - *id001
+- id: plastiques
+  nom: Plastiques et pollution marine
+  organisation: chimique
+  elements:
+  - 19 à 23 millions de tonnes de plastique fuyant chaque année dans les eaux ; 75 à 199 millions de tonnes déjà dans l'océan
+    (PNUE)
+  - microplastiques
+  niveau:
+    espace: côtes à océans
+    temps: années
+    vitesse: années
+    taille: micro à macro
+  traces:
+  - source: PNUE (série mesurable à chercher)
+    statut: a_brancher
+  - *id001
+- id: haute_mer
+  nom: Haute mer et gouvernance des océans
+  organisation: convention
+  elements:
+  - traité sur la haute mer (BBNJ) en vigueur depuis le 17 janvier 2026, 81 parties ; il couvre environ la moitié de la surface
+    de la planète (Commission européenne)
+  - aires marines protégées
+  - pêche illégale
+  acteurs:
+  - nom: une organisation régionale de gestion des pêches
+    taille: macro
+    espace: océan
+    vitesse: années
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: haute mer
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: état des ratifications aux Nations unies ; Protected Planet (aires protégées)
+    statut: a_brancher
+  - *id001
 relations:
-  - {de: "climat", vers: "oceans", effet: "+", retour: "+", delai: "décennie", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "l'océan absorbe l'essentiel de la chaleur ajoutée, puis la rend : il amortit et prolonge le réchauffement"}
-  - {de: "oceans", vers: "cycle", effet: "+", delai: "saisons", force: "forte", intensite: {mesure: "anomalie de surface du Pacifique (ENSO)", regle: "proportionnelle"}, coupure: "régions non reliées", statut: "a_verifier", texte: "les oscillations océaniques déplacent les pluies sur des continents entiers"}
-  - {de: "climat", vers: "glaces", effet: "-", delai: "années", force: "forte", intensite: {mesure: "dérive de la température", regle: "hysteresis"}, coupure: "inconnue", statut: "a_verifier", texte: "les glaces fondent ; elles ne se reconstituent pas au même rythme"}
-  - {de: "glaces", vers: "niveau_mer", effet: "-", delai: "décennie", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "moins de glace sur les terres, plus de mer (au sein du système eau-océan)"}
-  - {de: "glaces", vers: "fleuves", effet: "+", delai: "saisons", force: "forte", intensite: {mesure: "neige et glace restantes", regle: "seuil"}, coupure: "fleuves de plaine nourris par les pluies", statut: "a_verifier", texte: "les glaciers nourrissent les fleuves l'été ; quand ils ont trop fondu, l'étiage s'effondre"}
-  - {de: "cycle", vers: "fleuves", effet: "+", delai: "jours à saisons", force: "forte", intensite: {mesure: "pluies extrêmes", regle: "seuil"}, coupure: "barrages qui écrêtent", statut: "a_verifier", texte: "des pluies au-delà d'un seuil font déborder les fleuves"}
-  - {de: "cycle", vers: "nappes", effet: "+", delai: "années", force: "moyenne", coupure: "sols imperméables", statut: "a_verifier", texte: "les pluies rechargent lentement les nappes"}
-  - {de: "barrages", vers: "fleuves", effet: "-", retour: "+", delai: "saisons", force: "forte", coupure: "lâchers d'eau", statut: "a_verifier", texte: "le barrage prend l'eau et les sédiments du fleuve (prédation) ; les deltas en aval s'enfoncent"}
-  - {de: "barrages", vers: "nappes", effet: "-", delai: "années", force: "moyenne", intensite: {mesure: "pompage pour l'irrigation", regle: "hysteresis"}, coupure: "recharge suffisante", statut: "a_verifier", texte: "l'irrigation vide les nappes plus vite qu'elles ne se remplissent"}
-  - {de: "fleuves", vers: "navigation_fluviale", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "niveau d'eau", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "sous un niveau critique, les péniches ne passent plus ou passent à moitié pleines (passage de l'eau à l'économie)"}
-  - {de: "fleuves", vers: "refroidissement", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "température et débit du fleuve", regle: "seuil"}, coupure: "tours de refroidissement", statut: "a_verifier", texte: "un fleuve trop chaud ou trop bas fait réduire la production des centrales"}
-  - {de: "oceans", vers: "vivant_aquatique", effet: "±", delai: "saisons à décennie", force: "forte", intensite: {mesure: "vagues de chaleur marines", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "chaleur et acidité blanchissent les récifs et déplacent les poissons ; les remontées d'eaux froides nourrissent le plancton"}
-  - {de: "niveau_mer", vers: "fleuves", effet: "-", delai: "décennie", force: "moyenne", coupure: "digues", statut: "a_verifier", texte: "la mer remonte dans les deltas et sale les eaux douces"}
+- de: climat
+  vers: oceans
+  effet: +
+  retour: +
+  delai: décennie
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'l''océan absorbe l''essentiel de la chaleur ajoutée, puis la rend : il amortit et prolonge le réchauffement'
+- de: oceans
+  vers: cycle
+  effet: +
+  delai: saisons
+  force: forte
+  intensite:
+    mesure: anomalie de surface du Pacifique (ENSO)
+    regle: proportionnelle
+  coupure: régions non reliées
+  statut: a_verifier
+  texte: les oscillations océaniques déplacent les pluies sur des continents entiers
+- de: climat
+  vers: glaces
+  effet: '-'
+  delai: années
+  force: forte
+  intensite:
+    mesure: dérive de la température
+    regle: hysteresis
+  coupure: inconnue
+  statut: a_verifier
+  texte: les glaces fondent ; elles ne se reconstituent pas au même rythme
+- de: glaces
+  vers: niveau_mer
+  effet: '-'
+  delai: décennie
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: moins de glace sur les terres, plus de mer (au sein du système eau-océan)
+- de: glaces
+  vers: fleuves
+  effet: +
+  delai: saisons
+  force: forte
+  intensite:
+    mesure: neige et glace restantes
+    regle: seuil
+  coupure: fleuves de plaine nourris par les pluies
+  statut: a_verifier
+  texte: les glaciers nourrissent les fleuves l'été ; quand ils ont trop fondu, l'étiage s'effondre
+- de: cycle
+  vers: fleuves
+  effet: +
+  delai: jours à saisons
+  force: forte
+  intensite:
+    mesure: pluies extrêmes
+    regle: seuil
+  coupure: barrages qui écrêtent
+  statut: a_verifier
+  texte: des pluies au-delà d'un seuil font déborder les fleuves
+- de: cycle
+  vers: nappes
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: sols imperméables
+  statut: a_verifier
+  texte: les pluies rechargent lentement les nappes
+- de: barrages
+  vers: fleuves
+  effet: '-'
+  retour: +
+  delai: saisons
+  force: forte
+  coupure: lâchers d'eau
+  statut: a_verifier
+  texte: le barrage prend l'eau et les sédiments du fleuve (prédation) ; les deltas en aval s'enfoncent
+- de: barrages
+  vers: nappes
+  effet: '-'
+  delai: années
+  force: moyenne
+  intensite:
+    mesure: pompage pour l'irrigation
+    regle: hysteresis
+  coupure: recharge suffisante
+  statut: a_verifier
+  texte: l'irrigation vide les nappes plus vite qu'elles ne se remplissent
+- de: fleuves
+  vers: navigation_fluviale
+  effet: +
+  delai: jours
+  force: forte
+  intensite:
+    mesure: niveau d'eau
+    regle: seuil
+  coupure: inconnue
+  statut: a_verifier
+  texte: sous un niveau critique, les péniches ne passent plus ou passent à moitié pleines (passage de l'eau à l'économie)
+- de: fleuves
+  vers: refroidissement
+  effet: +
+  delai: jours
+  force: forte
+  intensite:
+    mesure: température et débit du fleuve
+    regle: seuil
+  coupure: tours de refroidissement
+  statut: a_verifier
+  texte: un fleuve trop chaud ou trop bas fait réduire la production des centrales
+- de: oceans
+  vers: vivant_aquatique
+  effet: ±
+  delai: saisons à décennie
+  force: forte
+  intensite:
+    mesure: vagues de chaleur marines
+    regle: seuil
+  coupure: inconnue
+  statut: a_verifier
+  texte: chaleur et acidité blanchissent les récifs et déplacent les poissons ; les remontées d'eaux froides nourrissent le
+    plancton
+- de: niveau_mer
+  vers: fleuves
+  effet: '-'
+  delai: décennie
+  force: moyenne
+  coupure: digues
+  statut: a_verifier
+  texte: la mer remonte dans les deltas et sale les eaux douces
+- de: oceans
+  vers: recifs
+  effet: '-'
+  delai: semaines
+  force: forte
+  coupure: refroidissement des eaux
+  statut: a_verifier
+  texte: une eau trop chaude fait blanchir les coraux (NOAA)
+- de: oceans
+  vers: desoxygenation
+  effet: +
+  delai: années
+  force: forte
+  coupure: aucune
+  statut: a_verifier
+  texte: le réchauffement explique environ la moitié de la perte d'oxygène dans les 1 000 premiers mètres (UICN)
+- de: peche
+  vers: vivant_aquatique
+  effet: '-'
+  delai: années
+  force: forte
+  coupure: quotas respectés, aires protégées
+  statut: a_verifier
+  texte: la surpêche réduit les populations de poissons
+- de: haute_mer
+  vers: peche
+  effet: '-'
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: la gouvernance des océans peut limiter la pêche illégale et la surpêche
+- de: desoxygenation
+  vers: vivant_aquatique
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les zones privées d'oxygène font fuir ou mourir la vie marine
 ponts:
-  - {depuis: "cycle", vers: "cycles-biogeochimiques:eau", nature: "le cycle de l'eau", type: "meme"}
-  - {depuis: "oceans", vers: "climat-extremes:oceans", nature: "les océans du climat", type: "meme"}
-  - {depuis: "fleuves", vers: "eau-moyen-orient:fleuves", nature: "les fleuves du Moyen-Orient (Tigre, Euphrate, Nil)"}
-  - {depuis: "nappes", vers: "eau-moyen-orient:nappes", nature: "les nappes du Moyen-Orient"}
-  - {depuis: "navigation_fluviale", vers: "transport-maritime:detroits", nature: "canaux et détroits forment un même réseau"}
-  - {depuis: "cycle", vers: "alimentation-mondiale:eau_agricole", nature: "l'eau des cultures"}
-  - {depuis: "glaces", vers: "relief-et-montagnes:chateaux_d_eau", nature: "les montagnes stockent l'eau en glace et en neige", type: "meme"}
+- depuis: cycle
+  vers: cycles-biogeochimiques:eau
+  nature: le cycle de l'eau
+  type: meme
+- depuis: oceans
+  vers: climat-extremes:oceans
+  nature: les océans du climat
+  type: meme
+- depuis: fleuves
+  vers: eau-moyen-orient:fleuves
+  nature: les fleuves du Moyen-Orient (Tigre, Euphrate, Nil)
+- depuis: nappes
+  vers: eau-moyen-orient:nappes
+  nature: les nappes du Moyen-Orient
+- depuis: navigation_fluviale
+  vers: transport-maritime:detroits
+  nature: canaux et détroits forment un même réseau
+- depuis: cycle
+  vers: alimentation-mondiale:eau_agricole
+  nature: l'eau des cultures
+- depuis: glaces
+  vers: relief-et-montagnes:chateaux_d_eau
+  nature: les montagnes stockent l'eau en glace et en neige
+  type: meme
+- depuis: desoxygenation
+  vers: cycles-biogeochimiques:azote
+  nature: les engrais azotés nourrissent les zones mortes côtières (UICN)
+- depuis: peche
+  vers: alimentation-mondiale:importateurs
+  nature: le poisson dans l'alimentation des pays importateurs
+- depuis: plastiques
+  vers: environnement-dechets:dechets
+  nature: les déchets plastiques finissent dans l'océan
+- depuis: haute_mer
+  vers: transport-maritime:droit
+  nature: droit de la mer et routes maritimes
+- depuis: recifs
+  vers: climat-extremes:oceans
+  nature: même chaleur des océans
