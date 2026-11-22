@@ -1,5 +1,7 @@
 # 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
-# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+# que nos fiches ne couvraient pas (dépôt lecteur-local).
+# 0.10.432 — complétée le 2026-11-22 (décision de l'auteur, 5 h 48) : faits sourcés (Freedom House, Forum économique
+# mondial), un compartiment (libertés civiques), relations à vérifier, ponts. Identifiants d'origine gardés.
 theme: societe-droits
 nom: Société et droits (droits humains, genre, éducation, santé publique)
 declaration:
@@ -22,6 +24,8 @@ compartiments:
   - droits humains
   - droits des peuples autochtones
   - droits des animaux
+  - liberté dans le monde en baisse pour la 20e année de suite en 2025 ; 54 pays en recul, 35 en progrès ; Bolivie, Fidji
+    et Malawi passés de « partiellement libres » à « libres » (Freedom House, 19 mars 2026)
   niveau:
     espace: monde
     temps: décennies
@@ -36,6 +40,9 @@ compartiments:
   elements:
   - droits des femmes et genre
   - personnes LGBTQ+ (marches des fiertés, CSD)
+  - écart entre femmes et hommes comblé à 69,2 % en 2026 sur 145 économies ; parité complète dans 120 ans au rythme
+    actuel ; participation économique 61,7 %, pouvoir politique 22,1 % (Forum économique mondial, Global Gender Gap
+    Report, 16 septembre 2026)
   niveau:
     espace: pays
     temps: décennies
@@ -69,4 +76,61 @@ compartiments:
     vitesse: mois
     taille: macro
   traces: *id001
-relations: []
+- id: libertes_civiques
+  nom: Libertés civiques (expression, presse, réunion, association)
+  organisation: convention
+  elements:
+  - liberté d'expression et de la presse, droit de réunion, liberté des associations
+  - lois sur les « agents de l'étranger », restrictions des ONG
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: Freedom House, Freedom in the World (libertés civiles par pays)
+    statut: a_brancher
+relations:
+- de: libertes_civiques
+  vers: droits_humains
+  effet: +
+  delai: années
+  force: forte
+  coupure: aucune
+  statut: a_verifier
+  texte: sans liberté d'expression et d'association, les violations des droits ne sont ni documentées ni contestées
+- de: education
+  vers: genre_minorites
+  effet: +
+  delai: générations
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la scolarisation des filles réduit l'écart entre femmes et hommes, avec un délai d'une génération
+- de: libertes_civiques
+  vers: genre_minorites
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les droits des minorités reculent quand l'espace civique se ferme
+ponts:
+- depuis: libertes_civiques
+  vers: politique-interieure:regime
+  nature: l'état des régimes et des libertés
+- depuis: genre_minorites
+  vers: plancher-social:inegalites
+  nature: les inégalités entre femmes et hommes dans le plancher social
+- depuis: sante_publique
+  vers: corps-humain:soins
+  nature: les systèmes de soins
+- depuis: libertes_civiques
+  vers: information-cyber:censure
+  nature: la censure en ligne
+- depuis: droits_humains
+  vers: culture-memoire:usages_memoire
+  nature: mémoire des violations et récits concurrents
+- depuis: libertes_civiques
+  vers: corruption:presse_alerte
+  nature: la presse d'enquête a besoin des libertés civiques

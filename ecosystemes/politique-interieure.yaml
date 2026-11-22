@@ -1,10 +1,14 @@
 # 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
-# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+# que nos fiches ne couvraient pas (dépôt lecteur-local).
+# 0.10.432 — complétée le 2026-11-22 (décision de l'auteur, 5 h 48) : état des régimes dans le monde (V-Dem, Freedom
+# House), trois compartiments (élections, contestation, coups et transitions), relations à vérifier, ponts. Identifiants
+# d'origine gardés (termes validés rattachés).
 theme: politique-interieure
 nom: Politique intérieure (partis, élus, gouvernements, procédures), par pays
 declaration:
   but: situer les acteurs et les procédures de la politique intérieure des pays que nos sources couvrent (d'abord l'Allemagne
-    et la France), qui pèsent sur les élections, les coalitions et les questions de régime
+    et la France), qui pèsent sur les élections, les coalitions et les questions de régime, et l'état des régimes dans le
+    monde (liberté en baisse pour la 20e année de suite en 2025, Freedom House)
   limites: dedans partis et mouvements, dirigeants et élus dans leur rôle public, gouvernements et administrations, procédures
     (interdiction, exclusion) et affaires publiques, qualité du régime ; dehors la politique américaine (fiche politique-americaine),
     l'Amérique latine (elections-amerique-latine), le Liban (liban-institutions) et les échéances (calendriers-echeances)
@@ -109,10 +113,122 @@ compartiments:
   - démocratie et gouvernance
   - politique (en général)
   - régimes autoritaires (répression, système de pouvoir personnel)
+  - liberté dans le monde en baisse pour la 20e année de suite en 2025 - 54 pays en recul, 35 en progrès ; États-Unis
+    81/100 (−3) (Freedom House, 19 mars 2026)
+  - environ un quart des pays en voie d'autocratisation en 2025, dont six des dix nouveaux en Europe et en Amérique du
+    Nord (Italie, Royaume-Uni, États-Unis) ; indice de démocratie libérale des États-Unis en baisse de 24 % en un an,
+    passés du 20e au 51e rang sur 179 (V-Dem, Democracy Report 2026, 17 mars 2026)
   niveau:
     espace: pays
     temps: décennies
     vitesse: années
     taille: macro
+  traces:
+  - source: V-Dem (indices de démocratie par pays, données publiques)
+    statut: a_brancher
+  - source: Freedom House, Freedom in the World (scores par pays)
+    statut: a_brancher
+- id: elections
+  nom: Élections et alternances
+  organisation: convention
+  elements:
+  - scrutins nationaux et locaux, alternances, coalitions
+  - participation, contestation des résultats
+  niveau:
+    espace: pays
+    temps: mandats
+    vitesse: jours (scrutin) à mois (coalition)
+    taille: macro
   traces: *id001
-relations: []
+- id: contestation
+  nom: Contestation et mouvements de rue
+  organisation: societe
+  elements:
+  - manifestations, grèves politiques, mouvements de jeunes
+  - chutes de gouvernements sous la pression de la rue
+  niveau:
+    espace: pays
+    temps: semaines à mois
+    vitesse: jours
+    taille: méso à macro
+  traces: *id001
+- id: coups_transitions
+  nom: Coups d'État et transitions
+  organisation: geopolitique
+  elements:
+  - coups d'État militaires, transitions annoncées et prolongées
+  - plus fortes baisses de liberté en 2025 - Guinée-Bissau (−8), Tanzanie (−7), Burkina Faso, Madagascar, Salvador
+    (−5) (Freedom House, 19 mars 2026)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours (le coup) à années (la transition)
+    taille: macro
+  traces: *id001
+relations:
+- de: contestation
+  vers: gouvernement
+  effet: '-'
+  delai: semaines
+  force: moyenne
+  coupure: répression efficace ou concessions
+  statut: a_verifier
+  texte: une contestation massive peut faire tomber un gouvernement (le compartiment cible lit ici sa stabilité)
+- de: elections
+  vers: gouvernement
+  effet: +
+  delai: mois
+  force: forte
+  coupure: résultats contestés ou coalition impossible
+  statut: a_verifier
+  texte: une élection désigne ou renouvelle le gouvernement, avec le délai des coalitions
+- de: procedures
+  vers: partis
+  effet: '-'
+  delai: semaines
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: une affaire ou une procédure fait baisser le soutien d'un parti
+- de: regime
+  vers: elections
+  effet: +
+  delai: années
+  force: forte
+  coupure: aucune
+  statut: a_verifier
+  texte: la qualité du régime fait la liberté des élections ; l'autocratisation les vide (le compartiment cible lit ici
+    leur liberté)
+- de: coups_transitions
+  vers: regime
+  effet: '-'
+  delai: jours
+  force: forte
+  coupure: retour rapide à l'ordre constitutionnel
+  statut: a_verifier
+  texte: un coup d'État fait chuter les libertés et suspend les élections
+ponts:
+- depuis: elections
+  vers: calendriers-echeances:elections
+  nature: le calendrier des scrutins
+- depuis: contestation
+  vers: humain:passage_acte
+  nature: le passage à l'acte collectif
+- depuis: partis
+  vers: humain:polarisation
+  nature: la polarisation entre camps
+- depuis: procedures
+  vers: corruption:grande_corruption
+  nature: les affaires de corruption au sommet
+- depuis: gouvernement
+  vers: union-europeenne:institutions
+  nature: les gouvernements siègent au Conseil de l'Union
+- depuis: coups_transitions
+  vers: afrique-subsaharienne:juntes_sahel
+  nature: les juntes du Sahel
+- depuis: regime
+  vers: politique-americaine:executif
+  nature: le recul démocratique américain mesuré par V-Dem et Freedom House
+- depuis: elections
+  vers: asie-du-sud:bangladesh
+  nature: une alternance après un soulèvement

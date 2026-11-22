@@ -1,5 +1,7 @@
 # 0.10.412 — fiche créée le 2026-11-22 (décision de l'auteur, 0 h 28 - 0 h 32) pour classer les termes conservés des flux RSS
-# que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
+# que nos fiches ne couvraient pas (dépôt lecteur-local).
+# 0.10.432 — complétée le 2026-11-22 (décision de l'auteur, 5 h 48) : conjoncture mondiale (FMI), deux compartiments
+# (défaillances d'entreprises, investissement dans l'IA), relations à vérifier, ponts. Identifiants d'origine gardés.
 theme: economie-entreprises
 nom: Économie générale et entreprises
 declaration:
@@ -22,6 +24,9 @@ compartiments:
   elements:
   - économie et affaires (en général)
   - industrie
+  - croissance mondiale prévue à 3,1 % en 2026 et 3,4 % en 2027 ; inflation mondiale 4,7 % en 2026 puis 4,1 % en 2027 ;
+    risques surtout à la baisse - Moyen-Orient, énergie, réévaluation de l'IA, dettes publiques, tensions commerciales
+    (FMI, Perspectives de l'économie mondiale, octobre 2026)
   niveau:
     espace: pays
     temps: trimestres
@@ -105,4 +110,88 @@ compartiments:
     vitesse: mois
     taille: méso
   traces: *id001
-relations: []
+- id: defaillances
+  nom: Défaillances d'entreprises
+  organisation: economie
+  elements:
+  - défaillances mondiales en hausse de 6 % en 2025, puis de 5 % prévus en 2026 et 1 % en 2027, cinquième année de
+    hausse ; pic attendu en 2028 ; causes - croissance faible, énergie chère, taux durablement élevés, nombreuses
+    entreprises jeunes et fragiles (Allianz Trade, 27 octobre 2026)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - source: Allianz Trade, perspectives des défaillances (publiées deux fois par an)
+    statut: a_brancher
+- id: investissement_ia
+  nom: Investissement dans l'IA et les centres de données
+  organisation: technique
+  elements:
+  - l'investissement dans l'IA soutient la croissance ; une réévaluation de sa rentabilité pourrait le couper et
+    corriger les marchés d'actions (FMI, octobre 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: trimestres
+    taille: macro
+  traces: *id001
+relations:
+- de: conjoncture
+  vers: defaillances
+  effet: '-'
+  delai: trimestres
+  force: forte
+  coupure: soutiens publics aux entreprises
+  statut: a_verifier
+  texte: une croissance faible fait monter les défaillances
+- de: investissement_ia
+  vers: conjoncture
+  effet: +
+  delai: trimestres
+  force: moyenne
+  coupure: réévaluation de la rentabilité de l'IA
+  statut: a_verifier
+  texte: l'investissement dans l'IA soutient la croissance mondiale (FMI, octobre 2026)
+- de: defaillances
+  vers: finance_entreprise
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: plus de défaillances rendent le crédit et les opérations plus difficiles
+- de: conjoncture
+  vers: immobilier_consommation
+  effet: +
+  delai: trimestres
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la conjoncture porte la consommation et l'immobilier
+ponts:
+- depuis: conjoncture
+  vers: inflation-mondiale:prix_conso
+  nature: l'inflation mondiale, vue depuis les prix
+- depuis: defaillances
+  vers: inflation-mondiale:banques_centrales
+  nature: des taux durablement élevés font monter les défaillances
+- depuis: defaillances
+  vers: energie-mondiale:prix
+  nature: l'énergie chère pèse sur les entreprises
+- depuis: investissement_ia
+  vers: sciences-techniques:capitaux
+  nature: les capitaux investis dans l'IA
+- depuis: defaillances
+  vers: crises-bancaires:faillites
+  nature: des défaillances d'entreprises aux pertes bancaires
+- depuis: conjoncture
+  vers: plancher-social:travail
+  nature: la conjoncture et l'emploi
+- depuis: entreprises
+  vers: corruption:marches_publics
+  nature: les entreprises dans les marchés publics
+- depuis: regles_sectorielles
+  vers: rivalite-sino-americaine:commerce
+  nature: droits de douane et règles commerciales
