@@ -2,6 +2,8 @@
 # que nos fiches ne couvraient pas (dépôt lecteur-local).
 # 0.10.432 — complétée le 2026-11-22 (décision de l'auteur, 5 h 48) : conjoncture mondiale (FMI), deux compartiments
 # (défaillances d'entreprises, investissement dans l'IA), relations à vérifier, ponts. Identifiants d'origine gardés.
+# 0.10.433 — remarque de l'auteur du 2026-11-22, 5 h 54 : industrie, agriculture et tertiaire non représentés, liens peu
+# visibles. Ajout des secteurs (agriculture, extraction, industrie manufacturière, services, échanges) et de leurs liens.
 theme: economie-entreprises
 nom: Économie générale et entreprises
 declaration:
@@ -137,7 +139,135 @@ compartiments:
     vitesse: trimestres
     taille: macro
   traces: *id001
+- id: agriculture
+  nom: Secteur primaire agricole (cultures, élevage, forêt, pêche)
+  organisation: vegetal
+  elements:
+  - agriculture, sylviculture et pêche - environ 4 % du PIB mondial en 2025 (Banque mondiale, d'après StatisticsTimes)
+  - poids bien plus lourd dans l'emploi et le PIB des pays à faible revenu
+  niveau:
+    espace: pays
+    temps: saisons à années
+    vitesse: saisons
+    taille: micro à macro
+  traces:
+  - source: Banque mondiale, valeur ajoutée de l'agriculture en % du PIB (NV.AGR.TOTL.ZS, données publiques)
+    statut: a_brancher
+- id: extraction
+  nom: Extraction (mines, pétrole, gaz)
+  organisation: mineral
+  elements:
+  - mines et carrières, hydrocarbures
+  - rentes des pays producteurs
+  niveau:
+    espace: pays
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces: *id001
+- id: industrie_manufacturiere
+  nom: Industrie manufacturière et construction
+  organisation: technique
+  elements:
+  - industrie au sens large (manufacture, construction, énergie, mines) - environ 25 % du PIB mondial en 2025 (Banque
+    mondiale, d'après StatisticsTimes)
+  - la Chine revendique plus de 30 % de la croissance manufacturière mondiale sur 2021-2025 (ministre chinois de
+    l'Industrie, Xinhua, 9 septembre 2025 ; source officielle chinoise)
+  - automobile, chimie, machines, électronique, acier
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: mois (indices d'activité) à années (usines)
+    taille: méso à macro
+  traces:
+  - source: Banque mondiale, valeur ajoutée de l'industrie et de la manufacture en % du PIB (données publiques)
+    statut: a_brancher
+- id: services
+  nom: Services (secteur tertiaire)
+  organisation: economie
+  elements:
+  - environ 63 % du PIB mondial en 2024 (Banque mondiale, d'après StatisticsTimes)
+  - commerce, finance, transports, tourisme, santé, éducation, numérique
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: Banque mondiale, valeur ajoutée des services en % du PIB (NV.SRV.TOTL.ZS, données publiques)
+    statut: a_brancher
+- id: echanges
+  nom: Échanges internationaux de biens et de services
+  organisation: economie
+  elements:
+  - exportations mondiales de marchandises de 26 300 milliards de dollars en 2025 (+7,2 %) ; exportations de services
+    au-delà de 9 500 milliards (+8,2 %) (OMC, repris le 20 avril 2026)
+  - droits de douane, chaînes de valeur
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: OMC, statistiques du commerce (données publiques)
+    statut: a_brancher
 relations:
+- de: agriculture
+  vers: industrie_manufacturiere
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: importations de remplacement
+  statut: a_verifier
+  texte: l'agriculture fournit l'industrie agroalimentaire et les fibres
+- de: extraction
+  vers: industrie_manufacturiere
+  effet: +
+  delai: mois
+  force: forte
+  coupure: stocks ou matières de remplacement
+  statut: a_verifier
+  texte: minerais et hydrocarbures sont les intrants de l'industrie
+- de: industrie_manufacturiere
+  vers: services
+  effet: +
+  delai: trimestres
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'industrie achète des services (transport, finance, ingénierie, commerce)
+- de: industrie_manufacturiere
+  vers: conjoncture
+  effet: +
+  delai: trimestres
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'activité industrielle entraîne la conjoncture, surtout dans les pays exportateurs
+- de: services
+  vers: conjoncture
+  effet: +
+  delai: trimestres
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: les services font près des deux tiers du PIB mondial ; ils font la conjoncture
+- de: echanges
+  vers: industrie_manufacturiere
+  effet: +
+  delai: trimestres
+  force: forte
+  coupure: droits de douane ou rupture de chaînes de valeur
+  statut: a_verifier
+  texte: l'industrie dépend des marchés d'exportation et des intrants importés
+- de: finance_entreprise
+  vers: industrie_manufacturiere
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: crédit cher
+  statut: a_verifier
+  texte: l'investissement financé ouvre des usines et des capacités
 - de: conjoncture
   vers: defaillances
   effet: '-'
@@ -171,6 +301,37 @@ relations:
   statut: a_verifier
   texte: la conjoncture porte la consommation et l'immobilier
 ponts:
+- depuis: agriculture
+  vers: alimentation-mondiale:cultures
+  nature: les cultures, vues depuis l'alimentation
+  type: meme
+- depuis: agriculture
+  vers: oceans-et-fleuves:peche
+  nature: la pêche dans le secteur primaire
+- depuis: extraction
+  vers: minerais-critiques:concentration
+  nature: les minerais critiques
+- depuis: extraction
+  vers: energie-mondiale:production
+  nature: la production de pétrole et de gaz
+- depuis: industrie_manufacturiere
+  vers: economie-chinoise:exportations
+  nature: l'industrie chinoise exportatrice
+- depuis: industrie_manufacturiere
+  vers: securite-europeenne:industrie
+  nature: l'industrie de défense
+- depuis: services
+  vers: culture-memoire:tourisme
+  nature: le tourisme dans les services
+- depuis: services
+  vers: transports-villes:route
+  nature: les transports dans les services
+- depuis: services
+  vers: crises-bancaires:bilans
+  nature: la finance dans les services
+- depuis: echanges
+  vers: transport-maritime:fret
+  nature: les échanges passent par le fret maritime
 - depuis: conjoncture
   vers: inflation-mondiale:prix_conso
   nature: l'inflation mondiale, vue depuis les prix
