@@ -1,0 +1,202 @@
+# 0.10.449 — fiche créée le 2026-11-22 (remarque de l'auteur, 8 h 45 : « mettre en avant le réseau routier, ferroviaire,
+# maritime, aérien »). Le détail maritime (détroits, assurances, flottes) reste dans transport-maritime ; la ville et la
+# route urbaine dans transports-villes. Ici, les quatre réseaux ensemble et leurs nœuds. Chiffres vérifiés le 2026-11-22.
+theme: reseaux-transport
+nom: Réseaux de transport (route, rail, mer, air) et leurs nœuds
+declaration:
+  but: 'voir les quatre réseaux qui relient le monde et leurs nœuds : 5,2 milliards de passagers aériens prévus en 2026
+    (IATA) ; 112 500 navires de commerce, 2,44 milliards de tonnes de port en lourd (CNUCED, 2025) ; en Chine, 165 000 km de
+    voies ferrées dont 50 400 km à grande vitesse fin 2025 ; un nœud bloqué (Suez, Ormuz, un grand aéroport) se répercute
+    sur tout le réseau'
+  limites: dedans la route, le rail, la mer, l'air, les nœuds (ports, aéroports, gares, détroits, passages frontaliers),
+    l'interconnexion entre modes ; dehors le détail du transport maritime (transport-maritime), la ville (transports-villes),
+    les oléoducs et les câbles (energie-mondiale, information-cyber), sauf par les ponts
+  observateur: notre carte, regard extérieur ; sources publiques (IATA, CNUCED, statistiques nationales)
+  date: '2026-11-22'
+  espace: du corridor au monde
+  temps: de l'heure (un vol) à la décennie (une ligne à grande vitesse)
+  vitesse: l'heure, le jour, la décennie
+  taille: méso (un port) à macro (le réseau mondial)
+compartiments:
+- id: route
+  nom: Réseau routier
+  organisation: technique
+  elements:
+  - premier mode pour les personnes et les marchandises sur courte et moyenne distance ; corridors routiers entre pays
+  niveau:
+    espace: pays et régions
+    temps: décennies
+    vitesse: heures
+    taille: macro
+  traces:
+  - &id001
+    source: statistiques publiques (IATA, CNUCED, offices nationaux)
+    statut: a_brancher
+- id: rail
+  nom: Réseau ferroviaire
+  organisation: technique
+  elements:
+  - Chine - environ 165 000 km de voies fin 2025, dont environ 50 400 km à grande vitesse (37 900 km fin 2020) ; 3 109 km
+    ouverts en 2025 (Quotidien du peuple, 5 janvier 2026)
+  niveau:
+    espace: pays et continents
+    temps: décennies
+    vitesse: heures
+    taille: macro
+  traces:
+  - *id001
+- id: maritime
+  nom: Réseau maritime
+  organisation: technique
+  elements:
+  - 112 500 navires de commerce au 1er janvier 2025, 2,44 milliards de tonnes de port en lourd (+3,4 %) ; Liberia, Panama
+    et îles Marshall immatriculent 45,1 % des capacités ; la Grèce, premier armateur (16,4 %) (CNUCED, Étude sur les
+    transports maritimes 2025)
+  - détours - trajet moyen de 5 245 milles en 2024 contre 4 831 en 2018 ; tonnage passant par Suez encore 70 % sous la
+    moyenne de 2023 en mai 2025 (même source)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: semaines
+    taille: macro
+  traces:
+  - source: CNUCED, Étude sur les transports maritimes (annuelle)
+    statut: a_brancher
+- id: aerien
+  nom: Réseau aérien
+  organisation: technique
+  elements:
+  - environ 5,2 milliards de passagers prévus en 2026 (+4,4 %), revenus d'environ 1 053 milliards de dollars (IATA,
+    9 décembre 2025)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: heures
+    taille: macro
+  traces:
+  - source: IATA, perspectives du transport aérien
+    statut: a_brancher
+- id: noeuds
+  nom: Nœuds (ports, aéroports-pivots, gares, détroits, passages frontaliers)
+  organisation: geopolitique
+  elements:
+  - quelques nœuds concentrent le trafic - Ormuz porte environ 11 % du commerce maritime et plus d'un tiers des
+    exportations de pétrole par mer (CNUCED, 2025)
+  - comme dans tout réseau à carrefours, une panne au hasard se perd, une panne d'un grand nœud se propage
+  niveau:
+    espace: site et monde
+    temps: années
+    vitesse: jours
+    taille: méso
+  traces:
+  - *id001
+- id: interconnexion
+  nom: Interconnexion des modes (chaînes logistiques)
+  organisation: economie
+  elements:
+  - un conteneur passe du navire au train et au camion ; un retard dans un mode se reporte sur les autres
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: noeuds
+  vers: maritime
+  effet: +
+  delai: jours
+  force: forte
+  coupure: route de contournement (cap de Bonne-Espérance)
+  statut: a_verifier
+  texte: l'ouverture des détroits et des ports conditionne le trafic (le compartiment cible lit ici la fluidité)
+- de: noeuds
+  vers: aerien
+  effet: +
+  delai: jours
+  force: forte
+  coupure: aéroports de secours
+  statut: a_verifier
+  texte: les grands aéroports-pivots organisent le réseau aérien
+- de: maritime
+  vers: interconnexion
+  effet: +
+  delai: semaines
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: les retards en mer se répercutent sur le rail et la route
+- de: rail
+  vers: interconnexion
+  effet: +
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: le rail relie les ports à l'intérieur des continents
+- de: route
+  vers: interconnexion
+  effet: +
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la route assure le premier et le dernier kilomètre
+- de: interconnexion
+  vers: noeuds
+  effet: +
+  delai: semaines
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: une chaîne saturée engorge à son tour les ports et les gares
+ponts:
+- depuis: maritime
+  vers: transport-maritime:flottes
+  nature: la flotte mondiale, détaillée dans transport maritime
+  type: meme
+- depuis: noeuds
+  vers: transport-maritime:detroits
+  nature: les détroits, nœuds du réseau maritime
+  type: voisinage
+- depuis: route
+  vers: transports-villes:route
+  nature: la route, vue depuis la ville
+  type: voisinage
+- depuis: aerien
+  vers: transports-villes:aerien
+  nature: le transport aérien, vu depuis la ville
+  type: meme
+- depuis: interconnexion
+  vers: inflation-mondiale:approvisionnement
+  nature: les chaînes logistiques font le coût des biens
+- depuis: interconnexion
+  vers: economie-entreprises:echanges
+  nature: le transport porte les échanges
+- depuis: aerien
+  vers: epidemies:milieu
+  nature: l'avion propage les épidémies en quelques jours
+- depuis: noeuds
+  vers: infrastructures-critiques:reseaux
+  nature: les nœuds de transport parmi les infrastructures critiques
+  type: voisinage
+- depuis: maritime
+  vers: energie-mondiale:transport
+  nature: pétroliers et méthaniers
+  type: voisinage
+- depuis: noeuds
+  vers: militaire:bases_projection
+  nature: les marines protègent les nœuds maritimes
+  type: voisinage
+- depuis: route
+  vers: relief-et-montagnes:routes_frontieres
+  nature: le relief guide les routes
+  type: voisinage
+- depuis: rail
+  vers: economie-chinoise:activite
+  nature: le rail chinois, moteur d'investissement
+  type: voisinage
+- depuis: route
+  vers: afrique-subsaharienne:integration_commerciale
+  nature: les corridors routiers du commerce africain

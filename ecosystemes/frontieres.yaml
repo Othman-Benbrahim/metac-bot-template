@@ -1,0 +1,255 @@
+# 0.10.449 — fiche créée le 2026-11-22 (remarque de l'auteur, 8 h 45 : « l'écosystème passe aussi par la notion de
+# frontière (conventionnelle) : entre États, continents, à l'intérieur d'un pays, blocs idéologiques ; la position
+# particulière de l'Afrique, partagée entre différents acteurs qui essaient de se la réapproprier ; frontières
+# administratives à l'intérieur d'un pays ; et finalement le local (donc gigogne), avec ses particularismes et ses
+# traditions, maillon encore plus fin de l'écosystème »). Chiffres vérifiés le 2026-11-22. Relations à vérifier.
+theme: frontieres
+nom: Frontières emboîtées (continents, blocs, États, divisions internes, local)
+declaration:
+  but: 'voir les frontières comme des conventions emboîtées, comme les écosystèmes - continent ⊃ bloc ⊃ État ⊃ région ⊃
+    commune ⊃ village ou quartier -, chacune avec ses règles, ses passages et ses disputes : 193 États membres de l''ONU ;
+    des blocs (OTAN, Union européenne, BRICS à 11 membres et 10 partenaires en 2026) ; une Afrique disputée (retrait
+    militaire français de six pays entre 2022 et 2025, Africa Corps russe au Mali et en Centrafrique, Chine, Turquie,
+    Golfe) ; en France, 34 875 communes au 1er janvier 2026 ; plus de 7 000 langues vivantes dans le monde'
+  limites: dedans les continents, les États et leurs frontières, les blocs, l'Afrique disputée, les frontières contestées,
+    les passages, les divisions administratives, le local (langues, traditions) ; dehors la défense des frontières
+    (militaire), les migrations elles-mêmes (migrations-demographie), le détail du Sahel (afrique-subsaharienne), sauf par
+    les ponts
+  observateur: notre carte, regard extérieur ; sources publiques (ONU, Business Today, Rio Times, Service de recherche du
+    Congrès américain, ministère français des collectivités, Our World in Data)
+  date: '2026-11-22'
+  espace: du village au continent
+  temps: de la décennie (un bloc) au siècle (une frontière, une langue)
+  vitesse: l'année, la décennie, le siècle
+  taille: micro (un village) à macro (un continent)
+compartiments:
+- id: continents
+  nom: Continents (une convention)
+  organisation: convention
+  elements:
+  - découpage conventionnel - cinq, six ou sept continents selon les traditions ; l'Europe et l'Asie séparées par
+    convention, non par la mer
+  niveau:
+    espace: continent
+    temps: siècles
+    vitesse: siècles
+    taille: macro
+  traces:
+  - &id001
+    source: sources publiques citées dans les éléments
+    statut: a_brancher
+- id: etats
+  nom: États et frontières entre États
+  organisation: convention
+  elements:
+  - 193 États membres de l'ONU ; frontières tracées par traités, guerres, héritages coloniaux
+  niveau:
+    espace: pays
+    temps: décennies à siècles
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: blocs
+  nom: Blocs idéologiques et alliances
+  organisation: geopolitique
+  elements:
+  - BRICS - 11 membres (Brésil, Russie, Inde, Chine, Afrique du Sud, Égypte, Éthiopie, Iran, Arabie saoudite, Émirats
+    arabes unis, Indonésie) et 10 pays partenaires ; sommet de New Delhi, 12-13 septembre 2026 (Business Today, 10
+    septembre 2026)
+  - OTAN, Union européenne, « Sud global », pays non alignés ou multialignés
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - *id001
+- id: afrique_disputee
+  nom: L'Afrique disputée entre puissances
+  organisation: geopolitique
+  elements:
+  - retrait militaire français - Mali (2022), Burkina Faso (2023), Niger (2023), Tchad (janvier 2025), Côte d'Ivoire
+    (février 2025), Sénégal (juillet 2025) ; restent Djibouti (environ 1 500 soldats) et une présence réduite au Gabon ;
+    retour limité au Tchad en avril 2026 (The Rio Times, 7 septembre 2026, article aux chiffres parfois incohérents)
+  - Africa Corps russe, héritier de Wagner sous la tutelle du renseignement militaire - jusqu'à 2 500 personnels au Mali,
+    environ 1 500 en Centrafrique début 2026 ; petits contingents au Burkina Faso et au Niger (Service de recherche du
+    Congrès américain, 8 avril 2026)
+  - Chine (prêts, infrastructures, mines), Turquie, pays du Golfe, États-Unis ; beaucoup d'États africains choisissent de
+    traiter avec tous (multialignement)
+  niveau:
+    espace: continent
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: Service de recherche du Congrès américain, Russia's Security Operations in Africa (IF12389)
+    statut: a_brancher
+- id: frontieres_contestees
+  nom: Frontières contestées
+  organisation: geopolitique
+  elements:
+  - lignes de front et revendications - Ukraine, Cachemire, Taïwan, Sahara occidental, Corne de l'Afrique, Golan
+  niveau:
+    espace: régions frontalières
+    temps: décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - *id001
+- id: passages
+  nom: Passages (postes frontières, visas, murs, zones de libre circulation)
+  organisation: convention
+  elements:
+  - de l'espace Schengen aux murs frontaliers ; passeports et visas filtrent qui passe
+  niveau:
+    espace: frontières
+    temps: années
+    vitesse: jours
+    taille: méso
+  traces:
+  - *id001
+- id: administratives
+  nom: Frontières administratives à l'intérieur d'un pays
+  organisation: convention
+  elements:
+  - France - 34 875 communes et 1 252 intercommunalités au 1er janvier 2026 ; aucune commune nouvelle l'année précédant les
+    élections municipales (ministère des collectivités, BIS 206) ; départements, régions
+  - États fédérés, provinces, régions autonomes ailleurs
+  niveau:
+    espace: régions et communes
+    temps: décennies
+    vitesse: années
+    taille: méso
+  traces:
+  - source: Code officiel géographique (Insee, data.gouv.fr)
+    statut: a_brancher
+- id: local
+  nom: Le local (particularismes, langues, traditions)
+  organisation: ideologie
+  elements:
+  - plus de 7 000 langues vivantes (Ethnologue, repris par Our World in Data)
+  - coutumes, fêtes, cuisines, droits coutumiers, identités régionales - le maillon le plus fin de l'écosystème
+  niveau:
+    espace: village et quartier
+    temps: générations à siècles
+    vitesse: décennies
+    taille: micro
+  traces:
+  - *id001
+relations:
+- de: blocs
+  vers: etats
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: sortie du bloc
+  statut: a_verifier
+  texte: l'appartenance à un bloc oriente les choix d'un État (le compartiment cible lit ici l'alignement)
+- de: afrique_disputee
+  vers: blocs
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la compétition pour l'Afrique redessine les blocs (BRICS élargis à l'Égypte et à l'Éthiopie)
+- de: frontieres_contestees
+  vers: etats
+  effet: '-'
+  delai: mois
+  force: forte
+  coupure: accord de délimitation
+  statut: a_verifier
+  texte: une frontière contestée fragilise les États qui la partagent
+- de: etats
+  vers: passages
+  effet: +
+  delai: mois
+  force: forte
+  coupure: accords de libre circulation
+  statut: a_verifier
+  texte: chaque État décide qui passe et comment
+- de: local
+  vers: administratives
+  effet: +
+  delai: décennies
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: les identités locales pèsent sur le découpage (régions autonomes, statuts particuliers)
+- de: administratives
+  vers: local
+  effet: '-'
+  delai: générations
+  force: faible
+  coupure: protection des langues et des cultures régionales
+  statut: a_verifier
+  texte: la centralisation uniformise les particularismes (le compartiment cible lit ici leur vitalité)
+- de: continents
+  vers: blocs
+  effet: +
+  delai: décennies
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: beaucoup de blocs suivent la géographie (Union africaine, Union européenne)
+ponts:
+- depuis: afrique_disputee
+  vers: afrique-subsaharienne:puissances_exterieures
+  nature: les puissances extérieures en Afrique, vues depuis le Sahel
+  type: meme
+- depuis: afrique_disputee
+  vers: afrique-subsaharienne:juntes_sahel
+  nature: les juntes qui ont chassé l'armée française et accueilli l'Africa Corps
+  type: voisinage
+- depuis: blocs
+  vers: militaire:alliances
+  nature: les alliances militaires, part des blocs
+  type: voisinage
+- depuis: blocs
+  vers: rivalite-sino-americaine:alliances
+  nature: les blocs dans la rivalité sino-américaine
+  type: voisinage
+- depuis: blocs
+  vers: union-europeenne:elargissement
+  nature: les frontières de l'Union qui bougent
+  type: voisinage
+- depuis: passages
+  vers: securite-publique:frontieres
+  nature: le contrôle des frontières
+  type: meme
+- depuis: passages
+  vers: migrations-demographie:politiques_migratoires
+  nature: visas et murs règlent les migrations
+- depuis: frontieres_contestees
+  vers: russie-ukraine:front
+  nature: la ligne de front en Ukraine
+  type: voisinage
+- depuis: frontieres_contestees
+  vers: rivalite-sino-americaine:taiwan
+  nature: le statut de Taïwan
+  type: voisinage
+- depuis: frontieres_contestees
+  vers: asie-du-sud:inde_pakistan
+  nature: le Cachemire
+  type: voisinage
+- depuis: local
+  vers: humain:nous_eux
+  nature: les frontières tracent le « nous » et le « eux »
+- depuis: local
+  vers: culture-memoire:histoire_memoire
+  nature: traditions et mémoires locales
+  type: voisinage
+- depuis: local
+  vers: biocenose:biomes
+  nature: comme les écosystèmes, les sociétés humaines s'emboîtent
+  type: voisinage
+- depuis: administratives
+  vers: politique-interieure:procedures
+  nature: les collectivités et leurs élections
+  type: voisinage
+- depuis: etats
+  vers: relief-et-montagnes:routes_frontieres
+  nature: fleuves et montagnes, frontières naturelles devenues conventions
+  type: voisinage

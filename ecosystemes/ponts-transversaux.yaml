@@ -395,3 +395,8 @@ ponts:
 - {de: oceans-et-fleuves:desoxygenation, vers: biocenose:consommateurs, canal: vivant, nature: "les zones mortes chassent la vie marine"}
 - {de: relief-et-montagnes:chaines, vers: biocenose:biotope, canal: territoire, nature: "le relief étage les climats et les milieux", type: voisinage}
 - {de: humain:culture_ecologie, vers: biocenose:espece_humaine, canal: comportement, nature: "les cultures humaines se forment dans leur milieu", type: voisinage}
+# ---------- réseaux humains, transports, frontières (remarque de l'auteur, 2026-11-22, 8 h 45)
+- {de: reseaux-transport:noeuds, vers: frontieres:passages, canal: territoire, nature: "les postes frontières, nœuds des réseaux de transport", type: voisinage}
+- {de: frontieres:passages, vers: reseaux-transport:route, canal: territoire, nature: "les contrôles aux frontières ralentissent le trafic"}
+- {de: reseaux-transport:aerien, vers: reseaux-humains:petit_monde, canal: population, nature: "le voyage rapproche les personnes et les liens lointains"}
+- {de: frontieres:local, vers: reseaux-humains:ressemblance, canal: comportement, nature: "on se lie d'abord dans sa langue et sa communauté"}

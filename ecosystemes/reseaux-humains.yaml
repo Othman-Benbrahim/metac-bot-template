@@ -1,0 +1,264 @@
+# 0.10.449 — fiche créée le 2026-11-22 (remarque de l'auteur, 8 h 45 : « représenter la notion de réseau et d'influence à
+# l'échelle humaine (sans nommer), en décrivant les mécanismes de ces réseaux et la règle que tout le monde se connaît à
+# partir de 4 ou 5 connaissances en commun ; c'est aussi une interconnexion »). Les personnes nommées sont dans
+# acteurs-nommes.yaml ; ici, seulement les mécanismes. Chiffres vérifiés le 2026-11-22. Relations à vérifier.
+theme: reseaux-humains
+nom: Réseaux humains et influence (mécanismes, sans noms)
+declaration:
+  but: 'comprendre comment les humains sont reliés et comment l''influence circule : un petit monde (deux personnes
+    quelconques reliées par quelques intermédiaires - « six degrés » dans les expériences de Milgram, 3,57 degrés entre
+    utilisateurs de Facebook en 2016), des liens faibles qui portent l''information nouvelle (vérifié sur 20 millions
+    d''utilisateurs de LinkedIn, Science, 2022), des cercles de taille limitée (environ 150 relations stables), des
+    carrefours et des passeurs qui concentrent les liens et l''influence'
+  limites: dedans le petit monde, les liens faibles et forts, les cercles de relations, la ressemblance qui rapproche, les
+    carrefours, les passeurs entre groupes, les cascades d'influence, les réseaux d'élites (sans noms), les réseaux
+    numériques ; dehors les personnes nommées (acteurs-nommes.yaml), les mécanismes psychologiques de l'opinion (humain),
+    les plateformes elles-mêmes (medias-diffusion), sauf par les ponts
+  observateur: notre carte, regard extérieur ; travaux publiés de sociologie et de science des réseaux ; aucune personne
+    privée, aucun nom
+  date: '2026-11-22'
+  espace: du couple à l'humanité entière
+  temps: de l'heure (une rumeur) à la génération (un réseau d'anciens élèves)
+  vitesse: l'heure, le jour, l'année
+  taille: micro (deux personnes) à macro (huit milliards)
+compartiments:
+- id: petit_monde
+  nom: Le petit monde (tout le monde est à quelques intermédiaires)
+  organisation: societe
+  elements:
+  - « six degrés de séparation » des expériences de Milgram (années 1960) ; 3,57 degrés en moyenne entre utilisateurs de
+    Facebook en 2016 (Facebook Research, repris par Time et Fortune), soit environ 2 à 3 intermédiaires - la règle des 4
+    ou 5 connaissances en commun de l'auteur est dans cette fourchette
+  - un petit monde naît de quelques liens qui sautent d'un groupe à l'autre au milieu de groupes très soudés (Watts et
+    Strogatz, Nature, 1998)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - &id001
+    source: travaux publiés de science des réseaux (Granovetter 1973, Watts et Strogatz 1998, Barabási et Albert 1999,
+      Rajkumar et al. 2022)
+    statut: a_brancher
+- id: liens_faibles
+  nom: Liens faibles et liens forts
+  organisation: societe
+  elements:
+  - liens faibles (connaissances) - sources de diffusion, d'information nouvelle et de mobilité (Granovetter, « The
+    Strength of Weak Ties », 1973)
+  - test sur environ 20 millions d'utilisateurs de LinkedIn (2015-2019) - les liens moyennement faibles sont les plus
+    utiles pour changer d'emploi ; l'utilité baisse au-delà d'une dizaine de contacts communs (Rajkumar et al., Science,
+    2022, repris par le MIT)
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: mois
+    taille: micro à macro
+  traces:
+  - *id001
+- id: cercles
+  nom: Cercles de relations (environ 150)
+  organisation: entourage
+  elements:
+  - couches emboîtées d'environ 5, 15, 50, 150 et 500 personnes, chacune trois fois plus grande que la précédente ; 150,
+    taille au-delà de laquelle un groupe stable tend à se scinder (Dunbar ; étude publiée dans PNAS en 2020, reprise par
+    l'armée américaine)
+  niveau:
+    espace: local
+    temps: années
+    vitesse: mois
+    taille: micro
+  traces:
+  - *id001
+- id: ressemblance
+  nom: La ressemblance rapproche (homophilie)
+  organisation: societe
+  elements:
+  - on se lie davantage à qui nous ressemble (âge, origine, métier, opinions) ; les groupes se referment (McPherson,
+    Smith-Lovin et Cook, Annual Review of Sociology, 2001)
+  niveau:
+    espace: local à pays
+    temps: années
+    vitesse: mois
+    taille: micro à méso
+  traces:
+  - *id001
+- id: carrefours
+  nom: Carrefours (les très connectés)
+  organisation: societe
+  elements:
+  - les nouveaux liens vont de préférence vers ceux qui en ont déjà beaucoup - quelques carrefours concentrent une grande
+    part des liens (attachement préférentiel, Barabási et Albert, Science, 1999)
+  - un réseau à carrefours résiste aux pannes au hasard, mais casse si l'on touche les carrefours
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: mois
+    taille: méso
+  traces:
+  - *id001
+- id: passeurs
+  nom: Passeurs entre groupes (ponts et trous structuraux)
+  organisation: entourage
+  elements:
+  - celui qui relie deux groupes autrement séparés contrôle ce qui passe de l'un à l'autre (Burt, « trous structuraux »,
+    1992) - source d'influence et d'avantage
+  niveau:
+    espace: local à monde
+    temps: années
+    vitesse: semaines
+    taille: micro
+  traces:
+  - *id001
+- id: cascades
+  nom: Cascades d'influence
+  organisation: societe
+  elements:
+  - une idée, une mode, une rumeur se propagent de proche en proche ; certaines demandent plusieurs contacts pour être
+    adoptées (contagion complexe), d'autres un seul (contagion simple)
+  niveau:
+    espace: local à monde
+    temps: jours à mois
+    vitesse: heures
+    taille: micro à macro
+  traces:
+  - *id001
+- id: reseaux_elites
+  nom: Réseaux d'élites (sans noms)
+  organisation: statut
+  elements:
+  - écoles, corps, clubs, conseils d'administration qui se recoupent, familles, partis - lieux où les mêmes personnes se
+    croisent et où se forment les liens qui comptent pour le pouvoir
+  niveau:
+    espace: pays et monde
+    temps: générations
+    vitesse: années
+    taille: micro à méso
+  traces:
+  - *id001
+- id: reseaux_numeriques
+  nom: Réseaux numériques (accélérateurs)
+  organisation: technique
+  elements:
+  - les plateformes rendent visibles les liens faibles et raccourcissent les distances (de « six degrés » à 3,57)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: heures
+    taille: macro
+  traces:
+  - *id001
+relations:
+- de: liens_faibles
+  vers: petit_monde
+  effet: +
+  delai: années
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: quelques liens qui sautent d'un groupe à l'autre suffisent à rapprocher tout le monde
+- de: carrefours
+  vers: petit_monde
+  effet: +
+  delai: années
+  force: forte
+  coupure: perte des carrefours
+  statut: a_verifier
+  texte: les très connectés raccourcissent les chemins
+- de: ressemblance
+  vers: liens_faibles
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: lieux de mélange (travail, école, armée)
+  statut: a_verifier
+  texte: se lier à ses semblables raréfie les liens qui sortent du groupe
+- de: ressemblance
+  vers: cascades
+  effet: +
+  delai: jours
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: dans un groupe fermé, une idée se renforce vite (chambre d'écho)
+- de: passeurs
+  vers: cascades
+  effet: +
+  delai: jours
+  force: moyenne
+  coupure: passeur absent ou discrédité
+  statut: a_verifier
+  texte: le passage d'un groupe à l'autre passe par les passeurs
+- de: reseaux_numeriques
+  vers: petit_monde
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: coupure d'internet
+  statut: a_verifier
+  texte: les plateformes réduisent la distance moyenne entre les personnes
+- de: reseaux_numeriques
+  vers: cascades
+  effet: +
+  delai: heures
+  force: forte
+  coupure: modération, coupure
+  statut: a_verifier
+  texte: les cascades vont beaucoup plus vite en ligne
+- de: reseaux_elites
+  vers: carrefours
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: les mêmes lieux d'élite fabriquent les mêmes personnes très connectées
+- de: cercles
+  vers: liens_faibles
+  effet: +
+  delai: années
+  force: faible
+  coupure: inconnue
+  statut: a_verifier
+  texte: au-delà du cercle des proches, les autres relations restent des liens faibles
+ponts:
+- depuis: cercles
+  vers: humain:liens
+  nature: les liens sociaux, vus depuis les mécanismes humains
+  type: voisinage
+- depuis: passeurs
+  vers: humain:reseaux_discrets
+  nature: réseaux discrets et passeurs
+  type: voisinage
+- depuis: cascades
+  vers: humain:opinion_publique
+  nature: les cascades font l'opinion
+- depuis: ressemblance
+  vers: humain:polarisation
+  nature: les groupes fermés nourrissent la polarisation
+- depuis: reseaux_numeriques
+  vers: medias-diffusion:plateformes_sociales
+  nature: les mêmes plateformes, vues comme moyens de diffusion
+  type: voisinage
+- depuis: cascades
+  vers: information-cyber:foules
+  nature: les cascades en ligne et les foules numériques
+  type: voisinage
+- depuis: petit_monde
+  vers: epidemies:comportements
+  nature: les mêmes chemins courts transmettent aussi les maladies
+- depuis: reseaux_elites
+  vers: dirigeants-elus:entourage
+  nature: l'entourage des dirigeants vient souvent des mêmes réseaux
+  type: voisinage
+- depuis: reseaux_elites
+  vers: corruption:grande_corruption
+  nature: les réseaux fermés facilitent la captation
+- depuis: liens_faibles
+  vers: plancher-social:travail
+  nature: les liens faibles ouvrent l'accès à l'emploi
+- depuis: liens_faibles
+  vers: migrations-demographie:diasporas
+  nature: les réseaux de migrants guident les départs
+  type: voisinage
