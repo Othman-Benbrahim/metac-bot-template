@@ -1,0 +1,47 @@
+name: "Mécanique de bascule (ombre)"
+
+# 0.10.464 (décision de l'auteur, 2026-11-22, 20 h 51 - 20 h 57) : chaque semaine, manifestations GDELT des 62 dernières
+# semaines (mode court, ~3 Go), puis mecanique.py : étincelles de la dernière semaine complète, prédiction « prend dans
+# les 8 semaines », journal à ajout seul, issues constatées, score. Lancée le lundi par le planificateur de nuit ; on
+# peut la lancer à la main. Rien n'entre dans les prévisions Metaculus.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  mecanique:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Manifestations récentes (GDELT, mode court)
+        run: uv run --with "google-cloud-bigquery==3.27.0" python -u gdelt_bq.py --mode manifestations_court
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJET: ${{ vars.GCP_PROJET }}
+      - name: Mécanique
+        run: uv run python -u mecanique.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/gdelt-manifestations-recentes.csv registre/mecanique-journal.csv registre/mecanique-issues.csv registre/mecanique-score.json registre/bigquery-compteur.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : mécanique du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

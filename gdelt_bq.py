@@ -51,8 +51,12 @@ DYADES_DEBUT, DYADES_FIN, DYADES_N = "2023-01-01", "2026-10-31", 40
 # test 2022-2026 réservé (claude/preenregistrement-reserve-h2-terrain dans le projet).
 MANIFS = Path("registre/gdelt-manifestations-semaines.csv")
 MANIFS_DEBUT, MANIFS_FIN = "2015-02-19", "2026-11-21"
+# 0.10.464 : mode court pour la mécanique en temps réel (mecanique.py) : les 62 dernières semaines, même requête.
+MANIFS_RECENTES = Path("registre/gdelt-manifestations-recentes.csv")
+MANIFS_COURT_SEMAINES = 62
 PLAFOND_REQUETE_GO = {"nuit": 25.0, "court": 5.0, "bancs": 120.0, "comptes": 120.0, "comptes_jeu": 120.0,
-                     "comptes_metaculus_2025": 120.0, "dyades": 120.0, "manifestations": 150.0}
+                     "comptes_metaculus_2025": 120.0, "dyades": 120.0, "manifestations": 150.0,
+                     "manifestations_court": 10.0}
 PLAFOND_MOIS_GO = 800.0
 PAR_QUESTION = 15
 
@@ -387,14 +391,20 @@ WHERE _PARTITIONTIME BETWEEN TIMESTAMP(@d0) AND TIMESTAMP(@d1)
 GROUP BY pays, semaine"""
 
 
-def mode_manifestations(client=None) -> int:
+def mode_manifestations(client=None, court: bool = False) -> int:
     from google.cloud import bigquery
     if client is None:
         from google.oauth2 import service_account
         cred = service_account.Credentials.from_service_account_info(json.loads(os.environ["GCP_SA_KEY"]))
         client = bigquery.Client(project=os.environ["GCP_PROJET"], credentials=cred)
-    params = [bigquery.ScalarQueryParameter("d0", "STRING", MANIFS_DEBUT),
-              bigquery.ScalarQueryParameter("d1", "STRING", MANIFS_FIN)]
+    mode = "manifestations_court" if court else "manifestations"
+    if court:
+        hier = datetime.now(timezone.utc).date() - timedelta(days=1)
+        d0, d1 = (hier - timedelta(weeks=MANIFS_COURT_SEMAINES)).isoformat(), hier.isoformat()
+    else:
+        d0, d1 = MANIFS_DEBUT, MANIFS_FIN
+    params = [bigquery.ScalarQueryParameter("d0", "STRING", d0),
+              bigquery.ScalarQueryParameter("d1", "STRING", d1)]
     texte = sql_manifestations()
     essai = client.query(texte, job_config=bigquery.QueryJobConfig(dry_run=True, use_query_cache=False,
                                                                   query_parameters=params))
@@ -402,16 +412,15 @@ def mode_manifestations(client=None) -> int:
     mois = datetime.now(timezone.utc).strftime("%Y-%m")
     cpt = compteur()
     deja = float(cpt.get(mois, 0.0))
-    print(f"BigQuery (manifestations) : {MANIFS_DEBUT} → {MANIFS_FIN}, essai à blanc {go:.2f} Go ; mois {mois} : {deja:.1f} Go",
-          flush=True)
-    if go > PLAFOND_REQUETE_GO["manifestations"]:
-        raise RuntimeError(f"requête refusée : {go:.1f} Go > plafond {PLAFOND_REQUETE_GO['manifestations']} Go (manifestations)")
+    print(f"BigQuery ({mode}) : {d0} → {d1}, essai à blanc {go:.2f} Go ; mois {mois} : {deja:.1f} Go", flush=True)
+    if go > PLAFOND_REQUETE_GO[mode]:
+        raise RuntimeError(f"requête refusée : {go:.1f} Go > plafond {PLAFOND_REQUETE_GO[mode]} Go ({mode})")
     if deja + go > PLAFOND_MOIS_GO:
         raise RuntimeError(f"requête refusée : le mois atteindrait {deja + go:.0f} Go (> {PLAFOND_MOIS_GO:.0f} Go)")
     lignes = list(client.query(texte, job_config=bigquery.QueryJobConfig(query_parameters=params)).result())
     cpt[mois] = round(deja + go, 3)
     COMPTEUR.write_text(json.dumps(cpt, ensure_ascii=False, indent=1), encoding="utf-8")
-    ecrire_manifestations([dict(r) for r in lignes])
+    ecrire_manifestations([dict(r) for r in lignes], MANIFS_RECENTES if court else MANIFS)
     return 0
 
 
@@ -434,7 +443,7 @@ def principal(mode: str) -> int:
         print("::warning::GCP_SA_KEY ou GCP_PROJET absent : GDELT par BigQuery sauté.")
         return 0
     try:
-        return (mode_manifestations() if mode == "manifestations" else mode_dyades() if mode == "dyades" else mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
+        return (mode_manifestations() if mode == "manifestations" else mode_manifestations(court=True) if mode == "manifestations_court" else mode_dyades() if mode == "dyades" else mode_bancs() if mode == "bancs" else mode_comptes() if mode == "comptes"
                 else mode_comptes_jeu() if mode == "comptes_jeu"
                 else mode_comptes_jeu(True, "metaculus", COMPTES_META_2025, mode) if mode == "comptes_metaculus_2025"
                 else mode_tournoi(mode))
@@ -446,5 +455,5 @@ def principal(mode: str) -> int:
 if __name__ == "__main__":
     a = argparse.ArgumentParser()
     a.add_argument("--mode", choices=["nuit", "court", "bancs", "comptes", "comptes_jeu",
-                                           "comptes_metaculus_2025", "dyades", "manifestations"], default="nuit")
+                                           "comptes_metaculus_2025", "dyades", "manifestations", "manifestations_court"], default="nuit")
     sys.exit(principal(a.parse_args().mode))
