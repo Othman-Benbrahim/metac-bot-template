@@ -451,30 +451,35 @@ ponts:
 - depuis: deplacements
   vers: soudan:humanitaire
   nature: le Soudan, premier pays de déplacés en Afrique
+  type: voisinage
 - depuis: deplacements
   vers: migrations-demographie:migrations
   nature: les déplacements forcés dans les migrations
-- depuis: groupes_armes
-  vers: securite-publique:trafics
-  nature: trafics qui financent les groupes armés
+  type: voisinage
 - depuis: ressources
   vers: dette-emergents:gisements
   nature: les gisements, vus depuis la dette
+  type: meme
 - depuis: ressources
   vers: rivalite-sino-americaine:terres_rares
   nature: la course aux minerais critiques
+  type: voisinage
 - depuis: deplacements
   vers: alimentation-mondiale:importateurs
   nature: insécurité alimentaire des pays importateurs et des déplacés
+  type: voisinage
 - depuis: deplacements
   vers: plancher-social:pauvrete
   nature: pauvreté extrême restée élevée en Afrique subsaharienne
+  type: voisinage
 - depuis: demographie_jeunesse
   vers: migrations-demographie:natalite_vieillissement
   nature: la fécondité africaine, seule au-dessus du seuil de remplacement
+  type: meme
 - depuis: demographie_jeunesse
   vers: humain:jeunesse
   nature: la jeunesse, moteur d'aspirations et de mobilisation
+  type: voisinage
 - depuis: demographie_jeunesse
   vers: societe-droits:education
   nature: scolariser une population très jeune
@@ -487,33 +492,37 @@ ponts:
 - depuis: croissance
   vers: dette-emergents:dette_publique
   nature: les intérêts de la dette, environ 12 % des recettes
+  type: voisinage
 - depuis: croissance
   vers: dette-emergents:inflation_locale
   nature: l'inflation médiane en hausse
+  type: voisinage
 - depuis: croissance
   vers: economie-entreprises:conjoncture
   nature: une des régions à la croissance la plus forte
+  type: voisinage
 - depuis: croissance
   vers: plancher-social:pauvrete
   nature: la croissance et la pauvreté extrême
-- depuis: croissance
-  vers: climat-extremes:oscillations
-  nature: El Niño pourrait retirer 0,5 point de croissance en 2027
 - depuis: integration_commerciale
   vers: economie-entreprises:echanges
   nature: le commerce entre pays africains
 - depuis: integration_commerciale
   vers: transport-maritime:ports
   nature: les ports et corridors du commerce africain
+  type: voisinage
 - depuis: argent_mobile
   vers: sciences-techniques:adoption
   nature: une technologie adoptée d'abord en Afrique
+  type: voisinage
 - depuis: argent_mobile
   vers: information-cyber:plateformes
   nature: les plateformes de paiement mobile
+  type: voisinage
 - depuis: argent_mobile
   vers: crises-bancaires:depots
   nature: des dépôts hors des banques
+  type: voisinage
 - depuis: acces_electricite
   vers: plancher-social:acces_energie
   nature: l'Afrique subsaharienne, 86 % du manque d'électricité mondial
@@ -522,47 +531,46 @@ ponts:
   vers: energie-mondiale:demande
   nature: la demande d'électricité qui monte
 - depuis: acces_electricite
-  vers: minerais-critiques:batteries
-  nature: kits solaires et batteries
-- depuis: acces_electricite
   vers: corps-humain:soins
   nature: des centres de santé électrifiés
 - depuis: alternances
   vers: politique-interieure:elections
   nature: les élections et les alternances
+  type: meme
 - depuis: alternances
   vers: dirigeants-elus:departs
   nature: des sortants battus qui quittent le pouvoir pacifiquement
-- depuis: alternances
-  vers: corruption:perception
-  nature: la corruption, motif de vote contre les sortants (Ghana, Maurice)
+  type: meme
 - depuis: alternances
   vers: dirigeants-elus:mandats_succession
   nature: le troisième mandat refusé (Sénégal, 2024)
+  type: voisinage
 - depuis: creation_culturelle
   vers: culture-memoire:creation
   nature: les musiques et le cinéma africains
-- depuis: creation_culturelle
-  vers: migrations-demographie:diasporas
-  nature: les diasporas, relais de la création
+  type: meme
 - depuis: creation_culturelle
   vers: competitions-culture:medias
   nature: prix et audiences des artistes africains
 - depuis: ressources
   vers: minerais-critiques:cuivre
   nature: le cuivre et le cobalt de la RDC et de la Zambie
+  type: meme
 - depuis: ressources
   vers: energie-mondiale:nucleaire_civil
   nature: l'uranium du Niger
 - depuis: corne
   vers: transport-maritime:detroits
   nature: Bab el-Mandeb et les routes de la mer Rouge
+  type: voisinage
 - depuis: puissances_exterieures
   vers: militaire:bases_projection
   nature: les bases étrangères à Djibouti
+  type: meme
 - depuis: institutions_regionales
   vers: dirigeants-elus:diplomatie_personnelle
   nature: sommets de l'Union africaine et des communautés régionales
+  type: voisinage
 - depuis: deplacements
   vers: humain:besoins_fondamentaux
   nature: les déplacés, privés d'abord de la sécurité et de l'abri

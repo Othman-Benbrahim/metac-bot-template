@@ -84,19 +84,20 @@ ponts:
 - depuis: composition_air
   vers: cycles-biogeochimiques:carbone
   nature: le carbone de l'air dans son cycle
+  type: meme
 - depuis: bilan_energie
   vers: climat-extremes:rayonnement
   nature: même phénomène, vu depuis le climat
   type: meme
-- depuis: bilan_energie
-  vers: soleil-espace:soleil
-  nature: l'énergie reçue du Soleil
 - depuis: biomasse
   vers: cycles-biogeochimiques:microbes_du_sol
   nature: les bactéries du sol dans les cycles
+  type: voisinage
 - depuis: biomasse
   vers: epidemies:agent
   nature: virus et bactéries qui rendent malade, une part infime du vivant microscopique
+  type: voisinage
 - depuis: biomasse
   vers: biodiversite-sols:populations
   nature: les mammifères sauvages, dix fois moins lourds que les humains et le bétail
+  type: voisinage

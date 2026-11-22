@@ -60,5 +60,10 @@ relations:
   - {de: "soutiens", vers: "fsr", effet: "+", delai: "mois", force: "moyenne", coupure: "sanctions effectives", statut: "a_verifier", texte: "idem"}
   - {de: "mediation", vers: "humanitaire", effet: "+", delai: "semaines", force: "faible", coupure: "violation de la trêve", statut: "a_verifier", texte: "une trêve ouvre brièvement l'accès humanitaire (Djeddah, mai 2023), puis s'effondre"}
 ponts:
-  - {depuis: "humanitaire", vers: "alimentation-mondiale:prix", nature: "famine et prix alimentaires"}
-  - {depuis: "soutiens", vers: "guerre-levant:mediateurs", nature: "mêmes puissances régionales médiatrices"}
+- depuis: humanitaire
+  vers: alimentation-mondiale:prix
+  nature: famine et prix alimentaires
+- depuis: soutiens
+  vers: guerre-levant:mediateurs
+  nature: mêmes puissances régionales médiatrices
+  type: meme

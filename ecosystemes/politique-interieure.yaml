@@ -211,24 +211,32 @@ ponts:
 - depuis: elections
   vers: calendriers-echeances:elections
   nature: le calendrier des scrutins
+  type: voisinage
 - depuis: contestation
   vers: humain:passage_acte
   nature: le passage à l'acte collectif
+  type: voisinage
 - depuis: partis
   vers: humain:polarisation
   nature: la polarisation entre camps
+  type: voisinage
 - depuis: procedures
   vers: corruption:grande_corruption
   nature: les affaires de corruption au sommet
+  type: voisinage
 - depuis: gouvernement
   vers: union-europeenne:institutions
   nature: les gouvernements siègent au Conseil de l'Union
+  type: voisinage
 - depuis: coups_transitions
   vers: afrique-subsaharienne:juntes_sahel
   nature: les juntes du Sahel
+  type: meme
 - depuis: regime
   vers: politique-americaine:executif
   nature: le recul démocratique américain mesuré par V-Dem et Freedom House
+  type: voisinage
 - depuis: elections
   vers: asie-du-sud:bangladesh
   nature: une alternance après un soulèvement
+  type: voisinage

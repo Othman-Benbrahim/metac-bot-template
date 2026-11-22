@@ -182,9 +182,11 @@ ponts:
 - depuis: chine_japon
   vers: rivalite-sino-americaine:taiwan
   nature: Taïwan, cœur des différends régionaux
+  type: voisinage
 - depuis: alliances
   vers: rivalite-sino-americaine:alliances
   nature: les alliances de la région dans la rivalité sino-américaine
+  type: voisinage
 - depuis: russie_coree
   vers: russie-ukraine:capacites
   nature: soldats et munitions nord-coréens dans les capacités russes
@@ -192,9 +194,12 @@ ponts:
 - depuis: coree_du_nord
   vers: non-proliferation:etats_du_seuil
   nature: un État doté hors du traité de non-prolifération
+  type: meme
 - depuis: coree_du_sud
   vers: non-proliferation:dissuasion
   nature: le débat sud-coréen sur la dissuasion
+  type: voisinage
 - depuis: coree_du_sud
   vers: transport-maritime:flottes
   nature: la construction navale coréenne, enjeu de l'accord avec les États-Unis
+  type: voisinage

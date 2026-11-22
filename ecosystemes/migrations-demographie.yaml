@@ -383,9 +383,6 @@ ponts:
   vers: climat-extremes:exposes
   nature: les populations exposées aux extrêmes
   type: meme
-- depuis: migrations
-  vers: guerre-levant:humanitaire
-  nature: les exodes de guerre
 - depuis: natalite_vieillissement
   vers: economie-chinoise:demographie
   nature: le vieillissement chinois
@@ -393,9 +390,7 @@ ponts:
 - depuis: migrations
   vers: politique-americaine:elections
   nature: l'immigration comme enjeu électoral
-- depuis: migrations
-  vers: eau-moyen-orient:villes
-  nature: la rareté de l'eau pousse vers les villes
 - depuis: psychologie
   vers: information-cyber:recits
   nature: les récits sur les migrants
+  type: voisinage

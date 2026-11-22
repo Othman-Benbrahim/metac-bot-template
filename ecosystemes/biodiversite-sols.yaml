@@ -317,34 +317,35 @@ ponts:
 - depuis: especes
   vers: environnement-dechets:biodiversite
   nature: même sujet, vu depuis les pollutions
+  type: meme
 - depuis: sols_vivants
   vers: foret-et-sols-vivants:sol_mineral
   nature: le sol vivant, détaillé dans le cas de Fukuoka
+  type: voisinage
 - depuis: sols_vivants
   vers: foret-et-sols-vivants:champignons_symbiotiques
   nature: champignons du sol, détaillés dans le cas de Fukuoka
+  type: voisinage
 - depuis: sols_vivants
   vers: alimentation-mondiale:sols
   nature: les mêmes sols, vus comme terres cultivées
+  type: meme
 - depuis: populations
   vers: alimentation-mondiale:pollinisateurs
-  nature: les pollinisateurs, vus comme facteur de production (plus de 75 % des cultures alimentaires en dépendent en
-    partie, IPBES 2016)
+  nature: les pollinisateurs, vus comme facteur de production (plus de 75 % des cultures alimentaires en dépendent en partie,
+    IPBES 2016)
 - depuis: sols_vivants
   vers: cycles-biogeochimiques:microbes_du_sol
   nature: les microbes du sol dans les cycles du carbone et de l'azote
-- depuis: habitats
-  vers: climat-extremes:vegetation
-  nature: le climat déplace et dégrade les habitats
+  type: voisinage
 - depuis: populations
   vers: oceans-et-fleuves:recifs
   nature: le vivant marin le plus menacé
+  type: voisinage
 - depuis: surexploitation
   vers: oceans-et-fleuves:peche
   nature: la pêche, part marine de la surexploitation
-- depuis: populations
-  vers: eau-douce-potable:ressources
-  nature: les populations d'eau douce, en baisse de 85 %, dépendent des fleuves, lacs et nappes
+  type: meme
 - depuis: populations
   vers: epidemies:reservoirs
   nature: la faune sauvage comme réservoir de maladies (zoonoses)

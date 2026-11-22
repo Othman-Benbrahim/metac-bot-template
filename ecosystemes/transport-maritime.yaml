@@ -531,21 +531,19 @@ ponts:
 - depuis: detroits
   vers: ormuz:navigation
   nature: Ormuz est un des goulets du système
+  type: meme
 - depuis: detroits
   vers: energie-mondiale:transport
   nature: le transport de l'énergie passe par les mêmes détroits
+  type: voisinage
 - depuis: fret
   vers: inflation-mondiale:approvisionnement
   nature: le fret entre dans le coût des biens
 - depuis: droit
   vers: russie-ukraine:sanctions
   nature: la flotte fantôme du pétrole russe
+  type: meme
 - depuis: detroits
   vers: rivalite-sino-americaine:taiwan
   nature: le détroit de Taïwan et la mer de Chine méridionale
-- depuis: climat
-  vers: climat-extremes:saisons
-  nature: sécheresses, typhons, glaces
-- depuis: securite
-  vers: guerre-levant:iran
-  nature: les attaques en mer Rouge liées aux fronts régionaux
+  type: meme

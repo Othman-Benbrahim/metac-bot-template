@@ -98,8 +98,17 @@ relations:
   - {de: "cascades", vers: "population", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "durée de la coupure", regle: "seuil"}, coupure: "communication claire des autorités", statut: "a_verifier", texte: "passage de la technique au psychologique : au-delà de quelques jours, la gêne devient colère et défiance"}
   - {de: "population", vers: "operateurs_regulateurs", effet: "±", delai: "mois", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "la colère publique pousse aux réformes ou aux boucs émissaires"}
 ponts:
-  - {depuis: "reseaux", vers: "climat-extremes:exposes", nature: "les réseaux sont parmi les plus exposés aux extrêmes"}
-  - {depuis: "eau_refroidissement", vers: "oceans-et-fleuves:refroidissement", nature: "le même phénomène vu par les fleuves", type: "meme"}
-  - {depuis: "reseaux", vers: "eau-moyen-orient:dessalement", nature: "le dessalement dépend de l'électricité"}
-  - {depuis: "attaques", vers: "russie-ukraine:front", nature: "frappes sur les infrastructures en guerre"}
-  - {depuis: "demande", vers: "energie-mondiale:demande", nature: "la charge électrique tire la demande de gaz"}
+- depuis: reseaux
+  vers: climat-extremes:exposes
+  nature: les réseaux sont parmi les plus exposés aux extrêmes
+  type: voisinage
+- depuis: eau_refroidissement
+  vers: oceans-et-fleuves:refroidissement
+  nature: le même phénomène vu par les fleuves
+  type: meme
+- depuis: reseaux
+  vers: eau-moyen-orient:dessalement
+  nature: le dessalement dépend de l'électricité
+- depuis: demande
+  vers: energie-mondiale:demande
+  nature: la charge électrique tire la demande de gaz

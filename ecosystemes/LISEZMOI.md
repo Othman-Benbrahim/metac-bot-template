@@ -44,9 +44,12 @@ relations:
     source: (si vérifié) la source relue
     texte: une phrase
 ponts:
-  - {depuis: compartiment, vers: autre-theme:compartiment, nature: une phrase, type: meme | influence}
+  - {depuis: compartiment, vers: autre-theme:compartiment, nature: une phrase, type: meme | influence | voisinage}
     # meme : les deux fiches lisent le même phénomène (transmission entière, dans les deux sens)
-    # influence (par défaut) : le compartiment influe sur l'autre fiche (partielle, avec retard, sens à préciser)
+    # influence (par défaut) : CAUSE — le compartiment agit sur l'autre fiche, flèche de la cause vers l'effet
+    #   (carte : « cause ») ; partielle, avec retard
+    # voisinage : les deux se touchent (partie d'un tout, lieu, calendrier) sans cause établie (carte : « lien de
+    #   voisinage ») ; sert à naviguer, ne transmet rien en simulation ; meme s'affiche « même chose »
 ```
 Sans forme écrite, la forme est déduite des deux effets (− / − compétition, + / + mutualisme, + / − prédation,
 + / 0 commensalisme, − / 0 amensalisme, 0 / 0 neutralisme ; sans retour : forçage).

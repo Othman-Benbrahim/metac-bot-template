@@ -592,6 +592,7 @@ ponts:
 - depuis: rarete
   vers: ormuz:milieu
   nature: la rareté de l'eau douce sur les rives du Golfe
+  type: voisinage
 - depuis: villes
   vers: ormuz:interieur_iran
   nature: pénuries d'eau et contestation en Iran
@@ -601,12 +602,15 @@ ponts:
 - depuis: irrigation
   vers: alimentation-mondiale:eau_agricole
   nature: l'eau agricole et les récoltes de la région
+  type: meme
 - depuis: chaleur
   vers: climat-extremes:saisons
   nature: vagues de chaleur sur la région
+  type: voisinage
 - depuis: etats_riverains
   vers: guerre-levant:iran
   nature: l'eau dans les conflits de la région
 - depuis: dessalement
   vers: infrastructures-critiques:reseaux
   nature: les usines de dessalement, infrastructures vulnérables
+  type: voisinage

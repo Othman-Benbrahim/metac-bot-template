@@ -120,10 +120,29 @@ relations:
   - {de: "combustion", vers: "soufre", effet: "+", delai: "jours", force: "moyenne", coupure: "désulfuration", statut: "a_verifier", texte: "charbon et fioul libèrent du soufre, qui retombe en pluies acides"}
   - {de: "phosphore", vers: "engrais", effet: "+", delai: "années", force: "forte", intensite: {mesure: "concentration géographique des gisements", regle: "seuil"}, coupure: "recyclage", statut: "a_verifier", texte: "le phosphore des engrais vient de quelques roches, ressource finie à l'échelle humaine"}
 ponts:
-  - {depuis: "soufre", vers: "foret-et-sols-vivants:pluies_acides", nature: "le soufre retombe en pluies acides", type: "meme"}
-  - {depuis: "climat", vers: "climat-extremes:tendance", nature: "la dérive du climat", type: "meme"}
-  - {depuis: "engrais", vers: "alimentation-mondiale:engrais", nature: "les engrais des cultures", type: "meme"}
-  - {depuis: "azote", vers: "alimentation-mondiale:sols", nature: "la fertilité des sols cultivés"}
-  - {depuis: "eau", vers: "oceans-et-fleuves:cycle", nature: "le cycle de l'eau", type: "meme"}
-  - {depuis: "carbone", vers: "oceans-et-fleuves:oceans", nature: "l'océan absorbe une part du carbone et s'acidifie"}
-  - {depuis: "combustion", vers: "energie-mondiale:demande", nature: "la combustion suit la demande d'énergie", type: "meme"}
+- depuis: soufre
+  vers: foret-et-sols-vivants:pluies_acides
+  nature: le soufre retombe en pluies acides
+  type: meme
+- depuis: climat
+  vers: climat-extremes:tendance
+  nature: la dérive du climat
+  type: meme
+- depuis: engrais
+  vers: alimentation-mondiale:engrais
+  nature: les engrais des cultures
+  type: meme
+- depuis: azote
+  vers: alimentation-mondiale:sols
+  nature: la fertilité des sols cultivés
+- depuis: eau
+  vers: oceans-et-fleuves:cycle
+  nature: le cycle de l'eau
+  type: meme
+- depuis: carbone
+  vers: oceans-et-fleuves:oceans
+  nature: l'océan absorbe une part du carbone et s'acidifie
+- depuis: combustion
+  vers: energie-mondiale:demande
+  nature: la combustion suit la demande d'énergie
+  type: meme

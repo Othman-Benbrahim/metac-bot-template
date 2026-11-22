@@ -627,27 +627,21 @@ ponts:
 - depuis: prix
   vers: inflation-mondiale:alimentation
   nature: les prix alimentaires entrent dans l'inflation
-- depuis: engrais
-  vers: energie-mondiale:prix
-  nature: l'azote se fabrique avec du gaz naturel
 - depuis: climat
   vers: climat-extremes:saisons
   nature: sécheresses, chaleurs et pluies de la saison
+  type: voisinage
 - depuis: eau_agricole
   vers: eau-moyen-orient:rarete
   nature: l'irrigation consomme l'essentiel de l'eau douce de la région
 - depuis: commerce
   vers: transport-maritime:detroits
   nature: grains de la mer Noire par le Bosphore, Suez et Bab-el-Mandeb
-- depuis: commerce
-  vers: russie-ukraine:sanctions
-  nature: la mer Noire, premier grenier exportateur, sous la guerre
-- depuis: stocks
-  vers: economie-chinoise:activite
-  nature: les achats et les réserves chinoises pèsent sur le marché mondial
+  type: voisinage
 - depuis: importateurs
   vers: dette-emergents:monnaies
   nature: les importateurs paient en dollars
+  type: voisinage
 - depuis: prix
   vers: humain:stress_chronique
   nature: le prix de la nourriture pèse sur le stress des ménages

@@ -102,8 +102,15 @@ relations:
   - {de: "geopolitique", vers: "regles", effet: "-", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "exclusions et boycotts changent la liste des concurrents"}
   - {de: "forme", vers: "forme", effet: "-", retour: "-", forme: "competition", delai: "heures", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau personne : la compétition elle-même, ce que l'un gagne l'autre le perd"}
 ponts:
-  - {depuis: "geopolitique", vers: "russie-ukraine:soutiens", nature: "exclusions sportives et culturelles liées à la guerre"}
-  - {depuis: "milieu", vers: "climat-extremes:saisons", nature: "chaleurs extrêmes pendant les grandes compétitions"}
-  - {depuis: "medias", vers: "information-cyber:recits", nature: "les récits médiatiques"}
-  - {depuis: "calendrier", vers: "calendriers-echeances:memoire", nature: "les dates fixes et les anniversaires"}
-  - {depuis: "public", vers: "migrations-demographie:diasporas", nature: "les votes des diasporas"}
+- depuis: medias
+  vers: information-cyber:recits
+  nature: les récits médiatiques
+  type: voisinage
+- depuis: calendrier
+  vers: calendriers-echeances:memoire
+  nature: les dates fixes et les anniversaires
+  type: voisinage
+- depuis: public
+  vers: migrations-demographie:diasporas
+  nature: les votes des diasporas
+  type: voisinage

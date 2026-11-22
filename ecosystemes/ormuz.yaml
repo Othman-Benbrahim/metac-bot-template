@@ -566,18 +566,23 @@ ponts:
 - depuis: interieur_iran
   vers: iran-nucleaire:negociations
   nature: le programme nucléaire et les sanctions se négocient ensemble
+  type: voisinage
 - depuis: puissances
   vers: rivalite-sino-americaine:energie
   nature: la sécurité des approvisionnements chinois
+  type: voisinage
 - depuis: force
   vers: guerre-levant:iran
   nature: les fronts régionaux de l'Iran et de ses alliés
+  type: voisinage
 - depuis: navigation
   vers: transport-maritime:detroits
   nature: Ormuz, Bab-el-Mandeb, Suez forment un même système de passages
+  type: meme
 - depuis: milieu
   vers: eau-moyen-orient:rarete
   nature: la rareté de l'eau douce dans la région
+  type: voisinage
 faits:
 # 2026-11-21 : faits datés recoupés par au moins deux sources indépendantes (règle de l'auteur), pour le bot en direct ;
 # faits de 2026 : jamais utilisés par les bancs rétrospectifs (questions de 2026).

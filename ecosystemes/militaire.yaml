@@ -245,6 +245,7 @@ ponts:
 - depuis: alliances
   vers: securite-europeenne:otan_ue
   nature: l'OTAN et l'Union dans la défense européenne
+  type: meme
 - depuis: forces
   vers: russie-ukraine:capacites
   nature: les capacités engagées dans la guerre d'Ukraine
@@ -260,45 +261,51 @@ ponts:
 - depuis: arsenaux_nucleaires
   vers: asie-du-nord-est:coree_du_nord
   nature: l'arsenal nord-coréen
+  type: meme
 - depuis: arsenaux_nucleaires
   vers: asie-du-sud:inde_pakistan
   nature: deux arsenaux face à face
+  type: meme
 - depuis: bases_projection
   vers: rivalite-sino-americaine:taiwan
   nature: la présence militaire autour de Taïwan
+  type: voisinage
 - depuis: depenses
   vers: asie-du-nord-est:japon
   nature: le réarmement japonais
 - depuis: forces
   vers: afrique-subsaharienne:juntes_sahel
   nature: armées au pouvoir au Sahel
+  type: voisinage
 - depuis: technologies
   vers: sciences-techniques:course_etats
   nature: la course technologique militaire
 - depuis: technologies
   vers: information-cyber:cyber
   nature: le cyber militaire
+  type: meme
 - depuis: technologies
   vers: soleil-espace:satellites
   nature: les satellites militaires
-- depuis: industrie_armement
-  vers: minerais-critiques:controles_export
-  nature: l'armement dépend des terres rares et des métaux critiques
+  type: meme
 - depuis: industrie_armement
   vers: economie-entreprises:industrie_manufacturiere
   nature: l'armement dans l'industrie manufacturière
+  type: meme
 - depuis: depenses
   vers: plancher-social:protection_sociale
   nature: les budgets militaires contre les dépenses sociales
 - depuis: depenses
   vers: politique-americaine:budget
   nature: le budget de la défense américain
+  type: meme
 - depuis: commerce_armes
   vers: corruption:marches_publics
   nature: les marchés d'armement, terrain de corruption
 - depuis: alliances
   vers: union-europeenne:defense_ue
   nature: les instruments de défense de l'Union
+  type: voisinage
 - depuis: bases_projection
   vers: transport-maritime:securite
   nature: les marines et la sécurité des routes maritimes

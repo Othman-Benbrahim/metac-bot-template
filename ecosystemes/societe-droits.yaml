@@ -119,18 +119,23 @@ ponts:
 - depuis: libertes_civiques
   vers: politique-interieure:regime
   nature: l'état des régimes et des libertés
+  type: voisinage
 - depuis: genre_minorites
   vers: plancher-social:inegalites
   nature: les inégalités entre femmes et hommes dans le plancher social
+  type: meme
 - depuis: sante_publique
   vers: corps-humain:soins
   nature: les systèmes de soins
+  type: meme
 - depuis: libertes_civiques
   vers: information-cyber:censure
   nature: la censure en ligne
+  type: voisinage
 - depuis: droits_humains
   vers: culture-memoire:usages_memoire
   nature: mémoire des violations et récits concurrents
+  type: voisinage
 - depuis: libertes_civiques
   vers: corruption:presse_alerte
   nature: la presse d'enquête a besoin des libertés civiques

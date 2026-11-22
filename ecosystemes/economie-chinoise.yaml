@@ -628,21 +628,19 @@ ponts:
 - depuis: statistiques
   vers: inflation-mondiale:statistiques
   nature: la fiabilité des chiffres officiels chinois
+  type: meme
 - depuis: exterieur
   vers: rivalite-sino-americaine:energie
   nature: rivalité commerciale et technologique avec les États-Unis
+  type: voisinage
 - depuis: exportations
   vers: transport-maritime:detroits
   nature: Malacca, Taïwan et Suez portent les exportations chinoises
+  type: voisinage
 - depuis: politique_monetaire
   vers: inflation-mondiale:banques_centrales
   nature: la Banque populaire de Chine parmi les grandes banques centrales
-- depuis: exterieur
-  vers: politique-americaine:commerce
-  nature: droits de douane décidés à Washington
-- depuis: eau_fleuves
-  vers: climat-extremes:secheresses
-  nature: sécheresses et vagues de chaleur sur les bassins chinois
+  type: voisinage
 - depuis: epizooties
   vers: alimentation-mondiale:prix
   nature: le porc et les importations de soja et de céréales

@@ -280,27 +280,23 @@ ponts:
 - depuis: besoins_vitaux
   vers: eau-douce-potable:corps
   nature: 'même phénomène : l''eau du corps'
-- depuis: pollution
-  vers: eau-douce-potable:qualite
-  nature: pollution de l'eau et corps
-- depuis: nutrition
-  vers: alimentation-mondiale:prix
-  nature: le prix de la nourriture règle l'accès à une alimentation saine
-- depuis: sante_mentale
-  vers: humain:stress_chronique
-  nature: le stress chronique pèse sur la santé mentale
+  type: meme
 - depuis: besoins_vitaux
   vers: humain:hormones
   nature: 'même corps : hormones et besoins'
+  type: meme
 - depuis: antimicrobiens
   vers: epidemies:technique
   nature: traitements et résistance
+  type: voisinage
 - depuis: vieillissement
   vers: migrations-demographie:natalite_vieillissement
   nature: même phénomène, vu par la démographie
+  type: meme
 - depuis: reproduction
   vers: migrations-demographie:mortalite
   nature: mortalité maternelle et infantile dans la démographie
 - depuis: chaleur_froid
   vers: climat-extremes:exposes
   nature: les sociétés exposées aux extrêmes de chaleur
+  type: voisinage

@@ -643,6 +643,7 @@ ponts:
 - depuis: negociations
   vers: ormuz:interieur_iran
   nature: le programme nucléaire et les sanctions se négocient ensemble
+  type: voisinage
 - depuis: sanctions
   vers: ormuz:droit
   nature: les sanctions liées au programme encadrent les exportations passant par Ormuz
@@ -652,18 +653,19 @@ ponts:
 - depuis: voisins
   vers: guerre-levant:iran
   nature: l'Iran et ses alliés dans les fronts régionaux
+  type: meme
 - depuis: russie_chine
   vers: rivalite-sino-americaine:energie
   nature: la Chine premier acheteur du pétrole iranien (à vérifier)
+  type: voisinage
 - depuis: russie_chine
   vers: russie-ukraine:sanctions
   nature: Russie et Iran, deux économies sous sanctions qui commercent
-- depuis: etats_unis
-  vers: politique-americaine:energie
-  nature: pression maximale ou détente, selon la politique intérieure américaine
+  type: voisinage
 - depuis: conseil_securite
   vers: non-proliferation:regime
   nature: le régime mondial de non-prolifération
+  type: voisinage
 faits:
 # 2026-11-21 : faits datés recoupés par au moins deux sources indépendantes ; jamais utilisés par les bancs rétrospectifs.
 - date: 2026-06-17

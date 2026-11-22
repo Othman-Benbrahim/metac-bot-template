@@ -115,10 +115,28 @@ relations:
   - {de: "cotes_detroits", vers: "guerres", effet: "±", delai: "jours", force: "forte", intensite: {mesure: "tension autour du détroit", regle: "seuil"}, coupure: "routes de contournement", statut: "a_verifier", texte: "un détroit étroit donne un levier à qui tient ses rives"}
   - {de: "chateaux_d_eau", vers: "populations", effet: "+", delai: "saisons", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les montagnes donnent l'eau aux plaines peuplées en aval"}
 ponts:
-  - {depuis: "chateaux_d_eau", vers: "oceans-et-fleuves:glaces", nature: "neige et glaciers des montagnes", type: "meme"}
-  - {depuis: "chateaux_d_eau", vers: "eau-moyen-orient:fleuves", nature: "le Tigre et l'Euphrate naissent dans les montagnes de Turquie"}
-  - {depuis: "cotes_detroits", vers: "transport-maritime:detroits", nature: "les détroits sont des reliefs", type: "meme"}
-  - {depuis: "cotes_detroits", vers: "ormuz:milieu", nature: "le goulet d'Ormuz"}
-  - {depuis: "guerres", vers: "russie-ukraine:front", nature: "les plaines ukrainiennes, les fleuves comme lignes de front"}
-  - {depuis: "guerres", vers: "guerre-levant:liban", nature: "le relief libanais et le plateau du Golan"}
-  - {depuis: "climat", vers: "climat-extremes:tendance", nature: "la dérive du climat", type: "meme"}
+- depuis: chateaux_d_eau
+  vers: oceans-et-fleuves:glaces
+  nature: neige et glaciers des montagnes
+  type: meme
+- depuis: chateaux_d_eau
+  vers: eau-moyen-orient:fleuves
+  nature: le Tigre et l'Euphrate naissent dans les montagnes de Turquie
+- depuis: cotes_detroits
+  vers: transport-maritime:detroits
+  nature: les détroits sont des reliefs
+  type: meme
+- depuis: cotes_detroits
+  vers: ormuz:milieu
+  nature: le goulet d'Ormuz
+  type: voisinage
+- depuis: guerres
+  vers: russie-ukraine:front
+  nature: les plaines ukrainiennes, les fleuves comme lignes de front
+- depuis: guerres
+  vers: guerre-levant:liban
+  nature: le relief libanais et le plateau du Golan
+- depuis: climat
+  vers: climat-extremes:tendance
+  nature: la dérive du climat
+  type: meme

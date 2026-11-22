@@ -341,42 +341,47 @@ ponts:
 - depuis: agriculture
   vers: oceans-et-fleuves:peche
   nature: la pêche dans le secteur primaire
+  type: voisinage
 - depuis: extraction
   vers: minerais-critiques:concentration
   nature: les minerais critiques
+  type: voisinage
 - depuis: extraction
   vers: energie-mondiale:production
   nature: la production de pétrole et de gaz
+  type: meme
 - depuis: industrie_manufacturiere
   vers: economie-chinoise:exportations
   nature: l'industrie chinoise exportatrice
+  type: voisinage
 - depuis: industrie_manufacturiere
   vers: securite-europeenne:industrie
   nature: l'industrie de défense
+  type: voisinage
 - depuis: services
   vers: culture-memoire:tourisme
   nature: le tourisme dans les services
+  type: voisinage
 - depuis: services
   vers: transports-villes:route
   nature: les transports dans les services
+  type: voisinage
 - depuis: services
   vers: crises-bancaires:bilans
   nature: la finance dans les services
+  type: voisinage
 - depuis: echanges
   vers: transport-maritime:fret
   nature: les échanges passent par le fret maritime
+  type: voisinage
 - depuis: conjoncture
   vers: inflation-mondiale:prix_conso
   nature: l'inflation mondiale, vue depuis les prix
-- depuis: defaillances
-  vers: inflation-mondiale:banques_centrales
-  nature: des taux durablement élevés font monter les défaillances
-- depuis: defaillances
-  vers: energie-mondiale:prix
-  nature: l'énergie chère pèse sur les entreprises
+  type: voisinage
 - depuis: investissement_ia
   vers: sciences-techniques:capitaux
   nature: les capitaux investis dans l'IA
+  type: meme
 - depuis: defaillances
   vers: crises-bancaires:faillites
   nature: des défaillances d'entreprises aux pertes bancaires
@@ -386,6 +391,4 @@ ponts:
 - depuis: entreprises
   vers: corruption:marches_publics
   nature: les entreprises dans les marchés publics
-- depuis: regles_sectorielles
-  vers: rivalite-sino-americaine:commerce
-  nature: droits de douane et règles commerciales
+  type: voisinage

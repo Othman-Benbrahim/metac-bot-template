@@ -402,6 +402,7 @@ ponts:
 - depuis: infrastructure
   vers: infrastructures-critiques:reseaux
   nature: câbles et centres de données comme infrastructures critiques
+  type: meme
 - depuis: infrastructure
   vers: oceans-et-fleuves:refroidissement
   nature: les centres de données refroidis à l'eau

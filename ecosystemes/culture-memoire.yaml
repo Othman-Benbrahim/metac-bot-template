@@ -172,27 +172,17 @@ ponts:
 - depuis: histoire_memoire
   vers: calendriers-echeances:memoire
   nature: les dates de mémoire et les anniversaires
+  type: voisinage
 - depuis: usages_memoire
   vers: humain:symboles
   nature: les symboles de mémoire comme moteurs d'action
 - depuis: usages_memoire
   vers: humain:nous_eux
   nature: les récits concurrents nourrissent la frontière entre groupes
-- depuis: patrimoine_en_guerre
-  vers: russie-ukraine:front
-  nature: le patrimoine ukrainien sous les frappes
-  type: influence
-- depuis: patrimoine_en_guerre
-  vers: guerre-levant:liban
-  nature: le patrimoine libanais en péril (Tyr, châteaux du Jabal Amel)
-  type: influence
-- depuis: tourisme
-  vers: transports-villes:aerien
-  nature: le tourisme international dépend du transport aérien
 - depuis: creation
   vers: competitions-culture:medias
   nature: les œuvres, les prix et leur écho médiatique
 - depuis: restitutions
   vers: afrique-subsaharienne:institutions_regionales
   nature: les demandes de restitution des États africains
-  type: influence
+  type: voisinage

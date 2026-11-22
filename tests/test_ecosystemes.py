@@ -73,3 +73,11 @@ def test_ponts_transversaux_valides():
     # ils sont bien ajoutés aux ponts de la fiche de départ, avec leur canal
     assert any(p.get("canal") == "energie" for p in f["energie-mondiale"]["ponts"])
     assert not any(p.get("canal") for p in ec.charger(transversaux=False)["energie-mondiale"].get("ponts") or [])
+
+
+def test_trois_sortes_de_ponts():
+    # 0.10.443 (filtre « causes », décision de l'auteur du 2026-11-22) : cause (influence), même chose, voisinage
+    assert ec.TYPES_PONT == ("meme", "influence", "voisinage")
+    f = ec.charger()
+    types = {p.get("type", "influence") for x in f.values() for p in x.get("ponts") or []}
+    assert types == {"meme", "influence", "voisinage"}

@@ -522,24 +522,15 @@ relations:
   statut: a_verifier
   texte: les gisements font les recettes, mais attachent le pays aux cycles des prix
 ponts:
-- depuis: monnaies
-  vers: inflation-mondiale:monnaies
-  nature: un dollar fort serre les pays endettés en dollars
-- depuis: dette_publique
-  vers: inflation-mondiale:banques_centrales
-  nature: les taux de la Réserve fédérale font le coût de la dette en dollars
-- depuis: matieres_premieres
-  vers: energie-mondiale:prix
-  nature: les prix de l'énergie pour les exportateurs et les importateurs
-- depuis: inflation_locale
-  vers: alimentation-mondiale:prix
-  nature: le prix du blé et du riz importés
 - depuis: creanciers
   vers: economie-chinoise:exterieur
   nature: la Chine, grand prêteur bilatéral
+  type: voisinage
 - depuis: banques
   vers: crises-bancaires:depots
   nature: 'faillites et fermetures de banques (exemple du tournoi : Paraguay)'
+  type: voisinage
 - depuis: politique_interieure
   vers: elections-amerique-latine:scrutins
   nature: élections et ajustements en Amérique latine
+  type: voisinage

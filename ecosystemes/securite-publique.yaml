@@ -103,10 +103,31 @@ relations:
   - {de: "frontieres", vers: "trafics", effet: "-", delai: "semaines", force: "moyenne", coupure: "corruption aux frontières", statut: "a_verifier", texte: "les contrôles aux ports et frontières renchérissent les trafics"}
   - {de: "sanctions", vers: "trafics", effet: "-", delai: "mois", force: "faible", coupure: "circuits de blanchiment alternatifs", statut: "a_verifier", texte: "les désignations frappent l'argent des réseaux, partiellement"}
 ponts:
-  - {depuis: "alertes", vers: "nucleaire-radiologique:signalement", nature: "les sources radioactives perdues ou volées", type: "meme"}
-  - {depuis: "justice", vers: "politique-americaine:tribunaux", nature: "les tribunaux américains"}
-  - {depuis: "frontieres", vers: "transport-maritime:ports", nature: "les ports comme points de passage des trafics"}
-  - {depuis: "sanctions", vers: "russie-ukraine:sanctions", nature: "les mêmes outils de sanction et de gel d'avoirs"}
-  - {depuis: "corruption", vers: "dette-emergents:politique_interieure", nature: "corruption et instabilité politique"}
-  - {depuis: "trafics", vers: "information-cyber:cyber", nature: "rançongiciels et marchés illicites en ligne"}
-  - {depuis: "justice", vers: "liban-institutions:justice", nature: "les affaires judiciaires du tournoi au Liban"}
+- depuis: alertes
+  vers: nucleaire-radiologique:signalement
+  nature: les sources radioactives perdues ou volées
+  type: meme
+- depuis: justice
+  vers: politique-americaine:tribunaux
+  nature: les tribunaux américains
+  type: voisinage
+- depuis: frontieres
+  vers: transport-maritime:ports
+  nature: les ports comme points de passage des trafics
+  type: voisinage
+- depuis: sanctions
+  vers: russie-ukraine:sanctions
+  nature: les mêmes outils de sanction et de gel d'avoirs
+  type: meme
+- depuis: corruption
+  vers: dette-emergents:politique_interieure
+  nature: corruption et instabilité politique
+  type: voisinage
+- depuis: trafics
+  vers: information-cyber:cyber
+  nature: rançongiciels et marchés illicites en ligne
+  type: voisinage
+- depuis: justice
+  vers: liban-institutions:justice
+  nature: les affaires judiciaires du tournoi au Liban
+  type: voisinage

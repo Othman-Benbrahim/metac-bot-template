@@ -199,21 +199,23 @@ ponts:
 - depuis: inde_pakistan
   vers: non-proliferation:dissuasion
   nature: deux puissances nucléaires face à face
+  type: meme
 - depuis: indus
   vers: eau-douce-potable:tensions
   nature: l'eau comme enjeu de tension entre États
-- depuis: indus
-  vers: climat-extremes:secheresses
-  nature: mousson, fonte et sécheresses sur le bassin
 - depuis: puissances
   vers: rivalite-sino-americaine:alliances
   nature: la région dans la rivalité sino-américaine
+  type: voisinage
 - depuis: afghanistan_pakistan
   vers: securite-publique:trafics
   nature: trafics à travers la frontière
+  type: voisinage
 - depuis: pakistan_interieur
   vers: dette-emergents:fmi
   nature: le Pakistan sous programme du FMI
+  type: voisinage
 - depuis: bangladesh
   vers: politique-interieure:regime
   nature: alternance et exclusion d'un parti
+  type: meme

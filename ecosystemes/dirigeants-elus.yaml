@@ -270,24 +270,26 @@ ponts:
   vers: politique-interieure:dirigeants
   nature: les mêmes dirigeants, vus depuis la politique intérieure
   type: meme
-- depuis: parlementaires
-  vers: politique-interieure:elections
-  nature: les élections désignent les élus
 - depuis: popularite
   vers: humain:opinion_publique
   nature: l'opinion publique et l'approbation des dirigeants
+  type: voisinage
 - depuis: entourage
   vers: politique-americaine:entourage
   nature: l'entourage présidentiel américain
+  type: meme
 - depuis: executifs
   vers: politique-americaine:executif
   nature: l'exécutif américain
+  type: meme
 - depuis: departs
   vers: politique-interieure:coups_transitions
   nature: les coups d'État comme mode de départ
+  type: meme
 - depuis: justice_immunites
   vers: corruption:grande_corruption
   nature: les poursuites pour corruption au sommet
+  type: voisinage
 - depuis: justice_immunites
   vers: russie-ukraine:negociations
   nature: le mandat d'arrêt de la CPI et les conférences de paix
@@ -295,24 +297,31 @@ ponts:
 - depuis: diplomatie_personnelle
   vers: rivalite-sino-americaine:diplomatie
   nature: les sommets entre dirigeants américain et chinois
+  type: meme
 - depuis: diplomatie_personnelle
   vers: guerre-levant:mediateurs
   nature: les médiateurs et les rencontres de dirigeants
+  type: voisinage
 - depuis: executifs
   vers: societe-droits:genre_minorites
   nature: la place des femmes au sommet du pouvoir
+  type: voisinage
 - depuis: mandats_succession
   vers: calendriers-echeances:elections
   nature: les échéances électorales et les fins de mandat
+  type: voisinage
 - depuis: programmes
   vers: humain:polarisation
   nature: les programmes et la polarisation
 - depuis: executifs
   vers: militaire:doctrines
   nature: le chef de l'exécutif, chef des armées et de la dissuasion
+  type: voisinage
 - depuis: departs
   vers: elections-amerique-latine:executif
   nature: alternances et départs en Amérique latine
+  type: meme
 - depuis: age_sante
   vers: corps-humain:vieillissement
   nature: le vieillissement, aussi au sommet du pouvoir
+  type: voisinage

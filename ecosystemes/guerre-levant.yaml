@@ -694,18 +694,18 @@ ponts:
 - depuis: yemen
   vers: transport-maritime:detroits
   nature: Bab-el-Mandeb et Suez dans le système des passages
+  type: meme
 - depuis: yemen
   vers: energie-mondiale:transport
   nature: les attaques en mer Rouge détournent pétroliers et méthaniers
-- depuis: puissances
-  vers: politique-americaine:budget
-  nature: aide militaire votée par le Congrès
 - depuis: humanitaire
   vers: alimentation-mondiale:prix
   nature: insécurité alimentaire et prix dans les zones de guerre
 - depuis: liban
   vers: liban-institutions:justice
   nature: les institutions et la justice libanaises (questions du tournoi)
+  type: voisinage
 - depuis: recits
   vers: humain:symboles
   nature: récits de guerre et symboles
+  type: voisinage

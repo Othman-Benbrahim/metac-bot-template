@@ -543,18 +543,14 @@ ponts:
 - depuis: approvisionnement
   vers: transport-maritime:detroits
   nature: les détroits et le fret
-- depuis: alimentation
-  vers: alimentation-mondiale:prix
-  nature: récoltes, engrais, interdictions d'export
+  type: voisinage
 - depuis: monnaies
   vers: dette-emergents:monnaies
   nature: un dollar fort serre les pays endettés en dollars
-- depuis: budget
-  vers: politique-americaine:budget
-  nature: droits de douane, déficits, pression sur la Réserve fédérale
 - depuis: statistiques
   vers: economie-chinoise:statistiques
   nature: fiabilité des chiffres officiels chinois
+  type: meme
 - depuis: prix_conso
   vers: humain:stress_chronique
   nature: la hausse des prix devient précarité vécue

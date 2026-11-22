@@ -106,10 +106,21 @@ relations:
   - {de: "recherche", vers: "ia", effet: "+", delai: "années", force: "moyenne", coupure: "secret industriel", statut: "a_verifier", texte: "la recherche ouverte nourrit les produits, avec retard"}
   - {de: "course_etats", vers: "capitaux", effet: "+", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les subventions publiques s'ajoutent aux capitaux privés"}
 ponts:
-  - {depuis: "calcul", vers: "rivalite-sino-americaine:technologie", nature: "les puces au cœur de la rivalité", type: "meme"}
-  - {depuis: "energie_eau", vers: "oceans-et-fleuves:refroidissement", nature: "l'eau qui refroidit les centres de données", type: "meme"}
-  - {depuis: "energie_eau", vers: "energie-mondiale:demande", nature: "les centres de données tirent la demande d'électricité et de gaz"}
-  - {depuis: "calcul", vers: "rivalite-sino-americaine:terres_rares", nature: "terres rares et matériaux des puces"}
-  - {depuis: "regulation", vers: "politique-americaine:executif", nature: "décrets et contrôles d'exportation"}
-  - {depuis: "ia", vers: "information-cyber:cyber", nature: "l'IA comme outil d'attaque et de défense informatique"}
-  - {depuis: "calcul", vers: "infrastructures-critiques:reseaux", nature: "les centres de données comme infrastructure"}
+- depuis: calcul
+  vers: rivalite-sino-americaine:technologie
+  nature: les puces au cœur de la rivalité
+  type: meme
+- depuis: energie_eau
+  vers: oceans-et-fleuves:refroidissement
+  nature: l'eau qui refroidit les centres de données
+  type: meme
+- depuis: energie_eau
+  vers: energie-mondiale:demande
+  nature: les centres de données tirent la demande d'électricité et de gaz
+- depuis: ia
+  vers: information-cyber:cyber
+  nature: l'IA comme outil d'attaque et de défense informatique
+- depuis: calcul
+  vers: infrastructures-critiques:reseaux
+  nature: les centres de données comme infrastructure
+  type: voisinage

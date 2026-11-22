@@ -542,12 +542,15 @@ ponts:
 - depuis: fleuves
   vers: eau-moyen-orient:fleuves
   nature: les fleuves du Moyen-Orient (Tigre, Euphrate, Nil)
+  type: voisinage
 - depuis: nappes
   vers: eau-moyen-orient:nappes
   nature: les nappes du Moyen-Orient
+  type: voisinage
 - depuis: navigation_fluviale
   vers: transport-maritime:detroits
   nature: canaux et détroits forment un même réseau
+  type: voisinage
 - depuis: cycle
   vers: alimentation-mondiale:eau_agricole
   nature: l'eau des cultures
@@ -555,18 +558,14 @@ ponts:
   vers: relief-et-montagnes:chateaux_d_eau
   nature: les montagnes stockent l'eau en glace et en neige
   type: meme
-- depuis: desoxygenation
-  vers: cycles-biogeochimiques:azote
-  nature: les engrais azotés nourrissent les zones mortes côtières (UICN)
 - depuis: peche
   vers: alimentation-mondiale:importateurs
   nature: le poisson dans l'alimentation des pays importateurs
-- depuis: plastiques
-  vers: environnement-dechets:dechets
-  nature: les déchets plastiques finissent dans l'océan
 - depuis: haute_mer
   vers: transport-maritime:droit
   nature: droit de la mer et routes maritimes
+  type: voisinage
 - depuis: recifs
   vers: climat-extremes:oceans
   nature: même chaleur des océans
+  type: meme

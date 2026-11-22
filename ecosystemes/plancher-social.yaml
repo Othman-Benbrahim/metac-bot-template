@@ -251,48 +251,45 @@ ponts:
 - depuis: pauvrete
   vers: corps-humain:nutrition
   nature: la faim, part alimentaire du plancher social
+  type: meme
 - depuis: protection_sociale
   vers: corps-humain:soins
   nature: la couverture des soins, part santé du plancher
+  type: meme
 - depuis: logement
   vers: eau-douce-potable:acces
   nature: l'accès à l'eau, compté avec le logement convenable par ONU-Habitat
+  type: voisinage
 - depuis: pauvrete
   vers: societe-droits:education
   nature: l'éducation, part du plancher détaillée dans société et droits
+  type: voisinage
 - depuis: inegalites
   vers: societe-droits:genre_minorites
   nature: les écarts entre femmes et hommes et entre groupes
+  type: voisinage
 - depuis: inegalites
   vers: politique-interieure:regime
   nature: la voix politique, part du plancher
+  type: voisinage
 - depuis: pauvrete
   vers: securite-publique:justice
   nature: paix et justice, part du plancher
+  type: voisinage
 - depuis: logement
   vers: humain:liens
   nature: les liens sociaux, part du plancher
+  type: voisinage
 - depuis: pauvrete
   vers: humain:stress_chronique
   nature: la précarité comme stress chronique
 - depuis: inegalites
   vers: humain:passage_acte
   nature: inégalités et contestation (manifestation, émeute, vote sanction)
-- depuis: pauvrete
-  vers: inflation-mondiale:prix_conso
-  nature: la hausse des prix pèse d'abord sur les plus pauvres
 - depuis: travail
   vers: inflation-mondiale:salaires
   nature: mêmes salaires, vus depuis l'inflation
+  type: meme
 - depuis: inegalites
   vers: migrations-demographie:economie
   nature: les écarts de revenus poussent à migrer
-- depuis: logement
-  vers: migrations-demographie:urbanisation
-  nature: l'urbanisation rapide fait croître les quartiers informels
-- depuis: logement
-  vers: economie-entreprises:immobilier_consommation
-  nature: le marché immobilier et le coût du logement
-- depuis: acces_energie
-  vers: energie-mondiale:prix
-  nature: le prix de l'énergie pèse sur l'accès

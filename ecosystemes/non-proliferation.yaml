@@ -90,7 +90,19 @@ relations:
   - {de: "zones", vers: "regime", effet: "+", delai: "décennie", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau convention : les zones régionales consolident la norme"}
   - {de: "civil", vers: "aiea", effet: "+", delai: "années", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "la coopération civile se fait sous garanties, ce qui étend le contrôle"}
 ponts:
-  - {depuis: "regime", vers: "iran-nucleaire:conseil_securite", nature: "le dossier iranien est un test du régime"}
-  - {depuis: "aiea", vers: "iran-nucleaire:verification", nature: "les inspections en Iran", type: "meme"}
-  - {depuis: "civil", vers: "nucleaire-radiologique:surete", nature: "sûreté du nucléaire civil"}
-  - {depuis: "dissuasion", vers: "rivalite-sino-americaine:atomique", nature: "la dimension nucléaire de la rivalité"}
+- depuis: regime
+  vers: iran-nucleaire:conseil_securite
+  nature: le dossier iranien est un test du régime
+  type: voisinage
+- depuis: aiea
+  vers: iran-nucleaire:verification
+  nature: les inspections en Iran
+  type: meme
+- depuis: civil
+  vers: nucleaire-radiologique:surete
+  nature: sûreté du nucléaire civil
+  type: voisinage
+- depuis: dissuasion
+  vers: rivalite-sino-americaine:atomique
+  nature: la dimension nucléaire de la rivalité
+  type: voisinage

@@ -388,6 +388,7 @@ ponts:
 - depuis: reservoirs
   vers: alimentation-mondiale:ravageurs
   nature: épizooties et maladies des cultures menacent la même chaîne alimentaire
+  type: voisinage
 - depuis: economie
   vers: transport-maritime:ports
   nature: fermetures de ports et congestion
@@ -404,3 +405,4 @@ ponts:
 - depuis: autorites
   vers: politique-americaine:executif
   nature: pouvoirs d'urgence et décisions sanitaires fédérales
+  type: voisinage

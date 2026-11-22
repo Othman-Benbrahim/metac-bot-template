@@ -656,17 +656,12 @@ ponts:
   vers: transport-maritime:droit
   nature: la flotte fantôme
 - depuis: soutiens
-  vers: politique-americaine:budget
-  nature: l'aide votée par le Congrès
-- depuis: soutiens
   vers: securite-europeenne:defense
   nature: le réarmement européen et l'OTAN
 - depuis: soutiens
   vers: rivalite-sino-americaine:alliances
   nature: le soutien chinois à la Russie et les sanctions secondaires
-- depuis: hiver_saisons
-  vers: climat-extremes:saisons
-  nature: les hivers et leur dérive
+  type: voisinage
 - depuis: sols_agriculture
   vers: alimentation-mondiale:sols
   nature: les terres noires dans l'offre mondiale de céréales

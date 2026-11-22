@@ -173,7 +173,12 @@ CLES_PERMISES = {
     "pont": {"depuis", "vers", "nature", "type", "canal"}}
 # 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
 # soit qu'un compartiment INFLUE sur l'autre fiche (type: influence, par défaut : transmission partielle, avec retard).
-TYPES_PONT = ("meme", "influence")
+# 0.10.443 (décision de l'auteur, 2026-11-22, 7 h 27 - 7 h 33, filtre « causes ») : trois sortes de ponts, nommées sur
+# la carte « cause », « même chose », « lien de voisinage ». influence = CAUSE, la flèche va de la cause vers l'effet
+# (sens relu pour chaque pont le 2026-11-22 ; les ponts écrits à l'envers ont été retournés) ; voisinage = les deux
+# compartiments se touchent (partie d'un tout, lieu, calendrier, même acteur) sans cause établie : il sert à naviguer
+# et ne transmet rien dans la simulation.
+TYPES_PONT = ("meme", "influence", "voisinage")
 
 
 # 0.10.326 (Schelling, ch. 2, « les mathématiques inéluctables des chaises musicales ») : une IDENTITÉ comptable tient

@@ -392,9 +392,11 @@ ponts:
 - depuis: banques_centrales
   vers: inflation-mondiale:banques_centrales
   nature: les réunions à date fixe des banques centrales
+  type: voisinage
 - depuis: banques_centrales
   vers: energie-mondiale:decisions
   nature: les réunions de l'OPEP+
+  type: voisinage
 - depuis: publications
   vers: economie-chinoise:statistiques
   nature: le calendrier des statistiques chinoises
@@ -408,6 +410,7 @@ ponts:
 - depuis: dates_limites
   vers: observateur-mesure:biais
   nature: la date limite est une convention de mesure
+  type: voisinage
 - depuis: dates_limites
   vers: humain:agenda
   nature: 'une échéance impose un problème à l''agenda (Simon : l''attention suit les échéances)'

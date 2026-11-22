@@ -233,18 +233,18 @@ ponts:
   vers: securite-publique:corruption
   nature: même phénomène, vu depuis la sécurité publique (complicités, protection)
   type: meme
-- depuis: blanchiment
-  vers: securite-publique:sanctions
-  nature: sanctions et gel d'avoirs contre les réseaux
 - depuis: grande_corruption
   vers: politique-interieure:procedures
   nature: affaires et procédures politiques nationales
+  type: voisinage
 - depuis: lutte
   vers: union-europeenne:institutions
   nature: la directive européenne de 2026
+  type: voisinage
 - depuis: lutte
   vers: politique-americaine:executif
   nature: la suspension puis la reprise ciblée du FCPA
+  type: voisinage
 - depuis: grande_corruption
   vers: russie-ukraine:soutiens
   nature: les scandales ukrainiens pèsent sur le soutien des alliés
@@ -255,9 +255,11 @@ ponts:
 - depuis: marches_publics
   vers: minerais-critiques:concentration
   nature: rente minière et contrats de concession
+  type: voisinage
 - depuis: grande_corruption
   vers: plancher-social:inegalites
   nature: la captation creuse les inégalités
 - depuis: lutte
   vers: dette-emergents:fmi
   nature: conditions de gouvernance des programmes du FMI
+  type: voisinage

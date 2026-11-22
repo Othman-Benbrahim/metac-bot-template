@@ -216,6 +216,7 @@ ponts:
 - depuis: defense_ue
   vers: securite-europeenne:otan_ue
   nature: l'Union et l'OTAN dans la défense européenne
+  type: voisinage
 - depuis: defense_ue
   vers: securite-europeenne:industrie
   nature: les achats communs pour l'industrie de défense
@@ -226,12 +227,15 @@ ponts:
 - depuis: institutions
   vers: politique-interieure:gouvernement
   nature: les gouvernements nationaux siègent au Conseil
+  type: voisinage
 - depuis: etat_de_droit
   vers: corruption:lutte
   nature: la directive anticorruption de 2026 et le Parquet européen
+  type: voisinage
 - depuis: relations_exterieures
   vers: rivalite-sino-americaine:commerce
   nature: l'Union entre les deux grandes puissances commerciales
+  type: voisinage
 - depuis: budget
   vers: securite-europeenne:budgets_dette
   nature: financement de la défense et dette

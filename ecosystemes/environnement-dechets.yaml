@@ -371,9 +371,11 @@ ponts:
 - depuis: climat_politique
   vers: climat-extremes:tendance
   nature: le réchauffement, vu depuis le climat
+  type: voisinage
 - depuis: climat_politique
   vers: niveaux-de-base:composition_air
   nature: la concentration des gaz à effet de serre
+  type: voisinage
 - depuis: eaux_usees
   vers: eau-douce-potable:qualite
   nature: la qualité de l'eau douce
@@ -386,21 +388,26 @@ ponts:
 - depuis: dechets_electroniques
   vers: minerais-critiques:batteries
   nature: le recyclage des métaux
+  type: voisinage
 - depuis: droit_contentieux
   vers: societe-droits:droits_humains
   nature: le droit à un environnement sain
+  type: voisinage
 - depuis: qualite_air
   vers: corps-humain:pollution
   nature: 'même phénomène : l''air pollué et le corps'
+  type: meme
 - depuis: dechets
   vers: oceans-et-fleuves:plastiques
   nature: les plastiques finissent dans l'océan
 - depuis: ozone
   vers: climat-extremes:chimie_atmosphere
   nature: chimie de l'atmosphère
+  type: voisinage
 - depuis: traites
   vers: energie-mondiale:decisions
   nature: le pétrole, matière première du plastique, et les États producteurs
+  type: voisinage
 - depuis: pollution_chimique
   vers: eau-douce-potable:qualite
   nature: substances chimiques dans l'eau douce

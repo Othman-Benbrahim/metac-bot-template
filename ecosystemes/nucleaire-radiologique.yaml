@@ -111,8 +111,16 @@ relations:
   - {de: "traites", vers: "surete", effet: "+", delai: "années", force: "moyenne", coupure: "retrait d'un État", statut: "a_verifier", texte: "les traités donnent à l'AIEA ses garanties et ses inspections"}
   - {de: "environnement", vers: "sante", effet: "-", delai: "années", force: "moyenne", coupure: "évacuation, restrictions alimentaires", statut: "a_verifier", texte: "propre au passage chimique-vivant : la contamination entre dans l'eau, les sols et les aliments"}
 ponts:
-  - {depuis: "traites", vers: "iran-nucleaire:verification", nature: "les garanties de l'AIEA appliquées au programme iranien"}
-  - {depuis: "electricite", vers: "energie-mondiale:production", nature: "le nucléaire dans le bouquet énergétique"}
-  - {depuis: "environnement", vers: "alimentation-mondiale:sols", nature: "la contamination des sols touche les cultures"}
-  - {depuis: "surete", vers: "politique-americaine:executif", nature: "régulation fédérale et sécurité des sources"}
-  - {depuis: "signalement", vers: "securite-publique:alertes", nature: "les alertes publiques et la protection civile (thème à écrire)"}
+- depuis: traites
+  vers: iran-nucleaire:verification
+  nature: les garanties de l'AIEA appliquées au programme iranien
+- depuis: electricite
+  vers: energie-mondiale:production
+  nature: le nucléaire dans le bouquet énergétique
+  type: meme
+- depuis: environnement
+  vers: alimentation-mondiale:sols
+  nature: la contamination des sols touche les cultures
+- depuis: signalement
+  vers: securite-publique:alertes
+  nature: les alertes publiques et la protection civile (thème à écrire)

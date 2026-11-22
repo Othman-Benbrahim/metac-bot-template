@@ -181,6 +181,7 @@ ponts:
 - depuis: controles_export
   vers: rivalite-sino-americaine:terres_rares
   nature: les terres rares dans la rivalité sino-américaine
+  type: voisinage
 - depuis: controles_export
   vers: rivalite-sino-americaine:commerce
   nature: contrôles et trêves dans la guerre commerciale
@@ -190,12 +191,7 @@ ponts:
 - depuis: concentration
   vers: dette-emergents:gisements
   nature: les gisements des pays producteurs endettés
-- depuis: demande
-  vers: transports-villes:electrification
-  nature: l'électrification des véhicules, grande consommatrice de métaux
-- depuis: demande
-  vers: sciences-techniques:calcul
-  nature: les centres de données, consommateurs de cuivre
+  type: voisinage
 - depuis: terres_rares_uranium
   vers: energie-mondiale:nucleaire_civil
   nature: l'uranium du nucléaire civil

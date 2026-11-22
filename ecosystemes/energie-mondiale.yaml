@@ -523,21 +523,18 @@ ponts:
   vers: inflation-mondiale:energie
   type: meme
   nature: l'énergie entre dans l'inflation et dans les décisions des banques centrales
-- depuis: decisions
-  vers: russie-ukraine:sanctions
-  nature: sanctions et plafond de prix sur le pétrole russe
-- depuis: demande
-  vers: economie-chinoise:activite
-  nature: la Chine est le premier importateur
 - depuis: climat
   vers: climat-extremes:saisons
   nature: hivers, ouragans, vagues de chaleur
+  type: voisinage
 - depuis: transport
   vers: transport-maritime:detroits
   nature: le système des passages maritimes
+  type: meme
 - depuis: decisions
   vers: politique-americaine:energie
   nature: réserves stratégiques, sanctions, prix à la pompe et élections
+  type: voisinage
 identites:
 - total: stocks
   termes:

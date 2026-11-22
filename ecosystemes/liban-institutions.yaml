@@ -99,7 +99,19 @@ relations:
   - {de: "justice", vers: "opinion_colere", effet: "-", delai: "mois", force: "moyenne", coupure: "verdict jugé partial", statut: "a_verifier", texte: "une avancée judiciaire visible apaise en partie l'exigence de justice"}
   - {de: "internet_information", vers: "opinion_colere", effet: "+", delai: "jours", force: "faible", coupure: "coupures", statut: "a_verifier", texte: "les réseaux amplifient la colère autour d'une affaire"}
 ponts:
-  - {depuis: "force_armee", vers: "guerre-levant:liban", nature: "le même acteur armé vu par la guerre", type: "meme"}
-  - {depuis: "banque_centrale", vers: "dette-emergents:fmi", nature: "plans du FMI et crise financière"}
-  - {depuis: "exterieur", vers: "guerre-levant:iran", nature: "le soutien iranien"}
-  - {depuis: "banque_centrale", vers: "crises-bancaires:depots", nature: "dépôts bloqués, un cas de crise bancaire"}
+- depuis: force_armee
+  vers: guerre-levant:liban
+  nature: le même acteur armé vu par la guerre
+  type: meme
+- depuis: banque_centrale
+  vers: dette-emergents:fmi
+  nature: plans du FMI et crise financière
+  type: voisinage
+- depuis: exterieur
+  vers: guerre-levant:iran
+  nature: le soutien iranien
+  type: voisinage
+- depuis: banque_centrale
+  vers: crises-bancaires:depots
+  nature: dépôts bloqués, un cas de crise bancaire
+  type: voisinage

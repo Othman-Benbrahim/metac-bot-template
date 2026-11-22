@@ -581,24 +581,31 @@ ponts:
 - depuis: energie
   vers: ormuz:puissances
   nature: la sécurité des approvisionnements chinois passe par Ormuz
+  type: voisinage
 - depuis: energie
   vers: energie-mondiale:demande
   nature: la Chine est le premier importateur
+  type: meme
 - depuis: taiwan
   vers: transport-maritime:detroits
   nature: le détroit de Taïwan
+  type: meme
 - depuis: economie_chine
   vers: economie-chinoise:activite
   nature: l'économie chinoise vue de l'intérieur
+  type: meme
 - depuis: commerce
   vers: inflation-mondiale:approvisionnement
   nature: les droits de douane et les chaînes d'approvisionnement
 - depuis: commerce
   vers: politique-americaine:budget
   nature: les droits de douane dans la politique américaine
+  type: voisinage
 - depuis: alliances
   vers: russie-ukraine:soutiens
   nature: le partenariat sino-russe
+  type: voisinage
 - depuis: detroit_relief
   vers: transport-maritime:detroits
   nature: le détroit de Taïwan, l'un des passages les plus fréquentés
+  type: meme

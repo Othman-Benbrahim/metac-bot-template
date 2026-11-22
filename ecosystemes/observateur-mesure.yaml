@@ -375,12 +375,10 @@ relations:
   statut: a_verifier
   texte: ce qui est adopté change la façon dont le bot traite les questions
 ponts:
-- depuis: biais
-  vers: information-cyber:recits
-  nature: les récits médiatiques que nos sources reflètent
 - depuis: definitions
   vers: economie-chinoise:statistiques
   nature: la fiabilité des chiffres officiels chinois
+  type: voisinage
 - depuis: definitions
   vers: epidemies:convention
   nature: la définition de cas
@@ -388,6 +386,8 @@ ponts:
 - depuis: jeunesse_series
   vers: ormuz:navigation
   nature: le trafic d'Ormuz, mesuré seulement depuis la crise
+  type: voisinage
 - depuis: definitions
   vers: inflation-mondiale:statistiques
   nature: les indices de prix et leurs révisions
+  type: voisinage

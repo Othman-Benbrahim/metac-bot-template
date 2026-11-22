@@ -695,12 +695,15 @@ ponts:
 - depuis: reserve_federale
   vers: inflation-mondiale:banques_centrales
   nature: la Réserve fédérale est la première banque centrale du monde
+  type: meme
 - depuis: sanctions
   vers: ormuz:droit
   nature: les sanctions américaines contre l'Iran
+  type: meme
 - depuis: sanctions
   vers: russie-ukraine:sanctions
   nature: les sanctions contre la Russie
+  type: meme
 - depuis: sanctions
   vers: iran-nucleaire:negociations
   nature: sanctions et négociations nucléaires vont ensemble
@@ -710,9 +713,7 @@ ponts:
 - depuis: commerce
   vers: rivalite-sino-americaine:energie
   nature: la rivalité commerciale et technologique
-- depuis: climat_risques
-  vers: climat-extremes:tempetes
-  nature: ouragans et tempêtes
+  type: voisinage
 - depuis: eau_fleuves
   vers: alimentation-mondiale:commerce
   nature: les exportations de céréales descendent le Mississippi

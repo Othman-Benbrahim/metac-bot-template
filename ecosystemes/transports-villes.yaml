@@ -263,9 +263,6 @@ relations:
   texte: les règles d'urbanisme peuvent freiner l'étalement
 ponts:
 - depuis: forme_urbaine
-  vers: migrations-demographie:urbanisation
-  nature: l'exode rural nourrit la croissance des villes
-- depuis: forme_urbaine
   vers: plancher-social:logement
   nature: quartiers informels des villes qui grandissent vite
 - depuis: route
@@ -283,12 +280,12 @@ ponts:
 - depuis: route
   vers: transport-maritime:ports
   nature: le fret continue par la route depuis les ports
+  type: voisinage
 - depuis: transports_publics
   vers: infrastructures-critiques:reseaux
   nature: les réseaux de transport parmi les réseaux interdépendants
+  type: voisinage
 - depuis: forme_urbaine
   vers: climat-extremes:exposes
   nature: chaleur et inondations en ville, populations exposées
-- depuis: aerien
-  vers: securite-europeenne:menace
-  nature: violations et fermetures d'espace aérien
+  type: voisinage

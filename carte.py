@@ -237,7 +237,7 @@ class Carte:
                 continue                          # une modulation ne transmet rien d'elle-même
             self.sortants.setdefault(r["de"], []).append(r)
         for p in self.s["ponts"]:
-            if not p["resolu"]:
+            if not p["resolu"] or p.get("type") == "voisinage":   # 0.10.443 : un voisinage n'est pas une cause
                 continue
             if p.get("type") == "meme":           # deux lectures du même phénomène : dans les deux sens, sans perte
                 for a, b in ((p["de"], p["vers"]), (p["vers"], p["de"])):

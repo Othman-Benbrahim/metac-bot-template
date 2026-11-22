@@ -133,7 +133,18 @@ relations:
   - {de: "climat", vers: "insectes_nematodes", effet: "+", delai: "années", force: "moyenne", intensite: {mesure: "dérive de la température moyenne", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "des hivers plus doux laissent survivre plus d'insectes"}
   - {de: "climat", vers: "pins", effet: "-", delai: "années", force: "moyenne", intensite: {mesure: "sécheresses répétées", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "les sécheresses répétées affaiblissent les arbres"}
 ponts:
-  - {depuis: "climat", vers: "climat-extremes:tendance", nature: "la dérive du climat", type: "meme"}
-  - {depuis: "sol_mineral", vers: "alimentation-mondiale:sols", nature: "les mêmes mécanismes d'acidification et d'épuisement touchent les sols cultivés"}
-  - {depuis: "insectes_nematodes", vers: "alimentation-mondiale:ravageurs", nature: "ravageurs et pullulations, des forêts aux cultures"}
-  - {depuis: "pins", vers: "climat-extremes:vegetation", nature: "une forêt morte devient combustible"}
+- depuis: climat
+  vers: climat-extremes:tendance
+  nature: la dérive du climat
+  type: meme
+- depuis: sol_mineral
+  vers: alimentation-mondiale:sols
+  nature: les mêmes mécanismes d'acidification et d'épuisement touchent les sols cultivés
+  type: voisinage
+- depuis: insectes_nematodes
+  vers: alimentation-mondiale:ravageurs
+  nature: ravageurs et pullulations, des forêts aux cultures
+  type: voisinage
+- depuis: pins
+  vers: climat-extremes:vegetation
+  nature: une forêt morte devient combustible

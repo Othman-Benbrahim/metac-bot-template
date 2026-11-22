@@ -94,10 +94,17 @@ relations:
   - {de: "etats_unis", vers: "peur_confiance", effet: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les déclarations sur la garantie américaine font varier la confiance"}
   - {de: "menace", vers: "otan_ue", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "gravité de l'agression perçue", regle: "seuil"}, coupure: "divergences entre membres", statut: "a_verifier", texte: "une menace grave resserre l'alliance et fait venir de nouveaux membres"}
 ponts:
-  - {depuis: "defense", vers: "russie-ukraine:soutiens", nature: "le soutien à l'Ukraine et le réarmement se décident ensemble"}
-  - {depuis: "etats_unis", vers: "politique-americaine:executif", nature: "la garantie américaine dépend de l'exécutif"}
-  - {depuis: "budgets_dette", vers: "inflation-mondiale:budget", nature: "dépenses publiques et inflation"}
-  - {depuis: "geographie", vers: "relief-et-montagnes:obstacles", nature: "le relief comme obstacle ou couloir", type: "meme"}
+- depuis: defense
+  vers: russie-ukraine:soutiens
+  nature: le soutien à l'Ukraine et le réarmement se décident ensemble
+  type: voisinage
+- depuis: budgets_dette
+  vers: inflation-mondiale:budget
+  nature: dépenses publiques et inflation
+- depuis: geographie
+  vers: relief-et-montagnes:obstacles
+  nature: le relief comme obstacle ou couloir
+  type: meme
 faits:
 # 2026-11-21 : faits datés recoupés par au moins deux sources indépendantes ; jamais utilisés par les bancs rétrospectifs.
 - date: 2026-07-08

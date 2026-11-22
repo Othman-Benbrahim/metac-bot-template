@@ -352,12 +352,15 @@ ponts:
 - depuis: alertes
   vers: securite-publique:alertes
   nature: les alertes publiques de météo spatiale
+  type: meme
 - depuis: soleil
   vers: climat-extremes:rayonnement
   nature: le rayonnement solaire, variable sur le cycle
 - depuis: satellites
   vers: rivalite-sino-americaine:technologie
   nature: la course aux constellations
+  type: voisinage
 - depuis: recits
   vers: information-cyber:recits
   nature: l'attention aux événements spatiaux
+  type: voisinage
