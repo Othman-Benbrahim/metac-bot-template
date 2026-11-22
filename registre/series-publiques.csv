@@ -9801,6 +9801,7 @@ flux_f107,2026-11-17,121.1
 flux_f107,2026-11-18,117.7
 flux_f107,2026-11-19,106.8
 flux_f107,2026-11-20,103.0
+flux_f107,2026-11-21,99.0
 geomag_ap,2000-01-01,30.0
 geomag_ap,2000-01-02,16.0
 geomag_ap,2000-01-03,12.0
@@ -19622,6 +19623,7 @@ geomag_ap,2026-11-17,4.0
 geomag_ap,2026-11-18,9.0
 geomag_ap,2026-11-19,12.0
 geomag_ap,2026-11-20,3.0
+geomag_ap,2026-11-21,5.0
 mississippi_memphis,2016-01-01,35679.2
 mississippi_memphis,2016-01-02,37944.5
 mississippi_memphis,2016-01-03,40209.9
@@ -23598,6 +23600,7 @@ mississippi_memphis,2026-11-16,8608.3
 mississippi_memphis,2026-11-17,8410.1
 mississippi_memphis,2026-11-18,8268.5
 mississippi_memphis,2026-11-19,8155.2
+mississippi_memphis,2026-11-20,7928.7
 mississippi_saint_louis,2016-01-01,23389.7
 mississippi_saint_louis,2016-01-02,22115.4
 mississippi_saint_louis,2016-01-03,19793.4
@@ -27574,6 +27577,7 @@ mississippi_saint_louis,2026-11-16,5238.6
 mississippi_saint_louis,2026-11-17,4785.5
 mississippi_saint_louis,2026-11-18,4644.0
 mississippi_saint_louis,2026-11-19,4474.1
+mississippi_saint_louis,2026-11-20,4162.6
 nino34_anomalie,1981-09-02,-0.2
 nino34_anomalie,1981-09-09,-0.2
 nino34_anomalie,1981-09-16,-0.2
@@ -29972,6 +29976,7 @@ rhin_kaub_cm,2026-11-17,66.9
 rhin_kaub_cm,2026-11-18,94.6
 rhin_kaub_cm,2026-11-19,117.0
 rhin_kaub_cm,2026-11-20,140.2
+rhin_kaub_cm,2026-11-21,180.1
 secheresse_us_d2plus,2000-01-04,9.45
 secheresse_us_d2plus,2000-01-11,9.9
 secheresse_us_d2plus,2000-01-18,10.38
@@ -41192,7 +41197,8 @@ taches_solaires,2026-11-13,136.0
 taches_solaires,2026-11-14,121.0
 taches_solaires,2026-11-15,119.0
 taches_solaires,2026-11-16,107.0
-taches_solaires,2026-11-17,107.0
+taches_solaires,2026-11-17,108.0
 taches_solaires,2026-11-18,109.0
 taches_solaires,2026-11-19,83.0
-taches_solaires,2026-11-20,62.0
+taches_solaires,2026-11-20,61.0
+taches_solaires,2026-11-21,37.0
