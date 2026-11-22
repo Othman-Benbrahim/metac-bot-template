@@ -321,6 +321,8 @@ REG_OTH_SEA_black,2026-11-20,parlement_ue,1
 REG_OTH_SEA_black,2026-11-20,presse,1
 REG_OTH_XXX_Western,2026-11-20,matieres_presse,3
 REG_OTH_XXX_francophonie,2026-11-20,presse,1
+REG_CON_AFR,2026-11-21,afrique,7
+REG_CON_AFR_west,2026-11-21,afrique,1
 REG_CON_ASI,2026-11-21,presse,1
 REG_CON_EUR,2026-11-21,presse,7
 REG_ORG_EUR_EU,2026-11-21,economie,3
@@ -334,6 +336,7 @@ REG_OTH_AFR_maghrib,2026-11-21,presse,1
 REG_OTH_ASI_middle_east,2026-11-21,matieres_presse,1
 REG_OTH_ERA_caucasia,2026-11-21,presse,1
 REG_OTH_SEA_mediterranean,2026-11-21,presse,1
+REG_CON_AFR,2026-11-22,afrique,1
 REG_CON_AFR,2026-11-22,presse,3
 REG_CON_AMR_latin,2026-11-22,presse,1
 REG_CON_AMR_south,2026-11-22,presse,1
