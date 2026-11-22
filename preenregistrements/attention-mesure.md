@@ -1,4 +1,9 @@
-# Préenregistrement (PROJET, à valider par l'auteur) : l'attention précède-t-elle la mesure ?
+# Préenregistrement SUSPENDU : l'attention précède-t-elle la mesure ?
+
+Suspendu le 2026-11-22 (décision de l'auteur, 1 h 13 - 1 h 16) : compter des termes isolés est une faute ; un terme n'a de
+sens que dans sa situation (écosystème, quatre variables, acteurs, émetteur, temps T). Le collecteur enregistre
+désormais des situations (lecteur-local, comptes/situations.jsonl) ; un test sera réécrit sur cette base.
+
 2026-11-22, écrit avant toute requête et tout calcul. Décisions de l'auteur du 2026-11-22 : 0 h 50 (exploitation n° 2 :
 confronter l'attention à la mesure), 1 h 03 (« oui et oui » : collecteur de nuit dans lecteur-local, et test commencé
 en parallèle sur GDELT). Aucun appel à un modèle.
