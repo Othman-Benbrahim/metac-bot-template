@@ -1,3 +1,5 @@
+# 2026-11-22 (décision de l'auteur, 3 h 22) : compartiment « psychologie » réécrit ; il décrivait les biais génériques comme un
+# portrait nominatif (« l'auteur et Claude ») ; ce sont des biais documentés, valables pour tout prévisionniste, sourcés.
 theme: observateur-mesure
 nom: L'observateur et la mesure
 declaration:
@@ -136,22 +138,22 @@ compartiments:
     statut: collecte
     fichier: controle_chiffres.py
 - id: psychologie
-  nom: Psychologie du prévisionniste
+  nom: Psychologie du prévisionniste (biais documentés, valables pour tout prévisionniste)
   organisation: psychologique
   elements:
-  - ancrage sur le premier chiffre
-  - excès de confiance
-  - envie de trouver un signal
-  - chemins qui bifurquent (essayer jusqu'à ce que ça marche)
+  - ancrage sur le premier chiffre (Tversky et Kahneman, Science, 1974)
+  - excès de confiance (Moore et Healy, Psychological Review, 2008)
+  - envie de trouver un signal dans le bruit (Kahneman, Thinking, Fast and Slow, 2011)
+  - chemins qui bifurquent, essayer jusqu'à ce que ça marche (Gelman et Loken, 2013)
   acteurs:
-  - nom: l'auteur et Claude, comme prévisionnistes
+  - nom: le prévisionniste, humain ou modèle de langue (biais documentés par la recherche, non un portrait)
     taille: micro
     espace: local
     vitesse: jours
     organisation: psychologique
     facette: psyche
   niveau:
-    espace: nous
+    espace: tout dispositif de prévision
     temps: chaque décision
     vitesse: heures à semaines
     taille: micro
