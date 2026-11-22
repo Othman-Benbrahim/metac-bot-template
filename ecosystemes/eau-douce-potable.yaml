@@ -369,6 +369,9 @@ tensions:
   module_par: [saison_hydrologique, oscillations_climatiques]
   mesure:
     indicateur: anomalie de masse d'eau souterraine mesurée par satellite (missions GRACE)
+  tampons:
+  - {nom: "la nappe elle-même (des siècles de recharge accumulée)", niveau: inconnu, mesure: "anomalie de masse d'eau souterraine (satellites GRACE)"}
+  - {nom: "réservoirs et barrages de régulation", niveau: inconnu, mesure: taux de remplissage des réservoirs}
   seuil:
     habitus: règles communautaires de partage (tours d'eau) et respect des quotas
     indicateurs_lents: [ancienneté et respect des institutions locales de l'eau]
@@ -381,6 +384,8 @@ tensions:
   forme: oppositionnelle
   entre: [gouvernance, tensions]
   module_par: [calendrier_partage, oscillations_climatiques]
+  tampons:
+  - {nom: "commissions de bassin et mécanismes de concertation entre États", niveau: inconnu}
   seuil:
     habitus: traités et commissions de bassin anciens, et leur respect
     indicateurs_lents: [ancienneté des traités de partage, fréquence des réunions des commissions]
@@ -393,6 +398,8 @@ tensions:
   nom: Droits d'eau coutumiers contre droit de l'État et marché de l'eau
   forme: desynchronisation
   entre: [gouvernance, acces]
+  tampons:
+  - {nom: "arbitrages locaux (assemblées d'irrigants, médiation coutumière)", niveau: inconnu}
   seuil:
     habitus: systèmes communautaires d'irrigation transmis de génération en génération
     indicateurs_lents: [part de l'irrigation gérée en commun, conflits d'usage portés en justice]

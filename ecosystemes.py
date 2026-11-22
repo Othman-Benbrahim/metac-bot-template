@@ -195,7 +195,10 @@ STATUTS_CYCLE = ("mecanisme", "identifie")
 FORMES_TENSION = ("cumulative", "oppositionnelle", "desynchronisation")
 HYSTERESIS = ("oui", "non", "inconnu")
 CLES_CYCLE = {"id", "nom", "sorte", "mecanisme", "periode", "phase_vulnerable", "compartiments", "sources", "statut"}
-CLES_TENSION = {"id", "nom", "forme", "entre", "stock", "module_par", "mesure", "seuil", "statut", "texte"}
+CLES_TENSION = {"id", "nom", "forme", "entre", "stock", "module_par", "mesure", "seuil", "statut", "texte", "tampons"}
+# 0.10.462 (veille Harish, « The Problem of No Problem », validée par l'auteur à 18 h 03) : ce qui absorbe les
+# perturbations sans être vu ; leur usure est une tension cachée, qui n'apparaît qu'à leur épuisement
+CLES_TAMPON = {"nom", "niveau", "mesure"}
 CLES_SEUIL = {"habitus", "indicateurs_lents", "bascule", "hysteresis"}
 
 
@@ -236,6 +239,12 @@ def erreurs_cycles_tensions(fiche: dict, ids: set[str]) -> list[str]:
         for m in x.get("module_par") or []:
             if ":" not in str(m) and m not in ids_cycles:
                 err.append(f"{lab} : « {m} » n'est pas un cycle de la fiche (écrire theme:cycle pour un autre écosystème)")
+        for tp in x.get("tampons") or []:
+            if not isinstance(tp, dict) or not tp.get("nom"):
+                err.append(f"{lab} : chaque tampon est un dictionnaire avec au moins « nom »")
+            else:
+                for k in set(tp) - CLES_TAMPON:
+                    err.append(f"{lab} tampon : clé inconnue {k!r}")
         sl = x.get("seuil") or {}
         for k in set(sl) - CLES_SEUIL:
             err.append(f"{lab} seuil : clé inconnue {k!r}")
