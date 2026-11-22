@@ -381,6 +381,11 @@ ESSAIS = {
                              "objet": "décision d'institution avant une échéance : faits relevés (étape prévue, règle, "
                                       "soutien, confirmation) combinés au taux de départ des semblables, contre ces derniers",
                              "doc": "preenregistrements/decision-institution.md"},
+    "figures_composees": {"ouvert_le": "2026-11-22", "type": "intervalle", "n": 150, "statut": "ouvert",
+                          "depuis_version": "0.10.428", "lecteur": "gpt-5-mini",
+                          "objet": "matriochka M avec trois figures composées de cartes existantes (compétition, intention, "
+                                   "convention) contre M7 sur les mêmes sept notes ; condition de l'auteur pour les admettre",
+                          "doc": "preenregistrements/figures-composees.md"},
     "sans_matrice": {"ouvert_le": "2026-11-14", "type": "seuil", "n": 50, "statut": "ouvert", "depuis_version": "0.10.99",
                      "lecteur": "mistral-medium",
                      "objet": "plan et lecture sans la matrice",
