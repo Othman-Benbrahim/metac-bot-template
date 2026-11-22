@@ -1,0 +1,297 @@
+# 0.10.414 — fiche créée le 2026-11-22 (décision de l'auteur, 3 h 26) : deuxième des « plus gros trous » de la carte (le corps
+# humain, en agrégat). Relations à vérifier sur sources.
+theme: corps-humain
+nom: Le corps humain (en agrégat, monde)
+declaration:
+  but: 'comprendre le corps humain comme milieu et comme force, en agrégat : besoins vitaux, nutrition, maladies non transmissibles
+    (au moins 43 millions de décès en 2021, OMS), santé mentale (plus d''un milliard de personnes, OMS 2025), chaleur, pollution
+    (environ 7 millions de décès prématurés par an, OMS), résistance aux antimicrobiens, vieillissement, soins, reproduction'
+  limites: dedans le corps humain en population (jamais une personne privée), ses besoins, ses maladies non infectieuses,
+    ses expositions et les systèmes qui le soignent ; dehors les épidémies infectieuses (fiche epidemies), les ressorts du
+    comportement (fiche humain), l'eau (fiche eau-douce-potable), sauf par les ponts
+  observateur: notre carte, regard extérieur, sources publiques (OMS, FAO, ONU, IHME, The Lancet) ; aucune personne privée
+  date: '2026-11-22'
+  espace: le monde, par pays
+  temps: de l'heure (un coup de chaleur) à la vie entière (le vieillissement)
+  vitesse: l'heure (soif, chaleur), l'année (faim, maladies), la décennie (espérance de vie, résistance aux antimicrobiens)
+  taille: micro (le corps, en agrégat) à macro (la population mondiale)
+compartiments:
+- id: besoins_vitaux
+  nom: Besoins vitaux (eau, énergie, oxygène, sommeil, température du corps)
+  organisation: corps
+  elements:
+  - besoins en eau et en énergie
+  - oxygène
+  - sommeil
+  - maintien de la température du corps
+  niveau:
+    espace: la personne, en agrégat
+    temps: heures à jours
+    vitesse: heures
+    taille: micro
+  traces:
+  - source: aucune trace directe
+    statut: inconnue
+  - &id001
+    source: situations observées (lecteur-local, comptes/situations.jsonl)
+    statut: a_brancher
+- id: nutrition
+  nom: Nutrition et faim (sous-nutrition, carences, obésité)
+  organisation: corps
+  elements:
+  - environ 673 millions de personnes ayant souffert de la faim en 2024, soit 8,2 % (SOFI 2025)
+  - 2,6 milliards ne pouvant s'offrir une alimentation saine (SOFI 2025)
+  - carences
+  - obésité
+  acteurs:
+  - nom: des populations sous-nourries (en agrégat)
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: corps
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: SOFI (FAO, FIDA, UNICEF, PAM, OMS), faim par pays
+    statut: a_brancher
+  - source: alertes de famine IPC
+    statut: a_brancher
+  - *id001
+- id: maladies_chroniques
+  nom: Maladies non transmissibles (cœur et vaisseaux, cancers, diabète, poumons)
+  organisation: corps
+  elements:
+  - au moins 43 millions de décès en 2021, environ 75 % des décès hors pandémie, dont 18 millions avant 70 ans (OMS)
+  - tension artérielle, tabac, alimentation, alcool, sédentarité
+  - 'pollution de l''air : environ 5,6 millions de décès par ces maladies (OMS)'
+  niveau:
+    espace: pays
+    temps: années à décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: estimations sanitaires mondiales de l'OMS (Global Health Estimates)
+    statut: a_brancher
+  - *id001
+- id: sante_mentale
+  nom: Santé mentale et suicide
+  organisation: psychologique
+  elements:
+  - plus d'un milliard de personnes vivant avec un trouble mental (OMS, 2025)
+  - environ 727 000 suicides en 2021 (OMS)
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: OMS, Atlas de la santé mentale et World mental health today
+    statut: a_brancher
+  - *id001
+- id: chaleur_froid
+  nom: Chaleur, froid et corps (régulation thermique, morts de chaleur)
+  organisation: physique
+  elements:
+  - coups de chaleur
+  - vagues de chaleur et mortalité
+  - froid extrême
+  niveau:
+    espace: lieux et villes
+    temps: heures à saisons
+    vitesse: jours
+    taille: micro à méso
+  traces:
+  - source: ERA5-Land, températures maximales aux points suivis (collecte_agro.py)
+    statut: a_brancher
+  - *id001
+- id: pollution
+  nom: Pollution et corps (air, eau, substances chimiques)
+  organisation: chimique
+  elements:
+  - environ 7 millions de décès prématurés par an liés à l'air extérieur et domestique (OMS)
+  - 99 % de l'humanité respire un air au-dessus de la valeur guide de l'OMS pour les particules fines
+  - substances chimiques et métaux
+  niveau:
+    espace: villes et pays
+    temps: jours à années
+    vitesse: jours à années
+    taille: micro à macro
+  traces:
+  - source: OMS, exposition à la pollution de l'air
+    statut: a_brancher
+  - source: mesures de la qualité de l'air (OpenAQ, licence à vérifier)
+    statut: a_brancher
+  - *id001
+- id: antimicrobiens
+  nom: Immunité et résistance aux antimicrobiens
+  organisation: microbiologique
+  elements:
+  - 1,14 million de décès directement attribuables en 2021, 4,71 millions associés (étude GRAM, The Lancet, 2024)
+  - environ 1,91 million de décès directs par an prévus en 2050 sans nouvelles mesures
+  acteurs:
+  - nom: une bactérie résistante aux antibiotiques (en agrégat)
+    taille: micro
+    espace: monde
+    vitesse: années
+    organisation: microbiologique
+    facette: non_humain
+  niveau:
+    espace: pays
+    temps: années à décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: étude GRAM (IHME, Oxford) ; surveillance GLASS de l'OMS
+    statut: a_brancher
+  - *id001
+- id: vieillissement
+  nom: Vieillissement et espérance de vie
+  organisation: corps
+  elements:
+  - espérance de vie à la naissance
+  - espérance de vie en bonne santé
+  - vieillissement des populations
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: décennies
+    taille: macro
+  traces:
+  - source: ONU, World Population Prospects
+    statut: a_brancher
+  - *id001
+- id: soins
+  nom: Systèmes de soins (couverture, personnel, coût)
+  organisation: statut
+  elements:
+  - couverture sanitaire universelle
+  - personnel de santé
+  - dépenses de santé à la charge des ménages
+  acteurs:
+  - nom: un système de santé national
+    taille: macro
+    espace: pays
+    vitesse: années
+    organisation: statut
+    facette: collectif
+  - nom: Organisation mondiale de la santé
+    taille: macro
+    espace: monde
+    vitesse: mois
+    organisation: statut
+    facette: collectif
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: OMS, suivi de la couverture sanitaire universelle
+    statut: a_brancher
+  - *id001
+- id: reproduction
+  nom: Reproduction, santé maternelle et infantile
+  organisation: corps
+  elements:
+  - mortalité maternelle
+  - mortalité des enfants de moins de cinq ans
+  - fécondité
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: ONU, OMS, UNICEF (estimations interagences de la mortalité maternelle et infantile)
+    statut: a_brancher
+  - *id001
+relations:
+- de: nutrition
+  vers: maladies_chroniques
+  effet: +
+  delai: années
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: une alimentation déséquilibrée fait partie des facteurs de risque des maladies non transmissibles (OMS)
+- de: pollution
+  vers: maladies_chroniques
+  effet: +
+  delai: années
+  force: forte
+  coupure: baisse de l'exposition
+  statut: a_verifier
+  texte: la pollution de l'air est le premier facteur de risque environnemental des maladies non transmissibles, environ 5,6
+    millions de décès (OMS)
+- de: chaleur_froid
+  vers: besoins_vitaux
+  effet: '-'
+  delai: heures
+  force: forte
+  coupure: refroidissement, accès à l'eau
+  statut: a_verifier
+  texte: la chaleur extrême dépasse la capacité du corps à maintenir sa température
+- de: soins
+  vers: vieillissement
+  effet: +
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la couverture des soins allonge l'espérance de vie
+- de: soins
+  vers: reproduction
+  effet: +
+  delai: années
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'accès aux soins fait reculer la mortalité maternelle et infantile
+- de: antimicrobiens
+  vers: soins
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: nouveaux antibiotiques, bon usage
+  statut: a_verifier
+  texte: la résistance aux antimicrobiens rend les soins courants plus risqués
+- de: nutrition
+  vers: reproduction
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: une bonne nutrition maternelle et infantile fait reculer la mortalité des enfants
+ponts:
+- depuis: besoins_vitaux
+  vers: eau-douce-potable:corps
+  nature: 'même phénomène : l''eau du corps'
+- depuis: pollution
+  vers: eau-douce-potable:qualite
+  nature: pollution de l'eau et corps
+- depuis: nutrition
+  vers: alimentation-mondiale:prix
+  nature: le prix de la nourriture règle l'accès à une alimentation saine
+- depuis: sante_mentale
+  vers: humain:stress_chronique
+  nature: le stress chronique pèse sur la santé mentale
+- depuis: besoins_vitaux
+  vers: humain:hormones
+  nature: 'même corps : hormones et besoins'
+- depuis: antimicrobiens
+  vers: epidemies:technique
+  nature: traitements et résistance
+- depuis: vieillissement
+  vers: migrations-demographie:natalite_vieillissement
+  nature: même phénomène, vu par la démographie
+- depuis: reproduction
+  vers: migrations-demographie:mortalite
+  nature: mortalité maternelle et infantile dans la démographie
+- depuis: chaleur_froid
+  vers: climat-extremes:exposes
+  nature: les sociétés exposées aux extrêmes de chaleur
