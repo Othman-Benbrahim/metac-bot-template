@@ -1,0 +1,192 @@
+{
+  "n_lignes": 60,
+  "n_completes": 48,
+  "sautees_sans_recherche_gelee": 2,
+  "note": "descriptif ; mêmes entrées pour tous ; notes 1 à 4 des sept critères de la matriochka M",
+  "stabilite_r1_r2": {
+    "par_critere": {
+      "tendance": {
+        "n": 48,
+        "kappa_pondere": 0.859,
+        "accord_exact": 0.75,
+        "ecart_moyen": 0.25
+      },
+      "engagements": {
+        "n": 48,
+        "kappa_pondere": 0.858,
+        "accord_exact": 0.771,
+        "ecart_moyen": 0.229
+      },
+      "decideurs": {
+        "n": 48,
+        "kappa_pondere": 0.843,
+        "accord_exact": 0.708,
+        "ecart_moyen": 0.292
+      },
+      "declencheur": {
+        "n": 48,
+        "kappa_pondere": 0.736,
+        "accord_exact": 0.667,
+        "ecart_moyen": 0.396
+      },
+      "freins": {
+        "n": 48,
+        "kappa_pondere": 0.656,
+        "accord_exact": 0.729,
+        "ecart_moyen": 0.354
+      },
+      "duree": {
+        "n": 48,
+        "kappa_pondere": 0.74,
+        "accord_exact": 0.625,
+        "ecart_moyen": 0.458
+      },
+      "proportion": {
+        "n": 48,
+        "kappa_pondere": 0.711,
+        "accord_exact": 0.562,
+        "ecart_moyen": 0.458
+      }
+    },
+    "kappa_moyen": 0.772
+  },
+  "accord_r1_x": {
+    "par_critere": {
+      "tendance": {
+        "n": 48,
+        "kappa_pondere": 0.626,
+        "accord_exact": 0.562,
+        "ecart_moyen": 0.562
+      },
+      "engagements": {
+        "n": 48,
+        "kappa_pondere": 0.694,
+        "accord_exact": 0.562,
+        "ecart_moyen": 0.5
+      },
+      "decideurs": {
+        "n": 48,
+        "kappa_pondere": 0.676,
+        "accord_exact": 0.688,
+        "ecart_moyen": 0.417
+      },
+      "declencheur": {
+        "n": 48,
+        "kappa_pondere": 0.48,
+        "accord_exact": 0.542,
+        "ecart_moyen": 0.708
+      },
+      "freins": {
+        "n": 48,
+        "kappa_pondere": 0.548,
+        "accord_exact": 0.5,
+        "ecart_moyen": 0.583
+      },
+      "duree": {
+        "n": 48,
+        "kappa_pondere": 0.39,
+        "accord_exact": 0.417,
+        "ecart_moyen": 0.938
+      },
+      "proportion": {
+        "n": 48,
+        "kappa_pondere": 0.626,
+        "accord_exact": 0.479,
+        "ecart_moyen": 0.583
+      }
+    },
+    "kappa_moyen": 0.577
+  },
+  "descriptif_r0_r1": {
+    "par_critere": {
+      "tendance": {
+        "n": 48,
+        "kappa_pondere": 0.643,
+        "accord_exact": 0.583,
+        "ecart_moyen": 0.479
+      },
+      "engagements": {
+        "n": 48,
+        "kappa_pondere": 0.795,
+        "accord_exact": 0.667,
+        "ecart_moyen": 0.333
+      },
+      "decideurs": {
+        "n": 48,
+        "kappa_pondere": 0.759,
+        "accord_exact": 0.625,
+        "ecart_moyen": 0.396
+      },
+      "declencheur": {
+        "n": 48,
+        "kappa_pondere": 0.825,
+        "accord_exact": 0.625,
+        "ecart_moyen": 0.375
+      },
+      "freins": {
+        "n": 48,
+        "kappa_pondere": 0.597,
+        "accord_exact": 0.667,
+        "ecart_moyen": 0.375
+      },
+      "duree": {
+        "n": 48,
+        "kappa_pondere": 0.593,
+        "accord_exact": 0.562,
+        "ecart_moyen": 0.562
+      },
+      "proportion": {
+        "n": 48,
+        "kappa_pondere": 0.644,
+        "accord_exact": 0.5,
+        "ecart_moyen": 0.521
+      }
+    },
+    "kappa_moyen": 0.694
+  },
+  "part_des_2": {
+    "r1": {
+      "tendance": 0.333,
+      "engagements": 0.375,
+      "decideurs": 0.396,
+      "declencheur": 0.417,
+      "freins": 0.229,
+      "duree": 0.333,
+      "proportion": 0.375
+    },
+    "r2": {
+      "tendance": 0.292,
+      "engagements": 0.438,
+      "decideurs": 0.438,
+      "declencheur": 0.438,
+      "freins": 0.146,
+      "duree": 0.208,
+      "proportion": 0.438
+    },
+    "x": {
+      "tendance": 0.083,
+      "engagements": 0.25,
+      "decideurs": 0.458,
+      "declencheur": 0.292,
+      "freins": 0.25,
+      "duree": 0.188,
+      "proportion": 0.25
+    }
+  },
+  "probabilite_r1_r2": {
+    "n": 48,
+    "ecart_moyen": 0.037,
+    "part_ecart_sup_0_10": 0.042
+  },
+  "lecture": {
+    "stabilite": "stable",
+    "accord": "lecture commune",
+    "criteres_a_reformuler": [],
+    "seuils": {
+      "stable": 0.6,
+      "instable": 0.4,
+      "commun": 0.4,
+      "non_commun": 0.2
+    }
+  }
+}
