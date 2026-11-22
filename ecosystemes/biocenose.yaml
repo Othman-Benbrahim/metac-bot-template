@@ -1,0 +1,328 @@
+# 0.10.445 — fiche créée le 2026-11-22 (remarque de l'auteur, 8 h 05 : « la biocénose (représentant toutes les espèces)
+# et son cycle à part entière, avec ses écosystèmes naturels qui lui sont liés, à relier à l'homme et à son cycle ; les
+# écosystèmes sont gigognes comme pour les hommes, et comprennent le biotope et la biocénose »). Déjà fait en partie :
+# biodiversite-sols (état des espèces, habitats), niveaux-de-base:biomasse, cycles-biogeochimiques, foret-et-sols-vivants
+# (un écosystème emboîté, étudié de près) ; cette fiche les rassemble autour du vivant comme un tout qui tourne en cycle.
+# Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+theme: biocenose
+nom: Biocénose et biotope (le vivant, ses cycles, ses écosystèmes emboîtés)
+declaration:
+  but: 'voir le vivant comme un tout : la biocénose (toutes les espèces, de 2,17 millions décrites à environ 8,7 millions
+    estimées, et bien davantage pour les microbes) vivant dans un biotope (climat, sol, eau, relief, lumière), un cycle
+    (produire, consommer, décomposer, recycler ; naître, croître, se reproduire, mourir) et des écosystèmes emboîtés —
+    biosphère, biome, écosystème, communauté, population, organisme —, chacun fait d''un biotope et d''une biocénose ;
+    l''espèce humaine en fait partie : 0,01 % de la biomasse, mais 75 % des terres et 66 % des mers profondément modifiées
+    (IPBES, 2019)'
+  limites: dedans le biotope, les producteurs, les consommateurs, les décomposeurs, la diversité des espèces, le cycle du
+    vivant, les biomes et l'emboîtement des écosystèmes, la place de l'espèce humaine, ce que le vivant apporte aux humains ;
+    dehors le détail de l'état des espèces et des habitats (biodiversite-sols), les cycles chimiques (cycles-biogeochimiques),
+    l'écosystème forestier étudié de près (foret-et-sols-vivants), l'agriculture (alimentation-mondiale), sauf par les ponts
+  observateur: notre carte, regard extérieur ; sources scientifiques publiques (Bar-On, Phillips et Milo 2018 ; Mora et al.
+    2011 ; Field et al. 1998 ; IPBES 2019 ; Liste rouge de l'UICN)
+  date: '2026-11-22'
+  espace: de l'organisme à la biosphère, en passant par le biome
+  temps: du jour (une journée de photosynthèse) aux millions d'années (l'évolution), en passant par la saison et la
+    succession écologique (décennies à siècles)
+  vitesse: le jour, la saison, la génération, le siècle
+  taille: micro (un organisme, une bactérie) à macro (un biome, la biosphère)
+compartiments:
+- id: biotope
+  nom: Biotope (le milieu physique du vivant)
+  organisation: physique
+  elements:
+  - climat, lumière, température, eau, sol, relief, chimie de l'air et de l'eau
+  - chaque niveau d'écosystème a son biotope - le climat d'un biome, le sol d'une forêt, l'eau d'une mare
+  niveau:
+    espace: du site à la biosphère
+    temps: saisons à millénaires
+    vitesse: saisons
+    taille: micro à macro
+  traces:
+  - &id001
+    source: données publiques de référence (Bar-On et al. 2018, Field et al. 1998, IPBES 2019)
+    statut: a_brancher
+- id: producteurs
+  nom: Producteurs (plantes, algues, phytoplancton)
+  organisation: vegetal
+  elements:
+  - production primaire nette d'environ 104,9 milliards de tonnes de carbone par an, à peu près moitié sur terre et moitié
+    dans les océans (Field et al., Science, 1998, repris par BioNumbers)
+  - environ 450 des 550 milliards de tonnes de carbone de la biomasse sont des plantes (Bar-On, Phillips et Milo, PNAS,
+    2018, repris par l'Institut Weizmann)
+  niveau:
+    espace: du site à la biosphère
+    temps: saisons à siècles
+    vitesse: jours à saisons
+    taille: micro (une algue) à macro (une forêt)
+  traces:
+  - source: BioNumbers, production primaire nette mondiale (référence 102933)
+    statut: a_brancher
+- id: consommateurs
+  nom: Consommateurs (herbivores, carnivores, chaînes alimentaires)
+  organisation: animal
+  elements:
+  - chaînes et réseaux alimentaires - herbivores, prédateurs, parasites
+  - mammifères sauvages, marins et terrestres, divisés par plus de six (plus de 80 %) depuis les débuts de la civilisation
+    (Bar-On, Phillips et Milo, 2018, repris par l'Institut Weizmann)
+  niveau:
+    espace: du site au biome
+    temps: générations
+    vitesse: jours à saisons
+    taille: micro à méso
+  traces:
+  - *id001
+- id: decomposeurs
+  nom: Décomposeurs (bactéries, champignons, petite faune du sol)
+  organisation: microbiologique
+  elements:
+  - ils ferment le cycle - la matière morte redevient nutriments pour les producteurs
+  niveau:
+    espace: du grain de sol à la biosphère
+    temps: jours à décennies
+    vitesse: jours
+    taille: micro
+  traces:
+  - *id001
+- id: diversite_especes
+  nom: Diversité des espèces (toutes les espèces)
+  organisation: animal
+  elements:
+  - environ 2,17 millions d'espèces décrites (Liste rouge de l'UICN, 2025), dont environ un million d'insectes ; peut-être
+    1,7 million d'espèces uniques une fois les doublons retirés (Our World in Data, d'après les études citées)
+  - environ 8,7 millions d'espèces estimées (Mora et al., PLoS Biology, 2011) ; les estimations vont de 3 millions à plus
+    de 100 millions, et jusqu'à des milliards pour les bactéries et archées (même source)
+  - jusqu'à un million d'espèces menacées d'extinction (IPBES, 2019)
+  acteurs:
+  - nom: UICN (Liste rouge)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: siècles à millions d'années
+    vitesse: décennies
+    taille: macro
+  traces:
+  - source: Our World in Data, How many species are there?
+    statut: a_brancher
+- id: cycle_vivant
+  nom: Cycle du vivant (naître, croître, se reproduire, mourir, être décomposé)
+  organisation: vegetal
+  elements:
+  - cycle de chaque organisme - naissance, croissance, reproduction, vieillissement, mort, décomposition
+  - cycles collectifs - saisons, floraisons, migrations, successions écologiques après une perturbation (incendie, tempête,
+    abandon d'un champ)
+  - l'humain suit le même cycle (enfance, jeunesse, reproduction, vieillissement), voir les ponts
+  niveau:
+    espace: de l'organisme au biome
+    temps: jours à siècles
+    vitesse: saisons à générations
+    taille: micro à macro
+  traces:
+  - *id001
+- id: biomes
+  nom: Biomes et écosystèmes emboîtés
+  organisation: vegetal
+  elements:
+  - forêts tropicales, tempérées et boréales ; savanes et prairies ; déserts ; toundra ; montagnes ; zones humides et
+    mangroves ; récifs coralliens ; haute mer ; lacs et fleuves
+  - emboîtement - biosphère ⊃ biome ⊃ écosystème ⊃ communauté ⊃ population ⊃ organisme ; chaque niveau a son biotope et sa
+    biocénose, comme les groupes humains s'emboîtent (famille, communauté, nation)
+  - exemple étudié de près sur notre carte - la forêt de pins de Fukuoka (foret-et-sols-vivants)
+  niveau:
+    espace: du site au biome
+    temps: siècles à millénaires
+    vitesse: décennies
+    taille: méso à macro
+  traces:
+  - *id001
+- id: espece_humaine
+  nom: L'espèce humaine dans la biocénose
+  organisation: animal
+  elements:
+  - humains - environ 0,06 milliard de tonnes de carbone, 0,01 % de la biomasse ; la masse totale des mammifères
+    (humains et bétail compris) a été multipliée par environ quatre, la biomasse végétale divisée par deux depuis
+    l'apparition de l'humanité (Bar-On, Phillips et Milo, 2018, repris par l'Institut Weizmann)
+  - environ 75 % des milieux terrestres et 66 % des milieux marins profondément modifiés par les activités humaines ;
+    premiers facteurs de perte - changement d'usage des terres et des mers, exploitation directe, climat, pollution,
+    espèces envahissantes (IPBES, 2019)
+  niveau:
+    espace: monde
+    temps: siècles
+    vitesse: décennies
+    taille: macro
+  traces:
+  - source: IPBES, évaluation mondiale de 2019 (communiqué de l'ONU)
+    statut: a_brancher
+- id: apports_vivant
+  nom: Ce que le vivant apporte aux humains
+  organisation: societe
+  elements:
+  - nourriture, eau douce filtrée, air, sols fertiles, médicaments, matériaux
+  - entre 235 et 577 milliards de dollars de récoltes mondiales menacés chaque année par le déclin des pollinisateurs
+    (IPBES, 2019)
+  - aussi des risques - maladies transmises par les animaux (zoonoses)
+  niveau:
+    espace: du site au monde
+    temps: années
+    vitesse: saisons
+    taille: méso à macro
+  traces:
+  - *id001
+relations:
+- de: biotope
+  vers: producteurs
+  effet: +
+  delai: saisons
+  force: forte
+  coupure: sécheresse, froid, sol épuisé
+  statut: a_verifier
+  texte: lumière, eau, chaleur et nutriments du biotope font la production des plantes
+- de: producteurs
+  vers: consommateurs
+  effet: +
+  delai: saisons
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: les plantes nourrissent les herbivores, qui nourrissent les prédateurs
+  retour: '-'
+- de: producteurs
+  vers: decomposeurs
+  effet: +
+  delai: saisons
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: feuilles mortes, bois et racines nourrissent les décomposeurs
+- de: decomposeurs
+  vers: biotope
+  effet: +
+  delai: saisons à années
+  force: moyenne
+  coupure: sol pollué ou compacté
+  statut: a_verifier
+  texte: la décomposition rend au sol les nutriments (le compartiment cible lit ici la fertilité du sol) — le cycle se
+    ferme
+- de: biotope
+  vers: cycle_vivant
+  effet: +
+  delai: saisons
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: les saisons du biotope règlent floraisons, reproductions et migrations
+- de: espece_humaine
+  vers: biomes
+  effet: '-'
+  delai: décennies
+  force: forte
+  coupure: aires protégées, restauration
+  statut: a_verifier
+  texte: le changement d'usage des terres et des mers est le premier facteur de perte de nature (IPBES 2019)
+- de: espece_humaine
+  vers: diversite_especes
+  effet: '-'
+  delai: décennies
+  force: forte
+  coupure: aires protégées, restauration
+  statut: a_verifier
+  texte: exploitation, pollution, climat et espèces envahissantes réduisent la diversité
+- de: diversite_especes
+  vers: apports_vivant
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: plus d'espèces, plus de fonctions assurées (pollinisation, filtration, fertilité)
+- de: apports_vivant
+  vers: espece_humaine
+  effet: +
+  delai: années
+  force: forte
+  coupure: substitution technique, à coût élevé
+  statut: a_verifier
+  texte: les humains vivent de ce que le vivant produit ; la boucle se referme sur eux
+- de: biomes
+  vers: biotope
+  effet: +
+  delai: décennies
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: la végétation fait aussi son milieu (pluies des forêts, sols, ombre) ; biotope et biocénose se font l'un l'autre
+ponts:
+- depuis: producteurs
+  vers: cycles-biogeochimiques:carbone
+  nature: la photosynthèse retire du carbone de l'air
+- depuis: decomposeurs
+  vers: cycles-biogeochimiques:microbes_du_sol
+  nature: les mêmes microbes du sol, vus depuis les cycles chimiques
+  type: meme
+- depuis: decomposeurs
+  vers: biodiversite-sols:sols_vivants
+  nature: la vie du sol, détaillée dans biodiversité et sols vivants
+  type: voisinage
+- depuis: diversite_especes
+  vers: biodiversite-sols:especes
+  nature: l'état des espèces (risque d'extinction), détaillé à part
+  type: voisinage
+- depuis: biomes
+  vers: biodiversite-sols:habitats
+  nature: habitats et usage des terres
+  type: voisinage
+- depuis: biomes
+  vers: foret-et-sols-vivants:succession
+  nature: un écosystème emboîté, étudié de près (la forêt de pins de Fukuoka)
+  type: voisinage
+- depuis: biomes
+  vers: oceans-et-fleuves:recifs
+  nature: les récifs, biome marin le plus menacé
+  type: voisinage
+- depuis: espece_humaine
+  vers: niveaux-de-base:biomasse
+  nature: la répartition de la biomasse
+  type: voisinage
+- depuis: espece_humaine
+  vers: epidemies:reservoirs
+  nature: le contact avec la faune sauvage expose aux zoonoses
+- depuis: espece_humaine
+  vers: migrations-demographie:natalite_vieillissement
+  nature: la population humaine, une population parmi les autres
+  type: voisinage
+- depuis: apports_vivant
+  vers: alimentation-mondiale:pollinisateurs
+  nature: la pollinisation des cultures
+- depuis: apports_vivant
+  vers: humain:besoins_fondamentaux
+  nature: manger, boire, respirer - la survie dépend du vivant
+- depuis: apports_vivant
+  vers: eau-douce-potable:qualite
+  nature: zones humides et forêts filtrent l'eau
+- depuis: cycle_vivant
+  vers: humain:enfance
+  nature: le même cycle de vie chez l'humain - l'enfance
+  type: voisinage
+- depuis: cycle_vivant
+  vers: corps-humain:reproduction
+  nature: le même cycle de vie chez l'humain - la reproduction
+  type: voisinage
+- depuis: cycle_vivant
+  vers: corps-humain:vieillissement
+  nature: le même cycle de vie chez l'humain - le vieillissement
+  type: voisinage
+- depuis: consommateurs
+  vers: alimentation-mondiale:elevage
+  nature: le bétail, consommateurs domestiqués
+  type: voisinage
+- depuis: producteurs
+  vers: alimentation-mondiale:cultures
+  nature: les cultures, producteurs domestiqués
+  type: voisinage
+- depuis: cycle_vivant
+  vers: calendriers-echeances:saisons
+  nature: les saisons rythment le vivant et les calendriers humains
+  type: voisinage

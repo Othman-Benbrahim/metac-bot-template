@@ -385,3 +385,13 @@ ponts:
 - {de: guerre-levant:iran, vers: transport-maritime:securite, canal: conflit, nature: "les attaques en mer Rouge liées aux fronts régionaux"}
 - {de: migrations-demographie:urbanisation, vers: transports-villes:forme_urbaine, canal: population, nature: "l'exode rural nourrit la croissance des villes"}
 - {de: securite-europeenne:menace, vers: transports-villes:aerien, canal: conflit, nature: "violations et fermetures d'espace aérien"}
+# ---------- vers la biocénose (remarque de l'auteur, 2026-11-22, 8 h 05)
+- {de: climat-extremes:tendance, vers: biocenose:biomes, canal: climat, nature: "le réchauffement déplace les biomes vers les pôles et en altitude"}
+- {de: niveaux-de-base:bilan_energie, vers: biocenose:biotope, canal: climat, nature: "l'énergie du Soleil, source de toute production"}
+- {de: economie-entreprises:agriculture, vers: biocenose:biomes, canal: territoire, nature: "l'agriculture convertit forêts et prairies"}
+- {de: environnement-dechets:pollution_chimique, vers: biocenose:consommateurs, canal: sante, nature: "pesticides et toxiques remontent les chaînes alimentaires"}
+- {de: biodiversite-sols:surexploitation, vers: biocenose:consommateurs, canal: vivant, nature: "chasse et pêche retirent les consommateurs"}
+- {de: cycles-biogeochimiques:azote, vers: biocenose:producteurs, canal: vivant, nature: "l'azote disponible limite la croissance des plantes"}
+- {de: oceans-et-fleuves:desoxygenation, vers: biocenose:consommateurs, canal: vivant, nature: "les zones mortes chassent la vie marine"}
+- {de: relief-et-montagnes:chaines, vers: biocenose:biotope, canal: territoire, nature: "le relief étage les climats et les milieux", type: voisinage}
+- {de: humain:culture_ecologie, vers: biocenose:espece_humaine, canal: comportement, nature: "les cultures humaines se forment dans leur milieu", type: voisinage}
