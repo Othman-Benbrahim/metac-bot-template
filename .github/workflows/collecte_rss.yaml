@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/rss-comptes.csv registre/rss-vus.txt registre/rss-sante.csv registre/rss-titres.csv registre/rss-regions.csv registre/rss-accord.csv registre/rss-trois-codeurs.csv registre/rss-matieres.csv registre/rss-familles.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/rss-comptes.csv registre/rss-vus.txt registre/rss-sante.csv registre/rss-titres.csv registre/rss-regions.csv registre/rss-accord.csv registre/rss-trois-codeurs.csv registre/rss-matieres.csv registre/rss-familles.csv registre/rss-familles-vus.txt; do if [ -e "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : flux RSS du $(date -u +%Y-%m-%d)"
             # 0.10.390 : run 44749464241 perdu sur un envoi concurrent ; trois essais

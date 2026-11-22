@@ -313,6 +313,7 @@ MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 # 0.10.457 (décision de l'auteur, 2026-11-22, 11 h 36) : articles nouveaux par famille et par jour, avec ou sans pays
 # reconnu, pour la carte des écosystèmes (lecteur-local) ; compte seulement, jamais le texte
 FAMILLES_CSV = Path("registre") / "rss-familles.csv"
+FAMILLES_VUS = Path("registre") / "rss-familles-vus.txt"   # 0.10.458 : empreintes déjà comptées dans rss-familles.csv
 
 DEDOUBLONNER = {"crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
@@ -498,6 +499,7 @@ def principal() -> int:
         for x in csv.DictReader(MATIERES_CSV.open(encoding="utf-8")):
             matieres[(x["matiere"], x["jour"], x["famille"])] = int(x["articles"])
     par_famille: dict[tuple, int] = {}
+    vus_familles = set(FAMILLES_VUS.read_text(encoding="utf-8").split()) if FAMILLES_VUS.exists() else set()
     if FAMILLES_CSV.exists():
         for x in csv.DictReader(FAMILLES_CSV.open(encoding="utf-8")):
             par_famille[(x["famille"], x["jour"])] = int(x["articles"])
@@ -537,13 +539,17 @@ def principal() -> int:
                     continue
                 n = 0
                 for a in arts:
+                    # 0.10.458 : compte par famille tenu à part (son propre registre d'empreintes), pour que les articles
+                    # déjà lus avant la création du compte soient comptés une fois, à leur date de publication
+                    if a["empreinte"] not in vus_familles:
+                        vus_familles.add(a["empreinte"])
+                        par_famille[(famille, a["jour"])] = par_famille.get((famille, a["jour"]), 0) + 1
                     if a["empreinte"] in vus:
                         continue
                     vus.add(a["empreinte"])
                     if famille in DEDOUBLONNER and reprise(empreinte_titre(a.get("titre")), a["jour"], titres):
                         reprises[famille] = reprises.get(famille, 0) + 1
                         continue
-                    par_famille[(famille, a["jour"])] = par_famille.get((famille, a["jour"]), 0) + 1
                     pays = detecter(a["texte"], motifs)
                     if famille in FAMILLES_MATIERES:
                         for m, rx in MATIERES.items():
@@ -609,6 +615,7 @@ def principal() -> int:
         for (p, j, fa), n in sorted(comptes.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
             w.writerow([p, j, fa, n])
     VUS.write_text("\n".join(sorted(vus)), encoding="utf-8")
+    FAMILLES_VUS.write_text("\n".join(sorted(vus_familles)), encoding="utf-8")
     with FAMILLES_CSV.open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["famille", "jour", "articles"])
