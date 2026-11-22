@@ -2,6 +2,9 @@
 # que nos fiches ne couvraient pas (dépôt lecteur-local). Compartiments seulement ; relations et ponts à établir sur sources.
 # 0.10.417 (2026-11-22, décision de l'auteur 3 h 46) : quatrième des « plus gros trous » : couche d'ozone, qualité de
 # l'air, plastiques, substances chimiques nouvelles, conventions et traités.
+# 0.10.434 (2026-11-22, remarque de l'auteur 6 h 03 : « un peu légère, à compléter ») : déchets ménagers, déchets
+# électroniques, eaux usées, pollution des sols, émissions et accords climatiques, droit et contentieux ; acteurs ;
+# relations et ponts. Identifiants d'origine gardés.
 theme: environnement-dechets
 nom: Environnement, pollutions et substances nouvelles
 declaration:
@@ -9,7 +12,8 @@ declaration:
     substances chimiques nouvelles (limite planétaire franchie selon Persson et al., 2022), la couche d'ozone et les traités
     qui les encadrent
   limites: dedans environnement en général, biodiversité, couche d'ozone, qualité de l'air, plastiques, substances chimiques,
-    conventions et traités ; dehors le climat (climat-extremes), les cycles (cycles-biogeochimiques), la forêt (foret-et-sols-vivants),
+    déchets ménagers et électroniques, eaux usées, pollution des sols, politiques et accords climatiques, droit et
+    contentieux de l'environnement, conventions et traités ; dehors le climat (climat-extremes), les cycles (cycles-biogeochimiques), la forêt (foret-et-sols-vivants),
     le corps (corps-humain), l'eau douce (eau-douce-potable), sauf par les ponts
   observateur: notre carte, regard extérieur ; termes relevés dans les étiquettes des flux RSS du bot (lecteur-local), émetteurs
     identifiés dans listes/emetteurs.txt ; aucune personne privée
@@ -25,6 +29,19 @@ compartiments:
   elements:
   - environnement
   - politiques environnementales
+  acteurs:
+  - nom: PNUE (Programme des Nations unies pour l'environnement)
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  - nom: une agence nationale de l'environnement
+    taille: méso
+    espace: pays
+    vitesse: mois
+    organisation: statut
+    facette: collectif
   niveau:
     espace: monde
     temps: années
@@ -37,7 +54,7 @@ compartiments:
   nom: Biodiversité
   organisation: animal
   elements:
-  - nature et biodiversité
+  - nature et biodiversité (détail dans la fiche biodiversite-sols)
   niveau:
     espace: monde
     temps: décennies
@@ -162,7 +179,157 @@ compartiments:
     vitesse: mois
     organisation: geopolitique
     facette: collectif
+- id: dechets_menagers
+  nom: Déchets ménagers et municipaux
+  organisation: technique
+  elements:
+  - 2,3 milliards de tonnes de déchets municipaux en 2023, 3,8 milliards attendus en 2050 ; coût direct de leur gestion
+    environ 252 milliards de dollars en 2020, jusqu'à 640 milliards par an en 2050 sans action (PNUE, Global Waste
+    Management Outlook 2024, 28 février 2024)
+  - décharges, brûlage à l'air libre, collecte inégale selon les pays
+  niveau:
+    espace: ville à monde
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces: *id001
+- id: dechets_electroniques
+  nom: Déchets électroniques
+  organisation: technique
+  elements:
+  - 62 millions de tonnes en 2022, dont 22,3 % collectés et recyclés de façon documentée ; 82 millions attendus en 2030
+    (Global E-waste Monitor 2024, UIT et UNITAR, 20 mars 2024)
+  - métaux récupérables (cuivre, or, terres rares) et substances toxiques
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: années
+    taille: macro
+  traces:
+  - source: Global E-waste Monitor (UIT, UNITAR ; données par pays)
+    statut: a_brancher
+- id: eaux_usees
+  nom: Eaux usées et pollution de l'eau
+  organisation: eau
+  elements:
+  - 42 % des eaux usées domestiques rejetées sans traitement sûr en 2022 (ONU-Eau, rapport 2024 sur l'indicateur 6.3.1)
+  - nitrates et phosphates agricoles, rejets industriels
+  niveau:
+    espace: bassin et pays
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - source: ONU-Eau, suivi de l'indicateur 6.3.1 (eaux usées traitées)
+    statut: a_brancher
+- id: pollution_sols
+  nom: Pollution des sols
+  organisation: sol_vivant
+  elements:
+  - surtout d'origine humaine - industrie, mines, déchets, pesticides et engrais, hydrocarbures ; polluants émergents
+    (médicaments, perturbateurs endocriniens, plastiques, déchets électroniques) ; aucune évaluation mondiale
+    systématique encore faite (FAO, Soil Pollution, a Hidden Reality, 2 mai 2018)
+  niveau:
+    espace: parcelle à pays
+    temps: décennies
+    vitesse: années
+    taille: micro à macro
+  traces: *id001
+- id: climat_politique
+  nom: Émissions et accords climatiques
+  organisation: convention
+  elements:
+  - émissions mondiales de gaz à effet de serre record en 2024, +2,3 % ; réchauffement attendu de 2,8 °C en 2100 avec les
+    politiques actuelles, 2,3 à 2,5 °C si les engagements nationaux sont tenus (PNUE, rapport sur l'écart des émissions
+    2025, 4 novembre 2025)
+  - COP30 à Belém (clôturée le 22 novembre 2025) - pas de feuille de route de sortie des énergies fossiles dans le texte
+    final ; appel à tripler le financement de l'adaptation d'ici 2035 (Carbon Brief)
+  niveau:
+    espace: monde
+    temps: décennies
+    vitesse: années (une COP par an)
+    taille: macro
+  traces:
+  - source: PNUE, rapport annuel sur l'écart des émissions
+    statut: a_brancher
+- id: droit_contentieux
+  nom: Droit et contentieux de l'environnement
+  organisation: convention
+  elements:
+  - avis consultatif de la Cour internationale de justice du 23 juillet 2025, rendu à l'unanimité - les États ont
+    l'obligation de prévenir les dommages importants à l'environnement et de coopérer contre le changement climatique ;
+    y manquer peut être un fait illicite ouvrant droit à réparation (ONU, UNRIC)
+  - procès climatiques contre des États et des entreprises
+  acteurs:
+  - nom: Cour internationale de justice
+    taille: macro
+    espace: monde
+    vitesse: années
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: pays et monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces: *id001
 relations:
+- de: dechets_menagers
+  vers: qualite_air
+  effet: '-'
+  delai: jours
+  force: moyenne
+  coupure: collecte et interdiction du brûlage
+  statut: a_verifier
+  texte: le brûlage à l'air libre des déchets dégrade la qualité de l'air (le compartiment cible lit ici sa qualité)
+- de: dechets_menagers
+  vers: pollution_sols
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: décharges contrôlées
+  statut: a_verifier
+  texte: les décharges non contrôlées polluent les sols
+- de: dechets_electroniques
+  vers: pollution_chimique
+  effet: +
+  delai: années
+  force: moyenne
+  coupure: recyclage encadré
+  statut: a_verifier
+  texte: le démantèlement informel des déchets électroniques libère métaux lourds et substances toxiques
+- de: pollution_chimique
+  vers: pollution_sols
+  effet: +
+  delai: années
+  force: forte
+  coupure: interdiction de la substance
+  statut: a_verifier
+  texte: pesticides, métaux et PFAS s'accumulent dans les sols
+- de: droit_contentieux
+  vers: climat_politique
+  effet: +
+  delai: années
+  force: inconnue
+  coupure: inconnue
+  statut: a_verifier
+  texte: l'avis de la CIJ et les procès climatiques poussent les États à relever leurs engagements
+- de: environnement
+  vers: dechets_menagers
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: des politiques publiques (collecte, recyclage, réduction à la source) font baisser les déchets non gérés
+- de: environnement
+  vers: eaux_usees
+  effet: '-'
+  delai: années
+  force: moyenne
+  coupure: budget des stations d'épuration
+  statut: a_verifier
+  texte: l'investissement dans l'épuration réduit les rejets non traités
 - de: traites
   vers: ozone
   effet: +
@@ -197,6 +364,31 @@ relations:
   statut: a_verifier
   texte: pesticides et substances persistantes pèsent sur le vivant
 ponts:
+- depuis: biodiversite
+  vers: biodiversite-sols:especes
+  nature: même sujet, détaillé dans la fiche biodiversité et sols vivants
+  type: meme
+- depuis: climat_politique
+  vers: climat-extremes:tendance
+  nature: le réchauffement, vu depuis le climat
+- depuis: climat_politique
+  vers: niveaux-de-base:composition_air
+  nature: la concentration des gaz à effet de serre
+- depuis: eaux_usees
+  vers: eau-douce-potable:qualite
+  nature: la qualité de l'eau douce
+- depuis: pollution_sols
+  vers: biodiversite-sols:sols_vivants
+  nature: la vie du sol touchée par les polluants
+- depuis: pollution_sols
+  vers: alimentation-mondiale:chimie_sols
+  nature: la chimie des sols cultivés
+- depuis: dechets_electroniques
+  vers: minerais-critiques:batteries
+  nature: le recyclage des métaux
+- depuis: droit_contentieux
+  vers: societe-droits:droits_humains
+  nature: le droit à un environnement sain
 - depuis: qualite_air
   vers: corps-humain:pollution
   nature: 'même phénomène : l''air pollué et le corps'
