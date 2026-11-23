@@ -126,3 +126,19 @@ class TestEValeur(unittest.TestCase):
         # mécanique pire : la mise reste nulle, l'e-valeur ne monte pas
         j3 = [{"id": str(i), "p_prend": "0.05" if i % 3 == 0 else "0.9"} for i in range(60)]
         self.assertLessEqual(m.e_valeur(j3, iss2)["e_max"], 1.0)
+
+
+class TestControles(unittest.TestCase):
+    def test_calibration_sous_ensembles_surprises(self):
+        j = [{"id": "GM-2027-01-04", "pays": "GM", "semaine": "2027-01-04", "p_prend": "0.2"},
+             {"id": "NI-2027-01-11", "pays": "NI", "semaine": "2027-01-11", "p_prend": "0.7"},
+             {"id": "NI-2027-01-18", "pays": "NI", "semaine": "2027-01-18", "p_prend": "0.3"}]
+        iss = [{"id": "GM-2027-01-04", "prend": "1", "constate_le": "2027-03-08"},
+               {"id": "NI-2027-01-11", "prend": "0", "constate_le": "2027-03-15"},
+               {"id": "NI-2027-01-18", "prend": "0", "constate_le": "2027-03-22"}]
+        c = m.controles(j, iss)
+        self.assertEqual(sum(t["n"] for t in c["calibration"]), 3)
+        self.assertIn("Europe", c["sous_ensembles"]["regions"])
+        self.assertIn("Afrique", c["sous_ensembles"]["regions"])
+        self.assertEqual(c["surprises"]["nombre"], 2)
+        self.assertEqual(m.controles(j, [])["calibration"], [])

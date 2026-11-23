@@ -52,7 +52,10 @@ ISSUES = REG / "mecanique-issues.csv"
 POIDS = REG / "mecanique-poids.json"
 SCORE = REG / "mecanique-score.json"
 CODES = Path("ecosystemes/codes-pays-fips.csv")
-VERSION = "0.10.466"
+VERSION = "0.10.468"
+# 0.10.468 (accord de l'auteur, 2026-11-23, 7 h 06 ; veille Munshi, ch. 36-37 : un modèle faux devient plus sûr de lui
+# à mesure que les données s'accumulent) : trois contrôles du modèle, affichés avec le score — calibration par tranches
+# de probabilité, sous-ensembles (régions, périodes : mécanisme reproductible ou cadre à déplacer), résidus (surprises).
 # 0.10.466 (accord de l'auteur, 2026-11-23, 5 h 42) : e-valeur, comparaison de la mécanique au taux de départ que l'on
 # peut regarder chaque semaine sans gonfler l'erreur (test par pari, Waudby-Smith et Ramdas, arXiv 2010.09686).
 # Préenregistré : seuil E_SEUIL = 20 (erreur 5 %) ; le franchir autorise à PROPOSER à l'auteur l'entrée de la mécanique
@@ -312,6 +315,58 @@ def e_valeur(journal: list[dict], issues: list[dict]) -> dict:
             "e_comparees": len(ordre)}
 
 
+TRANCHES = ((0.0, 0.25), (0.25, 0.35), (0.35, 0.5), (0.5, 1.01))
+
+
+def controles(journal: list[dict], issues: list[dict]) -> dict:
+    """Trois contrôles du modèle (veille Munshi, ch. 36-37), calculés sur les issues constatées.
+    - calibration : par tranche de probabilité annoncée, la part qui a réellement pris ;
+    - sous-ensembles : par région (ONU) et par moitié de période, la part qui a pris, la part annoncée, le Brier de la
+      mécanique et celui du taux de départ ; un écart qui change de signe d'un sous-ensemble à l'autre signale un cadre à
+      déplacer plutôt qu'un mécanisme reproductible ;
+    - résidus : les surprises (a pris alors qu'on annonçait moins de 25 %, s'est éteinte alors qu'on annonçait plus de
+      60 %), comptées par région ; un regroupement désigne un mécanisme manquant.
+    Aucun de ces contrôles ne décide de rien : ils s'affichent."""
+    region = {r["fips"]: r.get("region") or "?" for r in codes_complets()}
+    par_id = {r["id"]: r for r in journal}
+    cas = []
+    for i in sorted(issues, key=lambda r: (r["constate_le"], r["id"])):
+        r = par_id.get(i["id"])
+        if r:
+            cas.append({"p": float(r["p_prend"]), "y": int(i["prend"]), "region": region.get(r["pays"], "?"),
+                        "semaine": r["semaine"], "id": r["id"]})
+    out = {"calibration": [], "sous_ensembles": {}, "surprises": {"nombre": 0, "par_region": {}, "liste": []}}
+    if not cas:
+        return out
+    for a, b in TRANCHES:
+        t = [c for c in cas if a <= c["p"] < b]
+        if t:
+            out["calibration"].append({"tranche": f"{round(a * 100)}-{min(100, round(b * 100))} %", "n": len(t),
+                                       "annoncee": round(sum(c["p"] for c in t) / len(t), 3),
+                                       "observee": round(sum(c["y"] for c in t) / len(t), 3)})
+
+    def bloc(t):
+        return {"n": len(t), "annoncee": round(sum(c["p"] for c in t) / len(t), 3),
+                "observee": round(sum(c["y"] for c in t) / len(t), 3),
+                "brier": round(sum((c["p"] - c["y"]) ** 2 for c in t) / len(t), 4),
+                "brier_taux_depart": round(sum((TAUX_DEPART - c["y"]) ** 2 for c in t) / len(t), 4)}
+    regs = {}
+    for c in cas:
+        regs.setdefault(c["region"], []).append(c)
+    out["sous_ensembles"]["regions"] = {k: bloc(v) for k, v in sorted(regs.items())}
+    sem = sorted({c["semaine"] for c in cas})
+    if len(sem) >= 2:
+        mi = sem[len(sem) // 2]
+        out["sous_ensembles"]["periodes"] = {f"avant le {mi}": bloc([c for c in cas if c["semaine"] < mi]),
+                                             f"à partir du {mi}": bloc([c for c in cas if c["semaine"] >= mi])}
+    sur = [c for c in cas if (c["y"] == 1 and c["p"] < 0.25) or (c["y"] == 0 and c["p"] > 0.6)]
+    out["surprises"]["nombre"] = len(sur)
+    for c in sur:
+        out["surprises"]["par_region"][c["region"]] = out["surprises"]["par_region"].get(c["region"], 0) + 1
+    out["surprises"]["liste"] = [{"id": c["id"], "p": c["p"], "prend": c["y"]} for c in sur[-20:]]
+    return out
+
+
 def score(journal: list[dict], issues: list[dict]) -> dict:
     p = {r["id"]: float(r["p_prend"]) for r in journal}
     res = [(p[r["id"]], int(r["prend"])) for r in issues if r["id"] in p]
@@ -322,6 +377,7 @@ def score(journal: list[dict], issues: list[dict]) -> dict:
         out["brier_taux_depart"] = round(sum((TAUX_DEPART - y) ** 2 for _, y in res) / len(res), 4)
         out["part_prend"] = round(sum(y for _, y in res) / len(res), 3)
     out.update(e_valeur(journal, issues))
+    out["controles"] = controles(journal, issues)
     return out
 
 

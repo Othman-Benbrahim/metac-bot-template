@@ -1,252 +1,251 @@
-# Codes pays FIPS 10-4 (GDELT) -> ISO 3166-1 alpha-2 (Wikidata, elections.csv) et alpha-3 (Banque mondiale) ; nom_fr = nom employé par lecteur-local (espace « pays:… », listes/valides.txt). Source : datasets/country-codes (GitHub, licence ODC PDDL), copie du 2026-11-22 (bot 0.10.464-465).
-fips,iso2,iso3,nom,nom_fr
-,AX,ALA,Åland Islands,
-AA,AW,ABW,Aruba,
-AC,AG,ATG,Antigua & Barbuda,
-AE,AE,ARE,United Arab Emirates,Émirats arabes unis
-AF,AF,AFG,Afghanistan,Afghanistan
-AG,DZ,DZA,Algeria,
-AJ,AZ,AZE,Azerbaijan,Azerbaïdjan
-AL,AL,ALB,Albania,Albanie
-AM,AM,ARM,Armenia,Arménie
-AN,AD,AND,Andorra,
-AO,AO,AGO,Angola,
-AQ,AS,ASM,American Samoa,
-AR,AR,ARG,Argentina,Argentine
-AS,AU,AUS,Australia,Australie
-AU,AT,AUT,Austria,
-AV,AI,AIA,Anguilla,
-AY,AQ,ATA,Antarctica,
-BA,BH,BHR,Bahrain,
-BB,BB,BRB,Barbados,
-BC,BW,BWA,Botswana,Botswana
-BD,BM,BMU,Bermuda,
-BE,BE,BEL,Belgium,
-BF,BS,BHS,Bahamas,
-BG,BD,BGD,Bangladesh,Bangladesh
-BH,BZ,BLZ,Belize,
-BK,BA,BIH,Bosnia,Bosnie-Herzégovine
-BL,BO,BOL,Bolivia,Bolivie
-BM,MM,MMR,Myanmar,Birmanie
-BN,BJ,BEN,Benin,Bénin
-BO,BY,BLR,Belarus,Biélorussie
-BP,SB,SLB,Solomon Islands,
-BR,BR,BRA,Brazil,Brésil
-BT,BT,BTN,Bhutan,Bhoutan
-BU,BG,BGR,Bulgaria,Bulgarie
-BV,BV,BVT,Bouvet Island,
-BX,BN,BRN,Brunei,
-BY,BI,BDI,Burundi,Burundi
-CA,CA,CAN,Canada,Canada
-CB,KH,KHM,Cambodia,Cambodge
-CD,TD,TCD,Chad,
-CE,LK,LKA,Sri Lanka,Sri Lanka
-CF,CG,COG,Congo - Brazzaville,
-CG,CD,COD,Congo - Kinshasa,République démocratique du Congo
-CH,CN,CHN,China,Chine
-CI,CL,CHL,Chile,
-CJ,KY,CYM,Cayman Islands,
-CK,CC,CCK,Cocos Islands,
-CM,CM,CMR,Cameroon,Cameroun
-CN,KM,COM,Comoros,Comores
-CO,CO,COL,Colombia,Colombie
-CQ,MP,MNP,Northern Mariana Islands,
-CS,CR,CRI,Costa Rica,
-CT,CF,CAF,Central African Republic,
-CU,CU,CUB,Cuba,
-CV,CV,CPV,Cape Verde,
-CW,CK,COK,Cook Islands,
-CY,CY,CYP,Cyprus,Chypre
-DA,DK,DNK,Denmark,
-DJ,DJ,DJI,Djibouti,
-DO,DM,DMA,Dominica,
-DR,DO,DOM,Dominican Republic,République dominicaine
-EC,EC,ECU,Ecuador,Équateur
-EG,EG,EGY,Egypt,Égypte
-EI,IE,IRL,Ireland,
-EK,GQ,GNQ,Equatorial Guinea,
-EN,EE,EST,Estonia,
-ER,ER,ERI,Eritrea,
-ES,SV,SLV,El Salvador,Salvador
-ET,ET,ETH,Ethiopia,Éthiopie
-EZ,CZ,CZE,Czechia,Tchéquie
-FG,GF,GUF,French Guiana,
-FI,FI,FIN,Finland,
-FJ,FJ,FJI,Fiji,Fidji
-FK,FK,FLK,Falkland Islands,
-FM,FM,FSM,Micronesia,
-FO,FO,FRO,Faroe Islands,
-FP,PF,PYF,French Polynesia,
-FR,FR,FRA,France,France
-FS,TF,ATF,French Southern Territories,
-GA,GM,GMB,Gambia,Gambie
-GB,GA,GAB,Gabon,Gabon
-GG,GE,GEO,Georgia,Géorgie
-GH,GH,GHA,Ghana,Ghana
-GI,GI,GIB,Gibraltar,
-GJ,GD,GRD,Grenada,Grenade
-GK,GG,GGY,Guernsey,
-GL,GL,GRL,Greenland,
-GM,DE,DEU,Germany,Allemagne
-GP,GP,GLP,Guadeloupe,
-GQ,GU,GUM,Guam,
-GR,GR,GRC,Greece,Grèce
-GT,GT,GTM,Guatemala,Guatemala
-GV,GN,GIN,Guinea,Guinée
-GY,GY,GUY,Guyana,
-GZWE,PS,PSE,Palestine,Palestine
-HA,HT,HTI,Haiti,Haïti
-HK,HK,HKG,Hong Kong,Hong Kong
-HM,HM,HMD,Heard & McDonald Islands,
-HO,HN,HND,Honduras,
-HR,HR,HRV,Croatia,Croatie
-HU,HU,HUN,Hungary,Hongrie
-IC,IS,ISL,Iceland,
-ID,ID,IDN,Indonesia,Indonésie
-IM,IM,IMN,Isle of Man,
-IN,IN,IND,India,Inde
-IO,IO,IOT,British Indian Ocean Territory,
-IR,IR,IRN,Iran,Iran
-IS,IL,ISR,Israel,Israël
-IT,IT,ITA,Italy,Italie
-IV,CI,CIV,Côte d’Ivoire,Côte d'Ivoire
-IZ,IQ,IRQ,Iraq,Irak
-JA,JP,JPN,Japan,Japon
-JE,JE,JEY,Jersey,
-JM,JM,JAM,Jamaica,Jamaïque
-JO,JO,JOR,Jordan,Jordanie
-KE,KE,KEN,Kenya,Kenya
-KG,KG,KGZ,Kyrgyzstan,Kirghizistan
-KN,KP,PRK,North Korea,Corée du Nord
-KR,KI,KIR,Kiribati,Kiribati
-KS,KR,KOR,South Korea,Corée du Sud
-KT,CX,CXR,Christmas Island,
-KU,KW,KWT,Kuwait,
-KV,XK,XKX,Kosovo,Kosovo
-KZ,KZ,KAZ,Kazakhstan,Kazakhstan
-LA,LA,LAO,Laos,
-LE,LB,LBN,Lebanon,Liban
-LG,LV,LVA,Latvia,
-LH,LT,LTU,Lithuania,
-LI,LR,LBR,Liberia,
-LO,SK,SVK,Slovakia,
-LS,LI,LIE,Liechtenstein,
-LT,LS,LSO,Lesotho,
-LU,LU,LUX,Luxembourg,
-LY,LY,LBY,Libya,
-MA,MG,MDG,Madagascar,Madagascar
-MB,MQ,MTQ,Martinique,
-MC,MO,MAC,Macao,Macao
-MD,MD,MDA,Moldova,Moldavie
-MF,YT,MYT,Mayotte,
-MG,MN,MNG,Mongolia,Mongolie
-MH,MS,MSR,Montserrat,
-MI,MW,MWI,Malawi,
-MJ,ME,MNE,Montenegro,Monténégro
-MK,MK,MKD,North Macedonia,Macédoine du Nord
-ML,ML,MLI,Mali,Mali
-MN,MC,MCO,Monaco,
-MO,MA,MAR,Morocco,Maroc
-MP,MU,MUS,Mauritius,
-MR,MR,MRT,Mauritania,
-MT,MT,MLT,Malta,
-MU,OM,OMN,Oman,Oman
-MV,MV,MDV,Maldives,
-MX,MX,MEX,Mexico,Mexique
-MY,MY,MYS,Malaysia,Malaisie
-MZ,MZ,MOZ,Mozambique,Mozambique
-NC,NC,NCL,New Caledonia,
-NE,NU,NIU,Niue,
-NF,NF,NFK,Norfolk Island,
-NG,NE,NER,Niger,Niger
-NH,VU,VUT,Vanuatu,Vanuatu
-NI,NG,NGA,Nigeria,Nigeria
-NL,BQ,BES,Caribbean Netherlands,
-NL,NL,NLD,Netherlands,Pays-Bas
-NN,SX,SXM,Sint Maarten,
-NO,NO,NOR,Norway,Norvège
-NP,NP,NPL,Nepal,Népal
-NR,NR,NRU,Nauru,
-NS,SR,SUR,Suriname,
-NU,NI,NIC,Nicaragua,
-NZ,NZ,NZL,New Zealand,Nouvelle-Zélande
-OD,SS,SSD,South Sudan,
-PA,PY,PRY,Paraguay,
-PC,PN,PCN,Pitcairn,
-PE,PE,PER,Peru,Pérou
-PK,PK,PAK,Pakistan,Pakistan
-PL,PL,POL,Poland,Pologne
-PM,PA,PAN,Panama,
-PO,PT,PRT,Portugal,Portugal
-PP,PG,PNG,Papua New Guinea,Papouasie-Nouvelle-Guinée
-PS,PW,PLW,Palau,Palaos
-PU,GW,GNB,Guinea-Bissau,
-QA,QA,QAT,Qatar,Qatar
-RE,RE,REU,Réunion,
-RIKV,RS,SRB,Serbia,Serbie
-RM,MH,MHL,Marshall Islands,
-RN,MF,MAF,St. Martin,
-RO,RO,ROU,Romania,
-RP,PH,PHL,Philippines,Philippines
-RQ,PR,PRI,Puerto Rico,
-RS,RU,RUS,Russia,Russie
-RW,RW,RWA,Rwanda,Rwanda
-SA,SA,SAU,Saudi Arabia,Arabie saoudite
-SB,PM,SPM,St. Pierre & Miquelon,
-SC,KN,KNA,St. Kitts & Nevis,
-SE,SC,SYC,Seychelles,
-SF,ZA,ZAF,South Africa,
-SG,SN,SEN,Senegal,Sénégal
-SH,SH,SHN,St. Helena,
-SI,SI,SVN,Slovenia,Slovénie
-SL,SL,SLE,Sierra Leone,
-SM,SM,SMR,San Marino,
-SN,SG,SGP,Singapore,
-SO,SO,SOM,Somalia,
-SP,ES,ESP,Spain,Espagne
-ST,LC,LCA,St. Lucia,
-SU,SD,SDN,Sudan,Soudan
-SVJN,SJ,SJM,Svalbard & Jan Mayen,
-SW,SE,SWE,Sweden,
-SX,GS,SGS,South Georgia & South Sandwich Islands,
-SY,SY,SYR,Syria,Syrie
-SZ,CH,CHE,Switzerland,Suisse
-TB,BL,BLM,St. Barthélemy,
-TD,TT,TTO,Trinidad & Tobago,Trinité-et-Tobago
-TH,TH,THA,Thailand,Thaïlande
-TI,TJ,TJK,Tajikistan,Tadjikistan
-TK,TC,TCA,Turks & Caicos Islands,
-TL,TK,TKL,Tokelau,
-TN,TO,TON,Tonga,
-TO,TG,TGO,Togo,Togo
-TP,ST,STP,São Tomé & Príncipe,
-TS,TN,TUN,Tunisia,Tunisie
-TT,TL,TLS,Timor-Leste,
-TU,TR,TUR,Türkiye,Turquie
-TV,TV,TUV,Tuvalu,Tuvalu
-TW,TW,TWN,Taiwan,Taïwan
-TX,TM,TKM,Turkmenistan,Turkménistan
-TZ,TZ,TZA,Tanzania,Tanzanie
-UC,CW,CUW,Curaçao,
-UG,UG,UGA,Uganda,Ouganda
-UK,GB,GBR,UK,Royaume-Uni
-UP,UA,UKR,Ukraine,Ukraine
-US,US,USA,US,États-Unis
-UV,BF,BFA,Burkina Faso,Burkina Faso
-UY,UY,URY,Uruguay,Uruguay
-UZ,UZ,UZB,Uzbekistan,Ouzbékistan
-VC,VC,VCT,St. Vincent & Grenadines,
-VE,VE,VEN,Venezuela,Venezuela
-VI,VG,VGB,British Virgin Islands,
-VM,VN,VNM,Vietnam,
-VQ,VI,VIR,U.S. Virgin Islands,
-VT,VA,VAT,Vatican City,
-WA,NA,NAM,Namibia,
-WF,WF,WLF,Wallis & Futuna,
-WI,EH,ESH,Western Sahara,
-WS,WS,WSM,Samoa,Samoa
-WZ,SZ,SWZ,Eswatini,
-YM,YE,YEM,Yemen,Yémen
-ZA,ZM,ZMB,Zambia,
-ZI,ZW,ZWE,Zimbabwe,
-a,UM,UMI,U.S. Outlying Islands,
+# Codes pays FIPS 10-4 (GDELT) -> ISO 3166-1 alpha-2 (Wikidata, elections.csv) et alpha-3 (Banque mondiale) ; region = région ONU (M49) ; nom_fr = nom employé par lecteur-local (espace « pays:… », listes/valides.txt). Source : datasets/country-codes (GitHub, licence ODC PDDL), copie du 2026-11-22 (bot 0.10.464-465).
+fips,iso2,iso3,nom,nom_fr,region
+AA,AW,ABW,Aruba,,Amériques
+AC,AG,ATG,Antigua & Barbuda,,Amériques
+AE,AE,ARE,United Arab Emirates,Émirats arabes unis,Asie
+AF,AF,AFG,Afghanistan,Afghanistan,Asie
+AG,DZ,DZA,Algeria,,Afrique
+AJ,AZ,AZE,Azerbaijan,Azerbaïdjan,Asie
+AL,AL,ALB,Albania,Albanie,Europe
+AM,AM,ARM,Armenia,Arménie,Asie
+AN,AD,AND,Andorra,,Europe
+AO,AO,AGO,Angola,,Afrique
+AQ,AS,ASM,American Samoa,,Océanie
+AR,AR,ARG,Argentina,Argentine,Amériques
+AS,AU,AUS,Australia,Australie,Océanie
+AU,AT,AUT,Austria,,Europe
+AV,AI,AIA,Anguilla,,Amériques
+AY,AQ,ATA,Antarctica,,
+BA,BH,BHR,Bahrain,,Asie
+BB,BB,BRB,Barbados,,Amériques
+BC,BW,BWA,Botswana,Botswana,Afrique
+BD,BM,BMU,Bermuda,,Amériques
+BE,BE,BEL,Belgium,,Europe
+BF,BS,BHS,Bahamas,,Amériques
+BG,BD,BGD,Bangladesh,Bangladesh,Asie
+BH,BZ,BLZ,Belize,,Amériques
+BK,BA,BIH,Bosnia,Bosnie-Herzégovine,Europe
+BL,BO,BOL,Bolivia,Bolivie,Amériques
+BM,MM,MMR,Myanmar,Birmanie,Asie
+BN,BJ,BEN,Benin,Bénin,Afrique
+BO,BY,BLR,Belarus,Biélorussie,Europe
+BP,SB,SLB,Solomon Islands,,Océanie
+BR,BR,BRA,Brazil,Brésil,Amériques
+BT,BT,BTN,Bhutan,Bhoutan,Asie
+BU,BG,BGR,Bulgaria,Bulgarie,Europe
+BV,BV,BVT,Bouvet Island,,Amériques
+BX,BN,BRN,Brunei,,Asie
+BY,BI,BDI,Burundi,Burundi,Afrique
+CA,CA,CAN,Canada,Canada,Amériques
+CB,KH,KHM,Cambodia,Cambodge,Asie
+CD,TD,TCD,Chad,,Afrique
+CE,LK,LKA,Sri Lanka,Sri Lanka,Asie
+CF,CG,COG,Congo - Brazzaville,,Afrique
+CG,CD,COD,Congo - Kinshasa,République démocratique du Congo,Afrique
+CH,CN,CHN,China,Chine,Asie
+CI,CL,CHL,Chile,,Amériques
+CJ,KY,CYM,Cayman Islands,,Amériques
+CK,CC,CCK,Cocos Islands,,Océanie
+CM,CM,CMR,Cameroon,Cameroun,Afrique
+CN,KM,COM,Comoros,Comores,Afrique
+CO,CO,COL,Colombia,Colombie,Amériques
+CQ,MP,MNP,Northern Mariana Islands,,Océanie
+CS,CR,CRI,Costa Rica,,Amériques
+CT,CF,CAF,Central African Republic,,Afrique
+CU,CU,CUB,Cuba,,Amériques
+CV,CV,CPV,Cape Verde,,Afrique
+CW,CK,COK,Cook Islands,,Océanie
+CY,CY,CYP,Cyprus,Chypre,Asie
+DA,DK,DNK,Denmark,,Europe
+DJ,DJ,DJI,Djibouti,,Afrique
+DO,DM,DMA,Dominica,,Amériques
+DR,DO,DOM,Dominican Republic,République dominicaine,Amériques
+EC,EC,ECU,Ecuador,Équateur,Amériques
+EG,EG,EGY,Egypt,Égypte,Afrique
+EI,IE,IRL,Ireland,,Europe
+EK,GQ,GNQ,Equatorial Guinea,,Afrique
+EN,EE,EST,Estonia,,Europe
+ER,ER,ERI,Eritrea,,Afrique
+ES,SV,SLV,El Salvador,Salvador,Amériques
+ET,ET,ETH,Ethiopia,Éthiopie,Afrique
+EZ,CZ,CZE,Czechia,Tchéquie,Europe
+FG,GF,GUF,French Guiana,,Amériques
+FI,FI,FIN,Finland,,Europe
+FJ,FJ,FJI,Fiji,Fidji,Océanie
+FK,FK,FLK,Falkland Islands,,Amériques
+FM,FM,FSM,Micronesia,,Océanie
+FO,FO,FRO,Faroe Islands,,Europe
+FP,PF,PYF,French Polynesia,,Océanie
+FR,FR,FRA,France,France,Europe
+FS,TF,ATF,French Southern Territories,,Afrique
+GA,GM,GMB,Gambia,Gambie,Afrique
+GB,GA,GAB,Gabon,Gabon,Afrique
+GG,GE,GEO,Georgia,Géorgie,Asie
+GH,GH,GHA,Ghana,Ghana,Afrique
+GI,GI,GIB,Gibraltar,,Europe
+GJ,GD,GRD,Grenada,Grenade,Amériques
+GK,GG,GGY,Guernsey,,Europe
+GL,GL,GRL,Greenland,,Amériques
+GM,DE,DEU,Germany,Allemagne,Europe
+GP,GP,GLP,Guadeloupe,,Amériques
+GQ,GU,GUM,Guam,,Océanie
+GR,GR,GRC,Greece,Grèce,Europe
+GT,GT,GTM,Guatemala,Guatemala,Amériques
+GV,GN,GIN,Guinea,Guinée,Afrique
+GY,GY,GUY,Guyana,,Amériques
+GZWE,PS,PSE,Palestine,Palestine,Asie
+HA,HT,HTI,Haiti,Haïti,Amériques
+HK,HK,HKG,Hong Kong,Hong Kong,Asie
+HM,HM,HMD,Heard & McDonald Islands,,Océanie
+HO,HN,HND,Honduras,,Amériques
+HR,HR,HRV,Croatia,Croatie,Europe
+HU,HU,HUN,Hungary,Hongrie,Europe
+IC,IS,ISL,Iceland,,Europe
+ID,ID,IDN,Indonesia,Indonésie,Asie
+IM,IM,IMN,Isle of Man,,Europe
+IN,IN,IND,India,Inde,Asie
+IO,IO,IOT,British Indian Ocean Territory,,Afrique
+IR,IR,IRN,Iran,Iran,Asie
+IS,IL,ISR,Israel,Israël,Asie
+IT,IT,ITA,Italy,Italie,Europe
+IV,CI,CIV,Côte d’Ivoire,Côte d'Ivoire,Afrique
+IZ,IQ,IRQ,Iraq,Irak,Asie
+JA,JP,JPN,Japan,Japon,Asie
+JE,JE,JEY,Jersey,,Europe
+JM,JM,JAM,Jamaica,Jamaïque,Amériques
+JO,JO,JOR,Jordan,Jordanie,Asie
+KE,KE,KEN,Kenya,Kenya,Afrique
+KG,KG,KGZ,Kyrgyzstan,Kirghizistan,Asie
+KN,KP,PRK,North Korea,Corée du Nord,Asie
+KR,KI,KIR,Kiribati,Kiribati,Océanie
+KS,KR,KOR,South Korea,Corée du Sud,Asie
+KT,CX,CXR,Christmas Island,,Océanie
+KU,KW,KWT,Kuwait,,Asie
+KV,XK,XKX,Kosovo,Kosovo,Europe
+KZ,KZ,KAZ,Kazakhstan,Kazakhstan,Asie
+LA,LA,LAO,Laos,,Asie
+LE,LB,LBN,Lebanon,Liban,Asie
+LG,LV,LVA,Latvia,,Europe
+LH,LT,LTU,Lithuania,,Europe
+LI,LR,LBR,Liberia,,Afrique
+LO,SK,SVK,Slovakia,,Europe
+LS,LI,LIE,Liechtenstein,,Europe
+LT,LS,LSO,Lesotho,,Afrique
+LU,LU,LUX,Luxembourg,,Europe
+LY,LY,LBY,Libya,,Afrique
+MA,MG,MDG,Madagascar,Madagascar,Afrique
+MB,MQ,MTQ,Martinique,,Amériques
+MC,MO,MAC,Macao,Macao,Asie
+MD,MD,MDA,Moldova,Moldavie,Europe
+MF,YT,MYT,Mayotte,,Afrique
+MG,MN,MNG,Mongolia,Mongolie,Asie
+MH,MS,MSR,Montserrat,,Amériques
+MI,MW,MWI,Malawi,,Afrique
+MJ,ME,MNE,Montenegro,Monténégro,Europe
+MK,MK,MKD,North Macedonia,Macédoine du Nord,Europe
+ML,ML,MLI,Mali,Mali,Afrique
+MN,MC,MCO,Monaco,,Europe
+MO,MA,MAR,Morocco,Maroc,Afrique
+MP,MU,MUS,Mauritius,,Afrique
+MR,MR,MRT,Mauritania,,Afrique
+MT,MT,MLT,Malta,,Europe
+MU,OM,OMN,Oman,Oman,Asie
+MV,MV,MDV,Maldives,,Asie
+MX,MX,MEX,Mexico,Mexique,Amériques
+MY,MY,MYS,Malaysia,Malaisie,Asie
+MZ,MZ,MOZ,Mozambique,Mozambique,Afrique
+NC,NC,NCL,New Caledonia,,Océanie
+NE,NU,NIU,Niue,,Océanie
+NF,NF,NFK,Norfolk Island,,Océanie
+NG,NE,NER,Niger,Niger,Afrique
+NH,VU,VUT,Vanuatu,Vanuatu,Océanie
+NI,NG,NGA,Nigeria,Nigeria,Afrique
+NL,BQ,BES,Caribbean Netherlands,,Amériques
+NL,NL,NLD,Netherlands,Pays-Bas,Europe
+NN,SX,SXM,Sint Maarten,,Amériques
+NO,NO,NOR,Norway,Norvège,Europe
+NP,NP,NPL,Nepal,Népal,Asie
+NR,NR,NRU,Nauru,,Océanie
+NS,SR,SUR,Suriname,,Amériques
+NU,NI,NIC,Nicaragua,,Amériques
+NZ,NZ,NZL,New Zealand,Nouvelle-Zélande,Océanie
+OD,SS,SSD,South Sudan,,Afrique
+PA,PY,PRY,Paraguay,,Amériques
+PC,PN,PCN,Pitcairn,,Océanie
+PE,PE,PER,Peru,Pérou,Amériques
+PK,PK,PAK,Pakistan,Pakistan,Asie
+PL,PL,POL,Poland,Pologne,Europe
+PM,PA,PAN,Panama,,Amériques
+PO,PT,PRT,Portugal,Portugal,Europe
+PP,PG,PNG,Papua New Guinea,Papouasie-Nouvelle-Guinée,Océanie
+PS,PW,PLW,Palau,Palaos,Océanie
+PU,GW,GNB,Guinea-Bissau,,Afrique
+QA,QA,QAT,Qatar,Qatar,Asie
+RE,RE,REU,Réunion,,Afrique
+RIKV,RS,SRB,Serbia,Serbie,Europe
+RM,MH,MHL,Marshall Islands,,Océanie
+RN,MF,MAF,St. Martin,,Amériques
+RO,RO,ROU,Romania,,Europe
+RP,PH,PHL,Philippines,Philippines,Asie
+RQ,PR,PRI,Puerto Rico,,Amériques
+RS,RU,RUS,Russia,Russie,Europe
+RW,RW,RWA,Rwanda,Rwanda,Afrique
+SA,SA,SAU,Saudi Arabia,Arabie saoudite,Asie
+SB,PM,SPM,St. Pierre & Miquelon,,Amériques
+SC,KN,KNA,St. Kitts & Nevis,,Amériques
+SE,SC,SYC,Seychelles,,Afrique
+SF,ZA,ZAF,South Africa,,Afrique
+SG,SN,SEN,Senegal,Sénégal,Afrique
+SH,SH,SHN,St. Helena,,Afrique
+SI,SI,SVN,Slovenia,Slovénie,Europe
+SL,SL,SLE,Sierra Leone,,Afrique
+SM,SM,SMR,San Marino,,Europe
+SN,SG,SGP,Singapore,,Asie
+SO,SO,SOM,Somalia,,Afrique
+SP,ES,ESP,Spain,Espagne,Europe
+ST,LC,LCA,St. Lucia,,Amériques
+SU,SD,SDN,Sudan,Soudan,Afrique
+SVJN,SJ,SJM,Svalbard & Jan Mayen,,Europe
+SW,SE,SWE,Sweden,,Europe
+SX,GS,SGS,South Georgia & South Sandwich Islands,,Amériques
+SY,SY,SYR,Syria,Syrie,Asie
+SZ,CH,CHE,Switzerland,Suisse,Europe
+TB,BL,BLM,St. Barthélemy,,Amériques
+TD,TT,TTO,Trinidad & Tobago,Trinité-et-Tobago,Amériques
+TH,TH,THA,Thailand,Thaïlande,Asie
+TI,TJ,TJK,Tajikistan,Tadjikistan,Asie
+TK,TC,TCA,Turks & Caicos Islands,,Amériques
+TL,TK,TKL,Tokelau,,Océanie
+TN,TO,TON,Tonga,,Océanie
+TO,TG,TGO,Togo,Togo,Afrique
+TP,ST,STP,São Tomé & Príncipe,,Afrique
+TS,TN,TUN,Tunisia,Tunisie,Afrique
+TT,TL,TLS,Timor-Leste,,Asie
+TU,TR,TUR,Türkiye,Turquie,Asie
+TV,TV,TUV,Tuvalu,Tuvalu,Océanie
+TW,TW,TWN,Taiwan,Taïwan,Asie
+TX,TM,TKM,Turkmenistan,Turkménistan,Asie
+TZ,TZ,TZA,Tanzania,Tanzanie,Afrique
+UC,CW,CUW,Curaçao,,Amériques
+UG,UG,UGA,Uganda,Ouganda,Afrique
+UK,GB,GBR,UK,Royaume-Uni,Europe
+UP,UA,UKR,Ukraine,Ukraine,Europe
+US,US,USA,US,États-Unis,Amériques
+UV,BF,BFA,Burkina Faso,Burkina Faso,Afrique
+UY,UY,URY,Uruguay,Uruguay,Amériques
+UZ,UZ,UZB,Uzbekistan,Ouzbékistan,Asie
+VC,VC,VCT,St. Vincent & Grenadines,,Amériques
+VE,VE,VEN,Venezuela,Venezuela,Amériques
+VI,VG,VGB,British Virgin Islands,,Amériques
+VM,VN,VNM,Vietnam,,Asie
+VQ,VI,VIR,U.S. Virgin Islands,,Amériques
+VT,VA,VAT,Vatican City,,Europe
+WA,NA,NAM,Namibia,,Afrique
+WF,WF,WLF,Wallis & Futuna,,Océanie
+WI,EH,ESH,Western Sahara,,Afrique
+WS,WS,WSM,Samoa,Samoa,Océanie
+WZ,SZ,SWZ,Eswatini,,Afrique
+YM,YE,YEM,Yemen,Yémen,Asie
+ZA,ZM,ZMB,Zambia,,Afrique
+ZI,ZW,ZWE,Zimbabwe,,Afrique
+a,UM,UMI,U.S. Outlying Islands,,Océanie
