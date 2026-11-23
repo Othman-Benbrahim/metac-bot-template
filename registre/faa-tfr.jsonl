@@ -100,3 +100,5 @@
 {"notam": "6/9141", "type": "VIP", "centre": "ZDC", "etat": "VA", "description": "Middleburg, VA, Saturday, November 21, 2026 through Sunday, November 22, 2026 Local", "cree_le": "11/20/2026", "vu_le": "2026-11-21"}
 {"notam": "6/9306", "type": "HAZARDS", "centre": "ZDC", "etat": "VA", "description": "20NM W LEXINGTON, VA, Sunday, November 22, 2026 through Sunday, November 29, 2026 UTC", "cree_le": "11/21/2026", "vu_le": "2026-11-22"}
 {"notam": "6/9276", "type": "SECURITY", "centre": "ZJX", "etat": "FL", "description": "MAYPORT, FL, Monday, November 23, 2026 through Thursday, November 26, 2026 Local", "cree_le": "11/21/2026", "vu_le": "2026-11-22"}
+{"notam": "6/9338", "type": "AIR SHOWS/SPORTS", "centre": "ZDC", "etat": "NC", "description": "New Bern, NC, Saturday, November 28, 2026 UTC", "cree_le": "11/22/2026", "vu_le": "2026-11-23"}
+{"notam": "6/9335", "type": "VIP", "centre": "ZMA", "etat": "FL", "description": "West Palm Beach, FL, Tuesday, November 24, 2026 through Sunday, November 29, 2026 Local", "cree_le": "11/22/2026", "vu_le": "2026-11-23"}
