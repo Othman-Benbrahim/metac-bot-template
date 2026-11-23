@@ -1,0 +1,3781 @@
+{
+ "un_monde": {
+  "titre": "ONU Info (UN News), toutes les nouvelles",
+  "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
+  "lu_le": "2026-11-23T19:22Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_afrique": {
+  "titre": "ONU Info, Afrique",
+  "url": "https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml",
+  "lu_le": "2026-11-23T19:22Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_ameriques": {
+  "titre": "ONU Info, Amériques",
+  "url": "https://news.un.org/feed/subscribe/en/news/region/americas/feed/rss.xml",
+  "lu_le": "2026-11-23T19:22Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_asie": {
+  "titre": "ONU Info, Asie-Pacifique",
+  "url": "https://news.un.org/feed/subscribe/en/news/region/asia-pacific/feed/rss.xml",
+  "lu_le": "2026-11-23T19:23Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_moyen_orient": {
+  "titre": "ONU Info, Moyen-Orient",
+  "url": "https://news.un.org/feed/subscribe/en/news/region/middle-east/feed/rss.xml",
+  "lu_le": "2026-11-23T19:23Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_europe": {
+  "titre": "ONU Info, Europe",
+  "url": "https://news.un.org/feed/subscribe/en/news/region/europe/feed/rss.xml",
+  "lu_le": "2026-11-23T19:23Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_climat": {
+  "titre": "ONU Info, climat et environnement",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/climate-change/feed/rss.xml",
+  "lu_le": "2026-11-23T19:24Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_sante": {
+  "titre": "ONU Info, santé",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/health/feed/rss.xml",
+  "lu_le": "2026-11-23T19:24Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_humanitaire": {
+  "titre": "ONU Info, aide humanitaire",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml",
+  "lu_le": "2026-11-23T19:24Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_paix": {
+  "titre": "ONU Info, paix et sécurité",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml",
+  "lu_le": "2026-11-23T19:24Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_economie": {
+  "titre": "ONU Info, développement économique",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/economic-development/feed/rss.xml",
+  "lu_le": "2026-11-23T19:25Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_droits": {
+  "titre": "ONU Info, droits humains",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/human-rights/feed/rss.xml",
+  "lu_le": "2026-11-23T19:25Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_migrants": {
+  "titre": "ONU Info, migrants et réfugiés",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml",
+  "lu_le": "2026-11-23T19:25Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_droit": {
+  "titre": "ONU Info, droit et prévention du crime",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/law-and-crime-prevention/feed/rss.xml",
+  "lu_le": "2026-11-23T19:25Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_femmes": {
+  "titre": "ONU Info, femmes",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/women/feed/rss.xml",
+  "lu_le": "2026-11-23T19:26Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_culture": {
+  "titre": "ONU Info, culture et éducation",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/culture-and-education/feed/rss.xml",
+  "lu_le": "2026-11-23T19:26Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "un_odd": {
+  "titre": "ONU Info, objectifs de développement durable",
+  "url": "https://news.un.org/feed/subscribe/en/news/topic/sdgs/feed/rss.xml",
+  "lu_le": "2026-11-23T19:26Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "bbc_afrique": {
+  "titre": "BBC News, Afrique",
+  "url": "https://feeds.bbci.co.uk/news/world/africa/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Russian warship hit by Ukrainian drones in Libya, Zelensky says",
+    "lien": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:41Z"
+   },
+   {
+    "titre": "Prominent Zimbabwean preacher arrested on sexual assault allegations",
+    "lien": "https://www.bbc.co.uk/news/articles/cxyvdmjr893zo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T14:55Z"
+   },
+   {
+    "titre": "Nigeria's president says he is also hit by water and power cuts plaguing country",
+    "lien": "https://www.bbc.co.uk/news/articles/cv1j65xjjk65o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T14:26Z"
+   },
+   {
+    "titre": "Search and rescue teams race against time to find survivors after Nigeria boat tragedy",
+    "lien": "https://www.bbc.co.uk/news/articles/cq7820xjm49po?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T12:43Z"
+   },
+   {
+    "titre": "Morocco and Senegal await Afcon final verdict after court case",
+    "lien": "https://www.bbc.co.uk/sport/football/articles/ckjw5jj2l26lo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T11:56Z"
+   },
+   {
+    "titre": "Ukraine shares video of strikes on Russian ships off Libya",
+    "lien": "https://www.bbc.co.uk/news/videos/c6wy93q5wwqvo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T11:34Z"
+   },
+   {
+    "titre": "Kenya and DR Congo agree to restore ties after tensions over conflict",
+    "lien": "https://www.bbc.co.uk/news/articles/cmvg2qnn95vro?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T08:53Z"
+   },
+   {
+    "titre": "Ivory Coast star Pepe did not injure eyes staring at sun, say Villarreal",
+    "lien": "https://www.bbc.co.uk/sport/football/articles/c8zx9y6d29vyo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-22T21:04Z"
+   }
+  ]
+ },
+ "bbc_asie": {
+  "titre": "BBC News, Asie",
+  "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Three killed and dozens missing after fire at Indonesian factory",
+    "lien": "https://www.bbc.co.uk/news/articles/cw8dvg5pgm0eo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-22T14:05Z"
+   },
+   {
+    "titre": "South Korea education minister resigns over exam cheating scandal",
+    "lien": "https://www.bbc.co.uk/news/articles/cw3dgk29d37no?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-22T09:20Z"
+   },
+   {
+    "titre": "A new Nepal, an old neighbour - Balendra Shah's India test on first visit",
+    "lien": "https://www.bbc.co.uk/news/articles/c6jre8xd83qgo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T23:28Z"
+   },
+   {
+    "titre": "These dead pets were meant to be cremated - then their bodies appeared on a livestream",
+    "lien": "https://www.bbc.co.uk/news/articles/cmn502ek17yvo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T23:20Z"
+   },
+   {
+    "titre": "China issues Mount Fuji warning as family of missing climber offers reward",
+    "lien": "https://www.bbc.co.uk/news/articles/c61wr088jnzzo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T04:13Z"
+   },
+   {
+    "titre": "Indonesian daycare principal jailed for five years over child abuse case",
+    "lien": "https://www.bbc.co.uk/news/articles/cvkg58d7z10ro?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T01:48Z"
+   },
+   {
+    "titre": "Cumin-laced fizzy sodas are giving cola giants a tough fight in India",
+    "lien": "https://www.bbc.co.uk/news/articles/cw1m4ym7ez2eo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T23:29Z"
+   },
+   {
+    "titre": "Myanmar committed genocide against Rohingya minority, top UN court rules",
+    "lien": "https://www.bbc.co.uk/news/articles/c804wzp20ddvo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T20:07Z"
+   }
+  ]
+ },
+ "bbc_inde": {
+  "titre": "BBC News, Inde",
+  "url": "https://feeds.bbci.co.uk/news/world/asia/india/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "India pledges $1.6bn to Nepal in reset of ties",
+    "lien": "https://www.bbc.co.uk/news/articles/cwx2ervemj4ko?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T13:39Z"
+   },
+   {
+    "titre": "Police investigate fairness cream's alleged link to Indian teen's kidney ailment",
+    "lien": "https://www.bbc.co.uk/news/articles/cq4gn7zp1n33o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T11:44Z"
+   },
+   {
+    "titre": "Saliva should be used to shine ball again - Gill",
+    "lien": "https://www.bbc.co.uk/sport/cricket/articles/c6y80neve594o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T08:55Z"
+   },
+   {
+    "titre": "A new Nepal, an old neighbour - Balendra Shah's India test on first visit",
+    "lien": "https://www.bbc.co.uk/news/articles/c6jre8xd83qgo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T23:28Z"
+   },
+   {
+    "titre": "Indian man sentenced to 19-plus years in plot to assassinate US-based Sikh separatist leader",
+    "lien": "https://www.bbc.co.uk/news/articles/cq702ez8d4lwo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T19:27Z"
+   },
+   {
+    "titre": "Cumin-laced fizzy sodas are giving cola giants a tough fight in India",
+    "lien": "https://www.bbc.co.uk/news/articles/cw1m4ym7ez2eo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T23:29Z"
+   },
+   {
+    "titre": "Indian driver wins $1.3m in life-changing lottery prize",
+    "lien": "https://www.bbc.co.uk/news/videos/cke89vdn75gyo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T11:38Z"
+   },
+   {
+    "titre": "India's religious make-up - what a new Pew study says about Hindus and Muslims",
+    "lien": "https://www.bbc.co.uk/news/articles/cqd01epyrz1do?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T00:38Z"
+   }
+  ]
+ },
+ "bbc_chine": {
+  "titre": "BBC News, Chine",
+  "url": "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "China issues Mount Fuji warning as family of missing climber offers reward",
+    "lien": "https://www.bbc.co.uk/news/articles/c61wr088jnzzo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T04:13Z"
+   },
+   {
+    "titre": "Analysis: Trilateral summit high on spectacle, short on substance",
+    "lien": "https://www.bbc.co.uk/news/articles/cwn70vrjlg8ro?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T17:55Z"
+   },
+   {
+    "titre": "BBC correspondents discuss what Trump, Xi and Putin got out of historic talks",
+    "lien": "https://www.bbc.co.uk/news/videos/c63rgnq05pdwo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T17:23Z"
+   },
+   {
+    "titre": "This is a remarkable diplomatic moment for China's Xi - but it comes with pitfalls",
+    "lien": "https://www.bbc.co.uk/news/articles/cr9d75we51j1o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T04:42Z"
+   },
+   {
+    "titre": "As Trump and Xi meet, China's AI dreams face an unexpected hurdle: the Nvidia spy scandal",
+    "lien": "https://www.bbc.co.uk/news/articles/c5vg23g92rj4o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-17T23:02Z"
+   },
+   {
+    "titre": "How new US chip restrictions on South East Asia will hit China",
+    "lien": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-17T14:25Z"
+   },
+   {
+    "titre": "China is hosting the world's leaders in its AI wonderland. Here's what they won't see",
+    "lien": "https://www.bbc.co.uk/news/articles/cm3eg3v9jkk8o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-16T23:07Z"
+   },
+   {
+    "titre": "What we know as Nvidia CEO Jensen Huang resigns over affair allegations",
+    "lien": "https://www.bbc.co.uk/news/articles/ckgel338xql3o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-12T15:26Z"
+   }
+  ]
+ },
+ "bbc_australie": {
+  "titre": "BBC News, Australie",
+  "url": "https://feeds.bbci.co.uk/news/world/australia/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Australian music legend Molly Meldrum dies aged 83",
+    "lien": "https://www.bbc.co.uk/news/articles/c3qj57rkd2k1o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T01:03Z"
+   },
+   {
+    "titre": "Australia hold on for narrow win against Wales",
+    "lien": "https://www.bbc.co.uk/sport/rugby-union/articles/cwm25ev1z8y8o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-21T22:25Z"
+   },
+   {
+    "titre": "Cummins' integrity not compromised - CA",
+    "lien": "https://www.bbc.co.uk/sport/cricket/articles/c65y1gjnqe50o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-21T09:32Z"
+   },
+   {
+    "titre": "Sydney marathon champion Jepchirchir gets three-year doping ban",
+    "lien": "https://www.bbc.co.uk/sport/athletics/articles/cv5y1e1zle88o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T10:56Z"
+   },
+   {
+    "titre": "Australia's Barty elected into Tennis Hall of Fame",
+    "lien": "https://www.bbc.co.uk/sport/tennis/articles/c5n4eme37p4ko?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T08:13Z"
+   },
+   {
+    "titre": "Millions of red crabs start annual migration on Christmas Island",
+    "lien": "https://www.bbc.co.uk/news/videos/cq62p73jjl90o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-17T23:05Z"
+   },
+   {
+    "titre": "Commonwealth medallist Lobban switches from Scotland to Australia",
+    "lien": "https://www.bbc.co.uk/sport/olympics/articles/cmy0xn047w07o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-17T16:54Z"
+   },
+   {
+    "titre": "Body of Melbourne Cup horse found dumped in Sydney skip",
+    "lien": "https://www.bbc.co.uk/news/articles/ck1ewl2zjqgzo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-17T07:01Z"
+   }
+  ]
+ },
+ "bbc_amlat": {
+  "titre": "BBC News, Amérique latine",
+  "url": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Mexican soldiers attacked in wake of drug lord's arrest",
+    "lien": "https://www.bbc.co.uk/news/articles/c5rmgkv2lk73o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T14:54Z"
+   },
+   {
+    "titre": "Seattle airport operator 'outraged' over ICE arrest of two Mexican passengers",
+    "lien": "https://www.bbc.co.uk/news/articles/cmwy479wz91no?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T12:50Z"
+   },
+   {
+    "titre": "Mexican drug lord on FBI's 10 most wanted list arrested in shoot-out",
+    "lien": "https://www.bbc.co.uk/news/articles/ckz749ey0r75o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-22T01:25Z"
+   },
+   {
+    "titre": "Venezuela signs military deal with US less than a year after Maduro's removal",
+    "lien": "https://www.bbc.co.uk/news/articles/cmwy8pyqlq5vo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T13:31Z"
+   },
+   {
+    "titre": "Florida pastor found guilty over role in assassination of Haitian president",
+    "lien": "https://www.bbc.co.uk/news/articles/cm702q0lg50po?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T11:44Z"
+   },
+   {
+    "titre": "Venezuelan ex-world boxing champion Linares in ICE detention",
+    "lien": "https://www.bbc.co.uk/sport/boxing/articles/cknv4q197dymo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-18T07:34Z"
+   },
+   {
+    "titre": "Gunmen kill Costa Rican journalist who reported on drugs trade",
+    "lien": "https://www.bbc.co.uk/news/articles/c6ly7g5lx7gyo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-17T11:58Z"
+   },
+   {
+    "titre": "Pope Leo hit by flying rosary while waving to crowds in Peru",
+    "lien": "https://www.bbc.co.uk/news/videos/ckpdwn23j5j8o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-16T21:12Z"
+   }
+  ]
+ },
+ "bbc_moyen_orient": {
+  "titre": "BBC News, Moyen-Orient",
+  "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Iranian authorities flog singer who performed without hijab, lawyers say",
+    "lien": "https://www.bbc.co.uk/news/articles/cq1j6585l5g6o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T18:04Z"
+   },
+   {
+    "titre": "Israeli attacks have turned Gaza into 'toxic wasteland', Oxfam says",
+    "lien": "https://www.bbc.co.uk/news/articles/c8r4gzzxvxl3o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:07Z"
+   },
+   {
+    "titre": "Hormuz swim highlights environmental cost of war",
+    "lien": "https://www.bbc.co.uk/news/articles/c95y1gr27xplo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-21T16:12Z"
+   },
+   {
+    "titre": "US declassifies more UFO footage filmed in the Middle East",
+    "lien": "https://www.bbc.co.uk/news/videos/cqdr1x8mypnko?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T23:15Z"
+   },
+   {
+    "titre": "'I tell my son it's just fireworks': Life inside Yemeni city besieged by Houthis",
+    "lien": "https://www.bbc.co.uk/news/articles/cx7v2d8q879eo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T22:14Z"
+   },
+   {
+    "titre": "Why AI fakes are spreading after Saudi skyscraper attack",
+    "lien": "https://www.bbc.co.uk/news/videos/cx30gmy6qqn1o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T17:39Z"
+   },
+   {
+    "titre": "Israeli military completes ground operation in Gaza beyond Yellow Line",
+    "lien": "https://www.bbc.co.uk/news/articles/cw8r7510degno?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-19T17:03Z"
+   },
+   {
+    "titre": "Kuwait says it repelled first Iranian attack in two months after US strikes island",
+    "lien": "https://www.bbc.co.uk/news/articles/cw4gn9jeqjq7o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-18T13:04Z"
+   }
+  ]
+ },
+ "bbc_europe": {
+  "titre": "BBC News, Europe",
+  "url": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Russian warship hit by Ukrainian drones in Libya, Zelensky says",
+    "lien": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:41Z"
+   },
+   {
+    "titre": "Flights cancelled in Belgium due to cost-of-living strike",
+    "lien": "https://www.bbc.co.uk/news/articles/cwdr155e2d05o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T13:34Z"
+   },
+   {
+    "titre": "'I want to destroy capitalism, not France': On the streets with the French ultra left",
+    "lien": "https://www.bbc.co.uk/news/articles/cw074km48myeo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T13:09Z"
+   },
+   {
+    "titre": "Who is taking part in France's recent street protests?",
+    "lien": "https://www.bbc.co.uk/news/videos/cw5y188vzxn8o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T09:25Z"
+   },
+   {
+    "titre": "What's next after no deal at COP31 climate talks?",
+    "lien": "https://www.bbc.co.uk/news/videos/cr1ewge81q4qo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T05:34Z"
+   },
+   {
+    "titre": "'Danger seems greater all the time': Ukrainians search for missing after Russian strikes",
+    "lien": "https://www.bbc.co.uk/news/videos/cre3dvd1k9y1o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-22T22:37Z"
+   },
+   {
+    "titre": "Russia-bound ship towed away after it was attacked in Gulf of Finland",
+    "lien": "https://www.bbc.co.uk/news/articles/cj752ddve27ko?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-22T17:18Z"
+   },
+   {
+    "titre": "Wes Streeting calls Putin a 'cold-blooded killer' as he meets Zelensky in Kyiv",
+    "lien": "https://www.bbc.co.uk/news/videos/cqevrddp91z8o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-21T16:16Z"
+   }
+  ]
+ },
+ "bbc_usa_canada": {
+  "titre": "BBC News, États-Unis et Canada",
+  "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Trump says he 'convinced' Nvidia to reinstate Jensen Huang",
+    "lien": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T19:14Z"
+   },
+   {
+    "titre": "US Army reschedules detonation of toxic explosives at Iowa ammunition plant",
+    "lien": "https://www.bbc.co.uk/news/articles/cr2klqzqx1qvo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T18:51Z"
+   },
+   {
+    "titre": "First Lady Melania Trump welcomes this year's White House Christmas tree",
+    "lien": "https://www.bbc.co.uk/news/videos/c51k9vp48d2vo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T18:49Z"
+   },
+   {
+    "titre": "Comedian impersonates Trump's dance moves, mocks trade talks at Canada press dinner",
+    "lien": "https://www.bbc.co.uk/news/articles/cr930y92dyx4o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:14Z"
+   },
+   {
+    "titre": "Analysis: Why Jensen Huang proved too big to fire",
+    "lien": "https://www.bbc.co.uk/news/articles/ckr5g8edl94eo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:11Z"
+   },
+   {
+    "titre": "How important are Nvidia and Jensen Huang to the US economy?",
+    "lien": "https://www.bbc.co.uk/news/articles/c68798vdprwpo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T16:12Z"
+   },
+   {
+    "titre": "The rise and fall and rise again of Jensen Huang",
+    "lien": "https://www.bbc.co.uk/news/articles/cmze750zg0jeo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:49Z"
+   },
+   {
+    "titre": "Seattle airport operator 'outraged' over ICE arrest of two passengers",
+    "lien": "https://www.bbc.co.uk/news/articles/cmwy479wz91no?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T12:50Z"
+   }
+  ]
+ },
+ "bbc_science": {
+  "titre": "BBC News, science et environnement",
+  "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "What failure of COP31 reveals about a divided world",
+    "lien": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:24Z"
+   },
+   {
+    "titre": "What failure of COP31 reveals about a divided world",
+    "lien": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:24Z"
+   },
+   {
+    "titre": "What failure of COP31 reveals about a divided world",
+    "lien": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:24Z"
+   },
+   {
+    "titre": "Israeli attacks have turned Gaza into 'toxic wasteland', Oxfam says",
+    "lien": "https://www.bbc.co.uk/news/articles/c8r4gzzxvxl3o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:07Z"
+   },
+   {
+    "titre": "Village's concern over sewage discharge in dry river",
+    "lien": "https://www.bbc.co.uk/news/articles/c60rkq78g05vo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:48Z"
+   },
+   {
+    "titre": "Five takeaways from the failed climate talks COP31",
+    "lien": "https://www.bbc.co.uk/news/articles/cm75237wlp3lo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T06:33Z"
+   },
+   {
+    "titre": "Five takeaways from the failed climate talks COP31",
+    "lien": "https://www.bbc.co.uk/news/articles/cm75237wlp3lo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T06:33Z"
+   },
+   {
+    "titre": "Longest-ever UN climate talks end with no deal as deep divisions exposed",
+    "lien": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T05:15Z"
+   }
+  ]
+ },
+ "bbc_sante": {
+  "titre": "BBC News, santé",
+  "url": "https://feeds.bbci.co.uk/news/health/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Woman faces hour-long drive to give birth as hospital suspends maternity services",
+    "lien": "https://www.bbc.co.uk/news/articles/cv5y10xn90y3o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T18:34Z"
+   },
+   {
+    "titre": "Striking doctor says they are advocating for the health service",
+    "lien": "https://www.bbc.co.uk/news/articles/cr3eg5vzn875o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T12:46Z"
+   },
+   {
+    "titre": "Striking doctor says they are advocating for the health service",
+    "lien": "https://www.bbc.co.uk/news/articles/cr3eg5vzn875o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T12:46Z"
+   },
+   {
+    "titre": "Antibiotics saved my life - then nearly killed me",
+    "lien": "https://www.bbc.co.uk/news/articles/ckvg2elqy5g2o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T10:33Z"
+   },
+   {
+    "titre": "Can AI improve breast cancer diagnosis?",
+    "lien": "https://www.bbc.co.uk/news/videos/c52e8rlwx01go?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T06:16Z"
+   },
+   {
+    "titre": "Can AI spot breast cancer earlier? NHS launches world's largest trial to find out",
+    "lien": "https://www.bbc.co.uk/news/articles/cmpdwnw3nvzjo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T00:49Z"
+   },
+   {
+    "titre": "Can AI spot breast cancer earlier? NHS launches world's largest trial to find out",
+    "lien": "https://www.bbc.co.uk/news/articles/cmpdwnw3nvzjo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T00:49Z"
+   },
+   {
+    "titre": "School wins mental health and wellbeing award",
+    "lien": "https://www.bbc.co.uk/news/articles/c5n4eyv9wv7zo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-22T12:10Z"
+   }
+  ]
+ },
+ "bbc_tech": {
+  "titre": "BBC News, technologie",
+  "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Nvidia shares up nearly 33% and tech stocks rally after Jensen Huang returns",
+    "lien": "https://www.bbc.co.uk/news/articles/cq62pn6j42jko?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:42Z"
+   },
+   {
+    "titre": "How important are Nvidia and Jensen Huang to the US economy?",
+    "lien": "https://www.bbc.co.uk/news/articles/c68798vdprwpo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T16:12Z"
+   },
+   {
+    "titre": "The rise and fall and rise again of Jensen Huang",
+    "lien": "https://www.bbc.co.uk/news/articles/cmze750zg0jeo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:49Z"
+   },
+   {
+    "titre": "GTA 6 hacker released on licence with warning 'don't let this happen again'",
+    "lien": "https://www.bbc.co.uk/news/articles/cqpv9kr7pxmro?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T14:08Z"
+   },
+   {
+    "titre": "San Francisco is enjoying an AI boom, but worries about a crash are growing",
+    "lien": "https://www.bbc.co.uk/news/articles/cqe9k09j9jv4o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T00:08Z"
+   },
+   {
+    "titre": "Tech Now",
+    "lien": "https://www.bbc.co.uk/iplayer/episode/m0034tjc?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-21T01:00Z"
+   },
+   {
+    "titre": "Can AI really help spot Black Friday deals? We put it to the test",
+    "lien": "https://www.bbc.co.uk/news/articles/cw8dv4jmnle2o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-21T00:06Z"
+   },
+   {
+    "titre": "In a year of AI solving maths problems, an Anthropic worker says he may have cracked the biggest",
+    "lien": "https://www.bbc.co.uk/news/articles/c6pqr2g7w059o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-20T23:08Z"
+   }
+  ]
+ },
+ "bbc_economie": {
+  "titre": "BBC News, économie",
+  "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "'Biggest U-turn in economic history': Experts react to Jensen Huang's return to Nvidia",
+    "lien": "https://www.bbc.co.uk/news/videos/cq8r7e35mkzlo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T18:43Z"
+   },
+   {
+    "titre": "Pip assessments need 'fundamental overhaul', report to say",
+    "lien": "https://www.bbc.co.uk/news/articles/cvlyj3rn201xo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:59Z"
+   },
+   {
+    "titre": "Nvidia shares up nearly 33% and tech stocks rally after Jensen Huang returns",
+    "lien": "https://www.bbc.co.uk/news/articles/cq62pn6j42jko?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:42Z"
+   },
+   {
+    "titre": "Faisal Islam: Why Jensen Huang proved too big to fire",
+    "lien": "https://www.bbc.co.uk/news/articles/ckr5g8edl94eo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:11Z"
+   },
+   {
+    "titre": "How important are Nvidia and Jensen Huang to the US economy?",
+    "lien": "https://www.bbc.co.uk/news/articles/c68798vdprwpo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T16:12Z"
+   },
+   {
+    "titre": "The rise and fall and rise again of Jensen Huang",
+    "lien": "https://www.bbc.co.uk/news/articles/cmze750zg0jeo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:49Z"
+   },
+   {
+    "titre": "Nvidia reinstates CEO after affair with alleged spy",
+    "lien": "https://www.bbc.co.uk/news/videos/cqze7lwdglngo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T14:51Z"
+   },
+   {
+    "titre": "Welfare cuts: What's been happening with Pip and universal credit?",
+    "lien": "https://www.bbc.co.uk/news/articles/cj924xvzrr2o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T13:52Z"
+   }
+  ]
+ },
+ "bbc_sport": {
+  "titre": "BBC Sport",
+  "url": "https://feeds.bbci.co.uk/sport/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "England's Freeman in contention for All Blacks rematch",
+    "lien": "https://www.bbc.co.uk/sport/rugby-union/articles/cm5y1qpnp2lpo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:58Z"
+   },
+   {
+    "titre": "Pioneer or coach-eater? The complex world of Pozzo's Watford",
+    "lien": "https://www.bbc.co.uk/sport/football/articles/cq98z9p66g0xo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T17:16Z"
+   },
+   {
+    "titre": "'A forced decision' - Gallagher retires from MMA",
+    "lien": "https://www.bbc.co.uk/sport/mixed-martial-arts/articles/ckp80denz7qyo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T16:51Z"
+   },
+   {
+    "titre": "'No-one's coming to save us' - but how can Man Utd save themselves?",
+    "lien": "https://www.bbc.co.uk/sport/football/articles/ck9d7qxxl7w8o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T16:30Z"
+   },
+   {
+    "titre": "Hibernian boss Reedijk rejects talk of Easter Road jinx",
+    "lien": "https://www.bbc.co.uk/sport/football/articles/cr78274gepz0o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T16:17Z"
+   },
+   {
+    "titre": "Marquez collects eighth MotoGP title",
+    "lien": "https://www.bbc.co.uk/sport/motorsport/videos/cr930y14v3n4o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:50Z"
+   },
+   {
+    "titre": "I've wanted to crawl under a rock and hide - Pressley",
+    "lien": "https://www.bbc.co.uk/sport/football/articles/cre3d9j5k4n8o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:31Z"
+   },
+   {
+    "titre": "Maritz and Murray star as Ireland seal final berth",
+    "lien": "https://www.bbc.co.uk/sport/cricket/articles/c3j4r2w48znno?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T15:28Z"
+   }
+  ]
+ },
+ "lm_international": {
+  "titre": "Le Monde, International",
+  "url": "https://www.lemonde.fr/international/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Au Soudan, tensions internationales accrues après une frappe de drone contre un bâtiment de l’ONU",
+    "lien": "https://www.lemonde.fr/afrique/article/2026/11/23/au-soudan-tensions-internationales-accrues-apres-une-frappe-de-drone-contre-un-batiment-de-l-onu_6814440_3212.html",
+    "date": "2026-11-23T18:31Z"
+   },
+   {
+    "titre": "« Après le jugement de la Cour internationale de justice sur le Myanmar, la qualification de génocide à Gaza peut désormais s’appuyer sur sa jurisprudence »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/apres-le-jugement-de-la-cour-internationale-de-justice-sur-le-myanmar-la-qualification-de-genocide-a-gaza-peut-desormais-s-appuyer-sur-sa-jurisprudence_6814439_3232.html",
+    "date": "2026-11-23T18:30Z"
+   },
+   {
+    "titre": "L’Ukraine sous le joug soviétique est au cœur du second tome du puissant « Amadoca », de Sofia Andrukhovych",
+    "lien": "https://www.lemonde.fr/livres/article/2026/11/23/l-ukraine-sous-le-joug-sovietique-est-au-c-ur-du-second-tome-du-puissant-amadoca-de-sofia-andrukhovych_6814437_3260.html",
+    "date": "2026-11-23T18:00Z"
+   },
+   {
+    "titre": "EN DIRECT, guerre en Ukraine : après les attaques de Kiev sur deux navires russes en Libye, le gouvernement de Benghazi demande à l’ONU d’enquêter sur la présence présumée de forces ukrainiennes",
+    "lien": "https://www.lemonde.fr/international/live/2026/11/23/en-direct-guerre-en-ukraine-apres-les-attaques-de-kiev-sur-deux-navires-russes-en-libye-le-gouvernement-de-benghazi-demande-a-l-onu-d-enqueter-sur-la-presence-presumees-de-forces-ukrainiennes_6814183_3210.html",
+    "date": "2026-11-23T17:42Z"
+   },
+   {
+    "titre": "Au Danemark, la Cour suprême sauve le « plan ghetto » et ses critères ethniques",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/au-danemark-la-cour-supreme-sauve-le-plan-ghetto-et-ses-criteres-ethniques_6814431_3210.html",
+    "date": "2026-11-23T17:07Z"
+   },
+   {
+    "titre": "L’UE propose d’interdire aux athlètes russes de pouvoir participer aux compétitions sur son territoire",
+    "lien": "https://www.lemonde.fr/sport/article/2026/11/23/l-ue-propose-d-interdire-aux-athletes-russes-de-pouvoir-participer-aux-competitions-sur-son-territoire_6814424_3242.html",
+    "date": "2026-11-23T16:42Z"
+   },
+   {
+    "titre": "Diego Tovar, ex-FARC : « Il est dans l’intérêt de l’UE de faire pression sur Abelardo de la Espriella pour qu’il respecte l’accord de paix »",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/diego-tovar-ex-farc-il-est-dans-l-interet-de-l-ue-de-faire-pression-sur-abelardo-de-la-espriella-pour-qu-il-respecte-l-accord-de-paix_6814423_3210.html",
+    "date": "2026-11-23T16:39Z"
+   },
+   {
+    "titre": "Pesticides : « Omnibus X menace la santé des citoyens sans résoudre le problème bureaucratique qu’il dénonce »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/pesticides-omnibus-x-menace-la-sante-des-citoyens-sans-resoudre-le-probleme-bureaucratique-qu-il-denonce_6814419_3232.html",
+    "date": "2026-11-23T16:30Z"
+   }
+  ]
+ },
+ "lm_afrique": {
+  "titre": "Le Monde, Afrique",
+  "url": "https://www.lemonde.fr/afrique/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Au Soudan, tensions internationales accrues après une frappe de drone contre un bâtiment de l’ONU",
+    "lien": "https://www.lemonde.fr/afrique/article/2026/11/23/au-soudan-tensions-internationales-accrues-apres-une-frappe-de-drone-contre-un-batiment-de-l-onu_6814440_3212.html",
+    "date": "2026-11-23T18:31Z"
+   },
+   {
+    "titre": "Deux navires russes attaqués dans les eaux libyennes, une extension inédite de la guerre russo-ukrainienne",
+    "lien": "https://www.lemonde.fr/afrique/article/2026/11/23/deux-navires-russes-attaques-dans-les-eaux-libyennes-une-extension-inedite-de-la-guerre-russo-ukrainienne_6814397_3212.html",
+    "date": "2026-11-23T15:00Z"
+   },
+   {
+    "titre": "En images. Volodymyr Zelensky revendique l’attaque de deux bateaux russes en Libye à l’aide de « drones maritimes »",
+    "lien": "https://www.lemonde.fr/videos/video/2026/11/23/en-images-volodymyr-zelensky-revendique-l-attaque-de-deux-bateaux-russes-en-libye-a-l-aide-de-drones-maritimes_6814394_1669088.html",
+    "date": "2026-11-23T14:30Z"
+   },
+   {
+    "titre": "« Maman, les gens qui t’ont découpée sont revenus nous chercher » : dans l’est de la RDC, la guerre impossible contre les ADF, groupe armé affilié à l’Etat islamique",
+    "lien": "https://www.lemonde.fr/afrique/article/2026/11/23/maman-les-gens-qui-t-ont-decoupee-sont-revenus-nous-chercher-dans-l-est-de-la-rdc-la-guerre-impossible-contre-les-adf-groupe-arme-affilie-a-l-etat-islamique_6814346_3212.html",
+    "date": "2026-11-23T05:15Z"
+   },
+   {
+    "titre": "Soudan : l’Ethiopie mise en cause pour des frappes de drones sur des zones résidentielles et un bâtiment de l’ONU à Khartoum",
+    "lien": "https://www.lemonde.fr/afrique/article/2026/11/22/soudan-l-ethiopie-mise-en-cause-dans-des-frappes-de-drones-sur-des-zones-residentielles-et-un-batiment-de-l-onu-a-khartoum_6814229_3212.html",
+    "date": "2026-11-22T16:03Z"
+   },
+   {
+    "titre": "« Le zouglou est un espace de promotion pour les hommes politiques »",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/22/le-zouglou-est-une-des-meilleures-publicites-possibles-pour-les-hommes-politiques-en-cote-d-ivoire_6814221_3210.html",
+    "date": "2026-11-22T15:00Z"
+   },
+   {
+    "titre": "L’historien et archéologue François-Xavier Fauvelle redonne à l’Afrique médiévale sa place dans le monde",
+    "lien": "https://www.lemonde.fr/livres/article/2026/11/22/l-historien-et-archeologue-francois-xavier-fauvelle-redonne-a-l-afrique-medievale-sa-place-dans-le-monde_6814196_3260.html",
+    "date": "2026-11-22T08:00Z"
+   },
+   {
+    "titre": "Le Groupe Castel, empire discret de la bière et du vin, secoué par une guerre de pouvoir",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/22/le-groupe-castel-empire-discret-de-la-biere-et-du-vin-secoue-par-une-guerre-de-pouvoir_6814179_3234.html",
+    "date": "2026-11-22T05:00Z"
+   }
+  ]
+ },
+ "lm_asie": {
+  "titre": "Le Monde, Asie-Pacifique",
+  "url": "https://www.lemonde.fr/asie-pacifique/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "« Après le jugement de la Cour internationale de justice sur le Myanmar, la qualification de génocide à Gaza peut désormais s’appuyer sur sa jurisprudence »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/apres-le-jugement-de-la-cour-internationale-de-justice-sur-le-myanmar-la-qualification-de-genocide-a-gaza-peut-desormais-s-appuyer-sur-sa-jurisprudence_6814439_3232.html",
+    "date": "2026-11-23T18:30Z"
+   },
+   {
+    "titre": "« Les Etats-Unis n’ont toujours pas arrêté une stratégie pour ralentir la Chine »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/les-etats-unis-n-ont-toujours-pas-arrete-une-strategie-pour-ralentir-la-chine_6814412_3232.html",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "Génocide des Rohingya : « Le champ d’action de la Cour internationale de justice s’est orienté vers les enjeux liés aux droits humains »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/genocide-des-rohingya-le-champ-d-action-de-la-cour-internationale-de-justice-s-est-oriente-vers-les-enjeux-lies-aux-droits-humains_6814395_3232.html",
+    "date": "2026-11-23T14:30Z"
+   },
+   {
+    "titre": "Le Tadjikistan annonce son retrait de la Cour pénale internationale",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/le-tadjikistan-annonce-son-retrait-de-la-cour-penale-internationale_6814391_3210.html",
+    "date": "2026-11-23T14:18Z"
+   },
+   {
+    "titre": "Inondations au Népal : l’Inde offre à son voisin et allié un « plan de coopération » et une aide à la reconstruction de 1,6 milliard de dollars",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/inondations-au-nepal-l-inde-offre-a-son-voisin-et-allie-un-plan-de-cooperation-et-une-aide-a-la-reconstruction-de-1-6-milliard-de-dollars_6814377_3210.html",
+    "date": "2026-11-23T11:41Z"
+   },
+   {
+    "titre": "Eliav Lieblich, juriste israélien : après l’arrêt de la CIJ reconnaissant la responsabilité birmane dans le génocide des Rohingya, « il est fort probable qu’Israël soit condamné » pour Gaza",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/eliav-lieblich-apres-l-arret-de-la-cij-reconnaissant-la-responsabilite-birmane-dans-le-genocide-des-rohingya-il-est-fort-probable-qu-israel-soit-condamne-pour-gaza_6814372_3210.html",
+    "date": "2026-11-23T10:00Z"
+   },
+   {
+    "titre": "En Inde, portrait d’une jeunesse oubliée : « Si vous êtes né pauvre, mieux vaut ne pas être né du tout »",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/puja-kumar-23-ans-si-vous-etes-ne-pauvre-en-inde-mieux-vaut-ne-pas-etre-ne-du-tout_6814353_3210.html",
+    "date": "2026-11-23T05:30Z"
+   },
+   {
+    "titre": "Au Japon, la pauvreté des jeunes occultée par la société : « Parfois, je n’avais qu’une tranche de pain de mie par jour »",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/22/au-japon-la-pauvrete-des-jeunes-occultee-par-la-societe-parfois-je-n-avais-qu-une-tranche-de-pain-de-mie-par-jour_6814203_3210.html",
+    "date": "2026-11-22T09:30Z"
+   }
+  ]
+ },
+ "lm_ameriques": {
+  "titre": "Le Monde, Amériques",
+  "url": "https://www.lemonde.fr/ameriques/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Diego Tovar, ex-FARC : « Il est dans l’intérêt de l’UE de faire pression sur Abelardo de la Espriella pour qu’il respecte l’accord de paix »",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/diego-tovar-ex-farc-il-est-dans-l-interet-de-l-ue-de-faire-pression-sur-abelardo-de-la-espriella-pour-qu-il-respecte-l-accord-de-paix_6814423_3210.html",
+    "date": "2026-11-23T16:39Z"
+   },
+   {
+    "titre": "« Les Etats-Unis n’ont toujours pas arrêté une stratégie pour ralentir la Chine »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/les-etats-unis-n-ont-toujours-pas-arrete-une-strategie-pour-ralentir-la-chine_6814412_3232.html",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "EN DIRECT, Jensen Huang réintégré à la surprise générale chez Nvidia : le dirigeant sera auditionné publiquement au Sénat américain le 3 décembre",
+    "lien": "https://www.lemonde.fr/international/live/2026/11/23/en-direct-jensen-huang-reintegre-chez-nvidia-donald-trump-affirme-avoir-parle-directement-avec-le-conseil-d-administration_6814407_3210.html",
+    "date": "2026-11-23T15:57Z"
+   },
+   {
+    "titre": "Jensen Huang réintégré à la tête de Nvidia par son conseil d’administration, deux semaines après avoir démissionné à la suite de soupçons d’espionnage chinois",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/jensen-huang-reintegre-comme-directeur-general-et-president-de-nvidia-par-le-conseil-d-administration-deux-semaines-apres-avoir-demissionne-suite-a-des-suspicions-d-espionnage-chinois_6814392_3234.html",
+    "date": "2026-11-23T14:21Z"
+   },
+   {
+    "titre": "Aux Etats-Unis, les démocrates obtiennent la plus large majorité depuis 1992 à la Chambre des représentants",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/avec-258-sieges-remportes-les-democrates-decrochent-la-plus-large-majorite-depuis-1992-a-la-chambre-des-representants_6814364_3210.html",
+    "date": "2026-11-23T08:50Z"
+   },
+   {
+    "titre": "En Jamaïque, la population défend son accès aux plages",
+    "lien": "https://www.lemonde.fr/m-le-mag/article/2026/11/23/en-jamaique-la-population-defend-son-acces-aux-plages_6814351_4500055.html",
+    "date": "2026-11-23T05:30Z"
+   },
+   {
+    "titre": "Aux Etats-Unis, Melat Kiros, 29 ans, démocrate, socialiste et première femme de la génération Z à entrer au Congrès",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/22/aux-etats-unis-melat-kiros-29-ans-democrate-socialiste-et-premiere-femme-de-la-generation-z-a-entrer-au-congres_6814225_3210.html",
+    "date": "2026-11-22T16:00Z"
+   },
+   {
+    "titre": "Arrestations de l’ICE dans un aéroport : le gouverneur de Washington dénonce une police de l’immigration « hors de contrôle »",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/22/arrestations-de-l-ice-dans-un-aeroport-le-gouverneur-de-washington-denonce-une-police-de-l-immigration-hors-de-controle_6814205_3210.html",
+    "date": "2026-11-22T11:05Z"
+   }
+  ]
+ },
+ "lm_europe": {
+  "titre": "Le Monde, Europe",
+  "url": "https://www.lemonde.fr/europe/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "L’Ukraine sous le joug soviétique est au cœur du second tome du puissant « Amadoca », de Sofia Andrukhovych",
+    "lien": "https://www.lemonde.fr/livres/article/2026/11/23/l-ukraine-sous-le-joug-sovietique-est-au-c-ur-du-second-tome-du-puissant-amadoca-de-sofia-andrukhovych_6814437_3260.html",
+    "date": "2026-11-23T18:00Z"
+   },
+   {
+    "titre": "EN DIRECT, guerre en Ukraine : après les attaques de Kiev sur deux navires russes en Libye, le gouvernement de Benghazi demande à l’ONU d’enquêter sur la présence présumée de forces ukrainiennes",
+    "lien": "https://www.lemonde.fr/international/live/2026/11/23/en-direct-guerre-en-ukraine-apres-les-attaques-de-kiev-sur-deux-navires-russes-en-libye-le-gouvernement-de-benghazi-demande-a-l-onu-d-enqueter-sur-la-presence-presumees-de-forces-ukrainiennes_6814183_3210.html",
+    "date": "2026-11-23T17:42Z"
+   },
+   {
+    "titre": "Au Danemark, la Cour suprême sauve le « plan ghetto » et ses critères ethniques",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/au-danemark-la-cour-supreme-sauve-le-plan-ghetto-et-ses-criteres-ethniques_6814431_3210.html",
+    "date": "2026-11-23T17:07Z"
+   },
+   {
+    "titre": "L’UE propose d’interdire aux athlètes russes de pouvoir participer aux compétitions sur son territoire",
+    "lien": "https://www.lemonde.fr/sport/article/2026/11/23/l-ue-propose-d-interdire-aux-athletes-russes-de-pouvoir-participer-aux-competitions-sur-son-territoire_6814424_3242.html",
+    "date": "2026-11-23T16:42Z"
+   },
+   {
+    "titre": "Pesticides : « Omnibus X menace la santé des citoyens sans résoudre le problème bureaucratique qu’il dénonce »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/pesticides-omnibus-x-menace-la-sante-des-citoyens-sans-resoudre-le-probleme-bureaucratique-qu-il-denonce_6814419_3232.html",
+    "date": "2026-11-23T16:30Z"
+   },
+   {
+    "titre": "Au Royaume-Uni, Andy Burnham défend son accord avec l’UE et ouvre le débat sur un rapprochement avec les Vingt-Sept",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/au-royaume-uni-andy-burnham-defend-son-accord-avec-l-ue-et-ouvre-le-debat-sur-un-rapprochement-avec-les-vingt-sept_6814415_3210.html",
+    "date": "2026-11-23T16:17Z"
+   },
+   {
+    "titre": "Espagne : l’indépendantiste catalan Carles Puigdemont définitivement blanchi par la justice",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/espagne-l-independantiste-catalan-carles-puigdemont-definitivement-blanchi-par-la-justice_6814403_3210.html",
+    "date": "2026-11-23T15:31Z"
+   },
+   {
+    "titre": "La Turquie affirme que le PKK a évacué 14 autres bases du nord de l’Irak, une nouvelle étape majeure vers la paix",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/la-turquie-affirme-que-le-pkk-a-evacue-14-autres-bases-du-nord-de-l-irak-une-nouvelle-etape-majeure-vers-la-paix_6814400_3210.html",
+    "date": "2026-11-23T15:09Z"
+   }
+  ]
+ },
+ "lm_proche_orient": {
+  "titre": "Le Monde, Proche-Orient",
+  "url": "https://www.lemonde.fr/proche-orient/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "« Après le jugement de la Cour internationale de justice sur le Myanmar, la qualification de génocide à Gaza peut désormais s’appuyer sur sa jurisprudence »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/apres-le-jugement-de-la-cour-internationale-de-justice-sur-le-myanmar-la-qualification-de-genocide-a-gaza-peut-desormais-s-appuyer-sur-sa-jurisprudence_6814439_3232.html",
+    "date": "2026-11-23T18:30Z"
+   },
+   {
+    "titre": "Eliav Lieblich, juriste israélien : après l’arrêt de la CIJ reconnaissant la responsabilité birmane dans le génocide des Rohingya, « il est fort probable qu’Israël soit condamné » pour Gaza",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/eliav-lieblich-apres-l-arret-de-la-cij-reconnaissant-la-responsabilite-birmane-dans-le-genocide-des-rohingya-il-est-fort-probable-qu-israel-soit-condamne-pour-gaza_6814372_3210.html",
+    "date": "2026-11-23T10:00Z"
+   },
+   {
+    "titre": "Israël : les partis de Gadi Eisenkot et de Benyamin Nétanyahou concluent de nouvelles négociations de coalition sans accord",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/22/israel-les-partis-de-gadi-eisenkot-et-de-benyamin-netanyahou-concluent-de-nouvelles-negociations-de-coalition-sans-accord_6814239_3210.html",
+    "date": "2026-11-22T17:57Z"
+   },
+   {
+    "titre": "Cisjordanie : enquête ouverte par les autorités israéliennes après des attaques de colons ; Gadi Eisenkot dénonce un « terrorisme juif »",
+    "lien": "https://www.lemonde.fr/guerre-au-proche-orient/article/2026/11/22/cisjordanie-enquete-ouverte-par-les-autorites-israeliennes-apres-des-attaques-de-colons-gadi-eisenkot-denonce-un-terrorisme-juif_6814204_6325529.html",
+    "date": "2026-11-22T10:19Z"
+   },
+   {
+    "titre": "« Le poids des défaites passées dissuade les alliés de l’Arabie saoudite de s’engager au Yémen »",
+    "lien": "https://www.lemonde.fr/un-si-proche-orient/article/2026/11/22/le-poids-des-defaites-passees-dissuade-les-allies-de-l-arabie-saoudite-de-s-engager-au-yemen_6814191_6116995.html",
+    "date": "2026-11-22T06:00Z"
+   },
+   {
+    "titre": "Bahreïn accuse l’Iran d’avoir frappé l’un de ses sites industriels ; Téhéran affirme riposter à des tirs américains",
+    "lien": "https://www.lemonde.fr/guerre-au-proche-orient/article/2026/11/21/bahrein-accuse-l-iran-d-avoir-frappe-l-un-de-ses-sites-industriels_6814069_6325529.html",
+    "date": "2026-11-21T21:31Z"
+   },
+   {
+    "titre": "Israël : Gadi Eisenkot invite le parti de Benyamin Nétanyahou à des négociations de coalition",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/21/israel-gadi-eisenkot-invite-le-parti-de-benyamin-netanyahou-a-des-negociations-de-coalition_6814066_3210.html",
+    "date": "2026-11-21T20:00Z"
+   },
+   {
+    "titre": "Israël : qui sont les haredim, ces juifs ultraorthodoxes qui suscitent tant de débats dans le pays ? Comprendre en trois minutes",
+    "lien": "https://www.lemonde.fr/comprendre-en-3-minutes/video/2026/11/21/israel-qui-sont-les-haredim-ces-juifs-ultraorthodoxes-qui-suscitent-tant-de-debats-dans-le-pays-comprendre-en-trois-minutes_6813925_6176282.html",
+    "date": "2026-11-21T05:00Z"
+   }
+  ]
+ },
+ "lm_economie": {
+  "titre": "Le Monde, Économie",
+  "url": "https://www.lemonde.fr/economie/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "« 60 millions de consommateurs » : l’offre de reprise par Xavier Niel validée par l’Etat",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/60-millions-de-consommateurs-l-offre-de-reprise-par-xavier-niel-validee-par-l-etat_6814438_3234.html",
+    "date": "2026-11-23T18:13Z"
+   },
+   {
+    "titre": "La Banque de France veut relancer la circulation des billets de 5 euros, prisés des Français mais difficiles à trouver",
+    "lien": "https://www.lemonde.fr/argent/article/2026/11/23/la-banque-de-france-veut-relancer-la-circulation-des-billets-de-5-euros-prises-des-francais-mais-difficiles-a-trouver_6814430_1657007.html",
+    "date": "2026-11-23T17:05Z"
+   },
+   {
+    "titre": "Stellantis se retire de toutes les compétitions automobiles pour redresser sa rentabilité",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/stellantis-se-retire-de-toutes-les-competitions-automobiles-pour-redresser-sa-rentabilite_6814429_3234.html",
+    "date": "2026-11-23T17:03Z"
+   },
+   {
+    "titre": "EN DIRECT, Jensen Huang réintégré à la surprise générale chez Nvidia : le dirigeant sera auditionné publiquement au Sénat américain le 3 décembre",
+    "lien": "https://www.lemonde.fr/international/live/2026/11/23/en-direct-jensen-huang-reintegre-chez-nvidia-donald-trump-affirme-avoir-parle-directement-avec-le-conseil-d-administration_6814407_3210.html",
+    "date": "2026-11-23T15:57Z"
+   },
+   {
+    "titre": "Albin Michel : après le départ d’Amélie Nothomb, 165 salariés apportent leur soutien à la direction",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/albin-michel-apres-le-depart-d-amelie-nothomb-165-salaries-apportent-leur-soutien-a-la-direction_6814404_3234.html",
+    "date": "2026-11-23T15:31Z"
+   },
+   {
+    "titre": "Grand Paris Express : Valérie Pécresse juge « très compromise » la mise en service de la ligne 18 avant la fin de l’année",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/grand-paris-express-valerie-pecresse-juge-tres-compromise-la-mise-en-service-de-la-ligne-18-avant-la-fin-de-l-annee_6814396_3234.html",
+    "date": "2026-11-23T14:35Z"
+   },
+   {
+    "titre": "Jensen Huang réintégré à la tête de Nvidia par son conseil d’administration, deux semaines après avoir démissionné à la suite de soupçons d’espionnage chinois",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/jensen-huang-reintegre-comme-directeur-general-et-president-de-nvidia-par-le-conseil-d-administration-deux-semaines-apres-avoir-demissionne-suite-a-des-suspicions-d-espionnage-chinois_6814392_3234.html",
+    "date": "2026-11-23T14:21Z"
+   },
+   {
+    "titre": "A Paris, les conflits autour de l’espace public pourraient faire le bonheur du secteur privé",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/a-paris-les-conflits-autour-de-l-espace-public-pourraient-faire-le-bonheur-du-secteur-prive_6814387_3232.html",
+    "date": "2026-11-23T13:30Z"
+   }
+  ]
+ },
+ "lm_planete": {
+  "titre": "Le Monde, Planète",
+  "url": "https://www.lemonde.fr/planete/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Glyphosate : la cancérogénicité de l’herbicide de Bayer reconnue par une institution scientifique majeure aux Etats-Unis",
+    "lien": "https://www.lemonde.fr/planete/article/2026/11/23/glyphosate-la-cancerogenicite-de-l-herbicide-de-bayer-reconnue-par-une-institution-scientifique-majeure-aux-etats-unis_6814434_3244.html",
+    "date": "2026-11-23T17:31Z"
+   },
+   {
+    "titre": "Pesticides : « Omnibus X menace la santé des citoyens sans résoudre le problème bureaucratique qu’il dénonce »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/pesticides-omnibus-x-menace-la-sante-des-citoyens-sans-resoudre-le-probleme-bureaucratique-qu-il-denonce_6814419_3232.html",
+    "date": "2026-11-23T16:30Z"
+   },
+   {
+    "titre": "Les trois raisons de l’échec de la COP31, qui s’achève sans accord après deux semaines de négociations",
+    "lien": "https://www.lemonde.fr/planete/video/2026/11/23/les-trois-raisons-de-l-echec-de-la-cop31-qui-s-acheve-sans-accord-apres-deux-semaines-de-negociations_6814416_3244.html",
+    "date": "2026-11-23T16:23Z"
+   },
+   {
+    "titre": "« On nous a empoisonnés » : dans l’industrie de la chimie, des travailleurs surexposés aux PFAS",
+    "lien": "https://www.lemonde.fr/planete/article/2026/11/23/on-nous-a-empoisonnes-dans-l-industrie-de-la-chimie-des-travailleurs-surexposes-aux-pfas_6814409_3244.html",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "Inondations au Népal : l’Inde offre à son voisin et allié un « plan de coopération » et une aide à la reconstruction de 1,6 milliard de dollars",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/inondations-au-nepal-l-inde-offre-a-son-voisin-et-allie-un-plan-de-cooperation-et-une-aide-a-la-reconstruction-de-1-6-milliard-de-dollars_6814377_3210.html",
+    "date": "2026-11-23T11:41Z"
+   },
+   {
+    "titre": "COP31 : les limites du consensus à tout prix",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/cop31-les-limites-du-consensus-a-tout-prix_6814375_3232.html",
+    "date": "2026-11-23T10:30Z"
+   },
+   {
+    "titre": "Dans le Pas-de-Calais, la Canche amorce sa décrue, mais le risque de débordements perdure, selon Vigicrues",
+    "lien": "https://www.lemonde.fr/planete/article/2026/11/23/dans-le-pas-de-calais-la-canche-amorce-sa-decrue-mais-le-risque-de-debordements-perdure-selon-vigicrues_6814357_3244.html",
+    "date": "2026-11-23T06:55Z"
+   },
+   {
+    "titre": "La Corse placée en vigilance orange pour des vents violents lundi matin ; la Canche toujours en vigilance orange aux crues, dans le Pas-de-Calais",
+    "lien": "https://www.lemonde.fr/climat/article/2026/11/23/la-corse-placee-en-vigilance-orange-pour-des-vents-violents-lundi-matin-la-canche-toujours-en-vigilance-orange-aux-crues-dans-le-pas-de-calais_6814193_1652613.html",
+    "date": "2026-11-23T05:52Z"
+   }
+  ]
+ },
+ "lm_sciences": {
+  "titre": "Le Monde, Sciences",
+  "url": "https://www.lemonde.fr/sciences/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Sur la piste de Robert Surcouf et de l’« Aurore », navire esclavagiste du XVIIIᵉ siècle, à bord duquel plus de 300 Africains ont été livrés à la mort",
+    "lien": "https://www.lemonde.fr/histoire/article/2026/11/23/sur-la-piste-de-robert-surcouf-et-de-l-aurore-navire-esclavagiste-du-xviii-siecle-a-bord-duquel-plus-de-300-africains-ont-ete-livres-a-la-mort_6814443_4655323.html",
+    "date": "2026-11-23T19:00Z"
+   },
+   {
+    "titre": "La testostérone, hormone de tous les fantasmes : enquête sur ses effets réels et supposés sur la virilité, la force physique ou l’agressivité",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/23/la-testosterone-hormone-de-tous-les-fantasmes-enquete-sur-ses-effets-reels-et-supposes-sur-la-virilite-la-force-physique-ou-l-agressivite_6814411_1650684.html",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "Ménopause : les inconnues et les risques de la supplémentation en testostérone pour raviver la libido",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/23/menopause-les-inconnues-et-les-risques-de-la-supplementation-en-testosterone-pour-raviver-la-libido_6814402_1650684.html",
+    "date": "2026-11-23T15:30Z"
+   },
+   {
+    "titre": "Comment les laboratoires français organisent l’accès de leurs chercheurs à l’IA",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/23/comment-les-laboratoires-francais-organisent-l-acces-de-leurs-chercheurs-a-l-ia_6814358_1650684.html",
+    "date": "2026-11-23T07:30Z"
+   },
+   {
+    "titre": "Mathématiques et IA : prenons le temps de comprendre",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/22/mathematiques-et-ia-prenons-le-temps-de-comprendre_6814234_1650684.html",
+    "date": "2026-11-22T17:00Z"
+   },
+   {
+    "titre": "Les fouilles de l’épave de la « Lune », le grand vaisseau de Louis XIV qui gît à 90 mètres de fond au large de Toulon, racontent une archéologie de l’extrême",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/22/les-fouilles-de-l-epave-de-la-lune-le-grand-vaisseau-de-louis-xvi-qui-git-a-90-metres-de-fond-au-large-de-toulon-racontent-une-archeologie-de-l-extreme_6814230_1650684.html",
+    "date": "2026-11-22T16:30Z"
+   },
+   {
+    "titre": "Le « poisson à poumons » éclaire l’énigme de la sortie de la mer des vertébrés",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/22/le-poisson-a-poumons-eclaire-l-enigme-de-la-sortie-de-la-mer-des-vertebres_6814219_1650684.html",
+    "date": "2026-11-22T14:30Z"
+   },
+   {
+    "titre": "Les mystères de Mercure, l’étrange planète du Système solaire, que la mission BepiColombo devrait lever",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/21/les-mysteres-de-mercure-l-etrange-planete-du-systeme-solaire-que-la-mission-bepicolombo-devrait-lever_6814059_1650684.html",
+    "date": "2026-11-21T18:25Z"
+   }
+  ]
+ },
+ "lm_pixels": {
+  "titre": "Le Monde, Pixels (numérique)",
+  "url": "https://www.lemonde.fr/pixels/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "EN DIRECT, Jensen Huang réintégré à la surprise générale chez Nvidia : le dirigeant sera auditionné publiquement au Sénat américain le 3 décembre",
+    "lien": "https://www.lemonde.fr/international/live/2026/11/23/en-direct-jensen-huang-reintegre-chez-nvidia-donald-trump-affirme-avoir-parle-directement-avec-le-conseil-d-administration_6814407_3210.html",
+    "date": "2026-11-23T15:57Z"
+   },
+   {
+    "titre": "Jensen Huang réintégré à la tête de Nvidia par son conseil d’administration, deux semaines après avoir démissionné à la suite de soupçons d’espionnage chinois",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/jensen-huang-reintegre-comme-directeur-general-et-president-de-nvidia-par-le-conseil-d-administration-deux-semaines-apres-avoir-demissionne-suite-a-des-suspicions-d-espionnage-chinois_6814392_3234.html",
+    "date": "2026-11-23T14:21Z"
+   },
+   {
+    "titre": "Comment les laboratoires français organisent l’accès de leurs chercheurs à l’IA",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/23/comment-les-laboratoires-francais-organisent-l-acces-de-leurs-chercheurs-a-l-ia_6814358_1650684.html",
+    "date": "2026-11-23T07:30Z"
+   },
+   {
+    "titre": "Le Digital Fairness Act, un projet de règlement européen qui affole l’industrie du jeu vidéo",
+    "lien": "https://www.lemonde.fr/pixels/article/2026/11/23/le-digital-fairness-act-un-projet-de-reglement-europeen-qui-affole-l-industrie-du-jeu-video_6814350_4408996.html",
+    "date": "2026-11-23T05:30Z"
+   },
+   {
+    "titre": "Gaspard G, youtubeur : « Les règles de la TV, sans les aides de la presse c’est le pire des deux mondes »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/gaspard-g-youtubeur-les-regles-de-la-tv-sans-les-aides-de-la-presse-c-est-le-pire-des-deux-mondes_6814347_3232.html",
+    "date": "2026-11-23T05:20Z"
+   },
+   {
+    "titre": "Cryptomonnaies : comment faire le tri parmi 66 millions d’actifs possibles",
+    "lien": "https://www.lemonde.fr/argent/article/2026/11/23/cryptomonnaies-comment-faire-le-tri-parmi-66-millions-d-actifs-possibles_6814342_1657007.html",
+    "date": "2026-11-23T05:00Z"
+   },
+   {
+    "titre": "Guadeloupe : le CHU victime d’une « cyberattaque de grande ampleur », le plan blanc déclenché",
+    "lien": "https://www.lemonde.fr/outre-mer/article/2026/11/22/guadeloupe-le-chu-victime-d-une-cyberattaque-de-grande-ampleur-le-plan-blanc-declenche_6814248_1840826.html",
+    "date": "2026-11-22T21:54Z"
+   },
+   {
+    "titre": "Mathématiques et IA : prenons le temps de comprendre",
+    "lien": "https://www.lemonde.fr/sciences/article/2026/11/22/mathematiques-et-ia-prenons-le-temps-de-comprendre_6814234_1650684.html",
+    "date": "2026-11-22T17:00Z"
+   }
+  ]
+ },
+ "lm_sante": {
+  "titre": "Le Monde, Santé",
+  "url": "https://www.lemonde.fr/sante/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Les protocoles d’aide à mourir suscitent des interrogations parmi les soignants : « Il n’existe pas de pilule létale magique, mourir n’est jamais simple »",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/aide-a-mourir-il-n-existe-pas-de-pilule-letale-magique-mourir-n-est-jamais-simple_6814359_3224.html",
+    "date": "2026-11-23T08:08Z"
+   },
+   {
+    "titre": "Guadeloupe : le CHU victime d’une « cyberattaque de grande ampleur », le plan blanc déclenché",
+    "lien": "https://www.lemonde.fr/outre-mer/article/2026/11/22/guadeloupe-le-chu-victime-d-une-cyberattaque-de-grande-ampleur-le-plan-blanc-declenche_6814248_1840826.html",
+    "date": "2026-11-22T21:54Z"
+   },
+   {
+    "titre": "« Deux tableaux matin, midi et soir, un opéra par mois » : la culture peut-elle nous soigner ?",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/22/deux-tableaux-matin-midi-et-soir-un-opera-par-mois-la-culture-peut-elle-nous-soigner_6814182_3246.html",
+    "date": "2026-11-22T05:25Z"
+   },
+   {
+    "titre": "« J’avais des pensées suicidaires, j’ai été délaissée par les médecins » : aux Etats-Unis, la mauvaise prise en charge du post-partum fait de nombreuses victimes chez les mères",
+    "lien": "https://www.lemonde.fr/sante/article/2026/11/22/j-avais-des-pensees-suicidaires-j-ai-ete-delaissee-par-les-medecins-aux-etats-unis-la-mauvaise-prise-en-charge-du-post-partum-fait-de-nombreuses-victimes-chez-les-meres_6814178_1651302.html",
+    "date": "2026-11-22T05:00Z"
+   },
+   {
+    "titre": "« Plus ça respire en dessous de la ceinture, mieux mes petits gars se portent » : le « spermaxxing », des recettes masculinistes parfois dangereuses pour tenter de booster la santé de ses gamètes",
+    "lien": "https://www.lemonde.fr/m-perso/article/2026/11/22/plus-ca-respire-en-dessous-de-la-ceinture-mieux-mes-petits-gars-se-portent-le-spermaxxing-pour-booster-la-sante-de-ses-gametes_6814177_4497916.html",
+    "date": "2026-11-22T05:00Z"
+   },
+   {
+    "titre": "Santé mentale : « Une société qui n’écoute pas la souffrance des enfants prépare les difficultés de demain »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/21/sante-mentale-une-societe-qui-n-ecoute-pas-la-souffrance-des-enfants-prepare-les-difficultes-de-demain_6814017_3232.html",
+    "date": "2026-11-21T13:00Z"
+   },
+   {
+    "titre": "Etats-Unis : un juge valide un accord d’indemnisation par Bayer de 7,25 milliards de dollars pour solder l’ensemble des plaintes liées au Roundup",
+    "lien": "https://www.lemonde.fr/planete/article/2026/11/21/etats-unis-un-juge-valide-un-accord-d-indemnisation-par-bayer-de-7-25-milliards-de-dollars-pour-solder-l-ensemble-des-plaintes-liees-au-roundup_6813717_3244.html",
+    "date": "2026-11-20T23:25Z"
+   },
+   {
+    "titre": "« A l’évidence, ce projet est un échec » : à Paris, l’agonie du quartier Rosa-Parks miné par le crack, dix ans après sa réhabilitation",
+    "lien": "https://www.lemonde.fr/politique/article/2026/11/20/a-l-evidence-ce-projet-est-un-echec-dix-ans-apres-sa-rehabilitation-l-agonie-du-quartier-rosa-parks-mine-par-le-crack_6813549_823448.html",
+    "date": "2026-11-20T04:00Z"
+   }
+  ]
+ },
+ "lm_culture": {
+  "titre": "Le Monde, Culture",
+  "url": "https://www.lemonde.fr/culture/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Cyril Hanouna arrête son émission sur Fun Radio, après une forte baisse d’audience",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/23/cyril-hanouna-arrete-son-emission-sur-fun-radio-apres-une-forte-baisse-d-audience_6814432_3246.html",
+    "date": "2026-11-23T17:28Z"
+   },
+   {
+    "titre": "« Les Enfances coloniales », sur RFI : une enquête sur les traces intimes de la guerre d’Algérie",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/23/les-enfances-coloniales-sur-rfi-une-enquete-sur-les-traces-intimes-de-la-guerre-d-algerie_6814420_3246.html",
+    "date": "2026-11-23T16:30Z"
+   },
+   {
+    "titre": "Catherine Clément, philosophe passionnée de l’Inde, est morte à 87 ans",
+    "lien": "https://www.lemonde.fr/disparitions/article/2026/11/23/catherine-clement-philosophe-passionnee-de-l-inde-est-morte-a-87-ans_6814414_3382.html",
+    "date": "2026-11-23T16:11Z"
+   },
+   {
+    "titre": "« Making Marie Antoinette », sur Mubi : la cinéaste Sofia Coppola révélée par la caméra de sa mère",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/23/making-marie-antoinette-sur-mubi-la-cineaste-sofia-coppola-revelee-par-la-camera-de-sa-mere_6814410_3246.html",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "Dans « Yaourt ! », Thomas Poitevin retire ses perruques mais garde son talent",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/23/dans-yaourt-thomas-poitevin-retire-ses-perruques-mais-garde-son-talent_6814352_3246.html",
+    "date": "2026-11-23T05:30Z"
+   },
+   {
+    "titre": "Notre sélection de concerts en novembre et décembre 2026 : Orelsan, The Pogues, Keren Ann, Blondshell…",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/23/notre-selection-de-concerts-en-novembre-et-decembre-2026-orelsan-the-pogues-keren-ann-blondshell_6814306_3246.html",
+    "date": "2026-11-23T03:30Z"
+   },
+   {
+    "titre": "Au festival Entrevues, à Belfort, le docufiction « I Plant My Hand in the Garden » récompensé par le Grand Prix Janine Bazin",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/22/au-festival-entrevues-a-belfort-le-docufiction-i-plant-my-hand-in-the-garden-recompense-par-le-grand-prix-janine-bazin_6814244_3246.html",
+    "date": "2026-11-22T19:30Z"
+   },
+   {
+    "titre": "« Le Collège noir : Complainte d’Auvergne », sur ADN : cinq collégiens mènent l’aventure dans le Cantal",
+    "lien": "https://www.lemonde.fr/culture/article/2026/11/22/le-college-noir-complainte-d-auvergne-sur-adn-cinq-collegiens-menent-l-aventure-dans-le-cantal_6814231_3246.html",
+    "date": "2026-11-22T16:30Z"
+   }
+  ]
+ },
+ "lm_societe": {
+  "titre": "Le Monde, Société",
+  "url": "https://www.lemonde.fr/societe/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Violences du 17 octobre : Patrice Faure, discret préfet de police de Paris, face à la commission d’enquête de l’Assemblée nationale",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/violences-du-17-octobre-patrice-faure-discret-prefet-de-police-de-paris-face-a-la-commission-d-enquete-de-l-assemblee-nationale_6814428_3224.html",
+    "date": "2026-11-23T17:00Z"
+   },
+   {
+    "titre": "Statue de la Vierge vandalisée en Corse : deux hommes condamnés à trois et six mois de prison ferme aménagés sous bracelet électronique",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/statue-de-la-vierge-vandalisee-en-corse-deux-hommes-condamnes-a-trois-mois-et-six-mois-de-prison-ferme-amenages-sous-bracelet-electronique_6814422_3224.html",
+    "date": "2026-11-23T16:37Z"
+   },
+   {
+    "titre": "A Paris, les conflits autour de l’espace public pourraient faire le bonheur du secteur privé",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/a-paris-les-conflits-autour-de-l-espace-public-pourraient-faire-le-bonheur-du-secteur-prive_6814387_3232.html",
+    "date": "2026-11-23T13:30Z"
+   },
+   {
+    "titre": "Les enquêtes sur les déplacements d’Anne Hidalgo en Nouvelle-Calédonie et en Polynésie classées sans suite par le PNF",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/les-enquetes-sur-les-deplacements-d-anne-hidalgo-en-nouvelle-caledonie-et-en-polynesie-classees-sans-suite-par-le-pnf_6814384_3224.html",
+    "date": "2026-11-23T12:30Z"
+   },
+   {
+    "titre": "Nice : Christian Estrosi, son épouse, France Télévisions et « La Tribune » renvoyés devant le tribunal dans le cadre d’une enquête portant sur l’organisation d’événements",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/nice-christian-estrosi-son-epouse-france-televisions-et-la-tribune-renvoyes-devant-le-tribunal-dans-le-cadre-d-une-enquete-portant-sur-l-organisation-d-evenements_6814376_3224.html",
+    "date": "2026-11-23T11:09Z"
+   },
+   {
+    "titre": "Les protocoles d’aide à mourir suscitent des interrogations parmi les soignants : « Il n’existe pas de pilule létale magique, mourir n’est jamais simple »",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/aide-a-mourir-il-n-existe-pas-de-pilule-letale-magique-mourir-n-est-jamais-simple_6814359_3224.html",
+    "date": "2026-11-23T08:08Z"
+   },
+   {
+    "titre": "Antoine Lilti, historien : « Il est très frappant, dans les mobilisations en cours, de voir que ces jeunes réclament que la promesse des Lumières soit tenue »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/antoine-lilti-historien-il-est-tres-frappant-dans-les-mobilisations-en-cours-de-voir-que-ces-jeunes-reclament-que-la-promesse-des-lumieres-soit-tenue_6814349_3232.html",
+    "date": "2026-11-23T05:30Z"
+   },
+   {
+    "titre": "Présidentielle 2027 : Marine Le Pen et le RN, cernés par les procédures, misent sur l’indifférence présumée des électeurs pour les affaires judiciaires",
+    "lien": "https://www.lemonde.fr/politique/article/2026/11/23/presidentielle-2027-marine-le-pen-une-campagne-au-defi-de-la-justice_6814312_823448.html",
+    "date": "2026-11-23T04:30Z"
+   }
+  ]
+ },
+ "lm_politique": {
+  "titre": "Le Monde, Politique",
+  "url": "https://www.lemonde.fr/politique/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Retraites : la Cour des comptes plaide pour une limitation des possibilités de départs anticipés",
+    "lien": "https://www.lemonde.fr/politique/article/2026/11/23/retraites-la-cour-des-comptes-plaide-pour-une-limitation-des-possibilites-de-departs-anticipes_6814442_823448.html",
+    "date": "2026-11-23T19:00Z"
+   },
+   {
+    "titre": "Yannick Jadot et Jérémie Iordanoff, en rupture avec Marine Tondelier, créent un nouveau parti écologiste",
+    "lien": "https://www.lemonde.fr/politique/article/2026/11/23/yannick-jadot-et-jeremie-iordanoff-en-rupture-avec-marine-tondelier-creent-un-nouveau-parti-ecologiste_6814435_823448.html",
+    "date": "2026-11-23T17:43Z"
+   },
+   {
+    "titre": "Budget : ces cinq obstacles auxquels se heurte le projet d’inscrire une « règle d’or » dans la Constitution",
+    "lien": "https://www.lemonde.fr/politique/article/2026/11/23/budget-ces-cinq-obstacles-auxquels-se-heurte-le-projet-d-inscrire-une-regle-d-or-dans-la-constitution_6814433_823448.html",
+    "date": "2026-11-23T17:30Z"
+   },
+   {
+    "titre": "Violences du 17 octobre : Patrice Faure, discret préfet de police de Paris, face à la commission d’enquête de l’Assemblée nationale",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/violences-du-17-octobre-patrice-faure-discret-prefet-de-police-de-paris-face-a-la-commission-d-enquete-de-l-assemblee-nationale_6814428_3224.html",
+    "date": "2026-11-23T17:00Z"
+   },
+   {
+    "titre": "Appel à témoignages : comment la politique s’insinue-t-elle dans vos conversations quotidiennes ?",
+    "lien": "https://www.lemonde.fr/politique/appel-temoignages/2026/11/23/appel-a-temoignages-comment-la-politique-s-insinue-t-elle-dans-vos-conversations-quotidiennes_6814421_823448.html",
+    "date": "2026-11-23T16:31Z"
+   },
+   {
+    "titre": "A Saint-Fons, Hadi Mebarki met en œuvre le « communalisme » de LFI",
+    "lien": "https://www.lemonde.fr/politique/article/2026/11/23/a-saint-fons-hadi-mebarki-met-en-uvre-le-communalisme-de-lfi_6814413_823448.html",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "Présidentielle 2027 : à Tarascon, le maire RN veut faire de la ville « une vitrine » pour Marine Le Pen",
+    "lien": "https://www.lemonde.fr/politique/article/2026/11/23/presidentielle-2027-a-tarascon-le-maire-rn-veut-faire-de-la-ville-une-vitrine-pour-marine-le-pen_6814388_823448.html",
+    "date": "2026-11-23T13:36Z"
+   },
+   {
+    "titre": "A Paris, les conflits autour de l’espace public pourraient faire le bonheur du secteur privé",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/a-paris-les-conflits-autour-de-l-espace-public-pourraient-faire-le-bonheur-du-secteur-prive_6814387_3232.html",
+    "date": "2026-11-23T13:30Z"
+   }
+  ]
+ },
+ "lm_idees": {
+  "titre": "Le Monde, Idées",
+  "url": "https://www.lemonde.fr/idees/rss_full.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "« Après le jugement de la Cour internationale de justice sur le Myanmar, la qualification de génocide à Gaza peut désormais s’appuyer sur sa jurisprudence »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/apres-le-jugement-de-la-cour-internationale-de-justice-sur-le-myanmar-la-qualification-de-genocide-a-gaza-peut-desormais-s-appuyer-sur-sa-jurisprudence_6814439_3232.html",
+    "date": "2026-11-23T18:30Z"
+   },
+   {
+    "titre": "Pesticides : « Omnibus X menace la santé des citoyens sans résoudre le problème bureaucratique qu’il dénonce »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/pesticides-omnibus-x-menace-la-sante-des-citoyens-sans-resoudre-le-probleme-bureaucratique-qu-il-denonce_6814419_3232.html",
+    "date": "2026-11-23T16:30Z"
+   },
+   {
+    "titre": "« Les Etats-Unis n’ont toujours pas arrêté une stratégie pour ralentir la Chine »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/les-etats-unis-n-ont-toujours-pas-arrete-une-strategie-pour-ralentir-la-chine_6814412_3232.html",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "Vu par… Tjeerd Royaards",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/vu-par-tjeerd-royaards_6814401_3232.html",
+    "date": "2026-11-23T15:30Z"
+   },
+   {
+    "titre": "Génocide des Rohingya : « Le champ d’action de la Cour internationale de justice s’est orienté vers les enjeux liés aux droits humains »",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/genocide-des-rohingya-le-champ-d-action-de-la-cour-internationale-de-justice-s-est-oriente-vers-les-enjeux-lies-aux-droits-humains_6814395_3232.html",
+    "date": "2026-11-23T14:30Z"
+   },
+   {
+    "titre": "A Paris, les conflits autour de l’espace public pourraient faire le bonheur du secteur privé",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/a-paris-les-conflits-autour-de-l-espace-public-pourraient-faire-le-bonheur-du-secteur-prive_6814387_3232.html",
+    "date": "2026-11-23T13:30Z"
+   },
+   {
+    "titre": "COP31 : les limites du consensus à tout prix",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/cop31-les-limites-du-consensus-a-tout-prix_6814375_3232.html",
+    "date": "2026-11-23T10:30Z"
+   },
+   {
+    "titre": "Marion Flécher, finaliste du prix Penser le travail 2026 : « Loin de remettre en cause le capitalisme, les start-up en proposent un nouveau visage »",
+    "lien": "https://www.lemonde.fr/emploi/article/2026/11/23/marion-flecher-finaliste-du-prix-penser-le-travail-2026-loin-de-remettre-en-cause-le-capitalisme-les-start-up-en-proposent-un-nouveau-visage_6660953_1698638.html",
+    "date": "2026-11-23T09:56Z"
+   }
+  ]
+ },
+ "rfi_afrique": {
+  "titre": "RFI, Afrique",
+  "url": "https://www.rfi.fr/fr/afrique/rss",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Côte d'Ivoire: visite du président allemand à Abidjan, une première depuis 40 ans",
+    "lien": "https://www.rfi.fr/fr/afrique/20261123-c%C3%B4te-d-ivoire-visite-du-pr%C3%A9sident-allemand-%C3%A0-abidjan-une-premi%C3%A8re-depuis-40-ans",
+    "date": "2026-11-23T17:48Z"
+   },
+   {
+    "titre": "Les attaques contre des navires russes à Benghazi «mettent en difficulté la stratégie africaine de Moscou»",
+    "lien": "https://www.rfi.fr/fr/podcasts/invit%C3%A9-afrique-midi/20261123-les-attaques-contre-des-navires-russes-%C3%A0-benghazi-mettent-en-difficult%C3%A9-la-strat%C3%A9gie-africaine-de-moscou",
+    "date": "2026-11-23T14:57Z"
+   },
+   {
+    "titre": "RDC: la police disperse une manifestation de l'Église catholique à Lubumbashi",
+    "lien": "https://www.rfi.fr/fr/afrique/20261123-rdc-la-police-disperse-une-manifestation-de-l-%C3%A9glise-catholique-%C3%A0-lubumbashi",
+    "date": "2026-11-23T14:39Z"
+   },
+   {
+    "titre": "Malraux et l'Afrique: de la décolonisation à la découverte de l'altérité radicale des arts africains",
+    "lien": "https://www.rfi.fr/fr/culture/20261123-andr%C3%A9-malraux-et-l-afrique-il-%C3%A9tait-le-penseur-de-la-d%C3%A9colonisation",
+    "date": "2026-11-23T13:47Z"
+   },
+   {
+    "titre": "RDC: le secteur minier au cœur de la nouvelle édition du forum Makutano",
+    "lien": "https://www.rfi.fr/fr/afrique/20261123-rdc-le-secteur-minier-au-c%C5%93ur-de-la-nouvelle-%C3%A9dition-du-forum-makutano",
+    "date": "2026-11-23T12:47Z"
+   },
+   {
+    "titre": "Sénégal ou Maroc ? Le TAS rend sa décision ce « mardi » 24 novembre sur la finale de la CAN 2025",
+    "lien": "https://www.rfi.fr/fr/afrique-foot/20261123-s%C3%A9n%C3%A9gal-ou-maroc-le-tas-rend-sa-d%C3%A9cision-ce-mardi-24-novembre-sur-la-finale-de-la-can-2025",
+    "date": "2026-11-23T11:28Z"
+   },
+   {
+    "titre": "Au Ghana, les excès de vitesse désormais traqués par de nouveaux contrôles par caméra",
+    "lien": "https://www.rfi.fr/fr/afrique/20261123-au-ghana-les-exc%C3%A8s-de-vitesse-d%C3%A9sormais-traqu%C3%A9s-par-de-nouveaux-contr%C3%B4les-par-cam%C3%A9ra",
+    "date": "2026-11-23T10:48Z"
+   },
+   {
+    "titre": "En Côte d’Ivoire, la peur de la stigmatisation freine encore le dépistage du VIH",
+    "lien": "https://www.rfi.fr/fr/afrique/20261123-en-c%C3%B4te-d-ivoire-la-peur-de-la-stigmatisation-freine-encore-le-d%C3%A9pistage-du-vih",
+    "date": "2026-11-23T10:01Z"
+   }
+  ]
+ },
+ "rfi_asie": {
+  "titre": "RFI, Asie-Pacifique",
+  "url": "https://www.rfi.fr/fr/asie-pacifique/rss",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Mobilisation des ouvriers du textile au Bangladesh: «Des promesses du nouveau gouvernement n'ont pas encore été tenues»",
+    "lien": "https://www.rfi.fr/fr/podcasts/invit%C3%A9-international/20261123-mobilisation-des-ouvriers-du-textile-au-bangladesh-des-promesses-du-nouveau-gouvernement-n-ont-pas-encore-%C3%A9t%C3%A9-tenues",
+    "date": "2026-11-23T16:07Z"
+   },
+   {
+    "titre": "L'Inde offre au Népal un plan d'aide de 1,6 milliard de dollars pour sa reconstruction après les inondations",
+    "lien": "https://www.rfi.fr/fr/asie-pacifique/20261123-l-inde-offre-au-n%C3%A9pal-un-plan-d-aide-de-1-6-milliard-de-dollars-pour-sa-reconstruction-apr%C3%A8s-les-inondations",
+    "date": "2026-11-23T10:36Z"
+   },
+   {
+    "titre": "Génocide des Rohingyas : sur quelles preuves repose le verdict de la CIJ ?",
+    "lien": "https://www.rfi.fr/fr/podcasts/appels-sur-l-actualit%C3%A9/20261123-g%C3%A9nocide-des-rohingyas-sur-quelles-preuves-repose-le-verdict-de-la-cij",
+    "date": "2026-11-23T10:20Z"
+   },
+   {
+    "titre": "Chine: Pékin fustige une interdiction américaine visant des géants chinois des télécommunications",
+    "lien": "https://www.rfi.fr/fr/asie-pacifique/20261123-chine-p%C3%A9kin-fustige-une-interdiction-am%C3%A9ricaine-visant-des-g%C3%A9ants-chinois-des-t%C3%A9l%C3%A9communications",
+    "date": "2026-11-23T09:54Z"
+   },
+   {
+    "titre": "Le Premier ministre népalais en Inde pour sa première visite bilatérale depuis son arrivée au pouvoir",
+    "lien": "https://www.rfi.fr/fr/asie-pacifique/20261123-le-premier-ministre-n%C3%A9palais-en-inde-pour-sa-premi%C3%A8re-visite-bilat%C3%A9rale-depuis-son-arriv%C3%A9e-au-pouvoir",
+    "date": "2026-11-23T05:47Z"
+   },
+   {
+    "titre": "Rapatriements de Birmans sur fond de haine anti-Rohingyas croissante en Malaisie",
+    "lien": "https://www.rfi.fr/fr/podcasts/reportage-international/20261122-rapatriements-de-birmans-sur-fond-de-haine-anti-rohingyas-croissante-en-malaisie",
+    "date": "2026-11-22T23:29Z"
+   },
+   {
+    "titre": "Bangladesh: la filière textile estime à 428 millions de dollars le coût des grèves pour les salaires",
+    "lien": "https://www.rfi.fr/fr/asie-pacifique/20261122-bangladesh-la-fili%C3%A8re-textile-estime-%C3%A0-428-millions-de-dollars-le-co%C3%BBt-des-gr%C3%A8ves-pour-les-salaires",
+    "date": "2026-11-22T16:04Z"
+   },
+   {
+    "titre": "Corée du Sud: le ministre de l'Éducation démissionne sur fond de scandale de triche aux examens",
+    "lien": "https://www.rfi.fr/fr/asie-pacifique/20261122-cor%C3%A9e-du-sud-le-ministre-de-l-%C3%A9ducation-d%C3%A9missionne-sur-fond-de-scandale-de-triche-aux-examens",
+    "date": "2026-11-22T12:35Z"
+   }
+  ]
+ },
+ "f24_moyen_orient": {
+  "titre": "France 24, Moyen-Orient",
+  "url": "https://www.france24.com/fr/moyen-orient/rss",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Guerre en Iran : Téhéran réclame 290 milliards de dollars de dédommagements à Washington",
+    "lien": "https://www.france24.com/fr/moyen-orient/20261123-t%C3%A9h%C3%A9ran-r%C3%A9clame-290-milliards-dollars-d%C3%A9dommagements-washington-guerre",
+    "date": "2026-11-23T15:53Z"
+   },
+   {
+    "titre": "Israël : Eisenkot et Netanyahu entament un nouveau cycle de négociations en vue d'une coalition",
+    "lien": "https://www.france24.com/fr/moyen-orient/20261123-israel-partis-gadi-eisenkot-benjamin-netanyahu-achevent-discussions-sans-parvenir-accord-likoud-coalition",
+    "date": "2026-11-23T05:19Z"
+   },
+   {
+    "titre": "Double attaque contre des bateaux au large de la Libye",
+    "lien": "https://www.france24.com/fr/vid%C3%A9o/20261123-double-attaque-contre-des-bateaux-au-large-de-la-libye",
+    "date": "2026-11-23T04:44Z"
+   },
+   {
+    "titre": "Cisjordanie occupée : Eisenkot condamne des attaques de colons et dénonce un \"terrorisme juif\"",
+    "lien": "https://www.france24.com/fr/moyen-orient/20261122-cisjordanie-occup%C3%A9e-eisenkot-condamne-des-attaques-de-colons-et-d%C3%A9nonce-un-terrorisme-juif",
+    "date": "2026-11-22T15:42Z"
+   },
+   {
+    "titre": "En Israël, Gadi Eisenkot invite le parti de Benjamin Netanyahu à des négociations de coalition",
+    "lien": "https://www.france24.com/fr/moyen-orient/20261121-isra%C3%ABl-gadi-eisenkot-invite-le-parti-de-benjamin-netanyahu-%C3%A0-des-n%C3%A9gociations-de-coalition",
+    "date": "2026-11-21T20:29Z"
+   },
+   {
+    "titre": "L'Arabie saoudite dit avoir intercepté des missiles lancés par les Houthis vers Riyad",
+    "lien": "https://www.france24.com/fr/moyen-orient/20261121-l-arabie-saoudite-dit-avoir-intercept%C3%A9-des-missiles-lanc%C3%A9s-par-les-houthis-vers-riyad",
+    "date": "2026-11-21T06:52Z"
+   },
+   {
+    "titre": "Les États-Unis ont-ils utilisé des bombes au graphite contre l'Iran ?",
+    "lien": "https://www.france24.com/fr/moyen-orient/20261120-etats-unis-bombes-graphite-iran",
+    "date": "2026-11-20T16:40Z"
+   },
+   {
+    "titre": "En Irak, l'armée entre dans un bastion du groupe pro-iranien Kataeb Hezbollah",
+    "lien": "https://www.france24.com/fr/moyen-orient/20261120-irak-arm%C3%A9e-s-appr%C3%AAte-%C3%A0-entrer-dans-bastion-groupe-pro-iranien-kataeb-hezbollah",
+    "date": "2026-11-20T08:39Z"
+   }
+  ]
+ },
+ "f24_afrique": {
+  "titre": "France 24, Afrique",
+  "url": "https://www.france24.com/fr/afrique/rss",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Sénégal : le pétrole tient-il ses promesses depuis le premier baril en 2024 ?",
+    "lien": "https://www.france24.com/fr/vid%C3%A9o/20261123-s%C3%A9n%C3%A9gal-le-p%C3%A9trole-tient-il-ses-promesses-depuis-le-premier-baril-en-2024",
+    "date": "2026-11-23T18:33Z"
+   },
+   {
+    "titre": "Football : l'Afrique soutient la réélection de Gianni Infantino à la tête de la FIFA",
+    "lien": "https://www.france24.com/fr/vid%C3%A9o/20261123-footbal-l-afrique-soutient-la-r%C3%A9%C3%A9lection-de-gianni-infantino-%C3%A0-la-t%C3%AAte-de-la-fifa",
+    "date": "2026-11-23T17:19Z"
+   },
+   {
+    "titre": "Plaidoyer pour une IA 100% africaine",
+    "lien": "https://www.france24.com/fr/%C3%A9missions/le-rendez-vous-afrique/20261123-plaidoyer-pour-une-ia-100-africaine",
+    "date": "2026-11-23T15:53Z"
+   },
+   {
+    "titre": "RD Congo : vers un report des élections générales de décembre 2028 ?",
+    "lien": "https://www.france24.com/fr/vid%C3%A9o/20261123-rd-congo-vers-un-report-des-%C3%A9lections-g%C3%A9n%C3%A9rales-de-d%C3%A9cembre-2028",
+    "date": "2026-11-23T12:10Z"
+   },
+   {
+    "titre": "Mali : Amnesty lance une campagne pour exiger la libération de l'influenceuse Rokiatou Doumbia",
+    "lien": "https://www.france24.com/fr/afrique/20261123-amnesty-international-lance-campagne-liberation-influenceuse-rokiatou-doumbia-mali-junte-prison-association-malfaiteurs",
+    "date": "2026-11-23T04:05Z"
+   },
+   {
+    "titre": "RD Congo : vers un report des élections générales ?",
+    "lien": "https://www.france24.com/fr/%C3%A9missions/journal-de-l-afrique/20261122-elections-g%C3%A9n%C3%A9rales-en-rd-congo-la-symocel-doute-de-la-possibilit%C3%A9-de-tenir-les-d%C3%A9lais",
+    "date": "2026-11-22T21:42Z"
+   },
+   {
+    "titre": "Libye : deux navires attaqués par des drones maritimes, dont un bateau russe",
+    "lien": "https://www.france24.com/fr/afrique/20261122-libye-drones-maritimes-attaqu%C3%A9-deux-navires-bateau-russe-guerre",
+    "date": "2026-11-22T21:05Z"
+   },
+   {
+    "titre": "Des frappes de drones imputées à l'Éthiopie ciblent la capitale soudanaise",
+    "lien": "https://www.france24.com/fr/afrique/20261122-des-frappes-de-drones-imput%C3%A9es-%C3%A0-l-%C3%A9thiopie-touchent-des-habitations-%C3%A0-khartoum",
+    "date": "2026-11-22T13:08Z"
+   }
+  ]
+ },
+ "the_hindu": {
+  "titre": "The Hindu, national (Inde)",
+  "url": "https://www.thehindu.com/news/national/feeder/default.rss",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Autism lab, sleep research facility inaugurated in IIT Madras",
+    "lien": "https://www.thehindu.com/news/national/tamil-nadu/autism-lab-sleep-research-facility-inaugurated-in-iit-madras/article71734588.ece",
+    "date": "2026-11-23T19:11Z"
+   },
+   {
+    "titre": "Pammal residents want widening of main road",
+    "lien": "https://www.thehindu.com/news/cities/chennai/pammal-residents-want-widening-of-main-road/article71736003.ece",
+    "date": "2026-11-23T19:09Z"
+   },
+   {
+    "titre": "SC admits appeal filed by SASTRA against Madras High Court’s eviction order",
+    "lien": "https://www.thehindu.com/news/national/tamil-nadu/sc-admits-appeal-filed-bysastraagainst-madras-high-courts-eviction-order/article71735147.ece",
+    "date": "2026-11-23T19:01Z"
+   },
+   {
+    "titre": "Collector files complaint against Kallakurichi TVK MLA",
+    "lien": "https://www.thehindu.com/news/national/tamil-nadu/collector-files-complaint-against-kallakurichi-tvk-mla/article71736185.ece",
+    "date": "2026-11-23T19:01Z"
+   },
+   {
+    "titre": "PJTSAU to launch two new degree course",
+    "lien": "https://www.thehindu.com/news/national/telangana/pjtsau-to-launch-two-new-degree-course-rythu-bharosa-yatras-planned-from-jan/article71735624.ece",
+    "date": "2026-11-23T18:40Z"
+   },
+   {
+    "titre": "Don’t use language to divide people",
+    "lien": "https://www.thehindu.com/opinion/op-ed/dont-use-language-to-divide-people/article71736080.ece",
+    "date": "2026-11-23T18:32Z"
+   },
+   {
+    "titre": "Amid pressure from different quarters, police bring Thirupparankundram hillock under tight security",
+    "lien": "https://www.thehindu.com/news/cities/Madurai/amid-pressure-from-different-quarters-police-bring-thirupparankundram-hillock-under-tight-security/article71734773.ece",
+    "date": "2026-11-23T18:31Z"
+   },
+   {
+    "titre": "Alleged synagogue arson attempt case: court gives NIA custody of accused till Nov. 27",
+    "lien": "https://www.thehindu.com/news/national/kerala//article71735231.ece",
+    "date": "2026-11-23T18:28Z"
+   }
+  ]
+ },
+ "dawn": {
+  "titre": "Dawn, actualité (Pakistan)",
+  "url": "https://www.dawn.com/feeds/home",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Naqvi complicated provinces debate by 'irrelevant speech at irrelevant forum', says Rana Sanaullah",
+    "lien": "https://www.dawn.com/news/2046575/naqvi-complicated-provinces-debate-by-irrelevant-speech-at-irrelevant-forum-says-rana-sanaullah",
+    "date": "2026-11-23T19:07Z"
+   },
+   {
+    "titre": "Pemra bans ads, promotions for commercial infant formula on electronic media",
+    "lien": "https://www.dawn.com/news/2046573/pemra-bans-ads-promotions-for-commercial-infant-formula-on-electronic-media",
+    "date": "2026-11-23T18:41Z"
+   },
+   {
+    "titre": "Petrol price reduced by Rs3 per litre; diesel remains unchanged",
+    "lien": "https://www.dawn.com/news/2046566/petrol-price-reduced-by-rs3-per-litre-diesel-remains-unchanged",
+    "date": "2026-11-23T18:04Z"
+   },
+   {
+    "titre": "‘Rights at stake, not privileges’: Opposition leaders write to SC, FCC, IHC chief justices on Imran, Bushra’s health",
+    "lien": "https://www.dawn.com/news/2046555/rights-at-stake-not-privileges-opposition-leaders-write-to-sc-fcc-ihc-chief-justices-on-imran-bushras-health",
+    "date": "2026-11-23T17:29Z"
+   },
+   {
+    "titre": "AB de Villiers makes new claim about Australian 'Sandpapergate' ball-tampering scandal",
+    "lien": "https://www.dawn.com/news/2046572/ab-de-villiers-makes-new-claim-about-australian-sandpapergate-ball-tampering-scandal",
+    "date": "2026-11-23T17:11Z"
+   },
+   {
+    "titre": "'No national security risk': Nvidia reinstates Jensen Huang as CEO after affair scandal",
+    "lien": "https://www.dawn.com/news/2046556/no-national-security-risk-nvidia-reinstates-jensen-huang-as-ceo-after-affair-scandal",
+    "date": "2026-11-23T16:55Z"
+   },
+   {
+    "titre": "PM Shehbaz vows no cap on homes for poor, sets Rs1,000bn disbursement target under Apna Ghar scheme",
+    "lien": "https://www.dawn.com/news/2046567/pm-shehbaz-vows-no-cap-on-homes-for-poor-sets-rs1000bn-disbursement-target-under-apna-ghar-scheme",
+    "date": "2026-11-23T16:15Z"
+   },
+   {
+    "titre": "Peshawar to host opening ceremony, inaugural match for 12th edition of PSL: PCB chief",
+    "lien": "https://www.dawn.com/news/2046559/peshawar-to-host-opening-ceremony-inaugural-match-for-12th-edition-of-psl-pcb-chief",
+    "date": "2026-11-23T15:58Z"
+   }
+  ]
+ },
+ "japan_times": {
+  "titre": "The Japan Times",
+  "url": "https://www.japantimes.co.jp/feed/",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Japanese and North Korean intel officials likely had contact during Asian Games",
+    "lien": "https://www.japantimes.co.jp/news/2026/11/23/japan/japan-nk-intel-asian-games/",
+    "date": "2026-11-23T11:20Z"
+   },
+   {
+    "titre": "Japan’s Tamagotchi digital pet toy marks 30th anniversary",
+    "lien": "https://www.japantimes.co.jp/business/2026/11/23/tamagotchi-30th-anniversary/",
+    "date": "2026-11-23T09:18Z"
+   },
+   {
+    "titre": "Ukraine sinks Russian warship in Libya as conflict spreads beyond Europe",
+    "lien": "https://www.japantimes.co.jp/news/2026/11/23/world/libya-drone-attack-russian-ship-ukraine/",
+    "date": "2026-11-23T08:36Z"
+   },
+   {
+    "titre": "China is getting inflation in all the wrong places",
+    "lien": "https://www.japantimes.co.jp/commentary/2026/11/23/world/china-getting-inflation/",
+    "date": "2026-11-23T08:30Z"
+   },
+   {
+    "titre": "It’s no urban legend; it’s failed government communication",
+    "lien": "https://www.japantimes.co.jp/commentary/2026/11/23/japan/japan-failed-government-communication/",
+    "date": "2026-11-23T08:10Z"
+   },
+   {
+    "titre": "Cost burden keeps Fukushima’s hydrogen dream from taking off",
+    "lien": "https://www.japantimes.co.jp/news/2026/11/23/japan/society/fukushima-hydrogen-station-struggle/",
+    "date": "2026-11-23T07:37Z"
+   },
+   {
+    "titre": "Restored main hall of Okinawa’s Shuri Castle opens to public",
+    "lien": "https://www.japantimes.co.jp/news/2026/11/23/japan/shuri-castle-seiden-opens-public/",
+    "date": "2026-11-23T07:31Z"
+   },
+   {
+    "titre": "49ers rout Vikings as NFL wraps up international slate in style in Mexico City",
+    "lien": "https://www.japantimes.co.jp/sports/2026/11/23/more-sports/49ers-rout-vikings-mexico-city/",
+    "date": "2026-11-23T07:27Z"
+   }
+  ]
+ },
+ "scmp_chine": {
+  "titre": "South China Morning Post, Chine",
+  "url": "https://www.scmp.com/rss/4/feed",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Mexico and China agree to create working group to boost trade",
+    "lien": "https://www.scmp.com/news/china/article/3375520/mexico-and-china-agree-create-working-group-boost-trade",
+    "date": "2026-11-23T16:29Z"
+   },
+   {
+    "titre": "China-US ties to enter ‘more difficult’ 2027 but broad stability will hold: expert",
+    "lien": "https://www.scmp.com/news/china/diplomacy/article/3375490/china-us-ties-enter-more-difficult-2027-broad-stability-will-hold-expert",
+    "date": "2026-11-23T14:00Z"
+   },
+   {
+    "titre": "China’s advanced Type 055 destroyer to make its Zhuhai air show debut",
+    "lien": "https://www.scmp.com/news/china/military/article/3375499/chinas-advanced-type-055-destroyer-make-its-zhuhai-air-show-debut",
+    "date": "2026-11-23T13:00Z"
+   },
+   {
+    "titre": "Huge planet, tiny star: discovery challenges textbook view of how giants form",
+    "lien": "https://www.scmp.com/news/china/science/article/3375439/huge-planet-tiny-star-discovery-challenges-textbook-view-how-giants-form",
+    "date": "2026-11-23T12:00Z"
+   },
+   {
+    "titre": "More power, more weapons: what’s next for China’s J-35A stealth fighter?",
+    "lien": "https://www.scmp.com/news/china/military/article/3375447/more-power-more-weapons-whats-next-chinas-j-35a-stealth-fighter",
+    "date": "2026-11-23T10:00Z"
+   },
+   {
+    "titre": "How will China’s ties with Myanmar change with the ICJ’s genocide ruling?",
+    "lien": "https://www.scmp.com/news/china/diplomacy/article/3375454/how-will-chinas-ties-myanmar-change-icjs-genocide-ruling",
+    "date": "2026-11-23T08:26Z"
+   },
+   {
+    "titre": "China sentences ministry official to death for leaking over 100 state secrets",
+    "lien": "https://www.scmp.com/news/china/politics/article/3375436/china-sentences-ministry-official-death-leaking-over-100-state-secrets",
+    "date": "2026-11-23T05:56Z"
+   },
+   {
+    "titre": "US detains Chinese Princeton student; China’s space mining road map: 5 weekend reads you missed",
+    "lien": "https://www.scmp.com/news/world/article/3375414/us-detains-chinese-princeton-student-chinas-space-mining-road-map-5-weekend-reads-you-missed",
+    "date": "2026-11-23T04:15Z"
+   }
+  ]
+ },
+ "abc_australie": {
+  "titre": "ABC News (Australie), dernières nouvelles",
+  "url": "https://www.abc.net.au/news/feed/2942460/rss.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Steve Smith labours on return from injury in Sheffield Shield",
+    "lien": "https://www.abc.net.au/news/2026-11-23/steve-smith-out-cheaply-in-return-from-neck-injury-in-shield/107418702",
+    "date": "2026-11-23T08:42Z"
+   },
+   {
+    "titre": "Giddey's historic triple-double rewrites 60-year Chicago Bulls record",
+    "lien": "https://www.abc.net.au/news/2026-11-23/josh-giddey-hits-triple-double-in-chicago-bulls-nba-defeat/107418642",
+    "date": "2026-11-23T07:58Z"
+   },
+   {
+    "titre": "Australia beats France in Billie Jean King Cup tie",
+    "lien": "https://www.abc.net.au/news/2026-11-23/australia-billie-jean-king-cup-side-back-in-world-group/107418572",
+    "date": "2026-11-23T07:44Z"
+   },
+   {
+    "titre": "New Zealand rearguard holds India to draw first Test",
+    "lien": "https://www.abc.net.au/news/2026-11-23/new-zealand-bat-out-draw-with-india-in-first-test/107418280",
+    "date": "2026-11-23T06:33Z"
+   },
+   {
+    "titre": "Devastating injury blow for Adams days after making Socceroos debut",
+    "lien": "https://www.abc.net.au/news/2026-11-23/socceroo-eli-adams-suffers-injury-blow/107418142",
+    "date": "2026-11-23T05:55Z"
+   },
+   {
+    "titre": "Geoff Henke, Winter Olympics 'dream maker', dies aged 99",
+    "lien": "https://www.abc.net.au/news/2026-11-23/geoff-henke-winter-olympics-dream-maker/107416768",
+    "date": "2026-11-23T03:54Z"
+   },
+   {
+    "titre": "Cricket NSW slams door on Bears' North Sydney NRL homecoming",
+    "lien": "https://www.abc.net.au/news/2026-11-23/cricket-nsw-rules-out-perth-bears-play-north-sydney-oval/107416898",
+    "date": "2026-11-23T02:44Z"
+   },
+   {
+    "titre": "Joeys come back to Earth with frustrating World Cup result",
+    "lien": "https://www.abc.net.au/news/2026-11-23/australia-draws-with-denmark-at-fifa-u17-world-cup/107415340",
+    "date": "2026-11-22T20:36Z"
+   }
+  ]
+ },
+ "rnz_pacifique": {
+  "titre": "RNZ Pacific (îles du Pacifique)",
+  "url": "https://www.rnz.co.nz/rss/pacific.xml",
+  "lu_le": "2026-11-23T19:27Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Tonga NGO supplies water tanks to drought-hit Ha'apai households",
+    "lien": "https://www.rnz.co.nz/news/pacific/2754221/tonga-ngo-supplies-water-tanks-to-drought-hit-ha-apai-households",
+    "date": "2026-11-23T17:43Z"
+   },
+   {
+    "titre": "Green Overseas Programme looks to improve climate finance and resilience for Pacific territories",
+    "lien": "https://www.rnz.co.nz/news/pacific/2753797/green-overseas-programme-looks-to-improve-climate-finance-and-resilience-for-pacific-territories",
+    "date": "2026-11-23T17:17Z"
+   },
+   {
+    "titre": "Lead detected in fish caught near Saipan lagoon",
+    "lien": "https://www.rnz.co.nz/news/pacific/2750255/lead-detected-in-fish-caught-near-saipan-lagoon",
+    "date": "2026-11-23T17:15Z"
+   },
+   {
+    "titre": "Two men appear in Suva High Court over alleged cocaine theft",
+    "lien": "https://www.rnz.co.nz/news/pacific/2750005/two-men-appear-in-suva-high-court-over-alleged-cocaine-theft",
+    "date": "2026-11-23T02:04Z"
+   },
+   {
+    "titre": "Tonga Football official says team will get better",
+    "lien": "https://www.rnz.co.nz/news/pacific/2749259/tonga-football-official-says-team-will-get-better",
+    "date": "2026-11-23T00:43Z"
+   },
+   {
+    "titre": "What next after the collapse of global climate talks?",
+    "lien": "https://www.rnz.co.nz/news/pacific/2746703/what-next-after-the-collapse-of-global-climate-talks",
+    "date": "2026-11-22T23:02Z"
+   },
+   {
+    "titre": "'Negotiation in bad faith': Pacific push for stronger climate action fails at UN climate talks",
+    "lien": "https://www.rnz.co.nz/news/pacific/2746441/negotiation-in-bad-faith-pacific-push-for-stronger-climate-action-fails-at-un-climate-talks",
+    "date": "2026-11-22T22:55Z"
+   },
+   {
+    "titre": "Dates confirmed for 2031 Men's Rugby World Cup in the US",
+    "lien": "https://www.rnz.co.nz/news/pacific/2741854/dates-confirmed-for-2031-men-s-rugby-world-cup-in-the-us",
+    "date": "2026-11-22T19:40Z"
+   }
+  ]
+ },
+ "cbc_canada": {
+  "titre": "CBC News, Canada",
+  "url": "https://www.cbc.ca/webfeed/rss/rss-canada",
+  "lu_le": "2026-11-23T19:27Z",
+  "statut": "muet",
+  "erreur": "ReadTimeout",
+  "articles": []
+ },
+ "arctic_today": {
+  "titre": "Arctic Today",
+  "url": "https://www.arctictoday.com/feed/",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "muet",
+  "erreur": "ParseError",
+  "articles": []
+ },
+ "eurasianet": {
+  "titre": "Eurasianet (Caucase et Asie centrale)",
+  "url": "https://eurasianet.org/rss",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Central Asian states striving to improve electricity distribution network",
+    "lien": "https://eurasianet.org/central-asian-states-striving-to-improve-electricity-distribution-network",
+    "date": "Nov 23, 2026"
+   },
+   {
+    "titre": "Relatives appealing Kazakh court’s espionage conviction of Uzbek scholar",
+    "lien": "https://eurasianet.org/relatives-appealing-kazakh-courts-espionage-conviction-of-uzbek-scholar",
+    "date": "Nov 20, 2026"
+   },
+   {
+    "titre": "Intrigue in Kazakhstan’s top echelons of power playing out behind closed doors",
+    "lien": "https://eurasianet.org/intrigue-in-kazakhstans-top-echelons-of-power-playing-out-behind-closed-doors",
+    "date": "Nov 20, 2026"
+   },
+   {
+    "titre": "Pashinyan pushes for constitutional referendum",
+    "lien": "https://eurasianet.org/pashinyan-pushes-for-constitutional-referendum",
+    "date": "Nov 19, 2026"
+   },
+   {
+    "titre": "Church support for Georgian government slipping",
+    "lien": "https://eurasianet.org/church-support-for-georgian-government-slipping",
+    "date": "Nov 19, 2026"
+   },
+   {
+    "titre": "Uzbekistan’s judicial reforms on trial: Four judges convicted for “unjust decision”",
+    "lien": "https://eurasianet.org/uzbekistans-judicial-reforms-on-trial-four-judges-convicted-for-unjust-decision",
+    "date": "Nov 18, 2026"
+   },
+   {
+    "titre": "China secures another major energy contract in Central Asia",
+    "lien": "https://eurasianet.org/china-secures-another-major-energy-contract-in-central-asia",
+    "date": "Nov 17, 2026"
+   },
+   {
+    "titre": "Central Asia experiencing rapid growth in trade with Gulf",
+    "lien": "https://eurasianet.org/central-asia-experiencing-rapid-growth-in-trade-with-gulf",
+    "date": "Nov 16, 2026"
+   }
+  ]
+ },
+ "insight_crime": {
+  "titre": "InSight Crime (crime organisé, Amériques)",
+  "url": "https://insightcrime.org/feed/",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Red Command (Comando Vermelho)",
+    "lien": "https://insightcrime.org/brazil-organized-crime-news/red-command-profile/",
+    "date": "2026-11-20T16:51Z"
+   },
+   {
+    "titre": "Costa Rica Profile",
+    "lien": "https://insightcrime.org/costa-rica-organized-crime-news/costa-rica/",
+    "date": "2026-11-20T16:45Z"
+   },
+   {
+    "titre": "Haiti",
+    "lien": "https://insightcrime.org/haiti-organized-crime-news/haiti/",
+    "date": "2026-11-20T15:17Z"
+   },
+   {
+    "titre": "Open Position: English Language Editor",
+    "lien": "https://insightcrime.org/the-organization/open-position-english-language-editor-insight-crime/",
+    "date": "2026-11-19T20:29Z"
+   },
+   {
+    "titre": "Félix Gallardo’s Death Leaves Mexico’s Corruption Story Unfinished | The InSight Take",
+    "lien": "https://insightcrime.org/news/felix-gallardo-death-mexico-cartel-corruption/",
+    "date": "2026-11-19T17:48Z"
+   },
+   {
+    "titre": "Sebastián Marset",
+    "lien": "https://insightcrime.org/bolivia-organized-crime-news/sebastian-marset/",
+    "date": "2026-11-19T15:11Z"
+   },
+   {
+    "titre": "Second Marquetalia",
+    "lien": "https://insightcrime.org/colombia-organized-crime-news/segunda-marquetalia/",
+    "date": "2026-11-18T22:16Z"
+   },
+   {
+    "titre": "National Liberation Army (ELN)",
+    "lien": "https://insightcrime.org/colombia-organized-crime-news/eln-profile/",
+    "date": "2026-11-18T22:06Z"
+   }
+  ]
+ },
+ "kyiv_independent": {
+  "titre": "The Kyiv Independent (Ukraine)",
+  "url": "https://kyivindependent.com/rss/",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "meduza": {
+  "titre": "Meduza, en anglais (média russe indépendant, en exil)",
+  "url": "https://meduza.io/rss/en/all",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "More than 700,000 Russian troops died in the war in Ukraine by late September 2026, Meduza and Mediazona estimate",
+    "lien": "https://meduza.io/en/feature/2026/11/23/more-than-700-000-russian-troops-died-in-the-war-in-ukraine-by-late-september-2026-meduza-and-mediazona-estimate",
+    "date": "2026-11-23T19:24Z"
+   },
+   {
+    "titre": "A geography teacher joked about closing a window before telling his class how many regions Russia has. He says someone reported him, likely over the video.",
+    "lien": "https://meduza.io/en/feature/2026/11/23/a-geography-teacher-joked-about-closing-a-window-before-telling-his-class-how-many-regions-russia-has-he-says-someone-filed-a-complaint-against-him-likely-over-the-video",
+    "date": "2026-11-23T16:47Z"
+   },
+   {
+    "titre": "European Commission proposes denying visas to Russians who fought in war against Ukraine",
+    "lien": "https://meduza.io/en/news/2026/11/23/european-commission-proposes-denying-visas-to-russians-who-fought-in-war-against-ukraine",
+    "date": "2026-11-23T16:46Z"
+   },
+   {
+    "titre": "Putin is reportedly open to Article 5-style security guarantees for Ukraine. But what does Article 5 actually say? Would the guarantees require NATO members to go to war if Russia attacks again?",
+    "lien": "https://meduza.io/en/cards/putin-is-reportedly-open-to-article-5-style-security-guarantees-for-ukraine-but-what-does-article-5-actually-say-would-the-guarantees-require-nato-members-to-go-to-war-if-russia-attacks-again",
+    "date": "2026-11-23T16:30Z"
+   },
+   {
+    "titre": "At least 720,000 Russian soldiers killed in Ukraine by fall 2026, Meduza and Mediazona estimate in new analysis that includes missing troops for the first time",
+    "lien": "https://meduza.io/en/news/2026/11/23/at-least-720-000-russian-soldiers-killed-in-ukraine-by-fall-2026-meduza-and-mediazona-estimate-in-new-analysis-that-includes-missing-troops-for-the-first-time",
+    "date": "2026-11-23T16:29Z"
+   },
+   {
+    "titre": "On day of Putin’s visit, Tajikistan notifies UN of withdrawal from International Criminal Court",
+    "lien": "https://meduza.io/en/news/2026/11/23/on-day-of-putin-s-visit-tajikistan-notifies-un-of-withdrawal-from-international-criminal-court",
+    "date": "2026-11-23T16:19Z"
+   },
+   {
+    "titre": "Russia to spend 47 billion rubles on ferries to Kaliningrad amid fears of transport blockade",
+    "lien": "https://meduza.io/en/news/2026/11/23/russia-to-spend-47-billion-rubles-on-ferries-to-kaliningrad-amid-fears-of-transport-blockade",
+    "date": "2026-11-23T16:00Z"
+   },
+   {
+    "titre": "She moved from Russia to Germany to work as a nanny. She ended up founding a learning center for Russian-speaking children — and winning over skeptical local officials.",
+    "lien": "https://meduza.io/en/feature/2026/11/23/she-moved-from-russia-to-germany-to-work-as-a-nanny-she-ended-up-founding-a-learning-center-for-russian-speaking-children-and-winning-over-skeptical-local-officials",
+    "date": "2026-11-23T15:30Z"
+   }
+  ]
+ },
+ "tass": {
+  "titre": "TASS, en anglais (agence d'État russe)",
+  "url": "https://tass.com/rss/v2.xml",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Russian envoy blames Kiev for Black Sea ‘escalation’",
+    "lien": "https://tass.com/russias-foreign-policy/2223621",
+    "date": "2026-11-23T19:17Z"
+   },
+   {
+    "titre": "Iran doesn't disclose how it's exporting oil, its production is stable — minister",
+    "lien": "https://tass.com/economy/2223619",
+    "date": "2026-11-23T18:59Z"
+   },
+   {
+    "titre": "Nearly 90 Ukrainian drones taken down over Russian regions during day",
+    "lien": "https://tass.com/politics/2223617",
+    "date": "2026-11-23T18:55Z"
+   },
+   {
+    "titre": "Acron’s 9-month net profit under IFRS rises 17% to $523.43 mln",
+    "lien": "https://tass.com/economy/2223615",
+    "date": "2026-11-23T18:51Z"
+   },
+   {
+    "titre": "US continues efforts to reach further peace deals in Ukraine crisis — Melania Trump",
+    "lien": "https://tass.com/world/2223613",
+    "date": "2026-11-23T18:49Z"
+   },
+   {
+    "titre": "Russia’s civilian casualties from Ukraine’s attacks exceed 35,000 since 2022 — diplomat",
+    "lien": "https://tass.com/politics/2223609",
+    "date": "2026-11-23T18:48Z"
+   },
+   {
+    "titre": "Jensen Huang reinstated as Nvidia CEO: what we know",
+    "lien": "https://tass.com/economy/2223607",
+    "date": "2026-11-23T18:27Z"
+   },
+   {
+    "titre": "Russian embassy seeks info on Dutch arms maker's role in Ukraine conflict",
+    "lien": "https://tass.com/politics/2223605",
+    "date": "2026-11-23T18:24Z"
+   }
+  ]
+ },
+ "times_of_israel": {
+  "titre": "The Times of Israel",
+  "url": "https://www.timesofisrael.com/feed/",
+  "lu_le": "2026-11-23T19:28Z",
+  "statut": "refuse_robots",
+  "articles": []
+ },
+ "middle_east_eye": {
+  "titre": "Middle East Eye",
+  "url": "https://www.middleeasteye.net/rss",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Palestinian critically wounded by Israeli gunfire in Gaza, Al Jazeera reports",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/palestinian-critically-wounded-israeli-fires-al-jazeera-reports",
+    "date": "2026-11-23T18:46Z"
+   },
+   {
+    "titre": "US imposes new Iran-related sanctions",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/us-imposes-new-iran-related-sanctions",
+    "date": "2026-11-23T18:30Z"
+   },
+   {
+    "titre": "Houthi-run government says Saudi air strikes killed civilians in Lahj",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/houthi-run-government-says-saudi-airstrikes-killed-injured-civilians",
+    "date": "2026-11-23T18:04Z"
+   },
+   {
+    "titre": "Israeli contestant with 'peace' costume booed at Miss Universe 2026",
+    "lien": "https://www.middleeasteye.net/trending/miss-universe-2026-israeli-contestant-booed-genocide-gaza-wars",
+    "date": "2026-11-23T17:34Z"
+   },
+   {
+    "titre": "Iranian army says it destroyed US drone over Persian Gulf",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/iranian-army-says-it-destroyed-us-drone-over-persian-gulf",
+    "date": "2026-11-23T16:48Z"
+   },
+   {
+    "titre": "Yemeni government: Civilians killed, injured in Houthi attack in Lahij",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/saudi-backed-yemeni-government-civilians-killed-injured-houthi-attack",
+    "date": "2026-11-23T16:30Z"
+   },
+   {
+    "titre": "Explosions reported in Strait of Hormuz",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/explosions-reported-strait-hormuz",
+    "date": "2026-11-23T15:43Z"
+   },
+   {
+    "titre": "Netanyahu vows to bring down any 'bad government'",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/netanyahu-vows-bring-down-any-bad-government",
+    "date": "2026-11-23T15:30Z"
+   }
+  ]
+ },
+ "dabanga": {
+  "titre": "Radio Dabanga (Soudan)",
+  "url": "https://www.dabangasudan.org/en/feed",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Expired food seized in South Darfur capital inspection",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/expired-food-seized-in-south-darfur-capital-inspection",
+    "date": "2026-11-23T16:25Z"
+   },
+   {
+    "titre": "North Kordofan: Alarm as Sheikh detained in El Obeid found dead",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/north-kordofan-alarm-as-sheikh-detained-in-el-obeid-found-dead",
+    "date": "2026-11-23T12:31Z"
+   },
+   {
+    "titre": "Displacement rises in West Kordofan amid deteriorating security",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/displacement-rises-in-west-kordofan-amid-deteriorating-security",
+    "date": "2026-11-23T11:56Z"
+   },
+   {
+    "titre": "Footage of prisoner executions resurfaces as Arman warns of Sudan’s disintegration",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/footage-of-prisoner-executions-resurfaces-as-arman-warns-of-sudans-disintegration",
+    "date": "2026-11-23T11:09Z"
+   },
+   {
+    "titre": "Reports: ‘Famine in Sudan is a product of war, not a natural disaster’",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/reports-famine-in-sudan-is-a-product-of-war-not-a-natural-disaster",
+    "date": "2026-11-23T10:00Z"
+   },
+   {
+    "titre": "Sudan war: 15,000 flee Ed Damazin and El Roseires as fighting intensifies in Blue Nile",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/sudan-war-15000-flee-ed-damazin-and-el-roseires-as-fighting-intensifies-in-blue-nile",
+    "date": "2026-11-23T09:30Z"
+   },
+   {
+    "titre": "RSF accused of executing Sudanese army prisoners in Blue Nile",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/rsf-accused-of-executing-sudanese-army-prisoners-in-blue-nile",
+    "date": "2026-11-23T09:00Z"
+   },
+   {
+    "titre": "Drone attacks kill five children, injures 10 in Khartoum and Omdurman",
+    "lien": "https://www.dabangasudan.org/en/all-news/article/drone-attacks-kill-five-children-injures-10-in-khartoum-and-omdurman",
+    "date": "2026-11-22T17:20Z"
+   }
+  ]
+ },
+ "politico_europe": {
+  "titre": "Politico Europe",
+  "url": "https://www.politico.eu/feed/",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Spain turns against Sánchez, POLITICO poll finds",
+    "lien": "https://www.politico.eu/article/spain-pedro-sanchez-politico-poll-election/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T18:00Z"
+   },
+   {
+    "titre": "Rejoining EU without referendum is ‘unthinkable,’ says Andy Burnham",
+    "lien": "https://www.politico.eu/article/rejoining-eu-without-referendum-unthinkable-andy-burnham/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T17:26Z"
+   },
+   {
+    "titre": "Lib Dem leader claims he could negotiate EU single market access ‘within a year’",
+    "lien": "https://www.politico.eu/article/lib-dem-leader-ed-davey-claims-he-could-negotiate-eu-single-market-access-within-a-year/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T16:35Z"
+   },
+   {
+    "titre": "EU targets Russian ex-soldiers, banks and sports in new sanctions push",
+    "lien": "https://www.politico.eu/article/eu-to-target-russian-ex-soldiers-banks-and-sports-in-new-sanctions-push/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T16:15Z"
+   },
+   {
+    "titre": "Ukraine takes the war against Russia far from its borders",
+    "lien": "https://www.politico.eu/article/ukraine-takes-war-russia-far-from-borders/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T16:14Z"
+   },
+   {
+    "titre": "Les Écologistes en voie de dislocation",
+    "lien": "https://www.politico.eu/podcast/playbook-paris-podcast/les-ecologistes-en-voie-de-dislocation/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T15:34Z"
+   },
+   {
+    "titre": "Badenoch: Rejoining EU won’t fix Britain’s economic woes",
+    "lien": "https://www.politico.eu/article/kemi-badenoch-rejoining-eu-wont-fix-britains-economic-woes/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T14:31Z"
+   },
+   {
+    "titre": "Macron moves to ‘trap’ successors with new budget rule",
+    "lien": "https://www.politico.eu/article/emmanuel-macron-trap-successors-budget-rule-france/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "date": "2026-11-23T13:53Z"
+   }
+  ]
+ },
+ "scotusblog": {
+  "titre": "SCOTUSblog (Cour suprême des États-Unis)",
+  "url": "https://www.scotusblog.com/feed/",
+  "lu_le": "2026-11-23T19:28Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "The Second Amendment and an \"unusually dangerous\" approach to dicta",
+    "lien": "https://www.scotusblog.com/2026/11/the-second-amendment-and-an-unusually-dangerous-approach-to-dicta/",
+    "date": "2026-11-23T15:30Z"
+   },
+   {
+    "titre": "Justice Ketanji Brown Jackson and the arc of the law",
+    "lien": "https://www.scotusblog.com/2026/11/justice-ketanji-brown-jackson-and-the-arc-of-the-law/",
+    "date": "2026-11-23T15:00Z"
+   },
+   {
+    "titre": "The Supreme Court and profanity",
+    "lien": "https://www.scotusblog.com/2026/11/the-supreme-court-and-profanity/",
+    "date": "2026-11-23T14:30Z"
+   },
+   {
+    "titre": "Justice Sotomayor addresses Supreme Court term limits",
+    "lien": "https://www.scotusblog.com/2026/11/justice-sotomayor-addresses-supreme-court-term-limits/",
+    "date": "2026-11-23T14:00Z"
+   },
+   {
+    "titre": "The next round of Supreme Court forecasts",
+    "lien": "https://www.scotusblog.com/2026/11/the-next-round-of-supreme-court-forecasts/",
+    "date": "2026-11-21T04:55Z"
+   },
+   {
+    "titre": "Criminal law is constitutional law",
+    "lien": "https://www.scotusblog.com/2026/11/criminal-law-is-constitutional-law/",
+    "date": "2026-11-20T15:00Z"
+   },
+   {
+    "titre": "Even justices have regrets",
+    "lien": "https://www.scotusblog.com/2026/11/even-justices-have-regrets/",
+    "date": "2026-11-20T14:30Z"
+   },
+   {
+    "titre": "Trump administration brings climate grant dispute to SCOTUS",
+    "lien": "https://www.scotusblog.com/2026/11/trump-administration-brings-climate-grant-dispute-to-scotus/",
+    "date": "2026-11-20T14:00Z"
+   }
+  ]
+ },
+ "carbon_brief": {
+  "titre": "Carbon Brief (climat)",
+  "url": "https://www.carbonbrief.org/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "COP31: Key outcomes agreed at the UN climate talks in Antalya",
+    "lien": "https://www.carbonbrief.org/cop31-key-outcomes-agreed-at-the-un-climate-talks-in-antalya",
+    "date": "2026-11-23T16:15Z"
+   },
+   {
+    "titre": "Revealed: Russia, Saudi Arabia and Australia are largest CO2 exporters of all time",
+    "lien": "https://www.carbonbrief.org/revealed-russia-saudi-arabia-and-australia-are-largest-co2-exporters-of-all-time",
+    "date": "2026-11-17T05:00Z"
+   },
+   {
+    "titre": "COP31: How Ed Miliband answered Carbon Brief readers’ questions",
+    "lien": "https://www.carbonbrief.org/cop31-how-ed-miliband-answered-carbon-brief-readers-questions",
+    "date": "2026-11-12T16:55Z"
+   },
+   {
+    "titre": "Analysis: Climate-finance pledges fall 70% as countries meet at COP31",
+    "lien": "https://www.carbonbrief.org/analysis-climate-finance-pledges-fall-70-as-countries-meet-at-cop31",
+    "date": "2026-11-11T07:00Z"
+   },
+   {
+    "titre": "Analysis: Which countries have sent the most delegates to COP31?",
+    "lien": "https://www.carbonbrief.org/analysis-which-countries-have-sent-the-most-delegates-to-cop31",
+    "date": "2026-11-10T17:21Z"
+   },
+   {
+    "titre": "Analysis: Fossil-fuel CO2 emissions set to dip in 2026 as Iran conflict hits oil use",
+    "lien": "https://www.carbonbrief.org/analysis-fossil-fuel-co2-emissions-set-to-dip-in-2026-as-iran-conflict-hits-oil-use",
+    "date": "2026-11-10T01:01Z"
+   },
+   {
+    "titre": "Q&A: What is the Belém-Antalya mechanism for a ‘just transition’?",
+    "lien": "https://www.carbonbrief.org/qa-what-is-the-belem-antalya-mechanism-for-a-just-transition",
+    "date": "2026-11-09T08:00Z"
+   },
+   {
+    "titre": "‘Simply staggering’: Rapidly developing ‘super El Niño’ on track to peak in December",
+    "lien": "https://www.carbonbrief.org/simply-staggering-rapidly-developing-super-el-nino-on-track-to-peak-in-december",
+    "date": "2026-11-06T09:12Z"
+   }
+  ]
+ },
+ "nasa_eo": {
+  "titre": "NASA Earth Observatory",
+  "url": "https://earthobservatory.nasa.gov/feeds/earth-observatory.rss",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "muet",
+  "erreur": "ParseError",
+  "articles": []
+ },
+ "mongabay": {
+  "titre": "Mongabay (nature, forêts, océans)",
+  "url": "https://news.mongabay.com/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Longer droughts threaten floating health clinics as Amazon streams run dry",
+    "lien": "https://news.mongabay.com/2026/11/longer-droughts-dry-amazon-waterways-and-threaten-floating-health-clinics/",
+    "date": "2026-11-23T19:00Z"
+   },
+   {
+    "titre": "China’s mangroves have bounced back. Birds have returned too",
+    "lien": "https://news.mongabay.com/short-article/2026/11/chinas-mangroves-have-bounced-back-birds-have-returned-too/",
+    "date": "2026-11-23T18:57Z"
+   },
+   {
+    "titre": "In South Africa’s Limpopo, residents wonder what the next flood will bring",
+    "lien": "https://news.mongabay.com/2026/11/in-south-africas-limpopo-residents-wonder-what-the-next-flood-will-bring/",
+    "date": "2026-11-23T17:51Z"
+   },
+   {
+    "titre": "Analysis: The collapse of UN climate talks, over fossil fuels, was years in the making",
+    "lien": "https://news.mongabay.com/short-article/2026/11/analysis-the-collapse-of-un-climate-talks-over-fossil-fuels-was-years-in-the-making/",
+    "date": "2026-11-23T17:34Z"
+   },
+   {
+    "titre": "Colombia president’s move on mining, oil weakens country’s Amazon protections, experts warn",
+    "lien": "https://news.mongabay.com/2026/11/colombia-presidents-move-on-mining-oil-weakens-countrys-amazon-protections-experts-warn/",
+    "date": "2026-11-23T14:19Z"
+   },
+   {
+    "titre": "‘We had to reinvent the system completely,’ Brazilian philanthropy leader says",
+    "lien": "https://news.mongabay.com/2026/11/we-had-to-reinvent-the-system-completely-brazilian-philanthropy-leader-says/",
+    "date": "2026-11-23T12:50Z"
+   },
+   {
+    "titre": "Warming seas threaten South Korea’s iconic squid fishery with collapse by 2040s",
+    "lien": "https://news.mongabay.com/short-article/2026/11/warming-seas-threaten-south-koreas-iconic-squid-fishery-with-collapse-by-2040s/",
+    "date": "2026-11-23T12:02Z"
+   },
+   {
+    "titre": "From farm to airline plates, a Zambia farm closes its food-waste loop",
+    "lien": "https://news.mongabay.com/2026/11/from-farm-to-airline-plates-a-zambia-farm-closes-its-food-waste-loop/",
+    "date": "2026-11-23T11:50Z"
+   }
+  ]
+ },
+ "circle_of_blue": {
+  "titre": "Circle of Blue (eau)",
+  "url": "https://www.circleofblue.org/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Could AI’s wealth and technology save the Colorado River from escalating crisis?",
+    "lien": "https://www.circleofblue.org/2026/opinion/could-ais-wealth-and-technology-save-the-colorado-river-from-escalating-crisis/",
+    "date": "2026-11-23T18:35Z"
+   },
+   {
+    "titre": "A Big Blue Pivot for Water and the Environment",
+    "lien": "https://www.circleofblue.org/2026/water-policy-politics/a-big-blue-pivot-for-water-and-the-environment/",
+    "date": "2026-11-17T13:02Z"
+   },
+   {
+    "titre": "Vermont Has Spent Nearly a Billion Dollars to Clean Up Lake Champlain. But the Green Slime Keeps Coming Back.",
+    "lien": "https://www.circleofblue.org/2026/supply/water-quality/pollution/vermont-has-spent-nearly-a-billion-dollars-to-clean-up-lake-champlain-but-the-green-slime-keeps-coming-back/",
+    "date": "2026-11-16T18:04Z"
+   },
+   {
+    "titre": "Vermont Was Supposed to Get an Audit of Its Lake Champlain Cleanup. It Never Happened.",
+    "lien": "https://www.circleofblue.org/2026/supply/water-quality/pollution/vermont-was-supposed-to-get-an-audit-of-its-lake-champlain-cleanup-it-never-happened/",
+    "date": "2026-11-16T17:44Z"
+   },
+   {
+    "titre": "As more ships set out on the Great Lakes, scientists say we need information on the weather they’ll face",
+    "lien": "https://www.circleofblue.org/2026/great-lakes/as-more-ships-set-out-on-the-great-lakes-scientists-say-we-need-information-on-the-weather-theyll-face/",
+    "date": "2026-11-13T19:36Z"
+   },
+   {
+    "titre": "The Troubling Rise in Water Violence – An Interview with Peter Gleick",
+    "lien": "https://www.circleofblue.org/2026/water-policy-politics/stress-conflict-migration/the-troubling-rise-in-water-violence-an-interview-with-peter-gleick/",
+    "date": "2026-11-10T16:29Z"
+   },
+   {
+    "titre": "The $43 Billion Water Boost Is Over. Now What?",
+    "lien": "https://www.circleofblue.org/2026/water-policy-politics/the-43-billion-water-boost-is-over-now-what/",
+    "date": "2026-11-07T12:00Z"
+   },
+   {
+    "titre": "2026 Election Roundup: Voters Approve Water Measures Amid Democratic Rout",
+    "lien": "https://www.circleofblue.org/2026/water-policy-politics/2026-election-roundup-voters-approve-water-measures-amid-democratic-rout/",
+    "date": "2026-11-04T19:15Z"
+   }
+  ]
+ },
+ "oms": {
+  "titre": "Organisation mondiale de la santé, actualités",
+  "url": "https://www.who.int/rss-feeds/news-english.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "New WHO technical package to help countries improve health data for COVID-19 response and beyond",
+    "lien": "https://www.who.int/news/item/27-08-2020-new-who-technical-package-health-data-for-covid-19-response",
+    "date": "2026-10-10T07:49Z"
+   },
+   {
+    "titre": "COVID-19 disrupting mental health services in most countries, WHO survey",
+    "lien": "https://www.who.int/news/item/05-10-2020-covid-19-disrupting-mental-health-services-in-most-countries-who-survey",
+    "date": "2020-10-06T16:42Z"
+   },
+   {
+    "titre": "Global partnership to make available 120 million affordable, quality COVID-19 rapid tests for low- and middle-income countries",
+    "lien": "https://www.who.int/news/item/28-09-2020-global-partnership-to-make-available-120-million-affordable-quality-covid-19-rapid-tests-for-low--and-middle-income-countries",
+    "date": "2020-09-28T18:37Z"
+   },
+   {
+    "titre": "Managing the COVID-19 infodemic: Promoting healthy behaviours and mitigating the harm from misinformation and disinformation",
+    "lien": "https://www.who.int/news/item/23-09-2020-managing-the-covid-19-infodemic-promoting-healthy-behaviours-and-mitigating-the-harm-from-misinformation-and-disinformation",
+    "date": "2020-09-23T13:51Z"
+   },
+   {
+    "titre": "WHO’s three messages for UNGA75",
+    "lien": "https://www.who.int/news/item/15-09-2020-who-s-three-messages-for-unga75",
+    "date": "2020-09-15T16:06Z"
+   },
+   {
+    "titre": "COVID-19 could reverse decades of progress toward eliminating preventable child deaths, agencies warn",
+    "lien": "https://www.who.int/news/item/09-09-2020-covid-19-could-reverse-decades-of-progress-toward-eliminating-preventable-child-deaths-agencies-warn",
+    "date": "2020-09-09T00:01Z"
+   },
+   {
+    "titre": "In WHO global pulse survey, 90% of countries report disruptions to essential health services since COVID-19 pandemic",
+    "lien": "https://www.who.int/news/item/31-08-2020-in-who-global-pulse-survey-90-of-countries-report-disruptions-to-essential-health-services-since-covid-19-pandemic",
+    "date": "2020-08-31T10:00Z"
+   },
+   {
+    "titre": "172 countries and multiple candidate vaccines engaged in COVID-19 vaccine Global Access Facility",
+    "lien": "https://www.who.int/news/item/24-08-2020-172-countries-and-multiple-candidate-vaccines-engaged-in-covid-19-vaccine-global-access-facility",
+    "date": "2020-08-24T16:44Z"
+   }
+  ]
+ },
+ "aiea": {
+  "titre": "AIEA, actualités",
+  "url": "https://www.iaea.org/feeds/topnews",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "muet",
+  "erreur": "ParseError",
+  "articles": []
+ },
+ "bulletin": {
+  "titre": "Bulletin of the Atomic Scientists",
+  "url": "https://thebulletin.org/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 403,
+  "statut": "muet",
+  "articles": []
+ },
+ "fmi": {
+  "titre": "FMI, actualités",
+  "url": "https://www.imf.org/en/News/rss?language=eng",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 404,
+  "statut": "muet",
+  "articles": []
+ },
+ "eia": {
+  "titre": "EIA, Today in Energy",
+  "url": "https://www.eia.gov/rss/todayinenergy.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Category 2 Hurricane Isaias nears landfall, leading to production shut-ins",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=68284",
+    "date": "Fri, 09 Oct  09:"
+   },
+   {
+    "titre": "Oil flows through Middle East chokepoints increased in the third quarter",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=",
+    "date": "2026-11-19T14:00Z"
+   },
+   {
+    "titre": "U.S. natural gas inventories end injection season above normal levels",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=68484",
+    "date": "2026-11-18T14:00Z"
+   },
+   {
+    "titre": "How does EIA account for small differences between energy supply and demand data?",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=68464",
+    "date": "2026-11-17T14:00Z"
+   },
+   {
+    "titre": "Hydropower generation in the Southwest fell to record lows this summer",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=68445",
+    "date": "2026-11-13T14:00Z"
+   },
+   {
+    "titre": "EIA forecasts Alaskan crude oil production to grow 13% in 2027",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=68444",
+    "date": "2026-11-12T14:00Z"
+   },
+   {
+    "titre": "U.S. crude oil imports from Venezuela in July were highest since 2017",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=68425",
+    "date": "2026-11-06T14:00Z"
+   },
+   {
+    "titre": "Refineries have shifted production away from gasoline to middle distillates",
+    "lien": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+    "date": "2026-11-05T14:00Z"
+   }
+  ]
+ },
+ "fed": {
+  "titre": "Réserve fédérale, communiqués",
+  "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Federal Reserve announces College Fed Challenge winners",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm",
+    "date": "2026-11-20T21:15Z"
+   },
+   {
+    "titre": "Federal Reserve Board releases results from survey of senior financial officers at banks about their strategies and practices for managing reserve balances",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120a.htm",
+    "date": "2026-11-20T15:00Z"
+   },
+   {
+    "titre": "Federal Reserve Board issues enforcement action with former employee of First Security Bancorp",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261119a.htm",
+    "date": "2026-11-19T16:00Z"
+   },
+   {
+    "titre": "Minutes of the Federal Open Market Committee, October 27-28, 2026",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm",
+    "date": "2026-11-18T19:00Z"
+   },
+   {
+    "titre": "Agencies extend comment period for proposed third-party risk management guidance",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261113a.htm",
+    "date": "2026-11-13T21:15Z"
+   },
+   {
+    "titre": "Federal Reserve Board announces pricing, effective January 1, 2027, for payment services the Federal Reserve Banks provide to banks and credit unions, and changes to streamline and adjust their check services",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/other20261112a.htm",
+    "date": "2026-11-12T18:30Z"
+   },
+   {
+    "titre": "Federal Reserve announces revised tentative schedule of Federal Open Market Committee meetings in 2027",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm",
+    "date": "2026-11-12T17:45Z"
+   },
+   {
+    "titre": "Federal Reserve Board issues enforcement action with former employee of United Community Bank",
+    "lien": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261112a.htm",
+    "date": "2026-11-12T16:00Z"
+   }
+  ]
+ },
+ "bce": {
+  "titre": "Banque centrale européenne, communiqués",
+  "url": "https://www.ecb.europa.eu/rss/press.html",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Philip R. Lane: Climate change and monetary policy",
+    "lien": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261123~b5816801a0.en.pdf",
+    "date": "2026-11-23T14:30Z"
+   },
+   {
+    "titre": "ECB expands acceptance of DLT-based assets as eligible Eurosystem collateral",
+    "lien": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+    "date": "2026-11-23T10:00Z"
+   },
+   {
+    "titre": "Christine Lagarde: Acting in time",
+    "lien": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261120~e52bcc4db2.en.html",
+    "date": "2026-11-20T08:30Z"
+   },
+   {
+    "titre": "Boris Vujčić: Financial Stability Review - November 2026",
+    "lien": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261118~86f1e8147e.en.pdf",
+    "date": "2026-11-18T09:00Z"
+   },
+   {
+    "titre": "Risks from AI valuations, fiscal imbalances and geoeconomic tensions weigh on financial stability outlook",
+    "lien": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr261118~83c5c60158.en.html",
+    "date": "2026-11-18T09:00Z"
+   },
+   {
+    "titre": "Philip R. Lane: The practice and science of monetary policy communication: the ECB experience",
+    "lien": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261117~7f5d3b1a0e.en.pdf",
+    "date": "2026-11-17T18:30Z"
+   },
+   {
+    "titre": "Frank Elderson: Smart supervision for small banks",
+    "lien": "https://www.ecb.europa.eu//press/inter/date/2026/html/ecb.in261116_1~11dd7f62af.en.html",
+    "date": "2026-11-16T13:00Z"
+   },
+   {
+    "titre": "Boris Vujčić: Risks and resilience in the euro area financial system",
+    "lien": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261116~db374b56ab.en.html",
+    "date": "2026-11-16T08:30Z"
+   }
+  ]
+ },
+ "usgs_seismes": {
+  "titre": "USGS, séismes importants du mois",
+  "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "M 3.9 - 1 km NW of Commerce, CA",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41364111",
+    "date": "2026-11-23T18:14Z"
+   },
+   {
+    "titre": "M 5.0 - 10 km NW of Pinnacles, CA",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75468702",
+    "date": "2026-11-23T17:12Z"
+   },
+   {
+    "titre": "M 6.7 - 7 km ENE of Carhuamayo, Peru",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucfm",
+    "date": "2026-11-23T16:10Z"
+   },
+   {
+    "titre": "M 6.5 - Vanuatu region",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucvm",
+    "date": "2026-11-23T04:46Z"
+   },
+   {
+    "titre": "M 5.9 - 238 km SW of Yanglong, China",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucly",
+    "date": "2026-11-22T10:52Z"
+   },
+   {
+    "titre": "M 6.8 - 105 km NE of Lospalos, Timor Leste",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucij",
+    "date": "2026-11-22T10:46Z"
+   },
+   {
+    "titre": "M 5.3 - 17 km ESE of Comandău, Romania",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyw8",
+    "date": "2026-11-21T18:44Z"
+   },
+   {
+    "titre": "M 6.6 - 149 km WSW of Tual, Indonesia",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tymu",
+    "date": "2026-11-20T00:45Z"
+   }
+  ]
+ },
+ "nasa": {
+  "titre": "NASA, actualités",
+  "url": "https://www.nasa.gov/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Studying Cancer Cells in Microgravity",
+    "lien": "https://www.nasa.gov/image-article/studying-cancer-cells-in-microgravity/",
+    "date": "2026-11-23T17:28Z"
+   },
+   {
+    "titre": "NASA Seeks Partners to Design First Nuclear Reactor for the Moon",
+    "lien": "https://www.nasa.gov/directorates/rtmd/nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-moon/",
+    "date": "2026-11-23T17:23Z"
+   },
+   {
+    "titre": "NASA+ Documentary Captures Europa Clipper’s Journey Into Deep Space",
+    "lien": "https://www.nasa.gov/missions/europa-clipper/nasa-documentary-captures-europa-clippers-journey-into-deep-space/",
+    "date": "2026-11-23T16:08Z"
+   },
+   {
+    "titre": "NASA’s Webb Shows How Supernova Dust Chronicles Star Evolution",
+    "lien": "https://science.nasa.gov/missions/webb/nasas-webb-shows-how-supernova-dust-chronicles-star-evolution/",
+    "date": "2026-11-23T15:00Z"
+   },
+   {
+    "titre": "APOD: 2026 November 23 – The Emergence of Dark Nebula Lynds 1251",
+    "lien": "https://science.nasa.gov/image-article/apod-2026-november-23-the-emergence-of-dark-nebula-lynds-1251/",
+    "date": "2026-11-23T05:05Z"
+   },
+   {
+    "titre": "Laser Focus at the Top of the World",
+    "lien": "https://science.nasa.gov/earth/earth-observatory/laser-focus-at-the-top-of-the-world/",
+    "date": "2026-11-23T05:01Z"
+   },
+   {
+    "titre": "65 Years of Human Spaceflight at NASA Johnson",
+    "lien": "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson/",
+    "date": "2026-11-22T19:13Z"
+   },
+   {
+    "titre": "APOD: 2026 November 22 – Swirls and Colors on Jupiter from Juno",
+    "lien": "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno/",
+    "date": "2026-11-22T05:05Z"
+   }
+  ]
+ },
+ "mining": {
+  "titre": "MINING.COM (mines et métaux)",
+  "url": "https://www.mining.com/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 403,
+  "statut": "muet",
+  "articles": []
+ },
+ "gcaptain": {
+  "titre": "gCaptain (transport maritime)",
+  "url": "https://gcaptain.com/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Costa Concordia Captain Released from Prison After Nine Years",
+    "lien": "https://gcaptain.com/costa-concordia-captain-released-from-prison-after-nine-years/",
+    "date": "2026-11-23T16:14Z"
+   },
+   {
+    "titre": "Drone-Hit Russian Cargo Ship Leaves Finnish Waters Despite Sanctions Hold",
+    "lien": "https://gcaptain.com/drone-hit-russian-cargo-ship-leaves-finnish-waters-despite-sanctions-hold/",
+    "date": "2026-11-23T16:01Z"
+   },
+   {
+    "titre": "France Prepares Major Salvage Operation to Free Grounded Bulk Carrier MIRO G",
+    "lien": "https://gcaptain.com/france-prepares-major-salvage-operation-to-free-grounded-bulk-carrier-miro-g/",
+    "date": "2026-11-23T15:21Z"
+   },
+   {
+    "titre": "Russia’s Northern Sea Route Breaks 40 Million-Tonne Barrier For First Time, but Putin’s Ambitions Remain Out of Reach",
+    "lien": "https://gcaptain.com/russias-northern-sea-route-breaks-40-million-tonne-barrier-for-first-time-but-putins-ambitions-remain-out-of-reach/",
+    "date": "2026-11-23T12:32Z"
+   },
+   {
+    "titre": "Fake Iran Tanker Highlights Uncertainty Around Hormuz Traffic",
+    "lien": "https://gcaptain.com/fake-iran-tanker-highlights-uncertainty-around-hormuz-traffic/",
+    "date": "2026-11-23T12:31Z"
+   },
+   {
+    "titre": "Ukraine Sinks Russian Warship in Libya as Conflict Spreads Beyond Europe",
+    "lien": "https://gcaptain.com/ukraine-sinks-russian-warship-in-libya-as-conflict-spreads-beyond-europe/",
+    "date": "2026-11-23T12:29Z"
+   },
+   {
+    "titre": "Australia Criticizes US Congressional Budget Office Over AUKUS Comments",
+    "lien": "https://gcaptain.com/australia-criticizes-us-congressional-budget-office-over-aukus-comments/",
+    "date": "2026-11-22T17:13Z"
+   },
+   {
+    "titre": "Suspected Drone Attack Caused Explosion On Russian Ship At Benghazi Port",
+    "lien": "https://gcaptain.com/suspected-drone-attack-caused-explosion-on-russian-ship-at-benghazi-port/",
+    "date": "2026-11-22T15:09Z"
+   }
+  ]
+ },
+ "splash247": {
+  "titre": "Splash247 (transport maritime)",
+  "url": "https://splash247.com/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Precious Shipping secures year-long ultramax charter",
+    "lien": "https://splash247.com/precious-shipping-secures-year-long-ultramax-charter/",
+    "date": "2026-11-23T12:05Z"
+   },
+   {
+    "titre": "Kansai Electric takes 40% stake in Polish offshore wind project",
+    "lien": "https://splash247.com/kansai-electric-takes-40-stake-in-polish-offshore-wind-project/",
+    "date": "2026-11-23T12:02Z"
+   },
+   {
+    "titre": "Jinhui finds new buyer for supramax at higher price",
+    "lien": "https://splash247.com/jinhui-finds-new-buyer-for-supramax-at-higher-price/",
+    "date": "2026-11-23T11:10Z"
+   },
+   {
+    "titre": "Arabian Drilling picks up $400m in long-term offshore work",
+    "lien": "https://splash247.com/arabian-drilling-picks-up-400m-in-long-term-offshore-work/",
+    "date": "2026-11-23T11:00Z"
+   },
+   {
+    "titre": "Shipping Corp of India casts $3.2bn net for 22 ships",
+    "lien": "https://splash247.com/shipping-corp-of-india-casts-3-2bn-net-for-22-ships/",
+    "date": "2026-11-23T10:20Z"
+   },
+   {
+    "titre": "ExxonMobil greenlights $4bn Angola offshore redevelopment",
+    "lien": "https://splash247.com/exxonmobil-greenlights-4bn-angola-offshore-redevelopment/",
+    "date": "2026-11-23T10:00Z"
+   },
+   {
+    "titre": "Aegean Shipping adds fresh tanker pair at COSCO yard",
+    "lien": "https://splash247.com/aegean-shipping-adds-fresh-tanker-pair-at-cosco-yard/",
+    "date": "2026-11-23T09:55Z"
+   },
+   {
+    "titre": "Tanker boom turns conservative owners into asset traders",
+    "lien": "https://splash247.com/tanker-boom-turns-conservative-owners-into-asset-traders/",
+    "date": "2026-11-23T09:44Z"
+   }
+  ]
+ },
+ "defense_news": {
+  "titre": "Defense News",
+  "url": "https://www.defensenews.com/arc/outboundfeeds/rss/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Ukraine strikes Russian warship and cargo vessel with naval drones in Libya",
+    "lien": "https://www.defensenews.com/video/2026/11/23/ukraine-strikes-russian-warship-and-cargo-vessel-with-naval-drones-in-libya/",
+    "date": "2026-11-23T15:07Z"
+   },
+   {
+    "titre": "China’s fourth aircraft carrier, bigger than others and nuclear-powered, nears completion",
+    "lien": "https://www.defensenews.com/global/asia-pacific/2026/11/23/chinas-fourth-aircraft-carrier-bigger-than-others-and-nuclear-powered-nears-completion/",
+    "date": "2026-11-23T14:42Z"
+   },
+   {
+    "titre": "A race for lifesaving battlefield drones | Defense News Weekly Full Episode 11.24.26",
+    "lien": "https://www.defensenews.com/video/2026/11/23/a-race-for-lifesaving-battlefield-drones-defense-news-weekly-full-episode-11-24-26/",
+    "date": "2026-11-23T14:15Z"
+   },
+   {
+    "titre": "Acting Navy Secretary Hung Cao heads to the Hill and the Pentagon fails an audit | Headlines",
+    "lien": "https://www.defensenews.com/video/2026/11/23/acting-navy-secretary-hung-cao-heads-to-the-hill-and-the-pentagon-fails-an-audit-headlines/",
+    "date": "2026-11-23T14:14Z"
+   },
+   {
+    "titre": "DARPA tests drones to find and assess injured victims at the Triage Challenge",
+    "lien": "https://www.defensenews.com/video/2026/11/23/darpa-tests-drones-to-find-and-assess-injured-victims-at-the-triage-challenge/",
+    "date": "2026-11-23T14:13Z"
+   },
+   {
+    "titre": "Two major veterans bills pass the House | MOAA Headlines",
+    "lien": "https://www.defensenews.com/video/2026/11/23/two-major-veterans-bills-pass-the-house-moaa-headlines/",
+    "date": "2026-11-23T14:12Z"
+   },
+   {
+    "titre": "Manage Credit Card Debt With Confidence | Money Minute",
+    "lien": "https://www.defensenews.com/video/2026/11/23/manage-credit-card-debt-with-confidence-money-minute/",
+    "date": "2026-11-23T14:11Z"
+   },
+   {
+    "titre": "Ukraine confirms it sank Russian corvette in Libyan port",
+    "lien": "https://www.defensenews.com/global/mideast-africa/2026/11/23/ukraine-confirms-it-sank-russian-corvette-in-libyan-port/",
+    "date": "2026-11-23T10:17Z"
+   }
+  ]
+ },
+ "war_on_the_rocks": {
+  "titre": "War on the Rocks (stratégie)",
+  "url": "https://warontherocks.com/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "While Shenzhen Talked, Berlin Pulled Up a Chair: Europe’s Generational Bet on Itself and Ukraine",
+    "lien": "https://warontherocks.com/while-shenzhen-talked-berlin-pulled-up-a-chair-europes-generational-bet-on-itself-and-ukraine/",
+    "date": "2026-11-23T19:20Z"
+   },
+   {
+    "titre": "China’s Growing Ambitions in Very Low Earth Orbit",
+    "lien": "https://warontherocks.com/cogs-of-war/chinas-growing-ambitions-in-very-low-earth-orbit-2/",
+    "date": "2026-11-23T09:00Z"
+   },
+   {
+    "titre": "The Double Alignment Problem: Civil-Military Relations in the Age of Artificial Intelligence",
+    "lien": "https://warontherocks.com/the-double-alignment-problem-civil-military-relations-in-the-age-of-artificial-intelligence/",
+    "date": "2026-11-23T08:30Z"
+   },
+   {
+    "titre": "What Ukraine Hath Wrought: Lessons for War, If We’re Listening",
+    "lien": "https://warontherocks.com/what-ukraine-hath-wrought-lessons-for-war-if-were-listening/",
+    "date": "2026-11-20T17:18Z"
+   },
+   {
+    "titre": "Why the Next Bioterrorists May Not Make the Same Mistakes as Aum Shinrikyo",
+    "lien": "https://warontherocks.com/why-the-next-bioterrorists-may-not-make-the-same-mistakes-as-aum-shinrikyo/",
+    "date": "2026-11-20T08:30Z"
+   },
+   {
+    "titre": "Handshakes Without Headway",
+    "lien": "https://warontherocks.com/handshakes-without-headway/",
+    "date": "2026-11-19T20:17Z"
+   },
+   {
+    "titre": "The Ground Beneath the Cloud: Dispersion and Dependency in the Digital Age",
+    "lien": "https://warontherocks.com/the-ground-beneath-the-cloud-dispersion-and-dependency-in-the-digital-age/",
+    "date": "2026-11-19T08:30Z"
+   },
+   {
+    "titre": "Is Dollar Dominance in Decline?",
+    "lien": "https://warontherocks.com/is-dollar-dominance-in-decline/",
+    "date": "2026-11-18T18:46Z"
+   }
+  ]
+ },
+ "the_record": {
+  "titre": "The Record (cybersécurité)",
+  "url": "https://therecord.media/feed",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Hackers breach Austrian Foreign Ministry website, access diplomats' contact details",
+    "lien": "https://therecord.media/austrian-foreign-ministry-says-website-hacked",
+    "date": "2026-11-24T00:00Z"
+   },
+   {
+    "titre": "Signal blocks screenshots by Apple, Google operating systems to protect data from AI agents",
+    "lien": "https://therecord.media/signal-no-screenshots-by-apple-google-operating-systems",
+    "date": "2026-11-23T18:37Z"
+   },
+   {
+    "titre": "FBI reportedly facing second data breach involving National Crime Information Center",
+    "lien": "https://therecord.media/fbi-cyberattack-data-breach",
+    "date": "2026-11-23T18:30Z"
+   },
+   {
+    "titre": "CrowdStrike to purchase Zscaler for $43.9 billion",
+    "lien": "https://therecord.media/crowdstrike-zscaler",
+    "date": "2026-11-23T17:14Z"
+   },
+   {
+    "titre": "Norway says hackers exploited Microsoft security flaw to attack energy firms Equinor, Skagerak Energi",
+    "lien": "https://therecord.media/norway-microsoft-cyberattack-equinor",
+    "date": "2026-11-23T15:45Z"
+   }
+  ]
+ },
+ "krebs": {
+  "titre": "Krebs on Security",
+  "url": "https://krebsonsecurity.com/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "CTO of ‘RansomwareHelp’ Indicted for Wire Fraud",
+    "lien": "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
+    "date": "2026-11-21T00:36Z"
+   },
+   {
+    "titre": "Attackers Used Optimizely to A/B Test Malware on Top Websites",
+    "lien": "https://krebsonsecurity.com/2026/11/attackers-used-optimizely-to-a-b-test-malware-on-top-websites/",
+    "date": "2026-11-18T02:52Z"
+   },
+   {
+    "titre": "Who Runs the Ransomware Group Qilin?",
+    "lien": "https://krebsonsecurity.com/2026/11/who-runs-the-ransomware-group-qilin/",
+    "date": "2026-11-11T18:06Z"
+   },
+   {
+    "titre": "Microsoft Fixes Nearly 1,100 Security Vulnerabilities",
+    "lien": "https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/",
+    "date": "2026-11-10T21:55Z"
+   },
+   {
+    "titre": "Want to Rent an Internet Address at the White House?",
+    "lien": "https://krebsonsecurity.com/2026/11/want-to-rent-an-internet-address-at-the-white-house/",
+    "date": "2026-11-05T04:36Z"
+   },
+   {
+    "titre": "Tech Firms Dismantle Botnet That Turned 1.3M TV Boxes Into Proxies",
+    "lien": "https://krebsonsecurity.com/2026/11/tech-firms-dismantle-botnet-that-turned-1-3m-tv-boxes-into-proxies/",
+    "date": "2026-11-03T02:24Z"
+   },
+   {
+    "titre": "Widespread PHP Flaw May Cause Many Site Outages Today",
+    "lien": "https://krebsonsecurity.com/2026/10/widespread-php-flaw-may-cause-many-site-outages-today/",
+    "date": "2026-10-21T15:26Z"
+   },
+   {
+    "titre": "Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site",
+    "lien": "https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/",
+    "date": "2026-10-19T13:48Z"
+   }
+  ]
+ },
+ "rest_of_world": {
+  "titre": "Rest of World (technologie hors Occident)",
+  "url": "https://restofworld.org/feed/latest",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "The catch in IBM’s offer to relocate its U.S.-based immigrant workers",
+    "lien": "https://restofworld.org/2026/ibm-consulting-ends-us-visa-green-card-sponsorship/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-23T11:00Z"
+   },
+   {
+    "titre": "AI isn’t replacing your job. It’s turning it into low-paid gig work",
+    "lien": "https://restofworld.org/2026/ai-jobs-skills-gig-work/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-19T11:00Z"
+   },
+   {
+    "titre": "The small African lab sounding the alarm on AI bioweapons",
+    "lien": "https://restofworld.org/2026/ghana-ai-lab-minohealth-bioweapons-threat-dna-synthesis-regulation/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-16T11:00Z"
+   },
+   {
+    "titre": "How Jensen Huang’s exit from Nvidia impacts China’s AI supply chain",
+    "lien": "https://restofworld.org/2026/jensen-huang-nvidia-exit-china-ai-chip-impact/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-13T16:24Z"
+   },
+   {
+    "titre": "The promise and peril of AI in government",
+    "lien": "https://restofworld.org/2026/ai-government-ethics-bias-risk/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-12T11:00Z"
+   },
+   {
+    "titre": "Chinese AI firms want Silicon Valley’s top minds. Poaching them won’t be easy",
+    "lien": "https://restofworld.org/2026/chinese-ai-labs-hire-silicon-valley-engineers-openai-anthropic/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-09T08:30Z"
+   },
+   {
+    "titre": "A rare strike in Taiwan exposes labor unrest beneath the global AI rush",
+    "lien": "https://restofworld.org/2026/taiwan-labor-strike-ai-profits/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-05T11:00Z"
+   },
+   {
+    "titre": "Startups recalibrate Chinese AI for the West",
+    "lien": "https://restofworld.org/2026/western-startups-realigning-chinese-ai-models/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "date": "2026-11-02T11:00Z"
+   }
+  ]
+ },
+ "arxiv_ia": {
+  "titre": "arXiv, intelligence artificielle (cs.AI)",
+  "url": "https://export.arxiv.org/rss/cs.AI",
+  "lu_le": "2026-11-23T19:29Z",
+  "statut": "refuse_robots",
+  "articles": []
+ },
+ "nature": {
+  "titre": "Nature, actualités et articles",
+  "url": "https://www.nature.com/nature.rss",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Hexa-substituted benzene synthesis with non-classical carbocations",
+    "lien": "https://www.nature.com/articles/s41586-026-11449-9",
+    "date": "2026-11-23T00:00Z"
+   },
+   {
+    "titre": "Continuous N-to-C Peptide Synthesis",
+    "lien": "https://www.nature.com/articles/s41586-026-11448-w",
+    "date": "2026-11-23T00:00Z"
+   },
+   {
+    "titre": "Architecture of the poxvirus early-transcription machinery and portal complex",
+    "lien": "https://www.nature.com/articles/s41586-026-11458-8",
+    "date": "2026-11-23T00:00Z"
+   },
+   {
+    "titre": "Build for the future climate — or waste trillions of dollars",
+    "lien": "https://www.nature.com/articles/d41586-026-03722-8",
+    "date": "2026-11-23T00:00Z"
+   },
+   {
+    "titre": "‘Mozart of maths’ Terence Tao is your guide to what underpins reality",
+    "lien": "https://www.nature.com/articles/d41586-026-03720-w",
+    "date": "2026-11-23T00:00Z"
+   },
+   {
+    "titre": "Chemistry giant George Whitesides dies: one of the most influential researchers of his generation",
+    "lien": "https://www.nature.com/articles/d41586-026-03808-3",
+    "date": "2026-11-23T00:00Z"
+   },
+   {
+    "titre": "How to make climate anxiety your superpower",
+    "lien": "https://www.nature.com/articles/d41586-026-03818-1",
+    "date": "2026-11-23T00:00Z"
+   },
+   {
+    "titre": "<b>I</b>t’s our duty to promote ourselves: even to other scientists. Am I wrong?",
+    "lien": "https://www.nature.com/articles/d41586-026-02203-2",
+    "date": "2026-11-23T00:00Z"
+   }
+  ]
+ },
+ "sd_cerveau": {
+  "titre": "ScienceDaily, esprit et cerveau",
+  "url": "https://www.sciencedaily.com/rss/mind_brain.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Mice slept 70% less after scientists switched off these brain cells",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060336.htm",
+    "date": "2026-11-23T02:02Z"
+   },
+   {
+    "titre": "Scientists discover a surprising link between weak bones and faster brain aging",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221132.htm",
+    "date": "2026-11-23T00:45Z"
+   },
+   {
+    "titre": "Type 2 diabetes linked to 53% higher Alzheimer’s risk, major review finds",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221124.htm",
+    "date": "2026-11-22T20:57Z"
+   },
+   {
+    "titre": "Alzheimer’s breakthrough exposes a hidden flaw in the brain’s cleanup system",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120075600.htm",
+    "date": "2026-11-22T03:00Z"
+   },
+   {
+    "titre": "AI may not work like the human brain after all, scientists discover",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120075701.htm",
+    "date": "2026-11-21T15:24Z"
+   },
+   {
+    "titre": "This simple habit is linked to a 33% lower risk of Alzheimer's",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261118065536.htm",
+    "date": "2026-11-20T12:06Z"
+   },
+   {
+    "titre": "For better mental health, how often you exercise may matter more than how hard",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261119194601.htm",
+    "date": "2026-11-20T09:09Z"
+   },
+   {
+    "titre": "Is free will an illusion? New brain research reveals a surprising twist",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261118065524.htm",
+    "date": "2026-11-19T01:21Z"
+   }
+  ]
+ },
+ "sd_sante": {
+  "titre": "ScienceDaily, santé et médecine",
+  "url": "https://www.sciencedaily.com/rss/health_medicine.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "New gum disease treatment kills bad bacteria while sparing the good",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261123005356.htm",
+    "date": "2026-11-23T11:55Z"
+   },
+   {
+    "titre": "Mysterious new viruses reveal a missing link in evolution",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060334.htm",
+    "date": "2026-11-23T10:45Z"
+   },
+   {
+    "titre": "Scientists discover that leukemia can begin developing 50 years before diagnosis",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221122.htm",
+    "date": "2026-11-23T10:26Z"
+   },
+   {
+    "titre": "Mice slept 70% less after scientists switched off these brain cells",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060336.htm",
+    "date": "2026-11-23T02:02Z"
+   },
+   {
+    "titre": "U.S. loses measles elimination status after 25 years as vaccine myths persist",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060323.htm",
+    "date": "2026-11-23T01:16Z"
+   },
+   {
+    "titre": "Scientists discover a surprising link between weak bones and faster brain aging",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221132.htm",
+    "date": "2026-11-23T00:45Z"
+   },
+   {
+    "titre": "Common medications may secretly rewire your gut, with effects lasting for years",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120071501.htm",
+    "date": "2026-11-22T21:35Z"
+   },
+   {
+    "titre": "Type 2 diabetes linked to 53% higher Alzheimer’s risk, major review finds",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221124.htm",
+    "date": "2026-11-22T20:57Z"
+   }
+  ]
+ },
+ "sd_terre": {
+  "titre": "ScienceDaily, Terre et climat",
+  "url": "https://www.sciencedaily.com/rss/earth_climate.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Antarctica’s ice cliffs are collapsing faster than expected, but there’s a twist",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261117033925.htm",
+    "date": "2026-11-19T09:51Z"
+   },
+   {
+    "titre": "More than a billion years of Earth's history vanished. Scientists may finally know why",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261116023403.htm",
+    "date": "2026-11-18T08:27Z"
+   },
+   {
+    "titre": "125,000 years ago, hippos roamed what is now the vast Arabian Desert",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261115085537.htm",
+    "date": "2026-11-18T01:52Z"
+   },
+   {
+    "titre": "This remarkable new material could solve a major carbon capture problem",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261116023405.htm",
+    "date": "2026-11-17T11:29Z"
+   },
+   {
+    "titre": "Hidden ecosystem: Scientists discover 245 animals living inside a single deep-sea rock",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261114202133.htm",
+    "date": "2026-11-16T11:40Z"
+   },
+   {
+    "titre": "NASA warns this year's Monster El Niño could be even bigger than legendary 1997 event",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261114202227.htm",
+    "date": "2026-11-15T13:53Z"
+   },
+   {
+    "titre": "Scientists discover a surprisingly simple way to turn coffee waste into fuel",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261112025544.htm",
+    "date": "2026-11-14T11:42Z"
+   },
+   {
+    "titre": "Superheated magma could fuel towering lava fountains",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261111221811.htm",
+    "date": "2026-11-13T11:56Z"
+   }
+  ]
+ },
+ "sd_vivant": {
+  "titre": "ScienceDaily, plantes et animaux",
+  "url": "https://www.sciencedaily.com/rss/plants_animals.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Mysterious new viruses reveal a missing link in evolution",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060334.htm",
+    "date": "2026-11-23T10:45Z"
+   },
+   {
+    "titre": "This tiny spider named after Stephen Colbert has a genome 50% larger than a human’s",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060343.htm",
+    "date": "2026-11-23T03:54Z"
+   },
+   {
+    "titre": "DNA’s secret sunscreen may have helped life survive on early Earth",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221128.htm",
+    "date": "2026-11-22T11:31Z"
+   },
+   {
+    "titre": "A 194-year-old tortoise has a remarkable anti-aging secret hidden in its DNA",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221130.htm",
+    "date": "2026-11-22T11:04Z"
+   },
+   {
+    "titre": "A 50-year-old theory about evolution may have been wrong all along",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261119194538.htm",
+    "date": "2026-11-21T14:06Z"
+   },
+   {
+    "titre": "Scientists say the human family tree may need a radical rewrite",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261118074039.htm",
+    "date": "2026-11-21T13:44Z"
+   },
+   {
+    "titre": "A 3-million-year-old child just made human evolution far more complicated",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261118065531.htm",
+    "date": "2026-11-20T03:17Z"
+   },
+   {
+    "titre": "Scientists tested 212 plant-based foods. Every single one contained fungal toxins",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261118073749.htm",
+    "date": "2026-11-19T11:13Z"
+   }
+  ]
+ },
+ "sd_espace": {
+  "titre": "ScienceDaily, espace et temps",
+  "url": "https://www.sciencedaily.com/rss/space_time.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "A galactic shock wave could rewrite the map of the Milky Way",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060329.htm",
+    "date": "2026-11-23T11:41Z"
+   },
+   {
+    "titre": "Two monster black holes from the dawn of time defy explanation",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261122060342.htm",
+    "date": "2026-11-23T11:21Z"
+   },
+   {
+    "titre": "Interstellar solar sails hit a bizarre problem at 75% of light speed",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120071305.htm",
+    "date": "2026-11-22T11:59Z"
+   },
+   {
+    "titre": "A mysterious gap hints at black holes born from stars that never exploded",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221126.htm",
+    "date": "2026-11-22T11:46Z"
+   },
+   {
+    "titre": "Time may be far stranger than we realize. Scientists have a way to test it",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120075558.htm",
+    "date": "2026-11-21T15:09Z"
+   },
+   {
+    "titre": "A giant star swallowed another star. James Webb reveals the aftermath",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120075556.htm",
+    "date": "2026-11-21T14:53Z"
+   },
+   {
+    "titre": "After 8 years in space, a groundbreaking X-ray telescope finally opens its eyes",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120075547.htm",
+    "date": "2026-11-21T02:11Z"
+   },
+   {
+    "titre": "NASA’s Voyager 1 is now so far away that light takes 24 hours to reach it",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120075554.htm",
+    "date": "2026-11-20T12:55Z"
+   }
+  ]
+ },
+ "sd_matiere": {
+  "titre": "ScienceDaily, matière et énergie",
+  "url": "https://www.sciencedaily.com/rss/matter_energy.xml",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Interstellar solar sails hit a bizarre problem at 75% of light speed",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120071305.htm",
+    "date": "2026-11-22T11:59Z"
+   },
+   {
+    "titre": "A mysterious gap hints at black holes born from stars that never exploded",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261121221126.htm",
+    "date": "2026-11-22T11:46Z"
+   },
+   {
+    "titre": "A decades-old mystery about light could hold the key to faster internet",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261119194544.htm",
+    "date": "2026-11-21T00:02Z"
+   },
+   {
+    "titre": "Einstein’s relativity just upended a fundamental rule of chemistry",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261120075602.htm",
+    "date": "2026-11-20T12:56Z"
+   },
+   {
+    "titre": "CERN scientists finally find evidence of a particle decay so rare it took 40 years to detect",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261119194530.htm",
+    "date": "2026-11-20T12:23Z"
+   },
+   {
+    "titre": "Why hydrogen flames can glow orange, then turn nearly invisible",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261118065509.htm",
+    "date": "2026-11-19T10:10Z"
+   },
+   {
+    "titre": "Scientists create a remarkable new rechargeable battery using vitamin B12",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261117033909.htm",
+    "date": "2026-11-18T12:26Z"
+   },
+   {
+    "titre": "New discovery reveals what may be holding back room-temperature superconductors",
+    "lien": "https://www.sciencedaily.com/releases/2026/11/261116023358.htm",
+    "date": "2026-11-18T12:16Z"
+   }
+  ]
+ },
+ "conversation": {
+  "titre": "The Conversation France",
+  "url": "https://theconversation.com/fr/articles.atom",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Lupus neuropsychiatrique : quand l’inflammation dérègle la chimie du cerveau",
+    "lien": "https://theconversation.com/lupus-neuropsychiatrique-quand-linflammation-deregle-la-chimie-du-cerveau-297010",
+    "date": "2026-11-23T18:40Z"
+   },
+   {
+    "titre": "Quiz Santé – Jouez avec The Conversation autour de l’histoire mouvementée du Mouvement français pour le planning familial",
+    "lien": "https://theconversation.com/quiz-sante-jouez-avec-the-conversation-autour-de-lhistoire-mouvementee-du-mouvement-francais-pour-le-planning-familial-297358",
+    "date": "2026-11-23T18:28Z"
+   },
+   {
+    "titre": "Si Lucía Caminos est la première héroïne latino-américaine de « Grand Theft Auto », d’autres personnages de jeux vidéo avaient ouvert la voie",
+    "lien": "https://theconversation.com/si-lucia-caminos-est-la-premiere-hero-ne-latino-americaine-de-grand-theft-auto-dautres-personnages-de-jeux-video-avaient-ouvert-la-voie-297079",
+    "date": "2026-11-23T16:07Z"
+   },
+   {
+    "titre": "Adam Smith, 250 ans après « la Richesse des nations » : ce que la main invisible a fini par nous faire oublier",
+    "lien": "https://theconversation.com/adam-smith-250-ans-apres-la-richesse-des-nations-ce-que-la-main-invisible-a-fini-par-nous-faire-oublier-296719",
+    "date": "2026-11-23T16:07Z"
+   },
+   {
+    "titre": "Décrochage, césure, réorientation : ces « pauses » qui redéfinissent l’entrée dans l’âge adulte",
+    "lien": "https://theconversation.com/decrochage-cesure-reorientation-ces-pauses-qui-redefinissent-lentree-dans-lage-adulte-293058",
+    "date": "2026-11-23T16:06Z"
+   },
+   {
+    "titre": "La COP31 s’est achevée sans accord formel : et maintenant ?",
+    "lien": "https://theconversation.com/la-cop31-sest-achevee-sans-accord-formel-et-maintenant-297342",
+    "date": "2026-11-23T16:05Z"
+   },
+   {
+    "titre": "Soldats français en Ukraine : un pas vers la cobelligérance ou simple application des accords existants ?",
+    "lien": "https://theconversation.com/soldats-francais-en-ukraine-un-pas-vers-la-cobelligerance-ou-simple-application-des-accords-existants-297240",
+    "date": "2026-11-23T16:04Z"
+   },
+   {
+    "titre": "Pourquoi la plupart des personnes ayant subi un viol ne portent pas plainte",
+    "lien": "https://theconversation.com/pourquoi-la-plupart-des-personnes-ayant-subi-un-viol-ne-portent-pas-plainte-294313",
+    "date": "2026-11-23T16:03Z"
+   }
+  ]
+ },
+ "global_voices": {
+  "titre": "Global Voices (sociétés, monde)",
+  "url": "https://globalvoices.org/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Nigerien women lose their rights before ever reaching a courtroom",
+    "lien": "https://globalvoices.org/2026/11/23/nigerien-women-lose-their-rights-before-ever-reaching-a-courtroom/",
+    "date": "2026-11-23T06:45Z"
+   },
+   {
+    "titre": "Breaking the silence: Pratishta’s journey from childhood abuse to advocacy",
+    "lien": "https://globalvoices.org/2026/11/22/breaking-the-silence-pratishtas-journey-from-childhood-abuse-to-advocacy/",
+    "date": "2026-11-22T06:10Z"
+   },
+   {
+    "titre": "Growing up displaced in Cameroon after ten years of conflict",
+    "lien": "https://globalvoices.org/2026/11/21/growing-up-displaced-in-cameroon-after-ten-years-of-conflict/",
+    "date": "2026-11-21T18:02Z"
+   },
+   {
+    "titre": "Reclaiming Indigenous culinary histories in Nepal",
+    "lien": "https://globalvoices.org/2026/11/21/rereclaiming-indigenous-culinary-histories-in-nepal/",
+    "date": "2026-11-21T06:12Z"
+   },
+   {
+    "titre": "The ongoing efforts to get ecocide recognized at the International Criminal Court",
+    "lien": "https://globalvoices.org/2026/11/20/the-ongoing-efforts-to-get-ecocide-recognized-at-the-international-criminal-court/",
+    "date": "2026-11-20T18:05Z"
+   },
+   {
+    "titre": "Why Japan’s anti-hate measures fall short",
+    "lien": "https://globalvoices.org/2026/11/20/why-japans-anti-hate-measures-fall-short/",
+    "date": "2026-11-20T00:00Z"
+   },
+   {
+    "titre": "Family stories keep alive Georgia’s democratic past and the memory of Soviet repression",
+    "lien": "https://globalvoices.org/2026/11/19/sharing-family-histories-about-a-region-in-georgias-democratic-past-and-soviet-repression/",
+    "date": "2026-11-19T08:00Z"
+   },
+   {
+    "titre": "Support Global Voices’ December Spotlight: Digital Communities",
+    "lien": "https://globalvoices.org/2026/11/19/support-global-voices-december-spotlight-digital-communities/",
+    "date": "2026-11-19T00:00Z"
+   }
+  ]
+ },
+ "rns": {
+  "titre": "Religion News Service",
+  "url": "https://religionnews.com/feed/",
+  "lu_le": "2026-11-23T19:29Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "For the first time, UN’s highest court finds a country responsible for genocide: Myanmar",
+    "lien": "https://religionnews.com/2026/11/23/for-the-first-time-uns-highest-court-finds-a-country-responsible-for-genocide-myanmar/",
+    "date": "2026-11-23T18:19Z"
+   },
+   {
+    "titre": "Judge says agriculture secretary’s religious emails were unconstitutional",
+    "lien": "https://religionnews.com/2026/11/23/judge-says-agriculture-secretarys-religious-emails-were-unconstitutional/",
+    "date": "2026-11-23T18:16Z"
+   },
+   {
+    "titre": "US Catholic bishops’ new AI task force urges regulation and worker protections",
+    "lien": "https://religionnews.com/2026/11/23/us-catholic-bishops-new-ai-task-force-urges-regulation-and-worker-protections/",
+    "date": "2026-11-23T18:13Z"
+   },
+   {
+    "titre": "Mexico’s Catholic street DJs turn annual pilgrimage into a party",
+    "lien": "https://religionnews.com/2026/11/23/mexicos-catholic-street-djs-turn-annual-pilgrimage-into-a-party/",
+    "date": "2026-11-23T18:11Z"
+   },
+   {
+    "titre": "Ascension opens preorders for the New Catholic American Bible",
+    "lien": "https://religionnews.com/2026/11/23/ascension-opens-preorders-for-the-new-catholic-american-bible/",
+    "date": "2026-11-23T17:02Z"
+   },
+   {
+    "titre": "ActsSocial says 97 percent of prayer requests receive prayer from fellow members",
+    "lien": "https://religionnews.com/2026/11/23/actssocial-says-97-percent-of-prayer-requests-receive-prayer-from-fellow-members/",
+    "date": "2026-11-23T16:02Z"
+   },
+   {
+    "titre": "New grants are funding efforts to collect and share compelling stories about Christian faith and life",
+    "lien": "https://religionnews.com/2026/11/23/new-grants-are-funding-efforts-to-collect-and-share-compelling-stories-about-christian-faith-and-life/",
+    "date": "2026-11-23T15:27Z"
+   },
+   {
+    "titre": "AI is Going to Change Your Faith with DZ Kalman",
+    "lien": "https://religionnews.com/2026/11/21/ai-is-going-to-change-your-faith-with-dz-kalman/",
+    "date": "2026-11-21T23:05Z"
+   }
+  ]
+ }
+}
