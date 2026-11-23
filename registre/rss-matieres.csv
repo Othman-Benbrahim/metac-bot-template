@@ -28,5 +28,14 @@ terres_rares,2026-11-20,economie,2
 terres_rares,2026-11-20,matieres_presse,3
 uranium,2026-11-20,matieres_presse,2
 charbon,2026-11-21,matieres_presse,1
-petrole,2026-11-21,matieres_presse,2
-electricite,2026-11-22,matieres_presse,1
+petrole,2026-11-21,matieres_presse,3
+charbon,2026-11-22,matieres_presse,1
+electricite,2026-11-22,matieres_presse,2
+engrais,2026-11-22,matieres_presse,1
+gaz,2026-11-22,matieres_presse,2
+petrole,2026-11-22,economie,1
+petrole,2026-11-22,matieres_presse,1
+fret_maritime,2026-11-23,economie,1
+gaz,2026-11-23,economie,1
+petrole,2026-11-23,economie,2
+petrole,2026-11-23,matieres_presse,1
