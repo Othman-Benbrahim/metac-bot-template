@@ -44,6 +44,8 @@ PAR_TYPE = {
     "hostilites": ("flux", "actes par jour"),
     "violations": ("flux", "incidents par jour"),
     "ucdp": ("flux", "événements par jour"),
+    "pluie": ("gradient", "pluie des 30 derniers jours en % de la normale (écart à la normale dans le temps)"),
+    "ucdp_mois": ("flux", "morts par mois (UCDP, tous types de violence organisée)"),
     "voisins": ("flux", "événements par jour chez les voisins (traversée de la frontière régionale)"),
     "paire": ("flux", "gestes de A envers B par jour (flux orienté)"),
     "paire_mois": ("flux", "événements par mois entre deux pays"),
