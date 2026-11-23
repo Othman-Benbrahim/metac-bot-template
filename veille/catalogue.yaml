@@ -1,0 +1,680 @@
+# Catalogue de veille de la carte (bot 0.10.480). Décision de l'auteur, 2026-11-23, 19 h 08 - 20 h 10 :
+# - au niveau de chaque fiche, une partie « Ressources » : des liens dont le titre indique la source, puis, en dessous,
+#   une veille de flux RSS ;
+# - des flux RSS dans tous les compartiments qu'on peut remplir de façon cohérente, après recherche par thème ;
+# - à ne pas mélanger avec les familles RSS du collecteur des signaux (elles restent à part, au niveau de la fiche).
+# Flux et liens proposés par Claude, acceptés par défaut (consigne de l'auteur, 20 h 10). Le collecteur (veille.py)
+# respecte robots.txt, ne conserve que titre, lien et date de chaque article, et signale les flux qui ne répondent pas :
+# un flux muet n'apparaît pas sur la carte. Équilibre : pour un conflit, des émetteurs des deux côtés, et les médias
+# d'État signalés comme tels.
+
+flux:
+  # --- ONU : régions et thèmes
+  un_monde: {titre: "ONU Info (UN News), toutes les nouvelles", url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml"}
+  un_afrique: {titre: "ONU Info, Afrique", url: "https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml"}
+  un_ameriques: {titre: "ONU Info, Amériques", url: "https://news.un.org/feed/subscribe/en/news/region/americas/feed/rss.xml"}
+  un_asie: {titre: "ONU Info, Asie-Pacifique", url: "https://news.un.org/feed/subscribe/en/news/region/asia-pacific/feed/rss.xml"}
+  un_moyen_orient: {titre: "ONU Info, Moyen-Orient", url: "https://news.un.org/feed/subscribe/en/news/region/middle-east/feed/rss.xml"}
+  un_europe: {titre: "ONU Info, Europe", url: "https://news.un.org/feed/subscribe/en/news/region/europe/feed/rss.xml"}
+  un_climat: {titre: "ONU Info, climat et environnement", url: "https://news.un.org/feed/subscribe/en/news/topic/climate-change/feed/rss.xml"}
+  un_sante: {titre: "ONU Info, santé", url: "https://news.un.org/feed/subscribe/en/news/topic/health/feed/rss.xml"}
+  un_humanitaire: {titre: "ONU Info, aide humanitaire", url: "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml"}
+  un_paix: {titre: "ONU Info, paix et sécurité", url: "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml"}
+  un_economie: {titre: "ONU Info, développement économique", url: "https://news.un.org/feed/subscribe/en/news/topic/economic-development/feed/rss.xml"}
+  un_droits: {titre: "ONU Info, droits humains", url: "https://news.un.org/feed/subscribe/en/news/topic/human-rights/feed/rss.xml"}
+  un_migrants: {titre: "ONU Info, migrants et réfugiés", url: "https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml"}
+  un_droit: {titre: "ONU Info, droit et prévention du crime", url: "https://news.un.org/feed/subscribe/en/news/topic/law-and-crime-prevention/feed/rss.xml"}
+  un_femmes: {titre: "ONU Info, femmes", url: "https://news.un.org/feed/subscribe/en/news/topic/women/feed/rss.xml"}
+  un_culture: {titre: "ONU Info, culture et éducation", url: "https://news.un.org/feed/subscribe/en/news/topic/culture-and-education/feed/rss.xml"}
+  un_odd: {titre: "ONU Info, objectifs de développement durable", url: "https://news.un.org/feed/subscribe/en/news/topic/sdgs/feed/rss.xml"}
+  # --- presse généraliste par région (BBC, Le Monde, RFI, France 24)
+  bbc_afrique: {titre: "BBC News, Afrique", url: "https://feeds.bbci.co.uk/news/world/africa/rss.xml"}
+  bbc_asie: {titre: "BBC News, Asie", url: "https://feeds.bbci.co.uk/news/world/asia/rss.xml"}
+  bbc_inde: {titre: "BBC News, Inde", url: "https://feeds.bbci.co.uk/news/world/asia/india/rss.xml"}
+  bbc_chine: {titre: "BBC News, Chine", url: "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml"}
+  bbc_australie: {titre: "BBC News, Australie", url: "https://feeds.bbci.co.uk/news/world/australia/rss.xml"}
+  bbc_amlat: {titre: "BBC News, Amérique latine", url: "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml"}
+  bbc_moyen_orient: {titre: "BBC News, Moyen-Orient", url: "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml"}
+  bbc_europe: {titre: "BBC News, Europe", url: "https://feeds.bbci.co.uk/news/world/europe/rss.xml"}
+  bbc_usa_canada: {titre: "BBC News, États-Unis et Canada", url: "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml"}
+  bbc_science: {titre: "BBC News, science et environnement", url: "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"}
+  bbc_sante: {titre: "BBC News, santé", url: "https://feeds.bbci.co.uk/news/health/rss.xml"}
+  bbc_tech: {titre: "BBC News, technologie", url: "https://feeds.bbci.co.uk/news/technology/rss.xml"}
+  bbc_economie: {titre: "BBC News, économie", url: "https://feeds.bbci.co.uk/news/business/rss.xml"}
+  bbc_sport: {titre: "BBC Sport", url: "https://feeds.bbci.co.uk/sport/rss.xml"}
+  lm_international: {titre: "Le Monde, International", url: "https://www.lemonde.fr/international/rss_full.xml"}
+  lm_afrique: {titre: "Le Monde, Afrique", url: "https://www.lemonde.fr/afrique/rss_full.xml"}
+  lm_asie: {titre: "Le Monde, Asie-Pacifique", url: "https://www.lemonde.fr/asie-pacifique/rss_full.xml"}
+  lm_ameriques: {titre: "Le Monde, Amériques", url: "https://www.lemonde.fr/ameriques/rss_full.xml"}
+  lm_europe: {titre: "Le Monde, Europe", url: "https://www.lemonde.fr/europe/rss_full.xml"}
+  lm_proche_orient: {titre: "Le Monde, Proche-Orient", url: "https://www.lemonde.fr/proche-orient/rss_full.xml"}
+  lm_economie: {titre: "Le Monde, Économie", url: "https://www.lemonde.fr/economie/rss_full.xml"}
+  lm_planete: {titre: "Le Monde, Planète", url: "https://www.lemonde.fr/planete/rss_full.xml"}
+  lm_sciences: {titre: "Le Monde, Sciences", url: "https://www.lemonde.fr/sciences/rss_full.xml"}
+  lm_pixels: {titre: "Le Monde, Pixels (numérique)", url: "https://www.lemonde.fr/pixels/rss_full.xml"}
+  lm_sante: {titre: "Le Monde, Santé", url: "https://www.lemonde.fr/sante/rss_full.xml"}
+  lm_culture: {titre: "Le Monde, Culture", url: "https://www.lemonde.fr/culture/rss_full.xml"}
+  lm_societe: {titre: "Le Monde, Société", url: "https://www.lemonde.fr/societe/rss_full.xml"}
+  lm_politique: {titre: "Le Monde, Politique", url: "https://www.lemonde.fr/politique/rss_full.xml"}
+  lm_idees: {titre: "Le Monde, Idées", url: "https://www.lemonde.fr/idees/rss_full.xml"}
+  rfi_afrique: {titre: "RFI, Afrique", url: "https://www.rfi.fr/fr/afrique/rss"}
+  rfi_asie: {titre: "RFI, Asie-Pacifique", url: "https://www.rfi.fr/fr/asie-pacifique/rss"}
+  f24_moyen_orient: {titre: "France 24, Moyen-Orient", url: "https://www.france24.com/fr/moyen-orient/rss"}
+  f24_afrique: {titre: "France 24, Afrique", url: "https://www.france24.com/fr/afrique/rss"}
+  # --- presse régionale et spécialisée
+  the_hindu: {titre: "The Hindu, national (Inde)", url: "https://www.thehindu.com/news/national/feeder/default.rss"}
+  dawn: {titre: "Dawn, actualité (Pakistan)", url: "https://www.dawn.com/feeds/home"}
+  japan_times: {titre: "The Japan Times", url: "https://www.japantimes.co.jp/feed/"}
+  scmp_chine: {titre: "South China Morning Post, Chine", url: "https://www.scmp.com/rss/4/feed"}
+  abc_australie: {titre: "ABC News (Australie), dernières nouvelles", url: "https://www.abc.net.au/news/feed/2942460/rss.xml"}
+  rnz_pacifique: {titre: "RNZ Pacific (îles du Pacifique)", url: "https://www.rnz.co.nz/rss/pacific.xml"}
+  cbc_canada: {titre: "CBC News, Canada", url: "https://www.cbc.ca/webfeed/rss/rss-canada"}
+  arctic_today: {titre: "Arctic Today", url: "https://www.arctictoday.com/feed/"}
+  eurasianet: {titre: "Eurasianet (Caucase et Asie centrale)", url: "https://eurasianet.org/rss"}
+  insight_crime: {titre: "InSight Crime (crime organisé, Amériques)", url: "https://insightcrime.org/feed/"}
+  kyiv_independent: {titre: "The Kyiv Independent (Ukraine)", url: "https://kyivindependent.com/rss/"}
+  meduza: {titre: "Meduza, en anglais (média russe indépendant, en exil)", url: "https://meduza.io/rss/en/all"}
+  tass: {titre: "TASS, en anglais (agence d'État russe)", url: "https://tass.com/rss/v2.xml"}
+  times_of_israel: {titre: "The Times of Israel", url: "https://www.timesofisrael.com/feed/"}
+  middle_east_eye: {titre: "Middle East Eye", url: "https://www.middleeasteye.net/rss"}
+  dabanga: {titre: "Radio Dabanga (Soudan)", url: "https://www.dabangasudan.org/en/feed"}
+  politico_europe: {titre: "Politico Europe", url: "https://www.politico.eu/feed/"}
+  scotusblog: {titre: "SCOTUSblog (Cour suprême des États-Unis)", url: "https://www.scotusblog.com/feed/"}
+  # --- thèmes
+  carbon_brief: {titre: "Carbon Brief (climat)", url: "https://www.carbonbrief.org/feed/"}
+  nasa_eo: {titre: "NASA Earth Observatory", url: "https://earthobservatory.nasa.gov/feeds/earth-observatory.rss"}
+  mongabay: {titre: "Mongabay (nature, forêts, océans)", url: "https://news.mongabay.com/feed/"}
+  circle_of_blue: {titre: "Circle of Blue (eau)", url: "https://www.circleofblue.org/feed/"}
+  oms: {titre: "Organisation mondiale de la santé, actualités", url: "https://www.who.int/rss-feeds/news-english.xml"}
+  aiea: {titre: "AIEA, actualités", url: "https://www.iaea.org/feeds/topnews"}
+  bulletin: {titre: "Bulletin of the Atomic Scientists", url: "https://thebulletin.org/feed/"}
+  fmi: {titre: "FMI, actualités", url: "https://www.imf.org/en/News/rss?language=eng"}
+  eia: {titre: "EIA, Today in Energy", url: "https://www.eia.gov/rss/todayinenergy.xml"}
+  fed: {titre: "Réserve fédérale, communiqués", url: "https://www.federalreserve.gov/feeds/press_all.xml"}
+  bce: {titre: "Banque centrale européenne, communiqués", url: "https://www.ecb.europa.eu/rss/press.html"}
+  usgs_seismes: {titre: "USGS, séismes importants du mois", url: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom"}
+  nasa: {titre: "NASA, actualités", url: "https://www.nasa.gov/feed/"}
+  mining: {titre: "MINING.COM (mines et métaux)", url: "https://www.mining.com/feed/"}
+  gcaptain: {titre: "gCaptain (transport maritime)", url: "https://gcaptain.com/feed/"}
+  splash247: {titre: "Splash247 (transport maritime)", url: "https://splash247.com/feed/"}
+  defense_news: {titre: "Defense News", url: "https://www.defensenews.com/arc/outboundfeeds/rss/"}
+  war_on_the_rocks: {titre: "War on the Rocks (stratégie)", url: "https://warontherocks.com/feed/"}
+  the_record: {titre: "The Record (cybersécurité)", url: "https://therecord.media/feed"}
+  krebs: {titre: "Krebs on Security", url: "https://krebsonsecurity.com/feed/"}
+  rest_of_world: {titre: "Rest of World (technologie hors Occident)", url: "https://restofworld.org/feed/latest"}
+  arxiv_ia: {titre: "arXiv, intelligence artificielle (cs.AI)", url: "https://export.arxiv.org/rss/cs.AI"}
+  nature: {titre: "Nature, actualités et articles", url: "https://www.nature.com/nature.rss"}
+  sd_cerveau: {titre: "ScienceDaily, esprit et cerveau", url: "https://www.sciencedaily.com/rss/mind_brain.xml"}
+  sd_sante: {titre: "ScienceDaily, santé et médecine", url: "https://www.sciencedaily.com/rss/health_medicine.xml"}
+  sd_terre: {titre: "ScienceDaily, Terre et climat", url: "https://www.sciencedaily.com/rss/earth_climate.xml"}
+  sd_vivant: {titre: "ScienceDaily, plantes et animaux", url: "https://www.sciencedaily.com/rss/plants_animals.xml"}
+  sd_espace: {titre: "ScienceDaily, espace et temps", url: "https://www.sciencedaily.com/rss/space_time.xml"}
+  sd_matiere: {titre: "ScienceDaily, matière et énergie", url: "https://www.sciencedaily.com/rss/matter_energy.xml"}
+  conversation: {titre: "The Conversation France", url: "https://theconversation.com/fr/articles.atom"}
+  global_voices: {titre: "Global Voices (sociétés, monde)", url: "https://globalvoices.org/feed/"}
+  rns: {titre: "Religion News Service", url: "https://religionnews.com/feed/"}
+
+# Flux par région (déduite des pays d'un compartiment, sinon de la fiche)
+regions:
+  afrique: [lm_afrique, rfi_afrique, bbc_afrique, un_afrique]
+  moyen_orient: [lm_proche_orient, f24_moyen_orient, bbc_moyen_orient, un_moyen_orient]
+  asie: [lm_asie, rfi_asie, bbc_asie, un_asie]
+  ameriques: [lm_ameriques, bbc_amlat, un_ameriques]
+  amerique_du_nord: [bbc_usa_canada, lm_ameriques]
+  europe: [lm_europe, bbc_europe, un_europe]
+  oceanie: [rnz_pacifique, bbc_australie, un_asie]
+  monde: [lm_international, un_monde]
+
+# Flux par organisation du compartiment (le thème)
+organisations:
+  geopolitique: [un_paix, war_on_the_rocks]
+  economie: [lm_economie, bbc_economie, fmi]
+  convention: [un_droit]
+  statut: [lm_politique]
+  societe: [lm_societe, global_voices, un_droits]
+  technique: [rest_of_world, bbc_tech]
+  ideologie: [lm_idees, conversation]
+  psychologique: [sd_cerveau, conversation]
+  mineral: [mining]
+  eau: [circle_of_blue]
+  animal: [sd_vivant, mongabay]
+  relief: [nasa_eo]
+  chimique: [sd_matiere]
+  climat: [carbon_brief, un_climat]
+  meteo: [nasa_eo, carbon_brief]
+  corps: [sd_sante, un_sante]
+  vegetal: [mongabay, sd_vivant]
+  microbiologique: [oms, un_sante]
+  physique: [sd_matiere, nature]
+  entourage: [conversation]
+  ocean: [mongabay, nasa_eo]
+  personne: [conversation]
+  atomique: [aiea, bulletin]
+  sol_vivant: [mongabay]
+
+# Fiches : région par défaut, liens « Ressources » (le titre indique la source), flux de la fiche, et flux propres à
+# certains compartiments (ils passent avant les règles générales)
+fiches:
+  afrique:
+    region: afrique
+    liens:
+    - {titre: "Union africaine", url: "https://au.int/fr"}
+    - {titre: "Secrétariat de la ZLECAf", url: "https://au-afcfta.org/"}
+    - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
+    - {titre: "Banque mondiale, Afrique", url: "https://www.banquemondiale.org/fr/region/afr"}
+    flux: [lm_afrique, rfi_afrique, un_afrique]
+  afrique-subsaharienne:
+    region: afrique
+    liens:
+    - {titre: "Union africaine", url: "https://au.int/fr"}
+    - {titre: "CEDEAO", url: "https://www.ecowas.int/?lang=fr"}
+    - {titre: "UNHCR, portail des données opérationnelles", url: "https://data.unhcr.org/fr/"}
+    - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
+    flux: [rfi_afrique, lm_afrique, f24_afrique]
+  alimentation-mondiale:
+    region: monde
+    liens:
+    - {titre: "FAO, indice des prix alimentaires", url: "https://www.fao.org/worldfoodsituation/foodpricesindex/fr/"}
+    - {titre: "AMIS, Market Monitor (G20)", url: "https://www.amis-outlook.org/"}
+    - {titre: "USDA, Foreign Agricultural Service (production et stocks)", url: "https://fas.usda.gov/data"}
+    - {titre: "FEWS NET, alerte précoce famines", url: "https://fews.net/"}
+    flux: [un_odd, carbon_brief]
+  amerique-latine:
+    region: ameriques
+    liens:
+    - {titre: "CEPALC (Commission économique pour l'Amérique latine)", url: "https://www.cepal.org/fr"}
+    - {titre: "InSight Crime", url: "https://insightcrime.org/"}
+    - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
+    flux: [lm_ameriques, bbc_amlat, insight_crime]
+    compartiments:
+      violences_criminelles: [insight_crime, lm_ameriques]
+      haiti: [un_ameriques, insight_crime]
+  antarctique:
+    region: monde
+    liens:
+    - {titre: "Secrétariat du traité sur l'Antarctique", url: "https://www.ats.aq/index_f.html"}
+    - {titre: "CCAMLR (Convention sur la conservation de la faune et la flore marines de l'Antarctique)", url: "https://www.ccamlr.org/fr"}
+    - {titre: "NSIDC, glace de mer (Sea Ice Index)", url: "https://nsidc.org/data/seaice_index"}
+    flux: [carbon_brief, nasa_eo]
+  arctique:
+    region: europe
+    liens:
+    - {titre: "Conseil de l'Arctique", url: "https://arctic-council.org/"}
+    - {titre: "NSIDC, Arctic Sea Ice News", url: "https://nsidc.org/arcticseaicenews/"}
+    - {titre: "Gouvernement du Groenland (Naalakkersuisut)", url: "https://naalakkersuisut.gl/"}
+    flux: [arctic_today, carbon_brief]
+    compartiments:
+      groenland: [arctic_today, bbc_europe]
+      route_nord: [arctic_today, gcaptain]
+  asie-centrale:
+    region: asie
+    liens:
+    - {titre: "Eurasianet", url: "https://eurasianet.org/"}
+    - {titre: "Banque mondiale, Europe et Asie centrale", url: "https://www.banquemondiale.org/fr/region/eca"}
+    flux: [eurasianet, rfi_asie]
+  asie-du-nord-est:
+    region: asie
+    liens:
+    - {titre: "38 North (Corée du Nord, Stimson Center)", url: "https://www.38north.org/"}
+    - {titre: "Ministère japonais de la Défense", url: "https://www.mod.go.jp/en/"}
+    flux: [japan_times, bbc_asie, lm_asie]
+  asie-du-sud:
+    region: asie
+    liens:
+    - {titre: "South Asia Terrorism Portal", url: "https://www.satp.org/"}
+    - {titre: "USIP, Asie du Sud", url: "https://www.usip.org/regions/asia"}
+    flux: [dawn, the_hindu, bbc_asie]
+  asie-du-sud-est:
+    region: asie
+    liens:
+    - {titre: "ASEAN", url: "https://asean.org/"}
+    - {titre: "AMTI, Asia Maritime Transparency Initiative (CSIS)", url: "https://amti.csis.org/"}
+    - {titre: "ISEAS - Institut Yusof Ishak", url: "https://www.iseas.edu.sg/"}
+    flux: [rfi_asie, lm_asie, bbc_asie]
+  australie:
+    region: oceanie
+    liens:
+    - {titre: "Australian Bureau of Statistics", url: "https://www.abs.gov.au/"}
+    - {titre: "Bureau of Meteorology", url: "http://www.bom.gov.au/"}
+    - {titre: "Lowy Institute", url: "https://www.lowyinstitute.org/"}
+    flux: [abc_australie, bbc_australie]
+  biocenose:
+    region: monde
+    liens:
+    - {titre: "IPBES (plateforme intergouvernementale sur la biodiversité)", url: "https://www.ipbes.net/"}
+    - {titre: "GBIF (données mondiales sur la biodiversité)", url: "https://www.gbif.org/fr/"}
+    flux: [mongabay, sd_vivant]
+  biodiversite-sols:
+    region: monde
+    liens:
+    - {titre: "IPBES", url: "https://www.ipbes.net/"}
+    - {titre: "FAO, partenariat mondial sur les sols", url: "https://www.fao.org/global-soil-partnership/fr/"}
+    - {titre: "Liste rouge de l'UICN", url: "https://www.iucnredlist.org/"}
+    flux: [mongabay, sd_vivant]
+  calendriers-echeances:
+    region: monde
+    liens:
+    - {titre: "ONU, journées et semaines internationales", url: "https://www.un.org/fr/observances/list-days-weeks"}
+    - {titre: "IFES, ElectionGuide (calendrier électoral)", url: "https://www.electionguide.org/"}
+    flux: [lm_international]
+  canada:
+    region: amerique_du_nord
+    liens:
+    - {titre: "Statistique Canada", url: "https://www.statcan.gc.ca/fr/debut"}
+    - {titre: "Affaires mondiales Canada, révision conjointe de l'ACEUM", url: "https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cusma-aceum/joint-review-examen-conjoint.aspx?lang=fra"}
+    flux: [cbc_canada, bbc_usa_canada]
+  classes-sociales:
+    region: monde
+    liens:
+    - {titre: "World Inequality Database", url: "https://wid.world/fr/"}
+    - {titre: "Insee", url: "https://www.insee.fr/fr/accueil"}
+    - {titre: "Observatoire des inégalités", url: "https://www.inegalites.fr/"}
+    flux: [lm_societe, conversation]
+  climat-extremes:
+    region: monde
+    liens:
+    - {titre: "Copernicus Climate Change Service", url: "https://climate.copernicus.eu/"}
+    - {titre: "NOAA, Climate Prediction Center (ENSO)", url: "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/"}
+    - {titre: "OMM (Organisation météorologique mondiale)", url: "https://wmo.int/fr"}
+    - {titre: "GIEC", url: "https://www.ipcc.ch/"}
+    flux: [carbon_brief, nasa_eo, un_climat]
+  competitions-culture:
+    region: monde
+    liens:
+    - {titre: "Comité international olympique", url: "https://www.olympics.com/cio"}
+    - {titre: "FIFA", url: "https://www.fifa.com/fr"}
+    flux: [bbc_sport, lm_culture]
+  corps-humain:
+    region: monde
+    liens:
+    - {titre: "OMS, Observatoire mondial de la santé", url: "https://www.who.int/data/gho"}
+    - {titre: "IHME, Global Burden of Disease", url: "https://www.healthdata.org/research-analysis/gbd"}
+    flux: [sd_sante, oms]
+  corruption:
+    region: monde
+    liens:
+    - {titre: "Transparency International, indice de perception de la corruption", url: "https://www.transparency.org/fr/cpi"}
+    - {titre: "OCCRP (Organized Crime and Corruption Reporting Project)", url: "https://www.occrp.org/fr"}
+    - {titre: "ONUDC, corruption", url: "https://www.unodc.org/unodc/fr/corruption/index.html"}
+    flux: [un_droit, global_voices]
+  crime-organise:
+    region: monde
+    liens:
+    - {titre: "ONUDC, Rapport mondial sur les drogues", url: "https://www.unodc.org/unodc/fr/data-and-analysis/world-drug-report.html"}
+    - {titre: "Global Initiative against Transnational Organized Crime", url: "https://globalinitiative.net/"}
+    - {titre: "InSight Crime", url: "https://insightcrime.org/"}
+    flux: [insight_crime, un_droit]
+  crises-bancaires:
+    region: monde
+    liens:
+    - {titre: "Banque des règlements internationaux (BRI)", url: "https://www.bis.org/"}
+    - {titre: "Conseil de stabilité financière", url: "https://www.fsb.org/"}
+    - {titre: "FMI, Rapport sur la stabilité financière dans le monde", url: "https://www.imf.org/fr/Publications/GFSR"}
+    flux: [fed, bce, fmi]
+  croyances-religions:
+    region: monde
+    liens:
+    - {titre: "Pew Research Center, religion", url: "https://www.pewresearch.org/religion/"}
+    flux: [rns, conversation]
+  culture-memoire:
+    region: monde
+    liens:
+    - {titre: "UNESCO, patrimoine mondial", url: "https://whc.unesco.org/fr/"}
+    flux: [lm_culture, un_culture]
+  cycles-biogeochimiques:
+    region: monde
+    liens:
+    - {titre: "Global Carbon Project", url: "https://www.globalcarbonproject.org/"}
+    - {titre: "NOAA, CO2 à Mauna Loa", url: "https://gml.noaa.gov/ccgg/trends/"}
+    flux: [carbon_brief, sd_terre]
+  dette-emergents:
+    region: monde
+    liens:
+    - {titre: "FMI, perspectives économiques et dette", url: "https://www.imf.org/fr/Publications/WEO"}
+    - {titre: "Banque mondiale, statistiques de la dette internationale", url: "https://www.worldbank.org/en/programs/debt-statistics/ids"}
+    - {titre: "Club de Paris", url: "https://clubdeparis.org/"}
+    flux: [fmi, lm_economie]
+  dirigeants-elus:
+    region: monde
+    liens:
+    - {titre: "Union interparlementaire, Parline", url: "https://data.ipu.org/fr/"}
+    - {titre: "IFES, ElectionGuide", url: "https://www.electionguide.org/"}
+    flux: [lm_international, lm_politique]
+  eau-douce-potable:
+    region: monde
+    liens:
+    - {titre: "ONU-Eau", url: "https://www.unwater.org/fr"}
+    - {titre: "OMS/UNICEF, JMP (eau, assainissement)", url: "https://washdata.org/"}
+    - {titre: "WRI Aqueduct (stress hydrique)", url: "https://www.wri.org/aqueduct"}
+    flux: [circle_of_blue, un_odd]
+  eau-moyen-orient:
+    region: moyen_orient
+    liens:
+    - {titre: "FAO, AQUASTAT", url: "https://www.fao.org/aquastat/fr/"}
+    - {titre: "WRI Aqueduct", url: "https://www.wri.org/aqueduct"}
+    flux: [circle_of_blue, lm_proche_orient]
+  economie-chinoise:
+    region: asie
+    liens:
+    - {titre: "Bureau national des statistiques de Chine", url: "https://www.stats.gov.cn/english/"}
+    - {titre: "Banque populaire de Chine", url: "http://www.pbc.gov.cn/en/3688006/index.html"}
+    flux: [scmp_chine, bbc_chine]
+  economie-entreprises:
+    region: monde
+    liens:
+    - {titre: "OCDE, données", url: "https://data.oecd.org/fr/"}
+    - {titre: "FMI, Perspectives de l'économie mondiale", url: "https://www.imf.org/fr/Publications/WEO"}
+    flux: [lm_economie, bbc_economie]
+  elections-amerique-latine:
+    region: ameriques
+    liens:
+    - {titre: "IFES, ElectionGuide", url: "https://www.electionguide.org/"}
+    - {titre: "CEPALC", url: "https://www.cepal.org/fr"}
+    flux: [lm_ameriques, bbc_amlat]
+  energie-mondiale:
+    region: monde
+    liens:
+    - {titre: "Agence internationale de l'énergie", url: "https://www.iea.org/"}
+    - {titre: "EIA (administration américaine de l'information sur l'énergie)", url: "https://www.eia.gov/"}
+    - {titre: "OPEP", url: "https://www.opec.org/"}
+    - {titre: "JODI (données pétrolières et gazières)", url: "https://www.jodidata.org/"}
+    flux: [eia, carbon_brief]
+  environnement-dechets:
+    region: monde
+    liens:
+    - {titre: "PNUE (Programme des Nations unies pour l'environnement)", url: "https://www.unep.org/fr"}
+    - {titre: "Agence européenne pour l'environnement", url: "https://www.eea.europa.eu/fr"}
+    flux: [lm_planete, mongabay]
+  epidemies:
+    region: monde
+    liens:
+    - {titre: "OMS, bulletins des flambées épidémiques", url: "https://www.who.int/emergencies/disease-outbreak-news"}
+    - {titre: "ECDC (Centre européen de prévention et de contrôle des maladies)", url: "https://www.ecdc.europa.eu/fr"}
+    - {titre: "CDC (Centers for Disease Control and Prevention)", url: "https://www.cdc.gov/"}
+    flux: [oms, un_sante, bbc_sante]
+  famille-genre:
+    region: monde
+    liens:
+    - {titre: "ONU Femmes", url: "https://www.unwomen.org/fr"}
+    - {titre: "Division de la population de l'ONU", url: "https://www.un.org/development/desa/pd/"}
+    flux: [un_femmes, lm_societe]
+  foret-et-sols-vivants:
+    region: monde
+    liens:
+    - {titre: "Global Forest Watch", url: "https://www.globalforestwatch.org/"}
+    - {titre: "FAO, évaluation des ressources forestières mondiales", url: "https://www.fao.org/forest-resources-assessment/fr/"}
+    flux: [mongabay, sd_vivant]
+  frontieres:
+    region: monde
+    liens:
+    - {titre: "Cour internationale de justice", url: "https://www.icj-cij.org/fr"}
+    - {titre: "UCDP, conflits", url: "https://ucdp.uu.se/"}
+    flux: [lm_international, un_paix]
+  guerre-levant:
+    region: moyen_orient
+    liens:
+    - {titre: "OCHA, territoire palestinien occupé", url: "https://www.ochaopt.org/"}
+    - {titre: "ACLED, Moyen-Orient", url: "https://acleddata.com/region/middle-east/"}
+    - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
+    flux: [times_of_israel, middle_east_eye, lm_proche_orient]
+  humain:
+    region: monde
+    liens:
+    - {titre: "Our World in Data", url: "https://ourworldindata.org/"}
+    - {titre: "World Values Survey", url: "https://www.worldvaluessurvey.org/"}
+    flux: [sd_cerveau, conversation]
+  inde:
+    region: asie
+    liens:
+    - {titre: "IMD, service météorologique indien (mousson)", url: "https://mausam.imd.gov.in/"}
+    - {titre: "MoSPI, ministère indien de la Statistique", url: "https://www.mospi.gov.in/"}
+    - {titre: "Press Information Bureau (communiqués du gouvernement indien)", url: "https://pib.gov.in/"}
+    - {titre: "Commission électorale de l'Inde", url: "https://www.eci.gov.in/"}
+    flux: [the_hindu, bbc_inde, rfi_asie]
+    compartiments:
+      mousson: [carbon_brief, the_hindu]
+      nucleaire_defense: [bulletin, the_hindu]
+      chine_frontiere: [the_hindu, scmp_chine]
+  inflation-mondiale:
+    region: monde
+    liens:
+    - {titre: "FMI, Perspectives de l'économie mondiale", url: "https://www.imf.org/fr/Publications/WEO"}
+    - {titre: "OCDE, prix à la consommation", url: "https://www.oecd.org/fr/data/"}
+    - {titre: "FAO, indice des prix alimentaires", url: "https://www.fao.org/worldfoodsituation/foodpricesindex/fr/"}
+    flux: [fed, bce, fmi]
+  information-cyber:
+    region: monde
+    liens:
+    - {titre: "ANSSI, CERT-FR (alertes)", url: "https://www.cert.ssi.gouv.fr/"}
+    - {titre: "OONI (mesure de la censure d'internet)", url: "https://ooni.org/fr/"}
+    - {titre: "Reporters sans frontières, classement de la liberté de la presse", url: "https://rsf.org/fr/classement"}
+    flux: [the_record, krebs, rest_of_world]
+  infrastructures-critiques:
+    region: monde
+    liens:
+    - {titre: "ENISA (agence européenne de cybersécurité)", url: "https://www.enisa.europa.eu/"}
+    - {titre: "TeleGeography, carte des câbles sous-marins", url: "https://www.submarinecablemap.com/"}
+    flux: [the_record, bbc_tech]
+  insularite:
+    region: oceanie
+    liens:
+    - {titre: "ONU-OHRLLS, petits États insulaires en développement", url: "https://www.un.org/ohrlls/content/about-small-island-developing-states"}
+    - {titre: "Forum des îles du Pacifique", url: "https://forumsec.org/"}
+    - {titre: "NASA, niveau des mers", url: "https://sealevel.nasa.gov/"}
+    flux: [rnz_pacifique, carbon_brief]
+  iran-nucleaire:
+    region: moyen_orient
+    liens:
+    - {titre: "AIEA, Iran", url: "https://www.iaea.org/newscenter/focus/iran"}
+    - {titre: "Arms Control Association", url: "https://www.armscontrol.org/"}
+    flux: [aiea, lm_proche_orient, bbc_moyen_orient]
+  liban-institutions:
+    region: moyen_orient
+    liens:
+    - {titre: "Banque du Liban", url: "https://www.bdl.gov.lb/"}
+    - {titre: "Banque mondiale, Liban", url: "https://www.banquemondiale.org/fr/country/lebanon"}
+    flux: [lm_proche_orient, f24_moyen_orient]
+  medias-diffusion:
+    region: monde
+    liens:
+    - {titre: "Reuters Institute, Digital News Report", url: "https://reutersinstitute.politics.ox.ac.uk/digital-news-report"}
+    - {titre: "Arcom (régulateur français de l'audiovisuel et du numérique)", url: "https://www.arcom.fr/"}
+    flux: [lm_pixels, rest_of_world]
+  migrations-demographie:
+    region: monde
+    liens:
+    - {titre: "UNHCR, données sur les réfugiés", url: "https://www.unhcr.org/refugee-statistics/"}
+    - {titre: "OIM, Matrice de suivi des déplacements", url: "https://dtm.iom.int/"}
+    - {titre: "ONU, World Population Prospects", url: "https://population.un.org/wpp/"}
+    flux: [un_migrants, global_voices]
+  militaire:
+    region: monde
+    liens:
+    - {titre: "SIPRI, dépenses militaires et armements", url: "https://www.sipri.org/databases"}
+    - {titre: "IISS, Military Balance", url: "https://www.iiss.org/publications/the-military-balance/"}
+    flux: [defense_news, war_on_the_rocks]
+  minerais-critiques:
+    region: monde
+    liens:
+    - {titre: "USGS, Mineral Commodity Summaries", url: "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries"}
+    - {titre: "AIE, minerais critiques", url: "https://www.iea.org/topics/critical-minerals"}
+    flux: [mining, lm_economie]
+  monnaie-pouvoir:
+    region: monde
+    liens:
+    - {titre: "FMI, composition des réserves de change (COFER)", url: "https://data.imf.org/regular.aspx?key=41175"}
+    - {titre: "Conseil mondial de l'or", url: "https://www.gold.org/"}
+    - {titre: "SWIFT, RMB Tracker", url: "https://www.swift.com/products/rmb-tracker"}
+    flux: [fed, bce, fmi]
+  non-proliferation:
+    region: monde
+    liens:
+    - {titre: "AIEA", url: "https://www.iaea.org/fr"}
+    - {titre: "Arms Control Association", url: "https://www.armscontrol.org/"}
+    - {titre: "SIPRI, forces nucléaires", url: "https://www.sipri.org/research/armament-and-disarmament/nuclear-disarmament-arms-control-and-non-proliferation"}
+    flux: [bulletin, aiea]
+  nucleaire-radiologique:
+    region: monde
+    liens:
+    - {titre: "AIEA, centrales (PRIS)", url: "https://pris.iaea.org/"}
+    - {titre: "ASN (Autorité de sûreté nucléaire et de radioprotection)", url: "https://www.asnr.fr/"}
+    flux: [aiea, bulletin]
+  observateur-mesure:
+    region: monde
+    liens:
+    - {titre: "Metaculus", url: "https://www.metaculus.com/"}
+    - {titre: "ForecastBench", url: "https://www.forecastbench.org/"}
+    flux: [arxiv_ia, nature]
+  oceans-et-fleuves:
+    region: monde
+    liens:
+    - {titre: "NOAA, océans", url: "https://www.noaa.gov/oceans-coasts"}
+    - {titre: "Copernicus Marine Service", url: "https://marine.copernicus.eu/"}
+    - {titre: "NSIDC, neige et glace", url: "https://nsidc.org/"}
+    flux: [mongabay, carbon_brief, nasa_eo]
+  organisations-internationales:
+    region: monde
+    liens:
+    - {titre: "Nations unies", url: "https://www.un.org/fr/"}
+    - {titre: "Conseil de sécurité de l'ONU", url: "https://www.un.org/securitycouncil/fr"}
+    - {titre: "Security Council Report", url: "https://www.securitycouncilreport.org/"}
+    flux: [un_monde, un_paix]
+  ormuz:
+    region: moyen_orient
+    liens:
+    - {titre: "EIA, goulets pétroliers", url: "https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/"}
+    - {titre: "FMI, PortWatch (trafic des détroits)", url: "https://portwatch.imf.org/"}
+    - {titre: "UKMTO (sécurité maritime)", url: "https://www.ukmto.org/"}
+    flux: [gcaptain, eia, bbc_moyen_orient]
+  partis-politiques:
+    region: monde
+    liens:
+    - {titre: "ParlGov (partis et gouvernements)", url: "https://www.parlgov.org/"}
+    - {titre: "Manifesto Project", url: "https://manifesto-project.wzb.eu/"}
+    flux: [lm_politique, lm_international]
+  plancher-social:
+    region: monde
+    liens:
+    - {titre: "OIT, protection sociale", url: "https://www.social-protection.org/"}
+    - {titre: "Banque mondiale, pauvreté (PIP)", url: "https://pip.worldbank.org/"}
+    flux: [un_odd, lm_societe]
+  politique-americaine:
+    region: amerique_du_nord
+    liens:
+    - {titre: "Federal Register", url: "https://www.federalregister.gov/"}
+    - {titre: "Congress.gov", url: "https://www.congress.gov/"}
+    - {titre: "Cour suprême des États-Unis", url: "https://www.supremecourt.gov/"}
+    flux: [bbc_usa_canada, scotusblog, lm_ameriques]
+  politique-interieure:
+    region: monde
+    liens:
+    - {titre: "Vie publique", url: "https://www.vie-publique.fr/"}
+    - {titre: "IFES, ElectionGuide", url: "https://www.electionguide.org/"}
+    flux: [lm_politique, lm_international]
+  psyche:
+    region: monde
+    liens:
+    - {titre: "Inserm, santé mentale", url: "https://www.inserm.fr/dossier/sante-mentale/"}
+    flux: [sd_cerveau, conversation]
+  relief-et-montagnes:
+    region: monde
+    liens:
+    - {titre: "USGS, risques naturels", url: "https://www.usgs.gov/natural-hazards"}
+    - {titre: "ICIMOD (Hindou Kouch-Himalaya)", url: "https://www.icimod.org/"}
+    flux: [nasa_eo, usgs_seismes]
+  reseaux-humains:
+    region: monde
+    liens:
+    - {titre: "OCCRP", url: "https://www.occrp.org/fr"}
+    flux: [conversation, global_voices]
+  reseaux-sociaux:
+    region: monde
+    liens:
+    - {titre: "Reuters Institute, Digital News Report", url: "https://reutersinstitute.politics.ox.ac.uk/digital-news-report"}
+    - {titre: "Pew Research Center, internet et technologie", url: "https://www.pewresearch.org/internet/"}
+    flux: [lm_pixels, rest_of_world]
+  reseaux-transport:
+    region: monde
+    liens:
+    - {titre: "Forum international des transports (OCDE)", url: "https://www.itf-oecd.org/"}
+    - {titre: "FMI, PortWatch", url: "https://portwatch.imf.org/"}
+    flux: [gcaptain, splash247]
+  rivalite-sino-americaine:
+    region: asie
+    liens:
+    - {titre: "CSIS, ChinaPower", url: "https://chinapower.csis.org/"}
+    - {titre: "Bureau du représentant américain au commerce (USTR)", url: "https://ustr.gov/"}
+    - {titre: "Ministère chinois du Commerce", url: "http://english.mofcom.gov.cn/"}
+    flux: [scmp_chine, bbc_chine, war_on_the_rocks]
+  russie-ukraine:
+    region: europe
+    liens:
+    - {titre: "ISW, Institute for the Study of War", url: "https://www.understandingwar.org/"}
+    - {titre: "OCHA, Ukraine", url: "https://www.unocha.org/ukraine"}
+    - {titre: "Kiel Institute, Ukraine Support Tracker", url: "https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/"}
+    - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
+    flux: [kyiv_independent, meduza, tass]
+  sciences-techniques:
+    region: monde
+    liens:
+    - {titre: "arXiv", url: "https://arxiv.org/"}
+    - {titre: "OCDE, science, technologie et innovation", url: "https://www.oecd.org/fr/sti/"}
+    flux: [nature, arxiv_ia, lm_sciences]
+  securite-europeenne:
+    region: europe
+    liens:
+    - {titre: "OTAN", url: "https://www.nato.int/cps/fr/natohq/index.htm"}
+    - {titre: "Agence européenne de défense", url: "https://eda.europa.eu/"}
+    - {titre: "SIPRI, dépenses militaires", url: "https://www.sipri.org/databases/milex"}
+    flux: [politico_europe, defense_news, lm_europe]
+  securite-publique:
+    region: monde
+    liens:
+    - {titre: "ONUDC, données", url: "https://dataunodc.un.org/"}
+    - {titre: "Interpol", url: "https://www.interpol.int/fr"}
+    flux: [un_droit, insight_crime]
+  societe-droits:
+    region: monde
+    liens:
+    - {titre: "Haut-Commissariat des Nations unies aux droits de l'homme", url: "https://www.ohchr.org/fr"}
+    - {titre: "UNESCO, institut de statistique (éducation)", url: "https://uis.unesco.org/"}
+    flux: [un_droits, global_voices]
+  soleil-espace:
+    region: monde
+    liens:
+    - {titre: "NOAA, Space Weather Prediction Center", url: "https://www.swpc.noaa.gov/"}
+    - {titre: "ESA, météo spatiale", url: "https://swe.ssa.esa.int/"}
+    flux: [nasa, sd_espace]
+  soudan:
+    region: afrique
+    liens:
+    - {titre: "OCHA, Soudan", url: "https://www.unocha.org/sudan"}
+    - {titre: "UNHCR, situation au Soudan", url: "https://data.unhcr.org/fr/situations/sudansituation"}
+    - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
+    flux: [dabanga, rfi_afrique, un_afrique]
+  transport-maritime:
+    region: monde
+    liens:
+    - {titre: "FMI, PortWatch (trafic des détroits et des ports)", url: "https://portwatch.imf.org/"}
+    - {titre: "CNUCED, Étude sur les transports maritimes", url: "https://unctad.org/topic/transport-and-trade-logistics/review-of-maritime-transport"}
+    - {titre: "EIA, goulets pétroliers", url: "https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/"}
+    - {titre: "UKMTO (sécurité maritime)", url: "https://www.ukmto.org/"}
+    flux: [gcaptain, splash247]
+  transports-villes:
+    region: monde
+    liens:
+    - {titre: "ONU-Habitat", url: "https://unhabitat.org/fr"}
+    - {titre: "Forum international des transports (OCDE)", url: "https://www.itf-oecd.org/"}
+    flux: [lm_planete, conversation]
+  union-europeenne:
+    region: europe
+    liens:
+    - {titre: "Union européenne, portail officiel", url: "https://european-union.europa.eu/index_fr"}
+    - {titre: "Eurostat", url: "https://ec.europa.eu/eurostat/fr/"}
+    - {titre: "EUR-Lex (droit de l'Union)", url: "https://eur-lex.europa.eu/homepage.html?locale=fr"}
+    flux: [politico_europe, lm_europe, bbc_europe]
+  niveaux-de-base:
+    region: monde
+    liens:
+    - {titre: "CNRS, le journal", url: "https://lejournal.cnrs.fr/"}
+    flux: [nature, sd_matiere]

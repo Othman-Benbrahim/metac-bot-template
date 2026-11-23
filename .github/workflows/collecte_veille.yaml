@@ -1,0 +1,41 @@
+name: "Veille de la carte (flux RSS des fiches et des compartiments ; hors cadre)"
+
+# 0.10.480 (décision de l'auteur, 2026-11-23, 19 h 08 - 20 h 10) : lit chaque flux du catalogue veille/catalogue.yaml
+# (robots.txt respecté) et ne garde que titre, lien et date des derniers articles. Registre : registre/veille-flux.json.
+# Lancé chaque nuit par le planificateur, ou à la main.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: registre-veille
+  cancel-in-progress: false
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Lecture des flux
+        run: uv run python -u veille.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/veille-flux.json ]; then git add registre/veille-flux.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : veille du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
