@@ -1,0 +1,282 @@
+{
+ "candidats": [
+  "CRO@2",
+  "RES@2",
+  "INC@2"
+ ],
+ "contre_candidate": [
+  "INC@2"
+ ],
+ "mots": [
+  {
+   "carte": "CRO",
+   "strate": 2,
+   "intensite": "f",
+   "fait": "Comptages datés montrent une nette augmentation des cas confirmés Clade I : 1 cas signalé fin 2024, ~11 total début 2026, 50 cas caractérisés au 31 juillet 2026, puis plus de 250 cas confirmés au 23 novembre 2026.",
+   "objet": "nombre cumulé de cas Clade I aux États-Unis",
+   "source": "CDC situation summary (Nov 23, 2026) ; PAHO SitRep Q3 2026 (Jul 31, 2026)",
+   "source_url": "https://www.cdc.gov/monkeypox/situation-summary/index.html",
+   "date_consultation": "2026-11-23",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "CDC situation summary (rev. Nov 23, 2026)",
+     "relation": "soutient",
+     "extrait": "more than 250 laboratory-confirmed cases of clade I monkeypox in at least 31 states plus Puerto Rico."
+    },
+    {
+     "localisation": "PAHO SitRep Q3 2026 (Jul 31, 2026)",
+     "relation": "soutient",
+     "extrait": "50 cases characterized and reported as clade I from November 2024 to July 31, 2026."
+    }
+   ],
+   "test": "pistolet",
+   "contre_observation": "aucune",
+   "portee": "aucune",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "CDC (fédération nationale, synthèse officielle) et PAHO (agence régionale) rendent compte indépendamment de séries de cas",
+    "source_urls": [
+     "https://www.cdc.gov/monkeypox/situation-summary/index.html",
+     "https://www.paho.org/sites/default/files/2026/08/sitrep-mpox-q3-2026.pdf"
+    ]
+   },
+   "garantie": {
+    "mecanisme": "série temporelle de comptages routiniers : l'accumulation de cas confirmés mesurée à dates successives montre une croissance cumulée et une accélération apparente entre mi-2026 et novembre 2026.",
+    "support": {
+     "type": "texte",
+     "reference": "CDC situation summary (rev. Nov 23, 2026) ; PAHO SitRep Q3 2026 (Jul 31, 2026)",
+     "disponible_le": "2026-11-23"
+    },
+    "attendu": "des augmentations cumulées mesurables et datées (ex. 1 → 11 → 50 → >250) qui permettent d'estimer un taux de croissance",
+    "contredirait": "des séries montrant déclin ou plateau des cas confirmés sur la même période"
+   },
+   "a6": "EME@2 → (aucun signe d'émergence collective isolée : la hausse est généralisée, pas un unique comportement collectif local) ; PRO@2 → (la lecture des nombres cumulés ne suffit pas à caractériser proportions/ratios, la donnée est de comptage) ; TRA@2 → (transformation épidémique possible mais non formalisée ici : on observe croissance, pas stades de développement complets)"
+  },
+  {
+   "carte": "RES",
+   "strate": 2,
+   "intensite": "f",
+   "fait": "Expansion géographique documentée : au 23 novembre 2026, plus de 250 cas Clade I signalés dans au moins 31 États américains plus Porto Rico ; cas localement transmis signalés dans villes/comtés (San Francisco, San Diego, Philadelphie) indiquant chaînes de transmission inter-juridictionnelles.",
+   "objet": "répartition géographique et chemins de transmission inter-États",
+   "source": "CDC situation summary (Nov 23, 2026) ; San Francisco health update (Nov 12, 2026)",
+   "source_url": "https://www.cdc.gov/monkeypox/situation-summary/index.html",
+   "date_consultation": "2026-11-23",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "CDC situation summary (rev. Nov 23, 2026)",
+     "relation": "soutient",
+     "extrait": "more than 250 laboratory-confirmed cases of clade I monkeypox in at least 31 states plus Puerto Rico."
+    },
+    {
+     "localisation": "San Francisco health update (Nov 12, 2026)",
+     "relation": "soutient",
+     "extrait": "San Francisco reported 16 clade I mpox cases ... increasing proportion showing no international travel links, indicating local transmission."
+    }
+   ],
+   "test": "pistolet",
+   "contre_observation": "aucune",
+   "portee": "aucune",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "CDC (niveau fédéral) et San Francisco (autorité locale) rapportent indépendamment présence et transmission locale dans des nœuds distincts",
+    "source_urls": [
+     "https://www.cdc.gov/monkeypox/situation-summary/index.html",
+     "https://www.sf.gov/news-health-update-community-transmission-of-clade-i-mpox-in-the-united-states"
+    ]
+   },
+   "garantie": {
+    "mecanisme": "la présence de cas confirmés dans de nombreux États et la détection de cas sans voyage international indiquent des chemins de transmission domestiques reliant juridictions (ponts épidémiologiques).",
+    "support": {
+     "type": "texte",
+     "reference": "CDC situation summary ; San Francisco health update",
+     "disponible_le": "2026-11-23"
+    },
+    "attendu": "nœuds multiples (États, comtés, villes) avec indications d'acquisition domestique, formant des chemins de transmission inter-juridictionnels",
+    "contredirait": "cas strictement isolés et uniquement importés, sans transmission locale confirmée"
+   },
+   "a6": "COM@2 → (la carte COMMUNAUTÉ ne suffit pas : il s'agit de liens entre lieux, pas d'un bien partagé local) ; HIE@2 → (hiérarchie administrative existe mais n'explique pas la topologie des liens observés) ; REC@2 → (réciprocité non pertinente : propagation résulte de contacts, pas d'échanges de don réciproque)"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le total officiel publié par le CDC dans son dernier rapport disponible avant le 2027-01-01 pour les cas confirmés Clade I aux États-Unis sera-t-il dans l'intervalle 246–295 ?",
+   "si_oui": "CRO@2",
+   "si_non": "INC@2",
+   "resolution": "Vérifier le total cumulé de cas Clade I indiqué dans la dernière page / rapport du CDC publié avant le 2027-01-01 (ex. situation summary ou tableau de cas clade‑spécifique) ; la valeur numérique publiée tranche la question.",
+   "justification": {
+    "oui": "un total publié dans 246–295 confirme que la croissance observée s'est arrêtée ou stabilisée autour de ce seuil avant 2027, ce qui relève directement de la lecture de CRO (comptage et évolution).",
+    "non": "un total en dehors de cet intervalle mettrait en évidence soit une croissance au-delà du seuil (remettant en cause l'intervalle), soit une sous‑déclaration possible liée à l'incertitude/délais, ce qui correspond à INC (la fiabilité des comptes immédiats)."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "INC@2": "[contredit] [contredit] A7 : contre-observation substantielle sur une lecture f"
+ },
+ "etat": "[2026-11-23 | 39 jours] CROISSANCE@2[f] + RÉSEAU@2[f]",
+ "disponible_le": "2026-11-23",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@2"
+   ],
+   "requete": "monthly counts of confirmed Clade I mpox cases in the United States, Jan 2024 through Nov 23 2026 (CDC reports, cumulative and new-per-month)",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@2"
+   ],
+   "requete": "change in monthly new confirmed Clade I mpox cases in the US between Oct 2026 and Nov 2026 (increase, stable, or decrease)",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@2"
+   ],
+   "requete": "reports indicating a sustained decline or plateau in confirmed Clade I mpox cases in the US between Aug and Nov 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "RES@2"
+   ],
+   "requete": "number of US states (and territories) reporting at least one confirmed Clade I mpox case by month, Jan 2024 to Nov 23 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "RES@2"
+   ],
+   "requete": "would an increase in the number of jurisdictions reporting Clade I cases (states reporting cases) between Sep and Nov 2026 explain the rise in US total confirmed cases?",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "RES@2"
+   ],
+   "requete": "evidence that Clade I mpox cases in the US remained concentrated in the same small set of jurisdictions (no spread to additional states) during Aug-Nov 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@2"
+   ],
+   "requete": "CDC or state reports noting uncertainty in Clade I case classification, suspected vs confirmed counts, or reporting delays for mpox between 2024 and Nov 23 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "INC@2"
+   ],
+   "requete": "evidence that testing limitations, sequencing capacity, or reporting delays affected the number of confirmed Clade I mpox cases reported in the US in 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@2"
+   ],
+   "requete": "official CDC statements asserting that Clade I mpox counts are complete and not substantially affected by undercount or reporting lag as of late 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@2",
+    "RES@2"
+   ],
+   "requete": "correlation between total US confirmed Clade I mpox case counts and the number of states reporting cases, Jan 2024 to Nov 23 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@2",
+    "INC@2"
+   ],
+   "requete": "whether documented reporting delays or reclassifications in 2026 materially changed the observed growth trend of confirmed Clade I mpox cases in the US",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "RES@2",
+    "INC@2"
+   ],
+   "requete": "evidence that increased geographic spread (more states reporting) was independent of changes in surveillance completeness or testing capacity for Clade I mpox in 2026",
+   "executee": true,
+   "date_execution": "2026-11-23"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@2 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "La réponse sera OUI si le total cumulé de cas confirmés de clade I publié par le CDC dans son dernier rapport avant le 1er janvier 2027 est compris entre 246 et 295 inclus — autrement dit si le libellé « more than 250 » correspond à 251–295 et qu'aucune mise à jour CDC avant 2027 ne fait passer le total au‑dessus de 295.",
+   "source_resolution": {
+    "emetteur": "U.S. Centers for Disease Control and Prevention (CDC)",
+    "document": "pages de situation / outbreak du CDC sur Monkeypox (ex. 'Clade I Monkeypox Outbreaks' / Situation Summary), mise à jour la plus récente avant 2027",
+    "regle_ambiguite": "conformément aux précisions fournies, tout libellé « more than X » est traité comme X+1 pour la résolution (p.ex. 'more than 250' → 251)."
+   },
+   "vue_exterieure": {
+    "frequence": 0.88,
+    "classe_de_reference": "les cas confirmés de mpox attribués au clade I selon la terminologie du CDC (cas à laboratoire confirmé et classé Clade I)",
+    "source": "CDC — pages de synthèse / outbreak pages sur Monkeypox (situation summary / Clade I outbreak page)",
+    "periode": "2024-2026",
+    "disponible_le": "2026-11-23",
+    "classe_alternative": null,
+    "motif_sans_alternative": "La classe de référence fournie est identique à celle exigée par le critère de résolution (cas confirmés de clade I selon le CDC). Il n'y a pas d'autre classe alternative pertinente à présenter ici.",
+    "ecart_critere": "identique : compte les cas confirmés de clade I tels que définis par le CDC (séquençage/test spécifique); correspond exactement au critère de résolution."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "RES@2",
+   "vers": "CRO@2",
+   "extrait": "Yes, an increase in the number of jurisdictions reporting Clade I cases between September and November 2026 appears to be a significant factor explaining the rise in US total confirmed cases.",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "CRO@2",
+   "vers": "cible",
+   "extrait": "more than 250 laboratory-confirmed cases of clade I monkeypox in at least 31 states plus Puerto Rico",
+   "source": "https://www.cdc.gov/monkeypox/situation-summary/index.html#:~:text=%23%20Global%20Monkeypox%3A%20Current%20Situation,and%20are%20subject%20to%20change."
+  },
+  {
+   "instruction": "lien",
+   "de": "INC@2",
+   "vers": "cible",
+   "extrait": "the majority of new clade I cases have no international travel reported, indicating a transition to sustained clade Ib transmission in the United States",
+   "source": "https://www.cdc.gov/monkeypox/situation-summary/index.html#:~:text=%23%20Global%20Monkeypox%3A%20Current%20Situation,and%20are%20subject%20to%20change."
+  }
+ ]
+}
