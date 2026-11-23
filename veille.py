@@ -185,15 +185,19 @@ def principal() -> int:
     import httpx
     import politesse
     cat = catalogue()
-    res = {}
+    res, deja = {}, {}                                          # 0.10.484 : une adresse lue une seule fois par passage
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=30, follow_redirects=True) as c:
         for fid, f in (cat.get("flux") or {}).items():
             essais = []
             for cand in candidats(f):
+                nouveau = cand["url"] not in deja
+                if nouveau:
+                    deja[cand["url"]] = lire_un(c, cand["url"])
                 e = {"titre": cand["titre"], "url": cand["url"], "lu_le": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
-                     **lire_un(c, cand["url"])}
+                     **deja[cand["url"]]}
                 essais.append({k: e.get(k) for k in ("url", "statut", "http", "erreur", "url_finale") if e.get(k) is not None})
-                time.sleep(PAUSE)
+                if nouveau:
+                    time.sleep(PAUSE)
                 if e["statut"] == "ok":
                     break
             if len(essais) > 1:

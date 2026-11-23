@@ -12,11 +12,12 @@
 # autre source du même rôle (Times of Israel → Jerusalem Post, Bulletin → Arms Control Association, MINING.COM → Mining
 # Technology). 0.10.483 : les flux ONU Info (404 en anglais et en français) et le FMI sont remplacés par d'autres
 # sources du même rôle (identifiants conservés pour les fiches) ; AIEA, NASA EO, Arctic Today, Bulletin reçoivent d'autres
-# secours. Pour arXiv, le secours est l'adresse des flux que le site indique lui-même (rss.arxiv.org), robots.txt vérifié.
+# secours. 0.10.484 : ReliefWeb répond 202 (pas de flux) : les quatre flux qui en dépendaient prennent une autre source
+# en tête (IPS, The New Humanitarian, Crisis Group, Migration Policy Institute), ReliefWeb restant en secours. Pour arXiv, le secours est l'adresse des flux que le site indique lui-même (rss.arxiv.org), robots.txt vérifié.
 
 flux:
   # --- ONU : régions et thèmes
-  un_monde: {titre: "ONU Info (UN News), toutes les nouvelles", url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/all/rss.xml", {url: "https://reliefweb.int/headlines/rss.xml", titre: "ReliefWeb (OCHA, ONU), titres"}]}
+  un_monde: {titre: "Inter Press Service (actualité internationale, ONU)", url: "https://www.ipsnews.net/feed/", secours: [{url: "https://reliefweb.int/headlines/rss.xml", titre: "ReliefWeb (OCHA, ONU), titres"}]}
   un_afrique: {titre: "AllAfrica (presse africaine agrégée)", url: "https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf", secours: [{url: "https://www.theafricareport.com/feed/", titre: "The Africa Report"}]}
   un_ameriques: {titre: "MercoPress (Amérique du Sud, Atlantique Sud)", url: "https://en.mercopress.com/rss", secours: [{url: "https://www.americasquarterly.org/feed/", titre: "Americas Quarterly"}]}
   un_asie: {titre: "The Diplomat (Asie-Pacifique)", url: "https://thediplomat.com/feed/", secours: [{url: "https://www.ipsnews.net/region/asia-pacific/feed/", titre: "Inter Press Service, Asie-Pacifique"}]}
@@ -24,11 +25,11 @@ flux:
   un_europe: {titre: "Euractiv (Europe)", url: "https://www.euractiv.com/feed/", secours: [{url: "https://euobserver.com/rss.xml", titre: "EUobserver"}]}
   un_climat: {titre: "Climate Home News", url: "https://www.climatechangenews.com/feed/", secours: [{url: "https://insideclimatenews.org/feed/", titre: "Inside Climate News"}]}
   un_sante: {titre: "Health Policy Watch (santé mondiale, Genève)", url: "https://healthpolicy-watch.news/feed/", secours: [{url: "https://www.statnews.com/feed/", titre: "STAT (santé)"}]}
-  un_humanitaire: {titre: "ONU Info, aide humanitaire", url: "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/humanitarian-aid/feed/rss.xml", {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
-  un_paix: {titre: "ONU Info, paix et sécurité", url: "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/peace-and-security/feed/rss.xml", {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
+  un_humanitaire: {titre: "The New Humanitarian", url: "https://www.thenewhumanitarian.org/rss/all.xml", secours: [{url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
+  un_paix: {titre: "International Crisis Group", url: "https://www.crisisgroup.org/rss.xml", secours: [{url: "https://www.ipsnews.net/news/peace/feed/", titre: "Inter Press Service, paix"}, {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
   un_economie: {titre: "Inter Press Service, développement", url: "https://www.ipsnews.net/news/development-aid/feed/", secours: [{url: "https://www.devex.com/news/rss", titre: "Devex (développement)"}]}
   un_droits: {titre: "Human Rights Watch", url: "https://www.hrw.org/rss/news", secours: [{url: "https://www.amnesty.org/en/feed/", titre: "Amnesty International"}]}
-  un_migrants: {titre: "ONU Info, migrants et réfugiés", url: "https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/migrants-and-refugees/feed/rss.xml", {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
+  un_migrants: {titre: "Migration Policy Institute", url: "https://www.migrationpolicy.org/rss.xml", secours: [{url: "https://www.ipsnews.net/news/population/migration-refugees/feed/", titre: "Inter Press Service, migrations et réfugiés"}, {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
   un_droit: {titre: "JURIST (droit, justice internationale)", url: "https://www.jurist.org/news/feed/", secours: [{url: "https://www.occrp.org/en/feed", titre: "OCCRP (crime organisé, corruption)"}]}
   un_femmes: {titre: "The 19th (femmes, politique)", url: "https://19thnews.org/feed/", secours: [{url: "https://www.ipsnews.net/news/gender/feed/", titre: "Inter Press Service, genre"}]}
   un_culture: {titre: "University World News (enseignement supérieur)", url: "https://www.universityworldnews.com/rss.php", secours: [{url: "https://www.theartnewspaper.com/rss.xml", titre: "The Art Newspaper (culture, patrimoine)"}]}
@@ -88,7 +89,7 @@ flux:
   scotusblog: {titre: "SCOTUSblog (Cour suprême des États-Unis)", url: "https://www.scotusblog.com/feed/"}
   # --- thèmes
   carbon_brief: {titre: "Carbon Brief (climat)", url: "https://www.carbonbrief.org/feed/"}
-  nasa_eo: {titre: "NASA Earth Observatory", url: "https://earthobservatory.nasa.gov/feeds/earth-observatory.rss", secours: ["https://science.nasa.gov/earth/earth-observatory/feed/", "https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss", {url: "https://www.esa.int/rssfeed/Applications/Observing_the_Earth", titre: "ESA, observation de la Terre"}]}
+  nasa_eo: {titre: "NASA Earth Observatory", url: "https://earthobservatory.nasa.gov/feeds/earth-observatory.rss", secours: [{url: "https://www.climate.gov/feeds/news-features/highlights.rss", titre: "NOAA Climate.gov"}, {url: "https://climate.copernicus.eu/rss.xml", titre: "Copernicus, service du changement climatique"}]}
   mongabay: {titre: "Mongabay (nature, forêts, océans)", url: "https://news.mongabay.com/feed/"}
   circle_of_blue: {titre: "Circle of Blue (eau)", url: "https://www.circleofblue.org/feed/"}
   oms: {titre: "Organisation mondiale de la santé, actualités", url: "https://www.who.int/rss-feeds/news-english.xml"}
