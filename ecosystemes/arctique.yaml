@@ -1,0 +1,150 @@
+# 0.10.477 (décision de l'auteur, 2026-11-23, 18 h 43 - 18 h 49) : régions manquantes de la carte (Afrique comme
+# continent, Antarctique, Australie, insularité, Asie du Sud-Est, Asie centrale, Arctique, Canada, Amérique latine).
+# Indicateurs du bot d'abord (Banque mondiale, UCDP, collectes existantes), faits récents sourcés et datés ensuite ;
+# aucune nouvelle source. Pays sous « geopolitique » proposés par Claude, acceptés par défaut.
+theme: arctique
+nom: Arctique
+declaration:
+  but: comprendre l'Arctique comme une région qui s'ouvre avec la fonte des glaces (routes, ressources) et où se croisent
+    l'OTAN, la Russie et les ambitions américaines sur le Groenland
+  limites: dedans la glace de mer, la route maritime du Nord, le Groenland, le Conseil de l'Arctique, la militarisation, les
+    peuples autochtones, les ressources ; dehors l'Antarctique (antarctique), le Canada en général (canada), sauf par les
+    ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques et indicateurs du bot (Banque mondiale,
+    UCDP, GDELT)
+  date: '2026-11-23'
+  espace: l'océan Arctique et les terres riveraines (Russie, États-Unis, Canada, Danemark et Groenland, Norvège, Islande,
+    Suède, Finlande)
+  temps: de la saison (glace) à la décennie
+  vitesse: le mois (glace), l'année (accords)
+  taille: une base, une route, la région
+compartiments:
+- id: glace_arctique
+  nom: Glace de mer arctique
+  organisation: ocean
+  elements:
+  - 'septembre 2026 : 5,34 millions de km² en moyenne, minimum le 12 septembre ; 16e plus faible depuis 1979 selon OSI SAF,
+    13e selon le NSIDC (Met Office, octobre 2026)'
+  niveau:
+    espace: océan Arctique
+    temps: saisons
+    vitesse: semaines
+    taille: macro
+- id: groenland
+  nom: Groenland
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - GRL
+    - DNK
+    - USA
+  elements:
+  - environ 56 000 habitants ; base américaine de Pituffik (traité de 1951)
+  - 'accord annoncé le 18-19 septembre 2026 : présence militaire américaine accrue, bases de la Chine et de la Russie exclues,
+    souveraineté danoise reconnue ; à ratifier par les parlements danois et groenlandais (Al Jazeera, 19 septembre 2026)'
+  - 85 % des Groenlandais opposés à un rattachement aux États-Unis (sondage de janvier 2025)
+  niveau:
+    espace: île
+    temps: années
+    vitesse: mois
+    taille: méso
+- id: route_nord
+  nom: Route maritime du Nord
+  organisation: technique
+  geopolitique:
+    pays:
+    - RUS
+  elements:
+  - 39 % de distance en moins entre l'Asie de l'Est et l'Europe de l'Ouest que par Suez (J.-P. Rodrigue, 2024) ; navigation
+    saisonnière, de juillet à novembre
+  niveau:
+    espace: côte russe
+    temps: saisons
+    vitesse: semaines
+    taille: macro
+- id: militarisation
+  nom: Militarisation et OTAN
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - RUS
+    - NOR
+    - FIN
+    - SWE
+    - USA
+    - CAN
+  elements:
+  - bases russes du Grand Nord ; Finlande et Suède dans l'OTAN ; Svalbard sous souveraineté norvégienne
+  niveau:
+    espace: région
+    temps: années
+    vitesse: mois
+    taille: macro
+- id: conseil_arctique
+  nom: Conseil de l'Arctique et peuples autochtones
+  organisation: convention
+  elements:
+  - huit États et six organisations autochtones ; coopération freinée depuis 2022 avec la Russie
+  niveau:
+    espace: région
+    temps: années
+    vitesse: années
+    taille: macro
+- id: ressources_arctique
+  nom: Ressources (gaz, minerais, pêche)
+  organisation: mineral
+  geopolitique:
+    pays:
+    - RUS
+    - GRL
+    - NOR
+  elements:
+  - gaz de Yamal, terres rares et minerais du Groenland, pêche
+  niveau:
+    espace: gisements
+    temps: décennies
+    vitesse: années
+    taille: macro
+relations:
+- de: glace_arctique
+  vers: route_nord
+  effet: '-'
+  delai: saisons
+  force: forte
+  statut: a_verifier
+  texte: moins de glace, saison de navigation plus longue
+- de: glace_arctique
+  vers: ressources_arctique
+  effet: '-'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la fonte rend accessibles des gisements
+- de: ressources_arctique
+  vers: groenland
+  effet: +
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: les minerais du Groenland attirent les puissances
+- de: militarisation
+  vers: conseil_arctique
+  effet: '-'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la militarisation fige la coopération
+ponts:
+- depuis: glace_arctique
+  vers: oceans-et-fleuves:glaces
+  nature: la glace de mer
+  type: meme
+- depuis: route_nord
+  vers: transport-maritime:detroit_bering
+  nature: le détroit de Béring, porte de la route du Nord
+- depuis: groenland
+  vers: politique-americaine:executif
+  nature: les ambitions américaines sur le Groenland
+- depuis: militarisation
+  vers: securite-europeenne:otan_ue
+  nature: le flanc nord de l'OTAN

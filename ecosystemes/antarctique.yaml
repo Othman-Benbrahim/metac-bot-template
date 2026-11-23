@@ -1,0 +1,139 @@
+# 0.10.477 (décision de l'auteur, 2026-11-23, 18 h 43 - 18 h 49) : régions manquantes de la carte (Afrique comme
+# continent, Antarctique, Australie, insularité, Asie du Sud-Est, Asie centrale, Arctique, Canada, Amérique latine).
+# Indicateurs du bot d'abord (Banque mondiale, UCDP, collectes existantes), faits récents sourcés et datés ensuite ;
+# aucune nouvelle source. Pays sous « geopolitique » proposés par Claude, acceptés par défaut.
+theme: antarctique
+nom: Antarctique
+declaration:
+  but: comprendre l'Antarctique comme un régime juridique (le traité de 1959), un réservoir de glace qui règle le niveau des
+    mers et un terrain de rivalités qui montent (Chine, Russie)
+  limites: dedans le système du traité, les revendications territoriales gelées, les stations, la pêche au krill, la glace
+    de mer et la calotte, la science ; dehors l'Arctique (arctique), sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques et indicateurs du bot (Banque mondiale,
+    UCDP, GDELT)
+  date: '2026-11-23'
+  espace: le continent au sud de 60° S et l'océan Austral
+  temps: de la saison (glace de mer) aux millénaires (calotte)
+  vitesse: l'année (réunions du traité), la décennie (glace)
+  taille: une station, le continent
+compartiments:
+- id: traite
+  nom: Système du traité sur l'Antarctique
+  organisation: convention
+  elements:
+  - 'traité de 1959 : continent réservé à la paix et à la science ; protocole de Madrid (1991) : activités minières interdites'
+  - 58 parties, dont 29 parties consultatives qui décident par consensus, donc avec un veto de fait (Opinio Juris, 20 août
+    2026)
+  - 'réunion de Hiroshima (11-21 mai 2026) : aucune des candidatures au statut consultatif (Biélorussie, Canada, Turquie)
+    n''est admise ; la Russie met en doute l''activité scientifique du Canada'
+  niveau:
+    espace: continent
+    temps: décennies
+    vitesse: années
+    taille: macro
+- id: revendications
+  nom: Revendications territoriales gelées
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - ARG
+    - AUS
+    - CHL
+    - FRA
+    - NZL
+    - NOR
+    - GBR
+  elements:
+  - sept États revendiquent des secteurs (Argentine, Australie, Chili, France, Nouvelle-Zélande, Norvège, Royaume-Uni), gelés
+    par le traité ; les revendications argentine, chilienne et britannique se chevauchent
+  niveau:
+    espace: continent
+    temps: décennies
+    vitesse: années
+    taille: macro
+- id: presences
+  nom: Stations et présences (Chine, Russie)
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - CHN
+    - RUS
+    - USA
+  elements:
+  - stations permanentes de nombreux États ; présence chinoise croissante ; la Chine et la Russie bloquent les aires marines
+    protégées à la CCAMLR
+  niveau:
+    espace: stations
+    temps: années
+    vitesse: années
+    taille: méso
+- id: krill_peche
+  nom: Pêche au krill et aires marines protégées (CCAMLR)
+  organisation: animal
+  elements:
+  - réunion de la CCAMLR de 2025 close sans accord sur les aires marines protégées ni sur les règles de pêche au krill (Mongabay,
+    novembre 2025)
+  niveau:
+    espace: océan Austral
+    temps: saisons
+    vitesse: années
+    taille: méso
+- id: glace_mer
+  nom: Glace de mer antarctique
+  organisation: ocean
+  elements:
+  - 'septembre 2026 : 17,76 millions de km² en moyenne, troisième plus faible après 2023 et 2024 (Met Office, OSI SAF, octobre
+    2026)'
+  - basse depuis 2016 après des décennies de légère hausse
+  niveau:
+    espace: océan Austral
+    temps: saisons
+    vitesse: semaines
+    taille: macro
+- id: calotte
+  nom: Calotte glaciaire et niveau des mers
+  organisation: physique
+  elements:
+  - la calotte antarctique contient l'essentiel de la glace d'eau douce de la planète ; sa perte de masse contribue à la montée
+    des mers
+  niveau:
+    espace: continent
+    temps: siècles
+    vitesse: années
+    taille: macro
+relations:
+- de: presences
+  vers: traite
+  effet: '-'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: des puissances qui bloquent le consensus affaiblissent le système du traité
+- de: glace_mer
+  vers: krill_peche
+  effet: '-'
+  delai: saisons à années
+  force: moyenne
+  statut: a_verifier
+  texte: moins de glace de mer, moins d'habitat pour le krill
+- de: calotte
+  vers: glace_mer
+  effet: '0'
+  delai: années
+  force: faible
+  statut: a_verifier
+  texte: la fonte de la calotte modifie l'eau de surface et la glace de mer, lien encore discuté
+ponts:
+- depuis: calotte
+  vers: oceans-et-fleuves:niveau_mer
+  nature: la calotte et la montée des mers
+- depuis: glace_mer
+  vers: oceans-et-fleuves:glaces
+  nature: la glace de mer
+  type: meme
+- depuis: traite
+  vers: environnement-dechets:traites
+  nature: le protocole de Madrid parmi les traités environnementaux
+- depuis: presences
+  vers: rivalite-sino-americaine:alliances
+  nature: rivalités de présence

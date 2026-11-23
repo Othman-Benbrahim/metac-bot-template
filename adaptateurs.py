@@ -164,6 +164,25 @@ def pluie(reg: Path, point: str, fenetre: str = "30") -> list[tuple[str, float]]
     return out
 
 
+def ucdp_mois(reg: Path, iso3: str, colonne: str = "somme") -> list[tuple[str, float]]:
+    """0.10.477 : morts par mois d'un pays (code ISO3) d'après la carte UCDP lue chaque mois (lecture_cartes.py,
+    registre/cartes/ucdp-pays-mois.csv) ; tous les pays, historique 1989-2025 et mois de 2026. Un mois sans ligne
+    compte zéro entre le premier et le dernier mois publiés. Date : le premier du mois."""
+    lignes = _csv(reg / "cartes", "ucdp-pays-mois.csv")
+    if not lignes:
+        return []
+    mois = sorted({r["mois"] for r in lignes})
+    c = {r["mois"]: float(r.get(colonne) or 0) for r in lignes if r["iso3"] == iso3}
+    if not c:
+        return []
+    out, m = [], mois[0]
+    while m <= mois[-1]:
+        out.append((m + "-01", c.get(m, 0.0)))
+        a, b = int(m[:4]), int(m[5:7])
+        m = f"{a + (b == 12)}-{b % 12 + 1:02d}"
+    return out
+
+
 def climat(reg: Path, point: str) -> list[tuple[str, float]]:
     """Le CLIMAT et non la météo (rappel de l'auteur) : moyenne glissante sur 365 jours de l'anomalie de température
     d'un point — la dérive lente, débarrassée des jours et des saisons."""
@@ -240,7 +259,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo, "pluie": pluie, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
+               "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}
 

@@ -1,0 +1,203 @@
+# 0.10.477 (décision de l'auteur, 2026-11-23, 18 h 43 - 18 h 49) : régions manquantes de la carte (Afrique comme
+# continent, Antarctique, Australie, insularité, Asie du Sud-Est, Asie centrale, Arctique, Canada, Amérique latine).
+# Indicateurs du bot d'abord (Banque mondiale, UCDP, collectes existantes), faits récents sourcés et datés ensuite ;
+# aucune nouvelle source. Pays sous « geopolitique » proposés par Claude, acceptés par défaut.
+theme: insularite
+nom: Îles et insularité (Pacifique, océan Indien, Atlantique et Caraïbes)
+declaration:
+  but: 'comprendre ce que l''insularité fait aux États et aux territoires : la montée des eaux, les cyclones, l''isolement,
+    des zones maritimes immenses pour de petites populations, des bases et des câbles convoités'
+  limites: dedans les petits États insulaires et les territoires d'outre-mer des trois océans, la montée des eaux, les cyclones,
+    les zones économiques exclusives, la dépendance aux importations et au tourisme, les câbles sous-marins, les bases militaires,
+    les statuts disputés ; dehors les grandes îles traitées ailleurs (Japon, Taïwan, Royaume-Uni, Indonésie, Philippines),
+    sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques et indicateurs du bot (Banque mondiale,
+    UCDP, GDELT)
+  date: '2026-11-23'
+  espace: les îles des trois océans
+  temps: de la tempête (heures) à la montée des mers (décennies)
+  vitesse: le jour (cyclone), l'année (tourisme, budgets)
+  taille: un atoll, un archipel, un bassin océanique
+compartiments:
+- id: montee_eaux
+  nom: Montée des eaux et habitabilité
+  organisation: ocean
+  geopolitique:
+    pays:
+    - TUV
+    - KIR
+    - MHL
+    - MDV
+  elements:
+  - atolls à quelques mètres au-dessus de la mer (Tuvalu, Kiribati, Marshall, Maldives) ; traité Falepili entre l'Australie
+    et Tuvalu (2023) ouvrant une voie de migration
+  niveau:
+    espace: atolls
+    temps: décennies
+    vitesse: années
+    taille: micro à méso
+- id: cyclones
+  nom: Cyclones et catastrophes
+  organisation: meteo
+  elements:
+  - cyclones du Pacifique, de l'océan Indien et des Caraïbes ; une seule tempête peut coûter plusieurs années de PIB à un
+    petit État
+  niveau:
+    espace: bassins océaniques
+    temps: saisons
+    vitesse: heures à jours
+    taille: méso
+- id: pacifique
+  nom: Îles du Pacifique
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - FJI
+    - PNG
+    - SLB
+    - VUT
+    - WSM
+    - TON
+    - KIR
+    - TUV
+    - MHL
+    - FSM
+    - PLW
+    - NRU
+  elements:
+  - Papouasie-Nouvelle-Guinée 10,8 millions d'habitants et 43 % d'accès à l'électricité, Fidji 0,9 million, Tuvalu environ
+    10 000 (Banque mondiale, WDI, 2025)
+  - rivalité de la Chine, de l'Australie et des États-Unis (accords de sécurité, police, ports)
+  niveau:
+    espace: Pacifique Sud et Nord
+    temps: années
+    vitesse: mois
+    taille: macro
+- id: nouvelle_caledonie
+  nom: Nouvelle-Calédonie
+  organisation: statut
+  geopolitique:
+    pays:
+    - FRA
+  elements:
+  - 'accord de Bougival (juillet 2025) ; le 2 avril 2026, l''Assemblée nationale rejette sans débat la réforme constitutionnelle
+    (190 voix contre 107) : « Bougival est mort » (E. Tjibaou) ; élections provinciales reportées trois fois, à tenir avant
+    le 28 juin 2026 (Devpolicy, 4 mai 2026)'
+  niveau:
+    espace: territoire
+    temps: années
+    vitesse: mois
+    taille: méso
+- id: ocean_indien_iles
+  nom: Îles de l'océan Indien et Chagos
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - MUS
+    - MDV
+    - SYC
+    - COM
+    - GBR
+  elements:
+  - 'traité du 22 mai 2025 : souveraineté des Chagos rendue à Maurice, base de Diego Garcia conservée par le Royaume-Uni pour
+    99 ans ; non entré en vigueur, loi d''application bloquée en avril 2026, discussions reprises en septembre (Al Jazeera,
+    2 octobre 2026)'
+  - Maldives 0,5 million d'habitants, Maurice 1,2 million (Banque mondiale, WDI, 2025)
+  niveau:
+    espace: océan Indien
+    temps: années
+    vitesse: mois
+    taille: méso
+- id: caraibes
+  nom: Caraïbes
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - JAM
+    - TTO
+    - BHS
+    - BRB
+    - DOM
+    - CUB
+    - HTI
+  elements:
+  - 'Haïti, Cuba, République dominicaine autour de 11 à 12 millions d''habitants chacune ; Haïti : 54 % d''accès à l''électricité,
+    37,5 % de chômage des 15-24 ans (Banque mondiale, WDI, 2025)'
+  - frappes américaines contre des bateaux de trafiquants présumés depuis 2025 ; voir la fiche Amérique latine pour Haïti
+    et Cuba
+  niveau:
+    espace: bassin caraïbe
+    temps: années
+    vitesse: mois
+    taille: macro
+- id: zee_cables
+  nom: Zones économiques exclusives et câbles
+  organisation: convention
+  elements:
+  - des zones maritimes immenses pour de petites populations (pêche, minerais des grands fonds) ; câbles sous-marins vulnérables,
+    souvent un seul par île
+  niveau:
+    espace: océans
+    temps: décennies
+    vitesse: années
+    taille: macro
+- id: dependances
+  nom: Dépendance aux importations, au tourisme et à l'aide
+  organisation: economie
+  elements:
+  - carburant et nourriture importés, tourisme et transferts des émigrés, aide extérieure
+  niveau:
+    espace: îles
+    temps: années
+    vitesse: mois
+    taille: méso
+relations:
+- de: montee_eaux
+  vers: dependances
+  effet: +
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la mer qui monte salinise les sols et les nappes ; l'île dépend davantage de l'extérieur
+- de: cyclones
+  vers: dependances
+  effet: +
+  delai: jours à années
+  force: forte
+  statut: a_verifier
+  texte: chaque cyclone détruit récoltes et infrastructures et accroît la dépendance à l'aide
+- de: zee_cables
+  vers: pacifique
+  effet: +
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: zones maritimes et câbles attirent les puissances
+- de: montee_eaux
+  vers: pacifique
+  effet: +
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la menace sur l'habitabilité structure la diplomatie des États du Pacifique (traité Falepili)
+ponts:
+- depuis: montee_eaux
+  vers: oceans-et-fleuves:niveau_mer
+  nature: la montée des mers
+  type: meme
+- depuis: cyclones
+  vers: climat-extremes:tempetes
+  nature: cyclones
+  type: meme
+- depuis: zee_cables
+  vers: infrastructures-critiques:reseaux
+  nature: câbles sous-marins
+- depuis: pacifique
+  vers: rivalite-sino-americaine:alliances
+  nature: rivalité dans le Pacifique
+- depuis: ocean_indien_iles
+  vers: frontieres:frontieres_contestees
+  nature: souveraineté des Chagos
+- depuis: caraibes
+  vers: crime-organise:drogues
+  nature: routes de la drogue dans les Caraïbes

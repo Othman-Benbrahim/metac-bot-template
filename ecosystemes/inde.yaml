@@ -61,10 +61,10 @@ compartiments:
     vitesse: jours à mois
     taille: méso
   traces:
-  - source: UCDP, morts par mois (Inde)
+  - source: UCDP, morts par mois (Inde, carte lue chaque mois)
     statut: collecte
     fichier: lecture_cartes.py
-    adaptateur: ucdp:India
+    adaptateur: ucdp_mois:IND
 - id: maoisme
   nom: Insurrection maoïste (naxalisme)
   organisation: geopolitique
@@ -80,10 +80,10 @@ compartiments:
     vitesse: semaines à années
     taille: méso
   traces:
-  - source: UCDP, morts par mois (Inde)
+  - source: UCDP, morts par mois (Inde, carte lue chaque mois)
     statut: collecte
     fichier: lecture_cartes.py
-    adaptateur: ucdp:India
+    adaptateur: ucdp_mois:IND
 - id: nucleaire_defense
   nom: Défense et dissuasion nucléaire
   organisation: geopolitique

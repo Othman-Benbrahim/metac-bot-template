@@ -176,11 +176,23 @@ GEO = {"manifestations", "hostilites", "paire", "paire_mois", "dyade", "ooni", "
        "prix_alimentaires", "acaps", "acaps_risques", "radar", "avions", "voisins", "sanctions_chine"}
 
 
+def _iso3_iso2() -> dict[str, str]:
+    import csv as _csv
+    from pathlib import Path as _P
+    f = _P("ecosystemes/codes-pays-fips.csv")
+    if not f.exists():
+        return {}
+    return {r["iso3"]: r["iso2"] for r in _csv.DictReader(l for l in f.read_text(encoding="utf-8").splitlines()
+                                                          if l and not l.startswith("#")) if r.get("iso2")}
+
+
 def lieux(adaptateur: str) -> set[str] | None:
     """Pays d'une série (codes ISO2), None si inconnu ou mondial."""
     nom, *par = adaptateur.split(":")
     if nom == "fred":
         return None if par and par[0] in FRED_MONDE else {"US"}
+    if nom == "ucdp_mois":                     # 0.10.477 : code ISO3
+        return {_iso3_iso2().get(par[0], par[0])} if par else None
     if nom in ("meteo", "climat", "pluie"):
         return {VILLES[par[0]]} if par and par[0] in VILLES else None
     if nom == "federal_register" or nom == "congres" or nom == "tribunaux":

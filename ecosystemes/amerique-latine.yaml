@@ -1,0 +1,202 @@
+# 0.10.477 (décision de l'auteur, 2026-11-23, 18 h 43 - 18 h 49) : régions manquantes de la carte (Afrique comme
+# continent, Antarctique, Australie, insularité, Asie du Sud-Est, Asie centrale, Arctique, Canada, Amérique latine).
+# Indicateurs du bot d'abord (Banque mondiale, UCDP, collectes existantes), faits récents sourcés et datés ensuite ;
+# aucune nouvelle source. Pays sous « geopolitique » proposés par Claude, acceptés par défaut.
+theme: amerique-latine
+nom: Amérique latine et Caraïbes (au-delà des élections)
+declaration:
+  but: 'comprendre l''Amérique latine au-delà de ses scrutins : l''intervention américaine au Venezuela, les violences criminelles
+    (Mexique, Colombie, Équateur, Haïti), la bascule politique de 2025-2026, les ressources'
+  limites: dedans le Venezuela, le Mexique, la Colombie, le Brésil, Haïti, les violences criminelles, les ressources (lithium,
+    cuivre, pétrole, soja), les rapports avec les États-Unis et la Chine ; dehors le détail des scrutins (elections-amerique-latine),
+    les petites îles des Caraïbes (insularite), sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques et indicateurs du bot (Banque mondiale,
+    UCDP, GDELT)
+  date: '2026-11-23'
+  espace: du Rio Grande à la Terre de Feu et les Caraïbes
+  temps: du jour (violences) au cycle électoral
+  vitesse: la semaine, le mois, l'année
+  taille: une ville, un État, le continent
+compartiments:
+- id: venezuela
+  nom: Venezuela après l'intervention américaine
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - VEN
+    - USA
+    - CUB
+  elements:
+  - '3 janvier 2026 : opération militaire américaine à Caracas, Nicolás Maduro et Cilia Flores capturés et inculpés à New
+    York ; au moins 47 militaires vénézuéliens et 32 militaires cubains tués (EUAA, juillet 2026)'
+  - Delcy Rodríguez présidente par intérim, reconnue par les États-Unis ; relations diplomatiques rétablies ; Diosdado Cabello
+    refuse de nouvelles élections (29 avril 2026) ; contrôle américain annoncé sur la vente du pétrole
+  - état « bas » en octobre 2026, 8 morts (UCDP, octobre 2026)
+  niveau:
+    espace: pays
+    temps: mois à années
+    vitesse: jours
+    taille: macro
+  traces:
+  - source: UCDP, morts par mois (Venezuela, carte lue chaque mois)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp_mois:VEN
+- id: violences_criminelles
+  nom: Violences criminelles (Mexique, Colombie, Équateur, Brésil)
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - MEX
+    - COL
+    - ECU
+    - BRA
+    - HTI
+  elements:
+  - 'octobre 2026, état « moyen » : Colombie 309 morts, Mexique 267, Équateur 96, Haïti 51, Brésil 42 (UCDP, octobre 2026)
+    ; beaucoup d''acteurs non identifiés par l''UCDP'
+  - 'frappes américaines contre des bateaux de trafiquants présumés : 43 frappes et 160 morts à fin mars 2026 (EUAA)'
+  niveau:
+    espace: pays et routes de la drogue
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - source: UCDP, morts par mois (Mexique, carte lue chaque mois)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp_mois:MEX
+  - source: UCDP, morts par mois (Colombie, carte lue chaque mois)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp_mois:COL
+  - source: UCDP, morts par mois (Équateur, carte lue chaque mois)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp_mois:ECU
+- id: haiti
+  nom: Haïti
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - HTI
+  elements:
+  - jusqu'à 90 % de Port-au-Prince sous contrôle des gangs ; plus de 1,5 million de déplacés ; au moins 16 000 morts depuis
+    2022 (ONU, citée par Al Jazeera)
+  - force de répression des gangs autorisée par l'ONU en septembre 2025 (jusqu'à 5 500 personnes), premiers soldats tchadiens
+    arrivés le 1er avril 2026
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours
+    taille: méso
+  traces:
+  - source: UCDP, morts par mois (Haïti, carte lue chaque mois)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp_mois:HTI
+- id: bascule_politique
+  nom: Bascule politique 2025-2026
+  organisation: statut
+  geopolitique:
+    pays:
+    - BRA
+    - COL
+    - ARG
+    - CHL
+    - BOL
+  elements:
+  - 'Colombie : Abelardo de la Espriella (droite, soutenu par Donald Trump) élu le 21 juin 2026 avec 49,66 % contre 48,7 %
+    à Iván Cepeda ; promesse de 90 jours d''opérations militaires contre les groupes armés (Al Jazeera)'
+  - 'Brésil : Lula réélu le 25 octobre 2026 pour un quatrième mandat, plus de 51 % contre 48 % à Flávio Bolsonaro, qui ne
+    reconnaît pas le résultat et demande l''annulation ; investiture le 5 janvier 2027 (Al Jazeera)'
+  niveau:
+    espace: continent
+    temps: cycles électoraux
+    vitesse: mois
+    taille: macro
+- id: ressources_latam
+  nom: Ressources (lithium, cuivre, pétrole, soja)
+  organisation: mineral
+  geopolitique:
+    pays:
+    - CHL
+    - ARG
+    - BOL
+    - PER
+    - BRA
+    - VEN
+  elements:
+  - triangle du lithium (Chili, Argentine, Bolivie), cuivre (Chili, Pérou), pétrole (Venezuela, Brésil, Guyana), soja et viande
+    (Brésil, Argentine)
+  - PIB du Brésil environ 2 280 milliards de dollars, du Mexique 1 830 (Banque mondiale, WDI, 2025)
+  niveau:
+    espace: gisements et cultures
+    temps: décennies
+    vitesse: saisons
+    taille: macro
+- id: usa_chine_latam
+  nom: États-Unis et Chine sur le continent
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - USA
+    - CHN
+  elements:
+  - pression américaine (Venezuela, droits de douane, migrations, cartels) ; la Chine premier partenaire commercial de plusieurs
+    pays (Brésil, Chili, Pérou)
+  niveau:
+    espace: continent
+    temps: années
+    vitesse: mois
+    taille: macro
+relations:
+- de: usa_chine_latam
+  vers: venezuela
+  effet: +
+  delai: mois
+  force: forte
+  statut: a_verifier
+  texte: la pression américaine a culminé dans l'intervention de janvier 2026
+- de: violences_criminelles
+  vers: bascule_politique
+  effet: +
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: l'insécurité porte au pouvoir des candidats de l'ordre (Colombie)
+- de: ressources_latam
+  vers: usa_chine_latam
+  effet: +
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: lithium, cuivre et soja attirent la Chine et les États-Unis
+- de: haiti
+  vers: violences_criminelles
+  effet: +
+  delai: mois
+  force: faible
+  statut: a_verifier
+  texte: les gangs haïtiens font partie des routes régionales d'armes et de drogue
+ponts:
+- depuis: bascule_politique
+  vers: elections-amerique-latine:scrutins
+  nature: les scrutins en détail
+  type: meme
+- depuis: violences_criminelles
+  vers: crime-organise:cartels_mafias
+  nature: cartels et groupes criminels
+  type: meme
+- depuis: venezuela
+  vers: politique-americaine:executif
+  nature: l'intervention américaine
+- depuis: venezuela
+  vers: energie-mondiale:production
+  nature: le pétrole vénézuélien
+- depuis: ressources_latam
+  vers: minerais-critiques:batteries
+  nature: lithium et cuivre
+- depuis: haiti
+  vers: insularite:caraibes
+  nature: Haïti dans les Caraïbes

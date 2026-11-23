@@ -35,3 +35,13 @@ def test_adaptateur_pluie(tmp_path):
     assert s["2026-07-15"] == 50.0
     assert "2021-07-15" not in s                                   # pas de référence la première année
     assert dict(ad.lire("pluie:mumbai:30", tmp_path))["2026-07-15"] == 50.0
+
+
+def test_ucdp_mois(tmp_path):
+    """0.10.477 : morts par mois d'un pays (ISO3), zéros entre le premier et le dernier mois publiés."""
+    (tmp_path / "cartes").mkdir()
+    (tmp_path / "cartes" / "ucdp-pays-mois.csv").write_text(
+        "pays_source,iso3,code_pays,mois,source,evenements,somme\n"
+        "Myanmar (Burma),MMR,775,2026-01,mois,3,10.0\nIndia,IND,750,2026-03,mois,2,5.0\n", encoding="utf-8")
+    assert ad.lire("ucdp_mois:MMR", tmp_path) == [("2026-01-01", 10.0), ("2026-02-01", 0.0), ("2026-03-01", 0.0)]
+    assert cb.lieux("ucdp_mois:MMR") == {"MM"}

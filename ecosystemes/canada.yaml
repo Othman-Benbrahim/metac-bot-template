@@ -1,0 +1,128 @@
+# 0.10.477 (décision de l'auteur, 2026-11-23, 18 h 43 - 18 h 49) : régions manquantes de la carte (Afrique comme
+# continent, Antarctique, Australie, insularité, Asie du Sud-Est, Asie centrale, Arctique, Canada, Amérique latine).
+# Indicateurs du bot d'abord (Banque mondiale, UCDP, collectes existantes), faits récents sourcés et datés ensuite ;
+# aucune nouvelle source. Pays sous « geopolitique » proposés par Claude, acceptés par défaut.
+theme: canada
+nom: Canada
+declaration:
+  but: comprendre le Canada comme une économie très dépendante des États-Unis, en rupture commerciale avec eux depuis 2025,
+    riche en énergie et en minerais, avec un grand Nord arctique
+  limites: dedans le commerce avec les États-Unis et l'accord nord-américain (CUSMA), l'énergie, les minerais, la politique
+    intérieure, le Québec et l'unité, l'Arctique canadien, les peuples autochtones ; dehors l'Arctique dans son ensemble (arctique),
+    sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques et indicateurs du bot (Banque mondiale,
+    UCDP, GDELT)
+  date: '2026-11-23'
+  espace: dix provinces et trois territoires
+  temps: de la saison (feux, récoltes) au cycle électoral
+  vitesse: la semaine (droits de douane), l'année (budgets)
+  taille: une province, la fédération
+compartiments:
+- id: commerce_usa
+  nom: Commerce avec les États-Unis (CUSMA)
+  organisation: economie
+  geopolitique:
+    pays:
+    - CAN
+    - USA
+    - MEX
+  elements:
+  - 'juillet 2026 : les États-Unis ne renouvellent pas l''accord, ce qui ouvre une révision annuelle pendant au plus dix ans
+    avant expiration'
+  - négociations rompues en août 2026 ; droits de 50 % sur une série de biens canadiens et interdictions d'importer ; menace
+    de hausse en janvier sans accord (La Presse canadienne, 19 novembre 2026)
+  - 'objectif canadien : « le droit le plus bas sur le panier de biens le plus étroit » (J. Charette)'
+  niveau:
+    espace: Amérique du Nord
+    temps: années
+    vitesse: semaines
+    taille: macro
+- id: economie_can
+  nom: Économie
+  organisation: economie
+  geopolitique:
+    pays:
+    - CAN
+  elements:
+  - 41,7 millions d'habitants, PIB d'environ 2 320 milliards de dollars, 55 700 par habitant ; chômage des 15-24 ans 13,8
+    % (Banque mondiale, WDI, 2025)
+  niveau:
+    espace: pays
+    temps: trimestres
+    vitesse: mois
+    taille: macro
+- id: energie_minerais_can
+  nom: Énergie et minerais
+  organisation: mineral
+  geopolitique:
+    pays:
+    - CAN
+  elements:
+  - pétrole des sables bitumineux, gaz, uranium, potasse, nickel ; la plupart des exportations d'énergie vont aux États-Unis
+  niveau:
+    espace: provinces
+    temps: décennies
+    vitesse: années
+    taille: macro
+- id: politique_can
+  nom: Politique intérieure et unité
+  organisation: statut
+  geopolitique:
+    pays:
+    - CAN
+  elements:
+  - gouvernement libéral de Mark Carney, élu en avril 2025 ; rencontre avec Donald Trump au sommet de l'APEC (Shenzhen) le
+    18 novembre 2026
+  - le Québec et l'Alberta, deux sources de tensions sur l'unité
+  niveau:
+    espace: fédération
+    temps: cycles électoraux
+    vitesse: mois
+    taille: macro
+- id: nord_canadien
+  nom: Nord canadien et souveraineté arctique
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - CAN
+  elements:
+  - passage du Nord-Ouest, souveraineté contestée sur certaines eaux ; Inuit du Nunavut ; candidature au statut consultatif
+    du traité sur l'Antarctique refusée en mai 2026
+  niveau:
+    espace: territoires du Nord
+    temps: décennies
+    vitesse: années
+    taille: macro
+relations:
+- de: commerce_usa
+  vers: economie_can
+  effet: '-'
+  delai: semaines à mois
+  force: forte
+  statut: a_verifier
+  texte: les droits américains frappent les exportations et l'emploi
+- de: economie_can
+  vers: politique_can
+  effet: +
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: la crise commerciale structure la vie politique
+- de: energie_minerais_can
+  vers: commerce_usa
+  effet: +
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: énergie et minerais sont les principaux leviers de négociation
+ponts:
+- depuis: commerce_usa
+  vers: politique-americaine:commerce
+  nature: les droits de douane américains
+  type: meme
+- depuis: nord_canadien
+  vers: arctique:militarisation
+  nature: le Nord canadien dans l'Arctique
+- depuis: energie_minerais_can
+  vers: energie-mondiale:production
+  nature: pétrole et gaz canadiens

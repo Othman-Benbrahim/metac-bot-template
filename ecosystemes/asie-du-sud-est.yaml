@@ -1,0 +1,175 @@
+# 0.10.477 (décision de l'auteur, 2026-11-23, 18 h 43 - 18 h 49) : régions manquantes de la carte (Afrique comme
+# continent, Antarctique, Australie, insularité, Asie du Sud-Est, Asie centrale, Arctique, Canada, Amérique latine).
+# Indicateurs du bot d'abord (Banque mondiale, UCDP, collectes existantes), faits récents sourcés et datés ensuite ;
+# aucune nouvelle source. Pays sous « geopolitique » proposés par Claude, acceptés par défaut.
+theme: asie-du-sud-est
+nom: Asie du Sud-Est
+declaration:
+  but: comprendre l'Asie du Sud-Est comme un ensemble de 700 millions d'habitants au carrefour des routes maritimes, entre
+    la Chine et les États-Unis, avec une guerre civile (Birmanie) et une mer disputée
+  limites: dedans l'ASEAN, la mer de Chine méridionale, la Birmanie, l'Indonésie, les Philippines, le Vietnam, la Thaïlande,
+    la Malaisie, Singapour, le Cambodge, le Laos, Brunei, le Timor oriental ; dehors la Chine vue de l'intérieur (economie-chinoise),
+    le détroit de Malacca (transport-maritime), sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques et indicateurs du bot (Banque mondiale,
+    UCDP, GDELT)
+  date: '2026-11-23'
+  espace: la péninsule et les archipels
+  temps: de la mousson à la décennie
+  vitesse: le jour (incidents en mer), l'année (sommets)
+  taille: une province, un État, la région
+compartiments:
+- id: asean
+  nom: ASEAN
+  organisation: convention
+  geopolitique:
+    pays:
+    - PHL
+    - IDN
+    - VNM
+    - THA
+    - MYS
+    - SGP
+    - KHM
+    - LAO
+    - BRN
+    - MMR
+    - TLS
+  elements:
+  - onze pays, environ 700 millions d'habitants, PIB d'environ 4 300 milliards de dollars (Banque mondiale, WDI, 2025)
+  - présidence philippine en 2026 ; sommet de Manille en novembre 2026 ; le code de conduite en mer de Chine méridionale est
+    fini « à 80 % » mais non conclu (Al Jazeera, 15 novembre 2026)
+  niveau:
+    espace: région
+    temps: années
+    vitesse: mois
+    taille: macro
+- id: mer_chine_meridionale
+  nom: Mer de Chine méridionale
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - PHL
+    - CHN
+    - VNM
+    - MYS
+  elements:
+  - la Chine revendique presque toute la mer ; canons à eau des garde-côtes chinois contre des navires philippins (trois face-à-face
+    en une semaine en juillet 2026, AP)
+  - la portée géographique du code de conduite reste le point de blocage
+  niveau:
+    espace: mer
+    temps: années
+    vitesse: jours
+    taille: macro
+- id: birmanie
+  nom: Birmanie (guerre civile)
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - MMR
+  elements:
+  - élections par phases en décembre 2025 et janvier 2026 sous la junte ; le parti pro-militaire USDP obtient 339 sièges,
+    l'armée en détient d'office un quart (166) ; Parlement réuni le 16 mars 2026 (Al Jazeera)
+  - Min Aung Hlaing élu président le 3 avril 2026, après avoir cédé le commandement de l'armée à Ye Win Oo (Reuters, via The
+    Nation)
+  - état « moyen » en octobre 2026, 132 morts (UCDP, octobre 2026) ; de larges zones échappent à l'armée
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - source: UCDP, morts par mois (Birmanie, carte lue chaque mois)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp_mois:MMR
+- id: indonesie
+  nom: Indonésie
+  organisation: statut
+  geopolitique:
+    pays:
+    - IDN
+  elements:
+  - 285,7 millions d'habitants, PIB d'environ 1 450 milliards de dollars (Banque mondiale, WDI, 2025) ; présidence de Prabowo
+    Subianto depuis octobre 2024
+  niveau:
+    espace: archipel
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: GDELT, part des manifestations (Indonésie)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: manifestations:ID
+- id: philippines
+  nom: Philippines
+  organisation: statut
+  geopolitique:
+    pays:
+    - PHL
+  elements:
+  - 116,8 millions d'habitants (Banque mondiale, WDI, 2025) ; alliance avec les États-Unis, présidence de l'ASEAN en 2026
+  niveau:
+    espace: archipel
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: GDELT, part des manifestations (Philippines)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: manifestations:RP
+- id: economie_region
+  nom: Économies et chaînes de production
+  organisation: economie
+  geopolitique:
+    pays:
+    - VNM
+    - THA
+    - MYS
+    - SGP
+  elements:
+  - Singapour 98 800 dollars par habitant, Malaisie 13 100, Thaïlande 8 100, Vietnam 5 100 (Banque mondiale, WDI, 2025) ;
+    usines déplacées hors de Chine
+  niveau:
+    espace: région
+    temps: années
+    vitesse: trimestres
+    taille: macro
+relations:
+- de: mer_chine_meridionale
+  vers: asean
+  effet: '-'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la mer disputée divise l'ASEAN entre riverains et pays continentaux
+- de: birmanie
+  vers: asean
+  effet: '-'
+  delai: années
+  force: faible
+  statut: a_verifier
+  texte: la guerre en Birmanie paralyse le consensus de l'ASEAN
+- de: economie_region
+  vers: mer_chine_meridionale
+  effet: '-'
+  delai: années
+  force: faible
+  statut: a_verifier
+  texte: l'intérêt commercial pour la Chine modère les riverains
+ponts:
+- depuis: mer_chine_meridionale
+  vers: rivalite-sino-americaine:taiwan
+  nature: la rivalité sino-américaine en mer
+- depuis: asean
+  vers: transport-maritime:detroit_malacca
+  nature: le détroit de Malacca
+  type: voisinage
+- depuis: economie_region
+  vers: economie-chinoise:exportations
+  nature: chaînes de production déplacées hors de Chine
+- depuis: birmanie
+  vers: crime-organise:escroqueries_cyber
+  nature: centres d'escroquerie en ligne à la frontière birmane

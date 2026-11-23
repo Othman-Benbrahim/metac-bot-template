@@ -1,0 +1,147 @@
+# 0.10.477 (décision de l'auteur, 2026-11-23, 18 h 43 - 18 h 49) : régions manquantes de la carte (Afrique comme
+# continent, Antarctique, Australie, insularité, Asie du Sud-Est, Asie centrale, Arctique, Canada, Amérique latine).
+# Indicateurs du bot d'abord (Banque mondiale, UCDP, collectes existantes), faits récents sourcés et datés ensuite ;
+# aucune nouvelle source. Pays sous « geopolitique » proposés par Claude, acceptés par défaut.
+theme: australie
+nom: Australie
+declaration:
+  but: comprendre l'Australie comme puissance moyenne du Pacifique, alliée des États-Unis et dépendante de la Chine pour son
+    commerce, exposée à un climat extrême
+  limites: dedans l'alliance AUKUS, le commerce avec la Chine, les minerais, le climat (feux, sécheresses, récifs), les peuples
+    aborigènes, la politique intérieure, le rôle dans le Pacifique ; dehors les petits États insulaires (insularite), sauf
+    par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques et indicateurs du bot (Banque mondiale,
+    UCDP, GDELT)
+  date: '2026-11-23'
+  espace: le continent australien et ses zones maritimes
+  temps: de la saison des feux à la décennie (sous-marins)
+  vitesse: le jour (feux), l'année (budgets)
+  taille: un État fédéré, la fédération
+compartiments:
+- id: aukus
+  nom: Alliance AUKUS et défense
+  organisation: geopolitique
+  geopolitique:
+    pays:
+    - AUS
+    - USA
+    - GBR
+  elements:
+  - 'après cinq mois de revue, le Pentagone confirme AUKUS le 5 décembre 2025 : au moins trois sous-marins nucléaires Virginia,
+    ventes à partir de 2032, coût jusqu''à 235 milliards de dollars sur 30 ans (Dawn, décembre 2025)'
+  - 'dépenses militaires : 1,9 % du PIB (Banque mondiale, WDI, 2025)'
+  niveau:
+    espace: Indo-Pacifique
+    temps: décennies
+    vitesse: années
+    taille: macro
+- id: commerce_chine
+  nom: Commerce et dépendance à la Chine
+  organisation: economie
+  geopolitique:
+    pays:
+    - AUS
+    - CHN
+  elements:
+  - PIB d'environ 1 800 milliards de dollars, 65 000 dollars par habitant (Banque mondiale, WDI, 2025)
+  - minerai de fer, charbon, gaz et lithium vendus surtout à la Chine ; sanctions commerciales chinoises de 2020 levées depuis
+  niveau:
+    espace: pays et partenaires
+    temps: années
+    vitesse: mois
+    taille: macro
+- id: minerais_aus
+  nom: Minerais (fer, lithium, terres rares)
+  organisation: mineral
+  geopolitique:
+    pays:
+    - AUS
+  elements:
+  - premier producteur mondial de lithium et grand producteur de fer ; projets de terres rares hors de Chine
+  niveau:
+    espace: gisements
+    temps: décennies
+    vitesse: années
+    taille: macro
+- id: climat_aus
+  nom: Climat extrême (feux, sécheresses, Grande Barrière)
+  organisation: climat
+  geopolitique:
+    pays:
+    - AUS
+  elements:
+  - feux de brousse, sécheresses, inondations ; blanchissements répétés de la Grande Barrière de corail
+  - El Niño apporte la sécheresse à l'est du pays
+  niveau:
+    espace: continent
+    temps: saisons
+    vitesse: semaines
+    taille: macro
+  traces:
+  - source: anomalie Niño 3.4 (NOAA CPC)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:nino34_anomalie
+- id: peuples_aborigenes
+  nom: Peuples aborigènes et du détroit de Torres
+  organisation: societe
+  geopolitique:
+    pays:
+    - AUS
+  elements:
+  - référendum de 2023 sur une « Voix » des peuples autochtones au Parlement, rejeté
+  niveau:
+    espace: pays
+    temps: générations
+    vitesse: années
+    taille: macro
+- id: politique_aus
+  nom: Politique intérieure
+  organisation: statut
+  geopolitique:
+    pays:
+    - AUS
+  elements:
+  - environ 27,6 millions d'habitants (Banque mondiale, WDI, 2025) ; gouvernement travailliste d'Anthony Albanese, reconduit
+    en mai 2025
+  niveau:
+    espace: fédération
+    temps: cycles électoraux
+    vitesse: mois
+    taille: macro
+relations:
+- de: commerce_chine
+  vers: aukus
+  effet: '-'
+  delai: années
+  force: faible
+  statut: a_verifier
+  texte: la dépendance commerciale à la Chine tempère l'engagement militaire
+- de: minerais_aus
+  vers: commerce_chine
+  effet: +
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: les minerais font le commerce avec la Chine
+- de: climat_aus
+  vers: politique_aus
+  effet: +
+  delai: saisons à années
+  force: moyenne
+  statut: a_verifier
+  texte: les grands feux et sécheresses pèsent sur les élections et les politiques climatiques
+ponts:
+- depuis: aukus
+  vers: rivalite-sino-americaine:alliances
+  nature: les alliances américaines en Asie
+  type: meme
+- depuis: minerais_aus
+  vers: minerais-critiques:batteries
+  nature: lithium
+- depuis: climat_aus
+  vers: climat-extremes:feux
+  nature: feux de brousse
+- depuis: aukus
+  vers: rivalite-sino-americaine:atomique
+  nature: propulsion nucléaire navale
