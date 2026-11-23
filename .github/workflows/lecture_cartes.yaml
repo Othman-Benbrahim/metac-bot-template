@@ -29,7 +29,7 @@ jobs:
       - run: uv sync --locked
       - name: Lecture
         run: uv run python -u lecture_cartes.py
-      - name: Analyse (0.10.471 : enchaînements et état du mois)
+      - name: "Analyse (0.10.471 : enchaînements et état du mois)"
         run: uv run python -u analyse_cartes.py
       - name: Enregistrer
         if: always()
