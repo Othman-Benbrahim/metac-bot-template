@@ -1,3 +1,6 @@
+# 0.10.475 (décision de l'auteur, 2026-11-23, 18 h 00) : lecture de Barbara Cassin, La Guerre des mots. Trump, Poutine et
+# l'Europe (Flammarion, 2025 ; Champs, 2026). Seuls les mécanismes et les faits datés sont repris, attribués ; les
+# jugements et portraits de l'essai ne le sont pas. Les mécanismes valent pour tout émetteur, pas pour deux acteurs.
 theme: information-cyber
 nom: Information et cyber
 declaration:
@@ -255,6 +258,45 @@ compartiments:
   - source: sanctions visant des médias (listes publiques)
     statut: collecte
     fichier: collecte_sanctions.py
+- id: langage_performatif
+  nom: 'Langage performatif (dire, c''est faire)'
+  organisation: ideologie
+  elements:
+  - 'un énoncé d''autorité fait être ce qu''il dit : décret, proclamation, renommage (J. L. Austin, How to Do Things with Words, 1962 ; B. Cassin, La Guerre des mots, 2025)'
+  - 'renommer par décret : golfe du Mexique devenu « golfe d''Amérique », mont Denali redevenu « mont McKinley » (décret américain « Restoring Names That Honor American Greatness », 20 janvier 2025)'
+  - 'slogans répétés, éléments de langage, flou du sens (« nous », « grand », « spécial ») (Cassin, 2025)'
+  - 'écart entre annoncer et faire : une annonce tenue (« ils font ce qu''ils disent qu''ils feront », Cassin) ou suivie d''un retrait (« TACO », R. Armstrong, Financial Times, 2025)'
+  niveau:
+    espace: pays et langues
+    temps: d'un décret (jour) à une génération (mémoire)
+    vitesse: jours à années
+    taille: macro
+- id: effacement_mots
+  nom: 'Effacement et interdiction de mots'
+  organisation: convention
+  elements:
+  - 'environ 200 mots et sigles à éviter dans les documents fédéraux américains, dont « diversité », « crise climatique », « pollution » (liste du New York Times, 7 mars 2025, citée par Cassin)'
+  - 'Russie : « opération militaire spéciale » au lieu de « guerre » ; peine pouvant aller jusqu''à 15 ans de prison pour les « fausses informations » sur l''armée (loi de mars 2022) ; loi d''avril 2013 contre le lexique « contraire à la décence » dans les médias (Cassin)'
+  - 'taire le nom d''un opposant (Navalny, rarement nommé par le président russe, selon Cassin)'
+  - 'autres cas cités par Cassin : « Judée-Samarie » pour la Cisjordanie (Israël), refus du mot « génocide » (Turquie), interdiction des études de genre (Hongrie) et du langage inclusif (Argentine, Italie)'
+  - 'un mot retiré des textes officiels disparaît des comptes sans que la chose disparaisse'
+  niveau:
+    espace: pays et langues
+    temps: d'un décret (jour) à une génération (mémoire)
+    vitesse: jours à années
+    taille: macro
+- id: inversion_reecriture
+  nom: 'Inversion de l''accusation et réécriture du passé'
+  organisation: ideologie
+  elements:
+  - 'retourner l''accusation : l''agresseur se présente comme agressé (Cassin, 2025)'
+  - 'réécrire l''histoire par décret ou par loi : décret américain « Restoring Truth and Sanity to American History » (27 mars 2025, visant la Smithsonian) ; lois russes contre la critique de l''Armée rouge ; dissolution de l''ONG Mémorial (Cassin)'
+  - '« faits alternatifs » (Kellyanne Conway, janvier 2017)'
+  niveau:
+    espace: pays et langues
+    temps: d'un décret (jour) à une génération (mémoire)
+    vitesse: jours à années
+    taille: macro
 relations:
 - de: recits
   vers: attention
@@ -392,6 +434,34 @@ relations:
   coupure: inconnue
   statut: a_verifier
   texte: un récit ne change une politique qu'au-delà d'une audience très large ; les mots pèsent moins que les actes
+- de: langage_performatif
+  vers: recits
+  effet: +
+  delai: jours
+  force: moyenne
+  statut: a_verifier
+  texte: un énoncé d'autorité répété devient le récit officiel
+- de: censure
+  vers: effacement_mots
+  effet: +
+  delai: semaines à mois
+  force: forte
+  statut: a_verifier
+  texte: une loi ou une consigne fait sortir des mots des textes et des médias
+- de: effacement_mots
+  vers: langues_biais
+  effet: +
+  delai: semaines
+  force: moyenne
+  statut: a_verifier
+  texte: un mot effacé des textes officiels fausse les comptes par listes de mots ; on mesure alors le silence, pas l'absence de la chose
+- de: inversion_reecriture
+  vers: foules
+  effet: +
+  delai: semaines à années
+  force: moyenne
+  statut: a_verifier
+  texte: retourner l'accusation nourrit la polarisation
 ponts:
 - depuis: censure
   vers: iran-nucleaire:societe_iranienne
@@ -422,3 +492,16 @@ ponts:
 - depuis: censure
   vers: humain:falsification
   nature: la censure élève le coût de dire vrai
+- depuis: inversion_reecriture
+  vers: culture-memoire:usages_memoire
+  nature: réécrire le passé est un usage politique de la mémoire
+  type: meme
+- depuis: effacement_mots
+  vers: observateur-mesure:biais
+  nature: un mot retiré des textes officiels fausse nos comptes par listes de mots
+- depuis: langage_performatif
+  vers: politique-americaine:executif
+  nature: décrets de renommage et consignes de vocabulaire
+- depuis: langage_performatif
+  vers: russie-ukraine:opinions
+  nature: « opération militaire spéciale » et loi de mars 2022
