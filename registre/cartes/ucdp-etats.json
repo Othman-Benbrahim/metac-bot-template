@@ -112,7 +112,26 @@
     "bas": 0.0213,
     "moyen": 0.3511,
     "haut": 0.6028
-   }
+   },
+   "par_type": {
+    "étatique": 6194.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 359.0,
+   "regions": 18,
+   "acteurs": [
+    "Government of Russia (Soviet Union)",
+    "Government of Ukraine"
+   ],
+   "dernier_declenchement": {
+    "annee": "2022",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Ukraine"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "YEM",
@@ -140,7 +159,26 @@
     "bas": 0.0213,
     "moyen": 0.3511,
     "haut": 0.6028
-   }
+   },
+   "par_type": {
+    "étatique": 1563.0,
+    "non étatique": 3.0,
+    "contre des civils": 7.0
+   },
+   "morts_civils": 301.0,
+   "regions": 17,
+   "acteurs": [
+    "Government of Yemen (North Yemen)",
+    "Forces of the Presidential Leadership Council"
+   ],
+   "dernier_declenchement": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Yemen (Arab Republic of Yemen)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "NGA",
@@ -168,7 +206,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 659.0,
+    "non étatique": 159.0,
+    "contre des civils": 152.0
+   },
+   "morts_civils": 191.0,
+   "regions": 27,
+   "acteurs": [
+    "XXX475",
+    "Government of Nigeria",
+    "IS"
+   ],
+   "dernier_declenchement": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Nigeria"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SDN",
@@ -196,7 +254,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 692.0,
+    "non étatique": 1.0,
+    "contre des civils": 37.0
+   },
+   "morts_civils": 333.0,
+   "regions": 9,
+   "acteurs": [
+    "SFA",
+    "Government of Sudan"
+   ],
+   "dernier_declenchement": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Sudan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ETH",
@@ -224,7 +301,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 503.0,
+    "non étatique": 32.0,
+    "contre des civils": 77.0
+   },
+   "morts_civils": 137.0,
+   "regions": 8,
+   "acteurs": [
+    "Government of Ethiopia",
+    "EPFAS"
+   ],
+   "dernier_declenchement": {
+    "annee": "2019",
+    "types": [
+     "interne"
+    ],
+    "nom": "Ethiopia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "PAK",
@@ -252,7 +348,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 517.0,
+    "non étatique": 3.0,
+    "contre des civils": 25.0
+   },
+   "morts_civils": 37.0,
+   "regions": 2,
+   "acteurs": [
+    "Government of Pakistan",
+    "TTP",
+    "BRAS"
+   ],
+   "dernier_declenchement": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Pakistan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "COD",
@@ -280,7 +396,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 167.0,
+    "non étatique": 79.0,
+    "contre des civils": 99.0
+   },
+   "morts_civils": 112.0,
+   "regions": 8,
+   "acteurs": [
+    "Government of DR Congo (Zaire)",
+    "FRN",
+    "URDPC"
+   ],
+   "dernier_declenchement": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "DR Congo (Zaire)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "COL",
@@ -308,7 +444,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 283.0,
+    "contre des civils": 26.0
+   },
+   "morts_civils": 27.0,
+   "regions": 22,
+   "acteurs": [
+    "XXX100",
+    "ELN"
+   ],
+   "dernier_declenchement": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Colombia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MEX",
@@ -336,7 +491,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 12.0,
+    "non étatique": 235.0,
+    "contre des civils": 20.0
+   },
+   "morts_civils": 26.0,
+   "regions": 19,
+   "acteurs": [
+    "XXX70",
+    "Jalisco Cartel New Generation, Sinaloa Cartel - Los Chapitos",
+    "Sinaloa Cartel - Los Mayos"
+   ],
+   "dernier_declenchement": {
+    "annee": "1996",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mexico"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BFA",
@@ -364,7 +539,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 29.0,
+    "non étatique": 145.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 11,
+   "acteurs": [
+    "JNIM",
+    "IS",
+    "Government of Burkina Faso"
+   ],
+   "dernier_declenchement": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Burkina Faso"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MLI",
@@ -392,7 +587,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 62.0,
+    "non étatique": 35.0,
+    "contre des civils": 71.0
+   },
+   "morts_civils": 119.0,
+   "regions": 14,
+   "acteurs": [
+    "IS",
+    "Government of Mali"
+   ],
+   "dernier_declenchement": {
+    "annee": "2012",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mali"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SOM",
@@ -420,7 +634,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 154.0,
+    "non étatique": 4.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 10.0,
+   "regions": 8,
+   "acteurs": [
+    "Government of Somalia",
+    "Al-Shabaab",
+    "Forces of Laftagareen"
+   ],
+   "dernier_declenchement": {
+    "annee": "2006",
+    "types": [
+     "interne"
+    ],
+    "nom": "Somalia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ISR",
@@ -448,7 +682,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 147.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 33.0,
+   "regions": 2,
+   "acteurs": [
+    "Government of Israel",
+    "Hamas",
+    "PIJ"
+   ],
+   "dernier_declenchement": {
+    "annee": "2021",
+    "types": [
+     "interne"
+    ],
+    "nom": "Israel"
+   },
+   "vpp_derniere_annee": 1
   },
   {
    "iso3": "MMR",
@@ -476,7 +730,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 129.0,
+    "non étatique": 0.0,
+    "contre des civils": 3.0
+   },
+   "morts_civils": 102.0,
+   "regions": 11,
+   "acteurs": [
+    "Government of Myanmar (Burma)",
+    "SCEF",
+    "ULA"
+   ],
+   "dernier_declenchement": {
+    "annee": "1969",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Myanmar (Burma)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SYR",
@@ -504,7 +778,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 38.0,
+    "non étatique": 15.0,
+    "contre des civils": 68.0
+   },
+   "morts_civils": 83.0,
+   "regions": 14,
+   "acteurs": [
+    "XXX652",
+    "Government of Syria"
+   ],
+   "dernier_declenchement": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Syria"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ECU",
@@ -532,7 +825,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 93.0,
+    "contre des civils": 3.0
+   },
+   "morts_civils": 7.0,
+   "regions": 8,
+   "acteurs": [
+    "XXX130",
+    "Los Lobos",
+    "Los Choneros"
+   ],
+   "dernier_declenchement": {
+    "annee": "1995",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Ecuador"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SSD",
@@ -560,7 +873,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 13.0,
+    "non étatique": 74.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 1,
+   "acteurs": [
+    "Nyang Dinka",
+    "Pakam Dinka",
+    "Government of South Sudan"
+   ],
+   "dernier_declenchement": {
+    "annee": "2012",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "South Sudan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ZAF",
@@ -588,7 +921,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 2.0,
+    "non étatique": 39.0,
+    "contre des civils": 12.0
+   },
+   "morts_civils": 12.0,
+   "regions": 5,
+   "acteurs": [
+    "XXX560",
+    "CATA"
+   ],
+   "dernier_declenchement": {
+    "annee": "1966",
+    "types": [
+     "interne"
+    ],
+    "nom": "South Africa"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "HTI",
@@ -616,7 +968,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 50.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 1.0,
+   "regions": 1,
+   "acteurs": [
+    "Viv Ansanm",
+    "Government of Haiti"
+   ],
+   "dernier_declenchement": {
+    "annee": "2024",
+    "types": [
+     "interne"
+    ],
+    "nom": "Haiti"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "TCD",
@@ -644,7 +1015,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 7.0,
+    "non étatique": 42.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 2.0,
+   "regions": 5,
+   "acteurs": [
+    "Farmers (Chad)",
+    "Herders (Chad)",
+    "Government of Sudan"
+   ],
+   "dernier_declenchement": {
+    "annee": "2017",
+    "types": [
+     "interne"
+    ],
+    "nom": "Chad"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "RUS",
@@ -672,7 +1063,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 42.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 2,
+   "acteurs": [
+    "Government of Russia (Soviet Union)",
+    "Government of Ukraine"
+   ],
+   "dernier_declenchement": {
+    "annee": "2023",
+    "types": [
+     "interne"
+    ],
+    "nom": "Russia (Soviet Union)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BRA",
@@ -700,7 +1110,20 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 1.0,
+    "non étatique": 39.0,
+    "contre des civils": 2.0
+   },
+   "morts_civils": 3.0,
+   "regions": 5,
+   "acteurs": [
+    "XXX140",
+    "Comando Vermelho",
+    "Família Terror Amapá"
+   ],
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "IND",
@@ -728,7 +1151,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 10.0,
+    "non étatique": 21.0,
+    "contre des civils": 7.0
+   },
+   "morts_civils": 5.0,
+   "regions": 5,
+   "acteurs": [
+    "Kuki",
+    "Naga",
+    "Government of India"
+   ],
+   "dernier_declenchement": {
+    "annee": "2013",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "India"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CMR",
@@ -756,7 +1199,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 26.0,
+    "non étatique": 0.0,
+    "contre des civils": 10.0
+   },
+   "morts_civils": 15.0,
+   "regions": 3,
+   "acteurs": [
+    "Ambazonia insurgents",
+    "Government of Cameroon"
+   ],
+   "dernier_declenchement": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Cameroon"
+   },
+   "vpp_derniere_annee": 7
   },
   {
    "iso3": "SAU",
@@ -784,7 +1246,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 32.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 24.0,
+   "regions": 5,
+   "acteurs": [
+    "Government of Yemen (North Yemen)",
+    "Forces of the Presidential Leadership Council"
+   ],
+   "dernier_declenchement": {
+    "annee": "1979",
+    "types": [
+     "interne"
+    ],
+    "nom": "Saudi Arabia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MOZ",
@@ -812,7 +1293,26 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 10.0,
+    "non étatique": 0.0,
+    "contre des civils": 19.0
+   },
+   "morts_civils": 23.0,
+   "regions": 2,
+   "acteurs": [
+    "IS",
+    "Government of Mozambique"
+   ],
+   "dernier_declenchement": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mozambique"
+   },
+   "vpp_derniere_annee": 6
   },
   {
    "iso3": "IRN",
@@ -840,7 +1340,27 @@
     "bas": 0.1674,
     "moyen": 0.745,
     "haut": 0.0238
-   }
+   },
+   "par_type": {
+    "étatique": 28.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 1.0,
+   "regions": 4,
+   "acteurs": [
+    "Government of Iran",
+    "Jaish al-Adl",
+    "XXX630"
+   ],
+   "dernier_declenchement": {
+    "annee": "2023",
+    "types": [
+     "interne"
+    ],
+    "nom": "Iran"
+   },
+   "vpp_derniere_annee": 2
   },
   {
    "iso3": "NER",
@@ -868,7 +1388,27 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 21.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 11.0,
+   "regions": 4,
+   "acteurs": [
+    "XXX436",
+    "Government of Chad",
+    "FACT"
+   ],
+   "dernier_declenchement": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Niger"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "AFG",
@@ -896,7 +1436,27 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 12.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 4.0,
+   "regions": 9,
+   "acteurs": [
+    "Government of Afghanistan",
+    "Government of Pakistan",
+    "AUF"
+   ],
+   "dernier_declenchement": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Afghanistan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "PHL",
@@ -924,7 +1484,27 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 8.0,
+    "non étatique": 0.0,
+    "contre des civils": 3.0
+   },
+   "morts_civils": 3.0,
+   "regions": 3,
+   "acteurs": [
+    "XXX840",
+    "Government of Philippines",
+    "IS"
+   ],
+   "dernier_declenchement": {
+    "annee": "1969",
+    "types": [
+     "interne"
+    ],
+    "nom": "Philippines"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CAF",
@@ -952,7 +1532,27 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 10.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 4.0,
+   "regions": 3,
+   "acteurs": [
+    "Government of Central African Republic",
+    "CPC-F",
+    "XXX482"
+   ],
+   "dernier_declenchement": {
+    "annee": "2017",
+    "types": [
+     "interne"
+    ],
+    "nom": "Central African Republic"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "IDN",
@@ -980,7 +1580,26 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 8.0,
+    "non étatique": 0.0,
+    "contre des civils": 2.0
+   },
+   "morts_civils": 4.0,
+   "regions": 2,
+   "acteurs": [
+    "Government of Indonesia",
+    "OPM"
+   ],
+   "dernier_declenchement": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Indonesia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "JOR",
@@ -1008,7 +1627,25 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 0.0,
+    "contre des civils": 9.0
+   },
+   "morts_civils": 9.0,
+   "regions": 1,
+   "acteurs": [
+    "IS"
+   ],
+   "dernier_declenchement": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "Jordan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "VEN",
@@ -1036,7 +1673,25 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 8.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 5,
+   "acteurs": [
+    "XXX101"
+   ],
+   "dernier_declenchement": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Venezuela"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BGD",
@@ -1064,7 +1719,26 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 4.0,
+    "non étatique": 1.0,
+    "contre des civils": 3.0
+   },
+   "morts_civils": 1.0,
+   "regions": 4,
+   "acteurs": [
+    "XXX771",
+    "Government of Bangladesh"
+   ],
+   "dernier_declenchement": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "Bangladesh"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "IRQ",
@@ -1092,7 +1766,26 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 7.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 3,
+   "acteurs": [
+    "Government of Iraq",
+    "IS"
+   ],
+   "dernier_declenchement": {
+    "annee": "2004",
+    "types": [
+     "interne"
+    ],
+    "nom": "Iraq"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "THA",
@@ -1120,7 +1813,26 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 6.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 2,
+   "acteurs": [
+    "Government of Thailand",
+    "Patani insurgents"
+   ],
+   "dernier_declenchement": {
+    "annee": "2011",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Thailand"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "LBN",
@@ -1148,7 +1860,27 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 4.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 2.0,
+   "regions": 2,
+   "acteurs": [
+    "Government of Israel",
+    "Hezbollah",
+    "XXX660"
+   ],
+   "dernier_declenchement": {
+    "annee": "2017",
+    "types": [
+     "interne"
+    ],
+    "nom": "Lebanon"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BDI",
@@ -1176,7 +1908,26 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 0.0,
+    "contre des civils": 5.0
+   },
+   "morts_civils": 5.0,
+   "regions": 4,
+   "acteurs": [
+    "XXX516",
+    "Government of Burundi"
+   ],
+   "dernier_declenchement": {
+    "annee": "2019",
+    "types": [
+     "interne"
+    ],
+    "nom": "Burundi"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "KEN",
@@ -1204,7 +1955,27 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 3.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 2,
+   "acteurs": [
+    "XXX501",
+    "Nyangatom",
+    "Turkana"
+   ],
+   "dernier_declenchement": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Kenya"
+   },
+   "vpp_derniere_annee": 1
   },
   {
    "iso3": "GHA",
@@ -1232,7 +2003,27 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 3.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 1,
+   "acteurs": [
+    "XXX452",
+    "Bokpatiib (Konkomba)",
+    "Nasaltiib (Konkomba)"
+   ],
+   "dernier_declenchement": {
+    "annee": "1983",
+    "types": [
+     "interne"
+    ],
+    "nom": "Ghana"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SWE",
@@ -1260,7 +2051,19 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 1.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 2.0,
+   "regions": 1,
+   "acteurs": [
+    "XXX380",
+    "Foxtrot"
+   ],
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "GTM",
@@ -1288,7 +2091,25 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 1.0,
+   "regions": 1,
+   "acteurs": [
+    "MS-13"
+   ],
+   "dernier_declenchement": {
+    "annee": "1965",
+    "types": [
+     "interne"
+    ],
+    "nom": "Guatemala"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "PNG",
@@ -1316,7 +2137,25 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 1.0,
+   "regions": 1,
+   "acteurs": [
+    "Government of Papua New Guinea"
+   ],
+   "dernier_declenchement": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Papua New Guinea"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "UGA",
@@ -1344,7 +2183,25 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 0.0,
+    "contre des civils": 1.0
+   },
+   "morts_civils": 1.0,
+   "regions": 1,
+   "acteurs": [
+    "XXX500"
+   ],
+   "dernier_declenchement": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Uganda"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SRB",
@@ -1372,7 +2229,26 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 1.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 0,
+   "acteurs": [
+    "Government of Israel",
+    "IS"
+   ],
+   "dernier_declenchement": {
+    "annee": "1998",
+    "types": [
+     "interne"
+    ],
+    "nom": "Serbia (Yugoslavia)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CAN",
@@ -1400,7 +2276,18 @@
     "bas": 0.5172,
     "moyen": 0.1759,
     "haut": 0.0032
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 1.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 1,
+   "acteurs": [
+    "XXX20"
+   ],
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "AGO",
@@ -1428,7 +2315,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2024",
+    "types": [
+     "interne"
+    ],
+    "nom": "Angola"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "KHM",
@@ -1456,7 +2351,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2011",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Cambodia (Kampuchea)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SLV",
@@ -1484,7 +2387,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1979",
+    "types": [
+     "interne"
+    ],
+    "nom": "El Salvador"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "JAM",
@@ -1512,7 +2423,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MRT",
@@ -1540,7 +2452,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2010",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mauritania"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "NIC",
@@ -1568,7 +2488,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1982",
+    "types": [
+     "interne"
+    ],
+    "nom": "Nicaragua"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "PER",
@@ -1596,7 +2524,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2007",
+    "types": [
+     "interne"
+    ],
+    "nom": "Peru"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "LKA",
@@ -1624,7 +2560,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2005",
+    "types": [
+     "interne"
+    ],
+    "nom": "Sri Lanka (Ceylon)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "TUR",
@@ -1652,7 +2596,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Turkey"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "GBR",
@@ -1680,7 +2632,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "United Kingdom"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ZWE",
@@ -1708,7 +2668,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1973",
+    "types": [
+     "interne"
+    ],
+    "nom": "Zimbabwe (Rhodesia)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SWZ",
@@ -1736,7 +2704,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "PRY",
@@ -1764,7 +2733,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1989",
+    "types": [
+     "interne"
+    ],
+    "nom": "Paraguay"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ZMB",
@@ -1792,7 +2769,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CHN",
@@ -1820,7 +2798,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2020",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "China"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SEN",
@@ -1848,7 +2834,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Senegal"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ESP",
@@ -1876,7 +2870,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1991",
+    "types": [
+     "interne"
+    ],
+    "nom": "Spain"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "DJI",
@@ -1904,7 +2906,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2008",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Djibouti"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MAR",
@@ -1932,7 +2942,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1975",
+    "types": [
+     "interne"
+    ],
+    "nom": "Morocco"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "DEU",
@@ -1960,7 +2978,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "LAO",
@@ -1988,7 +3007,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1989",
+    "types": [
+     "interne"
+    ],
+    "nom": "Laos"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "PAN",
@@ -2016,7 +3043,16 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1989",
+    "types": [
+     "entre_etats",
+     "interne"
+    ],
+    "nom": "Panama"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "COM",
@@ -2044,7 +3080,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1997",
+    "types": [
+     "interne"
+    ],
+    "nom": "Comoros"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "LBR",
@@ -2072,7 +3116,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2000",
+    "types": [
+     "interne"
+    ],
+    "nom": "Liberia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ROU",
@@ -2100,7 +3152,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1989",
+    "types": [
+     "interne"
+    ],
+    "nom": "Romania"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "EGY",
@@ -2128,7 +3188,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2014",
+    "types": [
+     "interne"
+    ],
+    "nom": "Egypt"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "NPL",
@@ -2156,7 +3224,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1996",
+    "types": [
+     "interne"
+    ],
+    "nom": "Nepal"
+   },
+   "vpp_derniere_annee": 5
   },
   {
    "iso3": "BWA",
@@ -2184,7 +3260,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CIV",
@@ -2212,7 +3289,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Ivory Coast"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "NLD",
@@ -2240,7 +3325,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1962",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Netherlands"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "TTO",
@@ -2268,7 +3361,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1990",
+    "types": [
+     "interne"
+    ],
+    "nom": "Trinidad and Tobago"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "KWT",
@@ -2296,7 +3397,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1990",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Kuwait"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "RWA",
@@ -2324,7 +3433,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Rwanda"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "DZA",
@@ -2352,7 +3469,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Algeria"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SLE",
@@ -2380,7 +3505,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1991",
+    "types": [
+     "interne"
+    ],
+    "nom": "Sierra Leone"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "TGO",
@@ -2408,7 +3541,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Togo"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "AZE",
@@ -2436,7 +3577,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Azerbaijan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "GEO",
@@ -2464,7 +3613,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2008",
+    "types": [
+     "interne"
+    ],
+    "nom": "Georgia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "TZA",
@@ -2492,7 +3649,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Tanzania"
+   },
+   "vpp_derniere_annee": 10
   },
   {
    "iso3": "ARM",
@@ -2520,7 +3685,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ARG",
@@ -2548,7 +3714,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1982",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Argentina"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MDA",
@@ -2576,7 +3750,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Moldova"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BIH",
@@ -2604,7 +3786,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Bosnia-Herzegovina"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "HRV",
@@ -2632,7 +3822,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Croatia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "TJK",
@@ -2660,7 +3858,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2021",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Tajikistan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "FRA",
@@ -2688,7 +3894,16 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1961",
+    "types": [
+     "entre_etats",
+     "interne"
+    ],
+    "nom": "France"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "SLB",
@@ -2716,7 +3931,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "COG",
@@ -2744,7 +3960,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "Congo"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "GNB",
@@ -2772,7 +3996,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1998",
+    "types": [
+     "interne"
+    ],
+    "nom": "Guinea-Bissau"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ITA",
@@ -2800,7 +4032,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ERI",
@@ -2828,7 +4061,26 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "par_type": {
+    "étatique": 0.0,
+    "non étatique": 0.0,
+    "contre des civils": 0.0
+   },
+   "morts_civils": 0.0,
+   "regions": 2,
+   "acteurs": [
+    "Government of Ethiopia",
+    "EPFAS"
+   ],
+   "dernier_declenchement": {
+    "annee": "2016",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Eritrea"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "GIN",
@@ -2856,7 +4108,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2000",
+    "types": [
+     "interne"
+    ],
+    "nom": "Guinea"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "NAM",
@@ -2884,7 +4144,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BHR",
@@ -2912,7 +4173,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MLT",
@@ -2940,7 +4202,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CYP",
@@ -2968,7 +4231,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1974",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Cyprus"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "GMB",
@@ -2996,7 +4267,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1981",
+    "types": [
+     "interne"
+    ],
+    "nom": "Gambia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BTN",
@@ -3024,7 +4303,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BOL",
@@ -3052,7 +4332,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1967",
+    "types": [
+     "interne"
+    ],
+    "nom": "Bolivia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "LSO",
@@ -3080,7 +4368,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1998",
+    "types": [
+     "interne"
+    ],
+    "nom": "Lesotho"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "UZB",
@@ -3108,7 +4404,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2004",
+    "types": [
+     "interne"
+    ],
+    "nom": "Uzbekistan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ALB",
@@ -3136,7 +4440,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1946",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Albania"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MKD",
@@ -3164,7 +4476,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2001",
+    "types": [
+     "interne"
+    ],
+    "nom": "North Macedonia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "KGZ",
@@ -3192,7 +4512,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2021",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Kyrgyzstan"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "HND",
@@ -3220,7 +4548,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1969",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Honduras"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "USA",
@@ -3248,7 +4584,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "United States of America"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MDG",
@@ -3276,7 +4620,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1971",
+    "types": [
+     "interne"
+    ],
+    "nom": "Madagascar (Malagasy)"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "TUN",
@@ -3304,7 +4656,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2013",
+    "types": [
+     "interne"
+    ],
+    "nom": "Tunisia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "QAT",
@@ -3332,7 +4692,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "GUY",
@@ -3360,7 +4721,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "LBY",
@@ -3388,7 +4750,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2013",
+    "types": [
+     "interne"
+    ],
+    "nom": "Libya"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "ARE",
@@ -3416,7 +4786,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "MYS",
@@ -3444,7 +4815,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2013",
+    "types": [
+     "interne"
+    ],
+    "nom": "Malaysia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BEL",
@@ -3472,7 +4851,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "AUS",
@@ -3500,7 +4880,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2003",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Australia"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BEN",
@@ -3528,7 +4916,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Benin"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "AUT",
@@ -3556,7 +4952,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "POL",
@@ -3584,7 +4981,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CRI",
@@ -3612,7 +5010,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1948",
+    "types": [
+     "interne"
+    ],
+    "nom": "Costa Rica"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "BLZ",
@@ -3640,7 +5046,8 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "DOM",
@@ -3668,7 +5075,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1965",
+    "types": [
+     "interne"
+    ],
+    "nom": "Dominican Republic"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "OMN",
@@ -3696,7 +5111,15 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1969",
+    "types": [
+     "interne"
+    ],
+    "nom": "Oman"
+   },
+   "vpp_derniere_annee": 0
   },
   {
    "iso3": "CHL",
@@ -3724,7 +5147,1280 @@
     "bas": 0.0476,
     "moyen": 0.0115,
     "haut": 0.0006
-   }
+   },
+   "dernier_declenchement": {
+    "annee": "1973",
+    "types": [
+     "interne"
+    ],
+    "nom": "Chile"
+   },
+   "vpp_derniere_annee": 0
   }
- ]
+ ],
+ "vpp": {
+  "annees": [
+   "2011",
+   "2025"
+  ],
+  "derniere_annee": "2025",
+  "pays_actifs": 7,
+  "pays": [
+   {
+    "iso3": "TZA",
+    "nom": "Tanzania",
+    "evenements": 10,
+    "morts": 367.0,
+    "serie_evenements": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     10
+    ]
+   },
+   {
+    "iso3": "CMR",
+    "nom": "Cameroon",
+    "evenements": 7,
+    "morts": 45.0,
+    "serie_evenements": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     7
+    ]
+   },
+   {
+    "iso3": "MOZ",
+    "nom": "Mozambique",
+    "evenements": 6,
+    "morts": 8.0,
+    "serie_evenements": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     22,
+     6
+    ]
+   },
+   {
+    "iso3": "NPL",
+    "nom": "Nepal",
+    "evenements": 5,
+    "morts": 60.0,
+    "serie_evenements": [
+     0,
+     0,
+     0,
+     0,
+     16,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     5
+    ]
+   },
+   {
+    "iso3": "IRN",
+    "nom": "Iran",
+    "evenements": 2,
+    "morts": 2.0,
+    "serie_evenements": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     5,
+     5,
+     72,
+     0,
+     3,
+     62,
+     1,
+     0,
+     2
+    ]
+   },
+   {
+    "iso3": "ISR",
+    "nom": "Israel",
+    "evenements": 1,
+    "morts": 1.0,
+    "serie_evenements": [
+     6,
+     4,
+     3,
+     16,
+     29,
+     11,
+     24,
+     95,
+     33,
+     4,
+     25,
+     36,
+     52,
+     9,
+     1
+    ]
+   },
+   {
+    "iso3": "KEN",
+    "nom": "Kenya",
+    "evenements": 1,
+    "morts": 2.0,
+    "serie_evenements": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     26,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     13,
+     1
+    ]
+   }
+  ],
+  "par_pays": {
+   "EGY": 0,
+   "ISR": 1,
+   "TUN": 0,
+   "LBY": 0,
+   "YEM": 0,
+   "SYR": 0,
+   "COD": 0,
+   "IRQ": 0,
+   "SDN": 0,
+   "VEN": 0,
+   "BDI": 0,
+   "GIN": 0,
+   "NPL": 5,
+   "IND": 0,
+   "KEN": 1,
+   "UGA": 0,
+   "IRN": 2,
+   "NIC": 0,
+   "HTI": 0,
+   "IDN": 0,
+   "MMR": 0,
+   "SEN": 0,
+   "TCD": 0,
+   "COL": 0,
+   "KAZ": 0,
+   "SLE": 0,
+   "BGD": 0,
+   "PER": 0,
+   "MOZ": 6,
+   "CMR": 7,
+   "TZA": 10
+  }
+ },
+ "declenchements": {
+  "annees": [
+   "1946",
+   "2024"
+  ],
+  "derniere_annee": "2024",
+  "taux_annuel": 0.0352,
+  "recents": [
+   {
+    "iso3": "YEM",
+    "nom": "Yemen (Arab Republic of Yemen)",
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "USA",
+    "nom": "United States of America",
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "GBR",
+    "nom": "United Kingdom",
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "PAK",
+    "nom": "Pakistan",
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "HTI",
+    "nom": "Haiti",
+    "annee": "2024",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "AGO",
+    "nom": "Angola",
+    "annee": "2024",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "AFG",
+    "nom": "Afghanistan",
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "RUS",
+    "nom": "Russia (Soviet Union)",
+    "annee": "2023",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "IRN",
+    "nom": "Iran",
+    "annee": "2023",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "UKR",
+    "nom": "Ukraine",
+    "annee": "2022",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "UGA",
+    "nom": "Uganda",
+    "annee": "2022",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "TGO",
+    "nom": "Togo",
+    "annee": "2022",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "RWA",
+    "nom": "Rwanda",
+    "annee": "2022",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "RUS",
+    "nom": "Russia (Soviet Union)",
+    "annee": "2022",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "BEN",
+    "nom": "Benin",
+    "annee": "2022",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "AGO",
+    "nom": "Angola",
+    "annee": "2022",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "TJK",
+    "nom": "Tajikistan",
+    "annee": "2021",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "KGZ",
+    "nom": "Kyrgyzstan",
+    "annee": "2021",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "ISR",
+    "nom": "Israel",
+    "annee": "2021",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "TZA",
+    "nom": "Tanzania",
+    "annee": "2020",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "SDN",
+    "nom": "Sudan",
+    "annee": "2020",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "CHN",
+    "nom": "China",
+    "annee": "2020",
+    "types": [
+     "entre_etats"
+    ]
+   },
+   {
+    "iso3": "AZE",
+    "nom": "Azerbaijan",
+    "annee": "2020",
+    "types": [
+     "interne"
+    ]
+   },
+   {
+    "iso3": "DZA",
+    "nom": "Algeria",
+    "annee": "2020",
+    "types": [
+     "interne"
+    ]
+   }
+  ],
+  "dernier_par_pays": {
+   "ALB": {
+    "annee": "1946",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Albania"
+   },
+   "BOL": {
+    "annee": "1967",
+    "types": [
+     "interne"
+    ],
+    "nom": "Bolivia"
+   },
+   "CHN": {
+    "annee": "2020",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "China"
+   },
+   "FRA": {
+    "annee": "1961",
+    "types": [
+     "entre_etats",
+     "interne"
+    ],
+    "nom": "France"
+   },
+   "GRC": {
+    "annee": "1946",
+    "types": [
+     "interne"
+    ],
+    "nom": "Greece"
+   },
+   "IRN": {
+    "annee": "2023",
+    "types": [
+     "interne"
+    ],
+    "nom": "Iran"
+   },
+   "PHL": {
+    "annee": "1969",
+    "types": [
+     "interne"
+    ],
+    "nom": "Philippines"
+   },
+   "RUS": {
+    "annee": "2023",
+    "types": [
+     "interne"
+    ],
+    "nom": "Russia (Soviet Union)"
+   },
+   "THA": {
+    "annee": "2011",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Thailand"
+   },
+   "GBR": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "United Kingdom"
+   },
+   "Hyderabadh": {
+    "annee": "1948",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Hyderabadh"
+   },
+   "PRY": {
+    "annee": "1989",
+    "types": [
+     "interne"
+    ],
+    "nom": "Paraguay"
+   },
+   "CRI": {
+    "annee": "1948",
+    "types": [
+     "interne"
+    ],
+    "nom": "Costa Rica"
+   },
+   "EGY": {
+    "annee": "2014",
+    "types": [
+     "interne"
+    ],
+    "nom": "Egypt"
+   },
+   "IND": {
+    "annee": "2013",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "India"
+   },
+   "IRQ": {
+    "annee": "2004",
+    "types": [
+     "interne"
+    ],
+    "nom": "Iraq"
+   },
+   "ISR": {
+    "annee": "2021",
+    "types": [
+     "interne"
+    ],
+    "nom": "Israel"
+   },
+   "JOR": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "Jordan"
+   },
+   "LBN": {
+    "annee": "2017",
+    "types": [
+     "interne"
+    ],
+    "nom": "Lebanon"
+   },
+   "MMR": {
+    "annee": "1969",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Myanmar (Burma)"
+   },
+   "PAK": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Pakistan"
+   },
+   "SYR": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Syria"
+   },
+   "YEM": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Yemen (Arab Republic of Yemen)"
+   },
+   "GTM": {
+    "annee": "1965",
+    "types": [
+     "interne"
+    ],
+    "nom": "Guatemala"
+   },
+   "PRK": {
+    "annee": "1949",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "North Korea"
+   },
+   "KOR": {
+    "annee": "1949",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "South Korea"
+   },
+   "TWN": {
+    "annee": "1958",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Taiwan"
+   },
+   "IDN": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Indonesia"
+   },
+   "CUB": {
+    "annee": "1961",
+    "types": [
+     "interne"
+    ],
+    "nom": "Cuba"
+   },
+   "ARG": {
+    "annee": "1982",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Argentina"
+   },
+   "Vietnam, Republic of": {
+    "annee": "1965",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Vietnam, Republic of"
+   },
+   "HUN": {
+    "annee": "1956",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Hungary"
+   },
+   "HND": {
+    "annee": "1969",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Honduras"
+   },
+   "NIC": {
+    "annee": "1982",
+    "types": [
+     "interne"
+    ],
+    "nom": "Nicaragua"
+   },
+   "OMN": {
+    "annee": "1969",
+    "types": [
+     "interne"
+    ],
+    "nom": "Oman"
+   },
+   "MYS": {
+    "annee": "2013",
+    "types": [
+     "interne"
+    ],
+    "nom": "Malaysia"
+   },
+   "LAO": {
+    "annee": "1989",
+    "types": [
+     "interne"
+    ],
+    "nom": "Laos"
+   },
+   "CMR": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Cameroon"
+   },
+   "COD": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "DR Congo (Zaire)"
+   },
+   "ETH": {
+    "annee": "2019",
+    "types": [
+     "interne"
+    ],
+    "nom": "Ethiopia"
+   },
+   "NPL": {
+    "annee": "1996",
+    "types": [
+     "interne"
+    ],
+    "nom": "Nepal"
+   },
+   "TUN": {
+    "annee": "2013",
+    "types": [
+     "interne"
+    ],
+    "nom": "Tunisia"
+   },
+   "NLD": {
+    "annee": "1962",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Netherlands"
+   },
+   "VEN": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Venezuela"
+   },
+   "DZA": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Algeria"
+   },
+   "MAR": {
+    "annee": "1975",
+    "types": [
+     "interne"
+    ],
+    "nom": "Morocco"
+   },
+   "SDN": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Sudan"
+   },
+   "COL": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Colombia"
+   },
+   "GAB": {
+    "annee": "1964",
+    "types": [
+     "interne"
+    ],
+    "nom": "Gabon"
+   },
+   "SOM": {
+    "annee": "2006",
+    "types": [
+     "interne"
+    ],
+    "nom": "Somalia"
+   },
+   "BDI": {
+    "annee": "2019",
+    "types": [
+     "interne"
+    ],
+    "nom": "Burundi"
+   },
+   "DOM": {
+    "annee": "1965",
+    "types": [
+     "interne"
+    ],
+    "nom": "Dominican Republic"
+   },
+   "PER": {
+    "annee": "2007",
+    "types": [
+     "interne"
+    ],
+    "nom": "Peru"
+   },
+   "VNM": {
+    "annee": "1986",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Vietnam (North Vietnam)"
+   },
+   "TCD": {
+    "annee": "2017",
+    "types": [
+     "interne"
+    ],
+    "nom": "Chad"
+   },
+   "GHA": {
+    "annee": "1983",
+    "types": [
+     "interne"
+    ],
+    "nom": "Ghana"
+   },
+   "NGA": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Nigeria"
+   },
+   "ZAF": {
+    "annee": "1966",
+    "types": [
+     "interne"
+    ],
+    "nom": "South Africa"
+   },
+   "KHM": {
+    "annee": "2011",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Cambodia (Kampuchea)"
+   },
+   "ZWE": {
+    "annee": "1973",
+    "types": [
+     "interne"
+    ],
+    "nom": "Zimbabwe (Rhodesia)"
+   },
+   "SLV": {
+    "annee": "1979",
+    "types": [
+     "interne"
+    ],
+    "nom": "El Salvador"
+   },
+   "MDG": {
+    "annee": "1971",
+    "types": [
+     "interne"
+    ],
+    "nom": "Madagascar (Malagasy)"
+   },
+   "LKA": {
+    "annee": "2005",
+    "types": [
+     "interne"
+    ],
+    "nom": "Sri Lanka (Ceylon)"
+   },
+   "UGA": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Uganda"
+   },
+   "URY": {
+    "annee": "1972",
+    "types": [
+     "interne"
+    ],
+    "nom": "Uruguay"
+   },
+   "Yemen, People's Republic of": {
+    "annee": "1986",
+    "types": [
+     "interne"
+    ],
+    "nom": "Yemen, People's Republic of"
+   },
+   "CHL": {
+    "annee": "1973",
+    "types": [
+     "interne"
+    ],
+    "nom": "Chile"
+   },
+   "CYP": {
+    "annee": "1974",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Cyprus"
+   },
+   "TUR": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Turkey"
+   },
+   "AGO": {
+    "annee": "2024",
+    "types": [
+     "interne"
+    ],
+    "nom": "Angola"
+   },
+   "BGD": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "Bangladesh"
+   },
+   "MRT": {
+    "annee": "2010",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mauritania"
+   },
+   "MOZ": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mozambique"
+   },
+   "AFG": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Afghanistan"
+   },
+   "ESP": {
+    "annee": "1991",
+    "types": [
+     "interne"
+    ],
+    "nom": "Spain"
+   },
+   "TZA": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Tanzania"
+   },
+   "SAU": {
+    "annee": "1979",
+    "types": [
+     "interne"
+    ],
+    "nom": "Saudi Arabia"
+   },
+   "LBR": {
+    "annee": "2000",
+    "types": [
+     "interne"
+    ],
+    "nom": "Liberia"
+   },
+   "GMB": {
+    "annee": "1981",
+    "types": [
+     "interne"
+    ],
+    "nom": "Gambia"
+   },
+   "KEN": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Kenya"
+   },
+   "GRD": {
+    "annee": "1983",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Grenada"
+   },
+   "USA": {
+    "annee": "2024",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "United States of America"
+   },
+   "BFA": {
+    "annee": "2018",
+    "types": [
+     "interne"
+    ],
+    "nom": "Burkina Faso"
+   },
+   "MLI": {
+    "annee": "2012",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mali"
+   },
+   "TGO": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Togo"
+   },
+   "LBY": {
+    "annee": "2013",
+    "types": [
+     "interne"
+    ],
+    "nom": "Libya"
+   },
+   "SUR": {
+    "annee": "1987",
+    "types": [
+     "interne"
+    ],
+    "nom": "Suriname"
+   },
+   "COM": {
+    "annee": "1997",
+    "types": [
+     "interne"
+    ],
+    "nom": "Comoros"
+   },
+   "HTI": {
+    "annee": "2024",
+    "types": [
+     "interne"
+    ],
+    "nom": "Haiti"
+   },
+   "PAN": {
+    "annee": "1989",
+    "types": [
+     "entre_etats",
+     "interne"
+    ],
+    "nom": "Panama"
+   },
+   "ROU": {
+    "annee": "1989",
+    "types": [
+     "interne"
+    ],
+    "nom": "Romania"
+   },
+   "KWT": {
+    "annee": "1990",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Kuwait"
+   },
+   "PNG": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Papua New Guinea"
+   },
+   "RWA": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Rwanda"
+   },
+   "SEN": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Senegal"
+   },
+   "TTO": {
+    "annee": "1990",
+    "types": [
+     "interne"
+    ],
+    "nom": "Trinidad and Tobago"
+   },
+   "AZE": {
+    "annee": "2020",
+    "types": [
+     "interne"
+    ],
+    "nom": "Azerbaijan"
+   },
+   "DJI": {
+    "annee": "2008",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Djibouti"
+   },
+   "GEO": {
+    "annee": "2008",
+    "types": [
+     "interne"
+    ],
+    "nom": "Georgia"
+   },
+   "NER": {
+    "annee": "2015",
+    "types": [
+     "interne"
+    ],
+    "nom": "Niger"
+   },
+   "SRB": {
+    "annee": "1998",
+    "types": [
+     "interne"
+    ],
+    "nom": "Serbia (Yugoslavia)"
+   },
+   "SLE": {
+    "annee": "1991",
+    "types": [
+     "interne"
+    ],
+    "nom": "Sierra Leone"
+   },
+   "BIH": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Bosnia-Herzegovina"
+   },
+   "HRV": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Croatia"
+   },
+   "MDA": {
+    "annee": "1992",
+    "types": [
+     "interne"
+    ],
+    "nom": "Moldova"
+   },
+   "TJK": {
+    "annee": "2021",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Tajikistan"
+   },
+   "COG": {
+    "annee": "2016",
+    "types": [
+     "interne"
+    ],
+    "nom": "Congo"
+   },
+   "MEX": {
+    "annee": "1996",
+    "types": [
+     "interne"
+    ],
+    "nom": "Mexico"
+   },
+   "ECU": {
+    "annee": "1995",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Ecuador"
+   },
+   "ERI": {
+    "annee": "2016",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Eritrea"
+   },
+   "GNB": {
+    "annee": "1998",
+    "types": [
+     "interne"
+    ],
+    "nom": "Guinea-Bissau"
+   },
+   "LSO": {
+    "annee": "1998",
+    "types": [
+     "interne"
+    ],
+    "nom": "Lesotho"
+   },
+   "UZB": {
+    "annee": "2004",
+    "types": [
+     "interne"
+    ],
+    "nom": "Uzbekistan"
+   },
+   "GIN": {
+    "annee": "2000",
+    "types": [
+     "interne"
+    ],
+    "nom": "Guinea"
+   },
+   "CAF": {
+    "annee": "2017",
+    "types": [
+     "interne"
+    ],
+    "nom": "Central African Republic"
+   },
+   "MKD": {
+    "annee": "2001",
+    "types": [
+     "interne"
+    ],
+    "nom": "North Macedonia"
+   },
+   "CIV": {
+    "annee": "2011",
+    "types": [
+     "interne"
+    ],
+    "nom": "Ivory Coast"
+   },
+   "AUS": {
+    "annee": "2003",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Australia"
+   },
+   "SSD": {
+    "annee": "2012",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "South Sudan"
+   },
+   "UKR": {
+    "annee": "2022",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Ukraine"
+   },
+   "KGZ": {
+    "annee": "2021",
+    "types": [
+     "entre_etats"
+    ],
+    "nom": "Kyrgyzstan"
+   },
+   "BEN": {
+    "annee": "2022",
+    "types": [
+     "interne"
+    ],
+    "nom": "Benin"
+   }
+  },
+  "definition": "année qui ouvre un conflit nouveau ou une reprise après plus d'un an sans conflit actif (au moins 25 morts au combat dans l'année)"
+ }
 }

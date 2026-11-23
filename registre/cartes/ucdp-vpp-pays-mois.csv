@@ -1,0 +1,291 @@
+pays_source,iso3,code_pays,mois,source,evenements,somme,morts_civils,distincts_regions,principaux
+Egypt,EGY,651,2011-01,evenements,32,583.0,6.0,10,Government of Egypt ; Opponents of Mubarak
+Israel,ISR,666,2011-01,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Tunisia,TUN,616,2011-01,evenements,14,58.0,5.0,6,Government of Tunisia ; Opponents of Ben Ali
+Egypt,EGY,651,2011-02,evenements,3,7.0,0.0,2,Government of Egypt ; Opponents of Mubarak
+Libya,LBY,620,2011-02,evenements,14,567.0,1.0,5,Government of Libya ; Opponents of Gaddafi
+Yemen (North Yemen),YEM,678,2011-02,evenements,6,10.0,0.0,2,Government of Yemen (North Yemen) ; Opponents of Saleh
+Syria,SYR,652,2011-03,evenements,1,27.0,0.0,0,Government of Syria ; Opponents of al-Assad
+Yemen (North Yemen),YEM,678,2011-03,evenements,4,6.0,0.0,3,Government of Yemen (North Yemen) ; Opponents of Saleh
+Egypt,EGY,651,2011-04,evenements,1,2.0,0.0,1,Government of Egypt ; Opponents of Supreme Council of the Armed Forces
+Syria,SYR,652,2011-04,evenements,1,1.0,0.0,1,Government of Syria ; Opponents of al-Assad
+Yemen (North Yemen),YEM,678,2011-04,evenements,8,18.0,0.0,4,Government of Yemen (North Yemen) ; Opponents of Saleh
+Israel,ISR,666,2011-05,evenements,2,13.0,0.0,1,Government of Israel ; Supporters of Palestine
+Yemen (North Yemen),YEM,678,2011-05,evenements,6,21.0,0.0,5,Government of Yemen (North Yemen) ; Opponents of Saleh
+Israel,ISR,666,2011-06,evenements,1,23.0,3.0,1,Government of Israel ; Supporters of Palestine
+Syria,SYR,652,2011-06,evenements,2,36.0,27.0,2,Government of Syria ; Opponents of al-Assad
+Yemen (North Yemen),YEM,678,2011-06,evenements,1,6.0,0.0,1,Government of Yemen (North Yemen) ; Opponents of Saleh
+Egypt,EGY,651,2011-07,evenements,1,5.0,0.0,1,Government of Egypt ; Opponents of Supreme Council of the Armed Forces
+Syria,SYR,652,2011-07,evenements,2,8.0,0.0,2,Government of Syria ; Opponents of al-Assad
+Yemen (North Yemen),YEM,678,2011-07,evenements,2,7.0,0.0,2,Government of Yemen (North Yemen) ; Opponents of Saleh
+Israel,ISR,666,2011-09,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Yemen (North Yemen),YEM,678,2011-09,evenements,4,34.0,26.0,2,Government of Yemen (North Yemen) ; Opponents of Saleh
+Yemen (North Yemen),YEM,678,2011-10,evenements,2,2.0,0.0,1,Government of Yemen (North Yemen) ; Opponents of Saleh
+DR Congo (Zaire),COD,490,2011-11,evenements,1,1.0,0.0,1,Government of DR Congo (Zaire) ; Opponents of Kabila
+Egypt,EGY,651,2011-11,evenements,8,73.0,0.0,4,Government of Egypt ; Opponents of Supreme Council of the Armed Forces
+Egypt,EGY,651,2011-12,evenements,3,15.0,0.0,1,Government of Egypt ; Opponents of Supreme Council of the Armed Forces
+Israel,ISR,666,2011-12,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2012-02,evenements,12,16.0,0.0,2,Government of Egypt ; Opponents of Supreme Council of the Armed Forces
+Israel,ISR,666,2012-02,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2012-03,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2012-05,evenements,1,3.0,0.0,1,Government of Egypt ; Opponents of Supreme Council of the Armed Forces
+Israel,ISR,666,2012-11,evenements,2,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2013-01,evenements,8,58.0,0.0,4,Government of Egypt ; Opponents of Morsi
+Iraq,IRQ,645,2013-01,evenements,1,9.0,0.0,1,Government of Iraq ; Opponents of al-Maliki
+Egypt,EGY,651,2013-02,evenements,3,3.0,0.0,2,Government of Egypt ; Opponents of Morsi
+Israel,ISR,666,2013-02,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2013-03,evenements,3,8.0,0.0,2,Government of Egypt ; Opponents of Morsi
+Iraq,IRQ,645,2013-03,evenements,1,1.0,0.0,1,Government of Iraq ; Opponents of al-Maliki
+Israel,ISR,666,2013-03,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Iraq,IRQ,645,2013-04,evenements,2,59.0,0.0,2,Government of Iraq ; Opponents of al-Maliki
+Israel,ISR,666,2013-04,evenements,1,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2013-07,evenements,4,118.0,0.0,2,Government of Egypt ; Opponents of Mansour
+Egypt,EGY,651,2013-08,evenements,21,1226.0,0.0,9,Government of Egypt ; Opponents of Mansour
+Egypt,EGY,651,2013-09,evenements,1,2.0,0.0,1,Government of Egypt ; Opponents of Mansour
+Sudan,SDN,625,2013-09,evenements,1,170.0,0.0,0,Government of Sudan ; Opponents of al-Bashir
+Egypt,EGY,651,2013-10,evenements,6,70.0,0.0,3,Government of Egypt ; Opponents of Mansour
+Egypt,EGY,651,2013-11,evenements,2,2.0,0.0,1,Government of Egypt ; Opponents of Mansour
+Egypt,EGY,651,2013-12,evenements,5,5.0,0.0,4,Government of Egypt ; Opponents of Mansour
+Egypt,EGY,651,2014-01,evenements,15,68.0,0.0,9,Government of Egypt ; Opponents of Mansour
+Egypt,EGY,651,2014-02,evenements,2,2.0,1.0,1,Government of Egypt ; Opponents of Mansour
+Venezuela,VEN,101,2014-02,evenements,3,5.0,1.0,2,Government of Venezuela ; Opponents of Maduro
+Egypt,EGY,651,2014-03,evenements,5,9.0,2.0,2,Government of Egypt ; Opponents of Mansour
+Venezuela,VEN,101,2014-03,evenements,9,10.0,2.0,6,Government of Venezuela ; Opponents of Maduro
+Egypt,EGY,651,2014-04,evenements,2,3.0,0.0,2,Government of Egypt ; Opponents of Mansour
+Egypt,EGY,651,2014-05,evenements,2,3.0,0.0,2,Government of Egypt ; Opponents of Mansour
+Israel,ISR,666,2014-05,evenements,1,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Venezuela,VEN,101,2014-05,evenements,1,1.0,0.0,0,Government of Venezuela ; Opponents of Maduro
+Egypt,EGY,651,2014-06,evenements,3,4.0,0.0,3,Government of Egypt ; Opponents of al-Sisi
+Egypt,EGY,651,2014-07,evenements,2,5.0,0.0,1,Government of Egypt ; Opponents of al-Sisi
+Israel,ISR,666,2014-07,evenements,7,9.0,1.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2014-08,evenements,4,9.0,1.0,2,Government of Egypt ; Opponents of al-Sisi
+Israel,ISR,666,2014-08,evenements,6,6.0,0.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2014-10,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2014-11,evenements,4,7.0,0.0,3,Government of Egypt ; Opponents of al-Sisi
+Israel,ISR,666,2014-11,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2014-12,evenements,1,1.0,0.0,0,Government of Egypt ; Opponents of al-Sisi
+DR Congo (Zaire),COD,490,2015-01,evenements,3,27.0,1.0,2,Government of DR Congo (Zaire) ; Opponents of Kabila
+Egypt,EGY,651,2015-01,evenements,5,25.0,0.0,4,Government of Egypt ; Opponents of al-Sisi
+Israel,ISR,666,2015-03,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Burundi,BDI,516,2015-04,evenements,3,6.0,5.0,1,Government of Burundi ; Opponents of Nkurunziza
+Guinea,GIN,438,2015-04,evenements,4,4.0,1.0,2,Government of Guinea ; Opponents of Conde
+Burundi,BDI,516,2015-05,evenements,9,17.0,0.0,3,Government of Burundi ; Opponents of Nkurunziza
+Egypt,EGY,651,2015-05,evenements,1,1.0,0.0,1,Government of Egypt ; Opponents of al-Sisi
+Guinea,GIN,438,2015-05,evenements,1,1.0,0.0,1,Government of Guinea ; Opponents of Conde
+Burundi,BDI,516,2015-06,evenements,2,2.0,0.0,1,Government of Burundi ; Opponents of Nkurunziza
+Egypt,EGY,651,2015-07,evenements,1,6.0,0.0,1,Government of Egypt ; Opponents of al-Sisi
+Israel,ISR,666,2015-07,evenements,2,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Nepal,NPL,790,2015-08,evenements,8,24.0,1.0,2,Government of Nepal ; Opponents of Koirala
+Nepal,NPL,790,2015-09,evenements,8,19.0,1.0,2,Government of Nepal ; Opponents of Koirala
+Israel,ISR,666,2015-10,evenements,11,18.0,0.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2015-11,evenements,9,10.0,0.0,3,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2015-12,evenements,6,6.0,2.0,2,Government of Israel ; Supporters of Palestine
+India,IND,750,2016-01,evenements,1,1.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2016-01,evenements,2,3.0,0.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2016-02,evenements,1,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+India,IND,750,2016-04,evenements,2,2.0,0.0,1,Government of India ; Supporters of Kashmir
+DR Congo (Zaire),COD,490,2016-05,evenements,1,2.0,0.0,1,Government of DR Congo (Zaire) ; Opponents of Kabila
+India,IND,750,2016-07,evenements,16,46.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2016-07,evenements,2,2.0,1.0,1,Government of Israel ; Supporters of Palestine
+Guinea,GIN,438,2016-08,evenements,1,1.0,1.0,1,Government of Guinea ; Opponents of Conde
+India,IND,750,2016-08,evenements,16,20.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2016-08,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+DR Congo (Zaire),COD,490,2016-09,evenements,1,53.0,49.0,1,Government of DR Congo (Zaire) ; Opponents of Kabila
+India,IND,750,2016-09,evenements,9,10.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2016-09,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2016-10,evenements,2,2.0,0.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2016-11,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+DR Congo (Zaire),COD,490,2016-12,evenements,5,65.0,20.0,3,Government of DR Congo (Zaire) ; Opponents of Kabila
+Israel,ISR,666,2016-12,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2017-01,evenements,2,2.0,1.0,1,Government of Israel ; Supporters of Palestine
+India,IND,750,2017-03,evenements,2,6.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2017-03,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+DR Congo (Zaire),COD,490,2017-04,evenements,1,46.0,0.0,0,Government of DR Congo (Zaire) ; Opponents of Kabila
+India,IND,750,2017-04,evenements,9,10.0,2.0,1,Government of India ; Supporters of Kashmir
+Venezuela,VEN,101,2017-04,evenements,10,12.0,4.0,5,Government of Venezuela ; Opponents of Maduro
+India,IND,750,2017-05,evenements,1,0.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2017-05,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Venezuela,VEN,101,2017-05,evenements,13,14.0,0.0,6,Government of Venezuela ; Opponents of Maduro
+India,IND,750,2017-06,evenements,4,5.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2017-06,evenements,3,3.0,0.0,2,Government of Israel ; Supporters of Palestine
+Venezuela,VEN,101,2017-06,evenements,5,6.0,0.0,2,Government of Venezuela ; Opponents of Maduro
+India,IND,750,2017-07,evenements,2,2.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2017-07,evenements,7,8.0,0.0,3,Government of Israel ; Supporters of Palestine
+Venezuela,VEN,101,2017-07,evenements,7,9.0,2.0,3,Government of Venezuela ; Opponents of Maduro
+India,IND,750,2017-08,evenements,3,3.0,0.0,1,Government of India ; Supporters of Kashmir
+Kenya,KEN,501,2017-08,evenements,11,15.0,2.0,4,Government of Kenya ; Opponents of Kenyatta
+DR Congo (Zaire),COD,490,2017-10,evenements,2,7.0,4.0,2,Government of DR Congo (Zaire) ; Opponents of Kabila
+India,IND,750,2017-10,evenements,1,1.0,0.0,1,Government of India ; Supporters of Kashmir
+Kenya,KEN,501,2017-10,evenements,7,8.0,1.0,6,Government of Kenya ; Opponents of Kenyatta
+Uganda,UGA,500,2017-10,evenements,1,2.0,0.0,1,Government of Uganda ; Opponents of Museveni
+DR Congo (Zaire),COD,490,2017-11,evenements,1,1.0,0.0,1,Government of DR Congo (Zaire) ; Opponents of Kabila
+Kenya,KEN,501,2017-11,evenements,8,8.0,5.0,1,Government of Kenya ; Opponents of Kenyatta
+Iran,IRN,630,2017-12,evenements,5,12.0,0.0,5,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2017-12,evenements,10,10.0,0.0,3,Government of Israel ; Supporters of Palestine
+India,IND,750,2018-01,evenements,1,3.0,0.0,1,Government of India ; Supporters of Kashmir
+Iran,IRN,630,2018-01,evenements,4,10.0,0.0,1,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2018-01,evenements,2,2.0,1.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2018-02,evenements,4,4.0,0.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2018-03,evenements,1,1.0,1.0,1,Government of Israel ; Supporters of Palestine
+India,IND,750,2018-04,evenements,3,6.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-04,evenements,16,26.0,3.0,1,Government of Israel ; Supporters of Palestine
+Nicaragua,NIC,93,2018-04,evenements,3,4.0,1.0,1,Government of Nicaragua ; Opponents of Ortega
+India,IND,750,2018-05,evenements,2,6.0,0.0,1,Government of India ; Supporters of Kashmir
+Iran,IRN,630,2018-05,evenements,1,3.0,0.0,1,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2018-05,evenements,13,80.0,0.0,2,Government of Israel ; Supporters of Palestine
+Nicaragua,NIC,93,2018-05,evenements,6,15.0,10.0,4,Government of Nicaragua ; Opponents of Ortega
+India,IND,750,2018-06,evenements,3,3.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-06,evenements,8,9.0,1.0,2,Government of Israel ; Supporters of Palestine
+Nicaragua,NIC,93,2018-06,evenements,7,21.0,2.0,3,Government of Nicaragua ; Opponents of Ortega
+Haiti,HTI,41,2018-07,evenements,1,4.0,0.0,1,Government of Haiti ; Opponents of Moise
+India,IND,750,2018-07,evenements,3,5.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-07,evenements,9,9.0,0.0,2,Government of Israel ; Supporters of Palestine
+Nicaragua,NIC,93,2018-07,evenements,2,6.0,0.0,2,Government of Nicaragua ; Opponents of Ortega
+India,IND,750,2018-08,evenements,1,1.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-08,evenements,6,8.0,1.0,1,Government of Israel ; Supporters of Palestine
+India,IND,750,2018-09,evenements,2,2.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-09,evenements,12,18.0,1.0,1,Government of Israel ; Supporters of Palestine
+Haiti,HTI,41,2018-10,evenements,1,2.0,0.0,1,Government of Haiti ; Opponents of Moise
+India,IND,750,2018-10,evenements,1,1.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-10,evenements,16,26.0,0.0,2,Government of Israel ; Supporters of Palestine
+Haiti,HTI,41,2018-11,evenements,5,4.0,0.0,2,Government of Haiti ; Opponents of Moise
+India,IND,750,2018-11,evenements,1,1.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-11,evenements,2,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+DR Congo (Zaire),COD,490,2018-12,evenements,2,8.0,0.0,2,Government of DR Congo (Zaire) ; Opponents of Kabila
+India,IND,750,2018-12,evenements,1,7.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2018-12,evenements,6,6.0,1.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2018-12,evenements,4,25.0,0.0,2,Government of Sudan ; Opponents of al-Bashir
+Israel,ISR,666,2019-01,evenements,5,5.0,0.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2019-01,evenements,1,2.0,0.0,1,Government of Sudan ; Opponents of al-Bashir
+Venezuela,VEN,101,2019-01,evenements,13,34.0,0.0,7,Government of Venezuela ; Opponents of Maduro
+Haiti,HTI,41,2019-02,evenements,4,26.0,0.0,1,Government of Haiti ; Opponents of Moise
+Israel,ISR,666,2019-02,evenements,6,6.0,0.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2019-02,evenements,1,1.0,0.0,1,Government of Sudan ; Opponents of al-Bashir
+Israel,ISR,666,2019-03,evenements,12,12.0,1.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2019-04,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2019-04,evenements,3,10.0,0.0,0,Government of Sudan ; Opponents of al-Burhan ; Opponents of al-Bashir
+India,IND,750,2019-05,evenements,1,1.0,0.0,1,Government of India ; Supporters of Kashmir
+Israel,ISR,666,2019-05,evenements,3,3.0,0.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2019-05,evenements,4,6.0,1.0,2,Government of Sudan ; Opponents of al-Burhan
+Haiti,HTI,41,2019-06,evenements,4,4.0,0.0,2,Government of Haiti ; Opponents of Moise
+Sudan,SDN,625,2019-06,evenements,5,100.0,0.0,2,Government of Sudan ; Opponents of al-Burhan
+Israel,ISR,666,2019-07,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Indonesia,IDN,850,2019-08,evenements,1,7.0,0.0,1,Government of Indonesia ; Supporters of West Papua
+Israel,ISR,666,2019-08,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Haiti,HTI,41,2019-09,evenements,2,7.0,0.0,1,Government of Haiti ; Opponents of Moise
+Indonesia,IDN,850,2019-09,evenements,2,47.0,3.0,1,Government of Indonesia ; Supporters of West Papua
+Israel,ISR,666,2019-09,evenements,2,3.0,0.0,1,Government of Israel ; Supporters of Palestine
+Guinea,GIN,438,2019-10,evenements,5,17.0,0.0,2,Government of Guinea ; Opponents of Conde
+Haiti,HTI,41,2019-10,evenements,3,3.0,0.0,2,Government of Haiti ; Opponents of Moise
+Iraq,IRQ,645,2019-10,evenements,49,256.0,1.0,9,Government of Iraq ; Opponents of Mahdi
+Israel,ISR,666,2019-10,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Guinea,GIN,438,2019-11,evenements,3,9.0,3.0,1,Government of Guinea ; Opponents of Conde
+Haiti,HTI,41,2019-11,evenements,1,5.0,0.0,1,Government of Haiti ; Opponents of Moise
+Iran,IRN,630,2019-11,evenements,72,697.0,13.0,20,Government of Iran ; Opponents of Khamenei
+Iraq,IRQ,645,2019-11,evenements,42,147.0,0.0,7,Government of Iraq ; Opponents of Mahdi
+Israel,ISR,666,2019-11,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Guinea,GIN,438,2019-12,evenements,1,1.0,0.0,1,Government of Guinea ; Opponents of Conde
+Iraq,IRQ,645,2019-12,evenements,2,5.0,0.0,1,Government of Iraq ; Opponents of Mahdi
+Guinea,GIN,438,2020-01,evenements,6,8.0,2.0,2,Government of Guinea ; Opponents of Conde
+Iraq,IRQ,645,2020-01,evenements,13,19.0,0.0,5,Government of Iraq ; Opponents of Mahdi
+Guinea,GIN,438,2020-02,evenements,2,2.0,0.0,1,Government of Guinea ; Opponents of Conde
+Iraq,IRQ,645,2020-02,evenements,1,2.0,0.0,1,Government of Iraq ; Opponents of Mahdi
+Israel,ISR,666,2020-02,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Guinea,GIN,438,2020-03,evenements,4,12.0,0.0,3,Government of Guinea ; Opponents of Conde
+Iraq,IRQ,645,2020-03,evenements,3,4.0,0.0,2,Government of Iraq ; Opponents of Mahdi
+Israel,ISR,666,2020-03,evenements,1,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Iraq,IRQ,645,2020-04,evenements,1,3.0,0.0,1,Government of Iraq ; Opponents of Mahdi
+Guinea,GIN,438,2020-07,evenements,2,2.0,0.0,1,Government of Guinea ; Opponents of Conde
+Israel,ISR,666,2020-08,evenements,1,1.0,1.0,1,Government of Israel ; Supporters of Palestine
+Egypt,EGY,651,2020-09,evenements,1,1.0,0.0,1,Government of Egypt ; Opponents of al-Sisi
+Guinea,GIN,438,2020-09,evenements,1,1.0,0.0,1,Government of Guinea ; Opponents of Conde
+Guinea,GIN,438,2020-10,evenements,8,20.0,0.0,3,Government of Guinea ; Opponents of Conde
+Haiti,HTI,41,2020-11,evenements,1,1.0,0.0,1,Government of Haiti ; Opponents of Moise
+Uganda,UGA,500,2020-11,evenements,4,54.0,0.0,2,Government of Uganda ; Opponents of Museveni
+Israel,ISR,666,2020-12,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Uganda,UGA,500,2020-12,evenements,1,1.0,0.0,1,Government of Uganda ; Opponents of Museveni
+Israel,ISR,666,2021-01,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Uganda,UGA,500,2021-01,evenements,1,4.0,0.0,1,Government of Uganda ; Opponents of Museveni
+Myanmar (Burma),MMR,775,2021-02,evenements,2,154.0,0.0,1,Government of Myanmar (Burma) ; Opponents of Min Aung Hlaing
+Israel,ISR,666,2021-03,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Myanmar (Burma),MMR,775,2021-03,evenements,21,77.0,10.0,5,Government of Myanmar (Burma) ; Opponents of Min Aung Hlaing
+Senegal,SEN,433,2021-03,evenements,5,14.0,2.0,3,Government of Senegal ; Opponents of Sall
+Chad,TCD,483,2021-04,evenements,4,14.0,0.0,2,Government of Chad ; Opponents of Mahamat Deby Itno
+Colombia,COL,100,2021-04,evenements,1,1.0,0.0,1,Government of Colombia ; Opponents of Duque
+Myanmar (Burma),MMR,775,2021-04,evenements,28,115.0,0.0,7,Government of Myanmar (Burma) ; Opponents of Min Aung Hlaing
+Colombia,COL,100,2021-05,evenements,14,54.0,0.0,3,Government of Colombia ; Opponents of Duque
+Israel,ISR,666,2021-05,evenements,12,14.0,0.0,1,Government of Israel ; Supporters of Palestine
+Myanmar (Burma),MMR,775,2021-05,evenements,4,3.0,0.0,2,Government of Myanmar (Burma) ; Opponents of Min Aung Hlaing
+Israel,ISR,666,2021-06,evenements,3,6.0,0.0,1,Government of Israel ; Supporters of Palestine
+Iran,IRN,630,2021-07,evenements,3,1.0,0.0,1,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2021-07,evenements,2,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2021-08,evenements,2,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2021-09,evenements,2,2.0,0.0,2,Government of Israel ; Supporters of Palestine
+Chad,TCD,483,2021-10,evenements,1,1.0,0.0,1,Government of Chad ; Opponents of Mahamat Deby Itno
+Sudan,SDN,625,2021-10,evenements,3,10.0,0.0,1,Government of Sudan ; Opponents of al-Burhan
+Israel,ISR,666,2021-11,evenements,1,1.0,1.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2021-11,evenements,1,12.0,0.0,1,Government of Sudan ; Opponents of al-Burhan
+Israel,ISR,666,2021-12,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2021-12,evenements,1,5.0,0.0,1,Government of Sudan ; Opponents of al-Burhan
+Israel,ISR,666,2022-01,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Kazakhstan,KAZ,705,2022-01,evenements,14,233.0,1.0,5,Government of Kazakhstan ; Opponents of Tokayev
+Sudan,SDN,625,2022-01,evenements,4,13.0,0.0,1,Government of Sudan ; Opponents of al-Burhan
+Israel,ISR,666,2022-02,evenements,3,3.0,0.0,1,Government of Israel ; Supporters of Palestine
+Indonesia,IDN,850,2022-03,evenements,1,2.0,0.0,1,Government of Indonesia ; Supporters of West Papua
+Israel,ISR,666,2022-03,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2022-03,evenements,2,2.0,0.0,1,Government of Sudan ; Opponents of al-Burhan
+Israel,ISR,666,2022-04,evenements,4,4.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2022-05,evenements,2,2.0,1.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2022-06,evenements,2,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2022-07,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2022-08,evenements,2,3.0,1.0,1,Government of Israel ; Supporters of Palestine
+Sierra Leone,SLE,451,2022-08,evenements,4,26.0,0.0,2,Government of Sierra Leone ; Opponents of Bio
+Iran,IRN,630,2022-09,evenements,21,86.0,1.0,14,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2022-09,evenements,5,5.0,3.0,1,Government of Israel ; Supporters of Palestine
+Chad,TCD,483,2022-10,evenements,5,128.0,0.0,4,Government of Chad ; Opponents of Mahamat Deby Itno
+Iran,IRN,630,2022-10,evenements,18,38.0,2.0,9,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2022-10,evenements,9,12.0,2.0,1,Government of Israel ; Supporters of Palestine
+Sudan,SDN,625,2022-10,evenements,2,2.0,0.0,1,Government of Sudan ; Opponents of al-Burhan
+Iran,IRN,630,2022-11,evenements,21,43.0,1.0,10,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2022-11,evenements,5,9.0,0.0,2,Government of Israel ; Supporters of Palestine
+Bangladesh,BGD,771,2022-12,evenements,2,1.0,0.0,2,Government of Bangladesh ; Opponents of Hasina
+Iran,IRN,630,2022-12,evenements,2,3.0,0.0,2,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2022-12,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Peru,PER,135,2022-12,evenements,12,26.0,0.0,5,Government of Peru ; Opponents of Boluarte
+Iran,IRN,630,2023-01,evenements,1,1.0,0.0,1,Government of Iran ; Opponents of Khamenei
+Israel,ISR,666,2023-01,evenements,5,5.0,0.0,1,Government of Israel ; Supporters of Palestine
+Peru,PER,135,2023-01,evenements,7,26.0,0.0,5,Government of Peru ; Opponents of Boluarte
+Sudan,SDN,625,2023-01,evenements,1,1.0,0.0,1,Government of Sudan ; Opponents of al-Burhan
+Peru,PER,135,2023-02,evenements,1,1.0,0.0,1,Government of Peru ; Opponents of Boluarte
+Israel,ISR,666,2023-03,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Senegal,SEN,433,2023-03,evenements,1,1.0,0.0,1,Government of Senegal ; Opponents of Sall
+Israel,ISR,666,2023-04,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Senegal,SEN,433,2023-05,evenements,4,4.0,0.0,3,Government of Senegal ; Opponents of Sall
+Israel,ISR,666,2023-06,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Senegal,SEN,433,2023-06,evenements,5,24.0,0.0,3,Government of Senegal ; Opponents of Sall
+Israel,ISR,666,2023-07,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2023-08,evenements,1,1.0,1.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2023-09,evenements,3,7.0,0.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2023-10,evenements,26,26.0,4.0,2,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2023-11,evenements,9,9.0,3.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2023-12,evenements,4,5.0,2.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2024-02,evenements,4,5.0,2.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2024-03,evenements,1,2.0,2.0,1,Government of Israel ; Supporters of Palestine
+Israel,ISR,666,2024-05,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Kenya,KEN,501,2024-06,evenements,7,59.0,0.0,3,Government of Kenya ; Opponents of Ruto
+Bangladesh,BGD,771,2024-07,evenements,25,383.0,14.0,4,Government of Bangladesh ; Opponents of Hasina
+Israel,ISR,666,2024-07,evenements,2,2.0,0.0,1,Government of Israel ; Supporters of Palestine
+Kenya,KEN,501,2024-07,evenements,6,8.0,2.0,5,Government of Kenya ; Opponents of Ruto
+Bangladesh,BGD,771,2024-08,evenements,22,335.0,1.0,6,Government of Bangladesh ; Opponents of Hasina
+Israel,ISR,666,2024-09,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Mozambique,MOZ,541,2024-10,evenements,2,3.0,0.0,2,Government of Mozambique ; Opponents of Chapo
+Mozambique,MOZ,541,2024-11,evenements,10,15.0,2.0,6,Government of Mozambique ; Opponents of Chapo
+Mozambique,MOZ,541,2024-12,evenements,10,43.0,0.0,4,Government of Mozambique ; Opponents of Chapo
+Israel,ISR,666,2025-01,evenements,1,1.0,0.0,1,Government of Israel ; Supporters of Palestine
+Mozambique,MOZ,541,2025-01,evenements,4,5.0,0.0,2,Government of Mozambique ; Opponents of Chapo
+Mozambique,MOZ,541,2025-02,evenements,2,3.0,1.0,1,Government of Mozambique ; Opponents of Chapo
+Nepal,NPL,790,2025-09,evenements,5,60.0,0.0,2,Government of Nepal ; Opponents of KP Sharma Oli (Gen Z)
+Cameroon,CMR,471,2025-10,evenements,7,45.0,0.0,2,Government of Cameroon ; Opponents of Biya
+Kenya,KEN,501,2025-10,evenements,1,2.0,0.0,1,Government of Tanzania ; Opponents of Hassan
+Tanzania,TZA,510,2025-10,evenements,10,367.0,0.0,5,Government of Tanzania ; Opponents of Hassan
+Iran,IRN,630,2025-12,evenements,2,2.0,1.0,2,Government of Iran ; Opponents of Khamenei

@@ -2,3 +2,9 @@ carte,role,url,lu_le,octets,sha256,lignes
 ucdp,historique,https://ucdp.uu.se/downloads/ged/ged261-csv.zip,2026-11-23T06:58Z,39122522,8c941d84954e555ee2e54f40fa04d9203bf1e2f962203d0a9930966c4947c667,417968
 ucdp,cumul_annee,https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv,2026-11-23T06:58Z,13065779,134da9b3df08b65266802c4b662e572f396c70c92ab62297319be657540bcede,16633
 ucdp,mois,https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_10.csv,2026-11-23T06:58Z,1963135,4f985429c1c16cc06e9246f61a3c3e2950b6a5549c59d93813cd6b8723fbc7e0,2418
+ucdp-onset,interne,https://ucdp.uu.se/downloads/onset/ucdp-intrastate-country-onset-251.csv,2026-11-23T07:29Z,528718,e2b59e65aaca88403991465b78fb407d7eddcefadeb18c7f1397bfe2ea83fe6a,12553
+ucdp-onset,entre_etats,https://ucdp.uu.se/downloads/onset/ucdp-interstate-country-onset-251.csv,2026-11-23T07:29Z,519078,42fa3fa77645756909c96d73beeb8bd3c8d1bfadc8912747e9d625a9b4b06bc3,12553
+ucdp-vpp,evenements,https://ucdp.uu.se/downloads/vpp/GEDEvent_v26_1_4_1101_2512.csv,2026-11-23T07:29Z,1210790,1f45419f5229a01e51c76e38f0662d16728e794bb84a6376c7af6895d04cc2b2,1429
+ucdp,historique,https://ucdp.uu.se/downloads/ged/ged261-csv.zip,2026-11-23T07:29Z,39122522,8c941d84954e555ee2e54f40fa04d9203bf1e2f962203d0a9930966c4947c667,417968
+ucdp,cumul_annee,https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv,2026-11-23T07:29Z,13065779,134da9b3df08b65266802c4b662e572f396c70c92ab62297319be657540bcede,16633
+ucdp,mois,https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_10.csv,2026-11-23T07:29Z,1963135,4f985429c1c16cc06e9246f61a3c3e2950b6a5549c59d93813cd6b8723fbc7e0,2418
