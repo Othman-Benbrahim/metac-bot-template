@@ -1,0 +1,319 @@
+# 0.10.476 (décision de l'auteur, 2026-11-23, 18 h 16) : une fiche Inde à part entière, reliée à l'Asie du Sud par des
+# ponts. « L'Inde, c'est l'équivalent du continent africain, et une puissance nucléaire » ; « le climat est un facteur
+# structurel » : l'indicateur météorologique (mousson, chaleur) en est une pièce centrale. Sources : seulement celles qui
+# alimentent la fiche, pas de nouveaux flux (consigne de l'auteur). Chiffres sourcés et datés.
+theme: inde
+nom: Inde
+declaration:
+  but: comprendre l'Inde de l'intérieur et dans ses rapports de force — un pays de la taille démographique d'un continent, puissance nucléaire, dont l'économie, la politique et la stabilité intérieure restent suspendues à un facteur structurel, la mousson
+  limites: dedans la population et la jeunesse, la politique intérieure (Union et États), les conflits intérieurs (Manipur, maoïsme), la défense et la dissuasion, la frontière avec la Chine, l'économie et le commerce extérieur, l'énergie, la mousson, la chaleur et l'agriculture ; dehors la relation avec le Pakistan et l'Afghanistan (asie-du-sud), la dissuasion comme régime mondial (non-proliferation), sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques (IMD, MoSPI, SIPRI, UCDP, Reuters, presse indienne) ; la presse anglophone indienne ne reflète pas toutes les langues du pays
+  date: '2026-11-23'
+  espace: l'Union indienne (28 États, 8 territoires), ses frontières et l'océan Indien
+  temps: de la saison (mousson de juin à septembre) au cycle électoral (cinq ans, élections d'États échelonnées)
+  vitesse: le jour (chaleur, violences), la saison (mousson, récoltes), l'année (budgets, élections)
+  taille: un district, un État, l'Union
+compartiments:
+- id: population_jeunesse
+  nom: Population et jeunesse
+  organisation: societe
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'environ 1,47 milliard d''habitants fin 2025, premier pays du monde (ONU, World Population Prospects, repris par DataReportal) ; l''Afrique entière : environ 1,56 milliard'
+  - '+202 millions d''habitants prévus de 2026 à 2050, la plus forte hausse au monde (Population Reference Bureau, octobre 2026)'
+  - 'chômage des 15-29 ans en ville : 19 % en septembre 2026 (jeunes femmes 26,6 %, jeunes hommes 16,4 %) ; chômage des 15 ans et plus : 5,0 % (MoSPI, enquête PLFS, 15 octobre 2026)'
+  niveau:
+    espace: pays
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: GDELT, part des manifestations dans les événements (Inde, code FIPS IN)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: manifestations:IN
+- id: politique_interieure
+  nom: Politique intérieure (Union et États)
+  organisation: statut
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'troisième mandat de Narendra Modi depuis juin 2024 ; le BJP n''a plus la majorité seul et gouverne en coalition (NDA)'
+  - 'élections d''États de mai 2026 (avances au dépouillement du 4 mai, India TV) : BJP en tête au Bengale-Occidental (208 sièges sur 294 ; Mamata Banerjee battue dans sa circonscription), NDA en Assam (102 sur 126), TVK de l''acteur Vijay au Tamil Nadu (108), UDF (Congrès) au Kerala, NDA à Pondichéry (18 sur 30)'
+  niveau:
+    espace: Union et États
+    temps: cycles électoraux
+    vitesse: mois à années
+    taille: macro
+- id: manipur
+  nom: Manipur (violences entre Meitei et Kuki-Zo)
+  organisation: geopolitique
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'violences depuis mai 2023, des centaines de morts, environ 60 000 déplacés (Khaleej Times, 4 février 2026)'
+  - 'régime présidentiel du 13 février 2025 au 4 février 2026, puis gouvernement BJP de Y. Khemchand Singh'
+  - 'l''UCDP relève encore en octobre 2026 des violences impliquant des groupes kuki et naga'
+  niveau:
+    espace: un État du Nord-Est
+    temps: depuis 2023
+    vitesse: jours à mois
+    taille: méso
+  traces:
+  - source: UCDP, morts par mois (Inde)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp:India
+- id: maoisme
+  nom: Insurrection maoïste (naxalisme)
+  organisation: geopolitique
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'le ministre de l''Intérieur Amit Shah déclare l''Inde « libérée du naxalisme » le 30 mars 2026, veille de l''échéance qu''il s''était fixée, tout en annonçant la fin des opérations « plus tard » (Malay Mail, 31 mars 2026)'
+  - 'en 2025 : 364 insurgés tués, 1 022 arrêtés, 2 337 redditions ; attaques passées de plus de 1 900 par an à environ 200 (chiffres parlementaires, Malay Mail)'
+  - 'foyer principal : le Bastar (Chhattisgarh), région minière'
+  niveau:
+    espace: centre et est du pays (forêts, régions minières)
+    temps: six décennies
+    vitesse: semaines à années
+    taille: méso
+  traces:
+  - source: UCDP, morts par mois (Inde)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp:India
+- id: nucleaire_defense
+  nom: Défense et dissuasion nucléaire
+  organisation: geopolitique
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'environ 190 ogives nucléaires en janvier 2026, dont 12 déployées sur des missiles (SIPRI, Yearbook 2026)'
+  - 'cinquième budget militaire du monde en 2025 : 92,1 milliards de dollars, +8,9 % (SIPRI)'
+  niveau:
+    espace: pays et océan Indien
+    temps: années à décennies
+    vitesse: années
+    taille: macro
+- id: chine_frontiere
+  nom: Frontière avec la Chine (ligne de contrôle effectif)
+  organisation: geopolitique
+  geopolitique:
+    pays: [IND, CHN]
+  elements:
+  - 'environ 3 500 km de frontière, encore largement disputée ; accord d''octobre 2024 qui a mis fin à l''affrontement au Ladakh oriental'
+  - 'baisse importante des déploiements chinois en 2025 selon le rapport annuel du ministère indien de la Défense ; visite de Xi Jinping en Inde au sommet des BRICS (septembre 2026), la première en sept ans (Defense News, 17 septembre 2026)'
+  - 'routes, tunnels et infrastructures construits des deux côtés'
+  niveau:
+    espace: Himalaya
+    temps: années
+    vitesse: semaines à années
+    taille: macro
+- id: economie_commerce
+  nom: Économie et commerce extérieur
+  organisation: economie
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'croissance de 7,7 % sur l''exercice 2025-26 (MoSPI)'
+  - 'droits de douane américains : 50 % sur la plupart des biens indiens en août 2025, ramenés à 18 % par un accord-cadre en février 2026, puis 10 % de base après l''invalidation par la Cour suprême des droits pris en vertu des pouvoirs d''urgence ; négociations « au plateau » en octobre 2026 (Reuters, 7 octobre 2026)'
+  niveau:
+    espace: pays et partenaires
+    temps: trimestres à années
+    vitesse: semaines (droits de douane) à trimestres
+    taille: macro
+- id: energie_petrole_russe
+  nom: Énergie et pétrole russe
+  organisation: economie
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'accord de février 2026 : l''Inde aurait accepté de cesser ses achats de pétrole russe en échange de la baisse des droits américains (Al Jazeera, 2 février 2026)'
+  - 'octobre 2026 : achats « pas sensiblement réduits » ; une loi américaine permet jusqu''à 100 % de droits sur les biens indiens pour ces achats (Reuters, 7 octobre 2026)'
+  - 'un cas d''écart entre l''annoncé et l''exécuté (voir la piste du taux d''exécution des annonces)'
+  niveau:
+    espace: pays et routes du pétrole
+    temps: mois
+    vitesse: semaines
+    taille: macro
+- id: mousson
+  nom: Mousson du sud-ouest (facteur structurel)
+  organisation: climat
+  geopolitique:
+    pays: [IND]
+  elements:
+  - 'mousson 2026 (juin-septembre) : 87 % de la normale, 759,4 mm contre 868,6 mm ; juin 65 %, juillet 101 %, août 84 %, septembre 92 % ; Sud de la péninsule 76 %, Est et Nord-Est 74 % ; 17 sous-divisions sur 36 déficitaires, 42 % du territoire (IMD, 30 septembre 2026)'
+  - 'installation sur le Kerala le 4 juin 2026, trois jours après la date normale (IMD)'
+  - 'El Niño faible en juin, fort en fin de saison ; dipôle de l''océan Indien neutre (IMD)'
+  niveau:
+    espace: sous-continent
+    temps: la saison, d'année en année
+    vitesse: semaines
+    taille: macro
+  traces:
+  - source: anomalie de la température de surface de la mer, région Niño 3.4 (NOAA CPC)
+    statut: collecte
+    fichier: collecte_series_publiques.py
+    adaptateur: pub:nino34_anomalie
+  - source: pluie des 30 derniers jours rapportée à la normale, Bombay (GHCN-Daily)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: pluie:mumbai
+  - source: pluie des 30 derniers jours rapportée à la normale, Nagpur (GHCN-Daily)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: pluie:nagpur
+  - source: pluie des 30 derniers jours rapportée à la normale, Calcutta (GHCN-Daily)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: pluie:kolkata
+  - source: pluie des 30 derniers jours rapportée à la normale, Chennai (GHCN-Daily)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: pluie:chennai
+- id: chaleur
+  nom: Chaleur et vagues de chaleur
+  organisation: meteo
+  geopolitique:
+    pays: [IND]
+  elements:
+  - chaleur avant la mousson (avril à juin), vagues de chaleur, nuits chaudes
+  - demande d'électricité et pertes de travail en extérieur
+  niveau:
+    espace: plaines du Nord et du centre
+    temps: printemps et début d'été
+    vitesse: jours
+    taille: méso à macro
+  traces:
+  - source: anomalie de température, Delhi (GHCN-Daily)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:delhi
+  - source: anomalie de température, Nagpur (GHCN-Daily)
+    statut: collecte
+    fichier: collecte_meteo.py
+    adaptateur: meteo:nagpur
+- id: agriculture
+  nom: Agriculture et monde rural
+  organisation: vegetal
+  geopolitique:
+    pays: [IND]
+  elements:
+  - récoltes d'été (kharif) dépendantes de la mousson ; récoltes d'hiver (rabi) dépendantes des réserves d'eau
+  - revenus ruraux, prix des denrées, restrictions d'exportation (riz, blé)
+  - agriculteurs, acteurs porteurs de mobilisations
+  niveau:
+    espace: villages et États agricoles
+    temps: saisons
+    vitesse: semaines à saisons
+    taille: macro
+relations:
+- de: mousson
+  vers: agriculture
+  effet: +
+  delai: semaines à saisons
+  force: forte
+  intensite:
+    mesure: pluie de la saison rapportée à la normale
+    regle: seuil
+  coupure: irrigation et réserves des barrages
+  statut: a_verifier
+  texte: une mousson déficitaire réduit les récoltes d'été ; l'irrigation n'amortit qu'une partie
+- de: chaleur
+  vers: agriculture
+  effet: '-'
+  delai: jours à semaines
+  force: moyenne
+  statut: a_verifier
+  texte: une vague de chaleur au mauvais moment abîme les récoltes (blé en mars-avril)
+- de: agriculture
+  vers: politique_interieure
+  effet: +
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: la détresse rurale pèse sur les votes et les mobilisations ; les gouvernements y répondent par des aides et des restrictions d'exportation
+- de: economie_commerce
+  vers: population_jeunesse
+  effet: +
+  delai: trimestres à années
+  force: moyenne
+  coupure: croissance riche en capital, pauvre en emplois
+  statut: a_verifier
+  texte: la croissance ne crée pas assez d'emplois pour les jeunes diplômés des villes
+- de: energie_petrole_russe
+  vers: economie_commerce
+  effet: '-'
+  delai: semaines à mois
+  force: moyenne
+  statut: a_verifier
+  texte: les achats de pétrole russe exposent l'Inde à des droits de douane américains punitifs
+- de: chine_frontiere
+  vers: nucleaire_defense
+  effet: +
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la frontière disputée avec la Chine entretient la dépense militaire et la dissuasion
+- de: manipur
+  vers: politique_interieure
+  effet: +
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: des violences prolongées dans un État conduisent l'Union à reprendre la main (régime présidentiel de février 2025 à février 2026)
+- de: politique_interieure
+  vers: maoisme
+  effet: '-'
+  delai: années
+  force: forte
+  statut: a_verifier
+  texte: une échéance politique (31 mars 2026) et des opérations soutenues ont réduit l'insurrection ; le retour reste possible là où les causes (terres, mines, populations adivasi) demeurent
+cycles:
+- id: cycle_mousson
+  nom: Cycle annuel de la mousson
+  sorte: force
+  mecanisme: 'le réchauffement du continent au printemps attire l''air humide de l''océan Indien de juin à septembre ; la quantité et la répartition des pluies varient d''une année à l''autre, sous l''influence d''El Niño et du dipôle de l''océan Indien'
+  periode: annuelle (installation début juin sur le Kerala, retrait en septembre-octobre)
+  phase_vulnerable: juin et juillet (semis du kharif) ; une installation tardive ou un mois sec décale les semis
+  compartiments: [mousson, chaleur, agriculture]
+  sources: ['IMD, Salient Features of the Southwest Monsoon 2026 (30 septembre 2026)']
+  statut: identifie
+tensions:
+- id: autonomie_pression
+  nom: Autonomie stratégique contre pression commerciale américaine
+  forme: oppositionnelle
+  entre: [energie_petrole_russe, economie_commerce]
+  mesure:
+    indicateur: volumes de pétrole russe importés et niveau des droits américains sur les biens indiens
+  statut: a_verifier
+  texte: 'l''Inde invoque les besoins énergétiques de 1,4 milliard d''habitants ; les États-Unis lient les droits de douane aux achats de pétrole russe (Reuters, 7 octobre 2026)'
+ponts:
+- depuis: nucleaire_defense
+  vers: asie-du-sud:inde_pakistan
+  nature: deux puissances nucléaires en conflit ouvert en mai 2025
+- depuis: economie_commerce
+  vers: asie-du-sud:inde_puissance
+  nature: l'Inde vue depuis la région
+  type: meme
+- depuis: chine_frontiere
+  vers: frontieres:frontieres_contestees
+  nature: la ligne de contrôle effectif, frontière disputée
+  type: meme
+- depuis: energie_petrole_russe
+  vers: russie-ukraine:sanctions
+  nature: le pétrole russe et les sanctions secondaires
+- depuis: economie_commerce
+  vers: politique-americaine:commerce
+  nature: les droits de douane américains sur les biens indiens
+- depuis: mousson
+  vers: climat-extremes:oscillations
+  nature: El Niño et le dipôle de l'océan Indien modulent la mousson
+- depuis: agriculture
+  vers: alimentation-mondiale:cultures
+  nature: riz et blé indiens, restrictions d'exportation
+- depuis: population_jeunesse
+  vers: humain:jeunesse
+  nature: la jeunesse comme acteur porteur

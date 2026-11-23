@@ -168,7 +168,7 @@ def mesurer_modulation(m: list[float], x: list[float], y: list[float], retard: i
 # séries de pays différents est déclarée « incompatible » et la carte ne l'utilise pas. Ailleurs (géopolitique,
 # finance), relier deux pays est le propos même : pas de contrôle. Lieu inconnu ou mondial : pas de contrôle.
 VILLES = {"delhi": "IN", "houston": "US", "berlin": "DE", "shanghai": "CN", "kyiv": "UA", "moscou": "RU",
-          "teheran": "IR", "bandar_abbas": "IR"}
+          "teheran": "IR", "bandar_abbas": "IR", "nagpur": "IN", "mumbai": "IN", "kolkata": "IN", "chennai": "IN"}
 ISO3 = {"RUS": "RU", "UKR": "UA", "ISR": "IL", "IRN": "IR", "USA": "US", "LBN": "LB", "CHN": "CN", "TWN": "TW"}
 NOMS = {"Sudan": "SD", "Ukraine": "UA", "Palestine": "PS", "Yemen": "YE", "Israel": "IL", "Lebanon": "LB", "Syria": "SY"}
 FRED_MONDE = {"PFOODINDEXM", "DCOILBRENTEU", "ECBDFR"}
@@ -181,7 +181,7 @@ def lieux(adaptateur: str) -> set[str] | None:
     nom, *par = adaptateur.split(":")
     if nom == "fred":
         return None if par and par[0] in FRED_MONDE else {"US"}
-    if nom in ("meteo", "climat"):
+    if nom in ("meteo", "climat", "pluie"):
         return {VILLES[par[0]]} if par and par[0] in VILLES else None
     if nom == "federal_register" or nom == "congres" or nom == "tribunaux":
         return {"US"}

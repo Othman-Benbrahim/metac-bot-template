@@ -130,6 +130,40 @@ def meteo(reg: Path, point: str) -> list[tuple[str, float]]:
     return out
 
 
+def pluie(reg: Path, point: str, fenetre: str = "30") -> list[tuple[str, float]]:
+    """0.10.476 : pluie des N derniers jours (30 par défaut) rapportée à la normale, en pour cent — la normale est la
+    moyenne des cumuls de la même fenêtre (même jour de fin) des années précédentes, au moins 3 ans. 100 = normale ;
+    87 = la mousson 2026 de l'IMD. Jours manquants : la fenêtre doit en avoir au moins 80 %."""
+    from datetime import date, timedelta
+    n = int(fenetre)
+    obs = {r["jour"]: float(r["pluie_mm"]) for r in _csv(reg, "meteo-pluie.csv") if r["point"] == point}
+    if not obs:
+        return []
+
+    def cumul(fin: date) -> float | None:
+        jours = [(fin - timedelta(days=k)).isoformat() for k in range(n)]
+        v = [obs[j] for j in jours if j in obs]
+        return sum(v) * n / len(v) if len(v) >= 0.8 * n else None
+
+    out = []
+    for j in sorted(obs):
+        d = date.fromisoformat(j)
+        x = cumul(d)
+        if x is None:
+            continue
+        ref = []
+        for a in range(1, 11):
+            try:
+                y = cumul(d.replace(year=d.year - a))
+            except ValueError:                  # 29 février
+                y = cumul(d.replace(year=d.year - a, day=28))
+            if y is not None:
+                ref.append(y)
+        if len(ref) >= 3 and sum(ref) > 0:
+            out.append((j, round(100 * x / (sum(ref) / len(ref)), 1)))
+    return out
+
+
 def climat(reg: Path, point: str) -> list[tuple[str, float]]:
     """Le CLIMAT et non la météo (rappel de l'auteur) : moyenne glissante sur 365 jours de l'anomalie de température
     d'un point — la dérive lente, débarrassée des jours et des saisons."""
@@ -206,7 +240,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
+               "fred": fred, "meteo": meteo, "pluie": pluie, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}
 

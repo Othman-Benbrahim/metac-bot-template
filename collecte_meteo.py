@@ -16,6 +16,12 @@ sert de référence saisonnière : l'adaptateur meteo:<point> rend l'ANOMALIE du
 l'année des années précédentes (c'est l'intensité qui compte, pas la température brute).
 
 Registre : registre/meteo-points.csv (point, jour, t_moy), réécrit à chaque passage.
+
+0.10.476 (décision de l'auteur, 2026-11-23, 18 h 16 : fiche Inde, « le climat est un facteur structurel ») : la PLUIE
+(élément PRCP de GHCN-Daily, dixièmes de mm) pour les points de POINTS_PLUIE, avec sa propre station (la plus proche
+qui relève la pluie cette année, souvent pas la même que pour la température). Registre : registre/meteo-pluie.csv
+(point, jour, pluie_mm). Adaptateur pluie:<point> : pluie des 30 derniers jours rapportée à la normale des mêmes
+fenêtres des années précédentes, en pour cent (la mousson se lit en écart à la normale, comme l'IMD).
 """
 from __future__ import annotations
 
@@ -50,7 +56,13 @@ POINTS = {
     "delhi": (28.61, 77.21, "énergie mondiale : demande (Inde, chaleur et électricité)"),
     "kyiv": (50.45, 30.52, "russie-ukraine : hiver et saisons (boue, gel, front)"),
     "moscou": (55.76, 37.62, "russie-ukraine : hiver et saisons ; demande de gaz"),
+    "nagpur": (21.15, 79.09, "inde : chaleur et mousson (centre du pays)"),
+    "mumbai": (19.08, 72.88, "inde : mousson (côte ouest)"),
+    "kolkata": (22.57, 88.36, "inde : mousson (est)"),
+    "chennai": (13.08, 80.27, "inde : mousson et pluies du nord-est (sud-est)"),
 }
+# 0.10.476 : points où l'on relève aussi la pluie (fiche Inde, mousson)
+POINTS_PLUIE = ("delhi", "nagpur", "mumbai", "kolkata", "chennai")
 
 
 def distance_km(a: tuple[float, float], b: tuple[float, float]) -> float:
@@ -71,13 +83,16 @@ def lire_stations(texte: str) -> dict[str, tuple[float, float, str]]:
     return out
 
 
-def lire_inventaire(texte: str, an_min: int) -> set[str]:
-    """ghcnd-inventory.txt : stations qui ont TAVG, ou TMAX et TMIN, jusqu'à an_min au moins."""
+def lire_inventaire(texte: str, an_min: int, element: str = "temperature") -> set[str]:
+    """ghcnd-inventory.txt : stations qui ont TAVG, ou TMAX et TMIN (element « temperature »), ou PRCP (« pluie »),
+    jusqu'à an_min au moins."""
     el: dict[str, set[str]] = {}
     for l in texte.splitlines():
         p = l.split()
-        if len(p) >= 6 and p[3] in ("TAVG", "TMAX", "TMIN") and p[5].isdigit() and int(p[5]) >= an_min:
+        if len(p) >= 6 and p[3] in ("TAVG", "TMAX", "TMIN", "PRCP") and p[5].isdigit() and int(p[5]) >= an_min:
             el.setdefault(p[0], set()).add(p[3])
+    if element == "pluie":
+        return {k for k, v in el.items() if "PRCP" in v}
     return {k for k, v in el.items() if "TAVG" in v or {"TMAX", "TMIN"} <= v}
 
 
@@ -85,7 +100,8 @@ def lire_inventaire(texte: str, an_min: int) -> set[str]:
 # Téhéran une station du Turkménistan (281 km, autre climat) : mieux vaut rien qu'un faux témoin. Bandar Abbas admet
 # Oman et les Émirats, sur le même détroit.
 PAYS = {"bandar_abbas": ("IR", "MU", "TC"), "teheran": ("IR",), "houston": ("US",), "berlin": ("GM",),
-        "shanghai": ("CH",), "delhi": ("IN",), "kyiv": ("UP",), "moscou": ("RS",)}
+        "shanghai": ("CH",), "delhi": ("IN",), "kyiv": ("UP",), "moscou": ("RS",), "nagpur": ("IN",),
+        "mumbai": ("IN",), "kolkata": ("IN",), "chennai": ("IN",)}
 
 
 def candidates(stations: dict, valides: set[str], lat: float, lon: float,
@@ -127,6 +143,41 @@ def lire_station(texte: str, debut: str) -> list[tuple[str, float]]:
     return out
 
 
+def lire_pluie(texte: str, debut: str) -> list[tuple[str, float]]:
+    """PRCP en dixièmes de mm ; valeurs douteuses (qualité non vide) écartées."""
+    out = []
+    for r in csv.reader(texte.splitlines()):
+        if len(r) < 6 or r[2] != "PRCP" or r[5].strip():
+            continue
+        try:
+            j = f"{r[1][:4]}-{r[1][4:6]}-{r[1][6:8]}"
+            v = int(r[3]) / 10
+        except (ValueError, IndexError):
+            continue
+        if j >= debut and v >= 0:
+            out.append((j, round(v, 1)))
+    return sorted(out)
+
+
+def meilleure_station(c, cands: list, lecteur, nom: str) -> tuple:
+    """La plus proche qui soit fraîche ; sinon la plus fraîche."""
+    limite = (date.today() - timedelta(days=FRAICHEUR_JOURS)).isoformat()
+    meilleur = (None, 0.0, [])
+    for st, km in cands:
+        try:
+            v = lecteur(c.get(URL.format(station=st)).raise_for_status().text, DEBUT)
+        except Exception as e:
+            v = []
+            print(f"::warning::GHCN-Daily {nom} ({st}) : {type(e).__name__}")
+        if v and (not meilleur[2] or v[-1][0] > meilleur[2][-1][0]):
+            meilleur = (st, km, v)
+        if v and v[-1][0] >= limite:
+            meilleur = (st, km, v)
+            break
+        time.sleep(PAUSE)
+    return meilleur
+
+
 def principal() -> int:
     lignes = []
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=180, follow_redirects=True) as c:
@@ -135,7 +186,9 @@ def principal() -> int:
             return 0
         try:
             stations = lire_stations(c.get(BASE + "/ghcnd-stations.txt").raise_for_status().text)
-            valides = lire_inventaire(c.get(BASE + "/ghcnd-inventory.txt").raise_for_status().text, date.today().year)
+            inventaire = c.get(BASE + "/ghcnd-inventory.txt").raise_for_status().text
+            valides = lire_inventaire(inventaire, date.today().year)
+            valides_pluie = lire_inventaire(inventaire, date.today().year, "pluie")
         except Exception as e:
             print(f"::warning::GHCN-Daily : liste des stations illisible ({type(e).__name__}) ; rien collecté.")
             return 0
@@ -166,6 +219,26 @@ def principal() -> int:
             print(f"{nom} : station {st} {stations[st][2]} à {km} km, {len(vals)} jours"
                   + (f", dernier {vals[-1]}" if vals else ""), flush=True)
             time.sleep(PAUSE)
+        pluies = []
+        for nom in POINTS_PLUIE:
+            lat, lon, _ = POINTS[nom]
+            cands = candidates(stations, valides_pluie, lat, lon, PAYS.get(nom))
+            if not cands:
+                print(f"::warning::{nom} (pluie) : aucune station à moins de {RAYON_MAX_KM} km")
+                continue
+            st, km, vals = meilleure_station(c, cands, lire_pluie, nom)
+            if not st:
+                continue
+            pluies += [(nom, j, x) for j, x in vals]
+            print(f"{nom} (pluie) : station {st} {stations[st][2]} à {km} km, {len(vals)} jours"
+                  + (f", dernier {vals[-1]}" if vals else ""), flush=True)
+            time.sleep(PAUSE)
+    if pluies:
+        REG.mkdir(parents=True, exist_ok=True)
+        with (REG / "meteo-pluie.csv").open("w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["point", "jour", "pluie_mm"])
+            w.writerows(pluies)
     if not lignes:
         return 0
     SORTIE.parent.mkdir(parents=True, exist_ok=True)
