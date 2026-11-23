@@ -1,7 +1,8 @@
-name: Sonde CrisisWatch (lecture seule, rien d'enregistré)
+name: "Sonde CrisisWatch (structure de la base ; hors cadre)"
 
-# 0.10.230 : lit robots.txt, la page /crisiswatch et le plan du site de Crisis Group (pause de 3 s, une quinzaine de
-# requêtes au plus, jamais la pagination interdite) pour préparer un lecteur exact. N'écrit rien dans le dépôt.
+# 0.10.469 (décision de l'auteur, 2026-11-23, 7 h 46) : avant d'écrire le lecteur de CrisisWatch, imprimer dans le
+# journal la structure de la base (classes, libellés de tendance, liens, filtres), sans conserver de texte. Rien n'est
+# écrit dans le dépôt. Lancée à la main.
 on:
   workflow_dispatch:
 
@@ -11,6 +12,7 @@ permissions:
 jobs:
   sonde:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,5 +23,4 @@ jobs:
           version: "0.13.1"
       - run: uv sync --locked
       - name: Sonde
-        timeout-minutes: 10
-        run: uv run python sonde_crisiswatch.py
+        run: uv run python -u sonde_crisiswatch.py
