@@ -47,3 +47,18 @@ def test_lire_flux_rss_et_atom():
     atom = b"""<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>A</title><link href="https://b.org/a"/>
       <updated>2026-11-22T08:00:00Z</updated></entry></feed>"""
     assert v.lire_flux(atom) == [{"titre": "A", "lien": "https://b.org/a", "date": "2026-11-22T08:00Z"}]
+
+
+def test_candidats_principal_puis_secours():
+    import veille
+    f = {"titre": "A", "url": "https://a/x", "secours": ["https://a/y", {"url": "https://b/z", "titre": "B"}]}
+    assert veille.candidats(f) == [{"url": "https://a/x", "titre": "A"}, {"url": "https://a/y", "titre": "A"},
+                                   {"url": "https://b/z", "titre": "B"}]
+    assert veille.candidats({"titre": "A", "url": "u"}) == [{"url": "u", "titre": "A"}]
+
+
+def test_catalogue_secours_bien_formes():
+    import veille
+    for fid, f in veille.catalogue()["flux"].items():
+        for c in veille.candidats(f):
+            assert c["url"].startswith("https://"), fid

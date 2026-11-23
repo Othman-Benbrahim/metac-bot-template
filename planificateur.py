@@ -56,8 +56,8 @@ COLLECTES = (
                                               # pièce d'identité exigée, refusée par l'auteur)
     ("collecte_tribunaux.yaml", None),
     ("collecte_tfr.yaml", None),              # 0.10.304 : interdictions de survol FAA (liste JSON trouvée par la sonde)
-    ("mecanique.yaml", "lundi"),
-    ("collecte_veille.yaml", None),           # 0.10.480 : veille de la carte (flux RSS des fiches et compartiments)              # 0.10.464 : mécanique de bascule en ombre, hebdomadaire
+    ("mecanique.yaml", "lundi"),              # 0.10.464 : mécanique de bascule en ombre, hebdomadaire
+    ("collecte_veille.yaml", None),           # 0.10.480 : veille de la carte (flux RSS des fiches et compartiments)
     ("lecture_cartes.yaml", "premier_lundi"), # 0.10.470 : cartes publiées (standard de lecture), mensuel
     ("collecte_fred.yaml", None), ("collecte_meteo.yaml", None), ("collecte_eia.yaml", None), ("collecte_ouvertes.yaml", None), ("collecte_webamon.yaml", None), ("collecte_openmeasures.yaml", None), ("collecte_seismes.yaml", None), ("collecte_gfs.yaml", None), ("collecte_series_publiques.yaml", None), ("collecte_cadrage.yaml", None), ("collecte_matieres.yaml", None),   # 0.10.318 : traces du bas de l'échelle (écosystèmes)
 )

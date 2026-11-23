@@ -1,4 +1,4 @@
-# Catalogue de veille de la carte (bot 0.10.480). Décision de l'auteur, 2026-11-23, 19 h 08 - 20 h 10 :
+# Catalogue de veille de la carte (bot 0.10.480 ; secours 0.10.481). Décision de l'auteur, 2026-11-23, 19 h 08 - 20 h 10 :
 # - au niveau de chaque fiche, une partie « Ressources » : des liens dont le titre indique la source, puis, en dessous,
 #   une veille de flux RSS ;
 # - des flux RSS dans tous les compartiments qu'on peut remplir de façon cohérente, après recherche par thème ;
@@ -7,26 +7,30 @@
 # respecte robots.txt, ne conserve que titre, lien et date de chaque article, et signale les flux qui ne répondent pas :
 # un flux muet n'apparaît pas sur la carte. Équilibre : pour un conflit, des émetteurs des deux côtés, et les médias
 # d'État signalés comme tels.
+# 0.10.481 (premier passage, 23 nov., 73 flux lisibles sur 100) : chaque flux peut porter des adresses de secours,
+# essayées dans l'ordre s'il est muet. Un refus du site (robots.txt, 403) n'est jamais contourné : le secours est alors une
+# autre source du même rôle (Times of Israel → Jerusalem Post, Bulletin → Arms Control Association, MINING.COM → Mining
+# Technology). Pour arXiv, le secours est l'adresse des flux que le site indique lui-même (rss.arxiv.org), robots.txt vérifié.
 
 flux:
   # --- ONU : régions et thèmes
-  un_monde: {titre: "ONU Info (UN News), toutes les nouvelles", url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml"}
-  un_afrique: {titre: "ONU Info, Afrique", url: "https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml"}
-  un_ameriques: {titre: "ONU Info, Amériques", url: "https://news.un.org/feed/subscribe/en/news/region/americas/feed/rss.xml"}
-  un_asie: {titre: "ONU Info, Asie-Pacifique", url: "https://news.un.org/feed/subscribe/en/news/region/asia-pacific/feed/rss.xml"}
-  un_moyen_orient: {titre: "ONU Info, Moyen-Orient", url: "https://news.un.org/feed/subscribe/en/news/region/middle-east/feed/rss.xml"}
-  un_europe: {titre: "ONU Info, Europe", url: "https://news.un.org/feed/subscribe/en/news/region/europe/feed/rss.xml"}
-  un_climat: {titre: "ONU Info, climat et environnement", url: "https://news.un.org/feed/subscribe/en/news/topic/climate-change/feed/rss.xml"}
-  un_sante: {titre: "ONU Info, santé", url: "https://news.un.org/feed/subscribe/en/news/topic/health/feed/rss.xml"}
-  un_humanitaire: {titre: "ONU Info, aide humanitaire", url: "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml"}
-  un_paix: {titre: "ONU Info, paix et sécurité", url: "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml"}
-  un_economie: {titre: "ONU Info, développement économique", url: "https://news.un.org/feed/subscribe/en/news/topic/economic-development/feed/rss.xml"}
-  un_droits: {titre: "ONU Info, droits humains", url: "https://news.un.org/feed/subscribe/en/news/topic/human-rights/feed/rss.xml"}
-  un_migrants: {titre: "ONU Info, migrants et réfugiés", url: "https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml"}
-  un_droit: {titre: "ONU Info, droit et prévention du crime", url: "https://news.un.org/feed/subscribe/en/news/topic/law-and-crime-prevention/feed/rss.xml"}
-  un_femmes: {titre: "ONU Info, femmes", url: "https://news.un.org/feed/subscribe/en/news/topic/women/feed/rss.xml"}
-  un_culture: {titre: "ONU Info, culture et éducation", url: "https://news.un.org/feed/subscribe/en/news/topic/culture-and-education/feed/rss.xml"}
-  un_odd: {titre: "ONU Info, objectifs de développement durable", url: "https://news.un.org/feed/subscribe/en/news/topic/sdgs/feed/rss.xml"}
+  un_monde: {titre: "ONU Info (UN News), toutes les nouvelles", url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/all/rss.xml", {url: "https://reliefweb.int/headlines/rss.xml", titre: "ReliefWeb (OCHA, ONU), titres"}]}
+  un_afrique: {titre: "ONU Info, Afrique", url: "https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/region/africa/feed/rss.xml"]}
+  un_ameriques: {titre: "ONU Info, Amériques", url: "https://news.un.org/feed/subscribe/en/news/region/americas/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/region/americas/feed/rss.xml"]}
+  un_asie: {titre: "ONU Info, Asie-Pacifique", url: "https://news.un.org/feed/subscribe/en/news/region/asia-pacific/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/region/asia-pacific/feed/rss.xml"]}
+  un_moyen_orient: {titre: "ONU Info, Moyen-Orient", url: "https://news.un.org/feed/subscribe/en/news/region/middle-east/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/region/middle-east/feed/rss.xml"]}
+  un_europe: {titre: "ONU Info, Europe", url: "https://news.un.org/feed/subscribe/en/news/region/europe/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/region/europe/feed/rss.xml"]}
+  un_climat: {titre: "ONU Info, climat et environnement", url: "https://news.un.org/feed/subscribe/en/news/topic/climate-change/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/climate-change/feed/rss.xml"]}
+  un_sante: {titre: "ONU Info, santé", url: "https://news.un.org/feed/subscribe/en/news/topic/health/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/health/feed/rss.xml"]}
+  un_humanitaire: {titre: "ONU Info, aide humanitaire", url: "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/humanitarian-aid/feed/rss.xml", {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
+  un_paix: {titre: "ONU Info, paix et sécurité", url: "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/peace-and-security/feed/rss.xml", {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
+  un_economie: {titre: "ONU Info, développement économique", url: "https://news.un.org/feed/subscribe/en/news/topic/economic-development/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/economic-development/feed/rss.xml"]}
+  un_droits: {titre: "ONU Info, droits humains", url: "https://news.un.org/feed/subscribe/en/news/topic/human-rights/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/human-rights/feed/rss.xml"]}
+  un_migrants: {titre: "ONU Info, migrants et réfugiés", url: "https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/migrants-and-refugees/feed/rss.xml", {url: "https://reliefweb.int/updates/rss.xml", titre: "ReliefWeb (OCHA, ONU), dernières mises à jour"}]}
+  un_droit: {titre: "ONU Info, droit et prévention du crime", url: "https://news.un.org/feed/subscribe/en/news/topic/law-and-crime-prevention/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/law-and-crime-prevention/feed/rss.xml"]}
+  un_femmes: {titre: "ONU Info, femmes", url: "https://news.un.org/feed/subscribe/en/news/topic/women/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/women/feed/rss.xml"]}
+  un_culture: {titre: "ONU Info, culture et éducation", url: "https://news.un.org/feed/subscribe/en/news/topic/culture-and-education/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/culture-and-education/feed/rss.xml"]}
+  un_odd: {titre: "ONU Info, objectifs de développement durable", url: "https://news.un.org/feed/subscribe/en/news/topic/sdgs/feed/rss.xml", secours: ["https://news.un.org/feed/subscribe/fr/news/topic/sdgs/feed/rss.xml"]}
   # --- presse généraliste par région (BBC, Le Monde, RFI, France 24)
   bbc_afrique: {titre: "BBC News, Afrique", url: "https://feeds.bbci.co.uk/news/world/africa/rss.xml"}
   bbc_asie: {titre: "BBC News, Asie", url: "https://feeds.bbci.co.uk/news/world/asia/rss.xml"}
@@ -68,33 +72,33 @@ flux:
   scmp_chine: {titre: "South China Morning Post, Chine", url: "https://www.scmp.com/rss/4/feed"}
   abc_australie: {titre: "ABC News (Australie), dernières nouvelles", url: "https://www.abc.net.au/news/feed/2942460/rss.xml"}
   rnz_pacifique: {titre: "RNZ Pacific (îles du Pacifique)", url: "https://www.rnz.co.nz/rss/pacific.xml"}
-  cbc_canada: {titre: "CBC News, Canada", url: "https://www.cbc.ca/webfeed/rss/rss-canada"}
-  arctic_today: {titre: "Arctic Today", url: "https://www.arctictoday.com/feed/"}
+  cbc_canada: {titre: "CBC News, Canada", url: "https://www.cbc.ca/webfeed/rss/rss-canada", secours: ["https://rss.cbc.ca/lineup/canada.xml", "https://rss.cbc.ca/lineup/topstories.xml", {url: "https://globalnews.ca/canada/feed/", titre: "Global News, Canada"}]}
+  arctic_today: {titre: "Arctic Today", url: "https://www.arctictoday.com/feed/", secours: [{url: "https://www.highnorthnews.com/en/rss.xml", titre: "High North News (Arctique)"}, {url: "https://thebarentsobserver.com/en/rss.xml", titre: "The Barents Observer (Arctique)"}]}
   eurasianet: {titre: "Eurasianet (Caucase et Asie centrale)", url: "https://eurasianet.org/rss"}
   insight_crime: {titre: "InSight Crime (crime organisé, Amériques)", url: "https://insightcrime.org/feed/"}
-  kyiv_independent: {titre: "The Kyiv Independent (Ukraine)", url: "https://kyivindependent.com/rss/"}
+  kyiv_independent: {titre: "The Kyiv Independent (Ukraine)", url: "https://kyivindependent.com/news-archive/rss/"}
   meduza: {titre: "Meduza, en anglais (média russe indépendant, en exil)", url: "https://meduza.io/rss/en/all"}
   tass: {titre: "TASS, en anglais (agence d'État russe)", url: "https://tass.com/rss/v2.xml"}
-  times_of_israel: {titre: "The Times of Israel", url: "https://www.timesofisrael.com/feed/"}
+  times_of_israel: {titre: "The Times of Israel", url: "https://www.timesofisrael.com/feed/", secours: [{url: "https://www.jpost.com/rss/rssfeedsheadlines.aspx", titre: "The Jerusalem Post"}, {url: "https://www.ynetnews.com/Integration/StoryRss3089.xml", titre: "Ynetnews (Israël)"}]}
   middle_east_eye: {titre: "Middle East Eye", url: "https://www.middleeasteye.net/rss"}
   dabanga: {titre: "Radio Dabanga (Soudan)", url: "https://www.dabangasudan.org/en/feed"}
   politico_europe: {titre: "Politico Europe", url: "https://www.politico.eu/feed/"}
   scotusblog: {titre: "SCOTUSblog (Cour suprême des États-Unis)", url: "https://www.scotusblog.com/feed/"}
   # --- thèmes
   carbon_brief: {titre: "Carbon Brief (climat)", url: "https://www.carbonbrief.org/feed/"}
-  nasa_eo: {titre: "NASA Earth Observatory", url: "https://earthobservatory.nasa.gov/feeds/earth-observatory.rss"}
+  nasa_eo: {titre: "NASA Earth Observatory", url: "https://earthobservatory.nasa.gov/feeds/earth-observatory.rss", secours: ["https://science.nasa.gov/earth/earth-observatory/feed/", "https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss"]}
   mongabay: {titre: "Mongabay (nature, forêts, océans)", url: "https://news.mongabay.com/feed/"}
   circle_of_blue: {titre: "Circle of Blue (eau)", url: "https://www.circleofblue.org/feed/"}
   oms: {titre: "Organisation mondiale de la santé, actualités", url: "https://www.who.int/rss-feeds/news-english.xml"}
-  aiea: {titre: "AIEA, actualités", url: "https://www.iaea.org/feeds/topnews"}
-  bulletin: {titre: "Bulletin of the Atomic Scientists", url: "https://thebulletin.org/feed/"}
-  fmi: {titre: "FMI, actualités", url: "https://www.imf.org/en/News/rss?language=eng"}
+  aiea: {titre: "AIEA, actualités", url: "https://www.iaea.org/feeds/topnews", secours: ["https://www.iaea.org/feeds/news", "https://www.iaea.org/feeds/press-releases"]}
+  bulletin: {titre: "Bulletin of the Atomic Scientists", url: "https://thebulletin.org/feed/", secours: [{url: "https://www.armscontrol.org/rss.xml", titre: "Arms Control Association (armement, nucléaire)"}, {url: "https://www.nti.org/feed/", titre: "Nuclear Threat Initiative (nucléaire)"}]}
+  fmi: {titre: "FMI, actualités", url: "https://www.imf.org/en/News/rss?language=eng", secours: ["https://www.imf.org/en/News/RSS", "https://www.imf.org/en/Blogs/rss"]}
   eia: {titre: "EIA, Today in Energy", url: "https://www.eia.gov/rss/todayinenergy.xml"}
   fed: {titre: "Réserve fédérale, communiqués", url: "https://www.federalreserve.gov/feeds/press_all.xml"}
   bce: {titre: "Banque centrale européenne, communiqués", url: "https://www.ecb.europa.eu/rss/press.html"}
   usgs_seismes: {titre: "USGS, séismes importants du mois", url: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom"}
   nasa: {titre: "NASA, actualités", url: "https://www.nasa.gov/feed/"}
-  mining: {titre: "MINING.COM (mines et métaux)", url: "https://www.mining.com/feed/"}
+  mining: {titre: "MINING.COM (mines et métaux)", url: "https://www.mining.com/feed/", secours: [{url: "https://www.mining-technology.com/feed/", titre: "Mining Technology (mines et métaux)"}, {url: "https://www.miningweekly.com/page/rss", titre: "Mining Weekly (mines et métaux)"}]}
   gcaptain: {titre: "gCaptain (transport maritime)", url: "https://gcaptain.com/feed/"}
   splash247: {titre: "Splash247 (transport maritime)", url: "https://splash247.com/feed/"}
   defense_news: {titre: "Defense News", url: "https://www.defensenews.com/arc/outboundfeeds/rss/"}
@@ -102,7 +106,7 @@ flux:
   the_record: {titre: "The Record (cybersécurité)", url: "https://therecord.media/feed"}
   krebs: {titre: "Krebs on Security", url: "https://krebsonsecurity.com/feed/"}
   rest_of_world: {titre: "Rest of World (technologie hors Occident)", url: "https://restofworld.org/feed/latest"}
-  arxiv_ia: {titre: "arXiv, intelligence artificielle (cs.AI)", url: "https://export.arxiv.org/rss/cs.AI"}
+  arxiv_ia: {titre: "arXiv, intelligence artificielle (cs.AI)", url: "https://export.arxiv.org/rss/cs.AI", secours: ["https://rss.arxiv.org/rss/cs.AI"]}
   nature: {titre: "Nature, actualités et articles", url: "https://www.nature.com/nature.rss"}
   sd_cerveau: {titre: "ScienceDaily, esprit et cerveau", url: "https://www.sciencedaily.com/rss/mind_brain.xml"}
   sd_sante: {titre: "ScienceDaily, santé et médecine", url: "https://www.sciencedaily.com/rss/health_medicine.xml"}

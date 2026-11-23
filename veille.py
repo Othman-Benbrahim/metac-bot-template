@@ -1,4 +1,4 @@
-"""Veille de la carte : liens « Ressources » et flux RSS des fiches et des compartiments — bot 0.10.480, hors cadre.
+"""Veille de la carte : liens « Ressources » et flux RSS des fiches et des compartiments — bot 0.10.480 (secours des flux : 0.10.481), hors cadre.
 
 Décision de l'auteur, 2026-11-23, 19 h 08 - 20 h 10 (voir veille/catalogue.yaml). Deux usages :
 - la RÉSOLUTION (sans réseau) : quels flux pour une fiche, quels flux pour un compartiment — d'abord ceux que le
@@ -129,6 +129,34 @@ def lire_flux(contenu: bytes, n: int = PAR_FLUX) -> list[dict]:
     return out[:n]
 
 
+def candidats(f: dict) -> list[dict]:
+    """L'adresse principale du flux, puis ses adresses de secours (0.10.481) dans l'ordre du catalogue.
+
+    Un secours est soit une autre adresse du même site (flux déplacé), soit une autre source du même rôle quand le site
+    a refusé la lecture (robots.txt, 403) : on ne contourne jamais un refus, on change de source."""
+    out = [{"url": f["url"], "titre": f["titre"]}]
+    for s in f.get("secours") or []:
+        out.append({"url": s, "titre": f["titre"]} if isinstance(s, str) else {"url": s["url"], "titre": s.get("titre", f["titre"])})
+    return out
+
+
+def lire_un(c, url: str) -> dict:
+    import politesse
+    try:
+        if not politesse.autorise(c, url):
+            return {"statut": "refuse_robots", "articles": []}
+        r = c.get(url)
+        e = {"http": r.status_code}
+        if str(r.url) != url:
+            e["url_finale"] = str(r.url)
+        if r.status_code != 200:
+            return {**e, "statut": "muet", "articles": []}
+        a = lire_flux(r.content)
+        return {**e, "statut": "ok" if a else "vide", "articles": a}
+    except Exception as ex:
+        return {"statut": "muet", "erreur": type(ex).__name__, "articles": []}
+
+
 def principal() -> int:
     import httpx
     import politesse
@@ -136,25 +164,24 @@ def principal() -> int:
     res = {}
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=30, follow_redirects=True) as c:
         for fid, f in (cat.get("flux") or {}).items():
-            url = f["url"]
-            e = {"titre": f["titre"], "url": url, "lu_le": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ")}
-            try:
-                if not politesse.autorise(c, url):
-                    e.update(statut="refuse_robots", articles=[])
-                else:
-                    r = c.get(url)
-                    e["http"] = r.status_code
-                    if r.status_code != 200:
-                        e.update(statut="muet", articles=[])
-                    else:
-                        a = lire_flux(r.content)
-                        e.update(statut="ok" if a else "vide", articles=a)
-            except Exception as ex:
-                e.update(statut="muet", erreur=type(ex).__name__, articles=[])
+            essais = []
+            for cand in candidats(f):
+                e = {"titre": cand["titre"], "url": cand["url"], "lu_le": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
+                     **lire_un(c, cand["url"])}
+                essais.append({k: e.get(k) for k in ("url", "statut", "http", "erreur", "url_finale") if e.get(k) is not None})
+                time.sleep(PAUSE)
+                if e["statut"] == "ok":
+                    break
+            if len(essais) > 1:
+                e["essais"] = essais
             res[fid] = e
             print(f"{fid} : {e['statut']}" + (f" ({e.get('http')})" if e.get("http") not in (None, 200) else "")
-                  + (f", {len(e['articles'])} articles" if e["articles"] else ""), flush=True)
-            time.sleep(PAUSE)
+                  + (f" [{e['erreur']}]" if e.get("erreur") else "")
+                  + (f", {len(e['articles'])} articles" if e["articles"] else "")
+                  + (f" — par le secours {e['url']}" if len(essais) > 1 and e["statut"] == "ok" else "")
+                  + (f" — {len(essais)} adresses essayées" if len(essais) > 1 and e["statut"] != "ok" else ""), flush=True)
+            for x in essais if e["statut"] != "ok" else []:
+                print(f"    {x}", flush=True)
     REG.mkdir(parents=True, exist_ok=True)
     SORTIE.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     ok = sum(1 for v in res.values() if v["statut"] == "ok")
