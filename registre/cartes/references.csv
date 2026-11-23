@@ -1,0 +1,4 @@
+carte,role,url,lu_le,octets,sha256,lignes
+ucdp,historique,https://ucdp.uu.se/downloads/ged/ged261-csv.zip,2026-11-23T06:58Z,39122522,8c941d84954e555ee2e54f40fa04d9203bf1e2f962203d0a9930966c4947c667,417968
+ucdp,cumul_annee,https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv,2026-11-23T06:58Z,13065779,134da9b3df08b65266802c4b662e572f396c70c92ab62297319be657540bcede,16633
+ucdp,mois,https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_10.csv,2026-11-23T06:58Z,1963135,4f985429c1c16cc06e9246f61a3c3e2950b6a5549c59d93813cd6b8723fbc7e0,2418
