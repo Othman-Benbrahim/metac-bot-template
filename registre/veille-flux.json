@@ -1,33 +1,57 @@
 {
  "un_monde": {
-  "titre": "ReliefWeb (OCHA, ONU), titres",
-  "url": "https://reliefweb.int/headlines/rss.xml",
-  "lu_le": "2026-11-23T20:05Z",
-  "http": 202,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Inter Press Service (actualité internationale, ONU)",
+  "url": "https://www.ipsnews.net/feed/",
+  "lu_le": "2026-11-23T20:16Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Parliament Representation Reflects Diversity",
+    "lien": "https://www.ipsnews.net/2026/11/parliament-representation-reflects-diversity/",
+    "date": "2026-11-23T19:26Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/all/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "KENYA: ‘I Tell the Stories of People Who Can’t Go on Stage to Perform Their Struggles’",
+    "lien": "https://www.ipsnews.net/2026/11/kenya-i-tell-the-stories-of-people-who-cant-go-on-stage-to-perform-their-struggles/",
+    "date": "2026-11-23T18:31Z"
    },
    {
-    "url": "https://reliefweb.int/headlines/rss.xml",
-    "statut": "muet",
-    "http": 202
+    "titre": "More Than a Cautionary Tale: Nepal’s Fight for Mountain Justice at COP31",
+    "lien": "https://www.ipsnews.net/2026/11/more-than-a-cautionary-tale-nepals-fight-for-mountain-justice-at-cop31/",
+    "date": "2026-11-23T09:21Z"
+   },
+   {
+    "titre": "COP31 Ends in Deadlock, Leaving Ethiopia To Pick up the Pieces",
+    "lien": "https://www.ipsnews.net/2026/11/cop31-ends-in-deadlock-leaving-ethiopia-to-pick-up-the-pieces/",
+    "date": "2026-11-23T07:08Z"
+   },
+   {
+    "titre": "COP31 Cover Deal Collapses as EU and Others Reject Draft Over Fossil Fuel Omission",
+    "lien": "https://www.ipsnews.net/2026/11/cop31-cover-deal-collapses-as-eu-and-others-reject-draft-over-fossil-fuel-omission/",
+    "date": "2026-11-22T14:48Z"
+   },
+   {
+    "titre": "Escalating Violence, Displacement, and Access Constraints Mount for Yemen’s Children",
+    "lien": "https://www.ipsnews.net/2026/11/escalating-violence-displacement-and-access-constraints-mount-for-yemens-children/",
+    "date": "2026-11-20T11:51Z"
+   },
+   {
+    "titre": "Shenzhen Is Not Yalta: What a Historic China–US–Russia Summit Can—and Cannot—Achieve",
+    "lien": "https://www.ipsnews.net/2026/11/shenzhen-is-not-yalta-what-a-historic-china-us-russia-summit-can-and-cannot-achieve/",
+    "date": "2026-11-20T11:11Z"
+   },
+   {
+    "titre": "India’s Gen Z Revolt Against Disenfranchisement",
+    "lien": "https://www.ipsnews.net/2026/11/indias-gen-z-revolt-against-disenfranchisement/",
+    "date": "2026-11-20T09:34Z"
    }
   ]
  },
  "un_afrique": {
   "titre": "AllAfrica (presse africaine agrégée)",
   "url": "https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf",
-  "lu_le": "2026-11-23T20:05Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -76,7 +100,7 @@
  "un_ameriques": {
   "titre": "MercoPress (Amérique du Sud, Atlantique Sud)",
   "url": "https://en.mercopress.com/rss",
-  "lu_le": "2026-11-23T20:05Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -125,7 +149,7 @@
  "un_asie": {
   "titre": "The Diplomat (Asie-Pacifique)",
   "url": "https://thediplomat.com/feed/",
-  "lu_le": "2026-11-23T20:05Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -174,7 +198,7 @@
  "un_moyen_orient": {
   "titre": "Al-Monitor (Moyen-Orient)",
   "url": "https://www.al-monitor.com/rss",
-  "lu_le": "2026-11-23T20:06Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -223,7 +247,7 @@
  "un_europe": {
   "titre": "Euractiv (Europe)",
   "url": "https://www.euractiv.com/feed/",
-  "lu_le": "2026-11-23T20:06Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "url_finale": "https://www.rapporteur.com/feed/",
   "statut": "ok",
@@ -273,7 +297,7 @@
  "un_climat": {
   "titre": "Climate Home News",
   "url": "https://www.climatechangenews.com/feed/",
-  "lu_le": "2026-11-23T20:06Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -322,7 +346,7 @@
  "un_sante": {
   "titre": "Health Policy Watch (santé mondiale, Genève)",
   "url": "https://healthpolicy-watch.news/feed/",
-  "lu_le": "2026-11-23T20:06Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -369,59 +393,107 @@
   ]
  },
  "un_humanitaire": {
-  "titre": "ReliefWeb (OCHA, ONU), dernières mises à jour",
-  "url": "https://reliefweb.int/updates/rss.xml",
-  "lu_le": "2026-11-23T20:06Z",
-  "http": 202,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "The New Humanitarian",
+  "url": "https://www.thenewhumanitarian.org/rss/all.xml",
+  "lu_le": "2026-11-23T20:16Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Rohingya refugees welcome momentous genocide ruling, ask when they can go home",
+    "lien": "https://www.thenewhumanitarian.org/news-feature/2026/11/23/rohingya-refugees-welcome-momentous-genocide-ruling-ask-when-they-can-go",
+    "date": "2026-11-23T14:18Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/humanitarian-aid/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "As 2.6 million hungry Malawians fight drought and aid cuts, did COP31 provide any answers?",
+    "lien": "https://www.thenewhumanitarian.org/news-feature/2026/11/23/malawi-fight-drought-aid-cuts-did-cop31-provide-answers",
+    "date": "2026-11-23T10:53Z"
    },
    {
-    "url": "https://reliefweb.int/updates/rss.xml",
-    "statut": "muet",
-    "http": 202
+    "titre": "A historic Myanmar genocide ruling, a hollow trilateral summit, and a big COP flop: The Cheat Sheet",
+    "lien": "https://www.thenewhumanitarian.org/news/2026/11/20/myanmar-genocide-ruling-trilateral-summit-COP-cheat-sheet",
+    "date": "2026-11-20T16:17Z"
+   },
+   {
+    "titre": "Why the ICJ ruling won’t stop the Rohingya genocide",
+    "lien": "https://www.thenewhumanitarian.org/interview/2026/11/20/why-icj-ruling-wont-stop-rohingya-genocide",
+    "date": "2026-11-20T14:24Z"
+   },
+   {
+    "titre": "A young Palestinian’s disillusionment with the West Bank’s NGO industrial complex",
+    "lien": "https://www.thenewhumanitarian.org/opinion/2026/11/19/young-palestinians-disillusionment-west-banks-ngo-industrial-complex",
+    "date": "2026-11-19T11:59Z"
+   },
+   {
+    "titre": "Rethinking Humanitarianism | Joanne Liu on how an “era of fear” reshaped aid",
+    "lien": "https://www.thenewhumanitarian.org/podcasts/2026/11/19/rethinking-humanitarianism-joanne-liu-how-era-fear-reshaped-aid",
+    "date": "2026-11-19T11:33Z"
+   },
+   {
+    "titre": "“1 million Ukrainians”: The flawed figures behind Alight’s aid claims",
+    "lien": "https://www.thenewhumanitarian.org/investigations/2026/11/18/1-million-ukrainians-flawed-figures-behind-alights-aid-claims",
+    "date": "2026-11-18T12:24Z"
+   },
+   {
+    "titre": "For COP31 attendees, Pakistan offers a cautionary tale on climate finance",
+    "lien": "https://www.thenewhumanitarian.org/analysis/2026/11/18/cop31-attendees-pakistan-offers-cautionary-tale-climate-finance",
+    "date": "2026-11-18T10:35Z"
    }
   ]
  },
  "un_paix": {
-  "titre": "ReliefWeb (OCHA, ONU), dernières mises à jour",
-  "url": "https://reliefweb.int/updates/rss.xml",
-  "lu_le": "2026-11-23T20:07Z",
-  "http": 202,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "International Crisis Group",
+  "url": "https://www.crisisgroup.org/rss.xml",
+  "lu_le": "2026-11-23T20:16Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Gideon Rachman on the Risk of World War III",
+    "lien": "https://www.crisisgroup.org/pod/global/gideon-rachman-risk-world-war-iii",
+    "date": "2026-11-13T14:32Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/peace-and-security/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "On Our Radar",
+    "lien": "https://www.crisisgroup.org/sco/global/our-radar",
+    "date": "2026-11-12T23:00Z"
    },
    {
-    "url": "https://reliefweb.int/updates/rss.xml",
-    "statut": "muet",
-    "http": 202
+    "titre": "Mo Ibrahim: Sudan Unravelling",
+    "lien": "https://www.crisisgroup.org/vid/africa/sudan/mo-ibrahim-sudan-unravelling",
+    "date": "2026-11-12T09:22Z"
+   },
+   {
+    "titre": "Frank Giustra on Why Business Needs Peace",
+    "lien": "https://www.crisisgroup.org/vid/global/frank-giustra-why-business-needs-peace",
+    "date": "2026-11-12T09:02Z"
+   },
+   {
+    "titre": "The Shell of the Scam: A Journey through Cambodia’s Empty Crime Compounds",
+    "lien": "https://www.crisisgroup.org/phe/asia-pacific/cambodia/shell-scam-journey-through-cambodias-empty-crime-compounds",
+    "date": "2026-11-11T10:46Z"
+   },
+   {
+    "titre": "Briefing to UN Security Council: Update on the Situation in South Sudan",
+    "lien": "https://www.crisisgroup.org/spc/africa/south-sudan/briefing-un-security-council-update-situation-south-sudan",
+    "date": "2026-11-10T13:07Z"
+   },
+   {
+    "titre": "Palestinian Voters Gave Eisenkot a Chance to Govern—He Should Take It",
+    "lien": "https://www.crisisgroup.org/opd/middle-east-north-africa/israelpalestine/palestinian-voters-gave-eisenkot-chance-govern-he-should-take-it",
+    "date": "2026-11-05T10:58Z"
+   },
+   {
+    "titre": "The UAE in Sudan",
+    "lien": "https://www.crisisgroup.org/pod/africa/sudan/uae-sudan",
+    "date": "2026-10-30T16:15Z"
    }
   ]
  },
  "un_economie": {
   "titre": "Inter Press Service, développement",
   "url": "https://www.ipsnews.net/news/development-aid/feed/",
-  "lu_le": "2026-11-23T20:07Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -468,83 +540,120 @@
   ]
  },
  "un_droits": {
-  "titre": "Human Rights Watch",
-  "url": "https://www.hrw.org/rss/news",
-  "lu_le": "2026-11-23T20:07Z",
+  "titre": "Amnesty International",
+  "url": "https://www.amnesty.org/en/feed/",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
    {
-    "titre": "Azerbaijan Further Tightens Grip on Civil Society",
-    "lien": "https://www.hrw.org/news/2026/11/23/azerbaijan-further-tightens-grip-on-civil-society",
-    "date": "2026-11-23T15:57Z"
+    "titre": "Bangladesh: Proposed changes to cyber laws risk granting authorities excessive power to police online content",
+    "lien": "https://www.amnesty.org/en/latest/news/2026/11/bangladesh-proposed-changes-to-cyber-laws-risk-granting-authorities-excessive-power-to-police-online-content/",
+    "date": "2026-11-23T13:02Z"
    },
    {
-    "titre": "French Bill Risks Deepening Police Impunity",
-    "lien": "https://www.hrw.org/news/2026/11/23/french-bill-risks-deepening-police-impunity",
-    "date": "2026-11-23T12:45Z"
+    "titre": "Mali: Write for Rights global campaign supporting arbitrarily detained trader and influencer Rokiatou ‘Rose Vie Chère’ Doumbia",
+    "lien": "https://www.amnesty.org/en/latest/news/2026/11/mali-campaign-rokiatou-doumbia/",
+    "date": "2026-11-23T01:01Z"
    },
    {
-    "titre": "West Bank: Israeli Authorities Harass, Arrest Activists Protecting Palestinian Farmers",
-    "lien": "https://www.hrw.org/news/2026/11/23/west-bank-israeli-authorities-harass-arrest-activists-protecting-palestinian",
-    "date": "2026-11-23T05:00Z"
+    "titre": "COP31: Resistance stops ‘polluters’ charter’ as summit fails people and planet",
+    "lien": "https://www.amnesty.org/en/latest/news/2026/11/cop31-resistance-stops-polluters-charter-as-summit-fails-people-and-planet/",
+    "date": "2026-11-22T14:12Z"
    },
    {
-    "titre": "Armed Groups' Abuses Continue in Border Areas",
-    "lien": "https://www.hrw.org/news/2026/11/23/armed-groups-abuses-continue-in-border-areas",
-    "date": "2026-11-23T05:00Z"
+    "titre": "Global: States’ failure to launch negotiations on an autonomous weapons treaty is a wasted opportunity",
+    "lien": "https://www.amnesty.org/en/latest/news/2026/11/global-states-failure-to-launch-negotiations-on-an-autonomous-weapons-treaty-is-a-wasted-opportunity/",
+    "date": "2026-11-21T14:54Z"
    },
    {
-    "titre": "Australia’s Sanctions on West Bank Settlers Increase Pressure",
-    "lien": "https://www.hrw.org/news/2026/11/23/australias-sanctions-on-west-bank-settlers-increase-pressure",
-    "date": "2026-11-22T23:00Z"
+    "titre": "Tunisia: Authorities escalate assault on human rights with five-year prison sentence for Sihem Ben Sedrine",
+    "lien": "https://www.amnesty.org/en/latest/news/2026/11/tunisia-authorities-escalate-assault-on-human-rights-with-five-year-prison-sentence-for-sihem-ben-sedrine/",
+    "date": "2026-11-20T11:06Z"
    },
    {
-    "titre": "Australia: Use Vietnam Dialogue to Press for Rights Reforms",
-    "lien": "https://www.hrw.org/news/2026/11/22/australia-use-vietnam-dialogue-to-press-for-rights-reforms",
-    "date": "2026-11-22T13:00Z"
+    "titre": "Historic UN ruling that Myanmar committed genocide against Rohingya is rare victory for survivors",
+    "lien": "https://www.amnesty.org/en/latest/news/2026/11/historic-un-ruling-that-myanmar-committed-genocide-against-rohingya-is-rare-victory-for-survivors/",
+    "date": "2026-11-19T11:25Z"
    },
    {
-    "titre": "US Tries but Fails to Dilute UN Human Rights Resolutions",
-    "lien": "https://www.hrw.org/news/2026/11/20/us-tries-but-fails-to-dilute-un-human-rights-resolutions",
-    "date": "2026-11-20T17:00Z"
+    "titre": "Haiti: Kenscoff violence highlights continued risk of killing, abduction and other abuses against children by gangs – new research",
+    "lien": "https://www.amnesty.org/en/latest/news/2026/11/haiti-kenscoff-violence-highlights-continued-risk-of-killing-abduction-and-other-abuses-against-children-by-gangs-new-research/",
+    "date": "2026-11-19T08:58Z"
    },
    {
-    "titre": "World Court Finds Myanmar Committed Rohingya Genocide",
-    "lien": "https://www.hrw.org/news/2026/11/19/world-court-finds-myanmar-committed-rohingya-genocide",
-    "date": "2026-11-19T22:40Z"
+    "titre": "“Young people can question those in power and demand something better”",
+    "lien": "https://www.amnesty.org/en/latest/campaigns/2026/11/young-people-can-question-those-in-power-and-demand-something-better/",
+    "date": "2026-11-19T01:01Z"
+   }
+  ],
+  "essais": [
+   {
+    "url": "https://www.hrw.org/rss/news",
+    "statut": "muet",
+    "http": 403
+   },
+   {
+    "url": "https://www.amnesty.org/en/feed/",
+    "statut": "ok",
+    "http": 200
    }
   ]
  },
  "un_migrants": {
-  "titre": "ReliefWeb (OCHA, ONU), dernières mises à jour",
-  "url": "https://reliefweb.int/updates/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
-  "http": 202,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Migration Policy Institute",
+  "url": "https://www.migrationpolicy.org/rss.xml",
+  "lu_le": "2026-11-23T20:16Z",
+  "http": 200,
+  "url_finale": "https://www.migrationpolicy.org/feeds/fullsite/rss.xml",
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "A Discussion of State and Local Policy and Practice for Assessing English Learners",
+    "lien": "https://www.migrationpolicy.org/event/discussion-state-and-local-policy-and-practice-assessing-english-learners",
+    "date": "2026-11-19T21:00Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/migrants-and-refugees/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Millions of Previously Protected U.S. Immigrants Have Been Exposed to Deportation",
+    "lien": "https://www.migrationpolicy.org/journal/policy-beat/trump-make-deportable",
+    "date": "2026-11-19T05:00Z"
    },
    {
-    "url": "https://reliefweb.int/updates/rss.xml",
-    "statut": "muet",
-    "http": 202
+    "titre": "As New York State’s Health-Care System Comes under Mounting Pressure, Underemployed Immigrant Professionals Represent an Underutilized Talent Pool",
+    "lien": "https://www.migrationpolicy.org/press-release/new-york-health-care-underemployment",
+    "date": "2026-11-19T05:00Z"
+   },
+   {
+    "titre": "Making New Yorkers Healthier: Immigrant Health Professionals’ Untapped Potential",
+    "lien": "https://www.migrationpolicy.org/publication/new-york-immigrant-health-professionals",
+    "date": "2026-11-19T05:00Z"
+   },
+   {
+    "titre": "Extreme Heat Is Killing Migrant Workers in the Middle East",
+    "lien": "https://www.migrationpolicy.org/video-short/extreme-heat-killing-migrant-workers-middle-east",
+    "date": "2026-11-18T05:00Z"
+   },
+   {
+    "titre": "As Smuggling Networks Professionalize and Become More Transnational, Governments Should Target the Broader Ecosystem",
+    "lien": "https://www.migrationpolicy.org/press-release/smuggling-networks-professionalize",
+    "date": "2026-11-17T05:00Z"
+   },
+   {
+    "titre": "23rd Annual Immigration Law & Policy Conference",
+    "lien": "https://www.migrationpolicy.org/event/23rd-annual-immigration-law-policy-conference",
+    "date": "2026-11-16T19:00Z"
+   },
+   {
+    "titre": "Hannah Hintermeister",
+    "lien": "https://www.migrationpolicy.org/person/hannah-hintermeister",
+    "date": "2026-11-13T23:06Z"
    }
   ]
  },
  "un_droit": {
   "titre": "JURIST (droit, justice internationale)",
   "url": "https://www.jurist.org/news/feed/",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -593,7 +702,7 @@
  "un_femmes": {
   "titre": "The 19th (femmes, politique)",
   "url": "https://19thnews.org/feed/",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -642,7 +751,7 @@
  "un_culture": {
   "titre": "The Art Newspaper (culture, patrimoine)",
   "url": "https://www.theartnewspaper.com/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -703,7 +812,7 @@
  "un_odd": {
   "titre": "IISD, SDG Knowledge Hub (objectifs de développement durable)",
   "url": "https://sdg.iisd.org/feed/",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -717,7 +826,7 @@
  "bbc_afrique": {
   "titre": "BBC News, Afrique",
   "url": "https://feeds.bbci.co.uk/news/world/africa/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -766,7 +875,7 @@
  "bbc_asie": {
   "titre": "BBC News, Asie",
   "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -815,7 +924,7 @@
  "bbc_inde": {
   "titre": "BBC News, Inde",
   "url": "https://feeds.bbci.co.uk/news/world/asia/india/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -864,7 +973,7 @@
  "bbc_chine": {
   "titre": "BBC News, Chine",
   "url": "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -913,7 +1022,7 @@
  "bbc_australie": {
   "titre": "BBC News, Australie",
   "url": "https://feeds.bbci.co.uk/news/world/australia/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -962,7 +1071,7 @@
  "bbc_amlat": {
   "titre": "BBC News, Amérique latine",
   "url": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1011,7 +1120,7 @@
  "bbc_moyen_orient": {
   "titre": "BBC News, Moyen-Orient",
   "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1060,7 +1169,7 @@
  "bbc_europe": {
   "titre": "BBC News, Europe",
   "url": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1109,7 +1218,7 @@
  "bbc_usa_canada": {
   "titre": "BBC News, États-Unis et Canada",
   "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1158,7 +1267,7 @@
  "bbc_science": {
   "titre": "BBC News, science et environnement",
   "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1207,7 +1316,7 @@
  "bbc_sante": {
   "titre": "BBC News, santé",
   "url": "https://feeds.bbci.co.uk/news/health/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1256,7 +1365,7 @@
  "bbc_tech": {
   "titre": "BBC News, technologie",
   "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1305,7 +1414,7 @@
  "bbc_economie": {
   "titre": "BBC News, économie",
   "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:16Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1354,7 +1463,7 @@
  "bbc_sport": {
   "titre": "BBC Sport",
   "url": "https://feeds.bbci.co.uk/sport/rss.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1403,7 +1512,7 @@
  "lm_international": {
   "titre": "Le Monde, International",
   "url": "https://www.lemonde.fr/international/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1452,7 +1561,7 @@
  "lm_afrique": {
   "titre": "Le Monde, Afrique",
   "url": "https://www.lemonde.fr/afrique/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1501,7 +1610,7 @@
  "lm_asie": {
   "titre": "Le Monde, Asie-Pacifique",
   "url": "https://www.lemonde.fr/asie-pacifique/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1550,7 +1659,7 @@
  "lm_ameriques": {
   "titre": "Le Monde, Amériques",
   "url": "https://www.lemonde.fr/ameriques/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1599,7 +1708,7 @@
  "lm_europe": {
   "titre": "Le Monde, Europe",
   "url": "https://www.lemonde.fr/europe/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1648,7 +1757,7 @@
  "lm_proche_orient": {
   "titre": "Le Monde, Proche-Orient",
   "url": "https://www.lemonde.fr/proche-orient/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1697,7 +1806,7 @@
  "lm_economie": {
   "titre": "Le Monde, Économie",
   "url": "https://www.lemonde.fr/economie/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1746,7 +1855,7 @@
  "lm_planete": {
   "titre": "Le Monde, Planète",
   "url": "https://www.lemonde.fr/planete/rss_full.xml",
-  "lu_le": "2026-11-23T20:08Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1795,7 +1904,7 @@
  "lm_sciences": {
   "titre": "Le Monde, Sciences",
   "url": "https://www.lemonde.fr/sciences/rss_full.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1844,7 +1953,7 @@
  "lm_pixels": {
   "titre": "Le Monde, Pixels (numérique)",
   "url": "https://www.lemonde.fr/pixels/rss_full.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1893,7 +2002,7 @@
  "lm_sante": {
   "titre": "Le Monde, Santé",
   "url": "https://www.lemonde.fr/sante/rss_full.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1942,7 +2051,7 @@
  "lm_culture": {
   "titre": "Le Monde, Culture",
   "url": "https://www.lemonde.fr/culture/rss_full.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1991,10 +2100,15 @@
  "lm_societe": {
   "titre": "Le Monde, Société",
   "url": "https://www.lemonde.fr/societe/rss_full.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Une enquête ouverte dans une école de police de Seine-et-Marne après des accusations de racisme, de salut nazi et d’agression sexuelle",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/23/une-enquete-ouverte-dans-une-ecole-de-police-de-seine-et-marne-apres-des-accusations-de-racisme-de-salut-nazi-et-d-agression-sexuelle_6814447_3224.html",
+    "date": "2026-11-23T20:12Z"
+   },
    {
     "titre": "Violences du 17 octobre : Patrice Faure, discret préfet de police de Paris, face à la commission d’enquête de l’Assemblée nationale",
     "lien": "https://www.lemonde.fr/societe/article/2026/11/23/violences-du-17-octobre-patrice-faure-discret-prefet-de-police-de-paris-face-a-la-commission-d-enquete-de-l-assemblee-nationale_6814428_3224.html",
@@ -2029,18 +2143,13 @@
     "titre": "Antoine Lilti, historien : « Il est très frappant, dans les mobilisations en cours, de voir que ces jeunes réclament que la promesse des Lumières soit tenue »",
     "lien": "https://www.lemonde.fr/idees/article/2026/11/23/antoine-lilti-historien-il-est-tres-frappant-dans-les-mobilisations-en-cours-de-voir-que-ces-jeunes-reclament-que-la-promesse-des-lumieres-soit-tenue_6814349_3232.html",
     "date": "2026-11-23T05:30Z"
-   },
-   {
-    "titre": "Présidentielle 2027 : Marine Le Pen et le RN, cernés par les procédures, misent sur l’indifférence présumée des électeurs pour les affaires judiciaires",
-    "lien": "https://www.lemonde.fr/politique/article/2026/11/23/presidentielle-2027-marine-le-pen-une-campagne-au-defi-de-la-justice_6814312_823448.html",
-    "date": "2026-11-23T04:30Z"
    }
   ]
  },
  "lm_politique": {
   "titre": "Le Monde, Politique",
   "url": "https://www.lemonde.fr/politique/rss_full.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2089,7 +2198,7 @@
  "lm_idees": {
   "titre": "Le Monde, Idées",
   "url": "https://www.lemonde.fr/idees/rss_full.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2138,7 +2247,7 @@
  "rfi_afrique": {
   "titre": "RFI, Afrique",
   "url": "https://www.rfi.fr/fr/afrique/rss",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2187,7 +2296,7 @@
  "rfi_asie": {
   "titre": "RFI, Asie-Pacifique",
   "url": "https://www.rfi.fr/fr/asie-pacifique/rss",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2236,7 +2345,7 @@
  "f24_moyen_orient": {
   "titre": "France 24, Moyen-Orient",
   "url": "https://www.france24.com/fr/moyen-orient/rss",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2285,7 +2394,7 @@
  "f24_afrique": {
   "titre": "France 24, Afrique",
   "url": "https://www.france24.com/fr/afrique/rss",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2334,7 +2443,7 @@
  "the_hindu": {
   "titre": "The Hindu, national (Inde)",
   "url": "https://www.thehindu.com/news/national/feeder/default.rss",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2383,7 +2492,7 @@
  "dawn": {
   "titre": "Dawn, actualité (Pakistan)",
   "url": "https://www.dawn.com/feeds/home",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2432,7 +2541,7 @@
  "japan_times": {
   "titre": "The Japan Times",
   "url": "https://www.japantimes.co.jp/feed/",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2481,7 +2590,7 @@
  "scmp_chine": {
   "titre": "South China Morning Post, Chine",
   "url": "https://www.scmp.com/rss/4/feed",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "url_finale": "https://www.scmp.com/rss/4/feed/",
   "statut": "ok",
@@ -2531,7 +2640,7 @@
  "abc_australie": {
   "titre": "ABC News (Australie), dernières nouvelles",
   "url": "https://www.abc.net.au/news/feed/2942460/rss.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2580,7 +2689,7 @@
  "rnz_pacifique": {
   "titre": "RNZ Pacific (îles du Pacifique)",
   "url": "https://www.rnz.co.nz/rss/pacific.xml",
-  "lu_le": "2026-11-23T20:09Z",
+  "lu_le": "2026-11-23T20:17Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2629,7 +2738,7 @@
  "cbc_canada": {
   "titre": "Global News, Canada",
   "url": "https://globalnews.ca/canada/feed/",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:19Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2700,7 +2809,7 @@
  "arctic_today": {
   "titre": "Nunatsiaq News (Arctique canadien)",
   "url": "https://nunatsiaq.com/feed/",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:19Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2777,7 +2886,7 @@
  "eurasianet": {
   "titre": "Eurasianet (Caucase et Asie centrale)",
   "url": "https://eurasianet.org/rss",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:19Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2826,7 +2935,7 @@
  "insight_crime": {
   "titre": "InSight Crime (crime organisé, Amériques)",
   "url": "https://insightcrime.org/feed/",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:19Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2875,7 +2984,7 @@
  "kyiv_independent": {
   "titre": "The Kyiv Independent (Ukraine)",
   "url": "https://kyivindependent.com/news-archive/rss/",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:19Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2924,7 +3033,7 @@
  "meduza": {
   "titre": "Meduza, en anglais (média russe indépendant, en exil)",
   "url": "https://meduza.io/rss/en/all",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:19Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2973,10 +3082,15 @@
  "tass": {
   "titre": "TASS, en anglais (agence d'État russe)",
   "url": "https://tass.com/rss/v2.xml",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:19Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "US ensured transit of 108 mln barrels of oil via Strait of Hormuz over past week — TV",
+    "lien": "https://tass.com/world/2223627",
+    "date": "2026-11-23T20:12Z"
+   },
    {
     "titre": "NATO announced deployment of AWACS early warning aircraft to Poland",
     "lien": "https://tass.com/world/2223625",
@@ -3011,18 +3125,13 @@
     "titre": "US continues efforts to reach further peace deals in Ukraine crisis — Melania Trump",
     "lien": "https://tass.com/world/2223613",
     "date": "2026-11-23T18:49Z"
-   },
-   {
-    "titre": "Russia’s civilian casualties from Ukraine’s attacks exceed 35,000 since 2022 — diplomat",
-    "lien": "https://tass.com/politics/2223609",
-    "date": "2026-11-23T18:48Z"
    }
   ]
  },
  "times_of_israel": {
   "titre": "The Jerusalem Post",
   "url": "https://www.jpost.com/rss/rssfeedsheadlines.aspx",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3082,10 +3191,15 @@
  "middle_east_eye": {
   "titre": "Middle East Eye",
   "url": "https://www.middleeasteye.net/rss",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Benghazi drone attack: Is Ukraine opening a Mediterranean front against Russia?",
+    "lien": "https://www.middleeasteye.net/opinion/ukraine-opening-mediterranean-front-against-russia",
+    "date": "2026-11-23T20:16Z"
+   },
    {
     "titre": "Qatar striving to revive US-Iran negotiations",
     "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/qatar-striving-revive-us-iran-negotiations",
@@ -3120,18 +3234,13 @@
     "titre": "Iranian army says it destroyed US drone over Persian Gulf",
     "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/iranian-army-says-it-destroyed-us-drone-over-persian-gulf",
     "date": "2026-11-23T16:48Z"
-   },
-   {
-    "titre": "Yemeni government: Civilians killed, injured in Houthi attack in Lahij",
-    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/saudi-backed-yemeni-government-civilians-killed-injured-houthi-attack",
-    "date": "2026-11-23T16:30Z"
    }
   ]
  },
  "dabanga": {
   "titre": "Radio Dabanga (Soudan)",
   "url": "https://www.dabangasudan.org/en/feed",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3180,7 +3289,7 @@
  "politico_europe": {
   "titre": "Politico Europe",
   "url": "https://www.politico.eu/feed/",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3229,7 +3338,7 @@
  "scotusblog": {
   "titre": "SCOTUSblog (Cour suprême des États-Unis)",
   "url": "https://www.scotusblog.com/feed/",
-  "lu_le": "2026-11-23T20:11Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3278,7 +3387,7 @@
  "carbon_brief": {
   "titre": "Carbon Brief (climat)",
   "url": "https://www.carbonbrief.org/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "url_finale": "https://www.carbonbrief.org/feed",
   "statut": "ok",
@@ -3326,12 +3435,53 @@
   ]
  },
  "nasa_eo": {
-  "titre": "ESA, observation de la Terre",
-  "url": "https://www.esa.int/rssfeed/Applications/Observing_the_Earth",
-  "lu_le": "2026-11-23T20:12Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
+  "titre": "NOAA Climate.gov",
+  "url": "https://www.climate.gov/feeds/news-features/highlights.rss",
+  "lu_le": "2026-11-23T20:20Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "New study demonstrates the impacts of multiple stressors on reef-building corals",
+    "lien": "https://www.climate.gov/news-features/feed/new-study-demonstrates-impacts-multiple-stressors-reef-building-corals",
+    "date": ""
+   },
+   {
+    "titre": "Five ways NOAA research is making your life better—right now",
+    "lien": "https://www.climate.gov/news-features/feed/five-ways-noaa-research-making-your-life-better-right-now",
+    "date": ""
+   },
+   {
+    "titre": "Injecting light-reflecting particles into the stratosphere could also make marine clouds brighter",
+    "lien": "https://www.climate.gov/news-features/feed/injecting-light-reflecting-particles-stratosphere-could-also-make-marine-clouds",
+    "date": ""
+   },
+   {
+    "titre": "Global analysis reveals wildland-urban interface fires carry higher health burden",
+    "lien": "https://www.climate.gov/news-features/feed/global-analysis-reveals-wildland-urban-interface-fires-carry-higher-health",
+    "date": ""
+   },
+   {
+    "titre": "New article on humid heat trends in the Southeast United States",
+    "lien": "https://www.climate.gov/news-features/feed/new-article-humid-heat-trends-southeast-united-states",
+    "date": ""
+   },
+   {
+    "titre": "Confronting climate models with observations: a global assessment of simulated and historical climate trends",
+    "lien": "https://www.climate.gov/news-features/feed/confronting-climate-models-observations-global-assessment-simulated-and",
+    "date": ""
+   },
+   {
+    "titre": "New research offers insights into why climate models often get spring El Niño forecasts wrong",
+    "lien": "https://www.climate.gov/news-features/feed/new-research-offers-insights-why-climate-models-often-get-spring-el-nino",
+    "date": ""
+   },
+   {
+    "titre": "Cooking emissions rival fossil fuels as an ozone pollution source in Los Angeles",
+    "lien": "https://www.climate.gov/news-features/feed/cooking-emissions-rival-fossil-fuels-ozone-pollution-source-los-angeles",
+    "date": ""
+   }
+  ],
   "essais": [
    {
     "url": "https://earthobservatory.nasa.gov/feeds/earth-observatory.rss",
@@ -3339,26 +3489,16 @@
     "erreur": "ParseError"
    },
    {
-    "url": "https://science.nasa.gov/earth/earth-observatory/feed/",
-    "statut": "muet",
-    "erreur": "ParseError"
-   },
-   {
-    "url": "https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss",
-    "statut": "muet",
-    "erreur": "ParseError"
-   },
-   {
-    "url": "https://www.esa.int/rssfeed/Applications/Observing_the_Earth",
-    "statut": "muet",
-    "http": 404
+    "url": "https://www.climate.gov/feeds/news-features/highlights.rss",
+    "statut": "ok",
+    "http": 200
    }
   ]
  },
  "mongabay": {
   "titre": "Mongabay (nature, forêts, océans)",
   "url": "https://news.mongabay.com/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3407,7 +3547,7 @@
  "circle_of_blue": {
   "titre": "Circle of Blue (eau)",
   "url": "https://www.circleofblue.org/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3456,7 +3596,7 @@
  "oms": {
   "titre": "Organisation mondiale de la santé, actualités",
   "url": "https://www.who.int/rss-feeds/news-english.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3505,7 +3645,7 @@
  "aiea": {
   "titre": "AIEA, actualités",
   "url": "https://www.iaea.org/feeds/topnews",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3554,7 +3694,7 @@
  "bulletin": {
   "titre": "38 North (Corée du Nord, nucléaire)",
   "url": "https://www.38north.org/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3625,7 +3765,7 @@
  "fmi": {
   "titre": "BRI, discours des banquiers centraux",
   "url": "https://www.bis.org/doclist/cbspeeches.rss",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3686,7 +3826,7 @@
  "eia": {
   "titre": "EIA, Today in Energy",
   "url": "https://www.eia.gov/rss/todayinenergy.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3735,7 +3875,7 @@
  "fed": {
   "titre": "Réserve fédérale, communiqués",
   "url": "https://www.federalreserve.gov/feeds/press_all.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3784,7 +3924,7 @@
  "bce": {
   "titre": "Banque centrale européenne, communiqués",
   "url": "https://www.ecb.europa.eu/rss/press.html",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3833,7 +3973,7 @@
  "usgs_seismes": {
   "titre": "USGS, séismes importants du mois",
   "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3882,7 +4022,7 @@
  "nasa": {
   "titre": "NASA, actualités",
   "url": "https://www.nasa.gov/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3931,7 +4071,7 @@
  "mining": {
   "titre": "Mining Technology (mines et métaux)",
   "url": "https://www.mining-technology.com/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3992,7 +4132,7 @@
  "gcaptain": {
   "titre": "gCaptain (transport maritime)",
   "url": "https://gcaptain.com/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4041,7 +4181,7 @@
  "splash247": {
   "titre": "Splash247 (transport maritime)",
   "url": "https://splash247.com/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4090,7 +4230,7 @@
  "defense_news": {
   "titre": "Defense News",
   "url": "https://www.defensenews.com/arc/outboundfeeds/rss/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "url_finale": "https://www.defensenews.com/feed/",
   "statut": "ok",
@@ -4140,7 +4280,7 @@
  "war_on_the_rocks": {
   "titre": "War on the Rocks (stratégie)",
   "url": "https://warontherocks.com/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4189,7 +4329,7 @@
  "the_record": {
   "titre": "The Record (cybersécurité)",
   "url": "https://therecord.media/feed",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4223,7 +4363,7 @@
  "krebs": {
   "titre": "Krebs on Security",
   "url": "https://krebsonsecurity.com/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4272,7 +4412,7 @@
  "rest_of_world": {
   "titre": "Rest of World (technologie hors Occident)",
   "url": "https://restofworld.org/feed/latest",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4321,7 +4461,7 @@
  "arxiv_ia": {
   "titre": "arXiv, intelligence artificielle (cs.AI)",
   "url": "https://rss.arxiv.org/rss/cs.AI",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4381,7 +4521,7 @@
  "nature": {
   "titre": "Nature, actualités et articles",
   "url": "https://www.nature.com/nature.rss",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4430,7 +4570,7 @@
  "sd_cerveau": {
   "titre": "ScienceDaily, esprit et cerveau",
   "url": "https://www.sciencedaily.com/rss/mind_brain.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4479,7 +4619,7 @@
  "sd_sante": {
   "titre": "ScienceDaily, santé et médecine",
   "url": "https://www.sciencedaily.com/rss/health_medicine.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4528,7 +4668,7 @@
  "sd_terre": {
   "titre": "ScienceDaily, Terre et climat",
   "url": "https://www.sciencedaily.com/rss/earth_climate.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4577,7 +4717,7 @@
  "sd_vivant": {
   "titre": "ScienceDaily, plantes et animaux",
   "url": "https://www.sciencedaily.com/rss/plants_animals.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4626,7 +4766,7 @@
  "sd_espace": {
   "titre": "ScienceDaily, espace et temps",
   "url": "https://www.sciencedaily.com/rss/space_time.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4675,7 +4815,7 @@
  "sd_matiere": {
   "titre": "ScienceDaily, matière et énergie",
   "url": "https://www.sciencedaily.com/rss/matter_energy.xml",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:20Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4724,7 +4864,7 @@
  "conversation": {
   "titre": "The Conversation France",
   "url": "https://theconversation.com/fr/articles.atom",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:21Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4773,7 +4913,7 @@
  "global_voices": {
   "titre": "Global Voices (sociétés, monde)",
   "url": "https://globalvoices.org/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:21Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4822,10 +4962,15 @@
  "rns": {
   "titre": "Religion News Service",
   "url": "https://religionnews.com/feed/",
-  "lu_le": "2026-11-23T20:12Z",
+  "lu_le": "2026-11-23T20:21Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Eating the Seasons: Food, Faith and Belonging with Michael W. Twitty",
+    "lien": "https://religionnews.com/2026/11/23/eating-the-seasons-food-faith-and-belonging-with-michael-w-twitty/",
+    "date": "2026-11-23T20:18Z"
+   },
    {
     "titre": "Bishops get educated on Gen Z, who are ‘religious but not spiritual’",
     "lien": "https://religionnews.com/2026/11/23/bishops-get-educated-on-gen-z-who-are-religious-but-not-spiritual/",
@@ -4860,11 +5005,6 @@
     "titre": "ActsSocial says 97 percent of prayer requests receive prayer from fellow members",
     "lien": "https://religionnews.com/2026/11/23/actssocial-says-97-percent-of-prayer-requests-receive-prayer-from-fellow-members/",
     "date": "2026-11-23T16:02Z"
-   },
-   {
-    "titre": "New grants are funding efforts to collect and share compelling stories about Christian faith and life",
-    "lien": "https://religionnews.com/2026/11/23/new-grants-are-funding-efforts-to-collect-and-share-compelling-stories-about-christian-faith-and-life/",
-    "date": "2026-11-23T15:27Z"
    }
   ]
  }
