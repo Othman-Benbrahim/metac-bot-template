@@ -78,3 +78,12 @@ Chaque niveau a ses relations PROPRES et son INERTIE : un effet venu d'un autre 
 assez fort pour y provoquer un changement (sinon un cinquième). Un acteur public peut apparaître sous trois facettes
 (`facette:` personne, statut, idéologie), chacune à son niveau : la personne n'est pas son statut, ni son idéologie.
 Le climat (régime de long terme, adaptateur `climat:<point>`) est distinct de la météo (`meteo:<point>`).
+
+## Champ `geopolitique` d'un compartiment (0.10.473)
+
+Décision de l'auteur du 2026-11-23 (8 h 15 - 8 h 35) : un compartiment qui concerne un ou plusieurs pays précis porte
+`geopolitique: {pays: [codes ISO3]}`, quelle que soit son organisation (un compartiment économique sur le Yémen aussi).
+C'est le point d'attache des cartes géopolitiques lues par le bot (UCDP) : sur la carte, le nœud prend un liseré selon
+l'état du mois le plus élevé de ses pays, et son détail montre l'état de chacun. Premier remplissage : 125 compartiments,
+pays proposés par Claude, acceptés par défaut. Les compartiments de portée mondiale ou thématique (religions, partis,
+classes sociales…) n'ont pas de pays, même s'ils citent des exemples.

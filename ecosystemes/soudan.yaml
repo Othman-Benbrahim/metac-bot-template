@@ -11,6 +11,8 @@ declaration:
   taille: "micro (un village assiégé) à macro (l'État, la région)"
 compartiments:
   - id: "armee"
+    geopolitique:
+      pays: [SDN]
     nom: "Forces armées soudanaises et leurs alliés"
     organisation: "geopolitique"
     elements: ["Forces armées soudanaises (SAF)", "milices et groupes alliés", "gouvernement établi à Port-Soudan"]
@@ -20,6 +22,8 @@ compartiments:
     traces:
       - {source: "événements UCDP au Soudan (registre/ucdp-cellules.csv.gz)", statut: "collecte", fichier: "collecte_ucdp_grille.py"}
   - id: "fsr"
+    geopolitique:
+      pays: [SDN]
     nom: "Forces de soutien rapide (FSR, en anglais RSF)"
     organisation: "geopolitique"
     elements: ["Forces de soutien rapide", "contrôle du Darfour après la chute d'El Fasher (octobre 2025)", "gouvernement parallèle annoncé (à vérifier)"]
@@ -29,6 +33,8 @@ compartiments:
     traces:
       - {source: "événements UCDP au Soudan (registre/ucdp-cellules.csv.gz)", statut: "collecte", fichier: "collecte_ucdp_grille.py"}
   - id: "mediation"
+    geopolitique:
+      pays: [SDN]
     nom: "Médiateurs et trêves"
     organisation: "geopolitique"
     elements: ["déclaration de Djeddah (mai 2023, États-Unis et Arabie saoudite)", "efforts de l'IGAD et de l'Union africaine", "initiative ALPS à Genève (2025-2026)", "trêve humanitaire de 90 jours proposée par les États-Unis"]
@@ -38,6 +44,8 @@ compartiments:
     traces:
       - {source: "annonces de trêve et leurs violations (presse, ONU)", statut: "a_brancher"}
   - id: "soutiens"
+    geopolitique:
+      pays: [SDN]
     nom: "Soutiens extérieurs des belligérants"
     organisation: "geopolitique"
     elements: ["armes et financements venus de l'étranger (à vérifier source par source)", "or et routes commerciales"]
@@ -45,6 +53,8 @@ compartiments:
     traces:
       - {source: "sanctions visant des personnes et entités soudanaises (listes publiques)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:SD"}
   - id: "humanitaire"
+    geopolitique:
+      pays: [SDN]
     nom: "Famine, déplacements et aide"
     organisation: "societe"
     elements: ["famine déclarée dans plusieurs zones (à vérifier par l'IPC)", "déplacés et réfugiés", "accès humanitaire", "système d'aide « au bord de l'effondrement » selon l'ONU (septembre 2026)"]

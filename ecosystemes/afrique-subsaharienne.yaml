@@ -29,6 +29,8 @@ declaration:
   taille: micro (un convoi, un village) à macro (le continent)
 compartiments:
 - id: juntes_sahel
+  geopolitique:
+    pays: [MLI, BFA, NER]
   nom: Juntes du Sahel et Alliance des États du Sahel (Mali, Burkina Faso, Niger)
   organisation: geopolitique
   elements:
@@ -59,6 +61,8 @@ compartiments:
     source: situations observées (lecteur-local, comptes/situations.jsonl)
     statut: a_brancher
 - id: groupes_armes
+  geopolitique:
+    pays: [MLI, BFA, NER]
   nom: Groupes armés djihadistes (JNIM, État islamique)
   organisation: geopolitique
   elements:
@@ -92,6 +96,8 @@ compartiments:
     statut: a_brancher
   - *id001
 - id: grands_lacs
+  geopolitique:
+    pays: [COD, RWA]
   nom: Grands Lacs (RDC, Rwanda, M23)
   organisation: geopolitique
   elements:
@@ -122,6 +128,8 @@ compartiments:
     statut: a_brancher
   - *id001
 - id: corne
+  geopolitique:
+    pays: [SOM, ETH, ERI]
   nom: Corne de l'Afrique (Somalie, Éthiopie, Érythrée)
   organisation: geopolitique
   elements:
@@ -163,6 +171,8 @@ compartiments:
   - {source: "flux RSS AllAfrica, Afrique de l'Ouest, famille « afrique » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: puissances_exterieures
+  geopolitique:
+    pays: [CHN, FRA, RUS, TUR, USA]
   nom: Puissances extérieures (Russie, Chine, France, États-Unis, Turquie, pays du Golfe)
   organisation: geopolitique
   elements:
@@ -178,6 +188,8 @@ compartiments:
   traces:
   - *id001
 - id: deplacements
+  geopolitique:
+    pays: [BFA, COD, MLI, NGA, SOM]
   nom: Déplacements forcés
   organisation: societe
   elements:
@@ -210,6 +222,8 @@ compartiments:
     statut: a_brancher
   - *id001
 - id: ressources
+  geopolitique:
+    pays: [COD, NER]
   nom: Ressources du sous-sol (or, uranium, cobalt, coltan)
   organisation: mineral
   elements:

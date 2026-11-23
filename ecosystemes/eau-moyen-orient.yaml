@@ -63,6 +63,8 @@ compartiments:
     fichier: collecte_meteo.py
     adaptateur: meteo:bandar_abbas
 - id: fleuves
+  geopolitique:
+    pays: [EGY, IRQ, SDN, SYR, TUR]
   organisation: eau
   nom: Fleuves partagés
   elements:
@@ -91,6 +93,8 @@ compartiments:
   - source: débits et niveaux des fleuves (publications publiques, altimétrie satellitaire)
     statut: a_brancher
 - id: barrages
+  geopolitique:
+    pays: [IRN, TUR]
   organisation: technique
   nom: Barrages et retenues
   elements:
@@ -201,6 +205,8 @@ compartiments:
   - source: indices de végétation des plaines irriguées (publics)
     statut: a_brancher
 - id: villes
+  geopolitique:
+    pays: [EGY, IRN, IRQ]
   organisation: societe
   nom: Villes et populations
   elements:
@@ -230,6 +236,8 @@ compartiments:
     fichier: collecte_ooni.py
     adaptateur: ooni:IQ
 - id: etats_riverains
+  geopolitique:
+    pays: [EGY, IRQ, SDN, SYR, TUR]
   organisation: geopolitique
   nom: États d'amont et d'aval
   elements:

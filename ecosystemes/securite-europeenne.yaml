@@ -39,6 +39,8 @@ compartiments:
     traces:
       - {source: "rapports publics des agences d'armement", statut: "a_brancher"}
   - id: "etats_unis"
+    geopolitique:
+      pays: [USA]
     nom: "Relation avec les États-Unis"
     organisation: "geopolitique"
     elements: ["garantie américaine perçue", "pression sur les budgets", "achats d'équipements américains"]
@@ -46,6 +48,8 @@ compartiments:
     traces:
       - {source: "nombre de gestes américains envers l'Allemagne (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:USA:DEU"}
   - id: "menace"
+    geopolitique:
+      pays: [RUS]
     nom: "Menace perçue (Russie)"
     organisation: "geopolitique"
     elements: ["guerre en Ukraine", "incidents aux frontières", "violations d'espace aérien"]

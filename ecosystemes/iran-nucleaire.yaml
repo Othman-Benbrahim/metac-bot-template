@@ -13,6 +13,8 @@ declaration:
   taille: une délégation, un État, le système international de non-prolifération
 compartiments:
 - id: negociations
+  geopolitique:
+    pays: [IRN, USA]
   organisation: geopolitique
   nom: Négociations
   elements:
@@ -51,6 +53,8 @@ compartiments:
     statut: collecte
     fichier: collecte_routines.py
 - id: verification
+  geopolitique:
+    pays: [IRN]
   organisation: statut
   nom: Vérification et inspections
   elements:
@@ -74,6 +78,8 @@ compartiments:
   - source: rapports publics de l'Agence internationale de l'énergie atomique
     statut: a_brancher
 - id: sanctions
+  geopolitique:
+    pays: [IRN]
   organisation: geopolitique
   nom: Sanctions
   elements:
@@ -95,6 +101,8 @@ compartiments:
     statut: collecte
     fichier: collecte_federal_register.py
 - id: pouvoir_iranien
+  geopolitique:
+    pays: [IRN]
   organisation: statut
   nom: Pouvoir iranien
   elements:
@@ -156,6 +164,8 @@ compartiments:
     statut: collecte
     adaptateur: conflictforecast:IRN
 - id: societe_iranienne
+  geopolitique:
+    pays: [IRN]
   organisation: societe
   nom: Société et économie iraniennes
   elements:
@@ -192,6 +202,8 @@ compartiments:
     statut: collecte
     adaptateur: manifestations:IR
 - id: etats_unis
+  geopolitique:
+    pays: [USA]
   organisation: geopolitique
   nom: États-Unis
   elements:
@@ -228,6 +240,8 @@ compartiments:
     statut: collecte
     adaptateur: paire_mois:IR:US:conflit
 - id: europe
+  geopolitique:
+    pays: [DEU, FRA, GBR]
   organisation: geopolitique
   nom: Europe (France, Allemagne, Royaume-Uni)
   elements:
@@ -251,6 +265,8 @@ compartiments:
     statut: collecte
     fichier: collecte_routines.py
 - id: russie_chine
+  geopolitique:
+    pays: [RUS, CHN]
   organisation: geopolitique
   nom: Russie et Chine
   elements:
@@ -281,6 +297,8 @@ compartiments:
     fichier: gdelt_bq.py
     adaptateur: gestes:CHN:IRN
 - id: voisins
+  geopolitique:
+    pays: [ISR, SAU, ARE]
   organisation: geopolitique
   nom: Voisins régionaux
   elements:
@@ -313,6 +331,8 @@ compartiments:
     fichier: gdelt_bq.py
     adaptateur: gestes:ISR:IRN
 - id: conseil_securite
+  geopolitique:
+    pays: [IRN]
   organisation: convention
   nom: Conseil de sécurité et droit international
   elements:
@@ -329,6 +349,8 @@ compartiments:
   - source: documents publics du Conseil de sécurité de l'ONU
     statut: a_brancher
 - id: recits
+  geopolitique:
+    pays: [IRN]
   organisation: ideologie
   nom: Récits et signaux
   elements:
@@ -349,6 +371,8 @@ compartiments:
     statut: collecte
     fichier: collecte_telegram.py
 - id: surete_atomique
+  geopolitique:
+    pays: [IRN]
   organisation: atomique
   nom: Sûreté atomique civile (niveau institutionnel)
   elements:
@@ -378,6 +402,8 @@ compartiments:
   - source: rapports publics de l'AIEA (sûreté et vérification)
     statut: a_brancher
 - id: relief_sites
+  geopolitique:
+    pays: [IRN]
   organisation: relief
   nom: Relief montagneux (fait géographique général)
   elements:
@@ -399,6 +425,8 @@ compartiments:
   - source: modèles numériques de terrain publics
     statut: a_brancher
 - id: sismicite
+  geopolitique:
+    pays: [IRN]
   organisation: mineral
   nom: Sismicité
   elements:

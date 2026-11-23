@@ -96,6 +96,8 @@ compartiments:
   - source: primes d'assurance risques de guerre
     statut: fermee
 - id: riverains
+  geopolitique:
+    pays: [IRN, OMN, ARE]
   nom: États riverains
   organisation: geopolitique
   elements:
@@ -151,6 +153,8 @@ compartiments:
     statut: collecte
     adaptateur: voisins:IR
 - id: puissances
+  geopolitique:
+    pays: [CHN, IND, JPN, KOR, USA]
   nom: Puissances extérieures
   organisation: geopolitique
   elements:
@@ -188,6 +192,8 @@ compartiments:
     statut: collecte
     fichier: collecte_federal_register.py
 - id: force
+  geopolitique:
+    pays: [IRN]
   nom: Force armée
   organisation: geopolitique
   elements:
@@ -271,6 +277,8 @@ compartiments:
     fichier: collecte_fred.py
     adaptateur: fred:DCOILBRENTEU
 - id: interieur_iran
+  geopolitique:
+    pays: [IRN]
   nom: Intérieur iranien
   organisation: societe
   elements:

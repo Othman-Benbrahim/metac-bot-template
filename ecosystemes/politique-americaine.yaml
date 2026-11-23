@@ -13,6 +13,8 @@ declaration:
   taille: un élu, une institution, l'État fédéral
 compartiments:
 - id: executif
+  geopolitique:
+    pays: [USA]
   organisation: statut
   nom: Exécutif
   elements:
@@ -79,6 +81,8 @@ compartiments:
     statut: collecte
     adaptateur: routines:maison_blanche
 - id: congres
+  geopolitique:
+    pays: [USA]
   organisation: statut
   nom: Congrès
   elements:
@@ -119,6 +123,8 @@ compartiments:
     statut: collecte
     adaptateur: congres
 - id: tribunaux
+  geopolitique:
+    pays: [USA]
   organisation: statut
   nom: Tribunaux
   elements:
@@ -155,6 +161,8 @@ compartiments:
     statut: collecte
     adaptateur: tribunaux:cadc
 - id: elections
+  geopolitique:
+    pays: [USA]
   organisation: societe
   nom: Élections et opinion
   elements:
@@ -191,6 +199,8 @@ compartiments:
     statut: collecte
     adaptateur: manifestations:US
 - id: budget
+  geopolitique:
+    pays: [USA]
   organisation: economie
   nom: Budget et dette fédérale
   elements:
@@ -220,6 +230,8 @@ compartiments:
     statut: collecte
     adaptateur: federal_register:tous:Securities and Exchange
 - id: commerce
+  geopolitique:
+    pays: [USA]
   organisation: economie
   nom: Commerce et droits de douane
   elements:
@@ -244,6 +256,8 @@ compartiments:
     statut: collecte
     fichier: collecte_federal_register.py
 - id: energie
+  geopolitique:
+    pays: [USA]
   organisation: economie
   nom: Politique énergétique
   elements:
@@ -274,6 +288,8 @@ compartiments:
     statut: collecte
     adaptateur: federal_register:tous:Energy
 - id: sanctions
+  geopolitique:
+    pays: [USA]
   organisation: geopolitique
   nom: Sanctions et politique étrangère économique
   elements:
@@ -308,6 +324,8 @@ compartiments:
     statut: collecte
     adaptateur: routines:pentagone
 - id: reserve_federale
+  geopolitique:
+    pays: [USA]
   organisation: statut
   nom: Réserve fédérale (institution)
   elements:
@@ -335,6 +353,8 @@ compartiments:
     statut: collecte
     adaptateur: wikipedia:Fed
 - id: etats_federes
+  geopolitique:
+    pays: [USA]
   organisation: statut
   nom: États fédérés
   elements:
@@ -359,6 +379,8 @@ compartiments:
     statut: collecte
     fichier: collecte_tribunaux.py
 - id: entourage
+  geopolitique:
+    pays: [USA]
   organisation: entourage
   nom: Entourage et coalition de soutien
   elements:
@@ -397,6 +419,8 @@ compartiments:
     statut: collecte
     adaptateur: congres:nominations
 - id: regles_electorales
+  geopolitique:
+    pays: [USA]
   organisation: convention
   nom: Règles électorales et découpages (convention)
   elements:
@@ -421,6 +445,8 @@ compartiments:
     statut: collecte
     fichier: collecte_tribunaux.py
 - id: eau_fleuves
+  geopolitique:
+    pays: [USA]
   organisation: eau
   nom: Fleuves et eau (Mississippi, Colorado)
   elements:
@@ -449,6 +475,8 @@ compartiments:
   - source: niveaux et débits publics (USGS)
     statut: a_brancher
 - id: climat_risques
+  geopolitique:
+    pays: [USA]
   organisation: climat
   nom: Climat et catastrophes (ouragans, incendies, chaleur)
   elements:

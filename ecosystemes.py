@@ -293,6 +293,10 @@ def valider(fiche: dict) -> list[str]:
         for a in AXES:
             if a not in (c.get("niveau") or {}):
                 err.append(f"{t}:{c.get('id')} : niveau d'action sans « {a} »")
+        g = c.get("geopolitique")
+        if g is not None and (not isinstance(g, dict) or set(g) - {"pays"} or
+                              not all(isinstance(x, str) and re.fullmatch(r"[A-Z]{3}", x) for x in g.get("pays") or [])):
+            err.append(f"{t}:{c.get('id')} : « geopolitique » attend {{pays: [codes ISO3]}}")
         cat = niveaux()
         if c.get("organisation") is not None and c["organisation"] not in cat["niveaux"]:
             err.append(f"{t}:{c.get('id')} : niveau d'organisation inconnu {c['organisation']!r} (voir ecosystemes/niveaux.yaml)")
@@ -388,6 +392,9 @@ def assembler(fiches: dict[str, dict]) -> dict:
         for c in f["compartiments"]:
             noeuds.append({"id": f"{t}:{c['id']}", "theme": t, "nom": c.get("nom", c["id"]), "niveau": c["niveau"],
                            "organisation": c.get("organisation"),
+                           # 0.10.473 (décision de l'auteur, 2026-11-23, 8 h 15 - 8 h 35) : pays concernés, sous le champ
+                           # « geopolitique » (codes ISO3) ; sert de point d'attache aux cartes géopolitiques (UCDP)
+                           "geopolitique": c.get("geopolitique") or {},
                            "axes": axes(c["niveau"]), "traces": c.get("traces") or [],
                            "acteurs": [dict(a, axes=axes({"taille": a.get("taille"), "espace": a.get("espace"),
                                                           "vitesse": a.get("vitesse")})) for a in c.get("acteurs") or []]})

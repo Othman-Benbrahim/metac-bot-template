@@ -11,6 +11,8 @@ declaration:
   taille: "méso (une institution) à macro (l'État)"
 compartiments:
   - id: "justice"
+    geopolitique:
+      pays: [LBN]
     nom: "Justice et Conseil judiciaire"
     organisation: "statut"
     elements: ["juges d'instruction", "Conseil judiciaire (juridiction pour les atteintes à la sûreté de l'État)", "immunités", "recours et dessaisissements"]
@@ -21,6 +23,8 @@ compartiments:
     traces:
       - {source: "communiqués du Conseil des ministres et de la justice (Agence nationale d'information)", statut: "a_brancher"}
   - id: "gouvernement"
+    geopolitique:
+      pays: [LBN]
     nom: "Conseil des ministres"
     organisation: "statut"
     elements: ["décrets de renvoi au Conseil judiciaire", "quorum et consensus entre blocs", "gouvernement d'affaires courantes"]
@@ -31,6 +35,8 @@ compartiments:
     traces:
       - {source: "ordres du jour publics du Conseil des ministres", statut: "a_brancher"}
   - id: "confessionnalisme"
+    geopolitique:
+      pays: [LBN]
     nom: "Partage confessionnel du pouvoir"
     organisation: "convention"
     elements: ["répartition des postes par communauté", "droit de blocage implicite", "consensus requis"]
@@ -38,6 +44,8 @@ compartiments:
     traces:
       - {source: "fait institutionnel", statut: "inconnue"}
   - id: "blocs_politiques"
+    geopolitique:
+      pays: [LBN]
     nom: "Blocs politiques et leurs entourages"
     organisation: "entourage"
     elements: ["partis communautaires", "loyautés et clientèles", "alliances changeantes"]
@@ -48,6 +56,8 @@ compartiments:
     traces:
       - {source: "GDELT (événements publics au Liban)", statut: "collecte", fichier: "collecte_gdelt.py"}
   - id: "force_armee"
+    geopolitique:
+      pays: [LBN]
     nom: "Forces armées et groupe armé"
     organisation: "geopolitique"
     elements: ["armée libanaise", "branche armée du Hezbollah (en agrégat)", "cessez-le-feu et désarmement en discussion"]
@@ -55,6 +65,8 @@ compartiments:
     traces:
       - {source: "nombre de gestes israéliens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:ISR:LBN"}
   - id: "banque_centrale"
+    geopolitique:
+      pays: [LBN]
     nom: "Banque centrale et crise financière"
     organisation: "economie"
     elements: ["effondrement de la livre", "dépôts bloqués", "plans avec le FMI", "audits"]
@@ -64,6 +76,8 @@ compartiments:
     traces:
       - {source: "sanctions visant des personnes et entités libanaises (listes publiques)", statut: "collecte", fichier: "collecte_sanctions.py", adaptateur: "sanctions:LB"}
   - id: "opinion_colere"
+    geopolitique:
+      pays: [LBN]
     nom: "Opinion, colère et attente de justice"
     organisation: "psychologique"
     elements: ["exigence de vérité après les explosions", "défiance envers les institutions", "lassitude"]
@@ -73,6 +87,8 @@ compartiments:
     traces:
       - {source: "dates de mémoire (anniversaires d'événements, registre des indicateurs de niche)", statut: "collecte", fichier: "indicateurs_niche.py"}
   - id: "exterieur"
+    geopolitique:
+      pays: [FRA, IRN, SAU, USA]
     nom: "Soutiens et pressions extérieurs"
     organisation: "geopolitique"
     elements: ["Iran", "Arabie saoudite et pays du Golfe", "France et États-Unis", "FMI et bailleurs"]
@@ -80,6 +96,8 @@ compartiments:
     traces:
       - {source: "nombre de gestes iraniens envers le Liban (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:IRN:LBN"}
   - id: "internet_information"
+    geopolitique:
+      pays: [LBN]
     nom: "Information et coupures"
     organisation: "technique"
     elements: ["médias communautaires", "réseaux sociaux", "coupures d'électricité et d'internet"]

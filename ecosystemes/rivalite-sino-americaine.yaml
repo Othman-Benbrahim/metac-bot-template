@@ -12,6 +12,8 @@ declaration:
   taille: une entreprise, une filière, un État, le système mondial
 compartiments:
 - id: commerce
+  geopolitique:
+    pays: [CHN, USA]
   organisation: economie
   nom: Commerce et droits de douane
   elements:
@@ -55,6 +57,8 @@ compartiments:
     statut: collecte
     adaptateur: sanctions_chine:US
 - id: technologie
+  geopolitique:
+    pays: [CHN, USA]
   organisation: technique
   nom: Technologie et contrôles
   elements:
@@ -89,6 +93,8 @@ compartiments:
     statut: collecte
     adaptateur: certificats
 - id: energie
+  geopolitique:
+    pays: [CHN, USA]
   organisation: economie
   nom: Énergie et sécurité des approvisionnements
   elements:
@@ -124,6 +130,8 @@ compartiments:
     fichier: collecte_fred.py
     adaptateur: fred:DCOILBRENTEU
 - id: taiwan
+  geopolitique:
+    pays: [CHN, TWN]
   organisation: geopolitique
   nom: Taïwan et mers de Chine
   elements:
@@ -170,6 +178,8 @@ compartiments:
     statut: collecte
     adaptateur: paire:CN:TW:force
 - id: alliances
+  geopolitique:
+    pays: [AUS, JPN, KOR, PHL]
   organisation: geopolitique
   nom: Alliances et alignements
   elements:
@@ -193,6 +203,8 @@ compartiments:
     statut: collecte
     adaptateur: sanctions_chine:JP
 - id: diplomatie
+  geopolitique:
+    pays: [CHN, USA]
   organisation: geopolitique
   nom: Diplomatie au sommet
   elements:
@@ -248,6 +260,8 @@ compartiments:
     statut: collecte
     adaptateur: paire_mois:CN:US:conflit
 - id: finance
+  geopolitique:
+    pays: [CHN, USA]
   organisation: economie
   nom: Finance et monnaies
   elements:
@@ -266,6 +280,8 @@ compartiments:
     fichier: collecte_fred.py
     adaptateur: fred:DTWEXBGS
 - id: economie_chine
+  geopolitique:
+    pays: [CHN]
   organisation: economie
   nom: Économie chinoise exposée
   elements:
@@ -283,6 +299,8 @@ compartiments:
     statut: collecte
     fichier: collecte_calendrier_nbs.py
 - id: recits
+  geopolitique:
+    pays: [CHN, USA]
   organisation: ideologie
   nom: Récits et opinions
   elements:
@@ -304,6 +322,8 @@ compartiments:
     fichier: collecte_ooni.py
     adaptateur: ooni:CN
 - id: terres_rares
+  geopolitique:
+    pays: [CHN]
   organisation: chimique
   nom: Terres rares et minerais critiques
   elements:
@@ -337,6 +357,8 @@ compartiments:
     fichier: collecte_sanctions.py
     adaptateur: sanctions:CN
 - id: detroit_relief
+  geopolitique:
+    pays: [CHN, TWN]
   organisation: relief
   nom: Détroit de Taïwan et géographie insulaire
   elements:
@@ -367,6 +389,8 @@ compartiments:
     fichier: collecte_portwatch.py
     adaptateur: portwatch:taiwan:navires
 - id: atomique
+  geopolitique:
+    pays: [CHN, USA]
   organisation: atomique
   nom: Dissuasion nucléaire (niveau institutionnel)
   elements:

@@ -19,6 +19,8 @@ declaration:
   taille: méso (une base, un navire) à macro (la région)
 compartiments:
 - id: coree_du_nord
+  geopolitique:
+    pays: [PRK]
   nom: Corée du Nord (programmes nucléaire et balistique)
   organisation: geopolitique
   elements:
@@ -42,6 +44,8 @@ compartiments:
     source: situations observées (lecteur-local, comptes/situations.jsonl)
     statut: a_brancher
 - id: russie_coree
+  geopolitique:
+    pays: [PRK, RUS]
   nom: Axe Russie-Corée du Nord
   organisation: geopolitique
   elements:
@@ -57,6 +61,8 @@ compartiments:
   traces:
   - *id001
 - id: coree_du_sud
+  geopolitique:
+    pays: [KOR]
   nom: Corée du Sud (président Lee Jae-myung)
   organisation: statut
   elements:
@@ -80,6 +86,8 @@ compartiments:
   - {source: "flux RSS Korea.net (source d'État) et The Diplomat, famille « asie » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: japon
+  geopolitique:
+    pays: [JPN]
   nom: Japon (réarmement, gouvernement Takaichi)
   organisation: statut
   elements:
@@ -100,6 +108,8 @@ compartiments:
   traces:
   - *id001
 - id: chine_japon
+  geopolitique:
+    pays: [CHN, JPN, TWN]
   nom: Différends Chine-Japon (Taïwan, mer de Chine orientale)
   organisation: geopolitique
   elements:
@@ -116,6 +126,8 @@ compartiments:
   traces:
   - *id001
 - id: alliances
+  geopolitique:
+    pays: [JPN, KOR, USA]
   nom: Alliances avec les États-Unis (bases, coopération à trois)
   organisation: convention
   elements:

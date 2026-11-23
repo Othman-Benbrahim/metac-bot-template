@@ -13,6 +13,8 @@ declaration:
   taille: un groupe armé local, un État, la région, les grandes puissances
 compartiments:
 - id: israel
+  geopolitique:
+    pays: [ISR]
   organisation: geopolitique
   nom: Israël
   elements:
@@ -64,6 +66,8 @@ compartiments:
     statut: collecte
     adaptateur: manifestations:IL
 - id: gaza
+  geopolitique:
+    pays: [PSE]
   organisation: geopolitique
   nom: Gaza et territoires palestiniens
   elements:
@@ -99,6 +103,8 @@ compartiments:
     statut: collecte
     adaptateur: violations:Palestine
 - id: liban
+  geopolitique:
+    pays: [LBN]
   organisation: geopolitique
   nom: Liban
   elements:
@@ -137,6 +143,8 @@ compartiments:
     statut: collecte
     adaptateur: paire:IL:LB:force
 - id: syrie_irak
+  geopolitique:
+    pays: [SYR, IRQ]
   organisation: geopolitique
   nom: Syrie et Irak
   elements:
@@ -168,6 +176,8 @@ compartiments:
     fichier: collecte_feux.py
     adaptateur: feux:SY
 - id: yemen
+  geopolitique:
+    pays: [YEM]
   organisation: geopolitique
   nom: Yémen et mer Rouge
   elements:
@@ -212,6 +222,8 @@ compartiments:
     statut: collecte
     adaptateur: ucdp:Yemen
 - id: iran
+  geopolitique:
+    pays: [IRN]
   organisation: geopolitique
   nom: Iran et son réseau régional
   elements:
@@ -250,6 +262,8 @@ compartiments:
     statut: collecte
     adaptateur: paire:IL:IR:force
 - id: puissances
+  geopolitique:
+    pays: [CHN, RUS, USA]
   organisation: geopolitique
   nom: Puissances extérieures
   elements:
@@ -284,6 +298,8 @@ compartiments:
     statut: collecte
     fichier: collecte_federal_register.py
 - id: mediateurs
+  geopolitique:
+    pays: [EGY, QAT, SAU, TUR]
   organisation: geopolitique
   nom: Médiateurs et diplomatie régionale
   elements:
@@ -316,6 +332,8 @@ compartiments:
     statut: collecte
     fichier: collecte_routines.py
 - id: humanitaire
+  geopolitique:
+    pays: [ISR, PSE, LBN, SYR]
   organisation: societe
   nom: Situation humanitaire
   elements:
@@ -368,6 +386,8 @@ compartiments:
     statut: collecte
     adaptateur: telegram:tout
 - id: relief
+  geopolitique:
+    pays: [ISR, LBN, SYR]
   organisation: relief
   nom: Relief (hauteurs, vallées, frontières naturelles)
   elements:
@@ -391,6 +411,8 @@ compartiments:
   - source: modèles numériques de terrain publics
     statut: a_brancher
 - id: eau
+  geopolitique:
+    pays: [ISR, PSE, LBN, JOR]
   organisation: eau
   nom: Eau (Jourdain, nappes, Litani)
   elements:
@@ -420,6 +442,8 @@ compartiments:
   - source: rapports publics des agences de l'ONU sur l'eau et l'assainissement
     statut: a_brancher
 - id: epidemies
+  geopolitique:
+    pays: [ISR, PSE, LBN, SYR]
   organisation: microbiologique
   nom: Épidémies en temps de guerre
   elements:
@@ -442,6 +466,8 @@ compartiments:
   - source: bulletins publics de l'OMS
     statut: a_brancher
 - id: convention
+  geopolitique:
+    pays: [ISR, PSE, LBN, SYR]
   organisation: convention
   nom: Reconnaissances et frontières disputées
   elements:

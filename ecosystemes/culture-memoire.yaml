@@ -96,6 +96,8 @@ compartiments:
   - source: Liste du patrimoine mondial (whc.unesco.org, données publiques)
     statut: a_brancher
 - id: patrimoine_en_guerre
+  geopolitique:
+    pays: [LBN, PSE, SDN, UKR]
   nom: Patrimoine touché par les guerres
   organisation: geopolitique
   elements:

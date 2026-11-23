@@ -13,6 +13,8 @@ declaration:
   taille: une unité, une armée, un État, une coalition
 compartiments:
 - id: front
+  geopolitique:
+    pays: [RUS, UKR]
   organisation: geopolitique
   nom: Front et opérations
   elements:
@@ -69,6 +71,8 @@ compartiments:
     statut: collecte
     adaptateur: telegram:kpszsu
 - id: capacites
+  geopolitique:
+    pays: [RUS, UKR]
   organisation: technique
   nom: Capacités militaires et industrie
   elements:
@@ -88,6 +92,8 @@ compartiments:
     statut: collecte
     adaptateur: paire:RU:UA:force
 - id: soutiens
+  geopolitique:
+    pays: [CHN, IRN, PRK, USA]
   organisation: geopolitique
   nom: Soutiens extérieurs
   elements:
@@ -131,6 +137,8 @@ compartiments:
     statut: collecte
     adaptateur: hostilites:MD
 - id: sanctions
+  geopolitique:
+    pays: [RUS]
   organisation: statut
   nom: Sanctions
   elements:
@@ -166,6 +174,8 @@ compartiments:
     statut: collecte
     adaptateur: sanctions_chine:UA
 - id: economie_russe
+  geopolitique:
+    pays: [RUS]
   organisation: economie
   nom: Économie de guerre russe
   elements:
@@ -191,6 +201,8 @@ compartiments:
     fichier: collecte_fred.py
     adaptateur: fred:DCOILBRENTEU
 - id: economie_ukraine
+  geopolitique:
+    pays: [UKR]
   organisation: economie
   nom: Économie et infrastructures ukrainiennes
   elements:
@@ -211,6 +223,8 @@ compartiments:
   - source: anomalies de température (froid et demande d'énergie)
     statut: a_brancher
 - id: negociations
+  geopolitique:
+    pays: [RUS, UKR]
   organisation: geopolitique
   nom: Négociations et diplomatie
   elements:
@@ -290,6 +304,8 @@ compartiments:
     statut: collecte
     adaptateur: paire_mois:RU:UA:conflit
 - id: opinions
+  geopolitique:
+    pays: [RUS, UKR]
   organisation: societe
   nom: Opinions et cohésion
   elements:
@@ -318,6 +334,8 @@ compartiments:
     statut: collecte
     adaptateur: telegram:mod_russia
 - id: mer_noire
+  geopolitique:
+    pays: [RUS, UKR]
   organisation: ocean
   nom: Mer Noire et exportations
   elements:
@@ -336,6 +354,8 @@ compartiments:
     fichier: collecte_portwatch.py
     adaptateur: portwatch:bosphore:navires
 - id: relief_fleuves
+  geopolitique:
+    pays: [UKR]
   organisation: relief
   nom: Relief et fleuves (plaine, Dniepr, marais)
   elements:
@@ -365,6 +385,8 @@ compartiments:
   - source: cartes topographiques et hydrographiques publiques
     statut: a_brancher
 - id: hiver_saisons
+  geopolitique:
+    pays: [RUS, UKR]
   organisation: climat
   nom: Hiver et saisons (régime climatique, distinct de la météo)
   elements:
@@ -388,6 +410,8 @@ compartiments:
   - source: anomalies de température à Kyiv et Moscou (GHCN-Daily, points à ajouter à collecte_meteo.py)
     statut: a_brancher
 - id: sols_agriculture
+  geopolitique:
+    pays: [UKR]
   organisation: mineral
   nom: Sols et agriculture (terres noires)
   elements:
@@ -418,6 +442,8 @@ compartiments:
     fichier: collecte_feux.py
     adaptateur: feux:UA
 - id: atomique
+  geopolitique:
+    pays: [UKR]
   organisation: atomique
   nom: Centrales nucléaires et sûreté (niveau institutionnel)
   elements:

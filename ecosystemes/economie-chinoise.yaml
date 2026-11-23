@@ -13,6 +13,8 @@ declaration:
   taille: un ménage, une entreprise, une province, l'économie nationale
 compartiments:
 - id: activite
+  geopolitique:
+    pays: [CHN]
   organisation: economie
   nom: Activité économique
   elements:
@@ -50,6 +52,8 @@ compartiments:
     statut: collecte
     adaptateur: feries_chine
 - id: immobilier
+  geopolitique:
+    pays: [CHN]
   organisation: economie
   nom: Immobilier et collectivités locales
   elements:
@@ -85,6 +89,8 @@ compartiments:
   - source: prix et ventes de logements (publication mensuelle officielle)
     statut: a_brancher
 - id: exportations
+  geopolitique:
+    pays: [CHN]
   organisation: economie
   nom: Industrie et exportations
   elements:
@@ -114,6 +120,8 @@ compartiments:
     fichier: collecte_portwatch.py
     adaptateur: portwatch:taiwan:porte_conteneurs
 - id: consommation
+  geopolitique:
+    pays: [CHN]
   organisation: economie
   nom: Consommation des ménages
   elements:
@@ -140,6 +148,8 @@ compartiments:
     statut: collecte
     adaptateur: feries_chine
 - id: emploi
+  geopolitique:
+    pays: [CHN]
   organisation: societe
   nom: Emploi et chômage des jeunes
   elements:
@@ -163,6 +173,8 @@ compartiments:
   - source: taux de chômage des jeunes (publication officielle mensuelle)
     statut: a_brancher
 - id: politique_monetaire
+  geopolitique:
+    pays: [CHN]
   organisation: statut
   nom: Politique monétaire et budgétaire
   elements:
@@ -192,6 +204,8 @@ compartiments:
   - source: communiqués de la banque centrale chinoise (publics)
     statut: a_brancher
 - id: pouvoir
+  geopolitique:
+    pays: [CHN]
   organisation: statut
   nom: Pouvoir et orientations politiques
   elements:
@@ -247,6 +261,8 @@ compartiments:
     statut: collecte
     adaptateur: manifestations:CN
 - id: statistiques
+  geopolitique:
+    pays: [CHN]
   organisation: convention
   nom: Statistiques officielles (convention)
   elements:
@@ -277,6 +293,8 @@ compartiments:
     statut: collecte
     adaptateur: calendrier_nbs
 - id: matieres_premieres
+  geopolitique:
+    pays: [CHN]
   organisation: economie
   nom: Demande de matières premières
   elements:
@@ -313,6 +331,8 @@ compartiments:
     fichier: collecte_meteo.py
     adaptateur: meteo:shanghai
 - id: exterieur
+  geopolitique:
+    pays: [CHN]
   organisation: geopolitique
   nom: Relations économiques extérieures
   elements:
@@ -348,6 +368,8 @@ compartiments:
     fichier: collecte_sanctions.py
     adaptateur: sanctions:CN
 - id: eau_fleuves
+  geopolitique:
+    pays: [CHN]
   organisation: eau
   nom: Eau et fleuves (nord sec, sud humide)
   elements:
@@ -383,6 +405,8 @@ compartiments:
     fichier: collecte_meteo.py
     adaptateur: climat:shanghai
 - id: demographie
+  geopolitique:
+    pays: [CHN]
   organisation: societe
   nom: Démographie (vieillissement, baisse des naissances)
   elements:
@@ -406,6 +430,8 @@ compartiments:
   - source: annuaires statistiques publics (Bureau national des statistiques)
     statut: a_brancher
 - id: epizooties
+  geopolitique:
+    pays: [CHN]
   organisation: microbiologique
   nom: Épizooties et épidémies
   elements:
@@ -434,6 +460,8 @@ compartiments:
   - source: déclarations publiques à l'Organisation mondiale de la santé animale (WAHIS)
     statut: a_brancher
 - id: sols_chimie
+  geopolitique:
+    pays: [CHN]
   organisation: chimique
   nom: Sols, engrais et pollution
   elements:

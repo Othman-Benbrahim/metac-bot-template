@@ -20,6 +20,8 @@ declaration:
   taille: micro (un poste-frontière) à macro (la région)
 compartiments:
 - id: inde_pakistan
+  geopolitique:
+    pays: [IND, PAK]
   nom: Inde et Pakistan (Cachemire, crises militaires)
   organisation: geopolitique
   elements:
@@ -53,6 +55,8 @@ compartiments:
     source: situations observées (lecteur-local, comptes/situations.jsonl)
     statut: a_brancher
 - id: indus
+  geopolitique:
+    pays: [IND, PAK]
   nom: Eaux de l'Indus (traité de 1960)
   organisation: eau
   elements:
@@ -66,6 +70,8 @@ compartiments:
   traces:
   - *id001
 - id: afghanistan_pakistan
+  geopolitique:
+    pays: [AFG, PAK]
   nom: Pakistan et Afghanistan des talibans (TTP, frontière)
   organisation: geopolitique
   elements:
@@ -97,6 +103,8 @@ compartiments:
     statut: a_brancher
   - *id001
 - id: inde_puissance
+  geopolitique:
+    pays: [IND]
   nom: Inde, puissance économique et diplomatique
   organisation: economie
   elements:
@@ -113,6 +121,8 @@ compartiments:
     statut: a_brancher
   - *id001
 - id: pakistan_interieur
+  geopolitique:
+    pays: [PAK]
   nom: Pakistan, pouvoir et économie
   organisation: statut
   elements:
@@ -128,6 +138,8 @@ compartiments:
   - {source: "flux RSS Dawn, famille « asie » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
 - id: bangladesh
+  geopolitique:
+    pays: [BGD]
   nom: Bangladesh après le soulèvement de 2024
   organisation: societe
   elements:
@@ -141,6 +153,8 @@ compartiments:
   traces:
   - *id001
 - id: puissances
+  geopolitique:
+    pays: [CHN, USA, RUS]
   nom: Puissances extérieures (Chine, États-Unis, Russie, Golfe)
   organisation: geopolitique
   elements:
