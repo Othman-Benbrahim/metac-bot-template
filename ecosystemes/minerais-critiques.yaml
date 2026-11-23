@@ -1,6 +1,12 @@
 # 0.10.425 — fiche créée le 2026-11-22 (décision de l'auteur, 4 h 34 : « commence dans l'ordre et comble ce qui manque »).
 # Les minerais critiques n'étaient que mentionnés dans rivalite-sino-americaine (terres_rares), sciences-techniques et
 # dette-emergents (gisements). Chiffres vérifiés le 2026-11-22. Relations à vérifier sur sources.
+# 0.10.467 (décision de l'auteur, 2026-11-23, 6 h 26 ; ressource signalée : la « roue des métaux » de M. Reuter, reprise
+# par SMS group, SMS insights 2024-2) : métaux PORTEURS et métaux COMPAGNONS (sous-produits). Relations « sous-produit de »
+# écrites en commensalisme (le porteur nourrit l'offre du compagnon, sans retour notable) ; tension de désynchronisation :
+# l'offre d'un compagnon suit le cycle de son porteur, pas son propre prix. Sources primaires : Nassar, Graedel et Harper,
+# « By-product metals are technologically essential but have problematic supply », Science Advances 1(3), e1400180, 2015
+# (doi 10.1126/sciadv.1400180) ; USGS, Mineral Commodity Summaries 2026 (gallium, germanium, cobalt).
 theme: minerais-critiques
 nom: Minerais et métaux critiques (monde)
 declaration:
@@ -70,6 +76,8 @@ compartiments:
   nom: Cuivre
   organisation: mineral
   elements:
+  - métal porteur du sélénium et du tellure (au moins 90 % de chacun vient du cuivre) et d'un peu moins de la moitié du
+    molybdène en 2008 (Nassar, Graedel et Harper, Science Advances, 2015)
   - prix au-delà de 12 000 dollars la tonne en décembre 2025, brièvement au-delà de 14 500 en séance en janvier 2026 ;
     perturbations dans plusieurs grandes mines ; frais de traitement des fonderies fixés à 0 dollar la tonne pour 2026,
     le plus bas jamais convenu (AIE, commentaire de 2026)
@@ -89,6 +97,9 @@ compartiments:
   elements:
   - investissement dans les métaux des batteries en baisse de plus de 20 % en 2025 (AIE, 2026)
   - cobalt de la RDC, nickel d'Indonésie, graphite et raffinage du lithium en Chine
+  - le cobalt est extrait avec le cuivre et le nickel (secteur cuivre-nickel de la roue des métaux, Reuter, reprise par
+    SMS group, 2024) ; la RDC fait environ 74 % de la production minière mondiale en 2025, 230 000 tonnes sur 310 000
+    (USGS, Mineral Commodity Summaries 2026)
   niveau:
     espace: monde
     temps: années
@@ -111,6 +122,62 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - *id001
+- id: zinc_plomb
+  nom: Zinc et plomb (métaux porteurs)
+  organisation: mineral
+  elements:
+  - le zinc porte l'indium (presque tout l'indium est un sous-produit du zinc), le cadmium et le thallium ; le plomb
+    porte l'antimoine et le bismuth ; plomb, zinc, cuivre et or donnent environ 71 % de l'argent (Nassar, Graedel et
+    Harper, Science Advances, 2015)
+  - le germanium est récupéré dans des concentrés de zinc (USGS, Mineral Commodity Summaries 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: USGS, Mineral Commodity Summaries (zinc, plomb), séries publiques annuelles
+    statut: a_brancher
+  - *id001
+- id: aluminium
+  nom: Aluminium et alumine (métal porteur)
+  organisation: mineral
+  elements:
+  - le gallium est récupéré surtout comme sous-produit du traitement de la bauxite, parfois du zinc ; production
+    primaire mondiale d'environ 900 tonnes en 2025, dont 99 % en Chine pour le gallium de faible pureté (USGS, Mineral
+    Commodity Summaries 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: USGS, Mineral Commodity Summaries (bauxite et alumine), séries publiques annuelles
+    statut: a_brancher
+  - *id001
+- id: metaux_compagnons
+  nom: Métaux compagnons (sous-produits gallium, germanium, indium, sélénium, tellure, cobalt…)
+  organisation: mineral
+  elements:
+  - un métal compagnon est obtenu surtout ou entièrement comme sous-produit d'un métal porteur ; 38 des 62 métaux étudiés
+    dépendent à plus de 50 % d'un porteur ; 27 des 38 compagnons sont recyclés à moins de 1 % en fin de vie (Nassar,
+    Graedel et Harper, Science Advances, 2015)
+  - l'offre d'un compagnon suit la production de son porteur, pas son propre prix ; exemple du ruthénium, compagnon du
+    platine, dont le prix a été multiplié par 9 en un an jusqu'en février 2007 quand sa demande a bondi (Nassar et al.,
+    2015)
+  - contrôles chinois à l'exportation du gallium et du germanium en août 2023, interdiction vers les États-Unis en
+    décembre 2024, levée pour un an en novembre 2025 (USGS, Mineral Commodity Summaries 2026)
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: Nassar, Graedel et Harper, Science Advances 1(3), e1400180, 2015 (compagnonnalité de 62 métaux)
+    statut: a_brancher
+  - source: roue des métaux (M. Reuter ; reprise par SMS group, SMS insights 2024-2), ressource signalée par l'auteur
+    statut: a_brancher
   - *id001
 - id: investissement
   nom: Investissement et nouvelles mines
@@ -179,7 +246,93 @@ relations:
   coupure: inconnue
   statut: a_verifier
   texte: de nouvelles mines et raffineries hors des pays dominants réduiraient la concentration, avec des délais très longs
+- de: cuivre
+  vers: metaux_compagnons
+  effet: +
+  retour: '0'
+  forme: commensalisme
+  delai: mois
+  force: forte
+  coupure: récupération non rentable ou circuit de traitement inadapté
+  statut: a_verifier
+  texte: 'sous-produit : la production de cuivre fixe l''offre de sélénium, de tellure, d''une partie du molybdène et du
+    cobalt (Nassar et al., 2015 ; roue des métaux)'
+- de: zinc_plomb
+  vers: metaux_compagnons
+  effet: +
+  retour: '0'
+  forme: commensalisme
+  delai: mois
+  force: forte
+  coupure: récupération non rentable ou circuit de traitement inadapté
+  statut: a_verifier
+  texte: 'sous-produit : la production de zinc et de plomb fixe l''offre d''indium, de germanium, de cadmium, d''antimoine,
+    de bismuth et d''une grande part de l''argent (Nassar et al., 2015 ; USGS 2026)'
+- de: aluminium
+  vers: metaux_compagnons
+  effet: +
+  retour: '0'
+  forme: commensalisme
+  delai: mois
+  force: forte
+  coupure: récupération non rentable ou circuit de traitement inadapté
+  statut: a_verifier
+  texte: 'sous-produit : le traitement de la bauxite fixe l''offre de gallium (USGS 2026)'
+- de: batteries
+  vers: metaux_compagnons
+  effet: +
+  retour: '0'
+  forme: commensalisme
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: 'sous-produit : la production de nickel porte une partie du cobalt (roue des métaux)'
+- de: concentration
+  vers: metaux_compagnons
+  effet: '-'
+  delai: années
+  force: forte
+  coupure: récupération hors du pays dominant
+  statut: a_verifier
+  texte: quand le raffinage du porteur est concentré dans un pays, la récupération du compagnon l'est aussi (gallium
+    chinois à 99 %, USGS 2026), ce qui rend le contrôle à l'exportation très efficace
+cycles:
+- id: cycle_du_porteur
+  nom: Cycle de production du métal porteur
+  sorte: endogene
+  mecanisme: 'l''offre d''un métal compagnon suit la production de son porteur (cuivre, zinc, aluminium, nickel), qui
+    obéit à ses propres prix et à ses propres cycles d''investissement ; le compagnon ne peut pas accélérer seul'
+  phase_vulnerable: les phases de baisse de production du porteur (fermetures de fonderies, prix bas du porteur)
+  compartiments: [cuivre, zinc_plomb, aluminium, metaux_compagnons]
+  sources: ['Nassar, Graedel et Harper, Science Advances, 2015']
+  statut: mecanisme
+tensions:
+- id: compagnon_porteur
+  nom: Demande du compagnon contre production du porteur
+  forme: desynchronisation
+  entre: [metaux_compagnons, cuivre]
+  module_par: [cycle_du_porteur]
+  mesure:
+    indicateur: écart entre la croissance de la demande d'un compagnon et celle de la production de son porteur (exemple
+      indium contre zinc, Nassar et al., 2015)
+  tampons:
+  - {nom: "stocks d'État et stocks industriels de métaux mineurs", niveau: inconnu}
+  - {nom: "taux de récupération à améliorer (parfois 10 % seulement)", niveau: inconnu, mesure: "taux de récupération du compagnon dans les circuits du porteur"}
+  - {nom: "recyclage en fin de vie (souvent moins de 1 %)", niveau: faible, mesure: "taux de recyclage en fin de vie"}
+  seuil:
+    habitus: circuits de raffinage du porteur conçus sans récupérer le compagnon
+    indicateurs_lents: [part de la récupération concentrée dans un seul pays, taux de recyclage en fin de vie]
+    bascule: flambée du prix du compagnon, contrôle à l'exportation, pénurie pour une industrie (électronique, défense)
+    hysteresis: inconnu
+  statut: a_verifier
+  texte: 'la demande d''un compagnon peut croître bien plus vite que la production de son porteur (production primaire
+    d''indium multipliée par près de 18 de 1975 à 2012, zinc par 3,3, Nassar et al., 2015) ; l''écart ne se comble pas par
+    le prix'
 ponts:
+- depuis: metaux_compagnons
+  vers: rivalite-sino-americaine:commerce
+  nature: contrôles chinois du gallium et du germanium dans la guerre commerciale
 - depuis: controles_export
   vers: rivalite-sino-americaine:terres_rares
   nature: les terres rares dans la rivalité sino-américaine
