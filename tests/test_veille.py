@@ -62,3 +62,16 @@ def test_catalogue_secours_bien_formes():
     for fid, f in veille.catalogue()["flux"].items():
         for c in veille.candidats(f):
             assert c["url"].startswith("https://"), fid
+
+
+def test_reparer_entites_html_et_bom():
+    import veille
+    x = "﻿\n<?xml version='1.0'?><rss><channel><item><title>A&nbsp;B &eacute; C & D</title><link>https://x/1</link></item></channel></rss>"
+    a = veille.lire_flux(x.encode("utf-8"))
+    assert a and a[0]["titre"].startswith("A") and "é" in a[0]["titre"]
+
+
+def test_muets_passes_dans_la_resolution():
+    import veille
+    cat = {"organisations": {"o": ["m", "b"]}, "regions": {"r": ["c"]}, "fiches": {"t": {"region": "r"}}}
+    assert veille.flux_compartiment(cat, "t", {"id": "x", "organisation": "o"}, {}, sauf={"m"}) == ["b", "c"]

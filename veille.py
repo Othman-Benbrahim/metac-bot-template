@@ -57,16 +57,18 @@ def region_de(pays: list[str], defaut: str, table: dict[str, str]) -> str:
     return max(set(regs), key=regs.count)
 
 
-def flux_compartiment(cat: dict, theme: str, comp: dict, table: dict[str, str] | None = None, n: int = 3) -> list[str]:
-    """Flux d'un compartiment : ceux que le catalogue lui donne ; sinon un du thème, un de la région, puis la suite."""
+def flux_compartiment(cat: dict, theme: str, comp: dict, table: dict[str, str] | None = None, n: int = 3,
+                      sauf: set[str] | frozenset = frozenset()) -> list[str]:
+    """Flux d'un compartiment : ceux que le catalogue lui donne ; sinon un du thème, un de la région, puis la suite.
+    `sauf` (0.10.482) : flux muets au dernier passage, passés au profit du suivant de la liste."""
     fi = (cat.get("fiches") or {}).get(theme) or {}
-    propres = (fi.get("compartiments") or {}).get(comp.get("id"), [])
+    propres = [x for x in (fi.get("compartiments") or {}).get(comp.get("id"), []) if x not in sauf]
     if propres:
         return list(dict.fromkeys(propres))[:n]
     table = table if table is not None else regions_pays()
-    org = (cat.get("organisations") or {}).get(comp.get("organisation") or "", [])
+    org = [x for x in (cat.get("organisations") or {}).get(comp.get("organisation") or "", []) if x not in sauf]
     reg_nom = region_de(list((comp.get("geopolitique") or {}).get("pays") or []), fi.get("region", "monde"), table)
-    reg = (cat.get("regions") or {}).get(reg_nom, [])
+    reg = [x for x in (cat.get("regions") or {}).get(reg_nom, []) if x not in sauf]
     out = []
     for groupe in (org[:1], reg[:1], org[1:2], reg[1:2]):
         for x in groupe:
@@ -109,9 +111,31 @@ def _date(s: str) -> str:
         return s[:16]
 
 
+def _reparer(contenu: bytes) -> bytes:
+    """Flux presque bien formés : BOM et blancs avant <?xml, entités HTML (&nbsp;, &eacute;…) que XML ne connaît pas,
+    esperluettes nues. Une page HTML (défi anti-robots) reste illisible, et c'est voulu."""
+    import html.entities
+    t = contenu.decode("utf-8", errors="replace").lstrip("﻿ \t\r\n")
+    xml_ok = {"amp", "lt", "gt", "quot", "apos"}
+    t = re.sub(r"&([A-Za-z][A-Za-z0-9]*);",
+               lambda m: m.group(0) if m.group(1) in xml_ok
+               else (f"&#{html.entities.name2codepoint[m.group(1)]};" if m.group(1) in html.entities.name2codepoint else ""), t)
+    t = re.sub(r"&(?!#\d+;|#x[0-9A-Fa-f]+;|[A-Za-z][A-Za-z0-9]*;)", "&amp;", t)
+    t = re.sub(r"^<\?xml[^>]*\?>", "", t)
+    return t.encode("utf-8")
+
+
+def muets(lus: dict) -> set[str]:
+    """Flux muets au dernier passage (registre/veille-flux.json) : la résolution les passe pour un compartiment."""
+    return {k for k, v in (lus or {}).items() if v.get("statut") != "ok"}
+
+
 def lire_flux(contenu: bytes, n: int = PAR_FLUX) -> list[dict]:
     """RSS 2.0, RSS 1.0 (RDF) ou Atom : titre, lien, date des n derniers articles (rien d'autre)."""
-    racine = ET.fromstring(contenu)
+    try:
+        racine = ET.fromstring(contenu)
+    except ET.ParseError:
+        racine = ET.fromstring(_reparer(contenu))               # 0.10.482 : BOM, blancs en tête, entités HTML
     for el in racine.iter():                                    # on retire les espaces de noms
         if isinstance(el.tag, str) and "}" in el.tag:
             el.tag = el.tag.split("}", 1)[1]
