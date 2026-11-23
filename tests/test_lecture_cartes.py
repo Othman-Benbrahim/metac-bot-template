@@ -68,3 +68,66 @@ class TestAnalyseCartes(unittest.TestCase):
         # aucun mois « haut » dans l'historique 1989-2025 de l'exemple : pas de taux de départ pour cet état
         self.assertEqual(sum(a["pays"][0]["proba_mois_suivant"].values()), 0)
         self.assertAlmostEqual(sum(a["transitions"]["probabilites"][2]), 1.0, places=2)
+
+
+class TestLectureEtendue(unittest.TestCase):
+    """0.10.472 : matière déjà téléchargée (types, civils, régions, acteurs), VPP et Onset."""
+    GED2 = ("date_start,country,country_id,type_of_violence,best,deaths_civilians,adm_1,side_a,side_b\n"
+            "2026-10-02,Yemen (North Yemen),678,1,10,2,Taizz,Government of Yemen,Ansarallah\n"
+            "2026-10-03,Yemen (North Yemen),678,3,5,5,Marib,Ansarallah,Civilians\n"
+            "2026-10-04,Yemen (North Yemen),678,1,1,0,Taizz,Government of Yemen,AQAP\n")
+
+    def test_detail_du_mois(self):
+        spec = next(s for s in lc.specs() if s["id"] == "ucdp")
+        agg, inc = {}, set()
+        lc.agreger(lc.lignes_csv(self.GED2.encode(), "csv"), spec["lecture"], "mois", lc.table_pays(), agg, inc)
+        with tempfile.TemporaryDirectory() as d:
+            lc.ecrire_agregats(spec, agg, Path(d) / "o.csv")
+            r = list(csv.DictReader(open(Path(d) / "o.csv")))[0]
+        self.assertEqual((r["somme"], r["somme_categorie_1"], r["somme_categorie_3"]), ("16.0", "11.0", "5.0"))
+        self.assertEqual((r["morts_civils"], r["distincts_regions"]), ("7.0", "2"))
+        self.assertEqual(r["principaux"].split(" ; ")[0], "Ansarallah")        # 15 morts (10 + 5)
+        import analyse_cartes as ac
+        dm = ac.detail_mois(r)
+        self.assertNotIn("Civilians", dm["acteurs"])
+        self.assertEqual(dm["par_type"]["contre des civils"], 5.0)
+
+    def test_onset_pays_annee_roles(self):
+        spec = next(s for s in lc.specs() if s["id"] == "ucdp-onset")
+        html = ('<a href="https://ucdp.uu.se/downloads/onset/ucdp-intrastate-country-onset-251.csv">a</a>'
+                '<a href="https://ucdp.uu.se/downloads/onset/ucdp-intrastate-country-multiple-onset-251.csv">b</a>'
+                '<a href="https://ucdp.uu.se/downloads/onset/ucdp-interstate-country-onset-251.csv">c</a>')
+        l = lc.choisir_liens(html, spec, spec["page"])
+        self.assertTrue(l["interne"].endswith("intrastate-country-onset-251.csv"))
+        self.assertTrue(l["entre_etats"].endswith("interstate-country-onset-251.csv"))
+        intra = "abc,name,year,gwno_a,newconf,onset1,onset2,onset3,onset5,onset10,onset20\nMLI,Mali,2012,432,0,1,1,1,1,1,0\nMLI,Mali,2013,432,0,0,0,0,0,0,0\n"
+        inter = "abc,name,year,gwno_a,newconf,onset1,onset2,onset3,onset5,onset10,onset20\nMLI,Mali,2012,432,0,0,0,0,0,0,0\nMLI,Mali,2013,432,0,0,0,0,0,0,0\n"
+        agg, inc = {}, set()
+        lc.agreger(lc.lignes_csv(intra.encode(), "csv"), spec["lecture"], "interne", lc.table_pays(), agg, inc)
+        lc.agreger(lc.lignes_csv(inter.encode(), "csv"), spec["lecture"], "entre_etats", lc.table_pays(), agg, inc)
+        with tempfile.TemporaryDirectory() as d:
+            lc.ecrire_agregats(spec, agg, Path(d) / "o.csv")
+            r = list(csv.DictReader(open(Path(d) / "o.csv")))
+        self.assertEqual(r[0]["annee"], "2012")
+        self.assertEqual((r[0]["interne_reprise_1"], r[0]["entre_etats_reprise_1"]), ("1.0", "0.0"))
+        import analyse_cartes as ac
+        o = ac.analyser_onset(r)
+        self.assertEqual(o["dernier_par_pays"]["MLI"], {"annee": "2012", "types": ["interne"], "nom": "Mali"})
+        self.assertEqual(o["taux_annuel"], 0.5)
+
+    def test_vpp(self):
+        spec = next(s for s in lc.specs() if s["id"] == "ucdp-vpp")
+        l = lc.choisir_liens('<a href="https://ucdp.uu.se/downloads/vpp/GEDEvent_v26_1_4_1101_2512.csv">x</a>'
+                             '<a href="https://ucdp.uu.se/downloads/vpp/GEDEvent_v26_1_4_1101_2512.xlsx">y</a>',
+                             spec, spec["page"])
+        self.assertEqual(l, {"evenements": "https://ucdp.uu.se/downloads/vpp/GEDEvent_v26_1_4_1101_2512.csv"})
+        import analyse_cartes as ac
+        v = ac.analyser_vpp([{"iso3": "KEN", "pays_source": "Kenya", "mois": "2024-06", "evenements": "3", "somme": "20"},
+                             {"iso3": "KEN", "pays_source": "Kenya", "mois": "2025-07", "evenements": "2", "somme": "8"}])
+        self.assertEqual((v["derniere_annee"], v["pays"][0]["evenements"], v["pays"][0]["serie_evenements"]), ("2025", 2, [3, 2]))
+
+    def test_empreinte_change_avec_la_lecture(self):
+        spec = next(s for s in lc.specs() if s["id"] == "ucdp")
+        e = lc.empreinte_lecture(spec)
+        spec2 = dict(spec, lecture=dict(spec["lecture"], sommes={}))
+        self.assertNotEqual(e, lc.empreinte_lecture(spec2))

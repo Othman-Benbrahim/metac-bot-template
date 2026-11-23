@@ -1,0 +1,25 @@
+# Standard de lecture d'une carte publiée (bot 0.10.472, décision de l'auteur du 2026-11-23, 8 h 21 : « rajoute ces
+# deux sources »). Même lecteur générique (lecture_cartes.py) : agrégats seulement, référence gardée, fichier supprimé.
+id: ucdp-vpp
+nom: UCDP, manifestations politiques violentes, version événements géoréférencés (VPP GED)
+emetteur: Uppsala Conflict Data Program, université d'Uppsala
+licence: CC BY 4.0 (citer l'UCDP, jeu VPP)
+page: https://ucdp.uu.se/downloads/
+frequence: annuelle             # publié une fois par an ; couvre 2011 à l'année précédente
+fichiers:
+- role: evenements
+  motif: 'downloads/vpp/GEDEvent_v(\d+)_(\d+)_(\d+)_(\d+)_(\d+)\.csv'
+  format: csv
+lecture:                        # colonnes supposées identiques à la GED ; le journal signale celles qui manquent
+  date: date_start
+  pays: country
+  code_pays: country_id
+  somme: best                   # meilleure estimation des morts
+  sommes:
+    morts_civils: deaths_civilians
+  distincts:
+    regions: adm_1
+  principaux:
+    colonnes: [side_a, side_b]
+    nombre: 3
+  agregat: pays_mois

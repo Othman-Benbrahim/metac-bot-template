@@ -25,4 +25,13 @@ lecture:
   categorie: type_of_violence   # 1 = étatique, 2 = non étatique, 3 = contre des civils
   somme: best                   # meilleure estimation des morts
   agregat: pays_mois            # une ligne par pays et par mois
+  # 0.10.472 (décision de l'auteur, 2026-11-23, 8 h 21) : la matière déjà téléchargée et jusque-là jetée
+  somme_par_categorie: true     # morts par type de violence (1, 2, 3), pas seulement le nombre d'événements
+  sommes:
+    morts_civils: deaths_civilians
+  distincts:
+    regions: adm_1              # nombre de régions (premier niveau administratif) touchées dans le mois
+  principaux:                   # les trois acteurs (camp A ou B) qui pèsent le plus dans les morts du mois
+    colonnes: [side_a, side_b]
+    nombre: 3
 priorite: [mois, cumul_annee, historique]   # pour un même mois, la source la plus récente l'emporte

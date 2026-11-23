@@ -1,0 +1,29 @@
+# Standard de lecture d'une carte publiée (bot 0.10.472, décision de l'auteur du 2026-11-23, 8 h 21 : « rajoute ces
+# deux sources »). Même lecteur générique (lecture_cartes.py) : agrégats seulement, référence gardée, fichier supprimé.
+id: ucdp-onset
+nom: UCDP, déclenchements de conflits armés (Onset), niveau pays, conflits internes et entre États
+emetteur: Uppsala Conflict Data Program, université d'Uppsala
+licence: CC BY 4.0 (citer l'UCDP, jeu Onset)
+page: https://ucdp.uu.se/downloads/
+frequence: annuelle
+fichiers:                       # version « pays » (v2) : une ligne par pays et par année
+- role: interne
+  motif: 'downloads/onset/ucdp-intrastate-country-onset-(\d+)\.csv'
+  format: csv
+- role: entre_etats
+  motif: 'downloads/onset/ucdp-interstate-country-onset-(\d+)\.csv'
+  format: csv
+combiner: roles                 # les deux fichiers se complètent : colonnes interne_… et entre_etats_…
+lecture:
+  date: year
+  pays: name                    # nom du lieu selon le gouvernement
+  code_pays: gwno_a             # code Gleditsch et Ward
+  sommes:                       # 1 si l'année ouvre un conflit nouveau ou une reprise après plus de N années sans conflit actif
+    nouveau: newconf
+    reprise_1: onset1
+    reprise_2: onset2
+    reprise_3: onset3
+    reprise_5: onset5
+    reprise_10: onset10
+    reprise_20: onset20
+  agregat: pays_annee
