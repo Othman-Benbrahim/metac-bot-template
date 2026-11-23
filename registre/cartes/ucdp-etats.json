@@ -1,0 +1,3730 @@
+{
+ "seuils": "calme 0 ; bas 1-24 ; moyen 25-999 ; haut 1 000 et plus (morts par mois, meilleure estimation)",
+ "historique": [
+  "1989-01",
+  "2025-12"
+ ],
+ "dernier_mois": "2026-10",
+ "mois_recents": [
+  "2025-10",
+  "2025-11",
+  "2025-12",
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04",
+  "2026-05",
+  "2026-06",
+  "2026-07",
+  "2026-08",
+  "2026-09",
+  "2026-10"
+ ],
+ "transitions": {
+  "etats": [
+   "calme",
+   "bas",
+   "moyen",
+   "haut"
+  ],
+  "comptes": [
+   [
+    40303,
+    2040,
+    493,
+    25
+   ],
+   [
+    2065,
+    3517,
+    1196,
+    22
+   ],
+   [
+    470,
+    1233,
+    5487,
+    175
+   ],
+   [
+    14,
+    12,
+    198,
+    340
+   ]
+  ],
+  "probabilites": [
+   [
+    0.9403,
+    0.0476,
+    0.0115,
+    0.0006
+   ],
+   [
+    0.3037,
+    0.5172,
+    0.1759,
+    0.0032
+   ],
+   [
+    0.0638,
+    0.1674,
+    0.745,
+    0.0238
+   ],
+   [
+    0.0248,
+    0.0213,
+    0.3511,
+    0.6028
+   ]
+  ]
+ },
+ "episodes_moyen_ou_plus": {
+  "nombre": 1755,
+  "duree_mediane_mois": 1,
+  "duree_q90_mois": 7
+ },
+ "pays": [
+  {
+   "iso3": "UKR",
+   "nom": "Ukraine",
+   "etat": "haut",
+   "morts_mois": 6194.0,
+   "serie": [
+    5066.0,
+    10713.0,
+    10107.0,
+    13384.0,
+    7474.0,
+    7849.0,
+    6954.0,
+    6718.0,
+    4810.0,
+    4983.0,
+    5651.0,
+    1.0,
+    6194.0
+   ],
+   "mediane_12": 6836.0,
+   "proba_mois_suivant": {
+    "calme": 0.0248,
+    "bas": 0.0213,
+    "moyen": 0.3511,
+    "haut": 0.6028
+   }
+  },
+  {
+   "iso3": "YEM",
+   "nom": "Yemen (North Yemen)",
+   "etat": "haut",
+   "morts_mois": 1573.0,
+   "serie": [
+    48.0,
+    59.0,
+    233.0,
+    159.0,
+    55.0,
+    69.0,
+    56.0,
+    56.0,
+    55.0,
+    238.0,
+    1484.0,
+    174.0,
+    1573.0
+   ],
+   "mediane_12": 64.0,
+   "proba_mois_suivant": {
+    "calme": 0.0248,
+    "bas": 0.0213,
+    "moyen": 0.3511,
+    "haut": 0.6028
+   }
+  },
+  {
+   "iso3": "NGA",
+   "nom": "Nigeria",
+   "etat": "moyen",
+   "morts_mois": 970.0,
+   "serie": [
+    255.0,
+    340.0,
+    358.0,
+    719.0,
+    712.0,
+    698.0,
+    1034.0,
+    1010.0,
+    614.0,
+    551.0,
+    3.0,
+    20.0,
+    970.0
+   ],
+   "mediane_12": 582.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "SDN",
+   "nom": "Sudan",
+   "etat": "moyen",
+   "morts_mois": 730.0,
+   "serie": [
+    61369.0,
+    611.0,
+    770.0,
+    1060.0,
+    325.0,
+    942.0,
+    422.0,
+    392.0,
+    239.0,
+    318.0,
+    254.0,
+    3.0,
+    730.0
+   ],
+   "mediane_12": 407.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "ETH",
+   "nom": "Ethiopia",
+   "etat": "moyen",
+   "morts_mois": 612.0,
+   "serie": [
+    557.0,
+    865.0,
+    361.0,
+    300.0,
+    533.0,
+    640.0,
+    257.0,
+    211.0,
+    350.0,
+    242.0,
+    353.0,
+    41.0,
+    612.0
+   ],
+   "mediane_12": 351.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "PAK",
+   "nom": "Pakistan",
+   "etat": "moyen",
+   "morts_mois": 545.0,
+   "serie": [
+    450.0,
+    334.0,
+    223.0,
+    413.0,
+    314.0,
+    189.0,
+    202.0,
+    341.0,
+    430.0,
+    662.0,
+    535.0,
+    667.0,
+    545.0
+   ],
+   "mediane_12": 377.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "COD",
+   "nom": "DR Congo (Zaire)",
+   "etat": "moyen",
+   "morts_mois": 345.0,
+   "serie": [
+    276.0,
+    411.0,
+    518.0,
+    431.0,
+    134.0,
+    265.0,
+    382.0,
+    535.0,
+    266.0,
+    282.0,
+    189.0,
+    15.0,
+    345.0
+   ],
+   "mediane_12": 279.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "COL",
+   "nom": "Colombia",
+   "etat": "moyen",
+   "morts_mois": 309.0,
+   "serie": [
+    29.0,
+    65.0,
+    64.0,
+    132.0,
+    113.0,
+    77.0,
+    1.0,
+    204.0,
+    286.0,
+    240.0,
+    274.0,
+    2.0,
+    309.0
+   ],
+   "mediane_12": 95.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "MEX",
+   "nom": "Mexico",
+   "etat": "moyen",
+   "morts_mois": 267.0,
+   "serie": [
+    681.0,
+    310.0,
+    152.0,
+    401.0,
+    158.0,
+    270.0,
+    285.0,
+    242.0,
+    241.0,
+    236.0,
+    216.0,
+    262.0,
+    267.0
+   ],
+   "mediane_12": 252.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "BFA",
+   "nom": "Burkina Faso",
+   "etat": "moyen",
+   "morts_mois": 174.0,
+   "serie": [
+    283.0,
+    199.0,
+    177.0,
+    222.0,
+    466.0,
+    175.0,
+    369.0,
+    133.0,
+    270.0,
+    185.0,
+    171.0,
+    36.0,
+    174.0
+   ],
+   "mediane_12": 192.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "MLI",
+   "nom": "Mali",
+   "etat": "moyen",
+   "morts_mois": 168.0,
+   "serie": [
+    220.0,
+    173.0,
+    47.0,
+    107.0,
+    111.0,
+    95.0,
+    159.0,
+    488.0,
+    81.0,
+    281.0,
+    96.0,
+    194.0,
+    168.0
+   ],
+   "mediane_12": 135.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "SOM",
+   "nom": "Somalia",
+   "etat": "moyen",
+   "morts_mois": 158.0,
+   "serie": [
+    149.0,
+    279.0,
+    249.0,
+    972.0,
+    231.0,
+    188.0,
+    296.0,
+    358.0,
+    368.0,
+    325.0,
+    148.0,
+    194.0,
+    158.0
+   ],
+   "mediane_12": 264.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "ISR",
+   "nom": "Israel",
+   "etat": "moyen",
+   "morts_mois": 147.0,
+   "serie": [
+    666.0,
+    129.0,
+    66.0,
+    160.0,
+    121.0,
+    118.0,
+    138.0,
+    126.0,
+    130.0,
+    178.0,
+    103.0,
+    130.0,
+    147.0
+   ],
+   "mediane_12": 129.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "MMR",
+   "nom": "Myanmar (Burma)",
+   "etat": "moyen",
+   "morts_mois": 132.0,
+   "serie": [
+    200.0,
+    98.0,
+    191.0,
+    217.0,
+    145.0,
+    268.0,
+    127.0,
+    187.0,
+    106.0,
+    87.0,
+    129.0,
+    177.0,
+    132.0
+   ],
+   "mediane_12": 161.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "SYR",
+   "nom": "Syria",
+   "etat": "moyen",
+   "morts_mois": 121.0,
+   "serie": [
+    21.0,
+    10.0,
+    42.0,
+    122.0,
+    79.0,
+    54.0,
+    59.0,
+    54.0,
+    60.0,
+    71.0,
+    65.0,
+    40.0,
+    121.0
+   ],
+   "mediane_12": 56.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "ECU",
+   "nom": "Ecuador",
+   "etat": "moyen",
+   "morts_mois": 96.0,
+   "serie": [
+    5.0,
+    44.0,
+    36.0,
+    167.0,
+    67.0,
+    101.0,
+    89.0,
+    33.0,
+    27.0,
+    40.0,
+    85.0,
+    69.0,
+    96.0
+   ],
+   "mediane_12": 55.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "SSD",
+   "nom": "South Sudan",
+   "etat": "moyen",
+   "morts_mois": 87.0,
+   "serie": [
+    56.0,
+    10.0,
+    28.0,
+    182.0,
+    47.0,
+    128.0,
+    23.0,
+    46.0,
+    37.0,
+    49.0,
+    109.0,
+    16.0,
+    87.0
+   ],
+   "mediane_12": 46.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "ZAF",
+   "nom": "South Africa",
+   "etat": "moyen",
+   "morts_mois": 53.0,
+   "serie": [
+    1.0,
+    0,
+    0,
+    29.0,
+    17.0,
+    34.0,
+    6.0,
+    29.0,
+    47.0,
+    26.0,
+    48.0,
+    2.0,
+    53.0
+   ],
+   "mediane_12": 21.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "HTI",
+   "nom": "Haiti",
+   "etat": "moyen",
+   "morts_mois": 51.0,
+   "serie": [
+    179.0,
+    126.0,
+    35.0,
+    36.0,
+    40.0,
+    83.0,
+    30.0,
+    131.0,
+    31.0,
+    99.0,
+    52.0,
+    26.0,
+    51.0
+   ],
+   "mediane_12": 46.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "TCD",
+   "nom": "Chad",
+   "etat": "moyen",
+   "morts_mois": 49.0,
+   "serie": [
+    7.0,
+    38.0,
+    0,
+    6.0,
+    3.0,
+    44.0,
+    46.0,
+    56.0,
+    14.0,
+    2.0,
+    16.0,
+    20.0,
+    49.0
+   ],
+   "mediane_12": 15.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "RUS",
+   "nom": "Russia (Soviet Union)",
+   "etat": "moyen",
+   "morts_mois": 42.0,
+   "serie": [
+    43.0,
+    48.0,
+    53.0,
+    17.0,
+    20.0,
+    43.0,
+    81.0,
+    77.0,
+    83.0,
+    75.0,
+    54.0,
+    30.0,
+    42.0
+   ],
+   "mediane_12": 50.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "BRA",
+   "nom": "Brazil",
+   "etat": "moyen",
+   "morts_mois": 42.0,
+   "serie": [
+    35.0,
+    31.0,
+    32.0,
+    155.0,
+    59.0,
+    55.0,
+    38.0,
+    30.0,
+    41.0,
+    25.0,
+    36.0,
+    29.0,
+    42.0
+   ],
+   "mediane_12": 35.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "IND",
+   "nom": "India",
+   "etat": "moyen",
+   "morts_mois": 38.0,
+   "serie": [
+    15.0,
+    41.0,
+    35.0,
+    60.0,
+    32.0,
+    20.0,
+    32.0,
+    25.0,
+    14.0,
+    9.0,
+    17.0,
+    28.0,
+    38.0
+   ],
+   "mediane_12": 26.5,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "CMR",
+   "nom": "Cameroon",
+   "etat": "moyen",
+   "morts_mois": 36.0,
+   "serie": [
+    18.0,
+    36.0,
+    38.0,
+    45.0,
+    31.0,
+    32.0,
+    47.0,
+    38.0,
+    56.0,
+    72.0,
+    32.0,
+    55.0,
+    36.0
+   ],
+   "mediane_12": 38.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "SAU",
+   "nom": "Saudi Arabia",
+   "etat": "moyen",
+   "morts_mois": 32.0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    4.0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    25.0,
+    32.0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "MOZ",
+   "nom": "Mozambique",
+   "etat": "moyen",
+   "morts_mois": 29.0,
+   "serie": [
+    34.0,
+    89.0,
+    14.0,
+    19.0,
+    45.0,
+    13.0,
+    19.0,
+    62.0,
+    50.0,
+    37.0,
+    22.0,
+    20.0,
+    29.0
+   ],
+   "mediane_12": 28.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "IRN",
+   "nom": "Iran",
+   "etat": "moyen",
+   "morts_mois": 29.0,
+   "serie": [
+    3.0,
+    1.0,
+    4.0,
+    19894.0,
+    2429.0,
+    884.0,
+    254.0,
+    26.0,
+    46.0,
+    97.0,
+    17.0,
+    1.0,
+    29.0
+   ],
+   "mediane_12": 36.0,
+   "proba_mois_suivant": {
+    "calme": 0.0638,
+    "bas": 0.1674,
+    "moyen": 0.745,
+    "haut": 0.0238
+   }
+  },
+  {
+   "iso3": "NER",
+   "nom": "Niger",
+   "etat": "bas",
+   "morts_mois": 21.0,
+   "serie": [
+    47.0,
+    27.0,
+    47.0,
+    178.0,
+    102.0,
+    102.0,
+    51.0,
+    132.0,
+    250.0,
+    107.0,
+    42.0,
+    62.0,
+    21.0
+   ],
+   "mediane_12": 82.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "AFG",
+   "nom": "Afghanistan",
+   "etat": "bas",
+   "morts_mois": 13.0,
+   "serie": [
+    152.0,
+    21.0,
+    6.0,
+    12.0,
+    181.0,
+    390.0,
+    38.0,
+    8.0,
+    51.0,
+    9.0,
+    31.0,
+    134.0,
+    13.0
+   ],
+   "mediane_12": 34.5,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "PHL",
+   "nom": "Philippines",
+   "etat": "bas",
+   "morts_mois": 11.0,
+   "serie": [
+    2.0,
+    7.0,
+    23.0,
+    42.0,
+    4.0,
+    19.0,
+    37.0,
+    7.0,
+    9.0,
+    11.0,
+    10.0,
+    14.0,
+    11.0
+   ],
+   "mediane_12": 10.5,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "CAF",
+   "nom": "Central African Republic",
+   "etat": "bas",
+   "morts_mois": 11.0,
+   "serie": [
+    2.0,
+    8.0,
+    78.0,
+    35.0,
+    28.0,
+    10.0,
+    29.0,
+    11.0,
+    32.0,
+    8.0,
+    11.0,
+    1.0,
+    11.0
+   ],
+   "mediane_12": 11.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "IDN",
+   "nom": "Indonesia",
+   "etat": "bas",
+   "morts_mois": 10.0,
+   "serie": [
+    27.0,
+    6.0,
+    8.0,
+    0,
+    13.0,
+    7.0,
+    17.0,
+    34.0,
+    6.0,
+    13.0,
+    15.0,
+    13.0,
+    10.0
+   ],
+   "mediane_12": 13.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "JOR",
+   "nom": "Jordan",
+   "etat": "bas",
+   "morts_mois": 9.0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3.0,
+    0,
+    0,
+    9.0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "VEN",
+   "nom": "Venezuela",
+   "etat": "bas",
+   "morts_mois": 8.0,
+   "serie": [
+    0,
+    0,
+    0,
+    81.0,
+    1.0,
+    1.0,
+    0,
+    7.0,
+    3.0,
+    1.0,
+    8.0,
+    2.0,
+    8.0
+   ],
+   "mediane_12": 1.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "BGD",
+   "nom": "Bangladesh",
+   "etat": "bas",
+   "morts_mois": 8.0,
+   "serie": [
+    0,
+    0,
+    0,
+    19.0,
+    4.0,
+    11.0,
+    12.0,
+    6.0,
+    15.0,
+    8.0,
+    5.0,
+    7.0,
+    8.0
+   ],
+   "mediane_12": 6.5,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "IRQ",
+   "nom": "Iraq",
+   "etat": "bas",
+   "morts_mois": 7.0,
+   "serie": [
+    3.0,
+    1.0,
+    1.0,
+    14.0,
+    3.0,
+    122.0,
+    15.0,
+    20.0,
+    10.0,
+    45.0,
+    2.0,
+    6.0,
+    7.0
+   ],
+   "mediane_12": 8.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "THA",
+   "nom": "Thailand",
+   "etat": "bas",
+   "morts_mois": 6.0,
+   "serie": [
+    2.0,
+    0,
+    36.0,
+    1.0,
+    0,
+    8.0,
+    5.0,
+    7.0,
+    6.0,
+    6.0,
+    4.0,
+    5.0,
+    6.0
+   ],
+   "mediane_12": 5.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "LBN",
+   "nom": "Lebanon",
+   "etat": "bas",
+   "morts_mois": 5.0,
+   "serie": [
+    30.0,
+    41.0,
+    15.0,
+    22.0,
+    27.0,
+    3107.0,
+    734.0,
+    349.0,
+    300.0,
+    21.0,
+    25.0,
+    41.0,
+    5.0
+   ],
+   "mediane_12": 35.5,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "BDI",
+   "nom": "Burundi",
+   "etat": "bas",
+   "morts_mois": 5.0,
+   "serie": [
+    2.0,
+    1.0,
+    1.0,
+    3.0,
+    5.0,
+    1.0,
+    7.0,
+    5.0,
+    3.0,
+    3.0,
+    4.0,
+    2.0,
+    5.0
+   ],
+   "mediane_12": 3.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "KEN",
+   "nom": "Kenya",
+   "etat": "bas",
+   "morts_mois": 3.0,
+   "serie": [
+    1.0,
+    4.0,
+    0.0,
+    4.0,
+    0.0,
+    7.0,
+    7.0,
+    18.0,
+    11.0,
+    16.0,
+    0.0,
+    3.0,
+    3.0
+   ],
+   "mediane_12": 4.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "GHA",
+   "nom": "Ghana",
+   "etat": "bas",
+   "morts_mois": 3.0,
+   "serie": [
+    4.0,
+    0,
+    2.0,
+    23.0,
+    3.0,
+    13.0,
+    11.0,
+    4.0,
+    3.0,
+    0,
+    3.0,
+    1.0,
+    3.0
+   ],
+   "mediane_12": 3.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "SWE",
+   "nom": "Sweden",
+   "etat": "bas",
+   "morts_mois": 2.0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2.0,
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    0,
+    2.0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "GTM",
+   "nom": "Guatemala",
+   "etat": "bas",
+   "morts_mois": 1.0,
+   "serie": [
+    3.0,
+    3.0,
+    8.0,
+    6.0,
+    0,
+    3.0,
+    14.0,
+    2.0,
+    7.0,
+    8.0,
+    5.0,
+    8.0,
+    1.0
+   ],
+   "mediane_12": 5.5,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "PNG",
+   "nom": "Papua New Guinea",
+   "etat": "bas",
+   "morts_mois": 1.0,
+   "serie": [
+    3.0,
+    0,
+    0,
+    15.0,
+    5.0,
+    1.0,
+    14.0,
+    4.0,
+    4.0,
+    1.0,
+    1.0,
+    12.0,
+    1.0
+   ],
+   "mediane_12": 3.5,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "UGA",
+   "nom": "Uganda",
+   "etat": "bas",
+   "morts_mois": 1.0,
+   "serie": [
+    0,
+    0,
+    0,
+    6.0,
+    0,
+    0,
+    4.0,
+    0,
+    0,
+    0,
+    2.0,
+    0,
+    1.0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "SRB",
+   "nom": "Serbia (Yugoslavia)",
+   "etat": "bas",
+   "morts_mois": 1.0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "CAN",
+   "nom": "Canada",
+   "etat": "bas",
+   "morts_mois": 1.0,
+   "serie": [
+    0,
+    0,
+    0,
+    2.0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.3037,
+    "bas": 0.5172,
+    "moyen": 0.1759,
+    "haut": 0.0032
+   }
+  },
+  {
+   "iso3": "AGO",
+   "nom": "Angola",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "KHM",
+   "nom": "Cambodia (Kampuchea)",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    128.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "SLV",
+   "nom": "El Salvador",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "JAM",
+   "nom": "Jamaica",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    3.0,
+    0,
+    0,
+    0,
+    2.0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "MRT",
+   "nom": "Mauritania",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "NIC",
+   "nom": "Nicaragua",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "PER",
+   "nom": "Peru",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    3.0,
+    0,
+    1.0,
+    0,
+    0,
+    6.0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "LKA",
+   "nom": "Sri Lanka",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    104.0,
+    0,
+    0,
+    0,
+    30.0,
+    3.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "TUR",
+   "nom": "Turkey",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    1.0,
+    0,
+    10.0,
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    1.0,
+    3.0,
+    0,
+    1.0,
+    0
+   ],
+   "mediane_12": 0.5,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "GBR",
+   "nom": "United Kingdom",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ZWE",
+   "nom": "Zimbabwe (Rhodesia)",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "SWZ",
+   "nom": "Kingdom of eSwatini (Swaziland)",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "PRY",
+   "nom": "Paraguay",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ZMB",
+   "nom": "Zambia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "CHN",
+   "nom": "China",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "SEN",
+   "nom": "Senegal",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ESP",
+   "nom": "Spain",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.0,
+    3.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "DJI",
+   "nom": "Djibouti",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    10.0,
+    0,
+    4.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "MAR",
+   "nom": "Morocco",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3.0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "DEU",
+   "nom": "Germany",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "LAO",
+   "nom": "Laos",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "PAN",
+   "nom": "Panama",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "COM",
+   "nom": "Comoros",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "LBR",
+   "nom": "Liberia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ROU",
+   "nom": "Romania",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "EGY",
+   "nom": "Egypt",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "NPL",
+   "nom": "Nepal",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3.0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BWA",
+   "nom": "Botswana",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "CIV",
+   "nom": "Ivory Coast",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    7.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "NLD",
+   "nom": "Netherlands",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "TTO",
+   "nom": "Trinidad and Tobago",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "KWT",
+   "nom": "Kuwait",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    1.0,
+    12.0,
+    0,
+    0,
+    1.0,
+    1.0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "RWA",
+   "nom": "Rwanda",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "DZA",
+   "nom": "Algeria",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    4.0,
+    12.0,
+    2.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "SLE",
+   "nom": "Sierra Leone",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "TGO",
+   "nom": "Togo",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    1.0,
+    0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "AZE",
+   "nom": "Azerbaijan",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "GEO",
+   "nom": "Georgia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "TZA",
+   "nom": "Tanzania",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    996.0,
+    10.0,
+    0.0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ARM",
+   "nom": "Armenia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ARG",
+   "nom": "Argentina",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    3.0,
+    2.0,
+    5.0,
+    9.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "MDA",
+   "nom": "Moldova",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BIH",
+   "nom": "Bosnia-Herzegovina",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "HRV",
+   "nom": "Croatia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "TJK",
+   "nom": "Tajikistan",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "FRA",
+   "nom": "France",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "SLB",
+   "nom": "Solomon Islands",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "COG",
+   "nom": "Congo",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "GNB",
+   "nom": "Guinea-Bissau",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ITA",
+   "nom": "Italy",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ERI",
+   "nom": "Eritrea",
+   "etat": "calme",
+   "morts_mois": 0.0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "GIN",
+   "nom": "Guinea",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "NAM",
+   "nom": "Namibia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BHR",
+   "nom": "Bahrain",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "MLT",
+   "nom": "Malta",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "CYP",
+   "nom": "Cyprus",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "GMB",
+   "nom": "Gambia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BTN",
+   "nom": "Bhutan",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BOL",
+   "nom": "Bolivia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "LSO",
+   "nom": "Lesotho",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "UZB",
+   "nom": "Uzbekistan",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ALB",
+   "nom": "Albania",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "MKD",
+   "nom": "North Macedonia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "KGZ",
+   "nom": "Kyrgyzstan",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "HND",
+   "nom": "Honduras",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    3.0,
+    1.0,
+    4.0,
+    0,
+    20.0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "USA",
+   "nom": "United States of America",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    4.0,
+    0,
+    3.0,
+    0,
+    0,
+    0,
+    0,
+    2.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "MDG",
+   "nom": "Madagascar (Malagasy)",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "TUN",
+   "nom": "Tunisia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    5.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "QAT",
+   "nom": "Qatar",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "GUY",
+   "nom": "Guyana",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "LBY",
+   "nom": "Libya",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    4.0,
+    1.0,
+    2.0,
+    0,
+    15.0,
+    3.0,
+    0,
+    6.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.5,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "ARE",
+   "nom": "United Arab Emirates",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    5.0,
+    5.0,
+    2.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "MYS",
+   "nom": "Malaysia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BEL",
+   "nom": "Belgium",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "AUS",
+   "nom": "Australia",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BEN",
+   "nom": "Benin",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    14.0,
+    0,
+    0,
+    0.0,
+    2.0,
+    20.0,
+    0,
+    0.0,
+    0,
+    6.0,
+    0,
+    0.0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "AUT",
+   "nom": "Austria",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "POL",
+   "nom": "Poland",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "CRI",
+   "nom": "Costa Rica",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    19.0,
+    11.0,
+    6.0,
+    0,
+    1.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "BLZ",
+   "nom": "Belize",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    2.0,
+    5.0,
+    6.0,
+    2.0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "DOM",
+   "nom": "Dominican Republic",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    2.0,
+    4.0,
+    4.0,
+    0,
+    1.0,
+    0,
+    1.0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "OMN",
+   "nom": "Oman",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2.0,
+    0,
+    0,
+    3.0,
+    2.0,
+    0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  },
+  {
+   "iso3": "CHL",
+   "nom": "Chile",
+   "etat": "calme",
+   "morts_mois": 0,
+   "serie": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2.0,
+    0,
+    0
+   ],
+   "mediane_12": 0.0,
+   "proba_mois_suivant": {
+    "calme": 0.9403,
+    "bas": 0.0476,
+    "moyen": 0.0115,
+    "haut": 0.0006
+   }
+  }
+ ]
+}
