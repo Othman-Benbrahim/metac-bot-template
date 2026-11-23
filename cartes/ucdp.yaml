@@ -1,0 +1,28 @@
+# Standard de lecture d'une carte publiée (bot 0.10.470, décision de l'auteur du 2026-11-23, 7 h 38 - 7 h 53 :
+# « comme un flux RSS, mais pour les cartes »). Le lecteur générique lecture_cartes.py applique ce fichier : il trouve
+# les fichiers sur la page de l'émetteur, les lit, en tire des AGRÉGATS (jamais les lignes ni le texte), garde la
+# référence (adresse, date, empreinte), puis supprime le fichier téléchargé.
+id: ucdp
+nom: UCDP, événements de violence organisée géoréférencés (GED) et événements candidats mensuels
+emetteur: Uppsala Conflict Data Program, université d'Uppsala
+licence: CC BY 4.0 (citer Sundberg et Melander, 2013, et Davies et al., 2026 pour la GED ; Hegre et al., 2020 pour les candidats)
+page: https://ucdp.uu.se/downloads/
+frequence: mensuelle            # le jeu candidat paraît chaque mois, avec au plus un mois de retard
+fichiers:                       # motif du lien sur la page ; on prend la version la plus récente de chaque rôle
+- role: historique
+  motif: 'downloads/ged/ged(\d+)-csv\.zip'
+  format: csv_zip
+- role: cumul_annee
+  motif: 'downloads/candidateged/GEDEvent_v(\d+)_01_(\d+)_(\d+)\.csv'
+  format: csv
+- role: mois
+  motif: 'downloads/candidateged/GEDEvent_v(\d+)_0_(\d+)\.csv'
+  format: csv
+lecture:
+  date: date_start              # colonne de date (AAAA-MM-JJ…)
+  pays: country                 # nom du pays selon l'UCDP
+  code_pays: country_id         # code Gleditsch et Ward
+  categorie: type_of_violence   # 1 = étatique, 2 = non étatique, 3 = contre des civils
+  somme: best                   # meilleure estimation des morts
+  agregat: pays_mois            # une ligne par pays et par mois
+priorite: [mois, cumul_annee, historique]   # pour un même mois, la source la plus récente l'emporte

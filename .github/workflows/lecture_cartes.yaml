@@ -1,0 +1,42 @@
+name: "Lecture des cartes publiées (standard de lecture ; hors cadre)"
+
+# 0.10.470 (décision de l'auteur, 2026-11-23, 7 h 38 - 7 h 53) : « comme un flux RSS, mais pour les cartes ». Applique
+# chaque fichier cartes/*.yaml : trouve la version la plus récente des fichiers de l'émetteur, en tire des agrégats par
+# pays et par mois, garde la référence, supprime le fichier. Lancée le premier lundi du mois par le planificateur de nuit ;
+# on peut la lancer à la main. Rien n'entre dans le bot.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bot-alphabet-registre
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  lecture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Lecture
+        run: uv run python -u lecture_cartes.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -d registre/cartes ]; then git add registre/cartes; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : cartes publiées du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi

@@ -39,7 +39,8 @@ DELAI_TENTATIVE = timedelta(hours=2)
 MOI = "planificateur.yaml"
 GROUPE_BANCS = "bot-alphabet-registre"
 # (fichier, contrainte) ; contrainte : None, "apres_minuit" (avions d'État : crédits OpenSky), "jours_ouvres",
-# "lundi" (0.10.464 : une fois par semaine, la nuit de dimanche à lundi, après minuit UTC)
+# "lundi" (0.10.464 : une fois par semaine, la nuit de dimanche à lundi, après minuit UTC),
+# "premier_lundi" (0.10.470 : une fois par mois, le premier lundi)
 COLLECTES = (
     ("collecte_gdelt.yaml", None), ("collecte_ooni.yaml", None), ("collecte_radar.yaml", None),
     ("collecte_sanctions.yaml", None), ("collecte_rss.yaml", None), ("collecte_feux.yaml", None),
@@ -56,6 +57,7 @@ COLLECTES = (
     ("collecte_tribunaux.yaml", None),
     ("collecte_tfr.yaml", None),              # 0.10.304 : interdictions de survol FAA (liste JSON trouvée par la sonde)
     ("mecanique.yaml", "lundi"),              # 0.10.464 : mécanique de bascule en ombre, hebdomadaire
+    ("lecture_cartes.yaml", "premier_lundi"), # 0.10.470 : cartes publiées (standard de lecture), mensuel
     ("collecte_fred.yaml", None), ("collecte_meteo.yaml", None), ("collecte_eia.yaml", None), ("collecte_ouvertes.yaml", None), ("collecte_webamon.yaml", None), ("collecte_openmeasures.yaml", None), ("collecte_seismes.yaml", None), ("collecte_gfs.yaml", None), ("collecte_series_publiques.yaml", None), ("collecte_cadrage.yaml", None), ("collecte_matieres.yaml", None),   # 0.10.318 : traces du bas de l'échelle (écosystèmes)
 )
 
@@ -72,6 +74,8 @@ def permise(contrainte: str | None, t: datetime) -> bool:
         return t.weekday() < 5
     if contrainte == "lundi":
         return t.weekday() == 0 and t.hour * 60 + t.minute < NUIT[1]
+    if contrainte == "premier_lundi":
+        return t.weekday() == 0 and t.day <= 7 and t.hour * 60 + t.minute < NUIT[1]
     return True
 
 
