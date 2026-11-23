@@ -66,22 +66,22 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
-  - source: GDELT, part des manifestations (Égypte)
+  - source: GDELT, manifestations par jour (Égypte)
     statut: collecte
     fichier: gdelt_bq.py
     adaptateur: manifestations:EG
-  - source: GDELT, part des manifestations (Algérie)
+  - source: GDELT, manifestations par jour (Algérie)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: manifestations:AG
-  - source: GDELT, part des manifestations (Maroc)
+    adaptateur: manifestations:DZ
+  - source: GDELT, manifestations par jour (Maroc)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: manifestations:MO
-  - source: GDELT, part des manifestations (Tunisie)
+    adaptateur: manifestations:MA
+  - source: GDELT, manifestations par jour (Tunisie)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: manifestations:TS
+    adaptateur: manifestations:TN
 - id: libye
   nom: Libye divisée
   organisation: geopolitique

@@ -98,7 +98,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
-  - source: GDELT, part des manifestations (Indonésie)
+  - source: GDELT, manifestations par jour (Indonésie)
     statut: collecte
     fichier: gdelt_bq.py
     adaptateur: manifestations:ID
@@ -116,10 +116,10 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
-  - source: GDELT, part des manifestations (Philippines)
+  - source: GDELT, manifestations par jour (Philippines)
     statut: collecte
     fichier: gdelt_bq.py
-    adaptateur: manifestations:RP
+    adaptateur: manifestations:PH
 - id: economie_region
   nom: Économies et chaînes de production
   organisation: economie

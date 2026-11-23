@@ -29,7 +29,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
-  - source: GDELT, part des manifestations dans les événements (Inde, code FIPS IN)
+  - source: GDELT, manifestations par jour (Inde)
     statut: collecte
     fichier: gdelt_bq.py
     adaptateur: manifestations:IN
