@@ -52,7 +52,12 @@ ISSUES = REG / "mecanique-issues.csv"
 POIDS = REG / "mecanique-poids.json"
 SCORE = REG / "mecanique-score.json"
 CODES = Path("ecosystemes/codes-pays-fips.csv")
-VERSION = "0.10.465"
+VERSION = "0.10.466"
+# 0.10.466 (accord de l'auteur, 2026-11-23, 5 h 42) : e-valeur, comparaison de la mécanique au taux de départ que l'on
+# peut regarder chaque semaine sans gonfler l'erreur (test par pari, Waudby-Smith et Ramdas, arXiv 2010.09686).
+# Préenregistré : seuil E_SEUIL = 20 (erreur 5 %) ; le franchir autorise à PROPOSER à l'auteur l'entrée de la mécanique
+# dans les prévisions Metaculus (la décision reste la sienne) ; ne pas le franchir n'est pas une preuve contraire.
+E_SEUIL, E_MISE_MAX = 20.0, 0.5
 LECTEUR = Path(os.environ.get("LECTEUR_LOCAL", "lecteur"))      # dépôt lecteur-local (copie en lecture seule)
 TERMES = Path("ecosystemes/mecanique-termes.yaml")
 ELECTIONS = REG / "elections.csv"
@@ -279,6 +284,34 @@ def constater(series: dict, journal: list[dict], issues: list[dict], aujourd_hui
     return neuves
 
 
+def e_valeur(journal: list[dict], issues: list[dict]) -> dict:
+    """Pour chaque issue constatée, dans l'ordre des constats : d = Brier(taux de départ) − Brier(mécanique), dans
+    [−1, 1]. Hypothèse nulle : la mécanique ne fait pas mieux (moyenne conditionnelle de d ≤ 0). Richesse
+    K = Π(1 + λ·d), avec une mise λ ∈ [0, 0,5] fixée d'après les seules issues précédentes (prévisible) ; sous
+    l'hypothèse nulle, la probabilité que K atteigne un jour 1/α est au plus α (inégalité de Ville). Les étincelles
+    sans mécanisme (p = taux de départ) donnent d = 0 et ne changent rien."""
+    p = {r["id"]: float(r["p_prend"]) for r in journal}
+    ordre = sorted((r for r in issues if r["id"] in p), key=lambda r: (r["constate_le"], r["id"]))
+    k, kmax, franchi, vus = 1.0, 1.0, "", []
+    for r in ordre:
+        y = int(r["prend"])
+        d = (TAUX_DEPART - y) ** 2 - (p[r["id"]] - y) ** 2
+        if vus:
+            m = sum(vus) / len(vus)
+            v = sum((x - m) ** 2 for x in vus) / len(vus)
+            lam = min(E_MISE_MAX, max(0.0, m / (v + m * m))) if (v + m * m) > 0 else 0.0
+        else:
+            lam = 0.0
+        k *= 1 + lam * d
+        vus.append(d)
+        if k > kmax:
+            kmax = k
+        if not franchi and k >= E_SEUIL:
+            franchi = r["constate_le"]
+    return {"e_valeur": round(k, 3), "e_max": round(kmax, 3), "e_seuil": E_SEUIL, "e_franchi_le": franchi,
+            "e_comparees": len(ordre)}
+
+
 def score(journal: list[dict], issues: list[dict]) -> dict:
     p = {r["id"]: float(r["p_prend"]) for r in journal}
     res = [(p[r["id"]], int(r["prend"])) for r in issues if r["id"] in p]
@@ -288,6 +321,7 @@ def score(journal: list[dict], issues: list[dict]) -> dict:
         out["brier"] = round(sum((q - y) ** 2 for q, y in res) / len(res), 4)
         out["brier_taux_depart"] = round(sum((TAUX_DEPART - y) ** 2 for _, y in res) / len(res), 4)
         out["part_prend"] = round(sum(y for _, y in res) / len(res), 3)
+    out.update(e_valeur(journal, issues))
     return out
 
 

@@ -107,3 +107,22 @@ class TestModules(unittest.TestCase):
         self.assertEqual(n, 1)
         self.assertGreater(etat["poids"]["corroboration"], m.POIDS_DEPART)
         self.assertEqual(m.apprendre(etat, j, [{"id": "a", "prend": "1"}]), 0)     # une seule fois par issue
+
+
+class TestEValeur(unittest.TestCase):
+    def test_nulle_et_meilleure(self):
+        # mécanique identique au taux de départ : e-valeur 1
+        j = [{"id": str(i), "p_prend": str(m.TAUX_DEPART)} for i in range(30)]
+        iss = [{"id": str(i), "prend": str(i % 3 == 0), "constate_le": "2027-01-11"} for i in range(30)]
+        iss = [dict(r, prend="1" if r["prend"] == "True" else "0") for r in iss]
+        self.assertEqual(m.e_valeur(j, iss)["e_valeur"], 1.0)
+        # mécanique nettement meilleure : l'e-valeur franchit le seuil
+        j2 = [{"id": str(i), "p_prend": "0.9" if i % 3 == 0 else "0.05"} for i in range(60)]
+        iss2 = [{"id": str(i), "prend": "1" if i % 3 == 0 else "0", "constate_le": "2027-01-%02d" % (1 + i % 28)}
+                for i in range(60)]
+        e = m.e_valeur(j2, iss2)
+        self.assertGreaterEqual(e["e_max"], m.E_SEUIL)
+        self.assertTrue(e["e_franchi_le"])
+        # mécanique pire : la mise reste nulle, l'e-valeur ne monte pas
+        j3 = [{"id": str(i), "p_prend": "0.05" if i % 3 == 0 else "0.9"} for i in range(60)]
+        self.assertLessEqual(m.e_valeur(j3, iss2)["e_max"], 1.0)
