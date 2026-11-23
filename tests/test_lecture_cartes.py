@@ -53,3 +53,18 @@ class TestLectureCartes(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAnalyseCartes(unittest.TestCase):
+    def test_etats_transitions(self):
+        import analyse_cartes as ac
+        lignes = [{"iso3": "AAA", "pays_source": "A", "mois": m, "somme": v}
+                  for m, v in [("2025-01", "0"), ("2025-02", "30"), ("2025-03", "30"), ("2025-04", "5"), ("2026-01", "2000")]]
+        a = ac.analyser(lignes)
+        self.assertEqual(a["dernier_mois"], "2026-01")
+        self.assertEqual(a["transitions"]["comptes"][2][2], 1)         # moyen → moyen
+        self.assertEqual(a["pays"][0]["etat"], "haut")
+        self.assertEqual(a["episodes_moyen_ou_plus"]["nombre"], 1)
+        # aucun mois « haut » dans l'historique 1989-2025 de l'exemple : pas de taux de départ pour cet état
+        self.assertEqual(sum(a["pays"][0]["proba_mois_suivant"].values()), 0)
+        self.assertAlmostEqual(sum(a["transitions"]["probabilites"][2]), 1.0, places=2)
