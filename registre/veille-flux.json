@@ -2,52 +2,10 @@
  "un_monde": {
   "titre": "ReliefWeb (OCHA, ONU), titres",
   "url": "https://reliefweb.int/headlines/rss.xml",
-  "lu_le": "2026-11-23T19:41Z",
-  "http": 200,
-  "url_finale": "https://reliefweb.int/updates/rss.xml?view=headlines",
-  "statut": "ok",
-  "articles": [
-   {
-    "titre": "World: WFP sets out $12 billion plan to assist 91 million people as food crisis looms next year",
-    "lien": "https://reliefweb.int/report/world/wfp-2027-global-outlook-meeting-todays-needs-investing-tomorrows-solutions",
-    "date": "2026-11-20T11:03Z"
-   },
-   {
-    "titre": "Child casualties in Ukraine reach highest level in almost four years – UNICEF",
-    "lien": "https://reliefweb.int/report/ukraine/child-casualties-ukraine-reach-highest-level-almost-four-years-unicef",
-    "date": "2026-11-20T10:03Z"
-   },
-   {
-    "titre": "World: More children than ever live in conflict zones",
-    "lien": "https://reliefweb.int/report/world/children-affected-armed-conflict-1990-2025",
-    "date": "2026-11-19T05:42Z"
-   },
-   {
-    "titre": "At least 64 children killed and 64 injured in Yemen as intensified hostilities approach three-month mark",
-    "lien": "https://reliefweb.int/report/yemen/least-64-children-killed-and-64-injured-yemen-intensified-hostilities-approach-three-month-mark",
-    "date": "2026-11-18T09:03Z"
-   },
-   {
-    "titre": "UN approves $18 million in emergency funding to support more than 824,000 people through winter in Afghanistan",
-    "lien": "https://reliefweb.int/report/afghanistan/un-approves-us18-million-emergency-funding-support-more-824000-people-through-winter-and-lean-season-afghanistan",
-    "date": "2026-11-17T10:53Z"
-   },
-   {
-    "titre": "oPt: Gaza’s women struggle to keep their families safe as rain and sewage flood their makeshift shelters",
-    "lien": "https://reliefweb.int/report/occupied-palestinian-territory/un-women-statement-gazas-women-struggle-keep-their-families-afloat-rain-and-sewage-flood-their-makeshift-shelters",
-    "date": "2026-11-17T10:33Z"
-   },
-   {
-    "titre": "Displaced people in Ukraine cutting healthcare and heating",
-    "lien": "https://reliefweb.int/report/ukraine/ukraine-displaced-people-cutting-healthcare-and-heating",
-    "date": "2026-11-17T06:33Z"
-   },
-   {
-    "titre": "DR Congo: Six months on, accessing hard-to-reach communities key to halting Ebola outbreak",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/joint-statement-six-months-accessing-hard-reach-communities-key-halting-ebola-outbreak",
-    "date": "2026-11-15T11:03Z"
-   }
-  ],
+  "lu_le": "2026-11-23T20:05Z",
+  "http": 202,
+  "statut": "muet",
+  "articles": [],
   "essais": [
    {
     "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
@@ -61,200 +19,362 @@
    },
    {
     "url": "https://reliefweb.int/headlines/rss.xml",
-    "statut": "ok",
-    "http": 200,
-    "url_finale": "https://reliefweb.int/updates/rss.xml?view=headlines"
+    "statut": "muet",
+    "http": 202
    }
   ]
  },
  "un_afrique": {
-  "titre": "ONU Info, Afrique",
-  "url": "https://news.un.org/feed/subscribe/fr/news/region/africa/feed/rss.xml",
-  "lu_le": "2026-11-23T19:41Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "AllAfrica (presse africaine agrégée)",
+  "url": "https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf",
+  "lu_le": "2026-11-23T20:05Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Mozambique: Nampula Targets 157,000 Tonnes of Fish Production in 2027",
+    "lien": "https://allafrica.com/stories/202611230544.html",
+    "date": "2026-11-23T15:26Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/region/africa/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Africa: Health Financing Top of Agenda As African Leaders Meet in Addis",
+    "lien": "https://allafrica.com/stories/202611230542.html",
+    "date": "2026-11-23T15:25Z"
+   },
+   {
+    "titre": "Rwanda: A Look At Deals Rwanda Secured At UN Climate Summit",
+    "lien": "https://allafrica.com/stories/202611230541.html",
+    "date": "2026-11-23T15:24Z"
+   },
+   {
+    "titre": "Mozambique: OMR fined $27,400 for Making Documentary Film About Post-election Protests Without Permission",
+    "lien": "https://allafrica.com/stories/202611230525.html",
+    "date": "2026-11-23T15:15Z"
+   },
+   {
+    "titre": "Mozambique: Mondlane Trial Daily Reports",
+    "lien": "https://allafrica.com/stories/202611230524.html",
+    "date": "2026-11-23T15:14Z"
+   },
+   {
+    "titre": "South Sudan: MSF Suspends All Activities in Yei River County Following Abduction",
+    "lien": "https://allafrica.com/stories/202611230523.html",
+    "date": "2026-11-23T15:12Z"
+   },
+   {
+    "titre": "Liberia: Bea Mountain and Gov. Conclude U.S.$5.7b Deal-O Boost Power and Road Development",
+    "lien": "https://allafrica.com/stories/202611230521.html",
+    "date": "2026-11-23T15:07Z"
+   },
+   {
+    "titre": "Kenya: 'Why Do It?' Ak Boss Asks Doping Offenders After Shameful Week for Kenyan Athletics",
+    "lien": "https://allafrica.com/stories/202611230517.html",
+    "date": "2026-11-23T15:05Z"
    }
   ]
  },
  "un_ameriques": {
-  "titre": "ONU Info, Amériques",
-  "url": "https://news.un.org/feed/subscribe/fr/news/region/americas/feed/rss.xml",
-  "lu_le": "2026-11-23T19:42Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "MercoPress (Amérique du Sud, Atlantique Sud)",
+  "url": "https://en.mercopress.com/rss",
+  "lu_le": "2026-11-23T20:05Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/region/americas/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Nvidia reinstates Jensen Huang as CEO after assurances from the US government",
+    "lien": "https://en.mercopress.com/2026/11/23/nvidia-reinstates-jensen-huang-as-ceo-after-assurances-from-the-us-government?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-23T15:08Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/region/americas/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Bolsonaro \"clinically stable\" in intensive care with an intestinal obstruction",
+    "lien": "https://en.mercopress.com/2026/11/23/bolsonaro-clinically-stable-in-intensive-care-with-an-intestinal-obstruction?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-23T04:17Z"
+   },
+   {
+    "titre": "COP31 ends without a major climate deal amid divisions over fossil fuels",
+    "lien": "https://en.mercopress.com/2026/11/23/cop31-ends-without-a-major-climate-deal-amid-divisions-over-fossil-fuels?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-23T04:12Z"
+   },
+   {
+    "titre": "Colombia's government asks X to suspend Petro's account after he calls for the president to resign",
+    "lien": "https://en.mercopress.com/2026/11/23/colombia-s-government-asks-x-to-suspend-petro-s-account-after-he-calls-for-the-president-to-resign?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-23T04:06Z"
+   },
+   {
+    "titre": "Prosecutors: Argentina's top shrimp exporter dumped waste at sea through a hidden system",
+    "lien": "https://en.mercopress.com/2026/11/23/prosecutors-argentina-s-top-shrimp-exporter-dumped-waste-at-sea-through-a-hidden-system?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-23T04:02Z"
+   },
+   {
+    "titre": "Argentina's lawyer in Hamburg: if Sea Lion goes ahead, \"those rights are lost forever\"",
+    "lien": "https://en.mercopress.com/2026/11/22/argentina-s-lawyer-in-hamburg-if-sea-lion-goes-ahead-those-rights-are-lost-forever?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-22T13:10Z"
+   },
+   {
+    "titre": "Falklands: Public Accounts Committee to scrutinize several contracts and projects",
+    "lien": "https://en.mercopress.com/2026/11/22/falklands-public-accounts-committee-to-scrutinize-several-contracts-and-projects?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-22T13:09Z"
+   },
+   {
+    "titre": "Danstar to follow international maritime law: will seek clearance only for Punta Arenas departure and Stanley arrival",
+    "lien": "https://en.mercopress.com/2026/11/22/danstar-to-follow-international-maritime-law-will-seek-clearance-only-for-punta-arenas-departure-and-stanley-arrival?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+    "date": "2026-11-22T13:07Z"
    }
   ]
  },
  "un_asie": {
-  "titre": "ONU Info, Asie-Pacifique",
-  "url": "https://news.un.org/feed/subscribe/fr/news/region/asia-pacific/feed/rss.xml",
-  "lu_le": "2026-11-23T19:42Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "The Diplomat (Asie-Pacifique)",
+  "url": "https://thediplomat.com/feed/",
+  "lu_le": "2026-11-23T20:05Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/region/asia-pacific/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Despite COP31’s Disappointments, There Are Reasons to Be Optimistic About Climate Progress",
+    "lien": "https://thediplomat.com/2026/11/despite-cop31s-disappointments-there-are-reasons-to-be-optimistic-about-climate-progress/",
+    "date": "2026-11-23T06:43Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/region/asia-pacific/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "COP31, the Asia-Pacific, and the Challenges of a Warming Planet",
+    "lien": "https://thediplomat.com/2026/11/cop31-the-asia-pacific-and-the-challenges-of-a-warming-planet/",
+    "date": "2026-11-23T05:16Z"
+   },
+   {
+    "titre": "Thailand to Ban Export of Mining Chemicals Believed Responsible For Crossborder River Contamination",
+    "lien": "https://thediplomat.com/2026/11/thailand-to-ban-export-of-mining-chemicals-believed-responsible-for-crossborder-river-contamination/",
+    "date": "2026-11-23T04:40Z"
+   },
+   {
+    "titre": "Is the Baloch Insurgency’s Landscape Fracturing Again?",
+    "lien": "https://thediplomat.com/2026/11/is-the-baloch-insurgencys-landscape-fracturing-again/",
+    "date": "2026-11-23T03:52Z"
+   },
+   {
+    "titre": "How ASEAN Responded to the ICJ’s Myanmar Genocide Ruling",
+    "lien": "https://thediplomat.com/2026/11/how-asean-responded-to-the-icjs-myanmar-genocide-ruling/",
+    "date": "2026-11-23T02:16Z"
+   },
+   {
+    "titre": "Mongolia’s Foreign Policy Doctrine and the ‘Third Neighbor’",
+    "lien": "https://thediplomat.com/2026/11/mongolias-foreign-policy-doctrine-and-the-third-neighbor/",
+    "date": "2026-11-23T01:36Z"
+   },
+   {
+    "titre": "Diplomacy or Transparency? Philippine Officials Consider Approach Amid Rising China Tension",
+    "lien": "https://thediplomat.com/2026/11/diplomacy-or-transparency-philippine-officials-consider-approach-amid-rising-china-tension/",
+    "date": "2026-11-23T01:33Z"
+   },
+   {
+    "titre": "A Moment of New Hope for the Rohingya Community",
+    "lien": "https://thediplomat.com/2026/11/a-moment-of-new-hope-for-the-rohingya-community/",
+    "date": "2026-11-20T18:20Z"
    }
   ]
  },
  "un_moyen_orient": {
-  "titre": "ONU Info, Moyen-Orient",
-  "url": "https://news.un.org/feed/subscribe/fr/news/region/middle-east/feed/rss.xml",
-  "lu_le": "2026-11-23T19:43Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Al-Monitor (Moyen-Orient)",
+  "url": "https://www.al-monitor.com/rss",
+  "lu_le": "2026-11-23T20:06Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/region/middle-east/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Iran carries out flogging of singer and her team, Iranian website says",
+    "lien": "https://www.al-monitor.com/originals/2026/11/iran-carries-out-flogging-singer-and-her-team-iranian-website-says",
+    "date": "2026-11-23T19:46Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/region/middle-east/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "US imposes sanctions on dozens linked to Iran's shadow banking networks",
+    "lien": "https://www.al-monitor.com/originals/2026/11/us-imposes-sanctions-dozens-linked-irans-shadow-banking-networks",
+    "date": "2026-11-23T19:46Z"
+   },
+   {
+    "titre": "Rubio meets Qatari PM as Iran standoff deepens",
+    "lien": "https://www.al-monitor.com/originals/2026/11/rubio-meets-qatari-pm-iran-standoff-deepens",
+    "date": "2026-11-23T18:00Z"
+   },
+   {
+    "titre": "Rubio meets Qatari PM as Iran standoff deepens",
+    "lien": "https://www.al-monitor.com/originals/2026/11/rubio-meets-qatari-pm-iran-standoff-deepens",
+    "date": "2026-11-23T18:00Z"
+   },
+   {
+    "titre": "Rubio meets Qatari PM as Iran standoff deepens",
+    "lien": "https://www.al-monitor.com/originals/2026/11/rubio-meets-qatari-pm-iran-standoff-deepens",
+    "date": "2026-11-23T18:00Z"
+   },
+   {
+    "titre": "Rubio meets Qatari PM as Iran standoff deepens",
+    "lien": "https://www.al-monitor.com/originals/2026/11/rubio-meets-qatari-pm-iran-standoff-deepens",
+    "date": "2026-11-23T18:00Z"
+   },
+   {
+    "titre": "Iraq puts Saddam Hussein-era planes up for sale for $1.8M: What to know",
+    "lien": "https://www.al-monitor.com/originals/2026/11/iraq-puts-saddam-hussein-era-planes-sale-18m-what-know",
+    "date": "2026-11-23T17:32Z"
+   },
+   {
+    "titre": "Iraq puts Saddam Hussein-era planes up for sale for $1.8M: What to know",
+    "lien": "https://www.al-monitor.com/originals/2026/11/iraq-puts-saddam-hussein-era-planes-sale-18m-what-know",
+    "date": "2026-11-23T17:32Z"
    }
   ]
  },
  "un_europe": {
-  "titre": "ONU Info, Europe",
-  "url": "https://news.un.org/feed/subscribe/fr/news/region/europe/feed/rss.xml",
-  "lu_le": "2026-11-23T19:43Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Euractiv (Europe)",
+  "url": "https://www.euractiv.com/feed/",
+  "lu_le": "2026-11-23T20:06Z",
+  "http": 200,
+  "url_finale": "https://www.rapporteur.com/feed/",
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/region/europe/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Tractors rule",
+    "lien": "https://www.rapporteur.com/news/tractors-rule/",
+    "date": "2026-11-23T17:00Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/region/europe/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "EU targets Russian athletes, soldiers in fresh sanctions package",
+    "lien": "https://www.rapporteur.com/news/eu-targets-russian-athletes-soldiers-in-fresh-sanctions-package/",
+    "date": "2026-11-23T16:28Z"
+   },
+   {
+    "titre": "Airbus Defence workers oppose Berlin’s participation in GCAP",
+    "lien": "https://www.rapporteur.com/news/airbus-defence-workers-oppose-berlins-participation-in-gcap/",
+    "date": "2026-11-23T15:16Z"
+   },
+   {
+    "titre": "Europe’s critical chance to end the year with a win for multilateralism [Promoted Content]",
+    "lien": "https://www.rapporteur.com/opinion/europes-critical-chance-to-end-the-year-with-a-win-for-multilateralism/",
+    "date": "2026-11-23T15:00Z"
+   },
+   {
+    "titre": "Council resists telcos’ push for US partners in satellite-to-phone law",
+    "lien": "https://www.rapporteur.com/news/council-resists-telcos-push-for-us-partners-in-satellite-to-phone-law/",
+    "date": "2026-11-23T14:34Z"
+   },
+   {
+    "titre": "Nvidia board reinstates Jensen Huang as CEO",
+    "lien": "https://www.rapporteur.com/news/nvidia-board-reinstates-jensen-huang-as-ceo/",
+    "date": "2026-11-23T14:34Z"
+   },
+   {
+    "titre": "Israel-EU relationship could become ‘lost cause’",
+    "lien": "https://www.rapporteur.com/news/israel-eu-relationship-could-become-lost-cause/",
+    "date": "2026-11-23T13:59Z"
+   },
+   {
+    "titre": "EU strikes fisheries deal with Mauritania",
+    "lien": "https://www.rapporteur.com/news/eu-strikes-fisheries-deal-with-mauritania/",
+    "date": "2026-11-23T13:51Z"
    }
   ]
  },
  "un_climat": {
-  "titre": "ONU Info, climat et environnement",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/climate-change/feed/rss.xml",
-  "lu_le": "2026-11-23T19:44Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Climate Home News",
+  "url": "https://www.climatechangenews.com/feed/",
+  "lu_le": "2026-11-23T20:06Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/climate-change/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "What was agreed – and not agreed – on key issues at COP31 talks?",
+    "lien": "https://www.climatechangenews.com/2026/11/23/what-was-agreed-and-not-agreed-on-key-issues-at-cop31-talks/",
+    "date": "2026-11-23T16:25Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/climate-change/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Australia and South Korea’s clean energy deal could boost low-carbon trade",
+    "lien": "https://www.climatechangenews.com/2026/11/23/australia-and-south-koreas-clean-energy-deal-could-boost-low-carbon-trade/",
+    "date": "2026-11-23T13:58Z"
+   },
+   {
+    "titre": "After COP31, our chance to save climate diplomacy lies in global shipping",
+    "lien": "https://www.climatechangenews.com/2026/11/23/after-cop31-our-chance-to-save-climate-diplomacy-lies-in-global-shipping/",
+    "date": "2026-11-23T13:56Z"
+   },
+   {
+    "titre": "COP31 Bulletin Day 13: Talks fail as many countries reject main deal",
+    "lien": "https://www.climatechangenews.com/2026/11/22/cop31-bulletin-day-13-new-draft-retains-electrification-goal-but-delays-adaptation-finance-and-science-decisions/",
+    "date": "2026-11-22T05:59Z"
+   },
+   {
+    "titre": "COP31 is shaping up to be a disaster – not only because it’s weak on fossil fuels",
+    "lien": "https://www.climatechangenews.com/2026/11/21/cop31-is-shaping-up-to-be-a-disaster-not-only-because-its-weak-on-fossil-fuels/",
+    "date": "2026-11-21T10:18Z"
+   },
+   {
+    "titre": "COP31 Bulletin Day 12: Divisions on fossil fuels, adaptation finance and trade set to delay deal until Sunday",
+    "lien": "https://www.climatechangenews.com/2026/11/21/cop31-bulletin-day-12-dont-ignore-us-panama-warns-as-cop31-runs-into-overtime/",
+    "date": "2026-11-21T07:46Z"
+   },
+   {
+    "titre": "Ugandan oil official welcomes transition roadmap as nation gears up for exports",
+    "lien": "https://www.climatechangenews.com/2026/11/20/uganda-backs-fossil-fuel-transition-roadmap-gears-up-oil-exports/",
+    "date": "2026-11-20T15:05Z"
+   },
+   {
+    "titre": "COP31 Bulletin Day 11: Countries decry cover text for omitting fossil fuels",
+    "lien": "https://www.climatechangenews.com/2026/11/20/cop31-bulletin-day-11-best-cop-worst-cop-weary-negotiators-seek-to-strengthen-outcome/",
+    "date": "2026-11-20T10:08Z"
    }
   ]
  },
  "un_sante": {
-  "titre": "ONU Info, santé",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/health/feed/rss.xml",
-  "lu_le": "2026-11-23T19:44Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Health Policy Watch (santé mondiale, Genève)",
+  "url": "https://healthpolicy-watch.news/feed/",
+  "lu_le": "2026-11-23T20:06Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/health/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "What Can WHO Director-General Candidates Offer Africa?",
+    "lien": "https://healthpolicy-watch.news/what-can-who-director-general-candidates-offer-africa/",
+    "date": "2026-11-23T17:50Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/health/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Global Health Architecture: Cautious Steps and Aid Collapse Spark Pushback From the Frontline",
+    "lien": "https://healthpolicy-watch.news/global-health-architecture-reform/",
+    "date": "2026-11-23T12:56Z"
+   },
+   {
+    "titre": "BREAKING: Africa CDC Board Unable to Agree on Reappointment of Director-General",
+    "lien": "https://healthpolicy-watch.news/breaking-africa-cdc-board-unable-to-agree-on-reappointment-of-director-general/",
+    "date": "2026-11-23T11:20Z"
+   },
+   {
+    "titre": "COP31 Climate Summit that Could Not Say ‘Fossil Fuels’ Ends with No Deal",
+    "lien": "https://healthpolicy-watch.news/cop31-consensus-collapse-at-climate-summit/",
+    "date": "2026-11-23T01:06Z"
+   },
+   {
+    "titre": "COP31: EU and Panama Make Last Ditch Effort to Restore Fossil Fuels Reference in Text as Clock Runs Down",
+    "lien": "https://healthpolicy-watch.news/cop31-draft-deal-drops-fossil-fuels-references-as-final-session-goes-into-overtime/",
+    "date": "2026-11-20T21:48Z"
+   },
+   {
+    "titre": "Punjab’s Stubble-Burning Crisis Persists as Alternatives Are Costly for Small Farmers",
+    "lien": "https://healthpolicy-watch.news/punjabs-stubble-burning-crisis-persists/",
+    "date": "2026-11-20T16:30Z"
+   },
+   {
+    "titre": "The Fight to Save What Polio Eradication Built",
+    "lien": "https://healthpolicy-watch.news/fight-to-save-what-polio-eradication-built/",
+    "date": "2026-11-20T07:30Z"
+   },
+   {
+    "titre": "As WHO Director-General Forum Closes, Contenders Pitch Banks, Science and Discipline",
+    "lien": "https://healthpolicy-watch.news/who-dg-contenders-forum/",
+    "date": "2026-11-19T19:05Z"
    }
   ]
  },
  "un_humanitaire": {
   "titre": "ReliefWeb (OCHA, ONU), dernières mises à jour",
   "url": "https://reliefweb.int/updates/rss.xml",
-  "lu_le": "2026-11-23T19:45Z",
-  "http": 200,
-  "statut": "ok",
-  "articles": [
-   {
-    "titre": "South Sudan | Conflict, fragilities and population displacement October 2026 - DG ECHO Daily Map | 23/11/2026",
-    "lien": "https://reliefweb.int/map/south-sudan/south-sudan-conflict-fragilities-and-population-displacement-october-2026-dg-echo-daily-map-23112026",
-    "date": "2026-11-23T17:17Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province du Nord-Kivu – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-du-nord-kivu-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T16:15Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province de l'Ituri – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-de-lituri-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T16:04Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province de Sud-Kivu – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-de-sud-kivu-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T15:55Z"
-   },
-   {
-    "titre": "World: Carte des alertes de maladies épidémiques et émergentes en Océanie - 17 novembre 2026",
-    "lien": "https://reliefweb.int/map/world/carte-des-alertes-de-maladies-epidemiques-et-emergentes-en-oceanie-17-novembre-2026",
-    "date": "2026-11-23T15:40Z"
-   },
-   {
-    "titre": "DR Congo: MSF DRC: Child dies while awaiting medical evacuation as intensified clashes disrupt access to care in Nyabiondo, Masisi territory",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/msf-drc-child-dies-while-awaiting-medical-evacuation-intensified-clashes-disrupt-access-care-nyabiondo-masisi-territory",
-    "date": "2026-11-23T15:28Z"
-   },
-   {
-    "titre": "Nine months on, the humanitarian emergency in Lebanon is far from over",
-    "lien": "https://reliefweb.int/report/lebanon/nine-months-humanitarian-emergency-lebanon-far-over",
-    "date": "2026-11-23T15:13Z"
-   },
-   {
-    "titre": "WFP Niger Country Brief, November 2026",
-    "lien": "https://reliefweb.int/report/niger/wfp-niger-country-brief-november-2026",
-    "date": "2026-11-23T14:53Z"
-   }
-  ],
+  "lu_le": "2026-11-23T20:06Z",
+  "http": 202,
+  "statut": "muet",
+  "articles": [],
   "essais": [
    {
     "url": "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml",
@@ -268,59 +388,18 @@
    },
    {
     "url": "https://reliefweb.int/updates/rss.xml",
-    "statut": "ok",
-    "http": 200
+    "statut": "muet",
+    "http": 202
    }
   ]
  },
  "un_paix": {
   "titre": "ReliefWeb (OCHA, ONU), dernières mises à jour",
   "url": "https://reliefweb.int/updates/rss.xml",
-  "lu_le": "2026-11-23T19:46Z",
-  "http": 200,
-  "statut": "ok",
-  "articles": [
-   {
-    "titre": "South Sudan | Conflict, fragilities and population displacement October 2026 - DG ECHO Daily Map | 23/11/2026",
-    "lien": "https://reliefweb.int/map/south-sudan/south-sudan-conflict-fragilities-and-population-displacement-october-2026-dg-echo-daily-map-23112026",
-    "date": "2026-11-23T17:17Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province du Nord-Kivu – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-du-nord-kivu-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T16:15Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province de l'Ituri – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-de-lituri-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T16:04Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province de Sud-Kivu – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-de-sud-kivu-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T15:55Z"
-   },
-   {
-    "titre": "World: Carte des alertes de maladies épidémiques et émergentes en Océanie - 17 novembre 2026",
-    "lien": "https://reliefweb.int/map/world/carte-des-alertes-de-maladies-epidemiques-et-emergentes-en-oceanie-17-novembre-2026",
-    "date": "2026-11-23T15:40Z"
-   },
-   {
-    "titre": "DR Congo: MSF DRC: Child dies while awaiting medical evacuation as intensified clashes disrupt access to care in Nyabiondo, Masisi territory",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/msf-drc-child-dies-while-awaiting-medical-evacuation-intensified-clashes-disrupt-access-care-nyabiondo-masisi-territory",
-    "date": "2026-11-23T15:28Z"
-   },
-   {
-    "titre": "Nine months on, the humanitarian emergency in Lebanon is far from over",
-    "lien": "https://reliefweb.int/report/lebanon/nine-months-humanitarian-emergency-lebanon-far-over",
-    "date": "2026-11-23T15:13Z"
-   },
-   {
-    "titre": "WFP Niger Country Brief, November 2026",
-    "lien": "https://reliefweb.int/report/niger/wfp-niger-country-brief-november-2026",
-    "date": "2026-11-23T14:53Z"
-   }
-  ],
+  "lu_le": "2026-11-23T20:07Z",
+  "http": 202,
+  "statut": "muet",
+  "articles": [],
   "essais": [
    {
     "url": "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml",
@@ -334,99 +413,116 @@
    },
    {
     "url": "https://reliefweb.int/updates/rss.xml",
-    "statut": "ok",
-    "http": 200
+    "statut": "muet",
+    "http": 202
    }
   ]
  },
  "un_economie": {
-  "titre": "ONU Info, développement économique",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/economic-development/feed/rss.xml",
-  "lu_le": "2026-11-23T19:46Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Inter Press Service, développement",
+  "url": "https://www.ipsnews.net/news/development-aid/feed/",
+  "lu_le": "2026-11-23T20:07Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/economic-development/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Parliament Representation Reflects Diversity",
+    "lien": "https://www.ipsnews.net/2026/11/parliament-representation-reflects-diversity/",
+    "date": "2026-11-23T19:26Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/economic-development/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "KENYA: ‘I Tell the Stories of People Who Can’t Go on Stage to Perform Their Struggles’",
+    "lien": "https://www.ipsnews.net/2026/11/kenya-i-tell-the-stories-of-people-who-cant-go-on-stage-to-perform-their-struggles/",
+    "date": "2026-11-23T18:31Z"
+   },
+   {
+    "titre": "More Than a Cautionary Tale: Nepal’s Fight for Mountain Justice at COP31",
+    "lien": "https://www.ipsnews.net/2026/11/more-than-a-cautionary-tale-nepals-fight-for-mountain-justice-at-cop31/",
+    "date": "2026-11-23T09:21Z"
+   },
+   {
+    "titre": "COP31 Ends in Deadlock, Leaving Ethiopia To Pick up the Pieces",
+    "lien": "https://www.ipsnews.net/2026/11/cop31-ends-in-deadlock-leaving-ethiopia-to-pick-up-the-pieces/",
+    "date": "2026-11-23T07:08Z"
+   },
+   {
+    "titre": "COP31 Cover Deal Collapses as EU and Others Reject Draft Over Fossil Fuel Omission",
+    "lien": "https://www.ipsnews.net/2026/11/cop31-cover-deal-collapses-as-eu-and-others-reject-draft-over-fossil-fuel-omission/",
+    "date": "2026-11-22T14:48Z"
+   },
+   {
+    "titre": "Escalating Violence, Displacement, and Access Constraints Mount for Yemen’s Children",
+    "lien": "https://www.ipsnews.net/2026/11/escalating-violence-displacement-and-access-constraints-mount-for-yemens-children/",
+    "date": "2026-11-20T11:51Z"
+   },
+   {
+    "titre": "India’s Gen Z Revolt Against Disenfranchisement",
+    "lien": "https://www.ipsnews.net/2026/11/indias-gen-z-revolt-against-disenfranchisement/",
+    "date": "2026-11-20T09:34Z"
+   },
+   {
+    "titre": "Africa’s Just Transition Ambitions Face Hurdles at COP31",
+    "lien": "https://www.ipsnews.net/2026/11/africas-just-transition-ambitions-face-hurdles-at-cop31/",
+    "date": "2026-11-20T08:09Z"
    }
   ]
  },
  "un_droits": {
-  "titre": "ONU Info, droits humains",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/human-rights/feed/rss.xml",
-  "lu_le": "2026-11-23T19:47Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "Human Rights Watch",
+  "url": "https://www.hrw.org/rss/news",
+  "lu_le": "2026-11-23T20:07Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/human-rights/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Azerbaijan Further Tightens Grip on Civil Society",
+    "lien": "https://www.hrw.org/news/2026/11/23/azerbaijan-further-tightens-grip-on-civil-society",
+    "date": "2026-11-23T15:57Z"
    },
    {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/human-rights/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "French Bill Risks Deepening Police Impunity",
+    "lien": "https://www.hrw.org/news/2026/11/23/french-bill-risks-deepening-police-impunity",
+    "date": "2026-11-23T12:45Z"
+   },
+   {
+    "titre": "West Bank: Israeli Authorities Harass, Arrest Activists Protecting Palestinian Farmers",
+    "lien": "https://www.hrw.org/news/2026/11/23/west-bank-israeli-authorities-harass-arrest-activists-protecting-palestinian",
+    "date": "2026-11-23T05:00Z"
+   },
+   {
+    "titre": "Armed Groups' Abuses Continue in Border Areas",
+    "lien": "https://www.hrw.org/news/2026/11/23/armed-groups-abuses-continue-in-border-areas",
+    "date": "2026-11-23T05:00Z"
+   },
+   {
+    "titre": "Australia’s Sanctions on West Bank Settlers Increase Pressure",
+    "lien": "https://www.hrw.org/news/2026/11/23/australias-sanctions-on-west-bank-settlers-increase-pressure",
+    "date": "2026-11-22T23:00Z"
+   },
+   {
+    "titre": "Australia: Use Vietnam Dialogue to Press for Rights Reforms",
+    "lien": "https://www.hrw.org/news/2026/11/22/australia-use-vietnam-dialogue-to-press-for-rights-reforms",
+    "date": "2026-11-22T13:00Z"
+   },
+   {
+    "titre": "US Tries but Fails to Dilute UN Human Rights Resolutions",
+    "lien": "https://www.hrw.org/news/2026/11/20/us-tries-but-fails-to-dilute-un-human-rights-resolutions",
+    "date": "2026-11-20T17:00Z"
+   },
+   {
+    "titre": "World Court Finds Myanmar Committed Rohingya Genocide",
+    "lien": "https://www.hrw.org/news/2026/11/19/world-court-finds-myanmar-committed-rohingya-genocide",
+    "date": "2026-11-19T22:40Z"
    }
   ]
  },
  "un_migrants": {
   "titre": "ReliefWeb (OCHA, ONU), dernières mises à jour",
   "url": "https://reliefweb.int/updates/rss.xml",
-  "lu_le": "2026-11-23T19:47Z",
-  "http": 200,
-  "statut": "ok",
-  "articles": [
-   {
-    "titre": "South Sudan | Conflict, fragilities and population displacement October 2026 - DG ECHO Daily Map | 23/11/2026",
-    "lien": "https://reliefweb.int/map/south-sudan/south-sudan-conflict-fragilities-and-population-displacement-october-2026-dg-echo-daily-map-23112026",
-    "date": "2026-11-23T17:17Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province du Nord-Kivu – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-du-nord-kivu-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T16:15Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province de l'Ituri – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-de-lituri-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T16:04Z"
-   },
-   {
-    "titre": "DR Congo: RD Congo : Situation humanitaire dans la province de Sud-Kivu – rapport de situation #11, 31 octobre 2026",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/rd-congo-situation-humanitaire-dans-la-province-de-sud-kivu-rapport-de-situation-11-31-octobre-2026",
-    "date": "2026-11-23T15:55Z"
-   },
-   {
-    "titre": "World: Carte des alertes de maladies épidémiques et émergentes en Océanie - 17 novembre 2026",
-    "lien": "https://reliefweb.int/map/world/carte-des-alertes-de-maladies-epidemiques-et-emergentes-en-oceanie-17-novembre-2026",
-    "date": "2026-11-23T15:40Z"
-   },
-   {
-    "titre": "DR Congo: MSF DRC: Child dies while awaiting medical evacuation as intensified clashes disrupt access to care in Nyabiondo, Masisi territory",
-    "lien": "https://reliefweb.int/report/democratic-republic-congo/msf-drc-child-dies-while-awaiting-medical-evacuation-intensified-clashes-disrupt-access-care-nyabiondo-masisi-territory",
-    "date": "2026-11-23T15:28Z"
-   },
-   {
-    "titre": "Nine months on, the humanitarian emergency in Lebanon is far from over",
-    "lien": "https://reliefweb.int/report/lebanon/nine-months-humanitarian-emergency-lebanon-far-over",
-    "date": "2026-11-23T15:13Z"
-   },
-   {
-    "titre": "WFP Niger Country Brief, November 2026",
-    "lien": "https://reliefweb.int/report/niger/wfp-niger-country-brief-november-2026",
-    "date": "2026-11-23T14:53Z"
-   }
-  ],
+  "lu_le": "2026-11-23T20:08Z",
+  "http": 202,
+  "statut": "muet",
+  "articles": [],
   "essais": [
    {
     "url": "https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml",
@@ -440,95 +536,188 @@
    },
    {
     "url": "https://reliefweb.int/updates/rss.xml",
+    "statut": "muet",
+    "http": 202
+   }
+  ]
+ },
+ "un_droit": {
+  "titre": "JURIST (droit, justice internationale)",
+  "url": "https://www.jurist.org/news/feed/",
+  "lu_le": "2026-11-23T20:08Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Fifth Circuit finds House proxy voting unconstitutional in passage of $1.7 trillion spending bill",
+    "lien": "https://www.jurist.org/news/2026/11/fifth-circuit-finds-house-proxy-voting-unconstitutional-in-passage-of-1-7-trillion-spending-bill/",
+    "date": "2026-11-23T04:41Z"
+   },
+   {
+    "titre": "UN arms conference falls short of treaty mandate on autonomous weapons due to US and Russia opposition",
+    "lien": "https://www.jurist.org/news/2026/11/un-arms-conference-falls-short-of-treaty-mandate-on-autonomous-weapons-due-to-us-and-russia-opposition/",
+    "date": "2026-11-22T17:42Z"
+   },
+   {
+    "titre": "Amnesty International condemns Tunisian court’s sentencing of Sihem Bensedrine to prison",
+    "lien": "https://www.jurist.org/news/2026/11/amnesty-international-condemns-tunisian-courts-sentencing-of-sihem-bensedrine-to-5-years-in-prison/",
+    "date": "2026-11-22T07:24Z"
+   },
+   {
+    "titre": "Federal judge orders indefinite stop to construction of President Trump’s ‘triumphal arch’",
+    "lien": "https://www.jurist.org/news/2026/11/federal-judge-orders-indefinite-stop-to-construction-of-president-trumps-triumphal-arch/",
+    "date": "2026-11-21T15:51Z"
+   },
+   {
+    "titre": "Amnesty International warns of escalating gang violence against children in Haiti",
+    "lien": "https://www.jurist.org/news/2026/11/amnesty-international-warns-of-escalating-gang-violence-against-children-in-haiti/",
+    "date": "2026-11-20T20:16Z"
+   },
+   {
+    "titre": "Trump administration withdraws US Supreme Court request over Venezuelan deportation protections",
+    "lien": "https://www.jurist.org/news/2026/11/trump-administration-withdraws-us-supreme-court-request-over-venezuelan-deportation-protections/",
+    "date": "2026-11-20T17:41Z"
+   },
+   {
+    "titre": "Rights groups call for nations to close loopholes in incendiary weapons treaty",
+    "lien": "https://www.jurist.org/news/2026/11/rights-groups-call-for-nations-to-close-loopholes-in-incendiary-weapons-treaty/",
+    "date": "2026-11-20T16:49Z"
+   },
+   {
+    "titre": "HRW warns ICC decision threatens accountability for Afghanistan war crimes",
+    "lien": "https://www.jurist.org/news/2026/11/hrw-warns-icc-decision-threatens-accountability-for-afghanistan-war-crimes/",
+    "date": "2026-11-20T16:34Z"
+   }
+  ]
+ },
+ "un_femmes": {
+  "titre": "The 19th (femmes, politique)",
+  "url": "https://19thnews.org/feed/",
+  "lu_le": "2026-11-23T20:08Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Meet The 19th’s newest team members",
+    "lien": "https://19thnews.org/2026/11/new-team-members-visuals-audience-people-operations/",
+    "date": "2026-11-23T17:00Z"
+   },
+   {
+    "titre": "What’s next for LGBTQ+ rights in the South and Midwest",
+    "lien": "https://19thnews.org/2026/11/lgbtq-rights-south-midwest-states/",
+    "date": "2026-11-23T12:00Z"
+   },
+   {
+    "titre": "The anti-abortion movement is facing a reckoning",
+    "lien": "https://19thnews.org/2026/11/anti-abortion-movement-reckoning-2028/",
+    "date": "2026-11-23T11:00Z"
+   },
+   {
+    "titre": "‘GTA 6’ is introducing a new kind of mission: being a good partner",
+    "lien": "https://19thnews.org/2026/11/grand-theft-auto-vi-women-gender-relationships/",
+    "date": "2026-11-20T15:21Z"
+   },
+   {
+    "titre": "House Ethics changes how it responds to sexual misconduct allegations",
+    "lien": "https://19thnews.org/2026/11/house-ethics-rules-sexual-misconduct-allegations/",
+    "date": "2026-11-19T22:23Z"
+   },
+   {
+    "titre": "The Southern women who helped win and make history",
+    "lien": "https://19thnews.org/2026/11/southern-women-election-2026-history/",
+    "date": "2026-11-19T19:45Z"
+   },
+   {
+    "titre": "Democrats are ready to move past asking, ‘Can a woman win?’",
+    "lien": "https://19thnews.org/2026/11/electability-women-democrats-2028/",
+    "date": "2026-11-19T16:53Z"
+   },
+   {
+    "titre": "She reported her sexual assault. The Marine Corps kicked her out.",
+    "lien": "https://19thnews.org/2026/11/sexual-assault-marine-corps/",
+    "date": "2026-11-18T13:00Z"
+   }
+  ]
+ },
+ "un_culture": {
+  "titre": "The Art Newspaper (culture, patrimoine)",
+  "url": "https://www.theartnewspaper.com/rss.xml",
+  "lu_le": "2026-11-23T20:08Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "‘I want the experiences I had to be available forever’: arts figures and scientists hit out at proposed job cuts at Tasmanian Museum and Art Gallery",
+    "lien": "https://www.theartnewspaper.com/2026/11/23/arts-figures-scientists-hit-out-at-proposed-job-cuts-tasmanian-museum-and-art-gallery",
+    "date": "2026-11-23T13:00Z"
+   },
+   {
+    "titre": "International photography museum Fotografiska opens in Shenzhen",
+    "lien": "https://www.theartnewspaper.com/2026/11/23/international-photography-museum-fotografiska-opens-in-shenzhen",
+    "date": "2026-11-23T11:54Z"
+   },
+   {
+    "titre": "Abu Dhabi markets itself to global elites—can its public art biennial reach local communities?",
+    "lien": "https://www.theartnewspaper.com/2026/11/23/abu-dhabi-markets-itself-to-global-elites-but-its-public-art-biennial-wants-to-reach-local-communities",
+    "date": "2026-11-23T10:48Z"
+   },
+   {
+    "titre": "Chile’s first Anglican church to host a new museum",
+    "lien": "https://www.theartnewspaper.com/2026/11/23/chile-first-anglican-church-becomes-museum",
+    "date": "2026-11-23T08:21Z"
+   },
+   {
+    "titre": "Flooding in southwestern US underlines risks of Trump administration’s reduction of Bears Ears National Monument",
+    "lien": "https://www.theartnewspaper.com/2026/11/22/flooding-us-southwest-bears-ears-national-monument-trump-admin",
+    "date": "2026-11-23T01:51Z"
+   },
+   {
+    "titre": "First Frieze Abu Dhabi proves successful for the region's dealers, despite geopolitical jitters",
+    "lien": "https://www.theartnewspaper.com/2026/11/21/first-frieze-abu-dhabi-blends-global-ambitions-with-local-flavours",
+    "date": "2026-11-21T09:32Z"
+   },
+   {
+    "titre": "Russian strikes damage historic buildings in Kyiv and Odesa, including World Heritage sites",
+    "lien": "https://www.theartnewspaper.com/2026/11/20/russian-strikes-damage-heritage-sites-kyiv-odesa",
+    "date": "2026-11-20T22:06Z"
+   },
+   {
+    "titre": "Conservation of the ‘Sistine Chapel of the Andes’ nears completion",
+    "lien": "https://www.theartnewspaper.com/2026/11/20/bolivia-church-sistine-chapel-andes-conservation-nearly-complete",
+    "date": "2026-11-20T21:13Z"
+   }
+  ],
+  "essais": [
+   {
+    "url": "https://www.universityworldnews.com/rss.php",
+    "statut": "muet",
+    "http": 404
+   },
+   {
+    "url": "https://www.theartnewspaper.com/rss.xml",
     "statut": "ok",
     "http": 200
    }
   ]
  },
- "un_droit": {
-  "titre": "ONU Info, droit et prévention du crime",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/law-and-crime-prevention/feed/rss.xml",
-  "lu_le": "2026-11-23T19:48Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
-   {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/law-and-crime-prevention/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
-   },
-   {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/law-and-crime-prevention/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
-   }
-  ]
- },
- "un_femmes": {
-  "titre": "ONU Info, femmes",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/women/feed/rss.xml",
-  "lu_le": "2026-11-23T19:48Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
-   {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/women/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
-   },
-   {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/women/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
-   }
-  ]
- },
- "un_culture": {
-  "titre": "ONU Info, culture et éducation",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/culture-and-education/feed/rss.xml",
-  "lu_le": "2026-11-23T19:49Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
-   {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/culture-and-education/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
-   },
-   {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/culture-and-education/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
-   }
-  ]
- },
  "un_odd": {
-  "titre": "ONU Info, objectifs de développement durable",
-  "url": "https://news.un.org/feed/subscribe/fr/news/topic/sdgs/feed/rss.xml",
-  "lu_le": "2026-11-23T19:49Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "titre": "IISD, SDG Knowledge Hub (objectifs de développement durable)",
+  "url": "https://sdg.iisd.org/feed/",
+  "lu_le": "2026-11-23T20:08Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://news.un.org/feed/subscribe/en/news/topic/sdgs/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
-   },
-   {
-    "url": "https://news.un.org/feed/subscribe/fr/news/topic/sdgs/feed/rss.xml",
-    "statut": "muet",
-    "http": 404
+    "titre": "Hello world!",
+    "lien": "https://sdg.iisd.org/hello-world/",
+    "date": "2023-05-18T15:00Z"
    }
   ]
  },
  "bbc_afrique": {
   "titre": "BBC News, Afrique",
   "url": "https://feeds.bbci.co.uk/news/world/africa/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -577,7 +766,7 @@
  "bbc_asie": {
   "titre": "BBC News, Asie",
   "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -626,7 +815,7 @@
  "bbc_inde": {
   "titre": "BBC News, Inde",
   "url": "https://feeds.bbci.co.uk/news/world/asia/india/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -675,7 +864,7 @@
  "bbc_chine": {
   "titre": "BBC News, Chine",
   "url": "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -724,7 +913,7 @@
  "bbc_australie": {
   "titre": "BBC News, Australie",
   "url": "https://feeds.bbci.co.uk/news/world/australia/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -773,7 +962,7 @@
  "bbc_amlat": {
   "titre": "BBC News, Amérique latine",
   "url": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -822,7 +1011,7 @@
  "bbc_moyen_orient": {
   "titre": "BBC News, Moyen-Orient",
   "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -871,7 +1060,7 @@
  "bbc_europe": {
   "titre": "BBC News, Europe",
   "url": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -920,19 +1109,19 @@
  "bbc_usa_canada": {
   "titre": "BBC News, États-Unis et Canada",
   "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
    {
+    "titre": "Trump orders US military not to detonate toxic explosives in Iowa without court approval",
+    "lien": "https://www.bbc.co.uk/news/articles/cr2klqzqx1qvo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-23T19:52Z"
+   },
+   {
     "titre": "Trump says he 'convinced' Nvidia to reinstate Jensen Huang",
     "lien": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss",
     "date": "2026-11-23T19:14Z"
-   },
-   {
-    "titre": "US Army reschedules detonation of toxic explosives at Iowa ammunition plant",
-    "lien": "https://www.bbc.co.uk/news/articles/cr2klqzqx1qvo?at_medium=RSS&at_campaign=rss",
-    "date": "2026-11-23T18:51Z"
    },
    {
     "titre": "First Lady Melania Trump welcomes this year's White House Christmas tree",
@@ -969,7 +1158,7 @@
  "bbc_science": {
   "titre": "BBC News, science et environnement",
   "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1018,7 +1207,7 @@
  "bbc_sante": {
   "titre": "BBC News, santé",
   "url": "https://feeds.bbci.co.uk/news/health/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1067,7 +1256,7 @@
  "bbc_tech": {
   "titre": "BBC News, technologie",
   "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1116,7 +1305,7 @@
  "bbc_economie": {
   "titre": "BBC News, économie",
   "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1165,7 +1354,7 @@
  "bbc_sport": {
   "titre": "BBC Sport",
   "url": "https://feeds.bbci.co.uk/sport/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1214,10 +1403,15 @@
  "lm_international": {
   "titre": "Le Monde, International",
   "url": "https://www.lemonde.fr/international/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "L’Union européenne veut « interdire l’affichage des symboles russes » dans les compétitions sportives sur son sol",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/l-union-europeenne-veut-interdire-l-affichage-des-symboles-russes-dans-les-competitions-sportives-sur-son-sol_6814445_3210.html",
+    "date": "2026-11-23T19:56Z"
+   },
    {
     "titre": "EN DIRECT, Jensen Huang réintégré chez Nvidia à la surprise générale : le dirigeant accueilli sous les applaudissements de centaines de salariés",
     "lien": "https://www.lemonde.fr/international/live/2026/11/23/en-direct-jensen-huang-reintegre-chez-nvidia-a-la-surprise-generale-le-dirigeant-accueilli-sous-les-applaudissements-de-centaines-de-salaries_6814407_3210.html",
@@ -1252,18 +1446,13 @@
     "titre": "L’UE propose d’interdire aux athlètes russes de pouvoir participer aux compétitions sur son territoire",
     "lien": "https://www.lemonde.fr/sport/article/2026/11/23/l-ue-propose-d-interdire-aux-athletes-russes-de-pouvoir-participer-aux-competitions-sur-son-territoire_6814424_3242.html",
     "date": "2026-11-23T16:42Z"
-   },
-   {
-    "titre": "Diego Tovar, ex-FARC : « Il est dans l’intérêt de l’UE de faire pression sur Abelardo de la Espriella pour qu’il respecte l’accord de paix »",
-    "lien": "https://www.lemonde.fr/international/article/2026/11/23/diego-tovar-ex-farc-il-est-dans-l-interet-de-l-ue-de-faire-pression-sur-abelardo-de-la-espriella-pour-qu-il-respecte-l-accord-de-paix_6814423_3210.html",
-    "date": "2026-11-23T16:39Z"
    }
   ]
  },
  "lm_afrique": {
   "titre": "Le Monde, Afrique",
   "url": "https://www.lemonde.fr/afrique/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1312,7 +1501,7 @@
  "lm_asie": {
   "titre": "Le Monde, Asie-Pacifique",
   "url": "https://www.lemonde.fr/asie-pacifique/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1361,7 +1550,7 @@
  "lm_ameriques": {
   "titre": "Le Monde, Amériques",
   "url": "https://www.lemonde.fr/ameriques/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1410,10 +1599,15 @@
  "lm_europe": {
   "titre": "Le Monde, Europe",
   "url": "https://www.lemonde.fr/europe/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "L’Union européenne veut « interdire l’affichage des symboles russes » dans les compétitions sportives sur son sol",
+    "lien": "https://www.lemonde.fr/international/article/2026/11/23/l-union-europeenne-veut-interdire-l-affichage-des-symboles-russes-dans-les-competitions-sportives-sur-son-sol_6814445_3210.html",
+    "date": "2026-11-23T19:56Z"
+   },
    {
     "titre": "L’Ukraine sous le joug soviétique est au cœur du second tome du puissant « Amadoca », de Sofia Andrukhovych",
     "lien": "https://www.lemonde.fr/livres/article/2026/11/23/l-ukraine-sous-le-joug-sovietique-est-au-c-ur-du-second-tome-du-puissant-amadoca-de-sofia-andrukhovych_6814437_3260.html",
@@ -1448,18 +1642,13 @@
     "titre": "Espagne : l’indépendantiste catalan Carles Puigdemont définitivement blanchi par la justice",
     "lien": "https://www.lemonde.fr/international/article/2026/11/23/espagne-l-independantiste-catalan-carles-puigdemont-definitivement-blanchi-par-la-justice_6814403_3210.html",
     "date": "2026-11-23T15:31Z"
-   },
-   {
-    "titre": "La Turquie affirme que le PKK a évacué 14 autres bases du nord de l’Irak, une nouvelle étape majeure vers la paix",
-    "lien": "https://www.lemonde.fr/international/article/2026/11/23/la-turquie-affirme-que-le-pkk-a-evacue-14-autres-bases-du-nord-de-l-irak-une-nouvelle-etape-majeure-vers-la-paix_6814400_3210.html",
-    "date": "2026-11-23T15:09Z"
    }
   ]
  },
  "lm_proche_orient": {
   "titre": "Le Monde, Proche-Orient",
   "url": "https://www.lemonde.fr/proche-orient/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1508,10 +1697,15 @@
  "lm_economie": {
   "titre": "Le Monde, Économie",
   "url": "https://www.lemonde.fr/economie/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Grand Paris Express : l’ouverture de la nouvelle ligne 18 du métro plus compromise que jamais",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/grand-paris-express-l-ouverture-de-la-nouvelle-ligne-18-du-metro-plus-compromise-que-jamais_6814446_3234.html",
+    "date": "2026-11-23T19:57Z"
+   },
    {
     "titre": "EN DIRECT, Jensen Huang réintégré chez Nvidia à la surprise générale : le dirigeant accueilli sous les applaudissements de centaines de salariés",
     "lien": "https://www.lemonde.fr/international/live/2026/11/23/en-direct-jensen-huang-reintegre-chez-nvidia-a-la-surprise-generale-le-dirigeant-accueilli-sous-les-applaudissements-de-centaines-de-salaries_6814407_3210.html",
@@ -1546,18 +1740,13 @@
     "titre": "Jensen Huang réintégré à la tête de Nvidia par son conseil d’administration, deux semaines après avoir démissionné à la suite de soupçons d’espionnage chinois",
     "lien": "https://www.lemonde.fr/economie/article/2026/11/23/jensen-huang-reintegre-comme-directeur-general-et-president-de-nvidia-par-le-conseil-d-administration-deux-semaines-apres-avoir-demissionne-suite-a-des-suspicions-d-espionnage-chinois_6814392_3234.html",
     "date": "2026-11-23T14:21Z"
-   },
-   {
-    "titre": "A Paris, les conflits autour de l’espace public pourraient faire le bonheur du secteur privé",
-    "lien": "https://www.lemonde.fr/idees/article/2026/11/23/a-paris-les-conflits-autour-de-l-espace-public-pourraient-faire-le-bonheur-du-secteur-prive_6814387_3232.html",
-    "date": "2026-11-23T13:30Z"
    }
   ]
  },
  "lm_planete": {
   "titre": "Le Monde, Planète",
   "url": "https://www.lemonde.fr/planete/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:08Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1606,7 +1795,7 @@
  "lm_sciences": {
   "titre": "Le Monde, Sciences",
   "url": "https://www.lemonde.fr/sciences/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1655,7 +1844,7 @@
  "lm_pixels": {
   "titre": "Le Monde, Pixels (numérique)",
   "url": "https://www.lemonde.fr/pixels/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1704,7 +1893,7 @@
  "lm_sante": {
   "titre": "Le Monde, Santé",
   "url": "https://www.lemonde.fr/sante/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1753,7 +1942,7 @@
  "lm_culture": {
   "titre": "Le Monde, Culture",
   "url": "https://www.lemonde.fr/culture/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1802,7 +1991,7 @@
  "lm_societe": {
   "titre": "Le Monde, Société",
   "url": "https://www.lemonde.fr/societe/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1851,7 +2040,7 @@
  "lm_politique": {
   "titre": "Le Monde, Politique",
   "url": "https://www.lemonde.fr/politique/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1900,7 +2089,7 @@
  "lm_idees": {
   "titre": "Le Monde, Idées",
   "url": "https://www.lemonde.fr/idees/rss_full.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1949,7 +2138,7 @@
  "rfi_afrique": {
   "titre": "RFI, Afrique",
   "url": "https://www.rfi.fr/fr/afrique/rss",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -1998,7 +2187,7 @@
  "rfi_asie": {
   "titre": "RFI, Asie-Pacifique",
   "url": "https://www.rfi.fr/fr/asie-pacifique/rss",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2047,7 +2236,7 @@
  "f24_moyen_orient": {
   "titre": "France 24, Moyen-Orient",
   "url": "https://www.france24.com/fr/moyen-orient/rss",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2096,7 +2285,7 @@
  "f24_afrique": {
   "titre": "France 24, Afrique",
   "url": "https://www.france24.com/fr/afrique/rss",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2145,10 +2334,35 @@
  "the_hindu": {
   "titre": "The Hindu, national (Inde)",
   "url": "https://www.thehindu.com/news/national/feeder/default.rss",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Will bank manager accept Kayalvizhi Alagiri’s apology, asks Madras High Court",
+    "lien": "https://www.thehindu.com/news/national/tamil-nadu/will-bank-manager-accept-kayalvizhi-alagiris-apology-asks-madras-high-court/article71735095.ece",
+    "date": "2026-11-23T20:05Z"
+   },
+   {
+    "titre": "CJP’s Saurav Das claims he was stopped at Delhi airport from travelling to U.K.",
+    "lien": "https://www.thehindu.com/news/national/cjps-saurav-das-claims-he-was-stopped-at-delhi-airport-from-travelling-to-uk/article71736209.ece",
+    "date": "2026-11-23T19:49Z"
+   },
+   {
+    "titre": "The Bilkis Bano order — justice deferred again",
+    "lien": "https://www.thehindu.com/opinion/lead/the-bilkis-bano-order-justice-deferred-again/article71735769.ece",
+    "date": "2026-11-23T19:45Z"
+   },
+   {
+    "titre": "Power outage during Minister’s programme in Kannur: KSEB staff rally behind suspended sub-engineer",
+    "lien": "https://www.thehindu.com/news/national/kerala/power-outage-during-ministers-programme-in-kannur-kseb-staff-rally-behind-suspended-sub-engineer/article71733750.ece",
+    "date": "2026-11-23T19:45Z"
+   },
+   {
+    "titre": "Violence erupts in Pithapuram amid JSP councillors’ sparring over vice-chairman pick",
+    "lien": "https://www.thehindu.com/news/national/andhra-pradesh/tension-in-pithapuram-as-jsp-councillors-differ-over-vice-chairman-pick/article71734975.ece",
+    "date": "2026-11-23T19:40Z"
+   },
    {
     "titre": "Krushi OWS holds road safety awareness competitions for school students",
     "lien": "https://www.thehindu.com/news/national/andhra-pradesh/krushi-ows-holds-road-safety-awareness-competitions-for-school-students/article71734936.ece",
@@ -2163,45 +2377,20 @@
     "titre": "Ban on collection of wild shrimp seed at SACB proposed",
     "lien": "https://www.thehindu.com/news/national/andhra-pradesh/ban-on-collection-of-wild-shrimp-seed-at-sacb-proposed/article71734691.ece",
     "date": "2026-11-23T19:33Z"
-   },
-   {
-    "titre": "State appeals against DMK ex-Minister Ponmudy’s acquittal in ₹28.37-crore red sand quarrying case",
-    "lien": "https://www.thehindu.com/news/national/tamil-nadu/state-appeals-against-dmk-ex-minister-ponmudys-acquittal-in-2837-crore-red-sand-quarrying-case/article71735724.ece",
-    "date": "2026-11-23T19:27Z"
-   },
-   {
-    "titre": "The Bilkis Bano order — justice deferred again",
-    "lien": "https://www.thehindu.com/opinion/lead/the-bilkis-bano-order-justice-deferred-again/article71735769.ece",
-    "date": "2026-11-23T19:16Z"
-   },
-   {
-    "titre": "Autism lab, sleep research facility inaugurated in IIT Madras",
-    "lien": "https://www.thehindu.com/news/national/tamil-nadu/autism-lab-sleep-research-facility-inaugurated-in-iit-madras/article71734588.ece",
-    "date": "2026-11-23T19:11Z"
-   },
-   {
-    "titre": "Pammal residents want widening of main road",
-    "lien": "https://www.thehindu.com/news/cities/chennai/pammal-residents-want-widening-of-main-road/article71736003.ece",
-    "date": "2026-11-23T19:09Z"
-   },
-   {
-    "titre": "SC admits appeal filed by SASTRA against Madras High Court’s eviction order",
-    "lien": "https://www.thehindu.com/news/national/tamil-nadu/sc-admits-appeal-filed-bysastraagainst-madras-high-courts-eviction-order/article71735147.ece",
-    "date": "2026-11-23T19:01Z"
    }
   ]
  },
  "dawn": {
   "titre": "Dawn, actualité (Pakistan)",
   "url": "https://www.dawn.com/feeds/home",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
    {
     "titre": "Naqvi complicated provinces debate by 'irrelevant speech at irrelevant forum', says Rana Sanaullah",
     "lien": "https://www.dawn.com/news/2046575/naqvi-complicated-provinces-debate-by-irrelevant-speech-at-irrelevant-forum-says-rana-sanaullah",
-    "date": "2026-11-23T19:07Z"
+    "date": "2026-11-23T19:55Z"
    },
    {
     "titre": "Pemra bans ads, promotions for commercial infant formula on electronic media",
@@ -2243,7 +2432,7 @@
  "japan_times": {
   "titre": "The Japan Times",
   "url": "https://www.japantimes.co.jp/feed/",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2292,7 +2481,7 @@
  "scmp_chine": {
   "titre": "South China Morning Post, Chine",
   "url": "https://www.scmp.com/rss/4/feed",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "url_finale": "https://www.scmp.com/rss/4/feed/",
   "statut": "ok",
@@ -2342,10 +2531,15 @@
  "abc_australie": {
   "titre": "ABC News (Australie), dernières nouvelles",
   "url": "https://www.abc.net.au/news/feed/2942460/rss.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "W Award winner Georgie 'not anymore' in older sister Maddy's shadow",
+    "lien": "https://www.abc.net.au/news/2026-11-24/georgie-and-maddy-prespakis-first-sisters-to-win-w-award/107418936",
+    "date": "2026-11-23T19:59Z"
+   },
    {
     "titre": "Steve Smith labours on return from injury in Sheffield Shield",
     "lien": "https://www.abc.net.au/news/2026-11-23/steve-smith-out-cheaply-in-return-from-neck-injury-in-shield/107418702",
@@ -2380,18 +2574,13 @@
     "titre": "Cricket NSW slams door on Bears' North Sydney NRL homecoming",
     "lien": "https://www.abc.net.au/news/2026-11-23/cricket-nsw-rules-out-perth-bears-play-north-sydney-oval/107416898",
     "date": "2026-11-23T02:44Z"
-   },
-   {
-    "titre": "Joeys come back to Earth with frustrating World Cup result",
-    "lien": "https://www.abc.net.au/news/2026-11-23/australia-draws-with-denmark-at-fifa-u17-world-cup/107415340",
-    "date": "2026-11-22T20:36Z"
    }
   ]
  },
  "rnz_pacifique": {
   "titre": "RNZ Pacific (îles du Pacifique)",
   "url": "https://www.rnz.co.nz/rss/pacific.xml",
-  "lu_le": "2026-11-23T19:50Z",
+  "lu_le": "2026-11-23T20:09Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2440,10 +2629,15 @@
  "cbc_canada": {
   "titre": "Global News, Canada",
   "url": "https://globalnews.ca/canada/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Premiers Ford, Smith say interprovincial trade remains complicated despite efforts",
+    "lien": "https://globalnews.ca/news/12162813/premiers-ford-smith-say-interprovincial-trade-remains-complicated-despite-efforts/",
+    "date": "2026-11-23T19:56Z"
+   },
    {
     "titre": "Steven Del Duca fires top civil servant using ‘strong chair’ powers",
     "lien": "https://globalnews.ca/news/12162767/steven-del-duca-fires-top-civil-servant-using-strong-chair-powers/",
@@ -2478,11 +2672,6 @@
     "titre": "Former firefighter responsible for Ontario teen’s death in 1968, police say",
     "lien": "https://globalnews.ca/news/12162338/jacqueline-dunleavy-london-cold-case/",
     "date": "2026-11-23T16:25Z"
-   },
-   {
-    "titre": "Navdeep Bains vows united front at Queen’s Park after narrow Liberal leadership win",
-    "lien": "https://globalnews.ca/news/12162363/navdeep-bains-vows-united-front-at-queens-park-after-narrow-liberal-leadership-win/",
-    "date": "2026-11-23T16:24Z"
    }
   ],
   "essais": [
@@ -2509,13 +2698,53 @@
   ]
  },
  "arctic_today": {
-  "titre": "The Barents Observer (Arctique)",
-  "url": "https://thebarentsobserver.com/en/rss.xml",
-  "lu_le": "2026-11-23T19:53Z",
-  "http": 404,
-  "url_finale": "https://www.thebarentsobserver.com/en/rss.xml",
-  "statut": "muet",
-  "articles": [],
+  "titre": "Nunatsiaq News (Arctique canadien)",
+  "url": "https://nunatsiaq.com/feed/",
+  "lu_le": "2026-11-23T20:11Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Defence Department plans Iqaluit ‘engagement session’",
+    "lien": "https://nunatsiaq.com/stories/article/defence-department-plans-iqaluit-engagement-session/",
+    "date": "2026-11-23T19:26Z"
+   },
+   {
+    "titre": "Iqaluit firefighters and RCMP face off for food",
+    "lien": "https://nunatsiaq.com/stories/article/iqaluit-firefighters-and-rcmp-face-off-for-food/",
+    "date": "2026-11-23T18:55Z"
+   },
+   {
+    "titre": "ᓄᓇᕕᒃᒥ ᓄᑖᖅ ᐊᐃᑉᐸᖃᖃᑕᕐᓂᕐᒧᑦ ᐃᓕᓐᓂᐊᕈᑎᒃᓴᖅ ᐋᖅᑭᒃᑕᐅᕙᓪᓕᐊᕗᖅ",
+    "lien": "https://nunatsiaq.com/stories/article/nunaviks-new-sex-education-curriculum-takes-shape_inuk/",
+    "date": "2026-11-23T15:30Z"
+   },
+   {
+    "titre": "Scientists study climate change impact on Baffin Bay ice",
+    "lien": "https://nunatsiaq.com/stories/article/scientists-study-climate-change-impact-on-baffin-bay-ice/",
+    "date": "2026-11-23T13:54Z"
+   },
+   {
+    "titre": "News quiz Nov. 21 | Old traditions and new beginnings",
+    "lien": "https://nunatsiaq.com/stories/article/news-quiz-nov-21-old-traditions-and-new-beginnings/",
+    "date": "2026-11-21T16:30Z"
+   },
+   {
+    "titre": "Blubber for bibles",
+    "lien": "https://nunatsiaq.com/stories/article/blubber-for-bibles/",
+    "date": "2026-11-21T15:30Z"
+   },
+   {
+    "titre": "Pirutsiagutiit ends Inuit Child First Initiative uncertainty",
+    "lien": "https://nunatsiaq.com/stories/article/pirutsiagutiit-ends-inuit-child-first-initiative-uncertainty/",
+    "date": "2026-11-21T14:30Z"
+   },
+   {
+    "titre": "Lack of security guard rules could expose GN, professor says",
+    "lien": "https://nunatsiaq.com/stories/article/lack-of-security-guard-rules-could-expose-gn-professor-says/",
+    "date": "2026-11-20T19:53Z"
+   }
+  ],
   "essais": [
    {
     "url": "https://www.arctictoday.com/feed/",
@@ -2532,13 +2761,23 @@
     "statut": "muet",
     "http": 404,
     "url_finale": "https://www.thebarentsobserver.com/en/rss.xml"
+   },
+   {
+    "url": "https://www.thearcticinstitute.org/feed/",
+    "statut": "muet",
+    "http": 403
+   },
+   {
+    "url": "https://nunatsiaq.com/feed/",
+    "statut": "ok",
+    "http": 200
    }
   ]
  },
  "eurasianet": {
   "titre": "Eurasianet (Caucase et Asie centrale)",
   "url": "https://eurasianet.org/rss",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2587,10 +2826,15 @@
  "insight_crime": {
   "titre": "InSight Crime (crime organisé, Amériques)",
   "url": "https://insightcrime.org/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Cartel del Caribe",
+    "lien": "https://insightcrime.org/costa-rica-organized-crime-news/cartel-del-caribe/",
+    "date": "2026-11-23T20:06Z"
+   },
    {
     "titre": "Red Command (Comando Vermelho)",
     "lien": "https://insightcrime.org/brazil-organized-crime-news/red-command-profile/",
@@ -2625,18 +2869,13 @@
     "titre": "Second Marquetalia",
     "lien": "https://insightcrime.org/colombia-organized-crime-news/segunda-marquetalia/",
     "date": "2026-11-18T22:16Z"
-   },
-   {
-    "titre": "National Liberation Army (ELN)",
-    "lien": "https://insightcrime.org/colombia-organized-crime-news/eln-profile/",
-    "date": "2026-11-18T22:06Z"
    }
   ]
  },
  "kyiv_independent": {
   "titre": "The Kyiv Independent (Ukraine)",
   "url": "https://kyivindependent.com/news-archive/rss/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2685,10 +2924,20 @@
  "meduza": {
   "titre": "Meduza, en anglais (média russe indépendant, en exil)",
   "url": "https://meduza.io/rss/en/all",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Russia detains Murmansk region Governor Andrey Chibis on suspicion of embezzlement",
+    "lien": "https://meduza.io/en/news/2026/11/23/russia-detains-murmansk-region-governor-andrey-chibis-on-suspicion-of-embezzlement",
+    "date": "2026-11-23T20:09Z"
+   },
+   {
+    "titre": "Germany sent tanks to Lithuania by rail instead of driving them through Poland ‘to avoid provoking Putin,’ Bild reports",
+    "lien": "https://meduza.io/en/news/2026/11/23/germany-sent-tanks-to-lithuania-by-rail-instead-of-driving-them-through-poland-to-avoid-provoking-putin-bild-reports",
+    "date": "2026-11-23T19:59Z"
+   },
    {
     "titre": "Blasts and shrapnel account for 92% of recorded Russian military deaths in Ukraine, iStories reports. Gunshot wounds account for less than 2%.",
     "lien": "https://meduza.io/en/news/2026/11/23/blasts-and-shrapnel-account-for-92-of-recorded-russian-military-deaths-in-ukraine-istories-reports",
@@ -2718,26 +2967,21 @@
     "titre": "At least 720,000 Russian soldiers killed in Ukraine by fall 2026, Meduza and Mediazona estimate in new analysis that includes missing troops for the first time",
     "lien": "https://meduza.io/en/news/2026/11/23/at-least-720-000-russian-soldiers-killed-in-ukraine-by-fall-2026-meduza-and-mediazona-estimate-in-new-analysis-that-includes-missing-troops-for-the-first-time",
     "date": "2026-11-23T16:29Z"
-   },
-   {
-    "titre": "On day of Putin’s visit, Tajikistan notifies UN of withdrawal from International Criminal Court",
-    "lien": "https://meduza.io/en/news/2026/11/23/on-day-of-putin-s-visit-tajikistan-notifies-un-of-withdrawal-from-international-criminal-court",
-    "date": "2026-11-23T16:19Z"
-   },
-   {
-    "titre": "Russia to spend 47 billion rubles on ferries to Kaliningrad amid fears of transport blockade",
-    "lien": "https://meduza.io/en/news/2026/11/23/russia-to-spend-47-billion-rubles-on-ferries-to-kaliningrad-amid-fears-of-transport-blockade",
-    "date": "2026-11-23T16:00Z"
    }
   ]
  },
  "tass": {
   "titre": "TASS, en anglais (agence d'État russe)",
   "url": "https://tass.com/rss/v2.xml",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "NATO announced deployment of AWACS early warning aircraft to Poland",
+    "lien": "https://tass.com/world/2223625",
+    "date": "2026-11-23T19:54Z"
+   },
    {
     "titre": "Libya condemns Ukraine’s actions as being tantamount to declaration of war",
     "lien": "https://tass.com/world/2223623",
@@ -2772,18 +3016,13 @@
     "titre": "Russia’s civilian casualties from Ukraine’s attacks exceed 35,000 since 2022 — diplomat",
     "lien": "https://tass.com/politics/2223609",
     "date": "2026-11-23T18:48Z"
-   },
-   {
-    "titre": "Jensen Huang reinstated as Nvidia CEO: what we know",
-    "lien": "https://tass.com/economy/2223607",
-    "date": "2026-11-23T18:27Z"
    }
   ]
  },
  "times_of_israel": {
   "titre": "The Jerusalem Post",
   "url": "https://www.jpost.com/rss/rssfeedsheadlines.aspx",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2843,10 +3082,20 @@
  "middle_east_eye": {
   "titre": "Middle East Eye",
   "url": "https://www.middleeasteye.net/rss",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Qatar striving to revive US-Iran negotiations",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/qatar-striving-revive-us-iran-negotiations",
+    "date": "2026-11-23T20:10Z"
+   },
+   {
+    "titre": "Iran says 'no-war, no-peace' situation cannot continue",
+    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/iran-says-no-war-no-peace-situation-cannot-continue",
+    "date": "2026-11-23T19:55Z"
+   },
    {
     "titre": "Palestinian critically wounded by Israeli gunfire in Gaza, Al Jazeera reports",
     "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/palestinian-critically-wounded-israeli-fires-al-jazeera-reports",
@@ -2876,23 +3125,13 @@
     "titre": "Yemeni government: Civilians killed, injured in Houthi attack in Lahij",
     "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/saudi-backed-yemeni-government-civilians-killed-injured-houthi-attack",
     "date": "2026-11-23T16:30Z"
-   },
-   {
-    "titre": "Explosions reported in Strait of Hormuz",
-    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/explosions-reported-strait-hormuz",
-    "date": "2026-11-23T15:43Z"
-   },
-   {
-    "titre": "Netanyahu vows to bring down any 'bad government'",
-    "lien": "https://www.middleeasteye.net/live-blog/live-blog-update/netanyahu-vows-bring-down-any-bad-government",
-    "date": "2026-11-23T15:30Z"
    }
   ]
  },
  "dabanga": {
   "titre": "Radio Dabanga (Soudan)",
   "url": "https://www.dabangasudan.org/en/feed",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2941,7 +3180,7 @@
  "politico_europe": {
   "titre": "Politico Europe",
   "url": "https://www.politico.eu/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -2990,7 +3229,7 @@
  "scotusblog": {
   "titre": "SCOTUSblog (Cour suprême des États-Unis)",
   "url": "https://www.scotusblog.com/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:11Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3039,7 +3278,7 @@
  "carbon_brief": {
   "titre": "Carbon Brief (climat)",
   "url": "https://www.carbonbrief.org/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "url_finale": "https://www.carbonbrief.org/feed",
   "statut": "ok",
@@ -3087,11 +3326,11 @@
   ]
  },
  "nasa_eo": {
-  "titre": "NASA Earth Observatory",
-  "url": "https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss",
-  "lu_le": "2026-11-23T19:53Z",
+  "titre": "ESA, observation de la Terre",
+  "url": "https://www.esa.int/rssfeed/Applications/Observing_the_Earth",
+  "lu_le": "2026-11-23T20:12Z",
+  "http": 404,
   "statut": "muet",
-  "erreur": "ParseError",
   "articles": [],
   "essais": [
    {
@@ -3108,13 +3347,18 @@
     "url": "https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss",
     "statut": "muet",
     "erreur": "ParseError"
+   },
+   {
+    "url": "https://www.esa.int/rssfeed/Applications/Observing_the_Earth",
+    "statut": "muet",
+    "http": 404
    }
   ]
  },
  "mongabay": {
   "titre": "Mongabay (nature, forêts, océans)",
   "url": "https://news.mongabay.com/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3163,7 +3407,7 @@
  "circle_of_blue": {
   "titre": "Circle of Blue (eau)",
   "url": "https://www.circleofblue.org/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3212,7 +3456,7 @@
  "oms": {
   "titre": "Organisation mondiale de la santé, actualités",
   "url": "https://www.who.int/rss-feeds/news-english.xml",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3260,36 +3504,101 @@
  },
  "aiea": {
   "titre": "AIEA, actualités",
-  "url": "https://www.iaea.org/feeds/press-releases",
-  "lu_le": "2026-11-23T19:53Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
-  "essais": [
+  "url": "https://www.iaea.org/feeds/topnews",
+  "lu_le": "2026-11-23T20:12Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
    {
-    "url": "https://www.iaea.org/feeds/topnews",
-    "statut": "muet",
-    "erreur": "ParseError"
+    "titre": "Update 376 – IAEA Director General Statement on Situation in Ukraine",
+    "lien": "http://www.iaea.org/newscenter/pressreleases/update-376-iaea-director-general-statement-on-situation-in-ukraine",
+    "date": "26-11-19  19:02"
    },
    {
-    "url": "https://www.iaea.org/feeds/news",
-    "statut": "muet",
-    "erreur": "ParseError"
+    "titre": "IAEA and Global Partnership of Nuclear Communities Strengthen Cooperation on Local Engagement",
+    "lien": "http://www.iaea.org/newscenter/news/iaea-and-global-partnership-of-nuclear-communities-strengthen-cooperation-on-local-engagement",
+    "date": "26-11-19  13:00"
    },
    {
-    "url": "https://www.iaea.org/feeds/press-releases",
-    "statut": "muet",
-    "http": 404
+    "titre": "IAEA and Global Partnership of Nuclear Communities Strengthen Cooperation on Local Engagement",
+    "lien": "http://www.iaea.org/newscenter/news/iaea-and-global-partnership-of-nuclear-communities-strengthen-cooperation-on-local-engagement",
+    "date": "26-11-19  13:00"
+   },
+   {
+    "titre": "IAEA Reviews Bangladesh’s Nuclear and Radiological Emergency Preparedness and Response",
+    "lien": "http://www.iaea.org/newscenter/pressreleases/iaea-reviews-bangladeshs-nuclear-and-radiological-emergency-preparedness-and-response",
+    "date": "26-11-18  14:45"
+   },
+   {
+    "titre": "IAEA Director General's Introductory Statement to the Board of Governors",
+    "lien": "http://www.iaea.org/newscenter/statements/iaea-director-generals-introductory-statement-to-the-board-of-governors-18-november-2026",
+    "date": "26-11-18  09:45"
+   },
+   {
+    "titre": "IAEA Mission to United Republic of Tanzania Finds Commitment to Strengthening Nuclear Security",
+    "lien": "http://www.iaea.org/newscenter/pressreleases/iaea-mission-to-united-republic-of-tanzania-finds-commitment-to-strengthening-nuclear-security",
+    "date": "26-11-18  08:34"
+   },
+   {
+    "titre": "IAEA Reviews Progress of Zambia’s Infrastructure Development for Nuclear Power",
+    "lien": "http://www.iaea.org/newscenter/pressreleases/iaea-reviews-progress-of-zambias-infrastructure-development-for-nuclear-power",
+    "date": "26-11-17  16:54"
+   },
+   {
+    "titre": "Update 375 – IAEA Director General Statement on Situation in Ukraine",
+    "lien": "http://www.iaea.org/newscenter/pressreleases/update-375-iaea-director-general-statement-on-situation-in-ukraine",
+    "date": "26-11-14  09:30"
    }
   ]
  },
  "bulletin": {
-  "titre": "Nuclear Threat Initiative (nucléaire)",
-  "url": "https://www.nti.org/feed/",
-  "lu_le": "2026-11-23T19:53Z",
-  "http": 403,
-  "statut": "muet",
-  "articles": [],
+  "titre": "38 North (Corée du Nord, nucléaire)",
+  "url": "https://www.38north.org/feed/",
+  "lu_le": "2026-11-23T20:12Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Technology Companies Dominate Advertising at North Korean Football Matches",
+    "lien": "https://www.38north.org/2026/11/tech-companies-dominate-advertising-at-north-korean-football-matches/",
+    "date": "2026-11-23T17:53Z"
+   },
+   {
+    "titre": "The Two Koreas Need a ‘Good Divorce’",
+    "lien": "https://www.38north.org/2026/11/the-two-koreas-need-a-good-divorce/",
+    "date": "2026-11-18T20:21Z"
+   },
+   {
+    "titre": "North Korea Shows Off an AI Chatbot",
+    "lien": "https://www.38north.org/2026/11/north-korea-shows-off-an-ai-chatbot/",
+    "date": "2026-11-18T16:46Z"
+   },
+   {
+    "titre": "The Choe Hyon, North Korean Navy Surface Ship, and Its Strategic Implications",
+    "lien": "https://www.38north.org/2026/11/the-choe-hyon-north-korean-navy-surface-ship-and-its-strategic-implications/",
+    "date": "2026-11-10T21:21Z"
+   },
+   {
+    "titre": "Soft Reveal of New North Korean Stealth Strategic UAV",
+    "lien": "https://www.38north.org/2026/11/soft-reveal-of-new-north-korean-stealth-strategic-uav/",
+    "date": "2026-11-04T23:06Z"
+   },
+   {
+    "titre": "Modernizing North Korea’s 240 mm MLRS: Precision, Automation, and Extended Range",
+    "lien": "https://www.38north.org/2026/11/modernizing-north-koreas-240-mm-mlrs-precision-automation-and-extended-range/",
+    "date": "2026-11-03T14:02Z"
+   },
+   {
+    "titre": "Saying It With Pictures: North Korea Flashes Its Latest ICBM, Old “New” SLBMs, and “Tactical Nuclear Attack” Sub",
+    "lien": "https://www.38north.org/2026/10/saying-it-with-pictures-north-korea-flashes-its-latest-icbm-old-new-slbms-and-tactical-nuclear-attack-sub/",
+    "date": "2026-10-29T17:08Z"
+   },
+   {
+    "titre": "North Korea Continues Installing New Fencing",
+    "lien": "https://www.38north.org/2026/10/north-korea-continues-installing-new-fencing/",
+    "date": "2026-10-28T20:22Z"
+   }
+  ],
   "essais": [
    {
     "url": "https://thebulletin.org/feed/",
@@ -3305,38 +3614,79 @@
     "url": "https://www.nti.org/feed/",
     "statut": "muet",
     "http": 403
+   },
+   {
+    "url": "https://www.38north.org/feed/",
+    "statut": "ok",
+    "http": 200
    }
   ]
  },
  "fmi": {
-  "titre": "FMI, actualités",
-  "url": "https://www.imf.org/en/Blogs/rss",
-  "lu_le": "2026-11-23T19:53Z",
-  "http": 404,
-  "statut": "muet",
-  "articles": [],
+  "titre": "BRI, discours des banquiers centraux",
+  "url": "https://www.bis.org/doclist/cbspeeches.rss",
+  "lu_le": "2026-11-23T20:12Z",
+  "http": 200,
+  "statut": "ok",
+  "articles": [
+   {
+    "titre": "Can sustainable finance save the planet?",
+    "lien": "https://www.bis.org/speeches/20261119-can-sustainable-finance-save-planet",
+    "date": "2026-11-19T00:00Z"
+   },
+   {
+    "titre": "Industrial policy - redux or renewal?",
+    "lien": "https://www.bis.org/speeches/20261119-industrial-policy-redux-or-renewal",
+    "date": "2026-11-19T00:00Z"
+   },
+   {
+    "titre": "AI forecasts GDP as well as economists",
+    "lien": "https://www.bis.org/speeches/20261119-ai-forecasts-gdp-well-economists",
+    "date": "2026-11-19T00:00Z"
+   },
+   {
+    "titre": "Made in Europe",
+    "lien": "https://www.bis.org/speeches/20261119-made-europe",
+    "date": "2026-11-19T00:00Z"
+   },
+   {
+    "titre": "Economic activity, prices, and monetary policy in Japan",
+    "lien": "https://www.bis.org/speeches/20261119-economic-activity-prices-and-monetary-policy-japan",
+    "date": "2026-11-19T00:00Z"
+   },
+   {
+    "titre": "Governance - the cornerstone of a credible financial sector",
+    "lien": "https://www.bis.org/speeches/20261119-governance-cornerstone-credible-financial-sector",
+    "date": "2026-11-19T00:00Z"
+   },
+   {
+    "titre": "New technology, old questions: productivity puzzles and the macroeconomy",
+    "lien": "https://www.bis.org/speeches/20261119-new-technology-old-questions-productivity-puzzles-and-macroeconomy",
+    "date": "2026-11-19T00:00Z"
+   },
+   {
+    "titre": "The customer at the centre - building a responsible, resilient and sustainable microfinance sector",
+    "lien": "https://www.bis.org/speeches/20261119-customer-centre-building-responsible-resilient-and-sustainable-microfinance-sector",
+    "date": "2026-11-19T00:00Z"
+   }
+  ],
   "essais": [
    {
-    "url": "https://www.imf.org/en/News/rss?language=eng",
+    "url": "https://www.bis.org/doclist/press_releases.rss",
     "statut": "muet",
     "http": 404
    },
    {
-    "url": "https://www.imf.org/en/News/RSS",
-    "statut": "muet",
-    "http": 404
-   },
-   {
-    "url": "https://www.imf.org/en/Blogs/rss",
-    "statut": "muet",
-    "http": 404
+    "url": "https://www.bis.org/doclist/cbspeeches.rss",
+    "statut": "ok",
+    "http": 200
    }
   ]
  },
  "eia": {
   "titre": "EIA, Today in Energy",
   "url": "https://www.eia.gov/rss/todayinenergy.xml",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3385,7 +3735,7 @@
  "fed": {
   "titre": "Réserve fédérale, communiqués",
   "url": "https://www.federalreserve.gov/feeds/press_all.xml",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3434,7 +3784,7 @@
  "bce": {
   "titre": "Banque centrale européenne, communiqués",
   "url": "https://www.ecb.europa.eu/rss/press.html",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3483,19 +3833,19 @@
  "usgs_seismes": {
   "titre": "USGS, séismes importants du mois",
   "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.atom",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
    {
+    "titre": "M 3.9 - 1 km NW of Commerce, CA",
+    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41364111",
+    "date": "2026-11-23T19:57Z"
+   },
+   {
     "titre": "M 5.0 - 10 km NW of Pinnacles, CA",
     "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75468702",
     "date": "2026-11-23T19:50Z"
-   },
-   {
-    "titre": "M 3.9 - 1 km NW of Commerce, CA",
-    "lien": "https://earthquake.usgs.gov/earthquakes/eventpage/ci41364111",
-    "date": "2026-11-23T19:32Z"
    },
    {
     "titre": "M 6.7 - 7 km ENE of Carhuamayo, Peru",
@@ -3532,7 +3882,7 @@
  "nasa": {
   "titre": "NASA, actualités",
   "url": "https://www.nasa.gov/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3581,7 +3931,7 @@
  "mining": {
   "titre": "Mining Technology (mines et métaux)",
   "url": "https://www.mining-technology.com/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3642,7 +3992,7 @@
  "gcaptain": {
   "titre": "gCaptain (transport maritime)",
   "url": "https://gcaptain.com/feed/",
-  "lu_le": "2026-11-23T19:53Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3691,7 +4041,7 @@
  "splash247": {
   "titre": "Splash247 (transport maritime)",
   "url": "https://splash247.com/feed/",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3740,7 +4090,7 @@
  "defense_news": {
   "titre": "Defense News",
   "url": "https://www.defensenews.com/arc/outboundfeeds/rss/",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "url_finale": "https://www.defensenews.com/feed/",
   "statut": "ok",
@@ -3790,7 +4140,7 @@
  "war_on_the_rocks": {
   "titre": "War on the Rocks (stratégie)",
   "url": "https://warontherocks.com/feed/",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3839,7 +4189,7 @@
  "the_record": {
   "titre": "The Record (cybersécurité)",
   "url": "https://therecord.media/feed",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3873,7 +4223,7 @@
  "krebs": {
   "titre": "Krebs on Security",
   "url": "https://krebsonsecurity.com/feed/",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3922,7 +4272,7 @@
  "rest_of_world": {
   "titre": "Rest of World (technologie hors Occident)",
   "url": "https://restofworld.org/feed/latest",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -3971,7 +4321,7 @@
  "arxiv_ia": {
   "titre": "arXiv, intelligence artificielle (cs.AI)",
   "url": "https://rss.arxiv.org/rss/cs.AI",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4031,7 +4381,7 @@
  "nature": {
   "titre": "Nature, actualités et articles",
   "url": "https://www.nature.com/nature.rss",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4080,7 +4430,7 @@
  "sd_cerveau": {
   "titre": "ScienceDaily, esprit et cerveau",
   "url": "https://www.sciencedaily.com/rss/mind_brain.xml",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4129,7 +4479,7 @@
  "sd_sante": {
   "titre": "ScienceDaily, santé et médecine",
   "url": "https://www.sciencedaily.com/rss/health_medicine.xml",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4178,7 +4528,7 @@
  "sd_terre": {
   "titre": "ScienceDaily, Terre et climat",
   "url": "https://www.sciencedaily.com/rss/earth_climate.xml",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4227,7 +4577,7 @@
  "sd_vivant": {
   "titre": "ScienceDaily, plantes et animaux",
   "url": "https://www.sciencedaily.com/rss/plants_animals.xml",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4276,7 +4626,7 @@
  "sd_espace": {
   "titre": "ScienceDaily, espace et temps",
   "url": "https://www.sciencedaily.com/rss/space_time.xml",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4325,7 +4675,7 @@
  "sd_matiere": {
   "titre": "ScienceDaily, matière et énergie",
   "url": "https://www.sciencedaily.com/rss/matter_energy.xml",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4374,7 +4724,7 @@
  "conversation": {
   "titre": "The Conversation France",
   "url": "https://theconversation.com/fr/articles.atom",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4423,7 +4773,7 @@
  "global_voices": {
   "titre": "Global Voices (sociétés, monde)",
   "url": "https://globalvoices.org/feed/",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
@@ -4472,10 +4822,15 @@
  "rns": {
   "titre": "Religion News Service",
   "url": "https://religionnews.com/feed/",
-  "lu_le": "2026-11-23T19:54Z",
+  "lu_le": "2026-11-23T20:12Z",
   "http": 200,
   "statut": "ok",
   "articles": [
+   {
+    "titre": "Bishops get educated on Gen Z, who are ‘religious but not spiritual’",
+    "lien": "https://religionnews.com/2026/11/23/bishops-get-educated-on-gen-z-who-are-religious-but-not-spiritual/",
+    "date": "2026-11-23T20:12Z"
+   },
    {
     "titre": "For the first time, UN’s highest court finds a country responsible for genocide: Myanmar",
     "lien": "https://religionnews.com/2026/11/23/for-the-first-time-uns-highest-court-finds-a-country-responsible-for-genocide-myanmar/",
@@ -4510,11 +4865,6 @@
     "titre": "New grants are funding efforts to collect and share compelling stories about Christian faith and life",
     "lien": "https://religionnews.com/2026/11/23/new-grants-are-funding-efforts-to-collect-and-share-compelling-stories-about-christian-faith-and-life/",
     "date": "2026-11-23T15:27Z"
-   },
-   {
-    "titre": "AI is Going to Change Your Faith with DZ Kalman",
-    "lien": "https://religionnews.com/2026/11/21/ai-is-going-to-change-your-faith-with-dz-kalman/",
-    "date": "2026-11-21T23:05Z"
    }
   ]
  }
