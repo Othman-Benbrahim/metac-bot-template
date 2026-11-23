@@ -1,3 +1,8 @@
+# 0.10.474 (décision de l'auteur, 2026-11-23, 17 h 42) : veille IHEDN « Les verrous du monde » (23 novembre 2026) ;
+# un compartiment par détroit majeur (pays riverains sous « geopolitique »), chiffres de l'IHEDN recoupés avec des
+# sources primaires (EIA, AIE, CNUCED, Département de la marine de Malaisie, Direction générale des affaires maritimes
+# de Turquie, MCA britannique, CNES, Britannica, Rodrigue). Recoupement : « confirmé », « proche », « diverge » ou
+# « non recoupé ». Les formulations de l'IHEDN (perspective française et européenne) ne sont pas reprises.
 theme: transport-maritime
 nom: Transport maritime mondial
 declaration:
@@ -7,22 +12,20 @@ declaration:
     aérien et terrestre (sauf comme alternative)
   observateur: notre bot et nos sources ouvertes, regard extérieur, depuis l'Europe ; données publiques seulement
   date: '2026-11-19'
-  espace: les océans et leurs goulets (Ormuz, Bab-el-Mandeb, Suez, Malacca, Panama, Bosphore, Taïwan, cap de Bonne-Espérance)
+  espace: les océans et leurs goulets (Ormuz, Bab-el-Mandeb, Suez, Malacca, Panama, Bosphore et Dardanelles, Taïwan, Gibraltar,
+    Pas de Calais, Béring, cap de Bonne-Espérance)
   temps: de la traversée (heures) au cycle du fret (années) ; mémoire de l'Ever Given (2021), des attaques en mer Rouge (depuis 2023), de la sécheresse de Panama (2023-2024) — à vérifier
   vitesse: l'heure (incident), la semaine (déroutement, fret spot), le mois (contrats), l'année (flottes)
   taille: un navire, une compagnie, une route, le système mondial
 compartiments:
 - id: detroits
-  nom: Détroits et canaux
+  nom: Détroits et canaux (le système des goulets)
   organisation: relief
   elements:
-  - Ormuz
-  - Bab-el-Mandeb
-  - canal de Suez
-  - Malacca
-  - canal de Panama
-  - Bosphore
-  - détroit de Taïwan
+  - le réseau compte 28 passages stratégiques dont 12 majeurs (IHEDN, 2026 ; non recoupé)
+  - 80 % du commerce mondial en volume passe par la mer (IHEDN, 2026 ; non recoupé ici)
+  - chaque goulet majeur a son compartiment (Ormuz, Bab-el-Mandeb, Suez, Malacca, Panama, Bosphore et Dardanelles, Taïwan,
+    Gibraltar, Pas de Calais, Béring)
   acteurs:
   - nom: Autorité du canal de Suez
     taille: méso
@@ -193,7 +196,32 @@ compartiments:
   - piraterie
   - mines
   - saisies de navires
+  - bases étrangères à Djibouti (France, États-Unis, Chine, Japon) ; forces françaises aux Émirats arabes unis
   acteurs:
+  - nom: EMASoH / opération AGENOR (mission européenne de surveillance à Ormuz, lancée début 2020)
+    taille: méso
+    espace: région
+    vitesse: semaines
+    organisation: geopolitique
+    facette: collectif
+  - nom: IMSC (coalition maritime menée par les États-Unis dans le Golfe)
+    taille: méso
+    espace: région
+    vitesse: semaines
+    organisation: geopolitique
+    facette: collectif
+  - nom: EUNAVFOR ASPIDES (opération de l'Union européenne en mer Rouge, mandat défensif)
+    taille: méso
+    espace: région
+    vitesse: jours
+    organisation: geopolitique
+    facette: collectif
+  - nom: opération Poseidon Archer (frappes américaines et britanniques au Yémen)
+    taille: méso
+    espace: région
+    vitesse: jours
+    organisation: geopolitique
+    facette: collectif
   - nom: les forces houthies (en agrégat)
     taille: méso
     espace: région
@@ -246,7 +274,9 @@ compartiments:
   nom: Droit, sanctions et règles
   organisation: convention
   elements:
-  - liberté de navigation et passage en transit
+  - liberté de navigation et passage en transit (convention de Montego Bay, 1982)
+  - 'convention de Montreux (1936) : la Turquie contrôle le passage des navires de guerre des puissances non riveraines ;
+    appliquée pendant la guerre en Ukraine aux bâtiments des belligérants (IHEDN, 2026)'
   - sanctions sur les navires et les cargaisons
   - règles environnementales (carburants)
   - pavillons de complaisance
@@ -347,6 +377,143 @@ compartiments:
   traces:
   - source: alertes publiques de l'OMS
     statut: a_brancher
+- id: detroit_ormuz
+  nom: Détroit d'Ormuz
+  organisation: relief
+  geopolitique:
+    pays: [IRN, OMN, ARE]
+  elements:
+  - 'pétrole : 20,9 millions de barils par jour au premier semestre 2025, environ 20 % de la consommation mondiale et un quart du pétrole échangé par mer (EIA, 2026) ; 19,9 Mb/j en 2025, 25 % du commerce maritime de pétrole (AIE, 2026) — IHEDN 20-21 Mb/j : confirmé'
+  - 'gaz naturel liquéfié : un peu plus de 20 % du commerce mondial (EIA, 1er semestre 2025) ; 19-20 %, 112 milliards de m3 en 2025 (AIE) — IHEDN « un tiers » : diverge'
+  - 'largeur : 54 km au plus étroit, deux chenaux de 3,7 km (AIE, 2026) — IHEDN 39 km : diverge (39 km correspond à 21 milles marins, valeur souvent citée)'
+  - 'contournement par oléoducs saoudien et émirien : 3,5 à 5,5 Mb/j disponibles (AIE, 2026)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: detroit_bab_el_mandeb
+  nom: Détroit de Bab-el-Mandeb
+  organisation: relief
+  geopolitique:
+    pays: [YEM, DJI, ERI]
+  elements:
+  - 'pétrole : 9,3 Mb/j en 2023, 4,1 en 2024, 4,2 au premier semestre 2025 (EIA, 2026)'
+  - 'part du commerce : le canal de Suez, dont c''est l''accès sud, porte environ 10 % du volume du commerce maritime mondial et 22 % des conteneurs (CNUCED, 2024) — IHEDN 10-12 % : confirmé'
+  - 'détour par le cap de Bonne-Espérance : Shenzhen-Rotterdam passe de 31 à 41 jours et de 10 000 à 13 000 milles marins (CNUCED, 2024) — IHEDN 10 à 14 jours : proche (bas de la fourchette)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: canal_suez
+  nom: Canal de Suez
+  organisation: relief
+  geopolitique:
+    pays: [EGY]
+  elements:
+  - 'environ 10 % du volume du commerce maritime mondial, 22 % des conteneurs ; transits en baisse de 70 % en juin 2024 par rapport à mi-décembre 2023 (CNUCED, 2024)'
+  - 'pétrole, canal et oléoduc SUMED : 8,8 Mb/j en 2023, 4,8 en 2024, 4,9 au premier semestre 2025 (EIA, 2026)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: detroit_malacca
+  nom: Détroit de Malacca
+  organisation: relief
+  geopolitique:
+    pays: [MYS, IDN, SGP]
+  elements:
+  - 'navires : environ 94 300 en 2024 et 102 500 en 2025 (Département de la marine de Malaisie, cité par Reuters, avril 2026) — IHEDN « plus de 85 000 » : diverge (chiffre ancien)'
+  - 'part du commerce : près de 22 % du commerce maritime mondial (CSIS, cité par Reuters) — IHEDN 25 % : proche'
+  - 'pétrole : 23,2 Mb/j au premier semestre 2025, 29 % des flux maritimes de pétrole, premier goulet pétrolier du monde (EIA, 2026)'
+  - 'largeur : 2,7 km au plus étroit (chenal Phillips, détroit de Singapour ; Reuters)'
+  - '« dilemme de Malacca » : la Chine craint un blocus en cas de conflit autour de Taïwan (IHEDN, 2026)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: canal_panama
+  nom: Canal de Panama
+  organisation: relief
+  geopolitique:
+    pays: [PAN]
+  elements:
+  - 'environ 3 % du volume du commerce maritime mondial ; transits divisés par plus de deux de fin 2021 à juin 2024, faute d''eau (CNUCED, 2024)'
+  - 'pétrole : 2,3 Mb/j sur l''exercice 2025 (EIA, 2026)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: detroit_bosphore
+  nom: Bosphore et Dardanelles (détroits turcs)
+  organisation: relief
+  geopolitique:
+    pays: [TUR]
+  elements:
+  - 'navires en 2025 : 40 172 par le Bosphore, 44 468 par les Dardanelles, 84 640 au total (Direction générale des affaires maritimes de Turquie, citée par Türkiye Today, février 2026) — IHEDN « environ 40 000 » : confirmé pour le Bosphore'
+  - 'pétrole : 3,7 Mb/j au premier semestre 2025 (EIA, 2026)'
+  - 'régime propre : convention de Montreux (1936)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: detroit_taiwan
+  nom: Détroit de Taïwan
+  organisation: relief
+  geopolitique:
+    pays: [TWN, CHN]
+  elements:
+  - 'pas de chiffre propre dans la veille IHEDN ; voir la fiche rivalité sino-américaine'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: detroit_gibraltar
+  nom: Détroit de Gibraltar
+  organisation: relief
+  geopolitique:
+    pays: [ESP, MAR, GBR]
+  elements:
+  - 'largeur : 14 km au plus étroit ; environ 100 000 navires par an (CNES, Géoimage, L. Carroué ; année non précisée) — IHEDN « 14 km, plus de 100 000 » : confirmé'
+  - 'seule jonction naturelle entre l''Atlantique et la Méditerranée ; flux migratoires et narcotrafic ; statut britannique du Rocher (IHEDN, 2026)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: detroit_pas_de_calais
+  nom: Pas de Calais
+  organisation: relief
+  geopolitique:
+    pays: [FRA, GBR]
+  elements:
+  - 'plus de 400 navires de commerce par jour et plus de 100 mouvements de ferries (MCA britannique, mise à jour de février 2024) — IHEDN « plus de 400 par jour » : confirmé ; « 146 000 par an » est le même chiffre multiplié par 365'
+  - 'dispositif de séparation du trafic ; traversées informelles de migrants ; pêche depuis le Brexit (IHEDN, 2026)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
+- id: detroit_bering
+  nom: Détroit de Béring
+  organisation: relief
+  geopolitique:
+    pays: [RUS, USA]
+  elements:
+  - 'largeur : environ 85 km au plus étroit (Britannica) — IHEDN 82 km : proche'
+  - 'route maritime du Nord : de 21 000 à 12 800 km entre l''Asie de l''Est et l''Europe de l''Ouest, soit 39 % de moins que par Suez (J.-P. Rodrigue, The Geography of Transport Systems, 2024) — IHEDN « près de 40 % » : confirmé'
+  - 'navigation saisonnière (juillet à novembre) ; face-à-face entre la Russie et les États-Unis (IHEDN, 2026)'
+  niveau:
+    espace: goulet
+    temps: permanent ; incidents datés
+    vitesse: heures à jours
+    taille: méso
 relations:
 - de: securite
   vers: detroits
@@ -527,6 +694,96 @@ relations:
   coupure: inconnue
   statut: a_verifier
   texte: 'au sein du niveau technique : la capacité des ports de rechange décide si un contournement est praticable'
+- de: detroit_ormuz
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: detroit_bab_el_mandeb
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: canal_suez
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: detroit_malacca
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: canal_panama
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: detroit_bosphore
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: detroit_taiwan
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: detroit_gibraltar
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: detroit_pas_de_calais
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+- de: detroit_bering
+  vers: detroits
+  effet: '+'
+  retour: '0'
+  delai: heures à jours
+  force: moyenne
+  statut: a_verifier
+  texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
+tensions:
+- id: liberte_navigation
+  nom: Liberté de navigation contre prétentions des riverains
+  forme: oppositionnelle
+  entre: [securite, droit]
+  mesure:
+    indicateur: incidents de navigation et contestations juridiques dans les détroits (saisies, zones d'exclusion, refus de passage)
+  statut: a_verifier
+  texte: 'les puissances navales défendent le passage en transit (Montego Bay) ; les États riverains revendiquent un contrôle
+    (eaux territoriales, régime de Montreux, menaces de fermeture) (IHEDN, 2026)'
 ponts:
 - depuis: detroits
   vers: ormuz:navigation
@@ -547,3 +804,29 @@ ponts:
   vers: rivalite-sino-americaine:taiwan
   nature: le détroit de Taïwan et la mer de Chine méridionale
   type: meme
+- depuis: detroit_malacca
+  vers: rivalite-sino-americaine:taiwan
+  nature: le « dilemme de Malacca » (crainte chinoise d'un blocus en cas de conflit autour de Taïwan)
+- depuis: detroit_bab_el_mandeb
+  vers: guerre-levant:yemen
+  nature: les attaques houthies contre la marine marchande
+- depuis: detroit_bosphore
+  vers: russie-ukraine:mer_noire
+  nature: blé, engrais et pétrole de la mer Noire ; convention de Montreux pendant la guerre
+- depuis: detroit_bering
+  vers: oceans-et-fleuves:glaces
+  nature: la fonte de la glace de mer ouvre la route maritime du Nord
+- depuis: detroit_ormuz
+  vers: ormuz:navigation
+  nature: le même détroit, vu depuis la fiche Ormuz
+  type: meme
+- depuis: detroit_taiwan
+  vers: rivalite-sino-americaine:detroit_relief
+  nature: le même détroit, vu depuis la rivalité sino-américaine
+  type: meme
+- depuis: detroit_gibraltar
+  vers: migrations-demographie:migrations
+  nature: flux migratoires entre l'Afrique et l'Europe
+- depuis: detroit_pas_de_calais
+  vers: migrations-demographie:migrations
+  nature: traversées informelles de la Manche
