@@ -1,9 +1,9 @@
 {
-  "calcule_le": "2026-11-16T14:01:25+00:00",
-  "version_bot": "0.10.185",
+  "calcule_le": "2026-11-23T16:32:23+00:00",
+  "version_bot": "0.10.410",
   "version_skill": "0.7.77",
-  "lignes_lues": 61,
-  "empreinte_registre": "606ce10d8fbdae067d3a0c3ea055c4d9b109b0faabb0f93b0db5fa6249c64820",
+  "lignes_lues": 97,
+  "empreinte_registre": "1ac2b3b07eba1901911de243297e59fad562908a09d926f3128428ad5411fb89",
   "seuils": {
     "questions": 3,
     "sources_distinctes": 2
@@ -12,14 +12,34 @@
   "confirmations": [
     {
       "instruction": "lien",
-      "de": "TRC",
+      "de": "CTR",
       "vers": "PER",
       "questions": 1,
       "sources_distinctes": 0,
       "exemples": [
         {
+          "question_id": "46880",
+          "extrait": "Based on the available search results, legal/regulatory deadlines and requirements appear to be the more dominant driver of public announcements regarding precise payment start dates in Latin American bank resolutions, though the evidence is somewhat limited.",
+          "source": ""
+        }
+      ],
+      "dans_la_matrice": "f"
+    },
+    {
+      "instruction": "lien",
+      "de": "TRC",
+      "vers": "PER",
+      "questions": 2,
+      "sources_distinctes": 0,
+      "exemples": [
+        {
           "question_id": "46821",
           "extrait": "Based on the search results, I can confirm that Zelenskyy attended European Council meetings on the following dates, with in-person photos and doorstep footage available from the Europa building:",
+          "source": ""
+        },
+        {
+          "question_id": "46880",
+          "extrait": "The available evidence suggests that legal/regulatory deadlines are the primary driver of payment start date announcements in Latin American bank resolutions during this period.",
           "source": ""
         }
       ],
@@ -27,6 +47,21 @@
     }
   ],
   "contre_indications": [
+    {
+      "instruction": "bloque",
+      "de": "CTR",
+      "vers": "PER",
+      "questions": 1,
+      "sources_distinctes": 0,
+      "exemples": [
+        {
+          "question_id": "46880",
+          "extrait": "I cannot find evidence of a pattern where legal or regulatory constraints have frequently led central banks or deposit-insurance agencies in Latin America to publish a specific calendar day for the start of depositor reimbursements during bank resolutions.",
+          "source": ""
+        }
+      ],
+      "dans_la_matrice": "f"
+    },
     {
       "instruction": "bloque",
       "de": "TRC",
