@@ -61,17 +61,21 @@ def _echelle(V, fam, entiere: bool):
     return out
 
 
-def taux(V, jeu: dt.date, entiere: bool):
+def taux(V, jeu: dt.date, entiere: bool, fenetre: int | None = None):
+    """`fenetre` (jours) : 0.10.505 bis — exposition et événements comptés dans les `fenetre` derniers jours seulement
+    (cadence récente)."""
     ev, ex = [0, 0, 0], [0, 0, 0]
     lim = [0, *TRANCHES, 10 ** 9]
+    debut_f = jeu - dt.timedelta(days=fenetre) if fenetre else dt.date(1900, 1, 1)
     for fam in LABO:
         E = _echelle(V, fam, entiere)
         for i, (v, d) in enumerate(E):
             fin = E[i + 1][1] if i + 1 < len(E) else jeu
             duree = (fin - d).days
+            a0 = max(0, (debut_f - d).days)                 # âge au début de la fenêtre
             for k in range(3):
-                ex[k] += max(0, min(duree, lim[k + 1]) - lim[k])
-            if i + 1 < len(E):
+                ex[k] += max(0, min(duree, lim[k + 1]) - max(lim[k], a0))
+            if i + 1 < len(E) and fin >= debut_f:
                 ev[sum(duree >= t for t in TRANCHES)] += 1
     return [ev[k] / ex[k] if ex[k] else 0.0 for k in range(3)], ev, ex
 
@@ -86,7 +90,7 @@ def cible(titre: str):
     return m.group(1).lower(), float(m.group(2))
 
 
-def probabilite(titre: str, jeu: dt.date, chemin: Path = EPOCH) -> float | None:
+def probabilite(titre: str, jeu: dt.date, chemin: Path = EPOCH, fenetre: int | None = None) -> float | None:
     c = cible(titre)
     e = ar.echeance(titre, jeu)
     if re.search(r"this decade", titre or "", re.I):
@@ -106,7 +110,7 @@ def probabilite(titre: str, jeu: dt.date, chemin: Path = EPOCH) -> float | None:
     if not precedents:
         return None
     age = (jeu - max(precedents)).days
-    lam, _, _ = taux(V, jeu, entiere)
+    lam, _, _ = taux(V, jeu, entiere, fenetre)
     lim = [0, *TRANCHES, 10 ** 9]
     h = (e - jeu).days
     cumul = sum(lam[k] * max(0, min(age + h, lim[k + 1]) - max(age, lim[k])) for k in range(3))
