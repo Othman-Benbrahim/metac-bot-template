@@ -106,7 +106,7 @@ compartiments:
     - {nom: xAI, taille: méso, espace: mondial, vitesse: semaines, organisation: economie, facette: collectif}
     niveau: {espace: mondial, temps: depuis 2022, vitesse: semaines, taille: méso}
     traces:
-    - source: "notes de version et pages de statut des laboratoires (proposée, à valider)"
+    - source: "notes de version et pages de statut des laboratoires (validée par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
   - id: bancs_ia
     nom: "Tests de référence de l'IA et leurs seuils"
@@ -121,7 +121,7 @@ compartiments:
     - {nom: METR, taille: micro, espace: mondial, vitesse: mois, organisation: technique, facette: collectif}
     niveau: {espace: mondial, temps: depuis 2023, vitesse: semaines, taille: micro}
     traces:
-    - source: "classements publics des tests (Epoch AI, METR ; proposés, à valider)"
+    - source: "classements publics des tests (Epoch AI, METR ; validés par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
   - id: gouvernance_labos
     nom: "Statut et gouvernance des laboratoires (structure, introduction en bourse)"
@@ -132,7 +132,7 @@ compartiments:
     - "l'annonce d'une intention d'introduction n'est pas un dépôt"
     niveau: {espace: États-Unis, temps: depuis 2023, vitesse: mois, taille: méso}
     traces:
-    - source: "EDGAR (SEC), dépôts S-1 (gratuit ; proposée, à valider)"
+    - source: "EDGAR (SEC), dépôts S-1 (gratuit ; validée par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
 relations:
   - de: calcul

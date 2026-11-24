@@ -96,7 +96,7 @@ compartiments:
     - "Eurovision : vote de jurys nationaux et vote du public à part égale ; votes de voisinage et de diaspora ; ordre de passage tiré"
     niveau: {espace: mondial, temps: chaque année, vitesse: semaines, taille: méso}
     traces:
-    - source: "palmarès publics des guildes, des académies et de l'UER (proposés, à valider)"
+    - source: "palmarès publics des guildes, des académies et de l'UER (validés par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
   - id: classements_force
     nom: "Classements de force et têtes de série"
@@ -107,7 +107,7 @@ compartiments:
     - "entrées interdites : cotes des bookmakers et des marchés de prédiction"
     niveau: {espace: mondial, temps: saison, vitesse: jours, taille: méso}
     traces:
-    - source: "classements publics des fédérations (FIFA, ATP, WTA) et classements Elo publics (proposés, à valider)"
+    - source: "classements publics des fédérations (FIFA, ATP, WTA) et classements Elo publics (validés par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
 cycles:
   - id: saison_des_prix
