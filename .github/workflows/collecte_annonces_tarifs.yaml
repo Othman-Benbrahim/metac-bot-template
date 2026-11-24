@@ -1,0 +1,40 @@
+name: "Collecte des annonces de droits de douane (TiRADE) et de leurs actes (Federal Register)"
+
+# 0.10.486 : taux d'exécution des annonces (validé par l'auteur le 2026-11-23, 18 h 05 ; terrain et sources au choix de
+# Claude le 2026-11-24, 12 h 11). Lancée le mardi par le planificateur (TiRADE paraît le lundi) ; rien n'entre dans le bot.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-annonces_tarifs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u collecte_annonces_tarifs.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -d registre/annonces ]; then git add registre/annonces; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : annonces de droits de douane du $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase
+            git push
+          fi
