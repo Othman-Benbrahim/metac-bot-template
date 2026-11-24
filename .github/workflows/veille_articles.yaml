@@ -41,7 +41,13 @@ jobs:
           if grep -q "Rien de retenu" "$f"; then
             echo "Rien de retenu : pas de ticket."
           else
-            gh issue create --title "Veille du $(date -u +%Y-%m-%d)" --body-file "$f" \
+            # 2026-11-25 : un ticket est limité à 65 536 caractères ; au-delà, début de la liste et lien vers le fichier
+            if [ "$(wc -c < "$f")" -gt 60000 ]; then
+              { head -c 58000 "$f"; printf '\n\n… liste complète : https://github.com/%s/blob/main/%s\n' "${{ github.repository }}" "$f"; } > /tmp/corps.md
+            else
+              cp "$f" /tmp/corps.md
+            fi
+            gh issue create --title "Veille du $(date -u +%Y-%m-%d)" --body-file /tmp/corps.md \
               --assignee "${{ github.repository_owner }}" \
               || echo "::warning::Ticket non créé (onglet Issues désactivé ?) : la liste reste dans $f"
           fi

@@ -76,6 +76,9 @@ def noter(texte: str, mots: dict[str, list[str]], titre: str = "") -> tuple[int,
     return s, forts, faibles
 
 
+TITRE_MAX = 300
+
+
 def retenu(score: int) -> bool:
     return score >= 3
 
@@ -254,6 +257,8 @@ def trier(articles: list[dict], mots: dict[str, list[str]], deja: set[str], n: i
     for a in articles:
         if a["id"] in deja:
             continue
+        if len(a["titre"]) > TITRE_MAX:                # 2026-11-25 : titre-fleuve = bourrage de mots-clés (Zenodo)
+            continue
         s, forts, faibles = noter(a["resume"], mots, a["titre"])
         if not retenu(s):
             continue
@@ -273,7 +278,7 @@ def rediger(retenus: list[dict], semaine_dair: str, erreurs: list[str], jours: i
     if not retenus:
         l.append("Rien de retenu cette semaine.")
     for i, a in enumerate(retenus, 1):
-        l += [f"**{i}. [{a['titre']}]({a['url']})** — {a['source']}{(' · ' + a['date']) if a['date'] else ''} · score {a['score']}",
+        l += [f"**{i}. [{a['titre'][:200]}]({a['url']})** — {a['source']}{(' · ' + a['date']) if a['date'] else ''} · score {a['score']}",
               f"Mots : {', '.join(a['forts'] + a['faibles'])}", "",
               f"> {a['resume'][:420]}{'…' if len(a['resume']) > 420 else ''}", ""]
     return "\n".join(l)
