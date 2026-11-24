@@ -3,7 +3,7 @@ name: Score du bot alphabet
 on:
   workflow_dispatch:
   schedule:
-    - cron: "43 5 * * 1"   # chaque lundi : issues des questions résolues, score des bras A, B et C
+    - cron: "47 1 * * *"   # chaque nuit (décision de l'auteur du 2026-11-24, 21 h 44 ; avant : le lundi) : issues, score, sondes ; avant la carte (2 h 41 UTC)
 
 concurrency:
   group: bot-alphabet-registre   # jamais en même temps qu'une écriture du registre
