@@ -1,0 +1,40 @@
+name: "Collecte Supreme Court Database"
+
+# 0.10.508 (décision de l'auteur du 2026-11-24, 18 h 19) : décisions de la Cour suprême américaine 1946-2025 (données codées).
+# Lancée à la main ; une version par an.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-scdb
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u collecte_scdb.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/scdb-affaires.csv registre/scdb-juges.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : SCDB du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
