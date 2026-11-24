@@ -1,0 +1,40 @@
+name: "Collecte UCDP fin des conflits (Uppsala)"
+
+# 0.10.500 (décision de l'auteur du 2026-11-24, 16 h 28) : épisodes de conflit et leur issue (données codées).
+# Lancée à la main ; une version par an.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-ucdp-fin
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u collecte_ucdp_fin.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/ucdp-fin-conflits.csv ]; then git add registre/ucdp-fin-conflits.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : UCDP fin des conflits du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
