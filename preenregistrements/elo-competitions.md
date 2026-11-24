@@ -96,3 +96,18 @@ Notes de version dans le bot : `registre/elo/*.csv.gz` (fin de mois, plus le der
 
 - L'échantillon est petit (environ 50 questions) et vient surtout de marchés de prédiction recopiés (Polymarket, Manifold), dont les questions « X gagnera-t-il ? » portent souvent sur des outsiders. La référence est donc basse, et la règle gagne facilement sur ces questions-là. Le critère 3 (2026) limite ce biais sans l'effacer.
 - Le paramètre du nul (0,27) et l'avantage des hôtes (+100) ne sont pas mesurés ici : ils sont fixés avant tout calcul.
+
+## Résultat du passage unique (2026-11-24, registre/elo-competitions.json)
+
+Avant le passage, sur les titres seuls : la reconnaissance a été corrigée pour « reach the 2026 FIFA World Cup final ».
+
+| | règle | référence | mélange | n |
+|---|---|---|---|---|
+| ensemble | 0,249 | 0,356 | 0,291 | 57 |
+| questions de 2026 | 0,216 | 0,525 | 0,398 | 28 |
+| Coupe du monde | 0,188 | 0,443 | 0,335 | 35 |
+| NFL 2025 | **0,346** | **0,218** | 0,220 | 22 |
+
+Les trois critères tiennent sur l'ensemble : la brique est branchable. Mais la sous-famille NFL perd nettement contre la référence (22 questions, une seule saison, une seule réponse oui). Selon le principe de la matriochka, on ne branche pas une sous-famille qui perd, même dans un ensemble qui gagne. Seule la Coupe du monde est retenue.
+
+La Coupe du monde 2026 est terminée (19 juillet 2026). La règle ne s'appliquera à aucune question ouverte. Elle n'est donc pas câblée dans le bot. Ce qui est acquis, c'est la méthode : simulation du format à partir de l'Elo à la date. Elle servira pour les prochains tournois de sélections et pour les clubs, chacun avec sa procédure.
