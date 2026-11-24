@@ -52,6 +52,28 @@ def q_fin(question) -> str | None:
     return fin.astimezone(timezone.utc).date().isoformat() if fin else None
 
 
+COMMENTAIRE_MAX = 1200
+GARDER = ("rule (coded)", "Ecosystem probes", "Informed judge", "coded rule is the measure", "Since 0.10.")
+
+
+def commentaire_court(titre: str, prediction, raisonnement: str) -> str:
+    """Commentaire de 1 200 caractères au plus : la première ligne du raisonnement, puis les paragraphes des règles
+    codées, des sondes et du juge ; à défaut, le début du raisonnement."""
+    if isinstance(prediction, float):
+        p = f"{prediction:.1%}"
+    else:
+        p = str(prediction)[:300]
+    paras = [x.strip() for x in (raisonnement or "").split("\n\n") if x.strip()]
+    tete = paras[0].splitlines()[0] if paras else ""
+    cles = [x for x in paras[1:] if any(k in x for k in GARDER)]
+    corps = "\n\n".join([tete] + cles) if cles else (raisonnement or "")
+    if len(corps) > COMMENTAIRE_MAX:
+        corps = corps[:COMMENTAIRE_MAX - 1].rsplit(" ", 1)[0] + "…"
+    return (f"# SUMMARY\n*Question*: {titre}\n*Final Prediction*: {p}\n\n"
+            f"# RESEARCH\nNot reproduced here (kept in the bot's sealed public log).\n\n"
+            f"# FORECASTS\n## R1: Forecaster 1 Reasoning\n{corps}\n")
+
+
 class AlphabetBot(FallTemplateBot2026):
     """Bras A sur tout ; alphabet (bras B et C) sur les binaires."""
 
@@ -432,6 +454,15 @@ class AlphabetBot(FallTemplateBot2026):
         import alphabet_modeles as am
         m = am.llm(os.environ["ALPHABET_CONTRADICTEUR"], temperature=0.1, timeout=180, allowed_tries=2)
         return await m.invoke(consigne)
+
+    def _create_unified_explanation(self, question, research_prediction_collections, aggregated_prediction,
+                                    final_cost, time_spent_in_minutes) -> str:
+        """2026-11-24, 23 h 41 (décision de l'auteur) : commentaire court sur Metaculus (bandeau des organisateurs sur
+        les commentaires de bot trop longs). Même structure de sections que le gabarit ; la recherche n'est pas
+        reproduite (elle reste dans les journaux scellés) ; le raisonnement est condensé (commentaire_court)."""
+        raisons = [p.reasoning for c in research_prediction_collections for p in (c.predictions or [])
+                   if getattr(p, "reasoning", None)]
+        return commentaire_court(question.question_text or "", aggregated_prediction, raisons[0] if raisons else "")
 
     async def _llm(self, consigne: str) -> str:
         return await self.get_llm("default", "llm").invoke(consigne)
