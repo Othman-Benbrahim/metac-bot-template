@@ -35,3 +35,9 @@ Branchement PAR SOUS-FAMILLE si : (1) règle < référence ; (2) mélange < réf
 questions de 2026 de la sous-famille, quand il y en a. Les sous-familles branchées et les taux de rencontre / autre
 sont écrits dans ecosystemes/accords-taux-classes.json, que le bot lit (même mélange avec sa prévision, même plafond,
 journal scellé).
+
+## Modification avant le calcul (2026-11-24, 16 h 30)
+Le site peaceagreements.org refuse la collecte (robots.txt, passage 45424616876). Décision de l'auteur (16 h 25) : le
+refus vaut pour ce site seulement. Source retenue : la copie v10 publiée par PeaceRep elle-même sur GitHub
+(github.com/peacerep/pax-map, data/pax_data_v10.csv, 2 257 accords, du 1990-02-15 au 2025-12-27). Rien d'autre ne
+change dans la procédure. Aucun calcul fait avant cette modification.

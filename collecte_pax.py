@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import csv
 import io
+import re
 import sys
 from pathlib import Path
 
@@ -19,7 +20,9 @@ import httpx
 
 import politesse
 
-URL = "https://www.peaceagreements.org/cms/documents/4482/pax_data_2257_agreements_20-07-26.csv"
+# 2026-11-24, 16 h 22 : le site peaceagreements.org refuse la collecte (robots.txt) ; décision de l'auteur (16 h 25) :
+# le refus vaut pour ce site seulement → copie v10 publiée par PeaceRep elle-même sur GitHub (dépôt de sa carte).
+URL = "https://raw.githubusercontent.com/peacerep/pax-map/HEAD/data/pax_data_v10.csv"
 SORTIE = Path("registre") / "pax-accords.csv"
 # en-têtes possibles (données courtes ou intitulés du livre de codes)
 COLS = {"processus": ("PPName", "Peace Process Name", "PP"), "nature": ("Contp", "Conflict Nature"),
@@ -34,14 +37,27 @@ def _col(entetes, noms):
     return None
 
 
+def _date(v: str) -> str:
+    v = (v or "").strip()
+    if re.fullmatch(r"\d{2}/\d{2}/\d{4}", v):                 # JJ/MM/AAAA dans la copie de PeaceRep
+        j, m, a = v.split("/")
+        return f"{a}-{m}-{j}"
+    return v[:10]
+
+
 def principal() -> int:
+    if len(sys.argv) > 1:                                      # fichier local (même contenu), pour les essais
+        return _ecrire(Path(sys.argv[1]).read_bytes().decode("utf-8-sig", errors="replace"))
     with httpx.Client(follow_redirects=True, timeout=120, headers={"User-Agent": politesse.UA}) as c:
         if not politesse.autorise(c, URL):
             print("PA-X : refusé par robots.txt, rien collecté")
             return 0
         r = c.get(URL)
         r.raise_for_status()
-    texte = r.content.decode("utf-8-sig", errors="replace")
+    return _ecrire(r.content.decode("utf-8-sig", errors="replace"))
+
+
+def _ecrire(texte: str) -> int:
     lec = csv.DictReader(io.StringIO(texte))
     ent = lec.fieldnames or []
     choix = {k: _col(ent, v) for k, v in COLS.items()}
@@ -52,7 +68,7 @@ def principal() -> int:
         return 1
     lignes = []
     for x in lec:
-        d = (x.get(choix["date"]) or "").strip()[:10]
+        d = _date(x.get(choix["date"]) or "")
         if len(d) != 10:
             continue
         lignes.append({k: (x.get(v) or "").strip() if v else "" for k, v in choix.items() if k != "date"} | {"date": d})
