@@ -16,6 +16,7 @@ from __future__ import annotations
 import csv
 import datetime as dt
 import math
+import os
 import re
 from pathlib import Path
 
@@ -36,11 +37,23 @@ EXCLURE = re.compile(r"\b(chair|nominat\w*|powell|cook|warsh|governors?|differen
 J = dt.date.fromisoformat
 
 
-def charger(reunions: Path = REUNIONS, changements: Path = CHANGEMENTS):
+def charger(reunions: Path = REUNIONS, changements: Path = CHANGEMENTS, fred: Path | None = None):
+    """Réunions et changements officiels ; les changements postérieurs au fichier sont lus dans la borne haute FRED
+    DFEDTARU collectée (registre/fred.csv), pour que l'état reste à jour entre deux mises à jour du fichier."""
     R = sorted(J(r["fin"]) for r in csv.DictReader(reunions.open(encoding="utf-8")))
     C = sorted((J(r["date"]), int(r["points"]), float(r["niveau_haut"]))
                for r in csv.DictReader(changements.open(encoding="utf-8")))
-    return R, C
+    fred = fred or Path(os.environ.get("ALPHABET_REGISTRE", ICI / "registre")) / "fred.csv"
+    try:
+        haut = sorted((J(r["jour"]), float(r["valeur"])) for r in csv.DictReader(fred.open(encoding="utf-8"))
+                      if r.get("serie") == "DFEDTARU" and r.get("valeur") not in ("", "."))
+    except (OSError, ValueError, KeyError):
+        haut = []
+    dernier = C[-1][0] if C else dt.date(1900, 1, 1)
+    for (_, a), (d, b) in zip(haut, haut[1:]):
+        if d > dernier and abs(b - a) >= 0.24:
+            C.append((d, int(round((b - a) * 100)), b))
+    return R, sorted(C)
 
 
 def barreau(points: int) -> str:

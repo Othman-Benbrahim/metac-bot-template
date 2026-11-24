@@ -182,6 +182,14 @@ compartiments:
     statut: collecte
     fichier: collecte_fred.py
     adaptateur: fred:ECBDFR
+  - source: borne haute de la fourchette cible de la Fed (FRED DFEDTARU)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DFEDTARU
+  - source: décisions du FOMC et calendrier des réunions programmées (federalreserve.gov, 1994-2002 et 2007-2026), brique
+      d'inertie branchée (banque_centrale_regle.py)
+    statut: collecte
+    fichier: ecosystemes/fed-changements-taux.csv
 - id: monnaies
   nom: Monnaies et dollar
   organisation: economie

@@ -33,6 +33,8 @@ SERIES = {
     "WCSSTUS1": "réserve stratégique américaine de brut, hebdomadaire (énergie mondiale : stocks)",
     "T10YIE": "inflation anticipée à 10 ans par les marchés, quotidien (inflation mondiale : anticipations)",
     "DFF": "taux directeur effectif de la Réserve fédérale, quotidien (inflation mondiale : banques centrales)",
+    "DFEDTARU": "borne haute de la fourchette cible de la Fed, quotidien (banques centrales : brique d'inertie) ; 0.10.499",
+    "DFEDTARL": "borne basse de la fourchette cible de la Fed, quotidien (banques centrales : brique d'inertie) ; 0.10.499",
     "ECBDFR": "taux de la facilité de dépôt de la BCE (inflation mondiale : banques centrales)",
     "DGS10": "taux américain à 10 ans, quotidien (inflation mondiale : marchés financiers)",
     "DTWEXBGS": "indice large du dollar, quotidien (inflation mondiale : monnaies)",

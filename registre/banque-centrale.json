@@ -1,0 +1,478 @@
+{
+ "resume": {
+  "n": 47,
+  "groupes": 17,
+  "oui": 14,
+  "par_type": {
+   "au_moins_un": 7,
+   "compte": 9,
+   "reunion": 25,
+   "sequence": 5,
+   "urgence": 1
+  },
+  "perte_reference": 0.6634,
+  "perte_regle": 0.4686,
+  "perte_melange_plafonne": 0.5649,
+  "confirmation_2026": {
+   "n": 22,
+   "perte_reference": 0.7634,
+   "perte_regle": 0.5746
+  },
+  "comptes_par_etat_au_2026_11_24": {
+   "baisse_recente": {
+    "B50": 9,
+    "B25": 14,
+    "M": 9,
+    "H25": 0,
+    "H50": 0
+   },
+   "pause_apres_baisse": {
+    "B50": 1,
+    "B25": 2,
+    "M": 28,
+    "H25": 4,
+    "H50": 0
+   },
+   "hausse_recente": {
+    "B50": 0,
+    "B25": 0,
+    "M": 20,
+    "H25": 6,
+    "H50": 8
+   },
+   "pause_apres_hausse": {
+    "B50": 2,
+    "B25": 3,
+    "M": 38,
+    "H25": 11,
+    "H50": 3
+   }
+  },
+  "brancher": true
+ },
+ "lignes": [
+  {
+   "titre": "Will Fed cut interest rates 0 times in 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "p": 0.7385,
+   "groupe": "2024",
+   "type": "compte",
+   "ref": 0.3111
+  },
+  {
+   "titre": "Will Fed cut interest rates 1 time in 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "p": 0.0737,
+   "groupe": "2024",
+   "type": "compte",
+   "ref": 0.3111
+  },
+  {
+   "titre": "Will 1 Fed rate cut happen in 2025?",
+   "jeu": "2025-03-16",
+   "y": 0,
+   "p": 0.0772,
+   "groupe": "2025",
+   "type": "compte",
+   "ref": 0.4
+  },
+  {
+   "titre": "No change in Fed interest rates after May 2025 meeting?",
+   "jeu": "2025-03-16",
+   "y": 1,
+   "p": 0.665,
+   "groupe": "2025-05",
+   "type": "reunion",
+   "ref": 0.2826
+  },
+  {
+   "titre": "Will 2 Fed rate cuts happen in 2025?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "p": 0.1014,
+   "groupe": "2025",
+   "type": "compte",
+   "ref": 0.4
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after July 2025 meeting?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "p": 0.1795,
+   "groupe": "2025-07",
+   "type": "reunion",
+   "ref": 0.3043
+  },
+  {
+   "titre": "Will 5 Fed rate cuts happen in 2025?",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "p": 0.0437,
+   "groupe": "2025",
+   "type": "compte",
+   "ref": 0.4
+  },
+  {
+   "titre": "Fed rate hike in 2025?",
+   "jeu": "2025-04-27",
+   "y": 0,
+   "p": 0.5324,
+   "groupe": "2025",
+   "type": "au_moins_un",
+   "ref": 0.4
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after June 2025 meeting?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "p": 0.1356,
+   "groupe": "2025-06",
+   "type": "reunion",
+   "ref": 0.2955
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after June 2025 meeting?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "p": 0.0508,
+   "groupe": "2025-06",
+   "type": "reunion",
+   "ref": 0.2955
+  },
+  {
+   "titre": "Fed emergency rate cut in 2025?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "p": 0.2436,
+   "groupe": "2025",
+   "type": "urgence",
+   "ref": 0.4
+  },
+  {
+   "titre": "No change in Fed interest rates after June 2025 meeting?",
+   "jeu": "2025-05-25",
+   "y": 1,
+   "p": 0.7627,
+   "groupe": "2025-06",
+   "type": "reunion",
+   "ref": 0.2955
+  },
+  {
+   "titre": "Will 4 Fed rate cuts happen in 2025?",
+   "jeu": "2025-06-08",
+   "y": 0,
+   "p": 0.0532,
+   "groupe": "2025",
+   "type": "compte",
+   "ref": 0.4
+  },
+  {
+   "titre": "No change in Fed interest rates after September 2025 meeting?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "p": 0.7778,
+   "groupe": "2025-09",
+   "type": "reunion",
+   "ref": 0.3111
+  },
+  {
+   "titre": "Will 6 Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "p": 0.0043,
+   "groupe": "2025",
+   "type": "compte",
+   "ref": 0.4
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "p": 0.1554,
+   "groupe": "2025-10",
+   "type": "reunion",
+   "ref": 0.2889
+  },
+  {
+   "titre": "Will no Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "p": 0.7582,
+   "groupe": "2025",
+   "type": "compte",
+   "ref": 0.4
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after September 2025 meeting?",
+   "jeu": "2025-08-17",
+   "y": 0,
+   "p": 0.0476,
+   "groupe": "2025-09",
+   "type": "reunion",
+   "ref": 0.3111
+  },
+  {
+   "titre": "Will 8+ Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "p": 0.0,
+   "groupe": "2025",
+   "type": "compte",
+   "ref": 0.4
+  },
+  {
+   "titre": "Will the Fed cut-pause-cut in 2025",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "p": 0.0332,
+   "groupe": "2025",
+   "type": "sequence",
+   "ref": 0.4
+  },
+  {
+   "titre": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+   "jeu": "2025-10-26",
+   "y": 1,
+   "p": 0.3968,
+   "groupe": "2025-10",
+   "type": "reunion",
+   "ref": 0.2889
+  },
+  {
+   "titre": "Will the Fed cut-pause-pause in 2025?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "p": 0.2034,
+   "groupe": "2025",
+   "type": "sequence",
+   "ref": 0.4
+  },
+  {
+   "titre": "Will the Fed Cut–Cut–Pause in 2025?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "p": 0.1885,
+   "groupe": "2025",
+   "type": "sequence",
+   "ref": 0.4
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after January 2026 meeting?",
+   "jeu": "2025-11-09",
+   "y": 0,
+   "p": 0.2194,
+   "groupe": "2026-01",
+   "type": "reunion",
+   "ref": 0.3111
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+   "jeu": "2025-11-09",
+   "y": 1,
+   "p": 0.4755,
+   "groupe": "2026-03",
+   "type": "reunion",
+   "ref": 0.2826
+  },
+  {
+   "titre": "Fed rate cut by June 2026 meeting?",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "p": 0.7975,
+   "groupe": "2026-06",
+   "type": "au_moins_un",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after January 2026 meeting?",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "p": 0.0299,
+   "groupe": "2026-01",
+   "type": "reunion",
+   "ref": 0.3111
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the June 2026 meeting?",
+   "jeu": "2026-01-18",
+   "y": 1,
+   "p": 0.5096,
+   "groupe": "2026-06",
+   "type": "reunion",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "p": 0.1114,
+   "groupe": "2026-04",
+   "type": "reunion",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the April 2026 meeting?",
+   "jeu": "2026-03-01",
+   "y": 1,
+   "p": 0.6698,
+   "groupe": "2026-04",
+   "type": "reunion",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Will the Fed Cut–Pause–Pause in the next three decisions (Dec–Jan–Mar)?",
+   "jeu": "2026-03-01",
+   "y": 1,
+   "p": 0.7538,
+   "groupe": "seq-12-1-3",
+   "type": "sequence",
+   "ref": 0.2826
+  },
+  {
+   "titre": "Fed rate cut by April 2026 meeting?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "p": 0.2193,
+   "groupe": "2026-04",
+   "type": "au_moins_un",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "p": 0.1288,
+   "groupe": "2026-06",
+   "type": "reunion",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+   "jeu": "2026-03-29",
+   "y": 0,
+   "p": 0.0448,
+   "groupe": "2026-04",
+   "type": "reunion",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Will the Fed Pause–Pause–Pause in the next three decisions (Mar–Apr–Jun)?",
+   "jeu": "2026-05-10",
+   "y": 1,
+   "p": 0.7681,
+   "groupe": "seq-3-4-6",
+   "type": "sequence",
+   "ref": 0.2826
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?",
+   "jeu": "2026-05-10",
+   "y": 0,
+   "p": 0.1014,
+   "groupe": "2026-06",
+   "type": "reunion",
+   "ref": 0.3023
+  },
+  {
+   "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
+   "jeu": "2026-06-21",
+   "y": 0,
+   "p": 0.1127,
+   "groupe": "2026-07",
+   "type": "au_moins_un",
+   "ref": 0.2955
+  },
+  {
+   "titre": "Fed rate hike in 2026?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "p": 0.3448,
+   "groupe": "2026",
+   "type": "au_moins_un",
+   "ref": 0.2667
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "p": 0.0986,
+   "groupe": "2026-09",
+   "type": "reunion",
+   "ref": 0.2857
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the July 2026 meeting?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "p": 0.7746,
+   "groupe": "2026-07",
+   "type": "reunion",
+   "ref": 0.2955
+  },
+  {
+   "titre": "Will the Federal Reserve hike interest rates in 2026?",
+   "jeu": "2026-07-05",
+   "y": 1,
+   "p": 0.3448,
+   "groupe": "2026",
+   "type": "au_moins_un",
+   "ref": 0.2667
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the September 2026 meeting?",
+   "jeu": "2026-07-05",
+   "y": 0,
+   "p": 0.693,
+   "groupe": "2026-09",
+   "type": "reunion",
+   "ref": 0.2857
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the July 2026 meeting?",
+   "jeu": "2026-07-19",
+   "y": 0,
+   "p": 0.0986,
+   "groupe": "2026-07",
+   "type": "reunion",
+   "ref": 0.2955
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?",
+   "jeu": "2026-08-02",
+   "y": 0,
+   "p": 0.0411,
+   "groupe": "2026-09",
+   "type": "reunion",
+   "ref": 0.2857
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "p": 0.0137,
+   "groupe": "2026-09",
+   "type": "reunion",
+   "ref": 0.2857
+  },
+  {
+   "titre": "Fed Rate Hike by September 2026 Meeting?",
+   "jeu": "2026-08-16",
+   "y": 1,
+   "p": 0.1096,
+   "groupe": "2026-09",
+   "type": "au_moins_un",
+   "ref": 0.2857
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+   "jeu": "2026-09-13",
+   "y": 1,
+   "p": 0.7001,
+   "groupe": "2026-10",
+   "type": "reunion",
+   "ref": 0.2826
+  }
+ ]
+}

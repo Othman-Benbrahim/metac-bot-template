@@ -491,6 +491,12 @@ class AlphabetBot(FallTemplateBot2026):
         # <compétition> ? », confirmé une fois sur les questions de 2026 ; même mélange, même plafond ; journal-competitions.jsonl.
         if sp_ is None:
             sp_ = self._competition(question, q, r.p_poste)
+        # 0.10.499 (décision de l'auteur du 2026-11-24, 15 h 59 : champ libre) : brique banque centrale, inertie de la Fed
+        # (chaîne de Markov sur les réunions programmées depuis 1994, sources federalreserve.gov) ; passée une fois :
+        # 0,469 contre 0,663 sur 47 questions, 0,575 contre 0,763 sur celles de 2026 ; même mélange, même plafond ;
+        # journal-banque-centrale.jsonl.
+        if sp_ is None:
+            sp_ = self._banque_centrale(question, q, r.p_poste)
         # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
         # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
         try:
@@ -502,6 +508,29 @@ class AlphabetBot(FallTemplateBot2026):
         if sp_ is not None:
             return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
+
+    def _banque_centrale(self, question, q, p_pipeline: float) -> dict | None:
+        try:
+            import banque_centrale_regle as bcr
+            e = bcr.estimer(question.question_text or "")
+            if e is None:
+                return None
+            p = bcr.melanger(p_pipeline, e["p"])
+            e.update({"p_regle": e["p"], "p": p, "poids": bcr.POIDS, "ecart_max": bcr.ECART_MAX})
+            jour = datetime.now(timezone.utc).date().isoformat()
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": jour, "p_pipeline": p_pipeline, "p_poste": p, "banque_centrale": e}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-banque-centrale.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            e["texte"] = (f"\n\nCentral-bank inertia rule (coded): Fed decisions at scheduled FOMC meetings since 1994 "
+                          f"(federalreserve.gov), Markov chain on the direction and recency of the last move: "
+                          f"{e['p_regle']:.1%}. Blended at weight {e['poids']} with the pipeline forecast {p_pipeline:.1%} "
+                          f"(shift capped at {e['ecart_max']:.0%}): {p:.1%}.")
+            return e
+        except Exception as ex:   # la règle qui échoue ne bloque rien
+            logger.warning("banque centrale : non appliquée (%s)", type(ex).__name__)
+            return None
 
     def _competition(self, question, q, p_pipeline: float) -> dict | None:
         try:
