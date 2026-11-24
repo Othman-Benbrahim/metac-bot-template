@@ -163,3 +163,24 @@ Le classement et l'indépendance de chaque source sont scellés dans le journal.
 - Les briques couvrent aujourd'hui peu des questions ouvertes (1 sur 18 la semaine du 2026-11-24). Sur la plupart des questions, le dossier se réduira au biais du questionneur et à quelques silences.
 - Le juge est un modèle de langue. Sa marge est bornée et contrôlée, mais pas éliminée.
 - Conflit d'intérêts déclaré : le modèle qui rédige cette procédure est un modèle d'Anthropic.
+
+## Mise en œuvre (0.10.510, 2026-11-24)
+
+Fichiers :
+- `dossier_interne.py` : schéma, règles d'entrée et aiguillage ;
+- `sources_preuve.py` : § 5 bis ;
+- `juge.py` : consigne fermée, bornes et règle d'arrêt ;
+- `alphabet_bot.py` : faits demandés ajoutés à la recherche, brique en base, juge après le sceau du bras A, journal `registre/journal-juge.jsonl` ;
+- workflow de score : `python juge.py` écrit `registre/juge-etat.json`.
+
+Le juge s'éteint avec `ALPHABET_JUGE=0`.
+
+Précisions de R-carte, écrites au moment du code :
+- les « termes de la question » sont les termes des listes validées (`listes/valides.txt`, `proposes-rattachement.txt`) ;
+- un terme qui est un nom de pays ou un gentilé ne rattache jamais seul.
+
+Passage sur les 18 questions ouvertes du 2026-11-24 :
+- le rattachement par pays a disparu ;
+- deux bruits restent, qui viennent des listes de mots validées et non du dossier : « confirmed » mène à « nominations par intérim » (sources radioactives volées), et « agreement » mène à « gisements de la dette émergente » (Engie). Leur correction relève des listes, donc de l'auteur.
+
+Non fait : la source de prix fraîche (§ 7, point 4), à chercher puis à soumettre.

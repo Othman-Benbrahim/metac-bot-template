@@ -17,7 +17,7 @@ import logging
 import os
 import sys
 import hashlib
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from forecasting_tools import (
     ApiFilter,
@@ -124,7 +124,30 @@ class AlphabetBot(FallTemplateBot2026):
             raise RuntimeError("disjoncteur de recherche déclenché")
         import capture_recherche                 # 0.10.296 : capture en direct (ForecastGym) ; ne change rien au posté
         capture_recherche.capturer(question, texte)
+        texte += await self._faits_demandes(question)
         return texte
+
+    async def _faits_demandes(self, question) -> str:
+        """0.10.510 (preenregistrements/dossier-interne.md, § 2) : la recherche reçoit seulement la question et les faits
+        que nos mesures réclament (« a_chercher »), jamais une valeur interne."""
+        if not isinstance(question, BinaryQuestion) or os.environ.get("ALPHABET_JUGE") == "0":
+            return ""
+        try:
+            import dossier_interne as din
+            auj = datetime.now(timezone.utc).date()
+            fin = q_fin(question) or (auj + timedelta(days=90)).isoformat()
+            D = await asyncio.to_thread(din.construire, question.question_text or "", fin, auj)
+            R = din.pour_recherche(D)
+            morceaux = []
+            for a in R["a_chercher"][:3]:
+                try:
+                    morceaux.append(f"[{a['fait']}] " + await self._chercher(f"{a['consigne']} : {R['question']['titre']}"[:300]))
+                except Exception as ex:
+                    logger.warning("faits demandés : recherche échouée (%s)", type(ex).__name__)
+            return ("\n\n--- FAITS DEMANDÉS PAR LES MESURES ---\n" + "\n\n".join(morceaux)) if morceaux else ""
+        except Exception as ex:   # n'empêche jamais la recherche générale
+            logger.warning("faits demandés : non construits (%s)", type(ex).__name__)
+            return ""
 
     async def _run_research_brut(self, question) -> str:
         """Recherche générale du bras A (bot modèle). 0.6.1 : si Exa échoue, seconde clé Exa, puis Tavily, GDELT."""
@@ -515,9 +538,46 @@ class AlphabetBot(FallTemplateBot2026):
                                     sp_["p"] if sp_ is not None else r.p_poste, ap.VERSION_BOT)
         except Exception as e:     # l'ombre qui échoue ne bloque rien
             logger.warning("cotes en ombre : non relevées (%s)", type(e).__name__)
-        if sp_ is not None:
-            return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
-        return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
+        # 0.10.510 (décision de l'auteur du 2026-11-24, 22 h 12 ; preenregistrements/dossier-interne.md) : la brique
+        # sert de base (plus de mélange au quart) ; puis juge informé, après le sceau du bras A, dans une marge de 10
+        # points au plus, modulée par la force de la preuve ; journal-juge.jsonl.
+        texte = (r.commentaire or "") + (sp_["texte"] if sp_ is not None else "")
+        p_mesure = float(sp_.get("p_regle", sp_["p"])) if sp_ is not None else r.p_poste
+        if sp_ is not None and abs(p_mesure - sp_["p"]) > 1e-9:
+            texte += (f"\n\nSince 0.10.510 the coded rule is the base (no blending): measure {p_mesure:.1%}.")
+        j = await self._juge(question, q, research, a.prediction_value, p_mesure)
+        if j is not None and j["decision"] == "ecart":
+            texte += (f"\n\nInformed judge (bounded): departure for motive « {j['motif']} », capped at "
+                      f"{j['marge']:.0%}: {p_mesure:.1%} -> {j['p_poste']:.1%}.")
+            return ReasonedPrediction(prediction_value=j["p_poste"], reasoning=texte)
+        return ReasonedPrediction(prediction_value=p_mesure, reasoning=texte)
+
+    async def _juge(self, question, q, research: str, p_A: float, p_mesure: float) -> dict | None:
+        """Juge informé : dossier interne standardisé, réponse fermée, bornée par le code ; journal scellé."""
+        if os.environ.get("ALPHABET_JUGE") == "0":
+            return None
+        try:
+            import dossier_interne as din
+            import juge as jg
+            etat = jg.etat()
+            if etat.get("ferme"):
+                return None
+            auj = datetime.now(timezone.utc).date()
+            fin = q_fin(question) or (auj + timedelta(days=90)).isoformat()
+            D = await asyncio.to_thread(din.construire, question.question_text or "", fin, auj, str(q.id))
+            criteres = (question.resolution_criteria or "") + "\n" + (question.fine_print or "")
+            rep = await self._llm(jg.consigne(D, research, p_A, p_mesure, criteres))
+            res = await asyncio.to_thread(jg.analyser, rep, D, research, p_mesure, criteres, auj)
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": auj.isoformat(), "p_A": p_A, "p_mesure": p_mesure, "p_poste": res["p_poste"],
+                     "juge": res, "reponse": (rep or "")[:4000], "dossier": D}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-juge.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            return res
+        except Exception as ex:   # le juge qui échoue ne bloque rien : on poste la mesure
+            logger.warning("juge informé : non appliqué (%s)", type(ex).__name__)
+            return None
 
     def _sondes(self, question, q, p_pipeline: float) -> dict | None:
         try:
