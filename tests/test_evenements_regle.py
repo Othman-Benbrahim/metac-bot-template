@@ -2,7 +2,7 @@ import evenements_regle as e
 
 
 def test_reconnaissance():
-    assert e.reconnaitre("Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?")["serie"] == "ucdp_dyade:SAU:IRN"
+    assert e.reconnaitre("Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?") is None  # débranché
     assert e.reconnaitre("Will China invade Taiwan by September 30, 2026?") is None
     assert e.reconnaitre("Will France, UK, or Germany strike Iran by February 28?") is None
     assert e.reconnaitre("Will the United States launch another strike against Islamic State in Nigeria?") is None

@@ -67,10 +67,11 @@ def reconnaitre(titre: str) -> dict | None:
         return {"type": "séisme de magnitude 6 ou plus", "serie": "seismes:m6", "pas": "jour"}
     if not VERBES.search(titre) or EXCLUS.search(titre) or NON_ETATIQUES.search(titre):
         return None
-    ps = pays(titre)
-    if len(ps) != 2:
-        return None
-    return {"type": "violence entre deux gouvernements", "serie": f"ucdp_dyade:{ps[0]}:{ps[1]}", "pas": "mois"}
+    # 2026-11-24, 15 h 35 (décision de l'auteur) : violence entre deux gouvernements DÉBRANCHÉE. Sur les 32 questions que
+    # le bot reconnaît, la règle fait 0,987 contre 0,626 pour le taux de base, et le mélange plafonné 0,659 : la
+    # fréquence passée des affrontements meurtriers ne dit pas si une frappe précise aura lieu (erreurs dans les deux
+    # sens ; registre/saillance-evenements.json). La série reste sur la carte comme indicateur d'état.
+    return None
 
 
 def probabilite(serie: list, pas: str, jour: str, echeance: str) -> dict | None:
