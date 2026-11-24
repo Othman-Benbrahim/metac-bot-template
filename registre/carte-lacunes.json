@@ -4,27 +4,27 @@
  "par_type": [
   [
    "amont sans série",
-   3147
+   3142
   ],
   [
    "aucune relation entrante",
-   2067
-  ],
-  [
-   "série sans état récent",
-   269
-  ],
-  [
-   "aucune relation retenue aux échelles de la question",
-   262
+   2065
   ],
   [
    "aucun compartiment rattaché",
-   259
+   269
+  ],
+  [
+   "série sans état récent",
+   268
+  ],
+  [
+   "aucune relation retenue aux échelles de la question",
+   260
   ],
   [
    "sens du oui illisible",
-   193
+   192
   ]
  ],
  "par_compartiment": [
@@ -94,19 +94,19 @@
   ],
   [
    "liban-institutions:exterieur",
-   55
+   58
   ],
   [
    "afrique-subsaharienne:puissances_exterieures",
-   55
-  ],
-  [
-   "sciences-techniques:recherche",
-   54
+   57
   ],
   [
    "competitions-culture:geopolitique",
    54
+  ],
+  [
+   "sciences-techniques:recherche",
+   53
   ],
   [
    "elections-amerique-latine:partis_gouverneurs",
@@ -121,24 +121,24 @@
    50
   ],
   [
-   "politique-interieure:procedures",
+   "antarctique:presences",
    45
   ],
   [
-   "antarctique:presences",
-   44
-  ],
-  [
    "arctique:militarisation",
-   44
+   45
   ],
   [
    "asie-centrale:partenaires",
-   44
+   45
   ],
   [
    "asie-du-sud:puissances",
-   44
+   45
+  ],
+  [
+   "politique-interieure:procedures",
+   45
   ],
   [
    "calendriers-echeances:publications → calendriers-echeances:banques_centrales",
@@ -146,23 +146,23 @@
   ],
   [
    "soleil-espace:magnetosphere → soleil-espace:satellites",
-   43
+   42
   ],
   [
    "transport-maritime:detroit_bering",
-   39
+   40
   ],
   [
    "ormuz:puissances",
-   37
+   38
+  ],
+  [
+   "transport-maritime:detroit_ormuz",
+   35
   ],
   [
    "sciences-techniques:calcul → sciences-techniques:ia",
    35
-  ],
-  [
-   "transport-maritime:detroit_ormuz",
-   33
   ],
   [
    "rivalite-sino-americaine:atomique",
@@ -209,11 +209,11 @@
    28
   ],
   [
-   "economie-entreprises:defaillances → economie-entreprises:finance_entreprise",
-   28
+   "rivalite-sino-americaine:commerce → rivalite-sino-americaine:diplomatie",
+   27
   ],
   [
-   "rivalite-sino-americaine:commerce → rivalite-sino-americaine:diplomatie",
+   "economie-entreprises:defaillances → economie-entreprises:finance_entreprise",
    27
   ],
   [
@@ -225,6 +225,10 @@
    20
   ],
   [
+   "guerre-levant:convention",
+   20
+  ],
+  [
    "sciences-techniques:calcul → sciences-techniques:sorties_modeles",
    20
   ],
@@ -233,7 +237,15 @@
    20
   ],
   [
-   "guerre-levant:convention",
+   "iran-nucleaire:recits",
+   19
+  ],
+  [
+   "iran-nucleaire:relief_sites",
+   19
+  ],
+  [
+   "iran-nucleaire:sismicite",
    19
   ],
   [
@@ -253,32 +265,24 @@
    18
   ],
   [
-   "iran-nucleaire:recits",
-   17
-  ],
-  [
-   "iran-nucleaire:relief_sites",
-   17
-  ],
-  [
-   "iran-nucleaire:sismicite",
-   17
-  ],
-  [
    "antarctique:revendications",
    17
   ],
   [
    "iran-nucleaire:russie_chine",
+   17
+  ],
+  [
+   "eau-moyen-orient:maladies_hydriques → eau-moyen-orient:villes",
+   16
+  ],
+  [
+   "guerre-levant:epidemies → guerre-levant:humanitaire",
    16
   ],
   [
    "ormuz:force → ormuz:navigation",
    16
-  ],
-  [
-   "guerre-levant:epidemies → guerre-levant:humanitaire",
-   15
   ],
   [
    "calendriers-echeances:dates_limites",
@@ -301,10 +305,6 @@
    15
   ],
   [
-   "eau-moyen-orient:maladies_hydriques → eau-moyen-orient:villes",
-   14
-  ],
-  [
    "epidemies:reservoirs → epidemies:agent",
    14
   ],
@@ -313,11 +313,19 @@
    14
   ],
   [
-   "medias-diffusion:geants_mango",
-   13
+   "russie-ukraine:hiver_saisons",
+   14
   ],
   [
-   "dette-emergents:gisements",
+   "russie-ukraine:front → russie-ukraine:mer_noire",
+   14
+  ],
+  [
+   "russie-ukraine:opinions",
+   14
+  ],
+  [
+   "medias-diffusion:geants_mango",
    13
   ],
   [
@@ -325,16 +333,12 @@
    13
   ],
   [
-   "russie-ukraine:hiver_saisons",
-   13
+   "guerre-levant:relief",
+   12
   ],
   [
-   "russie-ukraine:front → russie-ukraine:mer_noire",
-   13
-  ],
-  [
-   "russie-ukraine:opinions",
-   13
+   "asie-du-nord-est:russie_coree",
+   12
   ],
   [
    "militaire:arsenaux_nucleaires",
@@ -354,18 +358,6 @@
   ],
   [
    "economie-entreprises:investissement_ia → economie-entreprises:conjoncture",
-   11
-  ],
-  [
-   "guerre-levant:relief",
-   11
-  ],
-  [
-   "inflation-mondiale:budget",
-   11
-  ],
-  [
-   "asie-du-nord-est:russie_coree",
    11
   ],
   [
@@ -389,11 +381,7 @@
    9
   ],
   [
-   "organisations-internationales:commerce_mondial",
-   9
-  ],
-  [
-   "culture-memoire:creation",
+   "inflation-mondiale:budget",
    9
   ],
   [
@@ -402,10 +390,6 @@
   ],
   [
    "climat-extremes:oceans",
-   8
-  ],
-  [
-   "securite-publique:polices → securite-publique:justice",
    8
   ],
   [
@@ -441,11 +425,27 @@
    7
   ],
   [
+   "securite-publique:polices → securite-publique:justice",
+   7
+  ],
+  [
    "amerique-latine:ressources_latam",
    6
   ],
   [
    "inflation-mondiale:approvisionnement → inflation-mondiale:prix_conso",
+   6
+  ],
+  [
+   "arctique:glace_arctique → arctique:route_nord",
+   6
+  ],
+  [
+   "russie-ukraine:capacites → russie-ukraine:front",
+   6
+  ],
+  [
+   "organisations-internationales:commerce_mondial",
    6
   ],
   [
@@ -473,19 +473,15 @@
    5
   ],
   [
+   "iran-nucleaire:verification → iran-nucleaire:conseil_securite",
+   5
+  ],
+  [
    "rivalite-sino-americaine:alliances",
    5
   ],
   [
    "epidemies:convention → epidemies:autorites",
-   5
-  ],
-  [
-   "russie-ukraine:capacites → russie-ukraine:front",
-   5
-  ],
-  [
-   "arctique:glace_arctique → arctique:route_nord",
    5
   ],
   [
@@ -533,6 +529,18 @@
    4
   ],
   [
+   "dette-emergents:gisements",
+   4
+  ],
+  [
+   "eau-moyen-orient:fleuves → eau-moyen-orient:barrages",
+   4
+  ],
+  [
+   "transport-maritime:detroit_bosphore",
+   4
+  ],
+  [
    "rivalite-sino-americaine:taiwan → rivalite-sino-americaine:diplomatie",
    4
   ],
@@ -542,22 +550,6 @@
   ],
   [
    "monnaie-pouvoir:paiements → monnaie-pouvoir:sanctions_financieres",
-   3
-  ],
-  [
-   "iran-nucleaire:verification → iran-nucleaire:conseil_securite",
-   3
-  ],
-  [
-   "information-cyber:effacement_mots → information-cyber:langues_biais",
-   3
-  ],
-  [
-   "sciences-techniques:ia → sciences-techniques:adoption",
-   3
-  ],
-  [
-   "information-cyber:cyber → information-cyber:infrastructure",
    3
   ],
   [
@@ -593,14 +585,6 @@
    3
   ],
   [
-   "eau-moyen-orient:fleuves → eau-moyen-orient:barrages",
-   3
-  ],
-  [
-   "transport-maritime:detroit_bosphore",
-   3
-  ],
-  [
    "politique-interieure:contestation",
    3
   ],
@@ -613,6 +597,10 @@
    3
   ],
   [
+   "guerre-levant:relief → guerre-levant:eau",
+   2
+  ],
+  [
    "union-europeenne:politiques_communes",
    2
   ],
@@ -622,10 +610,6 @@
   ],
   [
    "canada:energie_minerais_can → canada:commerce_usa",
-   2
-  ],
-  [
-   "dette-emergents:fmi",
    2
   ],
   [
@@ -699,10 +683,6 @@
   [
    "iran-nucleaire:etats_unis → iran-nucleaire:sanctions",
    2
-  ],
-  [
-   "guerre-levant:relief → guerre-levant:eau",
-   1
   ],
   [
    "information-cyber:censure → information-cyber:recits",
@@ -793,6 +773,10 @@
    1
   ],
   [
+   "iran-nucleaire:surete_atomique → iran-nucleaire:voisins",
+   1
+  ],
+  [
    "corps-humain:nutrition",
    1
   ],
@@ -826,6 +810,22 @@
   ],
   [
    "afrique-subsaharienne:demographie_jeunesse",
+   1
+  ],
+  [
+   "frontieres:frontieres_contestees",
+   1
+  ],
+  [
+   "frontieres:frontieres_contestees → frontieres:etats",
+   1
+  ],
+  [
+   "insularite:caraibes",
+   1
+  ],
+  [
+   "inflation-mondiale:epidemies → inflation-mondiale:approvisionnement",
    1
   ]
  ],
