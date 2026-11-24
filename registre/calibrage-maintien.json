@@ -1,0 +1,108 @@
+{
+ "resume": {
+  "n": 14,
+  "oui": 0.429,
+  "perte_regle": 1.0061,
+  "perte_base": 0.741
+ },
+ "lignes": [
+  {
+   "titre": "Will Vladimir Putin cease to be the president of the Russian Federation before 1 July 2025?",
+   "source": "infer",
+   "y": 0,
+   "p_regle": 0.11099790407563792,
+   "sens": "depart"
+  },
+  {
+   "titre": "Will Vladimir Putin be the President of Russia at the end of 2024?",
+   "source": "manifold",
+   "y": 1,
+   "p_regle": 0.9459287322299094,
+   "sens": "reste"
+  },
+  {
+   "titre": "Putin out as President of Russia in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.10013316344415613,
+   "sens": "depart"
+  },
+  {
+   "titre": "Kim Jong Un out as Supreme Leader of North Korea in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.08072217574170348,
+   "sens": "depart"
+  },
+  {
+   "titre": "Will Pope Francis cease to be pope before the end of 2025?",
+   "source": "manifold",
+   "y": 1,
+   "p_regle": 0.11635534194848063,
+   "sens": "depart"
+  },
+  {
+   "titre": "Will Trump resign in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.22439992838777123,
+   "sens": "depart"
+  },
+  {
+   "titre": "Khamenei out as Supreme Leader of Iran in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.11014556029414746,
+   "sens": "depart"
+  },
+  {
+   "titre": "Zelenskyy out as Ukraine president before July?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.010589903786289212,
+   "sens": "depart"
+  },
+  {
+   "titre": "Will Ali Khamenei remain Supreme Leader of Iran through December 31st, 2025?",
+   "source": "manifold",
+   "y": 1,
+   "p_regle": 0.9258501052384399,
+   "sens": "reste"
+  },
+  {
+   "titre": "Will Ali Khamenei cease to be supreme leader of Iran in 2025?",
+   "source": "metaculus",
+   "y": 0,
+   "p_regle": 0.006212038531304809,
+   "sens": "depart"
+  },
+  {
+   "titre": "Will Ali Khamenei cease to be Supreme Leader of Iran before 2027?",
+   "source": "metaculus",
+   "y": 1,
+   "p_regle": 0.18206431015894764,
+   "sens": "depart"
+  },
+  {
+   "titre": "Will Viktor Orban remain Hungary's prime minister after the 2026 elections?",
+   "source": "manifold",
+   "y": 0,
+   "p_regle": 0.9905365963004722,
+   "sens": "reste"
+  },
+  {
+   "titre": "Will Keir Starmer cease to be Prime Minister of the UK during 2026?",
+   "source": "metaculus",
+   "y": 1,
+   "p_regle": 0.21102010220509437,
+   "sens": "depart"
+  },
+  {
+   "titre": "Khamenei out as Supreme Leader of Iran by March 31?",
+   "source": "polymarket",
+   "y": 1,
+   "p_regle": 0.017942625662191625,
+   "sens": "depart"
+  }
+ ]
+}

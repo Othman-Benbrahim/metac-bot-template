@@ -1,0 +1,31 @@
+# Dirigeants pour la brique du maintien (0.10.495, décision de l'auteur, 2026-11-24, 15 h 21-15 h 23). Seules des données
+# stables : année de naissance et début de la période au pouvoir en cours. Rien n'affirme que le dirigeant est encore en
+# poste : la règle ne s'applique qu'aux questions qui le demandent. Source « archigos » : Archigos 4.1 (peacesciencer 1.1.0) ;
+# « a_verifier » : saisi par Claude de mémoire, à vérifier sur source primaire. pape = règle de mortalité seule.
+# motifs (séparés par /) | poste | iso3 | naissance | debut | source
+Putin/Vladimir Putin | president | RUS | 1952 | 2000-01-01 | archigos
+Kim Jong Un/Kim Jong-un | dirigeant | PRK | 1983 | 2011-12-17 | archigos
+Xi Jinping | dirigeant | CHN | 1953 | 2012-11-15 | archigos
+Erdogan/Erdoğan | president | TUR | 1954 | 2003-03-14 | archigos
+Orban/Orbán | premier_ministre | HUN | 1963 | 2010-05-29 | archigos
+Lukashenko | president | BLR | 1954 | 1994-07-20 | archigos
+Modi | premier_ministre | IND | 1950 | 2014-05-29 | archigos
+Maduro | president | VEN | 1962 | 2013-03-05 | archigos
+al-Sisi/Sisi | president | EGY | 1954 | 2014-06-08 | archigos
+Kagame | president | RWA | 1957 | 1994-07-19 | archigos
+Museveni | president | UGA | 1944 | 1986-01-29 | archigos
+Biya | president | CMR | 1933 | 1982-11-06 | archigos
+Aliyev | president | AZE | 1961 | 2003-08-04 | archigos
+Khamenei/Ali Khamenei | guide_supreme | IRN | 1939 | 1989-06-04 | a_verifier
+Netanyahu | premier_ministre | ISR | 1949 | 2022-12-29 | a_verifier
+Trump/Donald Trump | president | USA | 1946 | 2025-01-20 | a_verifier
+Zelensky/Zelenskyy | president | UKR | 1978 | 2019-05-20 | a_verifier
+Starmer/Keir Starmer | premier_ministre | GBR | 1962 | 2024-07-05 | a_verifier
+Pedro Sánchez/Pedro Sanchez | premier_ministre | ESP | 1972 | 2018-06-02 | a_verifier
+Macron | president | FRA | 1977 | 2017-05-14 | a_verifier
+Meloni | premier_ministre | ITA | 1977 | 2022-10-22 | a_verifier
+Lula | president | BRA | 1945 | 2023-01-01 | a_verifier
+Milei | president | ARG | 1970 | 2023-12-10 | a_verifier
+Abbas/Mahmoud Abbas | president | PSE | 1935 | 2005-01-15 | a_verifier
+Pope Francis | pape | VAT | 1936 | 2013-03-13 | a_verifier
+Pope Leo | pape | VAT | 1955 | 2025-05-08 | a_verifier

@@ -1,0 +1,10 @@
+# Risque annuel de départ des dirigeants par ancienneté au pouvoir, 1990-2015 (années-dirigeant exposées). Source : Archigos 4.1
+# (Goemans, Gleditsch et Chiozza, 2009, Journal of Peace Research 46(2)) ; sous-ensemble du paquet R peacesciencer 1.1.0
+# (github.com/svmiller/peacesciencer, data/archigos.rda). Calcul : mise_au_point/archigos_risques.py, 2026-11-24.
+# irregulier = sorties « Irregular » et « Foreign » ; regulier = « Regular » (élections, fins de mandat, démissions) ;
+# deces = « Natural Death », « Retired Due to Ill Health », « Suicide » (non utilisé : remplacé par la table de mortalité).
+anciennete,annees_exposees,irregulier,regulier,deces
+0-2,1363,0.0249,0.2435,0.0044
+2-5,1199,0.0183,0.1726,0.0133
+5-10,869,0.0207,0.1518,0.0046
+10+,961,0.0218,0.0759,0.0218
