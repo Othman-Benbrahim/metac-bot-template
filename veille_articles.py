@@ -24,6 +24,7 @@ import argparse
 import json
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -146,6 +147,18 @@ def _get_json(url: str, headers: dict | None = None) -> dict:
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
                 return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            # 2026-11-24 : une requête refusée (4xx sauf 429) ne se réessaie pas ; avant, chaque lot Zenodo refusé coûtait
+            # 30 s de pauses (13 lots : 6 à 7 minutes perdues par passage). Le motif du refus est gardé pour le journal.
+            if 400 <= e.code < 500 and e.code != 429:
+                try:
+                    e.motif = e.read()[:300].decode("utf-8", "replace")
+                except Exception:
+                    e.motif = ""
+                raise
+            if i == 2:
+                raise
+            time.sleep(10 * (i + 1))
         except Exception:
             if i == 2:
                 raise
@@ -201,9 +214,11 @@ def zenodo(mots: dict[str, list[str]], jours: int) -> list[dict]:
     for i in range(0, len(termes), 8):
         q = "(" + " OR ".join(f'"{t}"' for t in termes[i:i + 8]) + f") AND publication_date:[{debut} TO *]"
         try:                                  # 2026-11-16 : un lot refusé (HTTP 400) ne fait plus tomber toute la source
-            out += parser_zenodo(_get_json(f"{ZENODO}?{urllib.parse.urlencode({'q': q, 'size': 50, 'sort': 'newest'})}"))
+            # 2026-11-24 : size 25, plafond de l'API Zenodo pour une requête sans jeton (50 : refus 400 de tous les lots)
+            out += parser_zenodo(_get_json(f"{ZENODO}?{urllib.parse.urlencode({'q': q, 'size': 25, 'sort': 'newest'})}"))
         except Exception as e:
-            print(f"Zenodo : lot {i // 8 + 1} refusé ({type(e).__name__}: {str(e)[:80]}) : {termes[i:i + 8]}")
+            print(f"Zenodo : lot {i // 8 + 1} refusé ({type(e).__name__}: {str(e)[:80]}) : {termes[i:i + 8]}"
+                  + (f" ; réponse : {e.motif}" if getattr(e, "motif", "") else ""))
         time.sleep(1)
     return out
 
