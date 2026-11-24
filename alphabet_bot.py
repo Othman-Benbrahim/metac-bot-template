@@ -539,8 +539,11 @@ class AlphabetBot(FallTemplateBot2026):
             import rencontres_regle as rcr
             # 0.10.506 : rencontres au sommet (COLT, voyages des dirigeants 1990-2025) ; passé une fois : 0,151 contre
             # 0,312 sur 4 questions (toutes de 2026).
-            e = (aet.estimer(titre) or amd.estimer(titre) or agr.estimer(titre) or rcr.estimer(titre)
-                 or arr.estimer_autres(titre))
+            import sommets_regle as smr
+            # 0.10.507 : présence du président américain à un sommet de l'OTAN (liste officielle + COLT) ; passé une
+            # fois : 0,020 contre 1,319 sur 2 questions (2026).
+            e = (aet.estimer(titre) or amd.estimer(titre) or agr.estimer(titre) or smr.estimer(titre)
+                 or rcr.estimer(titre) or arr.estimer_autres(titre))
             if e is None:
                 return None
             p = arr.melanger(p_pipeline, e["p"])

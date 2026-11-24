@@ -1,0 +1,33 @@
+{
+ "resume": {
+  "n": 2,
+  "oui": 2,
+  "perte_reference": 1.319,
+  "perte_regle": 0.0202,
+  "perte_melange": 0.8737,
+  "n_2026": 2,
+  "perte_reference_2026": 1.319,
+  "perte_regle_2026": 0.0202,
+  "brancher": true
+ },
+ "lignes": [
+  {
+   "titre": "Will Trump attend NATO Summit?",
+   "jeu": "2026-06-07",
+   "y": 1,
+   "groupe": "NATO Summit Trump",
+   "p": 0.98,
+   "ref": 0.2674,
+   "mel": 0.4174
+  },
+  {
+   "titre": "Will Donald Trump attend NATO Summit?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "groupe": "Donald NATO Summit Trump",
+   "p": 0.98,
+   "ref": 0.2674,
+   "mel": 0.4174
+  }
+ ]
+}
