@@ -12,6 +12,8 @@ declaration:
   taille: une entreprise, une filière, un État, le système mondial
 compartiments:
 - id: commerce
+  evenements:
+    - {"type": "sanctions ou embargos chinois contre un pays", "termes": ["China sanctions", "Chinese sanctions", "embargo", "export ban", "retaliation"], "serie": "sanctions_chine:{ISO2}", "seuil": 1, "pas": "jour", "occurrence": "au moins un événement de sanction chinoise dans la journée (GDELT, CAMEO 163)", "statut": "propose"}
   geopolitique:
     pays: [CHN, USA]
   organisation: economie

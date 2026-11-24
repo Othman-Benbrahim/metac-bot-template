@@ -43,6 +43,9 @@ compartiments:
     statut: a_brancher
 - id: forces
   nom: Forces armées et effectifs (active, réserve, conscription)
+  evenements:
+    - {"type": "affrontement ou frappe meurtrière dans un pays", "termes": ["deadly clash", "clash", "clashes", "fatalities", "killed", "airstrike", "strike", "strikes", "attack", "attacks"], "serie": "ucdp_mois:{ISO3}", "seuil": 1, "pas": "mois", "occurrence": "au moins un mort de violence armée organisée dans le mois (UCDP)", "statut": "propose"}
+    - {"type": "montée des hostilités entre deux pays", "termes": ["strike", "strikes", "attack", "military action", "invade", "invasion", "blockade", "clash"], "serie": "paire_mois:{ISO2_A}:{ISO2_B}:conflit", "seuil": "q90", "pas": "mois", "occurrence": "mois où les événements conflictuels entre les deux pays dépassent le 90e centile des 12 mois précédents (GDELT)", "statut": "propose", "note": "GDELT compte des articles d'événements, pas des frappes vérifiées : indicateur d'intensité, à éprouver"}
   organisation: statut
   elements:
   - armées de terre, de mer, de l'air, forces spéciales

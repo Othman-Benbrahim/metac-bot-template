@@ -165,6 +165,11 @@ def charger(dossier: Path = DOSSIER, transversaux: bool = True) -> dict[str, dic
     return out
 
 
+# 0.10.492 (décision de l'auteur, 2026-11-24, 14 h 52) : « événements comptés » d'un compartiment : pour un type
+# d'événement que les questions demandent, la série qui le compte et le seuil d'occurrence. Gabarits de série :
+# {ISO3}, {ISO2}, {ISO2_A}, {ISO2_B} (pays cités dans la question, dans l'ordre). Seuil : nombre (valeur ≥ seuil sur un
+# pas = une occurrence) ou qNN (quantile NN des 365 jours, ou 12 mois, qui précèdent la date de la question).
+CLES_EVENEMENT = {"type", "termes", "serie", "seuil", "pas", "occurrence", "statut", "note"}
 CLES_PERMISES = {
     "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur", "habitude", "odd"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
@@ -297,6 +302,12 @@ def valider(fiche: dict) -> list[str]:
         if g is not None and (not isinstance(g, dict) or set(g) - {"pays"} or
                               not all(isinstance(x, str) and re.fullmatch(r"[A-Z]{3}", x) for x in g.get("pays") or [])):
             err.append(f"{t}:{c.get('id')} : « geopolitique » attend {{pays: [codes ISO3]}}")
+        for e in c.get("evenements") or []:
+            if not isinstance(e, dict) or set(e) - CLES_EVENEMENT or not {"type", "termes", "serie", "seuil", "pas"} <= set(e):
+                err.append(f"{t}:{c.get('id')} : événement compté mal formé ({e}) ; clés {sorted(CLES_EVENEMENT)}")
+                continue
+            if e["pas"] not in ("jour", "mois") or not (isinstance(e["seuil"], (int, float)) or re.fullmatch(r"q\d\d", str(e["seuil"]))):
+                err.append(f"{t}:{c.get('id')} : événement {e['type']!r} : pas jour|mois, seuil nombre ou qNN")
         cat = niveaux()
         if c.get("organisation") is not None and c["organisation"] not in cat["niveaux"]:
             err.append(f"{t}:{c.get('id')} : niveau d'organisation inconnu {c['organisation']!r} (voir ecosystemes/niveaux.yaml)")
@@ -395,6 +406,7 @@ def assembler(fiches: dict[str, dict]) -> dict:
                            # 0.10.473 (décision de l'auteur, 2026-11-23, 8 h 15 - 8 h 35) : pays concernés, sous le champ
                            # « geopolitique » (codes ISO3) ; sert de point d'attache aux cartes géopolitiques (UCDP)
                            "geopolitique": c.get("geopolitique") or {},
+                           "evenements": c.get("evenements") or [],
                            "axes": axes(c["niveau"]), "traces": c.get("traces") or [],
                            "acteurs": [dict(a, axes=axes({"taille": a.get("taille"), "espace": a.get("espace"),
                                                           "vitesse": a.get("vitesse")})) for a in c.get("acteurs") or []]})

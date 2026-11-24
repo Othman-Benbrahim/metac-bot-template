@@ -222,6 +222,8 @@ compartiments:
     statut: collecte
     adaptateur: ucdp:Yemen
 - id: iran
+  evenements:
+    - {"type": "frappe ou affrontement entre Israël (ou les États-Unis) et l'Iran", "termes": ["strike", "strikes", "attack", "military action", "war"], "serie": "paire_mois:{ISO2_A}:{ISO2_B}:conflit", "seuil": "q90", "pas": "mois", "occurrence": "mois au-dessus du 90e centile des 12 mois précédents (GDELT)", "statut": "propose"}
   geopolitique:
     pays: [IRN]
   organisation: geopolitique

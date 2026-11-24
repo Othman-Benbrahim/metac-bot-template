@@ -141,6 +141,8 @@ compartiments:
     taille: macro
   traces: *id001
 - id: contestation
+  evenements:
+    - {"type": "manifestations massives ou soulèvement dans un pays", "termes": ["protest", "protests", "uprising", "riots", "mass protests", "demonstrations", "anti-government"], "serie": "manifestations:{ISO2}", "seuil": "q99", "pas": "jour", "occurrence": "jour au-dessus du 99e centile des 365 jours précédents (GDELT)", "statut": "propose"}
   nom: Contestation et mouvements de rue
   organisation: societe
   elements:

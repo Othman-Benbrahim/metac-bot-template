@@ -42,6 +42,8 @@ compartiments:
     source: FMI, BCE, Conseil mondial de l'or, presse
     statut: a_brancher
 - id: sanctions_financieres
+  evenements:
+    - {"type": "nouvelles sanctions de l'Union européenne contre un pays", "termes": ["sanctions", "sanction", "sanctions package", "EU sanctions"], "serie": "sanctions:{ISO2}", "seuil": 1, "pas": "jour", "occurrence": "au moins une désignation dans la journée", "statut": "propose", "note": "le fichier compte surtout l'UE (573 lignes) ; les sanctions américaines (OFAC, 7 lignes) ne sont pas couvertes : la série ne vaut pas pour une question sur les sanctions américaines"}
   nom: Sanctions financières et gel d'avoirs
   organisation: convention
   elements:
