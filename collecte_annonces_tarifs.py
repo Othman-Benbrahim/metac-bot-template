@@ -36,8 +36,9 @@ REG = Path(os.environ.get("ALPHABET_REGISTRE", "registre")) / "annonces"
 TIRADE = "https://www.globallinkages.org/datasets/tirade/"
 FR = "https://www.federalregister.gov/api/v1/documents.json"
 DEBUT = "2025-01-20"
-CHAMPS = ["document_number", "type", "presidential_document_type", "title", "signing_date", "publication_date",
-          "effective_on", "executive_order_number", "proclamation_number", "citation", "html_url", "agencies"]
+CHAMPS = ["document_number", "type", "subtype", "title", "signing_date", "publication_date", "effective_on",
+          "executive_order_number", "presidential_document_number", "citation", "html_url", "agencies"]
+SANS = ("excerpt",)        # colonne retirée à l'enregistrement : on ne garde pas de texte (règle du projet) ; le lien reste
 
 
 def versions(html: str) -> list[str]:
@@ -51,6 +52,20 @@ def lien_csv(html: str, base: str) -> str | None:
     if not m:
         return None
     return str(httpx.URL(base).join(m.group(1)))
+
+
+def sans_texte(contenu: str) -> str:
+    import csv
+    import io
+    lignes = list(csv.DictReader(io.StringIO(contenu)))
+    if not lignes:
+        return contenu
+    champs = [k for k in lignes[0] if k not in SANS]
+    out = io.StringIO()
+    w = csv.DictWriter(out, fieldnames=champs, extrasaction="ignore", lineterminator="\n")
+    w.writeheader()
+    w.writerows(lignes)
+    return out.getvalue()
 
 
 def tirade(c: httpx.Client) -> None:
@@ -78,8 +93,9 @@ def tirade(c: httpx.Client) -> None:
         if d.status_code != 200 or not d.content.lstrip()[:200].lower().count(b","):
             print(f"TiRADE : CSV {v} illisible ({d.status_code}) : {url}")
             continue
-        (REG / f"tirade-{v}.csv").write_bytes(d.content)
-        print(f"TiRADE : {v} enregistré ({len(d.content)} octets, SHA-256 {hashlib.sha256(d.content).hexdigest()}) depuis {url}")
+        (REG / f"tirade-{v}.csv").write_text(sans_texte(d.content.decode("utf-8-sig")), encoding="utf-8")
+        print(f"TiRADE : {v} enregistré (original {len(d.content)} octets, SHA-256 {hashlib.sha256(d.content).hexdigest()}, "
+              f"colonnes {SANS} retirées) depuis {url}")
         return
     print("::warning::TiRADE : aucune version téléchargeable.")
 
@@ -89,9 +105,9 @@ def federal_register(c: httpx.Client) -> None:
         print("::warning::Federal Register : refusé par robots.txt ; rien collecté.")
         return
     requetes = {
-        "presidentiel": {"conditions[type][]": "PRESDOCU", "conditions[term]": "tariff OR duties OR \"Harmonized Tariff Schedule\""},
+        "presidentiel": {"conditions[type][]": "PRESDOCU", "conditions[term]": "tariff | duties"},
         "ustr": {"conditions[agencies][]": "trade-representative-office-of-united-states",
-                 "conditions[term]": "tariff OR duties OR \"Section 301\""},
+                 "conditions[term]": "tariff | duties"},
     }
     vus, out = set(), []
     for nom, cond in requetes.items():
@@ -100,7 +116,9 @@ def federal_register(c: httpx.Client) -> None:
         url, n = FR, 0
         while url:
             r = c.get(url, params=params if url == FR else None)
-            r.raise_for_status()
+            if r.status_code != 200:
+                print(f"::warning::Federal Register ({nom}) : HTTP {r.status_code} : {r.text[:300]}")
+                break
             j = r.json()
             for d in j.get("results") or []:
                 if d.get("document_number") in vus:

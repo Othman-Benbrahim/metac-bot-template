@@ -16,9 +16,12 @@ elle-même ; la tenue des annonces est une propriété de l'émetteur. C'est cet
 TiRADE code lui-même les actes appliqués à partir des décrets : son statut « Implemented » n'est donc pas une source
 indépendante. Le fait est jugé sur le Federal Register ; TiRADE sert au rapprochement.
 
-## Unité
-Une mesure = une ligne TiRADE de rôle `first_statement` (menace ou annonce d'un taux, pour une cible). Les reprises de
-la même mesure sur d'autres canaux ne comptent pas. Les annonces de rôle `modification` comptent comme mesures à part.
+## Unité (précisée le 2026-11-24 à 12 h 30, après lecture des colonnes de TiRADE v1.11, avant tout comptage)
+Une mesure = une ligne TiRADE de rôle `first_statement` ou `modification` dont le type est `Threatened`, `Announced`
+ou `Threatened / Announced`. Les lignes `Implemented` en première déclaration (77 sur 130) sont des actes, pas des
+annonces : elles accomplissent ce qu'elles disent (le performatif) et sortent du calcul. Les reprises (`repeat`,
+`duplicate`, `status_description`) ne comptent pas. Les menaces conditionnelles (`conditional = 1`, « si tel pays… »)
+sont rapportées à part : leur condition peut ne jamais se réaliser.
 
 ## Classement (fixé avant de voir les chiffres)
 1. **Appliquée à la date annoncée** (à 3 jours près) ;
@@ -35,9 +38,19 @@ Une menace sans date annoncée est jugée à 90 jours.
 - Les mêmes chiffres par canal (discours, Truth Social, déclaration écrite).
 - Aucune pondération, aucun score unique.
 
-## À préciser avant tout calcul
-Les règles de rapprochement entre une ligne TiRADE et un document du Federal Register (cible, taux, fenêtre de dates)
-seront écrites ici après lecture des colonnes, et avant tout comptage.
+## Règles de rapprochement (écrites le 2026-11-24 à 12 h 30, avant tout comptage)
+- **Même cible :** les pays se recoupent (séparés par « ; », sans casse ; « All countries », « All foreign » et
+  équivalents recoupent tout) ET les secteurs se recoupent (« All goods » recoupe tout).
+- **Acte :** la première ligne postérieure ou du même jour, de type commençant par `Implemented`, de même cible, dans
+  les 365 jours. Date de l'acte = sa date.
+- **Vérification au Federal Register :** un document présidentiel signé à 3 jours près de la date de l'acte. Sans ce
+  document, l'acte est noté « selon TiRADE seulement » et rapporté à part.
+- **Recul :** une ligne `climbdown` de même cible entre l'annonce et l'acte (ou sans acte) : suspendue ou retirée. Un
+  acte venu après le recul compte comme appliqué en retard, avec la mention du recul.
+- **Modifiée :** taux appliqué inférieur au plus petit taux annoncé.
+- **Date annoncée :** première date lisible dans `planned_for` (« Month D, YYYY », « D Month YYYY ») ; « immediate »
+  ou « today » = date de l'annonce. Sans date lisible : délai rapporté, ponctualité non jugée.
+- **En attente :** aucun acte, et date annoncée future, ou moins de 90 jours écoulés sans date annoncée.
 
 ## Ensuite (vérification en temps réel)
 Un journal des nouvelles annonces, chaque semaine à la parution de TiRADE ; chacune est jugée à sa date annoncée ou à
