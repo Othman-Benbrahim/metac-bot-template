@@ -85,7 +85,7 @@ PAR_TYPE = {
 # séries dont la nature dépend de la série elle-même
 PAR_SERIE = {
     "fred:DCOILBRENTEU": ("potentiel", "prix"), "fred:DCOILWTICO": ("potentiel", "prix"), "fred:DHHNGSP": ("potentiel", "prix"),
-    "fred:CBBTCUSD": ("potentiel", "prix"), "fred:DFF": ("potentiel", "taux"), "fred:DGS10": ("potentiel", "taux"),
+    "fred:CBBTCUSD": ("potentiel", "prix"), "fred:DFF": ("potentiel", "taux"), "fred:DFEDTARU": ("potentiel", "taux"), "fred:DGS10": ("potentiel", "taux"),
     "fred:ECBDFR": ("potentiel", "taux"), "fred:DTWEXBGS": ("potentiel", "valeur du dollar"),
     "fred:T10YIE": ("gradient", "écart entre taux nominal et taux indexé (inflation anticipée)"),
     "fred:VIXCLS": ("potentiel", "prix du risque (volatilité implicite)"),
