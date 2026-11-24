@@ -50,6 +50,10 @@ jobs:
         run: uv run python cotes_ombre.py --suivi || true
       - name: Sondes de l'écosystème (0.10.509 ; étalon des 6 derniers mois, règle d'arrêt par e-valeurs)
         run: uv run python sondes_etat.py || true
+      - name: Lacunes et couverture en données de la carte (2026-11-24 ; carte complétée au fil de l'eau)
+        run: |
+          uv run python mise_au_point/lacunes_carte.py || true
+          uv run python mise_au_point/couverture_donnees.py || true
       - name: Juge informé, règle d'arrêt par e-valeur (0.10.510, preenregistrements/dossier-interne.md)
         run: uv run python juge.py || true
       - name: Pépinière de l'arbre (0.10.8)
