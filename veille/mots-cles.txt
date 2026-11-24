@@ -122,6 +122,71 @@ cheap talk
 competency question*
 SKOS
 
+# Pistes de recherche du 21 au 24 novembre 2026 (validées par l'auteur le 2026-11-24, 10 h 54)
+# Grammaire de bascule (seuil, tension, ralentissement critique)
+critical slowing down
+critical transition*
+regime shift*
+# Relais : défection des forces de sécurité
+military defection
+security force defection
+coup-proofing
+# Propagation et arrêt des cascades
+Mass Mobilization
+protest wave*
+protest cascade*
+repression-dissent
+dissent and repression
+# Émetteur et signal : l'engagement
+audience cost*
+credible commitment*
+coercive diplomacy
+signaling resolve
+# Taux d'exécution des annonces
+pledge fulfillment
+promise fulfillment
+campaign pledge*
+implementation gap
+treaty compliance
+commitment compliance
+# Niveau de mesure : biais des données d'événements
+reporting bias
+event data quality
+media bias in event data
+# Temps du texte
+temporal expression*
+event dating
+# Corrosion et guerre des mots
+influence operation*
+information warfare
+foreign interference
+coordinated inauthentic
+disinformation campaign*
+sharp power
+whataboutism
+# Cycles et climat, facteurs structurels
+conflict seasonality
+rainfall shock*
+climate and conflict
+drought and conflict
+# Déclenchement et fin des conflits
+conflict onset
+civil war onset
+conflict recurrence
+conflict termination
+# Régions et détroits de la carte
+maritime security
+freedom of navigation
+Arctic security
+Antarctic Treaty
+small island developing
+Sahel
+# Prix, contournement des sanctions
+shadow fleet
+sanctions evasion
+price cap
+food riot*
+
 [faible]
 # Passés des forts aux faibles le 2026-11-11 (premier passage : trop de jeux de données et de séries temporelles)
 forecasting benchmark*
@@ -164,6 +229,28 @@ seasonal calendar
 ontology
 thesaur*
 
+# 2026-11-24 (pistes de recherche, validées par l'auteur)
+tipping point*
+hysteresis
+resilience
+defection*
+repression
+concession*
+contagion
+ultimatum*
+measurement validity
+propaganda
+narrative*
+monsoon
+El Niño
+drought
+ceasefire*
+Indo-Pacific
+Central Asia
+insularity
+food price*
+commodity price shock*
+
 [malus]
 time series
 time-series
@@ -193,3 +280,5 @@ superforecast*
 geopolitic*
 election*
 prediction market*
+# 2026-11-24 : un article sur la pluie ou la sécheresse et les conflits ne doit pas perdre de points (« weather »)
+conflict
