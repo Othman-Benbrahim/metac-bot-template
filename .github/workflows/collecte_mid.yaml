@@ -1,0 +1,40 @@
+name: "Collecte MID 5.0 (affrontements armés entre États)"
+
+# 0.10.503 (décision de l'auteur du 2026-11-24, 16 h 46) : affrontements armés entre États, 1816-2014 (données codées).
+# Lancée à la main ; une version par an.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-mid
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u collecte_mid.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/mid-a.csv registre/mid-b.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : MID 5.0 du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
