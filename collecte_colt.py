@@ -42,11 +42,25 @@ def principal() -> int:
         for f in fichiers:
             print("fichier :", f)
             nom = f["nom"] or str(f["id"])
-            if f["restreint"] or not nom.lower().endswith((".csv", ".tab", ".txt")) and "tab" not in (f["type"] or ""):
+            if f["restreint"] or not nom.lower().endswith((".csv", ".tab", ".txt", ".xlsx")):
                 continue
             d = c.get(f"{BASE}/api/access/datafile/{f['id']}", params={"format": "original"})
             if d.status_code != 200:
                 print(f"  {nom} : HTTP {d.status_code}")
+                continue
+            if nom.lower().endswith(".xlsx"):                    # tableur → une feuille CSV par onglet
+                import csv
+                import io
+                import openpyxl
+                wb = openpyxl.load_workbook(io.BytesIO(d.content), read_only=True, data_only=True)
+                for ws in wb.worksheets:
+                    cible = SORTIE / f"{Path(nom).stem}-{ws.title}.csv".replace(" ", "_")
+                    with cible.open("w", encoding="utf-8", newline="\n") as fh:
+                        w, n = csv.writer(fh), 0
+                        for L in ws.iter_rows(values_only=True):
+                            w.writerow(["" if v is None else v for v in L])
+                            n += 1
+                    print(f"  {cible.name} : {n} lignes")
                 continue
             (SORTIE / nom.replace("/", "_")).write_bytes(d.content)
             premiere = d.content[:400].decode("utf-8", errors="replace").splitlines()[0] if d.content else ""
