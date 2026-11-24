@@ -102,3 +102,16 @@ def probabilite(titre: str, jeu: dt.date, V) -> float | None:
     k = sum(1 for d in rencontres(V, P, fin) if d >= debut)
     lam = (k + 0.5) / (365.25 * FENETRE_ANS)
     return 1 - math.exp(-lam * (e - jeu).days)
+
+
+def estimer(titre: str, jeu: dt.date | None = None) -> dict | None:
+    import json
+    try:
+        if not json.loads((ICI / "ecosystemes" / "rencontres-branchee.json").read_text(encoding="utf-8"))["branchee"]:
+            return None
+        p = probabilite(titre, jeu or dt.date.today(), voyages())
+    except (OSError, ValueError, KeyError):
+        return None
+    if p is None:
+        return None
+    return {"classe": "rencontre", "guerre": "-".join(pays_du_titre(titre)), "p": min(max(p, .01), .99)}

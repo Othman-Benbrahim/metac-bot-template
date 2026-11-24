@@ -1,0 +1,72 @@
+{
+ "resume": {
+  "n": 4,
+  "oui": 0,
+  "perte_reference": 0.3119,
+  "perte_regle": 0.1513,
+  "perte_melange": 0.2422,
+  "n_2026": 4,
+  "perte_reference_2026": 0.3119,
+  "perte_regle_2026": 0.1513,
+  "brancher": true
+ },
+ "lignes": [
+  {
+   "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "groupe": "China India Russia",
+   "p": 0.2972,
+   "ref": 0.2679,
+   "mel": 0.275,
+   "pays": [
+    "RUS",
+    "IND",
+    "CHN"
+   ],
+   "rencontres_5_ans": 3
+  },
+  {
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
+   "jeu": "2026-03-29",
+   "y": 0,
+   "groupe": "Putin Vladimir Volodymyr Zelenskyy",
+   "p": 0.0267,
+   "ref": 0.268,
+   "mel": 0.1608,
+   "pays": [
+    "UKR",
+    "RUS"
+   ],
+   "rencontres_5_ans": 1
+  },
+  {
+   "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
+   "jeu": "2026-05-24",
+   "y": 0,
+   "groupe": "Donald Putin Trump Vladimir",
+   "p": 0.163,
+   "ref": 0.268,
+   "mel": 0.2382,
+   "pays": [
+    "RUS",
+    "USA"
+   ],
+   "rencontres_5_ans": 2
+  },
+  {
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
+   "jeu": "2026-07-05",
+   "y": 0,
+   "groupe": "Putin Vladimir Volodymyr Zelenskyy",
+   "p": 0.0465,
+   "ref": 0.268,
+   "mel": 0.1811,
+   "pays": [
+    "UKR",
+    "RUS"
+   ],
+   "rencontres_5_ans": 1
+  }
+ ]
+}

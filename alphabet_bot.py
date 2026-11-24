@@ -536,7 +536,11 @@ class AlphabetBot(FallTemplateBot2026):
             import accords_mid as amd
             # 0.10.503 : tenue des trêves (couche MID depuis 1946 pour les guerres entre États, ETH/PRIO sinon), passée
             # une fois : 0,719 contre 0,857 sur 7 questions, 0,985 contre 1,060 sur 2026.
-            e = aet.estimer(titre) or amd.estimer(titre) or agr.estimer(titre) or arr.estimer_autres(titre)
+            import rencontres_regle as rcr
+            # 0.10.506 : rencontres au sommet (COLT, voyages des dirigeants 1990-2025) ; passé une fois : 0,151 contre
+            # 0,312 sur 4 questions (toutes de 2026).
+            e = (aet.estimer(titre) or amd.estimer(titre) or agr.estimer(titre) or rcr.estimer(titre)
+                 or arr.estimer_autres(titre))
             if e is None:
                 return None
             p = arr.melanger(p_pipeline, e["p"])
@@ -548,7 +552,8 @@ class AlphabetBot(FallTemplateBot2026):
             with open(ap.registre_ecrivable() / "journal-accords.jsonl", "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
             quoi = {"cessez_le_feu": "ceasefire", "tenue": "truce breakdown or holding",
-                    "autre": "agreement (base rate by number of consents required)"}.get(e["classe"], "peace agreement")
+                    "autre": "agreement (base rate by number of consents required)",
+                    "rencontre": "in-person summit meeting (COLT leader-travel frequency for this pair, 5 years)"}.get(e["classe"], "peace agreement")
             e["texte"] = (f"\n\nWar-state rule (coded): {quoi} during an ongoing war ({e['guerre']}), measured rates "
                           f"by war type and age (COW interstate wars since 1946, ETH/PRIO civil-war ceasefires, UCDP "
                           f"conflict termination, MID interstate disputes since 1946): {e['p_regle']:.1%}. Blended at weight "
