@@ -18,8 +18,13 @@ from pathlib import Path
 
 ICI = Path(__file__).resolve().parent
 POIDS, ECART_MAX = 0.25, 0.15
+# Saillance (décision de l'auteur, 2026-11-24, 15 h 28-15 h 30 : rendre explicite le biais du questionneur) : un dirigeant
+# dont le départ fait l'objet d'une question part environ trois fois plus souvent qu'un dirigeant ordinaire. Coefficient
+# appris sur 19 questions résolues (12 dirigeants) : perte 0,504 en laissant chaque question de côté, 0,508 en laissant
+# chaque dirigeant de côté, contre 0,544 sans saillance et 0,629 pour le taux de base (registre/calibrage-maintien.json).
+SAILLANCE = 3.0
 DEPART = re.compile(r"\b(cease[sd]? to be|out as|leave[s]? office|resign|step[s]? down|ousted|no longer)\b", re.I)
-RESTE = re.compile(r"\b(remain|still be|stay|be the (president|prime minister|supreme leader|leader|pope))\b", re.I)
+RESTE = re.compile(r"\b(remain|still be|stay|be (the )?(president|prime minister|supreme leader|leader|pope))\b", re.I)
 PRECIS = re.compile(r"\b(25th amendment|impeach\w*|arrest\w*|indict\w*|convicted|assassinat\w*|coup|removed via|elections?)\b", re.I)
 NATIONALES = re.compile(r"(presidential|general|parliamentary|legislative|federal) election", re.I)
 
@@ -93,7 +98,8 @@ def estimer(titre: str, jour: str, echeance: str, p_bot: float, verifier_electio
     d = reconnaitre(titre)
     if d is None or (verifier_elections and d["poste"] != "pape" and election_dans(d["iso3"], jour, echeance)):
         return None
-    pd_ = p_depart(d, jour, echeance)
+    pd_ = 1 - (1 - p_depart(d, jour, echeance)) ** SAILLANCE      # risque cumulé multiplié par la saillance
     p_regle = pd_ if d["sens"] == "depart" else 1 - pd_
     return {"dirigeant": d["motifs"][0], "poste": d["poste"], "sens": d["sens"], "p_depart": pd_, "p_regle": p_regle,
-            "p_bot": p_bot, "p": melanger(p_bot, p_regle), "poids": POIDS, "ecart_max": ECART_MAX, "source": d["source"]}
+            "p_bot": p_bot, "p": melanger(p_bot, p_regle), "poids": POIDS, "ecart_max": ECART_MAX, "saillance": SAILLANCE,
+            "source": d["source"]}

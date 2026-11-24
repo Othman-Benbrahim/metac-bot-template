@@ -1,9 +1,13 @@
 {
  "resume": {
-  "n": 14,
-  "oui": 0.429,
-  "perte_regle": 1.0061,
-  "perte_base": 0.741
+  "n": 19,
+  "oui": 0.316,
+  "perte_regle": 0.5444,
+  "perte_base": 0.6288,
+  "saillance": {
+   "k": 3,
+   "perte_loo_question": 0.5044
+  }
  },
  "lignes": [
   {
@@ -70,6 +74,13 @@
    "sens": "reste"
   },
   {
+   "titre": "Friedrich Merz out as Chancellor of Germany in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.04066046458591599,
+   "sens": "depart"
+  },
+  {
    "titre": "Will Ali Khamenei cease to be supreme leader of Iran in 2025?",
    "source": "metaculus",
    "y": 0,
@@ -84,13 +95,6 @@
    "sens": "depart"
   },
   {
-   "titre": "Will Viktor Orban remain Hungary's prime minister after the 2026 elections?",
-   "source": "manifold",
-   "y": 0,
-   "p_regle": 0.9905365963004722,
-   "sens": "reste"
-  },
-  {
    "titre": "Will Keir Starmer cease to be Prime Minister of the UK during 2026?",
    "source": "metaculus",
    "y": 1,
@@ -102,6 +106,41 @@
    "source": "polymarket",
    "y": 1,
    "p_regle": 0.017942625662191625,
+   "sens": "depart"
+  },
+  {
+   "titre": "Miguel Díaz-Canel out as President of Cuba by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.04030997997012076,
+   "sens": "depart"
+  },
+  {
+   "titre": "Miguel Díaz-Canel out as leader of Cuba by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.02621225972266672,
+   "sens": "depart"
+  },
+  {
+   "titre": "Daniel Noboa out as President of Ecuador by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.019462418288647365,
+   "sens": "depart"
+  },
+  {
+   "titre": "Gustavo Petro out as leader of Colombia by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "p_regle": 0.013051644612410818,
+   "sens": "depart"
+  },
+  {
+   "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "p_regle": 0.006662564351051614,
    "sens": "depart"
   }
  ]

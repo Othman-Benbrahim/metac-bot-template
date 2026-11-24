@@ -479,6 +479,10 @@ class AlphabetBot(FallTemplateBot2026):
         # journal-evenements.jsonl.
         if sp_ is None:
             sp_ = self._evenement_compte(question, q, r.p_poste)
+        # 0.10.495 (décision de l'auteur du 2026-11-24, 15 h 30) : brique du maintien (mortalité SSA, risques Archigos,
+        # saillance 3), même mélange et même plafond ; scellée dans journal-maintien.jsonl.
+        if sp_ is None:
+            sp_ = self._maintien(question, q, r.p_poste)
         # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
         # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
         try:
@@ -490,6 +494,28 @@ class AlphabetBot(FallTemplateBot2026):
         if sp_ is not None:
             return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
+
+    def _maintien(self, question, q, p_pipeline: float) -> dict | None:
+        try:
+            import maintien_regle as mr
+            jour = datetime.now(timezone.utc).date().isoformat()
+            e = mr.estimer(question.question_text or "", jour, q.resolution.isoformat(), p_pipeline)
+            if e is None:
+                return None
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p"], "maintien": e}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-maintien.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            e["texte"] = (f"\n\nTenure rule (coded): age-based mortality (SSA 2023) and exit hazards by time in office "
+                          f"(Archigos 4.1, 1990-2015), multiplied by {e['saillance']:g} because leaders whose exit is "
+                          f"being asked about leave more often; chance of exit before the deadline {e['p_depart']:.1%}. "
+                          f"Blended at weight {e['poids']} with the pipeline forecast {p_pipeline:.1%} (shift capped at "
+                          f"{e['ecart_max']:.0%}): {e['p']:.1%}.")
+            return e
+        except Exception as ex:   # la règle qui échoue ne bloque rien
+            logger.warning("maintien : non appliqué (%s)", type(ex).__name__)
+            return None
 
     def _evenement_compte(self, question, q, p_pipeline: float) -> dict | None:
         try:
