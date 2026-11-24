@@ -67,3 +67,13 @@ Un journal des nouvelles annonces, chaque semaine à la parution de TiRADE ; cha
   ne les rapprochent correctement.
 - **Suite proposée :** codage à la main des mesures non conditionnelles, chacune rapprochée d'un document du Federal
   Register (lien et date), une fois la collecte du Federal Register réparée.
+- **2026-11-24, 13 h 10, codage à la main (v3), après collecte du Federal Register (185 documents présidentiels, 59 avis
+  de l'USTR).** Chaque mesure non conditionnelle rapprochée d'un document du Federal Register (registre/annonces/
+  codage-manuel.csv : acte, date, délai, note). Décisions prises pendant le codage, donc après avoir vu les données :
+  les lignes que TiRADE étiquette `story` ou `musing` (récit d'une menace passée, rêverie) sont exclues, ce ne sont pas
+  des annonces ; les lignes identiques d'un même document (lettres du 7 juillet 2025, avis Section 301 du 2 juin 2026)
+  comptent pour une mesure. 51 mesures jugées, 2 en attente : appliquées 78 % (IC95 65-88 %), dont telles qu'annoncées
+  53 % (40-66 %) ; modifiées 25 % ; suspendues ou retirées 14 % ; sans suite 8 %. Délai médian 22 jours.
+  Réserve : 13 mesures sur 51 sont les lettres de juillet 2025, appliquées par un seul décret (EO 14326) ; les mesures
+  ne sont pas indépendantes et l'intervalle est trop étroit. Trois codages s'appuient sur ma connaissance des faits de
+  2025 et sont signalés « à vérifier » dans le fichier.

@@ -1,0 +1,54 @@
+row_id,classe,acte,date_acte,delai_jours,note
+TRK-0001,appliquee_sans_date_annoncee,EO 14195,2025-02-01,11,
+TRK-0004,suspendue_ou_retiree,,,,accord le jour même ; aucun acte
+TRK-0006,appliquee_modifiee,Proc 10908,2025-03-26,58,acte général à 25 % sur les automobiles contre 100-200 % annoncés pour le Mexique
+TRK-0012,appliquee_en_retard,EO 14193 ; EO 14194 ; suspendus EO 14197 ; EO 14198 ; repris EO 14226 ; EO 14227,2025-03-02,31,signé le 1er février puis suspendu le 3 ; en vigueur le 4 mars
+TRK-0028,appliquee_sans_date_annoncee,Proc 10895 ; Proc 10896,2025-02-10,0,annonce et acte le même jour
+TRK-0034,appliquee_sans_date_annoncee,Proc 11002 (semi-conducteurs) ; Proc 11020 (médicaments),2026-01-14,330,médicaments au-delà de 365 jours
+TRK-0035,appliquee_sans_date_annoncee,Proc 10908,2025-03-26,36,
+TRK-0041,appliquee_a_la_date,EO 14228,2025-03-03,4,
+TRK-0043,appliquee_a_la_date,EO 14226 ; EO 14227,2025-03-02,0,signé la veille de l'annonce
+TRK-0057,suspendue_ou_retiree,,,,retiré le jour même
+TRK-0068,sans_suite,EO 14245 (cadre),2025-03-24,,décret-cadre publié ; aucun droit imposé à un pays désigné à ma connaissance (à vérifier)
+TRK-0611,appliquee_a_la_date,EO 14259,2025-04-08,4,
+TRK-0617,suspendue_ou_retiree,,,,proposition USTR ; suspension d'un an annoncée le 1er novembre 2025 (TRK-0718)
+TRK-0183,sans_suite,,,,films
+TRK-0198,appliquee_sans_date_annoncee,EO 14309,2025-06-16,39,
+TRK-0620,appliquee_sans_date_annoncee,EO 14309,2025-06-16,39,
+TRK-0211,appliquee_modifiee,EO 14326,2025-07-31,69,suspendu le 25 mai ; 15 % après l'accord UE au lieu de 50 %
+TRK-0221,appliquee_sans_date_annoncee,Proc 10947,2025-06-03,4,
+TRK-0223,appliquee_a_la_date,Proc 10947,2025-06-03,4,
+TRK-0243,appliquee_modifiee,EO 14345,2025-09-04,67,15 % après l'accord avec le Japon
+TRK-0247,appliquee_sans_date_annoncee,EO 14326,2025-07-31,29,40 % sur le transbordement
+TRK-0258,appliquee_modifiee,EO 14326,2025-07-31,24,une seule mesure pour les six lignes identiques (TRK-0258 à TRK-0263) ; taux réduits pour le Japon et la Corée
+TRK-0267,appliquee_modifiee,Proc 11020,2026-04-02,268,taux appliqué inférieur selon TiRADE
+TRK-0269,appliquee_modifiee,Proc 10962,2025-07-30,22,cuivre semi-fini seulement
+TRK-0624,appliquee_modifiee,EO 14326,2025-07-31,22,19 % au lieu de 20 %
+TRK-0625,appliquee_a_la_date,EO 14326,2025-07-31,22,
+TRK-0626,appliquee_a_la_date,EO 14326,2025-07-31,22,
+TRK-0627,appliquee_a_la_date,EO 14326,2025-07-31,22,
+TRK-0628,appliquee_a_la_date,EO 14326,2025-07-31,22,
+TRK-0629,appliquee_a_la_date,EO 14326,2025-07-31,22,
+TRK-0630,appliquee_modifiee,EO 14326,2025-07-31,22,20 % au lieu de 30 %
+TRK-0631,appliquee_modifiee,EO 14323,2025-07-30,21,50 % avec de larges exemptions
+TRK-0632,appliquee_a_la_date,EO 14325,2025-07-31,21,
+TRK-0633,suspendue_ou_retiree,,,,report de 90 jours annoncé le 31 juillet ; jamais appliqué
+TRK-0634,appliquee_modifiee,EO 14326,2025-07-31,19,15 % après l'accord UE
+TRK-0275,appliquee_sans_date_annoncee,EO 14326 ; EO 14329,2025-07-31,16,taux final supérieur (25 % puis 25 % de pénalité)
+TRK-0282,appliquee_sans_date_annoncee,EO 14326,2025-07-31,9,
+TRK-0300,appliquee_a_la_date,EO 14326,2025-07-31,1,
+TRK-0325,appliquee_modifiee,Proc 11002,2026-01-14,161,taux appliqué inférieur selon TiRADE
+TRK-0354,appliquee_sans_date_annoncee,Proc 10984,2025-10-17,22,
+TRK-0357,appliquee_modifiee,Proc 10976,2025-09-29,4,25 % puis 30 % au 1er janvier 2026
+TRK-0358,appliquee_modifiee,Proc 10976,2025-09-29,4,25 % puis 50 % au 1er janvier 2026
+TRK-0359,appliquee_en_retard,Proc 11020,2026-04-02,189,annoncé pour le 1er octobre 2025
+TRK-0373,suspendue_ou_retiree,,,,accord du 30 octobre (TRK-0715)
+TRK-0712,suspendue_ou_retiree,,,,suspension d'un an (TRK-0718)
+TRK-0402,sans_suite,,,,
+TRK-0496,appliquee_a_la_date,Proc 11012,2026-02-20,0,annonce et acte le même jour
+TRK-0533,sans_suite,,,,aucun document trouvé au Federal Register (postérieur à mes connaissances)
+TRK-0726,appliquee_sans_date_annoncee,Memo 2026-07-15 (Section 301 Brésil),2026-07-15,44,la date du 6 juillet était celle des auditions
+TRK-0727,appliquee_sans_date_annoncee,Memo 2026-07-23 (Section 301),2026-07-23,51,une seule mesure pour TRK-0727 et TRK-0728
+TRK-0566,en_attente,,,,date annoncée : 2028
+TRK-0597,en_attente,,,,date annoncée : 1er janvier 2027
+TRK-0754,suspendue_ou_retiree,EO 14436,2026-10-16,,décret signé ; hausses suspendues par dérogation à la signature

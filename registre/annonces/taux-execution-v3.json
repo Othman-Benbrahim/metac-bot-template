@@ -1,0 +1,142 @@
+{
+ "source": "tirade-v1.11.csv + codage-manuel.csv",
+ "regle": "codage manuel (v3)",
+ "groupes": {
+  "toutes": {
+   "n": 51,
+   "appliquee": 40,
+   "part_appliquee": 0.784,
+   "ic95": [
+    0.654,
+    0.875
+   ],
+   "telle_quelle": 27,
+   "part_telle_quelle": 0.529,
+   "ic95_telle_quelle": [
+    0.395,
+    0.659
+   ],
+   "delai_median": 22,
+   "classes": {
+    "appliquee_sans_date_annoncee": 13,
+    "appliquee_modifiee": 13,
+    "appliquee_a_la_date": 12,
+    "suspendue_ou_retiree": 7,
+    "sans_suite": 4,
+    "appliquee_en_retard": 2
+   }
+  },
+  "menaces": {
+   "n": 12,
+   "appliquee": 9,
+   "part_appliquee": 0.75,
+   "ic95": [
+    0.468,
+    0.911
+   ],
+   "telle_quelle": 5,
+   "part_telle_quelle": 0.417,
+   "ic95_telle_quelle": [
+    0.193,
+    0.68
+   ],
+   "delai_median": 58,
+   "classes": {
+    "appliquee_sans_date_annoncee": 5,
+    "appliquee_modifiee": 4,
+    "suspendue_ou_retiree": 3
+   }
+  },
+  "annonces": {
+   "n": 39,
+   "appliquee": 31,
+   "part_appliquee": 0.795,
+   "ic95": [
+    0.645,
+    0.892
+   ],
+   "telle_quelle": 22,
+   "part_telle_quelle": 0.564,
+   "ic95_telle_quelle": [
+    0.41,
+    0.707
+   ],
+   "delai_median": 22,
+   "classes": {
+    "appliquee_a_la_date": 12,
+    "appliquee_modifiee": 9,
+    "appliquee_sans_date_annoncee": 8,
+    "suspendue_ou_retiree": 4,
+    "sans_suite": 4,
+    "appliquee_en_retard": 2
+   }
+  },
+  "canal:Social": {
+   "n": 28,
+   "appliquee": 20,
+   "part_appliquee": 0.714,
+   "ic95": [
+    0.529,
+    0.847
+   ],
+   "telle_quelle": 13,
+   "part_telle_quelle": 0.464,
+   "ic95_telle_quelle": [
+    0.295,
+    0.642
+   ],
+   "delai_median": 22,
+   "classes": {
+    "appliquee_a_la_date": 9,
+    "appliquee_modifiee": 7,
+    "suspendue_ou_retiree": 4,
+    "sans_suite": 4,
+    "appliquee_sans_date_annoncee": 3,
+    "appliquee_en_retard": 1
+   }
+  },
+  "canal:Speech": {
+   "n": 14,
+   "appliquee": 14,
+   "part_appliquee": 1.0,
+   "ic95": [
+    0.785,
+    1.0
+   ],
+   "telle_quelle": 9,
+   "part_telle_quelle": 0.643,
+   "ic95_telle_quelle": [
+    0.388,
+    0.837
+   ],
+   "delai_median": 31,
+   "classes": {
+    "appliquee_sans_date_annoncee": 6,
+    "appliquee_modifiee": 5,
+    "appliquee_a_la_date": 2,
+    "appliquee_en_retard": 1
+   }
+  },
+  "canal:écrit officiel": {
+   "n": 7,
+   "appliquee": 4,
+   "part_appliquee": 0.571,
+   "ic95": [
+    0.25,
+    0.842
+   ],
+   "telle_quelle": 3,
+   "part_telle_quelle": 0.429,
+   "ic95_telle_quelle": [
+    0.158,
+    0.75
+   ],
+   "delai_median": 44,
+   "classes": {
+    "suspendue_ou_retiree": 3,
+    "appliquee_sans_date_annoncee": 3,
+    "appliquee_modifiee": 1
+   }
+  }
+ }
+}
