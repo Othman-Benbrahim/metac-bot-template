@@ -187,11 +187,12 @@ def _camp_pays(camp: str, isos: set[str], table: dict[str, str]) -> bool:
     """« Government of Israel » appartient à ISR ; « Government of United States of America » à USA. Les camps non
     étatiques (Hamas, IS…) ne sont rattachés à aucun pays."""
     import re as _re
-    m = _re.match(r"Government of (.+)$", camp.strip())
-    if not m:
-        return False
-    nom = _re.sub(r"\s*\(.*?\)\s*", "", m.group(1)).strip().lower()
-    return table.get(nom) in isos
+    # un camp peut être une coalition : « Government of Israel, Government of United States of America »
+    for part in _re.split(r",\s*(?=Government of )", camp.strip()):
+        m = _re.match(r"Government of (.+)$", part.strip())
+        if m and table.get(_re.sub(r"\s*\(.*?\)\s*", "", m.group(1)).strip().lower()) in isos:
+            return True
+    return False
 
 
 def ucdp_dyade(reg: Path, a: str, b: str, colonne: str = "evenements") -> list[tuple[str, float]]:
