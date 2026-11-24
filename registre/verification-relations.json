@@ -1,0 +1,3470 @@
+{
+ "resume": {
+  "non_tranche": 63,
+  "non_testable": 152,
+  "conteste": 7,
+  "verifie": 4
+ },
+ "relations": [
+  {
+   "fiche": "afrique",
+   "de": "climat_continent",
+   "vers": "conflits_continent",
+   "effet": "+",
+   "delai": "saisons à années",
+   "serie_de": "pub:nino34_anomalie",
+   "serie_vers": "ucdp_mois:NGA",
+   "frequence": "M",
+   "decalages": [
+    3,
+    18
+   ],
+   "n": 453,
+   "r_moyen": -0.0016,
+   "seuil": 0.1175,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "alimentation-mondiale",
+   "de": "climat",
+   "vers": "cultures",
+   "effet": "-",
+   "delai": "jours à semaines",
+   "serie_de": "meteo:delhi",
+   "serie_vers": "pub:psd_ble_stocks",
+   "frequence": "S",
+   "decalages": [
+    0,
+    8
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "alimentation-mondiale",
+   "de": "engrais",
+   "vers": "cultures",
+   "effet": "+",
+   "delai": "saison",
+   "serie_de": "fred:DHHNGSP",
+   "serie_vers": "pub:psd_ble_stocks",
+   "frequence": "M",
+   "decalages": [
+    3,
+    9
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "alimentation-mondiale",
+   "de": "commerce",
+   "vers": "prix",
+   "effet": "±",
+   "delai": "jours à semaines",
+   "serie_de": "portwatch:bosphore:navires",
+   "serie_vers": "fred:PFOODINDEXM:var12",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "alimentation-mondiale",
+   "de": "prix",
+   "vers": "commerce",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "fred:PFOODINDEXM:var12",
+   "serie_vers": "portwatch:bosphore:navires",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "alimentation-mondiale",
+   "de": "prix",
+   "vers": "importateurs",
+   "effet": "-",
+   "delai": "semaines à mois",
+   "serie_de": "fred:PFOODINDEXM:var12",
+   "serie_vers": "violations:Sudan",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "alimentation-mondiale",
+   "de": "prix",
+   "vers": "cultures",
+   "effet": "+",
+   "delai": "saison à année",
+   "serie_de": "fred:PFOODINDEXM:var12",
+   "serie_vers": "pub:psd_ble_stocks",
+   "frequence": "M",
+   "decalages": [
+    3,
+    18
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "amerique-latine",
+   "de": "haiti",
+   "vers": "violences_criminelles",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "ucdp_mois:HTI",
+   "serie_vers": "ucdp_mois:MEX",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 452,
+   "r_moyen": -0.0015,
+   "seuil": 0.1176,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "calendriers-echeances",
+   "de": "publications",
+   "vers": "marches",
+   "effet": "±",
+   "delai": "heures",
+   "serie_de": "calendrier_nbs",
+   "serie_vers": "fred:DFF",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "calendriers-echeances",
+   "de": "publications",
+   "vers": "publications",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "calendrier_nbs",
+   "serie_vers": "calendrier_nbs",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 10,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "calendriers-echeances",
+   "de": "memoire",
+   "vers": "memoire",
+   "effet": "+",
+   "delai": "années",
+   "serie_de": "memoire:RU",
+   "serie_vers": "memoire:RU",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "calendriers-echeances",
+   "de": "saisons",
+   "vers": "elections",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "meteo:kyiv",
+   "serie_vers": "elections:US",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "climat-extremes",
+   "de": "saisons",
+   "vers": "secheresses",
+   "effet": "+",
+   "delai": "semaines à mois",
+   "serie_de": "meteo:berlin",
+   "serie_vers": "pub:secheresse_us_d2plus",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 116,
+   "r_moyen": 0.002,
+   "seuil": 0.2321,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "climat-extremes",
+   "de": "tendance",
+   "vers": "saisons",
+   "effet": "+",
+   "delai": "décennies",
+   "serie_de": "climat:delhi",
+   "serie_vers": "meteo:berlin",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "climat-extremes",
+   "de": "saisons",
+   "vers": "exposes",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "meteo:berlin",
+   "serie_vers": "ooni:IN",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 17,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "climat-extremes",
+   "de": "rayonnement",
+   "vers": "tendance",
+   "effet": "+",
+   "delai": "décennies",
+   "serie_de": "pub:banquise_arctique",
+   "serie_vers": "climat:delhi",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "climat-extremes",
+   "de": "rayonnement",
+   "vers": "rayonnement",
+   "effet": "+",
+   "delai": "années",
+   "serie_de": "pub:banquise_arctique",
+   "serie_vers": "pub:banquise_arctique",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "climat-extremes",
+   "de": "tendance",
+   "vers": "oscillations",
+   "effet": "±",
+   "delai": "décennies",
+   "serie_de": "climat:delhi",
+   "serie_vers": "pub:nino34_anomalie",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "marches",
+   "vers": "seuils_de_prix",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "fred:CBBTCUSD",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "cryptomonnaies",
+   "vers": "seuils_de_prix",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "fred:CBBTCUSD",
+   "serie_vers": "fred:CBBTCUSD",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "confiance",
+   "vers": "depots",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "fred:VIXCLS",
+   "serie_vers": "fred:DPSACBW027SBOG:var52",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 566,
+   "r_moyen": 0.0368,
+   "seuil": 0.1051,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "depots",
+   "vers": "confiance",
+   "effet": "+",
+   "delai": "heures",
+   "serie_de": "fred:DPSACBW027SBOG:var52",
+   "serie_vers": "fred:VIXCLS",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 566,
+   "r_moyen": -0.0409,
+   "seuil": 0.1051,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "bilans",
+   "vers": "confiance",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "fred:DGS10",
+   "serie_vers": "fred:VIXCLS",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 620,
+   "r_moyen": -0.0472,
+   "seuil": 0.1004,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "marches",
+   "vers": "bilans",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "fred:DGS10",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 619,
+   "r_moyen": -0.0166,
+   "seuil": 0.1005,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "regulateurs",
+   "vers": "depots",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "fred:DFF",
+   "serie_vers": "fred:DPSACBW027SBOG:var52",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 566,
+   "r_moyen": -0.1805,
+   "seuil": 0.1051,
+   "verdict": "conteste"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "depots",
+   "vers": "regulateurs",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "fred:DPSACBW027SBOG:var52",
+   "serie_vers": "fred:DFF",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 566,
+   "r_moyen": -0.1245,
+   "seuil": 0.1051,
+   "verdict": "conteste"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "cryptomonnaies",
+   "vers": "marches",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "fred:CBBTCUSD",
+   "serie_vers": "fred:DTWEXBGS",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "marches",
+   "vers": "cryptomonnaies",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "fred:CBBTCUSD",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 619,
+   "r_moyen": -0.0556,
+   "seuil": 0.1005,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "depots",
+   "vers": "marches",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "fred:DPSACBW027SBOG:var52",
+   "serie_vers": "fred:DTWEXBGS",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 566,
+   "r_moyen": 0.0173,
+   "seuil": 0.1051,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "crises-bancaires",
+   "de": "regulateurs",
+   "vers": "confiance",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "fred:DFF",
+   "serie_vers": "fred:VIXCLS",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 620,
+   "r_moyen": -0.0666,
+   "seuil": 0.1004,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "cycles-biogeochimiques",
+   "de": "combustion",
+   "vers": "carbone",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "fred:DCOILBRENTEU",
+   "serie_vers": "ouvert:co2_mauna_loa:var12",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "cycles-biogeochimiques",
+   "de": "carbone",
+   "vers": "climat",
+   "effet": "+",
+   "delai": "décennie",
+   "serie_de": "ouvert:co2_mauna_loa:var12",
+   "serie_vers": "climat:berlin",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "cycles-biogeochimiques",
+   "de": "climat",
+   "vers": "eau",
+   "effet": "+",
+   "delai": "années",
+   "serie_de": "climat:berlin",
+   "serie_vers": "meteo:delhi",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "cycles-biogeochimiques",
+   "de": "eau",
+   "vers": "climat",
+   "effet": "+",
+   "delai": "jours à saisons",
+   "serie_de": "meteo:delhi",
+   "serie_vers": "climat:berlin",
+   "frequence": "M",
+   "decalages": [
+    0,
+    6
+   ],
+   "n": 105,
+   "r_moyen": -0.0214,
+   "seuil": 0.244,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "dette-emergents",
+   "de": "monnaies",
+   "vers": "dette_publique",
+   "effet": "-",
+   "delai": "jours à mois",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "fred:DGS10",
+   "frequence": "S",
+   "decalages": [
+    0,
+    5
+   ],
+   "n": 620,
+   "r_moyen": 0.0139,
+   "seuil": 0.1004,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "dette-emergents",
+   "de": "monnaies",
+   "vers": "inflation_locale",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "fred:PFOODINDEXM:var12",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 128,
+   "r_moyen": -0.0565,
+   "seuil": 0.221,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "dette-emergents",
+   "de": "inflation_locale",
+   "vers": "politique_interieure",
+   "effet": "-",
+   "delai": "semaines à mois",
+   "serie_de": "fred:PFOODINDEXM:var12",
+   "serie_vers": "ooni:AR",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 3,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "dette-emergents",
+   "de": "politique_interieure",
+   "vers": "dette_publique",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "ooni:AR",
+   "serie_vers": "fred:DGS10",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "dette-emergents",
+   "de": "recoltes_catastrophes",
+   "vers": "matieres_premieres",
+   "effet": "-",
+   "delai": "saisons",
+   "serie_de": "feux:ZM",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "frequence": "M",
+   "decalages": [
+    3,
+    9
+   ],
+   "n": 2,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "dette-emergents",
+   "de": "recoltes_catastrophes",
+   "vers": "dette_publique",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "feux:ZM",
+   "serie_vers": "fred:DGS10",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 4,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "eau-moyen-orient",
+   "de": "etats_riverains",
+   "vers": "etats_riverains",
+   "effet": "-",
+   "delai": "mois à années",
+   "serie_de": "gestes:EGY:ETH",
+   "serie_vers": "gestes:EGY:ETH",
+   "frequence": "M",
+   "decalages": [
+    1,
+    24
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "economie-chinoise",
+   "de": "consommation",
+   "vers": "activite",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "feries_chine",
+   "serie_vers": "feux:CN",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "economie-chinoise",
+   "de": "exportations",
+   "vers": "activite",
+   "effet": "+",
+   "delai": "semaines à mois",
+   "serie_de": "portwatch:malacca:porte_conteneurs",
+   "serie_vers": "feux:CN",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "economie-chinoise",
+   "de": "exterieur",
+   "vers": "exportations",
+   "effet": "-",
+   "delai": "semaines à mois",
+   "serie_de": "gestes:USA:CHN",
+   "serie_vers": "portwatch:malacca:porte_conteneurs",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 4,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "economie-chinoise",
+   "de": "pouvoir",
+   "vers": "statistiques",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "ooni:CN",
+   "serie_vers": "publications_nbs",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "economie-chinoise",
+   "de": "activite",
+   "vers": "matieres_premieres",
+   "effet": "+",
+   "delai": "semaines à mois",
+   "serie_de": "feux:CN",
+   "serie_vers": "portwatch:malacca:petroliers",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "economie-chinoise",
+   "de": "eau_fleuves",
+   "vers": "activite",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "meteo:shanghai",
+   "serie_vers": "feux:CN",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 13,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "economie-chinoise",
+   "de": "pouvoir",
+   "vers": "statistiques",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "ooni:CN",
+   "serie_vers": "publications_nbs",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "elections-amerique-latine",
+   "de": "recoltes_exports",
+   "vers": "economie",
+   "effet": "+",
+   "delai": "saisons",
+   "serie_de": "fred:PFOODINDEXM:var12",
+   "serie_vers": "fred:DTWEXBGS",
+   "frequence": "M",
+   "decalages": [
+    3,
+    9
+   ],
+   "n": 127,
+   "r_moyen": 0.0719,
+   "seuil": 0.2218,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "production",
+   "vers": "prix",
+   "effet": "-",
+   "delai": "semaines à mois",
+   "serie_de": "eia:WCRFPUS2",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 142,
+   "r_moyen": -0.0478,
+   "seuil": 0.2098,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "demande",
+   "vers": "prix",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "eia:WRPUPUS2",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 141,
+   "r_moyen": -0.0016,
+   "seuil": 0.2105,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "stocks",
+   "vers": "prix",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "eia:WCESTUS1:var52",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 567,
+   "r_moyen": -0.0248,
+   "seuil": 0.105,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "transport",
+   "vers": "prix",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "portwatch:bab_el_mandeb:petroliers",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "decisions",
+   "vers": "production",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "sanctions:RU",
+   "serie_vers": "eia:WCRFPUS2",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "prix",
+   "vers": "decisions",
+   "effet": "±",
+   "delai": "semaines à mois",
+   "serie_de": "fred:DCOILBRENTEU",
+   "serie_vers": "sanctions:RU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "prix",
+   "vers": "demande",
+   "effet": "-",
+   "delai": "mois à années",
+   "serie_de": "fred:DCOILBRENTEU",
+   "serie_vers": "eia:WRPUPUS2",
+   "frequence": "M",
+   "decalages": [
+    1,
+    24
+   ],
+   "n": 141,
+   "r_moyen": -0.0102,
+   "seuil": 0.2105,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "climat",
+   "vers": "demande",
+   "effet": "±",
+   "delai": "jours à saisons",
+   "serie_de": "meteo:berlin",
+   "serie_vers": "eia:WRPUPUS2",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "climat",
+   "vers": "production",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "meteo:berlin",
+   "serie_vers": "eia:WCRFPUS2",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 509,
+   "r_moyen": 0.0492,
+   "seuil": 0.1108,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "recits",
+   "vers": "prix",
+   "effet": "±",
+   "delai": "heures",
+   "serie_de": "wikipedia:Petroleum",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "climat_regime",
+   "vers": "climat",
+   "effet": "+",
+   "delai": "années",
+   "serie_de": "climat:berlin",
+   "serie_vers": "meteo:berlin",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "energie-mondiale",
+   "de": "decisions",
+   "vers": "prix",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "sanctions:RU",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "epidemies",
+   "de": "autorites",
+   "vers": "economie",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "rss:CD:sante",
+   "serie_vers": "portwatch:malacca:porte_conteneurs",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 1,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "israel",
+   "vers": "gaza",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "gestes:ISR:IRN",
+   "serie_vers": "violations:Palestine",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "israel",
+   "vers": "liban",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "gestes:ISR:IRN",
+   "serie_vers": "feux:LB",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 18,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "israel",
+   "vers": "iran",
+   "effet": "-",
+   "delai": "jours à semaines",
+   "serie_de": "gestes:ISR:IRN",
+   "serie_vers": "gestes:IRN:ISR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    8
+   ],
+   "n": 137,
+   "r_moyen": 0.0313,
+   "seuil": 0.2136,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "iran",
+   "vers": "liban",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "gestes:IRN:ISR",
+   "serie_vers": "feux:LB",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "iran",
+   "vers": "yemen",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "gestes:IRN:ISR",
+   "serie_vers": "portwatch:bab_el_mandeb:petroliers",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "iran",
+   "vers": "syrie_irak",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "gestes:IRN:ISR",
+   "serie_vers": "feux:SY",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "gaza",
+   "vers": "yemen",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "violations:Palestine",
+   "serie_vers": "portwatch:bab_el_mandeb:petroliers",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 1,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "gaza",
+   "vers": "humanitaire",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "violations:Palestine",
+   "serie_vers": "prix_alimentaires:LB",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "humanitaire",
+   "vers": "recits",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "prix_alimentaires:LB",
+   "serie_vers": "telegram:idfofficial",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "guerre-levant",
+   "de": "liban",
+   "vers": "syrie_irak",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "feux:LB",
+   "serie_vers": "feux:SY",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "humain",
+   "de": "stress_chronique",
+   "vers": "nous_eux",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "fred:UNRATE",
+   "serie_vers": "telegram:tout",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 11,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "stress_chronique",
+   "vers": "attente",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "fred:UNRATE",
+   "serie_vers": "fred:UMCSENT",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "attente",
+   "vers": "passage_acte",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "fred:UMCSENT",
+   "serie_vers": "manifestations:US",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 28,
+   "r_moyen": -0.0023,
+   "seuil": 0.4725,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "attente",
+   "vers": "hierarchie",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "fred:UMCSENT",
+   "serie_vers": "elections:US:proche30",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 29,
+   "r_moyen": 0.0061,
+   "seuil": 0.4642,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "reciprocite",
+   "vers": "treve",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "gestes:UKR:RUS",
+   "serie_vers": "gestes:RUS:UKR",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 196,
+   "r_moyen": -0.0428,
+   "seuil": 0.1786,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "treve",
+   "vers": "nous_eux",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "gestes:RUS:UKR",
+   "serie_vers": "telegram:tout",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 11,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "treve",
+   "vers": "passage_acte",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "gestes:RUS:UKR",
+   "serie_vers": "manifestations:US",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 119,
+   "r_moyen": 0.0051,
+   "seuil": 0.2292,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "nous_eux",
+   "vers": "nous_eux",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "telegram:tout",
+   "serie_vers": "telegram:tout",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 48,
+   "r_moyen": -0.1672,
+   "seuil": 0.3608,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "symboles",
+   "vers": "nous_eux",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "memoire:RU:proche7",
+   "serie_vers": "telegram:tout",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 49,
+   "r_moyen": -0.0818,
+   "seuil": 0.3571,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "nous_eux",
+   "vers": "passage_acte",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "telegram:tout",
+   "serie_vers": "manifestations:US",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 47,
+   "r_moyen": -0.023,
+   "seuil": 0.3647,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "stress_chronique",
+   "vers": "nous_eux",
+   "effet": "0",
+   "delai": "mois",
+   "serie_de": "fred:UNRATE",
+   "serie_vers": "telegram:tout",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "humain",
+   "de": "passage_acte",
+   "vers": "nous_eux",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "manifestations:US",
+   "serie_vers": "telegram:tout",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 48,
+   "r_moyen": -0.0237,
+   "seuil": 0.3608,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "hierarchie",
+   "vers": "passage_acte",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "elections:US:proche30",
+   "serie_vers": "manifestations:US",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "humain",
+   "de": "symboles",
+   "vers": "treve",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "memoire:RU:proche7",
+   "serie_vers": "gestes:RUS:UKR",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "humain",
+   "de": "passage_acte",
+   "vers": "passage_acte",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "manifestations:US",
+   "serie_vers": "manifestations:US",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 122,
+   "r_moyen": 0.4475,
+   "seuil": 0.2263,
+   "verdict": "verifie"
+  },
+  {
+   "fiche": "humain",
+   "de": "hierarchie",
+   "vers": "falsification",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "elections:US:proche30",
+   "serie_vers": "ooni:RU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "humain",
+   "de": "passage_acte",
+   "vers": "disponibilite",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "manifestations:US",
+   "serie_vers": "ouvert:attention_crise",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 122,
+   "r_moyen": 0.0801,
+   "seuil": 0.2263,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "disponibilite",
+   "vers": "disponibilite",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "ouvert:attention_crise",
+   "serie_vers": "ouvert:attention_crise",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 568,
+   "r_moyen": 0.3293,
+   "seuil": 0.1049,
+   "verdict": "verifie"
+  },
+  {
+   "fiche": "humain",
+   "de": "disponibilite",
+   "vers": "risque_percu",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "ouvert:attention_crise",
+   "serie_vers": "fred:T10YIE",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 568,
+   "r_moyen": -0.2433,
+   "seuil": 0.1049,
+   "verdict": "conteste"
+  },
+  {
+   "fiche": "humain",
+   "de": "risque_percu",
+   "vers": "nous_eux",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "fred:T10YIE",
+   "serie_vers": "telegram:tout",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 49,
+   "r_moyen": 0.0093,
+   "seuil": 0.3571,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "risque_percu",
+   "vers": "attente",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "fred:T10YIE",
+   "serie_vers": "fred:UMCSENT",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 141,
+   "r_moyen": -0.0759,
+   "seuil": 0.2105,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "symboles",
+   "vers": "disponibilite",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "memoire:RU:proche7",
+   "serie_vers": "ouvert:attention_crise",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 150,
+   "r_moyen": 0.0341,
+   "seuil": 0.2041,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "humain",
+   "de": "disponibilite",
+   "vers": "agenda",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "ouvert:attention_crise",
+   "serie_vers": "federal_register:Presidential Document",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "passage_acte",
+   "vers": "agenda",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "manifestations:US",
+   "serie_vers": "federal_register:Presidential Document",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "agenda",
+   "vers": "agenda",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "federal_register:Presidential Document",
+   "serie_vers": "federal_register:Presidential Document",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "hierarchie",
+   "vers": "controle_percu",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "elections:US:proche30",
+   "serie_vers": "ooni:RU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "humain",
+   "de": "stress_chronique",
+   "vers": "controle_percu",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "fred:UNRATE",
+   "serie_vers": "ooni:RU",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "polarisation",
+   "vers": "nous_eux",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "ouvert:polarisation_chambre",
+   "serie_vers": "telegram:tout",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "nous_eux",
+   "vers": "polarisation",
+   "effet": "+",
+   "delai": "années",
+   "serie_de": "telegram:tout",
+   "serie_vers": "ouvert:polarisation_chambre",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "humain",
+   "de": "treve",
+   "vers": "polarisation",
+   "effet": "-",
+   "delai": "années",
+   "serie_de": "gestes:RUS:UKR",
+   "serie_vers": "ouvert:polarisation_chambre",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "humain",
+   "de": "polarisation",
+   "vers": "agenda",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "ouvert:polarisation_chambre",
+   "serie_vers": "federal_register:Presidential Document",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "polarisation",
+   "vers": "hierarchie",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "ouvert:polarisation_chambre",
+   "serie_vers": "elections:US:proche30",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 1,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "risque_percu",
+   "vers": "croyance_complot",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "fred:T10YIE",
+   "serie_vers": "openmeasures:telegram:complot",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "falsification",
+   "vers": "croyance_complot",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "ooni:RU",
+   "serie_vers": "openmeasures:telegram:complot",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "croyance_complot",
+   "vers": "nous_eux",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "openmeasures:telegram:complot",
+   "serie_vers": "telegram:tout",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "croyance_complot",
+   "vers": "hierarchie",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "openmeasures:telegram:complot",
+   "serie_vers": "elections:US:proche30",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "passage_acte",
+   "vers": "croyance_complot",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "manifestations:US",
+   "serie_vers": "openmeasures:telegram:complot",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "disponibilite",
+   "vers": "croyance_complot",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "ouvert:attention_crise",
+   "serie_vers": "openmeasures:telegram:complot",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "symboles",
+   "vers": "croyance_complot",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "memoire:RU:proche7",
+   "serie_vers": "openmeasures:telegram:complot",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "hierarchie",
+   "vers": "croyance_complot",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "elections:US:proche30",
+   "serie_vers": "openmeasures:telegram:complot",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "humain",
+   "de": "croyance_complot",
+   "vers": "passage_acte",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "openmeasures:telegram:complot",
+   "serie_vers": "manifestations:US",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "energie",
+   "vers": "prix_conso",
+   "effet": "+",
+   "delai": "semaines à mois",
+   "serie_de": "fred:DCOILBRENTEU",
+   "serie_vers": "fred:CPIAUCSL:var12",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 128,
+   "r_moyen": 0.2666,
+   "seuil": 0.221,
+   "verdict": "verifie"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "alimentation",
+   "vers": "prix_conso",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "fred:PFOODINDEXM:var12",
+   "serie_vers": "fred:CPIAUCSL:var12",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 127,
+   "r_moyen": 0.1427,
+   "seuil": 0.2218,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "prix_conso",
+   "vers": "salaires",
+   "effet": "+",
+   "delai": "mois à années",
+   "serie_de": "fred:CPIAUCSL:var12",
+   "serie_vers": "fred:CES0500000003:var12",
+   "frequence": "M",
+   "decalages": [
+    1,
+    24
+   ],
+   "n": 127,
+   "r_moyen": 0.0134,
+   "seuil": 0.2218,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "prix_conso",
+   "vers": "anticipations",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "fred:CPIAUCSL:var12",
+   "serie_vers": "fred:T10YIE",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 128,
+   "r_moyen": -0.0199,
+   "seuil": 0.221,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "anticipations",
+   "vers": "prix_conso",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "fred:T10YIE",
+   "serie_vers": "fred:CPIAUCSL:var12",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 128,
+   "r_moyen": 0.1215,
+   "seuil": 0.221,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "prix_conso",
+   "vers": "banques_centrales",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "fred:CPIAUCSL:var12",
+   "serie_vers": "fred:DFF",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 128,
+   "r_moyen": -0.006,
+   "seuil": 0.221,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "banques_centrales",
+   "vers": "salaires",
+   "effet": "-",
+   "delai": "mois à années",
+   "serie_de": "fred:DFF",
+   "serie_vers": "fred:CES0500000003:var12",
+   "frequence": "M",
+   "decalages": [
+    1,
+    24
+   ],
+   "n": 129,
+   "r_moyen": -0.0115,
+   "seuil": 0.2201,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "banques_centrales",
+   "vers": "monnaies",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "fred:DFF",
+   "serie_vers": "fred:DTWEXBGS",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 620,
+   "r_moyen": -0.1047,
+   "seuil": 0.1004,
+   "verdict": "conteste"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "monnaies",
+   "vers": "prix_conso",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "fred:CPIAUCSL:var12",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "approvisionnement",
+   "vers": "prix_conso",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "portwatch:suez:porte_conteneurs",
+   "serie_vers": "fred:CPIAUCSL:var12",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 3,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "budget",
+   "vers": "prix_conso",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "fred:DGS10",
+   "serie_vers": "fred:CPIAUCSL:var12",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "budget",
+   "vers": "banques_centrales",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "fred:DGS10",
+   "serie_vers": "fred:DFF",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 141,
+   "r_moyen": 0.2627,
+   "seuil": 0.2105,
+   "verdict": "conteste"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "statistiques",
+   "vers": "banques_centrales",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "calendrier_nbs:ipc",
+   "serie_vers": "fred:DFF",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "monnaies",
+   "vers": "energie",
+   "effet": "±",
+   "delai": "jours à semaines",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "inflation-mondiale",
+   "de": "budget",
+   "vers": "statistiques",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "fred:DGS10",
+   "serie_vers": "calendrier_nbs:ipc",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "information-cyber",
+   "de": "censure",
+   "vers": "recits",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "ooni:IR",
+   "serie_vers": "recit_russe:MD",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 13,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "information-cyber",
+   "de": "censure",
+   "vers": "coupures",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "ooni:IR",
+   "serie_vers": "radar",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 24,
+   "r_moyen": -0.1152,
+   "seuil": 0.5103,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "information-cyber",
+   "de": "cyber",
+   "vers": "infrastructure",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "webamon:scans",
+   "serie_vers": "certificats",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "information-cyber",
+   "de": "infrastructure",
+   "vers": "coupures",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "certificats",
+   "serie_vers": "radar",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 24,
+   "r_moyen": 0.0571,
+   "seuil": 0.5103,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "infrastructures-critiques",
+   "de": "reseaux",
+   "vers": "cascades",
+   "effet": "+",
+   "delai": "minutes",
+   "serie_de": "ooni:IR",
+   "serie_vers": "urgences:7700",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "infrastructures-critiques",
+   "de": "cascades",
+   "vers": "reseaux",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "urgences:7700",
+   "serie_vers": "ooni:IR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "infrastructures-critiques",
+   "de": "demande",
+   "vers": "reseaux",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "fred:DHHNGSP",
+   "serie_vers": "ooni:IR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 24,
+   "r_moyen": 0.0729,
+   "seuil": 0.5103,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "infrastructures-critiques",
+   "de": "chaleur_tempetes",
+   "vers": "demande",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "meteo:houston",
+   "serie_vers": "fred:DHHNGSP",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 409,
+   "r_moyen": -0.1362,
+   "seuil": 0.1236,
+   "verdict": "conteste"
+  },
+  {
+   "fiche": "infrastructures-critiques",
+   "de": "chaleur_tempetes",
+   "vers": "reseaux",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "meteo:houston",
+   "serie_vers": "ooni:IR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 23,
+   "r_moyen": -0.1267,
+   "seuil": 0.5213,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "infrastructures-critiques",
+   "de": "physique_espace",
+   "vers": "reseaux",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "pub:geomag_ap",
+   "serie_vers": "ooni:IR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 24,
+   "r_moyen": -0.0804,
+   "seuil": 0.5103,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "infrastructures-critiques",
+   "de": "attaques",
+   "vers": "reseaux",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "urgences:7500",
+   "serie_vers": "ooni:IR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "etats_unis",
+   "vers": "pouvoir_iranien",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "paire_mois:IR:US:conflit",
+   "serie_vers": "elections:IR",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 20,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "etats_unis",
+   "vers": "sanctions",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "paire_mois:IR:US:conflit",
+   "serie_vers": "sanctions:IR",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 2,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "sanctions",
+   "vers": "societe_iranienne",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "sanctions:IR",
+   "serie_vers": "ooni:IR",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 2,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "societe_iranienne",
+   "vers": "pouvoir_iranien",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "ooni:IR",
+   "serie_vers": "elections:IR",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "pouvoir_iranien",
+   "vers": "negociations",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "elections:IR",
+   "serie_vers": "gestes:USA:IRN",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "etats_unis",
+   "vers": "negociations",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "paire_mois:IR:US:conflit",
+   "serie_vers": "gestes:USA:IRN",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "negociations",
+   "vers": "sanctions",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "gestes:USA:IRN",
+   "serie_vers": "sanctions:IR",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 19,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "russie_chine",
+   "vers": "societe_iranienne",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "gestes:CHN:IRN",
+   "serie_vers": "ooni:IR",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "voisins",
+   "vers": "etats_unis",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "gestes:ISR:IRN",
+   "serie_vers": "paire_mois:IR:US:conflit",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "sismicite",
+   "vers": "societe_iranienne",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "seismes:iran_m45",
+   "serie_vers": "ooni:IR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 24,
+   "r_moyen": 0.1549,
+   "seuil": 0.5103,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "iran-nucleaire",
+   "de": "russie_chine",
+   "vers": "etats_unis",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "gestes:CHN:IRN",
+   "serie_vers": "paire_mois:IR:US:conflit",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "liban-institutions",
+   "de": "exterieur",
+   "vers": "banque_centrale",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "gestes:IRN:LBN",
+   "serie_vers": "sanctions:LB",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "migrations-demographie",
+   "de": "economie",
+   "vers": "migrations",
+   "effet": "+",
+   "delai": "années",
+   "serie_de": "fred:UNRATE",
+   "serie_vers": "acaps_risques:UA",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "migrations-demographie",
+   "de": "climat_milieu",
+   "vers": "migrations",
+   "effet": "+",
+   "delai": "saisons à décennies",
+   "serie_de": "climat:delhi",
+   "serie_vers": "acaps_risques:UA",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "non-proliferation",
+   "de": "sanctions",
+   "vers": "etats_du_seuil",
+   "effet": "-",
+   "delai": "mois à années",
+   "serie_de": "sanctions:IR",
+   "serie_vers": "gestes:USA:IRN",
+   "frequence": "M",
+   "decalages": [
+    1,
+    24
+   ],
+   "n": 20,
+   "r_moyen": 0.0816,
+   "seuil": 0.559,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "oceans-et-fleuves",
+   "de": "cycle",
+   "vers": "fleuves",
+   "effet": "+",
+   "delai": "jours à saisons",
+   "serie_de": "meteo:shanghai",
+   "serie_vers": "pub:rhin_kaub_cm",
+   "frequence": "M",
+   "decalages": [
+    0,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "oceans-et-fleuves",
+   "de": "fleuves",
+   "vers": "navigation_fluviale",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "pub:rhin_kaub_cm",
+   "serie_vers": "portwatch:panama:navires",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 3,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "oceans-et-fleuves",
+   "de": "fleuves",
+   "vers": "refroidissement",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "pub:rhin_kaub_cm",
+   "serie_vers": "meteo:berlin",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "milieu",
+   "vers": "flux_energie",
+   "effet": "-",
+   "delai": "permanent",
+   "serie_de": "meteo:bandar_abbas",
+   "serie_vers": "portwatch:ormuz:petroliers",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "flux_energie",
+   "vers": "prix",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "portwatch:ormuz:petroliers",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "force",
+   "vers": "navigation",
+   "effet": "-",
+   "delai": "heures",
+   "serie_de": "avions:AE",
+   "serie_vers": "portwatch:ormuz:navires",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "navigation",
+   "vers": "prix",
+   "effet": "±",
+   "delai": "jours à semaines",
+   "serie_de": "portwatch:ormuz:navires",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "puissances",
+   "vers": "riverains",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "gestes:USA:IRN",
+   "serie_vers": "voisins:IR",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 110,
+   "r_moyen": -0.0144,
+   "seuil": 0.2384,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "puissances",
+   "vers": "interieur_iran",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "gestes:USA:IRN",
+   "serie_vers": "ooni:IR",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "droit",
+   "vers": "flux_energie",
+   "effet": "-",
+   "delai": "semaines à mois",
+   "serie_de": "sanctions:IR",
+   "serie_vers": "portwatch:ormuz:petroliers",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 2,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "prix",
+   "vers": "interieur_iran",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "fred:DCOILBRENTEU",
+   "serie_vers": "ooni:IR",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "interieur_iran",
+   "vers": "force",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "ooni:IR",
+   "serie_vers": "avions:AE",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "milieu",
+   "vers": "interieur_iran",
+   "effet": "-",
+   "delai": "saisons à années",
+   "serie_de": "meteo:bandar_abbas",
+   "serie_vers": "ooni:IR",
+   "frequence": "M",
+   "decalages": [
+    3,
+    18
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "recits",
+   "vers": "prix",
+   "effet": "±",
+   "delai": "heures",
+   "serie_de": "telegram:farsna",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "force",
+   "vers": "recits",
+   "effet": "+",
+   "delai": "heures",
+   "serie_de": "avions:AE",
+   "serie_vers": "telegram:farsna",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 1,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "navigation",
+   "vers": "flux_energie",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "portwatch:ormuz:navires",
+   "serie_vers": "portwatch:ormuz:petroliers",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 23,
+   "r_moyen": 0.7157,
+   "seuil": 0.5213,
+   "verdict": "verifie"
+  },
+  {
+   "fiche": "ormuz",
+   "de": "milieu",
+   "vers": "force",
+   "effet": "±",
+   "delai": "permanent",
+   "serie_de": "meteo:bandar_abbas",
+   "serie_vers": "avions:AE",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "congres",
+   "vers": "nominations_interim",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "congres",
+   "serie_vers": "congres:nominations",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "tribunaux",
+   "vers": "nominations_interim",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "tribunaux:scotus",
+   "serie_vers": "congres:nominations",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 33,
+   "r_moyen": 0.0245,
+   "seuil": 0.4352,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "executif",
+   "vers": "congres",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "avions:US",
+   "serie_vers": "congres",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "tribunaux",
+   "vers": "executif",
+   "effet": "-",
+   "delai": "jours à mois",
+   "serie_de": "tribunaux:scotus",
+   "serie_vers": "avions:US",
+   "frequence": "S",
+   "decalages": [
+    0,
+    5
+   ],
+   "n": 1,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "elections",
+   "vers": "congres",
+   "effet": "±",
+   "delai": "mois à années",
+   "serie_de": "elections:US",
+   "serie_vers": "congres",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "elections",
+   "vers": "executif",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "elections:US",
+   "serie_vers": "avions:US",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "congres",
+   "vers": "budget",
+   "effet": "±",
+   "delai": "semaines à mois",
+   "serie_de": "congres",
+   "serie_vers": "fred:DGS10",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "budget",
+   "vers": "reserve_federale",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "fred:DGS10",
+   "serie_vers": "fred:DFF",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 141,
+   "r_moyen": 0.2627,
+   "seuil": 0.2105,
+   "verdict": "conteste"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "executif",
+   "vers": "reserve_federale",
+   "effet": "±",
+   "delai": "semaines à mois",
+   "serie_de": "avions:US",
+   "serie_vers": "fred:DFF",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "executif",
+   "vers": "sanctions",
+   "effet": "+",
+   "delai": "jours",
+   "serie_de": "avions:US",
+   "serie_vers": "sanctions:IR",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "executif",
+   "vers": "energie",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "avions:US",
+   "serie_vers": "fred:DCOILWTICO",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "congres",
+   "vers": "executif",
+   "effet": "±",
+   "delai": "semaines à mois",
+   "serie_de": "congres",
+   "serie_vers": "avions:US",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "entourage",
+   "vers": "executif",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "tfr:VIP",
+   "serie_vers": "avions:US",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "politique-americaine",
+   "de": "elections",
+   "vers": "entourage",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "elections:US",
+   "serie_vers": "tfr:VIP",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "relief-et-montagnes",
+   "de": "seismes_volcans",
+   "vers": "climat",
+   "effet": "-",
+   "delai": "mois",
+   "serie_de": "seismes:m6",
+   "serie_vers": "climat:teheran",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 97,
+   "r_moyen": 0.0157,
+   "seuil": 0.2538,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "commerce",
+   "vers": "diplomatie",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "portwatch:malacca:porte_conteneurs",
+   "serie_vers": "gestes:USA:CHN",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 19,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "technologie",
+   "vers": "commerce",
+   "effet": "-",
+   "delai": "semaines à mois",
+   "serie_de": "sanctions:CN",
+   "serie_vers": "portwatch:malacca:porte_conteneurs",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "taiwan",
+   "vers": "diplomatie",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "portwatch:taiwan:navires",
+   "serie_vers": "gestes:USA:CHN",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 20,
+   "r_moyen": -0.0137,
+   "seuil": 0.559,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "diplomatie",
+   "vers": "taiwan",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "gestes:USA:CHN",
+   "serie_vers": "portwatch:taiwan:navires",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 21,
+   "r_moyen": -0.0239,
+   "seuil": 0.5455,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "energie",
+   "vers": "commerce",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "portwatch:malacca:petroliers",
+   "serie_vers": "portwatch:malacca:porte_conteneurs",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "alliances",
+   "vers": "taiwan",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "avions",
+   "serie_vers": "portwatch:taiwan:navires",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "finance",
+   "vers": "commerce",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "fred:DTWEXBGS",
+   "serie_vers": "portwatch:malacca:porte_conteneurs",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "recits",
+   "vers": "diplomatie",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "ooni:CN",
+   "serie_vers": "gestes:USA:CHN",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "taiwan",
+   "vers": "energie",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "portwatch:taiwan:navires",
+   "serie_vers": "portwatch:malacca:petroliers",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 23,
+   "r_moyen": 0.122,
+   "seuil": 0.5213,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "terres_rares",
+   "vers": "technologie",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "sanctions:CN",
+   "serie_vers": "sanctions:CN",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "diplomatie",
+   "vers": "terres_rares",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "gestes:USA:CHN",
+   "serie_vers": "sanctions:CN",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "detroit_relief",
+   "vers": "taiwan",
+   "effet": "-",
+   "delai": "permanent",
+   "serie_de": "portwatch:taiwan:navires",
+   "serie_vers": "portwatch:taiwan:navires",
+   "verdict": "non_testable",
+   "motif": "délai trop long pour les séries"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "taiwan",
+   "vers": "technologie",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "portwatch:taiwan:navires",
+   "serie_vers": "sanctions:CN",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "alliances",
+   "vers": "diplomatie",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "avions",
+   "serie_vers": "gestes:USA:CHN",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "rivalite-sino-americaine",
+   "de": "recits",
+   "vers": "taiwan",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "ooni:CN",
+   "serie_vers": "portwatch:taiwan:navires",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "capacites",
+   "vers": "front",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "paire:RU:UA:force",
+   "serie_vers": "feux:UA",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "soutiens",
+   "vers": "capacites",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "gestes:USA:UKR",
+   "serie_vers": "paire:RU:UA:force",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 28,
+   "r_moyen": 0.003,
+   "seuil": 0.4725,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "sanctions",
+   "vers": "economie_russe",
+   "effet": "-",
+   "delai": "mois à années",
+   "serie_de": "sanctions:RU",
+   "serie_vers": "fred:DCOILBRENTEU",
+   "frequence": "M",
+   "decalages": [
+    1,
+    24
+   ],
+   "n": 58,
+   "r_moyen": -0.0081,
+   "seuil": 0.3283,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "economie_russe",
+   "vers": "capacites",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "fred:DCOILBRENTEU",
+   "serie_vers": "paire:RU:UA:force",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 28,
+   "r_moyen": 0.0119,
+   "seuil": 0.4725,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "front",
+   "vers": "economie_ukraine",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "feux:UA",
+   "serie_vers": "ooni:UA",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 24,
+   "r_moyen": -0.1111,
+   "seuil": 0.5103,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "front",
+   "vers": "negociations",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "feux:UA",
+   "serie_vers": "gestes:RUS:UKR",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "negociations",
+   "vers": "front",
+   "effet": "-",
+   "delai": "semaines",
+   "serie_de": "gestes:RUS:UKR",
+   "serie_vers": "feux:UA",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 22,
+   "r_moyen": -0.0292,
+   "seuil": 0.533,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "opinions",
+   "vers": "soutiens",
+   "effet": "±",
+   "delai": "mois",
+   "serie_de": "radar:RU",
+   "serie_vers": "gestes:USA:UKR",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "soutiens",
+   "vers": "sanctions",
+   "effet": "+",
+   "delai": "semaines à mois",
+   "serie_de": "gestes:USA:UKR",
+   "serie_vers": "sanctions:RU",
+   "frequence": "M",
+   "decalages": [
+    0,
+    3
+   ],
+   "n": 31,
+   "r_moyen": 0.0472,
+   "seuil": 0.449,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "mer_noire",
+   "vers": "economie_ukraine",
+   "effet": "+",
+   "delai": "semaines",
+   "serie_de": "portwatch:bosphore:navires",
+   "serie_vers": "ooni:UA",
+   "frequence": "S",
+   "decalages": [
+    1,
+    8
+   ],
+   "n": 23,
+   "r_moyen": 0.0567,
+   "seuil": 0.5213,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "front",
+   "vers": "mer_noire",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "feux:UA",
+   "serie_vers": "portwatch:bosphore:navires",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 23,
+   "r_moyen": 0.162,
+   "seuil": 0.5213,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "soutiens",
+   "vers": "negociations",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "gestes:USA:UKR",
+   "serie_vers": "gestes:RUS:UKR",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "front",
+   "vers": "sols_agriculture",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "feux:UA",
+   "serie_vers": "feux:UA",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 24,
+   "r_moyen": 0.3962,
+   "seuil": 0.5103,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "sols_agriculture",
+   "vers": "mer_noire",
+   "effet": "+",
+   "delai": "saisons",
+   "serie_de": "feux:UA",
+   "serie_vers": "portwatch:bosphore:navires",
+   "frequence": "M",
+   "decalages": [
+    3,
+    9
+   ],
+   "n": 2,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "russie-ukraine",
+   "de": "front",
+   "vers": "soutiens",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "feux:UA",
+   "serie_vers": "gestes:USA:UKR",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "sciences-techniques",
+   "de": "calcul",
+   "vers": "energie_eau",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "portwatch:taiwan:porte_conteneurs",
+   "serie_vers": "fred:DHHNGSP",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 4,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "sciences-techniques",
+   "de": "energie_eau",
+   "vers": "calcul",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "fred:DHHNGSP",
+   "serie_vers": "portwatch:taiwan:porte_conteneurs",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 23,
+   "r_moyen": -0.1751,
+   "seuil": 0.5213,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "sciences-techniques",
+   "de": "capitaux",
+   "vers": "calcul",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "fred:DGS10",
+   "serie_vers": "portwatch:taiwan:porte_conteneurs",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 5,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "sciences-techniques",
+   "de": "course_etats",
+   "vers": "capitaux",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "gestes:USA:CHN",
+   "serie_vers": "fred:DGS10",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 46,
+   "r_moyen": -0.0166,
+   "seuil": 0.3686,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "securite-europeenne",
+   "de": "menace",
+   "vers": "otan_ue",
+   "effet": "+",
+   "delai": "mois",
+   "serie_de": "sanctions:RU",
+   "serie_vers": "rss:RU:conseil_ue",
+   "frequence": "M",
+   "decalages": [
+    1,
+    6
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "transport-maritime",
+   "de": "securite",
+   "vers": "detroits",
+   "effet": "-",
+   "delai": "heures à jours",
+   "serie_de": "avions:mer",
+   "serie_vers": "portwatch:suez:porte_conteneurs",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 0,
+   "verdict": "non_testable",
+   "motif": "moins de 20 périodes communes"
+  },
+  {
+   "fiche": "transport-maritime",
+   "de": "detroits",
+   "vers": "contournement",
+   "effet": "-",
+   "delai": "jours",
+   "serie_de": "portwatch:suez:porte_conteneurs",
+   "serie_vers": "portwatch:bonne_esperance:navires",
+   "frequence": "S",
+   "decalages": [
+    0,
+    1
+   ],
+   "n": 23,
+   "r_moyen": -0.1687,
+   "seuil": 0.5213,
+   "verdict": "non_tranche"
+  },
+  {
+   "fiche": "transport-maritime",
+   "de": "flottes",
+   "vers": "securite",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "portwatch:malacca:petroliers",
+   "serie_vers": "avions:mer",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "transport-maritime",
+   "de": "detroits",
+   "vers": "ports",
+   "effet": "±",
+   "delai": "semaines",
+   "serie_de": "portwatch:suez:porte_conteneurs",
+   "serie_vers": "port:rotterdam",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  },
+  {
+   "fiche": "transport-maritime",
+   "de": "ports",
+   "vers": "contournement",
+   "effet": "±",
+   "delai": "jours",
+   "serie_de": "port:rotterdam",
+   "serie_vers": "portwatch:bonne_esperance:navires",
+   "verdict": "non_testable",
+   "motif": "effet ambigu"
+  }
+ ]
+}
