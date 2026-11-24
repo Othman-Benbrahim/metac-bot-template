@@ -21,3 +21,18 @@ lentes (années) restent non testables.
 Le calcul n'écrit aucun statut. Ensuite : statut des relations vérifiées → « verifie », contestées → « conteste »,
 dans les fiches (statuts admis par ecosystemes.py), carte régénérée ; seules les relations « verifie » entreront dans
 la couche du bot (étapes 2 à 5, procédure à part).
+
+## Résultat du passage unique (2026-11-24, 18 h 56) et application décidée par l'auteur (18 h 58)
+226 relations : 4 « vérifiées », 7 « contestées », 63 non tranchées, 152 non testables (76 historique commun trop
+court, 61 effet « ± », 15 délai d'années).
+Défaut de la procédure, reconnu : elle n'excluait pas les relations dont les deux bouts portent la même série, ou une
+série et sa propre composante. Trois des quatre « vérifiées » en relèvent (passage_acte → passage_acte et
+disponibilite → disponibilite : même série, corrélation 1 au décalage 0 ; navires d'Ormuz → pétroliers d'Ormuz : un
+total et sa partie). Elles ne sont pas des vérifications.
+Application (décision de l'auteur) :
+1. energie → prix_conso (inflation mondiale) : statut « verifie » (Brent → inflation américaine sur 12 mois,
+   r = 0,267, n = 128 mois, seuil 0,221) ; champ « verification » dans la fiche.
+2. Les sept « contestées » ne sont pas marquées contestées : la série choisie représente sans doute mal le compartiment
+   (ex. le taux à 10 ans pour le « budget ») ; champ « verification » : « série à revoir ».
+3. Règle ajoutée pour tout passage futur : relation exclue si les deux bouts ont la même série, ou si l'une est une
+   composante de l'autre (même source et même lieu, ex. portwatch:ormuz:*).

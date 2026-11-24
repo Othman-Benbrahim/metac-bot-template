@@ -658,6 +658,7 @@ relations:
   coupure: coordination en crise
   statut: a_verifier
   texte: des déficits élevés et une banque centrale qui freine se neutralisent en partie
+  verification: "série à revoir (2026-11-24) : fred:DGS10 → fred:DFF donne r = 0.2627 (n = 141), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: executif
   vers: reserve_federale
   effet: ±

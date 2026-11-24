@@ -174,7 +174,7 @@ CLES_PERMISES = {
     "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur", "habitude", "odd"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
-                 "module", "parametres", "series"},
+                 "module", "parametres", "series", "verification"},
     "pont": {"depuis", "vers", "nature", "type", "canal"}}
 # 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
 # soit qu'un compartiment INFLUE sur l'autre fiche (type: influence, par défaut : transmission partielle, avec retard).

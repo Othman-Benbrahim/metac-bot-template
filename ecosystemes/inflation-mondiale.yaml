@@ -353,8 +353,9 @@ relations:
     mesure: écart du Brent à sa moyenne récente
     regle: proportionnelle
   coupure: boucliers tarifaires et subventions
-  statut: a_verifier
+  statut: verifie
   texte: l'énergie passe vite dans les prix, d'abord par les carburants
+  verification: "vérifiée le 2026-11-24 (preenregistrements/verification-relations.md) : Brent → inflation américaine sur 12 mois, r = 0.2666, n = 128 mois, seuil 0.221"
 - de: alimentation
   vers: prix_conso
   effet: +
@@ -423,6 +424,7 @@ relations:
   coupure: si les autres banques centrales suivent
   statut: a_verifier
   texte: des taux américains plus hauts renforcent le dollar
+  verification: "série à revoir (2026-11-24) : fred:DFF → fred:DTWEXBGS donne r = -0.1047 (n = 620), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: monnaies
   vers: prix_conso
   effet: ±
@@ -463,6 +465,7 @@ relations:
   coupure: coordination
   statut: a_verifier
   texte: quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre
+  verification: "série à revoir (2026-11-24) : fred:DGS10 → fred:DFF donne r = 0.2627 (n = 141), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: statistiques
   vers: banques_centrales
   effet: ±

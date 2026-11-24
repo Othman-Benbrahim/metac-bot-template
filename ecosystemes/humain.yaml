@@ -1072,6 +1072,7 @@ relations:
   statut: "a_verifier"
   source: "Kahneman, ch. 13 et 30"
   texte: "ce qui vient facilement à l'esprit paraît probable ; un événement rare et vif est surpondéré"
+  verification: "série à revoir (2026-11-24) : ouvert:attention_crise → fred:T10YIE donne r = -0.2433 (n = 568), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: "risque_percu"
   vers: "nous_eux"
   effet: "+"

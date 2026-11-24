@@ -96,6 +96,12 @@ def principal() -> int:
             ligne = {"fiche": n, "de": r.get("de"), "vers": r.get("vers"), "effet": r.get("effet"),
                      "delai": r.get("delai"), "serie_de": series[de][0], "serie_vers": series[vers][0]}
             out.append(ligne)
+            # règle ajoutée le 2026-11-24 (décision de l'auteur, 18 h 58) : même série, ou série et sa composante (même
+            # source et même lieu, ex. portwatch:ormuz:*) = pas une relation testable
+            a_, b_ = ligne["serie_de"], ligne["serie_vers"]
+            if a_ == b_ or a_.split(":")[:2] == b_.split(":")[:2] and a_.split(":")[0] in ("portwatch",):
+                ligne["verdict"], ligne["motif"] = "non_testable", "même série ou composante d'une même série"
+                continue
             reg_d = DELAIS.get(str(r.get("delai") or "").strip())
             if str(r.get("effet")) not in ("+", "-", "−") or reg_d is None:
                 ligne["verdict"] = "non_testable"
