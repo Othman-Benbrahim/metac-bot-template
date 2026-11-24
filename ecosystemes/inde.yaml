@@ -305,9 +305,8 @@ ponts:
 - depuis: energie_petrole_russe
   vers: russie-ukraine:sanctions
   nature: le pétrole russe et les sanctions secondaires
-- depuis: economie_commerce
-  vers: politique-americaine:commerce
-  nature: les droits de douane américains sur les biens indiens
+# 2026-11-24 : le pont des droits de douane américains part désormais de politique-americaine:commerce (la cause) vers
+# economie_commerce (l'effet), comme le veut le sens des ponts de cause.
 - depuis: mousson
   vers: climat-extremes:oscillations
   nature: El Niño et le dipôle de l'océan Indien modulent la mousson

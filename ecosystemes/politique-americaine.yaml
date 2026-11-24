@@ -22,6 +22,7 @@ compartiments:
   - décrets et proclamations
   - agences fédérales
   - réglementation
+  - tenue de ses annonces (propriété de l'émetteur, mesurée sur les droits de douane)
   acteurs:
   - nom: le président en personne (ses faits et déclarations publics)
     taille: micro
@@ -239,6 +240,7 @@ compartiments:
   - exemptions
   - accords commerciaux
   - contrôles des exportations
+  - "annonce et acte : 78 % des annonces suivies d'un acte, 53 % telles qu'annoncées (2025-2026)"
   acteurs:
   - nom: représentant au Commerce et département du Commerce
     taille: méso
@@ -255,6 +257,9 @@ compartiments:
   - source: Federal Register (proclamations et avis tarifaires)
     statut: collecte
     fichier: collecte_federal_register.py
+  - source: "TiRADE (Global Linkages Lab, Brown University) : chaque taux menacé, annoncé ou appliqué par le président, et les actes du Federal Register"
+    statut: collecte
+    fichier: collecte_annonces_tarifs.py
 - id: energie
   geopolitique:
     pays: [USA]
@@ -606,9 +611,13 @@ relations:
   effet: ±
   delai: jours
   force: forte
+  intensite:
+    mesure: "part des annonces de droits de douane suivies d'un acte au Federal Register (78 %, IC95 65-88) et appliquées telles qu'annoncées (53 %, 40-66) ; délai médian 22 jours ; menaces conditionnelles 16 % (51 mesures, janvier 2025 - novembre 2026)"
+    regle: inconnue
   coupure: tribunaux et Congrès (base légale des droits de douane)
   statut: a_verifier
-  texte: les droits de douane se décident vite par décret, sous réserve de contestation en justice
+  source: "TiRADE v1.11 × Federal Register, codage à la main (registre/annonces/codage-manuel.csv) ; preenregistrements/taux-execution-annonces.md"
+  texte: "les droits de douane se décident vite par décret, sous réserve de contestation en justice. Une annonce sur deux est appliquée telle quelle ; le recul ordinaire n'est pas l'abandon (8 % sans suite) mais la modification après accord (25 %). 77 des 130 premières déclarations sont déjà des actes : le décret accomplit ce qu'il dit"
 - de: tribunaux
   vers: commerce
   effet: '-'
@@ -714,6 +723,20 @@ relations:
   statut: a_verifier
   texte: quand le Colorado baisse, les États d'amont et d'aval se disputent les mêmes volumes
 ponts:
+- depuis: executif
+  vers: information-cyber:langage_performatif
+  nature: "le décret accomplit ce qu'il dit : 77 des 130 premières déclarations tarifaires du président sont déjà des actes ; l'annonce, elle, est déclarative"
+  type: voisinage
+- depuis: executif
+  vers: dirigeants-elus:executifs
+  nature: "la tenue des annonces est une propriété de l'émetteur : mesurée pour le président américain sur les droits de douane (une sur deux telle qu'annoncée)"
+  type: voisinage
+- depuis: commerce
+  vers: inde:economie_commerce
+  nature: "droits de douane américains sur l'Inde (25 % puis 25 % de pénalité pour le pétrole russe, août 2025)"
+- depuis: commerce
+  vers: union-europeenne:relations_exterieures
+  nature: "droits de douane annoncés contre l'UE (50 % puis 30 %), appliqués à 15 % après l'accord de juillet 2025"
 - depuis: energie
   vers: energie-mondiale:decisions
   nature: réserve stratégique, sanctions, exportations de gaz liquéfié
