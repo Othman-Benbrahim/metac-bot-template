@@ -7989,7 +7989,8 @@ beauce,2026-11-13,9.48,,,0.0
 beauce,2026-11-14,9.31,,,0.16
 beauce,2026-11-15,12.32,,,0.0
 beauce,2026-11-16,12.47,,,0.23
-beauce,2026-11-17,15.24,,,4.23
+beauce,2026-11-17,15.24,,,0.0
+beauce,2026-11-18,13.4,,,1.05
 iowa,2005-01-01,-0.03,,,0.23
 iowa,2005-01-02,8.18,,,0.0
 iowa,2005-01-03,-2.61,,,0.0
@@ -15981,6 +15982,7 @@ iowa,2026-11-14,6.56,,,0.0
 iowa,2026-11-15,8.88,,,0.0
 iowa,2026-11-16,12.19,,,0.0
 iowa,2026-11-17,13.64,,,0.0
+iowa,2026-11-18,15.06,,,0.0
 kansas,2005-01-01,16.53,,,0.0
 kansas,2005-01-02,15.35,,,0.0
 kansas,2005-01-03,0.14,,,0.0
@@ -23971,7 +23973,8 @@ kansas,2026-11-13,9.16,,,-0.0
 kansas,2026-11-14,9.39,,,0.0
 kansas,2026-11-15,10.18,,,0.0
 kansas,2026-11-16,9.37,,,0.0
-kansas,2026-11-17,13.26,,,0.01
+kansas,2026-11-17,13.26,,,0.0
+kansas,2026-11-18,16.64,,,0.0
 mato_grosso,2005-01-01,30.47,,,0.0
 mato_grosso,2005-01-02,28.72,,,0.1
 mato_grosso,2005-01-03,28.53,,,0.3
@@ -31962,7 +31965,8 @@ mato_grosso,2026-11-13,29.75,,,0.0
 mato_grosso,2026-11-14,32.59,,,0.0
 mato_grosso,2026-11-15,31.96,,,0.0
 mato_grosso,2026-11-16,30.23,,,0.6
-mato_grosso,2026-11-17,29.39,,,2.81
+mato_grosso,2026-11-17,29.39,,,0.0
+mato_grosso,2026-11-18,30.61,,,0.52
 nouvelle_galles_du_sud,2005-01-01,36.12,,,0.0
 nouvelle_galles_du_sud,2005-01-02,34.15,,,0.0
 nouvelle_galles_du_sud,2005-01-03,34.68,,,0.01
@@ -39954,6 +39958,7 @@ nouvelle_galles_du_sud,2026-11-14,31.41,,,0.0
 nouvelle_galles_du_sud,2026-11-15,27.18,,,0.0
 nouvelle_galles_du_sud,2026-11-16,23.91,,,0.0
 nouvelle_galles_du_sud,2026-11-17,27.66,,,0.0
+nouvelle_galles_du_sud,2026-11-18,31.83,,,0.0
 pampa,2005-01-01,31.38,,,0.0
 pampa,2005-01-02,32.0,,,0.0
 pampa,2005-01-03,31.5,,,0.0
@@ -47944,7 +47949,8 @@ pampa,2026-11-13,29.75,,,0.0
 pampa,2026-11-14,26.22,,,0.0
 pampa,2026-11-15,27.06,,,0.0
 pampa,2026-11-16,27.44,,,0.8
-pampa,2026-11-17,26.95,,,3.07
+pampa,2026-11-17,26.95,,,0.0
+pampa,2026-11-18,25.16,,,0.26
 pendjab,2005-01-01,19.45,,,0.0
 pendjab,2005-01-02,19.9,,,0.0
 pendjab,2005-01-03,17.87,,,0.0
@@ -55936,6 +55942,7 @@ pendjab,2026-11-14,29.21,,,0.02
 pendjab,2026-11-15,27.32,,,0.0
 pendjab,2026-11-16,27.38,,,0.0
 pendjab,2026-11-17,26.48,,,0.0
+pendjab,2026-11-18,26.25,,,0.0
 plaine_chine_nord,2005-01-01,-0.76,,,0.0
 plaine_chine_nord,2005-01-02,3.8,,,0.0
 plaine_chine_nord,2005-01-03,4.66,,,0.0
@@ -63926,7 +63933,8 @@ plaine_chine_nord,2026-11-13,17.03,,,0.0
 plaine_chine_nord,2026-11-14,17.33,,,0.0
 plaine_chine_nord,2026-11-15,16.55,,,0.04
 plaine_chine_nord,2026-11-16,12.47,,,0.11
-plaine_chine_nord,2026-11-17,13.13,,,0.11
+plaine_chine_nord,2026-11-17,13.13,,,0.0
+plaine_chine_nord,2026-11-18,9.81,,,0.0
 russie_krasnodar,2005-01-01,5.02,,,0.26
 russie_krasnodar,2005-01-02,3.5,,,0.0
 russie_krasnodar,2005-01-03,5.27,,,0.02
@@ -71917,7 +71925,8 @@ russie_krasnodar,2026-11-13,17.85,,,0.0
 russie_krasnodar,2026-11-14,18.59,,,1.02
 russie_krasnodar,2026-11-15,7.78,,,0.0
 russie_krasnodar,2026-11-16,8.46,,,0.0
-russie_krasnodar,2026-11-17,11.62,,,0.24
+russie_krasnodar,2026-11-17,11.62,,,0.13
+russie_krasnodar,2026-11-18,15.49,,,0.36
 ukraine_centre,2005-01-01,1.3,,,0.12
 ukraine_centre,2005-01-02,2.33,,,0.01
 ukraine_centre,2005-01-03,3.55,,,0.0
@@ -79908,7 +79917,8 @@ ukraine_centre,2026-11-13,13.79,,,0.0
 ukraine_centre,2026-11-14,6.03,,,0.0
 ukraine_centre,2026-11-15,6.02,,,0.0
 ukraine_centre,2026-11-16,6.0,,,0.0
-ukraine_centre,2026-11-17,6.56,,,1.77
+ukraine_centre,2026-11-17,6.56,,,0.0
+ukraine_centre,2026-11-18,10.08,,,0.65
 vallee_centrale_californie,2005-01-01,12.81,,,0.03
 vallee_centrale_californie,2005-01-02,12.34,,,0.5
 vallee_centrale_californie,2005-01-03,11.47,,,0.58
@@ -87899,4 +87909,5 @@ vallee_centrale_californie,2026-11-13,25.71,,,1.37
 vallee_centrale_californie,2026-11-14,18.74,,,0.0
 vallee_centrale_californie,2026-11-15,20.54,,,0.0
 vallee_centrale_californie,2026-11-16,19.89,,,0.42
-vallee_centrale_californie,2026-11-17,14.35,,,0.42
+vallee_centrale_californie,2026-11-17,14.35,,,0.0
+vallee_centrale_californie,2026-11-18,13.92,,,0.53
