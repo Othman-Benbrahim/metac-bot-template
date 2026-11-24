@@ -174,6 +174,8 @@ compartiments:
   elements:
   - questions du tournoi par forme (binaire, choix multiple, numérique) et par thème
   - questions des bancs rétrospectifs
+  - "rattachement des questions aux compartiments : liste validée par l'auteur le 2026-11-24 (lecteur-local, listes/proposes-rattachement.txt) ; 88 % des questions résolues rattachées, 245 sur 272 pour Metaculus"
+  - "part de « oui » selon la forme (272 questions Metaculus) : « avant telle date » 19 %, « annoncera / déposera / lancera » 8 %, « nouveau record » 0 sur 7, « encore une fois » 46 %, « restera / quittera son poste » 36 %"
   niveau:
     espace: nos dépôts et nos documents
     temps: depuis le début du dépôt du bot (2026-10-30)
@@ -182,6 +184,35 @@ compartiments:
   traces:
   - source: registres des questions du bot (registre/)
     statut: collecte
+  - source: inventaire de rendement de la carte (questions × compartiments × séries)
+    statut: collecte
+    fichier: mise_au_point/inventaire_rendement.py
+- id: questionneur_metaculus
+  nom: "Le questionneur : focus et subjectivité de Metaculus"
+  organisation: convention
+  elements:
+  - "l'actualité fait la question : une question naît d'un changement en discussion (frappe, démission, loi, record), pas de ce qui est probable"
+  - "biais de sélection du rédacteur : ce dont on parle paraît plus probable que ce qui arrive ; 70 % des questions du fil principal se résolvent par non (Metaculus), 71 % dans notre corpus"
+  - "tranchabilité : source publique indiscutable et horizon court (semaines pour les bots) ; favorise calendriers institutionnels, déclarations officielles, séries de données"
+  - "incertitude voulue à l'écriture : le rédacteur évite le presque sûr, ce qui renforce le biais de sélection"
+  - "regard d'une communauté (rationalistes, altruisme efficace) : IA de pointe surreprésentée (13 % des questions), risques majeurs, public anglophone tourné vers les États-Unis, la finance et la technologie"
+  - "origine des questions du tournoi des bots : surtout importées du fil principal ; MiniBench fabriquée depuis des données publiques (FRED, Google Trends, Bourse)"
+  - "critère de la carte (validé par l'auteur le 2026-11-24, 14 h 25) : un compartiment ou un mécanisme n'entre que s'il aide à juger si un changement d'actualité aura lieu à court terme et sera tranchable par une source publique — freins, déclencheurs, calendriers, repères mesurés"
+  acteurs:
+  - nom: Metaculus
+    taille: méso
+    espace: mondial
+    vitesse: jours
+    organisation: convention
+    facette: collectif
+  niveau:
+    espace: mondial (anglophone)
+    temps: depuis 2015 ; tournois des bots depuis 2024
+    vitesse: semaines
+    taille: méso
+  traces:
+  - source: "annonces des tournois (Metaculus, LessWrong : Spring 2026 AI Forecasting Benchmark ; résultats du deuxième trimestre)"
+    statut: a_brancher
 - id: mathematiques
   nom: Mathématiques et statistiques employées
   organisation: convention
@@ -274,6 +305,21 @@ compartiments:
   traces:
   - *id001
 relations:
+- de: questionneur_metaculus
+  vers: questions_traitees
+  effet: +
+  delai: jours
+  force: forte
+  statut: a_verifier
+  source: "Metaculus (70 % de non au fil principal ; 80 % au tournoi du deuxième trimestre) ; corpus du bot (71 % de non sur 272 questions)"
+  texte: "le rédacteur choisit les changements discutés ; la plupart n'ont pas lieu dans le délai : le statu quo est le point de départ, le changement doit être justifié par un frein levé, un déclencheur ou une échéance"
+- de: biais
+  vers: questionneur_metaculus
+  effet: +
+  delai: jours
+  force: moyenne
+  statut: a_verifier
+  texte: "l'attention suit les médias, pas les faits ; les questions suivent l'attention (52 questions sur 272 en mars 2026, au moment de la guerre avec l'Iran)"
 - de: biais
   vers: monde
   effet: ±
@@ -375,6 +421,22 @@ relations:
   statut: a_verifier
   texte: ce qui est adopté change la façon dont le bot traite les questions
 ponts:
+- depuis: questionneur_metaculus
+  vers: information-cyber:attention
+  nature: "les questions naissent de l'attention médiatique : ce dont on parle devient une question"
+  type: voisinage
+- depuis: questionneur_metaculus
+  vers: calendriers-echeances:dates_limites
+  nature: "une question se tranche à une échéance : le calendrier dit quand elle peut basculer"
+  type: voisinage
+- depuis: questionneur_metaculus
+  vers: sciences-techniques:attentes
+  nature: "l'IA de pointe est surreprésentée dans les questions (13 %) : regard de la communauté de Metaculus"
+  type: voisinage
+- depuis: questionneur_metaculus
+  vers: politique-americaine:executif
+  nature: "public tourné vers les États-Unis : décrets, tribunaux, nominations et élections américaines dominent les questions politiques"
+  type: voisinage
 - depuis: definitions
   vers: economie-chinoise:statistiques
   nature: la fiabilité des chiffres officiels chinois
