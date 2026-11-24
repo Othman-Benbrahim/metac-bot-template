@@ -1,0 +1,8828 @@
+{
+ "questions": 2196,
+ "questions_sans_compartiment": 1578,
+ "compartiments": 828,
+ "termes": 2054,
+ "classes": {
+  "q>=30 et série": 4,
+  "q>=100 et série": 1,
+  "q>=30 sans série": 8,
+  "série sans question": 167,
+  "ni l'un ni l'autre": 536
+ },
+ "lignes": [
+  {
+   "compartiment": "calendriers-echeances:elections",
+   "nom": "Échéances électorales",
+   "questions": 144,
+   "metaculus": 14,
+   "oui": 0.292,
+   "premiere": "2024-07-21",
+   "series": [
+    "elections:US"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "politique-americaine:reserve_federale",
+   "nom": "Réserve fédérale (institution)",
+   "questions": 51,
+   "metaculus": 4,
+   "oui": 0.314,
+   "premiere": "2024-07-21",
+   "series": [
+    "fred:DFF",
+    "wikipedia:Fed"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "politique-americaine:executif",
+   "nom": "Exécutif",
+   "questions": 46,
+   "metaculus": 4,
+   "oui": 0.348,
+   "premiere": "2024-07-21",
+   "series": [
+    "avions:US",
+    "federal_register",
+    "federal_register:Presidential Document",
+    "routines:maison_blanche",
+    "tfr:SECURITY"
+   ],
+   "n_series": 5
+  },
+  {
+   "compartiment": "politique-americaine:congres",
+   "nom": "Congrès",
+   "questions": 45,
+   "metaculus": 7,
+   "oui": 0.356,
+   "premiere": "2024-07-21",
+   "series": [
+    "congres"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inflation-mondiale:banques_centrales",
+   "nom": "Banques centrales",
+   "questions": 19,
+   "metaculus": 3,
+   "oui": 0.263,
+   "premiere": "2025-08-03",
+   "series": [
+    "fred:DFF",
+    "fred:ECBDFR"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "russie-ukraine:negociations",
+   "nom": "Négociations et diplomatie",
+   "questions": 16,
+   "metaculus": 5,
+   "oui": 0.312,
+   "premiere": "2024-07-21",
+   "series": [
+    "gestes:RUS:UKR",
+    "paire_mois:RU:UA:conflit"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "climat-extremes:tendance",
+   "nom": "Réchauffement de fond",
+   "questions": 8,
+   "metaculus": 2,
+   "oui": 0.125,
+   "premiere": "2024-07-21",
+   "series": [
+    "climat:berlin",
+    "climat:delhi"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "politique-americaine:tribunaux",
+   "nom": "Tribunaux",
+   "questions": 8,
+   "metaculus": 8,
+   "oui": 0.25,
+   "premiere": "2025-11-09",
+   "series": [
+    "tribunaux:cadc",
+    "tribunaux:scotus"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "guerre-levant:gaza",
+   "nom": "Gaza et territoires palestiniens",
+   "questions": 7,
+   "metaculus": 0,
+   "oui": 0.143,
+   "premiere": "2024-07-21",
+   "series": [
+    "violations:Palestine"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "climat-extremes:saisons",
+   "nom": "Saisons anormales",
+   "questions": 6,
+   "metaculus": 2,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [
+    "meteo:berlin",
+    "meteo:delhi",
+    "meteo:houston",
+    "meteo_prevue:berlin",
+    "meteo_prevue:delhi"
+   ],
+   "n_series": 5
+  },
+  {
+   "compartiment": "humain:risque_percu",
+   "nom": "Risque perçu (poids donné aux probabilités, aux pertes et au cadre)",
+   "questions": 5,
+   "metaculus": 3,
+   "oui": 0.2,
+   "premiere": "2025-05-25",
+   "series": [
+    "fred:T10YIE"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "soleil-espace:satellites",
+   "nom": "Satellites et constellations",
+   "questions": 5,
+   "metaculus": 0,
+   "oui": 0.4,
+   "premiere": "2024-07-21",
+   "series": [
+    "tfr:SPACE OPERATIONS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "politique-americaine:budget",
+   "nom": "Budget et dette fédérale",
+   "questions": 4,
+   "metaculus": 2,
+   "oui": 0.25,
+   "premiere": "2025-06-08",
+   "series": [
+    "federal_register:tous:Securities and Exchange",
+    "fred:DGS10"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "epidemies:autorites",
+   "nom": "Autorités sanitaires",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.333,
+   "premiere": "2025-03-02",
+   "series": [
+    "rss:CD:sante"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "guerre-levant:yemen",
+   "nom": "Yémen et mer Rouge",
+   "questions": 3,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [
+    "portwatch:bab_el_mandeb:petroliers",
+    "portwatch:suez:porte_conteneurs",
+    "ucdp:Yemen",
+    "violations:Yemen"
+   ],
+   "n_series": 4
+  },
+  {
+   "compartiment": "information-cyber:infrastructure",
+   "nom": "Infrastructure physique d'internet",
+   "questions": 3,
+   "metaculus": 3,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [
+    "certificats"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "relief-et-montagnes:seismes_volcans",
+   "nom": "Séismes et volcans",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2025-08-17",
+   "series": [
+    "seismes:m6"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:commerce",
+   "nom": "Commerce et droits de douane",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2025-10-26",
+   "series": [
+    "portwatch:malacca:porte_conteneurs",
+    "sanctions_chine:US"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "climat-extremes:exposes",
+   "nom": "Sociétés et infrastructures exposées",
+   "questions": 2,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [
+    "ooni:IN",
+    "tfr:HAZARDS"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:hierarchie",
+   "nom": "Hiérarchie et rang (intensité = contestation du rang ; obéissance, conformité)",
+   "questions": 2,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-03-16",
+   "series": [
+    "elections:US",
+    "elections:US:proche30"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "inflation-mondiale:budget",
+   "nom": "Politique budgétaire",
+   "questions": 2,
+   "metaculus": 1,
+   "oui": 0.5,
+   "premiere": "2025-06-08",
+   "series": [
+    "fred:DGS10"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "iran-nucleaire:etats_unis",
+   "nom": "États-Unis",
+   "questions": 2,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-06-08",
+   "series": [
+    "paire_mois:IR:US:conflit"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "politique-americaine:elections",
+   "nom": "Élections et opinion",
+   "questions": 2,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-03-02",
+   "series": [
+    "elections:US",
+    "manifestations:US"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "calendriers-echeances:marches",
+   "nom": "Marchés et calendrier",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-08-16",
+   "series": [
+    "fred:DFF"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "climat-extremes:secheresses",
+   "nom": "Sécheresses",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-08-16",
+   "series": [
+    "pub:secheresse_us_d2plus"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "crises-bancaires:marches",
+   "nom": "Marchés financiers",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2025-06-08",
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "energie-mondiale:production",
+   "nom": "Production",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-06-07",
+   "series": [
+    "eia:WCRFPUS2"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "energie-mondiale:decisions",
+   "nom": "Décisions et conventions",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-06-07",
+   "series": [
+    "sanctions:RU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "guerre-levant:liban",
+   "nom": "Liban",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2024-07-21",
+   "series": [
+    "feux:LB",
+    "paire:IL:LB:force"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:passage_acte",
+   "nom": "Passage à l'acte collectif (manifestation, émeute, violence, vote sanction)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-06-21",
+   "series": [
+    "hostilites:UA",
+    "manifestations:IL",
+    "manifestations:US"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "inflation-mondiale:prix_conso",
+   "nom": "Prix à la consommation",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2026-08-30",
+   "series": [
+    "fred:CPIAUCSL:var12",
+    "nowcast:variation_mensuelle:CPI"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "inflation-mondiale:approvisionnement",
+   "nom": "Chaînes d'approvisionnement",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2026-03-29",
+   "series": [
+    "portwatch:suez:porte_conteneurs"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "information-cyber:recits",
+   "nom": "Récits et désinformation",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [
+    "recit_russe:MD",
+    "rss_region:REG_ORG_EUR_EU:verification"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "infrastructures-critiques:cascades",
+   "nom": "Défaillances en cascade",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-06-21",
+   "series": [
+    "urgences:7700"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "non-proliferation:dissuasion",
+   "nom": "Dissuasion des puissances dotées",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-07-19",
+   "series": [
+    "gestes:USA:RUS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "non-proliferation:etats_du_seuil",
+   "nom": "États proches du seuil ou hors traité",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-07-19",
+   "series": [
+    "gestes:USA:IRN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "politique-americaine:sanctions",
+   "nom": "Sanctions et politique étrangère économique",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2026-03-29",
+   "series": [
+    "federal_register:tous:Treasury",
+    "routines:pentagone",
+    "sanctions:IR",
+    "sanctions:RU"
+   ],
+   "n_series": 4
+  },
+  {
+   "compartiment": "politique-americaine:entourage",
+   "nom": "Entourage et coalition de soutien",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-08-17",
+   "series": [
+    "congres:nominations",
+    "tfr:VIP"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "russie-ukraine:soutiens",
+   "nom": "Soutiens extérieurs",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-05-25",
+   "series": [
+    "gestes:USA:UKR",
+    "hostilites:MD"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "russie-ukraine:sanctions",
+   "nom": "Sanctions",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-03-01",
+   "series": [
+    "sanctions:RU",
+    "sanctions_chine:UA"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "sciences-techniques:recherche",
+   "nom": "Recherche scientifique",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [
+    "pub:arxiv_cs_lg"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "securite-europeenne:otan_ue",
+   "nom": "OTAN et Union européenne",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-11-09",
+   "series": [
+    "rss:RU:conseil_ue",
+    "rss:RU:parlement_ue_presse"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "securite-publique:frontieres",
+   "nom": "Frontières et ports",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-08-16",
+   "series": [
+    "portwatch:panama:porte_conteneurs"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "politique-interieure:partis",
+   "nom": "Partis et mouvements",
+   "questions": 71,
+   "metaculus": 3,
+   "oui": 0.338,
+   "premiere": "2025-03-16",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:forme",
+   "nom": "Forme et blessures",
+   "questions": 62,
+   "metaculus": 5,
+   "oui": 0.306,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:public",
+   "nom": "Public et jurys",
+   "questions": 62,
+   "metaculus": 5,
+   "oui": 0.306,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:scrutins",
+   "nom": "Scrutins et primaires",
+   "questions": 53,
+   "metaculus": 1,
+   "oui": 0.472,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:partis_gouverneurs",
+   "nom": "Partis, coalitions et gouverneurs",
+   "questions": 53,
+   "metaculus": 1,
+   "oui": 0.472,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:mandats_succession",
+   "nom": "Mandats, limites et successions",
+   "questions": 52,
+   "metaculus": 6,
+   "oui": 0.212,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-interieure:dirigeants",
+   "nom": "Dirigeants et élus (rôle public)",
+   "questions": 52,
+   "metaculus": 6,
+   "oui": 0.212,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "calendriers-echeances:banques_centrales",
+   "nom": "Réunions des banques centrales et des producteurs",
+   "questions": 44,
+   "metaculus": 3,
+   "oui": 0.295,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "information-cyber:langues_biais",
+   "nom": "Langues et biais des sources",
+   "questions": 29,
+   "metaculus": 1,
+   "oui": 0.241,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:personnalites",
+   "nom": "Personnalités publiques qui communiquent par les plateformes",
+   "questions": 28,
+   "metaculus": 5,
+   "oui": 0.393,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dette-emergents:gisements",
+   "nom": "Gisements et ressources du sous-sol",
+   "questions": 27,
+   "metaculus": 4,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-interieure:elections",
+   "nom": "Élections et alternances",
+   "questions": 27,
+   "metaculus": 1,
+   "oui": 0.296,
+   "premiere": "2025-05-11",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:executifs",
+   "nom": "Chefs d'État et de gouvernement",
+   "questions": 23,
+   "metaculus": 6,
+   "oui": 0.261,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "sciences-techniques:ia",
+   "nom": "Intelligence artificielle (modèles, laboratoires, produits)",
+   "questions": 22,
+   "metaculus": 3,
+   "oui": 0.318,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:banques_centrales_puissance",
+   "nom": "Banques centrales comme acteurs de puissance",
+   "questions": 19,
+   "metaculus": 3,
+   "oui": 0.263,
+   "premiere": "2025-08-03",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:alliances",
+   "nom": "Alliances et engagements de défense",
+   "questions": 16,
+   "metaculus": 0,
+   "oui": 0.125,
+   "premiere": "2025-03-02",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "calendriers-echeances:dates_limites",
+   "nom": "Dates limites des questions (convention)",
+   "questions": 15,
+   "metaculus": 11,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:geants_mango",
+   "nom": "Géants de la technologie et de l'IA (« MANGO »)",
+   "questions": 13,
+   "metaculus": 1,
+   "oui": 0.462,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "culture-memoire:creation",
+   "nom": "Création",
+   "questions": 9,
+   "metaculus": 0,
+   "oui": 0.222,
+   "premiere": "2025-03-16",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:cinema_series",
+   "nom": "Cinéma et séries (Hollywood, Bollywood, Nollywood…)",
+   "questions": 9,
+   "metaculus": 0,
+   "oui": 0.222,
+   "premiere": "2025-03-16",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "climat-extremes:oceans",
+   "nom": "Océans",
+   "questions": 8,
+   "metaculus": 2,
+   "oui": 0.125,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:extremes_islam",
+   "nom": "Franges extrêmes - jihadisme",
+   "questions": 7,
+   "metaculus": 0,
+   "oui": 0.143,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "climat-extremes:tempetes",
+   "nom": "Tempêtes et pluies extrêmes",
+   "questions": 6,
+   "metaculus": 2,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "energie-mondiale:nucleaire_civil",
+   "nom": "Nucléaire civil",
+   "questions": 5,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:demande",
+   "nom": "Demande (électrification, numérique et IA, défense)",
+   "questions": 5,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:electricite",
+   "nom": "Électricité nucléaire",
+   "questions": 5,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "calendriers-echeances:anticipations",
+   "nom": "Anticipation des échéances",
+   "questions": 4,
+   "metaculus": 1,
+   "oui": 0.75,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:justice",
+   "nom": "Justice",
+   "questions": 4,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2025-03-16",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:calendrier",
+   "nom": "Calendrier des compétitions",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2025-03-16",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "culture-memoire:usages_memoire",
+   "nom": "Usages politiques de la mémoire (lois mémorielles, récits concurrents)",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 0.333,
+   "premiere": "2026-01-18",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:defaillances",
+   "nom": "Défaillances d'entreprises",
+   "questions": 3,
+   "metaculus": 3,
+   "oui": 0.0,
+   "premiere": "2025-04-13",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "epidemies:agent",
+   "nom": "Agent infectieux (virus, bactérie)",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2025-03-02",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "information-cyber:plateformes",
+   "nom": "Plateformes et réseaux sociaux",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "iran-nucleaire:verification",
+   "nom": "Vérification et inspections",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:plateformes_sociales",
+   "nom": "Réseaux sociaux et plateformes vidéo",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:jeux_video",
+   "nom": "Jeux vidéo",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:surete",
+   "nom": "Sûreté et sécurité (régulateurs, AIEA)",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:onu",
+   "nom": "Système des Nations unies (budget, réforme)",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:commerce_mondial",
+   "nom": "Commerce mondial (OMC)",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2025-10-26",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:retraits",
+   "nom": "Retraits et contournement du multilatéralisme",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-07-05",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:plateformes",
+   "nom": "Plateformes (le biotope virtuel)",
+   "questions": 3,
+   "metaculus": 0,
+   "oui": 0.333,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "russie-ukraine:atomique",
+   "nom": "Centrales nucléaires et sûreté (niveau institutionnel)",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "sciences-techniques:adoption",
+   "nom": "Diffusion et adoption",
+   "questions": 3,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:groupes_armes",
+   "nom": "Groupes armés djihadistes (JNIM, État islamique)",
+   "questions": 2,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-01-04",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dette-emergents:fmi",
+   "nom": "FMI et Banque mondiale",
+   "questions": 2,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-05-25",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:etats",
+   "nom": "États et frontières entre États",
+   "questions": 2,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-11-23",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:gauche_sociale_democrate",
+   "nom": "Sociaux-démocrates, travaillistes, gauche de gouvernement",
+   "questions": 2,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2026-03-01",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-americaine:commerce",
+   "nom": "Commerce et droits de douane",
+   "questions": 2,
+   "metaculus": 2,
+   "oui": 0.0,
+   "premiere": "2025-03-02",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:politiques_communes",
+   "nom": "Politiques communes",
+   "questions": 2,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:demographie_jeunesse",
+   "nom": "Démographie et jeunesse",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2026-02-15",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-nord-est:coree_du_nord",
+   "nom": "Corée du Nord (programmes nucléaire et balistique)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-03-02",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-nord-est:coree_du_sud",
+   "nom": "Corée du Sud (président Lee Jae-myung)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-08-31",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:nutrition",
+   "nom": "Nutrition et faim (sous-nutrition, carences, obésité)",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2025-11-09",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:cartels_mafias",
+   "nom": "Cartels et mafias",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-05-24",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:traite",
+   "nom": "Traite des êtres humains",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:parlementaires",
+   "nom": "Parlementaires et élus",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-07-05",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:departs",
+   "nom": "Départs du pouvoir et ce qui suit",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-05-11",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:popularite",
+   "nom": "Popularité et légitimité",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-03-02",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:finance_entreprise",
+   "nom": "Finance d'entreprise",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-06-22",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:regles_sectorielles",
+   "nom": "Règles sectorielles",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2026-07-05",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:echanges",
+   "nom": "Échanges internationaux de biens et de services",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-06-22",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "famille-genre:mariage",
+   "nom": "Mariage et unions (dont mariages d'enfants)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-11-09",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:blocs",
+   "nom": "Blocs idéologiques et alliances",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-11-09",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:frontieres_contestees",
+   "nom": "Frontières contestées",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2026-03-01",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "guerre-levant:puissances",
+   "nom": "Puissances extérieures",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-05-25",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:jeunesse",
+   "nom": "Adolescence et cohortes jeunes (prise de risque, appartenance, nouveauté)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2026-02-15",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:opinion_publique",
+   "nom": "Opinion publique (ce qui se dit, se signe, se vote à découvert)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-03-02",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:croyances",
+   "nom": "Croyances religieuses et spirituelles (pratiques, rituels, calendriers sacrés)",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2026-06-07",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:bases_projection",
+   "nom": "Bases à l'étranger et projection de puissance",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-11-09",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:controles_export",
+   "nom": "Contrôles à l'exportation (terres rares, graphite, matériaux de batteries)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-05-25",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:niveau_mer",
+   "nom": "Niveau de la mer et côtes",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2026-10-25",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:conseil_securite",
+   "nom": "Conseil de sécurité (veto des cinq membres permanents)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-01-04",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:justice_internationale",
+   "nom": "Justice internationale (CPI, CIJ)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-02-15",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:sante_mondiale",
+   "nom": "Santé mondiale (OMS)",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2025-03-02",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:clubs_puissances",
+   "nom": "Clubs de puissances (G7, G20, OCS, BRICS)",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 1.0,
+   "premiere": "2025-11-09",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-americaine:regles_electorales",
+   "nom": "Règles électorales et découpages (convention)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2026-05-10",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-interieure:regime",
+   "nom": "Régime et démocratie",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-08-17",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:developpement",
+   "nom": "Développement tout au long de la vie",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 1.0,
+   "premiere": "2026-02-15",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:desinformation",
+   "nom": "Campagnes de désinformation (établies)",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2024-07-21",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:alertes",
+   "nom": "Alertes et protection civile",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-05-24",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:meteorites",
+   "nom": "Météorites et objets géocroiseurs (rare)",
+   "questions": 1,
+   "metaculus": 1,
+   "oui": 0.0,
+   "premiere": "2026-03-29",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soudan:fsr",
+   "nom": "Forces de soutien rapide (FSR, en anglais RSF)",
+   "questions": 1,
+   "metaculus": 0,
+   "oui": 0.0,
+   "premiere": "2025-11-23",
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:juntes_sahel",
+   "nom": "Juntes du Sahel et Alliance des États du Sahel (Mali, Burkina Faso, Niger)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:grands_lacs",
+   "nom": "Grands Lacs (RDC, Rwanda, M23)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:corne",
+   "nom": "Corne de l'Afrique (Somalie, Éthiopie, Érythrée)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:institutions_regionales",
+   "nom": "Institutions régionales (CEDEAO, Union africaine, communautés régionales)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:puissances_exterieures",
+   "nom": "Puissances extérieures (Russie, Chine, France, États-Unis, Turquie, pays du Golfe)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:deplacements",
+   "nom": "Déplacements forcés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:ressources",
+   "nom": "Ressources du sous-sol (or, uranium, cobalt, coltan)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:croissance",
+   "nom": "Croissance et conjoncture",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:integration_commerciale",
+   "nom": "Zone de libre-échange continentale africaine (ZLECAf)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:argent_mobile",
+   "nom": "Argent mobile et paiements numériques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:acces_electricite",
+   "nom": "Accès à l'électricité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:alternances",
+   "nom": "Alternances électorales et élections",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique-subsaharienne:creation_culturelle",
+   "nom": "Création culturelle (musiques, cinéma, littérature)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique:demographie_continent",
+   "nom": "Démographie du continent",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique:union_africaine",
+   "nom": "Union africaine et zone de libre-échange (ZLECAf)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique:afrique_nord",
+   "nom": "Afrique du Nord (Maghreb, Égypte, Libye)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "manifestations:DZ",
+    "manifestations:EG",
+    "manifestations:MA",
+    "manifestations:TN"
+   ],
+   "n_series": 4
+  },
+  {
+   "compartiment": "afrique:libye",
+   "nom": "Libye divisée",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:LBY"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "afrique:sahara_occidental",
+   "nom": "Sahara occidental",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique:conflits_continent",
+   "nom": "Conflits à l'échelle du continent",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:ETH",
+    "ucdp_mois:NGA"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "afrique:ressources_continent",
+   "nom": "Ressources et minerais",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "afrique:climat_continent",
+   "nom": "Climat : Sahel, Corne, sécheresses",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pub:nino34_anomalie"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "afrique:puissances_continent",
+   "nom": "Puissances extérieures",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:sols",
+   "nom": "Sols et terres cultivées",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:eau_agricole",
+   "nom": "Eau agricole",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:cultures",
+   "nom": "Cultures et récoltes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pub:psd_ble_stocks",
+    "pub:psd_mais_production"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "alimentation-mondiale:ravageurs",
+   "nom": "Ravageurs et maladies des cultures",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:engrais",
+   "nom": "Engrais",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DHHNGSP"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "alimentation-mondiale:stocks",
+   "nom": "Stocks de grains",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:commerce",
+   "nom": "Commerce des grains",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:bosphore:navires"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "alimentation-mondiale:prix",
+   "nom": "Prix alimentaires mondiaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:PFOODINDEXM:var12",
+    "prix_alimentaires:SD"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "alimentation-mondiale:climat",
+   "nom": "Climat de la saison",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:delhi",
+    "meteo:shanghai"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "alimentation-mondiale:importateurs",
+   "nom": "Pays importateurs et ménages",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "acaps:SD",
+    "prix_alimentaires:EG",
+    "violations:Sudan"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "alimentation-mondiale:elevage",
+   "nom": "Élevage (fait écologique et économique)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:chimie_sols",
+   "nom": "Chimie des sols (azote, phosphore, potasse, acidité)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:pathogenes",
+   "nom": "Pathogènes des plantes et des animaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "alimentation-mondiale:pollinisateurs",
+   "nom": "Pollinisateurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "amerique-latine:venezuela",
+   "nom": "Venezuela après l'intervention américaine",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:VEN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "amerique-latine:violences_criminelles",
+   "nom": "Violences criminelles (Mexique, Colombie, Équateur, Brésil)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:COL",
+    "ucdp_mois:ECU",
+    "ucdp_mois:MEX"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "amerique-latine:haiti",
+   "nom": "Haïti",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:HTI"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "amerique-latine:bascule_politique",
+   "nom": "Bascule politique 2025-2026",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "amerique-latine:ressources_latam",
+   "nom": "Ressources (lithium, cuivre, pétrole, soja)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "amerique-latine:usa_chine_latam",
+   "nom": "États-Unis et Chine sur le continent",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "antarctique:traite",
+   "nom": "Système du traité sur l'Antarctique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "antarctique:revendications",
+   "nom": "Revendications territoriales gelées",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "antarctique:presences",
+   "nom": "Stations et présences (Chine, Russie)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "antarctique:krill_peche",
+   "nom": "Pêche au krill et aires marines protégées (CCAMLR)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "antarctique:glace_mer",
+   "nom": "Glace de mer antarctique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "antarctique:calotte",
+   "nom": "Calotte glaciaire et niveau des mers",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "arctique:glace_arctique",
+   "nom": "Glace de mer arctique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "arctique:groenland",
+   "nom": "Groenland",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "arctique:route_nord",
+   "nom": "Route maritime du Nord",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "arctique:militarisation",
+   "nom": "Militarisation et OTAN",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "arctique:conseil_arctique",
+   "nom": "Conseil de l'Arctique et peuples autochtones",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "arctique:ressources_arctique",
+   "nom": "Ressources (gaz, minerais, pêche)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-centrale:etats_c5",
+   "nom": "Les cinq États (C5)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-centrale:partenaires",
+   "nom": "Partenaires concurrents (Russie, Chine, États-Unis)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-centrale:minerais_energie",
+   "nom": "Uranium, gaz et minerais",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-centrale:eau_region",
+   "nom": "Eau (Amou-Daria, Syr-Daria)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-centrale:migrants_travail",
+   "nom": "Migrants de travail",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-nord-est:russie_coree",
+   "nom": "Axe Russie-Corée du Nord",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-nord-est:japon",
+   "nom": "Japon (réarmement, gouvernement Takaichi)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-nord-est:chine_japon",
+   "nom": "Différends Chine-Japon (Taïwan, mer de Chine orientale)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-nord-est:alliances",
+   "nom": "Alliances avec les États-Unis (bases, coopération à trois)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud-est:asean",
+   "nom": "ASEAN",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud-est:mer_chine_meridionale",
+   "nom": "Mer de Chine méridionale",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud-est:birmanie",
+   "nom": "Birmanie (guerre civile)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:MMR"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "asie-du-sud-est:indonesie",
+   "nom": "Indonésie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "manifestations:ID"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "asie-du-sud-est:philippines",
+   "nom": "Philippines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "manifestations:PH"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "asie-du-sud-est:economie_region",
+   "nom": "Économies et chaînes de production",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud:inde_pakistan",
+   "nom": "Inde et Pakistan (Cachemire, crises militaires)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud:indus",
+   "nom": "Eaux de l'Indus (traité de 1960)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud:afghanistan_pakistan",
+   "nom": "Pakistan et Afghanistan des talibans (TTP, frontière)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud:inde_puissance",
+   "nom": "Inde, puissance économique et diplomatique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud:pakistan_interieur",
+   "nom": "Pakistan, pouvoir et économie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud:bangladesh",
+   "nom": "Bangladesh après le soulèvement de 2024",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "asie-du-sud:puissances",
+   "nom": "Puissances extérieures (Chine, États-Unis, Russie, Golfe)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "australie:aukus",
+   "nom": "Alliance AUKUS et défense",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "australie:commerce_chine",
+   "nom": "Commerce et dépendance à la Chine",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "australie:minerais_aus",
+   "nom": "Minerais (fer, lithium, terres rares)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "australie:climat_aus",
+   "nom": "Climat extrême (feux, sécheresses, Grande Barrière)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pub:nino34_anomalie"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "australie:peuples_aborigenes",
+   "nom": "Peuples aborigènes et du détroit de Torres",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "australie:politique_aus",
+   "nom": "Politique intérieure",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:biotope",
+   "nom": "Biotope (le milieu physique du vivant)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:producteurs",
+   "nom": "Producteurs (plantes, algues, phytoplancton)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:consommateurs",
+   "nom": "Consommateurs (herbivores, carnivores, chaînes alimentaires)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:decomposeurs",
+   "nom": "Décomposeurs (bactéries, champignons, petite faune du sol)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:diversite_especes",
+   "nom": "Diversité des espèces (toutes les espèces)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:cycle_vivant",
+   "nom": "Cycle du vivant (naître, croître, se reproduire, mourir, être décomposé)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:biomes",
+   "nom": "Biomes et écosystèmes emboîtés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:espece_humaine",
+   "nom": "L'espèce humaine dans la biocénose",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biocenose:apports_vivant",
+   "nom": "Ce que le vivant apporte aux humains",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:especes",
+   "nom": "État des espèces (risque d'extinction)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:populations",
+   "nom": "Populations sauvages (abondance)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:habitats",
+   "nom": "Habitats et usage des terres",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:surexploitation",
+   "nom": "Chasse, pêche et commerce d'espèces",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:sols_vivants",
+   "nom": "Vie du sol, matière organique, érosion",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:envahissantes",
+   "nom": "Espèces envahissantes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:aires_protegees",
+   "nom": "Aires protégées et objectif de 30 %",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "biodiversite-sols:accords",
+   "nom": "Accords sur le vivant (diversité biologique, Kunming-Montréal, CITES, désertification)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "calendriers-echeances:parlements",
+   "nom": "Sessions parlementaires",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "calendriers-echeances:publications",
+   "nom": "Publications statistiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "calendrier_nbs"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "calendriers-echeances:memoire",
+   "nom": "Dates de mémoire et anniversaires",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "memoire:RU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "calendriers-echeances:fetes",
+   "nom": "Fêtes religieuses et jours fériés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "calendriers-echeances:saisons",
+   "nom": "Saisons agricoles et de combat",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:kyiv"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "canada:commerce_usa",
+   "nom": "Commerce avec les États-Unis (CUSMA)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "canada:economie_can",
+   "nom": "Économie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "canada:energie_minerais_can",
+   "nom": "Énergie et minerais",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "canada:politique_can",
+   "nom": "Politique intérieure et unité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "canada:nord_canadien",
+   "nom": "Nord canadien et souveraineté arctique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:tres_riches",
+   "nom": "Très riches (les 1 %, les 0,001 %)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:classes_moyennes",
+   "nom": "Classes moyennes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:classes_populaires",
+   "nom": "Classes populaires (ouvriers, employés)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:pauvrete_extreme",
+   "nom": "Pauvreté extrême",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:travail_informel",
+   "nom": "Travail informel et précarité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:paysannerie",
+   "nom": "Paysannerie et monde agricole",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:cadres_intellectuels",
+   "nom": "Cadres et professions intellectuelles",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:independants",
+   "nom": "Indépendants, artisans, commerçants, petits patrons",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:mobilite_sociale",
+   "nom": "Mobilité sociale (l'ascenseur)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:capitaux_reproduction",
+   "nom": "Capitaux et reproduction (économique, culturel, social, symbolique)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "classes-sociales:hierarchies_heritees",
+   "nom": "Hiérarchies héritées (statuts de naissance)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "climat-extremes:oscillations",
+   "nom": "Oscillations climatiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pub:nino34_anomalie"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "climat-extremes:atmosphere",
+   "nom": "Circulation atmosphérique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "climat-extremes:vegetation",
+   "nom": "Sols et végétation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "climat-extremes:feux",
+   "nom": "Feux de végétation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feux:BR",
+    "feux:US"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "climat-extremes:chimie_atmosphere",
+   "nom": "Chimie de l'atmosphère (gaz à effet de serre, aérosols)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "climat-extremes:rayonnement",
+   "nom": "Rayonnement et bilan d'énergie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pub:banquise_arctique",
+    "pub:taches_solaires"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "climat-extremes:relief",
+   "nom": "Relief (montagnes, plateaux, côtes)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:regles",
+   "nom": "Règles d'attribution (convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:psychologie",
+   "nom": "Psychologie de la compétition",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:argent",
+   "nom": "Argent et marchés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:medias",
+   "nom": "Médias et récits",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:milieu",
+   "nom": "Milieu physique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "competitions-culture:geopolitique",
+   "nom": "Géopolitique des compétitions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:besoins_vitaux",
+   "nom": "Besoins vitaux (eau, énergie, oxygène, sommeil, température du corps)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:maladies_chroniques",
+   "nom": "Maladies non transmissibles (cœur et vaisseaux, cancers, diabète, poumons)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:sante_mentale",
+   "nom": "Santé mentale et suicide",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:chaleur_froid",
+   "nom": "Chaleur, froid et corps (régulation thermique, morts de chaleur)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:pollution",
+   "nom": "Pollution et corps (air, eau, substances chimiques)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:antimicrobiens",
+   "nom": "Immunité et résistance aux antimicrobiens",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:vieillissement",
+   "nom": "Vieillissement et espérance de vie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:soins",
+   "nom": "Systèmes de soins (couverture, personnel, coût)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corps-humain:reproduction",
+   "nom": "Reproduction, santé maternelle et infantile",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:perception",
+   "nom": "Perception et mesure de la corruption",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:grande_corruption",
+   "nom": "Grande corruption et captation de l'État",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:corruption_quotidienne",
+   "nom": "Corruption quotidienne (services publics, police, justice, santé)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:marches_publics",
+   "nom": "Marchés publics et secteurs exposés (énergie, défense, mines, santé)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:blanchiment",
+   "nom": "Blanchiment et sociétés écrans",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:lutte",
+   "nom": "Lutte contre la corruption (lois, agences, parquets)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:presse_alerte",
+   "nom": "Presse d'enquête et lanceurs d'alerte",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "corruption:confiance",
+   "nom": "Confiance publique et réactions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:drogues",
+   "nom": "Marchés des drogues",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:escroqueries_cyber",
+   "nom": "Escroqueries industrielles et cybercriminalité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:blanchiment",
+   "nom": "Blanchiment",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:trafics_armes_especes",
+   "nom": "Trafics d'armes et d'espèces sauvages",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:captation_etats",
+   "nom": "Captation d'États par le crime",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crime-organise:repression",
+   "nom": "Répression et coopération policière",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crises-bancaires:depots",
+   "nom": "Dépôts et liquidité des banques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DPSACBW027SBOG:var52"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "crises-bancaires:confiance",
+   "nom": "Confiance et panique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:VIXCLS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "crises-bancaires:bilans",
+   "nom": "Bilans et pertes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DGS10"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "crises-bancaires:faillites",
+   "nom": "Faillites d'entreprises",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crises-bancaires:creanciers",
+   "nom": "Créanciers",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crises-bancaires:cryptomonnaies",
+   "nom": "Cryptomonnaies et sociétés exposées",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:CBBTCUSD"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "crises-bancaires:regulateurs",
+   "nom": "Régulateurs et prêteurs en dernier ressort",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DFF"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "crises-bancaires:convention",
+   "nom": "Conventions (définition du défaut, notations, règles comptables)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "crises-bancaires:recits",
+   "nom": "Récits et réseaux sociaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:christianisme",
+   "nom": "Christianisme",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:islam",
+   "nom": "Islam",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:hindouisme",
+   "nom": "Hindouisme",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:bouddhisme",
+   "nom": "Bouddhisme",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:judaisme",
+   "nom": "Judaïsme",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:religions_chinoises",
+   "nom": "Religions chinoises et populaires (taoïsme, confucianisme, cultes populaires, shintoïsme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:traditions_autochtones",
+   "nom": "Religions traditionnelles africaines et autochtones",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:autres_religions",
+   "nom": "Autres religions (sikhisme, jaïnisme, bahaïsme, zoroastrisme…)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:sans_religion",
+   "nom": "Sans religion (athées, agnostiques, sans appartenance)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:aires_geographiques",
+   "nom": "Aires géographiques (agrégats, jamais uniformes)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:rapports_de_force",
+   "nom": "Rapports de force démographiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:religion_politique",
+   "nom": "Religion et politique (États, partis, autorités religieuses)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:extremes_christianisme",
+   "nom": "Franges extrêmes - chrétiennes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:extremes_hindouisme",
+   "nom": "Franges extrêmes - nationalisme hindou radical",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:extremes_bouddhisme",
+   "nom": "Franges extrêmes - nationalisme bouddhiste radical",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:extremes_judaisme",
+   "nom": "Franges extrêmes - juives",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "croyances-religions:sectes",
+   "nom": "Sectes et dérives sectaires (en périphérie de tous les blocs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "culture-memoire:histoire_memoire",
+   "nom": "Histoire et mémoire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "culture-memoire:tourisme",
+   "nom": "Tourisme et voyages",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "culture-memoire:patrimoine",
+   "nom": "Patrimoine et sa protection",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "culture-memoire:patrimoine_en_guerre",
+   "nom": "Patrimoine touché par les guerres",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "culture-memoire:restitutions",
+   "nom": "Restitutions de biens culturels",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:carbone",
+   "nom": "Carbone (air, océan, vivant, roche)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ouvert:co2_mauna_loa:var12"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:azote",
+   "nom": "Azote (air, sols, engrais, eaux)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:soufre",
+   "nom": "Soufre (volcans, combustion, pluies acides)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:phosphore",
+   "nom": "Phosphore (roches, engrais, eaux)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:eau",
+   "nom": "Eau (évaporation, pluie, transpiration)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:delhi"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:microbes_du_sol",
+   "nom": "Microbes du sol",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:vegetation",
+   "nom": "Végétation (photosynthèse)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:elevage",
+   "nom": "Élevage (fait écologique autant qu'économique)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:combustion",
+   "nom": "Combustion et industrie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feux:BR",
+    "fred:DCOILBRENTEU"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:engrais",
+   "nom": "Engrais et mines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DHHNGSP"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "cycles-biogeochimiques:climat",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:berlin"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "dette-emergents:monnaies",
+   "nom": "Monnaies et change",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "dette-emergents:dette_publique",
+   "nom": "Dette publique en devises",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DGS10"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "dette-emergents:reserves",
+   "nom": "Réserves de change",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dette-emergents:banques",
+   "nom": "Banques locales",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dette-emergents:creanciers",
+   "nom": "Créanciers",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dette-emergents:inflation_locale",
+   "nom": "Inflation locale",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:PFOODINDEXM:var12",
+    "prix_alimentaires:NG"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "dette-emergents:politique_interieure",
+   "nom": "Politique intérieure et contestation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "elections:BR",
+    "manifestations:KE",
+    "ooni:AR"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "dette-emergents:matieres_premieres",
+   "nom": "Recettes de matières premières",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DCOILBRENTEU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "dette-emergents:notations_definitions",
+   "nom": "Notations, définitions et statistiques (convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dette-emergents:recoltes_catastrophes",
+   "nom": "Récoltes et catastrophes naturelles",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feux:ZM"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "dirigeants-elus:ministres",
+   "nom": "Ministres et gouvernements",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:entourage",
+   "nom": "Entourage (conseillers, famille au pouvoir, cercles)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:programmes",
+   "nom": "Idées et programmes portés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:justice_immunites",
+   "nom": "Justice, immunités et poursuites",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:diplomatie_personnelle",
+   "nom": "Diplomatie personnelle (sommets, rencontres, appels)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "dirigeants-elus:age_sante",
+   "nom": "Âge et santé des dirigeants (déclarations publiques seulement)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:ressources",
+   "nom": "Ressources en eau douce (fleuves, lacs, nappes renouvelables)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:stress",
+   "nom": "Stress hydrique (eau prélevée rapportée à l'eau disponible)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:nappes",
+   "nom": "Nappes souterraines (épuisement)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:prelevements",
+   "nom": "Prélèvements par usage (agriculture, industrie, villes)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:acces",
+   "nom": "Accès à l'eau potable",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:assainissement",
+   "nom": "Assainissement et hygiène",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:qualite",
+   "nom": "Qualité et pollution de l'eau",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:maladies",
+   "nom": "Maladies hydriques (choléra, diarrhées, typhoïde)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:corps",
+   "nom": "L'eau du corps (besoins vitaux, déshydratation, chaleur)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:gouvernance",
+   "nom": "Gouvernance et prix de l'eau",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-douce-potable:tensions",
+   "nom": "Tensions et conflits liés à l'eau",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:pluies",
+   "nom": "Pluies et neige",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:chaleur",
+   "nom": "Chaleur et évaporation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:bandar_abbas",
+    "meteo:teheran"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "eau-moyen-orient:fleuves",
+   "nom": "Fleuves partagés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:barrages",
+   "nom": "Barrages et retenues",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:nappes",
+   "nom": "Nappes souterraines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:rarete",
+   "nom": "Rareté de l'eau douce",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:dessalement",
+   "nom": "Dessalement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:irrigation",
+   "nom": "Agriculture irriguée",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:villes",
+   "nom": "Villes et populations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:IQ",
+    "ooni:IR"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "eau-moyen-orient:etats_riverains",
+   "nom": "États d'amont et d'aval",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:EGY:ETH",
+    "radar:IQ"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "eau-moyen-orient:relief",
+   "nom": "Relief et partage des eaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:chimie_eau",
+   "nom": "Chimie de l'eau (salinité, pollution)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:maladies_hydriques",
+   "nom": "Maladies hydriques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "eau-moyen-orient:climat_regime",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:teheran"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "economie-chinoise:activite",
+   "nom": "Activité économique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feries_chine",
+    "feux:CN"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "economie-chinoise:immobilier",
+   "nom": "Immobilier et collectivités locales",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-chinoise:exportations",
+   "nom": "Industrie et exportations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:malacca:porte_conteneurs",
+    "portwatch:taiwan:porte_conteneurs"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "economie-chinoise:consommation",
+   "nom": "Consommation des ménages",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feries_chine"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "economie-chinoise:emploi",
+   "nom": "Emploi et chômage des jeunes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-chinoise:politique_monetaire",
+   "nom": "Politique monétaire et budgétaire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-chinoise:pouvoir",
+   "nom": "Pouvoir et orientations politiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "manifestations:CN",
+    "ooni:CN"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "economie-chinoise:statistiques",
+   "nom": "Statistiques officielles (convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "calendrier_nbs",
+    "publications_nbs"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "economie-chinoise:matieres_premieres",
+   "nom": "Demande de matières premières",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:shanghai",
+    "portwatch:malacca:petroliers"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "economie-chinoise:exterieur",
+   "nom": "Relations économiques extérieures",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:USA:CHN",
+    "sanctions:CN"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "economie-chinoise:eau_fleuves",
+   "nom": "Eau et fleuves (nord sec, sud humide)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:shanghai",
+    "meteo:shanghai"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "economie-chinoise:demographie",
+   "nom": "Démographie (vieillissement, baisse des naissances)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-chinoise:epizooties",
+   "nom": "Épizooties et épidémies",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-chinoise:sols_chimie",
+   "nom": "Sols, engrais et pollution",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:conjoncture",
+   "nom": "Conjoncture générale",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:entreprises",
+   "nom": "Entreprises nommées",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:dirigeants_entreprise",
+   "nom": "Dirigeants d'entreprise (rôle public)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:immobilier_consommation",
+   "nom": "Immobilier et consommation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:investissement_ia",
+   "nom": "Investissement dans l'IA et les centres de données",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:agriculture",
+   "nom": "Secteur primaire agricole (cultures, élevage, forêt, pêche)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:extraction",
+   "nom": "Extraction (mines, pétrole, gaz)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:industrie_manufacturiere",
+   "nom": "Industrie manufacturière et construction",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "economie-entreprises:services",
+   "nom": "Services (secteur tertiaire)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:regles",
+   "nom": "Règles électorales",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:assemblees",
+   "nom": "Assemblées (Sénat et Chambre des députés)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:executif",
+   "nom": "Exécutif",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:economie",
+   "nom": "Économie, inflation et monnaie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "elections-amerique-latine:fmi",
+   "nom": "FMI et créanciers",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:humeur",
+   "nom": "Humeur des électeurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "elections-amerique-latine:recoltes_exports",
+   "nom": "Récoltes et exportations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:PFOODINDEXM:var12"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "energie-mondiale:demande",
+   "nom": "Demande",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "eia:WRPUPUS2"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "energie-mondiale:stocks",
+   "nom": "Stocks",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "eia:WCESTUS1:var52",
+    "eia:WCSSTUS1"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "energie-mondiale:transport",
+   "nom": "Transport",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:bab_el_mandeb:petroliers"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "energie-mondiale:raffinage",
+   "nom": "Raffinage",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "energie-mondiale:prix",
+   "nom": "Prix et marchés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DCOILBRENTEU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "energie-mondiale:conflits",
+   "nom": "Conflits et sécurité des approvisionnements",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "energie-mondiale:climat",
+   "nom": "Climat et saisons",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:berlin",
+    "meteo:houston"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "energie-mondiale:recits",
+   "nom": "Récits et anticipations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "wikipedia:Petroleum"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "energie-mondiale:chimie_combustion",
+   "nom": "Chimie de la combustion",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "energie-mondiale:climat_regime",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:berlin"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "environnement-dechets:environnement",
+   "nom": "Environnement (en général)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:biodiversite",
+   "nom": "Biodiversité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:dechets",
+   "nom": "Plastiques (production, déchets, recyclage, fuite)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:pollution_chimique",
+   "nom": "Substances chimiques nouvelles (PFAS, pesticides, métaux lourds, additifs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:ozone",
+   "nom": "Couche d'ozone",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:qualite_air",
+   "nom": "Qualité de l'air (particules, ozone au sol, dioxyde d'azote)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:traites",
+   "nom": "Conventions et traités (Montréal, Stockholm, Minamata, traité sur le plastique)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:dechets_menagers",
+   "nom": "Déchets ménagers et municipaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:dechets_electroniques",
+   "nom": "Déchets électroniques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:eaux_usees",
+   "nom": "Eaux usées et pollution de l'eau",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:pollution_sols",
+   "nom": "Pollution des sols",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:climat_politique",
+   "nom": "Émissions et accords climatiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "environnement-dechets:droit_contentieux",
+   "nom": "Droit et contentieux de l'environnement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "epidemies:reservoirs",
+   "nom": "Réservoirs animaux et élevage",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "epidemies:milieu",
+   "nom": "Milieu physique (saisons, chaleur, humidité)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:delhi"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "epidemies:malades",
+   "nom": "Malades et immunité (en agrégat)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "epidemies:comportements",
+   "nom": "Comportements et confiance",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "epidemies:convention",
+   "nom": "Convention (nommer, définir, compter, déclarer)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "epidemies:technique",
+   "nom": "Vaccins, tests et traitements",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "epidemies:economie",
+   "nom": "Économie (fermetures, chaînes d'approvisionnement)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:malacca:porte_conteneurs"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "epidemies:recits",
+   "nom": "Récits et attention",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "famille-genre:structures_familiales",
+   "nom": "Structures familiales (nucléaire, élargie, monoparentale, personnes seules)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "famille-genre:parente_clans",
+   "nom": "Parenté, lignées, clans",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "famille-genre:heritage",
+   "nom": "Héritage et transmission",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "famille-genre:roles_soin",
+   "nom": "Rôles de genre et travail de soin",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "famille-genre:violences_genre",
+   "nom": "Violences de genre (en agrégats)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "famille-genre:femmes_pouvoir",
+   "nom": "Femmes au pouvoir",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:emissions",
+   "nom": "Émissions et pollution de l'air",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:pluies_acides",
+   "nom": "Pluies acides",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:sol_mineral",
+   "nom": "Acidité du sol minéral",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:champignons_symbiotiques",
+   "nom": "Champignons symbiotiques (mycorhizes)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:champignons_parasites",
+   "nom": "Champignons parasites",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:pins",
+   "nom": "Arbres dominants (pins)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:insectes_nematodes",
+   "nom": "Insectes et nématodes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:oiseaux",
+   "nom": "Petits oiseaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:succession",
+   "nom": "Succession végétale (bambous et jeunes pousses)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:rongeurs",
+   "nom": "Rongeurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:predateurs",
+   "nom": "Prédateurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:climat",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "foret-et-sols-vivants:interventions",
+   "nom": "Interventions humaines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:continents",
+   "nom": "Continents (une convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:afrique_disputee",
+   "nom": "L'Afrique disputée entre puissances",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:passages",
+   "nom": "Passages (postes frontières, visas, murs, zones de libre circulation)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:administratives",
+   "nom": "Frontières administratives à l'intérieur d'un pays",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "frontieres:local",
+   "nom": "Le local (particularismes, langues, traditions)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "guerre-levant:israel",
+   "nom": "Israël",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:ISR:IRN",
+    "gestes:ISR:LBN",
+    "manifestations:IL"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "guerre-levant:syrie_irak",
+   "nom": "Syrie et Irak",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feux:SY"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "guerre-levant:iran",
+   "nom": "Iran et son réseau régional",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:IRN:ISR",
+    "ooni:IR",
+    "paire:IL:IR:force"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "guerre-levant:mediateurs",
+   "nom": "Médiateurs et diplomatie régionale",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "guerre-levant:humanitaire",
+   "nom": "Situation humanitaire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "prix_alimentaires:LB"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "guerre-levant:recits",
+   "nom": "Récits et opinion",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "telegram:idfofficial",
+    "telegram:tout"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "guerre-levant:relief",
+   "nom": "Relief (hauteurs, vallées, frontières naturelles)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "guerre-levant:eau",
+   "nom": "Eau (Jourdain, nappes, Litani)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "guerre-levant:epidemies",
+   "nom": "Épidémies en temps de guerre",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "guerre-levant:convention",
+   "nom": "Reconnaissances et frontières disputées",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:besoins_fondamentaux",
+   "nom": "Besoins fondamentaux (la survie d'abord : boire, manger, respirer, s'abriter, être en sécurité)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:instant",
+   "nom": "La seconde avant (alerte, peur, dégoût, élan)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:indices",
+   "nom": "Indices du milieu des secondes aux minutes (chaleur, bruit, visages, symboles vus, amorçage)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:delhi",
+    "meteo:houston"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:hormones",
+   "nom": "Hormones des heures aux jours (stress aigu, testostérone, ocytocine)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:stress_chronique",
+   "nom": "Stress des jours aux mois (précarité, faim, insécurité, perte de contrôle)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:PFOODINDEXM:var12",
+    "fred:UNRATE"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:attente",
+   "nom": "Attente et anticipation (ce qu'on espère ou redoute pour demain)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:T10YIE",
+    "fred:UMCSENT"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:enfance",
+   "nom": "Enfance et vie prénatale (adversité précoce, famine, guerre)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:genes_milieu",
+   "nom": "Gènes en interaction avec le milieu (potentiels et vulnérabilités, jamais destin)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:culture_ecologie",
+   "nom": "Culture et écologie d'origine (collectif ou individualiste, honneur, pasteurs ou cultivateurs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:reciprocite",
+   "nom": "Parentèle et réciprocité (proximité de sang, donnant-donnant, réputation)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:UKR:RUS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "humain:nous_eux",
+   "nom": "Nous contre eux (frontière de groupe, menace extérieure, déshumanisation)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "recit_russe:MD",
+    "telegram:tout"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:morale",
+   "nom": "Morale intuitive et raisonnée (dégoût, équité, pureté ; le raisonnement vient souvent après)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:empathie",
+   "nom": "Empathie et compassion (proche plus que lointain, fatigue, rare passage à l'acte)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:symboles",
+   "nom": "Symboles et métaphores (vermine, souillure, terre sacrée, drapeau, anniversaire)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "memoire:RU",
+    "memoire:RU:proche7"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:treve",
+   "nom": "Trêve et coopération (vivre et laisser vivre, contact, intérêts communs, temps qui efface)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:RUS:UKR"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "humain:tri",
+   "nom": "Tri et mélange (où l'on vit, s'assoit, adhère, selon la composition autour de soi)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:conventions",
+   "nom": "Conventions et tabous qui tiennent par l'attente (point focal, côté de la route, non-emploi nucléaire)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:dilemme",
+   "nom": "Dilemme collectif à plusieurs (communs, coopération, défection)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:opinion_privee",
+   "nom": "Opinion privée (ce que l'on pense, invisible tant que dire coûte)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:falsification",
+   "nom": "Falsification des préférences (écart entre ce qu'on pense et ce qu'on dit)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:RU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "humain:disponibilite",
+   "nom": "Disponibilité (ce qui vient à l'esprit : récent, saillant, chargé d'émotion)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ouvert:attention_crise"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "humain:aspiration",
+   "nom": "Niveau d'aspiration (ce qu'on juge satisfaisant, qui suit l'expérience avec retard)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:agenda",
+   "nom": "Agenda des organisations (l'attention rare des décideurs ; routines hors crise)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "federal_register:Presidential Document"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "humain:attitude",
+   "nom": "Attitude envers l'acte (le juger bon ou mauvais pour soi, pas seulement juger la cause)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:norme_percue",
+   "nom": "Norme perçue (ce que les proches approuvent et font, tel qu'on le croit)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:controle_percu",
+   "nom": "Contrôle perçu (pouvoir le faire : ressources, obstacles, risque encouru)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:RU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "humain:intention",
+   "nom": "Intention (être prêt à le faire)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:polarisation",
+   "nom": "Polarisation (écart entre camps, liens transversaux perdus, blocage)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ouvert:polarisation_chambre"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "humain:reseaux_discrets",
+   "nom": "Réseaux discrets à pignon sur rue (sociétés initiatiques, clubs d'influence) — EN OMBRE",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:croyance_complot",
+   "nom": "Croyance en des forces cachées (complots, pouvoirs occultes mondiaux)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "openmeasures:telegram:complot",
+    "ouvert:attention_complot"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "humain:marche_cognitif",
+   "nom": "Marché cognitif (offre d'information sans filtre, concurrence entre médias et entre croyances)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:liens",
+   "nom": "Tissu des liens (proches, connaissances, connaissances de connaissances)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:convergence_editoriale",
+   "nom": "Convergence éditoriale (peu de propriétaires pour beaucoup de titres)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "humain:amplification_algorithmique",
+   "nom": "Amplification algorithmique (peu de plateformes pour beaucoup de lecteurs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inde:population_jeunesse",
+   "nom": "Population et jeunesse",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "manifestations:IN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inde:politique_interieure",
+   "nom": "Politique intérieure (Union et États)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inde:manipur",
+   "nom": "Manipur (violences entre Meitei et Kuki-Zo)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:IND"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inde:maoisme",
+   "nom": "Insurrection maoïste (naxalisme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ucdp_mois:IND"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inde:nucleaire_defense",
+   "nom": "Défense et dissuasion nucléaire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inde:chine_frontiere",
+   "nom": "Frontière avec la Chine (ligne de contrôle effectif)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inde:economie_commerce",
+   "nom": "Économie et commerce extérieur",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inde:energie_petrole_russe",
+   "nom": "Énergie et pétrole russe",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inde:mousson",
+   "nom": "Mousson du sud-ouest (facteur structurel)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pluie:chennai",
+    "pluie:kolkata",
+    "pluie:mumbai",
+    "pluie:nagpur",
+    "pub:nino34_anomalie"
+   ],
+   "n_series": 5
+  },
+  {
+   "compartiment": "inde:chaleur",
+   "nom": "Chaleur et vagues de chaleur",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:delhi",
+    "meteo:nagpur"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "inde:agriculture",
+   "nom": "Agriculture et monde rural",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inflation-mondiale:energie",
+   "nom": "Prix de l'énergie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DCOILBRENTEU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inflation-mondiale:alimentation",
+   "nom": "Prix alimentaires",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:PFOODINDEXM:var12"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inflation-mondiale:salaires",
+   "nom": "Salaires et emploi",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:CES0500000003:var12",
+    "fred:UNRATE"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "inflation-mondiale:anticipations",
+   "nom": "Anticipations d'inflation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:T10YIE"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inflation-mondiale:monnaies",
+   "nom": "Monnaies et dollar",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inflation-mondiale:statistiques",
+   "nom": "Statistiques officielles (convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "calendrier_nbs:ipc"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "inflation-mondiale:elevage_cultures",
+   "nom": "Élevage et cultures (le vivant qui nourrit)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inflation-mondiale:epidemies",
+   "nom": "Épidémies (humaines et animales)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "inflation-mondiale:climat_regime",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:delhi"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "information-cyber:attention",
+   "nom": "Attention collective",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "information-cyber:foules",
+   "nom": "Psychologie des foules",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "information-cyber:censure",
+   "nom": "Censure et filtrage",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:IR",
+    "ooni:RU"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "information-cyber:coupures",
+   "nom": "Coupures d'internet",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "radar"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "information-cyber:cyber",
+   "nom": "Cyberattaques (effets publics)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "webamon:new_domains",
+    "webamon:scans"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "information-cyber:etats",
+   "nom": "États et contrôle de l'information",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "information-cyber:langage_performatif",
+   "nom": "Langage performatif (dire, c'est faire)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "information-cyber:effacement_mots",
+   "nom": "Effacement et interdiction de mots",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "information-cyber:inversion_reecriture",
+   "nom": "Inversion de l'accusation et réécriture du passé",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "infrastructures-critiques:reseaux",
+   "nom": "Réseaux et leurs interdépendances",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:IR"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "infrastructures-critiques:demande",
+   "nom": "Demande et charge",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DHHNGSP"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "infrastructures-critiques:chaleur_tempetes",
+   "nom": "Chaleur, tempêtes et extrêmes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:houston"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "infrastructures-critiques:eau_refroidissement",
+   "nom": "Eau de refroidissement et de production",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "infrastructures-critiques:physique_espace",
+   "nom": "Physique et météo spatiale",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pub:geomag_ap"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "infrastructures-critiques:attaques",
+   "nom": "Attaques et sabotages (effets publics)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "urgences:7500"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "infrastructures-critiques:operateurs_regulateurs",
+   "nom": "Opérateurs et régulateurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "infrastructures-critiques:population",
+   "nom": "Population et confiance",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:montee_eaux",
+   "nom": "Montée des eaux et habitabilité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:cyclones",
+   "nom": "Cyclones et catastrophes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:pacifique",
+   "nom": "Îles du Pacifique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:nouvelle_caledonie",
+   "nom": "Nouvelle-Calédonie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:ocean_indien_iles",
+   "nom": "Îles de l'océan Indien et Chagos",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:caraibes",
+   "nom": "Caraïbes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:zee_cables",
+   "nom": "Zones économiques exclusives et câbles",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "insularite:dependances",
+   "nom": "Dépendance aux importations, au tourisme et à l'aide",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "iran-nucleaire:negociations",
+   "nom": "Négociations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:IRN:USA",
+    "gestes:USA:IRN"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "iran-nucleaire:sanctions",
+   "nom": "Sanctions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "sanctions:IR"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "iran-nucleaire:pouvoir_iranien",
+   "nom": "Pouvoir iranien",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "conflictforecast:IRN",
+    "elections:IR"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "iran-nucleaire:societe_iranienne",
+   "nom": "Société et économie iraniennes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "manifestations:IR",
+    "meteo:teheran",
+    "ooni:IR",
+    "radar:IR"
+   ],
+   "n_series": 4
+  },
+  {
+   "compartiment": "iran-nucleaire:europe",
+   "nom": "Europe (France, Allemagne, Royaume-Uni)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "iran-nucleaire:russie_chine",
+   "nom": "Russie et Chine",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:CHN:IRN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "iran-nucleaire:voisins",
+   "nom": "Voisins régionaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:ISR:IRN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "iran-nucleaire:conseil_securite",
+   "nom": "Conseil de sécurité et droit international",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "iran-nucleaire:recits",
+   "nom": "Récits et signaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "iran-nucleaire:surete_atomique",
+   "nom": "Sûreté atomique civile (niveau institutionnel)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "iran-nucleaire:relief_sites",
+   "nom": "Relief montagneux (fait géographique général)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "iran-nucleaire:sismicite",
+   "nom": "Sismicité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "seismes:iran_m45"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "liban-institutions:justice",
+   "nom": "Justice et Conseil judiciaire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "liban-institutions:gouvernement",
+   "nom": "Conseil des ministres",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "liban-institutions:confessionnalisme",
+   "nom": "Partage confessionnel du pouvoir",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "liban-institutions:blocs_politiques",
+   "nom": "Blocs politiques et leurs entourages",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "liban-institutions:force_armee",
+   "nom": "Forces armées et groupe armé",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:ISR:LBN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "liban-institutions:banque_centrale",
+   "nom": "Banque centrale et crise financière",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "sanctions:LB"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "liban-institutions:opinion_colere",
+   "nom": "Opinion, colère et attente de justice",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "liban-institutions:exterieur",
+   "nom": "Soutiens et pressions extérieurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:IRN:LBN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "liban-institutions:internet_information",
+   "nom": "Information et coupures",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:LB"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "medias-diffusion:createurs",
+   "nom": "Créateurs et influenceurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:proprietaires",
+   "nom": "Propriétaires des médias (concentration, l'exemple français)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:presse",
+   "nom": "Presse écrite et sites d'information",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:edition",
+   "nom": "Édition et littérature",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:television",
+   "nom": "Télévision",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:diffuseurs_internationaux",
+   "nom": "Diffuseurs internationaux et agences de presse",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "medias-diffusion:independants",
+   "nom": "Médias indépendants (plus petits réseaux)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:natalite_vieillissement",
+   "nom": "Natalité et vieillissement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:mortalite",
+   "nom": "Mortalité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:migrations",
+   "nom": "Migrations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "acaps_risques:UA",
+    "ucdp:Sudan"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "migrations-demographie:urbanisation",
+   "nom": "Urbanisation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:diasporas",
+   "nom": "Diasporas et transferts d'argent",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:politiques_migratoires",
+   "nom": "Politiques migratoires",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:convention",
+   "nom": "Statuts et frontières (convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:psychologie",
+   "nom": "Psychologie de l'exil et de l'accueil",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "migrations-demographie:climat_milieu",
+   "nom": "Climat et milieu de départ",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:delhi"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "migrations-demographie:economie",
+   "nom": "Écarts de revenus et emploi",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:UNRATE"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "militaire:depenses",
+   "nom": "Dépenses militaires",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:forces",
+   "nom": "Forces armées et effectifs (active, réserve, conscription)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:arsenaux_nucleaires",
+   "nom": "Arsenaux nucléaires",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:industrie_armement",
+   "nom": "Industrie de l'armement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:commerce_armes",
+   "nom": "Commerce des armes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:technologies",
+   "nom": "Technologies militaires (drones, missiles, IA, espace, cyber)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "militaire:doctrines",
+   "nom": "Doctrines, postures et exercices",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:concentration",
+   "nom": "Concentration de l'extraction et du raffinage",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:cuivre",
+   "nom": "Cuivre",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:batteries",
+   "nom": "Métaux des batteries (lithium, cobalt, nickel, graphite)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:terres_rares_uranium",
+   "nom": "Terres rares et uranium",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:zinc_plomb",
+   "nom": "Zinc et plomb (métaux porteurs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:aluminium",
+   "nom": "Aluminium et alumine (métal porteur)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:metaux_compagnons",
+   "nom": "Métaux compagnons (sous-produits gallium, germanium, indium, sélénium, tellure, cobalt…)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "minerais-critiques:investissement",
+   "nom": "Investissement et nouvelles mines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:dollar_reserve",
+   "nom": "Le dollar, monnaie de réserve",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:or",
+   "nom": "L'or des banques centrales",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:sanctions_financieres",
+   "nom": "Sanctions financières et gel d'avoirs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:paiements",
+   "nom": "Systèmes de paiement (SWIFT, CIPS, cartes)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:monnaies_numeriques",
+   "nom": "Stablecoins et monnaies numériques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:dedollarisation",
+   "nom": "Dédollarisation (discours et pratiques)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "niveaux-de-base:composition_air",
+   "nom": "Composition de l'air (gaz à effet de serre)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "niveaux-de-base:bilan_energie",
+   "nom": "Bilan d'énergie de la Terre (énergie reçue moins énergie renvoyée)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "niveaux-de-base:biomasse",
+   "nom": "Répartition de la biomasse (plantes, bactéries, animaux)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "non-proliferation:regime",
+   "nom": "Le régime : traité, normes et confiance",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "non-proliferation:aiea",
+   "nom": "AIEA, garanties et inspections",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "non-proliferation:conseil_securite",
+   "nom": "Conseil de sécurité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "non-proliferation:sanctions",
+   "nom": "Sanctions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "sanctions:IR",
+    "sanctions:KP"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "non-proliferation:zones",
+   "nom": "Zones exemptes d'armes nucléaires",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "non-proliferation:peur_prestige",
+   "nom": "Peur, prestige et sentiment d'insécurité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "non-proliferation:civil",
+   "nom": "Nucléaire civil",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:atome",
+   "nom": "Radioactivité (phénomène physique)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:sources",
+   "nom": "Sources radioactives scellées (usages médicaux et industriels)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:signalement",
+   "nom": "Signalement, recherche et récupération",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:sante",
+   "nom": "Santé (exposition, en agrégat)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:environnement",
+   "nom": "Environnement (eau, sols, air)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:convention",
+   "nom": "Convention (seuils, échelles, déclarations)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:recits",
+   "nom": "Récits et peur",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "nucleaire-radiologique:traites",
+   "nom": "Non-prolifération (traités)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:biais",
+   "nom": "Biais des sources",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "telegram:tout"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "observateur-mesure:definitions",
+   "nom": "Définitions et statistiques (convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:jeunesse_series",
+   "nom": "Jeunesse des séries",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:ormuz:navires"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "observateur-mesure:lecteurs_ia",
+   "nom": "Modèles de langue comme lecteurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:fuite",
+   "nom": "Fuite des recherches rétrospectives",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:controles",
+   "nom": "Contrôles et préenregistrement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:couverture",
+   "nom": "Ce que nous ne voyons pas",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:monde",
+   "nom": "Le monde observé",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:questions_traitees",
+   "nom": "Questions traitées (Metaculus et bancs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:mathematiques",
+   "nom": "Mathématiques et statistiques employées",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:algorithmique",
+   "nom": "Algorithmique et outils",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:ontologie_projet",
+   "nom": "Ontologie du projet (alphabet, fiches, règles, graphe des types)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:resultats",
+   "nom": "Résultats (adopté, non adopté, clos)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:lectures",
+   "nom": "Lectures et références intégrées",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "observateur-mesure:vocabulaire",
+   "nom": "Vocabulaire du projet et son évolution",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:oceans",
+   "nom": "Océans (chaleur, courants, acidification)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:glaces",
+   "nom": "Glaces et glaciers",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:cycle",
+   "nom": "Cycle de l'eau",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:shanghai"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "oceans-et-fleuves:fleuves",
+   "nom": "Fleuves (débits, crues, étiages, deltas)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "pub:mississippi_saint_louis",
+    "pub:rhin_kaub_cm"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "oceans-et-fleuves:nappes",
+   "nom": "Nappes souterraines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:vivant_aquatique",
+   "nom": "Vivant aquatique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:barrages",
+   "nom": "Barrages et irrigation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:navigation_fluviale",
+   "nom": "Navigation fluviale et canaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:panama:navires"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "oceans-et-fleuves:refroidissement",
+   "nom": "Refroidissement des machines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:berlin"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "oceans-et-fleuves:climat",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:delhi"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "oceans-et-fleuves:peche",
+   "nom": "Pêche et aquaculture (stocks, captures, élevage)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:recifs",
+   "nom": "Récifs coralliens (blanchissement)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:desoxygenation",
+   "nom": "Désoxygénation et zones mortes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:plastiques",
+   "nom": "Plastiques et pollution marine",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "oceans-et-fleuves:haute_mer",
+   "nom": "Haute mer et gouvernance des océans",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:institutions_financieres",
+   "nom": "FMI, Banque mondiale, banques de développement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "organisations-internationales:droit_international",
+   "nom": "Droit international (traités, droit de la guerre, droit de la mer)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "ormuz:milieu",
+   "nom": "Milieu physique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:bandar_abbas"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:flux_energie",
+   "nom": "Flux d'énergie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:ormuz:petroliers"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:navigation",
+   "nom": "Navigation commerciale",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:ormuz:navires"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:riverains",
+   "nom": "États riverains",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "voisins:IR"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:puissances",
+   "nom": "Puissances extérieures",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:USA:IRN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:force",
+   "nom": "Force armée",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "avions:AE"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:droit",
+   "nom": "Droit et conventions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "sanctions:IR"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:prix",
+   "nom": "Prix et marchés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DCOILBRENTEU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "ormuz:interieur_iran",
+   "nom": "Intérieur iranien",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:IR",
+    "radar:IR"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "ormuz:recits",
+   "nom": "Récits et attention",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "telegram:farsna",
+    "wikipedia:Strait of Hormuz"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "ormuz:mer_golfe",
+   "nom": "Mer du golfe (eau, chaleur, dessalement)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "ormuz:pollution_marine",
+   "nom": "Pollution chimique de la mer",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "ormuz:climat_regime",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:bandar_abbas"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "partis-politiques:systemes_partisans",
+   "nom": "Systèmes partisans",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:partis_uniques",
+   "nom": "Partis uniques et partis-États",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:partis_dominants",
+   "nom": "Partis dominants dans des régimes à élections",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:conservateurs",
+   "nom": "Conservateurs, chrétiens-démocrates, droite de gouvernement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:liberaux_centristes",
+   "nom": "Libéraux et centristes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:gauche_radicale",
+   "nom": "Gauche radicale et communistes (hors partis-États)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:ecologistes",
+   "nom": "Écologistes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:droite_radicale_populiste",
+   "nom": "Droite radicale, nationaliste, populiste",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:partis_religieux",
+   "nom": "Conservatismes religieux et partis religieux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:regionalistes",
+   "nom": "Régionalistes, autonomistes, indépendantistes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:partis_personnels",
+   "nom": "Partis personnels (construits autour d'un chef)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:groupes_internationales",
+   "nom": "Groupes et internationales de partis",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "partis-politiques:adhesion_militantisme",
+   "nom": "Adhésion, militantisme, financement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "plancher-social:pauvrete",
+   "nom": "Pauvreté (seuil de 3 $ par jour et seuils supérieurs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "plancher-social:travail",
+   "nom": "Emploi, chômage, informalité, travailleurs pauvres",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "plancher-social:inegalites",
+   "nom": "Inégalités de revenu et de patrimoine",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "plancher-social:logement",
+   "nom": "Logement, bidonvilles, sans-abri",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "plancher-social:protection_sociale",
+   "nom": "Protection sociale (pensions, chômage, famille, santé)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "plancher-social:acces_energie",
+   "nom": "Accès à l'électricité et à une cuisson propre",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-americaine:energie",
+   "nom": "Politique énergétique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "federal_register:tous:Energy",
+    "fred:DCOILWTICO"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "politique-americaine:etats_federes",
+   "nom": "États fédérés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-americaine:eau_fleuves",
+   "nom": "Fleuves et eau (Mississippi, Colorado)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-americaine:climat_risques",
+   "nom": "Climat et catastrophes (ouragans, incendies, chaleur)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:houston",
+    "federal_register:tous:Environmental Protection",
+    "feux:US",
+    "meteo:houston"
+   ],
+   "n_series": 4
+  },
+  {
+   "compartiment": "politique-interieure:gouvernement",
+   "nom": "Gouvernement et administration",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-interieure:procedures",
+   "nom": "Procédures et affaires publiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-interieure:contestation",
+   "nom": "Contestation et mouvements de rue",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "politique-interieure:coups_transitions",
+   "nom": "Coups d'État et transitions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:soi",
+   "nom": "L'humain, le soi (centre de la carte)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:emotions",
+   "nom": "Émotions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:personnalite",
+   "nom": "Personnalité (les grands traits)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:cognition",
+   "nom": "Pensée rapide et pensée lente, attention, mémoire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:identite_estime",
+   "nom": "Identité et estime de soi",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:attachement",
+   "nom": "Attachement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:inconscient_defenses",
+   "nom": "Inconscient et mécanismes de défense",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:valeurs_sens",
+   "nom": "Valeurs et sens",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:habitudes",
+   "nom": "Habitudes et apprentissage",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:solitude_lien",
+   "nom": "Solitude et lien social",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "psyche:sante_mentale",
+   "nom": "Santé mentale",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:chaines",
+   "nom": "Chaînes de montagnes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:obstacles",
+   "nom": "Obstacles et passages (cols, vallées, goulets)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:chateaux_d_eau",
+   "nom": "Châteaux d'eau (neige et glaciers des montagnes)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:pluies_orographiques",
+   "nom": "Pluies et ombre pluviométrique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "meteo:teheran"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "relief-et-montagnes:cotes_detroits",
+   "nom": "Côtes et détroits",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:bosphore:navires",
+    "portwatch:taiwan:navires"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "relief-et-montagnes:sols_versants",
+   "nom": "Sols des versants et érosion",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:routes_frontieres",
+   "nom": "Routes et frontières",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:guerres",
+   "nom": "Guerres et relief",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:populations",
+   "nom": "Populations de montagne et de vallée",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "relief-et-montagnes:climat",
+   "nom": "Climat (régime de long terme)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "climat:teheran"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "reseaux-humains:petit_monde",
+   "nom": "Le petit monde (tout le monde est à quelques intermédiaires)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:liens_faibles",
+   "nom": "Liens faibles et liens forts",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:cercles",
+   "nom": "Cercles de relations (environ 150)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:ressemblance",
+   "nom": "La ressemblance rapproche (homophilie)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:carrefours",
+   "nom": "Carrefours (les très connectés)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:passeurs",
+   "nom": "Passeurs entre groupes (ponts et trous structuraux)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:cascades",
+   "nom": "Cascades d'influence",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:reseaux_elites",
+   "nom": "Réseaux d'élites (sans noms)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-humains:reseaux_numeriques",
+   "nom": "Réseaux numériques (accélérateurs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:graphe_algorithme",
+   "nom": "Graphe des relations et algorithme (qui voit quoi)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:createurs",
+   "nom": "Créateurs, youtubeurs, influenceurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:donnees_ciblage",
+   "nom": "Données personnelles et ciblage",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:proprietaires_ligne",
+   "nom": "Propriétaires et ligne des plateformes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:moderation_regulation",
+   "nom": "Modération, régulation, coupures",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:complot",
+   "nom": "Théories du complot",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:soulevements",
+   "nom": "Soulèvements organisés en ligne",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:influence_ou_desinformation",
+   "nom": "Influence ou désinformation ? (la question ouverte)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-sociaux:corrosion",
+   "nom": "Puissance de corrosion (retourner les libertés d'une démocratie contre elle)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-transport:route",
+   "nom": "Réseau routier",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-transport:rail",
+   "nom": "Réseau ferroviaire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-transport:maritime",
+   "nom": "Réseau maritime",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-transport:aerien",
+   "nom": "Réseau aérien",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-transport:noeuds",
+   "nom": "Nœuds (ports, aéroports-pivots, gares, détroits, passages frontaliers)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "reseaux-transport:interconnexion",
+   "nom": "Interconnexion des modes (chaînes logistiques)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:technologie",
+   "nom": "Technologie et contrôles",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "certificats",
+    "sanctions:CN"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:energie",
+   "nom": "Énergie et sécurité des approvisionnements",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DCOILBRENTEU",
+    "portwatch:malacca:petroliers"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:taiwan",
+   "nom": "Taïwan et mers de Chine",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "paire:CN:TW:force",
+    "portwatch:taiwan:navires"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:alliances",
+   "nom": "Alliances et alignements",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "avions",
+    "sanctions_chine:JP"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:diplomatie",
+   "nom": "Diplomatie au sommet",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:USA:CHN",
+    "paire_mois:CN:US:conflit"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:finance",
+   "nom": "Finance et monnaies",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:economie_chine",
+   "nom": "Économie chinoise exposée",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:recits",
+   "nom": "Récits et opinions",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:CN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:terres_rares",
+   "nom": "Terres rares et minerais critiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "sanctions:CN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:detroit_relief",
+   "nom": "Détroit de Taïwan et géographie insulaire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:taiwan:navires"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:atomique",
+   "nom": "Dissuasion nucléaire (niveau institutionnel)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "russie-ukraine:front",
+   "nom": "Front et opérations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feux:RU",
+    "feux:UA",
+    "hostilites:UA",
+    "radar:UA",
+    "telegram:kpszsu",
+    "violations",
+    "violations:Ukraine"
+   ],
+   "n_series": 7
+  },
+  {
+   "compartiment": "russie-ukraine:capacites",
+   "nom": "Capacités militaires et industrie",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "paire:RU:UA:force"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "russie-ukraine:economie_russe",
+   "nom": "Économie de guerre russe",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DCOILBRENTEU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "russie-ukraine:economie_ukraine",
+   "nom": "Économie et infrastructures ukrainiennes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "ooni:UA"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "russie-ukraine:opinions",
+   "nom": "Opinions et cohésion",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "memoire:RU",
+    "radar:RU",
+    "telegram:mod_russia"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "russie-ukraine:mer_noire",
+   "nom": "Mer Noire et exportations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:bosphore:navires"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "russie-ukraine:relief_fleuves",
+   "nom": "Relief et fleuves (plaine, Dniepr, marais)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "russie-ukraine:hiver_saisons",
+   "nom": "Hiver et saisons (régime climatique, distinct de la météo)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "russie-ukraine:sols_agriculture",
+   "nom": "Sols et agriculture (terres noires)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "feux:UA"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "sciences-techniques:calcul",
+   "nom": "Puces et calcul",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:taiwan:porte_conteneurs"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "sciences-techniques:energie_eau",
+   "nom": "Énergie et eau des centres de données",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DHHNGSP",
+    "meteo:houston"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "sciences-techniques:capitaux",
+   "nom": "Capitaux et valorisations",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:DGS10"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "sciences-techniques:regulation",
+   "nom": "Régulation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "sciences-techniques:course_etats",
+   "nom": "Course entre États",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:USA:CHN"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "sciences-techniques:talents",
+   "nom": "Talents et équipes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "sciences-techniques:attentes",
+   "nom": "Attentes et engouement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-europeenne:defense",
+   "nom": "Défense et réarmement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-europeenne:industrie",
+   "nom": "Industrie de défense",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-europeenne:etats_unis",
+   "nom": "Relation avec les États-Unis",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "gestes:USA:DEU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "securite-europeenne:menace",
+   "nom": "Menace perçue (Russie)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "sanctions:RU"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "securite-europeenne:opinions",
+   "nom": "Opinions publiques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-europeenne:peur_confiance",
+   "nom": "Peur et confiance",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-europeenne:budgets_dette",
+   "nom": "Budgets et dette publique",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "fred:ECBDFR"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "securite-europeenne:geographie",
+   "nom": "Géographie du continent",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:polices",
+   "nom": "Polices et enquêtes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:trafics",
+   "nom": "Trafics (drogues, armes, êtres humains, matières dangereuses)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:corruption",
+   "nom": "Corruption",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:prisons",
+   "nom": "Prisons",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:peur",
+   "nom": "Peur et sentiment d'insécurité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:politique",
+   "nom": "Politique de sécurité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "securite-publique:sanctions",
+   "nom": "Sanctions et blanchiment",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "societe-droits:droits_humains",
+   "nom": "Droits humains",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "societe-droits:genre_minorites",
+   "nom": "Genre et minorités",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "societe-droits:education",
+   "nom": "Éducation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "societe-droits:sante_publique",
+   "nom": "Santé publique hors épidémies",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "societe-droits:libertes_civiques",
+   "nom": "Libertés civiques (expression, presse, réunion, association)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:soleil",
+   "nom": "Activité solaire",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:magnetosphere",
+   "nom": "Magnétosphère et ionosphère",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:gps",
+   "nom": "Navigation par satellite (GPS)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:debris",
+   "nom": "Débris spatiaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:reseaux",
+   "nom": "Réseaux électriques",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:radio",
+   "nom": "Communications radio et aviation",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:alertes",
+   "nom": "Alertes et échelles (convention)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soleil-espace:recits",
+   "nom": "Récits et perception du risque",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soudan:armee",
+   "nom": "Forces armées soudanaises et leurs alliés",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soudan:mediation",
+   "nom": "Médiateurs et trêves",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "soudan:soutiens",
+   "nom": "Soutiens extérieurs des belligérants",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "sanctions:SD"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "soudan:humanitaire",
+   "nom": "Famine, déplacements et aide",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroits",
+   "nom": "Détroits et canaux (le système des goulets)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:bab_el_mandeb:navires",
+    "portwatch:panama:navires",
+    "portwatch:suez:porte_conteneurs"
+   ],
+   "n_series": 3
+  },
+  {
+   "compartiment": "transport-maritime:contournement",
+   "nom": "Routes de contournement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:bonne_esperance:navires"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "transport-maritime:flottes",
+   "nom": "Flottes et armateurs",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "portwatch:malacca:petroliers"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "transport-maritime:fret",
+   "nom": "Prix du fret",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:assurances",
+   "nom": "Assurances et risque de guerre",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:ports",
+   "nom": "Ports et terminaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "port:rotterdam",
+    "port:singapour"
+   ],
+   "n_series": 2
+  },
+  {
+   "compartiment": "transport-maritime:securite",
+   "nom": "Sécurité des routes",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [
+    "avions:mer"
+   ],
+   "n_series": 1
+  },
+  {
+   "compartiment": "transport-maritime:climat",
+   "nom": "Climat et eau des canaux",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:droit",
+   "nom": "Droit, sanctions et règles",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:recits",
+   "nom": "Récits et attention",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:fleuves",
+   "nom": "Fleuves et lacs navigables",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:oceans",
+   "nom": "Océans (courants, glaces, niveau de la mer)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:epidemies_ports",
+   "nom": "Épidémies et quarantaines",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_ormuz",
+   "nom": "Détroit d'Ormuz",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_bab_el_mandeb",
+   "nom": "Détroit de Bab-el-Mandeb",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:canal_suez",
+   "nom": "Canal de Suez",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_malacca",
+   "nom": "Détroit de Malacca",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:canal_panama",
+   "nom": "Canal de Panama",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_bosphore",
+   "nom": "Bosphore et Dardanelles (détroits turcs)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_taiwan",
+   "nom": "Détroit de Taïwan",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_gibraltar",
+   "nom": "Détroit de Gibraltar",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_pas_de_calais",
+   "nom": "Pas de Calais",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transport-maritime:detroit_bering",
+   "nom": "Détroit de Béring",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transports-villes:forme_urbaine",
+   "nom": "Villes, mégapoles, étalement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transports-villes:transports_publics",
+   "nom": "Transports publics (accès, réseaux)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transports-villes:route",
+   "nom": "Voitures, camions, trafic routier",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transports-villes:electrification",
+   "nom": "Électrification des véhicules",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transports-villes:securite_routiere",
+   "nom": "Morts et blessés de la route",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transports-villes:aerien",
+   "nom": "Transport aérien (passagers, espace aérien)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "transports-villes:gouvernance_urbaine",
+   "nom": "Gouvernance urbaine (municipalités, réseaux de villes, plans de mobilité)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:institutions",
+   "nom": "Institutions et affaires institutionnelles",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:elargissement",
+   "nom": "Élargissement",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:relations_exterieures",
+   "nom": "Relations extérieures",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:budget",
+   "nom": "Budget de l'Union (cadre financier pluriannuel)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:sanctions_ue",
+   "nom": "Sanctions de l'Union (instrument)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:defense_ue",
+   "nom": "Instruments de défense de l'Union (SAFE, industrie)",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  },
+  {
+   "compartiment": "union-europeenne:etat_de_droit",
+   "nom": "État de droit et conditionnalité",
+   "questions": 0,
+   "metaculus": 0,
+   "oui": null,
+   "premiere": null,
+   "series": [],
+   "n_series": 0
+  }
+ ]
+}
