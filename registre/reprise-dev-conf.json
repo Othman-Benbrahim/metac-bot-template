@@ -1,0 +1,39 @@
+{
+ "procedure": {
+  "developpement": {
+   "n": 99,
+   "oui": 15,
+   "trois_classes": 0.4438,
+   "deux_classes": 0.4389,
+   "reference": 0.4253
+  },
+  "retenue": "deux_classes",
+  "confirmation": {
+   "n": 124,
+   "oui": 47,
+   "reference": 0.8173,
+   "variante": 0.8222,
+   "melange_plafonne": 0.8177
+  },
+  "brancher": false
+ },
+ "etat_conflit": {
+  "developpement": {
+   "n": 30,
+   "oui": 6,
+   "deux_mois": 0.5711,
+   "trois_mois": 0.5836,
+   "six_mois": 0.5339,
+   "reference": 0.5004
+  },
+  "retenue": "six_mois",
+  "confirmation": {
+   "n": 22,
+   "oui": 4,
+   "reference": 0.4752,
+   "variante": 0.5226,
+   "melange_plafonne": 0.4834
+  },
+  "brancher": false
+ }
+}
