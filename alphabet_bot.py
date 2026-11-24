@@ -542,8 +542,11 @@ class AlphabetBot(FallTemplateBot2026):
             import sommets_regle as smr
             # 0.10.507 : présence du président américain à un sommet de l'OTAN (liste officielle + COLT) ; passé une
             # fois : 0,020 contre 1,319 sur 2 questions (2026).
+            import justice_regle as jsr
+            # 0.10.508 : justice (Supreme Court Database 1946-2025 : victoire du demandeur 67 %, départs 0,39 par an) ;
+            # passé une fois : 0,226 contre 0,815 sur 2 questions (2026).
             e = (aet.estimer(titre) or amd.estimer(titre) or agr.estimer(titre) or smr.estimer(titre)
-                 or rcr.estimer(titre) or arr.estimer_autres(titre))
+                 or rcr.estimer(titre) or jsr.estimer(titre) or arr.estimer_autres(titre))
             if e is None:
                 return None
             p = arr.melanger(p_pipeline, e["p"])
@@ -556,7 +559,8 @@ class AlphabetBot(FallTemplateBot2026):
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
             quoi = {"cessez_le_feu": "ceasefire", "tenue": "truce breakdown or holding",
                     "autre": "agreement (base rate by number of consents required)",
-                    "rencontre": "in-person summit meeting (COLT leader-travel frequency for this pair, 5 years)"}.get(e["classe"], "peace agreement")
+                    "rencontre": "in-person summit meeting (COLT leader-travel frequency for this pair, 5 years)",
+                    "justice": "US Supreme Court outcome (Supreme Court Database 1946-2025 base rates)"}.get(e["classe"], "peace agreement")
             e["texte"] = (f"\n\nWar-state rule (coded): {quoi} during an ongoing war ({e['guerre']}), measured rates "
                           f"by war type and age (COW interstate wars since 1946, ETH/PRIO civil-war ceasefires, UCDP "
                           f"conflict termination, MID interstate disputes since 1946): {e['p_regle']:.1%}. Blended at weight "

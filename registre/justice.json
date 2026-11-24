@@ -1,0 +1,33 @@
+{
+ "resume": {
+  "n": 2,
+  "oui": 1,
+  "perte_reference": 0.8154,
+  "perte_regle": 0.2256,
+  "perte_melange": 0.6123,
+  "n_2026": 2,
+  "perte_reference_2026": 0.8154,
+  "perte_regle_2026": 0.2256,
+  "brancher": true
+ },
+ "lignes": [
+  {
+   "titre": "Will the U.S. Supreme Court rule in favor of Monsanto in Monsanto Company v. John L. Durnell?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "groupe": "Company Court Durnell John Monsanto Supreme",
+   "p": 0.6678,
+   "ref": 0.2675,
+   "mel": 0.3588
+  },
+  {
+   "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
+   "jeu": "2026-07-19",
+   "y": 0,
+   "groupe": "Court Supreme",
+   "p": 0.0463,
+   "ref": 0.2681,
+   "mel": 0.181
+  }
+ ]
+}
