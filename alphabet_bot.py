@@ -487,6 +487,10 @@ class AlphabetBot(FallTemplateBot2026):
         # entre États (acte lourd ou léger), même mélange et même plafond ; scellée dans journal-escalade.jsonl.
         if sp_ is None:
             sp_ = self._escalade(question, q, r.p_poste)
+        # 0.10.498 (décision de l'auteur du 2026-11-24, 15 h 51) : « un parmi N » avec saillance pour « X gagnera-t-il
+        # <compétition> ? », confirmé une fois sur les questions de 2026 ; même mélange, même plafond ; journal-competitions.jsonl.
+        if sp_ is None:
+            sp_ = self._competition(question, q, r.p_poste)
         # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
         # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
         try:
@@ -498,6 +502,27 @@ class AlphabetBot(FallTemplateBot2026):
         if sp_ is not None:
             return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
+
+    def _competition(self, question, q, p_pipeline: float) -> dict | None:
+        try:
+            import competitions_regle as cpr
+            e = cpr.estimer(question.question_text or "", p_pipeline)
+            if e is None:
+                return None
+            jour = datetime.now(timezone.utc).date().isoformat()
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p"], "competition": e}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-competitions.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            e["texte"] = (f"\n\nOne-among-N rule (coded): {e['n']} contenders under the competition's rules, salience "
+                          f"factor {e['saillance']:g} (questions tend to be asked about favourites): {e['p_regle']:.1%}. "
+                          f"Blended at weight {e['poids']} with the pipeline forecast {p_pipeline:.1%} (shift capped at "
+                          f"{e['ecart_max']:.0%}): {e['p']:.1%}.")
+            return e
+        except Exception as ex:   # la règle qui échoue ne bloque rien
+            logger.warning("compétition : non appliquée (%s)", type(ex).__name__)
+            return None
 
     def _escalade(self, question, q, p_pipeline: float) -> dict | None:
         try:

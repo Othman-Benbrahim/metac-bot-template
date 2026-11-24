@@ -1,0 +1,24 @@
+{
+ "developpement": {
+  "n": 140,
+  "oui": 8,
+  "k_unique": 0.2711,
+  "k_famille": 0.2519,
+  "reference": 0.219,
+  "k=1": 0.256
+ },
+ "variante_retenue": "k_famille",
+ "k": {
+  "equipe": 2,
+  "recompense": 1,
+  "tennis": 1
+ },
+ "confirmation": {
+  "n": 129,
+  "oui": 25,
+  "reference": 0.6021,
+  "regle": 0.532,
+  "melange_plafonne": 0.5806
+ },
+ "brancher": true
+}

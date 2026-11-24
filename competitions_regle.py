@@ -28,6 +28,13 @@ EVENEMENTS = [
 ]
 MOTIFS = [(re.compile(m, re.I), n) for m, n in EVENEMENTS]
 POIDS, ECART_MAX = 0.25, 0.15
+# 0.10.498 : saillance par famille, retenue sur le développement (questions jouées avant 2026) et confirmée une fois sur
+# les questions de 2026 (registre/un-parmi-n-saillance.json) : sports d'équipe k = 2, récompenses et tennis k = 1.
+SAILLANCE = {"equipe": 2.0, "recompense": 1.0, "tennis": 1.0}
+
+
+def famille(n: int) -> str:
+    return "recompense" if n in (5, 6, 8, 10) else ("tennis" if n == 128 else "equipe")
 
 
 def n_concurrents(titre: str) -> int | None:
@@ -43,8 +50,9 @@ def estimer(titre: str, p_bot: float) -> dict | None:
     n = n_concurrents(titre)
     if n is None:
         return None
-    pr = 1 / n
+    k = SAILLANCE[famille(n)]
+    pr = 1 - (1 - 1 / n) ** k
     lg = lambda v: math.log(min(max(v, .01), .99) / (1 - min(max(v, .01), .99)))
     p = 1 / (1 + math.exp(-((1 - POIDS) * lg(p_bot) + POIDS * lg(pr))))
     p = min(max(p, p_bot - ECART_MAX), p_bot + ECART_MAX)
-    return {"n": n, "p_regle": pr, "p_bot": p_bot, "p": p, "poids": POIDS, "ecart_max": ECART_MAX}
+    return {"n": n, "saillance": k, "p_regle": pr, "p_bot": p_bot, "p": p, "poids": POIDS, "ecart_max": ECART_MAX}
