@@ -1,0 +1,26 @@
+{
+ "apprentissage": 817,
+ "essai": 1379,
+ "B": 0.1677,
+ "toutes": {
+  "n": 1379,
+  "perte_B": 0.7075,
+  "perte_F": 0.71,
+  "ecart_F_moins_B": 0.0025,
+  "ic90": [
+   -0.002,
+   0.007
+  ]
+ },
+ "metaculus": {
+  "n": 176,
+  "perte_B": 0.6387,
+  "perte_F": 0.6465,
+  "ecart_F_moins_B": 0.0079,
+  "ic90": [
+   -0.0047,
+   0.0196
+  ]
+ },
+ "verdict": "critère non atteint"
+}
