@@ -1,0 +1,40 @@
+name: "Collecte ETH/PRIO cessez-le-feu"
+
+# 0.10.501 (décision de l'auteur du 2026-11-24, 16 h 38) : déclarations de cessez-le-feu et mois de conflit actif (données codées).
+# Lancée à la main ; une version par an.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-cessez-le-feu
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run --with openpyxl python -u collecte_cessez_le_feu.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          for f in registre/cessez-le-feu-declarations.csv registre/cessez-le-feu-conflits-mois.csv; do if [ -e "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : cessez-le-feu ETH/PRIO du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
