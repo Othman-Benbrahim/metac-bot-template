@@ -140,12 +140,21 @@ def estimer(titre: str, jour: str, fin: str) -> dict | None:
         return None
     e = etat(q["actif"], jour, 30)
     pts = [j for j, _ in points(q["actif"]) if j < jour]
-    if not e or not pts or (date.fromisoformat(jour) - date.fromisoformat(pts[-1])).days > FRAICHEUR_JOURS:
+    if not e or not pts:
         return None
     s0, sigma = e
+    source = "FRED"
+    if (date.fromisoformat(jour) - date.fromisoformat(pts[-1])).days > FRAICHEUR_JOURS:
+        # 2026-11-24, 22 h 50 (source validée par l'auteur) : dernier règlement frais (API Ninjas), volatilité FRED.
+        # Jamais de regard vers l'avant : le cours frais n'est admis que s'il date d'avant `jour`, à 5 jours au plus.
+        import cours_frais as cf
+        f = cf.dernier(q["actif"])
+        if not f or not (0 <= (date.fromisoformat(jour) - date.fromisoformat(f["jour"])).days <= FRAICHEUR_JOURS):
+            return None
+        s0, pts, source = f["prix"], pts + [f["jour"]], f"API Ninjas ({f.get('bourse') or ''} {f.get('contrat') or ''})".strip()
     t = max(annees(jour, fin), 1 / 365)
     p = p_a_la_date(s0, q["k"], sigma, t, q["au_dessus"]) if q["type"] == "date" else p_atteint_avant(s0, q["k"], sigma, t)
-    return {**q, "p": min(0.99, max(0.01, p)), "dernier_prix": s0, "date_prix": pts[-1], "sigma_annuel": round(sigma, 4),
+    return {**q, "p": min(0.99, max(0.01, p)), "dernier_prix": s0, "date_prix": pts[-1], "sigma_annuel": round(sigma, 4), "source_prix": source,
             "echeance": fin, "duree_ans": round(t, 4)}
 
 
@@ -218,5 +227,5 @@ def fourchette(titre: str, jour: str, fin: str | None) -> dict | None:
         return None
     s0, sigma = e
     t = max(annees(pts[-1], fin), 1 / 365)
-    return {"actif": a, "dernier_prix": s0, "date_prix": pts[-1], "sigma_annuel": round(sigma, 4), "echeance": fin,
+    return {"actif": a, "dernier_prix": s0, "date_prix": pts[-1], "sigma_annuel": round(sigma, 4), "source_prix": "FRED", "echeance": fin,
             "percentiles": quantiles(s0, sigma, t)}

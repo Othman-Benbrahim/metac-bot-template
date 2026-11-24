@@ -232,7 +232,7 @@ def construire(titre: str, fin: str, jour: dt.date | None = None, qid: str | Non
         ancien = next((x[3] for x in B if x[0] == "prix" and x[2] is None), None)
         if e:
             D["prix"] = {"actif": e["actif"], "valeur": e["dernier_prix"], "date_donnee": e["date_prix"],
-                         "volatilite_annuelle_30j": e["sigma_annuel"], "seuil": e["k"], "source": "FRED, " + e["actif"],
+                         "volatilite_annuelle_30j": e["sigma_annuel"], "seuil": e["k"], "source": e.get("source_prix", "FRED") + ", " + e["actif"], "source_volatilite": "FRED",
                          "regle_entree": "R-prix"}
         elif q and q["actif"] in spx.ACTIONS and not spx.ACTIONS_DANS_LE_BOT:
             D["prix"] = silence("hors_domaine", actif=q["actif"],

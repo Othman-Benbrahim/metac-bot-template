@@ -783,7 +783,7 @@ class AlphabetBot(FallTemplateBot2026):
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
             sens = "above" if e["au_dessus"] else "below"
             forme = ("at the stated date" if e["type"] == "date" else "at any time before the deadline")
-            e["texte"] = (f"\n\nPrice-threshold rule (coded): last known price {e['dernier_prix']:,.2f} on {e['date_prix']}, "
+            e["texte"] = (f"\n\nPrice-threshold rule (coded): last known price {e['dernier_prix']:,.2f} on {e['date_prix']} ({e.get('source_prix', 'FRED')}), "
                           f"30-day annualised volatility {e['sigma_annuel']:.0%}, threshold {e['k']:,.2f} ({sens}, {forme}), "
                           f"deadline {e['echeance']}; driftless lognormal model gives {e['p']:.1%}.")
             return e
