@@ -29,6 +29,7 @@ compartiments:
     niveau: {espace: "équipe", temps: "saison", vitesse: "jours à mois", taille: "micro"}
     traces:
       - {source: "résultats sportifs publics", statut: "a_brancher"}
+      - {source: "variation mensuelle moyenne de l’Elo des 30 meilleures sélections nationales (forme), calculée sur les résultats internationaux (martj42/international_results, CC0 ; validée par l’auteur le 2026-11-24 à 23 h 24)", statut: collecte, fichier: collecte_elo.py, adaptateur: "elo:selections:forme"}
   - id: "psychologie"
     nom: "Psychologie de la compétition"
     organisation: "psychologique"
@@ -109,6 +110,10 @@ compartiments:
     traces:
     - source: "classements publics des fédérations (FIFA, ATP, WTA) et classements Elo publics (validés par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
+    - {source: "Elo des sélections nationales, calculé sur les résultats internationaux depuis 1872 (martj42/international_results, CC0) ; dispersion des 20 meilleurs : plus elle est grande, plus les favoris dominent (sources validées par l’auteur le 2026-11-24 à 23 h 24)", statut: collecte, fichier: collecte_elo.py, adaptateur: "elo:selections:dispersion"}
+    - {source: "Elo des clubs de football (Club Elo, api.clubelo.com) ; dispersion des 20 meilleurs", statut: collecte, fichier: collecte_elo.py, adaptateur: "elo:clubs:dispersion"}
+    - {source: "Elo des joueurs du circuit ATP et WTA, calculé sur les matchs (Jeff Sackmann / Tennis Abstract, CC BY-NC-SA 4.0)", statut: collecte, fichier: collecte_elo.py, adaptateur: "elo:tennis_atp:dispersion"}
+    - {source: "Elo des équipes de la NFL, calculé sur les résultats (nflverse, CC BY 4.0)", statut: collecte, fichier: collecte_elo.py, adaptateur: "elo:nfl:dispersion"}
 cycles:
   - id: saison_des_prix
     nom: "Saison des prix (de novembre à mars)"

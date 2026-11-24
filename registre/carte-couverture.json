@@ -4,13 +4,13 @@
  "avancement": {
   "compartiments": 837,
   "par_statut": {
-   "a_trouver": 621,
-   "fraiche": 169,
+   "a_trouver": 619,
+   "fraiche": 171,
    "ancienne": 33,
    "vide": 14
   },
   "relations": 985,
-  "relations_testables": 201,
+  "relations_testables": 203,
   "relations_par_verdict": {
    "non_controlee": 759,
    "non_tranche": 63,
@@ -507,7 +507,9 @@
    "statut": "a_trouver"
   },
   "competitions-culture:forme": {
-   "statut": "a_trouver"
+   "statut": "fraiche",
+   "serie": "elo:selections:forme",
+   "derniere": "2026-11-01"
   },
   "competitions-culture:psychologie": {
    "statut": "a_trouver"
@@ -534,7 +536,9 @@
    "statut": "a_trouver"
   },
   "competitions-culture:classements_force": {
-   "statut": "a_trouver"
+   "statut": "fraiche",
+   "serie": "elo:selections:dispersion",
+   "derniere": "2026-11-01"
   },
   "corps-humain:besoins_vitaux": {
    "statut": "a_trouver"
@@ -3764,7 +3768,7 @@
   {
    "de": "competitions-culture:classements_force",
    "vers": "competitions-culture:forme",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
@@ -3800,7 +3804,7 @@
   {
    "de": "competitions-culture:forme",
    "vers": "competitions-culture:forme",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
@@ -8864,11 +8868,6 @@
  ],
  "priorites": [
   {
-   "compartiment": "competitions-culture:forme",
-   "lectures_manquees": 355,
-   "relations_sortantes": 2
-  },
-  {
    "compartiment": "competitions-culture:milieu",
    "lectures_manquees": 355,
    "relations_sortantes": 1
@@ -8876,11 +8875,6 @@
   {
    "compartiment": "competitions-culture:psychologie",
    "lectures_manquees": 355,
-   "relations_sortantes": 1
-  },
-  {
-   "compartiment": "competitions-culture:classements_force",
-   "lectures_manquees": 352,
    "relations_sortantes": 1
   },
   {
@@ -9360,6 +9354,16 @@
   },
   {
    "compartiment": "competitions-culture:public",
+   "lectures_manquees": 0,
+   "relations_sortantes": 2
+  },
+  {
+   "compartiment": "corps-humain:nutrition",
+   "lectures_manquees": 0,
+   "relations_sortantes": 2
+  },
+  {
+   "compartiment": "corps-humain:soins",
    "lectures_manquees": 0,
    "relations_sortantes": 2
   }

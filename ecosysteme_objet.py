@@ -53,6 +53,11 @@ OBJETS = {
     "pub:rhin": r"rhine",
     "pub:geomag": r"geomagnetic|solar storm",
     "urgences:": r"aviation|aircraft|flight|airline|hijack",
+    "elo:selections": r"world cup|euro 20\d\d|euros?\b|copa am[eé]rica|nations league|national team|afcon|africa cup|asian cup|gold cup|fifa",
+    "elo:clubs": r"premier league|champions league|europa league|conference league|la liga|serie a|bundesliga|ligue 1|fa cup|club world cup|eredivisie",
+    "elo:nfl": r"super bowl|\bnfl\b|\bafc\b|\bnfc\b",
+    "elo:tennis_atp": r"\batp\b|wimbledon|us open|australian open|french open|roland|grand slam|tennis",
+    "elo:tennis_wta": r"\bwta\b|wimbledon|us open|australian open|french open|roland|grand slam|tennis",
 }
 DETROITS = {"ormuz": r"hormuz", "taiwan": r"taiwan", "malacca": r"malacca", "bab_el_mandeb": r"bab|red sea|houthi",
             "suez": r"suez|red sea", "bosphore": r"bosphorus|turkish straits|black sea", "panama": r"panama",
@@ -81,6 +86,9 @@ def _pays():
 
 def motif(adaptateur: str) -> str | None:
     a = adaptateur or ""
+    p0 = a.split(":")
+    if p0[0] == "elo" and len(p0) > 2 and p0[2] not in ("dispersion", "forme"):
+        return re.escape(p0[2])                        # la série d'une entité porte sur l'entité nommée
     for k, v in OBJETS.items():
         if a == k or a.startswith(k if k.endswith(":") else k + ":") or (not k.endswith(":") and a.startswith(k)):
             return v

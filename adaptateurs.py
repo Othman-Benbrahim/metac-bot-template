@@ -315,7 +315,40 @@ def epoch(reg: Path, labo: str = "frontiere") -> list[tuple[str, float]]:
     return out
 
 
-ADAPTATEURS = {"epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+def elo(reg: Path, famille: str, quoi: str = "dispersion") -> list[tuple[str, float]]:
+    """2026-11-24 (sources validées par l'auteur, 23 h 24) : classements de force (collecte_elo.py, registre/elo/).
+    « elo:<famille>:<entité> » : la note de l'entité à chaque fin de mois ;
+    « elo:<famille>:dispersion » : écart-type des 20 meilleures notes du mois (plus il est grand, plus les favoris
+    dominent) ; « elo:<famille>:forme » : variation absolue moyenne d'un mois sur l'autre des 30 meilleurs (forme)."""
+    import csv as _c
+    import gzip as _g
+    import statistics as _st
+    f = reg / "elo" / f"{famille}.csv.gz"
+    if not f.exists():
+        return []
+    par_mois, par_ent = {}, {}
+    with _g.open(f, "rt", encoding="utf-8") as h:
+        for r in _c.DictReader(h):
+            m, e, v = r["date"][:7], r["entite"], float(r["elo"])
+            par_mois.setdefault(m, {})[e] = v
+            par_ent.setdefault(e, {})[m] = v
+    if quoi not in ("dispersion", "forme"):
+        return [(m + "-01", v) for m, v in sorted(par_ent.get(quoi, {}).items())]
+    out, dernier, prec = [], {}, {}
+    for m in sorted(par_mois):
+        prec = dict(dernier)
+        dernier.update(par_mois[m])
+        top = sorted(dernier.items(), key=lambda x: -x[1])
+        if quoi == "dispersion" and len(top) >= 20:
+            out.append((m + "-01", round(_st.pstdev([v for _, v in top[:20]]), 2)))
+        elif quoi == "forme":
+            ch = [abs(par_mois[m][e] - prec[e]) for e, _ in top[:30] if e in par_mois[m] and e in prec]
+            if len(ch) >= 5:
+                out.append((m + "-01", round(sum(ch) / len(ch), 2)))
+    return out
+
+
+ADAPTATEURS = {"elo": elo, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}
