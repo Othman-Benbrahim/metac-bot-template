@@ -1,0 +1,238 @@
+{
+ "resume": {
+  "n": 32,
+  "series": 16,
+  "oui": 0.312,
+  "k": 0.5,
+  "perte_base_027": 0.6255,
+  "perte_k1": 0.9874,
+  "perte_loo_question": 1.0373,
+  "perte_loo_serie": 1.2143
+ },
+ "lignes": [
+  {
+   "p": 0.999999,
+   "y": 1,
+   "serie": "ucdp_dyade:ISR:IRN",
+   "titre": "Israel military action against Iran by end of 2024?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.1829271931124533,
+   "y": 0,
+   "serie": "ucdp_dyade:TWN:CHN",
+   "titre": "China x Taiwan military clash by June 30?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.1829271931124533,
+   "y": 0,
+   "serie": "ucdp_dyade:TWN:CHN",
+   "titre": "China x Taiwan military clash by December 31?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.74,
+   "y": 0,
+   "serie": "ucdp_dyade:ISR:IRN",
+   "titre": "Israel military action against Iran in April?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.982424,
+   "y": 1,
+   "serie": "ucdp_dyade:ISR:IRN",
+   "titre": "Israel military action against Iran before July?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.020000000000000018,
+   "y": 0,
+   "serie": "ucdp_dyade:IRN:USA",
+   "titre": "US military action against Iran in April?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.05880800000000008,
+   "y": 1,
+   "serie": "ucdp_dyade:IRN:USA",
+   "titre": "US military action against Iran before July?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.7955859141345023,
+   "y": 0,
+   "serie": "ucdp_dyade:PAK:IND",
+   "titre": "Will India and Pakistan go to war in 2025?",
+   "source": "manifold"
+  },
+  {
+   "p": 0.7,
+   "y": 0,
+   "serie": "ucdp_dyade:ISR:IRN",
+   "titre": "Israel military action against Iran before June?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.74,
+   "y": 1,
+   "serie": "ucdp_dyade:IRN:ISR",
+   "titre": "Israel strike on Iranian nuclear facility before July?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.13187446675328007,
+   "y": 0,
+   "serie": "ucdp_dyade:RUS:USA",
+   "titre": "US x Russia military clash in 2025?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.09607920320000007,
+   "y": 0,
+   "serie": "ucdp_dyade:IRN:USA",
+   "titre": "Will the US be at war with Iran before the end of 2025",
+   "source": "manifold"
+  },
+  {
+   "p": 0.7,
+   "y": 0,
+   "serie": "ucdp_dyade:IRN:ISR",
+   "titre": "Will Israel strike the Iranian military in Iran again, before September 2025?",
+   "source": "metaculus"
+  },
+  {
+   "p": 0.8556,
+   "y": 0,
+   "serie": "ucdp_dyade:ISR:IRN",
+   "titre": "Israel strikes Iran before 2026?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.8556,
+   "y": 0,
+   "serie": "ucdp_dyade:ISR:IRN",
+   "titre": "Will any new country attack Israel or Iran between June and December 2025?",
+   "source": "metaculus"
+  },
+  {
+   "p": 0.03960000000000008,
+   "y": 0,
+   "serie": "ucdp_dyade:RUS:USA",
+   "titre": "US x Russia military clash by December 31?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.03960000000000008,
+   "y": 0,
+   "serie": "ucdp_dyade:PHL:CHN",
+   "titre": "China x Philippines military clash by December 31?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.14,
+   "y": 1,
+   "serie": "ucdp_dyade:THA:KHM",
+   "titre": "Will there be another deadly clash between Thailand and Cambodia, resulting in three or more fatalities, before 2026?",
+   "source": "metaculus"
+  },
+  {
+   "p": 0.020000000000000018,
+   "y": 0,
+   "serie": "ucdp_dyade:ISR:TUR",
+   "titre": "Israel x Turkey military clash in 2025?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.020000000000000018,
+   "y": 1,
+   "serie": "ucdp_dyade:NGA:USA",
+   "titre": "US strikes Nigeria by December 31?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.21528327626520016,
+   "y": 0,
+   "serie": "ucdp_dyade:CUB:USA",
+   "titre": "US strike on Cuba by March 31?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.21528327626520016,
+   "y": 0,
+   "serie": "ucdp_dyade:MEX:USA",
+   "titre": "US strike on Mexico by March 31?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.06000000000000005,
+   "y": 1,
+   "serie": "ucdp_dyade:IRN:USA",
+   "titre": "Will the US strike Iran by the end of February?",
+   "source": "manifold"
+  },
+  {
+   "p": 0.26609597760000026,
+   "y": 1,
+   "serie": "ucdp_dyade:IRN:USA",
+   "titre": "US strikes Iran by June 30, 2026?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.03960000000000008,
+   "y": 1,
+   "serie": "ucdp_dyade:SAU:IRN",
+   "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
+   "source": "metaculus"
+  },
+  {
+   "p": 0.03960000000000008,
+   "y": 1,
+   "serie": "ucdp_dyade:ARE:IRN",
+   "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
+   "source": "metaculus"
+  },
+  {
+   "p": 0.020000000000000018,
+   "y": 0,
+   "serie": "ucdp_dyade:SAU:IRN",
+   "titre": "Will Saudi Arabia strike Iran by March 31?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.38,
+   "y": 0,
+   "serie": "ucdp_dyade:YEM:USA",
+   "titre": "Will the US strike Yemen by April 30, 2026?",
+   "source": "manifold"
+  },
+  {
+   "p": 0.26,
+   "y": 0,
+   "serie": "ucdp_dyade:ISR:YEM",
+   "titre": "Israel military action against Yemen by April 15, 2026?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.4524,
+   "y": 0,
+   "serie": "ucdp_dyade:ISR:YEM",
+   "titre": "Israel strike on Yemen by June 30, 2026?",
+   "source": "polymarket"
+  },
+  {
+   "p": 0.020000000000000018,
+   "y": 0,
+   "serie": "ucdp_dyade:CUB:USA",
+   "titre": "Will the US attack Cuba in the next 30 days?",
+   "source": "manifold"
+  },
+  {
+   "p": 0.05880800000000008,
+   "y": 0,
+   "serie": "ucdp_dyade:CUB:USA",
+   "titre": "Will the US attack Cuba before the 2026 midterm elections?",
+   "source": "manifold"
+  }
+ ]
+}
