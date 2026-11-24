@@ -1,0 +1,40 @@
+name: "Collecte Epoch AI (modèles d.IA)"
+
+# 0.10.505 (source validée le 2026-11-24, 14 h 35) : modèles d'IA et dates de sortie (Epoch AI, CC BY).
+# Lancée à la main (le fichier change chaque jour : à mettre au planificateur si la brique est branchée).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-epoch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u collecte_epoch.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/epoch-modeles.csv ]; then git add registre/epoch-modeles.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : Epoch AI du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
