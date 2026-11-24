@@ -55,3 +55,15 @@ Une menace sans date annoncée est jugée à 90 jours.
 ## Ensuite (vérification en temps réel)
 Un journal des nouvelles annonces, chaque semaine à la parution de TiRADE ; chacune est jugée à sa date annoncée ou à
 90 jours. Ce journal, et non le relevé du passé, sert de test.
+
+## Journal des passages
+- **2026-11-24, 12 h 40, règle v1 (préenregistrée) : invalide.** 96 % des annonces « appliquées ». Artefact constaté en
+  relisant les appariements : un acte général (« All countries », « All goods ») recoupait toute cible, et 74 actes sur
+  99 étaient plus larges que l'annonce (l'acier pour tous « exécutait » une menace sur la Colombie). Résultat non retenu.
+- **2026-11-24, 12 h 45, règle v2 (écrite après avoir vu l'artefact de v1) : borne basse.** L'acte doit nommer la
+  cible. 46 % appliquées (IC95 37-56 %) sur 100 mesures jugées. Relecture des 23 « sans suite » non conditionnelles :
+  une partie vient de libellés différents entre l'annonce et l'acte (« Letter countries (Japan, Korea…) », « Heavy
+  Trucks », « Foreign automakers »), pas d'une absence d'acte. Les libellés de TiRADE sont du texte libre ; ni v1 ni v2
+  ne les rapprochent correctement.
+- **Suite proposée :** codage à la main des mesures non conditionnelles, chacune rapprochée d'un document du Federal
+  Register (lien et date), une fois la collecte du Federal Register réparée.
