@@ -54,13 +54,14 @@ def principal() -> int:
                 import openpyxl
                 wb = openpyxl.load_workbook(io.BytesIO(d.content), read_only=True, data_only=True)
                 for ws in wb.worksheets:
-                    cible = SORTIE / f"{Path(nom).stem}-{ws.title}.csv".replace(" ", "_")
-                    with cible.open("w", encoding="utf-8", newline="\n") as fh:
+                    cible = SORTIE / f"{Path(nom).stem}-{ws.title}.csv.gz".replace(" ", "_")
+                    import gzip                          # compressé : le CSV brut dépasse 100 Mo (limite de GitHub)
+                    with gzip.open(cible, "wt", encoding="utf-8", newline="\n") as fh:
                         w, n = csv.writer(fh), 0
                         for L in ws.iter_rows(values_only=True):
                             w.writerow(["" if v is None else v for v in L])
                             n += 1
-                    print(f"  {cible.name} : {n} lignes")
+                    print(f"  {cible.name} : {n} lignes, {cible.stat().st_size} octets compressés")
                 continue
             (SORTIE / nom.replace("/", "_")).write_bytes(d.content)
             premiere = d.content[:400].decode("utf-8", errors="replace").splitlines()[0] if d.content else ""
