@@ -114,7 +114,8 @@ class Couche:
         self._z[k] = res
         return res
 
-    def lire(self, titre: str, horizon: float, jour: dt.date) -> dict:
+    def lire(self, titre: str, horizon: float, jour: dt.date, objet: bool = False) -> dict:
+        """`objet` (0.10.509) : une série ne compte que si le titre nomme ce qu'elle mesure (ecosysteme_objet)."""
         comps, pays = self.carte.rattacher(titre)
         lu = {"compartiments": sorted(comps), "pays": pays, "sens": sens(titre), "contributions": [], "lacunes": []}
         if not comps:
@@ -142,6 +143,11 @@ class Couche:
                 if a is None:
                     lu["lacunes"].append(f"{r['de']} → {c} : amont sans série")
                     continue
+                if objet:
+                    import ecosysteme_objet as eo
+                    if not eo.porte_sur(a, titre):
+                        lu["lacunes"].append(f"{r['de']} → {c} : série hors de l'objet de la question ({a})")
+                        continue
                 w = int(min(90, max(7, dj)))
                 zz = self.z(a, jour, w)
                 if zz is None:
