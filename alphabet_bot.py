@@ -543,8 +543,6 @@ class AlphabetBot(FallTemplateBot2026):
         # points au plus, modulée par la force de la preuve ; journal-juge.jsonl.
         texte = (r.commentaire or "") + (sp_["texte"] if sp_ is not None else "")
         p_mesure = float(sp_.get("p_regle", sp_["p"])) if sp_ is not None else r.p_poste
-        if sp_ is not None and abs(p_mesure - sp_["p"]) > 1e-9:
-            texte += (f"\n\nSince 0.10.510 the coded rule is the base (no blending): measure {p_mesure:.1%}.")
         j = await self._juge(question, q, research, a.prediction_value, p_mesure)
         if j is not None and j["decision"] == "ecart":
             texte += (f"\n\nInformed judge (bounded): departure for motive « {j['motif']} », capped at "
@@ -658,9 +656,7 @@ class AlphabetBot(FallTemplateBot2026):
                     "justice": "US Supreme Court outcome (Supreme Court Database 1946-2025 base rates)"}.get(e["classe"], "peace agreement")
             e["texte"] = (f"\n\nWar-state rule (coded): {quoi} during an ongoing war ({e['guerre']}), measured rates "
                           f"by war type and age (COW interstate wars since 1946, ETH/PRIO civil-war ceasefires, UCDP "
-                          f"conflict termination, MID interstate disputes since 1946): {e['p_regle']:.1%}. Blended at weight "
-                          f"{e['poids']} with the pipeline forecast {p_pipeline:.1%} (shift capped at "
-                          f"{e['ecart_max']:.0%}): {p:.1%}.")
+                          f"conflict termination, MID interstate disputes since 1946): {e['p_regle']:.1%}. This coded rule is the measure (base, not blended).")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("accords : non appliquée (%s)", type(ex).__name__)
@@ -682,8 +678,7 @@ class AlphabetBot(FallTemplateBot2026):
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
             e["texte"] = (f"\n\nCentral-bank inertia rule (coded): Fed decisions at scheduled FOMC meetings since 1994 "
                           f"(federalreserve.gov), Markov chain on the direction and recency of the last move: "
-                          f"{e['p_regle']:.1%}. Blended at weight {e['poids']} with the pipeline forecast {p_pipeline:.1%} "
-                          f"(shift capped at {e['ecart_max']:.0%}): {p:.1%}.")
+                          f"{e['p_regle']:.1%}. This coded rule is the measure (base, not blended).")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("banque centrale : non appliquée (%s)", type(ex).__name__)
@@ -703,8 +698,7 @@ class AlphabetBot(FallTemplateBot2026):
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
             e["texte"] = (f"\n\nOne-among-N rule (coded): {e['n']} contenders under the competition's rules, salience "
                           f"factor {e['saillance']:g} (questions tend to be asked about favourites): {e['p_regle']:.1%}. "
-                          f"Blended at weight {e['poids']} with the pipeline forecast {p_pipeline:.1%} (shift capped at "
-                          f"{e['ecart_max']:.0%}): {e['p']:.1%}.")
+                          f"This coded rule is the measure (base, not blended).")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("compétition : non appliquée (%s)", type(ex).__name__)
@@ -724,8 +718,7 @@ class AlphabetBot(FallTemplateBot2026):
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
             nom = "heavy act (invasion, blockade, war)" if e["classe"] == "lourd" else "light act (strike, attack, clash)"
             e["texte"] = (f"\n\nEscalation-ladder rule (coded): the question asks about a {nom}; resolved questions of "
-                          f"this class resolved YES {e['p_regle']:.0%} of the time (shrunk). Blended at weight {e['poids']} "
-                          f"with the pipeline forecast {p_pipeline:.1%} (shift capped at {e['ecart_max']:.0%}): {e['p']:.1%}.")
+                          f"this class resolved YES {e['p_regle']:.0%} of the time (shrunk). This coded rule is the measure (base, not blended).")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("escalade : non appliquée (%s)", type(ex).__name__)
@@ -745,9 +738,8 @@ class AlphabetBot(FallTemplateBot2026):
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
             e["texte"] = (f"\n\nTenure rule (coded): age-based mortality (SSA 2023) and exit hazards by time in office "
                           f"(Archigos 4.1, 1990-2015), multiplied by {e['saillance']:g} because leaders whose exit is "
-                          f"being asked about leave more often; chance of exit before the deadline {e['p_depart']:.1%}. "
-                          f"Blended at weight {e['poids']} with the pipeline forecast {p_pipeline:.1%} (shift capped at "
-                          f"{e['ecart_max']:.0%}): {e['p']:.1%}.")
+                          f"being asked about leave more often; chance of exit before the deadline {e['p_depart']:.1%}; "
+                          f"measure for this question {e['p_regle']:.1%}. This coded rule is the measure (base, not blended).")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("maintien : non appliqué (%s)", type(ex).__name__)
@@ -768,8 +760,7 @@ class AlphabetBot(FallTemplateBot2026):
             src = "UCDP fatal events between the two governments" if e["serie"].startswith("ucdp") else "USGS M6+ earthquakes"
             e["texte"] = (f"\n\nCounted-event rule (coded): {src}, {e['k']} of the last {e['n']} "
                           f"{'months' if e['pas'] == 'mois' else 'days'} with an event; chance of at least one before the "
-                          f"deadline {e['p_regle']:.1%}. Blended at weight {e['poids']} with the pipeline forecast "
-                          f"{p_pipeline:.1%} (shift capped at {e['ecart_max']:.0%}): {e['p']:.1%}.")
+                          f"deadline {e['p_regle']:.1%}. This coded rule is the measure (base, not blended).")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("événement compté : non appliqué (%s)", type(ex).__name__)

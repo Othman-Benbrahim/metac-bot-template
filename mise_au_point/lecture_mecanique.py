@@ -43,7 +43,9 @@ def routage() -> tuple[list, list, dict]:
     termes = defaultdict(set)
     for l in (LISTES / "valides.txt").read_text(encoding="utf-8").splitlines():
         p = [x.strip() for x in l.split("|")]
-        if len(p) >= 4 and p[0] == "+" and len(p[1]) >= 4:
+        # 2026-11-24, 22 h 34 : un terme « étiquette seule » (décision de l'auteur du 2026-11-22, 2 h 45 : terme générique,
+        # compté seulement comme étiquette posée par la rédaction) ne rattache pas une question.
+        if len(p) >= 4 and p[0] == "+" and len(p[1]) >= 4 and "étiquette seule" not in (p[4] if len(p) > 4 else ""):
             for r in p[3].split(";"):
                 r = r.strip()
                 if r.count(":") == 1 and not r.startswith("espace:"):

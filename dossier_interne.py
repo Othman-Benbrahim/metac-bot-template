@@ -218,7 +218,11 @@ def construire(titre: str, fin: str, jour: dt.date | None = None, qid: str | Non
                        "date_donnee": e.get("date_prix") or e.get("date_donnee"), "n": e.get("n"),
                        "perf": PERF.get(fam), "regle_entree": "R-brique"})
         ancien = next((x[3] for x in B if x[0] == "prix" and x[2] is None), None)
-        D["briques"] = el or (silence("donnees_anciennes", date_donnee=ancien) if ancien else silence("aucune_brique"))
+        qp = spx.lire(titre)
+        if not el and qp and qp["actif"] in spx.ACTIONS and not spx.ACTIONS_DANS_LE_BOT:
+            D["briques"] = silence("hors_domaine", motif="actions non branchées")
+        else:
+            D["briques"] = el or (silence("donnees_anciennes", date_donnee=ancien) if ancien else silence("aucune_brique"))
     else:
         D["briques"] = silence("aucune_brique")
     # R-prix
@@ -230,6 +234,11 @@ def construire(titre: str, fin: str, jour: dt.date | None = None, qid: str | Non
             D["prix"] = {"actif": e["actif"], "valeur": e["dernier_prix"], "date_donnee": e["date_prix"],
                          "volatilite_annuelle_30j": e["sigma_annuel"], "seuil": e["k"], "source": "FRED, " + e["actif"],
                          "regle_entree": "R-prix"}
+        elif q and q["actif"] in spx.ACTIONS and not spx.ACTIONS_DANS_LE_BOT:
+            D["prix"] = silence("hors_domaine", actif=q["actif"],
+                                motif="actions non branchées (preenregistrements/seuils-de-prix-actions.md)")
+            D["a_chercher"].append({"fait": "dernier_cours", "actif": q["actif"],
+                                    "consigne": f"dernier cours de clôture connu de {q['actif']} (date et source)"})
         elif q:
             D["prix"] = silence("donnees_anciennes", actif=q["actif"], date_donnee=ancien)
             D["a_chercher"].append({"fait": "dernier_cours", "actif": q["actif"],
