@@ -16,9 +16,11 @@ import httpx
 
 import politesse
 
+# 2026-11-24, 18 h 22 : scdb.la.psu.edu répond 403 au robot (refus respecté, pas de contournement) ; seconde adresse
+# officielle de la SCDB (Université Washington), mêmes fichiers « 2026_01 », avec notre identité habituelle.
 FICHIERS = {
-    "registre/scdb-affaires.csv": "https://scdb.la.psu.edu/?jet_download=69e2a3e7da8f9782e65de282ff4742e4116bae7e",
-    "registre/scdb-juges.csv": "https://scdb.la.psu.edu/?jet_download=c99e5d5b7131dda1f6d1c06a5e7c4dda58c38c88",
+    "registre/scdb-affaires.csv": "http://scdb.wustl.edu/_brickFiles/2026_01/SCDB_2026_01_caseCentered_Citation.csv.zip",
+    "registre/scdb-juges.csv": "http://scdb.wustl.edu/_brickFiles/2026_01/SCDB_2026_01_justiceCentered_Citation.csv.zip",
 }
 
 
