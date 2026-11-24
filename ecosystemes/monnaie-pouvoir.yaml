@@ -26,6 +26,7 @@ compartiments:
   - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: FMI, COFER (composition des réserves de change)
     statut: a_brancher
+  - {source: "indice large du dollar (FRED DTWEXBGS) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: collecte_fred.py, adaptateur: "fred:DTWEXBGS"}
 - id: or
   nom: L'or des banques centrales
   organisation: mineral
@@ -82,6 +83,8 @@ compartiments:
   traces:
   - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
+  - {source: "cours du bitcoin (Coinbase, FRED CBBTCUSD) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: collecte_fred.py, adaptateur: "fred:CBBTCUSD"}
+  - {source: "cours de l’ether (Coinbase, FRED CBETHUSD) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: collecte_fred.py, adaptateur: "fred:CBETHUSD"}
 - id: dedollarisation
   nom: Dédollarisation (discours et pratiques)
   organisation: geopolitique
@@ -107,7 +110,17 @@ compartiments:
   traces:
   - {source: "flux RSS BCE et Réserve fédérale (communiqués), famille « monnaie » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
+  - {source: "taux directeur effectif de la Réserve fédérale (FRED DFF) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: collecte_fred.py, adaptateur: "fred:DFF"}
 relations:
+- de: banques_centrales_puissance
+  vers: monnaies_numeriques
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: inconnue
+  statut: a_verifier
+  texte: le resserrement monétaire pèse sur les cryptoactifs, devenus corrélés aux actions depuis 2020
+  source: "FMI, « Crypto Prices Move More in Sync With Stocks, Posing New Risks » (2022), https://www.imf.org/en/Blogs/Articles/2022/01/11/crypto-prices-move-more-in-sync-with-stocks-posing-new-risks ; complété le 2026-11-24"
 - de: sanctions_financieres
   vers: dedollarisation
   effet: '+'

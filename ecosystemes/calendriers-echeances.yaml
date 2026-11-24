@@ -76,6 +76,7 @@ compartiments:
   traces:
   - source: calendriers publics des réunions (Réserve fédérale, BCE, OPEP+)
     statut: a_brancher
+  - {source: "réunions programmées du FOMC et décisions de taux (federalreserve.gov, 1994-2026) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: ecosystemes/fomc-reunions.csv}
 - id: parlements
   nom: Sessions parlementaires
   organisation: statut
@@ -254,6 +255,15 @@ compartiments:
     fichier: collecte_fred.py
     adaptateur: fred:DFF
 relations:
+- de: publications
+  vers: banques_centrales
+  effet: '+'
+  delai: semaines
+  force: forte
+  coupure: inconnue
+  statut: a_verifier
+  texte: les chiffres publiés entre deux réunions (inflation, emploi) fixent ce que la banque centrale décidera à la réunion suivante
+  source: "Réserve fédérale, déclarations du FOMC (« the Committee will carefully assess incoming data »), https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm ; complété le 2026-11-24"
 - de: anticipations
   vers: anticipations
   effet: +

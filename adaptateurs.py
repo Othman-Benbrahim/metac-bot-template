@@ -293,7 +293,29 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
                   if r["mesure"] == mesure and r["valeur"] not in ("", None))
 
 
-ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+def epoch(reg: Path, labo: str = "frontiere") -> list[tuple[str, float]]:
+    """0.10.509 (carte complétée, carte blanche de l'auteur du 2026-11-24, 20 h 48) : nombre de modèles publiés par mois
+    par les laboratoires de pointe (OpenAI, Anthropic, Google, xAI, Meta), d'après Epoch AI (registre/epoch-modeles.csv)."""
+    import collections
+    labos = ("openai", "anthropic", "google", "xai", "meta") if labo == "frontiere" else (labo.lower(),)
+    n = collections.Counter()
+    for r in _csv(reg, "epoch-modeles.csv"):
+        org = (r.get("Organization") or "").lower().replace(" ", "")
+        d = (r.get("Publication date") or "")[:7]
+        if len(d) == 7 and any(l in org for l in labos):
+            n[d + "-01"] += 1
+    if not n:
+        return []
+    mois, fin = sorted(n), max(n)
+    a, m = map(int, mois[0][:7].split("-"))
+    out = []
+    while f"{a}-{m:02d}-01" <= fin:
+        out.append((f"{a}-{m:02d}-01", float(n.get(f"{a}-{m:02d}-01", 0))))
+        a, m = (a + 1, 1) if m == 12 else (a, m + 1)
+    return out
+
+
+ADAPTATEURS = {"epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

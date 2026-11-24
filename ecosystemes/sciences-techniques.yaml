@@ -108,6 +108,7 @@ compartiments:
     traces:
     - source: "notes de version et pages de statut des laboratoires (validée par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
+    - {source: "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: collecte_epoch.py, adaptateur: "epoch:frontiere"}
   - id: bancs_ia
     nom: "Tests de référence de l'IA et leurs seuils"
     organisation: convention
