@@ -1,0 +1,88 @@
+{
+ "resume": {
+  "n": 7,
+  "oui": 3,
+  "perte_reference": 0.7435,
+  "perte_regle": 0.6129,
+  "perte_melange": 0.6785,
+  "n_2026": 5,
+  "perte_reference_2026": 0.7149,
+  "perte_regle_2026": 0.7742,
+  "taux_par_an_entieres": [
+   0.447,
+   1.006,
+   1.106
+  ],
+  "taux_par_an_toutes": [
+   2.938,
+   1.492,
+   1.427
+  ],
+  "brancher": false
+ },
+ "lignes": [
+  {
+   "titre": "GPT-5 announced in Q4 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "groupe": "GPT-5",
+   "p": 0.307,
+   "ref": 0.2675,
+   "mel": 0.2771
+  },
+  {
+   "titre": "Will there be a language model called GPT-5, released by OpenAI, this decade? ",
+   "jeu": "2025-03-30",
+   "y": 1,
+   "groupe": "GPT-5 OpenAI",
+   "p": 0.949,
+   "ref": 0.2674,
+   "mel": 0.4174
+  },
+  {
+   "titre": "Claude 5 released before March 31?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "groupe": "Claude",
+   "p": 0.0966,
+   "ref": 0.2682,
+   "mel": 0.2122
+  },
+  {
+   "titre": "Will Claude 5 be released by March 31, 2026?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Claude",
+   "p": 0.0512,
+   "ref": 0.2682,
+   "mel": 0.185
+  },
+  {
+   "titre": "GPT-5.5 released by April 30, 2026?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "GPT-5",
+   "p": 0.1667,
+   "ref": 0.2675,
+   "mel": 0.2391
+  },
+  {
+   "titre": "Will Claude 5 be released by April 30, 2026?",
+   "jeu": "2026-03-29",
+   "y": 0,
+   "groupe": "Claude",
+   "p": 0.0969,
+   "ref": 0.2682,
+   "mel": 0.2124
+  },
+  {
+   "titre": "Gemini 4.0 released by November 30, 2026?",
+   "jeu": "2026-09-27",
+   "y": 1,
+   "groupe": "Gemini",
+   "p": 0.1615,
+   "ref": 0.2674,
+   "mel": 0.2373
+  }
+ ]
+}
