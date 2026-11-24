@@ -1,0 +1,1591 @@
+{
+ "resume": {
+  "n": 223,
+  "groupes": 171,
+  "oui_total": 62,
+  "classes": {
+   "statu_quo": {
+    "n": 25,
+    "oui": 10,
+    "groupes": 21
+   },
+   "accord": {
+    "n": 40,
+    "oui": 10,
+    "groupes": 27
+   },
+   "changement": {
+    "n": 158,
+    "oui": 42,
+    "groupes": 131
+   }
+  },
+  "perte_reference": 0.5971,
+  "perte_classe": 0.6071,
+  "perte_melange_plafonne": 0.5989,
+  "brancher": false
+ },
+ "lignes": [
+  {
+   "titre": "Will a JCPOA participant country begin the process of imposing “snapback” sanctions on Iran by 31 December 2024?",
+   "source": "infer",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Iran JCPOA"
+  },
+  {
+   "titre": "Before 1 January 2025, will Iran announce that it will leave the JCPOA (\"Iran nuclear deal\")?",
+   "source": "infer",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Iran JCPOA"
+  },
+  {
+   "titre": "Will the Houthi movement and Yemen reach a ceasefire that is in effect on 31 December 2024 and lasts at least six months?",
+   "source": "infer",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Houthi Yemen"
+  },
+  {
+   "titre": "By 31 December 2024, will Microsoft announce that its AI Research Lab in China is closing or being relocated?",
+   "source": "infer",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "AI China Lab Microsoft Research"
+  },
+  {
+   "titre": "Will there be a ceasefire in Gaza by Eoy 2024?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Eoy Gaza"
+  },
+  {
+   "titre": "Will Doors of Stone, the third book of the Kingkiller Chronicle by Patrick Rothfuss, be released before 2025?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Chronicle Doors Kingkiller Patrick Rothfuss Stone"
+  },
+  {
+   "titre": "Will Taylor Swift release Reputation (Taylor's Version) before the end of 2024?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Reputation Swift Taylor Version"
+  },
+  {
+   "titre": "Will at least ten countries have committed to any diplomatic agreement restricting solar geoengineering, before 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Will at least ten countries have committed to any diplomatic agreement restricting solar geoengineering, before 2026?"
+  },
+  {
+   "titre": "Will the REAL ID deadline be extended beyond May 7, 2025?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "ID REAL"
+  },
+  {
+   "titre": "Israel x Hamas ceasefire before September?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Hamas Israel"
+  },
+  {
+   "titre": "James Norton announced as next James Bond?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Bond James Norton"
+  },
+  {
+   "titre": "Will four SpaceX Starship launches successfully reach outer space in 2024?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "SpaceX Starship"
+  },
+  {
+   "titre": "Ceasefire between Russia and Ukraine before October?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Ceasefire Russia Ukraine"
+  },
+  {
+   "titre": "GPT-5 announced in Q4 2024?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "GPT-5"
+  },
+  {
+   "titre": "Sony doesn't release Playstation 5 Pro in 2024?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Playstation Pro Sony"
+  },
+  {
+   "titre": "Will two SpaceX Starship launches successfully reach outer space in 2024?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "SpaceX Starship"
+  },
+  {
+   "titre": "TikTok sale announced before August?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "TikTok"
+  },
+  {
+   "titre": "No Eigenlayer token launch in 2024?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Eigenlayer"
+  },
+  {
+   "titre": "Damson Idris announced as next James Bond?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Bond Damson Idris James"
+  },
+  {
+   "titre": "Tom Hardy announced as next James Bond?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Bond Hardy James Tom"
+  },
+  {
+   "titre": "Will the upcoming Minecraft movie make over a billion dollars at the worldwide box office?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Minecraft"
+  },
+  {
+   "titre": "Will a Monopoly movie release by end of August 2026?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Monopoly"
+  },
+  {
+   "titre": "Will the USMCA be extended promptly at its July 2026 joint review?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "USMCA"
+  },
+  {
+   "titre": "OpenAI announces it has achieved AGI before July?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "AGI OpenAI"
+  },
+  {
+   "titre": "Doge ETF approved by July 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Doge ETF"
+  },
+  {
+   "titre": "Will Jerome Powell say \"Good Afternoon\" during the March meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Afternoon Good Jerome Powell"
+  },
+  {
+   "titre": "Trump impose large tariffs in first year?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Trump"
+  },
+  {
+   "titre": "Will Spider-Man: Beyond the Spider-Verse release before the end of 2025?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Beyond Spider-Man Spider-Verse"
+  },
+  {
+   "titre": "Will OpenAI claim GPT-5 is AGI within 30 days after its release?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "AGI GPT-5 OpenAI"
+  },
+  {
+   "titre": "Will the US officially announce the withdrawal of at least half of its troops out of Syria before April, 2025?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Syria US"
+  },
+  {
+   "titre": "Will MicroStrategy hold 550k+ BTC before April?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "BTC MicroStrategy"
+  },
+  {
+   "titre": "Trump signs national abortion ban?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Trump"
+  },
+  {
+   "titre": "Will Ukraine join NATO before July?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "NATO Ukraine"
+  },
+  {
+   "titre": "No change in Fed interest rates after May 2025 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "No change in Fed interest rates after May 2025 meeting?"
+  },
+  {
+   "titre": "Russia-Ukraine Ceasefire in Trump's First 90 Days?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Ceasefire Days First Russia-Ukraine Trump"
+  },
+  {
+   "titre": "Will there be a language model called GPT-5, released by OpenAI, this decade? ",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "GPT-5 OpenAI"
+  },
+  {
+   "titre": "Will Russia have significantly expanded its controlled territory in Ukraine on January 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Russia Ukraine"
+  },
+  {
+   "titre": "Bird flu declared public health emergency before April?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Bird"
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after July 2025 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Fed increases interest rates by 25+ bps after July 2025 meeting?"
+  },
+  {
+   "titre": "Will Beyond Meat file for bankruptcy protection before 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Beyond Meat"
+  },
+  {
+   "titre": "Will legislation be approved by at least one chamber of Congress in 2025 that partially or fully exempts at least one executive branch department, the CIA, or EPA from the Freedom of Information Act?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Act CIA Congress EPA Freedom Information"
+  },
+  {
+   "titre": "OpenAI will launch an audio only smart home device in the next twelve months",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "OpenAI"
+  },
+  {
+   "titre": "Will Taylor Swift get married before Twitter launches a Peer to Peer payment system?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Peer Swift Taylor Twitter"
+  },
+  {
+   "titre": "Will the U.S. have passed legislation that requires cybersecurity around AI models before 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "AI"
+  },
+  {
+   "titre": "Senate pass act to buy ≥1m Bitcoin?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Bitcoin Senate"
+  },
+  {
+   "titre": "Will the NFL ban the Tush Push before next season?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "NFL Push Tush"
+  },
+  {
+   "titre": "Will my video game be released by the end of 2025?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will my video game be released by the end of 2025?"
+  },
+  {
+   "titre": "Will the Department of Justice announce an investigation or prosecution of a Democrat who served as president, vice president, congressional leader, whip, or impeachment manager before 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Democrat Department Justice"
+  },
+  {
+   "titre": "Will Canada join US as 51st state in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Canada US"
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after June 2025 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Fed increases interest rates by 25+ bps after June 2025 meeting?"
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after June 2025 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Fed decreases interest rates by 50+ bps after June 2025 meeting?"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Russia Ukraine"
+  },
+  {
+   "titre": "Will the U.S. federal government enact legislation that substantively regulates or authorizes regulation of artificial intelligence systems or their development before 1 January 2026?",
+   "source": "infer",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the U.S. federal government enact legislation that substantively regulates or authorizes regulation of artificial intelligence systems or their development before 1 January 2026?"
+  },
+  {
+   "titre": "Will anyone be charged as a result of Epstein file release?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Epstein"
+  },
+  {
+   "titre": "GTA VI released in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "GTA VI"
+  },
+  {
+   "titre": "No change in Fed interest rates after June 2025 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "No change in Fed interest rates after June 2025 meeting?"
+  },
+  {
+   "titre": "Will the national military forces, militia, and/or law enforcement personnel of India and the People's Republic of China engage in a lethal confrontation by 30 September 2025?",
+   "source": "infer",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "China India People Republic"
+  },
+  {
+   "titre": "Will the U.S. Congress pass a budget reconciliation bill before 1 July 2025?",
+   "source": "infer",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Congress"
+  },
+  {
+   "titre": "Will the word \"tariff\" disappear from the front pages of The New York Times and Wall Street Journal before July 2025?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Journal New Street Times Wall York"
+  },
+  {
+   "titre": "Will MicroStrategy hold 600k+ BTC before July?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "BTC MicroStrategy"
+  },
+  {
+   "titre": "Israel x Hamas ceasefire before 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "Hamas Israel"
+  },
+  {
+   "titre": "Will Spider-Man: Beyond the Spider-Verse release before Hollow Knight Silksong?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Beyond Hollow Knight Silksong Spider-Man Spider-Verse"
+  },
+  {
+   "titre": "Will the United States and Iran sign an agreement restricting Iran's nuclear program before September 2025?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Iran States United"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire before July?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Russia Ukraine"
+  },
+  {
+   "titre": "Will Jerome Powell cease to hold the office of Chair of the Federal Reserve before 2026?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Chair Federal Jerome Powell Reserve"
+  },
+  {
+   "titre": "No change in Fed interest rates after September 2025 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "No change in Fed interest rates after September 2025 meeting?"
+  },
+  {
+   "titre": "Will 10-12 SpaceX Starship launches successfully reach Space in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Space SpaceX Starship"
+  },
+  {
+   "titre": "Interstellar object confirmed aliens?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Interstellar"
+  },
+  {
+   "titre": "Epstein or Maxwell confirmed Mossad operatives in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Epstein Maxwell Mossad"
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Fed increases interest rates by 25+ bps after October 2025 meeting?"
+  },
+  {
+   "titre": "US-Iran nuclear deal in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "US-Iran"
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after September 2025 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Fed decreases interest rates by 50+ bps after September 2025 meeting?"
+  },
+  {
+   "titre": "Will Tesla launch a driverless Robotaxi service by August 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Robotaxi Tesla"
+  },
+  {
+   "titre": "TikTok sale announced in 2025?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "TikTok"
+  },
+  {
+   "titre": "Will Tesla launch a driverless Robotaxi service in 2025?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Robotaxi Tesla"
+  },
+  {
+   "titre": "Will France recognize Palestine in 2025?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "France Palestine"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by December 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Iran Israel"
+  },
+  {
+   "titre": "Will a new multilateral security agreement involving at least three Middle East and North Africa (MENA) states (excluding Iran, Saudi Arabia, Turkey, and Israel) be publicly announced by 30 June 2026?",
+   "source": "infer",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Africa Arabia East Iran Israel MENA Middle North Saudi Turkey"
+  },
+  {
+   "titre": "Will China, Russia, the U.S., or the EU publicly announce new economic or trade sanctions that specifically target a state-owned oil or gas entity in Egypt, Jordan, or the United Arab Emirates (UAE) by 30 June 2026?",
+   "source": "infer",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Arab China EU Egypt Emirates Jordan Russia UAE United"
+  },
+  {
+   "titre": "Will Pxie and Destiny settle their lawsuit by the end of 2025?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Destiny Pxie"
+  },
+  {
+   "titre": "Will Chegg file for bankruptcy before January 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Chegg"
+  },
+  {
+   "titre": "Will Billie Eilish be the top Spotify artist for 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Billie Eilish Spotify"
+  },
+  {
+   "titre": "OpenAI announces it has achieved AGI in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "AGI OpenAI"
+  },
+  {
+   "titre": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Fed decreases interest rates by 25 bps after October 2025 meeting?"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by October 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Iran Israel"
+  },
+  {
+   "titre": "Tesla launches unsupervised full self driving (FSD) by October 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "FSD Tesla"
+  },
+  {
+   "titre": "Will Virgin Galactic file for bankruptcy protection before 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Galactic Virgin"
+  },
+  {
+   "titre": "Will the U.S. Supreme Court grant certiorari in Monsanto Company v. John L. Durnell before January 15, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Company Court Durnell John Monsanto Supreme"
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after January 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Fed decreases interest rates by 50+ bps after January 2026 meeting?"
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Will there be no change in Fed interest rates after the March 2026 meeting?"
+  },
+  {
+   "titre": "Apple Vision Pro 2 released by December 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Apple Pro Vision"
+  },
+  {
+   "titre": "U.S. recognizes Russian sovereignty over Crimea in 2025? ",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Crimea Russian"
+  },
+  {
+   "titre": "Half-Life 3 confirmed by EOY?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "EOY Half-Life"
+  },
+  {
+   "titre": "Gemini 3.0 Flash released by December 31?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Flash Gemini"
+  },
+  {
+   "titre": "Will Ukraine start revoking passports of military draft age men residing abroad before 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Ukraine"
+  },
+  {
+   "titre": "Will Elon Musk's million-dollar giveaway to register voters be considered illegal on December 31, 2025?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Elon Musk"
+  },
+  {
+   "titre": "Ghislaine Maxwell released from custody in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Ghislaine Maxwell"
+  },
+  {
+   "titre": "Will MicroStrategy hold 680k+ BTC by December 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "BTC MicroStrategy"
+  },
+  {
+   "titre": "Will Trump announce Howard Lutnick as next Fed Chair in 2025?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Chair Howard Lutnick Trump"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire by March 31, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Russia Ukraine"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by June 30, 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Iran Israel"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by March 31, 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Iran Israel"
+  },
+  {
+   "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "New START"
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after January 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Fed increases interest rates by 25+ bps after January 2026 meeting?"
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the June 2026 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Will there be no change in Fed interest rates after the June 2026 meeting?"
+  },
+  {
+   "titre": "Will Taylor Swift get married before Grand Theft Auto 6 releases?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Auto Grand Swift Taylor Theft"
+  },
+  {
+   "titre": "Will Apple announce a foldable iPhone by the end of 2026?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Apple"
+  },
+  {
+   "titre": "Will this tweet hold up: I think you guys need to mentally prepare yourselves for Sinners not winning a single thing",
+   "source": "manifold",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Sinners"
+  },
+  {
+   "titre": "Claude 5 released before March 31?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Claude"
+  },
+  {
+   "titre": "Will Germany recognize Palestine within 2 years of Ireland, Norway and Spain?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Germany Ireland Norway Palestine Spain"
+  },
+  {
+   "titre": "Will Polymarket launch a stablecoin before 2027?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Polymarket"
+  },
+  {
+   "titre": "Will the Nintendo Switch 2 be hacked within 12 months of its release date?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Nintendo Switch"
+  },
+  {
+   "titre": "Will a G7 country announce new quantum legislation within the next 2 months?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "G7"
+  },
+  {
+   "titre": "Will the European Commission publish a new quantum strategy document within the next 60 days?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Commission European"
+  },
+  {
+   "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Houthis Oman Yemen"
+  },
+  {
+   "titre": "Will presidential impoundment authority be expanded by the Supreme Court or by law before November 3, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Court Supreme"
+  },
+  {
+   "titre": "Before July 1, 2026, will the U.S. Supreme Court agree to hear a case that could end the constitutional right to same-sex marriage?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Court Supreme"
+  },
+  {
+   "titre": "Will Russia, India, and China hold a trilateral (three-way) meeting before September 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "China India Russia"
+  },
+  {
+   "titre": "Will the WHO declare a Public Health Emergency of International Concern in 2026?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Concern Emergency Health International Public WHO"
+  },
+  {
+   "titre": "Will OpenAI file an initial registration statement (S-1) with the SEC to launch an IPO, before March 15, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "IPO OpenAI S-1 SEC"
+  },
+  {
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before July 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Anthropic IPO S-1 SEC"
+  },
+  {
+   "titre": "Will the U.S. Supreme Court's decision in Louisiana v. Callais hold that race-conscious districting is unconstitutional?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Callais Court Louisiana Supreme"
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?"
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the April 2026 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Will there be no change in Fed interest rates after the April 2026 meeting?"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire by end of 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Russia Ukraine"
+  },
+  {
+   "titre": "Will Drake release Iceman before GTA VI?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Drake GTA Iceman VI"
+  },
+  {
+   "titre": "Apple to release a foldable iPhone before 2027?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Apple"
+  },
+  {
+   "titre": "USA x Iran ceasefire by end of march 31?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Iran USA"
+  },
+  {
+   "titre": "Russia joins the Board of Peace by March 31?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Board Peace Russia"
+  },
+  {
+   "titre": "Will an independent replication study confirm that poor sleep can be an early indicator of Alzheimer's disease in flies?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Alzheimer"
+  },
+  {
+   "titre": "Will Claude 5 be released by March 15, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Claude"
+  },
+  {
+   "titre": "X banned in U.K. by March 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "X banned in U.K. by March 31?"
+  },
+  {
+   "titre": "Will Claude 5 be released by March 31, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Claude"
+  },
+  {
+   "titre": "Bank of England decreases interest rates by 25 bps after March 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Bank England"
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?"
+  },
+  {
+   "titre": "GTA VI released by May 31, 2026?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "GTA VI"
+  },
+  {
+   "titre": "Will the United States officially withdraw from NATO by March 31, 2026?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "NATO States United"
+  },
+  {
+   "titre": "Will the DOJ officially remove the requirement for U.S. attorneys to consult with the Public Integrity Section before prosecuting lawmakers before November 4, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "DOJ Integrity Public Section"
+  },
+  {
+   "titre": "Will the U.S. Supreme Court further cut back campaign finance limitations in National Republican Senatorial Committee v. FEC before January 1, 2027?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Committee Court FEC National Republican Senatorial Supreme"
+  },
+  {
+   "titre": "Will the US and Iran agree to a ceasefire before May 2026?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before May 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Putin Vladimir Volodymyr Zelenskyy"
+  },
+  {
+   "titre": "GPT-5.5 released by April 30, 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "GPT-5"
+  },
+  {
+   "titre": "Will Claude 5 be released by April 30, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Claude"
+  },
+  {
+   "titre": "Will MetaMask launch a token by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "MetaMask"
+  },
+  {
+   "titre": "US x Iran ceasefire by December 31?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "US x Iran ceasefire by April 15?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "US x Iran ceasefire by June 30?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "Will Trump and Putin not meet?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Putin Trump"
+  },
+  {
+   "titre": "Will the Court Force Trump to Refund Tariffs?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Court Force Refund Tariffs Trump"
+  },
+  {
+   "titre": "US-Iran nuclear deal by April 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "US-Iran"
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?"
+  },
+  {
+   "titre": "GTA VI released on May 26, 2026?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "GTA VI"
+  },
+  {
+   "titre": "US - Iran nuclear deal by end of June?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "GTA 6 released before August 1, 2026?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "GTA"
+  },
+  {
+   "titre": "Kevin Warsh confirmed as Fed Chair by May 15?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Chair Kevin Warsh"
+  },
+  {
+   "titre": "Trump announces end of military operations against Iran by April 15th?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Iran Trump"
+  },
+  {
+   "titre": "US x Iran permanent peace deal by May 31? [Polymarket]",
+   "source": "manifold",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Iran Polymarket US"
+  },
+  {
+   "titre": "Will an AI created song chart on the Billboard Hot 100 before 2027?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "AI Billboard Hot"
+  },
+  {
+   "titre": "Will California Emissions Reporting Laws SB 253 and SB 261 Be In Effect on September 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Be California Effect Emissions Laws Reporting SB"
+  },
+  {
+   "titre": "Trump announces end of military operations against Iran by May 31st?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Iran Trump"
+  },
+  {
+   "titre": "US-Iran nuclear deal by June 30?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "US-Iran"
+  },
+  {
+   "titre": "Will Joe Biden's autopen orders be declared 'null and void' before the 2026 midterms?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Biden Joe"
+  },
+  {
+   "titre": "Will the U.S. Senate pass another budget reconciliation bill before July 4, 2026?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Senate"
+  },
+  {
+   "titre": "Will the United States and Iran hold another face-to-face diplomatic meeting before June 6, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Iran States United"
+  },
+  {
+   "titre": "Billionaire one-time wealth tax on California ballot?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Billionaire California"
+  },
+  {
+   "titre": "US-Iran nuclear deal before 2027?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "US-Iran"
+  },
+  {
+   "titre": "US x Iran diplomatic meeting by June 30, 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "Will the No to ten million Switzerland initiative be approved in Switzerland’s June 14, 2026 popular vote?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Switzerland"
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?"
+  },
+  {
+   "titre": "will this tweet hold up: Starship will fly to Mars in 24 months [27 Oct, 2026]",
+   "source": "manifold",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Mars Oct Starship"
+  },
+  {
+   "titre": "US x Iran permanent peace deal by June 30? [Polymarket]",
+   "source": "manifold",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "Iran Polymarket US"
+  },
+  {
+   "titre": "Will Donald Trump and Vladimir Putin meet in person before October 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Donald Putin Trump Vladimir"
+  },
+  {
+   "titre": "Will Anthropic make a deal with the Pentagon by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Anthropic Pentagon"
+  },
+  {
+   "titre": "Ukraine officially agrees to a US backed ceasefire framework by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "US Ukraine"
+  },
+  {
+   "titre": "Will Donald Trump not announce a next United States Attorney General by June 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Attorney Donald General States Trump United"
+  },
+  {
+   "titre": "Will JD Vance have a diplomatic meeting with Iran by June 30, 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "Iran JD Vance"
+  },
+  {
+   "titre": "Will Jared Kushner have a diplomatic meeting with Iran by May 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Iran Jared Kushner"
+  },
+  {
+   "titre": "Will the US government file a denaturalization lawsuit against Elon Musk before July 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Elon Musk US"
+  },
+  {
+   "titre": "Will another country announce they will quit OPEC or OPEC+ before September 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "OPEC"
+  },
+  {
+   "titre": "Will Claude Mythos or a similar model be publicly released before September 2026?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Claude Mythos"
+  },
+  {
+   "titre": "Will Apple release a foldable iPhone before 2027?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Apple"
+  },
+  {
+   "titre": "Will J.D. Vance attend the next US x Iran diplomatic meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Iran US Vance"
+  },
+  {
+   "titre": "Will Steve Witkoff attend the next US x Iran diplomatic meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Iran Steve US Witkoff"
+  },
+  {
+   "titre": "Will GPT6 release before GTA6?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "GPT6 GTA6"
+  },
+  {
+   "titre": "Will OpenAI's ChatGPT Atlas browser be released for Windows before September 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Atlas ChatGPT OpenAI Windows"
+  },
+  {
+   "titre": "Will the U.S. Supreme Court rule in favor of Monsanto in Monsanto Company v. John L. Durnell?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Company Court Durnell John Monsanto Supreme"
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?"
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the July 2026 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Will there be no change in Fed interest rates after the July 2026 meeting?"
+  },
+  {
+   "titre": "Will Shakira's \"Dai Dai\" outpeak Shakira's \"Waka Waka\" on the Billboard Hot 100?",
+   "source": "metaculus",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Billboard Dai Hot Shakira Waka"
+  },
+  {
+   "titre": "Will OpenAI publicly file an initial registration statement (S-1) with the SEC to launch an IPO, before September 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "IPO OpenAI S-1 SEC"
+  },
+  {
+   "titre": "Will Volodymyr Zelenskyy and Vladimir Putin meet in person before September 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Putin Vladimir Volodymyr Zelenskyy"
+  },
+  {
+   "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "India US"
+  },
+  {
+   "titre": "Israel x Iran permanent peace deal by July 31, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Iran Israel"
+  },
+  {
+   "titre": "Israel withdraws from Lebanon by July 31, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Israel Lebanon"
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the September 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Will there be no change in Fed interest rates after the September 2026 meeting?"
+  },
+  {
+   "titre": "Will the United States provide written notices of withdrawal from the USMCA before September 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "States USMCA United"
+  },
+  {
+   "titre": "Will any U.S. Supreme Court justice announce their retirement before September 1, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Court Supreme"
+  },
+  {
+   "titre": "Israel withdraws from Lebanon by August 31, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Israel Lebanon"
+  },
+  {
+   "titre": "Will Marco Rubio sign a U.S. x Iran deal by July 31?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Iran Marco Rubio"
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the July 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the Fed increase interest rates by 25 bps after the July 2026 meeting?"
+  },
+  {
+   "titre": "Will Anthropic file an initial registration statement (S-1) with the SEC to launch an IPO, before September 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Anthropic IPO S-1 SEC"
+  },
+  {
+   "titre": "Will Mitch McConnell cast a roll-call vote in the U.S. Senate before September 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "McConnell Mitch Senate"
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?"
+  },
+  {
+   "titre": "Russia announces new wave of mobilization before November 2026",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Russia"
+  },
+  {
+   "titre": "\"Spider-Man: Brand New Day\" passes \"Avatar: The Way of Water\"? (>2.3B worldwide)",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Avatar Brand Day New Spider-Man Water Way"
+  },
+  {
+   "titre": "Will Missouri's 2026 Amendment 3 pass, repealing the 2024 abortion-rights protections?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Amendment Missouri"
+  },
+  {
+   "titre": "Will Italy's Schengen suspension against Spain be lifted before August 30, 2026?",
+   "source": "metaculus",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Italy Schengen Spain"
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire agreement by October 31, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "Russia Ukraine"
+  },
+  {
+   "titre": "Will the US confirm that aliens exist by September 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "US"
+  },
+  {
+   "titre": "Israel x Iran ceasefire continues through September 30?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Iran Israel"
+  },
+  {
+   "titre": "Israel x Iran ceasefire continues through October 31?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Iran Israel"
+  },
+  {
+   "titre": "US x China tariff agreement by December 31?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "accord",
+   "groupe": "China US"
+  },
+  {
+   "titre": "Will Trump declare a national emergency before the midterms?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Trump"
+  },
+  {
+   "titre": "Will Northern Cyprus be recognized by a country other than Turkey before October 2026?",
+   "source": "manifold",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Cyprus Northern Turkey"
+  },
+  {
+   "titre": "Israel withdraws from Lebanon by September 30, 2026?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "changement",
+   "groupe": "Israel Lebanon"
+  },
+  {
+   "titre": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "statu_quo",
+   "groupe": "Will there be no change in Fed interest rates after the October 2026 meeting?"
+  },
+  {
+   "titre": "US x Iran diplomatic meeting by March 31, 2027?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "Will any song on Billboard Hot 100 before 2027 be composed by AI?",
+   "source": "manifold",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "AI Billboard Hot"
+  },
+  {
+   "titre": "Gemini 4.0 released by November 30, 2026?",
+   "source": "polymarket",
+   "y": 1,
+   "classe": "changement",
+   "groupe": "Gemini"
+  },
+  {
+   "titre": "US-Canada diplomatic agreement to lower tariffs by September 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "accord",
+   "groupe": "US-Canada"
+  },
+  {
+   "titre": "US x Iran ceasefire continues through November 15?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Iran US"
+  },
+  {
+   "titre": "US x Iran ceasefire continues through November 30?",
+   "source": "polymarket",
+   "y": 0,
+   "classe": "statu_quo",
+   "groupe": "Iran US"
+  }
+ ]
+}
