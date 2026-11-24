@@ -1,6 +1,6 @@
 # Dossier interne et juge informé : procédure écrite avant tout code
 
-Statut : **projet soumis à l'auteur**. Rien n'est codé dans le bot avant son accord.
+Statut : **validé par l'auteur le 2026-11-24 à 22 h 12**, avec l'amendement de la § 5 bis.
 
 Décisions de l'auteur à l'origine de ce projet :
 - 2026-11-24, ~21 h 45 : encadrer strictement l'IA, tout en lui laissant une marge suffisante dans des cas bien particuliers. « Le modèle va piocher dans l'actualité, mais il n'a pas accès aux ressources internes pour juger. »
@@ -107,6 +107,36 @@ Le juge rend un objet JSON fermé :
 
 Le code borne `p_juge` au plafond de la marge autour de la mesure. Il rejette l'écart si le motif n'est pas dans la liste, ou si la preuve n'est pas vérifiable selon la règle de la section 2. En cas de rejet, c'est la mesure qui est postée.
 
+### 5 bis. Fait nouveau sourcé : corroboration et force de la preuve
+
+Décision de l'auteur, 2026-11-24, 22 h 12 : une source isolée est un risque. Le fait doit se retrouver plusieurs fois, et la force de la preuve dépend de la source.
+
+Pour le motif `fait_nouveau_source`, `preuve` est une **liste** de sources. Chaque source porte une URL et une date. Le code les classe selon des critères objectifs, jamais au jugement du modèle :
+- **Primaire** : le domaine appartient à l'acteur du fait. Cela comprend :
+  - un domaine gouvernemental ou institutionnel (.gov, .gouv.fr, .gob, .gc.ca, .gov.uk, .europa.eu, .int) ;
+  - une banque centrale, une cour ou une organisation internationale ;
+  - le domaine de l'entreprise nommée dans la question ;
+  - les domaines des sources déjà citées dans les fiches et les briques.
+- **Agence** : une agence de presse mondiale, prise dans une liste fermée : Reuters, AP, AFP, Bloomberg, Xinhua, Kyodo, ANSA, EFE, dpa.
+- **Autre** : tout le reste.
+
+**Indépendance.** Deux sources ne comptent pour deux que si les trois conditions suivantes sont réunies :
+- leurs domaines enregistrables diffèrent ;
+- elles ne reprennent pas la même dépêche. Le code ouvre la page, en respectant robots.txt et sans rien garder du texte, et cherche la mention d'une agence (« (Reuters) », « AFP », « Associated Press »…). Deux pages qui créditent la même agence comptent pour une seule ;
+- chacune figure dans la recherche et a une date passée (règle de la section 2).
+
+Une page inaccessible ne compte pas.
+
+**Force et marge** (le plafond de la marge vaut 10 points, décision de l'auteur) :
+
+| Force | Condition | Marge admise |
+|---|---|---|
+| forte | 1 primaire et au moins 1 autre source indépendante, OU au moins 3 sources indépendantes dont 2 agences | 10 points |
+| moyenne | au moins 2 sources indépendantes dont au moins 1 agence ou 1 primaire | 5 points |
+| insuffisante | tout le reste, dont une source primaire seule et toute source « autre » seule | écart rejeté, on poste la mesure |
+
+Le classement et l'indépendance de chaque source sont scellés dans le journal. On pourra ainsi mesurer après coup si la force prédit la qualité des écarts.
+
 ## 6. Journal et contrôle
 
 - Le dossier envoyé est scellé dans `registre/journal-juge.jsonl`, avec son empreinte, la réponse du juge, la probabilité postée et le p du bras A.
@@ -120,12 +150,13 @@ Le code borne `p_juge` au plafond de la marge autour de la mesure. Il rejette l'
   - un écart sans motif admis est rejeté ;
   - le schéma est complet (aucune clé manquante).
 
-## 7. Choix laissés à l'auteur avant tout code
-
-1. **Poids des briques.** Garder le mélange au quart avec le pipeline, ou poser la brique comme base et laisser le juge n'agir que dans la marge.
-2. **Plafond de la marge du juge**, en points de pourcentage autour de la mesure. Par exemple 10 ou 15.
-3. **Liste des motifs d'écart** : les trois ci-dessus, ou une autre liste.
-4. **Source de prix fraîche** : en chercher une, gratuite et compatible avec les robots.txt, puis la soumettre.
+## 7. Choix de l'auteur (2026-11-24, 22 h 12 : « Je valide le reste »)
+1. **Poids des briques** : quand une brique s'applique, elle sert de base (le mélange au quart est abandonné pour ces
+   questions) ; le juge n'agit que dans la marge.
+2. **Plafond de la marge** : 10 points, modulé par la force de la preuve (§ 5 bis) ; élargissement seulement par la
+   règle des e-valeurs et décision de l'auteur.
+3. **Motifs d'écart** : les trois de la § 5 ; « fait nouveau sourcé » soumis à corroboration (§ 5 bis).
+4. **Source de prix fraîche** : à chercher (gratuite, robots.txt respecté) et à soumettre avant usage.
 
 ## Limites déclarées
 
