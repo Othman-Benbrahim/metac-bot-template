@@ -20,7 +20,7 @@ ICI = Path(__file__).resolve().parent
 POIDS, ECART_MAX = 0.25, 0.15
 DEPART = re.compile(r"\b(cease[sd]? to be|out as|leave[s]? office|resign|step[s]? down|ousted|no longer)\b", re.I)
 RESTE = re.compile(r"\b(remain|still be|stay|be the (president|prime minister|supreme leader|leader|pope))\b", re.I)
-PRECIS = re.compile(r"\b(25th amendment|impeach\w*|arrest\w*|indict\w*|convicted|assassinat\w*|coup|removed via)\b", re.I)
+PRECIS = re.compile(r"\b(25th amendment|impeach\w*|arrest\w*|indict\w*|convicted|assassinat\w*|coup|removed via|elections?)\b", re.I)
 NATIONALES = re.compile(r"(presidential|general|parliamentary|legislative|federal) election", re.I)
 
 
