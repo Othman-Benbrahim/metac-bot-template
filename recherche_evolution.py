@@ -17,13 +17,16 @@ from __future__ import annotations
 
 import json
 import re
+import os
 import subprocess
 import sys
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
-SORTIE = Path("registre/recherche-evolution.json")
+# 2026-11-24 : RECHERCHE_EVOLUTION_SORTIE permet au générateur de la carte d'écrire ailleurs que dans le registre (sinon
+# chaque génération locale laissait le fichier du registre modifié dans le dépôt).
+SORTIE = Path(os.environ.get("RECHERCHE_EVOLUTION_SORTIE", "registre/recherche-evolution.json"))
 VOCABULAIRE = ["alphabet", "carte", "strate", "ombre", "bras", "banc", "préenregistrement", "règle", "écosystème",
                "fiche", "compartiment", "situation", "ontologie", "indice", "émetteur", "terme", "collecte",
                "sondage", "GDELT", "Metaculus", "tournoi", "calibr", "Brier", "logarithm", "bootstrap", "permutation",
