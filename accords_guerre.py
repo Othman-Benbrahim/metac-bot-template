@@ -42,17 +42,30 @@ CORRESPONDANCE = (                                       # ordre : du plus préc
 )
 
 
-def guerre(titre: str) -> str | None:
+def guerre(titre: str, releves: bool = False) -> str | None:
     for g, f in CORRESPONDANCE:
         if f(titre or ""):
             return g
+    if releves:                                          # 0.10.501 : guerre hors table, relevée automatiquement
+        import guerres_releve as gr
+        return gr.cle(titre)
     return None
 
 
-def evenements(chemin: Path = GUERRES):
+def evenements(chemin: Path = GUERRES, releves: bool = False):
+    """Table sourcée ; avec `releves`, plus les faits relevés automatiquement (guerres_releve), datés et sourcés."""
     E = {}
     for r in csv.DictReader(chemin.open(encoding="utf-8")):
         E.setdefault(r["guerre"], []).append((J(r["date"]), r["evenement"], r["type"]))
+    if releves:
+        import guerres_releve as gr
+        for r in gr.charger():
+            try:
+                e = (J(r["date"]), r["evenement"], r["type"])
+            except (ValueError, KeyError):
+                continue
+            if e not in E.setdefault(r["guerre"], []):
+                E[r["guerre"]].append(e)
     return {g: sorted(L) for g, L in E.items()}
 
 
@@ -136,8 +149,8 @@ def _cumul(lam, age: int, h: int) -> float:
     return lam[0] * a1 + lam[1] * (h - a1)
 
 
-def probabilite(cl: str, titre: str, jeu: dt.date, EP, E) -> float | None:
-    g = guerre(titre)
+def probabilite(cl: str, titre: str, jeu: dt.date, EP, E, releves: bool = False) -> float | None:
+    g = guerre(titre, releves)
     if g is None:
         return None
     s = etat(g, jeu, E)
@@ -169,9 +182,9 @@ def estimer(titre: str, jeu: dt.date | None = None) -> dict | None:
         if cl not in B:
             return None
         jeu = jeu or dt.date.today()
-        p = probabilite(cl, titre, jeu, episodes(), evenements())
+        p = probabilite(cl, titre, jeu, episodes(), evenements(releves=True), releves=True)
     except (OSError, ValueError, KeyError):
         return None
     if p is None:
         return None
-    return {"classe": cl, "guerre": guerre(titre), "p": min(max(p, .01), .99)}
+    return {"classe": cl, "guerre": guerre(titre, True), "p": min(max(p, .01), .99)}

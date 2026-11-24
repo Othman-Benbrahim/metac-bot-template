@@ -501,7 +501,7 @@ class AlphabetBot(FallTemplateBot2026):
         # guerre (UCDP fin des conflits, table sourcée des guerres) ; seule la sous-famille « accord de paix pendant une
         # guerre en cours » a passé les critères (2 questions) ; même mélange, même plafond ; journal-accords.jsonl.
         if sp_ is None:
-            sp_ = self._accords_guerre(question, q, r.p_poste)
+            sp_ = await self._accords_guerre(question, q, r.p_poste, research)
         # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
         # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
         try:
@@ -514,11 +514,23 @@ class AlphabetBot(FallTemplateBot2026):
             return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
 
-    def _accords_guerre(self, question, q, p_pipeline: float) -> dict | None:
+    async def _accords_guerre(self, question, q, p_pipeline: float, research: str = "") -> dict | None:
         try:
             import accords_guerre as agr
             import accords_regle as arr
-            e = agr.estimer(question.question_text or "")
+            import guerres_releve as grl
+            titre = question.question_text or ""
+            # 0.10.501 : état de la guerre relevé automatiquement dans la recherche (faits datés et sourcés, jamais une
+            # probabilité), pour toute question d'accord ; ajouté à registre/guerres-releves.csv avant la règle.
+            if arr.classe(titre) in ("cessez_le_feu", "accord_paix", "tenue") and research:
+                try:
+                    auj = datetime.now(timezone.utc).date()
+                    rep = await self._llm(grl.consigne(titre, auj.isoformat(), research))
+                    grl.ecrire(grl.analyser(rep, research, auj, agr.guerre(titre, True)),
+                               ap.registre_ecrivable() / "guerres-releves.csv")
+                except Exception as ex:
+                    logger.warning("relevé de l'état de la guerre : échec (%s)", type(ex).__name__)
+            e = agr.estimer(titre)
             if e is None:
                 return None
             p = arr.melanger(p_pipeline, e["p"])
