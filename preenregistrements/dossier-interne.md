@@ -183,4 +183,4 @@ Passage sur les 18 questions ouvertes du 2026-11-24 :
 - le rattachement par pays a disparu ;
 - deux bruits restent, qui viennent des listes de mots validées et non du dossier : « confirmed » mène à « nominations par intérim » (sources radioactives volées), et « agreement » mène à « gisements de la dette émergente » (Engie). Leur correction relève des listes, donc de l'auteur.
 
-Non fait : la source de prix fraîche (§ 7, point 4), à chercher puis à soumettre.
+Source de prix fraîche (§ 7, point 4) : API Ninjas, validée par l'auteur le 2026-11-24 à 22 h 50 (`cours_frais.py`, clé `API_NINJAS_KEY`) ; dernier règlement seulement, volatilité gardée sur FRED, jamais de regard vers l'avant.
