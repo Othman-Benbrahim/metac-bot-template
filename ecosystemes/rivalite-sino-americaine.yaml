@@ -13,7 +13,7 @@ declaration:
 compartiments:
 - id: commerce
   evenements:
-    - {"type": "sanctions ou embargos chinois contre un pays", "termes": ["China sanctions", "Chinese sanctions", "embargo", "export ban", "retaliation"], "serie": "sanctions_chine:{ISO2}", "seuil": 1, "pas": "jour", "occurrence": "au moins un événement de sanction chinoise dans la journée (GDELT, CAMEO 163)", "statut": "propose"}
+    - {"type": "sanctions ou embargos chinois contre un pays", "termes": ["China sanctions", "Chinese sanctions", "embargo", "export ban", "retaliation"], "serie": "sanctions_chine:{ISO2}", "seuil": 1, "pas": "jour", "occurrence": "au moins un événement de sanction chinoise dans la journée (GDELT, CAMEO 163)", "statut": "valide_auteur_2026-11-24_15h03"}
   geopolitique:
     pays: [CHN, USA]
   organisation: economie

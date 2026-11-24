@@ -45,7 +45,7 @@ compartiments:
       - {source: "anomalie de température à Téhéran (versant sec du Zagros et de l'Elbourz)", statut: "collecte", fichier: "collecte_meteo.py", adaptateur: "meteo:teheran"}
   - id: "seismes_volcans"
     evenements:
-      - {"type": "séisme de magnitude 6 ou plus dans le monde", "termes": ["earthquake", "magnitude"], "serie": "seismes:m6", "seuil": 1, "pas": "jour", "occurrence": "au moins un séisme de magnitude ≥ 6 dans la journée (USGS)", "statut": "propose"}
+      - {"type": "séisme de magnitude 6 ou plus dans le monde", "termes": ["earthquake", "magnitude"], "serie": "seismes:m6", "seuil": 1, "pas": "jour", "occurrence": "au moins un séisme de magnitude ≥ 6 dans la journée (USGS)", "statut": "valide_auteur_2026-11-24_15h03"}
     nom: "Séismes et volcans"
     organisation: "mineral"
     elements: ["failles", "séismes", "éruptions", "tsunamis"]
