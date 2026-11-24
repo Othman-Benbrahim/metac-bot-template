@@ -533,7 +533,10 @@ class AlphabetBot(FallTemplateBot2026):
             import accords_etats as aet
             # 0.10.502 : cessez-le-feu pendant une guerre (couche entre États COW depuis 1946, couche interne ETH/PRIO),
             # passé une fois : 0,553 contre 0,707 sur 17 questions, 0,840 contre 0,892 sur 2026 ; puis accord de paix.
-            e = aet.estimer(titre) or agr.estimer(titre)
+            import accords_mid as amd
+            # 0.10.503 : tenue des trêves (couche MID depuis 1946 pour les guerres entre États, ETH/PRIO sinon), passée
+            # une fois : 0,719 contre 0,857 sur 7 questions, 0,985 contre 1,060 sur 2026.
+            e = aet.estimer(titre) or amd.estimer(titre) or agr.estimer(titre)
             if e is None:
                 return None
             p = arr.melanger(p_pipeline, e["p"])
@@ -544,10 +547,10 @@ class AlphabetBot(FallTemplateBot2026):
             ligne["sceau"] = ap.sceau(ligne)
             with open(ap.registre_ecrivable() / "journal-accords.jsonl", "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
-            quoi = "ceasefire" if e["classe"] == "cessez_le_feu" else "peace agreement"
+            quoi = {"cessez_le_feu": "ceasefire", "tenue": "truce breakdown or holding"}.get(e["classe"], "peace agreement")
             e["texte"] = (f"\n\nWar-state rule (coded): {quoi} during an ongoing war ({e['guerre']}), measured rates "
                           f"by war type and age (COW interstate wars since 1946, ETH/PRIO civil-war ceasefires, UCDP "
-                          f"conflict termination): {e['p_regle']:.1%}. Blended at weight "
+                          f"conflict termination, MID interstate disputes since 1946): {e['p_regle']:.1%}. Blended at weight "
                           f"{e['poids']} with the pipeline forecast {p_pipeline:.1%} (shift capped at "
                           f"{e['ecart_max']:.0%}): {p:.1%}.")
             return e

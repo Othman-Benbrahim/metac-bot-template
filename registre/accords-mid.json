@@ -1,0 +1,155 @@
+{
+ "resume": {
+  "n": 7,
+  "famille": 58,
+  "classes": {
+   "tenue": {
+    "n": 7,
+    "oui": 4,
+    "perte_reference": 0.8568,
+    "perte_regle": 0.7191,
+    "perte_melange": 0.7466,
+    "n_2026": 5,
+    "perte_reference_2026": 1.0602,
+    "perte_regle_2026": 0.9854,
+    "brancher": true
+   }
+  },
+  "mesure_au_2026_11_24": {
+   "conclusion_par_an": [
+    0.155,
+    0.282,
+    0.038
+   ],
+   "conclusion_ev_ex": [
+    [
+     65,
+     323,
+     768
+    ],
+    [
+     152888,
+     418024,
+     7329549
+    ]
+   ],
+   "echec_par_an": [
+    0.155,
+    0.282,
+    0.038
+   ],
+   "echec_ev_ex": [
+    [
+     65,
+     323,
+     768
+    ],
+    [
+     152888,
+     418024,
+     7329549
+    ]
+   ]
+  }
+ },
+ "lignes": [
+  {
+   "titre": "Israel x Iran ceasefire broken by December 31?",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.083,
+   "ref": 0.2941,
+   "mel": 0.2214,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 68,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by October 31?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.0039,
+   "ref": 0.2941,
+   "mel": 0.1441,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 124,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by June 30, 2026?",
+   "jeu": "2026-01-04",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.1243,
+   "ref": 0.2941,
+   "mel": 0.2415,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 194,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by March 31, 2026?",
+   "jeu": "2026-01-04",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.0643,
+   "ref": 0.2941,
+   "mel": 0.2098,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 194,
+   "type": "inter"
+  },
+  {
+   "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "classe": "tenue",
+   "groupe": "Houthis Oman Yemen",
+   "p": 0.0255,
+   "ref": 0.3333,
+   "mel": 0.1929,
+   "guerre": "etats_unis_houthis",
+   "etat": "cessez",
+   "age": 299,
+   "type": "interne"
+  },
+  {
+   "titre": "Israel x Iran ceasefire continues through September 30?",
+   "jeu": "2026-08-30",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.9763,
+   "ref": 0.2941,
+   "mel": 0.4441,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 145,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire continues through October 31?",
+   "jeu": "2026-08-30",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.9532,
+   "ref": 0.2941,
+   "mel": 0.4441,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 145,
+   "type": "inter"
+  }
+ ]
+}
