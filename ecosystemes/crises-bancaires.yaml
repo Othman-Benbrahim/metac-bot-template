@@ -96,7 +96,38 @@ compartiments:
     niveau: {espace: "médiatique", temps: "heures", vitesse: "heures", taille: "micro à macro"}
     traces:
       - {source: "flux RSS de presse", statut: "collecte", fichier: "collecte_rss.py"}
+  - id: seuils_de_prix
+    nom: "Seuils de prix (actions, indices, cryptomonnaies, taux, pétrole)"
+    organisation: economie
+    elements:
+    - "à court terme, le prix d'un actif liquide suit presque une marche au hasard : la meilleure prévision est le prix du jour, l'incertitude croît comme la racine carrée de la durée (Fama 1970)"
+    - "deux formes à ne jamais confondre : au-dessus du seuil À la date, et atteindre le seuil AVANT la date (environ deux fois plus probable pour un seuil éloigné, principe de réflexion)"
+    - "la probabilité dépend de trois grandeurs : distance au seuil, volatilité récente, durée restante"
+    - "le modèle ignore les queues épaisses (cryptomonnaies), les grappes de volatilité et les annonces datées dans la fenêtre (banque centrale, résultats, OPEP+)"
+    - "« nouveau record » : 0 question sur 7 résolue oui dans le corpus Metaculus du bot ; un record exige une distance parcourue, pas seulement une tendance"
+    - "entrées interdites : cotes de marchés de prédiction, prévisions de foule, volatilité implicite des options"
+    niveau: {espace: mondial, temps: permanent, vitesse: jours, taille: macro}
+    traces:
+    - source: FRED (bitcoin, éther, Brent, S&P 500, Nasdaq, Dow Jones)
+      statut: collecte
+      adaptateur: fred:CBBTCUSD
+    - source: "référence du projet : claude/reference-seuils-de-prix.md (2026-11-20)"
+      statut: collecte
 relations:
+  - de: marches
+    vers: seuils_de_prix
+    effet: ±
+    delai: jours
+    force: forte
+    statut: a_verifier
+    texte: "la volatilité du marché fixe la largeur des fourchettes ; une crise élargit tout"
+  - de: cryptomonnaies
+    vers: seuils_de_prix
+    effet: ±
+    delai: jours
+    force: forte
+    statut: a_verifier
+    texte: "cryptomonnaies : volatilité plus forte et queues plus épaisses, cotation tous les jours (racine de 365)"
   - {de: "confiance", vers: "depots", effet: "-", delai: "heures", force: "forte", intensite: {mesure: "vitesse des retraits", regle: "seuil"}, coupure: "garantie des dépôts crédible", statut: "a_verifier", texte: "au-delà d'un seuil de peur, les déposants retirent tous ensemble : la ruée"}
   - {de: "depots", vers: "confiance", effet: "+", delai: "heures", force: "forte", coupure: "fermeture temporaire des guichets", statut: "a_verifier", texte: "les retraits des autres font peur à leur tour : boucle de la panique, propre au niveau psychologique et économique"}
   - {de: "recits", vers: "confiance", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "volume de rumeurs sur une banque", regle: "seuil"}, coupure: "démenti crédible d'une autorité", statut: "a_verifier", texte: "une rumeur ne déclenche la peur que si elle dépasse un seuil de diffusion"}
@@ -112,6 +143,17 @@ relations:
   - {de: "depots", vers: "marches", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "nombre de banques touchées", regle: "seuil"}, coupure: "isolement de la banque fautive", statut: "a_verifier", texte: "contagion : quand plusieurs banques vacillent, la crise passe au système"}
   - {de: "regulateurs", vers: "confiance", effet: "+", delai: "jours", force: "moyenne", coupure: "doute sur les moyens de l'autorité", statut: "a_verifier", texte: "une parole d'autorité crédible rassure, une parole hésitante aggrave"}
 ponts:
+- depuis: seuils_de_prix
+  vers: calendriers-echeances:banques_centrales
+  nature: "une réunion de banque centrale dans la fenêtre élargit la fourchette des prix et des taux"
+- depuis: seuils_de_prix
+  vers: calendriers-echeances:publications
+  nature: "même logique pour les chiffres publiés (inflation, emploi) : dernier chiffre, variations passées entre deux publications, calendrier de publication"
+  type: voisinage
+- depuis: seuils_de_prix
+  vers: observateur-mesure:questionneur_metaculus
+  nature: "questions de seuil fréquentes : forme « à la date » ou « avant la date »"
+  type: voisinage
 - depuis: depots
   vers: dette-emergents:banques
   nature: les banques des pays endettés en devises

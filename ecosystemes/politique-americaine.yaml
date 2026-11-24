@@ -523,7 +523,71 @@ compartiments:
   - source: textes de l'EPA déposés au Federal Register
     statut: collecte
     adaptateur: federal_register:tous:Environmental Protection
+- id: nominations_interim
+  nom: "Nominations, intérims et confirmations au Sénat"
+  organisation: statut
+  elements:
+  - "un poste fédéral à nomination se pourvoit par le président et le vote du Sénat ; les délais tiennent au calendrier du Sénat (commissions, sessions, vacances)"
+  - "intérim : un intérimaire peut servir 210 jours, prolongés pendant l'examen d'une nomination (Vacancies Act, 5 U.S.C. 3346)"
+  - "procureurs fédéraux : un procureur nommé par le ministre de la Justice sert 120 jours, puis le tribunal de district peut nommer (28 U.S.C. 546) ; d'où des contentieux sur la légalité des intérims"
+  - "questions typiques : untel sera-t-il encore en poste à telle date, untel prêtera-t-il serment avant telle date"
+  niveau: {espace: États-Unis, temps: permanent, vitesse: semaines, taille: méso}
+  traces:
+  - source: nominations au Sénat (Congrès)
+    statut: collecte
+    adaptateur: congres:nominations
+- id: poursuites_personnalites
+  nom: "Poursuites, arrestations et inculpations de personnalités"
+  organisation: statut
+  elements:
+  - "étapes publiques et lentes : enquête, grand jury, inculpation, arrestation ou convocation, procès ; chaque étape a ses délais"
+  - "une menace publique de poursuites est déclarative ; seule l'inculpation enregistrée au tribunal tranche"
+  - "freins : prescription, immunités, indépendance des procureurs, preuves ; déclencheurs : décision du ministère de la Justice, rapport d'enquête"
+  - "questions typiques : untel sera-t-il arrêté ou inculpé avant telle date"
+  niveau: {espace: États-Unis, temps: permanent, vitesse: mois, taille: micro}
+  traces:
+  - source: "dossiers judiciaires (CourtListener ; déjà collectés pour la Cour suprême et la cour du district de Columbia)"
+    statut: collecte
+cycles:
+- id: terme_cour_supreme
+  nom: "Terme de la Cour suprême (d'octobre à fin juin)"
+  sorte: conventionnel
+  mecanisme: "la Cour siège à partir du premier lundi d'octobre (28 U.S.C. 2) ; elle accorde ou refuse l'examen d'une affaire en conférence (quatre voix suffisent pour l'accepter) et rend la plupart des décisions des affaires plaidées avant la fin juin ; une décision attendue se concentre donc en mai et juin"
+  periode: 1 an
+  phase_vulnerable: "mai et juin (décisions des affaires plaidées) ; conférences d'automne (octroi de l'examen)"
+  compartiments: [tribunaux]
+  statut: mecanisme
 relations:
+- de: congres
+  vers: nominations_interim
+  effet: ±
+  delai: semaines
+  force: forte
+  coupure: "vote du Sénat ; vacances parlementaires"
+  statut: a_verifier
+  texte: "le Sénat confirme ou bloque ; son calendrier fixe le délai"
+- de: tribunaux
+  vers: nominations_interim
+  effet: "-"
+  delai: semaines
+  force: moyenne
+  statut: a_verifier
+  texte: "les tribunaux peuvent juger illégal un intérim prolongé (procureurs fédéraux)"
+- de: tribunaux
+  vers: poursuites_personnalites
+  effet: ±
+  delai: mois
+  force: forte
+  statut: a_verifier
+  texte: "chaque étape d'une poursuite passe par le tribunal et son calendrier"
+- de: executif
+  vers: poursuites_personnalites
+  effet: +
+  delai: mois
+  force: moyenne
+  coupure: "indépendance des procureurs ; grand jury"
+  statut: a_verifier
+  texte: "l'exécutif peut annoncer des poursuites ; l'annonce n'est pas l'inculpation"
 - de: executif
   vers: congres
   effet: ±

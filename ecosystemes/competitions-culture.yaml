@@ -87,7 +87,59 @@ compartiments:
     niveau: {espace: "mondial", temps: "années", vitesse: "mois à années", taille: "macro"}
     traces:
       - {source: "décisions publiques des fédérations et des États", statut: "a_brancher"}
+  - id: precurseurs_recompenses
+    nom: "Précurseurs des récompenses (saison des prix)"
+    organisation: convention
+    elements:
+    - "les prix de guilde et de critiques (réalisateurs, producteurs, acteurs) précèdent les Oscars et votent en partie dans les mêmes corps de métier : ils annoncent le lauréat probable"
+    - "l'information arrive par étapes datées : nominations, prix des guildes, cérémonie ; une question posée avant les guildes est plus incertaine qu'après"
+    - "Eurovision : vote de jurys nationaux et vote du public à part égale ; votes de voisinage et de diaspora ; ordre de passage tiré"
+    niveau: {espace: mondial, temps: chaque année, vitesse: semaines, taille: méso}
+    traces:
+    - source: "palmarès publics des guildes, des académies et de l'UER (proposés, à valider)"
+      statut: a_brancher
+  - id: classements_force
+    nom: "Classements de force et têtes de série"
+    organisation: convention
+    elements:
+    - "un classement de force (Elo et apparentés) résume les résultats passés ; le favori gagne plus souvent mais pas toujours, et un tournoi à élimination multiplie les occasions de surprise"
+    - "plus un tournoi compte de tours, plus la probabilité du favori de le gagner baisse"
+    - "entrées interdites : cotes des bookmakers et des marchés de prédiction"
+    niveau: {espace: mondial, temps: saison, vitesse: jours, taille: méso}
+    traces:
+    - source: "classements publics des fédérations (FIFA, ATP, WTA) et classements Elo publics (proposés, à valider)"
+      statut: a_brancher
+cycles:
+  - id: saison_des_prix
+    nom: "Saison des prix (de novembre à mars)"
+    sorte: conventionnel
+    mecanisme: "les nominations, les prix des guildes et des critiques puis les cérémonies s'enchaînent à dates fixes ; chaque étape réduit l'incertitude sur la suivante"
+    periode: 1 an
+    phase_vulnerable: "janvier et février (prix des guildes)"
+    compartiments: [precurseurs_recompenses, public]
+    statut: mecanisme
 relations:
+  - de: precurseurs_recompenses
+    vers: public
+    effet: +
+    delai: semaines
+    force: forte
+    statut: a_verifier
+    texte: "les votants des académies suivent en partie les guildes dont ils font partie"
+  - de: classements_force
+    vers: forme
+    effet: +
+    delai: jours
+    force: moyenne
+    statut: a_verifier
+    texte: "la force classée et la forme récente se combinent ; les blessures annoncées corrigent"
+  - de: regles
+    vers: classements_force
+    effet: ±
+    delai: jours
+    force: moyenne
+    statut: a_verifier
+    texte: "le format (élimination, poules, nombre de tours) fixe la part du hasard"
   - {de: "regles", vers: "forme", effet: "±", delai: "saison", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le format décide de la part du hasard : une élimination directe donne plus de chances au moins fort qu'un championnat long"}
   - {de: "forme", vers: "psychologie", effet: "+", retour: "+", forme: "mutualisme", delai: "jours", force: "moyenne", intensite: {mesure: "longueur de la série de victoires ou de défaites", regle: "seuil"}, coupure: "blessure, changement d'entraîneur", statut: "a_verifier", texte: "victoires et confiance se nourrissent, jusqu'à un seuil où la série se brise"}
   - {de: "psychologie", vers: "forme", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "enjeu du match (finale, élimination)", regle: "seuil"}, coupure: "expérience des grands rendez-vous", statut: "a_verifier", texte: "la pression des grands enjeux fait perdre des moyens au-delà d'un seuil"}

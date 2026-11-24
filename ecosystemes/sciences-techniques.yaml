@@ -90,7 +90,80 @@ compartiments:
     niveau: {espace: "mondial", temps: "mois", vitesse: "semaines", taille: "méso à macro"}
     traces:
       - {source: "attention médiatique (GDELT)", statut: "collecte", fichier: "collecte_gdelt.py"}
+  - id: sorties_modeles
+    nom: "Sorties des modèles de pointe (quand un modèle annoncé devient public)"
+    organisation: technique
+    elements:
+    - "annonce, aperçu restreint, accès payant, accès public, poids ouverts : cinq stades distincts, que les questions ne distinguent pas toujours"
+    - "l'annonce d'un laboratoire est déclarative ; la date de sortie publique se mesure laboratoire par laboratoire (tenue des annonces)"
+    - "freins : essais de sécurité avant sortie, capacité de calcul pour servir le modèle, contrôles d'exportation, contentieux"
+    - "déclencheurs : sortie d'un concurrent, conférences annuelles des laboratoires et des grandes entreprises (dates connues d'avance)"
+    - "questions typiques : sortie avant telle date, disponibilité dans un pays, version pour un système d'exploitation"
+    acteurs:
+    - {nom: OpenAI, taille: méso, espace: mondial, vitesse: semaines, organisation: economie, facette: collectif}
+    - {nom: Anthropic, taille: méso, espace: mondial, vitesse: semaines, organisation: economie, facette: collectif}
+    - {nom: Google DeepMind, taille: méso, espace: mondial, vitesse: semaines, organisation: economie, facette: collectif}
+    - {nom: xAI, taille: méso, espace: mondial, vitesse: semaines, organisation: economie, facette: collectif}
+    niveau: {espace: mondial, temps: depuis 2022, vitesse: semaines, taille: méso}
+    traces:
+    - source: "notes de version et pages de statut des laboratoires (proposée, à valider)"
+      statut: a_brancher
+  - id: bancs_ia
+    nom: "Tests de référence de l'IA et leurs seuils"
+    organisation: convention
+    elements:
+    - "un test de référence se sature en courbe en S : progrès rapide, puis plafond (erreurs d'étiquetage, questions ambiguës)"
+    - "près du plafond, chaque point coûte plus cher ; un seuil fixé près du plafond est rarement franchi à court terme"
+    - "délai de publication : un score n'existe pour la question qu'une fois inscrit au classement public qui la résout"
+    - "questions typiques : score au-dessus d'un seuil avant telle date (GPQA, FrontierMath, horizon de tâche)"
+    acteurs:
+    - {nom: Epoch AI, taille: micro, espace: mondial, vitesse: semaines, organisation: technique, facette: collectif}
+    - {nom: METR, taille: micro, espace: mondial, vitesse: mois, organisation: technique, facette: collectif}
+    niveau: {espace: mondial, temps: depuis 2023, vitesse: semaines, taille: micro}
+    traces:
+    - source: "classements publics des tests (Epoch AI, METR ; proposés, à valider)"
+      statut: a_brancher
+  - id: gouvernance_labos
+    nom: "Statut et gouvernance des laboratoires (structure, introduction en bourse)"
+    organisation: statut
+    elements:
+    - "une introduction en bourse passe par un dépôt public à la SEC (formulaire S-1), visible dans EDGAR"
+    - "freins : accord des autorités de l'État de constitution pour les anciennes structures sans but lucratif, contentieux entre fondateurs, conditions de marché"
+    - "l'annonce d'une intention d'introduction n'est pas un dépôt"
+    niveau: {espace: États-Unis, temps: depuis 2023, vitesse: mois, taille: méso}
+    traces:
+    - source: "EDGAR (SEC), dépôts S-1 (gratuit ; proposée, à valider)"
+      statut: a_brancher
 relations:
+  - de: calcul
+    vers: sorties_modeles
+    effet: +
+    delai: mois
+    force: forte
+    statut: a_verifier
+    texte: "sans capacité de calcul pour servir un modèle, sa sortie publique attend"
+  - de: regulation
+    vers: sorties_modeles
+    effet: "-"
+    delai: mois
+    force: moyenne
+    coupure: "contrôles d'exportation et décisions des autorités (selon les pays)"
+    statut: a_verifier
+    texte: "la régulation retarde ou restreint géographiquement une sortie (disponibilité par pays)"
+  - de: sorties_modeles
+    vers: bancs_ia
+    effet: +
+    delai: semaines
+    force: forte
+    statut: a_verifier
+    texte: "un nouveau modèle fait bouger les classements, avec le délai d'inscription au classement public"
+  - de: attentes
+    vers: sorties_modeles
+    effet: +
+    delai: semaines
+    force: faible
+    statut: a_verifier
+    texte: "l'engouement fait annoncer tôt ; l'annonce précède souvent de loin la sortie publique"
   - {de: "calcul", vers: "ia", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "disponibilité des puces avancées", regle: "seuil"}, coupure: "méthodes plus économes en calcul", statut: "a_verifier", texte: "sans assez de calcul, pas de nouveau modèle : la puce borne le produit"}
   - {de: "ia", vers: "calcul", effet: "+", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "chaque génération de modèles réclame plus de calcul (boucle propre au niveau technique)"}
   - {de: "calcul", vers: "energie_eau", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "chaleur de l'été, niveau des fleuves", regle: "seuil"}, coupure: "refroidissement à l'air, sites froids", statut: "a_verifier", texte: "le calcul consomme électricité et eau ; une vague de chaleur peut brider un centre"}
@@ -106,6 +179,17 @@ relations:
   - {de: "recherche", vers: "ia", effet: "+", delai: "années", force: "moyenne", coupure: "secret industriel", statut: "a_verifier", texte: "la recherche ouverte nourrit les produits, avec retard"}
   - {de: "course_etats", vers: "capitaux", effet: "+", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les subventions publiques s'ajoutent aux capitaux privés"}
 ponts:
+- depuis: sorties_modeles
+  vers: observateur-mesure:questionneur_metaculus
+  nature: "l'IA de pointe est surreprésentée dans les questions : sorties, tests, statut des laboratoires"
+  type: voisinage
+- depuis: sorties_modeles
+  vers: politique-americaine:commerce
+  nature: "tenue des annonces : propriété de l'émetteur, mesurée pour les droits de douane, à mesurer pour les laboratoires"
+  type: voisinage
+- depuis: gouvernance_labos
+  vers: economie-entreprises:finance_entreprise
+  nature: "introductions en bourse et levées de fonds des laboratoires"
 - depuis: calcul
   vers: rivalite-sino-americaine:technologie
   nature: les puces au cœur de la rivalité
