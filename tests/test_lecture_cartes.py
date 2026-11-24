@@ -131,3 +131,23 @@ class TestLectureEtendue(unittest.TestCase):
         e = lc.empreinte_lecture(spec)
         spec2 = dict(spec, lecture=dict(spec["lecture"], sommes={}))
         self.assertNotEqual(e, lc.empreinte_lecture(spec2))
+
+
+def test_dyades_ucdp(tmp_path):
+    import lecture_cartes as lc
+    import adaptateurs as ad
+    lec = {"date": "date_start", "pays": "country", "somme": "best", "dyades": {"colonnes": ["side_a", "side_b"]}}
+    lignes = [{"date_start": "2025-06-13", "country": "Iran", "best": "10", "side_a": "Government of Israel",
+               "side_b": "Government of Iran"},
+              {"date_start": "2025-06-20", "country": "Israel", "best": "3", "side_a": "Government of Iran",
+               "side_b": "Government of Israel"},
+              {"date_start": "2025-08-02", "country": "Gaza", "best": "1", "side_a": "Government of Israel",
+               "side_b": "Hamas"}]
+    agg, dy = {}, {}
+    lc.agreger(lignes, lec, "historique", lc.table_pays(), agg, set(), dy)
+    spec = {"lecture": lec, "fichiers": [{"role": "historique"}]}
+    (tmp_path / "cartes").mkdir()
+    lc.ecrire_dyades(spec, dy, tmp_path / "cartes" / "ucdp-dyades-mois.csv")
+    s = dict(ad.ucdp_dyade(tmp_path, "ISR", "IRN"))
+    assert s["2025-06-01"] == 2 and s["2025-07-01"] == 0 and s["2025-08-01"] == 0
+    assert dict(ad.ucdp_dyade(tmp_path, "IRN", "ISR", "somme"))["2025-06-01"] == 13

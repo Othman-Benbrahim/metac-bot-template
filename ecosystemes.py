@@ -167,7 +167,7 @@ def charger(dossier: Path = DOSSIER, transversaux: bool = True) -> dict[str, dic
 
 # 0.10.492 (décision de l'auteur, 2026-11-24, 14 h 52) : « événements comptés » d'un compartiment : pour un type
 # d'événement que les questions demandent, la série qui le compte et le seuil d'occurrence. Gabarits de série :
-# {ISO3}, {ISO2}, {ISO2_A}, {ISO2_B} (pays cités dans la question, dans l'ordre). Seuil : nombre (valeur ≥ seuil sur un
+# {ISO3}, {ISO2}, {ISO2_A}, {ISO2_B}, {ISO3_A}, {ISO3_B} (pays cités dans la question, dans l'ordre). Seuil : nombre (valeur ≥ seuil sur un
 # pas = une occurrence) ou qNN (quantile NN des 365 jours, ou 12 mois, qui précèdent la date de la question).
 CLES_EVENEMENT = {"type", "termes", "serie", "seuil", "pas", "occurrence", "statut", "note"}
 CLES_PERMISES = {

@@ -34,4 +34,8 @@ lecture:
   principaux:                   # les trois acteurs (camp A ou B) qui pèsent le plus dans les morts du mois
     colonnes: [side_a, side_b]
     nombre: 3
+  # 0.10.493 (décision de l'auteur, 2026-11-24, 14 h 58) : comptes par paire de camps et par mois (événements, morts),
+  # écrits à part dans registre/cartes/ucdp-dyades-mois.csv ; sert aux questions « A frappera-t-il B avant telle date ? »
+  dyades:
+    colonnes: [side_a, side_b]
 priorite: [mois, cumul_annee, historique]   # pour un même mois, la source la plus récente l'emporte

@@ -26,6 +26,10 @@ OCCURRENCE = {"autre", "événement rare", "evenement_rare", "maintien"}
 
 
 def remplir(gabarit: str, pays: list[str]) -> str | None:
+    if "{ISO3_A}" in gabarit or "{ISO3_B}" in gabarit:
+        if len(pays) < 2:
+            return None
+        return gabarit.replace("{ISO3_A}", pays[0]).replace("{ISO3_B}", pays[1])
     if "{ISO2_A}" in gabarit or "{ISO2_B}" in gabarit:
         if len(pays) < 2 or not all(ISO2.get(p) for p in pays[:2]):
             return None

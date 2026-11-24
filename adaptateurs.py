@@ -183,6 +183,40 @@ def ucdp_mois(reg: Path, iso3: str, colonne: str = "somme") -> list[tuple[str, f
     return out
 
 
+def _camp_pays(camp: str, isos: set[str], table: dict[str, str]) -> bool:
+    """« Government of Israel » appartient à ISR ; « Government of United States of America » à USA. Les camps non
+    étatiques (Hamas, IS…) ne sont rattachés à aucun pays."""
+    import re as _re
+    m = _re.match(r"Government of (.+)$", camp.strip())
+    if not m:
+        return False
+    nom = _re.sub(r"\s*\(.*?\)\s*", "", m.group(1)).strip().lower()
+    return table.get(nom) in isos
+
+
+def ucdp_dyade(reg: Path, a: str, b: str, colonne: str = "evenements") -> list[tuple[str, float]]:
+    """0.10.493 : violence organisée entre les gouvernements de deux pays (codes ISO3, paire non orientée), par mois,
+    d'après registre/cartes/ucdp-dyades-mois.csv (camps de la GED). Un mois sans ligne compte zéro entre le premier et le
+    dernier mois publiés. colonne : evenements ou somme (morts, meilleure estimation)."""
+    import lecture_cartes as _lc
+    lignes = _csv(reg / "cartes", "ucdp-dyades-mois.csv")
+    if not lignes:
+        return []
+    table = _lc.table_pays()
+    mois = sorted({r["mois"] for r in lignes})
+    c: dict[str, float] = {}
+    for r in lignes:
+        if ((_camp_pays(r["camp_a"], {a}, table) and _camp_pays(r["camp_b"], {b}, table)) or
+                (_camp_pays(r["camp_a"], {b}, table) and _camp_pays(r["camp_b"], {a}, table))):
+            c[r["mois"]] = c.get(r["mois"], 0.0) + float(r.get(colonne) or 0)
+    out, m = [], mois[0]
+    while m <= mois[-1]:
+        out.append((m + "-01", c.get(m, 0.0)))
+        y, k = int(m[:4]), int(m[5:7])
+        m = f"{y + (k == 12)}-{k % 12 + 1:02d}"
+    return out
+
+
 def climat(reg: Path, point: str) -> list[tuple[str, float]]:
     """Le CLIMAT et non la météo (rappel de l'auteur) : moyenne glissante sur 365 jours de l'anomalie de température
     d'un point — la dérive lente, débarrassée des jours et des saisons."""
@@ -259,7 +293,7 @@ def nowcast(reg: Path, *parties: str) -> list[tuple[str, float]]:
 
 
 ADAPTATEURS = {"nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
-               "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
+               "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}
 

@@ -113,7 +113,8 @@ def nombre(v) -> float:
         return 0.0
 
 
-def agreger(lignes, lecture: dict, role: str, pays_iso: dict[str, str], agg: dict, inconnus: set) -> int:
+def agreger(lignes, lecture: dict, role: str, pays_iso: dict[str, str], agg: dict, inconnus: set,
+            dy: dict | None = None) -> int:
     """Ajoute à agg[(pays, iso, code, période)][role] les comptes et les sommes ; renvoie le nombre de lignes lues.
 
     Champs de lecture (0.10.472, tous facultatifs sauf date et pays) : somme (colonne principale), categorie,
@@ -124,11 +125,20 @@ def agreger(lignes, lecture: dict, role: str, pays_iso: dict[str, str], agg: dic
     n = 0
     agregat = lecture.get("agregat", "pays_mois")
     princ = lecture.get("principaux") or {}
+    cdy = (lecture.get("dyades") or {}).get("colonnes") or []
     for r in lignes:
         n += 1
         per = periode(r.get(lecture["date"]), agregat)
         if not per:
             continue
+        # 0.10.493 (décision de l'auteur, 2026-11-24, 14 h 58) : comptes par paire de camps (A, B) et par période, pour
+        # les questions « A frappera-t-il B avant telle date ? » ; seulement les noms de camps, les comptes et les morts
+        if dy is not None and len(cdy) == 2:
+            a, b = (r.get(cdy[0]) or "").strip(), (r.get(cdy[1]) or "").strip()
+            if a and b:
+                e = dy.setdefault((a, b, per), {}).setdefault(role, {"evenements": 0, "somme": 0.0})
+                e["evenements"] += 1
+                e["somme"] += nombre(r.get(lecture["somme"])) if lecture.get("somme") else 0.0
         p = r.get(lecture["pays"]) or ""
         iso = pays_iso.get(nom_cle(p), "")
         if not iso:
@@ -205,6 +215,19 @@ def ecrire_agregats(spec: dict, agg: dict, sortie: Path) -> int:
     return n
 
 
+def ecrire_dyades(spec: dict, dy: dict, sortie: Path) -> int:
+    prio = spec.get("priorite") or [f["role"] for f in spec["fichiers"]]
+    col_per = "annee" if spec["lecture"].get("agregat") == "pays_annee" else "mois"
+    sortie.parent.mkdir(parents=True, exist_ok=True)
+    with sortie.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["camp_a", "camp_b", col_per, "source", "evenements", "somme"])
+        for (a, b, per), v in sorted(dy.items(), key=lambda kv: (kv[0][2], kv[0][0], kv[0][1])):
+            role = next(r for r in prio if r in v)
+            w.writerow([a, b, per, role, v[role]["evenements"], round(v[role]["somme"], 1)])
+    return len(dy)
+
+
 def empreinte_lecture(spec: dict) -> str:
     """Empreinte de la façon de lire (fichiers et champs) : si elle change, on relit même sans version nouvelle."""
     import json
@@ -216,6 +239,7 @@ def _colonnes_lecture(lec: dict) -> set:
     cols = {lec.get(k) for k in ("date", "pays", "code_pays", "categorie", "somme")}
     cols |= set((lec.get("sommes") or {}).values()) | set((lec.get("distincts") or {}).values())
     cols |= set((lec.get("principaux") or {}).get("colonnes", []))
+    cols |= set((lec.get("dyades") or {}).get("colonnes", []))
     return {c for c in cols if c}
 
 
@@ -254,7 +278,7 @@ def principal() -> int:
                 continue
             if not nouveau:
                 print(f"{cid} : la façon de lire a changé ; relecture des mêmes fichiers.")
-            agg, inconnus, colonnes_vues = {}, set(), {}
+            agg, inconnus, colonnes_vues, dy = {}, set(), {}, {}
             fmt = {f["role"]: f["format"] for f in spec["fichiers"]}
             for role, url in liens.items():
                 if not politesse.autorise(c, url):
@@ -273,7 +297,7 @@ def principal() -> int:
                     print(f"{cid} : {role}, colonnes {colonnes_vues[url]}", flush=True)
                     import itertools
                     n = agreger(itertools.chain([premiere] if premiere else [], lignes), spec["lecture"], role,
-                                pays_iso, agg, inconnus)
+                                pays_iso, agg, inconnus, dy)
                     neuves.append({"carte": cid, "role": role, "url": url,
                                    "lu_le": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
                                    "octets": len(contenu), "sha256": hashlib.sha256(contenu).hexdigest(), "lignes": n})
@@ -282,6 +306,9 @@ def principal() -> int:
             if agg:
                 k = ecrire_agregats(spec, agg, sortie)
                 fe.write_text(emp + "\n", encoding="utf-8")
+                if dy:
+                    kd = ecrire_dyades(spec, dy, REG / f"{cid}-dyades-{per}.csv")
+                    print(f"{cid} : {kd} lignes paires de camps → {REG / f'{cid}-dyades-{per}.csv'}")
                 print(f"{cid} : {k} lignes pays-{per} → {sortie} ; pays non rattachés : {sorted(x for x in inconnus if x)}")
                 entetes = {c for u in liens.values() for c in colonnes_vues.get(u, [])}
                 manquantes = sorted(_colonnes_lecture(spec["lecture"]) - entetes)

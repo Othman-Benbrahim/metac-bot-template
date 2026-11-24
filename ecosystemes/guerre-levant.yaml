@@ -223,7 +223,7 @@ compartiments:
     adaptateur: ucdp:Yemen
 - id: iran
   evenements:
-    - {"type": "frappe ou affrontement entre Israël (ou les États-Unis) et l'Iran", "termes": ["strike", "strikes", "attack", "military action", "war"], "serie": "paire_mois:{ISO2_A}:{ISO2_B}:conflit", "seuil": "q90", "pas": "mois", "occurrence": "mois au-dessus du 90e centile des 12 mois précédents (GDELT)", "statut": "propose"}
+    - {"type": "violence armée entre les gouvernements de deux pays (frappe, affrontement)", "termes": ["strike", "strikes", "airstrike", "attack", "attacks", "military action", "clash", "clashes", "deadly clash", "invade", "invasion", "war"], "serie": "ucdp_dyade:{ISO3_A}:{ISO3_B}", "seuil": 1, "pas": "mois", "occurrence": "au moins un événement de violence organisée entre les deux gouvernements dans le mois (UCDP, camps de la GED)", "statut": "propose", "note": "ne couvre pas les camps non étatiques (Hamas, Hezbollah, Houthis, État islamique) ; une invasion et une frappe comptent pareil"}
   geopolitique:
     pays: [IRN]
   organisation: geopolitique
