@@ -377,7 +377,7 @@ Q132800534,IT,2025-06-09,referendum,2025 Italian referendum
 Q134836540,CA,2025-06-23,election,2025 Edmonton-Strathcona provincial by-election
 Q134882969,CA,2025-06-23,election,2025 Edmonton-Ellerslie provincial by-election
 Q134882971,CA,2025-06-23,election,2025 Olds-Didsbury-Three Hills provincial by-election
-Q134286557,CL,2025-06-29,election,2025 Unity for Chile presidential primaries
+Q134286557,CL,2025-06-29,referendum,2025 Unity for Chile presidential primaries
 Q112516856,IN,2025-07-01,election,2025 Rajya Sabha elections
 Q135228476,SR,2025-07-06,election,Q135228476
 Q135488477,TG,2025-07-17,election,Q135488477
@@ -633,6 +633,7 @@ Q135990437,GB,2025-10-23,election,2025 Caerphilly by-election
 Q84027875,IE,2025-10-24,election,2025 Irish presidential election
 Q106747494,CI,2025-10-25,election,2025 Ivorian presidential election
 Q136718162,MV,2025-10-25,referendum,2025 Addu referendum
+Q123684991,NL,2025-10-29,election,2025 Dutch general election
 Q125635411,TZ,2025-10-29,election,2025 Tanzanian general election
 Q102351371,TZ,2025-10-31,election,2025 Tanzanian parliamentary election
 Q133212410,CA,2025-11-02,election,2025 Quebec municipal elections
@@ -920,6 +921,7 @@ Q106959840,VN,2026-03-15,election,2026 Vietnamese legislative election
 Q127588360,FR,2026-03-15,election,2026 French municipal elections
 Q138259613,KZ,2026-03-15,referendum,2026 Kazakh constitutional referendum
 Q84080828,KP,2026-03-15,election,2026 North Korean parliamentary election
+Q130718846,NL,2026-03-18,election,2026 Dutch municipal elections
 Q112339523,SI,2026-03-22,election,2026 Slovenian parliamentary election
 Q133189552,FR,2026-03-22,election,Q133189552
 Q135207015,BO,2026-03-22,election,2026 Bolivian regional elections
@@ -1300,7 +1302,7 @@ Q111588709,ZM,2026-08-13,election,2026 Zambian presidential election
 Q131703623,ZM,2026-08-13,election,2026 Zambian general election
 Q140456301,GB,2026-08-13,election,2026 Clacton by-election
 Q141135189,ZM,2026-08-13,election,2026 Zambian presidential election
-Q141068128,IL,2026-08-17,referendum,2026 Likud primary
+Q141068128,IL,2026-08-17,election,2026 Likud primary
 Q140685300,BD,2026-08-20,election,2026 Bangladeshi presidential election
 Q105198826,KZ,2026-08-23,election,2026 Kazakh legislative election
 Q16985507,IS,2026-08-29,referendum,2026 Icelandic European Union membership negotiations referendum
@@ -1342,6 +1344,7 @@ Q134389638,BA,2026-10-04,election,2026 Bosnian general election
 Q137805762,BA,2026-10-04,election,2022 Bosnian presidential election
 Q141713851,BR,2026-10-04,election,"first round of Brazilian presidential election, 2026"
 Q141247453,GB,2026-10-08,election,2026 Holborn and St Pancras by-election
+Q140268097,CZ,2026-10-10,election,Q140268097
 Q141049647,SI,2026-10-11,referendum,Referendum on the amendment to the Parliamentary Inquiry Act
 Q141245983,SI,2026-10-11,referendum,Referendum on abolishing the mandatory payment of the public broadcasting fee
 Q141663087,SI,2026-10-11,referendum,Referendum on foreigners' local election voting rights
@@ -1386,6 +1389,7 @@ Q140388405,US,2026-11-03,referendum,2026 Michigan Proposal 1
 Q141488571,US,2026-11-03,election,2026 Louisiana Board of Elementary and Secondary Education special election
 Q141929735,SE,2026-11-03,election,Q141929735
 Q142083629,US,2026-11-03,election,2026 Hawaii House of Representatives election in the 14th district
+Q142218820,VI,2026-11-03,election,2026 United States Virgin Islands legislative election
 Q115632342,GD,2026-11-05,election,2026 Grenadian general election
 Q104843407,NZ,2026-11-07,election,2026 New Zealand general election
 Q141653419,GB,2026-11-12,election,2026 Oldham Metropolitan Borough Council by-election in Failsworth West
@@ -1421,6 +1425,7 @@ Q115783481,VU,2027-01-01,election,2027 Vanuatuan presidential election
 Q115783680,SI,2027-01-01,election,2027 Slovenian presidential election
 Q116371549,PG,2027-01-01,election,next Papua New Guinean general election
 Q123232116,SK,2027-01-01,election,next Slovak parliamentary election
+Q123509223,US,2027-01-01,election,2027 United States elections
 Q134996457,CO,2027-01-01,election,2027 Colombian regional and municipal elections
 Q135551595,SV,2027-01-01,election,2027 Salvadoran presidential election
 Q141648615,AT,2027-01-01,election,Q141648615
