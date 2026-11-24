@@ -1,0 +1,271 @@
+{
+ "par_type": [
+  [
+   "amont sans série",
+   3156
+  ],
+  [
+   "aucune relation entrante",
+   2240
+  ],
+  [
+   "aucun compartiment rattaché",
+   259
+  ],
+  [
+   "aucune relation retenue aux échelles de la question",
+   252
+  ],
+  [
+   "série sans état récent",
+   225
+  ],
+  [
+   "sens du oui illisible",
+   190
+  ]
+ ],
+ "par_compartiment": [
+  [
+   "competitions-culture:psychologie → competitions-culture:forme",
+   355
+  ],
+  [
+   "competitions-culture:milieu → competitions-culture:forme",
+   355
+  ],
+  [
+   "competitions-culture:forme → competitions-culture:forme",
+   355
+  ],
+  [
+   "competitions-culture:classements_force → competitions-culture:forme",
+   352
+  ],
+  [
+   "competitions-culture:calendrier → competitions-culture:forme",
+   335
+  ],
+  [
+   "competitions-culture:calendrier",
+   313
+  ],
+  [
+   "politique-interieure:procedures → politique-interieure:partis",
+   201
+  ],
+  [
+   "competitions-culture:medias → competitions-culture:public",
+   191
+  ],
+  [
+   "competitions-culture:precurseurs_recompenses → competitions-culture:public",
+   177
+  ],
+  [
+   "sciences-techniques:ia → sciences-techniques:attentes",
+   144
+  ],
+  [
+   "competitions-culture:precurseurs_recompenses",
+   118
+  ],
+  [
+   "monnaie-pouvoir:monnaies_numeriques",
+   109
+  ],
+  [
+   "medias-diffusion:cinema_series",
+   95
+  ],
+  [
+   "sciences-techniques:attentes → sciences-techniques:sorties_modeles",
+   72
+  ],
+  [
+   "competitions-culture:argent → competitions-culture:forme",
+   71
+  ],
+  [
+   "partis-politiques:adhesion_militantisme",
+   70
+  ],
+  [
+   "calendriers-echeances:banques_centrales",
+   64
+  ],
+  [
+   "economie-entreprises:investissement_ia",
+   59
+  ],
+  [
+   "liban-institutions:exterieur",
+   55
+  ],
+  [
+   "afrique-subsaharienne:puissances_exterieures",
+   55
+  ],
+  [
+   "sciences-techniques:recherche",
+   54
+  ],
+  [
+   "competitions-culture:geopolitique",
+   54
+  ],
+  [
+   "elections-amerique-latine:partis_gouverneurs",
+   53
+  ],
+  [
+   "politique-interieure:dirigeants",
+   52
+  ],
+  [
+   "dirigeants-elus:entourage → dirigeants-elus:executifs",
+   50
+  ],
+  [
+   "politique-interieure:procedures",
+   45
+  ],
+  [
+   "antarctique:presences",
+   44
+  ],
+  [
+   "arctique:militarisation",
+   44
+  ],
+  [
+   "asie-centrale:partenaires",
+   44
+  ],
+  [
+   "asie-du-sud:puissances",
+   44
+  ],
+  [
+   "soleil-espace:magnetosphere → soleil-espace:satellites",
+   43
+  ],
+  [
+   "transport-maritime:detroit_bering",
+   39
+  ],
+  [
+   "ormuz:puissances",
+   37
+  ],
+  [
+   "sciences-techniques:calcul → sciences-techniques:ia",
+   35
+  ],
+  [
+   "transport-maritime:detroit_ormuz",
+   33
+  ],
+  [
+   "rivalite-sino-americaine:atomique",
+   33
+  ],
+  [
+   "rivalite-sino-americaine:finance",
+   33
+  ],
+  [
+   "rivalite-sino-americaine:recits",
+   33
+  ],
+  [
+   "militaire:bases_projection",
+   33
+  ],
+  [
+   "economie-entreprises:dirigeants_entreprise → economie-entreprises:entreprises",
+   32
+  ],
+  [
+   "transports-villes:gouvernance_urbaine",
+   32
+  ],
+  [
+   "politique-americaine:executif → politique-americaine:sanctions",
+   30
+  ],
+  [
+   "economie-entreprises:conjoncture → economie-entreprises:entreprises",
+   29
+  ],
+  [
+   "politique-americaine:climat_risques",
+   28
+  ],
+  [
+   "politique-americaine:eau_fleuves",
+   28
+  ],
+  [
+   "securite-europeenne:etats_unis",
+   28
+  ],
+  [
+   "economie-entreprises:defaillances → economie-entreprises:finance_entreprise",
+   28
+  ],
+  [
+   "rivalite-sino-americaine:commerce → rivalite-sino-americaine:diplomatie",
+   27
+  ],
+  [
+   "dirigeants-elus:diplomatie_personnelle",
+   23
+  ],
+  [
+   "reseaux-sociaux:donnees_ciblage → reseaux-sociaux:personnalites",
+   20
+  ],
+  [
+   "sciences-techniques:calcul → sciences-techniques:sorties_modeles",
+   20
+  ],
+  [
+   "sciences-techniques:regulation → sciences-techniques:sorties_modeles",
+   20
+  ],
+  [
+   "guerre-levant:convention",
+   19
+  ],
+  [
+   "iran-nucleaire:europe",
+   19
+  ],
+  [
+   "monnaie-pouvoir:banques_centrales_puissance",
+   19
+  ],
+  [
+   "dirigeants-elus:popularite → dirigeants-elus:departs",
+   18
+  ],
+  [
+   "dirigeants-elus:justice_immunites → dirigeants-elus:departs",
+   18
+  ],
+  [
+   "iran-nucleaire:recits",
+   17
+  ],
+  [
+   "iran-nucleaire:relief_sites",
+   17
+  ],
+  [
+   "iran-nucleaire:sismicite",
+   17
+  ]
+ ],
+ "note": "ce que la carte n'a pas pu lire sur le corpus résolu : à compléter petit à petit"
+}

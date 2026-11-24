@@ -1,0 +1,2903 @@
+{
+ "resume": {
+  "corpus": 2196,
+  "lues": 100,
+  "lues_dev": 48,
+  "lues_2026": 52,
+  "k": 0.8,
+  "perte_dev_p0": 0.3959,
+  "perte_dev_couche": 0.3506,
+  "perte_conf_p0": 0.6801,
+  "perte_conf_couche": 0.7654,
+  "fort_2026": 36,
+  "perte_fort_p0": 0.6478,
+  "perte_fort_couche": 0.7792,
+  "brancher": false
+ },
+ "lignes": [
+  {
+   "titre": "Will there be a ceasefire in Gaza by Eoy 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "groupe": "Eoy Gaza",
+   "horizon": 164.0,
+   "p0": 0.26788154897494304,
+   "d": -0.0873,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "guerre-levant:humanitaire",
+     "vers": "guerre-levant:epidemies",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "prix_alimentaires:LB",
+     "z": 0.09,
+     "apport": -0.175
+    }
+   ]
+  },
+  {
+   "titre": "Will annual US core CPI inflation be above 3% in December 2024?",
+   "jeu": "2024-07-21",
+   "y": 1,
+   "groupe": "CPI US",
+   "horizon": 163.0,
+   "p0": 0.2674259681093394,
+   "d": -0.3283,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:alimentation",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:PFOODINDEXM:var12",
+     "z": -0.75,
+     "apport": -1.495
+    },
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.09,
+     "apport": 0.182
+    }
+   ]
+  },
+  {
+   "titre": "Will Russia start a second mobilization wave before 2025, according to the Institute for the Study of War?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "groupe": "Institute Russia Study War",
+   "horizon": 163.0,
+   "p0": 0.26788154897494304,
+   "d": 0.6682,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "russie-ukraine:economie_russe",
+     "vers": "russie-ukraine:capacites",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:DCOILBRENTEU",
+     "z": 0.67,
+     "apport": 1.336
+    }
+   ]
+  },
+  {
+   "titre": "Will Fed cut interest rates 0 times in 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "groupe": "Will Fed cut interest rates 0 times in 2024?",
+   "horizon": 162.0,
+   "p0": 0.26788154897494304,
+   "d": 0.4542,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.27,
+     "apport": 0.811
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.01,
+     "apport": 1.006
+    }
+   ]
+  },
+  {
+   "titre": "Will Fed cut interest rates 1 time in 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "groupe": "Will Fed cut interest rates 1 time in 2024?",
+   "horizon": 162.0,
+   "p0": 0.26788154897494304,
+   "d": 0.4542,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.27,
+     "apport": 0.811
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.01,
+     "apport": 1.006
+    }
+   ]
+  },
+  {
+   "titre": "If Trump wins the election will the inflation rate in 2025 be below 2.5% (Current 2.5%)?",
+   "jeu": "2025-03-02",
+   "y": 0,
+   "groupe": "Current If Trump",
+   "horizon": 283.0,
+   "p0": 0.26788154897494304,
+   "d": -0.1697,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:alimentation",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:PFOODINDEXM:var12",
+     "z": -0.93,
+     "apport": -1.861
+    },
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.59,
+     "apport": 1.182
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $110,000 by December 31, 2025?",
+   "jeu": "2025-03-02",
+   "y": 1,
+   "groupe": "Bitcoin",
+   "horizon": 304.0,
+   "p0": 0.26855287569573283,
+   "d": 1.4252,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.43,
+     "apport": 2.85
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $130,000 by March 31?",
+   "jeu": "2025-03-02",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 29.0,
+   "p0": 0.26855287569573283,
+   "d": 1.4252,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.43,
+     "apport": 2.85
+    }
+   ]
+  },
+  {
+   "titre": "Will 1 Euro be worth less than 1 US Dollar before 2026?",
+   "jeu": "2025-03-16",
+   "y": 0,
+   "groupe": "Dollar Euro US",
+   "horizon": 290.0,
+   "p0": 0.26788154897494304,
+   "d": 0.0329,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:banques_centrales",
+     "vers": "inflation-mondiale:monnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:DFF",
+     "z": 0.03,
+     "apport": 0.099
+    }
+   ]
+  },
+  {
+   "titre": "Will XRP reach $3.50 in March?",
+   "jeu": "2025-03-16",
+   "y": 0,
+   "groupe": "XRP",
+   "horizon": 15.0,
+   "p0": 0.26861580630424853,
+   "d": -0.4143,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.41,
+     "apport": -0.829
+    }
+   ]
+  },
+  {
+   "titre": "Will 1 Fed rate cut happen in 2025?",
+   "jeu": "2025-03-16",
+   "y": 0,
+   "groupe": "Will 1 Fed rate cut happen in 2025?",
+   "horizon": 269.0,
+   "p0": 0.26788154897494304,
+   "d": -0.3312,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.64,
+     "apport": -4.916
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.63,
+     "apport": 1.63
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.63,
+     "apport": 1.63
+    }
+   ]
+  },
+  {
+   "titre": "Will 2 Fed rate cuts happen in 2025?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "groupe": "Will 2 Fed rate cuts happen in 2025?",
+   "horizon": 255.0,
+   "p0": 0.26788154897494304,
+   "d": -0.5978,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.64,
+     "apport": -4.916
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.96,
+     "apport": 0.964
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.96,
+     "apport": 0.964
+    }
+   ]
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after July 2025 meeting?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "groupe": "Fed increases interest rates by 25+ bps after July 2025 meeting?",
+   "horizon": 122.0,
+   "p0": 0.26788154897494304,
+   "d": -0.9882,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.64,
+     "apport": -4.916
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.96,
+     "apport": 0.964
+    }
+   ]
+  },
+  {
+   "titre": "Will Solana reach $190 in April?",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "groupe": "Solana",
+   "horizon": 17.0,
+   "p0": 0.26880733944954127,
+   "d": -2.3793,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -2.38,
+     "apport": -4.759
+    }
+   ]
+  },
+  {
+   "titre": "Will XRP reach $3.00 in April?",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "groupe": "XRP",
+   "horizon": 17.0,
+   "p0": 0.26861580630424853,
+   "d": -2.3793,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -2.38,
+     "apport": -4.759
+    }
+   ]
+  },
+  {
+   "titre": "Will 5 Fed rate cuts happen in 2025?",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "groupe": "Will 5 Fed rate cuts happen in 2025?",
+   "horizon": 241.0,
+   "p0": 0.26788154897494304,
+   "d": 0.0794,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -0.03,
+     "apport": -0.079
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.24,
+     "apport": 0.238
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.24,
+     "apport": 0.238
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $150k in April?",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 17.0,
+   "p0": 0.26855287569573283,
+   "d": -2.3793,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -2.38,
+     "apport": -4.759
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate hike in 2025?",
+   "jeu": "2025-04-27",
+   "y": 0,
+   "groupe": "Fed rate hike in 2025?",
+   "horizon": 227.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1635,
+   "sens": 1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -0.03,
+     "apport": -0.079
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.45,
+     "apport": 0.448
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.45,
+     "apport": 0.448
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $200k in April?",
+   "jeu": "2025-04-27",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 3.0,
+   "p0": 0.26855287569573283,
+   "d": -0.1693,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.17,
+     "apport": -0.339
+    }
+   ]
+  },
+  {
+   "titre": "Will Solana reach $300 in April?",
+   "jeu": "2025-04-27",
+   "y": 0,
+   "groupe": "Solana",
+   "horizon": 3.0,
+   "p0": 0.26880733944954127,
+   "d": -0.1693,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.17,
+     "apport": -0.339
+    }
+   ]
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after June 2025 meeting?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "groupe": "Fed increases interest rates by 25+ bps after June 2025 meeting?",
+   "horizon": 38.0,
+   "p0": 0.26788154897494304,
+   "d": 0.416,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.42,
+     "apport": 1.248
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $120,000 by December 31, 2025?",
+   "jeu": "2025-05-11",
+   "y": 1,
+   "groupe": "Bitcoin",
+   "horizon": 234.0,
+   "p0": 0.26855287569573283,
+   "d": -0.0093,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.01,
+     "apport": -0.019
+    }
+   ]
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after June 2025 meeting?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "groupe": "Fed decreases interest rates by 50+ bps after June 2025 meeting?",
+   "horizon": 38.0,
+   "p0": 0.26788154897494304,
+   "d": 0.416,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.42,
+     "apport": 1.248
+    }
+   ]
+  },
+  {
+   "titre": "Fed emergency rate cut in 2025?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "groupe": "Fed emergency rate cut in 2025?",
+   "horizon": 234.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1492,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.42,
+     "apport": 1.248
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.25,
+     "apport": -0.251
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.25,
+     "apport": -0.251
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $1,000,000 by December 31, 2025?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 234.0,
+   "p0": 0.26855287569573283,
+   "d": -0.0093,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.01,
+     "apport": -0.019
+    }
+   ]
+  },
+  {
+   "titre": "Will the EU import at least 15 billion cubic meters of natural gas from Russia in any quarter of 2025?",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "groupe": "EU Russia",
+   "horizon": 221.0,
+   "p0": 0.268003646308113,
+   "d": -1.1482,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "russie-ukraine:economie_russe",
+     "vers": "russie-ukraine:capacites",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:DCOILBRENTEU",
+     "z": -1.24,
+     "apport": -2.478
+    },
+    {
+     "de": "russie-ukraine:negociations",
+     "vers": "russie-ukraine:front",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "faible",
+     "regle": null,
+     "serie": "gestes:RUS:UKR",
+     "z": 0.97,
+     "apport": -0.966
+    }
+   ]
+  },
+  {
+   "titre": "Will Ethereum reach $4000 in May?",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "groupe": "Ethereum",
+   "horizon": 6.0,
+   "p0": 0.26972477064220185,
+   "d": -2.1381,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -2.14,
+     "apport": -4.276
+    }
+   ]
+  },
+  {
+   "titre": "Will Solana reach $300 in May?",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "groupe": "Solana",
+   "horizon": 6.0,
+   "p0": 0.26880733944954127,
+   "d": -2.1381,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -2.14,
+     "apport": -4.276
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $200k in May?",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 6.0,
+   "p0": 0.26855287569573283,
+   "d": -2.1381,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -2.14,
+     "apport": -4.276
+    }
+   ]
+  },
+  {
+   "titre": "Will 4 Fed rate cuts happen in 2025?",
+   "jeu": "2025-06-08",
+   "y": 0,
+   "groupe": "Will 4 Fed rate cuts happen in 2025?",
+   "horizon": 185.0,
+   "p0": 0.26788154897494304,
+   "d": 0.8933,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 2.08,
+     "apport": 6.252
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.89,
+     "apport": -0.893
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.89,
+     "apport": -0.893
+    }
+   ]
+  },
+  {
+   "titre": "Will 6 Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "groupe": "Will 6 Fed rate cuts happen in 2025?",
+   "horizon": 129.0,
+   "p0": 0.26788154897494304,
+   "d": 1.3248,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.75,
+     "apport": 0.753
+    }
+   ]
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "groupe": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+   "horizon": 87.0,
+   "p0": 0.26788154897494304,
+   "d": 1.3248,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.75,
+     "apport": 0.753
+    }
+   ]
+  },
+  {
+   "titre": "Will no Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "groupe": "Will no Fed rate cuts happen in 2025?",
+   "horizon": 129.0,
+   "p0": 0.26788154897494304,
+   "d": 1.3248,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.75,
+     "apport": 0.753
+    }
+   ]
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after September 2025 meeting?",
+   "jeu": "2025-08-17",
+   "y": 0,
+   "groupe": "Fed decreases interest rates by 50+ bps after September 2025 meeting?",
+   "horizon": 31.0,
+   "p0": 0.26788154897494304,
+   "d": 1.5154,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $150,000 by December 31, 2025?",
+   "jeu": "2025-08-17",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 136.0,
+   "p0": 0.26855287569573283,
+   "d": 0.0072,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.01,
+     "apport": 0.014
+    }
+   ]
+  },
+  {
+   "titre": "Will the U.S. take over Gaza in 2025?",
+   "jeu": "2025-08-17",
+   "y": 0,
+   "groupe": "Gaza",
+   "horizon": 136.0,
+   "p0": 0.26824817518248173,
+   "d": 0.0665,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "guerre-levant:humanitaire",
+     "vers": "guerre-levant:epidemies",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "prix_alimentaires:LB",
+     "z": 0.06,
+     "apport": -0.116
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.32,
+     "apport": 0.316
+    }
+   ]
+  },
+  {
+   "titre": "Will  an attempt be made to fire Jerome Powell before the end of his term?",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "groupe": "Jerome Powell",
+   "horizon": 243.0,
+   "p0": 0.268003646308113,
+   "d": 0.9196,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.03,
+     "apport": 0.026
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.03,
+     "apport": 0.026
+    }
+   ]
+  },
+  {
+   "titre": "Will 8+ Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "groupe": "Will 8+ Fed rate cuts happen in 2025?",
+   "horizon": 101.0,
+   "p0": 0.26788154897494304,
+   "d": 1.143,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.03,
+     "apport": 0.026
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin dip below $100k before 2026?",
+   "jeu": "2025-08-31",
+   "y": 1,
+   "groupe": "Bitcoin",
+   "horizon": 122.0,
+   "p0": 0.26855287569573283,
+   "d": -0.0805,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.08,
+     "apport": -0.161
+    }
+   ]
+  },
+  {
+   "titre": "Will inflation reach more than 4% in 2025?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "groupe": "Will inflation reach more than 4% in 2025?",
+   "horizon": 66.0,
+   "p0": 0.26788154897494304,
+   "d": -1.4788,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:alimentation",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:PFOODINDEXM:var12",
+     "z": -1.85,
+     "apport": -3.707
+    },
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": -1.1,
+     "apport": -2.208
+    }
+   ]
+  },
+  {
+   "titre": "Will Solana reach $350 in October?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "groupe": "Solana",
+   "horizon": 6.0,
+   "p0": 0.26880733944954127,
+   "d": 0.3296,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.33,
+     "apport": 0.659
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $170,000 by December 31, 2025?",
+   "jeu": "2025-11-09",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 53.0,
+   "p0": 0.26855287569573283,
+   "d": 0.0121,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.01,
+     "apport": 0.024
+    }
+   ]
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after January 2026 meeting?",
+   "jeu": "2025-11-09",
+   "y": 0,
+   "groupe": "Fed decreases interest rates by 50+ bps after January 2026 meeting?",
+   "horizon": 80.0,
+   "p0": 0.26788154897494304,
+   "d": -0.2472,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -0.24,
+     "apport": -0.731
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.26,
+     "apport": -0.258
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $140,000 by December 31, 2025?",
+   "jeu": "2025-11-09",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 53.0,
+   "p0": 0.26855287569573283,
+   "d": 0.0121,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.01,
+     "apport": 0.024
+    }
+   ]
+  },
+  {
+   "titre": "Will the EU import at least 19 billion cubic meters of natural gas from Russia in the second half of 2025?",
+   "jeu": "2025-11-23",
+   "y": 0,
+   "groupe": "EU Russia",
+   "horizon": 39.0,
+   "p0": 0.268003646308113,
+   "d": -0.1293,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "russie-ukraine:negociations",
+     "vers": "russie-ukraine:front",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "faible",
+     "regle": null,
+     "serie": "gestes:RUS:UKR",
+     "z": 0.13,
+     "apport": -0.129
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $145,000 in November?",
+   "jeu": "2025-11-23",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 8.0,
+   "p0": 0.26855287569573283,
+   "d": 1.178,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.18,
+     "apport": 2.356
+    }
+   ]
+  },
+  {
+   "titre": "Bitcoin below $80K in 2025?",
+   "jeu": "2025-12-21",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 11.0,
+   "p0": 0.26855287569573283,
+   "d": 0.0139,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.01,
+     "apport": 0.028
+    }
+   ]
+  },
+  {
+   "titre": "Based FDV above $500M one day after launch?",
+   "jeu": "2025-12-21",
+   "y": 0,
+   "groupe": "Based FDV",
+   "horizon": 376.0,
+   "p0": 0.268003646308113,
+   "d": 0.0139,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.01,
+     "apport": 0.028
+    }
+   ]
+  },
+  {
+   "titre": "Puffpaw FDV above $100M one day after launch?",
+   "jeu": "2026-01-04",
+   "y": 1,
+   "groupe": "FDV Puffpaw",
+   "horizon": 362.0,
+   "p0": 0.2667578659370725,
+   "d": 0.1773,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.18,
+     "apport": 0.355
+    }
+   ]
+  },
+  {
+   "titre": "Puffpaw FDV above $300M one day after launch?",
+   "jeu": "2026-01-04",
+   "y": 1,
+   "groupe": "FDV Puffpaw",
+   "horizon": 362.0,
+   "p0": 0.2667578659370725,
+   "d": 0.1773,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.18,
+     "apport": 0.355
+    }
+   ]
+  },
+  {
+   "titre": "EdgeX FDV above $4B one day after launch?",
+   "jeu": "2026-01-04",
+   "y": 0,
+   "groupe": "EdgeX FDV",
+   "horizon": 362.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1773,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.18,
+     "apport": 0.355
+    }
+   ]
+  },
+  {
+   "titre": "Aztec FDV above $800M one day after launch?",
+   "jeu": "2026-01-04",
+   "y": 0,
+   "groupe": "Aztec FDV",
+   "horizon": 362.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1773,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.18,
+     "apport": 0.355
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate cut by June 2026 meeting?",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "groupe": "Fed rate cut by June 2026 meeting?",
+   "horizon": 150.0,
+   "p0": 0.26788154897494304,
+   "d": -1.1124,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.37,
+     "apport": -4.108
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.34,
+     "apport": -0.342
+    }
+   ]
+  },
+  {
+   "titre": "Based FDV above $300M one day after launch?",
+   "jeu": "2026-02-01",
+   "y": 0,
+   "groupe": "Based FDV",
+   "horizon": 334.0,
+   "p0": 0.268003646308113,
+   "d": -1.3016,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -1.3,
+     "apport": -2.603
+    }
+   ]
+  },
+  {
+   "titre": "Will the Iranian regime fall by March 31?",
+   "jeu": "2026-02-01",
+   "y": 0,
+   "groupe": "Iranian",
+   "horizon": 58.0,
+   "p0": 0.26812585499316005,
+   "d": -0.7637,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": 1.91,
+     "apport": -3.819
+    },
+    {
+     "de": "iran-nucleaire:sismicite",
+     "vers": "iran-nucleaire:societe_iranienne",
+     "effet": "-",
+     "delai": "heures",
+     "force": "forte",
+     "regle": "seuil",
+     "serie": "seismes:iran_m45",
+     "z": 0.0,
+     "apport": -0.0
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $120,000 in February?",
+   "jeu": "2026-02-15",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 14.0,
+   "p0": 0.26855287569573283,
+   "d": -0.9053,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.91,
+     "apport": -1.811
+    }
+   ]
+  },
+  {
+   "titre": "Bitcoin below $52K before March 31, 2026?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 31.0,
+   "p0": 0.26855287569573283,
+   "d": -0.1836,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.18,
+     "apport": -0.367
+    }
+   ]
+  },
+  {
+   "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "groupe": "USD USDC USDT",
+   "horizon": 122.0,
+   "p0": 0.26788154897494304,
+   "d": -0.0918,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.18,
+     "apport": -0.367
+    },
+    {
+     "de": "crises-bancaires:depots",
+     "vers": "crises-bancaires:marches",
+     "effet": "-",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "seuil",
+     "serie": "fred:DPSACBW027SBOG:var52",
+     "z": 0.3,
+     "apport": -0.0
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+   "horizon": 59.0,
+   "p0": 0.26788154897494304,
+   "d": -1.2379,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.24,
+     "apport": -3.714
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed Cut–Pause–Pause in the next three decisions (Dec–Jan–Mar)?",
+   "jeu": "2026-03-01",
+   "y": 1,
+   "groupe": "Cut Dec Jan Mar Pause",
+   "horizon": 17.0,
+   "p0": 0.2674259681093394,
+   "d": -1.2379,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.24,
+     "apport": -3.714
+    }
+   ]
+  },
+  {
+   "titre": "China's rebar failure rate below 20% in 2025 national quality check?",
+   "jeu": "2026-03-15",
+   "y": 1,
+   "groupe": "China",
+   "horizon": 136.0,
+   "p0": 0.2672138622891017,
+   "d": -0.1019,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "rivalite-sino-americaine:diplomatie",
+     "vers": "rivalite-sino-americaine:taiwan",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "gestes:USA:CHN",
+     "z": 0.1,
+     "apport": -0.204
+    }
+   ]
+  },
+  {
+   "titre": "Iran Government falls before end of March 2026",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Government Iran",
+   "horizon": 16.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1944,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    },
+    {
+     "de": "iran-nucleaire:sismicite",
+     "vers": "iran-nucleaire:societe_iranienne",
+     "effet": "-",
+     "delai": "heures",
+     "force": "forte",
+     "regle": "seuil",
+     "serie": "seismes:iran_m45",
+     "z": 0.0,
+     "apport": -0.0
+    }
+   ]
+  },
+  {
+   "titre": "Russia joins the Board of Peace by March 31?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Board Peace Russia",
+   "horizon": 15.0,
+   "p0": 0.26788154897494304,
+   "d": 0.7274,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "russie-ukraine:negociations",
+     "vers": "russie-ukraine:front",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "faible",
+     "regle": null,
+     "serie": "gestes:RUS:UKR",
+     "z": -0.73,
+     "apport": 0.727
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $80,000 in March?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 17.0,
+   "p0": 0.26855287569573283,
+   "d": 1.3831,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.38,
+     "apport": 2.766
+    }
+   ]
+  },
+  {
+   "titre": "Solstice FDV above $100M one day after launch?",
+   "jeu": "2026-03-15",
+   "y": 1,
+   "groupe": "FDV Solstice",
+   "horizon": 292.0,
+   "p0": 0.2674259681093394,
+   "d": 1.3831,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.38,
+     "apport": 2.766
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate cut by April 2026 meeting?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Fed rate cut by April 2026 meeting?",
+   "horizon": 45.0,
+   "p0": 0.26788154897494304,
+   "d": 3.0,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 5.6,
+     "apport": 9.0
+    }
+   ]
+  },
+  {
+   "titre": "Will Ethereum reach $2,600 in March?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Ethereum",
+   "horizon": 17.0,
+   "p0": 0.26972477064220185,
+   "d": 1.3831,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.38,
+     "apport": 2.766
+    }
+   ]
+  },
+  {
+   "titre": "Will Ethereum reach $2,400 in March?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Ethereum",
+   "horizon": 17.0,
+   "p0": 0.26972477064220185,
+   "d": 1.3831,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.38,
+     "apport": 2.766
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "horizon": 94.0,
+   "p0": 0.26788154897494304,
+   "d": 2.1783,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 5.6,
+     "apport": 9.0
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.29,
+     "apport": -0.287
+    }
+   ]
+  },
+  {
+   "titre": "Will the Iranian regime fall by April 30?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Iranian",
+   "horizon": 46.0,
+   "p0": 0.26812585499316005,
+   "d": 0.1944,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    },
+    {
+     "de": "iran-nucleaire:sismicite",
+     "vers": "iran-nucleaire:societe_iranienne",
+     "effet": "-",
+     "delai": "heures",
+     "force": "forte",
+     "regle": "seuil",
+     "serie": "seismes:iran_m45",
+     "z": 0.0,
+     "apport": -0.0
+    }
+   ]
+  },
+  {
+   "titre": "Will Solana reach $140 in March?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Solana",
+   "horizon": 17.0,
+   "p0": 0.26880733944954127,
+   "d": 1.3831,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.38,
+     "apport": 2.766
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $80,000 by December 31, 2026?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "Bitcoin",
+   "horizon": 278.0,
+   "p0": 0.26855287569573283,
+   "d": 0.7937,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.79,
+     "apport": 1.587
+    }
+   ]
+  },
+  {
+   "titre": "Will Solana reach $100 in March?",
+   "jeu": "2026-03-29",
+   "y": 0,
+   "groupe": "Solana",
+   "horizon": 3.0,
+   "p0": 0.26880733944954127,
+   "d": 0.7937,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.79,
+     "apport": 1.587
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil (CL) hit (HIGH) $110 by end of June?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "CL Crude HIGH Oil",
+   "horizon": 93.0,
+   "p0": 0.26766985864113085,
+   "d": -0.2244,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "energie-mondiale:demande",
+     "vers": "energie-mondiale:prix",
+     "effet": "+",
+     "delai": "mois",
+     "force": "forte",
+     "regle": null,
+     "serie": "eia:WRPUPUS2",
+     "z": 0.12,
+     "apport": 0.374
+    },
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": 0.97,
+     "apport": -1.496
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+   "jeu": "2026-03-29",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+   "horizon": 31.0,
+   "p0": 0.26788154897494304,
+   "d": 3.0,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 5.6,
+     "apport": 9.0
+    }
+   ]
+  },
+  {
+   "titre": "Iran x Israel/US conflict ends by May 15?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "Iran Israel US",
+   "horizon": 47.0,
+   "p0": 0.2672138622891017,
+   "d": -0.0033,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    },
+    {
+     "de": "guerre-levant:humanitaire",
+     "vers": "guerre-levant:epidemies",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "prix_alimentaires:LB",
+     "z": 0.5,
+     "apport": -0.995
+    },
+    {
+     "de": "iran-nucleaire:sismicite",
+     "vers": "iran-nucleaire:societe_iranienne",
+     "effet": "-",
+     "delai": "heures",
+     "force": "forte",
+     "regle": "seuil",
+     "serie": "seismes:iran_m45",
+     "z": 0.0,
+     "apport": -0.0
+    }
+   ]
+  },
+  {
+   "titre": "USD.AI FDV above $150M one day after launch?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "AI FDV USD",
+   "horizon": 278.0,
+   "p0": 0.2674259681093394,
+   "d": 0.7937,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.79,
+     "apport": 1.587
+    }
+   ]
+  },
+  {
+   "titre": "Will WTI crude oil cost more than $150/barrel before June? (According to investing.com)",
+   "jeu": "2026-04-12",
+   "y": 0,
+   "groupe": "According WTI",
+   "horizon": 49.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1717,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": -0.17,
+     "apport": 0.343
+    }
+   ]
+  },
+  {
+   "titre": "Iran x Israel/US conflict ends by April 30?",
+   "jeu": "2026-04-12",
+   "y": 1,
+   "groupe": "Iran Israel US",
+   "horizon": 18.0,
+   "p0": 0.2672138622891017,
+   "d": 0.1733,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    },
+    {
+     "de": "guerre-levant:humanitaire",
+     "vers": "guerre-levant:epidemies",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "prix_alimentaires:LB",
+     "z": -0.12,
+     "apport": 0.241
+    },
+    {
+     "de": "iran-nucleaire:sismicite",
+     "vers": "iran-nucleaire:societe_iranienne",
+     "effet": "-",
+     "delai": "heures",
+     "force": "forte",
+     "regle": "seuil",
+     "serie": "seismes:iran_m45",
+     "z": 1.74,
+     "apport": -0.0
+    }
+   ]
+  },
+  {
+   "titre": "Will inflation reach more than 3.5% in 2026?",
+   "jeu": "2026-04-12",
+   "y": 1,
+   "groupe": "Will inflation reach more than 3.5% in 2026?",
+   "horizon": 263.0,
+   "p0": 0.2674259681093394,
+   "d": 1.5561,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:alimentation",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:PFOODINDEXM:var12",
+     "z": 4.73,
+     "apport": 6.0
+    },
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.11,
+     "apport": 0.224
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach a new all-time high price before October 6, 2026?",
+   "jeu": "2026-04-26",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 162.0,
+   "p0": 0.26855287569573283,
+   "d": 0.8861,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.89,
+     "apport": 1.772
+    }
+   ]
+  },
+  {
+   "titre": "Puffpaw FDV above $50M one day after launch?",
+   "jeu": "2026-05-10",
+   "y": 1,
+   "groupe": "FDV Puffpaw",
+   "horizon": 236.0,
+   "p0": 0.2667578659370725,
+   "d": -0.4046,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.4,
+     "apport": -0.809
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?",
+   "jeu": "2026-05-10",
+   "y": 0,
+   "groupe": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?",
+   "horizon": 38.0,
+   "p0": 0.26788154897494304,
+   "d": 1.7846,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.78,
+     "apport": 5.354
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil (CL) hit (LOW) $80 by end of June?",
+   "jeu": "2026-05-10",
+   "y": 1,
+   "groupe": "CL Crude LOW Oil",
+   "horizon": 51.0,
+   "p0": 0.2674259681093394,
+   "d": 0.7465,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": -0.96,
+     "apport": 1.493
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $90K USD in May 2026?",
+   "jeu": "2026-05-24",
+   "y": 0,
+   "groupe": "Bitcoin USD",
+   "horizon": 7.0,
+   "p0": 0.26788154897494304,
+   "d": 0.034,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.03,
+     "apport": 0.068
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin trade above $120,000 before August 1, 2026?",
+   "jeu": "2026-06-07",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 55.0,
+   "p0": 0.26855287569573283,
+   "d": 1.6063,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.61,
+     "apport": 3.213
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil (CL) hit (HIGH) $115 by end of June?",
+   "jeu": "2026-06-07",
+   "y": 0,
+   "groupe": "CL Crude HIGH Oil",
+   "horizon": 23.0,
+   "p0": 0.26766985864113085,
+   "d": 0.6782,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": -0.83,
+     "apport": 1.356
+    }
+   ]
+  },
+  {
+   "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
+   "jeu": "2026-06-21",
+   "y": 0,
+   "groupe": "Federal Reserve",
+   "horizon": 35.0,
+   "p0": 0.2675478577939836,
+   "d": -3.0,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -3.28,
+     "apport": -9.0
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate hike in 2026?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "groupe": "Fed rate hike in 2026?",
+   "horizon": 171.0,
+   "p0": 0.2674259681093394,
+   "d": -2.4486,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -3.28,
+     "apport": -9.0
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.79,
+     "apport": -0.794
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "groupe": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+   "horizon": 87.0,
+   "p0": 0.2674259681093394,
+   "d": -2.4486,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -3.28,
+     "apport": -9.0
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.79,
+     "apport": -0.794
+    }
+   ]
+  },
+  {
+   "titre": "Will the Federal Reserve hike interest rates in 2026?",
+   "jeu": "2026-07-05",
+   "y": 1,
+   "groupe": "Federal Reserve",
+   "horizon": 179.0,
+   "p0": 0.2675478577939836,
+   "d": -0.8575,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.06,
+     "apport": -3.181
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.25,
+     "apport": -0.249
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?",
+   "jeu": "2026-08-02",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?",
+   "horizon": 45.0,
+   "p0": 0.26788154897494304,
+   "d": 0.8314,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.83,
+     "apport": 2.494
+    }
+   ]
+  },
+  {
+   "titre": "Will gas prices in the U.S. reach a new all-time high before September 6, 2026?",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "groupe": "Will gas prices in the U.S. reach a new all-time high before September 6, 2026?",
+   "horizon": 15.0,
+   "p0": 0.26788154897494304,
+   "d": -0.9949,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": 2.98,
+     "apport": -1.99
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "groupe": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?",
+   "horizon": 31.0,
+   "p0": 0.26788154897494304,
+   "d": 0.8314,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.83,
+     "apport": 2.494
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil reach a new all-time high by September 30?",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "groupe": "Crude Oil",
+   "horizon": 45.0,
+   "p0": 0.26788154897494304,
+   "d": -0.9949,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": 2.98,
+     "apport": -1.99
+    }
+   ]
+  },
+  {
+   "titre": "Fed Rate Hike by September 2026 Meeting?",
+   "jeu": "2026-08-16",
+   "y": 1,
+   "groupe": "Hike Meeting Rate",
+   "horizon": 115.0,
+   "p0": 0.2674259681093394,
+   "d": 0.4385,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.83,
+     "apport": 2.494
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.74,
+     "apport": -0.74
+    }
+   ]
+  },
+  {
+   "titre": "Will Nigeria's inflation rate fall below 15% during 2026?",
+   "jeu": "2026-08-30",
+   "y": 1,
+   "groupe": "Nigeria",
+   "horizon": 123.0,
+   "p0": 0.2674259681093394,
+   "d": 0.8577,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:alimentation",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:PFOODINDEXM:var12",
+     "z": 1.23,
+     "apport": 2.465
+    },
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.48,
+     "apport": 0.966
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $85,000 by December 31, 2026?",
+   "jeu": "2026-09-13",
+   "y": 1,
+   "groupe": "Bitcoin",
+   "horizon": 110.0,
+   "p0": 0.26855287569573283,
+   "d": 0.2232,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.22,
+     "apport": 0.446
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $87,500 in September?",
+   "jeu": "2026-09-13",
+   "y": 0,
+   "groupe": "Bitcoin",
+   "horizon": 18.0,
+   "p0": 0.26855287569573283,
+   "d": 0.2232,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.22,
+     "apport": 0.446
+    }
+   ]
+  },
+  {
+   "titre": "Will XRP reach $2.00 in September?",
+   "jeu": "2026-09-27",
+   "y": 0,
+   "groupe": "XRP",
+   "horizon": 4.0,
+   "p0": 0.26861580630424853,
+   "d": 1.0528,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 1.05,
+     "apport": 2.106
+    }
+   ]
+  }
+ ]
+}
