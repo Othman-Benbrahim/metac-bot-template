@@ -59,6 +59,7 @@ DETROITS = {"ormuz": r"hormuz", "taiwan": r"taiwan", "malacca": r"malacca", "bab
             "bonne_esperance": r"cape of good hope", "rotterdam": r"rotterdam"}
 VILLES = {"delhi": "india|delhi", "teheran": "iran|tehran", "houston": "texas|houston", "berlin": "germany|berlin",
           "shanghai": "china|shanghai", "kyiv": "ukraine|kyiv|kiev", "bandar_abbas": "iran|hormuz"}
+PHENOMENES = r"heat|hot|temperature|cold|freez|frost|drought|rain|monsoon|flood|weather|snow|wildfire|heatwave"
 GENTILES = {"USA": "united states|u\\.s\\.|\\bus\\b|america|american", "GBR": "united kingdom|\\buk\\b|britain|british",
             "RUS": "russia|russian|kremlin|putin", "UKR": "ukrain|zelensk", "CHN": "china|chinese|beijing|xi jinping",
             "IRN": "iran|iranian|tehran", "ISR": "israel|israeli|netanyahu|gaza", "PSE": "palestin|gaza|west bank|hamas",
@@ -87,7 +88,9 @@ def motif(adaptateur: str) -> str | None:
     if parties[0] in ("portwatch", "portwatch_ref", "port") and len(parties) > 1:
         return DETROITS.get(parties[1])
     if parties[0] in ("meteo", "climat", "pluie", "meteo_prevue") and len(parties) > 1:
-        return VILLES.get(parties[1])
+        # 2026-11-24 (sondes) : l'objet d'une série météo est le phénomène ET le lieu, pas le lieu seul
+        lieu = VILLES.get(parties[1])
+        return rf"^(?=.*(?:{PHENOMENES}))(?=.*(?:{lieu}))" if lieu else None
     P = _pays()
     codes = [x for x in parties[1:] if x in P]
     if parties[0] in ("gestes", "paire", "paire_mois", "dyade", "ucdp_dyade", "sanctions", "ooni", "feux", "ucdp_mois",
@@ -99,4 +102,4 @@ def motif(adaptateur: str) -> str | None:
 
 def porte_sur(adaptateur: str, titre: str) -> bool:
     m = motif(adaptateur)
-    return bool(m and re.search(m, titre or "", re.I))
+    return bool(m and re.search(m, titre or "", re.I | re.S))

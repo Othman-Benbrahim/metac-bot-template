@@ -17,7 +17,7 @@ import logging
 import os
 import sys
 import hashlib
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 from forecasting_tools import (
     ApiFilter,
@@ -502,6 +502,11 @@ class AlphabetBot(FallTemplateBot2026):
         # guerre en cours » a passé les critères (2 questions) ; même mélange, même plafond ; journal-accords.jsonl.
         if sp_ is None:
             sp_ = await self._accords_guerre(question, q, r.p_poste, research)
+        # 0.10.509 (décisions de l'auteur du 2026-11-24, 21 h 14 à 21 h 24) : sondes de l'écosystème (relations, ponts,
+        # phase), seulement sans brique, étalon recalé sur les 6 derniers mois, plafond 5 points, règle d'arrêt par
+        # e-valeurs (preenregistrements/sondes-ecosysteme.md) ; journal-sondes.jsonl.
+        if sp_ is None:
+            sp_ = self._sondes(question, q, r.p_poste)
         # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
         # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
         try:
@@ -513,6 +518,36 @@ class AlphabetBot(FallTemplateBot2026):
         if sp_ is not None:
             return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
+
+    def _sondes(self, question, q, p_pipeline: float) -> dict | None:
+        try:
+            import sondes as snd
+            E = snd.etat()
+            if not any(v.get("actif") and v.get("k") for v in (E.get("sondes") or {}).values()):
+                return None
+            if getattr(self, "_sondes_lecteur", None) is None:
+                self._sondes_lecteur = snd.Sondes()
+            auj = datetime.now(timezone.utc).date()
+            fin = q_fin(question)
+            horizon = max(1, (date.fromisoformat(fin) - auj).days) if fin else 90
+            lecture = self._sondes_lecteur.lire(question.question_text or "", horizon, auj)
+            res = snd.appliquer(p_pipeline, lecture, E)
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": auj.isoformat(), "horizon": horizon, "p_base": p_pipeline, "p_poste": res["p"],
+                     "sondes": res["parts"], "lecture": lecture, "etat_calcule_le": E.get("calcule_le")}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-sondes.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            if not res["parts"]:
+                return None
+            noms = ", ".join(f"{n} (k = {v['k']}, d = {v['d']})" for n, v in res["parts"].items())
+            return {"p": res["p"], "p_regle": res["p"], "texte": (
+                f"\n\nEcosystem probes (coded, capped): {noms}; calibration on the last 6 months of resolved questions; "
+                f"shift from {p_pipeline:.1%} to {res['p']:.1%} (cap {max(v['plafond'] for v in res['parts'].values()):.0%}, "
+                f"sequential stop rule).")}
+        except Exception as ex:   # la sonde qui échoue ne bloque rien
+            logger.warning("sondes : non appliquées (%s)", type(ex).__name__)
+            return None
 
     async def _accords_guerre(self, question, q, p_pipeline: float, research: str = "") -> dict | None:
         try:

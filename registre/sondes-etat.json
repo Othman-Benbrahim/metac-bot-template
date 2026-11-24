@@ -1,0 +1,50 @@
+{
+ "calcule_le": "2026-11-24",
+ "fenetre_etalon": [
+  "2026-05-26",
+  "2026-11-24"
+ ],
+ "questions_fenetre": 817,
+ "sondes": {
+  "relations": {
+   "actif": true,
+   "plafond": 0.05,
+   "k": -0.5,
+   "etalon": {
+    "k": -0.5,
+    "lues": 17,
+    "perte_base": 0.6667,
+    "perte_k": 0.6119
+   },
+   "log_e": 0.0,
+   "resolues": 0
+  },
+  "ponts": {
+   "actif": true,
+   "plafond": 0.05,
+   "k": 0.0,
+   "etalon": {
+    "k": 0.0,
+    "lues": 13,
+    "perte_base": 0.6212,
+    "perte_k": 0.6212
+   },
+   "log_e": 0.0,
+   "resolues": 0
+  },
+  "phase": {
+   "actif": true,
+   "plafond": 0.05,
+   "k": -0.5,
+   "etalon": {
+    "k": -0.5,
+    "lues": 36,
+    "perte_base": 0.5074,
+    "perte_k": 0.5037
+   },
+   "log_e": 0.0,
+   "resolues": 0
+  }
+ },
+ "procedure": "preenregistrements/sondes-ecosysteme.md"
+}
