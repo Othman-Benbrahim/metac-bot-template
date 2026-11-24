@@ -1,0 +1,28 @@
+{
+ "version": 3,
+ "licence": {
+  "name": "CC0 1.0",
+  "uri": "http://creativecommons.org/publicdomain/zero/1.0",
+  "iconUri": "https://licensebuttons.net/p/zero/1.0/88x31.png",
+  "rightsIdentifier": "CC0-1.0",
+  "rightsIdentifierScheme": "SPDX",
+  "schemeUri": "https://spdx.org/licenses/",
+  "languageCode": "en"
+ },
+ "fichiers": [
+  {
+   "id": 13722304,
+   "nom": "Diplometrics_COLT Codebook_20260320.pdf",
+   "restreint": false,
+   "taille": 707867,
+   "type": "application/pdf"
+  },
+  {
+   "id": 13722274,
+   "nom": "Diplometrics_COLT_Travel_Dataset_Primary-HOGS-through-2025_20260428.xlsx",
+   "restreint": false,
+   "taille": 30102897,
+   "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  }
+ ]
+}
