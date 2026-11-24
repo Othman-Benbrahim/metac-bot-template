@@ -1,28 +1,30 @@
 {
+ "genere_le": "2026-11-24",
+ "questions": 2196,
  "par_type": [
   [
    "amont sans série",
-   3156
+   3147
   ],
   [
    "aucune relation entrante",
-   2240
+   2067
+  ],
+  [
+   "série sans état récent",
+   269
+  ],
+  [
+   "aucune relation retenue aux échelles de la question",
+   262
   ],
   [
    "aucun compartiment rattaché",
    259
   ],
   [
-   "aucune relation retenue aux échelles de la question",
-   252
-  ],
-  [
-   "série sans état récent",
-   225
-  ],
-  [
    "sens du oui illisible",
-   190
+   193
   ]
  ],
  "par_compartiment": [
@@ -71,10 +73,6 @@
    118
   ],
   [
-   "monnaie-pouvoir:monnaies_numeriques",
-   109
-  ],
-  [
    "medias-diffusion:cinema_series",
    95
   ],
@@ -89,10 +87,6 @@
   [
    "partis-politiques:adhesion_militantisme",
    70
-  ],
-  [
-   "calendriers-echeances:banques_centrales",
-   64
   ],
   [
    "economie-entreprises:investissement_ia",
@@ -144,6 +138,10 @@
   ],
   [
    "asie-du-sud:puissances",
+   44
+  ],
+  [
+   "calendriers-echeances:publications → calendriers-echeances:banques_centrales",
    44
   ],
   [
@@ -265,6 +263,570 @@
   [
    "iran-nucleaire:sismicite",
    17
+  ],
+  [
+   "antarctique:revendications",
+   17
+  ],
+  [
+   "iran-nucleaire:russie_chine",
+   16
+  ],
+  [
+   "ormuz:force → ormuz:navigation",
+   16
+  ],
+  [
+   "guerre-levant:epidemies → guerre-levant:humanitaire",
+   15
+  ],
+  [
+   "calendriers-echeances:dates_limites",
+   15
+  ],
+  [
+   "epidemies:agent → epidemies:agent",
+   15
+  ],
+  [
+   "epidemies:agent → epidemies:malades",
+   15
+  ],
+  [
+   "epidemies:malades → epidemies:malades",
+   15
+  ],
+  [
+   "transport-maritime:detroit_pas_de_calais",
+   15
+  ],
+  [
+   "eau-moyen-orient:maladies_hydriques → eau-moyen-orient:villes",
+   14
+  ],
+  [
+   "epidemies:reservoirs → epidemies:agent",
+   14
+  ],
+  [
+   "epidemies:comportements → epidemies:malades",
+   14
+  ],
+  [
+   "medias-diffusion:geants_mango",
+   13
+  ],
+  [
+   "dette-emergents:gisements",
+   13
+  ],
+  [
+   "epidemies:technique → epidemies:malades",
+   13
+  ],
+  [
+   "russie-ukraine:hiver_saisons",
+   13
+  ],
+  [
+   "russie-ukraine:front → russie-ukraine:mer_noire",
+   13
+  ],
+  [
+   "russie-ukraine:opinions",
+   13
+  ],
+  [
+   "militaire:arsenaux_nucleaires",
+   12
+  ],
+  [
+   "non-proliferation:dissuasion",
+   12
+  ],
+  [
+   "sciences-techniques:gouvernance_labos",
+   12
+  ],
+  [
+   "economie-entreprises:services → economie-entreprises:conjoncture",
+   11
+  ],
+  [
+   "economie-entreprises:investissement_ia → economie-entreprises:conjoncture",
+   11
+  ],
+  [
+   "guerre-levant:relief",
+   11
+  ],
+  [
+   "inflation-mondiale:budget",
+   11
+  ],
+  [
+   "asie-du-nord-est:russie_coree",
+   11
+  ],
+  [
+   "amerique-latine:usa_chine_latam → amerique-latine:venezuela",
+   10
+  ],
+  [
+   "culture-memoire:patrimoine_en_guerre",
+   10
+  ],
+  [
+   "dirigeants-elus:justice_immunites",
+   10
+  ],
+  [
+   "organisations-internationales:retraits → organisations-internationales:justice_internationale",
+   10
+  ],
+  [
+   "transport-maritime:detroit_gibraltar",
+   9
+  ],
+  [
+   "organisations-internationales:commerce_mondial",
+   9
+  ],
+  [
+   "culture-memoire:creation",
+   9
+  ],
+  [
+   "guerre-levant:gaza → guerre-levant:humanitaire",
+   8
+  ],
+  [
+   "climat-extremes:oceans",
+   8
+  ],
+  [
+   "securite-publique:polices → securite-publique:justice",
+   8
+  ],
+  [
+   "insularite:nouvelle_caledonie",
+   8
+  ],
+  [
+   "medias-diffusion:plateformes_sociales → medias-diffusion:createurs",
+   8
+  ],
+  [
+   "medias-diffusion:jeux_video → medias-diffusion:createurs",
+   8
+  ],
+  [
+   "information-cyber:cyber",
+   7
+  ],
+  [
+   "infrastructures-critiques:attaques",
+   7
+  ],
+  [
+   "economie-entreprises:industrie_manufacturiere → economie-entreprises:conjoncture",
+   7
+  ],
+  [
+   "sciences-techniques:recherche → sciences-techniques:ia",
+   7
+  ],
+  [
+   "insularite:ocean_indien_iles",
+   7
+  ],
+  [
+   "amerique-latine:ressources_latam",
+   6
+  ],
+  [
+   "inflation-mondiale:approvisionnement → inflation-mondiale:prix_conso",
+   6
+  ],
+  [
+   "russie-ukraine:hiver_saisons → russie-ukraine:front",
+   6
+  ],
+  [
+   "economie-entreprises:conjoncture → economie-entreprises:defaillances",
+   6
+  ],
+  [
+   "transport-maritime:detroit_taiwan",
+   6
+  ],
+  [
+   "rivalite-sino-americaine:taiwan → rivalite-sino-americaine:technologie",
+   6
+  ],
+  [
+   "eau-moyen-orient:chaleur → eau-moyen-orient:barrages",
+   6
+  ],
+  [
+   "minerais-critiques:demande",
+   5
+  ],
+  [
+   "rivalite-sino-americaine:alliances",
+   5
+  ],
+  [
+   "epidemies:convention → epidemies:autorites",
+   5
+  ],
+  [
+   "russie-ukraine:capacites → russie-ukraine:front",
+   5
+  ],
+  [
+   "arctique:glace_arctique → arctique:route_nord",
+   5
+  ],
+  [
+   "economie-chinoise:demographie",
+   5
+  ],
+  [
+   "economie-chinoise:eau_fleuves",
+   5
+  ],
+  [
+   "economie-chinoise:epizooties",
+   5
+  ],
+  [
+   "economie-chinoise:exterieur",
+   5
+  ],
+  [
+   "economie-chinoise:sols_chimie",
+   5
+  ],
+  [
+   "inde:chine_frontiere",
+   5
+  ],
+  [
+   "rivalite-sino-americaine:detroit_relief",
+   5
+  ],
+  [
+   "calendriers-echeances:anticipations → calendriers-echeances:anticipations",
+   4
+  ],
+  [
+   "calendriers-echeances:dates_limites → calendriers-echeances:anticipations",
+   4
+  ],
+  [
+   "dirigeants-elus:diplomatie_personnelle → dirigeants-elus:popularite",
+   4
+  ],
+  [
+   "politique-americaine:executif → politique-americaine:poursuites_personnalites",
+   4
+  ],
+  [
+   "rivalite-sino-americaine:taiwan → rivalite-sino-americaine:diplomatie",
+   4
+  ],
+  [
+   "rivalite-sino-americaine:taiwan → rivalite-sino-americaine:energie",
+   4
+  ],
+  [
+   "monnaie-pouvoir:paiements → monnaie-pouvoir:sanctions_financieres",
+   3
+  ],
+  [
+   "iran-nucleaire:verification → iran-nucleaire:conseil_securite",
+   3
+  ],
+  [
+   "information-cyber:effacement_mots → information-cyber:langues_biais",
+   3
+  ],
+  [
+   "sciences-techniques:ia → sciences-techniques:adoption",
+   3
+  ],
+  [
+   "information-cyber:cyber → information-cyber:infrastructure",
+   3
+  ],
+  [
+   "medias-diffusion:jeux_video",
+   3
+  ],
+  [
+   "information-cyber:plateformes",
+   3
+  ],
+  [
+   "reseaux-sociaux:plateformes",
+   3
+  ],
+  [
+   "dirigeants-elus:programmes → dirigeants-elus:popularite",
+   3
+  ],
+  [
+   "guerre-levant:puissances → guerre-levant:mediateurs",
+   3
+  ],
+  [
+   "sciences-techniques:course_etats",
+   3
+  ],
+  [
+   "relief-et-montagnes:seismes_volcans",
+   3
+  ],
+  [
+   "inflation-mondiale:prix_conso → inflation-mondiale:banques_centrales",
+   3
+  ],
+  [
+   "eau-moyen-orient:fleuves → eau-moyen-orient:barrages",
+   3
+  ],
+  [
+   "transport-maritime:detroit_bosphore",
+   3
+  ],
+  [
+   "politique-interieure:contestation",
+   3
+  ],
+  [
+   "politique-interieure:coups_transitions",
+   3
+  ],
+  [
+   "organisations-internationales:retraits",
+   3
+  ],
+  [
+   "union-europeenne:politiques_communes",
+   2
+  ],
+  [
+   "economie-entreprises:conjoncture → economie-entreprises:immobilier_consommation",
+   2
+  ],
+  [
+   "canada:energie_minerais_can → canada:commerce_usa",
+   2
+  ],
+  [
+   "dette-emergents:fmi",
+   2
+  ],
+  [
+   "asie-du-sud:inde_pakistan → asie-du-sud:indus",
+   2
+  ],
+  [
+   "partis-politiques:partis_dominants → partis-politiques:systemes_partisans",
+   2
+  ],
+  [
+   "politique-interieure:regime → politique-interieure:elections",
+   2
+  ],
+  [
+   "russie-ukraine:front → russie-ukraine:atomique",
+   2
+  ],
+  [
+   "russie-ukraine:front → russie-ukraine:economie_ukraine",
+   2
+  ],
+  [
+   "russie-ukraine:mer_noire → russie-ukraine:economie_ukraine",
+   2
+  ],
+  [
+   "russie-ukraine:relief_fleuves",
+   2
+  ],
+  [
+   "russie-ukraine:front → russie-ukraine:sols_agriculture",
+   2
+  ],
+  [
+   "guerre-levant:mediateurs → guerre-levant:gaza",
+   2
+  ],
+  [
+   "afrique-subsaharienne:groupes_armes",
+   2
+  ],
+  [
+   "iran-nucleaire:europe → iran-nucleaire:negociations",
+   2
+  ],
+  [
+   "economie-chinoise:consommation → economie-chinoise:activite",
+   2
+  ],
+  [
+   "economie-chinoise:politique_monetaire → economie-chinoise:activite",
+   2
+  ],
+  [
+   "economie-chinoise:epizooties → economie-chinoise:consommation",
+   2
+  ],
+  [
+   "economie-chinoise:activite → economie-chinoise:emploi",
+   2
+  ],
+  [
+   "rivalite-sino-americaine:commerce → rivalite-sino-americaine:economie_chine",
+   2
+  ],
+  [
+   "iran-nucleaire:etats_unis → iran-nucleaire:pouvoir_iranien",
+   2
+  ],
+  [
+   "iran-nucleaire:etats_unis → iran-nucleaire:sanctions",
+   2
+  ],
+  [
+   "guerre-levant:relief → guerre-levant:eau",
+   1
+  ],
+  [
+   "information-cyber:censure → information-cyber:recits",
+   1
+  ],
+  [
+   "reseaux-sociaux:corrosion → reseaux-sociaux:desinformation",
+   1
+  ],
+  [
+   "reseaux-sociaux:moderation_regulation → reseaux-sociaux:desinformation",
+   1
+  ],
+  [
+   "calendriers-echeances:elections → calendriers-echeances:anticipations",
+   1
+  ],
+  [
+   "crime-organise:escroqueries_cyber → crime-organise:traite",
+   1
+  ],
+  [
+   "humain:opinion_publique → humain:opinion_publique",
+   1
+  ],
+  [
+   "humain:liens → humain:opinion_publique",
+   1
+  ],
+  [
+   "iran-nucleaire:sanctions → iran-nucleaire:societe_iranienne",
+   1
+  ],
+  [
+   "asie-du-nord-est:russie_coree → asie-du-nord-est:coree_du_nord",
+   1
+  ],
+  [
+   "transport-maritime:canal_panama",
+   1
+  ],
+  [
+   "humain:polarisation → humain:hierarchie",
+   1
+  ],
+  [
+   "humain:croyance_complot → humain:hierarchie",
+   1
+  ],
+  [
+   "transport-maritime:fleuves → transport-maritime:detroits",
+   1
+  ],
+  [
+   "transport-maritime:contournement → transport-maritime:fret",
+   1
+  ],
+  [
+   "transport-maritime:ports → transport-maritime:fret",
+   1
+  ],
+  [
+   "canada:energie_minerais_can",
+   1
+  ],
+  [
+   "canada:nord_canadien",
+   1
+  ],
+  [
+   "guerre-levant:yemen → guerre-levant:puissances",
+   1
+  ],
+  [
+   "transport-maritime:detroit_bab_el_mandeb",
+   1
+  ],
+  [
+   "economie-entreprises:echanges",
+   1
+  ],
+  [
+   "medias-diffusion:geants_mango → medias-diffusion:plateformes_sociales",
+   1
+  ],
+  [
+   "russie-ukraine:sols_agriculture → russie-ukraine:mer_noire",
+   1
+  ],
+  [
+   "corps-humain:nutrition",
+   1
+  ],
+  [
+   "organisations-internationales:clubs_puissances",
+   1
+  ],
+  [
+   "famille-genre:mariage",
+   1
+  ],
+  [
+   "soudan:soutiens → soudan:fsr",
+   1
+  ],
+  [
+   "dirigeants-elus:departs → dirigeants-elus:mandats_succession",
+   1
+  ],
+  [
+   "soleil-espace:debris → soleil-espace:satellites",
+   1
+  ],
+  [
+   "organisations-internationales:conseil_securite",
+   1
+  ],
+  [
+   "culture-memoire:restitutions → culture-memoire:usages_memoire",
+   1
+  ],
+  [
+   "afrique-subsaharienne:demographie_jeunesse",
+   1
   ]
  ],
  "note": "ce que la carte n'a pas pu lire sur le corpus résolu : à compléter petit à petit"
