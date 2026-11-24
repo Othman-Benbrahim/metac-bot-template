@@ -1,0 +1,302 @@
+{
+ "candidats": [
+  "CRO@7",
+  "EME@7",
+  "INC@7",
+  "CTR@7"
+ ],
+ "contre_candidate": [
+  "INC@7"
+ ],
+ "mots": [
+  {
+   "carte": "INC",
+   "strate": 7,
+   "intensite": "f",
+   "fait": "Entre septembre et octobre 2026, l'incertitude sur la participation d'officiels russes sanctionnés à des réunions G20 tenues sur le sol américain a été résolue par l'octroi d'accréditations/visas : Anton Siluanov (G20, Asheville, sept. 2026) et Sergey Lavrov (G20 ministres, Atlanta, 30–31 oct. 2026) ont été annoncés comme participant malgré leur statut sanctionné.",
+   "objet": "résolution d'incertitude sur l'entrée et l'accréditation d'officiels russes sanctionnés pour sommets tenus aux États-Unis",
+   "source": "NBC News (reportage sur Anton Siluanov à G20 Asheville, sept. 2026) ; NV.ua / EuromaidanPress (annonces de la venue de Sergey Lavrov pour la réunion des ministres des Affaires étrangères, 30–31 oct. 2026).",
+   "source_url": "https://www.nbcnews.com/news/us-news/russia-finance-minister-g20-bessent-meeting-ukraine-war-europe-rcna595474",
+   "date_consultation": "2026-11-24",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "NBC News (article, 2026-09)",
+     "relation": "soutient",
+     "extrait": "Allies bristle as sanctioned Russian finance minister attends G20 meeting in Asheville (sept. 2026)"
+    },
+    {
+     "localisation": "NV.ua / EuromaidanPress (annonces, 2026-10-29/30)",
+     "relation": "soutient",
+     "extrait": "Sanctioned Lavrov to travel to U.S. for G20 meeting; Russia's sanctioned top diplomat heads to the US"
+    }
+   ],
+   "test": "pistolet",
+   "contre_observation": "Des refus de visa ont aussi été signalés en 2026 (ex. le refus rapporté pour le vice-ministre russe Alexander Alimov en mai 2026 selon Reuters), montrant que les décisions demeurent discrétionnaires et cas par cas.",
+   "portee": "marginale",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "NBC (grande agence US) ; NV.ua et EuromaidanPress (médias distincts, couverture de la venue de Lavrov) : producteurs indépendants rapportant la présence de responsables russes sanctionnés dans des réunions tenues aux États-Unis."
+   },
+   "garantie": {
+    "mecanisme": "l'incertitude (sur l'octroi ou non d'accréditation/visa) organise les conduites des acteurs jusqu'à sa résolution : décisions hôtes/State Department/White House aboutissent à autorisations ponctuelles.",
+    "support": {
+     "type": "texte",
+     "reference": "comptes rendus contemporains des médias (NBC, NV.ua, EuromaidanPress) rapportant visas/accréditations accordés pour des fonctionnaires sanctionnés en 2026.",
+     "disponible_le": "2026-11-24"
+    },
+    "attendu": "communiqués officiels ou annonces médias confirmant qu'une autorité hôte a accordé une accréditation/visa en dépit de sanctions, après période d'incertitude.",
+    "contredirait": "un schéma où toutes les demandes sont systématiquement refusées sans exception (preuve qu'il n'y a plus d'incertitude à résoudre)."
+   },
+   "option": {
+    "acteur": "hôte (U.S. presidency / State Department)",
+    "avant": "laisser la participation en suspens ou refuser",
+    "apres": "accorder ponctuellement accréditations/visas changeant la conduite (participation effective)"
+   },
+   "a6": "CTR@7 : appui → (les décisions d'accréditation/visa sont l'outil par lequel l'incertitude se résout et « avertissent » l'état de la contrainte) ; EME@7 : → (aucun mécanisme d'apparition non centralisé observé, donc EME n'est pas soutenue par ces faits).",
+   "source_urls": [
+    "https://www.nbcnews.com/news/us-news/russia-finance-minister-g20-bessent-meeting-ukraine-war-europe-rcna595474",
+    "https://english.nv.ua/nation/sanctioned-lavrov-to-travel-to-u-s-for-g20-meeting-50654334.html",
+    "https://euromaidanpress.com/2026/10/29/russias-sanctioned-top-diplomat-heads-to-the-us-to-campaign-against-the-sanctions-on-its-war/"
+   ]
+  },
+  {
+   "carte": "CTR",
+   "strate": 7,
+   "intensite": "f",
+   "fait": "Pour des réunions G20 tenues aux États-Unis en 2026, des accréditations/visas ont été accordés à des officiels russes sanctionnés (ex. Anton Siluanov à Asheville, sept. 2026 ; Sergey Lavrov à la réunion des ministres G20, Atlanta, 30–31 oct. 2026), montrant que la contrainte d'accès a été levée ponctuellement pour ces événements.",
+   "objet": "levée ponctuelle des contraintes (visa/accréditation) pour officiels russes sanctionnés aux sommets US en 2026",
+   "source": "NBC News (Siluanov à G20 Asheville, sept. 2026) ; NV.ua / EuromaidanPress (Lavrov à Atlanta, oct. 2026).",
+   "source_url": "https://www.nbcnews.com/news/us-news/russia-finance-minister-g20-bessent-meeting-ukraine-war-europe-rcna595474",
+   "date_consultation": "2026-11-24",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "NBC News (reportage, 2026-09)",
+     "relation": "soutient",
+     "extrait": "Allies bristle as sanctioned Russian finance minister attends G20 meeting in Asheville"
+    },
+    {
+     "localisation": "EuromaidanPress / NV.ua (annonce, 2026-10-29/30)",
+     "relation": "soutient",
+     "extrait": "Sanctioned Lavrov to travel to U.S. for G20 meeting"
+    }
+   ],
+   "test": "cerceau",
+   "contre_observation": "Des refus de visa ont été rapportés (ex. le cas d'Alexander Alimov en mai 2026 selon Reuters), ce qui limite la portée d'une hypothèse de disparition générale des contraintes : les élevages d'exceptions apparaissent cas par cas.",
+   "portee": "marginale",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "NBC (US mainstream) ; NV.ua / EuromaidanPress (médias distincts couvrant la venue de Lavrov) : sources distinctes rapportant des accréditations/présences."
+   },
+   "garantie": {
+    "mecanisme": "l'hôte d'un sommet peut, par décision administrative (accréditation/visa), suspendre localement une contrainte et permettre la présence d'un officiel sanctionné pour la durée et le lieu de l'événement.",
+    "support": {
+     "type": "texte",
+     "reference": "articles de presse contemporains documentant la présence de responsables sanctionnés aux réunions G20 aux États-Unis en 2026.",
+     "disponible_le": "2026-11-24"
+    },
+    "attendu": "annonce d'accréditation/présence signale qu'une contrainte a été levée pour un événement donné ; la généralisation exigerait preuve d'une politique systématique.",
+    "contredirait": "preuves de refus constants et automatiques d'accréditation/visa pour tous officiels sanctionnés sans exception."
+   },
+   "option": {
+    "acteur": "State Department / hôte du sommet",
+    "avant": "appliquer restrictions de facto/administratives",
+    "apres": "accorder exemption ponctuelle pour la durée/lieu du sommet"
+   },
+   "source_urls": [
+    "https://www.nbcnews.com/news/us-news/russia-finance-minister-g20-bessent-meeting-ukraine-war-europe-rcna595474",
+    "https://english.nv.ua/nation/sanctioned-lavrov-to-travel-to-u-s-for-g20-meeting-50654334.html",
+    "https://euromaidanpress.com/2026/10/29/russias-sanctioned-top-diplomat-heads-to-the-us-to-campaign-against-the-sanctions-on-its-war/"
+   ]
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "D'ici le 2026-12-31, le ministère d'État / la présidence américaine publiera-t-il une liste officielle des participants accrédités au Sommet des dirigeants G20 en Floride incluant explicitement Sergey Lavrov (nom, titre, dates et lieu) ?",
+   "si_oui": "CTR@7",
+   "si_non": "INC@7",
+   "resolution": "publication officielle (communiqué du State Department, liste d'accrédités de l'hôte du sommet, ou communiqué du G20/présidence américaine) datée entre 2026-11-30 et 2026-12-31 indiquant Sergey Lavrov comme accrédité et physiquement prévu en Floride.",
+   "justification": {
+    "oui": "une liste officielle et datée montrant Lavrov accrédité pour le sommet en Floride constituerait une preuve publique que la contrainte (visa/accréditation) a été levée pour cet événement — réalisation directe de CTR@7 disparait pour la fenêtre temporelle visée.",
+    "non": "l'absence d'une telle publication (ou une publication listant explicitement l'absence de Lavrov) maintiendrait l'incertitude sur l'octroi d'accréditation/visa pour la Floride et signale que la contrainte n'a pas disparu ou n'a pas été levée publiquement pour cet événement."
+   },
+   "statut": "ouverte",
+   "date": "2026-11-24"
+  }
+ ],
+ "rejets": {
+  "CRO@7": "[marqueur_non_rempli] [marqueur_non_rempli] Les résultats fournis mentionnent des réunions bilatérales et exceptions ponctuelles (2025-2026) mais n'établissent pas une série datée montrant une croissance soutenue d'échanges de haut niveau entre États-Unis et Russie qui précède systématiquement la levée des contraintes ; aucun marqueur observable de CROISSANCE (hausse mesurée et accélérante sur une série datée) n'est présent.",
+  "EME@7": "[marqueur_non_rempli] [marqueur_non_rempli] Aucun des faits fournis n'indique l'apparition spontanée d'une régularité collective non prescrite par une autorité centrale (marqueurs de l'ÉMERGENCE). Les changements documentés (visas accordés/ refués) relèvent d'actes d'instances centrales (hôtes, administrations, décisions politiques)."
+ },
+ "_categories_rejet": {
+  "CRO@7": "marqueur_non_rempli",
+  "EME@7": "marqueur_non_rempli"
+ },
+ "_details_rejet": {},
+ "etat": "[2026-11-24 | 38 jours] INCERTITUDE@7[f] + CONTRAINTE@7[f]",
+ "disponible_le": "2026-11-24",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@7",
+    "CTR@7"
+   ],
+   "requete": "Incidence 2000-2026 of sustained increases in high-level diplomatic exchanges (ministerial visits, bilateral meetings) between Russia and the United States being followed by easing or removal of U.S. travel/accreditation restrictions for Russian officials",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@7",
+    "CTR@7"
+   ],
+   "requete": "Between 2000 and 2026, are removals or easings of U.S. travel/accreditation constraints for foreign officials more often preceded by gradual growth in diplomatic engagement than by other causes?",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@7",
+    "CTR@7"
+   ],
+   "requete": "Cases 2000-2026 where increases in bilateral diplomatic activity did NOT lead to lifting of U.S. travel or accreditation constraints for sanctioned officials",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "EME@7",
+    "CTR@7"
+   ],
+   "requete": "Instances 2000-2026 where sudden emergent political events or unexpected diplomatic openings led to U.S. waiving or easing visa/accreditation constraints for foreign officials to attend summits hosted on U.S. soil",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@7",
+    "CTR@7"
+   ],
+   "requete": "From 2000 to 2026, when travel/accreditation constraints were removed for summit attendance, how often was the proximal cause a sudden emergent political event versus planned diplomatic processes?",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "EME@7",
+    "CTR@7"
+   ],
+   "requete": "Episodes 2000-2026 where emergent diplomatic opportunities occurred but the U.S. maintained travel or accreditation restrictions for the foreign state's officials",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@7",
+    "CTR@7"
+   ],
+   "requete": "Frequency 2000-2026 of cases where initial uncertainty about a sanctioned official's attendance at a U.S.-hosted summit was resolved in time by granting accreditation or visa",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "INC@7",
+    "CTR@7"
+   ],
+   "requete": "Between 2000 and 2026, did resolution of attendance uncertainty (e.g., last-minute confirmations) account for more cases of constraints being lifted than systematic policy or bilateral engagement?",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@7",
+    "CTR@7"
+   ],
+   "requete": "Cases 2000-2026 where uncertainty about a sanctioned official's potential attendance persisted until the event and resulted in refusal of entry or maintained restrictions",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@7",
+    "EME@7"
+   ],
+   "requete": "Comparative cases 2000-2026 where either gradual growth in diplomatic engagement or sudden emergent political events were the proximal cause for removal of U.S. travel/accreditation restrictions for foreign officials",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@7",
+    "INC@7"
+   ],
+   "requete": "Comparative cases 2000-2026 where either sustained growth in contacts or late resolution of attendance uncertainty led to visas/accreditations being issued to sanctioned officials for U.S.-hosted summits",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@7",
+    "INC@7"
+   ],
+   "requete": "Comparative cases 2000-2026 where either emergent diplomatic openings or clarified commitments resolved uncertainty and led to lifting of travel/accreditation constraints for summit attendance",
+   "executee": true,
+   "date_execution": "2026-11-24"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "CONTRAINTE@7 disparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "programmee",
+   "resolution": "La question résoudra à OUI si une source crédible publie que Sergey Lavrov a été physiquement présent sur le sol de la Floride à un moment entre le 1er décembre 2026 et le 31 décembre 2026 (inclusion d'aéroports et lieux terrestres ; exclusions : espace aérien, eaux, apparitions virtuelles).",
+   "source_resolution": {
+    "emetteur": "Metaculus (FAQ / définition des sources crédibles)",
+    "document": "https://www.metaculus.com/faq/#definitions (définition de « credible sources » et de ce qui compte comme présence physique)",
+    "regle_ambiguite": "Pour déclarer OUI, il faut une annonce publique crédible ou une confirmation officielle indiquant la présence physique de Lavrov en Floride pendant la fenêtre. Les rapports contradictoires exigeraient confirmation supplémentaire ; les apparitions virtuelles, sur vols au-dessus de l'État ou en eaux territoriales ne comptent pas."
+   },
+   "vue_exterieure": {
+    "frequence": 0.015297606175691425,
+    "classe_de_reference": "{\n \"classe_de_reference\": \"Visites physiques sur le territoire d'un État américain par un ministre des Affaires étrangères sanctionné (événements de déplacement personnel confirmés par sources crédibles), i.e. le même TYPE d'événement que la question (déplacement individuel de Sergey Lavrov en Floride pendant la fenêtre de résolution).\",\n \"unite\": \"Une occurrence = une visite personnelle et physiquement confirmée de Sergey Lavrov dans l'État de Floride pendant la fenêtre visée (après le 30/11/2026 et avant le 01/01/2027). Ne sont pas comptés : annonces/plans non réalisés, visites virtuelles, déplacements d'autres personnes, ou présences hors de la fenêtre ou hors de Floride.\",\n \"population\": \"Instances historiques (2000–2026) de visites physiques sur le sol américain par ministres des Affaires étrangères de pays sanctionnés (cas comparables), le dénominateur étant l'ensemble de ces événements observés sur la période 2000–2026 (ou, pour une estimation centrée sur la même personne, toutes les visites de Sergey Lavrov aux États-Unis en 2000–2026).\",\n \"periode\": \"2000-2026\",\n \"mise_a_l_echelle\": \"Estimer le taux moyen d'occurrence sur la période (nombre_total_de_cas / nombre_total_de_jours_de_2000_à_2026), obtenir rate_jour, puis convertir en probabilité pour une fenêtre de 38 jours en supposant un processus de Poisson : p = 1 - exp(- rate_jour * 38). Pour taux très faibles on peut approximer p ≈ rate_annuel * (38/365).\",\n \"sources_visees\": \"[R1], [R2]\"\n}",
+    "source": "R1 (compilation d'occurrences : visites de ministres des Affaires étrangères sanctionnés sur le sol US 2000–2026) ; appui contextuel R2 (exemples de dérogations/arrangements de visa)",
+    "periode": "2000-2026",
+    "disponible_le": "2026-11-24",
+    "classe_alternative": {
+     "frequence": 0.00384,
+     "classe_de_reference": "Toutes les visites historiques de Sergey Lavrov (personne spécifique) physiquement sur le sol des États‑Unis, 2000–2026",
+     "source": "R1 (mention explicite d'au moins une visite de Sergey Lavrov aux États-Unis en 2026 : Atlanta, 30–31 octobre 2026)",
+     "pourquoi_ecartee": "Classe alternative plus étroite (se limite à une seule personne) ; très peu d'événements observés (n=1), donc forte incertitude statistique et petit-n problem — moins robuste pour estimer une probabilité sur la fenêtre."
+    },
+    "ecart_critere": "La classe utilisée compte visites de tout ministre des Affaires étrangères sanctionné sur l'ensemble du territoire américain; la question porte sur UNE personne (Sergey Lavrov) ET un État particulier (Floride) pendant 38 jours. Ainsi la classe inclut événements géographiquement et individuellement différents (over‑inclusive géographiquement et en terme d'acteurs), ce qui tends à surestimer la probabilité spécifique pour Lavrov en Floride. De plus, le comptage historique est très petit (n≈4) et hétérogène (différentes circonstances, sommets, dérogations)."
+   },
+   "programmation": {
+    "qui": "L'hôte du sommet (présidence/State Department des États-Unis) a la capacité d'accorder accreditation/visa et d'autoriser la présence sur le sol américain; le ministère russe des Affaires étrangères et la présidence russe ont la capacité de décider d'envoyer personnellement le ministre et d'annoncer le déplacement; les organisateurs du G20 (présidence américaine) peuvent publier la liste des participants et faciliter les accès.",
+    "engagement": "On reconnaîtra un engagement par des éléments publics : invitation officielle ou calendrier du sommet publié par les États-Unis (dates et lieu), délivrance d'accréditations/visas ou listes d'accrédités publiées, déclarations officielles du ministère russe des Affaires étrangères ou du Kremlin annonçant la décision d'envoyer Sergey Lavrov, et communications de l'hôte confirmant l'accréditation."
+   }
+  }
+ ],
+ "_reparations": [
+  "INC : source_url donnée en liste → première adresse",
+  "CTR : source_url donnée en liste → première adresse",
+  "recherche « Comparative cases 2000-2026 where either » : cartes ramenées à CRO@7, EME@7",
+  "recherche « Comparative cases 2000-2026 where either » : cartes ramenées à CRO@7, INC@7",
+  "recherche « Comparative cases 2000-2026 where either » : cartes ramenées à EME@7, INC@7"
+ ]
+}
