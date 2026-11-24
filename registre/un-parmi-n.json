@@ -1,0 +1,1628 @@
+{
+ "resume": {
+  "n": 269,
+  "groupes": 32,
+  "oui": 33,
+  "somme_1_sur_N": 19.5,
+  "perte_reference": 0.3764,
+  "perte_regle": 0.4143,
+  "perte_melange_plafonne": 0.375,
+  "brancher": false
+ },
+ "lignes": [
+  {
+   "titre": "Will England win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will the Toronto Maple Leafs win the 2025 Stanley Cup?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Stanley Cup|2025"
+  },
+  {
+   "titre": "Will Latvia win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Montenegro win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Italy win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Germany win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Denmark win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Real Madrid win La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|"
+  },
+  {
+   "titre": "Will Netherlands win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the LA Clippers win the Western Conference?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|"
+  },
+  {
+   "titre": "Will Albania win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the New York Knicks win the Eastern Conference?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|"
+  },
+  {
+   "titre": "Will Greece win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Malta win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Bayern Munich win the 2024/25 Bundesliga?",
+   "y": 1,
+   "n": 18,
+   "groupe": "Bundesliga|Ligue 1|2024"
+  },
+  {
+   "titre": "Will Cyprus win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Dallas Stars win the 2025 Stanley Cup?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Stanley Cup|2025"
+  },
+  {
+   "titre": "Will Australia win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Real Betis win La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|"
+  },
+  {
+   "titre": "Will the Atlanta Braves win the 2025 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2025"
+  },
+  {
+   "titre": "Will Czechia win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Aston Villa win the UEFA Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|"
+  },
+  {
+   "titre": "Will Luxembourg win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Azerbaijan win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Lithuania win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Manchester City win the 2024/25 Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2024"
+  },
+  {
+   "titre": "Will Napoli win the 2024/25 Serie A?",
+   "y": 1,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2024"
+  },
+  {
+   "titre": "Boston Celtics win the 2025 NBA Championship",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2025"
+  },
+  {
+   "titre": "Will Iceland win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Spain win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Croatia win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Serbia win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Washington Capitals win the 2025 Stanley Cup?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Stanley Cup|2025"
+  },
+  {
+   "titre": "Will the Philadelphia Eagles win Super Bowl LX?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|"
+  },
+  {
+   "titre": "Will Ireland win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will Ukraine win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Punjab Kings win the 2025 Indian Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will the Boston Celtics win the Eastern Conference?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|"
+  },
+  {
+   "titre": "Will the Chicago White Sox win the 2025 American League Championship?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will the Sacramento Kings win the Western Conference?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|"
+  },
+  {
+   "titre": "Will the Rajasthan Royals win the 2025 Indian Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Slovenia win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Kolkata Knight Riders win the 2025 Indian Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will France win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Washington Nationals win the 2025 National League Championship?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will Bayern Munich win the Bundesliga?",
+   "y": 1,
+   "n": 18,
+   "groupe": "Bundesliga|Ligue 1|"
+  },
+  {
+   "titre": "Will Portugal win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Gujarat Titans win the 2025 Indian Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will the Miami Heat win the 2025 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2025"
+  },
+  {
+   "titre": "Will the Cleveland Cavaliers win the 2025 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2025"
+  },
+  {
+   "titre": "Will Lazio win the Serie A?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|"
+  },
+  {
+   "titre": "Will the Los Angeles Dodgers win the 2025 National League Championship?",
+   "y": 1,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will Israel win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Pittsburgh Pirates win the 2025 National League Championship?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will United Kingdom win Eurovision 2025?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Toronto Blue Jays win the 2025 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2025"
+  },
+  {
+   "titre": "Will the Baltimore Orioles win the 2025 American League Championship?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will the San Diego Padres win the 2025 National League Championship?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will the Florida Panthers win the 2025 Stanley Cup?",
+   "y": 1,
+   "n": 32,
+   "groupe": "Stanley Cup|2025"
+  },
+  {
+   "titre": "Will Austria win Eurovision 2025?",
+   "y": 1,
+   "n": 37,
+   "groupe": "Eurovision|2025"
+  },
+  {
+   "titre": "Will the Bengals win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will the Pittsburgh Pirates win the NL Central Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|"
+  },
+  {
+   "titre": "Will the Los Angeles Angels win the 2025 American League Championship?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will Inter Milan win the UEFA Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|"
+  },
+  {
+   "titre": "Will the Jets win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will Darius Garland Win the 2025 NBA Finals MVP?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2025"
+  },
+  {
+   "titre": "Will the Pittsburgh Pirates win the 2025 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2025"
+  },
+  {
+   "titre": "Will the Oklahoma City Thunder win the 2025 NBA Finals?",
+   "y": 1,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2025"
+  },
+  {
+   "titre": "Will Chet Holmgren Win the 2025 NBA Finals MVP?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2025"
+  },
+  {
+   "titre": "Will the Seattle Mariners win the 2025 American League Championship?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2025"
+  },
+  {
+   "titre": "Will the Saints win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will Shai Gilgeous-Alexander Win the 2025 NBA Finals MVP?",
+   "y": 1,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2025"
+  },
+  {
+   "titre": "Will Shrinking win the Emmy for Outstanding Comedy Series?",
+   "y": 0,
+   "n": 8,
+   "groupe": "Emmy.*Outstanding (Comedy|Drama|Limited) Series|"
+  },
+  {
+   "titre": "Will What We Do in the Shadows win the Emmy for Outstanding Comedy Series?",
+   "y": 0,
+   "n": 8,
+   "groupe": "Emmy.*Outstanding (Comedy|Drama|Limited) Series|"
+  },
+  {
+   "titre": "Will Only Murders in the Building win the Emmy for Outstanding Comedy Series?",
+   "y": 0,
+   "n": 8,
+   "groupe": "Emmy.*Outstanding (Comedy|Drama|Limited) Series|"
+  },
+  {
+   "titre": "Will the Cleveland Guardians win the 2025 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2025"
+  },
+  {
+   "titre": "Will the Buccaneers win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will the San Antonio Spurs win the 2026 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will The Last of Us win the Emmy for Outstanding Drama Series?",
+   "y": 0,
+   "n": 8,
+   "groupe": "Emmy.*Outstanding (Comedy|Drama|Limited) Series|"
+  },
+  {
+   "titre": "Will the Eagles win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will Monsters: The Lyle and Erik Menendez Story win the Emmy for Outstanding Limited or Anthology Series?",
+   "y": 0,
+   "n": 6,
+   "groupe": "Emmy|"
+  },
+  {
+   "titre": "Will the San Francisco 49ers win Super Bowl LX?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|"
+  },
+  {
+   "titre": "Will The Bear win the Emmy for Outstanding Comedy Series?",
+   "y": 0,
+   "n": 8,
+   "groupe": "Emmy.*Outstanding (Comedy|Drama|Limited) Series|"
+  },
+  {
+   "titre": "Will Slow Horses win the Emmy for Outstanding Drama Series?",
+   "y": 0,
+   "n": 8,
+   "groupe": "Emmy.*Outstanding (Comedy|Drama|Limited) Series|"
+  },
+  {
+   "titre": "Will Keri Russell win the Emmy for Outstanding Lead Actress in a Drama Series?",
+   "y": 0,
+   "n": 6,
+   "groupe": "Emmy|"
+  },
+  {
+   "titre": "Will Nice win the 2025–26 French Ligue 1?",
+   "y": 0,
+   "n": 18,
+   "groupe": "Bundesliga|Ligue 1|2025"
+  },
+  {
+   "titre": "Will Leeds win the 2025–26 English Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Slavia Pragu win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Sterling K Brown win the Emmy for Outstanding Lead Actor in a Drama Series?",
+   "y": 0,
+   "n": 6,
+   "groupe": "Emmy|"
+  },
+  {
+   "titre": "Will Japan win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Nobody Wants This win the Emmy for Outstanding Comedy Series?",
+   "y": 0,
+   "n": 8,
+   "groupe": "Emmy.*Outstanding (Comedy|Drama|Limited) Series|"
+  },
+  {
+   "titre": "Will the Toronto Raptors win the 2026 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will Jason Segel win the Emmy for Outstanding Lead Actor in a Comedy Series?",
+   "y": 0,
+   "n": 6,
+   "groupe": "Emmy|"
+  },
+  {
+   "titre": "Will the Montreal Canadiens win the 2026 NHL Stanley Cup?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Stanley Cup|2026"
+  },
+  {
+   "titre": "Will Getafe win the 2025–26 La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Black Mirror win the Emmy for Outstanding Limited or Anthology Series?",
+   "y": 0,
+   "n": 6,
+   "groupe": "Emmy|"
+  },
+  {
+   "titre": "Will the Baltimore Ravens win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will Chelsea win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Galatasaray win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will the Kansas City Chiefs win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will Avatar: Fire and Ash win Best Picture at the 98th Academy Awards?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will Le Havre win the 2025–26 French Ligue 1?",
+   "y": 0,
+   "n": 18,
+   "groupe": "Bundesliga|Ligue 1|2025"
+  },
+  {
+   "titre": "Will Canada win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will the Pittsburgh Penguins win the 2026 NHL Stanley Cup?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Stanley Cup|2026"
+  },
+  {
+   "titre": "Will Valencia win the 2025–26 La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Club Brugge win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Peru win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Crystal Palace win the 2025–26 English Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will the Indiana Pacers win the 2025–2026 NBA Central Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will the Washington Commanders win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will Sentimental Value win Best Picture at the 98th Academy Awards?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will Springsteen: Deliver Me from Nowhere win Best Production Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will the Philadelphia Eagles win Super Bowl 2026?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|2026"
+  },
+  {
+   "titre": "Will Highest 2 Lowest win Best Makeup and Hairstyling at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Frankenstein win Best Film Editing at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will The Fantastic Four: First Steps win Best Costume Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Adam Sandler win Best Supporting Actor at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Ecuador win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will The Smashing Machine win Best Film Editing at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Hedda win Best Production Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will the Detroit Pistons win the 2026 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will Chloé Zhao win Best Director at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Frankenstein win Best Adapted Screenplay at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Laura Dern win Best Supporting Actress at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Sevilla win the 2025–26 La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Nouvelle Vague win Best Production Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Osasuna win the 2025–26 La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Australia win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Christy win Best Makeup and Hairstyling at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Train Dreams win Best Adapted Screenplay at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Emily Blunt win Best Actress at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Wicked: For Good win Best Adapted Screenplay at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Kate Hudson win Best Actress at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Cynthia Erivo win Best Actress at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Napoli win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Bugonia win Best Picture at the 98th Academy Awards?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will Marseille win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Napoli win the 2025–26 Serie A league?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Bugonia win Best Film Editing at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Springsteen: Deliver Me from Nowhere win Best Costume Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Marty Supreme win Best Production Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will F1: The Movie win Best Film Editing at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Qatar win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Israel win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Udinese win the 2025–26 Serie A league?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will It Was Just an Accident win Best Film Editing at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Ukraine win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Sentimental Value win Best Film Editing at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will the Charlotte Hornets win the 2025–2026 NBA Southeast Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Avatar: Fire and Ash win Best Production Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Ryan Coogler win Best Director at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Arsenal win the 2025–26 English Premier League?",
+   "y": 1,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Sinners win Best Picture at the 98th Academy Awards?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will Learner Tien win the 2026 Australian Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Bugonia win Best Costume Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Frankenstein win Best Picture at the 98th Academy Awards?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will the Detroit Pistons win the 2025–2026 NBA Central Division?",
+   "y": 1,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Snow White win Best Costume Design at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will the Washington Wizards win the 2025–2026 NBA Southeast Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Emma Stone win Best Actress at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Fiorentina win the 2025–26 Serie A league?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Giovanni Mpetshi Perricard win the 2026 Australian Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Curaçao win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will France win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Wagner Moura win Best Actor at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will the Oklahoma City Thunder win the 2026 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will Mexico win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will the Los Angeles Lakers win the 2026 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will Elle Fanning win Best Supporting Actress at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Wagner Moura win the Academy Award for Best Actor at the 2026 Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|2026"
+  },
+  {
+   "titre": "Will Leverkusen win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will the Orlando Magic win the 2025–2026 NBA Southeast Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Azerbaijan win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Montenegro win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Latvia win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will the Atlanta Braves win the 2026 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2026"
+  },
+  {
+   "titre": "Will Oviedo win the 2025–26 La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will the Chicago Bulls win the 2025–2026 NBA Central Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will the Sacramento Kings win the 2026 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will Timothée Chalamet win Best Actor at the 98th Academy Awards?",
+   "y": 0,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "\"Hamnet\" wins Best Picture?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "\"One Battle After Another\" wins Best Picture?",
+   "y": 1,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will Bodo Glimt win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Paul Thomas Anderson win Best Director at the 98th Academy Awards?",
+   "y": 1,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will Marty Supreme win Best Picture at the 98th Academy Awards?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will Nott'm Forest win the 2025-26 UEFA Europa League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will the Miami Heat win the 2025–2026 NBA Southeast Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will the San Antonio Spurs win the 2025–2026 NBA Southwest Division?",
+   "y": 1,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Amy Madigan win Best Supporting Actress at the 98th Academy Awards?",
+   "y": 1,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will the Houston Rockets win the 2025–2026 NBA Southwest Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will the Denver Nuggets win the 2025–2026 NBA Northwest Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will the Phoenix Suns win the 2025–2026 NBA Pacific Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Aston Villa win the 2025-26 UEFA Europa League?",
+   "y": 1,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Real Madrid win the 2025–26 La Liga?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will the Los Angeles Lakers win the 2025–2026 NBA Pacific Division?",
+   "y": 1,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Sean Penn win Best Supporting Actor at the 98th Academy Awards?",
+   "y": 1,
+   "n": 5,
+   "groupe": "Academy Awards|Oscar|"
+  },
+  {
+   "titre": "Will the Boston Celtics win the 2025–2026 NBA Atlantic Division?",
+   "y": 1,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|2025-2026"
+  },
+  {
+   "titre": "Will Hamnet win Best Picture at the 98th Academy Awards?",
+   "y": 0,
+   "n": 10,
+   "groupe": "Best Picture|"
+  },
+  {
+   "titre": "Will Manchester City win the 2025–26 English Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Israel wins Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Brazil win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will the Denver Nuggets win the 2026 NBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will the Vegas Golden Knights win the Pacific Division?",
+   "y": 1,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|"
+  },
+  {
+   "titre": "Will the Tampa Bay Lightning win the Atlantic Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|"
+  },
+  {
+   "titre": "Will the Carolina Hurricanes win the Metropolitan Division?",
+   "y": 1,
+   "n": 8,
+   "groupe": "Metropolitan Division|"
+  },
+  {
+   "titre": "Will Barcelona win La Liga 2025–26?",
+   "y": 1,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will PSG win the 2025–26 French Ligue 1?",
+   "y": 1,
+   "n": 18,
+   "groupe": "Bundesliga|Ligue 1|2025"
+  },
+  {
+   "titre": "Will Real Madrid win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Arsenal win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will the Buffalo Sabres win the 2026 NHL Stanley Cup?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Stanley Cup|2026"
+  },
+  {
+   "titre": "Will Finland win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Porto win the 2025-26 UEFA Europa League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Bologna win the 2025-26 UEFA Europa League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Bayern Munich win the 2025–26 Champions League?",
+   "y": 0,
+   "n": 36,
+   "groupe": "Champions League|Europa League|2025"
+  },
+  {
+   "titre": "Will Greece win the televote for Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Carlos Alcaraz win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will the Edmonton Oilers win the Pacific Division?",
+   "y": 0,
+   "n": 5,
+   "groupe": "NBA .*Division|Southwest Division|Southeast Division|Northwest Division|Atlantic Division|Central Division|Pacific Division|"
+  },
+  {
+   "titre": "Will Bayern Munich win the 2025–26 Bundesliga?",
+   "y": 1,
+   "n": 18,
+   "groupe": "Bundesliga|Ligue 1|2025"
+  },
+  {
+   "titre": "Will the champions of Super Bowl LX visit the White House after their win?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Super Bowl|NFL championship|"
+  },
+  {
+   "titre": "Will Barcelona win the 2025–26 La Liga?",
+   "y": 1,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2025"
+  },
+  {
+   "titre": "Will Denmark win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Mumbai Indians win the 2026 Indian Premier League?",
+   "y": 0,
+   "n": 20,
+   "groupe": "Premier League|La ?Liga|Serie A|2026"
+  },
+  {
+   "titre": "Will Australia win Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will the Buffalo Sabres win the Eastern Conference?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|"
+  },
+  {
+   "titre": "Will Carlos Alcaraz win the 2026 Men's French Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Finland win the televote for Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will Jannik Sinner win the 2026 Men's French Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Brazil win Group C in the 2026 FIFA World Cup?",
+   "y": 1,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Israel win the televote for Eurovision 2026?",
+   "y": 0,
+   "n": 37,
+   "groupe": "Eurovision|2026"
+  },
+  {
+   "titre": "Will France win Group I in the 2026 FIFA World Cup?",
+   "y": 1,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will the Oklahoma City Thunder win 2026 NBA Finals",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will the Vegas Golden Knights win the Western Conference?",
+   "y": 1,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|"
+  },
+  {
+   "titre": "Will Norway win Group I in the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Japan win Group F in the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will the Carolina Hurricanes win the 2026 NHL Stanley Cup?",
+   "y": 1,
+   "n": 32,
+   "groupe": "Stanley Cup|2026"
+  },
+  {
+   "titre": "Will Argentina win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will the Vegas Golden Knights win the 2026 NHL Stanley Cup?",
+   "y": 0,
+   "n": 32,
+   "groupe": "Stanley Cup|2026"
+  },
+  {
+   "titre": "Will Iraq win Group I in the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Argentina win Group J in the 2026 FIFA World Cup?",
+   "y": 1,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Tampa Bay Rays win the 2026 American League Championship Series?",
+   "y": 1,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2026"
+  },
+  {
+   "titre": "Will Iran win Group G in the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Australia win Group D in the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Jakub Mensik win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will the New York Mets win the 2026 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2026"
+  },
+  {
+   "titre": "Will Netherlands win Group F in the 2026 FIFA World Cup?",
+   "y": 1,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Elena Rybakina win the 2026 Women’s US Open?",
+   "y": 1,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Jannik Sinner win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Norway win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will USA win the 2026 FIFA World Cup?",
+   "y": 0,
+   "n": 48,
+   "groupe": "FIFA World Cup|2026"
+  },
+  {
+   "titre": "Will Elina Svitolina win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Novak Djokovic win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Taylor Fritz win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Daniil Medvedev win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Alexander Zverev win the 2026 Men's US Open?",
+   "y": 1,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Mirra Andreeva win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Ben Shelton win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Amanda Anisimova win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Jessica Pegula win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Madison Keys win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Naomi Osaka win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Alexandra Eala win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Coco Gauff win the 2026 Women’s US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Los Angeles Dodgers win the 2026 National League Championship Series?",
+   "y": 0,
+   "n": 15,
+   "groupe": "Western Conference|Eastern Conference|National League Championship|American League Championship|2026"
+  },
+  {
+   "titre": "Will Joao Fonseca win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will Felix Auger Aliassime win the 2026 Men's US Open?",
+   "y": 0,
+   "n": 128,
+   "groupe": "Australian Open|French Open|Roland Garros|Wimbledon|US Open|2026"
+  },
+  {
+   "titre": "Will the Los Angeles Dodgers win the 2026 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2026"
+  },
+  {
+   "titre": "Will the Philadelphia Phillies win the 2026 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2026"
+  },
+  {
+   "titre": "Will Minnesota Lynx win the 2026 WNBA Finals?",
+   "y": 0,
+   "n": 30,
+   "groupe": "NBA Finals|NBA champion|2026"
+  },
+  {
+   "titre": "Will Los Angeles Dodgers win the 2026 World Series?",
+   "y": 0,
+   "n": 30,
+   "groupe": "World Series|2026"
+  }
+ ]
+}
