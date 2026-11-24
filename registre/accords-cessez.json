@@ -1,0 +1,401 @@
+{
+ "resume": {
+  "n": 24,
+  "famille": 58,
+  "classes": {
+   "cessez_le_feu": {
+    "n": 17,
+    "oui": 6,
+    "perte_reference": 0.7073,
+    "perte_regle": 0.669,
+    "perte_melange": 0.6578,
+    "n_2026": 9,
+    "perte_reference_2026": 0.8921,
+    "perte_regle_2026": 1.0605,
+    "brancher": false
+   },
+   "tenue": {
+    "n": 7,
+    "oui": 4,
+    "perte_reference": 0.8568,
+    "perte_regle": 0.9099,
+    "perte_melange": 0.7884,
+    "n_2026": 5,
+    "perte_reference_2026": 1.0602,
+    "perte_regle_2026": 1.2509,
+    "brancher": false
+   }
+  },
+  "mesure_au_2026_11_24": {
+   "conclusion_par_an": [
+    0.909,
+    0.382
+   ],
+   "conclusion_ev_ex": [
+    [
+     194,
+     672
+    ],
+    [
+     77951,
+     642180
+    ]
+   ],
+   "echec_par_an": [
+    0.932,
+    0.14,
+    0.007
+   ],
+   "echec_ev_ex": [
+    [
+     70,
+     16,
+     7
+    ],
+    [
+     27433,
+     41718,
+     387802
+    ]
+   ]
+  }
+ },
+ "lignes": [
+  {
+   "titre": "Will the Houthi movement and Yemen reach a ceasefire that is in effect on 31 December 2024 and lasts at least six months?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Houthi Yemen",
+   "p": 0.1568,
+   "ref": 0.3333,
+   "mel": 0.2808,
+   "guerre": "yemen_houthis",
+   "etat": "guerre",
+   "age": 658,
+   "type": "interne"
+  },
+  {
+   "titre": "Will there be a ceasefire in Gaza by Eoy 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Eoy Gaza",
+   "p": 0.2454,
+   "ref": 0.3333,
+   "mel": 0.3099,
+   "guerre": "israel_hamas",
+   "etat": "guerre",
+   "age": 288,
+   "type": "interne"
+  },
+  {
+   "titre": "Israel x Hamas ceasefire before September?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Hamas Israel",
+   "p": 0.0992,
+   "ref": 0.3214,
+   "mel": 0.2475,
+   "guerre": "israel_hamas",
+   "etat": "guerre",
+   "age": 288,
+   "type": "interne"
+  },
+  {
+   "titre": "Ceasefire between Russia and Ukraine before October?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Ceasefire Russia Ukraine",
+   "p": 0.0726,
+   "ref": 0.3333,
+   "mel": 0.2392,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 878,
+   "type": "inter"
+  },
+  {
+   "titre": "Russia-Ukraine Ceasefire in Trump's First 90 Days?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Ceasefire Days First Russia-Ukraine Trump",
+   "p": 0.0217,
+   "ref": 0.3333,
+   "mel": 0.1867,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 1130,
+   "type": "inter"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire in 2025?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Russia Ukraine",
+   "p": 0.2172,
+   "ref": 0.3462,
+   "mel": 0.3106,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 1172,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Hamas ceasefire before 2026?",
+   "jeu": "2025-06-08",
+   "y": 1,
+   "classe": "cessez_le_feu",
+   "groupe": "Hamas Israel",
+   "p": 0.4026,
+   "ref": 0.3214,
+   "mel": 0.3409,
+   "guerre": "israel_hamas",
+   "etat": "guerre",
+   "age": 82,
+   "type": "interne"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire before July?",
+   "jeu": "2025-06-22",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Russia Ukraine",
+   "p": 0.0094,
+   "ref": 0.3462,
+   "mel": 0.1962,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 1214,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by December 31?",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.0902,
+   "ref": 0.2941,
+   "mel": 0.2254,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 68,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by October 31?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.0019,
+   "ref": 0.2941,
+   "mel": 0.1441,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 124,
+   "type": "inter"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire by March 31, 2026?",
+   "jeu": "2026-01-04",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Russia Ukraine",
+   "p": 0.0861,
+   "ref": 0.3462,
+   "mel": 0.2558,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 1410,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by June 30, 2026?",
+   "jeu": "2026-01-04",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.0636,
+   "ref": 0.2941,
+   "mel": 0.2093,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 194,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire broken by March 31, 2026?",
+   "jeu": "2026-01-04",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.0324,
+   "ref": 0.2941,
+   "mel": 0.1816,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 194,
+   "type": "inter"
+  },
+  {
+   "titre": "Will the ceasefire between the U.S. and Yemen’s Houthis mediated by Oman be broken before June 2026?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "classe": "tenue",
+   "groupe": "Houthis Oman Yemen",
+   "p": 0.0255,
+   "ref": 0.3333,
+   "mel": 0.1929,
+   "guerre": "etats_unis_houthis",
+   "etat": "cessez",
+   "age": 299,
+   "type": "interne"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire by end of 2026?",
+   "jeu": "2026-03-01",
+   "y": 1,
+   "classe": "cessez_le_feu",
+   "groupe": "Russia Ukraine",
+   "p": 0.2732,
+   "ref": 0.3462,
+   "mel": 0.3271,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 1466,
+   "type": "inter"
+  },
+  {
+   "titre": "USA x Iran ceasefire by end of march 31?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Iran USA",
+   "p": 0.039,
+   "ref": 0.3333,
+   "mel": 0.2107,
+   "guerre": "etats_unis_iran",
+   "etat": "guerre",
+   "age": 15,
+   "type": "inter"
+  },
+  {
+   "titre": "Will the US and Iran agree to a ceasefire before May 2026?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "classe": "cessez_le_feu",
+   "groupe": "Iran US",
+   "p": 0.0788,
+   "ref": 0.2653,
+   "mel": 0.2013,
+   "guerre": "etats_unis_iran",
+   "etat": "guerre",
+   "age": 29,
+   "type": "inter"
+  },
+  {
+   "titre": "US x Iran ceasefire by December 31?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "classe": "cessez_le_feu",
+   "groupe": "Iran US",
+   "p": 0.4981,
+   "ref": 0.2653,
+   "mel": 0.3174,
+   "guerre": "etats_unis_iran",
+   "etat": "guerre",
+   "age": 29,
+   "type": "inter"
+  },
+  {
+   "titre": "US x Iran ceasefire by April 15?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "classe": "cessez_le_feu",
+   "groupe": "Iran US",
+   "p": 0.0414,
+   "ref": 0.2653,
+   "mel": 0.1752,
+   "guerre": "etats_unis_iran",
+   "etat": "guerre",
+   "age": 29,
+   "type": "inter"
+  },
+  {
+   "titre": "US x Iran ceasefire by June 30?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "classe": "cessez_le_feu",
+   "groupe": "Iran US",
+   "p": 0.2066,
+   "ref": 0.2653,
+   "mel": 0.2497,
+   "guerre": "etats_unis_iran",
+   "etat": "guerre",
+   "age": 29,
+   "type": "inter"
+  },
+  {
+   "titre": "Ukraine officially agrees to a US backed ceasefire framework by June 30?",
+   "jeu": "2026-05-24",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "US Ukraine",
+   "p": 0.038,
+   "ref": 0.3333,
+   "mel": 0.2095,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 1550,
+   "type": "inter"
+  },
+  {
+   "titre": "Russia x Ukraine ceasefire agreement by October 31, 2026?",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "classe": "cessez_le_feu",
+   "groupe": "Russia Ukraine",
+   "p": 0.0764,
+   "ref": 0.3462,
+   "mel": 0.2498,
+   "guerre": "russie_ukraine",
+   "etat": "guerre",
+   "age": 1634,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire continues through September 30?",
+   "jeu": "2026-08-30",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.9882,
+   "ref": 0.2941,
+   "mel": 0.4441,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 145,
+   "type": "inter"
+  },
+  {
+   "titre": "Israel x Iran ceasefire continues through October 31?",
+   "jeu": "2026-08-30",
+   "y": 1,
+   "classe": "tenue",
+   "groupe": "Iran Israel",
+   "p": 0.9765,
+   "ref": 0.2941,
+   "mel": 0.4441,
+   "guerre": "israel_iran",
+   "etat": "cessez",
+   "age": 145,
+   "type": "inter"
+  }
+ ]
+}
