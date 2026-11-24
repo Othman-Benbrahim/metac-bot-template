@@ -3,10 +3,16 @@ name: Planificateur de nuit (collectes quotidiennes)
 # 0.10.246 (décision d'auteur du 2026-11-18, 3 h 21) : GitHub retarde ou saute les tâches programmées ; la nuit, ce
 # planificateur lance lui-même les collectes quotidiennes, une à une, et se relance lui-même (planificateur.py).
 # Deux démarrages le soir ; le second rattrape le premier si GitHub le saute. Rien la journée.
+# 0.10.485 (décision de l'auteur, 2026-11-24, 10 h 23) : GitHub a déclenché le planificateur jusqu'à 8 h en retard (6 h 01
+# la nuit du 24 novembre, 45 minutes de nuit restantes) ; trois démarrages de plus dans la nuit (1 h, 3 h, 5 h, heure de
+# Paris). Un planificateur qui en trouve un autre en cours s'arrête aussitôt.
 on:
   schedule:
     - cron: "53 20 * * *"
     - cron: "53 22 * * *"
+    - cron: "0 0 * * *"
+    - cron: "0 2 * * *"
+    - cron: "0 4 * * *"
   workflow_dispatch:
 
 concurrency:

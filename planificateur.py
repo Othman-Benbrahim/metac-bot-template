@@ -35,6 +35,9 @@ DUREE_PASSAGE = 5 * 3600 + 15 * 60
 PAS = 180
 MAX_EN_COURS = 3
 DELAI_REUSSITE = timedelta(hours=16)
+# 0.10.485 (décision de l'auteur, 2026-11-24, 10 h 23) : la veille d'articles (liens envoyés par courriel) passe en tête
+# de file ; elle ne s'est pas faite la nuit du 24 novembre, restée dans la file à la fin de la nuit.
+PRIORITAIRES = ("veille_articles.yaml",)
 DELAI_TENTATIVE = timedelta(hours=2)
 MOI = "planificateur.yaml"
 GROUPE_BANCS = "bot-alphabet-registre"
@@ -95,7 +98,7 @@ def dues(passages: dict[str, list[dict]], t: datetime, bancs_actifs: bool) -> li
         if ps and t - max(p["cree"] for p in ps) < DELAI_TENTATIVE:
             continue
         out.append((max(reussis) if reussis else datetime.min.replace(tzinfo=timezone.utc), f))
-    return [f for _, f in sorted(out)]
+    return [f for _, f in sorted(out, key=lambda x: (x[1] not in PRIORITAIRES, x[0]))]
 
 
 class Github:
