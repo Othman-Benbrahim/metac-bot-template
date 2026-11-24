@@ -1,0 +1,40 @@
+name: "Collecte COW guerres entre États"
+
+# 0.10.502 (décision de l'auteur du 2026-11-24, 16 h 38) : durée des guerres entre États (données codées).
+# Lancée à la main ; une version par an.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: collecte-cow-guerres
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u collecte_cow_guerres.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -e registre/cow-guerres-etats.csv ]; then git add registre/cow-guerres-etats.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : COW guerres entre États du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
