@@ -1,6 +1,6 @@
 {
- "openai.com": "17693798820",
- "chatgpt.com": "18512004617",
+ "openai.com": "17812467411",
+ "chatgpt.com": "18579033952",
  "anthropic.com": "18382858014",
  "_tour": {
   "anthropic.com": "2026-11-22",
@@ -10,13 +10,13 @@
   "mistral.ai": "2026-11-23",
   "deepseek.com": "2026-11-23",
   "deepmind.google": "2026-11-23",
-  "meta.ai": "2026-11-21",
-  "perplexity.ai": "2026-11-21",
-  "kimi.com": "2026-11-21",
+  "meta.ai": "2026-11-24",
+  "perplexity.ai": "2026-11-24",
+  "kimi.com": "2026-11-24",
   "z.ai": "2026-11-22",
   "qwen.ai": "2026-11-22",
-  "openai.com": "2026-11-22",
-  "chatgpt.com": "2026-11-22"
+  "openai.com": "2026-11-24",
+  "chatgpt.com": "2026-11-24"
  },
  "claude.ai": "18495825668",
  "x.ai": "18541487956",
@@ -24,9 +24,9 @@
  "mistral.ai": "17112653734",
  "deepseek.com": "18564701488",
  "deepmind.google": "18004589239",
- "meta.ai": "17375396700",
- "perplexity.ai": "17492777019",
- "kimi.com": "18505273376",
+ "meta.ai": "17809228090",
+ "perplexity.ai": "18361996404",
+ "kimi.com": "18589117733",
  "z.ai": "18229600449",
  "qwen.ai": "17050170010"
 }
