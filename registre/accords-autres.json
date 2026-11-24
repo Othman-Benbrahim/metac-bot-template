@@ -1,0 +1,154 @@
+{
+ "resume": {
+  "n": 11,
+  "oui": 1,
+  "perte_reference": 0.4751,
+  "perte_regle": 0.4246,
+  "perte_melange": 0.4615,
+  "n_2026": 6,
+  "perte_reference_2026": 0.53,
+  "perte_regle_2026": 0.5049,
+  "taux_hors_famille": {
+   "1": {
+    "n": 2117,
+    "oui": 563,
+    "p": 0.2659
+   },
+   "2": {
+    "n": 17,
+    "oui": 6,
+    "p": 0.3332
+   },
+   "3+": {
+    "n": 4,
+    "oui": 0,
+    "p": 0.1479
+   }
+  },
+  "corpus_hors_famille": 2138,
+  "brancher": true
+ },
+ "lignes": [
+  {
+   "titre": "Before 1 January 2025, will Iran announce that it will leave the JCPOA (\"Iran nuclear deal\")?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "Iran JCPOA",
+   "tranche": "1",
+   "p": 0.2659,
+   "ref": 0.3333,
+   "mel": 0.3157
+  },
+  {
+   "titre": "Will at least ten countries have committed to any diplomatic agreement restricting solar geoengineering, before 2026?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "Will at least ten countries have committed to any diplomatic agreement restricting solar geoengineering, before 2026?",
+   "tranche": "2",
+   "p": 0.3332,
+   "ref": 0.3333,
+   "mel": 0.3333
+  },
+  {
+   "titre": "Trump signs national abortion ban?",
+   "jeu": "2025-03-16",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "Trump",
+   "tranche": "1",
+   "p": 0.2659,
+   "ref": 0.3333,
+   "mel": 0.3157
+  },
+  {
+   "titre": "Will Russia have significantly expanded its controlled territory in Ukraine on January 1, 2026?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "Russia Ukraine",
+   "tranche": "1",
+   "p": 0.2659,
+   "ref": 0.3462,
+   "mel": 0.325
+  },
+  {
+   "titre": "Will a new multilateral security agreement involving at least three Middle East and North Africa (MENA) states (excluding Iran, Saudi Arabia, Turkey, and Israel) be publicly announced by 30 June 2026?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "Africa Arabia East Iran Israel MENA Middle North Saudi Turkey",
+   "tranche": "1",
+   "p": 0.2659,
+   "ref": 0.3333,
+   "mel": 0.3157
+  },
+  {
+   "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "New START",
+   "tranche": "2",
+   "p": 0.3332,
+   "ref": 0.3333,
+   "mel": 0.3333
+  },
+  {
+   "titre": "Russia joins the Board of Peace by March 31?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "Board Peace Russia",
+   "tranche": "1",
+   "p": 0.2659,
+   "ref": 0.3333,
+   "mel": 0.3157
+  },
+  {
+   "titre": "Will Anthropic make a deal with the Pentagon by June 30?",
+   "jeu": "2026-05-24",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "Anthropic Pentagon",
+   "tranche": "2",
+   "p": 0.3332,
+   "ref": 0.3333,
+   "mel": 0.3333
+  },
+  {
+   "titre": "Will the US and India finalise a new bilateral trade agreement before August 2026?",
+   "jeu": "2026-07-05",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "India US",
+   "tranche": "2",
+   "p": 0.3332,
+   "ref": 0.3333,
+   "mel": 0.3333
+  },
+  {
+   "titre": "US x China tariff agreement by December 31?",
+   "jeu": "2026-08-30",
+   "y": 1,
+   "classe": "autre",
+   "groupe": "China US",
+   "tranche": "2",
+   "p": 0.3332,
+   "ref": 0.3158,
+   "mel": 0.3201
+  },
+  {
+   "titre": "US-Canada diplomatic agreement to lower tariffs by September 30?",
+   "jeu": "2026-09-27",
+   "y": 0,
+   "classe": "autre",
+   "groupe": "US-Canada",
+   "tranche": "2",
+   "p": 0.3332,
+   "ref": 0.3333,
+   "mel": 0.3333
+  }
+ ]
+}

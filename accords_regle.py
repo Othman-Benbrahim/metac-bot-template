@@ -210,3 +210,20 @@ def estimer(titre: str, jeu: dt.date | None = None, branchees: tuple[str, ...] =
     if p is None:
         return None
     return {"classe": cl, "p": min(max(p, .01), .99)}
+
+
+def estimer_autres(titre: str) -> dict | None:
+    """0.10.504 : « autres accords » — part de oui de la tranche de consentements requis, mesurée hors famille
+    (preenregistrements/accords-autres.md ; passé une fois : 0,425 contre 0,475, 2026 : 0,505 contre 0,530)."""
+    import json
+    import accords_requis as rq
+    if classe(titre) != "autre":
+        return None
+    try:
+        A = json.loads((ICI / "ecosystemes" / "accords-autres.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    if not A.get("branchee"):
+        return None
+    k = rq.accords(titre)
+    return {"classe": "autre", "guerre": f"consentements {k}", "p": A["taux"][k]}
