@@ -28,7 +28,11 @@ ICI = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ICI))
 import ecosystemes  # noqa: E402
 
-LISTES = ICI.parent / "lecteur-local" / "listes"
+import os  # noqa: E402
+# 2026-11-24 : listes validées du dépôt lecteur-local ; dans les workflows, extraites dans « lecteur/ » (sinon le dépôt voisin)
+LISTES = next((p for p in (Path(os.environ["ALPHABET_LISTES"]) if os.environ.get("ALPHABET_LISTES") else None,
+                           ICI / "lecteur" / "listes", ICI.parent / "lecteur-local" / "listes") if p and p.exists()),
+              ICI.parent / "lecteur-local" / "listes")
 DELAI_JOURS = {"seconde": 0, "secondes": 0, "minutes": 0, "heures": 0.1, "soirée": 0.5, "jours": 3, "semaines": 14,
                "mois": 60, "trimestre": 90, "trimestres": 90, "saison": 120, "saisons": 120, "année": 365,
                "années": 365, "décennie": 3650, "décennies": 3650, "générations": 9000, "permanent": float("inf")}

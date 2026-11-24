@@ -28,6 +28,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Listes validées et carte de lecteur-local (dépôt public, lecture seule ; dossier interne et sondes)
+        uses: actions/checkout@v4
+        with:
+          repository: Othman-Benbrahim/lecteur-local
+          path: lecteur
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
