@@ -1,0 +1,1588 @@
+{
+ "resume": {
+  "corpus": 2196,
+  "lues": 53,
+  "lues_dev": 22,
+  "lues_2026": 31,
+  "k": 1.0,
+  "perte_dev_p0": 0.3576,
+  "perte_dev_couche": 0.3078,
+  "perte_conf_p0": 0.7342,
+  "perte_conf_couche": 0.925,
+  "fort_2026": 25,
+  "perte_fort_p0": 0.7147,
+  "perte_fort_couche": 0.9634,
+  "brancher": false
+ },
+ "lignes": [
+  {
+   "titre": "Will annual US core CPI inflation be above 3% in December 2024?",
+   "jeu": "2024-07-21",
+   "y": 1,
+   "groupe": "CPI US",
+   "horizon": 163.0,
+   "p0": 0.2674259681093394,
+   "d": 0.0908,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.09,
+     "apport": 0.182
+    }
+   ]
+  },
+  {
+   "titre": "Will Fed cut interest rates 0 times in 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "groupe": "Will Fed cut interest rates 0 times in 2024?",
+   "horizon": 162.0,
+   "p0": 0.26788154897494304,
+   "d": 0.4542,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.27,
+     "apport": 0.811
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.01,
+     "apport": 1.006
+    }
+   ]
+  },
+  {
+   "titre": "Will Fed cut interest rates 1 time in 2024?",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "groupe": "Will Fed cut interest rates 1 time in 2024?",
+   "horizon": 162.0,
+   "p0": 0.26788154897494304,
+   "d": 0.4542,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.27,
+     "apport": 0.811
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.01,
+     "apport": 1.006
+    }
+   ]
+  },
+  {
+   "titre": "If Trump wins the election will the inflation rate in 2025 be below 2.5% (Current 2.5%)?",
+   "jeu": "2025-03-02",
+   "y": 0,
+   "groupe": "Current If Trump",
+   "horizon": 283.0,
+   "p0": 0.26788154897494304,
+   "d": 0.5911,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.59,
+     "apport": 1.182
+    }
+   ]
+  },
+  {
+   "titre": "Will 1 Fed rate cut happen in 2025?",
+   "jeu": "2025-03-16",
+   "y": 0,
+   "groupe": "Will 1 Fed rate cut happen in 2025?",
+   "horizon": 269.0,
+   "p0": 0.26788154897494304,
+   "d": -0.3312,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.64,
+     "apport": -4.916
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.63,
+     "apport": 1.63
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -1.63,
+     "apport": 1.63
+    }
+   ]
+  },
+  {
+   "titre": "Will 2 Fed rate cuts happen in 2025?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "groupe": "Will 2 Fed rate cuts happen in 2025?",
+   "horizon": 255.0,
+   "p0": 0.26788154897494304,
+   "d": -0.5978,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.64,
+     "apport": -4.916
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.96,
+     "apport": 0.964
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.96,
+     "apport": 0.964
+    }
+   ]
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after July 2025 meeting?",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "groupe": "Fed increases interest rates by 25+ bps after July 2025 meeting?",
+   "horizon": 122.0,
+   "p0": 0.26788154897494304,
+   "d": -0.9882,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.64,
+     "apport": -4.916
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.96,
+     "apport": 0.964
+    }
+   ]
+  },
+  {
+   "titre": "Will 5 Fed rate cuts happen in 2025?",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "groupe": "Will 5 Fed rate cuts happen in 2025?",
+   "horizon": 241.0,
+   "p0": 0.26788154897494304,
+   "d": 0.0794,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -0.03,
+     "apport": -0.079
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.24,
+     "apport": 0.238
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.24,
+     "apport": 0.238
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate hike in 2025?",
+   "jeu": "2025-04-27",
+   "y": 0,
+   "groupe": "Fed rate hike in 2025?",
+   "horizon": 227.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1635,
+   "sens": 1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -0.03,
+     "apport": -0.079
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.45,
+     "apport": 0.448
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.45,
+     "apport": 0.448
+    }
+   ]
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after June 2025 meeting?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "groupe": "Fed increases interest rates by 25+ bps after June 2025 meeting?",
+   "horizon": 38.0,
+   "p0": 0.26788154897494304,
+   "d": 0.416,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.42,
+     "apport": 1.248
+    }
+   ]
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after June 2025 meeting?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "groupe": "Fed decreases interest rates by 50+ bps after June 2025 meeting?",
+   "horizon": 38.0,
+   "p0": 0.26788154897494304,
+   "d": 0.416,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.42,
+     "apport": 1.248
+    }
+   ]
+  },
+  {
+   "titre": "Fed emergency rate cut in 2025?",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "groupe": "Fed emergency rate cut in 2025?",
+   "horizon": 234.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1492,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.42,
+     "apport": 1.248
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.25,
+     "apport": -0.251
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.25,
+     "apport": -0.251
+    }
+   ]
+  },
+  {
+   "titre": "Will the EU import at least 15 billion cubic meters of natural gas from Russia in any quarter of 2025?",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "groupe": "EU Russia",
+   "horizon": 221.0,
+   "p0": 0.268003646308113,
+   "d": -0.9664,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "russie-ukraine:negociations",
+     "vers": "russie-ukraine:front",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "faible",
+     "regle": null,
+     "serie": "gestes:RUS:UKR",
+     "z": 0.97,
+     "apport": -0.966
+    }
+   ]
+  },
+  {
+   "titre": "Will 4 Fed rate cuts happen in 2025?",
+   "jeu": "2025-06-08",
+   "y": 0,
+   "groupe": "Will 4 Fed rate cuts happen in 2025?",
+   "horizon": 185.0,
+   "p0": 0.26788154897494304,
+   "d": 0.8933,
+   "sens": -1,
+   "n_contrib": 3,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 2.08,
+     "apport": 6.252
+    },
+    {
+     "de": "inflation-mondiale:budget",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.89,
+     "apport": -0.893
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.89,
+     "apport": -0.893
+    }
+   ]
+  },
+  {
+   "titre": "Will 6 Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "groupe": "Will 6 Fed rate cuts happen in 2025?",
+   "horizon": 129.0,
+   "p0": 0.26788154897494304,
+   "d": 1.3248,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.75,
+     "apport": 0.753
+    }
+   ]
+  },
+  {
+   "titre": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "groupe": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+   "horizon": 87.0,
+   "p0": 0.26788154897494304,
+   "d": 1.3248,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.75,
+     "apport": 0.753
+    }
+   ]
+  },
+  {
+   "titre": "Will no Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "groupe": "Will no Fed rate cuts happen in 2025?",
+   "horizon": 129.0,
+   "p0": 0.26788154897494304,
+   "d": 1.3248,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.75,
+     "apport": 0.753
+    }
+   ]
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after September 2025 meeting?",
+   "jeu": "2025-08-17",
+   "y": 0,
+   "groupe": "Fed decreases interest rates by 50+ bps after September 2025 meeting?",
+   "horizon": 31.0,
+   "p0": 0.26788154897494304,
+   "d": 1.5154,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    }
+   ]
+  },
+  {
+   "titre": "Will 8+ Fed rate cuts happen in 2025?",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "groupe": "Will 8+ Fed rate cuts happen in 2025?",
+   "horizon": 101.0,
+   "p0": 0.26788154897494304,
+   "d": 1.143,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.52,
+     "apport": 4.546
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": -0.03,
+     "apport": 0.026
+    }
+   ]
+  },
+  {
+   "titre": "Will inflation reach more than 4% in 2025?",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "groupe": "Will inflation reach more than 4% in 2025?",
+   "horizon": 66.0,
+   "p0": 0.26788154897494304,
+   "d": -1.1039,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": -1.1,
+     "apport": -2.208
+    }
+   ]
+  },
+  {
+   "titre": "Fed decreases interest rates by 50+ bps after January 2026 meeting?",
+   "jeu": "2025-11-09",
+   "y": 0,
+   "groupe": "Fed decreases interest rates by 50+ bps after January 2026 meeting?",
+   "horizon": 80.0,
+   "p0": 0.26788154897494304,
+   "d": -0.2472,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -0.24,
+     "apport": -0.731
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.26,
+     "apport": -0.258
+    }
+   ]
+  },
+  {
+   "titre": "Will the EU import at least 19 billion cubic meters of natural gas from Russia in the second half of 2025?",
+   "jeu": "2025-11-23",
+   "y": 0,
+   "groupe": "EU Russia",
+   "horizon": 39.0,
+   "p0": 0.268003646308113,
+   "d": -0.1293,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "russie-ukraine:negociations",
+     "vers": "russie-ukraine:front",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "faible",
+     "regle": null,
+     "serie": "gestes:RUS:UKR",
+     "z": 0.13,
+     "apport": -0.129
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate cut by June 2026 meeting?",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "groupe": "Fed rate cut by June 2026 meeting?",
+   "horizon": 150.0,
+   "p0": 0.26788154897494304,
+   "d": -1.1124,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.37,
+     "apport": -4.108
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.34,
+     "apport": -0.342
+    }
+   ]
+  },
+  {
+   "titre": "Will the Iranian regime fall by March 31?",
+   "jeu": "2026-02-01",
+   "y": 0,
+   "groupe": "Iranian",
+   "horizon": 58.0,
+   "p0": 0.26812585499316005,
+   "d": -1.9094,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": 1.91,
+     "apport": -3.819
+    }
+   ]
+  },
+  {
+   "titre": "Will the market capitalization for USDT & USDC stablecoins surpass $300 billion USD by June 30, 2026?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "groupe": "USD USDC USDT",
+   "horizon": 122.0,
+   "p0": 0.26788154897494304,
+   "d": -0.1836,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": -0.18,
+     "apport": -0.367
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+   "jeu": "2026-03-01",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+   "horizon": 59.0,
+   "p0": 0.26788154897494304,
+   "d": -1.2379,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.24,
+     "apport": -3.714
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed Cut–Pause–Pause in the next three decisions (Dec–Jan–Mar)?",
+   "jeu": "2026-03-01",
+   "y": 1,
+   "groupe": "Cut Dec Jan Mar Pause",
+   "horizon": 17.0,
+   "p0": 0.2674259681093394,
+   "d": -1.2379,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.24,
+     "apport": -3.714
+    }
+   ]
+  },
+  {
+   "titre": "China's rebar failure rate below 20% in 2025 national quality check?",
+   "jeu": "2026-03-15",
+   "y": 1,
+   "groupe": "China",
+   "horizon": 136.0,
+   "p0": 0.2672138622891017,
+   "d": -0.1019,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "rivalite-sino-americaine:diplomatie",
+     "vers": "rivalite-sino-americaine:taiwan",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "gestes:USA:CHN",
+     "z": 0.1,
+     "apport": -0.204
+    }
+   ]
+  },
+  {
+   "titre": "Iran Government falls before end of March 2026",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Government Iran",
+   "horizon": 16.0,
+   "p0": 0.26788154897494304,
+   "d": 0.486,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    }
+   ]
+  },
+  {
+   "titre": "Russia joins the Board of Peace by March 31?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Board Peace Russia",
+   "horizon": 15.0,
+   "p0": 0.26788154897494304,
+   "d": 0.7274,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "russie-ukraine:negociations",
+     "vers": "russie-ukraine:front",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "faible",
+     "regle": null,
+     "serie": "gestes:RUS:UKR",
+     "z": -0.73,
+     "apport": 0.727
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate cut by April 2026 meeting?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Fed rate cut by April 2026 meeting?",
+   "horizon": 45.0,
+   "p0": 0.26788154897494304,
+   "d": 3.0,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 5.6,
+     "apport": 9.0
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "horizon": 94.0,
+   "p0": 0.26788154897494304,
+   "d": 2.1783,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 5.6,
+     "apport": 9.0
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.29,
+     "apport": -0.287
+    }
+   ]
+  },
+  {
+   "titre": "Will the Iranian regime fall by April 30?",
+   "jeu": "2026-03-15",
+   "y": 0,
+   "groupe": "Iranian",
+   "horizon": 46.0,
+   "p0": 0.26812585499316005,
+   "d": 0.486,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil (CL) hit (HIGH) $110 by end of June?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "CL Crude HIGH Oil",
+   "horizon": 93.0,
+   "p0": 0.26766985864113085,
+   "d": -0.2244,
+   "sens": -1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "energie-mondiale:demande",
+     "vers": "energie-mondiale:prix",
+     "effet": "+",
+     "delai": "mois",
+     "force": "forte",
+     "regle": null,
+     "serie": "eia:WRPUPUS2",
+     "z": 0.12,
+     "apport": 0.374
+    },
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": 0.97,
+     "apport": -1.496
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+   "jeu": "2026-03-29",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+   "horizon": 31.0,
+   "p0": 0.26788154897494304,
+   "d": 3.0,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 5.6,
+     "apport": 9.0
+    }
+   ]
+  },
+  {
+   "titre": "Iran x Israel/US conflict ends by May 15?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "Iran Israel US",
+   "horizon": 47.0,
+   "p0": 0.2672138622891017,
+   "d": 0.486,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    }
+   ]
+  },
+  {
+   "titre": "USD.AI FDV above $150M one day after launch?",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "groupe": "AI FDV USD",
+   "horizon": 278.0,
+   "p0": 0.2674259681093394,
+   "d": 0.7937,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.79,
+     "apport": 1.587
+    }
+   ]
+  },
+  {
+   "titre": "Will WTI crude oil cost more than $150/barrel before June? (According to investing.com)",
+   "jeu": "2026-04-12",
+   "y": 0,
+   "groupe": "According WTI",
+   "horizon": 49.0,
+   "p0": 0.26788154897494304,
+   "d": 0.1717,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": -0.17,
+     "apport": 0.343
+    }
+   ]
+  },
+  {
+   "titre": "Iran x Israel/US conflict ends by April 30?",
+   "jeu": "2026-04-12",
+   "y": 1,
+   "groupe": "Iran Israel US",
+   "horizon": 18.0,
+   "p0": 0.2672138622891017,
+   "d": 0.486,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "eau-moyen-orient:chaleur",
+     "vers": "eau-moyen-orient:barrages",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "meteo:teheran",
+     "z": -0.49,
+     "apport": 0.972
+    }
+   ]
+  },
+  {
+   "titre": "Will inflation reach more than 3.5% in 2026?",
+   "jeu": "2026-04-12",
+   "y": 1,
+   "groupe": "Will inflation reach more than 3.5% in 2026?",
+   "horizon": 263.0,
+   "p0": 0.2674259681093394,
+   "d": 0.1122,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.11,
+     "apport": 0.224
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?",
+   "jeu": "2026-05-10",
+   "y": 0,
+   "groupe": "Will the Fed increase interest rates by 25 bps after the June 2026 meeting?",
+   "horizon": 38.0,
+   "p0": 0.26788154897494304,
+   "d": 1.7846,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 1.78,
+     "apport": 5.354
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil (CL) hit (LOW) $80 by end of June?",
+   "jeu": "2026-05-10",
+   "y": 1,
+   "groupe": "CL Crude LOW Oil",
+   "horizon": 51.0,
+   "p0": 0.2674259681093394,
+   "d": 0.7465,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": -0.96,
+     "apport": 1.493
+    }
+   ]
+  },
+  {
+   "titre": "Will Bitcoin reach $90K USD in May 2026?",
+   "jeu": "2026-05-24",
+   "y": 0,
+   "groupe": "Bitcoin USD",
+   "horizon": 7.0,
+   "p0": 0.26788154897494304,
+   "d": 0.034,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "crises-bancaires:marches",
+     "vers": "crises-bancaires:cryptomonnaies",
+     "effet": "+",
+     "delai": "jours",
+     "force": "moyenne",
+     "regle": "proportionnelle",
+     "serie": "fred:DTWEXBGS",
+     "z": 0.03,
+     "apport": 0.068
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil (CL) hit (HIGH) $115 by end of June?",
+   "jeu": "2026-06-07",
+   "y": 0,
+   "groupe": "CL Crude HIGH Oil",
+   "horizon": 23.0,
+   "p0": 0.26766985864113085,
+   "d": 0.6782,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": -0.83,
+     "apport": 1.356
+    }
+   ]
+  },
+  {
+   "titre": "Will the Federal Reserve raise the federal funds target range before July 30, 2026?",
+   "jeu": "2026-06-21",
+   "y": 0,
+   "groupe": "Federal Reserve",
+   "horizon": 35.0,
+   "p0": 0.2675478577939836,
+   "d": -3.0,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -3.28,
+     "apport": -9.0
+    }
+   ]
+  },
+  {
+   "titre": "Fed rate hike in 2026?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "groupe": "Fed rate hike in 2026?",
+   "horizon": 171.0,
+   "p0": 0.2674259681093394,
+   "d": -2.4486,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -3.28,
+     "apport": -9.0
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.79,
+     "apport": -0.794
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+   "jeu": "2026-06-21",
+   "y": 1,
+   "groupe": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+   "horizon": 87.0,
+   "p0": 0.2674259681093394,
+   "d": -2.4486,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -3.28,
+     "apport": -9.0
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.79,
+     "apport": -0.794
+    }
+   ]
+  },
+  {
+   "titre": "Will the Federal Reserve hike interest rates in 2026?",
+   "jeu": "2026-07-05",
+   "y": 1,
+   "groupe": "Federal Reserve",
+   "horizon": 179.0,
+   "p0": 0.2675478577939836,
+   "d": -0.8575,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": -1.06,
+     "apport": -3.181
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.25,
+     "apport": -0.249
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?",
+   "jeu": "2026-08-02",
+   "y": 0,
+   "groupe": "Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?",
+   "horizon": 45.0,
+   "p0": 0.26788154897494304,
+   "d": 0.8314,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.83,
+     "apport": 2.494
+    }
+   ]
+  },
+  {
+   "titre": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "groupe": "Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?",
+   "horizon": 31.0,
+   "p0": 0.26788154897494304,
+   "d": 0.8314,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.83,
+     "apport": 2.494
+    }
+   ]
+  },
+  {
+   "titre": "Will Crude Oil reach a new all-time high by September 30?",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "groupe": "Crude Oil",
+   "horizon": 45.0,
+   "p0": 0.26788154897494304,
+   "d": -0.9949,
+   "sens": 1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "energie-mondiale:stocks",
+     "vers": "energie-mondiale:prix",
+     "effet": "-",
+     "delai": "semaines",
+     "force": "moyenne",
+     "regle": "saturation",
+     "serie": "eia:WCESTUS1:var52",
+     "z": 2.98,
+     "apport": -1.99
+    }
+   ]
+  },
+  {
+   "titre": "Fed Rate Hike by September 2026 Meeting?",
+   "jeu": "2026-08-16",
+   "y": 1,
+   "groupe": "Hike Meeting Rate",
+   "horizon": 115.0,
+   "p0": 0.2674259681093394,
+   "d": 0.4385,
+   "sens": 1,
+   "n_contrib": 2,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:prix_conso",
+     "vers": "inflation-mondiale:banques_centrales",
+     "effet": "+",
+     "delai": "semaines",
+     "force": "forte",
+     "regle": null,
+     "serie": "fred:CPIAUCSL:var12",
+     "z": 0.83,
+     "apport": 2.494
+    },
+    {
+     "de": "politique-americaine:budget",
+     "vers": "politique-americaine:reserve_federale",
+     "effet": "-",
+     "delai": "mois",
+     "force": "faible",
+     "regle": null,
+     "serie": "fred:DGS10",
+     "z": 0.74,
+     "apport": -0.74
+    }
+   ]
+  },
+  {
+   "titre": "Will Nigeria's inflation rate fall below 15% during 2026?",
+   "jeu": "2026-08-30",
+   "y": 1,
+   "groupe": "Nigeria",
+   "horizon": 123.0,
+   "p0": 0.2674259681093394,
+   "d": 0.4828,
+   "sens": -1,
+   "n_contrib": 1,
+   "contrib": [
+    {
+     "de": "inflation-mondiale:anticipations",
+     "vers": "inflation-mondiale:prix_conso",
+     "effet": "+",
+     "delai": "mois",
+     "force": "moyenne",
+     "regle": null,
+     "serie": "fred:T10YIE",
+     "z": 0.48,
+     "apport": 0.966
+    }
+   ]
+  }
+ ]
+}
