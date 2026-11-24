@@ -1,0 +1,645 @@
+{
+ "resume": {
+  "n": 52,
+  "paires": 20,
+  "actif": {
+   "n": 8,
+   "oui": 0.125,
+   "paires": 4
+  },
+  "dormant": {
+   "n": 44,
+   "oui": 0.205
+  },
+  "perte_reference": 0.5225,
+  "perte_etat": 0.5394,
+  "perte_melange_plafonne": 0.5263,
+  "brancher": false
+ },
+ "lignes": [
+  {
+   "titre": "Israel military action against Iran by end of 2024?",
+   "source": "polymarket",
+   "jeu": "2024-07-21",
+   "y": 1,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": true,
+   "mois_lus": [
+    "2024-05-01",
+    "2024-04-01"
+   ]
+  },
+  {
+   "titre": "Will China invade Taiwan in 2024?",
+   "source": "polymarket",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2024-05-01",
+    "2024-04-01"
+   ]
+  },
+  {
+   "titre": "Will North Korea invade South Korea in 2024?",
+   "source": "polymarket",
+   "jeu": "2024-07-21",
+   "y": 0,
+   "paire": "ucdp_dyade:KOR:PRK",
+   "actif": false,
+   "mois_lus": [
+    "2024-05-01",
+    "2024-04-01"
+   ]
+  },
+  {
+   "titre": "China x Taiwan military clash by June 30?",
+   "source": "polymarket",
+   "jeu": "2025-03-02",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2025-01-01",
+    "2024-12-01"
+   ]
+  },
+  {
+   "titre": "Will China invade Taiwan in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-03-02",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2025-01-01",
+    "2024-12-01"
+   ]
+  },
+  {
+   "titre": "China x Taiwan military clash by December 31?",
+   "source": "polymarket",
+   "jeu": "2025-03-30",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2025-01-01",
+    "2024-12-01"
+   ]
+  },
+  {
+   "titre": "Israel military action against Iran in April?",
+   "source": "polymarket",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": false,
+   "mois_lus": [
+    "2025-02-01",
+    "2025-01-01"
+   ]
+  },
+  {
+   "titre": "Israel military action against Iran before July?",
+   "source": "polymarket",
+   "jeu": "2025-04-13",
+   "y": 1,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": false,
+   "mois_lus": [
+    "2025-02-01",
+    "2025-01-01"
+   ]
+  },
+  {
+   "titre": "US military action against Iran in April?",
+   "source": "polymarket",
+   "jeu": "2025-04-13",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-02-01",
+    "2025-01-01"
+   ]
+  },
+  {
+   "titre": "US military action against Iran before July?",
+   "source": "polymarket",
+   "jeu": "2025-04-27",
+   "y": 1,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-02-01",
+    "2025-01-01"
+   ]
+  },
+  {
+   "titre": "Will India invade Pakistan before July?",
+   "source": "polymarket",
+   "jeu": "2025-05-11",
+   "y": 0,
+   "paire": "ucdp_dyade:IND:PAK",
+   "actif": true,
+   "mois_lus": [
+    "2025-03-01",
+    "2025-02-01"
+   ]
+  },
+  {
+   "titre": "Will India and Pakistan go to war in 2025?",
+   "source": "manifold",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "paire": "ucdp_dyade:IND:PAK",
+   "actif": true,
+   "mois_lus": [
+    "2025-03-01",
+    "2025-02-01"
+   ]
+  },
+  {
+   "titre": "Will Pakistan invade India before July?",
+   "source": "polymarket",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "paire": "ucdp_dyade:IND:PAK",
+   "actif": true,
+   "mois_lus": [
+    "2025-03-01",
+    "2025-02-01"
+   ]
+  },
+  {
+   "titre": "Israel military action against Iran before June?",
+   "source": "polymarket",
+   "jeu": "2025-05-25",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": false,
+   "mois_lus": [
+    "2025-03-01",
+    "2025-02-01"
+   ]
+  },
+  {
+   "titre": "Israel strike on Iranian nuclear facility before July?",
+   "source": "polymarket",
+   "jeu": "2025-06-08",
+   "y": 1,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": false,
+   "mois_lus": [
+    "2025-04-01",
+    "2025-03-01"
+   ]
+  },
+  {
+   "titre": "US x Russia military clash in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-06-22",
+   "y": 0,
+   "paire": "ucdp_dyade:RUS:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-04-01",
+    "2025-03-01"
+   ]
+  },
+  {
+   "titre": "Will the US be at war with Iran before the end of 2025",
+   "source": "manifold",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-06-01",
+    "2025-05-01"
+   ]
+  },
+  {
+   "titre": "Will Israel strike the Iranian military in Iran again, before September 2025?",
+   "source": "metaculus",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": true,
+   "mois_lus": [
+    "2025-06-01",
+    "2025-05-01"
+   ]
+  },
+  {
+   "titre": "Will the U.S. invade Iran in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-08-03",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-06-01",
+    "2025-05-01"
+   ]
+  },
+  {
+   "titre": "Will Russia invade Finland in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "paire": "ucdp_dyade:FIN:RUS",
+   "actif": false,
+   "mois_lus": [
+    "2025-06-01",
+    "2025-05-01"
+   ]
+  },
+  {
+   "titre": "Will North Korea invade South Korea in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-08-31",
+   "y": 0,
+   "paire": "ucdp_dyade:KOR:PRK",
+   "actif": false,
+   "mois_lus": [
+    "2025-06-01",
+    "2025-05-01"
+   ]
+  },
+  {
+   "titre": "Will the U.S. invade Venezuela in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-10-26",
+   "y": 0,
+   "paire": "ucdp_dyade:USA:VEN",
+   "actif": false,
+   "mois_lus": [
+    "2025-08-01",
+    "2025-07-01"
+   ]
+  },
+  {
+   "titre": "Israel strikes Iran before 2026?",
+   "source": "polymarket",
+   "jeu": "2025-11-09",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": false,
+   "mois_lus": [
+    "2025-09-01",
+    "2025-08-01"
+   ]
+  },
+  {
+   "titre": "Will any new country attack Israel or Iran between June and December 2025?",
+   "source": "metaculus",
+   "jeu": "2025-11-23",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:ISR",
+   "actif": false,
+   "mois_lus": [
+    "2025-09-01",
+    "2025-08-01"
+   ]
+  },
+  {
+   "titre": "US x Russia military clash by December 31?",
+   "source": "polymarket",
+   "jeu": "2025-11-23",
+   "y": 0,
+   "paire": "ucdp_dyade:RUS:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-09-01",
+    "2025-08-01"
+   ]
+  },
+  {
+   "titre": "China x Philippines military clash by December 31?",
+   "source": "polymarket",
+   "jeu": "2025-11-23",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:PHL",
+   "actif": false,
+   "mois_lus": [
+    "2025-09-01",
+    "2025-08-01"
+   ]
+  },
+  {
+   "titre": "Will the U.S. invade Afghanistan in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-11-23",
+   "y": 0,
+   "paire": "ucdp_dyade:AFG:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-09-01",
+    "2025-08-01"
+   ]
+  },
+  {
+   "titre": "Will there be another deadly clash between Thailand and Cambodia, resulting in three or more fatalities, before 2026?",
+   "source": "metaculus",
+   "jeu": "2025-12-07",
+   "y": 1,
+   "paire": "ucdp_dyade:KHM:THA",
+   "actif": false,
+   "mois_lus": [
+    "2025-10-01",
+    "2025-09-01"
+   ]
+  },
+  {
+   "titre": "Israel x Turkey military clash in 2025?",
+   "source": "polymarket",
+   "jeu": "2025-12-07",
+   "y": 0,
+   "paire": "ucdp_dyade:ISR:TUR",
+   "actif": false,
+   "mois_lus": [
+    "2025-10-01",
+    "2025-09-01"
+   ]
+  },
+  {
+   "titre": "US strikes Nigeria by December 31?",
+   "source": "polymarket",
+   "jeu": "2025-12-21",
+   "y": 1,
+   "paire": "ucdp_dyade:NGA:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-10-01",
+    "2025-09-01"
+   ]
+  },
+  {
+   "titre": "Will China invade Taiwan by March 31, 2026?",
+   "source": "polymarket",
+   "jeu": "2026-01-04",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2025-11-01",
+    "2025-10-01"
+   ]
+  },
+  {
+   "titre": "US strike on Cuba by March 31?",
+   "source": "polymarket",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "paire": "ucdp_dyade:CUB:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-11-01",
+    "2025-10-01"
+   ]
+  },
+  {
+   "titre": "US strike on Mexico by March 31?",
+   "source": "polymarket",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "paire": "ucdp_dyade:MEX:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-11-01",
+    "2025-10-01"
+   ]
+  },
+  {
+   "titre": "Will the U.S. invade Venezuela by January 31, 2026?",
+   "source": "polymarket",
+   "jeu": "2026-01-18",
+   "y": 0,
+   "paire": "ucdp_dyade:USA:VEN",
+   "actif": false,
+   "mois_lus": [
+    "2025-11-01",
+    "2025-10-01"
+   ]
+  },
+  {
+   "titre": "Will China blockade Taiwan by June 30?",
+   "source": "polymarket",
+   "jeu": "2026-02-01",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2025-12-01",
+    "2025-11-01"
+   ]
+  },
+  {
+   "titre": "Will the US strike Iran by the end of February?",
+   "source": "manifold",
+   "jeu": "2026-02-15",
+   "y": 1,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-12-01",
+    "2025-11-01"
+   ]
+  },
+  {
+   "titre": "US strikes Iran by June 30, 2026?",
+   "source": "polymarket",
+   "jeu": "2026-02-15",
+   "y": 1,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": false,
+   "mois_lus": [
+    "2025-12-01",
+    "2025-11-01"
+   ]
+  },
+  {
+   "titre": "Will Saudi Arabia conduct a direct military strike against Iran before June 1, 2026?",
+   "source": "metaculus",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "paire": "ucdp_dyade:IRN:SAU",
+   "actif": false,
+   "mois_lus": [
+    "2026-01-01",
+    "2025-12-01"
+   ]
+  },
+  {
+   "titre": "Will the United Arab Emirates conduct a direct military strike against Iran before June 1, 2026?",
+   "source": "metaculus",
+   "jeu": "2026-03-29",
+   "y": 1,
+   "paire": "ucdp_dyade:ARE:IRN",
+   "actif": false,
+   "mois_lus": [
+    "2026-01-01",
+    "2025-12-01"
+   ]
+  },
+  {
+   "titre": "Will Saudi Arabia strike Iran by March 31?",
+   "source": "polymarket",
+   "jeu": "2026-03-29",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:SAU",
+   "actif": false,
+   "mois_lus": [
+    "2026-01-01",
+    "2025-12-01"
+   ]
+  },
+  {
+   "titre": "Will the US strike Yemen by April 30, 2026?",
+   "source": "manifold",
+   "jeu": "2026-04-12",
+   "y": 0,
+   "paire": "ucdp_dyade:USA:YEM",
+   "actif": true,
+   "mois_lus": [
+    "2026-02-01",
+    "2026-01-01"
+   ]
+  },
+  {
+   "titre": "Will the U.S. conduct a ground invasion of Iran before May 2026?",
+   "source": "metaculus",
+   "jeu": "2026-04-12",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": true,
+   "mois_lus": [
+    "2026-02-01",
+    "2026-01-01"
+   ]
+  },
+  {
+   "titre": "Israel military action against Yemen by April 15, 2026?",
+   "source": "polymarket",
+   "jeu": "2026-04-12",
+   "y": 0,
+   "paire": "ucdp_dyade:ISR:YEM",
+   "actif": false,
+   "mois_lus": [
+    "2026-02-01",
+    "2026-01-01"
+   ]
+  },
+  {
+   "titre": "Russian attacks or invades Latvia by mid 2026",
+   "source": "manifold",
+   "jeu": "2026-05-24",
+   "y": 0,
+   "paire": "ucdp_dyade:LVA:RUS",
+   "actif": false,
+   "mois_lus": [
+    "2026-03-01",
+    "2026-02-01"
+   ]
+  },
+  {
+   "titre": "Israel strike on Yemen by June 30, 2026?",
+   "source": "polymarket",
+   "jeu": "2026-05-24",
+   "y": 0,
+   "paire": "ucdp_dyade:ISR:YEM",
+   "actif": false,
+   "mois_lus": [
+    "2026-03-01",
+    "2026-02-01"
+   ]
+  },
+  {
+   "titre": "Russian attacks or invades Finland by mid 2026",
+   "source": "manifold",
+   "jeu": "2026-06-07",
+   "y": 0,
+   "paire": "ucdp_dyade:FIN:RUS",
+   "actif": false,
+   "mois_lus": [
+    "2026-04-01",
+    "2026-03-01"
+   ]
+  },
+  {
+   "titre": "Will the US attack Cuba in the next 30 days?",
+   "source": "manifold",
+   "jeu": "2026-06-07",
+   "y": 0,
+   "paire": "ucdp_dyade:CUB:USA",
+   "actif": false,
+   "mois_lus": [
+    "2026-04-01",
+    "2026-03-01"
+   ]
+  },
+  {
+   "titre": "Will China invade Taiwan before the 2026 midterms?",
+   "source": "manifold",
+   "jeu": "2026-06-21",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2026-04-01",
+    "2026-03-01"
+   ]
+  },
+  {
+   "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
+   "source": "metaculus",
+   "jeu": "2026-06-21",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2026-04-01",
+    "2026-03-01"
+   ]
+  },
+  {
+   "titre": "Will the US attack Cuba before the 2026 midterm elections?",
+   "source": "manifold",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "paire": "ucdp_dyade:CUB:USA",
+   "actif": false,
+   "mois_lus": [
+    "2026-06-01",
+    "2026-05-01"
+   ]
+  },
+  {
+   "titre": "Will China invade Taiwan by September 30, 2026?",
+   "source": "polymarket",
+   "jeu": "2026-08-16",
+   "y": 0,
+   "paire": "ucdp_dyade:CHN:TWN",
+   "actif": false,
+   "mois_lus": [
+    "2026-06-01",
+    "2026-05-01"
+   ]
+  },
+  {
+   "titre": "US announces end of Iranian blockade by October 31, 2026?",
+   "source": "polymarket",
+   "jeu": "2026-09-13",
+   "y": 0,
+   "paire": "ucdp_dyade:IRN:USA",
+   "actif": true,
+   "mois_lus": [
+    "2026-07-01",
+    "2026-06-01"
+   ]
+  }
+ ]
+}
