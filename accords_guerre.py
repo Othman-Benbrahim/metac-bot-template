@@ -158,3 +158,20 @@ def probabilite(cl: str, titre: str, jeu: dt.date, EP, E) -> float | None:
         r = 1 - math.exp(-_cumul(lam, age, h))
         return r if re.search(r"\bbroken\b", titre, re.I) else 1 - r
     return None
+
+
+def estimer(titre: str, jeu: dt.date | None = None) -> dict | None:
+    """Dans le bot : seules les sous-familles branchées (ecosystemes/accords-guerre-branchees.json) s'appliquent."""
+    import json
+    try:
+        B = json.loads((ICI / "ecosystemes" / "accords-guerre-branchees.json").read_text(encoding="utf-8"))["branchees"]
+        cl = ar.classe(titre)
+        if cl not in B:
+            return None
+        jeu = jeu or dt.date.today()
+        p = probabilite(cl, titre, jeu, episodes(), evenements())
+    except (OSError, ValueError, KeyError):
+        return None
+    if p is None:
+        return None
+    return {"classe": cl, "guerre": guerre(titre), "p": min(max(p, .01), .99)}

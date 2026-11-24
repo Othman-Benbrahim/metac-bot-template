@@ -497,6 +497,11 @@ class AlphabetBot(FallTemplateBot2026):
         # journal-banque-centrale.jsonl.
         if sp_ is None:
             sp_ = self._banque_centrale(question, q, r.p_poste)
+        # 0.10.500 (décision de l'auteur du 2026-11-24, 16 h 28 : découpage « matriochka ») : accords selon l'état de la
+        # guerre (UCDP fin des conflits, table sourcée des guerres) ; seule la sous-famille « accord de paix pendant une
+        # guerre en cours » a passé les critères (2 questions) ; même mélange, même plafond ; journal-accords.jsonl.
+        if sp_ is None:
+            sp_ = self._accords_guerre(question, q, r.p_poste)
         # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
         # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
         try:
@@ -508,6 +513,30 @@ class AlphabetBot(FallTemplateBot2026):
         if sp_ is not None:
             return ReasonedPrediction(prediction_value=sp_["p"], reasoning=(r.commentaire or "") + sp_["texte"])
         return ReasonedPrediction(prediction_value=r.p_poste, reasoning=r.commentaire)
+
+    def _accords_guerre(self, question, q, p_pipeline: float) -> dict | None:
+        try:
+            import accords_guerre as agr
+            import accords_regle as arr
+            e = agr.estimer(question.question_text or "")
+            if e is None:
+                return None
+            p = arr.melanger(p_pipeline, e["p"])
+            e.update({"p_regle": e["p"], "p": p, "poids": arr.POIDS, "ecart_max": arr.ECART_MAX})
+            jour = datetime.now(timezone.utc).date().isoformat()
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": jour, "p_pipeline": p_pipeline, "p_poste": p, "accords": e}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-accords.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            e["texte"] = (f"\n\nWar-state rule (coded): peace agreement during an ongoing war ({e['guerre']}), "
+                          f"UCDP conflict-termination rates by war type and age: {e['p_regle']:.1%}. Blended at weight "
+                          f"{e['poids']} with the pipeline forecast {p_pipeline:.1%} (shift capped at "
+                          f"{e['ecart_max']:.0%}): {p:.1%}.")
+            return e
+        except Exception as ex:   # la règle qui échoue ne bloque rien
+            logger.warning("accords : non appliquée (%s)", type(ex).__name__)
+            return None
 
     def _banque_centrale(self, question, q, p_pipeline: float) -> dict | None:
         try:
