@@ -6,3 +6,4 @@
 - Contenu : 84 vagues de manifestations dans dix pays des Balkans, de 1981 à 2025 (une vague serbe court jusqu'en novembre 2026). L'unité est la vague, pas l'événement.
 - Ce que la base ne donne pas : la date des résultats. gov_change compte aussi un départ du gouvernement aux élections suivantes, « par un processus auquel la vague a contribué » : c'est un horizon long.
 - Recouvrement avec notre fenêtre GDELT (depuis 2024-07) : 4 vagues seulement, dont 2 en Serbie (pays absent de notre historique GDELT).
+- Décision de l'auteur (2026-11-25, 21 h 02) : pas de reconstitution de l'historique GDELT depuis 2015 (« travail d'archéologue, ce n'est pas notre travail ») ; l'usage « vérifier le détecteur de pics » est abandonné. La base reste un garde-fou (plafond de taux) pour les questions sur les Balkans.
