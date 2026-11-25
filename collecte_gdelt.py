@@ -189,6 +189,10 @@ def table_fips(c: httpx.Client) -> dict[str, str]:
                 t.setdefault(f, i)
         if len(t) > 150:
             t.update({"WE": "PS", "GZ": "PS", "KV": "XK"})
+            # 2026-11-25 : pays absents des comptes depuis le début (vu en préparant le test de contagion) : la table
+            # publique ne relie pas leur code FIPS à l'ISO. Serbie (RI), Pays-Bas (NL), Monténégro (MJ), Soudan du Sud
+            # (OD), Curaçao (UC), Saint-Martin néerlandais (NN). Valable pour l'avenir ; l'historique n'est pas recompté.
+            t.update({"RI": "RS", "NL": "NL", "MJ": "ME", "OD": "SS", "UC": "CW", "NN": "SX"})
             return t
     except Exception as e:
         print(f"table FIPS → ISO indisponible ({type(e).__name__}) : table de secours ({len(FIPS_SECOURS)} pays).")
