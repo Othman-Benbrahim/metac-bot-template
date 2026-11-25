@@ -26,9 +26,14 @@ SORTIE = Path("registre") / "sondes"
 # 3e passage (16 h 50) : la page d'Integrity Watch charge ses données par static/mepmeetings.js ; on lit ce script,
 # on y relève les adresses de données, et on sonde chacune (robots vérifié). Ember : refusé par robots.txt, non forcé.
 # 5e passage (18 h 30) : liste publique des élections à venir d'IFES ElectionGuide (adresse donnée par l'auteur).
+# 6e passage (22 h 21) : bne IntelliNews (adresse donnée par l'auteur) ; mur payant, on cherche seulement un flux de
+# TITRES gratuit (règles du site, liens RSS annoncés par l'accueil, adresses de flux usuelles). Aucun article lu.
 ADRESSES = {
-    "eg_avenir": "https://electionguide.org/elections/type/upcoming/",
+    "in_robots": "https://www.intellinews.com/robots.txt",
+    "in_accueil": "https://www.intellinews.com/",
 }
+IN_FLUX_USUELS = ["https://www.intellinews.com/feed/", "https://www.intellinews.com/rss/",
+                  "https://www.intellinews.com/rss.xml", "https://www.intellinews.com/feed.xml"]
 BASE_IW = "https://www.integritywatch.eu/"
 
 
@@ -53,6 +58,25 @@ def principal() -> int:
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=120) as c:
         for nom, url in ADRESSES.items():
             texte = sonder(c, nom, url, etat)
+            if texte and nom == "in_robots":
+                (SORTIE / "in_robots.txt").write_text(texte[:20000], encoding="utf-8")
+            if texte and nom == "in_accueil":
+                annonces = re.findall(r'<link[^>]+(?:rss|atom)[^>]*>', texte, re.I)
+                liens = sorted(set(re.findall(r'href="([^"]*(?:rss|feed|atom)[^"]*)"', texte, re.I)))[:30]
+                etat[nom]["flux_annonces"] = annonces[:10]
+                etat[nom]["liens_flux"] = liens
+                cands = [m for a in annonces for m in re.findall(r'href="([^"]+)"', a)] + liens + IN_FLUX_USUELS
+                vus = []
+                for u in cands:
+                    u = u if u.startswith("http") else "https://www.intellinews.com/" + u.lstrip("/")
+                    if u in vus or len(vus) >= 8:
+                        continue
+                    vus.append(u)
+                    t = sonder(c, f"in_flux_{len(vus)}", u, etat)
+                    if t:
+                        etat[f"in_flux_{len(vus)}"]["items"] = len(re.findall(r"<item|<entry", t))
+                        etat[f"in_flux_{len(vus)}"]["titres"] = [re.sub(r"<!\[CDATA\[|\]\]>", "", x).strip()
+                                                               for x in re.findall(r"<title>(.*?)</title>", t, re.S)[:8]]
             if texte and nom == "eg_avenir":
                 etat[nom]["entetes"] = re.findall(r"<th[^>]*>(.*?)</th>", texte, re.S)[:20]
                 etat[nom]["lignes_table"] = len(re.findall(r"<tr", texte))

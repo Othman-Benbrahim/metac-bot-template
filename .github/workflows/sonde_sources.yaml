@@ -1,7 +1,7 @@
 name: "Sonde de sources (avant collecte)"
 
 # 2026-11-25 : regarde la vraie réponse des sources validées (Parlement européen, Ember) avant d'écrire leur collecte.
-# À la main seulement.
+# À la main seulement. 2026-11-25 22 h 21 : bne IntelliNews (flux de titres).
 on:
   workflow_dispatch:
 
