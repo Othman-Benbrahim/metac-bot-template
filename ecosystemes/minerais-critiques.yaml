@@ -197,6 +197,7 @@ compartiments:
   organisation: technique
   elements:
   - véhicules électriques, réseaux électriques, centres de données, armements
+  - 'Atlas 2025 : demande de certains minerais multipliée par six d''ici 2050 par rapport à 2018, par plus de quarante pour le lithium (Banque mondiale) ; la Chine domine le raffinage ; six États (États-Unis, Suisse, Russie, Chine, Corée du Sud, Japon) constituent des stocks stratégiques et une cinquantaine de petits producteurs (Mexique, Éthiopie, Colombie, Mongolie, Indonésie…) restreignent leurs exportations (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
   niveau:
     espace: monde
     temps: décennies
