@@ -43,7 +43,16 @@ def autorise(client, url: str) -> bool:
                 _ROBOTS[base] = None
             else:
                 rp = RobotFileParser()
-                rp.parse(r.text.splitlines())
+                # 2026-11-25 (cas d'intellinews.com : /feed lu à tort) : des lignes vides À L'INTÉRIEUR d'un groupe
+                # font oublier à l'analyseur de Python le « User-agent » et donc les refus qui suivent ; une ligne
+                # « Disallow: » vide ne doit rien changer (norme) mais peut devenir « tout autorisé ». On retire les
+                # commentaires, les lignes vides et les « Disallow: » vides : les groupes restent séparés par « User-agent ».
+                lignes = []
+                for l in r.text.splitlines():
+                    l = l.split("#", 1)[0].strip()
+                    if l and l.lower().replace(" ", "") != "disallow:":
+                        lignes.append(l)
+                rp.parse(lignes)
                 _ROBOTS[base] = rp
         except Exception:
             _ROBOTS[base] = None
