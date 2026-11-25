@@ -20,6 +20,7 @@ compartiments:
     niveau: {espace: "mondial", temps: "cycles de lancement de mois", vitesse: "semaines à mois", taille: "méso à macro"}
     traces:
       - {source: "certificats émis pour les domaines des laboratoires (signes de nouveaux services)", statut: "collecte", fichier: "collecte_certificats.py"}
+      - {source: "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de couverture)", statut: "collecte", fichier: "collecte_epoch.py", adaptateur: "epoch:frontiere"}
   - id: "calcul"
     nom: "Puces et calcul"
     organisation: "technique"

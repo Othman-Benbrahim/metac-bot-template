@@ -1,0 +1,1933 @@
+{
+ "genere_le": "2026-11-25",
+ "a_brancher": [
+  {
+   "compartiment": "politique-interieure:partis",
+   "nom": "Partis et mouvements",
+   "ouvertes": 4,
+   "resolues": 71,
+   "metaculus": 3,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 28.6
+  },
+  {
+   "compartiment": "dirigeants-elus:mandats_succession",
+   "nom": "Mandats, limites et successions",
+   "ouvertes": 2,
+   "resolues": 52,
+   "metaculus": 6,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 22.2
+  },
+  {
+   "compartiment": "politique-interieure:dirigeants",
+   "nom": "Dirigeants et élus (rôle public)",
+   "ouvertes": 1,
+   "resolues": 52,
+   "metaculus": 6,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 18.2
+  },
+  {
+   "compartiment": "politique-interieure:elections",
+   "nom": "Élections et alternances",
+   "ouvertes": 4,
+   "resolues": 27,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 18.2
+  },
+  {
+   "compartiment": "competitions-culture:public",
+   "nom": "Public et jurys",
+   "ouvertes": 0,
+   "resolues": 62,
+   "metaculus": 5,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 16.4
+  },
+  {
+   "compartiment": "dirigeants-elus:executifs",
+   "nom": "Chefs d'État et de gouvernement",
+   "ouvertes": 1,
+   "resolues": 23,
+   "metaculus": 6,
+   "briefs": 2,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 14.4
+  },
+  {
+   "compartiment": "elections-amerique-latine:scrutins",
+   "nom": "Scrutins et primaires",
+   "ouvertes": 1,
+   "resolues": 53,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 14.4
+  },
+  {
+   "compartiment": "elections-amerique-latine:partis_gouverneurs",
+   "nom": "Partis, coalitions et gouverneurs",
+   "ouvertes": 1,
+   "resolues": 53,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 14.4
+  },
+  {
+   "compartiment": "calendriers-echeances:banques_centrales",
+   "nom": "Réunions des banques centrales et des producteurs",
+   "ouvertes": 1,
+   "resolues": 44,
+   "metaculus": 3,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 14.2
+  },
+  {
+   "compartiment": "calendriers-echeances:dates_limites",
+   "nom": "Dates limites des questions (convention)",
+   "ouvertes": 0,
+   "resolues": 15,
+   "metaculus": 11,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 11.8
+  },
+  {
+   "compartiment": "reseaux-sociaux:personnalites",
+   "nom": "Personnalités publiques qui communiquent par les plateformes",
+   "ouvertes": 0,
+   "resolues": 28,
+   "metaculus": 5,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 9.6
+  },
+  {
+   "compartiment": "partis-politiques:systemes_partisans",
+   "nom": "Systèmes partisans",
+   "ouvertes": 3,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 9.0
+  },
+  {
+   "compartiment": "partis-politiques:adhesion_militantisme",
+   "nom": "Adhésion, militantisme, financement",
+   "ouvertes": 3,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 9.0
+  },
+  {
+   "compartiment": "dette-emergents:gisements",
+   "nom": "Gisements et ressources du sous-sol",
+   "ouvertes": 0,
+   "resolues": 27,
+   "metaculus": 4,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 8.6
+  },
+  {
+   "compartiment": "economie-entreprises:entreprises",
+   "nom": "Entreprises nommées",
+   "ouvertes": 2,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 7.0
+  },
+  {
+   "compartiment": "information-cyber:langues_biais",
+   "nom": "Langues et biais des sources",
+   "ouvertes": 0,
+   "resolues": 29,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 6.6
+  },
+  {
+   "compartiment": "economie-entreprises:investissement_ia",
+   "nom": "Investissement dans l'IA et les centres de données",
+   "ouvertes": 2,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 6.0
+  },
+  {
+   "compartiment": "politique-interieure:procedures",
+   "nom": "Procédures et affaires publiques",
+   "ouvertes": 2,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 6.0
+  },
+  {
+   "compartiment": "sciences-techniques:attentes",
+   "nom": "Attentes et engouement",
+   "ouvertes": 2,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 6.0
+  },
+  {
+   "compartiment": "epidemies:agent",
+   "nom": "Agent infectieux (virus, bactérie)",
+   "ouvertes": 1,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 5.2
+  },
+  {
+   "compartiment": "epidemies:autorites",
+   "nom": "Autorités sanitaires",
+   "ouvertes": 1,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 5.2
+  },
+  {
+   "compartiment": "medias-diffusion:cinema_series",
+   "nom": "Cinéma et séries (Hollywood, Bollywood, Nollywood…)",
+   "ouvertes": 1,
+   "resolues": 9,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 4.8
+  },
+  {
+   "compartiment": "economie-entreprises:finance_entreprise",
+   "nom": "Finance d'entreprise",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 4.0
+  },
+  {
+   "compartiment": "politique-interieure:contestation",
+   "nom": "Contestation et mouvements de rue",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 4.0
+  },
+  {
+   "compartiment": "medias-diffusion:geants_mango",
+   "nom": "Géants de la technologie et de l'IA (« MANGO »)",
+   "ouvertes": 0,
+   "resolues": 13,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.4
+  },
+  {
+   "compartiment": "asie-du-nord-est:coree_du_sud",
+   "nom": "Corée du Sud (président Lee Jae-myung)",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.2
+  },
+  {
+   "compartiment": "climat-extremes:oceans",
+   "nom": "Océans",
+   "ouvertes": 0,
+   "resolues": 8,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.2
+  },
+  {
+   "compartiment": "dirigeants-elus:popularite",
+   "nom": "Popularité et légitimité",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.2
+  },
+  {
+   "compartiment": "humain:opinion_publique",
+   "nom": "Opinion publique (ce qui se dit, se signe, se vote à découvert)",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.2
+  },
+  {
+   "compartiment": "militaire:alliances",
+   "nom": "Alliances et engagements de défense",
+   "ouvertes": 0,
+   "resolues": 16,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.2
+  },
+  {
+   "compartiment": "politique-interieure:regime",
+   "nom": "Régime et démocratie",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.2
+  },
+  {
+   "compartiment": "calendriers-echeances:parlements",
+   "nom": "Sessions parlementaires",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "dirigeants-elus:ministres",
+   "nom": "Ministres et gouvernements",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "dirigeants-elus:diplomatie_personnelle",
+   "nom": "Diplomatie personnelle (sommets, rencontres, appels)",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "economie-entreprises:defaillances",
+   "nom": "Défaillances d'entreprises",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 3,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "environnement-dechets:eaux_usees",
+   "nom": "Eaux usées et pollution de l'eau",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "epidemies:malades",
+   "nom": "Malades et immunité (en agrégat)",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "politique-interieure:coups_transitions",
+   "nom": "Coups d'État et transitions",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "union-europeenne:budget",
+   "nom": "Budget de l'Union (cadre financier pluriannuel)",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 3.0
+  },
+  {
+   "compartiment": "climat-extremes:tempetes",
+   "nom": "Tempêtes et pluies extrêmes",
+   "ouvertes": 0,
+   "resolues": 6,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.8
+  },
+  {
+   "compartiment": "securite-publique:justice",
+   "nom": "Justice",
+   "ouvertes": 0,
+   "resolues": 4,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.4
+  },
+  {
+   "compartiment": "iran-nucleaire:verification",
+   "nom": "Vérification et inspections",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.2
+  },
+  {
+   "compartiment": "nucleaire-radiologique:surete",
+   "nom": "Sûreté et sécurité (régulateurs, AIEA)",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.2
+  },
+  {
+   "compartiment": "organisations-internationales:onu",
+   "nom": "Système des Nations unies (budget, réforme)",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.2
+  },
+  {
+   "compartiment": "organisations-internationales:commerce_mondial",
+   "nom": "Commerce mondial (OMC)",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.2
+  },
+  {
+   "compartiment": "russie-ukraine:atomique",
+   "nom": "Centrales nucléaires et sûreté (niveau institutionnel)",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.2
+  },
+  {
+   "compartiment": "sciences-techniques:adoption",
+   "nom": "Diffusion et adoption",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.2
+  },
+  {
+   "compartiment": "economie-entreprises:regles_sectorielles",
+   "nom": "Règles sectorielles",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.0
+  },
+  {
+   "compartiment": "information-cyber:recits",
+   "nom": "Récits et désinformation",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.0
+  },
+  {
+   "compartiment": "politique-americaine:commerce",
+   "nom": "Commerce et droits de douane",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 2.0
+  },
+  {
+   "compartiment": "culture-memoire:creation",
+   "nom": "Création",
+   "ouvertes": 0,
+   "resolues": 9,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.8
+  },
+  {
+   "compartiment": "energie-mondiale:nucleaire_civil",
+   "nom": "Nucléaire civil",
+   "ouvertes": 0,
+   "resolues": 5,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.8
+  },
+  {
+   "compartiment": "minerais-critiques:demande",
+   "nom": "Demande (électrification, numérique et IA, défense)",
+   "ouvertes": 0,
+   "resolues": 5,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.8
+  },
+  {
+   "compartiment": "nucleaire-radiologique:electricite",
+   "nom": "Électricité nucléaire",
+   "ouvertes": 0,
+   "resolues": 5,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.8
+  },
+  {
+   "compartiment": "calendriers-echeances:anticipations",
+   "nom": "Anticipation des échéances",
+   "ouvertes": 0,
+   "resolues": 4,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.6
+  },
+  {
+   "compartiment": "medias-diffusion:plateformes_sociales",
+   "nom": "Réseaux sociaux et plateformes vidéo",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.6
+  },
+  {
+   "compartiment": "croyances-religions:extremes_islam",
+   "nom": "Franges extrêmes - jihadisme",
+   "ouvertes": 0,
+   "resolues": 7,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.4
+  },
+  {
+   "compartiment": "afrique-subsaharienne:groupes_armes",
+   "nom": "Groupes armés djihadistes (JNIM, État islamique)",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.2
+  },
+  {
+   "compartiment": "frontieres:etats",
+   "nom": "États et frontières entre États",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.2
+  },
+  {
+   "compartiment": "partis-politiques:gauche_sociale_democrate",
+   "nom": "Sociaux-démocrates, travaillistes, gauche de gouvernement",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.2
+  },
+  {
+   "compartiment": "corps-humain:nutrition",
+   "nom": "Nutrition et faim (sous-nutrition, carences, obésité)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "dirigeants-elus:parlementaires",
+   "nom": "Parlementaires et élus",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "dirigeants-elus:departs",
+   "nom": "Départs du pouvoir et ce qui suit",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "economie-entreprises:echanges",
+   "nom": "Échanges internationaux de biens et de services",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "frontieres:blocs",
+   "nom": "Blocs idéologiques et alliances",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "humain:croyances",
+   "nom": "Croyances religieuses et spirituelles (pratiques, rituels, calendriers sacrés)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "militaire:technologies",
+   "nom": "Technologies militaires (drones, missiles, IA, espace, cyber)",
+   "ouvertes": 0,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "militaire:bases_projection",
+   "nom": "Bases à l'étranger et projection de puissance",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "organisations-internationales:sante_mondiale",
+   "nom": "Santé mondiale (OMS)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "organisations-internationales:clubs_puissances",
+   "nom": "Clubs de puissances (G7, G20, OCS, BRICS)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "reseaux-sociaux:desinformation",
+   "nom": "Campagnes de désinformation (établies)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "securite-publique:alertes",
+   "nom": "Alertes et protection civile",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "soleil-espace:meteorites",
+   "nom": "Météorites et objets géocroiseurs (rare)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "surveillance-espionnage:industrie_intrusion",
+   "nom": "Industrie commerciale de l'intrusion (logiciels espions)",
+   "ouvertes": 0,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "surveillance-espionnage:biometrie",
+   "nom": "Surveillance biométrique et vidéo",
+   "ouvertes": 0,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "surveillance-espionnage:cibles",
+   "nom": "Les surveillés (journalistes, élus, opposants, particuliers)",
+   "ouvertes": 0,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 1,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 1.0
+  },
+  {
+   "compartiment": "competitions-culture:calendrier",
+   "nom": "Calendrier des compétitions",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.6
+  },
+  {
+   "compartiment": "culture-memoire:usages_memoire",
+   "nom": "Usages politiques de la mémoire (lois mémorielles, récits concurrents)",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.6
+  },
+  {
+   "compartiment": "information-cyber:plateformes",
+   "nom": "Plateformes et réseaux sociaux",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.6
+  },
+  {
+   "compartiment": "medias-diffusion:jeux_video",
+   "nom": "Jeux vidéo",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.6
+  },
+  {
+   "compartiment": "organisations-internationales:retraits",
+   "nom": "Retraits et contournement du multilatéralisme",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.6
+  },
+  {
+   "compartiment": "reseaux-sociaux:plateformes",
+   "nom": "Plateformes (le biotope virtuel)",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.6
+  },
+  {
+   "compartiment": "dette-emergents:fmi",
+   "nom": "FMI et Banque mondiale",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.4
+  },
+  {
+   "compartiment": "union-europeenne:politiques_communes",
+   "nom": "Politiques communes",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.4
+  },
+  {
+   "compartiment": "afrique-subsaharienne:demographie_jeunesse",
+   "nom": "Démographie et jeunesse",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "asie-du-nord-est:coree_du_nord",
+   "nom": "Corée du Nord (programmes nucléaire et balistique)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "crime-organise:cartels_mafias",
+   "nom": "Cartels et mafias",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "crime-organise:traite",
+   "nom": "Traite des êtres humains",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "famille-genre:mariage",
+   "nom": "Mariage et unions (dont mariages d'enfants)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "frontieres:frontieres_contestees",
+   "nom": "Frontières contestées",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "guerre-levant:puissances",
+   "nom": "Puissances extérieures",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "humain:jeunesse",
+   "nom": "Adolescence et cohortes jeunes (prise de risque, appartenance, nouveauté)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "infrastructures-critiques:cascades",
+   "nom": "Défaillances en cascade",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "urgences:7700"
+   ],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "minerais-critiques:controles_export",
+   "nom": "Contrôles à l'exportation (terres rares, graphite, matériaux de batteries)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "oceans-et-fleuves:niveau_mer",
+   "nom": "Niveau de la mer et côtes",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "ucdb:WLD:part_submersion_100",
+    "ucdb:WLD:part_lecz_10"
+   ],
+   "etat": "ancienne",
+   "derniere": "2025-07-01",
+   "score": 0.2
+  },
+  {
+   "compartiment": "organisations-internationales:conseil_securite",
+   "nom": "Conseil de sécurité (veto des cinq membres permanents)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "organisations-internationales:justice_internationale",
+   "nom": "Justice internationale (CPI, CIJ)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "politique-americaine:regles_electorales",
+   "nom": "Règles électorales et découpages (convention)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "psyche:developpement",
+   "nom": "Développement tout au long de la vie",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "sciences-techniques:recherche",
+   "nom": "Recherche scientifique",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "pub:arxiv_cs_lg"
+   ],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "securite-europeenne:otan_ue",
+   "nom": "OTAN et Union européenne",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  },
+  {
+   "compartiment": "soudan:fsr",
+   "nom": "Forces de soutien rapide (FSR, en anglais RSF)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [],
+   "etat": "aucune",
+   "derniere": null,
+   "score": 0.2
+  }
+ ],
+ "deja_couverts": [
+  {
+   "compartiment": "calendriers-echeances:elections",
+   "nom": "Échéances électorales",
+   "ouvertes": 5,
+   "resolues": 144,
+   "metaculus": 14,
+   "briefs": 0,
+   "series": [
+    "elections:US"
+   ],
+   "etat": "fraiche",
+   "derniere": "2027-01-01",
+   "score": 55.0
+  },
+  {
+   "compartiment": "politique-americaine:congres",
+   "nom": "Congrès",
+   "ouvertes": 2,
+   "resolues": 45,
+   "metaculus": 7,
+   "briefs": 1,
+   "series": [
+    "congres"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-12-02",
+   "score": 21.6
+  },
+  {
+   "compartiment": "politique-americaine:executif",
+   "nom": "Exécutif",
+   "ouvertes": 2,
+   "resolues": 46,
+   "metaculus": 4,
+   "briefs": 0,
+   "series": [
+    "avions:US",
+    "tfr:SECURITY",
+    "federal_register",
+    "federal_register:Presidential Document",
+    "routines:maison_blanche"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-25",
+   "score": 18.4
+  },
+  {
+   "compartiment": "competitions-culture:forme",
+   "nom": "Forme et blessures",
+   "ouvertes": 0,
+   "resolues": 62,
+   "metaculus": 5,
+   "briefs": 0,
+   "series": [
+    "elo:selections:forme"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-01",
+   "score": 16.4
+  },
+  {
+   "compartiment": "politique-americaine:reserve_federale",
+   "nom": "Réserve fédérale (institution)",
+   "ouvertes": 1,
+   "resolues": 51,
+   "metaculus": 4,
+   "briefs": 0,
+   "series": [
+    "fred:DFF"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 16.4
+  },
+  {
+   "compartiment": "sciences-techniques:ia",
+   "nom": "Intelligence artificielle (modèles, laboratoires, produits)",
+   "ouvertes": 2,
+   "resolues": 22,
+   "metaculus": 3,
+   "briefs": 2,
+   "series": [
+    "epoch:frontiere"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-01",
+   "score": 14.8
+  },
+  {
+   "compartiment": "inflation-mondiale:banques_centrales",
+   "nom": "Banques centrales",
+   "ouvertes": 1,
+   "resolues": 19,
+   "metaculus": 3,
+   "briefs": 0,
+   "series": [
+    "fred:DFF",
+    "fred:ECBDFR",
+    "fred:DFEDTARU"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-24",
+   "score": 9.2
+  },
+  {
+   "compartiment": "crises-bancaires:seuils_de_prix",
+   "nom": "Seuils de prix (actions, indices, cryptomonnaies, taux, pétrole)",
+   "ouvertes": 3,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "fred:CBBTCUSD"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-24",
+   "score": 9.0
+  },
+  {
+   "compartiment": "politique-americaine:tribunaux",
+   "nom": "Tribunaux",
+   "ouvertes": 0,
+   "resolues": 8,
+   "metaculus": 8,
+   "briefs": 0,
+   "series": [
+    "tribunaux:scotus",
+    "tribunaux:cadc"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 8.0
+  },
+  {
+   "compartiment": "russie-ukraine:negociations",
+   "nom": "Négociations et diplomatie",
+   "ouvertes": 0,
+   "resolues": 16,
+   "metaculus": 5,
+   "briefs": 0,
+   "series": [
+    "gestes:RUS:UKR",
+    "paire_mois:RU:UA:conflit"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-01",
+   "score": 7.2
+  },
+  {
+   "compartiment": "monnaie-pouvoir:banques_centrales_puissance",
+   "nom": "Banques centrales comme acteurs de puissance",
+   "ouvertes": 0,
+   "resolues": 19,
+   "metaculus": 3,
+   "briefs": 0,
+   "series": [
+    "fred:DFF"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 6.2
+  },
+  {
+   "compartiment": "politique-americaine:budget",
+   "nom": "Budget et dette fédérale",
+   "ouvertes": 1,
+   "resolues": 4,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [
+    "fred:DGS10",
+    "federal_register:tous:Securities and Exchange"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 5.4
+  },
+  {
+   "compartiment": "inflation-mondiale:budget",
+   "nom": "Politique budgétaire",
+   "ouvertes": 1,
+   "resolues": 2,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "fred:DGS10"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 4.2
+  },
+  {
+   "compartiment": "crises-bancaires:marches",
+   "nom": "Marchés financiers",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-20",
+   "score": 4.0
+  },
+  {
+   "compartiment": "energie-mondiale:decisions",
+   "nom": "Décisions et conventions",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "sanctions:RU"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-12",
+   "score": 4.0
+  },
+  {
+   "compartiment": "inflation-mondiale:prix_conso",
+   "nom": "Prix à la consommation",
+   "ouvertes": 1,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "fred:CPIAUCSL:var12",
+    "nowcast:variation_mensuelle:CPI"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-25",
+   "score": 4.0
+  },
+  {
+   "compartiment": "humain:risque_percu",
+   "nom": "Risque perçu (poids donné aux probabilités, aux pertes et au cadre)",
+   "ouvertes": 0,
+   "resolues": 5,
+   "metaculus": 3,
+   "briefs": 0,
+   "series": [
+    "fred:T10YIE"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-24",
+   "score": 3.4
+  },
+  {
+   "compartiment": "politique-americaine:elections",
+   "nom": "Élections et opinion",
+   "ouvertes": 1,
+   "resolues": 2,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "elections:US",
+    "manifestations:US"
+   ],
+   "etat": "fraiche",
+   "derniere": "2027-01-01",
+   "score": 3.4
+  },
+  {
+   "compartiment": "climat-extremes:tendance",
+   "nom": "Réchauffement de fond",
+   "ouvertes": 0,
+   "resolues": 8,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [
+    "owid:annual-co2-emissions-per-country:World",
+    "owid:annual-co2-emissions-per-country:CHN",
+    "climat:delhi",
+    "climat:berlin"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-09",
+   "score": 3.2
+  },
+  {
+   "compartiment": "energie-mondiale:prix",
+   "nom": "Prix et marchés",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "fred:DCOILBRENTEU"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-17",
+   "score": 3.0
+  },
+  {
+   "compartiment": "inflation-mondiale:monnaies",
+   "nom": "Monnaies et dollar",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-20",
+   "score": 3.0
+  },
+  {
+   "compartiment": "inflation-mondiale:statistiques",
+   "nom": "Statistiques officielles (convention)",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "calendrier_nbs:ipc"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-12-09",
+   "score": 3.0
+  },
+  {
+   "compartiment": "information-cyber:infrastructure",
+   "nom": "Infrastructure physique d'internet",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 3,
+   "briefs": 0,
+   "series": [
+    "certificats"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-19",
+   "score": 3.0
+  },
+  {
+   "compartiment": "monnaie-pouvoir:dollar_reserve",
+   "nom": "Le dollar, monnaie de réserve",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "fred:DTWEXBGS"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-20",
+   "score": 3.0
+  },
+  {
+   "compartiment": "sciences-techniques:sorties_modeles",
+   "nom": "Sorties des modèles de pointe (quand un modèle annoncé devient public)",
+   "ouvertes": 1,
+   "resolues": 0,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "epoch:frontiere"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-01",
+   "score": 3.0
+  },
+  {
+   "compartiment": "climat-extremes:saisons",
+   "nom": "Saisons anormales",
+   "ouvertes": 0,
+   "resolues": 6,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [
+    "meteo:berlin",
+    "meteo:delhi",
+    "meteo:houston",
+    "meteo_prevue:delhi",
+    "meteo_prevue:berlin"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-25",
+   "score": 2.8
+  },
+  {
+   "compartiment": "rivalite-sino-americaine:commerce",
+   "nom": "Commerce et droits de douane",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 2,
+   "briefs": 0,
+   "series": [
+    "portwatch:malacca:porte_conteneurs",
+    "sanctions_chine:US"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 2.2
+  },
+  {
+   "compartiment": "guerre-levant:gaza",
+   "nom": "Gaza et territoires palestiniens",
+   "ouvertes": 0,
+   "resolues": 7,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "violations:Palestine"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-24",
+   "score": 1.4
+  },
+  {
+   "compartiment": "guerre-levant:yemen",
+   "nom": "Yémen et mer Rouge",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "portwatch:bab_el_mandeb:petroliers",
+    "portwatch:suez:porte_conteneurs",
+    "violations:Yemen",
+    "ucdp:Yemen"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-24",
+   "score": 1.4
+  },
+  {
+   "compartiment": "climat-extremes:exposes",
+   "nom": "Sociétés et infrastructures exposées",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "ooni:IN",
+    "tfr:HAZARDS",
+    "ucdb:WLD:jours_utci32",
+    "ucdb:WLD:part_crue_fluviale_100"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-25",
+   "score": 1.2
+  },
+  {
+   "compartiment": "iran-nucleaire:etats_unis",
+   "nom": "États-Unis",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "paire_mois:IR:US:conflit"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-01",
+   "score": 1.2
+  },
+  {
+   "compartiment": "calendriers-echeances:marches",
+   "nom": "Marchés et calendrier",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "fred:DFF"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 1.0
+  },
+  {
+   "compartiment": "energie-mondiale:production",
+   "nom": "Production",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "owid:installed-solar-pv-capacity:World",
+    "owid:cumulative-installed-wind-energy-capacity-gigawatts:World",
+    "eia:WCRFPUS2"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-13",
+   "score": 1.0
+  },
+  {
+   "compartiment": "inflation-mondiale:approvisionnement",
+   "nom": "Chaînes d'approvisionnement",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "portwatch:suez:porte_conteneurs"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-22",
+   "score": 1.0
+  },
+  {
+   "compartiment": "non-proliferation:dissuasion",
+   "nom": "Dissuasion des puissances dotées",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "gestes:USA:RUS"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-10-26",
+   "score": 1.0
+  },
+  {
+   "compartiment": "non-proliferation:etats_du_seuil",
+   "nom": "États proches du seuil ou hors traité",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "gestes:USA:IRN"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-10-26",
+   "score": 1.0
+  },
+  {
+   "compartiment": "politique-americaine:sanctions",
+   "nom": "Sanctions et politique étrangère économique",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "sanctions:IR",
+    "sanctions:RU",
+    "federal_register:tous:Treasury",
+    "routines:pentagone"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-24",
+   "score": 1.0
+  },
+  {
+   "compartiment": "securite-publique:frontieres",
+   "nom": "Frontières et ports",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 1,
+   "briefs": 0,
+   "series": [
+    "portwatch:panama:porte_conteneurs"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-22",
+   "score": 1.0
+  },
+  {
+   "compartiment": "soleil-espace:satellites",
+   "nom": "Satellites et constellations",
+   "ouvertes": 0,
+   "resolues": 5,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "tfr:SPACE OPERATIONS"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-25",
+   "score": 1.0
+  },
+  {
+   "compartiment": "relief-et-montagnes:seismes_volcans",
+   "nom": "Séismes et volcans",
+   "ouvertes": 0,
+   "resolues": 3,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "seismes:m6"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 0.6
+  },
+  {
+   "compartiment": "humain:hierarchie",
+   "nom": "Hiérarchie et rang (intensité = contestation du rang ; obéissance, conformité)",
+   "ouvertes": 0,
+   "resolues": 2,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "elections:US:proche30",
+    "elections:US"
+   ],
+   "etat": "fraiche",
+   "derniere": "2027-01-01",
+   "score": 0.4
+  },
+  {
+   "compartiment": "climat-extremes:secheresses",
+   "nom": "Sécheresses",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "pub:secheresse_us_d2plus"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-17",
+   "score": 0.2
+  },
+  {
+   "compartiment": "guerre-levant:liban",
+   "nom": "Liban",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "feux:LB",
+    "paire:IL:LB:force"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-24",
+   "score": 0.2
+  },
+  {
+   "compartiment": "humain:passage_acte",
+   "nom": "Passage à l'acte collectif (manifestation, émeute, violence, vote sanction)",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "manifestations:US",
+    "manifestations:IL",
+    "hostilites:UA"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 0.2
+  },
+  {
+   "compartiment": "politique-americaine:entourage",
+   "nom": "Entourage et coalition de soutien",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "tfr:VIP",
+    "congres:nominations"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-25",
+   "score": 0.2
+  },
+  {
+   "compartiment": "russie-ukraine:soutiens",
+   "nom": "Soutiens extérieurs",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "gestes:USA:UKR",
+    "hostilites:MD"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 0.2
+  },
+  {
+   "compartiment": "russie-ukraine:sanctions",
+   "nom": "Sanctions",
+   "ouvertes": 0,
+   "resolues": 1,
+   "metaculus": 0,
+   "briefs": 0,
+   "series": [
+    "sanctions:RU",
+    "sanctions_chine:UA"
+   ],
+   "etat": "fraiche",
+   "derniere": "2026-11-23",
+   "score": 0.2
+  }
+ ]
+}
